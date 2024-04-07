@@ -147,6 +147,8 @@
 		if(dam)
 			if(zone_precise == BODY_ZONE_PRECISE_GROIN)
 				owner.emote("groin")
+				if(owner.sexcon)
+					owner.sexcon.adjust_horny(-200)
 				owner.Stun(10)
 		return FALSE
 	if(bclass == BCLASS_BLUNT || bclass == BCLASS_SMASH || bclass == BCLASS_CHOP)
@@ -154,6 +156,8 @@
 		if(zone_precise == BODY_ZONE_PRECISE_GROIN)
 			if(dam)
 				owner.emote("groin")
+				if(owner.sexcon)
+					owner.sexcon.adjust_horny(-200)
 				owner.Stun(5) //implement once targetting groin is harder
 				return FALSE
 		if(HAS_TRAIT_FROM(src, TRAIT_PARALYSIS, CRIT_TRAIT))

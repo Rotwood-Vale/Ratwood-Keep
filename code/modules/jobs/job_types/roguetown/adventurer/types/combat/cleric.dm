@@ -22,6 +22,7 @@
 	..()
 	var/allowed_patrons = list("Astrata", "Dendor", "Necra", "Pestra","Noc")
 
+	H.virginity = TRUE
 	var/datum/patrongods/ourpatron
 	if(istype(H.PATRON, /datum/patrongods))
 		ourpatron = H.PATRON

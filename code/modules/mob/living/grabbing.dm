@@ -479,11 +479,23 @@
 					to_chat(user, "<span class='warning'>It's vitae, just like mine.</span>")
 				else
 					C.blood_volume = max(C.blood_volume-45, 0)
+					if(ishuman(C))
+						var/mob/living/carbon/human/H = C
+						if(H.virginity)
+							to_chat(user, "<span class='love'>Virgin blood, delicious!</span>")
+							if(VDrinker.isspawn)
+								VDrinker.handle_vitae(750, 750)
+							else
+								VDrinker.handle_vitae(1000)
 					if(VDrinker.isspawn)
 						VDrinker.handle_vitae(500, 500)
 					else
 						VDrinker.handle_vitae(500)
 		else
+/*			if(VVictim)
+				to_chat(user, "<span class='notice'>A strange, sweet taste tickles my throat.</span>")
+				addtimer(CALLBACK(user, .mob/living/carbon/human/proc/vampire_infect), 1 MINUTES) // I'll use this for succession later.
+			else */
 			to_chat(user, "<span class='warning'>I'm going to puke...</span>")
 			addtimer(CALLBACK(user, TYPE_PROC_REF(/mob/living/carbon, vomit), 0, TRUE), rand(8 SECONDS, 15 SECONDS))
 	else

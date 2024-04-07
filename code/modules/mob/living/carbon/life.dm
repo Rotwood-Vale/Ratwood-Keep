@@ -531,7 +531,9 @@
 					return FALSE
 			if(mouth && mouth.muteinmouth)
 				return FALSE
-
+	if(sexcon)
+		if(sexcon.weeating)
+			return FALSE
 	if(istype(loc, /turf/open/water) && lying)
 		return FALSE
 	return TRUE

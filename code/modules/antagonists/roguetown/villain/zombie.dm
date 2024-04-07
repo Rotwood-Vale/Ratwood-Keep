@@ -231,6 +231,7 @@
 		qdel(src)
 		return
 
+	zombie.can_do_sex = FALSE
 	zombie.stat = null //the mob starts unconscious,
 	zombie.blood_volume = BLOOD_VOLUME_MAXIMUM
 	zombie.updatehealth() //then we check if the mob should wake up.

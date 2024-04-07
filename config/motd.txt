@@ -1,3 +1,4 @@
 <!-- Most valid html will work in here, excluding images. -->
-Blackstone Discord Server: <a href="https://discord.gg/bx9c7ha5Qk">discord.gg/Blackstone</a>
+Roguetown Discord Server: <a href="https://discord.gg/9uYTPsRMKa">discord.gg/RogueTown</a>
+Roguetown Patreon: <a href="https://www.patreon.com/user?u=58204426">patreon.com/ROGUETOWN</a>
 <center>* Unstable Playtest - Expect Restarts *</center>

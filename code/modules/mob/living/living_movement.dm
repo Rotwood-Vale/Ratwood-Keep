@@ -2,6 +2,8 @@
 	. = ..()
 	stop_looking()
 	update_turf_movespeed(loc)
+	if(sexcon)
+		sexcon.mob_moved()
 //	if(m_intent == MOVE_INTENT_RUN)
 //		consider_ambush()
 

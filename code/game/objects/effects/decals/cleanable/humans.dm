@@ -1,3 +1,20 @@
+
+/obj/effect/decal/cleanable/coom
+	name = "mess"
+	desc = ""
+	icon = 'icons/roguetown/items/natural.dmi'
+	icon_state = "mess1"
+	random_icon_states = list("mess1", "mess2", "mess3")
+	beauty = -100
+	alpha = 150
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	appearance_flags = NO_CLIENT_COLOR
+
+/obj/effect/decal/cleanable/coom/Initialize(mapload, list/datum/disease/diseases)
+	. = ..()
+	pixel_x = rand(-8, 8)
+	pixel_y = rand(-8, 8)
+
 /obj/effect/decal/cleanable/blood
 	name = "blood"
 	desc = ""
