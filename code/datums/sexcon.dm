@@ -47,8 +47,6 @@
 	var/can_do_sex = 2
 
 /mob/proc/can_do_sex()
-	return FALSE
-/* sex disabled LOLE
 	if(can_do_sex != 2)
 		return can_do_sex
 	if(!client)
@@ -64,7 +62,7 @@
 		return can_do_sex
 	can_do_sex = 1
 	return can_do_sex
-*/
+
 /mob/living/carbon/MiddleMouseDrop_T(mob/living/target, mob/living/user)
 	if(user.mmb_intent)
 		return ..()
