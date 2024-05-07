@@ -703,7 +703,8 @@
 /datum/sprite_accessory/tails
 	icon = 'icons/mob/mutant_bodyparts.dmi'
 	gender = MALE
-	specuse = list()
+	specuse = list("lizardfolk")
+	color_src = SKINCOLOR
 
 /datum/sprite_accessory/tails_animated
 	icon = 'icons/mob/mutant_bodyparts.dmi'
@@ -760,6 +761,11 @@
 
 /datum/sprite_accessory/snouts
 	icon = 'icons/mob/mutant_bodyparts.dmi'
+	color_src = SKINCOLOR
+	specuse = list("lizardfolk")
+	gender = NEUTER
+	color_src = SKINCOLOR
+	offsetti = TRUE
 
 /datum/sprite_accessory/snouts/sharp
 	name = "Sharp"
@@ -779,8 +785,6 @@
 
 /datum/sprite_accessory/horns
 	icon = 'icons/mob/mutant_bodyparts.dmi'
-	gender = MALE
-	specuse = list()
 
 /datum/sprite_accessory/ears
 	icon = 'icons/mob/mutant_bodyparts.dmi'
@@ -890,6 +894,10 @@
 	dimension_y = 32
 
 /datum/sprite_accessory/frills
+	specuse = list("lizardfolk")
+	gender = NEUTER
+	color_src = SKINCOLOR
+	offsetti = TRUE
 	icon = 'icons/mob/mutant_bodyparts.dmi'
 
 /datum/sprite_accessory/frills/none

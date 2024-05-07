@@ -14,7 +14,8 @@
 	"Dwarf",
 	"Dwarf",
 	"Tiefling",
-	"Aasimar"
+	"Aasimar",
+	"Lizardfolk"
 	)
 	outfit = /datum/outfit/job/roguetown/adventurer/bard
 

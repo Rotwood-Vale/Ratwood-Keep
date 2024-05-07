@@ -11,7 +11,8 @@
 	"Half-Elf",
 	"Tiefling",
 	"Dark Elf",
-	"Aasimar"
+	"Aasimar",
+	"Lizardfolk"
 	)
 	tutorial = "Pilgrims begin far outside of the town and must reach it in order to ply their various trades. Sometimes, they build their own settlements and enjoy the terrible nature."
 

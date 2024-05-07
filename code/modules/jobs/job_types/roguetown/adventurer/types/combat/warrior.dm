@@ -9,7 +9,8 @@
 	"Elf",
 	"Half-Elf",
 	"Dark Elf",
-	"Tiefling")
+	"Tiefling",
+	"Lizardfolk")
 	outfit = /datum/outfit/job/roguetown/adventurer/sfighter
 
 

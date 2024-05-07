@@ -53,6 +53,29 @@
 	features = random_features()
 	if(pref_species.default_features["ears"])
 		features["ears"] = pref_species.default_features["ears"]
+	if(pref_species.default_features["tail_lizard"])
+		features["tail_lizard"] = pref_species.default_features["tail_lizard"]
+	for(var/X in GLOB.frills_list.Copy())
+		var/datum/sprite_accessory/S = GLOB.frills_list[X]
+		if(!(pref_species in S.specuse))
+			continue
+		if(S.gender == NEUTER)
+			features["frills"] = X
+			break
+		if(gender == S.gender)
+			features["frills"] = X
+			break
+	for(var/X in GLOB.snouts_list.Copy())
+		var/datum/sprite_accessory/S = GLOB.snouts_list[X]
+		to_chat(world,"Huesosi eto rabotaet: [X]")
+		if(!(pref_species in S.specuse))
+			continue
+		if(S.gender == NEUTER)
+			features["snout"] = X
+			break
+		if(gender == S.gender)
+			features["snout"] = X
+			break
 	for(var/X in GLOB.horns_list.Copy())
 		var/datum/sprite_accessory/S = GLOB.horns_list[X]
 		if(!(pref_species in S.specuse))

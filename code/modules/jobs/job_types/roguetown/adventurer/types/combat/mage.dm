@@ -9,7 +9,8 @@
 	 "Elf",
 	 "Dark Elf",
 	 "Tiefling",
-	"Aasimar")
+	"Aasimar",
+	"Lizardfolk")
 	outfit = /datum/outfit/job/roguetown/adventurer/mage
 
 /datum/outfit/job/roguetown/adventurer/mage/pre_equip(mob/living/carbon/human/H)

@@ -8,7 +8,8 @@
 	allowed_sexes = list("male")
 	allowed_races = list("Humen",
 	"Tiefling",
-	"Aasimar")
+	"Aasimar",
+	"Lizardfolk")
 	allowed_patrons = list("Astrata", "Dendor", "Necra", "Pestra","Noc")
 	outfit = /datum/outfit/job/roguetown/templar
 	min_pq = 2

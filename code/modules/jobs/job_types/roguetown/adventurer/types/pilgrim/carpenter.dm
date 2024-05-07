@@ -8,7 +8,8 @@
 	"Half-Elf",
 	"Tiefling",
 	"Elf",
-	"Aasimar"
+	"Aasimar",
+	"Lizardfolk"
 	)
 	outfit = /datum/outfit/job/roguetown/adventurer/carpenter
 	isvillager = TRUE
