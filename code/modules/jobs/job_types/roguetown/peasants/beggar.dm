@@ -11,7 +11,8 @@
 	"Dwarf",
 	"Tiefling",
 	"Dark Elf",
-	"Lizardfolk"
+	"Lizardfolk",
+	"Tabaxi"
 	)
 	allowed_ages = list(AGE_ADULT, AGE_MIDDLEAGED, AGE_OLD)
 	outfit = /datum/outfit/job/roguetown/vagrant

@@ -67,7 +67,6 @@
 			break
 	for(var/X in GLOB.snouts_list.Copy())
 		var/datum/sprite_accessory/S = GLOB.snouts_list[X]
-		to_chat(world,"Huesosi eto rabotaet: [X]")
 		if(!(pref_species in S.specuse))
 			continue
 		if(S.gender == NEUTER)

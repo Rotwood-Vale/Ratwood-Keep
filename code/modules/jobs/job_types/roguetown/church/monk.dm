@@ -13,7 +13,8 @@
 	"Elf",
 	"Dwarf",
 	"Aasimar",
-	"Lizardfolk"
+	"Lizardfolk",
+	"Tabaxi"
 	)
 	tutorial = "Chores, some more chores- Even more chores.. Oh how the life of a humble cleric is exhausting… You have faith, but even you know you gave up a life of adventure for that of the security in the Church. Assist the Priest in their daily tasks, maybe today will be the day something interesting happens."
 	allowed_patrons = list("Astrata", "Dendor", "Necra", "Pestra","Noc")

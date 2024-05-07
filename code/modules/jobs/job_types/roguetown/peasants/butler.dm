@@ -14,7 +14,8 @@
 	"Dwarf",
 	"Aasimar",
 	"Half-Elf",
-	"Lizardfolk"
+	"Lizardfolk",
+	"Tabaxi"
 	)
 	allowed_ages = list(AGE_ADULT, AGE_MIDDLEAGED, AGE_OLD)
 

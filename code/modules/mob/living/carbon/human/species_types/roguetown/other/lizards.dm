@@ -12,7 +12,7 @@
 	They also have sharp claws and teeth."
 	skin_tone_wording = "Skin Colors"
 	mutant_bodyparts = list("tail_lizard", "snout", "frills")
-	species_traits = list(EYECOLOR,LIPS)
+	species_traits = list(EYECOLOR,LIPS,STUBBLE)
 	inherent_traits = list(TRAIT_NOMOBSWAP)
 	use_skintones = 1
 	mutanttongue = /obj/item/organ/tongue/lizard
@@ -24,7 +24,6 @@
 	limbs_icon_f = 'icons/roguetown/mob/bodies/f/fm.dmi'
 	dam_icon = 'icons/roguetown/mob/bodies/dam/dam_male.dmi'
 	dam_icon_f = 'icons/roguetown/mob/bodies/dam/dam_female.dmi'
-	hairyness = "t3"
 	soundpack_m = /datum/voicepack/male/elf
 	soundpack_f = /datum/voicepack/female/elf
 	offset_features = list(OFFSET_ID = list(0,1), OFFSET_GLOVES = list(0,1), OFFSET_WRISTS = list(0,1),\
@@ -54,10 +53,10 @@
 		"Grey" = LIZARD_SKIN_GREY,
 		"Greeny" = LIZARD_SKIN_GREENY,
 		"Brown" = LIZARD_SKIN_BROWN,
-		"?" = LIZARD_SKIN_CELESTIAL,
+		"Dirtgreen" = LIZARD_SKIN_CELESTIAL,
 		"?" = LIZARD_SKIN_OLYMPIA,
-		"?" = LIZARD_SKIN_NECRAL,
-		"?" = LIZARD_SKIN_ABYSSAL,
+		"??" = LIZARD_SKIN_NECRAL,
+		"???" = LIZARD_SKIN_ABYSSAL,
 	)
 
 /datum/species/lizardfolk/spec_death(gibbed, mob/living/carbon/human/H)
