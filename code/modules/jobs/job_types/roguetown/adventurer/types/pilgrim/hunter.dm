@@ -9,7 +9,8 @@
 	"Tiefling",
 	"Dark Elf",
 	"Dwarf",
-	"Aasimar"
+	"Aasimar",
+	"Lizardfolk"
 	)
 	outfit = /datum/outfit/job/roguetown/adventurer/hunter
 	isvillager = TRUE

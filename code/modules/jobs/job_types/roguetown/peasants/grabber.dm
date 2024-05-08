@@ -11,7 +11,9 @@
 	"Elf",
 	"Half-Elf",
 	"Dwarf",
-	"Dwarf"
+	"Dwarf",
+	"Lizardfolk",
+	"Tabaxi"
 	)
 
 	tutorial = "Grabber is the lowest position in the Merchant's Guild, reserved for the strong, loyal newcomers. They can be like family to the merchant in these foreign lands."

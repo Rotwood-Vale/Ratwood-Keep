@@ -503,10 +503,16 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 	if(H.dna)
 		H.dna.real_name = H.real_name
 		var/list/features = random_features()
-		if(default_features["ears"])
-			features["ears"] = default_features["ears"]
-		if(default_features["tail_human"])
-			features["tail_human"] = default_features["tail_human"]
+		if(H.dna.species.default_features["ears"])
+			features["ears"] = H.dna.species.default_features["ears"]
+		if(H.dna.species.default_features["tail_human"])
+			features["tail_human"] = H.dna.species.default_features["tail_human"]
+		if(H.dna.species.default_features["tail_lizard"])
+			features["tail_lizard"] = H.dna.species.default_features["tail_lizard"]
+		if(H.dna.species.default_features["frills"])
+			features["frills"] = H.dna.species.default_features["frills"]
+		if(H.dna.species.default_features["snout"])
+			features["snout"] = H.dna.species.default_features["snout"]
 		H.dna.features = features.Copy()
 	H.update_body()
 	H.update_hair()

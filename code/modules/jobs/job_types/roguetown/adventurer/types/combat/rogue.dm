@@ -10,7 +10,8 @@
 	"Half-Elf",
 	"Dwarf",
 	"Tiefling",
-	"Aasimar")
+	"Aasimar",
+	"Lizardfolk")
 	outfit = /datum/outfit/job/roguetown/adventurer/rogue
 
 /datum/outfit/job/roguetown/adventurer/rogue/pre_equip(mob/living/carbon/human/H)

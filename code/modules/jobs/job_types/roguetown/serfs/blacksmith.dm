@@ -10,7 +10,8 @@
 	"Humen",
 	"Dwarf",
 	"Dwarf",
-	"Aasimar"
+	"Aasimar",
+	"Lizardfolk"
 	)
 
 	tutorial = "You studied for many decades under your master with a few other apprentices to become an Armorer, a trade that certainly has seen a boom in revenue in recent times with many a bannerlord seeing the importance in maintaining a well-equipped army."

@@ -11,7 +11,9 @@
 	"Dwarf",
 	"Dwarf",
 	"Aasimar",
-	"Half-Elf"
+	"Half-Elf",
+	"Lizardfolk",
+	"Tabaxi"
 	)
 	allowed_sexes = list(MALE, FEMALE)
 

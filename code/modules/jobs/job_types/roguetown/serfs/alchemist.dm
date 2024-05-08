@@ -9,7 +9,8 @@
 	allowed_races = list("Humen",
 	"Humen",
 	"Dwarf",
-	"Dwarf",
+	"Dwarf",,
+	"Tabaxi"
 	)
 
 	tutorial = "You came to rockhill either to seek knowledge or riches."

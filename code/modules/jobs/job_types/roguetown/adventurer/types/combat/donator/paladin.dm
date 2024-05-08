@@ -6,7 +6,8 @@
 	allowed_sexes = list("male", "female")
 	allowed_races = list("Humen",
 	"Tiefling",
-	"Aasimar")
+	"Aasimar",
+	"Lizardfolk")
 	outfit = /datum/outfit/job/roguetown/adventurer/paladin
 	allowed_patrons = list("Astrata", "Dendor", "Necra", "Pestra", "Noc")
 
