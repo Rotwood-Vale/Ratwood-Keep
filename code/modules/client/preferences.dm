@@ -358,18 +358,20 @@ GLOBAL_LIST_EMPTY(chosen_names)
 				dat += "<b>[skin_tone_wording]: </b><a href='?_src_=prefs;preference=s_tone;task=input'>Change </a>"
 //				dat += "<a href='?_src_=prefs;preference=toggle_random;random_type=[RANDOM_SKIN_TONE]'>[(randomise[RANDOM_SKIN_TONE]) ? "Lock" : "Unlock"]</A>"
 				dat += "<br>"
-
+				
 			var/mutant_colors
+			/*
 			if((MUTCOLORS in pref_species.species_traits) || (MUTCOLORS_PARTSONLY in pref_species.species_traits))
 
 //				if(!use_skintones)
 //					dat += APPEARANCE_CATEGORY_COLUMN
-
+/*
 				dat += "<h3>Mutant color</h3>"
 
 				dat += "<span style='border: 1px solid #161616; background-color: #[features["mcolor"]];'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;preference=mutant_color;task=input'>Change</a><BR>"
-
+*/
 				mutant_colors = TRUE
+			*/
 
 			if(istype(pref_species, /datum/species/ethereal)) //not the best thing to do tbf but I dont know whats better.
 
@@ -442,7 +444,7 @@ GLOBAL_LIST_EMPTY(chosen_names)
 
 			//Mutant stuff
 			var/mutant_category = 0
-
+			/*
 			if("tail_lizard" in pref_species.default_features)
 				if(!mutant_category)
 					dat += APPEARANCE_CATEGORY_COLUMN
@@ -454,8 +456,8 @@ GLOBAL_LIST_EMPTY(chosen_names)
 				mutant_category++
 				if(mutant_category >= MAX_MUTANT_ROWS)
 					dat += "</td>"
-					mutant_category = 0
-
+					mutant_category = 0 */
+			/*
 			if("snout" in pref_species.default_features)
 				if(!mutant_category)
 					dat += APPEARANCE_CATEGORY_COLUMN
@@ -468,7 +470,7 @@ GLOBAL_LIST_EMPTY(chosen_names)
 				if(mutant_category >= MAX_MUTANT_ROWS)
 					dat += "</td>"
 					mutant_category = 0
-
+			*/
 /*			if("horns" in pref_species.default_features)
 				if(!mutant_category)
 					dat += APPEARANCE_CATEGORY_COLUMN
@@ -481,7 +483,7 @@ GLOBAL_LIST_EMPTY(chosen_names)
 				if(mutant_category >= MAX_MUTANT_ROWS)
 					dat += "</td>"
 					mutant_category = 0*/
-
+			/*
 			if("frills" in pref_species.default_features)
 				if(!mutant_category)
 					dat += APPEARANCE_CATEGORY_COLUMN
@@ -494,7 +496,7 @@ GLOBAL_LIST_EMPTY(chosen_names)
 				if(mutant_category >= MAX_MUTANT_ROWS)
 					dat += "</td>"
 					mutant_category = 0
-
+			*/
 			if("spines" in pref_species.default_features)
 				if(!mutant_category)
 					dat += APPEARANCE_CATEGORY_COLUMN
@@ -1841,9 +1843,10 @@ Slots: [job.spawn_positions]</span>
 						//var/newtype = GLOB.species_list[result]
 						pref_species = result
 						//Now that we changed our species, we must verify that the mutant colour is still allowed.
+						/*
 						var/temp_hsv = RGBtoHSV(features["mcolor"])
 						if(features["mcolor"] == "#000" || (!(MUTCOLORS_PARTSONLY in pref_species.species_traits) && ReadHSV(temp_hsv)[3] < ReadHSV("#7F7F7F")[3]))
-							features["mcolor"] = pref_species.default_color
+							features["mcolor"] = skintone2hex(skin_tone) */
 						real_name = pref_species.random_name(gender,1)
 						ResetJobs()
 						if(pref_species.desc)
@@ -1853,7 +1856,7 @@ Slots: [job.spawn_positions]</span>
 						accessory = "Nothing"
 						if(age == AGE_YOUNG)
 							age = AGE_ADULT
-
+/*
 				if("mutant_color")
 					var/new_mutantcolor = input(user, "Choose your character's alien/mutant color:", "Character Preference","#"+features["mcolor"]) as color|null
 					if(new_mutantcolor)
@@ -1863,7 +1866,7 @@ Slots: [job.spawn_positions]</span>
 						else if((MUTCOLORS_PARTSONLY in pref_species.species_traits) || ReadHSV(temp_hsv)[3] >= ReadHSV("#7F7F7F")[3]) // mutantcolors must be bright, but only if they affect the skin
 							features["mcolor"] = sanitize_hexcolor(new_mutantcolor)
 						else
-							to_chat(user, "<span class='danger'>Invalid color. Your color is not bright enough.</span>")
+							to_chat(user, "<span class='danger'>Invalid color. Your color is not bright enough.</span>")*/
 
 				if("color_ethereal")
 					var/new_etherealcolor = input(user, "Choose your ethereal color", "Character Preference") as null|anything in GLOB.color_list_ethereal
@@ -2323,7 +2326,6 @@ Slots: [job.spawn_positions]</span>
 			random_character(gender)
 
 	character.age = age
-
 	character.dna.features = features.Copy()
 	character.set_species(chosen_species, icon_update = FALSE, pref_load = TRUE)
 
@@ -2363,7 +2365,6 @@ Slots: [job.spawn_positions]</span>
 		organ_eyes.old_eye_color = eye_color
 	character.hair_color = hair_color
 	character.facial_hair_color = facial_hair_color
-
 	character.skin_tone = skin_tone
 	character.hairstyle = hairstyle
 	character.facial_hairstyle = facial_hairstyle
@@ -2403,6 +2404,10 @@ Slots: [job.spawn_positions]</span>
 
 	if("tail_lizard" in pref_species.default_features)
 		character.dna.species.mutant_bodyparts |= "tail_lizard"
+	if("frills" in pref_species.default_features)
+		character.dna.species.mutant_bodyparts |= "frills"
+	if("snout" in pref_species.default_features)
+		character.dna.species.mutant_bodyparts |= "snout"
 
 	if(icon_updates)
 		character.update_body()

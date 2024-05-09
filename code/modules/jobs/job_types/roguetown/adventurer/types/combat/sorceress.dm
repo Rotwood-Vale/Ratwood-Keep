@@ -9,7 +9,8 @@
 		"Dwarf",
 		"Tiefling",
 		"Dark Elf",
-		"Aasimar"
+		"Aasimar",
+		"Lizardfolk"
 	)
 	outfit = /datum/outfit/job/roguetown/adventurer/sorceress
 	allowed_ages = list(AGE_MIDDLEAGED, AGE_OLD)

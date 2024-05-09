@@ -13,7 +13,8 @@
 		"Dwarf",
 		"Tiefling",
 		"Dark Elf",
-		"Aasimar"
+		"Aasimar",
+		"Tabaxi"
 	)
 
 	tutorial = "You came to rockhill either to seek knowledge or riches."

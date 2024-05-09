@@ -8,7 +8,8 @@
 		"Dwarf",
 		"Tiefling",
 		"Dark Elf",
-		"Aasimar"
+		"Aasimar",
+		"Lizardfolk"
 	)
 	outfit = /datum/outfit/job/roguetown/adventurer/ranger
 	traits_applied = list(RTRAIT_MEDIUMARMOR)

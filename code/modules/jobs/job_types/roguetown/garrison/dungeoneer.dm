@@ -10,7 +10,9 @@
 		"Humen",
 		"Dwarf",
 		"Tiefling",
-		"Dark Elf"
+		"Dark Elf",
+		"Lizardfolk",
+		"Tabaxi"
 	)
 	allowed_sexes = list(MALE, FEMALE)
 
