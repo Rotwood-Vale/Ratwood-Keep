@@ -21,7 +21,17 @@
 	specstats = list("strength" = 8, "perception" = 7, "intelligence" = -6, "constitution" = 8, "endurance" = 8, "speed" = 3, "fortune" = 0)
 	specstats_f = list("strength" = 8, "perception" = 7, "intelligence" = -6, "constitution" = 8, "endurance" = 8, "speed" = 3, "fortune" = 0)
 	enflamed_icon = "widefire"
-	mutanteyes = /obj/item/organ/eyes/night_vision/werewolf
+	organs = list(
+		ORGAN_SLOT_BRAIN = /obj/item/organ/brain,
+		ORGAN_SLOT_HEART = /obj/item/organ/heart,
+		ORGAN_SLOT_LUNGS = /obj/item/organ/lungs,
+		ORGAN_SLOT_EYES = /obj/item/organ/eyes/night_vision/werewolf,
+		ORGAN_SLOT_EARS = /obj/item/organ/ears,
+		ORGAN_SLOT_TONGUE = /obj/item/organ/tongue,
+		ORGAN_SLOT_LIVER = /obj/item/organ/liver,
+		ORGAN_SLOT_STOMACH = /obj/item/organ/stomach,
+		ORGAN_SLOT_APPENDIX = /obj/item/organ/appendix,
+		)
 
 /datum/species/werewolf/send_voice(mob/living/carbon/human/H)
 	playsound(get_turf(H), pick('sound/vo/mobs/wwolf/wolftalk1.ogg','sound/vo/mobs/wwolf/wolftalk2.ogg'), 100, TRUE, -1)

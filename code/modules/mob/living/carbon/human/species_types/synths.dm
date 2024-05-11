@@ -62,7 +62,6 @@
 		miss_sound = S.miss_sound
 		meat = S.meat
 		mutant_bodyparts = S.mutant_bodyparts.Copy()
-		mutant_organs = S.mutant_organs.Copy()
 		default_features = S.default_features.Copy()
 		nojumpsuit = S.nojumpsuit
 		no_equip = S.no_equip.Copy()
@@ -100,23 +99,10 @@
 //Proc redirects:
 //Passing procs onto the fake_species, to ensure we look as much like them as possible
 
-/datum/species/synth/handle_hair(mob/living/carbon/human/H, forced_colour)
-	if(fake_species)
-		fake_species.handle_hair(H, forced_colour)
-	else
-		return ..()
-
 
 /datum/species/synth/handle_body(mob/living/carbon/human/H)
 	if(fake_species)
 		fake_species.handle_body(H)
-	else
-		return ..()
-
-
-/datum/species/synth/handle_mutant_bodyparts(mob/living/carbon/human/H, forced_colour)
-	if(fake_species)
-		fake_species.handle_body(H,forced_colour)
 	else
 		return ..()
 

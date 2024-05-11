@@ -7,11 +7,9 @@
 	species_traits = list(MUTCOLORS,EYECOLOR,LIPS)
 	inherent_biotypes = MOB_ORGANIC|MOB_HUMANOID|MOB_REPTILE
 	mutant_bodyparts = list("tail_lizard", "snout", "spines", "horns", "frills", "body_markings", "legs")
-	mutanttongue = /obj/item/organ/tongue/lizard
-	mutanttail = /obj/item/organ/tail/lizard
 	coldmod = 1.5
 	heatmod = 0.67
-	default_features = list("mcolor" = "0F0", "tail_lizard" = "Smooth", "snout" = "Round", "horns" = "None", "frills" = "None", "spines" = "None", "body_markings" = "None", "legs" = "Normal Legs")
+	default_features = MANDATORY_FEATURE_LIST
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_PRIDE | MIRROR_MAGIC | RACE_SWAP | ERT_SPAWN | SLIME_EXTRACT
 	attack_verb = "slash"
 	attack_sound = 'sound/blank.ogg'
@@ -24,6 +22,18 @@
 	inert_mutation = FIREBREATH
 	deathsound = 'sound/blank.ogg'
 	wings_icon = "Dragon"
+	organs = list(
+		ORGAN_SLOT_BRAIN = /obj/item/organ/brain,
+		ORGAN_SLOT_HEART = /obj/item/organ/heart,
+		ORGAN_SLOT_LUNGS = /obj/item/organ/lungs,
+		ORGAN_SLOT_EYES = /obj/item/organ/eyes,
+		ORGAN_SLOT_EARS = /obj/item/organ/ears,
+		ORGAN_SLOT_TONGUE = /obj/item/organ/tongue/lizard,
+		ORGAN_SLOT_LIVER = /obj/item/organ/liver,
+		ORGAN_SLOT_STOMACH = /obj/item/organ/stomach,
+		ORGAN_SLOT_APPENDIX = /obj/item/organ/appendix,
+		ORGAN_SLOT_TAIL = /obj/item/organ/tail/lizard
+		)
 
 /datum/species/lizard/after_equip_job(datum/job/J, mob/living/carbon/human/H)
 	H.grant_language(/datum/language/draconic)

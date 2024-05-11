@@ -5,7 +5,7 @@
 	var/uni_identity
 	var/blood_type
 	var/datum/species/species = new /datum/species/human //The type of mutant race the player is if applicable (i.e. potato-man)
-	var/list/features = list("FFF") //first value is mutant color
+	var/list/features = MANDATORY_FEATURE_LIST
 	var/real_name //Stores the real name of the person who originally got this dna datum. Used primarely for changelings,
 	var/list/mutations = list()   //All mutations are from now on here
 	var/list/temporary_mutations = list() //Temporary changes to the UE
@@ -15,6 +15,7 @@
 	var/mutation_index[DNA_MUTATION_BLOCKS] //List of which mutations this carbon has and its assigned block
 	var/stability = 100
 	var/scrambled = FALSE //Did we take something like mutagen? In that case we cant get our genes scanned to instantly cheese all the powers.
+	var/list/organ_dna = list()
 
 /datum/dna/New(mob/living/new_holder)
 	if(istype(new_holder))
@@ -99,14 +100,6 @@
 			L[DNA_GENDER_BLOCK] = construct_block(G_PLURAL, 3)
 	if(ishuman(holder))
 		var/mob/living/carbon/human/H = holder
-		if(!GLOB.hairstyles_list.len)
-			init_sprite_accessory_subtypes(/datum/sprite_accessory/hair,GLOB.hairstyles_list, GLOB.hairstyles_male_list, GLOB.hairstyles_female_list)
-		L[DNA_HAIRSTYLE_BLOCK] = construct_block(GLOB.hairstyles_list.Find(H.hairstyle), GLOB.hairstyles_list.len)
-		L[DNA_HAIR_COLOR_BLOCK] = H.hair_color
-		if(!GLOB.facial_hairstyles_list.len)
-			init_sprite_accessory_subtypes(/datum/sprite_accessory/facial_hair, GLOB.facial_hairstyles_list, GLOB.facial_hairstyles_male_list, GLOB.facial_hairstyles_female_list)
-		L[DNA_FACIAL_HAIRSTYLE_BLOCK] = construct_block(GLOB.facial_hairstyles_list.Find(H.facial_hairstyle), GLOB.facial_hairstyles_list.len)
-		L[DNA_FACIAL_HAIR_COLOR_BLOCK] = sanitize_hexcolor(H.facial_hair_color)
 		L[DNA_SKIN_TONE_BLOCK] = H.skin_tone
 		L[DNA_EYE_COLOR_BLOCK] = H.eye_color
 
@@ -175,10 +168,6 @@
 		return
 	var/mob/living/carbon/human/H = holder
 	switch(blocknumber)
-		if(DNA_HAIR_COLOR_BLOCK)
-			setblock(uni_identity, blocknumber, sanitize_hexcolor(H.hair_color))
-		if(DNA_FACIAL_HAIR_COLOR_BLOCK)
-			setblock(uni_identity, blocknumber, sanitize_hexcolor(H.facial_hair_color))
 		if(DNA_SKIN_TONE_BLOCK)
 			setblock(uni_identity, blocknumber, sanitize_hexcolor(H.skin_tone))
 		if(DNA_EYE_COLOR_BLOCK)
@@ -191,10 +180,6 @@
 					setblock(uni_identity, blocknumber, construct_block(G_FEMALE, 3))
 				else
 					setblock(uni_identity, blocknumber, construct_block(G_PLURAL, 3))
-		if(DNA_FACIAL_HAIRSTYLE_BLOCK)
-			setblock(uni_identity, blocknumber, construct_block(GLOB.facial_hairstyles_list.Find(H.facial_hairstyle), GLOB.facial_hairstyles_list.len))
-		if(DNA_HAIRSTYLE_BLOCK)
-			setblock(uni_identity, blocknumber, construct_block(GLOB.hairstyles_list.Find(H.hairstyle), GLOB.hairstyles_list.len))
 
 //Please use add_mutation or activate_mutation instead
 /datum/dna/proc/force_give(datum/mutation/human/HM)
@@ -291,7 +276,7 @@
 			stored_dna.species = mrace //not calling any species update procs since we're a brain, not a monkey/human
 
 
-/mob/living/carbon/set_species(datum/species/mrace, icon_update = TRUE, pref_load = FALSE)
+/mob/living/carbon/set_species(datum/species/mrace, icon_update = TRUE, datum/preferences/pref_load = null)
 	if(mrace && has_dna())
 		var/datum/species/new_race
 		if(ispath(mrace))
@@ -304,9 +289,15 @@
 		dna.species.on_species_loss(src, new_race, pref_load)
 		var/datum/species/old_species = dna.species
 		dna.species = new_race
+		//BODYPARTS AND FEATURES
+		if(pref_load)
+			dna.features = pref_load.features.Copy()
+			dna.real_name = pref_load.real_name
+		else
+			dna.features = new_race.get_random_features()
 		dna.species.on_species_gain(src, old_species, pref_load)
 
-/mob/living/carbon/human/set_species(datum/species/mrace, icon_update = TRUE, pref_load = FALSE)
+/mob/living/carbon/human/set_species(datum/species/mrace, icon_update = TRUE, datum/preferences/pref_load = null)
 	..()
 	if(icon_update)
 		update_body()

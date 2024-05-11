@@ -83,8 +83,8 @@ GLOBAL_LIST_EMPTY(chosen_names)
 	var/detail_color = "000"
 	var/datum/species/pref_species = new /datum/species/human/northern()	//Mutant race
 	var/datum/patrongods/selected_patron
-	var/list/features = list("mcolor" = "FFF", "ethcolor" = "9c3030", "tail_lizard" = "Smooth", "tail_human" = "None", "snout" = "Round", "horns" = "None", "ears" = "None", "wings" = "None", "frills" = "None", "spines" = "None", "body_markings" = "None", "legs" = "Normal Legs", "moth_wings" = "Plain", "moth_markings" = "None")
-	var/list/randomise = list(RANDOM_UNDERWEAR = TRUE, RANDOM_UNDERWEAR_COLOR = TRUE, RANDOM_UNDERSHIRT = TRUE, RANDOM_SOCKS = TRUE, RANDOM_BACKPACK = TRUE, RANDOM_JUMPSUIT_STYLE = FALSE, RANDOM_HAIRSTYLE = TRUE, RANDOM_HAIR_COLOR = TRUE, RANDOM_FACIAL_HAIRSTYLE = TRUE, RANDOM_FACIAL_HAIR_COLOR = TRUE, RANDOM_SKIN_TONE = TRUE, RANDOM_EYE_COLOR = TRUE)
+	var/list/features = MANDATORY_FEATURE_LIST
+	var/list/randomise = list(RANDOM_UNDERWEAR = TRUE, RANDOM_UNDERWEAR_COLOR = TRUE, RANDOM_UNDERSHIRT = TRUE, RANDOM_SOCKS = TRUE, RANDOM_BACKPACK = TRUE, RANDOM_JUMPSUIT_STYLE = FALSE, RANDOM_SKIN_TONE = TRUE, RANDOM_EYE_COLOR = TRUE)
 	var/list/friendlyGenders = list("Male" = "male", "Female" = "female")
 	var/phobia = "spiders"
 
@@ -138,6 +138,7 @@ GLOBAL_LIST_EMPTY(chosen_names)
 	var/faith = FAITH_PSYDON
 
 	var/crt = FALSE
+	var/list/organ_entries = list()
 
 
 /datum/preferences/New(client/C)
@@ -159,8 +160,8 @@ GLOBAL_LIST_EMPTY(chosen_names)
 			if(check_nameban(C.ckey) || (C.blacklisted() == 1))
 				real_name = pref_species.random_name(gender,1)
 			return
-	//we couldn't load character data so just randomize the character appearance + name
-	random_character()		//let's create a random character then - rather than a fat, bald and naked man.
+	//Set the race to properly run race setter logic
+	set_new_race(pref_species, null)
 	if(!charflaw)
 		charflaw = pick(GLOB.character_flaws)
 		charflaw = GLOB.character_flaws[charflaw]
@@ -169,12 +170,30 @@ GLOBAL_LIST_EMPTY(chosen_names)
 		selected_patron = GLOB.patronlist[GLOB.patronlist[1]]
 	key_bindings = deepCopyList(GLOB.hotkey_keybinding_list_by_key) // give them default keybinds and update their movement keys
 	C.update_movement_keys()
-	real_name = pref_species.random_name(gender,1)
 	if(!loaded_preferences_successfully)
 		save_preferences()
 	save_character()		//let's save this new random character so it doesn't keep generating new ones.
 	menuoptions = list()
 	return
+
+/datum/preferences/proc/set_new_race(datum/species/new_race, user)
+	pref_species = new_race
+	features = pref_species.get_random_features()
+	real_name = pref_species.random_name(gender,1)
+	ResetJobs()
+	if(user)
+		if(pref_species.desc)
+			to_chat(user, "[pref_species.desc]")
+		to_chat(user, "<font color='red'>Classes reset.</font>")
+	random_character(gender)
+	accessory = "Nothing"
+	if(age == AGE_YOUNG)
+		age = AGE_ADULT
+
+	organ_entries = list()
+	validate_organ_entries()
+	reset_all_organ_accessory_colors()
+	randomize_all_organ_accessories()
 
 #define APPEARANCE_CATEGORY_COLUMN "<td valign='top' width='14%'>"
 #define MAX_MUTANT_ROWS 4
@@ -212,6 +231,8 @@ GLOBAL_LIST_EMPTY(chosen_names)
 			dat += "<td width='50%' align='left'>"
 			dat += "<a style='white-space:nowrap;' href='?_src_=prefs;preference=changeslot;'>Change Character</a>"
 			dat += "<td width='50%' align='right'>"
+			dat += "<a href='?_src_=prefs;preference=markings;task=menu'>Markings</a>"
+			dat += "<a href='?_src_=prefs;preference=organs;task=menu'>Organs</a>"
 			dat += "<a href='?_src_=prefs;preference=keybinds;task=menu'>Keybinds</a>"
 			dat += "</table>"
 
@@ -360,18 +381,21 @@ GLOBAL_LIST_EMPTY(chosen_names)
 				dat += "<br>"
 				
 			var/mutant_colors
-			/*
+
 			if((MUTCOLORS in pref_species.species_traits) || (MUTCOLORS_PARTSONLY in pref_species.species_traits))
 
 //				if(!use_skintones)
 //					dat += APPEARANCE_CATEGORY_COLUMN
-/*
+
 				dat += "<h3>Mutant color</h3>"
 
-				dat += "<span style='border: 1px solid #161616; background-color: #[features["mcolor"]];'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;preference=mutant_color;task=input'>Change</a><BR>"
-*/
+				dat += "Mutant Color #1:<span style='border: 1px solid #161616; background-color: #[features["mcolor"]];'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;preference=mutant_color;task=input'>Change</a><BR>"
+				dat += "Mutant Color #2:<span style='border: 1px solid #161616; background-color: #[features["mcolor2"]];'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;preference=mutant_color2;task=input'>Change</a><BR>"
+				dat += "Mutant Color #3:<span style='border: 1px solid #161616; background-color: #[features["mcolor3"]];'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;preference=mutant_color3;task=input'>Change</a><BR>"
+
+
 				mutant_colors = TRUE
-			*/
+
 
 			if(istype(pref_species, /datum/species/ethereal)) //not the best thing to do tbf but I dont know whats better.
 
@@ -444,85 +468,8 @@ GLOBAL_LIST_EMPTY(chosen_names)
 
 			//Mutant stuff
 			var/mutant_category = 0
+
 			/*
-			if("tail_lizard" in pref_species.default_features)
-				if(!mutant_category)
-					dat += APPEARANCE_CATEGORY_COLUMN
-
-				dat += "<h3>Tail</h3>"
-
-				dat += "<a href='?_src_=prefs;preference=tail_lizard;task=input'>[features["tail_lizard"]]</a><BR>"
-
-				mutant_category++
-				if(mutant_category >= MAX_MUTANT_ROWS)
-					dat += "</td>"
-					mutant_category = 0 */
-			/*
-			if("snout" in pref_species.default_features)
-				if(!mutant_category)
-					dat += APPEARANCE_CATEGORY_COLUMN
-
-				dat += "<h3>Snout</h3>"
-
-				dat += "<a href='?_src_=prefs;preference=snout;task=input'>[features["snout"]]</a><BR>"
-
-				mutant_category++
-				if(mutant_category >= MAX_MUTANT_ROWS)
-					dat += "</td>"
-					mutant_category = 0
-			*/
-/*			if("horns" in pref_species.default_features)
-				if(!mutant_category)
-					dat += APPEARANCE_CATEGORY_COLUMN
-
-				dat += "<h3>Horns</h3>"
-
-				dat += "<a href='?_src_=prefs;preference=horns;task=input'>[features["horns"]]</a><BR>"
-
-				mutant_category++
-				if(mutant_category >= MAX_MUTANT_ROWS)
-					dat += "</td>"
-					mutant_category = 0*/
-			/*
-			if("frills" in pref_species.default_features)
-				if(!mutant_category)
-					dat += APPEARANCE_CATEGORY_COLUMN
-
-				dat += "<h3>Frills</h3>"
-
-				dat += "<a href='?_src_=prefs;preference=frills;task=input'>[features["frills"]]</a><BR>"
-
-				mutant_category++
-				if(mutant_category >= MAX_MUTANT_ROWS)
-					dat += "</td>"
-					mutant_category = 0
-			*/
-			if("spines" in pref_species.default_features)
-				if(!mutant_category)
-					dat += APPEARANCE_CATEGORY_COLUMN
-
-				dat += "<h3>Spines</h3>"
-
-				dat += "<a href='?_src_=prefs;preference=spines;task=input'>[features["spines"]]</a><BR>"
-
-				mutant_category++
-				if(mutant_category >= MAX_MUTANT_ROWS)
-					dat += "</td>"
-					mutant_category = 0
-
-			if("body_markings" in pref_species.default_features)
-				if(!mutant_category)
-					dat += APPEARANCE_CATEGORY_COLUMN
-
-				dat += "<h3>Body Markings</h3>"
-
-				dat += "<a href='?_src_=prefs;preference=body_markings;task=input'>[features["body_markings"]]</a><BR>"
-
-				mutant_category++
-				if(mutant_category >= MAX_MUTANT_ROWS)
-					dat += "</td>"
-					mutant_category = 0
-
 			if("legs" in pref_species.default_features)
 				if(!mutant_category)
 					dat += APPEARANCE_CATEGORY_COLUMN
@@ -536,78 +483,14 @@ GLOBAL_LIST_EMPTY(chosen_names)
 					dat += "</td>"
 					mutant_category = 0
 
-			if("moth_wings" in pref_species.default_features)
-				if(!mutant_category)
-					dat += APPEARANCE_CATEGORY_COLUMN
-
-				dat += "<h3>Moth wings</h3>"
-
-				dat += "<a href='?_src_=prefs;preference=moth_wings;task=input'>[features["moth_wings"]]</a><BR>"
-
-				mutant_category++
-				if(mutant_category >= MAX_MUTANT_ROWS)
-					dat += "</td>"
 					mutant_category = 0
-
-			if("moth_markings" in pref_species.default_features)
-				if(!mutant_category)
-					dat += APPEARANCE_CATEGORY_COLUMN
-
-				dat += "<h3>Moth markings</h3>"
-
-				dat += "<a href='?_src_=prefs;preference=moth_markings;task=input'>[features["moth_markings"]]</a><BR>"
-
-				mutant_category++
-				if(mutant_category >= MAX_MUTANT_ROWS)
-					dat += "</td>"
-					mutant_category = 0
-/*
-			if("tail_human" in pref_species.default_features)
-				if(!mutant_category)
-					dat += APPEARANCE_CATEGORY_COLUMN
-
-				dat += "<h3>Tail</h3>"
-
-				dat += "<a href='?_src_=prefs;preference=tail_human;task=input'>[features["tail_human"]]</a><BR>"
-
-				mutant_category++
-				if(mutant_category >= MAX_MUTANT_ROWS)
-					dat += "</td>"
-					mutant_category = 0
-*/
-			if("ears" in pref_species.default_features && !pref_species.use_f)
-				if(!mutant_category)
-					dat += APPEARANCE_CATEGORY_COLUMN
-
-				dat += "<h3>Ears</h3>"
-
-				dat += "<a href='?_src_=prefs;preference=ears;task=input'>[features["ears"]]</a><BR>"
-
-				mutant_category++
-				if(mutant_category >= MAX_MUTANT_ROWS)
-					dat += "</td>"
-					mutant_category = 0
+			*/
 
 			//Adds a thing to select which phobia because I can't be assed to put that in the quirks window
 			if("Phobia" in all_quirks)
 				dat += "<h3>Phobia</h3>"
 
 				dat += "<a href='?_src_=prefs;preference=phobia;task=input'>[phobia]</a><BR>"
-
-			if(CONFIG_GET(flag/join_with_mutant_humans))
-
-				if("wings" in pref_species.default_features && GLOB.r_wings_list.len >1)
-					if(!mutant_category)
-						dat += APPEARANCE_CATEGORY_COLUMN
-
-					dat += "<h3>Wings</h3>"
-
-					dat += "<a href='?_src_=prefs;preference=wings;task=input'>[features["wings"]]</a><BR>"
-
-					mutant_category++
-					if(mutant_category >= MAX_MUTANT_ROWS)
-						dat += "</td>"
-						mutant_category = 0
 
 			if(mutant_category)
 				dat += "</td>"
@@ -1266,6 +1149,22 @@ Slots: [job.spawn_positions]</span>
 		if(SSquirks.quirk_points[q] > 0)
 			.++
 
+/datum/preferences/proc/ShowOrgans(mob/user)
+	var/list/dat = list()
+	dat += "<style>span.color_holder_box{display: inline-block; width: 20px; height: 8px; border:1px solid #000; padding: 0px;}</style>"
+	dat += print_organs_page()
+	var/datum/browser/popup = new(user, "organs_customization", "<div align='center'>Organs customization</div>", 600, 600)
+	popup.set_content(dat.Join())
+	popup.open(FALSE)
+
+/datum/preferences/proc/ShowMarkings(mob/user)
+	var/list/dat = list()
+	dat += "<style>span.color_holder_box{display: inline-block; width: 20px; height: 8px; border:1px solid #000; padding: 0px;}</style>"
+	//dat += print_markings_page()
+	var/datum/browser/popup = new(user, "markings_cusotmization", "<div align='center'>Markings customization</div>", 600, 600)
+	popup.set_content(dat.Join())
+	popup.open(FALSE)
+
 /datum/preferences/proc/SetKeybinds(mob/user)
 	var/list/dat = list()
 	// Create an inverted list of keybindings -> key
@@ -1476,6 +1375,14 @@ Slots: [job.spawn_positions]</span>
 	else if(href_list["preference"] == "playerquality")
 		check_pq_menu(user.ckey)
 
+	else if(href_list["preference"] == "markings")
+		ShowMarkings(user)
+		return
+
+	else if(href_list["preference"] == "organs")
+		ShowOrgans(user)
+		return
+
 	else if(href_list["preference"] == "keybinds")
 		switch(href_list["task"])
 			if("close")
@@ -1554,43 +1461,15 @@ Slots: [job.spawn_positions]</span>
 		return TRUE
 
 	switch(href_list["task"])
+		if("change_organ")
+			handle_organ_topic(user, href_list)
+			ShowOrgans(user)
 		if("random")
 			switch(href_list["preference"])
 				if("name")
 					real_name = pref_species.random_name(gender,1)
 				if("age")
 					age = pick(pref_species.possible_ages)
-				if("hair")
-					var/list/hairs
-					if(age == AGE_OLD && OLDGREY in pref_species.species_traits)
-						hairs = pref_species.get_oldhc_list()
-					else
-						hairs = pref_species.get_hairc_list()
-					hair_color = hairs[pick(hairs)]
-					facial_hair_color = hair_color
-				if("hairstyle")
-					hairstyle = pref_species.random_hairstyle(gender)
-				if("facial")
-					var/list/hairs
-					if(age == AGE_OLD && OLDGREY in pref_species.species_traits)
-						hairs = pref_species.get_oldhc_list()
-					else
-						hairs = pref_species.get_hairc_list()
-					hair_color = hairs[pick(hairs)]
-					facial_hair_color = hair_color
-				if("facial_hairstyle")
-					if(gender == FEMALE || pref_species.use_f)
-						facial_hairstyle = "None"
-					else
-						facial_hairstyle = pref_species.random_facial_hairstyle(gender)
-				if("underwear")
-					underwear = pref_species.random_underwear(gender)
-				if("underwear_color")
-					underwear_color = random_short_color()
-				if("undershirt")
-					undershirt = random_undershirt(gender)
-				if("socks")
-					socks = random_socks()
 				if("eyes")
 					eye_color = random_eye_color()
 				if("s_tone")
@@ -1687,134 +1566,10 @@ Slots: [job.spawn_positions]</span>
 						to_chat(user, "<font color='purple'>Background: [selected_patron.summary]</font>")
 						to_chat(user, "<font color='purple'>Likely Worshippers: [selected_patron.worshippers]</font>")
 
-				if("hair")
-					var/new_hair
-					var/list/hairs
-					if(age == AGE_OLD && OLDGREY in pref_species.species_traits)
-						hairs = pref_species.get_oldhc_list()
-						new_hair = input(user, "Choose your character's hair color:", "") as null|anything in hairs
-					else
-						hairs = pref_species.get_hairc_list()
-						new_hair = input(user, "Choose your character's hair color:", "") as null|anything in hairs
-					if(new_hair)
-						hair_color = hairs[new_hair]
-						facial_hair_color = hair_color
-
-				if("hairstyle")
-					var/list/spec_hair = pref_species.get_spec_hair_list(gender)
-					var/list/hairlist = list()
-					for(var/datum/sprite_accessory/X in spec_hair)
-						hairlist += X.name
-					var/new_hairstyle
-					new_hairstyle = input(user, "Choose your character's hairstyle:", "Barber")  as null|anything in hairlist
-					if(new_hairstyle)
-						hairstyle = new_hairstyle
-/*
-				if("next_hairstyle")
-					hairstyle = next_list_item(hairstyle, hairlist)
-
-				if("previous_hairstyle")
-					hairstyle = previous_list_item(hairstyle, hairlist)
-
-				if("facial")
-					var/new_facial = input(user, "Choose your character's facial-hair colour:", "Character Preference","#"+facial_hair_color) as color|null
-					if(new_facial)
-						facial_hair_color = sanitize_hexcolor(new_facial)
-*/
-				if("facial_hairstyle")
-					var/list/spec_hair = pref_species.get_spec_facial_list(gender)
-					var/list/hairlist = list()
-					for(var/datum/sprite_accessory/X in spec_hair)
-						hairlist += X.name
-					var/new_hairstyle
-					new_hairstyle = input(user, "Choose your character's beard:", "Barber")  as null|anything in hairlist
-					if(new_hairstyle)
-						facial_hairstyle = new_hairstyle
-/*
-				if("next_facehairstyle")
-					if (gender == MALE)
-						facial_hairstyle = next_list_item(facial_hairstyle, GLOB.facial_hairstyles_male_list)
-					else if(gender == FEMALE)
-						facial_hairstyle = next_list_item(facial_hairstyle, GLOB.facial_hairstyles_female_list)
-					else
-						facial_hairstyle = next_list_item(facial_hairstyle, GLOB.facial_hairstyles_list)
-
-				if("previous_facehairstyle")
-					if (gender == MALE)
-						facial_hairstyle = previous_list_item(facial_hairstyle, GLOB.facial_hairstyles_male_list)
-					else if (gender == FEMALE)
-						facial_hairstyle = previous_list_item(facial_hairstyle, GLOB.facial_hairstyles_female_list)
-					else
-						facial_hairstyle = previous_list_item(facial_hairstyle, GLOB.facial_hairstyles_list)
-*/
-				if("underwear")
-					var/new_underwear
-					if(gender == MALE)
-						new_underwear = input(user, "Choose your character's underwear:", "Character Preference")  as null|anything in GLOB.underwear_m
-					else if(gender == FEMALE)
-						new_underwear = input(user, "Choose your character's underwear:", "Character Preference")  as null|anything in GLOB.underwear_f
-					else
-						new_underwear = input(user, "Choose your character's underwear:", "Character Preference")  as null|anything in GLOB.underwear_list
-					if(new_underwear)
-						underwear = new_underwear
-
-				if("underwear_color")
-					var/new_underwear_color = input(user, "Choose your character's underwear color:", "Character Preference","#"+underwear_color) as color|null
-					if(new_underwear_color)
-						underwear_color = sanitize_hexcolor(new_underwear_color)
-
-				if("undershirt")
-					var/new_undershirt
-					if(gender == MALE)
-						new_undershirt = input(user, "Choose your character's undershirt:", "Character Preference") as null|anything in GLOB.undershirt_m
-					else if(gender == FEMALE)
-						new_undershirt = input(user, "Choose your character's undershirt:", "Character Preference") as null|anything in GLOB.undershirt_f
-					else
-						new_undershirt = input(user, "Choose your character's undershirt:", "Character Preference") as null|anything in GLOB.undershirt_list
-					if(new_undershirt)
-						undershirt = new_undershirt
-
-
-				if("accessory")
-					var/list/spec_hair = pref_species.get_spec_accessory_list(gender)
-					var/list/hairlist = list()
-					for(var/datum/sprite_accessory/X in spec_hair)
-						hairlist += X.name
-					var/new_hairstyle
-					new_hairstyle = input(user, "Choose your character's accessory:", "Jewelry and Trinkets")  as null|anything in hairlist //don't ask
-					if(new_hairstyle)
-						accessory = new_hairstyle
-
-//				if("detail_color")
-//					var/new_underwear_color = input(user, "Choose your detail's color:", "Strange Ink") as color|null
-//					if(new_underwear_color)
-//						detail_color = new_underwear_color
-
-				if("detail")
-					var/list/spec_detail = pref_species.get_spec_detail_list(gender)
-					var/list/detaillist = list()
-					for(var/datum/sprite_accessory/X in spec_detail)
-						detaillist += X.name
-					var/new_detail
-					new_detail = input(user, "Choose your character's detail:", "Make me unique")  as null|anything in detaillist //don't ask
-					if(new_detail)
-						detail = new_detail
-
 				if("bdetail")
 					var/list/loly = list("Not yet.","Work in progress.","Don't click me.","Stop clicking this.","Nope.","Be patient.","Sooner or later.")
 					to_chat(user, "<font color='red'>[pick(loly)]</font>")
 					return
-
-				if("socks")
-					var/new_socks
-					new_socks = input(user, "Choose your character's socks:", "Character Preference") as null|anything in GLOB.socks_list
-					if(new_socks)
-						socks = new_socks
-
-				if("eyes")
-					var/new_eyes = input(user, "Choose your character's eye color:", "Character Preference","#"+eye_color) as color|null
-					if(new_eyes)
-						eye_color = sanitize_hexcolor(new_eyes)
 
 				if("voice")
 					var/new_voice = input(user, "Choose your character's voice color:", "Character Preference","#"+voice_color) as color|null
@@ -1840,111 +1595,38 @@ Slots: [job.spawn_positions]</span>
 					var/result = input(user, "Select a race", "Roguetown") as null|anything in crap
 
 					if(result)
-						//var/newtype = GLOB.species_list[result]
-						pref_species = result
-						//Now that we changed our species, we must verify that the mutant colour is still allowed.
-						/*
-						var/temp_hsv = RGBtoHSV(features["mcolor"])
-						if(features["mcolor"] == "#000" || (!(MUTCOLORS_PARTSONLY in pref_species.species_traits) && ReadHSV(temp_hsv)[3] < ReadHSV("#7F7F7F")[3]))
-							features["mcolor"] = skintone2hex(skin_tone) */
-						real_name = pref_species.random_name(gender,1)
-						ResetJobs()
-						if(pref_species.desc)
-							to_chat(user, "[pref_species.desc]")
-						to_chat(user, "<font color='red'>Classes reset.</font>")
-						random_character(gender)
-						accessory = "Nothing"
-						if(age == AGE_YOUNG)
-							age = AGE_ADULT
-/*
+						set_new_race(result, user)
+
 				if("mutant_color")
-					var/new_mutantcolor = input(user, "Choose your character's alien/mutant color:", "Character Preference","#"+features["mcolor"]) as color|null
+					var/new_mutantcolor = input(user, "Choose your character's alien/mutant #1 color:", "Character Preference","#"+features["mcolor"]) as color|null
 					if(new_mutantcolor)
-						var/temp_hsv = RGBtoHSV(new_mutantcolor)
-						if(new_mutantcolor == "#000000")
-							features["mcolor"] = pref_species.default_color
-						else if((MUTCOLORS_PARTSONLY in pref_species.species_traits) || ReadHSV(temp_hsv)[3] >= ReadHSV("#7F7F7F")[3]) // mutantcolors must be bright, but only if they affect the skin
-							features["mcolor"] = sanitize_hexcolor(new_mutantcolor)
-						else
-							to_chat(user, "<span class='danger'>Invalid color. Your color is not bright enough.</span>")*/
+
+						features["mcolor"] = sanitize_hexcolor(new_mutantcolor)
+						reset_all_organ_accessory_colors()
+			
+				if("mutant_color2")
+					var/new_mutantcolor = input(user, "Choose your character's alien/mutant #2 color:", "Character Preference","#"+features["mcolor2"]) as color|null
+					if(new_mutantcolor)
+						features["mcolor2"] = sanitize_hexcolor(new_mutantcolor)
+						reset_all_organ_accessory_colors()
+
+				if("mutant_color3")
+					var/new_mutantcolor = input(user, "Choose your character's alien/mutant #3 color:", "Character Preference","#"+features["mcolor3"]) as color|null
+					if(new_mutantcolor)
+						features["mcolor3"] = sanitize_hexcolor(new_mutantcolor)
+						reset_all_organ_accessory_colors()
+
 
 				if("color_ethereal")
 					var/new_etherealcolor = input(user, "Choose your ethereal color", "Character Preference") as null|anything in GLOB.color_list_ethereal
 					if(new_etherealcolor)
 						features["ethcolor"] = GLOB.color_list_ethereal[new_etherealcolor]
 
-
-				if("tail_lizard")
-					var/new_tail
-					new_tail = input(user, "Choose your character's tail:", "Character Preference") as null|anything in GLOB.tails_list_lizard
-					if(new_tail)
-						features["tail_lizard"] = new_tail
-
-				if("tail_human")
-					var/new_tail
-					new_tail = input(user, "Choose your character's tail:", "Character Preference") as null|anything in GLOB.tails_list_human
-					if(new_tail)
-						features["tail_human"] = new_tail
-
-				if("snout")
-					var/new_snout
-					new_snout = input(user, "Choose your character's snout:", "Character Preference") as null|anything in GLOB.snouts_list
-					if(new_snout)
-						features["snout"] = new_snout
-
-				if("horns")
-					var/new_horns
-					new_horns = input(user, "Choose your character's horns:", "Character Preference") as null|anything in pref_species.ears_list()
-					if(new_horns)
-						features["horns"] = new_horns
-
-				if("ears")
-					var/new_ears
-					new_ears = input(user, "Choose your character's ears:", "Character Preference") as null|anything in pref_species.ears_list()
-					if(new_ears)
-						features["ears"] = new_ears
-
-				if("wings")
-					var/new_wings
-					new_wings = input(user, "Choose your character's wings:", "Character Preference") as null|anything in GLOB.r_wings_list
-					if(new_wings)
-						features["wings"] = new_wings
-
-				if("frills")
-					var/new_frills
-					new_frills = input(user, "Choose your character's frills:", "Character Preference") as null|anything in GLOB.frills_list
-					if(new_frills)
-						features["frills"] = new_frills
-
-				if("spines")
-					var/new_spines
-					new_spines = input(user, "Choose your character's spines:", "Character Preference") as null|anything in GLOB.spines_list
-					if(new_spines)
-						features["spines"] = new_spines
-
-				if("body_markings")
-					var/new_body_markings
-					new_body_markings = input(user, "Choose your character's body markings:", "Character Preference") as null|anything in GLOB.body_markings_list
-					if(new_body_markings)
-						features["body_markings"] = new_body_markings
-
 				if("legs")
 					var/new_legs
 					new_legs = input(user, "Choose your character's legs:", "Character Preference") as null|anything in GLOB.legs_list
 					if(new_legs)
 						features["legs"] = new_legs
-
-				if("moth_wings")
-					var/new_moth_wings
-					new_moth_wings = input(user, "Choose your character's wings:", "Character Preference") as null|anything in GLOB.moth_wings_list
-					if(new_moth_wings)
-						features["moth_wings"] = new_moth_wings
-
-				if("moth_markings")
-					var/new_moth_markings
-					new_moth_markings = input(user, "Choose your character's markings:", "Character Preference") as null|anything in GLOB.moth_markings_list
-					if(new_moth_markings)
-						features["moth_markings"] = new_moth_markings
 
 				if("s_tone")
 					var/listy = pref_species.get_skin_list()
@@ -2327,7 +2009,7 @@ Slots: [job.spawn_positions]</span>
 
 	character.age = age
 	character.dna.features = features.Copy()
-	character.set_species(chosen_species, icon_update = FALSE, pref_load = TRUE)
+	character.set_species(chosen_species, icon_update = FALSE, pref_load = src)
 
 	if((randomise[RANDOM_NAME] || randomise[RANDOM_NAME_ANTAG] && antagonist) && !character_setup)
 		slot_randomized = TRUE
@@ -2362,7 +2044,6 @@ Slots: [job.spawn_positions]</span>
 	if(organ_eyes)
 		if(!initial(organ_eyes.eye_color))
 			organ_eyes.eye_color = eye_color
-		organ_eyes.old_eye_color = eye_color
 	character.hair_color = hair_color
 	character.facial_hair_color = facial_hair_color
 	character.skin_tone = skin_tone
@@ -2401,13 +2082,6 @@ Slots: [job.spawn_positions]</span>
 		if(L)
 			for(var/X in L)
 				ADD_TRAIT(character, curse2trait(X), TRAIT_GENERIC)
-
-	if("tail_lizard" in pref_species.default_features)
-		character.dna.species.mutant_bodyparts |= "tail_lizard"
-	if("frills" in pref_species.default_features)
-		character.dna.species.mutant_bodyparts |= "frills"
-	if("snout" in pref_species.default_features)
-		character.dna.species.mutant_bodyparts |= "snout"
 
 	if(icon_updates)
 		character.update_body()

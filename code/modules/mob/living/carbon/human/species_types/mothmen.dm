@@ -6,7 +6,7 @@
 	species_traits = list(LIPS, NOEYESPRITES)
 	inherent_biotypes = MOB_ORGANIC|MOB_HUMANOID|MOB_BUG
 	mutant_bodyparts = list("moth_wings", "moth_markings")
-	default_features = list("moth_wings" = "Plain", "moth_markings" = "None")
+	default_features = MANDATORY_FEATURE_LIST
 	attack_verb = "slash"
 	attack_sound = 'sound/blank.ogg'
 	miss_sound = 'sound/blank.ogg'
@@ -14,14 +14,18 @@
 	liked_food = VEGETABLES | DAIRY | CLOTH
 	disliked_food = FRUIT | GROSS
 	toxic_food = MEAT | RAW
-	mutanteyes = /obj/item/organ/eyes/moth
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
-
-/datum/species/moth/regenerate_organs(mob/living/carbon/C,datum/species/old_species,replace_current=TRUE)
-	. = ..()
-	if(ishuman(C))
-		var/mob/living/carbon/human/H = C
-		handle_mutant_bodyparts(H)
+	organs = list(
+		ORGAN_SLOT_BRAIN = /obj/item/organ/brain,
+		ORGAN_SLOT_HEART = /obj/item/organ/heart,
+		ORGAN_SLOT_LUNGS = /obj/item/organ/lungs,
+		ORGAN_SLOT_EYES = /obj/item/organ/eyes/moth,
+		ORGAN_SLOT_EARS = /obj/item/organ/ears,
+		ORGAN_SLOT_TONGUE = /obj/item/organ/tongue,
+		ORGAN_SLOT_LIVER = /obj/item/organ/liver,
+		ORGAN_SLOT_STOMACH = /obj/item/organ/stomach,
+		ORGAN_SLOT_APPENDIX = /obj/item/organ/appendix,
+		)
 
 /datum/species/moth/random_name(gender,unique,lastname)
 	if(unique)
@@ -33,15 +37,6 @@
 		randname += " [lastname]"
 
 	return randname
-
-/datum/species/moth/handle_fire(mob/living/carbon/human/H, no_protection = FALSE)
-	. = ..()
-	if(.) //if the mob is immune to fire, don't burn wings off.
-		return
-	if(H.dna.features["moth_wings"] != "Burnt Off" && H.bodytemperature >= 800 && H.fire_stacks > 0) //do not go into the extremely hot light. you will not survive
-		to_chat(H, "<span class='danger'>My precious wings burn to a crisp!</span>")
-		H.dna.features["moth_wings"] = "Burnt Off"
-		handle_mutant_bodyparts(H)
 
 /datum/species/moth/handle_chemicals(datum/reagent/chem, mob/living/carbon/human/H)
 	. = ..()

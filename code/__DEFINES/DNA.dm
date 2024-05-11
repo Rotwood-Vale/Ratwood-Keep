@@ -156,6 +156,18 @@
 #define ORGAN_SLOT_TAIL "tail"
 #define ORGAN_SLOT_PARASITE_EGG "parasite_egg"
 #define ORGAN_SLOT_REGENERATIVE_CORE "hivecore"
+#define ORGAN_SLOT_FRILLS "frills"
+#define ORGAN_SLOT_HORNS "horns"
+#define ORGAN_SLOT_ANTENNAS "antennas"
+#define ORGAN_SLOT_NECK_FEATURE "neck_feature"
+#define ORGAN_SLOT_HEAD_FEATURE "head_feature"
+#define ORGAN_SLOT_BACK_FEATURE "back_feature"
+#define ORGAN_SLOT_TAIL_FEATURE "tail_feature"
+#define ORGAN_SLOT_TAUR_BODY "taur_body"
+#define ORGAN_SLOT_WINGS "wings"
+#define ORGAN_SLOT_SNOUT "snout"
+#define ORGAN_SLOT_HAIR "hair"
+#define ORGAN_SLOT_FACIAL_HAIR "facial_hair"
 
 //organ defines
 #define STANDARD_ORGAN_THRESHOLD 	100
@@ -171,3 +183,8 @@
 #define G_MALE 1
 #define G_FEMALE 2
 #define G_PLURAL 3
+
+#define MANDATORY_FEATURE_LIST list("mcolor" = "FFF", "mcolor2" = "FFF", "mcolor3" = "FFF", "ethcolor" = "9c3030", "legs" = "Normal Legs")
+
+#define HAIR_COLOR_LIST list("#8f5a00", "#593800", "#362200", "#4e422e", "#8c8271", "#bfb7ab", "#31302e")
+#define EYE_COLOR_LIST list("#865900", "#06b400", "#312f27", "#008e83", "#002d8e", "#c16c00")

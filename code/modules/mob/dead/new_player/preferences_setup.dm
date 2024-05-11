@@ -1,101 +1,21 @@
 
 	//The mob should have a gender you want before running this proc. Will run fine without H
 /datum/preferences/proc/random_character(gender_override, antag_override = FALSE)
-	if(randomise[RANDOM_SPECIES])
-		random_species()
-	else if(randomise[RANDOM_NAME])
-		real_name = pref_species.random_name(gender,1)
 	if(!pref_species)
 		random_species()
-	if(gender_override && !(randomise[RANDOM_GENDER] || randomise[RANDOM_GENDER_ANTAG] && antag_override))
+	real_name = pref_species.random_name(gender,1)
+	if(gender_override)
 		gender = gender_override
 	else
 		gender = pick(MALE,FEMALE)
-	if(randomise[RANDOM_AGE] || randomise[RANDOM_AGE_ANTAG] && antag_override)
-		age = AGE_ADULT
-	if(randomise[RANDOM_UNDERWEAR])
-		underwear = pref_species.random_underwear(gender)
-	if(randomise[RANDOM_UNDERWEAR_COLOR])
-		underwear_color = random_short_color()
-	if(randomise[RANDOM_UNDERSHIRT])
-		undershirt = random_undershirt(gender)
-	if(randomise[RANDOM_SOCKS])
-		socks = random_socks()
-	if(randomise[RANDOM_BACKPACK])
-		backpack = random_backpack()
-	if(randomise[RANDOM_JUMPSUIT_STYLE])
-		jumpsuit_style = pick(GLOB.jumpsuitlist)
-	if(randomise[RANDOM_HAIRSTYLE])
-		hairstyle = pref_species.random_hairstyle(gender)
-	if(randomise[RANDOM_FACIAL_HAIRSTYLE])
-		facial_hairstyle = pref_species.random_facial_hairstyle(gender)
-	if(randomise[RANDOM_HAIR_COLOR])
-		var/list/hairs
-		if(age == AGE_OLD && OLDGREY in pref_species.species_traits)
-			hairs = pref_species.get_oldhc_list()
-		else
-			hairs = pref_species.get_hairc_list()
-		hair_color = hairs[pick(hairs)]
-		facial_hair_color = hair_color
-	if(randomise[RANDOM_FACIAL_HAIR_COLOR])
-		var/list/hairs
-		if(age == AGE_OLD && OLDGREY in pref_species.species_traits)
-			hairs = pref_species.get_oldhc_list()
-		else
-			hairs = pref_species.get_hairc_list()
-		hair_color = hairs[pick(hairs)]
-		facial_hair_color = hair_color
-	if(randomise[RANDOM_SKIN_TONE])
-		var/list/skins = pref_species.get_skin_list()
-		skin_tone = skins[pick(skins)]
-	if(randomise[RANDOM_EYE_COLOR])
-		eye_color = random_eye_color()
-	features = random_features()
-	if(pref_species.default_features["ears"])
-		features["ears"] = pref_species.default_features["ears"]
-	if(pref_species.default_features["tail_lizard"])
-		features["tail_lizard"] = pref_species.default_features["tail_lizard"]
-	for(var/X in GLOB.frills_list.Copy())
-		var/datum/sprite_accessory/S = GLOB.frills_list[X]
-		if(!(pref_species in S.specuse))
-			continue
-		if(S.gender == NEUTER)
-			features["frills"] = X
-			break
-		if(gender == S.gender)
-			features["frills"] = X
-			break
-	for(var/X in GLOB.snouts_list.Copy())
-		var/datum/sprite_accessory/S = GLOB.snouts_list[X]
-		if(!(pref_species in S.specuse))
-			continue
-		if(S.gender == NEUTER)
-			features["snout"] = X
-			break
-		if(gender == S.gender)
-			features["snout"] = X
-			break
-	for(var/X in GLOB.horns_list.Copy())
-		var/datum/sprite_accessory/S = GLOB.horns_list[X]
-		if(!(pref_species in S.specuse))
-			continue
-		if(S.gender == NEUTER)
-			features["horns"] = X
-			break
-		if(gender == S.gender)
-			features["horns"] = X
-			break
-	for(var/X in GLOB.tails_list_human.Copy())
-		var/datum/sprite_accessory/S = GLOB.tails_list_human[X]
-		if(!(pref_species in S.specuse))
-			continue
-		if(S.gender == NEUTER)
-			features["tail_human"] = X
-			break
-		if(gender == S.gender)
-			features["tail_human"] = X
-			break
+	age = AGE_ADULT
+	var/list/skins = pref_species.get_skin_list()
+	skin_tone = skins[pick(skins)]
+	eye_color = random_eye_color()
+	features = pref_species.get_random_features()
 	accessory = "Nothing"
+	reset_all_organ_accessory_colors()
+	randomize_all_organ_accessories()
 
 /datum/preferences/proc/random_species()
 	var/random_species_type = GLOB.species_list[pick(GLOB.roundstart_races)]

@@ -1711,30 +1711,12 @@
 	color = "#A86B45" //hair is brown
 	taste_description = "sourness"
 
-/datum/reagent/barbers_aid/reaction_mob(mob/living/M, method=TOUCH, reac_volume)
-	if(method == TOUCH || method == VAPOR)
-		if(M && ishuman(M))
-			var/mob/living/carbon/human/H = M
-			var/datum/sprite_accessory/hair/picked_hair = pick(GLOB.hairstyles_list)
-			var/datum/sprite_accessory/facial_hair/picked_beard = pick(GLOB.facial_hairstyles_list)
-			H.hairstyle = picked_hair
-			H.facial_hairstyle = picked_beard
-			H.update_hair()
-
 /datum/reagent/concentrated_barbers_aid
 	name = "Concentrated Barber's Aid"
 	description = "A concentrated solution to hair loss across the world."
 	reagent_state = LIQUID
 	color = "#7A4E33" //hair is dark browmn
 	taste_description = "sourness"
-
-/datum/reagent/concentrated_barbers_aid/reaction_mob(mob/living/M, method=TOUCH, reac_volume)
-	if(method == TOUCH || method == VAPOR)
-		if(M && ishuman(M))
-			var/mob/living/carbon/human/H = M
-			H.hairstyle = "Very Long Hair"
-			H.facial_hairstyle = "Beard (Very Long)"
-			H.update_hair()
 
 /datum/reagent/saltpetre
 	name = "Saltpetre"

@@ -33,7 +33,7 @@
 
 	species_traits = list(EYECOLOR,HAIR,FACEHAIR,LIPS,OLDGREY)
 	inherent_traits = list(TRAIT_NOMOBSWAP)
-	default_features = list("mcolor" = "FFF", "ears" = "ElfW", "wings" = "None")
+	default_features = MANDATORY_FEATURE_LIST
 	use_skintones = 1
 	skinned_type = /obj/item/stack/sheet/animalhide/human
 	disliked_food = NONE

@@ -469,6 +469,18 @@
 		I.pixel_y = px_y
 	add_overlay(standing)
 
+///since organs aren't actually stored in the bodypart themselves while attached to a person, we have to query the owner for what we should have
+/obj/item/bodypart/proc/get_organs()
+	if(!owner)
+		return FALSE
+
+	var/list/bodypart_organs
+	for(var/obj/item/organ/organ_check as anything in owner.internal_organs) //internal organs inside the dismembered limb are dropped.
+		if(check_zone(organ_check.zone) == body_zone)
+			LAZYADD(bodypart_organs, organ_check) // this way if we don't have any, it'll just return null
+
+	return bodypart_organs
+
 //Gives you a proper icon appearance for the dismembered limb
 /obj/item/bodypart/proc/get_limb_icon(dropped, hideaux = FALSE)
 	icon_state = "" //to erase the default sprite, we're building the visual aspects of the bodypart through overlays alone.
@@ -511,6 +523,14 @@
 	should_draw_gender = TRUE
 
 	var/skel = skeletonized ? "_s" : ""
+
+	// Organ overlays
+	for(var/obj/item/organ/organ as anything in get_organs())
+		if(!organ.is_visible())
+			continue
+		var/mutable_appearance/organ_appearance = organ.get_bodypart_overlay(src)
+		if(organ_appearance)
+			. += organ_appearance
 
 	if(is_organic_limb())
 		if(should_draw_greyscale)

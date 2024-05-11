@@ -1,0 +1,49 @@
+/datum/organ_dna
+	/// Type of the organ thats imprinted.
+	var/organ_type
+	/// Accessory type thats imprinted.
+	var/accessory_type
+	/// Accessory colors thats imprinted.
+	var/accessory_colors
+	/// Whether the DNA shouldn't yield an organ. This is so people can customize species that usually have an organ to not have one.
+	var/missing_organ = FALSE
+
+/datum/organ_dna/proc/can_create_organ()
+	if(missing_organ)
+		return FALSE
+	return TRUE
+
+/// Creates an organ at location, imprints its information on it and returns it
+/datum/organ_dna/proc/create_organ(atom/location)
+	var/obj/item/organ/new_organ = new organ_type(location)
+	imprint_organ(new_organ)
+	return new_organ
+
+/// Imprints information on the organ.
+/datum/organ_dna/proc/imprint_organ(obj/item/organ/organ)
+	if(accessory_type)
+		organ.set_accessory_type(accessory_type, accessory_colors)
+
+/datum/organ_dna/hair
+	var/hair_color = "#FFFFFF"
+	var/natural_gradient = /datum/hair_gradient/none
+	var/natural_color = "#FFFFFF"
+
+/datum/organ_dna/hair/imprint_organ(obj/item/organ/organ)
+	..()
+	var/obj/item/organ/hair/hair_organ = organ
+	hair_organ.hair_color = hair_color
+	hair_organ.natural_gradient  = natural_gradient
+	hair_organ.natural_color = natural_color
+
+/datum/organ_dna/eyes
+	var/eye_color = "#FFFFFF"
+	var/heterochromia = FALSE
+	var/second_color = "#FFFFFF"
+
+/datum/organ_dna/eyes/imprint_organ(obj/item/organ/organ)
+	..()
+	var/obj/item/organ/eyes/eyes_organ = organ
+	eyes_organ.eye_color = eye_color
+	eyes_organ.heterochromia  = heterochromia
+	eyes_organ.second_color = second_color

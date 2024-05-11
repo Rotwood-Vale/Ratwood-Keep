@@ -74,19 +74,6 @@
 		eyes = icon("icon" = 'icons/mob/human_face.dmi', "icon_state" = "eyes")
 		eyes.Blend("#[H.eye_color]", ICON_MULTIPLY)
 
-	var/datum/sprite_accessory/S
-	S = GLOB.hairstyles_list[H.hairstyle]
-	if(S && (HAIR in H.dna.species.species_traits))
-		var/icon/hair = icon("icon" = S.icon, "icon_state" = "[S.icon_state]")
-		hair.Blend("#[H.hair_color]", ICON_MULTIPLY)
-		eyes.Blend(hair, ICON_OVERLAY)
-
-	S = GLOB.facial_hairstyles_list[H.facial_hairstyle]
-	if(S && (FACEHAIR in H.dna.species.species_traits))
-		var/icon/facial = icon("icon" = S.icon, "icon_state" = "[S.icon_state]")
-		facial.Blend("#[H.facial_hair_color]", ICON_MULTIPLY)
-		eyes.Blend(facial, ICON_OVERLAY)
-
 	if(eyes)
 		photo.Blend(eyes, ICON_OVERLAY)
 

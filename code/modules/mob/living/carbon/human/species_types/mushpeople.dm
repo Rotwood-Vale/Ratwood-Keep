@@ -2,7 +2,7 @@
 	name = "Mushroomperson"
 	id = "mush"
 	mutant_bodyparts = list("caps")
-	default_features = list("caps" = "Round")
+	default_features = MANDATORY_FEATURE_LIST
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | ERT_SPAWN
 
 	fixed_mut_color = "DBBF92"
@@ -24,7 +24,6 @@
 	burnmod = 1.25
 	heatmod = 1.5
 
-	mutanteyes = /obj/item/organ/eyes/night_vision/mushroom
 	use_skintones = FALSE
 	var/datum/martial_art/mushpunch/mush
 
@@ -38,9 +37,6 @@
 	. = ..()
 	if(ishuman(C))
 		var/mob/living/carbon/human/H = C
-		if(!H.dna.features["caps"])
-			H.dna.features["caps"] = "Round"
-			handle_mutant_bodyparts(H)
 		mush = new(null)
 		mush.teach(H)
 
@@ -54,7 +50,3 @@
 		H.adjustToxLoss(3)
 		H.reagents.remove_reagent(chem.type, REAGENTS_METABOLISM)
 		return TRUE
-
-/datum/species/mush/handle_mutant_bodyparts(mob/living/carbon/human/H, forced_colour)
-	forced_colour = FALSE
-	..()

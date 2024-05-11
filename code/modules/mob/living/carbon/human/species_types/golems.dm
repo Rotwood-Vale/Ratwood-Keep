@@ -5,7 +5,6 @@
 	species_traits = list(NOBLOOD,MUTCOLORS,NO_UNDERWEAR)
 	inherent_traits = list(TRAIT_RESISTHEAT,TRAIT_NOBREATH,TRAIT_RESISTCOLD,TRAIT_RESISTHIGHPRESSURE,TRAIT_RESISTLOWPRESSURE,TRAIT_NOFIRE,TRAIT_CHUNKYFINGERS,TRAIT_RADIMMUNE,TRAIT_PIERCEIMMUNE,TRAIT_NODISMEMBER)
 	inherent_biotypes = MOB_HUMANOID|MOB_MINERAL
-	mutant_organs = list(/obj/item/organ/adamantine_resonator)
 	speedmod = 2
 	armor = 55
 	siemens_coeff = 0
@@ -22,6 +21,18 @@
 	// changes, only the Random Golem type can be chosen
 	limbs_id = "golem"
 	fixed_mut_color = "aaa"
+	organs = list(
+		ORGAN_SLOT_BRAIN = /obj/item/organ/brain,
+		ORGAN_SLOT_HEART = /obj/item/organ/heart,
+		ORGAN_SLOT_LUNGS = /obj/item/organ/lungs,
+		ORGAN_SLOT_EYES = /obj/item/organ/eyes,
+		ORGAN_SLOT_EARS = /obj/item/organ/ears,
+		ORGAN_SLOT_TONGUE = /obj/item/organ/tongue,
+		ORGAN_SLOT_LIVER = /obj/item/organ/liver,
+		ORGAN_SLOT_STOMACH = /obj/item/organ/stomach,
+		ORGAN_SLOT_APPENDIX = /obj/item/organ/appendix,
+		ORGAN_SLOT_ADAMANTINE_RESONATOR = /obj/item/organ/adamantine_resonator
+		)
 	var/info_text = "As an <span class='danger'>Iron Golem</span>, you don't have any special traits."
 	var/random_eligible = TRUE //If false, the golem subtype can't be made through golem mutation toxin
 
@@ -65,11 +76,23 @@
 	name = "Adamantine Golem"
 	id = "adamantine golem"
 	meat = /obj/item/reagent_containers/food/snacks/meat/slab/human/mutant/golem/adamantine
-	mutant_organs = list(/obj/item/organ/adamantine_resonator, /obj/item/organ/vocal_cords/adamantine)
 	fixed_mut_color = "4ed"
 	info_text = "As an <span class='danger'>Adamantine Golem</span>, you possess special vocal cords allowing you to \"resonate\" messages to all golems. Your unique mineral makeup makes you immune to most types of magic."
 	prefix = "Adamantine"
 	special_names = null
+	organs = list(
+		ORGAN_SLOT_BRAIN = /obj/item/organ/brain,
+		ORGAN_SLOT_HEART = /obj/item/organ/heart,
+		ORGAN_SLOT_LUNGS = /obj/item/organ/lungs,
+		ORGAN_SLOT_EYES = /obj/item/organ/eyes,
+		ORGAN_SLOT_EARS = /obj/item/organ/ears,
+		ORGAN_SLOT_TONGUE = /obj/item/organ/tongue,
+		ORGAN_SLOT_LIVER = /obj/item/organ/liver,
+		ORGAN_SLOT_STOMACH = /obj/item/organ/stomach,
+		ORGAN_SLOT_APPENDIX = /obj/item/organ/appendix,
+		ORGAN_SLOT_ADAMANTINE_RESONATOR = /obj/item/organ/adamantine_resonator,
+		ORGAN_SLOT_VOICE = /obj/item/organ/vocal_cords/adamantine
+		)
 
 /datum/species/golem/adamantine/on_species_gain(mob/living/carbon/C, datum/species/old_species)
 	..()
@@ -254,7 +277,6 @@
 	id = "alloy golem"
 	fixed_mut_color = "333"
 	meat = /obj/item/stack/sheet/mineral/abductor
-	mutanttongue = /obj/item/organ/tongue/abductor
 	speedmod = 1 //faster
 	info_text = "As an <span class='danger'>Alloy Golem</span>, you are made of advanced alien materials: you are faster and regenerate over time. You are, however, only able to be heard by other alloy golems."
 	prefix = "Alien"
@@ -767,7 +789,6 @@
 	special_names = list("Bell")
 	fixed_mut_color = "cd7f32"
 	info_text = "As a <span class='danger'>Bronze Golem</span>, you are very resistant to loud noises, and make loud noises if something hard hits you, however this ability does hurt my hearing."
-	mutantears = /obj/item/organ/ears/bronze
 	var/last_gong_time = 0
 	var/gong_cooldown = 150
 
@@ -913,7 +934,6 @@
 	toxic_food = null
 	species_traits = list(NOBLOOD,NO_UNDERWEAR,NOEYESPRITES)
 	inherent_biotypes = MOB_UNDEAD|MOB_HUMANOID
-	mutanttongue = /obj/item/organ/tongue/bone
 	sexes = FALSE
 	fixed_mut_color = null
 	inherent_traits = list(TRAIT_NOFLASH,TRAIT_RESISTHEAT,TRAIT_NOBREATH,TRAIT_RESISTCOLD,TRAIT_RESISTHIGHPRESSURE,TRAIT_RESISTLOWPRESSURE,TRAIT_NOFIRE,TRAIT_CHUNKYFINGERS,TRAIT_RADIMMUNE,TRAIT_PIERCEIMMUNE,TRAIT_NODISMEMBER,TRAIT_FAKEDEATH)

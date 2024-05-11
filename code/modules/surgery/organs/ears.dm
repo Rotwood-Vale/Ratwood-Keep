@@ -152,3 +152,13 @@
 	if(. & EMP_PROTECT_SELF)
 		return
 	damage += 40/severity
+
+/obj/item/organ/ears/mammal
+	name = "mammal ears"
+
+/obj/item/organ/ears/vulpkanin
+	name = "vulpkanin ears"
+
+/obj/item/organ/ears/tajaran
+	name = "tajaran ears"
+

@@ -19,9 +19,8 @@
 	default_color = "FFFFFF"
 	species_traits = list(EYECOLOR,HAIR,FACEHAIR,LIPS,STUBBLE,OLDGREY)
 	inherent_traits = list(TRAIT_NOMOBSWAP)
-	default_features = list("mcolor" = "FFF", "ears" = "ElfH", "wings" = "None")
+	default_features = MANDATORY_FEATURE_LIST
 	mutant_bodyparts = list("ears")
-	mutanteyes = /obj/item/organ/eyes/halfelf
 	use_skintones = 1
 	possible_ages = list(AGE_YOUNG, AGE_ADULT, AGE_MIDDLEAGED)
 	skinned_type = /obj/item/stack/sheet/animalhide/human
@@ -48,6 +47,17 @@
 	specstats = list("strength" = 0, "perception" = 1, "intelligence" = 1, "constitution" = -1, "endurance" = -1, "speed" = 1, "fortune" = -1)
 	specstats_f = list("strength" = -1, "perception" = 1, "intelligence" = 1, "constitution" = -2, "endurance" = 0, "speed" = 2, "fortune" = -1)
 	enflamed_icon = "widefire"
+	organs = list(
+		ORGAN_SLOT_BRAIN = /obj/item/organ/brain,
+		ORGAN_SLOT_HEART = /obj/item/organ/heart,
+		ORGAN_SLOT_LUNGS = /obj/item/organ/lungs,
+		ORGAN_SLOT_EYES = /obj/item/organ/eyes/halfelf,
+		ORGAN_SLOT_EARS = /obj/item/organ/ears,
+		ORGAN_SLOT_TONGUE = /obj/item/organ/tongue,
+		ORGAN_SLOT_LIVER = /obj/item/organ/liver,
+		ORGAN_SLOT_STOMACH = /obj/item/organ/stomach,
+		ORGAN_SLOT_APPENDIX = /obj/item/organ/appendix,
+		)
 
 /datum/species/human/halfelf/check_roundstart_eligible()
 	return TRUE

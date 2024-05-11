@@ -101,10 +101,6 @@
 #define RANDOM_SOCKS "random_socks"
 #define RANDOM_BACKPACK "random_backpack"
 #define RANDOM_JUMPSUIT_STYLE "random_jumpsuit_style"
-#define RANDOM_HAIRSTYLE "random_hairstyle"
-#define RANDOM_HAIR_COLOR "random_hair_color"
-#define RANDOM_FACIAL_HAIR_COLOR "random_facial_hair_color"
-#define RANDOM_FACIAL_HAIRSTYLE "random_facial_hairstyle"
 #define RANDOM_SKIN_TONE "random_skin_tone"
 #define RANDOM_EYE_COLOR "random_eye_color"
 
