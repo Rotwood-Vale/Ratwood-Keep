@@ -202,8 +202,7 @@ GLOBAL_VAR_INIT(observer_default_invisibility, INVISIBILITY_OBSERVER)
 			if(FACEHAIR in body_human.dna.species.species_traits)
 				facial_hairstyle = body_human.facial_hairstyle
 				facial_hair_color = brighten_color(body_human.facial_hair_color)
-			if("ears" in body_human.dna.species.mutant_bodyparts)
-				ear_style = body_human.dna.species.default_features["ears"]*/
+			*/
 	update_icon()
 
 	if(!T)

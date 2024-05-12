@@ -138,7 +138,9 @@ GLOBAL_LIST_EMPTY(chosen_names)
 	var/faith = FAITH_PSYDON
 
 	var/crt = FALSE
+
 	var/list/organ_entries = list()
+	var/update_mutant_colors = TRUE
 
 
 /datum/preferences/New(client/C)
@@ -388,7 +390,7 @@ GLOBAL_LIST_EMPTY(chosen_names)
 //					dat += APPEARANCE_CATEGORY_COLUMN
 
 				dat += "<h3>Mutant color</h3>"
-
+				dat += "Update features with change: <a href='?_src_=prefs;preference=update_mutant_colors;task=input'>[update_mutant_colors ? "Yes" : "No"]</a><BR>"
 				dat += "Mutant Color #1:<span style='border: 1px solid #161616; background-color: #[features["mcolor"]];'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;preference=mutant_color;task=input'>Change</a><BR>"
 				dat += "Mutant Color #2:<span style='border: 1px solid #161616; background-color: #[features["mcolor2"]];'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;preference=mutant_color2;task=input'>Change</a><BR>"
 				dat += "Mutant Color #3:<span style='border: 1px solid #161616; background-color: #[features["mcolor3"]];'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;preference=mutant_color3;task=input'>Change</a><BR>"
@@ -1597,24 +1599,27 @@ Slots: [job.spawn_positions]</span>
 					if(result)
 						set_new_race(result, user)
 
+				if("update_mutant_colors")
+					update_mutant_colors = !update_mutant_colors
+
 				if("mutant_color")
 					var/new_mutantcolor = input(user, "Choose your character's alien/mutant #1 color:", "Character Preference","#"+features["mcolor"]) as color|null
 					if(new_mutantcolor)
 
 						features["mcolor"] = sanitize_hexcolor(new_mutantcolor)
-						reset_all_organ_accessory_colors()
+						try_update_mutant_colors()
 			
 				if("mutant_color2")
 					var/new_mutantcolor = input(user, "Choose your character's alien/mutant #2 color:", "Character Preference","#"+features["mcolor2"]) as color|null
 					if(new_mutantcolor)
 						features["mcolor2"] = sanitize_hexcolor(new_mutantcolor)
-						reset_all_organ_accessory_colors()
+						try_update_mutant_colors()
 
 				if("mutant_color3")
 					var/new_mutantcolor = input(user, "Choose your character's alien/mutant #3 color:", "Character Preference","#"+features["mcolor3"]) as color|null
 					if(new_mutantcolor)
 						features["mcolor3"] = sanitize_hexcolor(new_mutantcolor)
-						reset_all_organ_accessory_colors()
+						try_update_mutant_colors()
 
 
 				if("color_ethereal")
@@ -2124,3 +2129,7 @@ Slots: [job.spawn_positions]</span>
 			return
 		else
 			custom_names[name_id] = sanitized_name
+
+/datum/preferences/proc/try_update_mutant_colors()
+	if(update_mutant_colors)
+		reset_all_organ_accessory_colors()

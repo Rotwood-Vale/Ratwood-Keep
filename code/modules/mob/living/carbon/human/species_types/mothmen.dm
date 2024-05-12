@@ -5,7 +5,6 @@
 	default_color = "00FF00"
 	species_traits = list(LIPS, NOEYESPRITES)
 	inherent_biotypes = MOB_ORGANIC|MOB_HUMANOID|MOB_BUG
-	mutant_bodyparts = list("moth_wings", "moth_markings")
 	default_features = MANDATORY_FEATURE_LIST
 	attack_verb = "slash"
 	attack_sound = 'sound/blank.ogg'

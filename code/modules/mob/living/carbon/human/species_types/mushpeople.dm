@@ -1,7 +1,6 @@
 /datum/species/mush //mush mush codecuck
 	name = "Mushroomperson"
 	id = "mush"
-	mutant_bodyparts = list("caps")
 	default_features = MANDATORY_FEATURE_LIST
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | ERT_SPAWN
 

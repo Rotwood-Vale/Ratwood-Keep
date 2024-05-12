@@ -61,7 +61,6 @@
 		attack_sound = S.attack_sound
 		miss_sound = S.miss_sound
 		meat = S.meat
-		mutant_bodyparts = S.mutant_bodyparts.Copy()
 		default_features = S.default_features.Copy()
 		nojumpsuit = S.nojumpsuit
 		no_equip = S.no_equip.Copy()
@@ -78,7 +77,6 @@
 		attack_verb = initial(attack_verb)
 		attack_sound = initial(attack_sound)
 		miss_sound = initial(miss_sound)
-		mutant_bodyparts = list()
 		default_features = list()
 		nojumpsuit = initial(nojumpsuit)
 		no_equip = list()

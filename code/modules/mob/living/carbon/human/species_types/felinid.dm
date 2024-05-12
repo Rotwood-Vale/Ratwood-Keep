@@ -4,7 +4,6 @@
 	id = "felinid"
 	limbs_id = "human"
 
-	mutant_bodyparts = list("ears", "tail_human")
 	default_features = MANDATORY_FEATURE_LIST
 
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_PRIDE | MIRROR_MAGIC | RACE_SWAP | ERT_SPAWN | SLIME_EXTRACT
