@@ -139,3 +139,11 @@
 	for(var/datum/organ_entry/entry as anything in organ_entries)
 		var/datum/organ_choice/choice = ORGAN_CHOICE(entry.organ_choice_type)
 		choice.randomize_entry(entry, src)
+
+/datum/preferences/proc/ShowOrgans(mob/user)
+	var/list/dat = list()
+	dat += "<style>span.color_holder_box{display: inline-block; width: 20px; height: 8px; border:1px solid #000; padding: 0px;}</style>"
+	dat += print_organs_page()
+	var/datum/browser/popup = new(user, "organs_customization", "<div align='center'>Organs customization</div>", 600, 600)
+	popup.set_content(dat.Join())
+	popup.open(FALSE)

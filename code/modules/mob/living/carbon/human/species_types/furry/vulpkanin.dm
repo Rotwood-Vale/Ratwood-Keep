@@ -42,16 +42,33 @@
 		/datum/organ_customizer/tail/vulpkanin,
 		/datum/organ_customizer/snout/vulpkanin,
 		)
-	offset_features = list(OFFSET_ID = list(0,1), OFFSET_GLOVES = list(0,1), OFFSET_WRISTS = list(0,1),\
+	body_marking_sets = list(
+		/datum/body_marking_set/fox,
+		/datum/body_marking_set/floof,
+		/datum/body_marking_set/floofer,
+	)
+	body_markings = list(
+		/datum/body_marking/tattoo/heart,
+		/datum/body_marking/tattoo/hive,
+		/datum/body_marking/tattoo/nightling,
+		/datum/body_marking/tattoo/circuit,
+		/datum/body_marking/tattoo/silverburgh,
+		/datum/body_marking/tattoo/tiger,
+		/datum/body_marking/tattoo/tiger_groin,
+		/datum/body_marking/tattoo/tiger_foot,
+	)
+	offset_features = list(
+		OFFSET_ID = list(0,1), OFFSET_GLOVES = list(0,1), OFFSET_WRISTS = list(0,1),\
 		OFFSET_CLOAK = list(0,1), OFFSET_FACEMASK = list(0,1), OFFSET_HEAD = list(0,1), \
 		OFFSET_FACE = list(0,1), OFFSET_BELT = list(0,1), OFFSET_BACK = list(0,1), \
 		OFFSET_NECK = list(0,1), OFFSET_MOUTH = list(0,1), OFFSET_PANTS = list(0,1), \
 		OFFSET_SHIRT = list(0,1), OFFSET_ARMOR = list(0,1), OFFSET_HANDS = list(0,1), OFFSET_UNDIES = list(0,1), \
 		OFFSET_ID_F = list(0,-1), OFFSET_GLOVES_F = list(0,0), OFFSET_WRISTS_F = list(0,0), OFFSET_HANDS_F = list(0,0), \
 		OFFSET_CLOAK_F = list(0,0), OFFSET_FACEMASK_F = list(0,-1), OFFSET_HEAD_F = list(0,-1), \
-		OFFSET_FACE_F = list(0,0), OFFSET_BELT_F = list(0,-1), OFFSET_BACK_F = list(0,-1), \
+		OFFSET_FACE_F = list(0,-1), OFFSET_BELT_F = list(0,-1), OFFSET_BACK_F = list(0,-1), \
 		OFFSET_NECK_F = list(0,-1), OFFSET_MOUTH_F = list(0,-1), OFFSET_PANTS_F = list(0,0), \
-		OFFSET_SHIRT_F = list(0,0), OFFSET_ARMOR_F = list(0,0), OFFSET_UNDIES_F = list(0,0)
+		OFFSET_SHIRT_F = list(0,0), OFFSET_ARMOR_F = list(0,0), OFFSET_UNDIES_F = list(0,0), \
+		OFFSET_FACE_FEATURE = list(0,1), OFFSET_FACE_FEATURE_F = list(0,0),
 		)
 	
 /datum/species/vulpkanin/check_roundstart_eligible()
@@ -85,3 +102,5 @@
 	returned["mcolor3"] = second_color
 	return returned
 
+/datum/species/vulpkanin/get_random_body_markings(list/passed_features)
+	return assemble_body_markings_from_set(GLOB.body_marking_sets_by_type[pick(body_marking_sets)], passed_features, src)

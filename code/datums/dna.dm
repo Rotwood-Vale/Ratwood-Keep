@@ -16,6 +16,8 @@
 	var/stability = 100
 	var/scrambled = FALSE //Did we take something like mutagen? In that case we cant get our genes scanned to instantly cheese all the powers.
 	var/list/organ_dna = list()
+	///Body markings of the DNA's owner. This is for storing their original state for re-creating the character. They'll get changed on species mutation
+	var/list/list/body_markings = list()
 
 /datum/dna/New(mob/living/new_holder)
 	if(istype(new_holder))
@@ -44,6 +46,7 @@
 	destination.dna.uni_identity = uni_identity
 	destination.dna.blood_type = blood_type
 	destination.set_species(species.type, icon_update=0)
+	destination.dna.body_markings = deepCopyList(body_markings)
 	destination.dna.features = features.Copy()
 	destination.dna.real_name = real_name
 	destination.dna.temporary_mutations = temporary_mutations.Copy()
@@ -55,6 +58,7 @@
 	new_dna.mutation_index = mutation_index
 	new_dna.uni_identity = uni_identity
 	new_dna.blood_type = blood_type
+	new_dna.body_markings = deepCopyList(body_markings)
 	new_dna.features = features.Copy()
 	new_dna.species = new species.type
 	new_dna.real_name = real_name
@@ -292,9 +296,8 @@
 		//BODYPARTS AND FEATURES
 		if(pref_load)
 			dna.features = pref_load.features.Copy()
+			dna.body_markings = deepCopyList(pref_load.body_markings)
 			dna.real_name = pref_load.real_name
-		else
-			dna.features = new_race.get_random_features()
 		dna.species.on_species_gain(src, old_species, pref_load)
 
 /mob/living/carbon/human/set_species(datum/species/mrace, icon_update = TRUE, datum/preferences/pref_load = null)

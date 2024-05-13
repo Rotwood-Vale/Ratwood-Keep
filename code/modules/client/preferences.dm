@@ -140,6 +140,7 @@ GLOBAL_LIST_EMPTY(chosen_names)
 	var/crt = FALSE
 
 	var/list/organ_entries = list()
+	var/list/list/body_markings = list()
 	var/update_mutant_colors = TRUE
 
 
@@ -180,7 +181,6 @@ GLOBAL_LIST_EMPTY(chosen_names)
 
 /datum/preferences/proc/set_new_race(datum/species/new_race, user)
 	pref_species = new_race
-	features = pref_species.get_random_features()
 	real_name = pref_species.random_name(gender,1)
 	ResetJobs()
 	if(user)
@@ -390,10 +390,10 @@ GLOBAL_LIST_EMPTY(chosen_names)
 //					dat += APPEARANCE_CATEGORY_COLUMN
 
 				dat += "<h3>Mutant color</h3>"
-				dat += "Update features with change: <a href='?_src_=prefs;preference=update_mutant_colors;task=input'>[update_mutant_colors ? "Yes" : "No"]</a><BR>"
-				dat += "Mutant Color #1:<span style='border: 1px solid #161616; background-color: #[features["mcolor"]];'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;preference=mutant_color;task=input'>Change</a><BR>"
-				dat += "Mutant Color #2:<span style='border: 1px solid #161616; background-color: #[features["mcolor2"]];'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;preference=mutant_color2;task=input'>Change</a><BR>"
-				dat += "Mutant Color #3:<span style='border: 1px solid #161616; background-color: #[features["mcolor3"]];'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;preference=mutant_color3;task=input'>Change</a><BR>"
+				dat += "<b>Update features with change:</b> <a href='?_src_=prefs;preference=update_mutant_colors;task=input'>[update_mutant_colors ? "Yes" : "No"]</a><BR>"
+				dat += "<b>Mutant Color #1:</b><span style='border: 1px solid #161616; background-color: #[features["mcolor"]];'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;preference=mutant_color;task=input'>Change</a><BR>"
+				dat += "<b>Mutant Color #2:</b><span style='border: 1px solid #161616; background-color: #[features["mcolor2"]];'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;preference=mutant_color2;task=input'>Change</a><BR>"
+				dat += "<b>Mutant Color #3:</b><span style='border: 1px solid #161616; background-color: #[features["mcolor3"]];'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;preference=mutant_color3;task=input'>Change</a><BR>"
 
 
 				mutant_colors = TRUE
@@ -1151,22 +1151,6 @@ Slots: [job.spawn_positions]</span>
 		if(SSquirks.quirk_points[q] > 0)
 			.++
 
-/datum/preferences/proc/ShowOrgans(mob/user)
-	var/list/dat = list()
-	dat += "<style>span.color_holder_box{display: inline-block; width: 20px; height: 8px; border:1px solid #000; padding: 0px;}</style>"
-	dat += print_organs_page()
-	var/datum/browser/popup = new(user, "organs_customization", "<div align='center'>Organs customization</div>", 600, 600)
-	popup.set_content(dat.Join())
-	popup.open(FALSE)
-
-/datum/preferences/proc/ShowMarkings(mob/user)
-	var/list/dat = list()
-	dat += "<style>span.color_holder_box{display: inline-block; width: 20px; height: 8px; border:1px solid #000; padding: 0px;}</style>"
-	//dat += print_markings_page()
-	var/datum/browser/popup = new(user, "markings_cusotmization", "<div align='center'>Markings customization</div>", 600, 600)
-	popup.set_content(dat.Join())
-	popup.open(FALSE)
-
 /datum/preferences/proc/SetKeybinds(mob/user)
 	var/list/dat = list()
 	// Create an inverted list of keybindings -> key
@@ -1466,6 +1450,9 @@ Slots: [job.spawn_positions]</span>
 		if("change_organ")
 			handle_organ_topic(user, href_list)
 			ShowOrgans(user)
+		if("change_marking")
+			handle_body_markings_topic(user, href_list)
+			ShowMarkings(user)
 		if("random")
 			switch(href_list["preference"])
 				if("name")
@@ -1479,20 +1466,12 @@ Slots: [job.spawn_positions]</span>
 					skin_tone = skins[pick(skins)]
 				if("species")
 					random_species()
-					accessory = "Nothing"
-					detail = "Nothing"
-					if(age == AGE_YOUNG)
-						age = AGE_ADULT
 				if("bag")
 					backpack = pick(GLOB.backpacklist)
 				if("suit")
 					jumpsuit_style = PREF_SUIT
 				if("all")
 					random_character(gender)
-					accessory = "Nothing"
-					detail = "Nothing"
-					if(age == AGE_YOUNG)
-						age = AGE_ADULT
 
 		if("input")
 
@@ -1742,12 +1721,9 @@ Slots: [job.spawn_positions]</span>
 						pickedGender = "female"
 					if(pickedGender && pickedGender != gender)
 						gender = pickedGender
-						real_name = real_name = pref_species.random_name(gender,1)
 						ResetJobs()
 						to_chat(user, "<font color='red'>Classes reset.</font>")
 						random_character(gender)
-						accessory = "Nothing"
-						detail = "Nothing"
 				if("domhand")
 					if(domhand == 1)
 						domhand = 2
@@ -1978,9 +1954,6 @@ Slots: [job.spawn_positions]</span>
 						choice = choices[choice]
 						if(!load_character(choice))
 							random_character()
-							accessory = "Nothing"
-							detail = "Nothing"
-							real_name = pref_species.random_name(gender,1)
 							save_character()
 
 				if("tab")
@@ -1999,17 +1972,27 @@ Slots: [job.spawn_positions]</span>
 	if((randomise[RANDOM_BODY] || randomise[RANDOM_BODY_ANTAG] && antagonist) && !character_setup)
 		slot_randomized = TRUE
 		random_character(gender, antagonist)
+	
+	// Bandaid to undo no arm flaw prosthesis
+	if(charflaw)
+		var/obj/item/bodypart/O = character.get_bodypart(BODY_ZONE_R_ARM)
+		if(O)
+			O.drop_limb()
+			qdel(O)
+		O = character.get_bodypart(BODY_ZONE_L_ARM)
+		if(O)
+			O.drop_limb()
+		character.regenerate_limb(BODY_ZONE_R_ARM)
+		character.regenerate_limb(BODY_ZONE_L_ARM)
 
 	var/datum/species/chosen_species
 	chosen_species = pref_species.type
 	if(!(pref_species.name in GLOB.roundstart_races))
-		chosen_species = /datum/species/human/northern
-		pref_species = new /datum/species/human/northern
+		set_new_race(new /datum/species/human/northern)
 		random_character(gender)
 	if(parent)
 		if(pref_species.patreon_req > parent.patreonlevel())
-			chosen_species = /datum/species/human/northern
-			pref_species = new /datum/species/human/northern
+			set_new_race(new /datum/species/human/northern)
 			random_character(gender)
 
 	character.age = age
@@ -2066,15 +2049,6 @@ Slots: [job.spawn_positions]</span>
 	character.jumpsuit_style = jumpsuit_style
 
 	if(charflaw)
-		var/obj/item/bodypart/O = character.get_bodypart(BODY_ZONE_R_ARM)
-		if(O)
-			O.drop_limb()
-			qdel(O)
-		O = character.get_bodypart(BODY_ZONE_L_ARM)
-		if(O)
-			O.drop_limb()
-		character.regenerate_limb(BODY_ZONE_R_ARM)
-		character.regenerate_limb(BODY_ZONE_L_ARM)
 		if(istype(charflaw, /datum/charflaw/badsight))
 			charflaw = new /datum/charflaw/randflaw()
 		character.charflaw = new charflaw.type()
@@ -2133,3 +2107,4 @@ Slots: [job.spawn_positions]</span>
 /datum/preferences/proc/try_update_mutant_colors()
 	if(update_mutant_colors)
 		reset_all_organ_accessory_colors()
+		reset_body_marking_colors()

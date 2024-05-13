@@ -13,15 +13,14 @@
 	skin_tone = skins[pick(skins)]
 	eye_color = random_eye_color()
 	features = pref_species.get_random_features()
+	body_markings = pref_species.get_random_body_markings(features)
 	accessory = "Nothing"
 	reset_all_organ_accessory_colors()
 	randomize_all_organ_accessories()
 
 /datum/preferences/proc/random_species()
 	var/random_species_type = GLOB.species_list[pick(GLOB.roundstart_races)]
-	pref_species = new random_species_type
-	if(randomise[RANDOM_NAME])
-		real_name = pref_species.random_name(gender,1)
+	set_new_race(new random_species_type)
 
 /datum/preferences/proc/update_preview_icon()
 	set waitfor = 0

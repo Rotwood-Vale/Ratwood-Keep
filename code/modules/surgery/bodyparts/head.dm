@@ -45,6 +45,21 @@
 
 	var/brainkill = FALSE
 
+/obj/item/bodypart/head/adjust_marking_overlays(var/list/appearance_list)
+	if(!owner || !ishuman(owner))
+		return
+	var/mob/living/carbon/human/humie = owner
+	var/datum/species/species = owner.dna.species
+	for(var/mutable_appearance/appearance as anything in appearance_list)
+		if(humie.gender == FEMALE)
+			if(OFFSET_FACE_FEATURE_F in species.offset_features)
+				appearance.pixel_x += species.offset_features[OFFSET_FACE_FEATURE_F][1]
+				appearance.pixel_y += species.offset_features[OFFSET_FACE_FEATURE_F][2]
+		else
+			if(OFFSET_FACE_FEATURE in species.offset_features)
+				appearance.pixel_x += species.offset_features[OFFSET_FACE_FEATURE][1]
+				appearance.pixel_y += species.offset_features[OFFSET_FACE_FEATURE][2]
+
 /obj/item/bodypart/head/grabbedintents(mob/living/user, precise)
 	var/used_limb = precise
 	switch(used_limb)

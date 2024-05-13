@@ -654,7 +654,6 @@ GLOBAL_LIST_INIT(roleplay_readme, world.file2list("strings/rt/rp_prompt.txt"))
 			return
 	if(frn)
 		client.prefs.random_character()
-		client.prefs.real_name = client.prefs.pref_species.random_name(gender,1)
 
 	var/is_antag
 	if(mind in GLOB.pre_setup_antags)

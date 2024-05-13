@@ -6,19 +6,7 @@
 	default_colors = list("#555555")
 
 /datum/sprite_accessory/horns/adjust_appearance_list(list/appearance_list, obj/item/organ/organ, obj/item/bodypart/bodypart, mob/living/carbon/owner)
-	if(!ishuman(owner))
-		return
-	var/mob/living/carbon/human/humie = owner
-	var/datum/species/species = owner.dna.species
-	for(var/mutable_appearance/appearance as anything in appearance_list)
-		if(humie.gender == FEMALE)
-			if(OFFSET_FACE_F in species.offset_features)
-				appearance.pixel_x += species.offset_features[OFFSET_FACE_F][1]
-				appearance.pixel_y += species.offset_features[OFFSET_FACE_F][2]
-		else
-			if(OFFSET_FACE in species.offset_features)
-				appearance.pixel_x += species.offset_features[OFFSET_FACE][1]
-				appearance.pixel_y += species.offset_features[OFFSET_FACE][2]
+	generic_gender_face_feature_adjust(appearance_list, organ, bodypart, owner)
 
 /datum/sprite_accessory/horns/simple
 	name = "Simple"

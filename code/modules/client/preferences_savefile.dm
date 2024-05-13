@@ -454,6 +454,9 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	features["mcolor3"]	= sanitize_hexcolor(features["mcolor3"], 3, 0)
 	features["ethcolor"]	= copytext(features["ethcolor"],1,7)
 	features["feature_lizard_legs"]	= sanitize_inlist(features["legs"], GLOB.legs_list, "Normal Legs")
+	S["body_markings"] >> body_markings
+	body_markings = SANITIZE_LIST(body_markings)
+	validate_body_markings()
 
 	joblessrole	= sanitize_integer(joblessrole, 1, 3, initial(joblessrole))
 	//Validate job prefs
@@ -531,6 +534,8 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 
 	// Organs
 	WRITE_FILE(S["organ_entries"] , organ_entries)
+	// Body markings
+	WRITE_FILE(S["body_markings"] , body_markings)
 
 	return TRUE
 
