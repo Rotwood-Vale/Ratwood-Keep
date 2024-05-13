@@ -5,6 +5,9 @@
 	relevant_layers = list(BODY_FRONT_LAYER, BODY_BEHIND_LAYER)
 	var/can_wag = FALSE
 
+/datum/sprite_accessory/tail/adjust_appearance_list(list/appearance_list, obj/item/organ/organ, obj/item/bodypart/bodypart, mob/living/carbon/owner)
+	generic_gender_feature_adjust(appearance_list, organ, bodypart, owner, OFFSET_BACK, OFFSET_BACK_F)
+
 /datum/sprite_accessory/tail/get_icon_state(obj/item/organ/organ, obj/item/bodypart/bodypart, mob/living/carbon/owner)
 	if(!can_wag)
 		return ..()
@@ -350,3 +353,9 @@
 /datum/sprite_accessory/tail/vox/default
 	name = "Default"
 	icon_state = "default"
+
+/datum/sprite_accessory/tail/tiefling
+	name = "Tiefling"
+	icon = 'icons/mob/sprite_accessory/tiefling.dmi'
+	icon_state = "tiebtail"
+	color_key_defaults = list(KEY_SKIN_COLOR)

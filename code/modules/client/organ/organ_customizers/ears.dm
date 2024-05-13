@@ -35,12 +35,12 @@
 	organ_type = /obj/item/organ/ears/cat
 	sprite_accessories = list(/datum/sprite_accessory/ears/cat)
 
-/datum/organ_customizer/ears/mammal
-	organ_choices = list(/datum/organ_choice/ears/mammal)
+/datum/organ_customizer/ears/anthromorph
+	organ_choices = list(/datum/organ_choice/ears/anthromorph)
 
-/datum/organ_choice/ears/mammal
+/datum/organ_choice/ears/anthromorph
 	name = "Mammal Ears"
-	organ_type = /obj/item/organ/ears/mammal
+	organ_type = /obj/item/organ/ears/anthromorph
 	sprite_accessories = list(
 		/datum/sprite_accessory/ears/cat,
 		/datum/sprite_accessory/ears/axolotl,

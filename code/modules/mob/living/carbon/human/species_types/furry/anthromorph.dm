@@ -1,13 +1,14 @@
-/datum/species/vulpkanin
-	name = "Vulpkanin"
-	id = "vulpkanin"
-	//flavor_text = "A fully-furred bipedal fox. Most enjoy meats, and fried foods, but will eat just about anything."
-	default_color = "444"
+/datum/species/anthromorph
+	name = "Anthromorph" 
+	id = "anthromorph"
+	//flavor_text = "A term encompassing most humanoids with animal-like qualities."
+	default_color = "4B4B4B"
 	species_traits = list(
 		MUTCOLORS,
 		EYECOLOR,
 		LIPS,
 		HAIR,
+		FACEHAIR,
 	)
 	inherent_biotypes = MOB_ORGANIC|MOB_HUMANOID
 	attack_verb = "slash"
@@ -15,10 +16,7 @@
 	//miss_sound = 'sound/weapons/slashmiss.ogg'
 	liked_food = GROSS | MEAT | FRIED
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
-	limbs_icon_m = 'icons/mob/species/vulp_m.dmi'
-	limbs_icon_f = 'icons/mob/species/vulp_f.dmi'
 	//limbs_icon = 'icons/mob/species/mammal_parts_greyscale.dmi'
-	//limbs_id = "mammal"
 	offset_features = list(
 		OFFSET_ID = list(0,1), OFFSET_GLOVES = list(0,1), OFFSET_WRISTS = list(0,1),\
 		OFFSET_CLOAK = list(0,1), OFFSET_FACEMASK = list(0,1), OFFSET_HEAD = list(0,1), \
@@ -68,37 +66,40 @@
 		/datum/body_marking/tattoo/tiger_groin,
 		/datum/body_marking/tattoo/tiger_foot,
 	)
-	
-/datum/species/vulpkanin/check_roundstart_eligible()
-	return TRUE
 
-
-/datum/species/vulpkanin/get_random_features()
+/datum/species/anthromorph/get_random_features()
 	var/list/returned = MANDATORY_FEATURE_LIST
 	var/main_color
 	var/second_color
-	var/random = rand(1,5)
-	//Choose from a variety of mostly brightish, animal, matching colors
+	var/third_color
+	var/random = rand(1,7)
 	switch(random)
 		if(1)
-			main_color = "FFAA00"
-			second_color = "FFDD44"
+			main_color = "FFFFFF"
+			second_color = "333333"
+			third_color = "333333"
 		if(2)
-			main_color = "FF8833"
-			second_color = "FFAA33"
+			main_color = "FFFFDD"
+			second_color = "DD6611"
+			third_color = "AA5522"
 		if(3)
-			main_color = "FFCC22"
-			second_color = "FFDD88"
-		if(4)
-			main_color = "FF8800"
+			main_color = "DD6611"
 			second_color = "FFFFFF"
+			third_color = "DD6611"
+		if(4)
+			main_color = "CCCCCC"
+			second_color = "FFFFFF"
+			third_color = "FFFFFF"
 		if(5)
-			main_color = "999999"
-			second_color = "EEEEEE"
+			main_color = "AA5522"
+			second_color = "CC8833"
+			third_color = "FFFFFF"
+		if(6)
+			main_color = "FFFFDD"
+			second_color = "FFEECC"
+			third_color = "FFDDBB"
 	returned["mcolor"] = main_color
 	returned["mcolor2"] = second_color
-	returned["mcolor3"] = second_color
+	returned["mcolor3"] = third_color
 	return returned
 
-/datum/species/vulpkanin/get_random_body_markings(list/passed_features)
-	return assemble_body_markings_from_set(GLOB.body_marking_sets_by_type[pick(body_marking_sets)], passed_features, src)

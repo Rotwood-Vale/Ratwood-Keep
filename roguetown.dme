@@ -2478,7 +2478,7 @@
 #include "code\modules\mob\living\carbon\human\species_types\synths.dm"
 #include "code\modules\mob\living\carbon\human\species_types\vampire.dm"
 #include "code\modules\mob\living\carbon\human\species_types\zombies.dm"
-#include "code\modules\mob\living\carbon\human\species_types\furry\mammal.dm"
+#include "code\modules\mob\living\carbon\human\species_types\furry\anthromorph.dm"
 #include "code\modules\mob\living\carbon\human\species_types\furry\vulpkanin.dm"
 #include "code\modules\mob\living\carbon\human\species_types\roguetown\roguetown_species.dm"
 #include "code\modules\mob\living\carbon\human\species_types\roguetown\dwarf\_dwarf.dm"

@@ -51,3 +51,7 @@
 
 /obj/item/organ/tail/xeno
 	name = "xeno tail"
+
+/obj/item/organ/tail/tiefling
+	name = "tiefling tail"
+	accessory_type =  /datum/sprite_accessory/tail/tiefling

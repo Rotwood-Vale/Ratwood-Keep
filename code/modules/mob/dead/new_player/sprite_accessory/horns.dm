@@ -6,7 +6,7 @@
 	default_colors = list("#555555")
 
 /datum/sprite_accessory/horns/adjust_appearance_list(list/appearance_list, obj/item/organ/organ, obj/item/bodypart/bodypart, mob/living/carbon/owner)
-	generic_gender_face_feature_adjust(appearance_list, organ, bodypart, owner)
+	generic_gender_feature_adjust(appearance_list, organ, bodypart, owner, OFFSET_FACE, OFFSET_FACE_F)
 
 /datum/sprite_accessory/horns/simple
 	name = "Simple"
@@ -48,3 +48,8 @@
 	name = "Big Antlers"
 	icon_state = "big_antlers"
 	relevant_layers = list(BODY_ADJ_LAYER, BODY_BEHIND_LAYER, BODY_FRONT_LAYER)
+
+/datum/sprite_accessory/horns/tiefling
+	name = "Tiefling"
+	icon = 'icons/mob/sprite_accessory/tiefling.dmi'
+	icon_state = "tiebhorns"

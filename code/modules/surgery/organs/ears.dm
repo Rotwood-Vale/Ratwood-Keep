@@ -14,6 +14,8 @@
 	now_fixed = "<span class='info'>Noise slowly begins filling my ears once more.</span>"
 	low_threshold_cleared = "<span class='info'>The ringing in my ears has died down.</span>"
 
+	visible_organ = TRUE
+
 	// `deaf` measures "ticks" of deafness. While > 0, the person is unable
 	// to hear anything.
 	var/deaf = 0
@@ -149,12 +151,24 @@
 		return
 	damage += 40/severity
 
-/obj/item/organ/ears/mammal
-	name = "mammal ears"
+/obj/item/organ/ears/anthromorph
+	name = "anthromorph ears"
 
 /obj/item/organ/ears/vulpkanin
 	name = "vulpkanin ears"
 
 /obj/item/organ/ears/tajaran
 	name = "tajaran ears"
+
+/obj/item/organ/ears/elf
+	name = "elf ears"
+	accessory_type = /datum/sprite_accessory/ears/elf
+
+/obj/item/organ/ears/elfw
+	name = "wood elf ears"
+	accessory_type = /datum/sprite_accessory/ears/elfw
+
+/obj/item/organ/ears/tiefling
+	name = "tiefling ears"
+	accessory_type = /datum/sprite_accessory/ears/elfw
 

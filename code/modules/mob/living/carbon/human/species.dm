@@ -233,9 +233,8 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 
 //Will regenerate missing organs
 /datum/species/proc/regenerate_organs(mob/living/carbon/C, datum/species/old_species, replace_current=TRUE, list/excluded_zones, datum/preferences/pref_load)
-	/// If we're switching species, and switching to a different specie, clear the organ dna.
-	if(old_species && old_species.type != type)
-		C.dna.organ_dna = list()
+	/// Clear the dna
+	C.dna.organ_dna = list()
 	/// Add DNA and create organs from prefs
 	if(pref_load)
 		var/list/organ_dna_list = pref_load.get_organ_dna_list()
@@ -257,7 +256,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 		var/obj/item/organ/oldorgan = C.getorganslot(slot) //used in removing
 		var/obj/item/organ/neworgan
 
-		var/list/source_key_list = color_key_source_list_from_dna(C.dna)
+		var/list/source_key_list = color_key_source_list_from_carbon(C)
 		if(C.dna.organ_dna[slot])
 			var/datum/organ_dna/organ_dna = C.dna.organ_dna[slot]
 			if(organ_dna.can_create_organ())

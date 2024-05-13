@@ -39,20 +39,20 @@
 			stack_trace("Sprite accessory of [type] has missing color key names")
 	return ..()
 
-/datum/sprite_accessory/proc/generic_gender_face_feature_adjust(list/appearance_list, obj/item/organ/organ, obj/item/bodypart/bodypart, mob/living/carbon/owner)
+/datum/sprite_accessory/proc/generic_gender_feature_adjust(list/appearance_list, obj/item/organ/organ, obj/item/bodypart/bodypart, mob/living/carbon/owner, feature_male_key, feature_female_key)
 	if(!ishuman(owner))
 		return
 	var/mob/living/carbon/human/humie = owner
 	var/datum/species/species = owner.dna.species
 	for(var/mutable_appearance/appearance as anything in appearance_list)
+		var/list/offset_list
 		if(humie.gender == FEMALE)
-			if(OFFSET_FACE_FEATURE_F in species.offset_features)
-				appearance.pixel_x += species.offset_features[OFFSET_FACE_FEATURE_F][1]
-				appearance.pixel_y += species.offset_features[OFFSET_FACE_FEATURE_F][2]
+			offset_list = species.offset_features[feature_female_key]
 		else
-			if(OFFSET_FACE_FEATURE in species.offset_features)
-				appearance.pixel_x += species.offset_features[OFFSET_FACE_FEATURE][1]
-				appearance.pixel_y += species.offset_features[OFFSET_FACE_FEATURE][2]
+			offset_list = species.offset_features[feature_male_key]
+		if(offset_list)
+			appearance.pixel_x += offset_list[1]
+			appearance.pixel_y += offset_list[2]
 
 /datum/sprite_accessory/proc/validate_organ_color_keys(obj/item/organ/organ)
 	if(!color_keys)
@@ -203,6 +203,7 @@
 	sources[KEY_MUT_COLOR_TWO] = features["mcolor2"]
 	sources[KEY_MUT_COLOR_THREE] = features["mcolor3"]
 	/// Read specific organ entries to deduce eye, hair and facial hair color
+	sources[KEY_SKIN_COLOR] = prefs.skin_tone
 	return sources
 
 /proc/color_key_source_list_from_dna(datum/dna/dna)
@@ -212,6 +213,22 @@
 	sources[KEY_MUT_COLOR_TWO] = features["mcolor2"]
 	sources[KEY_MUT_COLOR_THREE] = features["mcolor3"]
 	/// Read specific organ DNA entries to deduce eye, hair and facial hair color
+	sources[KEY_SKIN_COLOR] = "FFFFFF" // DNA doesnt work properly here lmao
+	return sources
+
+/proc/color_key_source_list_from_carbon(mob/living/carbon/carbon)
+	var/datum/dna/dna = carbon.dna
+	var/list/features = dna.features
+	var/list/sources = list()
+	sources[KEY_MUT_COLOR_ONE] = features["mcolor"]
+	sources[KEY_MUT_COLOR_TWO] = features["mcolor2"]
+	sources[KEY_MUT_COLOR_THREE] = features["mcolor3"]
+	/// Read specific organ DNA entries to deduce eye, hair and facial hair color
+	if(ishuman(carbon))
+		var/mob/living/carbon/human/human = carbon
+		sources[KEY_SKIN_COLOR] = human.skin_tone
+	else
+		sources[KEY_SKIN_COLOR] = "FFFFFF"
 	return sources
 
 #ifdef UNIT_TESTS

@@ -3,6 +3,9 @@
 	relevant_layers = list(BODY_BEHIND_LAYER, BODY_ADJ_LAYER)
 	var/can_wag = TRUE
 
+/datum/sprite_accessory/tail_feature/adjust_appearance_list(list/appearance_list, obj/item/organ/organ, obj/item/bodypart/bodypart, mob/living/carbon/owner)
+	generic_gender_feature_adjust(appearance_list, organ, bodypart, owner, OFFSET_BACK, OFFSET_BACK_F)
+
 /datum/sprite_accessory/tail_feature/get_icon_state(obj/item/organ/organ, obj/item/bodypart/bodypart, mob/living/carbon/owner)
 	if(!owner || !can_wag)
 		return ..()

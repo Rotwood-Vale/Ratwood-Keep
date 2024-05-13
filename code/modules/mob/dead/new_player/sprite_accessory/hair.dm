@@ -3,7 +3,7 @@
 	color_key_name = "Hair"
 
 /datum/sprite_accessory/hair/adjust_appearance_list(list/appearance_list, obj/item/organ/organ, obj/item/bodypart/bodypart, mob/living/carbon/owner)
-	generic_gender_face_feature_adjust(appearance_list, organ, bodypart, owner)
+	generic_gender_feature_adjust(appearance_list, organ, bodypart, owner, OFFSET_FACE, OFFSET_FACE_F)
 
 /datum/sprite_accessory/hair/head
 	abstract_type = /datum/sprite_accessory/hair/head

@@ -4,6 +4,9 @@
 	color_key_name = "Ears"
 	relevant_layers = list(BODY_ADJ_LAYER, BODY_FRONT_LAYER)
 
+/datum/sprite_accessory/ears/adjust_appearance_list(list/appearance_list, obj/item/organ/organ, obj/item/bodypart/bodypart, mob/living/carbon/owner)
+	generic_gender_feature_adjust(appearance_list, organ, bodypart, owner, OFFSET_FACE, OFFSET_FACE_F)
+
 /datum/sprite_accessory/ears/cat
 	name = "Cat"
 	icon_state = "cat"
@@ -256,3 +259,15 @@
 	icon_state = "raccoon"
 	color_keys = 2
 	color_key_names = list("Ears", "Inner")
+
+/datum/sprite_accessory/ears/elf
+	name = "Elf"
+	icon = 'icons/mob/sprite_accessory/elf.dmi'
+	icon_state = "elf"
+	color_key_defaults = list(KEY_SKIN_COLOR)
+
+/datum/sprite_accessory/ears/elfw
+	name = "Elf (Wood)"
+	icon = 'icons/mob/sprite_accessory/elf.dmi'
+	icon_state = "elfw"
+	color_key_defaults = list(KEY_SKIN_COLOR)
