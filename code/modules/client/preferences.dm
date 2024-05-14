@@ -415,24 +415,10 @@ GLOBAL_LIST_EMPTY(chosen_names)
 //					dat += APPEARANCE_CATEGORY_COLUMN
 
 //				dat += "<h3>Eye Color</h3>"
-				dat += "<b>Eye Color: </b><a href='?_src_=prefs;preference=eyes;task=input'>Change </a>"
 //				dat += "<a href='?_src_=prefs;preference=toggle_random;random_type=[RANDOM_EYE_COLOR]'>[(randomise[RANDOM_EYE_COLOR]) ? "Lock" : "Unlock"]</A>"
 				dat += "<br>"
 				dat += "<b>Voice Color: </b><a href='?_src_=prefs;preference=voice;task=input'>Change</a>"
 				dat += "<br>"
-				if(HAIR in pref_species.species_traits)
-					dat += "<b>Hairstyle:</b> <a href='?_src_=prefs;preference=hairstyle;task=input'>[hairstyle]</a>"
-					dat += "<br>"
-					if(gender == MALE)
-						dat += "<b>Facial Hair:</b> <a href='?_src_=prefs;preference=facial_hairstyle;task=input'>[facial_hairstyle]</a>"
-						dat += "<br>"
-					dat += "<b>Hair Color: </b>  <a href='?_src_=prefs;preference=hair;task=input'>Change</a>"
-					dat += "<br>"
-				dat += "<b>Face Detail:</b> <a href='?_src_=prefs;preference=detail;task=input'>[detail]</a>"
-				dat += "<br>"
-				dat += "<b>Body Detail:</b> <a href='?_src_=prefs;preference=bdetail;task=input'>None</a>"
-				if(gender == FEMALE)
-					dat += "<br>"
 				dat += "<br></td>"
 //				dat += "<span style='border: 1px solid #161616; background-color: #[detail_color];'>&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;preference=detail_color;task=input'>Change</a>"
 			else if(use_skintones || mutant_colors)

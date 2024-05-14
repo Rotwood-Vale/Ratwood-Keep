@@ -9,8 +9,11 @@
 #define DEFAULT_SKIN_OR_PRIMARY	5 //Uses skin tone color if the character uses one, otherwise primary
 
 /proc/assemble_body_markings_from_set(datum/body_marking_set/BMS, list/features, datum/species/pref_species)
+	return assemble_body_markings_from_list(BMS.body_marking_list, features, pref_species)
+
+/proc/assemble_body_markings_from_list(list/passed_body_markings, list/features, datum/species/pref_species)
 	var/list/body_markings = list()
-	for(var/set_type in BMS.body_marking_list)
+	for(var/set_type in passed_body_markings)
 		var/datum/body_marking/BM = GLOB.body_markings_by_type[set_type]
 		var/set_name = BM.name
 		for(var/zone in GLOB.body_markings_per_limb)

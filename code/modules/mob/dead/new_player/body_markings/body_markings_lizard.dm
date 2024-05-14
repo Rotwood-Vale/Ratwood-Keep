@@ -1,6 +1,6 @@
 /datum/body_marking/lizard
 	icon = 'icons/mob/body_markings/lizard_markings.dmi'
-	default_color = "FFF"
+	default_color = DEFAULT_SECONDARY
 	affected_bodyparts = CHEST
 
 /datum/body_marking/lizard/dtiger

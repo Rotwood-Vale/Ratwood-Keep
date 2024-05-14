@@ -1,7 +1,10 @@
+/mob/living/carbon/human/species/vulpkanin
+	race = /datum/species/vulpkanin
+
 /datum/species/vulpkanin
 	name = "Vulpkanin"
 	id = "vulpkanin"
-	//flavor_text = "A fully-furred bipedal fox. Most enjoy meats, and fried foods, but will eat just about anything."
+	desc = "A fully-furred bipedal fox. Most enjoy meats, and fried foods, but will eat just about anything."
 	default_color = "444"
 	species_traits = list(
 		MUTCOLORS,
@@ -9,16 +12,16 @@
 		LIPS,
 		HAIR,
 	)
+	inherent_traits = list(TRAIT_NOMOBSWAP)
 	inherent_biotypes = MOB_ORGANIC|MOB_HUMANOID
 	attack_verb = "slash"
-	//attack_sound = 'sound/weapons/slash.ogg'
-	//miss_sound = 'sound/weapons/slashmiss.ogg'
 	liked_food = GROSS | MEAT | FRIED
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
-	limbs_icon_m = 'icons/mob/species/vulp_m.dmi'
-	limbs_icon_f = 'icons/mob/species/vulp_f.dmi'
-	//limbs_icon = 'icons/mob/species/mammal_parts_greyscale.dmi'
-	//limbs_id = "mammal"
+	possible_ages = list(AGE_ADULT, AGE_MIDDLEAGED, AGE_OLD)
+	limbs_icon_m = 'icons/roguetown/mob/bodies/m/mt.dmi'
+	limbs_icon_f = 'icons/roguetown/mob/bodies/f/fm.dmi'
+	dam_icon = 'icons/roguetown/mob/bodies/dam/dam_male.dmi'
+	dam_icon_f = 'icons/roguetown/mob/bodies/dam/dam_female.dmi'
 	offset_features = list(
 		OFFSET_ID = list(0,1), OFFSET_GLOVES = list(0,1), OFFSET_WRISTS = list(0,1),\
 		OFFSET_CLOAK = list(0,1), OFFSET_FACEMASK = list(0,1), OFFSET_HEAD = list(0,1), \
@@ -52,8 +55,10 @@
 		/datum/organ_customizer/hair/facial/humanoid,
 		/datum/organ_customizer/tail/vulpkanin,
 		/datum/organ_customizer/snout/vulpkanin,
+		/datum/organ_customizer/ears/vulpkanin,
 		)
 	body_marking_sets = list(
+		/datum/body_marking_set/none,
 		/datum/body_marking_set/fox,
 		/datum/body_marking_set/floof,
 		/datum/body_marking_set/floofer,
@@ -72,6 +77,8 @@
 /datum/species/vulpkanin/check_roundstart_eligible()
 	return TRUE
 
+/datum/species/vulpkanin/qualifies_for_rank(rank, list/features)
+	return TRUE
 
 /datum/species/vulpkanin/get_random_features()
 	var/list/returned = MANDATORY_FEATURE_LIST

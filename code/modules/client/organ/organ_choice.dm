@@ -16,6 +16,8 @@
 	var/default_accessory
 	/// Whether this organ choice allows to customize colors of sprite accessories.
 	var/allows_accessory_color_customization = TRUE
+	/// Whether to pick a random accessory from all possible ones in `sprite_accessories` rather than use the proc for randomization
+	var/generic_random_pick = FALSE
 
 /datum/organ_choice/New()
 	. = ..()
@@ -44,7 +46,11 @@
 			organ_dna.accessory_colors = accessory.get_default_colors(color_key_source_list_from_prefs(prefs))
 
 /datum/organ_choice/proc/randomize_entry(datum/organ_entry/entry, datum/preferences/prefs)
-	var/random_accessory = get_random_accessory(entry, prefs)
+	var/random_accessory
+	if(generic_random_pick && sprite_accessories)
+		random_accessory = pick(sprite_accessories)
+	else
+		random_accessory = get_random_accessory(entry, prefs)
 	if(random_accessory)
 		set_accessory_type(prefs, random_accessory, entry)
 	var/random_color = get_random_color(entry, prefs, entry.accessory_type)

@@ -14,6 +14,7 @@
 /datum/organ_choice/tail_feature/lizard_spines
 	name = "Tail Spines"
 	organ_type = /obj/item/organ/tail_feature/lizard_spines
+	generic_random_pick = TRUE
 	sprite_accessories = list(
 		/datum/sprite_accessory/tail_feature/spines/short,
 		/datum/sprite_accessory/tail_feature/spines/shortmeme,

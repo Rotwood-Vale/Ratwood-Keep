@@ -96,18 +96,7 @@
 	icon = 'icons/obj/clothing/hats.dmi'
 	icon_state = "kitty"
 	damage_multiplier = 2
-
-/obj/item/organ/ears/cat/Insert(mob/living/carbon/human/H, special = 0, drop_if_replaced = TRUE)
-	..()
-	if(istype(H))
-		color = H.hair_color
-		H.update_body()
-
-/obj/item/organ/ears/cat/Remove(mob/living/carbon/human/H,  special = 0)
-	..()
-	if(istype(H))
-		color = H.hair_color
-		H.update_body()
+	accessory_type = /datum/sprite_accessory/ears/cat
 
 /obj/item/organ/ears/penguin
 	name = "penguin ears"
@@ -156,6 +145,7 @@
 
 /obj/item/organ/ears/vulpkanin
 	name = "vulpkanin ears"
+	accessory_type = /datum/sprite_accessory/ears/fox
 
 /obj/item/organ/ears/tajaran
 	name = "tajaran ears"
@@ -172,3 +162,6 @@
 	name = "tiefling ears"
 	accessory_type = /datum/sprite_accessory/ears/elfw
 
+/obj/item/organ/ears/akula
+	name = "akula ears"
+	accessory_type = /datum/sprite_accessory/ears/sergal

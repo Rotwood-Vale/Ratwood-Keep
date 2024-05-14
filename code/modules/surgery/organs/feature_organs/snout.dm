@@ -24,5 +24,13 @@
 /obj/item/organ/snout/tajaran
 	name = "tajaran snout"
 
+/obj/item/organ/snout/cat
+	name = "cat snout"
+	accessory_type = /datum/sprite_accessory/snout/cat
+
 /obj/item/organ/snout/synth
 	name = "synthetic snout"
+
+/obj/item/organ/snout/akula
+	name = "akula snout"
+	accessory_type = /datum/sprite_accessory/snout/sergal

@@ -6,4 +6,4 @@
 	zone = BODY_ZONE_HEAD
 	slot = ORGAN_SLOT_FRILLS
 
-/obj/item/organ/frills/humanoid
+/obj/item/organ/frills/lizard

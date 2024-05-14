@@ -55,3 +55,7 @@
 /obj/item/organ/tail/tiefling
 	name = "tiefling tail"
 	accessory_type =  /datum/sprite_accessory/tail/tiefling
+
+/obj/item/organ/tail/akula
+	name = "akula tail"
+	accessory_type =  /datum/sprite_accessory/tail/shark

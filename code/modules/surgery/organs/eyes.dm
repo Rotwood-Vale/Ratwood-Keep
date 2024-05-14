@@ -18,7 +18,7 @@
 	now_fixed = "<span class='info'>Color and shapes are once again perceivable.</span>"
 	high_threshold_cleared = "<span class='info'>My vision functions passably once more.</span>"
 	low_threshold_cleared = "<span class='info'>My vision is cleared of any ailment.</span>"
-	
+
 	organ_dna_type = /datum/organ_dna/eyes
 	accessory_type = /datum/sprite_accessory/eyes/humanoid
 	accessory_colors = "#FFFFFF#FFFFFF"
@@ -431,6 +431,9 @@
 	name = "moth eyes"
 	desc = ""
 	flash_protect = FLASH_PROTECTION_SENSITIVE
+	accessory_type = /datum/sprite_accessory/eyes/moth
+	eye_color = "000000"
+	second_color = "000000"
 
 /obj/item/organ/eyes/snail
 	name = "snail eyes"

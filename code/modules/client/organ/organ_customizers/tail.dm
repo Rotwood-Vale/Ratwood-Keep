@@ -30,6 +30,7 @@
 /datum/organ_choice/tail/lizard
 	name = "Lizard Tail"
 	organ_type = /obj/item/organ/tail/lizard
+	generic_random_pick = TRUE
 	sprite_accessories = list(
 		/datum/sprite_accessory/tail/lizard/smooth,
 		/datum/sprite_accessory/tail/lizard/dtiger,

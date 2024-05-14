@@ -8,12 +8,13 @@
 	organ_type = /obj/item/organ/frills
 	organ_slot = ORGAN_SLOT_FRILLS
 
-/datum/organ_customizer/frills/humanoid
-	organ_choices = list(/datum/organ_choice/frills/humanoid)
+/datum/organ_customizer/frills/lizard
+	organ_choices = list(/datum/organ_choice/frills/lizard)
 
-/datum/organ_choice/frills/humanoid
+/datum/organ_choice/frills/lizard
 	name = "Frills"
-	organ_type = /obj/item/organ/frills/humanoid
+	organ_type = /obj/item/organ/frills/lizard
+	generic_random_pick = TRUE
 	sprite_accessories = list(
 		/datum/sprite_accessory/frills/simple,
 		/datum/sprite_accessory/frills/short,

@@ -14,6 +14,7 @@
 /datum/organ_choice/horns/humanoid
 	name = "Horns"
 	organ_type = /obj/item/organ/horns/humanoid
+	generic_random_pick = TRUE
 	sprite_accessories = list(
 		/datum/sprite_accessory/horns/simple,
 		/datum/sprite_accessory/horns/short,

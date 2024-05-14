@@ -12,6 +12,12 @@
 	allows_accessory_color_customization = FALSE //Customized through eye color
 	var/allows_heterochromia = TRUE
 
+/datum/organ_choice/eyes/on_randomize_entry(datum/organ_entry/entry, datum/preferences/prefs)
+	var/datum/organ_entry/eyes/eye_entry = entry
+	var/picked_color = pick(EYE_COLOR_LIST)
+	eye_entry.eye_color = picked_color
+	eye_entry.second_color = picked_color
+
 /datum/organ_choice/eyes/validate_entry(datum/preferences/prefs, datum/organ_entry/entry)
 	..()
 	var/datum/organ_entry/eyes/eyes_entry = entry
@@ -69,8 +75,9 @@
 
 /datum/organ_choice/eyes/humanoid
 
-/datum/organ_choice/eyes/humanoid/on_randomize_entry(datum/organ_entry/entry, datum/preferences/prefs)
-	var/datum/organ_entry/eyes/eye_entry = entry
-	var/picked_color = pick(EYE_COLOR_LIST)
-	eye_entry.eye_color = picked_color
-	eye_entry.second_color = picked_color
+/datum/organ_customizer/eyes/moth
+	organ_choices = list(/datum/organ_choice/eyes/moth)
+	default_choice = /datum/organ_choice/eyes/moth
+
+/datum/organ_choice/eyes/moth
+	organ_type = /obj/item/organ/eyes/moth

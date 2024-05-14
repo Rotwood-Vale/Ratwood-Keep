@@ -14,6 +14,7 @@
 /datum/organ_choice/snout/lizard
 	name = "Lizard Snout"
 	organ_type = /obj/item/organ/snout/lizard
+	generic_random_pick = TRUE
 	sprite_accessories = list(
 		/datum/sprite_accessory/snout/sharp,
 		/datum/sprite_accessory/snout/round,
