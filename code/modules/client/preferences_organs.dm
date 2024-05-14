@@ -46,6 +46,9 @@
 	var/list/customizers = pref_species.organ_customizers
 	if(!customizers)
 		return
+	dat += "<table width='100%'>"
+	dat += "<td valign='top' width='33%'>"
+	var/iterated_customizers = 0
 	for(var/customizer_type in customizers)
 		var/datum/organ_customizer/customizer = ORGAN_CUSTOMIZER(customizer_type)
 		var/datum/organ_entry/entry = get_organ_entry_for_customizer_type(customizer_type)
@@ -62,9 +65,9 @@
 			if(customizer.allows_missing_organ)
 				customizer_link = "href='?_src_=prefs;task=change_organ;customizer=[customizer_type];organ=toggle_missing' class='linkOn'"
 			else
-				customizer_link = "class='linkOff'"
+				customizer_link = ""
 
-		dat += "<hr>"
+		dat += "<table align='center'; width='100%'; height='100px'; style='background-color:#1c1313'><tr style='vertical-align:top'><td width=100%>"
 		dat += "<a [customizer_link]>[customizer.name]</a>"
 		if(!entry.missing_organ)
 			var/choice_link
@@ -78,7 +81,13 @@
 			var/list/choice_list = choice.show_pref_choices(src, entry, customizer_type)
 			if(choice_list)
 				dat += choice_list
-
+		
+		dat += "</td></table><br>"
+		iterated_customizers += 1
+		if(iterated_customizers >= 4)
+			dat += "</td><td valign='top' width='33%'>"
+			iterated_customizers = 0
+	dat += "</td></table>"
 	return
 
 /// We dont associate the entries just to be safer for save/load, so we can't lookup easily and we do this.
@@ -144,6 +153,6 @@
 	var/list/dat = list()
 	dat += "<style>span.color_holder_box{display: inline-block; width: 20px; height: 8px; border:1px solid #000; padding: 0px;}</style>"
 	dat += print_organs_page()
-	var/datum/browser/popup = new(user, "organs_customization", "<div align='center'>Organs customization</div>", 600, 600)
+	var/datum/browser/popup = new(user, "organs_customization", "<div align='center'>Organs customization</div>", 600, 700)
 	popup.set_content(dat.Join())
 	popup.open(FALSE)
