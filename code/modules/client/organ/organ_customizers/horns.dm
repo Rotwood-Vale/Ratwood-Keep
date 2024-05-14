@@ -25,3 +25,21 @@
 		/datum/sprite_accessory/horns/drake,
 		/datum/sprite_accessory/horns/knight,
 		)
+
+/datum/organ_customizer/horns/demihuman
+	organ_choices = list(/datum/organ_choice/horns/demihuman)
+	allows_missing_organ = TRUE
+	default_missing_organ =  TRUE
+
+/datum/organ_choice/horns/demihuman
+	name = "Horns"
+	organ_type = /obj/item/organ/horns
+	sprite_accessories = list(
+		/datum/sprite_accessory/horns/simple,
+		/datum/sprite_accessory/horns/short,
+		/datum/sprite_accessory/horns/curled,
+		/datum/sprite_accessory/horns/ram,
+		/datum/sprite_accessory/horns/guilmon,
+		/datum/sprite_accessory/horns/drake,
+		/datum/sprite_accessory/horns/knight,
+		)

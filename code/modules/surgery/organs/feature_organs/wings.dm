@@ -40,3 +40,7 @@
 /obj/item/organ/wings/flight/megamoth
 	name = "megamoth wings"
 	desc = "A pair of horrifyingly large, fuzzy wings. They look strong enough to lift you up in the air."
+
+/obj/item/organ/wings/dracon
+	name = "dracon wings"
+	accessory_type = /datum/sprite_accessory/wings/huge/dragon

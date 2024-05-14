@@ -96,10 +96,14 @@
 	if(relevant_layers)
 		for(var/iterated_layer in relevant_layers)
 			var/mutable_appearance/appearance = mutable_appearance(cached_icon, "[overlay_icon_state]_[get_layer_suffix(iterated_layer)]", layer = -iterated_layer)
+			appearance.pixel_x = pixel_x
+			appearance.pixel_y = pixel_y
 			//appearance.overlays += emissive_blocker(cached_icon, "[overlay_icon_state]_[get_layer_suffix(iterated_layer)]")
 			appearance_list += appearance
 	else
 		var/mutable_appearance/appearance = mutable_appearance(cached_icon, overlay_icon_state, layer = -layer)
+		appearance.pixel_x = pixel_x
+		appearance.pixel_y = pixel_y
 		//appearance.overlays += emissive_blocker(cached_icon, overlay_icon_state)
 		appearance_list += appearance
 	return appearance_list

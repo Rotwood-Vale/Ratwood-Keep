@@ -35,6 +35,23 @@
 	organ_type = /obj/item/organ/ears/cat
 	sprite_accessories = list(/datum/sprite_accessory/ears/cat)
 
+/datum/organ_customizer/ears/demihuman
+	organ_choices = list(/datum/organ_choice/ears/demihuman)
+
+/datum/organ_choice/ears/demihuman
+	name = "Demihuman Ears"
+	organ_type = /obj/item/organ/ears
+	generic_random_pick = TRUE
+	sprite_accessories = list(
+		/datum/sprite_accessory/none,
+		/datum/sprite_accessory/ears/cat,
+		/datum/sprite_accessory/ears/fox,
+		/datum/sprite_accessory/ears/wolf,
+		/datum/sprite_accessory/ears/husky,
+		/datum/sprite_accessory/ears/rabbit,
+		/datum/sprite_accessory/ears/rabbit_lop,
+		)
+
 /datum/organ_customizer/ears/anthromorph
 	organ_choices = list(/datum/organ_choice/ears/anthromorph)
 

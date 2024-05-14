@@ -38,6 +38,22 @@
 		/datum/sprite_accessory/tail/lizard/spikes,
 		)
 
+/datum/organ_customizer/tail/demihuman
+	organ_choices = list(/datum/organ_choice/tail/demihuman)
+	allows_missing_organ = TRUE
+
+/datum/organ_choice/tail/demihuman
+	name = "Demihuman Tail"
+	organ_type = /obj/item/organ/tail
+	generic_random_pick = TRUE
+	sprite_accessories = list(
+		/datum/sprite_accessory/tail/cat,
+		/datum/sprite_accessory/tail/fox,
+		/datum/sprite_accessory/tail/wolf,
+		/datum/sprite_accessory/tail/husky,
+		/datum/sprite_accessory/tail/rabbit,
+		)
+
 /datum/organ_customizer/tail/vox
 	organ_choices = list(/datum/organ_choice/tail/vox)
 

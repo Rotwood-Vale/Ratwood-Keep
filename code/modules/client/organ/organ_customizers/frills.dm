@@ -23,6 +23,4 @@
 		/datum/sprite_accessory/frills/horns,
 		/datum/sprite_accessory/frills/horns_double,
 		/datum/sprite_accessory/frills/big,
-		/datum/sprite_accessory/frills/cobrahood,
-		/datum/sprite_accessory/frills/cobrahood_ears,
 		)
