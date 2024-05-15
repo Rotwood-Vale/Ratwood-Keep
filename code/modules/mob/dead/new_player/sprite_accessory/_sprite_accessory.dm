@@ -54,27 +54,33 @@
 			appearance.pixel_x += offset_list[1]
 			appearance.pixel_y += offset_list[2]
 
-/datum/sprite_accessory/proc/validate_organ_color_keys(obj/item/organ/organ)
+/datum/sprite_accessory/proc/validate_color_keys_for_owner(mob/living/carbon/owner, colors)
 	if(!color_keys)
-		return
-	var/list/color_list = color_string_to_list(organ.accessory_colors)
+		return colors
+	var/list/color_list = color_string_to_list(colors)
 	if(color_list && color_list.len == color_keys)
-		return
+		return colors
 
-	if(!organ.owner)
-		return
-	organ.accessory_colors = get_default_colors(color_key_source_list_from_dna(organ.owner.dna))
+	if(!owner)
+		return colors
+	colors = get_default_colors(color_key_source_list_from_dna(owner.dna))
+	return colors
 
 /datum/sprite_accessory/proc/adjust_appearance_list(list/appearance_list, obj/item/organ/organ, obj/item/bodypart/bodypart, mob/living/carbon/owner)
 	return
 
 /// Gets the appearance of the sprite accessory as a mutable appearance for an organ on a bodypart.
-/datum/sprite_accessory/proc/get_appearance(obj/item/organ/organ, obj/item/bodypart/bodypart)
-	var/mob/living/carbon/owner = organ.owner
+/datum/sprite_accessory/proc/get_appearance(obj/item/organ/organ, obj/item/bodypart/bodypart, color_string)
+	var/mob/living/carbon/owner
+	if(organ)
+		owner = organ.owner
+	else if (bodypart)
+		owner = bodypart.owner
+	else
+		return
 	var/icon_state_to_use = get_icon_state(organ, bodypart, owner)
 	if(!icon_state_to_use)
 		return null
-	var/color_string = organ.accessory_colors
 	var/list/appearance_list = get_overlay(icon_state_to_use, color_string)
 	adjust_appearance_list(appearance_list, organ, bodypart, owner)
 	return appearance_list

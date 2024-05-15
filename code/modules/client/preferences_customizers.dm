@@ -124,7 +124,7 @@
 		var/datum/customizer_choice/customizer_choice = CUSTOMIZER_CHOICE(entry.customizer_choice_type)
 		if(entry.disabled)
 			continue
-		customizer_choice.apply_customizer_to_character(human, src)
+		customizer_choice.apply_customizer_to_character(human, src, entry)
 
 /datum/preferences/proc/handle_customizer_topic(mob/user, href_list)
 	//needs_update = TRUE

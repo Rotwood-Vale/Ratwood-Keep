@@ -398,8 +398,9 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 
 	C.add_movespeed_modifier(MOVESPEED_ID_SPECIES, TRUE, 100, override=TRUE, multiplicative_slowdown=speedmod, movetypes=(~FLYING))
 
+	C.remove_all_bodypart_features()
 	if(pref_load)
-		pref_load.apply_customizers_to_character(src)
+		pref_load.apply_customizers_to_character(C)
 
 	SEND_SIGNAL(C, COMSIG_SPECIES_GAIN, src, old_species)
 

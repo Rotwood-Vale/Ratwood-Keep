@@ -53,6 +53,8 @@
 		/datum/customizer/organ/eyes/humanoid,
 		/datum/customizer/organ/hair/head/humanoid,
 		/datum/customizer/organ/hair/facial/humanoid,
+		/datum/customizer/bodypart_feature/accessory,
+		/datum/customizer/bodypart_feature/face_detail,
 		/datum/customizer/organ/tail/vulpkanin,
 		/datum/customizer/organ/snout/vulpkanin,
 		/datum/customizer/organ/ears/vulpkanin,

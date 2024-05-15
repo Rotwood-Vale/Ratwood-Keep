@@ -6,5 +6,3 @@
 	var/accessory_type
 	var/accessory_colors
 	var/disabled = FALSE
-
-/datum/customizer_entry/organ

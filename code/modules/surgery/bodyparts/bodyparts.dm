@@ -87,6 +87,8 @@
 	/// Visaul markings to be rendered alongside the bodypart
 	var/list/markings
 	var/list/aux_markings
+	/// Visual features of the bodypart, such as hair and accessories
+	var/list/bodypart_features
 
 	resistance_flags = FLAMMABLE
 
@@ -130,7 +132,6 @@
 		appearance_list += get_specific_markings_overlays(aux_markings, TRUE, human_owner, override_color)
 	adjust_marking_overlays(appearance_list)
 	return appearance_list
-
 
 /obj/item/bodypart/grabbedintents(mob/living/user, precise)
 	return list(/datum/intent/grab/obj/move, /datum/intent/grab/obj/twist, /datum/intent/grab/obj/smash)
@@ -612,7 +613,13 @@
 			limb.color = "#[draw_color]"
 			if(aux_zone && !hideaux)
 				aux.color = "#[draw_color]"
-
+	
+	// Markings overlays
+	if(!skeletonized)
+		var/list/marking_overlays = get_markings_overlays(override_color)
+		if(marking_overlays)
+			. += marking_overlays
+	
 	// Organ overlays
 	if(!rotted && !skeletonized)
 		for(var/obj/item/organ/organ as anything in get_organs())
@@ -622,11 +629,13 @@
 			if(organ_appearance)
 				. += organ_appearance
 	
-	// Markings overlays
+	// Feature overlays
 	if(!skeletonized)
-		var/list/marking_overlays = get_markings_overlays(override_color)
-		if(marking_overlays)
-			. += marking_overlays
+		for(var/datum/bodypart_feature/feature as anything in bodypart_features)
+			var/overlays = feature.get_bodypart_overlay(src)
+			if(!overlays)
+				continue
+			. += overlays
 
 /obj/item/bodypart/deconstruct(disassembled = TRUE)
 	drop_organs()

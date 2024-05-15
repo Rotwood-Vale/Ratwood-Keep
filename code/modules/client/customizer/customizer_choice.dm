@@ -21,7 +21,7 @@
 		if(!(default_accessory in sprite_accessories))
 			CRASH("Customizer choice [type] has a default accessory which is unavailable in its accessory list.")
 
-/datum/customizer_choice/proc/apply_customizer_to_character(mob/living/carbon/human/human, datum/preferences/prefs)
+/datum/customizer_choice/proc/apply_customizer_to_character(mob/living/carbon/human/human, datum/preferences/prefs, datum/customizer_entry/entry)
 	return
 
 /datum/customizer_choice/proc/make_default_customizer_entry(datum/preferences/prefs, customizer_type, changed_entry = TRUE)
@@ -225,3 +225,15 @@
 	var/datum/organ_dna/organ_dna = new organ_dna_type()
 	imprint_organ_dna(organ_dna, entry, prefs)
 	return organ_dna
+
+/datum/customizer_choice/bodypart_feature
+	abstract_type = /datum/customizer_choice/bodypart_feature
+	name = "Bodypart Feature"
+	/// Typepath of the bodypart feature
+	var/feature_type = /datum/bodypart_feature
+
+/datum/customizer_choice/bodypart_feature/apply_customizer_to_character(mob/living/carbon/human/human, datum/preferences/prefs, datum/customizer_entry/entry)
+	var/datum/bodypart_feature/feature = new feature_type()
+	if(entry.accessory_type)
+		feature.set_accessory_type(entry.accessory_type, entry.accessory_colors, human)
+	human.add_bodypart_feature(feature)
