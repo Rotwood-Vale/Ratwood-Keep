@@ -56,10 +56,10 @@
 		ORGAN_SLOT_TAIL = /obj/item/organ/tail/cat,
 		ORGAN_SLOT_SNOUT = /obj/item/organ/snout/cat,
 		)
-	organ_customizers = list(
-		/datum/organ_customizer/eyes/humanoid,
-		/datum/organ_customizer/hair/head/humanoid,
-		/datum/organ_customizer/hair/facial/humanoid,
+	customizers = list(
+		/datum/customizer/organ/eyes/humanoid,
+		/datum/customizer/organ/hair/head/humanoid,
+		/datum/customizer/organ/hair/facial/humanoid,
 		)
 	body_markings = list(
 		/datum/body_marking/lizard/dtiger,

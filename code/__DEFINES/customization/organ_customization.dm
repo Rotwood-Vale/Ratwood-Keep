@@ -1,5 +1,5 @@
-#define ORGAN_CHOICE(type) GLOB.organ_choices[type]
-#define ORGAN_CUSTOMIZER(type) GLOB.organ_customizers[type]
+#define CUSTOMIZER_CHOICE(type) GLOB.customizer_choices[type]
+#define CUSTOMIZER(type) GLOB.customizers[type]
 
 /// Turns a color string such as "#FFFFFF#00FFFF" into a list of ("#FFFFFF", #00FFFF)
 /proc/color_string_to_list(color_string)

@@ -40,13 +40,13 @@
 	specstats_f = list("strength" = -1, "perception" = 0, "intelligence" = 2, "constitution" = -1, "endurance" = 0, "speed" = 1, "fortune" = 0)
 	enflamed_icon = "widefire"
 	possible_faiths = list(FAITH_PSYDON)
-	organ_customizers = list(
-		/datum/organ_customizer/eyes/humanoid,
-		/datum/organ_customizer/hair/head/humanoid,
-		/datum/organ_customizer/hair/facial/humanoid,
-		/datum/organ_customizer/ears/demihuman,
-		/datum/organ_customizer/horns/demihuman,
-		/datum/organ_customizer/tail/demihuman,
+	customizers = list(
+		/datum/customizer/organ/eyes/humanoid,
+		/datum/customizer/organ/hair/head/humanoid,
+		/datum/customizer/organ/hair/facial/humanoid,
+		/datum/customizer/organ/ears/demihuman,
+		/datum/customizer/organ/horns/demihuman,
+		/datum/customizer/organ/tail/demihuman,
 		)
 	body_markings = list(
 		/datum/body_marking/tattoo/heart,

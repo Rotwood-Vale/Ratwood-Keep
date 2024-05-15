@@ -1,17 +1,17 @@
-/datum/organ_customizer/taur_body
-	abstract_type = /datum/organ_customizer/taur_body
+/datum/customizer/organ/taur_body
+	abstract_type = /datum/customizer/organ/taur_body
 	name = "Taur Body"
 
-/datum/organ_choice/taur_body
-	abstract_type = /datum/organ_choice/taur_body
+/datum/customizer_choice/organ/taur_body
+	abstract_type = /datum/customizer_choice/organ/taur_body
 	name = "Taur Body"
 	organ_type = /obj/item/organ/taur_body
 	organ_slot = ORGAN_SLOT_TAUR_BODY
 
-/datum/organ_customizer/taur_body/humanoid
-	organ_choices = list(/datum/organ_choice/taur_body/humanoid)
+/datum/customizer/organ/taur_body/humanoid
+	customizer_choices = list(/datum/customizer_choice/organ/taur_body/humanoid)
 
-/datum/organ_choice/taur_body/humanoid
+/datum/customizer_choice/organ/taur_body/humanoid
 	name = "Taur Body"
 	organ_type = /obj/item/organ/taur_body/humanoid
 	sprite_accessories = list(
@@ -31,10 +31,10 @@
 		/datum/sprite_accessory/taur/feline,
 		)
 
-/datum/organ_customizer/taur_body/synth
-	organ_choices = list(/datum/organ_choice/taur_body/synth)
+/datum/customizer/organ/taur_body/synth
+	customizer_choices = list(/datum/customizer_choice/organ/taur_body/synth)
 
-/datum/organ_choice/taur_body/synth
+/datum/customizer_choice/organ/taur_body/synth
 	name = "Taur Body"
 	organ_type = /obj/item/organ/taur_body/synth
 	sprite_accessories = list(

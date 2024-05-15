@@ -466,10 +466,10 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 
 	all_quirks = SANITIZE_LIST(all_quirks)
 
-	S["organ_entries"] >> organ_entries
+	S["customizer_entries"] >> customizer_entries
 	S["update_mutant_colors"] >> update_mutant_colors
 
-	validate_organ_entries()
+	validate_customizer_entries()
 
 	return TRUE
 
@@ -533,7 +533,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	WRITE_FILE(S["selected_patron"]		, selected_patron.name)
 
 	// Organs
-	WRITE_FILE(S["organ_entries"] , organ_entries)
+	WRITE_FILE(S["customizer_entries"] , customizer_entries)
 	// Body markings
 	WRITE_FILE(S["body_markings"] , body_markings)
 

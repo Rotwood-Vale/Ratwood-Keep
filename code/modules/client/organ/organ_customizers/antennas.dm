@@ -1,17 +1,17 @@
-/datum/organ_customizer/antennas
-	abstract_type = /datum/organ_customizer/antennas
+/datum/customizer/organ/antennas
+	abstract_type = /datum/customizer/organ/antennas
 	name = "Antennas"
 
-/datum/organ_choice/antennas
-	abstract_type = /datum/organ_choice/antennas
+/datum/customizer_choice/organ/antennas
+	abstract_type = /datum/customizer_choice/organ/antennas
 	name = "Antennas"
 	organ_type = /obj/item/organ/antennas
 	organ_slot = ORGAN_SLOT_ANTENNAS
 
-/datum/organ_customizer/antennas/moth
-	organ_choices = list(/datum/organ_choice/antennas/moth)
+/datum/customizer/organ/antennas/moth
+	customizer_choices = list(/datum/customizer_choice/organ/antennas/moth)
 
-/datum/organ_choice/antennas/moth
+/datum/customizer_choice/organ/antennas/moth
 	name = "Moth Antennas"
 	organ_type = /obj/item/organ/antennas/moth
 	sprite_accessories = list(
@@ -34,10 +34,10 @@
 		/datum/sprite_accessory/antenna/moth/mothra,
 		)
 
-/datum/organ_customizer/antennas/ipc
-	organ_choices = list(/datum/organ_choice/antennas/ipc)
+/datum/customizer/organ/antennas/ipc
+	customizer_choices = list(/datum/customizer_choice/organ/antennas/ipc)
 
-/datum/organ_choice/antennas/ipc
+/datum/customizer_choice/organ/antennas/ipc
 	name = "I.P.C. Antennas"
 	organ_type = /obj/item/organ/antennas/ipc
 	sprite_accessories = list(
@@ -48,10 +48,10 @@
 		/datum/sprite_accessory/antenna/ipc/crowned,
 		)
 
-/datum/organ_customizer/antennas/synthliz
-	organ_choices = list(/datum/organ_choice/antennas/synthliz)
+/datum/customizer/organ/antennas/synthliz
+	customizer_choices = list(/datum/customizer_choice/organ/antennas/synthliz)
 
-/datum/organ_choice/antennas/synthliz
+/datum/customizer_choice/organ/antennas/synthliz
 	name = "Synthetic Antennas"
 	organ_type = /obj/item/organ/antennas/synth
 	sprite_accessories = list(

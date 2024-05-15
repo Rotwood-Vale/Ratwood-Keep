@@ -1,17 +1,17 @@
-/datum/organ_customizer/horns
-	abstract_type = /datum/organ_customizer/horns
+/datum/customizer/organ/horns
+	abstract_type = /datum/customizer/organ/horns
 	name = "Horns"
 
-/datum/organ_choice/horns
-	abstract_type = /datum/organ_choice/horns
+/datum/customizer_choice/organ/horns
+	abstract_type = /datum/customizer_choice/organ/horns
 	name = "Horns"
 	organ_type = /obj/item/organ/horns
 	organ_slot = ORGAN_SLOT_HORNS
 
-/datum/organ_customizer/horns/humanoid
-	organ_choices = list(/datum/organ_choice/horns/humanoid)
+/datum/customizer/organ/horns/humanoid
+	customizer_choices = list(/datum/customizer_choice/organ/horns/humanoid)
 
-/datum/organ_choice/horns/humanoid
+/datum/customizer_choice/organ/horns/humanoid
 	name = "Horns"
 	organ_type = /obj/item/organ/horns/humanoid
 	generic_random_pick = TRUE
@@ -26,12 +26,12 @@
 		/datum/sprite_accessory/horns/knight,
 		)
 
-/datum/organ_customizer/horns/demihuman
-	organ_choices = list(/datum/organ_choice/horns/demihuman)
-	allows_missing_organ = TRUE
-	default_missing_organ =  TRUE
+/datum/customizer/organ/horns/demihuman
+	customizer_choices = list(/datum/customizer_choice/organ/horns/demihuman)
+	allows_disabling = TRUE
+	default_disabled =  TRUE
 
-/datum/organ_choice/horns/demihuman
+/datum/customizer_choice/organ/horns/demihuman
 	name = "Horns"
 	organ_type = /obj/item/organ/horns
 	sprite_accessories = list(

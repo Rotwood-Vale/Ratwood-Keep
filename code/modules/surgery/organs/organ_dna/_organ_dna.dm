@@ -6,10 +6,10 @@
 	/// Accessory colors thats imprinted.
 	var/accessory_colors
 	/// Whether the DNA shouldn't yield an organ. This is so people can customize species that usually have an organ to not have one.
-	var/missing_organ = FALSE
+	var/disabled = FALSE
 
 /datum/organ_dna/proc/can_create_organ()
-	if(missing_organ)
+	if(disabled)
 		return FALSE
 	return TRUE
 

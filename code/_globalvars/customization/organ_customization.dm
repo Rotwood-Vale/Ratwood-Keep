@@ -1,18 +1,18 @@
-GLOBAL_LIST_INIT(organ_choices, build_organ_choices())
-GLOBAL_LIST_INIT(organ_customizers, build_organ_customizers())
+GLOBAL_LIST_INIT(customizer_choices, build_customizer_choices())
+GLOBAL_LIST_INIT(customizers, build_customizers())
 
-/proc/build_organ_choices()
-	var/list/organ_choice_list = list()
-	for(var/type in typesof(/datum/organ_choice))
+/proc/build_customizer_choices()
+	. = list()
+	for(var/type in typesof(/datum/customizer_choice))
 		if(is_abstract(type))
 			continue
-		organ_choice_list[type] = new type()
-	return organ_choice_list
+		.[type] = new type()
+	return .
 
-/proc/build_organ_customizers()
-	var/list/organ_customizer_list = list()
-	for(var/type in typesof(/datum/organ_customizer))
+/proc/build_customizers()
+	. = list()
+	for(var/type in typesof(/datum/customizer))
 		if(is_abstract(type))
 			continue
-		organ_customizer_list[type] = new type()
-	return organ_customizer_list
+		.[type] = new type()
+	return .

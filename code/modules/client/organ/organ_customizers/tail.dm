@@ -1,33 +1,33 @@
-/datum/organ_customizer/tail
+/datum/customizer/organ/tail
 	name = "Tail"
-	abstract_type = /datum/organ_customizer/tail
+	abstract_type = /datum/customizer/organ/tail
 
-/datum/organ_choice/tail
+/datum/customizer_choice/organ/tail
 	name = "Tail"
 	organ_type = /obj/item/organ/tail
 	organ_slot = ORGAN_SLOT_TAIL
-	abstract_type = /datum/organ_choice/tail
+	abstract_type = /datum/customizer_choice/organ/tail
 
-/datum/organ_customizer/tail/vulpkanin
-	organ_choices = list(/datum/organ_choice/tail/vulpkanin)
+/datum/customizer/organ/tail/vulpkanin
+	customizer_choices = list(/datum/customizer_choice/organ/tail/vulpkanin)
 
-/datum/organ_choice/tail/vulpkanin
+/datum/customizer_choice/organ/tail/vulpkanin
 	name = "Vulpkanin Tail"
 	organ_type = /obj/item/organ/tail/vulpkanin
 	sprite_accessories = list(/datum/sprite_accessory/tail/fox)
 
-/datum/organ_customizer/tail/tajaran
-	organ_choices = list(/datum/organ_choice/tail/tajaran)
+/datum/customizer/organ/tail/tajaran
+	customizer_choices = list(/datum/customizer_choice/organ/tail/tajaran)
 
-/datum/organ_choice/tail/tajaran
+/datum/customizer_choice/organ/tail/tajaran
 	name = "Tajaran Tail"
 	organ_type = /obj/item/organ/tail/tajaran
 	sprite_accessories = list(/datum/sprite_accessory/tail/catbig)
 
-/datum/organ_customizer/tail/lizard
-	organ_choices = list(/datum/organ_choice/tail/lizard)
+/datum/customizer/organ/tail/lizard
+	customizer_choices = list(/datum/customizer_choice/organ/tail/lizard)
 
-/datum/organ_choice/tail/lizard
+/datum/customizer_choice/organ/tail/lizard
 	name = "Lizard Tail"
 	organ_type = /obj/item/organ/tail/lizard
 	generic_random_pick = TRUE
@@ -38,11 +38,11 @@
 		/datum/sprite_accessory/tail/lizard/spikes,
 		)
 
-/datum/organ_customizer/tail/demihuman
-	organ_choices = list(/datum/organ_choice/tail/demihuman)
-	allows_missing_organ = TRUE
+/datum/customizer/organ/tail/demihuman
+	customizer_choices = list(/datum/customizer_choice/organ/tail/demihuman)
+	allows_disabling = TRUE
 
-/datum/organ_choice/tail/demihuman
+/datum/customizer_choice/organ/tail/demihuman
 	name = "Demihuman Tail"
 	organ_type = /obj/item/organ/tail
 	generic_random_pick = TRUE
@@ -54,34 +54,34 @@
 		/datum/sprite_accessory/tail/rabbit,
 		)
 
-/datum/organ_customizer/tail/vox
-	organ_choices = list(/datum/organ_choice/tail/vox)
+/datum/customizer/organ/tail/vox
+	customizer_choices = list(/datum/customizer_choice/organ/tail/vox)
 
-/datum/organ_choice/tail/vox
+/datum/customizer_choice/organ/tail/vox
 	name = "Vox Tail"
 	organ_type = /obj/item/organ/tail/vox
 	sprite_accessories = list(/datum/sprite_accessory/tail/vox/default)
 
-/datum/organ_customizer/tail/vox
-	organ_choices = list(/datum/organ_choice/tail/vox)
+/datum/customizer/organ/tail/vox
+	customizer_choices = list(/datum/customizer_choice/organ/tail/vox)
 
-/datum/organ_choice/tail/xeno
+/datum/customizer_choice/organ/tail/xeno
 	name = "Xeno Tail"
 	organ_type = /obj/item/organ/tail/xeno
 	sprite_accessories = list(/datum/sprite_accessory/tail/xeno)
 
-/datum/organ_customizer/tail/synthliz
-	organ_choices = list(/datum/organ_choice/tail/synthliz)
+/datum/customizer/organ/tail/synthliz
+	customizer_choices = list(/datum/customizer_choice/organ/tail/synthliz)
 
-/datum/organ_choice/tail/synthliz
+/datum/customizer_choice/organ/tail/synthliz
 	name = "Synthetic Tail"
 	organ_type = /obj/item/organ/tail/synth
 	sprite_accessories = list(/datum/sprite_accessory/tail/synthliz/normal)
 
-/datum/organ_customizer/tail/avali
-	organ_choices = list(/datum/organ_choice/tail/avali)
+/datum/customizer/organ/tail/avali
+	customizer_choices = list(/datum/customizer_choice/organ/tail/avali)
 
-/datum/organ_choice/tail/avali
+/datum/customizer_choice/organ/tail/avali
 	name = "Avali Tail"
 	organ_type = /obj/item/organ/tail/avali
 	sprite_accessories = list(
@@ -90,22 +90,22 @@
 		/datum/sprite_accessory/tail/teshari/thin,
 		)
 
-/datum/organ_choice/tail/cat
+/datum/customizer_choice/organ/tail/cat
 	name = "Cat Tail"
 	organ_type = /obj/item/organ/tail/cat
 	sprite_accessories = list(/datum/sprite_accessory/tail/cat)
 
-/datum/organ_customizer/tail/cat
-	organ_choices = list(/datum/organ_choice/tail/cat)
+/datum/customizer/organ/tail/cat
+	customizer_choices = list(/datum/customizer_choice/organ/tail/cat)
 
-/datum/organ_customizer/tail/mammal
-	organ_choices = list(
-		/datum/organ_choice/tail/mammal,
-		/datum/organ_choice/tail/lizard,
-		/datum/organ_choice/tail/xeno,
+/datum/customizer/organ/tail/mammal
+	customizer_choices = list(
+		/datum/customizer_choice/organ/tail/mammal,
+		/datum/customizer_choice/organ/tail/lizard,
+		/datum/customizer_choice/organ/tail/xeno,
 		)
 
-/datum/organ_choice/tail/mammal
+/datum/customizer_choice/organ/tail/mammal
 	name = "Mammal Tail"
 	organ_type = /obj/item/organ/tail/mammal
 	sprite_accessories = list(

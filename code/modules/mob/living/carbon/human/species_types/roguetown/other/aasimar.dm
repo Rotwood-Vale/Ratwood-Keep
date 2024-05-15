@@ -47,10 +47,10 @@
 	specstats = list("strength" = 0, "perception" = 1, "intelligence" = 2, "constitution" = -1, "endurance" = -1, "speed" = 1, "fortune" = 1)
 	specstats_f = list("strength" = 0, "perception" = 1, "intelligence" = 2, "constitution" = -1, "endurance" = -1, "speed" = 1, "fortune" = 1)
 	enflamed_icon = "widefire"
-	organ_customizers = list(
-		/datum/organ_customizer/eyes/humanoid,
-		/datum/organ_customizer/hair/head/humanoid,
-		/datum/organ_customizer/hair/facial/humanoid,
+	customizers = list(
+		/datum/customizer/organ/eyes/humanoid,
+		/datum/customizer/organ/hair/head/humanoid,
+		/datum/customizer/organ/hair/facial/humanoid,
 		)
 	body_markings = list(
 		/datum/body_marking/tattoo/heart,

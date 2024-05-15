@@ -1,87 +1,87 @@
-/datum/preferences/proc/validate_organ_entries()
-	organ_entries = SANITIZE_LIST(organ_entries)
-	listclearnulls(organ_entries)
+/datum/preferences/proc/validate_customizer_entries()
+	customizer_entries = SANITIZE_LIST(customizer_entries)
+	listclearnulls(customizer_entries)
 	var/datum/species/species = pref_species
-	var/list/customizers = species.organ_customizers
-	/// Check if we have any organ entries that don't match.
-	for(var/datum/organ_entry/entry as anything in organ_entries)
+	var/list/customizers = species.customizers
+	/// Check if we have any customizer entries that don't match.
+	for(var/datum/customizer_entry/entry as anything in customizer_entries)
 		var/validated = FALSE
 		for(var/customizer_type as anything in customizers)
-			if(customizer_type != entry.organ_customizer_type)
+			if(customizer_type != entry.customizer_type)
 				continue
-			var/datum/organ_customizer/customizer = ORGAN_CUSTOMIZER(customizer_type)
-			if(!(entry.organ_choice_type in customizer.organ_choices))
+			var/datum/customizer/customizer = CUSTOMIZER(customizer_type)
+			if(!(entry.customizer_choice_type in customizer.customizer_choices))
 				continue
-			var/datum/organ_choice/organ_choice = ORGAN_CHOICE(entry.organ_choice_type)
-			if(entry.type != organ_choice.organ_entry_type)
+			var/datum/customizer_choice/customizer_choice = CUSTOMIZER_CHOICE(entry.customizer_choice_type)
+			if(entry.type != customizer_choice.customizer_entry_type)
 				continue
 			validated = TRUE
 			break
 
 		if(!validated)
-			organ_entries -= entry
+			customizer_entries -= entry
 
-	/// Check if we have any missing organ entries
+	/// Check if we have any missing customizer entries
 	for(var/customizer_type as anything in customizers)
 		var/found = FALSE
-		for(var/datum/organ_entry/entry as anything in organ_entries)
-			if(entry.organ_customizer_type != customizer_type)
+		for(var/datum/customizer_entry/entry as anything in customizer_entries)
+			if(entry.customizer_type != customizer_type)
 				continue
 			found = TRUE
 			break
-		var/datum/organ_customizer/customizer = ORGAN_CUSTOMIZER(customizer_type)
+		var/datum/customizer/customizer = CUSTOMIZER(customizer_type)
 		if(!found)
-			organ_entries += customizer.make_default_organ_entry(src, FALSE)
+			customizer_entries += customizer.make_default_customizer_entry(src, FALSE)
 
-	/// Validate the variables within organ entries
-	for(var/datum/organ_entry/entry as anything in organ_entries)
-		var/datum/organ_choice/organ_choice = ORGAN_CHOICE(entry.organ_choice_type)
-		organ_choice.validate_entry(src, entry)
+	/// Validate the variables within customizer entries
+	for(var/datum/customizer_entry/entry as anything in customizer_entries)
+		var/datum/customizer_choice/customizer_choice = CUSTOMIZER_CHOICE(entry.customizer_choice_type)
+		customizer_choice.validate_entry(src, entry)
 
-/datum/preferences/proc/print_organs_page()
+/datum/preferences/proc/print_customizers_page()
 	var/list/dat = list()
 	. = dat
 	if(!pref_species)
 		return
-	var/list/customizers = pref_species.organ_customizers
+	var/list/customizers = pref_species.customizers
 	if(!customizers)
 		return
 	dat += "<table width='100%'>"
 	dat += "<td valign='top' width='33%'>"
 	var/iterated_customizers = 0
 	for(var/customizer_type in customizers)
-		var/datum/organ_customizer/customizer = ORGAN_CUSTOMIZER(customizer_type)
-		var/datum/organ_entry/entry = get_organ_entry_for_customizer_type(customizer_type)
+		var/datum/customizer/customizer = CUSTOMIZER(customizer_type)
+		var/datum/customizer_entry/entry = get_customizer_entry_for_customizer_type(customizer_type)
 		if(!entry)
-			stack_trace("Missing organ entry in preferences for customizer [customizer_type]")
+			stack_trace("Missing customizer entry in preferences for customizer [customizer_type]")
 			continue
-		var/datum/organ_choice/choice = ORGAN_CHOICE(entry.organ_choice_type)
+		var/datum/customizer_choice/choice = CUSTOMIZER_CHOICE(entry.customizer_choice_type)
 
 		var/customizer_link
 
-		if(entry.missing_organ)
-			customizer_link = "href='?_src_=prefs;task=change_organ;customizer=[customizer_type];organ=toggle_missing'"
+		if(entry.disabled)
+			customizer_link = "href='?_src_=prefs;task=change_customizer;customizer=[customizer_type];customizer_task=toggle_missing'"
 		else
-			if(customizer.allows_missing_organ)
-				customizer_link = "href='?_src_=prefs;task=change_organ;customizer=[customizer_type];organ=toggle_missing' class='linkOn'"
+			if(customizer.allows_disabling)
+				customizer_link = "href='?_src_=prefs;task=change_customizer;customizer=[customizer_type];customizer_task=toggle_missing' class='linkOn'"
 			else
 				customizer_link = ""
 
 		dat += "<table align='center'; width='100%'; height='100px'; style='background-color:#1c1313'><tr style='vertical-align:top'><td width=100%>"
 		dat += "<a [customizer_link]>[customizer.name]</a>"
-		if(!entry.missing_organ)
+		if(!entry.disabled)
 			var/choice_link
-			if(length(customizer.organ_choices) > 1)
-				choice_link = "href='?_src_=prefs;task=change_organ;customizer=[customizer_type];organ=change_choice'"
+			if(length(customizer.customizer_choices) > 1)
+				choice_link = "href='?_src_=prefs;task=change_customizer;customizer=[customizer_type];customizer_task=change_choice'"
 			else
 				choice_link = "class='linkOff'"
-			if(length(customizer.organ_choices) > 1)
+			if(length(customizer.customizer_choices) > 1)
 				dat += "<br><a [choice_link]>[choice.name]</a>"
 
 			var/list/choice_list = choice.show_pref_choices(src, entry, customizer_type)
 			if(choice_list)
 				dat += choice_list
-		
+
 		dat += "</td></table><br>"
 		iterated_customizers += 1
 		if(iterated_customizers >= 4)
@@ -91,68 +91,81 @@
 	return
 
 /// We dont associate the entries just to be safer for save/load, so we can't lookup easily and we do this.
-/datum/preferences/proc/get_organ_entry_for_customizer_type(customizer_type)
-	for(var/datum/organ_entry/entry as anything in organ_entries)
-		if(entry.organ_customizer_type == customizer_type)
+/datum/preferences/proc/get_customizer_entry_for_customizer_type(customizer_type)
+	for(var/datum/customizer_entry/entry as anything in customizer_entries)
+		if(entry.customizer_type == customizer_type)
 			return entry
 
 /// Gets an associative list of organ slots to organ dna created from organ customization
 /datum/preferences/proc/get_organ_dna_list()
 	var/list/organ_list = list()
-	for(var/datum/organ_entry/entry as anything in organ_entries)
-		var/datum/organ_customizer/customizer = ORGAN_CUSTOMIZER(entry.organ_customizer_type)
-		var/datum/organ_choice/organ_choice = ORGAN_CHOICE(entry.organ_choice_type)
-		organ_list[organ_choice.organ_slot] = customizer.create_organ_dna(entry, src)
+	for(var/datum/customizer_entry/entry as anything in customizer_entries)
+		var/datum/customizer_choice/customizer_choice = CUSTOMIZER_CHOICE(entry.customizer_choice_type)
+		if(entry.disabled)
+			continue
+		var/datum/organ_dna/dna = customizer_choice.create_organ_dna(entry, src)
+		if(!dna)
+			continue
+		organ_list[customizer_choice.get_organ_slot()] = dna
 
 	return organ_list
 
 /datum/preferences/proc/customize_organ(obj/item/organ/organ)
-	for(var/datum/organ_entry/entry as anything in organ_entries)
-		var/datum/organ_choice/organ_choice = ORGAN_CHOICE(entry.organ_choice_type)
-		if(organ_choice.organ_slot != organ.slot)
+	for(var/datum/customizer_entry/entry as anything in customizer_entries)
+		var/datum/customizer_choice/customizer_choice = CUSTOMIZER_CHOICE(entry.customizer_choice_type)
+		if(entry.disabled)
 			continue
-		organ_choice.customize_organ(organ, entry)
+		if(!(customizer_choice.get_organ_slot() == organ.slot))
+			continue
+		customizer_choice.customize_organ(organ, entry)
 
-/datum/preferences/proc/handle_organ_topic(mob/user, href_list)
+/datum/preferences/proc/apply_customizers_to_character(mob/living/carbon/human/human)
+	for(var/datum/customizer_entry/entry as anything in customizer_entries)
+		var/datum/customizer_choice/customizer_choice = CUSTOMIZER_CHOICE(entry.customizer_choice_type)
+		if(entry.disabled)
+			continue
+		customizer_choice.apply_customizer_to_character(human, src)
+
+/datum/preferences/proc/handle_customizer_topic(mob/user, href_list)
 	//needs_update = TRUE
 	var/customizer_type = text2path(href_list["customizer"])
-	var/datum/organ_entry/entry = get_organ_entry_for_customizer_type(customizer_type)
-	var/datum/organ_choice/choice = ORGAN_CHOICE(entry.organ_choice_type)
-	var/datum/organ_customizer/customizer = ORGAN_CUSTOMIZER(customizer_type)
-	switch(href_list["organ"])
+	var/datum/customizer_entry/entry = get_customizer_entry_for_customizer_type(customizer_type)
+	var/datum/customizer_choice/choice = CUSTOMIZER_CHOICE(entry.customizer_choice_type)
+	var/datum/customizer/customizer = CUSTOMIZER(customizer_type)
+	switch(href_list["customizer_task"])
 		if("toggle_missing")
-			if(customizer.allows_missing_organ)
-				entry.missing_organ = !entry.missing_organ
+			if(customizer.allows_disabling)
+				entry.disabled = !entry.disabled
 		if("change_choice")
 			var/list/choice_list = list()
-			for(var/choice_type in customizer.organ_choices)
-				var/datum/organ_choice/iter_choice = ORGAN_CHOICE(choice_type)
+			for(var/choice_type in customizer.customizer_choices)
+				var/datum/customizer_choice/iter_choice = CUSTOMIZER_CHOICE(choice_type)
 				choice_list[iter_choice.name] = choice_type
-			var/chosen_input = input(user, "Choose your [lowertext(customizer.name)] organ:", "Character Preference")  as null|anything in choice_list
+			var/chosen_input = input(user, "Choose your [lowertext(customizer.name)]:", "Character Preference")  as null|anything in choice_list
 			if(!chosen_input)
 				return
 			var/choice_type = choice_list[chosen_input]
 			if(choice_type == choice.type)
 				return
-			organ_entries -= entry
-			organ_entries += customizer.create_organ_entry(src, choice_type)
+			customizer_entries -= entry
+			customizer_entries += customizer.create_customizer_entry(src, choice_type)
 		else
 			choice.handle_topic(user, href_list, src, entry, customizer_type)
 
-/datum/preferences/proc/reset_all_organ_accessory_colors()
-	for(var/datum/organ_entry/entry as anything in organ_entries)
-		var/datum/organ_choice/choice = ORGAN_CHOICE(entry.organ_choice_type)
+/datum/preferences/proc/reset_all_customizer_accessory_colors()
+	for(var/datum/customizer_entry/entry as anything in customizer_entries)
+		var/datum/customizer_choice/choice = CUSTOMIZER_CHOICE(entry.customizer_choice_type)
 		choice.reset_accessory_colors(src, entry)
 
-/datum/preferences/proc/randomize_all_organ_accessories()
-	for(var/datum/organ_entry/entry as anything in organ_entries)
-		var/datum/organ_choice/choice = ORGAN_CHOICE(entry.organ_choice_type)
+/datum/preferences/proc/randomize_all_customizer_accessories()
+	for(var/datum/customizer_entry/entry as anything in customizer_entries)
+		var/datum/customizer_choice/choice = CUSTOMIZER_CHOICE(entry.customizer_choice_type)
 		choice.randomize_entry(entry, src)
 
-/datum/preferences/proc/ShowOrgans(mob/user)
+/datum/preferences/proc/ShowCustomizers(mob/user)
 	var/list/dat = list()
 	dat += "<style>span.color_holder_box{display: inline-block; width: 20px; height: 8px; border:1px solid #000; padding: 0px;}</style>"
-	dat += print_organs_page()
-	var/datum/browser/popup = new(user, "organs_customization", "<div align='center'>Organs customization</div>", 600, 700)
+	dat += print_customizers_page()
+	var/datum/browser/popup = new(user, "customization", "<div align='center'>Customization</div>", 600, 700)
 	popup.set_content(dat.Join())
 	popup.open(FALSE)

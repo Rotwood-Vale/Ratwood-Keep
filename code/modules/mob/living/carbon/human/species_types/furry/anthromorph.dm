@@ -49,13 +49,13 @@
 		ORGAN_SLOT_TAIL = /obj/item/organ/tail/vulpkanin,
 		ORGAN_SLOT_SNOUT = /obj/item/organ/snout/vulpkanin,
 		)
-	organ_customizers = list(
-		/datum/organ_customizer/eyes/humanoid,
-		/datum/organ_customizer/hair/head/humanoid,
-		/datum/organ_customizer/hair/facial/humanoid,
-		/datum/organ_customizer/tail/vulpkanin,
-		/datum/organ_customizer/snout/vulpkanin,
-		/datum/organ_customizer/ears/vulpkanin,
+	customizers = list(
+		/datum/customizer/organ/eyes/humanoid,
+		/datum/customizer/organ/hair/head/humanoid,
+		/datum/customizer/organ/hair/facial/humanoid,
+		/datum/customizer/organ/tail/vulpkanin,
+		/datum/customizer/organ/snout/vulpkanin,
+		/datum/customizer/organ/ears/vulpkanin,
 		)
 	body_marking_sets = list(
 		/datum/body_marking_set/none,

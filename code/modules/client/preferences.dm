@@ -139,7 +139,7 @@ GLOBAL_LIST_EMPTY(chosen_names)
 
 	var/crt = FALSE
 
-	var/list/organ_entries = list()
+	var/list/customizer_entries = list()
 	var/list/list/body_markings = list()
 	var/update_mutant_colors = TRUE
 
@@ -192,10 +192,10 @@ GLOBAL_LIST_EMPTY(chosen_names)
 	if(age == AGE_YOUNG)
 		age = AGE_ADULT
 
-	organ_entries = list()
-	validate_organ_entries()
-	reset_all_organ_accessory_colors()
-	randomize_all_organ_accessories()
+	customizer_entries = list()
+	validate_customizer_entries()
+	reset_all_customizer_accessory_colors()
+	randomize_all_customizer_accessories()
 
 #define APPEARANCE_CATEGORY_COLUMN "<td valign='top' width='14%'>"
 #define MAX_MUTANT_ROWS 4
@@ -1352,7 +1352,7 @@ Slots: [job.spawn_positions]</span>
 		return
 
 	else if(href_list["preference"] == "organs")
-		ShowOrgans(user)
+		ShowCustomizers(user)
 		return
 
 	else if(href_list["preference"] == "keybinds")
@@ -1433,9 +1433,9 @@ Slots: [job.spawn_positions]</span>
 		return TRUE
 
 	switch(href_list["task"])
-		if("change_organ")
-			handle_organ_topic(user, href_list)
-			ShowOrgans(user)
+		if("change_customizer")
+			handle_customizer_topic(user, href_list)
+			ShowCustomizers(user)
 		if("change_marking")
 			handle_body_markings_topic(user, href_list)
 			ShowMarkings(user)
@@ -2092,5 +2092,5 @@ Slots: [job.spawn_positions]</span>
 
 /datum/preferences/proc/try_update_mutant_colors()
 	if(update_mutant_colors)
-		reset_all_organ_accessory_colors()
+		reset_all_customizer_accessory_colors()
 		reset_body_marking_colors()

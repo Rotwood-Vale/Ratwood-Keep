@@ -49,15 +49,15 @@
 		ORGAN_SLOT_HORNS = /obj/item/organ/horns,
 		ORGAN_SLOT_WINGS = /obj/item/organ/wings/dracon,
 		)
-	organ_customizers = list(
-		/datum/organ_customizer/eyes/humanoid,
-		/datum/organ_customizer/hair/head/humanoid,
-		/datum/organ_customizer/hair/facial/humanoid,
-		/datum/organ_customizer/tail/lizard,
-		/datum/organ_customizer/tail_feature/lizard_spines,
-		/datum/organ_customizer/snout/lizard,
-		/datum/organ_customizer/frills/lizard,
-		/datum/organ_customizer/horns/humanoid,
+	customizers = list(
+		/datum/customizer/organ/eyes/humanoid,
+		/datum/customizer/organ/hair/head/humanoid,
+		/datum/customizer/organ/hair/facial/humanoid,
+		/datum/customizer/organ/tail/lizard,
+		/datum/customizer/organ/tail_feature/lizard_spines,
+		/datum/customizer/organ/snout/lizard,
+		/datum/customizer/organ/frills/lizard,
+		/datum/customizer/organ/horns/humanoid,
 		)
 	body_markings = list(
 		/datum/body_marking/lizard/dtiger,

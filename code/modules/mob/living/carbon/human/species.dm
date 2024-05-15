@@ -122,7 +122,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 	var/obj/item/mutanthands
 
 	/// List of organ customizers for preferences to customize organs.
-	var/list/organ_customizers
+	var/list/customizers
 	/// List of possible body marking sets that the player can choose from in customization
 	var/list/body_marking_sets
 	/// List all of body markings that the player can choose from in customization. Body markings from sets get added to here
@@ -397,6 +397,9 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 	soundpack_f = new soundpack_f()
 
 	C.add_movespeed_modifier(MOVESPEED_ID_SPECIES, TRUE, 100, override=TRUE, multiplicative_slowdown=speedmod, movetypes=(~FLYING))
+
+	if(pref_load)
+		pref_load.apply_customizers_to_character(src)
 
 	SEND_SIGNAL(C, COMSIG_SPECIES_GAIN, src, old_species)
 

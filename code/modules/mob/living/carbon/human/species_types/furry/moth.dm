@@ -44,11 +44,11 @@
 		ORGAN_SLOT_NECK_FEATURE = /obj/item/organ/neck_feature/moth_fluff,
 		ORGAN_SLOT_WINGS = /obj/item/organ/wings/moth,
 		)
-	organ_customizers = list(
-		/datum/organ_customizer/eyes/moth,
-		/datum/organ_customizer/wings/moth,
-		/datum/organ_customizer/antennas/moth,
-		/datum/organ_customizer/neck_feature/moth_fluff,
+	customizers = list(
+		/datum/customizer/organ/eyes/moth,
+		/datum/customizer/organ/wings/moth,
+		/datum/customizer/organ/antennas/moth,
+		/datum/customizer/organ/neck_feature/moth_fluff,
 		)
 	body_marking_sets = list(
 		/datum/body_marking_set/moth/reddish,

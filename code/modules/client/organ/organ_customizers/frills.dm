@@ -1,17 +1,17 @@
-/datum/organ_customizer/frills
-	abstract_type = /datum/organ_customizer/frills
+/datum/customizer/organ/frills
+	abstract_type = /datum/customizer/organ/frills
 	name = "Frills"
 
-/datum/organ_choice/frills
-	abstract_type = /datum/organ_choice/frills
+/datum/customizer_choice/organ/frills
+	abstract_type = /datum/customizer_choice/organ/frills
 	name = "Frills"
 	organ_type = /obj/item/organ/frills
 	organ_slot = ORGAN_SLOT_FRILLS
 
-/datum/organ_customizer/frills/lizard
-	organ_choices = list(/datum/organ_choice/frills/lizard)
+/datum/customizer/organ/frills/lizard
+	customizer_choices = list(/datum/customizer_choice/organ/frills/lizard)
 
-/datum/organ_choice/frills/lizard
+/datum/customizer_choice/organ/frills/lizard
 	name = "Frills"
 	organ_type = /obj/item/organ/frills/lizard
 	generic_random_pick = TRUE

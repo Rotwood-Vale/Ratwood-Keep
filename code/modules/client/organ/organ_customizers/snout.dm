@@ -1,17 +1,17 @@
-/datum/organ_customizer/snout
-	abstract_type = /datum/organ_customizer/snout
+/datum/customizer/organ/snout
+	abstract_type = /datum/customizer/organ/snout
 	name = "Snout"
 
-/datum/organ_choice/snout
-	abstract_type = /datum/organ_choice/snout
+/datum/customizer_choice/organ/snout
+	abstract_type = /datum/customizer_choice/organ/snout
 	name = "Snout"
 	organ_type = /obj/item/organ/snout
 	organ_slot = ORGAN_SLOT_SNOUT
 
-/datum/organ_customizer/snout/lizard
-	organ_choices = list(/datum/organ_choice/snout/lizard)
+/datum/customizer/organ/snout/lizard
+	customizer_choices = list(/datum/customizer_choice/organ/snout/lizard)
 
-/datum/organ_choice/snout/lizard
+/datum/customizer_choice/organ/snout/lizard
 	name = "Lizard Snout"
 	organ_type = /obj/item/organ/snout/lizard
 	generic_random_pick = TRUE
@@ -26,10 +26,10 @@
 		/datum/sprite_accessory/snout/front/roundlight,
 		)
 
-/datum/organ_customizer/snout/vulpkanin
-	organ_choices = list(/datum/organ_choice/snout/vulpkanin)
+/datum/customizer/organ/snout/vulpkanin
+	customizer_choices = list(/datum/customizer_choice/organ/snout/vulpkanin)
 
-/datum/organ_choice/snout/vulpkanin
+/datum/customizer_choice/organ/snout/vulpkanin
 	name = "Vulpkanin Snout"
 	organ_type = /obj/item/organ/snout/vulpkanin
 	sprite_accessories = list(
@@ -39,10 +39,10 @@
 		/datum/sprite_accessory/snout/lcanidstripedalt,
 		)
 
-/datum/organ_customizer/snout/tajaran
-	organ_choices = list(/datum/organ_choice/snout/tajaran)
+/datum/customizer/organ/snout/tajaran
+	customizer_choices = list(/datum/customizer_choice/organ/snout/tajaran)
 
-/datum/organ_choice/snout/tajaran
+/datum/customizer_choice/organ/snout/tajaran
 	name = "Tajaran Snout"
 	organ_type = /obj/item/organ/snout/tajaran
 	sprite_accessories = list(
@@ -57,18 +57,18 @@
 		/datum/sprite_accessory/snout/front/scanidalt3,
 		)
 
-/datum/organ_customizer/snout/vox
-	organ_choices = list(/datum/organ_choice/snout/vox)
+/datum/customizer/organ/snout/vox
+	customizer_choices = list(/datum/customizer_choice/organ/snout/vox)
 
-/datum/organ_choice/snout/vox
+/datum/customizer_choice/organ/snout/vox
 	name = "Vox Beak"
 	organ_type = /obj/item/organ/snout/vox
 	sprite_accessories = list(/datum/sprite_accessory/snout/vox/default)
 
-/datum/organ_customizer/snout/synthliz
-	organ_choices = list(/datum/organ_choice/snout/vulpkanin)
+/datum/customizer/organ/snout/synthliz
+	customizer_choices = list(/datum/customizer_choice/organ/snout/vulpkanin)
 
-/datum/organ_choice/snout/synthliz
+/datum/customizer_choice/organ/snout/synthliz
 	name = "Synthetic Snout"
 	organ_type = /obj/item/organ/snout/synth
 	sprite_accessories = list(
@@ -79,14 +79,14 @@
 		/datum/sprite_accessory/snout/synthliz/over,
 		)
 
-/datum/organ_customizer/snout/mammal
-	allows_missing_organ = TRUE
-	organ_choices = list(
-		/datum/organ_choice/snout/mammal,
-		/datum/organ_choice/snout/lizard,
+/datum/customizer/organ/snout/mammal
+	allows_disabling = TRUE
+	customizer_choices = list(
+		/datum/customizer_choice/organ/snout/mammal,
+		/datum/customizer_choice/organ/snout/lizard,
 		)
 
-/datum/organ_choice/snout/mammal
+/datum/customizer_choice/organ/snout/mammal
 	name = "Mammal Snout"
 	organ_type = /obj/item/organ/snout/mammal
 	sprite_accessories = list(

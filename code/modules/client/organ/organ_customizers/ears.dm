@@ -1,25 +1,25 @@
-/datum/organ_customizer/ears
+/datum/customizer/organ/ears
 	name = "Ears"
-	abstract_type = /datum/organ_customizer/ears
+	abstract_type = /datum/customizer/organ/ears
 
-/datum/organ_choice/ears
+/datum/customizer_choice/organ/ears
 	name = "Ears"
 	organ_type = /obj/item/organ/ears
 	organ_slot = ORGAN_SLOT_EARS
-	abstract_type = /datum/organ_choice/ears
+	abstract_type = /datum/customizer_choice/organ/ears
 
-/datum/organ_customizer/ears/vulpkanin
-	organ_choices = list(/datum/organ_choice/ears/vulpkanin)
+/datum/customizer/organ/ears/vulpkanin
+	customizer_choices = list(/datum/customizer_choice/organ/ears/vulpkanin)
 
-/datum/organ_choice/ears/vulpkanin
+/datum/customizer_choice/organ/ears/vulpkanin
 	name = "Vulpkanin Ears"
 	organ_type = /obj/item/organ/ears/vulpkanin
 	sprite_accessories = list(/datum/sprite_accessory/ears/fox)
 
-/datum/organ_customizer/ears/tajaran
-	organ_choices = list(/datum/organ_choice/ears/tajaran)
+/datum/customizer/organ/ears/tajaran
+	customizer_choices = list(/datum/customizer_choice/organ/ears/tajaran)
 
-/datum/organ_choice/ears/tajaran
+/datum/customizer_choice/organ/ears/tajaran
 	name = "Tajaran Ears"
 	organ_type = /obj/item/organ/ears/tajaran
 	sprite_accessories = list(
@@ -27,18 +27,18 @@
 		/datum/sprite_accessory/ears/cat_normal,
 		)
 
-/datum/organ_customizer/ears/cat
-	organ_choices = list(/datum/organ_choice/ears/cat)
+/datum/customizer/organ/ears/cat
+	customizer_choices = list(/datum/customizer_choice/organ/ears/cat)
 
-/datum/organ_choice/ears/cat
+/datum/customizer_choice/organ/ears/cat
 	name = "Cat Ears"
 	organ_type = /obj/item/organ/ears/cat
 	sprite_accessories = list(/datum/sprite_accessory/ears/cat)
 
-/datum/organ_customizer/ears/demihuman
-	organ_choices = list(/datum/organ_choice/ears/demihuman)
+/datum/customizer/organ/ears/demihuman
+	customizer_choices = list(/datum/customizer_choice/organ/ears/demihuman)
 
-/datum/organ_choice/ears/demihuman
+/datum/customizer_choice/organ/ears/demihuman
 	name = "Demihuman Ears"
 	organ_type = /obj/item/organ/ears
 	generic_random_pick = TRUE
@@ -52,10 +52,10 @@
 		/datum/sprite_accessory/ears/rabbit_lop,
 		)
 
-/datum/organ_customizer/ears/anthromorph
-	organ_choices = list(/datum/organ_choice/ears/anthromorph)
+/datum/customizer/organ/ears/anthromorph
+	customizer_choices = list(/datum/customizer_choice/organ/ears/anthromorph)
 
-/datum/organ_choice/ears/anthromorph
+/datum/customizer_choice/organ/ears/anthromorph
 	name = "Mammal Ears"
 	organ_type = /obj/item/organ/ears/anthromorph
 	sprite_accessories = list(

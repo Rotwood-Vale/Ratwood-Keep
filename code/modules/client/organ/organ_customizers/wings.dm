@@ -1,17 +1,17 @@
-/datum/organ_customizer/wings
-	abstract_type = /datum/organ_customizer/wings
+/datum/customizer/organ/wings
+	abstract_type = /datum/customizer/organ/wings
 	name = "Wings"
 
-/datum/organ_choice/wings
-	abstract_type = /datum/organ_choice/wings
+/datum/customizer_choice/organ/wings
+	abstract_type = /datum/customizer_choice/organ/wings
 	name = "Wings"
 	organ_type = /obj/item/organ/wings
 	organ_slot = ORGAN_SLOT_WINGS
 
-/datum/organ_customizer/wings/mammal
-	organ_choices = list(/datum/organ_choice/wings/mammal)
+/datum/customizer/organ/wings/mammal
+	customizer_choices = list(/datum/customizer_choice/organ/wings/mammal)
 
-/datum/organ_choice/wings/mammal
+/datum/customizer_choice/organ/wings/mammal
 	name = "Wings"
 	organ_type = /obj/item/organ/wings/mammal
 	sprite_accessories = list(
@@ -41,10 +41,10 @@
 		/datum/sprite_accessory/wings/huge/robotic,
 		)
 
-/datum/organ_customizer/wings/moth
-	organ_choices = list(/datum/organ_choice/wings/moth)
+/datum/customizer/organ/wings/moth
+	customizer_choices = list(/datum/customizer_choice/organ/wings/moth)
 
-/datum/organ_choice/wings/moth
+/datum/customizer_choice/organ/wings/moth
 	name = "Moth Wings"
 	organ_type = /obj/item/organ/wings/moth
 	sprite_accessories = list(

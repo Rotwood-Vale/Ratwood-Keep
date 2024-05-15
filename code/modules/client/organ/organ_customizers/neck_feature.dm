@@ -1,17 +1,17 @@
-/datum/organ_customizer/neck_feature
-	abstract_type = /datum/organ_customizer/neck_feature
+/datum/customizer/organ/neck_feature
+	abstract_type = /datum/customizer/organ/neck_feature
 	name = "Neck"
 
-/datum/organ_choice/neck_feature
-	abstract_type = /datum/organ_choice/neck_feature
+/datum/customizer_choice/organ/neck_feature
+	abstract_type = /datum/customizer_choice/organ/neck_feature
 	name = "Neck"
 	organ_type = /obj/item/organ/neck_feature
 	organ_slot = ORGAN_SLOT_NECK_FEATURE
 
-/datum/organ_customizer/neck_feature/moth_fluff
-	organ_choices = list(/datum/organ_choice/neck_feature/moth_fluff)
+/datum/customizer/organ/neck_feature/moth_fluff
+	customizer_choices = list(/datum/customizer_choice/organ/neck_feature/moth_fluff)
 
-/datum/organ_choice/neck_feature/moth_fluff
+/datum/customizer_choice/organ/neck_feature/moth_fluff
 	name = "Moth Fluff"
 	organ_type = /obj/item/organ/neck_feature/moth_fluff
 	sprite_accessories = list(
@@ -36,13 +36,13 @@
 		/datum/sprite_accessory/neck_feature/moth_fluff/witchwing,
 		)
 
-/datum/organ_customizer/neck_feature/mammal_fluff
-	organ_choices = list(
-		/datum/organ_choice/neck_feature/mammal_fluff,
-		/datum/organ_choice/neck_feature/moth_fluff,
+/datum/customizer/organ/neck_feature/mammal_fluff
+	customizer_choices = list(
+		/datum/customizer_choice/organ/neck_feature/mammal_fluff,
+		/datum/customizer_choice/organ/neck_feature/moth_fluff,
 		)
 
-/datum/organ_choice/neck_feature/mammal_fluff
+/datum/customizer_choice/organ/neck_feature/mammal_fluff
 	name = "Mammal Fluff"
 	organ_type = /obj/item/organ/neck_feature/mammal_fluff
 	sprite_accessories = list(
