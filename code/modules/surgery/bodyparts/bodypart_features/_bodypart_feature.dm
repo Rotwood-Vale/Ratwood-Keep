@@ -7,6 +7,8 @@
 	var/accessory_type
 	/// Colors of the accessory
 	var/accessory_colors
+	/// Slot of the bodypart feature
+	var/feature_slot
 
 /// Proc to customize the base icon of the organ.
 /datum/bodypart_feature/proc/bodypart_icon(mutable_appearance/standing)
@@ -32,9 +34,11 @@
 /// Sets an accessory type and optionally colors too.
 /datum/bodypart_feature/proc/set_accessory_type(new_accessory_type, colors, owner)
 	accessory_type = new_accessory_type
+	var/datum/sprite_accessory/accessory = SPRITE_ACCESSORY(accessory_type)
 	if(!isnull(colors))
 		accessory_colors = colors
-	var/datum/sprite_accessory/accessory = SPRITE_ACCESSORY(accessory_type)
+	else
+		accessory_colors = accessory.get_default_colors(color_key_source_list_from_carbon(owner))
 	accessory_colors = accessory.validate_color_keys_for_owner(owner, colors)
 
 /datum/bodypart_feature/proc/build_colors_for_accessory(list/source_key_list, mob/living/carbon/owner)
@@ -43,7 +47,7 @@
 	if(!source_key_list)
 		if(!owner)
 			return
-		source_key_list = color_key_source_list_from_dna(owner.dna)
+		source_key_list = color_key_source_list_from_carbon(owner)
 	var/datum/sprite_accessory/accessory = SPRITE_ACCESSORY(accessory_type)
 	accessory_colors = accessory.get_default_colors(source_key_list)
 
@@ -52,6 +56,11 @@
 		return FALSE
 	if(!bodypart_features)
 		bodypart_features = list()
+	// Remove existing features that occupy this slot
+	for(var/datum/bodypart_feature/existing_feature as anything in bodypart_features)
+		if(!(existing_feature.feature_slot == feature.feature_slot))
+			continue
+		remove_bodypart_feature(existing_feature)
 	bodypart_features += feature
 	if(owner)
 		owner.update_body()

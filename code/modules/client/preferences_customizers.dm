@@ -51,6 +51,8 @@
 	var/iterated_customizers = 0
 	for(var/customizer_type in customizers)
 		var/datum/customizer/customizer = CUSTOMIZER(customizer_type)
+		if(!customizer.is_allowed(src))
+			continue
 		var/datum/customizer_entry/entry = get_customizer_entry_for_customizer_type(customizer_type)
 		if(!entry)
 			stack_trace("Missing customizer entry in preferences for customizer [customizer_type]")
@@ -101,6 +103,9 @@
 	var/list/organ_list = list()
 	for(var/datum/customizer_entry/entry as anything in customizer_entries)
 		var/datum/customizer_choice/customizer_choice = CUSTOMIZER_CHOICE(entry.customizer_choice_type)
+		var/datum/customizer/customizer = CUSTOMIZER(entry.customizer_type)
+		if(!customizer.is_allowed(src))
+			continue
 		if(entry.disabled)
 			continue
 		var/datum/organ_dna/dna = customizer_choice.create_organ_dna(entry, src)
@@ -113,6 +118,9 @@
 /datum/preferences/proc/customize_organ(obj/item/organ/organ)
 	for(var/datum/customizer_entry/entry as anything in customizer_entries)
 		var/datum/customizer_choice/customizer_choice = CUSTOMIZER_CHOICE(entry.customizer_choice_type)
+		var/datum/customizer/customizer = CUSTOMIZER(entry.customizer_type)
+		if(!customizer.is_allowed(src))
+			continue
 		if(entry.disabled)
 			continue
 		if(!(customizer_choice.get_organ_slot() == organ.slot))
@@ -122,6 +130,9 @@
 /datum/preferences/proc/apply_customizers_to_character(mob/living/carbon/human/human)
 	for(var/datum/customizer_entry/entry as anything in customizer_entries)
 		var/datum/customizer_choice/customizer_choice = CUSTOMIZER_CHOICE(entry.customizer_choice_type)
+		var/datum/customizer/customizer = CUSTOMIZER(entry.customizer_type)
+		if(!customizer.is_allowed(src))
+			continue
 		if(entry.disabled)
 			continue
 		customizer_choice.apply_customizer_to_character(human, src, entry)

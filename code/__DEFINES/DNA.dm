@@ -166,8 +166,11 @@
 #define ORGAN_SLOT_TAUR_BODY "taur_body"
 #define ORGAN_SLOT_WINGS "wings"
 #define ORGAN_SLOT_SNOUT "snout"
-#define ORGAN_SLOT_HAIR "hair"
-#define ORGAN_SLOT_FACIAL_HAIR "facial_hair"
+
+#define BODYPART_FEATURE_HAIR "hair"
+#define BODYPART_FEATURE_FACIAL_HAIR "facehair"
+#define BODYPART_FEATURE_ACCESSORY "accessory"
+#define BODYPART_FEATURE_FACE_DETAIL "facedetail"
 
 //organ defines
 #define STANDARD_ORGAN_THRESHOLD 	100
@@ -188,3 +191,28 @@
 
 #define HAIR_COLOR_LIST list("#8f5a00", "#593800", "#362200", "#4e422e", "#8c8271", "#bfb7ab", "#31302e", "#f0dc48")
 #define EYE_COLOR_LIST list("#865900", "#06b400", "#312f27", "#008e83", "#002d8e", "#c16c00")
+
+/mob/living/carbon/human/proc/get_hair_color()
+	var/datum/bodypart_feature/hair/feature = get_bodypart_feature_of_slot(BODYPART_FEATURE_HAIR)
+	if(!feature)
+		return "FFFFFF"
+	return feature.hair_color
+
+/mob/living/carbon/human/proc/get_facial_hair_color()
+	var/datum/bodypart_feature/hair/feature = get_bodypart_feature_of_slot(BODYPART_FEATURE_FACIAL_HAIR)
+	if(!feature)
+		return "FFFFFF"
+	return feature.hair_color
+
+/mob/living/carbon/human/proc/get_eye_color()
+	var/obj/item/organ/eyes/eyes = getorganslot(ORGAN_SLOT_EYES)
+	if(!eyes)
+		return "FFFFFF"
+	return eyes.eye_color
+
+/mob/living/carbon/proc/get_bodypart_feature_of_slot(feature_slot)
+	for(var/obj/item/bodypart/bodypart as anything in bodyparts)
+		for(var/datum/bodypart_feature/feature as anything in bodypart.bodypart_features)
+			if(feature.feature_slot == feature_slot)
+				return feature
+	return null

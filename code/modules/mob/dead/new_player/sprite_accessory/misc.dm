@@ -10,6 +10,8 @@
 	name = "Thick Eyebrows"
 	icon_state = "brows"
 	layer = BODY_LAYER
+	default_colors =  null
+	color_key_defaults = list(KEY_HAIR_COLOR)
 
 /datum/sprite_accessory/face_detail/brows/dark
 	name = "Dark Eyebrows"

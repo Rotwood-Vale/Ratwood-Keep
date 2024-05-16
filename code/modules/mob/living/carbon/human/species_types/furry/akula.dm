@@ -31,8 +31,6 @@
 	attack_sound = 'sound/blank.ogg'
 	miss_sound = 'sound/blank.ogg'
 	organs = list(
-		ORGAN_SLOT_HAIR = /obj/item/organ/hair/head,
-		ORGAN_SLOT_FACIAL_HAIR = /obj/item/organ/hair/facial,
 		ORGAN_SLOT_BRAIN = /obj/item/organ/brain,
 		ORGAN_SLOT_HEART = /obj/item/organ/heart,
 		ORGAN_SLOT_LUNGS = /obj/item/organ/lungs,
@@ -45,10 +43,16 @@
 		ORGAN_SLOT_TAIL = /obj/item/organ/tail/akula,
 		ORGAN_SLOT_SNOUT = /obj/item/organ/snout/akula,
 		)
+	bodypart_features = list(
+		/datum/bodypart_feature/hair/head,
+		/datum/bodypart_feature/hair/facial,
+	)
 	customizers = list(
 		/datum/customizer/organ/eyes/humanoid,
-		/datum/customizer/organ/hair/head/humanoid,
-		/datum/customizer/organ/hair/facial/humanoid,
+		/datum/customizer/bodypart_feature/hair/head/humanoid,
+		/datum/customizer/bodypart_feature/hair/facial/humanoid,
+		/datum/customizer/bodypart_feature/accessory,
+		/datum/customizer/bodypart_feature/face_detail,
 		)
 	body_marking_sets = list(
 		/datum/body_marking_set/none,

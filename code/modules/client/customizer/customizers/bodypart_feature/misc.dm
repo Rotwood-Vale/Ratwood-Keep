@@ -7,6 +7,7 @@
 /datum/customizer_choice/bodypart_feature/face_detail
 	name = "Face Detail"
 	feature_type = /datum/bodypart_feature/face_detail
+	allows_accessory_color_customization = FALSE
 	sprite_accessories = list(
 		/datum/sprite_accessory/face_detail/brows,
 		/datum/sprite_accessory/face_detail/brows/dark,
@@ -27,6 +28,7 @@
 /datum/customizer_choice/bodypart_feature/accessory
 	name = "Accessory"
 	feature_type = /datum/bodypart_feature/accessory
+	allows_accessory_color_customization = FALSE
 	sprite_accessories = list(
 		/datum/sprite_accessory/accessory/earrings,
 		/datum/sprite_accessory/accessory/earrings/sil,

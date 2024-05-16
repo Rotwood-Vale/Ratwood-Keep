@@ -63,7 +63,7 @@
 
 	if(!owner)
 		return colors
-	colors = get_default_colors(color_key_source_list_from_dna(owner.dna))
+	colors = get_default_colors(color_key_source_list_from_carbon(owner))
 	return colors
 
 /datum/sprite_accessory/proc/adjust_appearance_list(list/appearance_list, obj/item/organ/organ, obj/item/bodypart/bodypart, mob/living/carbon/owner)
@@ -228,6 +228,7 @@
 
 /proc/color_key_source_list_from_carbon(mob/living/carbon/carbon)
 	var/datum/dna/dna = carbon.dna
+	var/datum/species/species = dna.species
 	var/list/features = dna.features
 	var/list/sources = list()
 	sources[KEY_MUT_COLOR_ONE] = features["mcolor"]
@@ -236,7 +237,13 @@
 	/// Read specific organ DNA entries to deduce eye, hair and facial hair color
 	if(ishuman(carbon))
 		var/mob/living/carbon/human/human = carbon
-		sources[KEY_SKIN_COLOR] = human.skin_tone
+		if(MUTCOLORS in species.species_traits)
+			sources[KEY_SKIN_COLOR] = sources[KEY_MUT_COLOR_ONE]
+		else
+			sources[KEY_SKIN_COLOR] = human.skin_tone
+		sources[KEY_EYE_COLOR] = human.get_eye_color()
+		sources[KEY_HAIR_COLOR] = human.get_hair_color()
+		sources[KEY_FACE_HAIR_COLOR] = human.get_facial_hair_color()
 	else
 		sources[KEY_SKIN_COLOR] = "FFFFFF"
 	return sources

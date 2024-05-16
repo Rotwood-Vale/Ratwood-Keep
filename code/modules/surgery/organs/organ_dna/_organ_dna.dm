@@ -24,18 +24,6 @@
 	if(accessory_type)
 		organ.set_accessory_type(accessory_type, accessory_colors)
 
-/datum/organ_dna/hair
-	var/hair_color = "#FFFFFF"
-	var/natural_gradient = /datum/hair_gradient/none
-	var/natural_color = "#FFFFFF"
-
-/datum/organ_dna/hair/imprint_organ(obj/item/organ/organ)
-	..()
-	var/obj/item/organ/hair/hair_organ = organ
-	hair_organ.hair_color = hair_color
-	hair_organ.natural_gradient  = natural_gradient
-	hair_organ.natural_color = natural_color
-
 /datum/organ_dna/eyes
 	var/eye_color = "#FFFFFF"
 	var/heterochromia = FALSE

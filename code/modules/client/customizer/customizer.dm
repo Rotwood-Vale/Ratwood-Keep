@@ -37,6 +37,9 @@
 	var/datum/customizer_choice/choice = CUSTOMIZER_CHOICE(entry.customizer_choice_type)
 	choice.validate_entry(prefs, entry)
 
+/datum/customizer/proc/is_allowed(datum/preferences/prefs)
+	return TRUE
+
 /datum/customizer/organ
 	abstract_type = /datum/customizer/organ
 	name = "Organ"

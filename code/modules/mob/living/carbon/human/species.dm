@@ -118,6 +118,8 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 		ORGAN_SLOT_STOMACH = /obj/item/organ/stomach,
 		ORGAN_SLOT_APPENDIX = /obj/item/organ/appendix,
 		)
+	/// List of bodypart features of this species
+	var/list/bodypart_features
 
 	var/obj/item/mutanthands
 
@@ -399,6 +401,8 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 	C.add_movespeed_modifier(MOVESPEED_ID_SPECIES, TRUE, 100, override=TRUE, multiplicative_slowdown=speedmod, movetypes=(~FLYING))
 
 	C.remove_all_bodypart_features()
+	for(var/bodypart_feature_type in bodypart_features)
+		C.add_bodypart_feature(new bodypart_feature_type())
 	if(pref_load)
 		pref_load.apply_customizers_to_character(C)
 
