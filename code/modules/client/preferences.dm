@@ -337,7 +337,7 @@ GLOBAL_LIST_EMPTY(chosen_names)
 
 //			-----------START OF BODY TABLE-----------
 			dat += "<table width='100%'><tr><td width='1%' valign='top'>"
-
+			dat += "<b>Update feature colors with change:</b> <a href='?_src_=prefs;preference=update_mutant_colors;task=input'>[update_mutant_colors ? "Yes" : "No"]</a><BR>"
 			var/use_skintones = pref_species.use_skintones
 			if(use_skintones)
 
@@ -348,8 +348,6 @@ GLOBAL_LIST_EMPTY(chosen_names)
 
 			if((MUTCOLORS in pref_species.species_traits) || (MUTCOLORS_PARTSONLY in pref_species.species_traits))
 
-
-				dat += "<b>Update features with change:</b> <a href='?_src_=prefs;preference=update_mutant_colors;task=input'>[update_mutant_colors ? "Yes" : "No"]</a><BR>"
 				dat += "<b>Mutant Color #1:</b><span style='border: 1px solid #161616; background-color: #[features["mcolor"]];'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;preference=mutant_color;task=input'>Change</a><BR>"
 				dat += "<b>Mutant Color #2:</b><span style='border: 1px solid #161616; background-color: #[features["mcolor2"]];'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;preference=mutant_color2;task=input'>Change</a><BR>"
 				dat += "<b>Mutant Color #3:</b><span style='border: 1px solid #161616; background-color: #[features["mcolor3"]];'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;preference=mutant_color3;task=input'>Change</a><BR>"
@@ -1483,6 +1481,7 @@ Slots: [job.spawn_positions]</span>
 					var/new_s_tone = input(user, "Choose your character's skin tone:", "Sun")  as null|anything in listy
 					if(new_s_tone)
 						skin_tone = listy[new_s_tone]
+						try_update_mutant_colors()
 
 				if("charflaw")
 					var/selectedflaw
@@ -1863,6 +1862,7 @@ Slots: [job.spawn_positions]</span>
 
 	character.age = age
 	character.dna.features = features.Copy()
+	character.gender = gender
 	character.set_species(chosen_species, icon_update = FALSE, pref_load = src)
 
 	if((randomise[RANDOM_NAME] || randomise[RANDOM_NAME_ANTAG] && antagonist) && !character_setup)
@@ -1884,7 +1884,6 @@ Slots: [job.spawn_positions]</span>
 		character.real_name = real_name
 	character.name = character.real_name
 
-	character.gender = gender
 	character.domhand = domhand
 //#ifdef MATURESERVER
 //	character.alignment = alignment

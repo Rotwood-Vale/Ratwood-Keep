@@ -42,6 +42,10 @@
 		ORGAN_SLOT_APPENDIX = /obj/item/organ/appendix,
 		ORGAN_SLOT_TAIL = /obj/item/organ/tail/akula,
 		ORGAN_SLOT_SNOUT = /obj/item/organ/snout/akula,
+		ORGAN_SLOT_TESTICLES = /obj/item/organ/testicles,
+		ORGAN_SLOT_PENIS = /obj/item/organ/penis,
+		ORGAN_SLOT_BREASTS = /obj/item/organ/breasts,
+		ORGAN_SLOT_VAGINA = /obj/item/organ/vagina,
 		)
 	bodypart_features = list(
 		/datum/bodypart_feature/hair/head,
@@ -53,6 +57,10 @@
 		/datum/customizer/bodypart_feature/hair/facial/humanoid,
 		/datum/customizer/bodypart_feature/accessory,
 		/datum/customizer/bodypart_feature/face_detail,
+		/datum/customizer/organ/testicles,
+		/datum/customizer/organ/penis,
+		/datum/customizer/organ/breasts,
+		/datum/customizer/organ/vagina,
 		)
 	body_marking_sets = list(
 		/datum/body_marking_set/none,

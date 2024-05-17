@@ -86,6 +86,8 @@
 	var/dye_gradient = /datum/hair_gradient/none
 	var/dye_color = "#FFFFFF"
 
+/datum/customizer_entry/hair/facial
+
 /datum/customizer/bodypart_feature/hair/head
 	abstract_type = /datum/customizer/bodypart_feature/hair/head
 	name = "Hair"
@@ -106,6 +108,7 @@
 	abstract_type = /datum/customizer_choice/bodypart_feature/hair/facial
 	name = "Facial Hair"
 	feature_type = /datum/bodypart_feature/hair/facial
+	customizer_entry_type = /datum/customizer_entry/hair/facial
 
 /datum/customizer/bodypart_feature/hair/head/humanoid
 	customizer_choices = list(/datum/customizer_choice/bodypart_feature/hair/head/humanoid)

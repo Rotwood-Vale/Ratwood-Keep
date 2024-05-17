@@ -53,6 +53,10 @@
 		/datum/customizer/organ/ears/demihuman,
 		/datum/customizer/organ/horns/demihuman,
 		/datum/customizer/organ/tail/demihuman,
+		/datum/customizer/organ/testicles,
+		/datum/customizer/organ/penis,
+		/datum/customizer/organ/breasts,
+		/datum/customizer/organ/vagina,
 		)
 	body_markings = list(
 		/datum/body_marking/tattoo/heart,

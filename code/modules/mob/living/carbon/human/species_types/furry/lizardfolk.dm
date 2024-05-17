@@ -54,6 +54,10 @@
 		ORGAN_SLOT_TAIL_FEATURE = /obj/item/organ/tail_feature/lizard_spines,
 		ORGAN_SLOT_FRILLS = /obj/item/organ/frills/lizard,
 		ORGAN_SLOT_HORNS = /obj/item/organ/horns,
+		ORGAN_SLOT_TESTICLES = /obj/item/organ/testicles,
+		ORGAN_SLOT_PENIS = /obj/item/organ/penis,
+		ORGAN_SLOT_BREASTS = /obj/item/organ/breasts,
+		ORGAN_SLOT_VAGINA = /obj/item/organ/vagina,
 		)
 	customizers = list(
 		/datum/customizer/organ/eyes/humanoid,
@@ -64,6 +68,10 @@
 		/datum/customizer/organ/snout/lizard,
 		/datum/customizer/organ/frills/lizard,
 		/datum/customizer/organ/horns/humanoid,
+		/datum/customizer/organ/testicles,
+		/datum/customizer/organ/penis,
+		/datum/customizer/organ/breasts,
+		/datum/customizer/organ/vagina,
 		)
 	body_markings = list(
 		/datum/body_marking/lizard/dtiger,

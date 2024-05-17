@@ -180,3 +180,30 @@
 	var/datum/browser/popup = new(user, "customization", "<div align='center'>Customization</div>", 600, 700)
 	popup.set_content(dat.Join())
 	popup.open(FALSE)
+
+/datum/preferences/proc/get_hair_color()
+	var/datum/customizer_entry/hair/entry = get_customizer_entry_of_type(/datum/customizer_entry/hair)
+	if(entry)
+		return entry.hair_color
+	else
+		return "FFFFFF"
+
+/datum/preferences/proc/get_facial_hair_color()
+	var/datum/customizer_entry/hair/entry = get_customizer_entry_of_type(/datum/customizer_entry/hair/facial)
+	if(entry)
+		return entry.hair_color
+	else
+		return "FFFFFF"
+
+/datum/preferences/proc/get_eye_color()
+	var/datum/customizer_entry/organ/eyes/entry = get_customizer_entry_of_type(/datum/customizer_entry/organ/eyes)
+	if(entry)
+		return entry.eye_color
+	else
+		return "FFFFFF"
+
+/datum/preferences/proc/get_customizer_entry_of_type(entry_type)
+	for(var/datum/customizer_entry/entry as anything in customizer_entries)
+		if(entry.type == entry_type)
+			return entry
+	return null

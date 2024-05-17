@@ -73,6 +73,10 @@
 		/datum/customizer/bodypart_feature/hair/facial/humanoid,
 		/datum/customizer/bodypart_feature/accessory,
 		/datum/customizer/bodypart_feature/face_detail,
+		/datum/customizer/organ/testicles,
+		/datum/customizer/organ/penis,
+		/datum/customizer/organ/breasts,
+		/datum/customizer/organ/vagina,
 		)
 	body_markings = list(
 		/datum/body_marking/tattoo/heart,
