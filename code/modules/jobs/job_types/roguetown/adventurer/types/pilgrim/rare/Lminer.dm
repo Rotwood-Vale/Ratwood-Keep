@@ -3,7 +3,7 @@
 /datum/advclass/minermaster
 	name = "Master Miner"
 	allowed_sexes = list("male")
-	allowed_races = list("Dwarf")
+	allowed_races = list(/datum/species/dwarf/mountain)
 	outfit = /datum/outfit/job/roguetown/adventurer/minermaster
 	isvillager = FALSE
 	ispilgrim = TRUE

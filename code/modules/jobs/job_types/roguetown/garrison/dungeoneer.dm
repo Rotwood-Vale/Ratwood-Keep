@@ -6,14 +6,7 @@
 	total_positions = 1
 	spawn_positions = 1
 
-	allowed_races = list(
-		"Humen",
-		"Dwarf",
-		"Tiefling",
-		"Dark Elf",
-		"Lizardfolk",
-		"Tabaxi"
-	)
+	allowed_races = ALL_RACES_TYPES
 	allowed_sexes = list(MALE, FEMALE)
 
 	display_order = JDO_DUNGEONEER

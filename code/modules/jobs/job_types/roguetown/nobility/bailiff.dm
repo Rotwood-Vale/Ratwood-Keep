@@ -6,7 +6,7 @@
 	total_positions = 1
 	spawn_positions = 1
 	allowed_ages = list(AGE_ADULT, AGE_MIDDLEAGED)
-	allowed_races = list("Humen")
+	allowed_races = list(/datum/species/human/northern)
 	allowed_sexes = list(MALE, FEMALE)
 	display_order = JDO_BAILIFF
 	tutorial = "You judge the common folk and their wrongdoings if necessary. You help plan with the Councillors and maybe the King on any new issues, laws, judgings, and construction that are required to adapt to the world. You serve on a lesser level then the Sheriff,  you are from petty nobility unlike the noble Sheriff. You have two assistant Councillors that may serve as jurors to assist you in your job. You are required to enforce taxes for the King, judge people, make sure the town and manor are not in decay, and to help plan or construct new buildings. You are allowed some limited control over Guards, however it is not the focus of your job unless special circumstances are to change this."

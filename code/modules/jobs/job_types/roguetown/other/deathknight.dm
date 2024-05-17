@@ -8,7 +8,7 @@
 	min_pq = null //no pq
 
 	allowed_sexes = list("male", "female")
-	allowed_races = list("Humen","Humen", "Half-Elf","Dark Elf","Elf","Elf", "Dwarf","Dwarf")
+	allowed_races = ALL_RACES_TYPES
 	tutorial = ""
 
 	outfit = /datum/outfit/job/roguetown/deathknight

@@ -3,15 +3,7 @@
 	name = "Cleric"
 	tutorial = "Clerics are wandering warriors of the Gods, an asset to any party."
 	allowed_sexes = list("male","female")
-	allowed_races = list(
-		"Humen",
-		"Elf",
-		"Half-Elf",
-		"Dwarf",
-		"Tiefling",
-		"Dark Elf",
-		"Aasimar"
-	)
+	allowed_races = ALL_RACES_TYPES
 	allowed_patrons = list("Astrata", "Dendor", "Necra", "Pestra","Noc")
 	ispilgrim = FALSE
 	vampcompat = FALSE

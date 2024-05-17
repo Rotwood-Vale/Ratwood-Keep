@@ -6,7 +6,7 @@
 	total_positions = 1
 	spawn_positions = 1
 
-	allowed_races = list("Humen")
+	allowed_races = list(/datum/species/human/northern)
 	allowed_sexes = list(MALE, FEMALE)
 	display_order = JDO_SHERIFF
 	tutorial = "Law and Order, your divine reason for existence. These animals are undeserving of your protection, for it is their sons and daughters roving the countryside with blade in hand; how many men have you lost this week just to the horrors in the woods alone? Are you the one to stand between this town and chaos, or will you fail it like they expect you to?"

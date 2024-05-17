@@ -744,7 +744,7 @@ GLOBAL_LIST_EMPTY(chosen_names)
 			if(!(user.client.prefs.age in job.allowed_ages))
 				HTML += "<font color=#a36c63>[used_name]</font></td> <td> </td></tr>"
 				continue
-			if(!(user.client.prefs.pref_species.name in job.allowed_races))
+			if(!(user.client.prefs.pref_species.type in job.allowed_races))
 				HTML += "<font color=#a36c63>[used_name]</font></td> <td> </td></tr>"
 				continue
 			if(!(user.client.prefs.selected_patron.name in job.allowed_patrons))

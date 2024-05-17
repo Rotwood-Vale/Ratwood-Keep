@@ -3,15 +3,7 @@
 	var/outfit
 	var/tutorial = "Choose me!"
 	var/list/allowed_sexes = list("male","female")
-	var/list/allowed_races = list("Humen",
-	"Humen",
-	"Elf",
-	"Elf",
-	"Dark Elf",
-	"Dwarf",
-	"Dwarf",
-	"Vulpkanin"
-	)
+	var/list/allowed_races = ALL_RACES_TYPES
 	var/list/allowed_patrons = ALL_PATRON_NAMES_LIST
 	var/list/allowed_ages = list(AGE_ADULT, AGE_MIDDLEAGED, AGE_OLD)
 	var/pickprob = 100

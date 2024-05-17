@@ -6,7 +6,7 @@
 	total_positions = 0
 	spawn_positions = 1
 	selection_color = JCOLOR_NOBLE
-	allowed_races = list("Humen")
+	allowed_races = list(/datum/species/human/northern)
 	allowed_sexes = list(MALE)
 	outfit = /datum/outfit/job/roguetown/lord
 	display_order = JDO_LORD

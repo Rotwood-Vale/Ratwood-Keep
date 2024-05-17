@@ -5,16 +5,7 @@
 	faction = "Station"
 	total_positions = 30
 	spawn_positions = 30
-	allowed_races = list(
-		"Humen",
-		"Elf",
-		"Half-Elf",
-		"Dwarf",
-		"Tiefling",
-		"Aasimar",
-		"Lizardfolk",
-		"Tabaxi"
-	)
+	allowed_races = ALL_RACES_TYPES
 	tutorial = "You've lived in this shithole for effectively all your life. You are not an explorer, nor exactly a warrior in many cases. You're just some average poor bastard who thinks they'll be something someday."
 
 	outfit = null

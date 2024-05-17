@@ -3,7 +3,7 @@
 	tutorial = "You serve your lord as the royal hand, taking care of all diplomatic actions in your relm. \
 	maybe one day you will become lord too."
 	allowed_sexes = list("male")
-	allowed_races = list("Humen")
+	allowed_races = list(/datum/species/human/northern)
 	outfit = /datum/outfit/job/roguetown/adventurer/heartfelthand
 	maxchosen = 1
 	pickprob = 100

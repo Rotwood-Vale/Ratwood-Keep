@@ -1,16 +1,7 @@
 /datum/advclass/carpenter
 	name = "Carpenter"
 	allowed_sexes = list("male", "female")
-	allowed_races = list(
-		"Humen",
-		"Elf",
-		"Half-Elf",
-		"Dwarf",
-		"Tiefling",
-		"Dark Elf",
-		"Aasimar",
-		"Lizardfolk"
-	)
+	allowed_races = ALL_RACES_TYPES
 	outfit = /datum/outfit/job/roguetown/adventurer/carpenter
 	isvillager = TRUE
 	ispilgrim = TRUE

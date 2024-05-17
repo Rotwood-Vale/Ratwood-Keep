@@ -4,7 +4,7 @@
 	tutorial = "You are the proud lord of heartfelt \
 	but why did you come to the isle of enigma?"
 	allowed_sexes = list("male")
-	allowed_races = list("Humen")
+	allowed_races = list(/datum/species/human/northern)
 	outfit = /datum/outfit/job/roguetown/adventurer/heartfeltlord
 	maxchosen = 1
 	pickprob = 100

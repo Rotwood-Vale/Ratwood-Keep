@@ -7,8 +7,8 @@
 	spawn_positions = 0
 
 	allowed_races = list(
-		"Humen",
-		"Aasimar"
+		/datum/species/human/northern,
+		/datum/species/aasimar,
 	)
 	allowed_sexes = list(MALE)
 

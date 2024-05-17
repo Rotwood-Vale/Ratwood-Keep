@@ -5,11 +5,7 @@
 	faction = "Station"
 	total_positions = 2
 	spawn_positions = 2
-	allowed_races = list(
-		"Humen",
-		"Elf",
-		"Half-Elf"
-	) //same shit as town guard
+	allowed_races = ALL_RACES_TYPES //same shit as town guard
 	allowed_sexes = list(MALE)
 	allowed_ages = list(AGE_YOUNG)
 

@@ -3,11 +3,7 @@
 /datum/advclass/masterchef
 	name = "Master Chef"
 	allowed_sexes = list("male", "female")
-	allowed_races = list("Humen",
-	"Dwarf",
-	"Aasimar",
-	"Elf"
-	)
+	allowed_races = ALL_RACES_TYPES
 	outfit = /datum/outfit/job/roguetown/adventurer/masterchef
 	isvillager = FALSE
 	ispilgrim = TRUE

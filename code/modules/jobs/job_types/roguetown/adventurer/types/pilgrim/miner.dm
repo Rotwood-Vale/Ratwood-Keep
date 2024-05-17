@@ -1,16 +1,7 @@
 /datum/advclass/miner
 	name = "Miner"
 	allowed_sexes = list("male")
-	allowed_races = list(
-		"Humen",
-		"Elf",
-		"Half-Elf",
-		"Dwarf",
-		"Tiefling",
-		"Dark Elf",
-		"Aasimar",
-		"Lizardfolk"
-	)
+	allowed_races = ALL_RACES_TYPES
 	outfit = /datum/outfit/job/roguetown/adventurer/miner
 	isvillager = TRUE
 	ispilgrim = TRUE

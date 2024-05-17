@@ -3,15 +3,7 @@
 	name = "Barbarian"
 	tutorial = "..."
 	allowed_sexes = list("male")
-	allowed_races = list(
-		"Humen",
-		"Elf",
-		"Half-Elf",
-		"Dwarf",
-		"Tiefling",
-		"Dark Elf",
-		"Aasimar"
-	)
+	allowed_races = ALL_RACES_TYPES
 	outfit = /datum/outfit/job/roguetown/adventurer/barbarian
 	traits_applied = list(RTRAIT_MEDIUMARMOR, TRAIT_STEELHEARTED, TRAIT_NOPAINSTUN)
 

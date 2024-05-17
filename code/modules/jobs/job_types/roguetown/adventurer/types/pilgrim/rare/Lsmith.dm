@@ -3,9 +3,7 @@
 /datum/advclass/masterblacksmith
 	name = "Master Blacksmith"
 	allowed_sexes = list("male", "female")
-	allowed_races = list("Humen",
-	"Dwarf"
-	)
+	allowed_races = ALL_RACES_TYPES
 	outfit = /datum/outfit/job/roguetown/adventurer/masterblacksmith
 	isvillager = FALSE
 	ispilgrim = TRUE

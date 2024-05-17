@@ -3,15 +3,7 @@
 	name = "Torso"
 	tutorial = "Some horrible accident in the forest away all of your limbs!\nSurvival will be a true TRIUMPH."
 	allowed_sexes = list("male", "female")
-	allowed_races = list(
-		"Humen",
-		"Elf",
-		"Half-Elf",
-		"Dwarf",
-		"Tiefling",
-		"Dark Elf",
-		"Aasimar"
-	)
+	allowed_races = ALL_RACES_TYPES
 	outfit = /datum/outfit/job/roguetown/adventurer/torso
 	traits_applied = list(RTRAIT_HEAVYARMOR, RTRAIT_MEDIUMARMOR, TRAIT_STEELHEARTED)
 	isvillager = FALSE

@@ -130,7 +130,7 @@ SUBSYSTEM_DEF(job)
 		if(player.mind && job.title in player.mind.restricted_roles)
 			JobDebug("FOC incompatible with antagonist role, Player: [player]")
 			continue
-		if(!(player.client.prefs.pref_species.name in job.allowed_races))
+		if(!(player.client.prefs.pref_species.type in job.allowed_races))
 			JobDebug("FOC incompatible with species, Player: [player], Job: [job.title], Race: [player.client.prefs.pref_species.name]")
 			continue
 		if(!(player.client.prefs.selected_patron.name in job.allowed_patrons))
@@ -200,7 +200,7 @@ SUBSYSTEM_DEF(job)
 			JobDebug("GRJ incompatible with antagonist role, Player: [player], Job: [job.title]")
 			continue
 
-		if(!(player.client.prefs.pref_species.name in job.allowed_races))
+		if(!(player.client.prefs.pref_species.type in job.allowed_races))
 			JobDebug("GRJ incompatible with species, Player: [player], Job: [job.title], Race: [player.client.prefs.pref_species.name]")
 			continue
 
@@ -436,7 +436,7 @@ SUBSYSTEM_DEF(job)
 					JobDebug("DO incompatible with antagonist role, Player: [player], Job:[job.title]")
 					continue
 
-				if(!(player.client.prefs.pref_species.name in job.allowed_races))
+				if(!(player.client.prefs.pref_species.type in job.allowed_races))
 					JobDebug("DO incompatible with species, Player: [player], Job: [job.title], Race: [player.client.prefs.pref_species.name]")
 					continue
 
@@ -528,7 +528,7 @@ SUBSYSTEM_DEF(job)
 				if(player.mind && job.title in player.mind.restricted_roles)
 					continue
 
-				if(!(player.client.prefs.pref_species.name in job.allowed_races))
+				if(!(player.client.prefs.pref_species.type in job.allowed_races))
 					continue
 				
 				if(!(player.client.prefs.selected_patron.name in job.allowed_patrons))

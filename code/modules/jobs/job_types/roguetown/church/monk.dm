@@ -6,15 +6,7 @@
 	total_positions = 3
 	spawn_positions = 4
 
-	allowed_races = list(
-		"Humen",
-		"Elf",
-		"Half-Elf",
-		"Dwarf",
-		"Aasimar",
-		"Lizardfolk",
-		"Tabaxi"
-	)
+	allowed_races = ALL_RACES_TYPES
 	tutorial = "Chores, some more chores- Even more chores.. Oh how the life of a humble cleric is exhausting… You have faith, but even you know you gave up a life of adventure for that of the security in the Church. Assist the Priest in their daily tasks, maybe today will be the day something interesting happens."
 	allowed_patrons = list("Astrata", "Dendor", "Necra", "Pestra","Noc")
 	outfit = /datum/outfit/job/roguetown/monk

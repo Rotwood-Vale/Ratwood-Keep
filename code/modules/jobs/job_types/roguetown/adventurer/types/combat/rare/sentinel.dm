@@ -4,8 +4,10 @@
 	name = "Sentinel"
 	tutorial = "Elvish Sentinels are a specialized group of Rangers known for their mastery of bow and blade alike; their arrows are said to contain poisons from the native trees"
 	allowed_sexes = list("male", "female")
-	allowed_races = list("Elf",
-	 "Half-Elf")
+	allowed_races = list(
+		/datum/species/elf/dark,
+		/datum/species/elf/wood,
+	 )
 	outfit = /datum/outfit/job/roguetown/adventurer/sentinal
 	maxchosen = 5
 	pickprob = 50

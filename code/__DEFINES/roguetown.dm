@@ -1,7 +1,57 @@
 //used in various places
-#define ALL_RACES_LIST		list("human", "dwarf", "elf", "tiefling", "aasimar", "lizardfolk", "tabaxi", "vulpkanin", "akula", "moth", "dracon")
+#define ALL_RACES_TYPES list(\
+	/datum/species/human/northern,\
+	/datum/species/human/halfelf,\
+	/datum/species/elf/dark,\
+	/datum/species/elf/wood,\
+	/datum/species/dwarf/mountain,\
+	/datum/species/tieberian,\
+	/datum/species/aasimar,\
+	/datum/species/lizardfolk,\
+	/datum/species/tabaxi,\
+	/datum/species/vulpkanin,\
+	/datum/species/akula,\
+	/datum/species/moth,\
+	/datum/species/dracon,\
+	/datum/species/anthromorph,\
+)
 
-#define ALL_RACES_LIST_NAMES		list("Humen", "Humen", "Half-Elf", "Elf", "Elf", "Dwarf","Dwarf","Tiefling", "Aasimar", "Lizardfolk", "Tabaxi", "Vulpkanin", "Akula", "Mothman", "Dracon")
+#define NOBLE_RACES_TYPES list(\
+	/datum/species/human/northern,\
+	/datum/species/human/halfelf,\
+	/datum/species/elf/wood,\
+	/datum/species/aasimar,\
+	/datum/species/dracon,\
+)
+
+#define NON_DWARVEN_RACE_TYPES list(\
+	/datum/species/human/northern,\
+	/datum/species/human/halfelf,\
+	/datum/species/elf/dark,\
+	/datum/species/elf/wood,\
+	/datum/species/tieberian,\
+	/datum/species/aasimar,\
+	/datum/species/lizardfolk,\
+	/datum/species/tabaxi,\
+	/datum/species/vulpkanin,\
+	/datum/species/akula,\
+	/datum/species/moth,\
+	/datum/species/dracon,\
+	/datum/species/anthromorph,\
+)
+// Non-elf non-dwarf mostly
+#define HUMANLIKE_RACE_TYPES list(\
+	/datum/species/human/northern,\
+	/datum/species/tieberian,\
+	/datum/species/aasimar,\
+	/datum/species/lizardfolk,\
+	/datum/species/tabaxi,\
+	/datum/species/vulpkanin,\
+	/datum/species/akula,\
+	/datum/species/moth,\
+	/datum/species/dracon,\
+	/datum/species/anthromorph,\
+)
 
 #define ALL_PATRON_NAMES_LIST		list("Astrata", "Noc", "Xylix", "Eora", "Malum", "Dendor", "Abyssor", "Necra", "Pestra", "Malum", "Ravox")
 

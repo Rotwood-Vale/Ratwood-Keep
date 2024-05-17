@@ -3,21 +3,11 @@
 	flag = JESTER
 	department_flag = PEASANTS
 	faction = "Station"
-	total_positions = 0 // Disabled due to ERP removal, originally 2
-	spawn_positions = 0 // Disabled due to ERP removal, originally 3
+	total_positions = 2 // Disabled due to ERP removal, originally 2
+	spawn_positions = 3 // Disabled due to ERP removal, originally 3
 
 	allowed_sexes = list("female")
-	allowed_races = list(
-		"Humen",
-		"Elf",
-		"Half-Elf",
-		"Dwarf",
-		"Tiefling",
-		"Dark Elf",
-		"Aasimar",
-		"Lizardfolk",
-		"Tabaxi"	
-	)
+	allowed_races = ALL_RACES_TYPES
 
 	tutorial = "Nobody would envy your lot in life, for the role of the bathwench is not something so idly taken. It comes from a place of desperation, least usually: for any with true compassion or skill would seek position with a nunnery or the medical trade. Launder clothes and soothe wounds, that is your loathsome creed."
 

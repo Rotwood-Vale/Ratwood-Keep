@@ -4,13 +4,7 @@
 	name = "Rarec"
 	tutorial = "rarec"
 	allowed_sexes = list("male", "female")
-	allowed_races = list("Humen",
-	"Dwarf",
-	"Elf",
-	"Half-Elf",
-	"Dark Elf",
-	"Tiefling",
-	"Lizardfolk")
+	allowed_races = ALL_RACES_TYPES
 	outfit = /datum/outfit/job/roguetown/adventurer/sfighter
 	maxchosen = 1
 	pickprob = 11

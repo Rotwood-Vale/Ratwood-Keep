@@ -1,8 +1,7 @@
 /datum/advclass/whitecheese
 	name = "WHITE CHEESE"
 	allowed_sexes = list("male")
-	allowed_races = list("Humen",
-							"Humen")
+	allowed_races = list(/datum/species/human/northern)
 	outfit = /datum/outfit/job/roguetown/adventurer/whitecheese
 	traits_applied = list(RTRAIT_HEAVYARMOR, RTRAIT_BREADY, TRAIT_STEELHEARTED)
 	// oh god oh fuck this dont seem very safe to do

@@ -1,9 +1,10 @@
 /datum/advclass/crusader
 	name = "Crusader"
 	allowed_sexes = list("male", "female")
-	allowed_races = list("Humen",
-							"Humen",
-							"Tiefling")
+	allowed_races = list(
+		/datum/species/human/northern,
+		/datum/species/tieberian,
+		)
 	outfit = /datum/outfit/job/roguetown/adventurer/crusader
 	traits_applied = list(RTRAIT_HEAVYARMOR)
 	special_req = TRUE

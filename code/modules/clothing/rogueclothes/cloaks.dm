@@ -482,7 +482,7 @@
 	nodismemsleeves = TRUE
 	inhand_mod = TRUE
 //	allowed_sex = list("male")
-	allowed_race = list("human", "tiefling", "elf", "aasimar")
+	allowed_race = HUMANLIKE_RACE_TYPES
 	detail_tag = "_det"
 	detail_color = CLOTHING_PURPLE
 
@@ -721,12 +721,12 @@
 
 /obj/item/clothing/cloak/cape/puritan
 	icon_state = "puritan_cape"
-	allowed_race = list("human", "tiefling", "elf", "dwarf", "aasimar")
+	allowed_race = ALL_RACES_TYPES
 
 /obj/item/clothing/cloak/cape/archivist
 	icon_state = "puritan_cape"
 	color = CLOTHING_BLACK
-	allowed_race = list("human", "tiefling", "elf", "dwarf", "aasimar")
+	allowed_race = ALL_RACES_TYPES
 
 /obj/item/clothing/cloak/cape/rogue
 	name = "cape"
@@ -753,7 +753,7 @@
 	sleevetype = "shirt"
 	slot_flags = ITEM_SLOT_CLOAK
 	allowed_sex = list(MALE)
-	allowed_race = list("human", "tiefling", "aasimar")
+	allowed_race = HUMANLIKE_RACE_TYPES
 	nodismemsleeves = TRUE
 
 
@@ -780,7 +780,7 @@
 	sleevetype = "shirt"
 	slot_flags = ITEM_SLOT_CLOAK
 	allowed_sex = list(MALE)
-	allowed_race = list("human", "tiefling", "aasimar")
+	allowed_race = HUMANLIKE_RACE_TYPES
 	sellprice = 50
 	nodismemsleeves = TRUE
 
@@ -793,7 +793,7 @@
 	sleevetype = "shirt"
 	slot_flags = ITEM_SLOT_CLOAK
 	allowed_sex = list(MALE)
-	allowed_race = list("human", "tiefling", "aasimar")
+	allowed_race = HUMANLIKE_RACE_TYPES
 	sellprice = 50
 	nodismemsleeves = TRUE
 
@@ -814,7 +814,7 @@
 	toggle_icon_state = FALSE
 	color = CLOTHING_BLACK
 	allowed_sex = list(MALE, FEMALE)
-	allowed_race = list("human", "tiefling", "elf", "aasimar")
+	allowed_race = NON_DWARVEN_RACE_TYPES
 
 /obj/item/clothing/cloak/half/brown
 	color = CLOTHING_BROWN
@@ -827,7 +827,7 @@
 	icon_state = "guardcloak"
 	color = CLOTHING_RED
 	allowed_sex = list(MALE)
-	allowed_race = list("human", "tiefling", "aasimar")
+	allowed_race = HUMANLIKE_RACE_TYPES
 	inhand_mod = FALSE
 
 /obj/item/clothing/cloak/half/vet/Initialize()

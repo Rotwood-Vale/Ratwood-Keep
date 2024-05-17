@@ -4,10 +4,7 @@
 	name = "Paladin"
 	tutorial = "Paladins are holy warriors who have taken sacred vows to uphold justice and righteousness. Often, they were promised redemption for past sins if they crusaded in the name of the gods."	
 	allowed_sexes = list("male", "female")
-	allowed_races = list("Humen",
-	"Tiefling",
-	"Aasimar",
-	"Lizardfolk")
+	allowed_races = ALL_RACES_TYPES
 	outfit = /datum/outfit/job/roguetown/adventurer/paladin
 	allowed_patrons = list("Astrata", "Dendor", "Necra", "Pestra", "Noc")
 	traits_applied = list(RTRAIT_HEAVYARMOR)

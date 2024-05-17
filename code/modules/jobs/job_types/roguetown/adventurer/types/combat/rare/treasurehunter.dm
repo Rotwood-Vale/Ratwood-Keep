@@ -4,15 +4,7 @@
 	tutorial = "Grave robbers sell themselves as treasure hunters, but be sure to wipe that \
 	necrotic flesh off of that trinket you found."
 	allowed_sexes = list("male", "female")
-	allowed_races = list(
-		"Humen",
-		"Elf",
-		"Half-Elf",
-		"Dwarf",
-		"Tiefling",
-		"Dark Elf",
-		"Aasimar"
-	)
+	allowed_races = ALL_RACES_TYPES
 	outfit = /datum/outfit/job/roguetown/adventurer/gravedigger
 	pickprob = 11
 	traits_applied = list(RTRAIT_NOSTINK)

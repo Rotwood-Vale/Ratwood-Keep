@@ -3,7 +3,7 @@
 	name = "Cavern Warrior"
 	tutorial = "Dwarf Warriors are the bread and butter of their miliary sworn to defend their mountain fortress. Armed with either a battle axe or mace, they are a force to be reckoned with."
 	allowed_sexes = list("male", "female")
-	allowed_races = list("Dwarf","Dwarf")
+	allowed_races = list(/datum/species/dwarf/mountain)
 	outfit = /datum/outfit/job/roguetown/adventurer/dwarfwarrior
 	maxchosen = 2
 	traits_applied = list(RTRAIT_HEAVYARMOR)
