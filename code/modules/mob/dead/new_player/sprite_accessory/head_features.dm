@@ -4,6 +4,9 @@
 /datum/sprite_accessory/head_feature/adjust_appearance_list(list/appearance_list, obj/item/organ/organ, obj/item/bodypart/bodypart, mob/living/carbon/owner)
 	generic_gender_feature_adjust(appearance_list, organ, bodypart, owner, OFFSET_FACE, OFFSET_FACE_F)
 
+/datum/sprite_accessory/head_feature/is_visible(obj/item/organ/organ, obj/item/bodypart/bodypart, mob/living/carbon/owner)
+	return is_human_part_visible(owner, HIDEHAIR)
+
 /datum/sprite_accessory/head_feature/skrell_hair
 	abstract_type = /datum/sprite_accessory/head_feature/skrell_hair
 	icon = 'icons/mob/sprite_accessory/head_features/skrell_hair.dmi'

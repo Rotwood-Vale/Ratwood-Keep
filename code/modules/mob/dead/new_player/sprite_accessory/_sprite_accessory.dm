@@ -39,6 +39,9 @@
 			stack_trace("Sprite accessory of [type] has missing color key names")
 	return ..()
 
+/datum/sprite_accessory/proc/is_visible(obj/item/organ/organ, obj/item/bodypart/bodypart, mob/living/carbon/owner)
+	return TRUE
+
 /datum/sprite_accessory/proc/generic_gender_feature_adjust(list/appearance_list, obj/item/organ/organ, obj/item/bodypart/bodypart, mob/living/carbon/owner, feature_male_key, feature_female_key)
 	if(!ishuman(owner))
 		return
@@ -77,6 +80,8 @@
 	else if (bodypart)
 		owner = bodypart.owner
 	else
+		return
+	if(!is_visible(organ, bodypart, owner))
 		return
 	var/icon_state_to_use = get_icon_state(organ, bodypart, owner)
 	if(!icon_state_to_use)

@@ -10,6 +10,9 @@
 	var/obj/item/organ/penis/pp = organ
 	return "[icon_state]_[pp.penis_size]"
 
+/datum/sprite_accessory/penis/is_visible(obj/item/organ/organ, obj/item/bodypart/bodypart, mob/living/carbon/owner)
+	return is_human_part_visible(owner, HIDEJUMPSUIT)
+
 /datum/sprite_accessory/penis/human
 	icon_state = "human"
 	name = "Human"
@@ -67,6 +70,9 @@
 	var/obj/item/organ/testicles/testes = organ
 	return "[icon_state]_[testes.ball_size]"
 
+/datum/sprite_accessory/testicles/is_visible(obj/item/organ/organ, obj/item/bodypart/bodypart, mob/living/carbon/owner)
+	return is_human_part_visible(owner, HIDEJUMPSUIT)
+
 /datum/sprite_accessory/testicles/pair
 	name = "Pair"
 	icon_state = "pair"
@@ -82,6 +88,9 @@
 
 /datum/sprite_accessory/breasts/adjust_appearance_list(list/appearance_list, obj/item/organ/organ, obj/item/bodypart/bodypart, mob/living/carbon/owner)
 	generic_gender_feature_adjust(appearance_list, organ, bodypart, owner, OFFSET_ARMOR, OFFSET_ARMOR_F)
+
+/datum/sprite_accessory/breasts/is_visible(obj/item/organ/organ, obj/item/bodypart/bodypart, mob/living/carbon/owner)
+	return is_human_part_visible(owner, HIDEBOOB|HIDEJUMPSUIT)
 
 /datum/sprite_accessory/breasts/pair
 	icon_state = "pair"
@@ -102,6 +111,9 @@
 
 /datum/sprite_accessory/vagina/adjust_appearance_list(list/appearance_list, obj/item/organ/organ, obj/item/bodypart/bodypart, mob/living/carbon/owner)
 	generic_gender_feature_adjust(appearance_list, organ, bodypart, owner, OFFSET_PANTS, OFFSET_PANTS_F)
+
+/datum/sprite_accessory/vagina/is_visible(obj/item/organ/organ, obj/item/bodypart/bodypart, mob/living/carbon/owner)
+	return is_human_part_visible(owner, HIDEJUMPSUIT)
 
 /datum/sprite_accessory/vagina/human
 	icon_state = "human"

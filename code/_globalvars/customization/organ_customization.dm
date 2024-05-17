@@ -27,13 +27,6 @@ GLOBAL_LIST_INIT(named_breast_sizes, list(
 GLOBAL_LIST_INIT(customizer_choices, build_customizer_choices())
 GLOBAL_LIST_INIT(customizers, build_customizers())
 
-/proc/find_key_by_value(var/list/list, value)
-	for(var/key in list)
-		var/found_value = list[key]
-		if(found_value == value)
-			return key
-	return null
-
 /proc/build_customizer_choices()
 	. = list()
 	for(var/type in typesof(/datum/customizer_choice))

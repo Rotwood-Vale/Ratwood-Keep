@@ -60,6 +60,7 @@ There are several things that need to be remembered:
 
 //HAIR OVERLAY
 /mob/living/carbon/human/update_hair()
+	update_body_parts(TRUE)
 	return
 
 /mob/living/carbon/human/update_body()
@@ -862,6 +863,7 @@ There are several things that need to be remembered:
 
 
 /mob/living/carbon/human/update_inv_wear_suit()
+	update_body_parts(TRUE)
 	return
 /*
 	remove_overlay(ARMOR_LAYER)
@@ -913,6 +915,7 @@ There are several things that need to be remembered:
 
 /mob/living/carbon/human/update_inv_wear_mask()
 	..()
+	update_body_parts(TRUE)
 	var/mutable_appearance/mask_overlay = overlays_standing[MASK_LAYER]
 	if(mask_overlay)
 		remove_overlay(MASK_LAYER)
@@ -1179,6 +1182,7 @@ There are several things that need to be remembered:
 /mob/living/carbon/human/update_inv_shirt()
 	remove_overlay(SHIRT_LAYER)
 	remove_overlay(SHIRTSLEEVE_LAYER)
+	update_body_parts(TRUE)
 
 	if(client && hud_used)
 		var/obj/screen/inventory/inv = hud_used.inv_slots[SLOT_SHIRT]
