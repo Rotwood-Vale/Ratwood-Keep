@@ -134,6 +134,24 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 // PROCS //
 ///////////
 
+/datum/species/proc/is_organ_slot_allowed(mob/living/carbon/human/human, organ_slot)
+	switch(organ_slot)
+		if(ORGAN_SLOT_VAGINA)
+			return (human.gender == FEMALE)
+		if(ORGAN_SLOT_BREASTS)
+			return (human.gender == FEMALE)
+		if(ORGAN_SLOT_PENIS)
+			return (human.gender == MALE)
+		if(ORGAN_SLOT_TESTICLES)
+			return (human.gender == MALE)
+	return TRUE
+
+/datum/species/proc/is_bodypart_feature_slot_allowed(mob/living/carbon/human/human, feature_slot)
+	switch(feature_slot)
+		if(BODYPART_FEATURE_FACIAL_HAIR)
+			return (human.gender == MALE)
+	return TRUE
+
 /datum/species/proc/add_marking_sets_to_markings()
 	if(!body_marking_sets)
 		return
@@ -250,10 +268,16 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 	for(var/slot in C.dna.organ_dna)
 		slots_to_iterate |= slot
 	for(var/slot in slot_mutantorgans)
+		if(!is_organ_slot_allowed(C, slot))
+			continue
 		slots_to_iterate |= slot
-	for(var/obj/item/organ/current_organ as anything in C.internal_organs)
-		slots_to_iterate |= current_organ.slot
 
+	// Remove the organs from the slots they should have nothing in
+	for(var/obj/item/organ/organ in C.internal_organs)
+		if(slots_to_iterate[organ.slot])
+			continue
+		organ.Remove(C, TRUE)
+		QDEL_NULL(organ)
 	for(var/slot in slots_to_iterate)
 		var/obj/item/organ/oldorgan = C.getorganslot(slot) //used in removing
 		var/obj/item/organ/neworgan
@@ -402,7 +426,10 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 
 	C.remove_all_bodypart_features()
 	for(var/bodypart_feature_type in bodypart_features)
-		C.add_bodypart_feature(new bodypart_feature_type())
+		var/datum/bodypart_feature/feature = new bodypart_feature_type()
+		if(!is_bodypart_feature_slot_allowed(C, feature.feature_slot))
+			continue
+		C.add_bodypart_feature(feature)
 	if(pref_load)
 		pref_load.apply_customizers_to_character(C)
 

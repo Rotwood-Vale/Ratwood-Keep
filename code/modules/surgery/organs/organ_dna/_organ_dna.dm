@@ -35,3 +35,27 @@
 	eyes_organ.eye_color = eye_color
 	eyes_organ.heterochromia  = heterochromia
 	eyes_organ.second_color = second_color
+
+/datum/organ_dna/penis
+	var/penis_size = DEFAULT_PENIS_SIZE
+
+/datum/organ_dna/penis/imprint_organ(obj/item/organ/organ)
+	..()
+	var/obj/item/organ/penis/penis_organ = organ
+	penis_organ.penis_size = penis_size
+
+/datum/organ_dna/testicles
+	var/ball_size = DEFAULT_TESTICLES_SIZE
+
+/datum/organ_dna/testicles/imprint_organ(obj/item/organ/organ)
+	..()
+	var/obj/item/organ/testicles/testicles_organ = organ
+	testicles_organ.ball_size = ball_size
+
+/datum/organ_dna/breasts
+	var/breast_size = DEFAULT_BREASTS_SIZE
+
+/datum/organ_dna/breasts/imprint_organ(obj/item/organ/organ)
+	..()
+	var/obj/item/organ/breasts/breasts_organ = organ
+	breasts_organ.breast_size = breast_size
