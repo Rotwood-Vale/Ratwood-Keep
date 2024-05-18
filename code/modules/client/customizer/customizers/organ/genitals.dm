@@ -1,27 +1,17 @@
 /datum/customizer/organ/penis
+	abstract_type = /datum/customizer/organ/penis
 	name = "Penis"
-	customizer_choices = list(/datum/customizer_choice/organ/penis)
 
 /datum/customizer/organ/penis/is_allowed(datum/preferences/prefs)
 	return (prefs.gender == MALE)
 
 /datum/customizer_choice/organ/penis
+	abstract_type = /datum/customizer_choice/organ/penis
 	name = "Penis"
 	organ_type = /obj/item/organ/penis
 	organ_slot = ORGAN_SLOT_PENIS
 	organ_dna_type = /datum/organ_dna/penis
 	customizer_entry_type = /datum/customizer_entry/organ/penis
-	sprite_accessories = list(
-		/datum/sprite_accessory/penis/human,
-		/datum/sprite_accessory/penis/knotted,
-		/datum/sprite_accessory/penis/knotted2,
-		/datum/sprite_accessory/penis/flared,
-		/datum/sprite_accessory/penis/barbknot,
-		/datum/sprite_accessory/penis/tapered,
-		/datum/sprite_accessory/penis/tentacle,
-		/datum/sprite_accessory/penis/hemi,
-		/datum/sprite_accessory/penis/hemiknot,
-		)
 
 /datum/customizer_choice/organ/penis/validate_entry(datum/preferences/prefs, datum/customizer_entry/entry)
 	..()
@@ -53,23 +43,64 @@
 /datum/customizer_entry/organ/penis
 	var/penis_size = DEFAULT_PENIS_SIZE
 
-/datum/customizer/organ/testicles
-	name = "Testicles"
-	customizer_choices = list(
-		/datum/customizer_choice/organ/testicles,
-		/datum/customizer_choice/organ/testicles/internal,
+/datum/customizer/organ/penis/human
+	customizer_choices = list(/datum/customizer_choice/organ/penis/human)
+
+/datum/customizer_choice/organ/penis/human
+	sprite_accessories = list(/datum/sprite_accessory/penis/human)
+
+/datum/customizer/organ/penis/anthro
+	customizer_choices = list(/datum/customizer_choice/organ/penis/anthro)
+
+/datum/customizer_choice/organ/penis/anthro
+	sprite_accessories = list(
+		/datum/sprite_accessory/penis/human,
+		/datum/sprite_accessory/penis/knotted,
+		/datum/sprite_accessory/penis/knotted2,
+		/datum/sprite_accessory/penis/flared,
+		/datum/sprite_accessory/penis/barbknot,
+		/datum/sprite_accessory/penis/tapered,
+		/datum/sprite_accessory/penis/hemi,
+		/datum/sprite_accessory/penis/hemiknot,
+		/datum/sprite_accessory/penis/tentacle,
 		)
+
+/datum/customizer/organ/penis/knotted
+	customizer_choices = list(/datum/customizer_choice/organ/penis/knotted)
+
+/datum/customizer_choice/organ/penis/knotted
+	sprite_accessories = list(
+		/datum/sprite_accessory/penis/human,
+		/datum/sprite_accessory/penis/knotted,
+		/datum/sprite_accessory/penis/knotted2,
+		/datum/sprite_accessory/penis/barbknot,
+		)
+
+/datum/customizer/organ/penis/lizard
+	customizer_choices = list(/datum/customizer_choice/organ/penis/lizard)
+
+/datum/customizer_choice/organ/penis/lizard
+	sprite_accessories = list(
+		/datum/sprite_accessory/penis/human,
+		/datum/sprite_accessory/penis/tapered,
+		/datum/sprite_accessory/penis/hemi,
+		/datum/sprite_accessory/penis/hemiknot,
+		)
+
+/datum/customizer/organ/testicles
+	abstract_type = /datum/customizer/organ/testicles
+	name = "Testicles"
 
 /datum/customizer/organ/testicles/is_allowed(datum/preferences/prefs)
 	return (prefs.gender == MALE)
 
 /datum/customizer_choice/organ/testicles
+	abstract_type = /datum/customizer_choice/organ/testicles
 	name = "Testicles"
 	organ_type = /obj/item/organ/testicles
 	organ_dna_type = /datum/organ_dna/testicles
 	customizer_entry_type = /datum/customizer_entry/organ/testicles
 	organ_slot = ORGAN_SLOT_TESTICLES
-	sprite_accessories = list(/datum/sprite_accessory/testicles/pair)
 	var/can_customize_size = TRUE
 
 /datum/customizer_choice/organ/testicles/validate_entry(datum/preferences/prefs, datum/customizer_entry/entry)
@@ -102,6 +133,22 @@
 				var/new_size = GLOB.named_ball_sizes[named_size]
 				testicles_entry.ball_size = sanitize_integer(new_size, MIN_TESTICLES_SIZE, MAX_TESTICLES_SIZE, DEFAULT_TESTICLES_SIZE)
 
+/datum/customizer/organ/testicles/external
+	customizer_choices = list(/datum/customizer_choice/organ/testicles/external)
+
+/datum/customizer/organ/testicles/internal
+	customizer_choices = list(/datum/customizer_choice/organ/testicles/internal)
+
+/datum/customizer/organ/testicles/anthro
+	customizer_choices = list(
+		/datum/customizer_choice/organ/testicles/external,
+		/datum/customizer_choice/organ/testicles/internal,
+	)
+
+/datum/customizer_choice/organ/testicles/external
+	name = "Testicles"
+	sprite_accessories = list(/datum/sprite_accessory/testicles/pair)
+
 /datum/customizer_choice/organ/testicles/internal
 	name = "Internal testicles"
 	organ_type = /obj/item/organ/testicles/internal
@@ -112,23 +159,19 @@
 	var/ball_size = DEFAULT_TESTICLES_SIZE
 
 /datum/customizer/organ/breasts
+	abstract_type = /datum/customizer/organ/breasts 
 	name = "Breasts"
-	customizer_choices = list(/datum/customizer_choice/organ/breasts)
 
 /datum/customizer/organ/breasts/is_allowed(datum/preferences/prefs)
 	return (prefs.gender == FEMALE)
 
 /datum/customizer_choice/organ/breasts
+	abstract_type = /datum/customizer_choice/organ/breasts
 	name = "Breasts"
 	customizer_entry_type = /datum/customizer_entry/organ/breasts
 	organ_type = /obj/item/organ/breasts
 	organ_slot = ORGAN_SLOT_BREASTS
 	organ_dna_type = /datum/organ_dna/breasts
-	sprite_accessories = list(
-		/datum/sprite_accessory/breasts/pair,
-		/datum/sprite_accessory/breasts/quad,
-		/datum/sprite_accessory/breasts/sextuple,
-		)
 
 /datum/customizer_choice/organ/breasts/validate_entry(datum/preferences/prefs, datum/customizer_entry/entry)
 	..()
@@ -160,23 +203,66 @@
 /datum/customizer_entry/organ/breasts
 	var/breast_size = DEFAULT_BREASTS_SIZE
 
+/datum/customizer/organ/breasts/human
+	customizer_choices = list(/datum/customizer_choice/organ/breasts/human)
+
+/datum/customizer_choice/organ/breasts/human
+	sprite_accessories = list(/datum/sprite_accessory/breasts/pair)
+
+/datum/customizer/organ/breasts/animal
+	customizer_choices = list(/datum/customizer_choice/organ/breasts/animal)
+
+/datum/customizer_choice/organ/breasts/animal
+	sprite_accessories = list(
+		/datum/sprite_accessory/breasts/pair,
+		/datum/sprite_accessory/breasts/quad,
+		/datum/sprite_accessory/breasts/sextuple,
+		)
+
 /datum/customizer/organ/vagina
+	abstract_type = /datum/customizer/organ/vagina
 	name = "Vagina"
-	customizer_choices = list(/datum/customizer_choice/organ/vagina)
 
 /datum/customizer/organ/vagina/is_allowed(datum/preferences/prefs)
 	return (prefs.gender == FEMALE)
 
 /datum/customizer_choice/organ/vagina
+	abstract_type = /datum/customizer_choice/organ/vagina
 	name = "Vagina"
 	organ_type = /obj/item/organ/vagina
 	organ_slot = ORGAN_SLOT_VAGINA
+
+/datum/customizer/organ/vagina/human
+	customizer_choices = list(/datum/customizer_choice/organ/vagina/human)
+
+/datum/customizer_choice/organ/vagina/human
 	sprite_accessories = list(
 		/datum/sprite_accessory/vagina/human,
+		/datum/sprite_accessory/vagina/gaping,
+		/datum/sprite_accessory/vagina/hairy,
+		)
+
+/datum/customizer/organ/vagina/animal
+	customizer_choices = list(/datum/customizer_choice/organ/vagina/animal)
+
+/datum/customizer_choice/organ/vagina/animal
+	sprite_accessories = list(
+		/datum/sprite_accessory/vagina/human,
+		/datum/sprite_accessory/vagina/gaping,
 		/datum/sprite_accessory/vagina/hairy,
 		/datum/sprite_accessory/vagina/spade,
 		/datum/sprite_accessory/vagina/furred,
-		/datum/sprite_accessory/vagina/gaping,
-		/datum/sprite_accessory/vagina/cloaca,
 		)
 
+/datum/customizer/organ/vagina/anthro
+	customizer_choices = list(/datum/customizer_choice/organ/vagina/anthro)
+
+/datum/customizer_choice/organ/vagina/anthro
+	sprite_accessories = list(
+		/datum/sprite_accessory/vagina/human,
+		/datum/sprite_accessory/vagina/gaping,
+		/datum/sprite_accessory/vagina/hairy,
+		/datum/sprite_accessory/vagina/spade,
+		/datum/sprite_accessory/vagina/furred,
+		/datum/sprite_accessory/vagina/cloaca,
+		)

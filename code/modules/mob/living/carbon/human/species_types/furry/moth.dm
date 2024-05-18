@@ -55,10 +55,10 @@
 		/datum/customizer/organ/wings/moth,
 		/datum/customizer/organ/antennas/moth,
 		/datum/customizer/organ/neck_feature/moth_fluff,
-		/datum/customizer/organ/testicles,
-		/datum/customizer/organ/penis,
-		/datum/customizer/organ/breasts,
-		/datum/customizer/organ/vagina,
+		/datum/customizer/organ/testicles/anthro,
+		/datum/customizer/organ/penis/lizard,
+		/datum/customizer/organ/breasts/animal,
+		/datum/customizer/organ/vagina/animal,
 		)
 	body_marking_sets = list(
 		/datum/body_marking_set/moth/reddish,

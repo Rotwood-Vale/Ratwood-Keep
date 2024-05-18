@@ -64,10 +64,10 @@
 		/datum/customizer/organ/tail/vulpkanin,
 		/datum/customizer/organ/snout/vulpkanin,
 		/datum/customizer/organ/ears/vulpkanin,
-		/datum/customizer/organ/testicles,
-		/datum/customizer/organ/penis,
-		/datum/customizer/organ/breasts,
-		/datum/customizer/organ/vagina,
+		/datum/customizer/organ/testicles/anthro,
+		/datum/customizer/organ/penis/anthro,
+		/datum/customizer/organ/breasts/animal,
+		/datum/customizer/organ/vagina/anthro,
 		)
 	body_marking_sets = list(
 		/datum/body_marking_set/none,

@@ -68,10 +68,10 @@
 		/datum/customizer/bodypart_feature/hair/facial/humanoid,
 		/datum/customizer/bodypart_feature/accessory,
 		/datum/customizer/bodypart_feature/face_detail,
-		/datum/customizer/organ/testicles,
-		/datum/customizer/organ/penis,
-		/datum/customizer/organ/breasts,
-		/datum/customizer/organ/vagina,
+		/datum/customizer/organ/testicles/external,
+		/datum/customizer/organ/penis/knotted,
+		/datum/customizer/organ/breasts/animal,
+		/datum/customizer/organ/vagina/animal,
 		)
 	body_markings = list(
 		/datum/body_marking/lizard/dtiger,
