@@ -1313,10 +1313,14 @@ Slots: [job.spawn_positions]</span>
 	switch(href_list["task"])
 		if("change_customizer")
 			handle_customizer_topic(user, href_list)
+			ShowChoices(user)
 			ShowCustomizers(user)
+			return
 		if("change_marking")
 			handle_body_markings_topic(user, href_list)
+			ShowChoices(user)
 			ShowMarkings(user)
+			return
 		if("random")
 			switch(href_list["preference"])
 				if("name")

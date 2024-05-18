@@ -37,13 +37,13 @@
 
 /datum/customizer/organ/ears/demihuman
 	customizer_choices = list(/datum/customizer_choice/organ/ears/demihuman)
+	allows_disabling = TRUE
 
 /datum/customizer_choice/organ/ears/demihuman
 	name = "Demihuman Ears"
 	organ_type = /obj/item/organ/ears
 	generic_random_pick = TRUE
 	sprite_accessories = list(
-		/datum/sprite_accessory/none,
 		/datum/sprite_accessory/ears/cat,
 		/datum/sprite_accessory/ears/fox,
 		/datum/sprite_accessory/ears/wolf,
@@ -52,12 +52,15 @@
 		/datum/sprite_accessory/ears/rabbit_lop,
 		)
 
-/datum/customizer/organ/ears/anthromorph
-	customizer_choices = list(/datum/customizer_choice/organ/ears/anthromorph)
+/datum/customizer/organ/ears/anthro
+	customizer_choices = list(/datum/customizer_choice/organ/ears/anthro)
+	allows_disabling = TRUE
+	default_disabled = TRUE
 
-/datum/customizer_choice/organ/ears/anthromorph
-	name = "Mammal Ears"
-	organ_type = /obj/item/organ/ears/anthromorph
+/datum/customizer_choice/organ/ears/anthro
+	name = "Anthro Ears"
+	organ_type = /obj/item/organ/ears/anthro
+	generic_random_pick = TRUE
 	sprite_accessories = list(
 		/datum/sprite_accessory/ears/cat,
 		/datum/sprite_accessory/ears/axolotl,

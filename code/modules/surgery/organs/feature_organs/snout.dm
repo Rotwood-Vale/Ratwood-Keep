@@ -12,8 +12,8 @@
 /obj/item/organ/snout/vox
 	name = "large beak"
 
-/obj/item/organ/snout/mammal
-	name = "mammal snout"
+/obj/item/organ/snout/anthro
+	name = "anthro snout"
 
 /obj/item/organ/snout/lizard
 	name = "lizard snout"

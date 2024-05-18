@@ -43,3 +43,21 @@
 		/datum/sprite_accessory/horns/drake,
 		/datum/sprite_accessory/horns/knight,
 		)
+
+/datum/customizer/organ/horns/anthro
+	customizer_choices = list(/datum/customizer_choice/organ/horns/anthro)
+	allows_disabling = TRUE
+	default_disabled =  TRUE
+
+/datum/customizer_choice/organ/horns/anthro
+	name = "Horns"
+	organ_type = /obj/item/organ/horns
+	sprite_accessories = list(
+		/datum/sprite_accessory/horns/simple,
+		/datum/sprite_accessory/horns/short,
+		/datum/sprite_accessory/horns/curled,
+		/datum/sprite_accessory/horns/ram,
+		/datum/sprite_accessory/horns/guilmon,
+		/datum/sprite_accessory/horns/drake,
+		/datum/sprite_accessory/horns/knight,
+		)

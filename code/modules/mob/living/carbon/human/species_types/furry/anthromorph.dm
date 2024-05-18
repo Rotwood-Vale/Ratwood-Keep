@@ -15,7 +15,6 @@
 	inherent_traits = list(TRAIT_NOMOBSWAP)
 	inherent_biotypes = MOB_ORGANIC|MOB_HUMANOID
 	attack_verb = "slash"
-	liked_food = GROSS | MEAT | FRIED
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
 	possible_ages = list(AGE_ADULT, AGE_MIDDLEAGED, AGE_OLD)
 	limbs_icon_m = 'icons/roguetown/mob/bodies/m/mt.dmi'
@@ -39,13 +38,11 @@
 		ORGAN_SLOT_HEART = /obj/item/organ/heart,
 		ORGAN_SLOT_LUNGS = /obj/item/organ/lungs,
 		ORGAN_SLOT_EYES = /obj/item/organ/eyes,
-		ORGAN_SLOT_EARS = /obj/item/organ/ears/vulpkanin,
+		ORGAN_SLOT_EARS = /obj/item/organ/ears,
 		ORGAN_SLOT_TONGUE = /obj/item/organ/tongue,
 		ORGAN_SLOT_LIVER = /obj/item/organ/liver,
 		ORGAN_SLOT_STOMACH = /obj/item/organ/stomach,
 		ORGAN_SLOT_APPENDIX = /obj/item/organ/appendix,
-		ORGAN_SLOT_TAIL = /obj/item/organ/tail/vulpkanin,
-		ORGAN_SLOT_SNOUT = /obj/item/organ/snout/vulpkanin,
 		ORGAN_SLOT_TESTICLES = /obj/item/organ/testicles,
 		ORGAN_SLOT_PENIS = /obj/item/organ/penis,
 		ORGAN_SLOT_BREASTS = /obj/item/organ/breasts,
@@ -61,9 +58,14 @@
 		/datum/customizer/bodypart_feature/hair/facial/humanoid,
 		/datum/customizer/bodypart_feature/accessory,
 		/datum/customizer/bodypart_feature/face_detail,
-		/datum/customizer/organ/tail/vulpkanin,
-		/datum/customizer/organ/snout/vulpkanin,
-		/datum/customizer/organ/ears/vulpkanin,
+		/datum/customizer/organ/tail/anthro,
+		/datum/customizer/organ/tail_feature/anthro,
+		/datum/customizer/organ/snout/anthro,
+		/datum/customizer/organ/ears/anthro,
+		/datum/customizer/organ/horns/anthro,
+		/datum/customizer/organ/frills/anthro,
+		/datum/customizer/organ/wings/anthro,
+		/datum/customizer/organ/neck_feature/anthro,
 		/datum/customizer/organ/testicles/anthro,
 		/datum/customizer/organ/penis/anthro,
 		/datum/customizer/organ/breasts/animal,
@@ -86,12 +88,18 @@
 		/datum/body_marking/tattoo/tiger_foot,
 	)
 
+/datum/species/anthromorph/check_roundstart_eligible()
+	return TRUE
+
+/datum/species/anthromorph/qualifies_for_rank(rank, list/features)
+	return TRUE
+
 /datum/species/anthromorph/get_random_features()
 	var/list/returned = MANDATORY_FEATURE_LIST
 	var/main_color
 	var/second_color
 	var/third_color
-	var/random = rand(1,7)
+	var/random = rand(1,6)
 	switch(random)
 		if(1)
 			main_color = "FFFFFF"

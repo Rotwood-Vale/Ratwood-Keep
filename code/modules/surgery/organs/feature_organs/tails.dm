@@ -29,8 +29,8 @@
 	icon_state = "severedmonkeytail"
 	accessory_type = /datum/sprite_accessory/tail/monkey
 
-/obj/item/organ/tail/mammal
-	name = "mammal tail"
+/obj/item/organ/tail/anthro
+	name = "anthro tail"
 
 /obj/item/organ/tail/avali
 	name = "avali tail"

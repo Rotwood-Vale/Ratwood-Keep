@@ -79,16 +79,14 @@
 		/datum/sprite_accessory/snout/synthliz/over,
 		)
 
-/datum/customizer/organ/snout/mammal
+/datum/customizer/organ/snout/anthro
 	allows_disabling = TRUE
-	customizer_choices = list(
-		/datum/customizer_choice/organ/snout/mammal,
-		/datum/customizer_choice/organ/snout/lizard,
-		)
+	default_disabled = TRUE
+	customizer_choices = list(/datum/customizer_choice/organ/snout/anthro)
 
-/datum/customizer_choice/organ/snout/mammal
-	name = "Mammal Snout"
-	organ_type = /obj/item/organ/snout/mammal
+/datum/customizer_choice/organ/snout/anthro
+	name = "Anthro Snout"
+	organ_type = /obj/item/organ/snout/anthro
 	sprite_accessories = list(
 		/datum/sprite_accessory/snout/bird,
 		/datum/sprite_accessory/snout/bigbeak,

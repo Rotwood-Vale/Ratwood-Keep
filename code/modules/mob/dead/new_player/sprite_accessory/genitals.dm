@@ -15,7 +15,7 @@
 
 /datum/sprite_accessory/penis/human
 	icon_state = "human"
-	name = "Human"
+	name = "Plain"
 	color_key_defaults = list(KEY_SKIN_COLOR)
 
 /datum/sprite_accessory/penis/knotted
@@ -120,7 +120,7 @@
 
 /datum/sprite_accessory/vagina/human
 	icon_state = "human"
-	name = "Human"
+	name = "Plain"
 	default_colors = list("f99696")
 
 /datum/sprite_accessory/vagina/hairy

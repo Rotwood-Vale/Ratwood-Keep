@@ -36,15 +36,17 @@
 		/datum/sprite_accessory/neck_feature/moth_fluff/witchwing,
 		)
 
-/datum/customizer/organ/neck_feature/mammal_fluff
+/datum/customizer/organ/neck_feature/anthro
+	name = "Anthro Fluff"
+	allows_disabling = TRUE
+	default_disabled = TRUE
 	customizer_choices = list(
-		/datum/customizer_choice/organ/neck_feature/mammal_fluff,
-		/datum/customizer_choice/organ/neck_feature/moth_fluff,
+		/datum/customizer_choice/organ/neck_feature/anthro_fluff,
 		)
 
-/datum/customizer_choice/organ/neck_feature/mammal_fluff
-	name = "Mammal Fluff"
-	organ_type = /obj/item/organ/neck_feature/mammal_fluff
+/datum/customizer_choice/organ/neck_feature/anthro_fluff
+	name = "Anthro Fluff"
+	organ_type = /obj/item/organ/neck_feature/anthro_fluff
 	sprite_accessories = list(
 		/datum/sprite_accessory/neck_feature/mammal_fluff/fluff,
 		/datum/sprite_accessory/neck_feature/mammal_fluff/fluff_front,

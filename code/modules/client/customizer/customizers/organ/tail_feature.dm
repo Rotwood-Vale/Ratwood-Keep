@@ -34,3 +34,8 @@
 	/datum/sprite_accessory/tail_feature/vox_marking/tip,
 	/datum/sprite_accessory/tail_feature/vox_marking/stripe,
 	)
+
+/datum/customizer/organ/tail_feature/anthro
+	allows_disabling = TRUE
+	default_disabled = TRUE
+	customizer_choices = list(/datum/customizer_choice/organ/tail_feature/lizard_spines)

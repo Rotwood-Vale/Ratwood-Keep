@@ -140,8 +140,8 @@
 		return
 	damage += 40/severity
 
-/obj/item/organ/ears/anthromorph
-	name = "anthromorph ears"
+/obj/item/organ/ears/anthro
+	name = "anthro ears"
 
 /obj/item/organ/ears/vulpkanin
 	name = "vulpkanin ears"

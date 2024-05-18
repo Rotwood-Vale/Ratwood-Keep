@@ -98,16 +98,14 @@
 /datum/customizer/organ/tail/cat
 	customizer_choices = list(/datum/customizer_choice/organ/tail/cat)
 
-/datum/customizer/organ/tail/mammal
-	customizer_choices = list(
-		/datum/customizer_choice/organ/tail/mammal,
-		/datum/customizer_choice/organ/tail/lizard,
-		/datum/customizer_choice/organ/tail/xeno,
-		)
+/datum/customizer/organ/tail/anthro
+	customizer_choices = list(/datum/customizer_choice/organ/tail/anthro)
+	allows_disabling = TRUE
+	default_disabled = TRUE
 
-/datum/customizer_choice/organ/tail/mammal
-	name = "Mammal Tail"
-	organ_type = /obj/item/organ/tail/mammal
+/datum/customizer_choice/organ/tail/anthro
+	name = "Anthro Tail"
+	organ_type = /obj/item/organ/tail/anthro
 	sprite_accessories = list(
 		/datum/sprite_accessory/tail/cat,
 		/datum/sprite_accessory/tail/monkey,

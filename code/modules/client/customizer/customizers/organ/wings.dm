@@ -8,19 +8,20 @@
 	organ_type = /obj/item/organ/wings
 	organ_slot = ORGAN_SLOT_WINGS
 
-/datum/customizer/organ/wings/mammal
-	customizer_choices = list(/datum/customizer_choice/organ/wings/mammal)
+/datum/customizer/organ/wings/anthro
+	customizer_choices = list(/datum/customizer_choice/organ/wings/anthro)
+	allows_disabling = TRUE
+	default_disabled = TRUE
 
-/datum/customizer_choice/organ/wings/mammal
+/datum/customizer_choice/organ/wings/anthro
 	name = "Wings"
-	organ_type = /obj/item/organ/wings/mammal
+	organ_type = /obj/item/organ/wings/anthro
 	sprite_accessories = list(
-		/datum/sprite_accessory/wings/bee,
-		/datum/sprite_accessory/wings/fairy,
-		/datum/sprite_accessory/wings/feathery,
 		/datum/sprite_accessory/wings/bat,
+		/datum/sprite_accessory/wings/feathery,
 		/datum/sprite_accessory/wings/wide/succubus,
-		/datum/sprite_accessory/wings/wide/dragon_synth,
+		/datum/sprite_accessory/wings/fairy,
+		/datum/sprite_accessory/wings/bee,
 		/datum/sprite_accessory/wings/wide/dragon_alt1,
 		/datum/sprite_accessory/wings/wide/dragon_alt2,
 		/datum/sprite_accessory/wings/wide/harpywings,
@@ -32,7 +33,6 @@
 		/datum/sprite_accessory/wings/wide/low_wings,
 		/datum/sprite_accessory/wings/wide/low_wings_top,
 		/datum/sprite_accessory/wings/wide/spider,
-		/datum/sprite_accessory/wings/wide/robowing,
 		/datum/sprite_accessory/wings/huge/angel,
 		/datum/sprite_accessory/wings/huge/dragon,
 		/datum/sprite_accessory/wings/huge/megamoth,

@@ -2,6 +2,9 @@
 	abstract_type = /datum/sprite_accessory/neck_feature
 	relevant_layers = list(BODY_ADJ_LAYER)
 
+/datum/sprite_accessory/neck_feature/adjust_appearance_list(list/appearance_list, obj/item/organ/organ, obj/item/bodypart/bodypart, mob/living/carbon/owner)
+	generic_gender_feature_adjust(appearance_list, organ, bodypart, owner, OFFSET_NECK, OFFSET_NECK_F)
+
 /datum/sprite_accessory/neck_feature/moth_fluff
 	abstract_type = /datum/sprite_accessory/neck_feature/moth_fluff
 	color_key_name = "Fluff"

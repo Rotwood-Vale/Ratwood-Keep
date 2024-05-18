@@ -22,8 +22,8 @@
 	desc = "A pair of fuzzy moth wings."
 	flight_for_species = list("moth")
 
-/obj/item/organ/wings/mammal
-	name = "mammal wings"
+/obj/item/organ/wings/anthro
+	name = "anthro wings"
 
 /obj/item/organ/wings/flight
 	unconditional_flight = TRUE
