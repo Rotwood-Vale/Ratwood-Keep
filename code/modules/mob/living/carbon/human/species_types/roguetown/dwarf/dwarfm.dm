@@ -67,14 +67,6 @@
 		/datum/customizer/organ/vagina/human,
 		)
 	body_markings = list(
-		/datum/body_marking/tattoo/heart,
-		/datum/body_marking/tattoo/hive,
-		/datum/body_marking/tattoo/nightling,
-		/datum/body_marking/tattoo/circuit,
-		/datum/body_marking/tattoo/silverburgh,
-		/datum/body_marking/tattoo/tiger,
-		/datum/body_marking/tattoo/tiger_groin,
-		/datum/body_marking/tattoo/tiger_foot,
 	)
 
 /datum/species/dwarf/mountain/check_roundstart_eligible()

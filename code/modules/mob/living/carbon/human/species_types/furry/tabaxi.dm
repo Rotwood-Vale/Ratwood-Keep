@@ -74,17 +74,6 @@
 		/datum/customizer/organ/vagina/animal,
 		)
 	body_markings = list(
-		/datum/body_marking/lizard/dtiger,
-		/datum/body_marking/lizard/ltiger,
-		/datum/body_marking/lizard/lbelly,
-		/datum/body_marking/tattoo/heart,
-		/datum/body_marking/tattoo/hive,
-		/datum/body_marking/tattoo/nightling,
-		/datum/body_marking/tattoo/circuit,
-		/datum/body_marking/tattoo/silverburgh,
-		/datum/body_marking/tattoo/tiger,
-		/datum/body_marking/tattoo/tiger_groin,
-		/datum/body_marking/tattoo/tiger_foot,
 	)
 
 /datum/species/tabaxi/check_roundstart_eligible()
@@ -133,11 +122,7 @@
 	return returned
 
 /datum/species/tabaxi/get_random_body_markings(list/passed_features)
-	if(rand(1,4) == 1)
-		return list()
-	else
-		var/pick = pick(/datum/body_marking/lizard/dtiger, /datum/body_marking/lizard/ltiger, /datum/body_marking/lizard/lbelly)
-		return assemble_body_markings_from_list(list(pick), passed_features, src)
+	return assemble_body_markings_from_set(GLOB.body_marking_sets_by_type[/datum/body_marking_set/tiger_dark], passed_features, src)
 
 /datum/species/tabaxi/on_species_gain(mob/living/carbon/C, datum/species/old_species)
 	..()

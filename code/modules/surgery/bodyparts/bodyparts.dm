@@ -104,14 +104,9 @@
 		var/datum/body_marking/BM = GLOB.body_markings[key]
 
 		var/render_limb_string = specific_render_zone
-		switch(specific_render_zone)
-			if(BODY_ZONE_R_LEG, BODY_ZONE_L_LEG)
-				if(use_digitigrade)
-					render_limb_string = "digitigrade_[use_digitigrade]_[render_limb_string]"
-			if(BODY_ZONE_CHEST)
-				if(BM.gendered)
-					var/gendaar = (human_owner.gender == FEMALE) ? "f" : "m"
-					render_limb_string = "[render_limb_string]_[gendaar]"
+		if(BM.gendered && (!BM.gender_only_chest || specific_render_zone == BODY_ZONE_CHEST))
+			var/gendaar = (human_owner.gender == FEMALE) ? "f" : "m"
+			render_limb_string = "[render_limb_string]_[gendaar]"
 
 		var/mutable_appearance/accessory_overlay = mutable_appearance(BM.icon, "[BM.icon_state]_[render_limb_string]", -specific_layer)
 		if(override_color)

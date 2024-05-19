@@ -2,6 +2,7 @@
 	icon = 'icons/mob/body_markings/moth_markings.dmi'
 	default_color = "FFF"
 	affected_bodyparts = HEAD | CHEST | ARM_LEFT | ARM_RIGHT | LEG_RIGHT | LEG_LEFT
+	gender_only_chest = TRUE
 
 /datum/body_marking/moth/reddish
 	name = "Reddish"

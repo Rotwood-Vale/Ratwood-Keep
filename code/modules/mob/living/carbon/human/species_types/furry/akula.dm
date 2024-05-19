@@ -64,17 +64,9 @@
 		)
 	body_marking_sets = list(
 		/datum/body_marking_set/none,
-		/datum/body_marking_set/shark,
+		/datum/body_marking_set/belly,
 	)
 	body_markings = list(
-		/datum/body_marking/tattoo/heart,
-		/datum/body_marking/tattoo/hive,
-		/datum/body_marking/tattoo/nightling,
-		/datum/body_marking/tattoo/circuit,
-		/datum/body_marking/tattoo/silverburgh,
-		/datum/body_marking/tattoo/tiger,
-		/datum/body_marking/tattoo/tiger_groin,
-		/datum/body_marking/tattoo/tiger_foot,
 	)
 
 /datum/species/akula/check_roundstart_eligible()
@@ -84,7 +76,7 @@
 	return TRUE
 
 /datum/species/akula/get_random_body_markings(list/passed_features)
-	return assemble_body_markings_from_set(GLOB.body_marking_sets_by_type[/datum/body_marking_set/shark], passed_features, src)
+	return assemble_body_markings_from_set(GLOB.body_marking_sets_by_type[/datum/body_marking_set/belly], passed_features, src)
 
 /datum/species/akula/get_random_features()
 	var/list/returned = MANDATORY_FEATURE_LIST

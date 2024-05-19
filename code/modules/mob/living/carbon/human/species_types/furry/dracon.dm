@@ -69,18 +69,19 @@
 		/datum/customizer/organ/breasts/animal,
 		/datum/customizer/organ/vagina/animal,
 		)
+	body_marking_sets = list(
+		/datum/body_marking_set/none,
+		/datum/body_marking_set/bellyscale,
+		/datum/body_marking_set/tiger,
+		/datum/body_marking_set/tiger_dark,
+	)
 	body_markings = list(
-		/datum/body_marking/lizard/dtiger,
-		/datum/body_marking/lizard/ltiger,
-		/datum/body_marking/lizard/lbelly,
-		/datum/body_marking/tattoo/heart,
-		/datum/body_marking/tattoo/hive,
-		/datum/body_marking/tattoo/nightling,
-		/datum/body_marking/tattoo/circuit,
-		/datum/body_marking/tattoo/silverburgh,
-		/datum/body_marking/tattoo/tiger,
-		/datum/body_marking/tattoo/tiger_groin,
-		/datum/body_marking/tattoo/tiger_foot,
+		/datum/body_marking/bellyscale,
+		/datum/body_marking/bellyscaleslim,
+		/datum/body_marking/bellyscaleslimsmooth,
+		/datum/body_marking/buttscale,
+		/datum/body_marking/tiger,
+		/datum/body_marking/tiger/dark,
 	)
 
 /datum/species/dracon/check_roundstart_eligible()
@@ -123,9 +124,5 @@
 	speech_args[SPEECH_MESSAGE] = trim(message)
 
 /datum/species/dracon/get_random_body_markings(list/passed_features)
-	if(rand(1,4) == 1)
-		return list()
-	else
-		var/pick = pick(/datum/body_marking/lizard/dtiger, /datum/body_marking/lizard/ltiger, /datum/body_marking/lizard/lbelly)
-		return assemble_body_markings_from_list(list(pick), passed_features, src)
+	return assemble_body_markings_from_set(GLOB.body_marking_sets_by_type[/datum/body_marking_set/bellyscale], passed_features, src)
 

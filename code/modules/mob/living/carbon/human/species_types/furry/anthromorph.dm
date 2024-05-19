@@ -73,19 +73,28 @@
 		)
 	body_marking_sets = list(
 		/datum/body_marking_set/none,
-		/datum/body_marking_set/fox,
-		/datum/body_marking_set/floof,
-		/datum/body_marking_set/floofer,
+		/datum/body_marking_set/belly,
+		/datum/body_marking_set/bellysocks,
+		/datum/body_marking_set/tiger,
+		/datum/body_marking_set/tiger_dark,
 	)
 	body_markings = list(
-		/datum/body_marking/tattoo/heart,
-		/datum/body_marking/tattoo/hive,
-		/datum/body_marking/tattoo/nightling,
-		/datum/body_marking/tattoo/circuit,
-		/datum/body_marking/tattoo/silverburgh,
-		/datum/body_marking/tattoo/tiger,
-		/datum/body_marking/tattoo/tiger_groin,
-		/datum/body_marking/tattoo/tiger_foot,
+		/datum/body_marking/plain,
+		/datum/body_marking/tiger,
+		/datum/body_marking/tiger/dark,
+		/datum/body_marking/sock,
+		/datum/body_marking/socklonger,
+		/datum/body_marking/bellyscale,
+		/datum/body_marking/bellyscaleslim,
+		/datum/body_marking/bellyscalesmooth,
+		/datum/body_marking/bellyscaleslimsmooth,
+		/datum/body_marking/buttscale,
+		/datum/body_marking/belly,
+		/datum/body_marking/bellyslim,
+		/datum/body_marking/tie,
+		/datum/body_marking/tiesmall,
+		/datum/body_marking/backspots,
+		/datum/body_marking/front,
 	)
 
 /datum/species/anthromorph/check_roundstart_eligible()
