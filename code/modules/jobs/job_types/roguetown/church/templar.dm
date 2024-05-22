@@ -41,6 +41,8 @@
 		H.PATRON = ourpatron
 		to_chat(H, "<span class='warning'>My patron had not endorsed my practices in my younger years. I've since grown acustomed to [H.PATRON].")
 	
+	H.virginity = TRUE
+
 	head = /obj/item/clothing/head/roguetown/helmet/heavy/bucket
 	neck = /obj/item/clothing/neck/roguetown/psicross/astrata
 	switch(ourpatron.name)
