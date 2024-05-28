@@ -163,6 +163,7 @@
 #define HIDENECK		(1<<10)
 #define HIDEBOOB		(1<<11)
 #define HIDEBELT		(1<<12)
+#define HIDECROTCH		(1<<13)
 
 //blocking_behavior var on clothing items
 #define BLOCKBOOTS		(1<<0)

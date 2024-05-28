@@ -308,7 +308,17 @@
 	spreadFire(AM)
 
 /mob/living/carbon/human/Topic(href, href_list)
-
+	if(href_list["task"] == "view_headshot")
+		if(!ismob(usr))
+			return
+		if(!valid_headshot_link(null, headshot_link, TRUE))
+			return
+		var/mob/user = usr
+		var/list/dat = list("<img src='[headshot_link]' width='250px' height='250px'>")
+		var/datum/browser/popup = new(user, "headshot", "<div align='center'>[src]'s Headshot</div>", 260, 260)
+		popup.set_content(dat.Join())
+		popup.open(FALSE)
+		return
 	if(href_list["inspect_limb"] && usr.canUseTopic(src, BE_CLOSE, NO_DEXTERITY))
 		var/list/msg = list()
 		if(!ismob(usr))

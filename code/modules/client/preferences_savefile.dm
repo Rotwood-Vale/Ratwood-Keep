@@ -411,6 +411,10 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	S["update_mutant_colors"]			>> update_mutant_colors
 	update_mutant_colors = sanitize_integer(update_mutant_colors, FALSE, TRUE, initial(update_mutant_colors))
 
+	S["headshot_link"]			>> headshot_link
+	if(!valid_headshot_link(null, headshot_link, TRUE))
+		headshot_link = null
+
 	//try to fix any outdated data if necessary
 	if(needs_update >= 0)
 		update_character(needs_update, S)		//needs_update == savefile_version if we need an update (positive integer)
@@ -467,8 +471,6 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	all_quirks = SANITIZE_LIST(all_quirks)
 
 	S["customizer_entries"] >> customizer_entries
-	S["update_mutant_colors"] >> update_mutant_colors
-
 	validate_customizer_entries()
 
 	return TRUE
@@ -536,6 +538,9 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	WRITE_FILE(S["customizer_entries"] , customizer_entries)
 	// Body markings
 	WRITE_FILE(S["body_markings"] , body_markings)
+	
+	WRITE_FILE(S["update_mutant_colors"] , update_mutant_colors)
+	WRITE_FILE(S["headshot_link"] , headshot_link)
 
 	return TRUE
 

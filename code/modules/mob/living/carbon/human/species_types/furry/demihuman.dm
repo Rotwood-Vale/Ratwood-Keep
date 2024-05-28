@@ -53,7 +53,7 @@
 		/datum/customizer/organ/ears/demihuman,
 		/datum/customizer/organ/horns/demihuman,
 		/datum/customizer/organ/tail/demihuman,
-		/datum/customizer/organ/testicles/external,
+		/datum/customizer/organ/testicles/human,
 		/datum/customizer/organ/penis/knotted,
 		/datum/customizer/organ/breasts/animal,
 		/datum/customizer/organ/vagina/animal,

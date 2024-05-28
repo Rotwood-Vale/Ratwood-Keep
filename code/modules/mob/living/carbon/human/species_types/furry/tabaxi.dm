@@ -73,6 +73,9 @@
 		/datum/customizer/organ/breasts/animal,
 		/datum/customizer/organ/vagina/animal,
 		)
+	body_marking_sets = list(
+		/datum/body_marking_set/tiger_dark
+	)
 	body_markings = list(
 	)
 

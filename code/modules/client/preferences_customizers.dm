@@ -141,6 +141,8 @@
 	//needs_update = TRUE
 	var/customizer_type = text2path(href_list["customizer"])
 	var/datum/customizer_entry/entry = get_customizer_entry_for_customizer_type(customizer_type)
+	if(!entry)
+		return
 	var/datum/customizer_choice/choice = CUSTOMIZER_CHOICE(entry.customizer_choice_type)
 	var/datum/customizer/customizer = CUSTOMIZER(customizer_type)
 	switch(href_list["customizer_task"])

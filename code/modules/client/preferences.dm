@@ -143,6 +143,8 @@ GLOBAL_LIST_EMPTY(chosen_names)
 	var/list/list/body_markings = list()
 	var/update_mutant_colors = TRUE
 
+	var/headshot_link
+
 
 /datum/preferences/New(client/C)
 	parent = C
@@ -359,6 +361,10 @@ GLOBAL_LIST_EMPTY(chosen_names)
 
 			dat += "<br><b>Features:</b> <a href='?_src_=prefs;preference=customizers;task=menu'>Change</a>"
 			dat += "<br><b>Markings:</b> <a href='?_src_=prefs;preference=markings;task=menu'>Change</a>"
+			
+			dat += "<br><b>Headshot:</b> <a href='?_src_=prefs;preference=headshot;task=input'>Change</a>"
+			if(headshot_link != null)
+				dat += "<br><img src='[headshot_link]' width='100px' height='100px'>"
 			dat += "</td>"
 
 			dat += "</tr></table>"
@@ -1427,6 +1433,18 @@ Slots: [job.spawn_positions]</span>
 							to_chat(user, "<font color='red'>This voice color is too dark for mortals.</font>")
 							return
 						voice_color = sanitize_hexcolor(new_voice)
+				if("headshot")
+					to_chat(user, "<span class='notice'>Please use a relatively SFW image of the head and shoulder area to maintain immersion level. Lastly, ["<span class='bold'>do not use a real life photo or use any image that is less than serious.</span>"]</span>")
+					to_chat(user, "<span class='notice'>If the photo doesn't show up properly in-game, ensure that it's a direct image link that opens properly in a browser.</span>")
+					to_chat(user, "<span class='notice'>Keep in mind that the photo will be downsized to 250x250 pixels, so the more square the photo, the better it will look.</span>")
+					var/new_headshot_link = input(user, "Input the headshot link (https, hosts: gyazo, discord, lensdump, imgbox, catbox):", "Headshot", headshot_link) as text|null
+					if(!new_headshot_link)
+						return
+					if(!valid_headshot_link(user, new_headshot_link))
+						return
+					headshot_link = new_headshot_link
+					to_chat(user, "<span class='notice'>Successfully updated headshot picture</span>")
+					log_game("[user] has set their Headshot image to '[headshot_link]'.")
 
 				if("species")
 
@@ -1925,6 +1943,8 @@ Slots: [job.spawn_positions]</span>
 
 	character.dna.real_name = character.real_name
 
+	character.headshot_link = headshot_link
+
 	if(parent)
 		var/list/L = get_player_curses(parent.ckey)
 		if(L)
@@ -1977,3 +1997,36 @@ Slots: [job.spawn_positions]</span>
 	if(update_mutant_colors)
 		reset_all_customizer_accessory_colors()
 		reset_body_marking_colors()
+
+/proc/valid_headshot_link(mob/user, value, silent = FALSE)
+	var/static/link_regex = regex("i.gyazo.com|a.l3n.co|b.l3n.co|c.l3n.co|images2.imgbox.com|thumbs2.imgbox.com|files.catbox.moe") //gyazo, discord, lensdump, imgbox, catbox
+	var/static/list/valid_extensions = list("jpg", "png", "jpeg") // Regex works fine, if you know how it works
+
+	if(!length(value))
+		return FALSE
+
+	var/find_index = findtext(value, "https://")
+	if(find_index != 1)
+		if(!silent)
+			to_chat(user, "<span class='warning'>Your link must be https!</span>")
+		return FALSE
+
+	if(!findtext(value, "."))
+		if(!silent)
+			to_chat(user, "<span class='warning'>Invalid link!</span>")
+		return FALSE
+	var/list/value_split = splittext(value, ".")
+
+	// extension will always be the last entry
+	var/extension = value_split[length(value_split)]
+	if(!(extension in valid_extensions))
+		if(!silent)
+			to_chat(usr, "<span class='warning'>The image must be one of the following extensions: '[english_list(valid_extensions)]'</span>")
+		return FALSE
+
+	find_index = findtext(value, link_regex)
+	if(find_index != 9)
+		if(!silent)
+			to_chat(usr, "<span class='warning'>The image must be hosted on one of the following sites: 'Gyazo, Lensdump, Imgbox, Catbox'</span>")
+		return FALSE
+	return TRUE

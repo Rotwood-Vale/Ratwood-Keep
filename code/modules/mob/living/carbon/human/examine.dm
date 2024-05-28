@@ -402,6 +402,9 @@
 				if(!wear_armor)
 					. += "<a href='?src=[REF(src)];check_hb=1'>Listen to Heartbeat</a>"
 
+	if(!obscure_name && headshot_link)
+		. += "<a href='?src=[REF(src)];task=view_headshot;'>View headshot</a>"
+
 	var/trait_exam = common_trait_examine()
 	if (!isnull(trait_exam))
 		. += trait_exam

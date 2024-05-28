@@ -48,6 +48,7 @@
 
 /datum/customizer_choice/organ/penis/human
 	sprite_accessories = list(/datum/sprite_accessory/penis/human)
+	allows_accessory_color_customization = FALSE
 
 /datum/customizer/organ/penis/anthro
 	customizer_choices = list(/datum/customizer_choice/organ/penis/anthro)
@@ -136,6 +137,9 @@
 /datum/customizer/organ/testicles/external
 	customizer_choices = list(/datum/customizer_choice/organ/testicles/external)
 
+/datum/customizer/organ/testicles/human
+	customizer_choices = list(/datum/customizer_choice/organ/testicles/human)
+
 /datum/customizer/organ/testicles/internal
 	customizer_choices = list(/datum/customizer_choice/organ/testicles/internal)
 
@@ -149,6 +153,11 @@
 	name = "Testicles"
 	sprite_accessories = list(/datum/sprite_accessory/testicles/pair)
 
+/datum/customizer_choice/organ/testicles/human
+	name = "Testicles"
+	sprite_accessories = list(/datum/sprite_accessory/testicles/pair)
+	allows_accessory_color_customization = FALSE
+
 /datum/customizer_choice/organ/testicles/internal
 	name = "Internal testicles"
 	organ_type = /obj/item/organ/testicles/internal
@@ -159,7 +168,7 @@
 	var/ball_size = DEFAULT_TESTICLES_SIZE
 
 /datum/customizer/organ/breasts
-	abstract_type = /datum/customizer/organ/breasts 
+	abstract_type = /datum/customizer/organ/breasts
 	name = "Breasts"
 
 /datum/customizer/organ/breasts/is_allowed(datum/preferences/prefs)
@@ -208,6 +217,7 @@
 
 /datum/customizer_choice/organ/breasts/human
 	sprite_accessories = list(/datum/sprite_accessory/breasts/pair)
+	allows_accessory_color_customization = FALSE
 
 /datum/customizer/organ/breasts/animal
 	customizer_choices = list(/datum/customizer_choice/organ/breasts/animal)
@@ -241,6 +251,7 @@
 		/datum/sprite_accessory/vagina/gaping,
 		/datum/sprite_accessory/vagina/hairy,
 		)
+	allows_accessory_color_customization = FALSE
 
 /datum/customizer/organ/vagina/animal
 	customizer_choices = list(/datum/customizer_choice/organ/vagina/animal)

@@ -24,6 +24,7 @@
 	drop_sound = 'sound/foley/dropsound/armor_drop.ogg'
 	experimental_onhip = TRUE
 	nodismemsleeves = TRUE
+	flags_inv = HIDEBOOB|HIDECROTCH
 
 /obj/item/clothing/suit/roguetown/armor/chainmail
 	slot_flags = ITEM_SLOT_ARMOR|ITEM_SLOT_SHIRT
