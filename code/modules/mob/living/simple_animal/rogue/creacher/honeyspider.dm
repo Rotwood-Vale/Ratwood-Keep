@@ -13,7 +13,7 @@
 	aggro_vision_range = 9
 	base_intents = list(/datum/intent/simple/bite)
 	butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat/steak = 1,
-					/obj/item/natural/hide = 1)
+					/obj/item/natural/silk = 2)
 	faction = list("spiders")
 	mob_biotypes = MOB_ORGANIC|MOB_BEAST
 	attack_sound = 'sound/combat/wooshes/punch/punchwoosh (2).ogg'
@@ -113,7 +113,7 @@
 				playsound(T, pick('sound/vo/mobs/spider/speak (1).ogg','sound/vo/mobs/spider/speak (2).ogg','sound/vo/mobs/spider/speak (3).ogg','sound/vo/mobs/spider/speak (4).ogg'), 100, TRUE, -1)
 				new /obj/item/reagent_containers/food/snacks/rogue/honey(T)
 	if(pulledby && !tame)
-		if(HAS_TRAIT(pulledby, RTRAIT_WEBWALK))
+		if(HAS_TRAIT(pulledby, TRAIT_WEBWALK))
 			return
 		Retaliate()
 		GiveTarget(pulledby)

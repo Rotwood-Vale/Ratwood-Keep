@@ -201,8 +201,20 @@
 		return
 
 	M.fully_heal(admin_revive = TRUE)
-	message_admins("<span class='danger'>Admin [key_name_admin(usr)] healed / revived [key_name_admin(M)]!</span>")
-	log_admin("[key_name(usr)] healed / Revived [key_name(M)].")
+	message_admins("<span class='danger'>Admin [key_name_admin(usr)] healed [key_name_admin(M)]!</span>")
+	log_admin("[key_name(usr)] healed [key_name(M)].")
+
+/datum/admins/proc/admin_revive(mob/living/M in GLOB.mob_list)
+	set name = "Revive Mob"
+	set desc = "Resuscitate a mob"
+	set category = "GameMaster"
+
+	if(!check_rights())
+		return
+
+	M.revive(full_heal = TRUE, admin_revive = TRUE)
+	message_admins("<span class='danger'>Admin [key_name_admin(usr)] revived [key_name_admin(M)]!</span>")
+	log_admin("[key_name(usr)] Revived [key_name(M)].")
 
 /datum/admins/proc/checkpq(mob/living/M in GLOB.mob_list)
 	set name = "Check PQ"

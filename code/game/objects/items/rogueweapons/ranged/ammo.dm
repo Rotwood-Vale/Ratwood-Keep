@@ -9,16 +9,16 @@
 	dropshrink = 0.6
 	max_integrity = 10
 	force = 10
-
+/*
 /obj/item/ammo_casing/caseless/rogue/bolt/poison
 	name = "poisoned bolt"
 	desc = "A durable iron bolt that will pierce a skull easily. This one is coated in a clear liquid."
 	projectile_type = /obj/projectile/bullet/reusable/bolt/poison
 	icon_state = "arrow_poison"
-
+*/
 /obj/projectile/bullet/reusable/bolt
 	name = "bolt"
-	damage = 65
+	damage = 35
 	damage_type = BRUTE
 	icon = 'icons/roguetown/weapons/ammo.dmi'
 	icon_state = "bolt_proj"
@@ -29,7 +29,7 @@
 	woundclass = BCLASS_STAB
 	flag = "bullet"
 	speed = 0.3
-
+/*
 /obj/projectile/bullet/reusable/bolt/poison
 	name = "poisoned bolt"
 	damage = 50
@@ -41,7 +41,7 @@
 	if(iscarbon(target))
 		var/mob/living/carbon/M = target
 		M.reagents.add_reagent(/datum/reagent/toxin/mutetoxin, 7) //not gonna kill anyone, but they will be quite quiet
-
+*/
 /obj/item/ammo_casing/caseless/rogue/arrow
 	name = "arrow"
 	desc = "A wooden shaft with a pointy iron end."
@@ -73,7 +73,7 @@
 	desc = "A wooden shaft with a jagged rock on the end."
 	icon_state = "stonearrow"
 	max_integrity = 5
-
+/*
 /obj/item/ammo_casing/caseless/rogue/arrow/poison
 	name = "poisoned arrow"
 	desc = "A wooden shaft with a pointy iron end. This one is coated in a clear liquid."
@@ -97,7 +97,7 @@
 	if(iscarbon(target))
 		var/mob/living/carbon/M = target
 		M.reagents.add_reagent(/datum/reagent/toxin/drow, 5) //a REALLY slow burn for this arrow, and its lasting
-
+*/
 /obj/projectile/bullet/reusable/bullet
 	name = "lead ball"
 	damage = 50

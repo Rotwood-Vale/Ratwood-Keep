@@ -13,7 +13,7 @@
 		var/list/candidates = pollGhostCandidates("Would you like to be an imposter wizard?", ROLE_WIZARD)
 		if(!candidates)
 			return //Sad Trombone
-		var/mob/dead/observer/C = pick(candidates)
+		var/mob/C = pick(candidates)
 
 		new /obj/effect/particle_effect/smoke(W.loc)
 

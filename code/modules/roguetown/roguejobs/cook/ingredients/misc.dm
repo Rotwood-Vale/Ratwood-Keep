@@ -44,7 +44,7 @@
 	tastes = list("cheese" = 1)
 	foodtype = GRAIN
 	eat_effect = null
-	rotprocess = 15 MINUTES
+	rotprocess = 20 MINUTES
 	become_rot_type = null
 	slice_path = null
 
@@ -81,7 +81,7 @@
 	w_class = WEIGHT_CLASS_TINY
 	tastes = list("cheese" = 1)
 	eat_effect = null
-	rotprocess = 15 MINUTES
+	rotprocess = 20 MINUTES
 	slices_num = 3
 	slice_batch = TRUE
 	slice_path = /obj/item/reagent_containers/food/snacks/rogue/cheddarslice
@@ -108,7 +108,7 @@
 	w_class = WEIGHT_CLASS_TINY
 	tastes = list("cheese" = 1)
 	eat_effect = null
-	rotprocess = 15 MINUTES
+	rotprocess = 20 MINUTES
 	slices_num = null
 	slice_path = null
 	become_rot_type = null

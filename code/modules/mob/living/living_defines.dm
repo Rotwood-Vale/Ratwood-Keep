@@ -153,8 +153,6 @@
 	var/obj/item/grabbing/r_grab = null
 	var/obj/item/grabbing/l_grab = null
 
-	var/list/simple_embedded_objects = list()
-
 	var/datum/sex_controller/sexcon
 
 	var/slowdown
@@ -164,3 +162,10 @@
 	var/list/death_trackers = list()
 
 	var/rot_type = /datum/component/rot/simple
+
+	/**This variable updated in mob_movement.dm primarily. Mainly a shitcode measure for existing shitcode because this is SHITCODE!
+	 * All it does is track when a mob is sneaking so we don't have to constantly reset alpha values as this fucks with how things are intended to be.
+	 * if you really need to cancel someone who is sneaking, call update_sneak_invis(TRUE).*/
+	var/rogue_sneaking = FALSE
+	/* Can be used to change the lighting threshholds at which players can sneak.*/
+	var/rogue_sneaking_light_threshhold = 0.15

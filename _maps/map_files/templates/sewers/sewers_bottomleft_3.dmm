@@ -1,0 +1,42 @@
+"a" = (/turf/closed/mineral/rogue,/area/rogue/under/town/sewer)
+"b" = (/obj/structure/spider/stickyweb,/turf/open/floor/rogue/greenstone,/area/rogue/under/town/sewer)
+"f" = (/mob/living/simple_animal/hostile/retaliate/rogue/bigrat,/turf/open/water/swamp/deep,/area/rogue/under/town/sewer)
+"i" = (/mob/living/simple_animal/hostile/retaliate/rogue/bigrat,/turf/open/floor/rogue/greenstone,/area/rogue/under/town/sewer)
+"j" = (/obj/effect/decal/cleanable/cobweb,/obj/effect/spawner/lootdrop/roguetown/sewers,/turf/open/water/swamp/deep,/area/rogue/under/town/sewer)
+"o" = (/obj/structure/glowshroom,/turf/open/floor/rogue/greenstone,/area/rogue/under/town/sewer)
+"p" = (/obj/structure/glowshroom,/turf/open/water/swamp/deep,/area/rogue/under/town/sewer)
+"t" = (/turf/open/water/swamp/deep,/area/rogue/under/town/sewer)
+"v" = (/obj/structure/spider/stickyweb,/turf/open/water/swamp/deep,/area/rogue/under/town/sewer)
+"x" = (/mob/living/simple_animal/hostile/retaliate/rogue/bigrat,/turf/open/water/sewer,/area/rogue/under/town/sewer)
+"y" = (/obj/structure/spider/stickyweb,/turf/open/water/swamp,/area/rogue/under/town/sewer)
+"z" = (/obj/machinery/light/rogue/torchholder,/turf/closed/wall/mineral/rogue/stonebrick,/area/rogue/under/town/sewer)
+"E" = (/obj/structure/bars,/turf/open/water/sewer,/area/rogue/under/town/sewer)
+"F" = (/turf/closed/wall/mineral/rogue/stonebrick,/area/rogue/under/town/sewer)
+"H" = (/obj/effect/spawner/lootdrop/roguetown/sewers,/turf/open/water/swamp/deep,/area/rogue/under/town/sewer)
+"J" = (/obj/structure/spider/stickyweb,/turf/open/water/sewer,/area/rogue/under/town/sewer)
+"K" = (/turf/open/floor/rogue/greenstone,/area/rogue/under/town/sewer)
+"L" = (/obj/structure/bars,/turf/open/water/swamp,/area/rogue/under/town/sewer)
+"M" = (/turf/open/water/sewer,/area/rogue/under/town/sewer)
+"P" = (/obj/effect/decal/cleanable/ash/large,/turf/closed/mineral/rogue,/area/rogue/under/town/sewer)
+"Q" = (/turf/open/water/swamp,/area/rogue/under/town/sewer)
+
+(1,1,1) = {"
+FFFFFFFFKJMKFFFFFFFFFFFFFF
+aaaaaaaFbJMiFaaaaaaaaaaaaF
+aaaaaaaFKMMKFaaaaaaaaaaaaF
+aaaaaaaFKMMoFaaaaaaaaaaaaF
+aaaaaaaFKMMoFaaaaaaaaaaaaF
+aaaaaaaFKMMKFaaaaaaaaaaaaF
+aFFFFaaFKMMKFaaaaaaaaaaaaF
+aFjtHFFFbMMKFFFFFFFFFFFFFF
+aFtppQQLJMMKKKKKKbbKKKKKKK
+aFFtHQyLMMMMMMMMJxMJMMMMMM
+aaFttpyQMMKKKKKKKKKKKKooKK
+aaFfvvQQQEEFFFFFFFFFFFFFFF
+aFFttvpQyyQFaaaaaaaaaaaaaF
+aFHtptttvQFFaaaaaaaaaaaaaF
+aFtttpvHFFFaaaaaaaaaaaaaaF
+aFFFHttFFaaaaaaaaaaaaPaaaF
+aaaFFFFFaaaaaaaaaaaaaaaaaF
+aaaaaaaaaaaaaaaaaaaaaaaaaz
+"}

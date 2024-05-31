@@ -61,12 +61,12 @@
 
 /datum/status_effect/debuff/addiction
 	id = "addiction"
-	alert_type = /obj/screen/alert/status_effect/debuff/addiction
+	alert_type = /atom/movable/screen/alert/status_effect/debuff/addiction
 	effectedstats = list("endurance" = -1,"fortune" = -1)
 	duration = 100
 
 
-/obj/screen/alert/status_effect/debuff/addiction
+/atom/movable/screen/alert/status_effect/debuff/addiction
 	name = "Addiction"
 	desc = ""
 	icon_state = "debuff"

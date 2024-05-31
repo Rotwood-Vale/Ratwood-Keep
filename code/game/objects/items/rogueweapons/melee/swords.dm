@@ -6,7 +6,7 @@
 	possible_item_intents = list(/datum/intent/sword/cut, /datum/intent/sword/thrust)
 	gripped_intents = list(/datum/intent/sword/cut, /datum/intent/sword/thrust)
 	name = "sword"
-	desc = "A simple steel sword."
+	desc = "A simple steel sword, clean and effective."
 	icon_state = "sword1"
 	icon = 'icons/roguetown/weapons/32.dmi'
 	lefthand_file = 'icons/mob/inhands/weapons/rogue_lefthand.dmi'
@@ -219,6 +219,7 @@
 	inhand_x_dimension = 64
 	inhand_y_dimension = 64
 	associated_skill = /datum/skill/combat/swords
+	max_integrity = 9999
 	throwforce = 15
 	thrown_bclass = BCLASS_CUT
 	dropshrink = 0.75
@@ -371,7 +372,7 @@
 
 /obj/item/rogueweapon/sword/iron
 	name = "sword"
-	desc = "The most classical war weapon."
+	desc = "A simple iron sword, the most classical war weapon."
 	icon_state = "isword"
 	minstr = 6
 	smeltresult = /obj/item/ingot/iron
@@ -384,7 +385,7 @@
 	icon_state = "iswordshort"
 	possible_item_intents = list(/datum/intent/sword/cut/short, /datum/intent/sword/thrust/short)
 	gripped_intents = null
-	minstr = 5
+	minstr = 4
 	wdefense = 3
 
 /obj/item/rogueweapon/sword/iron/short/chipped
@@ -400,6 +401,15 @@
 /datum/intent/sword/thrust/short
 	clickcd = 10
 	damfactor = 1.1
+
+/obj/item/rogueweapon/sword/iron/messer
+	name = "iron messer"
+	desc = "A single edged blade to slice and chop with."
+	icon_state = "imesser"
+	possible_item_intents = list(/datum/intent/sword/cut/sabre, /datum/intent/sword/thrust, /datum/intent/axe/chop)
+	gripped_intents = null
+	minstr = 4
+	wdefense = 2
 
 /obj/item/rogueweapon/sword/sabre
 	name = "sabre"

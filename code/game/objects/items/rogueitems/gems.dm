@@ -29,19 +29,19 @@
 /obj/item/roguegem/green
 	name = "gemerald"
 	icon_state = "emerald_cut"
-	sellprice = 22
+	sellprice = 42
 	desc = "Glints with verdant brilliance."
 
 /obj/item/roguegem/blue
 	name = "blortz"
 	icon_state = "quartz_cut"
 	sellprice = 88
-	desc = "White, like a frozen tear." // i am not sure if this is really quartz.
+	desc = "Pale blue, like a frozen tear." // i am not sure if this is really quartz.
 
 /obj/item/roguegem/yellow
 	name = "toper"
 	icon_state = "topaz_cut"
-	sellprice = 14
+	sellprice = 34
 	desc = "Its amber hues remind you of the sunset."
 
 /obj/item/roguegem/violet
@@ -49,6 +49,24 @@
 	icon_state = "sapphire_cut"
 	sellprice = 56
 	desc = "This gem is admired by many wizards."
+
+/obj/item/roguegem/diamond
+	name = "dorpel"
+	icon_state = "diamond_cut"
+	sellprice = 121
+	desc = "Beautifully clear, it demands respect."
+
+
+/obj/item/roguegem/random
+	name = "random gem"
+	desc = "You shouldn't be seeing this."
+	icon_state = null
+
+/obj/item/roguegem/random/Initialize()
+	var/newgem = list(/obj/item/roguegem = 5, /obj/item/roguegem/green = 15, /obj/item/roguegem/blue = 10, /obj/item/roguegem/yellow = 20, /obj/item/roguegem/violet = 10, /obj/item/roguegem/diamond = 5, /obj/item/riddleofsteel = 1)
+	var/pickgem = pickweight(newgem)
+	new pickgem(get_turf(src))
+	qdel(src)
 
 
 /// riddle

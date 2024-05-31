@@ -1,5 +1,5 @@
 /obj/item/bodypart/l_arm/rproesthetic
-	name = "wooden larm"
+	name = "wooden left arm"
 	desc = "A left arm of wood."
 	icon = 'icons/roguetown/items/misc.dmi'
 	icon_state = "prarm"
@@ -30,7 +30,7 @@
 		return 1
 
 /obj/item/bodypart/r_arm/rproesthetic
-	name = "wooden rarm"
+	name = "wooden right arm"
 	desc = "A right arm of wood."
 	icon = 'icons/roguetown/items/misc.dmi'
 	icon_state = "prarm"

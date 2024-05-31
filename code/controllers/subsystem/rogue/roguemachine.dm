@@ -51,7 +51,9 @@ PROCESSING_SUBSYSTEM_DEF(roguemachine)
 	var/static/list/safe_areas = typecacheof(list(
 		/area/rogue/outdoors/town,\
 		/area/rogue/indoors/town,\
-		/area/rogue/under/town,\
+		/* 	/area/rogue/under/town,\  */   //to allow zombies in the sewer area
+		/area/rogue/under/town/basement,\
+		/area/rogue/under/town/caverogue,\
 	))
 	if(is_type_in_typecache(the_area.type, safe_areas))
 		return TRUE

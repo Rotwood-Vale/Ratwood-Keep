@@ -274,7 +274,7 @@
 	if(final)
 		playsound(origin,'sound/blank.ogg', 25, FALSE)
 		remote_eye.setLoc(get_turf(final))
-		C.overlay_fullscreen("flash", /obj/screen/fullscreen/flash/static)
+		C.overlay_fullscreen("flash", /atom/movable/screen/fullscreen/flash/static)
 		C.clear_fullscreen("flash", 3) //Shorter flash than normal since it's an ~~advanced~~ console!
 	else
 		playsound(origin,'sound/blank.ogg', 25, FALSE)

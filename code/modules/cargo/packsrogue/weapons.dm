@@ -70,7 +70,7 @@
 					/obj/item/ammo_casing/caseless/rogue/arrow,
 					/obj/item/ammo_casing/caseless/rogue/arrow,
 					/obj/item/ammo_casing/caseless/rogue/arrow)
-
+/*
 /datum/supply_pack/rogue/weapons/Parrows
 	name = "Poisoned Arrows"
 	cost = 20
@@ -91,7 +91,7 @@
 					/obj/item/ammo_casing/caseless/rogue/arrow/poison,
 					/obj/item/ammo_casing/caseless/rogue/arrow/poison,
 					/obj/item/ammo_casing/caseless/rogue/arrow/poison)
-
+*/
 
 /datum/supply_pack/rogue/weapons/bolts
 	name = "Bolts"
@@ -102,7 +102,7 @@
 					/obj/item/ammo_casing/caseless/rogue/bolt,
 					/obj/item/ammo_casing/caseless/rogue/bolt,
 					/obj/item/ammo_casing/caseless/rogue/bolt)
-
+/*
 /datum/supply_pack/rogue/weapons/Pbolts
 	name = "Poisoned Bolts"
 	cost = 30
@@ -112,3 +112,4 @@
 					/obj/item/ammo_casing/caseless/rogue/bolt/poison,
 					/obj/item/ammo_casing/caseless/rogue/bolt/poison,
 					/obj/item/ammo_casing/caseless/rogue/bolt/poison)
+*/

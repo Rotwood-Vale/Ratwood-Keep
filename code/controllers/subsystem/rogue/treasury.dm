@@ -80,7 +80,7 @@ SUBSYSTEM_DEF(treasury)
 		var/people_told = 0
 		for(var/mob/living/carbon/human/X in GLOB.human_list)
 			switch(X.job)
-				if("King", "Queen", "Steward", "Clerk")
+				if("King", "Steward", "Clerk")
 					people_told += 1
 					send_ooc_note("Income from wealth horde: +[amt_to_generate]", name = X.real_name)
 					if(people_told > 3)
@@ -155,29 +155,31 @@ SUBSYSTEM_DEF(treasury)
 
     return TRUE
 
+///Deposits money into a character's bank account. Taxes are deducted from the deposit and added to the treasury.
+///@param amt: The amount of money to deposit.
+///@param character: The character making the deposit.
+///@return TRUE if the money was successfully deposited, FALSE otherwise.
+/datum/controller/subsystem/treasury/proc/generate_money_account(amt, mob/living/carbon/human/character)
+	if(!amt)
+		return FALSE
+	if(!character)
+		return FALSE
+	var/taxed_amount = 0
+	var/original_amt = amt
+	if(character in bank_accounts)
+		if(character.job in GLOB.noble_positions)
+			bank_accounts[character] += amt
+		else
+			taxed_amount = round(amt * tax_value)
+			amt -= taxed_amount
+			bank_accounts[character] += amt
+			treasury_value += taxed_amount
+	else
+		return FALSE
 
+	log_to_steward("+[original_amt] deposited by [character] of which taxed [taxed_amount]")
 
-
-
-
-//increments the treasury and gives the money to the account (deposits)
-/datum/controller/subsystem/treasury/proc/generate_money_account(amt, name, source)
-    if(!amt)
-        return
-    var/found_account
-    for(var/X in bank_accounts)
-        if(X == name)
-            bank_accounts[X] += amt  // Deposit the money into the player's account
-            found_account = TRUE
-            break
-    if(!found_account)
-        log_to_steward("+[amt] deposited by anonymous.")
-        return
-    if(source)
-        log_to_steward("+[amt] deposited by [name] ([source])")
-    else
-        log_to_steward("+[amt] deposited by [name]")
-    return TRUE
+	return TRUE
 
 
 /datum/controller/subsystem/treasury/proc/withdraw_money_account(amt, name)

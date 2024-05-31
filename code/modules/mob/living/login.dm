@@ -38,7 +38,7 @@
 	set waitfor = FALSE
 	if(!client)
 		return
-	var/obj/screen/F = new /obj/screen/fullscreen/fade()
+	var/atom/movable/screen/F = new /atom/movable/screen/fullscreen/fade()
 	client.screen += F
 	sleep(40)
 	if(!client)

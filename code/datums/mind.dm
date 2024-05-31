@@ -81,6 +81,8 @@
 
 	var/list/notes = list() //RTD add notes button
 
+	var/lastrecipe
+
 /datum/mind/New(key)
 	src.key = key
 	soulOwner = src
@@ -106,14 +108,16 @@
 		if(is_role)
 			. += M
 
-/datum/mind/proc/i_know_person(person) //we are added to their lists, they are added to ours
+/datum/mind/proc/i_know_person(person) //they are added to ours
 	if(!person)
 		return
-	if(person == src)
+	if(person == src || person == src.current)
 		return
-	var/datum/mind/M = person
-	if(ishuman(M.current))
-		var/mob/living/carbon/human/H = M.current
+	if(istype(person, /datum/mind))
+		var/datum/mind/M = person
+		person = M.current
+	if(ishuman(person))
+		var/mob/living/carbon/human/H = person
 		if(!known_people[H.real_name])
 			known_people[H.real_name] = list()
 		known_people[H.real_name]["VCOLOR"] = H.voice_color
@@ -129,29 +133,33 @@
 		known_people[H.real_name]["FGENDER"] = H.gender
 		known_people[H.real_name]["FAGE"] = H.age
 
-/datum/mind/proc/person_knows_me(person) //we are added to their lists, they are added to ours
+/datum/mind/proc/person_knows_me(person) //we are added to their lists
 	if(!person)
 		return
-	if(person == src)
+	if(person == src || person == src.current)
 		return
-	var/datum/mind/M = person
-	if(M.known_people)
-		if(ishuman(current))
-			var/mob/living/carbon/human/H = current
-			if(!M.known_people[H.real_name])
-				M.known_people[H.real_name] = list()
-			M.known_people[H.real_name]["VCOLOR"] = H.voice_color
-			var/used_title
-			if(H.job)
-				var/datum/job/J = SSjob.GetJob(H.job)
-				used_title = J.title
-				if(H.gender == FEMALE && J.f_title)
-					used_title = J.f_title
-			if(!used_title)
-				used_title = "unknown"
-			M.known_people[H.real_name]["FJOB"] = used_title
-			M.known_people[H.real_name]["FGENDER"] = H.gender
-			M.known_people[H.real_name]["FAGE"] = H.age
+	if(ishuman(person))
+		var/mob/living/carbon/human/guy = person
+		person = guy.mind
+	if(istype(person, /datum/mind))
+		var/datum/mind/M = person
+		if(M.known_people)
+			if(ishuman(current))
+				var/mob/living/carbon/human/H = current
+				if(!M.known_people[H.real_name])
+					M.known_people[H.real_name] = list()
+				M.known_people[H.real_name]["VCOLOR"] = H.voice_color
+				var/used_title
+				if(H.job)
+					var/datum/job/J = SSjob.GetJob(H.job)
+					used_title = J.title
+					if(H.gender == FEMALE && J.f_title)
+						used_title = J.f_title
+				if(!used_title)
+					used_title = "unknown"
+				M.known_people[H.real_name]["FJOB"] = used_title
+				M.known_people[H.real_name]["FGENDER"] = H.gender
+				M.known_people[H.real_name]["FAGE"] = H.age
 
 /datum/mind/proc/do_i_know(datum/mind/person, name)
 	if(!person && !name)
@@ -262,22 +270,32 @@
 	switch(skill_experience[S])
 		if(SKILL_EXP_LEGENDARY to INFINITY)
 			known_skills[S] = SKILL_LEVEL_LEGENDARY
+			
 		if(SKILL_EXP_MASTER to SKILL_EXP_LEGENDARY)
 			known_skills[S] = SKILL_LEVEL_MASTER
+			
 		if(SKILL_EXP_EXPERT to SKILL_EXP_MASTER)
 			known_skills[S] = SKILL_LEVEL_EXPERT
+			
 		if(SKILL_EXP_JOURNEYMAN to SKILL_EXP_EXPERT)
 			known_skills[S] = SKILL_LEVEL_JOURNEYMAN
+			
 		if(SKILL_EXP_APPRENTICE to SKILL_EXP_JOURNEYMAN)
 			known_skills[S] = SKILL_LEVEL_APPRENTICE
+			
 		if(SKILL_EXP_NOVICE to SKILL_EXP_APPRENTICE)
 			known_skills[S] = SKILL_LEVEL_NOVICE
+			
 		if(0 to SKILL_EXP_NOVICE)
 			known_skills[S] = SKILL_LEVEL_NONE
+			
 	if(isnull(old_level) || known_skills[S] == old_level)
 		return //same level or we just started earning xp towards the first level.
 	if(silent)
 		return
+	// ratio = round(skill_experience[S]/limit,1) * 100
+	// to_chat(current, "<span class='nicegreen'> My [S.name] is around [ratio]% of the way there.")
+	//TODO add some bar hud or something, i think i seen a request like that somewhere
 	if(known_skills[S] >= old_level)
 		if(known_skills[S] > old_level)
 			to_chat(current, "<span class='nicegreen'>My [S.name] grows!</span>")
@@ -988,3 +1006,11 @@
 	..()
 	mind.assigned_role = ROLE_PAI
 	mind.special_role = ""
+
+
+
+/datum/mind/proc/get_learning_boon(skill)
+	var/mob/living/carbon/human/H = current
+	var/boon = H.age == AGE_YOUNG ? 1.2 : 1 // optional
+	boon += get_skill_level(skill) / 10
+	return boon 

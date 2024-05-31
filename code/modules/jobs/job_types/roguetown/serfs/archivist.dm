@@ -2,7 +2,7 @@
 	title = "Archivist"
 	tutorial = " The Archivist meticulously preserves and organizes ancient scrolls and tomes, safeguarding the collective knowledge of the realm for generations to come. Nobles and Peasants alike often seek the Archivists expertise on matters of history and fact."
 	flag = ARCHIVIST
-	department_flag = SERFS
+	department_flag = YEOMEN
 	faction = "Station"
 	total_positions = 1
 	spawn_positions = 1
@@ -11,14 +11,17 @@
 		"Humen",
 		"Elf",
 		"Half-Elf",
-		"Aasimar"
+		"Aasimar",
 	)
-	allowed_patrons = list("Noc")
-	allowed_ages = list(AGE_OLD, AGE_MIDDLEAGED)
+	allowed_ages = list(AGE_MIDDLEAGED, AGE_OLD)
 
 	outfit = /datum/outfit/job/roguetown/archivist
-	display_order = 19
+	display_order = JDO_ARCHIVIST
 	min_pq = 0
+	max_pq = null
+
+/datum/outfit/job/roguetown/archivist
+	allowed_patrons = list(/datum/patron/divine/noc)
 
 /datum/outfit/job/roguetown/archivist/pre_equip(mob/living/carbon/human/H)
 	..()

@@ -1,32 +1,33 @@
 /datum/job/roguetown/nightmaiden
 	title = "Bath Wench"
-	flag = JESTER
+	flag = WENCH
 	department_flag = PEASANTS
 	faction = "Station"
 	total_positions = 3
 	spawn_positions = 5
 
-	allowed_sexes = list("female")
+	allowed_sexes = list(FEMALE)
 	allowed_races = list(
 		"Humen",
 		"Elf",
 		"Half-Elf",
 		"Dwarf",
 		"Tiefling",
+		"Argonian",
 		"Dark Elf",
 		"Aasimar",
-		"Lizardfolk",
-		"Tabaxi"	
+		"Tabaxi",	
 	)
+	allowed_ages = list(AGE_ADULT, AGE_MIDDLEAGED)
 
 	tutorial = "Nobody would envy your lot in life, for the role of the bathwench is not something so idly taken. It comes from a place of desperation, least usually: for any with true compassion or skill would seek position with a nunnery or the medical trade. Launder clothes and soothe wounds, that is your loathsome creed."
 
-	allowed_ages = list(AGE_ADULT, AGE_MIDDLEAGED)
 	outfit = /datum/outfit/job/roguetown/nightmaiden
-	display_order = JDO_NIGHTMAIDEN
+	display_order = JDO_WENCH
 	give_bank_account = TRUE
 	can_random = FALSE
 	min_pq = -10
+	max_pq = null
 
 /datum/outfit/job/roguetown/nightmaiden/pre_equip(mob/living/carbon/human/H)
 	..()

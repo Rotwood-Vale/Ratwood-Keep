@@ -62,7 +62,7 @@
 /obj/effect/landmark/mapGenerator/sunlights
 	mapGeneratorType = /datum/mapGenerator/sunlights
 	endTurfX = 255
-	endTurfY = 255
+	endTurfY = 400
 	startTurfX = 1
 	startTurfY = 1
 
@@ -153,11 +153,13 @@
 	fueluse = 60 MINUTES
 	bulb_colour = "#f9ad80"
 	bulb_power = 1
+	flags_1 = NODECONSTRUCT_1
 	use_power = NO_POWER_USE
 	var/datum/looping_sound/soundloop = /datum/looping_sound/fireloop
 	pass_flags = LETPASSTHROW
 	var/cookonme = FALSE
 	var/crossfire = TRUE
+	var/can_damage = FALSE
 
 /obj/machinery/light/rogue/Initialize()
 	if(soundloop)
@@ -172,14 +174,6 @@
 /obj/machinery/light/rogue/weather_trigger(W)
 	if(W==/datum/weather/rain)
 		START_PROCESSING(SSweather,src)
-
-/obj/machinery/light/rogue/attack_hand(mob/living/carbon/human/user)
-	. = ..()
-	if(.)
-		return
-	user.changeNext_move(CLICK_CD_MELEE)
-	add_fingerprint(user)
-
 
 /obj/machinery/light/rogue/examine(mob/user)
 	. = ..()
@@ -196,14 +190,16 @@
 			if(initial(fueluse) > 0)
 				. += "<span class='warning'>The fire is burned out and hungry...</span>"
 
-
 /obj/machinery/light/rogue/extinguish()
 	if(on)
 		burn_out()
 		new /obj/effect/temp_visual/small_smoke(src.loc)
 	..()
 
-
+/obj/machinery/light/rogue/OnCrafted(dirin, user)
+	. = ..()
+	can_damage = TRUE
+	burn_out()
 
 /obj/machinery/light/rogue/burn_out()
 	if(soundloop)
@@ -299,7 +295,7 @@
 	if(W.firefuel)
 		if(initial(fueluse))
 			if(fueluse > initial(fueluse) - 5 SECONDS)
-				to_chat(user, "<span class='warning'>Full.</span>")
+				to_chat(user, "<span class='warning'>The fire is fully fueled.</span>")
 				return
 		else
 			if(!on)
@@ -326,10 +322,22 @@
 				return
 			if(user.used_intent?.type != INTENT_SPLASH)
 				W.spark_act()
-	..()
+	. = ..()
 
 /obj/machinery/light/rogue/take_damage(damage_amount, damage_type = BRUTE, damage_flag = 0, sound_effect = 1)
-	return
+	if(!can_damage)
+		return
+	. = ..()
+
+/obj/machinery/light/rogue/break_light_tube(skip_sound_and_sparks = 0)
+	if(status == LIGHT_EMPTY || status == LIGHT_BROKEN)
+		return	
+	if(!skip_sound_and_sparks)
+		if(status == LIGHT_OK || status == LIGHT_BURNED)
+			playsound(src.loc, 'sound/blank.ogg', 75, TRUE)
+		if(on)
+			do_sparks(3, TRUE, src)
+	update()
 
 /obj/machinery/light/rogue/firebowl
 	name = "brazier"
@@ -339,11 +347,9 @@
 //	pixel_y = 10
 	base_state = "stonefire"
 	climbable = TRUE
-	pass_flags = LETPASSTHROW
 	cookonme = TRUE
-	dir = SOUTH
-	crossfire = TRUE
 	fueluse = 0
+	max_integrity = 150
 
 /obj/machinery/light/rogue/firebowl/CanPass(atom/movable/mover, turf/target)
 	if(istype(mover) && (mover.pass_flags & PASSTABLE))
@@ -514,6 +520,16 @@
 	torchy.spark_act()
 	. = ..()
 
+/obj/machinery/light/rogue/torchholder/OnCrafted(dirin, user)
+	if(dirin == NORTH)
+		pixel_y = 32
+	dirin = angle2dir(dir2angle(dirin) + 180)
+	QDEL_NULL(torchy)
+	on = FALSE
+	set_light(0)
+	update_icon()
+	. = ..(dirin)
+
 /obj/machinery/light/rogue/torchholder/process()
 	if(on)
 		if(torchy)
@@ -547,7 +563,7 @@
 		icon_state = "torchwall"
 
 /obj/machinery/light/rogue/torchholder/burn_out()
-	if(torchy.on)
+	if(torchy && torchy.on)
 		torchy.turn_off()
 	..()
 
@@ -575,14 +591,16 @@
 					user.update_inv_hands()
 		else
 			if(LR.on)
-				LR.forceMove(src)
+				if(!user.transferItemToLoc(LR, src))
+					return
 				torchy = LR
 				on = TRUE
 				update()
 				update_icon()
 				addtimer(CALLBACK(src, PROC_REF(trigger_weather)), rand(5,20))
 			else
-				LR.forceMove(src)
+				if(!user.transferItemToLoc(LR, src))
+					return
 				torchy = LR
 				update_icon()
 			playsound(src.loc, 'sound/foley/torchfixtureput.ogg', 100)
@@ -621,7 +639,6 @@
 	layer = 2.8
 	var/obj/item/attachment = null
 	var/obj/item/reagent_containers/food/snacks/food = null
-	on = FALSE
 	cookonme = TRUE
 	var/datum/looping_sound/boilloop/boilloop
 
@@ -719,7 +736,6 @@
 						H.update_damage_overlays()
 			return TRUE
 
-
 /obj/machinery/light/rogue/hearth/process()
 	if(isopenturf(loc))
 		var/turf/open/O = loc
@@ -764,10 +780,11 @@
 	density = FALSE
 	layer = 2.8
 	brightness = 5
-	on = FALSE
-	fueluse = 15 MINUTES
+	fueluse = 10 MINUTES
 	bulb_colour = "#da5e21"
 	cookonme = TRUE
+	can_damage = TRUE
+	max_integrity = 30
 
 /obj/machinery/light/rogue/campfire/process()
 	..()
@@ -805,12 +822,12 @@
 	base_state = "densefire"
 	density = TRUE
 	layer = 2.8
-	brightness = 5
 	climbable = TRUE
 	on = FALSE
-	fueluse = 30 MINUTES
+	fueluse = 20 MINUTES
 	pass_flags = LETPASSTHROW
 	bulb_colour = "#eea96a"
+	max_integrity = 60
 
 /obj/machinery/light/rogue/campfire/densefire/CanPass(atom/movable/mover, turf/target)
 	if(istype(mover) && (mover.pass_flags & PASSTABLE))

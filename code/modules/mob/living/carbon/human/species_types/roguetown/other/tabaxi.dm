@@ -44,7 +44,6 @@
 	specstats = list("strength" = 1, "perception" = 1, "intelligence" = -1, "constitution" = 0, "endurance" = 1, "speed" = 1, "fortune" = 1)
 	specstats_f = list("strength" = -1, "perception" = 1, "intelligence" = 2, "constitution" = -2, "endurance" = 0, "speed" = 2, "fortune" = 2)
 	enflamed_icon = "widefire"
-	possible_faiths = list(FAITH_PSYDON)
 
 /datum/species/tabaxi/check_roundstart_eligible()
 	return TRUE

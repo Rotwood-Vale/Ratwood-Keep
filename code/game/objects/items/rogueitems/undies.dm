@@ -13,6 +13,7 @@
 	var/gendered = MALE
 	var/race
 	var/cached_undies
+	sewrepair = TRUE
 
 /obj/item/undies/f
 	name = "women's smallclothes"

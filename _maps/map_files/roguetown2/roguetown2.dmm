@@ -8412,6 +8412,7 @@
 "Is" = (
 /obj/structure/bed/rogue/inn,
 /obj/item/bedsheet/rogue/fabric,
+/obj/effect/landmark/start/archivist,
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/under/town/basement)
 "It" = (

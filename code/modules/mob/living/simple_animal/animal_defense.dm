@@ -31,7 +31,7 @@
 			log_combat(M, src, "attacked")
 			updatehealth()
 			var/hitlim = simple_limb_hit(M.zone_selected)
-			woundcritroll(M.used_intent.blade_class, damage, M, hitlim)
+			simple_woundcritroll(M.used_intent.blade_class, damage, M, hitlim)
 			visible_message("<span class='danger'>[M] [atk_verb] [src]![next_attack_msg.Join()]</span>",\
 							"<span class='danger'>[M] [atk_verb] me![next_attack_msg.Join()]</span>", null, COMBAT_MESSAGE_RANGE)
 			next_attack_msg.Cut()
@@ -120,7 +120,7 @@
 		log_combat(M, src, "attacked")
 		updatehealth()
 		var/hitlim = simple_limb_hit(M.zone_selected)
-		woundcritroll(M.used_intent.blade_class, damage, M, hitlim)
+		simple_woundcritroll(M.used_intent.blade_class, damage, M, hitlim)
 		visible_message("<span class='danger'>[M] [atk_verb] [src]![next_attack_msg.Join()]</span>",\
 						"<span class='danger'>[M] [atk_verb] me![next_attack_msg.Join()]</span>", null, COMBAT_MESSAGE_RANGE)
 		next_attack_msg.Cut()
@@ -183,7 +183,7 @@
 		var/damage = rand(M.melee_damage_lower, M.melee_damage_upper)
 		var/hitlim = simple_limb_hit(M.zone_selected)
 		attack_threshold_check(damage, M.melee_damage_type)
-		woundcritroll(M.a_intent.blade_class, damage, M, hitlim)
+		simple_woundcritroll(M.a_intent.blade_class, damage, M, hitlim)
 		visible_message("<span class='danger'>\The [M] [pick(M.a_intent.attack_verb)] [src]![next_attack_msg.Join()]</span>", \
 					"<span class='danger'>\The [M] [pick(M.a_intent.attack_verb)] me![next_attack_msg.Join()]</span>", null, COMBAT_MESSAGE_RANGE)
 		next_attack_msg.Cut()

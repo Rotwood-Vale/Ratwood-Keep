@@ -15,10 +15,20 @@ GLOBAL_LIST_INIT(badomens, list())
 	if(!name)
 		return FALSE
 
+/proc/hasomen(input)
+	return (input in GLOB.badomens)
+
 /proc/addomen(input)
-	if(!(input in GLOB.badomens))
-		testing("Omen added: [input]")
-		GLOB.badomens += input
+	if(hasomen(input))
+		return
+	testing("Omen added: [input]")
+	GLOB.badomens += input
+
+/proc/removeomen(input)
+	if(!hasomen(input))
+		return
+	testing("Omen removed: [input]")
+	GLOB.badomens -= input
 
 /datum/round_event_control/proc/badomen(eventreason)
 	var/used
@@ -31,6 +41,8 @@ GLOBAL_LIST_INIT(badomens, list())
 			used = "Unwelcome visitors!"
 		if("nolord")
 			used = "The Monarch is dead! We need a new ruler."
+		if("nopriest")
+			used = "The High Priest is dead!"
 		if("sunsteal")
 			used = "The Sun, she is wounded!"
 	if(eventreason && used)

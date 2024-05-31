@@ -74,7 +74,7 @@
 
 	preload_rsc = PRELOAD_RSC
 
-	var/obj/screen/click_catcher/void
+	var/atom/movable/screen/click_catcher/void
 
 	///used to make a special mouse cursor, this one for mouse up icon
 	var/mouse_up_icon = null
@@ -114,7 +114,7 @@
  	///these persist between logins/logouts during the same round.
 	var/datum/player_details/player_details
 
-	///Should only be a key-value list of north/south/east/west = obj/screen.
+	///Should only be a key-value list of north/south/east/west = atom/movable/screen.
 	var/list/char_render_holders
 
 	///Amount of keydowns in the last keysend checking interval
@@ -126,8 +126,8 @@
 	///When set to true, user will be autokicked if they trip the keysends in a second limit again
 	var/keysend_tripped = FALSE
 
-	var/obj/screen/movable/mouseover/mouseovertext
-	var/obj/screen/movable/mouseover/mouseoverbox
+	var/atom/movable/screen/movable/mouseover/mouseovertext
+	var/atom/movable/screen/movable/mouseover/mouseoverbox
 	///custom movement keys for this client
 	var/list/movement_keys = list()
 
@@ -155,7 +155,7 @@
 				return
 	last_lighting_update = list(mob.x, mob.y, mob.z)
 	var/area/A = get_area(mob)
-	var/obj/PMW = locate(/obj/screen/plane_master/weather) in screen
+	var/obj/PMW = locate(/atom/movable/screen/plane_master/weather) in screen
 	if(PMW && A)
 		if(A.outdoors)
 			PMW.filters = list()
@@ -198,13 +198,13 @@
 				current_weathers[WE.type] += I
 			else
 				var/found = FALSE
-				for(var/obj/screen/WO in current_weathers[WE.type])
+				for(var/atom/movable/screen/WO in current_weathers[WE.type])
 					if(istype(WO,P))
 						found = TRUE
 						break
 				if(found)
 					continue
-				var/obj/screen/PE = new P()
+				var/atom/movable/screen/PE = new P()
 				screen += PE
 				current_weathers[WE.type] += PE
 
@@ -216,7 +216,7 @@
 		animate(P,alpha = 0, time=20)
 		addtimer(CALLBACK(src,PROC_REF(kill_weather),P),20)
 	else //screen obj
-		var/obj/screen/O = W
+		var/atom/movable/screen/O = W
 		animate(O,alpha = 0, time=10)
 		addtimer(CALLBACK(src,PROC_REF(kill_weather),O),10)
 

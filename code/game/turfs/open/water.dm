@@ -113,7 +113,7 @@
 			return
 	if(isliving(AM) && !AM.throwing)
 		var/mob/living/L = AM
-		if(L.lying || water_level == 3)
+		if(!(L.mobility_flags & MOBILITY_STAND) || water_level == 3)
 			L.SoakMob(FULL_BODY)
 		else
 			if(water_level == 2)
@@ -284,7 +284,7 @@
 				if(BP.skeletonized)
 					continue
 				var/obj/item/natural/worms/leeches/I = new(C)
-				BP.embedded_objects |= I
+				BP.add_embedded_object(I, silent = TRUE)
 				return .
 
 /turf/open/water/swamp/deep
@@ -313,7 +313,7 @@
 				if(BP.skeletonized)
 					continue
 				var/obj/item/natural/worms/leeches/I = new(C)
-				BP.embedded_objects |= I
+				BP.add_embedded_object(I, silent = TRUE)
 				return .
 
 /turf/open/water/cleanshallow

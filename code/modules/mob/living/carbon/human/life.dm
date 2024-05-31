@@ -94,10 +94,7 @@
 			else
 				if(mob_timers["slo"])
 					mob_timers["slo"] = null
-
-		//Stuff jammed in your limbs hurts
-		handle_embedded_objects()
-
+					
 		if(dna?.species)
 			dna.species.spec_life(src) // for mutantraces
 
@@ -119,10 +116,7 @@
 		for(var/datum/antagonist/A in mind.antag_datums)
 			A.on_life(src)
 
-	if(!IS_IN_STASIS(src))
-		. = ..()
-		handle_embedded_objects()
-
+	. = ..()
 	name = get_visible_name()
 
 /mob/living/carbon/human/proc/on_daypass()
@@ -172,13 +166,13 @@
 		var/datum/species/S = dna.species
 
 		if(S.breathid == "o2")
-			throw_alert("not_enough_oxy", /obj/screen/alert/not_enough_oxy)
+			throw_alert("not_enough_oxy", /atom/movable/screen/alert/not_enough_oxy)
 		else if(S.breathid == "tox")
-			throw_alert("not_enough_tox", /obj/screen/alert/not_enough_tox)
+			throw_alert("not_enough_tox", /atom/movable/screen/alert/not_enough_tox)
 		else if(S.breathid == "co2")
-			throw_alert("not_enough_co2", /obj/screen/alert/not_enough_co2)
+			throw_alert("not_enough_co2", /atom/movable/screen/alert/not_enough_co2)
 		else if(S.breathid == "n2")
-			throw_alert("not_enough_nitro", /obj/screen/alert/not_enough_nitro)
+			throw_alert("not_enough_nitro", /atom/movable/screen/alert/not_enough_nitro)
 
 		return FALSE
 	else
@@ -376,10 +370,9 @@
 	..()
 	//Puke if toxloss is too high
 	if(!stat)
-		if(prob(33))
-			if(getToxLoss() >= 75)
-				mob_timers["puke"] = world.time
-				vomit(1, blood = TRUE)
+		if(prob(33) && getToxLoss() >= 75)
+			mob_timers["puke"] = world.time
+			vomit(1, blood = TRUE)
 
 /mob/living/carbon/human/has_smoke_protection()
 	if(wear_mask)
@@ -393,48 +386,6 @@
 		if(CH.clothing_flags & BLOCK_GAS_SMOKE_EFFECT)
 			return TRUE
 	return ..()
-
-/obj/item/proc/on_embed_life(mob/living/user)
-	return
-
-/mob/living/proc/handle_embedded_objects()
-	for(var/obj/item/I in simple_embedded_objects)
-
-		if(I.on_embed_life(src))
-			return
-
-		if(prob(I.embedding.embedded_pain_chance))
-//			BP.receive_damage(I.w_class*I.embedding.embedded_pain_multiplier)
-			to_chat(src, "<span class='danger'>[I] in me hurts!</span>")
-
-		if(prob(I.embedding.embedded_fall_chance))
-//			BP.receive_damage(I.w_class*I.embedding.embedded_fall_pain_multiplier)
-			simple_embedded_objects -= I
-			I.forceMove(drop_location())
-			to_chat(src,"<span class='danger'>[I] falls out of me!</span>")
-			if(!has_embedded_objects())
-				clear_alert("embeddedobject")
-
-/mob/living/carbon/human/handle_embedded_objects()
-	for(var/X in bodyparts)
-		var/obj/item/bodypart/BP = X
-		for(var/obj/item/I in BP.embedded_objects)
-
-			if(I.on_embed_life(BP))
-				return
-
-			if(prob(I.embedding.embedded_pain_chance))
-				BP.receive_damage(I.w_class*I.embedding.embedded_pain_multiplier)
-//				to_chat(src, "<span class='danger'>[I] in my [BP.name] hurts!</span>")
-
-			if(prob(I.embedding.embedded_fall_chance))
-				BP.receive_damage(I.w_class*I.embedding.embedded_fall_pain_multiplier)
-				BP.embedded_objects -= I
-				I.forceMove(drop_location())
-				to_chat(src,"<span class='danger'>[I] falls out of my [BP.name]!</span>")
-				if(!has_embedded_objects())
-					clear_alert("embeddedobject")
-					SEND_SIGNAL(src, COMSIG_CLEAR_MOOD_EVENT, "embedded")
 
 /mob/living/carbon/human/proc/handle_heart()
 	var/we_breath = !HAS_TRAIT_FROM(src, TRAIT_NOBREATH, SPECIES_TRAIT)

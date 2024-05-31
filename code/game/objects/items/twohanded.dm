@@ -605,7 +605,8 @@
 
 /obj/item/twohanded/required/chainsaw/get_dismemberment_chance()
 	if(wielded)
-		. = ..()
+		return ..()
+	return 0
 
 /obj/item/twohanded/required/chainsaw/doomslayer
 	name = "THE GREAT COMMUNICATOR"

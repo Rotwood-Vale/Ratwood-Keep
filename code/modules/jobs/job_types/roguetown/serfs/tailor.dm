@@ -1,7 +1,7 @@
 /datum/job/roguetown/tailor
 	title = "Tailor"
 	flag = TAILOR
-	department_flag = SERFS
+	department_flag = YEOMEN
 	faction = "Station"
 	total_positions = 0
 	spawn_positions = 0
@@ -10,14 +10,16 @@
 	outfit_female = /datum/outfit/job/roguetown/tailor/female
 	display_order = 6
 	min_pq = 0
+	max_pq = null
 	allowed_races = list(
 		"Humen",
 		"Elf",
 		"Half-Elf",
 		"Dwarf",
 		"Tiefling",
+		"Argonian",
 		"Dark Elf",
-		"Aasimar"
+		"Aasimar",
 	)
 
 /datum/outfit/job/roguetown/tailor

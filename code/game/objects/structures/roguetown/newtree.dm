@@ -67,7 +67,7 @@
 /obj/structure/flora/newtree/attack_hand(mob/user)
 	if(isliving(user))
 		var/mob/living/L = user
-		if(L.stat != CONSCIOUS)
+		if(L.stat != CONSCIOUS || L.incapacitated() || !(L.mobility_flags & MOBILITY_STAND))
 			return
 		var/turf/target = get_step_multiz(user, UP)
 		if(!istype(target, /turf/open/transparent/openspace))
@@ -77,8 +77,10 @@
 			to_chat(user, "<span class='warning'>I can't climb there.</span>")
 			return
 		var/used_time = 0
+		var/exp_to_gain = 0 
 		if(L.mind)
 			var/myskill = L.mind.get_skill_level(/datum/skill/misc/climbing)
+			exp_to_gain = (L.STAINT/2) * L.mind.get_learning_boon(/datum/skill/misc/climbing)
 			var/obj/structure/table/TA = locate() in L.loc
 			if(TA)
 				myskill += 1
@@ -96,6 +98,8 @@
 			user.forceMove(target)
 			user.start_pulling(pulling,supress_message = TRUE)
 			playsound(user, 'sound/foley/climb.ogg', 100, TRUE)
+			if(L.mind) // idk just following whats going on above
+				L.mind.adjust_experience(/datum/skill/misc/climbing, exp_to_gain, FALSE)
 
 /obj/structure/flora/newtree/update_icon()
 	icon_state = ""

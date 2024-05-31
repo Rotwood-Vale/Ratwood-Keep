@@ -67,11 +67,19 @@
 		var/datum/roguestock/D = locate(href_list["export"]) in SStreasury.stockpile_datums
 		if(!D)
 			return
-		if(D.held_items < D.importexport_amt)
+		if((D.held_items[1] + D.held_items[2]) < D.importexport_amt)
 			say("Insufficient stock.")
 			return
 		var/amt = D.get_export_price()
-		D.held_items -= D.importexport_amt
+
+		// Try to export everything from town stockpile
+		if(D.held_items[1] >= D.importexport_amt)
+			D.held_items[1] -= D.importexport_amt
+		// If not possible, first pull form town stockpile, then bog stockpile
+		else
+			D.held_items[2] -= (D.importexport_amt - D.held_items[1])
+			D.held_items[1] = 0
+
 		SStreasury.treasury_value += amt
 		SStreasury.log_to_steward("+[amt] exported [D.name]")
 		scom_announce("Rockhill exports [D.name] for [amt] mammon.")
@@ -157,7 +165,7 @@
 				SStreasury.give_money_account(-newtax, A)
 				break
 	if(href_list["payroll"])
-		var/list/L = list(GLOB.noble_positions) + list(GLOB.garrison_positions) + list(GLOB.church_positions) + list(GLOB.serf_positions) + list(GLOB.peasant_positions) + list(GLOB.youngfolk_positions)
+		var/list/L = list(GLOB.noble_positions) + list(GLOB.garrison_positions) + list(GLOB.church_positions) + list(GLOB.yeoman_positions) + list(GLOB.peasant_positions) + list(GLOB.youngfolk_positions)
 		var/list/things = list()
 		for(var/list/category in L)
 			for(var/A in category)
@@ -248,7 +256,7 @@
 			for(var/datum/roguestock/stockpile/A in SStreasury.stockpile_datums)
 				contents += "[A.name]<BR>"
 				contents += "[A.desc]<BR>"
-				contents += "Stockpiled Amount: [A.held_items]<BR>"
+				contents += "Stockpiled Amount: [A.held_items[1] + A.held_items[2]]<BR>"
 				contents += "Bounty Price: <a href='?src=\ref[src];setbounty=\ref[A]'>[A.payout_price]</a><BR>"
 				contents += "Withdraw Price: <a href='?src=\ref[src];setprice=\ref[A]'>[A.withdraw_price]</a><BR>"
 				contents += "Demand: [A.demand2word()]<BR>"
@@ -277,7 +285,7 @@
 			for(var/datum/roguestock/bounty/A in SStreasury.stockpile_datums)
 				contents += "[A.name]<BR>"
 				contents += "[A.desc]<BR>"
-				contents += "Total Collected: [A.held_items]<BR>"
+				contents += "Total Collected: [A.held_items[1] + A.held_items[2]]<BR>"
 				if(A.percent_bounty)
 					contents += "Bounty Price: <a href='?src=\ref[src];setbounty=\ref[A]'>[A.payout_price]%</a><BR><BR>"
 				else

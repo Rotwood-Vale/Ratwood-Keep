@@ -86,7 +86,7 @@
 	if(density)
 		if(ishuman(AM))
 			var/mob/living/carbon/human/H = AM
-			if(H.dir == get_dir(H,src) && H.m_intent == MOVE_INTENT_RUN && !H.lying)
+			if(H.dir == get_dir(H,src) && H.m_intent == MOVE_INTENT_RUN && (H.mobility_flags & MOBILITY_STAND))
 				H.Immobilize(10)
 				H.apply_damage(15, BRUTE, "head", H.run_armor_check("head", "melee", damage = 15))
 				H.toggle_rogmove_intent(MOVE_INTENT_WALK, TRUE)
@@ -163,7 +163,7 @@
 							climbsound = 'sound/foley/ladder.ogg'
 
 				if(myskill < climbdiff)
-					to_chat(user, "<span class='warning'>I can't climb here.</span>")
+					to_chat(user, "<span class='warning'>I'm not capable of climbing this wall.</span>")
 					return
 				used_time = max(70 - (myskill * 10) - (L.STASPD * 3), 30)
 			if(user.m_intent != MOVE_INTENT_SNEAK)

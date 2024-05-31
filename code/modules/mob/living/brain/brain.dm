@@ -22,8 +22,7 @@
 /mob/living/brain/proc/create_dna()
 	stored_dna = new /datum/dna/stored(src)
 	if(!stored_dna.species)
-		var/rando_race = pick(GLOB.roundstart_races)
-		stored_dna.species = new rando_race()
+		stored_dna.species = new GLOB.species_list[pick(get_selectable_species())]
 
 /mob/living/brain/Destroy()
 	if(key)				//If there is a mob connected to this thing. Have to check key twice to avoid false death reporting.

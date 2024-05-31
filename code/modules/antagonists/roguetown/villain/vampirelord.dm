@@ -11,9 +11,13 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 	roundend_category = "Vampires"
 	antagpanel_category = "Vampire"
 	job_rank = ROLE_VAMPIRE
-	antag_hud_type = ANTAG_HUD_TRAITOR
-	antag_hud_name = "vampire"
-	confess_lines = list("I AM ANCIENT", "I AM THE LAND", "CHILD OF KAIN!")
+	antag_hud_type = ANTAG_HUD_VAMPIRE
+	antag_hud_name = "Vlord"
+	confess_lines = list(
+		"I AM ANCIENT", 
+		"I AM THE LAND", 
+		"CHILD OF KAIN!",
+	)
 	var/isspawn = FALSE
 	var/disguised = FALSE
 	var/ascended = FALSE
@@ -40,21 +44,30 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 	if(istype(examined_datum, /datum/antagonist/skeleton))
 		return "<span class='boldnotice'>Another deadite.</span>"
 
+/datum/antagonist/vampirelord/apply_innate_effects(mob/living/mob_override)
+	var/mob/living/M = mob_override || owner.current
+	add_antag_hud(antag_hud_type, antag_hud_name, M)
+
+/datum/antagonist/vampirelord/remove_innate_effects(mob/living/mob_override)
+	var/mob/living/M = mob_override || owner.current
+	remove_antag_hud(antag_hud_type, M)
+
 /datum/antagonist/vampirelord/on_gain()
-	var/datum/game_mode/chaosmode/C = SSticker.mode
+	var/datum/game_mode/C = SSticker.mode
 	C.vampires |= owner
 	. = ..()
 	owner.special_role = name
-	ADD_TRAIT(owner.current, RTRAIT_STRONGBITE, TRAIT_GENERIC)
-	ADD_TRAIT(owner.current, RTRAIT_NOFATSTAM, TRAIT_GENERIC)
-	ADD_TRAIT(owner.current, TRAIT_NOHUNGER, TRAIT_GENERIC)
-	ADD_TRAIT(owner.current, TRAIT_NOBREATH, TRAIT_GENERIC)
-	ADD_TRAIT(owner.current, TRAIT_NOPAIN, TRAIT_GENERIC)
-	ADD_TRAIT(owner.current, TRAIT_TOXIMMUNE, TRAIT_GENERIC)
-	ADD_TRAIT(owner.current, TRAIT_STEELHEARTED, TRAIT_GENERIC)
-	ADD_TRAIT(owner.current, TRAIT_NOSLEEP, TRAIT_GENERIC)
-	ADD_TRAIT(owner.current, TRAIT_LIMPDICK, TRAIT_GENERIC)
-	ADD_TRAIT(owner.current, TRAIT_VAMPMANSION, TRAIT_GENERIC)
+	ADD_TRAIT(owner.current, TRAIT_CRITICAL_WEAKNESS, "[type]") //half assed but necessary otherwise these guys be invincible
+	ADD_TRAIT(owner.current, TRAIT_STRONGBITE, "[type]")
+	ADD_TRAIT(owner.current, TRAIT_NOROGSTAM, "[type]")
+	ADD_TRAIT(owner.current, TRAIT_NOHUNGER, "[type]")
+	ADD_TRAIT(owner.current, TRAIT_NOBREATH, "[type]")
+	ADD_TRAIT(owner.current, TRAIT_NOPAIN, "[type]")
+	ADD_TRAIT(owner.current, TRAIT_TOXIMMUNE, "[type]")
+	ADD_TRAIT(owner.current, TRAIT_STEELHEARTED, "[type]")
+	ADD_TRAIT(owner.current, TRAIT_NOSLEEP, "[type]")
+	ADD_TRAIT(owner.current, TRAIT_LIMPDICK, "[type]")
+	ADD_TRAIT(owner.current, TRAIT_VAMPMANSION, "[type]")
 	owner.current.cmode_music = 'sound/music/combat_vamp.ogg'
 	var/obj/item/organ/eyes/eyes = owner.current.getorganslot(ORGAN_SLOT_EYES)
 	if(eyes)
@@ -86,6 +99,7 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 		addtimer(CALLBACK(owner.current, TYPE_PROC_REF(/mob/living/carbon/human, choose_name_popup), "VAMPIRE LORD"), 5 SECONDS)
 		greet()
 	return ..()
+
 // OLD AND EDITED
 /datum/antagonist/vampirelord/proc/equip_lord()
 	owner.unknow_all_people()
@@ -94,19 +108,29 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 	for(var/datum/mind/MF in get_minds("Vampire Spawn"))
 		owner.i_know_person(MF)
 		owner.person_knows_me(MF)
+	for(var/datum/mind/MF in get_minds("Death Knight"))
+		owner.i_know_person(MF)
+		owner.person_knows_me(MF)
 
 	var/mob/living/carbon/human/H = owner.current
 	if(H.mobid in GLOB.character_list)
 		GLOB.character_list[H.mobid] = null
 	GLOB.chosen_names -= H.real_name
-	if(H.dna.species?.id != "human" && H.dna.species?.id != "elf")
+	if(!ishumannorthern(H) && !iself(H))
 		H.age = AGE_ADULT
 		if(prob(50))
 			H.set_species(/datum/species/human/northern)
 		else
 			H.set_species(/datum/species/elf/wood) //setspecies randomizes body
 		H.after_creation()
+	var/obj/item/organ/eyes/eyes = owner.current.getorganslot(ORGAN_SLOT_EYES)
+	if(eyes)
+		eyes.Remove(owner.current,1)
+		QDEL_NULL(eyes)
+	eyes = new /obj/item/organ/eyes/night_vision/zombie
+	eyes.Insert(owner.current)
 	H.equipOutfit(/datum/outfit/job/roguetown/vamplord)
+	H.set_patron(/datum/patron/inhumen/zizo)
 
 	return TRUE
 
@@ -115,6 +139,9 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 	for(var/datum/mind/MF in get_minds())
 		owner.become_unknown_to(MF)
 	for(var/datum/mind/MF in get_minds("Vampire Spawn"))
+		owner.i_know_person(MF)
+		owner.person_knows_me(MF)
+	for(var/datum/mind/MF in get_minds("Death Knight"))
 		owner.i_know_person(MF)
 		owner.person_knows_me(MF)
 
@@ -145,7 +172,10 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 	H.mind.adjust_skillrank(/datum/skill/magic/blood, 2, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 5, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 4, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/combat/swords, 3, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/combat/swords, 4, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/combat/maces, 4, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/combat/polearms, 4, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/combat/whipsflails, 4, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/reading, 5, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/climbing, 5, TRUE)
 	pants = /obj/item/clothing/under/roguetown/tights/black
@@ -167,13 +197,12 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 	item_state = "vpants"
 	sewrepair = FALSE
 	armor = list("melee" = 100, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
-	prevent_crits = list(BCLASS_CUT, BCLASS_CHOP, BCLASS_BLUNT)
+	prevent_crits = list(BCLASS_CUT, BCLASS_CHOP, BCLASS_BLUNT, BCLASS_TWIST)
 	blocksound = PLATEHIT
 	do_sound = FALSE
 	drop_sound = 'sound/foley/dropsound/armor_drop.ogg'
 	anvilrepair = /datum/skill/craft/armorsmithing
-	r_sleeve_status = SLEEVE_NOMOD
-	l_sleeve_status = SLEEVE_NOMOD
+	resistance_flags = FIRE_PROOF | ACID_PROOF
 
 /obj/item/clothing/suit/roguetown/shirt/vampire
 	slot_flags = ITEM_SLOT_SHIRT
@@ -182,8 +211,7 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 	body_parts_covered = CHEST|GROIN|LEGS|VITALS
 	icon_state = "vrobe"
 	item_state = "vrobe"
-	r_sleeve_status = SLEEVE_NORMAL
-	l_sleeve_status = SLEEVE_NORMAL
+	resistance_flags = FIRE_PROOF | ACID_PROOF
 
 /obj/item/clothing/head/roguetown/vampire
 	name = "crown of darkness"
@@ -192,7 +220,7 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 	slot_flags = ITEM_SLOT_HEAD
 	dynamic_hair_suffix = null
 	sellprice = 1000
-	resistance_flags = FIRE_PROOF
+	resistance_flags = FIRE_PROOF | ACID_PROOF
 
 /obj/item/clothing/suit/roguetown/armor/chainmail/iron/vampire
 	icon_state = "vunder"
@@ -202,6 +230,7 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 	desc = ""
 	body_parts_covered = CHEST|GROIN|VITALS
 	armor_class = 2
+	resistance_flags = FIRE_PROOF | ACID_PROOF
 
 /obj/item/clothing/suit/roguetown/armor/plate/vampire
 	slot_flags = ITEM_SLOT_ARMOR
@@ -211,7 +240,7 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 	icon_state = "vplate"
 	item_state = "vplate"
 	armor = list("melee" = 100, "bullet" = 100, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
-	prevent_crits = list(BCLASS_CUT, BCLASS_CHOP, BCLASS_BLUNT)
+	prevent_crits = list(BCLASS_CUT, BCLASS_CHOP, BCLASS_BLUNT, BCLASS_TWIST)
 	nodismemsleeves = TRUE
 	max_integrity = 500
 	allowed_sex = list(MALE, FEMALE)
@@ -220,6 +249,7 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 	smeltresult = /obj/item/ingot/steel
 	equip_delay_self = 40
 	armor_class = 3
+	resistance_flags = FIRE_PROOF | ACID_PROOF
 
 /obj/item/clothing/shoes/roguetown/boots/armor/vampire
 	name = "ancient ceremonial plated boots"
@@ -227,18 +257,23 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 	body_parts_covered = FEET
 	icon_state = "vboots"
 	item_state = "vboots"
-	prevent_crits = list(BCLASS_CUT, BCLASS_CHOP, BCLASS_BLUNT)
+	prevent_crits = list(BCLASS_CUT, BCLASS_CHOP, BCLASS_BLUNT, BCLASS_TWIST)
 	color = null
 	blocksound = PLATEHIT
 	armor = list("melee" = 100, "bullet" = 100, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	resistance_flags = FIRE_PROOF | ACID_PROOF
 
-/obj/item/clothing/head/roguetown/helmet/heavy/guard
+/obj/item/clothing/head/roguetown/helmet/heavy/vampire
 	name = "ancient ceremonial helm"
 	icon_state = "vhelmet"
+	max_integrity = 250
+	block2add = FOV_BEHIND
+	resistance_flags = FIRE_PROOF | ACID_PROOF
 
 /obj/item/clothing/gloves/roguetown/chain/vampire
 	name = "ancient ceremonial gloves"
 	icon_state = "vgloves"
+	resistance_flags = FIRE_PROOF | ACID_PROOF
 
 /datum/antagonist/vampirelord/on_removal()
 	if(!silent && owner.current)
@@ -355,7 +390,7 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 			H.fully_heal()
 
 	if(vitae > 0)
-		H.blood_volume = BLOOD_VOLUME_MAXIMUM
+		H.blood_volume = BLOOD_VOLUME_NORMAL
 		if(vitae < 200)
 			if(disguised)
 				to_chat(H, "<span class='warning'>My disguise fails!</span>")
@@ -450,7 +485,12 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 // SPAWN
 /datum/antagonist/vampirelord/lesser
 	name = "Vampire Spawn"
-	confess_lines = list("THE CRIMSON CALLS!", "MY MASTER COMMANDS", "THE SUN IS ENEMY!")
+	antag_hud_name = "Vspawn"
+	confess_lines = list(
+		"THE CRIMSON CALLS!", 
+		"MY MASTER COMMANDS", 
+		"THE SUN IS ENEMY!",
+	)
 	isspawn = TRUE
 
 /datum/antagonist/vampirelord/lesser/move_to_spawnpoint()
@@ -616,13 +656,13 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 						P.name = naming
 					user.playsound_local(get_turf(src), 'sound/misc/vcraft.ogg', 100, FALSE, pressure_affected = FALSE)
 		if("Shape Armor")
-			if(alert(user, "Craft a new set of armor? Cost:1500","","Yes","No") == "Yes")
-				if(!check_withdraw(-1500))
+			if(alert(user, "Craft a new set of armor? Cost:5000","","Yes","No") == "Yes")
+				if(!check_withdraw(-5000))
 					to_chat(user, "I don't have enough vitae!")
 					return
 				if(do_after(user, 100))
-					lord.handle_vitae(-1500)
-					var/list/armorpieces = list(/obj/item/clothing/under/roguetown/platelegs/vampire, /obj/item/clothing/suit/roguetown/armor/chainmail/iron/vampire, /obj/item/clothing/suit/roguetown/armor/chainmail/iron/vampire, /obj/item/clothing/shoes/roguetown/boots/armor/vampire, /obj/item/clothing/head/roguetown/helmet/heavy/guard)
+					lord.handle_vitae(-5000)
+					var/list/armorpieces = list(/obj/item/clothing/under/roguetown/platelegs/vampire, /obj/item/clothing/suit/roguetown/armor/chainmail/iron/vampire, /obj/item/clothing/suit/roguetown/armor/plate/vampire, /obj/item/clothing/shoes/roguetown/boots/armor/vampire, /obj/item/clothing/head/roguetown/helmet/heavy/vampire, /obj/item/clothing/gloves/roguetown/chain/vampire)
 					for(var/obj/item/A in armorpieces)
 						new A(src.loc)
 				user.playsound_local(get_turf(src), 'sound/misc/vcraft.ogg', 100, FALSE, pressure_affected = FALSE)
@@ -732,9 +772,13 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 
 /obj/structure/vampire/necromanticbook/attack_hand(mob/living/carbon/human/user)
 	var/datum/antagonist/vampirelord/lord = user.mind.has_antag_datum(/datum/antagonist/vampirelord)
+	var/datum/game_mode/chaosmode/C = SSticker.mode
 	if(user.mind.special_role == "Vampire Lord")
 		if(!unlocked)
 			to_chat(user, "I have yet to regain this aspect of my power!")
+			return
+		if(C.deathknights.len >= 3)
+			to_chat(user, "You cannot summon any more death knights.")
 			return
 		var/choice = input(user,"What to do?", "ROGUETOWN") as anything in useoptions|null
 		switch(choice)
@@ -745,7 +789,6 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 						return
 					if(do_after(user, 100))
 						to_chat(user, "I have summoned a knight from the underworld. I need only wait for them to materialize.")
-						var/datum/game_mode/chaosmode/C = SSticker.mode
 						C.deathknightspawn = TRUE
 						for(var/mob/dead/observer/D in GLOB.player_list)
 							D.death_knight_spawn()
@@ -772,12 +815,11 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 							sunstolen = FALSE
 						priority_announce("The Sun is torn from the sky!", "Terrible Omen", 'sound/misc/astratascream.ogg')
 						addomen("sunsteal")
-						for(var/mob/living/carbon/human/W in GLOB.human_list)
-							var/datum/patrongods/patron = W.client.prefs.selected_patron
-							if(patron.name == "Astrata")
-								if(!W.mind.antag_datums)
-									to_chat(W, "<span class='userdanger'>You feel the pain of your Patron!</span>")
-									W.emote_scream()
+						for(var/mob/living/carbon/human/astrater in GLOB.human_list)
+							if(!istype(astrater.patron, /datum/patron/divine/astrata) || !length(astrater.mind?.antag_datums))
+								continue
+							to_chat(astrater, "<span class='userdanger'>You feel the pain of [astrater.patron.name]!</span>")
+							astrater.emote_scream()
 
 	if(user.mind.special_role == "Vampire Spawn")
 		to_chat(user, "I don't have the power to use this!")
@@ -798,9 +840,17 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 /datum/antagonist/skeleton/knight/on_gain()
 	. = ..()
 	owner.current.verbs |= /mob/living/carbon/human/proc/vampire_telepathy
+	owner.unknow_all_people()
+	for(var/datum/mind/MF in get_minds())
+		owner.become_unknown_to(MF)
+	for(var/datum/mind/MF in get_minds("Vampire Spawn"))
+		owner.i_know_person(MF)
+		owner.person_knows_me(MF)
+	for(var/datum/mind/MF in get_minds("Death Knight"))
+		owner.i_know_person(MF)
+		owner.person_knows_me(MF)
 	add_objective(/datum/objective/vlordserve)
 	greet()
-
 /datum/antagonist/skeleton/knight/greet()
 	to_chat(owner.current, "<span class='userdanger'>I am returned to serve. I will obey, so that I may return to rest.</span>")
 	owner.announce_objectives()
@@ -872,7 +922,7 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 
 /datum/objective/vampirelord/infiltrate/one/check_completion()
 	var/datum/game_mode/chaosmode/C = SSticker.mode
-	var/list/churchjobs = list("Priest", "Priestess", "Cleric", "Acolyte", "Templar", "Churchling", "Crusader")
+	var/list/churchjobs = list("Priest", "Priestess", "Cleric", "Acolyte", "Templar", "Churchling", "Crusader", "Inquisitor")
 	for(var/datum/mind/V in C.vampires)
 		if(V.current.job in churchjobs)
 			return TRUE
@@ -884,7 +934,7 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 
 /datum/objective/vampirelord/infiltrate/two/check_completion()
 	var/datum/game_mode/chaosmode/C = SSticker.mode
-	var/list/noblejobs = list("King", "Queen", "Prince", "Princess", "Hand", "Steward")
+	var/list/noblejobs = list("King", "Queen Consort", "Prince", "Princess", "Hand", "Steward")
 	for(var/datum/mind/V in C.vampires)
 		if(V.current.job in noblejobs)
 			return TRUE

@@ -3,7 +3,8 @@
 	result = /obj/structure/gravemarker
 	reqs = list(/obj/item/grown/log/tree/stick = 1)
 	time = 10 SECONDS
-	verbage = "tie"
+	verbage_simple = "tie together"
+	verbage = "ties together"
 	craftsound = 'sound/foley/Building-01.ogg'
 	structurecraft = /obj/structure/closet/dirthole
 	craftdiff = 0

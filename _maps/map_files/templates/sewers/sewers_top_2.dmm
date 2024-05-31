@@ -1,0 +1,36 @@
+"a" = (/mob/living/simple_animal/hostile/retaliate/rogue/bigrat,/turf/open/floor/rogue/concrete,/area/rogue/under/town/sewer)
+"b" = (/obj/structure/bars/pipe,/obj/effect/decal/cleanable/cobweb,/turf/open/floor/rogue/metal,/area/rogue/under/town/sewer)
+"e" = (/obj/structure/table/wood,/obj/structure/spider/stickyweb,/turf/open/floor/rogue/concrete,/area/rogue/under/town/sewer)
+"f" = (/turf/closed/mineral/rogue,/area/rogue/under/town/sewer)
+"g" = (/obj/machinery/light/rogue/torchholder,/turf/closed/wall/mineral/rogue/stonebrick,/area/rogue/under/town/sewer)
+"k" = (/obj/structure/table/wood,/obj/item/candle/yellow/lit,/turf/open/floor/rogue/concrete,/area/rogue/under/town/sewer)
+"l" = (/obj/structure/bars/pipe,/obj/structure/spider/stickyweb,/turf/open/floor/rogue/metal,/area/rogue/under/town/sewer)
+"n" = (/obj/structure/table/wood,/obj/effect/spawner/lootdrop/roguetown/sewers,/turf/open/floor/rogue/concrete,/area/rogue/under/town/sewer)
+"q" = (/obj/structure/bars/pipe{dir = 10},/turf/open/floor/rogue/metal,/area/rogue/under/town/sewer)
+"s" = (/obj/structure/closet/crate/chest,/obj/effect/spawner/lootdrop/roguetown/sewers,/turf/open/floor/rogue/cobble,/area/rogue/under/town/sewer)
+"u" = (/turf/closed/wall/mineral/rogue/stonebrick,/area/rogue/under/town/sewer)
+"B" = (/obj/structure/chair/wood/rogue,/turf/open/floor/rogue/concrete,/area/rogue/under/town/sewer)
+"H" = (/obj/structure/table/wood,/obj/structure/fluff/walldeco/chains,/turf/open/floor/rogue/concrete,/area/rogue/under/town/sewer)
+"I" = (/obj/structure/bars/pipe,/obj/effect/decal/cleanable/cobweb/cobweb2,/turf/open/floor/rogue/metal,/area/rogue/under/town/sewer)
+"K" = (/turf/open/floor/rogue/concrete,/area/rogue/under/town/sewer)
+"L" = (/obj/structure/table/wood,/obj/item/rogueweapon/hammer/claw,/turf/open/floor/rogue/concrete,/area/rogue/under/town/sewer)
+"P" = (/obj/structure/bars/pipe{dir = 9},/turf/open/floor/rogue/metal,/area/rogue/under/town/sewer)
+"Q" = (/obj/structure/bars/pipe,/turf/open/floor/rogue/metal,/area/rogue/under/town/sewer)
+"R" = (/turf/closed/wall/mineral/rogue/pipe{icon_state = "iron_line"; dir = 4},/area/rogue/under/town/sewer)
+"U" = (/obj/structure/mineral_door/bars,/turf/open/floor/rogue/cobble,/area/rogue/under/town/sewer)
+"V" = (/obj/structure/bars/pipe{dir = 8},/turf/open/floor/rogue/metal,/area/rogue/under/town/sewer)
+"W" = (/obj/structure/spider/stickyweb,/turf/open/floor/rogue/cobble,/area/rogue/under/town/sewer)
+
+(1,1,1) = {"
+gffffffffffff
+ufuuuuuuuuuuu
+uuubQQQQllQIu
+WWUKKKaKKKKsu
+uuuKKBKKKKKsu
+ufuKnLkKKKKPu
+ufuKHkeKKKKVu
+ufuKKKKKKKKqu
+ufuRRRRRuUuuu
+ufffffffuWuff
+uuuuuuuuuWuuu
+"}

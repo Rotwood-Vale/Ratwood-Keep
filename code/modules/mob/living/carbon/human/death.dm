@@ -45,7 +45,7 @@
 				dust(just_ash=TRUE,drop_items=TRUE)
 				return
 
-	if(!gibbed && !is_in_roguetown(src))
+	if(!gibbed && can_death_zombify(src))
 		zombie_check()
 
 	if(client || mind)
@@ -87,15 +87,17 @@
 			if(get_triumphs() > 0)
 				adjust_triumphs(-1)
 
-		if(job == "King" || job == "Queen")
-			for(var/mob/living/carbon/human/HU in GLOB.player_list)
-				if(!HU.stat)
-					if(is_in_roguetown(HU))
+		switch(job)
+			if("King")
+				//omen gets added separately, after a few minutes
+				for(var/mob/living/carbon/human/HU in GLOB.player_list)
+					if(!HU.stat && is_in_roguetown(HU))
 						HU.playsound_local(get_turf(HU), 'sound/music/lorddeath.ogg', 80, FALSE, pressure_affected = FALSE)
-
+			if("Priest")
+				addomen("nopriest")
 //		if(yeae)
 //			if(mind)
-//				if((mind.assigned_role == "Lord") || (mind.assigned_role == "Priest") || (mind.assigned_role == "Sheriff") || (mind.assigned_role == "Merchant"))
+//				if((mind.assigned_role == "Lord") || (mind.assigned_role == "Priest") || (mind.assigned_role == "Guard Captain") || (mind.assigned_role == "Merchant"))
 //					addomen("importantdeath")
 
 		if(!gibbed && yeae)
@@ -103,7 +105,7 @@
 				if(HU.marriedto == src)
 					HU.adjust_triumphs(-1)
 //				if(HU != src && !HAS_TRAIT(HU, TRAIT_BLIND))
-//					if(!HAS_TRAIT(HU, RTRAIT_ANTAG))
+//					if(!HAS_TRAIT(HU, TRAIT_ANTAG))
 //						if(HU.dna?.species && dna?.species)
 //							if(HU.dna.species.id == dna.species.id)
 //								HU.add_stress(/datum/stressevent/viewdeath)
@@ -125,6 +127,16 @@
 		log_message("has died (BRUTE: [src.getBruteLoss()], BURN: [src.getFireLoss()], TOX: [src.getToxLoss()], OXY: [src.getOxyLoss()], CLONE: [src.getCloneLoss()])", LOG_ATTACK)
 	if(is_devil(src))
 		INVOKE_ASYNC(is_devil(src), TYPE_PROC_REF(/datum/antagonist/devil, beginResurrectionCheck), src)
+
+/mob/living/carbon/human/revive(full_heal, admin_revive)
+	. = ..()
+	if(!.)
+		return
+	switch(job)
+		if("King")
+			removeomen("nolord")
+		if("Priest")
+			removeomen("nopriest")
 
 /mob/living/carbon/human/proc/zombie_check()
 	if(!mind)
@@ -167,3 +179,6 @@
 	ADD_TRAIT(src, TRAIT_BADDNA, MADE_UNCLONEABLE)
 	blood_volume = 0
 	return TRUE
+
+/proc/can_death_zombify(mob/living/carbon/human)
+	return hasomen("nopriest") || !is_in_roguetown(human)

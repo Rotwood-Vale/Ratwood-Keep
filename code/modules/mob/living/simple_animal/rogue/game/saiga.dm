@@ -192,8 +192,8 @@
 	mob_biotypes = MOB_ORGANIC|MOB_BEAST
 	attack_verb_continuous = "headbutts"
 	attack_verb_simple = "headbutt"
-	health = 200
-	maxHealth = 200
+	health = 400
+	maxHealth = 400
 	melee_damage_lower = 60
 	melee_damage_upper = 90
 	environment_smash = ENVIRONMENT_SMASH_NONE

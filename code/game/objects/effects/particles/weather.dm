@@ -24,7 +24,7 @@
 	particles 	= new/particles/rain
 //	alpha = 190
 
-/obj/screen/weather/fog
+/atom/movable/screen/weather/fog
 	alpha = 180
 	icon = 'icons/mob/screen_full.dmi'
 	icon_state	= "phog1"
@@ -32,7 +32,7 @@
 	mouse_opacity = 0
 	plane = WEATHER_PLANE
 
-/obj/screen/weather/fog/New(client/C)
+/atom/movable/screen/weather/fog/New(client/C)
 	. = ..()
 	var/mutable_appearance/MA = mutable_appearance(icon, "phog2")
 	MA.pixel_x = 480

@@ -3,7 +3,7 @@
 
 /datum/species/human/northern
 	name = "Humen"
-	id = "human"
+	id = "humen"
 	desc = "<b>Humen</b><br>\
 	Humen (or Human) are the eldest of the weeping gods creation. Noted for their\
 	tenacity and overwhelming population, humans tend to outnumber the other races. \
@@ -45,7 +45,6 @@
 	specstats = list("strength" = 0, "perception" = 1, "intelligence" = -1, "constitution" = 0, "endurance" = 1, "speed" = -1, "fortune" = 0)
 	specstats_f = list("strength" = -1, "perception" = 0, "intelligence" = 2, "constitution" = -1, "endurance" = 0, "speed" = 1, "fortune" = 0)
 	enflamed_icon = "widefire"
-	possible_faiths = list(FAITH_PSYDON)
 
 /datum/species/human/northern/check_roundstart_eligible()
 	return TRUE
@@ -114,7 +113,9 @@
 	return " [pick(world.file2list("strings/rt/names/human/humnorlast.txt"))]"
 
 /datum/species/human/northern/get_accent(mob/living/carbon/human/H)
-	switch(H.skin_tone)
-		if(SKIN_COLOR_GRENZELHOFT) //Grenzelhoft
-			return strings("german_replacement.json", "german")
-	return null
+    switch(H.skin_tone)
+        if(SKIN_COLOR_GRENZELHOFT) //Grenzelhoft
+            return strings("german_replacement.json", "german")
+        if(SKIN_COLOR_HAMMERHOLD) //Hammerhold
+            return strings("Anglish.json", "Anglish")
+    return null

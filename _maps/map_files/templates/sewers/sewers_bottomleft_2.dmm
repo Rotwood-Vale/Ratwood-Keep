@@ -1,0 +1,53 @@
+"a" = (/turf/closed/mineral/rogue,/area/rogue/under/town/sewer)
+"d" = (/obj/item/roguestatue/iron,/turf/open/floor/rogue/cobble,/area/rogue/under/town/sewer)
+"e" = (/mob/living/simple_animal/hostile/retaliate/rogue/bigrat,/turf/open/floor/rogue/cobble,/area/rogue/under/town/sewer)
+"g" = (/obj/effect/decal/remains/human,/turf/open/floor/rogue/cobble,/area/rogue/under/town/sewer)
+"k" = (/obj/item/roguebin/water/gross,/turf/open/floor/rogue/cobble,/area/rogue/under/town/sewer)
+"l" = (/obj/machinery/light/rogue/torchholder/l,/turf/open/floor/rogue/cobble,/area/rogue/under/town/sewer)
+"m" = (/obj/machinery/anvil,/turf/open/floor/rogue/cobble,/area/rogue/under/town/sewer)
+"n" = (/obj/structure/table/wood,/obj/item/rogueweapon/hammer,/turf/open/floor/rogue/cobble,/area/rogue/under/town/sewer)
+"p" = (/obj/structure/closet/crate/chest,/obj/effect/spawner/lootdrop/roguetown/sewers,/turf/open/floor/rogue/cobble,/area/rogue/under/town/sewer)
+"q" = (/turf/open/floor/rogue/cobble,/area/rogue/under/town/sewer)
+"s" = (/obj/structure/fluff/grindwheel,/turf/open/floor/rogue/cobble,/area/rogue/under/town/sewer)
+"t" = (/obj/structure/table/wood,/obj/structure/bars{icon_state = "barsbent"; layer = 2.81},/turf/closed/wall/mineral/rogue/stonebrick,/area/rogue/under/town/sewer)
+"u" = (/obj/structure/fermenting_barrel/water,/turf/open/floor/rogue/cobble,/area/rogue/under/town/sewer)
+"x" = (/obj/structure/roguemachine/scomm/r,/turf/closed/wall/mineral/rogue/stonebrick,/area/rogue/under/town/sewer)
+"z" = (/obj/structure/mineral_door/wood,/turf/open/floor/rogue/cobble,/area/rogue/under/town/sewer)
+"B" = (/obj/structure/chair/wood/rogue,/turf/open/floor/rogue/cobble,/area/rogue/under/town/sewer)
+"D" = (/obj/machinery/light/rogue/torchholder/c,/turf/open/floor/rogue/cobble,/area/rogue/under/town/sewer)
+"E" = (/turf/closed/wall/mineral/rogue/stonebrick,/area/rogue/under/town/sewer)
+"G" = (/obj/machinery/light/rogue/torchholder,/turf/closed/wall/mineral/rogue/stonebrick,/area/rogue/under/town/sewer)
+"H" = (/obj/structure/fluff/wallclock/r,/turf/closed/wall/mineral/rogue/stonebrick,/area/rogue/under/town/sewer)
+"I" = (/obj/structure/spider/stickyweb,/turf/open/floor/rogue/cobble,/area/rogue/under/town/sewer)
+"J" = (/obj/structure/fermenting_barrel,/turf/open/floor/rogue/cobble,/area/rogue/under/town/sewer)
+"K" = (/obj/structure/table/wood,/obj/item/clothing/gloves/roguetown/chain/iron,/obj/item/clothing/neck/roguetown/chaincoif/iron,/turf/open/floor/rogue/cobble,/area/rogue/under/town/sewer)
+"L" = (/obj/structure/bars{icon_state = "barsbent"; layer = 2.81},/obj/structure/table/wood,/turf/open/floor/rogue/cobble,/area/rogue/under/town/sewer)
+"P" = (/obj/effect/decal/cleanable/ash/large,/turf/closed/mineral/rogue,/area/rogue/under/town/sewer)
+"Q" = (/obj/item/reagent_containers/food/snacks/deadmouse,/turf/open/floor/rogue/cobble,/area/rogue/under/town/sewer)
+"R" = (/obj/structure/rack/rogue,/obj/structure/rack/rogue,/obj/effect/spawner/lootdrop/roguetown/sewers,/turf/open/floor/rogue/cobble,/area/rogue/under/town/sewer)
+"S" = (/obj/structure/spider/stickyweb,/obj/structure/spider/stickyweb,/turf/open/floor/rogue/cobble,/area/rogue/under/town/sewer)
+"T" = (/mob/living/carbon/human/species/skeleton/npc,/turf/open/floor/rogue/cobble,/area/rogue/under/town/sewer)
+"U" = (/obj/machinery/light/rogue/forge,/turf/open/floor/rogue/cobble,/area/rogue/under/town/sewer)
+"X" = (/obj/structure/rack/rogue,/obj/effect/spawner/lootdrop/roguetown/sewers,/turf/open/floor/rogue/cobble,/area/rogue/under/town/sewer)
+"Z" = (/obj/structure/table/wood,/obj/item/ingot/iron,/obj/item/ingot/iron,/obj/item/ingot/iron,/obj/item/ingot/iron,/obj/item/ingot/iron,/turf/open/floor/rogue/cobble,/area/rogue/under/town/sewer)
+
+(1,1,1) = {"
+EEEEEEEEEeIEEEEEEEEEEEEEEE
+aaaaaaaaEIIEaaaaaaaaaaaaaE
+aaaaaaaaEIqEaaaaaaaaaaaaaE
+aaaaaaaaEqIEaaaaaaaaaaaaaE
+aaaaaaaaEqIEaaaaaaaaaaaaaE
+aEEEEEEEEIqxEEEEEEEaaaEEEE
+aEqpIqqTEqqqqDuJJJEaaaEgIq
+aEqIqIqpEqqqqqqqqqEaaEEISI
+aEqqqqqIEqqqqqqqqqEEEEpIIq
+aEzHEEEEEqqqqqqeqqIIIqqIII
+aEqqqXRDzqqqqqqqqqEEEEgqIq
+aEZqqqqqEttLEEEEEzEaaEqIII
+aEsqqqqqqqqqEdqqqqEaaEeIII
+aElqqBqqqqqqEIqIIqEaaEqIII
+aEqqqqqqqqqqEpqqqqEaaEEQII
+aEmUqqknKqqqEITqpIEaaPEEEE
+aEEEEEEEEEEEEEEEEEEaaaaaaE
+aaaaaaaaaaaaaaaaaaaaaaaaaG
+"}

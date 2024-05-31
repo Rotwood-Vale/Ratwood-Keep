@@ -124,3 +124,13 @@ GLOBAL_VAR_INIT(cmp_field, "name")
 
 /proc/cmp_pdajob_asc(obj/item/pda/A, obj/item/pda/B)
 	return sorttext(B.ownjob, A.ownjob)
+
+/proc/cmp_assignedrole_asc(mob/living/A, mob/living/B)
+	if(!GLOB.job_assignment_order)
+		GLOB.job_assignment_order = get_job_assignment_order()
+	return GLOB.job_assignment_order.Find(A.mind?.assigned_role) - GLOB.job_assignment_order.Find(B.mind?.assigned_role)
+
+/proc/cmp_assignedrole_dsc(mob/living/A, mob/living/B)
+	if(!GLOB.job_assignment_order)
+		GLOB.job_assignment_order = get_job_assignment_order()
+	return GLOB.job_assignment_order.Find(B.mind?.assigned_role) - GLOB.job_assignment_order.Find(A.mind?.assigned_role)

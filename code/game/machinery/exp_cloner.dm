@@ -286,8 +286,8 @@
 	if(dna.species)
 		clone_species = dna.species
 	else
-		var/datum/species/rando_race = pick(GLOB.roundstart_races)
-		clone_species = rando_race.type
+		var/rando_race = pick(get_selectable_species())
+		clone_species = GLOB.species_list[rando_race]
 
 	var/obj/machinery/clonepod/pod = GetAvailablePod()
 	//Can't clone without someone to clone.  Or a pod.  Or if the pod is busy. Or full of gibs.

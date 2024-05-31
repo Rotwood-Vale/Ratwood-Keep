@@ -24,6 +24,11 @@
 	var/quantity = 1
 	var/plural_name
 
+/obj/item/roguecoin/Initialize(mapload, coin_amount)
+	. = ..()
+	if(coin_amount >= 1)
+		set_quantity(floor(coin_amount))
+
 /obj/item/roguecoin/getonmobprop(tag)
 	. = ..()
 	if(tag != "gen")
@@ -155,7 +160,7 @@
 			icon_state = "[base_type]5"
 		if(11 to 15)
 			icon_state = "[base_type]10"
-		if(16 to MAX_COIN_STACK_SIZE)
+		if(16 to INFINITY)
 			icon_state = "[base_type]15"
 
 

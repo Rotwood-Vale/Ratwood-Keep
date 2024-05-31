@@ -84,8 +84,7 @@
 		dna.species.on_hit(P, src)
 
 
-/mob/living/carbon/human/bullet_act(obj/projectile/P, def_zone)
-
+/mob/living/carbon/human/bullet_act(obj/projectile/P, def_zone = BODY_ZONE_CHEST)
 	if(istype(P, /obj/projectile/beam)||istype(P, /obj/projectile/bullet))
 		if((P.damage_type == BURN) || (P.damage_type == BRUTE))
 			if(!P.nodamage && P.damage < src.health && isliving(P.firer))
@@ -199,20 +198,16 @@
 		blocked = TRUE
 	else if(I)
 		if(((throwingdatum ? throwingdatum.speed : I.throw_speed) >= EMBED_THROWSPEED_THRESHOLD) || I.embedding.embedded_ignore_throwspeed_threshold)
-			if(can_embed(I))
-				if(prob(I.embedding.embed_chance) && !HAS_TRAIT(src, TRAIT_PIERCEIMMUNE))
-					//throw_alert("embeddedobject", /obj/screen/alert/embeddedobject)
-					var/obj/item/bodypart/L = pick(bodyparts)
-					L.embedded_objects |= I
-					I.add_mob_blood(src)//it embedded itself in you, of course it's bloody!
-					I.forceMove(src)
-					emote("embed", forced = TRUE)
-					L.receive_damage(I.w_class*I.embedding.embedded_impact_pain_multiplier)
-					next_attack_msg += " <span class='danger'>[I] embeds itself in [src]'s [L.name]!</span>"
+			if(can_embed(I) && prob(I.embedding.embed_chance) && !HAS_TRAIT(src, TRAIT_PIERCEIMMUNE))
+				//throw_alert("embeddedobject", /atom/movable/screen/alert/embeddedobject)
+				var/obj/item/bodypart/L = pick(bodyparts)
+				L.add_embedded_object(I, silent = FALSE, crit_message = TRUE)
+				emote("embed")
+				L.receive_damage(I.w_class*I.embedding.embedded_impact_pain_multiplier)
 //					visible_message("<span class='danger'>[I] embeds itself in [src]'s [L.name]!</span>","<span class='danger'>[I] embeds itself in my [L.name]!</span>")
-					SEND_SIGNAL(src, COMSIG_ADD_MOOD_EVENT, "embedded", /datum/mood_event/embedded)
-					hitpush = FALSE
-					skipcatch = TRUE //can't catch the now embedded item
+				SEND_SIGNAL(src, COMSIG_ADD_MOOD_EVENT, "embedded", /datum/mood_event/embedded)
+				hitpush = FALSE
+				skipcatch = TRUE //can't catch the now embedded item
 
 	return ..()
 
@@ -407,7 +402,7 @@
 			nodmg = TRUE
 			next_attack_msg += " <span class='warning'>Armor stops the damage.</span>"
 		else
-			affecting.attacked_by(M.a_intent.blade_class, damage - armor, M, dam_zone)
+			affecting.bodypart_attacked_by(M.a_intent.blade_class, damage - armor, M, dam_zone, crit_message = TRUE)
 		visible_message("<span class='danger'>\The [M] [pick(M.a_intent.attack_verb)] [src]![next_attack_msg.Join()]</span>", \
 					"<span class='danger'>\The [M] [pick(M.a_intent.attack_verb)] me![next_attack_msg.Join()]</span>", null, COMBAT_MESSAGE_RANGE)
 		next_attack_msg.Cut()
@@ -759,255 +754,108 @@
 				to_chat(src, "<span class='notice'>I succesfuly remove the durathread strand.</span>")
 				remove_status_effect(STATUS_EFFECT_CHOKINGSTRAND)
 			return
-		check_self_for_injuries()
+		check_for_injuries(M)
+		return
 
+	if(wear_armor)
+		wear_armor.add_fingerprint(M)
+	else if(wear_pants)
+		wear_pants.add_fingerprint(M)
 
+	return ..()
+
+/mob/living/carbon/human/proc/check_for_injuries(mob/user = src, advanced = FALSE, silent = FALSE)
+	var/list/examination = list("<span class='info'>ø ------------ ø")
+	var/m1
+	var/deep_examination = advanced
+	if(user == src)
+		m1 = "I am"
+		if(!deep_examination)
+			deep_examination = HAS_TRAIT(src, TRAIT_SELF_AWARE)
+		examination += "<span class='notice'>Let's see how I am doing.</span>"
+		if(!stat && !silent)
+			visible_message("<span class='notice'>[src] examines [p_them()]self.</span>", \
+				"<span class='notice'>I check myself for injuries.</span>")
+	else if(user)
+		m1 = "[p_they(TRUE)] [p_are()]"
+		if(!deep_examination)
+			deep_examination = HAS_TRAIT(user, TRAIT_EMPATH)
+		examination += "<span class='notice'>Let's see how [src] is doing.</span>"
+		if(!user.stat && !silent)
+			visible_message("<span class='notice'>[user] examines [src].</span>", \
+				"<span class='notice'>I check [src] for injuries.</span>")
+
+	if(stat < DEAD)
+		examination += "[m1] still alive."
+		if(stat >= UNCONSCIOUS)
+			examination += "[m1] [IsSleeping() ? "asleep" : "unconscious"]."
 	else
-		if(wear_armor)
-			wear_armor.add_fingerprint(M)
-		else if(wear_pants)
-			wear_pants.add_fingerprint(M)
+		examination += "<span class='dead'>[m1] dead.</span>"
 
-		..()
+	switch(blood_volume)
+		if(-INFINITY to BLOOD_VOLUME_SURVIVE)
+			examination += "<span class='artery'><B>[m1] extremely anemic.</B></span>"
+		if(BLOOD_VOLUME_SURVIVE to BLOOD_VOLUME_BAD)
+			examination += "<span class='artery'><B>[m1] very anemic.</B></span>"
+		if(BLOOD_VOLUME_BAD to BLOOD_VOLUME_OKAY)
+			examination += "<span class='artery'>[m1] anemic.</span>"
+		if(BLOOD_VOLUME_OKAY to BLOOD_VOLUME_SAFE)
+			examination += "<span class='artery'>[m1] a little anemic.</span>"
 
-/mob/living/carbon/human/proc/check_self_for_injuries()
-	if(stat == DEAD || stat == UNCONSCIOUS)
-		return
-
-	visible_message("<span class='notice'>[src] examines [p_them()]self.</span>", \
-		"<span class='notice'>I check myself for injuries.</span>")
-
-	var/list/missing = list(BODY_ZONE_HEAD, BODY_ZONE_CHEST, BODY_ZONE_L_ARM, BODY_ZONE_R_ARM, BODY_ZONE_L_LEG, BODY_ZONE_R_LEG)
-
-	for(var/X in bodyparts)
-		var/obj/item/bodypart/LB = X
-		missing -= LB.body_zone
-		if(LB.is_pseudopart) //don't show injury text for fake bodyparts; ie chainsaw arms or synthetic armblades
+	if(HAS_TRAIT(src, TRAIT_PARALYSIS))
+		if(HAS_TRAIT(src, TRAIT_NO_BITE))
+			examination += "<span class='danger'>[m1] PARALYZED!</span>"
+		else
+			examination += "<span class='danger'>[m1] TETRAPLEGIC!</span>"
+	else if(HAS_TRAIT(src, TRAIT_PARALYSIS_R_LEG) && HAS_TRAIT(src, TRAIT_PARALYSIS_L_LEG))
+		examination += "<span class='warning'>[m1] PARAPLEGIC!</span>"
+	
+	var/static/list/body_zones = list(
+		BODY_ZONE_HEAD,
+		BODY_ZONE_CHEST,
+		BODY_ZONE_L_ARM,
+		BODY_ZONE_R_ARM,
+		BODY_ZONE_L_LEG,
+		BODY_ZONE_R_LEG,
+	)
+	for(var/body_zone in body_zones)
+		var/obj/item/bodypart/bodypart = get_bodypart(body_zone)
+		if(!bodypart)
+			examination += "<span class='info'>☼ [capitalize(parse_zone(body_zone))]: <span class='deadsay'><b>MISSING</b></span></span>"
 			continue
-		var/self_aware = FALSE
-		if(HAS_TRAIT(src, TRAIT_SELF_AWARE))
-			self_aware = TRUE
-		var/limb_max_damage = LB.max_damage
-		var/status = ""
-		var/brutedamage = LB.brute_dam
-		var/burndamage = LB.burn_dam
-		if(hallucination)
-			if(prob(30))
-				brutedamage += rand(30,40)
-			if(prob(30))
-				burndamage += rand(30,40)
+		examination += bodypart.check_for_injuries(user, deep_examination)
 
-		if(HAS_TRAIT(src, TRAIT_SELF_AWARE))
-			status = "[brutedamage] brute damage and [burndamage] burn damage"
-			if(!brutedamage && !burndamage)
-				status = "no damage"
+	examination += "ø ------------ ø</span>"
+	if(!silent)
+		to_chat(user, examination.Join("\n"))
+	return examination
 
-		else
-			if(brutedamage > 0)
-				status = LB.light_brute_msg
-			if(brutedamage > (limb_max_damage*0.4))
-				status = LB.medium_brute_msg
-			if(brutedamage > (limb_max_damage*0.8))
-				status = LB.heavy_brute_msg
-			if(brutedamage > 0 && burndamage > 0)
-				status += " and "
-
-			if(burndamage > (limb_max_damage*0.8))
-				status += LB.heavy_burn_msg
-			else if(burndamage > (limb_max_damage*0.2))
-				status += LB.medium_burn_msg
-			else if(burndamage > 0)
-				status += LB.light_burn_msg
-
-			if(status == "")
-				status = "OK"
-		var/no_damage
-		if(status == "OK" || status == "no damage")
-			no_damage = TRUE
-		var/isdisabled = " "
-		if(LB.is_disabled())
-			isdisabled = " is disabled "
-			if(no_damage)
-				isdisabled += " but otherwise "
-			else
-				isdisabled += " and "
-		to_chat(src, "\t <span class='[no_damage ? "notice" : "warning"]'>My [LB.name][isdisabled][self_aware ? " has " : " is "][status].</span>")
-
-		for(var/obj/item/I in LB.embedded_objects)
-			to_chat(src, "\t <a href='?src=[REF(src)];embedded_object=[REF(I)];embedded_limb=[REF(LB)]' class='warning'>There is \a [I] in my [LB.name]!</a>")
-
-	for(var/t in missing)
-		to_chat(src, "<span class='boldannounce'>My [parse_zone(t)] is missing!</span>")
-
-	if(bleed_rate)
-		to_chat(src, "<span class='danger'>I am bleeding!</span>")
-	if(getStaminaLoss())
-		if(getStaminaLoss() > 30)
-			to_chat(src, "<span class='info'>You're completely exhausted.</span>")
-		else
-			to_chat(src, "<span class='info'>I feel fatigued.</span>")
-	if(HAS_TRAIT(src, TRAIT_SELF_AWARE))
-		if(toxloss)
-			if(toxloss > 10)
-				to_chat(src, "<span class='danger'>I feel sick.</span>")
-			else if(toxloss > 20)
-				to_chat(src, "<span class='danger'>I feel nauseated.</span>")
-			else if(toxloss > 40)
-				to_chat(src, "<span class='danger'>I feel very unwell!</span>")
-		if(oxyloss)
-			if(oxyloss > 10)
-				to_chat(src, "<span class='danger'>I feel lightheaded.</span>")
-			else if(oxyloss > 20)
-				to_chat(src, "<span class='danger'>My thinking is clouded and distant.</span>")
-			else if(oxyloss > 30)
-				to_chat(src, "<span class='danger'>You're choking!</span>")
-
-	if(!HAS_TRAIT(src, TRAIT_NOHUNGER))
-		switch(nutrition)
-			if(NUTRITION_LEVEL_FULL to INFINITY)
-				to_chat(src, "<span class='info'>You're completely stuffed!</span>")
-			if(NUTRITION_LEVEL_WELL_FED to NUTRITION_LEVEL_FULL)
-				to_chat(src, "<span class='info'>You're well fed!</span>")
-			if(NUTRITION_LEVEL_FED to NUTRITION_LEVEL_WELL_FED)
-				to_chat(src, "<span class='info'>You're not hungry.</span>")
-			if(NUTRITION_LEVEL_HUNGRY to NUTRITION_LEVEL_FED)
-				to_chat(src, "<span class='info'>I could use a bite to eat.</span>")
-			if(NUTRITION_LEVEL_STARVING to NUTRITION_LEVEL_HUNGRY)
-				to_chat(src, "<span class='info'>I feel quite hungry.</span>")
-			if(0 to NUTRITION_LEVEL_STARVING)
-				to_chat(src, "<span class='danger'>You're starving!</span>")
-
-	//Compiles then shows the list of damaged organs and broken organs
-	var/list/broken = list()
-	var/list/damaged = list()
-	var/broken_message
-	var/damaged_message
-	var/broken_plural
-	var/damaged_plural
-	//Sets organs into their proper list
-	for(var/O in internal_organs)
-		var/obj/item/organ/organ = O
-		if(organ.organ_flags & ORGAN_FAILING)
-			if(broken.len)
-				broken += ", "
-			broken += organ.name
-		else if(organ.damage > organ.low_threshold)
-			if(damaged.len)
-				damaged += ", "
-			damaged += organ.name
-	//Checks to enforce proper grammar, inserts words as necessary into the list
-	if(broken.len)
-		if(broken.len > 1)
-			broken.Insert(broken.len, "and ")
-			broken_plural = TRUE
-		else
-			var/holder = broken[1]	//our one and only element
-			if(holder[length(holder)] == "s")
-				broken_plural = TRUE
-		//Put the items in that list into a string of text
-		for(var/B in broken)
-			broken_message += B
-		to_chat(src, "<span class='warning'>My [broken_message] [broken_plural ? "are" : "is"] non-functional!</span>")
-	if(damaged.len)
-		if(damaged.len > 1)
-			damaged.Insert(damaged.len, "and ")
-			damaged_plural = TRUE
-		else
-			var/holder = damaged[1]
-			if(holder[length(holder)] == "s")
-				damaged_plural = TRUE
-		for(var/D in damaged)
-			damaged_message += D
-		to_chat(src, "<span class='info'>My [damaged_message] [damaged_plural ? "are" : "is"] hurt.</span>")
-
-	if(roundstart_quirks.len)
-		to_chat(src, "<span class='notice'>I have these quirks: [get_trait_string()].</span>")
-
-
-/mob/living/carbon/human/proc/check_limb_for_injuries(choice)
-	if(stat == DEAD || stat == UNCONSCIOUS)
-		return
-
-	var/obj/item/bodypart/FB
-
-	for(var/X in bodyparts)
-		var/obj/item/bodypart/LB = X
-		if(LB.body_zone == choice)
-			FB = LB
-
-	if(!FB) //selected limb is missing
-		to_chat(src, "<span class='warning'>My [parse_zone(choice)] is missing!</span>")
-		return
-
-	var/limb_max_damage = FB.max_damage
-	var/status = ""
-	var/brutedamage = FB.brute_dam
-	var/burndamage = FB.burn_dam
-	var/wounddamage = 0
-	if(FB.wounds.len)
-		for(var/datum/wound/W in FB.wounds)
-			wounddamage = wounddamage + W.woundpain
-	if(hallucination)
-		if(prob(30))
-			brutedamage += rand(30,40)
-		if(prob(30))
-			burndamage += rand(30,40)
-
-	if(brutedamage > 0)
-		status = FB.light_brute_msg
-	if(brutedamage > (limb_max_damage*0.4))
-		status = FB.medium_brute_msg
-	if(brutedamage > (limb_max_damage*0.8))
-		status = FB.heavy_brute_msg
-	if(brutedamage > 0)
-		if(burndamage > 0 && wounddamage > 0)
-			status += ", "
-		else if(burndamage > 0 || wounddamage > 0)
-			status += " and "
-
-	if(burndamage > (limb_max_damage*0.8))
-		status += FB.heavy_burn_msg
-	else if(burndamage > (limb_max_damage*0.2))
-		status += FB.medium_burn_msg
-	else if(burndamage > 0)
-		status += FB.light_burn_msg
-	if(burndamage > 0)
-		if(brutedamage > 0 && wounddamage > 0)
-			status += ", and "
-		else if(wounddamage > 0)
-			status += " and "
-
-	if(wounddamage > 0)
-		if(wounddamage > 80)
-			status += "has incredibly painful wounds."
-		else if(wounddamage > 40)
-			status += "has painful wounds."
-		else
-			status += "has light wounds."
-
-	if(status == "")
-		status = "is OK."
-	var/no_damage
-	if(status == "is OK." || status == "no damage")
-		no_damage = TRUE
-	var/isdisabled = ""
-	switch(FB.is_disabled())
-		if(BODYPART_DISABLED_FRACTURE)
-			isdisabled = "broken "
-		if(BODYPART_DISABLED_DAMAGE)
-			isdisabled = "numb "
-		if(BODYPART_DISABLED_PARALYSIS)
-			isdisabled = "limp "
-		if(BODYPART_DISABLED_ROT)
-			if(FB.skeletonized)
-				isdisabled = "skeletonized "
-			else
-				isdisabled = "rotting "
-	to_chat(src, "\t <span class='[no_damage ? "notice" : "warning"]'>My [isdisabled][FB.name] [status].</span>")
-
-	for(var/obj/item/I in FB.embedded_objects)
-		to_chat(src, "\t <a href='?src=[REF(src)];embedded_object=[REF(I)];embedded_limb=[REF(FB)]' class='warning'>There is \a [I] in my [FB.name]!</a>")
-
+/mob/living/carbon/human/proc/check_limb_for_injuries(mob/user = src, choice = BODY_ZONE_CHEST, advanced = FALSE, silent = FALSE)
+	choice = check_zone(choice)
+	var/list/examination = list("<span class='info'>ø ------------ ø")
+	var/deep_examination = advanced
+	if(user == src)
+		if(!deep_examination)
+			deep_examination = HAS_TRAIT(src, TRAIT_SELF_AWARE)
+		examination += "<span class='notice'>Let's see how my [parse_zone(choice)] is doing.</span>"
+		if(!stat && !silent)
+			visible_message("<span class='notice'>[src] examines [p_their()] [parse_zone(choice)].</span>")
+	else if(user)
+		if(!deep_examination)
+			deep_examination = HAS_TRAIT(user, TRAIT_EMPATH)
+		examination += "<span class='notice'>Let's see how [src]'s [parse_zone(choice)] is doing.</span>"
+		if(!user.stat && !silent)
+			visible_message("<span class='notice'>[user] examines [src]'s [parse_zone(choice)].</span>")
+	
+	var/obj/item/bodypart/examined_part = get_bodypart(choice)
+	if(examined_part)
+		examination += examined_part.check_for_injuries(user, advanced)
+	else
+		examination += "<span class='info'>☼ [capitalize(parse_zone(choice))]: <span class='deadsay'><B>MISSING</B></span></span>"
+	examination += "ø ------------ ø</span>"
+	if(!silent)
+		to_chat(user, examination.Join("\n"))
+	return examination
 
 /mob/living/carbon/human/damage_clothes(damage_amount, damage_type = BRUTE, damage_flag = 0, def_zone)
 	if(damage_type != BRUTE && damage_type != BURN)

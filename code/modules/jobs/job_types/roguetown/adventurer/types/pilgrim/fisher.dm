@@ -1,5 +1,6 @@
 /datum/advclass/fisher
 	name = "Fisher"
+	tutorial = "You are a fisherman, with your bag of bait and your fishing rod, you are one of few who can reliably get a stable source of meat around here"
 	allowed_sexes = list("male", "female")
 	allowed_races = list(
 		"Humen",
@@ -7,8 +8,10 @@
 		"Half-Elf",
 		"Dwarf",
 		"Tiefling",
+		"Argonian",
 		"Dark Elf",
-		"Aasimar"
+		"Aasimar",
+		"Half Orc"
 	)
 	outfit = /datum/outfit/job/roguetown/adventurer/fisher
 	isvillager = TRUE
@@ -18,7 +21,8 @@
 	..()
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/combat/swords, pick(0,0,1), TRUE)
-		H.mind.adjust_skillrank(/datum/skill/combat/axesmaces, pick(0,1,1), TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/axes, pick(0,1,1), TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/maces, pick(0,1,1), TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/crossbows, pick(0,1,1), TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/athletics, pick(2,2,3), TRUE) 
 		H.mind.adjust_skillrank(/datum/skill/combat/bows, pick(1,1,2), TRUE)

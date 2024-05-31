@@ -9,45 +9,32 @@
 		"Half-Elf",
 		"Dwarf",
 		"Tiefling",
+		"Argonian",
 		"Dark Elf",
 		"Aasimar"
 	)
-	allowed_patrons = list("Astrata", "Dendor", "Necra", "Pestra","Noc")
 	ispilgrim = FALSE
 	vampcompat = FALSE
 	outfit = /datum/outfit/job/roguetown/adventurer/cleric
-	traits_applied = list(RTRAIT_HEAVYARMOR)
+	traits_applied = list(TRAIT_HEAVYARMOR)
+
+/datum/outfit/job/roguetown/adventurer/cleric
+	allowed_patrons = ALL_CLERIC_PATRONS
 
 /datum/outfit/job/roguetown/adventurer/cleric/pre_equip(mob/living/carbon/human/H)
 	..()
-	var/allowed_patrons = list("Astrata", "Dendor", "Necra", "Pestra","Noc")
-
 	H.virginity = TRUE
-	var/datum/patrongods/ourpatron
-	if(istype(H.PATRON, /datum/patrongods))
-		ourpatron = H.PATRON
-
-	if(!ourpatron || !(ourpatron.name in allowed_patrons))
-		var/list/datum/patrongods/possiblegods = list()
-		for(var/god in GLOB.patronlist)
-			var/datum/patrongods/patron = GLOB.patronlist[god]
-			if(patron.name in allowed_patrons)
-				possiblegods |= patron
-		ourpatron = pick(possiblegods)
-		H.PATRON = ourpatron
-		to_chat(H, "<span class='warning'>My patron had not endorsed my practices in my younger years. I've since grown acustomed to [H.PATRON].")
-
-	switch(ourpatron.name)
-		if("Astrata")
+	switch(H.patron?.type)
+		if(/datum/patron/divine/astrata)
 			neck = /obj/item/clothing/neck/roguetown/psicross/astrata
-		if("Dendor")
-			neck = /obj/item/clothing/neck/roguetown/psicross/dendor
-		if("Necra")
-			neck = /obj/item/clothing/neck/roguetown/psicross/necra
-		if("Pestra")
-			neck = /obj/item/clothing/neck/roguetown/psicross/pestra
-		if("Noc")
+		if(/datum/patron/divine/noc)
 			neck = /obj/item/clothing/neck/roguetown/psicross/noc
+		if(/datum/patron/divine/dendor)
+			neck = /obj/item/clothing/neck/roguetown/psicross/dendor
+		if(/datum/patron/divine/necra)
+			neck = /obj/item/clothing/neck/roguetown/psicross/necra
+		if(/datum/patron/divine/pestra)
+			neck = /obj/item/clothing/neck/roguetown/psicross/pestra
 
 	// CLASS ARCHETYPES
 	H.adjust_blindness(-3)
@@ -71,10 +58,11 @@
 			H.mind.adjust_skillrank(/datum/skill/combat/knives, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/reading, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/sewing, 2, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/weaving, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/medicine, 4, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/craft/cooking, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/riding, 1, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/combat/axesmaces, 3, TRUE) 
+			H.mind.adjust_skillrank(/datum/skill/combat/maces, 2, TRUE) 
 			H.mind.adjust_skillrank(/datum/skill/magic/holy, 4, TRUE)
 			H.change_stat("intelligence", 2)
 			H.change_stat("perception", 1) // More intelligence and no speed penalty for Life Clerics.
@@ -106,7 +94,7 @@
 			H.mind.adjust_skillrank(/datum/skill/misc/medicine, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/craft/cooking, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/riding, 1, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/combat/axesmaces, 4, TRUE) 
+			H.mind.adjust_skillrank(/datum/skill/combat/maces, 3, TRUE) 
 			H.mind.adjust_skillrank(/datum/skill/magic/holy, 2, TRUE)
 			H.change_stat("intelligence", 1)
 			H.change_stat("strength", 2)
@@ -126,9 +114,9 @@
 	backpack_contents = list(/obj/item/rogueweapon/huntingknife)
 
 
-	ADD_TRAIT(H, RTRAIT_HEAVYARMOR, TRAIT_GENERIC)
-	ADD_TRAIT(H, RTRAIT_MEDIUMARMOR, TRAIT_GENERIC)
-	var/datum/devotion/cleric_holder/C = new /datum/devotion/cleric_holder(H, H.PATRON)
+	ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
+	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
+	var/datum/devotion/cleric_holder/C = new /datum/devotion/cleric_holder(H, H.patron)
 	C.update_devotion(50, 50)
 	C.holder_mob = H
 	C.grant_spells(H)

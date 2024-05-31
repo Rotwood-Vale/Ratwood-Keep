@@ -16,81 +16,50 @@
 			world << "[p.move_indicator.x] [p.move_indicator.y]" //outputs the turf's x/y, they match
 */
 
-/atom/var/nomouseover = FALSE
+/atom
+	/// This means that the mouse over text will not be displayed when the mouse is over this atom
+	var/nomouseover = FALSE
 
-/mob/MouseEntered(location,control,params)
+/atom/MouseEntered(location,control,params)
 	. = ..()
-	if(ismob(usr) && !nomouseover && name)
-		var/mob/p = usr
-		if(p.client)
-			if(!p.client.mouseovertext)
-				p.client.genmouseobj()
-				return
-			if(isliving(p))
-				var/mob/living/L = p
-				if(!L.can_see_cone(src))
-					return
-			if(p.client.pixel_x || p.client.pixel_y)
-				return
-			if(alpha == 0)
-				return
-			if(!p.x || !p.y)
-				return
-			var/offset_x = 8 - (p.x - x)
-			var/offset_y = 8 - (p.y - y)
-			var/list/PM = list("screen-loc" = "[offset_x]:0,[offset_y]:0")
-			var/mousecolor = "#c1aaaa"
-			if(ishuman(src))
-				var/mob/living/carbon/human/H = src
-				if(H.voice_color)
-					if(H.name != "Unknown")
-						mousecolor = "#[H.voice_color]"
-			p.client.mouseovertext.maptext = {"<span style='font-size:8pt;font-family:"Pterra";color:[mousecolor];text-shadow:0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073, 0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;' class='center maptext '>[name]"}
+	if(!nomouseover && name && ismob(usr))
+		handle_mouseover(location, control, params)
+
+/atom/MouseExited(params)
+	. = ..()
+	if(!nomouseover && ismob(usr))
+		handle_mouseexit(params)
+
+/atom/proc/handle_mouseover(location, control, params)
+	var/mob/p = usr
+	if(p.client)
+		if(!p.client.mouseovertext)
+			p.client.genmouseobj()
+			return FALSE
+		if(p.client.pixel_x || p.client.pixel_y)
+			return FALSE
+		if(!p.x || !p.y)
+			return FALSE
+		var/offset_x = 8 - (p.x - x)
+		var/offset_y = 8 - (p.y - y)
+		var/list/PM = list("screen-loc" = "[offset_x]:0,[offset_y]:0")
+		if(!isturf(loc))
+			PM = params2list(params)
+			p.client.mouseovertext.movethis(PM, TRUE)
+		else
 			p.client.mouseovertext.movethis(PM)
-			p.client.screen |= p.client.mouseovertext
+		p.client.mouseovertext.maptext = {"<span style='font-size:8pt;font-family:"Pterra";color:#ddd7df;text-shadow:0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073, 0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;' class='center maptext '>[name]"}
+		p.client.screen |= p.client.mouseovertext
+	return TRUE
 
-/mob/MouseExited(params)
-	. = ..()
-	if(!nomouseover)
-		var/mob/p = usr
-		if(p.client)
-			if(!p.client.mouseovertext)
-				p.client.genmouseobj()
-				return
-			p.client.mouseovertext.screen_loc = null
-
-/obj/MouseEntered(location,control,params)
-	. = ..()
-	if(ismob(usr) && !nomouseover && name)
-		var/mob/p = usr
-		if(p.client)
-			if(!p.client.mouseovertext)
-				p.client.genmouseobj()
-				return
-			if(p.client.pixel_x || p.client.pixel_y)
-				return
-			if(!p.x || !p.y)
-				return
-			var/offset_x = 8 - (p.x - x)
-			var/offset_y = 8 - (p.y - y)
-			var/list/PM = list("screen-loc" = "[offset_x]:0,[offset_y]:0")
-			if(!isturf(loc))
-				PM = params2list(params)
-				p.client.mouseovertext.movethis(PM, TRUE)
-			else
-				p.client.mouseovertext.movethis(PM)
-			p.client.mouseovertext.maptext = {"<span style='font-size:8pt;font-family:"Pterra";color:#ddd7df;text-shadow:0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073, 0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;' class='center maptext '>[name]"}
-			p.client.screen |= p.client.mouseovertext
-
-/obj/MouseExited(params)
-	. = ..()
-	if(!nomouseover)
-		var/mob/p = usr
-		if(p.client)
-			if(!p.client.mouseovertext)
-				p.client.genmouseobj()
-				return
-			p.client.mouseovertext.screen_loc = null
+/atom/proc/handle_mouseexit(params)
+	var/mob/p = usr
+	if(p.client)
+		if(!p.client.mouseovertext)
+			p.client.genmouseobj()
+			return FALSE
+		p.client.mouseovertext.screen_loc = null
+	return TRUE
 
 /*
 /turf/MouseEntered(location,control,params)
@@ -113,80 +82,88 @@
 			p.client.mouseoverbox.screen_loc = null
 */
 
-/turf/closed/MouseEntered(location,control,params)
-	. = ..()
-	if(ismob(usr) && !nomouseover && name)
-		var/mob/p = usr
-		if(p.client)
-			if(!p.client.mouseovertext)
-				p.client.genmouseobj()
-				return
-			if(p.client.pixel_x || p.client.pixel_y)
-				return
-			if(!p.x || !p.y)
-				return
-			var/offset_x = 8 - (p.x - x)
-			var/offset_y = 8 - (p.y - y)
-			if(offset_x < 1 || offset_x > 15 || offset_y < 1 || offset_x > 15)
-				return
-			var/list/PM = list("screen-loc" = "[offset_x]:0,[offset_y]:0")
-			p.client.mouseovertext.maptext = {"<span style='font-size:8pt;font-family:"Pterra";color:#607d65;text-shadow:0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073, 0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;' class='center maptext '>[name]"}
-			p.client.mouseovertext.movethis(PM)
-			p.client.screen |= p.client.mouseovertext
-
-/turf/closed/MouseExited(params)
-	. = ..()
-	if(!nomouseover)
-		var/mob/p = usr
-		if(p.client)
-			if(!p.client.mouseovertext)
-				p.client.genmouseobj()
-				return
-			p.client.mouseovertext.screen_loc = null
+/turf/handle_mouseover(location,control,params)
+	var/mob/p = usr
+	if(p.client)
+		if(!p.client.mouseovertext)
+			p.client.genmouseobj()
+			return FALSE
+		if(p.client.pixel_x || p.client.pixel_y)
+			return FALSE
+		if(!p.x || !p.y)
+			return FALSE
+		var/offset_x = 8 - (p.x - x)
+		var/offset_y = 8 - (p.y - y)
+		if(offset_x < 1 || offset_x > 15 || offset_y < 1 || offset_x > 15)
+			return FALSE
+		var/list/PM = list("screen-loc" = "[offset_x]:0,[offset_y]:0")
+		p.client.mouseovertext.maptext = {"<span style='font-size:8pt;font-family:"Pterra";color:#607d65;text-shadow:0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073, 0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;' class='center maptext '>[name]"}
+		p.client.mouseovertext.movethis(PM)
+		p.client.screen |= p.client.mouseovertext
+	return TRUE
 
 /turf/open
 	nomouseover = TRUE
 
-/turf/open/MouseEntered(location,control,params)
-	. = ..()
-	if(ismob(usr) && !nomouseover && name)
-		var/mob/p = usr
-		if(p.client)
-			if(!p.client.mouseovertext)
-				p.client.genmouseobj()
-				return
-			if(p.client.pixel_x || p.client.pixel_y)
-				return
-			if(!p.x || !p.y)
-				return
-			var/offset_x = 8 - (p.x - x)
-			var/offset_y = 8 - (p.y - y)
-			var/list/PM = list("screen-loc" = "[offset_x]:0,[offset_y]:0")
-			p.client.mouseovertext.maptext = {"<span style='font-size:8pt;font-family:"Pterra";color:#6b3f3f;text-shadow:0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073, 0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;' class='center maptext '>[name]"}
-			p.client.mouseovertext.movethis(PM)
-			p.client.screen |= p.client.mouseovertext
+/turf/open/handle_mouseover(location, control, params)
+	var/mob/p = usr
+	if(p.client)
+		if(!p.client.mouseovertext)
+			p.client.genmouseobj()
+			return FALSE
+		if(p.client.pixel_x || p.client.pixel_y)
+			return FALSE
+		if(!p.x || !p.y)
+			return FALSE
+		var/offset_x = 8 - (p.x - x)
+		var/offset_y = 8 - (p.y - y)
+		var/list/PM = list("screen-loc" = "[offset_x]:0,[offset_y]:0")
+		p.client.mouseovertext.maptext = {"<span style='font-size:8pt;font-family:"Pterra";color:#6b3f3f;text-shadow:0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073, 0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;' class='center maptext '>[name]"}
+		p.client.mouseovertext.movethis(PM)
+		p.client.screen |= p.client.mouseovertext
+	return TRUE
 
-/turf/open/transparent/openspace/MouseExited(params)
-	. = ..()
-	if(!nomouseover)
-		var/mob/p = usr
-		if(p.client)
-			if(!p.client.mouseovertext)
-				p.client.genmouseobj()
-				return
-			p.client.mouseovertext.screen_loc = null
+/mob/handle_mouseover(location,control,params)
+	var/mob/p = usr
+	if(p.client)
+		if(!p.client.mouseovertext)
+			p.client.genmouseobj()
+			return FALSE
+		if(isliving(p))
+			var/mob/living/L = p
+			if(!L.can_see_cone(src))
+				return FALSE
+		if(p.client.pixel_x || p.client.pixel_y)
+			return FALSE
+		if(alpha == 0)
+			return FALSE
+		if(!p.x || !p.y)
+			return FALSE
+		var/offset_x = 8 - (p.x - x)
+		var/offset_y = 8 - (p.y - y)
+		var/list/PM = list("screen-loc" = "[offset_x]:0,[offset_y]:0")
+		var/mousecolor = "#c1aaaa"
+		if(ishuman(src))
+			var/mob/living/carbon/human/H = src
+			if(H.voice_color)
+				if(H.name != "Unknown")
+					mousecolor = "#[H.voice_color]"
+		p.client.mouseovertext.maptext = {"<span style='font-size:8pt;font-family:"Pterra";color:[mousecolor];text-shadow:0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073, 0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;' class='center maptext '>[name]"}
+		p.client.mouseovertext.movethis(PM)
+		p.client.screen |= p.client.mouseovertext
+	return TRUE
 
-/obj/screen
+/atom/movable/screen
 	nomouseover = TRUE
 
-/obj/screen/movable/mouseover
+/atom/movable/screen/movable/mouseover
 	name = ""
 	icon = 'icons/mouseover.dmi'
 	icon_state = "mouseover"
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	layer = ABOVE_HUD_LAYER+1
 
-/obj/screen/movable/mouseover/maptext
+/atom/movable/screen/movable/mouseover/maptext
 	name = ""
 	icon = null
 	icon_state = null
@@ -194,7 +171,7 @@
 	maptext_width = 96
 	alpha = 150
 
-/obj/screen/movable/mouseover/proc/movethis(list/PM, hudobj = FALSE)
+/atom/movable/screen/movable/mouseover/proc/movethis(list/PM, hudobj = FALSE)
 	if(locked) //no! I am locked! begone!
 		return
 
@@ -229,7 +206,7 @@
 	moved = screen_loc
 
 /client/proc/genmouseobj()
-	mouseovertext = new /obj/screen/movable/mouseover/maptext
-	mouseoverbox = new /obj/screen/movable/mouseover
+	mouseovertext = new /atom/movable/screen/movable/mouseover/maptext
+	mouseoverbox = new /atom/movable/screen/movable/mouseover
 	var/datum/asset/stuff = get_asset_datum(/datum/asset/simple/roguefonts)
 	stuff.send(src)

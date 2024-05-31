@@ -127,11 +127,9 @@
 				return TRUE
 		if(ishuman(C))
 			var/mob/living/carbon/human/H = C
-#ifdef MATURESERVER
 			if(!skipundies)
 				if(H.underwear != "Nude")
 					covered_locations |= GROIN
-#endif
 			var/list/body_parts = list(H.head, H.mouth, H.wear_mask, H.wear_wrists, H.wear_shirt, H.wear_neck, H.cloak, H.wear_armor, H.wear_pants, H.backr, H.backl, H.gloves, H.shoes, H.belt, H.wear_ring)
 			for(var/obj/item/I in body_parts)
 				if(zone2covered(location, I.body_parts_covered))

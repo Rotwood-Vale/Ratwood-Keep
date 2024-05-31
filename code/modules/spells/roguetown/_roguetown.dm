@@ -52,7 +52,8 @@
 	return
 
 /obj/effect/proc_holder/spell/invoked/InterceptClickOn(mob/living/caller, params, atom/target)
-	if(..())
+	. = ..()
+	if(.)
 		return FALSE
 	if(!cast_check(0, ranged_ability_user))
 		return FALSE

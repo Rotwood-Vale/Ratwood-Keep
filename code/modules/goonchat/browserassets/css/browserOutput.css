@@ -13,7 +13,7 @@ body {
 	background: #000000;
 	font-family: Pterra, TrueType;
 	font-size: 13px;
-	font-color: #c9c1ba;
+	color: #c9c1ba;
 	line-height: 1.2;
 	overflow-x: hidden;
 	overflow-y: scroll;
@@ -274,7 +274,7 @@ em						{font-style: normal;	font-weight: bold;}
 .name					{					font-weight: bold;}
 
 .say					{}
-.deadsay				{color: #e2c1ff}
+.deadsay				{color: #e2c1ff;}
 .binarysay				{color: #20c20e;	background-color: #000000;	display: block;}
 .binarysay a			{color: #00ff00;}
 .binarysay a:active, .binarysay a:visited {color: #88ff88;}
@@ -398,6 +398,13 @@ em						{font-style: normal;	font-weight: bold;}
 
 .monkeyhive				{color: #a56408;}
 .monkeylead				{color: #af6805;	font-size: 80%;}
+
+.dead					{color: #b280df;}
+.bloody					{color: #cc0f0f;}
+.artery					{color: #9B5455;}
+.infection				{color: #77c72b;}
+.necrosis				{color: #558d20;}
+.bone					{color: #e3dac9;}
 
 .connectionClosed, .fatalError {background: red;	color: white;	padding: 5px;}
 .connectionClosed.restored {background: green;}

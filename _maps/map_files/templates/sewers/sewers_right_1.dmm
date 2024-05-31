@@ -1,0 +1,19 @@
+"a" = (/turf/open/floor/rogue/cobble,/area/rogue/under/town/sewer)
+"g" = (/obj/structure/bonfire/prelit,/turf/open/floor/rogue/cobble,/area/rogue/under/town/sewer)
+"m" = (/obj/structure/chair/stool/rogue,/turf/open/floor/rogue/cobble,/area/rogue/under/town/sewer)
+"n" = (/obj/structure/fermenting_barrel/water,/turf/open/floor/rogue/cobble,/area/rogue/under/town/sewer)
+"v" = (/obj/structure/bars/tough,/turf/open/floor/rogue/cobble,/area/rogue/under/town/sewer)
+"w" = (/obj/structure/closet/crate/chest,/obj/effect/spawner/lootdrop/roguetown/sewers,/turf/open/floor/rogue/cobble,/area/rogue/under/town/sewer)
+"A" = (/turf/closed/wall/mineral/rogue/stonebrick,/area/rogue/under/town/sewer)
+"S" = (/turf/closed/mineral/rogue,/area/rogue/under/town/sewer)
+
+(1,1,1) = {"
+aaavA
+aaaaA
+aagmA
+vamaA
+vanwA
+AAAAA
+ASSSS
+ASSSS
+"}
