@@ -943,7 +943,7 @@
 				severity = 9
 			if(240 to 300)
 				severity = 10
-		owner.overlay_fullscreen("horny", /obj/screen/fullscreen/love, severity)
+		owner.overlay_fullscreen("horny", /atom/movable/screen/fullscreen/love, severity)
 	else
 		owner.clear_fullscreen("horny")
 
