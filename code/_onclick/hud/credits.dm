@@ -9,12 +9,19 @@
 //	if(!fexists(CREDITS_PATH))
 //		return
 //	var/icon/credits_icon = new(CREDITS_PATH)
+	// LAZYINITLIST(credits)
+	// var/list/_credits = credits
 //	verbs += /client/proc/ClearCredits
 //	var/static/list/credit_order_for_this_round
 //	if(isnull(credit_order_for_this_round))
 //		credit_order_for_this_round = list("Thanks for playing!") + (shuffle(icon_states(credits_icon)) - "Thanks for playing!")
+	// var/list/coomer = GLOB.credits_icons.Copy()
+	// sleep(50)
+	// for(var/I in coomer)
 //		if(!credits)
 //			return
+		// _credits += new /atom/movable/screen/credit(null, I, src, coomer[I]["icon"])
+		// sleep(CREDIT_SPAWN_SPEED)
 //	sleep(CREDIT_ROLL_SPEED - CREDIT_SPAWN_SPEED)
 //	verbs -= /client/proc/ClearCredits
 //	qdel(credits_icon)

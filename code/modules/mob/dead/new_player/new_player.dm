@@ -707,6 +707,12 @@ GLOBAL_LIST_INIT(roleplay_readme, world.file2list("strings/rt/rp_prompt.txt"))
 	return
 
 /mob/living/carbon/human/after_creation()
+#ifdef MATURESERVER
+	if(gender == MALE)
+		sexcon = new/datum/sex_controller/male(src)
+	else
+		sexcon = new/datum/sex_controller/female(src)
+#endif
 	if(dna?.species)
 		dna.species.after_creation(src)
 	roll_stats()
@@ -715,6 +721,7 @@ GLOBAL_LIST_INIT(roleplay_readme, world.file2list("strings/rt/rp_prompt.txt"))
 	. = new_character
 	if(.)
 		new_character.key = key		//Manually transfer the key to log them in
+		new_character.can_do_sex()
 		new_character.stop_sound_channel(CHANNEL_LOBBYMUSIC)
 		var/area/joined_area = get_area(new_character.loc)
 		if(joined_area)

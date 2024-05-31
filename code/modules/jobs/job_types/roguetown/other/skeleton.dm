@@ -20,6 +20,7 @@
 	..()
 	if(L)
 		var/mob/living/carbon/human/H = L
+		L.can_do_sex = FALSE
 		if(M.mind)
 			M.mind.special_role = "skeleton"
 			M.mind.assigned_role = "skeleton"

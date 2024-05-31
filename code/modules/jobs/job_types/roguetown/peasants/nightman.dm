@@ -3,8 +3,8 @@
 	flag = NIGHTMASTER
 	department_flag = PEASANTS
 	faction = "Station"
-	total_positions = 0
-	spawn_positions = 0 //disabled due to ERP removal
+	total_positions = 0 
+	spawn_positions = 0 // Disabled until he gets his own place on the map
 
 	allowed_sexes = list(MALE)
 	allowed_races = list(
@@ -16,6 +16,7 @@
 		"Argonian",
 		"Dark Elf",
 		"Aasimar",
+		"Argonian",
 		"Tabaxi",
 		"Half Orc",
 	)

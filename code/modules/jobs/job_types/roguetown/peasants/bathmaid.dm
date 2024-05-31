@@ -3,8 +3,8 @@
 	flag = WENCH
 	department_flag = PEASANTS
 	faction = "Station"
-	total_positions = 0 // Disabled due to ERP removal, originally 2
-	spawn_positions = 0 // Disabled due to ERP removal, originally 3
+	total_positions = 3
+	spawn_positions = 5
 
 	allowed_sexes = list(FEMALE)
 	allowed_races = list(

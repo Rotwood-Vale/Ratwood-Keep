@@ -933,7 +933,7 @@ GLOBAL_LIST_EMPTY(chosen_names)
 		HTML += "<center><a href='?_src_=prefs;preference=job;task=close'>Done</a></center><br>" // Easier to press up here.
 		if(joblessrole != RETURNTOLOBBY && joblessrole != BERANDOMJOB) // this is to catch those that used the previous definition and reset.
 			joblessrole = RETURNTOLOBBY
-		HTML += "<b>If Role Unavailable:</b><font color='purple'><a href='?_src_=prefs;preference=job;task=nojob'>[joblessrole]</a></font><BR>"
+		HTML += "<b>If Role Unavailable:</b><font color='purple'><a href='?_src_=prefs;preference=job;task=nojob'>[joblessrole]</a></font><BR>"		
 		HTML += "<script type='text/javascript'>function setJobPrefRedirect(level, rank) { window.location.href='?_src_=prefs;preference=job;task=setJobLevel;level=' + level + ';text=' + encodeURIComponent(rank); return false; }</script>"
 		HTML += "<table width='100%' cellpadding='1' cellspacing='0'><tr><td width='20%'>" // Table within a table for alignment, also allows you to easily add more colomns.
 		HTML += "<table width='100%' cellpadding='1' cellspacing='0'>"
@@ -1881,6 +1881,22 @@ Slots: [job.spawn_positions]</span>
 						accessory = "Nothing"
 						if(age == AGE_YOUNG)
 							age = AGE_ADULT
+
+				if("charflaw")
+					var/list/coom = GLOB.character_flaws.Copy()
+					var/result = input(user, "Select a flaw", "Roguetown") as null|anything in coom
+					if(result)
+						if(result == "Love-Fiend")
+							if(!user.can_do_sex())
+								coom -= "Love-Fiend"
+								result = pick(coom)
+						result = coom[result]
+						var/datum/charflaw/C = new result()
+						charflaw = C
+						if(charflaw.desc)
+							to_chat(user, "<span class='info'>[charflaw.desc]</span>")
+
+
 /*
 				if("mutant_color")
 					var/new_mutantcolor = input(user, "Choose your character's alien/mutant color:", "Character Preference","#"+features["mcolor"]) as color|null

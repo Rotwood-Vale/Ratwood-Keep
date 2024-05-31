@@ -373,6 +373,7 @@
 #include "code\datums\recipe.dm"
 #include "code\datums\ruins.dm"
 #include "code\datums\saymode.dm"
+#include "code\datums\sexcon.dm"
 #include "code\datums\shuttles.dm"
 #include "code\datums\soullink.dm"
 #include "code\datums\spawners_menu.dm"
@@ -3409,4 +3410,7 @@
 #include "interface\menu.dm"
 #include "interface\stylesheet.dm"
 #include "interface\skin.dmf"
+#include "modular\code\controllers\subsystem\processing\sex.dm"
+#include "modular\code\datums\character_flaw.dm"
+#include "modular\code\modules\living\carbon\stress.dm"
 // END_INCLUDE

@@ -23,6 +23,7 @@
 	..()
 	if(L)
 		var/mob/living/carbon/human/H = L
+		L.can_do_sex = FALSE
 		if(M.mind)
 			M.mind.special_role = "Death Knight"
 			M.mind.assigned_role = "Death Knight"
