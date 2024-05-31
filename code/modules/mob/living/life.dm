@@ -33,16 +33,17 @@
 		return
 
 	if(!IS_IN_STASIS(src))
-
 		//Mutations and radiation
 		handle_mutations_and_radiation()
 		//Breathing, if applicable
 		handle_breathing(times_fired)
 		if(HAS_TRAIT(src, TRAIT_SIMPLE_WOUNDS))
 			handle_wounds()
-			handle_blood()
 			handle_embedded_objects()
-			heal_wounds(1)
+			handle_blood()
+			//passively heal even wounds with no passive healing
+			for(var/datum/wound/wound as anything in get_wounds())
+				wound.heal_wound(1)
 
 		handle_diseases()// DEAD check is in the proc itself; we want it to spread even if the mob is dead, but to handle its disease-y properties only if you're not.
 
@@ -64,6 +65,8 @@
 	update_sneak_invis()
 	handle_fire()
 
+	if(sexcon)
+		sexcon.handle_sex()
 	if(machine)
 		machine.check_eye(src)
 
@@ -86,8 +89,9 @@
 		return
 	if(!IS_IN_STASIS(src))
 		if(HAS_TRAIT(src, TRAIT_SIMPLE_WOUNDS))
-			handle_blood()
+			handle_wounds()
 			handle_embedded_objects()
+			handle_blood()
 	update_sneak_invis()
 	handle_fire()
 	handle_typing_indicator()
@@ -144,6 +148,31 @@
 	update_fire()
 	var/turf/location = get_turf(src)
 	location.hotspot_expose(700, 50, 1)
+
+/mob/living/proc/handle_wounds()
+	if(stat >= DEAD)
+		for(var/datum/wound/wound as anything in get_wounds())
+			wound.on_death()
+		return
+	for(var/datum/wound/wound as anything in get_wounds())
+		wound.on_life()
+
+/obj/item/proc/on_embed_life(mob/living/user, obj/item/bodypart/bodypart)
+	return
+
+/mob/living/proc/handle_embedded_objects()
+	for(var/obj/item/embedded in simple_embedded_objects)
+		if(embedded.on_embed_life(src))
+			continue
+
+		if(prob(embedded.embedding.embedded_pain_chance))
+//			BP.receive_damage(I.w_class*I.embedding.embedded_pain_multiplier)
+			to_chat(src, "<span class='danger'>[embedded] in me hurts!</span>")
+
+		if(prob(embedded.embedding.embedded_fall_chance))
+//			BP.receive_damage(I.w_class*I.embedding.embedded_fall_pain_multiplier)
+			simple_remove_embedded_object(embedded)
+			to_chat(src,"<span class='danger'>[embedded] falls out of me!</span>")
 
 //this updates all special effects: knockdown, druggy, stuttering, etc..
 /mob/living/proc/handle_status_effects()

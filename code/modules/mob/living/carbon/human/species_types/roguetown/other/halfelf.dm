@@ -3,7 +3,7 @@
 
 /datum/species/human/halfelf
 	name = "Half-Elf"
-	id = "human"
+	id = "helf"
 	desc = "<b>Half Elf</b><br>\
 	The child of an Elf and Humen, Half-Elves are generally frowned \
 	upon by more conservative peoples, although as racial tensions lower, \
@@ -72,9 +72,6 @@
 		)
 	body_markings = list(
 	)
-
-/datum/species/human/halfelf/check_roundstart_eligible()
-	return TRUE
 
 /datum/species/human/halfelf/get_skin_list()
 	return list(

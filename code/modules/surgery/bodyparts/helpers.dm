@@ -5,18 +5,28 @@
 /mob/living/carbon/get_bodypart(zone)
 	if(!zone)
 		zone = BODY_ZONE_CHEST
-	for(var/X in bodyparts)
-		var/obj/item/bodypart/L = X
-		if(L.body_zone == zone)
-			return L
+	for(var/obj/item/bodypart/bodypart as anything in bodyparts)
+		if(bodypart.body_zone == zone)
+			return bodypart
+		for(var/subzone in bodypart.subtargets)
+			if(subzone != zone)
+				continue
+			return bodypart
 
-/mob/living/carbon/proc/get_bodypart_complex(zones)
+/mob/living/carbon/proc/get_bodypart_complex(list/zones)
+	if(!length(zones))
+		zones = list(BODY_ZONE_CHEST)
 	var/list/targets = list()
-	for(var/X in bodyparts)
-		var/obj/item/bodypart/L = X
-		if(L.body_zone in zones)
-			targets += L
-	if(targets.len)
+	for(var/obj/item/bodypart/bodypart as anything in bodyparts)
+		if(bodypart.body_zone in zones)
+			targets += bodypart
+		else
+			for(var/subzone in bodypart.subtargets)
+				if(!(subzone in zones))
+					continue
+				targets += bodypart
+				break
+	if(length(targets))
 		return pick(targets)
 
 /mob/living/carbon/has_hand_for_held_index(i, extra_checks)
@@ -24,7 +34,7 @@
 		var/obj/item/bodypart/L = hand_bodyparts[i]
 		if(L && !L.disabled)
 			if(extra_checks)
-				if(!L.fingers)
+				if(!L.fingers || HAS_TRAIT(L, TRAIT_FINGERLESS))
 					return FALSE
 			return L
 	return FALSE
@@ -114,14 +124,24 @@
 	return list()
 
 /mob/living/carbon/get_missing_limbs()
-	var/list/full = list(BODY_ZONE_HEAD, BODY_ZONE_CHEST, BODY_ZONE_R_ARM, BODY_ZONE_L_ARM, BODY_ZONE_R_LEG, BODY_ZONE_L_LEG)
+	var/list/full = list(
+		BODY_ZONE_HEAD, 
+		BODY_ZONE_CHEST, 
+		BODY_ZONE_R_ARM, 
+		BODY_ZONE_L_ARM, 
+		BODY_ZONE_R_LEG, 
+		BODY_ZONE_L_LEG,
+	)
 	for(var/zone in full)
 		if(get_bodypart(zone))
 			full -= zone
 	return full
 
 /mob/living/carbon/alien/larva/get_missing_limbs()
-	var/list/full = list(BODY_ZONE_HEAD, BODY_ZONE_CHEST)
+	var/list/full = list(
+		BODY_ZONE_HEAD, 
+		BODY_ZONE_CHEST,
+	)
 	for(var/zone in full)
 		if(get_bodypart(zone))
 			full -= zone
@@ -131,7 +151,14 @@
 	return list()
 
 /mob/living/carbon/get_disabled_limbs()
-	var/list/full = list(BODY_ZONE_HEAD, BODY_ZONE_CHEST, BODY_ZONE_R_ARM, BODY_ZONE_L_ARM, BODY_ZONE_R_LEG, BODY_ZONE_L_LEG)
+	var/list/full = list(
+		BODY_ZONE_HEAD, 
+		BODY_ZONE_CHEST, 
+		BODY_ZONE_R_ARM, 
+		BODY_ZONE_L_ARM, 
+		BODY_ZONE_R_LEG, 
+		BODY_ZONE_L_LEG,
+	)
 	var/list/disabled = list()
 	for(var/zone in full)
 		var/obj/item/bodypart/affecting = get_bodypart(zone)
@@ -140,38 +167,16 @@
 	return disabled
 
 /mob/living/carbon/alien/larva/get_disabled_limbs()
-	var/list/full = list(BODY_ZONE_HEAD, BODY_ZONE_CHEST)
+	var/list/full = list(
+		BODY_ZONE_HEAD, 
+		BODY_ZONE_CHEST,
+	)
 	var/list/disabled = list()
 	for(var/zone in full)
 		var/obj/item/bodypart/affecting = get_bodypart(zone)
 		if(affecting && affecting.disabled)
 			disabled += zone
 	return disabled
-
-//Remove all embedded objects from all limbs on the carbon mob
-/mob/living/carbon/proc/remove_all_embedded_objects()
-	var/turf/T = get_turf(src)
-
-	for(var/X in bodyparts)
-		var/obj/item/bodypart/L = X
-		for(var/obj/item/I in L.embedded_objects)
-			L.embedded_objects -= I
-			I.forceMove(T)
-
-	clear_alert("embeddedobject")
-	SEND_SIGNAL(src, COMSIG_CLEAR_MOOD_EVENT, "embedded")
-
-/mob/living/carbon/has_embedded_objects()
-	. = 0
-	for(var/X in bodyparts)
-		var/obj/item/bodypart/L = X
-		for(var/obj/item/I in L.embedded_objects)
-			return 1
-
-/mob/living/proc/has_embedded_objects()
-	. = 0
-	for(var/obj/item/I in simple_embedded_objects)
-		return 1
 
 //Helper for quickly creating a new limb - used by augment code in species.dm spec_attacked_by
 /mob/living/carbon/proc/newBodyPart(zone, robotic, fixed_icon)

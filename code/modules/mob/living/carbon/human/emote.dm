@@ -17,7 +17,7 @@
 	. = ..()
 	if(. && iscarbon(user))
 		var/mob/living/carbon/C = user
-		if(C.silent || !C.canspeak())
+		if(C.silent || !C.can_speak())
 			message = "makes a noise. Tears stream down their face."
 
 
@@ -31,7 +31,7 @@
 	. = ..()
 	if(. && iscarbon(user))
 		var/mob/living/carbon/C = user
-		if(C.silent || !C.canspeak())
+		if(C.silent || !C.can_speak())
 			message = "makes a noise."
 
 /datum/emote/living/carbon/human/sexmoanhvy
@@ -44,7 +44,7 @@
 	. = ..()
 	if(. && iscarbon(user))
 		var/mob/living/carbon/C = user
-		if(C.silent || !C.canspeak())
+		if(C.silent || !C.can_speak())
 			message = "makes a noise."
 
 /datum/emote/living/carbon/human/eyebrow
@@ -86,7 +86,7 @@
 	. = ..()
 	if(. && iscarbon(user))
 		var/mob/living/carbon/C = user
-		if(C.silent || !C.canspeak())
+		if(C.silent || !C.can_speak())
 			message = "makes a muffled grumbling noise."
 
 /datum/emote/living/carbon/human/handshake

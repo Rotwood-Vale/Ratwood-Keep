@@ -127,49 +127,50 @@ GLOBAL_VAR(moneymaster)
 		T = get_turf(src)
 	else
 		T = get_turf(user)
-	if(!budget)
+	if(!budget || budget <= 0)
 		return
-	budget = round(budget)
-	var/found
+	budget = floor(budget)
+	var/type_to_put
+	var/zenars_to_put
 	if(specify)
-		found = TRUE
-
-		var/type_to_spawn
-		var/zenars
 		switch(specify)
 			if("GOLD")
-				zenars = budget/10
-				type_to_spawn = /obj/item/roguecoin/gold
+				zenars_to_put = budget/10
+				type_to_put = /obj/item/roguecoin/gold
 			if("SILVER")
-				zenars = budget/5
-				type_to_spawn = /obj/item/roguecoin/silver
+				zenars_to_put = budget/5
+				type_to_put = /obj/item/roguecoin/silver
 			if("BRONZE")
-				zenars = budget
-				type_to_spawn = /obj/item/roguecoin/copper
-		if(zenars < 1)
-			return
-		var/obj/item/roguecoin/G = new type_to_spawn(T)
-		G.set_quantity(floor(zenars))
-		user.put_in_hands(G)
+				zenars_to_put = budget
+				type_to_put = /obj/item/roguecoin/copper
 	else
-		var/zenars = budget/10
-		if(zenars >= 1)
-			for(var/i in 1 to zenars)
-				budget -= 10
-				found = TRUE
-				new /obj/item/roguecoin/gold(T)
-		zenars = budget/5
-		if(zenars >= 1)
-			for(var/i in 1 to zenars)
-				budget -= 5
-				found = TRUE
-				new /obj/item/roguecoin/silver(T)
+		var/highest_found = FALSE
+		var/zenars = floor(budget/10)
+		if(zenars)
+			budget -= zenars * 10
+			highest_found = TRUE
+			type_to_put = /obj/item/roguecoin/gold
+			zenars_to_put = zenars
+		zenars = floor(budget/5)
+		if(zenars)
+			budget -= zenars * 5
+			if(!highest_found)
+				highest_found = TRUE
+				type_to_put = /obj/item/roguecoin/silver
+				zenars_to_put = zenars
+			else
+				new /obj/item/roguecoin/silver(T, zenars)
 		if(budget >= 1)
-			for(var/i in 1 to budget)
-				found = TRUE
-				new /obj/item/roguecoin/copper(T)
-	if(found)
-		playsound(T, 'sound/misc/coindispense.ogg', 100, FALSE, -1)
+			if(!highest_found)
+				type_to_put = /obj/item/roguecoin/copper
+				zenars_to_put = budget
+			else
+				new /obj/item/roguecoin/copper(T, budget)
+	if(!type_to_put || zenars_to_put < 1)
+		return
+	var/obj/item/roguecoin/G = new type_to_put(T, floor(zenars_to_put))
+	user.put_in_hands(G)
+	playsound(T, 'sound/misc/coindispense.ogg', 100, FALSE, -1)
 /*
 /obj/structure/roguemachine/money/attack_right(mob/user)
 	. = ..()

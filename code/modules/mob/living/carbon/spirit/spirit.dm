@@ -71,8 +71,8 @@
 		if(istype(item, /obj/item/underworld/coin))
 			return
 	put_in_hands(new /obj/item/underworld/coin/notracking(get_turf(src)))
-	if(PATRON)
-		to_chat(src, "<span class='danger'>Your suffering has not gone unnoticed, [PATRON] has rewarded you with your toll.</span>")
+	if(patron)
+		to_chat(src, "<span class='danger'>Your suffering has not gone unnoticed, [patron] has rewarded you with your toll.</span>")
 	else
 		to_chat(src, "<span class='danger'>Your suffering has not gone unnoticed, your patron has rewarded you with your toll.</span>")
 	playsound(src, 'sound/combat/caught.ogg', 80, TRUE, -1)
@@ -234,7 +234,7 @@
 		ghost = corpse.ghostize(force_respawn = TRUE)
 
 	if(ghost)
-		testing("pacify_corpse success ([brainmob.mind?.key || "no key"])")
+		testing("pacify_corpse success ([corpse.mind?.key || "no key"])")
 		var/user_acknowledgement = user ? user.real_name : "a mysterious force"
 		to_chat(ghost, "<span class='rose'>My soul finds peace buried in creation, thanks to [user_acknowledgement].</span>")
 		ghost.returntolobby(RESPAWNTIME*-1)

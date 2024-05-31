@@ -1,17 +1,18 @@
-/datum/job/roguetown/vagrant
+/datum/job/roguetown/beggar
 	title = "Beggar"
-	flag = APPRENTICE
+	flag = BEGGAR
 	department_flag = PEASANTS
 	faction = "Station"
 	total_positions = -1
 	spawn_positions = -1
 
 	allowed_races = ALL_RACES_TYPES
-	allowed_ages = list(AGE_ADULT, AGE_MIDDLEAGED, AGE_OLD)
+	allowed_ages = ADULT_AGES_LIST
 	outfit = /datum/outfit/job/roguetown/vagrant
 	bypass_lastclass = TRUE
 	bypass_jobban = FALSE
 	min_pq = -30
+	max_pq = null
 
 	tutorial = "The stench of your piss-laden clothes dont bug you anymore, the glances of disgust and loathing others give you is just a friendly greeting; the only reason you've not been killed already is because Volfs are known to be repelled by decaying flesh. You're going to be a solemn reminder what happens when something unwanted is born into this world."
 	display_order = JDO_VAGRANT
@@ -26,11 +27,11 @@
 	/// Outfit to use when wise beggar triggers
 	var/wise_outfit = /datum/outfit/job/roguetown/vagrant/wise
 
-/datum/job/roguetown/vagrant/New()
+/datum/job/roguetown/beggar/New()
 	. = ..()
 	peopleknowme = list()
 
-/datum/job/roguetown/vagrant/get_outfit(mob/living/carbon/human/wearer, visualsOnly = FALSE, announce = TRUE, latejoin = FALSE, preference_source = null)
+/datum/job/roguetown/beggar/get_outfit(mob/living/carbon/human/wearer, visualsOnly = FALSE, announce = TRUE, latejoin = FALSE, preference_source = null)
 	if((wise_amount < wise_max) && prob(wise_chance))
 		wise_amount++
 		return wise_outfit
@@ -54,7 +55,7 @@
 		l_hand = /obj/item/rogueweapon/huntingknife/idagger/steel/special // dog butchering knife
 		if(H.mind)
 			H.mind.adjust_skillrank(/datum/skill/misc/sneaking, rand(2,5), TRUE)
-			H.mind.adjust_skillrank(/datum/skill/misc/stealing, rand(2,5), TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/stealing, 5, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/climbing, rand(2,5), TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/reading, 4, TRUE) //very good reading he is wise
 			H.mind.adjust_skillrank(/datum/skill/combat/polearms, rand(2,5), TRUE) // dog beating staff
@@ -101,7 +102,7 @@
 			shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/vagrant/l
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/misc/sneaking, rand(1,5), TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/stealing, rand(1,5), TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/stealing, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/climbing, rand(1,5), TRUE)
 		H.STALUC = rand(1, 20)
 	if(prob(5))
@@ -116,6 +117,8 @@
 	H.change_stat("intelligence", -4)
 	H.change_stat("constitution", -3)
 	H.change_stat("endurance", -3)
+	ADD_TRAIT(H, TRAIT_NOSTINK, TRAIT_GENERIC)
+	ADD_TRAIT(H, TRAIT_NASTY_EATER, TRAIT_GENERIC)
 
 /datum/outfit/job/roguetown/vagrant
 	name = "Beggar"

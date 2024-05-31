@@ -13,13 +13,14 @@
 	outfit = /datum/outfit/job/roguetown/grabber
 	display_order = JDO_GRABBER
 	min_pq = -10
+	max_pq = null
 
 /datum/outfit/job/roguetown/grabber/pre_equip(mob/living/carbon/human/H)
 	..()
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/combat/swords, 2, TRUE)
 		if(H.gender == MALE)
-			H.mind.adjust_skillrank(/datum/skill/combat/axesmaces, 3, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/maces, 3, TRUE)
 		else
 			H.mind.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE)

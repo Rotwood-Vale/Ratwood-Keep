@@ -190,10 +190,12 @@ GLOBAL_LIST_INIT(laws_of_the_land, initialize_laws_of_the_land())
 			make_decree(H, raw_message)
 			mode = 0
 		if(3)
-			make_outlaw(H, raw_message)
+			declare_outlaw(H, raw_message)
 			mode = 0
 		if(4)
-			make_law(H, raw_message)
+			if(!SScommunications.can_announce(speaker))
+				return
+			make_law(raw_message)
 			mode = 0
 
 /obj/structure/roguemachine/titan/proc/give_tax_popup(mob/living/carbon/human/user)
@@ -207,7 +209,7 @@ GLOBAL_LIST_INIT(laws_of_the_land, initialize_laws_of_the_land())
 			return
 		newtax = CLAMP(newtax, 1, 99)
 		SStreasury.tax_value = newtax / 100
-		priority_announce("The new tax in Rockhill shall be [newtax] percent.", "The Generous Lord Decrees", 'sound/misc/alert.ogg', "Captain")
+		priority_announce("The new tax in Rockhill shall be [newtax] percent.", "The Generous Lord Decrees", pick('sound/misc/royal_decree.ogg', 'sound/misc/royal_decree2.ogg'), "Captain")
 
 
 /obj/structure/roguemachine/titan/proc/make_announcement(mob/living/user, raw_message)
@@ -248,21 +250,20 @@ GLOBAL_LIST_INIT(laws_of_the_land, initialize_laws_of_the_land())
 	GLOB.lord_decrees += raw_message
 	SScommunications.make_announcement(user, TRUE, raw_message)
 
-/obj/structure/roguemachine/titan/proc/make_outlaw(mob/living/user, raw_message)
+/obj/structure/roguemachine/titan/proc/declare_outlaw(mob/living/user, raw_message)
 	if(!SScommunications.can_announce(user))
 		return
 	if(user.job)
-		var/datum/job/J = SSjob.GetJob(user.job)
-		var/used_title = J.title
-		if(user.gender == FEMALE && J.f_title)
-			used_title = J.f_title
-		if(used_title != "King")
+		if(!istype(SSjob.GetJob(user.job), /datum/job/roguetown/lord))
 			return
 	else
 		return
+	return make_outlaw(raw_message)
+
+/proc/make_outlaw(raw_message)
 	if(raw_message in GLOB.outlawed_players)
 		GLOB.outlawed_players -= raw_message
-		priority_announce("[raw_message] is no longer an outlaw in Rockhill lands.", "The King Decrees", 'sound/misc/alert.ogg', "Captain")
+		priority_announce("[raw_message] is no longer an outlaw in Rockhill lands.", "The King Decrees", 'sound/misc/royal_decree.ogg', "Captain")
 		return FALSE
 	var/found = FALSE
 	for(var/mob/living/carbon/human/H in GLOB.player_list)
@@ -271,21 +272,20 @@ GLOBAL_LIST_INIT(laws_of_the_land, initialize_laws_of_the_land())
 	if(!found)
 		return FALSE
 	GLOB.outlawed_players += raw_message
-	priority_announce("[raw_message] has been declared an outlaw and must be captured or slain.", "The King Decrees", 'sound/misc/alert.ogg', "Captain")
+	priority_announce("[raw_message] has been declared an outlaw and must be captured or slain.", "The King Decrees", 'sound/misc/royal_decree2.ogg', "Captain")
+	return TRUE
 
-/obj/structure/roguemachine/titan/proc/make_law(mob/living/user, raw_message)
-	if(!SScommunications.can_announce(user))
-		return
+/proc/make_law(raw_message)
 	GLOB.laws_of_the_land += raw_message
-	priority_announce("[length(GLOB.laws_of_the_land)]. [raw_message]", "A LAW IS DECLARED", 'sound/misc/lawdeclaration.ogg', "Captain")
+	priority_announce("[length(GLOB.laws_of_the_land)]. [raw_message]", "A LAW IS DECLARED", pick('sound/misc/new_law.ogg', 'sound/misc/new_law2.ogg'), "Captain")
 
-/obj/structure/roguemachine/titan/proc/remove_law(law_index)
+/proc/remove_law(law_index)
 	if(!GLOB.laws_of_the_land[law_index])
 		return
 	var/law_text = GLOB.laws_of_the_land[law_index]
 	GLOB.laws_of_the_land -= law_text
-	priority_announce("[law_index]. [law_text]", "A LAW IS ABOLISHED", 'sound/misc/lawdeclaration.ogg', "Captain")
+	priority_announce("[law_index]. [law_text]", "A LAW IS ABOLISHED", pick('sound/misc/new_law.ogg', 'sound/misc/new_law2.ogg'), "Captain")
 
-/obj/structure/roguemachine/titan/proc/purge_laws()
+/proc/purge_laws()
 	GLOB.laws_of_the_land = list()
 	priority_announce("All laws of the land have been purged!", "LAWS PURGED", 'sound/misc/lawspurged.ogg', "Captain")

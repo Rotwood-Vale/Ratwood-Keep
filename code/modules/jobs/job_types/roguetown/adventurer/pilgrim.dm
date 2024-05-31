@@ -1,6 +1,6 @@
 /datum/job/roguetown/adventurer/pilgrim
 	title = "Pilgrim"
-	flag = ADVENTURER
+	flag = PILGRIM
 	department_flag = PEASANTS
 	faction = "Station"
 	total_positions = -1
@@ -10,10 +10,12 @@
 
 	outfit = null
 	outfit_female = null
+	bypass_lastclass = TRUE
 	bypass_jobban = FALSE
 	isvillager = FALSE
 	ispilgrim = TRUE
 	display_order = JDO_PILGRIM
 	min_pq = -20
+	max_pq = null
 	wanderer_examine = TRUE
 	advjob_examine = TRUE

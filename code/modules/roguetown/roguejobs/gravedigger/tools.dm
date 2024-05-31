@@ -165,6 +165,7 @@
 	slot_flags = ITEM_SLOT_HIP
 	w_class = WEIGHT_CLASS_NORMAL
 	max_blade_int = 0
+	smeltresult = null
 
 /obj/item/burial_shroud
 	name = "winding sheet"

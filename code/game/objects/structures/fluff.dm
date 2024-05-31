@@ -22,7 +22,7 @@
 			new/obj/item/stack/sheet/metal(drop_location())
 			qdel(src)
 		return
-	..()
+	. = ..()
 
 /obj/structure/fluff/empty_terrarium //Empty terrariums are created when a preserved terrarium in a lavaland seed vault is activated.
 	name = "empty terrarium"
@@ -193,7 +193,6 @@
 	var/passcrawl = TRUE
 	layer = ABOVE_MOB_LAYER
 
-
 /obj/structure/fluff/railing/Initialize()
 	..()
 	var/lay = getwlayer(dir)
@@ -275,7 +274,7 @@
 	return 1
 
 /obj/structure/fluff/railing/OnCrafted(dirin)
-	dir = dirin
+	. = ..()
 	var/lay = getwlayer(dir)
 	if(lay)
 		layer = lay
@@ -803,10 +802,15 @@
 	icon_state = "knightstatue_l"
 
 /obj/structure/fluff/statue/astrata
-	name = "Astrata Statue"
+	name = "astrata statue"
 	desc = "A stone statue of the sun Goddess Astrata. Bless."
 	icon_state = "astrata"
 	icon = 'icons/roguetown/misc/tallandwide.dmi'
+
+/obj/structure/fluff/statue/astrata/gold
+	name = "ornamental astrata statue"
+	desc = "An ornamental stone statue of the sun Goddess Astrata, decorated with golden jewelry. Bless."
+	icon_state = "astrata_bling"
 
 /obj/structure/fluff/statue/knight/r
 	icon_state = "knightstatue_r"
@@ -885,12 +889,13 @@
 						probby = 0
 					if(prob(probby) && !L.has_status_effect(/datum/status_effect/debuff/trainsleep) && !user.buckled)
 						user.visible_message("<span class='info'>[user] trains on [src]!</span>")
+						var/boon = user.mind.get_learning_boon(W.associated_skill)
 						var/amt2raise = L.STAINT/2
 						if(user.mind.get_skill_level(W.associated_skill) >= SKILL_LEVEL_NOVICE)
 							to_chat(user, "<span class='warning'>I've learned all I can from doing this, it's time for the real thing.</span>")
 							amt2raise = 0
 						if(amt2raise > 0)
-							user.mind.adjust_experience(W.associated_skill, amt2raise, FALSE)
+							user.mind.adjust_experience(W.associated_skill, amt2raise * boon, FALSE)
 						playsound(loc,pick('sound/combat/hits/onwood/education1.ogg','sound/combat/hits/onwood/education2.ogg','sound/combat/hits/onwood/education3.ogg'), rand(50,100), FALSE)
 					else
 						user.visible_message("<span class='danger'>[user] trains on [src], but [src] ripostes!</span>")

@@ -270,9 +270,8 @@
 			return FALSE
 		if(C.badluck(5))
 			add_mob_blood(C)
-			if(!locate(/obj/item/restraints/legcuffs/beartrap) in BP.embedded_objects)
-				BP.embedded_objects |= src
-				forceMove(C)
+			if(!BP.is_object_embedded(src))
+				BP.add_embedded_object(src)
 			close_trap()
 			C.visible_message("<span class='boldwarning'>[C] triggers \the [src].</span>", \
 					"<span class='userdanger'>I trigger \the [src]!</span>")
@@ -296,9 +295,8 @@
 				return FALSE
 			else
 				add_mob_blood(C)
-				if(!locate(/obj/item/restraints/legcuffs/beartrap) in BP.embedded_objects)
-					BP.embedded_objects |= src
-					forceMove(C)
+				if(!BP.is_object_embedded(src))
+					BP.add_embedded_object(src)
 				close_trap()
 				C.visible_message("<span class='boldwarning'>[C] triggers \the [src].</span>", \
 						"<span class='userdanger'>I trigger \the [src]!</span>")
@@ -352,9 +350,7 @@
 				update_icon()
 				to_chat(user, "<span class='notice'>[src] is now [armed ? "armed" : "disarmed"]</span>")
 			else
-				user.visible_message("<span class='warning'>The rusty [src.name] breaks under stress!</span>")
-				playsound(src.loc, 'sound/foley/breaksound.ogg', 100, TRUE, -1)
-				qdel(src)
+				user.visible_message("<span class='warning'>You couldn't get the shoddy [src.name] [armed ? "shut close!" : "to open up!"]</span>")
 /obj/item/restraints/legcuffs/beartrap/proc/close_trap()
 	armed = FALSE
 	alpha = 255
@@ -386,11 +382,10 @@
 					var/obj/item/bodypart/BP = C.get_bodypart(def_zone)
 					if(BP)
 						add_mob_blood(C)
-						if(!locate(/obj/item/restraints/legcuffs/beartrap) in BP.embedded_objects)
-							BP.embedded_objects |= src
-							forceMove(C)
+						if(!BP.is_object_embedded(src))
+							BP.add_embedded_object(src)
 						C.emote("agony")
-						//BP.set_disabled(BODYPART_DISABLED_FRACTURE)
+						//BP.set_disabled(BODYPART_DISABLED_WOUND)
 						//BP.add_wound(/datum/wound/fracture)
 			else if(snap && isanimal(L))
 				var/mob/living/simple_animal/SA = L

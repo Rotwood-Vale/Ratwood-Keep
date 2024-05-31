@@ -26,7 +26,7 @@
 		new /obj/item/natural/fibers(loc)
 		qdel(src)
 
-/obj/item/natural/chaff/attackby(obj/item/I, mob/user, params)
+/obj/item/natural/chaff/attackby(obj/item/I, mob/living/user, params)
 	testing("attackb")
 	if(istype(I, /obj/item/rogueweapon/pitchfork))
 		if(user.used_intent.type == DUMP_INTENT)
@@ -45,15 +45,20 @@
 						to_chat(user, "<span class='warning'>I'm carrying enough with the pitchfork.</span>")
 					W.update_icon()
 					return
-/*
-	if(istype(I, /obj/item/rogueweapon/thresher))
-		if(user.used_intent.type == MACE_STRIKE)
-			if(isturf(loc))
-				for(var/obj/item/natural/chaff/C in loc)
-					if(prob(10)) //ROGTODO make based on str and farming skill
-						C.thresh()
-				user.visible_message("<span class='notice'>[user] threshes the stalks!</span>", \
-									"<span class='notice'>I thresh the stalks.</span>")
-				return
-*/
+
+	if(istype(I, /obj/item/rogueweapon/mace/woodclub))//reused some commented out code
+		var/statboost = user.STASTR*3 + (user?.mind?.get_skill_level(/datum/skill/labor/farming)*5) //a person with no skill and 10 strength will thresh about a third of the stalks on average
+		var/threshchance = clamp(statboost, 20, 100)
+		for(var/obj/item/natural/chaff/C in get_turf(src))
+			if(C == src)//so it doesnt delete itself and stop the loop
+				continue
+			if(prob(threshchance))
+				C.thresh()
+		user.visible_message("<span class='notice'>[user] threshes the stalks!</span>", \
+							"<span class='notice'>I thresh the stalks.</span>")
+		user.changeNext_move(CLICK_CD_MELEE)
+		playsound(loc,"plantcross", 100, FALSE)
+		playsound(loc,"smashlimb", 50, FALSE)
+		src.thresh()
+		return
 	..()

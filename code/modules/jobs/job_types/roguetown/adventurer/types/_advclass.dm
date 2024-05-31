@@ -2,10 +2,10 @@
 	var/name
 	var/outfit
 	var/tutorial = "Choose me!"
-	var/list/allowed_sexes = list("male","female")
+	var/list/allowed_sexes
 	var/list/allowed_races = ALL_RACES_TYPES
-	var/list/allowed_patrons = ALL_PATRON_NAMES_LIST
-	var/list/allowed_ages = list(AGE_ADULT, AGE_MIDDLEAGED, AGE_OLD)
+	var/list/allowed_patrons
+	var/list/allowed_ages
 	var/pickprob = 100
 	var/maxchosen = -1
 	var/amtchosen = 0
@@ -17,6 +17,7 @@
 	var/horse = FALSE
 	var/vampcompat = TRUE
 	var/list/traits_applied
+	var/cmode_music
 
 /datum/advclass/proc/equipme(mob/living/carbon/human/H)
 	if(!H)
@@ -52,4 +53,6 @@
 
 /datum/advclass/proc/post_equip(mob/living/carbon/human/H)
 	addtimer(CALLBACK(H,TYPE_PROC_REF(/mob/living/carbon/human, add_credit)), 20)
-	return
+	if(cmode_music)
+		H.cmode_music = cmode_music
+

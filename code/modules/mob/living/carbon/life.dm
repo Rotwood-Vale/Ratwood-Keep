@@ -1,22 +1,3 @@
-/mob/living/proc/handle_wounds()
-	for(var/datum/wound/WO in simple_wounds)
-		if(WO.passive_heal)
-			if(WO.whp > 0)
-				WO.whp = WO.whp - 1
-				if(WO.whp <= 0)
-					simple_wounds -= WO
-					qdel(WO)
-
-/mob/living/carbon/handle_wounds()
-	for(var/obj/item/bodypart/BP in bodyparts)
-		for(var/datum/wound/WO in BP.wounds)
-			if(WO.passive_heal)
-				if(WO.whp > 0)
-					WO.whp = WO.whp - 1
-					if(WO.whp <= 0)
-						BP.wounds -= WO
-						qdel(WO)
-
 /mob/living/carbon/Life()
 	set invisibility = 0
 
@@ -36,11 +17,11 @@
 
 		if (QDELETED(src))
 			return
-
-		handle_blood()
-
-		handle_roguebreath()
+		
 		handle_wounds()
+		handle_embedded_objects()
+		handle_blood()
+		handle_roguebreath()
 		var/bprv = handle_bodyparts()
 		if(bprv & BODYPART_LIFE_UPDATE_HEALTH)
 			update_stamina() //needs to go before updatehealth to remove stamcrit
@@ -55,22 +36,25 @@
 					heart_attacking = FALSE
 
 		//Healing while sleeping in a bed
-		if(stat)
-			if(buckled?.sleepy)
-				var/yess = HAS_TRAIT(src, TRAIT_NOHUNGER)
-				if(nutrition > 0 || yess)
-					rogstam_add(buckled.sleepy * 15)
-				if(hydration > 0 || yess)
-					if(!bleed_rate)
-						blood_volume = min(blood_volume + 10, BLOOD_VOLUME_MAXIMUM)
-					for(var/obj/item/bodypart/affecting as anything in bodyparts)
-						//for context, it takes 5 small cuts (0.2 x 5) or 3 normal cuts (0.4 x 3) for a bodypart to not be able to heal itself
-						if(affecting.get_bleedrate() < 1)
-							if(affecting.heal_damage(buckled.sleepy, buckled.sleepy, null, BODYPART_ORGANIC) || affecting.heal_wounds(3, sleep_heal = TRUE))
-								src.update_damage_overlays()
-					adjustToxLoss(-buckled.sleepy)
-					if(eyesclosed && !HAS_TRAIT(src, TRAIT_NOSLEEP))
-						Sleeping(300)
+		if((stat >= UNCONSCIOUS) && buckled?.sleepy)
+			var/yess = HAS_TRAIT(src, TRAIT_NOHUNGER)
+			if(nutrition > 0 || yess)
+				rogstam_add(buckled.sleepy * 15)
+			if(hydration > 0 || yess)
+				if(!bleed_rate)
+					blood_volume = min(blood_volume + (4 * buckled.sleepy), BLOOD_VOLUME_NORMAL)
+				for(var/obj/item/bodypart/affecting as anything in bodyparts)
+					//for context, it takes 5 small cuts (0.2 x 5) or 3 normal cuts (0.4 x 3) for a bodypart to not be able to heal itself
+					if(affecting.get_bleed_rate() < 1)
+						if(affecting.heal_damage(buckled.sleepy, buckled.sleepy, required_status = BODYPART_ORGANIC))
+							src.update_damage_overlays()
+						for(var/datum/wound/wound as anything in affecting.wounds)
+							if(!wound.sleep_healing)
+								continue
+							wound.heal_wound(wound.sleep_healing * buckled.sleepy)
+				adjustToxLoss(-buckled.sleepy)
+				if(eyesclosed && !HAS_TRAIT(src, TRAIT_NOSLEEP))
+					Sleeping(300)
 		if(!IsSleeping() && !HAS_TRAIT(src, TRAIT_NOSLEEP))
 			if(buckled?.sleepy)
 				if(eyesclosed)
@@ -100,12 +84,16 @@
 						rogstam_add(25)
 					if(hydration > 0 || yess)
 						if(!bleed_rate)
-							blood_volume = min(blood_volume + 10, BLOOD_VOLUME_MAXIMUM)
+							blood_volume = min(blood_volume + 2, BLOOD_VOLUME_NORMAL)
 						for(var/obj/item/bodypart/affecting as anything in bodyparts)
 							//for context, it takes 5 small cuts (0.2 x 5) or 3 normal cuts (0.4 x 3) for a bodypart to not be able to heal itself
-							if(affecting.get_bleedrate() < 1)
-								if(affecting.heal_damage(0.5, 0.5, null, BODYPART_ORGANIC) || affecting.heal_wounds(1, sleep_heal = TRUE))
+							if(affecting.get_bleed_rate() < 1)
+								if(affecting.heal_damage(0.5, 0.5, required_status = BODYPART_ORGANIC))
 									src.update_damage_overlays()
+								for(var/datum/wound/wound as anything in affecting.wounds)
+									if(!wound.sleep_healing)
+										continue
+									wound.heal_wound(wound.sleep_healing * 0.5)
 						adjustToxLoss(-0.1)
 
 			else if(fallingas)
@@ -136,6 +124,8 @@
 		. = ..()
 		if (QDELETED(src))
 			return
+		handle_wounds()
+		handle_embedded_objects()
 		handle_blood()
 
 	check_cremation()
@@ -181,6 +171,8 @@
 	..()
 	if(HAS_TRAIT(src, TRAIT_NOBREATH))
 		return TRUE
+	if(HAS_TRAIT(src, TRAIT_HOLDBREATH))
+		adjustOxyLoss(5)
 	if(istype(loc, /obj/structure/closet/dirthole))
 		adjustOxyLoss(5)
 	if(istype(loc, /obj/structure/closet/burial_shroud))
@@ -201,7 +193,7 @@
 
 /mob/living/carbon/handle_inwater()
 	..()
-	if(lying)
+	if(!(mobility_flags & MOBILITY_STAND))
 		if(HAS_TRAIT(src, TRAIT_NOBREATH))
 			return TRUE
 		adjustOxyLoss(5)
@@ -209,31 +201,22 @@
 
 /mob/living/carbon/human/handle_inwater()
 	. = ..()
-	if(!lying)
+	if(!(mobility_flags & MOBILITY_STAND))
 		if(istype(loc, /turf/open/water/bath))
 			if(!wear_armor && !wear_shirt && !wear_pants)
 				add_stress(/datum/stressevent/bathwater)
 
 /mob/living/carbon/proc/get_complex_pain()
 	var/amt = 0
-	for(var/I in bodyparts)
-		var/obj/item/bodypart/BP = I
-		if(BP.status == BODYPART_ROBOTIC)
+	for(var/obj/item/bodypart/limb as anything in bodyparts)
+		if(limb.status == BODYPART_ROBOTIC)
 			continue
-		var/BPinteg
-		//pain from base damage is amplified based on how much con you have
-		BPinteg = ((BP.brute_dam / BP.max_damage) * 100) + BPinteg
-		BPinteg = ((BP.burn_dam / BP.max_damage) * 100) + BPinteg
-		for(var/W in BP.wounds) //wound damage is added normally and stacks higher than 100
-			var/datum/wound/WO = W
-			if(WO.woundpain > 0)
-				BPinteg += WO.woundpain
-//		BPinteg = min(((totwound / BP.max_damage) * 100) + BPinteg, initial(BP.max_damage))
-//		if(BPinteg > amt) //this is here to ensure that pain doesn't add up, but is rather picked from the worst limb
-		amt += BPinteg
+		var/bodypart_pain = ((limb.brute_dam + limb.burn_dam) / limb.max_damage) * 100
+		for(var/datum/wound/wound as anything in limb.wounds)
+			bodypart_pain += wound.woundpain
+		bodypart_pain = min(bodypart_pain, 100) //tops out at 100 per limb
+		amt += bodypart_pain
 	return amt
-
-
 
 ///////////////
 // BREATHING //
@@ -343,7 +326,7 @@
 		adjustOxyLoss(1)
 
 		failed_last_breath = 1
-		throw_alert("not_enough_oxy", /obj/screen/alert/not_enough_oxy)
+		throw_alert("not_enough_oxy", /atom/movable/screen/alert/not_enough_oxy)
 		return 0
 
 	var/safe_oxy_min = 16
@@ -373,7 +356,7 @@
 		else
 			adjustOxyLoss(3)
 			failed_last_breath = 1
-		throw_alert("not_enough_oxy", /obj/screen/alert/not_enough_oxy)
+		throw_alert("not_enough_oxy", /atom/movable/screen/alert/not_enough_oxy)
 
 	else //Enough oxygen
 		failed_last_breath = 0
@@ -404,7 +387,7 @@
 	if(Toxins_partialpressure > safe_tox_max)
 		var/ratio = (breath_gases[/datum/gas/plasma][MOLES]/safe_tox_max) * 10
 		adjustToxLoss(CLAMP(ratio, MIN_TOXIC_GAS_DAMAGE, MAX_TOXIC_GAS_DAMAGE))
-		throw_alert("too_much_tox", /obj/screen/alert/too_much_tox)
+		throw_alert("too_much_tox", /atom/movable/screen/alert/too_much_tox)
 	else
 		clear_alert("too_much_tox")
 
@@ -520,22 +503,6 @@
 		if(BP.needs_processing)
 			. |= BP.on_life(stam_regen)
 
-/mob/living/carbon/proc/canspeak()
-	for(var/I in bodyparts)
-		var/obj/item/bodypart/BP = I
-		if(BP.body_zone == BODY_ZONE_HEAD)
-			for(var/datum/wound/artery/throat/A in BP.wounds)
-				return FALSE
-			for(var/obj/item/grabbing/G in grabbedby)
-				if(G.sublimb_grabbed == BODY_ZONE_PRECISE_MOUTH)
-					return FALSE
-			if(mouth && mouth.muteinmouth)
-				return FALSE
-
-	if(istype(loc, /turf/open/water) && lying)
-		return FALSE
-	return TRUE
-
 /mob/living/carbon/proc/handle_organs()
 	if(stat != DEAD)
 		for(var/V in internal_organs)
@@ -599,6 +566,20 @@
 	if(radiation > RAD_MOB_SAFE)
 		adjustToxLoss(log(radiation-RAD_MOB_SAFE)*RAD_TOX_COEFFICIENT)
 
+/mob/living/carbon/handle_embedded_objects()
+	for(var/obj/item/bodypart/bodypart as anything in bodyparts)
+		for(var/obj/item/embedded as anything in bodypart.embedded_objects)
+			if(embedded.on_embed_life(src, bodypart))
+				continue
+
+			if(prob(embedded.embedding.embedded_pain_chance))
+				bodypart.receive_damage(embedded.w_class*embedded.embedding.embedded_pain_multiplier)
+				to_chat(src, "<span class='danger'>[embedded] in my [bodypart.name] hurts!</span>")
+
+			if(prob(embedded.embedding.embedded_fall_chance))
+				bodypart.receive_damage(embedded.w_class*embedded.embedding.embedded_fall_pain_multiplier)
+				bodypart.remove_embedded_object(embedded)
+				to_chat(src,"<span class='danger'>[embedded] falls out of my [bodypart.name]!</span>")
 
 /*
 Alcohol Poisoning Chart

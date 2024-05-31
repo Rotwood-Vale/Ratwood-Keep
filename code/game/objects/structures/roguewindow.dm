@@ -40,15 +40,15 @@
 
 /obj/structure/roguewindow/stained/silver
 	icon_state = "stained-silver"
-	base_state = "stained-silverbr"
+	base_state = "stained-silver"
 
 /obj/structure/roguewindow/stained/yellow
 	icon_state = "stained-yellow"
-	base_state = "stained-yellowbr"
+	base_state = "stained-yellow"
 	
 /obj/structure/roguewindow/stained/zizo
 	icon_state = "stained-zizo"
-	base_state = "stained-zizobr"
+	base_state = "stained-zizo"
 
 /obj/structure/roguewindow/openclose
 	icon_state = "woodwindowdir"

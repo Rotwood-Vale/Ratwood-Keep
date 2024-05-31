@@ -2,6 +2,7 @@
 
 /datum/advclass/minermaster
 	name = "Master Miner"
+	tutorial = "A master miner, you are capable of cutting stone like butter, and forging rocks into anything you can think of"
 	allowed_sexes = list("male")
 	allowed_races = list(/datum/species/dwarf/mountain)
 	outfit = /datum/outfit/job/roguetown/adventurer/minermaster
@@ -22,7 +23,8 @@
 	beltl = /obj/item/rogueweapon/pick
 	backl = /obj/item/storage/backpack/rogue/backpack
 	if(H.mind)
-		H.mind.adjust_skillrank(/datum/skill/combat/axesmaces, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/axes, 2, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/maces, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/craft/crafting, 4, TRUE)

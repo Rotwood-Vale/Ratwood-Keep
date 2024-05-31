@@ -6,7 +6,7 @@
 		/datum/species/tieberian,
 		)
 	outfit = /datum/outfit/job/roguetown/adventurer/crusader
-	traits_applied = list(RTRAIT_HEAVYARMOR)
+	traits_applied = list(TRAIT_HEAVYARMOR)
 	special_req = TRUE
 	maxchosen = 0
 	isvillager = FALSE
@@ -20,7 +20,7 @@
 
 /datum/outfit/job/roguetown/adventurer/crusader/pre_equip(mob/living/carbon/human/H)
 	..()
-	H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 3, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 2, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 1, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 1, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/combat/swords, 4, TRUE)
@@ -61,9 +61,7 @@
 				belt = /obj/item/storage/belt/rogue/leather/plaquesilver
 
 	if(H.gender == FEMALE)
-		backl = /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow
 		backr = /obj/item/storage/backpack/rogue/satchel
-		beltr = /obj/item/quiver/bolts
 		gloves = null
 		shoes = /obj/item/clothing/shoes/roguetown/boots/leather
 		backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger/silver = 1, /obj/item/storage/belt/rogue/pouch/coins/rich=1)

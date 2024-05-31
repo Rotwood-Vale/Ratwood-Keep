@@ -83,7 +83,7 @@
 			return
 		if(H.pulling && iscarbon(H.pulling))
 			var/mob/living/carbon/victim = H.pulling
-			if(H.blood_volume >= BLOOD_VOLUME_MAXIMUM)
+			if(H.blood_volume >= BLOOD_VOLUME_NORMAL)
 				to_chat(H, "<span class='warning'>You're already full!</span>")
 				return
 			if(victim.stat == DEAD)

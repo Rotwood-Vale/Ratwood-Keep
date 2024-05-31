@@ -6,7 +6,7 @@
 	allowed_sexes = list("male", "female")
 	allowed_races = list(/datum/species/dwarf/mountain)
 	outfit = /datum/outfit/job/roguetown/adventurer/dranger
-	traits_applied = list(RTRAIT_MEDIUMARMOR)
+	traits_applied = list(TRAIT_MEDIUMARMOR)
 
 /datum/outfit/job/roguetown/adventurer/dranger/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -28,7 +28,7 @@
 	if(prob(23))
 		shoes = /obj/item/clothing/shoes/roguetown/boots/leather
 	cloak = /obj/item/clothing/cloak/raincloak/brown
-	H.mind.adjust_skillrank(/datum/skill/combat/axesmaces, 2, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/combat/axes, 2, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/craft/crafting, 2, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/swimming, 1, TRUE)

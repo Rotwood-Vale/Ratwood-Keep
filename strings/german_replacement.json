@@ -33,7 +33,7 @@
         "love": "liebe",
         "mom": "mutter",
         "my": "mein",
-        "no": "nein",
+        "no ": "nein ",
         "old": "alt",
 		"shit": "scheiße",
         "shield": "schild",
@@ -55,9 +55,9 @@
         "yes": "ja",
         "young": "jung",
 		"soldier": "soldat",
-		"knight": "cavalier",
-		"kingdom": "reich",
-		"king": "kaiser",
+		"knight": "ritter",
+		"kingdom": "königreich",
+		"king": "könig",
 		"princess": "prinzess",
 		"prince": "prinz",
 		"dwarf": "zwarf",
@@ -65,10 +65,25 @@
 		"wizard": "vizard",
 		"witch": "vitch",
 		"beast": "biest",
-		"forest": "forst",
+		"forest": [
+            "wald",
+            "forst"
+        ],
 		"necromancer": "nekromant",
 		"demon": "dämon",
 		"vampire": "vampir",
-		"goblin": "kobold"
+		"goblin": "kobold",
+        "black": "schwarz",
+        "church": "kirche",
+        "is ": "ist ",
+        "queen": "königin",
+        "bog": [
+            "moor",
+            "sumpf"
+        ],
+        "town": "stadt",
+        "an ": "eine ",
+        "fellow": "kollege",
+        "colleague": "kollege"
     }
 }

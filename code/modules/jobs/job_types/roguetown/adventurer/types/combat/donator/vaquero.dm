@@ -6,6 +6,7 @@
 	allowed_races = list(/datum/species/tieberian)
 	outfit = /datum/outfit/job/roguetown/adventurer/vaquero
 	horse = /mob/living/simple_animal/hostile/retaliate/rogue/saigabuck/tame/saddled
+	cmode_music = 'sound/music/combat_vaquero.ogg'
 
 /datum/advclass/vaquero/equipme(mob/living/carbon/human/H)
 	if(H.gender == FEMALE)
@@ -14,8 +15,8 @@
 
 /datum/outfit/job/roguetown/adventurer/vaquero/pre_equip(mob/living/carbon/human/H)
 	..()
-	H.mind.adjust_skillrank(/datum/skill/combat/swords, 4, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/combat/axesmaces, 1, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/combat/swords, 3, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/combat/maces, 1, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 2, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/combat/bows, 2, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/athletics, 2, TRUE)
@@ -40,8 +41,14 @@
 	belt = /obj/item/storage/belt/rogue/leather
 	armor = /obj/item/clothing/suit/roguetown/armor/leather/vest
 	cloak = /obj/item/clothing/cloak/half/red
+	if(prob(33))
+		cloak = /obj/item/clothing/cloak/half
+	if(prob(33))
+		cloak = /obj/item/clothing/cloak/half/orange
 	backl = /obj/item/storage/backpack/rogue/satchel
 	beltl = /obj/item/rogueweapon/sword/rapier
+	backr = /obj/item/rogue/instrument/guitar
+	backpack_contents = list(/obj/item/storage/belt/rogue/pouch/coins/poor = 1, /obj/item/rogueweapon/huntingknife/idagger/steel = 1)
 	H.change_stat("intelligence", 2)
 	H.change_stat("endurance", 2)
 	H.change_stat("speed", 2)

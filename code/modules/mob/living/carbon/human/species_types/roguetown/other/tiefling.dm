@@ -26,7 +26,7 @@
 	skinned_type = /obj/item/stack/sheet/animalhide/human
 	disliked_food = NONE
 	liked_food = NONE
-	possible_ages = list(AGE_ADULT, AGE_MIDDLEAGED, AGE_OLD)
+	possible_ages = list(AGE_YOUNG, AGE_ADULT, AGE_MIDDLEAGED, AGE_OLD)
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
 	limbs_icon_m = 'icons/roguetown/mob/bodies/m/mt.dmi'
 	limbs_icon_f = 'icons/roguetown/mob/bodies/f/fm.dmi'
@@ -81,15 +81,35 @@
 	body_markings = list(
 	)
 
-
-/datum/species/tieberian/check_roundstart_eligible()
-	return TRUE
-
 /datum/species/tieberian/on_species_gain(mob/living/carbon/C, datum/species/old_species)
 	..()
 	RegisterSignal(C, COMSIG_MOB_SAY, PROC_REF(handle_speech))
 	C.grant_language(/datum/language/common)
 	C.grant_language(/datum/language/hellspeak)
+
+	var/mob/living/carbon/human/species/tieberian/H = C
+	if(H.age == AGE_YOUNG)
+		offset_features = list(OFFSET_ID = list(0,-1), OFFSET_GLOVES = list(0,-1), OFFSET_WRISTS = list(0,-1),\
+		OFFSET_CLOAK = list(0,-1), OFFSET_FACEMASK = list(0,-1), OFFSET_HEAD = list(0,-1), \
+		OFFSET_FACE = list(0,-1), OFFSET_BELT = list(0,-1), OFFSET_BACK = list(0,-1), \
+		OFFSET_NECK = list(0,-1), OFFSET_MOUTH = list(0,-1), OFFSET_PANTS = list(0,-1), \
+		OFFSET_SHIRT = list(0,-1), OFFSET_ARMOR = list(0,-1), OFFSET_HANDS = list(0,-1), OFFSET_UNDIES = list(0,-1), \
+		OFFSET_ID_F = list(0,-1), OFFSET_GLOVES_F = list(0,-1), OFFSET_WRISTS_F = list(0,-1), OFFSET_HANDS_F = list(0,-2), \
+		OFFSET_CLOAK_F = list(0,-1), OFFSET_FACEMASK_F = list(0,-2), OFFSET_HEAD_F = list(0,-2), \
+		OFFSET_FACE_F = list(0,-2), OFFSET_BELT_F = list(0,-1), OFFSET_BACK_F = list(0,-2), \
+		OFFSET_NECK_F = list(0,-2), OFFSET_MOUTH_F = list(0,-2), OFFSET_PANTS_F = list(0,-1), \
+		OFFSET_SHIRT_F = list(0,-1), OFFSET_ARMOR_F = list(0,-1), OFFSET_UNDIES_F = list(0,-1))
+
+		limbs_icon_m = 'icons/roguetown/mob/bodies/m/mts.dmi'
+		limbs_icon_f = 'icons/roguetown/mob/bodies/f/fs.dmi'
+		
+		hairyness = null
+
+//		soundpack_m = new /datum/voicepack/male/young()
+		H.has_stubble = FALSE
+		H.facial_hairstyle = "None"
+		H.update_hair()
+		H.update_body()
 
 /datum/species/tieberian/after_creation(mob/living/carbon/C)
 	..()
@@ -101,26 +121,6 @@
 	. = ..()
 	UnregisterSignal(C, COMSIG_MOB_SAY)
 	C.remove_language(/datum/language/hellspeak)
-
-/datum/species/tieberian/handle_speech(datum/source, mob/speech_args)
-	. = ..()
-	var/message = speech_args[SPEECH_MESSAGE]
-	if(message)
-		if(message[1])
-			if(message[1] != "*")
-				message = " [message]"
-				var/list/accent_words = strings("accent_universal.json", "universal")
-
-				for(var/key in accent_words)
-					var/value = accent_words[key]
-					if(islist(value))
-						value = pick(value)
-
-					message = replacetextEx(message, " [uppertext(key)]", " [uppertext(value)]")
-					message = replacetextEx(message, " [capitalize(key)]", " [capitalize(value)]")
-					message = replacetextEx(message, " [key]", " [value]")
-
-	speech_args[SPEECH_MESSAGE] = trim(message)
 
 /datum/species/tieberian/qualifies_for_rank(rank, list/features)
 	return TRUE

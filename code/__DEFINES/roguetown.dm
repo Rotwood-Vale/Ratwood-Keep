@@ -52,8 +52,12 @@
 	/datum/species/dracon,\
 	/datum/species/anthromorph,\
 )
+#define ALL_CLERIC_PATRONS list(/datum/patron/divine/astrata, /datum/patron/divine/noc, /datum/patron/divine/dendor, /datum/patron/divine/necra, /datum/patron/divine/pestra)
 
-#define ALL_PATRON_NAMES_LIST		list("Astrata", "Noc", "Xylix", "Eora", "Malum", "Dendor", "Abyssor", "Necra", "Pestra", "Malum", "Ravox")
+#define ALL_ACOLYTE_PATRONS list(/datum/patron/divine/astrata, /datum/patron/divine/noc, /datum/patron/divine/dendor, /datum/patron/divine/pestra)
+
+#define ALL_DIVINE_PATRONS list(/datum/patron/divine/astrata, /datum/patron/divine/noc, /datum/patron/divine/dendor, /datum/patron/divine/abyssor, /datum/patron/divine/ravox, /datum/patron/divine/necra, /datum/patron/divine/xylix, /datum/patron/divine/pestra, /datum/patron/divine/malum)
+
 
 #define PLATEHIT "plate"
 #define CHAINHIT "chain"
@@ -92,38 +96,5 @@ GLOBAL_LIST_INIT(wolf_suffixes, list("Fang", "Claw", "Stalker", "Prowler", "Roar
 #define FAMILY_PARTIAL 2
 #define FAMILY_FULL 3
 
-#define FAITH_NONE 0
-#define FAITH_PSYDON 1
-#define FAITH_ELF 2
-#define FAITH_DWARF 3
-#define FAITH_SPIDER 4
-#define FAITH_ZIZO 5
-
-/proc/get_faith_name(faith)
-	switch(faith)
-		if(FAITH_PSYDON)
-			return "Father-Son"
-		if(FAITH_ELF)
-			return "Elfish Pantheon"
-		if(FAITH_DWARF)
-			return "Dwarfish Paganism"
-		if(FAITH_SPIDER)
-			return "Spider Queen"
-		if(FAITH_ZIZO)
-			return "Zizo"
-
-/proc/get_faith_desc(faith)
-	switch(faith)
-		if(FAITH_PSYDON)
-			return "You believe in the Father-Son. Only through His sun SAVIOR PSYDON may you join His golden kingdom in death."
-		if(FAITH_ELF)
-			return "You believe in the FAERIE PANTHEON, may Brother Courage and Sister Pride protect you from the wrath of the Trickster."
-		if(FAITH_DWARF)
-			return "By rock, you believe in DWARFISH PAGANISM! Only by respecting the gods of soil and water may you survive this week."
-		if(FAITH_SPIDER)
-			return "You pledged your faith in the SPIDER QUEEN, a godlike creature who ruled the Under-World before her untimely death."
-		if(FAITH_ZIZO)
-			return "You are a disgusting slave of ZIZO! Let the scum of creation die in obscene ways as your beautiful evil turns the world dark and miserable."
-
-
 GLOBAL_LIST_EMPTY(sunlights)
+GLOBAL_LIST_EMPTY(head_bounties)

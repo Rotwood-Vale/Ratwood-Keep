@@ -93,6 +93,7 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 	mouse_drag_pointer = MOUSE_ACTIVE_POINTER //the icon to indicate this object is being dragged
 
 	var/datum/embedding_behavior/embedding
+	var/is_embedded = FALSE
 
 	var/flags_cover = 0 //for flags such as GLASSESCOVERSEYES
 	var/heat = 0
@@ -199,8 +200,8 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 	///played when an item that is equipped blocks a hit
 	var/list/blocksound 
 
-/obj/item/New()
-	..()
+/obj/item/Initialize()
+	. = ..()
 	if(!pixel_x && !pixel_y && !bigboy)
 		pixel_x = rand(-5,5)
 		pixel_y = rand(-5,5)
@@ -307,8 +308,13 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 	if(sharpness) //give sharp objects butchering functionality, for consistency
 		AddComponent(/datum/component/butchering, 80 * toolspeed)
 
-	if(max_blade_int && !blade_int) //set blade integrity to randomized 60% to 100% if not already set
-		blade_int = max_blade_int + rand(-(max_blade_int * 0.4), 0)
+	if(max_blade_int) 
+		//set blade integrity to randomized 60% to 100% if not already set
+		if(!blade_int)
+			blade_int = max_blade_int + rand(-(max_blade_int * 0.4), 0)
+		//set dismemberment integrity to max_blade_int if not already set
+		if(!dismember_blade_int)
+			dismember_blade_int = max_blade_int
 
 /obj/item/Destroy()
 	item_flags &= ~DROPDEL	//prevent reqdels
@@ -317,6 +323,13 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 		m.temporarilyRemoveItemFromInventory(src, TRUE)
 	for(var/X in actions)
 		qdel(X)
+	if(is_embedded)
+		if(isbodypart(loc))
+			var/obj/item/bodypart/embedded_part = loc
+			embedded_part.remove_embedded_object(src)
+		else if(isliving(loc))
+			var/mob/living/embedded_mob = loc
+			embedded_mob.simple_remove_embedded_object(src)
 	return ..()
 
 /obj/item/proc/check_allowed_items(atom/target, not_inside, target_self)
@@ -367,7 +380,7 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 			inspec += "\n<b>MIN.STR:</b> [minstr]"
 
 		if(wbalance)
-			inspec += "\n<b>BALANCE:</b>"
+			inspec += "\n<b>BALANCE: </b>"
 			if(wbalance < 0)
 				inspec += "Heavy"
 			if(wbalance > 0)
@@ -904,20 +917,25 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 
 ///Returns the sharpness of src. If you want to get the sharpness of an item use this.
 /obj/item/proc/get_sharpness()
+	//Oh no, we are dulled out
+	if(max_blade_int && (blade_int <= 0))
+		return FALSE
+	var/max_sharp = sharpness
 	for(var/X in possible_item_intents)
 		var/datum/intent/D = new X()
 		if(D.blade_class == BCLASS_CUT)
-			return TRUE
+			max_sharp = max(max_sharp, IS_SHARP)
 		if(D.blade_class == BCLASS_CHOP)
-			return TRUE
-	return sharpness
+			max_sharp = max(max_sharp, IS_SHARP)
+	return max_sharp
 
 /obj/item/proc/get_dismemberment_chance(obj/item/bodypart/affecting, input)
+	if(!affecting.can_dismember(src))
+		return 0
 	if(!input)
 		input = force
-	if(affecting.can_dismember(src))
-		if((sharpness || damtype == BURN) && w_class >= WEIGHT_CLASS_NORMAL && input >= 10)
-			. = force * (affecting.get_damage() / affecting.max_damage)
+	if((sharpness || damtype == BURN) && w_class >= WEIGHT_CLASS_NORMAL && input >= 10)
+		return force * (affecting.get_damage() / affecting.max_damage)
 
 /obj/item/proc/get_dismember_sound()
 	if(damtype == BURN)

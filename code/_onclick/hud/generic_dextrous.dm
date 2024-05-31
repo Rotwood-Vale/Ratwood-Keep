@@ -2,84 +2,84 @@
 /datum/hud/dextrous/New(mob/living/owner)
 
 	..()
-	owner.overlay_fullscreen("see_through_darkness", /obj/screen/fullscreen/see_through_darkness)
+	owner.overlay_fullscreen("see_through_darkness", /atom/movable/screen/fullscreen/see_through_darkness)
 /*
 	var/widescreen_layout = FALSE
 	if(owner.client?.prefs?.widescreenpref)
 		widescreen_layout = FALSE
 */
-	var/obj/screen/using
-	var/obj/screen/inventory/inv_box
+	var/atom/movable/screen/using
+	var/atom/movable/screen/inventory/inv_box
 
 	ui_style = ui_style
 
 	//Rogue Slots /////////////////////////////////
 
-	grain = new /obj/screen/grain
+	grain = new /atom/movable/screen/grain
 	grain.hud = src
 	static_inventory += grain
 
-	scannies = new /obj/screen/scannies
+	scannies = new /atom/movable/screen/scannies
 	scannies.hud = src
 	static_inventory += scannies
 
-	action_intent = new /obj/screen/act_intent/rogintent
+	action_intent = new /atom/movable/screen/act_intent/rogintent
 	action_intent.hud = src
 	action_intent.screen_loc = rogueui_intents
 	static_inventory += action_intent
 
-//	clock = new /obj/screen/time
+//	clock = new /atom/movable/screen/time
 //	clock.hud = src
 //	clock.screen_loc = rogueui_clock
 //	static_inventory += clock
 
-	bloods = new /obj/screen/healths/blood
+	bloods = new /atom/movable/screen/healths/blood
 	bloods.hud = src
 	bloods.screen_loc = rogueui_blood
 	static_inventory += bloods
 
-	quad_intents = new /obj/screen/quad_intents
+	quad_intents = new /atom/movable/screen/quad_intents
 	quad_intents.hud = src
 	static_inventory += quad_intents
 
-	def_intent = new /obj/screen/def_intent
+	def_intent = new /atom/movable/screen/def_intent
 	def_intent.hud = src
 	static_inventory += def_intent
 
-	give_intent = new /obj/screen/give_intent
+	give_intent = new /atom/movable/screen/give_intent
 	give_intent.hud = src
 	static_inventory += give_intent
 
-	backhudl =  new /obj/screen/backhudl()
+	backhudl =  new /atom/movable/screen/backhudl()
 	backhudl.hud = src
 	static_inventory += backhudl
 
-	hsover =  new /obj/screen/heatstamover()
+	hsover =  new /atom/movable/screen/heatstamover()
 	hsover.hud = src
 	static_inventory += hsover
 
-	fov = new /obj/screen/fov()
+	fov = new /atom/movable/screen/fov()
 	fov.hud = src
 	static_inventory += fov
 
-	cdleft = new /obj/screen/action_bar/clickdelay/left()
+	cdleft = new /atom/movable/screen/action_bar/clickdelay/left()
 	cdleft.hud = src
 	cdleft.screen_loc = "WEST-3:-16,SOUTH+7"
 	static_inventory += cdleft
 
-	cdright = new /obj/screen/action_bar/clickdelay/right()
+	cdright = new /atom/movable/screen/action_bar/clickdelay/right()
 	cdright.hud = src
 	cdright.screen_loc = "WEST-2:-16,SOUTH+7"
 	static_inventory += cdright
 
-	cdmid = new /obj/screen/action_bar/clickdelay()
+	cdmid = new /atom/movable/screen/action_bar/clickdelay()
 	cdmid.hud = src
 	cdmid.screen_loc = "WEST-3:0,SOUTH+7"
 	static_inventory += cdmid
 
 	build_hand_slots()
 
-	inv_box = new /obj/screen/inventory()
+	inv_box = new /atom/movable/screen/inventory()
 	inv_box.name = "ring"
 	inv_box.icon = ui_style
 	inv_box.icon_state = "ring"
@@ -88,7 +88,7 @@
 	inv_box.hud = src
 	static_inventory += inv_box
 
-	inv_box = new /obj/screen/inventory()
+	inv_box = new /atom/movable/screen/inventory()
 	inv_box.name = "wrists"
 	inv_box.icon = ui_style
 	inv_box.icon_state = "wrist"
@@ -97,7 +97,7 @@
 	inv_box.hud = src
 	static_inventory += inv_box
 
-	inv_box = new /obj/screen/inventory()
+	inv_box = new /atom/movable/screen/inventory()
 	inv_box.name = "mask"
 	inv_box.icon = ui_style
 	inv_box.icon_state = "mask"
@@ -106,7 +106,7 @@
 	inv_box.hud = src
 	static_inventory += inv_box
 
-	inv_box = new /obj/screen/inventory()
+	inv_box = new /atom/movable/screen/inventory()
 	inv_box.name = "neck"
 	inv_box.icon = ui_style
 	inv_box.icon_state = "neck"
@@ -115,7 +115,7 @@
 	inv_box.hud = src
 	static_inventory += inv_box
 
-	inv_box = new /obj/screen/inventory()
+	inv_box = new /atom/movable/screen/inventory()
 	inv_box.name = "backl"
 	inv_box.icon = ui_style
 	inv_box.icon_state = "back"
@@ -124,7 +124,7 @@
 	inv_box.hud = src
 	static_inventory += inv_box
 
-	inv_box = new /obj/screen/inventory()
+	inv_box = new /atom/movable/screen/inventory()
 	inv_box.name = "backr"
 	inv_box.icon = ui_style
 	inv_box.icon_state = "back"
@@ -133,7 +133,7 @@
 	inv_box.hud = src
 	static_inventory += inv_box
 
-	inv_box = new /obj/screen/inventory()
+	inv_box = new /atom/movable/screen/inventory()
 	inv_box.name = "gloves"
 	inv_box.icon = ui_style
 	inv_box.icon_state = "gloves"
@@ -142,7 +142,7 @@
 	inv_box.hud = src
 	static_inventory += inv_box
 
-	inv_box = new /obj/screen/inventory()
+	inv_box = new /atom/movable/screen/inventory()
 	inv_box.name = "head"
 	inv_box.icon = ui_style
 	inv_box.icon_state = "head"
@@ -151,7 +151,7 @@
 	inv_box.hud = src
 	static_inventory += inv_box
 
-	inv_box = new /obj/screen/inventory()
+	inv_box = new /atom/movable/screen/inventory()
 	inv_box.name = "shoes"
 	inv_box.icon = ui_style
 	inv_box.icon_state = "shoes"
@@ -160,7 +160,7 @@
 	inv_box.hud = src
 	static_inventory += inv_box
 
-	inv_box = new /obj/screen/inventory()
+	inv_box = new /atom/movable/screen/inventory()
 	inv_box.name = "belt"
 	inv_box.icon = ui_style
 	inv_box.icon_state = "belt"
@@ -169,7 +169,7 @@
 	inv_box.hud = src
 	static_inventory += inv_box
 
-	inv_box = new /obj/screen/inventory()
+	inv_box = new /atom/movable/screen/inventory()
 	inv_box.name = "hip r"
 	inv_box.icon = ui_style
 	inv_box.icon_state = "hip"
@@ -178,7 +178,7 @@
 	inv_box.hud = src
 	static_inventory += inv_box
 
-	inv_box = new /obj/screen/inventory()
+	inv_box = new /atom/movable/screen/inventory()
 	inv_box.name = "hip l"
 	inv_box.icon = ui_style
 	inv_box.icon_state = "hip"
@@ -187,7 +187,7 @@
 	inv_box.hud = src
 	static_inventory += inv_box
 
-	inv_box = new /obj/screen/inventory()
+	inv_box = new /atom/movable/screen/inventory()
 	inv_box.name = "shirt"
 	inv_box.icon = ui_style
 	inv_box.icon_state = "shirt"
@@ -196,7 +196,7 @@
 	inv_box.hud = src
 	static_inventory += inv_box
 
-	inv_box = new /obj/screen/inventory()
+	inv_box = new /atom/movable/screen/inventory()
 	inv_box.name = "trou"
 	inv_box.icon = ui_style
 	inv_box.icon_state = "pants"
@@ -205,7 +205,7 @@
 	inv_box.hud = src
 	static_inventory += inv_box
 
-	inv_box = new /obj/screen/inventory()
+	inv_box = new /atom/movable/screen/inventory()
 	inv_box.name = "armor"
 	inv_box.icon = ui_style
 	inv_box.icon_state = "armor"
@@ -214,7 +214,7 @@
 	inv_box.hud = src
 	static_inventory += inv_box
 
-	inv_box = new /obj/screen/inventory()
+	inv_box = new /atom/movable/screen/inventory()
 	inv_box.name = "cloak"
 	inv_box.icon = ui_style
 	inv_box.icon_state = "cloak"
@@ -223,7 +223,7 @@
 	inv_box.hud = src
 	static_inventory += inv_box
 
-	inv_box = new /obj/screen/inventory()
+	inv_box = new /atom/movable/screen/inventory()
 	inv_box.name = "mouth"
 	inv_box.icon = ui_style
 	inv_box.icon_state = "mouth"
@@ -232,73 +232,73 @@
 	inv_box.hud = src
 	static_inventory += inv_box
 
-	using = new /obj/screen/drop()
+	using = new /atom/movable/screen/drop()
 	using.icon = ui_style
 	using.screen_loc = rogueui_drop
 	using.hud = src
 	static_inventory += using
 
-	throw_icon = new /obj/screen/throw_catch()
+	throw_icon = new /atom/movable/screen/throw_catch()
 	throw_icon.icon = ui_style
 	throw_icon.screen_loc = rogueui_throw
 	throw_icon.hud = src
 	hotkeybuttons += throw_icon
 
-	using = new /obj/screen/restup()
+	using = new /atom/movable/screen/restup()
 	using.icon = ui_style
 	using.screen_loc = rogueui_stance
 	using.hud = src
 	static_inventory += using
 
-	using = new /obj/screen/restdown()
+	using = new /atom/movable/screen/restdown()
 	using.icon = ui_style
 	using.screen_loc = rogueui_stance
 	using.hud = src
 	static_inventory += using
 
-	using = new/obj/screen/skills
+	using = new/atom/movable/screen/skills
 	using.icon = ui_style
 	using.screen_loc = rogueui_skills
 	static_inventory += using
 
-	using = new/obj/screen/craft
+	using = new/atom/movable/screen/craft
 	using.icon = ui_style
 	using.screen_loc = rogueui_craft
 	static_inventory += using
 
 
-//	using = new /obj/screen/resist()
+//	using = new /atom/movable/screen/resist()
 //	using.icon = ui_style
 //	using.screen_loc = rogueui_resist
 //	using.hud = src
 //	hotkeybuttons += using
 
 //sneak button
-	using = new /obj/screen/rogmove
+	using = new /atom/movable/screen/rogmove
 	using.screen_loc = rogueui_moves
 	using.hud = src
 	static_inventory += using
 	using.update_icon_state()
 //sprint button
-	using = new /obj/screen/rogmove/sprint
+	using = new /atom/movable/screen/rogmove/sprint
 	using.screen_loc = rogueui_moves
 	using.hud = src
 	static_inventory += using
 	using.update_icon_state()
 
-	using = new /obj/screen/eye_intent
+	using = new /atom/movable/screen/eye_intent
 	using.icon = ui_style
 	using.icon_state = "eye"
 	using.screen_loc = rogueui_eye
 	using.hud = src
 	static_inventory += using
 /*
-	healthdoll = new /obj/screen/healthdoll()
+	healthdoll = new /atom/movable/screen/healthdoll()
 	healthdoll.icon = ui_style
 	healthdoll.hud = src
 	infodisplay += healthdoll
 */
-	zone_select =  new /obj/screen/zone_sel()
+	zone_select =  new /atom/movable/screen/zone_sel()
 	zone_select.icon = 'icons/mob/roguehud64.dmi'
 	zone_select.screen_loc = rogueui_targetdoll
 	zone_select.update_icon()
@@ -307,13 +307,13 @@
 
 	zone_select.update_icon()
 
-	fats = new /obj/screen/rogfat()
+	fats = new /atom/movable/screen/rogfat()
 	infodisplay += fats
 
-	stams = new /obj/screen/rogstam()
+	stams = new /atom/movable/screen/rogstam()
 	infodisplay += stams
 
-	for(var/obj/screen/inventory/inv in (static_inventory + toggleable_inventory))
+	for(var/atom/movable/screen/inventory/inv in (static_inventory + toggleable_inventory))
 		if(inv.slot_id)
 			inv.hud = src
 			inv_slots[inv.slot_id] = inv

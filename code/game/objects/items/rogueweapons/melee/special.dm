@@ -12,7 +12,7 @@
 	wlength = WLENGTH_NORMAL
 	w_class = WEIGHT_CLASS_NORMAL
 	slot_flags = ITEM_SLOT_HIP
-	associated_skill = /datum/skill/combat/axesmaces
+	associated_skill = /datum/skill/combat/maces
 	smeltresult = /obj/item/ingot/iron
 	swingsound = BLUNTWOOSH_MED
 	minstr = 5
@@ -50,7 +50,7 @@
 		user.visible_message("<span class='warning'>[user] points [src] at [target].</span>")
 		if(ishuman(user))
 			var/mob/living/carbon/human/HU = user
-			if((HU.job != "King") && (HU.job != "Queen"))
+			if((HU.job != "King") && (HU.job != "Queen Consort"))
 				return
 			if(ishuman(target))
 				var/mob/living/carbon/human/H = target

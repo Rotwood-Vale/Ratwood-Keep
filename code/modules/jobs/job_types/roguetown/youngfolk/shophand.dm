@@ -8,7 +8,7 @@
 
 	allowed_races = ALL_RACES_TYPES
 	allowed_sexes = list(MALE, FEMALE)
-	allowed_ages = list(AGE_YOUNG)
+	allowed_ages = YOUNG_AGES_LIST
 
 	tutorial = "The Merchant has taken you under his wing to learn the arcane arts of mercantilism, numeracy, literacy, and the joy of organizing the shelves. It is mind numbing and repetitive, but at least you have a roof over your head and comfortable surroundings. Given time, perhaps you will run the town's barter."
 
@@ -16,10 +16,13 @@
 	display_order = JDO_SHOPHAND
 	give_bank_account = TRUE
 	min_pq = -10
+	max_pq = null
+
+	cmode_music = 'sound/music/combat_giza.ogg'
 
 /datum/outfit/job/roguetown/shophand/pre_equip(mob/living/carbon/human/H)
 	..()
-	ADD_TRAIT(H, RTRAIT_SEEPRICES_SHITTY, "[type]")
+	ADD_TRAIT(H, TRAIT_SEEPRICES_SHITTY, "[type]")
 	if(H.gender == MALE)
 		pants = /obj/item/clothing/under/roguetown/tights
 		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt

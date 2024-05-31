@@ -15,4 +15,4 @@
 			W.add_bintegrity(999)
 //				W.degrade_bintegrity(1)
 		return
-	..()
+	. = ..()

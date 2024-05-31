@@ -10,8 +10,8 @@
 	var/status_type = STATUS_EFFECT_UNIQUE //How many of the effect can be on one mob, and what happens when you try to add another
 	var/on_remove_on_mob_delete = FALSE //if we call on_remove() when the mob is deleted
 	var/examine_text //If defined, this text will appear when the mob is examined - to use he, she etc. use "SUBJECTPRONOUN" and replace it in the examines themselves
-	var/alert_type = /obj/screen/alert/status_effect //the alert thrown by the status effect, contains name and description
-	var/obj/screen/alert/status_effect/linked_alert = null //the alert itself, if it exists
+	var/alert_type = /atom/movable/screen/alert/status_effect //the alert thrown by the status effect, contains name and description
+	var/atom/movable/screen/alert/status_effect/linked_alert = null //the alert itself, if it exists
 	var/list/effectedstats = list()
 
 /datum/status_effect/New(list/arguments)
@@ -30,7 +30,7 @@
 		duration = world.time + duration
 	tick_interval = world.time + tick_interval
 	if(alert_type)
-		var/obj/screen/alert/status_effect/A = owner.throw_alert(id, alert_type)
+		var/atom/movable/screen/alert/status_effect/A = owner.throw_alert(id, alert_type)
 		A.attached_effect = src //so the alert can reference us, if it needs to
 		linked_alert = A //so we can reference the alert, if we need to
 	START_PROCESSING(SSfastprocess, src)
@@ -91,12 +91,12 @@
 // ALERT HOOK //
 ////////////////
 
-/obj/screen/alert/status_effect
+/atom/movable/screen/alert/status_effect
 	name = "Curse of Mundanity"
 	desc = ""
 	var/datum/status_effect/attached_effect
 
-/obj/screen/alert/status_effect/examine_ui(mob/user)
+/atom/movable/screen/alert/status_effect/examine_ui(mob/user)
 	var/list/inspec = list("----------------------")
 	inspec += "<br><span class='notice'><b>[name]</b></span>"
 	if(desc)

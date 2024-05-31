@@ -7,7 +7,7 @@
 	spawn_positions = 2
 	allowed_races = ALL_RACES_TYPES //same shit as town guard
 	allowed_sexes = list(MALE)
-	allowed_ages = list(AGE_YOUNG)
+	allowed_ages = YOUNG_AGES_LIST
 
 	tutorial = "Mom 'n' Da said you were going to be something, they had better aspirations for you than the life of a peasant. You practiced the basics in the field alongside your friends, swordfighting with sticks, chasing rabbits with grain flail, and helping around the house lifting heavy bags of grain. The Knight took notice of your potential and brought you on as his personal ward. You're going to be something someday. "
 
@@ -15,6 +15,7 @@
 	display_order = JDO_SQUIRE
 	give_bank_account = TRUE
 	min_pq = -5 //squires aren't great but they can do some damage
+	max_pq = null
 
 /datum/outfit/job/roguetown/squire/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -27,7 +28,7 @@
 		beltr = /obj/item/storage/belt/rogue/pouch
 		backr = /obj/item/storage/backpack/rogue/satchel
 		if(H.mind)
-			H.mind.adjust_skillrank(/datum/skill/combat/axesmaces, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/maces, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/bows, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
@@ -51,13 +52,13 @@
 		beltr = /obj/item/storage/belt/rogue/pouch
 		backr = /obj/item/storage/backpack/rogue/satchel
 		if(H.mind)
-			H.mind.adjust_skillrank(/datum/skill/combat/axesmaces, 2, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/combat/bows, 2, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 1, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/maces, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/bows, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 2, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/swords, 2, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/knives, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/swimming, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/climbing, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/athletics, 1, TRUE)

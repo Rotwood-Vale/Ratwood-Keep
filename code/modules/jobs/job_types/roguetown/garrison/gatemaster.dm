@@ -1,51 +1,74 @@
-/datum/job/roguetown/watchman
+/datum/job/roguetown/gatemaster
 	title = "Gatemaster"
-	flag = WATCHMAN
+	flag = GATEMASTER
 	department_flag = GARRISON
 	faction = "Station"
 	total_positions = 1
 	spawn_positions = 1
-	allowed_sexes = list("male", "female")
+	allowed_sexes = list(MALE)
 	allowed_races = list(/datum/species/human/northern)
+	allowed_patrons = ALL_DIVINE_PATRONS
 	tutorial = "Tales speak of the Gatemaster's legendary ability to stand still at a gate and ask people questions."
 	display_order = JDO_GATEMASTER
 
-	outfit = /datum/outfit/job/roguetown/watchman
+	outfit = /datum/outfit/job/roguetown/gatemaster
 	give_bank_account = 3
 	min_pq = 4
+	max_pq = null
+	
+	cmode_music = 'sound/music/combat_guard.ogg'
 
-/datum/outfit/job/roguetown/watchman
-	name = "Gateman"
-	jobtype = /datum/job/roguetown/watchman
+/datum/job/roguetown/gatemaster/after_spawn(mob/living/L, mob/M, latejoin = TRUE)
+	..()
+	if(ishuman(L))
+		var/mob/living/carbon/human/H = L
+		if(istype(H.cloak, /obj/item/clothing/cloak/stabard/surcoat/guard))
+			var/obj/item/clothing/S = H.cloak
+			var/index = findtext(H.real_name, " ")
+			if(index)
+				index = copytext(H.real_name, 1,index)
+			if(!index)
+				index = H.real_name
+			S.name = "gatemaster jupon ([index])"
+/datum/outfit/job/roguetown/gatemaster
+	name = "Gatemaster"
+	jobtype = /datum/job/roguetown/gatemaster
 
-/datum/outfit/job/roguetown/watchman/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/job/roguetown/gatemaster/pre_equip(mob/living/carbon/human/H)
 	..()
 	head = /obj/item/clothing/head/roguetown/roguehood/red
-	pants = /obj/item/clothing/under/roguetown/trou/leather
-	cloak = /obj/item/clothing/cloak/stabard/guard
-	shirt = /obj/item/clothing/suit/roguetown/shirt/shortshirt/merc
-	armor = /obj/item/clothing/suit/roguetown/armor/chainmail
 	neck = /obj/item/clothing/neck/roguetown/gorget
-	shoes = /obj/item/clothing/shoes/roguetown/boots
-	beltl = /obj/item/keyring/gatemaster
-	belt = /obj/item/storage/belt/rogue/leather
-	beltr = /obj/item/rogueweapon/mace/cudgel
+	cloak = /obj/item/clothing/cloak/stabard/surcoat/guard
+	armor = /obj/item/clothing/suit/roguetown/armor/chainmail
+	shirt = /obj/item/clothing/suit/roguetown/armor/gambeson
+	pants = /obj/item/clothing/under/roguetown/chainlegs
+	gloves = /obj/item/clothing/gloves/roguetown/leather
 	wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
-	backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger/steel/special = 1)
+	shoes = /obj/item/clothing/shoes/roguetown/boots
+	belt = /obj/item/storage/belt/rogue/leather/black
+	beltl = /obj/item/rogueweapon/mace/cudgel
+	beltr = /obj/item/quiver/bolts
+	backr = /obj/item/storage/backpack/rogue/satchel/black
+	backl = /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow
+	backpack_contents = list(/obj/item/keyring/gatemaster = 1, /obj/item/rogueweapon/huntingknife/idagger/steel/special = 1, /obj/item/rope/chain = 1)
 	if(H.mind)
-		H.mind.adjust_skillrank(/datum/skill/combat/axesmaces, 2, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/combat/bows, 2, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 2, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 4, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 6, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/bows, 5, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/swords, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/polearms, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/maces, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/whipsflails, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/swimming, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/climbing, 2, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/athletics, 2, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
-		H.change_stat("strength", 1)
-		H.change_stat("perception", 1)
+		H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 1, TRUE) 
+		H.mind.adjust_skillrank(/datum/skill/misc/reading, 2, TRUE)
+		H.change_stat("strength", 2)
+		H.change_stat("perception", 2)
+		H.change_stat("constitution", 1)
 		H.change_stat("endurance", 1)
 		H.change_stat("speed", 1)
 	if(H.gender == FEMALE)
@@ -54,4 +77,6 @@
 			H.hairstyle = pick(acceptable)
 			H.update_hair()
 	H.verbs |= /mob/proc/haltyell
-	ADD_TRAIT(H, RTRAIT_HEAVYARMOR, TRAIT_GENERIC)
+	ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
+	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
+	ADD_TRAIT(H, TRAIT_STEELHEARTED, TRAIT_GENERIC)

@@ -1,0 +1,36 @@
+"a" = (/turf/closed/mineral/rogue,/area/rogue/under/town/sewer)
+"i" = (/turf/closed/wall/mineral/rogue/stonebrick,/area/rogue/under/town/sewer)
+"j" = (/obj/structure/spider/stickyweb,/turf/open/water/sewer,/area/rogue/under/town/sewer)
+"w" = (/obj/effect/decal/remains/human,/obj/effect/decal/remains/xeno/larva,/turf/open/floor/rogue/greenstone,/area/rogue/under/town/sewer)
+"C" = (/obj/structure/glowshroom,/turf/open/floor/rogue/greenstone,/area/rogue/under/town/sewer)
+"D" = (/obj/structure/spider/stickyweb,/turf/open/floor/rogue/greenstone,/area/rogue/under/town/sewer)
+"P" = (/mob/living/simple_animal/hostile/retaliate/rogue/bigrat,/turf/open/floor/rogue/greenstone,/area/rogue/under/town/sewer)
+"Q" = (/turf/open/floor/rogue/greenstone,/area/rogue/under/town/sewer)
+"R" = (/turf/open/water/sewer,/area/rogue/under/town/sewer)
+"S" = (/obj/structure/glowshroom,/turf/open/water/sewer,/area/rogue/under/town/sewer)
+"T" = (/obj/effect/spawner/lootdrop/roguetown/sewers,/turf/open/floor/rogue/greenstone,/area/rogue/under/town/sewer)
+"X" = (/mob/living/simple_animal/hostile/retaliate/rogue/bigrat,/turf/open/water/sewer,/area/rogue/under/town/sewer)
+
+(1,1,1) = {"
+iiiiiiiiiiiiii
+iaaaaaaaaaaaai
+iaaaaaaaaaaaai
+iaaaaaaaaaaaai
+iiiiiiiiiiiiii
+PQQQDQQTwQQQQP
+RRRRRRRRRRRSSj
+QQQQQQSRQQQQQD
+iiiiiQRSQiiiii
+iaaaiQRRQiaaai
+iaaaiQjRQiaaai
+iaaaiQXjQiaaai
+iaaaiQjRQiaaai
+iaaaiQRRQiaaai
+iaaaiQSSQiaaai
+iaaaiQSjQiaaai
+iaaaiCjRQiaaai
+iaaaiQRRQiaaai
+iaaaiQRRQiaaai
+iaaaiQRRQiaaai
+iiiiiPRRQiiiii
+"}

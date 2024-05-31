@@ -38,5 +38,5 @@
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user
 		H.restore_blood()
-		H.remove_all_embedded_objects()
+		H.spill_embedded_objects()
 	return TRUE

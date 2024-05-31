@@ -1,7 +1,7 @@
 /datum/job/roguetown/barkeep
 	title = "Barkeep"
 	flag = BARKEEP
-	department_flag = SERFS
+	department_flag = YEOMEN
 	faction = "Station"
 	total_positions = 1
 	spawn_positions = 1
@@ -14,6 +14,7 @@
 	display_order = JDO_BARKEEP
 	give_bank_account = 43
 	min_pq = -4
+	max_pq = null
 
 /datum/outfit/job/roguetown/barkeep/pre_equip(mob/living/carbon/human/H)
 	..()

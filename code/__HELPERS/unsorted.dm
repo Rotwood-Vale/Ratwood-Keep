@@ -667,9 +667,9 @@ Turf and target are separate in case you want to teleport some distance from a t
 	else if (zone == BODY_ZONE_PRECISE_EARS)	//we want the chatlog to say 'grabbed his ear' not 'grabbed his ears' etc
 		return "ear"
 	else if (zone == BODY_ZONE_PRECISE_R_EYE)
-		return "eyes"
+		return "right eye"
 	else if (zone == BODY_ZONE_PRECISE_L_EYE)
-		return "eyes"
+		return "left eye"
 	else if (zone == BODY_ZONE_PRECISE_NOSE)
 		return "nose"
 	else if (zone == BODY_ZONE_R_INHAND)
@@ -786,22 +786,12 @@ Turf and target are separate in case you want to teleport some distance from a t
 		loc = loc.loc
 	return null
 
-
-//For objects that should embed, but make no sense being is_sharp or is_pointed()
-//e.g: rods
-GLOBAL_LIST_INIT(can_embed_types, typecacheof(list(
-	/obj/item/stack/rods,
-	/obj/item/pipe)))
-
-/proc/can_embed(obj/item/W)
-	if(W.get_sharpness())
-		return 1
-	if(is_pointed(W))
-		return 1
-
-	if(is_type_in_typecache(W, GLOB.can_embed_types))
-		return 1
-
+/proc/can_embed(obj/item/weapon)
+	if(HAS_TRAIT(weapon, TRAIT_NODROP) || HAS_TRAIT(weapon, TRAIT_NOEMBED))
+		return FALSE
+	if(!weapon.embedding?.embed_chance)
+		return FALSE
+	return TRUE
 
 /*
 Checks if that loc and dir has an item on the wall

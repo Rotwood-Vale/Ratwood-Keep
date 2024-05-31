@@ -5,7 +5,7 @@
 	allowed_sexes = list("male", "female")
 	allowed_races = ALL_RACES_TYPES
 	outfit = /datum/outfit/job/roguetown/adventurer/torso
-	traits_applied = list(RTRAIT_HEAVYARMOR, RTRAIT_MEDIUMARMOR, TRAIT_STEELHEARTED)
+	traits_applied = list(TRAIT_HEAVYARMOR, TRAIT_MEDIUMARMOR, TRAIT_STEELHEARTED)
 	isvillager = FALSE
 	ispilgrim = TRUE
 
@@ -14,7 +14,7 @@
 	//insane stats, not like they benefit you until you get limbs
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/combat/swords, 4, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 4 ,TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 3 ,TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 6, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 6, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/swimming, 6, TRUE)

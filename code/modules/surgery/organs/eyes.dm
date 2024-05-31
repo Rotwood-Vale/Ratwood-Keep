@@ -53,6 +53,9 @@
 	eyes_dna.heterochromia = heterochromia
 	eyes_dna.second_color = second_color
 
+	var/left_poked = FALSE
+	var/right_poked = FALSE
+
 /obj/item/organ/eyes/Insert(mob/living/carbon/M, special = FALSE, drop_if_replaced = FALSE, initialising)
 	. = ..()
 	if(ishuman(owner))
@@ -94,9 +97,9 @@
 		if((organ_flags & ORGAN_FAILING))
 			C.become_blind(EYE_DAMAGE)
 		else if(damage > 30)
-			C.overlay_fullscreen("eye_damage", /obj/screen/fullscreen/impaired, 2)
+			C.overlay_fullscreen("eye_damage", /atom/movable/screen/fullscreen/impaired, 2)
 		else
-			C.overlay_fullscreen("eye_damage", /obj/screen/fullscreen/impaired, 1)
+			C.overlay_fullscreen("eye_damage", /atom/movable/screen/fullscreen/impaired, 1)
 	//called once since we don't want to keep clearing the screen of eye damage for people who are below 20 damage
 	else if(damaged)
 		damaged = FALSE
@@ -125,6 +128,11 @@
 			lighting_alpha = LIGHTING_PLANE_ALPHA_VISIBLE
 			sight_flags &= ~SEE_BLACKNESS
 	owner.update_sight()
+
+
+/obj/item/organ/eyes/night_vision/argonian
+	name = "lizard eyes"
+	desc = ""
 
 /obj/item/organ/eyes/night_vision/alien
 	name = "alien eyes"
@@ -159,6 +167,12 @@
 	desc = ""
 	see_in_dark = 3
 	lighting_alpha = LIGHTING_PLANE_ALPHA_LESSER_NV_TRAIT
+
+/obj/item/organ/eyes/goblin
+	name = "goblin eyes"
+	desc = ""
+	see_in_dark = 15
+	lighting_alpha = 200
 
 ///Robotic
 

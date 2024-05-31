@@ -6,7 +6,7 @@
 	allowed_races = list(/datum/species/dwarf/mountain)
 	outfit = /datum/outfit/job/roguetown/adventurer/dwarfwarrior
 	maxchosen = 2
-	traits_applied = list(RTRAIT_HEAVYARMOR)
+	traits_applied = list(TRAIT_HEAVYARMOR)
 
 /datum/outfit/job/roguetown/adventurer/dwarfwarrior/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -28,7 +28,8 @@
 	else
 		beltl = /obj/item/rogueweapon/stoneaxe/battle
 
-	H.mind.adjust_skillrank(/datum/skill/combat/axesmaces, 3, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/combat/maces, 3, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/combat/axes, 3, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/craft/crafting, 1, TRUE)

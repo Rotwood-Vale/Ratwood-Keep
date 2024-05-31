@@ -1,5 +1,8 @@
 /datum/advclass/cheesemaker
 	name = "Cheesemaker"
+	tutorial = "Cheese cheese cheese! You have a rare wheel of cheese and know how to make more of the rare delicacy \
+	As very skilled cook you come with some ingredients to make food and feed the masses. \
+	cook up some quisine with food gathered from the local flora and fauna"
 	allowed_sexes = list("male", "female")
 	allowed_races = ALL_RACES_TYPES
 	outfit = /datum/outfit/job/roguetown/adventurer/cheesemaker
@@ -9,7 +12,8 @@
 /datum/outfit/job/roguetown/adventurer/cheesemaker/pre_equip(mob/living/carbon/human/H)
 	..()
 	H.mind.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE) 
-	H.mind.adjust_skillrank(/datum/skill/combat/axesmaces, pick(0,1,2), TRUE)
+	H.mind.adjust_skillrank(/datum/skill/combat/maces, pick(0,1,2), TRUE)
+	H.mind.adjust_skillrank(/datum/skill/combat/axes, pick(0,1,2), TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/athletics, 2, TRUE) 
 	H.mind.adjust_skillrank(/datum/skill/combat/bows, pick(0,1,1), TRUE)
 	H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 1, TRUE)

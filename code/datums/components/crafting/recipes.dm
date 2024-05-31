@@ -14,6 +14,7 @@
 	var/ontile = FALSE		//crafted on our tile instead of in front of us
 	var/req_table = FALSE
 	var/skillcraft = /datum/skill/craft/crafting
+	var/verbage_simple = "craft"
 	var/verbage = "crafts"
 	var/craftsound = 'sound/foley/bandage.ogg'
 	var/subtype_reqs = FALSE

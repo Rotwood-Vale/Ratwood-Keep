@@ -1,3 +1,57 @@
+#ifdef MATURESERVER
+/mob/living/carbon/human/MiddleClick(mob/user, params)
+	..()
+	if(!user)
+		return
+	var/obj/item/held_item = user.get_active_held_item()
+	if(held_item && (user.zone_selected == BODY_ZONE_PRECISE_MOUTH))
+		if(held_item.get_sharpness() && held_item.wlength == WLENGTH_SHORT)
+			if(has_stubble)
+				if(user == src)
+					user.visible_message("<span class='danger'>[user] starts to shave [user.p_their()] stubble with [held_item].</span>")
+				else
+					user.visible_message("<span class='danger'>[user] starts to shave [src]'s stubble with [held_item].</span>")
+				if(do_after(user, 50, needhand = 1, target = src))
+					has_stubble = FALSE
+					update_hair()
+				else
+					held_item.melee_attack_chain(user, src, params)
+			else if(facial_hairstyle != "None")
+				if(user == src)
+					user.visible_message("<span class='danger'>[user] starts to shave [user.p_their()] facehairs with [held_item].</span>")
+				else
+					user.visible_message("<span class='danger'>[user] starts to shave [src]'s facehairs with [held_item].</span>")
+				if(do_after(user, 50, needhand = 1, target = src))
+					facial_hairstyle = "None"
+					update_hair()
+					if(dna?.species)
+						if(dna.species.id == "dwarf")
+							add_stress(/datum/stressevent/dwarfshaved)
+				else
+					held_item.melee_attack_chain(user, src, params)
+		return
+	if(user == src)
+		if(get_num_arms(FALSE) < 1)
+			return
+		if(!can_do_sex())
+			return
+		if(user.zone_selected == BODY_ZONE_PRECISE_GROIN)
+			if(get_location_accessible(src, BODY_ZONE_PRECISE_GROIN, skipundies = TRUE))
+				if(underwear == "Nude")
+					return
+				if(do_after(user, 30, needhand = 1, target = src))
+					cached_underwear = underwear
+					underwear = "Nude"
+					update_body()
+					var/obj/item/undies/U
+					if(gender == MALE)
+						U = new/obj/item/undies(get_turf(src))
+					else
+						U = new/obj/item/undies/f(get_turf(src))
+					U.color = underwear_color
+					user.put_in_hands(U)
+#endif
+
 /mob/living/carbon/human/Initialize()
 	verbs += /mob/living/proc/mob_sleep
 	verbs += /mob/living/proc/lay_down
@@ -46,28 +100,8 @@
 	if(affecting && apply_damage(dam, BRUTE, affecting, run_armor_check(affecting, "melee", damage = dam)))
 		update_damage_overlays()
 		if(levels >= 1)
-			if(!HAS_TRAIT_FROM(affecting, TRAIT_PARALYSIS, CRIT_TRAIT))
-				affecting.temporary_crit_paralysis(20 SECONDS)
-			else if(!(locate(/datum/wound/fracture) in affecting.wounds))
-				var/static/list/adjectives = list(
-					"beautiful",
-					"lovely",
-					"crunchy",
-					"disgusting",
-					"marvelous",
-					"wonderful",
-					"sickening",
-					"disturbing",
-					"horrifying",
-					"twisted",
-				)
-				chat_message += " <span class='crit'>The bone shatters in a [pick(adjectives)] way!</span>"
-				if(prob(3))
-					playsound(src, pick('sound/combat/tf2crit.ogg'), 100, FALSE)
-				else
-					playsound(src, "wetbreak", 100, FALSE)
-				affecting.add_wound(/datum/wound/fracture)
-				affecting.update_disabled()
+			//absurd damage to guarantee a crit
+			affecting.try_crit(BCLASS_TWIST, 300)
 
 	if(chat_message)
 		to_chat(src, chat_message)
@@ -109,7 +143,7 @@
 		if(VD)
 			if(statpanel("Stats"))
 				stat("Vitae:",VD.vitae)
-		if((mind.assigned_role == "Shepherd") || (mind.assigned_role == "Witch Hunter"))
+		if((mind.assigned_role == "Shepherd") || (mind.assigned_role == "Inquisitor"))
 			if(statpanel("Status"))
 				stat("Confessions sent: [GLOB.confessors.len]")
 
@@ -291,6 +325,12 @@
 
 	dat += "<tr><td><hr></td></tr>"
 
+#ifdef MATURESERVER
+	if(get_location_accessible(src, BODY_ZONE_PRECISE_GROIN, skipundies = TRUE))
+		if(can_do_sex())
+			dat += "<tr><td><BR><B>Underwear:</B> <A href='?src=[REF(src)];undiesthing=1'>[underwear == "Nude" ? "Nothing" : "Remove"]</A></td></tr>"
+#endif
+
 	dat += {"</table>"}
 
 	var/datum/browser/popup = new(user, "mob[REF(src)]", "[src]", 220, 690)
@@ -307,6 +347,7 @@
 	. = ..()
 	spreadFire(AM)
 
+<<<<<<< HEAD
 /mob/living/carbon/human/Topic(href, href_list)
 	if(href_list["task"] == "view_headshot")
 		if(!ismob(usr))
@@ -699,6 +740,8 @@
 
 	..() //end of this massive fucking chain. TODO: make the hud chain not spooky. - Yeah, great job doing that.
 
+=======
+>>>>>>> origin/main
 /mob/living/carbon/human/proc/canUseHUD()
 	return (mobility_flags & MOBILITY_USE)
 
@@ -783,7 +826,7 @@
 		threatcount += 2
 
 	//Check for nonhuman scum
-	if(dna && dna.species.id && dna.species.id != "human")
+	if(dna && dna.species.id && dna.species.id != "human" && dna.species.id != "humen")
 		threatcount += 1
 
 	//mindshield implants imply trustworthyness
@@ -1067,7 +1110,7 @@
 	if(admin_revive)
 		regenerate_limbs()
 		regenerate_organs()
-	remove_all_embedded_objects()
+	spill_embedded_objects()
 	set_heartattack(FALSE)
 	drunkenness = 0
 	for(var/datum/mutation/human/HM in dna.mutations)

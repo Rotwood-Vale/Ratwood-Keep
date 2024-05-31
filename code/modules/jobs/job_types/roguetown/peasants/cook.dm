@@ -13,6 +13,7 @@
 	display_order = JDO_COOK
 	give_bank_account = 8
 	min_pq = -10
+	max_pq = null
 
 /datum/outfit/job/roguetown/cook/pre_equip(mob/living/carbon/human/H)
 	..()

@@ -6,28 +6,14 @@
 	allowed_sexes = list("male", "female")
 	allowed_races = ALL_RACES_TYPES
 	outfit = /datum/outfit/job/roguetown/adventurer/paladin
-	allowed_patrons = list("Astrata", "Dendor", "Necra", "Pestra", "Noc")
-	traits_applied = list(RTRAIT_HEAVYARMOR)
+	traits_applied = list(TRAIT_HEAVYARMOR)
+
+/datum/outfit/job/roguetown/adventurer/paladin
+	allowed_patrons = ALL_CLERIC_PATRONS
 
 /datum/outfit/job/roguetown/adventurer/paladin/pre_equip(mob/living/carbon/human/H)
 	..()
-	var/allowed_patrons = list("Astrata", "Dendor", "Necra", "Pestra","Noc")
-	
-	var/datum/patrongods/ourpatron
-	if(istype(H.PATRON, /datum/patrongods))
-		ourpatron = H.PATRON
-
-	if(!ourpatron || !(ourpatron.name in allowed_patrons))
-		var/list/datum/patrongods/possiblegods = list()
-		for(var/god in GLOB.patronlist)
-			var/datum/patrongods/patron = GLOB.patronlist[god]
-			if(patron.name in allowed_patrons)
-				possiblegods |= patron
-		ourpatron = pick(possiblegods)
-		H.PATRON = ourpatron
-		to_chat(H, "<span class='warning'>My patron had not endorsed my practices in my younger years. I've since grown acustomed to [H.PATRON].")
-	
-	switch(ourpatron.name)
+	switch(H.patron.name)
 		if("Astrata")
 			neck = /obj/item/clothing/neck/roguetown/psicross/astrata
 		if("Dendor")
@@ -52,13 +38,13 @@
 			to_chat(H, "<span class='warning'>You are a paladin.</span>")
 			H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/polearms, 2, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/combat/axesmaces, 3, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/maces, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/bows, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/reading, 2, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/combat/swords, pick(3,3,3,4), TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/swords, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/swimming, 1, TRUE)
@@ -77,6 +63,17 @@
 			beltr = /obj/item/rogueweapon/huntingknife
 			id = /obj/item/clothing/ring/silver
 			cloak = /obj/item/clothing/cloak/tabard/crusader
+			switch(H.patron.name)	
+				if("Astrata")
+					cloak = /obj/item/clothing/cloak/tabard/crusader/astrata
+				if("Dendor")
+					cloak = /obj/item/clothing/cloak/tabard/crusader/dendor
+				if("Necra")
+					cloak = /obj/item/clothing/cloak/tabard/crusader/necra
+				if("Pestra")
+					cloak = /obj/item/clothing/cloak/tabard/crusader/pestra
+				if("Noc")
+					cloak = /obj/item/clothing/cloak/tabard/crusader/noc
 			if(prob(70))
 				backr = /obj/item/rogueweapon/sword
 			else
@@ -87,7 +84,7 @@
 			to_chat(H, "<span class='warning'>You are a battle-master.</span>")
 			H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/polearms, 2, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/combat/axesmaces, 3, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/maces, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/bows, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 3, TRUE)
@@ -100,7 +97,7 @@
 			H.mind.adjust_skillrank(/datum/skill/misc/climbing, pick(2,3), TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/riding, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/magic/holy, 2, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/combat/whipsflails, 4, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/whipsflails, 3, TRUE)
 			H.change_stat("perception", 1)
 			H.change_stat("strength", 2)
 			H.change_stat("constitution", 2) 
@@ -114,6 +111,17 @@
 			beltr = /obj/item/rogueweapon/huntingknife
 			id = /obj/item/clothing/ring/silver
 			cloak = /obj/item/clothing/cloak/tabard/crusader
+			switch(H.patron.name)	
+				if("Astrata")
+					cloak = /obj/item/clothing/cloak/tabard/crusader/astrata
+				if("Dendor")
+					cloak = /obj/item/clothing/cloak/tabard/crusader/dendor
+				if("Necra")
+					cloak = /obj/item/clothing/cloak/tabard/crusader/necra
+				if("Pestra")
+					cloak = /obj/item/clothing/cloak/tabard/crusader/pestra
+				if("Noc")
+					cloak = /obj/item/clothing/cloak/tabard/crusader/noc
 			backr = /obj/item/rogueweapon/flail
 			if(prob(50))
 				l_hand = /obj/item/rogueweapon/shield/wood
@@ -121,14 +129,14 @@
 				l_hand = /obj/item/rogueweapon/shield/tower/metal
 			backl = /obj/item/storage/backpack/rogue/satchel
 		
-	ADD_TRAIT(H, RTRAIT_HEAVYARMOR, TRAIT_GENERIC)
-	ADD_TRAIT(H, RTRAIT_MEDIUMARMOR, TRAIT_GENERIC)
+	ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
+	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 	if(H.dna?.species)
-		if(H.dna.species.id == "human")
+		if(H.dna.species.id == "humen")
 			H.dna.species.soundpack_m = new /datum/voicepack/male/knight()
 		if(H.dna.species.id == "tiefling")
 			cloak = /obj/item/clothing/cloak/tabard/crusader/tief
-	var/datum/devotion/cleric_holder/C = new /datum/devotion/cleric_holder(H, H.PATRON)
+	var/datum/devotion/cleric_holder/C = new /datum/devotion/cleric_holder(H, H.patron)
 	//Max devotion limit - Paladins are stronger but cannot pray to gain all abilities beyond t1
 	C.max_devotion = 250
 	C.max_progression = CLERIC_REQ_1

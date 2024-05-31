@@ -1,7 +1,7 @@
 /datum/job/roguetown/apothecary
 	title = "Apothecary"
 	flag = APOTHECARY
-	department_flag = SERFS
+	department_flag = YEOMEN
 	faction = "Station"
 	total_positions = 0
 	spawn_positions = 0
@@ -12,6 +12,7 @@
 	outfit_female = /datum/outfit/job/roguetown/apothecary/female
 	display_order = 6
 	min_pq = -10
+	max_pq = null
 
 /datum/outfit/job/roguetown/apothecary
 	name = "Apothecary"

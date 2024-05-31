@@ -8,7 +8,7 @@
 	outfit = /datum/outfit/job/roguetown/adventurer/heartfeltlord
 	maxchosen = 1
 	pickprob = 100
-	traits_applied = list(RTRAIT_NOBLE, RTRAIT_NOSEGRAB, RTRAIT_HEAVYARMOR)
+	traits_applied = list(TRAIT_NOBLE, TRAIT_NOSEGRAB, TRAIT_HEAVYARMOR)
 
 /datum/outfit/job/roguetown/adventurer/heartfeltlord/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -25,9 +25,10 @@
 	backl = /obj/item/storage/backpack/rogue/satchel
 	id = /obj/item/scomstone
 	if(H.mind)
+		H.virginity = TRUE
 		H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/polearms, 2, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/combat/axesmaces, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/maces, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/bows, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
@@ -47,7 +48,7 @@
 		H.change_stat("perception", 2)
 		H.change_stat("fortune", 5)
 
-	ADD_TRAIT(H, RTRAIT_NOBLE, TRAIT_GENERIC)
-	ADD_TRAIT(H, RTRAIT_NOSEGRAB, TRAIT_GENERIC)
-	ADD_TRAIT(H, RTRAIT_HEAVYARMOR, TRAIT_GENERIC)
-	ADD_TRAIT(H, RTRAIT_MEDIUMARMOR, TRAIT_GENERIC)
+	ADD_TRAIT(H, TRAIT_NOBLE, TRAIT_GENERIC)
+	ADD_TRAIT(H, TRAIT_NOSEGRAB, TRAIT_GENERIC)
+	ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
+	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)

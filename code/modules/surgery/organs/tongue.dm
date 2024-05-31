@@ -50,7 +50,7 @@
 	say_mod = "hisses"
 	taste_sensitivity = 10 // combined nose + tongue, extra sensitive
 	modifies_speech = TRUE
-
+/*
 /obj/item/organ/tongue/lizard/handle_speech(datum/source, list/speech_args)
 	var/static/regex/lizard_hiss = new("s+", "g")
 	var/static/regex/lizard_hiSS = new("S+", "g")
@@ -59,7 +59,7 @@
 		message = lizard_hiss.Replace(message, "sss")
 		message = lizard_hiSS.Replace(message, "SSS")
 	speech_args[SPEECH_MESSAGE] = message
-
+*/
 /obj/item/organ/tongue/fly
 	name = "proboscis"
 	desc = ""

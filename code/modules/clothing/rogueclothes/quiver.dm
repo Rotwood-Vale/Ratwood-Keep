@@ -17,6 +17,7 @@
 	strip_delay = 20
 	var/max_storage = 20
 	var/list/arrows = list()
+	sewrepair = TRUE
 
 /obj/item/quiver/attackby(obj/A, loc, params)
 	if(A.type in subtypesof(/obj/item/ammo_casing/caseless/rogue))
@@ -71,7 +72,7 @@
 		var/obj/item/ammo_casing/caseless/rogue/bolt/A = new()
 		arrows += A
 	update_icon()
-
+/*
 /obj/item/quiver/Parrows/Initialize()
 	..()
 	for(var/i in 1 to max_storage)
@@ -85,5 +86,5 @@
 		var/obj/item/ammo_casing/caseless/rogue/bolt/poison/A = new()
 		arrows += A
 	update_icon()
-
+*/
 

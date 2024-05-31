@@ -871,6 +871,9 @@ GLOBAL_VAR_INIT(mobids, 1)
 		return
 	if(pulledby && pulledby.grab_state >= GRAB_AGGRESSIVE) //the reason this isn't a mobility_flags check is because you want them to be able to change dir if you're passively grabbing them
 		return FALSE
+	if(sexcon)
+		if(!sexcon.can_change_dir())
+			return FALSE
 	if(IsImmobilized())
 		return FALSE
 	return ..()
@@ -1151,7 +1154,7 @@ GLOBAL_VAR_INIT(mobids, 1)
 ///Set the lighting plane hud alpha to the mobs lighting_alpha var
 /mob/proc/sync_lighting_plane_alpha()
 	if(hud_used)
-		var/obj/screen/plane_master/lighting/L = hud_used.plane_masters["[LIGHTING_PLANE]"]
+		var/atom/movable/screen/plane_master/lighting/L = hud_used.plane_masters["[LIGHTING_PLANE]"]
 		if (L)
 			L.alpha = lighting_alpha
 

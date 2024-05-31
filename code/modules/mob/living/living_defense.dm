@@ -43,7 +43,7 @@
 /mob/living/proc/on_hit(obj/projectile/P)
 	return BULLET_ACT_HIT
 
-/mob/living/bullet_act(obj/projectile/P, def_zone)
+/mob/living/bullet_act(obj/projectile/P, def_zone = BODY_ZONE_CHEST)
 	var/armor = run_armor_check(def_zone, P.flag, "", "",P.armor_penetration, damage = P.damage)
 
 	next_attack_msg.Cut()
@@ -58,11 +58,10 @@
 		if(!nodmg)
 			if(P.dismemberment)
 				check_projectile_dismemberment(P, def_zone,armor)
-			if(P.embedchance)
-				if(!check_projectile_embed(P, def_zone))
-					P.handle_drop()
 			if(P.woundclass)
 				check_projectile_wounding(P, def_zone)
+			if(P.embedchance && !check_projectile_embed(P, def_zone))
+				P.handle_drop()
 		else
 			P.handle_drop()
 
@@ -84,27 +83,21 @@
 	return 0
 
 /mob/living/proc/check_projectile_wounding(obj/projectile/P, def_zone)
-	woundcritroll(P.woundclass, P.damage, null, def_zone)
-	return
+	return simple_woundcritroll(P.woundclass, P.damage, null, def_zone, crit_message = TRUE)
 
 /mob/living/proc/check_projectile_embed(obj/projectile/P, def_zone)
-	var/newdam = P.damage
-	if(newdam > 8)
-		if(prob(P.embedchance) && P.dropped)
-			simple_embedded_objects |= P.dropped
-			P.dropped.add_mob_blood(src)//it embedded itself in you, of course it's bloody!
-			P.dropped.forceMove(src)
-			to_chat(src, "<span class='danger'>[P.dropped] sticks in me!</span>")
-			emote("embed", forced = TRUE)
-			return TRUE
+	if(!prob(P.embedchance) || !P.dropped)
+		return FALSE
+	simple_add_embedded_object(P.dropped, crit_message = TRUE)
+	return TRUE
 
 /obj/item/proc/get_volume_by_throwforce_and_or_w_class()
-		if(throwforce && w_class)
-				return CLAMP((throwforce + w_class) * 5, 30, 100)// Add the item's throwforce to its weight class and multiply by 5, then clamp the value between 30 and 100
-		else if(w_class)
-				return CLAMP(w_class * 8, 20, 100) // Multiply the item's weight class by 8, then clamp the value between 20 and 100
-		else
-				return 0
+	if(throwforce && w_class)
+		return CLAMP((throwforce + w_class) * 5, 30, 100)// Add the item's throwforce to its weight class and multiply by 5, then clamp the value between 30 and 100
+	else if(w_class)
+		return CLAMP(w_class * 8, 20, 100) // Multiply the item's weight class by 8, then clamp the value between 20 and 100
+	else
+		return 0
 
 /mob/living/hitby(atom/movable/AM, skipcatch, hitpush = TRUE, blocked = FALSE, datum/thrownthing/throwingdatum)
 	if(istype(AM, /obj/item))
@@ -124,18 +117,12 @@
 				if(iscarbon(src))
 					var/obj/item/bodypart/affecting = get_bodypart(zone)
 					if(affecting)
-						affecting.attacked_by(I.thrown_bclass, I.throwforce)
+						affecting.bodypart_attacked_by(I.thrown_bclass, I.throwforce, isliving(throwingdatum.thrower) ? throwingdatum.thrower : null, affecting.body_zone, crit_message = TRUE)
 				else
-					woundcritroll(I.thrown_bclass, I.throwforce, null, zone)
+					simple_woundcritroll(I.thrown_bclass, I.throwforce, null, zone, crit_message = TRUE)
 					if(((throwingdatum ? throwingdatum.speed : I.throw_speed) >= EMBED_THROWSPEED_THRESHOLD) || I.embedding.embedded_ignore_throwspeed_threshold)
-						if(can_embed(I))
-							if(prob(I.embedding.embed_chance) && !HAS_TRAIT(src, TRAIT_SIMPLE_WOUNDS))
-								//throw_alert("embeddedobject", /obj/screen/alert/embeddedobject)
-								simple_embedded_objects |= I
-								I.add_mob_blood(src)//it embedded itself in you, of course it's bloody!
-								I.forceMove(src)
-								emote("embed", forced = TRUE)
-								next_attack_msg += " <span class='danger'>[I] embeds itself in [src]!</span>"
+						if(can_embed(I) && prob(I.embedding.embed_chance) && HAS_TRAIT(src, TRAIT_SIMPLE_WOUNDS) && !HAS_TRAIT(src, TRAIT_PIERCEIMMUNE))
+							simple_add_embedded_object(I, silent = FALSE, crit_message = TRUE)
 			visible_message("<span class='danger'>[src] is hit by [I]![next_attack_msg.Join()]</span>", \
 							"<span class='danger'>I'm hit by [I]![next_attack_msg.Join()]</span>")
 			next_attack_msg.Cut()
@@ -300,16 +287,16 @@
 
 /turf/proc/grabbedintents(mob/living/user)
 	//RTD up and down
-	return list(/datum/intent/grab/obj/move)
+	return list(/datum/intent/grab/move)
 
 /obj/proc/grabbedintents(mob/living/user, precise)
-	return list(/datum/intent/grab/obj/move)
+	return list(/datum/intent/grab/move)
 
 /obj/item/grabbedintents(mob/living/user, precise)
-	return list(/datum/intent/grab/obj/remove, /datum/intent/grab/obj/twistitem)
+	return list(/datum/intent/grab/remove, /datum/intent/grab/twistitem)
 
 /mob/proc/grabbedintents(mob/living/user, precise)
-	return list(/datum/intent/grab/obj/move)
+	return list(/datum/intent/grab/move)
 
 /mob/living/proc/send_grabbed_message(mob/living/carbon/user)
 	if(HAS_TRAIT(user, TRAIT_PACIFISM))
@@ -567,7 +554,7 @@
 	return TRUE
 
 //called when the mob receives a bright flash
-/mob/living/proc/flash_act(intensity = 1, override_blindness_check = 0, affect_silicon = 0, visual = 0, type = /obj/screen/fullscreen/flash)
+/mob/living/proc/flash_act(intensity = 1, override_blindness_check = 0, affect_silicon = 0, visual = 0, type = /atom/movable/screen/fullscreen/flash)
 	if(HAS_TRAIT(src, TRAIT_NOFLASH))
 		return FALSE
 	if(get_eye_protection() < intensity && (override_blindness_check || !(HAS_TRAIT(src, TRAIT_BLIND))))

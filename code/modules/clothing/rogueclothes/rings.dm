@@ -11,6 +11,7 @@
 	icon_state = ""
 	slot_flags = ITEM_SLOT_RING
 	resistance_flags = FIRE_PROOF | ACID_PROOF
+	anvilrepair = /datum/skill/craft/armorsmithing
 
 /obj/item/clothing/ring/silver
 	name = "silver ring"
@@ -83,32 +84,64 @@
 	if(magcom)
 		magcom.RemoveComponent()
 
+//gold rings
 /obj/item/clothing/ring/emerald
-    name = "emerald ring"
+    name = "gemerald ring"
     icon_state = "g_ring_emerald"
-    sellprice = 70
+    sellprice = 195
 
 /obj/item/clothing/ring/ruby
-    name = "ruby ring"
+    name = "rontz ring"
     icon_state = "g_ring_ruby"
-    sellprice = 70
+    sellprice = 255
 
 /obj/item/clothing/ring/topaz
-    name = "topaz ring"
+    name = "toper ring"
     icon_state = "g_ring_topaz"
-    sellprice = 70
+    sellprice = 180
 
+/obj/item/clothing/ring/quartz
+    name = "blortz ring"
+    icon_state = "g_ring_quartz"
+    sellprice = 245
+
+/obj/item/clothing/ring/sapphire
+    name = "saffira ring"
+    icon_state = "g_ring_sapphire"
+    sellprice = 200
+
+/obj/item/clothing/ring/diamond
+    name = "dorpel ring"
+    icon_state = "g_ring_diamond"
+    sellprice = 270
+
+//steel rings
 /obj/item/clothing/ring/emeralds
-    name = "emerald ring"
+    name = "gemerald ring"
     icon_state = "s_ring_emerald"
-    sellprice = 50
+    sellprice = 80
 
 /obj/item/clothing/ring/rubys
-    name = "ruby ring"
+    name = "rontz ring"
     icon_state = "s_ring_ruby"
-    sellprice = 50
+    sellprice = 130
 
 /obj/item/clothing/ring/topazs
-    name = "topaz ring"
+    name = "toper ring"
     icon_state = "s_ring_topaz"
-    sellprice = 50
+    sellprice = 65
+
+/obj/item/clothing/ring/quartzs
+    name = "blortz ring"
+    icon_state = "s_ring_quartz"
+    sellprice = 110
+
+/obj/item/clothing/ring/sapphires
+    name = "saffira ring"
+    icon_state = "s_ring_sapphire"
+    sellprice = 95
+
+/obj/item/clothing/ring/diamonds
+    name = "dorpel ring"
+    icon_state = "s_ring_diamond"
+    sellprice = 140

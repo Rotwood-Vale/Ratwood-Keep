@@ -1,10 +1,10 @@
 /datum/job/roguetown/bogguardsman
 	title = "Bog Guard"
-	flag = GUARDSMAN
+	flag = BOGGUARD
 	department_flag = GARRISON
 	faction = "Station"
-	total_positions = 20
-	spawn_positions = 20
+	total_positions = 10
+	spawn_positions = 10
 	selection_color = JCOLOR_SOLDIER
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = ALL_RACES_TYPES
@@ -15,6 +15,9 @@
 	outfit = /datum/outfit/job/roguetown/bogguardsman
 	give_bank_account = 16
 	min_pq = 1
+	max_pq = null
+	
+	cmode_music = 'sound/music/combat_bog.ogg'
 
 	/// Chance to be spawned as a crossbowman instead
 	var/crossbowman_chance = 35
@@ -42,8 +45,7 @@
 				index = copytext(H.real_name, 1,index)
 			if(!index)
 				index = H.real_name
-			S.name = "bogman's tabard ([index])"
-
+			S.name = "bogman tabard ([index])"
 /datum/outfit/job/roguetown/bogguardsman
 	name = "Bog Guard"
 	/// Whether or not we are a crossbowman
@@ -55,9 +57,11 @@
 	armor = /obj/item/clothing/suit/roguetown/armor/gambeson
 	cloak = /obj/item/clothing/cloak/stabard/bog
 	neck = /obj/item/clothing/neck/roguetown/chaincoif
+	gloves = /obj/item/clothing/gloves/roguetown/leather
+	wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
 	shirt = /obj/item/clothing/suit/roguetown/shirt/shortshirt/bog
 	pants = /obj/item/clothing/under/roguetown/trou/leather
-	shoes = /obj/item/clothing/shoes/roguetown/boots
+	shoes = /obj/item/clothing/shoes/roguetown/boots/leather
 	beltl = /obj/item/keyring/guard
 	belt = /obj/item/storage/belt/rogue/leather
 	beltr = /obj/item/rogueweapon/sword
@@ -68,7 +72,7 @@
 	else
 		backl = null
 	wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
-	backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger/steel/special = 1)
+	backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger/steel = 1)
 	if(H.mind)
 		assign_skills(H)
 	if(H.gender == FEMALE)
@@ -77,21 +81,28 @@
 			H.hairstyle = pick(acceptable)
 			H.update_hair()
 	H.verbs |= /mob/proc/haltyell
-	ADD_TRAIT(H, RTRAIT_HEAVYARMOR, TRAIT_GENERIC)
+	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 
 /datum/outfit/job/roguetown/bogguardsman/proc/assign_skills(mob/living/carbon/human/bogger)
-	bogger.mind.adjust_skillrank(/datum/skill/combat/axesmaces, 1, TRUE)
-	bogger.mind.adjust_skillrank(/datum/skill/combat/bows, 2, TRUE)
-	bogger.mind.adjust_skillrank(/datum/skill/combat/crossbows, 2, TRUE)
-	bogger.mind.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE)
-	bogger.mind.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
-	bogger.mind.adjust_skillrank(/datum/skill/combat/swords, 2, TRUE)
+	bogger.mind.adjust_skillrank(/datum/skill/combat/wrestling, 4, TRUE)
+	bogger.mind.adjust_skillrank(/datum/skill/combat/unarmed, 4, TRUE)
+	bogger.mind.adjust_skillrank(/datum/skill/combat/maces, 3, TRUE)
+	bogger.mind.adjust_skillrank(/datum/skill/combat/swords, 3, TRUE)
+	bogger.mind.adjust_skillrank(/datum/skill/combat/polearms, 3, TRUE)
+	bogger.mind.adjust_skillrank(/datum/skill/combat/whipsflails, 3, TRUE)
 	bogger.mind.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
-	bogger.mind.adjust_skillrank(/datum/skill/misc/swimming, 2, TRUE)
+	bogger.mind.adjust_skillrank(/datum/skill/combat/bows, 3, TRUE)
+	bogger.mind.adjust_skillrank(/datum/skill/combat/crossbows, 2, TRUE)
+	bogger.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
 	bogger.mind.adjust_skillrank(/datum/skill/misc/climbing, 2, TRUE)
-	bogger.mind.adjust_skillrank(/datum/skill/misc/athletics, 2, TRUE)
-	bogger.change_stat("perception", 1)
-	bogger.change_stat("endurance", 1)
+	bogger.mind.adjust_skillrank(/datum/skill/misc/sneaking, 2, TRUE)
+	bogger.mind.adjust_skillrank(/datum/skill/misc/swimming, 2, TRUE)
+	bogger.mind.adjust_skillrank(/datum/skill/misc/medicine, 1, TRUE)
+	bogger.mind.adjust_skillrank(/datum/skill/misc/riding, 3, TRUE)
+	bogger.change_stat("strength", 2)
+	bogger.change_stat("perception", 2)
+	bogger.change_stat("constitution", 1)
+	bogger.change_stat("endurance", 2)
 	bogger.change_stat("speed", 1)
 
 /datum/outfit/job/roguetown/bogguardsman/crossbowman
@@ -99,15 +110,20 @@
 	is_crossbowman = TRUE
 
 /datum/outfit/job/roguetown/bogguardsman/crossbowman/assign_skills(mob/living/carbon/human/bogger)
-	bogger.mind.adjust_skillrank(/datum/skill/combat/axesmaces, 1, TRUE)
-	bogger.mind.adjust_skillrank(/datum/skill/combat/bows, 4, TRUE)
 	bogger.mind.adjust_skillrank(/datum/skill/combat/crossbows, 5, TRUE)
-	bogger.mind.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
-	bogger.mind.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
-	bogger.mind.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE)
-	bogger.mind.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
+	bogger.mind.adjust_skillrank(/datum/skill/combat/bows, 4, TRUE)
+	bogger.mind.adjust_skillrank(/datum/skill/combat/knives, 3, TRUE)
+	bogger.mind.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE)
+	bogger.mind.adjust_skillrank(/datum/skill/combat/unarmed, 3, TRUE)
+	bogger.mind.adjust_skillrank(/datum/skill/combat/swords, 2, TRUE)
+	bogger.mind.adjust_skillrank(/datum/skill/combat/maces, 1, TRUE)
+	bogger.mind.adjust_skillrank(/datum/skill/misc/sneaking, 4, TRUE)
+	bogger.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
+	bogger.mind.adjust_skillrank(/datum/skill/misc/climbing, 3, TRUE)
 	bogger.mind.adjust_skillrank(/datum/skill/misc/swimming, 2, TRUE)
-	bogger.mind.adjust_skillrank(/datum/skill/misc/climbing, 2, TRUE)
-	bogger.mind.adjust_skillrank(/datum/skill/misc/athletics, 2, TRUE)
-	bogger.change_stat("perception", 2)
+	bogger.mind.adjust_skillrank(/datum/skill/misc/medicine, 1, TRUE)
+	bogger.change_stat("strength", 1)
+	bogger.change_stat("perception", 3)
 	bogger.change_stat("speed", 2)
+	bogger.change_stat("constitution", 1)
+	bogger.change_stat("endurance", 2)

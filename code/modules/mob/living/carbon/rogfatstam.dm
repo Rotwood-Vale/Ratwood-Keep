@@ -6,6 +6,8 @@
 	if(world.time > last_fatigued + 50) //regen fatigue
 		var/added = rogstam / maxrogstam
 		added = round(-10+ (added*-40))
+		if(HAS_TRAIT(src, TRAIT_MISSING_NOSE))
+			added = round(added * 0.5, 1)
 		if(rogfat >= 1)
 			rogfat_add(added)
 		else
@@ -14,16 +16,16 @@
 	update_health_hud()
 
 /mob/living/proc/update_rogstam()
-	maxrogstam = STAEND*100
+	maxrogstam = STAEND * 100
 	if(cmode)
-		if(!HAS_TRAIT(src, RTRAIT_BREADY))
+		if(!HAS_TRAIT(src, TRAIT_BREADY))
 			rogstam_add(-2)
 
 /mob/proc/rogstam_add(added as num)
 	return
 
 /mob/living/rogstam_add(added as num)
-	if(HAS_TRAIT(src, RTRAIT_NOFATSTAM))
+	if(HAS_TRAIT(src, TRAIT_NOROGSTAM))
 		return TRUE
 	rogstam += added
 	if(rogstam > maxrogstam)
@@ -42,7 +44,7 @@
 	return TRUE
 
 /mob/living/rogfat_add(added as num, emote_override, force_emote = TRUE) //call update_rogfat here and set last_fatigued, return false when not enough fatigue left
-	if(HAS_TRAIT(src, RTRAIT_NOFATSTAM))
+	if(HAS_TRAIT(src, TRAIT_NOROGSTAM))
 		return TRUE
 	rogfat = CLAMP(rogfat+added, 0, maxrogfat)
 	if(added > 0)
@@ -70,6 +72,8 @@
 		stop_attack()
 		changeNext_move(CLICK_CD_EXHAUSTED)
 		flash_fullscreen("blackflash")
+		if(sexcon)
+			sexcon.cancel_our_actions()
 		if(rogstam <= 0)
 			addtimer(CALLBACK(src, PROC_REF(Knockdown), 30), 10)
 		addtimer(CALLBACK(src, PROC_REF(Immobilize), 30), 10)
@@ -91,7 +95,7 @@
 	var/heart_attacking = FALSE
 
 /mob/living/carbon/proc/heart_attack()
-	if(HAS_TRAIT(src, RTRAIT_NOFATSTAM))
+	if(HAS_TRAIT(src, TRAIT_NOROGSTAM))
 		return
 	if(!heart_attacking)
 		heart_attacking = TRUE
@@ -131,7 +135,7 @@
 		//skew.Translate(-224,0)
 		var/matrix/newmatrix = skew 
 		for(var/C in hud_used.plane_masters)
-			var/obj/screen/plane_master/whole_screen = hud_used.plane_masters[C]
+			var/atom/movable/screen/plane_master/whole_screen = hud_used.plane_masters[C]
 			if(whole_screen.plane == HUD_PLANE)
 				continue
 			animate(whole_screen, transform = newmatrix, time = 1, easing = QUAD_EASING)

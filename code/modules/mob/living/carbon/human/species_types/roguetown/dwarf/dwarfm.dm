@@ -3,7 +3,7 @@
 
 /datum/species/dwarf/mountain
 	name = "Dwarf"
-	id = "dwarf"
+	id = "dwarfm"
 	desc = "<b>Dwarf</b><br>\
 	A proud and robust race of short mountain folk, \
 	the dwarves are known for their pride in martial strength \
@@ -24,7 +24,7 @@
 	default_color = "FFFFFF"
 	species_traits = list(EYECOLOR,HAIR,FACEHAIR,LIPS,YOUNGBEARD,STUBBLE,OLDGREY)
 	inherent_traits = list(TRAIT_NOMOBSWAP,TRAIT_DRUNK_HEALING)
-	possible_ages = list(AGE_ADULT, AGE_MIDDLEAGED, AGE_OLD)
+	possible_ages = list(AGE_YOUNG, AGE_ADULT, AGE_MIDDLEAGED, AGE_OLD)
 	default_features = MANDATORY_FEATURE_LIST
 	use_skintones = 1
 	skinned_type = /obj/item/stack/sheet/animalhide/human
@@ -54,7 +54,6 @@
 	specstats = list("strength" = 1, "perception" = -2, "intelligence" = 0, "constitution" = 2, "endurance" = 2, "speed" = -3, "fortune" = 0)
 	specstats_f = list("strength" = 1, "perception" = -2, "intelligence" = 0, "constitution" = 2, "endurance" = 1, "speed" = -2, "fortune" = 0)
 	enflamed_icon = "widefire"
-	possible_faiths = list(FAITH_PSYDON, FAITH_DWARF)
 	customizers = list(
 		/datum/customizer/organ/eyes/humanoid,
 		/datum/customizer/bodypart_feature/hair/head/humanoid,
@@ -140,7 +139,8 @@
 /datum/species/dwarf/mountain/random_surname()
 	return " [pick(world.file2list("strings/rt/names/dwarf/dwarmlast.txt"))]"
 
-/* this accent is HORRIBLE right now, someone please fix this shit
+//this accent is HORRIBLE right now, someone please fix this shit
+// oh yeah here we go again 85 to 23
 /datum/species/dwarf/mountain/get_accent(mob/living/carbon/human/H)
 	return strings("dwarf_replacement.json", "dwarf")
-*/
+

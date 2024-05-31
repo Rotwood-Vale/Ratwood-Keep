@@ -30,13 +30,18 @@
 	fishloot = list(/obj/item/reagent_containers/food/snacks/fish/carp = 5,
 					/obj/item/reagent_containers/food/snacks/fish/eel = 5,
 					/obj/item/reagent_containers/food/snacks/fish/angler = 1)
-	embedding = list("embedded_unsafe_removal_time" = 0, "embedded_pain_chance" = 0, "embedded_pain_multiplier" = 1, "embed_chance" = 0, "embedded_fall_chance" = 0,"embedded_bloodloss"=0)
+	embedding = list(
+		"embed_chance" = 100,
+		"embedded_unsafe_removal_time" = 0, 
+		"embedded_pain_chance" = 0,
+		"embedded_fall_chance" = 0,
+		"embedded_bloodloss"= 0,
+	)
 
 /obj/item/natural/worms/leeches/update_icon()
-	..()
+	. = ..()
 	if(amt > 1)
 		name = "[initial(name)]es"
-
 
 /obj/item/natural/worms/leeches/attack(mob/living/M, mob/user)
 	if(ishuman(M))
@@ -54,50 +59,31 @@
 			return
 		user.dropItemToGround(src)
 		src.forceMove(H)
-		affecting.embedded_objects |= src
+		affecting.add_embedded_object(src, silent = TRUE, crit_message = FALSE)
 		if(M == user)
 			user.visible_message("<span class='notice'>[user] places a leech on [user.p_their()] [affecting].</span>", "<span class='notice'>I place a leech on my [affecting].</span>")
 		else
 			user.visible_message("<span class='notice'>[user] places a leech on [M]'s [affecting].</span>", "<span class='notice'>I place a leech on [M]'s [affecting].</span>")
 
-/obj/item/natural/worms/leeches/on_embed_life(mob/living/user)
+/obj/item/natural/worms/leeches/on_embed_life(mob/living/user, obj/item/bodypart/bodypart)
 	if(!user)
 		return
-//	testing("onembedlife")
-	if(ismob(user))
-		if(user.blood_volume <= 0)
-			user.simple_embedded_objects -= src
-			var/turf/T = get_turf(src)
-			if(T)
-				forceMove(T)
-			else
-				qdel(src)
-			return TRUE
+	user.blood_volume = max(user.blood_volume - 1, 0)
+	user.adjustToxLoss(-2)
+	if(user.blood_volume <= 0)
+		if(bodypart)
+			bodypart.remove_embedded_object(src)
 		else
-			user.adjustToxLoss(-2)
-			user.blood_volume = max(user.blood_volume - 1, 0)
-	else
-		var/obj/item/bodypart/BP = user
-		if(BP.owner)
-			if(BP.owner.blood_volume <= 0)
-				BP.receive_damage(w_class*embedding.embedded_fall_pain_multiplier)
-				BP.embedded_objects -= src
-				var/turf/T = get_turf(src)
-				if(T)
-					forceMove(T)
-				else
-					qdel(src)
-				return TRUE
-			else
-				BP.owner.adjustToxLoss(-2)
-				BP.owner.blood_volume = max(BP.owner.blood_volume - 1, 0)
-	return
-
+			user.simple_remove_embedded_object(src)
+		return TRUE
+	return FALSE
 
 /obj/item/natural/worms/grubs
 	name = "grub"
 	baitchance = 100
 	color = null
-	fishloot = list(/obj/item/reagent_containers/food/snacks/fish/carp = 5,
-					/obj/item/reagent_containers/food/snacks/fish/angler = 1,
-					/obj/item/reagent_containers/food/snacks/fish/clownfish = 1)
+	fishloot = list(
+		/obj/item/reagent_containers/food/snacks/fish/carp = 5,
+		/obj/item/reagent_containers/food/snacks/fish/angler = 1,
+		/obj/item/reagent_containers/food/snacks/fish/clownfish = 1,
+	)

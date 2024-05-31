@@ -4,20 +4,20 @@
 	icon_state = "pulling"
 	icon = 'icons/mob/roguehudgrabs.dmi'
 	w_class = WEIGHT_CLASS_HUGE
-	possible_item_intents = list(/datum/intent/grab/obj/upgrade)
+	possible_item_intents = list(/datum/intent/grab/upgrade)
 	item_flags = ABSTRACT
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
+	grab_state = 0 //this is an atom/movable var i guess
+	no_effect = TRUE
+	force = 0
+	experimental_inhand = FALSE
 	var/grabbed				//ref to what atom we are grabbing
 	var/obj/item/bodypart/limb_grabbed		//ref to actual bodypart being grabbed if we're grabbing a carbo
 	var/sublimb_grabbed		//ref to what precise (sublimb) we are grabbing (if any) (text)
 	var/mob/living/carbon/grabbee
 	var/list/dependents = list()
 	var/handaction
-	var/bleed_suppressing = 2
-	grab_state = 0 //this is an atom/movable var i guess
-	no_effect = TRUE
-	force = 0
-	experimental_inhand = FALSE
+	var/bleed_suppressing = 0.5 //multiplier for how much we suppress bleeding, can accumulate so two grabs means 25% bleeding
 
 /atom/movable //reference to all obj/item/grabbing
 	var/list/grabbedby = list()
@@ -103,12 +103,12 @@
 		return FALSE
 	user.changeNext_move(CLICK_CD_MELEE)
 	switch(user.used_intent.type)
-		if(/datum/intent/grab/obj/upgrade)
+		if(/datum/intent/grab/upgrade)
 			if(!(M.status_flags & CANPUSH) || HAS_TRAIT(M, TRAIT_PUSHIMMUNE))
 				to_chat(user, "<span class='warning'>Can't get a grip!</span>")
 				return FALSE
 			M.grippedby(user)
-		if(/datum/intent/grab/obj/choke)
+		if(/datum/intent/grab/choke)
 			if(limb_grabbed && grab_state > 0) //this implies a carbon victim
 				if(iscarbon(M) && M != user)
 					var/mob/living/carbon/C = M
@@ -119,20 +119,20 @@
 					C.visible_message("<span class='danger'>[user] [pick("chokes", "strangles")] [C]!</span>", \
 									"<span class='userdanger'>[user] [pick("chokes", "strangles")] me!</span>", "<span class='hear'>I hear a sickening sound of pugilism!</span>", COMBAT_MESSAGE_RANGE, user)
 					to_chat(user, "<span class='danger'>I [pick("choke", "strangle")] [C]!</span>")
-		if(/datum/intent/grab/obj/twist)
+		if(/datum/intent/grab/twist)
 			if(limb_grabbed && grab_state > 0) //this implies a carbon victim
 				if(iscarbon(M))
 					twistlimb(user)
-		if(/datum/intent/grab/obj/twistitem)
+		if(/datum/intent/grab/twistitem)
 			if(limb_grabbed && grab_state > 0) //this implies a carbon victim
 				if(ismob(M))
 					twistitemlimb(user)
-		if(/datum/intent/grab/obj/remove)
+		if(/datum/intent/grab/remove)
 			if(isitem(sublimb_grabbed))
 				removeembeddeditem(user)
 			else
 				user.stop_pulling()
-		if(/datum/intent/grab/obj/shove)
+		if(/datum/intent/grab/shove)
 			if(!(user.mobility_flags & MOBILITY_STAND))
 				to_chat(user, "<span class='warning'>I must stand..</span>")
 				return
@@ -185,10 +185,10 @@
 	playsound(C.loc, "genblunt", 100, FALSE, -1)
 	C.next_attack_msg.Cut()
 	C.apply_damage(damage, BRUTE, limb_grabbed, armor_block)
-	limb_grabbed.attacked_by(BCLASS_TWIST, damage, user, sublimb_grabbed)
-	C.visible_message("<span class='danger'>[user] twists [C]'s [sublimb_grabbed]![C.next_attack_msg.Join()]</span>", \
-					"<span class='userdanger'>[user] twists my [sublimb_grabbed]![C.next_attack_msg.Join()]</span>", "<span class='hear'>I hear a sickening sound of pugilism!</span>", COMBAT_MESSAGE_RANGE, user)
-	to_chat(user, "<span class='warning'>I twist [C]'s [sublimb_grabbed].[C.next_attack_msg.Join()]</span>")
+	limb_grabbed.bodypart_attacked_by(BCLASS_TWIST, damage, user, sublimb_grabbed, crit_message = TRUE)
+	C.visible_message("<span class='danger'>[user] twists [C]'s [parse_zone(sublimb_grabbed)]![C.next_attack_msg.Join()]</span>", \
+					"<span class='userdanger'>[user] twists my [parse_zone(sublimb_grabbed)]![C.next_attack_msg.Join()]</span>", "<span class='hear'>I hear a sickening sound of pugilism!</span>", COMBAT_MESSAGE_RANGE, user)
+	to_chat(user, "<span class='warning'>I twist [C]'s [parse_zone(sublimb_grabbed)].[C.next_attack_msg.Join()]</span>")
 	C.next_attack_msg.Cut()
 	log_combat(user, C, "limbtwisted [sublimb_grabbed] ")
 
@@ -207,52 +207,45 @@
 	var/obj/item/bodypart/L = limb_grabbed
 	playsound(M.loc, "genblunt", 100, FALSE, -1)
 	log_combat(user, M, "itemremovedgrab [sublimb_grabbed] ")
-	if(iscarbon(M) && L)
+	if(iscarbon(M))
 		var/mob/living/carbon/C = M
 		var/obj/item/I = locate(sublimb_grabbed) in L.embedded_objects
-		if(!I || !L || I.loc != C)
-			user.stop_pulling()
-			return
-		L.embedded_objects -= I
-		C.emote("paincrit", TRUE)
-		L.receive_damage(I.embedding.embedded_unsafe_removal_pain_multiplier*I.w_class)//It hurts to rip it out, get surgery you dingus.
-		I.forceMove(get_turf(C))
-		user.stop_pulling()
+		if(QDELETED(I) || QDELETED(L) || !L.remove_embedded_object(I))
+			return FALSE
+		L.receive_damage(I.embedding.embedded_unsafe_removal_pain_multiplier*I.w_class) //It hurts to rip it out, get surgery you dingus.
+		user.dropItemToGround(src)
 		user.put_in_hands(I)
+		C.emote("paincrit", TRUE)
 		playsound(C, 'sound/foley/flesh_rem.ogg', 100, TRUE, -2)
-		if(!C.has_embedded_objects())
-			C.clear_alert("embeddedobject")
 		if(usr == src)
 			user.visible_message("<span class='notice'>[user] rips [I] out of [user.p_their()] [L.name]!</span>", "<span class='notice'>I rip [I] from my [L.name].</span>")
 		else
 			user.visible_message("<span class='notice'>[user] rips [I] out of [C]'s [L.name]!</span>", "<span class='notice'>I rip [I] from [C]'s [L.name].</span>")
-
-	else
+		sublimb_grabbed = limb_grabbed.body_zone
+	else if(HAS_TRAIT(M, TRAIT_SIMPLE_WOUNDS))
 		var/obj/item/I = locate(sublimb_grabbed) in M.simple_embedded_objects
-		if(!I || I.loc != M)
-			user.stop_pulling()
-			return
-		M.simple_embedded_objects -= I
-		M.emote("pain", TRUE)
-		M.apply_damage(rand(5,10), BRUTE)
-		I.forceMove(get_turf(M))
-		user.stop_pulling()
+		if(QDELETED(I) || !M.simple_remove_embedded_object(I))
+			return FALSE
+		M.apply_damage(I.embedding.embedded_unsafe_removal_pain_multiplier*I.w_class, BRUTE) //It hurts to rip it out, get surgery you dingus.
+		user.dropItemToGround(src)
 		user.put_in_hands(I)
+		M.emote("paincrit", TRUE)
 		playsound(M, 'sound/foley/flesh_rem.ogg', 100, TRUE, -2)
-		if(!M.has_embedded_objects())
-			M.clear_alert("embeddedobject")
 		if(user == M)
 			user.visible_message("<span class='notice'>[user] rips [I] out of [user.p_them()]self!</span>", "<span class='notice'>I remove [I] from myself.</span>")
 		else
 			user.visible_message("<span class='notice'>[user] rips [I] out of [M]!</span>", "<span class='notice'>I rip [I] from [src].</span>")
+		sublimb_grabbed = M.simple_limb_hit(user.zone_selected)
+	user.update_grab_intents(grabbed)
+	return TRUE
 
 /obj/item/grabbing/attack_turf(turf/T, mob/living/user)
 	user.changeNext_move(CLICK_CD_MELEE)
 	switch(user.used_intent.type)
-		if(/datum/intent/grab/obj/move)
+		if(/datum/intent/grab/move)
 			if(isturf(T))
 				user.Move_Pulled(T)
-		if(/datum/intent/grab/obj/smash)
+		if(/datum/intent/grab/smash)
 			if(!(user.mobility_flags & MOBILITY_STAND))
 				to_chat(user, "<span class='warning'>I must stand..</span>")
 				return
@@ -278,7 +271,7 @@
 
 /obj/item/grabbing/attack_obj(obj/O, mob/living/user)
 	user.changeNext_move(CLICK_CD_MELEE)
-	if(user.used_intent.type == /datum/intent/grab/obj/smash)
+	if(user.used_intent.type == /datum/intent/grab/smash)
 		if(isstructure(O) && O.blade_dulling != DULLING_CUT)
 			if(!(user.mobility_flags & MOBILITY_STAND))
 				to_chat(user, "<span class='warning'>I must stand..</span>")
@@ -298,7 +291,7 @@
 	var/damage = user.get_punch_dmg()
 	C.next_attack_msg.Cut()
 	if(C.apply_damage(damage, BRUTE, limb_grabbed, armor_block))
-		limb_grabbed.attacked_by(BCLASS_BLUNT, damage, user, sublimb_grabbed)
+		limb_grabbed.bodypart_attacked_by(BCLASS_BLUNT, damage, user, sublimb_grabbed, crit_message = TRUE)
 		playsound(C.loc, "smashlimb", 100, FALSE, -1)
 	else
 		C.next_attack_msg += " <span class='warning'>Armor stops the damage.</span>"
@@ -308,7 +301,7 @@
 	C.next_attack_msg.Cut()
 	log_combat(user, C, "limbsmashed [limb_grabbed] ")
 
-/datum/intent/grab/obj
+/datum/intent/grab
 	unarmed = TRUE
 	chargetime = 0
 	noaa = TRUE
@@ -316,43 +309,42 @@
 	canparry = FALSE
 	no_attack = TRUE
 
-
-/datum/intent/grab/obj/move
+/datum/intent/grab/move
 	name = "grab move"
 	desc = ""
 	icon_state = "inmove"
 
-/datum/intent/grab/obj/upgrade
+/datum/intent/grab/upgrade
 	name = "upgrade grab"
 	desc = ""
 	icon_state = "ingrab"
 
-/datum/intent/grab/obj/smash
+/datum/intent/grab/smash
 	name = "smash"
 	desc = ""
 	icon_state = "insmash"
 
-/datum/intent/grab/obj/twist
+/datum/intent/grab/twist
 	name = "twist"
 	desc = ""
 	icon_state = "intwist"
 
-/datum/intent/grab/obj/choke
+/datum/intent/grab/choke
 	name = "choke"
 	desc = ""
 	icon_state = "inchoke"
 
-/datum/intent/grab/obj/shove
+/datum/intent/grab/shove
 	name = "shove"
 	desc = ""
 	icon_state = "intackle"
 
-/datum/intent/grab/obj/twistitem
+/datum/intent/grab/twistitem
 	name = "twist in wound"
 	desc = ""
 	icon_state = "intwist"
 
-/datum/intent/grab/obj/remove
+/datum/intent/grab/remove
 	name = "remove"
 	desc = ""
 	icon_state = "intake"
@@ -362,7 +354,7 @@
 	name = "bite"
 	icon_state = "bite"
 	slot_flags = ITEM_SLOT_MOUTH
-	bleed_suppressing = 0
+	bleed_suppressing = 1
 	var/last_drink
 
 /obj/item/grabbing/bite/Click(location, control, params)
@@ -398,12 +390,12 @@
 	var/mob/living/carbon/C = grabbed
 	var/armor_block = C.run_armor_check(sublimb_grabbed, "melee")
 	var/damage = user.get_punch_dmg()
-	if(HAS_TRAIT(user, RTRAIT_STRONGBITE))
+	if(HAS_TRAIT(user, TRAIT_STRONGBITE))
 		damage = damage*2
 	C.next_attack_msg.Cut()
 	if(C.apply_damage(damage, BRUTE, limb_grabbed, armor_block))
 		playsound(C.loc, "smallslash", 100, FALSE, -1)
-		limb_grabbed.attacked_by(BCLASS_BITE, damage, user, sublimb_grabbed)
+		limb_grabbed.bodypart_attacked_by(BCLASS_BITE, damage, user, sublimb_grabbed, crit_message = TRUE)
 		if(user.mind)
 			if(user.mind.has_antag_datum(/datum/antagonist/werewolf))
 				var/mob/living/carbon/human/H = C
@@ -445,11 +437,11 @@
 		return
 	if(world.time < last_drink + 2 SECONDS)
 		return
-	if(!limb_grabbed.get_bleedrate())
+	if(!limb_grabbed.get_bleed_rate())
 		to_chat(user, "<span class='warning'>Sigh. It's not bleeding.</span>")
 		return
 	var/mob/living/carbon/C = grabbed
-	if(C.dna && C.dna.species && (NOBLOOD in C.dna.species.species_traits))
+	if(C.dna?.species && (NOBLOOD in C.dna.species.species_traits))
 		to_chat(user, "<span class='warning'>Sigh. No blood.</span>")
 		return
 	if(C.blood_volume <= 0)
@@ -479,11 +471,23 @@
 					to_chat(user, "<span class='warning'>It's vitae, just like mine.</span>")
 				else
 					C.blood_volume = max(C.blood_volume-45, 0)
+					if(ishuman(C))
+						var/mob/living/carbon/human/H = C
+						if(H.virginity)
+							to_chat(user, "<span class='love'>Virgin blood, delicious!</span>")
+							if(VDrinker.isspawn)
+								VDrinker.handle_vitae(750, 750)
+							else
+								VDrinker.handle_vitae(1000)
 					if(VDrinker.isspawn)
 						VDrinker.handle_vitae(500, 500)
 					else
 						VDrinker.handle_vitae(500)
 		else
+/*			if(VVictim)
+				to_chat(user, "<span class='notice'>A strange, sweet taste tickles my throat.</span>")
+				addtimer(CALLBACK(user, .mob/living/carbon/human/proc/vampire_infect), 1 MINUTES) // I'll use this for succession later.
+			else */
 			to_chat(user, "<span class='warning'>I'm going to puke...</span>")
 			addtimer(CALLBACK(user, TYPE_PROC_REF(/mob/living/carbon, vomit), 0, TRUE), rand(8 SECONDS, 15 SECONDS))
 	else

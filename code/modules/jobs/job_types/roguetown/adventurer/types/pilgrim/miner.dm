@@ -1,5 +1,7 @@
 /datum/advclass/miner
 	name = "Miner"
+	tutorial = "You are a Miner, you mine for the local blacksmith, gathering rare ores. \
+	there are tales of ambitious dwarf miners building great forts in the lavalands, to harvest all of it's hardly touched ores"
 	allowed_sexes = list("male")
 	allowed_races = ALL_RACES_TYPES
 	outfit = /datum/outfit/job/roguetown/adventurer/miner
@@ -20,7 +22,7 @@
 	backl = /obj/item/storage/backpack/rogue/backpack
 	backpack_contents = list(/obj/item/flint = 1)
 	if(H.mind)
-		H.mind.adjust_skillrank(/datum/skill/combat/axesmaces, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/axes, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/athletics, 4, TRUE) // Tough. Well fed. The strongest of the strong.
 		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 3, TRUE)

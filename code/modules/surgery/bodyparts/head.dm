@@ -13,6 +13,7 @@
 	px_y = -8
 	stam_damage_coeff = 1
 	max_stamina_damage = 100
+	dismember_wound = /datum/wound/dismemberment/head
 
 	var/mob/living/brain/brainmob = null //The current occupant.
 	var/obj/item/organ/brain/brain = null //The brain organ
@@ -38,11 +39,16 @@
 	offset = OFFSET_HEAD
 	offset_f = OFFSET_HEAD_F
 	//subtargets for crits
-	subtargets = list(BODY_ZONE_PRECISE_R_EYE, BODY_ZONE_PRECISE_L_EYE, BODY_ZONE_PRECISE_MOUTH, BODY_ZONE_PRECISE_NECK)
+	subtargets = list(BODY_ZONE_PRECISE_R_EYE, BODY_ZONE_PRECISE_L_EYE, BODY_ZONE_PRECISE_NOSE, BODY_ZONE_PRECISE_MOUTH, BODY_ZONE_PRECISE_SKULL, BODY_ZONE_PRECISE_EARS, BODY_ZONE_PRECISE_NECK)
 	//grabtargets for grabs
-	grabtargets = list(BODY_ZONE_PRECISE_R_EYE, BODY_ZONE_PRECISE_L_EYE, BODY_ZONE_PRECISE_NOSE, BODY_ZONE_PRECISE_MOUTH, BODY_ZONE_PRECISE_SKULL, BODY_ZONE_PRECISE_EARS, BODY_ZONE_PRECISE_NECK)
+	grabtargets = list(BODY_ZONE_HEAD, BODY_ZONE_PRECISE_R_EYE, BODY_ZONE_PRECISE_L_EYE, BODY_ZONE_PRECISE_NOSE, BODY_ZONE_PRECISE_MOUTH, BODY_ZONE_PRECISE_SKULL, BODY_ZONE_PRECISE_EARS, BODY_ZONE_PRECISE_NECK)
 	resistance_flags = FLAMMABLE
 
+	/// Our left eye has been poked out, ouch
+	var/left_eye_poked = FALSE
+	/// Our right eye has been poked out, ouch
+	var/right_eye_poked = FALSE
+	/// Brainkill means that this head is considered dead and revival is impossible
 	var/brainkill = FALSE
 
 /obj/item/bodypart/head/adjust_marking_overlays(var/list/appearance_list)
@@ -64,21 +70,21 @@
 	var/used_limb = precise
 	switch(used_limb)
 		if(BODY_ZONE_HEAD)
-			return list(/datum/intent/grab/obj/move, /datum/intent/grab/obj/twist, /datum/intent/grab/obj/smash)
+			return list(/datum/intent/grab/move, /datum/intent/grab/twist, /datum/intent/grab/smash)
 		if(BODY_ZONE_PRECISE_EARS)
-			return list(/datum/intent/grab/obj/move, /datum/intent/grab/obj/twist, /datum/intent/grab/obj/smash)
+			return list(/datum/intent/grab/move, /datum/intent/grab/twist, /datum/intent/grab/smash)
 		if(BODY_ZONE_PRECISE_NOSE)
-			return list(/datum/intent/grab/obj/move, /datum/intent/grab/obj/twist, /datum/intent/grab/obj/smash)
+			return list(/datum/intent/grab/move, /datum/intent/grab/twist, /datum/intent/grab/smash)
 		if(BODY_ZONE_PRECISE_SKULL)
-			return list(/datum/intent/grab/obj/move, /datum/intent/grab/obj/smash)
+			return list(/datum/intent/grab/move, /datum/intent/grab/smash)
 		if(BODY_ZONE_PRECISE_L_EYE)
-			return list(/datum/intent/grab/obj/move, /datum/intent/grab/obj/smash)
+			return list(/datum/intent/grab/move, /datum/intent/grab/smash)
 		if(BODY_ZONE_PRECISE_R_EYE)
-			return list(/datum/intent/grab/obj/move, /datum/intent/grab/obj/smash)
+			return list(/datum/intent/grab/move, /datum/intent/grab/smash)
 		if(BODY_ZONE_PRECISE_MOUTH)
-			return list(/datum/intent/grab/obj/move, /datum/intent/grab/obj/twist, /datum/intent/grab/obj/smash)
+			return list(/datum/intent/grab/move, /datum/intent/grab/twist, /datum/intent/grab/smash)
 		if(BODY_ZONE_PRECISE_NECK)
-			return list(/datum/intent/grab/obj/move, /datum/intent/grab/obj/choke)
+			return list(/datum/intent/grab/move, /datum/intent/grab/choke)
 
 /obj/item/bodypart/head/Destroy()
 	QDEL_NULL(brainmob) //order is sensitive, see warning in handle_atom_del() below
@@ -104,41 +110,6 @@
 		ears = null
 	if(A == tongue)
 		tongue = null
-	return ..()
-
-/obj/item/bodypart/head/examine(mob/user)
-	. = ..()
-
-	if(status == BODYPART_ORGANIC)
-		if(!brain)
-			. += "<span class='info'>The brain is missing.</span>"
-/*		else if(brain.suicided || brainmob?.suiciding)
-			. += "<span class='info'>There's a pretty dumb expression on [real_name]'s face; they must have really hated life. There is no hope of recovery.</span>"
-		else if(brain.brain_death || brainmob?.health <= HEALTH_THRESHOLD_DEAD)
-			. += "<span class='info'></span>"
-		else if(brainmob)
-			if(brainmob.get_ghost(FALSE, TRUE))
-				. += "<span class='info'>Its muscles are still twitching slightly... It still seems to have a bit of life left to it.</span>"
-			else
-				. += "<span class='info'>It seems seems particularly lifeless. Perhaps there'll be a chance for them later.</span>"
-		else if(brain?.decoy_override)
-			. += "<span class='info'>It seems particularly lifeless. Perhaps there'll be a chance for them later.</span>"
-		else
-			. += "<span class='info'>It seems completely devoid of life.</span>"*/
-
-		if(!eyes)
-			. += "<span class='info'>[real_name]'s eyes appear to have been removed.</span>"
-
-		if(!ears)
-			. += "<span class='info'>[real_name]'s ears appear to have been removed.</span>"
-
-		if(!tongue)
-			. += "<span class='info'>[real_name]'s tongue appears to have been removed.</span>"
-
-
-/obj/item/bodypart/head/can_dismember(obj/item/I)
-//	if(!((owner.stat == DEAD) || owner.InFullCritical()))
-//		return FALSE
 	return ..()
 
 /obj/item/bodypart/head/drop_organs(mob/user, violent_removal)

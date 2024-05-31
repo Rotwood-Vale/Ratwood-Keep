@@ -1,5 +1,7 @@
 /datum/advclass/woodcutter
 	name = "Woodcutter"
+	tutorial = "You are a strong Lumberjack, armed with an axe, you can gather wood \
+	either for yourself, or for others. You are an expert carpenter too, so you can bend wood into whatever you need, and chop it efficiently"
 	allowed_sexes = list("male")
 	allowed_races = ALL_RACES_TYPES
 	outfit = /datum/outfit/job/roguetown/adventurer/woodcutter
@@ -8,7 +10,7 @@
 
 /datum/outfit/job/roguetown/adventurer/woodcutter/pre_equip(mob/living/carbon/human/H)
 	..()
-	H.mind.adjust_skillrank(/datum/skill/combat/axesmaces, 3, TRUE) // AXE MEN! GIVE ME SPLINTERS!
+	H.mind.adjust_skillrank(/datum/skill/combat/axes, 3, TRUE) // AXE MEN! GIVE ME SPLINTERS!
 	H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE) 
 	H.mind.adjust_skillrank(/datum/skill/combat/bows, pick(0,0,1), TRUE)
 	H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
@@ -38,6 +40,6 @@
 	beltr = /obj/item/rogueweapon/stoneaxe/woodcut
 	beltl = /obj/item/rogueweapon/huntingknife
 	backpack_contents = list(/obj/item/flint = 1)
-	H.change_stat("strength", 2)
-	H.change_stat("constitution", 2)
+	H.change_stat("strength", 3)
+	H.change_stat("constitution", 1)
 	H.change_stat("perception", 1)

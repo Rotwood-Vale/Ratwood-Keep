@@ -5,7 +5,7 @@
 
 /datum/map_config
 	// Metadata
-	var/config_filename = "_maps/roguetown2.json"
+	var/config_filename = "_maps/blackstone.json"
 	var/defaulted = TRUE  // set to FALSE by LoadConfig() succeeding
 	// Config from maps.txt
 	var/config_max_users = 0
@@ -14,9 +14,9 @@
 	var/votable = FALSE
 
 	// Config actually from the JSON - should default to Box
-	var/map_name = "Roguetown 2"
-	var/map_path = "map_files/roguetown2"
-	var/map_file = "roguetown2.dmm"
+	var/map_name = "Blackstone"
+	var/map_path = "map_files/blackstone"
+	var/map_file = "blackstone.dmm"
 
 	var/traits = null
 	var/space_ruin_levels = 7

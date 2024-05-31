@@ -21,6 +21,7 @@
 	associated_skill = /datum/skill/combat/crossbows
 	anvilrepair = /datum/skill/craft/weaponsmithing
 	smeltresult = /obj/item/ingot/steel
+	var/damfactor = 2
 
 /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow/getonmobprop(tag)
 	. = ..()
@@ -80,7 +81,7 @@
 	else
 		if(!cocked)
 			to_chat(user, "<span class='info'>I step on the stirrup and use all my might...</span>")
-			if(do_after(user, 40 - user.STASTR, target = user))
+			if(do_after(user, 50 - user.STASTR, target = user))
 				playsound(user, 'sound/combat/Ranged/crossbow_medium_reload-01.ogg', 100, FALSE)
 				cocked = TRUE
 		else
@@ -108,8 +109,7 @@
 		spread = 0
 	for(var/obj/item/ammo_casing/CB in get_ammo_list(FALSE, TRUE))
 		var/obj/projectile/BB = CB.BB
-		if(user.STAPER > 10)
-			BB.damage = BB.damage * (user.STAPER / 10)
+		BB.damage = BB.damage * damfactor
 	cocked = FALSE
 	..()
 

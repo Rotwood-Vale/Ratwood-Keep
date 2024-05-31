@@ -17,11 +17,12 @@
 	if(isliving(targets[1]))
 		var/mob/living/target = targets[1]
 		if(target.mob_biotypes & MOB_UNDEAD) //positive energy harms the undead
-			target.adjustFireLoss(-50)
-			target.adjustBruteLoss(-50)
 			var/obj/item/bodypart/affecting = target.get_bodypart(check_zone(user.zone_selected))
-			if(affecting?.heal_wounds(30))
-				target.update_damage_overlays()
+			if(affecting)
+				if(affecting.heal_damage(50, 50))
+					target.update_damage_overlays()
+				if(affecting.heal_wounds(50))
+					target.update_damage_overlays()
 			target.visible_message("<span class='danger'>[target] reforms under the vile energy!</span>", "<span class='notice'>I'm remade by dark magic!</span>")
 			return TRUE
 		target.visible_message("<span class='info'>Necrotic energy floods over [target]!</span>", "<span class='userdanger'>I feel colder as the dark energy floods into me!</span>")

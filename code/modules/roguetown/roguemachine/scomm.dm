@@ -132,6 +132,8 @@
 			S.repeat_message(raw_message, src, usedcolor, message_language)
 		for(var/obj/item/scomstone/S in SSroguemachine.scomm_machines)
 			S.repeat_message(raw_message, src, usedcolor, message_language)
+		for(var/obj/item/listenstone/S in SSroguemachine.scomm_machines)
+			S.repeat_message(raw_message, src, usedcolor, message_language)//make the listenstone hear scom
 
 /obj/structure/roguemachine/scomm/proc/dictate_laws()
 	if(dictating)
@@ -185,6 +187,8 @@
         for(var/obj/structure/roguemachine/scomm/S in SSroguemachine.scomm_machines)
             S.repeat_message(input_text)
         for(var/obj/item/scomstone/S in SSroguemachine.scomm_machines)
+            S.repeat_message(input_text)
+        for(var/obj/item/listenstone/S in SSroguemachine.scomm_machines)//make the listenstone hear scomstone
             S.repeat_message(input_text)
 
 /obj/item/scomstone/MiddleClick(mob/user)
@@ -251,6 +255,8 @@
 			S.repeat_message(raw_message, src, usedcolor, message_language)
 		for(var/obj/item/scomstone/S in SSroguemachine.scomm_machines)
 			S.repeat_message(raw_message, src, usedcolor, message_language)
+		for(var/obj/item/listenstone/S in SSroguemachine.scomm_machines)
+			S.repeat_message(raw_message, src, usedcolor, message_language)//make the listenstone hear scomstone scream
 
 /obj/item/scomstone/bad
 	name = "serfstone"
@@ -259,4 +265,70 @@
 	sellprice = 2
 
 /obj/item/scomstone/bad/Hear()
+	return
+//LISTENSTONE		LISTENSTONE
+/obj/item/listenstone
+	name = "emerald choker"
+	icon_state = "listenstone"
+	desc = "A iron and gold choker with an emerald gem."
+	gripped_intents = null
+	//dropshrink = 0.75
+	possible_item_intents = list(INTENT_GENERIC)
+	//force = 10
+	//throwforce = 10
+	slot_flags = ITEM_SLOT_MOUTH|ITEM_SLOT_HIP|ITEM_SLOT_NECK|ITEM_SLOT_WRISTS
+	obj_flags = null
+	icon = 'icons/roguetown/clothing/neck.dmi'
+	w_class = WEIGHT_CLASS_SMALL
+	flags_1 = HEAR_1
+	muteinmouth = TRUE
+	var/listening = TRUE
+	var/speaking = TRUE
+	sellprice = 200
+
+
+/obj/item/listenstone/MiddleClick(mob/user)
+	if(.)
+		return
+	user.changeNext_move(CLICK_CD_MELEE)
+	playsound(loc, 'sound/misc/beep.ogg', 100, FALSE, -1)
+	listening = !listening
+	speaking = !speaking
+	to_chat(user, "<span class='info'>I [speaking ? "unmute" : "mute"] the scomstone.</span>")
+	update_icon()
+	if(listening)
+		icon_state = "listenstone"
+	else
+		icon_state = "listenstone_act"
+
+/obj/item/listenstone/Initialize()
+	. = ..()
+	update_icon()
+	SSroguemachine.scomm_machines += src//dont know what this is for
+
+
+/obj/item/listenstone/proc/repeat_message(message, atom/A, tcolor, message_language)
+	if(A == src)
+		return
+	if(tcolor)
+		voicecolor_override = tcolor
+	if(speaking && message)
+		playsound(loc, 'sound/vo/mobs/rat/rat_life.ogg', 100, TRUE, -1)
+		say(message, language = message_language)
+	voicecolor_override = null
+
+/obj/item/listenstone/say(message, bubble_type, list/spans = list(), sanitize = TRUE, datum/language/language = null, ignore_spam = FALSE, forced = null)
+	if(!can_speak())
+		return
+	if(message == "" || !message)
+		return
+	spans |= speech_span
+	if(!language)
+		language = get_default_language()
+	if(istype(loc, /obj/item))
+		var/obj/item/I = loc
+		I.send_speech(message, 1, I, , spans, message_language=language)
+	else
+		send_speech(message, 1, src, , spans, message_language=language)
+
 	return

@@ -336,3 +336,12 @@ INITIALIZE_IMMEDIATE(/obj/effect/mapping_helpers/no_lava)
 	qdel(src)
 
 
+//This is our map object, which just gets placed anywhere on the map. A .dm file is linked to it to set the templates list.
+//If there's only one template in the list, it will only pick that (useful for editing parts of maps without editing the WHOLE map)
+/obj/effect/landmark/map_load_mark
+	name = "map loader landmark"
+	var/list/templates //List of templates we're trying to pick from (must be a list, even if there's only one entry)
+
+/obj/effect/landmark/map_load_mark/Initialize()
+	. = ..()
+	LAZYADD(SSmapping.map_load_marks,src)

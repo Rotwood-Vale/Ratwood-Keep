@@ -11,6 +11,7 @@
 		diag_hud.add_to_hud(src)
 	faction += "[REF(src)]"
 	GLOB.mob_living_list += src
+	init_faith()
 
 /mob/living/prepare_huds()
 	..()
@@ -401,8 +402,8 @@
 			var/mob/living/carbon/C = M
 			var/obj/item/grabbing/O = new()
 			var/used_limb = C.find_used_grab_limb(src)
-			O.name = "[C]'s [used_limb]"
-			var/obj/item/bodypart/BP = C.get_bodypart(check_zone(zone_selected))
+			O.name = "[C]'s [parse_zone(used_limb)]"
+			var/obj/item/bodypart/BP = C.get_bodypart(check_zone(used_limb))
 			C.grabbedby += O
 			O.grabbed = C
 			O.grabbee = src
@@ -424,7 +425,10 @@
 			O.name = "[M.name]"
 			O.grabbed = M
 			O.grabbee = src
-			O.sublimb_grabbed = M.simple_limb_hit(zone_selected)
+			if(item_override)
+				O.sublimb_grabbed = item_override
+			else
+				O.sublimb_grabbed = M.simple_limb_hit(zone_selected)
 			put_in_hands(O)
 			O.update_hands(src)
 			if(HAS_TRAIT(src, TRAIT_STRONG_GRABBER) || item_override)
@@ -667,11 +671,11 @@
 		return
 	if(resting)
 		if(!IsKnockdown() && !IsStun() && !IsParalyzed())
-			src.visible_message("<span class='info'>[src] stands up.</span>")
+			src.visible_message("<span class='info'>[src] begins to stand up.</span>")
 			if(move_after(src, 20, target = src))
 				set_resting(FALSE, FALSE)
 		else
-			src.visible_message("<span class='warning'>[src] tries to stand up.</span>")
+			src.visible_message("<span class='warning'>[src] struggles to stand up.</span>")
 	else
 		set_resting(TRUE, FALSE)
 
@@ -679,6 +683,8 @@
 	resting = rest
 	update_resting()
 	if(rest == resting)
+		if(sexcon)
+			sexcon.mob_moved()
 		if(resting)
 			if(m_intent == MOVE_INTENT_RUN)
 				toggle_rogmove_intent(MOVE_INTENT_WALK, TRUE)
@@ -736,11 +742,11 @@
 	SEND_SIGNAL(src, COMSIG_LIVING_REVIVE, full_heal, admin_revive)
 	if(full_heal)
 		fully_heal(admin_revive = admin_revive)
-	if(stat == DEAD && can_be_revived()) //in some cases you can't revive (e.g. no brain)
+	if(stat == DEAD && (admin_revive || can_be_revived())) //in some cases you can't revive (e.g. no brain)
 		GLOB.dead_mob_list -= src
 		GLOB.alive_mob_list += src
 		set_suicide(FALSE)
-		stat = UNCONSCIOUS //the mob starts unconscious,
+		stat = CONSCIOUS
 		updatehealth() //then we check if the mob should wake up.
 		update_mobility()
 		update_sight()
@@ -752,8 +758,8 @@
 			for(var/S in mind.spell_list)
 				var/obj/effect/proc_holder/spell/spell = S
 				spell.updateButtonIcon()
-			if(mind.has_antag_datum(/datum/antagonist/zombie))
-				mind.remove_antag_datum(/datum/antagonist/zombie)
+			mind.remove_antag_datum(/datum/antagonist/zombie)
+
 /mob/living/proc/remove_CC(should_update_mobility = TRUE)
 	SetStun(0, FALSE)
 	SetKnockdown(0, FALSE)
@@ -791,8 +797,15 @@
 	cure_nearsighted()
 	cure_blind()
 	cure_husk()
+	cure_holdbreath()
+	cure_paralysis()
 	hallucination = 0
 	heal_overall_damage(INFINITY, INFINITY, INFINITY, null, TRUE) //heal brute and burn dmg on both organic and robotic limbs, and update health right away.
+	for(var/datum/wound/wound as anything in get_wounds())
+		if(admin_revive)
+			qdel(wound)
+		else
+			wound.heal_wound(wound.whp)
 	ExtinguishMob()
 	fire_stacks = 0
 	confused = 0
@@ -869,7 +882,7 @@
 
 	. = ..()
 
-	update_sneak_invis(TRUE)
+	update_sneak_invis()
 
 	if(pulledby && moving_diagonally != FIRST_DIAG_STEP && get_dist(src, pulledby) > 1 && (pulledby != moving_from_pull))//separated from our puller and not in the middle of a diagonal move.
 		pulledby.stop_pulling()
@@ -892,6 +905,8 @@
 		stop_looking()
 		if(doing)
 			doing = 0
+		if(sexcon)
+			sexcon.mob_moved()
 		if(client)
 			update_vision_cone()
 
@@ -978,6 +993,10 @@
 
 	changeNext_move(CLICK_CD_RESIST)
 
+	if(sexcon)
+		if(sexcon.cancel_our_actions())
+			return
+
 	if(atkswinging)
 		stop_attack(FALSE)
 
@@ -987,6 +1006,11 @@
 		log_combat(src, pulledby, "resisted grab")
 		resist_grab()
 		return
+
+	if(!restrained(ignore_grab = 1) && !pulledby)
+		if(sexcon)
+			if(sexcon.cancel_others_actions())
+				return
 
 	//unbuckling yourself
 	if(buckled && last_special <= world.time)
@@ -1079,6 +1103,7 @@
 						"<span class='notice'>I break free of [pulledby]'s grip!</span>", null, null, pulledby)
 		to_chat(pulledby, "<span class='danger'>[src] breaks free of my grip!</span>")
 		log_combat(pulledby, src, "broke grab")
+		pulledby.changeNext_move(CLICK_CD_GRABBING)
 		pulledby.stop_pulling()
 		return FALSE
 	else
@@ -1106,7 +1131,7 @@
 											"<span class='warning'>I struggle against [pulledby]'s grip!</span>", null, null, pulledby)
 							to_chat(pulledby, "<span class='warning'>[src] struggles against my grip!</span>")
 							return FALSE
-		if(HAS_TRAIT(H, RTRAIT_NOSEGRAB))
+		if(HAS_TRAIT(H, TRAIT_NOSEGRAB) && !HAS_TRAIT(src, TRAIT_MISSING_NOSE))
 			var/obj/item/bodypart/head = get_bodypart(BODY_ZONE_HEAD)
 			for(var/obj/item/grabbing/G in grabbedby)
 				if(G.limb_grabbed == head)
@@ -1140,11 +1165,11 @@
 			clear_alert("gravity")
 		else
 			if(has_gravity >= GRAVITY_DAMAGE_TRESHOLD)
-				throw_alert("gravity", /obj/screen/alert/veryhighgravity)
+				throw_alert("gravity", /atom/movable/screen/alert/veryhighgravity)
 			else
-				throw_alert("gravity", /obj/screen/alert/highgravity)
+				throw_alert("gravity", /atom/movable/screen/alert/highgravity)
 	else
-		throw_alert("gravity", /obj/screen/alert/weightless)
+		throw_alert("gravity", /atom/movable/screen/alert/weightless)
 	if(!override && !is_flying())
 		float(!has_gravity)
 
@@ -1434,7 +1459,7 @@
 		src.visible_message("<span class='warning'>[src] catches fire!</span>", \
 						"<span class='danger'>I'm set on fire!</span>")
 		new/obj/effect/dummy/lighting_obj/moblight/fire(src)
-		throw_alert("fire", /obj/screen/alert/fire)
+		throw_alert("fire", /atom/movable/screen/alert/fire)
 		update_fire()
 		SEND_SIGNAL(src, COMSIG_LIVING_IGNITED,src)
 		return TRUE
@@ -1798,10 +1823,9 @@
 		return
 	changeNext_move(CLICK_CD_EXHAUSTED)
 	if(m_intent != MOVE_INTENT_SNEAK)
-		visible_message("<span class='info'>[src] looks around.</span>")
+		visible_message("<span class='info'>[src] begins looking around.</span>")
 	var/looktime = 50 - (STAPER * 2)
 	if(do_after(src, looktime, target = src))
-		var/huhsneak
 		for(var/mob/living/M in view(7,src))
 			if(M == src)
 				continue
@@ -1816,7 +1840,7 @@
 			if(prob(probby))
 				found_ping(get_turf(M), client, "hidden")
 				if(M.m_intent == MOVE_INTENT_SNEAK)
-					huhsneak = TRUE
+					emote("huh")
 					to_chat(M, "<span class='danger'>[src] sees me! I'm found!</span>")
 					M.mob_timers[MT_FOUNDSNEAK] = world.time
 			else
@@ -1827,8 +1851,6 @@
 						to_chat(M, "<span class='warning'>[src] didn't find me.</span>")
 				else
 					found_ping(get_turf(M), client, "hidden")
-		if(huhsneak)
-			emote("huh")
 
 		for(var/obj/O in view(7,src))
 			if(istype(O, /obj/item/restraints/legcuffs/beartrap))

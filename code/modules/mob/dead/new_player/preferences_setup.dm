@@ -19,7 +19,10 @@
 	randomize_all_customizer_accessories()
 
 /datum/preferences/proc/random_species()
-	var/random_species_type = GLOB.species_list[pick(GLOB.roundstart_races)]
+	var/random_species_type = GLOB.species_list[pick(get_selectable_species())]
+	pref_species = new random_species_type
+	if(randomise[RANDOM_NAME])
+		real_name = pref_species.random_name(gender,1)
 	set_new_race(new random_species_type)
 
 /datum/preferences/proc/update_preview_icon()
@@ -61,11 +64,14 @@
 
 
 /datum/preferences/proc/spec_check(mob/user)
-	if(!(pref_species.name in GLOB.roundstart_races))
+	if(!istype(pref_species))
 		return FALSE
-	if(user)
-		if(pref_species.patreon_req > user.patreonlevel())
-			return FALSE
+	if(!(pref_species.name in get_selectable_species()))
+		return FALSE
+	if(!pref_species.check_roundstart_eligible())
+		return FALSE
+	if(user && (pref_species.patreon_req > user.patreonlevel()))
+		return FALSE
 	return TRUE
 
 /mob/proc/patreonlevel()

@@ -8,6 +8,8 @@
 #define BLUNTWOOSH_LARGE		list('sound/combat/wooshes/blunt/wooshlarge (1).ogg','sound/combat/wooshes/blunt/wooshlarge (2).ogg','sound/combat/wooshes/blunt/wooshlarge (3).ogg')
 #define BLUNTWOOSH_MED			list('sound/combat/wooshes/blunt/wooshmed (1).ogg','sound/combat/wooshes/blunt/wooshmed (2).ogg','sound/combat/wooshes/blunt/wooshmed (3).ogg')
 
+#define WHIPWOOSH			list('sound/combat/wooshes/whip_crack1.ogg','sound/combat/wooshes/whip_crack2.ogg','sound/combat/wooshes/whip_crack3.ogg')
+
 #define PUNCHWOOSH			list('sound/combat/wooshes/punch/punchwoosh (1).ogg','sound/combat/wooshes/punch/punchwoosh (2).ogg','sound/combat/wooshes/punch/punchwoosh (3).ogg')
 
 

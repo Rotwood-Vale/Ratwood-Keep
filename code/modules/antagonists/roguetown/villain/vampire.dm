@@ -14,7 +14,11 @@
 	job_rank = ROLE_VAMPIRE
 	antag_hud_type = ANTAG_HUD_TRAITOR
 	antag_hud_name = "vampire"
-	confess_lines = list("I WANT YOUR BLOOD!", "DRINK THE BLOOD!", "CHILD OF KAIN!")
+	confess_lines = list(
+		"I WANT YOUR BLOOD!", 
+		"DRINK THE BLOOD!", 
+		"CHILD OF KAIN!",
+	)
 	var/disguised = TRUE
 	var/vitae = 1000
 	var/last_transform
@@ -53,17 +57,17 @@
 	if(!is_lesser)
 		owner.adjust_skillrank(/datum/skill/combat/wrestling, 6, TRUE)
 		owner.adjust_skillrank(/datum/skill/combat/unarmed, 6, TRUE)
-		ADD_TRAIT(owner.current, RTRAIT_NOBLE, TRAIT_GENERIC)
+		ADD_TRAIT(owner.current, TRAIT_NOBLE, TRAIT_GENERIC)
 	owner.special_role = name
-	ADD_TRAIT(owner.current, RTRAIT_STRONGBITE, TRAIT_GENERIC)
-	ADD_TRAIT(owner.current, RTRAIT_NOFATSTAM, TRAIT_GENERIC)
+	ADD_TRAIT(owner.current, TRAIT_STRONGBITE, TRAIT_GENERIC)
+	ADD_TRAIT(owner.current, TRAIT_NOROGSTAM, TRAIT_GENERIC)
 	ADD_TRAIT(owner.current, TRAIT_NOHUNGER, TRAIT_GENERIC)
 	ADD_TRAIT(owner.current, TRAIT_NOBREATH, TRAIT_GENERIC)
 	ADD_TRAIT(owner.current, TRAIT_NOPAIN, TRAIT_GENERIC)
 	ADD_TRAIT(owner.current, TRAIT_TOXIMMUNE, TRAIT_GENERIC)
 	ADD_TRAIT(owner.current, TRAIT_STEELHEARTED, TRAIT_GENERIC)
 	ADD_TRAIT(owner.current, TRAIT_LIMPDICK, TRAIT_GENERIC)
-	owner.current.cmode_music = 'sound/music/combat_vamp.ogg'
+	owner.current.cmode_music = 'sound/music/combat_vamp2.ogg'
 	var/obj/item/organ/eyes/eyes = owner.current.getorganslot(ORGAN_SLOT_EYES)
 	if(eyes)
 		eyes.Remove(owner.current,1)
@@ -152,7 +156,7 @@
 	vitae = CLAMP(vitae, 0, 1666)
 
 	if(vitae > 0)
-		H.blood_volume = BLOOD_VOLUME_MAXIMUM
+		H.blood_volume = BLOOD_VOLUME_NORMAL
 		if(vitae < 200)
 			if(disguised)
 				to_chat(H, "<span class='warning'>My disguise fails!</span>")
@@ -196,7 +200,6 @@
 	hair_color = VD.cache_hair
 	eye_color = VD.cache_eyes
 	facial_hair_color = VD.cache_hair
-	mob_biotypes = MOB_ORGANIC
 	update_body()
 	update_hair()
 	update_body_parts(redraw = TRUE)
@@ -208,7 +211,6 @@
 //	VD.cache_skin = skin_tone
 //	VD.cache_eyes = eye_color
 //	VD.cache_hair = hair_color
-	mob_biotypes = MOB_UNDEAD
 	skin_tone = "c9d3de"
 	hair_color = "181a1d"
 	facial_hair_color = "181a1d"
@@ -241,11 +243,11 @@
 
 /datum/status_effect/buff/bloodstrength
 	id = "bloodstrength"
-	alert_type = /obj/screen/alert/status_effect/buff/bloodstrength
+	alert_type = /atom/movable/screen/alert/status_effect/buff/bloodstrength
 	effectedstats = list("strength" = 6)
 	duration = 1 MINUTES
 
-/obj/screen/alert/status_effect/buff/bloodstrength
+/atom/movable/screen/alert/status_effect/buff/bloodstrength
 	name = "Night Muscles"
 	desc = ""
 	icon_state = "bleed1"
@@ -273,14 +275,14 @@
 
 /datum/status_effect/buff/celerity
 	id = "celerity"
-	alert_type = /obj/screen/alert/status_effect/buff/celerity
+	alert_type = /atom/movable/screen/alert/status_effect/buff/celerity
 	effectedstats = list("speed" = 15,"perception" = 10)
 	duration = 30 SECONDS
 
 /datum/status_effect/buff/celerity/nextmove_modifier()
 	return 0.60
 
-/obj/screen/alert/status_effect/buff/celerity
+/atom/movable/screen/alert/status_effect/buff/celerity
 	name = "Quickening"
 	desc = ""
 	icon_state = "bleed1"
@@ -308,11 +310,11 @@
 
 /datum/status_effect/buff/fortitude
 	id = "fortitude"
-	alert_type = /obj/screen/alert/status_effect/buff/fortitude
+	alert_type = /atom/movable/screen/alert/status_effect/buff/fortitude
 	effectedstats = list("endurance" = 20,"constitution" = 20)
 	duration = 30 SECONDS
 
-/obj/screen/alert/status_effect/buff/fortitude
+/atom/movable/screen/alert/status_effect/buff/fortitude
 	name = "Armor of Darkness"
 	desc = ""
 	icon_state = "bleed1"
@@ -339,7 +341,7 @@
 	icon_state = null
 	body_parts_covered = FULL_BODY
 	armor = list("melee" = 100, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
-	prevent_crits = list(BCLASS_CUT,BCLASS_STAB,BCLASS_BLUNT)
+	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_BLUNT, BCLASS_TWIST)
 	blocksound = SOFTHIT
 	blade_dulling = DULLING_BASHCHOP
 	sewrepair = TRUE
@@ -403,8 +405,8 @@
 		SSdroning.kill_loop(client)
 		SSdroning.kill_droning(client)
 		client.move_delay = initial(client.move_delay)
-		var/obj/screen/gameover/hog/H = new()
+		var/atom/movable/screen/gameover/hog/H = new()
 		H.layer = SPLASHSCREEN_LAYER+0.1
 		client.screen += H
 		H.Fade()
-		addtimer(CALLBACK(H, TYPE_PROC_REF(/obj/screen/gameover, Fade), TRUE), 100)
+		addtimer(CALLBACK(H, TYPE_PROC_REF(/atom/movable/screen/gameover, Fade), TRUE), 100)

@@ -2,9 +2,10 @@
 	var/name = ""
 	var/desc = ""
 	var/item_type = null
-	var/held_items = 0
+	var/held_items = list(0, 0)
 	var/payout_price = 1
 	var/withdraw_price = 1
+	var/transport_fee = 1
 	var/withdraw_disabled = FALSE
 	var/demand = 100
 	//v may send it to a place instead like treasures to horde. If false, will increment held_items and delete the item instead

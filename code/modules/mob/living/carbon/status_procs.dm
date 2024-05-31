@@ -21,7 +21,7 @@
 /mob/living/carbon/adjust_drugginess(amount)
 	druggy = max(druggy+amount, 0)
 	if(druggy)
-		overlay_fullscreen("high", /obj/screen/fullscreen/high)
+		overlay_fullscreen("high", /atom/movable/screen/fullscreen/high)
 //		SEND_SIGNAL(src, COMSIG_ADD_MOOD_EVENT, "high", /datum/mood_event/high)
 	else
 		clear_fullscreen("high")
@@ -31,8 +31,8 @@
 /mob/living/carbon/set_drugginess(amount)
 	druggy = max(amount, 0)
 	if(druggy)
-		overlay_fullscreen("high", /obj/screen/fullscreen/high)
-//		throw_alert("high", /obj/screen/alert/high)
+		overlay_fullscreen("high", /atom/movable/screen/fullscreen/high)
+//		throw_alert("high", /atom/movable/screen/alert/high)
 	else
 		clear_fullscreen("high")
 //		clear_alert("high")
@@ -80,3 +80,7 @@
 	var/obj/item/organ/brain/B = getorganslot(ORGAN_SLOT_BRAIN)
 	if(B)
 		. = B.cure_all_traumas(resilience)
+
+/mob/living/carbon/cure_paralysis(source)
+	. = ..()
+	update_disabled_bodyparts()

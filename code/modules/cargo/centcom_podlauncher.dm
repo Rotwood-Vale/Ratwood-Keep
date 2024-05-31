@@ -458,7 +458,7 @@ force_open = FALSE, datum/tgui/master_ui = null, datum/ui_state/state = GLOB.adm
 	var/left_click = pa.Find("left")
 	if (launcherActivated)
 		//Clicking on UI elements shouldn't launch a pod
-		if(istype(target,/obj/screen))
+		if(istype(target,/atom/movable/screen))
 			return FALSE
 
 		. = TRUE

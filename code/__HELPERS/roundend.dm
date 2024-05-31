@@ -184,12 +184,12 @@
 		client.verbs += /client/proc/lobbyooc
 
 /client/proc/show_game_over()
-	var/obj/screen/splash/credits/S = new(src, FALSE)
+	var/atom/movable/screen/splash/credits/S = new(src, FALSE)
 	S.Fade(FALSE,FALSE)
 	RollCredits()
 //	if(GLOB.credits_icons.len)
 //		for(var/i=0, i<=GLOB.credits_icons.len, i++)
-//			var/obj/screen/P = new()
+//			var/atom/movable/screen/P = new()
 //			P.layer = SPLASHSCREEN_LAYER+1
 //			P.appearance = GLOB.credits_icons
 //			screen += P

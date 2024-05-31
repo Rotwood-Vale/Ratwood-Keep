@@ -7,6 +7,9 @@
 	pickprob = 30
 	traits_applied = list(TRAIT_ZOMBIE_IMMUNE)
 
+/datum/outfit/job/roguetown/adventurer/necromancer
+	allowed_patrons = list(/datum/patron/inhumen/zizo)
+
 /datum/outfit/job/roguetown/adventurer/necromancer/pre_equip(mob/living/carbon/human/H)
 	..()
 	head = /obj/item/clothing/head/roguetown/necromhood
