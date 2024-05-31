@@ -1,4 +1,4 @@
-/datum/round_event_control/rogue/skellysiege
+/*/datum/round_event_control/rogue/skellysiege
 	name = "skellysiege"
 	typepath = /datum/round_event/rogue/skellysiege
 	weight = 10
@@ -25,3 +25,4 @@
 			for(var/mob/dead/observer/O in GLOB.player_list)
 				addtimer(CALLBACK(O, TYPE_PROC_REF(/mob/dead/observer, horde_respawn)), 1)
 	return
+*/

@@ -12,7 +12,7 @@
 	icon_state = "bracers"
 	item_state = "bracers"
 	armor = list("melee" = 100, "bullet" = 100, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
-	prevent_crits = list(BCLASS_CUT, BCLASS_CHOP, BCLASS_BLUNT)
+	prevent_crits = list(BCLASS_CUT, BCLASS_CHOP, BCLASS_BLUNT, BCLASS_TWIST)
 	blocksound = PLATEHIT
 	max_integrity = 300
 	anvilrepair = /datum/skill/craft/armorsmithing
@@ -24,7 +24,7 @@
 	icon_state = "lbracers"
 	item_state = "lbracers"
 	armor = list("melee" = 12, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
-	prevent_crits = list(BCLASS_CUT, BCLASS_BLUNT)
+	prevent_crits = list(BCLASS_CUT, BCLASS_BLUNT, BCLASS_TWIST)
 	resistance_flags = null
 	blocksound = SOFTHIT
 
@@ -39,9 +39,11 @@
 	slot_flags = ITEM_SLOT_WRISTS
 	icon_state = "wrappings"
 	item_state = "wrappings"
+	sewrepair = TRUE
 
 /obj/item/clothing/wrists/roguetown/nocwrappings
 	name = "moon wrappings"
 	slot_flags = ITEM_SLOT_WRISTS
 	icon_state = "nocwrappings"
 	item_state = "nocwrappings"
+	sewrepair = TRUE

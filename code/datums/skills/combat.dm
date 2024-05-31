@@ -45,8 +45,11 @@
 /datum/skill/combat/polearms
 	name = "Polearms"
 
-/datum/skill/combat/axesmaces
-	name = "Axes & Maces"
+/datum/skill/combat/maces
+	name = "Maces"
+
+/datum/skill/combat/axes
+	name = "Axes"
 
 /datum/skill/combat/whipsflails
 	name = "Whips & Flails"

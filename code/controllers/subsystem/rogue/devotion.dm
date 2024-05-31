@@ -4,6 +4,7 @@
 #define CLERIC_T2 2
 #define CLERIC_T3 3
 
+#define CLERIC_REQ_0 0
 #define CLERIC_REQ_1 100
 #define CLERIC_REQ_2 250
 #define CLERIC_REQ_3 500
@@ -30,7 +31,7 @@
 	return FALSE
 
 /datum/devotion/cleric_holder/proc/update_devotion(dev_amt, prog_amt)
-	var/datum/patrongods/P = patron
+	var/datum/patron/P = patron
 	devotion += dev_amt
 	//Max devotion limit
 	if(devotion > max_devotion)
@@ -86,7 +87,7 @@
 	var/datum/devotion/cleric_holder/C = src.cleric
 	var/prayersesh = 0
 
-	visible_message("[src] kneels their head in prayer to the Gods.", "I kneel my head in prayer to [PATRON.name]")
+	visible_message("[src] kneels their head in prayer to the Gods.", "I kneel my head in prayer to [patron.name]")
 	for(var/i in 1 to 20)
 		if(do_after(src, 30))
 			if(C.devotion >= C.max_devotion)

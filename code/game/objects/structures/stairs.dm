@@ -12,13 +12,13 @@
 	icon_state = "stairs"
 	anchored = TRUE
 	layer = 2
-	obj_flags = CAN_BE_HIT
 	nomouseover = TRUE
 
 /obj/structure/stairs/stone
 	name = "stone stairs"
 	icon = 'icons/obj/stairs.dmi'
 	icon_state = "stonestairs"
+	max_integrity = 600
 
 //	climb_offset = 10
 	//RTD animate climbing offset so this can be here
@@ -56,7 +56,7 @@
 
 
 /obj/structure/stairs/OnCrafted(dirin)
-	dir = dirin
+	. = ..()
 	var/turf/partner = get_step_multiz(get_turf(src), UP)
 	partner = get_step(partner, dirin)
 	if(isopenturf(partner))
@@ -69,6 +69,14 @@
 	partner = get_step(partner, dirin)
 	if(isopenturf(partner))
 		var/obj/stairs = new /obj/structure/stairs(partner)
+		stairs.dir = turn(dirin, 180)
+
+/obj/structure/stairs/stone/d/OnCrafted(dirin)
+	dir = turn(dirin, 180)
+	var/turf/partner = get_step_multiz(get_turf(src), DOWN)
+	partner = get_step(partner, dirin)
+	if(isopenturf(partner))
+		var/obj/stairs = new /obj/structure/stairs/stone(partner)
 		stairs.dir = turn(dirin, 180)
 
 /obj/structure/stairs/Initialize(mapload)
@@ -130,11 +138,11 @@
 		if(based)
 			if(isliving(AM))
 				var/mob/living/L = AM
-//				var/pulling = L.pulling
-//				if(pulling)
-//					L.pulling.forceMove(newtarg)
+				var/pulling = L.pulling
+				if(pulling)
+					L.pulling.forceMove(newtarg)
 				L.forceMove(newtarg)
-//				L.start_pulling(pulling)
+				L.start_pulling(pulling)
 			else
 				AM.forceMove(newtarg)
 			return TRUE

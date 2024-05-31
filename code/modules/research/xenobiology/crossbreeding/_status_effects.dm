@@ -1,4 +1,4 @@
-/obj/screen/alert/status_effect/rainbow_protection
+/atom/movable/screen/alert/status_effect/rainbow_protection
 	name = "Rainbow Protection"
 	desc = ""
 	icon_state = "slime_rainbowshield"
@@ -6,7 +6,7 @@
 /datum/status_effect/rainbow_protection
 	id = "rainbow_protection"
 	duration = 100
-	alert_type = /obj/screen/alert/status_effect/rainbow_protection
+	alert_type = /atom/movable/screen/alert/status_effect/rainbow_protection
 	var/originalcolor
 
 /datum/status_effect/rainbow_protection/on_apply()
@@ -28,7 +28,7 @@
 	owner.visible_message("<span class='notice'>[owner] stops glowing, the rainbow light fading away.</span>",
 		"<span class='warning'>I no longer feel protected...</span>")
 
-/obj/screen/alert/status_effect/slimeskin
+/atom/movable/screen/alert/status_effect/slimeskin
 	name = "Adamantine Slimeskin"
 	desc = ""
 	icon_state = "slime_stoneskin"
@@ -36,7 +36,7 @@
 /datum/status_effect/slimeskin
 	id = "slimeskin"
 	duration = 300
-	alert_type = /obj/screen/alert/status_effect/slimeskin
+	alert_type = /atom/movable/screen/alert/status_effect/slimeskin
 	var/originalcolor
 
 /datum/status_effect/slimeskin/on_apply()
@@ -87,14 +87,14 @@
 	do_sparks(3, TRUE, owner)
 	owner.forceMove(target.loc)
 
-/obj/screen/alert/status_effect/freon/stasis
+/atom/movable/screen/alert/status_effect/freon/stasis
 	desc = ""
 
 /datum/status_effect/frozenstasis
 	id = "slime_frozen"
 	status_type = STATUS_EFFECT_UNIQUE
 	duration = -1 //Will remove self when block breaks.
-	alert_type = /obj/screen/alert/status_effect/freon/stasis
+	alert_type = /atom/movable/screen/alert/status_effect/freon/stasis
 	var/obj/structure/ice_stasis/cube
 
 /datum/status_effect/frozenstasis/on_apply()
@@ -156,7 +156,7 @@
 		clone.unequip_everything()
 		qdel(clone)
 
-/obj/screen/alert/status_effect/clone_decay
+/atom/movable/screen/alert/status_effect/clone_decay
 	name = "Clone Decay"
 	desc = ""
 	icon_state = "slime_clonedecay"
@@ -165,7 +165,7 @@
 	id = "slime_clonedecay"
 	status_type = STATUS_EFFECT_UNIQUE
 	duration = -1
-	alert_type = /obj/screen/alert/status_effect/clone_decay
+	alert_type = /atom/movable/screen/alert/status_effect/clone_decay
 
 /datum/status_effect/slime_clone_decay/tick()
 	owner.adjustToxLoss(1, 0)
@@ -174,7 +174,7 @@
 	owner.adjustFireLoss(1, 0)
 	owner.color = "#007BA7"
 
-/obj/screen/alert/status_effect/bloodchill
+/atom/movable/screen/alert/status_effect/bloodchill
 	name = "Bloodchilled"
 	desc = ""
 	icon_state = "bloodchill"
@@ -182,7 +182,7 @@
 /datum/status_effect/bloodchill
 	id = "bloodchill"
 	duration = 100
-	alert_type = /obj/screen/alert/status_effect/bloodchill
+	alert_type = /atom/movable/screen/alert/status_effect/bloodchill
 
 /datum/status_effect/bloodchill/on_apply()
 	owner.add_movespeed_modifier("bloodchilled", TRUE, 100, NONE, override = TRUE, multiplicative_slowdown = 3)
@@ -198,7 +198,7 @@
 /datum/status_effect/bonechill
 	id = "bonechill"
 	duration = 80
-	alert_type = /obj/screen/alert/status_effect/bonechill
+	alert_type = /atom/movable/screen/alert/status_effect/bonechill
 
 /datum/status_effect/bonechill/on_apply()
 	owner.add_movespeed_modifier("bonechilled", TRUE, 100, NONE, override = TRUE, multiplicative_slowdown = 3)
@@ -213,7 +213,7 @@
 /datum/status_effect/bonechill/on_remove()
 	owner.remove_movespeed_modifier("bonechilled")
 
-/obj/screen/alert/status_effect/bonechill
+/atom/movable/screen/alert/status_effect/bonechill
 	name = "Bonechilled"
 	desc = ""
 	icon_state = "bloodchill"
@@ -636,7 +636,7 @@ datum/status_effect/stabilized/blue/on_remove()
 		H.physiology.hunger_mod /= 0.8
 
 //Bluespace has an icon because it's kinda active.
-/obj/screen/alert/status_effect/bluespaceslime
+/atom/movable/screen/alert/status_effect/bluespaceslime
 	name = "Stabilized Bluespace Extract"
 	desc = ""
 	icon_state = "slime_bluespace_on"
@@ -649,7 +649,7 @@ datum/status_effect/stabilized/blue/on_remove()
 /datum/status_effect/stabilized/bluespace
 	id = "stabilizedbluespace"
 	colour = "bluespace"
-	alert_type = /obj/screen/alert/status_effect/bluespaceslime
+	alert_type = /atom/movable/screen/alert/status_effect/bluespaceslime
 	var/healthcheck
 
 /datum/status_effect/stabilized/bluespace/tick()

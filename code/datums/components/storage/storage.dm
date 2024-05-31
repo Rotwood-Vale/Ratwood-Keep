@@ -48,8 +48,8 @@
 
 	var/display_numerical_stacking = FALSE			//stack things of the same type and show as a single object with a number.
 
-	var/obj/screen/storage/boxes					//storage display object
-	var/obj/screen/close/closer						//close button object
+	var/atom/movable/screen/storage/boxes					//storage display object
+	var/atom/movable/screen/close/closer						//close button object
 
 	var/allow_big_nesting = FALSE					//allow storage objects of the same or greater size.
 
@@ -68,6 +68,9 @@
 	//End
 
 	var/not_while_equipped = FALSE
+
+	//Vrell - Used for repair bypass clicks
+	var/being_repaired = FALSE
 
 /datum/component/storage/Initialize(datum/component/storage/concrete/master)
 	if(!isatom(parent))
@@ -544,6 +547,21 @@
 //	. = TRUE //no afterattack
 	if(iscyborg(M))
 		return
+	//Vrell - Adding a block here to allow sewing/hammering to repair containers. Clicking while trying to sew will bypass this requirement.
+	if(isitem(parent))
+		if(istype(I, /obj/item/rogueweapon/hammer))
+			var/obj/item/storage/this_item = parent
+			//Vrell - since hammering is instant, i gotta find another option than the double click thing that needle has for a bypass.
+			//Thankfully, IIRC, no hammerable containers can hold a hammer, so not an issue ATM. For that same reason, this here is largely semi future-proofing.
+			if(this_item.anvilrepair != null && this_item.max_integrity && !this_item.obj_broken && (this_item.obj_integrity < this_item.max_integrity) && isturf(this_item.loc))
+				return FALSE
+		if(istype(I, /obj/item/needle))
+			var/obj/item/needle/sewer = I
+			var/obj/item/storage/this_item = parent
+			if(sewer.can_repair && this_item.sewrepair && this_item.max_integrity && !this_item.obj_broken && this_item.obj_integrity < this_item.max_integrity && M.mind.get_skill_level(/datum/skill/misc/sewing) >= this_item.required_repair_skill && this_item.ontable() && !being_repaired)
+				being_repaired = TRUE
+				return FALSE
+	being_repaired = FALSE
 	if(!can_be_inserted(I, FALSE, M))
 		var/atom/real_location = real_location()
 		if(real_location.contents.len >= max_items) //don't use items on the backpack if they don't fit
@@ -620,15 +638,15 @@
 	// this must come before the screen objects only block, dunno why it wasn't before
 	if(over_object == M)
 		user_show_to_mob(M)
-	if(!istype(over_object, /obj/screen))
+	if(!istype(over_object, /atom/movable/screen))
 		if(allow_dump_out)
 			dump_content_at(over_object, M)
 			return
 	if(A.loc != M)
 		return
 //	playsound(A, "rustle", 50, TRUE, -5)
-	if(istype(over_object, /obj/screen/inventory/hand))
-		var/obj/screen/inventory/hand/H = over_object
+	if(istype(over_object, /atom/movable/screen/inventory/hand))
+		var/atom/movable/screen/inventory/hand/H = over_object
 		M.putItemFromInventoryInHandIfPossible(A, H.held_index)
 		return
 	A.add_fingerprint(M)

@@ -1,0 +1,28 @@
+"a" = (/turf/open/floor/rogue/dirt,/area/rogue/outdoors/bog)
+"b" = (/turf/open/floor/rogue/grass,/area/rogue/outdoors/bog)
+"c" = (/obj/structure/flora/newtree,/turf/open/floor/rogue/grass,/area/rogue/outdoors/bog)
+"d" = (/obj/structure/flora/roguegrass/bush,/turf/open/floor/rogue/dirt,/area/rogue/outdoors/bog)
+"e" = (/obj/machinery/light/rogue/campfire,/turf/open/floor/rogue/dirt,/area/rogue/outdoors/bog)
+"f" = (/turf/closed/wall/mineral/rogue/wooddark,/area/rogue/outdoors/bog)
+"g" = (/mob/living/simple_animal/hostile/retaliate/rogue/bigrat,/turf/open/floor/rogue/ruinedwood{icon_state = "wooden_floort"},/area/rogue/outdoors/bog)
+"h" = (/obj/effect/decal/cleanable/blood/splatter,/obj/effect/decal/remains/human,/turf/open/floor/rogue/dirt,/area/rogue/outdoors/bog)
+"i" = (/obj/effect/decal/remains/bigrat,/turf/open/floor/rogue/dirt,/area/rogue/outdoors/bog)
+"j" = (/turf/open/floor/rogue/ruinedwood{icon_state = "wooden_floort"},/area/rogue/outdoors/bog)
+"k" = (/obj/effect/decal/cleanable/blood/splatter,/turf/open/floor/rogue/dirt,/area/rogue/outdoors/bog)
+"l" = (/obj/effect/decal/cleanable/blood/footprints,/turf/open/floor/rogue/dirt,/area/rogue/outdoors/bog)
+"m" = (/mob/living/simple_animal/hostile/retaliate/rogue/bigrat,/turf/open/floor/rogue/ruinedwood,/area/rogue/outdoors/bog)
+"n" = (/obj/structure/well,/turf/open/floor/rogue/grass,/area/rogue/outdoors/bog)
+"o" = (/turf/open/floor/rogue/ruinedwood,/area/rogue/outdoors/bog)
+
+(1,1,1) = {"
+aaabaaaaba
+abcbadbaba
+bbbbbababa
+abebfffafa
+ababfgahfb
+bbiajakaab
+bbbajalmab
+aanaabbaab
+aabaooffab
+baaaabbaac
+"}

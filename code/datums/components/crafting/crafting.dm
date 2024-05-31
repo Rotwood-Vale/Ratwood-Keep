@@ -7,7 +7,7 @@
 /*
 /datum/component/personal_crafting/proc/create_mob_button(mob/user, client/CL)
 	var/datum/hud/H = user.hud_used
-	var/obj/screen/craft/C = new()
+	var/atom/movable/screen/craft/C = new()
 	C.icon = H.ui_style
 	H.static_inventory += C
 	CL.screen += C
@@ -102,6 +102,9 @@
 		if(istype(I, /obj/item/stack))
 			var/obj/item/stack/S = I
 			.["other"][I.type] += S.amount
+		else if(istype(I, /obj/item/natural/bundle))
+			var/obj/item/natural/bundle/B = I
+			.["other"][B.stacktype] += B.amount
 		else if(I.tool_behaviour)
 			.["tool_behaviour"] += I.tool_behaviour
 			.["other"][I.type] += 1
@@ -145,6 +148,7 @@
 	return TRUE
 
 /atom/proc/OnCrafted(dirin, user)
+	dir = dirin
 	return
 
 /obj/item/OnCrafted(dirin)
@@ -212,7 +216,7 @@
 			return
 	if(R.structurecraft)
 		if(!(locate(R.structurecraft) in T))
-			to_chat(user, "<span class='warning'>I'm missing something.</span>")
+			to_chat(user, "<span class='warning'>I'm missing a structure I need.</span>")
 			return
 	if(check_contents(R, contents))
 		if(check_tools(user, R, contents))
@@ -246,14 +250,14 @@
 						if(L.STAINT > 10)
 							prob2craft += ((10-L.STAINT)*-1)*2
 					prob2craft = CLAMP(prob2craft, 0, 99)
-					if(prob(prob2fail))
-						to_chat(user, "<span class='danger'>MISTAKE! I've failed to craft [R.name]!</span>")
-						continue
+					if(prob(prob2fail)) //critical fail
+						to_chat(user, "<span class='danger'>MISTAKE! I fumbled the crafting of \the [R.name]!</span>")
+						return
 					if(!prob(prob2craft))
 						if(user.client?.prefs.showrolls)
-							to_chat(user, "<span class='danger'>I've failed to craft [R.name]... [prob2craft]%</span>")
+							to_chat(user, "<span class='danger'>I've failed to craft \the [R.name]... [prob2craft]%</span>")
 							continue
-						to_chat(user, "<span class='danger'>I've failed to craft [R.name].</span>")
+						to_chat(user, "<span class='danger'>I've failed to craft \the [R.name].</span>")
 						continue
 					var/list/parts = del_reqs(R, user)
 					if(islist(R.result))
@@ -272,15 +276,16 @@
 							I.CheckParts(parts, R)
 							I.OnCrafted(user.dir, user)
 					user.visible_message("<span class='notice'>[user] [R.verbage] \a [R.name]!</span>", \
-										"<span class='notice'>I [R.verbage] \a [R.name]!</span>")
+										"<span class='notice'>I [R.verbage_simple] \a [R.name]!</span>")
 					if(user.mind && R.skillcraft)
 						if(isliving(user))
 							var/mob/living/L = user
-							var/amt2raise = L.STAINT
+							var/boon = user.mind.get_learning_boon(R.skillcraft)
+							var/amt2raise = L.STAINT// its different over here
 							if(R.craftdiff > 0) //difficult recipe
-								amt2raise += (R.craftdiff * 6)
+								amt2raise += (R.craftdiff * 6) // also gets more
 							if(amt2raise > 0)
-								user.mind.adjust_experience(R.skillcraft, amt2raise, FALSE)
+								user.mind.adjust_experience(R.skillcraft, amt2raise * boon, FALSE)
 					return
 //				if(isitem(I))
 //					user.put_in_hands(I)
@@ -379,6 +384,32 @@
 							S = locate(S.type) in Deletion
 							S.add(data)
 						surroundings -= S
+			else if(ispath(A, /obj/item/natural) || A == /obj/item/grown/log/tree/stick)
+				while(amt > 0)
+					for(var/obj/item/natural/bundle/B in get_environment(user))
+						if(B.stacktype == A)
+							if(B.amount > amt)
+								B.amount -= amt
+								B.update_bundle()
+								switch(B.amount)
+									if(1)
+										new B.stacktype(B.loc)
+										qdel(B)
+									if(0)
+										qdel(B)
+								amt = 0
+								continue main_loop
+							else
+								qdel(B)
+								amt -= B.amount
+						else
+							continue
+					var/atom/movable/I
+					while(amt > 0)
+						I = locate(A) in surroundings
+						Deletion += I
+						surroundings -= I
+						amt--
 			else
 				var/atom/movable/I
 				while(amt > 0)
@@ -415,7 +446,7 @@
 		Deletion.Cut(Deletion.len)
 		qdel(DL)
 
-/datum/component/personal_crafting/proc/component_ui_interact(obj/screen/craft/image, location, control, params, user)
+/datum/component/personal_crafting/proc/component_ui_interact(atom/movable/screen/craft/image, location, control, params, user)
 	if(user == parent)
 		ui_interact(user)
 
@@ -615,3 +646,4 @@
 			var/r = input(user, "What should I craft?") as null|anything in realdata
 			if(r)
 				construct_item(user, r)
+				user.mind.lastrecipe = r

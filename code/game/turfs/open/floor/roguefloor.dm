@@ -56,10 +56,6 @@
 	dir = pick(GLOB.cardinals)
 	. = ..()
 
-/turf/open/floor/rogue/twig/OnCrafted(dirin)
-	. = ..()
-	dir = dirin
-
 /turf/open/floor/rogue/wood
 	smooth_icon = 'icons/turf/floors/wood.dmi'
 	icon_state = "wooden_floor2"

@@ -21,11 +21,11 @@ a:link						{color: #ae83cb;	font-weight: bold;}
 .motd a, .motd a:link, .motd a:visited, .motd a:active, .motd a:hover
 	{color: #638500;}
 h1.alert, h2.alert	{color: #c9c1ba;font-family: Pterra, TrueType;}
-.italics				{					font-style: italic;}
+.italics				{font-style: italic;}
 
-.bold					{					font-weight: bold;}
+.bold					{font-weight: bold;}
 
-.prefix					{					font-weight: bold;}
+.prefix					{font-weight: bold;}
 
 .ooc					{color: #c5c5c5;	font-weight: bold; font-family: Pterra;}
 .adminobserverooc		{color: #cca300;	font-weight: bold; font-family: Pterra;}
@@ -37,7 +37,7 @@ h1.alert, h2.alert	{color: #c9c1ba;font-family: Pterra, TrueType;}
 .name					{					font-weight: bold;}
 
 .say					{font-family: Pterra;}
-.deadsay				{color: #e2c1ff}
+.deadsay				{color: #e2c1ff;}
 .binarysay				{color: #20c20e;	background-color: #000000;	display: block;}
 .binarysay a			{color: #00ff00;}
 .binarysay a:active, .binarysay a:visited {color: #88ff88;}
@@ -56,7 +56,7 @@ h1.alert, h2.alert	{color: #c9c1ba;font-family: Pterra, TrueType;}
 .blueteamradio			{color: #3434fd;}
 
 
-.yell					{					font-weight: bold;}
+.yell					{font-weight: bold;}
 
 .alert					{color: #d82020;}
 
@@ -65,7 +65,7 @@ h1.alert, h2.alert	{color: #c9c1ba;font-family: Pterra, TrueType;}
 .crit					{color: #c71d76;}
 .userdanger				{color: #c71d76;	font-weight: bold;	font-size: 120%;}
 .danger					{color: #b9322b;	font-weight: bold;}
-.warning				{color: #bb4e28;						font-size: 75%;}
+.warning				{color: #bb4e28;	font-size: 75%;}
 .boldwarning			{color: #bb4e28;	font-weight: bold}
 .announce				{color: #c51e1e;	font-weight: bold;}
 .boldannounce			{color: #c51e1e;	font-weight: bold;}
@@ -73,7 +73,7 @@ h1.alert, h2.alert	{color: #c9c1ba;font-family: Pterra, TrueType;}
 .rose					{color: #e7bed8;}
 .love					{color: #e7bed8;	font-size: 75%;}
 .info					{color: #a9a5b6;						font-size: 75%;}
-.biginfo					{color: #a9a5b6;}
+.biginfo				{color: #a9a5b6;}
 .notice					{color: #f1d669;}
 .boldnotice				{color: #f1d669;	font-weight: bold;}
 .hear					{color: #6685f5;	font-style: italic;}
@@ -120,7 +120,6 @@ h1.alert, h2.alert	{color: #c9c1ba;font-family: Pterra, TrueType;}
 .papyrus				{font-family: "Papyrus", cursive, sans-serif;}
 .robot					{font-family: "Courier New", cursive, sans-serif;}
 
-
 .human					{font-family: "Honoka Mincho", Pterra;}
 .elf					{font-family: "Dauphin", cursive, Pterra;}
 .dwarf					{font-family: "MasonAlternate", Pterra;}
@@ -144,20 +143,8 @@ h1.alert, h2.alert	{color: #c9c1ba;font-family: Pterra, TrueType;}
 .clown					{color: #FF69Bf;	font-size: 3;	font-family: "Comic Sans MS", cursive, sans-serif;	font-weight: bold;}
 .his_grace				{color: #15D512;	font-family: "Courier New", cursive, sans-serif;	font-style: italic;}
 .hypnophrase			{color: #3bb5d3;	font-weight: bold;	animation: hypnocolor 1500ms infinite;}
-	@keyframes hypnocolor {
-		0%		{color: #0d0d0d;}
-		25%		{color: #410194;}
-		50%		{color: #7f17d8;}
-		75%		{color: #410194;}
-		100%	{color: #3bb5d3;}
-}
 
-.phobia			{color: #dd0000;	font-weight: bold;	animation: phobia 750ms infinite;}
-	@keyframes phobia {
-		0%		{color: #0d0d0d;}
-		50%		{color: #dd0000;}
-		100%	{color: #0d0d0d;}
-}
+.phobia					{color: #dd0000;	font-weight: bold;}
 
 .icon					{height: 1em;	width: auto;}
 
@@ -173,4 +160,11 @@ h1.alert, h2.alert	{color: #c9c1ba;font-family: Pterra, TrueType;}
 
 .monkeyhive				{color: #774704;}
 .monkeylead				{color: #774704;	font-size: 2;}
+
+.dead					{color: #b280df;}
+.bloody					{color: #cc0f0f;}
+.artery					{color: #9B5455;}
+.infection				{color: #77c72b;}
+.necrosis				{color: #558d20;}
+.bone					{color: #e3dac9;}
 </style>"}

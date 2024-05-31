@@ -124,7 +124,7 @@
 	attacked_sound = "woodimpact"
 	item_chair = null
 
-/obj/item/chair/rogue/
+/obj/item/chair/rogue
 	name = "chair"
 	icon = 'icons/roguetown/items/chairs.dmi'
 	icon_state = "chair2"

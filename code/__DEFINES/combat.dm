@@ -77,6 +77,8 @@
 #define SOFTCRIT_ADD_SLOWDOWN 1
 //slowdown when crawling
 #define CRAWLING_ADD_SLOWDOWN 7
+//slowdown for dislocated limbs
+#define DISLOCATED_ADD_SLOWDOWN 2
 
 //Attack types for checking shields/hit reactions
 #define MELEE_ATTACK 1
@@ -180,6 +182,7 @@
 #define BCLASS_TWIST		"twist"
 #define BCLASS_PUNCH		"punch"
 #define BCLASS_BITE			"bite"
+#define BCLASS_BURN			"charring"
 
 //Material class (what material is striking)
 #define MCLASS_GENERIC		1

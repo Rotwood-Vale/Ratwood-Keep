@@ -12,17 +12,28 @@
 	roundend_category = "Werewolves"
 	antagpanel_category = "Werewolf"
 	job_rank = ROLE_WEREWOLF
-	antag_hud_type = ANTAG_HUD_TRAITOR
-	antag_hud_name = "werewolf"
+	antag_hud_type = ANTAG_HUD_WEREWOLF
+	antag_hud_name = "Werewolf"
+	confess_lines = list(
+		"THE BEAST INSIDE ME!", 
+		"BEWARE THE BEAST!", 
+		"MY LUPINE MARK!",
+	)
 	var/special_role = ROLE_WEREWOLF
 	var/transformed
 	var/transforming
 	var/transform_cooldown
-	confess_lines = list("THE BEAST INSIDE ME!", "BEWARE THE BEAST!", "MY LUPINE MARK!")
 	var/wolfname = "Werevolf"
 	var/last_howl = 0
 	var/pre_transform
 	var/next_idle_sound
+/datum/antagonist/werewolf/apply_innate_effects(mob/living/mob_override)
+	var/mob/living/M = mob_override || owner.current
+	add_antag_hud(antag_hud_type, antag_hud_name, M)
+
+/datum/antagonist/werewolf/remove_innate_effects(mob/living/mob_override)
+	var/mob/living/M = mob_override || owner.current
+	remove_antag_hud(antag_hud_type, M)
 
 /datum/antagonist/werewolf/lesser
 	name = "Lesser Werewolf"

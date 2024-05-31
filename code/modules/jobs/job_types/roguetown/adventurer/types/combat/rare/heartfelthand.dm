@@ -7,7 +7,7 @@
 	outfit = /datum/outfit/job/roguetown/adventurer/heartfelthand
 	maxchosen = 1
 	pickprob = 100
-	traits_applied = list(RTRAIT_HEAVYARMOR, RTRAIT_SEEPRICES)
+	traits_applied = list(TRAIT_HEAVYARMOR, TRAIT_SEEPRICES)
 
 /datum/outfit/job/roguetown/adventurer/heartfelthand/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -24,7 +24,7 @@
 	mask = /obj/item/clothing/mask/rogue/spectacles/golden
 	id = /obj/item/scomstone
 	if(H.mind)
-		H.mind.adjust_skillrank(/datum/skill/combat/axesmaces, 2, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/maces, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/medicine, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/craft/cooking, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE)

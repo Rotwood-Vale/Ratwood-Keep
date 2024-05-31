@@ -12,6 +12,7 @@ SUBSYSTEM_DEF(mapping)
 	var/map_voted = FALSE
 
 	var/list/map_templates = list()
+	var/list/map_load_marks = list() //The game scans thru the map and looks for marks, then adds them to this list for caching
 
 	var/list/ruins_templates = list()
 	var/list/space_ruins_templates = list()
@@ -244,7 +245,7 @@ SUBSYSTEM_DEF(mapping)
 	//otherZ += load_map_config("_maps/map_files/otherz/smallforest.json")
 	//otherZ += load_map_config("_maps/map_files/otherz/smalldecap.json")
 	//otherZ += load_map_config("_maps/map_files/otherz/smallswamp.json")
-	otherZ += load_map_config("_maps/map_files/otherz/bog.json")
+	//otherZ += load_map_config("_maps/map_files/otherz/bog.json")
 	otherZ += load_map_config("_maps/map_files/otherz/underworld.json")
 	#endif
 	#ifdef ROGUEWORLD
@@ -370,13 +371,23 @@ GLOBAL_LIST_EMPTY(the_station_areas)
 
 	next_map_config = VM
 	return TRUE
-
+/*
 /datum/controller/subsystem/mapping/proc/preloadTemplates(path = "_maps/templates/") //see master controller setup
+
 	var/list/filelist = flist(path)
 	for(var/map in filelist)
 		var/datum/map_template/T = new(path = "[path][map]", rename = "[map]")
 		map_templates[T.name] = T
+*/
 
+//Precache the templates via map template datums, not directly from files
+//This lets us preload as many files as we want without explicitely loading ALL of them into cache (ie WIP maps or what have you)
+/datum/controller/subsystem/mapping/proc/preloadTemplates()
+	for(var/item in subtypesof(/datum/map_template)) //Look for our template subtypes and fire them up to be used later
+		var/datum/map_template/template = new item()
+		map_templates[template.id] = template
+
+	//These are obsolete, since there are no ss13 templates, but they are harmless enough to stay
 	preloadRuinTemplates()
 	preloadShuttleTemplates()
 	preloadShelterTemplates()
@@ -396,8 +407,8 @@ GLOBAL_LIST_EMPTY(the_station_areas)
 		if(banned.Find(R.mappath))
 			continue
 
-		map_templates[R.name] = R
-		ruins_templates[R.name] = R
+		map_templates[R.id] = R
+		ruins_templates[R.id] = R
 
 /datum/controller/subsystem/mapping/proc/preloadShuttleTemplates()
 	var/list/unbuyable = generateMapList("[global.config.directory]/unbuyableshuttles.txt")
@@ -561,3 +572,27 @@ GLOBAL_LIST_EMPTY(the_station_areas)
 		isolated_ruins_z = add_new_zlevel("Isolated Ruins/Reserved", list(ZTRAIT_RESERVED = TRUE, ZTRAIT_ISOLATED_RUINS = TRUE))
 		initialize_reserved_level(isolated_ruins_z.z_value)
 	return isolated_ruins_z.z_value
+
+
+//The initialization of all our marks - this is what gets the ball rolling and self-deletes the marks after the maps are loaded
+/datum/controller/subsystem/mapping/proc/load_marks()
+	var/list/sites = SSmapping.map_load_marks
+
+	if(!LAZYLEN(sites)) //This should never happen unless the base map failed to load or there are 0 marks on the map
+		return
+
+	for(var/M in sites) //Start it up
+		var/obj/effect/landmark/map_load_mark/mark = M
+
+		if(!LAZYLEN(mark.templates)) //Somehow our templates are empty
+			continue
+
+		var/datum/map_template/template = SSmapping.map_templates[pick(mark.templates)] //Find our actual existing template, it should be pre-loaded
+		//Pick() should just randomly pick out of the templates list, or just grab the one there if there is only one
+		if(istype(template)) //If our template pick failed, it should just abort and not do anything
+			if(template.load(get_turf(mark))) //Fire it up. Should use bottom left corner.  This will take the majority of loading time
+				LAZYREMOVE(SSmapping.map_load_marks,mark) //Get rid of the mark from our global list of marks
+				qdel(mark) //Delete the mark now that the map is loaded
+			else
+				//Loading the template failed somehow (template.load returned a FALSE), did you spell the paths right?
+				log_world("SSMapping: Failed to load template: [template.name] ([template.mappath])")

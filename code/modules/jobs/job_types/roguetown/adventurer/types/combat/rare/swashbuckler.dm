@@ -10,7 +10,8 @@
 		"Half-Elf",
 		"Dwarf",
 		"Tiefling",
-		"Dark Elf"
+		"Argonian",
+		"Dark Elf",
 	)
 	outfit = /datum/outfit/job/roguetown/adventurer/rare
 	maxchosen = 1

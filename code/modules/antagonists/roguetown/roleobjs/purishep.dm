@@ -8,12 +8,7 @@
 		var/datum/objective/purishep/escape_objective = new
 		escape_objective.owner = owner
 		objectives += escape_objective
-		return
 	return ..()
-
-/datum/antagonist/purishep/on_removal()
-	return ..()
-
 
 /datum/antagonist/purishep/greet()
 	owner.announce_objectives()

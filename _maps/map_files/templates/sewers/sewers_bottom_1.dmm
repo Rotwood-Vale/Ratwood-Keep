@@ -1,0 +1,20 @@
+"a" = (/turf/open/floor/rogue/cobble,/area/rogue/under/town/sewer)
+"d" = (/obj/structure/chair/stool/rogue,/turf/open/floor/rogue/cobble,/area/rogue/under/town/sewer)
+"f" = (/obj/item/reagent_containers/glass/bucket/wooden,/turf/open/floor/rogue/cobble,/area/rogue/under/town/sewer)
+"h" = (/obj/effect/decal/remains/human,/obj/effect/decal/remains/saiga,/turf/open/floor/rogue/cobble,/area/rogue/under/town/sewer)
+"j" = (/obj/structure/mineral_door/bars,/turf/open/floor/rogue/cobble,/area/rogue/under/town/sewer)
+"s" = (/obj/structure/closet/crate/chest,/obj/effect/spawner/lootdrop/roguetown/sewers,/turf/open/floor/rogue/cobble,/area/rogue/under/town/sewer)
+"t" = (/turf/closed/mineral/rogue,/area/rogue/under/town/sewer)
+"w" = (/obj/structure/bonfire/prelit,/turf/open/floor/rogue/cobble,/area/rogue/under/town/sewer)
+"B" = (/turf/closed/wall/mineral/rogue/stonebrick,/area/rogue/under/town/sewer)
+"L" = (/obj/effect/decal/cleanable/dirt/dust,/turf/open/floor/rogue/cobble,/area/rogue/under/town/sewer)
+"U" = (/obj/structure/bars/tough,/turf/open/floor/rogue/cobble,/area/rogue/under/town/sewer)
+"Y" = (/obj/structure/fermenting_barrel/water,/turf/open/floor/rogue/cobble,/area/rogue/under/town/sewer)
+
+(1,1,1) = {"
+BBUUUUjUUhaaUBB
+tBaaaaLaaaaLaBt
+tBdwaaaLLaaaaBt
+tBadaafaaaasYBt
+tBBBBBBBBBBBBBt
+"}

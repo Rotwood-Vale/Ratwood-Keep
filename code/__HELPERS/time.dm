@@ -122,7 +122,7 @@ GLOBAL_VAR_INIT(dayspassed, FALSE)
 		if(text_to_show in mind.areas_entered)
 			return
 		mind.areas_entered += text_to_show
-		var/obj/screen/area_text/T = new()
+		var/atom/movable/screen/area_text/T = new()
 		client.screen += T
 		T.maptext = {"<span style='vertical-align:top; text-align:center;
 					color: #7c5b10; font-size: 150%;
@@ -135,7 +135,7 @@ GLOBAL_VAR_INIT(dayspassed, FALSE)
 		playsound_local(src, 'sound/misc/newday.ogg', 100, FALSE)
 		animate(T, alpha = 255, time = 10, easing = EASE_IN)
 		addtimer(CALLBACK(src, PROC_REF(clear_area_text), T), 35)
-	var/obj/screen/daynight/D = new()
+	var/atom/movable/screen/daynight/D = new()
 	D.alpha = 0
 	client.screen += D
 	animate(D, alpha = 255, time = 20, easing = EASE_IN)

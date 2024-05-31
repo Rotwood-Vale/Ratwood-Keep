@@ -49,7 +49,7 @@
 	if(!user.can_read(src))
 		return FALSE
 	if(user.STAINT < 12)
-		to_chat(user, "<span class='warning'>You cant make sense of the sprawling runes!</span>")
+		to_chat(user, "<span class='warning'>You can't make sense of the sprawling runes!</span>")
 		return FALSE
 	if(used)
 		if(oneuse)

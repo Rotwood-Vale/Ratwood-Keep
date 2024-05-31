@@ -9,7 +9,10 @@
 	outfit = /datum/outfit/job/roguetown/adventurer/puritan
 	maxchosen = 2
 	pickprob = 11
-	traits_applied = list(RTRAIT_MEDIUMARMOR)
+	traits_applied = list(TRAIT_MEDIUMARMOR)
+
+/datum/outfit/job/roguetown/adventurer/puritan
+	allowed_patrons = list(/datum/patron/old_god)
 
 /datum/outfit/job/roguetown/adventurer/puritan/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -28,7 +31,7 @@
 
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/combat/swords, rand(4,5), TRUE)
-		H.mind.adjust_skillrank(/datum/skill/combat/axesmaces, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/maces, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/bows, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
@@ -52,5 +55,7 @@
 		H.change_stat("constitution", 1)
 		H.change_stat("perception", 2)
 	H.verbs |= /mob/living/carbon/human/proc/torture_victim
-	ADD_TRAIT(H, RTRAIT_MEDIUMARMOR, TRAIT_GENERIC)
+	H.verbs |= /mob/living/carbon/human/proc/faith_test
+
+	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_STEELHEARTED, TRAIT_GENERIC)

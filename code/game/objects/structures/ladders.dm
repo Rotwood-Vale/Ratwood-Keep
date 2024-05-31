@@ -131,6 +131,8 @@
 	return use(user)
 
 /obj/structure/ladder/attackby(obj/item/W, mob/user, params)
+	if(obj_flags & CAN_BE_HIT)
+		return ..()
 	return use(user)
 
 /obj/structure/ladder/attack_robot(mob/living/silicon/robot/R)
@@ -215,14 +217,12 @@
 	anchored = TRUE
 	var/obj/structure/ladder/down   //the ladder below this one
 	var/obj/structure/ladder/up     //the ladder above this one
-	obj_flags = BLOCK_Z_OUT_DOWN
+	obj_flags = BLOCK_Z_OUT_DOWN | CAN_BE_HIT
 	max_integrity = 200
 	blade_dulling = DULLING_BASHCHOP
 
-
-
 /obj/structure/wallladder/OnCrafted(dirin)
-	dir = dirin
+	. = ..()
 	layer = BELOW_MOB_LAYER
 	switch(dir)
 		if(NORTH)

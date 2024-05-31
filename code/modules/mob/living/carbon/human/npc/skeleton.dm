@@ -58,12 +58,12 @@
 	if(src.charflaw)
 		QDEL_NULL(src.charflaw)
 	update_body()
-	mob_biotypes = MOB_UNDEAD
+	mob_biotypes |= MOB_UNDEAD
 	faction = list("undead")
-	name = "skeleton"
-	real_name = "skeleton"
+	name = "skelelon"
+	real_name = "skelelon"
 	ADD_TRAIT(src, TRAIT_NOMOOD, TRAIT_GENERIC)
-	ADD_TRAIT(src, RTRAIT_NOFATSTAM, TRAIT_GENERIC)
+	ADD_TRAIT(src, TRAIT_NOROGSTAM, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_NOLIMBDISABLE, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_NOHUNGER, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_EASYDISMEMBER, TRAIT_GENERIC)

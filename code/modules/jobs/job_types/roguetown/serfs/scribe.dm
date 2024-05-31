@@ -1,7 +1,7 @@
 /datum/job/roguetown/scribe
 	title = "Scribe"
 	flag = SCRIBE
-	department_flag = SERFS
+	department_flag = YEOMEN
 	faction = "Station"
 	total_positions = 0
 	spawn_positions = 0
@@ -10,6 +10,7 @@
 	outfit_female = /datum/outfit/job/roguetown/scribe/female
 	display_order = 6
 	min_pq = 0
+	max_pq = null
 
 /datum/outfit/job/roguetown/scribe
 	name = "Scribe"

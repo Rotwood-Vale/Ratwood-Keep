@@ -1,0 +1,26 @@
+"a" = (/turf/open/floor/rogue/dirt,/area/rogue/outdoors/bog)
+"b" = (/obj/structure/flora/newtree,/turf/open/floor/rogue/dirt,/area/rogue/outdoors/bog)
+"c" = (/turf/open/floor/rogue/grass,/area/rogue/outdoors/bog)
+"d" = (/obj/structure/flora/roguegrass/bush,/turf/open/floor/rogue/grass,/area/rogue/outdoors/bog)
+"e" = (/mob/living/simple_animal/hostile/retaliate/rogue/wolf,/turf/open/floor/rogue/dirt,/area/rogue/outdoors/bog)
+"f" = (/obj/item/rogueweapon/spear/stone,/turf/open/floor/rogue/dirt,/area/rogue/outdoors/bog)
+"g" = (/obj/structure/chair/wood/rogue{icon_state = "chair2"; dir = 4},/turf/open/floor/rogue/dirt,/area/rogue/outdoors/bog)
+"h" = (/obj/machinery/light/rogue/campfire,/turf/open/floor/rogue/dirt,/area/rogue/outdoors/bog)
+"i" = (/obj/effect/decal/remains/human,/turf/open/floor/rogue/dirt,/area/rogue/outdoors/bog)
+"j" = (/obj/effect/decal/cleanable/blood/splatter,/turf/open/floor/rogue/dirt,/area/rogue/outdoors/bog)
+"k" = (/obj/structure/closet/crate/chest/crafted,/obj/item/reagent_containers/food/snacks/rogue/friedrat,/obj/item/reagent_containers/food/snacks/rogue/fryfish/eel,/turf/open/floor/rogue/dirt,/area/rogue/outdoors/bog)
+"l" = (/obj/effect/decal/cleanable/blood/footprints,/turf/open/floor/rogue/dirt,/area/rogue/outdoors/bog)
+"m" = (/obj/structure/flora/roguetree/burnt,/turf/open/floor/rogue/dirt,/area/rogue/outdoors/bog)
+
+(1,1,1) = {"
+abacaaaaca
+acccaacada
+ccdccecaca
+acacaafaaa
+acacghijcc
+ccaaaajaac
+cccaaklaac
+amcaaccabc
+aacaacdaac
+caaaaccaac
+"}

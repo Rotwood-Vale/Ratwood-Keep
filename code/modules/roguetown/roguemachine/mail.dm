@@ -101,7 +101,7 @@
 
 /obj/structure/roguemachine/mail/attackby(obj/item/P, mob/user, params)
 	if(istype(P, /obj/item/paper/confession))
-		if((user.mind.assigned_role == "Confessor") || (user.mind.assigned_role == "Witch Hunter"))
+		if((user.mind.assigned_role == "Confessor") || (user.mind.assigned_role == "Inquisitor"))
 			var/obj/item/paper/confession/C = P
 			if(C.signed)
 				if(GLOB.confessors)
@@ -117,7 +117,7 @@
 							GLOB.confessors += "[C.signed]"
 				qdel(C)
 				visible_message("<span class='warning'>[user] sends something.</span>")
-				send_ooc_note("Confessions: [GLOB.confessors.len]/5", job = list("confessor", "puritan", "priest"))
+				send_ooc_note("Confessions: [GLOB.confessors.len]/5", job = list("confessor", "inquisitor", "priest"))
 				playsound(loc, 'sound/magic/hallelujah.ogg', 100, FALSE, -1)
 				playsound(loc, 'sound/misc/disposalflush.ogg', 100, FALSE, -1)
 		return

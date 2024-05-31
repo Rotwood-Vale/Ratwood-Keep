@@ -255,7 +255,7 @@ client/
 		return hide_cone()
 	if(ishuman(src))
 		var/mob/living/carbon/human/H = src
-		if(H.resting || H.lying)
+		if(!(H.mobility_flags & MOBILITY_STAND))
 			return hide_cone()
 		if(!H.client && (H.mode != AI_OFF))
 			return hide_cone()
@@ -271,10 +271,12 @@ client/
 		if(H.wear_mask)
 			if(H.wear_mask.block2add)
 				fovangle |= H.wear_mask.block2add
-		if(has_flaw(/datum/charflaw/noeyer))
-			fovangle |= FOV_RIGHT
-		if(has_flaw(/datum/charflaw/noeyel))
-			fovangle |= FOV_LEFT
+		var/obj/item/organ/eyes/eyes = H.getorganslot(ORGAN_SLOT_EYES)
+		if(eyes)
+			if(eyes.left_poked)
+				fovangle |= FOV_LEFT
+			if(eyes.right_poked)
+				fovangle |= FOV_RIGHT
 		if(H.STAPER < 5)
 			fovangle |= FOV_LEFT
 			fovangle |= FOV_RIGHT
@@ -322,7 +324,7 @@ client/
 	if(hud_used?.fov)
 		hud_used.fov.alpha = 255
 		hud_used.fov_blocker.alpha = 255
-	var/obj/screen/plane_master/game_world_fov_hidden/PM = locate(/obj/screen/plane_master/game_world_fov_hidden) in client.screen
+	var/atom/movable/screen/plane_master/game_world_fov_hidden/PM = locate(/atom/movable/screen/plane_master/game_world_fov_hidden) in client.screen
 	PM.backdrop(src)
 
 /mob/proc/hide_cone()
@@ -331,17 +333,17 @@ client/
 	if(hud_used?.fov)
 		hud_used.fov.alpha = 0
 		hud_used.fov_blocker.alpha = 0
-	var/obj/screen/plane_master/game_world_fov_hidden/PM = locate(/obj/screen/plane_master/game_world_fov_hidden) in client.screen
+	var/atom/movable/screen/plane_master/game_world_fov_hidden/PM = locate(/atom/movable/screen/plane_master/game_world_fov_hidden) in client.screen
 	PM.backdrop(src)
 
-/obj/screen/fov_blocker
+/atom/movable/screen/fov_blocker
 	icon = 'icons/mob/vision_cone.dmi'
 	icon_state = "combat_v"
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	plane = FIELD_OF_VISION_BLOCKER_PLANE
 	screen_loc = "1,1"
 
-/obj/screen/fov
+/atom/movable/screen/fov
 	icon = 'icons/mob/vision_cone.dmi'
 	icon_state = "combat"
 	name = " "

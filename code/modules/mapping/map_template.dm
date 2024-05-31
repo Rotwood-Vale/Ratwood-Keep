@@ -1,5 +1,6 @@
 /datum/map_template
 	var/name = "Default Template Name"
+	var/id = null //The internal ID of a template, so we don't need to use name
 	var/width = 0
 	var/height = 0
 	var/mappath = null
@@ -8,12 +9,18 @@
 	var/keep_cached_map = FALSE
 
 /datum/map_template/New(path = null, rename = null, cache = FALSE)
-	if(path)
+	if(path && !mappath)
 		mappath = path
+	if(!path && mappath)
+		path = mappath
 	if(mappath)
 		preload_size(mappath, cache)
 	if(rename)
 		name = rename
+	if(!name && id) //Make sure nothing is null, just in case
+		name = id
+	if(!id && name)
+		id = name
 
 /datum/map_template/proc/preload_size(path, cache = FALSE)
 	var/datum/parsed_map/parsed = new(file(path))

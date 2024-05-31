@@ -29,7 +29,7 @@
 	icon_state = "priestunder"
 	sleeved = null
 	allowed_sex = list(MALE)
-	allowed_race = list("human", "tiefling", "aasimar")
+	allowed_race = list("humen", "tiefling", "argonian", "aasimar")
 
 /obj/item/clothing/suit/roguetown/shirt/undershirt/black
 	color = CLOTHING_BLACK
@@ -82,9 +82,9 @@
 	..()
 
 /obj/item/clothing/suit/roguetown/shirt/undershirt/puritan
-	name = "archivists silks"
+	name = "formal silks"
 	icon_state = "puritan_shirt"
-	allowed_race = list("human", "tiefling", "elf", "dwarf", "aasimar")
+	allowed_race = list("humen", "tiefling", "argonian", "elfd", "elfw", "helf", "dwarfm", "aasimar", "halforc")
 
 /obj/item/clothing/suit/roguetown/shirt/undershirt/sailor
 	icon_state = "sailorblues"
@@ -140,6 +140,37 @@
 	r_sleeve_status = SLEEVE_NORMAL
 	l_sleeve_status = SLEEVE_NORMAL
 
+/obj/item/clothing/suit/roguetown/shirt/tunic
+	slot_flags = ITEM_SLOT_ARMOR|ITEM_SLOT_SHIRT
+	name = "tunic"
+	desc = ""
+	body_parts_covered = CHEST|GROIN|VITALS
+	boobed = FALSE
+	icon_state = "tunic"
+	item_state = "undershirt"
+	sleevetype = "tunic"
+	r_sleeve_status = SLEEVE_NORMAL
+	l_sleeve_status = SLEEVE_NORMAL
+
+/obj/item/clothing/suit/roguetown/shirt/tunic/green
+	color = CLOTHING_GREEN
+
+/obj/item/clothing/suit/roguetown/shirt/tunic/blue
+	color = CLOTHING_BLUE
+
+/obj/item/clothing/suit/roguetown/shirt/tunic/red
+	color = CLOTHING_RED
+
+/obj/item/clothing/suit/roguetown/shirt/tunic/purple
+	color = CLOTHING_PURPLE
+
+
+/obj/item/clothing/suit/roguetown/shirt/tunic/ucolored
+	color = COLOR_GRAY
+
+/obj/item/clothing/suit/roguetown/shirt/tunic/random/Initialize()
+	color = pick(CLOTHING_PURPLE, CLOTHING_RED, CLOTHING_BLUE, CLOTHING_GREEN)
+	..()
 /obj/item/clothing/suit/roguetown/shirt/dress
 	slot_flags = ITEM_SLOT_ARMOR
 	name = "dress"
@@ -173,6 +204,39 @@
 	color = pick("#6b5445", "#435436", "#704542", "#79763f", CLOTHING_BLUE)
 	..()
 
+/obj/item/clothing/suit/roguetown/shirt/dress/silkdress
+	slot_flags = ITEM_SLOT_ARMOR|ITEM_SLOT_SHIRT
+	name = "chemise"
+	desc = "Comfortable yet elegant, it offers both style and comfort for everyday wear"
+	body_parts_covered = CHEST|GROIN|LEGS|VITALS
+	icon_state = "silkdress"
+	item_state = "silkdress"
+	color = "#e6e5e5"
+	
+/obj/item/clothing/suit/roguetown/shirt/dress/silkdress/princess
+	color = CLOTHING_WHITE
+	
+/obj/item/clothing/suit/roguetown/shirt/dress/silkdress/princess/Initialize()
+	. = ..()
+	if(GLOB.lordprimary)
+		lordcolor(GLOB.lordprimary,GLOB.lordsecondary)
+	else
+		GLOB.lordcolor += src
+
+/obj/item/clothing/suit/roguetown/shirt/dress/silkdress/princess/Destroy()
+	GLOB.lordcolor -= src
+	return ..()
+	
+/obj/item/clothing/suit/roguetown/shirt/dress/silkdress/black
+	color = CLOTHING_BLACK
+
+/obj/item/clothing/suit/roguetown/shirt/dress/silkdress/green
+	color = CLOTHING_DARK_GREEN
+	
+/obj/item/clothing/suit/roguetown/shirt/dress/silkdress/random/Initialize()
+	. = ..()
+	color = pick("#e6e5e5", "#52BE80", "#C39BD3", "#EC7063","#5DADE2")
+
 /obj/item/clothing/suit/roguetown/shirt/dress/gen/sexy
 	slot_flags = ITEM_SLOT_ARMOR
 	name = "dress"
@@ -184,8 +248,18 @@
 	color = "#a90707"
 
 /obj/item/clothing/suit/roguetown/shirt/dress/gen/sexy/Initialize()
+	. = ..()
 	color = pick("#a90707", "#16239a", "#d68fbd", CLOTHING_BLACK)
-	..()
+
+/obj/item/clothing/suit/roguetown/shirt/undershirt/webs
+	name = "webbed shirt"
+	desc = "Exotic silk finely woven into.. this? Might as well be wearing a spiderweb"
+	icon_state = "webs"
+	item_state = "webs"
+	r_sleeve_status = SLEEVE_NORMAL
+	l_sleeve_status = SLEEVE_NORMAL
+	body_parts_covered = CHEST|ARMS|VITALS
+	color = null
 
 /obj/item/clothing/suit/roguetown/shirt/robe
 	slot_flags = ITEM_SLOT_ARMOR
@@ -315,6 +389,7 @@
 	color = null
 	icon_state = "nun"
 	item_state = "nun"
+	allowed_race = list("humen", "tiefling", "argonian", "elfd", "elfw", "helf", "dwarfm", "aasimar")
 	allowed_sex = list(FEMALE)
 
 /obj/item/clothing/suit/roguetown/shirt/robe/wizard
@@ -328,7 +403,7 @@
 	r_sleeve_status = SLEEVE_NORMAL
 	l_sleeve_status = SLEEVE_NORMAL
 	allowed_sex = list(MALE)
-	allowed_race = list("human", "tiefling", "aasimar")
+	allowed_race = list("humen", "tiefling", "argonian", "aasimar", "halforc")
 	color = null
 	sellprice = 100
 

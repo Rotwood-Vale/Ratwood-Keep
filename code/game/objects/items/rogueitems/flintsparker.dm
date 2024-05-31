@@ -10,6 +10,7 @@
 	obj_flags = null
 	icon = 'icons/roguetown/items/lighting.dmi'
 	var/flintcd = 0
+	anvilrepair = /datum/skill/craft/blacksmithing
 
 /obj/item/flint/attack_self(mob/living/user)
 	if(world.time < flintcd + 10)

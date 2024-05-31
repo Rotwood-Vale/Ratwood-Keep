@@ -8,10 +8,15 @@
 	job_rank = ROLE_PREBEL
 	antag_hud_type = ANTAG_HUD_REV
 	antag_hud_name = "rev"
-	var/datum/team/prebels/rev_team
 	show_in_roundend = FALSE
-	confess_lines = list("VIVA!", "DEATH TO THE NOBLES!")
+	confess_lines = list(
+		"VIVA!", 
+		"DEATH TO THE NOBLES!",
+		"STICK IT TO THE MAN!",
+		"NO GODS, NO MASTERS!",
+	)
 	increase_votepwr = FALSE
+	var/datum/team/prebels/rev_team
 
 /datum/antagonist/prebel/examine_friendorfoe(datum/antagonist/examined_datum,mob/examiner,mob/examined)
 	if(istype(examined_datum, /datum/antagonist/prebel/head))
