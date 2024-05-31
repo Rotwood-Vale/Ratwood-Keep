@@ -342,3 +342,6 @@ GLOBAL_LIST_INIT(stone_personality_descs, list(
 
 /obj/item/natural/rock/salt
 	mineralType = /obj/item/reagent_containers/powder/flour/salt
+
+/obj/item/natural/rock/gem
+	mineralType = /obj/item/roguegem/random

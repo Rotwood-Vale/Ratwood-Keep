@@ -1,0 +1,10 @@
+combat_maniac2.ogg: Thomas Bangalter - Stress
+combat_vamp2.ogg: Filmmaker - Mystic Circles
+combat_merchant.ogg: Neospherix Project - Hava Nagila (Psychedelic Trance)
+combat_desertrider.ogg: Two Fingers- You Ain't Down
+combat_grenzelhoft.ogg: Helbrede - Sons of Tyr
+combat_jester.ogg: OFF - Pepper Steak
+combat_bandit.ogg: Deus Ex - Battery Park Combat
+combat_bandit2.ogg: Cruelty Squad  - Rent DUe
+combat_werewolf.ogg: Filmmaker - Federal Bestiary
+combat_guard.ogg:Deus Ex - Desolation Combat

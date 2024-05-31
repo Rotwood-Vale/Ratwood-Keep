@@ -2,11 +2,11 @@
 	id = "frozen"
 	duration = 100
 	status_type = STATUS_EFFECT_UNIQUE
-	alert_type = /obj/screen/alert/status_effect/freon
+	alert_type = /atom/movable/screen/alert/status_effect/freon
 	var/icon/cube
 	var/can_melt = TRUE
 
-/obj/screen/alert/status_effect/freon
+/atom/movable/screen/alert/status_effect/freon
 	name = "Frozen Solid"
 	desc = ""
 	icon_state = "frozen"

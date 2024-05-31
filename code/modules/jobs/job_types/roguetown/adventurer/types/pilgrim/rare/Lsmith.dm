@@ -2,6 +2,8 @@
 
 /datum/advclass/masterblacksmith
 	name = "Master Blacksmith"
+	tutorial = "A master blacksmith, able to forge steel like dough, and gold like clay. \
+	create masterful weapons and armor, be a legend among those who interest in your mighty forge"
 	allowed_sexes = list("male", "female")
 	allowed_races = list("Humen",
 	"Dwarf"
@@ -23,7 +25,7 @@
 	gloves = /obj/item/clothing/gloves/roguetown/leather
 	mask = /obj/item/clothing/mask/rogue/facemask/steel
 	pants = /obj/item/clothing/under/roguetown/trou
-	cloak = /obj/item/clothing/cloak/apron/brown
+	cloak = /obj/item/clothing/cloak/apron/blacksmith
 
 	backl = /obj/item/storage/backpack/rogue/backpack
 	backpack_contents = list(/obj/item/flint = 1, /obj/item/rogueore/coal=2, /obj/item/rogueore/iron=2, /obj/item/rogueore/silver=1)
@@ -34,7 +36,8 @@
 		shirt = /obj/item/clothing/suit/roguetown/shirt/shortshirt
 
 		if(H.mind)
-			H.mind.adjust_skillrank(/datum/skill/combat/axesmaces, 2, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/maces, 2, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/axes, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/craft/crafting, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/craft/masonry, 2, TRUE)
@@ -56,7 +59,8 @@
 		shoes = /obj/item/clothing/shoes/roguetown/shortboots
 		
 		if(H.mind)
-			H.mind.adjust_skillrank(/datum/skill/combat/axesmaces, 2, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/maces, 2, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/axes, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/craft/crafting, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/craft/masonry, 2, TRUE)

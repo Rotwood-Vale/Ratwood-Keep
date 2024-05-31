@@ -40,7 +40,7 @@ SUBSYSTEM_DEF(ticker)
 	//376000 day
 	var/gametime_offset = 288001		//Deciseconds to add to world.time for station time.
 	var/station_time_rate_multiplier = 50		//factor of station time progressal vs real time.
-	var/time_until_vote = 120 MINUTES
+	var/time_until_vote = 150 MINUTES
 	var/last_vote_time = null
 	var/autovote = TRUE
 	var/firstvote = TRUE
@@ -244,7 +244,7 @@ SUBSYSTEM_DEF(ticker)
 			if(firstvote)
 				if(world.time > round_start_time + time_until_vote && autovote)
 					SSvote.initiate_vote("restart", "The Gods")
-					time_until_vote = 20 MINUTES
+					time_until_vote = 30 MINUTES
 					last_vote_time = world.time
 					firstvote = FALSE
 			else
@@ -271,12 +271,6 @@ SUBSYSTEM_DEF(ticker)
 							to_chat(player, "<span class='warning'>You cannot be [V] and thus are not considered.</span>")
 							continue
 				readied_jobs.Add(V)
-	if("Merchant" in readied_jobs)
-		if(("King" in readied_jobs) || ("Queen" in readied_jobs))
-			if("King" in readied_jobs)
-				rulertype = "King"
-			else
-				rulertype = "Queen"
 		/*	
 			// These else conditions stop the round from starting unless there is a merchant, king, and queen.
 		else
@@ -547,21 +541,12 @@ SUBSYSTEM_DEF(ticker)
 		CHECK_TICK
 
 /datum/controller/subsystem/ticker/proc/select_ruler()
-	switch(rulertype)
-		if("King")
-			for(var/mob/living/carbon/human/K in world)
-				if(istype(K, /mob/living/carbon/human/dummy))
-					continue
-				if(K.job == "King")
-					rulermob = K
-					return
-		if("Queen")
-			for(var/mob/living/carbon/human/Q in world)
-				if(istype(Q, /mob/living/carbon/human/dummy))
-					continue
-				if(Q.job == "Queen")
-					rulermob = Q
-					return
+	for(var/mob/living/carbon/human/K in world)
+		if(istype(K, /mob/living/carbon/human/dummy))
+			continue
+		if(K.job == "King")
+			rulermob = K
+			return
 
 /datum/controller/subsystem/ticker/proc/collect_minds()
 	for(var/i in GLOB.new_player_list)
@@ -570,19 +555,22 @@ SUBSYSTEM_DEF(ticker)
 			SSticker.minds += P.new_character.mind
 		CHECK_TICK
 
-
 /datum/controller/subsystem/ticker/proc/equip_characters()
 //	var/captainless=1
-	for(var/i in GLOB.new_player_list)
-		var/mob/dead/new_player/N = i
-		var/mob/living/carbon/human/player = N.new_character
-		if(istype(player) && player.mind && player.mind.assigned_role)
+	var/list/valid_characters = list()
+	for(var/mob/dead/new_player/new_player as anything in GLOB.new_player_list)
+		var/mob/living/carbon/human/player = new_player.new_character
+		if(istype(player) && player.mind?.assigned_role)
 //			if(player.mind.assigned_role == "Captain")
 //				captainless=0
 			if(player.mind.assigned_role != player.mind.special_role)
-				SSjob.EquipRank(N, player.mind.assigned_role, 0)
-				if(CONFIG_GET(flag/roundstart_traits) && ishuman(N.new_character))
-					SSquirks.AssignQuirks(N.new_character, N.client, TRUE)
+				valid_characters[player] = new_player
+	sortList(valid_characters, GLOBAL_PROC_REF(cmp_assignedrole_dsc))
+	for(var/mob/character as anything in valid_characters)
+		var/mob/new_player = valid_characters[character]
+		SSjob.EquipRank(new_player, character.mind.assigned_role, joined_late = FALSE)
+		if(CONFIG_GET(flag/roundstart_traits) && ishuman(character))
+			SSquirks.AssignQuirks(character, new_player.client, TRUE)
 		CHECK_TICK
 //	if(captainless)
 //		for(var/i in GLOB.new_player_list)
@@ -600,7 +588,7 @@ SUBSYSTEM_DEF(ticker)
 			qdel(player)
 			living.notransform = TRUE
 			if(living.client)
-				var/obj/screen/splash/S = new(living.client, TRUE)
+				var/atom/movable/screen/splash/S = new(living.client, TRUE)
 				S.Fade(TRUE)
 			livings += living
 	if(livings.len)

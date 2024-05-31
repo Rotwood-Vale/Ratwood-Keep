@@ -163,3 +163,15 @@
 		else
 			to_chat(user, "<b>It is a dead end.</b>")
 			return FALSE
+
+/obj/structure/fluff/traveltile/dungeon
+	name = "gate"
+	desc = "This gate's enveloping darkness is so opressive you dread to step through it."
+	icon = 'icons/roguetown/misc/portal.dmi'
+	icon_state = "portal"
+	density = FALSE
+	anchored = TRUE
+	max_integrity = 0
+	bound_width = 96
+	appearance_flags = NONE
+	opacity = FALSE

@@ -12,10 +12,11 @@
 		"Half-Elf",
 		"Dwarf",
 		"Tiefling",
+		"Argonian",
 		"Dark Elf",
 		"Aasimar",
-		"Lizardfolk",
-		"Tabaxi"
+		"Tabaxi",
+		"Half Orc",
 	)
 
 	tutorial = "Grabber is the lowest position in the Merchant's Guild, reserved for the strong, loyal newcomers. They can be like family to the merchant in these foreign lands."
@@ -23,13 +24,14 @@
 	outfit = /datum/outfit/job/roguetown/grabber
 	display_order = JDO_GRABBER
 	min_pq = -10
+	max_pq = null
 
 /datum/outfit/job/roguetown/grabber/pre_equip(mob/living/carbon/human/H)
 	..()
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/combat/swords, 2, TRUE)
 		if(H.gender == MALE)
-			H.mind.adjust_skillrank(/datum/skill/combat/axesmaces, 3, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/maces, 3, TRUE)
 		else
 			H.mind.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE)

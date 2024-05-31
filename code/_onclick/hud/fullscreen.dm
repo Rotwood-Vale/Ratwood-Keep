@@ -1,5 +1,5 @@
 /mob/proc/overlay_fullscreen(category, type, severity)
-	var/obj/screen/fullscreen/screen = screens[category]
+	var/atom/movable/screen/fullscreen/screen = screens[category]
 	if (!screen || screen.type != type)
 		// needs to be recreated
 		clear_fullscreen(category, FALSE)
@@ -19,10 +19,10 @@
 
 
 /mob/proc/flash_fullscreen(state)
-	var/obj/screen/fullscreen/flashholder/screen = screens["flashholder"]
+	var/atom/movable/screen/fullscreen/flashholder/screen = screens["flashholder"]
 
 	if(!screen)
-		screen = new /obj/screen/fullscreen/flashholder()
+		screen = new /atom/movable/screen/fullscreen/flashholder()
 		screens["flashholder"] = screen
 
 	if(client && screen.should_show_to(src))
@@ -34,7 +34,7 @@
 
 
 /mob/proc/clear_fullscreen(category, animated = 10)
-	var/obj/screen/fullscreen/screen = screens[category]
+	var/atom/movable/screen/fullscreen/screen = screens[category]
 	if(!screen)
 		return
 
@@ -48,7 +48,7 @@
 			client.screen -= screen
 		qdel(screen)
 
-/mob/proc/clear_fullscreen_after_animate(obj/screen/fullscreen/screen)
+/mob/proc/clear_fullscreen_after_animate(atom/movable/screen/fullscreen/screen)
 	if(client)
 		client.screen -= screen
 	qdel(screen)
@@ -64,7 +64,7 @@
 
 /mob/proc/reload_fullscreen()
 	if(client)
-		var/obj/screen/fullscreen/screen
+		var/atom/movable/screen/fullscreen/screen
 		for(var/category in screens)
 			screen = screens[category]
 			if(screen.should_show_to(src))
@@ -73,7 +73,7 @@
 			else
 				client.screen -= screen
 
-/obj/screen/fullscreen
+/atom/movable/screen/fullscreen
 	icon = 'icons/mob/screen_full.dmi'
 	icon_state = "default"
 	screen_loc = "CENTER-7,CENTER-7"
@@ -84,67 +84,66 @@
 	var/severity = 0
 	var/show_when_dead = FALSE
 
-/obj/screen/fullscreen/proc/update_for_view(client_view)
+/atom/movable/screen/fullscreen/proc/update_for_view(client_view)
 	if (screen_loc == "CENTER-7,CENTER-7" && view != client_view)
 		var/list/actualview = getviewsize(client_view)
 		view = client_view
 		transform = matrix(actualview[1]/FULLSCREEN_OVERLAY_RESOLUTION_X, 0, 0, 0, actualview[2]/FULLSCREEN_OVERLAY_RESOLUTION_Y, 0)
 
-/obj/screen/fullscreen/proc/should_show_to(mob/mymob)
+/atom/movable/screen/fullscreen/proc/should_show_to(mob/mymob)
 	if(!show_when_dead && mymob.stat == DEAD)
 		return FALSE
 	return TRUE
 
-/obj/screen/fullscreen/Destroy()
+/atom/movable/screen/fullscreen/Destroy()
 	severity = 0
 	. = ..()
 
-/obj/screen/fullscreen/brute
+/atom/movable/screen/fullscreen/brute
 	icon_state = "brutedamageoverlay"
 	layer = UI_DAMAGE_LAYER
 	plane = FULLSCREEN_PLANE
 
-/obj/screen/fullscreen/painflash
+/atom/movable/screen/fullscreen/painflash
 	icon_state = "painflash"
 	layer = 20.19
 	plane = FULLSCREEN_PLANE
 
-/obj/screen/fullscreen/oxy
+/atom/movable/screen/fullscreen/oxy
 	icon_state = "oxydamageoverlay"
 	layer = UI_DAMAGE_LAYER
 	plane = FULLSCREEN_PLANE
 
-/obj/screen/fullscreen/love
+/atom/movable/screen/fullscreen/love
 	icon_state = "lovehud"
-	layer = 20.509
+	layer = CRIT_LAYER
 	plane = FULLSCREEN_PLANE
 	alpha = 0
 
-/obj/screen/fullscreen/love/New(client/C)
+/atom/movable/screen/fullscreen/love/New(client/C)
 	. = ..()
 	animate(src, alpha = 255, time = 30)
 
-/obj/screen/fullscreen/crit
+/atom/movable/screen/fullscreen/crit
 	icon_state = "passage"
-	layer = 20.51
+	layer = CRIT_LAYER
 	plane = FULLSCREEN_PLANE
 
-/obj/screen/fullscreen/crit/uncon
+/atom/movable/screen/fullscreen/crit/uncon
 	icon_state = "uncon"
-	layer = 20.511
+	layer = CRIT_LAYER
 	plane = FULLSCREEN_PLANE
 
-/obj/screen/fullscreen/crit/zeth
+/atom/movable/screen/fullscreen/crit/zeth
 	icon = 'icons/mob/z.dmi'
 	icon_state = "zeth"
 	name = "NECRA"
-//	layer = 20.09
-	layer = 20.512
+	layer = CRIT_LAYER
 	plane = FULLSCREEN_PLANE
 	mouse_opacity = 1
 	nomouseover = FALSE
 
-/obj/screen/fullscreen/crit/zeth/Click()
+/atom/movable/screen/fullscreen/crit/zeth/Click()
 	if(isliving(usr))
 		var/mob/living/L = usr
 		if(L.stat != DEAD)
@@ -155,66 +154,66 @@
 				else
 					L.succumb(reaper = TRUE)
 
-/obj/screen/fullscreen/crit/death
+/atom/movable/screen/fullscreen/crit/death
 	icon_state = "DD"
-	layer = 20.511
+	layer = CRIT_LAYER
 	plane = FULLSCREEN_PLANE
 
-/obj/screen/fullscreen/crit/cmode
+/atom/movable/screen/fullscreen/crit/cmode
 	icon_state = "cmode"
 	layer = 20.09
 	plane = FULLSCREEN_PLANE
 
-/obj/screen/fullscreen/crit/vision
+/atom/movable/screen/fullscreen/crit/vision
 	icon_state = "oxydamageoverlay"
 	layer = BLIND_LAYER
 
-/obj/screen/fullscreen/blackimageoverlay
+/atom/movable/screen/fullscreen/blackimageoverlay
 	icon_state = "blackimageoverlay"
 	layer = BLIND_LAYER
 	plane = FULLSCREEN_PLANE
 
-/obj/screen/fullscreen/blind
+/atom/movable/screen/fullscreen/blind
 	icon_state = "blind"
 	layer = BLIND_LAYER
 	plane = FULLSCREEN_PLANE
 
-/obj/screen/fullscreen/curse
+/atom/movable/screen/fullscreen/curse
 	icon_state = "curse"
 	layer = CURSE_LAYER
 	plane = FULLSCREEN_PLANE
 
-/obj/screen/fullscreen/flashholder
+/atom/movable/screen/fullscreen/flashholder
 	icon_state = ""
 	layer = CRIT_LAYER
 	plane = FULLSCREEN_PLANE
 
-/obj/screen/fullscreen/impaired
+/atom/movable/screen/fullscreen/impaired
 	icon_state = "impairedoverlay"
 
-/obj/screen/fullscreen/flash
+/atom/movable/screen/fullscreen/flash
 	icon = 'icons/mob/screen_gen.dmi'
 	screen_loc = "WEST,SOUTH to EAST,NORTH"
 	icon_state = "flash"
 
-/obj/screen/fullscreen/flash/static
+/atom/movable/screen/fullscreen/flash/static
 	icon = 'icons/mob/screen_gen.dmi'
 	screen_loc = "WEST,SOUTH to EAST,NORTH"
 	icon_state = "noise"
 
-/obj/screen/fullscreen/high
+/atom/movable/screen/fullscreen/high
 	icon = 'icons/mob/screen_gen.dmi'
 	screen_loc = "WEST,SOUTH to EAST,NORTH"
 	icon_state = "druggy"
 	alpha = 80
 
-/obj/screen/fullscreen/purest
+/atom/movable/screen/fullscreen/purest
 	icon = 'icons/mob/screen_gen.dmi'
 	screen_loc = "WEST,SOUTH to EAST,NORTH"
 	icon_state = "purest"
 	alpha = 100
 
-/obj/screen/fullscreen/fade
+/atom/movable/screen/fullscreen/fade
 	icon = 'icons/mob/roguehudback2.dmi'
 	screen_loc = ui_backhudl
 	icon_state = "fade"
@@ -222,22 +221,22 @@
 	plane = 50
 	alpha = 255
 
-/obj/screen/fullscreen/color_vision
+/atom/movable/screen/fullscreen/color_vision
 	icon = 'icons/mob/screen_gen.dmi'
 	screen_loc = "WEST,SOUTH to EAST,NORTH"
 	icon_state = "flash"
 	alpha = 80
 
-/obj/screen/fullscreen/color_vision/green
+/atom/movable/screen/fullscreen/color_vision/green
 	color = "#00ff00"
 
-/obj/screen/fullscreen/color_vision/red
+/atom/movable/screen/fullscreen/color_vision/red
 	color = "#ff0000"
 
-/obj/screen/fullscreen/color_vision/blue
+/atom/movable/screen/fullscreen/color_vision/blue
 	color = "#0000ff"
 
-/obj/screen/fullscreen/lighting_backdrop
+/atom/movable/screen/fullscreen/lighting_backdrop
 	icon = 'icons/mob/screen_gen.dmi'
 	icon_state = "flash"
 	transform = matrix(200, 0, 0, 0, 200, 0)
@@ -246,32 +245,32 @@
 	show_when_dead = TRUE
 
 //Provides darkness to the back of the lighting plane
-/obj/screen/fullscreen/lighting_backdrop/lit
+/atom/movable/screen/fullscreen/lighting_backdrop/lit
 	invisibility = INVISIBILITY_LIGHTING
 	layer = BACKGROUND_LAYER+21
 	color = "#000"
 	show_when_dead = TRUE
 
 //Provides whiteness in case you don't see lights so everything is still visible
-/obj/screen/fullscreen/lighting_backdrop/unlit
+/atom/movable/screen/fullscreen/lighting_backdrop/unlit
 	layer = BACKGROUND_LAYER+20
 	show_when_dead = TRUE
 
-/obj/screen/fullscreen/see_through_darkness
+/atom/movable/screen/fullscreen/see_through_darkness
 	icon_state = "nightvision"
 	plane = LIGHTING_PLANE
 	layer = LIGHTING_LAYER
 	blend_mode = BLEND_ADD
 	show_when_dead = TRUE
 
-/obj/screen/fullscreen/maniac 
+/atom/movable/screen/fullscreen/maniac 
 	icon = 'icons/roguetown/maniac/fullscreen.dmi'
 	icon_state = "hall0"
 	alpha = 0
 	/// Amount of hallucination icon states we have
 	var/hall_amount = 13
 
-/obj/screen/fullscreen/maniac/proc/jumpscare(mob/living/scared, silent = FALSE, fade_in = 0.2 SECONDS, duration = 0.5 SECONDS, fade_out = 1 SECONDS)
+/atom/movable/screen/fullscreen/maniac/proc/jumpscare(mob/living/scared, silent = FALSE, fade_in = 0.2 SECONDS, duration = 0.5 SECONDS, fade_out = 1 SECONDS)
 	if(!silent)
 		var/static/list/spookies = list(
 			'sound/villain/hall_appear1.ogg',
@@ -284,9 +283,9 @@
 	animate(time = duration, easing = BOUNCE_EASING | EASE_IN | EASE_OUT)
 	animate(alpha = 0, time = fade_out, easing = LINEAR_EASING)
 
-/obj/screen/fullscreen/dreaming
+/atom/movable/screen/fullscreen/dreaming
 	icon = 'icons/roguetown/maniac/fullscreen_wakeup.dmi'
 	icon_state = "dream"
 
-/obj/screen/fullscreen/dreaming/waking_up
+/atom/movable/screen/fullscreen/dreaming/waking_up
 	icon_state = "wake_up"

@@ -44,6 +44,8 @@
 		user.visible_message("<span class='warning'>[user] puts something in the smelter.</span>")
 		cooking = 0
 		return
+	else
+		to_chat(user, "<span class='warning'>[W.name] cannot be smelted.</span>")
 	return ..()
 
 

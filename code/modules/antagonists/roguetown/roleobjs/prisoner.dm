@@ -9,7 +9,7 @@
 		escape_objective.owner = owner
 		objectives += escape_objective
 		return
-//	ADD_TRAIT(owner.current, RTRAIT_ANTAG, TRAIT_GENERIC)
+//	ADD_TRAIT(owner.current, TRAIT_ANTAG, TRAIT_GENERIC)
 	return ..()
 
 /datum/antagonist/prisoner/on_removal()

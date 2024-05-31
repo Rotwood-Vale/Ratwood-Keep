@@ -6,9 +6,13 @@
 	job_rank = ROLE_BANDIT
 	antag_hud_type = ANTAG_HUD_TRAITOR
 	antag_hud_name = "bandit"
+	confess_lines = list(
+		"FREEDOM!!!", 
+		"I WILL NOT LIVE IN YOUR WALLS!",
+		"I WILL NOT FOLLOW YOUR RULES!",
+	)
 	var/tri_amt
 	var/contrib
-	confess_lines = list("FREEDOM!!!", "I WILL NOT LIVE IN YOUR WALLS!", "I WILL NOT FOLLOW YOUR RULES!")
 
 /datum/antagonist/bandit/examine_friendorfoe(datum/antagonist/examined_datum,mob/examiner,mob/examined)
 	if(istype(examined_datum, /datum/antagonist/bandit))
@@ -28,15 +32,18 @@
 	owner.current.playsound_local(get_turf(owner.current), 'sound/music/traitor.ogg', 80, FALSE, pressure_affected = FALSE)
 	var/mob/living/carbon/human/H = owner.current
 	ADD_TRAIT(H, TRAIT_BANDITCAMP, TRAIT_GENERIC)
-	ADD_TRAIT(H, RTRAIT_SEEPRICES, TRAIT_GENERIC)
+	ADD_TRAIT(H, TRAIT_SEEPRICES, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_STEELHEARTED, TRAIT_GENERIC)
-	ADD_TRAIT(H, RTRAIT_MEDIUMARMOR, TRAIT_GENERIC)
+	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
+	H.set_patron(/datum/patron/inhumen/matthios)
+	to_chat(H, "<span class='alertsyndie'>I am a BANDIT!</span>")
+	to_chat(H, "<span class='warning'>Long ago I did a crime worthy of my bounty being hung on the wall outside of the local inn. I must feed the idol money and valuable metals to satisfy my greed!</span>")
 
-/datum/antagonist/bandit/greet()
+/* /datum/antagonist/bandit/greet()
 	to_chat(owner.current, "<span class='alertsyndie'>I am a BANDIT!</span>")
 	to_chat(owner.current, "<span class='info'>Long ago I did a crime worthy of my bounty being hung on the wall outside of the local inn. I must feed the idol money and valuable metals to satisfy my greed!</span>")
 	owner.announce_objectives()
-	..()
+	..() */ //commenting out until they get a proper objective implementation or whatever.
 
 /datum/antagonist/bandit/proc/forge_objectives()
 	return
@@ -66,12 +73,12 @@
 	if(H.mobid in GLOB.character_list)
 		GLOB.character_list[H.mobid] = null
 	GLOB.chosen_names -= H.real_name
-	if((H.dna.species?.id != "human"))
+	if((H.dna.species?.id != "humen"))
 		H.age = AGE_ADULT
 		H.set_species(/datum/species/human/northern) //setspecies randomizes body
 		H.after_creation()
 //		H.real_name = H.client.prefs.pref_species.random_name(MALE,1) //set_species randomizes name
-	H.cmode_music = 'sound/music/combat_bandit.ogg'
+	H.cmode_music = 'sound/music/combat_bandit2.ogg'
 
 	addtimer(CALLBACK(H, TYPE_PROC_REF(/mob/living/carbon/human, choose_name_popup), "BANDIT"), 5 SECONDS)
 //	H.job = "Bandit"
@@ -83,7 +90,8 @@
 /datum/outfit/job/roguetown/bandit/pre_equip(mob/living/carbon/human/H)
 	..()
 	H.mind.adjust_skillrank(/datum/skill/combat/polearms, 2, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/combat/axesmaces, 2, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/combat/axes, 2, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/combat/maces, 2, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/combat/swords, 2, TRUE)
@@ -161,15 +169,12 @@
 			H.change_stat("strength", 1)
 			H.change_stat("constitution", 1)
 			H.change_stat("speed", -2)
-			ADD_TRAIT(H, RTRAIT_HEAVYARMOR, TRAIT_GENERIC)
+			ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
 	H.change_stat("strength", 3)
 	H.change_stat("endurance", 2)
 	H.change_stat("constitution", 1)
 	H.change_stat("speed", 1)
 	H.change_stat("intelligence", -3)
-	var/obj/item/bodypart/B = H.get_bodypart("head")
-	if(B)
-		B.sellprice = rand(66, 123)
 
 	H.ambushable = FALSE
 

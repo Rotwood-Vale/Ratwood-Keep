@@ -1,0 +1,51 @@
+"a" = (/turf/closed/wall/mineral/rogue/stonebrick,/area/rogue/under/town/sewer)
+"b" = (/obj/structure/fermenting_barrel,/obj/structure/spider/stickyweb,/turf/open/floor/rogue/cobble,/area/rogue/under/town/sewer)
+"c" = (/obj/structure/mineral_door/wood,/turf/open/floor/rogue/cobble,/area/rogue/under/town/sewer)
+"d" = (/turf/closed/mineral/rogue,/area/rogue/under/town/sewer)
+"f" = (/obj/structure/fermenting_barrel,/turf/open/floor/rogue/cobble,/area/rogue/under/town/sewer)
+"h" = (/obj/structure/closet/crate/chest,/turf/open/floor/rogue/cobble,/area/rogue/under/town/sewer)
+"i" = (/obj/structure/closet/crate/chest,/obj/effect/spawner/lootdrop/roguetown/sewers,/turf/open/floor/rogue/cobble,/area/rogue/under/town/sewer)
+"l" = (/obj/structure/fermenting_barrel/beer,/obj/structure/spider/stickyweb,/turf/open/floor/rogue/cobble,/area/rogue/under/town/sewer)
+"n" = (/obj/structure/fermenting_barrel/water,/turf/open/floor/rogue/cobble,/area/rogue/under/town/sewer)
+"p" = (/obj/structure/fermenting_barrel,/obj/effect/decal/cleanable/cobweb,/turf/open/floor/rogue/cobble,/area/rogue/under/town/sewer)
+"q" = (/obj/structure/rack/rogue,/obj/structure/spider/stickyweb,/turf/open/floor/rogue/cobble,/area/rogue/under/town/sewer)
+"s" = (/obj/effect/decal/cleanable/blood,/obj/effect/decal/cleanable/blood/tracks,/obj/effect/decal/cleanable/blood/tracks,/turf/closed/mineral/rogue,/area/rogue/under/town/sewer)
+"t" = (/obj/structure/fermenting_barrel/beer,/turf/open/floor/rogue/cobble,/area/rogue/under/town/sewer)
+"y" = (/turf/open/floor/rogue/cobble,/area/rogue/under/town/sewer)
+"A" = (/obj/effect/decal/cleanable/blood/footprints,/turf/open/floor/rogue/cobble,/area/rogue/under/town/sewer)
+"B" = (/obj/structure/rack/rogue,/obj/effect/spawner/lootdrop/roguetown/sewers,/turf/open/floor/rogue/cobble,/area/rogue/under/town/sewer)
+"C" = (/obj/structure/rack/rogue,/turf/open/floor/rogue/cobble,/area/rogue/under/town/sewer)
+"J" = (/obj/effect/decal/cleanable/blood/bubblegum,/obj/effect/decal/remains/human,/turf/open/floor/rogue/cobble,/area/rogue/under/town/sewer)
+"K" = (/obj/effect/decal/cleanable/cobweb/cobweb2,/obj/effect/decal/remains/human,/turf/open/floor/rogue/cobble,/area/rogue/under/town/sewer)
+"M" = (/mob/living/carbon/human/species/skeleton/npc,/turf/open/floor/rogue/cobble,/area/rogue/under/town/sewer)
+"N" = (/obj/structure/bed/rogue/shit,/turf/open/floor/rogue/cobble,/area/rogue/under/town/sewer)
+"O" = (/obj/effect/decal/cleanable/blood/tracks,/turf/closed/wall/mineral/rogue/stonebrick,/area/rogue/under/town/sewer)
+"S" = (/obj/effect/decal/cleanable/blood/gibs/old,/turf/open/floor/rogue/cobble,/area/rogue/under/town/sewer)
+"T" = (/obj/effect/spawner/lootdrop/roguetown/sewers,/turf/open/floor/rogue/cobble,/area/rogue/under/town/sewer)
+"U" = (/obj/machinery/light/rogue/torchholder,/turf/closed/wall/mineral/rogue/stonebrick,/area/rogue/under/town/sewer)
+"W" = (/obj/structure/spider/stickyweb,/turf/open/floor/rogue/cobble,/area/rogue/under/town/sewer)
+"X" = (/obj/effect/decal/cleanable/blood/tracks,/turf/closed/mineral/rogue,/area/rogue/under/town/sewer)
+"Z" = (/obj/machinery/light/rogue/firebowl,/turf/open/floor/rogue/cobble,/area/rogue/under/town/sewer)
+
+(1,1,1) = {"
+ddddddddddddsddddddddddddU
+ddddddddddddXdddddddddddda
+daaaaaaaaaaaOaaaaaaaaaadda
+dapflfiyWyWWNyWWyWWWyKadda
+daJyyyySaaaaayaaaaaayyadda
+daftffyACBCqCyBCCBCqyyadda
+dayyyyyAyyyyyyyyyyWyyyaaaa
+dabfnyyAaaaaayaaaaaayycWWW
+dayyyyaACBCqCyBCCqBCyyaaaa
+dayMyyaAyyWyyyyMyyyyyyadda
+dayyyyayaaaaayaaaaaayyadda
+dayyyyayCBCqCyCBCqCByyadda
+dayyyyayyyyyyyyyyyWyyyadda
+dayyyyayaaaaayaaaaaayyadda
+dayyyyayCqBCCyBqCCBCyyadda
+dayyhZayTWyMyyyWWyyyyZadda
+dacaaaaaaaaaaaaaaaaaaaadda
+daWaddddddddddddddddddddda
+daWaddddddddddddddddddddda
+aaWaaaaaaaaaaaaaaaaaaaaaaa
+"}

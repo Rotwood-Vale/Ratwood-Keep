@@ -50,7 +50,7 @@
 
 /obj/structure/closet/dirthole/closed/loot/examine(mob/user)
 	. = ..()
-	if(HAS_TRAIT(user, RTRAIT_NOSTINK))
+	if(HAS_TRAIT(user, TRAIT_NOSTINK))
 		if(lootroll == 1)
 			. += "<span class='warning'>Better let this one sleep.</span>"
 
@@ -153,11 +153,11 @@
 
 /datum/status_effect/debuff/cursed
 	id = "cursed"
-	alert_type = /obj/screen/alert/status_effect/debuff/cursed
+	alert_type = /atom/movable/screen/alert/status_effect/debuff/cursed
 	effectedstats = list("fortune" = -3)
 	duration = 10 MINUTES
 
-/obj/screen/alert/status_effect/debuff/cursed
+/atom/movable/screen/alert/status_effect/debuff/cursed
 	name = "Cursed"
 	desc = ""
 	icon_state = "debuff"
@@ -166,7 +166,7 @@
 	var/turf/T = get_turf(src)
 	if(istype(O, /obj/structure/closet/crate/coffin))
 		O.forceMove(T)
-	if(!istype(O) || O.anchored || istype(O, /obj/screen))
+	if(!istype(O) || O.anchored || istype(O, /atom/movable/screen))
 		return
 	if(!istype(user) || user.incapacitated() || !(user.mobility_flags & MOBILITY_STAND))
 		return

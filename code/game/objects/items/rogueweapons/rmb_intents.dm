@@ -3,35 +3,7 @@
 	var/desc = ""
 	var/icon_state = ""
 
-/datum/rmb_intent/proc/special_attack(/mob/user, /atom/target)
-	return
-
-/datum/rmb_intent/aimed
-	name = "aimed"
-	desc = "Your attacks are more precise but have a longer recovery time. Higher critrate with precise attacks."
-	icon_state = "rmbaimed"
-
-/datum/rmb_intent/strong
-	name = "strong"
-	desc = "Your attacks have +1 strength but use more stamina. Higher critrate with brutal attacks."
-	icon_state = "rmbstrong"
-
-/datum/rmb_intent/swift
-	name = "swift"
-	desc = "Your attacks have less recovery time but are less accurate."
-	icon_state = "rmbswift"
-
-/datum/rmb_intent/special
-	name = "special"
-	desc = "(RMB WHILE DEFENSE IS ACTIVE) A special attack that depends on the type of weapon you are using."
-	icon_state = "rmbspecial"
-
-/datum/rmb_intent/feint
-	name = "feint"
-	desc = "(RMB WHILE DEFENSE IS ACTIVE) A deceptive half-attack with no follow-through, meant to force your opponent to open their guard. Useless against someone who is dodging."
-	icon_state = "rmbfeint"
-
-/datum/rmb_intent/special_attack(mob/living/user, atom/target)
+/datum/rmb_intent/proc/special_attack(mob/living/user, atom/target)
 	if(!isliving(target))
 		return
 	if(!user)
@@ -80,6 +52,31 @@
 	else
 		if(user.client?.prefs.showrolls)
 			to_chat(user, "<span class='warning'>[L] did not fall for my feint... [perc]%</span>")
+
+/datum/rmb_intent/aimed
+	name = "aimed"
+	desc = "Your attacks are more precise but have a longer recovery time. Higher critrate with precise attacks."
+	icon_state = "rmbaimed"
+
+/datum/rmb_intent/strong
+	name = "strong"
+	desc = "Your attacks have +1 strength but use more stamina. Higher critrate with brutal attacks."
+	icon_state = "rmbstrong"
+
+/datum/rmb_intent/swift
+	name = "swift"
+	desc = "Your attacks have less recovery time but are less accurate."
+	icon_state = "rmbswift"
+
+/datum/rmb_intent/special
+	name = "special"
+	desc = "(RMB WHILE DEFENSE IS ACTIVE) A special attack that depends on the type of weapon you are using."
+	icon_state = "rmbspecial"
+
+/datum/rmb_intent/feint
+	name = "feint"
+	desc = "(RMB WHILE DEFENSE IS ACTIVE) A deceptive half-attack with no follow-through, meant to force your opponent to open their guard. Useless against someone who is dodging."
+	icon_state = "rmbfeint"
 
 /datum/status_effect/debuff/feinted
 	id = "nofeint"

@@ -76,9 +76,9 @@
 	var/amt2raise = 0 //How much exp we gain on catch
 	var/casting_time = (rand(8 SECONDS, 15 SECONDS)) //How long before a fish bites
 	var/fishing_time = 3 SECONDS //How long to reel in our catch
-
+	var/skill_level 
 	if(current_fisherman.mind)
-		var/skill_level = current_fisherman.mind.get_skill_level(/datum/skill/labor/fishing)
+		skill_level = current_fisherman.mind.get_skill_level(/datum/skill/labor/fishing)
 		if(skill_level)
 			casting_time = clamp((casting_time - skill_level SECONDS), 1, 15 SECONDS) //Can't go under 1
 			fishing_time = clamp((fishing_time / skill_level), 1, 3 SECONDS)
@@ -106,10 +106,11 @@
 	var/caught_thing = pickweight(baited.fishloot)
 	new caught_thing(current_fisherman.loc)
 	amt2raise = current_fisherman.STAINT
+	var/boon = user.mind.get_learning_boon(skill_level)
 	playsound(loc, 'sound/items/Fish_out.ogg', 100, TRUE)
 
 	QDEL_NULL(baited)
-	current_fisherman.mind.adjust_experience(/datum/skill/labor/fishing, amt2raise)
+	current_fisherman.mind.adjust_experience(/datum/skill/labor/fishing, amt2raise * boon) 
 	update_icon()
 
 /obj/item/fishingrod/update_icon()

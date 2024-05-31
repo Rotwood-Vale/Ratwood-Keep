@@ -2,7 +2,7 @@
 /obj/effect/landmark/mapGenerator/rogue/bog
 	mapGeneratorType = /datum/mapGenerator/bog
 	endTurfX = 255
-	endTurfY = 255
+	endTurfY = 400
 	startTurfX = 1
 	startTurfY = 1
 
@@ -29,7 +29,7 @@
 							/obj/structure/flora/roguegrass/maneater/real=3)
 	spawnableTurfs = list(/turf/open/floor/rogue/dirt/road=2,
 						/turf/open/water/swamp=1)
-	allowed_areas = list(/area/rogue/outdoors/bog)
+	allowed_areas = list(/area/rogue/outdoors/bog, /area/rogue/outdoors/rtfield)
 
 /datum/mapGeneratorModule/bogroad
 	clusterCheckFlags = CLUSTER_CHECK_DIFFERENT_ATOMS

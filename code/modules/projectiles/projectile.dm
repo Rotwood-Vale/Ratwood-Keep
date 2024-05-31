@@ -138,12 +138,13 @@
 /mob/living/proc/check_limb_hit(hit_zone)
 	if(has_limbs)
 		return hit_zone
+	return BODY_ZONE_CHEST
 
 /mob/living/carbon/check_limb_hit(hit_zone)
 	if(get_bodypart(hit_zone))
 		return hit_zone
-	else //when a limb is missing the damage is actually passed to the chest
-		return BODY_ZONE_CHEST
+	//when a limb is missing the damage is actually passed to the chest
+	return BODY_ZONE_CHEST
 
 /obj/projectile/proc/prehit(atom/target)
 	return TRUE
@@ -238,7 +239,6 @@
 
 //	var/distance = get_dist(T, starting) // Get the distance between the turf shot from and the mob we hit and use that for the calculations.
 //	def_zone = ran_zone(def_zone, max(100-(7*distance), 5)) //Lower accurancy/longer range tradeoff. 7 is a balanced number to use.
-	def_zone = def_zone
 
 	if(isturf(A) && hitsound_wall)
 		var/volume = CLAMP(vol_by_damage() + 20, 0, 100)

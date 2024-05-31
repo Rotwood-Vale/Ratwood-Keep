@@ -14,21 +14,61 @@
 	muteinmouth = TRUE
 	w_class = WEIGHT_CLASS_TINY
 	spitoutmouth = FALSE
+	bundletype = /obj/item/natural/bundle/fibers
 
-/obj/item/natural/fibers/attackby(obj/item/W, mob/living/user)
-	var/mob/living/carbon/human/H = user
-	if(istype(W, /obj/item/natural/fibers))
-		var/obj/item/natural/bundle/fibers/F = new(src.loc)
-		H.put_in_hands(F)
-		H.visible_message("[user] weaves the fibers into a bundle.")
-		qdel(W)
-		qdel(src)
-	if(istype(W, /obj/item/natural/bundle/fibers))
-		var/obj/item/natural/bundle/fibers/B = W
-		if(B.amount <= 5)
-			H.visible_message("[user] adds the [src] to the bundle.")
-			B.amount += 1
-			qdel(src)
+/obj/item/natural/fibers/attack_right(mob/user)
+	to_chat(user, "<span class='warning'>I start to collect [src]...</span>")
+	if(move_after(user, 5 SECONDS, target = src))
+		var/fibercount = 0
+		for(var/obj/item/natural/fibers/F in get_turf(src))
+			fibercount++
+		while(fibercount > 0)
+			if(fibercount == 1)
+				new /obj/item/natural/fibers(get_turf(user))
+				fibercount--
+			else if(fibercount >= 2)
+				var/obj/item/natural/bundle/fibers/B = new(get_turf(user))
+				B.amount = clamp(fibercount, 2, 6)
+				B.update_bundle()
+				fibercount -= clamp(fibercount, 2, 6)
+		for(var/obj/item/natural/fibers/F in get_turf(src))
+			qdel(F)
+
+/obj/item/natural/silk
+	name = "silk"
+	icon_state = "fibers"
+	possible_item_intents = list(/datum/intent/use)
+	desc = "Silken strands. Their usage in clothing is exotic in all places save the underdark"
+	force = 0
+	throwforce = 0
+	obj_flags = null
+	color = "#e6e3db"
+	firefuel = 5 MINUTES
+	resistance_flags = FLAMMABLE
+	slot_flags = ITEM_SLOT_MOUTH
+	max_integrity = 20
+	muteinmouth = TRUE
+	w_class = WEIGHT_CLASS_TINY
+	spitoutmouth = FALSE
+	bundletype = /obj/item/natural/bundle/silk
+
+/obj/item/natural/silk/attack_right(mob/user)
+	to_chat(user, "<span class='warning'>I start to collect [src]...</span>")
+	if(move_after(user, 5 SECONDS, target = src))
+		var/silkcount = 0
+		for(var/obj/item/natural/silk/F in get_turf(src))
+			silkcount++
+		while(silkcount > 0)
+			if(silkcount == 1)
+				new /obj/item/natural/silk(get_turf(user))
+				silkcount--
+			else if(silkcount >= 2)
+				var/obj/item/natural/bundle/silk/B = new(get_turf(user))
+				B.amount = clamp(silkcount, 2, 6)
+				B.update_bundle()
+				silkcount -= clamp(silkcount, 2, 6)
+		for(var/obj/item/natural/silk/F in get_turf(src))
+			qdel(F)
 
 #ifdef TESTSERVER
 
@@ -60,26 +100,14 @@
 	slot_flags = ITEM_SLOT_MOUTH|ITEM_SLOT_HIP
 	body_parts_covered = null
 	experimental_onhip = TRUE
-	var/wet = 0
 	max_integrity = 20
 	muteinmouth = TRUE
 	w_class = WEIGHT_CLASS_TINY
 	spitoutmouth = FALSE
-
-/obj/item/natural/cloth/attackby(obj/item/W, mob/living/user)
-	var/mob/living/carbon/human/H = user
-	if(istype(W, /obj/item/natural/cloth))
-		var/obj/item/natural/bundle/cloth/F = new(src.loc)
-		H.put_in_hands(F)
-		H.visible_message("[user] rolls the cloth into a bundle.")
-		qdel(W)
-		qdel(src)
-	if(istype(W, /obj/item/natural/bundle/cloth))
-		var/obj/item/natural/bundle/cloth/B = W
-		if(B.amount <= 5)
-			H.visible_message("[user] adds the [src] to the bundle.")
-			B.amount += 1
-			qdel(src)
+	bundletype = /obj/item/natural/bundle/cloth
+	var/wet = 0
+	/// Effectiveness when used as a bandage, how much bloodloss we can tampon
+	var/bandage_effectiveness = 0.9
 
 /obj/item/natural/cloth/examine(mob/user)
 	. = ..()
@@ -217,6 +245,7 @@
 	desc = "Fibers, bundled together."
 	force = 0
 	throwforce = 0
+	maxamount = 6
 	obj_flags = null
 	color = "#454032"
 	firefuel = 5 MINUTES
@@ -226,7 +255,35 @@
 	muteinmouth = TRUE
 	w_class = WEIGHT_CLASS_TINY
 	spitoutmouth = FALSE
-	var/amount = 2
+	stacktype = /obj/item/natural/fibers
+	icon1step = 3
+	icon2step = 6
+
+/obj/item/natural/bundle/fibers/full
+	icon_state = "fibersroll2"
+	amount = 6
+	firefuel = 30 MINUTES
+
+/obj/item/natural/bundle/silk
+	name = "silken weave"
+	icon_state = "fibersroll1"
+	possible_item_intents = list(/datum/intent/use)
+	desc = "Silk neatly woven together."
+	force = 0
+	throwforce = 0
+	maxamount = 6
+	obj_flags = null
+	color = "#e6e3db"
+	firefuel = 5 MINUTES
+	resistance_flags = FLAMMABLE
+	slot_flags = ITEM_SLOT_MOUTH
+	max_integrity = 20
+	muteinmouth = TRUE
+	w_class = WEIGHT_CLASS_TINY
+	spitoutmouth = FALSE
+	stacktype = /obj/item/natural/silk
+	icon1step = 3
+	icon2step = 6
 
 /obj/item/natural/bundle/cloth
 	name = "bundle of cloth"
@@ -235,111 +292,25 @@
 	desc = "A cloth roll of several pieces of fabric."
 	force = 0
 	throwforce = 0
+	maxamount = 10
 	obj_flags = null
 	firefuel = 5 MINUTES
 	resistance_flags = FLAMMABLE
 	w_class = WEIGHT_CLASS_TINY
 	spitoutmouth = FALSE
-	var/amount = 2
-
-
-/obj/item/natural/bundle/cloth/examine(mob/user)
-	. = ..()
-	to_chat(user, "<span class='notice'>Cloth in roll: [amount]</span>")
-
-/obj/item/natural/bundle/cloth/attackby(obj/item/W, mob/living/user)
-	if(istype(W, /obj/item/natural/cloth))
-		if(amount >= 10)
-			to_chat(user, "There's not enough space in the roll.")
-			return
-		amount += 1
-		user.visible_message("[user] adds [W] to [src]")
-		qdel(W)
-	if(istype(W, /obj/item/natural/bundle/cloth))
-		var/obj/item/natural/bundle/cloth/B = W
-		if(B.amount + amount <= 10)
-			user.visible_message("[user] adds [B] to [src]")
-			amount += B.amount
-			qdel(B)
-		else
-			to_chat(user, "There's not enough space in the roll.")
-	update_bundle()
-
-/obj/item/natural/bundle/cloth/attack_right(mob/user)
-	var/mob/living/carbon/human/H = user
-	switch(amount)
-		if(2)
-			var/obj/item/natural/cloth/F = new (src.loc)
-			var/obj/item/natural/cloth/I = new (src.loc)
-			H.put_in_hands(F)
-			H.put_in_hands(I)
-			qdel(src)
-			return
-		else
-			amount -= 1
-			var/obj/item/natural/cloth/F = new (src.loc)
-			H.put_in_hands(F)
-			user.visible_message("[user] removes [F] from [src]")
-	update_bundle()
-
-/obj/item/natural/bundle/cloth/proc/update_bundle()
-	switch(amount)
-		if(2 to 5)
-			icon_state = "clothroll1"
-		if(6 to 10)
-			icon_state = "clothroll2"
-
-/obj/item/natural/bundle/fibers/examine(mob/user)
-	. = ..()
-	to_chat(user, "<span class='notice'>Fibers in bundle: [amount]</span>")
-
-/obj/item/natural/bundle/fibers/attackby(obj/item/W, mob/living/user)
-	if(istype(W, /obj/item/natural/fibers))
-		if(amount >= 6)
-			to_chat(user, "There's not enough space in the bundle.")
-			return
-		amount += 1
-		user.visible_message("[user] adds [W] to [src]")
-		qdel(W)
-	if(istype(W, /obj/item/natural/bundle/fibers))
-		var/obj/item/natural/bundle/fibers/B = W
-		if(B.amount + amount <= 6)
-			user.visible_message("[user] adds [B] to [src]")
-			amount += B.amount
-			qdel(B)
-		else
-			to_chat(user, "There's not enough space in the bundle.")
-	update_bundle()
-
-/obj/item/natural/bundle/fibers/attack_right(mob/user)
-	var/mob/living/carbon/human/H = user
-	switch(amount)
-		if(2)
-			var/obj/item/natural/fibers/F = new (src.loc)
-			var/obj/item/natural/fibers/I = new (src.loc)
-			H.put_in_hands(F)
-			H.put_in_hands(I)
-			qdel(src)
-			return
-		else
-			amount -= 1
-			var/obj/item/natural/fibers/F = new (src.loc)
-			H.put_in_hands(F)
-			user.visible_message("[user] removes [F] from [src]")
-	update_bundle()
-
-/obj/item/natural/bundle/fibers/proc/update_bundle()
-	switch(amount)
-		if(1 to 3)
-			icon_state = "fibersroll1"
-		if(4 to 6)
-			icon_state = "fibersroll2"
+	stacktype = /obj/item/natural/cloth
+	stackname = "cloth"
+	icon1 = "clothroll1"
+	icon1step = 5
+	icon2 = "clothroll2"
+	icon2step = 10
 
 /obj/item/natural/bundle/stick
 	name = "bundle of sticks"
 	icon_state = "stickbundle1"
 	possible_item_intents = list(/datum/intent/use)
 	desc = "Stick alone.. Weak. Stick together.. Strong."
+	maxamount = 10
 	force = 0
 	throwforce = 0
 	obj_flags = null
@@ -347,54 +318,60 @@
 	resistance_flags = FLAMMABLE
 	w_class = WEIGHT_CLASS_TINY
 	spitoutmouth = FALSE
-	var/amount = 2
+	stacktype = /obj/item/grown/log/tree/stick
+	stackname = "sticks"
+	icon1 = "stickbundle1"
+	icon1step = 4
+	icon2 = "stickbundle2"
+	icon2step = 7
+	icon3 = "stickbundle3"
 
-/obj/item/natural/bundle/stick/examine(mob/user)
-	. = ..()
-	to_chat(user, "<span class='notice'>Sticks in bundle: [amount]</span>")
+/obj/item/natural/bowstring
+	name = "fibre bowstring"
+	desc = "A simple cord of bowstring."
+	icon_state = "fibers"
+	possible_item_intents = list(/datum/intent/use)
+	force = 0
+	throwforce = 0
+	obj_flags = null
+	color = COLOR_BEIGE
+	firefuel = 5 MINUTES
+	resistance_flags = FLAMMABLE
+	slot_flags = ITEM_SLOT_MOUTH
+	max_integrity = 20
+	muteinmouth = TRUE
+	w_class = WEIGHT_CLASS_TINY
+	spitoutmouth = FALSE
 
-/obj/item/natural/bundle/stick/attackby(obj/item/W, mob/living/user)
-	if(istype(W, /obj/item/grown/log/tree/stick))
-		if(amount >= 7)
-			to_chat(user, "There's not enough space in the bundle.")
-			return
-		amount += 1
-		user.visible_message("[user] adds [W] to [src]")
-		qdel(W)
-	if(istype(W, /obj/item/natural/bundle/stick))
-		var/obj/item/natural/bundle/stick/B = W
-		if(B.amount + amount <= 7)
-			user.visible_message("[user] adds [B] to [src]")
-			amount += B.amount
-			qdel(B)
-		else
-			to_chat(user, "There's not enough space in the bundle.")
-	update_bundle()
+/obj/item/natural/bundle/worms
+	name = "worms"
+	desc = "Multiple wriggly worms."
+	color = "#964B00"
+	maxamount = 12
+	icon1 = "worm2"
+	icon1step = 4
+	icon2 = "worm4"
+	icon2step = 6
+	icon3 = "worm6"
+	stacktype = /obj/item/natural/worms
+	stackname = "worms"
 
-/obj/item/natural/bundle/stick/attack_right(mob/user)
-	var/mob/living/carbon/human/H = user
-	switch(amount)
-		if(2)
-			var/obj/item/grown/log/tree/stick/F = new (src.loc)
-			var/obj/item/grown/log/tree/stick/I = new (src.loc)
-			H.put_in_hands(F)
-			H.put_in_hands(I)
-			qdel(src)
-			return
-		else
-			amount -= 1
-			var/obj/item/grown/log/tree/stick/F = new (src.loc)
-			H.put_in_hands(F)
-			user.visible_message("[user] removes [F] from [src]")
-	update_bundle()
+/obj/item/natural/worms/attack_right(mob/user)
+	to_chat(user, "<span class='warning'>I start to collect [src]...</span>")
+	if(move_after(user, 5 SECONDS, target = src))
+		var/wormcount = 0
+		for(var/obj/item/natural/worms/F in get_turf(src))
+			wormcount++
+		while(wormcount > 0)
+			if(wormcount == 1)
+				new /obj/item/natural/worms(get_turf(user))
+				wormcount--
+			else if(wormcount >= 2)
+				var/obj/item/natural/bundle/worms/B = new(get_turf(user))
+				B.amount = clamp(wormcount, 2, 12)
+				B.update_bundle()
+				wormcount -= clamp(wormcount, 2, 12)
+		for(var/obj/item/natural/worms/F in get_turf(src))
+			qdel(F)
 
-/obj/item/natural/bundle/stick/proc/update_bundle()
-	var/stickfire = (5 * amount)
-	firefuel = stickfire MINUTES
-	switch(amount)
-		if(2 to 3)
-			icon_state = "stickbundle1"
-		if(4 to 5)
-			icon_state = "stickbundle2"
-		if(6 to 7)
-			icon_state = "stickbundle3"
+

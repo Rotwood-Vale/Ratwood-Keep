@@ -1,16 +1,14 @@
-
-
 /proc/accuracy_check(zone, mob/living/user, mob/living/target, associated_skill, datum/intent/used_intent, obj/item/I)
 	if(!zone)
 		return
 	if(user == target)
 		return zone
-	if(zone == "chest")
+	if(zone == BODY_ZONE_CHEST)
 		return zone
 	if(target.grabbedby == user)
 		if(user.grab_state >= GRAB_AGGRESSIVE)
 			return zone
-	if(target.lying)
+	if(!(target.mobility_flags & MOBILITY_STAND))
 		return zone
 	if( (target.dir == turn(get_dir(target,user), 180)))
 		return zone
@@ -59,9 +57,7 @@
 		else
 			if(user.client?.prefs.showrolls)
 				to_chat(user, "<span class='warning'>Ultra accuracy fail! [chance2hit]%</span>")
-			return "chest"
-
-
+			return BODY_ZONE_CHEST
 
 /mob/proc/get_generic_parry_drain()
 	return 30
@@ -71,7 +67,7 @@
 		return FALSE
 	if(stat)
 		return FALSE
-	if(lying)
+	if(!(mobility_flags & MOBILITY_STAND))
 		return FALSE
 	if(user.badluck(4))
 		var/list/usedp = list("Critical miss!", "Damn! Critical miss!", "No! Critical miss!", "It can't be! Critical miss!", "Betrayed by lady luck! Critical miss!", "Bad luck! Critical miss!", "Curse creation! Critical miss!", "What?! Critical miss!")
@@ -94,20 +90,15 @@
 	if(user == src)
 		return FALSE
 	if(!(mobility_flags & MOBILITY_MOVE))
-		return
+		return FALSE
 
 	if(client && used_intent)
 		if(client.charging && used_intent.tranged && !used_intent.tshield)
 			return FALSE
 
 	var/prob2defend = user.defprob
-	var/mob/living/carbon/human/H
-	var/mob/living/carbon/human/U
-	if(ishuman(src))
-		H = src
-	if(ishuman(user))
-		U = user
-
+	var/mob/living/H = src
+	var/mob/living/U = user
 	if(H && U)
 		prob2defend = 0
 
@@ -139,110 +130,92 @@
 			if(has_status_effect(/datum/status_effect/debuff/riposted))
 				return FALSE
 			last_parry = world.time
-			if(intenty)
-				if(!intenty.canparry)
-					return FALSE
+			if(intenty && !intenty.canparry)
+				return FALSE
 			var/drained = user.defdrain
+			var/weapon_parry = FALSE
+			var/offhand_defense = 0
+			var/mainhand_defense = 0
+			var/highest_defense = 0
 			var/obj/item/mainhand = get_active_held_item()
 			var/obj/item/offhand = get_inactive_held_item()
-			var/used_index = active_hand_index
+			var/obj/item/used_weapon = mainhand
 			var/obj/item/rogueweapon/shield/buckler/skiller = get_inactive_held_item()  // buckler code
 			var/obj/item/rogueweapon/shield/buckler/skillerbuck = get_active_held_item()
+			
 			if(istype(offhand, /obj/item/rogueweapon/shield/buckler))
 				skiller.bucklerskill(H)
 			if(istype(mainhand, /obj/item/rogueweapon/shield/buckler))
 				skillerbuck.bucklerskill(H)  //buckler code end
-			var/weapon_parry = FALSE
+
 			if(mainhand)
 				if(mainhand.can_parry)
-					weapon_parry = TRUE
+					mainhand_defense += (H.mind ? (H.mind.get_skill_level(mainhand.associated_skill) * 20) : 20)
+					mainhand_defense += (mainhand.wdefense * 10)
+			if(offhand)
+				if(offhand.can_parry)
+					offhand_defense += (H.mind ? (H.mind.get_skill_level(offhand.associated_skill) * 20) : 20)
+					offhand_defense += (offhand.wdefense * 10)
+			
+			if(mainhand_defense >= offhand_defense)
+				highest_defense += mainhand_defense
 			else
-				if(offhand)
-					if(offhand.can_parry)
-						weapon_parry = TRUE
-						used_index = get_inactive_hand_index()
-			if(weapon_parry)
-				var/obj/item/used_weapon = mainhand
-				if(!mainhand)
-					used_weapon = offhand
-					used_index = get_inactive_hand_index()
-				if(H)
-					var/mainhandthing = 0
-					if(mainhand && mainhand.can_parry)
-						if(!mainhand.associated_skill)
-							mainhandthing -= 10
-						else
-							mainhandthing += (H.mind.get_skill_level(mainhand.associated_skill) * 20)
-						mainhandthing += (mainhand.wdefense * 10)
-					var/offhandthing = 0
-					if(offhand && offhand.can_parry)
-						if(!offhand.associated_skill)
-							offhandthing -= 10
-						else
-							offhandthing += (H.mind.get_skill_level(offhand.associated_skill) * 20)
-						offhandthing += (offhand.wdefense * 10)
-					if((mainhandthing >= offhandthing) && mainhand && mainhand.can_parry)
-						used_weapon = mainhand
-						used_index = active_hand_index
-						prob2defend += mainhandthing
-					else if(offhand && offhand.can_parry)
-						used_weapon = offhand
-						used_index = get_inactive_hand_index()
-						prob2defend += offhandthing
-				if(U?.mind)
-					if(intenty.masteritem)
-						if(!intenty.masteritem.associated_skill) //nme weapon improvised
-							prob2defend = prob2defend + 10
-						else //attacker skill gain
-							var/attacker_skill = U.mind.get_skill_level(intenty.masteritem.associated_skill)
-							var/defender_skill = mind?.get_skill_level(intenty.masteritem.associated_skill)
-							prob2defend = prob2defend - (attacker_skill * 20)
-							if((U.mobility_flags & MOBILITY_STAND) && defender_skill && (attacker_skill < defender_skill - SKILL_LEVEL_NOVICE))
-								U.mind.adjust_experience(intenty.masteritem.associated_skill, max(round(U.STAINT/2), 0), FALSE)
-						if((intenty.masteritem.wbalance > 0) && (user.STASPD > src.STASPD)) //nme weapon is quick, so get a bonus based on spddiff
-							prob2defend = prob2defend - ( intenty.masteritem.wbalance * ((user.STASPD - src.STASPD) * 10) )
-					else
-						prob2defend = prob2defend - (U.mind.get_skill_level(/datum/skill/combat/unarmed) * 5)
-				prob2defend = clamp(prob2defend, 5, 99)
-				if(src.client?.prefs.showrolls)
-					to_chat(src, "<span class='info'>Roll to parry with [used_weapon]... [prob2defend]%</span>")
-				if(used_index == 1)
-					used_hand = 1
+				used_weapon = offhand
+				highest_defense += offhand_defense
+
+			var/defender_skill = 0
+			var/attacker_skill = 0
+			
+			if(highest_defense <= (H.mind ? (H.mind.get_skill_level(/datum/skill/combat/unarmed) * 20) : 20))
+				defender_skill = H.mind?.get_skill_level(/datum/skill/combat/unarmed)
+				prob2defend += (defender_skill * 20)
+				weapon_parry = FALSE
+			else
+				defender_skill = H.mind?.get_skill_level(used_weapon.associated_skill)
+				prob2defend += highest_defense
+				weapon_parry = TRUE
+
+			if(U.mind)
+				if(intenty.masteritem)
+					attacker_skill = U.mind.get_skill_level(intenty.masteritem.associated_skill)
+					prob2defend -= (attacker_skill * 20)
+					if((intenty.masteritem.wbalance > 0) && (user.STASPD > src.STASPD)) //enemy weapon is quick, so get a bonus based on spddiff
+						prob2defend -= ( intenty.masteritem.wbalance * ((user.STASPD - src.STASPD) * 10) )
 				else
-					used_hand = 2
-			//	changeNext_move(5,used_hand)
-				if(prob(prob2defend))
-					if(intenty.masteritem)
-						if(intenty.masteritem.wbalance < 0 && user.STASTR > src.STASTR) //nme weapon is heavy, so get a bonus scaling on strdiff
-							drained = drained + ( intenty.masteritem.wbalance * ((user.STASTR - src.STASTR) * -5) )
-/*					else
-						if(src.rogfat_add(5))
-							src.visible_message("<span class='boldwarning'><b>[src]</b> ripostes [user] with [used_weapon]!</span>")
-							if(user.active_hand_index == 1)//this is currently not working, i asusme because mellee attack chain resets tempatarget. find workaround for this
-								src.tempatarget = "l_arm"
-							else
-								src.tempatarget = "r_arm"
-							used_weapon.melee_attack_chain(src, user)
-							return TRUE
-						else
-							to_chat(src, "<span class='warning'>I'm too tired to riposte.</span>")
-							return FALSE*/
-				else
-					to_chat(src, "<span class='warning'>The enemy defeated my parry!</span>")
-					return FALSE
-				drained = max(drained, 5)
-				if(do_parry(used_weapon, drained, user)) //show message, invoke parry cd
-					if(used_weapon.associated_skill && mind) //defender skill gain
-						var/attacker_skill = U.mind?.get_skill_level(used_weapon.associated_skill)
-						var/defender_skill = mind.get_skill_level(used_weapon.associated_skill)
-						if((mobility_flags & MOBILITY_STAND) && attacker_skill && (defender_skill < attacker_skill - SKILL_LEVEL_NOVICE))
-							mind.adjust_experience(used_weapon.associated_skill, max(round(STAINT/2), 0), FALSE)
+					attacker_skill = U.mind.get_skill_level(/datum/skill/combat/unarmed)
+					prob2defend -= (attacker_skill * 20)
+
+			prob2defend = clamp(prob2defend, 5, 99)
+			if(src.client?.prefs.showrolls)
+				to_chat(src, "<span class='info'>Roll to parry... [prob2defend]%</span>")
+
+			if(prob(prob2defend))
+				if(intenty.masteritem)
+					if(intenty.masteritem.wbalance < 0 && user.STASTR > src.STASTR) //enemy weapon is heavy, so get a bonus scaling on strdiff
+						drained = drained + ( intenty.masteritem.wbalance * ((user.STASTR - src.STASTR) * -5) )
+			else
+				to_chat(src, "<span class='warning'>The enemy defeated my parry!</span>")
+				return FALSE
+
+			drained = max(drained, 5)		
+			
+			if(weapon_parry == TRUE)
+				if(do_parry(used_weapon, drained, user)) //show message
+					
+					if((mobility_flags & MOBILITY_STAND) && attacker_skill && (defender_skill < attacker_skill - SKILL_LEVEL_NOVICE))
+						mind.adjust_experience(used_weapon.associated_skill, max(round(STAINT/2), 0), FALSE)
+
 					var/obj/item/AB = intenty.masteritem
-					if(AB?.associated_skill && U.mind) //attacker skill gain
-						var/attacker_skill = U.mind.get_skill_level(AB.associated_skill)
-						var/defender_skill = mind?.get_skill_level(AB.associated_skill)
+					
+					//attacker skill gain
+					
+					if(U.mind)
 						if((U.mobility_flags & MOBILITY_STAND) && defender_skill && (attacker_skill < defender_skill - SKILL_LEVEL_NOVICE))
-							U.mind.adjust_experience(AB.associated_skill, max(round(U.STAINT/2), 0), FALSE)
+							if(AB)
+								U.mind.adjust_experience(AB.associated_skill, max(round(U.STAINT/2), 0), FALSE)
+							else
+								U.mind.adjust_experience(/datum/skill/combat/unarmed, max(round(STAINT/2), 0), FALSE)
+
 					if(prob(66) && AB)
 						if((used_weapon.flags_1 & CONDUCT_1) && (AB.flags_1 & CONDUCT_1))
 							flash_fullscreen("whiteflash")
@@ -255,59 +228,22 @@
 							flash_fullscreen("blackflash2")
 					else
 						flash_fullscreen("blackflash2")
-					if(used_weapon && AB)
-						var/dam2take = round((get_complex_damage(AB,user,used_weapon.blade_dulling)/2),1)
-						if(dam2take)
-							used_weapon.take_damage(max(dam2take,1), BRUTE, "melee")
+
+					var/dam2take = round((get_complex_damage(AB,user,used_weapon.blade_dulling)/2),1)
+					if(dam2take)
+						used_weapon.take_damage(max(dam2take,1), BRUTE, "melee")
 					return TRUE
 				else
 					return FALSE
-			else
-				testing("begin unarmed parry")
-				if(!has_hand_for_held_index(active_hand_index))
-					testing("noarm unarmed parry")
-					return FALSE
-				if(H)
-					if(H.check_arm_grabbed())
-						testing("grabbed unarmed parry")
-						return FALSE
-					if(H.mind)
-						prob2defend = prob2defend + (H.mind.get_skill_level(/datum/skill/combat/unarmed) * 10)
-				var/usename = intenty.name
-				if(U?.mind)
-					if(intenty.masteritem)
-						usename = intenty.masteritem.name
-						if(!intenty.masteritem.associated_skill) //nme weapon improvised
-							prob2defend = prob2defend + 10
-						else
-							prob2defend = prob2defend - (U.mind.get_skill_level(intenty.masteritem.associated_skill) * 10)
-					else //attacker skill gain
-						var/attacker_skill = U.mind.get_skill_level(/datum/skill/combat/unarmed)
-						var/defender_skill = mind?.get_skill_level(/datum/skill/combat/unarmed)
-						prob2defend = prob2defend - (U.mind.get_skill_level(/datum/skill/combat/unarmed) * 10)
-						if((U.mobility_flags & MOBILITY_STAND) && defender_skill && (attacker_skill < defender_skill - SKILL_LEVEL_NOVICE))
-							U.mind.adjust_experience(/datum/skill/combat/unarmed, max(round(U.STAINT/2), 0), FALSE)
 
-				prob2defend = clamp(prob2defend, 5, 99)
-				if(client?.prefs.showrolls)
-					to_chat(src, "<span class='info'>Roll to parry... [prob2defend]%</span>")
-				if(prob(prob2defend))
-					drained = max(drained, 5)
-//							if(U.aimheight != H.aimheight)
-//								drained = drained + 15
-					if(do_unarmed_parry(usename, drained, user))
-						if(H?.mind) //defender skill gain
-							var/attacker_skill = U.mind?.get_skill_level(/datum/skill/combat/unarmed)
-							var/defender_skill = H.mind.get_skill_level(/datum/skill/combat/unarmed)
-							if((mobility_flags & MOBILITY_STAND) && attacker_skill && (defender_skill < attacker_skill - SKILL_LEVEL_NOVICE))
-								H.mind.adjust_experience(/datum/skill/combat/unarmed, max(round(STAINT/2), 0), FALSE)
-						flash_fullscreen("blackflash2")
-						return TRUE
-					else
-						testing("failparry")
-						return FALSE
+			if(weapon_parry == FALSE)
+				if(do_unarmed_parry(drained, user))
+					if((mobility_flags & MOBILITY_STAND) && attacker_skill && (defender_skill < attacker_skill - SKILL_LEVEL_NOVICE))
+						H.mind?.adjust_experience(/datum/skill/combat/unarmed, max(round(STAINT/2), 0), FALSE)
+					flash_fullscreen("blackflash2")
+					return TRUE
 				else
-					to_chat(src, "<span class='boldwarning'>The enemy defeated my parry!</span>")
+					testing("failparry")
 					return FALSE
 		if(INTENT_DODGE)
 			if(pulledby && pulledby.grab_state >= GRAB_AGGRESSIVE)
@@ -391,14 +327,12 @@
 			playsound(get_turf(src), pick(W.parrysound), 100, FALSE)
 		return TRUE
 
-/mob/proc/do_unarmed_parry(intenty as text, parrydrain as num, mob/living/user)
-	if(intenty == "help")
-		return FALSE
+/mob/proc/do_unarmed_parry(parrydrain as num, mob/living/user)
 	if(ishuman(src))
 		var/mob/living/carbon/human/H = src
 		if(H.rogfat_add(parrydrain))
 			playsound(get_turf(src), pick(parry_sound), 100, FALSE)
-			src.visible_message("<span class='warning'><b>[src]</b> parries [user]'s [intenty]!</span>")
+			src.visible_message("<span class='warning'><b>[src]</b> parries [user]!</span>")
 			return TRUE
 		else
 			to_chat(src, "<span class='boldwarning'>I'm too tired to parry!</span>")
@@ -425,7 +359,10 @@
 		if(L.rogfat >= L.maxrogfat)
 			return FALSE
 		if(L)
-			prob2defend = prob2defend + (L.STASPD * 10)
+			if(H?.check_dodge_skill())
+				prob2defend = prob2defend + (L.STASPD * 15)
+			else
+				prob2defend = prob2defend + (L.STASPD * 10)
 		if(U)
 			prob2defend = prob2defend - (U.STASPD * 10)
 		if(I)
@@ -436,9 +373,11 @@
 			if(UH?.mind)
 				prob2defend = prob2defend - (UH.mind.get_skill_level(I.associated_skill) * 10)
 		if(H)
-			if(!H.check_armor_skill())
+			if(!H?.check_armor_skill())
 				H.Knockdown(1)
 				return FALSE
+			if(H?.check_dodge_skill())
+				drained = drained - 5
 //			if(H.mind)
 //				drained = drained + max((H.checkwornweight() * 10)-(mind.get_skill_level(/datum/skill/misc/athletics) * 10),0)
 //			else

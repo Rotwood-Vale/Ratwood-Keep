@@ -66,10 +66,10 @@
 	var/list/roundstart_experience
 
 	//allowed sex/race for picking
-	var/list/allowed_sexes = list(MALE,FEMALE)
-	var/list/allowed_races = ALL_RACES_LIST_NAMES
-	var/list/allowed_patrons = ALL_PATRON_NAMES_LIST
-	var/list/allowed_ages = list(AGE_ADULT, AGE_MIDDLEAGED, AGE_OLD)
+	var/list/allowed_sexes
+	var/list/allowed_races
+	var/list/allowed_patrons
+	var/list/allowed_ages = ADULT_AGES_LIST
 
 	/// Innate skill levels unlocked at roundstart. Format is list(/datum/skill/foo = SKILL_EXP_NOVICE) with exp as an integer or as per code/_DEFINES/skills.dm
 	var/list/skills
@@ -86,13 +86,14 @@
 	var/whitelist_req = FALSE
 
 	var/bypass_jobban = FALSE
-	var/bypass_lastclass = TRUE
+	var/bypass_lastclass = FALSE
 
 	var/list/peopleiknow = list()
 	var/list/peopleknowme = list()
 
 	var/plevel_req = 0
 	var/min_pq = 0
+	var/max_pq = 0
 
 	var/show_in_credits = TRUE
 
@@ -102,6 +103,9 @@
 
 	//is the job required for game progression
 	var/required = FALSE
+
+	/// Some jobs have unique combat mode music, because why not?
+	var/cmode_music
 
 	/// This job is a "wanderer" on examine
 	var/wanderer_examine = FALSE
@@ -168,6 +172,9 @@
 
 	if(show_in_credits)
 		SScrediticons.processing += H
+	
+	if(cmode_music)
+		H.cmode_music = cmode_music
 
 /mob/living/carbon/human/proc/add_credit()
 	if(!mind || !client)
@@ -217,7 +224,7 @@
 	if(!H)
 		return FALSE
 	if(CONFIG_GET(flag/enforce_human_authority) && (title in GLOB.command_positions))
-		if(H.dna.species.id != "human")
+		if((H.dna.species.id != "human") && (H.dna.species.id != "humen"))
 			H.set_species(/datum/species/human)
 			H.apply_pref_name("human", preference_source)
 	if(!visualsOnly)

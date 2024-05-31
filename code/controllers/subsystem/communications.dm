@@ -23,7 +23,7 @@ SUBSYSTEM_DEF(communications)
 			var/used_title = J.title
 			if(user.gender == FEMALE && J.f_title)
 				used_title = J.f_title
-			priority_announce(html_decode(user.treat_message(input)), "The [used_title] Decrees", 'sound/misc/alert.ogg', "Captain")
+			priority_announce(html_decode(user.treat_message(input)), "The [used_title] Decrees", pick('sound/misc/royal_decree.ogg', 'sound/misc/royal_decree2.ogg'), "Captain")
 			silicon_message_cooldown = world.time + 5 SECONDS
 	else
 		if(user.job)

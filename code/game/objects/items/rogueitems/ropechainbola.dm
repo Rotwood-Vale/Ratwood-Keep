@@ -18,6 +18,7 @@
 	possible_item_intents = list(/datum/intent/tie)
 	firefuel = 5 MINUTES
 	drop_sound = 'sound/foley/dropsound/cloth_drop.ogg'
+	sewrepair = TRUE
 
 /datum/intent/tie
 	name = "tie"
@@ -50,7 +51,7 @@
 
 	if(user.aimheight > 4)
 		if(!C.handcuffed)
-			if(C.get_num_arms(TRUE))
+			if(C.get_num_arms(FALSE) || C.get_arm_ignore())
 				C.visible_message("<span class='warning'>[user] is trying to tie [C]'s arms with [src.name]!</span>", \
 									"<span class='userdanger'>[user] is trying to tie my arms with [src.name]!</span>")
 
@@ -117,7 +118,7 @@
 		return
 
 
-/datum/intent/whip
+/datum/intent/whips
 	name = "strike"
 	blade_class = BCLASS_BLUNT
 	attack_verb = list("whips", "strikes", "smacks")
@@ -137,7 +138,9 @@
 	breakouttime = 1 MINUTES
 	slipouttime = 5 MINUTES
 	cuffsound = 'sound/blank.ogg'
-	possible_item_intents = list(/datum/intent/tie, /datum/intent/whip)
+	possible_item_intents = list(/datum/intent/tie, /datum/intent/whips)
 	firefuel = null
 	smeltresult = /obj/item/ingot/iron
 	drop_sound = 'sound/foley/dropsound/chain_drop.ogg'
+	sewrepair = FALSE
+	anvilrepair = /datum/skill/craft/blacksmithing

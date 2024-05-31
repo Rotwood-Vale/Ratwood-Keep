@@ -1,74 +1,104 @@
 /mob/living/simple_animal/examine(mob/user)
 	var/t_He = p_they(TRUE)
 	var/t_his = p_their()
-	var/t_has = p_have()
 	var/t_is = p_are()
 
-	. = list("<span class='info'>✠ ------------ ✠\nThis is \a <EM>[src]</EM>!")
+	. = list("<span class='info'>✠ ------------ ✠\nThis is \a <EM>[src]</EM>.")
 
 	var/m1 = "[t_He] [t_is]"
 	var/m2 = "[t_his]"
-	var/m3 = "[t_He] [t_has]"
 	if(user == src)
 		m1 = "I am"
 		m2 = "my"
-		m3 = "I have"
 
-	for(var/obj/item/I in held_items)
-		if(!(I.item_flags & ABSTRACT))
-			. += "[m1] holding [I.get_examine_string(user)] in [m2] [get_held_index_name(get_held_index_of_item(I))]."
+	for(var/obj/item/held_item in held_items)
+		if(held_item.item_flags & ABSTRACT)
+			continue
+		. += "[m1] holding [held_item.get_examine_string(user)] in [m2] [get_held_index_name(get_held_index_of_item(held_item))]."
 
-	var/list/msg = list("<span class='warning'>")
+	//Gets encapsulated with a warning span
+	var/list/msg = list()
 
-	var/temp = getBruteLoss()
-	if(temp)
-		if (temp < 25)
-			msg += "[m3] some bruises.\n"
-		else if (temp < 50)
-			msg += "[m3] a lot of bruises!\n"
-		else
-			msg += "<B>[m1] black and blue!!</B>\n"
-	temp = getFireLoss()
-	if(temp)
-		if (temp < 25)
-			msg += "[m3] some burns.\n"
-		else if (temp < 50)
-			msg += "[m3] many burns!\n"
-		else
-			msg += "<B>[m1] dragon food!!</B>\n"
+	var/temp = getBruteLoss() + getFireLoss()
+	// Damage
+	switch(temp)
+		if(5 to 25)
+			msg += "[m1] a little wounded."
+		if(25 to 50)
+			msg += "[m1] wounded."
+		if(50 to 100)
+			msg += "<B>[m1] severely wounded.</B>"
+		if(100 to INFINITY)
+			msg += "<span class='danger'>[m1] gravely wounded.</span>"
 
-	if(fire_stacks > 0)
-		msg += "[t_He] [t_is] covered in something flammable.\n"
-	if(fire_stacks < 0)
-		msg += "[t_He] look[p_s()] a little soaked.\n"
-
-	if(pulledby && pulledby.grab_state)
-		msg += "[m1] restrained by [pulledby]'s grip.\n"
-
-	msg += "</span>"
-
-	. += msg.Join("")
-
-	if(stat == UNCONSCIOUS)
-		. += "[m1] unconscious."
-	if(stat == DEAD)
-		. += "[m1] unconscious."
-
-	if(isliving(user))
-		var/mob/living/L = user
-		if(STASTR > L.STASTR)
-			if(STASTR >= 15)
-				. += "<span class='warning'><B>[t_He] look[p_s()] stronger than I.</B></span>"
+	var/has_simple_wounds = HAS_TRAIT(src, TRAIT_SIMPLE_WOUNDS)
+	if(has_simple_wounds)
+		// Blood volume
+		switch(blood_volume)
+			if(-INFINITY to BLOOD_VOLUME_SURVIVE)
+				msg += "<span class='artery'><B>[m1] extremely pale and sickly.</B></span>"
+			if(BLOOD_VOLUME_SURVIVE to BLOOD_VOLUME_BAD)
+				msg += "<span class='artery'><B>[m1] very pale.</B></span>"
+			if(BLOOD_VOLUME_BAD to BLOOD_VOLUME_OKAY)
+				msg += "<span class='artery'>[m1] pale.</span>"
+			if(BLOOD_VOLUME_OKAY to BLOOD_VOLUME_SAFE)
+				msg += "<span class='artery'>[m1] a little pale.</span>"
+	
+		// Bleeding
+		if(bleed_rate)
+			var/bleed_wording = "bleeding"
+			switch(bleed_rate)
+				if(0 to 1)
+					bleed_wording = "bleeding slightly"
+				if(1 to 5)
+					bleed_wording = "bleeding"
+				if(5 to 10)
+					bleed_wording = "bleeding a lot"
+				if(10 to INFINITY)
+					bleed_wording = "bleeding profusely"
+			if(bleed_rate >= 5)
+				msg += "<span class='bloody'><B>[m1] [bleed_wording]</B>!</span>"
 			else
+				msg += "<span class='bloody'>[m1] [bleed_wording]!</span>"
+
+	//Fire/water stacks
+	if(fire_stacks > 0)
+		msg += "[m1] covered in something flammable."
+	else if(fire_stacks < 0)
+		msg += "[m1] soaked."
+
+	//Grabbing
+	if(pulledby && pulledby.grab_state)
+		msg += "[m1] being grabbed by [pulledby]."
+	
+	if(stat >= UNCONSCIOUS)
+		msg += "[m1] unconscious."
+
+	if(length(msg))
+		. += "<span class='warning'>[msg.Join("\n")]</span>"
+
+	if((user != src) && isliving(user))
+		var/mob/living/L = user
+		var/final_str = STASTR
+		if(HAS_TRAIT(src, TRAIT_DECEIVING_MEEKNESS))
+			final_str = 10
+		var/strength_diff = final_str - L.STASTR
+		switch(strength_diff)
+			if(5 to INFINITY)
+				. += "<span class='warning'><B>[t_He] look[p_s()] much stronger than I.</B></span>"
+			if(1 to 5)
 				. += "<span class='warning'>[t_He] look[p_s()] stronger than I.</span>"
+			if(0)
+				. += "[t_He] look[p_s()] about as strong as I."
+			if(-5 to -1)
+				. += "<span class='warning'>[t_He] look[p_s()] weaker than I.</span>"
+			if(-INFINITY to -5)
+				. += "<span class='warning'><B>[t_He] look[p_s()] much weaker than I.</B></span>"
 
-	if(food_type && food_type.len)
-		if(food < 50)
-			. += "<span class='warning'>[t_He] look[p_s()] a little hungry.</span>"
-		else if(food <= 0)
-			. += "<span class='warning'>[t_He] look[p_s()] starved.</span>"
-
-	if(Adjacent(user) && HAS_TRAIT(src, TRAIT_SIMPLE_WOUNDS))
-		. += "<a href='?src=[REF(src)];inspect_animal=1'>Inspect Wounds</a>"
+	if(Adjacent(user))
+		if(has_simple_wounds)
+			. += "<a href='?src=[REF(src)];inspect_animal=1'>Inspect Wounds</a>"
+		if(user != src)
+			. += "<a href='?src=[REF(src)];check_hb=1'>Check Heartbeat</a>"
 
 	. += "✠ ------------ ✠</span>"

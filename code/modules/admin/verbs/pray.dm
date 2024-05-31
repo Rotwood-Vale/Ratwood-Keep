@@ -26,7 +26,7 @@
 	var/deity
 	if(ishuman(src))
 		var/mob/living/carbon/human/human_user = src
-		deity = human_user.PATRON.name
+		deity = human_user.patron.name
 	if(usr.job == "Chaplain")
 		cross.icon_state = "kingyellow"
 		font_color = "blue"
@@ -98,15 +98,16 @@
 //	if(!usr.client.holder)
 //		return
 //
-//	msg = copytext(sanitize(msg), 1, MAX_MESSAGE_LEN)
+	msg = copytext(sanitize(msg), 1, MAX_MESSAGE_LEN)
 	if(!msg)
 		return
 	log_prayer("[src.key]/([src.name]): [msg]")
 
-	var/deity = " to Psydon"
-	if(ishuman(src))
-		var/mob/living/carbon/human/human_user = src
-		deity = " to [human_user.PATRON.name]"
+	var/deity = ""
+	if(isliving(src))
+		var/mob/living/living_user = src
+		if(istype(living_user.patron))
+			deity = " to [living_user.patron.name]"
 
 	var/datum/antagonist/maniac/maniac = mind?.has_antag_datum(/datum/antagonist/maniac)
 	if(maniac)
@@ -114,16 +115,15 @@
 			deity = " to THE GODHEAD"
 			INVOKE_ASYNC(maniac, TYPE_PROC_REF(/datum/antagonist/maniac, wake_up))
 		else
-			deity = " to Zizo"
+			var/datum/patron/zizo = GLOB.patronlist[/datum/patron/inhumen/zizo]
+			deity = " to [zizo.name]"
 	
-	var/display_name = "[real_name]"
-	if(!real_name)
-		display_name = "[src.name]"
+	var/display_name = "[real_name || src.name]"
 
 	msg = "<span class='info'>[display_name] prays[deity] [ADMIN_FLW(src)][ADMIN_SM(src)]: [msg]</span>"
 	
-	for(var/client/C in GLOB.admins)
-		if(C.prefs.chat_toggles & CHAT_PRAYER)
-			to_chat(C, msg)
-			if(C.prefs.toggles & SOUND_PRAYERS)
-				SEND_SOUND(C, sound('sound/pray.ogg'))
+	for(var/client/janny in GLOB.admins)
+		if(janny.prefs.chat_toggles & CHAT_PRAYER)
+			to_chat(janny, msg)
+			if(janny.prefs.toggles & SOUND_PRAYERS)
+				SEND_SOUND(janny, sound('sound/pray.ogg'))

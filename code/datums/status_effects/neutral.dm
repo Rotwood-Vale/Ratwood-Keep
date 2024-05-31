@@ -5,9 +5,9 @@
 
 /datum/status_effect/incapacitating/off_balanced
 	id = "off_balanced"
-	alert_type = /obj/screen/alert/status_effect/off_balanced
+	alert_type = /atom/movable/screen/alert/status_effect/off_balanced
 
-/obj/screen/alert/status_effect/off_balanced
+/atom/movable/screen/alert/status_effect/off_balanced
 	name = "Off Balanced"
 	desc = ""
 	icon_state = "off_balanced"
@@ -62,7 +62,7 @@
 	get_kill()
 	. = ..()
 
-/obj/screen/alert/status_effect/in_love
+/atom/movable/screen/alert/status_effect/in_love
 	name = "In Love"
 	desc = ""
 	icon_state = "in_love"
@@ -71,7 +71,7 @@
 	id = "in_love"
 	duration = -1
 	status_type = STATUS_EFFECT_UNIQUE
-	alert_type = /obj/screen/alert/status_effect/in_love
+	alert_type = /atom/movable/screen/alert/status_effect/in_love
 	var/mob/living/date
 
 /datum/status_effect/in_love/on_creation(mob/living/new_owner, mob/living/love_interest)

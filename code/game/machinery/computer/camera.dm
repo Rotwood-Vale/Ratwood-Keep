@@ -124,7 +124,7 @@
 			A.client.eye = A.eyeobj
 		else
 			user.reset_perspective(C)
-			user.overlay_fullscreen("flash", /obj/screen/fullscreen/flash/static)
+			user.overlay_fullscreen("flash", /atom/movable/screen/fullscreen/flash/static)
 			user.clear_fullscreen("flash", 5)
 		watchers[user] = C
 		use_power(50)

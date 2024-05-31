@@ -3,7 +3,7 @@
 	name = "Skeleton"
 	increase_votepwr = FALSE
 
-/datum/antagonist/zombie/examine_friendorfoe(datum/antagonist/examined_datum,mob/examiner,mob/examined)
+/datum/antagonist/skeleton/examine_friendorfoe(datum/antagonist/examined_datum,mob/examiner,mob/examined)
 	if(istype(examined_datum, /datum/antagonist/vampirelord))
 		var/datum/antagonist/vampirelord/V = examined_datum
 		if(!V.disguised)

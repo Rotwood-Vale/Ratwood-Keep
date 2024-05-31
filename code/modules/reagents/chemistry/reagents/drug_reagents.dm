@@ -39,14 +39,14 @@
 	..()
 	M.set_drugginess(30)
 	M.update_body_parts_head_only()
-	M.overlay_fullscreen("weedsm", /obj/screen/fullscreen/weedsm)
+	M.overlay_fullscreen("weedsm", /atom/movable/screen/fullscreen/weedsm)
 
 /*
 	if(M.client)
 		SSdroning.area_entered(get_area(M), M.client)
 */
 
-/obj/screen/fullscreen/weedsm
+/atom/movable/screen/fullscreen/weedsm
 	icon_state = "smok"
 	plane = BLACKNESS_PLANE
 	layer = AREA_LAYER
@@ -54,7 +54,7 @@
 	alpha = 100
 	show_when_dead = FALSE
 
-/obj/screen/fullscreen/weedsm/Initialize()
+/atom/movable/screen/fullscreen/weedsm/Initialize()
 	..()
 //			if(L.has_status_effect(/datum/status_effect/buff/weed))
 	filters += filter(type="angular_blur",x=5,y=5,size=1)

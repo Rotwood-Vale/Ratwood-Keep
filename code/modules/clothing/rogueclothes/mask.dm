@@ -14,6 +14,7 @@
 	integrity_failure = 0.5
 	resistance_flags = FIRE_PROOF
 	body_parts_covered = EYES
+	anvilrepair = /datum/skill/craft/armorsmithing
 //	block2add = FOV_BEHIND
 
 /obj/item/clothing/mask/rogue/spectacles/golden
@@ -25,6 +26,7 @@
 	integrity_failure = 0.5
 	resistance_flags = FIRE_PROOF
 	body_parts_covered = EYES
+	anvilrepair = /datum/skill/craft/armorsmithing
 
 /obj/item/clothing/mask/rogue/spectacles/Initialize()
 	. = ..()
@@ -50,6 +52,7 @@
 	max_integrity = 20
 	integrity_failure = 0.5
 	block2add = FOV_RIGHT
+	sewrepair = TRUE
 
 /obj/item/clothing/mask/rogue/eyepatch/left
 	desc = "An eyepatch, fitted for the left eye."
@@ -61,6 +64,7 @@
 	desc = "Half of your face turned gold."
 	icon_state = "lmask"
 	sellprice = 50
+	anvilrepair = /datum/skill/craft/armorsmithing
 
 /obj/item/clothing/mask/rogue/lordmask/l
 	icon_state = "lmask_l"
@@ -73,7 +77,7 @@
 	break_sound = 'sound/foley/breaksound.ogg'
 	drop_sound = 'sound/foley/dropsound/armor_drop.ogg'
 	resistance_flags = FIRE_PROOF
-	armor = list("melee" = 100, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	armor = list("melee" = 100, "bullet" = 20, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
 	prevent_crits = list(BCLASS_CUT, BCLASS_CHOP, BCLASS_BLUNT)
 	flags_inv = HIDEFACE
 	body_parts_covered = FACE
@@ -109,6 +113,7 @@
 	adjustable = CAN_CADJUST
 	toggle_icon_state = TRUE
 	experimental_onhip = TRUE
+	sewrepair = TRUE
 
 /obj/item/clothing/mask/rogue/shepherd/AdjustClothes(mob/user)
 	if(loc == user)

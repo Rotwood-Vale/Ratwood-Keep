@@ -32,7 +32,7 @@
 //		var/throwdir = get_dir(src, mover)
 		var/mob/living/L = mover
 
-		if(istype(L.PATRON, /datum/patrongods/dendor)) //Dendor kneestinger immunity
+		if(HAS_TRAIT(L, TRAIT_KNEESTINGER_IMMUNITY)) //Dendor kneestinger immunity
 			return TRUE
 
 		if(L.electrocute_act(30, src)) 
@@ -48,7 +48,7 @@
 	if(isliving(AM))
 		var/mob/living/L = AM
 		if(L.z == z)
-			if(!(istype(L.PATRON, /datum/patrongods/dendor)))
+			if(!HAS_TRAIT(L, TRAIT_KNEESTINGER_IMMUNITY))
 				if(L.electrocute_act(30, src))
 					L.emote("painscream")
 					L.consider_ambush()

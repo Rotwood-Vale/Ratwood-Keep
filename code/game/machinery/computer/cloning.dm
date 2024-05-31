@@ -574,8 +574,8 @@
 		dna.delete_species = FALSE
 		R.fields["mrace"] = dna.species
 	else
-		var/datum/species/rando_race = pick(GLOB.roundstart_races)
-		R.fields["mrace"] = rando_race.type
+		var/rando_race = pick(get_selectable_species())
+		R.fields["mrace"] = GLOB.species_list[rando_race]
 
 	R.fields["name"] = mob_occupant.real_name
 	R.fields["id"] = copytext(md5(mob_occupant.real_name), 2, 6)

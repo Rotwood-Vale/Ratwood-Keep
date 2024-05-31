@@ -1,0 +1,42 @@
+"a" = (/turf/open/floor/rogue/greenstone,/area/rogue/under/town/sewer)
+"b" = (/obj/structure/spider/stickyweb,/turf/open/floor/rogue/greenstone,/area/rogue/under/town/sewer)
+"d" = (/obj/machinery/light/rogue/torchholder,/turf/closed/wall/mineral/rogue/stonebrick,/area/rogue/under/town/sewer)
+"g" = (/obj/effect/decal/cleanable/cobweb/cobweb2,/turf/open/floor/rogue/greenstone,/area/rogue/under/town/sewer)
+"h" = (/obj/structure/closet/crate/chest,/obj/effect/spawner/lootdrop/roguetown/sewers,/turf/open/floor/rogue/greenstone,/area/rogue/under/town/sewer)
+"l" = (/obj/structure/glowshroom,/turf/open/water/sewer,/area/rogue/under/town/sewer)
+"p" = (/turf/closed/mineral/rogue,/area/rogue/under/town/sewer)
+"q" = (/obj/structure/closet/crate/chest,/obj/effect/spawner/lootdrop/roguetown/sewers,/obj/effect/decal/cleanable/cobweb,/turf/open/floor/rogue/greenstone,/area/rogue/under/town/sewer)
+"t" = (/obj/structure/glowshroom,/obj/structure/glowshroom,/turf/open/floor/rogue/greenstone,/area/rogue/under/town/sewer)
+"v" = (/obj/structure/spider/stickyweb,/turf/open/water/sewer,/area/rogue/under/town/sewer)
+"C" = (/obj/effect/decal/cleanable/blood,/obj/effect/decal/cleanable/blood/tracks,/obj/effect/decal/cleanable/blood/tracks,/turf/closed/mineral/rogue,/area/rogue/under/town/sewer)
+"H" = (/obj/structure/glowshroom,/turf/open/floor/rogue/greenstone,/area/rogue/under/town/sewer)
+"I" = (/turf/open/water/sewer,/area/rogue/under/town/sewer)
+"K" = (/obj/effect/decal/cleanable/blood/tracks,/turf/closed/mineral/rogue,/area/rogue/under/town/sewer)
+"N" = (/turf/closed/wall/mineral/rogue/stonebrick,/area/rogue/under/town/sewer)
+"R" = (/mob/living/simple_animal/hostile/retaliate/rogue/bigrat,/obj/effect/decal/cleanable/cobweb,/turf/open/floor/rogue/greenstone,/area/rogue/under/town/sewer)
+"S" = (/obj/effect/decal/cleanable/blood/tracks,/turf/closed/wall/mineral/rogue/stonebrick,/area/rogue/under/town/sewer)
+"V" = (/mob/living/simple_animal/hostile/retaliate/rogue/bigrat,/turf/open/floor/rogue/greenstone,/area/rogue/under/town/sewer)
+"W" = (/mob/living/carbon/human/species/skeleton/npc,/turf/open/floor/rogue/greenstone,/area/rogue/under/town/sewer)
+
+(1,1,1) = {"
+ppppppppppppCppppppppppppd
+ppppppppppppKppppppppppppN
+pppNNNNNNNNNSNNNNNNNNNNNNN
+pppNRabaaaaaaaaHaaabaaaaVa
+pppNaIvIIIIIIIlIIIvvIIIIII
+pppNaIbaaaaaaaaaIaaaaaaaHa
+pppNaIaNNNNNNNNNINNNNNNNNN
+pppNaIaNpppppppNINpppppppN
+pppNaIaNppppNNNNINNNNppppN
+pppNaIHNppppNqhaIaagNppppN
+pppNaItNNNNNNaaHIbaaNNNNNN
+pppNaIIIIIIIIIIllvvIIIIIII
+pppNaIaNNNNNNaaaIaaVNNNNNN
+pppNaIaNppppNaWaIaaaNppppN
+pppNavbNppppNNNNINNNNppppN
+pppNaIbNpppppppNINpppppppN
+pppNaIaNpppppppNINpppppppN
+pppNaIaNpppppppNINpppppppN
+pppNVlHNpppppppNINpppppppN
+NNNNaIaNNNNNNNNNINNNNNNNNN
+"}

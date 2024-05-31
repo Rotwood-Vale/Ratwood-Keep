@@ -6,35 +6,57 @@
 
 /obj/item/rogueore/gold
 	name = "raw gold"
-	icon_state = "oregold"
+	icon_state = "oregold1"
 	smeltresult = /obj/item/ingot/gold
 	sellprice = 10
 
+/obj/item/rogueore/gold/Initialize()
+	icon_state = "oregold[rand(1,3)]"
+	..()
+
+
 /obj/item/rogueore/silver
 	name = "raw silver"
-	icon_state = "oresilv"
+	icon_state = "oresilv1"
 	smeltresult = /obj/item/ingot/silver
 	sellprice = 8
 
+/obj/item/rogueore/silver/Initialize()
+	icon_state = "oresilv[rand(1,3)]"
+	..()
+
+
 /obj/item/rogueore/iron
 	name = "raw iron"
-	icon_state = "oreiron"
+	icon_state = "oreiron1"
 	smeltresult = /obj/item/ingot/iron
 	sellprice = 5
 
+/obj/item/rogueore/iron/Initialize()
+	icon_state = "oreiron[rand(1,3)]"
+	..()
+
+
 /obj/item/rogueore/copper
 	name = "raw copper"
-	icon_state = "orecop"
+	icon_state = "orecop1"
 	smeltresult = /obj/item/ingot/copper
 	sellprice = 3
 
+/obj/item/rogueore/copper/Initialize()
+	icon_state = "orecop[rand(1,3)]"
+	..()
 
 /obj/item/rogueore/coal
 	name = "coal"
-	icon_state = "orecoal"
+	icon_state = "orecoal1"
 	firefuel = 60 MINUTES
 	smeltresult = /obj/item/rogueore/coal
 	sellprice = 1
+
+/obj/item/rogueore/coal/Initialize()
+	icon_state = "orecoal[rand(1,3)]"
+	..()
 
 /obj/item/ingot
 	name = "ingot"

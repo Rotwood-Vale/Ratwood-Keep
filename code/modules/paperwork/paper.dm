@@ -151,7 +151,7 @@
 	if(mailer)
 		return
 	if(in_range(user, src) || isobserver(user))
-//		var/obj/screen/read/R = user.hud_used.reads
+//		var/atom/movable/screen/read/R = user.hud_used.reads
 		format_browse(info, user)
 	else
 		return "<span class='warning'>I'm too far away to read it.</span>"

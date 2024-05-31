@@ -426,6 +426,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	name = "roach"
 	desc = ""
 	icon_state = "roach"
+	muteinmouth = FALSE
 
 /obj/item/cigbutt/roach/Initialize()
 	. = ..()

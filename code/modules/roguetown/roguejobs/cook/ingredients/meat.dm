@@ -6,7 +6,7 @@
 	icon_state = "meatslab"
 	slice_batch = FALSE
 	filling_color = "#8f433a"
-	rotprocess = 15 MINUTES
+	rotprocess = 20 MINUTES
 
 /obj/item/reagent_containers/food/snacks/rogue/meat/steak
 	ingredient_size = 2

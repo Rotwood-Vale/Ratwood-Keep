@@ -7,7 +7,8 @@
 		/obj/item/bodypart = 2,
 		/obj/item/organ/stomach = 1,
 	)
-	verbage = "carpents"
+	verbage_simple = "construct"
+	verbage = "constructs"
 	craftsound = 'sound/foley/Building-01.ogg'
 	skillcraft = null
 	always_availible = FALSE

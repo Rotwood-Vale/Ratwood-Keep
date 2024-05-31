@@ -611,7 +611,7 @@
 	closeSound = 'sound/foley/doors/shut.ogg'
 	sheetType = null
 	resistance_flags = FLAMMABLE
-	max_integrity = 1000
+	max_integrity = 500
 	damage_deflection = 12
 	layer = ABOVE_MOB_LAYER
 	opacity = FALSE
@@ -636,12 +636,12 @@
 	over_state = "fancy_woodopen"
 
 /obj/structure/mineral_door/wood/deadbolt
-	desc = ""
+	desc = "This door comes with a deadbolt."
 	icon_state = "wooddir"
 	base_state = "wood"
 	var/lockdir
 	keylock = FALSE
-	max_integrity = 500
+	max_integrity = 1000
 	over_state = "woodopen"
 	kickthresh = 10
 	openSound = 'sound/foley/doors/shittyopen.ogg'

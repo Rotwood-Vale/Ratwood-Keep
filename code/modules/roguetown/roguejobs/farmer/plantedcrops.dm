@@ -265,7 +265,7 @@
 		return
 	..()
 
-/obj/machinery/crop/attack_hand(mob/user)
+/obj/machinery/crop/attack_hand(mob/living/user, params)
 	if(!isliving(user) || !user.mind)
 		return
 	var/mob/living/current_farmer = user
@@ -290,6 +290,18 @@
 		update_seed_icon()
 		return
 	if(growth >= 100)
+		var/obj/item/offhand = user.get_inactive_held_item()//ghetto farming code starts here
+		var/success_chance = 10
+		if(offhand)
+			var/foundcut = FALSE
+			for(var/X in offhand.possible_item_intents)
+				var/datum/intent/D = new X
+				if(D.blade_class == BCLASS_CUT)
+					foundcut = TRUE
+					break
+			if(foundcut)
+				success_chance += 40
+				harvtime /= 2 //ghetto farming code ends here
 		for(var/i in 1 to myseed.yield)
 			if(plant_hp <= 0)
 				return
@@ -297,7 +309,6 @@
 				break
 			myseed.yield -= 1
 			playsound(src,"plantcross", 100, FALSE)
-			var/success_chance = 10
 			if(farmer_mind.get_skill_level(/datum/skill/labor/farming))
 				success_chance = 100
 			if(prob(success_chance))
@@ -319,13 +330,22 @@
 				plant_hp = 0
 			update_seed_icon()
 
-/obj/machinery/crop/attack_right(mob/user)
+/obj/machinery/crop/attack_right(mob/living/user, params)
 	if(!isliving(user) || !user.mind)
 		return
 	var/mob/living/current_farmer = user
 	var/datum/mind/farmer_mind = current_farmer.mind
 	var/exp_gained = 0
 	var/deweed_time = max((50 - farmer_mind.get_skill_level(/datum/skill/labor/farming) * 5), 1)
+	var/obj/item/offhand = user.get_inactive_held_item()//ghetto farming code starts here
+	if(offhand)
+		var/foundscoop = FALSE
+		for(var/X in offhand.possible_item_intents)
+			if(X == /datum/intent/shovelscoop)
+				foundscoop = TRUE
+				break
+		if(foundscoop)
+			deweed_time /= 2 //ghetto farming code ends here
 
 	if(weeds <= 0 || !do_after(user, deweed_time, target = src))
 		return
