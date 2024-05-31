@@ -3,8 +3,8 @@
 	flag = JESTER
 	department_flag = PEASANTS
 	faction = "Station"
-	total_positions = 1
-	spawn_positions = 1
+	total_positions = 0 
+	spawn_positions = 0 // Disabled until he gets his own place on the map
 
 	allowed_sexes = list("male")
 	allowed_races = list(
@@ -15,8 +15,8 @@
 		"Tiefling",
 		"Dark Elf",
 		"Aasimar",
-		"Lizardfolk",
-		"Tabaxi"
+		"Argonian",
+		"Tabaxi",
 	)
 
 	tutorial = "The Nightmaster is technically a noble. Owner of the Whitevein Lounge, a decaying bathhouse converted into a den of low-lifes. A troublemaking rake that the others hate to tolerate."
