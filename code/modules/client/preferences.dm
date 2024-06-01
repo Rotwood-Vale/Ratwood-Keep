@@ -82,17 +82,11 @@ GLOBAL_LIST_EMPTY(chosen_names)
 	var/voice_color = "a0a0a0"
 	var/detail_color = "000"
 	var/datum/species/pref_species = new /datum/species/human/northern()	//Mutant race
-<<<<<<< HEAD
-	var/datum/patrongods/selected_patron
-	var/list/features = MANDATORY_FEATURE_LIST
-	var/list/randomise = list(RANDOM_UNDERWEAR = TRUE, RANDOM_UNDERWEAR_COLOR = TRUE, RANDOM_UNDERSHIRT = TRUE, RANDOM_SOCKS = TRUE, RANDOM_BACKPACK = TRUE, RANDOM_JUMPSUIT_STYLE = FALSE, RANDOM_SKIN_TONE = TRUE, RANDOM_EYE_COLOR = TRUE)
-=======
 	var/static/datum/species/default_species = new /datum/species/human/northern()
 	var/datum/patron/selected_patron
 	var/static/datum/patron/default_patron = /datum/patron/divine/astrata
-	var/list/features = list("mcolor" = "FFF", "ethcolor" = "9c3030", "tail_lizard" = "Smooth", "tail_human" = "None", "snout" = "Round", "horns" = "None", "ears" = "None", "wings" = "None", "frills" = "None", "spines" = "None", "body_markings" = "None", "legs" = "Normal Legs", "moth_wings" = "Plain", "moth_markings" = "None")
-	var/list/randomise = list(RANDOM_UNDERWEAR = TRUE, RANDOM_UNDERWEAR_COLOR = TRUE, RANDOM_UNDERSHIRT = TRUE, RANDOM_SOCKS = TRUE, RANDOM_BACKPACK = TRUE, RANDOM_JUMPSUIT_STYLE = FALSE, RANDOM_HAIRSTYLE = TRUE, RANDOM_HAIR_COLOR = TRUE, RANDOM_FACIAL_HAIRSTYLE = TRUE, RANDOM_FACIAL_HAIR_COLOR = TRUE, RANDOM_SKIN_TONE = TRUE, RANDOM_EYE_COLOR = TRUE)
->>>>>>> origin/main
+	var/list/features = MANDATORY_FEATURE_LIST
+	var/list/randomise = list(RANDOM_UNDERWEAR = TRUE, RANDOM_UNDERWEAR_COLOR = TRUE, RANDOM_UNDERSHIRT = TRUE, RANDOM_SOCKS = TRUE, RANDOM_BACKPACK = TRUE, RANDOM_JUMPSUIT_STYLE = FALSE, RANDOM_SKIN_TONE = TRUE, RANDOM_EYE_COLOR = TRUE)
 	var/list/friendlyGenders = list("Male" = "male", "Female" = "female")
 	var/phobia = "spiders"
 
@@ -370,7 +364,7 @@ GLOBAL_LIST_EMPTY(chosen_names)
 
 			dat += "<br><b>Features:</b> <a href='?_src_=prefs;preference=customizers;task=menu'>Change</a>"
 			dat += "<br><b>Markings:</b> <a href='?_src_=prefs;preference=markings;task=menu'>Change</a>"
-			
+
 			dat += "<br><b>Headshot:</b> <a href='?_src_=prefs;preference=headshot;task=input'>Change</a>"
 			if(headshot_link != null)
 				dat += "<br><img src='[headshot_link]' width='100px' height='100px'>"
@@ -694,7 +688,7 @@ GLOBAL_LIST_EMPTY(chosen_names)
 		HTML += "<center><a href='?_src_=prefs;preference=job;task=close'>Done</a></center><br>" // Easier to press up here.
 		if(joblessrole != RETURNTOLOBBY && joblessrole != BERANDOMJOB) // this is to catch those that used the previous definition and reset.
 			joblessrole = RETURNTOLOBBY
-		HTML += "<b>If Role Unavailable:</b><font color='purple'><a href='?_src_=prefs;preference=job;task=nojob'>[joblessrole]</a></font><BR>"		
+		HTML += "<b>If Role Unavailable:</b><font color='purple'><a href='?_src_=prefs;preference=job;task=nojob'>[joblessrole]</a></font><BR>"
 		HTML += "<script type='text/javascript'>function setJobPrefRedirect(level, rank) { window.location.href='?_src_=prefs;preference=job;task=setJobLevel;level=' + level + ';text=' + encodeURIComponent(rank); return false; }</script>"
 		HTML += "<table width='100%' cellpadding='1' cellspacing='0'><tr><td width='20%'>" // Table within a table for alignment, also allows you to easily add more colomns.
 		HTML += "<table width='100%' cellpadding='1' cellspacing='0'>"
@@ -757,11 +751,7 @@ GLOBAL_LIST_EMPTY(chosen_names)
 			if(length(job.allowed_ages) && !(user.client.prefs.age in job.allowed_ages))
 				HTML += "<font color=#a36c63>[used_name]</font></td> <td> </td></tr>"
 				continue
-<<<<<<< HEAD
 			if(!(user.client.prefs.pref_species.type in job.allowed_races))
-=======
-			if(length(job.allowed_races) && !(user.client.prefs.pref_species.name in job.allowed_races))
->>>>>>> origin/main
 				HTML += "<font color=#a36c63>[used_name]</font></td> <td> </td></tr>"
 				continue
 			if(length(job.allowed_patrons) && !(user.client.prefs.selected_patron.type in job.allowed_patrons))
@@ -1497,29 +1487,10 @@ Slots: [job.spawn_positions]</span>
 					var/result = input(user, "Select a race", "Roguetown") as null|anything in crap
 
 					if(result)
-<<<<<<< HEAD
 						set_new_race(result, user)
 
 				if("update_mutant_colors")
 					update_mutant_colors = !update_mutant_colors
-
-=======
-						//var/newtype = GLOB.species_list[result]
-						pref_species = result
-						//Now that we changed our species, we must verify that the mutant colour is still allowed.
-						/*
-						var/temp_hsv = RGBtoHSV(features["mcolor"])
-						if(features["mcolor"] == "#000" || (!(MUTCOLORS_PARTSONLY in pref_species.species_traits) && ReadHSV(temp_hsv)[3] < ReadHSV("#7F7F7F")[3]))
-							features["mcolor"] = skintone2hex(skin_tone) */
-						real_name = pref_species.random_name(gender,1)
-						ResetJobs()
-						if(pref_species.desc)
-							to_chat(user, "[pref_species.desc]")
-						to_chat(user, "<font color='red'>Classes reset.</font>")
-						random_character(gender)
-						accessory = "Nothing"
-						if(age == AGE_YOUNG)
-							age = AGE_ADULT
 
 				if("charflaw")
 					var/list/coom = GLOB.character_flaws.Copy()
@@ -1537,7 +1508,6 @@ Slots: [job.spawn_positions]</span>
 
 
 /*
->>>>>>> origin/main
 				if("mutant_color")
 					var/new_mutantcolor = input(user, "Choose your character's alien/mutant #1 color:", "Character Preference","#"+features["mcolor"]) as color|null
 					if(new_mutantcolor)
@@ -1568,7 +1538,7 @@ Slots: [job.spawn_positions]</span>
 					new_legs = input(user, "Choose your character's legs:", "Character Preference") as null|anything in GLOB.legs_list
 					if(new_legs)
 						features["legs"] = new_legs
-
+*/
 				if("s_tone")
 					var/listy = pref_species.get_skin_list()
 					var/new_s_tone = input(user, "Choose your character's skin tone:", "Sun")  as null|anything in listy
@@ -1698,7 +1668,7 @@ Slots: [job.spawn_positions]</span>
 					else
 						winset(user, null, "input.focus=true command=activeInput input.background-color=[COLOR_INPUT_DISABLED]  input.text-color = #ad9eb4")
 
-/*				if("keybindings_capture")
+				if("keybindings_capture")
 					var/datum/keybinding/kb = GLOB.keybindings_by_name[href_list["keybinding"]]
 					var/old_key = href_list["old_key"]
 					CaptureKeybinding(user, kb, old_key)
@@ -1761,7 +1731,7 @@ Slots: [job.spawn_positions]</span>
 						return
 					hotkeys = (choice == "Do It")
 					key_bindings = (hotkeys) ? deepCopyList(GLOB.hotkey_keybinding_list_by_key) : deepCopyList(GLOB.classic_keybinding_list_by_key)
-					user.client.update_movement_keys()*/
+					user.client.update_movement_keys()
 				if("chat_on_map")
 					chat_on_map = !chat_on_map
 				if("see_chat_non_mob")
@@ -1878,7 +1848,7 @@ Slots: [job.spawn_positions]</span>
 				if("widescreenpref")
 					widescreenpref = !widescreenpref
 					user.client.change_view(CONFIG_GET(string/default_view))
-				
+
 				if("schizo_voice")
 					toggles ^= SCHIZO_VOICE
 					if(toggles & SCHIZO_VOICE)
@@ -1946,14 +1916,9 @@ Slots: [job.spawn_positions]</span>
 
 	var/datum/species/chosen_species
 	chosen_species = pref_species.type
-<<<<<<< HEAD
 	if(!(pref_species.name in GLOB.roundstart_races))
 		set_new_race(new /datum/species/human/northern)
-=======
-	if(!(pref_species.name in get_selectable_species()))
-		chosen_species = default_species.type
-		pref_species = new default_species.type()
->>>>>>> origin/main
+
 		random_character(gender)
 	if(parent)
 		if(pref_species.patreon_req > parent.patreonlevel())
@@ -2009,19 +1974,6 @@ Slots: [job.spawn_positions]</span>
 	character.jumpsuit_style = jumpsuit_style
 
 	if(charflaw)
-<<<<<<< HEAD
-=======
-		var/obj/item/bodypart/O = character.get_bodypart(BODY_ZONE_R_ARM)
-		if(O)
-			O.drop_limb()
-			qdel(O)
-		O = character.get_bodypart(BODY_ZONE_L_ARM)
-		if(O)
-			O.drop_limb()
-			qdel(O)
-		character.regenerate_limb(BODY_ZONE_R_ARM)
-		character.regenerate_limb(BODY_ZONE_L_ARM)
->>>>>>> origin/main
 		if(istype(charflaw, /datum/charflaw/badsight))
 			charflaw = new /datum/charflaw/randflaw()
 		character.charflaw = new charflaw.type()
@@ -2041,7 +1993,6 @@ Slots: [job.spawn_positions]</span>
 		character.update_body()
 		character.update_hair()
 		character.update_body_parts(redraw = TRUE)
-		character.update_mutant_bodyparts()
 
 /datum/preferences/proc/get_default_name(name_id)
 	switch(name_id)

@@ -33,6 +33,11 @@
 	var/lighting_alpha
 	var/no_glasses
 	var/damaged	= FALSE	//damaged indicates that our eyes are undergoing some level of negative effect
+
+	var/left_poked = FALSE
+	var/right_poked = FALSE
+
+
 	var/eye_color = "#FFFFFF"
 	var/heterochromia = FALSE
 	var/second_color = "#FFFFFF"
@@ -52,9 +57,6 @@
 	eyes_dna.eye_color = eye_color
 	eyes_dna.heterochromia = heterochromia
 	eyes_dna.second_color = second_color
-
-	var/left_poked = FALSE
-	var/right_poked = FALSE
 
 /obj/item/organ/eyes/Insert(mob/living/carbon/M, special = FALSE, drop_if_replaced = FALSE, initialising)
 	. = ..()

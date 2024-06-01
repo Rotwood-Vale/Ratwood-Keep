@@ -11,13 +11,13 @@
 	traits_applied = list(TRAIT_MEDIUMARMOR, TRAIT_DODGEEXPERT)
 
 /datum/outfit/job/roguetown/adventurer/bard/pre_equip(mob/living/carbon/human/H)
-	..() // The entertaining jack of all trades, uniquely handy with crossbows and swords. They're incredibly well travelled, can sneak, steal and survive on their own. 
+	..() // The entertaining jack of all trades, uniquely handy with crossbows and swords. They're incredibly well travelled, can sneak, steal and survive on their own.
 	H.adjust_blindness(-3)
 	var/classes = list("Bard","Skald",)
 	var/classchoice = input("Choose your archetypes", "Available archetypes") as anything in classes
 
 	switch(classchoice)
-	
+
 		if("Bard")
 			H.set_blindness(0)
 			to_chat(H, "<span class='warning'>Bards make their fortunes in brothels, flop houses and taverns -- gaining fame for their songs and legends. If there is any truth to them, that is.</span>")
@@ -104,7 +104,7 @@
 			backr = /obj/item/rogue/instrument/lute
 		else if(isdwarf(H))
 			backr = /obj/item/rogue/instrument/accord
-		else if(istiefling(H) || isargonian(H))
+		else if(istiefling(H) /*|| isargonian(H)*/)
 			backr = /obj/item/rogue/instrument/guitar
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_EMPATH, TRAIT_GENERIC)
