@@ -327,8 +327,11 @@ GLOBAL_VAR(restart_counter)
 	else
 		new_status += "<br>GAME STATUS: <b>PLAYING</b><br>"
 
-	var/round_time = world.time - SSticker.round_start_time
-	new_status += "Round Time: <b>[round_time > MIDNIGHT_ROLLOVER ? "[round(round_time/MIDNIGHT_ROLLOVER)]:[gameTimestamp(format = "hh:mm")]" : gameTimestamp(format = "hh:mm")]<br>"
+	if (SSticker.round_start_time)
+		var/round_time = world.time - SSticker.round_start_time
+		new_status += "Round Time: <b>[round_time > MIDNIGHT_ROLLOVER ? "[round(round_time/MIDNIGHT_ROLLOVER)]:[gameTimestamp(format = "hh:mm")]" : gameTimestamp(format = "hh:mm")]<br>"
+	else
+		new_status += "Round Time: <b>NEW ROUND STARTING</b>"
 	new_status += "Player[players == 1 ? "": "s"]: <b>[players]</b>"
 	new_status += "</a>"
 
