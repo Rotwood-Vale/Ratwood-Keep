@@ -7,7 +7,7 @@
 	total_positions = 1
 	spawn_positions = 1
 
-	allowed_races = list(/datum/species/human/northern)
+	allowed_races = NOBLE_RACES_TYPES
 	allowed_sexes = list(MALE)
 	allowed_ages = list(AGE_MIDDLEAGED, AGE_OLD)
 	tutorial = "Your lineage is noble, and generations of strong, loyal knights have come before you. You served your time gracefully as a knight of his royal majesty, and now you've grown into a role which many men dream to become. Lead your men to victory and keep them in line and you will see this kingdom prosper under a thousand suns."

@@ -32,6 +32,9 @@
 		ORGAN_SLOT_STOMACH = /obj/item/organ/stomach,
 		ORGAN_SLOT_APPENDIX = /obj/item/organ/appendix,
 		)
+	languages = list(
+		/datum/language/beast,
+	)
 
 /datum/species/werewolf/send_voice(mob/living/carbon/human/H)
 	playsound(get_turf(H), pick('sound/vo/mobs/wwolf/wolftalk1.ogg','sound/vo/mobs/wwolf/wolftalk2.ogg'), 100, TRUE, -1)
@@ -49,8 +52,6 @@
 /datum/species/werewolf/on_species_gain(mob/living/carbon/C, datum/species/old_species)
 	. = ..()
 	RegisterSignal(C, COMSIG_MOB_SAY, PROC_REF(handle_speech))
-	C.remove_all_languages()
-	C.grant_language(/datum/language/beast)
 
 /datum/species/werewolf/update_damage_overlays(mob/living/carbon/human/H)
 	H.remove_overlay(DAMAGE_LAYER)

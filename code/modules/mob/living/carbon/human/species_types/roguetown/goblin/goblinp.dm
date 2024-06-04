@@ -47,11 +47,13 @@
 	OFFSET_NECK_F = list(0,-5), OFFSET_MOUTH_F = list(0,-3), \
 	OFFSET_ARMOR_F = list(0,0), OFFSET_UNDIES = list(0,0), OFFSET_UNDIES_F = list(0,0))
 	specstats = list("strength" = -3, "perception" = 2, "intelligence" = -4, "constitution" = -3, "endurance" = 3, "speed" = 4, "fortune" = -1)
+	languages = list(
+		/datum/language/orcish
+	)
 
 
 /datum/species/goblinp/on_species_gain(mob/living/carbon/C, datum/species/old_species)
 	..()
 	RegisterSignal(C, COMSIG_MOB_SAY, PROC_REF(handle_speech))
-	C.grant_language(/datum/language/orcish)
 
 	C.cmode_music = 'sound/music/combat_gronn.ogg'

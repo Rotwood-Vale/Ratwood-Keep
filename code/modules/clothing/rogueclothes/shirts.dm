@@ -13,6 +13,7 @@
 	bloody_icon_state = "bodyblood"
 	boobed = TRUE
 	sewrepair = TRUE
+	flags_inv = HIDEBOOB
 
 /obj/item/clothing/suit/roguetown/shirt/undershirt
 	name = "shirt"

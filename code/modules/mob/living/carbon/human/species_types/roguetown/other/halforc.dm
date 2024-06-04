@@ -45,11 +45,14 @@
 	specstats = list("strength" = 1, "perception" = -2, "intelligence" = -2, "constitution" = 2, "endurance" = 1, "speed" = 0, "fortune" = 0)
 	specstats_f = list("strength" = 1, "perception" = -1, "intelligence" = -2, "constitution" = 1, "endurance" = 2, "speed" = 0, "fortune" = -1)
 	enflamed_icon = "widefire"
+	languages = list(
+		/datum/language/common,
+		/datum/language/orcish
+	)
 
 /datum/species/halforc/on_species_gain(mob/living/carbon/C, datum/species/old_species)
 	..()
 	RegisterSignal(C, COMSIG_MOB_SAY, PROC_REF(handle_speech))
-	C.grant_language(/datum/language/common)
 
 	var/mob/living/carbon/human/species/halforc/H = C
 	if(H.age == AGE_YOUNG)
@@ -77,13 +80,11 @@
 
 /datum/species/halforc/after_creation(mob/living/carbon/C)
 	..()
-	C.grant_language(/datum/language/orcish)
 	to_chat(C, "<span class='info'>I can speak Orcish with ,o before my speech.</span>")
 
 /datum/species/halforc/on_species_loss(mob/living/carbon/C)
 	. = ..()
 	UnregisterSignal(C, COMSIG_MOB_SAY)
-	C.remove_language(/datum/language/orcish)
 
 /datum/species/halforc/qualifies_for_rank(rank, list/features)
 	return TRUE

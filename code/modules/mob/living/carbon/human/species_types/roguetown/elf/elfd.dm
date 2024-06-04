@@ -124,15 +124,7 @@
 		H.facial_hairstyle = "None"
 		H.update_hair()
 		H.update_body()
-/*
-/datum/species/elf/dark/on_species_gain(mob/living/carbon/C, datum/species/old_species)
-	. = ..()
-	C.remove_language(/datum/language/common)
 
-/datum/species/elf/dark/on_species_loss(mob/living/carbon/C)
-	. = ..()
-	C.grant_language(/datum/language/common)
-*/
 
 /datum/species/elf/dark/get_skin_list()
 	return list(

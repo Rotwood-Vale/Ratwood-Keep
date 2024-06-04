@@ -16,12 +16,14 @@
 		ORGAN_SLOT_STOMACH = /obj/item/organ/stomach,
 		ORGAN_SLOT_APPENDIX = /obj/item/organ/appendix,
 		)
+	languages = list(
+		/datum/language/common,
+		/datum/language/elvish
+	)
 
 /datum/species/elf/on_species_gain(mob/living/carbon/C, datum/species/old_species)
 	..()
 	RegisterSignal(C, COMSIG_MOB_SAY, PROC_REF(handle_speech))
-	C.grant_language(/datum/language/common)
-	C.grant_language(/datum/language/elvish)
 
 	var/mob/living/carbon/human/species/elf/H = C
 	if(H.age == AGE_YOUNG)
@@ -49,14 +51,11 @@
 
 /datum/species/elf/after_creation(mob/living/carbon/C)
 	..()
-//	if(!C.has_language(/datum/language/elvish))
-	C.grant_language(/datum/language/elvish)
 	to_chat(C, "<span class='info'>I can speak Elfish with ,e before my speech.</span>")
 
 /datum/species/elf/on_species_loss(mob/living/carbon/C)
 	. = ..()
 	UnregisterSignal(C, COMSIG_MOB_SAY)
-	C.remove_language(/datum/language/elvish)
 
 /datum/species/elf/qualifies_for_rank(rank, list/features)
 	return TRUE

@@ -87,6 +87,10 @@
 		/datum/body_marking/tiger,
 		/datum/body_marking/tiger/dark,
 	)
+	languages = list(
+		/datum/language/common,
+		/datum/language/draconic
+	)
 
 /datum/species/lizardfolk/check_roundstart_eligible()
 	return TRUE
@@ -97,8 +101,6 @@
 /datum/species/lizardfolk/on_species_gain(mob/living/carbon/C, datum/species/old_species)
 	..()
 	RegisterSignal(C, COMSIG_MOB_SAY, PROC_REF(handle_speech))
-	C.grant_language(/datum/language/common)
-	C.grant_language(/datum/language/draconic)
 
 /datum/species/lizardfolk/qualifies_for_rank(rank, list/features)
 	return TRUE

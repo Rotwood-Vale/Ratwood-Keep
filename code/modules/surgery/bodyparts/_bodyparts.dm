@@ -814,8 +814,6 @@
 	px_x = -2
 	px_y = 12
 	max_stamina_damage = 50
-	aux_zone = "l_leg_above"
-	aux_layer = LEG_PART_LAYER
 	subtargets = list(BODY_ZONE_PRECISE_L_FOOT)
 	grabtargets = list(BODY_ZONE_PRECISE_L_FOOT, BODY_ZONE_L_LEG)
 	dismember_wound = /datum/wound/dismemberment/l_leg
@@ -873,8 +871,6 @@
 	px_x = 2
 	px_y = 12
 	max_stamina_damage = 50
-	aux_zone = "r_leg_above"
-	aux_layer = LEG_PART_LAYER
 	subtargets = list(BODY_ZONE_PRECISE_R_FOOT)
 	grabtargets = list(BODY_ZONE_PRECISE_R_FOOT, BODY_ZONE_R_LEG)
 	dismember_wound = /datum/wound/dismemberment/r_leg

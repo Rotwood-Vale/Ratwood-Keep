@@ -60,11 +60,14 @@
 		)
 	body_markings = list(
 	)
+	languages = list(
+		/datum/language/common,
+		/datum/language/celestial
+	)
 
 /datum/species/aasimar/on_species_gain(mob/living/carbon/C, datum/species/old_species)
 	..()
 	RegisterSignal(C, COMSIG_MOB_SAY, PROC_REF(handle_speech))
-	C.grant_language(/datum/language/common)
 
 	var/mob/living/carbon/human/species/aasimar/H = C
 	if(H.age == AGE_YOUNG)
@@ -92,13 +95,11 @@
 
 /datum/species/aasimar/after_creation(mob/living/carbon/C)
 	..()
-	C.grant_language(/datum/language/celestial)
 	to_chat(C, "<span class='info'>I can speak Celestial with ,c before my speech.</span>")
 
 /datum/species/aasimar/on_species_loss(mob/living/carbon/C)
 	. = ..()
 	UnregisterSignal(C, COMSIG_MOB_SAY)
-	C.remove_language(/datum/language/celestial)
 
 /datum/species/aasimar/handle_speech(datum/source, mob/speech_args)
 	. = ..()

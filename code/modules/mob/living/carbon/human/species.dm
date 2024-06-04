@@ -133,6 +133,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 	var/list/body_marking_sets
 	/// List all of body markings that the player can choose from in customization. Body markings from sets get added to here
 	var/list/body_markings
+	var/list/languages = list(/datum/language/common)
 
 ///////////
 // PROCS //
@@ -440,6 +441,9 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 		C.add_bodypart_feature(feature)
 	if(pref_load)
 		pref_load.apply_customizers_to_character(C)
+	
+	for(var/language_type in languages)
+		C.grant_language(language_type)
 
 	SEND_SIGNAL(C, COMSIG_SPECIES_GAIN, src, old_species)
 
@@ -471,6 +475,9 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 			ToggleFlight(C)
 
 	C.remove_movespeed_modifier(MOVESPEED_ID_SPECIES)
+
+	for(var/language_type in languages)
+		C.remove_language(language_type)
 
 	SEND_SIGNAL(C, COMSIG_SPECIES_LOSS, src)
 

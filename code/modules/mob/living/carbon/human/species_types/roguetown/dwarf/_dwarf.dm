@@ -5,12 +5,14 @@
 	name = "Dwarfb"
 	id = "dwarf"
 	max_age = 200
+	languages = list(
+		/datum/language/common,
+		/datum/language/dwarvish
+	)
 
 /datum/species/dwarf/on_species_gain(mob/living/carbon/C, datum/species/old_species)
 	..()
 	RegisterSignal(C, COMSIG_MOB_SAY, PROC_REF(handle_speech))
-	C.grant_language(/datum/language/common)
-	C.grant_language(/datum/language/dwarvish)
 
 	var/mob/living/carbon/human/species/dwarf/H = C
 	if(H.age == AGE_YOUNG)
@@ -34,14 +36,11 @@
 
 /datum/species/dwarf/after_creation(mob/living/carbon/C)
 	..()
-//	if(!C.has_language(/datum/language/dwarvish))
-	C.grant_language(/datum/language/dwarvish)
 	to_chat(C, "<span class='info'>I can speak Dwarfish with ,d before my speech.</span>")
 
 /datum/species/dwarf/on_species_loss(mob/living/carbon/C)
 	. = ..()
 	UnregisterSignal(C, COMSIG_MOB_SAY)
-	C.remove_language(/datum/language/dwarvish)
 
 /datum/species/dwarf/qualifies_for_rank(rank, list/features)
 	return TRUE
