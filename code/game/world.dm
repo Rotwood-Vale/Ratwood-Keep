@@ -323,18 +323,17 @@ GLOBAL_VAR(restart_counter)
 	var/players = GLOB.clients.len
 
 	if(SSticker.current_state <= GAME_STATE_PREGAME)
-		new_status += "<br><b>GAME STATUS:</b> IN LOBBY - "
+		new_status += "<br>GAME STATUS: <b>IN LOBBY</b><br>"
 	else
-		new_status += "<br><b>GAME STATUS:</b> PLAYING - "
-	
-	features += "[players] player[players == 1 ? "": "s"]"
+		new_status += "<br>GAME STATUS: <b>PLAYING</b><br>"
+
+	var/round_time = world.time - SSticker.round_start_time
+	new_status += "Round Time: <b>[round_time > MIDNIGHT_ROLLOVER ? "[round(round_time/MIDNIGHT_ROLLOVER)]:[gameTimestamp(format = "hh:mm")]" : gameTimestamp(format = "hh:mm")]<br>"
+	new_status += "Player[players == 1 ? "": "s"]: <b>[players]</b>"
+	new_status += "</a>"
 
 	if (!host && hostedby)
 		features += "hosted by <b>[hostedby]</b>"
-
-	if(length(features))
-		new_status += "\[[jointext(features, ", ")]"
-		new_status += "</a>"
 
 	status = new_status
 /*
