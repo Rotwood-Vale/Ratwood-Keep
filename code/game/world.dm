@@ -316,10 +316,15 @@ GLOBAL_VAR(restart_counter)
 	new_status += "<a href=\"[CONFIG_GET(string/discordurl)]\">"
 	new_status += "Discord"
 	new_status += ")\]"
-	new_status += "<br>[CONFIG_GET(string/servertagline)]<br>"
+	new_status += "<br>[CONFIG_GET(string/servertagline)]"
 
 	var/players = GLOB.clients.len
 
+	if(SSticker.current_state <= GAME_STATE_PREGAME)
+		new_status += "<br><b>GAME STATUS:</b> IN LOBBY"
+	else
+		new_status += "<br><b>GAME STATUS:</b> PLAYING<br>"
+	
 	features += "~[players] player[players == 1 ? "": "s"]"
 
 	if (!host && hostedby)
