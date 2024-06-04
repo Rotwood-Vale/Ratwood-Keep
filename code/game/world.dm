@@ -90,6 +90,8 @@ GLOBAL_VAR(restart_counter)
 	if(TEST_RUN_PARAMETER in params)
 		HandleTestRun()
 
+	update_status()
+
 
 /world/proc/HandleTestRun()
 	//trigger things to run the whole process
@@ -321,11 +323,11 @@ GLOBAL_VAR(restart_counter)
 	var/players = GLOB.clients.len
 
 	if(SSticker.current_state <= GAME_STATE_PREGAME)
-		new_status += "<br><b>GAME STATUS:</b> IN LOBBY"
+		new_status += "<br><b>GAME STATUS:</b> IN LOBBY - "
 	else
-		new_status += "<br><b>GAME STATUS:</b> PLAYING<br>"
+		new_status += "<br><b>GAME STATUS:</b> PLAYING - "
 	
-	features += "~[players] player[players == 1 ? "": "s"]"
+	features += "[players] player[players == 1 ? "": "s"]"
 
 	if (!host && hostedby)
 		features += "hosted by <b>[hostedby]</b>"
