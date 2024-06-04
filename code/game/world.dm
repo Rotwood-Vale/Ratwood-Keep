@@ -334,6 +334,7 @@ GLOBAL_VAR(restart_counter)
 
 	if(length(features))
 		new_status += "\[[jointext(features, ", ")]"
+		new_status += "</a>"
 
 	status = new_status
 /*
