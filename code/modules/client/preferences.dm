@@ -1507,7 +1507,7 @@ Slots: [job.spawn_positions]</span>
 							to_chat(user, "<span class='info'>[charflaw.desc]</span>")
 
 
-/*
+
 				if("mutant_color")
 					var/new_mutantcolor = input(user, "Choose your character's alien/mutant #1 color:", "Character Preference","#"+features["mcolor"]) as color|null
 					if(new_mutantcolor)
@@ -1527,7 +1527,7 @@ Slots: [job.spawn_positions]</span>
 						features["mcolor3"] = sanitize_hexcolor(new_mutantcolor)
 						try_update_mutant_colors()
 
-
+/*
 				if("color_ethereal")
 					var/new_etherealcolor = input(user, "Choose your ethereal color", "Character Preference") as null|anything in GLOB.color_list_ethereal
 					if(new_etherealcolor)
