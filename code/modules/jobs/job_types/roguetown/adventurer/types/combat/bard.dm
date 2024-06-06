@@ -106,6 +106,8 @@
 			backr = /obj/item/rogue/instrument/accord
 		else if(istiefling(H) /*|| isargonian(H)*/)
 			backr = /obj/item/rogue/instrument/guitar
+		else
+			backr = /obj/item/rogue/instrument/lute
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_EMPATH, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
