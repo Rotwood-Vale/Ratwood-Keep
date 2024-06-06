@@ -205,8 +205,8 @@
 #define DEFAULT_TESTICLES_SIZE 2
 
 #define MIN_BREASTS_SIZE 0
-#define MAX_BREASTS_SIZE 10
-#define DEFAULT_BREASTS_SIZE 4
+#define MAX_BREASTS_SIZE 5
+#define DEFAULT_BREASTS_SIZE 3
 
 
 /mob/living/carbon/human/proc/get_hair_color()
