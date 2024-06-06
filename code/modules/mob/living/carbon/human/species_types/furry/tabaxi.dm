@@ -67,6 +67,7 @@
 		/datum/customizer/bodypart_feature/hair/facial/humanoid,
 		/datum/customizer/bodypart_feature/accessory,
 		/datum/customizer/bodypart_feature/face_detail,
+		/datum/customizer/organ/snout/tabaxi,
 		/datum/customizer/organ/testicles/external,
 		/datum/customizer/organ/penis/knotted,
 		/datum/customizer/organ/breasts/animal,
