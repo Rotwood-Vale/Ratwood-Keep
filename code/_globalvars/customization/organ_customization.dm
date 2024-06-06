@@ -39,6 +39,8 @@ GLOBAL_LIST_INIT(customizers, build_customizers())
 
 /proc/color_pick_sanitized_lumi(mob/user, description, title, default_value, min_lumi = 0.1, max_lumi = 1.0)
 	var/color = input(user, description, title, default_value) as color|null
+	return color
+	/*
 	if(!color)
 		return
 	color = sanitize_hexcolor(color)
@@ -46,3 +48,4 @@ GLOBAL_LIST_INIT(customizers, build_customizers())
 	hsl[3] = clamp(hsl[3], min_lumi, max_lumi)
 	var/list/RGB = hsl2rgb(arglist(hsl))
 	return "[num2hex(RGB[1],2)][num2hex(RGB[2],2)][num2hex(RGB[3],2)]"
+	*/
