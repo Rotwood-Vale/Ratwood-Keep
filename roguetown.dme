@@ -3413,4 +3413,8 @@
 #include "modular\code\controllers\subsystem\processing\sex.dm"
 #include "modular\code\datums\character_flaw.dm"
 #include "modular\code\modules\living\carbon\stress.dm"
+#include "modular\code\modules\maturity-prompt\code\client.dm"
+#include "modular\code\modules\maturity-prompt\code\config_entries.dm"
+#include "modular\code\modules\maturity-prompt\code\maturity_prompt.dm"
+#include "modular\code\modules\maturity-prompt\code\maturity_subsystem.dm"
 // END_INCLUDE
