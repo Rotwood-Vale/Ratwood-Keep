@@ -90,6 +90,8 @@ GLOBAL_VAR(restart_counter)
 	if(TEST_RUN_PARAMETER in params)
 		HandleTestRun()
 
+	update_status()
+
 
 /world/proc/HandleTestRun()
 	//trigger things to run the whole process
@@ -302,27 +304,41 @@ GLOBAL_VAR(restart_counter)
 	..()
 
 /world/proc/update_status()
-	var/s = ""
-	s += "<center><a href=\"https://discord.gg/bx9c7ha5Qk\">"
-#ifdef MATURESERVER
-	s += "<big><b>BLACKSTONE</b></big></a><br>"
-	s += "<b>Fantasy Computer Roleplaying Game</b></center><br>"
-#else
-	s += "<big><b>BLACKSTONE</b></big></a><br>"
-	s += "<b>Fantasy Computer Survival Game</b></center><br>"
-#endif
-//	s += "<img src=\"https://i.imgur.com/shj547T.jpg\"></a></center>"
+	var/list/features = list()
 
-//	s += "! <b>UPDATE 4.4</b> 4/22/2022<br><br>"
-#ifdef MATURESERVER
-	s += "\["
+	var/new_status = ""
+	var/hostedby
+	if(config)
+		var/server_name = CONFIG_GET(string/servername)
+		if (server_name)
+			new_status += "<b>[server_name]</b> &#8212; "
+		hostedby = CONFIG_GET(string/hostedby)
+
+	new_status += " ("
+	new_status += "<a href=\"[CONFIG_GET(string/discordurl)]\">"
+	new_status += "Discord"
+	new_status += ")\]"
+	new_status += "<br>[CONFIG_GET(string/servertagline)]"
+
+	var/players = GLOB.clients.len
+
 	if(SSticker.current_state <= GAME_STATE_PREGAME)
-		s += "<b>GAME STATUS:</b> IN LOBBY"
+		new_status += "<br>GAME STATUS: <b>IN LOBBY</b><br>"
 	else
-		s += "<b>GAME STATUS:</b> PLAYING"
-#endif
-	status = s
-	return s
+		new_status += "<br>GAME STATUS: <b>PLAYING</b><br>"
+
+	if (SSticker.HasRoundStarted())
+		var/round_time = world.time - SSticker.round_start_time
+		new_status += "Round Time: <b>[round_time > MIDNIGHT_ROLLOVER ? "[round(round_time/MIDNIGHT_ROLLOVER)]:[gameTimestamp(format = "hh:mm")]" : gameTimestamp(format = "hh:mm")]<br>"
+	else
+		new_status += "Round Time: <b>NEW ROUND STARTING</b>"
+	new_status += "Player[players == 1 ? "": "s"]: <b>[players]</b>"
+	new_status += "</a>"
+
+	if (!host && hostedby)
+		features += "hosted by <b>[hostedby]</b>"
+
+	status = new_status
 /*
 /world/proc/update_status()
 
