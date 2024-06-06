@@ -14,7 +14,7 @@
 	tail_type = "Cat"
 
 /obj/item/organ/tail/lizard
-	name = "lizard tail"
+	name = "sissean tail"
 	desc = ""
 	color = "#116611"
 	tail_type = "Smooth"

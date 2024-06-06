@@ -133,7 +133,7 @@
 
 
 /obj/item/organ/eyes/night_vision/argonian
-	name = "lizard eyes"
+	name = "sissean eyes"
 	desc = ""
 
 /obj/item/organ/eyes/night_vision/alien
@@ -444,7 +444,7 @@
 
 
 /obj/item/organ/eyes/moth
-	name = "moth eyes"
+	name = "fluvian eyes"
 	desc = ""
 	flash_protect = FLASH_PROTECTION_SENSITIVE
 	accessory_type = /datum/sprite_accessory/eyes/moth

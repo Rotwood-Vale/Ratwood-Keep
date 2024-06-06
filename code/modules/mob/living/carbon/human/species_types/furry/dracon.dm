@@ -2,7 +2,7 @@
 	race = /datum/species/dracon
 
 /datum/species/dracon
-	name = "Dracon"
+	name = "Drakian"
 	id = "dracon"
 	desc = "In time you will learn the history of this race"
 	species_traits = list(EYECOLOR,LIPS,STUBBLE,MUTCOLORS)

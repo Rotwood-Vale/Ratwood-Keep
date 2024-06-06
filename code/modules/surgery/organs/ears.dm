@@ -141,10 +141,10 @@
 	damage += 40/severity
 
 /obj/item/organ/ears/anthro
-	name = "anthro ears"
+	name = "wild-kin ears"
 
 /obj/item/organ/ears/vulpkanin
-	name = "vulpkanin ears"
+	name = "vulpkian ears"
 	accessory_type = /datum/sprite_accessory/ears/fox
 
 /obj/item/organ/ears/tajaran
@@ -163,5 +163,5 @@
 	accessory_type = /datum/sprite_accessory/ears/elfw
 
 /obj/item/organ/ears/akula
-	name = "akula ears"
+	name = "axian ears"
 	accessory_type = /datum/sprite_accessory/ears/sergal

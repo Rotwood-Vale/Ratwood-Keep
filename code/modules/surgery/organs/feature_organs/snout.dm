@@ -13,13 +13,13 @@
 	name = "large beak"
 
 /obj/item/organ/snout/anthro
-	name = "anthro snout"
+	name = "wild-kin snout"
 
 /obj/item/organ/snout/lizard
-	name = "lizard snout"
+	name = "sissean snout"
 
 /obj/item/organ/snout/vulpkanin
-	name = "vulpkanin snout"
+	name = "vulpkian snout"
 
 /obj/item/organ/snout/tajaran
 	name = "tajaran snout"
@@ -32,5 +32,5 @@
 	name = "synthetic snout"
 
 /obj/item/organ/snout/akula
-	name = "akula snout"
+	name = "axian snout"
 	accessory_type = /datum/sprite_accessory/snout/sergal

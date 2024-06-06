@@ -7,7 +7,7 @@
 	slot = ORGAN_SLOT_ANTENNAS
 
 /obj/item/organ/antennas/moth
-	name = "moth antennas"
+	name = "fluvian antennas"
 
 /obj/item/organ/antennas/ipc
 	name = "I.P.C. antennas"

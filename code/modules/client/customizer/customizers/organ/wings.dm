@@ -45,7 +45,7 @@
 	customizer_choices = list(/datum/customizer_choice/organ/wings/moth)
 
 /datum/customizer_choice/organ/wings/moth
-	name = "Moth Wings"
+	name = "Fluvian Wings"
 	organ_type = /obj/item/organ/wings/moth
 	sprite_accessories = list(
 		/datum/sprite_accessory/wings/moth/plain,

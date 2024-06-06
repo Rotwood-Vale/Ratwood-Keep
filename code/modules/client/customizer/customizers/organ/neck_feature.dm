@@ -12,7 +12,7 @@
 	customizer_choices = list(/datum/customizer_choice/organ/neck_feature/moth_fluff)
 
 /datum/customizer_choice/organ/neck_feature/moth_fluff
-	name = "Moth Fluff"
+	name = "Fluvian Fluff"
 	organ_type = /obj/item/organ/neck_feature/moth_fluff
 	sprite_accessories = list(
 		/datum/sprite_accessory/neck_feature/moth_fluff/plain,
@@ -37,7 +37,7 @@
 		)
 
 /datum/customizer/organ/neck_feature/anthro
-	name = "Anthro Fluff"
+	name = "Wild-Kin Fluff"
 	allows_disabling = TRUE
 	default_disabled = TRUE
 	customizer_choices = list(
@@ -45,7 +45,7 @@
 		)
 
 /datum/customizer_choice/organ/neck_feature/anthro_fluff
-	name = "Anthro Fluff"
+	name = "Wild-Kin Fluff"
 	organ_type = /obj/item/organ/neck_feature/anthro_fluff
 	sprite_accessories = list(
 		/datum/sprite_accessory/neck_feature/mammal_fluff/fluff,

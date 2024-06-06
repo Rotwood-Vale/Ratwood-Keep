@@ -12,7 +12,7 @@
 	customizer_choices = list(/datum/customizer_choice/organ/ears/vulpkanin)
 
 /datum/customizer_choice/organ/ears/vulpkanin
-	name = "Vulpkanin Ears"
+	name = "Vulpkian Ears"
 	organ_type = /obj/item/organ/ears/vulpkanin
 	sprite_accessories = list(/datum/sprite_accessory/ears/fox)
 
@@ -40,7 +40,7 @@
 	allows_disabling = TRUE
 
 /datum/customizer_choice/organ/ears/demihuman
-	name = "Demihuman Ears"
+	name = "Half-Kinhuman Ears"
 	organ_type = /obj/item/organ/ears
 	generic_random_pick = TRUE
 	sprite_accessories = list(
@@ -58,7 +58,7 @@
 	default_disabled = TRUE
 
 /datum/customizer_choice/organ/ears/anthro
-	name = "Anthro Ears"
+	name = "Wild-Kin Ears"
 	organ_type = /obj/item/organ/ears/anthro
 	generic_random_pick = TRUE
 	sprite_accessories = list(

@@ -30,7 +30,7 @@
 	customizer_choices = list(/datum/customizer_choice/organ/snout/vulpkanin)
 
 /datum/customizer_choice/organ/snout/vulpkanin
-	name = "Vulpkanin Snout"
+	name = "Vulpkian Snout"
 	organ_type = /obj/item/organ/snout/vulpkanin
 	sprite_accessories = list(
 		/datum/sprite_accessory/snout/lcanid,
@@ -85,7 +85,7 @@
 	customizer_choices = list(/datum/customizer_choice/organ/snout/anthro)
 
 /datum/customizer_choice/organ/snout/anthro
-	name = "Anthro Snout"
+	name = "Wild-Kin Snout"
 	organ_type = /obj/item/organ/snout/anthro
 	sprite_accessories = list(
 		/datum/sprite_accessory/snout/bird,

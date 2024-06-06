@@ -12,7 +12,7 @@
 	customizer_choices = list(/datum/customizer_choice/organ/tail/vulpkanin)
 
 /datum/customizer_choice/organ/tail/vulpkanin
-	name = "Vulpkanin Tail"
+	name = "Vulpkian Tail"
 	organ_type = /obj/item/organ/tail/vulpkanin
 	sprite_accessories = list(/datum/sprite_accessory/tail/fox)
 
@@ -28,7 +28,7 @@
 	customizer_choices = list(/datum/customizer_choice/organ/tail/lizard)
 
 /datum/customizer_choice/organ/tail/lizard
-	name = "Lizard Tail"
+	name = "Sissean Tail"
 	organ_type = /obj/item/organ/tail/lizard
 	generic_random_pick = TRUE
 	sprite_accessories = list(
@@ -43,7 +43,7 @@
 	allows_disabling = TRUE
 
 /datum/customizer_choice/organ/tail/demihuman
-	name = "Demihuman Tail"
+	name = "Half-Kinhuman Tail"
 	organ_type = /obj/item/organ/tail
 	generic_random_pick = TRUE
 	sprite_accessories = list(
@@ -104,7 +104,7 @@
 	default_disabled = TRUE
 
 /datum/customizer_choice/organ/tail/anthro
-	name = "Anthro Tail"
+	name = "Wild-Kin Tail"
 	organ_type = /obj/item/organ/tail/anthro
 	sprite_accessories = list(
 		/datum/sprite_accessory/tail/cat,

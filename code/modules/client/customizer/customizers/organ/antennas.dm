@@ -12,7 +12,7 @@
 	customizer_choices = list(/datum/customizer_choice/organ/antennas/moth)
 
 /datum/customizer_choice/organ/antennas/moth
-	name = "Moth Antennas"
+	name = "Fluvian Antennas"
 	organ_type = /obj/item/organ/antennas/moth
 	sprite_accessories = list(
 		/datum/sprite_accessory/antenna/moth/plain,

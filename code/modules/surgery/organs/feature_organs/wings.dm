@@ -18,12 +18,12 @@
 //TODO: Well you know what this flight stuff is a bit complicated and hardcoded, this is enough for now
 
 /obj/item/organ/wings/moth
-	name = "moth wings"
+	name = "fluvian wings"
 	desc = "A pair of fuzzy moth wings."
 	flight_for_species = list("moth")
 
 /obj/item/organ/wings/anthro
-	name = "anthro wings"
+	name = "wild-kin wings"
 
 /obj/item/organ/wings/flight
 	unconditional_flight = TRUE
@@ -42,5 +42,5 @@
 	desc = "A pair of horrifyingly large, fuzzy wings. They look strong enough to lift you up in the air."
 
 /obj/item/organ/wings/dracon
-	name = "dracon wings"
+	name = "drakian wings"
 	accessory_type = /datum/sprite_accessory/wings/huge/dragon
