@@ -45,6 +45,17 @@
 	specstats = list("strength" = 1, "perception" = -2, "intelligence" = -2, "constitution" = 2, "endurance" = 1, "speed" = 0, "fortune" = 0)
 	specstats_f = list("strength" = 1, "perception" = -1, "intelligence" = -2, "constitution" = 1, "endurance" = 2, "speed" = 0, "fortune" = -1)
 	enflamed_icon = "widefire"
+	customizers = list(
+		/datum/customizer/organ/eyes/humanoid,
+		/datum/customizer/bodypart_feature/hair/head/humanoid,
+		/datum/customizer/bodypart_feature/hair/facial/humanoid,
+		/datum/customizer/bodypart_feature/accessory,
+		/datum/customizer/bodypart_feature/face_detail,
+		/datum/customizer/organ/testicles/human,
+		/datum/customizer/organ/penis/human,
+		/datum/customizer/organ/breasts/human,
+		/datum/customizer/organ/vagina/human,
+		)
 	languages = list(
 		/datum/language/common,
 		/datum/language/orcish

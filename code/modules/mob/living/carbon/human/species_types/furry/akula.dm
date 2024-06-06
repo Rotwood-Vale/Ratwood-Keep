@@ -2,8 +2,9 @@
 	race = /datum/species/akula
 
 /datum/species/akula
-	name = "Akula"
+	name = "Axian"
 	id = "akula"
+	desc = "In time you will learn the history of this race"
 	species_traits = list(EYECOLOR,LIPS,STUBBLE,MUTCOLORS)
 	inherent_traits = list(TRAIT_NOMOBSWAP)
 	possible_ages = list(AGE_ADULT, AGE_MIDDLEAGED, AGE_OLD)

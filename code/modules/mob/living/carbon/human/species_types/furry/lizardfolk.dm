@@ -2,7 +2,7 @@
 	race = /datum/species/lizardfolk
 
 /datum/species/lizardfolk
-	name = "Lizardfolk"
+	name = "Sissean"
 	id = "lizardfolk"
 	desc = "<b>Lizardfolk</b><br>\
 	Lizardfolk are semi-aquatic reptilian humanoids.\

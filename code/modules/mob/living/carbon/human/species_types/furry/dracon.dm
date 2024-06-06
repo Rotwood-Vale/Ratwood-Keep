@@ -4,6 +4,7 @@
 /datum/species/dracon
 	name = "Dracon"
 	id = "dracon"
+	desc = "In time you will learn the history of this race"
 	species_traits = list(EYECOLOR,LIPS,STUBBLE,MUTCOLORS)
 	inherent_traits = list(TRAIT_NOMOBSWAP)
 	possible_ages = list(AGE_ADULT, AGE_MIDDLEAGED, AGE_OLD)

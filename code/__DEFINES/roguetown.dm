@@ -15,6 +15,7 @@
 	/datum/species/dracon,\
 	/datum/species/anthromorph,\
 	/datum/species/demihuman,\
+	/datum/species/halforc,\
 )
 
 #define NOBLE_RACES_TYPES list(\

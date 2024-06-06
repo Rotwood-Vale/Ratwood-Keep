@@ -2,11 +2,10 @@
 	race = /datum/species/demihuman
 
 /datum/species/demihuman
-	name = "Demihuman"
+	name = "Half-Kin"
 	id = "demihuman"
-
+	desc = "In time you will learn the history of this race"
 	skin_tone_wording = "Ancestry"
-
 	default_color = "FFFFFF"
 	species_traits = list(EYECOLOR,HAIR,FACEHAIR,LIPS,STUBBLE,OLDGREY,MUTCOLORS_PARTSONLY)
 	inherent_traits = list(TRAIT_NOMOBSWAP)

@@ -2,9 +2,9 @@
 	race = /datum/species/anthromorph
 
 /datum/species/anthromorph
-	name = "Anthromorph" 
+	name = "Wild-Kin" 
 	id = "anthromorph"
-	desc = "A fully-furred bipedal fox. Most enjoy meats, and fried foods, but will eat just about anything."
+	desc = "In time you will learn the history of this race"
 	default_color = "444"
 	species_traits = list(
 		MUTCOLORS,
