@@ -563,7 +563,7 @@
 	alternate_worn_layer = TABARD_LAYER
 	body_parts_covered = CHEST|GROIN
 	boobed = TRUE
-	allowed_race = ALL_RACES_TYPES
+	allowed_race = CLOTHED_RACES_TYPES
 
 /obj/item/clothing/cloak/apron/blacksmith
 	name = "leather apron"
@@ -756,12 +756,12 @@
 
 /obj/item/clothing/cloak/cape/puritan
 	icon_state = "puritan_cape"
-	allowed_race = ALL_RACES_TYPES
+	allowed_race = CLOTHED_RACES_TYPES
 
 /obj/item/clothing/cloak/cape/archivist
 	icon_state = "puritan_cape"
 	color = CLOTHING_BLACK
-	allowed_race = ALL_RACES_TYPES
+	allowed_race = CLOTHED_RACES_TYPES
 
 /obj/item/clothing/cloak/cape/rogue
 	name = "cape"

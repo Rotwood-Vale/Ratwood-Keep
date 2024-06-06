@@ -85,7 +85,7 @@
 /obj/item/clothing/suit/roguetown/shirt/undershirt/puritan
 	name = "formal silks"
 	icon_state = "puritan_shirt"
-	allowed_race = ALL_RACES_TYPES
+	allowed_race = CLOTHED_RACES_TYPES
 
 /obj/item/clothing/suit/roguetown/shirt/undershirt/sailor
 	icon_state = "sailorblues"
@@ -390,7 +390,7 @@
 	color = null
 	icon_state = "nun"
 	item_state = "nun"
-	allowed_race = ALL_RACES_TYPES
+	allowed_race = CLOTHED_RACES_TYPES
 	allowed_sex = list(FEMALE)
 
 /obj/item/clothing/suit/roguetown/shirt/robe/wizard

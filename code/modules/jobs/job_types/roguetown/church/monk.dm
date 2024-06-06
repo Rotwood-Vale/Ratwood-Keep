@@ -6,7 +6,7 @@
 	total_positions = 3
 	spawn_positions = 3
 
-	allowed_races = ALL_RACES_TYPES
+	allowed_races = CLOTHED_RACES_TYPES
 	allowed_patrons = ALL_ACOLYTE_PATRONS
 	allowed_sexes = list(MALE, FEMALE)
 	outfit = /datum/outfit/job/roguetown/monk

@@ -6,7 +6,7 @@
 	total_positions = 0
 	spawn_positions = 1
 
-	allowed_races = ALL_RACES_TYPES
+	allowed_races = CLOTHED_RACES_TYPES
 	allowed_ages = YOUNG_AGES_LIST
 
 	tutorial = "Your master once saw potential in you, something you are uncertain if they still do with your recent studies. The path to using magic is something treacherous and untamed, and you are still decades away from calling yourself even a journeyman in the field. Listen and serve, and someday you will earn your hat."

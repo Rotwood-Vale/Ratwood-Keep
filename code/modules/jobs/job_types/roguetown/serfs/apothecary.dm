@@ -6,7 +6,7 @@
 	total_positions = 0
 	spawn_positions = 0
 
-	allowed_races = ALL_RACES_TYPES
+	allowed_races = CLOTHED_RACES_TYPES
 	
 	outfit = /datum/outfit/job/roguetown/apothecary
 	outfit_female = /datum/outfit/job/roguetown/apothecary/female

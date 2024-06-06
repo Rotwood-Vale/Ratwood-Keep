@@ -6,7 +6,7 @@
 	total_positions = 4
 	spawn_positions = 4
 
-	allowed_races = ALL_RACES_TYPES
+	allowed_races = CLOTHED_RACES_TYPES
 	allowed_ages = YOUNG_AGES_LIST
 
 	tutorial = "Granted a comfortable life in the Lord's manor as one of his servants! You will appreciate it more and more every day as you clean the floors and are beaten for nothing."

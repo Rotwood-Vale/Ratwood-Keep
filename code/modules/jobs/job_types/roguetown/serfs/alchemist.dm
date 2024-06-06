@@ -6,7 +6,7 @@
 	total_positions = 0
 	spawn_positions = 0
 
-	allowed_races = ALL_RACES_TYPES
+	allowed_races = CLOTHED_RACES_TYPES
 
 	tutorial = "You came to rockhill either to seek knowledge or riches."
 

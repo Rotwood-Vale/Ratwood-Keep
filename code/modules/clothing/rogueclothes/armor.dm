@@ -76,7 +76,7 @@
 	icon_state = "chainkini"
 	item_state = "chainkini"
 	allowed_sex = list(FEMALE)
-	allowed_race = ALL_RACES_TYPES
+	allowed_race = CLOTHED_RACES_TYPES
 	body_parts_covered = CHEST|GROIN
 	anvilrepair = /datum/skill/craft/armorsmithing
 	armor_class = ARMOR_CLASS_LIGHT
@@ -114,7 +114,7 @@
 	icon_state = "cuirass"
 	item_state = "cuirass"
 	armor = list("melee" = 100, "bullet" = 100, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
-	allowed_race = ALL_RACES_TYPES
+	allowed_race = CLOTHED_RACES_TYPES
 	nodismemsleeves = TRUE
 	do_sound = FALSE
 	blocking_behavior = null
@@ -439,7 +439,7 @@
 	sellprice = 50
 	armor_class = ARMOR_CLASS_LIGHT
 	allowed_sex = list(FEMALE)
-	allowed_race = ALL_RACES_TYPES
+	allowed_race = CLOTHED_RACES_TYPES
 	
 /obj/item/clothing/suit/roguetown/armor/silkcoat/Initialize()
 	. = ..()

@@ -6,7 +6,7 @@
 	total_positions = 0
 	spawn_positions = 0
 
-	allowed_races = ALL_RACES_TYPES
+	allowed_races = CLOTHED_RACES_TYPES
 
 	tutorial = "Grabber is the lowest position in the Merchant's Guild, reserved for the strong, loyal newcomers. They can be like family to the merchant in these foreign lands."
 

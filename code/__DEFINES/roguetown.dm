@@ -36,6 +36,25 @@
 	/datum/species/demihuman,\
 )
 
+#define CLOTHED_RACES_TYPES list(\
+	/datum/species/human/northern,\
+	/datum/species/human/halfelf,\
+	/datum/species/elf/dark,\
+	/datum/species/elf/wood,\
+	/datum/species/dwarf/mountain,\
+	/datum/species/tieberian,\
+	/datum/species/aasimar,\
+	/datum/species/lizardfolk,\
+	/datum/species/tabaxi,\
+	/datum/species/vulpkanin,\
+	/datum/species/akula,\
+	/datum/species/moth,\
+	/datum/species/dracon,\
+	/datum/species/anthromorph,\
+	/datum/species/demihuman,\
+	/datum/species/halforc,\
+)
+
 #define NON_DWARVEN_RACE_TYPES list(\
 	/datum/species/human/northern,\
 	/datum/species/human/halfelf,\

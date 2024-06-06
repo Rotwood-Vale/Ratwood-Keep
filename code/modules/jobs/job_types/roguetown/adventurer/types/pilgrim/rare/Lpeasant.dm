@@ -4,7 +4,7 @@
 	You, a simple peasent, through sheer determination have conquered nature \
 	and made it bow before your green thumb."
 	allowed_sexes = list("male", "female")
-	allowed_races = ALL_RACES_TYPES
+	allowed_races = CLOTHED_RACES_TYPES
 	outfit = /datum/outfit/job/roguetown/adventurer/farmermaster
 	isvillager = FALSE
 	ispilgrim = TRUE

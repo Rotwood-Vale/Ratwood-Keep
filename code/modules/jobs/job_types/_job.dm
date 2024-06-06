@@ -67,7 +67,7 @@
 
 	//allowed sex/race for picking
 	var/list/allowed_sexes = list(MALE, FEMALE)
-	var/list/allowed_races = ALL_RACES_TYPES
+	var/list/allowed_races = CLOTHED_RACES_TYPES
 	var/list/allowed_patrons
 	var/list/allowed_ages = ADULT_AGES_LIST
 
