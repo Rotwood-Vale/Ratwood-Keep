@@ -1509,20 +1509,20 @@ Slots: [job.spawn_positions]</span>
 
 
 				if("mutant_color")
-					var/new_mutantcolor = input(user, "Choose your character's alien/mutant #1 color:", "Character Preference","#"+features["mcolor"]) as color|null
+					var/new_mutantcolor = color_pick_sanitized_lumi(user, "Choose your character's mutant #1 color:", "Character Preference","#"+features["mcolor"])
 					if(new_mutantcolor)
 
 						features["mcolor"] = sanitize_hexcolor(new_mutantcolor)
 						try_update_mutant_colors()
 
 				if("mutant_color2")
-					var/new_mutantcolor = input(user, "Choose your character's alien/mutant #2 color:", "Character Preference","#"+features["mcolor2"]) as color|null
+					var/new_mutantcolor = color_pick_sanitized_lumi(user, "Choose your character's mutant #2 color:", "Character Preference","#"+features["mcolor"])
 					if(new_mutantcolor)
 						features["mcolor2"] = sanitize_hexcolor(new_mutantcolor)
 						try_update_mutant_colors()
 
 				if("mutant_color3")
-					var/new_mutantcolor = input(user, "Choose your character's alien/mutant #3 color:", "Character Preference","#"+features["mcolor3"]) as color|null
+					var/new_mutantcolor = color_pick_sanitized_lumi(user, "Choose your character's mutant #3 color:", "Character Preference","#"+features["mcolor"])
 					if(new_mutantcolor)
 						features["mcolor3"] = sanitize_hexcolor(new_mutantcolor)
 						try_update_mutant_colors()
