@@ -56,9 +56,9 @@ SUBSYSTEM_DEF(maturity_guard)
 		user.client.maturity_prompt_whitelist = TRUE
 		return TRUE
 	if(href_list["age_prompt"])
-		var/year = href_list["year"]
-		var/month = href_list["month"]
-		var/day = href_list["day"]
+		var/year = text2num(href_list["year"])
+		var/month = text2num(href_list["month"])
+		var/day = text2num(href_list["day"])
 		var/check_result = validate_dob(year, month, day)
 		switch(check_result)
 			if(AGE_CHECK_INVALID)
