@@ -71,16 +71,16 @@ SUBSYSTEM_DEF(maturity_guard)
 			if(AGE_CHECK_PASSED)
 				add_age_to_db(user, year, month)
 				user.client.maturity_prompt_whitelist = TRUE
-				winset(user.client, "ageprompt", "is-visible=false")
+				user.client.CloseMaturityPrompt()
 				return TRUE
 	else
 		if(!(user.ckey in prompt_cache))
 			prompt_cache |= user_ckey
 			user.client.OpenMaturityPrompt()
 		else
+			to_chat_immediate(user, "<span class='warning'>Please enter your date of birth.</span>")
 			user.client.OpenMaturityPrompt()
 		return FALSE
-
 
 	// var/datum/maturity_prompt/prompt = new(user, 60 SECONDS, GLOB.always_state)
 	// prompt.ui_interact(user)
@@ -154,10 +154,10 @@ SUBSYSTEM_DEF(maturity_guard)
 // https://github.com/SPLURT-Station/S.P.L.U.R.T-Station-13/blob/6e6bce87726b7a5ac7ebf23bec7b020a004c6e60/code/modules/mob/dead/new_player/new_player.dm
 /datum/controller/subsystem/maturity_guard/proc/validate_dob(player_year, player_month, player_day, simple_check = FALSE)
 	//Rudimentary sanity check
-	if(!player_year || !player_month)
+	if(!isnum(player_year) || !isnum(player_month))
 		return AGE_CHECK_INVALID
 	
-	if(!player_day && !simple_check)
+	if(!simple_check && !isnum(player_day))
 		return AGE_CHECK_INVALID
 
 	if(player_year >= current_year || player_year <= 1900 || player_month < 1 || player_month > 12)

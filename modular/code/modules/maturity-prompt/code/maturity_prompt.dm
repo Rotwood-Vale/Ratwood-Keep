@@ -46,7 +46,7 @@
 			<br>
 		</p>
 		<form method='get' action='?src=[REF(src)]'>
-			<input type="hidden" name="ageprompt" value="ageprompt">
+			<input type="hidden" name="age_prompt" value="age_prompt">
 			<div class="input-row">
 				<label for="year">Year</label>
 				<input type="number" id="year" name="year" min="1900" max="2100" required>
@@ -70,4 +70,4 @@
 	popup.open(FALSE) // 0 is passed to open so that it doesn't use the onclose() proc
 
 /client/proc/CloseMaturityPrompt()
-	src << browse("", "window=ageprompt")
+	src << browse(null, "window=ageprompt")
