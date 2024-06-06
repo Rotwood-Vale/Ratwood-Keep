@@ -16,12 +16,6 @@ GLOBAL_LIST_INIT(named_breast_sizes, list(
 	"B - Small" = 2,
 	"C - Normal" = 3,
 	"D - Large" = 4,
-	"D - Enormous" = 5,
-	"DD - Enormous" = 6,
-	"F - Enormous" = 7,
-	"FF - Enormous" = 8,
-	"G - Enormous" = 9,
-	"H - Enormous" = 10,
 ))
 
 GLOBAL_LIST_INIT(customizer_choices, build_customizer_choices())
