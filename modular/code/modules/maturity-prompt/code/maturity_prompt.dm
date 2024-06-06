@@ -38,7 +38,7 @@
 	dat += "<body>"
 	dat += {"
 		<p>
-			This is a mature community with a minimum age requirement. Please submit your date of birth.
+			This server features mature themes including violence, complex moral dilemmas, and adult situations. By accepting and playing this game, you acknowledge this and consent to any and all IC consequences that comes your character's way, and you will play in good faith to produce good stories for others. Please read the rules on Discord.
 			<br>
 			We only retain the year and month, the day is discarded after the initial check.
 			<br>
@@ -65,7 +65,7 @@
 		</form>
 	"}
 	dat += "</body></html>"
-	var/datum/browser/popup = new(src, "ageprompt", "Enter your date of birth", 570, 260)
+	var/datum/browser/popup = new(src, "ageprompt", "Enter your date of birth", 680, 310)
 	popup.set_content(jointext(dat, ""))
 	popup.open(FALSE) // 0 is passed to open so that it doesn't use the onclose() proc
 
