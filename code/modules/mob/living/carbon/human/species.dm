@@ -264,7 +264,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 	return returned
 
 //Will regenerate missing organs
-/datum/species/proc/regenerate_organs(mob/living/carbon/C, datum/species/old_species, replace_current=TRUE, list/excluded_zones, datum/preferences/pref_load)
+/datum/species/proc/regenerate_organs(mob/living/carbon/C, datum/species/old_species, replace_current=TRUE, list/excluded_zones, datum/preferences/pref_load, preserve_organs = FALSE)
 	/// Clear the dna
 	C.dna.organ_dna = list()
 	/// Add DNA and create organs from prefs
@@ -285,13 +285,17 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 		slots_to_iterate |= slot
 
 	// Remove the organs from the slots they should have nothing in
-	for(var/obj/item/organ/organ in C.internal_organs)
-		if(slots_to_iterate[organ.slot])
-			continue
-		organ.Remove(C, TRUE)
-		QDEL_NULL(organ)
+	if(!preserve_organs)
+		for(var/obj/item/organ/organ in C.internal_organs)
+			if(slots_to_iterate[organ.slot])
+				continue
+			organ.Remove(C, TRUE)
+			QDEL_NULL(organ)
 	for(var/slot in slots_to_iterate)
 		var/obj/item/organ/oldorgan = C.getorganslot(slot) //used in removing
+		if(oldorgan && preserve_organs)
+			oldorgan.setOrganDamage(0)
+			continue
 		var/obj/item/organ/neworgan
 
 		var/list/source_key_list = color_key_source_list_from_carbon(C)
