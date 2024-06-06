@@ -439,7 +439,7 @@
 	sellprice = 50
 	armor_class = ARMOR_CLASS_LIGHT
 	allowed_sex = list(FEMALE)
-	allowed_race = list("humen", "tiefling", "dwarfm","argonian", "elfd", "elfw", "helf", "aasimar")
+	allowed_race = ALL_RACES_TYPES
 	
 /obj/item/clothing/suit/roguetown/armor/silkcoat/Initialize()
 	. = ..()

@@ -390,7 +390,7 @@
 	color = null
 	icon_state = "nun"
 	item_state = "nun"
-	allowed_race = list("humen", "tiefling", "argonian", "elfd", "elfw", "helf", "dwarfm", "aasimar")
+	allowed_race = ALL_RACES_TYPES
 	allowed_sex = list(FEMALE)
 
 /obj/item/clothing/suit/roguetown/shirt/robe/wizard

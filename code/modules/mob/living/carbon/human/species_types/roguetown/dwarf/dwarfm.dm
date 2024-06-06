@@ -4,6 +4,7 @@
 /datum/species/dwarf/mountain
 	name = "Dwarf"
 	id = "dwarfm"
+	clothes_id = "dwarf"
 	desc = "<b>Dwarf</b><br>\
 	A proud and robust race of short mountain folk, \
 	the dwarves are known for their pride in martial strength \

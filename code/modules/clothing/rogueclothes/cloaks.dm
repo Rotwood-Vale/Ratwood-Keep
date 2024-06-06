@@ -563,7 +563,7 @@
 	alternate_worn_layer = TABARD_LAYER
 	body_parts_covered = CHEST|GROIN
 	boobed = TRUE
-	allowed_race = list("humen", "tiefling", "argonian", "aasimar", "halforc", "goblinp")
+	allowed_race = ALL_RACES_TYPES
 
 /obj/item/clothing/cloak/apron/blacksmith
 	name = "leather apron"
