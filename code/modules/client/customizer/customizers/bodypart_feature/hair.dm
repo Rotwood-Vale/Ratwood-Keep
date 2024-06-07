@@ -301,6 +301,12 @@
 	var/color = pick(HAIR_COLOR_LIST)
 	hair_entry.hair_color = color
 
+/datum/customizer/bodypart_feature/hair/head/humanoid/bald_default
+	customizer_choices = list(/datum/customizer_choice/bodypart_feature/hair/head/humanoid/bald_default)
+
+/datum/customizer_choice/bodypart_feature/hair/head/humanoid/bald_default/get_random_accessory(datum/customizer_entry/entry, datum/preferences/prefs)
+	return /datum/sprite_accessory/hair/head/bald
+
 /datum/customizer/bodypart_feature/hair/facial/humanoid
 	customizer_choices = list(/datum/customizer_choice/bodypart_feature/hair/facial/humanoid)
 
@@ -353,6 +359,12 @@
 	var/datum/customizer_entry/hair/hair_entry = entry
 	var/color = pick(HAIR_COLOR_LIST)
 	hair_entry.hair_color = color
+
+/datum/customizer/bodypart_feature/hair/facial/humanoid/shaved_default
+	customizer_choices = list(/datum/customizer_choice/bodypart_feature/hair/facial/humanoid/shaved_default)
+
+/datum/customizer_choice/bodypart_feature/hair/facial/humanoid/shaved_default/get_random_accessory(datum/customizer_entry/entry, datum/preferences/prefs)
+	return /datum/sprite_accessory/hair/facial/shaved
 
 /datum/customizer/bodypart_feature/hair/head/vox
 	customizer_choices = list(/datum/customizer_choice/bodypart_feature/hair/head/vox)
