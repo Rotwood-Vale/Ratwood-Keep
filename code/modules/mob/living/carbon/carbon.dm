@@ -1016,7 +1016,7 @@
 	if(admin_revive)
 		suiciding = FALSE
 		regenerate_limbs()
-		regenerate_organs()
+		regenerate_organs(TRUE)
 		handcuffed = initial(handcuffed)
 		for(var/obj/item/restraints/R in contents) //actually remove cuffs from inventory
 			qdel(R)
