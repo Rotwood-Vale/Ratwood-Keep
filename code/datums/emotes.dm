@@ -105,21 +105,21 @@
 	return get_rand_frequency()
 
 /mob/living/carbon/human/get_emote_frequency()
-	var/cont = 44100
+	var/cont = 0
 	if(gender == MALE)
 		if(STASTR > 10)
 			for(var/i in 1 to STASTR)
-				cont -= 200
+				cont -= 2
 		if(STASTR < 10)
 			for(var/i in 1 to STASTR)
-				cont += 100
+				cont += 1
 	else
 		if(STASTR > 10)
 			for(var/i in 1 to STASTR)
-				cont -= 200
+				cont -= 2
 		if(STASTR < 5)
 			for(var/i in 1 to STASTR)
-				cont += 100
+				cont += 1
 	return cont
 
 
