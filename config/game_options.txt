@@ -451,6 +451,16 @@ ROUNDSTART_RACES vulpkanin
 #ROUNDSTART_RACES dwarf
 #ROUNDSTART_RACES elf
 
+## Races that are a meme and should not be accessible in normal gameplay, unless you are insane
+#ROUNDSTART_RACES goblin
+#ROUNDSTART_RACES argonian
+#ROUNDSTART_RACES werewolf
+
+## Races that are broken
+#ROUNDSTART_RACES human
+#ROUNDSTART_RACES dwarf
+#ROUNDSTART_RACES elf
+
 ## Races that are strictly worse than humans that could probably be turned on without balance concerns
 #ROUNDSTART_RACES lizard
 #ROUNDSTART_RACES fly

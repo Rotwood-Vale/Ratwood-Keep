@@ -16,6 +16,9 @@ $include antag_rep.txt
 ## Server name: This appears at the top of the screen in-game and in the BYOND hub. Uncomment and replace 'tgstation' with the name of your choice.
 SERVERNAME Roguetown
 
+## Server tagline: This will appear right below the server's title.
+# SERVERTAGLINE A generic TG-based server
+
 ## Server SQL name: This is the name used to identify the server to the SQL DB, distinct from SERVERNAME as it must be at most 32 characters.
 # SERVERSQLNAME tgstation
 
@@ -48,6 +51,9 @@ ADMIN_LEGACY_SYSTEM
 
 ## Comment this out to stop locally connected clients from being given the almost full access !localhost! admin rank
 ENABLE_LOCALHOST_RANK
+
+## Uncomment to enable the age prompt system; It asks players for their date of birth upon entry and denies players below a certain age.
+#AGE_PROMPT_SYSTEM
 
 ## Uncomment this entry to have certain jobs require your account to be at least a certain number of days old to select. You can configure the exact age requirement for different jobs by editing
 ## the minimal_player_age variable in the files in folder /code/game/jobs/job/.. for the job you want to edit. Set minimal_player_age to 0 to disable age requirement for that job.
