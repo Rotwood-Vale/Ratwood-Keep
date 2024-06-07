@@ -606,7 +606,8 @@ GLOBAL_LIST_EMPTY(external_rsc_urls)
 		qdel(query_client_in_db)
 		return
 	if(!query_client_in_db.NextRow())
-		if (CONFIG_GET(flag/panic_bunker) && !holder && !GLOB.deadmins[ckey])
+		// if (CONFIG_GET(flag/panic_bunker) && !holder && !GLOB.deadmins[ckey])
+		if (CONFIG_GET(flag/panic_bunker) && !holder && !GLOB.deadmins[ckey] && !(ckey in GLOB.bunker_bypasses)) //MODULAR RATWOOD
 			log_access("Failed Login: [key] - New account attempting to connect during panic bunker")
 			message_admins("<span class='adminnotice'>Failed Login: [key] - New account attempting to connect during panic bunker</span>")
 			to_chat(src, CONFIG_GET(string/panic_bunker_message))
