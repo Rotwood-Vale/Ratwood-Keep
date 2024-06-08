@@ -21,12 +21,12 @@
 /datum/sprite_accessory/penis/knotted
 	icon_state = "knotted"
 	name = "Knotted"
-	default_colors = list("e74b4b")
+	default_colors = list("C52828")
 
 /datum/sprite_accessory/penis/knotted2
 	name = "Knotted 2"
 	icon_state = "knotted2"
-	default_colors = list("e74b4b")
+	default_colors = list("C52828")
 
 /datum/sprite_accessory/penis/flared
 	icon_state = "flared"
@@ -36,27 +36,27 @@
 /datum/sprite_accessory/penis/barbknot
 	icon_state = "barbknot"
 	name = "Barbed, Knotted"
-	default_colors = list("e74b4b")
+	default_colors = list("C52828")
 
 /datum/sprite_accessory/penis/tapered
 	icon_state = "tapered"
 	name = "Tapered"
-	default_colors = list("e74b4b")
+	default_colors = list("C52828")
 
 /datum/sprite_accessory/penis/tentacle
 	icon_state = "tentacle"
 	name = "Tentacled"
-	default_colors = list("e74b4b")
+	default_colors = list("C52828")
 
 /datum/sprite_accessory/penis/hemi
 	icon_state = "hemi"
 	name = "Hemi"
-	default_colors = list("e74b4b")
+	default_colors = list("C52828")
 
 /datum/sprite_accessory/penis/hemiknot
 	icon_state = "hemiknot"
 	name = "Knotted Hemi"
-	default_colors = list("e74b4b")
+	default_colors = list("C52828")
 
 /datum/sprite_accessory/testicles
 	icon = 'icons/mob/sprite_accessory/genitals/testicles.dmi'
@@ -132,7 +132,7 @@
 /datum/sprite_accessory/vagina/spade
 	icon_state = "spade"
 	name = "Spade"
-	default_colors = list("e74b4b")
+	default_colors = list("C52828")
 
 /datum/sprite_accessory/vagina/furred
 	icon_state = "furred"
