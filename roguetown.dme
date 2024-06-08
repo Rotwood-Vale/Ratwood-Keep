@@ -3413,6 +3413,7 @@
 #include "modular\code\controllers\configuration\entries\general.dm"
 #include "modular\code\controllers\subsystem\processing\sex.dm"
 #include "modular\code\datums\character_flaw.dm"
+#include "modular\code\datums\emotes.dm"
 #include "modular\code\modules\admin\bunker_bypass.dm"
 #include "modular\code\modules\living\carbon\stress.dm"
 #include "modular\code\modules\maturity-prompt\code\client.dm"
