@@ -156,4 +156,8 @@
 		/datum/sprite_accessory/tail/raccoon,
 		/datum/sprite_accessory/tail/data_shark,
 		/datum/sprite_accessory/tail/sabresune,
+		/datum/sprite_accessory/tail/lizard/smooth,
+		/datum/sprite_accessory/tail/lizard/dtiger,
+		/datum/sprite_accessory/tail/lizard/ltiger,
+		/datum/sprite_accessory/tail/lizard/spikes,
 		)
