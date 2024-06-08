@@ -3415,6 +3415,8 @@
 #include "modular\code\datums\character_flaw.dm"
 #include "modular\code\datums\emotes.dm"
 #include "modular\code\modules\admin\bunker_bypass.dm"
+#include "modular\code\modules\living\emote.dm"
+#include "modular\code\modules\living\say.dm"
 #include "modular\code\modules\living\carbon\stress.dm"
 #include "modular\code\modules\maturity-prompt\code\client.dm"
 #include "modular\code\modules\maturity-prompt\code\config_entries.dm"
