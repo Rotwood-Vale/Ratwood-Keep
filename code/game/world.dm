@@ -76,7 +76,7 @@ GLOBAL_VAR(restart_counter)
 
 //	GLOB.timezoneOffset = text2num(time2text(0,"hh")) * 36000
 
-	GLOB.timezoneOffset = 16 * 36000
+	GLOB.timezoneOffset = world.timezone * 36000
 
 	if(fexists(RESTART_COUNTER_PATH))
 		GLOB.restart_counter = text2num(trim(file2text(RESTART_COUNTER_PATH)))
@@ -332,7 +332,7 @@ GLOBAL_VAR(restart_counter)
 		new_status += "Round Time: <b>[round_time > MIDNIGHT_ROLLOVER ? "[round(round_time/MIDNIGHT_ROLLOVER)]:[gameTimestamp(format = "hh:mm")]" : gameTimestamp(format = "hh:mm")]<br>"
 	else
 		new_status += "Round Time: <b>NEW ROUND STARTING</b>"
-	new_status += "Player[players == 1 ? "": "s"]: <b>[players]</b>"
+	new_status += "<br>Player[players == 1 ? "": "s"]: <b>[players]</b>"
 	new_status += "</a>"
 
 	if (!host && hostedby)
