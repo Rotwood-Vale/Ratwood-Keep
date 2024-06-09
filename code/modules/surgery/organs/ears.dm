@@ -14,6 +14,8 @@
 	now_fixed = "<span class='info'>Noise slowly begins filling my ears once more.</span>"
 	low_threshold_cleared = "<span class='info'>The ringing in my ears has died down.</span>"
 
+	visible_organ = TRUE
+
 	// `deaf` measures "ticks" of deafness. While > 0, the person is unable
 	// to hear anything.
 	var/deaf = 0
@@ -94,22 +96,7 @@
 	icon = 'icons/obj/clothing/hats.dmi'
 	icon_state = "kitty"
 	damage_multiplier = 2
-
-/obj/item/organ/ears/cat/Insert(mob/living/carbon/human/H, special = 0, drop_if_replaced = TRUE)
-	..()
-	if(istype(H))
-		color = H.hair_color
-		H.dna.species.mutant_bodyparts |= "ears"
-		H.dna.features["ears"] = "Cat"
-		H.update_body()
-
-/obj/item/organ/ears/cat/Remove(mob/living/carbon/human/H,  special = 0)
-	..()
-	if(istype(H))
-		color = H.hair_color
-		H.dna.features["ears"] = "None"
-		H.dna.species.mutant_bodyparts -= "ears"
-		H.update_body()
+	accessory_type = /datum/sprite_accessory/ears/cat
 
 /obj/item/organ/ears/penguin
 	name = "penguin ears"
@@ -152,3 +139,29 @@
 	if(. & EMP_PROTECT_SELF)
 		return
 	damage += 40/severity
+
+/obj/item/organ/ears/anthro
+	name = "wild-kin ears"
+
+/obj/item/organ/ears/vulpkanin
+	name = "vulpkian ears"
+	accessory_type = /datum/sprite_accessory/ears/fox
+
+/obj/item/organ/ears/tajaran
+	name = "tajaran ears"
+
+/obj/item/organ/ears/elf
+	name = "elf ears"
+	accessory_type = /datum/sprite_accessory/ears/elf
+
+/obj/item/organ/ears/elfw
+	name = "wood elf ears"
+	accessory_type = /datum/sprite_accessory/ears/elfw
+
+/obj/item/organ/ears/tiefling
+	name = "tiefling ears"
+	accessory_type = /datum/sprite_accessory/ears/elfw
+
+/obj/item/organ/ears/akula
+	name = "axian ears"
+	accessory_type = /datum/sprite_accessory/ears/sergal

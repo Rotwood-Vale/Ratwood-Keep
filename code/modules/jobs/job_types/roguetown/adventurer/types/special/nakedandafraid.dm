@@ -3,17 +3,7 @@
 	name = "Nudist"
 	tutorial = "You have come to this land wholly unprepared!\nSurvival will be a true TRIUMPH."
 	allowed_sexes = list("male", "female")
-	allowed_races = list(
-		"Humen",
-		"Elf",
-		"Half-Elf",
-		"Dwarf",
-		"Tiefling",
-		"Argonian",
-		"Dark Elf",
-		"Aasimar",
-		"Half Orc"
-	)
+	allowed_races = CLOTHED_RACES_TYPES
 	outfit = /datum/outfit/job/roguetown/adventurer/nudist
 	traits_applied = list(TRAIT_NUDIST)
 	isvillager = FALSE

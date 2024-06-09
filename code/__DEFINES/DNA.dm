@@ -156,6 +156,25 @@
 #define ORGAN_SLOT_TAIL "tail"
 #define ORGAN_SLOT_PARASITE_EGG "parasite_egg"
 #define ORGAN_SLOT_REGENERATIVE_CORE "hivecore"
+#define ORGAN_SLOT_FRILLS "frills"
+#define ORGAN_SLOT_HORNS "horns"
+#define ORGAN_SLOT_ANTENNAS "antennas"
+#define ORGAN_SLOT_NECK_FEATURE "neck_feature"
+#define ORGAN_SLOT_HEAD_FEATURE "head_feature"
+#define ORGAN_SLOT_BACK_FEATURE "back_feature"
+#define ORGAN_SLOT_TAIL_FEATURE "tail_feature"
+#define ORGAN_SLOT_TAUR_BODY "taur_body"
+#define ORGAN_SLOT_WINGS "wings"
+#define ORGAN_SLOT_SNOUT "snout"
+#define ORGAN_SLOT_PENIS "penis"
+#define ORGAN_SLOT_TESTICLES "testicles"
+#define ORGAN_SLOT_BREASTS "breasts"
+#define ORGAN_SLOT_VAGINA "vagina"
+
+#define BODYPART_FEATURE_HAIR "hair"
+#define BODYPART_FEATURE_FACIAL_HAIR "facehair"
+#define BODYPART_FEATURE_ACCESSORY "accessory"
+#define BODYPART_FEATURE_FACE_DETAIL "facedetail"
 
 //organ defines
 #define STANDARD_ORGAN_THRESHOLD 	100
@@ -171,3 +190,46 @@
 #define G_MALE 1
 #define G_FEMALE 2
 #define G_PLURAL 3
+
+#define MANDATORY_FEATURE_LIST list("mcolor" = "FFF", "mcolor2" = "FFF", "mcolor3" = "FFF", "ethcolor" = "9c3030", "legs" = "Normal Legs")
+
+#define HAIR_COLOR_LIST list("#8f5a00", "#593800", "#362200", "#4e422e", "#8c8271", "#bfb7ab", "#31302e", "#f0dc48")
+#define EYE_COLOR_LIST list("#865900", "#06b400", "#312f27", "#008e83", "#002d8e", "#c16c00")
+
+#define MIN_PENIS_SIZE 1
+#define MAX_PENIS_SIZE 3
+#define DEFAULT_PENIS_SIZE 2
+
+#define MIN_TESTICLES_SIZE 1
+#define MAX_TESTICLES_SIZE 3
+#define DEFAULT_TESTICLES_SIZE 2
+
+#define MIN_BREASTS_SIZE 0
+#define MAX_BREASTS_SIZE 5
+#define DEFAULT_BREASTS_SIZE 3
+
+
+/mob/living/carbon/human/proc/get_hair_color()
+	var/datum/bodypart_feature/hair/feature = get_bodypart_feature_of_slot(BODYPART_FEATURE_HAIR)
+	if(!feature)
+		return "FFFFFF"
+	return feature.hair_color
+
+/mob/living/carbon/human/proc/get_facial_hair_color()
+	var/datum/bodypart_feature/hair/feature = get_bodypart_feature_of_slot(BODYPART_FEATURE_FACIAL_HAIR)
+	if(!feature)
+		return "FFFFFF"
+	return feature.hair_color
+
+/mob/living/carbon/human/proc/get_eye_color()
+	var/obj/item/organ/eyes/eyes = getorganslot(ORGAN_SLOT_EYES)
+	if(!eyes)
+		return "FFFFFF"
+	return eyes.eye_color
+
+/mob/living/carbon/proc/get_bodypart_feature_of_slot(feature_slot)
+	for(var/obj/item/bodypart/bodypart as anything in bodyparts)
+		for(var/datum/bodypart_feature/feature as anything in bodypart.bodypart_features)
+			if(feature.feature_slot == feature_slot)
+				return feature
+	return null

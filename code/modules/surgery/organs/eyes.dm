@@ -19,12 +19,15 @@
 	high_threshold_cleared = "<span class='info'>My vision functions passably once more.</span>"
 	low_threshold_cleared = "<span class='info'>My vision is cleared of any ailment.</span>"
 
+	organ_dna_type = /datum/organ_dna/eyes
+	accessory_type = /datum/sprite_accessory/eyes/humanoid
+	accessory_colors = "#FFFFFF#FFFFFF"
+	visible_organ = TRUE
+
 	var/sight_flags = 0
 	var/see_in_dark = 8
 	var/tint = 0
-	var/eye_color = "" //set to a hex code to override a mob's eye color
 	var/eye_icon_state = "eyes"
-	var/old_eye_color = "fff"
 	var/flash_protect = FLASH_PROTECTION_NONE
 	var/see_invisible = SEE_INVISIBLE_LIVING
 	var/lighting_alpha
@@ -34,11 +37,31 @@
 	var/left_poked = FALSE
 	var/right_poked = FALSE
 
+
+	var/eye_color = "#FFFFFF"
+	var/heterochromia = FALSE
+	var/second_color = "#FFFFFF"
+
+/obj/item/organ/eyes/update_accessory_colors()
+	var/list/colors_list = list()
+	colors_list += eye_color
+	if(heterochromia)
+		colors_list += second_color
+	else
+		colors_list += eye_color
+	accessory_colors = color_list_to_string(colors_list)
+
+/obj/item/organ/eyes/imprint_organ_dna(datum/organ_dna/organ_dna)
+	. = ..()
+	var/datum/organ_dna/eyes/eyes_dna = organ_dna
+	eyes_dna.eye_color = eye_color
+	eyes_dna.heterochromia = heterochromia
+	eyes_dna.second_color = second_color
+
 /obj/item/organ/eyes/Insert(mob/living/carbon/M, special = FALSE, drop_if_replaced = FALSE, initialising)
 	. = ..()
 	if(ishuman(owner))
 		var/mob/living/carbon/human/HMN = owner
-		old_eye_color = HMN.eye_color
 		if(eye_color)
 			HMN.eye_color = eye_color
 			HMN.regenerate_icons()
@@ -55,7 +78,6 @@
 	..()
 	if(ishuman(M) && eye_color)
 		var/mob/living/carbon/human/HMN = M
-		HMN.eye_color = old_eye_color
 		HMN.regenerate_icons()
 	M.cure_blind(EYE_DAMAGE)
 	M.cure_nearsighted(EYE_DAMAGE)
@@ -111,7 +133,7 @@
 
 
 /obj/item/organ/eyes/night_vision/argonian
-	name = "lizard eyes"
+	name = "sissean eyes"
 	desc = ""
 
 /obj/item/organ/eyes/night_vision/alien
@@ -422,9 +444,12 @@
 
 
 /obj/item/organ/eyes/moth
-	name = "moth eyes"
+	name = "fluvian eyes"
 	desc = ""
 	flash_protect = FLASH_PROTECTION_SENSITIVE
+	accessory_type = /datum/sprite_accessory/eyes/moth
+	eye_color = "000000"
+	second_color = "000000"
 
 /obj/item/organ/eyes/snail
 	name = "snail eyes"

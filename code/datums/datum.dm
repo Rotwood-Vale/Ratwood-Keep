@@ -47,6 +47,7 @@
 	* add_timer() returns the truthy value of -1 when not stoppable, and else a truthy numeric index
 	*/
 	var/list/cooldowns
+	var/abstract_type = /datum
 
 #ifdef TESTING
 	var/running_find_references
@@ -253,3 +254,7 @@
 		return
 	SEND_SIGNAL(source, COMSIG_CD_RESET(index), S_TIMER_COOLDOWN_TIMELEFT(source, index))
 	TIMER_COOLDOWN_END(source, index)
+
+/// Returns whether a type is an abstract type.
+/proc/is_abstract(datum/datum_type)
+	return (initial(datum_type.abstract_type) == datum_type)

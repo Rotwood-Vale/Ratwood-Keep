@@ -6,18 +6,7 @@
 	total_positions = -1
 	spawn_positions = -1
 
-	allowed_races = list(
-		"Humen",
-		"Elf",
-		"Half-Elf",
-		"Dwarf",
-		"Tiefling",
-		"Argonian",
-		"Dark Elf",
-		"Aasimar",
-		"Tabaxi",
-		"Half Orc",
-	)
+	allowed_races = CLOTHED_RACES_TYPES
 	allowed_ages = ADULT_AGES_LIST
 	outfit = /datum/outfit/job/roguetown/vagrant
 	bypass_lastclass = TRUE

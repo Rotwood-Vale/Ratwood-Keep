@@ -6,17 +6,7 @@
 	total_positions = 8
 	spawn_positions = 8
 
-	allowed_races = list(
-		"Humen",
-		"Elf",
-		"Half-Elf",
-		"Dwarf",
-		"Tiefling",
-		"Argonian",
-		"Dark Elf",
-		"Aasimar",
-		"Half Orc",
-	)
+	allowed_races = CLOTHED_RACES_TYPES
 	allowed_ages = YOUNG_AGES_LIST
 
 	tutorial = "Dozens of unwanted children are born in the kingdom of Psydonia every day. They sometimes make something of themselves but much more often die early in the streets."

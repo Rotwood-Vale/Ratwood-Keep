@@ -5,11 +5,8 @@
 	faction = "Station"
 	total_positions = 2
 	spawn_positions = 2
-	allowed_races = list(
-		"Humen",
-		"Half-Elf",
-	) //should be humen only just like knight, but we give leeway to half elves because maybe a knight banged an elf
-	allowed_sexes = list(MALE) //same as knight
+	allowed_races = CLOTHED_RACES_TYPES //same shit as town guard
+	allowed_sexes = list(MALE)
 	allowed_ages = YOUNG_AGES_LIST
 
 	tutorial = "Mom 'n' Da said you were going to be something, they had better aspirations for you than the life of a peasant. You practiced the basics in the field alongside your friends, swordfighting with sticks, chasing rabbits with grain flail, and helping around the house lifting heavy bags of grain. The Knight took notice of your potential and brought you on as his personal ward. You're going to be something someday. "

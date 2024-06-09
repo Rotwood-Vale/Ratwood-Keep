@@ -85,7 +85,49 @@
 
 	var/fingers = TRUE
 
+	/// Visaul markings to be rendered alongside the bodypart
+	var/list/markings
+	var/list/aux_markings
+	/// Visual features of the bodypart, such as hair and accessories
+	var/list/bodypart_features
+
 	resistance_flags = FLAMMABLE
+
+/obj/item/bodypart/proc/adjust_marking_overlays(var/list/appearance_list)
+	return
+
+/obj/item/bodypart/proc/get_specific_markings_overlays(list/specific_markings, aux = FALSE, mob/living/carbon/human/human_owner, override_color)
+	var/list/appearance_list = list()
+	var/specific_layer = aux ? aux_layer : BODYPARTS_LAYER
+	var/specific_render_zone = aux ? aux_zone : body_zone
+	for(var/key in specific_markings)
+		var/color = specific_markings[key]
+		var/datum/body_marking/BM = GLOB.body_markings[key]
+
+		var/render_limb_string = specific_render_zone
+		if(BM.gendered && (!BM.gender_only_chest || specific_render_zone == BODY_ZONE_CHEST))
+			var/gendaar = (human_owner.gender == FEMALE) ? "f" : "m"
+			render_limb_string = "[render_limb_string]_[gendaar]"
+
+		var/mutable_appearance/accessory_overlay = mutable_appearance(BM.icon, "[BM.icon_state]_[render_limb_string]", -specific_layer)
+		if(override_color)
+			accessory_overlay.color = "#[override_color]"
+		else
+			accessory_overlay.color = "#[color]"
+		appearance_list += accessory_overlay
+	return appearance_list
+
+/obj/item/bodypart/proc/get_markings_overlays(override_color)
+	if((!markings && !aux_markings) || !owner || !ishuman(owner))
+		return
+	var/mob/living/carbon/human/human_owner = owner
+	var/list/appearance_list = list()
+	if(markings)
+		appearance_list += get_specific_markings_overlays(markings, FALSE, human_owner, override_color)
+	if(aux_markings)
+		appearance_list += get_specific_markings_overlays(aux_markings, TRUE, human_owner, override_color)
+	adjust_marking_overlays(appearance_list)
+	return appearance_list
 
 /obj/item/bodypart/grabbedintents(mob/living/user, precise)
 	return list(/datum/intent/grab/move, /datum/intent/grab/twist, /datum/intent/grab/smash)
@@ -444,6 +486,18 @@
 		I.pixel_y = px_y
 	add_overlay(standing)
 
+///since organs aren't actually stored in the bodypart themselves while attached to a person, we have to query the owner for what we should have
+/obj/item/bodypart/proc/get_organs()
+	if(!owner)
+		return FALSE
+
+	var/list/bodypart_organs
+	for(var/obj/item/organ/organ_check as anything in owner.internal_organs) //internal organs inside the dismembered limb are dropped.
+		if(check_zone(organ_check.zone) == body_zone)
+			LAZYADD(bodypart_organs, organ_check) // this way if we don't have any, it'll just return null
+
+	return bodypart_organs
+
 //Gives you a proper icon appearance for the dismembered limb
 /obj/item/bodypart/proc/get_limb_icon(dropped, hideaux = FALSE)
 	icon_state = "" //to erase the default sprite, we're building the visual aspects of the bodypart through overlays alone.
@@ -487,7 +541,9 @@
 
 	var/skel = skeletonized ? "_s" : ""
 
-	if(is_organic_limb())
+	var/is_organic_limb = is_organic_limb()
+
+	if(is_organic_limb)
 		if(should_draw_greyscale)
 			limb.icon = species_icon
 			if(should_draw_gender)
@@ -514,9 +570,12 @@
 			if(!hideaux)
 				aux = image(limb.icon, "pr_[aux_zone]", -aux_layer, image_dir)
 				. += aux
-		return
 
-	if(should_draw_greyscale && !skeletonized)
+
+	var/override_color = null
+	if(rotted)
+		override_color = SKIN_COLOR_ROT
+	if(is_organic_limb && should_draw_greyscale && !skeletonized)
 		var/draw_color =  mutation_color || species_color || skin_tone
 		if(rotted || (owner && HAS_TRAIT(owner, TRAIT_ROTMAN)))
 			draw_color = SKIN_COLOR_ROT
@@ -524,6 +583,29 @@
 			limb.color = "#[draw_color]"
 			if(aux_zone && !hideaux)
 				aux.color = "#[draw_color]"
+	
+	// Markings overlays
+	if(!skeletonized)
+		var/list/marking_overlays = get_markings_overlays(override_color)
+		if(marking_overlays)
+			. += marking_overlays
+	
+	// Organ overlays
+	if(!rotted && !skeletonized)
+		for(var/obj/item/organ/organ as anything in get_organs())
+			if(!organ.is_visible())
+				continue
+			var/mutable_appearance/organ_appearance = organ.get_bodypart_overlay(src)
+			if(organ_appearance)
+				. += organ_appearance
+	
+	// Feature overlays
+	if(!skeletonized)
+		for(var/datum/bodypart_feature/feature as anything in bodypart_features)
+			var/overlays = feature.get_bodypart_overlay(src)
+			if(!overlays)
+				continue
+			. += overlays
 
 /obj/item/bodypart/deconstruct(disassembled = TRUE)
 	drop_organs()
@@ -540,8 +622,6 @@
 	stam_damage_coeff = 1
 	max_stamina_damage = 120
 	var/obj/item/cavity_item
-	aux_zone = "boob"
-	aux_layer = BODYPARTS_LAYER
 	subtargets = list(BODY_ZONE_CHEST, BODY_ZONE_PRECISE_STOMACH, BODY_ZONE_PRECISE_GROIN)
 	grabtargets = list(BODY_ZONE_CHEST, BODY_ZONE_PRECISE_STOMACH, BODY_ZONE_PRECISE_GROIN)
 	offset = OFFSET_ARMOR
@@ -734,8 +814,6 @@
 	px_x = -2
 	px_y = 12
 	max_stamina_damage = 50
-	aux_zone = "l_leg_above"
-	aux_layer = LEG_PART_LAYER
 	subtargets = list(BODY_ZONE_PRECISE_L_FOOT)
 	grabtargets = list(BODY_ZONE_PRECISE_L_FOOT, BODY_ZONE_L_LEG)
 	dismember_wound = /datum/wound/dismemberment/l_leg
@@ -793,8 +871,6 @@
 	px_x = 2
 	px_y = 12
 	max_stamina_damage = 50
-	aux_zone = "r_leg_above"
-	aux_layer = LEG_PART_LAYER
 	subtargets = list(BODY_ZONE_PRECISE_R_FOOT)
 	grabtargets = list(BODY_ZONE_PRECISE_R_FOOT, BODY_ZONE_R_LEG)
 	dismember_wound = /datum/wound/dismemberment/r_leg

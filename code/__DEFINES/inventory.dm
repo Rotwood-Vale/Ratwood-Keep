@@ -65,6 +65,29 @@
 #define SLOT_IN_BACKPACK	19
 #define SLOT_LEGCUFFED		20
 
+#define ALL_ITEM_SLOTS list(,\
+	SLOT_BACK_L,\
+	SLOT_BACK_R,\
+	SLOT_HANDCUFFED,\
+	SLOT_HANDS,\
+	SLOT_CLOAK,\
+	SLOT_HEAD,\
+	SLOT_MOUTH,\
+	SLOT_WEAR_MASK,\
+	SLOT_NECK,\
+	SLOT_GLOVES,\
+	SLOT_RING,\
+	SLOT_WRISTS,\
+	SLOT_BELT_L,\
+	SLOT_BELT_R,\
+	SLOT_ARMOR,\
+	SLOT_SHIRT,\
+	SLOT_SHOES,\
+	SLOT_PANTS,\
+	SLOT_IN_BACKPACK,\
+	SLOT_LEGCUFFED,\
+)
+
 
 //old slots
 #define SLOT_BACK			21
@@ -140,6 +163,7 @@
 #define HIDENECK		(1<<10)
 #define HIDEBOOB		(1<<11)
 #define HIDEBELT		(1<<12)
+#define HIDECROTCH		(1<<13)
 
 //blocking_behavior var on clothing items
 #define BLOCKBOOTS		(1<<0)

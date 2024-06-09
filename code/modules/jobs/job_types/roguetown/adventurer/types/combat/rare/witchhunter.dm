@@ -5,7 +5,7 @@
 	use is inherently sinful. They are extremely devoted to hunting necromancers and often preach \
 	to magyk users to end their sinful ways."
 	allowed_sexes = list("male")
-	allowed_races = list("Humen")
+	allowed_races = list(/datum/species/human/northern)
 	outfit = /datum/outfit/job/roguetown/adventurer/puritan
 	maxchosen = 2
 	pickprob = 11

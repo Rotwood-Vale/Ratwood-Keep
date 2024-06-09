@@ -7,19 +7,7 @@
 	spawn_positions = 0 // Disabled until he gets his own place on the map
 
 	allowed_sexes = list(MALE)
-	allowed_races = list(
-		"Humen",
-		"Elf",
-		"Half-Elf",
-		"Dwarf",
-		"Tiefling",
-		"Argonian",
-		"Dark Elf",
-		"Aasimar",
-		"Argonian",
-		"Tabaxi",
-		"Half Orc",
-	)
+	allowed_races = CLOTHED_RACES_TYPES
 
 	tutorial = "The Nightmaster is technically a noble. Owner of the Whitevein Lounge, a decaying bathhouse converted into a den of low-lifes. A troublemaking rake that the others hate to tolerate."
 

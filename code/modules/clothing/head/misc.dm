@@ -319,7 +319,7 @@
 	icon_state = "crown"
 	armor = list("melee" = 15, "bullet" = 0, "laser" = 0,"energy" = 15, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 100, "acid" = 50)
 	resistance_flags = FIRE_PROOF
-	allowed_race = list("goblin")
+	allowed_race = list(/datum/species/goblinp)
 	dynamic_hair_suffix = ""
 
 /obj/item/clothing/head/crown/fancy

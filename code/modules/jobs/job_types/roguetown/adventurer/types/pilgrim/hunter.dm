@@ -3,18 +3,7 @@
 	tutorial = "You are a hunter, with your bow you hunt the fauna in the bog, skinning what you kill to use in skincrafting \
 	cooking any meat left over, your role is one that is not done by many, but important in the circulation of clothing and light armor"
 	allowed_sexes = list("male", "female")
-	allowed_races = list(
-		"Humen",
-		"Elf",
-		"Half-Elf",
-		"Dwarf",
-		"Tiefling",
-		"Argonian",
-		"Dark Elf",
-		"Aasimar",
-		"Tabaxi",
-		"Half Orc",
-	)
+	allowed_races = CLOTHED_RACES_TYPES
 	outfit = /datum/outfit/job/roguetown/adventurer/hunter
 	isvillager = TRUE
 	ispilgrim = TRUE

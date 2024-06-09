@@ -36,54 +36,11 @@
 				var/chosen = input(user, "Change what?", "ROGUETOWN")  as null|anything in options
 				var/should_update
 				switch(chosen)
-					if("hairstyle")
-						var/list/spec_hair = H.dna.species.get_spec_hair_list(H.gender)
-						var/list/hairlist = list()
-						for(var/datum/sprite_accessory/X in spec_hair)
-							hairlist += X.name
-						var/new_hairstyle
-						new_hairstyle = input(user, "Choose your character's hairstyle:", "Barber")  as null|anything in hairlist
-						if(new_hairstyle)
-							H.hairstyle = new_hairstyle
-							should_update = TRUE
-					if("facial hairstyle")
-						var/list/spec_hair = H.dna.species.get_spec_facial_list(H.gender)
-						var/list/hairlist = list()
-						for(var/datum/sprite_accessory/X in spec_hair)
-							hairlist += X.name
-						var/new_hairstyle
-						new_hairstyle = input(user, "Choose your character's beard:", "Barber")  as null|anything in hairlist
-						if(new_hairstyle)
-							H.facial_hairstyle = new_hairstyle
-							should_update = TRUE
-					if("hair color")
-						var/new_hair
-						var/list/hairs
-						if(H.age == AGE_OLD && OLDGREY in H.dna.species.species_traits)
-							hairs = H.dna.species.get_oldhc_list()
-							new_hair = input(user, "Choose your character's hair color:", "") as null|anything in hairs
-						else
-							hairs = H.dna.species.get_hairc_list()
-							new_hair = input(user, "Choose your character's hair color:", "") as null|anything in hairs
-						if(new_hair)
-							H.hair_color = hairs[new_hair]
-							H.facial_hair_color = H.hair_color
-							should_update = TRUE
 					if("skin")
 						var/listy = H.dna.species.get_skin_list()
 						var/new_s_tone = input(user, "Choose your character's skin tone:", "Sun")  as null|anything in listy
 						if(new_s_tone)
 							H.skin_tone = listy[new_s_tone]
-							should_update = TRUE
-					if("detail")
-						var/list/spec_detail = H.dna.species.get_spec_detail_list(H.gender)
-						var/list/detaillist = list()
-						for(var/datum/sprite_accessory/X in spec_detail)
-							detaillist += X.name
-						var/new_detail
-						new_detail = input(user, "Choose your character's detail:", "Make me unique")  as null|anything in detaillist //don't ask
-						if(new_detail)
-							H.detail = new_detail
 							should_update = TRUE
 					if("eye color")
 						var/new_eyes = input(user, "Choose your character's eye color:", "Character Preference","#"+H.eye_color) as color|null

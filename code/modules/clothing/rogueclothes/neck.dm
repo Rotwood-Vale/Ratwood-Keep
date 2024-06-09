@@ -199,7 +199,7 @@
 	item_state = "talkstone"
 	//dropshrink = 0.75
 	resistance_flags = FIRE_PROOF
-	allowed_race = list("human", "dwarf", "elf", "tiefling", "aasimar", "goblinp", "halforc")
+	allowed_race = CLOTHED_RACES_TYPES
 	sellprice = 98
 	anvilrepair = /datum/skill/craft/armorsmithing
 

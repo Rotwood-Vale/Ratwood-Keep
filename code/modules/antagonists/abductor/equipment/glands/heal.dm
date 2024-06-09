@@ -78,8 +78,8 @@
 		to_chat(owner, "<span class='warning'>I feel a weird rumble in my bowels...</span>")
 
 	var/liver_type = /obj/item/organ/liver
-	if(owner?.dna?.species?.mutantliver)
-		liver_type = owner.dna.species.mutantliver
+	if(owner?.dna?.species?.organs[ORGAN_SLOT_LIVER])
+		liver_type = owner.dna.species.organs[ORGAN_SLOT_LIVER]
 	var/obj/item/organ/liver/new_liver = new liver_type()
 	new_liver.Insert(owner)
 
@@ -111,8 +111,8 @@
 
 /obj/item/organ/heart/gland/heal/proc/finish_replace_eyes()
 	var/eye_type = /obj/item/organ/eyes
-	if(owner.dna.species && owner.dna.species.mutanteyes)
-		eye_type = owner.dna.species.mutanteyes
+	if(owner.dna.species && owner.dna.species.organs[ORGAN_SLOT_EYES])
+		eye_type = owner.dna.species.organs[ORGAN_SLOT_EYES]
 	var/obj/item/organ/eyes/new_eyes = new eye_type()
 	new_eyes.Insert(owner)
 	owner.visible_message("<span class='warning'>A pair of new eyes suddenly inflates into [owner]'s eye sockets!</span>", "<span class='danger'>A pair of new eyes suddenly inflates into my eye sockets!</span>")

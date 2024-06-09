@@ -53,7 +53,7 @@
 	var/dynamic_fhair_suffix = ""//mask > head for facial hair
 	edelay_type = 0
 	var/list/allowed_sex = list(MALE,FEMALE)
-	var/list/allowed_race = ALL_RACES_LIST
+	var/list/allowed_race = CLOTHED_RACES_TYPES
 	var/armor_class = ARMOR_CLASS_NONE
 
 	sellprice = 1
@@ -182,7 +182,7 @@
 			if(ishuman(M))
 				var/mob/living/carbon/human/H = M
 				if(H.dna)
-					if(H.dna.species.id in allowed_race)
+					if(H.dna.species.type in allowed_race)
 						return TRUE
 					else
 						return FALSE

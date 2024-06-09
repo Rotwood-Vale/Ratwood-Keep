@@ -4,7 +4,7 @@
 	name = "Master Miner"
 	tutorial = "A master miner, you are capable of cutting stone like butter, and forging rocks into anything you can think of"
 	allowed_sexes = list("male")
-	allowed_races = list("Dwarf")
+	allowed_races = list(/datum/species/dwarf/mountain)
 	outfit = /datum/outfit/job/roguetown/adventurer/minermaster
 	isvillager = FALSE
 	ispilgrim = TRUE

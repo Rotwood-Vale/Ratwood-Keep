@@ -5,10 +5,10 @@
 	tutorial = "rarec"
 	allowed_sexes = list("male", "female")
 	allowed_races = list(
-		"Humen",
-		"Elf",
-		"Half-Elf",
-		"Dark Elf"
+		/datum/species/human/northern,
+		/datum/species/human/halfelf,
+		/datum/species/elf/dark,
+		/datum/species/elf/wood,
 	)
 	outfit = /datum/outfit/job/roguetown/adventurer/dona
 	maxchosen = -1

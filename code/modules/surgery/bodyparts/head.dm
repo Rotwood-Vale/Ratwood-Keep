@@ -51,6 +51,21 @@
 	/// Brainkill means that this head is considered dead and revival is impossible
 	var/brainkill = FALSE
 
+/obj/item/bodypart/head/adjust_marking_overlays(var/list/appearance_list)
+	if(!owner || !ishuman(owner))
+		return
+	var/mob/living/carbon/human/humie = owner
+	var/datum/species/species = owner.dna.species
+	for(var/mutable_appearance/appearance as anything in appearance_list)
+		if(humie.gender == FEMALE)
+			if(OFFSET_FACE_F in species.offset_features)
+				appearance.pixel_x += species.offset_features[OFFSET_FACE_F][1]
+				appearance.pixel_y += species.offset_features[OFFSET_FACE_F][2]
+		else
+			if(OFFSET_FACE in species.offset_features)
+				appearance.pixel_x += species.offset_features[OFFSET_FACE][1]
+				appearance.pixel_y += species.offset_features[OFFSET_FACE][2]
+
 /obj/item/bodypart/head/grabbedintents(mob/living/user, precise)
 	var/used_limb = precise
 	switch(used_limb)
@@ -200,15 +215,6 @@
 	if(dropped) //certain overlays only appear when the limb is being detached from its owner.
 
 		if(status != BODYPART_ROBOTIC) //having a robotic head hides certain features.
-			//facial hair
-			if(facial_hairstyle)
-				var/datum/sprite_accessory/S = GLOB.facial_hairstyles_list[facial_hairstyle]
-				if(S)
-					var/image/facial_overlay = image(S.icon, "[S.icon_state]", -HAIR_LAYER, SOUTH)
-					facial_overlay.color = "#" + facial_hair_color
-					facial_overlay.alpha = hair_alpha
-					. += facial_overlay
-
 			//Applies the debrained overlay if there is no brain
 			if(!brain)
 				var/image/debrain_overlay = image(layer = -HAIR_LAYER, dir = SOUTH)
@@ -222,13 +228,6 @@
 					debrain_overlay.icon = 'icons/mob/human_face.dmi'
 					debrain_overlay.icon_state = "debrained"
 				. += debrain_overlay
-			else
-				var/datum/sprite_accessory/S2 = GLOB.hairstyles_list[hairstyle]
-				if(S2)
-					var/image/hair_overlay = image(S2.icon, "[S2.icon_state]", -HAIR_LAYER, SOUTH)
-					hair_overlay.color = "#" + hair_color
-					hair_overlay.alpha = hair_alpha
-					. += hair_overlay
 			//ROGTODO add accessories (earrings, piercings) here
 
 		// lipstick

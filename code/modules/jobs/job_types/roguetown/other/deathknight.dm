@@ -8,6 +8,8 @@
 	min_pq = null //no pq
 	max_pq = null
 
+	allowed_sexes = list(MALE, FEMALE)
+	allowed_races = CLOTHED_RACES_TYPES
 	tutorial = ""
 
 	outfit = /datum/outfit/job/roguetown/deathknight

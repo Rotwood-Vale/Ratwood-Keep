@@ -3,7 +3,7 @@
 	name = "Vaquero"
 	tutorial = "Vaquero are Tieberian swashbucklers who have their origins as skilled horse-tamers of Asturia. It's hard to find horses these days..."
 	allowed_sexes = list("male", "female")
-	allowed_races = list("Tiefling")
+	allowed_races = list(/datum/species/tieberian)
 	outfit = /datum/outfit/job/roguetown/adventurer/vaquero
 	horse = /mob/living/simple_animal/hostile/retaliate/rogue/saigabuck/tame/saddled
 	cmode_music = 'sound/music/combat_vaquero.ogg'

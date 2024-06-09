@@ -7,8 +7,8 @@
 	spawn_positions = 1
 	allowed_sexes = list(MALE)
 	allowed_races = list(
-		"Humen",
-		"Aasimar",
+		/datum/species/human/northern,
+		/datum/species/aasimar,
 	)
 	allowed_patrons = list(
 		/datum/patron/old_god,
