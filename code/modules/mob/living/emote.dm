@@ -639,6 +639,12 @@
 
 /datum/emote/living/slap/run_emote(mob/user, params, type_override, intentional)
 	message_param = initial(message_param) // reset
+	// RATWOOD MODULAR START
+	if(ishuman(user))
+		var/mob/living/carbon/human/H = user
+		if(H.zone_selected == BODY_ZONE_PRECISE_GROIN)
+			message_param = "slaps %t's ass!"
+	// RATWOOD MODULAR END
 	..()
 
 /mob/living/carbon/human/verb/emote_slap()
@@ -655,7 +661,7 @@
 		var/mob/living/carbon/human/H = target
 		H.flash_fullscreen("redflash3")
 		H.AdjustSleeping(-50)
-		playsound(target.loc, pick('sound/foley/slap (1).ogg','sound/foley/slap (2).ogg'), 100, FALSE, -1)
+		playsound(target.loc, 'sound/foley/slap.ogg', 100, TRUE, -1)
 
 /datum/emote/living/pinch
 	key = "pinch"
@@ -1191,7 +1197,7 @@
 #ifdef MATURESERVER
 	message_param = "%t"
 #endif
-	mute_time = 1
+	//mute_time = 1 - RATWOOD CHANGE, I don't want spammers.
 /datum/emote/living/custom/can_run_emote(mob/user, status_check, intentional)
 	. = ..() && intentional
 

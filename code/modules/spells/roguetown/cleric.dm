@@ -114,7 +114,7 @@
 				target.visible_message("<span class='info'>A aura of clinical care encompasses [target]!</span>", "<span class='notice'>I'm sewn back together by sacred medicine!</span>")
 			if(/datum/patron/divine/malum)
 				target.visible_message("<span class='info'>A tempering heat is discharged out of [target]!</span>", "<span class='notice'>I feel the heat of a forge soothing my pains!</span>")
-			if(/datum/patron/inhumen/eora)
+			if(/datum/patron/divine/eora) // RATWOOD CHANGE FROM /datum/patron/inhumen/eora
 				target.visible_message("<span class='info'>A heady heat flushes the flesh of [target] and potent scents hit you!</span>", "<span class='notice'>My ills drift away in a rush of narcotic pleasure!</span>")
 			if(/datum/patron/inhumen/zizo)
 				target.visible_message("<span class='info'>Vital energies are sapped towards [target]!</span>", "<span class='notice'>The life around me pales as I am restored!</span>")
