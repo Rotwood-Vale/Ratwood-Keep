@@ -480,6 +480,9 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 
 	for(var/language_type in languages)
 		C.remove_language(language_type)
+	
+	// Clear organ DNA since it wont match as we're changing the species
+	C.dna.organ_dna = list()
 
 	SEND_SIGNAL(C, COMSIG_SPECIES_LOSS, src)
 
