@@ -302,12 +302,12 @@
 //Looking for brains?
 //Try code/modules/mob/living/carbon/brain/brain_item.dm
 
-/mob/living/proc/regenerate_organs(preserve_organs = FALSE)
+/mob/living/proc/regenerate_organs()
 	return 0
 
-/mob/living/carbon/regenerate_organs(preserve_organs = FALSE)
+/mob/living/carbon/regenerate_organs()
 	if(dna?.species)
-		dna.species.regenerate_organs(src, preserve_organs = preserve_organs)
+		dna.species.regenerate_organs(src)
 		return
 
 	else
