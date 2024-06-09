@@ -674,7 +674,7 @@
 		var/mob/living/carbon/human/H = target
 		H.flash_fullscreen("redflash3")
 		H.AdjustSleeping(-50)
-		playsound(target.loc, pick('sound/foley/slap (1).ogg','sound/foley/slap (2).ogg'), 100, FALSE, -1)
+		playsound(target.loc, 'sound/foley/slap.ogg', 100, TRUE, -1)
 
 /datum/emote/living/pinch
 	key = "pinch"

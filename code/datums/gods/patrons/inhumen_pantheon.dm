@@ -40,7 +40,7 @@
 		"MATTHIOS IS JUSTICE!",
 		"MATTHIOS IS MY LORD!",
 	)
-
+/* RATWOOD EDIT - Back to the main pantheon
 /datum/patron/inhumen/eora
 	name = "Eora"
 	domain = "Goddess of Degeneracy, Debauchery and Addiction"
@@ -52,3 +52,4 @@
 		"EORA IS MY HAPPINESS!",
 	)
 	t0 = /obj/effect/proc_holder/spell/invoked/lesser_heal
+*/
