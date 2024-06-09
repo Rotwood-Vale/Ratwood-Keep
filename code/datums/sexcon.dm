@@ -221,13 +221,13 @@
 		switch(mind.assigned_role)
 			if("Priest")
 				add_stress(/datum/stressevent/virginchurch)
-				adjust_triumphs(-2)
+				// adjust_triumphs(-2)
 			if("Acolyte")
 				add_stress(/datum/stressevent/virginchurch)
-				adjust_triumphs(-3)
+				// adjust_triumphs(-3)
 			if("Cleric")
 				add_stress(/datum/stressevent/virginchurch)
-				adjust_triumphs(-2)
+				// adjust_triumphs(-2)
 
 /datum/sex_controller/proc/begin_assfuck(mob/living/user)
 	if(!user)
@@ -1196,7 +1196,7 @@
 							wuzantag = TRUE
 				if(!wuzantag)
 					adjust_playerquality(-2, M.ckey, reason="Raped as a non villain.")
-			if(prob(88))
+			if(prob(20))
 				if(!fucking.mob_timers["preggo"])
 					fucking.mob_timers["preggo"] = world.time
 					addtimer(CALLBACK(fucking, /mob/living/carbon/human/.proc/become_pregnant, husbando), rand(3 MINUTES, 13 MINUTES))
