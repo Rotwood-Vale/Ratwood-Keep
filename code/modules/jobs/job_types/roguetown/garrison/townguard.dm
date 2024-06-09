@@ -6,7 +6,7 @@
 	total_positions = 10
 	spawn_positions = 10
 	selection_color = JCOLOR_SOLDIER
-	allowed_sexes = list(MALE)
+	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = list(
 		"Humen",
 		"Elf",
