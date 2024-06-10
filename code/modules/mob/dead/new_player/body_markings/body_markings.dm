@@ -121,6 +121,13 @@
 	affected_bodyparts = CHEST
 	default_color = DEFAULT_SECONDARY
 
+/datum/body_marking/butt
+	icon = 'icons/mob/body_markings/chest_markings.dmi'
+	name = "Butt"
+	icon_state = "butt"
+	affected_bodyparts = CHEST
+	default_color = DEFAULT_SECONDARY
+
 /datum/body_marking/tie
 	icon = 'icons/mob/body_markings/chest_markings.dmi'
 	name = "Tie"
