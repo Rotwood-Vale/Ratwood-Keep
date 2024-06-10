@@ -70,14 +70,6 @@
 		owner.person_knows_me(MF)
 
 	var/mob/living/carbon/human/H = owner.current
-	if(H.mobid in GLOB.character_list)
-		GLOB.character_list[H.mobid] = null
-	GLOB.chosen_names -= H.real_name
-	if((H.dna.species?.id != "humen"))
-		H.age = AGE_ADULT
-		H.set_species(/datum/species/human/northern) //setspecies randomizes body
-		H.after_creation()
-//		H.real_name = H.client.prefs.pref_species.random_name(MALE,1) //set_species randomizes name
 	H.cmode_music = 'sound/music/combat_bandit2.ogg'
 
 	addtimer(CALLBACK(H, TYPE_PROC_REF(/mob/living/carbon/human, choose_name_popup), "BANDIT"), 5 SECONDS)
