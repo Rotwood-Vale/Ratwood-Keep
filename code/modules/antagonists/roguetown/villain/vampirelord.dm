@@ -113,16 +113,6 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 		owner.person_knows_me(MF)
 
 	var/mob/living/carbon/human/H = owner.current
-	if(H.mobid in GLOB.character_list)
-		GLOB.character_list[H.mobid] = null
-	GLOB.chosen_names -= H.real_name
-	if(!ishumannorthern(H) && !iself(H))
-		H.age = AGE_ADULT
-		if(prob(50))
-			H.set_species(/datum/species/human/northern)
-		else
-			H.set_species(/datum/species/elf/wood) //setspecies randomizes body
-		H.after_creation()
 	var/obj/item/organ/eyes/eyes = owner.current.getorganslot(ORGAN_SLOT_EYES)
 	if(eyes)
 		eyes.Remove(owner.current,1)
@@ -146,9 +136,6 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 		owner.person_knows_me(MF)
 
 	var/mob/living/carbon/human/H = owner.current
-	if(H.mobid in GLOB.character_list)
-		GLOB.character_list[H.mobid] = null
-	GLOB.chosen_names -= H.real_name
 	owner.adjust_skillrank(/datum/skill/magic/blood, 2, TRUE)
 	owner.current.ambushable = FALSE
 
