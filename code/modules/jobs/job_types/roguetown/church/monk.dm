@@ -7,7 +7,6 @@
 	spawn_positions = 3
 
 	allowed_races = CLOTHED_RACES_TYPES
-	allowed_patrons = ALL_ACOLYTE_PATRONS
 	allowed_sexes = list(MALE, FEMALE)
 	outfit = /datum/outfit/job/roguetown/monk
 	tutorial = "Chores, some more chores- Even more chores.. Oh how the life of a humble cleric is exhausting… You have faith, but even you know you gave up a life of adventure for that of the security in the Church. Assist the Priest in their daily tasks, maybe today will be the day something interesting happens."
@@ -20,6 +19,7 @@
 /datum/outfit/job/roguetown/monk
 	name = "Acolyte"
 	jobtype = /datum/job/roguetown/monk
+	allowed_patrons = ALL_ACOLYTE_PATRONS
 
 /datum/outfit/job/roguetown/monk/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -34,14 +34,14 @@
 			wrists = /obj/item/clothing/wrists/roguetown/wrappings
 			shoes = /obj/item/clothing/shoes/roguetown/sandals
 			armor = /obj/item/clothing/suit/roguetown/shirt/robe/astrata
-		if(/datum/patron/divine/noc)
+		if(/datum/patron/divine/noc) //Basically just here as a reference.
 			head = /obj/item/clothing/head/roguetown/roguehood/nochood
 			neck = /obj/item/clothing/neck/roguetown/psicross/noc
 			wrists = /obj/item/clothing/wrists/roguetown/nocwrappings
 			shoes = /obj/item/clothing/shoes/roguetown/sandals
 			armor = /obj/item/clothing/suit/roguetown/shirt/robe/noc
 			shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/black
-		if(/datum/patron/divine/dendor)
+		if(/datum/patron/divine/dendor) //Here for reference.
 			head = /obj/item/clothing/head/roguetown/dendormask
 			neck = /obj/item/clothing/neck/roguetown/psicross/dendor
 			armor = /obj/item/clothing/suit/roguetown/shirt/robe/dendor
