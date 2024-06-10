@@ -194,6 +194,7 @@ GLOBAL_LIST_EMPTY(chosen_names)
 	if(age == AGE_YOUNG)
 		age = AGE_ADULT
 
+	headshot_link = null
 	customizer_entries = list()
 	validate_customizer_entries()
 	reset_all_customizer_accessory_colors()
@@ -1464,6 +1465,7 @@ Slots: [job.spawn_positions]</span>
 					to_chat(user, "<span class='notice'>Keep in mind that the photo will be downsized to 250x250 pixels, so the more square the photo, the better it will look.</span>")
 					var/new_headshot_link = input(user, "Input the headshot link (https, hosts: gyazo, discord, lensdump, imgbox, catbox):", "Headshot", headshot_link) as text|null
 					if(!new_headshot_link)
+						headshot_link = null
 						return
 					if(!valid_headshot_link(user, new_headshot_link))
 						return

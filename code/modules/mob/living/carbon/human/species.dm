@@ -292,11 +292,11 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 			continue
 		organ.Remove(C, TRUE)
 		QDEL_NULL(organ)
+	var/list/source_key_list = color_key_source_list_from_carbon(C)
 	for(var/slot in slots_to_iterate)
 		var/obj/item/organ/oldorgan = C.getorganslot(slot) //used in removing
 		var/obj/item/organ/neworgan
 
-		var/list/source_key_list = color_key_source_list_from_carbon(C)
 		if(C.dna.organ_dna[slot])
 			var/datum/organ_dna/organ_dna = C.dna.organ_dna[slot]
 			if(organ_dna.can_create_organ())
