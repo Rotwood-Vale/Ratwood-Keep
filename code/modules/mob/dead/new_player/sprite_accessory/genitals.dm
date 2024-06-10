@@ -122,7 +122,7 @@
 /datum/sprite_accessory/vagina/human
 	icon_state = "human"
 	name = "Plain"
-	default_colors = list("f99696")
+	default_colors = list("ea6767")
 
 /datum/sprite_accessory/vagina/hairy
 	icon_state = "hairy"
