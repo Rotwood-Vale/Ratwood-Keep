@@ -7,3 +7,4 @@
 #define KEY_FACE_HAIR_COLOR "facehair"
 #define KEY_EYE_COLOR "eye"
 #define KEY_SKIN_COLOR "skin"
+#define KEY_CHEST_COLOR "chest"

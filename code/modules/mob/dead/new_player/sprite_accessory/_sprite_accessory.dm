@@ -225,16 +225,10 @@
 	sources[KEY_EYE_COLOR] = prefs.get_eye_color()
 	sources[KEY_HAIR_COLOR] = prefs.get_hair_color()
 	sources[KEY_FACE_HAIR_COLOR] = prefs.get_facial_hair_color()
-	return sources
-
-/proc/color_key_source_list_from_dna(datum/dna/dna)
-	var/list/features = dna.features
-	var/list/sources = list()
-	sources[KEY_MUT_COLOR_ONE] = features["mcolor"]
-	sources[KEY_MUT_COLOR_TWO] = features["mcolor2"]
-	sources[KEY_MUT_COLOR_THREE] = features["mcolor3"]
-	/// Read specific organ DNA entries to deduce eye, hair and facial hair color
-	sources[KEY_SKIN_COLOR] = "FFFFFF" // DNA doesnt work properly here lmao
+	sources[KEY_CHEST_COLOR] = sources[KEY_SKIN_COLOR]
+	var/chest_color = prefs.get_chest_color()
+	if(chest_color)
+		sources[KEY_CHEST_COLOR] = chest_color
 	return sources
 
 /proc/color_key_source_list_from_carbon(mob/living/carbon/carbon)
@@ -255,8 +249,13 @@
 		sources[KEY_EYE_COLOR] = human.get_eye_color()
 		sources[KEY_HAIR_COLOR] = human.get_hair_color()
 		sources[KEY_FACE_HAIR_COLOR] = human.get_facial_hair_color()
+		sources[KEY_CHEST_COLOR] = sources[KEY_SKIN_COLOR]
+		var/chest_color = human.get_chest_color()
+		if(chest_color)
+			sources[KEY_CHEST_COLOR] = chest_color
 	else
 		sources[KEY_SKIN_COLOR] = "FFFFFF"
+		sources[KEY_CHEST_COLOR] = sources[KEY_SKIN_COLOR]
 	return sources
 
 #ifdef UNIT_TESTS

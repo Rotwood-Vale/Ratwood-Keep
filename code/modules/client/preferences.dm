@@ -2035,8 +2035,8 @@ Slots: [job.spawn_positions]</span>
 
 /datum/preferences/proc/try_update_mutant_colors()
 	if(update_mutant_colors)
-		reset_all_customizer_accessory_colors()
 		reset_body_marking_colors()
+		reset_all_customizer_accessory_colors()
 
 /proc/valid_headshot_link(mob/user, value, silent = FALSE)
 	var/static/link_regex = regex("i.gyazo.com|a.l3n.co|b.l3n.co|c.l3n.co|images2.imgbox.com|thumbs2.imgbox.com|files.catbox.moe") //gyazo, discord, lensdump, imgbox, catbox

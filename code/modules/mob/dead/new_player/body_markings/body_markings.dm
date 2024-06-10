@@ -16,6 +16,8 @@
 	var/gendered = TRUE
 	/// Whether the gendering affects only the chest bodypart
 	var/gender_only_chest = FALSE
+	/// Whether the chest marking covers the chest, for purposes of color derriving for features
+	var/covers_chest = FALSE
 
 /datum/body_marking/New()
 	if(!default_color)
@@ -46,6 +48,7 @@
 	icon_state = "plain"
 	affected_bodyparts = HEAD | CHEST | HAND_LEFT | HAND_RIGHT | ARM_LEFT | ARM_RIGHT | LEG_LEFT | LEG_RIGHT
 	default_color = DEFAULT_SECONDARY
+	covers_chest = TRUE
 
 /datum/body_marking/tiger
 	icon = 'icons/mob/body_markings/tiger_markings.dmi'
@@ -85,6 +88,7 @@
 	icon_state = "bellyscale"
 	affected_bodyparts = CHEST
 	default_color = DEFAULT_SECONDARY
+	covers_chest = TRUE
 
 /datum/body_marking/bellyscaleslim
 	icon = 'icons/mob/body_markings/chest_markings.dmi'
@@ -92,6 +96,7 @@
 	icon_state = "bellyscaleslim"
 	affected_bodyparts = CHEST
 	default_color = DEFAULT_SECONDARY
+	covers_chest = TRUE
 
 /datum/body_marking/bellyscalesmooth
 	icon = 'icons/mob/body_markings/chest_markings.dmi'
@@ -99,6 +104,7 @@
 	icon_state = "bellyscalesmooth"
 	affected_bodyparts = CHEST
 	default_color = DEFAULT_SECONDARY
+	covers_chest = TRUE
 
 /datum/body_marking/bellyscaleslimsmooth
 	icon = 'icons/mob/body_markings/chest_markings.dmi'
@@ -106,6 +112,7 @@
 	icon_state = "bellyscaleslimsmooth"
 	affected_bodyparts = CHEST
 	default_color = DEFAULT_SECONDARY
+	covers_chest = TRUE
 
 /datum/body_marking/buttscale
 	icon = 'icons/mob/body_markings/chest_markings.dmi'
@@ -120,6 +127,7 @@
 	icon_state = "belly"
 	affected_bodyparts = CHEST
 	default_color = DEFAULT_SECONDARY
+	covers_chest = TRUE
 
 /datum/body_marking/bellyslim
 	icon = 'icons/mob/body_markings/chest_markings.dmi'
@@ -127,6 +135,7 @@
 	icon_state = "bellyslim"
 	affected_bodyparts = CHEST
 	default_color = DEFAULT_SECONDARY
+	covers_chest = TRUE
 
 /datum/body_marking/butt
 	icon = 'icons/mob/body_markings/chest_markings.dmi'
@@ -141,6 +150,7 @@
 	icon_state = "tie"
 	affected_bodyparts = CHEST
 	default_color = DEFAULT_SECONDARY
+	covers_chest = TRUE
 
 /datum/body_marking/tiesmall
 	icon = 'icons/mob/body_markings/chest_markings.dmi'
@@ -148,6 +158,7 @@
 	icon_state = "tiesmall"
 	affected_bodyparts = CHEST
 	default_color = DEFAULT_SECONDARY
+	covers_chest = TRUE
 
 /datum/body_marking/backspots
 	icon = 'icons/mob/body_markings/chest_markings.dmi'
@@ -162,3 +173,4 @@
 	icon_state = "front"
 	affected_bodyparts = CHEST
 	default_color = DEFAULT_SECONDARY
+	covers_chest = TRUE
