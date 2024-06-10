@@ -95,6 +95,7 @@ GLOBAL_LIST_INIT(church_positions, list(
 	"Acolyte",
 	"Mortician",
 	"Templar",
+	"Druid",
 ))
 
 GLOBAL_LIST_INIT(yeoman_positions, list(
