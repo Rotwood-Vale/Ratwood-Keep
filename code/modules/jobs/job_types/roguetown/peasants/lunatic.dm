@@ -7,16 +7,7 @@
 	spawn_positions = 50
 
 	allowed_sexes = list(MALE, FEMALE)
-	allowed_races = list(
-		"Humen",
-		"Elf",
-		"Half-Elf",
-		"Dwarf",
-		"Tiefling",
-		"Dark Elf",
-		"Aasimar",
-		"Half Orc",
-	)
+	allowed_races = CLOTHED_RACES_TYPES
 	allowed_ages = list(AGE_ADULT, AGE_MIDDLEAGED, AGE_OLD)
 	outfit = /datum/outfit/job/roguetown/lunatic
 	bypass_lastclass = TRUE
