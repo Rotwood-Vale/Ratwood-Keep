@@ -78,6 +78,7 @@
 		/datum/body_marking/belly,
 		/datum/body_marking/bellyslim,
 		/datum/body_marking/butt,
+		/datum/body_marking/tonage,
 	)
 	
 /datum/species/vulpkanin/check_roundstart_eligible()

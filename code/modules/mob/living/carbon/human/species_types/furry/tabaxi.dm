@@ -77,6 +77,7 @@
 		/datum/body_marking_set/tiger_dark
 	)
 	body_markings = list(
+		/datum/body_marking/tonage,
 	)
 	languages = list(
 		/datum/language/common,

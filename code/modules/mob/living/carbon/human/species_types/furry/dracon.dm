@@ -83,6 +83,8 @@
 		/datum/body_marking/buttscale,
 		/datum/body_marking/tiger,
 		/datum/body_marking/tiger/dark,
+		/datum/body_marking/drake_eyes,
+		/datum/body_marking/tonage,
 	)
 	languages = list(
 		/datum/language/common,

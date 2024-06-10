@@ -174,3 +174,17 @@
 	affected_bodyparts = CHEST
 	default_color = DEFAULT_SECONDARY
 	covers_chest = TRUE
+
+/datum/body_marking/tonage
+	icon = 'icons/mob/body_markings/other_markings.dmi'
+	name = "Tonage"
+	icon_state = "tonage"
+	affected_bodyparts = CHEST
+	default_color = "555555"
+
+/datum/body_marking/drake_eyes
+	icon = 'icons/mob/body_markings/other_markings.dmi'
+	name = "Drake Eyes"
+	icon_state = "drake_eyes"
+	affected_bodyparts = HEAD
+	default_color = "FF0000"
