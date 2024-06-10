@@ -72,6 +72,13 @@
 	affected_bodyparts = ARM_LEFT | ARM_RIGHT | LEG_LEFT | LEG_RIGHT
 	default_color = DEFAULT_SECONDARY
 
+/datum/body_marking/tips
+	icon = 'icons/mob/body_markings/tips_markings.dmi'
+	name = "Tips"
+	icon_state = "tips"
+	affected_bodyparts = HAND_LEFT | HAND_RIGHT | LEG_LEFT | LEG_RIGHT
+	default_color = DEFAULT_SECONDARY
+
 /datum/body_marking/bellyscale
 	icon = 'icons/mob/body_markings/chest_markings.dmi'
 	name = "Belly Scales"

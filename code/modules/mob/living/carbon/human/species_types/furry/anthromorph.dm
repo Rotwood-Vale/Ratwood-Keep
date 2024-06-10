@@ -84,6 +84,7 @@
 		/datum/body_marking/tiger/dark,
 		/datum/body_marking/sock,
 		/datum/body_marking/socklonger,
+		/datum/body_marking/tips,
 		/datum/body_marking/bellyscale,
 		/datum/body_marking/bellyscaleslim,
 		/datum/body_marking/bellyscalesmooth,
