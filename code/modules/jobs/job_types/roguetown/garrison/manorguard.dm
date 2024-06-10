@@ -7,7 +7,7 @@
 	spawn_positions = 8
 
 	allowed_sexes = list(MALE)
-	allowed_races = list(/datum/species/human/northern)
+	allowed_races = CLOTHED_RACES_TYPES
 	allowed_ages = list(AGE_ADULT, AGE_MIDDLEAGED)
 	tutorial = "Having proven yourself loyal and capable, you are entrusted to defend the Royal Family and their Court, trained regularly in combat and siege warfare you stand a small chance of surviving the King's reign."
 	display_order = JDO_CASTLEGUARD

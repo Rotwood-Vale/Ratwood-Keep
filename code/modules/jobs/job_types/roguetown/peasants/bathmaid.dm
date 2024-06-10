@@ -6,7 +6,7 @@
 	total_positions = 3
 	spawn_positions = 5
 
-	allowed_sexes = list(FEMALE)
+	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = CLOTHED_RACES_TYPES
 	allowed_ages = list(AGE_ADULT, AGE_MIDDLEAGED)
 
