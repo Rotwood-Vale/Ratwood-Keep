@@ -9,8 +9,8 @@
 	inherent_traits = list(TRAIT_NOMOBSWAP)
 	possible_ages = list(AGE_YOUNG, AGE_ADULT, AGE_MIDDLEAGED, AGE_OLD)
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
-	limbs_icon_m = 'icons/roguetown/mob/bodies/m/mt.dmi'
-	limbs_icon_f = 'icons/roguetown/mob/bodies/f/fm.dmi'
+	limbs_icon_m = 'icons/mob/species/male.dmi'
+	limbs_icon_f = 'icons/mob/species/female.dmi'
 	dam_icon = 'icons/roguetown/mob/bodies/dam/dam_male.dmi'
 	dam_icon_f = 'icons/roguetown/mob/bodies/dam/dam_female.dmi'
 	soundpack_m = /datum/voicepack/male/elf
@@ -83,6 +83,8 @@
 		/datum/body_marking/buttscale,
 		/datum/body_marking/tiger,
 		/datum/body_marking/tiger/dark,
+		/datum/body_marking/drake_eyes,
+		/datum/body_marking/tonage,
 	)
 	languages = list(
 		/datum/language/common,

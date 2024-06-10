@@ -58,6 +58,7 @@
 		/datum/customizer/organ/vagina/human,
 		)
 	body_markings = list(
+		/datum/body_marking/tonage,
 	)
 
 /datum/species/human/northern/check_roundstart_eligible()

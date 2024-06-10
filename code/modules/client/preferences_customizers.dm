@@ -203,6 +203,18 @@
 		return entry.eye_color
 	else
 		return "FFFFFF"
+	
+/datum/preferences/proc/get_chest_color()
+	var/list/zone_list = body_markings[BODY_ZONE_CHEST]
+	if(!zone_list)
+		return null
+	for(var/marking_name in zone_list)
+		var/datum/body_marking/marking = GLOB.body_markings[marking_name]
+		if(!marking.covers_chest)
+			continue
+		var/marking_color = zone_list[marking_name]
+		return marking_color
+	return null
 
 /datum/preferences/proc/get_customizer_entry_of_type(entry_type)
 	for(var/datum/customizer_entry/entry as anything in customizer_entries)

@@ -96,17 +96,17 @@
 /datum/sprite_accessory/breasts/pair
 	icon_state = "pair"
 	name = "Pair"
-	color_key_defaults = list(KEY_SKIN_COLOR)
+	color_key_defaults = list(KEY_CHEST_COLOR)
 
 /datum/sprite_accessory/breasts/quad
 	icon_state = "quad"
 	name = "Quad"
-	color_key_defaults = list(KEY_SKIN_COLOR)
+	color_key_defaults = list(KEY_CHEST_COLOR)
 
 /datum/sprite_accessory/breasts/sextuple
 	icon_state = "sextuple"
 	name = "Sextuple"
-	color_key_defaults = list(KEY_SKIN_COLOR)
+	color_key_defaults = list(KEY_CHEST_COLOR)
 
 /datum/sprite_accessory/vagina
 	icon = 'icons/mob/sprite_accessory/genitals/vagina.dmi'
@@ -122,7 +122,7 @@
 /datum/sprite_accessory/vagina/human
 	icon_state = "human"
 	name = "Plain"
-	default_colors = list("f99696")
+	default_colors = list("ea6767")
 
 /datum/sprite_accessory/vagina/hairy
 	icon_state = "hairy"
