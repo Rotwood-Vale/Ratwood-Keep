@@ -42,19 +42,8 @@ GLOBAL_VAR_INIT(adventurer_hugbox_duration_still, 3 MINUTES)
 			addtimer(CALLBACK(H, TYPE_PROC_REF(/mob/living/carbon/human, adv_hugboxing_start)), 1)
 		var/list/classes = GLOB.adv_classes.Copy()
 		var/list/special_classes = list()
-		var/classamt = 5
-		if(M.client)
-			// For every 5 positive PQ points, grant an extra choice for Adventurer classes
-			var/pq = get_playerquality(M.client.ckey, FALSE)
-			if(pq > 0)
-				classamt += floor(pq / 5)
-			if(M.client.patreonlevel() >= 1)
-				classamt = 999
-		// Increase available classes for pilgrims
-		if(ispilgrim)
-			classamt = 15
-		if(isvillager)
-			GLOB.billagerspawns |= H
+		var/classamt = 999
+
 #ifdef TESTSERVER
 		classamt = 999
 #endif
