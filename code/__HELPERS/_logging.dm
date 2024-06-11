@@ -27,70 +27,71 @@
 
 #ifdef UNIT_TESTS
 /proc/log_test(text)
-	WRITE_LOG(GLOB.test_log, text)
+	file(GLOB.test_log) << "\[[time2text(world.realtime, "hh:mm:ss")]] [text]"
 	SEND_TEXT(world.log, text)
 #endif
 
 
 /* Items with ADMINPRIVATE prefixed are stripped from public logs. */
+// file(GLOB.world_game_log) << "\[[time2text(world.realtime, "hh:mm:ss")]] ACCESS: [text]"
 /proc/log_admin(text)
 	GLOB.admin_log.Add(text)
 	if (CONFIG_GET(flag/log_admin))
-		WRITE_LOG(GLOB.world_game_log, "ADMIN: [text]")
+		file(GLOB.world_game_log) << "\[[time2text(world.realtime, "hh:mm:ss")]] ADMIN: [text]"
 
 /proc/log_admin_private(text)
 	GLOB.admin_log.Add(text)
 	if (CONFIG_GET(flag/log_admin))
-		WRITE_LOG(GLOB.world_game_log, "ADMINPRIVATE: [text]")
+		file(GLOB.world_game_log) << "\[[time2text(world.realtime, "hh:mm:ss")]] ADMINPRIVATE: [text]"
 
 /proc/log_adminsay(text)
 	GLOB.admin_log.Add(text)
 	if (CONFIG_GET(flag/log_adminchat))
-		WRITE_LOG(GLOB.world_game_log, "ADMINPRIVATE: ASAY: [text]")
+		file(GLOB.world_game_log) << "\[[time2text(world.realtime, "hh:mm:ss")]] ADMINPRIVATE: ASAY: [text]"
 
 /proc/log_dsay(text)
 	if (CONFIG_GET(flag/log_adminchat))
-		WRITE_LOG(GLOB.world_game_log, "ADMIN: DSAY: [text]")
+		file(GLOB.world_game_log) << "\[[time2text(world.realtime, "hh:mm:ss")]] ADMIN: DSAY: [text]"
 
 
 /* All other items are public. */
 /proc/log_game(text)
 	if (CONFIG_GET(flag/log_game))
-		WRITE_LOG(GLOB.world_game_log, "GAME: [text]")
+		file(GLOB.world_game_log) <<  "\[[time2text(world.realtime, "hh:mm:ss")]] GAME: [text]"
 
 /proc/log_mecha(text)
 	if (CONFIG_GET(flag/log_mecha))
-		WRITE_LOG(GLOB.world_mecha_log, "MECHA: [text]")
+		file(GLOB.world_mecha_log) <<  "\[[time2text(world.realtime, "hh:mm:ss")]] MECHA: [text]"
 
 /proc/log_virus(text)
 	if (CONFIG_GET(flag/log_virus))
-		WRITE_LOG(GLOB.world_virus_log, "VIRUS: [text]")
+		file(GLOB.world_virus_log) << "\[[time2text(world.realtime, "hh:mm:ss")]] VIRUS: [text]"
 
 /proc/log_cloning(text, mob/initiator)
 	if(CONFIG_GET(flag/log_cloning))
-		WRITE_LOG(GLOB.world_cloning_log, "CLONING: [text]")
+		file(GLOB.world_cloning_log) << "\[[time2text(world.realtime, "hh:mm:ss")]] CLONING: [text]"
 
 /proc/log_paper(text)
-	WRITE_LOG(GLOB.world_paper_log, "PAPER: [text]")
+	file(GLOB.world_paper_log) << "\[[time2text(world.realtime, "hh:mm:ss")]] PAPER: [text]"
 
 /proc/log_asset(text)
-	WRITE_LOG(GLOB.world_asset_log, "ASSET: [text]")
+	file(GLOB.world_asset_log) << "\[[time2text(world.realtime, "hh:mm:ss")]] ASSET: [text]"
 
 /proc/log_access(text)
 	if (CONFIG_GET(flag/log_access))
-		WRITE_LOG(GLOB.world_game_log, "ACCESS: [text]")
+		file(GLOB.world_game_log) << "\[[time2text(world.realtime, "hh:mm:ss")]] ACCESS: [text]"
 
 /proc/log_law(text)
 	if (CONFIG_GET(flag/log_law))
-		WRITE_LOG(GLOB.world_game_log, "LAW: [text]")
+		file(GLOB.world_game_log) << "\[[time2text(world.realtime, "hh:mm:ss")]] LAW: [text]"
 
 /proc/log_attack(text)
 	if (CONFIG_GET(flag/log_attack))
-		WRITE_LOG(GLOB.world_attack_log, "ATTACK: [text]")
+		file(GLOB.world_attack_log) << "\[[time2text(world.realtime, "hh:mm:ss")]] ATTACK: [text]"
 
 /proc/log_manifest(ckey, datum/mind/mind,mob/body, latejoin = FALSE)
 	if (CONFIG_GET(flag/log_manifest))
-		WRITE_LOG(GLOB.world_manifest_log, "[ckey] \\ [body.real_name] \\ [mind.assigned_role] \\ [mind.special_role ? mind.special_role : "NONE"] \\ [latejoin ? "LATEJOIN":"ROUNDSTART"]")
+		file(GLOB.world_manifest_log) << "\[[time2text(world.realtime, "hh:mm:ss")]] [ckey] \\ [body.real_name] \\ [mind.assigned_role] \\ [mind.special_role ? mind.special_role : "NONE"] \\ [latejoin ? "LATEJOIN":"ROUNDSTART"]"
 
 /proc/log_bomber(atom/user, details, atom/bomb, additional_details, message_admins = TRUE)
 	var/bomb_message = "[details][bomb ? " [bomb.name] at [AREACOORD(bomb)]": ""][additional_details ? " [additional_details]" : ""]."
@@ -108,92 +109,92 @@
 
 /proc/log_say(text)
 	if (CONFIG_GET(flag/log_say))
-		WRITE_LOG(GLOB.world_game_log, "SAY: [text]")
+		file(GLOB.world_game_log) << "\[[time2text(world.realtime, "hh:mm:ss")]] SAY: [text]"
 
 /proc/log_ooc(text)
 	if (CONFIG_GET(flag/log_ooc))
-		WRITE_LOG(GLOB.world_game_log, "OOC: [text]")
+		file(GLOB.world_game_log) << "\[[time2text(world.realtime, "hh:mm:ss")]] OOC: [text]"
 
 /proc/log_whisper(text)
 	if (CONFIG_GET(flag/log_whisper))
-		WRITE_LOG(GLOB.world_game_log, "WHISPER: [text]")
+		file(GLOB.world_game_log) << "\[[time2text(world.realtime, "hh:mm:ss")]] WHISPER: [text]"
 
 /proc/log_emote(text)
 	if (CONFIG_GET(flag/log_emote))
-		WRITE_LOG(GLOB.world_game_log, "EMOTE: [text]")
+		file(GLOB.world_game_log) << "\[[time2text(world.realtime, "hh:mm:ss")]] EMOTE: [text]"
 
 /proc/log_prayer(text)
 	if (CONFIG_GET(flag/log_prayer))
-		WRITE_LOG(GLOB.world_game_log, "PRAY: [text]")
+		file(GLOB.world_game_log) << "\[[time2text(world.realtime, "hh:mm:ss")]] PRAY: [text]"
 
 /proc/log_pda(text)
 	if (CONFIG_GET(flag/log_pda))
-		WRITE_LOG(GLOB.world_pda_log, "PDA: [text]")
+		file(GLOB.world_pda_log) << "\[[time2text(world.realtime, "hh:mm:ss")]] PDA: [text]"
 
 /proc/log_comment(text)
 	if (CONFIG_GET(flag/log_pda))
 		//reusing the PDA option because I really don't think news comments are worth a config option
-		WRITE_LOG(GLOB.world_pda_log, "COMMENT: [text]")
+		file(GLOB.world_pda_log) << "\[[time2text(world.realtime, "hh:mm:ss")]] COMMENT: [text]"
 
 /proc/log_telecomms(text)
 	if (CONFIG_GET(flag/log_telecomms))
-		WRITE_LOG(GLOB.world_telecomms_log, "TCOMMS: [text]")
+		file(GLOB.world_telecomms_log) << "\[[time2text(world.realtime, "hh:mm:ss")]] TCOMMS: [text]"
 
 /proc/log_chat(text)
 	if (CONFIG_GET(flag/log_pda))
 		//same thing here
-		WRITE_LOG(GLOB.world_pda_log, "CHAT: [text]")
+		file(GLOB.world_pda_log) << "\[[time2text(world.realtime, "hh:mm:ss")]] CHAT: [text]"
 
 /proc/log_vote(text)
 	if (CONFIG_GET(flag/log_vote))
-		WRITE_LOG(GLOB.world_game_log, "VOTE: [text]")
+		file(GLOB.world_game_log) << "\[[time2text(world.realtime, "hh:mm:ss")]] VOTE: [text]"
 
 
 /proc/log_topic(text)
-	WRITE_LOG(GLOB.world_game_log, "TOPIC: [text]")
+	file(GLOB.world_game_log) << "\[[time2text(world.realtime, "hh:mm:ss")]] TOPIC: [text]"
 
 /proc/log_href(text)
-	WRITE_LOG(GLOB.world_href_log, "HREF: [text]")
+	file(GLOB.world_href_log) << "\[[time2text(world.realtime, "hh:mm:ss")]] HREF: [text]"
 
 /proc/log_sql(text)
-	WRITE_LOG(GLOB.sql_error_log, "SQL: [text]")
+	file(GLOB.sql_error_log) << "\[[time2text(world.realtime, "hh:mm:ss")]] SQL: [text]"
 
 /proc/log_qdel(text)
-	WRITE_LOG(GLOB.world_qdel_log, "QDEL: [text]")
+	file(GLOB.world_qdel_log) << "\[[time2text(world.realtime, "hh:mm:ss")]] QDEL: [text]"
 
 /proc/log_query_debug(text)
-	WRITE_LOG(GLOB.query_debug_log, "SQL: [text]")
+	file(GLOB.query_debug_log) << "\[[time2text(world.realtime, "hh:mm:ss")]] SQL: [text]"
 
 /proc/log_job_debug(text)
 	if (CONFIG_GET(flag/log_job_debug))
-		WRITE_LOG(GLOB.world_job_debug_log, "JOB: [text]")
+		file(GLOB.world_job_debug_log) << "\[[time2text(world.realtime, "hh:mm:ss")]] JOB: [text]"
 
 /* Log to both DD and the logfile. */
 /proc/log_world(text)
 #ifdef USE_CUSTOM_ERROR_HANDLER
-	WRITE_LOG(GLOB.world_runtime_log, text)
+	file(GLOB.world_runtime_log) << "\[[time2text(world.realtime, "hh:mm:ss")]] [text]"
 #endif
 	SEND_TEXT(world.log, text)
 
 /* Log to the logfile only. */
 /proc/log_runtime(text)
-	WRITE_LOG(GLOB.world_runtime_log, text)
+	file(GLOB.world_runtime_log) << "\[[time2text(world.realtime, "hh:mm:ss")]] [text]"
 
 /* Rarely gets called; just here in case the config breaks. */
 /proc/log_config(text)
-	WRITE_LOG(GLOB.config_error_log, text)
+	file(GLOB.config_error_log) << "\[[time2text(world.realtime, "hh:mm:ss")]] [text]"
 	SEND_TEXT(world.log, text)
 
 /proc/log_mapping(text)
-	WRITE_LOG(GLOB.world_map_error_log, text)
+	file(GLOB.world_map_error_log) << "\[[time2text(world.realtime, "hh:mm:ss")]] [text]"
 
 /proc/log_character(text)
-	WRITE_LOG(GLOB.character_list_log, text)
+	file(GLOB.character_list_log) << "\[[time2text(world.realtime, "hh:mm:ss")]] [text]"
 
 /* ui logging */
 
 /proc/log_tgui(text)
-	WRITE_LOG(GLOB.tgui_log, text)
+	file(GLOB.tgui_log) << "\[[time2text(world.realtime, "hh:mm:ss")]] [text]"
 
 /* For logging round startup. */
 /proc/start_log(log)
