@@ -73,6 +73,7 @@
 		/datum/body_marking/bellyslim,
 		/datum/body_marking/butt,
 		/datum/body_marking/tonage,
+		/datum/body_marking/tiger/dark,
 	)
 
 /datum/species/akula/check_roundstart_eligible()
