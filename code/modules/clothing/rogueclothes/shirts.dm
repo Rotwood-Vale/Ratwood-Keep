@@ -140,6 +140,7 @@
 	item_state = "rags"
 	r_sleeve_status = SLEEVE_NORMAL
 	l_sleeve_status = SLEEVE_NORMAL
+	flags_inv = HIDECROTCH
 
 /obj/item/clothing/suit/roguetown/shirt/tunic
 	slot_flags = ITEM_SLOT_ARMOR|ITEM_SLOT_SHIRT
@@ -152,6 +153,7 @@
 	sleevetype = "tunic"
 	r_sleeve_status = SLEEVE_NORMAL
 	l_sleeve_status = SLEEVE_NORMAL
+	flags_inv = HIDECROTCH
 
 /obj/item/clothing/suit/roguetown/shirt/tunic/green
 	color = CLOTHING_GREEN
@@ -182,6 +184,7 @@
 	allowed_sex = list(FEMALE)
 	r_sleeve_status = SLEEVE_NORMAL
 	l_sleeve_status = SLEEVE_NORMAL
+	flags_inv = HIDECROTCH
 
 /obj/item/clothing/suit/roguetown/shirt/dress/gen
 	slot_flags = ITEM_SLOT_ARMOR|ITEM_SLOT_SHIRT
@@ -276,6 +279,7 @@
 	color = "#7c6d5c"
 	r_sleeve_status = SLEEVE_NORMAL
 	l_sleeve_status = SLEEVE_NORMAL
+	flags_inv = HIDECROTCH
 
 /obj/item/clothing/suit/roguetown/shirt/robe/astrata
 	slot_flags = ITEM_SLOT_ARMOR
@@ -420,3 +424,4 @@
 	boobed = TRUE
 	r_sleeve_status = SLEEVE_NORMAL
 	l_sleeve_status = SLEEVE_NORMAL
+	flags_inv = HIDECROTCH

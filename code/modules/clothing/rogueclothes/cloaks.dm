@@ -26,6 +26,7 @@
 	boobed = TRUE
 	slot_flags = ITEM_SLOT_ARMOR|ITEM_SLOT_CLOAK
 	var/picked
+	flags_inv = HIDECROTCH
 
 /obj/item/clothing/cloak/tabard/update_icon()
 	cut_overlays()
@@ -256,6 +257,7 @@
 	nodismemsleeves = TRUE
 	slot_flags = ITEM_SLOT_ARMOR|ITEM_SLOT_CLOAK
 	var/picked
+	flags_inv = HIDECROTCH
 
 /obj/item/clothing/cloak/stabard/attack_right(mob/user)
 	if(picked)
@@ -564,6 +566,7 @@
 	body_parts_covered = CHEST|GROIN
 	boobed = TRUE
 	allowed_race = CLOTHED_RACES_TYPES
+	flags_inv = HIDECROTCH
 
 /obj/item/clothing/cloak/apron/blacksmith
 	name = "leather apron"
@@ -574,6 +577,7 @@
 	body_parts_covered = CHEST|GROIN
 	armor = list("melee" = 12, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 24, "acid" = 0)
 	boobed = TRUE
+	flags_inv = HIDECROTCH
 
 /obj/item/clothing/cloak/apron/brown
 	color = CLOTHING_BROWN
