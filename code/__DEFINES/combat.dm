@@ -322,6 +322,8 @@ GLOBAL_LIST_INIT(shove_disarming_types, typecacheof(list(
 #define BODY_ZONE_R_LEG		"r_leg"
 #define BODY_ZONE_R_INHAND	"r_inhand"
 #define BODY_ZONE_L_INHAND	"l_inhand"
+#define BODY_ZONE_L_LEG_RENDERAUX		"l_leg_above" //Vrell - putting these here to match standard conventions with hands
+#define BODY_ZONE_R_LEG_RENDERAUX		"r_leg_above"
 
 #define BODY_ZONE_PRECISE_STOMACH	"stomach"
 #define BODY_ZONE_PRECISE_R_EYE		"r_eye"

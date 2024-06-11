@@ -24,10 +24,10 @@
 #define BODY_LAYER				39		//underwear, undershirts, socks, eyes, lips(makeup)
 #define FRONT_MUTATIONS_LAYER	38		//mutations that should appear above body, body_adj and bodyparts layer (e.g. laser eyes)
 #define DAMAGE_LAYER			37		//damage indicators (cuts and burns)
-#define PANTS_LAYER				36
-#define SHOES_LAYER				35
-#define LEG_PART_LAYER			34
-#define LEG_DAMAGE_LAYER		33
+#define LEG_PART_LAYER			36		//Vrell - Swapped pants and shoes with these layers because these are SUPPOSED to be used for the upper legs but got removed at some point for some reason.
+#define LEG_DAMAGE_LAYER		35		//Vrell - These should also 100% be rendered BELOW pants, because like... come on. Legs go under pants.
+#define PANTS_LAYER				34
+#define SHOES_LAYER				33
 #define LEGSLEEVE_LAYER			32
 #define SHOESLEEVE_LAYER		31
 #define SHIRT_LAYER				30

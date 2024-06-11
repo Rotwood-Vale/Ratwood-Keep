@@ -810,6 +810,8 @@
 	max_damage = 100
 	body_zone = BODY_ZONE_L_LEG
 	body_part = LEG_LEFT
+	aux_zone = BODY_ZONE_L_LEG_RENDERAUX
+	aux_layer = LEG_PART_LAYER
 	body_damage_coeff = 1
 	px_x = -2
 	px_y = 12
@@ -867,6 +869,8 @@
 	max_damage = 100
 	body_zone = BODY_ZONE_R_LEG
 	body_part = LEG_RIGHT
+	aux_zone = BODY_ZONE_R_LEG_RENDERAUX
+	aux_layer = LEG_PART_LAYER
 	body_damage_coeff = 1
 	px_x = 2
 	px_y = 12
