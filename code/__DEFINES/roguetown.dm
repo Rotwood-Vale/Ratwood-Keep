@@ -69,6 +69,8 @@
 	/datum/species/moth,\
 	/datum/species/dracon,\
 	/datum/species/anthromorph,\
+	/datum/species/demihuman,\
+	/datum/species/halforc,\
 )
 // Non-elf non-dwarf mostly
 #define HUMANLIKE_RACE_TYPES list(\
