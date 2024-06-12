@@ -141,7 +141,7 @@
 	var/main_color
 	var/second_color
 	var/random = rand(1,5)
-	//Choose from a variety of draconic colors
+	//Choose from a variety of lizardish colors
 	switch(random)
 		if(1)
 			main_color = "15921a"
