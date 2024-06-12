@@ -144,10 +144,7 @@
 			if(text_char)
 				var/path = "sound/vo/female/spch/[text_char].ogg"
 				if(gender == MALE)
-					if(age == AGE_YOUNG)
-						path = "sound/vo/male/spch/teen/[text_char].ogg"
-					else
-						path = "sound/vo/male/spch/[text_char].ogg"
+					path = "sound/vo/male/spch/[text_char].ogg"
 				if(fexists(path))
 					playsound(get_turf(src), path, 100, FALSE, -1, frequency = freq2use)
 			sleep(1)

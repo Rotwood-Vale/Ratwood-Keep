@@ -15,7 +15,7 @@
 	use_skintones = TRUE
 	disliked_food = NONE
 	liked_food = NONE
-	possible_ages = list(AGE_ADULT, AGE_MIDDLEAGED, AGE_OLD)
+	possible_ages = ALL_AGES_LIST
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
 	limbs_icon_m = 'icons/roguetown/mob/bodies/m/ma.dmi'
 	limbs_icon_f = 'icons/roguetown/mob/bodies/f/fa.dmi'

@@ -65,12 +65,6 @@
 				for(var/S in H.dna.species.specstats)
 					change_stat(S, H.dna.species.specstats[S])
 		switch(H.age)
-			if(AGE_YOUNG)
-				H.virginity = TRUE
-				change_stat("strength", -2)
-				change_stat("constitution", -2)
-				change_stat("perception", 1)
-				change_stat("speed", round(rand(-1,2)))
 			if(AGE_MIDDLEAGED)
 				change_stat("speed", -1)
 				change_stat("endurance", 1)

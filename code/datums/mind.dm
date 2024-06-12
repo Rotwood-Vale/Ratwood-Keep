@@ -1011,6 +1011,5 @@
 
 /datum/mind/proc/get_learning_boon(skill)
 	var/mob/living/carbon/human/H = current
-	var/boon = H.age == AGE_YOUNG ? 1.2 : 1 // optional
-	boon += get_skill_level(skill) / 10
+	var/boon = get_skill_level(skill) / 10
 	return boon 
