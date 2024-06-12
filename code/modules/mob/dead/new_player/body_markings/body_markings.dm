@@ -54,7 +54,7 @@
 	icon = 'icons/mob/body_markings/tiger_markings.dmi'
 	name = "Tiger"
 	icon_state = "ltiger"
-	affected_bodyparts = CHEST | HAND_LEFT | HAND_RIGHT | ARM_LEFT | ARM_RIGHT | LEG_LEFT | LEG_RIGHT
+	affected_bodyparts = CHEST | ARM_LEFT | ARM_RIGHT | LEG_LEFT | LEG_RIGHT
 	default_color = DEFAULT_SECONDARY
 
 /datum/body_marking/tiger/dark

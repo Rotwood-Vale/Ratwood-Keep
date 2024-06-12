@@ -7,7 +7,7 @@
 	desc = "In time you will learn the history of this race"
 	species_traits = list(EYECOLOR,LIPS,STUBBLE,MUTCOLORS)
 	inherent_traits = list(TRAIT_NOMOBSWAP)
-	possible_ages = list(AGE_YOUNG, AGE_ADULT, AGE_MIDDLEAGED, AGE_OLD)
+	possible_ages = ALL_AGES_LIST
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
 	limbs_icon_m = 'icons/mob/species/male.dmi'
 	limbs_icon_f = 'icons/mob/species/female.dmi'
@@ -73,6 +73,7 @@
 		/datum/body_marking/bellyslim,
 		/datum/body_marking/butt,
 		/datum/body_marking/tonage,
+		/datum/body_marking/tiger/dark,
 	)
 
 /datum/species/akula/check_roundstart_eligible()

@@ -22,7 +22,7 @@
 			else
 				GLOB.news_network.SubmitArticle(title + "<br><br>" + text, "", "Station Announcements", null)
 */
-	announcement += "<br><span class='alert'>[html_encode(text)]</span>"
+	announcement += "<br><span class='alert'>[strip_html_simple(text)]</span>"
 //	announcement += "<br>"
 
 	var/s = sound(sound)
