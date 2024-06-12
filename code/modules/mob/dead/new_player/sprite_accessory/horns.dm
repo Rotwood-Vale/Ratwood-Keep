@@ -56,3 +56,9 @@
 	name = "Tiefling"
 	icon = 'icons/mob/sprite_accessory/tiefling.dmi'
 	icon_state = "tiebhorns"
+
+/datum/sprite_accessory/horns/halforc
+	name = "Half Orc"
+	icon = 'icons/mob/sprite_accessory/halforc.dmi'
+	icon_state = "orctusk"
+	default_colors = list("#F4F4BE")

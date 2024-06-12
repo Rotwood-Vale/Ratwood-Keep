@@ -165,3 +165,7 @@
 /obj/item/organ/ears/akula
 	name = "axian ears"
 	accessory_type = /datum/sprite_accessory/ears/sergal
+
+/obj/item/organ/ears/halforc
+	name = "halforc ears"
+	accessory_type = /datum/sprite_accessory/ears/halforc

@@ -11,3 +11,7 @@
 /obj/item/organ/horns/tiefling
 	name = "tiefling horns"
 	accessory_type =  /datum/sprite_accessory/horns/tiefling
+
+/obj/item/organ/horns/halforc
+	name = "halforc horns"
+	accessory_type = /datum/sprite_accessory/horns/halforc
