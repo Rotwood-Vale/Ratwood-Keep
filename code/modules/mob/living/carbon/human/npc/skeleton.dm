@@ -23,8 +23,6 @@
 /mob/living/carbon/human/species/skeleton/Initialize()
 	. = ..()
 	cut_overlays()
-	spawn(10)
-		after_creation()
 
 	addtimer(CALLBACK(src, PROC_REF(after_creation)), 10)
 
@@ -64,7 +62,6 @@
 	real_name = "skelelon"
 	ADD_TRAIT(src, TRAIT_NOMOOD, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_NOROGSTAM, TRAIT_GENERIC)
-	ADD_TRAIT(src, TRAIT_NOLIMBDISABLE, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_NOHUNGER, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_EASYDISMEMBER, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_NOBREATH, TRAIT_GENERIC)
