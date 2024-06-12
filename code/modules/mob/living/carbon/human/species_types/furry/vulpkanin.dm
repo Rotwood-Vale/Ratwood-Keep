@@ -72,6 +72,7 @@
 	body_marking_sets = list(
 		/datum/body_marking_set/none,
 		/datum/body_marking_set/bellysocks,
+		/datum/body_marking_set/bellysockstertiary,
 		/datum/body_marking_set/belly,
 	)
 	body_markings = list(
@@ -111,8 +112,8 @@
 			second_color = "ffd2c0"
 	returned["mcolor"] = main_color
 	returned["mcolor2"] = second_color
-	returned["mcolor3"] = second_color
+	returned["mcolor3"] = "373330"
 	return returned
 
 /datum/species/vulpkanin/get_random_body_markings(list/passed_features)
-	return assemble_body_markings_from_set(GLOB.body_marking_sets_by_type[/datum/body_marking_set/bellysocks], passed_features, src)
+	return assemble_body_markings_from_set(GLOB.body_marking_sets_by_type[/datum/body_marking_set/bellysockstertiary], passed_features, src)
