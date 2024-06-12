@@ -135,7 +135,6 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 		owner.i_know_person(MF)
 		owner.person_knows_me(MF)
 
-	var/mob/living/carbon/human/H = owner.current
 	owner.adjust_skillrank(/datum/skill/magic/blood, 2, TRUE)
 	owner.current.ambushable = FALSE
 
