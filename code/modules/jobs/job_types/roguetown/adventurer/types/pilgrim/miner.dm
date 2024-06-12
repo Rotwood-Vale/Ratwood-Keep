@@ -2,7 +2,7 @@
 	name = "Miner"
 	tutorial = "You are a Miner, you mine for the local blacksmith, gathering rare ores. \
 	there are tales of ambitious dwarf miners building great forts in the lavalands, to harvest all of it's hardly touched ores"
-	allowed_sexes = list("male")
+	allowed_sexes = list(MALE)
 	allowed_races = CLOTHED_RACES_TYPES
 	outfit = /datum/outfit/job/roguetown/adventurer/miner
 	isvillager = TRUE

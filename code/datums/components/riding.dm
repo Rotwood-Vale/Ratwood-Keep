@@ -221,10 +221,6 @@
 	var/mob/living/carbon/human/H = parent
 	var/amt2use = HUMAN_CARRY_SLOWDOWN
 	var/reqstrength = 10
-	if(ishuman(M))
-		var/mob/living/carbon/human/HM = M
-		if(HM.age == AGE_YOUNG)
-			reqstrength -= 2
 	if(H.r_grab && H.l_grab)
 		if(H.r_grab.grabbed == M)
 			if(H.l_grab.grabbed == M)

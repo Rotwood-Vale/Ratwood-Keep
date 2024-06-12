@@ -217,12 +217,12 @@
 
 /obj/item/bodypart/chest/skeletonize()
 	. = ..()
-	if(owner && (NOBLOOD in owner.dna?.species?.species_traits))
+	if(owner && !(NOBLOOD in owner.dna?.species?.species_traits))
 		owner.death()
 
 /obj/item/bodypart/head/skeletonize()
 	. = ..()
-	if(owner && (NOBLOOD in owner.dna?.species?.species_traits))
+	if(owner && !(NOBLOOD in owner.dna?.species?.species_traits))
 		owner.death()
 
 /obj/item/bodypart/proc/consider_processing()

@@ -473,8 +473,9 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampire Lord", "Extended", "
 				aspirants += rogue
 				pre_aspirants -= rogue
 	var/mob/living/king = SSticker.rulermob
-	var/datum/antagonist/ruler = new /datum/antagonist/aspirant/ruler() // Do the king last.
-	king.mind.add_antag_datum(ruler)
+	if(king)
+		var/datum/antagonist/ruler = new /datum/antagonist/aspirant/ruler() // Do the king last.
+		king.mind.add_antag_datum(ruler)
 
 ///////////////// REBELS
 	for(var/datum/mind/rebelguy in pre_rebels)

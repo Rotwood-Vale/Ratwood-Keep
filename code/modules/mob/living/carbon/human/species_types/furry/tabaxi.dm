@@ -17,7 +17,7 @@
 	skin_tone_wording = "Fur Colors"
 	species_traits = list(EYECOLOR,HAIR,FACEHAIR,LIPS,STUBBLE, MUTCOLORS)
 	inherent_traits = list(TRAIT_NOMOBSWAP)
-	possible_ages = list(AGE_YOUNG, AGE_ADULT, AGE_MIDDLEAGED, AGE_OLD)
+	possible_ages = ALL_AGES_LIST
 	limbs_icon_m = 'icons/mob/species/male.dmi'
 	limbs_icon_f = 'icons/mob/species/female.dmi'
 	dam_icon = 'icons/roguetown/mob/bodies/dam/dam_male.dmi'
