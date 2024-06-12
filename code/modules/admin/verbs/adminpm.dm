@@ -6,7 +6,7 @@
 	set category = null
 	set name = "Admin PM Mob"
 	if(!holder)
-		to_chat(src, "<span class='danger'>Error: Admin-PM-Context: Only administrators may use this command.</span>")
+		to_chat(src, span_danger("Error: Admin-PM-Context: Only administrators may use this command."))
 		return
 	if( !ismob(M) || !M.client )
 		return
@@ -18,7 +18,7 @@
 	set category = "Admin"
 	set name = "Admin PM"
 	if(!holder)
-		to_chat(src, "<span class='danger'>Error: Admin-PM-Panel: Only administrators may use this command.</span>")
+		to_chat(src, span_danger("Error: Admin-PM-Panel: Only administrators may use this command."))
 		return
 	var/list/client/targets[0]
 	for(var/client/T)
@@ -37,7 +37,7 @@
 
 /client/proc/cmd_ahelp_reply(whom)
 	if(prefs.muted & MUTE_ADMINHELP)
-		to_chat(src, "<span class='danger'>Error: Admin-PM: You are unable to use admin PM-s (muted).</span>")
+		to_chat(src, span_danger("Error: Admin-PM: You are unable to use admin PM-s (muted)."))
 		return
 	var/client/C
 	if(istext(whom))
@@ -48,7 +48,7 @@
 		C = whom
 	if(!C)
 		if(holder)
-			to_chat(src, "<span class='danger'>Error: Admin-PM: Client not found.</span>")
+			to_chat(src, span_danger("Error: Admin-PM: Client not found."))
 		return
 
 	var/datum/admin_help/AH = C.current_ticket
@@ -65,12 +65,12 @@
 //Fetching a message if needed. src is the sender and C is the target client
 /client/proc/cmd_admin_pm(whom, msg)
 	if(prefs.muted & MUTE_ADMINHELP)
-		to_chat(src, "<span class='danger'>Error: Admin-PM: You are unable to use admin PM-s (muted).</span>")
+		to_chat(src, span_danger("Error: Admin-PM: You are unable to use admin PM-s (muted)."))
 		return
 
 	if(!holder && !current_ticket)	//no ticket? https://www.youtube.com/watch?v=iHSPf6x1Fdo
-		to_chat(src, "<span class='danger'>I can no longer reply to this ticket, please open another one by using the Adminhelp verb if need be.</span>")
-		to_chat(src, "<span class='notice'>Message: [msg]</span>")
+		to_chat(src, span_danger("I can no longer reply to this ticket, please open another one by using the Adminhelp verb if need be."))
+		to_chat(src, span_notice("Message: [msg]"))
 		return
 
 	var/client/recipient
@@ -95,14 +95,14 @@
 		if(!msg)
 			return
 		if(holder)
-			to_chat(src, "<span class='danger'>Error: Use the admin IRC channel, nerd.</span>")
+			to_chat(src, span_danger("Error: Use the admin IRC channel, nerd."))
 			return
 
 
 	else
 		if(!recipient)
 			if(holder)
-				to_chat(src, "<span class='danger'>Error: Admin-PM: Client not found.</span>")
+				to_chat(src, span_danger("Error: Admin-PM: Client not found."))
 				if(msg)
 					to_chat(src, msg)
 				return
@@ -118,12 +118,12 @@
 				return
 
 			if(prefs.muted & MUTE_ADMINHELP)
-				to_chat(src, "<span class='danger'>Error: Admin-PM: You are unable to use admin PM-s (muted).</span>")
+				to_chat(src, span_danger("Error: Admin-PM: You are unable to use admin PM-s (muted)."))
 				return
 
 			if(!recipient)
 				if(holder)
-					to_chat(src, "<span class='danger'>Error: Admin-PM: Client not found.</span>")
+					to_chat(src, span_danger("Error: Admin-PM: Client not found."))
 				else
 					current_ticket.MessageNoRecipient(msg)
 				return
@@ -145,15 +145,15 @@
 	var/keywordparsedmsg = keywords_lookup(msg)
 
 	if(irc)
-		to_chat(src, "<span class='notice'>PM to-<b>Admins</b>: <span class='linkify'>[rawmsg]</span></span>")
+		to_chat(src, span_notice("PM to-<b>Admins</b>: <span class='linkify'>[rawmsg]</span>"))
 		var/datum/admin_help/AH = admin_ticket_log(src, "<font color='red'>Reply PM from-<b>[key_name(src, TRUE, TRUE)]</b> to <i>IRC</i>: [keywordparsedmsg]</font>")
 		ircreplyamount--
 		send2irc("[AH ? "#[AH.id] " : ""]Reply: [ckey]", rawmsg)
 	else
 		if(recipient.holder)
 			if(holder)	//both are admins
-				to_chat(recipient, "<span class='danger'>Admin PM from-<b>[key_name(src, recipient, 1)]</b>: <span class='linkify'>[keywordparsedmsg]</span></span>")
-				to_chat(src, "<span class='notice'>Admin PM to-<b>[key_name(recipient, src, 1)]</b>: <span class='linkify'>[keywordparsedmsg]</span></span>")
+				to_chat(recipient, span_danger("Admin PM from-<b>[key_name(src, recipient, 1)]</b>: <span class='linkify'>[keywordparsedmsg]</span>"))
+				to_chat(src, span_notice("Admin PM to-<b>[key_name(recipient, src, 1)]</b>: <span class='linkify'>[keywordparsedmsg]</span>"))
 
 				//omg this is dumb, just fill in both their tickets
 				var/interaction_message = "<font color='purple'>PM from-<b>[key_name(src, recipient, 1)]</b> to-<b>[key_name(recipient, src, 1)]</b>: [keywordparsedmsg]</font>"
@@ -164,8 +164,8 @@
 			else		//recipient is an admin but sender is not
 				var/replymsg = "Reply PM from-<b>[key_name(src, recipient, 1)]</b>: <span class='linkify'>[keywordparsedmsg]</span>"
 				admin_ticket_log(src, "<font color='red'>[replymsg]</font>")
-				to_chat(recipient, "<span class='danger'>[replymsg]</span>")
-				to_chat(src, "<span class='notice'>PM to-<b>Admins</b>: <span class='linkify'>[msg]</span></span>")
+				to_chat(recipient, span_danger("[replymsg]"))
+				to_chat(src, span_notice("PM to-<b>Admins</b>: <span class='linkify'>[msg]</span>"))
 
 			//play the receiving admin the adminhelp sound (if they have them enabled)
 			if(recipient.prefs.toggles & SOUND_ADMINHELP)
@@ -177,9 +177,9 @@
 					new /datum/admin_help(msg, recipient, TRUE)
 
 				to_chat(recipient, "<font color='red' size='4'><b>-- Administrator private message --</b></font>")
-				to_chat(recipient, "<span class='adminsay'>Admin PM from-<b>[key_name(src, recipient, 0)]</b>: <span class='linkify'>[msg]</span></span>")
-				to_chat(recipient, "<span class='adminsay'><i>Click on the administrator's name to reply.</i></span>")
-				to_chat(src, "<span class='notice'>Admin PM to-<b>[key_name(recipient, src, 1)]</b>: <span class='linkify'>[msg]</span></span>")
+				to_chat(recipient, span_adminsay("Admin PM from-<b>[key_name(src, recipient, 0)]</b>: <span class='linkify'>[msg]</span>"))
+				to_chat(recipient, span_adminsay("<i>Click on the administrator's name to reply.</i>"))
+				to_chat(src, span_notice("Admin PM to-<b>[key_name(recipient, src, 1)]</b>: <span class='linkify'>[msg]</span>"))
 
 				admin_ticket_log(recipient, "<font color='purple'>PM From [key_name_admin(src)]: [keywordparsedmsg]</font>")
 
@@ -191,20 +191,20 @@
 					INVOKE_ASYNC(src, PROC_REF(popup_admin_pm), recipient, msg)
 
 			else		//neither are admins
-				to_chat(src, "<span class='danger'>Error: Admin-PM: Non-admin to non-admin PM communication is forbidden.</span>")
+				to_chat(src, span_danger("Error: Admin-PM: Non-admin to non-admin PM communication is forbidden."))
 				return
 
 	if(irc)
 		log_admin_private("PM: [key_name(src)]->IRC: [rawmsg]")
 		for(var/client/X in GLOB.admins)
-			to_chat(X, "<span class='notice'><B>PM: [key_name(src, X, 0)]-&gt;IRC:</B> [keywordparsedmsg]</span>")
+			to_chat(X, span_notice("<B>PM: [key_name(src, X, 0)]-&gt;IRC:</B> [keywordparsedmsg]"))
 	else
 		window_flash(recipient, ignorepref = TRUE)
 		log_admin_private("PM: [key_name(src)]->[key_name(recipient)]: [rawmsg]")
 		//we don't use message_admins here because the sender/receiver might get it too
 		for(var/client/X in GLOB.admins)
 			if(X.key!=key && X.key!=recipient.key)	//check client/X is an admin and isn't the sender or recipient
-				to_chat(X, "<span class='notice'><B>PM: [key_name(src, X, 0)]-&gt;[key_name(recipient, X, 0)]:</B> [keywordparsedmsg]</span>" )
+				to_chat(X, span_notice("<B>PM: [key_name(src, X, 0)]-&gt;[key_name(recipient, X, 0)]:</B> [keywordparsedmsg]") )
 
 /client/proc/popup_admin_pm(client/recipient, msg)
 	var/sender = src
@@ -295,8 +295,8 @@
 	msg = emoji_parse(msg)
 
 	to_chat(C, "<font color='red' size='4'><b>-- Administrator private message --</b></font>")
-	to_chat(C, "<span class='adminsay'>Admin PM from-<b><a href='?priv_msg=[stealthkey]'>[adminname]</A></b>: [msg]</span>")
-	to_chat(C, "<span class='adminsay'><i>Click on the administrator's name to reply.</i></span>")
+	to_chat(C, span_adminsay("Admin PM from-<b><a href='?priv_msg=[stealthkey]'>[adminname]</A></b>: [msg]"))
+	to_chat(C, span_adminsay("<i>Click on the administrator's name to reply.</i>"))
 
 	admin_ticket_log(C, "<font color='purple'>PM From [irc_tagged]: [msg]</font>")
 

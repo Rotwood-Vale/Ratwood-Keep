@@ -12,9 +12,9 @@
 /obj/machinery/computer/aifixer/screwdriver_act(mob/living/user, obj/item/I)
 	if(occupier)
 		if(stat & (NOPOWER|BROKEN))
-			to_chat(user, "<span class='warning'>The screws on [name]'s screen won't budge.</span>")
+			to_chat(user, span_warning("The screws on [name]'s screen won't budge."))
 		else
-			to_chat(user, "<span class='warning'>The screws on [name]'s screen won't budge and it emits a warning beep.</span>")
+			to_chat(user, span_warning("The screws on [name]'s screen won't budge and it emits a warning beep."))
 	else
 		return ..()
 
@@ -59,9 +59,9 @@
 		dat += "<b>Laws:</b><br>[laws]<br>"
 
 		if (src.occupier.stat == DEAD)
-			dat += "<span class='bad'>AI non-functional</span>"
+			dat += span_bad("AI non-functional")
 		else
-			dat += "<span class='good'>AI functional</span>"
+			dat += span_good("AI functional")
 		if (!src.active)
 			dat += {"<br><br><A href='byond://?src=[REF(src)];fix=1'>Begin Reconstruction</A>"}
 		else
@@ -84,7 +84,7 @@
 		occupier.revive(full_heal = FALSE, admin_revive = FALSE)
 		if(!occupier.radio_enabled)
 			occupier.radio_enabled = TRUE
-			to_chat(occupier, "<span class='warning'>My Subspace Transceiver has been enabled!</span>")
+			to_chat(occupier, span_warning("My Subspace Transceiver has been enabled!"))
 	return occupier.health < 100
 
 /obj/machinery/computer/aifixer/process()
@@ -100,7 +100,7 @@
 	if(..())
 		return
 	if(href_list["fix"])
-		to_chat(usr, "<span class='notice'>Reconstruction in progress. This will take several minutes.</span>")
+		to_chat(usr, span_notice("Reconstruction in progress. This will take several minutes."))
 		playsound(src, 'sound/blank.ogg', 25, FALSE)
 		active = TRUE
 		if(occupier)
@@ -131,29 +131,29 @@
 	//Downloading AI from card to terminal.
 	if(interaction == AI_TRANS_FROM_CARD)
 		if(stat & (NOPOWER|BROKEN))
-			to_chat(user, "<span class='alert'>[src] is offline and cannot take an AI at this time.</span>")
+			to_chat(user, span_alert("[src] is offline and cannot take an AI at this time."))
 			return
 		AI.forceMove(src)
 		occupier = AI
 		AI.control_disabled = TRUE
 		AI.radio_enabled = FALSE
-		to_chat(AI, "<span class='alert'>I have been uploaded to a stationary terminal. Sadly, there is no remote access from here.</span>")
+		to_chat(AI, span_alert("I have been uploaded to a stationary terminal. Sadly, there is no remote access from here."))
 		to_chat(user, "<span class='notice'>Transfer successful</span>: [AI.name] ([rand(1000,9999)].exe) installed and executed successfully. Local copy has been removed.")
 		card.AI = null
 		update_icon()
 
 	else //Uploading AI from terminal to card
 		if(occupier && !active)
-			to_chat(occupier, "<span class='notice'>I have been downloaded to a mobile storage device. Still no remote access.</span>")
+			to_chat(occupier, span_notice("I have been downloaded to a mobile storage device. Still no remote access."))
 			to_chat(user, "<span class='notice'>Transfer successful</span>: [occupier.name] ([rand(1000,9999)].exe) removed from host terminal and stored within local memory.")
 			occupier.forceMove(card)
 			card.AI = occupier
 			occupier = null
 			update_icon()
 		else if (active)
-			to_chat(user, "<span class='alert'>ERROR: Reconstruction in progress.</span>")
+			to_chat(user, span_alert("ERROR: Reconstruction in progress."))
 		else if (!occupier)
-			to_chat(user, "<span class='alert'>ERROR: Unable to locate artificial intelligence.</span>")
+			to_chat(user, span_alert("ERROR: Unable to locate artificial intelligence."))
 
 /obj/machinery/computer/aifixer/on_deconstruction()
 	if(occupier)

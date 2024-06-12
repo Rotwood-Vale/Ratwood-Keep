@@ -27,7 +27,7 @@
 
 /datum/species/elf/after_creation(mob/living/carbon/C)
 	..()
-	to_chat(C, "<span class='info'>I can speak Elfish with ,e before my speech.</span>")
+	to_chat(C, span_info("I can speak Elfish with ,e before my speech."))
 
 /datum/species/elf/on_species_loss(mob/living/carbon/C)
 	. = ..()

@@ -36,7 +36,7 @@
 	//Max devotion limit
 	if(devotion > max_devotion)
 		devotion = max_devotion
-		to_chat(holder_mob, "<span class='warning'>I have reached the limit of my devotion...</span>")
+		to_chat(holder_mob, span_warning("I have reached the limit of my devotion..."))
 	if(!prog_amt) // no point in the rest if it's just an expenditure
 		return
 	progression = min(progression + prog_amt, max_progression)

@@ -36,47 +36,47 @@
 	if(istype(tool, /obj/item/twohanded/shockpaddles))
 		var/obj/item/twohanded/shockpaddles/S = tool
 		if((S.req_defib && !S.defib.powered) || !S.wielded || S.cooldown || S.busy)
-			to_chat(user, "<span class='warning'>I need to wield both paddles, and [S.defib] must be powered!</span>")
+			to_chat(user, span_warning("I need to wield both paddles, and [S.defib] must be powered!"))
 			return FALSE
 	if(istype(tool, /obj/item/melee/baton))
 		var/obj/item/melee/baton/B = tool
 		if(!B.status)
-			to_chat(user, "<span class='warning'>[B] needs to be active!</span>")
+			to_chat(user, span_warning("[B] needs to be active!"))
 			return FALSE
 	if(istype(tool, /obj/item/gun/energy))
 		var/obj/item/gun/energy/E = tool
 		if(E.chambered && istype(E.chambered, /obj/item/ammo_casing/energy/electrode))
 			return TRUE
 		else
-			to_chat(user, "<span class='warning'>I need an electrode for this!</span>")
+			to_chat(user, span_warning("I need an electrode for this!"))
 			return FALSE
 
 /datum/surgery_step/revive/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
-	display_results(user, target, "<span class='notice'>I prepare to give [target]'s brain the spark of life with [tool].</span>",
-		"<span class='notice'>[user] prepares to shock [target]'s brain with [tool].</span>",
-		"<span class='notice'>[user] prepares to shock [target]'s brain with [tool].</span>")
+	display_results(user, target, span_notice("I prepare to give [target]'s brain the spark of life with [tool]."),
+		span_notice("[user] prepares to shock [target]'s brain with [tool]."),
+		span_notice("[user] prepares to shock [target]'s brain with [tool]."))
 	target.notify_ghost_cloning("Someone is trying to zap your brain. Re-enter your corpse if you want to be revived!", source = target)
 
 /datum/surgery_step/revive/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
-	display_results(user, target, "<span class='notice'>I successfully shock [target]'s brain with [tool]...</span>",
-		"<span class='notice'>[user] send a powerful shock to [target]'s brain with [tool]...</span>",
-		"<span class='notice'>[user] send a powerful shock to [target]'s brain with [tool]...</span>")
+	display_results(user, target, span_notice("I successfully shock [target]'s brain with [tool]..."),
+		span_notice("[user] send a powerful shock to [target]'s brain with [tool]..."),
+		span_notice("[user] send a powerful shock to [target]'s brain with [tool]..."))
 	playsound(get_turf(target), 'sound/blank.ogg', 50, TRUE)
 	target.adjustOxyLoss(-50, 0)
 	target.updatehealth()
 	if(target.revive(full_heal = FALSE, admin_revive = FALSE))
-		target.visible_message("<span class='notice'>...[target] wakes up, alive and aware!</span>")
+		target.visible_message(span_notice("...[target] wakes up, alive and aware!"))
 		target.emote("breathgasp")
 		target.adjustOrganLoss(ORGAN_SLOT_BRAIN, 50, 199) //MAD SCIENCE
 		return TRUE
 	else
-		target.visible_message("<span class='warning'>...[target.p_they()] convulses, then lies still.</span>")
+		target.visible_message(span_warning("...[target.p_they()] convulses, then lies still."))
 		return FALSE
 
 /datum/surgery_step/revive/failure(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
-	display_results(user, target, "<span class='notice'>I shock [target]'s brain with [tool], but [target.p_they()] doesn't react.</span>",
-		"<span class='notice'>[user] send a powerful shock to [target]'s brain with [tool], but [target.p_they()] doesn't react.</span>",
-		"<span class='notice'>[user] send a powerful shock to [target]'s brain with [tool], but [target.p_they()] doesn't react.</span>")
+	display_results(user, target, span_notice("I shock [target]'s brain with [tool], but [target.p_they()] doesn't react."),
+		span_notice("[user] send a powerful shock to [target]'s brain with [tool], but [target.p_they()] doesn't react."),
+		span_notice("[user] send a powerful shock to [target]'s brain with [tool], but [target.p_they()] doesn't react."))
 	playsound(get_turf(target), 'sound/blank.ogg', 50, TRUE)
 	target.adjustOrganLoss(ORGAN_SLOT_BRAIN, 15, 180)
 	return FALSE

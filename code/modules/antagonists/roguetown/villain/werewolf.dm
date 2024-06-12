@@ -44,16 +44,16 @@
 
 /datum/antagonist/werewolf/examine_friendorfoe(datum/antagonist/examined_datum,mob/examiner,mob/examined)
 	if(istype(examined_datum, /datum/antagonist/werewolf/lesser))
-		return "<span class='boldnotice'>A young lupine kin.</span>"
+		return span_boldnotice("A young lupine kin.")
 	if(istype(examined_datum, /datum/antagonist/werewolf))
-		return "<span class='boldnotice'>An elder lupine kin.</span>"
+		return span_boldnotice("An elder lupine kin.")
 	if(examiner.Adjacent(examined))
 		if(istype(examined_datum, /datum/antagonist/vampirelord/lesser))
 			if(transformed)
-				return "<span class='boldwarning'>A lesser Vampire.</span>"
+				return span_boldwarning("A lesser Vampire.")
 		if(istype(examined_datum, /datum/antagonist/vampirelord))
 			if(transformed)
-				return "<span class='boldwarning'>An Ancient Vampire. I must be careful!</span>"
+				return span_boldwarning("An Ancient Vampire. I must be careful!")
 
 /datum/antagonist/werewolf/on_gain()
 	transform_cooldown = SSticker.round_start_time
@@ -66,7 +66,7 @@
 
 /datum/antagonist/werewolf/on_removal()
 	if(!silent && owner.current)
-		to_chat(owner.current,"<span class='danger'>I am no longer a [special_role]!</span>")
+		to_chat(owner.current,span_danger("I am no longer a [special_role]!"))
 	owner.special_role = null
 	return ..()
 
@@ -84,7 +84,7 @@
 		return
 
 /datum/antagonist/werewolf/greet()
-	to_chat(owner.current, "<span class='userdanger'>Ever since that bite, I have been a [owner.special_role].</span>")
+	to_chat(owner.current, span_userdanger("Ever since that bite, I have been a [owner.special_role]."))
 	owner.announce_objectives()
 	..()
 
@@ -112,7 +112,7 @@
 					var/turf/T = H.loc
 					if(T.can_see_sky())
 						transforming = world.time
-						to_chat(H, "<span class='userdanger'>THE MOONLIGHT SCORNS ME... THE LUPINE MARK!</span>")
+						to_chat(H, span_userdanger("THE MOONLIGHT SCORNS ME... THE LUPINE MARK!"))
 						H.flash_fullscreen("redflash3")
 
 	if(transforming)
@@ -135,7 +135,7 @@
 					H.emote("agony", forced = TRUE)
 				H.flash_fullscreen("redflash3")
 				H.Stun(30)
-				to_chat(H, "<span class='userdanger'>THE PAIN!</span>")
+				to_chat(H, span_userdanger("THE PAIN!"))
 	else
 		if(transformed)
 			if(H.m_intent != MOVE_INTENT_SNEAK)
@@ -144,7 +144,7 @@
 					H.emote("idle")
 			if(GLOB.tod != "night")
 				H.flash_fullscreen("redflash1")
-				to_chat(H, "<span class='warning'>The curse begins to fade...</span>")
+				to_chat(H, span_warning("The curse begins to fade..."))
 				transforming = world.time
 
 /mob/living/carbon/human/proc/howl_button()
@@ -170,14 +170,14 @@
 					if(isbrain(player)) //also technically dead
 						continue
 					if(player.mind.has_antag_datum(/datum/antagonist/werewolf))
-						to_chat(player, "<span class='boldannounce'>[WD.wolfname] howls: [message]</span>")
+						to_chat(player, span_boldannounce("[WD.wolfname] howls: [message]"))
 				if(player == src)
 					continue
 				if(get_dist(player, src) > 7)
 					player.playsound_local(get_turf(player), pick('sound/vo/mobs/wwolf/howldist (1).ogg','sound/vo/mobs/wwolf/howldist (2).ogg'), 100, FALSE, pressure_affected = FALSE)
 			playsound(src, pick('sound/vo/mobs/wwolf/howl (1).ogg','sound/vo/mobs/wwolf/howl (2).ogg'), 100, TRUE)
 		else
-			to_chat(src, "<span class='warning'>I must wait.</span>")
+			to_chat(src, span_warning("I must wait."))
 			return
 
 
@@ -193,6 +193,6 @@
 	var/datum/antagonist/werewolf/new_antag = new /datum/antagonist/werewolf/lesser()
 	mind.add_antag_datum(new_antag)
 	new_antag.transforming = world.time
-	to_chat(src, "<span class='danger'>I feel horrible...</span>")
+	to_chat(src, span_danger("I feel horrible..."))
 	src.playsound_local(get_turf(src), 'sound/music/horror.ogg', 80, FALSE, pressure_affected = FALSE)
 	flash_fullscreen("redflash3")

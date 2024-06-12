@@ -289,7 +289,7 @@
 
 /datum/reagent/water/holywater/reaction_mob(mob/living/M, method=TOUCH, reac_volume)
 	if(iscultist(M))
-		to_chat(M, "<span class='danger'>A vile holiness begins to spread its shining tendrils through my mind, purging the Geometer of Blood's influence!</span>")
+		to_chat(M, span_danger("A vile holiness begins to spread its shining tendrils through my mind, purging the Geometer of Blood's influence!"))
 	..()
 
 /datum/reagent/water/holywater/on_mob_life(mob/living/carbon/M)
@@ -303,7 +303,7 @@
 	M.jitteriness = min(M.jitteriness+4,10)
 	if(iscultist(M))
 		for(var/datum/action/innate/cult/blood_magic/BM in M.actions)
-			to_chat(M, "<span class='cultlarge'>My blood rites falter as holy water scours my body!</span>")
+			to_chat(M, span_cultlarge("My blood rites falter as holy water scours my body!"))
 			for(var/datum/action/innate/cult/blood_spell/BS in BM.spells)
 				qdel(BS)
 	if(data >= 25)		// 10 units, 45 seconds @ metabolism 0.4 units & tick rate 1.8 sec
@@ -314,7 +314,7 @@
 		if(iscultist(M) && prob(20))
 			M.say(pick("Av'te Nar'Sie","Pa'lid Mors","INO INO ORA ANA","SAT ANA!","Daim'niodeis Arc'iai Le'eones","R'ge Na'sie","Diabo us Vo'iscum","Eld' Mon Nobis"), forced = "holy water")
 			if(prob(10))
-				M.visible_message("<span class='danger'>[M] starts having a seizure!</span>", "<span class='danger'>I have a seizure!</span>")
+				M.visible_message(span_danger("[M] starts having a seizure!"), span_danger("I have a seizure!"))
 				M.Unconscious(120)
 				to_chat(M, "<span class='cultlarge'>[pick("Your blood is my bond - you are nothing without it", "Do not forget my place", \
 				"All that power, and you still fail?", "If you cannot scour this poison, I shall scour my meager life!")].</span>")
@@ -501,7 +501,7 @@
 
 		if(method == INGEST)
 			if(show_message)
-				to_chat(M, "<span class='notice'>That tasted horrible.</span>")
+				to_chat(M, span_notice("That tasted horrible."))
 	..()
 
 
@@ -569,13 +569,13 @@
 		for(var/i in mutationtexts)
 			if(mutationtexts[i] == filter)
 				pick_ur_fav += i
-		to_chat(H, "<span class='warning'>[pick(pick_ur_fav)]</span>")
+		to_chat(H, span_warning("[pick(pick_ur_fav)]"))
 
 	if(current_cycle >= cycles_to_turn)
 		var/datum/species/species_type = race
 		H.set_species(species_type)
 		H.reagents.del_reagent(type)
-		to_chat(H, "<span class='warning'>You've become \a [lowertext(initial(species_type.name))]!</span>")
+		to_chat(H, span_warning("You've become \a [lowertext(initial(species_type.name))]!"))
 	..()
 
 /datum/reagent/mutationtoxin/classic //The one from plasma on green slimes
@@ -627,7 +627,7 @@
 
 /datum/reagent/mutationtoxin/jelly/on_mob_life(mob/living/carbon/human/H)
 	if(isjellyperson(H))
-		to_chat(H, "<span class='warning'>My jelly shifts and morphs, turning you into another subspecies!</span>")
+		to_chat(H, span_warning("My jelly shifts and morphs, turning you into another subspecies!"))
 		var/species_type = pick(subtypesof(/datum/species/jelly))
 		H.set_species(species_type)
 		H.reagents.del_reagent(type)
@@ -636,7 +636,7 @@
 		var/datum/species/species_type = pick(subtypesof(race))
 		H.set_species(species_type)
 		H.reagents.del_reagent(type)
-		to_chat(H, "<span class='warning'>You've become \a [initial(species_type.name)]!</span>")
+		to_chat(H, span_warning("You've become \a [initial(species_type.name)]!"))
 		return TRUE
 	return ..()
 
@@ -713,7 +713,7 @@
 	..()
 	if (!istype(H))
 		return
-	to_chat(H, "<span class='warning'><b>I grit my teeth in pain as my body rapidly mutates!</b></span>")
+	to_chat(H, span_warning("<b>I grit my teeth in pain as my body rapidly mutates!</b>"))
 	H.visible_message("<b>[H]</b> suddenly transforms!")
 	randomize_human(H)
 
@@ -1001,7 +1001,7 @@
 
 /datum/reagent/bluespace/on_mob_life(mob/living/carbon/M)
 	if(current_cycle > 10 && prob(15))
-		to_chat(M, "<span class='warning'>I feel unstable...</span>")
+		to_chat(M, span_warning("I feel unstable..."))
 		M.Jitter(2)
 		current_cycle = 1
 		addtimer(CALLBACK(M, TYPE_PROC_REF(/mob/living, bluespace_shuffle)), 30)
@@ -2028,7 +2028,7 @@
 			var/dread = pick("Something is moving in my stomach...", \
 				"A wet growl echoes from my stomach...", \
 				"For a moment you feel like my surroundings are moving, but it's my stomach...")
-			to_chat(C, "<span class='danger'>[dread]</span>")
+			to_chat(C, span_danger("[dread]"))
 			yuck_cycle = current_cycle
 	else
 		var/yuck_cycles = current_cycle - yuck_cycle

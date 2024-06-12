@@ -1,6 +1,6 @@
 /datum/wound/nose
 	name = "rhinotomy"
-	check_name = "<span class='warning'>NOSE</span>"
+	check_name = span_warning("NOSE")
 	crit_message = list(
 		"The nose is mangled beyond recognition!",
 		"The nose is destroyed!",
@@ -26,7 +26,7 @@
 	
 /datum/wound/cbt
 	name = "testicular torsion"
-	check_name = "<span class='userdanger'><B>NUTCRACK</B></span>"
+	check_name = span_userdanger("<B>NUTCRACK</B>")
 	crit_message = list(
 		"The testicles are twisted!",
 		"The testicles are torsioned!",
@@ -48,17 +48,17 @@
 	. = ..()
 	affected.emote("groin", forced = TRUE)
 	affected.Stun(20)
-	to_chat(affected, "<span class='userdanger'>Something twists inside my groin!</span>")
+	to_chat(affected, span_userdanger("Something twists inside my groin!"))
 	if(affected.gender != MALE)
 		name = "ovarian torsion"
-		check_name = "<span class='userdanger'><B>EGGCRACK</B></span>"
+		check_name = span_userdanger("<B>EGGCRACK</B>")
 		crit_message = list(
 			"The ovaries are twisted!",
 			"The ovaries are torsioned!",
 		)
 	else
 		name = "testicular torsion"
-		check_name = "<span class='userdanger'><B>NUTCRACK</B></span>"
+		check_name = span_userdanger("<B>NUTCRACK</B>")
 		crit_message = list(
 			"The testicles are twisted!",
 			"The testicles are torsioned!",
@@ -86,14 +86,14 @@
 	. = ..()
 	if(affected.gender != MALE)
 		name = "ovarian evisceration"
-		check_name = "<span class='userdanger'><B>EGGCRACK</B></span>"
+		check_name = span_userdanger("<B>EGGCRACK</B>")
 		crit_message = list(
 			"The ovaries are destroyed!",
 			"The ovaries are eviscerated!",
 		)
 	else
 		name = "testicular evisceration"
-		check_name = "<span class='userdanger'><B>NUTCRACK</B></span>"
+		check_name = span_userdanger("<B>NUTCRACK</B>")
 		crit_message = list(
 			"The testicles are destroyed!",
 			"The testicles are eviscerated!",

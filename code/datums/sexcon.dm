@@ -69,10 +69,10 @@
 	if(!istype(target))
 		return
 	if(!user.can_do_sex())
-		to_chat(user, "<span class='warning'>I can't do this.</span>")
+		to_chat(user, span_warning("I can't do this."))
 		return
 	if(!can_do_sex())
-//		to_chat(user, "<span class='warning'>I can't do this.</span>")
+//		to_chat(user, span_warning("I can't do this."))
 		return
 	// SELF ONTO SELF
 	if(target == src && src == user) //drag us onto ourselves
@@ -167,7 +167,7 @@
 		testing("fuckfail4")
 		return
 	if(HAS_TRAIT(owner, TRAIT_LIMPDICK))
-		to_chat(owner, "<span class='warning'>My soldier won't stand up for me.</span>")
+		to_chat(owner, span_warning("My soldier won't stand up for me."))
 		return
 	if(user.sexcon.inpussy)
 		if(user.sexcon.inpussy != owner)
@@ -185,15 +185,15 @@
 		if(fucking == user)
 			if(fuckspeed == initial(fuckspeed))
 				fuckspeed = max(round(fuckspeed / 2), 1)
-				to_chat(owner, "<span class='info'>I speed up.</span>")
+				to_chat(owner, span_info("I speed up."))
 			else
 				fuckspeed = initial(fuckspeed)
-				to_chat(owner, "<span class='info'>I slow down.</span>")
+				to_chat(owner, span_info("I slow down."))
 		else
 			stop_fucking()
 		return
 	if(horny < 0)
-		to_chat(owner, "<span class='warning'>I'm spent.</span>")
+		to_chat(owner, span_warning("I'm spent."))
 		return
 	fuckspeed = initial(fuckspeed)
 	lastfuck = world.time
@@ -202,11 +202,11 @@
 	if(user.cmode)
 		user.emote("embed", forced = TRUE)
 	playsound(owner, list('sound/misc/mat/insert (1).ogg','sound/misc/mat/insert (2).ogg'), 20, TRUE, ignore_walls = FALSE)
-	owner.visible_message("<span class='[!user.cmode ? "love" : "warning"]'>[owner] taffs [user].</span>")
+	owner.visible_message(!user.cmode ? span_love("[owner] taffs [user].") : span_warning("[owner] taffs [user]."))
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user
 		if(H.virginity)
-			user.visible_message("<span class='warning'>[user] loses her purity!</span>")
+			user.visible_message(span_warning("[user] loses her purity!"))
 			H.flash_fullscreen("redflash3")
 			H.on_virgin_loss()
 	START_PROCESSING(SSsex, user.sexcon)
@@ -245,7 +245,7 @@
 	if(eatingus)
 		return
 	if(HAS_TRAIT(owner, TRAIT_LIMPDICK))
-		to_chat(owner, "<span class='warning'>My soldier won't stand up for me.</span>")
+		to_chat(owner, span_warning("My soldier won't stand up for me."))
 		return
 	if(user.loc != owner.loc)
 		return
@@ -257,15 +257,15 @@
 		if(fucking == user)
 			if(fuckspeed == initial(fuckspeed))
 				fuckspeed = max(round(fuckspeed / 2), 1)
-				to_chat(owner, "<span class='info'>I speed up.</span>")
+				to_chat(owner, span_info("I speed up."))
 			else
 				fuckspeed = initial(fuckspeed)
-				to_chat(owner, "<span class='info'>I slow down.</span>")
+				to_chat(owner, span_info("I slow down."))
 		else
 			stop_fucking()
 		return
 	if(horny < 0)
-		to_chat(owner, "<span class='warning'>I'm spent.</span>")
+		to_chat(owner, span_warning("I'm spent."))
 		return
 	fuckspeed = initial(fuckspeed)
 	lastfuck = world.time
@@ -274,7 +274,7 @@
 	if(user.cmode)
 		user.emote("embed", forced = TRUE)
 	playsound(owner, list('sound/misc/mat/insert (1).ogg','sound/misc/mat/insert (2).ogg'), 20, TRUE, ignore_walls = FALSE)
-	owner.visible_message("<span class='[!user.cmode ? "love" : "warning"]'>[owner] zodomizes [user].</span>")
+	owner.visible_message(!user.cmode ? span_love("[owner] zodomites [user].") : span_warning("[owner] zodomites [user]."))
 	START_PROCESSING(SSsex, user.sexcon)
 	START_PROCESSING(SSsex, src)
 
@@ -295,7 +295,7 @@
 		testing("tfuckfail2")
 		return
 	if(HAS_TRAIT(owner, TRAIT_LIMPDICK))
-		to_chat(owner, "<span class='warning'>My soldier won't stand up for me.</span>")
+		to_chat(owner, span_warning("My soldier won't stand up for me."))
 		return
 	if(!user.lying && !user.wallpressed && !owner.wallpressed && !owner.lying)
 		return
@@ -309,21 +309,21 @@
 		if(fucking == user)
 			if(fuckspeed == initial(fuckspeed))
 				fuckspeed = max(round(fuckspeed / 2), 1)
-				to_chat(owner, "<span class='info'>I speed up.</span>")
+				to_chat(owner, span_info("I speed up."))
 			else
 				fuckspeed = initial(fuckspeed)
-				to_chat(owner, "<span class='info'>I slow down.</span>")
+				to_chat(owner, span_info("I slow down."))
 		else
 			stop_fucking()
 		return
 	if(horny < 0)
-		to_chat(owner, "<span class='warning'>I'm spent.</span>")
+		to_chat(owner, span_warning("I'm spent."))
 		return
 	fuckspeed = initial(fuckspeed)
 	lastfuck = world.time
 	fucking = user
 	user.sexcon.ontits = owner
-	owner.visible_message("<span class='[!user.cmode ? "love" : "warning"]'>[owner] uses [user]'s chest.</span>")
+	owner.visible_message(!user.cmode ? span_love("[owner] uses [user]'s chest.") : span_warning("[owner] uses [user]'s chest."))
 	START_PROCESSING(SSsex, user.sexcon)
 	START_PROCESSING(SSsex, src)
 
@@ -341,7 +341,7 @@
 			return
 	if(user.cmode)
 		if(!user.stat)
-			to_chat(owner, "<span class='warning'>Not through clenched teeth.</span>")
+			to_chat(owner, span_warning("Not through clenched teeth."))
 			return
 	if(user.sexcon.weeating)
 		testing("mfuckfail3")
@@ -352,7 +352,7 @@
 	if(user.loc != owner.loc)
 		return
 	if(HAS_TRAIT(owner, TRAIT_LIMPDICK))
-		to_chat(owner, "<span class='warning'>My soldier won't stand up for me.</span>")
+		to_chat(owner, span_warning("My soldier won't stand up for me."))
 		return
 	if(gender != MALE)
 		return
@@ -361,22 +361,22 @@
 		if(fucking == user)
 			if(fuckspeed == initial(fuckspeed))
 				fuckspeed = max(round(fuckspeed / 2), 1)
-				to_chat(owner, "<span class='info'>I speed up.</span>")
+				to_chat(owner, span_info("I speed up."))
 			else
 				fuckspeed = initial(fuckspeed)
-				to_chat(owner, "<span class='info'>I slow down.</span>")
+				to_chat(owner, span_info("I slow down."))
 		else
 			stop_fucking()
 		return
 	if(horny < 0)
-		to_chat(owner, "<span class='warning'>I'm spent.</span>")
+		to_chat(owner, span_warning("I'm spent."))
 		return
 	fuckspeed = initial(fuckspeed)
 	lastfuck = world.time
 	fucking = user
 	user.sexcon.inmouth = owner
 	playsound(owner, list('sound/misc/mat/insert (1).ogg','sound/misc/mat/insert (2).ogg'), 20, TRUE, ignore_walls = FALSE)
-	owner.visible_message("<span class='[!user.cmode ? "love" : "warning"]'>[owner] feeds [user].</span>")
+	owner.visible_message(!user.cmode ? span_love("[owner] feeds [user].") : span_warning("[owner] feeds [user]."))
 	START_PROCESSING(SSsex, user.sexcon)
 	START_PROCESSING(SSsex, src)
 
@@ -416,21 +416,21 @@
 		if(riding == user)
 			if(user.sexcon.eatspeed == initial(user.sexcon.eatspeed))
 				user.sexcon.eatspeed = max(round(user.sexcon.eatspeed / 2), 1)
-				to_chat(owner, "<span class='info'>I speed up.</span>")
+				to_chat(owner, span_info("I speed up."))
 			else
 				user.sexcon.eatspeed = initial(user.sexcon.eatspeed)
-				to_chat(owner, "<span class='info'>I slow down.</span>")
+				to_chat(owner, span_info("I slow down."))
 		else
 			stop_riding()
 		return
 	if(horny < 0)
-		to_chat(owner, "<span class='warning'>I'm spent.</span>")
+		to_chat(owner, span_warning("I'm spent."))
 		return
 	user.sexcon.eatspeed = initial(user.sexcon.eatspeed)
 	user.sexcon.lasteat = world.time
 	user.sexcon.weeating = owner
 	riding = user
-	owner.visible_message("<span class='[!user.cmode ? "love" : "warning"]'>[owner] rides [riding]'s face.</span>")
+	owner.visible_message(!user.cmode ? span_love("[owner] rides [riding]'s face.") : span_warning("[owner] rides [riding]'s face."))
 	START_PROCESSING(SSsex, user.sexcon)
 	START_PROCESSING(SSsex, src)
 
@@ -454,7 +454,7 @@
 		testing("ridefail5")
 		return
 	if(HAS_TRAIT(user, TRAIT_LIMPDICK))
-		to_chat(owner, "<span class='warning'>The soldier won't stand up for me.</span>")
+		to_chat(owner, span_warning("The soldier won't stand up for me."))
 		return
 	if(inpussy && !riding)
 		if(inpussy != user)
@@ -471,17 +471,17 @@
 				testing("ridefail8")
 				if(user.sexcon.fuckspeed == initial(user.sexcon.fuckspeed))
 					user.sexcon.fuckspeed = max(round(user.sexcon.fuckspeed / 2), 1)
-					to_chat(owner, "<span class='info'>I speed up.</span>")
+					to_chat(owner, span_info("I speed up."))
 				else
 					user.sexcon.fuckspeed = initial(user.sexcon.fuckspeed)
-					to_chat(owner, "<span class='info'>I slow down.</span>")
+					to_chat(owner, span_info("I slow down."))
 			else
 				stop_riding()
 		else
 			stop_riding()
 		return
 //	if(horny < 0)
-//		to_chat(owner, "<span class='warning'>I'm spent.</span>")
+//		to_chat(owner, span_warning("I'm spent."))
 //		return
 	user.sexcon.fuckspeed = initial(user.sexcon.fuckspeed)
 	user.sexcon.fucking = owner
@@ -489,7 +489,7 @@
 	riding = user
 	inpussy = user
 	playsound(owner, list('sound/misc/mat/insert (1).ogg','sound/misc/mat/insert (2).ogg'), 20, TRUE, ignore_walls = FALSE)
-	owner.visible_message("<span class='[!user.cmode ? "love" : "warning"]'>[owner] rides [riding].</span>")
+	owner.visible_message(!user.cmode ? span_love("[owner] rides [riding].") : span_warning("[owner] rides [riding]."))
 	START_PROCESSING(SSsex, user.sexcon)
 	START_PROCESSING(SSsex, src)
 
@@ -529,10 +529,10 @@
 		if(weeating == user)
 			if(eatspeed == initial(eatspeed))
 				eatspeed = max(round(eatspeed / 2), 1)
-				to_chat(owner, "<span class='info'>I speed up.</span>")
+				to_chat(owner, span_info("I speed up."))
 			else
 				eatspeed = initial(eatspeed)
-				to_chat(owner, "<span class='info'>I slow down.</span>")
+				to_chat(owner, span_info("I slow down."))
 		else
 			stop_eating()
 		return
@@ -541,9 +541,9 @@
 	user.sexcon.lasteat = world.time
 	user.sexcon.eatingus = owner
 	if(weeating.gender == MALE)
-		owner.visible_message("<span class='[!weeating.cmode ? "love" : "warning"]'>[owner] sucks [weeating].</span>")
+		owner.visible_message(!user.cmode ? span_love("[owner] sucks [weeating].") : span_warning("[owner] sucks [weeating]."))
 	else
-		owner.visible_message("<span class='[!weeating.cmode ? "love" : "warning"]'>[owner] eats [weeating].</span>")
+		owner.visible_message(!user.cmode ? span_love("[owner] eats [weeating].") : span_warning("[owner] eats [weeating]."))
 	START_PROCESSING(SSsex, user.sexcon)
 	START_PROCESSING(SSsex, src)
 
@@ -561,7 +561,7 @@
 		testing("fapfail4")
 		return
 	if(HAS_TRAIT(owner, TRAIT_LIMPDICK))
-		to_chat(user, "<span class='warning'>The soldier won't stand up for me.</span>")
+		to_chat(user, span_warning("The soldier won't stand up for me."))
 		return
 	if(fapping)
 		testing("fapfail6")
@@ -569,15 +569,15 @@
 			testing("fapfail7")
 			if(fapspeed == initial(fapspeed))
 				fapspeed = max(round(fapspeed / 2), 1)
-				to_chat(user, "<span class='info'>I speed up.</span>")
+				to_chat(user, span_info("I speed up."))
 			else
 				fapspeed = initial(fapspeed)
-				to_chat(user, "<span class='info'>I slow down.</span>")
+				to_chat(user, span_info("I slow down."))
 		return
 	if(user == owner)
-		owner.visible_message("<span class='love'>[owner] faps.</span>")
+		owner.visible_message(span_love("[owner] faps."))
 		if(horny < 0)
-			to_chat(owner, "<span class='warning'>I'm spent.</span>")
+			to_chat(owner, span_warning("I'm spent."))
 			return
 	fapspeed = initial(fapspeed)
 	lastfap = world.time
@@ -585,9 +585,9 @@
 	G.handaction = "fapping"
 	if(user != owner)
 		if(gender == MALE)
-			owner.visible_message("<span class='[!owner.cmode ? "love" : "warning"]'>[fapping.grabbee] jerks [owner].</span>")
+			owner.visible_message(!user.cmode ? span_love("[fapping.grabbee] jerks [owner].") : span_warning("[fapping.grabbee] jerks [owner]."))
 		else
-			owner.visible_message("<span class='[!owner.cmode ? "love" : "warning"]'>[fapping.grabbee] rubs [owner].</span>")
+			owner.visible_message(!user.cmode ? span_love("[fapping.grabbee] rubs [owner].") : span_warning("[fapping.grabbee] rubs [owner]."))
 	G.dependents += src
 	START_PROCESSING(SSsex, user.sexcon)
 	START_PROCESSING(SSsex, src)
@@ -757,7 +757,7 @@
 					if(fucking)
 						playsound(owner, 'sound/misc/mat/segso.ogg', 50, TRUE, -2, ignore_walls = FALSE)
 						if(prob(33))
-							fucking.visible_message("<span class='[!owner.cmode ? "love" : "warning"]'>[fucking] rides [owner].</span>")
+							fucking.visible_message(!D.owner.cmode ? span_love("[fucking] rides [owner].") : span_warning("[fucking] rides [owner]."))
 						var/usedsource = "insidepussy"
 						if(D.owner.stat == DEAD)
 							usedsource = "fuckcorpse"
@@ -773,7 +773,7 @@
 					if(fucking)
 						playsound(owner, 'sound/misc/mat/segso.ogg', 50, TRUE, -2, ignore_walls = FALSE)
 						if(prob(33))
-							fucking.visible_message("<span class='[!D.owner.cmode ? "love" : "warning"]'>[owner] taffs [fucking].</span>")
+							fucking.visible_message(!D.owner.cmode ? span_love("[owner] taffs [fucking].") : span_warning("[owner] taffs [fucking]."))
 						var/usedsource = "insidepussy"
 						if(D.owner.stat == DEAD)
 							usedsource = "fuckcorpse"
@@ -795,7 +795,7 @@
 					if(fucking)
 						playsound(owner, 'sound/misc/mat/segso.ogg', 50, TRUE, -2, ignore_walls = FALSE)
 						if(prob(33))
-							fucking.visible_message("<span class='[!D.owner.cmode ? "love" : "warning"]'>[owner] zodomizes [fucking].</span>")
+							fucking.visible_message(!D.owner.cmode ? span_love("[owner] zodomizes [fucking].") : span_warning("[owner] zodomizes [fucking]."))
 //						D.owner.Immobilize(10)
 						var/usedsource = "insideass"
 						if(D.owner.stat == DEAD)
@@ -819,7 +819,7 @@
 					if(fucking)
 						playsound(owner, 'sound/misc/mat/fap.ogg', 30, TRUE, -2, ignore_walls = FALSE)
 						if(prob(33))
-							fucking.visible_message("<span class='[!D.owner.cmode ? "love" : "warning"]'>[owner] uses [fucking]'s chest.</span>")
+							fucking.visible_message(!D.owner.cmode ? span_love("[owner] uses [fucking]'s chest.") : span_warning("[owner] uses [fucking]'s chest."))
 						var/usedsource = "ontits"
 						if(D.owner.stat == DEAD)
 							usedsource = "fuckcorpse"
@@ -840,7 +840,7 @@
 						else
 							playsound(fucking, pick('sound/misc/mat/guymouth (1).ogg','sound/misc/mat/guymouth (2).ogg','sound/misc/mat/guymouth (3).ogg','sound/misc/mat/guymouth (4).ogg','sound/misc/mat/guymouth (5).ogg'), 20, TRUE, ignore_walls = FALSE)
 						if(prob(33))
-							fucking.visible_message("<span class='[!D.owner.cmode ? "love" : "warning"]'>[owner] feeds [fucking].</span>")
+							fucking.visible_message(!D.owner.cmode ? span_love("[owner] feeds [fucking].") : span_warning("[owner] feeds [fucking]."))
 //						D.owner.Immobilize(10)
 						var/usedsource = "fuckmouth"
 						if(D.owner.stat == DEAD)
@@ -859,7 +859,7 @@
 						stop_riding()
 				playsound(D.owner, pick('sound/misc/mat/girlmouth (1).ogg','sound/misc/mat/girlmouth (2).ogg'), 100, TRUE, -2, ignore_walls = FALSE)
 				if(prob(33))
-					owner.visible_message("<span class='[!owner.cmode ? "love" : "warning"]'>[owner] rides [riding]'s face.</span>")
+					owner.visible_message(!owner.cmode ? span_love("[owner] rides [riding]'s face.") : span_warning("[owner] rides [riding]'s face."))
 				if(adjust_horny(3, "suckedoff"))
 					stop_riding()
 	if(eatingus)
@@ -878,9 +878,9 @@
 					playsound(eatingus, pick('sound/misc/mat/guymouth (1).ogg','sound/misc/mat/guymouth (2).ogg','sound/misc/mat/guymouth (3).ogg','sound/misc/mat/guymouth (4).ogg','sound/misc/mat/guymouth (5).ogg'), 100, TRUE, -2, ignore_walls = FALSE)
 				if(prob(33))
 					if(owner.gender == MALE)
-						owner.visible_message("<span class='[!owner.cmode ? "love" : "warning"]'>[eatingus] sucks [owner].</span>")
+						owner.visible_message(!owner.cmode ? span_love("[eatingus] sucks [owner].") : span_warning("[eatingus] sucks [owner]."))
 					else
-						owner.visible_message("<span class='[!owner.cmode ? "love" : "warning"]'>[eatingus] eats [owner].</span>")
+						owner.visible_message(!owner.cmode ? span_love("[eatingus] eats [owner].") : span_warning("[eatingus] eats [owner]."))
 				if(adjust_horny(3, "suckedoff"))
 					stop_eating_us()
 	if(fapping)
@@ -897,7 +897,7 @@
 					if(fapping)
 						playsound(owner, 'sound/misc/mat/fap.ogg', 30, TRUE, -2, ignore_walls = FALSE)
 						if(prob(33))
-							owner.visible_message("<span class='[!owner.cmode ? "love" : "warning"]'>[owner] faps.</span>")
+							owner.visible_message(!owner.cmode ? span_love("[owner] faps.") : span_warning("[owner] faps."))
 						if(adjust_horny(1, "fapself"))
 							stop_fapping()
 				else
@@ -908,9 +908,9 @@
 						playsound(owner, 'sound/misc/mat/fap.ogg', 30, TRUE, -2, ignore_walls = FALSE)
 						if(prob(33))
 							if(gender == MALE)
-								fapping.grabbee.visible_message("<span class='[!owner.cmode ? "love" : "warning"]'>[fapping.grabbee] jerks [owner].</span>")
+								fapping.grabbee.visible_message(!owner.cmode ? span_love("[fapping.grabbee] jerks [owner].") : span_warning("[fapping.grabbee] jerks [owner]."))
 							else
-								fapping.grabbee.visible_message("<span class='[!owner.cmode ? "love" : "warning"]'>[fapping.grabbee] rubs [owner].</span>")
+								fapping.grabbee.visible_message(!owner.cmode ? span_love("[fapping.grabbee] rubs [owner].") : span_warning("[fapping.grabbee] rubs [owner]."))
 						if(adjust_horny(2, "otherfapping"))
 							stop_fapping_us()
 	if(!doing)
@@ -1099,13 +1099,13 @@
 				owner.sate_addiction()
 			owner.add_stress(/datum/stressevent/cumok)
 			playsound(owner, 'sound/misc/mat/endout.ogg', 1, TRUE, ignore_walls = FALSE)
-			owner.visible_message("<span class='notice'>[owner] paints [fucking]!</span>")
+			owner.visible_message(span_notice("[owner] paints [fucking]!"))
 			add_cum_floor(get_turf(fucking))
 		if("suckedoff")
 			if(owner.has_flaw(/datum/charflaw/addiction/lovefiend))
 				owner.sate_addiction()
 			owner.add_stress(/datum/stressevent/cumgood)
-			owner.visible_message("<span class='notice'>[owner] feeds [fucking]!</span>")
+			owner.visible_message(span_notice("[owner] feeds [fucking]!"))
 			playsound(owner, pick('sound/misc/mat/mouthend (1).ogg','sound/misc/mat/mouthend (2).ogg'), 100, FALSE, ignore_walls = FALSE)
 			add_cum_floor(get_turf(fucking))
 		if("fuckmouth")
@@ -1113,7 +1113,7 @@
 				owner.sate_addiction()
 			owner.add_stress(/datum/stressevent/cummid)
 			playsound(owner, pick('sound/misc/mat/mouthend (1).ogg','sound/misc/mat/mouthend (2).ogg'), 100, FALSE, ignore_walls = FALSE)
-			owner.visible_message("<span class='notice'>[owner] feeds [fucking]!</span>")
+			owner.visible_message(span_notice("[owner] feeds [fucking]!"))
 			add_cum_floor(get_turf(fucking))
 			if(fucking && fucking.sexcon.weeating == owner)
 				if(fucking.cmode)
@@ -1143,7 +1143,7 @@
 					if(!wuzantag)
 						adjust_playerquality(-2, H.ckey, reason="Raped as a non villain.")
 			owner.add_stress(/datum/stressevent/cumok)
-			owner.visible_message("<span class='notice'>[owner] tightens in ecstasy!</span>")
+			owner.visible_message(span_notice("[owner] tightens in ecstasy!"))
 			playsound(owner, 'sound/misc/mat/endin.ogg', 100, TRUE, ignore_walls = FALSE)
 			add_cum_floor(get_turf(fucking))
 		if("insidepussy")
@@ -1201,7 +1201,7 @@
 					fucking.mob_timers["preggo"] = world.time
 					addtimer(CALLBACK(fucking, /mob/living/carbon/human/.proc/become_pregnant, husbando), rand(3 MINUTES, 13 MINUTES))
 			playsound(fucking, 'sound/misc/mat/endin.ogg', 100, TRUE, ignore_walls = FALSE)
-			owner.visible_message("<span class='notice'>[owner] tightens in ecstasy!</span>")
+			owner.visible_message(span_notice("[owner] tightens in ecstasy!"))
 			add_cum_floor(get_turf(fucking))
 
 		if("sleepingbeauty")
@@ -1222,19 +1222,19 @@
 			owner.add_stress(/datum/stressevent/cumok)
 			playsound(fucking, 'sound/misc/mat/endin.ogg', 100, TRUE, ignore_walls = FALSE)
 			add_cum_floor(get_turf(fucking))
-			owner.visible_message("<span class='notice'>[owner] tightens in ecstasy!</span>")
+			owner.visible_message(span_notice("[owner] tightens in ecstasy!"))
 
 		if("fapself")
 			add_cum_floor(get_turf(owner))
-			owner.visible_message("<span class='notice'>[owner] spills something on the floor!</span>")
+			owner.visible_message(span_notice("[owner] spills something on the floor!"))
 			playsound(owner, 'sound/misc/mat/endout.ogg', 100, TRUE, ignore_walls = FALSE)
 		if("otherfapping")
 			add_cum_floor(get_turf(fapping.grabbee))
-			owner.visible_message("<span class='notice'>[owner] spills something on the floor!</span>")
+			owner.visible_message(span_notice("[owner] spills something on the floor!"))
 			playsound(owner, 'sound/misc/mat/endout.ogg', 100, TRUE, ignore_walls = FALSE)
 		if("assfucked")
 			add_cum_floor(get_turf(owner))
-			owner.visible_message("<span class='notice'>[owner] spills something on the floor!</span>")
+			owner.visible_message(span_notice("[owner] spills something on the floor!"))
 			playsound(owner, 'sound/misc/mat/endout.ogg', 100, TRUE, ignore_walls = FALSE)
 
 
@@ -1278,9 +1278,9 @@
 			else
 				owner.add_stress(/datum/stressevent/cumbad)
 	if(!owner.cmode)
-		owner.visible_message("<span class='notice'>[owner] tightens in pleasure!</span>")
+		owner.visible_message(span_notice("[owner] tightens in pleasure!"))
 	else
-		owner.visible_message("<span class='notice'>[owner] tightens in release!</span>")
+		owner.visible_message(span_notice("[owner] tightens in release!"))
 	if(curplaying)
 		curplaying = null
 		if(femmoans)

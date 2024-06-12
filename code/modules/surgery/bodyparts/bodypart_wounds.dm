@@ -465,7 +465,7 @@
 	if(!bandage)
 		return FALSE
 	if(owner.stat != DEAD)
-		to_chat(owner, "<span class='warning'>Blood soaks through the bandage on my [name].</span>")
+		to_chat(owner, span_warning("Blood soaks through the bandage on my [name]."))
 	return bandage.add_mob_blood(owner)
 
 /obj/item/bodypart/proc/remove_bandage()

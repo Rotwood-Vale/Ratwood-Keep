@@ -37,15 +37,15 @@
 /obj/machinery/crop/examine(mob/user)
 	. = ..()
 	if(growth >= 100)
-		. += "<span class='notice'>[src] is ready for harvest!</span>"
+		. += span_notice("[src] is ready for harvest!")
 	if(water < 25)
-		. += "<span class='info'>The ground is thirsty.</span>"
+		. += span_info("The ground is thirsty.")
 	if(food < 25)
-		. += "<span class='info'>The ground is hungry.</span>"
+		. += span_info("The ground is hungry.")
 	if(weeds >= 25)
-		. += "<span class='warning'>Weeds!</span>"
+		. += span_warning("Weeds!")
 	if(plant_hp <= 25)
-		. += "<span class='warning'>Brown and dying...</span>"
+		. += span_warning("Brown and dying...")
 
 /obj/machinery/crop/process()
 	if(QDELETED(src))
@@ -173,19 +173,19 @@
 	var/exp_gained = 0
 
 	if(istype(attacking_item, /obj/item/seeds))
-		to_chat(user, "<span class='warning'>Something is already growing here.</span>")
+		to_chat(user, span_warning("Something is already growing here."))
 		return
 
 	if(istype(attacking_item, /obj/item/rogueweapon/sickle))
 		if(!myseed)
 			return
 		if(plant_hp <= 0)
-			to_chat(user, "<span class='warning'>This crop has perished.</span>")
+			to_chat(user, span_warning("This crop has perished."))
 			return
 		if(growth < 100)
-			to_chat(user, "<span class='warning'>This crop is not ready to harvest.</span>")
+			to_chat(user, span_warning("This crop is not ready to harvest."))
 			return
-		user.visible_message("<span class='notice'>[user] harvests [src] with [attacking_item].</span>")
+		user.visible_message(span_notice("[user] harvests [src] with [attacking_item]."))
 		for(var/i in 1 to myseed.yield)
 			if(plant_hp <= 0)
 				return
@@ -218,14 +218,14 @@
 		if(plant_hp <= 0)
 			playsound(src,'sound/items/seed.ogg', 100, FALSE)
 			new /obj/item/natural/fibers(src.loc)
-			user.visible_message("<span class='notice'>[user] rips out [src] with [attacking_item].</span>")
+			user.visible_message(span_notice("[user] rips out [src] with [attacking_item]."))
 			exp_gained = current_farmer.STAINT
 			farmer_mind.adjust_experience(/datum/skill/labor/farming, exp_gained)
 			qdel(src)
 			return
 		else if(weeds > 0)
 			playsound(src,'sound/items/seed.ogg', 100, FALSE)
-			user.visible_message("<span class='notice'>[user] rips out some weeds with [attacking_item].</span>")
+			user.visible_message(span_notice("[user] rips out some weeds with [attacking_item]."))
 			weeds = max(weeds - rand(1,50), 0)
 			update_seed_icon()
 			exp_gained = current_farmer.STAINT
@@ -235,7 +235,7 @@
 	//Following 3 are fertilizers
 	if(istype(attacking_item, /obj/item/natural/poo))
 		playsound(src,'sound/items/seed.ogg', 100, FALSE)
-		visible_message("<span class='notice'>[user] confidently fertilizes the soil with [attacking_item].</span>")
+		visible_message(span_notice("[user] confidently fertilizes the soil with [attacking_item]."))
 		qdel(attacking_item)
 		user.update_inv_hands()
 		food = 100
@@ -244,7 +244,7 @@
 		return
 	if(istype(attacking_item, /obj/item/ash) || istype(attacking_item, /obj/item/trash/applecore))
 		playsound(src,'sound/items/seed.ogg', 100, FALSE)
-		visible_message("<span class='notice'>[user] confidently fertilizes the soil with [attacking_item].</span>")
+		visible_message(span_notice("[user] confidently fertilizes the soil with [attacking_item]."))
 		food = min(food + 50, 100)
 		qdel(attacking_item)
 		user.update_inv_hands()
@@ -256,7 +256,7 @@
 		if(!S.fertamount)
 			return
 		playsound(src,'sound/items/seed.ogg', 100, FALSE)
-		visible_message("<span class='notice'>[user] confidently fertilizes the soil with [attacking_item].</span>")
+		visible_message(span_notice("[user] confidently fertilizes the soil with [attacking_item]."))
 		food = min(food + S.fertamount, 100)
 		qdel(attacking_item)
 		user.update_inv_hands()
@@ -283,7 +283,7 @@
 		exp_gained = current_farmer.STAINT
 		farmer_mind.adjust_experience(/datum/skill/labor/farming, exp_gained)
 		playsound(src,"plantcross", 100, FALSE)
-		user.visible_message("<span class='notice'>[user] pulls out [src].</span>")
+		user.visible_message(span_notice("[user] pulls out [src]."))
 		new /obj/item/natural/fibers(src.loc)
 		qdel(src)
 		name = initial(name)
@@ -313,9 +313,9 @@
 				success_chance = 100
 			if(prob(success_chance))
 				new myseed.product(src.loc)
-				user.visible_message("<span class='info'>[user] harvests something from [src].</span>")
+				user.visible_message(span_info("[user] harvests something from [src]."))
 			else
-				user.visible_message("<span class='warning'>[user] spoils something from [src]!</span>")
+				user.visible_message(span_warning("[user] spoils something from [src]!"))
 			exp_gained = round(current_farmer.STAINT / initial(myseed.yield)) //So we don't gain a fuck ton of EXP if our plant happens to have multiple crops
 			farmer_mind.adjust_experience(/datum/skill/labor/farming, exp_gained)
 		if(myseed.yield <= 0)
@@ -350,7 +350,7 @@
 	if(weeds <= 0 || !do_after(user, deweed_time, target = src))
 		return
 	playsound(src,"plantcross", 100, FALSE)
-	user.visible_message("<span class='notice'>[user] rips out some weeds.</span>")
+	user.visible_message(span_notice("[user] rips out some weeds."))
 	weeds = max(weeds - rand(1,30), 0)
 	exp_gained = current_farmer.STAINT
 	farmer_mind.adjust_experience(/datum/skill/labor/farming, exp_gained)

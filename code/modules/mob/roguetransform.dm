@@ -59,7 +59,7 @@
 	W.real_name = "WEREWOLF"
 
 
-	to_chat(W, "<span class='userdanger'>I transform into a horrible beast!</span>")
+	to_chat(W, span_userdanger("I transform into a horrible beast!"))
 	W.emote("rage")
 
 	W.stress = stress
@@ -124,7 +124,7 @@
 
 	W.regenerate_icons()
 
-	to_chat(W, "<span class='userdanger'>I return to my facade.</span>")
+	to_chat(W, span_userdanger("I return to my facade."))
 	playsound(W.loc, pick('sound/combat/gib (1).ogg','sound/combat/gib (2).ogg'), 200, FALSE, 3)
 	W.spawn_gibs(FALSE)
 	W.Knockdown(30)

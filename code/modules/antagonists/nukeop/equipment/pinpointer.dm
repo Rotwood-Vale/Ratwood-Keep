@@ -28,7 +28,7 @@
 					playsound(src, 'sound/blank.ogg', 50, FALSE)
 					if(isliving(loc))
 						var/mob/living/L = loc
-						to_chat(L, "<span class='danger'>My [name] vibrates and lets out a tinny alarm. Uh oh.</span>")
+						to_chat(L, span_danger("My [name] vibrates and lets out a tinny alarm. Uh oh."))
 
 /obj/item/pinpointer/nuke/scan_for_target()
 	target = null
@@ -52,7 +52,7 @@
 /obj/item/pinpointer/nuke/proc/switch_mode_to(new_mode)
 	if(isliving(loc))
 		var/mob/living/L = loc
-		to_chat(L, "<span class='danger'>My [name] beeps as it reconfigures it's tracking algorithms.</span>")
+		to_chat(L, span_danger("My [name] beeps as it reconfigures it's tracking algorithms."))
 		playsound(L, 'sound/blank.ogg', 50, TRUE)
 	mode = new_mode
 	scan_for_target()

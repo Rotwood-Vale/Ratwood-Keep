@@ -36,7 +36,7 @@
 	
 		if("Life Cleric")
 			H.set_blindness(0)
-			to_chat(H, "<span class='warning'>You are a cleric of the life domain. Well versed in the arts of healing and magic.</span>")
+			to_chat(H, span_warning("You are a cleric of the life domain. Well versed in the arts of healing and magic."))
 			H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/polearms, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/bows, 1, TRUE)
@@ -69,7 +69,7 @@
 				H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/churn)
 		if("War Cleric")
 			H.set_blindness(0)
-			to_chat(H, "<span class='warning'>You are a cleric of the war domain. Experienced in both the granting of life and the taking of it. Unfortunately your study of warcraft has weakened your divine abilities...</span>")
+			to_chat(H, span_warning("You are a cleric of the war domain. Experienced in both the granting of life and the taking of it. Unfortunately your study of warcraft has weakened your divine abilities..."))
 			H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/polearms, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/bows, 1, TRUE)

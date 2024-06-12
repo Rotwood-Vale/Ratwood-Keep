@@ -65,7 +65,7 @@
 /obj/item/roguecoin/examine(mob/user)
 	. = ..()
 	if(quantity > 1)
-		. += "<span class='info'>\Roman [quantity] coins.</span>"
+		. += span_info("\Roman [quantity] coins.")
 
 /obj/item/roguecoin/proc/merge(obj/item/roguecoin/G, mob/user)
 	if(!G)
@@ -120,10 +120,10 @@
 	flip_cd = world.time
 	playsound(user, 'sound/foley/coinphy (1).ogg', 100, FALSE)
 	if(prob(50))
-		user.visible_message("<span class='info'>[user] flips the coin. Heads!</span>")
+		user.visible_message(span_info("[user] flips the coin. Heads!"))
 		heads_tails = TRUE
 	else
-		user.visible_message("<span class='info'>[user] flips the coin. Tails!</span>")
+		user.visible_message(span_info("[user] flips the coin. Tails!"))
 		heads_tails = FALSE
 	update_icon()
 

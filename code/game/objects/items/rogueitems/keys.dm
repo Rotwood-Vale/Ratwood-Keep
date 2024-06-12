@@ -311,7 +311,7 @@
 /obj/item/roguekey/custom/attackby(obj/item/I, mob/user, params)
 	if(istype(I, /obj/item/rogueweapon/hammer))
 		name = (input(user, "What would you name this key?") as text) + " key"
-		to_chat(user, "<span class='notice'>You rename the key to [name].</span>")
+		to_chat(user, span_notice("You rename the key to [name]."))
 
 //custom key blank
 /obj/item/customblank //i'd prefer not to make a seperate item for this honestly
@@ -332,15 +332,15 @@
 	if(istype(user.get_active_held_item(), /obj/item/roguekey))
 		var/obj/item/roguekey/held = user.get_active_held_item()
 		src.lockid = held.lockhash
-		to_chat(user, "<span class='notice'>You trace teeth from [held] to [src].</span>")
+		to_chat(user, span_notice("You trace teeth from [held] to [src]."))
 	if(istype(user.get_active_held_item(), /obj/item/customlock))
 		var/obj/item/customlock/held = user.get_active_held_item()
 		src.lockid = held.lockid
-		to_chat(user, "<span class='notice'>You fine tune [src] to the lock's internals.</span>")
+		to_chat(user, span_notice("You fine tune [src] to the lock's internals."))
 	if(istype(user.get_active_held_item(), /obj/item/rogueweapon/hammer) && src.lockid != null)
 		var/obj/item/roguekey/custom/F = new (src.loc)
 		F.lockhash = src.lockid
-		to_chat(user, "<span class='notice'>You finish [F].</span>")
+		to_chat(user, span_notice("You finish [F]."))
 		qdel(src)
 	
 
@@ -361,29 +361,29 @@
 	if(istype(I, /obj/item/roguekey))
 		var/obj/item/roguekey/ID = I
 		if(ID.lockhash == src.lockid)
-			to_chat(user, "<span class='notice'>[I] twists cleanly in [src].</span>")
+			to_chat(user, span_notice("[I] twists cleanly in [src]."))
 		else
-			to_chat(user, "<span class='warning'>[I] jams in [src],</span>")
+			to_chat(user, span_warning("[I] jams in [src],"))
 	if(istype(I, /obj/item/customblank))
 		var/obj/item/customblank/ID = I
 		if(ID.lockid == src.lockid)
-			to_chat(user, "<span class='notice'>[I] twists cleanly in [src],</span>") //this makes no sense since the teeth aren't formed yet but i want people to be able to check whether the locks theyre making actually fit
+			to_chat(user, span_notice("[I] twists cleanly in [src],")) //this makes no sense since the teeth aren't formed yet but i want people to be able to check whether the locks theyre making actually fit
 		else
-			to_chat(user, "<span class='warning'>[I] jams in [src].</span>")
+			to_chat(user, span_warning("[I] jams in [src]."))
 
 /obj/item/customlock/attack_right(mob/user)
 	if(istype(user.get_active_held_item(), /obj/item/roguekey))//i need to figure out how to avoid these massive if/then trees, this sucks
 		var/obj/item/roguekey/held = user.get_active_held_item()
 		src.lockid = held.lockid
-		to_chat(user, "<span class='notice'>You align the lock's internals to [held].</span>") //locks for non-custom keys
+		to_chat(user, span_notice("You align the lock's internals to [held].")) //locks for non-custom keys
 	if(istype(user.get_active_held_item(), /obj/item/customblank))
 		var/obj/item/customblank/held = user.get_active_held_item()
 		src.lockid = held.lockid
-		to_chat(user, "<span class='notice'>You align the lock's internals to [held].</span>")
+		to_chat(user, span_notice("You align the lock's internals to [held]."))
 	if(istype(user.get_active_held_item(), /obj/item/rogueweapon/hammer) && src.lockid != null)
 		var/obj/item/customlock/finished/F = new (src.loc)
 		F.lockid = src.lockid
-		to_chat(user, "<span class='notice'>You finish [F].</span>")
+		to_chat(user, span_notice("You finish [F]."))
 		qdel(src)
 
 //finished lock
@@ -395,7 +395,7 @@
 /obj/item/customlock/finished/attackby(obj/item/I, mob/user, params)
 	if(istype(I, /obj/item/rogueweapon/hammer))
 		src.holdname = input(user, "What would you like to name this?", "") as text
-		to_chat(user, "<span class='notice'>You label the [name].</span>")
+		to_chat(user, span_notice("You label the [name]."))
 	else
 		..()
 
@@ -405,24 +405,24 @@
 	if(istype(K, /obj/structure/closet))
 		var/obj/structure/closet/KE = K
 		if(KE.keylock == TRUE)
-			to_chat(user, "<span class='warning'>[K] already has a lock.</span>")
+			to_chat(user, span_warning("[K] already has a lock."))
 		else
 			KE.keylock = TRUE
 			KE.lockhash = src.lockid
 			if(src.holdname != null)
 				KE.name = (src.holdname + " " + KE.name)
-			to_chat(user, "<span class='notice'>You add [src] to [K].</span>")
+			to_chat(user, span_notice("You add [src] to [K]."))
 			qdel(src)
 	if(istype(K, /obj/structure/mineral_door/wood/deadbolt))
 		var/obj/structure/mineral_door/wood/deadbolt/KE = K
 		if(KE.keylock == TRUE)
-			to_chat(user, "<span class='warning'>[K] already has a lock.</span>")
+			to_chat(user, span_warning("[K] already has a lock."))
 		else
 			KE.keylock = TRUE
 			KE.lockhash = src.lockid
 			if(src.holdname != null)
 				KE.name = src.holdname
-			to_chat(user, "<span class='notice'>You add [src] to [K].</span>")
+			to_chat(user, span_notice("You add [src] to [K]."))
 			qdel(src)
 			
 

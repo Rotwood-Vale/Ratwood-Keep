@@ -62,12 +62,12 @@
 	if(istype(examined_datum, /datum/antagonist/vampirelord))
 		var/datum/antagonist/vampirelord/V = examined_datum
 		if(!V.disguised)
-			return "<span class='boldnotice'>Another deadite.</span>"
+			return span_boldnotice("Another deadite.")
 	if(istype(examined_datum, /datum/antagonist/zombie))
 		var/datum/antagonist/zombie/fellow_zombie = examined_datum
-		return "<span class='boldnotice'>Another deadite. [fellow_zombie.has_turned ? "My ally." : "<span class='warning'>Hasn't turned yet.</span>"]</span>"
+		return span_boldnotice("Another deadite. [fellow_zombie.has_turned ? "My ally." : span_warning("Hasn't turned yet.")]")
 	if(istype(examined_datum, /datum/antagonist/skeleton))
-		return "<span class='boldnotice'>Another deadite.</span>"
+		return span_boldnotice("Another deadite.")
 
 /datum/antagonist/zombie/on_gain()
 	var/mob/living/carbon/human/zombie = owner?.current
@@ -119,14 +119,14 @@
 			zombie.STAINT = max(zombie.STAINT - 3, 1)
 			for(var/trait in traits_rotman)
 				ADD_TRAIT(zombie, trait, "[type]")
-			to_chat(zombie, "<span class='green'>I no longer crave for flesh... <i>But I still feel ill.</i></span>")
+			to_chat(zombie, span_green("I no longer crave for flesh... <i>But I still feel ill.</i>"))
 		else
 			if(!was_i_undead)
 				zombie.mob_biotypes &= ~MOB_UNDEAD
 			zombie.faction -= "undead"
 			zombie.regenerate_organs()
 			if(has_turned)
-				to_chat(zombie, "<span class='green'>I no longer crave for flesh...</span>")
+				to_chat(zombie, span_green("I no longer crave for flesh..."))
 		for(var/obj/item/bodypart/zombie_part as anything in zombie.bodyparts)
 			zombie_part.rotted = FALSE
 			zombie_part.update_disabled()
@@ -191,10 +191,10 @@
 	zombie.STAINT = 1
 	last_bite = world.time
 	has_turned = TRUE
-	to_chat(zombie, "<span class='userdanger'>I am now a zombie! I crave for the flesh of the living...</span>")
+	to_chat(zombie, span_userdanger("I am now a zombie! I crave for the flesh of the living..."))
 
 /datum/antagonist/zombie/greet()
-	to_chat(owner.current, "<span class='userdanger'>Death is not the end...</span>")
+	to_chat(owner.current, span_userdanger("Death is not the end..."))
 	return ..()
 
 /datum/antagonist/zombie/on_life(mob/user)
@@ -280,9 +280,9 @@
 				closest_dist = total_distance
 				the_dir = get_dir(src, humie)
 	if(!closest_dist)
-		to_chat(src, "<span class='warning'>I failed to smell anything...</span>")
+		to_chat(src, span_warning("I failed to smell anything..."))
 		return FALSE
-	to_chat(src, "<span class='warning'>[closest_dist] meters away, [dir2text(the_dir)]...</span>")
+	to_chat(src, span_warning("[closest_dist] meters away, [dir2text(the_dir)]..."))
 	return TRUE
 
 /**
@@ -297,7 +297,7 @@
 		return
 	if(stat >= DEAD) //do shit the natural way i guess
 		return 
-	to_chat(src, "<span class='danger'>I feel horrible... REALLY horrible after that...</span>")
+	to_chat(src, span_danger("I feel horrible... REALLY horrible after that..."))
 	if(blood_volume)
 		mob_timers["puke"] = world.time
 		vomit(1, blood = TRUE, stun = FALSE)
@@ -309,7 +309,7 @@
 	if(!zombie_antag)
 		return FALSE
 	flash_fullscreen("redflash3")
-	to_chat(src, "<span class='danger'>It hurts... Is this really the end for me?</span>")
+	to_chat(src, span_danger("It hurts... Is this really the end for me?"))
 	emote("scream") // heres your warning to others bro
 	Knockdown(1)
 	zombie_antag.wake_zombie(TRUE)

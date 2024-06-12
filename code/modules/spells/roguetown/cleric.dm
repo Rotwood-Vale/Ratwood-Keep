@@ -88,44 +88,44 @@
 	if(isliving(targets[1]))
 		var/mob/living/target = targets[1]
 		if(target.mob_biotypes & MOB_UNDEAD) //positive energy harms the undead
-			target.visible_message("<span class='danger'>[target] is burned by holy light!</span>", "<span class='userdanger'>I'm burned by holy light!</span>")
+			target.visible_message(span_danger("[target] is burned by holy light!"), span_userdanger("I'm burned by holy light!"))
 			target.adjustFireLoss(50)
 			target.Paralyze(30)
 			target.fire_act(1,5)
 			return TRUE
 		switch(user.patron.type)
 			if(/datum/patron/old_god)
-				target.visible_message("<span class='info'>A strange stirring feeling pours from [target]!</span>", "<span class='notice'>Sentimental thoughts drive away my pains!</span>")
+				target.visible_message(span_info("A strange stirring feeling pours from [target]!"), span_notice("Sentimental thoughts drive away my pains!"))
 			if(/datum/patron/divine/astrata)
-				target.visible_message("<span class='info'>A wreath of gentle light passes over [target]!</span>", "<span class='notice'>I'm bathed in holy light!</span>")
+				target.visible_message(span_info("A wreath of gentle light passes over [target]!"), span_notice("I'm bathed in holy light!"))
 			if(/datum/patron/divine/noc)
-				target.visible_message("<span class='info'>A shroud of soft moonlight falls upon [target]!</span>", "<span class='notice'>I'm shrouded in gentle moonlight!</span>")
+				target.visible_message(span_info("A shroud of soft moonlight falls upon [target]!"), span_notice("I'm shrouded in gentle moonlight!"))
 			if(/datum/patron/divine/dendor)
-				target.visible_message("<span class='info'>A rush of primal energy spirals about [target]!</span>", "<span class='notice'>I'm infused with primal energies!</span>")
+				target.visible_message(span_info("A rush of primal energy spirals about [target]!"), span_notice("I'm infused with primal energies!"))
 			if(/datum/patron/divine/abyssor)
-				target.visible_message("<span class='info'>A mist of salt-scented vapour settles on [target]!</span>", "<span class='notice'>I'm invigorated by healing vapours!</span>")
+				target.visible_message(span_info("A mist of salt-scented vapour settles on [target]!"), span_notice("I'm invigorated by healing vapours!"))
 			if(/datum/patron/divine/ravox)
-				target.visible_message("<span class='info'>An air of righteous defiance rises near [target]!</span>", "<span class='notice'>I'm filled with an urge to fight on!</span>")
+				target.visible_message(span_info("An air of righteous defiance rises near [target]!"), span_notice("I'm filled with an urge to fight on!"))
 			if(/datum/patron/divine/necra)
-				target.visible_message("<span class='info'>A sense of quiet respite radiates from [target]!</span>", "<span class='notice'>I feel the Undermaiden's gaze turn from me for now!</span>")
+				target.visible_message(span_info("A sense of quiet respite radiates from [target]!"), span_notice("I feel the Undermaiden's gaze turn from me for now!"))
 			if(/datum/patron/divine/xylix)
-				target.visible_message("<span class='info'>A fugue seems to manifest briefly across [target]!</span>", "<span class='notice'>My wounds vanish as if they had never been there! </span>")
+				target.visible_message(span_info("A fugue seems to manifest briefly across [target]!"), span_notice("My wounds vanish as if they had never been there! "))
 			if(/datum/patron/divine/pestra)
-				target.visible_message("<span class='info'>A aura of clinical care encompasses [target]!</span>", "<span class='notice'>I'm sewn back together by sacred medicine!</span>")
+				target.visible_message(span_info("A aura of clinical care encompasses [target]!"), span_notice("I'm sewn back together by sacred medicine!"))
 			if(/datum/patron/divine/malum)
-				target.visible_message("<span class='info'>A tempering heat is discharged out of [target]!</span>", "<span class='notice'>I feel the heat of a forge soothing my pains!</span>")
+				target.visible_message(span_info("A tempering heat is discharged out of [target]!"), span_notice("I feel the heat of a forge soothing my pains!"))
 			if(/datum/patron/divine/eora) // RATWOOD CHANGE FROM /datum/patron/inhumen/eora
-				target.visible_message("<span class='info'>A heady heat flushes the flesh of [target] and potent scents hit you!</span>", "<span class='notice'>My ills drift away in a rush of narcotic pleasure!</span>")
+				target.visible_message(span_info("A heady heat flushes the flesh of [target] and potent scents hit you!"), span_notice("My ills drift away in a rush of narcotic pleasure!"))
 			if(/datum/patron/inhumen/zizo)
-				target.visible_message("<span class='info'>Vital energies are sapped towards [target]!</span>", "<span class='notice'>The life around me pales as I am restored!</span>")
+				target.visible_message(span_info("Vital energies are sapped towards [target]!"), span_notice("The life around me pales as I am restored!"))
 			if(/datum/patron/inhumen/graggar)
-				target.visible_message("<span class='info'>Foul fumes billow outward as [target] is restored!</span>", "<span class='notice'>A noxious scent burns my nostrils, but I feel better!</span>")
+				target.visible_message(span_info("Foul fumes billow outward as [target] is restored!"), span_notice("A noxious scent burns my nostrils, but I feel better!"))
 			if(/datum/patron/inhumen/matthios )
-				target.visible_message("<span class='info'>A wreath of strange light passes over [target]!</span>", "<span class='notice'>I'm bathed in strange holy light?</span>")
+				target.visible_message(span_info("A wreath of strange light passes over [target]!"), span_notice("I'm bathed in strange holy light?"))
 			if(/datum/patron/godless)
-				target.visible_message("<span class='info'>Without any particular cause or reason, [target] is healed!</span>", "<span class='notice'>My wounds close without cause.</span>")
+				target.visible_message(span_info("Without any particular cause or reason, [target] is healed!"), span_notice("My wounds close without cause."))
 			else
-				target.visible_message("<span class='info'>A choral sound comes from above and [target] is healed!</span>", "<span class='notice'>I am bathed in healing choral hymns!</span>")
+				target.visible_message(span_info("A choral sound comes from above and [target] is healed!"), span_notice("I am bathed in healing choral hymns!"))
 		if(iscarbon(target))
 			var/mob/living/carbon/C = target
 			var/obj/item/bodypart/affecting = C.get_bodypart(check_zone(user.zone_selected))
@@ -168,12 +168,12 @@
 	if(isliving(targets[1]))
 		var/mob/living/target = targets[1]
 		if(target.mob_biotypes & MOB_UNDEAD) //positive energy harms the undead
-			target.visible_message("<span class='danger'>[target] is burned by holy light!</span>", "<span class='userdanger'>I'm burned by holy light!</span>")
+			target.visible_message(span_danger("[target] is burned by holy light!"), span_userdanger("I'm burned by holy light!"))
 			target.adjustFireLoss(100)
 			target.Paralyze(50)
 			target.fire_act(1,5)
 			return TRUE
-		target.visible_message("<span class='info'>A wreath of gentle light passes over [target]!</span>", "<span class='notice'>I'm bathed in holy light!</span>")
+		target.visible_message(span_info("A wreath of gentle light passes over [target]!"), span_notice("I'm bathed in holy light!"))
 		if(iscarbon(target))
 			var/mob/living/carbon/C = target
 			var/obj/item/bodypart/affecting = C.get_bodypart(check_zone(user.zone_selected))
@@ -274,11 +274,11 @@
 			var/obj/item/organ/organ = get_organ(target, user)
 			if(!organ?.Insert(target))
 				return FALSE
-			target.visible_message("<span class='info'>\The [organ] attaches itself to [target]!</span>", \
-							"<span class='notice'>\The [organ] attaches itself to me!</span>")
+			target.visible_message(span_info("\The [organ] attaches itself to [target]!"), \
+							span_notice("\The [organ] attaches itself to me!"))
 			return TRUE
-		target.visible_message("<span class='info'>\The [limb] attaches itself to [target]!</span>", \
-							"<span class='notice'>\The [limb] attaches itself to me!</span>")
+		target.visible_message(span_info("\The [limb] attaches itself to [target]!"), \
+							span_notice("\The [limb] attaches itself to me!"))
 		return TRUE
 	return FALSE
 
@@ -320,7 +320,7 @@
 			user.visible_message("<font color='yellow'>[user] points at [O], igniting it with sacred flames!</font>")
 			return TRUE
 		else
-			to_chat(user, "<span class='warning'>You point at [O], but it fails to catch fire.</span>")
+			to_chat(user, span_warning("You point at [O], but it fails to catch fire."))
 			return FALSE
 	return FALSE
 
@@ -352,18 +352,18 @@
 		if(target == user)
 			return FALSE
 		if(target.stat < DEAD)
-			to_chat(user, "<span class='warning'>Nothing happens.</span>")
+			to_chat(user, span_warning("Nothing happens."))
 			return FALSE
 		if(GLOB.tod == "night")
-			to_chat(user, "<span class='warning'>Let there be light.</span>")
+			to_chat(user, span_warning("Let there be light."))
 		for(var/obj/structure/fluff/psycross/S in oview(5, user))
 			S.AOE_flash(user, range = 8)
 		if(target.mob_biotypes & MOB_UNDEAD) //positive energy harms the undead
-			target.visible_message("<span class='danger'>[target] is unmade by holy light!</span>", "<span class='userdanger'>I'm unmade by holy light!</span>")
+			target.visible_message(span_danger("[target] is unmade by holy light!"), span_userdanger("I'm unmade by holy light!"))
 			target.gib()
 			return TRUE
 		if(!target.revive(full_heal = FALSE))
-			to_chat(user, "<span class='warning'>Nothing happens.</span>")
+			to_chat(user, span_warning("Nothing happens."))
 			return FALSE
 		testing("revived2")
 		var/mob/living/carbon/spirit/underworld_spirit = target.get_spirit()
@@ -376,7 +376,7 @@
 		target.emote("breathgasp")
 		target.Jitter(100)
 		target.update_body()
-		target.visible_message("<span class='notice'>[target] is revived by holy light!</span>", "<span class='green'>I awake from the void.</span>")
+		target.visible_message(span_notice("[target] is revived by holy light!"), span_green("I awake from the void."))
 		if(target.mind && revive_pq && !HAS_TRAIT(target, TRAIT_IWASREVIVED) && user?.ckey)
 			adjust_playerquality(revive_pq, user.ckey)
 			ADD_TRAIT(target, TRAIT_IWASREVIVED, "[type]")
@@ -390,7 +390,7 @@
 	for(var/obj/structure/fluff/psycross/S in oview(5, user))
 		found = S
 	if(!found)
-		to_chat(user, "<span class='warning'>I need a holy cross.</span>")
+		to_chat(user, span_warning("I need a holy cross."))
 		return FALSE
 	return TRUE
 
@@ -431,10 +431,10 @@
 					has_rot = TRUE
 					break
 		if(!has_rot)
-			to_chat(user, "<span class='warning'>Nothing happens.</span>")
+			to_chat(user, span_warning("Nothing happens."))
 			return FALSE
 		if(GLOB.tod == "night")
-			to_chat(user, "<span class='warning'>Let there be light.</span>")
+			to_chat(user, span_warning("Let there be light."))
 		for(var/obj/structure/fluff/psycross/S in oview(5, user))
 			S.AOE_flash(user, range = 8)
 		testing("curerot2")
@@ -460,9 +460,9 @@
 				rotty.update_disabled()
 		target.update_body()
 		if(!HAS_TRAIT(target, TRAIT_ROTMAN))
-			target.visible_message("<span class='notice'>The rot leaves [target]'s body!</span>", "<span class='green'>I feel the rot leave my body!</span>")
+			target.visible_message(span_notice("The rot leaves [target]'s body!"), span_green("I feel the rot leave my body!"))
 		else
-			target.visible_message("<span class='warning'>The rot fails to leave [target]'s body!</span>", "<span class='warning'>I feel no different...</span>")
+			target.visible_message(span_warning("The rot fails to leave [target]'s body!"), span_warning("I feel no different..."))
 		return TRUE
 	return FALSE
 
@@ -473,7 +473,7 @@
 	for(var/obj/structure/fluff/psycross/S in oview(5, user))
 		found = S
 	if(!found)
-		to_chat(user, "<span class='warning'>I need a holy cross.</span>")
+		to_chat(user, span_warning("I need a holy cross."))
 		return FALSE
 	return TRUE
 
@@ -507,7 +507,7 @@
 		if(success)
 			user.visible_message("My funeral rites have been performed on [hole]!", "[user] consecrates [hole]!")
 			return
-	to_chat(user, "<span class='red'>I failed to perform the rites.</span>")
+	to_chat(user, span_red("I failed to perform the rites."))
 
 /obj/effect/proc_holder/spell/targeted/churn
 	name = "Churn Undead"
@@ -544,12 +544,12 @@
 			if(L.mind.has_antag_datum(/datum/antagonist/zombie))
 				iszombie = TRUE
 			if(L.mind.special_role == "Vampire Lord")
-				user.visible_message("<span class='warning'>[L] overpowers being churned!</span>", "<span class='userdanger'>[L] is too strong, I am churned!</span>")
+				user.visible_message(span_warning("[L] overpowers being churned!"), span_userdanger("[L] is too strong, I am churned!"))
 				user.Stun(50)
 				user.throw_at(get_ranged_target_turf(user, get_dir(user,L), 7), 7, 1, L, spin = FALSE)
 				return
 		if((L.mob_biotypes & MOB_UNDEAD) || isvampire || iszombie)
-//			L.visible_message("<span class='warning'>[L] is unmade by PSYDON!</span>", "<span class='danger'>I'm unmade by PSYDON!</span>")
+//			L.visible_message(span_warning("[L] is unmade by PSYDON!"), span_danger("I'm unmade by PSYDON!"))
 			var/vamp_prob = prob2explode
 			if(isvampire)
 				vamp_prob -= 59
@@ -558,7 +558,7 @@
 				L.Stun(50)
 //				L.throw_at(get_ranged_target_turf(L, get_dir(user,L), 7), 7, 1, L, spin = FALSE)
 			else
-				L.visible_message("<span class='warning'>[L] resists being churned!</span>", "<span class='userdanger'>I resist being churned!</span>")
+				L.visible_message(span_warning("[L] resists being churned!"), span_userdanger("I resist being churned!"))
 	..()
 	return TRUE
 
@@ -716,7 +716,7 @@
 		var/mob/living/target = targets[1]
 		if(target.anti_magic_check(TRUE, TRUE))
 			return FALSE
-		target.visible_message("<span class='warning'>[user] points at [target]'s eyes!</span>","<span class='warning'>My eyes are covered in darkness!</span>")		
+		target.visible_message(span_warning("[user] points at [target]'s eyes!"),span_warning("My eyes are covered in darkness!"))		
 		target.blind_eyes(2)
 	return TRUE
 
@@ -743,9 +743,9 @@
 		var/mob/living/target = targets[1]
 		if(target.anti_magic_check(TRUE, TRUE))
 			return FALSE
-		target.visible_message("<span class='warning'>[target] starts to fade into thin air!</span>", "<span class='notice'>You start to become invisible!</span>")
+		target.visible_message(span_warning("[target] starts to fade into thin air!"), span_notice("You start to become invisible!"))
 		animate(target, alpha = 0, time = 1 SECONDS, easing = EASE_IN)
 		target.mob_timers[MT_INVISIBILITY] = world.time + 15 SECONDS
 		addtimer(CALLBACK(target, TYPE_PROC_REF(/mob/living, update_sneak_invis), TRUE), 15 SECONDS)
-		addtimer(CALLBACK(target, TYPE_PROC_REF(/atom/movable, visible_message), "<span class='warning'>[target] fades back into view.</span>", "<span class='notice'>You become visible again.</span>"), 15 SECONDS)
+		addtimer(CALLBACK(target, TYPE_PROC_REF(/atom/movable, visible_message), span_warning("[target] fades back into view."), span_notice("You become visible again.")), 15 SECONDS)
 	return FALSE

@@ -765,7 +765,7 @@ GLOBAL_LIST_EMPTY(chosen_names)
 /*			if((rank in GLOB.command_positions) || (rank == "AI"))//Bold head jobs
 				HTML += "<b><span class='dark'><a href='?_src_=prefs;preference=job;task=tutorial;tut='[job.tutorial]''>[used_name]</a></span></b>"
 			else
-				HTML += "<span class='dark'><a href='?_src_=prefs;preference=job;task=tutorial;tut='[job.tutorial]''>[used_name]</a></span>"*/
+				HTML += span_dark("<a href='?_src_=prefs;preference=job;task=tutorial;tut='[job.tutorial]''>[used_name]</a>")*/
 
 			HTML += {"
 
@@ -901,7 +901,7 @@ Slots: [job.spawn_positions]</span>
 		return
 
 	if (!isnum(desiredLvl))
-		to_chat(user, "<span class='danger'>UpdateJobPreference - desired level was not a number. Please notify coders!</span>")
+		to_chat(user, span_danger("UpdateJobPreference - desired level was not a number. Please notify coders!"))
 		ShowChoices(user,4)
 		return
 
@@ -945,7 +945,7 @@ Slots: [job.spawn_positions]</span>
 	if(user.client?.prefs)
 		if(user.client.prefs.lastclass)
 			if(user.get_triumphs() < 2)
-				to_chat(user, "<span class='warning'>I haven't TRIUMPHED enough.</span>")
+				to_chat(user, span_warning("I haven't TRIUMPHED enough."))
 				return
 			user.adjust_triumphs(-2)
 			user.client.prefs.lastclass = null
@@ -953,7 +953,7 @@ Slots: [job.spawn_positions]</span>
 
 /datum/preferences/proc/SetQuirks(mob/user)
 	if(!SSquirks)
-		to_chat(user, "<span class='danger'>The quirk subsystem is still initializing! Try again in a minute.</span>")
+		to_chat(user, span_danger("The quirk subsystem is still initializing! Try again in a minute."))
 		return
 
 	var/list/dat = list()
@@ -1127,7 +1127,7 @@ Slots: [job.spawn_positions]</span>
 			var/expires = "This is a permanent ban."
 			if(ban_details["expiration_time"])
 				expires = " The ban is for [DisplayTimeText(text2num(ban_details["duration"]) MINUTES)] and expires on [ban_details["expiration_time"]] (server time)."
-			to_chat(user, "<span class='danger'>You, or another user of this computer or connection ([ban_details["key"]]) is banned from playing [href_list["bancheck"]].<br>The ban reason is: [ban_details["reason"]]<br>This ban (BanID #[ban_details["id"]]) was applied by [ban_details["admin_key"]] on [ban_details["bantime"]] during round ID [ban_details["round_id"]].<br>[expires]</span>")
+			to_chat(user, span_danger("You, or another user of this computer or connection ([ban_details["key"]]) is banned from playing [href_list["bancheck"]].<br>The ban reason is: [ban_details["reason"]]<br>This ban (BanID #[ban_details["id"]]) was applied by [ban_details["admin_key"]] on [ban_details["bantime"]] during round ID [ban_details["round_id"]].<br>[expires]"))
 			return
 	if(href_list["preference"] == "job")
 		switch(href_list["task"])
@@ -1149,9 +1149,9 @@ Slots: [job.spawn_positions]</span>
 			if("tutorial")
 				if(href_list["tut"])
 					testing("[href_list["tut"]]")
-					to_chat(user, "<span class='info'>* ----------------------- *</span>")
+					to_chat(user, span_info("* ----------------------- *"))
 					to_chat(user, href_list["tut"])
-					to_chat(user, "<span class='info'>* ----------------------- *</span>")
+					to_chat(user, span_info("* ----------------------- *"))
 			if("random")
 				switch(joblessrole)
 					if(RETURNTOLOBBY)
@@ -1185,21 +1185,21 @@ Slots: [job.spawn_positions]</span>
 					var/list/L = V
 					for(var/Q in all_quirks)
 						if((quirk in L) && (Q in L) && !(Q == quirk)) //two quirks have lined up in the list of the list of quirks that conflict with each other, so return (see quirks.dm for more details)
-							to_chat(user, "<span class='danger'>[quirk] is incompatible with [Q].</span>")
+							to_chat(user, span_danger("[quirk] is incompatible with [Q]."))
 							return
 				var/value = SSquirks.quirk_points[quirk]
 				var/balance = GetQuirkBalance()
 				if(quirk in all_quirks)
 					if(balance + value < 0)
-						to_chat(user, "<span class='warning'>Refunding this would cause you to go below your balance!</span>")
+						to_chat(user, span_warning("Refunding this would cause you to go below your balance!"))
 						return
 					all_quirks -= quirk
 				else
 					if(GetPositiveQuirkCount() >= MAX_QUIRKS)
-						to_chat(user, "<span class='warning'>I can't have more than [MAX_QUIRKS] positive quirks!</span>")
+						to_chat(user, span_warning("I can't have more than [MAX_QUIRKS] positive quirks!"))
 						return
 					if(balance - value < 0)
-						to_chat(user, "<span class='warning'>I don't have enough balance to gain this quirk!</span>")
+						to_chat(user, span_warning("I don't have enough balance to gain this quirk!"))
 						return
 					all_quirks += quirk
 				SetQuirks(user)
@@ -1459,8 +1459,8 @@ Slots: [job.spawn_positions]</span>
 						voice_color = sanitize_hexcolor(new_voice)
 				if("headshot")
 					to_chat(user, "<span class='notice'>Please use a relatively SFW image of the head and shoulder area to maintain immersion level. Lastly, ["<span class='bold'>do not use a real life photo or use any image that is less than serious.</span>"]</span>")
-					to_chat(user, "<span class='notice'>If the photo doesn't show up properly in-game, ensure that it's a direct image link that opens properly in a browser.</span>")
-					to_chat(user, "<span class='notice'>Keep in mind that the photo will be downsized to 250x250 pixels, so the more square the photo, the better it will look.</span>")
+					to_chat(user, span_notice("If the photo doesn't show up properly in-game, ensure that it's a direct image link that opens properly in a browser."))
+					to_chat(user, span_notice("Keep in mind that the photo will be downsized to 250x250 pixels, so the more square the photo, the better it will look."))
 					var/new_headshot_link = input(user, "Input the headshot link (https, hosts: gyazo, discord, lensdump, imgbox, catbox):", "Headshot", headshot_link) as text|null
 					if(!new_headshot_link)
 						headshot_link = null
@@ -1468,7 +1468,7 @@ Slots: [job.spawn_positions]</span>
 					if(!valid_headshot_link(user, new_headshot_link))
 						return
 					headshot_link = new_headshot_link
-					to_chat(user, "<span class='notice'>Successfully updated headshot picture</span>")
+					to_chat(user, span_notice("Successfully updated headshot picture"))
 					log_game("[user] has set their Headshot image to '[headshot_link]'.")
 
 				if("species")
@@ -1504,7 +1504,7 @@ Slots: [job.spawn_positions]</span>
 						var/datum/charflaw/C = new result()
 						charflaw = C
 						if(charflaw.desc)
-							to_chat(user, "<span class='info'>[charflaw.desc]</span>")
+							to_chat(user, span_info("[charflaw.desc]"))
 
 
 
@@ -1553,7 +1553,7 @@ Slots: [job.spawn_positions]</span>
 						charflaw = GLOB.character_flaws[selectedflaw]
 						charflaw = new charflaw()
 						if(charflaw.desc)
-							to_chat(user, "<span class='info'>[charflaw.desc]</span>")
+							to_chat(user, span_info("[charflaw.desc]"))
 
 				if("ooccolor")
 					var/new_ooccolor = input(user, "Choose your OOC colour:", "Game Preference",ooccolor) as color|null
@@ -1856,7 +1856,7 @@ Slots: [job.spawn_positions]</span>
 										As a voice, you will receive meditations from players asking about game mechanics!\n\
 										Good voices will be rewarded with PQ for answering meditations, while bad ones are punished at the discretion of jannies.</span>")
 					else
-						to_chat(user, "<span class='warning'>You are no longer a voice.</span>")
+						to_chat(user, span_warning("You are no longer a voice."))
 
 				if("save")
 					save_preferences()
@@ -2046,12 +2046,12 @@ Slots: [job.spawn_positions]</span>
 	var/find_index = findtext(value, "https://")
 	if(find_index != 1)
 		if(!silent)
-			to_chat(user, "<span class='warning'>Your link must be https!</span>")
+			to_chat(user, span_warning("Your link must be https!"))
 		return FALSE
 
 	if(!findtext(value, "."))
 		if(!silent)
-			to_chat(user, "<span class='warning'>Invalid link!</span>")
+			to_chat(user, span_warning("Invalid link!"))
 		return FALSE
 	var/list/value_split = splittext(value, ".")
 
@@ -2059,12 +2059,12 @@ Slots: [job.spawn_positions]</span>
 	var/extension = value_split[length(value_split)]
 	if(!(extension in valid_extensions))
 		if(!silent)
-			to_chat(usr, "<span class='warning'>The image must be one of the following extensions: '[english_list(valid_extensions)]'</span>")
+			to_chat(usr, span_warning("The image must be one of the following extensions: '[english_list(valid_extensions)]'"))
 		return FALSE
 
 	find_index = findtext(value, link_regex)
 	if(find_index != 9)
 		if(!silent)
-			to_chat(usr, "<span class='warning'>The image must be hosted on one of the following sites: 'Gyazo, Lensdump, Imgbox, Catbox'</span>")
+			to_chat(usr, span_warning("The image must be hosted on one of the following sites: 'Gyazo, Lensdump, Imgbox, Catbox'"))
 		return FALSE
 	return TRUE

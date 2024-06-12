@@ -41,10 +41,10 @@ obj/machinery/spaceship_navigation_beacon/emp_act()
 		var/new_name = "Beacon_[input("Enter the custom name for this beacon", "It be Beacon ..your input..") as text|null]"
 		if(new_name && Adjacent(user))
 			name = new_name
-			to_chat(user, "<span class='notice'>I change beacon name to [name].</span>")
+			to_chat(user, span_notice("I change beacon name to [name]."))
 	else
 		locked =!locked
-		to_chat(user, "<span class='notice'>I [locked ? "" : "un"]lock [src].</span>")
+		to_chat(user, span_notice("I [locked ? "" : "un"]lock [src]."))
 	return TRUE
 
 /obj/machinery/spaceship_navigation_beacon/examine()

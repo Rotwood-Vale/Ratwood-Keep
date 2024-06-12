@@ -211,7 +211,7 @@ SUBSYSTEM_DEF(triumphs)
 		to_chat(src, "No need to trade for what you already possess.")
 		return
 	if(src.get_triumphs() < amt2take)
-		to_chat(src, "<span class='warning'>I haven't TRIUMPHED enough.</span>")
+		to_chat(src, span_warning("I haven't TRIUMPHED enough."))
 		return
 	src.adjust_triumphs(-1 * amt2take)
 	GLOB.temporary_donators[ckey] = added
@@ -231,7 +231,7 @@ SUBSYSTEM_DEF(triumphs)
 			shown_patreon_level = "Magistrate"
 		if(5)
 			shown_patreon_level = "Lord"
-	to_chat(src, "<span class='info'>Your Patreon Level: [shown_patreon_level]</span>")
+	to_chat(src, span_info("Your Patreon Level: [shown_patreon_level]"))
 
 /mob/dead/new_player/verb/forcerogueworld()
 	set category = "Triumphs"
@@ -243,18 +243,18 @@ SUBSYSTEM_DEF(triumphs)
 	if(!client)
 		return
 	if(SSticker.current_state > GAME_STATE_PREGAME)
-		to_chat(src, "<span class='warning'>Too late.</span>")
+		to_chat(src, span_warning("Too late."))
 		return
 	var/datum/game_mode/chaosmode/C = SSticker.mode
 	if(istype(C))
 		if(C.allmig || C.roguefight)
-			to_chat(src, "<span class='warning'>Too late.</span>")
+			to_chat(src, span_warning("Too late."))
 			return
 		if(alert(src,"Force ROGUEWORLD? (30 TRI)","ROGUETOWN","YES","NO") == "YES")
 			if(SSticker.current_state <= GAME_STATE_PREGAME)
 				if(get_triumphs() >= 30)
 					adjust_triumphs(-30)
-					to_chat(world, "<span class='greentext'>ROGUEWORLD has been summoned by [client.ckey]!</span>")
+					to_chat(world, span_greentext("ROGUEWORLD has been summoned by [client.ckey]!"))
 					var/icon/ikon
 					var/file_path = "icons/rogueworld_title.dmi"
 					ASSERT(fexists(file_path))
@@ -278,12 +278,12 @@ SUBSYSTEM_DEF(triumphs)
 	if(!client)
 		return
 	if(SSticker.current_state > GAME_STATE_PREGAME)
-		to_chat(src, "<span class='warning'>Too late.</span>")
+		to_chat(src, span_warning("Too late."))
 		return
 	if(alert(src,"Burn down the hall of TRIUMPHS?","ROGUETOWN","YES","NO") == "YES")
 		if(SSticker.current_state <= GAME_STATE_PREGAME)
 			if(get_triumphs() >= 1000)
-				to_chat(world, "<span class='redtext'>[client.ckey] burns the hall of triumphs to the ground!</span>")
+				to_chat(world, span_redtext("[client.ckey] burns the hall of triumphs to the ground!"))
 				SStriumphs.wipe_triumphs(key)
 			else
 				to_chat(src, "I haven't TRIUMPHED enough.")

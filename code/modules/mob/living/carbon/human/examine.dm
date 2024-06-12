@@ -88,30 +88,30 @@
 				if((user_skin_tone_seen == "lalvestine" && skin_tone_seen == "shalvistine") || \
 					(user_skin_tone_seen == "shalvistine" && skin_tone_seen == "lalvestine"))
 					slop_lore_string = ", <span class='danger'>A TRAITOR!</span>"
-			. += "<span class='info'>[capitalize(m2)] [skin_tone_wording] is [skin_tone_seen][slop_lore_string]</span>"
+			. += span_info("[capitalize(m2)] [skin_tone_wording] is [skin_tone_seen][slop_lore_string]")
 
 		if(ishuman(user))
 			var/mob/living/carbon/human/H = user
 			if(H.marriedto == real_name)
-				. += "<span class='love'>It's my spouse.</span>"
+				. += span_love("It's my spouse.")
 
 		if(real_name in GLOB.excommunicated_players)
-			. += "<span class='userdanger'>HERETIC! SHAME!</span>"
+			. += span_userdanger("HERETIC! SHAME!")
 
 		if(real_name in GLOB.outlawed_players)
-			. += "<span class='userdanger'>OUTLAW!</span>"
+			. += span_userdanger("OUTLAW!")
 		if(mind)
 			if(mind.special_role == "Bandit")
-				. += "<span class='userdanger'>BANDIT!</span>"
+				. += span_userdanger("BANDIT!")
 			if(mind.special_role == "Vampire Lord")
-				. += "<span class='userdanger'>A MONSTER!</span>"
+				. += span_userdanger("A MONSTER!")
 			if(mind.assigned_role == "Lunatic")
-				. += "<span class='userdanger'>LUNATIC!</span>"
+				. += span_userdanger("LUNATIC!")
 		if(HAS_TRAIT(src, TRAIT_MANIAC_AWOKEN))
-			. += "<span class='userdanger'>MANIAC!</span>"
+			. += span_userdanger("MANIAC!")
 
 	if(leprosy == 1)
-		. += "<span class='necrosis'>A LEPER...</span>"
+		. += span_necrosis("A LEPER...")
 
 	if(user != src)
 		var/datum/mind/Umind = user.mind
@@ -122,7 +122,7 @@
 					if(shit)
 						. += shit
 			if(user.mind.has_antag_datum(/datum/antagonist/vampirelord) || user.mind.has_antag_datum(/datum/antagonist/vampire))
-				. += "<span class='userdanger'>Blood Volume: [blood_volume]</span>"
+				. += span_userdanger("Blood Volume: [blood_volume]")
 
 	var/list/obscured = check_obscured_slots()
 	var/skipface = (wear_mask && (wear_mask.flags_inv & HIDEFACE)) || (head && (head.flags_inv & HIDEFACE))
@@ -206,7 +206,7 @@
 		if(glasses)
 			. += "[m3] [glasses.get_examine_string(user)] covering [m2] eyes."
 		else if(eye_color == BLOODCULT_EYE && iscultist(src) && HAS_TRAIT(src, CULT_EYES))
-			. += "<span class='warning'><B>[m2] eyes are glowing an unnatural red!</B></span>"
+			. += span_warning("<B>[m2] eyes are glowing an unnatural red!</B>")
 
 	//ears
 	if(ears && !(SLOT_HEAD in obscured))
@@ -244,17 +244,17 @@
 			if(50 to 100)
 				msg += "<B>[m1] severely wounded.</B>"
 			if(100 to INFINITY)
-				msg += "<span class='danger'>[m1] gravely wounded.</span>"
+				msg += span_danger("[m1] gravely wounded.")
 	// Blood volume
 	switch(blood_volume)
 		if(-INFINITY to BLOOD_VOLUME_SURVIVE)
-			msg += "<span class='artery'><B>[m1] extremely pale and sickly.</B></span>"
+			msg += span_artery("<B>[m1] extremely pale and sickly.</B>")
 		if(BLOOD_VOLUME_SURVIVE to BLOOD_VOLUME_BAD)
-			msg += "<span class='artery'><B>[m1] very pale.</B></span>"
+			msg += span_artery("<B>[m1] very pale.</B>")
 		if(BLOOD_VOLUME_BAD to BLOOD_VOLUME_OKAY)
-			msg += "<span class='artery'>[m1] pale.</span>"
+			msg += span_artery("[m1] pale.")
 		if(BLOOD_VOLUME_OKAY to BLOOD_VOLUME_SAFE)
-			msg += "<span class='artery'>[m1] a little pale.</span>"
+			msg += span_artery("[m1] a little pale.")
 
 	// Bleeding
 	var/bleed_rate = get_bleed_rate()
@@ -285,14 +285,14 @@
 			bleeding_limbs += parse_zone(bleeder.body_zone)
 		if(length(bleeding_limbs))
 			if(bleed_rate >= 5)
-				msg += "<span class='bloody'><B>[capitalize(m2)] [english_list(bleeding_limbs)] [bleeding_limbs.len > 1 ? "are" : "is"] [bleed_wording]!</B></span>"
+				msg += span_bloody("<B>[capitalize(m2)] [english_list(bleeding_limbs)] [bleeding_limbs.len > 1 ? "are" : "is"] [bleed_wording]!</B>")
 			else
-				msg += "<span class='bloody'>[capitalize(m2)] [english_list(bleeding_limbs)] [bleeding_limbs.len > 1 ? "are" : "is"] [bleed_wording]!</span>"
+				msg += span_bloody("[capitalize(m2)] [english_list(bleeding_limbs)] [bleeding_limbs.len > 1 ? "are" : "is"] [bleed_wording]!")
 		else
 			if(bleed_rate >= 5)
-				msg += "<span class='bloody'><B>[m1] [bleed_wording]</B>!</span>"
+				msg += span_bloody("<B>[m1] [bleed_wording]</B>!")
 			else
-				msg += "<span class='bloody'>[m1] [bleed_wording]!</span>"
+				msg += span_bloody("[m1] [bleed_wording]!")
 
 	var/missing_head = FALSE
 	var/list/missing_limbs = list()
@@ -303,7 +303,7 @@
 	if(length(missing_limbs))
 		var/missing_limb_message = "<B>[capitalize(m2)] [english_list(missing_limbs)] [missing_limbs.len > 1 ? "are" : "is"] gone.</B>"
 		if(missing_head)
-			missing_limb_message = "<span class='dead'>[missing_limb_message]</span>"
+			missing_limb_message = span_dead("[missing_limb_message]")
 		msg += missing_limb_message
 
 	//Grabbing
@@ -400,7 +400,7 @@
 				msg += "[m1] twitching ever so slightly."
 		
 		if(InCritical())
-			msg += "<span class='warning'>[m1] barely conscious.</span>"
+			msg += span_warning("[m1] barely conscious.")
 		else
 			if(stat >= UNCONSCIOUS)
 				msg += "[m1] unconscious."
@@ -417,12 +417,12 @@
 //				msg += "[m1] barely conscious."
 //		if(getorgan(/obj/item/organ/brain))
 //			if(!key)
-//				msg += "<span class='deadsay'>[m1] totally catatonic. The stresses of life in deep-space must have been too much for [t_him]. Any recovery is unlikely.</span>"
+//				msg += span_deadsay("[m1] totally catatonic. The stresses of life in deep-space must have been too much for [t_him]. Any recovery is unlikely.")
 //			else if(!client)
 //				msg += "[m3] a blank, absent-minded stare and appears completely unresponsive to anything. [t_He] may snap out of it soon."
 
 	if(length(msg))
-		. += "<span class='warning'>[msg.Join("\n")]</span>"
+		. += span_warning("[msg.Join("\n")]")
 
 	if((user != src) && isliving(user))
 		var/mob/living/L = user
@@ -432,20 +432,20 @@
 		var/strength_diff = final_str - L.STASTR
 		switch(strength_diff)
 			if(5 to INFINITY)
-				. += "<span class='warning'><B>[t_He] look[p_s()] much stronger than I.</B></span>"
+				. += span_warning("<B>[t_He] look[p_s()] much stronger than I.</B>")
 			if(1 to 5)
-				. += "<span class='warning'>[t_He] look[p_s()] stronger than I.</span>"
+				. += span_warning("[t_He] look[p_s()] stronger than I.")
 			if(0)
 				. += "[t_He] look[p_s()] about as strong as I."
 			if(-5 to -1)
-				. += "<span class='warning'>[t_He] look[p_s()] weaker than I.</span>"
+				. += span_warning("[t_He] look[p_s()] weaker than I.")
 			if(-INFINITY to -5)
-				. += "<span class='warning'><B>[t_He] look[p_s()] much weaker than I.</B></span>"
+				. += span_warning("<B>[t_He] look[p_s()] much weaker than I.</B>")
 
 	if(maniac)
 		var/obj/item/organ/heart/heart = getorganslot(ORGAN_SLOT_HEART)
 		if(heart?.inscryption && (heart.inscryption_key in maniac.key_nums))
-			. += "<span class='danger'>[t_He] know[p_s()] [heart.inscryption_key], I AM SURE OF IT!</span>"
+			. += span_danger("[t_He] know[p_s()] [heart.inscryption_key], I AM SURE OF IT!")
 
 	if(Adjacent(user))
 		if(observer_privilege)

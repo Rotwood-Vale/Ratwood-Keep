@@ -62,7 +62,7 @@
 	if( ishuman(AM) )
 		if(!stat)
 			var/mob/M = AM
-			to_chat(M, "<span class='notice'>[icon2html(src, M)] Squeak!</span>")
+			to_chat(M, span_notice("[icon2html(src, M)] Squeak!"))
 	..()
 
 /mob/living/simple_animal/mouse/handle_automated_action()
@@ -72,13 +72,13 @@
 			var/obj/structure/cable/C = locate() in F
 			if(C && prob(15))
 				if(C.avail())
-					visible_message("<span class='warning'>[src] chews through the [C]. It's toast!</span>")
+					visible_message(span_warning("[src] chews through the [C]. It's toast!"))
 					playsound(src, 'sound/blank.ogg', 100, TRUE)
 					C.deconstruct()
 					death(toast=1)
 				else
 					C.deconstruct()
-					visible_message("<span class='warning'>[src] chews through the [C].</span>")
+					visible_message(span_warning("[src] chews through the [C]."))
 
 /*
  * Mouse types
@@ -122,16 +122,16 @@
 /obj/item/reagent_containers/food/snacks/deadmouse/examine(mob/user)
 	. = ..()
 	if (reagents?.has_reagent(/datum/reagent/yuck) || reagents?.has_reagent(/datum/reagent/fuel))
-		. += "<span class='warning'>It's dripping with fuel and smells terrible.</span>"
+		. += span_warning("It's dripping with fuel and smells terrible.")
 
 /obj/item/reagent_containers/food/snacks/deadmouse/attackby(obj/item/I, mob/user, params)
 	if(I.get_sharpness() && user.used_intent.type == INTENT_HARM)
 		if(isturf(loc))
 			new /obj/item/reagent_containers/food/snacks/meat/slab/mouse(loc)
-			to_chat(user, "<span class='notice'>I butcher [src].</span>")
+			to_chat(user, span_notice("I butcher [src]."))
 			qdel(src)
 		else
-			to_chat(user, "<span class='warning'>I need to put [src] on a surface to butcher it!</span>")
+			to_chat(user, span_warning("I need to put [src] on a surface to butcher it!"))
 	else
 		return ..()
 
@@ -141,10 +141,10 @@
 		var/datum/reagents/target_reagents = target.reagents
 		var/trans_amount = reagents.maximum_volume - reagents.total_volume * (4 / 3)
 		if(target_reagents.has_reagent(/datum/reagent/fuel) && target_reagents.trans_to(src, trans_amount))
-			to_chat(user, "<span class='notice'>I dip [src] into [target].</span>")
+			to_chat(user, span_notice("I dip [src] into [target]."))
 			reagents.trans_to(target, reagents.total_volume)
 		else
-			to_chat(user, "<span class='warning'>That's a terrible idea.</span>")
+			to_chat(user, span_warning("That's a terrible idea."))
 	else
 		return ..()
 

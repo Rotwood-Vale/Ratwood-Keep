@@ -25,22 +25,22 @@
 				return
 
 			if(M != user)
-				M.visible_message("<span class='notice'>[user.name] pulls [M.name] free from the sticky nest!</span>",\
-					"<span class='notice'>[user.name] pulls you free from the gelatinous resin.</span>",\
-					"<span class='hear'>I hear squelching...</span>")
+				M.visible_message(span_notice("[user.name] pulls [M.name] free from the sticky nest!"),\
+					span_notice("[user.name] pulls you free from the gelatinous resin."),\
+					span_hear("I hear squelching..."))
 			else
-				M.visible_message("<span class='warning'>[M.name] struggles to break free from the gelatinous resin!</span>",\
-					"<span class='notice'>I struggle to break free from the gelatinous resin... (Stay still for two minutes.)</span>",\
-					"<span class='hear'>I hear squelching...</span>")
+				M.visible_message(span_warning("[M.name] struggles to break free from the gelatinous resin!"),\
+					span_notice("I struggle to break free from the gelatinous resin... (Stay still for two minutes.)"),\
+					span_hear("I hear squelching..."))
 				if(!do_after(M, 1200, target = src))
 					if(M && M.buckled)
-						to_chat(M, "<span class='warning'>I fail to unbuckle yourself!</span>")
+						to_chat(M, span_warning("I fail to unbuckle yourself!"))
 					return
 				if(!M.buckled)
 					return
-				M.visible_message("<span class='warning'>[M.name] breaks free from the gelatinous resin!</span>",\
-					"<span class='notice'>I break free from the gelatinous resin!</span>",\
-					"<span class='hear'>I hear squelching...</span>")
+				M.visible_message(span_warning("[M.name] breaks free from the gelatinous resin!"),\
+					span_notice("I break free from the gelatinous resin!"),\
+					span_hear("I hear squelching..."))
 
 			unbuckle_mob(M)
 			add_fingerprint(user)
@@ -58,9 +58,9 @@
 		unbuckle_all_mobs()
 
 	if(buckle_mob(M))
-		M.visible_message("<span class='notice'>[user.name] secretes a thick vile goo, securing [M.name] into [src]!</span>",\
-			"<span class='danger'>[user.name] drenches you in a foul-smelling resin, trapping you in [src]!</span>",\
-			"<span class='hear'>I hear squelching...</span>")
+		M.visible_message(span_notice("[user.name] secretes a thick vile goo, securing [M.name] into [src]!"),\
+			span_danger("[user.name] drenches you in a foul-smelling resin, trapping you in [src]!"),\
+			span_hear("I hear squelching..."))
 
 /obj/structure/bed/nest/post_buckle_mob(mob/living/M)
 	M.pixel_y = 0

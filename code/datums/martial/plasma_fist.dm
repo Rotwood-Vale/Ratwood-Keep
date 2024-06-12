@@ -35,9 +35,9 @@
 	return
 
 /datum/martial_art/plasma_fist/proc/Throwback(mob/living/carbon/human/A, mob/living/carbon/human/D)
-	D.visible_message("<span class='danger'>[A] hits [D] with Plasma Punch!</span>", \
-					"<span class='danger'>You're hit with a Plasma Punch by [A]!</span>", "<span class='hear'>I hear a sickening sound of flesh hitting flesh!</span>", null, A)
-	to_chat(A, "<span class='danger'>I hit [D] with Plasma Punch!</span>")
+	D.visible_message(span_danger("[A] hits [D] with Plasma Punch!"), \
+					span_danger("You're hit with a Plasma Punch by [A]!"), span_hear("I hear a sickening sound of flesh hitting flesh!"), null, A)
+	to_chat(A, span_danger("I hit [D] with Plasma Punch!"))
 	playsound(D.loc, 'sound/blank.ogg', 50, TRUE, -1)
 	var/atom/throw_target = get_edge_target_turf(D, get_dir(D, get_step_away(D, A)))
 	D.throw_at(throw_target, 200, 4,A)
@@ -49,9 +49,9 @@
 	A.do_attack_animation(D, ATTACK_EFFECT_PUNCH)
 	playsound(D.loc, 'sound/blank.ogg', 50, TRUE, -1)
 	A.say("PLASMA FIST!", forced="plasma fist")
-	D.visible_message("<span class='danger'>[A] hits [D] with THE PLASMA FIST TECHNIQUE!</span>", \
-					"<span class='danger'>You're suddenly hit with THE PLASMA FIST TECHNIQUE by [A]!</span>", "<span class='hear'>I hear a sickening sound of flesh hitting flesh!</span>", null, A)
-	to_chat(A, "<span class='danger'>I hit [D] with THE PLASMA FIST TECHNIQUE!</span>")
+	D.visible_message(span_danger("[A] hits [D] with THE PLASMA FIST TECHNIQUE!"), \
+					span_danger("You're suddenly hit with THE PLASMA FIST TECHNIQUE by [A]!"), span_hear("I hear a sickening sound of flesh hitting flesh!"), null, A)
+	to_chat(A, span_danger("I hit [D] with THE PLASMA FIST TECHNIQUE!"))
 	D.gib()
 	log_combat(A, D, "gibbed (Plasma Fist)")
 	return

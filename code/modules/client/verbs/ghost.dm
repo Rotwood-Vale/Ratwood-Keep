@@ -61,7 +61,7 @@ GLOBAL_LIST_INIT(ghost_verbs, list(
 
 	log_game("[key_name(usr)] respawned from underworld")
 
-	to_chat(src, "<span class='info'>Returned to lobby successfully.</span>")
+	to_chat(src, span_info("Returned to lobby successfully."))
 
 	if(!client)
 		log_game("[key_name(usr)] AM failed due to disconnect.")

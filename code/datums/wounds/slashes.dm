@@ -40,7 +40,7 @@
 
 /datum/wound/slash/disembowel
 	name = "disembowelment"
-	check_name = "<span class='userdanger'><B>GUTS</B></span>"
+	check_name = span_userdanger("<B>GUTS</B>")
 	crit_message = "%VICTIM spills %P_THEIR organs!"
 	sound_effect = 'sound/combat/crit2.ogg'
 	whp = 100

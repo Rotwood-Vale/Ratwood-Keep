@@ -52,11 +52,11 @@
 				return zone
 			else
 				if(user.client?.prefs.showrolls)
-					to_chat(user, "<span class='warning'>Accuracy fail! [chance2hit]%</span>")
+					to_chat(user, span_warning("Accuracy fail! [chance2hit]%"))
 				return check_zone(zone)
 		else
 			if(user.client?.prefs.showrolls)
-				to_chat(user, "<span class='warning'>Ultra accuracy fail! [chance2hit]%</span>")
+				to_chat(user, span_warning("Ultra accuracy fail! [chance2hit]%"))
 			return BODY_ZONE_CHEST
 
 /mob/proc/get_generic_parry_drain()
@@ -71,7 +71,7 @@
 		return FALSE
 	if(user.badluck(4))
 		var/list/usedp = list("Critical miss!", "Damn! Critical miss!", "No! Critical miss!", "It can't be! Critical miss!", "Betrayed by lady luck! Critical miss!", "Bad luck! Critical miss!", "Curse creation! Critical miss!", "What?! Critical miss!")
-		to_chat(user, "<span class='boldwarning'>[pick(usedp)]</span>")
+		to_chat(user, span_boldwarning("[pick(usedp)]"))
 		flash_fullscreen("blackflash2")
 		user.aftermiss()
 		return TRUE
@@ -187,14 +187,14 @@
 
 			prob2defend = clamp(prob2defend, 5, 99)
 			if(src.client?.prefs.showrolls)
-				to_chat(src, "<span class='info'>Roll to parry... [prob2defend]%</span>")
+				to_chat(src, span_info("Roll to parry... [prob2defend]%"))
 
 			if(prob(prob2defend))
 				if(intenty.masteritem)
 					if(intenty.masteritem.wbalance < 0 && user.STASTR > src.STASTR) //enemy weapon is heavy, so get a bonus scaling on strdiff
 						drained = drained + ( intenty.masteritem.wbalance * ((user.STASTR - src.STASTR) * -5) )
 			else
-				to_chat(src, "<span class='warning'>The enemy defeated my parry!</span>")
+				to_chat(src, span_warning("The enemy defeated my parry!"))
 				return FALSE
 
 			drained = max(drained, 5)		
@@ -296,7 +296,7 @@
 				if(pulledby)
 					return FALSE
 				if(!turfy)
-					to_chat(src, "<span class='boldwarning'>There's nowhere to dodge to!</span>")
+					to_chat(src, span_boldwarning("There's nowhere to dodge to!"))
 					return FALSE
 				else
 					if(do_dodge(user, turfy))
@@ -315,12 +315,12 @@
 			if(W)
 				playsound(get_turf(src), pick(W.parrysound), 100, FALSE)
 			if(istype(rmb_intent, /datum/rmb_intent/riposte))
-				src.visible_message("<span class='boldwarning'><b>[src]</b> ripostes [user] with [W]!</span>")
+				src.visible_message(span_boldwarning("<b>[src]</b> ripostes [user] with [W]!"))
 			else
-				src.visible_message("<span class='boldwarning'><b>[src]</b> parries [user] with [W]!</span>")
+				src.visible_message(span_boldwarning("<b>[src]</b> parries [user] with [W]!"))
 			return TRUE
 		else
-			to_chat(src, "<span class='warning'>I'm too tired to parry!</span>")
+			to_chat(src, span_warning("I'm too tired to parry!"))
 			return FALSE //crush through
 	else
 		if(W)
@@ -332,10 +332,10 @@
 		var/mob/living/carbon/human/H = src
 		if(H.rogfat_add(parrydrain))
 			playsound(get_turf(src), pick(parry_sound), 100, FALSE)
-			src.visible_message("<span class='warning'><b>[src]</b> parries [user]!</span>")
+			src.visible_message(span_warning("<b>[src]</b> parries [user]!"))
 			return TRUE
 		else
-			to_chat(src, "<span class='boldwarning'>I'm too tired to parry!</span>")
+			to_chat(src, span_boldwarning("I'm too tired to parry!"))
 			return FALSE
 	else
 		playsound(get_turf(src), pick(parry_sound), 100, FALSE)
@@ -400,29 +400,29 @@
 							prob2defend = prob2defend + (H.mind.get_skill_level(/datum/skill/combat/unarmed) * 10)
 			prob2defend = clamp(prob2defend, 5, 99)
 			if(client?.prefs.showrolls)
-				to_chat(src, "<span class='info'>Roll to dodge... [prob2defend]%</span>")
+				to_chat(src, span_info("Roll to dodge... [prob2defend]%"))
 			if(!prob(prob2defend))
 				return FALSE
 			if(!H.rogfat_add(max(drained,5)))
-				to_chat(src, "<span class='warning'>I'm too tired to dodge!</span>")
+				to_chat(src, span_warning("I'm too tired to dodge!"))
 				return FALSE
 		else //we are a non human
 			if(client?.prefs.showrolls)
-				to_chat(src, "<span class='info'>Roll to dodge... [prob2defend]%</span>")
+				to_chat(src, span_info("Roll to dodge... [prob2defend]%"))
 			prob2defend = clamp(prob2defend, 5, 99)
 			if(!prob(prob2defend))
 				return FALSE
 		dodgecd = TRUE
 		throw_at(turfy, 1, 2, src, FALSE)
 		if(drained > 0)
-			src.visible_message("<span class='warning'><b>[src]</b> dodges [user]'s attack!</span>")
+			src.visible_message(span_warning("<b>[src]</b> dodges [user]'s attack!"))
 		else
-			src.visible_message("<span class='warning'><b>[src]</b> easily dodges [user]'s attack!</span>")
+			src.visible_message(span_warning("<b>[src]</b> easily dodges [user]'s attack!"))
 		dodgecd = null
 //		if(H)
 //			if(H.IsOffBalanced())
 //				H.Knockdown(1)
-//				to_chat(H, "<span class='danger'>I tried to dodge off-balance!</span>")
+//				to_chat(H, span_danger("I tried to dodge off-balance!"))
 		playsound(src, 'sound/combat/dodge.ogg', 100, FALSE)
 //		if(isturf(loc))
 //			var/turf/T = loc

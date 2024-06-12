@@ -125,9 +125,9 @@
 
 /mob/living/simple_animal/hostile/retaliate/rogue/cow/attack_hand(mob/living/carbon/M)
 	if(!stat && M.used_intent.type == INTENT_DISARM && icon_state != icon_dead && !has_buckled_mobs())
-		M.visible_message("<span class='warning'>[M] tips over [src].</span>",
-			"<span class='notice'>I tip over [src].</span>")
-		to_chat(src, "<span class='danger'>I am tipped over by [M]!</span>")
+		M.visible_message(span_warning("[M] tips over [src]."),
+			span_notice("I tip over [src]."))
+		to_chat(src, span_danger("I am tipped over by [M]!"))
 		Paralyze(60, ignore_canstun = TRUE)
 		icon_state = "[initial(icon_state)]_tip"
 		spawn(60)

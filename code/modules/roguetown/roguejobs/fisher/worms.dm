@@ -50,7 +50,7 @@
 		if(!affecting)
 			return
 		if(!get_location_accessible(H, check_zone(user.zone_selected)))
-			to_chat(user, "<span class='warning'>Something in the way.</span>")
+			to_chat(user, span_warning("Something in the way."))
 			return
 		var/used_time = 70 - (H.mind.get_skill_level(/datum/skill/misc/medicine) * 10)
 		if(!do_mob(user, H, used_time))
@@ -61,9 +61,9 @@
 		src.forceMove(H)
 		affecting.add_embedded_object(src, silent = TRUE, crit_message = FALSE)
 		if(M == user)
-			user.visible_message("<span class='notice'>[user] places a leech on [user.p_their()] [affecting].</span>", "<span class='notice'>I place a leech on my [affecting].</span>")
+			user.visible_message(span_notice("[user] places a leech on [user.p_their()] [affecting]."), span_notice("I place a leech on my [affecting]."))
 		else
-			user.visible_message("<span class='notice'>[user] places a leech on [M]'s [affecting].</span>", "<span class='notice'>I place a leech on [M]'s [affecting].</span>")
+			user.visible_message(span_notice("[user] places a leech on [M]'s [affecting]."), span_notice("I place a leech on [M]'s [affecting]."))
 
 /obj/item/natural/worms/leeches/on_embed_life(mob/living/user, obj/item/bodypart/bodypart)
 	if(!user)

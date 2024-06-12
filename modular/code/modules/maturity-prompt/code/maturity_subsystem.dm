@@ -62,7 +62,7 @@ SUBSYSTEM_DEF(maturity_guard)
 		var/check_result = validate_dob(year, month, day)
 		switch(check_result)
 			if(AGE_CHECK_INVALID)
-				to_chat_immediate(user, "<span class='warning'>Invalid information entered. Please try again.</span>")
+				to_chat_immediate(user, span_warning("Invalid information entered. Please try again."))
 				user.client.OpenMaturityPrompt()
 				return FALSE
 			if(AGE_CHECK_UNDERAGE)
@@ -78,7 +78,7 @@ SUBSYSTEM_DEF(maturity_guard)
 			prompt_cache |= user_ckey
 			user.client.OpenMaturityPrompt()
 		else
-			to_chat_immediate(user, "<span class='warning'>Please enter your date of birth.</span>")
+			to_chat_immediate(user, span_warning("Please enter your date of birth."))
 			user.client.OpenMaturityPrompt()
 		return FALSE
 
@@ -92,7 +92,7 @@ SUBSYSTEM_DEF(maturity_guard)
 	// 	var/check_result = validate_dob(prompt.year, prompt.month, prompt.day)
 	// 	switch(check_result)
 	// 		if(AGE_CHECK_INVALID)
-	// 			to_chat_immediate(user, "<span class='warning'>Invalid information entered. Please try again.</span>")
+	// 			to_chat_immediate(user, span_warning("Invalid information entered. Please try again."))
 	// 		if(AGE_CHECK_UNDERAGE)
 	// 			create_underage_ban(user)
 	// 		if(AGE_CHECK_PASSED)
@@ -203,7 +203,7 @@ SUBSYSTEM_DEF(maturity_guard)
 	var/discord_appeal_text = ""
 	if(CONFIG_GET(string/discordurl))
 		discord_appeal_text = "If you believe this to be a mistake, file an appeal in our community. <a href='[CONFIG_GET(string/discordurl)]>[CONFIG_GET(string/discordurl)]</a>"
-	var/player_ban_notification = "<span class='boldannounce'>You have been banned by the AGE CHECK SYSTEM from the server.\nReason: You do not meet the minimum age requirements for this community. [discord_appeal_text]</span>"
+	var/player_ban_notification = span_boldannounce("You have been banned by the AGE CHECK SYSTEM from the server.\nReason: You do not meet the minimum age requirements for this community. [discord_appeal_text]")
 
 	if(!SSdbcore.Connect())
 	 	// Just a stopgap measure... this really isn't intended to be used without a db attached

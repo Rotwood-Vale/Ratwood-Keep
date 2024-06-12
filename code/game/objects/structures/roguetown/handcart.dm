@@ -138,7 +138,7 @@
 	user.changeNext_move(CLICK_CD_MELEE)
 	if(stuff_shit.len)
 		dump_contents()
-		visible_message("<span class='info'>[user] dumps out [src]!</span>")
+		visible_message(span_info("[user] dumps out [src]!"))
 		playsound(loc, 'sound/foley/cartdump.ogg', 100, FALSE, -1)
 	update_icon()
 

@@ -48,7 +48,7 @@
 		ADD_TRAIT(H, trait, ADVENTURER_TRAIT)
 	if(isvillager)
 		for(var/mob/M in GLOB.billagerspawns)
-			to_chat(M, "<span class='info'>[H.real_name] is the [name].</span>")
+			to_chat(M, span_info("[H.real_name] is the [name]."))
 		GLOB.billagerspawns -= H
 
 /datum/advclass/proc/post_equip(mob/living/carbon/human/H)

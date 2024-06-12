@@ -171,7 +171,7 @@ GLOBAL_VAR_INIT(adventurer_hugbox_duration_still, 3 MINUTES)
 					if(A.type == C.type)
 						if(A.amtchosen >= A.maxchosen)
 							possibleclass -= C
-							to_chat(src, "<span class='warning'>Not enough slots for [C] left! Choose something different.</span>")
+							to_chat(src, span_warning("Not enough slots for [C] left! Choose something different."))
 							return FALSE
 						else
 							A.amtchosen++
@@ -191,7 +191,7 @@ GLOBAL_VAR_INIT(adventurer_hugbox_duration_still, 3 MINUTES)
 		return TRUE
 
 /mob/living/carbon/human/proc/adv_hugboxing_start()
-	to_chat(src, "<span class='warning'>I will be in danger once I start moving.</span>")
+	to_chat(src, span_warning("I will be in danger once I start moving."))
 	status_flags |= GODMODE
 	ADD_TRAIT(src, TRAIT_PACIFISM, HUGBOX_TRAIT)
 	RegisterSignal(src, COMSIG_MOVABLE_MOVED, PROC_REF(adv_hugboxing_moved))
@@ -201,7 +201,7 @@ GLOBAL_VAR_INIT(adventurer_hugbox_duration_still, 3 MINUTES)
 
 /mob/living/carbon/human/proc/adv_hugboxing_moved()
 	UnregisterSignal(src, COMSIG_MOVABLE_MOVED)
-	to_chat(src, "<span class='danger'>I have [DisplayTimeText(GLOB.adventurer_hugbox_duration)] to begone!</span>")
+	to_chat(src, span_danger("I have [DisplayTimeText(GLOB.adventurer_hugbox_duration)] to begone!"))
 	addtimer(CALLBACK(src, TYPE_PROC_REF(/mob/living/carbon/human, adv_hugboxing_end)), GLOB.adventurer_hugbox_duration)
 
 /mob/living/carbon/human/proc/adv_hugboxing_end()
@@ -212,4 +212,4 @@ GLOBAL_VAR_INIT(adventurer_hugbox_duration_still, 3 MINUTES)
 		return
 	status_flags &= ~GODMODE
 	REMOVE_TRAIT(src, TRAIT_PACIFISM, HUGBOX_TRAIT)
-	to_chat(src, "<span class='danger'>My joy is gone! Danger surrounds me.</span>")
+	to_chat(src, span_danger("My joy is gone! Danger surrounds me."))

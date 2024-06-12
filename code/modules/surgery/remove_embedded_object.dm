@@ -14,12 +14,12 @@
 /datum/surgery_step/remove_object/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
 	L = surgery.operated_bodypart
 	if(L)
-		user.visible_message("<span class='notice'>[user] looks for objects embedded in [target]'s [parse_zone(user.zone_selected)].</span>", "<span class='notice'>I look for objects embedded in [target]'s [parse_zone(user.zone_selected)]...</span>")
-		display_results(user, target, "<span class='notice'>I look for objects embedded in [target]'s [parse_zone(user.zone_selected)]...</span>",
-			"<span class='notice'>[user] looks for objects embedded in [target]'s [parse_zone(user.zone_selected)].</span>",
-			"<span class='notice'>[user] looks for something in [target]'s [parse_zone(user.zone_selected)].</span>")
+		user.visible_message(span_notice("[user] looks for objects embedded in [target]'s [parse_zone(user.zone_selected)]."), span_notice("I look for objects embedded in [target]'s [parse_zone(user.zone_selected)]..."))
+		display_results(user, target, span_notice("I look for objects embedded in [target]'s [parse_zone(user.zone_selected)]..."),
+			span_notice("[user] looks for objects embedded in [target]'s [parse_zone(user.zone_selected)]."),
+			span_notice("[user] looks for something in [target]'s [parse_zone(user.zone_selected)]."))
 	else
-		user.visible_message("<span class='notice'>[user] looks for [target]'s [parse_zone(user.zone_selected)].</span>", "<span class='notice'>I look for [target]'s [parse_zone(user.zone_selected)]...</span>")
+		user.visible_message(span_notice("[user] looks for [target]'s [parse_zone(user.zone_selected)]."), span_notice("I look for [target]'s [parse_zone(user.zone_selected)]..."))
 
 
 /datum/surgery_step/remove_object/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
@@ -32,13 +32,13 @@
 				L.remove_embedded_object(I)
 
 			if(objects > 0)
-				display_results(user, target, "<span class='notice'>I successfully remove [objects] objects from [H]'s [L.name].</span>",
-					"<span class='notice'>[user] successfully removes [objects] objects from [H]'s [L]!</span>",
-					"<span class='notice'>[user] successfully removes [objects] objects from [H]'s [L]!</span>")
+				display_results(user, target, span_notice("I successfully remove [objects] objects from [H]'s [L.name]."),
+					span_notice("[user] successfully removes [objects] objects from [H]'s [L]!"),
+					span_notice("[user] successfully removes [objects] objects from [H]'s [L]!"))
 			else
-				to_chat(user, "<span class='warning'>I find no objects embedded in [H]'s [L]!</span>")
+				to_chat(user, span_warning("I find no objects embedded in [H]'s [L]!"))
 
 	else
-		to_chat(user, "<span class='warning'>I can't find [target]'s [parse_zone(user.zone_selected)], let alone any objects embedded in it!</span>")
+		to_chat(user, span_warning("I can't find [target]'s [parse_zone(user.zone_selected)], let alone any objects embedded in it!"))
 
 	return 1

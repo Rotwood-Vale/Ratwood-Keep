@@ -19,7 +19,7 @@
 	switch(classchoice)
 		if("Warrior")
 			H.set_blindness(0)
-			to_chat(H, "<span class='warning'>Barbarians are great warriors of the outlands, often regarded as the strongest of their tribes -- should they have any that live. These incredible titans of strength and brutality are motivated most often by a single... all consuming instinct. SURVIVE.</span>")
+			to_chat(H, span_warning("Barbarians are great warriors of the outlands, often regarded as the strongest of their tribes -- should they have any that live. These incredible titans of strength and brutality are motivated most often by a single... all consuming instinct. SURVIVE."))
 			H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
@@ -59,7 +59,7 @@
 			H.change_stat("endurance", 2)
 		if("Hunter Killer")
 			H.set_blindness(0)
-			to_chat(H, "<span class='warning'>Barbarians are great warriors of the outlands, often regarded as the strongest of their tribes -- should they have any that live. These incredible titans of strength and brutality are motivated most often by a single... all consuming instinct. SURVIVE.</span>")
+			to_chat(H, span_warning("Barbarians are great warriors of the outlands, often regarded as the strongest of their tribes -- should they have any that live. These incredible titans of strength and brutality are motivated most often by a single... all consuming instinct. SURVIVE."))
 			H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/knives, 3, TRUE)
@@ -102,7 +102,7 @@
 			if("ROLL THE DICE!")
 				if(prob(49)) // Warrior
 					H.set_blindness(0)
-					to_chat(src, "<span class='warning'>Barbarians are great warriors of the outlands, often regarded as the strongest of their tribes -- should they have any that live. These incredible titans of strength and brutality are motivated most often by a single... all consuming instinct. SURVIVE.</span>")
+					to_chat(src, span_warning("Barbarians are great warriors of the outlands, often regarded as the strongest of their tribes -- should they have any that live. These incredible titans of strength and brutality are motivated most often by a single... all consuming instinct. SURVIVE."))
 					H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE)
 					H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 3, TRUE)
 					H.mind.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
@@ -142,7 +142,7 @@
 					H.change_stat("endurance", 2)
 				else if(prob(45)) // Hunter Killer
 					H.set_blindness(0)
-					to_chat(src, "<span class='warning'>You are a barbarian of the outlands, having fought many monstrous beasts and men in your time -- you now find yourself in the lands of nobles and beggars.</span>")
+					to_chat(src, span_warning("You are a barbarian of the outlands, having fought many monstrous beasts and men in your time -- you now find yourself in the lands of nobles and beggars."))
 					
 					H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
 					H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
@@ -183,7 +183,7 @@
 					H.change_stat("endurance", 3)
 				else // Bear Wolf. Barbarian Unique. They don't get armor.
 					H.set_blindness(0)
-					to_chat(src, "<span class='warning'>You are a barbarian of the outlands, having fought many monstrous beasts and men in your time -- you now find yourself in the lands of nobles and beggars.</span>")
+					to_chat(src, span_warning("You are a barbarian of the outlands, having fought many monstrous beasts and men in your time -- you now find yourself in the lands of nobles and beggars."))
 					H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 4, TRUE)
 					H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 3, TRUE)
 					H.mind.adjust_skillrank(/datum/skill/combat/knives, 4, TRUE)

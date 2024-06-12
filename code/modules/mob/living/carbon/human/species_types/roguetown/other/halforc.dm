@@ -86,7 +86,7 @@
 
 /datum/species/halforc/after_creation(mob/living/carbon/C)
 	..()
-	to_chat(C, "<span class='info'>I can speak Orcish with ,o before my speech.</span>")
+	to_chat(C, span_info("I can speak Orcish with ,o before my speech."))
 
 /datum/species/halforc/on_species_loss(mob/living/carbon/C)
 	. = ..()

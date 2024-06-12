@@ -79,29 +79,29 @@
 	I = null
 	if(istype(tool, /obj/item/organ_storage))
 		if(!tool.contents.len)
-			to_chat(user, "<span class='warning'>There is nothing inside [tool]!</span>")
+			to_chat(user, span_warning("There is nothing inside [tool]!"))
 			return -1
 		I = tool.contents[1]
 		if(!isorgan(I))
-			to_chat(user, "<span class='warning'>I cannot put [I] into [target]'s [parse_zone(target_zone)]!</span>")
+			to_chat(user, span_warning("I cannot put [I] into [target]'s [parse_zone(target_zone)]!"))
 			return -1
 		tool = I
 	if(isorgan(tool))
 		current_type = "insert"
 		I = tool
 		if(target_zone != I.zone || target.getorganslot(I.slot))
-			to_chat(user, "<span class='warning'>There is no room for [I] in [target]'s [parse_zone(target_zone)]!</span>")
+			to_chat(user, span_warning("There is no room for [I] in [target]'s [parse_zone(target_zone)]!"))
 			return -1
 
-		display_results(user, target, "<span class='notice'>I begin to insert [tool] into [target]'s [parse_zone(target_zone)]...</span>",
-			"<span class='notice'>[user] begins to insert [tool] into [target]'s [parse_zone(target_zone)].</span>",
-			"<span class='notice'>[user] begins to insert something into [target]'s [parse_zone(target_zone)].</span>")
+		display_results(user, target, span_notice("I begin to insert [tool] into [target]'s [parse_zone(target_zone)]..."),
+			span_notice("[user] begins to insert [tool] into [target]'s [parse_zone(target_zone)]."),
+			span_notice("[user] begins to insert something into [target]'s [parse_zone(target_zone)]."))
 
 	else if(implement_type in implements_extract)
 		current_type = "extract"
 		var/list/organs = target.getorganszone(target_zone)
 		if(!organs.len)
-			to_chat(user, "<span class='warning'>There are no removable organs in [target]'s [parse_zone(target_zone)]!</span>")
+			to_chat(user, span_warning("There are no removable organs in [target]'s [parse_zone(target_zone)]!"))
 			return -1
 		else
 			for(var/obj/item/organ/O in organs)
@@ -114,14 +114,14 @@
 				I = organs[I]
 				if(!I)
 					return -1
-				display_results(user, target, "<span class='notice'>I begin to extract [I] from [target]'s [parse_zone(target_zone)]...</span>",
-					"<span class='notice'>[user] begins to extract [I] from [target]'s [parse_zone(target_zone)].</span>",
-					"<span class='notice'>[user] begins to extract something from [target]'s [parse_zone(target_zone)].</span>")
+				display_results(user, target, span_notice("I begin to extract [I] from [target]'s [parse_zone(target_zone)]..."),
+					span_notice("[user] begins to extract [I] from [target]'s [parse_zone(target_zone)]."),
+					span_notice("[user] begins to extract something from [target]'s [parse_zone(target_zone)]."))
 			else
 				return -1
 
 	else if(istype(tool, /obj/item/reagent_containers/food/snacks/organ))
-		to_chat(user, "<span class='warning'>[tool] was bitten by someone! It's too damaged to use!</span>")
+		to_chat(user, span_warning("[tool] was bitten by someone! It's too damaged to use!"))
 		return -1
 
 /datum/surgery_step/manipulate_organs/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
@@ -136,20 +136,20 @@
 			I = tool
 		user.temporarilyRemoveItemFromInventory(I, TRUE)
 		I.Insert(target)
-		display_results(user, target, "<span class='notice'>I insert [tool] into [target]'s [parse_zone(target_zone)].</span>",
-			"<span class='notice'>[user] inserts [tool] into [target]'s [parse_zone(target_zone)]!</span>",
-			"<span class='notice'>[user] inserts something into [target]'s [parse_zone(target_zone)]!</span>")
+		display_results(user, target, span_notice("I insert [tool] into [target]'s [parse_zone(target_zone)]."),
+			span_notice("[user] inserts [tool] into [target]'s [parse_zone(target_zone)]!"),
+			span_notice("[user] inserts something into [target]'s [parse_zone(target_zone)]!"))
 
 	else if(current_type == "extract")
 		if(I && I.owner == target)
-			display_results(user, target, "<span class='notice'>I successfully extract [I] from [target]'s [parse_zone(target_zone)].</span>",
-				"<span class='notice'>[user] successfully extracts [I] from [target]'s [parse_zone(target_zone)]!</span>",
-				"<span class='notice'>[user] successfully extracts something from [target]'s [parse_zone(target_zone)]!</span>")
+			display_results(user, target, span_notice("I successfully extract [I] from [target]'s [parse_zone(target_zone)]."),
+				span_notice("[user] successfully extracts [I] from [target]'s [parse_zone(target_zone)]!"),
+				span_notice("[user] successfully extracts something from [target]'s [parse_zone(target_zone)]!"))
 			log_combat(user, target, "surgically removed [I.name] from", addition="INTENT: [uppertext(user.a_intent)]")
 			I.Remove(target)
 			I.forceMove(get_turf(target))
 		else
-			display_results(user, target, "<span class='warning'>I can't extract anything from [target]'s [parse_zone(target_zone)]!</span>",
-				"<span class='notice'>[user] can't seem to extract anything from [target]'s [parse_zone(target_zone)]!</span>",
-				"<span class='notice'>[user] can't seem to extract anything from [target]'s [parse_zone(target_zone)]!</span>")
+			display_results(user, target, span_warning("I can't extract anything from [target]'s [parse_zone(target_zone)]!"),
+				span_notice("[user] can't seem to extract anything from [target]'s [parse_zone(target_zone)]!"),
+				span_notice("[user] can't seem to extract anything from [target]'s [parse_zone(target_zone)]!"))
 	return 0

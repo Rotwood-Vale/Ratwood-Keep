@@ -22,7 +22,7 @@
 /obj/item/needle/examine()
 	. = ..()
 	if(!infinite)
-		. += "<span class='bold'>It has [stringamt] uses left.</span>"
+		. += span_bold("It has [stringamt] uses left.")
 	else
 		. += "Can be used indefinitely."
 
@@ -51,13 +51,13 @@
 		var/obj/item/I = O
 		if(I.sewrepair && I.max_integrity && !I.obj_broken)
 			if(I.obj_integrity == I.max_integrity)
-				to_chat(user, "<span class='warning'>This is not broken.</span>")
+				to_chat(user, span_warning("This is not broken."))
 				return
 			if(user.mind.get_skill_level(/datum/skill/misc/sewing) < I.required_repair_skill)
-				to_chat(user, "<span class='warning'>I don't know how to repair this...</span>")
+				to_chat(user, span_warning("I don't know how to repair this..."))
 				return
 			if(!I.ontable())
-				to_chat(user, "<span class='warning'>I should put this on a table first.</span>")
+				to_chat(user, span_warning("I should put this on a table first."))
 				return
 			playsound(loc, 'sound/foley/sewflesh.ogg', 100, TRUE, -2)
 			var/sewtime = 70
@@ -66,7 +66,7 @@
 			var/datum/component/storage/target_storage = I.GetComponent(/datum/component/storage) //Vrell - Part of storage item repair fix
 			if(do_after(user, sewtime, target = I))
 				playsound(loc, 'sound/foley/sewflesh.ogg', 100, TRUE, -2)
-				user.visible_message("<span class='info'>[user] repairs [I]!</span>")
+				user.visible_message(span_info("[user] repairs [I]!"))
 				I.obj_integrity = I.max_integrity
 				//Vrell - Part of storage item repair fix
 				if(target_storage)
@@ -85,23 +85,23 @@
 	var/mob/living/doctor = user
 	var/mob/living/carbon/human/patient = target
 	if(!get_location_accessible(patient, check_zone(doctor.zone_selected)))
-		to_chat(doctor, "<span class='warning'>Something in the way.</span>")
+		to_chat(doctor, span_warning("Something in the way."))
 		return FALSE
 	var/list/sewable
 	var/obj/item/bodypart/affecting
 	if(iscarbon(patient))
 		affecting = patient.get_bodypart(check_zone(doctor.zone_selected))
 		if(!affecting)
-			to_chat(doctor, "<span class='warning'>That limb is missing.</span>")
+			to_chat(doctor, span_warning("That limb is missing."))
 			return FALSE
 		if(affecting.bandage)
-			to_chat(doctor, "<span class='warning'>There is a bandage in the way.</span>")
+			to_chat(doctor, span_warning("There is a bandage in the way."))
 			return FALSE
 		sewable = affecting.get_sewable_wounds()
 	else
 		sewable = patient.get_sewable_wounds()
 	if(!length(sewable))
-		to_chat(doctor, "<span class='warning'>There aren't any wounds to be sewn.</span>")
+		to_chat(doctor, span_warning("There aren't any wounds to be sewn."))
 		return FALSE
 	var/datum/wound/target_wound = input(doctor, "Which wound?", "[src]") as null|anything in sewable
 	if(!target_wound)
@@ -124,12 +124,12 @@
 		use(1)
 		target_wound.sew_wound()
 		if(patient == doctor)
-			doctor.visible_message("<span class='notice'>[doctor] sews \a [target_wound.name] on [doctor.p_them()]self.</span>", "<span class='notice'>I stitch \a [target_wound.name] on my [affecting].</span>")
+			doctor.visible_message(span_notice("[doctor] sews \a [target_wound.name] on [doctor.p_them()]self."), span_notice("I stitch \a [target_wound.name] on my [affecting]."))
 		else
 			if(affecting)
-				doctor.visible_message("<span class='notice'>[doctor] sews \a [target_wound.name] on [patient]'s [affecting].</span>", "<span class='notice'>I stitch \a [target_wound.name] on [patient]'s [affecting].</span>")
+				doctor.visible_message(span_notice("[doctor] sews \a [target_wound.name] on [patient]'s [affecting]."), span_notice("I stitch \a [target_wound.name] on [patient]'s [affecting]."))
 			else
-				doctor.visible_message("<span class='notice'>[doctor] sews \a [target_wound.name] on [patient].</span>", "<span class='notice'>I stitch \a [target_wound.name] on [patient].</span>")
+				doctor.visible_message(span_notice("[doctor] sews \a [target_wound.name] on [patient]."), span_notice("I stitch \a [target_wound.name] on [patient]."))
 		log_combat(doctor, patient, "sew", "needle")
 		return TRUE
 	return FALSE
@@ -143,6 +143,6 @@
 
 /obj/item/needle/pestra
 	name = "needle of pestra"
-	desc = "<span class='green'>This needle has been blessed by the goddess of medicine herself!</span>"
+	desc = span_green("This needle has been blessed by the goddess of medicine herself!")
 	infinite = TRUE
 	can_repair = FALSE

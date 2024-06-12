@@ -29,19 +29,19 @@
 		return
 
 	if(istype(I, /obj/item/evidencebag))
-		to_chat(user, "<span class='warning'>I find putting an evidence bag in another evidence bag to be slightly absurd.</span>")
+		to_chat(user, span_warning("I find putting an evidence bag in another evidence bag to be slightly absurd."))
 		return 1 //now this is podracing
 
 	if(loc in I.GetAllContents()) // fixes tg #39452, evidence bags could store their own location, causing I to be stored in the bag while being present inworld still, and able to be teleported when removed.
-		to_chat(user, "<span class='warning'>I find putting [I] in [src] while it's still inside it quite difficult!</span>")
+		to_chat(user, span_warning("I find putting [I] in [src] while it's still inside it quite difficult!"))
 		return
 
 	if(I.w_class > WEIGHT_CLASS_NORMAL)
-		to_chat(user, "<span class='warning'>[I] won't fit in [src]!</span>")
+		to_chat(user, span_warning("[I] won't fit in [src]!"))
 		return
 
 	if(contents.len)
-		to_chat(user, "<span class='warning'>[src] already has something inside it!</span>")
+		to_chat(user, span_warning("[src] already has something inside it!"))
 		return
 
 	if(!isturf(I.loc)) //If it isn't on the floor. Do some checks to see if it's in our hands or a box. Otherwise give up.
@@ -50,8 +50,8 @@
 		if(!user.dropItemToGround(I))
 			return
 
-	user.visible_message("<span class='notice'>[user] puts [I] into [src].</span>", "<span class='notice'>I put [I] inside [src].</span>",\
-	"<span class='hear'>I hear a rustle as someone puts something into a plastic bag.</span>")
+	user.visible_message(span_notice("[user] puts [I] into [src]."), span_notice("I put [I] inside [src]."),\
+	span_hear("I hear a rustle as someone puts something into a plastic bag."))
 
 	icon_state = "evidence"
 
@@ -71,8 +71,8 @@
 /obj/item/evidencebag/attack_self(mob/user)
 	if(contents.len)
 		var/obj/item/I = contents[1]
-		user.visible_message("<span class='notice'>[user] takes [I] out of [src].</span>", "<span class='notice'>I take [I] out of [src].</span>",\
-		"<span class='hear'>I hear someone rustle around in a plastic bag, and remove something.</span>")
+		user.visible_message(span_notice("[user] takes [I] out of [src]."), span_notice("I take [I] out of [src]."),\
+		span_hear("I hear someone rustle around in a plastic bag, and remove something."))
 		cut_overlays()	//remove the overlays
 		user.put_in_hands(I)
 		w_class = WEIGHT_CLASS_TINY
@@ -80,7 +80,7 @@
 		desc = ""
 
 	else
-		to_chat(user, "<span class='notice'>[src] is empty.</span>")
+		to_chat(user, span_notice("[src] is empty."))
 		icon_state = "evidenceobj"
 	return
 

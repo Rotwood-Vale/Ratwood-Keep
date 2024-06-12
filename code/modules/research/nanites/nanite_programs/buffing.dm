@@ -28,7 +28,7 @@
 /datum/nanite_program/triggered/adrenaline/trigger()
 	if(!..())
 		return
-	to_chat(host_mob, "<span class='notice'>I feel a sudden surge of energy!</span>")
+	to_chat(host_mob, span_notice("I feel a sudden surge of energy!"))
 	host_mob.set_resting(FALSE)
 	host_mob.reagents.add_reagent(/datum/reagent/medicine/badstims, 3)
 

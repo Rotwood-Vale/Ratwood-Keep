@@ -16,7 +16,7 @@
 	
 		if("Ranger")
 			H.set_blindness(0)
-			to_chat(H, "<span class='warning'>Rangers are masters of nature, often hired as pathfinders, bodyguards and mercenaries in areas of wilderness untraversable to common soldiery.</span>")
+			to_chat(H, span_warning("Rangers are masters of nature, often hired as pathfinders, bodyguards and mercenaries in areas of wilderness untraversable to common soldiery."))
 			shoes = /obj/item/clothing/shoes/roguetown/boots/leather
 			shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
 			neck = /obj/item/storage/belt/rogue/pouch/coins/poor
@@ -59,7 +59,7 @@
 			H.change_stat("speed", 2)
 		if("Gloom Stalker")
 			H.set_blindness(0)
-			to_chat(H, "<span class='warning'>Rangers are masters of nature, often hired as pathfinders, bodyguards and mercenaries in areas of wilderness untraversable to common soldiery.</span>")
+			to_chat(H, span_warning("Rangers are masters of nature, often hired as pathfinders, bodyguards and mercenaries in areas of wilderness untraversable to common soldiery."))
 			shoes = /obj/item/clothing/shoes/roguetown/boots/leather
 			shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
 			neck = /obj/item/storage/belt/rogue/pouch/coins/poor
@@ -110,4 +110,4 @@
 	if(prob(23))
 		if(!H.has_language(/datum/language/elvish))
 			H.grant_language(/datum/language/elvish)
-			to_chat(H, "<span class='info'>I can speak Elfish with ,e before my speech.</span>")
+			to_chat(H, span_info("I can speak Elfish with ,e before my speech."))

@@ -1,9 +1,9 @@
 /obj/item/bodypart/examine(mob/user)
 	. = ..()
 	if(brute_dam > DAMAGE_PRECISION)
-		. += "<span class='warning'>This limb has [brute_dam > 30 ? "severe" : "minor"] bruising.</span>"
+		. += span_warning("This limb has [brute_dam > 30 ? "severe" : "minor"] bruising.")
 	if(burn_dam > DAMAGE_PRECISION)
-		. += "<span class='warning'>This limb has [burn_dam > 30 ? "severe" : "minor"] burns.</span>"
+		. += span_warning("This limb has [burn_dam > 30 ? "severe" : "minor"] burns.")
 
 /obj/item/bodypart/head/examine(mob/user)
 	. = ..()
@@ -11,31 +11,31 @@
 		return
 		
 	if(!brain)
-		. += "<span class='info'>The brain is missing.</span>"
+		. += span_info("The brain is missing.")
 	/*		
 	else if(brain.suicided || brainmob?.suiciding)
-		. += "<span class='info'>There's a pretty dumb expression on [real_name]'s face; they must have really hated life. There is no hope of recovery.</span>"
+		. += span_info("There's a pretty dumb expression on [real_name]'s face; they must have really hated life. There is no hope of recovery.")
 	else if(brain.brain_death || brainmob?.health <= HEALTH_THRESHOLD_DEAD)
-		. += "<span class='info'></span>"
+		. += span_info("")
 	else if(brainmob)
 		if(brainmob.get_ghost(FALSE, TRUE))
-			. += "<span class='info'>Its muscles are still twitching slightly... It still seems to have a bit of life left to it.</span>"
+			. += span_info("Its muscles are still twitching slightly... It still seems to have a bit of life left to it.")
 		else
-			. += "<span class='info'>It seems seems particularly lifeless. Perhaps there'll be a chance for them later.</span>"
+			. += span_info("It seems seems particularly lifeless. Perhaps there'll be a chance for them later.")
 	else if(brain?.decoy_override)
-		. += "<span class='info'>It seems particularly lifeless. Perhaps there'll be a chance for them later.</span>"
+		. += span_info("It seems particularly lifeless. Perhaps there'll be a chance for them later.")
 	else
-		. += "<span class='info'>It seems completely devoid of life.</span>"
+		. += span_info("It seems completely devoid of life.")
 	*/
 
 	if(!eyes)
-		. += "<span class='info'>[real_name]'s eyes appear to have been removed.</span>"
+		. += span_info("[real_name]'s eyes appear to have been removed.")
 
 	if(!ears)
-		. += "<span class='info'>[real_name]'s ears appear to have been removed.</span>"
+		. += span_info("[real_name]'s ears appear to have been removed.")
 
 	if(!tongue)
-		. += "<span class='info'>[real_name]'s tongue appears to have been removed.</span>"
+		. += span_info("[real_name]'s tongue appears to have been removed.")
 
 /obj/item/bodypart/proc/check_for_injuries(mob/user, advanced = FALSE)
 	var/examination = "<span class='info'>"
@@ -43,7 +43,7 @@
 
 	var/list/status = get_injury_status(user, advanced)
 	if(!length(status))
-		examination += "<span class='green'>OK</span>"
+		examination += span_green("OK")
 	else
 		examination += status.Join(" | ")
 
@@ -70,31 +70,31 @@
 		if(brute >= DAMAGE_PRECISION)
 			switch(brute/max_damage)
 				if(0.75 to INFINITY)
-					status += "<span class='userdanger'><B>[heavy_brute_msg]</B></span>"
+					status += span_userdanger("<B>[heavy_brute_msg]</B>")
 				if(0.5 to 0.75)
-					status += "<span class='userdanger'>[heavy_brute_msg]</span>"
+					status += span_userdanger("[heavy_brute_msg]")
 				if(0.25 to 0.5)
-					status += "<span class='danger'>[medium_brute_msg]</span>"
+					status += span_danger("[medium_brute_msg]")
 				else
-					status += "<span class='warning'>[light_brute_msg]</span>"
+					status += span_warning("[light_brute_msg]")
 		
 		if(burn >= DAMAGE_PRECISION)
 			switch(burn/max_damage)
 				if(0.75 to INFINITY)
-					status += "<span class='userdanger'><B>[heavy_burn_msg]</B></span>"
+					status += span_userdanger("<B>[heavy_burn_msg]</B>")
 				if(0.5 to 0.75)
-					status += "<span class='userdanger'>[medium_burn_msg]</span>"
+					status += span_userdanger("[medium_burn_msg]")
 				if(0.25 to 0.5)
-					status += "<span class='danger'>[medium_burn_msg]</span>"
+					status += span_danger("[medium_burn_msg]")
 				else
-					status += "<span class='warning'>[light_burn_msg]</span>"
+					status += span_warning("[light_burn_msg]")
 	
 	var/bleed_rate = get_bleed_rate()
 	if(bleed_rate)
 		if(bleed_rate > 1) //Totally arbitrary value
-			status += "<span class='bloody'><B>BLEEDING</B></span>"
+			status += span_bloody("<B>BLEEDING</B>")
 		else
-			status += "<span class='bloody'>BLEEDING</span>"
+			status += span_bloody("BLEEDING")
 	
 	var/list/wound_strings = list()
 	for(var/datum/wound/wound as anything in wounds)
@@ -110,9 +110,9 @@
 			status += "<a href='?src=[REF(owner)];embedded_limb=[REF(src)];embedded_object=[REF(embedded)];' class='info'>[uppertext(embedded.name)]</a>"
 	
 	if(skeletonized)
-		status += "<span class='dead'>SKELETON</span>"
+		status += span_dead("SKELETON")
 	else if(rotted)
-		status += "<span class='necrosis'>NECROSIS</span>"
+		status += span_necrosis("NECROSIS")
 
 	if(bandage)
 		if(HAS_BLOOD_DNA(bandage))
@@ -121,7 +121,7 @@
 			status += "<a href='?src=[REF(owner)];bandaged_limb=[REF(src)];bandage=[REF(bandage)]' class='info'>[uppertext(bandage.name)]</a>"
 
 	if(disabled)
-		status += "<span class='deadsay'>CRIPPLED</span>"
+		status += span_deadsay("CRIPPLED")
 
 	return status
 
@@ -180,45 +180,45 @@
 			to_chat(src, "\t <a href='?src=[REF(src)];embedded_object=[REF(I)];embedded_limb=[REF(LB)]' class='warning'>There is \a [I] in my [name]!</a>")
 
 	for(var/t in missing)
-		to_chat(src, "<span class='boldannounce'>My [parse_zone(t)] is missing!</span>")
+		to_chat(src, span_boldannounce("My [parse_zone(t)] is missing!"))
 
 	if(bleed_rate)
-		to_chat(src, "<span class='danger'>I am bleeding!</span>")
+		to_chat(src, span_danger("I am bleeding!"))
 	if(getStaminaLoss())
 		if(getStaminaLoss() > 30)
-			to_chat(src, "<span class='info'>You're completely exhausted.</span>")
+			to_chat(src, span_info("You're completely exhausted."))
 		else
-			to_chat(src, "<span class='info'>I feel fatigued.</span>")
+			to_chat(src, span_info("I feel fatigued."))
 	if(HAS_TRAIT(src, TRAIT_SELF_AWARE))
 		if(toxloss)
 			if(toxloss > 10)
-				to_chat(src, "<span class='danger'>I feel sick.</span>")
+				to_chat(src, span_danger("I feel sick."))
 			else if(toxloss > 20)
-				to_chat(src, "<span class='danger'>I feel nauseated.</span>")
+				to_chat(src, span_danger("I feel nauseated."))
 			else if(toxloss > 40)
-				to_chat(src, "<span class='danger'>I feel very unwell!</span>")
+				to_chat(src, span_danger("I feel very unwell!"))
 		if(oxyloss)
 			if(oxyloss > 10)
-				to_chat(src, "<span class='danger'>I feel lightheaded.</span>")
+				to_chat(src, span_danger("I feel lightheaded."))
 			else if(oxyloss > 20)
-				to_chat(src, "<span class='danger'>My thinking is clouded and distant.</span>")
+				to_chat(src, span_danger("My thinking is clouded and distant."))
 			else if(oxyloss > 30)
-				to_chat(src, "<span class='danger'>You're choking!</span>")
+				to_chat(src, span_danger("You're choking!"))
 
 	if(!HAS_TRAIT(src, TRAIT_NOHUNGER))
 		switch(nutrition)
 			if(NUTRITION_LEVEL_FULL to INFINITY)
-				to_chat(src, "<span class='info'>You're completely stuffed!</span>")
+				to_chat(src, span_info("You're completely stuffed!"))
 			if(NUTRITION_LEVEL_WELL_FED to NUTRITION_LEVEL_FULL)
-				to_chat(src, "<span class='info'>You're well fed!</span>")
+				to_chat(src, span_info("You're well fed!"))
 			if(NUTRITION_LEVEL_FED to NUTRITION_LEVEL_WELL_FED)
-				to_chat(src, "<span class='info'>You're not hungry.</span>")
+				to_chat(src, span_info("You're not hungry."))
 			if(NUTRITION_LEVEL_HUNGRY to NUTRITION_LEVEL_FED)
-				to_chat(src, "<span class='info'>I could use a bite to eat.</span>")
+				to_chat(src, span_info("I could use a bite to eat."))
 			if(NUTRITION_LEVEL_STARVING to NUTRITION_LEVEL_HUNGRY)
-				to_chat(src, "<span class='info'>I feel quite hungry.</span>")
+				to_chat(src, span_info("I feel quite hungry."))
 			if(0 to NUTRITION_LEVEL_STARVING)
-				to_chat(src, "<span class='danger'>You're starving!</span>")
+				to_chat(src, span_danger("You're starving!"))
 
 	//Compiles then shows the list of damaged organs and broken organs
 	var/list/broken = list()
@@ -250,7 +250,7 @@
 		//Put the items in that list into a string of text
 		for(var/B in broken)
 			broken_message += B
-		to_chat(src, "<span class='warning'>My [broken_message] [broken_plural ? "are" : "is"] non-functional!</span>")
+		to_chat(src, span_warning("My [broken_message] [broken_plural ? "are" : "is"] non-functional!"))
 	if(damaged.len)
 		if(damaged.len > 1)
 			damaged.Insert(damaged.len, "and ")
@@ -261,7 +261,7 @@
 				damaged_plural = TRUE
 		for(var/D in damaged)
 			damaged_message += D
-		to_chat(src, "<span class='info'>My [damaged_message] [damaged_plural ? "are" : "is"] hurt.</span>")
+		to_chat(src, span_info("My [damaged_message] [damaged_plural ? "are" : "is"] hurt."))
 
 
 	var/max_damage = FB.max_damage

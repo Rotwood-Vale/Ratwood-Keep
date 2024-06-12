@@ -143,7 +143,7 @@ GLOBAL_LIST_INIT(meteorsC, list(/obj/effect/meteor/dust)) //for space dust event
 	for(var/atom/A in T)
 		if(A != src)
 			if(isliving(A))
-				A.visible_message("<span class='warning'>[src] slams into [A].</span>", "<span class='danger'>[src] slams into you!.</span>")
+				A.visible_message(span_warning("[src] slams into [A]."), span_danger("[src] slams into you!."))
 			A.ex_act(hitpwr)
 
 	//then, ram the turf if it still exists

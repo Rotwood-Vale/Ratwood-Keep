@@ -17,19 +17,19 @@
 		I = O
 		break
 	if(I)
-		display_results(user, target, "<span class='notice'>I begin to extract [I] from [target]'s [target_zone]...</span>",
-			"<span class='notice'>[user] begins to extract [I] from [target]'s [target_zone].</span>",
-			"<span class='notice'>[user] begins to extract something from [target]'s [target_zone].</span>")
+		display_results(user, target, span_notice("I begin to extract [I] from [target]'s [target_zone]..."),
+			span_notice("[user] begins to extract [I] from [target]'s [target_zone]."),
+			span_notice("[user] begins to extract something from [target]'s [target_zone]."))
 	else
-		display_results(user, target, "<span class='notice'>I look for an implant in [target]'s [target_zone]...</span>",
-			"<span class='notice'>[user] looks for an implant in [target]'s [target_zone].</span>",
-			"<span class='notice'>[user] looks for something in [target]'s [target_zone].</span>")
+		display_results(user, target, span_notice("I look for an implant in [target]'s [target_zone]..."),
+			span_notice("[user] looks for an implant in [target]'s [target_zone]."),
+			span_notice("[user] looks for something in [target]'s [target_zone]."))
 
 /datum/surgery_step/extract_implant/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
 	if(I)
-		display_results(user, target, "<span class='notice'>I successfully remove [I] from [target]'s [target_zone].</span>",
-			"<span class='notice'>[user] successfully removes [I] from [target]'s [target_zone]!</span>",
-			"<span class='notice'>[user] successfully removes something from [target]'s [target_zone]!</span>")
+		display_results(user, target, span_notice("I successfully remove [I] from [target]'s [target_zone]."),
+			span_notice("[user] successfully removes [I] from [target]'s [target_zone]!"),
+			span_notice("[user] successfully removes something from [target]'s [target_zone]!"))
 		I.removed(target)
 
 		var/obj/item/implantcase/case
@@ -42,14 +42,14 @@
 			case.imp = I
 			I.forceMove(case)
 			case.update_icon()
-			display_results(user, target, "<span class='notice'>I place [I] into [case].</span>",
-				"<span class='notice'>[user] places [I] into [case]!</span>",
-				"<span class='notice'>[user] places it into [case]!</span>")
+			display_results(user, target, span_notice("I place [I] into [case]."),
+				span_notice("[user] places [I] into [case]!"),
+				span_notice("[user] places it into [case]!"))
 		else
 			qdel(I)
 
 	else
-		to_chat(user, "<span class='warning'>I can't find anything in [target]'s [target_zone]!</span>")
+		to_chat(user, span_warning("I can't find anything in [target]'s [target_zone]!"))
 	return 1
 
 /datum/surgery/implant_removal/mechanic

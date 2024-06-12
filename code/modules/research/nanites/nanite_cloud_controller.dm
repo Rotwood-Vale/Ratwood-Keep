@@ -22,7 +22,7 @@
 		if(disk)
 			eject(user)
 		if(user.transferItemToLoc(N, src))
-			to_chat(user, "<span class='notice'>I insert [N] into [src].</span>")
+			to_chat(user, span_notice("I insert [N] into [src]."))
 			playsound(src, 'sound/blank.ogg', 50, FALSE)
 			disk = N
 	else
@@ -43,7 +43,7 @@
 
 /obj/machinery/computer/nanite_cloud_controller/proc/generate_backup(cloud_id, mob/user)
 	if(SSnanites.get_cloud_backup(cloud_id, TRUE))
-		to_chat(user, "<span class='warning'>Cloud ID already registered.</span>")
+		to_chat(user, span_warning("Cloud ID already registered."))
 		return
 
 	var/datum/nanite_cloud_backup/backup = new(src)

@@ -135,7 +135,7 @@
 		return
 	if(slot == SLOT_HEAD)
 		user.grant_language(/datum/language/piratespeak/)
-		to_chat(user, "<span class='boldnotice'>I suddenly know how to speak like a pirate!</span>")
+		to_chat(user, span_boldnotice("I suddenly know how to speak like a pirate!"))
 
 /obj/item/clothing/head/pirate/dropped(mob/user)
 	. = ..()
@@ -144,7 +144,7 @@
 	var/mob/living/carbon/human/H = user
 	if(H.get_item_by_slot(SLOT_HEAD) == src)
 		user.remove_language(/datum/language/piratespeak/)
-		to_chat(user, "<span class='boldnotice'>I can no longer speak like a pirate.</span>")
+		to_chat(user, span_boldnotice("I can no longer speak like a pirate."))
 
 /obj/item/clothing/head/pirate/captain
 	icon_state = "hgpiratecap"
@@ -213,7 +213,7 @@
 	if(user.gender == FEMALE)
 		return 0
 	var/mob/living/carbon/human/H = user
-	user.visible_message("<span class='suicide'>[user] is donning [src]! It looks like [user.p_theyre()] trying to be nice to girls.</span>")
+	user.visible_message(span_suicide("[user] is donning [src]! It looks like [user.p_theyre()] trying to be nice to girls."))
 	user.say("M'lady.", forced = "fedora suicide")
 	sleep(10)
 	H.facial_hairstyle = "Neckbeard"

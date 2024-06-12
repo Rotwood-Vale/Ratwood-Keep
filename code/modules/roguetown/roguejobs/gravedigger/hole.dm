@@ -52,7 +52,7 @@
 	. = ..()
 	if(HAS_TRAIT(user, TRAIT_NOSTINK))
 		if(lootroll == 1)
-			. += "<span class='warning'>Better let this one sleep.</span>"
+			. += span_warning("Better let this one sleep.")
 
 /obj/structure/closet/dirthole/insertion_allowed(atom/movable/AM)
 	if(istype(AM, /obj/structure/closet/crate/chest) || istype(AM, /obj/structure/closet/burial_shroud))
@@ -119,7 +119,7 @@
 //								playsound(mastert,'sound/items/dig_shovel.ogg', 100, TRUE)
 //								mastert.ChangeTurf(T.type, flags = CHANGETURF_INHERIT_AIR)
 //								return
-			to_chat(user, "<span class='warning'>I can't dig myself any deeper.</span>")
+			to_chat(user, span_warning("I can't dig myself any deeper."))
 			return
 		var/used_str = 10
 		if(iscarbon(user))
@@ -186,14 +186,14 @@
 		return
 	var/list/targets = list(O, src)
 	add_fingerprint(user)
-	user.visible_message("<span class='warning'>[user] [actuallyismob ? "tries to ":""]stuff [O] into [src].</span>", \
-				 	 	"<span class='warning'>I [actuallyismob ? "try to ":""]stuff [O] into [src].</span>", \
-				 	 	"<span class='hear'>I hear clanging.</span>")
+	user.visible_message(span_warning("[user] [actuallyismob ? "tries to ":""]stuff [O] into [src]."), \
+				 	 	span_warning("I [actuallyismob ? "try to ":""]stuff [O] into [src]."), \
+				 	 	span_hear("I hear clanging."))
 	if(actuallyismob)
 		if(do_after_mob(user, targets, 40))
-			user.visible_message("<span class='notice'>[user] stuffs [O] into [src].</span>", \
-							 	 "<span class='notice'>I stuff [O] into [src].</span>", \
-							 	 "<span class='hear'>I hear a loud bang.</span>")
+			user.visible_message(span_notice("[user] stuffs [O] into [src]."), \
+							 	 span_notice("I stuff [O] into [src]."), \
+							 	 span_hear("I hear a loud bang."))
 			var/mob/living/L = O
 			if(!issilicon(L))
 				L.Paralyze(40)

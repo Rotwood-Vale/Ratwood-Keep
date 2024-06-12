@@ -9,14 +9,14 @@
   */
 /obj/item/proc/melee_attack_chain(mob/user, atom/target, params)
 	if(user.check_arm_grabbed(user.active_hand_index))
-		to_chat(user, "<span class='notice'>I can't move my arm!</span>")
+		to_chat(user, span_notice("I can't move my arm!"))
 		return
 	if(!user.has_hand_for_held_index(user.active_hand_index, TRUE)) //we obviously have a hadn, but we need to check for fingers/prosthetics
-		to_chat(user, "<span class='warning'>I can't move the fingers.</span>")
+		to_chat(user, span_warning("I can't move the fingers."))
 		return
 	if(!istype(src, /obj/item/grabbing))
 		if(HAS_TRAIT(user, TRAIT_CHUNKYFINGERS))
-			to_chat(user, "<span class='warning'>...What?</span>")
+			to_chat(user, span_warning("...What?"))
 			return
 	if(tool_behaviour && target.tool_act(user, src, tool_behaviour))
 		return
@@ -76,7 +76,7 @@
 		return FALSE
 
 	if(force && HAS_TRAIT(user, TRAIT_PACIFISM))
-		to_chat(user, "<span class='warning'>I don't want to harm other living beings!</span>")
+		to_chat(user, span_warning("I don't want to harm other living beings!"))
 		return
 
 	M.lastattacker = user.real_name
@@ -147,8 +147,8 @@
 				M.throw_item(get_step(M,turn(M.dir, 90)), offhand = offh)
 			else
 				M.dropItemToGround(W)
-			M.visible_message("<span class='notice'>[user] disarms [M]!</span>", \
-							"<span class='boldwarning'>I'm disarmed by [user]!</span>")
+			M.visible_message(span_notice("[user] disarms [M]!"), \
+							span_boldwarning("I'm disarmed by [user]!"))
 			return
 
 	if(user.zone_selected == BODY_ZONE_L_INHAND)
@@ -159,8 +159,8 @@
 				M.throw_item(get_step(M,turn(M.dir, 270)), offhand = offh)
 			else
 				M.dropItemToGround(W)
-			M.visible_message("<span class='notice'>[user] disarms [M]!</span>", \
-							"<span class='boldwarning'>I'm disarmed by [user]!</span>")
+			M.visible_message(span_notice("[user] disarms [M]!"), \
+							span_boldwarning("I'm disarmed by [user]!"))
 			return
 
 	if(M.attacked_by(src, user))
@@ -305,12 +305,12 @@
 	verbu = pick(user.used_intent.attack_verb)
 	if(newforce > 1)
 		if(user.rogfat_add(5))
-			user.visible_message("<span class='danger'>[user] [verbu] [src] with [I]!</span>")
+			user.visible_message(span_danger("[user] [verbu] [src] with [I]!"))
 		else
-			user.visible_message("<span class='warning'>[user] [verbu] [src] with [I]!</span>")
+			user.visible_message(span_warning("[user] [verbu] [src] with [I]!"))
 			newforce = 1
 	else
-		user.visible_message("<span class='warning'>[user] [verbu] [src] with [I]!</span>")
+		user.visible_message(span_warning("[user] [verbu] [src] with [I]!"))
 	take_damage(newforce, I.damtype, "melee", 1)
 	if(newforce > 1)
 		I.take_damage(1, BRUTE, "melee")
@@ -332,12 +332,12 @@
 	verbu = pick(user.used_intent.attack_verb)
 	if(newforce > 1)
 		if(user.rogfat_add(5))
-			user.visible_message("<span class='danger'>[user] [verbu] [src] with [I]!</span>")
+			user.visible_message(span_danger("[user] [verbu] [src] with [I]!"))
 		else
-			user.visible_message("<span class='warning'>[user] [verbu] [src] with [I]!</span>")
+			user.visible_message(span_warning("[user] [verbu] [src] with [I]!"))
 			newforce = 1
 	else
-		user.visible_message("<span class='warning'>[user] [verbu] [src] with [I]!</span>")
+		user.visible_message(span_warning("[user] [verbu] [src] with [I]!"))
 
 	take_damage(newforce, I.damtype, "melee", 1)
 	if(newforce > 1)
@@ -488,7 +488,7 @@
 	if(user in viewers(src, null))
 		attack_message = "[user] [message_verb] [src][message_hit_area] with [I]!"
 		attack_message_local = "[user] [message_verb] me[message_hit_area] with [I]!"
-	visible_message("<span class='danger'>[attack_message][next_attack_msg.Join()]</span>",\
-		"<span class='danger'>[attack_message_local][next_attack_msg.Join()]</span>", null, COMBAT_MESSAGE_RANGE)
+	visible_message(span_danger("[attack_message][next_attack_msg.Join()]"),\
+		span_danger("[attack_message_local][next_attack_msg.Join()]"), null, COMBAT_MESSAGE_RANGE)
 	next_attack_msg.Cut()
 	return 1

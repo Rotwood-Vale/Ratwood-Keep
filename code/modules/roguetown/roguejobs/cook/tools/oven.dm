@@ -32,7 +32,7 @@
 			donefoods = FALSE
 			W.forceMove(src)
 			food += W
-			user.visible_message("<span class='warning'>[user] puts something in the oven.</span>")
+			user.visible_message(span_warning("[user] puts something in the oven."))
 			need_underlay_update = TRUE
 			update_icon()
 			return
@@ -48,7 +48,7 @@
 				food -= I
 				qdel(I)
 				food += C
-				visible_message("<span class='notice'>Something smells good!</span>")
+				visible_message(span_notice("Something smells good!"))
 				need_underlay_update = TRUE
 		update_icon()
 
