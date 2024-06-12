@@ -1010,4 +1010,4 @@
 
 
 /datum/mind/proc/get_learning_boon(skill)
-	return get_skill_level(skill) / 10
+	return 1 + (get_skill_level(skill) / 10)
