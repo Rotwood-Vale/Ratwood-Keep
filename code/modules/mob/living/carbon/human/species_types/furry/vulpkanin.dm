@@ -95,20 +95,20 @@
 	//Choose from a variety of mostly brightish, animal, matching colors
 	switch(random)
 		if(1)
-			main_color = "FFAA00"
-			second_color = "FFDD44"
+			main_color = "fc7b21"
+			second_color = "ffdbc1"
 		if(2)
-			main_color = "FF8833"
-			second_color = "FFAA33"
+			main_color = "fd9c22"
+			second_color = "fce4c5"
 		if(3)
-			main_color = "FFCC22"
-			second_color = "FFDD88"
+			main_color = "ffb824"
+			second_color = "feebc2"
 		if(4)
-			main_color = "FF8800"
-			second_color = "FFFFFF"
+			main_color = "fbc32a"
+			second_color = "ffedba"
 		if(5)
-			main_color = "999999"
-			second_color = "EEEEEE"
+			main_color = "fc5e21"
+			second_color = "ffd2c0"
 	returned["mcolor"] = main_color
 	returned["mcolor2"] = second_color
 	returned["mcolor3"] = second_color

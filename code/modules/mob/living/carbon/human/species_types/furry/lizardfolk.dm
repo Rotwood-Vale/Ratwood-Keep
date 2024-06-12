@@ -136,3 +136,29 @@
 /datum/species/lizardfolk/get_random_body_markings(list/passed_features)
 	return assemble_body_markings_from_set(GLOB.body_marking_sets_by_type[/datum/body_marking_set/bellyscale], passed_features, src)
 
+/datum/species/lizardfolk/get_random_features()
+	var/list/returned = MANDATORY_FEATURE_LIST
+	var/main_color
+	var/second_color
+	var/random = rand(1,5)
+	//Choose from a variety of draconic colors
+	switch(random)
+		if(1)
+			main_color = "15921a"
+			second_color = "3a8f3d"
+		if(2)
+			main_color = "63d100"
+			second_color = "89d248"
+		if(3)
+			main_color = "51aa01"
+			second_color = "70ae39"
+		if(4)
+			main_color = "00b302"
+			second_color = "2eb62f"
+		if(5)
+			main_color = "02c33c"
+			second_color = "3ac664"
+	returned["mcolor"] = main_color
+	returned["mcolor2"] = second_color
+	returned["mcolor3"] = second_color
+	return returned
