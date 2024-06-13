@@ -5,7 +5,7 @@
 #define SEND_TEXT(target, text) DIRECT_OUTPUT(target, text)
 #define WRITE_FILE(file, text) DIRECT_OUTPUT(file, text)
 #define WRITE_LOG(log, text) text2file(text,log) //rustg_log_write
-#define logtime time2text(world.timeofday, ""YYYY-MM-DD hh:mm:ss"")
+#define logtime time2text(world.timeofday, "YYYY-MM-DD hh:mm:ss")
 
 //print a warning message to world.log
 #define WARNING(MSG) warning("[MSG] in [__FILE__] at line [__LINE__] src: [UNLINT(src)] usr: [usr].")
