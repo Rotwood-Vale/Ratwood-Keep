@@ -68,6 +68,10 @@
 	affected_bodyparts = HAND_LEFT | HAND_RIGHT | LEG_LEFT | LEG_RIGHT
 	default_color = DEFAULT_SECONDARY
 
+/datum/body_marking/sock/tertiary
+	name = "Sock (Tertiary)"
+	default_color = DEFAULT_TERTIARY
+
 /datum/body_marking/socklonger
 	icon = 'icons/mob/body_markings/sock_markings.dmi'
 	name = "Sock (Longer)"

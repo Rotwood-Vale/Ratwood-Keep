@@ -34,6 +34,9 @@
 		OFFSET_NECK_F = list(0,-1), OFFSET_MOUTH_F = list(0,-1), OFFSET_PANTS_F = list(0,0), \
 		OFFSET_SHIRT_F = list(0,0), OFFSET_ARMOR_F = list(0,0), OFFSET_UNDIES_F = list(0,0), \
 		)
+	specstats = list("strength" = 0, "perception" = 1, "intelligence" = 1, "constitution" = -1, "endurance" = 0, "speed" = -1, "fortune" = 0)
+	specstats_f = list("strength" = -1, "perception" = 0, "intelligence" = 2, "constitution" = -1, "endurance" = 0, "speed" = 1, "fortune" = 0)
+	enflamed_icon = "widefire"
 	organs = list(
 		ORGAN_SLOT_BRAIN = /obj/item/organ/brain,
 		ORGAN_SLOT_HEART = /obj/item/organ/heart,
@@ -72,6 +75,7 @@
 	body_marking_sets = list(
 		/datum/body_marking_set/none,
 		/datum/body_marking_set/bellysocks,
+		/datum/body_marking_set/bellysockstertiary,
 		/datum/body_marking_set/belly,
 	)
 	body_markings = list(
@@ -95,24 +99,24 @@
 	//Choose from a variety of mostly brightish, animal, matching colors
 	switch(random)
 		if(1)
-			main_color = "FFAA00"
-			second_color = "FFDD44"
+			main_color = "fc7b21"
+			second_color = "ffdbc1"
 		if(2)
-			main_color = "FF8833"
-			second_color = "FFAA33"
+			main_color = "fd9c22"
+			second_color = "fce4c5"
 		if(3)
-			main_color = "FFCC22"
-			second_color = "FFDD88"
+			main_color = "ffb824"
+			second_color = "feebc2"
 		if(4)
-			main_color = "FF8800"
-			second_color = "FFFFFF"
+			main_color = "fbc32a"
+			second_color = "ffedba"
 		if(5)
-			main_color = "999999"
-			second_color = "EEEEEE"
+			main_color = "fc5e21"
+			second_color = "ffd2c0"
 	returned["mcolor"] = main_color
 	returned["mcolor2"] = second_color
-	returned["mcolor3"] = second_color
+	returned["mcolor3"] = "373330"
 	return returned
 
 /datum/species/vulpkanin/get_random_body_markings(list/passed_features)
-	return assemble_body_markings_from_set(GLOB.body_marking_sets_by_type[/datum/body_marking_set/bellysocks], passed_features, src)
+	return assemble_body_markings_from_set(GLOB.body_marking_sets_by_type[/datum/body_marking_set/bellysockstertiary], passed_features, src)
