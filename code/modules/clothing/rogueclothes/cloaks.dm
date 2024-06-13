@@ -25,6 +25,7 @@
 	body_parts_covered = CHEST|GROIN
 	boobed = TRUE
 	slot_flags = ITEM_SLOT_ARMOR|ITEM_SLOT_CLOAK
+	flags_inv = HIDECROTCH|HIDEBOOB
 	var/picked
 
 /obj/item/clothing/cloak/tabard/update_icon()
