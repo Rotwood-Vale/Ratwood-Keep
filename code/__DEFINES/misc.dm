@@ -31,13 +31,13 @@
 #define LEGSLEEVE_LAYER			32
 #define SHOESLEEVE_LAYER		31
 #define SHIRT_LAYER				30
-#define GLOVES_LAYER			29
-#define WRISTS_LAYER			28
-#define ARMOR_LAYER				27
-#define TABARD_LAYER			26
-#define BELT_LAYER				25		//only when looking south
-#define UNDER_CLOAK_LAYER		24
-#define HANDS_PART_LAYER		23
+#define WRISTS_LAYER			29
+#define ARMOR_LAYER				26
+#define TABARD_LAYER			27
+#define BELT_LAYER				26		//only when looking south
+#define UNDER_CLOAK_LAYER		25
+#define HANDS_PART_LAYER		24
+#define GLOVES_LAYER			23
 #define ARM_DAMAGE_LAYER		22
 #define SHIRTSLEEVE_LAYER		21
 #define GLOVESLEEVE_LAYER		20
