@@ -131,3 +131,41 @@
 /datum/species/dracon/get_random_body_markings(list/passed_features)
 	return assemble_body_markings_from_set(GLOB.body_marking_sets_by_type[/datum/body_marking_set/bellyscale], passed_features, src)
 
+/datum/species/dracon/get_random_features()
+	var/list/returned = MANDATORY_FEATURE_LIST
+	var/main_color
+	var/second_color
+	var/random = rand(1,9)
+	//Choose from a variety of draconic colors
+	switch(random)
+		if(1)
+			main_color = "e43900"
+			second_color = "ea673c"
+		if(2)
+			main_color = "ea6f01"
+			second_color = "ea8e3c"
+		if(3)
+			main_color = "eaa501"
+			second_color = "e7b43a"
+		if(4)
+			main_color = "63d100"
+			second_color = "89d248"
+		if(5)
+			main_color = "51aa01"
+			second_color = "70ae39"
+		if(6)
+			main_color = "00b302"
+			second_color = "2eb62f"
+		if(7)
+			main_color = "02c33c"
+			second_color = "3ac664"
+		if(8)
+			main_color = "00c170"
+			second_color = "3fbf89"
+		if(9)
+			main_color = "00bc94"
+			second_color = "3cbea2"
+	returned["mcolor"] = main_color
+	returned["mcolor2"] = second_color
+	returned["mcolor3"] = second_color
+	return returned
