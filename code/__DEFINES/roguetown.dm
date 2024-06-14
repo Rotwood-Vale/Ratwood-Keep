@@ -16,7 +16,41 @@
 	/datum/species/anthromorph,\
 	/datum/species/demihuman,\
 	/datum/species/halforc,\
+	/datum/species/kobold,\
+	/datum/species/goblinp,\
 )
+
+#define RACES_RESPECTED \
+	/datum/species/human/northern,\
+	/datum/species/elf/wood,\
+	/datum/species/human/halfelf,\
+	/datum/species/dwarf/mountain,\
+	/datum/species/aasimar,\
+	/datum/species/vulpkanin,\
+	/datum/species/moth,\
+	/datum/species/dracon,
+
+#define RACES_TOLERATED \
+	/datum/species/elf/dark,\
+	/datum/species/tieberian,\
+	/datum/species/lizardfolk,\
+	/datum/species/tabaxi,\
+	/datum/species/akula,\
+	/datum/species/anthromorph,\
+	/datum/species/demihuman
+
+#define RACES_SHUNNED \
+	/datum/species/halforc,\
+	/datum/species/kobold
+
+#define RACES_DESPISED \
+	/datum/species/goblinp,\
+
+#define RACES_ALL_KINDS list(RACES_DESPISED, RACES_SHUNNED, RACES_TOLERATED, RACES_RESPECTED)
+
+#define RACES_SHUNNED_UP list(RACES_SHUNNED, RACES_TOLERATED, RACES_RESPECTED)
+
+#define RACES_TOLERATED_UP list(RACES_TOLERATED, RACES_RESPECTED)
 
 #define NOBLE_RACES_TYPES list(\
 	/datum/species/human/northern,\
@@ -34,6 +68,8 @@
 	/datum/species/dracon,\
 	/datum/species/anthromorph,\
 	/datum/species/demihuman,\
+	/datum/species/kobold,\
+	/datum/species/goblinp,\
 )
 
 #define CLOTHED_RACES_TYPES list(\
@@ -53,8 +89,10 @@
 	/datum/species/anthromorph,\
 	/datum/species/demihuman,\
 	/datum/species/halforc,\
+	/datum/species/kobold,\
+	/datum/species/goblinp,\
 )
-
+// Non-dwarf non-kobold non-goblin mostly
 #define NON_DWARVEN_RACE_TYPES list(\
 	/datum/species/human/northern,\
 	/datum/species/human/halfelf,\
@@ -72,7 +110,7 @@
 	/datum/species/demihuman,\
 	/datum/species/halforc,\
 )
-// Non-elf non-dwarf mostly
+// Non-elf non-dwarf non-kobold non-goblin mostly
 #define HUMANLIKE_RACE_TYPES list(\
 	/datum/species/human/northern,\
 	/datum/species/tieberian,\

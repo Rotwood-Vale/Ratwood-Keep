@@ -3,7 +3,7 @@
 	tutorial = "You are a strong Lumberjack, armed with an axe, you can gather wood \
 	either for yourself, or for others. You are an expert carpenter too, so you can bend wood into whatever you need, and chop it efficiently"
 	allowed_sexes = list(MALE)
-	allowed_races = CLOTHED_RACES_TYPES
+	allowed_races = RACES_ALL_KINDS
 	outfit = /datum/outfit/job/roguetown/adventurer/woodcutter
 	isvillager = TRUE
 	ispilgrim = TRUE

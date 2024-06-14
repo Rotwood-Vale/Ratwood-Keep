@@ -95,7 +95,6 @@
 	name = "Stabbers"
 	icon_state = "stabbers"
 
-
 /datum/sprite_accessory/horns/unihorn
 	name = "Unihorn"
 	icon_state = "unihorn"
@@ -105,11 +104,11 @@
 	icon_state = "longhorns"
 
 /datum/sprite_accessory/horns/outstretched
-	name = "outstretched"
+	name = "Outstretched"
 	icon_state = "outstretched"
 
 /datum/sprite_accessory/horns/halo
-	name = "halo"
+	name = "Halo"
 	icon_state = "halo"
 
 /datum/sprite_accessory/horns/greathorns
@@ -129,8 +128,12 @@
 	icon_state = "faceguard"
 
 /datum/sprite_accessory/horns/sheephorns
-	name = "Sheep horns" //Credit goes to Guidesa, thank you sheepling these are beautiful. <3
+	name = "Sheep Horns"
 	icon_state = "sheep"
+
+/datum/sprite_accessory/horns/doublehorns
+	name = "Double Horns"
+	icon_state = "doublehorns"
 
 /datum/sprite_accessory/horns/large
 	abstract_type = /datum/sprite_accessory/horns/large

@@ -2520,6 +2520,7 @@
 #include "code\modules\mob\living\carbon\human\species_types\furry\anthromorph.dm"
 #include "code\modules\mob\living\carbon\human\species_types\furry\demihuman.dm"
 #include "code\modules\mob\living\carbon\human\species_types\furry\dracon.dm"
+#include "code\modules\mob\living\carbon\human\species_types\furry\kobold.dm"
 #include "code\modules\mob\living\carbon\human\species_types\furry\lizardfolk.dm"
 #include "code\modules\mob\living\carbon\human\species_types\furry\moth.dm"
 #include "code\modules\mob\living\carbon\human\species_types\furry\tabaxi.dm"
