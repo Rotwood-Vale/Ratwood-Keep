@@ -32,6 +32,10 @@
 		H.mind.adjust_skillrank(/datum/skill/craft/crafting, pick(1,2), TRUE)
 		H.mind.adjust_skillrank(/datum/skill/labor/farming, pick(4,5), TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/medicine, 1, TRUE)
+		H.change_stat("strength", 1)
+		H.change_stat("constitution", 1)
+		H.change_stat("intelligence", -2)
+		H.change_stat("speed", 1)
 
 	if(H.gender == MALE)
 		head = /obj/item/clothing/head/roguetown/roguehood/random
@@ -42,10 +46,6 @@
 		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/random
 		shoes = /obj/item/clothing/shoes/roguetown/simpleshoes
 		belt = /obj/item/storage/belt/rogue/leather/rope
-		H.change_stat("strength", 2)
-		H.change_stat("constitution", 1)
-		H.change_stat("intelligence", -4)
-		H.change_stat("speed", -2)
 	else
 		head = /obj/item/clothing/head/roguetown/armingcap
 //		pants = /obj/item/clothing/under/roguetown/trou
@@ -53,7 +53,3 @@
 		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
 		shoes = /obj/item/clothing/shoes/roguetown/simpleshoes
 		belt = /obj/item/storage/belt/rogue/leather/rope
-		H.change_stat("strength", 1)
-		H.change_stat("constitution", 1)
-		H.change_stat("intelligence", -2)
-		H.change_stat("speed", 1)

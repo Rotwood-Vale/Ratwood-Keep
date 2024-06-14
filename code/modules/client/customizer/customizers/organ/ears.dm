@@ -106,4 +106,5 @@
 		/datum/sprite_accessory/ears/sabresune,
 		/datum/sprite_accessory/ears/possum,
 		/datum/sprite_accessory/ears/raccoon,
+		/datum/sprite_accessory/ears/mouse,
 		)
