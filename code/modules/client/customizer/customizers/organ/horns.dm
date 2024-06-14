@@ -36,8 +36,6 @@
 		/datum/sprite_accessory/horns/bigcurlyhorns,
 		/datum/sprite_accessory/horns/billberry,
 		/datum/sprite_accessory/horns/stabbers,
-		/datum/sprite_accessory/horns/unihorn,
-		/datum/sprite_accessory/horns/longhorns,
 		/datum/sprite_accessory/horns/outstretched,
 		/datum/sprite_accessory/horns/halo,
 		/datum/sprite_accessory/horns/greathorns,
