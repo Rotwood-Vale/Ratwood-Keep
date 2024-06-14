@@ -94,26 +94,6 @@
 	. = ..()
 	UnregisterSignal(C, COMSIG_MOB_SAY)
 
-/datum/species/kobold/handle_speech(datum/source, mob/speech_args)
-	. = ..()
-	var/message = speech_args[SPEECH_MESSAGE]
-	if(message)
-		if(message[1])
-			if(message[1] != "*")
-				message = " [message]"
-				var/list/accent_words = strings("accent_universal.json", "universal")
-
-				for(var/key in accent_words)
-					var/value = accent_words[key]
-					if(islist(value))
-						value = pick(value)
-
-					message = replacetextEx(message, " [uppertext(key)]", " [uppertext(value)]")
-					message = replacetextEx(message, " [capitalize(key)]", " [capitalize(value)]")
-					message = replacetextEx(message, " [key]", " [value]")
-
-	speech_args[SPEECH_MESSAGE] = trim(message)
-
 /datum/species/kobold/get_random_body_markings(list/passed_features)
 	return assemble_body_markings_from_set(GLOB.body_marking_sets_by_type[/datum/body_marking_set/kobold_scale], passed_features, src)
 

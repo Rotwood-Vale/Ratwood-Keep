@@ -77,16 +77,21 @@
 
 /datum/species/goblinp/get_skin_list()
 	return list(
-		"Teal" = "0d8f68"
+		"Teal" = "0d8f68",
 		"Viridian" = "0f8a4a",
 		"Jade" = "0f8a38",
-		"Green" = "0f8a1f", 
+		"Green" = "0f8a1f",
 		"Forest" = "248a0f",
 		"Lime" = "3e8a0f",
-		"Moss" = "538a0f"
+		"Moss" = "538a0f",
 		"Olive" = "6b8a08",
 	)
 
 /datum/species/goblinp/on_species_gain(mob/living/carbon/C, datum/species/old_species)
 	..()
 	C.cmode_music = 'sound/music/combat_gronn.ogg'
+	RegisterSignal(C, COMSIG_MOB_SAY, PROC_REF(handle_speech))
+
+/datum/species/goblinp/on_species_loss(mob/living/carbon/C)
+	. = ..()
+	UnregisterSignal(C, COMSIG_MOB_SAY)
