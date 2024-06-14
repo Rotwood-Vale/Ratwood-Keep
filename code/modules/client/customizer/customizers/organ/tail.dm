@@ -54,34 +54,6 @@
 		/datum/sprite_accessory/tail/rabbit,
 		)
 
-/datum/customizer/organ/tail/vox
-	customizer_choices = list(/datum/customizer_choice/organ/tail/vox)
-
-/datum/customizer_choice/organ/tail/vox
-	name = "Vox Tail"
-	organ_type = /obj/item/organ/tail/vox
-	sprite_accessories = list(/datum/sprite_accessory/tail/vox/default)
-
-/datum/customizer/organ/tail/vox
-	customizer_choices = list(/datum/customizer_choice/organ/tail/vox)
-
-/datum/customizer_choice/organ/tail/xeno
-	name = "Xeno Tail"
-	organ_type = /obj/item/organ/tail/xeno
-	sprite_accessories = list(/datum/sprite_accessory/tail/xeno)
-
-/datum/customizer/organ/tail/avali
-	customizer_choices = list(/datum/customizer_choice/organ/tail/avali)
-
-/datum/customizer_choice/organ/tail/avali
-	name = "Avali Tail"
-	organ_type = /obj/item/organ/tail/avali
-	sprite_accessories = list(
-		/datum/sprite_accessory/tail/teshari/default,
-		/datum/sprite_accessory/tail/teshari/fluffy,
-		/datum/sprite_accessory/tail/teshari/thin,
-		)
-
 /datum/customizer_choice/organ/tail/cat
 	name = "Cat Tail"
 	organ_type = /obj/item/organ/tail/cat

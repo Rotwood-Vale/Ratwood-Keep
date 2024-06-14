@@ -62,7 +62,7 @@
 		/datum/sprite_accessory/snout/front/scanid,
 		/datum/sprite_accessory/snout/front/scanidalt,
 		/datum/sprite_accessory/snout/front/scanidalt2,
-		/datum/sprite_accessory/snout/front/scanidalt3,		
+		/datum/sprite_accessory/snout/front/scanidalt3,
 		/datum/sprite_accessory/snout/sharp,
 		/datum/sprite_accessory/snout/round,
 		/datum/sprite_accessory/snout/sharplight,
@@ -72,14 +72,6 @@
 		/datum/sprite_accessory/snout/front/sharplight,
 		/datum/sprite_accessory/snout/front/roundlight,
 		)
-
-/datum/customizer/organ/snout/vox
-	customizer_choices = list(/datum/customizer_choice/organ/snout/vox)
-
-/datum/customizer_choice/organ/snout/vox
-	name = "Vox Beak"
-	organ_type = /obj/item/organ/snout/vox
-	sprite_accessories = list(/datum/sprite_accessory/snout/vox/default)
 
 /datum/customizer/organ/snout/anthro
 	allows_disabling = TRUE
