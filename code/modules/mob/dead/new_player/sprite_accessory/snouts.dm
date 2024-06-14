@@ -280,18 +280,6 @@
 	color_keys = 2
 	color_key_names = list("Snout", "Inner")
 
-/datum/sprite_accessory/snout/protogen
-	name = "Protogen"
-	icon_state = "protogen"
-
-/datum/sprite_accessory/snout/protogen_frame
-	name = "Protogen (Frame)"
-	icon_state = "protogenframe"
-
-/datum/sprite_accessory/snout/protogen_bolt
-	name = "Protogen (Bolt)"
-	icon_state = "protogenbolt"
-
 /******************************************
 **************** Snouts *******************
 *************but higher up*****************/
@@ -464,39 +452,3 @@
 	extra_state = TRUE
 	color_keys = 2
 	color_key_names = list("Snout", "Inner")
-
-/datum/sprite_accessory/snout/synthliz
-	abstract_type = /datum/sprite_accessory/snout/synthliz
-	icon = 'icons/mob/sprite_accessory/snouts/synthliz_snouts.dmi'
-
-/datum/sprite_accessory/snout/synthliz/basic
-	name = "Snout"
-	icon_state = "basic"
-
-/datum/sprite_accessory/snout/synthliz/long
-	name = "Snout Long"
-	icon_state = "long"
-
-/datum/sprite_accessory/snout/synthliz/long_thick
-	name = "Snout Long & Thick"
-	icon_state = "thicklong"
-
-/datum/sprite_accessory/snout/synthliz/under
-	name = "Snout Under"
-	icon_state = "under"
-	color_keys = 3
-	color_key_names = list("Snout", "Details", "Details")
-
-/datum/sprite_accessory/snout/synthliz/over
-	name = "Snout Over"
-	icon_state = "over"
-	color_keys = 3
-	color_key_names = list("Snout", "Details", "Details")
-
-/datum/sprite_accessory/snout/vox
-	abstract_type = /datum/sprite_accessory/snout/vox
-	icon = 'icons/mob/sprite_accessory/snouts/vox_snouts.dmi'
-
-/datum/sprite_accessory/snout/vox/default
-	name = "Default"
-	icon_state = "default"

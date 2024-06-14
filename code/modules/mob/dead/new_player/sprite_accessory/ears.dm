@@ -184,12 +184,6 @@
 	color_keys = 2
 	color_key_names = list("Ears", "Inner")
 
-/datum/sprite_accessory/ears/protogen
-	name = "Protogen"
-	icon_state = "protogen"
-	color_keys = 2
-	color_key_names = list("Ears", "Inner")
-
 /datum/sprite_accessory/ears/antenna_simple1
 	name = "Insect antenna 1"
 	icon_state = "antenna_simple1"
@@ -260,6 +254,12 @@
 /datum/sprite_accessory/ears/raccoon
 	name = "Raccoon"
 	icon_state = "raccoon"
+	color_keys = 2
+	color_key_names = list("Ears", "Inner")
+
+/datum/sprite_accessory/ears/mouse
+	name = "Mouse"
+	icon_state = "mouse"
 	color_keys = 2
 	color_key_names = list("Ears", "Inner")
 
