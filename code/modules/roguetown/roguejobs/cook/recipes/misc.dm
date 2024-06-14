@@ -47,4 +47,4 @@
 		/obj/item/reagent_containers/food/snacks/fat = 1,		
 	)
 	result = /obj/item/soap
-	craftdiff = 3
+	craftdiff = 5
