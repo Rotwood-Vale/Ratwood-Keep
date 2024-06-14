@@ -7,7 +7,7 @@
 	spawn_positions = 1
 	spells = list(/obj/effect/proc_holder/spell/invoked/lesser_heal)
 
-	allowed_races = CLOTHED_RACES_TYPES
+	allowed_races = RACES_TOLERATED_UP
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_ages = list(AGE_ADULT)
 

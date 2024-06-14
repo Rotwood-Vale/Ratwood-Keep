@@ -169,3 +169,7 @@
 /obj/item/organ/ears/halforc
 	name = "halforc ears"
 	accessory_type = /datum/sprite_accessory/ears/halforc
+
+/obj/item/organ/ears/goblin
+	name = "goblin ears"
+	accessory_type = /datum/sprite_accessory/ears/goblin

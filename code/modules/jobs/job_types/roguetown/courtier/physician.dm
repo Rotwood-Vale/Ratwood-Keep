@@ -6,7 +6,7 @@
 	total_positions = 1
 	spawn_positions = 1
 
-	allowed_races = CLOTHED_RACES_TYPES
+	allowed_races = RACES_TOLERATED_UP
 	allowed_sexes = list(MALE, FEMALE)
 	display_order = JDO_PHYSICIAN
 	tutorial = "You were once a noble child like any other, being groomed to take a position of responsibility and authority. Perhaps in another life, you would have turned out to be a wise archivist or a shrewd steward. In this life, however, a wasting disease stole away your youth. Out of desperation, you sought out Pestra and were cured. Now you serve in the King's court ensuring the good health of your betters and their servants."
