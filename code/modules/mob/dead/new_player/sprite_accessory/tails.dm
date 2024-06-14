@@ -314,46 +314,6 @@
 	name = "Spikes"
 	icon_state = "spikes"
 
-/datum/sprite_accessory/tail/xeno
-	name = "Xenomorph"
-	icon = 'icons/mob/sprite_accessory/tails/xeno_tail.dmi'
-	icon_state = "xeno"
-
-/datum/sprite_accessory/tail/synthliz
-	abstract_type = /datum/sprite_accessory/tail/synthliz
-	icon = 'icons/mob/sprite_accessory/tails/synthliz_tails.dmi'
-
-/datum/sprite_accessory/tail/synthliz/normal
-	name = "Normal"
-	icon_state = "normal"
-	can_wag = TRUE
-
-/datum/sprite_accessory/tail/teshari
-	abstract_type = /datum/sprite_accessory/tail/teshari
-	icon = 'icons/mob/sprite_accessory/tails/teshari_tails.dmi'
-	color_keys = 3
-	color_key_names = list("Tail", "Details", "Details")
-
-/datum/sprite_accessory/tail/teshari/default
-	name = "Default"
-	icon_state = "default"
-
-/datum/sprite_accessory/tail/teshari/fluffy
-	name = "Fluffy"
-	icon_state = "fluffy"
-
-/datum/sprite_accessory/tail/teshari/thin
-	name = "Thin"
-	icon_state = "thin"
-
-/datum/sprite_accessory/tail/vox
-	abstract_type = /datum/sprite_accessory/tail/vox
-	icon = 'icons/mob/sprite_accessory/tails/vox_tails.dmi'
-
-/datum/sprite_accessory/tail/vox/default
-	name = "Default"
-	icon_state = "default"
-
 /datum/sprite_accessory/tail/tiefling
 	name = "Tiefling"
 	icon = 'icons/mob/sprite_accessory/tiefling.dmi'

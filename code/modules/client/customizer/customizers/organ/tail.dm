@@ -70,14 +70,6 @@
 	organ_type = /obj/item/organ/tail/xeno
 	sprite_accessories = list(/datum/sprite_accessory/tail/xeno)
 
-/datum/customizer/organ/tail/synthliz
-	customizer_choices = list(/datum/customizer_choice/organ/tail/synthliz)
-
-/datum/customizer_choice/organ/tail/synthliz
-	name = "Synthetic Tail"
-	organ_type = /obj/item/organ/tail/synth
-	sprite_accessories = list(/datum/sprite_accessory/tail/synthliz/normal)
-
 /datum/customizer/organ/tail/avali
 	customizer_choices = list(/datum/customizer_choice/organ/tail/avali)
 

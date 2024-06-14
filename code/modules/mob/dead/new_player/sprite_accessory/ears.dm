@@ -184,12 +184,6 @@
 	color_keys = 2
 	color_key_names = list("Ears", "Inner")
 
-/datum/sprite_accessory/ears/protogen
-	name = "Protogen"
-	icon_state = "protogen"
-	color_keys = 2
-	color_key_names = list("Ears", "Inner")
-
 /datum/sprite_accessory/ears/antenna_simple1
 	name = "Insect antenna 1"
 	icon_state = "antenna_simple1"
