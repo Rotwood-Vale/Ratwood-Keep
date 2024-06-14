@@ -93,7 +93,15 @@
 
 	resistance_flags = FLAMMABLE
 
-/obj/item/bodypart/proc/adjust_marking_overlays(var/list/appearance_list)
+/obj/item/bodypart/proc/adjust_marking_overlays(list/appearance_list, mob/living/carbon/human/human_owner)
+	if(aux && (aux_zone == BODY_ZONE_PRECISE_L_FOOT || aux_zone == BODY_ZONE_PRECISE_R_FOOT)) //Vrell - Don't wanna offset legs.
+		return
+	if(body_zone == BODY_ZONE_L_LEG || body_zone == BODY_ZONE_R_LEG)
+		return
+	for(var/mutable_appearance/accessory_overlay in appearance_list)
+		accessory_overlay.pixel_y = human_owner.gender == FEMALE ? human_owner.dna.species.get_offsets()[OFFSET_UNDIES_F][2] : human_owner.dna.species.get_offsets()[OFFSET_UNDIES][2]
+		//Vrell - no fucking clue if this is gonna work kek
+			//It somehow worked. We take those.
 	return
 
 /obj/item/bodypart/proc/get_specific_markings_overlays(list/specific_markings, aux = FALSE, mob/living/carbon/human/human_owner, override_color)
@@ -126,7 +134,7 @@
 		appearance_list += get_specific_markings_overlays(markings, FALSE, human_owner, override_color)
 	if(aux_markings)
 		appearance_list += get_specific_markings_overlays(aux_markings, TRUE, human_owner, override_color)
-	adjust_marking_overlays(appearance_list)
+	adjust_marking_overlays(appearance_list, human_owner)
 	return appearance_list
 
 /obj/item/bodypart/grabbedintents(mob/living/user, precise)
