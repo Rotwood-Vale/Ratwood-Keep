@@ -263,6 +263,12 @@
 	color_keys = 2
 	color_key_names = list("Ears", "Inner")
 
+/datum/sprite_accessory/ears/mouse
+	name = "Mouse"
+	icon_state = "mouse"
+	color_keys = 2
+	color_key_names = list("Ears", "Inner")
+
 /datum/sprite_accessory/ears/elf
 	name = "Elf"
 	icon = 'icons/mob/sprite_accessory/elf.dmi'
