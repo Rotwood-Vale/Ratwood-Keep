@@ -11,6 +11,8 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 	var/default_color = "#FFF"	// if alien colors are disabled, this is the color that will be used by that race
 	var/limbs_icon_m
 	var/limbs_icon_f
+	var/limbs_icon_m_short
+	var/limbs_icon_f_short
 	var/icon_override
 	var/icon_override_m
 	var/icon_override_f
@@ -28,6 +30,17 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 	OFFSET_FACE_F = list(0,0), OFFSET_BELT_F = list(0,0), OFFSET_BACK_F = list(0,0), \
 	OFFSET_NECK_F = list(0,0), OFFSET_MOUTH_F = list(0,0), OFFSET_PANTS_F = list(0,0), \
 	OFFSET_SHIRT_F = list(0,0), OFFSET_ARMOR_F = list(0,0), OFFSET_UNDIES = list(0,0), OFFSET_UNDIES_F = list(0,0))
+	var/list/offset_features_short = list(OFFSET_ID = list(0,0), OFFSET_GLOVES = list(0,0),\
+	OFFSET_CLOAK = list(0,0), OFFSET_FACEMASK = list(0,0), OFFSET_HEAD = list(0,0), \
+	OFFSET_FACE = list(0,0), OFFSET_BELT = list(0,0), OFFSET_BACK = list(0,0), \
+	OFFSET_NECK = list(0,0), OFFSET_MOUTH = list(0,0), OFFSET_PANTS = list(0,0), \
+	OFFSET_SHIRT = list(0,0), OFFSET_ARMOR = list(0,0), OFFSET_HANDS = list(0,0), \
+	OFFSET_ID_F = list(0,0), OFFSET_GLOVES_F = list(0,0), OFFSET_HANDS_F = list(0,0), \
+	OFFSET_CLOAK_F = list(0,0), OFFSET_FACEMASK_F = list(0,0), OFFSET_HEAD_F = list(0,0), \
+	OFFSET_FACE_F = list(0,0), OFFSET_BELT_F = list(0,0), OFFSET_BACK_F = list(0,0), \
+	OFFSET_NECK_F = list(0,0), OFFSET_MOUTH_F = list(0,0), OFFSET_PANTS_F = list(0,0), \
+	OFFSET_SHIRT_F = list(0,0), OFFSET_ARMOR_F = list(0,0), OFFSET_UNDIES = list(0,0), OFFSET_UNDIES_F = list(0,0))
+	var/is_short = FALSE
 
 	var/dam_icon
 	var/dam_icon_f
@@ -140,6 +153,15 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 ///////////
 // PROCS //
 ///////////
+
+/datum/species/proc/get_offsets()
+	return is_short ? offset_features_short : offset_features
+
+/datum/species/proc/get_textures_m()
+	return is_short ? limbs_icon_m_short : limbs_icon_m
+
+/datum/species/proc/get_textures_f()
+	return is_short ? limbs_icon_f_short : limbs_icon_f
 
 /datum/species/proc/is_organ_slot_allowed(mob/living/carbon/human/human, organ_slot)
 	switch(organ_slot)
@@ -499,13 +521,13 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 			var/mutable_appearance/lip_overlay = mutable_appearance('icons/mob/human_face.dmi', "lips_[H.lip_style]", -BODY_LAYER)
 			lip_overlay.color = H.lip_color
 			if(H.gender == MALE)
-				if(OFFSET_FACE in H.dna.species.offset_features)
-					lip_overlay.pixel_x += H.dna.species.offset_features[OFFSET_FACE][1]
-					lip_overlay.pixel_y += H.dna.species.offset_features[OFFSET_FACE][2]
+				if(OFFSET_FACE in H.dna.species.get_offsets())
+					lip_overlay.pixel_x += H.dna.species.get_offsets()[OFFSET_FACE][1]
+					lip_overlay.pixel_y += H.dna.species.get_offsets()[OFFSET_FACE][2]
 			else
-				if(OFFSET_FACE_F in H.dna.species.offset_features)
-					lip_overlay.pixel_x += H.dna.species.offset_features[OFFSET_FACE_F][1]
-					lip_overlay.pixel_y += H.dna.species.offset_features[OFFSET_FACE_F][2]
+				if(OFFSET_FACE_F in H.dna.species.get_offsets())
+					lip_overlay.pixel_x += H.dna.species.get_offsets()[OFFSET_FACE_F][1]
+					lip_overlay.pixel_y += H.dna.species.get_offsets()[OFFSET_FACE_F][2]
 			standing += lip_overlay
 
 

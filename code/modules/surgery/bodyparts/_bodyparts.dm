@@ -434,9 +434,9 @@
 		var/datum/species/S = H.dna.species
 		species_id = S.limbs_id
 		if(H.gender == MALE)
-			species_icon = S.limbs_icon_m
+			species_icon = S.get_textures_m()
 		else
-			species_icon = S.limbs_icon_f
+			species_icon = S.get_textures_f()
 		species_flags_list = H.dna.species.species_traits
 
 

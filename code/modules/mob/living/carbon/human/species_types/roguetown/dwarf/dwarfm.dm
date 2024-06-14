@@ -32,8 +32,10 @@
 	disliked_food = NONE
 	liked_food = NONE
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
-	limbs_icon_m = 'icons/roguetown/mob/bodies/m/md.dmi'
-	limbs_icon_f = 'icons/roguetown/mob/bodies/f/fd.dmi'
+	limbs_icon_m = 'icons/mob/species/dwarf_male.dmi'
+	limbs_icon_f = 'icons/mob/species/dwarf_female.dmi'
+	limbs_icon_m_short = 'icons/mob/species/dwarf_male_short.dmi'
+	limbs_icon_f_short = 'icons/mob/species/dwarf_female_short.dmi'
 	dam_icon = 'icons/roguetown/mob/bodies/dam/dam_male.dmi'
 	dam_icon_f = 'icons/roguetown/mob/bodies/dam/dam_female.dmi'
 	hairyness = "t3"
@@ -50,8 +52,18 @@
 		OFFSET_CLOAK_F = list(0,0), OFFSET_FACEMASK_F = list(0,-5), OFFSET_HEAD_F = list(0,-5), \
 		OFFSET_FACE_F = list(0,-5), OFFSET_BELT_F = list(0,-5), OFFSET_BACK_F = list(0,-5), \
 		OFFSET_NECK_F = list(0,-5), OFFSET_MOUTH_F = list(0,-5), OFFSET_PANTS_F = list(0,0), \
-		OFFSET_SHIRT_F = list(0,0), OFFSET_ARMOR_F = list(0,0), OFFSET_UNDIES = list(0,0), OFFSET_UNDIES_F = list(0,0), \
-		)
+		OFFSET_SHIRT_F = list(0,0), OFFSET_ARMOR_F = list(0,0), OFFSET_UNDIES = list(0,0), OFFSET_UNDIES_F = list(0,0))
+	offset_features_short = list(
+		OFFSET_ID = list(0,-1), OFFSET_GLOVES = list(0,-1), OFFSET_WRISTS = list(0,-1),\
+		OFFSET_CLOAK = list(0,-1), OFFSET_FACEMASK = list(0,-5), OFFSET_HEAD = list(0,-5), \
+		OFFSET_FACE = list(0,-5), OFFSET_BELT = list(0,-6), OFFSET_BACK = list(0,-5), \
+		OFFSET_NECK = list(0,-5), OFFSET_MOUTH = list(0,-5), OFFSET_PANTS = list(0,-1), \
+		OFFSET_SHIRT = list(0,-1), OFFSET_ARMOR = list(0,-1), OFFSET_HANDS = list(0,-4), \
+		OFFSET_ID_F = list(0,-5), OFFSET_GLOVES_F = list(0,-5), OFFSET_WRISTS_F = list(0,-5), OFFSET_HANDS_F = list(0,-5), \
+		OFFSET_CLOAK_F = list(0,-1), OFFSET_FACEMASK_F = list(0,-6), OFFSET_HEAD_F = list(0,-6), \
+		OFFSET_FACE_F = list(0,-6), OFFSET_BELT_F = list(0,-6), OFFSET_BACK_F = list(0,-6), \
+		OFFSET_NECK_F = list(0,-6), OFFSET_MOUTH_F = list(0,-6), OFFSET_PANTS_F = list(0,-1), \
+		OFFSET_SHIRT_F = list(0,-1), OFFSET_ARMOR_F = list(0,-1), OFFSET_UNDIES = list(0,-1), OFFSET_UNDIES_F = list(0,-1))
 	specstats = list("strength" = 1, "perception" = -2, "intelligence" = 0, "constitution" = 2, "endurance" = 2, "speed" = -3, "fortune" = 0)
 	specstats_f = list("strength" = 1, "perception" = -2, "intelligence" = 0, "constitution" = 2, "endurance" = 1, "speed" = -2, "fortune" = 0)
 	enflamed_icon = "widefire"

@@ -64,6 +64,7 @@ GLOBAL_LIST_EMPTY(chosen_names)
 	var/real_name						//our character's name
 	var/gender = MALE					//gender of character (well duh)
 	var/age = AGE_ADULT						//age of character
+	var/is_short = FALSE
 	var/origin = "Default"
 	var/underwear = "Nude"				//underwear type
 	var/underwear_color = null			//underwear color
@@ -297,6 +298,7 @@ GLOBAL_LIST_EMPTY(chosen_names)
 					dat += "<a href='?_src_=prefs;preference=toggle_random;random_type=[RANDOM_GENDER_ANTAG]'>When Antagonist: [(randomise[RANDOM_GENDER_ANTAG]) ? "Yes" : "No"]</A>"
 
 			dat += "<b>Age:</b> <a href='?_src_=prefs;preference=age;task=input'>[age]</a><BR>"
+			dat += "<b>Height:</b> <a href='?_src_=prefs;preference=height'>[is_short ? "Short" : "Average"]</a><BR>"
 
 //			dat += "<br><b>Age:</b> <a href='?_src_=prefs;preference=age;task=input'>[age]</a>"
 //			if(randomise[RANDOM_BODY] || randomise[RANDOM_BODY_ANTAG]) //doesn't work unless random body
@@ -1413,6 +1415,9 @@ Slots: [job.spawn_positions]</span>
 						facial_hair_color = hair_color
 						ResetJobs()
 						to_chat(user, "<font color='red'>Classes reset.</font>")
+				
+				if("height")
+					
 
 				if("faith")
 					var/list/faiths_named = list()
@@ -1652,6 +1657,8 @@ Slots: [job.spawn_positions]</span>
 						ResetJobs()
 						to_chat(user, "<font color='red'>Classes reset.</font>")
 						random_character(gender)
+				if("height")
+					is_short = !is_short
 				if("domhand")
 					if(domhand == 1)
 						domhand = 2
@@ -1929,6 +1936,7 @@ Slots: [job.spawn_positions]</span>
 	character.dna.features = features.Copy()
 	character.gender = gender
 	character.set_species(chosen_species, icon_update = FALSE, pref_load = src)
+	character.dna.species.is_short = is_short
 
 	if((randomise[RANDOM_NAME] || randomise[RANDOM_NAME_ANTAG] && antagonist) && !character_setup)
 		slot_randomized = TRUE
