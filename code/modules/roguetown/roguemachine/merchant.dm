@@ -187,9 +187,12 @@
 		else
 			say("Not enough!")
 			return
-		var/pathi = pick(PA.contains)
-		var/obj/item/I = new pathi(get_turf(src))
-		M.put_in_hands(I)
+		var/shoplength = PA.contains.len
+		var/l
+		for(l=1,l<=shoplength,l++)
+			var/pathi = pick(PA.contains)
+			var/obj/item/I = new pathi(get_turf(src))
+			M.put_in_hands(I)
 		qdel(PA)
 	if(href_list["change"])
 		if(budget > 0)
