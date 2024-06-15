@@ -16,8 +16,9 @@
 	dam_icon = 'icons/roguetown/mob/bodies/dam/dam_male.dmi'
 	dam_icon_f = 'icons/roguetown/mob/bodies/dam/dam_female.dmi'
 	soundpack_m = /datum/voicepack/male/goblin
-	soundpack_f = /datum/voicepack/male/goblin
+	soundpack_f = /datum/voicepack/female
 	custom_clothes = TRUE
+	use_f = TRUE
 	clothes_id = "dwarf"
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
 	organs = list(
@@ -70,7 +71,7 @@
 	)
 
 /datum/species/goblinp/check_roundstart_eligible()
-	return TRUE
+	return FALSE
 
 /datum/species/goblinp/qualifies_for_rank(rank, list/features)
 	return TRUE
