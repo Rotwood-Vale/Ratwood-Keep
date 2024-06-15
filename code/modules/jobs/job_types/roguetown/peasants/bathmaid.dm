@@ -1,12 +1,13 @@
 /datum/job/roguetown/nightmaiden
-	title = "Bath Wench"
+	title = "Bath Boy"
+	f_title = "Bath Wench"
 	flag = WENCH
 	department_flag = PEASANTS
 	faction = "Station"
 	total_positions = 3
 	spawn_positions = 5
 
-	allowed_sexes = list(FEMALE)
+	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
 	allowed_ages = list(AGE_ADULT, AGE_MIDDLEAGED)
 
@@ -25,13 +26,13 @@
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
 	armor = /obj/item/clothing/suit/roguetown/shirt/dress/gen/sexy
 	neck = /obj/item/storage/belt/rogue/pouch
-	backpack_contents = list(/obj/item/roguekey/nightmaiden = 1)
+	backpack_contents = list(/obj/item/roguekey/nightmaiden = 1, /obj/item/rogue/instrument/harp = 1)
 
 	if(H.mind)
-		H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 2, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/stealing, pick(2,3,4), TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/riding, 1, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/music, pick(1,2), TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/stealing, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/music, 2, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/riding, 2, TRUE)
 
 // Washing Implements
 
