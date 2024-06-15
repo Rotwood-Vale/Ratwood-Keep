@@ -64,6 +64,8 @@
 			else
 				for(var/S in H.dna.species.specstats)
 					change_stat(S, H.dna.species.specstats[S])
+			if(H.dna.species.is_short)
+				change_stat("strength", -1)
 		switch(H.age)
 			if(AGE_MIDDLEAGED)
 				change_stat("speed", -1)

@@ -94,7 +94,7 @@
 	resistance_flags = FLAMMABLE
 
 /obj/item/bodypart/proc/adjust_marking_overlays(list/appearance_list, mob/living/carbon/human/human_owner)
-	if(aux && (aux_zone == BODY_ZONE_PRECISE_L_FOOT || aux_zone == BODY_ZONE_PRECISE_R_FOOT)) //Vrell - Don't wanna offset legs.
+	if(aux_zone == BODY_ZONE_PRECISE_L_FOOT || aux_zone == BODY_ZONE_PRECISE_R_FOOT) //Vrell - Don't wanna offset legs.
 		return
 	if(body_zone == BODY_ZONE_L_LEG || body_zone == BODY_ZONE_R_LEG)
 		return
