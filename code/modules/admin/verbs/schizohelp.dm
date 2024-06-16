@@ -16,7 +16,7 @@ GLOBAL_LIST_EMPTY_TYPED(schizohelps, /datum/schizohelp)
 	var/message = "<span class='info'><i>[display_name] meditates...</i>\n[msg]</span>"
 	var/message_admins = "<span class='info'><i>[display_name] ([key || "NO KEY"]) [ADMIN_FLW(src)] [ADMIN_SM(src)] meditates...</i>\n[msg]</span>"
 	for(var/client/voice in (GLOB.clients - client))
-		if(!(client.prefs.toggles & SCHIZO_VOICE) || check_rights_for(voice, R_ADMIN))
+		if(!(voice.prefs.toggles & SCHIZO_VOICE) || check_rights_for(voice, R_ADMIN))
 			continue
 		var/answer_button = "<span class='info'>(<a href='?src=[voice];schizohelp=[REF(ticket)];'>ANSWER</a>)</span>"
 		to_chat(voice, "[message] [answer_button]")
