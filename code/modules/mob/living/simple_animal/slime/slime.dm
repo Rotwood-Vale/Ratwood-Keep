@@ -353,7 +353,7 @@
 				discipline_slime(M)
 	else
 		if(stat == DEAD && !M.cmode)
-			var/try_to_fail = istype(M.rmb_intent, /datum/rmb_intent/weak)
+			var/try_to_fail = !istype(M.rmb_intent, /datum/rmb_intent/weak)
 			var/list/possible_steps = list()
 			for(var/datum/surgery_step/surgery_step as anything in GLOB.surgery_steps)
 				if(!surgery_step.name)

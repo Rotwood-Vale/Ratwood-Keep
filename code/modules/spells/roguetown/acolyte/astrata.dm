@@ -95,9 +95,11 @@
 		target.Jitter(100)
 		target.update_body()
 		target.visible_message("<span class='notice'>[target] is revived by holy light!</span>", "<span class='green'>I awake from the void.</span>")
-		if(target.mind && revive_pq && !HAS_TRAIT(target, TRAIT_IWASREVIVED) && user?.ckey)
-			adjust_playerquality(revive_pq, user.ckey)
-			ADD_TRAIT(target, TRAIT_IWASREVIVED, "[type]")
+		if(target.mind)
+			if(revive_pq && !HAS_TRAIT(target, TRAIT_IWASREVIVED) && user?.ckey)
+				adjust_playerquality(revive_pq, user.ckey)
+				ADD_TRAIT(target, TRAIT_IWASREVIVED, "[type]")
+			target.mind.remove_antag_datum(/datum/antagonist/zombie)
 		return TRUE
 	return FALSE
 

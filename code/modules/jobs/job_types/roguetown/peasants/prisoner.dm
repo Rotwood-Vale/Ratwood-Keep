@@ -18,6 +18,8 @@
 	max_pq = null
 	can_random = FALSE
 
+	cmode_music = 'sound/music/combat_bum.ogg'
+
 /datum/outfit/job/roguetown/prisoner/pre_equip(mob/living/carbon/human/H)
 	..()
 	mask = /obj/item/clothing/mask/rogue/facemask/prisoner

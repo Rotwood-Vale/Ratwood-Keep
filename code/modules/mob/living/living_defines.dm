@@ -169,3 +169,7 @@
 	var/rogue_sneaking = FALSE
 	/* Can be used to change the lighting threshholds at which players can sneak.*/
 	var/rogue_sneaking_light_threshhold = 0.15
+
+
+	/// Default pitch for emotes, on humans this is modified by stats
+	var/voice_pitch = 1

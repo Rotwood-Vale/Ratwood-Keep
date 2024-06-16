@@ -25,7 +25,7 @@
 	/// How much blood we suck on on_embed_life()
 	var/blood_sucking = 2
 	/// How much toxin damage we heal on on_embed_life()
-	var/toxin_healing = -2
+	var/toxin_healing = 2
 	/// Amount of blood we have stored
 	var/blood_storage = 0
 	/// Maximum amount of blood we can store
@@ -88,7 +88,7 @@
 /obj/item/natural/worms/leech/on_embed_life(mob/living/user, obj/item/bodypart/bodypart)
 	if(!user)
 		return
-	user.adjustToxLoss(toxin_healing)
+	user.adjustToxLoss(-toxin_healing)
 	if(giving)
 		var/blood_given = min(BLOOD_VOLUME_MAXIMUM - user.blood_volume, blood_storage, blood_sucking)
 		user.blood_volume += blood_given
@@ -193,7 +193,7 @@
 	color = null
 	consistent = TRUE
 	drainage = 0
-	toxin_healing = -3
+	toxin_healing = 2
 	blood_storage = BLOOD_VOLUME_SURVIVE
 	blood_maximum = BLOOD_VOLUME_BAD
 

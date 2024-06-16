@@ -13,18 +13,18 @@
 
 /mob/living/proc/check_heartbeat(mob/user)
 	var/list/message = list()
-	if(stat >= DEAD)
+	if(stat >= DEAD || HAS_TRAIT(src, TRAIT_FAKEDEATH) || HAS_TRAIT(src, TRAIT_ROTMAN))
 		message += "<B>No heartbeat...</B>"
 	else
 		message += "<B>The heart is still beating.</B>"
 	var/list/soul_message = soul_examine(user)
-	if(soul_message)
+	if(length(soul_message))
 		message += soul_message
 	return message
 
 /mob/living/proc/soul_examine(mob/user)
 	var/list/message = list()
-	if(stat >= DEAD)
+	if(stat >= DEAD || HAS_TRAIT(src, TRAIT_FAKEDEATH) || HAS_TRAIT(src, TRAIT_ROTMAN))
 		if(suiciding)
 			message += "<span class='deadsay'>[p_they(TRUE)] commited suicide... Nothing can be done..."
 		if(isobserver(user) || HAS_TRAIT(user, TRAIT_SOUL_EXAMINE))

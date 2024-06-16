@@ -142,6 +142,7 @@
 #define TAILOR		(1<<6)
 #define MERCHANT	(1<<7)
 #define SCRIBE		(1<<8)
+#define APOTHECARY	(1<<9)
 
 #define PEASANTS	(1<<5)
 

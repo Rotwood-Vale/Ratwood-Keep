@@ -891,7 +891,7 @@
 						user.visible_message("<span class='info'>[user] trains on [src]!</span>")
 						var/boon = user.mind.get_learning_boon(W.associated_skill)
 						var/amt2raise = L.STAINT/2
-						if(user.mind.get_skill_level(W.associated_skill) >= SKILL_LEVEL_NOVICE)
+						if(user.mind.get_skill_level(W.associated_skill) >= SKILL_LEVEL_APPRENTICE)
 							to_chat(user, "<span class='warning'>I've learned all I can from doing this, it's time for the real thing.</span>")
 							amt2raise = 0
 						if(amt2raise > 0)
