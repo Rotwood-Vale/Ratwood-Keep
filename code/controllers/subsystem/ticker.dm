@@ -78,6 +78,9 @@ SUBSYSTEM_DEF(ticker)
 	var/tri_gained = 0
 	var/tri_lost = 0
 
+	var/list/cuckers = list()
+	var/cums = 0
+
 	var/end_party = FALSE
 	var/last_lobby = 0
 
