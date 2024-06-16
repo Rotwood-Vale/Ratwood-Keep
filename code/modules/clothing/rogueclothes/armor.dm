@@ -114,7 +114,7 @@
 	icon_state = "cuirass"
 	item_state = "cuirass"
 	armor = list("blunt" = 80, "slash" = 100, "stab" = 80, "bullet" = 100, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
-	allowed_race = ALL_RACES_LIST
+	allowed_race = CLOTHED_RACES_TYPES
 	nodismemsleeves = TRUE
 	do_sound = FALSE
 	blocking_behavior = null
@@ -440,7 +440,7 @@
 	armor_class = ARMOR_CLASS_LIGHT
 	allowed_sex = list(FEMALE)
 	allowed_race = list("humen", "tiefling", "dwarfm","argonian", "elfd", "elfw", "helf", "aasimar")
-	
+
 /obj/item/clothing/suit/roguetown/armor/silkcoat/Initialize()
 	. = ..()
 	color = pick(CLOTHING_PURPLE, null,CLOTHING_GREEN, CLOTHING_RED)
