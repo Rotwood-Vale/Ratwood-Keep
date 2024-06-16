@@ -24,7 +24,7 @@
 	skillcraft = /datum/skill/craft/carpentry
 	verbage_simple = "construct"
 	verbage = "constructs"
-	craftdiff = 3
+	craftdiff = 2
 
 /datum/crafting_recipe/roguetown/turfs/woodwall/TurfCheck(mob/user, turf/T)
 	if(isclosedturf(T))
@@ -40,7 +40,7 @@
 	skillcraft = /datum/skill/craft/carpentry
 	verbage_simple = "construct"
 	verbage = "constructs"
-	craftdiff = 4
+	craftdiff = 3
 
 /datum/crafting_recipe/roguetown/turfs/fancywwall/TurfCheck(mob/user, turf/T)
 	if(isclosedturf(T))
@@ -56,7 +56,7 @@
 	skillcraft = /datum/skill/craft/carpentry
 	verbage_simple = "construct"
 	verbage = "constructs"
-	craftdiff = 3
+	craftdiff = 2
 
 /datum/crafting_recipe/roguetown/turfs/woodwindow/TurfCheck(mob/user, turf/T)
 	if(isclosedturf(T))
@@ -89,7 +89,7 @@
 	skillcraft = /datum/skill/craft/masonry
 	verbage_simple = "build"
 	verbage = "builds"
-	craftdiff = 3
+	craftdiff = 2
 
 /datum/crafting_recipe/roguetown/turfs/stonewall/TurfCheck(mob/user, turf/T)
 	if(isclosedturf(T))
@@ -105,7 +105,7 @@
 	skillcraft = /datum/skill/craft/masonry
 	verbage_simple = "build"
 	verbage = "builds"
-	craftdiff = 4
+	craftdiff = 3
 
 /datum/crafting_recipe/roguetown/turfs/fancyswall/TurfCheck(mob/user, turf/T)
 	if(isclosedturf(T))
@@ -121,7 +121,7 @@
 	skillcraft = /datum/skill/craft/masonry
 	verbage_simple = "build"
 	verbage = "builds"
-	craftdiff = 3
+	craftdiff = 2
 
 /datum/crafting_recipe/roguetown/turfs/stonewindow/TurfCheck(mob/user, turf/T)
 	if(isclosedturf(T))

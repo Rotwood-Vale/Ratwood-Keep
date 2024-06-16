@@ -503,3 +503,4 @@
 	craftsound = 'sound/foley/Building-01.ogg'
 	skillcraft = /datum/skill/craft/masonry
 	wallcraft = TRUE
+	craftdiff = 0

@@ -44,6 +44,7 @@
 	chargetime = 0
 	swingdelay = 0
 	clickcd = 10
+	item_d_type = "slash"
 
 /datum/intent/dagger/thrust
 	name = "thrust"
@@ -55,6 +56,7 @@
 	penfactor = 40
 	chargetime = 0
 	clickcd = 8
+	item_d_type = "stab"
 
 /datum/intent/dagger/thrust/pick
 	name = "icepick stab"
@@ -87,6 +89,7 @@
 	damfactor = 1.5
 	swingdelay = 5
 	clickcd = 10
+	item_d_type = "slash"
 
 /obj/item/rogueweapon/huntingknife/cleaver
 	force = 15

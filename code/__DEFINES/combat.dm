@@ -11,6 +11,9 @@
 #define STAMINA 	"stamina"
 #define BRAIN		"brain"
 
+//Omnibus'ing melee attack types
+#define MELEE_TYPES list("blunt", "slash", "stab")
+
 //bitflag damage defines used for suicide_act
 #define BRUTELOSS 	            	(1<<0)
 #define FIRELOSS 	            	(1<<1)
@@ -175,10 +178,10 @@
 //Intent blade class for dismember class
 #define BCLASS_BLUNT		"blunt"
 #define BCLASS_SMASH		"smashing"
-#define BCLASS_CUT			"slashing"
+#define BCLASS_CUT			"slash"
 #define BCLASS_CHOP			"chopping"
 #define BCLASS_STAB			"stabbing"
-#define BCLASS_PICK			"piercing"
+#define BCLASS_PICK			"stab"
 #define BCLASS_TWIST		"twist"
 #define BCLASS_PUNCH		"punch"
 #define BCLASS_BITE			"bite"

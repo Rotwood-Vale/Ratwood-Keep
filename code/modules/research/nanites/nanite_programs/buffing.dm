@@ -44,14 +44,18 @@
 	. = ..()
 	if(ishuman(host_mob))
 		var/mob/living/carbon/human/H = host_mob
-		H.physiology.armor.melee += 50
+		H.physiology.armor.blunt += 50
+		H.physiology.armor.blunt += 50
+		H.physiology.armor.blunt += 50
 		H.physiology.armor.bullet += 35
 
 /datum/nanite_program/hardening/disable_passive_effect()
 	. = ..()
 	if(ishuman(host_mob))
 		var/mob/living/carbon/human/H = host_mob
-		H.physiology.armor.melee -= 50
+		H.physiology.armor.blunt -= 50
+		H.physiology.armor.slash -= 50
+		H.physiology.armor.stab -= 50
 		H.physiology.armor.bullet -= 35
 
 /datum/nanite_program/refractive

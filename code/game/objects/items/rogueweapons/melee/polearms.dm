@@ -10,6 +10,7 @@
 	warnie = "mobwarning"
 	hitsound = list('sound/combat/hits/bladed/genstab (1).ogg', 'sound/combat/hits/bladed/genstab (2).ogg', 'sound/combat/hits/bladed/genstab (3).ogg')
 	penfactor = 50
+	item_d_type = "stab"
 
 /datum/intent/spear/bash
 	name = "bash"
@@ -18,6 +19,7 @@
 	attack_verb = list("bashes", "strikes")
 	penfactor = 10
 	damfactor = 0.8
+	item_d_type = "blunt"
 
 /datum/intent/spear/cut
 	name = "cut"
@@ -27,6 +29,7 @@
 	damfactor = 0.8
 	hitsound = list('sound/combat/hits/bladed/genslash (1).ogg', 'sound/combat/hits/bladed/genslash (2).ogg', 'sound/combat/hits/bladed/genslash (3).ogg')
 	reach = 2
+	item_d_type = "slash"
 
 /obj/item/rogueweapon/woodstaff
 	force = 10

@@ -49,7 +49,7 @@
 			return
 		else
 			user.visible_message("<span class='warning'>[user] damages [attacked_item]!</span>")
-			attacked_item.take_damage(5, BRUTE, "melee")
+			attacked_item.take_damage(5, BRUTE, "blunt")
 			return
 
 	if(isstructure(attacked_object) && !user.cmode)

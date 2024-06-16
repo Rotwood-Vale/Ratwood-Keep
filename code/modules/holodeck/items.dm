@@ -124,7 +124,7 @@
 	else
 		..()
 
-/obj/structure/holohoop/hitby(atom/movable/AM, skipcatch, hitpush, blocked, datum/thrownthing/throwingdatum)
+/obj/structure/holohoop/hitby(atom/movable/AM, skipcatch, hitpush, blocked, datum/thrownthing/throwingdatum, d_type = "blunt")
 	if (isitem(AM) && !istype(AM,/obj/projectile))
 		if(prob(50))
 			AM.forceMove(get_turf(src))

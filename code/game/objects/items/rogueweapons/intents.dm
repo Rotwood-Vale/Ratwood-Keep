@@ -37,6 +37,7 @@
 	var/keep_looping = TRUE
 	var/damfactor = 1 //multiplied by weapon's force for damage
 	var/penfactor = 0 //see armor_penetration
+	var/item_d_type = "blunt" // changes the item's attack type ("blunt" - area-pressure attack, "slash" - line-pressure attack, "stab" - point-pressure attack)
 	var/charging_slowdown = 0
 	var/warnoffset = 0
 	var/swingdelay = 0
@@ -116,6 +117,7 @@
 
 /datum/intent/proc/afterchange()
 	if(masteritem)
+		masteritem.d_type = item_d_type
 		var/list/benis = hitsound
 		if(benis)
 			masteritem.hitsound = benis
@@ -260,6 +262,7 @@
 	name = "hit"
 	icon_state = "instrike"
 	attack_verb = list("hit", "strike")
+	item_d_type = "blunt"
 	chargetime = 0
 	swingdelay = 0
 
@@ -269,6 +272,7 @@
 	attack_verb = list("stab")
 	hitsound = list('sound/combat/hits/bladed/genstab (1).ogg', 'sound/combat/hits/bladed/genstab (2).ogg', 'sound/combat/hits/bladed/genstab (3).ogg')
 	animname = "stab"
+	item_d_type = "stab"
 	blade_class = BCLASS_STAB
 	chargetime = 0
 	swingdelay = 0
@@ -279,6 +283,7 @@
 	attack_verb = list("picks","impales")
 	hitsound = list('sound/combat/hits/pick/genpick (1).ogg', 'sound/combat/hits/pick/genpick (2).ogg')
 	animname = "strike"
+	item_d_type = "stab"
 	blade_class = BCLASS_PICK
 	chargetime = 0
 	swingdelay = 3
@@ -288,6 +293,7 @@
 	icon_state = "inshoot"
 	tranged = 1
 	warnie = "aimwarn"
+	item_d_type = "stab"
 	chargetime = 0.1
 	no_early_release = FALSE
 	noaa = TRUE
@@ -303,6 +309,7 @@
 	icon_state = "inarc"
 	tranged = 1
 	warnie = "aimwarn"
+	item_d_type = "blunt"
 	chargetime = 0
 	no_early_release = FALSE
 	noaa = TRUE
@@ -311,6 +318,7 @@
 
 /datum/intent/proc/arc_check()
 	return FALSE
+
 /datum/intent/arc/arc_check()
 	return TRUE
 
@@ -338,6 +346,7 @@
 	blade_class = BCLASS_PUNCH
 	miss_text = "swings a fist at the air!"
 	miss_sound = "punchwoosh"
+	item_d_type = "blunt"
 
 /datum/intent/unarmed/punch/rmb_ranged(atom/target, mob/user)
 	if(ismob(target))
@@ -354,6 +363,7 @@
 
 /datum/intent/unarmed/claw
 	blade_class = BCLASS_CUT
+	item_d_type = "slash"
 
 /datum/intent/unarmed/shove
 	name = "shove"
@@ -363,6 +373,7 @@
 	noaa = TRUE
 	rmb_ranged = TRUE
 	misscost = 5
+	item_d_type = "blunt"
 
 /datum/intent/unarmed/shove/rmb_ranged(atom/target, mob/user)
 	if(ismob(target))
@@ -387,6 +398,7 @@
 	misscost = 5
 	candodge = TRUE
 	canparry = FALSE
+	item_d_type = "blunt"
 
 /datum/intent/unarmed/grab/rmb_ranged(atom/target, mob/user)
 	if(ismob(target))
@@ -432,6 +444,7 @@
 	swingdelay = 0
 	candodge = TRUE
 	canparry = TRUE
+	item_d_type = "blunt"
 
 /datum/intent/simple/claw
 	name = "claw"
@@ -446,6 +459,7 @@
 	candodge = TRUE
 	canparry = TRUE
 	miss_text = "slashes the air!"
+	item_d_type = "slash"
 
 /datum/intent/simple/bite
 	name = "bite"
@@ -459,7 +473,7 @@
 	swingdelay = 3
 	candodge = TRUE
 	canparry = TRUE
-
+	item_d_type = "stab"
 
 /datum/intent/unarmed/claw
 	name = "claw"
@@ -473,6 +487,7 @@
 	canparry = TRUE
 	miss_text = "claws the air!"
 	miss_sound = "bluntwooshmed"
+	item_d_type = "slash"
 
 /datum/intent/unarmed/wwolf
 	name = "claw"
@@ -486,3 +501,4 @@
 	canparry = TRUE
 	miss_text = "slashes the air!"
 	miss_sound = "bluntwooshlarge"
+	item_d_type = "slash"

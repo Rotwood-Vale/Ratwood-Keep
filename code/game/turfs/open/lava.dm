@@ -64,7 +64,7 @@
 			if(!islava(newloc) && !L.on_fire)
 				L.update_fire()
 
-/turf/open/lava/hitby(atom/movable/AM, skipcatch, hitpush, blocked, datum/thrownthing/throwingdatum)
+/turf/open/lava/hitby(atom/movable/AM, skipcatch, hitpush, blocked, datum/thrownthing/throwingdatum, d_type = "blunt")
 	if(burn_stuff(AM))
 		START_PROCESSING(SSobj, src)
 		playsound(src, 'sound/misc/lava_death.ogg', 100, FALSE)

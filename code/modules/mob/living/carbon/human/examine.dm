@@ -66,6 +66,7 @@
 				. = list("<span class='info'>ø ------------ ø\nThis is <EM>[used_name]</EM>, the [islatejoin ? "returning " : ""][race_name] [used_title].")
 		else
 			. = list("<span class='info'>ø ------------ ø\nThis is the <EM>[used_name]</EM>, the [race_name].")
+		
 		if(dna.species.use_skintones)
 			var/skin_tone_wording = dna.species.skin_tone_wording ? lowertext(dna.species.skin_tone_wording) : "skin tone"
 			var/list/skin_tones = dna.species.get_skin_list()
@@ -232,6 +233,7 @@
 	var/appears_dead = FALSE
 	if(stat == DEAD || (HAS_TRAIT(src, TRAIT_FAKEDEATH)))
 		appears_dead = TRUE
+	
 	var/temp = getBruteLoss() + getFireLoss() //no need to calculate each of these twice
 
 	if(!(user == src && src.hal_screwyhud == SCREWYHUD_HEALTHY)) //fake healthy
@@ -245,6 +247,7 @@
 				msg += "<B>[m1] severely wounded.</B>"
 			if(100 to INFINITY)
 				msg += "<span class='danger'>[m1] gravely wounded.</span>"
+		
 	// Blood volume
 	switch(blood_volume)
 		if(-INFINITY to BLOOD_VOLUME_SURVIVE)
@@ -300,6 +303,7 @@
 		if(missing_zone == BODY_ZONE_HEAD)
 			missing_head = TRUE
 		missing_limbs += parse_zone(missing_zone)
+	
 	if(length(missing_limbs))
 		var/missing_limb_message = "<B>[capitalize(m2)] [english_list(missing_limbs)] [missing_limbs.len > 1 ? "are" : "is"] gone.</B>"
 		if(missing_head)
@@ -363,6 +367,7 @@
 					msg += "[m1] looking like a drunken mess."
 				if(91.01 to INFINITY)
 					msg += "[m1] a shitfaced, slobbering wreck."
+			
 			//Stress
 			if(HAS_TRAIT(user, TRAIT_EMPATH))
 				switch(stress)
@@ -380,15 +385,6 @@
 						msg += "[m1] at peace inside."
 			else if(stress > 10)
 				msg += "[m3] stress all over [m2] face."
-
-		//Jitters
-		switch(jitteriness)
-			if(300 to INFINITY)
-				msg += "<B>[m1] convulsing violently!</B>"
-			if(200 to 300)
-				msg += "[m1] extremely jittery."
-			if(100 to 200)
-				msg += "[m1] twitching ever so slightly."
 
 		//Jitters
 		switch(jitteriness)

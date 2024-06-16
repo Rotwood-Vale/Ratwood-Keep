@@ -8,7 +8,6 @@
 #define TRAIT_SEEPRICES				"Giza Blooded"
 #define TRAIT_SEEPRICES_SHITTY			"Giza-in-training"
 #define TRAIT_STRONGBITE				"Strong Bite"
-#define RTRAIT_GOODLOVER				"Fabled Lover"
 #define TRAIT_NOBLE					"Noble Blooded"
 #define TRAIT_EMPATH					"Empath"
 #define TRAIT_BREADY					"Battleready"
@@ -54,7 +53,6 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_SEEPRICES = "I can tell the prices of things down to the zenny.",
 	TRAIT_SEEPRICES_SHITTY = "I can tell the prices of things... <i>Kind of</i>.",
 	TRAIT_STRONGBITE = "Stronger bites, critical bite attacks.",
-	TRAIT_GOODLOVER = "It's a lucky thing to share my bed.",
 	TRAIT_NOBLE = "<span class='blue'>I'm of noble blood.</span>",
 	TRAIT_EMPATH = "I can notice when people are in pain.",
 	TRAIT_BREADY = "Defensive stance does not passively fatigue me.",

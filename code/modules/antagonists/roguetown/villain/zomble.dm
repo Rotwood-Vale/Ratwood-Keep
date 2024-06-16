@@ -124,6 +124,8 @@
 			if(!was_i_undead)
 				zombie.mob_biotypes &= ~MOB_UNDEAD
 			zombie.faction -= "undead"
+			zombie.faction += "station"
+			zombie.faction += "neutral"
 			zombie.regenerate_organs()
 			if(has_turned)
 				to_chat(zombie, "<span class='green'>I no longer crave for flesh...</span>")
@@ -173,6 +175,8 @@
 		zombie.charflaw.ephemeral = TRUE
 	zombie.mob_biotypes |= MOB_UNDEAD
 	zombie.faction += "undead"
+	zombie.faction -= "station"
+	zombie.faction -= "neutral"
 	zombie.verbs |= /mob/living/carbon/human/proc/zombie_seek
 	for(var/obj/item/bodypart/zombie_part as anything in zombie.bodyparts)
 		if(!zombie_part.rotted && !zombie_part.skeletonized)
@@ -237,6 +241,7 @@
 		return
 
 	zombie.can_do_sex = FALSE
+
 	zombie.blood_volume = BLOOD_VOLUME_NORMAL
 	zombie.setOxyLoss(0, updating_health = FALSE, forced = TRUE) //zombles dont breathe
 	zombie.setToxLoss(0, updating_health = FALSE, forced = TRUE) //zombles are immune to poison

@@ -31,7 +31,7 @@
 
 	integrity_failure = 0.5
 	max_integrity = 100
-	armor = list("melee" = 0, "bullet" = 20, "laser" = 20, "energy" = 100, "bomb" = 0, "bio" = 100, "rad" = 100, "fire" = 0, "acid" = 0)
+	armor = list("blunt" = 60, "slash" = 55, "stab" = 50, "bullet" = 20, "laser" = 20, "energy" = 100, "bomb" = 0, "bio" = 100, "rad" = 100, "fire" = 0, "acid" = 0)
 
 	// Important hardware (must be installed for computer to work)
 

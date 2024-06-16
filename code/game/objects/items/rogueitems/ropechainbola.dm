@@ -122,8 +122,9 @@
 	name = "strike"
 	blade_class = BCLASS_BLUNT
 	attack_verb = list("whips", "strikes", "smacks")
-	penfactor = 40
+	penfactor = 0 //40
 	chargetime = 5
+	item_d_type = "slash"
 
 /obj/item/rope/chain
 	name = "chain"

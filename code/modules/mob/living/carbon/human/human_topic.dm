@@ -1,5 +1,6 @@
 /mob/living/carbon/human/Topic(href, href_list)
 	var/observer_privilege = isobserver(usr)
+
 	if(href_list["task"] == "view_headshot")
 		if(!ismob(usr))
 			return
@@ -11,6 +12,7 @@
 		popup.set_content(dat.Join())
 		popup.open(FALSE)
 		return
+
 	if(href_list["inspect_limb"] && (observer_privilege || usr.canUseTopic(src, BE_CLOSE, NO_DEXTERITY)))
 		var/list/msg = list()
 		var/mob/user = usr
