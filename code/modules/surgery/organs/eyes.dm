@@ -34,6 +34,10 @@
 	var/no_glasses
 	var/damaged	= FALSE	//damaged indicates that our eyes are undergoing some level of negative effect
 
+	var/eye_color = "#FFFFFF"
+	var/heterochromia = FALSE
+	var/second_color = "#FFFFFF"
+
 
 /obj/item/organ/eyes/update_overlays()
 	. = ..()
@@ -42,10 +46,6 @@
 		iris_overlay.color = "#" + eye_color
 		. += iris_overlay
 
-
-	var/eye_color = "#FFFFFF"
-	var/heterochromia = FALSE
-	var/second_color = "#FFFFFF"
 
 /obj/item/organ/eyes/update_accessory_colors()
 	var/list/colors_list = list()

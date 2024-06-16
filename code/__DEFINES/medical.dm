@@ -48,6 +48,26 @@
 #define ORGAN_SLOT_PARASITE_EGG "parasite_egg"
 #define ORGAN_SLOT_REGENERATIVE_CORE "regen_core"
 
+#define ORGAN_SLOT_FRILLS "frills"
+#define ORGAN_SLOT_HORNS "horns"
+#define ORGAN_SLOT_ANTENNAS "antennas"
+#define ORGAN_SLOT_NECK_FEATURE "neck_feature"
+#define ORGAN_SLOT_HEAD_FEATURE "head_feature"
+#define ORGAN_SLOT_BACK_FEATURE "back_feature"
+#define ORGAN_SLOT_TAIL_FEATURE "tail_feature"
+#define ORGAN_SLOT_TAUR_BODY "taur_body"
+#define ORGAN_SLOT_WINGS "wings"
+#define ORGAN_SLOT_SNOUT "snout"
+#define ORGAN_SLOT_PENIS "penis"
+#define ORGAN_SLOT_TESTICLES "testicles"
+#define ORGAN_SLOT_BREASTS "breasts"
+#define ORGAN_SLOT_VAGINA "vagina"
+
+#define BODYPART_FEATURE_HAIR "hair"
+#define BODYPART_FEATURE_FACIAL_HAIR "facehair"
+#define BODYPART_FEATURE_ACCESSORY "accessory"
+#define BODYPART_FEATURE_FACE_DETAIL "facedetail"
+
 //flags for requirements for a surgery step
 #define SURGERY_BLOODY (1<<0)
 #define SURGERY_INCISED (1<<1)
