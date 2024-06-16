@@ -40,14 +40,20 @@
 	color = null
 	icon_state = "shalal"
 	item_state = "shalal"
+	flags_inv = HIDEEARS|HIDEHAIR|HIDEFACIALHAIR
+	sleevetype = null
+	sleeved = null
 	icon = 'icons/roguetown/clothing/head.dmi'
-	body_parts_covered = NECK
+	body_parts_covered = HEAD|HAIR|EARS
 	slot_flags = ITEM_SLOT_HEAD
+	armor = list("blunt" = 15, "slash" = 20, "stab" = 15, "bullet" = 1, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
 	dynamic_hair_suffix = ""
 	edelay_type = 1
 	adjustable = CAN_CADJUST
 	toggle_icon_state = TRUE
+	blocksound = SOFTHIT
 	max_integrity = 100
+	sewrepair = TRUE
 
 /obj/item/clothing/head/roguetown/roguehood/astrata
 	name = "sun hood"
@@ -687,7 +693,7 @@
 	var/mob/living/carbon/wise = user
 	if(slot == SLOT_HEAD)
 		wise.change_stat("intelligence", 2, "wisehat")
-		to_chat(wise, "<span class='green'>I gain wisdom.</span>")
+		to_chat(wise, span_green("I gain wisdom."))
 
 /obj/item/clothing/head/roguetown/wizhat/gen/wise/dropped(mob/user)
 	. = ..()
@@ -696,7 +702,7 @@
 	var/mob/living/carbon/human/wise = user
 	if(wise.get_item_by_slot(SLOT_HEAD) == src)
 		wise.change_stat("intelligence", -2, "wisehat")
-		to_chat(wise, "<span class='red'>I lose wisdom.</span>")
+		to_chat(wise, span_red("I lose wisdom."))
 
 /obj/item/clothing/head/roguetown/physician
 	name = "doctor's hat"

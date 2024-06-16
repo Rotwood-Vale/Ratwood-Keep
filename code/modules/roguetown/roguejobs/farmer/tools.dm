@@ -88,8 +88,8 @@
 			if(found)
 				playsound(loc,"plantcross", 100, FALSE)
 				playsound(loc,"smashlimb", 50, FALSE)
-				user.visible_message("<span class='notice'>[user] threshes the stalks!</span>", \
-									"<span class='notice'>I thresh the stalks.</span>")
+				user.visible_message(span_notice("[user] threshes the stalks!"), \
+									span_notice("I thresh the stalks."))
 			return
 	..()
 
@@ -252,14 +252,14 @@
 	if(istype(target, /turf/open/floor/rogue/dirt))
 		var/obj/machinery/crop/R = locate() in target
 		if(R)
-			to_chat(user,"<span class='warning'>There's already a mound here.</span>")
+			to_chat(user,span_warning("There's already a mound here."))
 			return
 		if(prob(10)) //ROGTODO make this farming skill based maybe a stat too
-			user.visible_message("<span class='notice'>[user] tills the soil!</span>", \
-								"<span class='notice'>I till the soil.</span>")
+			user.visible_message(span_notice("[user] tills the soil!"), \
+								span_notice("I till the soil."))
 			new /obj/machinery/crop(target)
 		else
-			to_chat(user,"<span class='warning'>I till the soil.</span>")
+			to_chat(user,span_warning("I till the soil."))
 		return
 	..()
 */
@@ -352,7 +352,7 @@
 			for(var/obj/item/I in forked)
 				I.forceMove(target)
 				forked -= I
-			to_chat(user, "<span class='warning'>I dump the stalks.</span>")
+			to_chat(user, span_warning("I dump the stalks."))
 		update_icon()
 		return
 	..()

@@ -318,29 +318,29 @@
 	else if(failure(user, target, target_zone, tool, intent, success_prob))
 		if(user.client?.prefs.showrolls)
 			if(try_to_fail)
-				to_chat(user, "<span class='warning'>Intentional surgery fail... [success_prob]%</span>")
+				to_chat(user, span_warning("Intentional surgery fail... [success_prob]%"))
 			else
-				to_chat(user, "<span class='warning'>Surgery fail... [success_prob]%</span>")
+				to_chat(user, span_warning("Surgery fail... [success_prob]%"))
 		return FALSE
 		
 	return FALSE
 
 /datum/surgery_step/proc/preop(mob/user, mob/living/target, target_zone, obj/item/tool, datum/intent/intent)
-	display_results(user, target, "<span class='notice'>I begin to perform surgery on [target]...</span>",
-		"<span class='notice'>[user] begins to perform surgery on [target].</span>",
-		"<span class='notice'>[user] begins to perform surgery on [target].</span>")
+	display_results(user, target, span_notice("I begin to perform surgery on [target]..."),
+		span_notice("[user] begins to perform surgery on [target]."),
+		span_notice("[user] begins to perform surgery on [target]."))
 	return TRUE
 
 /datum/surgery_step/proc/success(mob/user, mob/living/target, target_zone, obj/item/tool, datum/intent/intent)
-	display_results(user, target, "<span class='notice'>I succeed.</span>",
-		"<span class='notice'>[user] succeeds!</span>",
-		"<span class='notice'>[user] finishes.</span>")
+	display_results(user, target, span_notice("I succeed."),
+		span_notice("[user] succeeds!"),
+		span_notice("[user] finishes."))
 	return TRUE
 
 /datum/surgery_step/proc/failure(mob/user, mob/living/target, target_zone, obj/item/tool, datum/intent/intent, success_prob)
-	display_results(user, target, "<span class='warning'>I screw up!</span>",
-		"<span class='warning'>[user] screws up!</span>",
-		"<span class='notice'>[user] finishes.</span>", TRUE) //By default the patient will notice if the wrong thing has been cut
+	display_results(user, target, span_warning("I screw up!"),
+		span_warning("[user] screws up!"),
+		span_notice("[user] finishes."), TRUE) //By default the patient will notice if the wrong thing has been cut
 	return TRUE
 
 /// Replaces visible_message during operations so only people looking over the surgeon can tell what they're doing, allowing for shenanigans.

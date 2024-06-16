@@ -127,7 +127,7 @@ GLOBAL_LIST_INIT(primordial_wounds, init_primordial_wounds())
 	else
 		final_message = replacetext(final_message, "%BODYPART", parse_zone(BODY_ZONE_CHEST))
 	if(critical)
-		final_message = "<span class='crit'><b>Critical hit!</b> [final_message]</span>"
+		final_message = span_crit("<b>Critical hit!</b> [final_message]")
 	return final_message
 
 /// Sound that plays when this wound is applied to a mob

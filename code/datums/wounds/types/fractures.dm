@@ -1,6 +1,6 @@
 /datum/wound/fracture
 	name = "fracture"
-	check_name = "<span class='bone'><B>FRACTURE</B></span>"
+	check_name = span_bone("<B>FRACTURE</B>")
 	severity = WOUND_SEVERITY_SEVERE
 	crit_message = list(
 		"The bone shatters!", 
@@ -50,7 +50,7 @@
 
 /datum/wound/fracture/head
 	name = "cranial fracture"
-	check_name = "<span class='bone'><B>SKULLCRACK</B></span>"
+	check_name = span_bone("<B>SKULLCRACK</B>")
 	crit_message = list(
 		"The skull shatters in a gruesome way!", 
 		"The head is smashed!", 
@@ -71,7 +71,7 @@
 	. = ..()
 	if(dents_brain && prob(1))
 		name = "dentbrain"
-		check_name = "<span class='bone'><B>DENTBRAIN</B></span>"
+		check_name = span_bone("<B>DENTBRAIN</B>")
 
 /datum/wound/fracture/head/on_mob_gain(mob/living/affected)
 	. = ..()
@@ -150,7 +150,7 @@
 
 /datum/wound/fracture/mouth
 	name = "mandibular fracture"
-	check_name = "<span class='bone'>JAW FRACTURE</span>"
+	check_name = span_bone("JAW FRACTURE")
 	crit_message = list(
 		"The mandible comes apart beautifully!", 
 		"The jaw is smashed!", 
@@ -172,7 +172,7 @@
 
 /datum/wound/fracture/neck
 	name = "cervical fracture"
-	check_name = "<span class='bone'><B>NECK</B></span>"
+	check_name = span_bone("<B>NECK</B>")
 	crit_message = list(
 		"The spine shatters in a spectacular way!", 
 		"The spine snaps!",
@@ -200,7 +200,7 @@
 
 /datum/wound/fracture/chest
 	name = "rib fracture"
-	check_name = "<span class='bone'><B>RIBS</B></span>"
+	check_name = span_bone("<B>RIBS</B>")
 	crit_message = list(
 		"The ribs shatter in a splendid way!",
 		"The ribs are smashed!",
@@ -223,7 +223,7 @@
 
 /datum/wound/fracture/groin
 	name = "pelvic fracture"
-	check_name = "<span class='bone'><B>PELVIS</B></span>"
+	check_name = span_bone("<B>PELVIS</B>")
 	crit_message = list(
 		"The pelvis shatters in a magnificent way!", 
 		"The pelvis is smashed!", 
@@ -237,7 +237,7 @@
 	. = ..()
 	if(prob(1))
 		name = "broken buck"
-		check_name = "<span class='bone'>BUCKBROKEN</span>"
+		check_name = span_bone("BUCKBROKEN")
 		crit_message = "The buck is broken expertly!"
 	
 /datum/wound/fracture/groin/on_mob_gain(mob/living/affected)

@@ -9,8 +9,7 @@
 		"Dwarf",
 	)
 	outfit = /datum/outfit/job/roguetown/adventurer/minstrel
-	isvillager = TRUE
-	ispilgrim = FALSE
+	category_tags = list(CTAG_TOWNER)
 
 /datum/outfit/job/roguetown/adventurer/minstrel/pre_equip(mob/living/carbon/human/H)
 	..()

@@ -11,7 +11,7 @@
 	resistance_flags = FIRE_PROOF | ACID_PROOF | INDESTRUCTIBLE
 
 /obj/item/paicard/suicide_act(mob/living/user)
-	user.visible_message("<span class='suicide'>[user] is staring sadly at [src]! [user.p_they()] can't keep living without real human intimacy!</span>")
+	user.visible_message(span_suicide("[user] is staring sadly at [src]! [user.p_they()] can't keep living without real human intimacy!"))
 	return OXYLOSS
 
 /obj/item/paicard/Initialize()
@@ -77,21 +77,21 @@
 			if(pai.master_dna)
 				return
 			if(!iscarbon(usr))
-				to_chat(usr, "<span class='warning'>I don't have any DNA, or my DNA is incompatible with this device!</span>")
+				to_chat(usr, span_warning("I don't have any DNA, or my DNA is incompatible with this device!"))
 			else
 				var/mob/living/carbon/M = usr
 				pai.master = M.real_name
 				pai.master_dna = M.dna.unique_enzymes
-				to_chat(pai, "<span class='notice'>I have been bound to a new master.</span>")
+				to_chat(pai, span_notice("I have been bound to a new master."))
 				pai.emittersemicd = FALSE
 		if(href_list["wipe"])
 			var/confirm = input("Are you CERTAIN you wish to delete the current personality? This action cannot be undone.", "Personality Wipe") in list("Yes", "No")
 			if(confirm == "Yes")
 				if(pai)
-					to_chat(pai, "<span class='warning'>I feel myself slipping away from reality.</span>")
-					to_chat(pai, "<span class='danger'>Byte by byte you lose my sense of self.</span>")
-					to_chat(pai, "<span class='danger'>My mental faculties leave you.</span>")
-					to_chat(pai, "<span class='rose'>oblivion... </span>")
+					to_chat(pai, span_warning("I feel myself slipping away from reality."))
+					to_chat(pai, span_danger("Byte by byte you lose my sense of self."))
+					to_chat(pai, span_danger("My mental faculties leave you."))
+					to_chat(pai, span_rose("oblivion... "))
 					qdel(pai)
 		if(href_list["fix_speech"])
 			pai.stuttering = 0
@@ -106,21 +106,21 @@
 				pai.can_receive = !pai.can_receive
 			pai.radio.wires.cut(transmit_holder)//wires.cut toggles cut and uncut states
 			transmit_holder = (transmitting ? pai.can_transmit : pai.can_receive) //recycling can be fun!
-			to_chat(usr,"<span class='warning'>I [transmit_holder ? "enable" : "disable"] my pAI's [transmitting ? "outgoing" : "incoming"] radio transmissions!</span>")
-			to_chat(pai,"<span class='warning'>My owner has [transmit_holder ? "enabled" : "disabled"] my [transmitting ? "outgoing" : "incoming"] radio transmissions!</span>")
+			to_chat(usr,span_warning("I [transmit_holder ? "enable" : "disable"] my pAI's [transmitting ? "outgoing" : "incoming"] radio transmissions!"))
+			to_chat(pai,span_warning("My owner has [transmit_holder ? "enabled" : "disabled"] my [transmitting ? "outgoing" : "incoming"] radio transmissions!"))
 		if(href_list["setlaws"])
 			var/newlaws = copytext(sanitize(input("Enter any additional directives you would like my pAI personality to follow. Note that these directives will not override the personality's allegiance to its imprinted master. Conflicting directives will be ignored.", "pAI Directive Configuration", pai.laws.supplied[1]) as message|null),1,MAX_MESSAGE_LEN)
 			if(newlaws && pai)
 				pai.add_supplied_law(0,newlaws)
 		if(href_list["toggle_holo"])
 			if(pai.canholo)
-				to_chat(pai, "<span class='danger'>My owner has disabled my holomatrix projectors!</span>")
+				to_chat(pai, span_danger("My owner has disabled my holomatrix projectors!"))
 				pai.canholo = FALSE
-				to_chat(usr, "<span class='warning'>I disable my pAI's holomatrix!</span>")
+				to_chat(usr, span_warning("I disable my pAI's holomatrix!"))
 			else
-				to_chat(pai, "<span class='boldnotice'>My owner has enabled my holomatrix projectors!</span>")
+				to_chat(pai, span_boldnotice("My owner has enabled my holomatrix projectors!"))
 				pai.canholo = TRUE
-				to_chat(usr, "<span class='notice'>I enable my pAI's holomatrix!</span>")
+				to_chat(usr, span_notice("I enable my pAI's holomatrix!"))
 
 	attack_self(usr)
 
@@ -163,7 +163,7 @@
 				src.add_overlay("pai-sunglasses")
 
 /obj/item/paicard/proc/alertUpdate()
-	audible_message("<span class='info'>[src] flashes a message across its screen, \"Additional personalities available for download.\"</span>", "<span class='notice'>[src] vibrates with an alert.</span>")
+	audible_message(span_info("[src] flashes a message across its screen, \"Additional personalities available for download.\""), span_notice("[src] vibrates with an alert."))
 
 /obj/item/paicard/emp_act(severity)
 	. = ..()

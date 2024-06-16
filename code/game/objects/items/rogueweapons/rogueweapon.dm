@@ -40,7 +40,7 @@
 	. = ..()
 	if(!destroy_message)
 		var/yea = pick("[src] is broken!", "[src] is useless!", "[src] is destroyed!")
-		destroy_message = "<span class='warning'>[yea]</span>"
+		destroy_message = span_warning("[yea]")
 
 /obj/item/rogueweapon/get_dismemberment_chance(obj/item/bodypart/affecting, mob/user)
 	if(!get_sharpness() || !affecting.can_dismember(src))

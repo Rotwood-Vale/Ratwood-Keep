@@ -70,12 +70,12 @@
 
 			if(S.ignore_clothes || get_location_accessible(M, selected_zone))
 				var/datum/surgery/procedure = new S.type(M, selected_zone, affecting)
-				user.visible_message("<span class='notice'>[user] drapes [I] over [M]'s [parse_zone(selected_zone)] to prepare for surgery.</span>", \
-					"<span class='notice'>I drape [I] over [M]'s [parse_zone(selected_zone)] to prepare for \an [procedure.name].</span>")
+				user.visible_message(span_notice("[user] drapes [I] over [M]'s [parse_zone(selected_zone)] to prepare for surgery."), \
+					span_notice("I drape [I] over [M]'s [parse_zone(selected_zone)] to prepare for \an [procedure.name]."))
 
 				log_combat(user, M, "operated on", null, "(OPERATION TYPE: [procedure.name]) (TARGET AREA: [selected_zone])")
 			else
-				to_chat(user, "<span class='warning'>I need to expose [M]'s [parse_zone(selected_zone)] first!</span>")
+				to_chat(user, span_warning("I need to expose [M]'s [parse_zone(selected_zone)] first!"))
 
 	else if(!current_surgery.step_in_progress)
 		attempt_cancel_surgery(current_surgery, I, M, user)
@@ -86,8 +86,8 @@
 	var/selected_zone = user.zone_selected
 	if(S.status == 1)
 		M.surgeries -= S
-		user.visible_message("<span class='notice'>[user] removes [I] from [M]'s [parse_zone(selected_zone)].</span>", \
-			"<span class='notice'>I remove [I] from [M]'s [parse_zone(selected_zone)].</span>")
+		user.visible_message(span_notice("[user] removes [I] from [M]'s [parse_zone(selected_zone)]."), \
+			span_notice("I remove [I] from [M]'s [parse_zone(selected_zone)]."))
 		qdel(S)
 	else if(S.can_cancel)
 		var/required_tool_type = TOOL_CAUTERY
@@ -100,11 +100,11 @@
 				var/mob/living/carbon/human/H = M
 				H.bleed_rate = max( (H.bleed_rate - 3), 0)
 			M.surgeries -= S
-			user.visible_message("<span class='notice'>[user] closes [M]'s [parse_zone(selected_zone)] with [close_tool] and removes [I].</span>", \
-				"<span class='notice'>I close [M]'s [parse_zone(selected_zone)] with [close_tool] and remove [I].</span>")
+			user.visible_message(span_notice("[user] closes [M]'s [parse_zone(selected_zone)] with [close_tool] and removes [I]."), \
+				span_notice("I close [M]'s [parse_zone(selected_zone)] with [close_tool] and remove [I]."))
 			qdel(S)
 		else
-			to_chat(user, "<span class='warning'>I need to hold a [is_robotic ? "screwdriver" : "cautery"] in your inactive hand to stop [M]'s surgery!</span>")
+			to_chat(user, span_warning("I need to hold a [is_robotic ? "screwdriver" : "cautery"] in your inactive hand to stop [M]'s surgery!"))
 */
 
 /proc/get_location_accessible(mob/victim, location = BODY_ZONE_CHEST, grabs = FALSE, skipundies = TRUE)

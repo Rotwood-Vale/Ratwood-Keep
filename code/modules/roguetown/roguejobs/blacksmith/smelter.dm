@@ -35,7 +35,7 @@
 				//i feel like leveling up takes forever regardless, this would just make it faster
 				if(amt2raise > 0)
 					user.mind.adjust_experience(/datum/skill/craft/smelting, amt2raise * boon, FALSE)
-			user.visible_message("<span class='info'>[user] retrieves [I] from [src].</span>")
+			user.visible_message(span_info("[user] retrieves [I] from [src]."))
 			if(on)
 				var/tyme = world.time
 				T.hott = tyme
@@ -56,26 +56,26 @@
 				var/datum/mind/smelter_mind = user.mind
 				var/smelter_exp = smelter_mind.get_skill_level(/datum/skill/craft/smelting)
 				ore[W] = floor(rand(smelter_exp*15, max(63, smelter_exp*25))/25) // (0-25 spoil, 25-50 poor, 50-75, normal, 75-onwards good) no skill = 0, 63, novice = 15, 63, apprentice = 30, 63, skilled = 45, 75, expert = 60, 100, master = 75, 125, legendary = 100, 150, (may want to add a tier above good)
-			user.visible_message("<span class='warning'>[user] puts something in the smelter.</span>")
+			user.visible_message(span_warning("[user] puts something in the smelter."))
 			cooking = 0
 			return
 		else
-			to_chat(user, "<span class='warning'>[W.name] can be smelted, but [src] is full.</span>")
+			to_chat(user, span_warning("[W.name] can be smelted, but [src] is full."))
 	else
-		to_chat(user, "<span class='warning'>[W.name] cannot be smelted.</span>")
+		to_chat(user, span_warning("[W.name] cannot be smelted."))
 	return ..()
 
 
 /obj/machinery/light/rogue/smelter/attack_hand(mob/user, params)
 	if(on)
-		to_chat(user, "<span class='warning'>It's too hot.</span>")
+		to_chat(user, span_warning("It's too hot."))
 		return
 	if(ore.len)
 		var/obj/item/I = ore[ore.len]
 		ore -= I
 		I.loc = user.loc
 		user.put_in_active_hand(I)
-		user.visible_message("<span class='info'>[user] retrieves [I] from [src].</span>")
+		user.visible_message(span_info("[user] retrieves [I] from [src]."))
 	else
 		return ..()
 
@@ -155,5 +155,5 @@
 								ore += R
 								qdel(I)
 					playsound(src,'sound/misc/smelter_fin.ogg', 100, FALSE)
-					visible_message("<span class='notice'>[src] is finished.</span>")
+					visible_message(span_notice("[src] is finished."))
 					cooking = 31

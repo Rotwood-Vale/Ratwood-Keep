@@ -1,6 +1,6 @@
 /datum/wound/dismemberment
 	name = "bleeding stump"
-	check_name = "<span class='danger'><B>STUMP</B></span>"
+	check_name = span_danger("<B>STUMP</B>")
 	severity = WOUND_SEVERITY_CRITICAL
 	whp = 75
 	sewn_whp = 25
@@ -24,25 +24,25 @@
 
 /datum/wound/dismemberment/head
 	name = "neck stump"
-	check_name = "<span class='danger'><B>NECK STUMP</B></span>"
+	check_name = span_danger("<B>NECK STUMP</B>")
 	mob_overlay = "dis_head"
 
 /datum/wound/dismemberment/r_arm
 	name = "right arm stump"
-	check_name = "<span class='danger'><B>RIGHT ARM STUMP</B></span>"
+	check_name = span_danger("<B>RIGHT ARM STUMP</B>")
 	mob_overlay = "dis_ra"
 
 /datum/wound/dismemberment/l_arm
 	name = "left arm stump"
-	check_name = "<span class='danger'><B>LEFT ARM STUMP</B></span>"
+	check_name = span_danger("<B>LEFT ARM STUMP</B>")
 	mob_overlay = "dis_la"
 
 /datum/wound/dismemberment/r_leg
 	name = "right leg stump"
-	check_name = "<span class='danger'><B>RIGHT LEG STUMP</B></span>"
+	check_name = span_danger("<B>RIGHT LEG STUMP</B>")
 	mob_overlay = "dis_rl"
 
 /datum/wound/dismemberment/l_leg
 	name = "left leg stump"
-	check_name = "<span class='danger'><B>LEFT LEG STUMP</B></span>"
+	check_name = span_danger("<B>LEFT LEG STUMP</B>")
 	mob_overlay = "dis_ll"

@@ -112,7 +112,7 @@
 /obj/item/rogueweapon/surgery/cautery/examine(mob/user)
 	. = ..()
 	if(heated)
-		. += "<span class='warning'>The tip is hot to the touch.</span>"
+		. += span_warning("The tip is hot to the touch.")
 
 /obj/item/rogueweapon/surgery/cautery/update_icon_state()
 	. = ..()
@@ -129,7 +129,7 @@
 		if(forge.on)
 			heating = 20
 	if(heating)
-		user.visible_message("<span class='info'>[user] heats [src].</span>")
+		user.visible_message(span_info("[user] heats [src]."))
 		fire_act(heating)
 		return TRUE
 	return ..()

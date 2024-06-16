@@ -33,16 +33,16 @@
 
 /datum/antagonist/werewolf/examine_friendorfoe(datum/antagonist/examined_datum,mob/examiner,mob/examined)
 	if(istype(examined_datum, /datum/antagonist/werewolf/lesser))
-		return "<span class='boldnotice'>A young lupine kin.</span>"
+		return span_boldnotice("A young lupine kin.")
 	if(istype(examined_datum, /datum/antagonist/werewolf))
-		return "<span class='boldnotice'>An elder lupine kin.</span>"
+		return span_boldnotice("An elder lupine kin.")
 	if(examiner.Adjacent(examined))
 		if(istype(examined_datum, /datum/antagonist/vampirelord/lesser))
 			if(transformed)
-				return "<span class='boldwarning'>A lesser Vampire.</span>"
+				return span_boldwarning("A lesser Vampire.")
 		if(istype(examined_datum, /datum/antagonist/vampirelord))
 			if(transformed)
-				return "<span class='boldwarning'>An Ancient Vampire. I must be careful!</span>"
+				return span_boldwarning("An Ancient Vampire. I must be careful!")
 
 /datum/antagonist/werewolf/on_gain()
 	owner.special_role = name
@@ -54,7 +54,7 @@
 
 /datum/antagonist/werewolf/on_removal()
 	if(!silent && owner.current)
-		to_chat(owner.current,"<span class='danger'>I am no longer a [special_role]!</span>")
+		to_chat(owner.current,span_danger("I am no longer a [special_role]!"))
 	owner.special_role = null
 	return ..()
 
@@ -72,7 +72,7 @@
 		return
 
 /datum/antagonist/werewolf/greet()
-	to_chat(owner.current, "<span class='userdanger'>Ever since that bite, I have been a [name].</span>")
+	to_chat(owner.current, span_userdanger("Ever since that bite, I have been a [name]."))
 	owner.announce_objectives()
 	return ..()
 
@@ -103,7 +103,7 @@
 		return
 	if(stat >= DEAD) //do shit the natural way i guess
 		return
-	to_chat(src, "<span class='danger'>I feel horrible... REALLY horrible...</span>")
+	to_chat(src, span_danger("I feel horrible... REALLY horrible..."))
 	mob_timers["puke"] = world.time
 	vomit(1, blood = TRUE, stun = FALSE)
 	return wolfy
@@ -113,16 +113,16 @@
 		return
 	if(target.mind)
 		if(target.mind.has_antag_datum(/datum/antagonist/zombie))
-			to_chat(src, "<span class='warning'>I should not feed on rotten flesh.</span>")
+			to_chat(src, span_warning("I should not feed on rotten flesh."))
 			return
 		if(target.mind.has_antag_datum(/datum/antagonist/vampirelord))
-			to_chat(src, "<span class='warning'>I should not feed on corrupted flesh.</span>")
+			to_chat(src, span_warning("I should not feed on corrupted flesh."))
 			return
 		if(target.mind.has_antag_datum(/datum/antagonist/werewolf))
-			to_chat(src, "<span class='warning'>I should not feed on my kin's flesh.</span>")
+			to_chat(src, span_warning("I should not feed on my kin's flesh."))
 			return
 
-	to_chat(src, "<span class='warning'>I feed on succulent flesh. I feel reinvigorated.</span>")
+	to_chat(src, span_warning("I feed on succulent flesh. I feel reinvigorated."))
 	return src.reagents.add_reagent(/datum/reagent/medicine/healthpot, 3)
 
 /obj/item/clothing/suit/roguetown/armor/skin_armor/werewolf_skin

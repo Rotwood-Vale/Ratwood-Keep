@@ -70,7 +70,7 @@
 	if(..())
 		return
 	if(!allowed(usr))
-		to_chat(usr, "<span class='warning'>Access denied.</span>")
+		to_chat(usr, span_warning("Access denied."))
 		return
 	switch(action)
 		if("scan_teleporter")
@@ -89,16 +89,16 @@
 			if(!new_goal)
 				new_goal = default_goal
 			if (new_goal > 1000)
-				to_chat(usr, "<span class='alert'>The entered amount of points is too large. Points have instead been set to the maximum allowed amount.</span>")
+				to_chat(usr, span_alert("The entered amount of points is too large. Points have instead been set to the maximum allowed amount."))
 			contained_id.goal = CLAMP(new_goal, 0, 1000) //maximum 1000 points
 		if("toggle_open")
 			if(teleporter.locked)
-				to_chat(usr, "<span class='alert'>The teleporter must be unlocked first.</span>")
+				to_chat(usr, span_alert("The teleporter must be unlocked first."))
 				return
 			teleporter.toggle_open()
 		if("teleporter_lock")
 			if(teleporter.state_open)
-				to_chat(usr, "<span class='alert'>The teleporter must be closed first.</span>")
+				to_chat(usr, span_alert("The teleporter must be closed first."))
 				return
 			teleporter.locked = !teleporter.locked
 		if("teleport")
@@ -135,7 +135,7 @@
 	playsound(src, 'sound/blank.ogg', 50, TRUE)
 	prisoner.forceMove(get_turf(beacon))
 	prisoner.Paralyze(40) // small travel dizziness
-	to_chat(prisoner, "<span class='warning'>The teleportation makes you a little dizzy.</span>")
+	to_chat(prisoner, span_warning("The teleportation makes you a little dizzy."))
 	new /obj/effect/particle_effect/sparks(get_turf(prisoner))
 	playsound(src, "sparks", 50, TRUE)
 	if(teleporter.locked)

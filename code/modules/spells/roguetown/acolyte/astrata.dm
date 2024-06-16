@@ -37,7 +37,7 @@
 			user.visible_message("<font color='yellow'>[user] points at [O], igniting it with sacred flames!</font>")
 			return TRUE
 		else
-			to_chat(user, "<span class='warning'>You point at [O], but it fails to catch fire.</span>")
+			to_chat(user, span_warning("You point at [O], but it fails to catch fire."))
 			return FALSE
 	return FALSE
 
@@ -70,18 +70,18 @@
 		if(target == user)
 			return FALSE
 		if(target.stat < DEAD)
-			to_chat(user, "<span class='warning'>Nothing happens.</span>")
+			to_chat(user, span_warning("Nothing happens."))
 			return FALSE
 		if(GLOB.tod == "night")
-			to_chat(user, "<span class='warning'>Let there be light.</span>")
+			to_chat(user, span_warning("Let there be light."))
 		for(var/obj/structure/fluff/psycross/S in oview(5, user))
 			S.AOE_flash(user, range = 8)
 		if(target.mob_biotypes & MOB_UNDEAD) //positive energy harms the undead
-			target.visible_message("<span class='danger'>[target] is unmade by holy light!</span>", "<span class='userdanger'>I'm unmade by holy light!</span>")
+			target.visible_message(span_danger("[target] is unmade by holy light!"), span_userdanger("I'm unmade by holy light!"))
 			target.gib()
 			return TRUE
 		if(!target.revive(full_heal = FALSE))
-			to_chat(user, "<span class='warning'>Nothing happens.</span>")
+			to_chat(user, span_warning("Nothing happens."))
 			return FALSE
 		testing("revived2")
 		var/mob/living/carbon/spirit/underworld_spirit = target.get_spirit()
@@ -94,7 +94,7 @@
 		target.emote("breathgasp")
 		target.Jitter(100)
 		target.update_body()
-		target.visible_message("<span class='notice'>[target] is revived by holy light!</span>", "<span class='green'>I awake from the void.</span>")
+		target.visible_message(span_notice("[target] is revived by holy light!"), span_green("I awake from the void."))
 		if(target.mind)
 			if(revive_pq && !HAS_TRAIT(target, TRAIT_IWASREVIVED) && user?.ckey)
 				adjust_playerquality(revive_pq, user.ckey)
@@ -110,6 +110,6 @@
 	for(var/obj/structure/fluff/psycross/S in oview(5, user))
 		found = S
 	if(!found)
-		to_chat(user, "<span class='warning'>I need a holy cross.</span>")
+		to_chat(user, span_warning("I need a holy cross."))
 		return FALSE
 	return TRUE

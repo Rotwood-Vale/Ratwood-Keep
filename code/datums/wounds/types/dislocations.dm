@@ -1,6 +1,6 @@
 /datum/wound/dislocation
 	name = "dislocation"
-	check_name = "<span class='bone'>DISLOCATION</span>"
+	check_name = span_bone("DISLOCATION")
 	severity = WOUND_SEVERITY_MODERATE
 	crit_message = list(
 		"The %BODYPART jolts painfully!",
@@ -65,7 +65,7 @@
 
 /datum/wound/dislocation/neck
 	name = "cervical dislocation"
-	check_name = "<span class='bone'>NECK</span>"
+	check_name = span_bone("NECK")
 	crit_message = list(
 		"The spine slips!",
 		"The spine twists!",

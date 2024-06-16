@@ -29,7 +29,7 @@
 			update_icon()
 			return
 		else
-			to_chat(user, "<span class='warning'>Wrong key.</span>")
+			to_chat(user, span_warning("Wrong key."))
 			return
 	if(istype(P, /obj/item/keyring))
 		var/obj/item/keyring/K = P
@@ -39,7 +39,7 @@
 				playsound(loc, 'sound/misc/beep.ogg', 100, FALSE, -1)
 				update_icon()
 				return
-		to_chat(user, "<span class='warning'>Wrong key.</span>")
+		to_chat(user, span_warning("Wrong key."))
 		return
 	return ..()
 
@@ -217,7 +217,7 @@
 	if(.)
 		return
 	if(locked)
-		to_chat(user, "<span class='warning'>It's locked. Of course.</span>")
+		to_chat(user, span_warning("It's locked. Of course."))
 		return
 	user.changeNext_move(CLICK_CD_MELEE)
 	playsound(loc, 'sound/misc/keyboard_enter.ogg', 100, FALSE, -1)

@@ -14,8 +14,7 @@
 		"Half Orc"
 	)
 	outfit = /datum/outfit/job/roguetown/adventurer/drunkard
-	isvillager = TRUE
-	ispilgrim = FALSE
+	category_tags = list(CTAG_PILGRIM)
 
 /datum/outfit/job/roguetown/adventurer/drunkard
 	allowed_patrons = list(/datum/patron/divine/eora, /datum/patron/divine/xylix)

@@ -84,7 +84,7 @@
 
 /datum/anvil_recipe/weapons/hknife
 	name = "Hunting knife"
-	req_bar = /obj/item/ingot/steel
+	req_bar = /obj/item/ingot/iron
 	created_item = /obj/item/rogueweapon/huntingknife
 	i_type = "Weapons"
 

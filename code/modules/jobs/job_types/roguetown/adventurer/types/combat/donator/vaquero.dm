@@ -7,6 +7,7 @@
 	outfit = /datum/outfit/job/roguetown/adventurer/vaquero
 	horse = /mob/living/simple_animal/hostile/retaliate/rogue/saigabuck/tame/saddled
 	cmode_music = 'sound/music/combat_vaquero.ogg'
+	category_tags = list(CTAG_ADVENTURER)
 
 /datum/advclass/vaquero/equipme(mob/living/carbon/human/H)
 	if(H.gender == FEMALE)

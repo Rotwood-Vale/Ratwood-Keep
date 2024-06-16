@@ -44,7 +44,7 @@
 	if(sated != oldsated)
 		unsate_time = world.time
 		if(needsate_text)
-			to_chat(user, "<span class='warning'>[needsate_text]</span>")
+			to_chat(user, span_warning("[needsate_text]"))
 	if(!sated)
 /*		switch(world.time - unsate_time)
 			if(0 to 5 MINUTES)

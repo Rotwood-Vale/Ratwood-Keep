@@ -147,10 +147,10 @@ GLOBAL_LIST_INIT(roleplay_readme, world.file2list("strings/rt/rp_prompt.txt"))
 	if(href_list["sethand"])
 		if(brohand == href_list["sethand"])
 			brohand = null
-			to_chat(src, "<span class='boldwarning'>Your Hand is REJECTED, sire.</span>")
+			to_chat(src, span_boldwarning("Your Hand is REJECTED, sire."))
 			return 1
 		brohand = href_list["sethand"]
-		to_chat(src, "<span class='boldnotice'>Your Hand is selected, sire.</span>")
+		to_chat(src, span_boldnotice("Your Hand is selected, sire."))
 		return 1
 
 	if(href_list["ready"])
@@ -182,7 +182,7 @@ GLOBAL_LIST_INIT(roleplay_readme, world.file2list("strings/rt/rp_prompt.txt"))
 
 	if(href_list["late_join"])
 		if(!SSticker?.IsRoundInProgress())
-			to_chat(usr, "<span class='boldwarning'>The game is starting. You cannot join yet.</span>")
+			to_chat(usr, span_boldwarning("The game is starting. You cannot join yet."))
 			return
 
 		if(href_list["late_join"] == "override")
@@ -190,7 +190,7 @@ GLOBAL_LIST_INIT(roleplay_readme, world.file2list("strings/rt/rp_prompt.txt"))
 			return
 /*#ifdef MATURESERVER
 		if(key && (world.time < GLOB.respawntimes[key] + RESPAWNTIME))
-			to_chat(usr, "<span class='warning'>I can return in [GLOB.respawntimes[key] + RESPAWNTIME - world.time].</span>")
+			to_chat(usr, span_warning("I can return in [GLOB.respawntimes[key] + RESPAWNTIME - world.time]."))
 			return
 #else*/
 
@@ -210,7 +210,7 @@ GLOBAL_LIST_INIT(roleplay_readme, world.file2list("strings/rt/rp_prompt.txt"))
 			if(world.time < SSticker.round_start_time + timetojoin)
 				var/ttime = round((SSticker.round_start_time + timetojoin - world.time) / 10)
 				var/list/choicez = list("Not yet.", "You cannot join yet.", "It won't work yet.", "Please be patient.", "Try again later.", "Late-joining is not yet possible.")
-				to_chat(usr, "<span class='warning'>[pick(choicez)] ([ttime]).</span>")
+				to_chat(usr, span_warning("[pick(choicez)] ([ttime])."))
 				return
 
 		var/plevel = 0
@@ -220,16 +220,16 @@ GLOBAL_LIST_INIT(roleplay_readme, world.file2list("strings/rt/rp_prompt.txt"))
 				plevel = user.client.patreonlevel()
 		if(!IsPatreon(ckey))
 			if(SSticker.queued_players.len || (relevant_cap && living_player_count() >= relevant_cap && !(ckey(key) in GLOB.admin_datums) && plevel < 1))
-				to_chat(usr, "<span class='danger'>[CONFIG_GET(string/hard_popcap_message)]</span>")
+				to_chat(usr, span_danger("[CONFIG_GET(string/hard_popcap_message)]"))
 
 				var/queue_position = SSticker.queued_players.Find(usr)
 				if(queue_position == 1)
-					to_chat(usr, "<span class='notice'>Thou art next in line to join the game. You will be notified when a slot opens up.</span>")
+					to_chat(usr, span_notice("Thou art next in line to join the game. You will be notified when a slot opens up."))
 				else if(queue_position)
-					to_chat(usr, "<span class='notice'>Thou art [queue_position-1] players in front of you in the queue to join the game.</span>")
+					to_chat(usr, span_notice("Thou art [queue_position-1] players in front of you in the queue to join the game."))
 				else
 					SSticker.queued_players += usr
-					to_chat(usr, "<span class='notice'>Thou have been added to the queue to join the game. Your position in queue is [SSticker.queued_players.len].</span>")
+					to_chat(usr, span_notice("Thou have been added to the queue to join the game. Your position in queue is [SSticker.queued_players.len]."))
 				return
 		LateChoices()
 
@@ -238,21 +238,21 @@ GLOBAL_LIST_INIT(roleplay_readme, world.file2list("strings/rt/rp_prompt.txt"))
 
 	if(href_list["SelectedJob"])
 		if(!SSticker?.IsRoundInProgress())
-			to_chat(usr, "<span class='danger'>The round is either not ready, or has already finished...</span>")
+			to_chat(usr, span_danger("The round is either not ready, or has already finished..."))
 			return
 
 		if(!GLOB.enter_allowed)
-			to_chat(usr, "<span class='notice'>There is a lock on entering the game!</span>")
+			to_chat(usr, span_notice("There is a lock on entering the game!"))
 			return
 
 		if(SSticker.queued_players.len && !(ckey(key) in GLOB.admin_datums))
 			if((living_player_count() >= relevant_cap) || (src != SSticker.queued_players[1]))
-				to_chat(usr, "<span class='warning'>Server is full.</span>")
+				to_chat(usr, span_warning("Server is full."))
 				return
 
 		AttemptLateSpawn(href_list["SelectedJob"])
 		return
-
+ 
 	if(!ready && href_list["preference"])
 		if(client)
 			client.prefs.process_link(src, href_list)
@@ -307,11 +307,11 @@ GLOBAL_LIST_INIT(roleplay_readme, world.file2list("strings/rt/rp_prompt.txt"))
 	observer.started_as_observer = TRUE
 	close_spawn_windows()
 	var/obj/effect/landmark/observer_start/O = locate(/obj/effect/landmark/observer_start) in GLOB.landmarks_list
-	to_chat(src, "<span class='notice'>Now teleporting.</span>")
+	to_chat(src, span_notice("Now teleporting."))
 	if (O)
 		observer.forceMove(O.loc)
 	else
-		to_chat(src, "<span class='notice'>Teleporting failed. Ahelp an admin please</span>")
+		to_chat(src, span_notice("Teleporting failed. Ahelp an admin please"))
 		stack_trace("There's no freaking observer landmark available on this map or you're making observers before the map is initialised")
 	observer.key = key
 	observer.client = client
@@ -451,7 +451,7 @@ GLOBAL_LIST_INIT(roleplay_readme, world.file2list("strings/rt/rp_prompt.txt"))
 /mob/dead/new_player/proc/AttemptLateSpawn(rank)
 	var/error = IsJobUnavailable(rank)
 	if(error != JOB_AVAILABLE)
-		to_chat(src, "<span class='warning'>[get_job_unavailable_error_message(error, rank)]</span>")
+		to_chat(src, span_warning("[get_job_unavailable_error_message(error, rank)]"))
 		return FALSE
 
 	if(SSticker.late_join_disabled)
@@ -473,6 +473,10 @@ GLOBAL_LIST_INIT(roleplay_readme, world.file2list("strings/rt/rp_prompt.txt"))
 	//Remove the player from the join queue if he was in one and reset the timer
 	SSticker.queued_players -= src
 	SSticker.queue_delay = 4
+
+	// Jus remove them from drifter queue if they were in it. 
+	// This shit shouldn't be firing before the round starts anyways sooo this is one of the only ways in
+	SSrole_class_handler.cleanup_drifter_queue(client)
 
 	testing("basedtest 1")
 
@@ -515,7 +519,7 @@ GLOBAL_LIST_INIT(roleplay_readme, world.file2list("strings/rt/rp_prompt.txt"))
 			AnnounceArrival(humanc, rank)
 		AddEmploymentContract(humanc)
 		if(GLOB.highlander)
-			to_chat(humanc, "<span class='danger'><i>THERE CAN BE ONLY ONE!!!</i></span>")
+			to_chat(humanc, span_danger("<i>THERE CAN BE ONLY ONE!!!</i>"))
 			humanc.make_scottish()
 
 		if(GLOB.summon_guns_triggered)
@@ -757,6 +761,10 @@ GLOBAL_LIST_INIT(roleplay_readme, world.file2list("strings/rt/rp_prompt.txt"))
 	src << browse(null, "window=preferences") //closes job selection
 	src << browse(null, "window=mob_occupation")
 	src << browse(null, "window=latechoices") //closes late job selection
+
+	SStriumphs.remove_triumph_buy_menu(client)
+	SSrole_class_handler.cleanup_drifter_queue(client)
+
 	winshow(src, "preferencess_window", FALSE)
 	src << browse(null, "window=preferences_browser")
 	src << browse(null, "window=lobby_window")
@@ -776,7 +784,7 @@ GLOBAL_LIST_INIT(roleplay_readme, world.file2list("strings/rt/rp_prompt.txt"))
 		has_antags = TRUE
 	if(client.prefs.job_preferences.len == 0)
 		if(!ineligible_for_roles)
-			to_chat(src, "<span class='danger'>I need to pick a class to join as.</span>")
+			to_chat(src, span_danger("I need to pick a class to join as."))
 		ineligible_for_roles = TRUE
 		ready = PLAYER_NOT_READY
 		if(has_antags)

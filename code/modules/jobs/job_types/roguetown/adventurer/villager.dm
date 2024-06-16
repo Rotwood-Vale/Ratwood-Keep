@@ -1,4 +1,4 @@
-/datum/job/roguetown/adventurer/villager
+/datum/job/roguetown/villager
 	title = "Towner"
 	flag = VILLAGER
 	department_flag = PEASANTS
@@ -7,7 +7,7 @@
 	spawn_positions = 50
 	allowed_races = RACES_ALL_KINDS
 	tutorial = "You've lived in this shithole for effectively all your life. You are not an explorer, nor exactly a warrior in many cases. You're just some average poor bastard who thinks they'll be something someday."
-
+	advclass_cat_rolls = list(CTAG_TOWNER = 20)
 	outfit = null
 	outfit_female = null
 	bypass_lastclass = TRUE
@@ -21,8 +21,15 @@
 	always_show_on_latechoices = TRUE
 	same_job_respawn_delay = 0
 
-	ispilgrim = FALSE
-	isvillager = TRUE
+	
+
+/datum/job/roguetown/villager/after_spawn(mob/living/L, mob/M, latejoin = TRUE)
+	..()
+	if(L)
+		var/mob/living/carbon/human/H = L
+		H.advsetup = 1
+		H.invisibility = INVISIBILITY_MAXIMUM
+		H.become_blind("advsetup")
 
 /*
 /datum/job/roguetown/adventurer/villager/New()

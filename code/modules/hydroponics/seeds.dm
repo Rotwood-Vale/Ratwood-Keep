@@ -84,14 +84,14 @@
 	if(istype(T, /turf/open/floor/rogue/dirt))
 		var/turf/open/floor/rogue/dirt/D = T
 		if(D.planted_crop)
-			to_chat(user, "<span class='warning'>Someone is already living here.</span>")
+			to_chat(user, span_warning("Someone is already living here."))
 			return
 		if(D.holie)
-			to_chat(user, "<span class='warning'>The seed needs a home to grow in, remove the hole.</span>")
+			to_chat(user, span_warning("The seed needs a home to grow in, remove the hole."))
 			return
 		D.planted_crop = new(D)
 		playsound(loc,'sound/items/seed.ogg', 100, TRUE)
-		visible_message("<span class='notice'>[user] plants some seeds.</span>")
+		visible_message(span_notice("[user] plants some seeds."))
 		D.planted_crop.name = src.plantname
 		D.planted_crop.myseed = src
 		D.planted_crop.plant_hp = maxphp
@@ -143,7 +143,7 @@
 
 /obj/item/seeds/examine(mob/user)
 	. = ..()
-//	. += "<span class='notice'>Use a pen on it to rename it or change its description.</span>"
+//	. += span_notice("Use a pen on it to rename it or change its description.")
 
 /obj/item/seeds/proc/Copy()
 	var/obj/item/seeds/S = new type(null, 1)
@@ -414,10 +414,10 @@
 
 /obj/item/seeds/attackby(obj/item/O, mob/user, params)
 	if (istype(O, /obj/item/plant_analyzer))
-		to_chat(user, "<span class='info'>*---------*\n This is \a <span class='name'>[src]</span>.</span>")
+		to_chat(user, span_info("*---------*\n This is \a <span class='name'>[src]</span>."))
 		var/text = get_analyzer_text()
 		if(text)
-			to_chat(user, "<span class='notice'>[text]</span>")
+			to_chat(user, span_notice("[text]"))
 
 		return
 
@@ -431,10 +431,10 @@
 				if(!user.canUseTopic(src, BE_CLOSE))
 					return
 				if (length(newplantname) > 20)
-					to_chat(user, "<span class='warning'>That name is too long!</span>")
+					to_chat(user, span_warning("That name is too long!"))
 					return
 				if(!newplantname)
-					to_chat(user, "<span class='warning'>That name is invalid.</span>")
+					to_chat(user, span_warning("That name is invalid."))
 					return
 				else
 					name = "[lowertext(newplantname)]"
@@ -444,10 +444,10 @@
 				if(!user.canUseTopic(src, BE_CLOSE))
 					return
 				if (length(newdesc) > 180)
-					to_chat(user, "<span class='warning'>That description is too long!</span>")
+					to_chat(user, span_warning("That description is too long!"))
 					return
 				if(!newdesc)
-					to_chat(user, "<span class='warning'>That description is invalid.</span>")
+					to_chat(user, span_warning("That description is invalid."))
 					return
 				else
 					desc = newdesc
@@ -458,10 +458,10 @@
 				if(!user.canUseTopic(src, BE_CLOSE))
 					return
 				if (length(newproductdesc) > 180)
-					to_chat(user, "<span class='warning'>That description is too long!</span>")
+					to_chat(user, span_warning("That description is too long!"))
 					return
 				if(!newproductdesc)
-					to_chat(user, "<span class='warning'>That description is invalid.</span>")
+					to_chat(user, span_warning("That description is invalid."))
 					return
 				else
 					productdesc = newproductdesc

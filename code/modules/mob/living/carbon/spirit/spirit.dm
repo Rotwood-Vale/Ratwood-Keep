@@ -72,9 +72,9 @@
 			return
 	put_in_hands(new /obj/item/underworld/coin/notracking(get_turf(src)))
 	if(patron)
-		to_chat(src, "<span class='danger'>Your suffering has not gone unnoticed, [patron] has rewarded you with your toll.</span>")
+		to_chat(src, span_danger("Your suffering has not gone unnoticed, [patron] has rewarded you with your toll."))
 	else
-		to_chat(src, "<span class='danger'>Your suffering has not gone unnoticed, your patron has rewarded you with your toll.</span>")
+		to_chat(src, span_danger("Your suffering has not gone unnoticed, your patron has rewarded you with your toll."))
 	playsound(src, 'sound/combat/caught.ogg', 80, TRUE, -1)
 
 /mob/living/carbon/spirit/create_internal_organs()
@@ -128,7 +128,7 @@
 
 	log_game("[key_name(usr)] respawned from underworld")
 
-	to_chat(src, "<span class='info'>Returned to lobby successfully.</span>")
+	to_chat(src, span_info("Returned to lobby successfully."))
 
 	if(!client)
 		log_game("[key_name(usr)] AM failed due to disconnect.")
@@ -217,7 +217,7 @@
 					var/turf/fallen = get_turf(coin_spawn)
 					fallen = locate(fallen.x + rand(-3, 3), fallen.y + rand(-3, 3), fallen.z)
 					new /obj/item/underworld/coin/notracking(fallen)
-					fallen.visible_message("<span class='warning'>A coin falls from above!</span>")
+					fallen.visible_message(span_warning("A coin falls from above!"))
 					if(coin_pq && user?.ckey && (user.ckey != attacker_ckey))
 						adjust_playerquality(coin_pq, user.ckey)
 					qdel(human_corpse.mouth)
@@ -240,7 +240,7 @@
 	if(ghost)
 		testing("pacify_corpse success ([corpse.mind?.key || "no key"])")
 		var/user_acknowledgement = user ? user.real_name : "a mysterious force"
-		to_chat(ghost, "<span class='rose'>My soul finds peace buried in creation, thanks to [user_acknowledgement].</span>")
+		to_chat(ghost, span_rose("My soul finds peace buried in creation, thanks to [user_acknowledgement]."))
 		ghost.returntolobby(RESPAWNTIME*-1)
 		return attacker_ckey
 

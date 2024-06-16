@@ -15,14 +15,14 @@
 	skill_median = SKILL_LEVEL_APPRENTICE
 
 /datum/surgery_step/incise/preop(mob/user, mob/living/target, target_zone, obj/item/tool, datum/intent/intent)
-	display_results(user, target, "<span class='notice'>I begin to make an incision in [target]'s [parse_zone(target_zone)]...</span>",
-		"<span class='notice'>[user] begins to make an incision in [target]'s [parse_zone(target_zone)].</span>",
-		"<span class='notice'>[user] begins to make an incision in [target]'s [parse_zone(target_zone)].</span>")
+	display_results(user, target, span_notice("I begin to make an incision in [target]'s [parse_zone(target_zone)]..."),
+		span_notice("[user] begins to make an incision in [target]'s [parse_zone(target_zone)]."),
+		span_notice("[user] begins to make an incision in [target]'s [parse_zone(target_zone)]."))
 	return TRUE
 
 /datum/surgery_step/incise/success(mob/user, mob/living/target, target_zone, obj/item/tool, datum/intent/intent)
-	display_results(user, target, "<span class='notice'>Blood pools around the incision in [target]'s [parse_zone(target_zone)].</span>",
-		"<span class='notice'>Blood pools around the incision in [target]'s [parse_zone(target_zone)].</span>")
+	display_results(user, target, span_notice("Blood pools around the incision in [target]'s [parse_zone(target_zone)]."),
+		span_notice("Blood pools around the incision in [target]'s [parse_zone(target_zone)]."))
 	var/obj/item/bodypart/gotten_part = target.get_bodypart(check_zone(target_zone))
 	if(gotten_part)
 		gotten_part.add_wound(/datum/wound/slash/incision)
@@ -41,15 +41,15 @@
 	skill_median = SKILL_LEVEL_JOURNEYMAN
 
 /datum/surgery_step/clamp/preop(mob/user, mob/living/target, target_zone, obj/item/tool, datum/intent/intent)
-	display_results(user, target, "<span class='notice'>I begin to clamp bleeders in [target]'s [parse_zone(target_zone)]...</span>",
-		"<span class='notice'>[user] begins to clamp bleeders in [target]'s [parse_zone(target_zone)].</span>",
-		"<span class='notice'>[user] begins to clamp bleeders in [target]'s [parse_zone(target_zone)].</span>")
+	display_results(user, target, span_notice("I begin to clamp bleeders in [target]'s [parse_zone(target_zone)]..."),
+		span_notice("[user] begins to clamp bleeders in [target]'s [parse_zone(target_zone)]."),
+		span_notice("[user] begins to clamp bleeders in [target]'s [parse_zone(target_zone)]."))
 	return TRUE
 
 /datum/surgery_step/clamp/success(mob/user, mob/living/target, target_zone, obj/item/tool, datum/intent/intent)
-	display_results(user, target, "<span class='notice'>I clamp the bleeders in [target]'s [parse_zone(target_zone)].</span>",
-		"<span class='notice'>[user] clamps the bleeders in [target]'s [parse_zone(target_zone)].</span>",
-		"<span class='notice'>[user] clamps the bleeders in [target]'s [parse_zone(target_zone)].</span>")
+	display_results(user, target, span_notice("I clamp the bleeders in [target]'s [parse_zone(target_zone)]."),
+		span_notice("[user] clamps the bleeders in [target]'s [parse_zone(target_zone)]."),
+		span_notice("[user] clamps the bleeders in [target]'s [parse_zone(target_zone)]."))
 	var/obj/item/bodypart/bodypart = target.get_bodypart(check_zone(target_zone))
 	bodypart?.add_embedded_object(tool, crit_message = FALSE)
 	return TRUE
@@ -68,15 +68,15 @@
 	skill_median = SKILL_LEVEL_JOURNEYMAN
 
 /datum/surgery_step/retract/preop(mob/user, mob/living/target, target_zone, obj/item/tool, datum/intent/intent)
-	display_results(user, target, "<span class='notice'>I begin to retract [target]'s [parse_zone(target_zone)]...</span>",
-		"<span class='notice'>[user] begins to retract [target]'s [parse_zone(target_zone)].</span>",
-		"<span class='notice'>[user] begins to retract [target]'s [parse_zone(target_zone)].</span>")
+	display_results(user, target, span_notice("I begin to retract [target]'s [parse_zone(target_zone)]..."),
+		span_notice("[user] begins to retract [target]'s [parse_zone(target_zone)]."),
+		span_notice("[user] begins to retract [target]'s [parse_zone(target_zone)]."))
 	return TRUE
 
 /datum/surgery_step/retract/success(mob/user, mob/living/target, target_zone, obj/item/tool, datum/intent/intent)
-	display_results(user, target, "<span class='notice'>I retract [target]'s [parse_zone(target_zone)].</span>",
-		"<span class='notice'>[user] retract [target]'s [parse_zone(target_zone)].</span>",
-		"<span class='notice'>[user] retract [target]'s [parse_zone(target_zone)].</span>")
+	display_results(user, target, span_notice("I retract [target]'s [parse_zone(target_zone)]."),
+		span_notice("[user] retract [target]'s [parse_zone(target_zone)]."),
+		span_notice("[user] retract [target]'s [parse_zone(target_zone)]."))
 	var/obj/item/bodypart/bodypart = target.get_bodypart(check_zone(target_zone))
 	bodypart?.add_embedded_object(tool, crit_message = FALSE)
 	return TRUE
@@ -101,15 +101,15 @@
 	return length(bodypart.wounds)
 
 /datum/surgery_step/cauterize/preop(mob/user, mob/living/target, target_zone, obj/item/tool, datum/intent/intent)
-	display_results(user, target, "<span class='notice'>I begin to cauterize the wounds on [target]'s [parse_zone(target_zone)]...</span>",
-		"<span class='notice'>[user] begins to cauterize the wounds on [target]'s [parse_zone(target_zone)].</span>",
-		"<span class='notice'>[user] begins to cauterize the wounds on [target]'s [parse_zone(target_zone)].</span>")
+	display_results(user, target, span_notice("I begin to cauterize the wounds on [target]'s [parse_zone(target_zone)]..."),
+		span_notice("[user] begins to cauterize the wounds on [target]'s [parse_zone(target_zone)]."),
+		span_notice("[user] begins to cauterize the wounds on [target]'s [parse_zone(target_zone)]."))
 	return TRUE
 
 /datum/surgery_step/cauterize/success(mob/user, mob/living/target, target_zone, obj/item/tool, datum/intent/intent)
-	display_results(user, target, "<span class='notice'>I cauterize the wounds on [target]'s [parse_zone(target_zone)].</span>",
-		"<span class='notice'>[user] cauterizes the wounds on [target]'s [parse_zone(target_zone)].</span>",
-		"<span class='notice'>[user] cauterizes the wounds on [target]'s [parse_zone(target_zone)].</span>")
+	display_results(user, target, span_notice("I cauterize the wounds on [target]'s [parse_zone(target_zone)]."),
+		span_notice("[user] cauterizes the wounds on [target]'s [parse_zone(target_zone)]."),
+		span_notice("[user] cauterizes the wounds on [target]'s [parse_zone(target_zone)]."))
 	var/obj/item/bodypart/bodypart = target.get_bodypart(check_zone(target_zone))
 	if(bodypart)
 		for(var/datum/wound/bleeder in bodypart.wounds)
@@ -148,15 +148,15 @@
 	skill_median = SKILL_LEVEL_EXPERT
 
 /datum/surgery_step/saw/preop(mob/user, mob/living/target, target_zone, obj/item/tool, datum/intent/intent)
-	display_results(user, target, "<span class='notice'>I begin to saw through the bone in [target]'s [parse_zone(target_zone)]...</span>",
-		"<span class='notice'>[user] begins to saw through the bone in [target]'s [parse_zone(target_zone)].</span>",
-		"<span class='notice'>[user] begins to saw through the bone in [target]'s [parse_zone(target_zone)].</span>")
+	display_results(user, target, span_notice("I begin to saw through the bone in [target]'s [parse_zone(target_zone)]..."),
+		span_notice("[user] begins to saw through the bone in [target]'s [parse_zone(target_zone)]."),
+		span_notice("[user] begins to saw through the bone in [target]'s [parse_zone(target_zone)]."))
 	return TRUE
 
 /datum/surgery_step/saw/success(mob/user, mob/living/target, target_zone, obj/item/tool, datum/intent/intent)
-	display_results(user, target, "<span class='notice'>I saw [target]'s [parse_zone(target_zone)] open.</span>",
-		"<span class='notice'>[user] saws [target]'s [parse_zone(target_zone)] open!</span>",
-		"<span class='notice'>[user] saws [target]'s [parse_zone(target_zone)] open!</span>")
+	display_results(user, target, span_notice("I saw [target]'s [parse_zone(target_zone)] open."),
+		span_notice("[user] saws [target]'s [parse_zone(target_zone)] open!"),
+		span_notice("[user] saws [target]'s [parse_zone(target_zone)] open!"))
 	var/obj/item/bodypart/bodypart = target.get_bodypart(check_zone(target_zone))
 	if(bodypart)
 		var/fracture_type = /datum/wound/fracture
@@ -188,15 +188,15 @@
 	skill_median = SKILL_LEVEL_EXPERT
 
 /datum/surgery_step/drill/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
-	display_results(user, target, "<span class='notice'>I begin to drill into [target]'s [parse_zone(target_zone)]...</span>",
-		"<span class='notice'>[user] begins to drill into [target]'s [parse_zone(target_zone)].</span>",
-		"<span class='notice'>[user] begins to drill into [target]'s [parse_zone(target_zone)].</span>")
+	display_results(user, target, span_notice("I begin to drill into [target]'s [parse_zone(target_zone)]..."),
+		span_notice("[user] begins to drill into [target]'s [parse_zone(target_zone)]."),
+		span_notice("[user] begins to drill into [target]'s [parse_zone(target_zone)]."))
 	return TRUE
 
 /datum/surgery_step/drill/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
-	display_results(user, target, "<span class='notice'>I drill into [target]'s [parse_zone(target_zone)].</span>",
-		"<span class='notice'>[user] drills into [target]'s [parse_zone(target_zone)]!</span>",
-		"<span class='notice'>[user] drills into [target]'s [parse_zone(target_zone)]!</span>")
+	display_results(user, target, span_notice("I drill into [target]'s [parse_zone(target_zone)]."),
+		span_notice("[user] drills into [target]'s [parse_zone(target_zone)]!"),
+		span_notice("[user] drills into [target]'s [parse_zone(target_zone)]!"))
 	var/obj/item/bodypart/bodypart = target.get_bodypart(check_zone(target_zone))
 	bodypart?.add_wound(/datum/wound/puncture/drilling)
 	target.emote("scream")

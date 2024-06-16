@@ -165,7 +165,7 @@ GLOBAL_LIST_EMPTY(lord_titles)
 			continue
 		recruitment[village_idiot.name] = village_idiot
 	if(!length(recruitment))
-		to_chat(user, "<span class='warning'>There are no potential honoraries in range.</span>")
+		to_chat(user, span_warning("There are no potential honoraries in range."))
 		return
 	var/inputty = input(user, "Select an honorary!", "[name]") as anything in recruitment
 	if(inputty)
@@ -173,9 +173,9 @@ GLOBAL_LIST_EMPTY(lord_titles)
 		if(!QDELETED(recruit) && (recruit in get_hearers_in_view(title_range, user)))
 			INVOKE_ASYNC(src, PROC_REF(village_idiotify), recruit, user, granted_title)
 		else
-			to_chat(user, "<span class='warning'>Honorific failed!</span>")
+			to_chat(user, span_warning("Honorific failed!"))
 	else
-		to_chat(user, "<span class='warning'>Honorific cancelled.</span>")
+		to_chat(user, span_warning("Honorific cancelled."))
 
 /obj/effect/proc_holder/spell/self/grant_title/proc/can_title(mob/living/carbon/human/recruit)
 	//wtf

@@ -149,7 +149,7 @@
 
 #define HUNTER		(1<<0)
 #define FARMER		(1<<1)
-#define BUTCHER	(1<<2)
+#define BUTCHER		(1<<2)
 #define FISHER		(1<<3)
 #define LUMBERJACK	(1<<4)
 #define MINER		(1<<5)
@@ -163,6 +163,7 @@
 #define VILLAGER	(1<<13)
 #define PRISONER	(1<<14)
 #define LUNATIC		(1<<15)
+#define WAVE_DRIFTER (1<<16)
 
 #define YOUNGFOLK	(1<<6)
 
@@ -268,6 +269,7 @@
 #define JDO_VILLAGER 30
 #define JDO_ADVENTURER 30.1
 #define JDO_PILGRIM 30.2
+#define JDO_DRIFTER 32.3
 
 #define JDO_GRENZELHOFT 31
 #define JDO_DESERT_RIDER 32

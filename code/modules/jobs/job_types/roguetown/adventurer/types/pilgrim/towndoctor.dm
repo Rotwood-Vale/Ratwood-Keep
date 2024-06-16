@@ -10,8 +10,7 @@
 		"Dark Elf",
 	)
 	outfit = /datum/outfit/job/roguetown/adventurer/doctor
-	isvillager = TRUE
-	ispilgrim = TRUE
+	category_tags = list(CTAG_PILGRIM, CTAG_TOWNER)
 	traits_applied = list(TRAIT_EMPATH, TRAIT_NOSTINK)
 	cmode_music = 'sound/music/combat_physician.ogg'
 
@@ -32,7 +31,7 @@
 	shoes = /obj/item/clothing/shoes/roguetown/simpleshoes
 	backl = /obj/item/storage/backpack/rogue/backpack
 	backpack_contents = list(
-		/obj/item/rogueweapon/surgery/scalpel = 1, 
+		/obj/item/rogueweapon/surgery/scalpel = 1,
 		/obj/item/rogueweapon/surgery/saw = 1,
 		/obj/item/rogueweapon/surgery/hemostat = 2,
 		/obj/item/rogueweapon/surgery/retractor = 1,
@@ -52,6 +51,7 @@
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/climbing, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 1, TRUE)
+		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/diagnose/secular)
 		if(H.age == AGE_OLD)
 			H.change_stat("intelligence", 3)
 			H.change_stat("perception", 1)

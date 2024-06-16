@@ -73,35 +73,35 @@
 
 /datum/surgery_step/manipulate_organs/preop(mob/user, mob/living/target, target_zone, obj/item/tool, datum/intent/intent)
 	if(istype(tool, /obj/item/reagent_containers/food/snacks/organ))
-		to_chat(user, "<span class='warning'>[tool] was bitten by someone! It's too damaged to use!</span>")
+		to_chat(user, span_warning("[tool] was bitten by someone! It's too damaged to use!"))
 		return FALSE
 	
 	if(istype(tool, /obj/item/organ_storage))
 		if(!length(tool.contents))
-			to_chat(user, "<span class='warning'>There is nothing inside [tool]!</span>")
+			to_chat(user, span_warning("There is nothing inside [tool]!"))
 			return FALSE
 		tool = tool.contents[1]
 		if(!isorgan(tool))
-			to_chat(user, "<span class='warning'>I cannot put [tool] inside [target]'s [parse_zone(target_zone)]!</span>")
+			to_chat(user, span_warning("I cannot put [tool] inside [target]'s [parse_zone(target_zone)]!"))
 			return FALSE
 
 	var/obj/item/organ/organ_tool = tool
 	if(istype(organ_tool))
 		if(target_zone != organ_tool.zone)
-			to_chat(user, "<span class='warning'>[organ_tool] does not belong in [target]'s [parse_zone(target_zone)]!</span>")
+			to_chat(user, span_warning("[organ_tool] does not belong in [target]'s [parse_zone(target_zone)]!"))
 			return FALSE
 		else if(target.getorganslot(organ_tool.slot))
-			to_chat(user, "<span class='warning'>[target] already has [parse_organ_slot(organ_tool.slot)]!</span>")
+			to_chat(user, span_warning("[target] already has [parse_organ_slot(organ_tool.slot)]!"))
 			return FALSE
 
 		user.select_organ_slot(organ_tool.slot)
-		display_results(user, target, "<span class='notice'>I begin to insert [tool] into [target]'s [parse_zone(target_zone)]...</span>",
-			"<span class='notice'>[user] begins to insert [tool] into [target]'s [parse_zone(target_zone)].</span>",
-			"<span class='notice'>[user] begins to insert something into [target]'s [parse_zone(target_zone)].</span>")
+		display_results(user, target, span_notice("I begin to insert [tool] into [target]'s [parse_zone(target_zone)]..."),
+			span_notice("[user] begins to insert [tool] into [target]'s [parse_zone(target_zone)]."),
+			span_notice("[user] begins to insert something into [target]'s [parse_zone(target_zone)]."))
 	else
 		var/list/organs = target.getorganszone(target_zone, subzones = FALSE)
 		if(!length(organs))
-			to_chat(user, "<span class='warning'>There are no removable organs in [target]'s [parse_zone(target_zone)]!</span>")
+			to_chat(user, span_warning("There are no removable organs in [target]'s [parse_zone(target_zone)]!"))
 			return FALSE
 		for(var/obj/item/organ/found_organ as anything in organs)
 			found_organ.on_find(user)
@@ -116,9 +116,9 @@
 			return FALSE
 		
 		user.select_organ_slot(final_organ.slot)
-		display_results(user, target, "<span class='notice'>I begin to extract [final_organ] from [target]'s [parse_zone(target_zone)]...</span>",
-			"<span class='notice'>[user] begins to extract [final_organ] from [target]'s [parse_zone(target_zone)].</span>",
-			"<span class='notice'>[user] begins to extract something from [target]'s [parse_zone(target_zone)].</span>")
+		display_results(user, target, span_notice("I begin to extract [final_organ] from [target]'s [parse_zone(target_zone)]..."),
+			span_notice("[user] begins to extract [final_organ] from [target]'s [parse_zone(target_zone)]."),
+			span_notice("[user] begins to extract something from [target]'s [parse_zone(target_zone)]."))
 
 	return TRUE
 
@@ -134,19 +134,19 @@
 	var/obj/item/organ/organ_tool = tool
 	if(istype(organ_tool) && user.temporarilyRemoveItemFromInventory(organ_tool))
 		organ_tool.Insert(target)
-		display_results(user, target, "<span class='notice'>I insert [tool] into [target]'s [parse_zone(target_zone)].</span>",
-			"<span class='notice'>[user] inserts [tool] into [target]'s [parse_zone(target_zone)]!</span>",
-			"<span class='notice'>[user] inserts something into [target]'s [parse_zone(target_zone)]!</span>")
+		display_results(user, target, span_notice("I insert [tool] into [target]'s [parse_zone(target_zone)]."),
+			span_notice("[user] inserts [tool] into [target]'s [parse_zone(target_zone)]!"),
+			span_notice("[user] inserts something into [target]'s [parse_zone(target_zone)]!"))
 		return TRUE
 	var/obj/item/organ/selected_organ = target.getorganslot(user.organ_slot_selected)
 	if(QDELETED(selected_organ) || (selected_organ.owner != target))
-		display_results(user, target, "<span class='warning'>I can't extract anything from [target]'s [parse_zone(target_zone)]!</span>",
-			"<span class='notice'>[user] can't seem to extract anything from [target]'s [parse_zone(target_zone)]!</span>",
-			"<span class='notice'>[user] can't seem to extract anything from [target]'s [parse_zone(target_zone)]!</span>")
+		display_results(user, target, span_warning("I can't extract anything from [target]'s [parse_zone(target_zone)]!"),
+			span_notice("[user] can't seem to extract anything from [target]'s [parse_zone(target_zone)]!"),
+			span_notice("[user] can't seem to extract anything from [target]'s [parse_zone(target_zone)]!"))
 		return FALSE
-	display_results(user, target, "<span class='notice'>I successfully extract [selected_organ] from [target]'s [parse_zone(target_zone)].</span>",
-		"<span class='notice'>[user] successfully extracts [selected_organ] from [target]'s [parse_zone(target_zone)]!</span>",
-		"<span class='notice'>[user] successfully extracts something from [target]'s [parse_zone(target_zone)]!</span>")
+	display_results(user, target, span_notice("I successfully extract [selected_organ] from [target]'s [parse_zone(target_zone)]."),
+		span_notice("[user] successfully extracts [selected_organ] from [target]'s [parse_zone(target_zone)]!"),
+		span_notice("[user] successfully extracts something from [target]'s [parse_zone(target_zone)]!"))
 	log_combat(user, target, "surgically removed [selected_organ.name] from")
 	selected_organ.Remove(target)
 	selected_organ.forceMove(target.drop_location())

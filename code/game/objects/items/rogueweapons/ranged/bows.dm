@@ -104,7 +104,7 @@
 
 /datum/intent/shoot/bow/prewarning()
 	if(mastermob)
-		mastermob.visible_message("<span class='warning'>[mastermob] draws [masteritem]!</span>")
+		mastermob.visible_message(span_warning("[mastermob] draws [masteritem]!"))
 		playsound(mastermob, pick('sound/combat/Ranged/bow-draw-01.ogg'), 100, FALSE)
 
 /datum/intent/shoot/bow/get_chargetime()
@@ -140,7 +140,7 @@
 
 /datum/intent/arc/bow/prewarning()
 	if(mastermob)
-		mastermob.visible_message("<span class='warning'>[mastermob] draws [masteritem]!</span>")
+		mastermob.visible_message(span_warning("[mastermob] draws [masteritem]!"))
 		playsound(mastermob, pick('sound/combat/Ranged/bow-draw-01.ogg'), 100, FALSE)
 
 /datum/intent/arc/bow/get_chargetime()

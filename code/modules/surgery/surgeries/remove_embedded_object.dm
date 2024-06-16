@@ -31,9 +31,9 @@
 	return length(target.get_embedded_objects())
 
 /datum/surgery_step/remove_object/preop(mob/user, mob/living/target, target_zone, obj/item/tool, datum/intent/intent)
-	display_results(user, target, "<span class='notice'>I look for objects embedded in [target]'s [parse_zone(user.zone_selected)]...</span>",
-		"<span class='notice'>[user] looks for objects embedded in [target]'s [parse_zone(user.zone_selected)].</span>",
-		"<span class='notice'>[user] looks for something in [target]'s [parse_zone(user.zone_selected)].</span>")
+	display_results(user, target, span_notice("I look for objects embedded in [target]'s [parse_zone(user.zone_selected)]..."),
+		span_notice("[user] looks for objects embedded in [target]'s [parse_zone(user.zone_selected)]."),
+		span_notice("[user] looks for something in [target]'s [parse_zone(user.zone_selected)]."))
 	return TRUE
 
 /datum/surgery_step/remove_object/success(mob/user, mob/living/target, target_zone, obj/item/tool, datum/intent/intent)
@@ -49,11 +49,11 @@
 
 	var/s = (objects > 1 ? "s" : "")
 	if(objects > 0)
-		display_results(user, target, "<span class='notice'>I successfully remove [objects] object[s] from [target]'s [bodypart].</span>",
-			"<span class='notice'>[user] successfully removes [objects] object[s] from [target]'s [bodypart]!</span>",
-			"<span class='notice'>[user] successfully removes [objects] object[s] from [target]'s [bodypart]!</span>")
+		display_results(user, target, span_notice("I successfully remove [objects] object[s] from [target]'s [bodypart]."),
+			span_notice("[user] successfully removes [objects] object[s] from [target]'s [bodypart]!"),
+			span_notice("[user] successfully removes [objects] object[s] from [target]'s [bodypart]!"))
 	else if(bodypart)
-		to_chat(user, "<span class='warning'>I find no objects embedded in [target]'s [bodypart]!</span>")
+		to_chat(user, span_warning("I find no objects embedded in [target]'s [bodypart]!"))
 	else
-		to_chat(user, "<span class='warning'>I find no objects embedded in [target]!</span>")
+		to_chat(user, span_warning("I find no objects embedded in [target]!"))
 	return TRUE

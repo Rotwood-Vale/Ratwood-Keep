@@ -1,6 +1,6 @@
 /obj/item/rogueweapon/mace
 	force = 20
-	force_wielded = 20
+	force_wielded = 30
 	possible_item_intents = list(/datum/intent/mace/strike)
 	gripped_intents = list(/datum/intent/mace/strike, /datum/intent/mace/smash)
 	name = "mace"

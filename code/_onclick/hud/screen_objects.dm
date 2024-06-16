@@ -87,7 +87,7 @@
 		if(ishuman(usr))
 			var/mob/living/carbon/human/M = usr
 			if(M.charflaw)
-				to_chat(M, "<span class='info'>[M.charflaw.desc]</span>")
+				to_chat(M, span_info("[M.charflaw.desc]"))
 				to_chat(M, "*----*")
 			if(M.mind)
 				if(M.mind.language_holder)
@@ -95,16 +95,16 @@
 					for(var/X in M.mind.language_holder.languages)
 						var/datum/language/LA = new X()
 						finn = TRUE
-						to_chat(M, "<span class='info'>[LA.name] - ,[LA.key]</span>")
+						to_chat(M, span_info("[LA.name] - ,[LA.key]"))
 					if(!finn)
-						to_chat(M, "<span class='warning'>I don't know any languages.</span>")
+						to_chat(M, span_warning("I don't know any languages."))
 					to_chat(M, "*----*")
 		for(var/X in GLOB.roguetraits)
 			if(HAS_TRAIT(L, X))
 				to_chat(L, "[X] - <span class='info'>[GLOB.roguetraits[X]]</span>")
 				ht = TRUE
 		if(!ht)
-			to_chat(L, "<span class='warning'>I have no special traits.</span>")
+			to_chat(L, span_warning("I have no special traits."))
 		to_chat(L, "*----*")
 		return
 
@@ -131,7 +131,7 @@
 			if(H.craftingthing && (H.mind?.lastrecipe != null))
 				last_craft = world.time
 				var/datum/component/personal_crafting/C = H.craftingthing
-				to_chat(H, "<span class='warning'>I am crafting \a [H.mind?.lastrecipe] again.</span>")
+				to_chat(H, span_warning("I am crafting \a [H.mind?.lastrecipe] again."))
 				C.construct_item(H, H.mind?.lastrecipe)
 		else
 			H.playsound_local(H, 'sound/misc/click.ogg', 100)
@@ -153,7 +153,7 @@
 		return TRUE
 	var/area/A = get_area(usr)
 	if(!A.outdoors)
-		to_chat(usr, "<span class='warning'>There is already a defined structure here.</span>")
+		to_chat(usr, span_warning("There is already a defined structure here."))
 		return TRUE
 	create_area(usr)
 
@@ -655,49 +655,49 @@
 
 	if(C.internal)
 		C.internal = null
-		to_chat(C, "<span class='notice'>I are no longer running on internals.</span>")
+		to_chat(C, span_notice("I are no longer running on internals."))
 		icon_state = "internal0"
 	else
 		if(!C.getorganslot(ORGAN_SLOT_BREATHING_TUBE))
 			if(!istype(C.wear_mask, /obj/item/clothing/mask))
-				to_chat(C, "<span class='warning'>I are not wearing an internals mask!</span>")
+				to_chat(C, span_warning("I are not wearing an internals mask!"))
 				return 1
 			else
 				var/obj/item/clothing/mask/M = C.wear_mask
 				if(M.mask_adjusted) // if mask on face but pushed down
 					M.adjustmask(C) // adjust it back
 				if( !(M.clothing_flags & MASKINTERNALS) )
-					to_chat(C, "<span class='warning'>I are not wearing an internals mask!</span>")
+					to_chat(C, span_warning("I are not wearing an internals mask!"))
 					return
 
 		var/obj/item/I = C.is_holding_item_of_type(/obj/item/tank)
 		if(I)
-			to_chat(C, "<span class='notice'>I are now running on internals from [I] in your [C.get_held_index_name(C.get_held_index_of_item(I))].</span>")
+			to_chat(C, span_notice("I are now running on internals from [I] in your [C.get_held_index_name(C.get_held_index_of_item(I))]."))
 			C.internal = I
 		else if(ishuman(C))
 			var/mob/living/carbon/human/H = C
 			if(istype(H.s_store, /obj/item/tank))
-				to_chat(H, "<span class='notice'>I are now running on internals from [H.s_store] on your [H.wear_armor.name].</span>")
+				to_chat(H, span_notice("I are now running on internals from [H.s_store] on your [H.wear_armor.name]."))
 				H.internal = H.s_store
 			else if(istype(H.belt, /obj/item/tank))
-				to_chat(H, "<span class='notice'>I are now running on internals from [H.belt] on your belt.</span>")
+				to_chat(H, span_notice("I are now running on internals from [H.belt] on your belt."))
 				H.internal = H.belt
 			else if(istype(H.l_store, /obj/item/tank))
-				to_chat(H, "<span class='notice'>I are now running on internals from [H.l_store] in your left pocket.</span>")
+				to_chat(H, span_notice("I are now running on internals from [H.l_store] in your left pocket."))
 				H.internal = H.l_store
 			else if(istype(H.r_store, /obj/item/tank))
-				to_chat(H, "<span class='notice'>I are now running on internals from [H.r_store] in your right pocket.</span>")
+				to_chat(H, span_notice("I are now running on internals from [H.r_store] in your right pocket."))
 				H.internal = H.r_store
 
 		//Separate so CO2 jetpacks are a little less cumbersome.
 		if(!C.internal && istype(C.back, /obj/item/tank))
-			to_chat(C, "<span class='notice'>I are now running on internals from [C.back] on your back.</span>")
+			to_chat(C, span_notice("I are now running on internals from [C.back] on your back."))
 			C.internal = C.back
 
 		if(C.internal)
 			icon_state = "internal1"
 		else
-			to_chat(C, "<span class='warning'>I don't have an oxygen tank!</span>")
+			to_chat(C, span_warning("I don't have an oxygen tank!"))
 			return
 	C.update_action_buttons_icon()
 
@@ -793,6 +793,13 @@
 		qdel(src)
 		return
 	var/mob/living/carbon/human/H = hud.mymob
+	// Eh this will work for now mayb? Just don't startup class select if its the first set of guys and we got these antags
+	if(SSrole_class_handler.current_wave_number == 1)
+		if(H.mind && H.mind.antag_datums)
+			for(var/datum/antagonist/D in H.mind.antag_datums)
+				if(istype(D, /datum/antagonist/vampirelord) || istype(D, /datum/antagonist/vampire) || istype(D, /datum/antagonist/bandit))
+					qdel(src)
+					return
 	if(H.advsetup)
 		alpha = 0
 		icon = 'icons/mob/advsetup.dmi'
@@ -810,9 +817,7 @@
 		qdel(src)
 		return
 	else
-		if(H.advsetup())
-			qdel(src)
-
+		SSrole_class_handler.setup_class_handler(H)
 
 /atom/movable/screen/eye_intent
 	name = "eye intent"
@@ -1479,7 +1484,7 @@
 			if(length(H.mind.known_people))
 				H.mind.display_known_people(H)
 			else
-				to_chat(H, "<span class='warning'>I don't know anyone.</span>")
+				to_chat(H, span_warning("I don't know anyone."))
 
 /atom/movable/screen/splash
 	icon = 'icons/blank_title.png'
@@ -1676,7 +1681,7 @@
 		if(modifiers["left"])
 			if(M.charflaw)
 				to_chat(M, "*----*")
-				to_chat(M, "<span class='info'>[M.charflaw.desc]</span>")
+				to_chat(M, span_info("[M.charflaw.desc]"))
 			to_chat(M, "*--------*")
 			var/list/already_printed = list()
 			for(var/datum/stressevent/S in M.positive_stressors)
@@ -1717,7 +1722,7 @@
 			to_chat(M, "*--------*")
 		if(modifiers["right"])
 			if(M.get_triumphs() <= 0)
-				to_chat(M, "<span class='warning'>I haven't TRIUMPHED.</span>")
+				to_chat(M, span_warning("I haven't TRIUMPHED."))
 				return
 			if(alert("Do you want to remember a TRIUMPH?", "", "Yes", "No") == "Yes")
 				if(M.add_stress(/datum/stressevent/triumph))
@@ -1755,9 +1760,9 @@
 				show_intents(M)
 		if(modifiers["right"])
 			if(M.rmb_intent)
-				to_chat(M, "<span class='info'>* --- *</span>")
-				to_chat(M, "<span class='info'>[name]: [desc]</span>")
-				to_chat(M, "<span class='info'>* --- *</span>")
+				to_chat(M, span_info("* --- *"))
+				to_chat(M, span_info("[name]: [desc]"))
+				to_chat(M, span_info("* --- *"))
 
 /atom/movable/screen/rmbintent/proc/collapse_intents()
 	if(!showing)
@@ -1826,9 +1831,9 @@
 			if(stored_intent)
 				M.swap_rmb_intent(type = stored_intent)
 		if(modifiers["right"])
-			to_chat(M, "<span class='info'>* --- *</span>")
-			to_chat(M, "<span class='info'>[name]: [desc]</span>")
-			to_chat(M, "<span class='info'>* --- *</span>")
+			to_chat(M, span_info("* --- *"))
+			to_chat(M, span_info("[name]: [desc]"))
+			to_chat(M, span_info("* --- *"))
 
 /mob/living/proc/swap_rmb_intent(type, num)
 	if(!possible_rmb_intents?.len)

@@ -85,7 +85,7 @@
 	var/whitelist_req = FALSE
 
 	var/bypass_jobban = FALSE
-	var/bypass_lastclass = FALSE
+	var/bypass_lastclass = TRUE
 
 	var/list/peopleiknow = list()
 	var/list/peopleknowme = list()
@@ -123,6 +123,25 @@
 
 	/// This job is immune to species-based swapped gender locks
 	var/immune_to_genderswap = FALSE
+
+/*
+	How this works, its CTAG_DEFINE = amount_to_attempt_to_role 
+	EX: advclass_cat_rolls = list(CTAG_PILGRIM = 5, CTAG_ADVENTURER = 5)
+	You will still need to contact the subsystem though
+*/
+	var/list/advclass_cat_rolls
+/*
+	Basically this is just a ref to a drifter wave if its attached to one
+	The role class handler will grab relevant data out of it it uses a class select
+	Just make sure to unattach afterward we are done.
+*/
+	var/datum/drifter_wave/drifter_wave_attachment
+
+/*
+	How this works, they get one extra roll on every category per PQ amount
+*/
+	var/PQ_boost_divider = 0
+
 
 /datum/job/proc/special_job_check(mob/dead/new_player/player)
 	return TRUE
@@ -191,9 +210,11 @@
 		return
 	var/thename = "[real_name]"
 	var/datum/job/J = SSjob.GetJob(mind.assigned_role)
-	var/used_title = J.title
-	if(gender == FEMALE && J.f_title)
-		used_title = J.f_title
+	var/used_title
+	if(J)
+		used_title = J.title
+		if(gender == FEMALE && J.f_title)
+			used_title = J.f_title
 	if(used_title)
 		thename = "[real_name] the [used_title]"
 	GLOB.credits_icons[thename] = list()

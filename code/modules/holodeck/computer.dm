@@ -170,7 +170,7 @@
 		return
 	playsound(src, "sparks", 75, TRUE)
 	obj_flags |= EMAGGED
-	to_chat(user, "<span class='warning'>I vastly increase projector power and override the safety and security protocols.</span>")
+	to_chat(user, span_warning("I vastly increase projector power and override the safety and security protocols."))
 	say("Warning. Automatic shutoff and derezzing protocols have been corrupted. Please call Nanotrasen maintenance and do not use the simulator.")
 	log_game("[key_name(user)] emagged the Holodeck Control Console")
 	nerf(!(obj_flags & EMAGGED))
@@ -301,7 +301,7 @@
 			silent = FALSE					// otherwise make sure they are dropped
 
 	if(!silent)
-		visible_message("<span class='notice'>[O] fades away!</span>")
+		visible_message(span_notice("[O] fades away!"))
 	qdel(O)
 
 #undef HOLODECK_CD

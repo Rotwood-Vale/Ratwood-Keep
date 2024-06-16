@@ -1,6 +1,6 @@
 /datum/wound/artery
 	name = "severed artery"
-	check_name = "<span class='artery'><B>ARTERY</B></span>"
+	check_name = span_artery("<B>ARTERY</B>")
 	severity = WOUND_SEVERITY_CRITICAL
 	crit_message = "Blood sprays from %VICTIM's %BODYPART!"
 	sound_effect = 'sound/combat/crit.ogg'
@@ -40,7 +40,7 @@
 
 /datum/wound/artery/neck
 	name = "torn carotid"
-	check_name = "<span class='artery'><B>CAROTID</B></span>"
+	check_name = span_artery("<B>CAROTID</B>")
 	severity = WOUND_SEVERITY_FATAL
 	crit_message = "Blood sprays from %VICTIM's throat!"
 	whp = 100
@@ -61,7 +61,7 @@
 
 /datum/wound/artery/chest
 	name = "aortic dissection"
-	check_name = "<span class='artery'><B>AORTA</B></span>"
+	check_name = span_artery("<B>AORTA</B>")
 	severity = WOUND_SEVERITY_FATAL
 	whp = 100
 	sewn_whp = 35
@@ -82,7 +82,7 @@
 		"MY HEART IS TORN!",
 		"MY HEART IS BLEEDING!",
 	)
-	to_chat(affected, "<span class='userdanger'>[pick(heartaches)]</span>")
+	to_chat(affected, span_userdanger("[pick(heartaches)]"))
 	if(HAS_TRAIT(affected, TRAIT_CRITICAL_WEAKNESS))
 		affected.death()
 
@@ -96,7 +96,7 @@
 
 /datum/wound/artery/reattachment
 	name = "replantation"
-	check_name = "<span class='artery'><B>UNSEWN</B></span>"
+	check_name = span_artery("<B>UNSEWN</B>")
 	severity = WOUND_SEVERITY_FATAL
 	whp = 100
 	sewn_whp = 25

@@ -142,10 +142,10 @@
 	if(!I.tool_start_check(user, amount=0))
 		return TRUE
 
-	to_chat(user, "<span class='notice'>I start slicing [src]...</span>")
+	to_chat(user, span_notice("I start slicing [src]..."))
 	if(I.use_tool(src, user, 30, volume=50))
 		deconstruct()
-		to_chat(user, "<span class='notice'>I slice [src].</span>")
+		to_chat(user, span_notice("I slice [src]."))
 	return TRUE
 
 //checks if something is blocking the deconstruction (e.g. trunk with a bin still linked to it)
@@ -257,7 +257,7 @@
 
 /obj/structure/disposalpipe/trunk/can_be_deconstructed(mob/user)
 	if(linked)
-		to_chat(user, "<span class='warning'>I need to deconstruct disposal machinery above this pipe!</span>")
+		to_chat(user, span_warning("I need to deconstruct disposal machinery above this pipe!"))
 		return FALSE
 	return TRUE
 

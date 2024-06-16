@@ -41,7 +41,7 @@
 
 /datum/wound/slash/disembowel
 	name = "disembowelment"
-	check_name = "<span class='userdanger'><B>GUTS</B></span>"
+	check_name = span_userdanger("<B>GUTS</B>")
 	severity = WOUND_SEVERITY_FATAL
 	crit_message = list(
 		"%VICTIM spills %P_THEIR organs!",
@@ -100,7 +100,7 @@
 
 /datum/wound/slash/incision
 	name = "incision"
-	check_name = "<span class='bloody'><B>INCISION</B></span>"
+	check_name = span_bloody("<B>INCISION</B>")
 	severity = WOUND_SEVERITY_SUPERFICIAL
 	whp = 40
 	sewn_whp = 12

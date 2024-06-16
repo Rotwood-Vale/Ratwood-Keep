@@ -10,25 +10,25 @@
 
 /obj/structure/floodlight_frame/attackby(obj/item/O, mob/user, params)
 	if(O.tool_behaviour == TOOL_WRENCH && (state == FLOODLIGHT_NEEDS_WRENCHING))
-		to_chat(user, "<span class='notice'>I secure [src].</span>")
+		to_chat(user, span_notice("I secure [src]."))
 		anchored = TRUE
 		state = FLOODLIGHT_NEEDS_WIRES
 		desc = ""
 	else if(istype(O, /obj/item/stack/cable_coil) && (state == FLOODLIGHT_NEEDS_WIRES))
 		var/obj/item/stack/S = O
 		if(S.use(5))
-			to_chat(user, "<span class='notice'>I wire [src].</span>")
+			to_chat(user, span_notice("I wire [src]."))
 			name = "wired [name]"
 			desc = ""
 			icon_state = "floodlight_c2"
 			state = FLOODLIGHT_NEEDS_SECURING
 	else if(istype(O, /obj/item/light/tube) && (state == FLOODLIGHT_NEEDS_LIGHTS))
 		if(user.transferItemToLoc(O))
-			to_chat(user, "<span class='notice'>I put lights in [src].</span>")
+			to_chat(user, span_notice("I put lights in [src]."))
 			new /obj/machinery/power/floodlight(src.loc)
 			qdel(src)
 	else if(O.tool_behaviour == TOOL_SCREWDRIVER && (state == FLOODLIGHT_NEEDS_SECURING))
-		to_chat(user, "<span class='notice'>I fasten the wiring and electronics in [src].</span>")
+		to_chat(user, span_notice("I fasten the wiring and electronics in [src]."))
 		name = "secured [name]"
 		desc = ""
 		icon_state = "floodlight_c3"
@@ -80,7 +80,7 @@
 		if(4)
 			setting_text = "high power"
 	if(user)
-		to_chat(user, "<span class='notice'>I set [src] to [setting_text].</span>")
+		to_chat(user, span_notice("I set [src] to [setting_text]."))
 
 /obj/machinery/power/floodlight/attackby(obj/item/O, mob/user, params)
 	if(O.tool_behaviour == TOOL_WRENCH)

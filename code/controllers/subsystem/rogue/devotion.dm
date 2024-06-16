@@ -66,7 +66,7 @@
 	devotion = clamp(devotion + dev_amt, 0, max_devotion)
 	//Max devotion limit
 	if((devotion >= max_devotion) && !silent)
-		to_chat(holder, "<span class='warning'>I have reached the limit of my devotion...</span>")
+		to_chat(holder, span_warning("I have reached the limit of my devotion..."))
 	if(!prog_amt) // no point in the rest if it's just an expenditure
 		return TRUE
 	progression = clamp(progression + prog_amt, 0, max_progression)
@@ -88,7 +88,7 @@
 		return TRUE
 	spell_unlocked = new spell_unlocked
 	if(!silent)
-		to_chat(holder, "<span class='boldnotice'>I have unlocked a new spell: [spell_unlocked]</span>")
+		to_chat(holder, span_boldnotice("I have unlocked a new spell: [spell_unlocked]"))
 	usr.mind.AddSpell(spell_unlocked)
 	LAZYADD(granted_spells, spell_unlocked)
 	return TRUE

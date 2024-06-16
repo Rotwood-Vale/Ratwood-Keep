@@ -5,8 +5,10 @@
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = list(/datum/species/dwarf/mountain)
 	outfit = /datum/outfit/job/roguetown/adventurer/dwarfwarrior
-	maxchosen = 2
+
 	traits_applied = list(TRAIT_HEAVYARMOR)
+	maximum_possible_slots = 2
+	category_tags = list(CTAG_ADVENTURER)
 
 /datum/outfit/job/roguetown/adventurer/dwarfwarrior/pre_equip(mob/living/carbon/human/H)
 	..()

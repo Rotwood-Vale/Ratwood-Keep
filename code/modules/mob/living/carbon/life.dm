@@ -62,7 +62,7 @@
 			if(buckled?.sleepy)
 				if(eyesclosed)
 					if(!fallingas)
-						to_chat(src, "<span class='warning'>I'll fall asleep soon...</span>")
+						to_chat(src, span_warning("I'll fall asleep soon..."))
 					fallingas++
 					if(fallingas > 15)
 						Sleeping(300)
@@ -72,7 +72,7 @@
 			else if(!(mobility_flags & MOBILITY_STAND))
 				if(eyesclosed)
 					if(!fallingas)
-						to_chat(src, "<span class='warning'>I'll fall asleep soon, although a bed would be more comfortable...</span>")
+						to_chat(src, span_warning("I'll fall asleep soon, although a bed would be more comfortable..."))
 					fallingas++
 					if(fallingas > 25)
 						Sleeping(300)
@@ -419,22 +419,22 @@
 				// At lower pp, give out a little warning
 				SEND_SIGNAL(src, COMSIG_CLEAR_MOOD_EVENT, "smell")
 				if(prob(5))
-					to_chat(src, "<span class='notice'>There is an unpleasant smell in the air.</span>")
+					to_chat(src, span_notice("There is an unpleasant smell in the air."))
 			if(5 to 20)
 				//At somewhat higher pp, warning becomes more obvious
 				if(prob(15))
-					to_chat(src, "<span class='warning'>I smell something horribly decayed inside this room.</span>")
+					to_chat(src, span_warning("I smell something horribly decayed inside this room."))
 					SEND_SIGNAL(src, COMSIG_ADD_MOOD_EVENT, "smell", /datum/mood_event/disgust/bad_smell)
 			if(15 to 30)
 				//Small chance to vomit. By now, people have internals on anyway
 				if(prob(5))
-					to_chat(src, "<span class='warning'>The stench of rotting carcasses is unbearable!</span>")
+					to_chat(src, span_warning("The stench of rotting carcasses is unbearable!"))
 					SEND_SIGNAL(src, COMSIG_ADD_MOOD_EVENT, "smell", /datum/mood_event/disgust/nauseating_stench)
 					vomit()
 			if(30 to INFINITY)
 				//Higher chance to vomit. Let the horror start
 				if(prob(25))
-					to_chat(src, "<span class='warning'>The stench of rotting carcasses is unbearable!</span>")
+					to_chat(src, span_warning("The stench of rotting carcasses is unbearable!"))
 					SEND_SIGNAL(src, COMSIG_ADD_MOOD_EVENT, "smell", /datum/mood_event/disgust/nauseating_stench)
 					vomit()
 			else
@@ -555,12 +555,12 @@
 
 			if(prob(embedded.embedding.embedded_pain_chance))
 				bodypart.receive_damage(embedded.w_class*embedded.embedding.embedded_pain_multiplier)
-				to_chat(src, "<span class='danger'>[embedded] in my [bodypart.name] hurts!</span>")
+				to_chat(src, span_danger("[embedded] in my [bodypart.name] hurts!"))
 
 			if(prob(embedded.embedding.embedded_fall_chance))
 				bodypart.receive_damage(embedded.w_class*embedded.embedding.embedded_fall_pain_multiplier)
 				bodypart.remove_embedded_object(embedded)
-				to_chat(src,"<span class='danger'>[embedded] falls out of my [bodypart.name]!</span>")
+				to_chat(src,span_danger("[embedded] falls out of my [bodypart.name]!"))
 
 /*
 Alcohol Poisoning Chart
@@ -726,13 +726,13 @@ GLOBAL_LIST_INIT(ballmer_windows_me_msg, list("Yo man, what if, we like, uh, put
 		if(drunkenness >= 81)
 			adjustToxLoss(3)
 			if(prob(5) && !stat)
-				to_chat(src, "<span class='warning'>Maybe I should lie down for a bit...</span>")
+				to_chat(src, span_warning("Maybe I should lie down for a bit..."))
 
 		if(drunkenness >= 91)
 			adjustToxLoss(5)
 //			adjustOrganLoss(ORGAN_SLOT_BRAIN, 0.4)
 			if(prob(20) && !stat)
-				to_chat(src, "<span class='warning'>Just a quick nap...</span>")
+				to_chat(src, span_warning("Just a quick nap..."))
 				Sleeping(900)
 
 		if(drunkenness >= 101)
@@ -775,7 +775,7 @@ GLOBAL_LIST_INIT(ballmer_windows_me_msg, list("Yo man, what if, we like, uh, put
 		return
 	adjustToxLoss(4, TRUE,  TRUE)
 //	if(prob(30))
-//		to_chat(src, "<span class='warning'>I feel a stabbing pain in your abdomen!</span>")
+//		to_chat(src, span_warning("I feel a stabbing pain in your abdomen!"))
 
 /////////////
 //CREMATION//
@@ -811,11 +811,11 @@ GLOBAL_LIST_INIT(ballmer_windows_me_msg, list("Yo man, what if, we like, uh, put
 						limb.skeletonize()
 						should_update_body = TRUE
 //						limb.drop_limb()
-//						limb.visible_message("<span class='warning'>[src]'s [limb.name] crumbles into ash!</span>")
+//						limb.visible_message(span_warning("[src]'s [limb.name] crumbles into ash!"))
 //						qdel(limb)
 //					else
 //						limb.drop_limb()
-//						limb.visible_message("<span class='warning'>[src]'s [limb.name] detaches from [p_their()] body!</span>")
+//						limb.visible_message(span_warning("[src]'s [limb.name] detaches from [p_their()] body!"))
 	if(still_has_limbs)
 		return
 
@@ -829,11 +829,11 @@ GLOBAL_LIST_INIT(ballmer_windows_me_msg, list("Yo man, what if, we like, uh, put
 					limb.skeletonize()
 					should_update_body = TRUE
 //					head.drop_limb()
-//					head.visible_message("<span class='warning'>[src]'s head crumbles into ash!</span>")
+//					head.visible_message(span_warning("[src]'s head crumbles into ash!"))
 //					qdel(head)
 //				else
 //					head.drop_limb()
-//					head.visible_message("<span class='warning'>[src]'s head detaches from [p_their()] body!</span>")
+//					head.visible_message(span_warning("[src]'s head detaches from [p_their()] body!"))
 		return
 
 	//Nothing left: dust the body, drop the items (if they're flammable they'll burn on their own)
@@ -841,7 +841,7 @@ GLOBAL_LIST_INIT(ballmer_windows_me_msg, list("Yo man, what if, we like, uh, put
 		if(chest.get_damage() >= chest.max_damage)
 			chest.cremation_progress += 999
 			if(chest.cremation_progress >= 19)
-		//		visible_message("<span class='warning'>[src]'s body crumbles into a pile of ash!</span>")
+		//		visible_message(span_warning("[src]'s body crumbles into a pile of ash!"))
 		//		dust(TRUE, TRUE)
 				chest.skeletonized = TRUE
 				if(ishuman(src))

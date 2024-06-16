@@ -39,28 +39,28 @@
 /datum/surgery_step/add_prosthetic/preop(mob/user, mob/living/target, target_zone, obj/item/tool, datum/intent/intent)
 	if(istype(tool, /obj/item/organ_storage))
 		if(!length(tool.contents))
-			to_chat(user, "<span class='warning'>There is nothing inside [tool]!</span>")
+			to_chat(user, span_warning("There is nothing inside [tool]!"))
 			return FALSE
 		tool = tool.contents[1]
 		if(!isbodypart(tool))
-			to_chat(user, "<span class='warning'>[tool] cannot be attached!</span>")
+			to_chat(user, span_warning("[tool] cannot be attached!"))
 			return FALSE
 
 	var/obj/item/bodypart/bodypart = tool
 	if(ismonkey(target) && bodypart.animal_origin != MONKEY_BODYPART)
-		to_chat(user, "<span class='warning'>[bodypart] doesn't match the patient's morphology.</span>")
+		to_chat(user, span_warning("[bodypart] doesn't match the patient's morphology."))
 		return FALSE
 	else if(bodypart.animal_origin)
-		to_chat(user, "<span class='warning'>[bodypart] doesn't match the patient's morphology.</span>")
+		to_chat(user, span_warning("[bodypart] doesn't match the patient's morphology."))
 		return FALSE
 
 	if(target_zone != bodypart.body_zone) //so we can't replace a leg with an arm, or a human arm with a monkey arm.
-		to_chat(user, "<span class='warning'>[tool] isn't the right type for [parse_zone(target_zone)].</span>")
+		to_chat(user, span_warning("[tool] isn't the right type for [parse_zone(target_zone)]."))
 		return FALSE
 
-	display_results(user, target, "<span class='notice'>I begin to replace [target]'s [parse_zone(target_zone)] with [tool]...</span>",
-		"<span class='notice'>[user] begins to replace [target]'s [parse_zone(target_zone)] with [tool].</span>",
-		"<span class='notice'>[user] begins to replace [target]'s [parse_zone(target_zone)].</span>")
+	display_results(user, target, span_notice("I begin to replace [target]'s [parse_zone(target_zone)] with [tool]..."),
+		span_notice("[user] begins to replace [target]'s [parse_zone(target_zone)] with [tool]."),
+		span_notice("[user] begins to replace [target]'s [parse_zone(target_zone)]."))
 	return TRUE
 
 /datum/surgery_step/add_prosthetic/success(mob/user, mob/living/target, target_zone, obj/item/tool, datum/intent/intent)
@@ -75,7 +75,7 @@
 	var/obj/item/bodypart/bodypart = tool
 	if(bodypart.attach_limb(target) && bodypart.attach_wound)
 		bodypart.add_wound(bodypart.attach_wound)
-	display_results(user, target, "<span class='notice'>I succeed transplanting [target]'s [parse_zone(target_zone)].</span>",
-		"<span class='notice'>[user] successfully transplants [target]'s [parse_zone(target_zone)] with [tool]!</span>",
-		"<span class='notice'>[user] successfully transplants [target]'s [parse_zone(target_zone)]!</span>")
+	display_results(user, target, span_notice("I succeed transplanting [target]'s [parse_zone(target_zone)]."),
+		span_notice("[user] successfully transplants [target]'s [parse_zone(target_zone)] with [tool]!"),
+		span_notice("[user] successfully transplants [target]'s [parse_zone(target_zone)]!"))
 	return TRUE

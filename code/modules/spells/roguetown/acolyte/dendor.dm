@@ -17,7 +17,7 @@
 
 /obj/effect/proc_holder/spell/targeted/blesscrop/cast(list/targets,mob/user = usr)
 	. = ..()
-	visible_message("<span class='green'>[usr] blesses the crop with Dendor's Favour!</span>")
+	visible_message(span_green("[usr] blesses the crop with Dendor's Favour!"))
 	var/growed = FALSE
 	for(var/obj/machinery/crop/C in view(5))
 		growed = TRUE
@@ -44,7 +44,7 @@
 
 /obj/effect/proc_holder/spell/targeted/beasttame/cast(list/targets,mob/user = usr)
 	. = ..()
-	visible_message("<span class='green'>[usr] soothes the beastblood with Dendor's whisper.</span>")
+	visible_message(span_green("[usr] soothes the beastblood with Dendor's whisper."))
 	var/tamed = FALSE
 	for(var/mob/living/simple_animal/hostile/retaliate/B in oview(2))
 		if(B.aggressive)
@@ -63,9 +63,9 @@
 	cast_without_targets = TRUE
 	sound = 'sound/items/dig_shovel.ogg'
 	associated_skill = /datum/skill/magic/holy
-	req_items = list(/obj/item/clothing/neck/roguetown/psicross)
 	invocation = "Treefather light the way."
 	invocation_type = "whisper" //can be none, whisper, emote and shout
+	devotion_cost = 75
 
 /obj/effect/proc_holder/spell/targeted/conjure_glowshroom/cast(list/targets, mob/user = usr)
 	. = ..()

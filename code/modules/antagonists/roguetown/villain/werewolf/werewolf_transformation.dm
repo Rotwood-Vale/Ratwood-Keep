@@ -13,7 +13,7 @@
             if(isturf(H.loc))
                 var/turf/loc = H.loc
                 if(loc.can_see_sky())
-                    to_chat(H, "<span class='userdanger'>The moonlight scorns me... It is too late.</span>")
+                    to_chat(H, span_userdanger("The moonlight scorns me... It is too late."))
                     owner.current.playsound_local(get_turf(owner.current), 'sound/music/wolfintro.ogg', 80, FALSE, pressure_affected = FALSE)
                     H.flash_fullscreen("redflash3")
                     transforming = world.time // timer
@@ -28,13 +28,13 @@
         else if (world.time >= transforming + 25 SECONDS) // Stage 2
             H.flash_fullscreen("redflash3")
             H.emote("agony", forced = TRUE)
-            to_chat(H, "<span class='userdanger'>UNIMAGINABLE PAIN!</span>")
+            to_chat(H, span_userdanger("UNIMAGINABLE PAIN!"))
             H.Stun(30)
             H.Knockdown(30)
 
         else if (world.time >= transforming + 10 SECONDS) // Stage 1
             H.emote("")
-            to_chat(H, "<span class='warning'>I can feel my muscles aching, it feels HORRIBLE...</span>")
+            to_chat(H, span_warning("I can feel my muscles aching, it feels HORRIBLE..."))
         
 
     // Werewolf reverts to human form during the day
@@ -54,7 +54,7 @@
                 
             else if (world.time >= untransforming + 10 SECONDS) // Alert player
                 H.flash_fullscreen("redflash1")
-                to_chat(H, "<span class='warning'>Daylight shines around me... the curse begins to fade.</span>")
+                to_chat(H, span_warning("Daylight shines around me... the curse begins to fade."))
 			
 
 /mob/living/carbon/human/species/werewolf/death(gibbed)
@@ -106,7 +106,7 @@
 	W.base_intents = list(INTENT_HELP, INTENT_DISARM, INTENT_GRAB)
 	W.update_a_intents()
 
-	to_chat(W, "<span class='userdanger'>I transform into a horrible beast!</span>")
+	to_chat(W, span_userdanger("I transform into a horrible beast!"))
 	W.emote("rage")
 
 	W.stress = stress
@@ -175,7 +175,7 @@
 
 	W.regenerate_icons()
 
-	to_chat(W, "<span class='userdanger'>I return to my facade.</span>")
+	to_chat(W, span_userdanger("I return to my facade."))
 	playsound(W.loc, pick('sound/combat/gib (1).ogg','sound/combat/gib (2).ogg'), 200, FALSE, 3)
 	W.spawn_gibs(FALSE)
 	W.Knockdown(30)

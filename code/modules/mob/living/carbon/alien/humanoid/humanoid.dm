@@ -56,8 +56,8 @@
 /mob/living/carbon/alien/humanoid/Topic(href, href_list)
 	//strip panel
 	if(href_list["pouches"] && usr.canUseTopic(src, BE_CLOSE, NO_DEXTERITY))
-		visible_message("<span class='danger'>[usr] tries to empty [src]'s pouches.</span>", \
-						"<span class='danger'>[usr] tries to empty your pouches.</span>")
+		visible_message(span_danger("[usr] tries to empty [src]'s pouches."), \
+						span_danger("[usr] tries to empty your pouches."))
 		if(do_mob(usr, src, POCKET_STRIP_DELAY * 0.5))
 			dropItemToGround(r_store)
 			dropItemToGround(l_store)
@@ -71,8 +71,8 @@
 
 /mob/living/carbon/alien/humanoid/resist_grab(moving_resist)
 	if(pulledby.grab_state)
-		visible_message("<span class='danger'>[src] breaks free of [pulledby]'s grip!</span>", \
-						"<span class='danger'>I break free of [pulledby]'s grip!</span>")
+		visible_message(span_danger("[src] breaks free of [pulledby]'s grip!"), \
+						span_danger("I break free of [pulledby]'s grip!"))
 	pulledby.stop_pulling()
 	. = 0
 

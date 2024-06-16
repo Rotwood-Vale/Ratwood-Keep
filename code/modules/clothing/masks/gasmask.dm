@@ -103,7 +103,7 @@
 		for(var/X in actions)
 			var/datum/action/A = X
 			A.UpdateButtonIcon()
-		to_chat(user, "<span class='notice'>My Clown Mask has now morphed into [choice], all praise the Honkmother!</span>")
+		to_chat(user, span_notice("My Clown Mask has now morphed into [choice], all praise the Honkmother!"))
 		return 1
 
 /obj/item/clothing/mask/gas/sexyclown
@@ -145,7 +145,7 @@
 		for(var/X in actions)
 			var/datum/action/A = X
 			A.UpdateButtonIcon()
-		to_chat(user, "<span class='notice'>My Mime Mask has now morphed into [choice]!</span>")
+		to_chat(user, span_notice("My Mime Mask has now morphed into [choice]!"))
 		return 1
 
 /obj/item/clothing/mask/gas/monkeymask
@@ -216,7 +216,7 @@
 		for(var/X in actions)
 			var/datum/action/A = X
 			A.UpdateButtonIcon()
-		to_chat(M, "<span class='notice'>The Tiki Mask has now changed into the [choice] Mask!</span>")
+		to_chat(M, span_notice("The Tiki Mask has now changed into the [choice] Mask!"))
 		return 1
 
 /obj/item/clothing/mask/gas/tiki_mask/yalp_elor

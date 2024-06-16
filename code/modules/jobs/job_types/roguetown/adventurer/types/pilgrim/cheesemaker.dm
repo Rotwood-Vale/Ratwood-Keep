@@ -6,8 +6,8 @@
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
 	outfit = /datum/outfit/job/roguetown/adventurer/cheesemaker
-	isvillager = TRUE
-	ispilgrim = TRUE
+
+	category_tags = list(CTAG_PILGRIM, CTAG_TOWNER)
 
 /datum/outfit/job/roguetown/adventurer/cheesemaker/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -42,3 +42,8 @@
 	backpack_contents = list(/obj/item/reagent_containers/powder/flour/salt = 1,/obj/item/reagent_containers/food/snacks/rogue/cheese=1,/obj/item/reagent_containers/food/snacks/rogue/cheddar=1)
 	H.change_stat("intelligence", 1)
 	H.change_stat("constitution", 4) // Cheese diet.
+
+/datum/advclass/cheesemaker/boost_by_plus_power(plus_factor, mob/living/carbon/human/H)
+	// ha ha yeah, fuck you cheesemaker playin retards!
+	return
+	

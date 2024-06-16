@@ -23,7 +23,7 @@
 
 		// Announcement to other werewolves
 		if(player.mind.has_antag_datum(/datum/antagonist/werewolf))
-			to_chat(player, "<span class='boldannounce'>[werewolf_player.wolfname] howls: [message]</span>")
+			to_chat(player, span_boldannounce("[werewolf_player.wolfname] howls: [message]"))
 
 		//sound played for other players
 		if(player == src) continue

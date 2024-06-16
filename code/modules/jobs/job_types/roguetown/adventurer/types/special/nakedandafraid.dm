@@ -6,8 +6,7 @@
 	allowed_races = RACES_ALL_KINDS
 	outfit = /datum/outfit/job/roguetown/adventurer/nudist
 	traits_applied = list(TRAIT_NUDIST)
-	isvillager = FALSE
-	ispilgrim = TRUE
+	category_tags = list(CTAG_CHALLENGE)
 
 /datum/outfit/job/roguetown/adventurer/nudist
 	allowed_patrons = list(/datum/patron/divine/dendor)

@@ -41,7 +41,7 @@
 
 /datum/wound/puncture/drilling
 	name = "drilling"
-	check_name = "<span class='bloody'><B>DRILLING</B></span>"
+	check_name = span_bloody("<B>DRILLING</B>")
 	severity = WOUND_SEVERITY_SUPERFICIAL
 	whp = 40
 	sewn_whp = 20

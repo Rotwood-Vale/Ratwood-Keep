@@ -45,13 +45,13 @@ GLOBAL_LIST_INIT(marker_beacon_colors, sortList(list(
 
 /obj/item/stack/marker_beacon/attack_self(mob/user)
 	if(!isturf(user.loc))
-		to_chat(user, "<span class='warning'>I need more space to place a [singular_name] here.</span>")
+		to_chat(user, span_warning("I need more space to place a [singular_name] here."))
 		return
 	if(locate(/obj/structure/marker_beacon) in user.loc)
-		to_chat(user, "<span class='warning'>There is already a [singular_name] here.</span>")
+		to_chat(user, span_warning("There is already a [singular_name] here."))
 		return
 	if(use(1))
-		to_chat(user, "<span class='notice'>I activate and anchor [amount ? "a":"the"] [singular_name] in place.</span>")
+		to_chat(user, span_notice("I activate and anchor [amount ? "a":"the"] [singular_name] in place."))
 		playsound(user, 'sound/blank.ogg', 50, TRUE)
 		var/obj/structure/marker_beacon/M = new(user.loc, picked_color)
 		transfer_fingerprints_to(M)
@@ -94,7 +94,7 @@ GLOBAL_LIST_INIT(marker_beacon_colors, sortList(list(
 
 /obj/structure/marker_beacon/examine(mob/user)
 	. = ..()
-	. += "<span class='notice'>Alt-click to select a color. Current color is [picked_color].</span>"
+	. += span_notice("Alt-click to select a color. Current color is [picked_color].")
 
 /obj/structure/marker_beacon/update_icon()
 	while(!picked_color || !GLOB.marker_beacon_colors[picked_color])
@@ -106,7 +106,7 @@ GLOBAL_LIST_INIT(marker_beacon_colors, sortList(list(
 	. = ..()
 	if(.)
 		return
-	to_chat(user, "<span class='notice'>I start picking [src] up...</span>")
+	to_chat(user, span_notice("I start picking [src] up..."))
 	if(do_after(user, remove_speed, target = src))
 		var/obj/item/stack/marker_beacon/M = new(loc)
 		M.picked_color = picked_color
@@ -119,7 +119,7 @@ GLOBAL_LIST_INIT(marker_beacon_colors, sortList(list(
 /obj/structure/marker_beacon/attackby(obj/item/I, mob/user, params)
 	if(istype(I, /obj/item/stack/marker_beacon))
 		var/obj/item/stack/marker_beacon/M = I
-		to_chat(user, "<span class='notice'>I start picking [src] up...</span>")
+		to_chat(user, span_notice("I start picking [src] up..."))
 		if(do_after(user, remove_speed, target = src) && M.amount + 1 <= M.max_amount)
 			M.add(1)
 			playsound(src, 'sound/blank.ogg', 50, TRUE)
@@ -128,7 +128,7 @@ GLOBAL_LIST_INIT(marker_beacon_colors, sortList(list(
 	if(istype(I, /obj/item/light_eater))
 		var/obj/item/ash/A = new /obj/item/ash(drop_location())
 		A.desc += "\nLooks like this used to be \a [src] some time ago."
-		visible_message("<span class='danger'>[src] is disintegrated by [I]!</span>")
+		visible_message(span_danger("[src] is disintegrated by [I]!"))
 		playsound(src, 'sound/blank.ogg', 50, TRUE)
 		qdel(src)
 		return

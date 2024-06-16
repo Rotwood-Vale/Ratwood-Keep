@@ -22,12 +22,12 @@
 
 /datum/anvil_recipe/proc/advance(mob/user, breakthrough = FALSE)
 	if(progress == 100)
-		to_chat(user, "<span class='info'>It's ready.</span>")
-		user.visible_message("<span class='warning'>[user] strikes the bar!</span>")
+		to_chat(user, span_info("It's ready."))
+		user.visible_message(span_warning("[user] strikes the bar!"))
 		return FALSE
 	if(needed_item)
-		to_chat(user, "<span class='info'>Now it's time to add a [needed_item_text].</span>")
-		user.visible_message("<span class='warning'>[user] strikes the bar!</span>")
+		to_chat(user, span_info("Now it's time to add a [needed_item_text]."))
+		user.visible_message(span_warning("[user] strikes the bar!"))
 		return FALSE
 	var/moveup = 1
 	var/proab = 3
@@ -50,13 +50,13 @@
 		progress = 0
 	if(!moveup)
 		if(prob(round(proab/2)))
-			user.visible_message("<span class='warning'>[user] spoils the bar!</span>")
+			user.visible_message(span_warning("[user] spoils the bar!"))
 			if(parent)
 				var/obj/item/P = parent
 				qdel(P)
 			return FALSE
 		else
-			user.visible_message("<span class='warning'>[user] fumbles with the bar!</span>")
+			user.visible_message(span_warning("[user] fumbles with the bar!"))
 			return FALSE
 	else
 		if(user.mind && isliving(user))
@@ -68,14 +68,14 @@
 			if(amt2raise > 0)
 				user.mind.adjust_experience(appro_skill, amt2raise * boon, FALSE)
 		if(breakthrough)
-			user.visible_message("<span class='warning'>[user] strikes the bar!</span>")
+			user.visible_message(span_warning("[user] strikes the bar!"))
 		else
-			user.visible_message("<span class='info'>[user] strikes the bar!</span>")
+			user.visible_message(span_info("[user] strikes the bar!"))
 		return TRUE
 
 /datum/anvil_recipe/proc/item_added(mob/user)
 	needed_item = null
-	user.visible_message("<span class='info'>[user] adds [needed_item_text]</span>")
+	user.visible_message(span_info("[user] adds [needed_item_text]"))
 	needed_item_text = null
 
 /datum/anvil_recipe/proc/handle_creation(obj/item/I)

@@ -8,12 +8,12 @@
 
 	allowed_races = RACES_TOLERATED_UP
 
-	tutorial = "You came to rockhill either to seek knowledge or riches."
+	tutorial = "You came to rockhill after hearing that there is a lack of potion-makers outside of the nobility. Stir up potions with your alchemy expertise, of health or death."
 
 	outfit = /datum/outfit/job/roguetown/alchemist
 	display_order = 6
 	give_bank_account = 12
-	min_pq = -10
+	min_pq = -3
 	max_pq = null
 
 /datum/outfit/job/roguetown/alchemist
@@ -24,10 +24,10 @@
 	..()
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/craft/crafting, 3, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/craft/alchemy, pick(2,5), TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/alchemy, 5, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 2, TRUE)
 		if(H.age == AGE_OLD)
-			H.mind.adjust_skillrank(/datum/skill/craft/alchemy, pick(4,6), TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/alchemy, pick(5,6), TRUE)
 //Requires a lot of sprites, so this is just a placeholder
 	if(H.gender == MALE)
 		pants = /obj/item/clothing/under/roguetown/trou
