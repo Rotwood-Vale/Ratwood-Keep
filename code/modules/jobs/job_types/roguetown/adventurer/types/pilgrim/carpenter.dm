@@ -3,7 +3,7 @@
 	tutorial = "A skilled carpenter, able to manipulate wood to suit their needs \
 	building forts and stores, carpenting floors, putting up crosses. You can do it all with enough logs"
 	allowed_sexes = list("male", "female")
-	allowed_races = CLOTHED_RACES_TYPES
+	allowed_races = RACES_ALL_KINDS
 	outfit = /datum/outfit/job/roguetown/adventurer/carpenter
 	isvillager = TRUE
 	ispilgrim = TRUE

@@ -62,7 +62,7 @@
 		/datum/sprite_accessory/snout/front/scanid,
 		/datum/sprite_accessory/snout/front/scanidalt,
 		/datum/sprite_accessory/snout/front/scanidalt2,
-		/datum/sprite_accessory/snout/front/scanidalt3,		
+		/datum/sprite_accessory/snout/front/scanidalt3,
 		/datum/sprite_accessory/snout/sharp,
 		/datum/sprite_accessory/snout/round,
 		/datum/sprite_accessory/snout/sharplight,
@@ -71,28 +71,6 @@
 		/datum/sprite_accessory/snout/front/round,
 		/datum/sprite_accessory/snout/front/sharplight,
 		/datum/sprite_accessory/snout/front/roundlight,
-		)
-
-/datum/customizer/organ/snout/vox
-	customizer_choices = list(/datum/customizer_choice/organ/snout/vox)
-
-/datum/customizer_choice/organ/snout/vox
-	name = "Vox Beak"
-	organ_type = /obj/item/organ/snout/vox
-	sprite_accessories = list(/datum/sprite_accessory/snout/vox/default)
-
-/datum/customizer/organ/snout/synthliz
-	customizer_choices = list(/datum/customizer_choice/organ/snout/vulpkanin)
-
-/datum/customizer_choice/organ/snout/synthliz
-	name = "Synthetic Snout"
-	organ_type = /obj/item/organ/snout/synth
-	sprite_accessories = list(
-		/datum/sprite_accessory/snout/synthliz/basic,
-		/datum/sprite_accessory/snout/synthliz/long,
-		/datum/sprite_accessory/snout/synthliz/long_thick,
-		/datum/sprite_accessory/snout/synthliz/under,
-		/datum/sprite_accessory/snout/synthliz/over,
 		)
 
 /datum/customizer/organ/snout/anthro
@@ -150,9 +128,6 @@
 		/datum/sprite_accessory/snout/hjackal,
 		/datum/sprite_accessory/snout/hhorse,
 		/datum/sprite_accessory/snout/hzebra,
-		/datum/sprite_accessory/snout/protogen,
-		/datum/sprite_accessory/snout/protogen_frame,
-		/datum/sprite_accessory/snout/protogen_bolt,
 		/datum/sprite_accessory/snout/front/bird,
 		/datum/sprite_accessory/snout/front/bigbeak,
 		/datum/sprite_accessory/snout/front/bug,

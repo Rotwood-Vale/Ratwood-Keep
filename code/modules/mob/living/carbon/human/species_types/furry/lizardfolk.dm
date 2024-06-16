@@ -13,7 +13,7 @@
 	skin_tone_wording = "Skin Colors"
 	species_traits = list(EYECOLOR,LIPS,STUBBLE,MUTCOLORS)
 	inherent_traits = list(TRAIT_NOMOBSWAP)
-	possible_ages = list(AGE_YOUNG, AGE_ADULT, AGE_MIDDLEAGED, AGE_OLD)
+	possible_ages = ALL_AGES_LIST
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
 	limbs_icon_m = 'icons/mob/species/male.dmi'
 	limbs_icon_f = 'icons/mob/species/female.dmi'
@@ -33,8 +33,8 @@
 		OFFSET_NECK_F = list(0,-1), OFFSET_MOUTH_F = list(0,-1), OFFSET_PANTS_F = list(0,0), \
 		OFFSET_SHIRT_F = list(0,0), OFFSET_ARMOR_F = list(0,0), OFFSET_UNDIES_F = list(0,0)
 		)
-	specstats = list("strength" = 2, "perception" = 1, "intelligence" = -1, "constitution" = -1, "endurance" = 1, "speed" = 1, "fortune" = -1)
-	specstats_f = list("strength" = 1, "perception" = 1, "intelligence" = -1, "constitution" = -2, "endurance" = 1, "speed" = 2, "fortune" = -1)
+	specstats = list("strength" = 1, "perception" = 1, "intelligence" = -2, "constitution" = 0, "endurance" = 1, "speed" = -1, "fortune" = 0)
+	specstats_f = list("strength" = 0, "perception" = 0, "intelligence" = 1, "constitution" = -1, "endurance" = 0, "speed" = 1, "fortune" = 0)
 	enflamed_icon = "widefire"
 	attack_verb = "slash"
 	attack_sound = 'sound/blank.ogg'
@@ -106,33 +106,36 @@
 	..()
 	RegisterSignal(C, COMSIG_MOB_SAY, PROC_REF(handle_speech))
 
-/datum/species/lizardfolk/qualifies_for_rank(rank, list/features)
-	return TRUE
-
 /datum/species/lizardfolk/on_species_loss(mob/living/carbon/C)
 	. = ..()
 	UnregisterSignal(C, COMSIG_MOB_SAY)
 
-/datum/species/lizardfolk/handle_speech(datum/source, mob/speech_args)
-	. = ..()
-	var/message = speech_args[SPEECH_MESSAGE]
-	if(message)
-		if(message[1])
-			if(message[1] != "*")
-				message = " [message]"
-				var/list/accent_words = strings("accent_universal.json", "universal")
-
-				for(var/key in accent_words)
-					var/value = accent_words[key]
-					if(islist(value))
-						value = pick(value)
-
-					message = replacetextEx(message, " [uppertext(key)]", " [uppertext(value)]")
-					message = replacetextEx(message, " [capitalize(key)]", " [capitalize(value)]")
-					message = replacetextEx(message, " [key]", " [value]")
-
-	speech_args[SPEECH_MESSAGE] = trim(message)
-
 /datum/species/lizardfolk/get_random_body_markings(list/passed_features)
 	return assemble_body_markings_from_set(GLOB.body_marking_sets_by_type[/datum/body_marking_set/bellyscale], passed_features, src)
 
+/datum/species/lizardfolk/get_random_features()
+	var/list/returned = MANDATORY_FEATURE_LIST
+	var/main_color
+	var/second_color
+	var/random = rand(1,5)
+	//Choose from a variety of lizardish colors
+	switch(random)
+		if(1)
+			main_color = "15921a"
+			second_color = "3a8f3d"
+		if(2)
+			main_color = "63d100"
+			second_color = "89d248"
+		if(3)
+			main_color = "51aa01"
+			second_color = "70ae39"
+		if(4)
+			main_color = "00b302"
+			second_color = "2eb62f"
+		if(5)
+			main_color = "02c33c"
+			second_color = "3ac664"
+	returned["mcolor"] = main_color
+	returned["mcolor2"] = second_color
+	returned["mcolor3"] = second_color
+	return returned

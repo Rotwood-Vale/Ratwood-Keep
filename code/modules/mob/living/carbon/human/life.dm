@@ -123,9 +123,8 @@
 	if(dna?.species)
 		if(STUBBLE in dna.species.species_traits)
 			if(gender == MALE)
-				if(age != AGE_YOUNG)
-					has_stubble = TRUE
-					update_hair()
+				has_stubble = TRUE
+				update_hair()
 
 /mob/living/carbon/human/calculate_affecting_pressure(pressure)
 	if (wear_armor && head && istype(wear_armor, /obj/item/clothing) && istype(head, /obj/item/clothing))

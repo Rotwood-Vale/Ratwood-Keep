@@ -147,8 +147,6 @@
 			var/used_sound
 			var/possible_sounds
 			var/modifier
-			if(H.age == AGE_YOUNG)
-				modifier = "young"
 			if(H.age == AGE_OLD)
 				modifier = "old"
 			if(!ignore_silent && (H.silent || !H.can_speak()))

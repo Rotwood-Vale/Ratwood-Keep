@@ -7,11 +7,11 @@
 	spawn_positions = 0 // Disabled until he gets his own place on the map
 
 	allowed_sexes = list(MALE)
-	allowed_races = CLOTHED_RACES_TYPES
+	allowed_races = RACES_TOLERATED_UP
 
 	tutorial = "The Nightmaster is technically a noble. Owner of the Whitevein Lounge, a decaying bathhouse converted into a den of low-lifes. A troublemaking rake that the others hate to tolerate."
 
-	allowed_ages = ADULT_AGES_LIST
+	allowed_ages = ALL_AGES_LIST
 	outfit = /datum/outfit/job/roguetown/nightman
 	display_order = JDO_NIGHTMASTER
 	give_bank_account = TRUE

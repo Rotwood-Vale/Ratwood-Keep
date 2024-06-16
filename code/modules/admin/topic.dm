@@ -903,23 +903,25 @@
 
 		var/mob/M = locate(href_list["sendbacktolobby"])
 
-		if(!isobserver(M))
-			to_chat(usr, "<span class='notice'>I can only send ghost players back to the Lobby.</span>")
+		if(alert(usr, "Send [key_name(M)] back to Lobby?", "Message", "Yes", "No") != "Yes")
 			return
-
+		var/living = isliving(M)
+		if(living)
+			if(alert(usr, "[key_name(M)] is a LIVING MOB. Are you sure you want to send him back?", "Message", "Yes", "No") != "Yes")
+				return
 		if(!M.client)
 			to_chat(usr, "<span class='warning'>[M] doesn't seem to have an active client.</span>")
 			return
-
-		if(alert(usr, "Send [key_name(M)] back to Lobby?", "Message", "Yes", "No") != "Yes")
-			return
-
 		log_admin("[key_name(usr)] has sent [key_name(M)] back to the Lobby.")
-		message_admins("[key_name(usr)] has sent [key_name(M)] back to the Lobby.")
 
 		var/mob/dead/new_player/NP = new()
 		NP.ckey = M.ckey
-		qdel(M)
+		if(living)
+			if(alert(usr, "Would you like to also delete the living mob [key_name(M)]?", "Message", "Yes", "No") == "Yes")
+				log_admin("[key_name(usr)] has chosen to delete the [M] mob while sending the client to lobby.")
+				qdel(M)
+		else
+			qdel(M)
 
 	else if(href_list["tdome1"])
 		if(!check_rights(R_FUN))

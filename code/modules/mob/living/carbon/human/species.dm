@@ -14,7 +14,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 	var/icon_override
 	var/icon_override_m
 	var/icon_override_f
-	var/list/possible_ages = list(AGE_YOUNG, AGE_ADULT, AGE_MIDDLEAGED, AGE_OLD)
+	var/list/possible_ages = ALL_AGES_LIST
 	var/sexes = 1		// whether or not the race has sexual characteristics. at the moment this is only 0 for skeletons and shadows
 	var/patreon_req = 0
 	var/max_age = 75
@@ -203,28 +203,27 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 	return FALSE
 
 /datum/species/proc/random_name(gender,unique,lastname)
-	for(var/i in 1 to 5)
-		if(unique)
-			return random_unique_name(gender)
-
-		var/randname
+	var/randname
+	if(unique)
 		if(gender == MALE)
-			randname = pick(GLOB.first_names_male)
-		else
-			randname = pick(GLOB.first_names_female)
-
-		if(lastname)
-			randname += " [lastname]"
-		else
-			randname += " [pick(GLOB.last_names)]"
-
-		if(randname in GLOB.chosen_names)
-			continue
-		else
-			return randname
+			for(var/i in 1 to 10)
+				randname = pick( world.file2list("strings/rt/names/human/humnorm.txt") )
+				if(!findname(randname))
+					break
+		if(gender == FEMALE)
+			for(var/i in 1 to 10)
+				randname = pick( world.file2list("strings/rt/names/human/humnorf.txt") )
+				if(!findname(randname))
+					break
+	else
+		if(gender == MALE)
+			randname = pick( world.file2list("strings/rt/names/human/humnorm.txt") )
+		if(gender == FEMALE)
+			randname = pick( world.file2list("strings/rt/names/human/humnorf.txt") )
+	return randname
 
 /datum/species/proc/random_surname()
-	return " [pick(GLOB.last_names)]"
+	return " [pick(world.file2list("strings/rt/names/human/humnorlast.txt"))]"
 
 /datum/species/proc/regenerate_icons(mob/living/carbon/human/H)
 	return FALSE

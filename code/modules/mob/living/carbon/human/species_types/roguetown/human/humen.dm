@@ -20,7 +20,7 @@
 	inherent_traits = list(TRAIT_NOMOBSWAP)
 	default_features = MANDATORY_FEATURE_LIST
 	use_skintones = 1
-	possible_ages = list(AGE_YOUNG, AGE_ADULT, AGE_MIDDLEAGED, AGE_OLD)
+	possible_ages = ALL_AGES_LIST
 	skinned_type = /obj/item/stack/sheet/animalhide/human
 	disliked_food = NONE
 	liked_food = NONE
@@ -102,30 +102,6 @@
 	"red - blood" = "822b2b"
 
 	))
-
-/datum/species/human/northern/random_name(gender,unique,lastname)
-
-	var/randname
-	if(unique)
-		if(gender == MALE)
-			for(var/i in 1 to 10)
-				randname = pick( world.file2list("strings/rt/names/human/humnorm.txt") )
-				if(!findname(randname))
-					break
-		if(gender == FEMALE)
-			for(var/i in 1 to 10)
-				randname = pick( world.file2list("strings/rt/names/human/humnorf.txt") )
-				if(!findname(randname))
-					break
-	else
-		if(gender == MALE)
-			randname = pick( world.file2list("strings/rt/names/human/humnorm.txt") )
-		if(gender == FEMALE)
-			randname = pick( world.file2list("strings/rt/names/human/humnorf.txt") )
-	return randname
-
-/datum/species/human/northern/random_surname()
-	return " [pick(world.file2list("strings/rt/names/human/humnorlast.txt"))]"
 
 /datum/species/human/northern/get_accent(mob/living/carbon/human/H)
     switch(H.skin_tone)

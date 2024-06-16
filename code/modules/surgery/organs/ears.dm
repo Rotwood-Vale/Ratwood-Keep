@@ -96,7 +96,7 @@
 	icon = 'icons/obj/clothing/hats.dmi'
 	icon_state = "kitty"
 	damage_multiplier = 2
-	accessory_type = /datum/sprite_accessory/ears/cat
+	accessory_type = /datum/sprite_accessory/ears/cat_big
 
 /obj/item/organ/ears/penguin
 	name = "penguin ears"
@@ -165,3 +165,11 @@
 /obj/item/organ/ears/akula
 	name = "axian ears"
 	accessory_type = /datum/sprite_accessory/ears/sergal
+
+/obj/item/organ/ears/halforc
+	name = "halforc ears"
+	accessory_type = /datum/sprite_accessory/ears/halforc
+
+/obj/item/organ/ears/goblin
+	name = "goblin ears"
+	accessory_type = /datum/sprite_accessory/ears/goblin

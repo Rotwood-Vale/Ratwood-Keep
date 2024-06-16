@@ -191,8 +191,6 @@ GLOBAL_LIST_EMPTY(chosen_names)
 		to_chat(user, "<font color='red'>Classes reset.</font>")
 	random_character(gender)
 	accessory = "Nothing"
-	if(age == AGE_YOUNG)
-		age = AGE_ADULT
 
 	headshot_link = null
 	customizer_entries = list()

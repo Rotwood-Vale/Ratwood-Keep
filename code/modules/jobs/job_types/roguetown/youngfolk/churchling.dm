@@ -7,9 +7,9 @@
 	spawn_positions = 1
 	spells = list(/obj/effect/proc_holder/spell/invoked/lesser_heal)
 
-	allowed_races = CLOTHED_RACES_TYPES
+	allowed_races = RACES_TOLERATED_UP
 	allowed_sexes = list(MALE, FEMALE)
-	allowed_ages = YOUNG_AGES_LIST
+	allowed_ages = list(AGE_ADULT)
 
 	tutorial = "Your family were zealots, they scolded you with a studded belt and prayed like sinners every waking hour of the day they weren’t toiling in the fields. You escaped them by becoming a churchling, and a guaranteed education isnt so bad"
 

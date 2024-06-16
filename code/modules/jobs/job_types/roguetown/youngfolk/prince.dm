@@ -6,9 +6,9 @@
 	total_positions = 0
 	spawn_positions = 2
 	f_title = "Princess"
-	allowed_races = CLOTHED_RACES_TYPES //Maybe a system to force-pick lineage based on king and queen should be implemented.
+	allowed_races = RACES_TOLERATED_UP //Maybe a system to force-pick lineage based on king and queen should be implemented.
 	allowed_sexes = list(MALE, FEMALE)
-	allowed_ages = YOUNG_AGES_LIST
+	allowed_ages = list(AGE_ADULT)
 
 	tutorial = "You’ve never felt the gnawing of the winter, never known the bite of hunger and certainly have never known a honest day's work. You are as free as any bird in the sky, and you may revel in your debauchery for as long as your parents remain upon the throne: But someday you’ll have to grow up, and that will be the day your carelessness will cost you more than a few mammons."
 
