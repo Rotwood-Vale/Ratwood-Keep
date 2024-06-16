@@ -101,7 +101,7 @@
 	If I build a total string and do every check then... it may get a bit nasty you know?
 */
 /datum/controller/subsystem/role_class_handler/proc/check_drifterwave_restrictions(client/target_client)
-	if(length(current_wave.allowed_races) && !(target_client.prefs.pref_species.name in current_wave.allowed_races))
+	if(length(current_wave.allowed_races) && !(target_client.prefs.pref_species.type in current_wave.allowed_races))
 		to_chat(target_client, span_warning(" WRONG RACE "))
 		return FALSE
 	if(length(current_wave.allowed_patrons) && !(target_client.prefs.selected_patron.type in current_wave.allowed_patrons))
