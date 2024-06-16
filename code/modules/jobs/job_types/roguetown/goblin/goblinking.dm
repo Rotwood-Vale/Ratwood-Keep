@@ -9,6 +9,7 @@
 	allowed_sexes = list(MALE)
 	allowed_races = list(/datum/species/goblinp)
 	allowed_patrons = list(/datum/patron/inhumen/graggar)
+	banned_flaws = list("Blind")
 	tutorial = "Goblin King is a fatty lazy pig who wishes to do nothing but eat apple pies and fart while sitting on his stone throne."
 	whitelist_req = FALSE
 	outfit = /datum/outfit/job/roguetown/goblinking

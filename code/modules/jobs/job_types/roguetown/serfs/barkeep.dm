@@ -7,6 +7,7 @@
 	spawn_positions = 1
 
 	allowed_races = CLOTHED_RACES_TYPES
+	banned_flaws = list("Blind")
 
 	tutorial = "Liquor Lodging and Lavish Baths, youre the life of the party and a rich bastard because of it. Well before that pesky merchant came around and convinced people to take up the bottle instead of the tankred, you were the reason the hardworking men and women of this town could rest."
 

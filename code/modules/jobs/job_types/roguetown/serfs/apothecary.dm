@@ -7,6 +7,7 @@
 	spawn_positions = 0
 
 	allowed_races = CLOTHED_RACES_TYPES
+	banned_flaws = list("Blind")
 	
 	outfit = /datum/outfit/job/roguetown/apothecary
 	outfit_female = /datum/outfit/job/roguetown/apothecary/female

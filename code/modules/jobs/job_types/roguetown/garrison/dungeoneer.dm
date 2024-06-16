@@ -8,6 +8,7 @@
 
 	allowed_races = CLOTHED_RACES_TYPES
 	allowed_sexes = list(MALE, FEMALE)
+	banned_flaws = list("Blind")
 
 	display_order = JDO_DUNGEONEER
 

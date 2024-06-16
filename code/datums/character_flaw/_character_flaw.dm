@@ -201,7 +201,7 @@ GLOBAL_LIST_INIT(character_flaws, list("Alcoholic"=/datum/charflaw/addiction/alc
 
 /datum/charflaw/noeyes
 	name = "Blind"
-	desc = "Something was wrong when I was born, and despite my eyes, I'll never see again."
+	desc = "Something was wrong when I was born and, despite my eyes, I'll never see again."
 
 /datum/charflaw/noeyes/on_mob_creation(mob/user)
 	..()

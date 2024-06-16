@@ -19,6 +19,7 @@
 		/datum/patron/divine/pestra,
 		/datum/patron/divine/malum,
 	) //gets set to old god anyways
+	banned_flaws = list("Blind")
 	tutorial = "As an Inquisitor, the Queen has emboldened your radical sect to root out cultists and the cursed night beasts, using your practice of extracting involuntary 'sin confessions' as a guise to spy on the local populace. Witch Hunters are hired for their extreme paranoia and religious fervor."
 	whitelist_req = TRUE
 

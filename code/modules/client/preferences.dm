@@ -758,6 +758,8 @@ GLOBAL_LIST_EMPTY(chosen_names)
 				continue
 			if(length(job.allowed_sexes) && !(user.client.prefs.gender in job.allowed_sexes))
 				HTML += "<font color=#a36c63>[used_name]</font></td> <td> </td></tr>"
+			if(length(job.banned_flaws) && (user.client.prefs.charflaw.name in job.banned_flaws))
+				HTML += "<font color=#a36c63>[used_name]</font></td> <td> </td></tr>"
 				continue
 //			if((job_preferences[SSjob.overflow_role] == JP_LOW) && (rank != SSjob.overflow_role) && !is_banned_from(user.ckey, SSjob.overflow_role))
 //				HTML += "<font color=orange>[rank]</font></td><td></td></tr>"
@@ -1505,8 +1507,7 @@ Slots: [job.spawn_positions]</span>
 						charflaw = C
 						if(charflaw.desc)
 							to_chat(user, "<span class='info'>[charflaw.desc]</span>")
-
-
+					ResetJobs()
 
 				if("mutant_color")
 					var/new_mutantcolor = color_pick_sanitized_lumi(user, "Choose your character's mutant #1 color:", "Character Preference","#"+features["mcolor"])
