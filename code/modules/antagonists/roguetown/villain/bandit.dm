@@ -81,16 +81,16 @@
 
 /datum/outfit/job/roguetown/bandit/pre_equip(mob/living/carbon/human/H)
 	..()
-	H.mind.adjust_skillrank(/datum/skill/combat/polearms, 2, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/combat/axes, 2, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/combat/maces, 2, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/combat/swords, 2, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/combat/whipsflails, 2, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/combat/bows, 2, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 2, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/combat/polearms, 3, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/combat/axes, 3, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/combat/maces, 3, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 4, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 3, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/combat/swords, 3, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/combat/whipsflails, 3, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/combat/knives, 3, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/combat/bows, 3, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 3, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/craft/crafting, 2, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/craft/carpentry, 1, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
@@ -104,6 +104,7 @@
 	backr = /obj/item/storage/backpack/rogue/satchel
 	backpack_contents = list(/obj/item/needle/thorn = 1, /obj/item/natural/cloth = 1)
 	mask = /obj/item/clothing/mask/rogue/facemask/steel
+	neck = /obj/item/clothing/neck/roguetown/coif
 	head = /obj/item/clothing/head/roguetown/helmet/leather/volfhelm
 	if(prob(40))
 		neck = /obj/item/clothing/neck/roguetown/chaincoif
@@ -119,32 +120,27 @@
 			beltr = /obj/item/rogueweapon/sword/iron
 			if(prob(40))
 				backl = /obj/item/rogueweapon/shield/wood
-			H.mind.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE)
 			H.change_stat("endurance", 1)
 		if(4 to 6) // knife bandit - dodge maxing
 			beltr = /obj/item/rogueweapon/huntingknife/cleaver
-			H.mind.adjust_skillrank(/datum/skill/combat/knives, 1, TRUE)
 			H.change_stat("speed", 3)
 			H.change_stat("strength", -2)
 		if(7 to 9) // flail bandit small chance to two handed flail
 			if(prob(80))
 				beltr = /obj/item/rogueweapon/flail
-				H.mind.adjust_skillrank(/datum/skill/combat/whipsflails, 1, TRUE)
+				backl = /obj/item/rogueweapon/shield/wood
 			else
 				r_hand = /obj/item/rogueweapon/flail/peasantwarflail
-				H.mind.adjust_skillrank(/datum/skill/combat/polearms, 1, TRUE)
 			H.change_stat("strength", 1)
 		if(10 to 12) // crossbow bandit
 			backl = /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow
 			beltl = /obj/item/quiver/bolts
 			beltr = /obj/item/rogueweapon/stoneaxe/woodcut/steel
-			H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 1, TRUE)
 			H.change_stat("perception", 3)
 		if(13 to 15) // spear bandit
 			r_hand = /obj/item/rogueweapon/spear
 			if(prob(40))
 				backl = /obj/item/rogueweapon/shield/wood
-			H.mind.adjust_skillrank(/datum/skill/combat/polearms, 1, TRUE)
 			H.change_stat("endurance", 1)
 		if(16) // hedge knight - give challenge to knights/templars ~6% chance 15-20 bandits roundstart average 1 hedge knight - lacks protection to hands or feet
 			r_hand = /obj/item/rogueweapon/greatsword/zwei
@@ -157,7 +153,7 @@
 				neck = /obj/item/clothing/neck/roguetown/bervor
 			else
 				neck = /obj/item/clothing/neck/roguetown/gorget
-			H.mind.adjust_skillrank(/datum/skill/combat/swords, rand(2,3), TRUE) // either expert or master skill - knights start with master and templars expert sword skill
+			H.mind.adjust_skillrank(/datum/skill/combat/swords, rand(1,2), TRUE) // either expert or master skill - knights start with master and templars expert sword skill
 			H.change_stat("strength", 1)
 			H.change_stat("constitution", 1)
 			H.change_stat("speed", -2)

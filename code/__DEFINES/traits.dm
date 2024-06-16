@@ -3,29 +3,30 @@
 #define TRAIT_NOSTINK 					"Dead Nose"
 #define TRAIT_ZJUMP 					"High Jumping"
 #define TRAIT_LEAPER 					"Leaper"
-#define TRAIT_NOSEGRAB 				"Intimidating"
+#define TRAIT_NOSEGRAB 					"Intimidating"
 #define TRAIT_NUTCRACKER 				"Nutcracker"
-#define TRAIT_SEEPRICES				"Giza Blooded"
+#define TRAIT_SEEPRICES					"Giza Blooded"
 #define TRAIT_SEEPRICES_SHITTY			"Giza-in-training"
 #define TRAIT_STRONGBITE				"Strong Bite"
-#define TRAIT_NOBLE					"Noble Blooded"
+#define TRAIT_NOBLE						"Noble Blooded"
 #define TRAIT_EMPATH					"Empath"
 #define TRAIT_BREADY					"Battleready"
 #define TRAIT_MEDIUMARMOR				"Maille Training"
 #define TRAIT_HEAVYARMOR				"Plate Training"
-#define TRAIT_DODGEEXPERT              "Fast Reflexes"
+#define TRAIT_DODGEEXPERT             	"Fast Reflexes"
 #define TRAIT_DECEIVING_MEEKNESS		"Deceiving Meekness"
 #define TRAIT_CRITICAL_RESISTANCE		"Critical Resistance"
-#define TRAIT_CRITICAL_WEAKNESS		"Critical Weakness"
-#define TRAIT_MANIAC_AWOKEN			"Awoken"
-#define TRAIT_NOROGSTAM				"Indefatigable" //for ai
+#define TRAIT_CRITICAL_WEAKNESS			"Critical Weakness"
+#define TRAIT_MANIAC_AWOKEN				"Awoken"
+#define TRAIT_NOROGSTAM					"Indefatigable" //for ai
 #define TRAIT_NUDIST					"Nudist" //you can't wear most clothes
 #define TRAIT_KNEESTINGER_IMMUNITY		"Blessing of Dendor"
 #define TRAIT_RETARD_ANATOMY			"Inhumen Anatomy" //can't wear hats and shoes
 #define TRAIT_NASTY_EATER 				"Inhumen Digestion" //can eat rotten food, organs, poison berries, and drink murky water
-#define TRAIT_ROT_EATER				"Blessing of Pestra" //can eat rotten food
+#define TRAIT_ROT_EATER					"Blessing of Pestra" //can eat rotten food
 #define TRAIT_ORGAN_EATER				"Blessing of Graggar" //can eat organs
-#define TRAIT_SOUL_EXAMINE					"Blessing of Necra" //can check bodies to see if they have departed
+#define TRAIT_SOUL_EXAMINE				"Blessing of Necra" //can check bodies to see if they have departed
+#define TRAIT_CRACKHEAD					"Blessing of Eora" //will never overdose
 
 #define TRAIT_MISSING_NOSE "Missing Nose" //halved stamina regeneration
 #define TRAIT_SPELLCOCKBLOCK "spellcockblock" //prevents spellcasting
@@ -71,6 +72,7 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_ROT_EATER = "<span class='necrosis'>I can eat rotten food.</span>",
 	TRAIT_ORGAN_EATER = "<span class='bloody'>I can eat organs and raw flesh.</span>",
 	TRAIT_SOUL_EXAMINE = "<span class='deadsay'>I know when someone's soul has departed.</span>",
+	TRAIT_CRACKHEAD = "<span class='love'>I can use drugs as much as I want!</span>",
 	TRAIT_MISSING_NOSE = "<span class='warning'>I struggle to breathe.</span>",
 	TRAIT_ANTIMAGIC = "I am immune to most forms of magic.",
 	TRAIT_SHOCKIMMUNE = "I am immune to electrical shocks.",

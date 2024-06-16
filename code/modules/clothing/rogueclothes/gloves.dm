@@ -14,7 +14,7 @@
 	desc = ""
 	icon_state = "leather_gloves"
 	armor = list("blunt" = 30, "slash" = 10, "stab" = 20, "bullet" = 1, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
-	prevent_crits = list(BCLASS_CUT, BCLASS_BLUNT)
+	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_BLUNT)
 	resistance_flags = null
 	blocksound = SOFTHIT
 	blade_dulling = DULLING_BASHCHOP
@@ -44,7 +44,7 @@
 	desc = ""
 	icon_state = "angle"
 	armor = list("blunt" = 50, "slash" = 25, "stab" = 40, "bullet" = 5, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
-	prevent_crits = list(BCLASS_CUT, BCLASS_BLUNT)
+	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_BLUNT)
 	resistance_flags = null
 	blocksound = SOFTHIT
 	max_integrity = 100
@@ -59,7 +59,7 @@
 	desc = ""
 	icon_state = "cgloves"
 	armor = list("blunt" = 60, "slash" = 100, "stab" = 80, "bullet" = 20, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
-	prevent_crits = list(BCLASS_CUT, BCLASS_BLUNT)
+	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_BLUNT)
 	resistance_flags = null
 	blocksound = CHAINHIT
 	max_integrity = 200

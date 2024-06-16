@@ -183,7 +183,7 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 	item_state = "vpants"
 	sewrepair = FALSE
 	armor = list("blunt" = 100, "slash" = 100, "stab" = 90, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
-	prevent_crits = list(BCLASS_CUT, BCLASS_CHOP, BCLASS_BLUNT, BCLASS_TWIST)
+	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT, BCLASS_TWIST)
 	blocksound = PLATEHIT
 	do_sound = FALSE
 	drop_sound = 'sound/foley/dropsound/armor_drop.ogg'
@@ -226,7 +226,7 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 	icon_state = "vplate"
 	item_state = "vplate"
 	armor = list("blunt" = 100, "slash" = 100, "stab" = 90, "bullet" = 100, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
-	prevent_crits = list(BCLASS_CUT, BCLASS_CHOP, BCLASS_BLUNT, BCLASS_TWIST)
+	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT, BCLASS_TWIST)
 	nodismemsleeves = TRUE
 	max_integrity = 500
 	allowed_sex = list(MALE, FEMALE)
@@ -243,7 +243,7 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 	body_parts_covered = FEET
 	icon_state = "vboots"
 	item_state = "vboots"
-	prevent_crits = list(BCLASS_CUT, BCLASS_CHOP, BCLASS_BLUNT, BCLASS_TWIST)
+	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT, BCLASS_TWIST)
 	color = null
 	blocksound = PLATEHIT
 	armor = list("blunt" = 100, "slash" = 100, "stab" = 90, "bullet" = 100, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
@@ -648,9 +648,12 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 					return
 				if(do_after(user, 100))
 					lord.handle_vitae(-5000)
-					var/list/armorpieces = list(/obj/item/clothing/under/roguetown/platelegs/vampire, /obj/item/clothing/suit/roguetown/armor/chainmail/iron/vampire, /obj/item/clothing/suit/roguetown/armor/plate/vampire, /obj/item/clothing/shoes/roguetown/boots/armor/vampire, /obj/item/clothing/head/roguetown/helmet/heavy/vampire, /obj/item/clothing/gloves/roguetown/chain/vampire)
-					for(var/obj/item/A in armorpieces)
-						new A(src.loc)
+					new /obj/item/clothing/under/roguetown/platelegs/vampire(user.loc)
+					new /obj/item/clothing/suit/roguetown/armor/chainmail/iron/vampire(user.loc)
+					new /obj/item/clothing/suit/roguetown/armor/plate/vampire(user.loc)
+					new /obj/item/clothing/shoes/roguetown/boots/armor/vampire(user.loc)
+					new /obj/item/clothing/head/roguetown/helmet/heavy/vampire(user.loc)
+					new /obj/item/clothing/gloves/roguetown/chain/vampire(user.loc)
 				user.playsound_local(get_turf(src), 'sound/misc/vcraft.ogg', 100, FALSE, pressure_affected = FALSE)
 
 /obj/structure/vampire/bloodpool/proc/update_pool(change)

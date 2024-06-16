@@ -52,7 +52,7 @@
 	resistance_flags = FIRE_PROOF
 	slot_flags = ITEM_SLOT_NECK|ITEM_SLOT_HEAD
 	body_parts_covered = NECK|HAIR|EARS|HEAD
-	prevent_crits = list(BCLASS_CUT, BCLASS_CHOP, BCLASS_BLUNT, BCLASS_TWIST)
+	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT, BCLASS_TWIST)
 	adjustable = CAN_CADJUST
 	toggle_icon_state = TRUE
 	blocksound = CHAINHIT
@@ -99,7 +99,7 @@
 	resistance_flags = FIRE_PROOF
 	slot_flags = ITEM_SLOT_NECK
 	body_parts_covered = NECK|EARS|MOUTH|NOSE
-	prevent_crits = list(BCLASS_CUT, BCLASS_CHOP, BCLASS_BLUNT, BCLASS_TWIST)
+	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT, BCLASS_TWIST)
 	blocksound = PLATEHIT
 
 /obj/item/clothing/neck/roguetown/gorget
@@ -108,11 +108,12 @@
 	flags_inv = HIDEFACIALHAIR
 	armor = list("blunt" = 90, "slash" = 100, "stab" = 80, "bullet" = 100, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
 	smeltresult = /obj/item/ingot/iron
+	anvilrepair = /datum/skill/craft/armorsmithing
 	max_integrity = 150
 	resistance_flags = FIRE_PROOF
 	slot_flags = ITEM_SLOT_NECK
 	body_parts_covered = NECK
-	prevent_crits = list(BCLASS_CUT, BCLASS_CHOP, BCLASS_BLUNT, BCLASS_TWIST)
+	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT, BCLASS_TWIST)
 	blocksound = PLATEHIT
 
 /obj/item/clothing/neck/roguetown/psicross
