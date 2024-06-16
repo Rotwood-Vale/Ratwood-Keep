@@ -37,7 +37,7 @@
 	)
 	time = 2.4 SECONDS
 	surgery_flags_blocked = SURGERY_CLAMPED
-	skill_min = SKILL_LEVEL_JOURNEYMAN
+	skill_min = SKILL_LEVEL_APPRENTICE
 	skill_median = SKILL_LEVEL_JOURNEYMAN
 
 /datum/surgery_step/clamp/preop(mob/user, mob/living/target, target_zone, obj/item/tool, datum/intent/intent)
@@ -64,7 +64,7 @@
 	)
 	time = 2.4 SECONDS
 	surgery_flags_blocked = SURGERY_RETRACTED
-	skill_min = SKILL_LEVEL_JOURNEYMAN
+	skill_min = SKILL_LEVEL_APPRENTICE
 	skill_median = SKILL_LEVEL_JOURNEYMAN
 
 /datum/surgery_step/retract/preop(mob/user, mob/living/target, target_zone, obj/item/tool, datum/intent/intent)

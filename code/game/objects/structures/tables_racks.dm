@@ -651,6 +651,7 @@
 /obj/structure/rack/rogue/shelf
 	icon = 'icons/roguetown/misc/structure.dmi'
 	icon_state = "shelf"
+	density = FALSE
 	climbable = FALSE
 	dir = SOUTH
 	pixel_y = 32

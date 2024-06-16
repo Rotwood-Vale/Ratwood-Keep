@@ -190,8 +190,9 @@
 			nodmg = TRUE
 			next_attack_msg += " <span class='warning'>Armor stops the damage.</span>"
 
+	var/datum/wound/caused_wound
 	if(!nodmg)
-		affecting.bodypart_attacked_by(BCLASS_BITE, dam2do, user, user.zone_selected, crit_message = TRUE)
+		caused_wound = affecting.bodypart_attacked_by(BCLASS_BITE, dam2do, user, user.zone_selected, crit_message = TRUE)
 	visible_message("<span class='danger'>[user] bites [src]'s [parse_zone(user.zone_selected)]![next_attack_msg.Join()]</span>", \
 					"<span class='userdanger'>[user] bites my [parse_zone(user.zone_selected)]![next_attack_msg.Join()]</span>")
 
@@ -199,19 +200,13 @@
 
 	if(!nodmg)
 		playsound(src, "smallslash", 100, TRUE, -1)
-		if(istype(src, /mob/living/carbon/human))
-			var/mob/living/carbon/human/H = src
-			if(user.mind && mind)
-				if(user.mind.has_antag_datum(/datum/antagonist/werewolf))
-					if(!src.mind.has_antag_datum(/datum/antagonist/werewolf))
-						if(prob(10))
-							H.werewolf_infect()
-							//addtimer(CALLBACK(src, TYPE_PROC_REF(/mob/living/carbon/human, werewolf_infect)), 3 MINUTES)
-				if(user.mind.has_antag_datum(/datum/antagonist/zombie) && !src.mind.has_antag_datum(/datum/antagonist/zombie))
-					if(!prob(3))
-						return
-					INVOKE_ASYNC(H, TYPE_PROC_REF(/mob/living/carbon/human, zombie_infect_attempt))
-					user.mind.adjust_triumphs(1)
+		if(ishuman(src) && user.mind)
+			if(user.mind.has_antag_datum(/datum/antagonist/werewolf))
+				caused_wound?.werewolf_infect_attempt()
+				if(prob(30))
+					user.werewolf_feed(src)
+			if(user.mind.has_antag_datum(/datum/antagonist/zombie) && caused_wound?.zombie_infect_attempt())
+				user.mind.adjust_triumphs(1)
 
 	var/obj/item/grabbing/bite/B = new()
 	user.equip_to_slot_or_del(B, SLOT_MOUTH)

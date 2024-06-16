@@ -102,3 +102,5 @@
 #define WOUND_SEVERITY_CRITICAL 4
 /// Wounds that are almost immediately fatal, such as a dissected aorta
 #define WOUND_SEVERITY_FATAL 5
+/// This wound has a zombie or werewolf infection
+#define WOUND_SEVERITY_BIOHAZARD 6

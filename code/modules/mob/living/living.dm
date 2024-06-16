@@ -51,6 +51,9 @@
 	med_hud_set_status()
 
 /mob/living/onZImpact(turf/T, levels)
+	if(HAS_TRAIT(src, TRAIT_NOFALLDAMAGE1))
+		if(levels <= 2)	
+			return 
 	var/points
 	for(var/i in 2 to levels)
 		i++
@@ -756,10 +759,11 @@
 		remove_client_colour(/datum/client_colour/monochrome)
 		. = TRUE
 		if(mind)
+			if(admin_revive)
+				mind.remove_antag_datum(/datum/antagonist/zombie)
 			for(var/S in mind.spell_list)
 				var/obj/effect/proc_holder/spell/spell = S
 				spell.updateButtonIcon()
-			mind.remove_antag_datum(/datum/antagonist/zombie)
 
 /mob/living/proc/remove_CC(should_update_mobility = TRUE)
 	SetStun(0, FALSE)

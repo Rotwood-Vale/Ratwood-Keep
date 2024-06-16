@@ -1,15 +1,68 @@
 /mob/living/carbon/human
 	var/mob/stored_mob = null
 
+/datum/antagonist/werewolf/on_life(mob/user)
+    if(!user) return
+    var/mob/living/carbon/human/H = user
+    if(H.stat == DEAD) return
+    if(H.advsetup) return
+
+    // Werewolf transforms at night AND under the sky
+    if(!transformed && !transforming)
+        if(GLOB.tod == "night")
+            if(isturf(H.loc))
+                var/turf/loc = H.loc
+                if(loc.can_see_sky())
+                    to_chat(H, "<span class='userdanger'>The moonlight scorns me... It is too late.</span>")
+                    owner.current.playsound_local(get_turf(owner.current), 'sound/music/wolfintro.ogg', 80, FALSE, pressure_affected = FALSE)
+                    H.flash_fullscreen("redflash3")
+                    transforming = world.time // timer
+    
+    // Begin transformation
+    else if(transforming)
+        if (world.time >= transforming + 35 SECONDS) // Stage 3
+            H.werewolf_transform()
+            transforming = FALSE
+            transformed = TRUE // Mark as transformed
+            
+        else if (world.time >= transforming + 25 SECONDS) // Stage 2
+            H.flash_fullscreen("redflash3")
+            H.emote("agony", forced = TRUE)
+            to_chat(H, "<span class='userdanger'>UNIMAGINABLE PAIN!</span>")
+            H.Stun(30)
+            H.Knockdown(30)
+
+        else if (world.time >= transforming + 10 SECONDS) // Stage 1
+            H.emote("")
+            to_chat(H, "<span class='warning'>I can feel my muscles aching, it feels HORRIBLE...</span>")
+        
+
+    // Werewolf reverts to human form during the day
+    else if(transformed)
+        H.real_name = wolfname
+        H.name = wolfname
+
+        if(GLOB.tod != "night")
+            if(!untransforming)
+                untransforming = world.time // Start untransformation phase
+
+            if (world.time >= untransforming + 25 SECONDS) // Untransform
+                H.emote("rage", forced = TRUE)
+                H.werewolf_untransform()
+                transformed = FALSE
+                untransforming = FALSE // Reset untransforming phase
+                
+            else if (world.time >= untransforming + 10 SECONDS) // Alert player
+                H.flash_fullscreen("redflash1")
+                to_chat(H, "<span class='warning'>Daylight shines around me... the curse begins to fade.</span>")
+			
+
 /mob/living/carbon/human/species/werewolf/death(gibbed)
 	werewolf_untransform(TRUE, gibbed)
 
 /mob/living/carbon/human/proc/werewolf_transform()
-	if (notransform)
-		return
 	if(!mind)
 		log_runtime("NO MIND ON [src.name] WHEN TRANSFORMING")
-	notransform = TRUE
 	Paralyze(1, ignore_canstun = TRUE)
 	for(var/obj/item/W in src)
 		dropItemToGround(W)
@@ -22,8 +75,11 @@
 		SSdroning.play_area_sound(get_area(src), client)
 //	stop_cmusic()
 
+	src.fully_heal(FALSE)
+
 	var/mob/living/carbon/human/species/werewolf/W = new (loc)
 
+	W.set_patron(src.patron)
 	W.gender = gender
 	W.regenerate_icons()
 	W.stored_mob = src
@@ -47,17 +103,8 @@
 	W.remove_all_languages()
 	W.grant_language(/datum/language/beast)
 
-//	var/datum/antagonist/werewolf/WW = mind.has_antag_datum(/datum/antagonist/werewolf)
-//	if(!W.mind)
-//		W.mind_initialize()
-//	if(WW)
-//		W.mind.add_antag_datum(WW)
-
-	W.base_intents = list(INTENT_HELP, INTENT_DISARM, INTENT_GRAB, /datum/intent/unarmed/wwolf)
+	W.base_intents = list(INTENT_HELP, INTENT_DISARM, INTENT_GRAB)
 	W.update_a_intents()
-	W.name = "WEREWOLF"
-	W.real_name = "WEREWOLF"
-
 
 	to_chat(W, "<span class='userdanger'>I transform into a horrible beast!</span>")
 	W.emote("rage")
@@ -68,31 +115,35 @@
 	W.mind.adjust_skillrank(/datum/skill/combat/unarmed, 6, TRUE)
 	W.mind.adjust_skillrank(/datum/skill/misc/climbing, 6, TRUE)
 
-	W.verbs |= /mob/living/carbon/human/proc/howl_button
+	W.AddSpell(new /obj/effect/proc_holder/spell/self/howl)
+	W.AddSpell(new /obj/effect/proc_holder/spell/self/claws)
 
 	ADD_TRAIT(src, TRAIT_NOSLEEP, TRAIT_GENERIC)
 
 	ADD_TRAIT(W, TRAIT_STRONGBITE, TRAIT_GENERIC)
 	ADD_TRAIT(W, TRAIT_ZJUMP, TRAIT_GENERIC)
+	ADD_TRAIT(W, TRAIT_NOFALLDAMAGE1, TRAIT_GENERIC)
 	ADD_TRAIT(W, TRAIT_NOROGSTAM, TRAIT_GENERIC)
-	ADD_TRAIT(W, TRAIT_NOHUNGER, TRAIT_GENERIC)
 	ADD_TRAIT(W, TRAIT_BASHDOORS, TRAIT_GENERIC)
 	ADD_TRAIT(W, TRAIT_SHOCKIMMUNE, TRAIT_GENERIC)
 	ADD_TRAIT(W, TRAIT_STEELHEARTED, TRAIT_GENERIC)
 	ADD_TRAIT(W, TRAIT_BREADY, TRAIT_GENERIC)
+	ADD_TRAIT(W, TRAIT_TOXIMMUNE, TRAIT_GENERIC)
+	ADD_TRAIT(W, TRAIT_ORGAN_EATER, TRAIT_GENERIC)
+	ADD_TRAIT(W, TRAIT_NASTY_EATER, TRAIT_GENERIC)
+	ADD_TRAIT(W, TRAIT_NOSTINK, TRAIT_GENERIC)
+	ADD_TRAIT(W, TRAIT_CRITICAL_RESISTANCE, TRAIT_GENERIC)
+	ADD_TRAIT(W, TRAIT_IGNOREDAMAGESLOWDOWN, TRAIT_GENERIC)
+	ADD_TRAIT(W, TRAIT_IGNORESLOWDOWN, TRAIT_GENERIC)
 
 	invisibility = oldinv
-	notransform = FALSE
 
 
 /mob/living/carbon/human/proc/werewolf_untransform(dead,gibbed)
-	if(notransform)
-		return
 	if(!stored_mob)
 		return
 	if(!mind)
 		log_runtime("NO MIND ON [src.name] WHEN UNTRANSFORMING")
-	notransform = TRUE
 	Paralyze(1, ignore_canstun = TRUE)
 	for(var/obj/item/W in src)
 		dropItemToGround(W)
@@ -104,16 +155,13 @@
 	REMOVE_TRAIT(W, TRAIT_NOSLEEP, TRAIT_GENERIC)
 	if(dead)
 		W.death(gibbed)
-//	W.key = key
+
 	W.forceMove(get_turf(src))
 	W.remove_status_effect(STATUS_EFFECT_STASIS)
 
 	REMOVE_TRAIT(W, TRAIT_NOMOOD, TRAIT_GENERIC)
 	stress = W.stress
 
-//	var/datum/antagonist/werewolf/WW = mind.has_antag_datum(/datum/antagonist/werewolf)
-//	if(WW)
-//		W.mind.add_antag_datum(WW)
 	mind.transfer_to(W)
 
 	var/mob/living/carbon/human/species/werewolf/WA = src
@@ -121,6 +169,9 @@
 	W.copy_known_languages_from(WA.stored_language)
 	W.mind.known_skills = WA.stored_skills.Copy()
 	W.mind.skill_experience = WA.stored_experience.Copy()
+
+	W.RemoveSpell(new /obj/effect/proc_holder/spell/self/howl)
+	W.RemoveSpell(new /obj/effect/proc_holder/spell/self/claws)
 
 	W.regenerate_icons()
 
@@ -130,24 +181,4 @@
 	W.Knockdown(30)
 	W.Stun(30)
 
-	qdel(src)
-
-
-/obj/item/clothing/suit/roguetown/armor/skin_armor/werewolf_skin
-	slot_flags = null
-	name = "werewolf's skin"
-	desc = ""
-	icon_state = null
-	body_parts_covered = FULL_BODY
-	armor = list("blunt" = 30, "slash" = 10, "stab" = 20, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
-	prevent_crits = list(BCLASS_CUT, BCLASS_CHOP, BCLASS_STAB, BCLASS_BLUNT, BCLASS_TWIST)
-	blocksound = SOFTHIT
-	blade_dulling = DULLING_BASHCHOP
-	sewrepair = FALSE
-	max_integrity = 100
-
-/obj/item/clothing/suit/roguetown/armor/skin_armor/dropped(mob/living/user, show_message = TRUE)
-	. = ..()
-	if(QDELETED(src))
-		return
 	qdel(src)

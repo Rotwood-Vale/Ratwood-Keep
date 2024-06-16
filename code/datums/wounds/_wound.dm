@@ -77,6 +77,12 @@ GLOBAL_LIST_INIT(primordial_wounds, init_primordial_wounds())
 
 /datum/wound/Destroy(force)
 	. = ..()
+	if(zombie_infection_timer)
+		deltimer(zombie_infection_timer)
+		zombie_infection_timer = null
+	if(werewolf_infection_timer)
+		deltimer(werewolf_infection_timer)
+		werewolf_infection_timer = null
 	if(bodypart_owner)
 		remove_from_bodypart()
 	else if(owner)
@@ -93,11 +99,17 @@ GLOBAL_LIST_INIT(primordial_wounds, init_primordial_wounds())
 		visible_name += " <span class='green'>(sewn)</span>"
 	if(is_clotted())
 		visible_name += " <span class='danger'>(clotted)</span>"
+	if(has_special_infection())
+		visible_name += " <span class='infection'>(INFECTED)</span>"
 	return visible_name
 
 /// Description of this wound returned to the player when the bodypart is checked with check_for_injuries()
 /datum/wound/proc/get_check_name(mob/user)
-	return check_name
+	var/visible_name = check_name
+	if(visible_name)
+		if(has_special_infection())
+			visible_name += " <span class='infection'>\[INFECTION\]</span>"
+	return visible_name
 
 /// Crit message that should be appended when this wound is applied in combat
 /datum/wound/proc/get_crit_message(mob/living/affected, obj/item/bodypart/affected_bodypart)
@@ -223,6 +235,14 @@ GLOBAL_LIST_INIT(primordial_wounds, init_primordial_wounds())
 /datum/wound/proc/on_mob_gain(mob/living/affected)
 	if(mob_overlay)
 		affected.update_damage_overlays()
+	if(zombie_infection_timer)
+		deltimer(zombie_infection_timer)
+		zombie_infection_timer = null
+		zombie_infect_attempt()
+	if(werewolf_infection_timer)
+		deltimer(werewolf_infection_timer)
+		werewolf_infection_timer = null
+		werewolf_infect_attempt()
 
 /// Removes this wound from a given, simpler than adding to a bodypart - No extra effects
 /datum/wound/proc/remove_from_mob()
@@ -238,9 +258,13 @@ GLOBAL_LIST_INIT(primordial_wounds, init_primordial_wounds())
 /datum/wound/proc/on_mob_loss(mob/living/affected)
 	if(mob_overlay)
 		affected.update_damage_overlays()
+	if(zombie_infection_timer)
+		deltimer(zombie_infection_timer)
 
 /// Called on handle_wounds(), on the life() proc
 /datum/wound/proc/on_life()
+	if(whp <= 0)
+		return FALSE
 	if(!isnull(clotting_threshold) && clotting_rate && (bleed_rate > clotting_threshold))
 		bleed_rate = max(clotting_threshold, bleed_rate - clotting_rate)
 	if(passive_healing)
@@ -259,12 +283,20 @@ GLOBAL_LIST_INIT(primordial_wounds, init_primordial_wounds())
 	var/amount_healed = min(whp, round(heal_amount, DAMAGE_PRECISION))
 	whp -= amount_healed
 	if(whp <= 0)
-		if(bodypart_owner)
-			remove_from_bodypart(src)
-		else if(owner)
-			remove_from_mob(src)
-		else
-			qdel(src)
+		bleed_rate = 0
+		woundpain = 0
+		can_sew = FALSE
+		can_cauterize = FALSE
+		disabling = FALSE
+		critical = FALSE
+		mob_overlay = ""
+		if(!should_persist())
+			if(bodypart_owner)
+				remove_from_bodypart(src)
+			else if(owner)
+				remove_from_mob(src)
+			else
+				qdel(src)
 	return amount_healed
 
 /// Sews the wound up, changing its properties to the sewn ones
@@ -302,6 +334,16 @@ GLOBAL_LIST_INIT(primordial_wounds, init_primordial_wounds())
 /// Checks if this wound is clotted
 /datum/wound/proc/is_clotted()
 	return !isnull(clotting_threshold) && (bleed_rate <= clotting_threshold)
+
+/// Checks if this wound has a special infection (zombie or werewolf)
+/datum/wound/proc/has_special_infection()
+	return (zombie_infection_timer || werewolf_infection_timer)
+
+/// Some wounds cannot go away naturally
+/datum/wound/proc/should_persist()
+	if(has_special_infection())
+		return TRUE
+	return FALSE
 
 /// Returns whether or not this wound should embed a weapon
 /proc/should_embed_weapon(datum/wound/wound_or_boolean, obj/item/weapon)

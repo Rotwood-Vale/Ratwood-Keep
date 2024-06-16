@@ -205,8 +205,11 @@
 	)
 	for(var/slot in removed_slots)
 		zombie.dropItemToGround(zombie.get_item_by_slot(slot), TRUE)
+
+	/* Exercises in futility
 	// Ghosts you because this shit was just not working whatsoever, let the AI handle the rest
 	zombie.ghostize(FALSE)
+	*/
 
 /datum/antagonist/zombie/greet()
 	to_chat(owner.current, "<span class='userdanger'>Death is not the end...</span>")
@@ -301,6 +304,23 @@
 	to_chat(src, "<span class='warning'>[closest_dist] meters away, [dir2text(the_dir)]...</span>")
 	return TRUE
 
+/// Use this to attempt to add the zombie antag datum to a human
+/mob/living/carbon/human/proc/zombie_check()
+	if(!mind)
+		return
+	var/already_zombie = mind.has_antag_datum(/datum/antagonist/zombie)
+	if(already_zombie)
+		return already_zombie
+	if(mind.has_antag_datum(/datum/antagonist/vampirelord))
+		return
+	if(mind.has_antag_datum(/datum/antagonist/werewolf))
+		return
+	if(mind.has_antag_datum(/datum/antagonist/skeleton))
+		return
+	if(HAS_TRAIT(src, TRAIT_ZOMBIE_IMMUNE))
+		return
+	return mind.add_antag_datum(/datum/antagonist/zombie)
+
 /**
  * This occurs when one zombie infects a living human, going into instadeath from here is kind of shit and confusing
  * We instead just transform at the end
@@ -311,16 +331,15 @@
 		return
 	if(stat >= DEAD) //do shit the natural way i guess
 		return 
-	to_chat(src, "<span class='danger'>I feel horrible... REALLY horrible after that...</span>")
-	if(blood_volume)
-		mob_timers["puke"] = world.time
-		vomit(1, blood = TRUE, stun = FALSE)
+	to_chat(src, "<span class='danger'>I feel horrible... REALLY horrible...</span>")
+	mob_timers["puke"] = world.time
+	vomit(1, blood = TRUE, stun = FALSE)
 	addtimer(CALLBACK(src, PROC_REF(wake_zombie)), 1 MINUTES)
 	return zombie_antag
 
 /mob/living/carbon/human/proc/wake_zombie()
 	var/datum/antagonist/zombie/zombie_antag = mind?.has_antag_datum(/datum/antagonist/zombie)
-	if(!zombie_antag)
+	if(!zombie_antag || zombie_antag.has_turned)
 		return FALSE
 	flash_fullscreen("redflash3")
 	to_chat(src, "<span class='danger'>It hurts... Is this really the end for me?</span>")

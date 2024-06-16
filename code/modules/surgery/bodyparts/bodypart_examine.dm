@@ -175,12 +175,17 @@
 		else
 			status += "<span class='bloody'>BLEEDING</span>"
 	
+	var/crazy_infection = FALSE
 	var/list/wound_strings = list()
 	for(var/datum/wound/wound as anything in wounds)
 		if(!wound.check_name)
 			continue
 		wound_strings |= wound.get_check_name(user)
+		crazy_infection ||= wound.has_special_infection()
 	status += wound_strings
+
+	if(crazy_infection)
+		status += "<span class='infection'>INFECTION</span>"
 
 	if(skeletonized)
 		status += "<span class='dead'>SKELETON</span>"

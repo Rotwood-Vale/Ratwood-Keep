@@ -29,6 +29,7 @@
 #define TRAIT_KNEESTINGER_IMMUNITY		"Blessing of Dendor"
 #define TRAIT_SOUL_EXAMINE				"Blessing of Necra" //can check bodies to see if they have departed
 #define TRAIT_CRACKHEAD					"Blessing of Eora" //will never overdose
+#define TRAIT_NOFALLDAMAGE1				"Minor fall damage immunity"
 
 #define TRAIT_MISSING_NOSE "Missing Nose" //halved stamina regeneration
 #define TRAIT_DISFIGURED "Disfigured"
@@ -88,6 +89,7 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_ANTIMAGIC = "I am immune to most forms of magic.",
 	TRAIT_SHOCKIMMUNE = "I am immune to electrical shocks.",
 	TRAIT_NOSLEEP = "<span class='warning'>I can't sleep.</span>",
+	TRAIT_NOFALLDAMAGE1 = "<span class='warning'>I can easily handle minor falls.</span>",
 ))
 
 // trait accessor defines

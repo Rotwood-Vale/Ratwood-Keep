@@ -474,31 +474,3 @@
 	candodge = TRUE
 	canparry = TRUE
 	item_d_type = "stab"
-
-/datum/intent/unarmed/claw
-	name = "claw"
-	icon_state = "instrike"
-	attack_verb = list("claws", "tears", "rips")
-	animname = "cut"
-	blade_class = BCLASS_CUT
-	hitsound = "smallslash"
-	penfactor = 0
-	candodge = TRUE
-	canparry = TRUE
-	miss_text = "claws the air!"
-	miss_sound = "bluntwooshmed"
-	item_d_type = "slash"
-
-/datum/intent/unarmed/wwolf
-	name = "claw"
-	icon_state = "inchop"
-	attack_verb = list("claws", "mauls", "eviscerates")
-	animname = "cut"
-	blade_class = BCLASS_CHOP
-	hitsound = "genslash"
-	penfactor = 30
-	candodge = TRUE
-	canparry = TRUE
-	miss_text = "slashes the air!"
-	miss_sound = "bluntwooshlarge"
-	item_d_type = "slash"

@@ -766,13 +766,13 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 		if(!unlocked)
 			to_chat(user, "I have yet to regain this aspect of my power!")
 			return
-		if(C.deathknights.len >= 3)
-			to_chat(user, "You cannot summon any more death knights.")
-			return
 		var/choice = input(user,"What to do?", "ROGUETOWN") as anything in useoptions|null
 		switch(choice)
 			if("Create Death Knight")
 				if(alert(user, "Create a Death Knight? Cost:5000","","Yes","No") == "Yes")
+					if(C.deathknights.len >= 3)
+						to_chat(user, "You cannot summon any more death knights.")
+						return
 					if(!lord.mypool.check_withdraw(-5000))
 						to_chat(user, "I don't have enough vitae!")
 						return

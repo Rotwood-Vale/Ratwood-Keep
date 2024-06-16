@@ -6,7 +6,7 @@
 	icon_state = "anvil"
 	var/hott = null
 	var/obj/item/ingot/hingot
-	max_integrity = 2000
+	max_integrity = 500
 	density = TRUE
 	damage_deflection = 25
 	climbable = TRUE
