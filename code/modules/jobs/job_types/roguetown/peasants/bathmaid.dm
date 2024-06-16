@@ -1,16 +1,17 @@
 /datum/job/roguetown/nightmaiden
-	title = "Bath Wench"
+	title = "Bath Swain"
+	f_title = "Bath Wench"
 	flag = WENCH
 	department_flag = PEASANTS
 	faction = "Station"
 	total_positions = 3
 	spawn_positions = 5
 
-	allowed_sexes = list(FEMALE)
+	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
 	allowed_ages = list(AGE_ADULT, AGE_MIDDLEAGED)
 
-	tutorial = "Nobody would envy your lot in life, for the role of the bathwench is not something so idly taken. It comes from a place of desperation, least usually: for any with true compassion or skill would seek position with a nunnery or the medical trade. Launder clothes and soothe wounds, that is your loathsome creed."
+	tutorial = "Nobody would envy your lot in life, for the role of bath-servant is not something so idly taken. Such folk often come from a place of desperation, 'least usually: for any with true compassion or skill would seek position with a nunnery or the medical trade. Launder clothes and soothe wounds, that is your loathsome creed."
 
 	outfit = /datum/outfit/job/roguetown/nightmaiden
 	display_order = JDO_WENCH
@@ -25,13 +26,13 @@
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
 	armor = /obj/item/clothing/suit/roguetown/shirt/dress/gen/sexy
 	neck = /obj/item/storage/belt/rogue/pouch
-	backpack_contents = list(/obj/item/roguekey/nightmaiden = 1)
+	backpack_contents = list(/obj/item/roguekey/nightmaiden = 1, /obj/item/rogue/instrument/harp = 1)
 
 	if(H.mind)
-		H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 2, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/stealing, pick(2,3,4), TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/riding, 1, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/music, pick(1,2), TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/stealing, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/music, 2, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/riding, 2, TRUE)
 
 // Washing Implements
 
