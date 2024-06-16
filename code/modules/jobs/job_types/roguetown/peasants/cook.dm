@@ -6,7 +6,7 @@
 	total_positions = 1
 	spawn_positions = 1
 
-	banned_flaws = list("Blind")
+	banned_flaws = list(/datum/charflaw/noeyes)
 	allowed_races = RACES_ALL_KINDS
 	tutorial = "Working closely with the barkeep who owns Skull Crack Inn, the cook should focus on cooking food for all the hungry mouths of Roguetown."
 
