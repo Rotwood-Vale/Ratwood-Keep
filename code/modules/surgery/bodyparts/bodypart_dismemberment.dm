@@ -7,7 +7,7 @@
 
 /obj/item/bodypart
 	/// Wound we get when surgically reattached
-	var/attach_wound = /datum/wound/slash/large
+	var/attach_wound = /datum/wound/artery/reattachment
 	/// Wound we leave on the chest when violently dismembered
 	var/dismember_wound
 	/// Sound we make when violently dismembered

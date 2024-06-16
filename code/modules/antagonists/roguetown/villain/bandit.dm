@@ -90,7 +90,7 @@
 	H.mind.adjust_skillrank(/datum/skill/combat/whipsflails, 3, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/combat/knives, 3, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/combat/bows, 3, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 3, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 2, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/craft/crafting, 2, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/craft/carpentry, 1, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
@@ -132,9 +132,9 @@
 			else
 				r_hand = /obj/item/rogueweapon/flail/peasantwarflail
 			H.change_stat("strength", 1)
-		if(10 to 12) // crossbow bandit
-			backl = /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow
-			beltl = /obj/item/quiver/bolts
+		if(10 to 12) // ranged bandit
+			backl = /obj/item/gun/ballistic/revolver/grenadelauncher/bow
+			beltl = /obj/item/quiver/arrows
 			beltr = /obj/item/rogueweapon/stoneaxe/woodcut/steel
 			H.change_stat("perception", 3)
 		if(13 to 15) // spear bandit

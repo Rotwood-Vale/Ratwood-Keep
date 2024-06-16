@@ -22,6 +22,7 @@
 	var/last_act = 0
 	var/scan_state = "" //Holder for the image we display when we're pinged by a mining scanner
 	var/defer_change = 0
+	var/mob/living/lastminer //for xp gain and luck shenanigans
 	blade_dulling = DULLING_PICK
 	max_integrity = 1000
 	break_sound = 'sound/combat/hits/onstone/stonedeath.ogg'
@@ -61,6 +62,7 @@
 	if (!user.IsAdvancedToolUser())
 		to_chat(usr, "<span class='warning'>I don't have the dexterity to do this!</span>")
 		return
+	lastminer = user
 	..()
 	var/olddam = turf_integrity
 	if(turf_integrity && turf_integrity > 10)
@@ -71,11 +73,14 @@
 					S.forceMove(get_turf(user))
 
 /turf/closed/mineral/turf_destruction(damage_flag)
-	gets_drilled(give_exp = FALSE)
+	if(lastminer.goodluck(2) && mineralType)
+//		to_chat(lastminer, "<span class='notice'>Bonus ducks!</span>")
+		new mineralType(src)
+	gets_drilled(lastminer, give_exp = FALSE)
 	queue_smooth_neighbors(src)
 	..()
 
-/turf/closed/mineral/proc/gets_drilled(user, give_exp = TRUE)
+/turf/closed/mineral/proc/gets_drilled(mob/living/user, give_exp = TRUE)
 	new /obj/item/natural/stone(src)
 	if(prob(30))
 		new /obj/item/natural/stone(src)
@@ -87,6 +92,10 @@
 			if(prob(23))
 				new rockType(src)
 		SSblackbox.record_feedback("tally", "ore_mined", mineralAmt, mineralType)
+	else if(user.goodluck(2))
+		var/newthing = pickweight(list(/obj/item/natural/rock/salt = 2, /obj/item/natural/rock/iron = 1, /obj/item/natural/rock/coal = 2))
+//		to_chat(user, "<span class='notice'>Bonus ducks!</span>")
+		new newthing(src)
 //	if(ishuman(user))
 //		var/mob/living/carbon/human/H = user
 //		if(give_exp)

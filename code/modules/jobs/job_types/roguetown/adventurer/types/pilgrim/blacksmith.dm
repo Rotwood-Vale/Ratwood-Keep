@@ -53,3 +53,4 @@
 		H.change_stat("endurance", 2)
 		H.change_stat("constitution", 2)
 		H.change_stat("speed", -1)
+		H.change_stat("fortune", 1)

@@ -878,12 +878,12 @@
 	spell_list += S
 	S.action.Grant(current)
 
-/datum/mind/proc/has_spell(spell_type)
+/datum/mind/proc/has_spell(spell_type, specific = FALSE)
 	if(istype(spell_type, /obj/effect/proc_holder))
 		var/obj/instanced_spell = spell_type
 		spell_type = instanced_spell.type
 	for(var/obj/effect/proc_holder/spell as anything in spell_list)
-		if(istype(spell, spell_type))
+		if((specific && spell.type == spell_type) || istype(spell, spell_type))
 			return TRUE
 	return FALSE
 

@@ -13,12 +13,14 @@
 	associated_skill = /datum/skill/magic/holy
 	antimagic_allowed = TRUE
 	charge_max = 10 SECONDS
-	devotion_cost = -25
+	miracle = TRUE
+	devotion_cost = 20
 
 /obj/effect/proc_holder/spell/invoked/lesser_heal/cast(list/targets, mob/living/user)
+	. = ..()
 	if(isliving(targets[1]))
 		var/mob/living/target = targets[1]
-		if(user.patron.undead_hater && (target.mob_biotypes & MOB_UNDEAD)) //positive energy harms the undead
+		if(user.patron?.undead_hater && (target.mob_biotypes & MOB_UNDEAD)) //positive energy harms the undead
 			target.visible_message("<span class='danger'>[target] is burned by holy light!</span>", "<span class='userdanger'>I'm burned by holy light!</span>")
 			target.adjustFireLoss(50)
 			target.Paralyze(30)
@@ -62,16 +64,16 @@
 			var/mob/living/carbon/C = target
 			var/obj/item/bodypart/affecting = C.get_bodypart(check_zone(user.zone_selected))
 			if(affecting)
-				if(affecting.heal_damage(20, 20))
+				if(affecting.heal_damage(25, 25))
 					C.update_damage_overlays()
-				if(affecting.heal_wounds(20))
+				if(affecting.heal_wounds(25))
 					C.update_damage_overlays()
 		else
-			target.adjustBruteLoss(-20)
-			target.adjustFireLoss(-20)
-		target.adjustToxLoss(-20)
-		target.adjustOxyLoss(-20)
-		target.blood_volume += BLOOD_VOLUME_SURVIVE/4
+			target.adjustBruteLoss(-25)
+			target.adjustFireLoss(-25)
+		target.adjustToxLoss(-25)
+		target.adjustOxyLoss(-25)
+		target.blood_volume += BLOOD_VOLUME_SURVIVE/2
 		return TRUE
 	return FALSE
 
@@ -94,12 +96,13 @@
 	antimagic_allowed = TRUE
 	charge_max = 20 SECONDS
 	miracle = TRUE
-	devotion_cost = -45
+	devotion_cost = 45
 
 /obj/effect/proc_holder/spell/invoked/heal/cast(list/targets, mob/living/user)
+	. = ..()
 	if(isliving(targets[1]))
 		var/mob/living/target = targets[1]
-		if(target.mob_biotypes & MOB_UNDEAD) //positive energy harms the undead
+		if(user.patron?.undead_hater && (target.mob_biotypes & MOB_UNDEAD)) //positive energy harms the undead
 			target.visible_message("<span class='danger'>[target] is burned by holy light!</span>", "<span class='userdanger'>I'm burned by holy light!</span>")
 			target.adjustFireLoss(100)
 			target.Paralyze(50)

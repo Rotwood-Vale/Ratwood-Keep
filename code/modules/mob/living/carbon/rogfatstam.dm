@@ -16,7 +16,10 @@
 	update_health_hud()
 
 /mob/living/proc/update_rogstam()
-	maxrogstam = STAEND * 100
+	var/athletics_skill = 0
+	if(mind)
+		athletics_skill = mind.get_skill_level(/datum/skill/misc/athletics)
+	maxrogstam = (STAEND + (athletics_skill/2 ) ) * 100
 	if(cmode)
 		if(!HAS_TRAIT(src, TRAIT_BREADY))
 			rogstam_add(-2)
@@ -27,6 +30,8 @@
 /mob/living/rogstam_add(added as num)
 	if(HAS_TRAIT(src, TRAIT_NOROGSTAM))
 		return TRUE
+	if(m_intent == MOVE_INTENT_RUN)
+		mind.adjust_experience(/datum/skill/misc/athletics, (STAINT*0.02))
 	rogstam += added
 	if(rogstam > maxrogstam)
 		rogstam = maxrogstam

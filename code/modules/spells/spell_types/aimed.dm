@@ -59,7 +59,7 @@
 	if(..())
 		return FALSE
 	var/ran_out = (current_amount <= 0)
-	if(!cast_check(!ran_out, ranged_ability_user))
+	if(!can_cast(caller) || !cast_check(!ran_out, ranged_ability_user))
 		remove_ranged_ability()
 		return FALSE
 	var/list/targets = list(target)

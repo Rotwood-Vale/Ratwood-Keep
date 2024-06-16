@@ -14,6 +14,7 @@
 	miracle = FALSE
 
 /obj/effect/proc_holder/spell/invoked/bonechill/cast(list/targets, mob/living/user)
+	. = ..()
 	if(isliving(targets[1]))
 		var/mob/living/target = targets[1]
 		if(target.mob_biotypes & MOB_UNDEAD) //positive energy harms the undead
@@ -50,6 +51,7 @@
 	miracle = FALSE
 
 /obj/effect/proc_holder/spell/invoked/eyebite/cast(list/targets, mob/living/user)
+	. = ..()
 	if(isliving(targets[1]))
 		var/mob/living/carbon/target = targets[1]
 		target.visible_message("<span class='info'>A loud crunching sound has come from [target]!</span>", "<span class='userdanger'>I feel arcane teeth biting into my eyes!</span>")
@@ -76,8 +78,9 @@
 	charge_max = 60 SECONDS
 
 /obj/effect/proc_holder/spell/invoked/raise_undead/cast(list/targets, mob/living/user)
+	. = ..()
 	var/turf/T = get_turf(targets[1])
-	if(!isclosedturf(T))
+	if(isopenturf(T))
 		new /mob/living/carbon/human/species/skeleton/npc/no_equipment(T)
 		return TRUE
 	to_chat(user, "<span class='warning'>The targeted location is blocked. My summon fails to come forth.</span>")

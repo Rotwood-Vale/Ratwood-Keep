@@ -234,7 +234,7 @@
 		visible_message("<span class='warning'>[user] struggles with [src]!</span>",
 						"<span class='warning'>[user] struggles to restrain me!</span>", "<span class='hear'>I hear aggressive shuffling!</span>", null, user)
 		if(src.client?.prefs.showrolls)
-			to_chat(user, "<span class='warning'>I struggle with [src]! ([probby]%)</span>")
+			to_chat(user, "<span class='warning'>I struggle with [src]! [probby]%</span>")
 		else
 			to_chat(user, "<span class='warning'>I struggle with [src]!</span>")
 		playsound(src.loc, 'sound/foley/struggle.ogg', 100, FALSE, -1)

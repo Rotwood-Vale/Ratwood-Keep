@@ -16,9 +16,12 @@
 		Now you serve in the King's court ensuring the good health of those inhabiting the keep."
 	outfit = /datum/outfit/job/roguetown/physician
 	whitelist_req = TRUE
+
 	give_bank_account = 25
 	min_pq = 2
 	max_pq = null
+
+	cmode_music = 'sound/music/combat_physician.ogg'
 
 /datum/outfit/job/roguetown/physician
 	name = "Physician"

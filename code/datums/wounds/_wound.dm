@@ -228,9 +228,10 @@ GLOBAL_LIST_INIT(primordial_wounds, init_primordial_wounds())
 /datum/wound/proc/remove_from_mob()
 	if(!owner)
 		return FALSE
-	on_mob_loss(owner)
+	var/mob/was_owner = owner
 	LAZYREMOVE(owner.simple_wounds, src)
 	owner = null
+	on_mob_loss(was_owner)
 	return TRUE
 
 /// Effects when this wound is removed from a given mob

@@ -26,13 +26,13 @@
 	*/
 
 	if(!eyes)
-		head_status += "<span class='warning'>The eyes appear are missing.</span>"
+		head_status += "<span class='warning'>The eyes appear to be missing.</span>"
 
 	if(!ears)
-		head_status += "<span class='warning'>The ears are missing.</span>"
+		head_status += "<span class='warning'>The ears appear to be missing.</span>"
 
 	if(!tongue)
-		head_status += "<span class='warning'>The tongue is missing.</span>"
+		head_status += "<span class='warning'>The tongue appears to be missing.</span>"
 	
 	if(length(head_status))
 		. += "<B>Organs:</B>"

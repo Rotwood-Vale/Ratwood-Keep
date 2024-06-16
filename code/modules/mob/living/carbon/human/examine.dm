@@ -40,7 +40,7 @@
 		if(HAS_TRAIT(L, TRAIT_PROSOPAGNOSIA))
 			obscure_name = TRUE
 
-	if(!get_face_name(null))
+	if(!get_face_name(if_no_face = null))
 		obscure_name = TRUE
 
 	if(observer_privilege)
@@ -159,12 +159,15 @@
 //	if(back)
 //		. += "[m3] [back.get_examine_string(user)] on [m2] back."
 
+	//cloak
 	if(cloak && !(SLOT_CLOAK in obscured))
 		. += "[m3] [cloak.get_examine_string(user)] on [m2] shoulders."
 
+	//right back
 	if(backr && !(SLOT_BACK_R in obscured))
 		. += "[m3] [backr.get_examine_string(user)] on [m2] back."
 
+	//left back
 	if(backl && !(SLOT_BACK_L in obscured))
 		. += "[m3] [backl.get_examine_string(user)] on [m2] back."
 
@@ -186,9 +189,11 @@
 	if(belt && !(SLOT_BELT in obscured))
 		. += "[m3] [belt.get_examine_string(user)] about [m2] waist."
 
+	//right belt
 	if(beltr && !(SLOT_BELT_R in obscured))
 		. += "[m3] [beltr.get_examine_string(user)] on [m2] belt."
 
+	//left belt
 	if(beltl && !(SLOT_BELT_L in obscured))
 		. += "[m3] [beltl.get_examine_string(user)] on [m2] belt."
 
@@ -200,9 +205,11 @@
 	if(wear_mask && !(SLOT_WEAR_MASK in obscured))
 		. += "[m3] [wear_mask.get_examine_string(user)] on [m2] face."
 
+	//mouth
 	if(mouth && !(SLOT_MOUTH in obscured))
 		. += "[m3] [mouth.get_examine_string(user)] in [m2] mouth."
 
+	//neck
 	if(wear_neck && !(SLOT_NECK in obscured))
 		. += "[m3] [wear_neck.get_examine_string(user)] around [m2] neck."
 
@@ -219,10 +226,11 @@
 
 	//ID
 	if(wear_ring && !(SLOT_RING in obscured))
-		. += "[m3] [wear_ring.get_examine_string(user)]."
+		. += "[m3] [wear_ring.get_examine_string(user)] on [m2] hands."
 
+	//wrists
 	if(wear_wrists && !(SLOT_WRISTS in obscured))
-		. += "[m3] [wear_wrists.get_examine_string(user)]."
+		. += "[m3] [wear_wrists.get_examine_string(user)] on [m2] wrists."
 
 	//handcuffed?
 	if(handcuffed)

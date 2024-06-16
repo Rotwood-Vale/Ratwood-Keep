@@ -16,9 +16,10 @@
 	antimagic_allowed = TRUE
 	charge_max = 5 SECONDS
 	miracle = TRUE
-	devotion_cost = -45
+	devotion_cost = 30
 
 /obj/effect/proc_holder/spell/invoked/sacred_flame_rogue/cast(list/targets, mob/user = usr)
+	. = ..()
 	if(isliving(targets[1]))
 		var/mob/living/L = targets[1]
 		user.visible_message("<font color='yellow'>[user] points at [L]!</font>")
@@ -57,11 +58,12 @@
 	antimagic_allowed = TRUE
 	charge_max = 2 MINUTES
 	miracle = TRUE
-	devotion_cost = -100
+	devotion_cost = 80
 	/// Amount of PQ gained for reviving people
-	var/revive_pq = 0.25
+	var/revive_pq = PQ_GAIN_REVIVE
 
 /obj/effect/proc_holder/spell/invoked/revive/cast(list/targets, mob/living/user)
+	. = ..()
 	if(isliving(targets[1]))
 		testing("revived1")
 		var/mob/living/target = targets[1]

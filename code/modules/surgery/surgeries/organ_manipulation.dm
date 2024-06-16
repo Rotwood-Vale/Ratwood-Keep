@@ -65,7 +65,7 @@
 		surgery_flags &= ~SURGERY_BROKEN
 	return ..()
 
-/datum/surgery_step/manipulate_organs/initiate(mob/user, mob/living/target, target_zone, obj/item/tool, datum/intent/intent, try_to_fail)
+/datum/surgery_step/manipulate_organs/try_op(mob/user, mob/living/target, target_zone, obj/item/tool, datum/intent/intent, try_to_fail)
 	// stupid workaround right now because eyes are a single organ in a single slot
 	if(target_zone == BODY_ZONE_PRECISE_L_EYE)
 		target_zone = BODY_ZONE_PRECISE_R_EYE

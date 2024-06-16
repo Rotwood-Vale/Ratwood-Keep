@@ -177,7 +177,7 @@
 	return src
 
 /// Proc that will search inside a given atom for any corpses, and send the associated ghost to the lobby if possible
-/proc/pacify_coffin(atom/movable/coffin, mob/user, deep = TRUE, give_pq = 0.2)
+/proc/pacify_coffin(atom/movable/coffin, mob/user, deep = TRUE, give_pq = PQ_GAIN_BURIAL)
 	if(!coffin)
 		return FALSE
 	var/success = FALSE
@@ -195,14 +195,16 @@
 			if(isliving(stuffing) || istype(stuffing, /obj/item/bodypart/head))
 				continue
 			success ||= pacify_coffin(stuffing, user, deep, give_pq = FALSE)
-	if(success && give_pq && user?.ckey)
+	// Success is actually the ckey of the last attacker so we can prevent PQ farming from fragging people
+	if(success && give_pq && user?.ckey && (user.ckey != success))
 		adjust_playerquality(give_pq, user.ckey)
 	return success
 
 /// Proc that sends the client associated with a given corpse to the lobby, if possible
-/proc/pacify_corpse(mob/living/corpse, mob/user, coin_pq = 0.2)
+/proc/pacify_corpse(mob/living/corpse, mob/user, coin_pq = PQ_GAIN_BURIAL_COIN)
 	if((corpse.stat != DEAD) || !corpse.mind)
 		return FALSE
+	var/attacker_ckey = corpse.lastattackerckey || TRUE
 	if(ishuman(corpse))
 		var/mob/living/carbon/human/human_corpse = corpse
 		human_corpse.buried = TRUE
@@ -216,7 +218,7 @@
 					fallen = locate(fallen.x + rand(-3, 3), fallen.y + rand(-3, 3), fallen.z)
 					new /obj/item/underworld/coin/notracking(fallen)
 					fallen.visible_message("<span class='warning'>A coin falls from above!</span>")
-					if(coin_pq && user?.ckey)
+					if(coin_pq && user?.ckey && (user.ckey != attacker_ckey))
 						adjust_playerquality(coin_pq, user.ckey)
 					qdel(human_corpse.mouth)
 					human_corpse.update_inv_mouth()
@@ -240,7 +242,7 @@
 		var/user_acknowledgement = user ? user.real_name : "a mysterious force"
 		to_chat(ghost, "<span class='rose'>My soul finds peace buried in creation, thanks to [user_acknowledgement].</span>")
 		ghost.returntolobby(RESPAWNTIME*-1)
-		return TRUE
+		return attacker_ckey
 
 	testing("pacify_corpse fail ([corpse.mind?.key || "no key"])")
 	return FALSE

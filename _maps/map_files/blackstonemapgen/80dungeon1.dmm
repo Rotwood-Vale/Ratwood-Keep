@@ -1,3 +1,4 @@
+"ae" = (/turf/open/water/swamp,/area/rogue/under/cave)
 "al" = (/obj/structure/rack/rogue/shelf,/turf/open/floor/rogue/blocks,/area/rogue/under/cave)
 "aL" = (/obj/structure/table/wood/crafted,/obj/item/natural/fibers,/turf/open/floor/rogue/blocks,/area/rogue/under/cave)
 "aY" = (/obj/effect/decal/cleanable/cobweb,/obj/structure/rack/rogue,/obj/item/clothing/accessory/medal/gold,/turf/open/floor/rogue/blocks,/area/rogue/under/cave)
@@ -5,8 +6,9 @@
 "bd" = (/obj/item/rogue/painting,/turf/open/floor/rogue/blocks,/area/rogue/under/cave)
 "bi" = (/obj/effect/decal/cleanable/blood/old,/obj/effect/decal/cobbleedge,/turf/open/floor/rogue/cobble,/area/rogue/under/cave)
 "bl" = (/obj/structure/table/vtable/v2,/turf/open/floor/rogue/blocks,/area/rogue/under/cave)
-"bs" = (/obj/item/grown/log/tree/stick,/obj/structure/mineral_door/wood,/turf/open/floor/rogue/blocks,/area/rogue/under/cave)
+"bs" = (/obj/item/grown/log/tree/stick,/obj/structure/mineral_door/wood/violet,/turf/open/floor/rogue/blocks,/area/rogue/under/cave)
 "bt" = (/obj/effect/decal/cobbleedge,/obj/item/grown/log/tree/stick,/turf/open/floor/rogue/naturalstone,/area/rogue/under/cave)
+"bC" = (/obj/item/natural/rock/iron,/turf/open/floor/rogue/dirt/road,/area/rogue/under/cave)
 "bV" = (/obj/structure/closet/crate/roguecloset/inn/chest,/obj/structure/chair/wood/rogue,/obj/item/natural/fibers,/turf/open/floor/rogue/blocks,/area/rogue/under/cave)
 "bX" = (/obj/structure/table/wood{dir = 10; icon_state = "tablewood2"},/obj/effect/decal/cleanable/cobweb/cobweb2,/obj/item/grown/log/tree/stick,/obj/item/natural/bundle/fibers,/turf/open/floor/rogue/blocks,/area/rogue/under/cave)
 "ci" = (/obj/item/grown/log/tree/stick,/obj/item/grown/log/tree/stick,/turf/open/floor/rogue/blocks,/area/rogue/under/cave)
@@ -14,14 +16,18 @@
 "cL" = (/obj/structure/closet/crate/roguecloset/lord,/turf/open/floor/rogue/blocks,/area/rogue/under/cave)
 "de" = (/obj/item/chair/rogue/crafted,/obj/effect/decal/cobbleedge,/turf/open/floor/rogue/blocks,/area/rogue/under/cave)
 "dl" = (/obj/item/grown/log/tree/stick,/obj/item/grown/log/tree/stick,/obj/item/grown/log/tree/stick,/obj/item/grown/log/tree/stick,/turf/open/floor/rogue/blocks,/area/rogue/under/cave)
+"dP" = (/obj/item/natural/rock/iron,/turf/open/water/sewer,/area/rogue/under/cave)
 "dU" = (/obj/effect/decal/cobbleedge,/turf/open/floor/rogue/blocks,/turf/open/floor/rogue/blocks,/turf/open/floor/rogue/blocks,/area/rogue/under/cave)
 "el" = (/obj/structure/closet/crate/chest/crafted,/obj/effect/decal/cleanable/cobweb/cobweb2,/turf/open/floor/rogue/blocks,/area/rogue/under/cave)
 "em" = (/obj/structure/chair/bench/church/smallbench,/turf/open/floor/rogue/blocks,/area/rogue/under/cave)
+"en" = (/obj/item/natural/rock/gold,/turf/open/water/sewer,/area/rogue/under/cave)
+"eT" = (/obj/item/natural/rock/salt,/turf/open/floor/rogue/blocks/paving,/area/rogue/under/cave)
 "eW" = (/obj/structure/fermenting_barrel,/turf/open/floor/rogue/blocks,/area/rogue/under/cave)
 "fV" = (/obj/structure/chair/wood/rogue/fancy{dir = 8},/obj/effect/decal/cobbleedge,/turf/open/floor/rogue/blocks,/area/rogue/under/cave)
 "gT" = (/obj/effect/decal/cleanable/blood/old,/obj/structure/rack/rogue/shelf,/turf/open/floor/rogue/blocks,/area/rogue/under/cave)
 "hb" = (/obj/structure/fluff/statue/tdummy,/turf/open/floor/rogue/blocks,/area/rogue/under/cave)
 "hF" = (/obj/effect/decal/cobbleedge,/obj/structure/rack/rogue/shelf,/turf/open/floor/rogue/cobble,/area/rogue/under/cave)
+"ig" = (/turf/open/floor/rogue/ruinedwood/turned,/area/rogue/under/cave)
 "iD" = (/turf/open/floor/rogue/blocks,/turf/open/floor/rogue/blocks,/area/rogue/under/cave)
 "iJ" = (/obj/structure/chair/wood/rogue/fancy{dir = 8},/turf/open/floor/rogue/carpet,/area/rogue/under/cave)
 "iM" = (/obj/structure/chair/wood,/turf/open/floor/rogue/blocks,/area/rogue/under/cave)
@@ -29,10 +35,12 @@
 "iW" = (/obj/item/grown/log/tree,/obj/item/grown/log/tree,/obj/item/grown/log/tree,/obj/item/grown/log/tree,/obj/item/grown/log/tree,/obj/item/grown/log/tree/stick,/obj/item/grown/log/tree/stick,/obj/item/grown/log/tree/stick,/obj/item/grown/log/tree/stick,/obj/item/grown/log/tree/stick,/turf/open/floor/rogue/blocks,/area/rogue/under/cave)
 "jg" = (/obj/structure/mineral_door/bars,/turf/open/floor/rogue/blocks,/area/rogue/under/cave)
 "jr" = (/obj/structure/closet/crate/drawer,/obj/effect/decal/cleanable/cobweb,/turf/open/floor/rogue/blocks,/area/rogue/under/cave)
+"ks" = (/obj/item/natural/rock/salt,/turf/open/water/sewer,/area/rogue/under/cave)
 "lq" = (/obj/item/grown/log/tree/stick,/obj/item/grown/log/tree/stick,/obj/item/grown/log/tree/stick,/obj/item/grown/log/tree/stick,/obj/item/grown/log/tree/stick,/obj/item/grown/log/tree/stick,/obj/item/grown/log/tree/stick,/turf/open/floor/rogue/blocks,/area/rogue/under/cave)
 "lu" = (/obj/item/grown/log/tree/stick,/turf/open/floor/rogue/blocks,/area/rogue/under/cave)
 "nh" = (/obj/item/grown/log/tree/stick,/obj/structure/table/wood{dir = 10; icon_state = "tablewood2"},/turf/open/floor/rogue/blocks,/area/rogue/under/cave)
 "nm" = (/obj/structure/rack/rogue/shelf/big,/obj/effect/decal/cleanable/cobweb,/turf/open/floor/rogue/blocks,/area/rogue/under/cave)
+"nB" = (/obj/item/natural/rock/gold,/turf/open/floor/rogue/naturalstone,/area/rogue/under/cave)
 "nG" = (/obj/structure/fluff/statue/knightalt/r,/turf/open/floor/rogue/blocks,/area/rogue/under/cave)
 "nI" = (/obj/item/grown/log/tree,/obj/item/grown/log/tree,/obj/item/grown/log/tree/stick,/obj/item/grown/log/tree/stick,/turf/open/floor/rogue/blocks,/area/rogue/under/cave)
 "nV" = (/obj/effect/decal/cobbleedge,/obj/structure/closet/crate/roguecloset/inn/chest,/turf/open/floor/rogue/blocks,/area/rogue/under/cave)
@@ -55,9 +63,11 @@
 "qn" = (/obj/item/grown/log/tree/stick,/obj/item/grown/log/tree/stick,/obj/item/grown/log/tree/stick,/turf/open/floor/rogue/blocks,/area/rogue/under/cave)
 "rv" = (/obj/structure/chair/wood/rogue{dir = 4},/turf/open/floor/rogue/blocks,/area/rogue/under/cave)
 "rC" = (/obj/effect/decal/cleanable/cobweb,/obj/structure/bookcase,/turf/open/floor/rogue/blocks,/area/rogue/under/cave)
+"rD" = (/obj/item/natural/rock/salt,/obj/item/natural/rock/salt,/turf/open/floor/rogue/naturalstone,/area/rogue/under/cave)
 "rZ" = (/obj/item/natural/bundle/fibers,/obj/structure/table/wood{dir = 10; icon_state = "tablewood2"},/turf/open/floor/rogue/blocks,/area/rogue/under/cave)
 "sg" = (/obj/structure/closet/crate/roguecloset/crafted,/turf/open/floor/rogue/blocks,/area/rogue/under/cave)
 "sr" = (/obj/item/grown/log/tree,/obj/item/grown/log/tree,/obj/item/grown/log/tree,/obj/item/grown/log/tree,/obj/item/grown/log/tree/stick,/obj/item/grown/log/tree/stick,/obj/item/grown/log/tree/stick,/turf/open/floor/rogue/blocks,/area/rogue/under/cave)
+"sA" = (/obj/structure/gate/bars,/turf/open/water/sewer,/area/rogue/under/cave)
 "sD" = (/obj/machinery/light/rogue/oven,/turf/closed/wall/mineral/rogue/stone,/area/rogue/under/cave)
 "sE" = (/obj/effect/decal/cleanable/blood/old,/obj/structure/bookcase,/turf/open/floor/rogue/blocks,/area/rogue/under/cave)
 "sW" = (/obj/structure/fluff/walldeco/rpainting,/turf/closed/wall/mineral/rogue/stone,/area/rogue/under/cave)
@@ -77,13 +87,14 @@
 "vT" = (/obj/structure/closet/crate/roguecloset/inn,/turf/open/floor/rogue/blocks,/area/rogue/under/cave)
 "wc" = (/obj/effect/decal/cobbleedge,/obj/item/grown/log/tree/stick,/turf/open/floor/rogue/blocks,/area/rogue/under/cave)
 "ws" = (/turf/closed/mineral/random/rogue/high,/area/rogue/under/cave)
+"wv" = (/obj/item/natural/rock/salt,/turf/open/floor/rogue/blocks,/area/rogue/under/cave)
 "wG" = (/obj/item/grown/log/tree/stick,/obj/structure/closet/crate/chest/crafted,/turf/open/floor/rogue/blocks,/area/rogue/under/cave)
 "xc" = (/obj/effect/decal/cleanable/blood/old,/obj/effect/decal/cobbleedge,/turf/open/floor/rogue/blocks,/area/rogue/under/cave)
 "xm" = (/obj/structure/fluff/statue/gargoyle,/turf/closed/wall/mineral/rogue/stone,/area/rogue/under/cave)
 "xs" = (/obj/structure/table/wood{dir = 10; icon_state = "tablewood2"},/turf/open/floor/rogue/blocks,/area/rogue/under/cave)
 "xK" = (/obj/structure/chair/wood/rogue{dir = 8},/obj/structure/table/wood{dir = 10; icon_state = "tablewood2"},/turf/open/floor/rogue/blocks,/area/rogue/under/cave)
 "xY" = (/obj/effect/decal/remains/human,/turf/open/floor/rogue/blocks,/area/rogue/under/cave)
-"xZ" = (/obj/structure/mineral_door/wood,/turf/open/floor/rogue/blocks,/area/rogue/under/cave)
+"xZ" = (/turf/closed/wall/mineral/rogue/stone/moss,/area/rogue/under/cave)
 "ys" = (/obj/item/grown/log/tree/stick,/obj/structure/mineral_door/swing_door,/turf/open/floor/rogue/blocks,/area/rogue/under/cave)
 "yN" = (/obj/effect/decal/cleanable/blood/old,/obj/item/grown/log/tree/stick,/obj/effect/decal/cobbleedge,/turf/open/floor/rogue/blocks,/area/rogue/under/cave)
 "zn" = (/obj/effect/decal/cleanable/cobweb,/turf/open/floor/rogue/blocks,/area/rogue/under/cave)
@@ -103,9 +114,12 @@
 "Bw" = (/obj/effect/decal/cleanable/cobweb/cobweb2,/turf/open/floor/rogue/blocks,/area/rogue/under/cave)
 "BE" = (/obj/effect/decal/cleanable/cobweb,/obj/structure/table/wood{dir = 10; icon_state = "tablewood2"},/obj/item/grown/log/tree/stick,/turf/open/floor/rogue/blocks,/area/rogue/under/cave)
 "BI" = (/obj/structure/bed/rogue/inn/hay,/obj/effect/decal/cleanable/cobweb,/turf/open/floor/rogue/blocks,/area/rogue/under/cave)
+"BV" = (/obj/structure/gate/bars,/obj/structure/gate/bars,/turf/open/water/sewer,/area/rogue/under/cave)
+"Cu" = (/turf/open/water/sewer,/area/rogue/under/cave)
 "CH" = (/obj/structure/bed/rogue/inn/hay,/turf/open/floor/rogue/blocks,/area/rogue/under/cave)
 "CI" = (/obj/structure/closet/crate/roguecloset/inn/chest,/obj/item/grown/log/tree/stick,/turf/open/floor/rogue/blocks,/area/rogue/under/cave)
 "CU" = (/obj/structure/rack/rogue,/obj/item/natural/bundle/stick,/turf/open/floor/rogue/blocks,/area/rogue/under/cave)
+"Dh" = (/obj/structure/rack/rogue/shelf/big,/obj/item/rogueweapon/pick,/turf/open/floor/rogue/blocks,/area/rogue/under/cave)
 "Dl" = (/obj/effect/decal/cobbleedge,/obj/effect/decal/cleanable/cobweb/cobweb2,/turf/open/floor/rogue/blocks,/area/rogue/under/cave)
 "Dr" = (/obj/structure/fluff/walldeco/serpflag,/turf/closed/wall/mineral/rogue/stone,/area/rogue/under/cave)
 "Dy" = (/obj/item/chair/rogue/crafted,/turf/open/floor/rogue/blocks,/area/rogue/under/cave)
@@ -115,11 +129,14 @@
 "Ey" = (/obj/structure/fluff/statue/gargoyle,/obj/effect/decal/cleanable/cobweb/cobweb2,/turf/closed/wall/mineral/rogue/stone,/area/rogue/under/cave)
 "EK" = (/obj/structure/chair/bench/couchablack,/turf/open/floor/rogue/blocks,/area/rogue/under/cave)
 "EO" = (/obj/item/grown/log/tree,/obj/item/grown/log/tree,/obj/item/grown/log/tree/stick,/obj/item/grown/log/tree/stick,/obj/item/grown/log/tree/stick,/obj/item/grown/log/tree/stick,/obj/structure/closet/crate/chest/crafted,/turf/open/floor/rogue/blocks,/area/rogue/under/cave)
+"EZ" = (/obj/item/natural/rock/coal,/turf/open/floor/rogue/naturalstone,/area/rogue/under/cave)
 "Fm" = (/obj/item/natural/fibers,/obj/structure/table/wood{dir = 10; icon_state = "tablewood2"},/turf/open/floor/rogue/blocks,/area/rogue/under/cave)
+"Fp" = (/obj/item/natural/rock/iron,/obj/item/natural/rock/iron,/turf/open/floor/rogue/naturalstone,/area/rogue/under/cave)
 "FA" = (/obj/structure/chair/wood/rogue{dir = 1},/turf/open/floor/rogue/blocks,/area/rogue/under/cave)
 "FH" = (/obj/effect/decal/cleanable/blood/old,/obj/effect/decal/cleanable/cobweb/cobweb2,/turf/open/floor/rogue/blocks,/area/rogue/under/cave)
 "Gh" = (/obj/structure/closet/crate/roguecloset/inn/south,/obj/effect/decal/cleanable/cobweb/cobweb2,/turf/open/floor/rogue/blocks,/area/rogue/under/cave)
 "Gi" = (/turf/closed/wall/mineral/rogue/stone,/turf/open/floor/rogue/blocks,/area/rogue/under/cave)
+"Gn" = (/obj/item/natural/rock/coal,/obj/item/natural/rock/coal,/turf/open/floor/rogue/naturalstone,/area/rogue/under/cave)
 "Gp" = (/obj/structure/fluff/walldeco/bigpainting/lake,/obj/structure/table/wood/crafted,/obj/item/clothing/accessory/medal/gold,/turf/open/floor/rogue/blocks,/area/rogue/under/cave)
 "Gu" = (/obj/effect/decal/cobbleedge,/obj/effect/decal/cleanable/blood/old,/turf/open/floor/rogue/blocks,/area/rogue/under/cave)
 "GD" = (/obj/item/grown/log/tree/stick,/turf/open/floor/rogue/naturalstone,/area/rogue/under/cave)
@@ -133,9 +150,10 @@
 "Jo" = (/obj/structure/table/vtable/v2,/obj/item/clothing/accessory/medal/gold,/turf/open/floor/rogue/blocks,/area/rogue/under/cave)
 "Jw" = (/obj/item/clothing/accessory/medal/gold,/obj/structure/table/wood{dir = 10; icon_state = "tablewood2"},/turf/open/floor/rogue/blocks,/area/rogue/under/cave)
 "Jx" = (/obj/structure/chair/stool/rogue,/turf/open/floor/rogue/blocks,/area/rogue/under/cave)
-"Jz" = (/obj/structure/mineral_door/wood,/obj/structure/mineral_door/wood,/turf/open/floor/rogue/blocks,/area/rogue/under/cave)
+"Jz" = (/obj/structure/mineral_door/wood/violet,/obj/structure/mineral_door/wood/violet,/turf/open/floor/rogue/blocks,/area/rogue/under/cave)
 "JC" = (/obj/item/grown/log/tree,/obj/item/grown/log/tree,/obj/item/grown/log/tree,/obj/item/grown/log/tree,/obj/item/grown/log/tree/stick,/obj/item/grown/log/tree/stick,/obj/item/grown/log/tree/stick,/obj/item/grown/log/tree/stick,/obj/item/grown/log/tree/stick,/obj/item/grown/log/tree/stick,/obj/structure/closet/crate/roguecloset/crafted,/turf/open/floor/rogue/blocks,/area/rogue/under/cave)
 "JV" = (/obj/effect/decal/cobbleedge,/obj/structure/rack/rogue/shelf,/turf/open/floor/rogue/blocks,/area/rogue/under/cave)
+"Kp" = (/obj/item/natural/rock/salt,/turf/open/floor/rogue/naturalstone,/area/rogue/under/cave)
 "Kz" = (/turf/open/floor/rogue/cobble,/area/rogue/under/cave)
 "KH" = (/obj/structure/table/wood/crafted,/turf/open/floor/rogue/blocks,/area/rogue/under/cave)
 "KI" = (/obj/structure/rack/rogue/shelf/big,/turf/open/floor/rogue/blocks,/area/rogue/under/cave)
@@ -152,11 +170,15 @@
 "Nr" = (/obj/structure/closet/crate/roguecloset/inn/chest,/obj/structure/chair/wood/rogue,/turf/open/floor/rogue/blocks,/area/rogue/under/cave)
 "Nu" = (/obj/structure/fluff/walldeco/painting,/turf/closed/wall/mineral/rogue/stone,/area/rogue/under/cave)
 "NB" = (/obj/structure/mineral_door/wood/violet,/turf/open/floor/rogue/blocks,/area/rogue/under/cave)
+"NL" = (/obj/item/natural/rock/gold,/obj/item/natural/rock/gold,/turf/open/floor/rogue/naturalstone,/area/rogue/under/cave)
 "NO" = (/obj/structure/chair/bench/couchablack/r,/turf/open/floor/rogue/blocks,/area/rogue/under/cave)
+"NU" = (/obj/item/natural/rock/iron,/turf/open/floor/rogue/blocks,/area/rogue/under/cave)
 "Ov" = (/obj/effect/decal/cleanable/cobweb,/obj/structure/closet/crate/roguecloset/inn/chest,/turf/open/floor/rogue/blocks,/area/rogue/under/cave)
 "Ow" = (/obj/item/chair/stool/bar/rogue/crafted,/obj/structure/closet/crate/roguecloset/inn/chest,/turf/open/floor/rogue/blocks,/area/rogue/under/cave)
+"OU" = (/obj/item/natural/rock/iron,/turf/open/floor/rogue/naturalstone,/area/rogue/under/cave)
 "OZ" = (/obj/structure/chair/wood/rogue/chair3{dir = 4},/turf/open/floor/rogue/blocks,/area/rogue/under/cave)
 "Pr" = (/obj/item/grown/log/tree/stick,/obj/item/grown/log/tree/stick,/obj/item/grown/log/tree/stick,/obj/structure/closet/crate/drawer,/turf/open/floor/rogue/blocks,/area/rogue/under/cave)
+"Qd" = (/obj/structure/gate/bars,/turf/open/floor/rogue/blocks/paving,/area/rogue/under/cave)
 "Qy" = (/obj/item/grown/log/tree/stick,/obj/item/grown/log/tree/stick,/obj/item/grown/log/tree/stick,/obj/item/grown/log/tree/stick,/obj/item/grown/log/tree/stick,/turf/open/floor/rogue/blocks,/area/rogue/under/cave)
 "QU" = (/obj/effect/decal/cobbleedge,/obj/structure/fluff/walldeco/chains,/turf/open/floor/rogue/blocks,/area/rogue/under/cave)
 "QY" = (/obj/structure/table/wood/crafted,/obj/item/clothing/accessory/medal/gold,/turf/open/floor/rogue/blocks,/area/rogue/under/cave)
@@ -172,6 +194,7 @@
 "Ug" = (/obj/structure/rack/rogue,/obj/item/clothing/accessory/medal/gold,/turf/open/floor/rogue/blocks,/area/rogue/under/cave)
 "Ui" = (/obj/structure/closet/crate/roguecloset/dark,/turf/open/floor/rogue/blocks,/area/rogue/under/cave)
 "Uq" = (/obj/effect/decal/cobbleedge,/obj/structure/closet/crate/roguecloset/dark,/turf/open/floor/rogue/blocks,/area/rogue/under/cave)
+"Us" = (/turf/open/floor/rogue/blocks/paving,/area/rogue/under/cave)
 "UG" = (/obj/item/grown/log/tree,/obj/item/grown/log/tree,/obj/item/grown/log/tree/stick,/turf/open/floor/rogue/blocks,/area/rogue/under/cave)
 "UR" = (/obj/structure/fluff/walldeco/bigpainting,/turf/open/floor/rogue/blocks,/area/rogue/under/cave)
 "Vm" = (/obj/item/roguestatue/gold,/turf/open/floor/rogue/blocks,/area/rogue/under/cave)
@@ -194,83 +217,83 @@
 
 (1,1,1) = {"
 wswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswsRKwswsRKRKwswswswsRKRKRKRKRKRK
-wswswsuIuIuIuIuIwswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswsuIuIuIuIuIuIuIuIuIuIoIoIoIoIoIRKRKRK
-wswsuIuIuIuIuIuIuIwswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswsuIuIuIwswswswswswsuIuIuIuIuIuIuIuIuIuIuIoIoIoIoIoIoIRKRK
-wsuIuIuIuIuIuIuIuIwswswswswswswswswswswswswswswswswswswsuIuIuIuIwswswswswswswswswswswswswswswswswswswsuIuIwswsuIuIwswswsuIuIuIuIuIuIuIuIuIuIuIuIoIoIoIoIoIoIoIRK
-wsuIuIuIuIuIuIuIuIuIwswswswswswsuIuIuIuIuIwswswswswsuIuIuIwswsuIuIuIuIwswswswswswswswswswswswswsuIuIuIuIuIwswswswsuIuIuIuIuIwswsuIuIwswswsuIwsRKRKRKoIoIoIoIoIRK
-wsuIuIuIuIuIuIuIuIuIwswswswswsuIuIwswswsuIuIwswsuIuIuIwswswswswswswsuIuIuIuIuIuIwswswswswswsuIuIuIuIwswsuIuIuIuIuIuIuIuIuIwswswswswswswsuIuIwswswsRKRKoIoIoIoIRK
-wsuIuIuIuIuIuIuIuIuIuIwswsuIuIuIuIuIuIuIuIuIuIuIuIwswswswswswswswsuIuIuIwswswsuIuIwswswswsuIuIuIuIwswsuIuIwswswswsuIuIwswswswswswswswsuIuIwswswswswsRKRKoIoIoIRK
-wsuIuIuIuIuIuIuIuIuIuIuIuIuIuIuIwswswswswsuIuIuIwswswswswswswsuIuIuIuIuIwswswswsuIwswswsuIuIuIuIuIuIuIuIwswswswswswsuIuIuIwswswswsuIuIwswswswswswswswsRKoIoIoIRK
-wsuIuIuIuIuIuIuIuIuIuIuIwsuIuIwswsuIuIuIwswsuIuIuIwswswswswsuIuIwswswsuIuIwswswswsuIwsuIuIuIwsuIuIuIwswswswswswswswswswsuIuIuIuIuIuIwswswswswswswswswsRKoIoIoIRK
-wswsuIuIuIuIuIuIuIuIuIwswsuIwswsuIuIuIuIuIwswsuIuIwswswswsuIuIwswswswswsuIuIwswswsuIuIuIuIwswswsuIwswswswswswswswswswswswswswswswswswswswswswswswswswsRKoIoIoIRK
-wswswswsuIuIuIuIuIuIuIwswsuIwsuIuIuIuIuIuIuIwswsuIuIuIuIuIuIwswswswswswsuIuIuIuIuIuIuIuIwswswswsuIwswswswswswswswswswswswswswswswswswswswswswswswswswsRKoIoIoIRK
-wswswswswswsuIuIuIuIwswsuIuIwsuIuIuIuIuIuIuIuIwswswswsuIuIwswsRKRKRKRKWCWCWCuIuYuIGDuIwswswswswsuIwswswswswswswswswswswswswswswswswswswswswswswswswswsRKoIoIoIRK
-wswswswswswswswswsuIwswsuIuIwsuIuIuIuIuIuIuIuIwswswswsuIwswswsRKoIKIoIKIYKWCWCbtoIRKuIwswswswsuIuIwswswswswswswswswswswswswswswswswswswswswswswswswswsRKoIoIoIRK
-wswswswswswswswswsuIuIwswsuIwsuIuIuIuIuIuIuIuIwswswsuIuIwswswsRKXioIuYoIoIoIoIoIoIRKuIuIuIwsuIuIwswswswswswswswswswswswswswswswswswswswswswswswswswswsRKoIoIoIRK
-wspyoIuIwswswswswswsuIwswsuIwsuIuIuIuIuIuIuIuIwswswsuIwswswswsRKpNGHoIoIuYoIoIoIoIRKwswsuIuIuIwswswswswswswswswswswswswswswswswswswswswswswswswswswswsRKoIoIoIRK
-RKoIoIuIpywswswswswsuIuIwsuIwswsuIuIuIuIuIuIwswswswsuIwswswswsRKluoIYKoIXiRKRKoIofRKwswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswsRKoIoIoIRK
-wsoIuIuIuIpywswswswswsuIuIuIuIwswsuIuIuIuIuIuIwswsuIwswswswswsRKRKRKRKRKRKRKaloIoIRKwswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswsRKoIoIoIRK
-RKpyuIoIpyuIwswswswswswswsuIuIuIwswsuIuIwswswsuIuIwswswswswswswswswswsRKRKKIoIoIoIRKwswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswsRKoIoIoIRK
-RKuIpyoIpypypywswswswswswsuIwsuIuIwswswsuIwswswswswswswswswswswswswsRKRKoIuYuYoICIRKwswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswsRK
-RKuIoIuIpyuIpywswswswswswsuIwswsuIwswswsuIwswswswswsRKRKRKRKRKRKRKRKRKKIoIoIoIoInVRKwswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswsRK
-RKpyoIpywsuIwsuIwswswswsuIuIwswsuIwswswsuIwswswswswsRKoIuYaloIoIJVoIluoIoIoIofoIRKRKwswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswsRK
-RKpyuIpypywspyuIuIwswsuIuIwswswsuIwswswsuIwswswswswsRKofoIoIoIoIoIoIoIoIoIoIYKRKRKwswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswsRK
-wsuIpyuIpypyuIwsuIwswsuIwswswswsuIwswsuIuIwswswswswsRKluoIRKRKRKRKRKRKRKRKRKRKRKwswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswsRK
-wsoIuIuIuIwswsuIuIuIuIuIwswswswsuIwsuIuIwswswswswswsRKoIoIwswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswsRK
-wsuIuIpywswswswsuIpyuIwswswswsuIuIuIuIwswswswswswswsRKoIoIwswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswsRK
-RKpyoIoIwswswswswsuIuIuIuIuIuIuIwswswswsRKRKRKRKRKRKRKoIoIRKRKRKRKwswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswsRK
-wsuIpyuIRKwswswswsuIpywswswswswswswswswsoIznSySyoIuYoIofoIoIoIuYRKwswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswsRK
-wsoIpyuIpywswswspyuIwswswswswswswswswswsoIoIofoIoIoIoIoIoIoIoIoIRKwswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswsRK
-RKpyuIpypywswswspywswswswswswswswswsRKRKRKRKRKRKRKRKRKRKRKRKoIoIRKwswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswsRK
-RKuIpypyRKwswsuIpywswswswswswswswswsRKoIofuYoIoIluRKaYTtKIRKoIuYRKluoIoIoIGuuYoIoIwcwswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswsRK
-RKoIpyoIRKwspyuIuIwswswswswswswswswsRKZRCHoICHZRpIRKoIoIoIRKoIoIRKoIoIuYoIoIoIoIoIofwswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswsRK
-RKpyoIoIwswsuIuIwswswswswswswswswswsRKoIpIoIKHofoIRKRKjgRKRKoIofRKoIoIwswswswswsoIoIwswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswsRK
-RKuIpypypypyuIwswswswswswswswswswswsRKoIpNluCHoIuYRKzAoIoIRKoIoIRKoIoIwswswswswsoIoIwswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswsRK
-RKuIoIpypyuIpywswswswswswswsRKRKRKRKRKoIKHuYKHoIoIRKoOblofRKoIoIRKoIoIwsRKRKRKRKxZJzRKRKRKRKwswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswsRK
-RKpyoIoIuIuIwswswswswswswswsRKZHWjxYRKoICHofZRMYoIjgoIuYoIRKuYuYoIoIoIGiRKuToIDSoIoInGoIluRKRKwswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswsRK
-RKoIpyoIRKwswswswswswswswswsoIMYuYoIRKoIoIoIWjoIoIRKoIoIuYoIoIoIoIuYuYGioIoIoIiDiDiDoIoIoIGGRKwswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswsRK
-RKoIoIpyRKwswswswswswswswsoIRKoIluofoIoIxYuYoIRpluRKKHoIsgRKoIoIRKRKRKGioIofuYdUzJWNoIoIoIoIRKRKwswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswsRK
-RKpyoIoIRKRKRKwsRKRKRKRKRKoIRKRKRKRKRKRKRKRKRKzLRKRKRKRKoURKRKRKRKRKRKpCoIoIoIoIoIoIoIoIzJuYoiRKRKRKRKRKRKRKRKwswswswswswswswswswswswswswswswswswswswswswswswsRK
-RKoIoIoIuYBwRKRKRKuLJoVmRKoIRKRKoIRKRKoIbdofoIoIoIcHVAXkoIKJoIURoIoIoIoIluzJuYWCWCWCWCoIoIzJoIoIoIoIoIoIoIYKKIwswswswswswswswswswswswswswswswswswswswswswswswsRK
-RKoIpyoIoIoIoIRKRKpNoIbdRKoIRKUioIRKRKIXoIuYzJuYuYvirvnhoIoIoIoIoIRKoIoIoIoIoIWCWCWCWCoIuYoIoIoIRKoIoIoIYKoIoIwswswswswswswswswswswswswswswswswswswswswswswswsRK
-RKuYoIoIoIuYuYuYRKRKoIoIRKoIRKoIoIRKRKoIoIoIoIoIvAeWxsobluoIoIofoIoIoIoIoIuYoIBhoIoIWCoIzJoIoIoIoIoIoIoIoIoIKHwswswswswswswswswswswswswswswswswswswswswswswswsRK
-RKuYoIoIRKoIoIoIUiRKRKoIoIoIRKoIoIRKRKxZRKBkoIoIBkRKRKRKRKRKRKRKRKRKRKpCoIoIoIoIoIoIoIofoIoIoiRKRKRKRKRKRKRKRKwswswswswswswswswswswswswswswswswswswswswswswswsRK
-RKoIoIoIRKRKoIoIoIpNRKRKRKRKRKuYoIRKCHoIKIRKoIoIRKRKUioIoIRKKIuYvLoIRKRKoIuYoIoIoIoIoIoIAloIRKRKSysEoIYKoIKIxswswswswswswswswswswswswswswswswswswswswswswswswsRK
-RKoIoIUiRKRKRKoIoIoIoIRKRKRKRKoIzJRKXVoIoIxZoIDyKHRKRKiMoIjgoIoIoIoIoIRKUioIoIoIoIoIoIoIoIoIRKSyoIoIoIoIoIluYKwswswswswswswswswswswswswswswswswswswswswswswswsRK
-RKoIuYBwRKRKRKRKoIoIzAiNRKRKznoIoIRKCHoIoIRKoIoIXiRKRKxsoIRKRKTtTtUgoIRKRKluoIoIoIoIoIzJuYRKRKoIpNoIRKRKRKRKRKwswswswswswswswswswswswswswswswswswswswswswswswsRK
-RKoIoIoIRKRKRKRKRKoIrvYKxKhFuYoIoIRKRKRKRKBkoIoIBkRKznoIoIoIRKRKRKRKRKRKRKRKRKDSoIoInGRKRKRKSyoIoIuYRKwswswswswswswswswswswswswswswswswswswswswswswswswswswswsRK
-RKoIoIoIRKRKRKRKRKRKiNVEAgoIoIoIRKRKKIXVoIoIoIoIKzoIoIoIoIoIoIKIKIRKRKRKEKNORKRKxZxZRKRKSySyoIuYciDlRKwswswswswswswswswswswswswswswswswswswswswswswswswswswswsRK
-RKoIoIoIRKRKRKRKRKRKRKoIoIoIuYRKRKznoIofoIoIoIoIoIoIoIoIoIoIoIoIoIoIRKofoIoIZRRKoIoIRKBEoIofoIoIoIoIRKwswswswswswswswswswswswswswswswswswswswswswswswswswswswsRK
-RKpCoIoIuYzJJVoIoIoIoIoIofoIoIoIoIoIoIoIRKRKuYoIRKRKRKRKRKznoIzJuYoIxZoIoIuYxYRKoIoIRKeWoIoISySyoIoIRKwswswswswswswswswswswswswswswswswswswswswswswswswswswswsRK
-RKoIoIoIoIoIoIoIoIoIoIoIoIoIoIoIoIuYwcoIoIoIoIoIoIalalpNRKRKoIoIuYoIRKoIQUofoIRKoIoIRKeWoIoISySyoIoIRKwswswswswswswswswswswswswswswswswswswswswswswswswswswswsRK
-RKofoIoIBkRKRKRKBkxZBkRKxsoIoIoIoIoIoIoIoIoIoIoIoIuYuYoIoIRKoIoIoIoIRKRKxZbsRKRKoIoIRKRKoIoISyrCoIoIRKRKRKRKRKwswswswswswswswswswswswswswswswswswswswswswswswsRK
-RKoIoIzJxZlualgToIoIpFRKRKRKRKRKRKRKRKRKRKRKoIoIRKRKoIoIoIRKRKoIoIRKRKRKluoIRKzJoIoIUqRKoIoIuYoIoIluoIoIKIoIYKwswswswswswswswswswswswswswswswswswswswswswswswsRK
-RKbdoIuYxZoIoIoIyNuYAeRKIwEOwGUiRKCUCUoIRKKzoIoIsERKRKoIoIRKznoIoIoIoIofoIluoIoIoIoIoIRKoIoIoIuYoIoIoIuYoIluYKwswswswswswswswswswswswswswswswswswswswswswswswsRK
-RKoIoIluBkRKRKoIoIoIDBRKpulqoIoIxZoIoIoIxZoIoIuYoIUaRKuYofRKoIoIoIoIuYoIoIoIoIoIoIoIoIRKxZxZRKRKRKRKRKRKRKRKRKwswswswswswswswswswswswswswswswswswswswswswswswsRK
-RKoIoIoIoIelRKtSHRoIoIRKdluYofYKRKDyoIoIRKoIoIoIoIoIoIoItXRKuYoIRKRKRKRKRKRKRKRKRKoIoIRKoIoIRKwswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswsRK
-RKpCoIoIOZJwRKRKRKRKbsRKQYoIoWYKTsRKRKRKRKRKRKRKRKRKRKbVzAbcIjoIRKznKIoIKIoIKIBwRKuYoIRKoIoIRKwswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswsRK
-RKoIoIoIoIYKRKNkzKuYoIRKZwJxofoIoIKIKIoIxZoIoIuYuYoIoIoIMjxYluoIRKoIoIoIoIoIoIoIRKoIoIxmxZxZRKwswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswsRK
-MmoIuYoIoIUiRKluoIoIZFRKProIoIDyuYuYxcoIxZoIoIoIzJoIoIoInhFAvzoIxZoIxmRKRKRKEyoIxZoIoIuYofoIRKwswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswsRK
-RKoIzJoIRKRKRKbsRKRKRKRKJCQyWjrZFmuYAZUGRKBkNBNBBkRKRKoIoIIQTDYsRKoIoIoIGpoIoIoIRKoIoIoIoIoIRKwswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswsRK
-RKzAMervRKBIoIoIoICHRKRKiWsrqnoIsgcinInIRKRKoIoIRKRKRKbioIRKuYNrRKoIemoIoIoIemoIRKRKRKRKRKRKRKwswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswsRK
-RKFmVAOwBkCHofuYoIAeRKRKDrRKRKRKRKzLDrRKRKRKoIoIRKRKRKoIuYRKuYoIRKRKRKRKRKRKRKRKRKwswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswsRK
-RKoIofoIxZoIoIoIhbYKRKumuYaloILhKIoIxYFHRKRKoIoIRKRKRKoIoIRKuYoIRKwswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswsRK
-NuoIoIoIBkuYoIoIofoIysoIuYluMKluoIiMuYMbRKRKoIoIRKRKjroIoIKIoIoIRKwswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswsRK
-RKluoIuYRKTtUgWjxYHRRKoIoIKHaLuPArKHfVoIVuRKoIoIRKRKoIoIoIoIoIBwRKwswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswsRK
-RKpCoIoIRKRKRKRKRKRKRKofoIvioIofdeoIoIMbRKRKNBNBRKRKIXoIbdRKRKRKRKwswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswsRK
-oUuYuYoIRKGGKIsDbXRKRKuYoIoIoIoIoIoIeWvzRKDSoIoIusRKoIXiXiRKRKRKRKwswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswsRK
-RKoIzJoIxZoIoIoIpYRKoIoIoIRKRKRKRKRKRKRKRKoIuYuYoIRKRKRKRKRKRKRKRKwswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswsRK
-RKoIuYoIRKoIWjoIoIRKoIoIRKRKRKRKRKRKRKDrpCuYuYoIoIoiDrRKRKRKRKRKRKRKwswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswsRK
-sWofoIoIRKeWoIWjoIysoIoIRKRKRKRKRKRKcLofoIoIoIoIoIoIoIGhRKRKRKRKRKRKwswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswsRK
-RKoIluoIRKxsoIoIluRKoIoIRKRKRKRKuYoIoIoIoIoInZoIoIzJuYuYoILiRKRKRKRKwswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswsRK
-RKpCoIoIRKRKluRKRKBkxZxZBkRKRKOvoIuYoIoIoIuYoIoIoIoIoIoIoIoIoIRKRKRKRKRKwswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswsRK
-RKoIoIoIoIoIluoIoIoIoIofoIoIoIoIoIoIluoIoIoIoObloIoIoIoIofoIoIYKKHKJalKIwswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswsRK
-RKoIzJuYoIoIoIzJuYoIoIoIoIoIoIoIoIoIoIoIoIRKRKRKRKuYoIoIoIKzoIoIoIoIpNoIwswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswsRK
-RKoIoIoIoIoIuYoIoIoIoIoIoIzJuYDyoIoIoIRKRKRKRKRKRKRKRKoIoIKzoIoIoIoIoIKIwswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswsRK
-RKoIoIoIoIoIoIoIoIRKBkxZBkRKxYKHRbBwRKRKvToIURuYKIKIzLRKYKYKoIRKRKRKRKRKwswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswsRK
-RKpCoIuYoIRKRKxZRKRKoIRZoIRKRKsWRKVsRKoIoIoIzzRZzzRZHRRKRKRKRKRKwswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswsRK
-RKznoIoIoIRKnmoIYKRKoIRZoIoIBkcLuYoIoIRZRZRZRZRZRZiJpxwswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswsRK
-RKRKoIoIzrRKKIoIoIxZoIRZRZRZxZoIoIuYoIoIoIoIzzRZzzRZoIwswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswsRK
-RKRKRKrvDPRKKIoIoIRKKHoIoIoIBkoIoIoIoObloIoObloIuYHRoIwswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswsRK
-RKRKRKRKRKRKRKRKRKRKRKRKRKRKRKRKRKRKRKRKRKRKRKRKRKRKRKRKRKRKRKRKRKRKRKRKRKRKRKRKRKRKRKRKRKRKRKRKRKRKRKRKRKRKRKRKRKRKRKRKRKRKRKRKRKRKRKRKRKRKRKRKRKRKRKRKRKRKRKRK
+wswswsuIuIuIuIuIwswswswswswswswswswswswswswswswswswswswswswswsaeaewswswswswswswswswswswswswswswswswswswswswswswswswswswswswsaepypyuIpyuIoIoIpyuIuIoIpypyoIRKRKRK
+wswsuIuIuIuInBuIuIwswswswswswswswswswswswswswswswswswswswswsaeaeaeaewswswswswswswswswswswswswswswswswswsuIuIuIuIwswswswswspypypyuIuIpypyuIpyoIuIoIpyuIoIoIoIRKRK
+wsuIOUOUuIuInBnBuIwswswswswswswswswswswswswswswswswswswsuIpypypyaewswswswswswswswswswswswswswswswswswsuIuIwswsuIpypyaeaepypyuIuIuIpypyoIuIuIpypyuIoIuIoIoIoIoIRK
+wsOUOUOUuIuIuIuINLuIwswswswswswsuIuIuIuIuIwswswswswsuIuIuIwswspypypyuIwswswswswswswswswswswswswsuIuIuIuIuIwswswswsaeaepypyuIwswsuIaewswswsuIwsRKRKRKoIuIoIoIoIRK
+wsuIOUuIuIuIuIuIuIuIwswswswswsuIuIwswswsuIuIwswsuIuIuIwswswswswswswsuIuIuIuIpypyaeaewswswswsuIuIuIuIwswsuIuIuIpypypypypyuIwswswswswswswsuIuIwswswsRKRKoIoIoIoIRK
+wsuIuIuIuIuIuIaeuIuIuIwswsuIuIuIuIuIuIuIuIuIOUuIuIwswswswswswswswsuIuIuIwswswspypyaeaewswsuIuIuIuIwswsuIuIwswswsaepypywswswswswswswswsuIuIwswswswswsRKRKoIoIoIRK
+wsuIEZEZEZuIuIaeaeuIuIuIOUuIuIuIwswswswswsOUOUpywswsaewswswswsuIuIuIuIuIwswswswspypyaewspyuIuIuIuIuIuIpywswswsaeaeaepyuIuIwswswswsuIuIwswswswswswswswsRKoIoIoIRK
+wsuIuIGnEZEZuIuIaeaeuIuIwsuIuIwswsuIaeaewswsbCpypyaeaeaewswsOUOUwswswsuIuIwswswswspypypypypywsuIuIuIwswswswswswsaewswswsuIuIuIuIuIuIwswswswswswswswswsRKoIoIoIRK
+wswsuIuIuIuIuIuIuIuIuIwswsuIwswsEZuIOUuIaewswspypypyaewswsuIFpwswswswswsuIuIwswswsuIpypypyaewswsuIwswswswswswswswswswswswswswswswswswswswswswswswswswsRKoIoIoIRK
+wswswswsKprDKpuIuIuIuIwswsuIwsaeuInBuIuInBuIwswspypypypypyuIwswswswswswsuIuIuIuIuIuIuIpyaeaeaewspywswswswswswswswswswswswswswswswswswswswswswswswswswsRKoIoIoIRK
+wswswswswswsKpKpuIuIwswsuIuIwsaeOUuIuIuIuIuIEZwswswswspyuIwswsRKRKRKRKWCWCWCuIuYuIGDuIwswsaewswspywswswswswswswswswswswswswswswswswswswswswswswswswswsRKoIoIoIRK
+wswswswswswswswswsuIwswsuIuIwsaeuIuIuIuIuIOUaewswswswsuIwswswsRKoIDhoIDhYKWCWCbtoIRKuIwswswswsuIuIwswswswswswswswswsuIwswsuIRKwswswswswswswswswswswswsRKoIoIoIRK
+wswswswswswswswswsuIuIwswsuIwsuIuIuIOUuIuIuIaewswswsuIuIwswswsRKXioIuYoIoIoIoIoIoIRKuIuIuIwsuIuIwswswswswswswswswswsuIwsuIUsxZwswswswswswswswswswswswsRKoIoIoIRK
+wspyoIuIwswswswswswsuIwswsuIwsuIOUuIuIuInBuIaewswswsuIwswswswsRKpNGHoIoIuYoIoIoIoIRKwswsuIuIuIwswswswswswswswswswsUsKpuIuIKpxZwswswswswswswswswswswswsRKoIoIoIRK
+RKoIaeuIpywswswswswsuIuIwsuIwswsuIuIuIOUuIuIwswswswsuIwswswswsRKluoIYKoIXiRKRKoIofRKwswswswswswswswswswswswswswswswsuICuKpuIKpwswswswswswswswswswswswsRKoIoIoIRK
+wsoIuIaeaepywswswswswsuIuIuIuIwswsEZuIuIuIuIuIwswsuIuIwswswswsRKRKRKRKRKRKRKaloIoIRKwswswswswswswswswswswswswswsxZKpCuKpCuuIwswswswswswswswswswswswswsRKoIoIoIRK
+RKpyuIaeaeuIwswswswswswswsuIuIuIwswsuIuIwswsuIuIuIuIwswswswswswswswswsRKRKKIoIoIoIRKwswswswswswswswswswswswswswsRKuIKpuICueTwswswswswswswsRKRKRKRKRKRKRKoIoIoIRK
+RKuIpyoIaepypywswswswswswsuIwsuIuIwswsuIuIwswsuIuIwswswswswswswswswsRKRKoIuYuYoICIRKwswswswswswswswswswswswswswswsKpksksKpUswswswswswswswsRKoIoIoIoIoIoIoIoIoIRK
+RKuIoIuIpyuIpyuIwswswsaewspywswsuIwswswsuIwswswswswsRKRKRKRKRKRKRKRKRKKIoIoIoIoInVRKwswswswswswswswswswswswswswswsUsKpCuksuIRKwswswswswswsRKoIoIoIoIoIoIoIoIoIRK
+RKpyoIpywswswsuIwswsaeaepypywswsuIwswswsuIwswswswswsRKoIuYaloIoIJVoIluoIoIoIofoIRKRKwswswswswswswswswswswswswswsxZeTCuCuksuIxZwswswswswswsRKoIoIoIoIoIoIoIoIoIRK
+RKpyuIpypywspyuIuIwsaepypywswswsuIwswswsuIwswswswswsRKofoIoIoIoIoIoIoIoIoIoIYKRKRKwswswswswswswswswswswswswswswsxZUsksCuCueTwswswswswswswsRKoIoIoIRKRKRKwswswsRK
+wsuIpyuIpypyuIpyuIwswspywswswswsuIwswsuIuIwswswswswsRKluoIRKRKRKRKRKRKRKRKRKRKRKwswswswswswswswswswswswswswswswsRKUsCuksCuUsRKwswswswswswsRKoIoIoIRKwswswswswsRK
+wsoIuIuIuIwswspyuIuIuIpywswswswsuIwsuIuIwswswswswswsRKoIoIwswswswswswswswswswswswswswswswswswswswswswswswswswswsxZUsCuCuCuUsxZwswswswswswsRKoIoIoIRKwswswswswsRK
+wsuIuIpywswswswsuIpyuIwswswswsuIuIuIuIwswswswswswswsRKoIoIwswswswswswswswswswswswswswswswswswswswswswswswswswswsRKUsCuCuCuUsRKwswswswswswsRKoIoIoIRKwswswswswsRK
+RKpyoIoIwswswswswsuIuIuIuIuIuIuIwswswswsRKRKRKRKRKRKRKoIoIRKRKRKRKwswswswswswswswswswswswswswswswswswswswswswswsRKUsCuCuCuUsxZwswswswswswsRKoIoIoIRKwswswswswsRK
+wsuIpyuIRKwswswswsuIpywswswswswswswswswsoIznSySyoIuYoIofoIoIoIuYRKwswswswswswswswswswswswswswswswswswswswswswswsRKUsCuCuCuUsxZwswswswswswsRKoIoIoIRKwswswswswsRK
+wsoIpyuIpywswswspyuIwswswswswswswswswswsoIoIofoIoIoIoIoIoIoIoIoIRKwswswswswswswswswswswswswswswswswswswswswswswsxZUsCuCuCuUsRKwswswswswswsRKoIoIoIRKwswswswswsRK
+RKpyuIpypywswswspywswswswswswswswswsRKRKRKRKRKRKRKRKRKRKRKRKoIoIRKwswswswswswswswswswswswswswswswswswswswswswswsRKUsCuCuCuUsxZwswswswswswsRKoIoIoIRKwswswswswsRK
+RKuIpypyRKwswsuIpywswswswswswswswswsRKoIofuYoIoIluRKaYTtKIRKoIuYRKluoIoIoIGuuYoIoIwcwswswswswswswswswswswswswswsxZUsCuCuCuUsRKwswswswswswsRKoIoIoIRKwswswswswsRK
+RKoIpyoIRKwspyuIuIwswswswswswswswswsRKZRCHoICHZRpIRKoIoIoIRKoIoIRKoIoIuYoIoIoIoIoIofwswswswswswswswswswswswswswsxZUsCuCuCuUsRKwswswswswswsRKoIoIoIRKwswswswswsRK
+RKpyoIoIwswsuIuIwswswswswswswswswswsRKoIpIoIKHofoIRKRKjgRKRKoIofRKoIoIwswswswswsoIoIwswswswswswswswswswswswswswsRKUsCuCuCuUsxZwswswswswswsRKoIoIoIRKwswswswswsRK
+RKuIpypypypyuIwswswswswswswswswswswsRKoIpNluCHoIuYRKzAoIoIRKoIoIRKoIoIwswswswswsoIoIwswswswswswswswswswswswswswsRKUsCuCuCuUsxZwswswswswswsRKoIoIoIRKwswswswswsRK
+RKuIoIpypyuIpywswswswswswswsRKRKRKRKRKoIKHuYKHoIoIRKoOblofRKoIoIRKoIoIwsRKRKRKRKNBJzRKRKRKRKwswswswswswswswswswsxZUsCuCuCuUsxZwswswswswswsRKoIoIoIRKwswswswswsRK
+RKpyoIoIuIuIwswswswswswswswsRKZHWjxYRKoICHofZRMYoIjgoIuYoIRKuYuYoIoIoIGiRKuToIDSoIoInGoIluRKRKwswswswswswswswswsRKUsCuCuCuUsxZwswswswswswsRKoIoIoIRKwswswswswsRK
+RKoIpyoIRKwswswswswswswswswsoIMYuYoIRKoIoIoIWjoIoIRKoIoIuYoIoIoIoIuYuYGioIoIoIiDiDiDoIoIoIGGRKwswswswswswswswswsxZUsCuCuCuUsRKwswswswswswsRKoIoIoIRKwswswswswsRK
+RKoIoIpyRKwswswswswswswswsoIRKoIluofoIoIxYuYoIRpluRKKHoIsgRKoIoIRKRKRKGioIofuYdUzJWNoIoIoIoIRKRKwswswswswswsRKxZxZQdBVsACuUsRKRKxZxZRKRKwsRKoIoIoIRKwswswswswsRK
+RKpyoIoIRKRKRKwsRKRKRKRKRKoIRKRKRKRKRKRKRKRKRKzLRKRKRKRKoURKRKRKRKRKRKpCoIoIoIoIoIoIoIoIzJuYoiRKRKRKRKRKRKRKRKoIoIUsCuCuCuUsoIoIoIoIoIRKRKRKoIoIoIRKwswswswswsRK
+RKoIoIoIuYBwRKRKRKuLJoVmRKoIRKRKoIRKRKoIbdofoIoIoIcHVAXkoIKJoIURoIoIoIoIluzJuYWCWCWCWCoIoIzJoIoIoIoIoIoIoIoIKIoIoIUsCuCuCuUsoIoIoIoIoIoIRKRKoIoIoIRKwswswswswsRK
+RKoIpyoIoIoIoIRKRKpNoIbdRKoIRKUioIRKRKIXoIuYzJuYuYvirvnhoIoIoIoIoIRKoIoIoIoIoIWCWCWCWCoIuYoIoIoIRKoIoIoIYKoIoIoIoIUsCuCuCuUsoIoIoIoIoIoIoIRKoIoIoIRKwswswswswsRK
+RKuYoIoIoIuYuYuYRKRKoIoIRKoIRKoIoIRKRKoIoIoIoIoIvAeWxsobluoIoIofoIoIoIoIoIuYoIBhoIoIWCoIzJoIoIoIoIoIoIoIoIoIKHoIoIUsigigigUsoIoIoIoIoIoIoIoIoIoIoIRKwswswswswsRK
+RKuYoIoIRKoIoIoIUiRKRKoIoIoIRKoIoIRKRKNBRKBkoIoIBkRKRKRKRKRKRKRKRKRKRKpCoIoIoIoIoIoIoIofoIoIoiRKRKRKRKRKRKRKRKoIoIUsigigigUsoIoIoIoIoIoIoIoIoIoIoIRKwswswswswsRK
+RKoIoIoIRKRKoIoIoIpNRKRKRKRKRKuYoIRKCHoIKIRKoIoIRKRKUioIoIRKKIuYvLoIRKRKoIuYoIoIoIoIoIoIAloIRKRKSysEoIYKoIKIxsoIoIUsCuCuCuUsoIoIoIoIoIoIoIRKoIoIoIRKwswswswswsRK
+RKoIoIUiRKRKRKoIoIoIoIRKRKRKRKoIzJRKXVoIoINBoIDyKHRKRKiMoIjgoIoIoIoIoIRKUioIoIoIoIoIoIoIoIoIRKSyoIoIoIoIoIluoIoIoIUsCuCuCuUsoIoIoIoIoIoIRKRKoIoIoIRKwswswswswsRK
+RKoIuYBwRKRKRKRKoIoIzAiNRKRKznoIoIRKCHoIoIRKoIoIXiRKRKxsoIRKRKTtTtUgoIRKRKluoIoIoIoIoIzJuYRKRKoIpNoIRKRKRKRKRKoIoIUsCuCuCuUsoIoIoIoIoIRKRKRKoIoIoIRKwswswswswsRK
+RKoIoIoIRKRKRKRKRKoIrvYKxKhFuYoIoIRKRKRKRKBkoIoIBkRKznoIoIoIRKRKRKRKRKRKRKRKRKDSoIoInGRKRKRKSyoIoIuYRKoIoIoIRKNBxZQdsAsACuUsRKWCNBNBWCRKRKRKoIoIoIRKwswswswswsRK
+RKoIoIoIRKRKRKRKRKRKiNVEAgoIoIoIRKRKKIXVoIoIoIoIKzoIoIoIoIoIoIKIKIRKRKRKEKNORKRKNBNBRKRKSySyoIuYciDlRKoIoIoIoIoIxZUsCuCuCuUsRKoIoIoIoIRKRKRKoIoIoIRKRKwswswswsRK
+RKoIoIoIRKRKRKRKRKRKRKoIoIoIuYRKRKznoIofoIoIoIoIoIoIoIoIoIoIoIoIoIoIRKofoIoIZRRKoIoIRKBEoIofoIoIoIoIRKoIoIoIoIoIRKUsCuCuCuUsxZoIoIoIoIRKRKoIoIoIoIoIRKRKwswswsRK
+RKpCoIoIuYzJJVoIoIoIoIoIofoIoIoIoIoIoIoIRKRKuYoIRKRKRKRKRKznoIzJuYoINBoIoIuYxYRKoIoIRKeWoIoISySyoIoIRKoIoIoIoIoIRKUsCuCuCuUsxZoIoIoIoIRKoIoIoIoIoIoIoIRKwswswsRK
+RKoIoIoIoIoIoIoIoIoIoIoIoIoIoIoIoIuYwcoIoIoIoIoIoIalalpNRKRKoIoIuYoIRKoIQUofoIRKoIoIRKeWoIoISySyoIoIRKoIoIoIoIoIxZUsCuCuCuUsxZoIoIoIoINBoIoIoIoIoIoIoIRKwswswsRK
+RKofoIoIBkRKRKRKBkNBBkRKxsoIoIoIoIoIoIoIoIoIoIoIoIuYuYoIoIRKoIoIoIoIRKRKNBbsRKRKoIoIRKRKoIoISyrCoIoIRKRKRKRKRKRKxZUsCuCuCuUsRKRKRKRKRKRKoIoIoIoIoIoIoIRKwswswsRK
+RKoIoIzJNBlualgToIoIpFRKRKRKRKRKRKRKRKRKRKRKoIoIRKRKoIoIoIRKRKoIoIRKRKRKluoIRKzJoIoIUqRKoIoIuYoIoIluoIoIKIoIYKRKxZUsCuCuCuUsxZoIoIoIoIoIoIoIoIoIoIoIoIRKwswswsRK
+RKbdoIuYNBoIoIoIyNuYAeRKIwEOwGUiRKCUCUoIRKKzoIoIsERKRKoIoIRKznoIoIoIoIofoIluoIoIoIoIoIRKoIoIoIuYoIoIoIuYoIluYKRKRKUsCuCuCuUsxZoIoIoIoIoIoIoIoIoIoIoIoIRKwswswsRK
+RKoIoIluBkRKRKoIoIoIDBRKpulqoIoINBoIoIoINBoIoIuYoIUaRKuYofRKoIoIoIoIuYoIoIoIoIoIoIoIoIRKNBNBRKRKRKRKRKRKRKRKRKRKRKUsCuCuCuUsxZoIoIoIoIoIoIoIoIoIoIoIoIRKwswswsRK
+RKoIoIoIoIelRKtSHRoIoIRKdluYofYKRKDyoIoIRKoIoIoIoIoIoIoItXRKuYoIRKRKRKRKRKRKRKRKRKoIoIRKoIoIRKoIoIRKoIoIoIoIoIoIRKUsCuCuCuUsxZoIoIRKRKRKNBNBRKRKRKoIoIRKwswswsRK
+RKpCoIoIOZJwRKRKRKRKbsRKQYoIoWYKTsRKRKRKRKRKRKRKRKRKRKbVzAbcIjoIRKznKIoIKIoIKIBwRKuYoIRKoIoIRKoIoINBoIoIoIoIoIoIRKUsCuCuCuUsxZoIoIRKoIoIoIoIoIoIRKoIoIRKRKRKRKRK
+RKoIoIoIoIYKRKNkzKuYoIRKZwJxofoIoIKIKIoINBoIoIuYuYoIoIoIMjxYluoIRKoIoIoIoIoIoIoIRKoIoIxmNBNBRKRKRKRKoIoIoIoIoIoIRKUsCuCuCuUsxZoIoIRKoIoIoIoIoIoIRKoIoIoIoIoIoIRK
+MmoIuYoIoIUiRKluoIoIZFRKProIoIDyuYuYxcoINBoIoIoIzJoIoIoInhFAvzoINBoIxmRKRKRKEyoINBoIoIuYofoIoIoIoIoIoIoIoIoIoIoIxZUsCuCuCuUsRKoIoIRKoIoIoIoIoIoIRKoIoIoIoIoIoIRK
+RKoIzJoIRKRKRKbsRKRKRKRKJCQyWjrZFmuYAZUGRKBkNBNBBkRKRKoIoIIQTDYsRKoIoIoIGpoIoIoIRKoIoIoIoIoIoIoIoIoIoIoIoIoIoIoIxZUsCuCuCuUsRKoIoIRKoIoIoIoIoIoIRKoIoIoIoIoIoIRK
+RKzAMervRKBIoIoIoICHRKRKiWsrqnoIsgcinInIRKRKoIoIRKRKRKbioIRKuYNrRKoIemoIoIoIemoIRKRKRKRKRKRKRKoINUxZxZNBRKRKRKxZxZUsCuCuCuUsRKoIoIRKoIoIoIoIoIoIRKoIoIoIoIoIoIRK
+RKFmVAOwBkCHofuYoIAeRKRKDrRKRKRKRKzLDrRKRKRKoIoIRKRKRKoIuYRKuYoIRKRKRKRKRKRKRKRKRKwswswswswsRKwvwvxZoIoIRKRKxZxZUsUsCuCuCuUsRKoIoIRKRKRKRKRKRKNBRKoIoIoIoIoIoIRK
+RKoIofoINBoIoIoIhbYKRKumuYaloILhKIoIxYFHRKRKoIoIRKRKRKoIoIRKuYoIRKwswswswswswswswswswswswswsRKuIoIRKoIoIRKRKxZUsUsCuCuCuCuUsxZoIoIoIoIoIoIoIRKoIRKRKRKRKRKoIoIRK
+NuoIoIoIBkuYoIoIofoIysoIuYluMKluoIiMuYMbRKRKoIoIRKRKjroIoIKIoIoIRKwswswsuIKpuIuIwswswswswswsxZNUuIRKRKRKRKRKUsUsCuCuCuCuUsUsxZoIoIoIoIoIoIoIRKoIoIoIoIoIRKoIoIRK
+RKluoIuYRKTtUgWjxYHRRKoIoIKHaLuPArKHfVoIVuRKoIoIRKRKoIoIoIoIoIBwRKwsuIuIuIuIuIuIuIuIwswswswsxZnBoIRKRKRKRKUsUsCuCuCuCuUsUsxZxZNBNBRKRKRKoIoIRKRKRKRKRKoIRKoIoIRK
+RKpCoIoIRKRKRKRKRKRKRKofoIvioIofdeoIoIMbRKRKNBNBRKRKIXoIbdRKRKRKRKEZuIuIuIuIuIuIKpuIwswswswsxZoIOUxZxZxZUsUsCuCuCuCuUsUsxZxZoIoIoIoIoIRKoIoIoIoIoIoIRKoIRKoIoIRK
+oUuYuYoIRKGGKIsDbXRKRKuYoIoIoIoIoIoIeWvzRKDSoIoIusRKoIXiXiRKRKwswsuIuIuIuIuIEZuIuIuIuIKpwswsuIUsuIuIUseTUsCuCuCuCuUsUsRKRKoIoIoIoIoIoIRKoIoIoIoIoIoIRKoIRKoIoIRK
+RKoIzJoINBoIoIoIpYRKoIoIoIRKRKRKRKRKRKRKRKoIuYuYoIRKRKRKRKRKwswsKpuIuIuIuIuIuIuIuIuIuIuIuIuInBuICudPCuCuCuCuCuCuUsUsRKRKRKoIoIoIoIoIoIRKRKRKRKRKoIoIRKNBRKoIoIRK
+RKoIuYoIRKoIWjoIoIRKoIoIRKRKRKRKRKRKRKDrpCuYuYoIoIoiDrRKRKRKRKKpEZuIuIuIKpwswsuIuIEZwswswswswsOUdPCuksdPCuenCuUsUsxZRKRKRKoIoIoIoIoIoIRKoIoIoIRKoIoIoIoIoIoIoIRK
+sWofoIoIRKeWoIWjoIysoIoIRKRKRKRKRKRKcLofoIoIoIoIoIoIoIGhRKRKRKRKwswsuIKpwswswswswswswswswswswsOUCuCuCuksCuCuUsUsxZxZoIoINBoIoIoIoIoIoINBoIoIoINBoIoIoIoIoIoIoIRK
+RKoIluoIRKxsoIoIluRKoIoIRKRKRKRKuYoIoIoIoIoInZoIoIzJuYuYoILiRKRKRKwswswswswswswswswswswswswswswsUsnBuIUsUseTeTxZxZRKoIoIRKoIoIoIoIoIoIRKoIoIoIRKoIoIRKRKNBNBRKRK
+RKpCoIoIRKRKluRKRKBkNBNBBkRKRKOvoIuYoIoIoIuYoIoIoIoIoIoIoIoIoIRKRKRKRKRKRKRKRKRKRKRKRKRKwswsxZxZuIwsKpuIRKwsRKRKRKRKRKRKRKRKRKRKRKRKRKRKRKRKRKRKoIoIRKoIoIoIoIRK
+RKoIoIoIoIoIluoIoIoIoIofoIoIoIoIoIoIluoIoIoIoObloIoIoIoIofoIoIYKKHKJalKIoIoIoIoIoIoIoIRKwsuIKpKpuIuIuIuIuIuIwsRKoIoIoIoIRKoIoIoIoIoIoIoIoIoIoIoIoIoIRKoIoIoIoIRK
+RKoIzJuYoIoIoIzJuYoIoIoIoIoIoIoIoIoIoIoIoIRKRKRKRKuYoIoIoIKzoIoIoIoIpNoIoIoIoIoIoIoIoIRKwswswsuIuInBuIKpuIwswsRKoIoIoIoIRKoIoIoIoIoIoIoIoIoIoIoIoIoIRKoIoIoIoIRK
+RKoIoIoIoIoIuYoIoIoIoIoIoIzJuYDyoIoIoIRKRKRKRKRKRKRKRKoIoIKzoIRKRKRKRKRKRKRKRKRKRKoIoIRKwswswswswsuIuIwswswswsRKoIoIoIoIRKoIoIRKoIoIoIoIoIoIRKRKNBNBRKoIoIoIoIRK
+RKoIoIoIoIoIoIoIoIRKBkNBBkRKxYKHRbBwRKRKvToIURuYKIKIzLRKYKYKoIRKoIoIoIoIoIoIoIoIRKoIoIRKwswswswswsuIwswswswswsRKoIoIoIoIRKoIoIRKoIoIoIoIoIoIRKoIoIoIoIoIoIoIoIRK
+RKpCoIuYoIRKRKNBRKRKoIRZoIRKRKsWRKVsRKoIoIoIzzRZzzRZHRRKRKRKNBRKoIoIoIoIoIoIoIoIRKoIoIRKwswswswsuIuIwswswswswsRKoIoIoIoIRKoIoIRKoIoIoIoIoIoIRKoIoIoIoIoIoIoIoIRK
+RKznoIoIoIRKnmoIYKRKoIRZoIoIBkcLuYoIoIRZRZRZRZRZRZiJpxRKoIoIoIRKoIoIoIoIoIoIoIoIRKoIoIRKRKwswsxZuIxZxZxZRKRKRKRKRKNBNBRKRKNBNBRKoIoIoIoIoIoINBoIoIoIoIoIoIoIoIRK
+RKRKoIoIzrRKKIoIoINBoIRZRZRZNBoIoIuYoIoIoIoIzzRZzzRZoIRKoIoIoINBoIoIoIoIoIoIoIoIRKoIoIoIoIoIoIoIoIoIoIoIoIoIoIoIoIoIoIoIoIoIoIRKoIoIoIoIoIoIRKoIoIoIoIoIoIoIoIRK
+RKRKRKrvDPRKKIoIoIRKKHoIoIoIBkoIoIoIoObloIoObloIuYHRoIRKoIoIoIRKoIoIoIoIoIoIoIoIRKoIoIoIoIoIoIoIoIoIoIoIoIoIoIoIoIoIoIoIoIoIoIRKRKRKRKRKRKRKRKoIoIoIoIoIoIoIoIRK
+RKRKRKRKRKRKRKRKRKRKRKRKRKRKRKRKRKRKRKRKRKRKRKRKRKRKRKRKRKRKRKRKRKRKRKRKRKRKRKRKRKRKRKRKRKRKxZxZxZRKxZRKRKRKRKRKRKRKRKRKRKRKRKRKRKRKRKRKRKRKRKRKRKRKRKRKRKRKRKRK
 "}

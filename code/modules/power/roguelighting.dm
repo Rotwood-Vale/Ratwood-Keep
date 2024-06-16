@@ -279,7 +279,7 @@
 							if(prob(prob2spoil))
 								user.visible_message("<span class='warning'>[user] burns [S].</span>")
 								if(user.client?.prefs.showrolls)
-									to_chat(user, "<span class='warning'>Critfail... [prob2spoil]%.</span>")
+									to_chat(user, "<span class='warning'>Cooking fail... [prob2spoil]%.</span>")
 								C = S.cooking(1000, null)
 							else
 								C = S.cooking(S.cooktime/4, src)

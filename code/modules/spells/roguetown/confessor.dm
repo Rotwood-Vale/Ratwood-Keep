@@ -12,10 +12,10 @@
 	movement_interrupt = FALSE
 	chargedloop = /datum/looping_sound/invokeholy
 	miracle = TRUE
-	devotion_cost = -30
+	devotion_cost = 30
 
 /obj/effect/proc_holder/spell/invoked/shepherd/cast(list/targets, mob/living/user)
-	..()
+	. = ..()
 	if(isliving(targets[1]))
 		var/mob/living/target = targets[1]
 		if(target == user)

@@ -79,7 +79,5 @@
 		H.change_stat("perception", -1)
 
 	var/datum/devotion/C = new /datum/devotion(H, H.patron)
-	C.holder_mob = H
-	C.update_devotion(50, 50)
 	C.grant_spells(H)
 	H.verbs += list(/mob/living/carbon/human/proc/devotionreport, /mob/living/carbon/human/proc/clericpray)

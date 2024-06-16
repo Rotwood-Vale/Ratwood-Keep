@@ -14,13 +14,11 @@
 	antimagic_allowed = TRUE
 	charge_max = 5 SECONDS //very stupidly simple spell
 	miracle = TRUE
-	devotion_cost = -5
+	devotion_cost = 5 //come on, this is very basic
 
-/obj/effect/proc_holder/spell/diagnose/cast(list/targets, mob/living/user)
+/obj/effect/proc_holder/spell/invoked/diagnose/cast(list/targets, mob/living/user)
 	if(ishuman(targets[1]))
 		var/mob/living/carbon/human/human_target = targets[1]
-		user.visible_message("<span class='info'>[user] diagnoses [human_target]!</span>", \
-							"<span class='notice'>I diagnose [human_target]!</span>")
 		human_target.check_for_injuries(user)
 		return TRUE
 	return FALSE
@@ -42,7 +40,7 @@
 	antimagic_allowed = TRUE
 	charge_max = 60 SECONDS //attaching a limb is pretty intense
 	miracle = TRUE
-	devotion_cost = -80
+	devotion_cost = 60
 
 /obj/effect/proc_holder/spell/invoked/attach_bodypart/proc/get_organs(mob/living/target, mob/living/user)
 	var/list/missing_organs = list(
@@ -141,9 +139,9 @@
 	antimagic_allowed = TRUE
 	charge_max = 2 MINUTES
 	miracle = TRUE
-	devotion_cost = -100
+	devotion_cost = 100
 	/// Amount of PQ gained for curing zombos
-	var/unzombification_pq = 0.4
+	var/unzombification_pq = PQ_GAIN_UNZOMBIFY
 
 /obj/effect/proc_holder/spell/invoked/cure_rot/cast(list/targets, mob/living/user)
 	if(isliving(targets[1]))

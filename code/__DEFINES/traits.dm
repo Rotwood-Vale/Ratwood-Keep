@@ -3,7 +3,7 @@
 #define TRAIT_NOSTINK 					"Dead Nose"
 #define TRAIT_ZJUMP 					"High Jumping"
 #define TRAIT_LEAPER 					"Leaper"
-#define TRAIT_NOSEGRAB 					"Intimidating"
+#define TRAIT_NOSEGRAB 					"Nosey"
 #define TRAIT_NUTCRACKER 				"Nutcracker"
 #define TRAIT_SEEPRICES					"Giza Blooded"
 #define TRAIT_SEEPRICES_SHITTY			"Giza-in-training"

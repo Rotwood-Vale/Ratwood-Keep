@@ -36,3 +36,5 @@
 		H.change_stat("endurance", 2)
 		H.change_stat("constitution", 1)
 		H.change_stat("perception", 1)
+		H.change_stat("fortune", 4)
+
