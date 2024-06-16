@@ -6,7 +6,7 @@
 	total_positions = 1
 	spawn_positions = 1
 	allowed_sexes = list(MALE)
-	allowed_races = NOBLE_RACES_TYPES
+	allowed_races = RACES_TOLERATED_UP
 	allowed_ages = list(AGE_MIDDLEAGED, AGE_OLD)
 	banned_flaws = list(/datum/charflaw/noeyes)
 	display_order = JDO_BAILIFF

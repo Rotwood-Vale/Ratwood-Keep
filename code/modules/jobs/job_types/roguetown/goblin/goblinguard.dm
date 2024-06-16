@@ -6,7 +6,7 @@
 	total_positions = 0
 	spawn_positions = 0
 	allowed_sexes = list(MALE)
-	allowed_races = list(/datum/species/goblinp)
+	allowed_races = list()
 	allowed_patrons = list(/datum/patron/inhumen/graggar)
 	banned_flaws = list(/datum/charflaw/noeyes)
 	tutorial = "Goblin Guards rensposible for their kingdom and his majesty King."

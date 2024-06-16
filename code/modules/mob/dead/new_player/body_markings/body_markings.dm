@@ -94,6 +94,14 @@
 	default_color = DEFAULT_SECONDARY
 	covers_chest = TRUE
 
+/datum/body_marking/kobold_scale
+	icon = 'icons/mob/body_markings/chest_markings.dmi'
+	name = "Kobold Scales"
+	icon_state = "kobold_scale"
+	affected_bodyparts = CHEST
+	default_color = DEFAULT_SECONDARY
+	covers_chest = TRUE
+
 /datum/body_marking/bellyscaleslim
 	icon = 'icons/mob/body_markings/chest_markings.dmi'
 	name = "Belly Scales (Slim)"

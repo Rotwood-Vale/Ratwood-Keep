@@ -4,8 +4,8 @@
 	department_flag = MERCENARIES
 	tutorial = "Experts, Professionals, Expensive. Those are the first words that come to mind when the emperiate Grenzelhoft mercenary guild is mentioned. While you may work for coin like any common sellsword, mantaining the prestige of the guild will be of utmost priority."
 	allowed_sexes = list(MALE, FEMALE)
-	allowed_races = CLOTHED_RACES_TYPES
-	banned_flaws = list(/datum/charflaw/noeyes)
+	allowed_races = RACES_TOLERATED_UP
+	banned_flaws = list("Blind")
 	outfit = /datum/outfit/job/roguetown/mercenary/grenzelhoft
 	display_order = JDO_GRENZELHOFT
 	selection_color = JCOLOR_MERCENARY

@@ -33,36 +33,3 @@
 		/datum/sprite_accessory/antenna/moth/regal,
 		/datum/sprite_accessory/antenna/moth/mothra,
 		)
-
-/datum/customizer/organ/antennas/ipc
-	customizer_choices = list(/datum/customizer_choice/organ/antennas/ipc)
-
-/datum/customizer_choice/organ/antennas/ipc
-	name = "I.P.C. Antennas"
-	organ_type = /obj/item/organ/antennas/ipc
-	sprite_accessories = list(
-		/datum/sprite_accessory/antenna/ipc/antennae,
-		/datum/sprite_accessory/antenna/ipc/tvantennae,
-		/datum/sprite_accessory/antenna/ipc/cyberhead,
-		/datum/sprite_accessory/antenna/ipc/antlers,
-		/datum/sprite_accessory/antenna/ipc/crowned,
-		)
-
-/datum/customizer/organ/antennas/synthliz
-	customizer_choices = list(/datum/customizer_choice/organ/antennas/synthliz)
-
-/datum/customizer_choice/organ/antennas/synthliz
-	name = "Synthetic Antennas"
-	organ_type = /obj/item/organ/antennas/synth
-	sprite_accessories = list(
-		/datum/sprite_accessory/antenna/synthliz/curled,
-		/datum/sprite_accessory/antenna/synthliz/thick,
-		/datum/sprite_accessory/antenna/synthliz/thicklight,
-		/datum/sprite_accessory/antenna/synthliz/short,
-		/datum/sprite_accessory/antenna/synthliz/sharp,
-		/datum/sprite_accessory/antenna/synthliz/sharplight,
-		/datum/sprite_accessory/antenna/synthliz/synth_horns,
-		/datum/sprite_accessory/antenna/synthliz/synth_hornslight,
-		/datum/sprite_accessory/antenna/synthliz/cobrahood,
-		/datum/sprite_accessory/antenna/synthliz/cobrahoodears,
-		)

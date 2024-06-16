@@ -6,7 +6,7 @@
 	total_positions = 2
 	spawn_positions = 2
 
-	allowed_races = CLOTHED_RACES_TYPES
+	allowed_races = RACES_SHUNNED_UP
 	allowed_ages = list(AGE_ADULT)
 	banned_flaws = list(/datum/charflaw/noeyes)
 

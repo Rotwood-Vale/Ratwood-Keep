@@ -5,6 +5,3 @@
 	visible_organ = TRUE
 	zone = BODY_ZONE_CHEST
 	slot = ORGAN_SLOT_BACK_FEATURE
-
-/obj/item/organ/back_feature/xeno_dorsal
-	name = "dorsal tubes"

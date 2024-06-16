@@ -6,7 +6,7 @@
 	total_positions = 1
 	spawn_positions = 1
 
-	allowed_races = NOBLE_RACES_TYPES
+	allowed_races = RACES_TOLERATED_UP
 	allowed_sexes = list(MALE, FEMALE)
 	banned_flaws = list(/datum/charflaw/noeyes)
 	outfit = /datum/outfit/job/roguetown/hand

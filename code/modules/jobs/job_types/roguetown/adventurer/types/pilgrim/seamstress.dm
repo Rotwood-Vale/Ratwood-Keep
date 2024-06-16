@@ -1,7 +1,7 @@
 /datum/advclass/seamstress
 	name = "Seamstress"
 	allowed_sexes = list(FEMALE)
-	allowed_races = CLOTHED_RACES_TYPES
+	allowed_races = RACES_ALL_KINDS
 	outfit = /datum/outfit/job/roguetown/adventurer/seamstress
 	isvillager = TRUE
 	ispilgrim = FALSE

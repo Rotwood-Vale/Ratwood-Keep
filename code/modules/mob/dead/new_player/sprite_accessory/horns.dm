@@ -43,6 +43,98 @@
 	name = "Knight"
 	icon_state = "knight"
 
+/datum/sprite_accessory/horns/dragon
+	name = "Dragon"
+	icon_state = "dragon"
+
+/datum/sprite_accessory/horns/antlers
+	name = "Antlers"
+	icon_state = "antlers"
+
+/datum/sprite_accessory/horns/ramalt
+	name = "Ram Alt"
+	icon_state = "ramalt"
+
+/datum/sprite_accessory/horns/smallantlers
+	name = "Small Antlers"
+	icon_state = "smallantlers"
+
+/datum/sprite_accessory/horns/curledramhorns
+	name = "Curled Ram Horns"
+	icon_state = "ramcurled"
+
+/datum/sprite_accessory/horns/curledramhornsalt
+	name = "Curled Ram Horns Alt"
+	icon_state = "ramcurledalt"
+
+/datum/sprite_accessory/horns/smallramhorns
+	name = "Small Ram Horns"
+	icon_state = "ramcurledsmall"
+
+/datum/sprite_accessory/horns/smallramhornsalt
+	name  = "Small Ram Horns Alt"
+	icon_state = "ramcurledsmallalt"
+
+/datum/sprite_accessory/horns/smallramhornsthree
+	name = "Small Ram Horns 3"
+	icon_state = "ramcurledsmall3"
+
+/datum/sprite_accessory/horns/liftedhorns
+	name = "Lifted Horns"
+	icon_state = "lifted"
+
+/datum/sprite_accessory/horns/bigcurlyhorns
+	name = "Big Curly Horns"
+	icon_state = "bigcurly"
+
+/datum/sprite_accessory/horns/billberry
+	name = "Billberry"
+	icon_state = "billberry"
+
+/datum/sprite_accessory/horns/stabbers
+	name = "Stabbers"
+	icon_state = "stabbers"
+
+/datum/sprite_accessory/horns/unihorn
+	name = "Unihorn"
+	icon_state = "unihorn"
+
+/datum/sprite_accessory/horns/longhorns
+	name = "Longhorns"
+	icon_state = "longhorns"
+
+/datum/sprite_accessory/horns/outstretched
+	name = "Outstretched"
+	icon_state = "outstretched"
+
+/datum/sprite_accessory/horns/halo
+	name = "Halo"
+	icon_state = "halo"
+
+/datum/sprite_accessory/horns/greathorns
+	name = "Great Horns"
+	icon_state = "great"
+
+/datum/sprite_accessory/horns/bunhorns
+	name = "Bunny horns"
+	icon_state = "bunhorns"
+
+/datum/sprite_accessory/horns/marauder
+	name = "Marauder"
+	icon_state = "marauder"
+
+/datum/sprite_accessory/horns/faceguard
+	name = "Faceguard"
+	icon_state = "faceguard"
+
+/datum/sprite_accessory/horns/sheephorns
+	name = "Sheep Horns"
+	icon_state = "sheep"
+
+/datum/sprite_accessory/horns/doublehorns
+	name = "Double Horns"
+	icon_state = "doublehorns"
+
 /datum/sprite_accessory/horns/large
 	abstract_type = /datum/sprite_accessory/horns/large
 	icon = 'icons/mob/sprite_accessory/horns/horns_large.dmi'

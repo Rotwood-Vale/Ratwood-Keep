@@ -184,12 +184,6 @@
 	color_keys = 2
 	color_key_names = list("Ears", "Inner")
 
-/datum/sprite_accessory/ears/protogen
-	name = "Protogen"
-	icon_state = "protogen"
-	color_keys = 2
-	color_key_names = list("Ears", "Inner")
-
 /datum/sprite_accessory/ears/antenna_simple1
 	name = "Insect antenna 1"
 	icon_state = "antenna_simple1"
@@ -263,6 +257,12 @@
 	color_keys = 2
 	color_key_names = list("Ears", "Inner")
 
+/datum/sprite_accessory/ears/mouse
+	name = "Mouse"
+	icon_state = "mouse"
+	color_keys = 2
+	color_key_names = list("Ears", "Inner")
+
 /datum/sprite_accessory/ears/elf
 	name = "Elf"
 	icon = 'icons/mob/sprite_accessory/elf.dmi'
@@ -279,4 +279,9 @@
 	name = "Half Orc"
 	icon = 'icons/mob/sprite_accessory/halforc.dmi'
 	icon_state = "halforc"
+	color_key_defaults = list(KEY_SKIN_COLOR)
+
+/datum/sprite_accessory/ears/goblin
+	name = "Goblin"
+	icon_state = "goblin"
 	color_key_defaults = list(KEY_SKIN_COLOR)
