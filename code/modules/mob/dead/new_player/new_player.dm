@@ -426,7 +426,7 @@ GLOBAL_LIST_INIT(roleplay_readme, world.file2list("strings/rt/rp_prompt.txt"))
 		return JOB_UNAVAILABLE_GENERIC
 	if(length(job.allowed_sexes) && !(client.prefs.gender in job.allowed_sexes))
 		return JOB_UNAVAILABLE_RACE
-	if(length(job.banned_flaws) && (client.prefs.charflaw.name in job.banned_flaws))
+	if(length(job.banned_flaws) && (client.prefs.charflaw.type in job.banned_flaws))
 		return JOB_UNAVAILABLE_RACE
 	if(length(job.allowed_ages) && !(client.prefs.age in job.allowed_ages))
 		return JOB_UNAVAILABLE_RACE

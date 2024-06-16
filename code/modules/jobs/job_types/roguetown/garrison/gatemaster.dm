@@ -8,7 +8,7 @@
 	allowed_sexes = list(MALE)
 	allowed_races = CLOTHED_RACES_TYPES
 	allowed_patrons = ALL_DIVINE_PATRONS
-	banned_flaws = list("Blind")
+	banned_flaws = list(/datum/charflaw/noeyes)
 	tutorial = "Tales speak of the Gatemaster's legendary ability to stand still at a gate and ask people questions."
 	display_order = JDO_GATEMASTER
 

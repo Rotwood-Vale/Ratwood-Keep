@@ -8,7 +8,7 @@
 
 	allowed_races = CLOTHED_RACES_TYPES
 	allowed_ages = ALL_AGES_LIST
-	banned_flaws = list("Blind")
+	banned_flaws = list(/datum/charflaw/noeyes)
 	tutorial = "Some say you're a strange individual, some say you're a cheat, while some claim you're a savant in the art of sausage making. Without your skilled hands and knifework, most of the livestock around the town would be wasted. "
 
 	outfit = /datum/outfit/job/roguetown/beastmaster

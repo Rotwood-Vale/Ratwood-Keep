@@ -10,7 +10,7 @@
 
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = CLOTHED_RACES_TYPES
-	banned_flaws = list("Blind")
+	banned_flaws = list(/datum/charflaw/noeyes)
 	tutorial = ""
 
 	outfit = /datum/outfit/job/roguetown/deathknight

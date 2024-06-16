@@ -7,7 +7,7 @@
 	spawn_positions = 0
 
 	allowed_races = CLOTHED_RACES_TYPES
-	banned_flaws = list("Blind")
+	banned_flaws = list(/datum/charflaw/noeyes)
 
 	tutorial = "You came to rockhill either to seek knowledge or riches."
 

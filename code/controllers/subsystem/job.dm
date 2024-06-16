@@ -145,7 +145,7 @@ SUBSYSTEM_DEF(job)
 		if(!(player.client.prefs.gender in job.allowed_sexes))
 			JobDebug("FOC incompatible with sex, Player: [player], Job: [job.title]")
 			continue
-		if(player.client.prefs.charflaw.name in job.banned_flaws)
+		if(player.client.prefs.charflaw.type in job.banned_flaws)
 			JobDebug("FOC incompatible with flaw, Player: [player], Job: [job.title], Flaw: [player.client.prefs.charflaw.name]")
 			continue
 		if(length(job.allowed_ages) && !(player.client.prefs.age in job.allowed_ages))
@@ -220,7 +220,7 @@ SUBSYSTEM_DEF(job)
 			JobDebug("GRJ incompatible with age, Player: [player], Job: [job.title], Race: [player.client.prefs.pref_species.name]")
 			continue
 		
-		if(length(job.banned_flaws) && player.client.prefs.charflaw.name in job.banned_flaws)
+		if(length(job.banned_flaws) && player.client.prefs.charflaw.type in job.banned_flaws)
 			JobDebug("GRJ incompatible with flaw, Player: [player], Job: [job.title], Flaw: [player.client.prefs.charflaw.name]")
 			continue
 
@@ -485,7 +485,7 @@ SUBSYSTEM_DEF(job)
 					JobDebug("DO incompatible with gender preference, Player: [player], Job: [job.title]")
 					continue
 				
-				if(length(job.banned_flaws) && player.client.prefs.charflaw.name in job.banned_flaws)
+				if(length(job.banned_flaws) && player.client.prefs.charflaw.type in job.banned_flaws)
 					JobDebug("DO incompatible with flaw, Player: [player], Job: [job.title], Flaw: [player.client.prefs.charflaw.name]")
 					continue
 
@@ -575,7 +575,7 @@ SUBSYSTEM_DEF(job)
 				if(length(job.allowed_sexes) && !(player.client.prefs.gender in job.allowed_sexes))
 					continue
 				
-				if(length(job.banned_flaws) && player.client.prefs.charflaw.name in job.banned_flaws)
+				if(length(job.banned_flaws) && player.client.prefs.charflaw.type in job.banned_flaws)
 					continue
 
 				if(!job.special_job_check(player))

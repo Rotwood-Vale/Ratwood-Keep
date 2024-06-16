@@ -9,7 +9,7 @@
 
 	allowed_races = CLOTHED_RACES_TYPES
 	allowed_sexes = list(MALE, FEMALE)
-	banned_flaws = list("Blind")
+	banned_flaws = list(/datum/charflaw/noeyes)
 	spells = list(/obj/effect/proc_holder/spell/invoked/projectile/fireball/greater, /obj/effect/proc_holder/spell/invoked/projectile/fireball, /obj/effect/proc_holder/spell/invoked/projectile/lightningbolt, /obj/effect/proc_holder/spell/invoked/projectile/fetch)
 	display_order = JDO_MAGICIAN
 	tutorial = "Your creed is one dedicated to the conquering of the arcane arts and the constant thrill of knowledge. You owe your life to the Lord, for it was his coin that allowed you to continue your studies in these darker ages. Something you have proven time and time again as justicar and trusted advisor to their reign. You may have an apprentice, show them what they can achieve in their future. "
