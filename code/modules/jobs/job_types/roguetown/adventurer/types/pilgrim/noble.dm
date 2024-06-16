@@ -4,7 +4,7 @@
 	you are encouraged to make your own story. But with wealth, come the poor, ready to pilfer you \
 	of your hard earned (inherited) Mammons, so tread lightly unless you want to meet a grizzly end"
 	allowed_sexes = list(MALE, FEMALE)
-	allowed_races = NOBLE_RACES_TYPES
+	allowed_races = RACES_SHUNNED_UP
 	outfit = /datum/outfit/job/roguetown/adventurer/noble
 	traits_applied = list(TRAIT_NOBLE)
 	isvillager = FALSE

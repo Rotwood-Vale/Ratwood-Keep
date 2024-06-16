@@ -5,7 +5,7 @@
 	faction = "Station"
 	total_positions = 50
 	spawn_positions = 50
-	allowed_races = CLOTHED_RACES_TYPES
+	allowed_races = RACES_ALL_KINDS
 	tutorial = "You've lived in this shithole for effectively all your life. You are not an explorer, nor exactly a warrior in many cases. You're just some average poor bastard who thinks they'll be something someday."
 
 	outfit = null

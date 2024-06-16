@@ -3,7 +3,7 @@
 	tutorial = "As a Peasent, you are a skilled farmer, able to grow a variety of berrys and apples \
 	Join the local Soilsmen at their farm, or make your own little orchard."
 	allowed_sexes = list(MALE, FEMALE)
-	allowed_races = CLOTHED_RACES_TYPES
+	allowed_races = RACES_ALL_KINDS
 	outfit = /datum/outfit/job/roguetown/adventurer/peasant
 	isvillager = TRUE
 	ispilgrim = TRUE

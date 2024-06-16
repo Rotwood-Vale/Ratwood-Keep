@@ -32,7 +32,7 @@
 #define SHOESLEEVE_LAYER		31
 #define SHIRT_LAYER				30
 #define WRISTS_LAYER			29
-#define ARMOR_LAYER				26
+#define ARMOR_LAYER				28
 #define TABARD_LAYER			27
 #define BELT_LAYER				26		//only when looking south
 #define UNDER_CLOAK_LAYER		25

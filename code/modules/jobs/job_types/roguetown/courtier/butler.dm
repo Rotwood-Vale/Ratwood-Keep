@@ -7,7 +7,7 @@
 	spawn_positions = 3
 
 	f_title = "Maid"
-	allowed_races = CLOTHED_RACES_TYPES
+	allowed_races = RACES_SHUNNED_UP
 	allowed_ages = ALL_AGES_LIST
 	banned_flaws = list("Blind")
 

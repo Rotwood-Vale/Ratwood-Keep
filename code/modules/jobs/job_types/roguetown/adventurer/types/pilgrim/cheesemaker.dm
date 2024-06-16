@@ -4,7 +4,7 @@
 	As very skilled cook you come with some ingredients to make food and feed the masses. \
 	cook up some quisine with food gathered from the local flora and fauna"
 	allowed_sexes = list("male", "female")
-	allowed_races = CLOTHED_RACES_TYPES
+	allowed_races = RACES_ALL_KINDS
 	outfit = /datum/outfit/job/roguetown/adventurer/cheesemaker
 	isvillager = TRUE
 	ispilgrim = TRUE

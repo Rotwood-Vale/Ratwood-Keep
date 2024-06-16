@@ -94,7 +94,6 @@
 		/datum/sprite_accessory/ears/squirrel,
 		/datum/sprite_accessory/ears/wolf,
 		/datum/sprite_accessory/ears/perky,
-		/datum/sprite_accessory/ears/protogen,
 		/datum/sprite_accessory/ears/antenna_simple1,
 		/datum/sprite_accessory/ears/antenna_simple2,
 		/datum/sprite_accessory/ears/antenna_simple3,
@@ -107,4 +106,5 @@
 		/datum/sprite_accessory/ears/sabresune,
 		/datum/sprite_accessory/ears/possum,
 		/datum/sprite_accessory/ears/raccoon,
+		/datum/sprite_accessory/ears/mouse,
 		)
