@@ -100,11 +100,34 @@
 		mode() // Activate held item
 
 /mob/living/carbon/attackby(obj/item/I, mob/user, params)
+	if(!user.cmode)
+		var/try_to_fail = istype(user.rmb_intent, /datum/rmb_intent/weak)
+		var/list/possible_steps = list()
+		for(var/datum/surgery_step/surgery_step as anything in GLOB.surgery_steps)
+			if(!surgery_step.name)
+				continue
+			if(surgery_step.can_do_step(user, src, user.zone_selected, I, user.used_intent))
+				possible_steps[surgery_step.name] = surgery_step
+		var/possible_len = length(possible_steps)
+		if(possible_len)
+			var/datum/surgery_step/done_step
+			if(possible_len > 1)
+				var/input = input(user, "Which surgery step do you want to perform?", "PESTRA", ) as null|anything in possible_steps
+				if(input)
+					done_step = possible_steps[input]
+			else
+				done_step = possible_steps[possible_steps[1]]
+			if(done_step?.try_op(user, src, user.zone_selected, I, user.used_intent, try_to_fail))
+				return TRUE
+		if(I.item_flags & SURGICAL_TOOL)
+			return TRUE
+	/*
 	for(var/datum/surgery/S in surgeries)
 		if(!(mobility_flags & MOBILITY_STAND) || !S.lying_required)
 			if(S.self_operable || user != src)
 				if(S.next_step(user, user.used_intent))
 					return 1
+	*/
 	return ..()
 
 /mob/living/carbon/throw_impact(atom/hit_atom, datum/thrownthing/throwingdatum)
@@ -645,14 +668,16 @@
 	var/total_tox = getToxLoss()
 	var/total_oxy = getOxyLoss()
 	var/used_damage = 0
-	for(var/X in bodyparts)	//hardcoded to streamline things a bit
-		var/obj/item/bodypart/BP = X
-		if(BP.name == "head")
-			total_burn = ((BP.burn_dam / BP.max_damage) * 100)
-		if(BP.name == "chest")
-			total_burn = ((BP.burn_dam / BP.max_damage) * 100)
-		if(used_damage < total_burn)
-			used_damage = total_burn
+	var/static/list/lethal_zones = list(
+		BODY_ZONE_HEAD,
+		BODY_ZONE_CHEST,
+	)
+	for(var/obj/item/bodypart/bodypart as anything in bodyparts) //hardcoded to streamline things a bit
+		if(!(bodypart.body_zone in lethal_zones))
+			continue
+		var/my_burn = abs((bodypart.burn_dam / bodypart.max_damage) * DAMAGE_THRESHOLD_DEATH)
+		total_burn = max(total_burn, my_burn)
+		used_damage = max(used_damage, my_burn)
 	if(used_damage < total_tox)
 		used_damage = total_tox
 	if(used_damage < total_oxy)

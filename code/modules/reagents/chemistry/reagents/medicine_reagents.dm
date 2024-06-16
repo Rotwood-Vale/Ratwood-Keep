@@ -291,11 +291,6 @@
 			if(show_message)
 				to_chat(M, "<span class='warning'>My stomach feels empty and cramps!</span>")
 		else
-			var/mob/living/carbon/C = M
-			for(var/s in C.surgeries)
-				var/datum/surgery/S = s
-				S.speed_modifier = max(0.1, S.speed_modifier)
-
 			if(show_message)
 				to_chat(M, "<span class='danger'>I feel my wounds fade away to nothing!</span>" )
 	..()

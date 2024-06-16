@@ -77,7 +77,7 @@
 		H.change_stat("endurance", 1)
 		H.change_stat("perception", -1)
 
-	var/datum/devotion/cleric_holder/C = new /datum/devotion/cleric_holder(H, H.patron)
+	var/datum/devotion/C = new /datum/devotion(H, H.patron)
 	C.holder_mob = H
 	C.update_devotion(50, 50)
 	C.grant_spells(H)

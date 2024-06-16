@@ -11,7 +11,7 @@
 
 // Cleric Holder Datums
 
-/datum/devotion/cleric_holder
+/datum/devotion
 	var/holder_mob = null
 	var/patron = null
 	var/devotion = 0
@@ -20,17 +20,17 @@
 	var/max_progression = CLERIC_REQ_3
 	var/level = CLERIC_T0
 
-/datum/devotion/cleric_holder/New(mob/living/carbon/human/holder, god)
+/datum/devotion/New(mob/living/carbon/human/holder, god)
 	holder_mob = holder
 	holder.cleric = src
 	patron = god
 
-/datum/devotion/cleric_holder/proc/check_devotion(req)
+/datum/devotion/proc/check_devotion(req)
 	if(abs(req) <= devotion)
 		return TRUE
 	return FALSE
 
-/datum/devotion/cleric_holder/proc/update_devotion(dev_amt, prog_amt)
+/datum/devotion/proc/update_devotion(dev_amt, prog_amt)
 	var/datum/patron/P = patron
 	devotion += dev_amt
 	//Max devotion limit
@@ -59,20 +59,57 @@
 		to_chat(holder_mob, "<span class='boldnotice'>I have unlocked a new spell: [spell_unlocked]</font>")
 		usr.mind.AddSpell(spell_unlocked)
 
-// Devotion Debugs
+// Cleric Spell Spawner
+/datum/devotion/proc/grant_spells_priest(mob/living/carbon/human/H)
+	if(!H || !H.mind)
+		return
+
+	var/datum/patron/A = H.patron
+	var/list/spelllist = list(A.t0, A.t1, A.t2, A.t3)
+	for(var/spell_type in spelllist)
+		if(!spell_type || H.mind.has_spell(spell_type))
+			continue
+		H.mind.AddSpell(new spell_type)
+	level = CLERIC_T3
+	update_devotion(300, 900)
+
+/datum/devotion/proc/grant_spells(mob/living/carbon/human/H)
+	if(!H || !H.mind)
+		return
+
+	var/datum/patron/A = H.patron
+	var/list/spelllist = list(A.t0, A.t1)
+	for(var/spell_type in spelllist)
+		if(!spell_type || H.mind.has_spell(spell_type))
+			continue
+		H.mind.AddSpell(new spell_type)
+	level = CLERIC_T1
+
+/datum/devotion/proc/grant_spells_templar(mob/living/carbon/human/H)
+	if(!H || !H.mind)
+		return
+
+	var/datum/patron/A = H.patron
+	var/list/spelllist = list(/obj/effect/proc_holder/spell/targeted/churn, A.t0)
+	for(var/spell_type in spelllist)
+		if(!spell_type || H.mind.has_spell(spell_type))
+			continue
+		H.mind.AddSpell(new spell_type)
+	level = CLERIC_T0
 
 /mob/living/carbon/human/proc/devotionreport()
 	set name = "Check Devotion"
 	set category = "Cleric"
 
-	var/datum/devotion/cleric_holder/C = src.cleric
+	var/datum/devotion/C = src.cleric
 	to_chat(src,"My devotion is [C.devotion].")
 
+// Debug verb
 /mob/living/carbon/human/proc/devotionchange()
 	set name = "(DEBUG)Change Devotion"
 	set category = "Special Verbs"
 
-	var/datum/devotion/cleric_holder/C = src.cleric
+	var/datum/devotion/C = src.cleric
 	var/changeamt = input(src, "My devotion is [C.devotion]. How much to change?", "How much to change?") as null|num
 	if(!changeamt)
 		return
@@ -84,7 +121,7 @@
 	set name = "Give Prayer"
 	set category = "Cleric"
 	
-	var/datum/devotion/cleric_holder/C = src.cleric
+	var/datum/devotion/C = src.cleric
 	var/prayersesh = 0
 
 	visible_message("[src] kneels their head in prayer to the Gods.", "I kneel my head in prayer to [patron.name]")

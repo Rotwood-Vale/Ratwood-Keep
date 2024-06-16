@@ -13,7 +13,7 @@
 		return
 	..()
 	var/datum/mind/M = user.mind
-	var/list/organs = user.getorganszone(BODY_ZONE_HEAD, 1)
+	var/list/organs = user.getorganszone(BODY_ZONE_HEAD, TRUE)
 
 	for(var/obj/item/organ/I in organs)
 		I.Remove(user, 1)

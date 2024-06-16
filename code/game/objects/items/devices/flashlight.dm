@@ -397,12 +397,14 @@
 		var/mob/M = loc
 		M.update_inv_hands()
 		M.update_inv_belt()
+	damtype = BRUTE
 
 /obj/item/flashlight/flare/torch/fire_act(added, maxstacks)
 	if(fuel)
 		if(!on)
 			playsound(src.loc, 'sound/items/firelight.ogg', 100)
 			on = TRUE
+			damtype = BURN
 			update_brightness()
 			force = on_damage
 			soundloop.start()
@@ -426,6 +428,11 @@
 
 /obj/item/flashlight/flare/torch/spark_act()
 	fire_act()
+
+/obj/item/flashlight/flare/torch/get_temperature()
+	if(on)
+		return FIRE_MINIMUM_TEMPERATURE_TO_SPREAD
+	return ..()
 
 /obj/item/flashlight/flare/torch/metal
 	name = "torch"

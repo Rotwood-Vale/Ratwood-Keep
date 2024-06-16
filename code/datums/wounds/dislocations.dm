@@ -1,6 +1,7 @@
 /datum/wound/dislocation
 	name = "dislocation"
 	check_name = "<span class='bone'>DISLOCATION</span>"
+	severity = WOUND_SEVERITY_MODERATE
 	crit_message = list(
 		"The %BODYPART jolts painfully!",
 		"The %BODYPART is twisted out of place!",
@@ -13,9 +14,13 @@
 	mob_overlay = ""
 	sewn_overlay = ""
 	can_sew = FALSE
+	can_cauterize = FALSE
 	disabling = FALSE
 	critical = TRUE
 	passive_healing = 0.25
+	qdel_on_droplimb = TRUE
+	/// Whether or not we can be surgically relocated
+	var/can_relocate = TRUE
 
 /datum/wound/dislocation/can_stack_with(datum/wound/other)
 	if(istype(other, /datum/wound/dislocation) && (type == other.type))
@@ -50,9 +55,15 @@
 	affected.Slowdown(20)
 	shake_camera(affected, 2, 2)
 
+/datum/wound/dislocation/proc/relocate_bone()
+	if(!can_relocate)
+		return FALSE
+	qdel(src)
+	return TRUE
+
 /datum/wound/dislocation/neck
 	name = "cervical dislocation"
-	check_name = "<span class='bone'><B>DISLOCATION</B></span>"
+	check_name = "<span class='bone'>NECK</span>"
 	crit_message = list(
 		"The spine slips!",
 		"The spine twists!",

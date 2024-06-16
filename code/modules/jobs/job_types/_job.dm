@@ -116,7 +116,7 @@
 	/// This job always shows on latechoices
 	var/always_show_on_latechoices = FALSE
 
-	/// This job has a cooldown if you died in it and attempt to rejoin as it
+	/// Cooldown for joining as this job again, if it was your last job
 	var/same_job_respawn_delay = FALSE
 
 	/// This job re-opens slots if someone dies as it

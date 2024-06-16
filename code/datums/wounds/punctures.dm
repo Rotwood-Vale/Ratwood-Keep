@@ -13,6 +13,7 @@
 	sew_threshold = 75
 	mob_overlay = "cut"
 	can_sew = TRUE
+	can_cauterize = TRUE
 
 /datum/wound/puncture/small
 	name = "small puncture"
@@ -37,3 +38,25 @@
 	clotting_threshold = 0.5
 	sewn_clotting_threshold = 0.25
 	sew_threshold = 100
+
+/datum/wound/puncture/drilling
+	name = "drilling"
+	check_name = "<span class='bloody'><B>DRILLING</B></span>"
+	severity = WOUND_SEVERITY_SUPERFICIAL
+	whp = 40
+	sewn_whp = 20
+	bleed_rate = 1
+	sewn_bleed_rate = 0.1
+	clotting_rate = null
+	clotting_threshold = null
+	sew_threshold = 100
+	passive_healing = 0
+	sleep_healing = 0
+
+/datum/wound/puncture/drilling/sew_wound()
+	qdel(src)
+	return TRUE
+
+/datum/wound/puncture/drilling/cauterize_wound()
+	qdel(src)
+	return TRUE

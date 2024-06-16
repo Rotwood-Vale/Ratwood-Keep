@@ -295,7 +295,7 @@ GLOBAL_LIST_INIT(spells, typesof(/obj/effect/proc_holder/spell)) //needed for th
 				to_chat(H, "<span class='warning'>I don't feel strong enough without your helmet.</span>")
 				return FALSE
 		if(miracle)
-			var/datum/devotion/cleric_holder/D = H.cleric
+			var/datum/devotion/D = H.cleric
 			if(!D.check_devotion(devotion_cost))
 				to_chat(H, "<span class='warning'>I don't have enough devotion!</span>")
 				return FALSE
@@ -468,7 +468,7 @@ GLOBAL_LIST_INIT(spells, typesof(/obj/effect/proc_holder/spell)) //needed for th
 /obj/effect/proc_holder/spell/proc/cast(list/targets,mob/user = usr)
 	if(miracle)
 		var/mob/living/carbon/human/C = user
-		var/datum/devotion/cleric_holder/D = C.cleric
+		var/datum/devotion/D = C.cleric
 		D.update_devotion(devotion_cost)
 	return
 

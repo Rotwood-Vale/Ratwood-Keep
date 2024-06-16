@@ -72,9 +72,9 @@
 	cost = 25
 	contains = list(/obj/item/natural/worms/grubs,
 					/obj/item/natural/worms/grubs,
-					/obj/item/natural/worms/leeches,
-					/obj/item/natural/worms/leeches,
-					/obj/item/natural/worms/leeches)
+					/obj/item/natural/worms/leech,
+					/obj/item/natural/worms/leech,
+					/obj/item/natural/worms/leech)
 
 
 /datum/supply_pack/rogue/tools/prarml

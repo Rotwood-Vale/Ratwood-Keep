@@ -14,6 +14,11 @@
 /obj/machinery/anvil/crafted
 	icon_state = "caveanvil"
 
+/obj/machinery/anvil/examine(mob/user)
+	. = ..()
+	if(hingot && hott)
+		. += "<span class='warning'>[hingot] is too hot to touch.</span>"
+
 /obj/machinery/anvil/attackby(obj/item/W, mob/living/user, params)
 	if(istype(W, /obj/item/rogueweapon/tongs))
 		var/obj/item/rogueweapon/tongs/T = W

@@ -20,17 +20,23 @@
 #define TRAIT_MANIAC_AWOKEN				"Awoken"
 #define TRAIT_NOROGSTAM					"Indefatigable" //for ai
 #define TRAIT_NUDIST					"Nudist" //you can't wear most clothes
-#define TRAIT_KNEESTINGER_IMMUNITY		"Blessing of Dendor"
+#define TRAIT_CYCLOPS_LEFT				"Cyclops (Left)" //poked left eye
+#define TRAIT_CYCLOPS_RIGHT				"Cyclops (Right)" //poked right eye
 #define TRAIT_RETARD_ANATOMY			"Inhumen Anatomy" //can't wear hats and shoes
 #define TRAIT_NASTY_EATER 				"Inhumen Digestion" //can eat rotten food, organs, poison berries, and drink murky water
 #define TRAIT_ROT_EATER					"Blessing of Pestra" //can eat rotten food
 #define TRAIT_ORGAN_EATER				"Blessing of Graggar" //can eat organs
+#define TRAIT_KNEESTINGER_IMMUNITY		"Blessing of Dendor"
 #define TRAIT_SOUL_EXAMINE				"Blessing of Necra" //can check bodies to see if they have departed
 #define TRAIT_CRACKHEAD					"Blessing of Eora" //will never overdose
 
 #define TRAIT_MISSING_NOSE "Missing Nose" //halved stamina regeneration
-#define TRAIT_SPELLCOCKBLOCK "spellcockblock" //prevents spellcasting
+#define TRAIT_DISFIGURED "Disfigured"
+#define TRAIT_SPELLCOCKBLOCK "Bewitched" //prevents spellcasting
+#define TRAIT_ANTIMAGIC	"Anti-Magic"
+#define TRAIT_SHOCKIMMUNE "Shock Immunity"
 #define TRAIT_NOSLEEP "Fatal Insomnia"
+
 #define TRAIT_BASHDOORS "bashdoors"
 #define TRAIT_NOMOOD "no_mood"
 #define TRAIT_SIMPLE_WOUNDS "simple_wounds"
@@ -59,21 +65,25 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_BREADY = "Defensive stance does not passively fatigue me.",
 	TRAIT_MEDIUMARMOR = "I can move freely in medium armor.",
 	TRAIT_HEAVYARMOR = "I can move freely in heavy armor.",
-	TRAIT_DODGEEXPERT = "I can dodge easly while only wearing light armor.",
+	TRAIT_DODGEEXPERT = "I can dodge easily while only wearing light armor.",
 	TRAIT_DECEIVING_MEEKNESS = "People look at me and think I am a weakling. They are mistaken.",
 	TRAIT_CRITICAL_RESISTANCE = "I am resistant to wounds that would be life threatening to others.",
 	TRAIT_CRITICAL_WEAKNESS = "<span class='danger'>I am weak to wounds that others could survive.</span>",
 	TRAIT_MANIAC_AWOKEN = "<span class='danger'>I am <b>WAKING UP</b> and the sheeple know this. They will resist.</span>",
 	TRAIT_NOROGSTAM = "I have boundless energy, I will never tire.",
 	TRAIT_NUDIST = "I <b>refuse</b> to wear clothes. They are a hindrance to my freedom.",
-	TRAIT_KNEESTINGER_IMMUNITY = "I am immune to the shock of kneestingers.",
+	TRAIT_CYCLOPS_LEFT = "<span class='warning'>My left eye has been poked out...</span>",
+	TRAIT_CYCLOPS_RIGHT = "<span class='warning'>My right eye has been poked out...</span>",
 	TRAIT_RETARD_ANATOMY = "My anatomy is inhumen, preventing me from wearing hats and shoes.",
 	TRAIT_NASTY_EATER = "<span class='dead'>I can eat bad food, and water that would be toxic to humen will not affect me.</span>",
 	TRAIT_ROT_EATER = "<span class='necrosis'>I can eat rotten food.</span>",
 	TRAIT_ORGAN_EATER = "<span class='bloody'>I can eat organs and raw flesh.</span>",
+	TRAIT_KNEESTINGER_IMMUNITY = "I am immune to the shock of kneestingers.",
 	TRAIT_SOUL_EXAMINE = "<span class='deadsay'>I know when someone's soul has departed.</span>",
+	TRAIT_DISFIGURED = "<span class='warning'>No one can recognize me...</span>",
 	TRAIT_CRACKHEAD = "<span class='love'>I can use drugs as much as I want!</span>",
 	TRAIT_MISSING_NOSE = "<span class='warning'>I struggle to breathe.</span>",
+	TRAIT_SPELLCOCKBLOCK = "<span class='warning'>I cannot cast any spells.</span>",
 	TRAIT_ANTIMAGIC = "I am immune to most forms of magic.",
 	TRAIT_SHOCKIMMUNE = "I am immune to electrical shocks.",
 	TRAIT_NOSLEEP = "<span class='warning'>I can't sleep.</span>",
@@ -161,13 +171,11 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_IGNOREDAMAGESLOWDOWN "ignoredamageslowdown"
 #define TRAIT_DEATHCOMA			"deathcoma" //Causes death-like unconsciousness
 #define TRAIT_FAKEDEATH			"fakedeath" //Makes the owner appear as dead to most forms of medical examination
-#define TRAIT_DISFIGURED		"disfigured"
 #define TRAIT_XENO_HOST			"xeno_host"	//Tracks whether we're gonna be a baby alien's mummy.
 #define TRAIT_STUNIMMUNE		"stun_immunity"
 #define TRAIT_STUNRESISTANCE    "stun_resistance"
 #define TRAIT_SLEEPIMMUNE		"sleep_immunity"
 #define TRAIT_PUSHIMMUNE		"push_immunity"
-#define TRAIT_SHOCKIMMUNE		"shock_immunity"
 #define TRAIT_STABLEHEART		"stable_heart"
 #define TRAIT_STABLELIVER		"stable_liver"
 #define TRAIT_NOPAINSTUN		"no_pain-stun"
@@ -193,7 +201,6 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_TOXINLOVER		"toxinlover"
 #define TRAIT_NOBREATH			"no_breath"
 #define TRAIT_HOLDBREATH		"hold_breath"
-#define TRAIT_ANTIMAGIC			"Anti-Magic"
 #define TRAIT_HOLY				"holy"
 #define TRAIT_DEPRESSION		"depression"
 #define TRAIT_JOLLY				"jolly"

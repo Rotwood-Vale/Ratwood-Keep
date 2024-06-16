@@ -12,7 +12,7 @@
 
 	var/mob/living/carbon/human/patient
 	var/obj/structure/table/optable/table
-	var/list/advanced_surgeries = list()
+	var/list/advanced_surgery_steps = list()
 	var/datum/techweb/linked_techweb
 	light_color = LIGHT_COLOR_BLUE
 	var/list/linked_stasisbeds
@@ -35,7 +35,7 @@
 			"<span class='hear'>I hear the chatter of a floppy drive.</span>")
 		var/obj/item/disk/surgery/D = O
 		if(do_after(user, 10, target = src))
-			advanced_surgeries |= D.surgeries
+			advanced_surgery_steps |= D.surgery_steps
 		return TRUE
 	return ..()
 
@@ -44,7 +44,7 @@
 		var/datum/design/surgery/D = SSresearch.techweb_design_by_id(i)
 		if(!istype(D))
 			continue
-		advanced_surgeries |= D.surgery
+		advanced_surgery_steps |= D.surgery_step
 
 /obj/machinery/computer/operating/proc/find_table()
 	for(var/direction in GLOB.cardinals)
@@ -72,7 +72,7 @@
 	data["table"] = table
 
 	var/list/surgeries = list()
-	for(var/X in advanced_surgeries)
+	for(var/X in advanced_surgery_steps)
 		var/datum/surgery/S = X
 		var/list/surgery = list()
 		surgery["name"] = initial(S.name)
@@ -104,27 +104,6 @@
 			data["patient"]["fireLoss"] = patient.getFireLoss()
 			data["patient"]["toxLoss"] = patient.getToxLoss()
 			data["patient"]["oxyLoss"] = patient.getOxyLoss()
-			if(patient.surgeries.len)
-				data["procedures"] = list()
-				for(var/datum/surgery/procedure in patient.surgeries)
-					var/datum/surgery_step/surgery_step = procedure.get_surgery_step()
-					var/chems_needed = surgery_step.get_chem_list()
-					var/alternative_step
-					var/alt_chems_needed = ""
-					if(surgery_step.repeatable)
-						var/datum/surgery_step/next_step = procedure.get_surgery_next_step()
-						if(next_step)
-							alternative_step = capitalize(next_step.name)
-							alt_chems_needed = next_step.get_chem_list()
-						else
-							alternative_step = "Finish operation"
-					data["procedures"] += list(list(
-						"name" = capitalize("[parse_zone(procedure.location)] [procedure.name]"),
-						"next_step" = capitalize(surgery_step.name),
-						"chems_needed" = chems_needed,
-						"alternative_step" = alternative_step,
-						"alt_chems_needed" = alt_chems_needed
-					))
 		else
 			data["patient"] = null
 	return data

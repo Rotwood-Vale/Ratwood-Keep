@@ -505,9 +505,9 @@
 
 	playsound(user.loc, 'sound/misc/drink_blood.ogg', 100, FALSE, -4)
 
-	C.visible_message("<span class='danger'>[user] drinks from [C]'s [sublimb_grabbed]!</span>", \
-					"<span class='userdanger'>[user] drinks from my [sublimb_grabbed]!</span>", "<span class='hear'>...</span>", COMBAT_MESSAGE_RANGE, user)
-	to_chat(user, "<span class='warning'>I drink from [C]'s [sublimb_grabbed].</span>")
+	C.visible_message("<span class='danger'>[user] drinks from [C]'s [parse_zone(sublimb_grabbed)]!</span>", \
+					"<span class='userdanger'>[user] drinks from my [parse_zone(sublimb_grabbed)]!</span>", "<span class='hear'>...</span>", COMBAT_MESSAGE_RANGE, user)
+	to_chat(user, "<span class='warning'>I drink from [C]'s [parse_zone(sublimb_grabbed)].</span>")
 	log_combat(user, C, "drank blood from ")
 
 	if(ishuman(C) && C.mind)

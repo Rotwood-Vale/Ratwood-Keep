@@ -1,6 +1,6 @@
 /obj/item/organ/eyes
-	name = "eye"
-	icon_state = "eye1"
+	name = "eyes"
+	icon_state = "eyeball"
 	desc = ""
 	zone = BODY_ZONE_PRECISE_R_EYE
 	slot = ORGAN_SLOT_EYES
@@ -34,8 +34,13 @@
 	var/no_glasses
 	var/damaged	= FALSE	//damaged indicates that our eyes are undergoing some level of negative effect
 
-	var/left_poked = FALSE
-	var/right_poked = FALSE
+
+/obj/item/organ/eyes/update_overlays()
+	. = ..()
+	if(eye_color && (icon_state == "eyeball"))
+		var/mutable_appearance/iris_overlay = mutable_appearance(src.icon, "eyeball-iris")
+		iris_overlay.color = "#" + eye_color
+		. += iris_overlay
 
 
 	var/eye_color = "#FFFFFF"
@@ -69,13 +74,15 @@
 			eye_color = HMN.eye_color
 		if(HAS_TRAIT(HMN, TRAIT_NIGHT_VISION) && !lighting_alpha)
 			lighting_alpha = LIGHTING_PLANE_ALPHA_NV_TRAIT
+	for(var/datum/wound/facial/eyes/eye_wound as anything in M.get_wounds())
+		qdel(eye_wound)
 	M.update_tint()
 	owner.update_sight()
 	if(M.has_dna() && ishuman(M))
 		M.dna.species.handle_body(M) //updates eye icon
 
 /obj/item/organ/eyes/Remove(mob/living/carbon/M, special = 0)
-	..()
+	. = ..()
 	if(ishuman(M) && eye_color)
 		var/mob/living/carbon/human/HMN = M
 		HMN.regenerate_icons()
@@ -84,7 +91,6 @@
 	M.set_blindness(0)
 	M.set_blurriness(0)
 	M.update_sight()
-
 
 /obj/item/organ/eyes/on_life()
 	..()

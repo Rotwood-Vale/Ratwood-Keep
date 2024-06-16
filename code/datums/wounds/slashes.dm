@@ -13,6 +13,7 @@
 	sew_threshold = 50
 	mob_overlay = "cut"
 	can_sew = TRUE
+	can_cauterize = TRUE
 
 /datum/wound/slash/small
 	name = "small slash"
@@ -41,6 +42,7 @@
 /datum/wound/slash/disembowel
 	name = "disembowelment"
 	check_name = "<span class='userdanger'><B>GUTS</B></span>"
+	severity = WOUND_SEVERITY_FATAL
 	crit_message = "%VICTIM spills %P_THEIR organs!"
 	sound_effect = 'sound/combat/crit2.ogg'
 	whp = 100
@@ -92,3 +94,25 @@
 		if(cavity.cavity_item)
 			cavity.cavity_item.forceMove(drop_location)
 			cavity.cavity_item = null
+
+/datum/wound/slash/incision
+	name = "incision"
+	check_name = "<span class='bloody'><B>INCISION</B></span>"
+	severity = WOUND_SEVERITY_SUPERFICIAL
+	whp = 40
+	sewn_whp = 12
+	bleed_rate = 1
+	sewn_bleed_rate = 0.05
+	clotting_rate = null
+	clotting_threshold = null
+	sew_threshold = 75
+	passive_healing = 0
+	sleep_healing = 0
+
+/datum/wound/slash/incision/sew_wound()
+	qdel(src)
+	return TRUE
+
+/datum/wound/slash/incision/cauterize_wound()
+	qdel(src)
+	return TRUE

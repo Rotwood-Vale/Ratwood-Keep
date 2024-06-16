@@ -44,10 +44,6 @@
 	grabtargets = list(BODY_ZONE_HEAD, BODY_ZONE_PRECISE_R_EYE, BODY_ZONE_PRECISE_L_EYE, BODY_ZONE_PRECISE_NOSE, BODY_ZONE_PRECISE_MOUTH, BODY_ZONE_PRECISE_SKULL, BODY_ZONE_PRECISE_EARS, BODY_ZONE_PRECISE_NECK)
 	resistance_flags = FLAMMABLE
 
-	/// Our left eye has been poked out, ouch
-	var/left_eye_poked = FALSE
-	/// Our right eye has been poked out, ouch
-	var/right_eye_poked = FALSE
 	/// Brainkill means that this head is considered dead and revival is impossible
 	var/brainkill = FALSE
 
@@ -117,9 +113,6 @@
 			brain = null
 			update_icon_dropped()
 		else
-			if(istype(I, /obj/item/reagent_containers/pill))
-				for(var/datum/action/item_action/hands_free/activate_pill/AP in I.actions)
-					qdel(AP)
 			I.forceMove(T)
 	eyes = null
 	ears = null

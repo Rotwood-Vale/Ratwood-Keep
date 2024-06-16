@@ -665,6 +665,8 @@
 	color = CLOTHING_RED
 
 /obj/item/clothing/cloak/raincloak/mortus
+	name = "funeral cloak"
+	desc = "You're always shrouded by death."
 	color = CLOTHING_BLACK
 
 /obj/item/clothing/cloak/raincloak/brown

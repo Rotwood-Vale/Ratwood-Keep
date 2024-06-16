@@ -148,20 +148,6 @@
 			used_limb = affecting.body_zone
 	return used_limb
 
-/mob/living/carbon/proc/parse_inhand(zone, mob/living/target)
-	if (zone == BODY_ZONE_R_INHAND)
-		var/obj/item/I = target.get_item_for_held_index(2)
-		if(I.can_parry)
-			return I.name
-		else
-			return "right hand"
-	else if (zone == BODY_ZONE_L_INHAND)
-		var/obj/item/I = target.get_item_for_held_index(1)
-		if(I.can_parry)
-			return I.name
-		else
-			return "left hand"
-
 /mob/proc/check_arm_grabbed()
 	return
 
@@ -250,13 +236,12 @@
 
 //ATTACK HAND IGNORING PARENT RETURN VALUE
 /mob/living/carbon/attack_hand(mob/living/carbon/human/user)
-
 	if(!lying_attack_check(user))
-		return 0
+		return FALSE
 
 	if(!get_bodypart(check_zone(user.zone_selected)))
 		to_chat(user, "<span class='warning'>[src] is missing that.</span>")
-		return 0
+		return FALSE
 
 	for(var/thing in diseases)
 		var/datum/disease/D = thing
@@ -267,17 +252,37 @@
 		var/datum/disease/D = thing
 		if(D.spread_flags & DISEASE_SPREAD_CONTACT_SKIN)
 			ContactContractDisease(D)
-
+	
+	if(!user.cmode)
+		var/try_to_fail = istype(user.rmb_intent, /datum/rmb_intent/weak)
+		var/list/possible_steps = list()
+		for(var/datum/surgery_step/surgery_step as anything in GLOB.surgery_steps)
+			if(!surgery_step.name)
+				continue
+			if(surgery_step.can_do_step(user, src, user.zone_selected, null, user.used_intent))
+				possible_steps[surgery_step.name] = surgery_step
+		var/possible_len = length(possible_steps)
+		if(possible_len)
+			var/datum/surgery_step/done_step
+			if(possible_len > 1)
+				var/input = input(user, "Which surgery step do you want to perform?", "PESTRA", ) as null|anything in possible_steps
+				if(input)
+					done_step = possible_steps[input]
+			else
+				done_step = possible_steps[possible_steps[1]]
+			if(done_step?.try_op(user, src, user.zone_selected, null, user.used_intent, try_to_fail))
+				return TRUE
+	/*
 	for(var/datum/surgery/S in surgeries)
 		if(!(mobility_flags & MOBILITY_STAND) || !S.lying_required)
 			if(user.used_intent.type == INTENT_HELP || user.used_intent.type == INTENT_DISARM)
 				if(S.next_step(user, user.used_intent))
-					return 1
-	return 0
+					return TRUE
+	*/
+	return FALSE
 
 
 /mob/living/carbon/attack_paw(mob/living/carbon/monkey/M)
-
 	if(can_inject(M, TRUE))
 		for(var/thing in diseases)
 			var/datum/disease/D = thing

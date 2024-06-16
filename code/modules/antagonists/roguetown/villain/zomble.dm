@@ -4,7 +4,7 @@
 	antag_hud_name = "zombie"
 	show_in_roundend = FALSE
 	/// SET TO FALSE IF WE DON'T TURN INTO ROTMEN WHEN REMOVED
-	var/become_rotman = TRUE
+	var/become_rotman = FALSE
 	var/zombie_start
 	var/revived = FALSE
 	var/next_idle_sound
@@ -44,6 +44,7 @@
 		TRAIT_LIMPDICK,
 		TRAIT_ZOMBIE_SPEECH,
 		TRAIT_ZOMBIE_IMMUNE,
+		TRAIT_EMOTEMUTE,
 		TRAIT_ROTMAN,
 	)
 	/// Traits applied to the owner when we are cured and turn into just "rotmen"
@@ -212,7 +213,7 @@
 	if(world.time - last_bite < 10 SECONDS)
 		return
 	var/obj/item/grabbing/bite/bite = zombie.get_item_by_slot(SLOT_MOUTH)
-	if(!bite || !get_location_accessible(src, BODY_ZONE_PRECISE_MOUTH, grabs="other"))
+	if(!bite || !get_location_accessible(src, BODY_ZONE_PRECISE_MOUTH, grabs = TRUE))
 		for(var/mob/living/carbon/human in view(1, zombie))
 			if((human.mob_biotypes & MOB_UNDEAD) || ("undead" in human.faction) || HAS_TRAIT(human, TRAIT_ZOMBIE_IMMUNE))
 				continue

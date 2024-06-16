@@ -17,77 +17,16 @@
 		var/list/msg = list()
 		var/mob/user = usr
 		var/checked_zone = check_zone(href_list["inspect_limb"])
-		var/obj/item/bodypart/BP = get_bodypart(checked_zone)
-		msg += "<B>[capitalize(parse_zone(checked_zone))]:</B>"
-		if(BP)
-			var/bodypart_status = list()
-			if(BP.disabled)
-				switch(BP.disabled)
-					if(BODYPART_DISABLED_DAMAGE)
-						bodypart_status += "[BP] is numb to touch."
-					if(BODYPART_DISABLED_PARALYSIS)
-						bodypart_status += "[BP] is limp."
-					else
-						bodypart_status += "[BP] is crippled."
-			if(BP.has_wound(/datum/wound/fracture))
-				bodypart_status += "[BP] is fractured."
-			if(BP.has_wound(/datum/wound/dislocation))
-				bodypart_status += "[BP] is dislocated."
-			var/location_accessible = get_location_accessible(src, checked_zone)
-			if(!location_accessible)
-				bodypart_status += "Obscured by clothing."
-			if(observer_privilege || location_accessible)
-				if(BP.skeletonized)
-					bodypart_status += "[BP] is skeletonized."
-				else if(BP.rotted)
-					bodypart_status += "[BP] is necrotic."
-				
-				var/brute = BP.brute_dam
-				var/burn = BP.burn_dam
-				if(user.hallucinating())
-					if(prob(30))
-						brute += rand(20,40)
-					if(prob(30))
-						burn += rand(20,40)
-
-				if(brute >= DAMAGE_PRECISION)
-					switch(brute/BP.max_damage)
-						if(0.75 to INFINITY)
-							bodypart_status += "[BP] is [BP.heavy_brute_msg]."
-						if(0.25 to 0.75)
-							bodypart_status += "[BP] is [BP.medium_brute_msg]."
-						else
-							bodypart_status += "[BP] is [BP.light_brute_msg]."
-				if(burn >= DAMAGE_PRECISION)
-					switch(burn/BP.max_damage)
-						if(0.75 to INFINITY)
-							bodypart_status += "[BP] is [BP.heavy_burn_msg]."
-						if(0.25 to 0.75)
-							bodypart_status += "[BP] is [BP.medium_burn_msg]."
-						else
-							bodypart_status += "[BP] is [BP.light_burn_msg]."
-
-				if(BP.bandage || length(BP.wounds))
-					bodypart_status += "<B>Wounds:</B>"
-					if(BP.bandage)
-						var/usedclass = "notice"
-						if(BP.bandage.return_blood_DNA())
-							usedclass = "bloody"
-						bodypart_status += "<a href='?src=[REF(src)];bandage=[REF(BP.bandage)];bandaged_limb=[REF(BP)]' class='[usedclass]'>Bandaged</a>"
-					if(!BP.bandage || observer_privilege)
-						for(var/datum/wound/wound as anything in BP.wounds)
-							bodypart_status += wound.get_visible_name()
-				
+		var/obj/item/bodypart/bodypart = get_bodypart(checked_zone)
+		if(bodypart)
+			var/list/bodypart_status = bodypart.inspect_limb(user)
 			if(length(bodypart_status))
 				msg += bodypart_status
 			else
-				msg += "[BP] is healthy."
-
-			if(length(BP.embedded_objects))
-				msg += "<B>Embedded objects:</B>"
-				for(var/obj/item/embedded in BP.embedded_objects)
-					msg += "<a href='?src=[REF(src)];embedded_object=[REF(embedded)];embedded_limb=[REF(BP)]'>[embedded.name]</a>"
+				msg += "<B>[capitalize(bodypart.name)]:</B>"
+				msg += "[bodypart] is healthy."
 		else
+			msg += "<B>[capitalize(parse_zone(checked_zone))]:</B>"
 			msg += "<span class='dead'>Limb is missing!</span>"
 		to_chat(usr, "<span class='info'>[msg.Join("\n")]</span>")
 

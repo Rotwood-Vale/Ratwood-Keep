@@ -164,11 +164,13 @@
 	else if(href_list["hptech"])
 		var/oldheal_amount = heal_amount
 		var/tech_boosters
+		/*
 		for(var/i in linked_techweb.researched_designs)
 			var/datum/design/surgery/healing/D = SSresearch.techweb_design_by_id(i)
 			if(!istype(D))
 				continue
 			tech_boosters++
+		*/
 		if(tech_boosters)
 			heal_amount = (round(tech_boosters/2,0.1)*initial(heal_amount))+initial(heal_amount) //every 2 tend wounds tech gives you an extra 100% healing, adjusting for unique branches (combo is bonus)
 			if(oldheal_amount < heal_amount)

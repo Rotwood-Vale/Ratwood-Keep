@@ -283,7 +283,7 @@
 					continue
 				if(BP.skeletonized)
 					continue
-				var/obj/item/natural/worms/leeches/I = new(C)
+				var/obj/item/natural/worms/leech/I = new(C)
 				BP.add_embedded_object(I, silent = TRUE)
 				return .
 
@@ -312,7 +312,7 @@
 					continue
 				if(BP.skeletonized)
 					continue
-				var/obj/item/natural/worms/leeches/I = new(C)
+				var/obj/item/natural/worms/leech/I = new(C)
 				BP.add_embedded_object(I, silent = TRUE)
 				return .
 

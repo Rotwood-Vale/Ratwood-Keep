@@ -50,7 +50,7 @@
 			H.mind.adjust_skillrank(/datum/skill/magic/holy, 1, TRUE)
 	ADD_TRAIT(H, TRAIT_NOSTINK, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_SOUL_EXAMINE, TRAIT_GENERIC)
-	var/datum/devotion/cleric_holder/C = new /datum/devotion/cleric_holder(H, H.patron)
+	var/datum/devotion/C = new /datum/devotion(H, H.patron)
 	C.holder_mob = H
 	C.update_devotion(50, 50)
 	C.grant_spells(H)

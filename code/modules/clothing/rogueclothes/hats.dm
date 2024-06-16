@@ -685,7 +685,7 @@
 		return
 	var/mob/living/carbon/wise = user
 	if(slot == SLOT_HEAD)
-		wise.change_stat("intelligence", 2)
+		wise.change_stat("intelligence", 2, "wisehat")
 		to_chat(wise, "<span class='green'>I gain wisdom.</span>")
 
 /obj/item/clothing/head/roguetown/wizhat/gen/wise/dropped(mob/user)
@@ -694,8 +694,12 @@
 		return
 	var/mob/living/carbon/human/wise = user
 	if(wise.get_item_by_slot(SLOT_HEAD) == src)
-		wise.change_stat("intelligence", -2)
+		wise.change_stat("intelligence", -2, "wisehat")
 		to_chat(wise, "<span class='red'>I lose wisdom.</span>")
+
+/obj/item/clothing/head/roguetown/physician
+	name = "doctor's hat"
+	desc = "My cure is most effective."
 
 /obj/item/clothing/head/roguetown/nyle
 	name = "jewel of nyle"

@@ -122,9 +122,9 @@
 		if(M.d_intent == INTENT_PARRY)
 			if(!M.get_active_held_item() && !M.get_inactive_held_item()) //we parried with a bracer, redirect damage
 				if(M.active_hand_index == 1)
-					user.tempatarget = "l_arm"
+					user.tempatarget = BODY_ZONE_L_ARM
 				else
-					user.tempatarget = "r_arm"
+					user.tempatarget = BODY_ZONE_R_ARM
 				if(M.attacked_by(src, user)) //we change intents when attacking sometimes so don't play if we do (embedding items)
 					if(user.used_intent == cached_intent)
 						var/tempsound = user.used_intent.hitsound
@@ -139,7 +139,7 @@
 				user.do_attack_animation(M, visual_effect_icon = user.used_intent.animname)
 		return
 
-	if(user.zone_selected == BODY_ZONE_R_INHAND)
+	if(user.zone_selected == BODY_ZONE_PRECISE_R_INHAND)
 		var/offh = 0
 		var/obj/item/W = M.held_items[1]
 		if(W)
@@ -151,7 +151,7 @@
 							"<span class='boldwarning'>I'm disarmed by [user]!</span>")
 			return
 
-	if(user.zone_selected == BODY_ZONE_L_INHAND)
+	if(user.zone_selected == BODY_ZONE_PRECISE_L_INHAND)
 		var/offh = 0
 		var/obj/item/W = M.held_items[2]
 		if(W)
@@ -197,7 +197,7 @@
 
 /proc/get_complex_damage(obj/item/I, mob/living/user, blade_dulling, turf/closed/mineral/T)
 	var/dullfactor = 1
-	if(!I.force)
+	if(!I?.force)
 		return 0
 	var/newforce = I.force
 	testing("startforce [newforce]")
@@ -400,9 +400,9 @@
 			return "body"
 		if(BODY_ZONE_PRECISE_GROIN)
 			return "body"
-		if(BODY_ZONE_R_INHAND)
+		if(BODY_ZONE_PRECISE_R_INHAND)
 			return "body"
-		if(BODY_ZONE_L_INHAND)
+		if(BODY_ZONE_PRECISE_L_INHAND)
 			return "body"
 	return "body"
 

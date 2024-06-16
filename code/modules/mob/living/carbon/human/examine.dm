@@ -71,7 +71,7 @@
 			var/skin_tone_wording = dna.species.skin_tone_wording ? lowertext(dna.species.skin_tone_wording) : "skin tone"
 			var/list/skin_tones = dna.species.get_skin_list()
 			var/skin_tone_seen = "incomprehensible"
-			if(skin_tone)
+			if(!HAS_TRAIT(src, TRAIT_ROTMAN) && skin_tone)
 				//AGGHHHHH this is stupid
 				for(var/tone in skin_tones)
 					if(src.skin_tone == skin_tones[tone])
@@ -247,7 +247,7 @@
 				msg += "<B>[m1] severely wounded.</B>"
 			if(100 to INFINITY)
 				msg += "<span class='danger'>[m1] gravely wounded.</span>"
-		
+
 	// Blood volume
 	switch(blood_volume)
 		if(-INFINITY to BLOOD_VOLUME_SURVIVE)
@@ -297,6 +297,7 @@
 			else
 				msg += "<span class='bloody'>[m1] [bleed_wording]!</span>"
 
+	// Missing limbs
 	var/missing_head = FALSE
 	var/list/missing_limbs = list()
 	for(var/missing_zone in get_missing_limbs())
@@ -308,6 +309,8 @@
 		var/missing_limb_message = "<B>[capitalize(m2)] [english_list(missing_limbs)] [missing_limbs.len > 1 ? "are" : "is"] gone.</B>"
 		if(missing_head)
 			missing_limb_message = "<span class='dead'>[missing_limb_message]</span>"
+		else
+			missing_limb_message = "<span class='danger'>[missing_limb_message]</span>"
 		msg += missing_limb_message
 
 	//Grabbing
@@ -399,7 +402,7 @@
 			msg += "<span class='warning'>[m1] barely conscious.</span>"
 		else
 			if(stat >= UNCONSCIOUS)
-				msg += "[m1] unconscious."
+				msg += "[m1] [IsSleeping() ? "sleeping" : "unconscious"]."
 			else if(eyesclosed)
 				msg += "[capitalize(m2)] eyes are closed."
 			else if(has_status_effect(/datum/status_effect/debuff/sleepytime))

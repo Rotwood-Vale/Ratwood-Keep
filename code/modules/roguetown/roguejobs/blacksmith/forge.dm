@@ -20,4 +20,4 @@
 			T.update_icon()
 			user.visible_message("<span class='info'>[user] heats the bar.</span>")
 			return
-	..()
+	return ..()

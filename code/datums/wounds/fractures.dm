@@ -1,6 +1,7 @@
 /datum/wound/fracture
 	name = "fracture"
-	check_name = "<span class='bone'>FRACTURE</span>"
+	check_name = "<span class='bone'><B>FRACTURE</B></span>"
+	severity = WOUND_SEVERITY_SEVERE
 	crit_message = list(
 		"The bone shatters!", 
 		"The bone is broken!", 
@@ -12,10 +13,19 @@
 	woundpain = 100
 	mob_overlay = "frac"
 	can_sew = FALSE
+	can_cauterize = FALSE
 	disabling = TRUE
 	critical = TRUE
+	sleep_healing = 0 // no sleep healing that is retarded
+	/// Whether or not we can be surgically set
+	var/can_set = TRUE
 	/// Emote we use when applied
 	var/gain_emote = "paincrit"
+
+/datum/wound/fracture/get_visible_name(mob/user)
+	. = ..()
+	if(passive_healing)
+		. += " <span class='green'>(set)</span>"
 
 /datum/wound/fracture/can_stack_with(datum/wound/other)
 	if(istype(other, /datum/wound/fracture) && (type == other.type))
@@ -28,6 +38,13 @@
 		affected.emote(gain_emote, TRUE)
 	affected.Slowdown(20)
 	shake_camera(affected, 2, 2)
+
+/datum/wound/fracture/proc/set_bone()
+	if(!can_set)
+		return FALSE
+	sleep_healing = max(sleep_healing, 1)
+	passive_healing = max(passive_healing, 1)
+	return TRUE
 
 /datum/wound/fracture/head
 	name = "cranial fracture"
@@ -153,7 +170,7 @@
 
 /datum/wound/fracture/neck
 	name = "cervical fracture"
-	check_name = "<span class='bone'><B>CERVICAL FRACTURE</B></span>"
+	check_name = "<span class='bone'><B>NECK</B></span>"
 	crit_message = list(
 		"The spine shatters in a spectacular way!", 
 		"The spine snaps!",
@@ -181,7 +198,7 @@
 
 /datum/wound/fracture/chest
 	name = "rib fracture"
-	check_name = "<span class='bone'>RIBS</span>"
+	check_name = "<span class='bone'><B>RIBS</B></span>"
 	crit_message = list(
 		"The ribs shatter in a splendid way!",
 		"The ribs are smashed!",
@@ -204,7 +221,7 @@
 
 /datum/wound/fracture/groin
 	name = "pelvic fracture"
-	check_name = "<span class='bone'>PELVIS</span>"
+	check_name = "<span class='bone'><B>PELVIS</B></span>"
 	crit_message = list(
 		"The pelvis shatters in a magnificent way!", 
 		"The pelvis is smashed!", 

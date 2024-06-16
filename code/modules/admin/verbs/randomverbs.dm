@@ -1152,7 +1152,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 			if(!affecting)
 				to_chat(usr,"<span class='warning'>Target must have a chest!</span>")
 				return
-			affecting.add_wound(/datum/wound/cbt/smite)
+			affecting.add_wound(/datum/wound/cbt/permanent)
 		if(ADMIN_PUNISHMENT_NECKSNAP)
 			if(!ishuman(target))
 				to_chat(usr,"<span class='warning'>Target must be human!</span>")

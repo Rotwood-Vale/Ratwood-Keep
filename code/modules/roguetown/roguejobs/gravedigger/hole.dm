@@ -50,7 +50,7 @@
 
 /obj/structure/closet/dirthole/closed/loot/examine(mob/user)
 	. = ..()
-	if(HAS_TRAIT(user, TRAIT_NOSTINK))
+	if(HAS_TRAIT(user, TRAIT_SOUL_EXAMINE))
 		if(lootroll == 1)
 			. += "<span class='warning'>Better let this one sleep.</span>"
 
@@ -277,7 +277,7 @@
 						if(prob(5))
 							new /obj/item/natural/worms/grubs(T)
 						else
-							new /obj/item/natural/worms/leeches(T)
+							new /obj/item/natural/worms/leech(T)
 					else
 						new /obj/item/natural/worms(T)
 		else

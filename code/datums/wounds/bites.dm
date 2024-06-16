@@ -9,6 +9,7 @@
 	sew_threshold = 50
 	mob_overlay = "cut"
 	can_sew = FALSE
+	can_cauterize = FALSE
 	passive_healing = 0.5
 
 /datum/wound/bite/small
@@ -28,4 +29,5 @@
 	woundpain = 15
 	sewn_woundpain = 5
 	can_sew = TRUE
+	can_cauterize = TRUE
 	passive_healing = 0

@@ -1,10 +1,11 @@
 /datum/wound/dismemberment
 	name = "bleeding stump"
 	check_name = "<span class='danger'><B>STUMP</B></span>"
+	severity = WOUND_SEVERITY_CRITICAL
 	whp = 75
 	sewn_whp = 25
-	bleed_rate = 20
-	sewn_bleed_rate = 0.2
+	bleed_rate = 25
+	sewn_bleed_rate = 0.25
 	clotting_threshold = null
 	sewn_clotting_threshold = null
 	woundpain = 100
@@ -12,6 +13,7 @@
 	sew_threshold = 100 //absolutely awful to sew up
 	mob_overlay = "dis_head"
 	can_sew = TRUE
+	can_cauterize = TRUE
 	critical = TRUE
 	sleep_healing = 0
 

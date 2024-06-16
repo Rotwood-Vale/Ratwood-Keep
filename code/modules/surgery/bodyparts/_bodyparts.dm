@@ -63,7 +63,7 @@
 	var/heavy_brute_msg = "MANGLED"
 	var/medium_brute_msg = "battered"
 	var/light_brute_msg = "bruised"
-	var/no_bruise_msg = "unbruised"
+	var/no_brute_msg = "unbruised"
 
 	var/heavy_burn_msg = "CHARRED"
 	var/medium_burn_msg = "peeling"
@@ -190,7 +190,7 @@
 	return ..()
 
 /obj/item/bodypart/throw_impact(atom/hit_atom, datum/thrownthing/throwingdatum)
-	..()
+	. = ..()
 	if(status != BODYPART_ROBOTIC)
 		playsound(get_turf(src), 'sound/blank.ogg', 50, TRUE, -1)
 	pixel_x = rand(-3, 3)
@@ -244,12 +244,12 @@
 	update_HP()
 
 /obj/item/bodypart/proc/update_HP()
+	if(!is_organic_limb() || !owner)
+		return
 	var/old_max_damage = max_damage
-	if(is_organic_limb())
-		if(owner)
-			var/new_max_damage = initial(max_damage) * (owner.STACON / 10)
-			if(new_max_damage != old_max_damage)
-				max_damage = new_max_damage
+	var/new_max_damage = initial(max_damage) * (owner.STACON / 10)
+	if(new_max_damage != old_max_damage)
+		max_damage = new_max_damage
 
 //Applies brute and burn damage to the organ. Returns 1 if the damage-icon states changed at all.
 //Damage will not exceed max_damage using this proc
@@ -342,7 +342,7 @@
 	set_disabled(is_disabled())
 
 /obj/item/bodypart/proc/is_disabled()
-	if(!can_disable() || HAS_TRAIT(owner, TRAIT_NOLIMBDISABLE))
+	if(!can_disable() || !owner || HAS_TRAIT(owner, TRAIT_NOLIMBDISABLE))
 		return BODYPART_NOT_DISABLED
 	//yes this does mean vampires can use rotten limbs
 	if((rotted || skeletonized) && !(owner.mob_biotypes & MOB_UNDEAD))
@@ -353,6 +353,9 @@
 		return BODYPART_DISABLED_WOUND
 	if(HAS_TRAIT(owner, TRAIT_PARALYSIS) || HAS_TRAIT(src, TRAIT_PARALYSIS))
 		return BODYPART_DISABLED_PARALYSIS
+	var/surgery_flags = get_surgery_flags()
+	if(surgery_flags & SURGERY_CLAMPED)
+		return BODYPART_DISABLED_CLAMPED
 	var/total_dam = get_damage()
 	if((total_dam >= max_damage) || (HAS_TRAIT(owner, TRAIT_EASYLIMBDISABLE) && (total_dam >= (max_damage * 0.6))))
 		return BODYPART_DISABLED_DAMAGE
@@ -363,9 +366,10 @@
 		return
 	disabled = new_disabled
 	last_disable = world.time
-	owner.update_health_hud() //update the healthdoll
-	owner.update_body()
-	owner.update_mobility()
+	if(owner)
+		owner.update_health_hud() //update the healthdoll
+		owner.update_body()
+		owner.update_mobility()
 	return TRUE //if there was a change.
 
 //Updates an organ's brute/burn states for use by update_damage_overlays()

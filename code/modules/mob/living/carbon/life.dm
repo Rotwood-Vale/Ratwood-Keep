@@ -36,26 +36,29 @@
 					heart_attacking = FALSE
 
 		//Healing while sleeping in a bed
-		if((stat >= UNCONSCIOUS) && buckled?.sleepy)
+		if(stat >= UNCONSCIOUS)
+			var/sleepy_mod = buckled?.sleepy || 0.5
 			var/yess = HAS_TRAIT(src, TRAIT_NOHUNGER)
 			if(nutrition > 0 || yess)
-				rogstam_add(buckled.sleepy * 15)
+				rogstam_add(sleepy_mod * 15)
 			if(hydration > 0 || yess)
 				if(!bleed_rate)
-					blood_volume = min(blood_volume + (4 * buckled.sleepy), BLOOD_VOLUME_NORMAL)
+					blood_volume = min(blood_volume + (4 * sleepy_mod), BLOOD_VOLUME_NORMAL)
 				for(var/obj/item/bodypart/affecting as anything in bodyparts)
 					//for context, it takes 5 small cuts (0.2 x 5) or 3 normal cuts (0.4 x 3) for a bodypart to not be able to heal itself
-					if(affecting.get_bleed_rate() < 1)
-						if(affecting.heal_damage(buckled.sleepy, buckled.sleepy, required_status = BODYPART_ORGANIC))
-							src.update_damage_overlays()
-						for(var/datum/wound/wound as anything in affecting.wounds)
-							if(!wound.sleep_healing)
-								continue
-							wound.heal_wound(wound.sleep_healing * buckled.sleepy)
-				adjustToxLoss(-buckled.sleepy)
+					if(affecting.get_bleed_rate() >= 1)
+						continue
+					if(affecting.heal_damage(sleepy_mod, sleepy_mod, required_status = BODYPART_ORGANIC))
+						src.update_damage_overlays()
+					for(var/datum/wound/wound as anything in affecting.wounds)
+						if(!wound.sleep_healing)
+							continue
+						wound.heal_wound(wound.sleep_healing * sleepy_mod)
+				adjustToxLoss(-sleepy_mod)
 				if(eyesclosed && !HAS_TRAIT(src, TRAIT_NOSLEEP))
 					Sleeping(300)
-		if(!IsSleeping() && !HAS_TRAIT(src, TRAIT_NOSLEEP))
+		else if(!IsSleeping() && !HAS_TRAIT(src, TRAIT_NOSLEEP))
+			// Resting on a bed or something
 			if(buckled?.sleepy)
 				if(eyesclosed)
 					if(!fallingas)
@@ -65,9 +68,8 @@
 						Sleeping(300)
 				else
 					rogstam_add(buckled.sleepy * 10)
-
 			// Resting on the ground (not sleeping or with eyes closed and about to fall asleep)
-			else if(!buckled && lying)
+			else if(!(mobility_flags & MOBILITY_STAND))
 				if(eyesclosed)
 					if(!fallingas)
 						to_chat(src, "<span class='warning'>I'll fall asleep soon, although a bed would be more comfortable...</span>")
@@ -76,26 +78,6 @@
 						Sleeping(300)
 				else
 					rogstam_add(10)
-
-			// Healing while sleeping on the ground (less efficient than comfortable seats/beds)
-				if(stat)
-					var/yess = HAS_TRAIT(src, TRAIT_NOHUNGER)
-					if(nutrition > 0 || yess)
-						rogstam_add(25)
-					if(hydration > 0 || yess)
-						if(!bleed_rate)
-							blood_volume = min(blood_volume + 2, BLOOD_VOLUME_NORMAL)
-						for(var/obj/item/bodypart/affecting as anything in bodyparts)
-							//for context, it takes 5 small cuts (0.2 x 5) or 3 normal cuts (0.4 x 3) for a bodypart to not be able to heal itself
-							if(affecting.get_bleed_rate() < 1)
-								if(affecting.heal_damage(0.5, 0.5, required_status = BODYPART_ORGANIC))
-									src.update_damage_overlays()
-								for(var/datum/wound/wound as anything in affecting.wounds)
-									if(!wound.sleep_healing)
-										continue
-									wound.heal_wound(wound.sleep_healing * 0.5)
-						adjustToxLoss(-0.1)
-
 			else if(fallingas)
 				fallingas = 0
 			tiredness = min(tiredness + 1, 100)
@@ -181,12 +163,11 @@
 			adjustOxyLoss(5)
 	if(isopenturf(loc))
 		var/turf/open/T = loc
-		if(T.pollutants)
+		if(reagents&& T.pollutants)
 			var/obj/effect/pollutant_effect/P = T.pollutants
-			if(reagents)
-				for(var/datum/pollutant/X in P.pollute_list)
-					for(var/A in X.reagents_on_breathe)
-						reagents.add_reagent(A, X.reagents_on_breathe[A])
+			for(var/datum/pollutant/X in P.pollute_list)
+				for(var/A in X.reagents_on_breathe)
+					reagents.add_reagent(A, X.reagents_on_breathe[A])
 
 /mob/living/proc/handle_inwater()
 	ExtinguishMob()

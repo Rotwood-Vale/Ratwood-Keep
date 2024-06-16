@@ -13,6 +13,9 @@ GLOBAL_LIST_INIT(primordial_wounds, init_primordial_wounds())
 	/// Name that appears on check_for_injuries()
 	var/check_name
 
+	/// Wounds get sorted from highest severity to lowest severity
+	var/severity = WOUND_SEVERITY_LIGHT
+
 	/// Overlay to use when this wound is applied to a carbon mob
 	var/mob_overlay = "w1"
 	/// Overlay to use when this wound is sewn, and is on a carbon mob
@@ -55,6 +58,8 @@ GLOBAL_LIST_INIT(primordial_wounds, init_primordial_wounds())
 
 	/// If TRUE, this wound can be sewn
 	var/can_sew = FALSE
+	/// If TRUE, this wound can be cauterized
+	var/can_cauterize = FALSE
 	/// If TRUE, this disables limbs
 	var/disabling = FALSE
 	/// If TRUE, this is a crit wound
@@ -66,6 +71,9 @@ GLOBAL_LIST_INIT(primordial_wounds, init_primordial_wounds())
 	var/passive_healing = 0
 	/// Embed chance if this wound allows embedding
 	var/embed_chance = 0
+
+	/// Some wounds make no sense on a dismembered limb and need to go
+	var/qdel_on_droplimb = FALSE
 
 /datum/wound/Destroy(force)
 	. = ..()
@@ -140,6 +148,7 @@ GLOBAL_LIST_INIT(primordial_wounds, init_primordial_wounds())
 	else if(owner)
 		remove_from_mob()
 	LAZYADD(affected.wounds, src)
+	sortList(affected.wounds, GLOBAL_PROC_REF(cmp_wound_severity_dsc))
 	bodypart_owner = affected
 	owner = bodypart_owner.owner
 	on_bodypart_gain(affected)
@@ -197,6 +206,7 @@ GLOBAL_LIST_INIT(primordial_wounds, init_primordial_wounds())
 	else if(owner)
 		remove_from_mob()
 	LAZYADD(affected.simple_wounds, src)
+	sortList(affected.simple_wounds, GLOBAL_PROC_REF(cmp_wound_severity_dsc))
 	owner = affected
 	on_mob_gain(affected)
 	if(crit_message)
@@ -234,6 +244,7 @@ GLOBAL_LIST_INIT(primordial_wounds, init_primordial_wounds())
 		bleed_rate = max(clotting_threshold, bleed_rate - clotting_rate)
 	if(passive_healing)
 		heal_wound(passive_healing)
+	return TRUE
 
 /// Called on handle_wounds(), on the life() proc
 /datum/wound/proc/on_death()
@@ -272,6 +283,15 @@ GLOBAL_LIST_INIT(primordial_wounds, init_primordial_wounds())
 	passive_healing = max(passive_healing, 1)
 	if(mob_overlay != old_overlay)
 		owner?.update_damage_overlays()
+	return TRUE
+
+/// Cauterizes the wound
+/datum/wound/proc/cauterize_wound()
+	if(!can_cauterize)
+		return FALSE
+	if(!isnull(clotting_threshold) && bleed_rate > clotting_threshold)
+		bleed_rate = clotting_threshold
+	heal_wound(40)
 	return TRUE
 
 /// Checks if this wound is sewn

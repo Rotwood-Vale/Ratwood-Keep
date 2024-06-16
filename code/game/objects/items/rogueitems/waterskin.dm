@@ -1,5 +1,3 @@
-
-
 /obj/item/reagent_containers/glass/bottle/waterskin
 	name = "waterskin"
 	desc = "A leather waterskin."

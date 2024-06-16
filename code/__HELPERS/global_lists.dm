@@ -9,6 +9,11 @@
 		GLOB.species_list[species.name] = species_path
 	sortList(GLOB.species_list, GLOBAL_PROC_REF(cmp_typepaths_asc))
 
+	//Surgery steps
+	for(var/path in subtypesof(/datum/surgery_step))
+		GLOB.surgery_steps += new path()
+	sortList(GLOB.surgery_steps, GLOBAL_PROC_REF(cmp_typepaths_asc))
+
 	//Surgeries
 	for(var/path in subtypesof(/datum/surgery))
 		GLOB.surgeries_list += new path()

@@ -13,13 +13,17 @@
 	bypass_lastclass = TRUE
 	bypass_jobban = FALSE
 	display_order = JDO_VILLAGER
-	isvillager = TRUE
 	give_bank_account = TRUE
 	min_pq = -15
 	max_pq = null
 	wanderer_examine = FALSE
 	advjob_examine = TRUE
 	always_show_on_latechoices = TRUE
+	same_job_respawn_delay = 0
+
+	ispilgrim = FALSE
+	isvillager = TRUE
+
 /*
 /datum/job/roguetown/adventurer/villager/New()
 	. = ..()

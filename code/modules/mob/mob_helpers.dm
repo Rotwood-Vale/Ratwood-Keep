@@ -38,9 +38,9 @@
 			zone = BODY_ZONE_CHEST
 		if(BODY_ZONE_PRECISE_STOMACH)
 			zone = BODY_ZONE_CHEST
-		if(BODY_ZONE_R_INHAND)
+		if(BODY_ZONE_PRECISE_R_INHAND)
 			zone = BODY_ZONE_R_ARM
-		if(BODY_ZONE_L_INHAND)
+		if(BODY_ZONE_PRECISE_L_INHAND)
 			zone = BODY_ZONE_L_ARM
 
 	return zone
@@ -643,14 +643,17 @@
 			if(hud_used.zone_select)
 				hud_used.zone_select.update_icon()
 
+/mob/proc/select_organ_slot(choice)
+	organ_slot_selected = choice
+
 /mob/proc/select_zone(choice)
 	zone_selected = choice
 	switch(choice)
-		if(BODY_ZONE_HEAD)
-			aimheight = 19
 		if(BODY_ZONE_PRECISE_SKULL)
-			aimheight = 18
+			aimheight = 19
 		if(BODY_ZONE_PRECISE_EARS)
+			aimheight = 18
+		if(BODY_ZONE_HEAD)
 			aimheight = 17
 		if(BODY_ZONE_PRECISE_R_EYE)
 			aimheight = 16
