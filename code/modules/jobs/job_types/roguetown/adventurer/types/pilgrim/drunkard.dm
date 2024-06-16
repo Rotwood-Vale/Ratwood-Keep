@@ -18,7 +18,7 @@
 	ispilgrim = TRUE
 
 /datum/outfit/job/roguetown/adventurer/drunkard
-	allowed_patrons = list(/datum/patron/inhumen/eora, /datum/patron/divine/xylix)
+	allowed_patrons = list(/datum/patron/divine/eora, /datum/patron/divine/xylix)
 
 /datum/outfit/job/roguetown/adventurer/drunkard/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -33,7 +33,7 @@
 		belt = /obj/item/storage/belt/rogue/leather
 		beltr = /obj/item/clothing/mask/cigarette/rollie/cannabis
 		beltl = /obj/item/flint
-		backpack_contents = list(/obj/item/storage/pill_bottle/dice = 1, /obj/item/toy/cards/deck = 1, /obj/item/reagent_containers/glass/bottle/rogue/wine = 1)	
+		backpack_contents = list(/obj/item/storage/pill_bottle/dice = 1, /obj/item/toy/cards/deck = 1, /obj/item/reagent_containers/glass/bottle/rogue/wine = 1)
 		H.mind.adjust_skillrank(/datum/skill/misc/stealing, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
