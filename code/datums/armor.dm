@@ -41,6 +41,9 @@
 /datum/armor/proc/modifyAllRatings(modifier = 0)
 	return getArmor(blunt+modifier, slash+modifier, stab+modifier, bullet+modifier, laser+modifier, energy+modifier, bomb+modifier, bio+modifier, rad+modifier, fire+modifier, acid+modifier, magic+modifier)
 
+/datum/armor/proc/multiplymodifyAllRatings(modifier = 0)
+	return getArmor(blunt*modifier, slash*modifier, stab*modifier, bullet*modifier, laser*modifier, energy*modifier, bomb*modifier, bio*modifier, rad*modifier, fire*modifier, acid*modifier, magic*modifier)
+
 /datum/armor/proc/setRating(blunt, slash, stab, bullet, laser, energy, bomb, bio, rad, fire, acid, magic)
 	return getArmor((isnull(blunt) ? src.blunt : blunt),\
 					(isnull(slash) ? src.slash : slash),\

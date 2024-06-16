@@ -115,6 +115,9 @@
 	var/ammo_type
 
 	var/arcshot = FALSE
+	var/poisontype
+	var/poisonamount
+	var/poisonfeel
 
 /obj/projectile/proc/handle_drop()
 	return

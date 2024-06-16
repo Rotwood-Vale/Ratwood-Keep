@@ -44,7 +44,10 @@
 			repair_percent *= attacked_item.max_integrity
 			exp_gained = min(attacked_item.obj_integrity + repair_percent, attacked_item.max_integrity) - attacked_item.obj_integrity
 			attacked_item.obj_integrity = min(attacked_item.obj_integrity + repair_percent, attacked_item.max_integrity)
-			user.visible_message("<span class='info'>[user] repairs [attacked_item]!</span>")
+			if(repair_percent == 0.01) // If an inexperienced repair attempt has been successful
+				to_chat(user, "<span class='warning'>You fumble your way into slightly repairing [attacked_item].</span>")
+			else	
+				user.visible_message("<span class='info'>[user] repairs [attacked_item]!</span>")
 			blacksmith_mind.adjust_experience(attacked_item.anvilrepair, exp_gained/2) //We gain as much exp as we fix divided by 2
 			return
 		else

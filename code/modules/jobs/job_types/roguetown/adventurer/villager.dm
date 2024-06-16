@@ -19,7 +19,7 @@
 	max_pq = null
 	wanderer_examine = FALSE
 	advjob_examine = TRUE
-
+	always_show_on_latechoices = TRUE
 /*
 /datum/job/roguetown/adventurer/villager/New()
 	. = ..()

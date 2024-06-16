@@ -194,7 +194,8 @@
 /atom/movable/proc/attacked_by()
 	return FALSE
 
-/proc/get_complex_damage(obj/item/I, mob/living/user, blade_dulling)
+
+/proc/get_complex_damage(obj/item/I, mob/living/user, blade_dulling, turf/closed/mineral/T)
 	var/dullfactor = 1
 	if(!I.force)
 		return 0
@@ -229,16 +230,22 @@
 		if(DULLING_CUT) //wooden that can't be attacked by clubs (trees, bushes, grass)
 			switch(user.used_intent.blade_class)
 				if(BCLASS_CUT)
+					var/mob/living/lumberjacker = user
+					var/lumberskill = lumberjacker.mind.get_skill_level(/datum/skill/labor/lumberjacking)
 					if(!I.remove_bintegrity(1))
 						dullfactor = 0.2
 					else
-						dullfactor = 0.75
+						dullfactor = 0.45 + (lumberskill * 0.15)
+						lumberjacker.mind.adjust_experience(/datum/skill/labor/lumberjacking, (lumberjacker.STAINT*0.2))
 					cont = TRUE
 				if(BCLASS_CHOP)
+					var/mob/living/lumberjacker = user
+					var/lumberskill = lumberjacker.mind.get_skill_level(/datum/skill/labor/lumberjacking)
 					if(!I.remove_bintegrity(1))
 						dullfactor = 0.2
 					else
-						dullfactor = 1.5
+						dullfactor = 1.2 + (lumberskill * 0.15)
+						lumberjacker.mind.adjust_experience(/datum/skill/labor/lumberjacking, (lumberjacker.STAINT*0.2))
 					cont = TRUE
 			if(!cont)
 				return 0
@@ -272,15 +279,22 @@
 				if(BCLASS_BLUNT)
 					cont = TRUE
 				if(BCLASS_PICK)
-					dullfactor = 1.5
+					var/mob/living/miner = user
+					var/mineskill = miner.mind.get_skill_level(/datum/skill/labor/mining)
+					dullfactor = 1.5 (mineskill*0.1)
 					cont = TRUE
 			if(!cont)
 				return 0
 		if(DULLING_PICK) //cannot deal damage if not a pick item. aka rock walls
+				    
 			if(user.used_intent.blade_class != BCLASS_PICK)
 				return 0
-			newforce = newforce * 10
+			var/mob/living/miner = user
+			var/mineskill = miner.mind.get_skill_level(/datum/skill/labor/mining)
+			newforce = newforce * (8+(mineskill*1.5))
 			shake_camera(user, 1, 1)
+			miner.mind.adjust_experience(/datum/skill/labor/mining, (miner.STAINT*0.2))
+	
 	newforce = (newforce * user.used_intent.damfactor) * dullfactor
 	if(user.used_intent.get_chargetime() && user.client?.chargedprog < 100)
 		newforce = newforce * 0.5

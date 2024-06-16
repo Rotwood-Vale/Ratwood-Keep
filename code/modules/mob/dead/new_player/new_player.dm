@@ -345,12 +345,10 @@ GLOBAL_LIST_INIT(roleplay_readme, world.file2list("strings/rt/rp_prompt.txt"))
 			return "[jobtitle] requires more faith."
 		if(JOB_UNAVAILABLE_LASTCLASS)
 			return "You have played [jobtitle] recently."
-		if(JOB_UNAVAILABLE_ADVENTURER_COOLDOWN)
-			if(usr?.ckey && (usr?.ckey in GLOB.adventurer_cooldowns))
-				var/cooldown_time = GLOB.adventurer_cooldowns[usr.ckey]
-				var/cooldown_duration = 15 MINUTES
-				var/remaining_time = round((cooldown_time + cooldown_duration - world.time) / 10)
-				return "You must wait [remaining_time] seconds before playing as an Adventurer again."
+		if(JOB_UNAVAILABLE_JOB_COOLDOWN)
+			if(usr.ckey in GLOB.job_respawn_delays)
+				var/remaining_time = round((GLOB.job_respawn_delays[usr.ckey] - world.time) / 10)
+				return "You must wait [remaining_time] seconds before playing as an [jobtitle] again."
 	return "Error: Unknown job availability."
 
 //used for latejoining
@@ -374,17 +372,14 @@ GLOBAL_LIST_INIT(roleplay_readme, world.file2list("strings/rt/rp_prompt.txt"))
 			if(rank == "Death Knight")
 				return JOB_UNAVAILABLE_GENERIC
 
-	// Check if the player is on cooldown for the Adventurer role
-	if(rank == "Adventurer")
-		if(client?.ckey in GLOB.adventurer_cooldowns)
-			var/cooldown_time = GLOB.adventurer_cooldowns[ckey]
-			var/cooldown_duration = 15 MINUTES
-			if(world.time < cooldown_time + cooldown_duration)
-				return JOB_UNAVAILABLE_ADVENTURER_COOLDOWN
-
 	var/datum/job/job = SSjob.GetJob(rank)
 	if(!job)
 		return JOB_UNAVAILABLE_GENERIC
+	// Check if the player is on cooldown for the hiv+ role
+	if((job.same_job_respawn_delay) && (ckey in GLOB.job_respawn_delays))
+		if(world.time < GLOB.job_respawn_delays[ckey])
+			return JOB_UNAVAILABLE_JOB_COOLDOWN
+
 	if((job.current_positions >= job.total_positions) && job.total_positions != -1)
 		if(job.title == "Assistant")
 			if(isnum(client.player_age) && client.player_age <= 14) //Newbies can always be assistants
@@ -590,9 +585,9 @@ GLOBAL_LIST_INIT(roleplay_readme, world.file2list("strings/rt/rp_prompt.txt"))
 			var/datum/job/job_datum = SSjob.name_occupations[job]
 			if(!job_datum)
 				continue
-			// Make sure adventurer jobs always appear on list, even if unavailable
+			// Make sure hiv+ jobs always appear on list, even if unavailable
 			var/is_job_available = (IsJobUnavailable(job_datum.title, TRUE) == JOB_AVAILABLE)
-			if(job_datum.title == "Towner" || job_datum.title == "Adventurer" || job_datum.title == "Pilgrim")
+			if(job_datum.always_show_on_latechoices)
 				is_job_available = TRUE
 			if(is_job_available)
 				available_jobs += job

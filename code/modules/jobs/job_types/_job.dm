@@ -113,6 +113,15 @@
 	/// This job uses adventurer classes on examine
 	var/advjob_examine = FALSE
 
+	/// This job always shows on latechoices
+	var/always_show_on_latechoices = FALSE
+
+	/// This job has a cooldown if you died in it and attempt to rejoin as it
+	var/same_job_respawn_delay = FALSE
+
+	/// This job re-opens slots if someone dies as it
+	var/job_reopens_slots_on_death = FALSE
+
 /datum/job/proc/special_job_check(mob/dead/new_player/player)
 	return TRUE
 

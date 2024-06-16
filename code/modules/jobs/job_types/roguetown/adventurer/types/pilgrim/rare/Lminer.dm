@@ -30,6 +30,7 @@
 		H.mind.adjust_skillrank(/datum/skill/craft/crafting, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/swimming, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/climbing, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/labor/mining, 6, TRUE)
 		H.change_stat("strength", 2)
 		H.change_stat("intelligence", 2)
 		H.change_stat("endurance", 2)

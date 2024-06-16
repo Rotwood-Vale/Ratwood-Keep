@@ -173,7 +173,6 @@
 #include "code\_globalvars\configuration.dm"
 #include "code\_globalvars\game_modes.dm"
 #include "code\_globalvars\genetics.dm"
-#include "code\_globalvars\job_cooldowns.dm"
 #include "code\_globalvars\logging.dm"
 #include "code\_globalvars\misc.dm"
 #include "code\_globalvars\regexes.dm"

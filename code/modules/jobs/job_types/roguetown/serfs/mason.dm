@@ -22,6 +22,8 @@
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/combat/axes, rand(1,3), TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/maces, rand(1,3), TRUE)
+		H.mind.adjust_skillrank(/datum/skill/labor/lumberjacking, rand(2,3), TRUE)
+		H.mind.adjust_skillrank(/datum/skill/labor/mining, rand(2,3), TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, rand(1,3), TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/unarmed, rand(1,3), TRUE)
 		H.mind.adjust_skillrank(/datum/skill/craft/crafting, rand(4,5), TRUE)
