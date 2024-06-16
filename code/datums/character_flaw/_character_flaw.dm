@@ -8,6 +8,7 @@ GLOBAL_LIST_INIT(character_flaws, list("Alcoholic"=/datum/charflaw/addiction/alc
 	"No Arm (R)"=/datum/charflaw/limbloss/arm_r,
 	"No Arm (L)"=/datum/charflaw/limbloss/arm_l,
 	"Paranoid"=/datum/charflaw/paranoid,
+	"Blind"=/datum/charflaw/noeyes,
 	"Random Flaw"=/datum/charflaw/randflaw,
 	"No Flaw (3 TRI)"=/datum/charflaw/noflaw))
 
@@ -196,4 +197,16 @@ GLOBAL_LIST_INIT(character_flaws, list("Alcoholic"=/datum/charflaw/addiction/alc
 	var/obj/item/organ/eyes/my_eyes = H.getorganslot(ORGAN_SLOT_EYES)
 	if(my_eyes)
 		my_eyes.left_poked = TRUE
+	H.update_fov_angles()
+
+/datum/charflaw/noeyes
+	name = "Blind"
+	desc = "Something was wrong when I was born, and despite my eyes, I'll never see again."
+
+/datum/charflaw/noeyes/on_mob_creation(mob/user)
+	..()
+	if(!ishuman(user))
+		return
+	var/mob/living/carbon/human/H = user
+	H.become_blind("blindness_flaw")
 	H.update_fov_angles()
