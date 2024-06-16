@@ -6,7 +6,7 @@
 
 /datum/supply_pack/rogue/tools/ropes
 	name = "Ropes"
-	cost = 15
+	cost = 6
 	contains = list(/obj/item/rope,
 					/obj/item/rope,
 					/obj/item/rope)
@@ -86,3 +86,32 @@
 	name = "Proesthetic Arm (R)"
 	cost = 40
 	contains = list(/obj/item/bodypart/r_arm/rproesthetic)
+
+/datum/supply_pack/rogue/tools/waterskin
+	name = "Waterskin"
+	cost = 10
+	contains = list(/obj/item/reagent_containers/glass/bottle/waterskin)
+
+/datum/supply_pack/rogue/tools/soapps
+	name = "Soap"
+	cost = 10
+	contains = list(/obj/item/soap)
+
+/datum/supply_pack/rogue/tools/keyrings
+	name = "Keyrings"
+	cost = 8
+	contains = list(/obj/item/keyring,
+					/obj/item/keyring,
+					/obj/item/keyring)
+
+/datum/supply_pack/rogue/tools/needles
+	name = "Needles"
+	cost = 15
+	contains = list(/obj/item/needle,
+					/obj/item/needle,
+					/obj/item/needle)
+
+/datum/supply_pack/rogue/tools/shopkeyy
+	name = "Spare Shopkey"
+	cost = 10
+	contains = list(/obj/item/roguekey/shop)
