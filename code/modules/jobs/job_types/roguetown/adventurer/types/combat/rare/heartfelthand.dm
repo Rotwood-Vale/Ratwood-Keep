@@ -2,7 +2,7 @@
 	name = "Hand of Heartfelt"
 	tutorial = "You serve your lord as the royal hand, taking care of all diplomatic actions in your relm. \
 	maybe one day you will become lord too."
-	allowed_sexes = list("male")
+	allowed_sexes = list(MALE)
 	allowed_races = list(/datum/species/human/northern)
 	outfit = /datum/outfit/job/roguetown/adventurer/heartfelthand
 	maxchosen = 1

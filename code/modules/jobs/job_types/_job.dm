@@ -1,6 +1,7 @@
 /datum/job
 	//The name of the job , used for preferences, bans and more. Make sure you know what you're doing before changing this.
 	var/title = "NOPE"
+	var/f_title
 
 	//Job access. The use of minimal_access or access is determined by a config setting: config.jobs_have_minimal_access
 	var/list/minimal_access = list()		//Useful for servers which prefer to only have access given to the places a job absolutely needs (Larger server population)
@@ -79,8 +80,6 @@
 	var/list/jobstats
 	var/list/jobstats_f
 
-	var/f_title = null
-
 	var/tutorial = null
 
 	var/whitelist_req = FALSE
@@ -121,6 +120,9 @@
 
 	/// This job re-opens slots if someone dies as it
 	var/job_reopens_slots_on_death = FALSE
+
+	/// This job is immune to species-based swapped gender locks
+	var/immune_to_genderswap = FALSE
 
 /datum/job/proc/special_job_check(mob/dead/new_player/player)
 	return TRUE

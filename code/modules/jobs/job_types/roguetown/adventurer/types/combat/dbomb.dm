@@ -1,7 +1,7 @@
 /datum/advclass/dbomb
 	name = "Vagrant"
 	tutorial = "Dwarves like to blow things up."
-	allowed_sexes = list("male", "female")
+	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = list(/datum/species/dwarf/mountain)
 	outfit = /datum/outfit/job/roguetown/adventurer/dbomb
 	traits_applied = list(TRAIT_HEAVYARMOR)

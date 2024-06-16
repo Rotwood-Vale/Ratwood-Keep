@@ -88,7 +88,7 @@
 	var/sound/tmp_sound = get_sound(user)
 	if(!istype(tmp_sound))
 		tmp_sound = sound(get_sfx(tmp_sound))
-	tmp_sound.pitch = pitch
+	tmp_sound.frequency = pitch
 	if(tmp_sound && (!only_forced_audio || !intentional))
 		playsound(user, tmp_sound, snd_vol, FALSE, snd_range, soundping = soundping)
 	if(!nomsg)

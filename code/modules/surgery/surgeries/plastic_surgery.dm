@@ -40,7 +40,7 @@
 	else
 		var/list/names = list("Custom...")
 		if(ishuman(target))
-			var/mob/living/carbon/human/human_target
+			var/mob/living/carbon/human/human_target = target
 			if(!isabductor(user))
 				for(var/i in 1 to 9)
 					names += human_target.dna.species.random_name(target.gender, TRUE)

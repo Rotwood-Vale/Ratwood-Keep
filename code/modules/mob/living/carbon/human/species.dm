@@ -103,7 +103,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 	//in __DEFINES/mobs.dm, defaults to NONE, so people actually have to think about it
 	var/changesource_flags = NONE
 
-	//Wording for skin tone on examine and on character setup
+	/// Wording for skin tone on examine and on character setup
 	var/skin_tone_wording = "Skin Tone"
 
 	/// List of organs this species has.
@@ -136,6 +136,8 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 	/// List all of body markings that the player can choose from in customization. Body markings from sets get added to here
 	var/list/body_markings
 	var/list/languages = list(/datum/language/common)
+	/// Some species have less than standard gender locks
+	var/gender_swapping = FALSE 
 
 ///////////
 // PROCS //

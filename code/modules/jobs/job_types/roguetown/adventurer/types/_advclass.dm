@@ -19,6 +19,9 @@
 	var/list/traits_applied
 	var/cmode_music
 
+	/// This class is immune to species-based swapped gender locks
+	var/immune_to_genderswap = FALSE
+
 /datum/advclass/proc/equipme(mob/living/carbon/human/H)
 	if(!H)
 		return FALSE

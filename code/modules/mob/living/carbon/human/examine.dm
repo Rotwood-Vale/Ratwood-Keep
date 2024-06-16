@@ -40,7 +40,12 @@
 		if(HAS_TRAIT(L, TRAIT_PROSOPAGNOSIA))
 			obscure_name = TRUE
 
-	if(!get_face_name(if_no_face = null))
+	var/static/list/unknown_names = list(
+		"Unknown",
+		"Unknown Man",
+		"Unknown Woman",
+	)
+	if(get_visible_name() in unknown_names)
 		obscure_name = TRUE
 
 	if(observer_privilege)
@@ -56,7 +61,7 @@
 		if(job)
 			var/datum/job/J = SSjob.GetJob(job)
 			var/used_title = J.title
-			if(gender == FEMALE && J.f_title)
+			if(J.f_title && (t_He == "She"))
 				used_title = J.f_title
 			if(J.wanderer_examine)
 				. = list("<span class='info'>ø ------------ ø\nThis is <EM>[used_name]</EM>, the wandering [race_name].")

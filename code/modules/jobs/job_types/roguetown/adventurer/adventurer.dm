@@ -64,7 +64,18 @@ GLOBAL_VAR_INIT(adventurer_hugbox_duration_still, 3 MINUTES)
 #endif
 		for(var/I in shuffle(classes))
 			var/datum/advclass/A = I
-			if(length(A.allowed_sexes) && !(H.gender in A.allowed_sexes))
+			var/datum/species/pref_species = H.dna.species
+			var/list/allowed_sexes = list()
+			if(length(A.allowed_sexes))
+				allowed_sexes |= A.allowed_sexes
+			if(!A.immune_to_genderswap && pref_species?.gender_swapping)
+				if(MALE in A.allowed_sexes)
+					allowed_sexes -= MALE
+					allowed_sexes += FEMALE
+				if(FEMALE in A.allowed_sexes)
+					allowed_sexes -= FEMALE
+					allowed_sexes += MALE
+			if(length(allowed_sexes) && !(H.gender in allowed_sexes))
 				testing("[A.name] fail11")
 				continue
 			if(length(A.allowed_races) && !(H.dna.species.type in A.allowed_races))

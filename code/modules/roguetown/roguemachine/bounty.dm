@@ -6,7 +6,6 @@
 	density = FALSE
 	blade_dulling = DULLING_BASH
 	anchored = TRUE
-	pixel_x = -17
 
 /datum/bounty
 	var/target

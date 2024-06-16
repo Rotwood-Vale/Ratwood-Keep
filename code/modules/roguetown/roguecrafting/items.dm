@@ -28,6 +28,30 @@
 	verbage_simple = "tie"
 	verbage = "ties"
 
+/datum/crafting_recipe/roguetown/unclothbelt
+	name = "untie cloth belt"
+	result = /obj/item/natural/cloth
+	reqs = list(/obj/item/storage/belt/rogue/leather/cloth = 1)
+	craftdiff = 0
+	verbage_simple = "untie"
+	verbage = "unties"
+
+/datum/crafting_recipe/roguetown/ropebelt
+	name = "rope belt"
+	result = /obj/item/storage/belt/rogue/leather/rope
+	reqs = list(/obj/item/rope = 1)
+	craftdiff = 0
+	verbage_simple = "tie"
+	verbage = "ties"
+
+/datum/crafting_recipe/roguetown/unropebelt
+	name = "untie rope belt"
+	result = /obj/item/rope
+	reqs = list(/obj/item/storage/belt/rogue/leather/rope = 1)
+	craftdiff = 0
+	verbage_simple = "untie"
+	verbage = "unties"
+
 /datum/crafting_recipe/roguetown/rope
 	name = "rope"
 	result = /obj/item/rope
@@ -121,7 +145,7 @@
 	tools = list(/obj/item/rogueweapon/hammer)
 	craftdiff = 3
 
-/datum/crafting_recipe/roguetown/rproesthetic
+/datum/crafting_recipe/roguetown/lproesthetic
 	name = "wood arm (L)"
 	result = list(/obj/item/bodypart/l_arm/rproesthetic)
 	reqs = list(/obj/item/grown/log/tree/small = 1,

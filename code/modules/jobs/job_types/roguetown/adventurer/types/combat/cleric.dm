@@ -2,7 +2,7 @@
 /datum/advclass/cleric
 	name = "Cleric"
 	tutorial = "Clerics are wandering warriors of the Gods, an asset to any party."
-	allowed_sexes = list("male","female")
+	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
 	ispilgrim = FALSE
 	vampcompat = FALSE

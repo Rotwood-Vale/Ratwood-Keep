@@ -3,7 +3,7 @@
 	tutorial = "A master farmer, a story simlar to the likes of Goliath and David, \
 	You, a simple peasent, through sheer determination have conquered nature \
 	and made it bow before your green thumb."
-	allowed_sexes = list("male", "female")
+	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
 	outfit = /datum/outfit/job/roguetown/adventurer/farmermaster
 	isvillager = FALSE

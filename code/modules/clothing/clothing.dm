@@ -54,6 +54,7 @@
 	edelay_type = 0
 	var/list/allowed_sex = list(MALE,FEMALE)
 	var/list/allowed_race = CLOTHED_RACES_TYPES
+	var/immune_to_genderswap = FALSE
 	var/armor_class = ARMOR_CLASS_NONE
 
 	sellprice = 1
@@ -175,22 +176,30 @@
 
 
 /obj/item/clothing/mob_can_equip(mob/M, mob/equipper, slot, disable_warning = 0)
-	if(!..())
+	. = ..()
+	if(!.)
 		return FALSE
+	var/list/allowed_sexes = list()
+	if(length(allowed_sex))
+		allowed_sexes |= allowed_sex
+	var/mob/living/carbon/human/H
+	if(ishuman(M))
+		H = M
+		if(!immune_to_genderswap && H.dna?.species?.gender_swapping)
+			if(MALE in allowed_sex)
+				allowed_sexes -= MALE
+				allowed_sexes += FEMALE
+			if(FEMALE in allowed_sex)
+				allowed_sexes -= FEMALE
+				allowed_sexes += MALE
 	if(slot_flags & slotdefine2slotbit(slot))
-		if(M.gender in allowed_sex)
-			if(ishuman(M))
-				var/mob/living/carbon/human/H = M
-				if(H.dna)
-					if(H.dna.species.type in allowed_race)
-						return TRUE
-					else
-						return FALSE
+		if(!length(allowed_sexes) || (M.gender in allowed_sex))
+			if(length(allowed_race) && H)
+				if(H.dna.species.id in allowed_race)
+					return TRUE
+				return FALSE
 			return TRUE
-		else
-			return FALSE
-
-
+		return FALSE
 
 /obj/item/clothing/Initialize()
 	if(CHECK_BITFIELD(clothing_flags, VOICEBOX_TOGGLABLE))

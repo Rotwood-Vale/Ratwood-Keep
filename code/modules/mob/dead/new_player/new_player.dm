@@ -341,6 +341,10 @@ GLOBAL_LIST_INIT(roleplay_readme, world.file2list("strings/rt/rp_prompt.txt"))
 			return "[jobtitle] is already filled to capacity."
 		if(JOB_UNAVAILABLE_RACE)
 			return "[jobtitle] is not meant for your kind."
+		if(JOB_UNAVAILABLE_SEX)
+			return "[jobtitle] is not meant for your lesser sex."
+		if(JOB_UNAVAILABLE_AGE)
+			return "[jobtitle] is not meant for your age."
 		if(JOB_UNAVAILABLE_PATRON)
 			return "[jobtitle] requires more faith."
 		if(JOB_UNAVAILABLE_LASTCLASS)
@@ -353,6 +357,8 @@ GLOBAL_LIST_INIT(roleplay_readme, world.file2list("strings/rt/rp_prompt.txt"))
 
 //used for latejoining
 /mob/dead/new_player/proc/IsJobUnavailable(rank, latejoin = FALSE)
+	if(QDELETED(src))
+		return JOB_UNAVAILABLE_GENERIC
 	if(istype(SSticker.mode, /datum/game_mode/chaosmode))
 		var/datum/game_mode/chaosmode/C = SSticker.mode
 		if(C.skeletons)
@@ -375,11 +381,56 @@ GLOBAL_LIST_INIT(roleplay_readme, world.file2list("strings/rt/rp_prompt.txt"))
 	var/datum/job/job = SSjob.GetJob(rank)
 	if(!job)
 		return JOB_UNAVAILABLE_GENERIC
+	if(CONFIG_GET(flag/usewhitelist))
+		if(job.whitelist_req && !client.whitelisted())
+			return JOB_UNAVAILABLE_GENERIC
+	if(!job.bypass_jobban)
+		if(is_banned_from(ckey, rank))
+			return JOB_UNAVAILABLE_BANNED
+		if(client.blacklisted())
+			return JOB_UNAVAILABLE_BANNED
+	if(!job.player_old_enough(client))
+		return JOB_UNAVAILABLE_ACCOUNTAGE
+	if(job.required_playtime_remaining(client))
+		return JOB_UNAVAILABLE_PLAYTIME
+	if(job.plevel_req > client.patreonlevel())
+		testing("PATREONLEVEL [client.patreonlevel()] req [job.plevel_req]")
+		return JOB_UNAVAILABLE_GENERIC
+	if(!job.required || latejoin)
+		if(!isnull(job.min_pq) && (get_playerquality(ckey) < job.min_pq))
+			return JOB_UNAVAILABLE_GENERIC
+		if(!isnull(job.max_pq) && (get_playerquality(ckey) > job.max_pq))
+			return JOB_UNAVAILABLE_GENERIC
+	var/datum/species/pref_species = client.prefs.pref_species
+	if(length(job.allowed_races) && !(pref_species.name in job.allowed_races))
+		return JOB_UNAVAILABLE_RACE
+	var/list/allowed_sexes = list()
+	if(length(job.allowed_sexes))
+		allowed_sexes |= job.allowed_sexes
+	if(!job.immune_to_genderswap && pref_species?.gender_swapping)
+		if(MALE in job.allowed_sexes)
+			allowed_sexes -= MALE
+			allowed_sexes += FEMALE
+		if(FEMALE in job.allowed_sexes)
+			allowed_sexes -= FEMALE
+			allowed_sexes += MALE
+	if(length(allowed_sexes) && !(client.prefs.gender in allowed_sexes))
+		return JOB_UNAVAILABLE_SEX
+	if(length(job.allowed_ages) && !(client.prefs.age in job.allowed_ages))
+		return JOB_UNAVAILABLE_AGE
+	if(length(job.allowed_patrons) && !(client.prefs.selected_patron.type in job.allowed_patrons))
+		return JOB_UNAVAILABLE_PATRON
+	if((client.prefs.lastclass == job.title) && !job.bypass_lastclass)
+		return JOB_UNAVAILABLE_LASTCLASS
+	if(istype(SSticker.mode, /datum/game_mode/roguewar))
+		var/datum/game_mode/roguewar/W = SSticker.mode
+		if(W.get_team(ckey))
+			if(W.get_team(ckey) != job.faction)
+				return JOB_UNAVAILABLE_WTEAM
 	// Check if the player is on cooldown for the hiv+ role
 	if((job.same_job_respawn_delay) && (ckey in GLOB.job_respawn_delays))
 		if(world.time < GLOB.job_respawn_delays[ckey])
 			return JOB_UNAVAILABLE_JOB_COOLDOWN
-
 	if((job.current_positions >= job.total_positions) && job.total_positions != -1)
 		if(job.title == "Assistant")
 			if(isnum(client.player_age) && client.player_age <= 14) //Newbies can always be assistants
@@ -393,43 +444,8 @@ GLOBAL_LIST_INIT(roleplay_readme, world.file2list("strings/rt/rp_prompt.txt"))
 //		for(var/datum/job/J in SSjob.occupations)
 //			if(J && J.total_positions && J.current_positions < 1 && J.title != job.title && (IsJobUnavailable(J.title))
 //				return JOB_UNAVAILABLE_GENERIC //we can't play adventurer if there isn't 1 of every other job that we can play
-	if(is_banned_from(ckey, rank))
-		return JOB_UNAVAILABLE_BANNED
-	if((!job.bypass_jobban) && (client.blacklisted()))
-		return JOB_UNAVAILABLE_GENERIC
-	if(CONFIG_GET(flag/usewhitelist))
-		if(job.whitelist_req && (!client.whitelisted()))
-			return JOB_UNAVAILABLE_GENERIC
-	if(QDELETED(src))
-		return JOB_UNAVAILABLE_GENERIC
-	if(!job.player_old_enough(client))
-		return JOB_UNAVAILABLE_ACCOUNTAGE
-	if(job.required_playtime_remaining(client))
-		return JOB_UNAVAILABLE_PLAYTIME
 	if(latejoin && !job.special_check_latejoin(client))
 		return JOB_UNAVAILABLE_GENERIC
-	if(length(job.allowed_races) && !(client.prefs.pref_species.type in job.allowed_races))
-		return JOB_UNAVAILABLE_RACE
-	if(length(job.allowed_patrons) && !(client.prefs.selected_patron.type in job.allowed_patrons))
-		return JOB_UNAVAILABLE_PATRON
-	if(job.plevel_req > client.patreonlevel())
-		testing("PATREONLEVEL [client.patreonlevel()] req [job.plevel_req]")
-		return JOB_UNAVAILABLE_GENERIC
-	if(!isnull(job.min_pq) && (get_playerquality(ckey) < job.min_pq))
-		return JOB_UNAVAILABLE_GENERIC
-	if(!isnull(job.max_pq) && (get_playerquality(ckey) > job.max_pq))
-		return JOB_UNAVAILABLE_GENERIC
-	if(length(job.allowed_sexes) && !(client.prefs.gender in job.allowed_sexes))
-		return JOB_UNAVAILABLE_RACE
-	if(length(job.allowed_ages) && !(client.prefs.age in job.allowed_ages))
-		return JOB_UNAVAILABLE_RACE
-	if((client.prefs.lastclass == job.title) && !job.bypass_lastclass)
-		return JOB_UNAVAILABLE_GENERIC
-	if(istype(SSticker.mode, /datum/game_mode/roguewar))
-		var/datum/game_mode/roguewar/W = SSticker.mode
-		if(W.get_team(ckey))
-			if(W.get_team(ckey) != job.faction)
-				return JOB_UNAVAILABLE_GENERIC
 	return JOB_AVAILABLE
 
 /mob/dead/new_player/proc/AttemptLateSpawn(rank)

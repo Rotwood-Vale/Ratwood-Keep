@@ -20,6 +20,7 @@
 	name = "bolt"
 	damage = 35
 	damage_type = BRUTE
+	armor_penetration = 35
 	icon = 'icons/roguetown/weapons/ammo.dmi'
 	icon_state = "bolt_proj"
 	ammo_type = /obj/item/ammo_casing/caseless/rogue/bolt
@@ -58,6 +59,7 @@
 	name = "arrow"
 	damage = 35
 	damage_type = BRUTE
+	armor_penetration = 10
 	icon = 'icons/roguetown/weapons/ammo.dmi'
 	icon_state = "arrow_proj"
 	ammo_type = /obj/item/ammo_casing/caseless/rogue/arrow

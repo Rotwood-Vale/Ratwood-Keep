@@ -1,7 +1,7 @@
 /datum/advclass/towndoctor
-	name = "Doctor"
+	name = "Barber Surgeon"
 	tutorial = "You are the closest thing to a doctor that the townsfolk here will ever meet. Wielding crude tools and accumulated knowledge, you have probably cut into as many people as the average Knight."
-	allowed_sexes = list("male")
+	allowed_sexes = list(MALE)
 	allowed_races = list(
 		"Humen",
 		"Elf",
@@ -20,19 +20,18 @@
 
 /datum/outfit/job/roguetown/adventurer/doctor/pre_equip(mob/living/carbon/human/H)
 	..()
-	if(H.mind)
-		mask = /obj/item/clothing/mask/rogue/spectacles
-		head = /obj/item/clothing/head/roguetown/flathat
-		neck = /obj/item/clothing/neck/roguetown/psicross/wood
-		armor = /obj/item/clothing/suit/roguetown/armor/leather/vest
-		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/puritan
-		belt = /obj/item/storage/belt/rogue/leather
-		beltl = /obj/item/storage/belt/rogue/pouch/coins/poor
-		beltr = /obj/item/rogueweapon/huntingknife/idagger
-		pants = /obj/item/clothing/under/roguetown/trou
-		shoes = /obj/item/clothing/shoes/roguetown/simpleshoes
-		backl = /obj/item/storage/backpack/rogue/backpack
-		backpack_contents = list(
+	mask = /obj/item/clothing/mask/rogue/spectacles
+	head = /obj/item/clothing/head/roguetown/nightman
+	neck = /obj/item/clothing/neck/roguetown/psicross/wood
+	armor = /obj/item/clothing/suit/roguetown/armor/leather/vest
+	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/puritan
+	belt = /obj/item/storage/belt/rogue/leather
+	beltl = /obj/item/storage/belt/rogue/pouch/coins/poor
+	beltr = /obj/item/rogueweapon/huntingknife/idagger
+	pants = /obj/item/clothing/under/roguetown/trou
+	shoes = /obj/item/clothing/shoes/roguetown/simpleshoes
+	backl = /obj/item/storage/backpack/rogue/backpack
+	backpack_contents = list(
 		/obj/item/rogueweapon/surgery/scalpel = 1, 
 		/obj/item/rogueweapon/surgery/saw = 1,
 		/obj/item/rogueweapon/surgery/hemostat = 2,
@@ -42,7 +41,8 @@
 		/obj/item/natural/worms/leech/cheele = 1,
 		/obj/item/needle = 1,
 		/obj/item/natural/cloth = 2,
-		)
+	)
+	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/combat/knives, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/craft/crafting, 2, TRUE)
@@ -52,24 +52,22 @@
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/climbing, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 1, TRUE)
-		ADD_TRAIT(H, TRAIT_EMPATH, TRAIT_GENERIC)
-		ADD_TRAIT(H, TRAIT_NOSTINK, TRAIT_GENERIC)
 		if(H.age == AGE_OLD)
 			H.change_stat("intelligence", 3)
 			H.change_stat("perception", 1)
 			H.change_stat("speed", -1)
 			H.change_stat("strength", -2)
-			H.mind.adjust_skillrank(/datum/skill/misc/medicine, 4, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/medicine, 5, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/sewing, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/craft/alchemy, 2, TRUE)
 		if(H.age == AGE_MIDDLEAGED)
 			H.change_stat("intelligence", 2)
 			H.change_stat("strength", -1)
-			H.mind.adjust_skillrank(/datum/skill/misc/medicine, 3, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/medicine, 4, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/sewing, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/craft/alchemy, 1, TRUE)
 		else
 			H.change_stat("intelligence", 1)
 			H.change_stat("fortune", 1)
-			H.mind.adjust_skillrank(/datum/skill/misc/medicine, 2, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/misc/sewing, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/medicine, 3, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/sewing, 2, TRUE)
