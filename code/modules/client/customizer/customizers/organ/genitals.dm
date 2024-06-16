@@ -232,12 +232,9 @@
 /datum/customizer/organ/vagina
 	abstract_type = /datum/customizer/organ/vagina
 	name = "Vagina"
-	allows_disabling = TRUE
-	default_disabled = TRUE
-	gender_enabled = FEMALE
 
 /datum/customizer/organ/vagina/is_allowed(datum/preferences/prefs)
-	return TRUE
+	return (prefs.gender == FEMALE)
 
 /datum/customizer_choice/organ/vagina
 	abstract_type = /datum/customizer_choice/organ/vagina
