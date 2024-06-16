@@ -11,12 +11,17 @@
 					/obj/item/clothing/head/roguetown/roguehood/random,
 					/obj/item/clothing/head/roguetown/roguehood/random)
 
-/datum/supply_pack/rogue/apparel/bags
+/datum/supply_pack/rogue/apparel/satchels
 	name = "Satchels"
 	cost = 10
 	contains = list(/obj/item/storage/backpack/rogue/satchel,
 					/obj/item/storage/backpack/rogue/satchel,
 					/obj/item/storage/backpack/rogue/satchel)
+
+/datum/supply_pack/rogue/apparel/bacpak
+	name = "Backpack"
+	cost = 10
+	contains = list(/obj/item/storage/backpack/rogue/backpack)
 
 /datum/supply_pack/rogue/apparel/bags
 	name = "Pouches"
@@ -56,3 +61,17 @@
 	cost = 15
 	contains = list(/obj/item/clothing/cloak/raincloak/brown,
 					/obj/item/clothing/cloak/raincloak/mortus)
+
+/datum/supply_pack/rogue/apparel/shirts
+	name = "Undershirts"
+	cost = 5
+	contains = list(/obj/item/clothing/suit/roguetown/shirt/undershirt/random,
+					/obj/item/clothing/suit/roguetown/shirt/undershirt/random,
+					/obj/item/clothing/suit/roguetown/shirt/undershirt/random)
+
+/datum/supply_pack/rogue/apparel/trousrs
+	name = "Trousers"
+	cost = 5
+	contains = list(/obj/item/clothing/under/roguetown/trou,
+					/obj/item/clothing/under/roguetown/trou,
+					/obj/item/clothing/under/roguetown/trou)
