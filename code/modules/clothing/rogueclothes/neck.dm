@@ -161,29 +161,40 @@
 	icon_state = "psicrossiron"
 	sellprice = 50
 
-/obj/item/clothing/neck/roguetown/psicross/silver/funny_attack_effects(mob/living/target, mob/living/user, nodmg)
+/obj/item/clothing/neck/roguetown/psicross/silver/pickup(mob/user)
 	. = ..()
-	if(ishuman(target))
-		var/mob/living/carbon/human/H = target
-		if(H.dna && H.dna.species)
-			if(istype(H.dna.species, /datum/species/werewolf))
-				target.Knockdown(30)
-				target.Stun(30)
-	if(target.mind && target.mind.has_antag_datum(/datum/antagonist/vampirelord))
-		var/datum/antagonist/vampirelord/VD = target.mind.has_antag_datum(/datum/antagonist/vampirelord)
-		if(!VD.disguised)
-			target.Knockdown(30)
-			target.Stun(30)
+	var/mob/living/carbon/human/H = user
+	var/datum/antagonist/vampirelord/V_lord = H.mind.has_antag_datum(/datum/antagonist/vampirelord/)
+	if(ishuman(H))
+		if(H.mind.has_antag_datum(/datum/antagonist/vampirelord/lesser))
+			to_chat(H, "<span class='userdanger'>I can't pick up the silver, it is my BANE!</span>")
+			H.Knockdown(20)
+			H.adjustFireLoss(60)
+			H.Paralyze(20)
+			H.fire_act(1,5)
+		if(V_lord)
+			if(V_lord.vamplevel < 4 && !H.mind.has_antag_datum(/datum/antagonist/vampirelord/lesser))
+				to_chat(H, "<span class='userdanger'>I can't pick up the silver, it is my BANE!</span>")
+				H.Knockdown(10)
+				H.Paralyze(10)
+			
 
 /obj/item/clothing/neck/roguetown/psicross/silver/mob_can_equip(mob/living/M, mob/living/equipper, slot, disable_warning = FALSE, bypass_equip_delay_self = FALSE)
 	. = ..()
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
-		if(H.dna && H.dna.species)
-			if(istype(H.dna.species, /datum/species/werewolf))
-				return FALSE
-	if(M.mind && M.mind.has_antag_datum(/datum/antagonist/vampirelord))
-		return FALSE
+		var/datum/antagonist/vampirelord/V_lord = H.mind.has_antag_datum(/datum/antagonist/vampirelord/)
+		if(H.mind.has_antag_datum(/datum/antagonist/vampirelord/lesser))
+			to_chat(H, "<span class='userdanger'>I can't pick up the silver, it is my BANE!</span>")
+			H.Knockdown(20)
+			H.adjustFireLoss(60)
+			H.Paralyze(20)
+			H.fire_act(1,5)
+		if(V_lord)
+			if(V_lord.vamplevel < 4 && !H.mind.has_antag_datum(/datum/antagonist/vampirelord/lesser))
+				to_chat(H, "<span class='userdanger'>I can't pick up the silver, it is my BANE!</span>")
+				H.Knockdown(10)
+				H.Paralyze(10)
 
 /obj/item/clothing/neck/roguetown/psicross/g
 	name = "golden psycross"

@@ -144,10 +144,9 @@
 		for(var/i in roundstart_experience)
 			experiencer.mind.adjust_experience(i, roundstart_experience[i], TRUE)
 
-	if(spells)		
+	if(spells && H.mind)	
 		for(var/S in spells)
-			if(H.mind)
-				H.mind.AddSpell(new S)
+			H.mind.AddSpell(new S)
 
 	if(H.gender == FEMALE)
 		if(jobstats_f)

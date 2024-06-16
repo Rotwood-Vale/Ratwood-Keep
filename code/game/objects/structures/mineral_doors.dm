@@ -355,6 +355,12 @@
 		brokenstate = TRUE
 	..()
 
+/obj/structure/mineral_door/OnCrafted(dirin, user)
+	. = ..()
+	keylock = FALSE
+	GLOB.lockhashes.Remove(lockhash)
+	lockhash = 0
+
 /////////////////////// TOOL OVERRIDES ///////////////////////
 
 
@@ -744,7 +750,6 @@
 	blade_dulling = DULLING_BASH
 	opacity = FALSE
 	windowed = TRUE
-	keylock = TRUE
 	sheetType = null
 	locksound = 'sound/foley/doors/lock.ogg'
 	unlocksound = 'sound/foley/doors/unlock.ogg'

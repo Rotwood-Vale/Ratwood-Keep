@@ -199,7 +199,7 @@
 
 	log_game("The round has ended.")
 
-	to_chat(world, "<BR><BR><BR><span class='reallybig'>So ends this tale of Roguetown.</span>")
+	to_chat(world, "<BR><BR><BR><span class='reallybig'>So ends this tale of Blackstone.</span>")
 	get_end_reason()
 
 	var/list/key_list = list()
@@ -305,7 +305,7 @@
 	if(istype(SSticker.mode, /datum/game_mode/chaosmode))
 		var/datum/game_mode/chaosmode/C = SSticker.mode
 		if(C.check_for_lord)
-			if(!C.check_for_lord())
+			if(!C.check_for_lord(forced = TRUE))
 				end_reason = pick("Without a Monarch, they were doomed to become slaves of Zizo.",
 								"Without a Monarch, they were doomed to be eaten by nite creachers.",
 								"Without a Monarch, they were doomed to become victims of Gehenna.",

@@ -201,11 +201,13 @@
 
 /// Proc that sends the client associated with a given corpse to the lobby, if possible
 /proc/pacify_corpse(mob/living/corpse, mob/user, coin_pq = 0.2)
-	if(corpse.stat != DEAD)
+	if((corpse.stat != DEAD) || !corpse.mind)
 		return FALSE
-	if(ishuman(corpse) && !HAS_TRAIT(corpse, TRAIT_BURIED_COIN_GIVEN))
+	if(ishuman(corpse))
 		var/mob/living/carbon/human/human_corpse = corpse
-		if(istype(human_corpse.mouth, /obj/item/roguecoin))
+		human_corpse.buried = TRUE
+		human_corpse.funeral = TRUE
+		if(istype(human_corpse.mouth, /obj/item/roguecoin) && !HAS_TRAIT(corpse, TRAIT_BURIED_COIN_GIVEN))
 			var/obj/item/roguecoin/coin = human_corpse.mouth
 			if(coin.quantity >= 1) // stuffing their mouth full of a fuck ton of coins wont do shit
 				ADD_TRAIT(human_corpse, TRAIT_BURIED_COIN_GIVEN, TRAIT_GENERIC)
@@ -219,7 +221,7 @@
 					qdel(human_corpse.mouth)
 					human_corpse.update_inv_mouth()
 					break
-	corpse.mind?.remove_antag_datum(/datum/antagonist/zombie)
+	corpse.mind.remove_antag_datum(/datum/antagonist/zombie)
 	var/mob/dead/observer/ghost
 	//Try to find a lost ghost if there is no client
 	if(!corpse.client)

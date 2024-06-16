@@ -4,7 +4,8 @@
 
 /obj/machinery/light/rogue/smelter
 	icon = 'icons/roguetown/misc/forge.dmi'
-	name = "furnace"
+	name = "stone furnace"
+	desc = "A stone furnace, weathered by time and heat."
 	icon_state = "cavesmelter0"
 	base_state = "cavesmelter"
 	anchored = TRUE

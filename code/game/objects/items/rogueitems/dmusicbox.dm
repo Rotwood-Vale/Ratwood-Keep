@@ -47,7 +47,7 @@
 
 /obj/item/dmusicbox/attackby(obj/item/P, mob/user, params)
 	if(!loaded)
-		if(istype(P, /obj/item/reagent_containers/food/snacks/rogue/honey))
+		if(istype(P, /obj/item/roguecoin/copper))
 			loaded=TRUE
 			qdel(P)
 			update_icon()

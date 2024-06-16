@@ -1,6 +1,7 @@
 
 /obj/structure/closet/dirthole
 	name = "hole"
+	desc = "Just a small hole.."
 	icon_state = "hole1"
 	icon = 'icons/turf/roguefloor.dmi'
 	var/stage = 1
@@ -18,11 +19,13 @@
 	layer = 2.8
 
 /obj/structure/closet/dirthole/grave
+	desc = "A hole big enough for a coffin.."
 	stage = 3
 	faildirt = 3
 	icon_state = "grave"
 
 /obj/structure/closet/dirthole/closed
+	desc = "A mound of dirt with something below."
 	stage = 4
 	faildirt = 3
 	climb_offset = 10
@@ -159,7 +162,7 @@
 
 /atom/movable/screen/alert/status_effect/debuff/cursed
 	name = "Cursed"
-	desc = ""
+	desc = "I feel.. Unlucky."
 	icon_state = "debuff"
 
 /obj/structure/closet/dirthole/MouseDrop_T(atom/movable/O, mob/living/user)

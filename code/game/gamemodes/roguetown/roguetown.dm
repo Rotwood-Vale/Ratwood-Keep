@@ -82,8 +82,8 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampire Lord", "Extended", "
 	if(ttime > 180 MINUTES) //3 hour cutoff
 		return TRUE*/
 
-/datum/game_mode/chaosmode/proc/check_for_lord()
-	if(world.time < next_check_lord)
+/datum/game_mode/chaosmode/proc/check_for_lord(forced = FALSE)
+	if(!forced && world.time < next_check_lord)
 		return
 	next_check_lord = world.time + 1 MINUTES
 	var/lord_found = FALSE
@@ -103,7 +103,7 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampire Lord", "Extended", "
 			missing_lord_time = world.time
 		if(world.time > missing_lord_time + 10 MINUTES)
 			missing_lord_time = world.time
-			addomen("nolord")
+			addomen(OMEN_NOLORD)
 		return FALSE
 	else
 		return TRUE

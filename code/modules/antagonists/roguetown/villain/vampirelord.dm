@@ -803,7 +803,7 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 							GLOB.todoverride = null
 							sunstolen = FALSE
 						priority_announce("The Sun is torn from the sky!", "Terrible Omen", 'sound/misc/astratascream.ogg')
-						addomen("sunsteal")
+						addomen(OMEN_SUNSTEAL)
 						for(var/mob/living/carbon/human/astrater in GLOB.human_list)
 							if(!istype(astrater.patron, /datum/patron/divine/astrata) || !length(astrater.mind?.antag_datums))
 								continue
@@ -1290,19 +1290,37 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 			return
 		if(L.cmode)
 			willroll += 10
+		var/found_psycross = FALSE
+		for(var/obj/item/clothing/neck/roguetown/psicross/silver in L.contents)
+			found_psycross = TRUE
+			break
+			
 		if(bloodroll >= willroll)
-			to_chat(L, "You feel like a curtain is coming over your mind.")
-			to_chat(user, "Their mind gives way, they will soon be asleep.")
-			sleep(50)
-			L.Sleeping(300)
+			if(found_psycross == TRUE)
+				to_chat(L, "<font color='white'>The silver psycross shines and protect me from the unholy magic.</font>")
+				to_chat(user, "<span class='userdanger'>[L] has my BANE!It causes me to fail to ensnare their mind!</span>")
+			else
+				to_chat(L, "You feel like a curtain is coming over your mind.")
+				to_chat(user, "Their mind gives way, they will soon be asleep.")
+				sleep(50)
+				L.Sleeping(300)
+				
 		if(willroll >= bloodroll)
-			to_chat(user, "I fail to ensnare their mind.")
+			if(found_psycross == TRUE)
+				to_chat(L, "<font color='white'>The silver psycross shines and protect me from the unholy magic.</font>")
+				to_chat(user, "<span class='userdanger'>[L] has my BANE!It causes me to fail to ensnare their mind!</span>")
+			else
+				to_chat(user, "I fail to ensnare their mind.")
 			if(willroll - bloodroll >= 3)
-				to_chat(L, "I feel like someone or something unholy is messing with my head. I should get out of here!")
-				var/holyskill = user.mind.get_skill_level(/datum/skill/magic/holy)
-				var/arcaneskill = user.mind.get_skill_level(/datum/skill/magic/arcane)
-				if(holyskill + arcaneskill >= 1)
-					to_chat(L, "I feel like the unholy magic came from [user]. I should use my magic or miracles on them.")
+				if(found_psycross == TRUE)
+					to_chat(L, "<font color='white'> The silver psycross shines and protect me from the blood magic, the one who used bllod magic was [user]!</font>")
+				else
+					to_chat(user, "I fail to ensnare their mind.")
+					to_chat(L, "I feel like someone or something unholy is messing with my head. I should get out of here!")
+					var/holyskill = user.mind.get_skill_level(/datum/skill/magic/holy)
+					var/arcaneskill = user.mind.get_skill_level(/datum/skill/magic/arcane)
+					if(holyskill + arcaneskill >= 1)
+						to_chat(L, "I feel like the unholy magic came from [user]. I should use my magic or miracles on them.")
 
 /obj/effect/proc_holder/spell/targeted/transfix/master
 	name = "Subjugate"

@@ -376,8 +376,8 @@
 			if(!H?.check_armor_skill())
 				H.Knockdown(1)
 				return FALSE
-			if(H?.check_dodge_skill())
-				drained = drained - 5
+//			if(H?.check_dodge_skill())
+//				drained = drained - 5  commented out for being too much. It was giving effectively double stamina efficiency compared to everyone else.
 //			if(H.mind)
 //				drained = drained + max((H.checkwornweight() * 10)-(mind.get_skill_level(/datum/skill/misc/athletics) * 10),0)
 //			else

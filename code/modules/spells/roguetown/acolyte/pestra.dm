@@ -16,7 +16,7 @@
 	miracle = TRUE
 	devotion_cost = -5
 
-/obj/effect/proc_holder/spell/diagnose/diagnose/cast(list/targets, mob/living/user)
+/obj/effect/proc_holder/spell/diagnose/cast(list/targets, mob/living/user)
 	if(ishuman(targets[1]))
 		var/mob/living/carbon/human/human_target = targets[1]
 		user.visible_message("<span class='info'>[user] diagnoses [human_target]!</span>", \
@@ -106,12 +106,12 @@
 	if(ishuman(targets[1]))
 		var/mob/living/carbon/human/human_target = targets[1]
 		for(var/obj/item/bodypart/limb as anything in get_limbs(human_target, user))
-			if(!limb?.attach_limb(human_target))
+			if(human_target.get_bodypart(limb.body_zone) || !limb.attach_limb(human_target))
 				continue
 			human_target.visible_message("<span class='info'>\The [limb] attaches itself to [human_target]!</span>", \
 								"<span class='notice'>\The [limb] attaches itself to me!</span>")
 		for(var/obj/item/organ/organ as anything in get_organs(human_target, user))
-			if(!organ?.Insert(human_target))
+			if(human_target.getorganslot(organ.slot) || !organ.Insert(human_target))
 				continue
 			human_target.visible_message("<span class='info'>\The [organ] attaches itself to [human_target]!</span>", \
 								"<span class='notice'>\The [organ] attaches itself to me!</span>")

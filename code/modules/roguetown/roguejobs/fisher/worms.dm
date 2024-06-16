@@ -4,7 +4,7 @@
 
 /obj/item/natural/worms
 	name = "worm"
-	desc = ""
+	desc = "The favorite bait of the courageous fishermen who venture these dark waters."
 	icon_state = "worm1"
 	throwforce = 10
 	baitchance = 75
@@ -17,6 +17,7 @@
 
 /obj/item/natural/worms/grubs
 	name = "grub"
+	desc = "Bait for the desperate, or the daring."
 	baitchance = 100
 	color = null
 	fishloot = list(

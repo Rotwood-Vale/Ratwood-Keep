@@ -81,10 +81,10 @@
 				if(real_name in GLOB.outlawed_players)
 					yeae = FALSE
 
-		if(tris2take)
-			adjust_triumphs(tris2take)
-		else
-			if(get_triumphs() > 0)
+		if(get_triumphs() > 0)
+			if(tris2take)
+				adjust_triumphs(tris2take)
+			else
 				adjust_triumphs(-1)
 
 		switch(job)
@@ -94,11 +94,11 @@
 					if(!HU.stat && is_in_roguetown(HU))
 						HU.playsound_local(get_turf(HU), 'sound/music/lorddeath.ogg', 80, FALSE, pressure_affected = FALSE)
 			if("Priest")
-				addomen("nopriest")
+				addomen(OMEN_NOPRIEST)
 //		if(yeae)
 //			if(mind)
 //				if((mind.assigned_role == "Lord") || (mind.assigned_role == "Priest") || (mind.assigned_role == "Guard Captain") || (mind.assigned_role == "Merchant"))
-//					addomen("importantdeath")
+//					addomen(OMEN_NOBLEDEATH)
 
 		if(!gibbed && yeae)
 			for(var/mob/living/carbon/human/HU in viewers(7, src))
@@ -134,9 +134,9 @@
 		return
 	switch(job)
 		if("King")
-			removeomen("nolord")
+			removeomen(OMEN_NOLORD)
 		if("Priest")
-			removeomen("nopriest")
+			removeomen(OMEN_NOPRIEST)
 
 /mob/living/carbon/human/proc/zombie_check()
 	if(!mind)
@@ -181,4 +181,4 @@
 	return TRUE
 
 /proc/can_death_zombify(mob/living/carbon/human)
-	return hasomen("nopriest") || !is_in_roguetown(human)
+	return hasomen(OMEN_NOPRIEST) || !is_in_roguetown(human)

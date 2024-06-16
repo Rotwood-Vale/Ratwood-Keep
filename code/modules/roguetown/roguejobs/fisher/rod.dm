@@ -2,7 +2,7 @@
 	force = 12
 	possible_item_intents = list(SPEAR_BASH,ROD_CAST)
 	name = "fishing rod"
-	desc = ""
+	desc = "Made from weathered wood and coarse twine. The tool of the battle against the dark waters below."
 	icon_state = "rod"
 	icon = 'icons/roguetown/weapons/tools.dmi'
 	sharpness = IS_BLUNT

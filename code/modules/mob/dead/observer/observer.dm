@@ -555,8 +555,8 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		qdel(M)
 		return
 
-	client?.verbs -= GLOB.ghost_verbs
 	M.key = key
+	client.verbs -= GLOB.ghost_verbs
 //	M.Login()	//wat
 	return
 

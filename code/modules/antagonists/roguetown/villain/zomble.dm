@@ -196,7 +196,17 @@
 	zombie.STAINT = 1
 	last_bite = world.time
 	has_turned = TRUE
-	to_chat(zombie, "<span class='userdanger'>I am now a zombie! I crave for the flesh of the living...</span>")
+	// Drop your helm and gorgies boy you won't need it anymore!!!
+	var/static/list/removed_slots = list(
+		SLOT_HEAD,
+		SLOT_WEAR_MASK,
+		SLOT_MOUTH,
+		SLOT_NECK,
+	)
+	for(var/slot in removed_slots)
+		zombie.dropItemToGround(zombie.get_item_by_slot(slot), TRUE)
+	// Ghosts you because this shit was just not working whatsoever, let the AI handle the rest
+	zombie.ghostize(FALSE)
 
 /datum/antagonist/zombie/greet()
 	to_chat(owner.current, "<span class='userdanger'>Death is not the end...</span>")
@@ -296,8 +306,6 @@
  * We instead just transform at the end
  */
 /mob/living/carbon/human/proc/zombie_infect_attempt()
-	if(!prob(3)) // Since zombies are biting a lot now, we drop this down to 3% chance of a conversion
-		return 
 	var/datum/antagonist/zombie/zombie_antag = zombie_check()
 	if(!zombie_antag)
 		return

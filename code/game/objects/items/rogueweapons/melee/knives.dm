@@ -181,30 +181,86 @@
 	smeltresult = null
 	sellprice = 50
 	smeltresult = /obj/item/ingot/silver
+	var/last_used = 0
+
+/obj/item/rogueweapon/huntingknife/idagger/silver/pickup(mob/user)
+	. = ..()
+	var/mob/living/carbon/human/H = user
+	var/datum/antagonist/vampirelord/V_lord = H.mind.has_antag_datum(/datum/antagonist/vampirelord/)
+	if(ishuman(H))
+		if(H.mind.has_antag_datum(/datum/antagonist/vampirelord/lesser))
+			to_chat(H, "<span class='userdanger'>I can't pick up the silver, it is my BANE!</span>")
+			H.Knockdown(20)
+			H.adjustFireLoss(60)
+			H.Paralyze(20)
+			H.fire_act(1,5)
+		if(V_lord)
+			if(V_lord.vamplevel < 4 && !H.mind.has_antag_datum(/datum/antagonist/vampirelord/lesser))
+				to_chat(H, "<span class='userdanger'>I can't pick up the silver, it is my BANE!</span>")
+				H.Knockdown(10)
+				H.Paralyze(10)
+			
 
 /obj/item/rogueweapon/huntingknife/idagger/silver/mob_can_equip(mob/living/M, mob/living/equipper, slot, disable_warning = FALSE, bypass_equip_delay_self = FALSE)
 	. = ..()
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
-		if(H.dna && H.dna.species)
-			if(istype(H.dna.species, /datum/species/werewolf))
-				return FALSE
-	if(M.mind && M.mind.has_antag_datum(/datum/antagonist/vampirelord))
-		return FALSE
+		var/datum/antagonist/vampirelord/V_lord = H.mind.has_antag_datum(/datum/antagonist/vampirelord/)
+		if(H.mind.has_antag_datum(/datum/antagonist/vampirelord/lesser))
+			H.Knockdown(20)
+			H.adjustFireLoss(60)
+			H.Paralyze(20)
+			H.fire_act(1,5)
+		if(V_lord)
+			if(V_lord.vamplevel < 4 && !H.mind.has_antag_datum(/datum/antagonist/vampirelord/lesser))
+				H.Knockdown(10)
+				H.Paralyze(10)
 
-/obj/item/rogueweapon/huntingknife/idagger/silver/funny_attack_effects(mob/living/target, mob/living/user, nodmg)
+
+/obj/item/rogueweapon/huntingknife/idagger/silver/funny_attack_effects(mob/living/target, mob/living/user = usr, nodmg)
+	if(world.time < src.last_used + 100)
+		to_chat(user, "<span class='notice'>The silver effect is on cooldown.</span>")
+		return
+	
+	
+	
 	. = ..()
 	if(ishuman(target))
+		var/mob/living/carbon/human/s_user = user
 		var/mob/living/carbon/human/H = target
-		if(H.dna && H.dna.species)
-			if(istype(H.dna.species, /datum/species/werewolf))
-				target.Knockdown(30)
-				target.Stun(30)
-	if(target.mind && target.mind.has_antag_datum(/datum/antagonist/vampirelord))
-		var/datum/antagonist/vampirelord/VD = target.mind.has_antag_datum(/datum/antagonist/vampirelord)
-		if(!VD.disguised)
-			target.Knockdown(30)
-			target.Stun(30)
+		var/datum/antagonist/vampirelord/lesser/V = H.mind.has_antag_datum(/datum/antagonist/vampirelord/lesser)
+		var/datum/antagonist/vampirelord/V_lord = H.mind.has_antag_datum(/datum/antagonist/vampirelord/)
+		if(V)
+			if(V.disguised)
+				H.Stun(20)
+				H.visible_message("<font color='white'>The silver weapon manifests the [H] curse!</font>")
+				to_chat(H, "<span class='userdanger'>I'm hit by my BANE!</span>")
+				H.adjustFireLoss(30)
+				H.Paralyze(20)
+				H.fire_act(1,4)
+				H.apply_status_effect(/datum/status_effect/debuff/silver_curse)
+				src.last_used = world.time
+			else
+				H.Stun(20)
+				to_chat(H, "<span class='userdanger'>I'm hit by my BANE!</span>")
+				H.adjustFireLoss(30)
+				H.Paralyze(20)
+				H.fire_act(1,4)
+				H.apply_status_effect(/datum/status_effect/debuff/silver_curse)
+				src.last_used = world.time
+		if(V_lord)
+			if(V_lord.vamplevel < 4 && !V)
+				H.Stun(10)
+				to_chat(H, "<span class='userdanger'>I'm hit by my BANE!</span>")
+				H.adjustFireLoss(25)
+				H.Paralyze(10)
+				H.fire_act(1,4)
+				src.last_used = world.time
+			if(V_lord.vamplevel == 4 && !V)
+				s_user.Stun(10)
+				s_user.Paralyze(10)
+				to_chat(s_user, "<font color='red'> The silver weapon fails!</font>")
+				H.visible_message(H, "<span class='userdanger'>This feeble metal can't hurt me, I AM THE ANCIENT!</span>")
 
 
 /obj/item/rogueweapon/huntingknife/stoneknife

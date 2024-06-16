@@ -700,6 +700,7 @@
 /obj/item/clothing/head/roguetown/physician
 	name = "doctor's hat"
 	desc = "My cure is most effective."
+	icon_state = "physhat"
 
 /obj/item/clothing/head/roguetown/nyle
 	name = "jewel of nyle"

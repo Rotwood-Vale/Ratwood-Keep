@@ -3,7 +3,7 @@
 	var/foodextracted = null
 	name = "chaff"
 	icon_state = "chaff1"
-	desc = ""
+	desc = "A farmer's chaff." //english is not my native language, upon searching "chaff" i didn't even get what this is.
 	var/chafftype = 1
 	var/canthresh = TRUE
 	//dropshrink = 0.75

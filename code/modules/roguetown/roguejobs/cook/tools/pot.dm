@@ -2,8 +2,8 @@
 	force = 10
 	throwforce = 15
 	possible_item_intents = list(INTENT_GENERIC)
-	name = "pot"
-	desc = ""
+	name = "glass pot"
+	desc = "A delicate glass pot." // i've never seen this ingame
 	icon_state = "pot"
 	icon = 'icons/roguetown/items/cooking.dmi'
 	item_state = "rods"

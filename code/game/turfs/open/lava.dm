@@ -248,10 +248,13 @@
 //					return
 				//make this acid
 				var/shouldupdate = FALSE
+				var/lethality = prob(95)
 				for(var/obj/item/bodypart/B in C.bodyparts)
 					if(!B.skeletonized && B.is_organic_limb())
-						B.skeletonize()
+						B.skeletonize(lethality)
 						shouldupdate = TRUE
+				if(!lethality)
+					ADD_TRAIT(C, TRAIT_NOLIMBDISABLE, "[type]")
 				if(shouldupdate)
 					if(ishuman(C))
 						var/mob/living/carbon/human/H = C

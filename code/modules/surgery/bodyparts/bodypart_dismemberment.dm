@@ -64,8 +64,8 @@
 	if(grabbedby)
 		qdel(grabbedby)
 		grabbedby = null
-	drop_limb()
 
+	drop_limb()
 	if(dam_type == BURN)
 		burn()
 		return TRUE
@@ -92,36 +92,28 @@
 	var/mob/living/carbon/C = owner
 	if(!dismemberable)
 		return FALSE
-	if(skeletonized)
+	if(C.status_flags & GODMODE)
 		return FALSE
 	if(HAS_TRAIT(C, TRAIT_NODISMEMBER))
 		return FALSE
-	. = list()
-	var/organ_spilled = 0
-	var/turf/T = get_turf(C)
-	C.add_splatter_floor(T)
-	playsound(C, 'sound/combat/crit2.ogg', 100, FALSE, 5)
-	C.emote("painscream")
-	for(var/X in C.internal_organs)
-		var/obj/item/organ/O = X
-		var/org_zone = check_zone(O.zone)
-		if(org_zone != BODY_ZONE_CHEST)
-			continue
-		O.Remove(C)
-		O.forceMove(T)
-		O.add_mob_blood(C)
-		organ_spilled = 1
-		. += X
-	if(cavity_item)
-		cavity_item.forceMove(T)
-		. += cavity_item
-		cavity_item = null
-		organ_spilled = 1
-
-	if(organ_spilled)
-		C.visible_message("<span class='danger'><B>[C] spills [C.p_their()] guts!</B></span>")
+	add_wound(/datum/wound/slash/disembowel)
 	return TRUE
 
+/obj/item/bodypart/head/dismember(dam_type = BRUTE, bclass = BCLASS_CUT, mob/living/user, zone_precise = src.body_zone)
+	var/mob/living/carbon/was_owner = owner
+	var/datum/mind/ihaveamind = owner?.mind
+	. = ..()
+	if(. && was_owner && ihaveamind && !HAS_TRAIT(was_owner, TRAIT_IWASHAUNTED) && hasomen(OMEN_NOPRIEST))
+		var/drop_location = was_owner.drop_location()
+		if(!drop_location) //how the fuck?
+			return
+		ADD_TRAIT(was_owner, TRAIT_IWASHAUNTED, OMEN_NOPRIEST)
+		var/mob/living/simple_animal/hostile/rogue/haunt/omen/haunt = new(drop_location)
+		var/haunt_name = real_name ? "omen of [real_name]" : "omen"
+		haunt.name = haunt_name
+		haunt.real_name = haunt_name
+		ihaveamind.transfer_to(haunt)
+	
 //limb removal. The "special" argument is used for swapping a limb with a new one without the effects of losing a limb kicking in.
 /obj/item/bodypart/proc/drop_limb(special)
 	if(!owner)

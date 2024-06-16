@@ -27,7 +27,7 @@
 	gloves = /obj/item/clothing/gloves/roguetown/leather
 	beltl = /obj/item/rogueweapon/sword/rapier
 	backl = /obj/item/storage/backpack/rogue/satchel
-	backpack_contents = list(/obj/item/rogueweapon/huntingknife = 1)
+	backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger/silver = 1)
 
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/combat/swords, rand(4,5), TRUE)

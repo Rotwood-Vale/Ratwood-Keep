@@ -565,7 +565,7 @@ SUBSYSTEM_DEF(ticker)
 //				captainless=0
 			if(player.mind.assigned_role != player.mind.special_role)
 				valid_characters[player] = new_player
-	sortList(valid_characters, GLOBAL_PROC_REF(cmp_assignedrole_dsc))
+	sortTim(valid_characters, GLOBAL_PROC_REF(cmp_assignedrole_dsc))
 	for(var/mob/character as anything in valid_characters)
 		var/mob/new_player = valid_characters[character]
 		SSjob.EquipRank(new_player, character.mind.assigned_role, joined_late = FALSE)

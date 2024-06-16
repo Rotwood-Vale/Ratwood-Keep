@@ -99,6 +99,12 @@
 
 	return ..()
 
+/mob/living/simple_animal/hostile/rogue/haunt/omen
+	name = "omen"
+	desc = "A vengeful spirit!"
+	maxHealth = 100
+	health = 100
+
 /obj/structure/bonepile
 	icon = 'icons/roguetown/mob/monster/wraith.dmi'
 	icon_state = "hauntpile"

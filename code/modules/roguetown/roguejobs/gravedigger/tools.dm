@@ -3,7 +3,7 @@
 	possible_item_intents = list(/datum/intent/mace/strike/shovel, /datum/intent/shovelscoop)
 	gripped_intents = list(/datum/intent/mace/strike/shovel, /datum/intent/shovelscoop, /datum/intent/axe/chop/stone)
 	name = "shovel"
-	desc = ""
+	desc = "Essential for digging (graves) in this darkened earth."
 	icon_state = "shovel"
 	icon = 'icons/roguetown/weapons/tools.dmi'
 	sharpness = IS_BLUNT
@@ -157,6 +157,7 @@
 /obj/item/rogueweapon/shovel/small
 	force = 7
 	name = "spade"
+	desc = "Indispensable for tending the soil."
 	icon_state = "spade"
 	sharpness = IS_BLUNT
 	//dropshrink = 0.8
@@ -169,7 +170,7 @@
 
 /obj/item/burial_shroud
 	name = "winding sheet"
-	desc = ""
+	desc = "A burial veil for the deceased."
 	icon = 'icons/obj/bodybag.dmi'
 	icon_state = "shroud_folded"
 	w_class = WEIGHT_CLASS_SMALL
@@ -195,7 +196,7 @@
 
 /obj/structure/closet/burial_shroud
 	name = "winding sheet"
-	desc = ""
+	desc = "A burial veil for the deceased."
 	icon = 'icons/obj/bodybag.dmi'
 	icon_state = "shroud"
 	density = FALSE

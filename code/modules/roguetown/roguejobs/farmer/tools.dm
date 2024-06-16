@@ -4,7 +4,7 @@
 	possible_item_intents = list(MACE_STRIKE)
 	gripped_intents = list(MACE_STRIKE,/datum/intent/flailthresh)
 	name = "thresher"
-	desc = ""
+	desc = "A shredding tool for farmers."
 	icon_state = "flail"
 	icon = 'icons/roguetown/weapons/tools.dmi'
 	item_state = "mace_greyscale"
@@ -97,7 +97,7 @@
 	force = 10
 	possible_item_intents = list(DAGGER_CUT)
 	name = "sickle"
-	desc = ""
+	desc = "Rusted blade, worn handle, symbol of toil."
 	icon_state = "sickle"
 	icon = 'icons/roguetown/weapons/tools.dmi'
 	item_state = "crysknife"
@@ -155,7 +155,7 @@
 	possible_item_intents = list(/datum/intent/pick)
 	gripped_intents = list(/datum/intent/pick,SPEAR_BASH,TILL_INTENT)
 	name = "hoe"
-	desc = ""
+	desc = "A tool for tiling soil. It's all dirty and worn."
 	icon_state = "hoe"
 	slot_flags = ITEM_SLOT_BACK
 	icon = 'icons/roguetown/weapons/tools.dmi'
@@ -270,7 +270,7 @@
 	possible_item_intents = list(SPEAR_BASH)
 	gripped_intents = list(SPEAR_BASH,SPEAR_THRUST,DUMP_INTENT)
 	name = "pitchfork"
-	desc = ""
+	desc = "Iron tines on a sturdy shaft essential for farmlike labour."
 	icon_state = "pitchfork"
 	icon = 'icons/roguetown/weapons/tools.dmi'
 	item_state = "pitchfork"

@@ -1,7 +1,7 @@
 
 /obj/machinery/crop
 	name = "tilled dirt"
-	desc = ""
+	desc = "Dirt, ready to give life like a womb."
 	icon = 'icons/obj/hydroponics/equipment.dmi'
 	icon_state = "blank"
 	density = FALSE

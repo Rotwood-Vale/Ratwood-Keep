@@ -114,7 +114,7 @@
 	if(bodypart)
 		for(var/datum/wound/bleeder in bodypart.wounds)
 			bleeder.cauterize_wound()
-		bodypart.receive_damage(burn = 40) //painful, but the wounds go away eh?
+		bodypart.receive_damage(burn = 25) //painful, but the wounds go away eh?
 	target.emote("scream")
 	return TRUE
 
