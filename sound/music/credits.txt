@@ -8,3 +8,4 @@ combat_bandit.ogg: Deus Ex - Battery Park Combat
 combat_bandit2.ogg: Cruelty Squad  - Rent DUe
 combat_werewolf.ogg: Filmmaker - Federal Bestiary
 combat_guard.ogg:Deus Ex - Desolation Combat
+harbor.ogg: World of Warcraft - Gleen Stafford
