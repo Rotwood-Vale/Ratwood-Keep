@@ -106,26 +106,11 @@
 	icon_state = "brownkey"
 	lockid = "velder"
 
-/obj/item/roguekey/tavern/village
-	lockid = "vtavern"
-
-/obj/item/roguekey/roomi/village
-	lockid = "vroomi"
-
-/obj/item/roguekey/roomii/village
-	lockid = "vroomii"
-
-/obj/item/roguekey/roomiii/village
-	lockid = "vroomiii"
-
-/obj/item/roguekey/roomiv/village
-	lockid = "vroomiv"
-
-/obj/item/roguekey/roomv/village
-	lockid = "vroomv"
-
-/obj/item/roguekey/roomvi/village
-	lockid = "vroomvi"
+/obj/item/roguekey/townie // For use in round-start available houses in town. Do not use default lockID.
+	name = "Town Dwelling Key"
+	desc = "The key of some townie's home. Hope it's not lost."
+	icon_state ="brownkey"
+	lockid = "townie"
 
 /obj/item/roguekey/roomi
 	name = "room I key"
