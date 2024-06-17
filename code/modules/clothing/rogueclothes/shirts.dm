@@ -29,7 +29,7 @@
 	desc = ""
 	icon_state = "priestunder"
 	sleeved = null
-	allowed_sex = list(MALE)
+	allowed_sex = list(MALE, FEMALE)
 	allowed_race = HUMANLIKE_RACE_TYPES
 
 /obj/item/clothing/suit/roguetown/shirt/undershirt/black
@@ -183,7 +183,7 @@
 	body_parts_covered = CHEST|GROIN|LEGS|VITALS
 	icon_state = "dress"
 	item_state = "dress"
-	allowed_sex = list(FEMALE)
+	allowed_sex = list(MALE, FEMALE)
 	r_sleeve_status = SLEEVE_NORMAL
 	l_sleeve_status = SLEEVE_NORMAL
 	flags_inv = HIDECROTCH|HIDEBOOB

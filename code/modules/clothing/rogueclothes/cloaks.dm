@@ -506,7 +506,7 @@
 	sleevetype = "shirt"
 	nodismemsleeves = TRUE
 	inhand_mod = TRUE
-//	allowed_sex = list("male")
+//	allowed_sex = list(MALE)
 	allowed_race = HUMANLIKE_RACE_TYPES
 	detail_tag = "_det"
 	detail_color = CLOTHING_PURPLE
@@ -870,7 +870,7 @@
 	name = "town watch cloak"
 	icon_state = "guardcloak"
 	color = CLOTHING_RED
-	allowed_sex = list(MALE)
+	allowed_sex = list(MALE, FEMALE)
 	allowed_race = HUMANLIKE_RACE_TYPES
 	inhand_mod = FALSE
 
