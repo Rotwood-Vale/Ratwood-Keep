@@ -1,15 +1,15 @@
-/datum/job/roguetown/orphan
-	title = "Orphan"
+/datum/job/roguetown/drifter
+	title = "Drifter"
 	flag = ORPHAN
 	department_flag = YOUNGFOLK
 	faction = "Station"
-	total_positions = 0
-	spawn_positions = 0
+	total_positions = 12
+	spawn_positions = 12
 
 	allowed_races = RACES_ALL_KINDS
 	allowed_ages = list(AGE_ADULT)
 
-	tutorial = "Dozens of unwanted children are born in the kingdom of Psydonia every day. They sometimes make something of themselves but much more often die early in the streets."
+	tutorial = "Dozens of unwanted people, ending up down on their luck in the kingdom of Psydonia every day. They sometimes make something of themselves but much more often die in the streets."
 
 	outfit = /datum/outfit/job/roguetown/orphan
 	display_order = JDO_ORPHAN

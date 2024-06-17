@@ -384,7 +384,7 @@
 					var/list/stealablezones = list("chest", "neck", "groin", "r_hand", "l_hand")
 					var/list/stealpos = list()
 					var/exp_to_gain = STAINT
-					if(stealroll > targetperception)
+					if(stealroll > targetperception && !V.cmode)
 					//TODO add exp here
 						if(U.get_active_held_item())
 							to_chat(src, "<span class='warning'>I can't pickpocket while my hand is full!</span>")
