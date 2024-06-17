@@ -387,6 +387,11 @@
 					var/exp_to_gain = STAINT
 					if(stealroll > targetperception)
 					//TODO add exp here
+						// RATWOOD MODULAR START
+						if(V.cmode)
+							to_chat(src, "<span class='warning'>[V] is alert. I can't pickpocket them like this.</span>")
+							return
+						// RATWOOD MODULAR END
 						if(U.get_active_held_item())
 							to_chat(src, span_warning("I can't pickpocket while my hand is full!"))
 							return
