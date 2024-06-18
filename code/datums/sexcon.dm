@@ -779,7 +779,7 @@
 							usedsource = "fuckcorpse"
 							stop_fucking()
 						else
-							if(D.owner.stat != CONSCIOUS)
+							if(!D.owner.client)
 								usedsource = "sleepingbeauty"
 						if(D.owner.cmode)
 							D.owner.flash_fullscreen("redflash1")
@@ -1218,7 +1218,7 @@
 							if(H.mind.antag_datums.len)
 								wuzantag = TRUE
 					if(!wuzantag)
-						adjust_playerquality(-1, H.ckey, reason="Fucked a sleeping player as a non-villain.")
+						adjust_playerquality(-1, H.ckey, reason="Fucked an AFK player as a non-villain.")
 			owner.add_stress(/datum/stressevent/cumok)
 			playsound(fucking, 'sound/misc/mat/endin.ogg', 100, TRUE, ignore_walls = FALSE)
 			add_cum_floor(get_turf(fucking))
