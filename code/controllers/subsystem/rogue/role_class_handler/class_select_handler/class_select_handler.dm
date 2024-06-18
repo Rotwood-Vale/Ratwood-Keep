@@ -113,7 +113,7 @@
 				var/attempts = class_cat_alloc_attempts[SORT_CAT_KEY]
 				var/pq = get_playerquality(linked_client.ckey)
 				if(pq >= 0)
-					var/extra_attempts = clamp(FLOOR(pq / 5, 1), 0, 5) // For every 5 PQ add an extra class to pick from, up to 5 extra
+					var/extra_attempts = clamp(FLOOR(pq / 10, 1), 0, 5) // For every 10 PQ add an extra class to pick from, up to 5 extra
 					attempts += extra_attempts
 				// Make sure we aren't going to attempt to pick more than what we even have avail
 				if(attempts > local_insert_sortlist.len)
