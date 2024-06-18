@@ -110,15 +110,21 @@
 
 			// Time to do some picking, make sure we got things in the list we dealin with
 			if(local_insert_sortlist.len)
+				var/attempts = class_cat_alloc_attempts[SORT_CAT_KEY]
+				var/pq = get_playerquality(linked_client.ckey)
+				if(pq >= 0)
+					var/extra_attempts = clamp(FLOOR(pq / 5, 1), 0, 5) // For every 5 PQ add an extra class to pick from, up to 5 extra
+					attempts += extra_attempts
 				// Make sure we aren't going to attempt to pick more than what we even have avail
-				if(class_cat_alloc_attempts[SORT_CAT_KEY] > local_insert_sortlist.len)
-					class_cat_alloc_attempts[SORT_CAT_KEY] = local_insert_sortlist.len
+				if(attempts > local_insert_sortlist.len)
+					attempts = local_insert_sortlist.len
 
 				local_insert_sortlist = shuffle(local_insert_sortlist)
-				for(var/i in 1 to class_cat_alloc_attempts[SORT_CAT_KEY])
+				for(var/i in 1 to attempts)
 					rolled_classes[local_insert_sortlist[i]] = 0
 
 				// We are plusboosting too
+				/* DISABLE plusboosting for now
 				if(class_cat_plusboost_attempts && SORT_CAT_KEY in class_cat_plusboost_attempts)
 					if(class_cat_plusboost_attempts[SORT_CAT_KEY])
 
@@ -130,6 +136,7 @@
 							var/datum/advclass/boostclass = pick(local_insert_sortlist)
 							if(boostclass in rolled_classes)
 								rolled_classes[boostclass] += 1
+				*/
 
 				local_sorted_class_cache[SORT_CAT_KEY] = local_insert_sortlist
 
