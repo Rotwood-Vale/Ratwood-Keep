@@ -29,7 +29,7 @@
 							/obj/structure/flora/roguegrass/maneater/real=3)
 	spawnableTurfs = list(/turf/open/floor/rogue/dirt/road=2,
 						/turf/open/water/swamp=1)
-	allowed_areas = list(/area/rogue/outdoors/bog/dense, /area/rogue/outdoors/rtfield)
+	allowed_areas = list(/area/rogue/outdoors/bog, /area/rogue/outdoors/rtfield)
 
 /datum/mapGeneratorModule/bogroad
 	clusterCheckFlags = CLUSTER_CHECK_DIFFERENT_ATOMS
@@ -47,7 +47,7 @@
 	clusterCheckFlags = CLUSTER_CHECK_DIFFERENT_ATOMS
 	allowed_turfs = list(/turf/open/floor/rogue/grass)
 	excluded_turfs = list()
-	allowed_areas = list(/area/rogue/outdoors/bog/dense)
+	allowed_areas = list(/area/rogue/outdoors/bog)
 	spawnableAtoms = list(/obj/structure/glowshroom = 5,
 							/obj/structure/flora/roguetree = 30,
 							/obj/structure/flora/roguetree/wise=1,
