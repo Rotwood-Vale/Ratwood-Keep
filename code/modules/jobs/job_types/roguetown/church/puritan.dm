@@ -124,7 +124,7 @@
 	if(H.add_stress(/datum/stressevent/tortured))
 		if(!H.stat)
 			var/static/list/faith_lines = list(
-				"DO YOU DENY THE NINE?",
+				"DO YOU DENY THE TEN?",
 				"WHO IS YOUR GOD?",
 				"ARE YOU FAITHFUL?",
 				"WHO IS YOUR SHEPHERD?",
