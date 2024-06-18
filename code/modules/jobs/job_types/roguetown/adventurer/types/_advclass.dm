@@ -14,6 +14,7 @@
 	var/whitelist_req = FALSE
 	var/ispilgrim = FALSE
 	var/isvillager = FALSE
+	var/isprisoner = FALSE
 	var/horse = FALSE
 	var/vampcompat = TRUE
 	var/list/traits_applied
@@ -34,10 +35,11 @@
 	H.cure_blind("advsetup")
 	H.SetStun(0)
 	sleep(1)
-	testing("[H] spawn troch")
-	var/obj/item/flashlight/flare/torch/T = new()
-	T.spark_act()
-	H.put_in_hands(T)
+	if(!isprisoner)
+		testing("[H] spawn troch")
+		var/obj/item/flashlight/flare/torch/T = new()
+		T.spark_act()
+		H.put_in_hands(T)
 
 	var/turf/TU = get_turf(H)
 	if(TU)

@@ -1,4 +1,4 @@
-/datum/job/roguetown/prisoner
+/datum/job/roguetown/adventurer/prisoner
 	title = "Prisoner"
 	flag = PRISONER
 	department_flag = PEASANTS
@@ -10,22 +10,20 @@
 	allowed_races = RACES_ALL_KINDS
 	tutorial = "How does it feel to be the rat in the cage? You're unwanted, unloved and entirely worthless in society. You're kept around for the amusement of the Guards and for the oft chance someone comes to pay your ransom. Might as well start praying to whatever god you find solace in."
 
-	outfit = /datum/outfit/job/roguetown/prisoner
+	outfit = /datum/outfit/job/roguetown/adventurer/prisoner
 	bypass_jobban = TRUE
 	display_order = JDO_PRISONER
 	give_bank_account = 10
 	min_pq = -49
 	max_pq = null
 	can_random = FALSE
+	wanderer_examine = FALSE
+	advjob_examine = FALSE
+	isprisoner = TRUE
 
-/datum/outfit/job/roguetown/prisoner/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/job/roguetown/adventurer/prisoner/pre_equip(mob/living/carbon/human/H)
 	..()
 	pants = /obj/item/clothing/under/roguetown/loincloth/brown
-	mask = /obj/item/clothing/mask/rogue/facemask/prisoner
-	if(H.wear_mask)
-		var/obj/I = H.wear_mask
-		H.dropItemToGround(H.wear_mask, TRUE)
-		qdel(I)
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 1, TRUE)
