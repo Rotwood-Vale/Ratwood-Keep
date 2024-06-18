@@ -289,7 +289,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 
 	// Remove the organs from the slots they should have nothing in
 	for(var/obj/item/organ/organ in C.internal_organs)
-		if(slots_to_iterate[organ.slot])
+		if(organ.slot in slots_to_iterate)
 			continue
 		organ.Remove(C, TRUE)
 		QDEL_NULL(organ)
