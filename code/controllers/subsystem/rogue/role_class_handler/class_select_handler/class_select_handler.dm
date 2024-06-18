@@ -114,7 +114,10 @@
 				var/pq = get_playerquality(linked_client.ckey)
 				if(pq >= 0)
 					var/extra_attempts = clamp(FLOOR(pq / 10, 1), 0, 5) // For every 10 PQ add an extra class to pick from, up to 5 extra
-					attempts += extra_attempts
+					if(extra_attempts > 0)
+						if(linked_client)
+							to_chat(linked_client, span_notice("My player quality grants me extra [extra_attempts] class choices."))
+						attempts += extra_attempts
 				// Make sure we aren't going to attempt to pick more than what we even have avail
 				if(attempts > local_insert_sortlist.len)
 					attempts = local_insert_sortlist.len
