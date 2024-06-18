@@ -9,7 +9,7 @@
 			j.current_positions--
 		mob_timers["mirrortime"] = world.time
 		var/begin_time = world.time
-		var/new_name = input(src, "What should your [input] name be?", "ROGUETOWN")
+		var/new_name = input(src, "What should your [input] name be?", "BLACKSTONE")
 		if(world.time > begin_time + 60 SECONDS)
 			to_chat(src, "<font color='red'>You waited too long.</font>")
 			return
@@ -39,3 +39,5 @@
 	GLOB.character_ckey_list[real_name] = ckey
 	log_character("[ckey] - [real_name] - [input]")
 	log_manifest(ckey,mind,src,latejoin = TRUE)
+	for(var/datum/antagonist/A in mind.antag_datums)
+		A.after_name_change()

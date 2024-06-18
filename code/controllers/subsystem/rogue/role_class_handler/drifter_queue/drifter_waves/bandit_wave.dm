@@ -4,7 +4,7 @@
 	// Maximum playercount of wave
 	maximum_playercount = 6
 	// Tooltip when moused over on wave
-	wave_type_tooltip = "One of many wandering tropes in service to the god Mathios."
+	wave_type_tooltip = "One of many wandering tropes in service to the god Matthios."
 	// Title of the job related to the job subsystem thats being made/equipped towards for the wave
 	job_rank = "Drifter"
 

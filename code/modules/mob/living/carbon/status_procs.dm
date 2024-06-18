@@ -27,6 +27,7 @@
 		clear_fullscreen("high")
 //		SEND_SIGNAL(src, COMSIG_CLEAR_MOOD_EVENT, "high")
 //	update_body_parts_head_only()
+	update_body_parts_eyes_only()
 
 /mob/living/carbon/set_drugginess(amount)
 	druggy = max(amount, 0)
@@ -37,6 +38,7 @@
 		clear_fullscreen("high")
 //		clear_alert("high")
 //	update_body_parts_head_only()
+	update_body_parts_eyes_only()
 
 /mob/living/carbon/adjust_disgust(amount)
 	disgust = CLAMP(disgust+amount, 0, DISGUST_LEVEL_MAXEDOUT)
