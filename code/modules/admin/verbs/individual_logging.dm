@@ -4,7 +4,7 @@
 
 	var/ntype = text2num(type)
 
-	//Add client links
+	///Add client links
 	var/list/dat = list()
 	if(M.client)
 		dat += "<center><p>Client</p></center>"
