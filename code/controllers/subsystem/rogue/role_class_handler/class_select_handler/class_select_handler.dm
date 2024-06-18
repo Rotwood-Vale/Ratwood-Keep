@@ -113,7 +113,9 @@
 				var/attempts = class_cat_alloc_attempts[SORT_CAT_KEY]
 				var/pq = get_playerquality(linked_client.ckey)
 				if(pq >= 0)
-					var/extra_attempts = clamp(FLOOR(pq / 10, 1), 0, 5) // For every 10 PQ add an extra class to pick from, up to 5 extra
+					var/extra_attempts = clamp(FLOOR(pq / 10, 1), 0, 4) // For every 10 PQ add an extra class to pick from, up to 4 extra
+					if(pq >= 5)
+						extra_attempts += 1 // Bonus 1 class for the first 5 points for encouragement
 					if(extra_attempts > 0)
 						if(linked_client)
 							to_chat(linked_client, span_notice("My player quality grants me extra [extra_attempts] class choices."))
