@@ -3,8 +3,8 @@
 	flag = TAILOR
 	department_flag = YEOMEN
 	faction = "Station"
-	total_positions = 0
-	spawn_positions = 0
+	total_positions = 2
+	spawn_positions = 2
 
 	outfit = /datum/outfit/job/roguetown/tailor
 	outfit_female = /datum/outfit/job/roguetown/tailor/female
