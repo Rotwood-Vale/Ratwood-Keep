@@ -2563,9 +2563,7 @@
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/under/town/basement)
 "cCQ" = (
-/obj/structure/handcart{
-	dir = 8
-	},
+/obj/structure/handcart,
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue/indoors/town)
 "cCR" = (
@@ -11433,9 +11431,11 @@
 /turf/open/floor/rogue/churchmarble,
 /area/rogue/indoors/town/church/chapel)
 "oCe" = (
-/obj/structure/table/finer,
-/turf/open/floor/carpet/inn,
-/area/rogue/indoors/town/bath)
+/obj/structure/roguewindow/openclose{
+	dir = 4
+	},
+/turf/open/floor/rogue/concrete,
+/area/rogue/indoors/town/shop)
 "oDA" = (
 /obj/effect/landmark/start/villager,
 /turf/open/floor/rogue/grass,
@@ -15513,9 +15513,7 @@
 /area/rogue/indoors/town/manor)
 "uml" = (
 /obj/machinery/light/rogue/wallfire/candle/blue,
-/obj/structure/handcart{
-	dir = 8
-	},
+/obj/structure/handcart,
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/shop)
 "umN" = (
@@ -15709,9 +15707,7 @@
 	locked = 1;
 	lockid = "shop"
 	},
-/turf/open/floor/rogue/ruinedwood{
-	icon_state = "horzw"
-	},
+/turf/open/floor/rogue/concrete,
 /area/rogue/indoors/town/shop)
 "uyE" = (
 /obj/machinery/light/rogue/firebowl,
@@ -279500,7 +279496,7 @@ wbg
 wbg
 aKu
 mDV
-oCe
+nAd
 oXU
 kHR
 kHR
@@ -279902,7 +279898,7 @@ wbg
 wbg
 vNh
 hAL
-oCe
+nAd
 oXU
 kHR
 kHR
@@ -289583,7 +289579,7 @@ toW
 toW
 uyw
 toW
-gyP
+oCe
 toW
 toW
 eSt
@@ -294816,7 +294812,7 @@ dpw
 wbg
 wbg
 wbg
-wue
+wbg
 wbg
 wbg
 rfx
