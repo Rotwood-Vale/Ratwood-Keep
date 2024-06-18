@@ -6,61 +6,63 @@
 
 /datum/supply_pack/rogue/apparel/hoods
 	name = "Shoulder Hood"
-	cost = 30
-	contains = list(/obj/item/clothing/head/roguetown/roguehood/random,
-					/obj/item/clothing/head/roguetown/roguehood/random,
-					/obj/item/clothing/head/roguetown/roguehood/random)
+	cost = 10
+	contains = list(/obj/item/clothing/head/roguetown/roguehood/random)
 
-/datum/supply_pack/rogue/apparel/satchels
+/datum/supply_pack/rogue/apparel/bags/satchel
 	name = "Satchels"
 	cost = 10
-	contains = list(/obj/item/storage/backpack/rogue/satchel,
-					/obj/item/storage/backpack/rogue/satchel,
-					/obj/item/storage/backpack/rogue/satchel)
+	contains = list(/obj/item/storage/backpack/rogue/satchel)
 
-/datum/supply_pack/rogue/apparel/bacpak
+/datum/supply_pack/rogue/apparel/bags/backpack
 	name = "Backpack"
-	cost = 10
+	cost = 15
 	contains = list(/obj/item/storage/backpack/rogue/backpack)
 
-/datum/supply_pack/rogue/apparel/bags
+/datum/supply_pack/rogue/apparel/bags/pouch
 	name = "Pouches"
-	cost = 5
-	contains = list(/obj/item/storage/belt/rogue/pouch,
-					/obj/item/storage/belt/rogue/pouch,
-					/obj/item/storage/belt/rogue/pouch,
-					/obj/item/storage/belt/rogue/pouch)
+	cost = 10
+	contains = list(/obj/item/storage/belt/rogue/pouch)
 
 /datum/supply_pack/rogue/apparel/belts
 	name = "Belts"
-	cost = 5
-	contains = list(/obj/item/storage/belt/rogue/leather,
-					/obj/item/storage/belt/rogue/leather,
-					/obj/item/storage/belt/rogue/leather)
+	cost = 10
+	contains = list(/obj/item/storage/belt/rogue/leather)
 
-/datum/supply_pack/rogue/apparel/crosses
+/datum/supply_pack/rogue/apparel/crosses/silver
 	name = "Silver Cross"
 	cost = 150
+	contains = list(/obj/item/clothing/neck/roguetown/psicross/silver)
+
+/datum/supply_pack/rogue/apparel/crosses/psicross
+	name = "Psicross"
+	cost = 20
 	contains = list(/obj/item/clothing/neck/roguetown/psicross)
 
-
-/datum/supply_pack/rogue/apparel/gloves
+/datum/supply_pack/rogue/apparel/gloves/leather
 	name = "Leather Gloves"
 	cost = 10
-	contains = list(/obj/item/clothing/gloves/roguetown/leather,
-					/obj/item/clothing/gloves/roguetown/leather)
+	contains = list(/obj/item/clothing/gloves/roguetown/leather)
 
-/datum/supply_pack/rogue/apparel/boots
+/datum/supply_pack/rogue/apparel/boots/leather
 	name = "Leather Boots"
 	cost = 10
-	contains = list(/obj/item/clothing/shoes/roguetown/boots/leather,
-					/obj/item/clothing/shoes/roguetown/boots/leather)
+	contains = list(/obj/item/clothing/shoes/roguetown/boots/leather)
 
-/datum/supply_pack/rogue/apparel/cloaks
+/datum/supply_pack/rogue/apparel/trousers/leather
+	name = "Leather Trousers"
+	cost = 10
+	contains = list(/obj/item/clothing/under/roguetown/trou/leather)
+
+/datum/supply_pack/rogue/apparel/cloaks/leather
 	name = "Rain Cloak"
-	cost = 15
-	contains = list(/obj/item/clothing/cloak/raincloak/brown,
-					/obj/item/clothing/cloak/raincloak/mortus)
+	cost = 10
+	contains = list(/obj/item/clothing/cloak/raincloak/brown)
+	
+/datum/supply_pack/rogue/apparel/shirts/tunic
+	name = "Shirt"
+	cost = 10
+	contains = list(/obj/item/clothing/suit/roguetown/shirt/tunic)
 
 /datum/supply_pack/rogue/apparel/shirts
 	name = "Undershirts"
