@@ -78,7 +78,7 @@
 					rogstam_add(10)
 
 			// Healing while sleeping on the ground (less efficient than comfortable seats/beds)
-				if(stat)
+				if(IsSleeping())
 					var/yess = HAS_TRAIT(src, TRAIT_NOHUNGER)
 					if(nutrition > 0 || yess)
 						rogstam_add(25)
