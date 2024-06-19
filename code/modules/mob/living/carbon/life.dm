@@ -36,7 +36,7 @@
 					heart_attacking = FALSE
 
 		//Healing while sleeping in a bed
-		if(stat >= UNCONSCIOUS)
+		if(IsSleeping())
 			var/sleepy_mod = buckled?.sleepy || 0.5
 			var/yess = HAS_TRAIT(src, TRAIT_NOHUNGER)
 			if(nutrition > 0 || yess)
