@@ -1,4 +1,4 @@
-/datum/patron/divine
+/obj/effect/proc_holder/spell/invoked/cure_rot/datum/patron/divine
 	name = null
 	associated_faith = /datum/faith/divine
 	t0 = /obj/effect/proc_holder/spell/invoked/lesser_heal
@@ -68,6 +68,7 @@
 	t1 = /obj/effect/proc_holder/spell/invoked/lesser_heal
 	t2 = /obj/effect/proc_holder/spell/invoked/heal
 	t3 = /obj/effect/proc_holder/spell/invoked/attach_bodypart
+	t4 = /obj/effect/proc_holder/spell/invoked/cure_rot
 
 /datum/patron/divine/malum
 	name = "Malum"
