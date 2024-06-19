@@ -126,7 +126,7 @@
 			return FALSE
 		if(inputty in GLOB.excommunicated_players)
 			GLOB.excommunicated_players -= inputty
-			priority_announce("[real_name] has forgiven [inputty]. Once more walk in the light!", title = "Hail the Nine!", sound = 'sound/misc/bell.ogg')
+			priority_announce("[real_name] has forgiven [inputty]. Once more walk in the light!", title = "Hail the Ten!", sound = 'sound/misc/bell.ogg')
 			for(var/mob/living/carbon/human/H in GLOB.player_list)
 				if(H.real_name == inputty)
 					H.remove_stress(/datum/stressevent/psycurse)
@@ -159,14 +159,14 @@
 	name = "Recruit Templar"
 	new_role = "Templar"
 	recruitment_faction = "Templars"
-	recruitment_message = "Serve the nine, %RECRUIT!"
-	accept_message = "FOR THE NINE!"
+	recruitment_message = "Serve the ten, %RECRUIT!"
+	accept_message = "FOR THE TEN!"
 	refuse_message = "I refuse."
 
 /obj/effect/proc_holder/spell/self/convertrole/monk
 	name = "Recruit Acolyte"
 	new_role = "Acolyte"
 	recruitment_faction = "Church"
-	recruitment_message = "Serve the nine, %RECRUIT!"
-	accept_message = "FOR THE NINE!"
+	recruitment_message = "Serve the ten, %RECRUIT!"
+	accept_message = "FOR THE TEN!"
 	refuse_message = "I refuse."

@@ -4,8 +4,8 @@
 	undead_hater = FALSE
 	confess_lines = list(
 		"PSYDON IS THE DEMIURGE!",
-		"THE NINE ARE WORTHLESS COWARDS!",
-		"THE NINE ARE DECEIVERS!",
+		"THE TEN ARE WORTHLESS COWARDS!",
+		"THE TEN ARE DECEIVERS!",
 	)
 
 /datum/patron/inhumen/zizo
