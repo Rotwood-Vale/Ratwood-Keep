@@ -109,10 +109,8 @@
 #define MANATARMS	(1<<1)
 #define DUNGEONEER	(1<<2)
 #define GATEMASTER	(1<<3)
-#define VETERAN		(1<<4)
-#define ELDER		(1<<5)
-#define BOGGUARD	(1<<6)
-#define BOGMASTER	(1<<7)
+#define BOGGUARD	(1<<4)
+#define BOGMASTER	(1<<5)
 
 #define CHURCHMEN		(1<<2)
 
@@ -141,6 +139,7 @@
 #define TAILOR		(1<<6)
 #define MERCHANT	(1<<7)
 #define SCRIBE		(1<<8)
+#define ELDER		(1<<9)
 
 #define PEASANTS	(1<<5)
 
@@ -177,6 +176,7 @@
 
 #define DESERT_RIDER	(1<<0)
 #define GRENZELHOFT		(1<<1)
+#define VETERAN		(1<<2)
 
 #define GOBLIN		(1<<8)
 
