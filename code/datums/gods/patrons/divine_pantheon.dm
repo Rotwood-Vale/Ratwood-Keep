@@ -1,4 +1,4 @@
-/obj/effect/proc_holder/spell/invoked/cure_rot/datum/patron/divine
+/datum/patron/divine
 	name = null
 	associated_faith = /datum/faith/divine
 	t0 = /obj/effect/proc_holder/spell/invoked/lesser_heal
