@@ -4618,8 +4618,10 @@
 /turf/open/floor/rogue/blocks/stonered/tiny,
 /area/rogue/indoors/town/dwarfin)
 "fhx" = (
-/turf/open/floor/rogue/blocks/newstone/alt,
-/area/rogue/indoors/town/warehouse)
+/obj/structure/closet/crate/chest,
+/obj/item/reagent_containers/food/snacks/rogue/crackerscooked,
+/turf/open/floor/rogue/ruinedwood,
+/area/rogue/indoors/town/shop)
 "fhH" = (
 /obj/structure/roguewindow/openclose{
 	dir = 8
@@ -5635,12 +5637,6 @@
 /obj/structure/chair/wood/rogue,
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/dwarfin)
-"guP" = (
-/obj/structure/fluff/railing/border{
-	dir = 10
-	},
-/turf/open/floor/rogue/ruinedwood,
-/area/rogue/indoors/town/shop)
 "gvi" = (
 /turf/closed/wall/mineral/rogue/wooddark/end{
 	dir = 4
@@ -9277,10 +9273,6 @@
 "kHC" = (
 /turf/closed/wall/mineral/rogue/wooddark/end,
 /area/rogue/indoors)
-"kHL" = (
-/obj/structure/feedinghole,
-/turf/open/floor/rogue/ruinedwood,
-/area/rogue/indoors/town/shop)
 "kHR" = (
 /turf/open/water/bath,
 /area/rogue/indoors/town/bath)
@@ -12378,11 +12370,12 @@
 /turf/open/floor/rogue/blocks/stonered,
 /area/rogue/indoors/town/manor)
 "ovj" = (
-/obj/structure/fluff/railing/border{
-	dir = 4
+/obj/item/toy/plush/lizardplushie{
+	name = "Rumbles-In-the-Dark";
+	desc = "Looking for secrets, are we?"
 	},
-/turf/open/floor/rogue/ruinedwood,
-/area/rogue/indoors/town/shop)
+/turf/open/floor/rogue/greenstone,
+/area/rogue/under/town/sewer)
 "ovn" = (
 /turf/open/transparent/openspace,
 /area/rogue/under/cavewet/bogcaves)
@@ -14638,9 +14631,6 @@
 	},
 /turf/open/transparent/openspace,
 /area/rogue/outdoors/town)
-"reg" = (
-/turf/open/floor/rogue/blocks/bluestone,
-/area/rogue/indoors/town/shop)
 "ret" = (
 /obj/structure/fluff/psycross,
 /turf/open/floor/rogue/herringbone,
@@ -15189,12 +15179,6 @@
 "rMO" = (
 /obj/structure/roguewindow/openclose,
 /turf/open/floor/rogue/ruinedwood/turned,
-/area/rogue/indoors/town/shop)
-"rNm" = (
-/obj/structure/fluff/railing/border{
-	dir = 8
-	},
-/turf/open/floor/rogue/ruinedwood,
 /area/rogue/indoors/town/shop)
 "rNB" = (
 /obj/structure/table/wood{
@@ -15823,12 +15807,6 @@
 	},
 /turf/open/floor/rogue/cobble,
 /area/rogue/outdoors/town/harbor)
-"sFi" = (
-/obj/structure/fluff/railing/border{
-	dir = 1
-	},
-/turf/open/floor/rogue/ruinedwood,
-/area/rogue/indoors/town/shop)
 "sFw" = (
 /obj/structure/bed/rogue/inn/wooldouble,
 /obj/item/bedsheet/rogue/double_pelt,
@@ -17785,12 +17763,6 @@
 /obj/structure/flora/roguetree,
 /turf/open/floor/rogue/dirt,
 /area/rogue/outdoors/rtfield)
-"uTQ" = (
-/obj/structure/fluff/railing/border{
-	dir = 9
-	},
-/turf/open/floor/rogue/ruinedwood,
-/area/rogue/indoors/town/shop)
 "uTW" = (
 /obj/structure/stairs{
 	dir = 4
@@ -19453,7 +19425,6 @@
 /area/rogue/indoors/town/tavern)
 "wSl" = (
 /obj/structure/closet/crate/chest,
-/obj/item/reagent_containers/food/snacks/rogue/crackerscooked,
 /obj/machinery/light/rogue/torchholder{
 	dir = 4
 	},
@@ -209277,8 +209248,8 @@ lrs
 lrs
 lrs
 lrs
-lrs
-lrs
+cQp
+cQp
 cQp
 gLf
 rSC
@@ -209679,8 +209650,8 @@ lrs
 lrs
 lrs
 lrs
-lrs
-lrs
+cQp
+ovj
 cQp
 qDn
 rSC
@@ -292935,13 +292906,13 @@ wbg
 wbg
 wVI
 aMR
-kHL
 bcu
+dVS
+lzj
+lzj
+lzj
+dVS
 bcu
-ovj
-ovj
-ovj
-hFG
 aMR
 wEr
 hUt
@@ -293337,13 +293308,13 @@ wbg
 wbg
 wVI
 fge
-reg
-reg
-reg
-fhx
-fhx
-fhx
-sFi
+bcu
+bcu
+bcu
+bcu
+bcu
+bcu
+bcu
 aMR
 wEr
 hUt
@@ -293739,13 +293710,13 @@ wbg
 wbg
 wVI
 fge
-reg
-reg
-reg
+bcu
+lzj
+lzj
 fhx
-fhx
-fhx
-sFi
+lzj
+lzj
+bcu
 aMR
 gZA
 hUt
@@ -294141,13 +294112,13 @@ wbg
 wbg
 wVI
 fge
-reg
-reg
-reg
-fhx
-fhx
-fhx
-sFi
+bcu
+bcu
+bcu
+bcu
+bcu
+bcu
+bcu
 aMR
 vlK
 hUt
@@ -294543,13 +294514,13 @@ wbg
 wbg
 wVI
 fge
-reg
-reg
-reg
-fhx
-fhx
-fhx
-sFi
+bcu
+bcu
+lzj
+lzj
+bcu
+lzj
+bcu
 vWY
 tNH
 hUt
@@ -294947,11 +294918,11 @@ wVI
 aMR
 bcu
 bcu
-guP
-rNm
-rNm
-rNm
-uTQ
+bcu
+bcu
+bcu
+bcu
+bcu
 aMR
 hUt
 hUt
@@ -295347,13 +295318,13 @@ wbg
 wbg
 wVI
 aMR
+bcu
+lzj
+dVS
+lzj
+lzj
 dVS
 bcu
-bcu
-bcu
-bcu
-bcu
-dVS
 aMR
 fKf
 hUt
@@ -295755,7 +295726,7 @@ bcu
 bcu
 bcu
 bcu
-dVS
+bcu
 aMR
 eSt
 taK
