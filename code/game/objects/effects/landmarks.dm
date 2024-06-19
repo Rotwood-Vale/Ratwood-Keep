@@ -103,9 +103,9 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	delete_after_roundstart = FALSE
 
 /obj/effect/landmark/start/orphanlate
-	name = "Orphanlate"
+	name = "Vagabondlate"
 	icon_state = "arrow"
-	jobspawn_override = list("Orphan")
+	jobspawn_override = list("Vagabond")
 	delete_after_roundstart = FALSE
 
 /obj/effect/landmark/start/desertriderlate
@@ -374,7 +374,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/orphan
-	name = "Orphan"
+	name = "Vagabond"
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/sapprentice

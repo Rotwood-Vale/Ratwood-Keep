@@ -1,5 +1,5 @@
 /datum/job/roguetown/orphan
-	title = "Drifter"
+	title = "Vagabond"
 	flag = ORPHAN
 	department_flag = YOUNGFOLK
 	faction = "Station"
