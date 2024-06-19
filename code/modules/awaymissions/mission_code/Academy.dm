@@ -150,7 +150,7 @@
 /obj/structure/academy_wizard_spawner/deconstruct(disassembled = TRUE)
 	if(!broken)
 		broken = 1
-		visible_message("<span class='warning'>[src] breaks down!</span>")
+		visible_message(span_warning("[src] breaks down!"))
 		icon_state = "forge_off"
 		STOP_PROCESSING(SSobj, src)
 
@@ -194,21 +194,21 @@
 	. = ..()
 	if(!used)
 		if(!ishuman(user) || !user.mind || (user.mind in SSticker.mode.wizards))
-			to_chat(user, "<span class='warning'>I feel the magic of the dice is restricted to ordinary humans!</span>")
+			to_chat(user, span_warning("I feel the magic of the dice is restricted to ordinary humans!"))
 			return
 
 		if(!reusable)
 			used = TRUE
 
 		var/turf/T = get_turf(src)
-		T.visible_message("<span class='danger'>[src] flares briefly.</span>")
+		T.visible_message(span_danger("[src] flares briefly."))
 
 		addtimer(CALLBACK(src, PROC_REF(effect), user, .), 1 SECONDS)
 
 /obj/item/dice/d20/fate/equipped(mob/user, slot)
 	. = ..()
 	if(!ishuman(user) || !user.mind || (user.mind in SSticker.mode.wizards))
-		to_chat(user, "<span class='warning'>I feel the magic of the dice is restricted to ordinary humans! You should leave it alone.</span>")
+		to_chat(user, span_warning("I feel the magic of the dice is restricted to ordinary humans! You should leave it alone."))
 		user.dropItemToGround(src)
 
 
@@ -217,36 +217,36 @@
 	switch(roll)
 		if(1)
 			//Dust
-			T.visible_message("<span class='danger'>[user] turns to dust!</span>")
+			T.visible_message(span_danger("[user] turns to dust!"))
 			user.hellbound = TRUE
 			user.dust()
 		if(2)
 			//Death
-			T.visible_message("<span class='danger'>[user] suddenly dies!</span>")
+			T.visible_message(span_danger("[user] suddenly dies!"))
 			user.death()
 		if(3)
 			//Swarm of creatures
-			T.visible_message("<span class='danger'>A swarm of creatures surround [user]!</span>")
+			T.visible_message(span_danger("A swarm of creatures surround [user]!"))
 			for(var/direction in GLOB.alldirs)
 				new /mob/living/simple_animal/hostile/netherworld(get_step(get_turf(user),direction))
 		if(4)
 			//Destroy Equipment
-			T.visible_message("<span class='danger'>Everything [user] is holding and wearing disappears!</span>")
+			T.visible_message(span_danger("Everything [user] is holding and wearing disappears!"))
 			for(var/obj/item/I in user)
 				if(istype(I, /obj/item/implant))
 					continue
 				qdel(I)
 		if(5)
 			//Monkeying
-			T.visible_message("<span class='danger'>[user] transforms into a monkey!</span>")
+			T.visible_message(span_danger("[user] transforms into a monkey!"))
 			user.monkeyize()
 		if(6)
 			//Cut speed
-			T.visible_message("<span class='danger'>[user] starts moving slower!</span>")
+			T.visible_message(span_danger("[user] starts moving slower!"))
 			user.add_movespeed_modifier(MOVESPEED_ID_DIE_OF_FATE, update=TRUE, priority=100, multiplicative_slowdown=1)
 		if(7)
 			//Throw
-			T.visible_message("<span class='danger'>Unseen forces throw [user]!</span>")
+			T.visible_message(span_danger("Unseen forces throw [user]!"))
 			user.Stun(60)
 			user.adjustBruteLoss(50)
 			var/throw_dir = pick(GLOB.cardinals)
@@ -254,29 +254,29 @@
 			user.throw_at(throw_target, 200, 4)
 		if(8)
 			//Fueltank Explosion
-			T.visible_message("<span class='danger'>An explosion bursts into existence around [user]!</span>")
+			T.visible_message(span_danger("An explosion bursts into existence around [user]!"))
 			explosion(get_turf(user),-1,0,2, flame_range = 2)
 		if(9)
 			//Cold
 			var/datum/disease/D = new /datum/disease/cold()
-			T.visible_message("<span class='danger'>[user] looks a little under the weather!</span>")
+			T.visible_message(span_danger("[user] looks a little under the weather!"))
 			user.ForceContractDisease(D, FALSE, TRUE)
 		if(10)
 			//Nothing
-			T.visible_message("<span class='danger'>Nothing seems to happen.</span>")
+			T.visible_message(span_danger("Nothing seems to happen."))
 		if(11)
 			//Cookie
-			T.visible_message("<span class='danger'>A cookie appears out of thin air!</span>")
+			T.visible_message(span_danger("A cookie appears out of thin air!"))
 			var/obj/item/reagent_containers/food/snacks/cookie/C = new(drop_location())
 			do_smoke(0, drop_location())
 			C.name = "Cookie of Fate"
 		if(12)
 			//Healing
-			T.visible_message("<span class='danger'>[user] looks very healthy!</span>")
+			T.visible_message(span_danger("[user] looks very healthy!"))
 			user.revive(full_heal = TRUE, admin_revive = TRUE)
 		if(13)
 			//Mad Dosh
-			T.visible_message("<span class='danger'>Mad dosh shoots out of [src]!</span>")
+			T.visible_message(span_danger("Mad dosh shoots out of [src]!"))
 			var/turf/Start = get_turf(src)
 			for(var/direction in GLOB.alldirs)
 				var/turf/dirturf = get_step(Start,direction)
@@ -288,17 +288,17 @@
 						new /obj/item/coin/gold(M)
 		if(14)
 			//Free Gun
-			T.visible_message("<span class='danger'>An impressive gun appears!</span>")
+			T.visible_message(span_danger("An impressive gun appears!"))
 			do_smoke(0, drop_location())
 			new /obj/item/gun/ballistic/revolver/mateba(drop_location())
 		if(15)
 			//Random One-use spellbook
-			T.visible_message("<span class='danger'>A magical looking book drops to the floor!</span>")
+			T.visible_message(span_danger("A magical looking book drops to the floor!"))
 			do_smoke(0, drop_location())
 			new /obj/item/book/granter/spell/random(drop_location())
 		if(16)
 			//Servant & Servant Summon
-			T.visible_message("<span class='danger'>A Dice Servant appears in a cloud of smoke!</span>")
+			T.visible_message(span_danger("A Dice Servant appears in a cloud of smoke!"))
 			var/mob/living/carbon/human/H = new(drop_location())
 			do_smoke(0, drop_location())
 
@@ -321,23 +321,23 @@
 
 		if(17)
 			//Tator Kit
-			T.visible_message("<span class='danger'>A suspicious box appears!</span>")
+			T.visible_message(span_danger("A suspicious box appears!"))
 			new /obj/item/storage/box/syndicate/bundle_A(drop_location())
 			do_smoke(0, drop_location())
 		if(18)
 			//Captain ID
-			T.visible_message("<span class='danger'>A golden identification card appears!</span>")
+			T.visible_message(span_danger("A golden identification card appears!"))
 			new /obj/item/card/id/captains_spare(drop_location())
 			do_smoke(0, drop_location())
 		if(19)
 			//Instrinct Resistance
-			T.visible_message("<span class='danger'>[user] looks very robust!</span>")
+			T.visible_message(span_danger("[user] looks very robust!"))
 			user.physiology.brute_mod *= 0.5
 			user.physiology.burn_mod *= 0.5
 
 		if(20)
 			//Free wizard!
-			T.visible_message("<span class='danger'>Magic flows out of [src] and into [user]!</span>")
+			T.visible_message(span_danger("Magic flows out of [src] and into [user]!"))
 			user.mind.make_Wizard()
 
 /datum/outfit/butler
@@ -384,7 +384,7 @@
 	return
 
 /obj/structure/ladder/unbreakable/rune/show_fluff_message(up,mob/user)
-	user.visible_message("<span class='notice'>[user] activates \the [src].</span>", "<span class='notice'>I activate \the [src].</span>")
+	user.visible_message(span_notice("[user] activates \the [src]."), span_notice("I activate \the [src]."))
 
 /obj/structure/ladder/unbreakable/rune/use(mob/user, is_ghost=FALSE)
 	if(is_ghost || !(user.mind in SSticker.mode.wizards))

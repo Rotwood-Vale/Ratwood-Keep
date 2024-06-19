@@ -33,6 +33,13 @@
 					/obj/item/reagent_containers/food/snacks/rogue/meat/coppiette,
 					/obj/item/reagent_containers/food/snacks/rogue/meat/coppiette)
 
+/datum/supply_pack/rogue/food/raisinbreads
+	name = "Raisin Bread"
+	cost = 30
+	contains = list(/obj/item/reagent_containers/food/snacks/rogue/raisinbread,
+					/obj/item/reagent_containers/food/snacks/rogue/raisinbread,
+					/obj/item/reagent_containers/food/snacks/rogue/raisinbread)
+
 /datum/supply_pack/rogue/food/eggs
 	name = "Egg"
 	cost = 20

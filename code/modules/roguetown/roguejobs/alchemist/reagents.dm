@@ -23,7 +23,7 @@
 	. = 1
 
 /datum/reagent/medicine/manapot
-	name = "Manna Potion"
+	name = "Mana Potion"
 	description = "Gradually regenerates stamina."
 	reagent_state = LIQUID
 	color = "#0000ff"
@@ -39,7 +39,7 @@
 
 /datum/reagent/berrypoison
 	name = "Berry Poison"
-	description = "f"
+	description = "Contains a poisonous thick, dark purple liquid."
 	reagent_state = LIQUID
 	color = "#00B4FF"
 	metabolization_rate = 0.1
@@ -52,7 +52,7 @@
 
 /datum/reagent/organpoison
 	name = "Organ Poison"
-	description = "f"
+	description = "A viscous black liquid clings to the glass."
 	reagent_state = LIQUID
 	color = "#ff2f00"
 	metabolization_rate = 0.1

@@ -48,7 +48,7 @@
 					amount_per_transfer_from_this = possible_transfer_amounts[i+1]
 				else
 					amount_per_transfer_from_this = possible_transfer_amounts[1]
-				to_chat(user, "<span class='notice'>[src]'s transfer amount is now [amount_per_transfer_from_this] units.</span>")
+				to_chat(user, span_notice("[src]'s transfer amount is now [amount_per_transfer_from_this] units."))
 				return*/
 
 /obj/item/reagent_containers/attack(mob/M, mob/user, def_zone)
@@ -66,12 +66,12 @@
 	if(C != user)
 		if(C.mobility_flags & MOBILITY_STAND)
 			if(get_dir(eater, user) != eater.dir)
-				to_chat(user, "<span class='warning'>I must stand in front of [C.p_them()].</span>")
+				to_chat(user, span_warning("I must stand in front of [C.p_them()]."))
 				return 0
 	if(covered)
 		if(!silent)
 			var/who = (isnull(user) || eater == user) ? "your" : "[eater.p_their()]"
-			to_chat(user, "<span class='warning'>I have to remove [who] [covered] first!</span>")
+			to_chat(user, span_warning("I have to remove [who] [covered] first!"))
 		return 0
 	return 1
 
@@ -104,8 +104,8 @@
 			reagents.total_volume *= rand(5,10) * 0.1 //Not all of it makes contact with the target
 		var/mob/M = target
 		var/R
-		target.visible_message("<span class='danger'>[M] has been splashed with something!</span>", \
-						"<span class='danger'>[M] has been splashed with something!</span>")
+		target.visible_message(span_danger("[M] has been splashed with something!"), \
+						span_danger("[M] has been splashed with something!"))
 		for(var/datum/reagent/A in reagents.reagent_list)
 			R += "[A.type]  ([num2text(A.volume)]),"
 
@@ -114,7 +114,7 @@
 		reagents.reaction(target, TOUCH)
 
 	else if(bartender_check(target) && thrown)
-		visible_message("<span class='notice'>[src] lands onto the [target.name] without spilling a single drop.</span>")
+		visible_message(span_notice("[src] lands onto the [target.name] without spilling a single drop."))
 		return
 
 	else
@@ -122,7 +122,7 @@
 			log_combat(thrownby, target, "splashed (thrown) [english_list(reagents.reagent_list)]", "in [AREACOORD(target)]")
 			log_game("[key_name(thrownby)] splashed (thrown) [english_list(reagents.reagent_list)] on [target] in [AREACOORD(target)].")
 			message_admins("[ADMIN_LOOKUPFLW(thrownby)] splashed (thrown) [english_list(reagents.reagent_list)] on [target] in [ADMIN_VERBOSEJMP(target)].")
-		visible_message("<span class='notice'>[src] spills its contents all over [target].</span>")
+		visible_message(span_notice("[src] spills its contents all over [target]."))
 		reagents.reaction(target, TOUCH)
 		if(QDELETED(src))
 			return

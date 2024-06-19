@@ -66,6 +66,7 @@
 	chargetime = 0
 	hitsound = list('sound/combat/hits/bladed/genslash (1).ogg', 'sound/combat/hits/bladed/genslash (2).ogg', 'sound/combat/hits/bladed/genslash (3).ogg')
 	swingdelay = 0
+	item_d_type = "slash"
 
 /datum/intent/sword/thrust
 	name = "stab"
@@ -77,6 +78,17 @@
 	penfactor = 20
 	chargetime = 0
 	swingdelay = 0
+	item_d_type = "stab"
+
+/obj/item/rogueweapon/sword/short
+	name = "short sword"
+	desc = "An archaic steel sword made for stabbing."
+	force = 19
+	possible_item_intents = list(/datum/intent/sword/cut/short, /datum/intent/sword/thrust/short)
+	icon_state = "swordshort"
+	gripped_intents = null
+	minstr = 4
+	wdefense = 4
 
 /obj/item/rogueweapon/sword/long
 	force = 25
@@ -328,6 +340,7 @@
 	penfactor = 20
 	swingdelay = 5
 	damfactor = 0.8
+	item_d_type = "blunt"
 
 /datum/intent/sword/chop
 	name = "chop"
@@ -339,6 +352,7 @@
 	penfactor = 10
 	swingdelay = 8
 	damfactor = 0.8
+	item_d_type = "slash"
 
 /obj/item/rogueweapon/sword/long/exe
 	possible_item_intents = list(/datum/intent/sword/strike)
@@ -367,7 +381,7 @@
 	user.changeNext_move(CLICK_CD_MELEE)
 	playsound(user, "clothwipe", 100, TRUE)
 	SEND_SIGNAL(src, COMSIG_COMPONENT_CLEAN_ACT, CLEAN_STRONG)
-	user.visible_message("<span class='warning'>[user] wipes [src] down with its cloth.</span>","<span class='notice'>I wipe [src] down with its cloth.</span>")
+	user.visible_message(span_warning("[user] wipes [src] down with its cloth."),span_notice("I wipe [src] down with its cloth."))
 	return
 
 /obj/item/rogueweapon/sword/iron

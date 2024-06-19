@@ -19,7 +19,7 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 
 /turf/open/transparent/openspace
 	name = "open space"
-	desc = "My eyes can see far down below.."
+	desc = "My eyes can see far down below."
 	icon_state = "openspace"
 	baseturfs = /turf/open/transparent/openspace
 	CanAtmosPassVertical = ATMOS_PASS_YES
@@ -117,14 +117,14 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 			return
 		var/turf/target = get_step_multiz(src, DOWN)
 		if(!target)
-			to_chat(user, "<span class='warning'>I can't climb there.</span>")
+			to_chat(user, span_warning("I can't climb there."))
 			return
 		if(!user.can_zTravel(target, DOWN, src))
-			to_chat(user, "<span class='warning'>I can't climb here.</span>")
+			to_chat(user, span_warning("I can't climb here."))
 			return
 		if(user.m_intent != MOVE_INTENT_SNEAK)
 			playsound(user, 'sound/foley/climb.ogg', 100, TRUE)
-		user.visible_message("<span class='warning'>[user] starts to climb down.</span>", "<span class='warning'>I start to climb down.</span>")
+		user.visible_message(span_warning("[user] starts to climb down."), span_warning("I start to climb down."))
 		if(do_after(L, 30, target = src))
 			if(user.m_intent != MOVE_INTENT_SNEAK)
 				playsound(user, 'sound/foley/climb.ogg', 100, TRUE)
@@ -139,10 +139,10 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 	if(!user.Adjacent(src))
 		return
 	if(!target)
-		to_chat(user, "<span class='warning'>I can't go there.</span>")
+		to_chat(user, span_warning("I can't go there."))
 		return
 	user.forceMove(target)
-	to_chat(user, "<span class='warning'>I glide down.</span>")
+	to_chat(user, span_warning("I glide down."))
 	. = ..()
 
 /turf/open/transparent/openspace/attackby(obj/item/C, mob/user, params)
@@ -154,22 +154,22 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 		var/obj/structure/lattice/L = locate(/obj/structure/lattice, src)
 		var/obj/structure/lattice/catwalk/W = locate(/obj/structure/lattice/catwalk, src)
 		if(W)
-			to_chat(user, "<span class='warning'>There is already a catwalk here!</span>")
+			to_chat(user, span_warning("There is already a catwalk here!"))
 			return
 		if(L)
 			if(R.use(1))
-				to_chat(user, "<span class='notice'>I construct a catwalk.</span>")
+				to_chat(user, span_notice("I construct a catwalk."))
 				playsound(src, 'sound/blank.ogg', 50, TRUE)
 				new/obj/structure/lattice/catwalk(src)
 			else
-				to_chat(user, "<span class='warning'>I need two rods to build a catwalk!</span>")
+				to_chat(user, span_warning("I need two rods to build a catwalk!"))
 			return
 		if(R.use(1))
-			to_chat(user, "<span class='notice'>I construct a lattice.</span>")
+			to_chat(user, span_notice("I construct a lattice."))
 			playsound(src, 'sound/blank.ogg', 50, TRUE)
 			ReplaceWithLattice()
 		else
-			to_chat(user, "<span class='warning'>I need one rod to build a lattice.</span>")
+			to_chat(user, span_warning("I need one rod to build a lattice."))
 		return
 	if(istype(C, /obj/item/stack/tile/plasteel))
 		if(!CanCoverUp())
@@ -180,12 +180,12 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 			if(S.use(1))
 				qdel(L)
 				playsound(src, 'sound/blank.ogg', 50, TRUE)
-				to_chat(user, "<span class='notice'>I build a floor.</span>")
+				to_chat(user, span_notice("I build a floor."))
 				PlaceOnTop(/turf/open/floor/plating, flags = CHANGETURF_INHERIT_AIR)
 			else
-				to_chat(user, "<span class='warning'>I need one floor tile to build a floor!</span>")
+				to_chat(user, span_warning("I need one floor tile to build a floor!"))
 		else
-			to_chat(user, "<span class='warning'>The plating is going to need some support! Place metal rods first.</span>")
+			to_chat(user, span_warning("The plating is going to need some support! Place metal rods first."))
 
 /turf/open/transparent/openspace/rcd_vals(mob/user, obj/item/construction/rcd/the_rcd)
 	if(!CanBuildHere())
@@ -203,7 +203,7 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 /turf/open/transparent/openspace/rcd_act(mob/user, obj/item/construction/rcd/the_rcd, passed_mode)
 	switch(passed_mode)
 		if(RCD_FLOORWALL)
-			to_chat(user, "<span class='notice'>I build a floor.</span>")
+			to_chat(user, span_notice("I build a floor."))
 			PlaceOnTop(/turf/open/floor/plating, flags = CHANGETURF_INHERIT_AIR)
 			return TRUE
 	return FALSE

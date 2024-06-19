@@ -31,9 +31,9 @@
 		var/obj/target_obj = target
 		if(target_obj.resistance_flags & UNACIDABLE)
 			return
-	target.visible_message("<span class='warning'>[chassis] starts to drill [target].</span>", \
-					"<span class='danger'>[chassis] starts to drill [target]...</span>", \
-					 "<span class='hear'>I hear drilling.</span>")
+	target.visible_message(span_warning("[chassis] starts to drill [target]."), \
+					span_danger("[chassis] starts to drill [target]..."), \
+					 span_hear("I hear drilling."))
 
 	if(do_after_cooldown(target))
 		set_ready_state(FALSE)
@@ -70,7 +70,7 @@
 			drill.log_message("Drilled through [src]", LOG_MECHA)
 			dismantle_wall(TRUE, FALSE)
 	else
-		drill.occupant_message("<span class='danger'>[src] is too durable to drill through.</span>")
+		drill.occupant_message(span_danger("[src] is too durable to drill through."))
 
 /turf/closed/mineral/drill_act(obj/item/mecha_parts/mecha_equipment/drill/drill)
 	for(var/turf/closed/mineral/M in range(drill.chassis,1))
@@ -109,8 +109,8 @@
 	butchering.butchering_enabled = FALSE
 
 /obj/item/mecha_parts/mecha_equipment/drill/proc/drill_mob(mob/living/target, mob/user)
-	target.visible_message("<span class='danger'>[chassis] is drilling [target] with [src]!</span>", \
-						"<span class='danger'>[chassis] is drilling you with [src]!</span>")
+	target.visible_message(span_danger("[chassis] is drilling [target] with [src]!"), \
+						span_danger("[chassis] is drilling you with [src]!"))
 	log_combat(user, target, "drilled", "[name]", "(INTENT: [uppertext(user.used_intent)]) (DAMTYPE: [uppertext(damtype)])")
 	if(target.stat == DEAD && target.getBruteLoss() >= 200)
 		log_combat(user, target, "gibbed", name)
@@ -122,7 +122,7 @@
 	else
 		//drill makes a hole
 		var/obj/item/bodypart/target_part = target.get_bodypart(ran_zone(BODY_ZONE_CHEST))
-		target.apply_damage(10, BRUTE, BODY_ZONE_CHEST, target.run_armor_check(target_part, "melee"))
+		target.apply_damage(10, BRUTE, BODY_ZONE_CHEST, target.run_armor_check(target_part, "stab"))
 
 		//blood splatters
 		var/splatter_dir = get_dir(chassis, target)

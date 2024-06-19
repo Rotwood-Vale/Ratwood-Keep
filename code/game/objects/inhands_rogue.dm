@@ -1,5 +1,6 @@
 /obj/item
 	var/list/onprop = list()
+	var/d_type = "blunt"
 //#ifdef TESTSERVER
 	var/force_reupdate_inhand = TRUE
 //#else

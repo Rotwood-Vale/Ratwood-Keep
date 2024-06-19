@@ -53,9 +53,9 @@
 				qdel(D)
 	if(stress != oldstress)
 		if(stress > oldstress)
-			to_chat(src, "<span class='red'>I gain stress.</span>")
+			to_chat(src, span_red("I gain stress."))
 		else
-			to_chat(src, "<span class='green'>I gain peace.</span>")
+			to_chat(src, span_green("I gain peace."))
 	oldstress = stress
 	if(hud_used)
 		if(hud_used.stressies)

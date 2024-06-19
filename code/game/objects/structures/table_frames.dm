@@ -23,7 +23,7 @@
 
 /obj/structure/table_frame/attackby(obj/item/I, mob/user, params)
 	if(I.tool_behaviour == TOOL_WRENCH)
-		to_chat(user, "<span class='notice'>I start disassembling [src]...</span>")
+		to_chat(user, span_notice("I start disassembling [src]..."))
 		I.play_tool_sound(src)
 		if(I.use_tool(src, user, 30))
 			playsound(src.loc, 'sound/blank.ogg', 50, TRUE)
@@ -34,16 +34,16 @@
 	if (istype(I, /obj/item/stack))
 		if(material?.tableVariant)
 			if(material.get_amount() < 1)
-				to_chat(user, "<span class='warning'>I need one [material.name] sheet to do this!</span>")
+				to_chat(user, span_warning("I need one [material.name] sheet to do this!"))
 				return
-			to_chat(user, "<span class='notice'>I start adding [material] to [src]...</span>")
+			to_chat(user, span_notice("I start adding [material] to [src]..."))
 			if(do_after(user, 20, target = src) && material.use(1))
 				make_new_table(material.tableVariant)
 		else
 			if(material.get_amount() < 1)
-				to_chat(user, "<span class='warning'>I need one metal sheet to do this!</span>")
+				to_chat(user, span_warning("I need one metal sheet to do this!"))
 				return
-			to_chat(user, "<span class='notice'>I start adding [material] to [src]...</span>")
+			to_chat(user, span_notice("I start adding [material] to [src]..."))
 			if(do_after(user, 20, target = src) && material.use(1))
 				var/list/material_list = list()
 				if(material.material_type)
@@ -92,9 +92,9 @@
 
 		if (toConstruct)
 			if(material.get_amount() < 1)
-				to_chat(user, "<span class='warning'>I need one [material.name] sheet to do this!</span>")
+				to_chat(user, span_warning("I need one [material.name] sheet to do this!"))
 				return
-			to_chat(user, "<span class='notice'>I start adding [material] to [src]...</span>")
+			to_chat(user, span_notice("I start adding [material] to [src]..."))
 			if(do_after(user, 20, target = src) && material.use(1))
 				make_new_table(toConstruct)
 	else

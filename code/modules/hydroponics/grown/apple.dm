@@ -53,7 +53,7 @@
 /obj/item/reagent_containers/food/snacks/grown/apple/blockproj(mob/living/carbon/human/H)
 	testing("APPLEHITBEGIN")
 	if(prob(98))
-		H.visible_message("<span class='notice'>[H] is saved by the apple!</span>")
+		H.visible_message(span_notice("[H] is saved by the apple!"))
 //		playsound(get_turf(owner),'sound/blank.ogg', 100, TRUE)
 		H.dropItemToGround(H.head)
 		return 1

@@ -133,8 +133,8 @@ GLOBAL_VAR_INIT(underworld_coins, 0)
 	
 
 // why not also some mob stuff too
-/mob/living/simple_animal/hostile/rogue/demon
-	name = "demon"
+/mob/living/simple_animal/hostile/rogue/dragger
+	name = "dragger"
 	desc = ""
 	icon = 'icons/roguetown/underworld/enigma_dragger.dmi'
 	icon_state = "dragger"
@@ -150,8 +150,8 @@ GLOBAL_VAR_INIT(underworld_coins, 0)
 	turns_per_move = 5
 	response_help_continuous = "passes through"
 	response_help_simple = "pass through"
-	maxHealth = 50
-	health = 50
+	maxHealth = 215
+	health = 215
 	layer = 16
 	plane = 16
 	spacewalk = TRUE
@@ -161,8 +161,8 @@ GLOBAL_VAR_INIT(underworld_coins, 0)
 	move_to_delay = 5 //delay for the automated movement.
 	harm_intent_damage = 1
 	obj_damage = 1
-	melee_damage_lower = 15
-	melee_damage_upper = 25
+	melee_damage_lower = 30
+	melee_damage_upper = 45
 	attack_same = FALSE
 	attack_sound = 'sound/combat/wooshes/bladed/wooshmed (1).ogg'
 	dodge_sound = 'sound/combat/dodge.ogg'
@@ -170,7 +170,7 @@ GLOBAL_VAR_INIT(underworld_coins, 0)
 	d_intent = INTENT_PARRY
 	speak_emote = list("growls")
 	limb_destroyer = 1
-	del_on_death = TRUE
+	del_on_death = FALSE
 	STALUC = 11
 	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
 	minbodytemp = 0
@@ -181,10 +181,10 @@ GLOBAL_VAR_INIT(underworld_coins, 0)
 	canparry = TRUE
 	retreat_health = null
 
-/mob/living/simple_animal/hostile/rogue/demon/electrocute_act(shock_damage, source, siemens_coeff = 1, flags = NONE)
+/mob/living/simple_animal/hostile/rogue/dragger/electrocute_act(shock_damage, source, siemens_coeff = 1, flags = NONE)
 	return FALSE
 
-/mob/living/simple_animal/hostile/rogue/demon/simple_limb_hit(zone)
+/mob/living/simple_animal/hostile/rogue/dragger/simple_limb_hit(zone)
 	if(!zone)
 		return ""
 	switch(zone)
@@ -214,9 +214,9 @@ GLOBAL_VAR_INIT(underworld_coins, 0)
 			return "body"
 		if(BODY_ZONE_PRECISE_GROIN)
 			return "body"
-		if(BODY_ZONE_R_INHAND)
+		if(BODY_ZONE_PRECISE_R_INHAND)
 			return "body"
-		if(BODY_ZONE_L_INHAND)
+		if(BODY_ZONE_PRECISE_L_INHAND)
 			return "body"
 		if(BODY_ZONE_HEAD)
 			return "head"
@@ -233,25 +233,25 @@ GLOBAL_VAR_INIT(underworld_coins, 0)
 
 	return ..()
 
-/mob/living/simple_animal/hostile/rogue/demon/taunted(mob/user)
+/mob/living/simple_animal/hostile/rogue/dragger/taunted(mob/user)
 	GiveTarget(user)
 	return
 
-/mob/living/simple_animal/hostile/rogue/demon/Initialize()
+/mob/living/simple_animal/hostile/rogue/dragger/Initialize()
 	. = ..()
 	set_light(2, 2, "#c0523f")
 	ADD_TRAIT(src, TRAIT_IGNOREDAMAGESLOWDOWN, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_NOPAINSTUN, TRAIT_GENERIC)
 
 
-/mob/living/simple_animal/hostile/rogue/demon/death(gibbed)
+/mob/living/simple_animal/hostile/rogue/dragger/death(gibbed)
 	emote("death")
 	..()
 
-/mob/living/simple_animal/hostile/rogue/demon/Life()
+/mob/living/simple_animal/hostile/rogue/dragger/Life()
 	. = ..()
 	
-/mob/living/simple_animal/hostile/rogue/demon/get_sound(input)
+/mob/living/simple_animal/hostile/rogue/dragger/get_sound(input)
 	switch(input)
 		if("laugh")
 			return pick('sound/vo/mobs/ghost/laugh (1).ogg','sound/vo/mobs/ghost/laugh (2).ogg','sound/vo/mobs/ghost/laugh (3).ogg','sound/vo/mobs/ghost/laugh (4).ogg','sound/vo/mobs/ghost/laugh (5).ogg','sound/vo/mobs/ghost/laugh (6).ogg')
@@ -264,17 +264,17 @@ GLOBAL_VAR_INIT(underworld_coins, 0)
 		if("aggro")
 			return pick('sound/vo/mobs/ghost/aggro (1).ogg','sound/vo/mobs/ghost/aggro (2).ogg','sound/vo/mobs/ghost/aggro (3).ogg','sound/vo/mobs/ghost/aggro (4).ogg','sound/vo/mobs/ghost/aggro (5).ogg','sound/vo/mobs/ghost/aggro (6).ogg')
 
-/mob/living/simple_animal/hostile/rogue/demon/AttackingTarget()
+/mob/living/simple_animal/hostile/rogue/dragger/AttackingTarget()
 	. = ..()
 	if(. && prob(8) && iscarbon(target))
 		var/mob/living/carbon/C = target
 		C.Immobilize(50)
-		C.visible_message("<span class='danger'>\The [src] paralyzes \the [C] in fear!</span>", \
-				"<span class='danger'>\The [src] paralyzes me!</span>")
+		C.visible_message(span_danger("\The [src] paralyzes \the [C] in fear!"), \
+				span_danger("\The [src] paralyzes me!"))
 		emote("laugh")
 
 /obj/effect/landmark/underworldsafe/Crossed(atom/movable/AM, oldloc)
-	if(istype(AM, /mob/living/simple_animal/hostile/rogue/demon))
+	if(istype(AM, /mob/living/simple_animal/hostile/rogue/dragger))
 		for(var/mob/living/carbon/human/A in view(4))
 			to_chat(A, "The monster's form dematerializes as it nears the Carriage.")
 		qdel(AM)

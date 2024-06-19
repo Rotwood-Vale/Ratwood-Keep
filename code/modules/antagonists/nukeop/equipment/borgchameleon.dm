@@ -48,21 +48,21 @@
 		if (isturf(user.loc))
 			toggle(user)
 		else
-			to_chat(user, "<span class='warning'>I can't use [src] while inside something!</span>")
+			to_chat(user, span_warning("I can't use [src] while inside something!"))
 	else
-		to_chat(user, "<span class='warning'>I need at least [activationCost] charge in my cell to use [src]!</span>")
+		to_chat(user, span_warning("I need at least [activationCost] charge in my cell to use [src]!"))
 
 /obj/item/borg_chameleon/proc/toggle(mob/living/silicon/robot/user)
 	if(active)
 		playsound(src, 'sound/blank.ogg', 100, TRUE, -6)
-		to_chat(user, "<span class='notice'>I deactivate \the [src].</span>")
+		to_chat(user, span_notice("I deactivate \the [src]."))
 		deactivate(user)
 	else
 		if(animation_playing)
-			to_chat(user, "<span class='notice'>\the [src] is recharging.</span>")
+			to_chat(user, span_notice("\the [src] is recharging."))
 			return
 		animation_playing = TRUE
-		to_chat(user, "<span class='notice'>I activate \the [src].</span>")
+		to_chat(user, span_notice("I activate \the [src]."))
 		playsound(src, 'sound/blank.ogg', 100, TRUE, -6)
 		var/start = user.filters.len
 		var/X,Y,rsq,i,f
@@ -79,10 +79,10 @@
 			animate(offset=f:offset-1, time=rand()*20+10)
 		if (do_after(user, 50, target=user) && user.cell.use(activationCost))
 			playsound(src, 'sound/blank.ogg', 100, TRUE, -6)
-			to_chat(user, "<span class='notice'>I are now disguised as the Nanotrasen engineering borg \"[friendlyName]\".</span>")
+			to_chat(user, span_notice("I are now disguised as the Nanotrasen engineering borg \"[friendlyName]\"."))
 			activate(user)
 		else
-			to_chat(user, "<span class='warning'>The chameleon field fizzles.</span>")
+			to_chat(user, span_warning("The chameleon field fizzles."))
 			do_sparks(3, FALSE, user)
 			for(i=1, i<=min(7, user.filters.len), ++i) // removing filters that are animating does nothing, we gotta stop the animations first
 				f = user.filters[start+i]
@@ -129,5 +129,5 @@
 
 /obj/item/borg_chameleon/proc/disrupt(mob/living/silicon/robot/user)
 	if(active)
-		to_chat(user, "<span class='danger'>My chameleon field deactivates.</span>")
+		to_chat(user, span_danger("My chameleon field deactivates."))
 		deactivate(user)

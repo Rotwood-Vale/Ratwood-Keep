@@ -779,7 +779,7 @@
 							usedsource = "fuckcorpse"
 							stop_fucking()
 						else
-							if(D.owner.stat != CONSCIOUS)
+							if(!D.owner.client)
 								usedsource = "sleepingbeauty"
 						if(D.owner.cmode)
 							D.owner.flash_fullscreen("redflash1")
@@ -1176,14 +1176,6 @@
 						yee = 1
 						husbando = 1
 						owner.add_stress(/datum/stressevent/cumlove)
-					if(HAS_TRAIT(F, RTRAIT_GOODLOVER))
-						if(!H.mob_timers["cumtri"])
-							H.mob_timers["cumtri"] = world.time
-							H.adjust_triumphs(1)
-					if(HAS_TRAIT(H, RTRAIT_GOODLOVER))
-						if(!F.mob_timers["cumtri"])
-							F.mob_timers["cumtri"] = world.time
-							F.adjust_triumphs(1)
 				if(!yee)
 					owner.add_stress(/datum/stressevent/cummax)
 			else
@@ -1218,7 +1210,7 @@
 							if(H.mind.antag_datums.len)
 								wuzantag = TRUE
 					if(!wuzantag)
-						adjust_playerquality(-1, H.ckey, reason="Fucked a sleeping player as a non-villain.")
+						adjust_playerquality(-1, H.ckey, reason="Fucked an AFK player as a non-villain.")
 			owner.add_stress(/datum/stressevent/cumok)
 			playsound(fucking, 'sound/misc/mat/endin.ogg', 100, TRUE, ignore_walls = FALSE)
 			add_cum_floor(get_turf(fucking))

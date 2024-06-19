@@ -74,7 +74,7 @@
 	if(ishuman(user))
 		var/mob/living/carbon/human/C = user
 		if(C.shoes == src && chained == 1)
-			to_chat(user, "<span class='warning'>I need help taking these off!</span>")
+			to_chat(user, span_warning("I need help taking these off!"))
 			return FALSE
 	return ..()
 
@@ -83,7 +83,7 @@
 	if(ishuman(m))
 		var/mob/living/carbon/human/c = m
 		if(c.shoes == src && chained == 1)
-			to_chat(c, "<span class='warning'>I need help taking these off!</span>")
+			to_chat(c, span_warning("I need help taking these off!"))
 			return
 	return ..()
 

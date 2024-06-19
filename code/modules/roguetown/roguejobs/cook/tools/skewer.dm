@@ -2,7 +2,7 @@
 	force = 15
 	possible_item_intents = list(INTENT_GENERIC)
 	name = "skewer"
-	desc = ""
+	desc = "A sturdy skewer, smeared with remnants of previous meals."
 	icon_state = "skewer"
 	icon = 'icons/roguetown/items/cooking.dmi'
 	item_state = "rods"

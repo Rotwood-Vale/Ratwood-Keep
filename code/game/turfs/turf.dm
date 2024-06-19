@@ -259,12 +259,12 @@
 		if(flags & FALL_STOP_INTERCEPTING)
 			break
 	if(prev_turf && !(flags & FALL_NO_MESSAGE))
-		prev_turf.visible_message("<span class='danger'>[mov_name] falls through [prev_turf]!</span>")
+		prev_turf.visible_message(span_danger("[mov_name] falls through [prev_turf]!"))
 	if(flags & FALL_INTERCEPTED)
 		return
 	if(zFall(A, ++levels))
 		return FALSE
-	A.visible_message("<span class='danger'>[A] crashes into [src]!</span>")
+	A.visible_message(span_danger("[A] crashes into [src]!"))
 	A.onZImpact(src, levels)
 	return TRUE
 
@@ -297,6 +297,7 @@
 /turf/attackby(obj/item/C, mob/user, params)
 	if(..())
 		return TRUE
+	//Cables and RCD
 	if(can_lay_cable() && istype(C, /obj/item/stack/cable_coil))
 		var/obj/item/stack/cable_coil/coil = C
 		coil.place_turf(src, user)
@@ -313,7 +314,7 @@
 	else if(istype(C, /obj/item/twohanded/rcl))
 		handleRCL(C, user)
 
-	return FALSE
+	return max_integrity && C.attack_turf(src, user)
 
 /turf/CanPass(atom/movable/mover, turf/target)
 	if(!target)
@@ -471,7 +472,7 @@
 		M.adjustBruteLoss(damage)
 		M.Unconscious(damage * 4)
 	for(var/obj/mecha/M in src)
-		M.take_damage(damage*2, BRUTE, "melee", 1)
+		M.take_damage(damage*2, BRUTE, "blunt", 1)
 
 /turf/proc/Bless()
 	new /obj/effect/blessing(src)
@@ -481,7 +482,7 @@
 	if(.)
 		return
 	if(length(src_object.contents()))
-		to_chat(usr, "<span class='notice'>I start dumping out the contents...</span>")
+		to_chat(usr, span_notice("I start dumping out the contents..."))
 		if(!do_after(usr,20,target=src_object.parent))
 			return FALSE
 

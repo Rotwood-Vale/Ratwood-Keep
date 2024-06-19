@@ -112,12 +112,12 @@ GLOBAL_LIST_INIT(sand_recipes, list(\
 		return
 	var/mob/living/carbon/human/C = hit_atom
 	if(C.is_eyes_covered())
-		C.visible_message("<span class='danger'>[C]'s eye protection blocks the sand!</span>", "<span class='warning'>My eye protection blocks the sand!</span>")
+		C.visible_message(span_danger("[C]'s eye protection blocks the sand!"), span_warning("My eye protection blocks the sand!"))
 		return
 	C.adjust_blurriness(6)
 	C.adjustStaminaLoss(15)//the pain from my eyes burning does stamina damage
 	C.confused += 5
-	to_chat(C, "<span class='danger'>\The [src] gets into my eyes! The pain, it burns!</span>")
+	to_chat(C, span_danger("\The [src] gets into my eyes! The pain, it burns!"))
 	qdel(src)
 
 /obj/item/stack/ore/glass/ex_act(severity, target)
@@ -143,7 +143,7 @@ GLOBAL_LIST_INIT(sand_recipes, list(\
 	mine_experience = 5
 
 /obj/item/stack/ore/plasma/welder_act(mob/living/user, obj/item/I)
-	to_chat(user, "<span class='warning'>I can't hit a high enough temperature to smelt [src] properly!</span>")
+	to_chat(user, span_warning("I can't hit a high enough temperature to smelt [src] properly!"))
 	return TRUE
 
 
@@ -226,7 +226,7 @@ GLOBAL_LIST_INIT(sand_recipes, list(\
 
 /obj/item/twohanded/required/gibtonite/attackby(obj/item/I, mob/user, params)
 	if(!wires && istype(I, /obj/item/assembly/igniter))
-		user.visible_message("<span class='notice'>[user] attaches [I] to [src].</span>", "<span class='notice'>I attach [I] to [src].</span>")
+		user.visible_message(span_notice("[user] attaches [I] to [src]."), span_notice("I attach [I] to [src]."))
 		wires = new /datum/wires/explosive/gibtonite(src)
 		attacher = key_name(user)
 		qdel(I)
@@ -246,7 +246,7 @@ GLOBAL_LIST_INIT(sand_recipes, list(\
 			primed = FALSE
 			if(det_timer)
 				deltimer(det_timer)
-			user.visible_message("<span class='notice'>The chain reaction was stopped! ...The ore's quality looks diminished.</span>", "<span class='notice'>I stopped the chain reaction. ...The ore's quality looks diminished.</span>")
+			user.visible_message(span_notice("The chain reaction was stopped! ...The ore's quality looks diminished."), span_notice("I stopped the chain reaction. ...The ore's quality looks diminished."))
 			icon_state = "Gibtonite ore"
 			quality = GIBTONITE_QUALITY_LOW
 			return
@@ -284,7 +284,7 @@ GLOBAL_LIST_INIT(sand_recipes, list(\
 			log_game(bomb_message)
 			GLOB.bombers += bomb_message
 		else
-			user.visible_message("<span class='warning'>[user] strikes \the [src], causing a chain reaction!</span>", "<span class='danger'>I strike \the [src], causing a chain reaction.</span>")
+			user.visible_message(span_warning("[user] strikes \the [src], causing a chain reaction!"), span_danger("I strike \the [src], causing a chain reaction."))
 			log_bomber(user, "has primed a", src, "for detonation", notify_admins)
 		det_timer = addtimer(CALLBACK(src, PROC_REF(detonate), notify_admins), det_time, TIMER_STOPPABLE)
 
@@ -350,9 +350,9 @@ GLOBAL_LIST_INIT(sand_recipes, list(\
 	return value
 
 /obj/item/coin/suicide_act(mob/living/user)
-	user.visible_message("<span class='suicide'>[user] contemplates suicide with \the [src]!</span>")
+	user.visible_message(span_suicide("[user] contemplates suicide with \the [src]!"))
 	if (!attack_self(user))
-		user.visible_message("<span class='suicide'>[user] couldn't flip \the [src]!</span>")
+		user.visible_message(span_suicide("[user] couldn't flip \the [src]!"))
 		return SHAME
 	addtimer(CALLBACK(src, PROC_REF(manual_suicide), user), 10)//10 = time takes for flip animation
 	return MANUAL_SUICIDE_NONLETHAL
@@ -360,31 +360,31 @@ GLOBAL_LIST_INIT(sand_recipes, list(\
 /obj/item/coin/proc/manual_suicide(mob/living/user)
 	var/index = sideslist.Find(coinflip)
 	if (index==2)//tails
-		user.visible_message("<span class='suicide'>\the [src] lands on [coinflip]! [user] promptly falls over, dead!</span>")
+		user.visible_message(span_suicide("\the [src] lands on [coinflip]! [user] promptly falls over, dead!"))
 		user.adjustOxyLoss(200)
 		user.death(0)
 		user.set_suicide(TRUE)
 		user.suicide_log()
 	else
-		user.visible_message("<span class='suicide'>\the [src] lands on [coinflip]! [user] keeps on living!</span>")
+		user.visible_message(span_suicide("\the [src] lands on [coinflip]! [user] keeps on living!"))
 
 /obj/item/coin/examine(mob/user)
 	. = ..()
-	. += "<span class='info'>It's worth [value] credit\s.</span>"
+	. += span_info("It's worth [value] credit\s.")
 
 /obj/item/coin/attackby(obj/item/W, mob/user, params)
 	if(istype(W, /obj/item/stack/cable_coil))
 		var/obj/item/stack/cable_coil/CC = W
 		if(string_attached)
-			to_chat(user, "<span class='warning'>There already is a string attached to this coin!</span>")
+			to_chat(user, span_warning("There already is a string attached to this coin!"))
 			return
 
 		if (CC.use(1))
 			add_overlay("coin_string_overlay")
 			string_attached = 1
-			to_chat(user, "<span class='notice'>I attach a string to the coin.</span>")
+			to_chat(user, span_notice("I attach a string to the coin."))
 		else
-			to_chat(user, "<span class='warning'>I need one length of cable to attach a string to the coin!</span>")
+			to_chat(user, span_warning("I need one length of cable to attach a string to the coin!"))
 			return
 	else
 		..()
@@ -397,13 +397,13 @@ GLOBAL_LIST_INIT(sand_recipes, list(\
 	new /obj/item/stack/cable_coil(drop_location(), 1)
 	overlays = list()
 	string_attached = null
-	to_chat(user, "<span class='notice'>I detach the string from the coin.</span>")
+	to_chat(user, span_notice("I detach the string from the coin."))
 	return TRUE
 
 /obj/item/coin/attack_self(mob/user)
 	if(cooldown < world.time)
 		if(string_attached) //does the coin have a wire attached
-			to_chat(user, "<span class='warning'>The coin won't flip very well with something attached!</span>" )
+			to_chat(user, span_warning("The coin won't flip very well with something attached!") )
 			return FALSE//do not flip the coin
 		cooldown = world.time + 15
 		flick("coin_[coinflip]_flip", src)
@@ -413,9 +413,9 @@ GLOBAL_LIST_INIT(sand_recipes, list(\
 		var/oldloc = loc
 		sleep(15)
 		if(loc == oldloc && user && !user.incapacitated())
-			user.visible_message("<span class='notice'>[user] has flipped [src]. It lands on [coinflip].</span>", \
- 							 "<span class='notice'>I flip [src]. It lands on [coinflip].</span>", \
-							 "<span class='hear'>I hear the clattering of loose change.</span>")
+			user.visible_message(span_notice("[user] has flipped [src]. It lands on [coinflip]."), \
+ 							 span_notice("I flip [src]. It lands on [coinflip]."), \
+							 span_hear("I hear the clattering of loose change."))
 	return TRUE//did the coin flip? useful for suicide_act
 
 /obj/item/coin/gold

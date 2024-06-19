@@ -8,7 +8,7 @@
 	var/triggered = 0
 
 /obj/effect/mine/proc/mineEffect(mob/victim)
-	to_chat(victim, "<span class='danger'>*click*</span>")
+	to_chat(victim, span_danger("*click*"))
 
 /obj/effect/mine/Crossed(AM as mob|obj)
 	if(isturf(loc))
@@ -22,7 +22,7 @@
 /obj/effect/mine/proc/triggermine(mob/victim)
 	if(triggered)
 		return
-	visible_message("<span class='danger'>[victim] sets off [icon2html(src, viewers(src))] [src]!</span>")
+	visible_message(span_danger("[victim] sets off [icon2html(src, viewers(src))] [src]!"))
 	var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 	s.set_up(3, 1, src)
 	s.start()
@@ -55,7 +55,7 @@
 
 /obj/effect/mine/kickmine/mineEffect(mob/victim)
 	if(isliving(victim) && victim.client)
-		to_chat(victim, "<span class='danger'>I have been kicked FOR NO REISIN!</span>")
+		to_chat(victim, span_danger("I have been kicked FOR NO REISIN!"))
 		qdel(victim.client)
 
 
@@ -120,7 +120,7 @@
 /obj/effect/mine/pickup/bloodbath/mineEffect(mob/living/carbon/victim)
 	if(!victim.client || !istype(victim))
 		return
-	to_chat(victim, "<span class='reallybig redtext'>RIP AND TEAR</span>")
+	to_chat(victim, span_reallybigredtext("RIP AND TEAR"))
 	var/old_color = victim.client.color
 	var/static/list/red_splash = list(1,0,0,0.8,0.2,0, 0.8,0,0.2,0.1,0,0)
 	var/static/list/pure_red = list(0,0,0,0,0,0,0,0,0,1,0,0)
@@ -136,14 +136,14 @@
 	chainsaw.attack_self(victim)
 	chainsaw.wield(victim)
 	victim.reagents.add_reagent(/datum/reagent/medicine/adminordrazine,25)
-	to_chat(victim, "<span class='warning'>KILL, KILL, KILL! YOU HAVE NO ALLIES ANYMORE, KILL THEM ALL!</span>")
+	to_chat(victim, span_warning("KILL, KILL, KILL! YOU HAVE NO ALLIES ANYMORE, KILL THEM ALL!"))
 
 	victim.client.color = pure_red
 	animate(victim.client,color = red_splash, time = 10, easing = SINE_EASING|EASE_OUT)
 	sleep(10)
 	animate(victim.client,color = old_color, time = duration)//, easing = SINE_EASING|EASE_OUT)
 	sleep(duration)
-	to_chat(victim, "<span class='notice'>My bloodlust seeps back into the bog of my subconscious and you regain self control.</span>")
+	to_chat(victim, span_notice("My bloodlust seeps back into the bog of my subconscious and you regain self control."))
 	qdel(chainsaw)
 	victim.log_message("exited a blood frenzy", LOG_ATTACK)
 	qdel(src)
@@ -159,7 +159,7 @@
 /obj/effect/mine/pickup/healing/mineEffect(mob/living/carbon/victim)
 	if(!victim.client || !istype(victim))
 		return
-	to_chat(victim, "<span class='notice'>I feel great!</span>")
+	to_chat(victim, span_notice("I feel great!"))
 	victim.revive(full_heal = TRUE, admin_revive = TRUE)
 
 /obj/effect/mine/pickup/speed
@@ -171,8 +171,8 @@
 /obj/effect/mine/pickup/speed/mineEffect(mob/living/carbon/victim)
 	if(!victim.client || !istype(victim))
 		return
-	to_chat(victim, "<span class='notice'>I feel fast!</span>")
+	to_chat(victim, span_notice("I feel fast!"))
 	victim.add_movespeed_modifier(MOVESPEED_ID_YELLOW_ORB, update=TRUE, priority=100, multiplicative_slowdown=-2, blacklisted_movetypes=(FLYING|FLOATING))
 	sleep(duration)
 	victim.remove_movespeed_modifier(MOVESPEED_ID_YELLOW_ORB)
-	to_chat(victim, "<span class='notice'>I slow down.</span>")
+	to_chat(victim, span_notice("I slow down."))
