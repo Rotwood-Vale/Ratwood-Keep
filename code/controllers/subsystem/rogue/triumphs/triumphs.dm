@@ -69,6 +69,7 @@ SUBSYSTEM_DEF(triumphs)
 		TRIUMPH_CAT_MISC = 0,
 		TRIUMPH_CAT_ACTIVE_DATUMS = 0
 	)
+	var/list/legacy_triumphs = null
 
 
 /*
@@ -284,12 +285,17 @@ SUBSYSTEM_DEF(triumphs)
 
 /// Gets the legacy triumph value to inherit the old triumphs for the first season, assuming legacy data was converted to ckeys
 /datum/controller/subsystem/triumphs/proc/get_legacy_triumph_value(target_ckey)
-	var/json_file = file("data/triumphs.json")
-	if(!fexists(json_file))
-		return 0
-	var/list/json = json_decode(file2text(json_file))
-	if(json[target_ckey])
-		return json[target_ckey]
+	if(legacy_triumphs == null)
+		var/json_file = file("data/triumphs.json")
+		if(!fexists(json_file))
+			return 0
+		var/list/json = json_decode(file2text(json_file))
+		var/list/new_legacy = list()
+		for(var/player_key in json)
+			new_legacy[ckey(player_key)] = json[player_key]
+		legacy_triumphs = new_legacy
+	if(legacy_triumphs[target_ckey])
+		return legacy_triumphs[target_ckey]
 	return 0
 
 // Return a value of the triumphs they got
