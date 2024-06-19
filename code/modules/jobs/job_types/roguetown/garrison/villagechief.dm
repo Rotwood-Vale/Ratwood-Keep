@@ -1,7 +1,7 @@
 /datum/job/roguetown/woodsman
 	title = "Village Elder"
 	flag = ELDER
-	department_flag = GARRISON
+	department_flag = YEOMEN
 	faction = "Station"
 	total_positions = 1
 	spawn_positions = 1
