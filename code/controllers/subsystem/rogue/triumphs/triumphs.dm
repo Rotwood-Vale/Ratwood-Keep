@@ -282,16 +282,31 @@ SUBSYSTEM_DEF(triumphs)
 	// But leave the old leaderboard file in, we mite do somethin w it later
 	triumph_leaderboard = list() 
 
+/// Gets the legacy triumph value to inherit the old triumphs for the first season, assuming legacy data was converted to ckeys
+/datum/controller/subsystem/triumphs/proc/get_legacy_triumph_value(target_ckey)
+	var/json_file = file("data/triumphs.json")
+	if(!fexists(json_file))
+		return 0
+	var/list/json = json_decode(file2text(json_file))
+	if(json[target_ckey])
+		return json[target_ckey]
+	return 0
+
 // Return a value of the triumphs they got
 /datum/controller/subsystem/triumphs/proc/get_triumphs(target_ckey)
 	if(!(target_ckey in triumph_amount_cache))
 		var/target_file = file("data/player_saves/[target_ckey[1]]/[target_ckey]/triumphs.json") 
 		if(!fexists(target_file)) // no file or new player, write them in something
-			var/list/new_guy = list("triumph_count" = 0, "triumph_wipe_season" = GLOB.triumph_wipe_season)
+			var/triumph_amount = 0
+			// If it is the first triumph wipe season, inherit previous triumphs
+			if(GLOB.triumph_wipe_season <= 1)
+				triumph_amount = get_legacy_triumph_value(target_ckey)
+
+			var/list/new_guy = list("triumph_count" = triumph_amount, "triumph_wipe_season" = GLOB.triumph_wipe_season)
 
 			WRITE_FILE(target_file, json_encode(new_guy))
-			triumph_amount_cache[target_ckey] = 0
-			return 0
+			triumph_amount_cache[target_ckey] = triumph_amount
+			return triumph_amount
 
 		// This is not a new guy
 		var/list/not_new_guy = json_decode(file2text(target_file))
