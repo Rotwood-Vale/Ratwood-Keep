@@ -199,9 +199,9 @@
 
 	log_game("The round has ended.")
 
-	to_chat(world, "<BR><BR><BR><span class='reallybig'>So ends this tale of Blackstone.</span>")
+	to_chat(world, "<BR><BR><BR><span class='reallybig'>So ends this tale of Ratwood Keep.</span>")
 	get_end_reason()
-	SSvote.initiate_vote("map", "Blackstone players")
+	SSvote.initiate_vote("map", "Ratwood players")
 
 	var/list/key_list = list()
 	for(var/client/C in GLOB.clients)
