@@ -227,10 +227,8 @@
 #define JDO_GATEMASTER 8.4
 #define JDO_TOWNGUARD 8.5
 #define JDO_DUNGEONEER 8.6
-#define JDO_VET 8.7
 #define JDO_BOGMASTER 9
 #define JDO_BOGGUARD 9.1
-#define JDO_CHIEF 9.2
 
 #define JDO_PRIEST 10
 #define JDO_PURITAN 11
@@ -246,6 +244,7 @@
 
 #define JDO_ARCHIVIST 18
 
+#define JDO_CHIEF 18.1
 #define JDO_ARMORER 19
 #define JDO_WEAPONSMITH 20
 #define JDO_APPRENTICE 21
@@ -266,7 +265,8 @@
 #define JDO_PILGRIM 30.2
 
 #define JDO_GRENZELHOFT 31
-#define JDO_DESERT_RIDER 32
+#define JDO_DESERT_RIDER 31.1
+#define JDO_VET 31.2
 
 #define JDO_VAGRANT 33
 #define JDO_ORPHAN 34
