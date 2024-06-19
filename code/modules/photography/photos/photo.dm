@@ -40,7 +40,7 @@
 		icon = I
 
 /obj/item/photo/suicide_act(mob/living/carbon/user)
-	user.visible_message("<span class='suicide'>[user] is taking one last look at \the [src]! It looks like [user.p_theyre()] giving in to death!</span>")//when you wanna look at photo of waifu one last time before you die...
+	user.visible_message(span_suicide("[user] is taking one last look at \the [src]! It looks like [user.p_theyre()] giving in to death!"))//when you wanna look at photo of waifu one last time before you die...
 	if (user.gender == MALE)
 		playsound(user, 'sound/blank.ogg', 50, TRUE)//EVERY TIME I DO IT MAKES ME LAUGH
 	else if (user.gender == FEMALE)
@@ -53,7 +53,7 @@
 /obj/item/photo/attackby(obj/item/P, mob/user, params)
 	if(istype(P, /obj/item/pen) || istype(P, /obj/item/toy/crayon))
 		if(!user.is_literate())
-			to_chat(user, "<span class='notice'>I scribble illegibly on [src]!</span>")
+			to_chat(user, span_notice("I scribble illegibly on [src]!"))
 			return
 		var/txt = sanitize(input(user, "What would you like to write on the back?", "Photo Writing", null)  as text)
 		txt = copytext(txt, 1, 128)
@@ -67,11 +67,11 @@
 	if(in_range(src, user) || isobserver(user))
 		show(user)
 	else
-		. += "<span class='warning'>I need to get closer to get a good look at this photo!</span>"
+		. += span_warning("I need to get closer to get a good look at this photo!")
 
 /obj/item/photo/proc/show(mob/user)
 	if(!istype(picture) || !picture.picture_image)
-		to_chat(user, "<span class='warning'>[src] seems to be blank...</span>")
+		to_chat(user, span_warning("[src] seems to be blank..."))
 		return
 	user << browse_rsc(picture.picture_image, "tmp_photo.png")
 	user << browse("<html><head><title>[name]</title></head>" \

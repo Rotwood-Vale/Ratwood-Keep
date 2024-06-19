@@ -91,8 +91,8 @@
 	for(var/i in found - sleepers)
 		var/mob/living/L = i
 		L.add_atom_colour("#800080", TEMPORARY_COLOUR_PRIORITY)
-		L.visible_message("<span class='revennotice'>A strange purple glow wraps itself around [L] as [L.p_they()] suddenly fall[L.p_s()] unconscious.</span>",
-			"<span class='revendanger'>[desc]</span>")
+		L.visible_message(span_revennotice("A strange purple glow wraps itself around [L] as [L.p_they()] suddenly fall[L.p_s()] unconscious."),
+			span_revendanger("[desc]"))
 		// Don't let them sit suround unconscious forever
 		addtimer(CALLBACK(src, PROC_REF(sleeper_dreams), L), 100)
 
@@ -121,7 +121,7 @@
 
 /obj/structure/table/abductor/wabbajack/proc/sleeper_dreams(mob/living/sleeper)
 	if(sleeper in sleepers)
-		to_chat(sleeper, "<span class='revennotice'>While you slumber, you have the strangest dream, like you can see myself from the outside.</span>")
+		to_chat(sleeper, span_revennotice("While you slumber, you have the strangest dream, like you can see myself from the outside."))
 		sleeper.ghostize(TRUE)
 
 /obj/structure/table/abductor/wabbajack/left
@@ -196,7 +196,7 @@
 		var/throwtarget = get_edge_target_turf(src, boot_dir)
 		M.Paralyze(40)
 		M.throw_at(throwtarget, 5, 1)
-		to_chat(M, "<span class='notice'>No climbing on the bar please.</span>")
+		to_chat(M, span_notice("No climbing on the bar please."))
 	else
 		. = ..()
 
@@ -243,7 +243,7 @@
 		if(I.registered_account)
 			account = I.registered_account
 		else if(!check_times[AM] || check_times[AM] < world.time) //Let's not spam the message
-			to_chat(AM, "<span class='notice'>This ID card doesn't have an owner associated with it!</span>")
+			to_chat(AM, span_notice("This ID card doesn't have an owner associated with it!"))
 			check_times[AM] = world.time + LUXURY_MESSAGE_COOLDOWN
 	else if(ishuman(AM))
 		var/mob/living/carbon/human/H = AM
@@ -304,7 +304,7 @@
 		if(armless)
 			if(!AM.pulling || !iscash(AM.pulling) && !istype(AM.pulling, /obj/item/card/id))
 				if(!check_times[AM] || check_times[AM] < world.time) //Let's not spam the message
-					to_chat(AM, "<span class='notice'>Try pulling a valid ID, space cash, holochip or coin into \the [src]!</span>")
+					to_chat(AM, span_notice("Try pulling a valid ID, space cash, holochip or coin into \the [src]!"))
 					check_times[AM] = world.time + LUXURY_MESSAGE_COOLDOWN
 
 	if(payees[AM] >= threshold)
@@ -326,7 +326,7 @@
 				AM.pulling = HC
 			payees[AM] -= payees[AM]
 
-		say("<span class='robot'>Welcome aboard, [AM]![change ? " Here is your change." : ""]</span>")
+		say(span_robot("Welcome aboard, [AM]![change ? " Here is your change." : ""]"))
 		approved_passengers += AM
 
 		check_times -= AM
@@ -335,7 +335,7 @@
 		for(var/obj/I in counted_money)
 			qdel(I)
 		if(!check_times[AM] || check_times[AM] < world.time) //Let's not spam the message
-			to_chat(AM, "<span class='notice'>$[payees[AM]] received. You need $[threshold-payees[AM]] more.</span>")
+			to_chat(AM, span_notice("$[payees[AM]] received. You need $[threshold-payees[AM]] more."))
 			check_times[AM] = world.time + LUXURY_MESSAGE_COOLDOWN
 		return ..()
 	else

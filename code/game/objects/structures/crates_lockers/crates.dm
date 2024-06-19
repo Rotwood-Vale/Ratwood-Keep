@@ -56,14 +56,14 @@
 /obj/structure/closet/crate/open(mob/living/user)
 	. = ..()
 	if(. && manifest)
-		to_chat(user, "<span class='notice'>The manifest is torn off [src].</span>")
+		to_chat(user, span_notice("The manifest is torn off [src]."))
 		playsound(src, 'sound/blank.ogg', 75, TRUE)
 		manifest.forceMove(get_turf(src))
 		manifest = null
 		update_icon()
 
 /obj/structure/closet/crate/proc/tear_manifest(mob/user)
-	to_chat(user, "<span class='notice'>I tear the manifest off of [src].</span>")
+	to_chat(user, span_notice("I tear the manifest off of [src]."))
 	playsound(src, 'sound/blank.ogg', 75, TRUE)
 
 	manifest.forceMove(loc)

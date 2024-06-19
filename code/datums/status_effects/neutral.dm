@@ -110,7 +110,7 @@
 		rewarded = caster
 
 /datum/status_effect/bounty/on_apply()
-	to_chat(owner, "<span class='boldnotice'>I hear something behind you talking...</span> <span class='notice'>I have been marked for death by [rewarded]. If you die, they will be rewarded.</span>")
+	to_chat(owner, span_boldnotice("I hear something behind you talking...</span> <span class='notice'>I have been marked for death by [rewarded]. If you die, they will be rewarded."))
 	playsound(owner, 'sound/blank.ogg', 75, FALSE)
 	return ..()
 
@@ -121,9 +121,9 @@
 
 /datum/status_effect/bounty/proc/rewards()
 	if(rewarded && rewarded.mind && rewarded.stat != DEAD)
-		to_chat(owner, "<span class='boldnotice'>I hear something behind you talking...</span> <span class='notice'>Bounty claimed.</span>")
+		to_chat(owner, span_boldnotice("I hear something behind you talking...</span> <span class='notice'>Bounty claimed."))
 		playsound(owner, 'sound/blank.ogg', 75, FALSE)
-		to_chat(rewarded, "<span class='greentext'>I feel a surge of mana flow into you!</span>")
+		to_chat(rewarded, span_greentext("I feel a surge of mana flow into you!"))
 		for(var/obj/effect/proc_holder/spell/spell in rewarded.mind.spell_list)
 			spell.charge_counter = spell.charge_max
 			spell.recharging = FALSE

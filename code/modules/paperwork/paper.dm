@@ -154,7 +154,7 @@
 //		var/atom/movable/screen/read/R = user.hud_used.reads
 		format_browse(info, user)
 	else
-		return "<span class='warning'>I'm too far away to read it.</span>"
+		return span_warning("I'm too far away to read it.")
 
 /*
 	if(in_range(user, src) || isobserver(user))
@@ -165,7 +165,7 @@
 			user << browse("<HTML><HEAD><TITLE>[name]</TITLE>[extra_headers]</HEAD><BODY>[stars(info)]<HR></BODY></HTML>", "window=paper[md5(name)]")
 			onclose(user, "paper[md5(name)]")
 	else
-		return "<span class='warning'>You're too far away to read it.</span>"
+		return span_warning("You're too far away to read it.")
 */
 /obj/item/paper/verb/rename()
 	set name = "Rename paper"
@@ -177,7 +177,7 @@
 	if(ishuman(usr))
 		var/mob/living/carbon/human/H = usr
 		if(HAS_TRAIT(H, TRAIT_CLUMSY) && prob(25))
-			to_chat(H, "<span class='warning'>I cut myself on the paper! Ahhhh! Ahhhhh!</span>")
+			to_chat(H, span_warning("I cut myself on the paper! Ahhhh! Ahhhhh!"))
 			H.damageoverlaytemp = 9001
 			H.update_damage_hud()
 			return
@@ -188,7 +188,7 @@
 
 
 /obj/item/paper/suicide_act(mob/user)
-	user.visible_message("<span class='suicide'>[user] scratches a grid on [user.p_their()] wrist with the paper! It looks like [user.p_theyre()] trying to commit sudoku...</span>")
+	user.visible_message(span_suicide("[user] scratches a grid on [user.p_their()] wrist with the paper! It looks like [user.p_theyre()] trying to commit sudoku..."))
 	return (BRUTELOSS)
 
 /obj/item/paper/proc/reset_spamflag()
@@ -196,7 +196,7 @@
 
 /obj/item/paper/attack_self(mob/user)
 	if(mailer)
-		user.visible_message("<span class='notice'>[user] opens the letter from [mailer].</span>")
+		user.visible_message(span_notice("[user] opens the letter from [mailer]."))
 		cached_mailer = mailer
 		cached_mailedto = mailedto
 		mailer = null
@@ -387,7 +387,7 @@
 
 		if(t != null)	//No input from the user means nothing needs to be added
 			if((length(info) + length(t)) > maxlen)
-				to_chat(usr, "<span class='warning'>Too long. Try again.</span>")
+				to_chat(usr, span_warning("Too long. Try again."))
 				return
 			if(id!="end")
 				addtofield(text2num(id), t) // He wants to edit a field, let him.
@@ -422,14 +422,14 @@
 
 	if(istype(P, /obj/item/pen) || istype(P, /obj/item/natural/thorn)|| istype(P, /obj/item/natural/feather))
 		if(length(info) > maxlen)
-			to_chat(user, "<span class='warning'>[src] is full of verba.</span>")
+			to_chat(user, span_warning("[src] is full of verba."))
 			return
 		if(user.can_read(src))
 			format_browse(info_links, user)
 			update_icon_state()
 			return
 		else
-			to_chat(user, "<span class='warning'>I can't write.</span>")
+			to_chat(user, span_warning("I can't write."))
 			return
 		return
 
@@ -451,7 +451,7 @@
 	if(!P.can_be_package_wrapped())
 		return ..()
 
-	to_chat(user, "<span class='info'>I start to wrap [P] in [src]...</span>")
+	to_chat(user, span_info("I start to wrap [P] in [src]..."))
 	if(do_after(user, 30, 0, target = src))
 		if(user.is_holding(P))
 			if(!user.dropItemToGround(P))
@@ -486,12 +486,12 @@
 		LAZYADD(stamped, P.icon_state)
 		add_overlay(stampoverlay)
 
-		to_chat(user, "<span class='notice'>I stamp the paper with your rubber stamp.</span>")
+		to_chat(user, span_notice("I stamp the paper with your rubber stamp."))
 
 	if(P.get_temperature())
 		if(HAS_TRAIT(user, TRAIT_CLUMSY) && prob(10))
-			user.visible_message("<span class='warning'>[user] accidentally ignites [user.p_them()]self!</span>", \
-								"<span class='danger'>I miss the paper and accidentally light myself on fire!</span>")
+			user.visible_message(span_warning("[user] accidentally ignites [user.p_them()]self!"), \
+								span_danger("I miss the paper and accidentally light myself on fire!"))
 			user.dropItemToGround(P)
 			user.adjust_fire_stacks(1)
 			user.IgniteMob()
@@ -501,7 +501,7 @@
 			return
 
 		user.dropItemToGround(src)
-		user.visible_message("<span class='danger'>[user] lights [src] ablaze with [P]!</span>", "<span class='danger'>I light [src] on fire!</span>")
+		user.visible_message(span_danger("[user] lights [src] ablaze with [P]!"), span_danger("I light [src] on fire!"))
 		fire_act()*/
 
 	add_fingerprint(user)

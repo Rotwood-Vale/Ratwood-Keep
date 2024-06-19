@@ -50,7 +50,7 @@
 
 /obj/item/grown/corncob/attackby(obj/item/grown/W, mob/user, params)
 	if(W.get_sharpness())
-		to_chat(user, "<span class='notice'>I use [W] to fashion a pipe out of the corn cob!</span>")
+		to_chat(user, span_notice("I use [W] to fashion a pipe out of the corn cob!"))
 		new /obj/item/clothing/mask/cigarette/pipe/cobpipe (user.loc)
 		qdel(src)
 	else
@@ -85,7 +85,7 @@
 
 /obj/item/grown/snapcorn/attack_self(mob/user)
 	..()
-	to_chat(user, "<span class='notice'>I pick a snap pop from the cob.</span>")
+	to_chat(user, span_notice("I pick a snap pop from the cob."))
 	var/obj/item/toy/snappop/S = new /obj/item/toy/snappop(user.loc)
 	if(ishuman(user))
 		user.put_in_hands(S)

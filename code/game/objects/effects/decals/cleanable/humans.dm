@@ -102,6 +102,7 @@
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	appearance_flags = NO_CLIENT_COLOR
 	var/blood_timer
+
 /obj/effect/decal/cleanable/trail_holder/Initialize(mapload, list/datum/disease/diseases)
 	. = ..()
 	if(. == INITIALIZE_HINT_QDEL)

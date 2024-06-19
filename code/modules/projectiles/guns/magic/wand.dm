@@ -37,7 +37,7 @@
 		if(no_den_usage)
 			var/area/A = get_area(user)
 			if(istype(A, /area/wizard_station))
-				to_chat(user, "<span class='warning'>I know better than to violate the security of The Den, best wait until you leave to use [src].</span>")
+				to_chat(user, span_warning("I know better than to violate the security of The Den, best wait until you leave to use [src]."))
 				return
 			else
 				no_den_usage = 0
@@ -48,7 +48,7 @@
 
 
 /obj/item/gun/magic/wand/proc/zap_self(mob/living/user)
-	user.visible_message("<span class='danger'>[user] zaps [user.p_them()]self with [src].</span>")
+	user.visible_message(span_danger("[user] zaps [user.p_them()]self with [src]."))
 	playsound(user, fire_sound, 50, TRUE)
 	user.log_message("zapped [user.p_them()]self with a <b>[src]</b>", LOG_ATTACK)
 
@@ -69,13 +69,13 @@
 	..()
 	charges--
 	if(user.anti_magic_check())
-		user.visible_message("<span class='warning'>[src] has no effect on [user]!</span>")
+		user.visible_message(span_warning("[src] has no effect on [user]!"))
 		return
 	if(isliving(user))
 		var/mob/living/L = user
 		if(L.mob_biotypes & MOB_UNDEAD) //negative energy heals the undead
 			user.revive(full_heal = TRUE, admin_revive = TRUE)
-			to_chat(user, "<span class='notice'>I feel great!</span>")
+			to_chat(user, span_notice("I feel great!"))
 			return
 	to_chat(user, "<span class='warning'>I irradiate myself with pure negative energy! \
 	[pick("Do not pass go. Do not collect 200 zorkmids.","You feel more confident in your spell casting skills.","You Die...","Do you want your possessions identified?")]\
@@ -106,7 +106,7 @@
 	..()
 	charges--
 	if(user.anti_magic_check())
-		user.visible_message("<span class='warning'>[src] has no effect on [user]!</span>")
+		user.visible_message(span_warning("[src] has no effect on [user]!"))
 		return
 	if(isliving(user))
 		var/mob/living/L = user
@@ -117,7 +117,7 @@
 			user.death(0)
 			return
 	user.revive(full_heal = TRUE, admin_revive = TRUE)
-	to_chat(user, "<span class='notice'>I feel great!</span>")
+	to_chat(user, span_notice("I feel great!"))
 
 /obj/item/gun/magic/wand/resurrection/debug //for testing
 	desc = ""
@@ -206,7 +206,7 @@
 	no_den_usage = 1
 
 /obj/item/gun/magic/wand/door/zap_self(mob/living/user)
-	to_chat(user, "<span class='notice'>I feel vaguely more open with your feelings.</span>")
+	to_chat(user, span_notice("I feel vaguely more open with your feelings."))
 	charges--
 	..()
 

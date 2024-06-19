@@ -1,8 +1,8 @@
 /obj/item/rogueweapon/pick
 	force = 21
 	possible_item_intents = list(/datum/intent/pick)
-	name = "pick"
-	desc = ""
+	name = "iron pick"
+	desc = "This tool is essential to mine in the dark depths."
 	icon_state = "pick"
 	icon = 'icons/roguetown/weapons/tools.dmi'
 	sharpness = IS_BLUNT
@@ -11,7 +11,7 @@
 	max_integrity = 400
 	slot_flags = ITEM_SLOT_HIP
 	toolspeed = 1
-	associated_skill = /datum/skill/mining
+	associated_skill = /datum/skill/labor/mining
 	smeltresult = /obj/item/ingot/iron
 
 /obj/item/rogueweapon/pick/getonmobprop(tag)
@@ -45,6 +45,7 @@
 
 /obj/item/rogueweapon/pick/steel
 	name = "steel pick"
+	desc = "With a reinforced handle and sturdy shaft, this is a superior tool for delving in the darkness."
 	force_wielded = 28
 	icon_state = "steelpick"
 	possible_item_intents = list(/datum/intent/pick)

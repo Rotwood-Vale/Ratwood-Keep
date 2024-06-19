@@ -36,7 +36,7 @@
 /obj/singularity/boh_tear/attack_tk(mob/living/user)
 	if(!istype(user))
 		return
-	to_chat(user, "<span class='danger'>I don't feel like you are real anymore.</span>")
+	to_chat(user, span_danger("I don't feel like you are real anymore."))
 	user.dust_animation()
 	user.spawn_dust()
 	addtimer(CALLBACK(src, PROC_REF(consume), user), 5)

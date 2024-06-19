@@ -69,7 +69,7 @@
 
 /datum/species/goblin/moon/spec_death(gibbed, mob/living/carbon/human/H)
 	new /obj/item/reagent_containers/powder/moondust_purest(get_turf(H))
-	H.visible_message("<span class='blue'>Moondust falls from [H]!</span>")
+	H.visible_message(span_blue("Moondust falls from [H]!"))
 //	qdel(H)
 
 /obj/item/bodypart/chest/goblin
@@ -375,7 +375,7 @@
 	if(!in_range(src, user))
 		return
 	if(gobs >= (maxgobs+1))
-		to_chat(user, "<span class='danger'>Too many Gobs.</span>")
+		to_chat(user, span_danger("Too many Gobs."))
 		return
 	gobs++
 	var/mob/living/carbon/human/species/goblin/npc/N = new (get_turf(src))

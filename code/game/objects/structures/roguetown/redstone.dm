@@ -31,7 +31,7 @@ GLOBAL_LIST_EMPTY(redstone_objs)
 		var/mob/living/L = user
 		L.changeNext_move(CLICK_CD_MELEE)
 		var/used_time = 100 - (L.STASTR * 10)
-		user.visible_message("<span class='warning'>[user] pulls the lever.</span>")
+		user.visible_message(span_warning("[user] pulls the lever."))
 		log_game("[key_name(user)] pulled the lever with redstone id \"[redstone_id]\"")
 		if(do_after(user, used_time, target = user))
 			for(var/obj/structure/O in redstone_attached)

@@ -2,7 +2,7 @@
 	if(!isliving(user) || !user.CanReach(parent))
 		return
 	if(locked)
-		to_chat(user, "<span class='warning'>[parent] seems to be locked!</span>")
+		to_chat(user, span_warning("[parent] seems to be locked!"))
 		return
 
 	var/obj/item/storage/wallet/A = parent
@@ -11,8 +11,8 @@
 		A.add_fingerprint(user)
 		remove_from_storage(I, get_turf(user))
 		if(!user.put_in_hands(I))
-			to_chat(user, "<span class='notice'>I fumble for [I] and it falls on the floor.</span>")
+			to_chat(user, span_notice("I fumble for [I] and it falls on the floor."))
 			return
-		user.visible_message("<span class='warning'>[user] draws [I] from [parent]!</span>", "<span class='notice'>I draw [I] from [parent].</span>")
+		user.visible_message(span_warning("[user] draws [I] from [parent]!"), span_notice("I draw [I] from [parent]."))
 		return
 	..()
