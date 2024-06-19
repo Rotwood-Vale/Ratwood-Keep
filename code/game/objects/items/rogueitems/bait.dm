@@ -23,8 +23,8 @@
 
 /obj/item/bait/attack_self(mob/user)
 	. = ..()
-	user.visible_message("<span class='notice'>[user] begins deploying the bait...</span>", \
-						"<span class='notice'>I begin deploying the bait...</span>")
+	user.visible_message(span_notice("[user] begins deploying the bait..."), \
+						span_notice("I begin deploying the bait..."))
 	if(do_after(user, 100, target = src)) //rogtodo hunting skill
 		user.dropItemToGround(src)
 		START_PROCESSING(SSobj, src)
@@ -34,8 +34,8 @@
 
 /obj/item/bait/attack_hand(mob/user)
 	if(deployed)
-		user.visible_message("<span class='notice'>[user] begins gathering up the bait...</span>", \
-							"<span class='notice'>I begin gathering up the bait...</span>")
+		user.visible_message(span_notice("[user] begins gathering up the bait..."), \
+							span_notice("I begin gathering up the bait..."))
 		if(do_after(user, 100, target = src)) //rogtodo hunting skill
 			STOP_PROCESSING(SSobj, src)
 			name = initial(name)

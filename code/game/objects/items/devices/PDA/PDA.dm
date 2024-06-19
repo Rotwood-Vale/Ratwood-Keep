@@ -22,7 +22,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 	item_flags = NOBLUDGEON
 	w_class = WEIGHT_CLASS_TINY
 	slot_flags = ITEM_SLOT_RING | ITEM_SLOT_BELT
-	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 100, "acid" = 100)
+	armor = list("blunt" = 0, "slash" = 0, "stab" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 100, "acid" = 100)
 	resistance_flags = FIRE_PROOF | ACID_PROOF
 
 
@@ -84,7 +84,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 	var/deathMessage = msg_input(user)
 	if (!deathMessage)
 		deathMessage = "i ded"
-	user.visible_message("<span class='suicide'>[user] is sending a message to the Grim Reaper! It looks like [user.p_theyre()] trying to commit suicide!</span>")
+	user.visible_message(span_suicide("[user] is sending a message to the Grim Reaper! It looks like [user.p_theyre()] trying to commit suicide!"))
 	tnote += "<i><b>&rarr; To The Grim Reaper:</b></i><br>[deathMessage]<br>"//records a message in their PDA as being sent to the grim reaper
 	return BRUTELOSS
 
@@ -94,10 +94,10 @@ GLOBAL_LIST_EMPTY(PDAs)
 		return
 
 	if(id)
-		. += "<span class='notice'>Alt-click to remove the id.</span>"
+		. += span_notice("Alt-click to remove the id.")
 
 	if(inserted_item && (!isturf(loc)))
-		. += "<span class='notice'>Ctrl-click to remove [inserted_item].</span>"
+		. += span_notice("Ctrl-click to remove [inserted_item].")
 
 /obj/item/pda/Initialize()
 	. = ..()
@@ -188,12 +188,12 @@ GLOBAL_LIST_EMPTY(PDAs)
 	return ..()
 
 /obj/item/pda/attack_self_tk(mob/user)
-	to_chat(user, "<span class='warning'>The PDA's capacitive touch screen doesn't seem to respond!</span>")
+	to_chat(user, span_warning("The PDA's capacitive touch screen doesn't seem to respond!"))
 	return
 
 /obj/item/pda/interact(mob/user)
 	if(!user.IsAdvancedToolUser())
-		to_chat(user, "<span class='warning'>I don't have the dexterity to do this!</span>")
+		to_chat(user, span_warning("I don't have the dexterity to do this!"))
 		return
 
 	..()
@@ -450,7 +450,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 			if("Eject")//Ejects the cart, only done from hub.
 				if (!isnull(cartridge))
 					U.put_in_hands(cartridge)
-					to_chat(U, "<span class='notice'>I remove [cartridge] from [src].</span>")
+					to_chat(U, span_notice("I remove [cartridge] from [src]."))
 					scanmode = PDA_SCANNER_NONE
 					cartridge.host_pda = null
 					cartridge = null
@@ -508,7 +508,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 				var/alert_s = input(U,"Alert severity level","Ping Drones",null) as null|anything in list("Low","Medium","High","Critical")
 				var/area/A = get_area(U)
 				if(A && alert_s && !QDELETED(U))
-					var/msg = "<span class='boldnotice'>NON-DRONE {PING}: [U.name]: [alert_s] priority alert in [A.name]!</span>"
+					var/msg = span_boldnotice("NON-DRONE {PING}: [U.name]: [alert_s] priority alert in [A.name]!")
 					_alert_drones(msg, TRUE, U)
 					to_chat(U, msg)
 
@@ -579,7 +579,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 						pai.attack_self(U)
 					if("2")		// Eject pAI device
 						usr.put_in_hands(pai)
-						to_chat(usr, "<span class='notice'>I remove the pAI from the [name].</span>")
+						to_chat(usr, span_notice("I remove the pAI from the [name]."))
 
 //LINK FUNCTIONS===================================
 
@@ -614,7 +614,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 
 	if (id)
 		usr.put_in_hands(id)
-		to_chat(usr, "<span class='notice'>I remove the ID from the [name].</span>")
+		to_chat(usr, span_notice("I remove the ID from the [name]."))
 		id = null
 		update_icon()
 		if(ishuman(loc))
@@ -627,7 +627,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 		return
 	if(user)
 		user.put_in_hands(id)
-		to_chat(user, "<span class='notice'>I remove the ID from the [name].</span>")
+		to_chat(user, span_notice("I remove the ID from the [name]."))
 	else
 		id.forceMove(get_turf(src))
 
@@ -686,7 +686,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 
 	// If it didn't reach, note that fact
 	if (!signal.data["done"])
-		to_chat(user, "<span class='notice'>ERROR: Server isn't responding.</span>")
+		to_chat(user, span_notice("ERROR: Server isn't responding."))
 		return
 
 	var/target_text = signal.format_target()
@@ -697,13 +697,13 @@ GLOBAL_LIST_EMPTY(PDAs)
 	// Log it in our logs
 	tnote += "<i><b>&rarr; To [target_text]:</b></i><br>[signal.format_message()]<br>"
 	// Show it to ghosts
-	var/ghost_message = "<span class='name'>[owner] </span><span class='say'>PDA Message</span> --> <span class='name'>[target_text]</span>: <span class='message'>[signal.format_message()]</span>"
+	var/ghost_message = span_name("[owner] </span><span class='say'>PDA Message</span> --> <span class='name'>[target_text]</span>: <span class='message'>[signal.format_message()]")
 	for(var/mob/M in GLOB.player_list)
 		if(isobserver(M) && (M.client.prefs.chat_toggles & CHAT_GHOSTPDA))
 			to_chat(M, "[FOLLOW_LINK(M, user)] [ghost_message]")
 	// Log in the talk log
 	user.log_talk(message, LOG_PDA, tag="PDA: [initial(name)] to [target_text]")
-	to_chat(user, "<span class='info'>PDA message sent to [target_text]: \"[message]\"</span>")
+	to_chat(user, span_info("PDA message sent to [target_text]: \"[message]\""))
 	// Reset the photo
 	picture = null
 	last_text = world.time
@@ -746,7 +746,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 
 /obj/item/pda/proc/send_to_all(mob/living/U)
 	if (last_everyone && world.time < last_everyone + PDA_SPAM_DELAY)
-		to_chat(U,"<span class='warning'>Send To All function is still on cooldown.</span>")
+		to_chat(U,span_warning("Send To All function is still on cooldown."))
 		return
 	send_message(U,get_viewable_pdas(), TRUE)
 
@@ -783,7 +783,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 	if(id)
 		remove_id()
 	else
-		to_chat(usr, "<span class='warning'>This PDA does not have an ID in it!</span>")
+		to_chat(usr, span_warning("This PDA does not have an ID in it!"))
 
 /obj/item/pda/verb/verb_remove_pen()
 	set hidden = 1
@@ -810,11 +810,11 @@ GLOBAL_LIST_EMPTY(PDAs)
 
 	if(inserted_item)
 		usr.put_in_hands(inserted_item)
-		to_chat(usr, "<span class='notice'>I remove [inserted_item] from [src].</span>")
+		to_chat(usr, span_notice("I remove [inserted_item] from [src]."))
 		inserted_item = null
 		update_icon()
 	else
-		to_chat(usr, "<span class='warning'>This PDA does not have a pen in it!</span>")
+		to_chat(usr, span_warning("This PDA does not have a pen in it!"))
 
 //trying to insert or remove an id
 /obj/item/pda/proc/id_check(mob/user, obj/item/card/id/I)
@@ -856,23 +856,23 @@ GLOBAL_LIST_EMPTY(PDAs)
 			return
 		cartridge = C
 		cartridge.host_pda = src
-		to_chat(user, "<span class='notice'>I insert [cartridge] into [src].</span>")
+		to_chat(user, span_notice("I insert [cartridge] into [src]."))
 		update_icon()
 
 	else if(istype(C, /obj/item/card/id))
 		var/obj/item/card/id/idcard = C
 		if(!idcard.registered_name)
-			to_chat(user, "<span class='warning'>\The [src] rejects the ID!</span>")
+			to_chat(user, span_warning("\The [src] rejects the ID!"))
 			return
 		if(!owner)
 			owner = idcard.registered_name
 			ownjob = idcard.assignment
 			update_label()
-			to_chat(user, "<span class='notice'>Card scanned.</span>")
+			to_chat(user, span_notice("Card scanned."))
 		else
 			if(!id_check(user, idcard))
 				return
-			to_chat(user, "<span class='notice'>I put the ID into \the [src]'s slot.</span>")
+			to_chat(user, span_notice("I put the ID into \the [src]'s slot."))
 			updateSelfDialog()//Update self dialog on success.
 
 			return	//Return in case of failed check or when successful.
@@ -881,22 +881,22 @@ GLOBAL_LIST_EMPTY(PDAs)
 		if(!user.transferItemToLoc(C, src))
 			return
 		pai = C
-		to_chat(user, "<span class='notice'>I slot \the [C] into [src].</span>")
+		to_chat(user, span_notice("I slot \the [C] into [src]."))
 		update_icon()
 		updateUsrDialog()
 	else if(is_type_in_list(C, contained_item)) //Checks if there is a pen
 		if(inserted_item)
-			to_chat(user, "<span class='warning'>There is already \a [inserted_item] in \the [src]!</span>")
+			to_chat(user, span_warning("There is already \a [inserted_item] in \the [src]!"))
 		else
 			if(!user.transferItemToLoc(C, src))
 				return
-			to_chat(user, "<span class='notice'>I slide \the [C] into \the [src].</span>")
+			to_chat(user, span_notice("I slide \the [C] into \the [src]."))
 			inserted_item = C
 			update_icon()
 	else if(istype(C, /obj/item/photo))
 		var/obj/item/photo/P = C
 		picture = P.picture
-		to_chat(user, "<span class='notice'>I scan \the [C].</span>")
+		to_chat(user, span_notice("I scan \the [C]."))
 	else
 		return ..()
 
@@ -905,18 +905,18 @@ GLOBAL_LIST_EMPTY(PDAs)
 		switch(scanmode)
 
 			if(PDA_SCANNER_MEDICAL)
-				C.visible_message("<span class='alert'>[user] has analyzed [C]'s vitals!</span>")
+				C.visible_message(span_alert("[user] has analyzed [C]'s vitals!"))
 				healthscan(user, C, 1)
 				add_fingerprint(user)
 
 			if(PDA_SCANNER_HALOGEN)
-				C.visible_message("<span class='warning'>[user] has analyzed [C]'s radiation levels!</span>")
+				C.visible_message(span_warning("[user] has analyzed [C]'s radiation levels!"))
 
-				user.show_message("<span class='notice'>Analyzing Results for [C]:</span>")
+				user.show_message(span_notice("Analyzing Results for [C]:"))
 				if(C.radiation)
 					user.show_message("\green Radiation Level: \black [C.radiation]")
 				else
-					user.show_message("<span class='notice'>No radiation detected.</span>")
+					user.show_message(span_notice("No radiation detected."))
 
 /obj/item/pda/afterattack(atom/A as mob|obj|turf|area, mob/user, proximity)
 	. = ..()
@@ -927,13 +927,13 @@ GLOBAL_LIST_EMPTY(PDAs)
 			if(!isnull(A.reagents))
 				if(A.reagents.reagent_list.len > 0)
 					var/reagents_length = A.reagents.reagent_list.len
-					to_chat(user, "<span class='notice'>[reagents_length] chemical agent[reagents_length > 1 ? "s" : ""] found.</span>")
+					to_chat(user, span_notice("[reagents_length] chemical agent[reagents_length > 1 ? "s" : ""] found."))
 					for (var/re in A.reagents.reagent_list)
-						to_chat(user, "<span class='notice'>\t [re]</span>")
+						to_chat(user, span_notice("\t [re]"))
 				else
-					to_chat(user, "<span class='notice'>No active chemical agents found in [A].</span>")
+					to_chat(user, span_notice("No active chemical agents found in [A]."))
 			else
-				to_chat(user, "<span class='notice'>No significant chemical agents found in [A].</span>")
+				to_chat(user, span_notice("No significant chemical agents found in [A]."))
 
 		if(PDA_SCANNER_GAS)
 			A.analyzer_act(user, src)
@@ -941,7 +941,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 	if (!scanmode && istype(A, /obj/item/paper) && owner)
 		var/obj/item/paper/PP = A
 		if (!PP.info)
-			to_chat(user, "<span class='warning'>Unable to scan! Paper is blank.</span>")
+			to_chat(user, span_warning("Unable to scan! Paper is blank."))
 			return
 		notehtml = PP.info
 		note = replacetext(notehtml, "<BR>", "\[br\]")
@@ -950,7 +950,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 		note = replacetext(note, "</ul>", "\[/list\]")
 		note = html_encode(note)
 		notescanned = TRUE
-		to_chat(user, "<span class='notice'>Paper scanned. Saved to PDA's notekeeper.</span>" )
+		to_chat(user, span_notice("Paper scanned. Saved to PDA's notekeeper.") )
 
 
 /obj/item/pda/proc/explode() //This needs tuning.
@@ -958,9 +958,9 @@ GLOBAL_LIST_EMPTY(PDAs)
 
 	if (ismob(loc))
 		var/mob/M = loc
-		M.show_message("<span class='danger'>My [src] explodes!</span>", MSG_VISUAL, "<span class='warning'>I hear a loud *pop*!</span>", MSG_AUDIBLE)
+		M.show_message(span_danger("My [src] explodes!"), MSG_VISUAL, span_warning("I hear a loud *pop*!"), MSG_AUDIBLE)
 	else
-		visible_message("<span class='danger'>[src] explodes!</span>", "<span class='warning'>I hear a loud *pop*!</span>")
+		visible_message(span_danger("[src] explodes!"), span_warning("I hear a loud *pop*!"))
 
 	if(T)
 		T.hotspot_expose(700,125)
@@ -994,7 +994,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 	var/mob/living/silicon/S = usr
 	if(istype(S) && !isnull(S.aiPDA))
 		S.aiPDA.toff = !S.aiPDA.toff
-		to_chat(usr, "<span class='notice'>PDA sender/receiver toggled [(S.aiPDA.toff ? "Off" : "On")]!</span>")
+		to_chat(usr, span_notice("PDA sender/receiver toggled [(S.aiPDA.toff ? "Off" : "On")]!"))
 	else
 		to_chat(usr, "You do not have a PDA. You should make an issue report about this.")
 
@@ -1008,7 +1008,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 	if(istype(S) && !isnull(S.aiPDA))
 		//0
 		S.aiPDA.silent = !S.aiPDA.silent
-		to_chat(usr, "<span class='notice'>PDA ringer toggled [(S.aiPDA.silent ? "Off" : "On")]!</span>")
+		to_chat(usr, span_notice("PDA ringer toggled [(S.aiPDA.silent ? "Off" : "On")]!"))
 	else
 		to_chat(usr, "You do not have a PDA. You should make an issue report about this.")
 
@@ -1017,7 +1017,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 	var/list/namecounts = list()
 
 	if(aiPDA.toff)
-		to_chat(user, "<span class='alert'>Turn on my receiver in order to send messages.</span>")
+		to_chat(user, span_alert("Turn on my receiver in order to send messages."))
 		return
 
 	for (var/obj/item/pda/P in get_viewable_pdas())
@@ -1053,7 +1053,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 		var/HTML = "<html><head><title>AI PDA Message Log</title></head><body>[aiPDA.tnote]</body></html>"
 		user << browse(HTML, "window=log;size=400x444;border=1;can_resize=1;can_close=1;can_minimize=0")
 	else
-		to_chat(user, "<span class='warning'>I do not have a PDA! You should make an issue report about this.</span>")
+		to_chat(user, span_warning("I do not have a PDA! You should make an issue report about this."))
 
 // Pass along the pulse to atoms in contents, largely added so pAIs are vulnerable to EMP
 /obj/item/pda/emp_act(severity)

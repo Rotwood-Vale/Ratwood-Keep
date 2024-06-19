@@ -221,7 +221,7 @@ GLOBAL_LIST_INIT(laws_of_the_land, initialize_laws_of_the_land())
 		if(istype(C))
 			if(P.rev_team)
 				if(P.rev_team.members.len < 3)
-					to_chat(user, "<span class='warning'>I need more folk on my side to declare victory.</span>")
+					to_chat(user, span_warning("I need more folk on my side to declare victory."))
 				else
 					for(var/datum/objective/prebel/obj in user.mind.get_all_objectives())
 						obj.completed = TRUE
@@ -240,7 +240,7 @@ GLOBAL_LIST_INIT(laws_of_the_land, initialize_laws_of_the_land())
 		if(istype(C))
 			if(P.rev_team)
 				if(P.rev_team.members.len < 3)
-					to_chat(user, "<span class='warning'>I need more folk on my side to declare victory.</span>")
+					to_chat(user, span_warning("I need more folk on my side to declare victory."))
 				else
 					for(var/datum/objective/prebel/obj in user.mind.get_all_objectives())
 						obj.completed = TRUE

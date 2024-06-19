@@ -30,10 +30,10 @@
 		if(prob(20))
 			M.adjust_disgust(20)
 		if(prob(5))
-			M.visible_message("<span class='warning'>[M] [pick("dry heaves!","coughs!","splutters!")]</span>")
+			M.visible_message(span_warning("[M] [pick("dry heaves!","coughs!","splutters!")]"))
 		if(prob(10))
 			var/sick_message = pick("Your insides revolt at the presence of lethal chocolate!", "You feel nyauseous.", "You're nya't feeling so good.","You feel like your insides are melting.","You feel illsies.")
-			to_chat(M, "<span class='notice'>[sick_message]</span>")
+			to_chat(M, span_notice("[sick_message]"))
 		if(prob(35))
 			var/obj/item/organ/guts = pick(M.internal_organs)
 			guts.applyOrganDamage(15)
@@ -75,7 +75,7 @@
 		kitty_ears.Insert(H, TRUE, FALSE) //Gives nonhumans cat tail and ears
 		kitty_tail.Insert(H, TRUE, FALSE)
 	if(!silent)
-		to_chat(H, "<span class='boldnotice'>Something is nya~t right.</span>")
+		to_chat(H, span_boldnotice("Something is nya~t right."))
 		playsound(get_turf(H), 'sound/blank.ogg', 50, TRUE, -1)
 
 /proc/purrbation_remove(mob/living/carbon/human/H, silent = FALSE)
@@ -84,4 +84,4 @@
 		if(!cat_species.original_felinid)
 			H.set_species(/datum/species/human)
 	if(!silent)
-		to_chat(H, "<span class='boldnotice'>I are no longer a cat.</span>")
+		to_chat(H, span_boldnotice("I are no longer a cat."))

@@ -39,7 +39,7 @@
 		return
 
 	if(reagents.total_volume < 1)
-		to_chat(user, "<span class='warning'>My mop is dry!</span>")
+		to_chat(user, span_warning("My mop is dry!"))
 		return
 
 	var/turf/T = get_turf(A)
@@ -48,10 +48,10 @@
 		return
 
 	if(T)
-		user.visible_message("<span class='notice'>[user] begins to clean \the [T] with [src].</span>", "<span class='notice'>I begin to clean \the [T] with [src]...</span>")
+		user.visible_message(span_notice("[user] begins to clean \the [T] with [src]."), span_notice("I begin to clean \the [T] with [src]..."))
 
 		if(do_after(user, src.mopspeed, target = T))
-			to_chat(user, "<span class='notice'>I finish mopping.</span>")
+			to_chat(user, span_notice("I finish mopping."))
 			clean(T)
 
 
@@ -68,7 +68,7 @@
 		J.mymop=src
 		J.update_icon()
 	else
-		to_chat(user, "<span class='warning'>I are unable to fit my [name] into the [J.name].</span>")
+		to_chat(user, span_warning("I are unable to fit my [name] into the [J.name]."))
 		return
 
 /obj/item/mop/cyborg
@@ -100,7 +100,7 @@
 		START_PROCESSING(SSobj, src)
 	else
 		STOP_PROCESSING(SSobj,src)
-	to_chat(user, "<span class='notice'>I set the condenser switch to the '[refill_enabled ? "ON" : "OFF"]' position.</span>")
+	to_chat(user, span_notice("I set the condenser switch to the '[refill_enabled ? "ON" : "OFF"]' position."))
 	playsound(user, 'sound/blank.ogg', 30, TRUE)
 
 /obj/item/mop/advanced/process()
@@ -110,7 +110,7 @@
 
 /obj/item/mop/advanced/examine(mob/user)
 	. = ..()
-	. += "<span class='notice'>The condenser switch is set to <b>[refill_enabled ? "ON" : "OFF"]</b>.</span>"
+	. += span_notice("The condenser switch is set to <b>[refill_enabled ? "ON" : "OFF"]</b>.")
 
 /obj/item/mop/advanced/Destroy()
 	if(refill_enabled)

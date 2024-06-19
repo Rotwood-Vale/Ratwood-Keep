@@ -27,7 +27,7 @@
 	BB.firer = user
 	BB.arcshot = user?.used_intent?.arc_check()
 	if(BB.arcshot)
-		BB.range = get_dist(target, user)
+		BB.range = get_dist_euclidian(target, user)
 	BB.fired_from = fired_from
 	if (zone_override)
 		BB.def_zone = zone_override

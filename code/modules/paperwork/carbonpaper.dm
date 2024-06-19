@@ -29,14 +29,14 @@
 			Copy.name = "Copy - [C.name]"
 			Copy.fields = C.fields
 			Copy.updateinfolinks()
-		to_chat(user, "<span class='notice'>I tear off the carbon-copy!</span>")
+		to_chat(user, span_notice("I tear off the carbon-copy!"))
 		C.copied = TRUE
 		Copy.iscopy = TRUE
 		Copy.update_icon_state()
 		C.update_icon_state()
 		user.put_in_hands(Copy)
 	else
-		to_chat(user, "<span class='notice'>There are no more carbon copies attached to this paper!</span>")
+		to_chat(user, span_notice("There are no more carbon copies attached to this paper!"))
 
 /obj/item/paper/carbon/attack_hand(mob/living/user)
 	if(loc == user && user.is_holding(src))

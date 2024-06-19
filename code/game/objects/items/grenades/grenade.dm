@@ -19,7 +19,7 @@
 	var/clumsy_check = GRENADE_CLUMSY_FUMBLE
 
 /obj/item/grenade/suicide_act(mob/living/carbon/user)
-	user.visible_message("<span class='suicide'>[user] primes [src], then eats it! It looks like [user.p_theyre()] trying to commit suicide!</span>")
+	user.visible_message(span_suicide("[user] primes [src], then eats it! It looks like [user.p_theyre()] trying to commit suicide!"))
 	playsound(src, 'sound/blank.ogg', 50, TRUE)
 	preprime(user, det_time)
 	user.transferItemToLoc(src, user, TRUE)//>eat a grenade set to 5 seconds >rush captain
@@ -36,11 +36,11 @@
 	var/clumsy = HAS_TRAIT(user, TRAIT_CLUMSY)
 	if(clumsy && (clumsy_check == GRENADE_CLUMSY_FUMBLE))
 		if(prob(50))
-			to_chat(user, "<span class='warning'>Huh? How does this thing work?</span>")
+			to_chat(user, span_warning("Huh? How does this thing work?"))
 			preprime(user, 5, FALSE)
 			return FALSE
 	else if(!clumsy && (clumsy_check == GRENADE_NONCLUMSY_FUMBLE))
-		to_chat(user, "<span class='warning'>I pull the pin on [src]. Attached to it is a pink ribbon that says, \"<span class='clown'>HONK</span>\"</span>")
+		to_chat(user, span_warning("I pull the pin on [src]. Attached to it is a pink ribbon that says, \"<span class='clown'>HONK</span>\""))
 		preprime(user, 5, FALSE)
 		return FALSE
 	return TRUE
@@ -69,7 +69,7 @@
 	if(user)
 		add_fingerprint(user)
 		if(msg)
-			to_chat(user, "<span class='warning'>I prime [src]! [capitalize(DisplayTimeText(det_time))]!</span>")
+			to_chat(user, span_warning("I prime [src]! [capitalize(DisplayTimeText(det_time))]!"))
 	playsound(src, 'sound/blank.ogg', volume, TRUE)
 	active = TRUE
 	icon_state = initial(icon_state) + "_active"
@@ -88,13 +88,13 @@
 			var/newtime = text2num(stripped_input(user, "Please enter a new detonation time", name))
 			if (newtime != null && user.canUseTopic(src, BE_CLOSE))
 				if(change_det_time(newtime))
-					to_chat(user, "<span class='notice'>I modify the time delay. It's set for [DisplayTimeText(det_time)].</span>")
+					to_chat(user, span_notice("I modify the time delay. It's set for [DisplayTimeText(det_time)]."))
 					if (round(newtime * 10) != det_time)
-						to_chat(user, "<span class='warning'>The new value is out of bounds. The lowest possible time is 3 seconds and highest is 5 seconds. Instant detonations are also possible.</span>")
+						to_chat(user, span_warning("The new value is out of bounds. The lowest possible time is 3 seconds and highest is 5 seconds. Instant detonations are also possible."))
 			return
 		else if(W.tool_behaviour == TOOL_SCREWDRIVER)
 			if(change_det_time())
-				to_chat(user, "<span class='notice'>I modify the time delay. It's set for [DisplayTimeText(det_time)].</span>")
+				to_chat(user, span_notice("I modify the time delay. It's set for [DisplayTimeText(det_time)]."))
 	else
 		return ..()
 
@@ -122,7 +122,7 @@
 /obj/item/grenade/hit_reaction(mob/living/carbon/human/owner, atom/movable/hitby, attack_text = "the attack", final_block_chance = 0, damage = 0, attack_type = MELEE_ATTACK)
 	var/obj/projectile/P = hitby
 	if(damage && attack_type == PROJECTILE_ATTACK && P.damage_type != STAMINA && prob(15))
-		owner.visible_message("<span class='danger'>[attack_text] hits [owner]'s [src], setting it off! What a shot!</span>")
+		owner.visible_message(span_danger("[attack_text] hits [owner]'s [src], setting it off! What a shot!"))
 		var/turf/T = get_turf(src)
 		log_game("A projectile ([hitby]) detonated a grenade held by [key_name(owner)] at [COORD(T)]")
 		message_admins("A projectile ([hitby]) detonated a grenade held by [key_name_admin(owner)] at [ADMIN_COORDJMP(T)]")

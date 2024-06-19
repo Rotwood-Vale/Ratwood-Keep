@@ -6,8 +6,8 @@
 	desc = ""
 	value = 1
 	mob_trait = TRAIT_ALCOHOL_TOLERANCE
-	gain_text = "<span class='notice'>I feel like you could drink a whole keg!</span>"
-	lose_text = "<span class='danger'>I don't feel as resistant to alcohol anymore. Somehow.</span>"
+	gain_text = span_notice("I feel like you could drink a whole keg!")
+	lose_text = span_danger("I don't feel as resistant to alcohol anymore. Somehow.")
 	medical_record_text = "Patient demonstrates a high tolerance for alcohol."
 
 /datum/quirk/apathetic
@@ -33,8 +33,8 @@
 	desc = ""
 	value = 2
 	mob_trait = TRAIT_DRUNK_HEALING
-	gain_text = "<span class='notice'>I feel like a drink would do you good.</span>"
-	lose_text = "<span class='danger'>I no longer feel like drinking would ease your pain.</span>"
+	gain_text = span_notice("I feel like a drink would do you good.")
+	lose_text = span_danger("I no longer feel like drinking would ease your pain.")
 	medical_record_text = "Patient has unusually efficient liver metabolism and can slowly regenerate wounds by drinking alcoholic beverages."
 
 /datum/quirk/drunkhealing/on_process()
@@ -55,8 +55,8 @@
 	desc = ""
 	value = 2
 	mob_trait = TRAIT_EMPATH
-	gain_text = "<span class='notice'>I feel in tune with those around you.</span>"
-	lose_text = "<span class='danger'>I feel isolated from others.</span>"
+	gain_text = span_notice("I feel in tune with those around you.")
+	lose_text = span_danger("I feel isolated from others.")
 	medical_record_text = "Patient is highly perceptive of and sensitive to social cues, or may possibly have ESP. Further testing needed."
 
 datum/quirk/fan_clown
@@ -64,8 +64,8 @@ datum/quirk/fan_clown
 	desc = ""
 	value = 1
 	mob_trait = TRAIT_FAN_CLOWN
-	gain_text = "<span class='notice'>I are a big fan of the Clown.</span>"
-	lose_text = "<span class='danger'>The clown doesn't seem so great.</span>"
+	gain_text = span_notice("I are a big fan of the Clown.")
+	lose_text = span_danger("The clown doesn't seem so great.")
 	medical_record_text = "Patient reports being a big fan of the Clown."
 
 /datum/quirk/fan_clown/on_spawn()
@@ -82,8 +82,8 @@ datum/quirk/fan_mime
 	desc = ""
 	value = 1
 	mob_trait = TRAIT_FAN_MIME
-	gain_text = "<span class='notice'>I are a big fan of the Mime.</span>"
-	lose_text = "<span class='danger'>The mime doesn't seem so great.</span>"
+	gain_text = span_notice("I are a big fan of the Mime.")
+	lose_text = span_danger("The mime doesn't seem so great.")
 	medical_record_text = "Patient reports being a big fan of the Mime."
 
 /datum/quirk/fan_mime/on_spawn()
@@ -100,8 +100,8 @@ datum/quirk/fan_mime
 	desc = ""
 	value = 2
 	mob_trait = TRAIT_FREERUNNING
-	gain_text = "<span class='notice'>I feel lithe on your feet!</span>"
-	lose_text = "<span class='danger'>I feel clumsy again.</span>"
+	gain_text = span_notice("I feel lithe on your feet!")
+	lose_text = span_danger("I feel clumsy again.")
 	medical_record_text = "Patient scored highly on cardio tests."
 
 /datum/quirk/friendly
@@ -109,8 +109,8 @@ datum/quirk/fan_mime
 	desc = ""
 	value = 1
 	mob_trait = TRAIT_FRIENDLY
-	gain_text = "<span class='notice'>I want to hug someone.</span>"
-	lose_text = "<span class='danger'>I no longer feel compelled to hug others.</span>"
+	gain_text = span_notice("I want to hug someone.")
+	lose_text = span_danger("I no longer feel compelled to hug others.")
 	mood_quirk = TRUE
 	medical_record_text = "Patient demonstrates low-inhibitions for physical contact and well-developed arms. Requesting another doctor take over this case."
 
@@ -131,8 +131,8 @@ datum/quirk/fan_mime
 	desc = ""
 	value = 1
 	mob_trait = TRAIT_LIGHT_STEP
-	gain_text = "<span class='notice'>I walk with a little more litheness.</span>"
-	lose_text = "<span class='danger'>I start tromping around like a barbarian.</span>"
+	gain_text = span_notice("I walk with a little more litheness.")
+	lose_text = span_danger("I start tromping around like a barbarian.")
 	medical_record_text = "Patient's dexterity belies a strong capacity for stealth."
 
 /datum/quirk/musician
@@ -140,8 +140,8 @@ datum/quirk/fan_mime
 	desc = ""
 	value = 1
 	mob_trait = TRAIT_MUSICIAN
-	gain_text = "<span class='notice'>I know everything about musical instruments.</span>"
-	lose_text = "<span class='danger'>I forget how musical instruments work.</span>"
+	gain_text = span_notice("I know everything about musical instruments.")
+	lose_text = span_danger("I forget how musical instruments work.")
 	medical_record_text = "Patient brain scans show a highly-developed auditory pathway."
 
 /datum/quirk/musician/on_spawn()
@@ -158,8 +158,8 @@ datum/quirk/fan_mime
 	desc = ""
 	value = 1
 	mob_trait = TRAIT_NIGHT_VISION
-	gain_text = "<span class='notice'>The shadows seem a little less dark.</span>"
-	lose_text = "<span class='danger'>Everything seems a little darker.</span>"
+	gain_text = span_notice("The shadows seem a little less dark.")
+	lose_text = span_danger("Everything seems a little darker.")
 	medical_record_text = "Patient's eyes show above-average acclimation to darkness."
 
 /datum/quirk/night_vision/on_spawn()
@@ -174,8 +174,8 @@ datum/quirk/fan_mime
 	desc = ""
 	value = 1
 	mob_trait = TRAIT_PHOTOGRAPHER
-	gain_text = "<span class='notice'>I know everything about photography.</span>"
-	lose_text = "<span class='danger'>I forget how photo cameras work.</span>"
+	gain_text = span_notice("I know everything about photography.")
+	lose_text = span_danger("I forget how photo cameras work.")
 	medical_record_text = "Patient mentions photography as a stress-relieving hobby."
 
 /datum/quirk/photographer/on_spawn()
@@ -219,8 +219,8 @@ datum/quirk/fan_mime
 	desc = ""
 	value = 1
 	mob_trait = TRAIT_SPIRITUAL
-	gain_text = "<span class='notice'>I have faith in a higher power.</span>"
-	lose_text = "<span class='danger'>I lose faith!</span>"
+	gain_text = span_notice("I have faith in a higher power.")
+	lose_text = span_danger("I lose faith!")
 	medical_record_text = "Patient reports a belief in a higher power."
 
 /datum/quirk/spiritual/on_spawn()
@@ -233,8 +233,8 @@ datum/quirk/fan_mime
 	desc = ""
 	value = 1
 	mob_trait = TRAIT_TAGGER
-	gain_text = "<span class='notice'>I know how to tag walls efficiently.</span>"
-	lose_text = "<span class='danger'>I forget how to tag walls properly.</span>"
+	gain_text = span_notice("I know how to tag walls efficiently.")
+	lose_text = span_danger("I forget how to tag walls properly.")
 	medical_record_text = "Patient was recently seen for possible paint huffing incident."
 
 /datum/quirk/tagger/on_spawn()
@@ -249,5 +249,5 @@ datum/quirk/fan_mime
 	desc = ""
 	value = 1
 	mob_trait = TRAIT_VORACIOUS
-	gain_text = "<span class='notice'>I feel HONGRY.</span>"
-	lose_text = "<span class='danger'>I no longer feel HONGRY.</span>"
+	gain_text = span_notice("I feel HONGRY.")
+	lose_text = span_danger("I no longer feel HONGRY.")

@@ -34,8 +34,8 @@
 			var/turf/pos = get_turf(H)
 			H.vomit(0, FALSE, FALSE, 2, TRUE)
 			playsound(pos, 'sound/blank.ogg', 50, TRUE)
-			H.visible_message("<span class='danger'>[H] vomits on the floor!</span>", \
-						"<span class='danger'>I throw up on the floor!</span>")
+			H.visible_message(span_danger("[H] vomits on the floor!"), \
+						span_danger("I throw up on the floor!"))
 	..()
 
 /datum/species/fly/check_species_weakness(obj/item/weapon, mob/living/attacker)
