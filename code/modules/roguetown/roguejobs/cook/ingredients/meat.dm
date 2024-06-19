@@ -11,6 +11,7 @@
 /obj/item/reagent_containers/food/snacks/rogue/meat/steak
 	ingredient_size = 2
 	name = "steak"
+	desc = "A raw meat cutlet of muscle. Delicious!"
 	icon_state = "meatcutlet"
 	fried_type = /obj/item/reagent_containers/food/snacks/rogue/meat/steak/fried
 	cooked_type = /obj/item/reagent_containers/food/snacks/rogue/meat/steak/fried
@@ -21,12 +22,14 @@
 	eat_effect = null
 	slices_num = 0
 	name = "fried steak"
+	desc = "A fried piece of steak, yum."
 	icon_state = "friedsteak"
 	bonus_reagents = list(/datum/reagent/consumable/nutriment = 15)
 	desc = ""
 
 /obj/item/reagent_containers/food/snacks/rogue/meat/mince
-	name = "mince"
+	name = "minced meat"
+	desc = "With an irregular and coarse texture, makes you hungrier just by looking at it."
 	icon_state = "meatmince"
 	ingredient_size = 2
 	slice_path = null
@@ -35,7 +38,7 @@
 
 /obj/item/reagent_containers/food/snacks/rogue/meat/mince/beef
 	name = "mince"
-
+	desc = "A beef of minced meat."
 /obj/item/reagent_containers/food/snacks/rogue/meat/fatty //pork
 	slices_num = 4
 	slice_path = /obj/item/reagent_containers/food/snacks/rogue/meat/bacon
@@ -43,7 +46,7 @@
 
 /obj/item/reagent_containers/food/snacks/rogue/meat/bacon
 	name = "bacon"
-	desc = ""
+	desc = "A delicious piece of raw bacon. Makes for a good breakfast."
 	icon_state = "bacon"
 	slice_path = null
 	slices_num = 0
@@ -56,16 +59,17 @@
 	slices_num = 0
 	name = "fried bacon"
 	icon_state = "friedbacon"
-	desc = ""
+	desc = "This bacon smells good. Must taste good, too."
 	bonus_reagents = list(/datum/reagent/consumable/nutriment = 5)
 
 /obj/item/reagent_containers/food/snacks/rogue/meat/spider
 	icon_state = "spidermeat"
+	desc = "For the desperate. Or the brave."
 	slices_num = 0
 
 /obj/item/reagent_containers/food/snacks/rogue/meat/poultry
-	name = "bird meat"
-	desc = ""
+	name = "chicken meat"
+	desc = "A piece of raw chicken, absolutely wonderful."
 	icon_state = "halfchicken"
 	slice_path = /obj/item/reagent_containers/food/snacks/rogue/meat/poultry/cutlet
 	cooked_type = /obj/item/reagent_containers/food/snacks/rogue/meat/poultry/baked
@@ -76,13 +80,15 @@
 /obj/item/reagent_containers/food/snacks/rogue/meat/poultry/baked
 	eat_effect = null
 	slices_num = 0
-	name = "roast bird"
+	name = "roast chicken"
+	desc = "A delicious meal, of course!"
 	icon_state = "roastchicken"
 	cooked_type = null
 	bonus_reagents = list(/datum/reagent/consumable/nutriment = 20)
 
 /obj/item/reagent_containers/food/snacks/rogue/meat/poultry/cutlet
-	name = "bird meat"
+	name = "chicken steak"
+	desc = "A delicious slice of chicken."
 	icon_state = "chickencutlet"
 	ingredient_size = 2
 	fried_type = /obj/item/reagent_containers/food/snacks/rogue/meat/poultry/cutlet/fried
@@ -94,28 +100,29 @@
 /obj/item/reagent_containers/food/snacks/rogue/meat/poultry/cutlet/fried
 	eat_effect = null
 	slices_num = 0
-	name = "frybird"
+	name = "fried chicken steak"
 	icon_state = "friedchicken"
-	desc = ""
+	desc = "Smells so wonderfully good!"
 	fried_type = null
 	bonus_reagents = list(/datum/reagent/consumable/nutriment = 5)
 
 /obj/item/reagent_containers/food/snacks/rogue/meat/mince/poultry
-	name = "mince"
-	desc = ""
+	name = "minced chicken meat"
+	desc = "Not common but.. Should be good."
 	slices_num = 0
 	icon_state = "meatmince"
 	cooked_type = null
 
 /obj/item/reagent_containers/food/snacks/rogue/meat/mince/fish
-	name = "mince"
-	desc = ""
+	name = "ground fish meat"
+	desc = "Does not smell great. Should taste great though."
 	slices_num = 0
 	icon_state = "meatmince"
 	cooked_type = null
 
 /obj/item/reagent_containers/food/snacks/rogue/meat/sausage
 	name = "wiener"
+	desc = "A tub of raw sausage."
 	icon_state = "rawsausage"
 	ingredient_size = 1
 	fried_type = /obj/item/reagent_containers/food/snacks/rogue/meat/sausage/cooked
@@ -126,17 +133,17 @@
 /obj/item/reagent_containers/food/snacks/rogue/meat/sausage/cooked
 	eat_effect = null
 	slices_num = 0
-	name = "sausage"
+	name = "fried sausage"
 	icon_state = "sausage"
-	desc = ""
+	desc = "A tub of sausage fried to perfection, should make a good breakfast!"
 	fried_type = null
 	bonus_reagents = list(/datum/reagent/consumable/nutriment = 5)
 
 /obj/item/reagent_containers/food/snacks/rogue/meat/salami
 	eat_effect = null
-	name = "salumoi"
+	name = "salami stick"
 	icon_state = "salamistick5"
-	desc = ""
+	desc = "A refined kind of meal."
 	fried_type = null
 	slices_num = 5
 	bitesize = 5
@@ -168,9 +175,9 @@
 /obj/item/reagent_containers/food/snacks/rogue/meat/salami/slice
 	eat_effect = null
 	slices_num = 0
-	name = "salumoi"
+	name = "salami slice"
 	icon_state = "salami_slice"
-	desc = ""
+	desc = "A slice of salami. Tastes great!"
 	fried_type = null
 	list_reagents = list(/datum/reagent/consumable/nutriment = 2)
 	bitesize = 1
@@ -205,7 +212,7 @@
 	icon = 'icons/roguetown/misc/fish.dmi'
 	name = "saltfish"
 	icon_state = ""
-	desc = "Dried fish."
+	desc = "Dried, salty fish. Lasts much longer."
 	fried_type = null
 	slices_num = 0
 	bitesize = 4

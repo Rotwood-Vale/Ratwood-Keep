@@ -221,7 +221,7 @@ GLOBAL_VAR(restart_counter)
 		if(PRcounts[id] > PR_ANNOUNCEMENTS_PER_ROUND)
 			return
 
-	var/final_composed = "<span class='announce'>PR: [announcement]</span>"
+	var/final_composed = span_announce("PR: [announcement]")
 	for(var/client/C in GLOB.clients)
 		C.AnnouncePR(final_composed)
 
@@ -251,15 +251,16 @@ GLOBAL_VAR(restart_counter)
 //		if (usr)
 //			log_admin("[key_name(usr)] Has requested an immediate world restart via client side debugging tools")
 //			message_admins("[key_name_admin(usr)] Has requested an immediate world restart via client side debugging tools")
-//		to_chat(world, "<span class='boldannounce'>Rebooting World immediately due to host request.</span>")
+//		to_chat(world, span_boldannounce("Rebooting World immediately due to host request."))
 //	else
-//	to_chat(world, "<span class='boldannounce'><b><u><a href='byond://winset?command=.reconnect'>CLICK TO RECONNECT</a></u></b></span>")
+//	to_chat(world, span_boldannounce("<b><u><a href='byond://winset?command=.reconnect'>CLICK TO RECONNECT</a></u></b>"))
 
 	var/round_end_sound = pick('sound/roundend/knave.ogg',
 	'sound/roundend/twohours.ogg',
 	'sound/roundend/rest.ogg',
 	'sound/roundend/gather.ogg',
-	'sound/roundend/dwarfs.ogg')
+	'sound/roundend/dwarfs.ogg',
+	'sound/roundend/walter.ogg')
 	for(var/client/thing in GLOB.clients)
 		if(!thing)
 			continue

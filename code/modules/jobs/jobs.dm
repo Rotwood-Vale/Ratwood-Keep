@@ -93,6 +93,7 @@ GLOBAL_LIST_INIT(church_positions, list(
 	"Acolyte",
 	"Mortician",
 	"Templar",
+	"Druid",
 ))
 
 GLOBAL_LIST_INIT(yeoman_positions, list(
@@ -126,6 +127,7 @@ GLOBAL_LIST_INIT(peasant_positions, list(
 	"Beggar",
 	"Adventurer",
 	"Pilgrim",
+	"Drifter"
 ))
 
 GLOBAL_LIST_INIT(mercenary_positions, list(

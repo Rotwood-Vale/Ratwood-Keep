@@ -87,7 +87,7 @@
 		if(ishuman(usr))
 			var/mob/living/carbon/human/M = usr
 			if(M.charflaw)
-				to_chat(M, "<span class='info'>[M.charflaw.desc]</span>")
+				to_chat(M, span_info("[M.charflaw.desc]"))
 				to_chat(M, "*----*")
 			if(M.mind)
 				if(M.mind.language_holder)
@@ -95,16 +95,16 @@
 					for(var/X in M.mind.language_holder.languages)
 						var/datum/language/LA = new X()
 						finn = TRUE
-						to_chat(M, "<span class='info'>[LA.name] - ,[LA.key]</span>")
+						to_chat(M, span_info("[LA.name] - ,[LA.key]"))
 					if(!finn)
-						to_chat(M, "<span class='warning'>I don't know any languages.</span>")
+						to_chat(M, span_warning("I don't know any languages."))
 					to_chat(M, "*----*")
 		for(var/X in GLOB.roguetraits)
 			if(HAS_TRAIT(L, X))
 				to_chat(L, "[X] - <span class='info'>[GLOB.roguetraits[X]]</span>")
 				ht = TRUE
 		if(!ht)
-			to_chat(L, "<span class='warning'>I have no special traits.</span>")
+			to_chat(L, span_warning("I have no special traits."))
 		to_chat(L, "*----*")
 		return
 
@@ -131,7 +131,7 @@
 			if(H.craftingthing && (H.mind?.lastrecipe != null))
 				last_craft = world.time
 				var/datum/component/personal_crafting/C = H.craftingthing
-				to_chat(H, "<span class='warning'>I am crafting \a [H.mind?.lastrecipe] again.</span>")
+				to_chat(H, span_warning("I am crafting \a [H.mind?.lastrecipe] again."))
 				C.construct_item(H, H.mind?.lastrecipe)
 		else
 			H.playsound_local(H, 'sound/misc/click.ogg', 100)
@@ -153,7 +153,7 @@
 		return TRUE
 	var/area/A = get_area(usr)
 	if(!A.outdoors)
-		to_chat(usr, "<span class='warning'>There is already a defined structure here.</span>")
+		to_chat(usr, span_warning("There is already a defined structure here."))
 		return TRUE
 	create_area(usr)
 
@@ -655,49 +655,49 @@
 
 	if(C.internal)
 		C.internal = null
-		to_chat(C, "<span class='notice'>I are no longer running on internals.</span>")
+		to_chat(C, span_notice("I are no longer running on internals."))
 		icon_state = "internal0"
 	else
 		if(!C.getorganslot(ORGAN_SLOT_BREATHING_TUBE))
 			if(!istype(C.wear_mask, /obj/item/clothing/mask))
-				to_chat(C, "<span class='warning'>I are not wearing an internals mask!</span>")
+				to_chat(C, span_warning("I are not wearing an internals mask!"))
 				return 1
 			else
 				var/obj/item/clothing/mask/M = C.wear_mask
 				if(M.mask_adjusted) // if mask on face but pushed down
 					M.adjustmask(C) // adjust it back
 				if( !(M.clothing_flags & MASKINTERNALS) )
-					to_chat(C, "<span class='warning'>I are not wearing an internals mask!</span>")
+					to_chat(C, span_warning("I are not wearing an internals mask!"))
 					return
 
 		var/obj/item/I = C.is_holding_item_of_type(/obj/item/tank)
 		if(I)
-			to_chat(C, "<span class='notice'>I are now running on internals from [I] in your [C.get_held_index_name(C.get_held_index_of_item(I))].</span>")
+			to_chat(C, span_notice("I are now running on internals from [I] in your [C.get_held_index_name(C.get_held_index_of_item(I))]."))
 			C.internal = I
 		else if(ishuman(C))
 			var/mob/living/carbon/human/H = C
 			if(istype(H.s_store, /obj/item/tank))
-				to_chat(H, "<span class='notice'>I are now running on internals from [H.s_store] on your [H.wear_armor.name].</span>")
+				to_chat(H, span_notice("I are now running on internals from [H.s_store] on your [H.wear_armor.name]."))
 				H.internal = H.s_store
 			else if(istype(H.belt, /obj/item/tank))
-				to_chat(H, "<span class='notice'>I are now running on internals from [H.belt] on your belt.</span>")
+				to_chat(H, span_notice("I are now running on internals from [H.belt] on your belt."))
 				H.internal = H.belt
 			else if(istype(H.l_store, /obj/item/tank))
-				to_chat(H, "<span class='notice'>I are now running on internals from [H.l_store] in your left pocket.</span>")
+				to_chat(H, span_notice("I are now running on internals from [H.l_store] in your left pocket."))
 				H.internal = H.l_store
 			else if(istype(H.r_store, /obj/item/tank))
-				to_chat(H, "<span class='notice'>I are now running on internals from [H.r_store] in your right pocket.</span>")
+				to_chat(H, span_notice("I are now running on internals from [H.r_store] in your right pocket."))
 				H.internal = H.r_store
 
 		//Separate so CO2 jetpacks are a little less cumbersome.
 		if(!C.internal && istype(C.back, /obj/item/tank))
-			to_chat(C, "<span class='notice'>I are now running on internals from [C.back] on your back.</span>")
+			to_chat(C, span_notice("I are now running on internals from [C.back] on your back."))
 			C.internal = C.back
 
 		if(C.internal)
 			icon_state = "internal1"
 		else
-			to_chat(C, "<span class='warning'>I don't have an oxygen tank!</span>")
+			to_chat(C, span_warning("I don't have an oxygen tank!"))
 			return
 	C.update_action_buttons_icon()
 
@@ -793,6 +793,13 @@
 		qdel(src)
 		return
 	var/mob/living/carbon/human/H = hud.mymob
+	// Eh this will work for now mayb? Just don't startup class select if its the first set of guys and we got these antags
+	if(SSrole_class_handler.current_wave_number == 1)
+		if(H.mind && H.mind.antag_datums)
+			for(var/datum/antagonist/D in H.mind.antag_datums)
+				if(istype(D, /datum/antagonist/vampirelord) || istype(D, /datum/antagonist/vampire) || istype(D, /datum/antagonist/bandit))
+					qdel(src)
+					return
 	if(H.advsetup)
 		alpha = 0
 		icon = 'icons/mob/advsetup.dmi'
@@ -810,9 +817,7 @@
 		qdel(src)
 		return
 	else
-		if(H.advsetup())
-			qdel(src)
-
+		SSrole_class_handler.setup_class_handler(H)
 
 /atom/movable/screen/eye_intent
 	name = "eye intent"
@@ -849,30 +854,39 @@
 		if(isliving(hud.mymob))
 			var/mob/living/L = hud.mymob
 			L.look_around()
+	
+/atom/movable/screen/eye_intent/update_icon_state()
+	. = ..()
+	var/mob/living/L = hud.mymob
+	if(!istype(L))
+		icon_state = "eye"
+		return
+	if(L.eyesclosed)
+		icon_state = "eye_closed"
+	else if(L.tempfixeye)
+		icon_state = "eye_target"
+	else if(L.fixedeye)
+		icon_state = "eye_fixed"
+	else
+		icon_state = "eye"
 
-/atom/movable/screen/eye_intent/update_icon(mob/user)
-    if(!user && hud)
-        user = hud.mymob
-    if(!user)
-        return
-    if(!isliving(user))
-        return
-    cut_overlays()
-    var/mob/living/L = user
-    if(L.eyesclosed)
-        icon_state = "eye_closed"
-    else if(user.tempfixeye)
-        icon_state = "eye_target"
-    else if(user.fixedeye)
-        icon_state = "eye_fixed"
-    else
-        icon_state = "eye"
-    /*if(ishuman(user))
-        var/mob/living/carbon/human/H = user
-        if(H.eye_color)
-            var/mutable_appearance/MA = mutable_appearance(icon, "o[icon_state]")
-            MA.color = "#[H.eye_color]"
-            add_overlay(MA)*/
+/atom/movable/screen/eye_intent/update_overlays()
+	. = ..()
+	var/mob/living/carbon/human/human = hud.mymob
+	if(!istype(human))
+		return
+	var/mutable_appearance/iris = mutable_appearance(src.icon, "oeye")
+	switch(icon_state)
+		if("eye_closed")
+			iris.icon_state = "oeye_closed"
+		if("eye_target")
+			iris.icon_state = "oeye_target"
+		if("eye_fixed")
+			iris.icon_state = "oeye_fixed"
+		else
+			iris.icon_state = "oeye"
+	iris.color = "#" + human.eye_color
+	. += iris
 
 /atom/movable/screen/eye_intent/proc/toggle(mob/user)
 	if(isobserver(user))
@@ -1066,37 +1080,37 @@
 			if(1 to 3)
 				switch(icon_x)
 					if(5 to 7)
-						return BODY_ZONE_R_INHAND
+						return BODY_ZONE_PRECISE_R_INHAND
 					if(17 to 28)
 						return BODY_ZONE_PRECISE_R_FOOT
 					if(38 to 49)
 						return BODY_ZONE_PRECISE_L_FOOT
 					if(59 to 61)
-						return BODY_ZONE_L_INHAND
+						return BODY_ZONE_PRECISE_L_INHAND
 			if(4 to 5)
 				switch(icon_x)
 					if(5 to 7)
-						return BODY_ZONE_R_INHAND
+						return BODY_ZONE_PRECISE_R_INHAND
 					if(17 to 28)
 						return BODY_ZONE_PRECISE_R_FOOT
 					if(38 to 49)
 						return BODY_ZONE_PRECISE_L_FOOT
 					if(59 to 61)
-						return BODY_ZONE_L_INHAND
+						return BODY_ZONE_PRECISE_L_INHAND
 			if(6 to 15)
 				switch(icon_x)
 					if(5 to 7)
-						return BODY_ZONE_R_INHAND
+						return BODY_ZONE_PRECISE_R_INHAND
 					if(20 to 29)
 						return BODY_ZONE_R_LEG
 					if(37 to 46)
 						return BODY_ZONE_L_LEG
 					if(59 to 61)
-						return BODY_ZONE_L_INHAND
+						return BODY_ZONE_PRECISE_L_INHAND
 			if(16 to 21)
 				switch(icon_x)
 					if(5 to 7)
-						return BODY_ZONE_R_INHAND
+						return BODY_ZONE_PRECISE_R_INHAND
 					if(12 to 18)
 						return BODY_ZONE_PRECISE_R_HAND
 					if(20 to 29)
@@ -1106,11 +1120,11 @@
 					if(48 to 54)
 						return BODY_ZONE_PRECISE_L_HAND
 					if(59 to 61)
-						return BODY_ZONE_L_INHAND
+						return BODY_ZONE_PRECISE_L_INHAND
 			if(22 to 24)
 				switch(icon_x)
 					if(5 to 7)
-						return BODY_ZONE_R_INHAND
+						return BODY_ZONE_PRECISE_R_INHAND
 					if(12 to 18)
 						return BODY_ZONE_PRECISE_R_HAND
 					if(20 to 29)
@@ -1122,7 +1136,7 @@
 					if(48 to 54)
 						return BODY_ZONE_PRECISE_L_HAND
 					if(59 to 61)
-						return BODY_ZONE_L_INHAND
+						return BODY_ZONE_PRECISE_L_INHAND
 			if(25 to 29)
 				switch(icon_x)
 					if(16 to 22)
@@ -1189,27 +1203,27 @@
 			if(1 to 7)
 				switch(icon_x)
 					if(12 to 14)
-						return BODY_ZONE_R_INHAND
+						return BODY_ZONE_PRECISE_R_INHAND
 					if(26 to 32)
 						return BODY_ZONE_PRECISE_R_FOOT
 					if(34 to 40)
 						return BODY_ZONE_PRECISE_L_FOOT
 					if(52 to 54)
-						return BODY_ZONE_L_INHAND
+						return BODY_ZONE_PRECISE_L_INHAND
 			if(8 to 16)
 				switch(icon_x)
 					if(12 to 14)
-						return BODY_ZONE_R_INHAND
+						return BODY_ZONE_PRECISE_R_INHAND
 					if(24 to 31)
 						return BODY_ZONE_R_LEG
 					if(35 to 42)
 						return BODY_ZONE_L_LEG
 					if(52 to 54)
-						return BODY_ZONE_L_INHAND
+						return BODY_ZONE_PRECISE_L_INHAND
 			if(17 to 20)
 				switch(icon_x)
 					if(12 to 14)
-						return BODY_ZONE_R_INHAND
+						return BODY_ZONE_PRECISE_R_INHAND
 					if(20 to 23)
 						return BODY_ZONE_PRECISE_R_HAND
 					if(24 to 31)
@@ -1219,11 +1233,11 @@
 					if(43 to 46)
 						return BODY_ZONE_PRECISE_L_HAND
 					if(52 to 54)
-						return BODY_ZONE_L_INHAND
+						return BODY_ZONE_PRECISE_L_INHAND
 			if(21)
 				switch(icon_x)
 					if(12 to 14)
-						return BODY_ZONE_R_INHAND
+						return BODY_ZONE_PRECISE_R_INHAND
 					if(20 to 23)
 						return BODY_ZONE_PRECISE_R_HAND
 					if(30 to 36)
@@ -1231,11 +1245,11 @@
 					if(43 to 46)
 						return BODY_ZONE_PRECISE_L_HAND
 					if(52 to 54)
-						return BODY_ZONE_L_INHAND
+						return BODY_ZONE_PRECISE_L_INHAND
 			if(22 to 23)
 				switch(icon_x)
 					if(12 to 14)
-						return BODY_ZONE_R_INHAND
+						return BODY_ZONE_PRECISE_R_INHAND
 					if(20 to 25)
 						return BODY_ZONE_R_ARM
 					if(30 to 36)
@@ -1243,7 +1257,7 @@
 					if(41 to 46)
 						return BODY_ZONE_L_ARM
 					if(52 to 54)
-						return BODY_ZONE_L_INHAND
+						return BODY_ZONE_PRECISE_L_INHAND
 			if(24 to 29)
 				switch(icon_x)
 					if(20 to 25)
@@ -1470,7 +1484,7 @@
 			if(length(H.mind.known_people))
 				H.mind.display_known_people(H)
 			else
-				to_chat(H, "<span class='warning'>I don't know anyone.</span>")
+				to_chat(H, span_warning("I don't know anyone."))
 
 /atom/movable/screen/splash
 	icon = 'icons/blank_title.png'
@@ -1667,7 +1681,7 @@
 		if(modifiers["left"])
 			if(M.charflaw)
 				to_chat(M, "*----*")
-				to_chat(M, "<span class='info'>[M.charflaw.desc]</span>")
+				to_chat(M, span_info("[M.charflaw.desc]"))
 			to_chat(M, "*--------*")
 			var/list/already_printed = list()
 			for(var/datum/stressevent/S in M.positive_stressors)
@@ -1708,7 +1722,7 @@
 			to_chat(M, "*--------*")
 		if(modifiers["right"])
 			if(M.get_triumphs() <= 0)
-				to_chat(M, "<span class='warning'>I haven't TRIUMPHED.</span>")
+				to_chat(M, span_warning("I haven't TRIUMPHED."))
 				return
 			if(alert("Do you want to remember a TRIUMPH?", "", "Yes", "No") == "Yes")
 				if(M.add_stress(/datum/stressevent/triumph))
@@ -1746,9 +1760,9 @@
 				show_intents(M)
 		if(modifiers["right"])
 			if(M.rmb_intent)
-				to_chat(M, "<span class='info'>* --- *</span>")
-				to_chat(M, "<span class='info'>[name]: [desc]</span>")
-				to_chat(M, "<span class='info'>* --- *</span>")
+				to_chat(M, span_info("* --- *"))
+				to_chat(M, span_info("[name]: [desc]"))
+				to_chat(M, span_info("* --- *"))
 
 /atom/movable/screen/rmbintent/proc/collapse_intents()
 	if(!showing)
@@ -1817,9 +1831,9 @@
 			if(stored_intent)
 				M.swap_rmb_intent(type = stored_intent)
 		if(modifiers["right"])
-			to_chat(M, "<span class='info'>* --- *</span>")
-			to_chat(M, "<span class='info'>[name]: [desc]</span>")
-			to_chat(M, "<span class='info'>* --- *</span>")
+			to_chat(M, span_info("* --- *"))
+			to_chat(M, span_info("[name]: [desc]"))
+			to_chat(M, span_info("* --- *"))
 
 /mob/living/proc/swap_rmb_intent(type, num)
 	if(!possible_rmb_intents?.len)

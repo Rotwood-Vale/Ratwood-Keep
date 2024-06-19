@@ -3,17 +3,17 @@
 	var/foodextracted = null
 	name = "chaff"
 	icon_state = "chaff1"
-	desc = ""
+	desc = "A farmer's chaff." //english is not my native language, upon searching "chaff" i didn't even get what this is.
 	var/chafftype = 1
 	var/canthresh = TRUE
 	//dropshrink = 0.75
 
 /obj/item/natural/chaff/attack_right(mob/user)
 	if(foodextracted && !user.get_active_held_item())
-		to_chat(user, "<span class='warning'>I start to shuck [src]...</span>")
+		to_chat(user, span_warning("I start to shuck [src]..."))
 		if(move_after(user,40, target = src)) //ROGTODO make this based on farming skill and speed
-			user.visible_message("<span class='notice'>[user] shucks [src].</span>", \
-								"<span class='notice'>I shuck [src].</span>")
+			user.visible_message(span_notice("[user] shucks [src]."), \
+								span_notice("I shuck [src]."))
 			testing("1")
 			var/obj/item/G = new foodextracted(get_turf(src))
 			user.put_in_active_hand(G)
@@ -40,9 +40,9 @@
 							W.forked += R
 							stuff++
 					if(stuff)
-						to_chat(user, "<span class='notice'>I pick up the stalks with the pitchfork.</span>")
+						to_chat(user, span_notice("I pick up the stalks with the pitchfork."))
 					else
-						to_chat(user, "<span class='warning'>I'm carrying enough with the pitchfork.</span>")
+						to_chat(user, span_warning("I'm carrying enough with the pitchfork."))
 					W.update_icon()
 					return
 
@@ -54,8 +54,8 @@
 				continue
 			if(prob(threshchance))
 				C.thresh()
-		user.visible_message("<span class='notice'>[user] threshes the stalks!</span>", \
-							"<span class='notice'>I thresh the stalks.</span>")
+		user.visible_message(span_notice("[user] threshes the stalks!"), \
+							span_notice("I thresh the stalks."))
 		user.changeNext_move(CLICK_CD_MELEE)
 		playsound(loc,"plantcross", 100, FALSE)
 		playsound(loc,"smashlimb", 50, FALSE)

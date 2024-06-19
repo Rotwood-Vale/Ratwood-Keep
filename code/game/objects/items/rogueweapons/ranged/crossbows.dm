@@ -80,12 +80,12 @@
 		..()
 	else
 		if(!cocked)
-			to_chat(user, "<span class='info'>I step on the stirrup and use all my might...</span>")
+			to_chat(user, span_info("I step on the stirrup and use all my might..."))
 			if(do_after(user, 50 - user.STASTR, target = user))
 				playsound(user, 'sound/combat/Ranged/crossbow_medium_reload-01.ogg', 100, FALSE)
 				cocked = TRUE
 		else
-			to_chat(user, "<span class='warning'>I carefully de-cock the crossbow.</span>")
+			to_chat(user, span_warning("I carefully de-cock the crossbow."))
 			cocked = FALSE
 	update_icon()
 
@@ -96,7 +96,7 @@
 				return
 			..()
 		else
-			to_chat(user, "<span class='warning'>I need to cock the bow first.</span>")
+			to_chat(user, span_warning("I need to cock the bow first."))
 
 
 /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow/process_fire(atom/target, mob/living/user, message = TRUE, params = null, zone_override = "", bonus_spread = 0)

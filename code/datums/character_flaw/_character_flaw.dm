@@ -177,9 +177,8 @@ GLOBAL_LIST_INIT(character_flaws, list("Alcoholic"=/datum/charflaw/addiction/alc
 	var/mob/living/carbon/human/H = user
 	if(!H.wear_mask)
 		H.equip_to_slot_or_del(new /obj/item/clothing/mask/rogue/eyepatch(H), SLOT_WEAR_MASK)
-	var/obj/item/organ/eyes/my_eyes = H.getorganslot(ORGAN_SLOT_EYES)
-	if(my_eyes)
-		my_eyes.right_poked = TRUE
+	var/obj/item/bodypart/head/head = H.get_bodypart(BODY_ZONE_HEAD)
+	head?.add_wound(/datum/wound/facial/eyes/right/permanent)
 	H.update_fov_angles()
 
 /datum/charflaw/noeyel
@@ -193,7 +192,6 @@ GLOBAL_LIST_INIT(character_flaws, list("Alcoholic"=/datum/charflaw/addiction/alc
 	var/mob/living/carbon/human/H = user
 	if(!H.wear_mask)
 		H.equip_to_slot_or_del(new /obj/item/clothing/mask/rogue/eyepatch/left(H), SLOT_WEAR_MASK)
-	var/obj/item/organ/eyes/my_eyes = H.getorganslot(ORGAN_SLOT_EYES)
-	if(my_eyes)
-		my_eyes.left_poked = TRUE
+	var/obj/item/bodypart/head/head = H.get_bodypart(BODY_ZONE_HEAD)
+	head?.add_wound(/datum/wound/facial/eyes/left/permanent)
 	H.update_fov_angles()

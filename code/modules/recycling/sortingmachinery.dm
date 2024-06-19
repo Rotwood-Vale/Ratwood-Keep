@@ -38,40 +38,40 @@
 
 		if(sortTag != O.currTag)
 			var/tag = uppertext(GLOB.TAGGERLOCATIONS[O.currTag])
-			to_chat(user, "<span class='notice'>*[tag]*</span>")
+			to_chat(user, span_notice("*[tag]*"))
 			sortTag = O.currTag
 			playsound(loc, 'sound/blank.ogg', 100, TRUE)
 
 	else if(istype(W, /obj/item/pen))
 		if(!user.is_literate())
-			to_chat(user, "<span class='notice'>I scribble illegibly on the side of [src]!</span>")
+			to_chat(user, span_notice("I scribble illegibly on the side of [src]!"))
 			return
 		var/str = copytext(sanitize(input(user,"Label text?","Set label","")),1,MAX_NAME_LEN)
 		if(!user.canUseTopic(src, BE_CLOSE))
 			return
 		if(!str || !length(str))
-			to_chat(user, "<span class='warning'>Invalid text!</span>")
+			to_chat(user, span_warning("Invalid text!"))
 			return
-		user.visible_message("<span class='notice'>[user] labels [src] as [str].</span>")
+		user.visible_message(span_notice("[user] labels [src] as [str]."))
 		name = "[name] ([str])"
 
 	else if(istype(W, /obj/item/stack/wrapping_paper) && !giftwrapped)
 		var/obj/item/stack/wrapping_paper/WP = W
 		if(WP.use(3))
-			user.visible_message("<span class='notice'>[user] wraps the package in festive paper!</span>")
+			user.visible_message(span_notice("[user] wraps the package in festive paper!"))
 			giftwrapped = TRUE
 			icon_state = "gift[icon_state]"
 		else
-			to_chat(user, "<span class='warning'>I need more paper!</span>")
+			to_chat(user, span_warning("I need more paper!"))
 
 	else if(istype(W, /obj/item/paper))
 		if(note)
-			to_chat(user, "<span class='warning'>This package already has a note attached!</span>")
+			to_chat(user, span_warning("This package already has a note attached!"))
 			return
 		if(!user.transferItemToLoc(W, src))
-			to_chat(user, "<span class='warning'>For some reason, you can't attach [W]!</span>")
+			to_chat(user, span_warning("For some reason, you can't attach [W]!"))
 			return
-		user.visible_message("<span class='notice'>[user] attaches [W] to [src].</span>", "<span class='notice'>I attach [W] to [src].</span>")
+		user.visible_message(span_notice("[user] attaches [W] to [src]."), span_notice("I attach [W] to [src]."))
 		note = W
 		if(giftwrapped)
 			add_overlay(copytext("[icon_state]_note",5))
@@ -86,17 +86,17 @@
 		var/atom/movable/AM = loc //can't unwrap the wrapped container if it's inside something.
 		AM.relay_container_resist(user, O)
 		return
-	to_chat(user, "<span class='notice'>I lean on the back of [O] and start pushing to rip the wrapping around it.</span>")
+	to_chat(user, span_notice("I lean on the back of [O] and start pushing to rip the wrapping around it."))
 	if(do_after(user, 50, target = O))
 		if(!user || user.stat != CONSCIOUS || user.loc != O || O.loc != src )
 			return
-		to_chat(user, "<span class='notice'>I successfully removed [O]'s wrapping !</span>")
+		to_chat(user, span_notice("I successfully removed [O]'s wrapping !"))
 		O.forceMove(loc)
 		playsound(src.loc, 'sound/blank.ogg', 50, TRUE)
 		qdel(src)
 	else
 		if(user.loc == src) //so we don't get the message if we resisted multiple times and succeeded.
-			to_chat(user, "<span class='warning'>I fail to remove [O]'s wrapping!</span>")
+			to_chat(user, span_warning("I fail to remove [O]'s wrapping!"))
 
 
 /obj/item/smallDelivery
@@ -119,7 +119,7 @@
 		var/atom/movable/AM = X
 		user.put_in_hands(AM)
 	playsound(src.loc, 'sound/blank.ogg', 50, TRUE)
-	user.visible_message("<span class='warning'>[user] opens [src].</span>")
+	user.visible_message(span_warning("[user] opens [src]."))
 	qdel(src)
 
 /obj/item/smallDelivery/attack_self_tk(mob/user)
@@ -153,21 +153,21 @@
 
 		if(sortTag != O.currTag)
 			var/tag = uppertext(GLOB.TAGGERLOCATIONS[O.currTag])
-			to_chat(user, "<span class='notice'>*[tag]*</span>")
+			to_chat(user, span_notice("*[tag]*"))
 			sortTag = O.currTag
 			playsound(loc, 'sound/blank.ogg', 100, TRUE)
 
 	else if(istype(W, /obj/item/pen))
 		if(!user.is_literate())
-			to_chat(user, "<span class='notice'>I scribble illegibly on the side of [src]!</span>")
+			to_chat(user, span_notice("I scribble illegibly on the side of [src]!"))
 			return
 		var/str = copytext(sanitize(input(user,"Label text?","Set label","")),1,MAX_NAME_LEN)
 		if(!user.canUseTopic(src, BE_CLOSE))
 			return
 		if(!str || !length(str))
-			to_chat(user, "<span class='warning'>Invalid text!</span>")
+			to_chat(user, span_warning("Invalid text!"))
 			return
-		user.visible_message("<span class='notice'>[user] labels [src] as [str].</span>")
+		user.visible_message(span_notice("[user] labels [src] as [str]."))
 		name = "[name] ([str])"
 
 	else if(istype(W, /obj/item/stack/wrapping_paper) && !giftwrapped)
@@ -175,18 +175,18 @@
 		if(WP.use(1))
 			icon_state = "gift[icon_state]"
 			giftwrapped = 1
-			user.visible_message("<span class='notice'>[user] wraps the package in festive paper!</span>")
+			user.visible_message(span_notice("[user] wraps the package in festive paper!"))
 		else
-			to_chat(user, "<span class='warning'>I need more paper!</span>")
+			to_chat(user, span_warning("I need more paper!"))
 
 /*	else if(istype(W, /obj/item/paper))
 		if(note)
-			to_chat(user, "<span class='warning'>This package already has a note attached!</span>")
+			to_chat(user, span_warning("This package already has a note attached!"))
 			return
 		if(!user.transferItemToLoc(W, src))
-			to_chat(user, "<span class='warning'>For some reason, you can't attach [W]!</span>")
+			to_chat(user, span_warning("For some reason, you can't attach [W]!"))
 			return
-		user.visible_message("<span class='notice'>[user] attaches [W] to [src].</span>", "<span class='notice'>I attach [W] to [src].</span>")
+		user.visible_message(span_notice("[user] attaches [W] to [src]."), span_notice("I attach [W] to [src]."))
 		note = W
 		if(giftwrapped)
 			add_overlay(copytext("[icon_state]_note",5))
@@ -212,11 +212,11 @@
 	desc = ""
 
 /obj/item/destTagger/suicide_act(mob/living/user)
-	user.visible_message("<span class='suicide'>[user] begins tagging [user.p_their()] final destination! It looks like [user.p_theyre()] trying to commit suicide!</span>")
+	user.visible_message(span_suicide("[user] begins tagging [user.p_their()] final destination! It looks like [user.p_theyre()] trying to commit suicide!"))
 	if (islizard(user))
-		to_chat(user, "<span class='notice'>*HELL*</span>")//lizard nerf
+		to_chat(user, span_notice("*HELL*"))//lizard nerf
 	else
-		to_chat(user, "<span class='notice'>*HEAVEN*</span>")
+		to_chat(user, span_notice("*HEAVEN*"))
 	playsound(src, 'sound/blank.ogg', 100, TRUE)
 	return BRUTELOSS
 

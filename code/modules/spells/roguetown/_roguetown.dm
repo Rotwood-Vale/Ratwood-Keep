@@ -55,7 +55,7 @@
 	. = ..()
 	if(.)
 		return FALSE
-	if(!cast_check(0, ranged_ability_user))
+	if(!can_cast(caller) || !cast_check(FALSE, ranged_ability_user))
 		return FALSE
 	if(perform(list(target), TRUE, user = ranged_ability_user))
 		return TRUE
@@ -71,6 +71,7 @@
 	return
 
 /obj/effect/proc_holder/spell/invoked/projectile/cast(list/targets, mob/living/user)
+	. = ..()
 	var/target = targets[1]
 	var/turf/T = user.loc
 	var/turf/U = get_step(user, user.dir) // Get the tile infront of the move, based on their direction
