@@ -67,7 +67,7 @@
 		var/datum/mutation/human/mewtayshun = M
 		if(!(mewtayshun.type in conflicts) && !(type in mewtayshun.conflicts))
 			continue
-		to_chat(H, "<span class='warning'>I feel your genes resisting something.</span>")
+		to_chat(H, span_warning("I feel your genes resisting something."))
 		return TRUE
 	owner = H
 	dna = H.dna

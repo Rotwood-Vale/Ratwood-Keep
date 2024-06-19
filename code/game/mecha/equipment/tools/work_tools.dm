@@ -59,20 +59,20 @@
 			return
 		if(!O.anchored)
 			if(cargo_holder.cargo.len < cargo_holder.cargo_capacity)
-				chassis.visible_message("<span class='notice'>[chassis] lifts [target] and starts to load it into cargo compartment.</span>")
+				chassis.visible_message(span_notice("[chassis] lifts [target] and starts to load it into cargo compartment."))
 				O.anchored = TRUE
 				if(do_after_cooldown(target))
 					cargo_holder.cargo += O
 					O.forceMove(chassis)
 					O.anchored = FALSE
-					occupant_message("<span class='notice'>[target] successfully loaded.</span>")
+					occupant_message(span_notice("[target] successfully loaded."))
 					log_message("Loaded [O]. Cargo compartment capacity: [cargo_holder.cargo_capacity - cargo_holder.cargo.len]", LOG_MECHA)
 				else
 					O.anchored = initial(O.anchored)
 			else
-				occupant_message("<span class='warning'>Not enough room in cargo compartment!</span>")
+				occupant_message(span_warning("Not enough room in cargo compartment!"))
 		else
-			occupant_message("<span class='warning'>[target] is firmly secured!</span>")
+			occupant_message(span_warning("[target] is firmly secured!"))
 
 	else if(isliving(target))
 		var/mob/living/M = target
@@ -84,14 +84,14 @@
 				return
 			M.adjustOxyLoss(round(dam_force/2))
 			M.updatehealth()
-			target.visible_message("<span class='danger'>[chassis] squeezes [target]!</span>", \
-								"<span class='danger'>[chassis] squeezes you!</span>",\
-								"<span class='hear'>I hear something crack.</span>")
+			target.visible_message(span_danger("[chassis] squeezes [target]!"), \
+								span_danger("[chassis] squeezes you!"),\
+								span_hear("I hear something crack."))
 			log_combat(chassis.occupant, M, "attacked", "[name]", "(INTENT: [uppertext(chassis.occupant.used_intent)]) (DAMTYPE: [uppertext(damtype)])")
 		else
 			step_away(M,chassis)
-			occupant_message("<span class='notice'>I push [target] out of the way.</span>")
-			chassis.visible_message("<span class='notice'>[chassis] pushes [target] out of the way.</span>")
+			occupant_message(span_notice("I push [target] out of the way."))
+			chassis.visible_message(span_notice("[chassis] pushes [target] out of the way."))
 		return 1
 
 
@@ -119,20 +119,20 @@
 		var/obj/O = target
 		if(!O.anchored)
 			if(cargo_holder.cargo.len < cargo_holder.cargo_capacity)
-				chassis.visible_message("<span class='notice'>[chassis] lifts [target] and starts to load it into cargo compartment.</span>")
+				chassis.visible_message(span_notice("[chassis] lifts [target] and starts to load it into cargo compartment."))
 				O.anchored = TRUE
 				if(do_after_cooldown(target))
 					cargo_holder.cargo += O
 					O.forceMove(chassis)
 					O.anchored = FALSE
-					occupant_message("<span class='notice'>[target] successfully loaded.</span>")
+					occupant_message(span_notice("[target] successfully loaded."))
 					log_message("Loaded [O]. Cargo compartment capacity: [cargo_holder.cargo_capacity - cargo_holder.cargo.len]", LOG_MECHA)
 				else
 					O.anchored = initial(O.anchored)
 			else
-				occupant_message("<span class='warning'>Not enough room in cargo compartment!</span>")
+				occupant_message(span_warning("Not enough room in cargo compartment!"))
 		else
-			occupant_message("<span class='warning'>[target] is firmly secured!</span>")
+			occupant_message(span_warning("[target] is firmly secured!"))
 
 	else if(isliving(target))
 		var/mob/living/M = target
@@ -145,12 +145,12 @@
 					return
 				M.adjustOxyLoss(round(dam_force/2))
 				M.updatehealth()
-				target.visible_message("<span class='danger'>[chassis] destroys [target] in an unholy fury!</span>", \
-									"<span class='danger'>[chassis] destroys you in an unholy fury!</span>")
+				target.visible_message(span_danger("[chassis] destroys [target] in an unholy fury!"), \
+									span_danger("[chassis] destroys you in an unholy fury!"))
 				log_combat(chassis.occupant, M, "attacked", "[name]", "(INTENT: [uppertext(chassis.occupant.used_intent)]) (DAMTYPE: [uppertext(damtype)])")
 			else
-				target.visible_message("<span class='danger'>[chassis] destroys [target] in an unholy fury!</span>", \
-									"<span class='danger'>[chassis] destroys you in an unholy fury!</span>")
+				target.visible_message(span_danger("[chassis] destroys [target] in an unholy fury!"), \
+									span_danger("[chassis] destroys you in an unholy fury!"))
 		else if(chassis.occupant.used_intent.type == INTENT_DISARM)
 			if(real_clamp)
 				var/mob/living/carbon/C = target
@@ -168,16 +168,16 @@
 					limbs_gone = "[limbs_gone], [affected]"
 				if(play_sound)
 					playsound(src, get_dismember_sound(), 80, TRUE)
-					target.visible_message("<span class='danger'>[chassis] rips [target]'s arms off!</span>", \
-								   "<span class='danger'>[chassis] rips your arms off!</span>")
+					target.visible_message(span_danger("[chassis] rips [target]'s arms off!"), \
+								   span_danger("[chassis] rips your arms off!"))
 					log_combat(chassis.occupant, M, "dismembered of[limbs_gone],", "[name]", "(INTENT: [uppertext(chassis.occupant.used_intent)]) (DAMTYPE: [uppertext(damtype)])")
 			else
-				target.visible_message("<span class='danger'>[chassis] rips [target]'s arms off!</span>", \
-								   "<span class='danger'>[chassis] rips your arms off!</span>")
+				target.visible_message(span_danger("[chassis] rips [target]'s arms off!"), \
+								   span_danger("[chassis] rips your arms off!"))
 		else
 			step_away(M,chassis)
-			target.visible_message("<span class='danger'>[chassis] tosses [target] like a piece of paper!</span>", \
-								"<span class='danger'>[chassis] tosses you like a piece of paper!</span>")
+			target.visible_message(span_danger("[chassis] tosses [target] like a piece of paper!"), \
+								span_danger("[chassis] tosses you like a piece of paper!"))
 		return 1
 
 
@@ -202,7 +202,7 @@
 	if(istype(target, /obj/structure/reagent_dispensers/watertank) && get_dist(chassis,target) <= 1)
 		var/obj/structure/reagent_dispensers/watertank/WT = target
 		WT.reagents.trans_to(src, 1000)
-		occupant_message("<span class='notice'>Extinguisher refilled.</span>")
+		occupant_message(span_notice("Extinguisher refilled."))
 		playsound(chassis, 'sound/blank.ogg', 50, TRUE, -6)
 	else
 		if(reagents.total_volume > 0)
@@ -281,20 +281,20 @@
 		if(0)
 			if(iswallturf(target))
 				var/turf/closed/wall/W = target
-				occupant_message("<span class='notice'>Deconstructing [W]...</span>")
+				occupant_message(span_notice("Deconstructing [W]..."))
 				if(do_after_cooldown(W))
 					chassis.spark_system.start()
 					W.ScrapeAway(flags = CHANGETURF_INHERIT_AIR)
 					playsound(W, 'sound/blank.ogg', 50, TRUE)
 			else if(isfloorturf(target))
 				var/turf/open/floor/F = target
-				occupant_message("<span class='notice'>Deconstructing [F]...</span>")
+				occupant_message(span_notice("Deconstructing [F]..."))
 				if(do_after_cooldown(target))
 					chassis.spark_system.start()
 					F.ScrapeAway(flags = CHANGETURF_INHERIT_AIR)
 					playsound(F, 'sound/blank.ogg', 50, TRUE)
 			else if (istype(target, /obj/machinery/door/airlock))
-				occupant_message("<span class='notice'>Deconstructing [target]...</span>")
+				occupant_message(span_notice("Deconstructing [target]..."))
 				if(do_after_cooldown(target))
 					chassis.spark_system.start()
 					qdel(target)
@@ -302,21 +302,21 @@
 		if(1)
 			if(isspaceturf(target))
 				var/turf/open/space/S = target
-				occupant_message("<span class='notice'>Building Floor...</span>")
+				occupant_message(span_notice("Building Floor..."))
 				if(do_after_cooldown(S))
 					S.PlaceOnTop(/turf/open/floor/plating, flags = CHANGETURF_INHERIT_AIR)
 					playsound(S, 'sound/blank.ogg', 50, TRUE)
 					chassis.spark_system.start()
 			else if(isfloorturf(target))
 				var/turf/open/floor/F = target
-				occupant_message("<span class='notice'>Building Wall...</span>")
+				occupant_message(span_notice("Building Wall..."))
 				if(do_after_cooldown(F))
 					F.PlaceOnTop(/turf/closed/wall)
 					playsound(F, 'sound/blank.ogg', 50, TRUE)
 					chassis.spark_system.start()
 		if(2)
 			if(isfloorturf(target))
-				occupant_message("<span class='notice'>Building Airlock...</span>")
+				occupant_message(span_notice("Building Airlock..."))
 				if(do_after_cooldown(target))
 					chassis.spark_system.start()
 					var/obj/machinery/door/airlock/T = new /obj/machinery/door/airlock(target)
@@ -335,13 +335,13 @@
 		mode = text2num(href_list["mode"])
 		switch(mode)
 			if(0)
-				occupant_message("<span class='notice'>Switched RCD to Deconstruct.</span>")
+				occupant_message(span_notice("Switched RCD to Deconstruct."))
 				energy_drain = initial(energy_drain)
 			if(1)
-				occupant_message("<span class='notice'>Switched RCD to Construct.</span>")
+				occupant_message(span_notice("Switched RCD to Construct."))
 				energy_drain = 2*initial(energy_drain)
 			if(2)
-				occupant_message("<span class='notice'>Switched RCD to Construct Airlock.</span>")
+				occupant_message(span_notice("Switched RCD to Construct Airlock."))
 				energy_drain = 2*initial(energy_drain)
 	return
 
@@ -356,19 +356,19 @@
 
 /obj/item/mecha_parts/mecha_equipment/ripleyupgrade/can_attach(obj/mecha/working/ripley/M)
 	if(M.type != /obj/mecha/working/ripley)
-		to_chat(loc, "<span class='warning'>This conversion kit can only be applied to APLU MK-I models.</span>")
+		to_chat(loc, span_warning("This conversion kit can only be applied to APLU MK-I models."))
 		return FALSE
 	if(M.cargo.len)
-		to_chat(loc, "<span class='warning'>[M]'s cargo hold must be empty before this conversion kit can be applied.</span>")
+		to_chat(loc, span_warning("[M]'s cargo hold must be empty before this conversion kit can be applied."))
 		return FALSE
 	if(!M.maint_access) //non-removable upgrade, so lets make sure the pilot or owner has their say.
-		to_chat(loc, "<span class='warning'>[M] must have maintenance protocols active in order to allow this conversion kit.</span>")
+		to_chat(loc, span_warning("[M] must have maintenance protocols active in order to allow this conversion kit."))
 		return FALSE
 	if(M.occupant) //We're actualy making a new mech and swapping things over, it might get weird if players are involved
-		to_chat(loc, "<span class='warning'>[M] must be unoccupied before this conversion kit can be applied.</span>")
+		to_chat(loc, span_warning("[M] must be unoccupied before this conversion kit can be applied."))
 		return FALSE
 	if(!M.cell) //Turns out things break if the cell is missing
-		to_chat(loc, "<span class='warning'>The conversion process requires a cell installed.</span>")
+		to_chat(loc, span_warning("The conversion process requires a cell installed."))
 		return FALSE
 	return TRUE
 

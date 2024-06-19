@@ -18,7 +18,7 @@
 	desc = ""
 	icon_state = "rsecurity"
 	item_state = "r_suit"
-	armor = list("melee" = 10, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 30, "acid" = 30)
+	armor = list("blunt" = 30, "slash" = 10, "stab" = 20, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 30, "acid" = 30)
 	strip_delay = 50
 	alt_covers_chest = TRUE
 	sensor_mode = SENSOR_COORDS
@@ -58,7 +58,7 @@
 	desc = ""
 	icon_state = "rwarden"
 	item_state = "r_suit"
-	armor = list("melee" = 10, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 30, "acid" = 30)
+	armor = list("blunt" = 30, "slash" = 10, "stab" = 20, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 30, "acid" = 30)
 	strip_delay = 50
 	alt_covers_chest = TRUE
 	sensor_mode = 3
@@ -94,7 +94,7 @@
 	desc = ""
 	icon_state = "detective"
 	item_state = "det"
-	armor = list("melee" = 10, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 30, "acid" = 30)
+	armor = list("blunt" = 30, "slash" = 10, "stab" = 20, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 30, "acid" = 30)
 	strip_delay = 50
 	alt_covers_chest = TRUE
 	sensor_mode = 3
@@ -133,7 +133,7 @@
 	desc = ""
 	icon_state = "rhos"
 	item_state = "r_suit"
-	armor = list("melee" = 10, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 50, "acid" = 50)
+	armor = list("blunt" = 30, "slash" = 10, "stab" = 20, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 50, "acid" = 50)
 	strip_delay = 60
 	alt_covers_chest = TRUE
 	sensor_mode = 3

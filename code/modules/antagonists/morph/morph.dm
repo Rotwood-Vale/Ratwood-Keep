@@ -55,7 +55,7 @@
 	if(morphed)
 		. = form.examine(user)
 		if(get_dist(user,src)<=3)
-			. += "<span class='warning'>It doesn't look quite right...</span>"
+			. += span_warning("It doesn't look quite right...")
 	else
 		. = ..()
 
@@ -78,10 +78,10 @@
 
 /mob/living/simple_animal/hostile/morph/proc/eat(atom/movable/A)
 	if(morphed && !eat_while_disguised)
-		to_chat(src, "<span class='warning'>I can not eat anything while you are disguised!</span>")
+		to_chat(src, span_warning("I can not eat anything while you are disguised!"))
 		return FALSE
 	if(A && A.loc != src)
-		visible_message("<span class='warning'>[src] swallows [A] whole!</span>")
+		visible_message(span_warning("[src] swallows [A] whole!"))
 		A.forceMove(src)
 		return TRUE
 	return FALSE
@@ -94,18 +94,18 @@
 		if(istype(A) && allowed(A))
 			assume(A)
 	else
-		to_chat(src, "<span class='warning'>My chameleon skin is still repairing itself!</span>")
+		to_chat(src, span_warning("My chameleon skin is still repairing itself!"))
 		..()
 
 /mob/living/simple_animal/hostile/morph/proc/assume(atom/movable/target)
 	if(morphed)
-		to_chat(src, "<span class='warning'>I must restore to my original form first!</span>")
+		to_chat(src, span_warning("I must restore to my original form first!"))
 		return
 	morphed = TRUE
 	form = target
 
-	visible_message("<span class='warning'>[src] suddenly twists and changes shape, becoming a copy of [target]!</span>", \
-					"<span class='notice'>I twist my body and assume the form of [target].</span>")
+	visible_message(span_warning("[src] suddenly twists and changes shape, becoming a copy of [target]!"), \
+					span_notice("I twist my body and assume the form of [target]."))
 	appearance = target.appearance
 	copy_overlays(target)
 	alpha = max(alpha, 150)	//fucking chameleons
@@ -125,7 +125,7 @@
 
 /mob/living/simple_animal/hostile/morph/proc/restore()
 	if(!morphed)
-		to_chat(src, "<span class='warning'>You're already in my normal form!</span>")
+		to_chat(src, span_warning("You're already in my normal form!"))
 		return
 	morphed = FALSE
 	form = null
@@ -134,8 +134,8 @@
 	animate_movement = SLIDE_STEPS
 	maptext = null
 
-	visible_message("<span class='warning'>[src] suddenly collapses in on itself, dissolving into a pile of green flesh!</span>", \
-					"<span class='notice'>I reform to my normal body.</span>")
+	visible_message(span_warning("[src] suddenly collapses in on itself, dissolving into a pile of green flesh!"), \
+					span_notice("I reform to my normal body."))
 	name = initial(name)
 	icon = initial(icon)
 	icon_state = initial(icon_state)
@@ -152,8 +152,8 @@
 
 /mob/living/simple_animal/hostile/morph/death(gibbed)
 	if(morphed)
-		visible_message("<span class='warning'>[src] twists and dissolves into a pile of green flesh!</span>", \
-						"<span class='danger'>My skin ruptures! Your flesh breaks apart! No disguise can ward off de--</span>")
+		visible_message(span_warning("[src] twists and dissolves into a pile of green flesh!"), \
+						span_danger("My skin ruptures! Your flesh breaks apart! No disguise can ward off de--"))
 		restore()
 	barf_contents()
 	..()
@@ -192,7 +192,7 @@
 
 /mob/living/simple_animal/hostile/morph/AttackingTarget()
 	if(morphed && !melee_damage_disguised)
-		to_chat(src, "<span class='warning'>I can not attack while disguised!</span>")
+		to_chat(src, span_warning("I can not attack while disguised!"))
 		return
 	if(isliving(target)) //Eat Corpses to regen health
 		var/mob/living/L = target

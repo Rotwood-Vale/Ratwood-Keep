@@ -21,7 +21,7 @@
 
 	tool_behaviour = TOOL_WIRECUTTER
 	toolspeed = 1
-	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 50, "acid" = 30)
+	armor = list("blunt" = 0, "slash" = 0, "stab" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 50, "acid" = 30)
 	var/random_color = TRUE
 	var/static/list/wirecutter_colors = list(
 		"blue" = "#1861d5",
@@ -52,19 +52,19 @@
 
 /obj/item/wirecutters/attack(mob/living/carbon/C, mob/user)
 	if(istype(C) && C.handcuffed && istype(C.handcuffed, /obj/item/restraints/handcuffs/cable))
-		user.visible_message("<span class='notice'>[user] cuts [C]'s restraints with [src]!</span>")
+		user.visible_message(span_notice("[user] cuts [C]'s restraints with [src]!"))
 		qdel(C.handcuffed)
 		return
 	else if(istype(C) && C.has_status_effect(STATUS_EFFECT_CHOKINGSTRAND))
-		to_chat(C, "<span class='notice'>I attempt to remove the durathread strand from around your neck.</span>")
+		to_chat(C, span_notice("I attempt to remove the durathread strand from around your neck."))
 		if(do_after(user, 15, null, C))
-			to_chat(C, "<span class='notice'>I succesfuly remove the durathread strand.</span>")
+			to_chat(C, span_notice("I succesfuly remove the durathread strand."))
 			C.remove_status_effect(STATUS_EFFECT_CHOKINGSTRAND)
 	else
 		..()
 
 /obj/item/wirecutters/suicide_act(mob/user)
-	user.visible_message("<span class='suicide'>[user] is cutting at [user.p_their()] arteries with [src]! It looks like [user.p_theyre()] trying to commit suicide!</span>")
+	user.visible_message(span_suicide("[user] is cutting at [user.p_their()] arteries with [src]! It looks like [user.p_theyre()] trying to commit suicide!"))
 	playsound(loc, usesound, 50, TRUE, -1)
 	return (BRUTELOSS)
 

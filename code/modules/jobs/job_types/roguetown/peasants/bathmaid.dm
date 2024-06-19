@@ -72,23 +72,23 @@
 				msg = "It's started to get a little smaller than it used to be, but it'll definitely still last for a while."
 			else
 				msg = "It's seen some light use, but it's still pretty fresh."
-	. += "<span class='notice'>[msg]</span>"
+	. += span_notice("[msg]")
 
 /obj/item/bath/soap/attack(mob/target, mob/user)
 	var/turf/bathspot = get_turf(target)
 	if(!istype(bathspot, /turf/open/water/bath))
-		to_chat(user, "<span class='warning'>They must be in the bath water!</span>")
+		to_chat(user, span_warning("They must be in the bath water!"))
 		return
 	if(istype(target, /mob/living/carbon/human))
-		visible_message("<span class='info'>[user] begins scrubbing [target] with the [src].</span>")
+		visible_message(span_info("[user] begins scrubbing [target] with the [src]."))
 		if(do_after(user, 50))
 			if(user.job == "Bath Wench")
-				visible_message("<span class='info'>[user] expertly scrubs and soothes [target] with the [src].</span>")
-				to_chat(target, "<span class='love'>I feel so relaxed and clean!</span>")
+				visible_message(span_info("[user] expertly scrubs and soothes [target] with the [src]."))
+				to_chat(target, span_love("I feel so relaxed and clean!"))
 				SEND_SIGNAL(target, COMSIG_ADD_MOOD_EVENT, "bathcleaned", /datum/mood_event/bathcleaned)
 			else
-				visible_message("<span class='info'>[user] tries their best to scrub [target] with the [src].</span>")
-				to_chat(target, "<span class='warning'>Ouch! That hurts!</span>")
+				visible_message(span_info("[user] tries their best to scrub [target] with the [src]."))
+				to_chat(target, span_warning("Ouch! That hurts!"))
 			uses -= 1
 			if(uses == 0)
 				qdel(src)

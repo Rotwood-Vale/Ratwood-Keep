@@ -25,14 +25,14 @@
 		icon_state = "[base_state]0"
 
 /obj/structure/roguetent/proc/open_up(mob/user)
-	visible_message("<span class='info'>[user] opens [src].</span>")
+	visible_message(span_info("[user] opens [src]."))
 	playsound(src, 'sound/foley/equip/rummaging-02.ogg', 100, FALSE)
 	density = FALSE
 	opacity = FALSE
 	update_icon()
 
 /obj/structure/roguetent/proc/close_up(mob/user)
-	visible_message("<span class='info'>[user] closes [src].</span>")
+	visible_message(span_info("[user] closes [src]."))
 	playsound(src, 'sound/foley/equip/rummaging-02.ogg', 100, FALSE)
 	density = TRUE
 	opacity = TRUE

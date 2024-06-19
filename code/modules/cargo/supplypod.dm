@@ -12,7 +12,7 @@
 	allow_dense = TRUE
 	delivery_icon = null
 	can_weld_shut = FALSE
-	armor = list("melee" = 30, "bullet" = 50, "laser" = 50, "energy" = 100, "bomb" = 100, "bio" = 0, "rad" = 0, "fire" = 100, "acid" = 80)
+	armor = list("blunt" = 30, "slash" = 40, "stab" = 50, "bullet" = 50, "laser" = 50, "energy" = 100, "bomb" = 100, "bio" = 0, "rad" = 0, "fire" = 100, "acid" = 80)
 	anchored = TRUE //So it cant slide around after landing
 	anchorable = FALSE
 	flags_1 = PREVENT_CONTENTS_EXPLOSION_1
@@ -136,7 +136,7 @@
 		bluespace = TRUE //Make it so that the pod doesn't stay in centcom forever
 
 		QDEL_IN(risingPod, 10)
-		audible_message("<span class='notice'>The pod hisses, closing quickly and launching itself away from the station.</span>", "<span class='notice'>The ground vibrates, the nearby pod launching away from the station.</span>")
+		audible_message(span_notice("The pod hisses, closing quickly and launching itself away from the station."), span_notice("The ground vibrates, the nearby pod launching away from the station."))
 
 		stay_after_drop = FALSE
 		specialisedPod(holder) // Do special actions for specialised pods - this is likely if we were already doing manual launches

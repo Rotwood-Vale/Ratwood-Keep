@@ -69,13 +69,13 @@
 		if(O.tool_behaviour == TOOL_WELDER && user.used_intent.type != INTENT_HARM)
 			if(!O.tool_start_check(user, amount=0))
 				return
-			user.visible_message("<span class='notice'>[user] is repairing [src].</span>", \
-							"<span class='notice'>I begin repairing [src]...</span>", \
-							"<span class='hear'>I hear welding.</span>")
+			user.visible_message(span_notice("[user] is repairing [src]."), \
+							span_notice("I begin repairing [src]..."), \
+							span_hear("I hear welding."))
 			if(O.use_tool(src, user, 40, volume=50))
 				if(!(stat & BROKEN))
 					return
-				to_chat(user, "<span class='notice'>I repair [src].</span>")
+				to_chat(user, span_notice("I repair [src]."))
 				stat &= ~BROKEN
 				obj_integrity = max_integrity
 				update_icon()
@@ -89,7 +89,7 @@
 
 	else if(istype(O, /obj/item/pda))
 		if(storedpda)
-			to_chat(user, "<span class='warning'>There is already a PDA inside!</span>")
+			to_chat(user, span_warning("There is already a PDA inside!"))
 			return
 		else if(!user.transferItemToLoc(O, src))
 			return
@@ -111,7 +111,7 @@
 	if(storedpda)
 		if(stat & BROKEN)	//otherwise the PDA is stuck until repaired
 			ejectpda()
-			to_chat(user, "<span class='info'>I manage to eject the loaded PDA.</span>")
+			to_chat(user, span_info("I manage to eject the loaded PDA."))
 		else
 			var/obj/item/pda/P
 			P = input(user, "Select your color!", "PDA Painting") as null|anything in sortNames(colorlist)
@@ -126,7 +126,7 @@
 			ejectpda()
 
 	else
-		to_chat(user, "<span class='warning'>[src] is empty!</span>")
+		to_chat(user, span_warning("[src] is empty!"))
 
 
 /obj/machinery/pdapainter/verb/ejectpda()
@@ -142,4 +142,4 @@
 		storedpda = null
 		update_icon()
 	else
-		to_chat(usr, "<span class='warning'>[src] is empty!</span>")
+		to_chat(usr, span_warning("[src] is empty!"))

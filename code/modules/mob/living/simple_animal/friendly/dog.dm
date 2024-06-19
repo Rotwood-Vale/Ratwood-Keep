@@ -187,14 +187,14 @@
 /mob/living/simple_animal/pet/dog/corgi/attackby(obj/item/O, mob/user, params)
 	if (istype(O, /obj/item/razor))
 		if (shaved)
-			to_chat(user, "<span class='warning'>I can't shave this corgi, it's already been shaved!</span>")
+			to_chat(user, span_warning("I can't shave this corgi, it's already been shaved!"))
 			return
 		if (nofur)
-			to_chat(user, "<span class='warning'>I can't shave this corgi, it doesn't have a fur coat!</span>")
+			to_chat(user, span_warning("I can't shave this corgi, it doesn't have a fur coat!"))
 			return
-		user.visible_message("<span class='notice'>[user] starts to shave [src] using \the [O].</span>", "<span class='notice'>I start to shave [src] using \the [O]...</span>")
+		user.visible_message(span_notice("[user] starts to shave [src] using \the [O]."), span_notice("I start to shave [src] using \the [O]..."))
 		if(do_after(user, 50, target = src))
-			user.visible_message("<span class='notice'>[user] shaves [src]'s hair using \the [O].</span>")
+			user.visible_message(span_notice("[user] shaves [src]'s hair using \the [O]."))
 			playsound(loc, 'sound/blank.ogg', 20, TRUE)
 			shaved = TRUE
 			icon_living = "[initial(icon_living)]_shaved"
@@ -212,7 +212,7 @@
 	if(!L.put_in_hands(holder))
 		qdel(holder)
 	else
-		L.visible_message("<span class='warning'>[L] scoops up [src]!</span>")
+		L.visible_message(span_warning("[L] scoops up [src]!"))
 
 /mob/living/simple_animal/pet/dog/corgi/Topic(href, href_list)
 	if(!(iscarbon(usr) || iscyborg(usr)) || !usr.canUseTopic(src, BE_CLOSE, FALSE, NO_TK))
@@ -231,7 +231,7 @@
 					update_corgi_fluff()
 					regenerate_icons()
 				else
-					to_chat(usr, "<span class='warning'>There is nothing to remove from its [remove_from]!</span>")
+					to_chat(usr, span_warning("There is nothing to remove from its [remove_from]!"))
 					return
 			if("back")
 				if(inventory_back)
@@ -240,7 +240,7 @@
 					update_corgi_fluff()
 					regenerate_icons()
 				else
-					to_chat(usr, "<span class='warning'>There is nothing to remove from its [remove_from]!</span>")
+					to_chat(usr, span_warning("There is nothing to remove from its [remove_from]!"))
 					return
 			if("collar")
 				if(pcollar)
@@ -265,17 +265,17 @@
 
 			if("back")
 				if(inventory_back)
-					to_chat(usr, "<span class='warning'>It's already wearing something!</span>")
+					to_chat(usr, span_warning("It's already wearing something!"))
 					return
 				else
 					var/obj/item/item_to_add = usr.get_active_held_item()
 
 					if(!item_to_add)
-						usr.visible_message("<span class='notice'>[usr] pets [src].</span>", "<span class='notice'>I rest your hand on [src]'s back for a moment.</span>")
+						usr.visible_message(span_notice("[usr] pets [src]."), span_notice("I rest your hand on [src]'s back for a moment."))
 						return
 
 					if(!usr.temporarilyRemoveItemFromInventory(item_to_add))
-						to_chat(usr, "<span class='warning'>\The [item_to_add] is stuck to your hand, you cannot put it on [src]'s back!</span>")
+						to_chat(usr, span_warning("\The [item_to_add] is stuck to your hand, you cannot put it on [src]'s back!"))
 						return
 
 					if(istype(item_to_add, /obj/item/grenade/c4)) // last thing he ever wears, I guess
@@ -288,7 +288,7 @@
 						allowed = TRUE
 
 					if(!allowed)
-						to_chat(usr, "<span class='warning'>I set [item_to_add] on [src]'s back, but it falls off!</span>")
+						to_chat(usr, span_warning("I set [item_to_add] on [src]'s back, but it falls off!"))
 						item_to_add.forceMove(drop_location())
 						if(prob(25))
 							step_rand(item_to_add)
@@ -317,17 +317,17 @@
 
 	if(inventory_head)
 		if(user)
-			to_chat(user, "<span class='warning'>I can't put more than one hat on [src]!</span>")
+			to_chat(user, span_warning("I can't put more than one hat on [src]!"))
 		return
 	if(!item_to_add)
-		user.visible_message("<span class='notice'>[user] pets [src].</span>", "<span class='notice'>I rest your hand on [src]'s head for a moment.</span>")
+		user.visible_message(span_notice("[user] pets [src]."), span_notice("I rest your hand on [src]'s head for a moment."))
 		if(flags_1 & HOLOGRAM_1)
 			return
 		SEND_SIGNAL(user, COMSIG_ADD_MOOD_EVENT, src, /datum/mood_event/pet_animal, src)
 		return
 
 	if(user && !user.temporarilyRemoveItemFromInventory(item_to_add))
-		to_chat(user, "<span class='warning'>\The [item_to_add] is stuck to your hand, you cannot put it on [src]'s head!</span>")
+		to_chat(user, span_warning("\The [item_to_add] is stuck to your hand, you cannot put it on [src]'s head!"))
 		return 0
 
 	var/valid = FALSE
@@ -338,17 +338,17 @@
 
 	if(valid)
 		if(health <= 0)
-			to_chat(user, "<span class='notice'>There is merely a dull, lifeless look in [real_name]'s eyes as you put the [item_to_add] on [p_them()].</span>")
+			to_chat(user, span_notice("There is merely a dull, lifeless look in [real_name]'s eyes as you put the [item_to_add] on [p_them()]."))
 		else if(user)
-			user.visible_message("<span class='notice'>[user] puts [item_to_add] on [real_name]'s head. [src] looks at [user] and barks once.</span>",
-				"<span class='notice'>I put [item_to_add] on [real_name]'s head. [src] gives you a peculiar look, then wags [p_their()] tail once and barks.</span>",
-				"<span class='hear'>I hear a friendly-sounding bark.</span>")
+			user.visible_message(span_notice("[user] puts [item_to_add] on [real_name]'s head. [src] looks at [user] and barks once."),
+				span_notice("I put [item_to_add] on [real_name]'s head. [src] gives you a peculiar look, then wags [p_their()] tail once and barks."),
+				span_hear("I hear a friendly-sounding bark."))
 		item_to_add.forceMove(src)
 		src.inventory_head = item_to_add
 		update_corgi_fluff()
 		regenerate_icons()
 	else
-		to_chat(user, "<span class='warning'>I set [item_to_add] on [src]'s head, but it falls off!</span>")
+		to_chat(user, span_warning("I set [item_to_add] on [src]'s head, but it falls off!"))
 		item_to_add.forceMove(drop_location())
 		if(prob(25))
 			step_rand(item_to_add)
@@ -491,15 +491,15 @@
 	..()
 	for(var/mob/living/simple_animal/pet/P in range(1, src))
 		if(P != src && !istype(P,/mob/living/simple_animal/pet/dog/corgi/narsie))
-			visible_message("<span class='warning'>[src] devours [P]!</span>", \
-			"<span class='cult big bold'>DELICIOUS SOULS</span>")
+			visible_message(span_warning("[src] devours [P]!"), \
+			span_cultbigbold("DELICIOUS SOULS"))
 			playsound(src, 'sound/blank.ogg', 75, TRUE)
 			narsie_act()
 			if(P.mind)
 				if(P.mind.hasSoul)
 					P.mind.hasSoul = FALSE //Nars-Ian ate your soul; you don't have one anymore
 				else
-					visible_message("<span class='cult big bold'>... Aw, someone beat me to this one.</span>")
+					visible_message(span_cultbigbold("... Aw, someone beat me to this one."))
 			P.gib()
 
 /mob/living/simple_animal/pet/dog/corgi/narsie/update_corgi_fluff()
@@ -573,7 +573,7 @@
 //puppies cannot wear anything.
 /mob/living/simple_animal/pet/dog/corgi/puppy/Topic(href, href_list)
 	if(href_list["remove_inv"] || href_list["add_inv"])
-		to_chat(usr, "<span class='warning'>I can't fit this on [src]!</span>")
+		to_chat(usr, span_warning("I can't fit this on [src]!"))
 		return
 	..()
 
@@ -616,7 +616,7 @@
 //Lisa already has a cute bow!
 /mob/living/simple_animal/pet/dog/corgi/Lisa/Topic(href, href_list)
 	if(href_list["remove_inv"] || href_list["add_inv"])
-		to_chat(usr, "<span class='warning'>[src] already has a cute bow!</span>")
+		to_chat(usr, span_warning("[src] already has a cute bow!"))
 		return
 	..()
 

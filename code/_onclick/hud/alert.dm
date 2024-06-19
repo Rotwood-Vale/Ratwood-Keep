@@ -233,7 +233,7 @@
 /atom/movable/screen/alert/mind_control/Click()
 	..()
 	var/mob/living/L = usr
-	to_chat(L, "<span class='mind_control'>[command]</span>")
+	to_chat(L, span_mind_control("[command]"))
 
 /atom/movable/screen/alert/drunk //Not implemented
 	name = "Drunk"

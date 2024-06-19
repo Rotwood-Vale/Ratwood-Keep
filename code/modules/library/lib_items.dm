@@ -21,23 +21,23 @@
 	opacity = 1
 	resistance_flags = FLAMMABLE
 	max_integrity = 200
-	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 50, "acid" = 0)
+	armor = list("blunt" = 0, "slash" = 0, "stab" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 50, "acid" = 0)
 	var/state = 0
 	var/list/allowed_books = list(/obj/item/book, /obj/item/spellbook, /obj/item/storage/book) //Things allowed in the bookcase
 
 /obj/structure/bookcase/examine(mob/user)
 	. = ..()
 //	if(!anchored)
-//		. += "<span class='notice'>The <i>bolts</i> on the bottom are unsecured.</span>"
+//		. += span_notice("The <i>bolts</i> on the bottom are unsecured.")
 //	else
-//		. += "<span class='notice'>It's secured in place with <b>bolts</b>.</span>"
+//		. += span_notice("It's secured in place with <b>bolts</b>.")
 //	switch(state)
 ///		if(0)
-//	//		. += "<span class='notice'>There's a <b>small crack</b> visible on the back panel.</span>"
+//	//		. += span_notice("There's a <b>small crack</b> visible on the back panel.")
 //	//	if(1)
-//	//		. += "<span class='notice'>There's space inside for a <i>wooden</i> shelf.</span>"
+//	//		. += span_notice("There's space inside for a <i>wooden</i> shelf.")
 //	//	if(2)
-//	//		. += "<span class='notice'>There's a <b>small crack</b> visible on the shelf.</span>"
+//	//		. += span_notice("There's a <b>small crack</b> visible on the shelf.")
 
 /obj/structure/bookcase/Initialize(mapload)
 	. = ..()
@@ -56,12 +56,12 @@
 		if(0)
 			if(I.tool_behaviour == TOOL_WRENCH)
 				if(I.use_tool(src, user, 20, volume=50))
-					to_chat(user, "<span class='notice'>I wrench the frame into place.</span>")
+					to_chat(user, span_notice("I wrench the frame into place."))
 					anchored = TRUE
 					state = 1
 			if(I.tool_behaviour == TOOL_CROWBAR)
 				if(I.use_tool(src, user, 20, volume=50))
-					to_chat(user, "<span class='notice'>I pry the frame apart.</span>")
+					to_chat(user, span_notice("I pry the frame apart."))
 					deconstruct(TRUE)
 
 		if(1)
@@ -69,12 +69,12 @@
 				var/obj/item/stack/sheet/mineral/wood/W = I
 				if(W.get_amount() >= 2)
 					W.use(2)
-					to_chat(user, "<span class='notice'>I add a shelf.</span>")
+					to_chat(user, span_notice("I add a shelf."))
 					state = 2
 					icon_state = "book-0"
 			if(I.tool_behaviour == TOOL_WRENCH)
 				I.play_tool_sound(src, 100)
-				to_chat(user, "<span class='notice'>I unwrench the frame.</span>")
+				to_chat(user, span_notice("I unwrench the frame."))
 				anchored = FALSE
 				state = 0
 
@@ -82,7 +82,7 @@
 			var/datum/component/storage/STR = I.GetComponent(/datum/component/storage)
 			if(is_type_in_list(I, allowed_books))
 				if(!(contents.len <= 15))
-					to_chat(user, "<span class='notice'>There are too many books on this shelf!</span>")
+					to_chat(user, span_notice("There are too many books on this shelf!"))
 					return
 				if(!user.transferItemToLoc(I, src))
 					return
@@ -91,11 +91,11 @@
 				for(var/obj/item/T in I.contents)
 					if(istype(T, /obj/item/book) || istype(T, /obj/item/spellbook))
 						STR.remove_from_storage(T, src)
-				to_chat(user, "<span class='notice'>I empty \the [I] into \the [src].</span>")
+				to_chat(user, span_notice("I empty \the [I] into \the [src]."))
 				update_icon()
 			else if(istype(I, /obj/item/pen))
 				if(!user.is_literate())
-					to_chat(user, "<span class='notice'>I scribble illegibly on the side of [src]!</span>")
+					to_chat(user, span_notice("I scribble illegibly on the side of [src]!"))
 					return
 				var/newname = stripped_input(user, "What would you like to title this bookshelf?")
 				if(!user.canUseTopic(src, BE_CLOSE))
@@ -106,10 +106,10 @@
 					name = "bookcase ([sanitize(newname)])"
 			else if(I.tool_behaviour == TOOL_CROWBAR)
 				if(contents.len)
-					to_chat(user, "<span class='warning'>I need to remove the books first!</span>")
+					to_chat(user, span_warning("I need to remove the books first!"))
 				else
 					I.play_tool_sound(src, 100)
-					to_chat(user, "<span class='notice'>I pry the shelf out.</span>")
+					to_chat(user, span_notice("I pry the shelf out."))
 					new /obj/item/stack/sheet/mineral/wood(drop_location(), 2)
 					state = 1
 					icon_state = "bookempty"

@@ -129,9 +129,9 @@ Maintenance panel panel is [open ? "opened" : "closed"]"},
 	..()
 	if(emagged == 2)
 		if(user)
-			user << "<span class='danger'>I short out [src]'s sound control system. It gives out an evil laugh!!</span>"
+			user << span_danger("I short out [src]'s sound control system. It gives out an evil laugh!!")
 			oldtarget_name = user.name
-		audible_message("<span class='danger'>[src] gives out an evil laugh!</span>")
+		audible_message(span_danger("[src] gives out an evil laugh!"))
 		playsound(src, 'sound/blank.ogg', 75, TRUE, -1) // evil laughter
 		update_icon()
 
@@ -155,7 +155,7 @@ Maintenance panel panel is [open ? "opened" : "closed"]"},
 		bike_horn(A)
 
 
-/mob/living/simple_animal/bot/honkbot/hitby(atom/movable/AM, skipcatch = FALSE, hitpush = TRUE, blocked = FALSE, datum/thrownthing/throwingdatum)
+/mob/living/simple_animal/bot/honkbot/hitby(atom/movable/AM, skipcatch = FALSE, hitpush = TRUE, blocked = FALSE, datum/thrownthing/throwingdatum, d_type = "blunt")
 	if(istype(AM, /obj/item))
 		playsound(src, honksound, 50, TRUE, -1)
 		var/obj/item/I = AM
@@ -210,8 +210,8 @@ Maintenance panel panel is [open ? "opened" : "closed"]"},
 
 			log_combat(src,C,"honked")
 
-			C.visible_message("<span class='danger'>[src] has honked [C]!</span>",\
-					"<span class='danger'>[src] has honked you!</span>")
+			C.visible_message(span_danger("[src] has honked [C]!"),\
+					span_danger("[src] has honked you!"))
 		else
 			C.stuttering = 20
 			C.Paralyze(80)
@@ -323,7 +323,7 @@ Maintenance panel panel is [open ? "opened" : "closed"]"},
 /mob/living/simple_animal/bot/honkbot/explode()
 
 	walk_to(src,0)
-	visible_message("<span class='boldannounce'>[src] blows apart!</span>")
+	visible_message(span_boldannounce("[src] blows apart!"))
 	var/atom/Tsec = drop_location()
 	//doesn't drop cardboard nor its assembly, since its a very frail material.
 	if(prob(50))

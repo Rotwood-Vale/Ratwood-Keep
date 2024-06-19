@@ -557,6 +557,30 @@ GLOBAL_LIST_EMPTY(asset_datums)
 		"v4shim.css"          = 'html/font-awesome/css/v4-shims.min.css'
 	)*/
 
+/datum/asset/simple/blackedstone_class_menu_slop_layout
+	verify = FALSE
+	assets = list(
+		"try4.png" = 'icons/roguetown/misc/try4.png',
+		"try4_border.png" = 'icons/roguetown/misc/try4_border.png',
+		"slop_menustyle2.css" = 'html/browser/slop_menustyle2.css',
+		"haha_skull.gif" = 'icons/roguetown/misc/haha_skull.gif'
+	)
+
+/datum/asset/simple/blackedstone_triumph_buy_menu_slop_layout
+	verify = FALSE
+	assets = list(
+		"try5.png" = 'icons/roguetown/misc/try5.png',
+		"try5_border.png" = 'icons/roguetown/misc/try5_border.png',
+		"slop_menustyle3.css" = 'html/browser/slop_menustyle3.css'
+	)
+
+/datum/asset/simple/blackedstone_drifter_queue_menu_slop_layout
+	verify = FALSE
+	assets = list(
+		"slop_menustyle4.css" = 'html/browser/slop_menustyle4.css',
+		//"slop_scriptstyle4.js" = 'html/browser/slop_scriptstyle4.js'
+	)
+
 /datum/asset/simple/roguefonts
 	verify = TRUE
 	assets = list(

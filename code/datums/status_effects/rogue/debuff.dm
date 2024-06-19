@@ -36,7 +36,20 @@
 	desc = "My body can barely hold it!"
 	icon_state = "hunger3"
 
+//SILVER DAGGER EFFECT
+
+/datum/status_effect/debuff/silver_curse
+	id = "silver_curse"
+	alert_type = /atom/movable/screen/alert/status_effect/debuff/silver_curse
+	duration = 5 SECONDS
+
+/atom/movable/screen/alert/status_effect/debuff/silver_curse
+	name = "Silver Curse"
+	desc = "My BANE!"
+	icon_state = "hunger3"	
+
 ////////////////////
+
 
 /datum/status_effect/debuff/thirstyt1
 	id = "thirsty1"

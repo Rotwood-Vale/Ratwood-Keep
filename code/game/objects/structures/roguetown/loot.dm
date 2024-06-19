@@ -57,7 +57,7 @@
 		if(B)
 			B = new B(user.loc)
 			user.put_in_hands(B)
-			user.visible_message("<span class='notice'>[user] finds [B] in the [src].</span>")
+			user.visible_message(span_notice("[user] finds [B] in the [src]."))
 			if(!loot.len)
 				qdel(src)
 			return

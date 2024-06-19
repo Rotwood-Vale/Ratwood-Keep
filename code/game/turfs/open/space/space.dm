@@ -100,22 +100,22 @@
 		var/obj/structure/lattice/L = locate(/obj/structure/lattice, src)
 		var/obj/structure/lattice/catwalk/W = locate(/obj/structure/lattice/catwalk, src)
 		if(W)
-			to_chat(user, "<span class='warning'>There is already a catwalk here!</span>")
+			to_chat(user, span_warning("There is already a catwalk here!"))
 			return
 		if(L)
 			if(R.use(1))
-				to_chat(user, "<span class='notice'>I construct a catwalk.</span>")
+				to_chat(user, span_notice("I construct a catwalk."))
 				playsound(src, 'sound/blank.ogg', 50, TRUE)
 				new/obj/structure/lattice/catwalk(src)
 			else
-				to_chat(user, "<span class='warning'>I need two rods to build a catwalk!</span>")
+				to_chat(user, span_warning("I need two rods to build a catwalk!"))
 			return
 		if(R.use(1))
-			to_chat(user, "<span class='notice'>I construct a lattice.</span>")
+			to_chat(user, span_notice("I construct a lattice."))
 			playsound(src, 'sound/blank.ogg', 50, TRUE)
 			ReplaceWithLattice()
 		else
-			to_chat(user, "<span class='warning'>I need one rod to build a lattice.</span>")
+			to_chat(user, span_warning("I need one rod to build a lattice."))
 		return
 	if(istype(C, /obj/item/stack/tile/plasteel))
 		var/obj/structure/lattice/L = locate(/obj/structure/lattice, src)
@@ -124,12 +124,12 @@
 			if(S.use(1))
 				qdel(L)
 				playsound(src, 'sound/blank.ogg', 50, TRUE)
-				to_chat(user, "<span class='notice'>I build a floor.</span>")
+				to_chat(user, span_notice("I build a floor."))
 				PlaceOnTop(/turf/open/floor/plating, flags = CHANGETURF_INHERIT_AIR)
 			else
-				to_chat(user, "<span class='warning'>I need one floor tile to build a floor!</span>")
+				to_chat(user, span_warning("I need one floor tile to build a floor!"))
 		else
-			to_chat(user, "<span class='warning'>The plating is going to need some support! Place metal rods first.</span>")
+			to_chat(user, span_warning("The plating is going to need some support! Place metal rods first."))
 
 /turf/open/space/Entered(atom/movable/A)
 	..()
@@ -211,7 +211,7 @@
 /turf/open/space/rcd_act(mob/user, obj/item/construction/rcd/the_rcd, passed_mode)
 	switch(passed_mode)
 		if(RCD_FLOORWALL)
-			to_chat(user, "<span class='notice'>I build a floor.</span>")
+			to_chat(user, span_notice("I build a floor."))
 			PlaceOnTop(/turf/open/floor/plating, flags = CHANGETURF_INHERIT_AIR)
 			return TRUE
 	return FALSE

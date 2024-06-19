@@ -36,7 +36,7 @@
 		return
 	user.wallpressed = dir2wall
 	user.update_wallpress_slowdown()
-	user.visible_message("<span class='info'>[user] leans against [src].</span>")
+	user.visible_message(span_info("[user] leans against [src]."))
 	switch(dir2wall)
 		if(NORTH)
 			user.setDir(SOUTH)
@@ -88,10 +88,10 @@
 			var/mob/living/carbon/human/H = AM
 			if(H.dir == get_dir(H,src) && H.m_intent == MOVE_INTENT_RUN && (H.mobility_flags & MOBILITY_STAND))
 				H.Immobilize(10)
-				H.apply_damage(15, BRUTE, "head", H.run_armor_check("head", "melee", damage = 15))
+				H.apply_damage(15, BRUTE, "head", H.run_armor_check("head", "blunt", damage = 15))
 				H.toggle_rogmove_intent(MOVE_INTENT_WALK, TRUE)
 				playsound(src, "genblunt", 100, TRUE)
-				H.visible_message("<span class='warning'>[H] runs into [src]!</span>", "<span class='warning'>I run into [src]!</span>")
+				H.visible_message(span_warning("[H] runs into [src]!"), span_warning("I run into [src]!"))
 				addtimer(CALLBACK(H, TYPE_PROC_REF(/mob/living/carbon/human, Knockdown), 10), 10)
 
 /turf/closed/Initialize()
@@ -131,20 +131,20 @@
 				return
 			var/turf/target = get_step_multiz(user, UP)
 			if(!istype(target, /turf/open/transparent/openspace))
-				to_chat(user, "<span class='warning'>I can't climb here.</span>")
+				to_chat(user, span_warning("I can't climb here."))
 				return
 			if(!L.can_zTravel(target, UP))
-				to_chat(user, "<span class='warning'>I can't climb there.</span>")
+				to_chat(user, span_warning("I can't climb there."))
 				return
 			target = get_step_multiz(src, UP)
 			if(!target || istype(target, /turf/closed) || istype(target, /turf/open/transparent/openspace))
 				target = get_step_multiz(user.loc, UP)
 				if(!target || !istype(target, /turf/open/transparent/openspace))
-					to_chat(user, "<span class='warning'>I can't climb here.</span>")
+					to_chat(user, span_warning("I can't climb here."))
 					return
 			for(var/obj/structure/F in target)
 				if(F && (F.density && !F.climbable))
-					to_chat(user, "<span class='warning'>I can't climb here.</span>")
+					to_chat(user, span_warning("I can't climb here."))
 					return
 			var/used_time = 0
 			if(L.mind)
@@ -163,12 +163,12 @@
 							climbsound = 'sound/foley/ladder.ogg'
 
 				if(myskill < climbdiff)
-					to_chat(user, "<span class='warning'>I'm not capable of climbing this wall.</span>")
+					to_chat(user, span_warning("I'm not capable of climbing this wall."))
 					return
 				used_time = max(70 - (myskill * 10) - (L.STASPD * 3), 30)
 			if(user.m_intent != MOVE_INTENT_SNEAK)
 				playsound(user, climbsound, 100, TRUE)
-			user.visible_message("<span class='warning'>[user] starts to climb [src].</span>", "<span class='warning'>I start to climb [src]...</span>")
+			user.visible_message(span_warning("[user] starts to climb [src]."), span_warning("I start to climb [src]..."))
 			if(do_after(L, used_time, target = src))
 				var/pulling = user.pulling
 				if(ismob(pulling))
@@ -185,13 +185,13 @@
 		return
 	var/turf/target = get_step_multiz(user, UP)
 	if(!target)
-		to_chat(user, "<span class='warning'>I can't go there.</span>")
+		to_chat(user, span_warning("I can't go there."))
 		return
 	if(!istype(target, /turf/open/transparent/openspace))
-		to_chat(user, "<span class='warning'>I can't go there.</span>")
+		to_chat(user, span_warning("I can't go there."))
 		return
 	user.forceMove(target)
-	to_chat(user, "<span class='warning'>I crawl up the wall.</span>")
+	to_chat(user, span_warning("I crawl up the wall."))
 	. = ..()
 
 

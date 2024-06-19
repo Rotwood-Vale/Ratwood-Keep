@@ -20,7 +20,7 @@
 /datum/nanite_program/necrotic/active_effect()
 	host_mob.adjustBruteLoss(0.75, TRUE)
 	if(prob(1))
-		to_chat(host_mob, "<span class='warning'>I feel a mild ache from somewhere inside you.</span>")
+		to_chat(host_mob, span_warning("I feel a mild ache from somewhere inside you."))
 
 //Programs that don't directly interact with the body will decay into this
 /datum/nanite_program/toxic
@@ -33,7 +33,7 @@
 /datum/nanite_program/toxic/active_effect()
 	host_mob.adjustToxLoss(0.5)
 	if(prob(1))
-		to_chat(host_mob, "<span class='warning'>I feel a bit sick.</span>")
+		to_chat(host_mob, span_warning("I feel a bit sick."))
 
 //Generic blood-affecting programs will decay into this
 /datum/nanite_program/suffocating
@@ -46,7 +46,7 @@
 /datum/nanite_program/suffocating/active_effect()
 	host_mob.adjustOxyLoss(3, 0)
 	if(prob(1))
-		to_chat(host_mob, "<span class='warning'>I feel short of breath.</span>")
+		to_chat(host_mob, span_warning("I feel short of breath."))
 
 //Generic brain-affecting programs will decay into this
 /datum/nanite_program/brain_decay
@@ -96,8 +96,8 @@
 		var/obj/item/bodypart/bodypart = host_mob.get_bodypart(picked_bodypart)
 		var/can_scratch = !host_mob.incapacitated() && get_location_accessible(host_mob, picked_bodypart)
 
-		host_mob.visible_message("[can_scratch ? "<span class='warning'>[host_mob] scratches [host_mob.p_their()] [bodypart.name].</span>" : ""]",\
-		"<span class='warning'>My [bodypart.name] itches. [can_scratch ? " You scratch it." : ""]</span>")
+		host_mob.visible_message("[can_scratch ? span_warning("[host_mob] scratches [host_mob.p_their()] [bodypart.name].") : ""]",\
+		span_warning("My [bodypart.name] itches. [can_scratch ? " You scratch it." : ""]"))
 
 //Generic nerve-affecting programs will decay into this
 /datum/nanite_program/nerve_decay
@@ -109,11 +109,11 @@
 
 /datum/nanite_program/nerve_decay/active_effect()
 	if(prob(5))
-		to_chat(host_mob, "<span class='warning'>I feel unbalanced!</span>")
+		to_chat(host_mob, span_warning("I feel unbalanced!"))
 		host_mob.confused += 10
 	else if(prob(4))
-		to_chat(host_mob, "<span class='warning'>I can't feel my hands!</span>")
+		to_chat(host_mob, span_warning("I can't feel my hands!"))
 		host_mob.drop_all_held_items()
 	else if(prob(4))
-		to_chat(host_mob, "<span class='warning'>I can't feel my legs!</span>")
+		to_chat(host_mob, span_warning("I can't feel my legs!"))
 		host_mob.Paralyze(30)

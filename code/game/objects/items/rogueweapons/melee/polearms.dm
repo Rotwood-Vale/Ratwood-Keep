@@ -10,6 +10,7 @@
 	warnie = "mobwarning"
 	hitsound = list('sound/combat/hits/bladed/genstab (1).ogg', 'sound/combat/hits/bladed/genstab (2).ogg', 'sound/combat/hits/bladed/genstab (3).ogg')
 	penfactor = 50
+	item_d_type = "stab"
 
 /datum/intent/spear/bash
 	name = "bash"
@@ -18,6 +19,7 @@
 	attack_verb = list("bashes", "strikes")
 	penfactor = 10
 	damfactor = 0.8
+	item_d_type = "blunt"
 
 /datum/intent/spear/cut
 	name = "cut"
@@ -27,6 +29,7 @@
 	damfactor = 0.8
 	hitsound = list('sound/combat/hits/bladed/genslash (1).ogg', 'sound/combat/hits/bladed/genslash (2).ogg', 'sound/combat/hits/bladed/genslash (3).ogg')
 	reach = 2
+	item_d_type = "slash"
 
 /obj/item/rogueweapon/woodstaff
 	force = 10
@@ -75,8 +78,8 @@
 	icon = 'icons/roguetown/weapons/32.dmi'
 	pixel_y = 0
 	pixel_x = 0
-	inhand_x_dimension = 32
-	inhand_y_dimension = 32
+	inhand_x_dimension = 64
+	inhand_y_dimension = 64
 	bigboy = FALSE
 	gripsprite = FALSE
 	gripped_intents = null
@@ -86,7 +89,7 @@
 	if(tag)
 		switch(tag)
 			if("gen")
-				return list("shrink" = 0.6,"sx" = -6,"sy" = -1,"nx" = 8,"ny" = 0,"wx" = -4,"wy" = 0,"ex" = 2,"ey" = 1,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0,"nturn" = -38,"sturn" = 37,"wturn" = 32,"eturn" = -23,"nflip" = 0,"sflip" = 8,"wflip" = 8,"eflip" = 0)
+				return list("shrink" = 0.6,"sx" = -6,"sy" = 2,"nx" = 8,"ny" = 2,"wx" = -4,"wy" = 2,"ex" = 1,"ey" = 2,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0,"nturn" = -38,"sturn" = 300,"wturn" = 32,"eturn" = -23,"nflip" = 0,"sflip" = 100,"wflip" = 8,"eflip" = 0)
 			if("wielded")
 				return list("shrink" = 0.6,"sx" = 4,"sy" = -2,"nx" = -3,"ny" = -2,"wx" = -5,"wy" = -1,"ex" = 3,"ey" = -2,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0,"nturn" = 7,"sturn" = -7,"wturn" = 16,"eturn" = -22,"nflip" = 8,"sflip" = 0,"wflip" = 8,"eflip" = 0)
 
@@ -113,7 +116,6 @@
 	anvilrepair = /datum/skill/craft/weaponsmithing
 	smeltresult = /obj/item/ingot/iron
 	associated_skill = /datum/skill/combat/polearms
-	dropshrink = 0.6
 	blade_dulling = DULLING_BASHCHOP
 	walking_stick = TRUE
 	wdefense = 5
@@ -167,7 +169,6 @@
 	max_blade_int = 50
 	smeltresult = null
 	associated_skill = /datum/skill/combat/polearms
-	dropshrink = 0.6
 	blade_dulling = DULLING_BASHCHOP
 	walking_stick = TRUE
 	wdefense = 4
@@ -196,7 +197,6 @@
 	anvilrepair = /datum/skill/craft/weaponsmithing
 	smeltresult = /obj/item/ingot/steel
 	associated_skill = /datum/skill/combat/polearms
-	dropshrink = 0.6
 	blade_dulling = DULLING_BASHCHOP
 	walking_stick = TRUE
 	wdefense = 6
@@ -247,7 +247,6 @@
 	minstr = 11
 	smeltresult = /obj/item/ingot/steel
 	associated_skill = /datum/skill/combat/polearms
-	dropshrink = 0.6
 	blade_dulling = DULLING_BASHCHOP
 	walking_stick = TRUE
 	wdefense = 6
@@ -300,7 +299,6 @@
 	minstr = 9
 	smeltresult = /obj/item/ingot/steel
 	associated_skill = /datum/skill/combat/swords
-	dropshrink = 0.6
 	max_blade_int = 300
 	wdefense = 5
 
