@@ -48,7 +48,7 @@
 				HM.on_life()
 
 		if(mode == AI_OFF)
-			if(stat)
+			if(IsSleeping())
 				if(health > 0)
 					if(has_status_effect(/datum/status_effect/debuff/sleepytime))
 						tiredness = 0
