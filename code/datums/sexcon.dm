@@ -1103,7 +1103,7 @@
 		if(!target.mob_timers["cumtri"])
 			target.mob_timers["cumtri"] = world.time
 			target.adjust_triumphs(1)
-			to_chat(owner, span_love("Our loving is a true TRIUMPH!"))
+			to_chat(target, span_love("Our loving is a true TRIUMPH!"))
 
 /datum/sex_controller/male/cum(source)
 	..()
