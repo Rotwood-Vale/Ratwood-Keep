@@ -868,7 +868,7 @@
 		message_admins("[key_name_admin(C)] has taken control of ([ADMIN_LOOKUPFLW(M)])")
 		M.ghostize(0,drawskip=TRUE)
 		M.key = C.key
-		if(!QDELETED(C))	
+		if(!QDELETED(C))
 			qdel(C)
 		return TRUE
 	else
@@ -916,7 +916,8 @@
 		else
 			colored_message = "<font color='[color]'>[message]</font>"
 
-	var/list/timestamped_message = list("[LAZYLEN(logging[smessage_type]) + 1]\[[time_stamp()]\] [key_name(src)] [loc_name(src)]" = colored_message)
+    //Removed sorting by message type, now sorts by timestamp regardless of message type
+	var/list/timestamped_message = list("\[[time_stamp(format = "YYYY-MM-DD hh:mm:ss")]\] [key_name(src)] [loc_name(src)] (LOG #[LAZYLEN(logging[smessage_type])])" = colored_message)
 
 	logging[smessage_type] += timestamped_message
 
