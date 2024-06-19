@@ -3622,7 +3622,7 @@
 /area/rogue/indoors/town/manor)
 "eHY" = (
 /obj/structure/bed/rogue,
-/obj/effect/landmark/start/prisoner{
+/obj/effect/landmark/start/hostage{
 	dir = 4
 	},
 /turf/open/floor/rogue/carpet,
@@ -12836,7 +12836,7 @@
 /area/rogue/indoors/town/garrison)
 "roX" = (
 /obj/structure/bed/rogue,
-/obj/effect/landmark/start/prisoner,
+/obj/effect/landmark/start/hostage,
 /turf/open/floor/rogue/carpet,
 /area/rogue/under/town/basement)
 "rpo" = (

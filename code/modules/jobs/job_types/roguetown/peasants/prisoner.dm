@@ -10,7 +10,7 @@
 	allowed_races = RACES_ALL_KINDS
 	tutorial = "How does it feel to be the rat in the cage? You're alone and at the mercy of your captors, kept around as a hostage. You spend your days waiting for the oft chance someone comes to pay your ransom. Might as well start praying to whatever god you find solace in."
 
-	outfit = /datum/outfit/job/roguetown/adventurer/prisoner
+	outfit = /datum/outfit/job/roguetown/prisoner
 	bypass_jobban = TRUE
 	display_order = JDO_PRISONER
 	give_bank_account = 10
