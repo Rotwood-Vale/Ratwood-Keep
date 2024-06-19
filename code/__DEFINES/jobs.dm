@@ -103,6 +103,7 @@
 #define KNIGHT		(1<<4)
 #define SHERIFF		(1<<5)
 #define BAILIFF		(1<<6)
+#define HOSTAGE		(1<<7)
 
 #define GARRISON		(1<<1)
 
@@ -162,7 +163,6 @@
 #define PILGRIM		(1<<12)
 #define VILLAGER	(1<<13)
 #define PRISONER	(1<<14)
-#define HOSTAGE		(1<<16)
 #define LUNATIC		(1<<15)
 #define WAVE_DRIFTER (1<<16)
 

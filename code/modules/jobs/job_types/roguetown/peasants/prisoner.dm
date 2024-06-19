@@ -1,5 +1,5 @@
 /datum/job/roguetown/prisoner
-	title = "Hostage"
+	title = "Prisoner"
 	flag = PRISONER
 	department_flag = NOBLEMEN
 	faction = "Station"
