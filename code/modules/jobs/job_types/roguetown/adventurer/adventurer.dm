@@ -26,7 +26,6 @@ GLOBAL_VAR_INIT(adventurer_hugbox_duration_still, 3 MINUTES)
 	advjob_examine = TRUE
 	var/isvillager = FALSE
 	var/ispilgrim = FALSE
-	var/isprisoner = FALSE
 
 /datum/job/roguetown/adventurer/after_spawn(mob/living/L, mob/M, latejoin = TRUE)
 	..()
@@ -82,9 +81,6 @@ GLOBAL_VAR_INIT(adventurer_hugbox_duration_still, 3 MINUTES)
 				continue
 
 			if(ispilgrim && !A.ispilgrim) //pilgrim
-				continue
-			
-			if((isprisoner && !A.isprisoner) || (!isprisoner && A.isprisoner)) //prisoner
 				continue
 
 			if(A.plevel_req > M.client.patreonlevel())
