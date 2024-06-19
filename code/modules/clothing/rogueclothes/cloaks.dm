@@ -8,6 +8,7 @@
 	equip_delay_self = 10
 	bloody_icon_state = "bodyblood"
 	sewrepair = TRUE //Vrell - AFAIK, all cloaks are cloth ATM. Technically semi-less future-proof, but it removes a line of code from every subtype, which is worth it IMO.
+	flags_inv = HIDETAIL
 
 
 //////////////////////////
@@ -805,6 +806,7 @@
 	sleeved = null
 	sleevetype = null
 	body_parts_covered = null
+	flags_inv = null
 
 /obj/item/clothing/cloak/stole/red
 	icon_state = "stole_red"
@@ -856,6 +858,7 @@
 	color = CLOTHING_BLACK
 	allowed_sex = list(MALE, FEMALE)
 	allowed_race = NON_DWARVEN_RACE_TYPES
+	flags_inv = null
 
 /obj/item/clothing/cloak/half/brown
 	color = CLOTHING_BROWN
