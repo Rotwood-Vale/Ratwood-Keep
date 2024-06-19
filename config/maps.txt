@@ -13,18 +13,7 @@ Format:
 	votable (is this map votable)
 endmap
 
-map blackstone
+map rockhill
 	default
-	#voteweight 1.5
-	minplayers 100
 	votable
-endmap
-
-map blackstonedense
-	votable
-endmap
-
-map oldtown
-	votable
-	maxplayers 70
 endmap
