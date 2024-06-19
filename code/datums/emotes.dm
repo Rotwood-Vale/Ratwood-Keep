@@ -104,7 +104,7 @@
 			user.visible_message(msg)
 
 /mob/living/proc/get_emote_pitch()
-	return clamp(voice_pitch, 0.5, 2)
+	return clamp(voice_pitch, 0.7, 1.5)
 
 /mob/living/carbon/human/get_emote_pitch()
 	var/final_pitch = ..()
@@ -114,7 +114,7 @@
 			pitch_modifier -= (STASTR - 10) * 0.05
 		else if(STASTR < 10)
 			pitch_modifier += (10 - STASTR) * 0.1
-	return clamp(final_pitch + pitch_modifier, 0.5, 2)
+	return clamp(final_pitch + pitch_modifier, 0.7, 1.5)
 
 /datum/emote/proc/get_env(mob/living/user)
 	return
