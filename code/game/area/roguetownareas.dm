@@ -597,6 +597,21 @@ GLOBAL_LIST_INIT(roguetown_areas_typecache, typecacheof(/area/rogue/indoors/town
 	droning_sound_dusk = null
 	droning_sound_night = null
 
+/area/rogue/outdoors/town/harbor
+	name = "harbor"
+	icon_state = "harbor"
+	droning_sound = 'sound/music/area/harbor.ogg'
+	droning_sound_dusk = null
+	droning_sound_night = null
+	first_time_text = "Rockhill Harbor"
+	converted_type = /area/rogue/indoors/shelter/town/harbor
+/area/rogue/indoors/shelter/town/harbor
+	icon_state = "harbor"
+	droning_sound = 'sound/music/area/harbor.ogg'
+	droning_sound_dusk = null
+	droning_sound_night = null
+
+
 /// under
 
 
