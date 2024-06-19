@@ -5,11 +5,11 @@ GLOBAL_LIST_INIT(character_flaws, list("Alcoholic"=/datum/charflaw/addiction/alc
 	"Junkie"=/datum/charflaw/addiction/junkie,
 	"Cyclops (R)"=/datum/charflaw/noeyer,
 	"Cyclops (L)"=/datum/charflaw/noeyel,
-	"No Arm (R)"=/datum/charflaw/limbloss/arm_r,
-	"No Arm (L)"=/datum/charflaw/limbloss/arm_l,
+	"Wood Arm (R)"=/datum/charflaw/limbloss/arm_r,
+	"Wood Arm (L)"=/datum/charflaw/limbloss/arm_l,
 	"Paranoid"=/datum/charflaw/paranoid,
-	"Random Flaw"=/datum/charflaw/randflaw,
-	"No Flaw (3 TRI)"=/datum/charflaw/noflaw))
+	"Random or No Flaw"=/datum/charflaw/randflaw,
+	"No Flaw (3 TRIUMPHS)"=/datum/charflaw/noflaw))
 
 /datum/charflaw
 	var/name
