@@ -14,7 +14,7 @@
 	antimagic_allowed = TRUE
 	charge_max = 5 SECONDS //very stupidly simple spell
 	miracle = TRUE
-	devotion_cost = 0 //come on, this is very basic //Devotion cost is a stupid mechanic
+	devotion_cost = 5 //come on, this is very basic
 
 /obj/effect/proc_holder/spell/invoked/diagnose/cast(list/targets, mob/living/user)
 	if(ishuman(targets[1]))
@@ -48,7 +48,7 @@
 	antimagic_allowed = TRUE
 	charge_max = 60 SECONDS //attaching a limb is pretty intense
 	miracle = TRUE
-	devotion_cost = 0
+	devotion_cost = 60
 
 /obj/effect/proc_holder/spell/invoked/attach_bodypart/proc/get_organs(mob/living/target, mob/living/user)
 	var/list/missing_organs = list(
@@ -147,7 +147,7 @@
 	antimagic_allowed = TRUE
 	charge_max = 2 MINUTES
 	miracle = TRUE
-	devotion_cost = 0
+	devotion_cost = 100
 	/// Amount of PQ gained for curing zombos
 	var/unzombification_pq = PQ_GAIN_UNZOMBIFY
 
@@ -174,7 +174,7 @@
 			S.AOE_flash(user, range = 8)
 		testing("curerot2")
 		if(was_zombie)
-			if(was_zombie.become_rotman && prob(25)) //5% chance to NOT become a rotman //25% now, pestra saves one in four fully!
+			if(was_zombie.become_rotman && prob(5)) //5% chance to NOT become a rotman
 				was_zombie.become_rotman = FALSE
 			target.mind.remove_antag_datum(/datum/antagonist/zombie)
 			target.Unconscious(20 SECONDS)
