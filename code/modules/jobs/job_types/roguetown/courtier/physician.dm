@@ -68,7 +68,7 @@
 		H.mind.adjust_skillrank(/datum/skill/craft/crafting, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/sewing, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/medicine, 6, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/magic/holy, 4, TRUE)
+		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/diagnose/secular)
 		H.change_stat("strength", -1)
 		H.change_stat("constitution", -1)
 		H.change_stat("intelligence", 3)
@@ -78,8 +78,3 @@
 			H.change_stat("speed", -1)
 			H.change_stat("intelligence", 1)
 			H.change_stat("perception", 1)
-
-	var/datum/devotion/C = new /datum/devotion(H, H.patron) //long live the return of cleric phys. Let them choose if they wanna surgery or miracle damn it.
-	C.update_devotion(50, 50)
-	C.grant_spells(H)
-	H.verbs += list(/mob/living/carbon/human/proc/devotionreport, /mob/living/carbon/human/proc/clericpray)

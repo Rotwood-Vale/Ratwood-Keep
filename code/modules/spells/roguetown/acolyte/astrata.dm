@@ -16,7 +16,7 @@
 	antimagic_allowed = TRUE
 	charge_max = 5 SECONDS
 	miracle = TRUE
-	devotion_cost = 0
+	devotion_cost = 30
 
 /obj/effect/proc_holder/spell/invoked/sacred_flame_rogue/cast(list/targets, mob/user = usr)
 	. = ..()
@@ -58,7 +58,7 @@
 	antimagic_allowed = TRUE
 	charge_max = 2 MINUTES
 	miracle = TRUE
-	devotion_cost = 0
+	devotion_cost = 80
 	/// Amount of PQ gained for reviving people
 	var/revive_pq = PQ_GAIN_REVIVE
 
