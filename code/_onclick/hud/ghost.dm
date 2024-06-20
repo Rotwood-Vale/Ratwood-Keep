@@ -43,12 +43,14 @@
 					return
 				if(alert("Travel with the boatman?", "", "Yes", "No") == "Yes")
 
-					// Check if the player's job is adventurer and reduce current_positions
-					var/datum/job/adventurer_job = SSjob.GetJob("Adventurer")
-					if(adventurer_job && G?.mind?.assigned_role == "Adventurer")
-						adventurer_job.current_positions = max(0, adventurer_job.current_positions - 1)
-						// Store the current time for the player
-						GLOB.adventurer_cooldowns[G?.ckey] = world.time
+					// Check if the player's job is hiv+
+					var/datum/job/target_job = SSjob.GetJob(G.mind.assigned_role)
+					if(target_job)
+						if(target_job.job_reopens_slots_on_death)
+							target_job.current_positions = max(0, target_job.current_positions - 1)
+						if(target_job.same_job_respawn_delay)
+							// Store the current time for the player
+							GLOB.job_respawn_delays[G.ckey] = world.time + target_job.same_job_respawn_delay
 
 					for(var/obj/effect/landmark/underworld/A in GLOB.landmarks_list)
 						var/mob/living/carbon/spirit/O = new /mob/living/carbon/spirit(A.loc)
@@ -77,7 +79,7 @@
 			"I'm not ready to leave...", "I'm not ready to travel with Charon.",\
 			"Don't make me leave!", "No... Not yet!", "Please, don't make me go yet...",\
 			"The shores are calling me but I cannot go...","My soul isn't ready yet...")
-			to_chat(G, "<span class='warning'>[pick(thingsz)] ([ttime])</span>")
+			to_chat(G, span_warning("[pick(thingsz)] ([ttime])"))
 			return */ //Disabling this since the underworld will exist
 
 /atom/movable/screen/ghost/reenter_corpse

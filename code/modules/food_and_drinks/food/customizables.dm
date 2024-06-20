@@ -39,11 +39,11 @@
 	if(!istype(I, /obj/item/reagent_containers/food/snacks/customizable) && istype(I, /obj/item/reagent_containers/food/snacks))
 		var/obj/item/reagent_containers/food/snacks/S = I
 		if(I.w_class > WEIGHT_CLASS_SMALL)
-			to_chat(user, "<span class='warning'>The ingredient is too big for [src]!</span>")
+			to_chat(user, span_warning("The ingredient is too big for [src]!"))
 		else if((ingredients.len >= ingMax) || (reagents.total_volume >= volume))
-			to_chat(user, "<span class='warning'>I can't add more ingredients to [src]!</span>")
+			to_chat(user, span_warning("I can't add more ingredients to [src]!"))
 		else if(istype(I, /obj/item/reagent_containers/food/snacks/pizzaslice/custom) || istype(I, /obj/item/reagent_containers/food/snacks/cakeslice/custom))
-			to_chat(user, "<span class='warning'>Adding [I.name] to [src] would make a mess.</span>")
+			to_chat(user, span_warning("Adding [I.name] to [src] would make a mess."))
 		else
 			if(!user.transferItemToLoc(I, src))
 				return
@@ -54,7 +54,7 @@
 			S.reagents.trans_to(src,min(S.reagents.total_volume, 15), transfered_by = user) //limit of 15, we don't want our custom food to be completely filled by just one ingredient with large reagent volume.
 			foodtype |= S.foodtype
 			update_snack_overlays(S)
-			to_chat(user, "<span class='notice'>I add the [I.name] to the [name].</span>")
+			to_chat(user, span_notice("I add the [I.name] to the [name]."))
 			update_name(S)
 	else
 		. = ..()
@@ -243,7 +243,7 @@
 		var/obj/item/reagent_containers/food/snacks/breadslice/BS = I
 		if(finished)
 			return
-		to_chat(user, "<span class='notice'>I finish the [src.name].</span>")
+		to_chat(user, span_notice("I finish the [src.name]."))
 		finished = 1
 		name = "[customname] sandwich"
 		BS.reagents.trans_to(src, BS.reagents.total_volume, transfered_by = user)

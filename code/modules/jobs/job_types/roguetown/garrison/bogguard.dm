@@ -67,8 +67,8 @@
 	beltr = /obj/item/rogueweapon/sword
 	backr = /obj/item/storage/backpack/rogue/satchel
 	if(is_crossbowman)
-		backl = /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow
-		beltr = /obj/item/quiver/bolts //replaces sword
+		backl = /obj/item/gun/ballistic/revolver/grenadelauncher/bow
+		beltr = /obj/item/quiver/arrows //replaces sword
 	else
 		backl = null
 	wrists = /obj/item/clothing/wrists/roguetown/bracers/leather

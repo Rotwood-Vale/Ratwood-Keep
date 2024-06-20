@@ -6,7 +6,7 @@
 	desc = ""
 	item_state = "that"
 	flags_inv = 0
-	armor = list("melee" = 30, "bullet" = 15, "laser" = 30, "energy" = 10, "bomb" = 25, "bio" = 0, "rad" = 0, "fire" = 50, "acid" = 50)
+	armor = list("blunt" = 30, "slash" = 30, "stab" = 30, "bullet" = 15, "laser" = 30, "energy" = 10, "bomb" = 25, "bio" = 0, "rad" = 0, "fire" = 50, "acid" = 50)
 	strip_delay = 80
 
 /obj/item/clothing/head/powdered_wig
@@ -135,7 +135,7 @@
 		return
 	if(slot == SLOT_HEAD)
 		user.grant_language(/datum/language/piratespeak/)
-		to_chat(user, "<span class='boldnotice'>I suddenly know how to speak like a pirate!</span>")
+		to_chat(user, span_boldnotice("I suddenly know how to speak like a pirate!"))
 
 /obj/item/clothing/head/pirate/dropped(mob/user)
 	. = ..()
@@ -144,7 +144,7 @@
 	var/mob/living/carbon/human/H = user
 	if(H.get_item_by_slot(SLOT_HEAD) == src)
 		user.remove_language(/datum/language/piratespeak/)
-		to_chat(user, "<span class='boldnotice'>I can no longer speak like a pirate.</span>")
+		to_chat(user, span_boldnotice("I can no longer speak like a pirate."))
 
 /obj/item/clothing/head/pirate/captain
 	icon_state = "hgpiratecap"
@@ -213,7 +213,7 @@
 	if(user.gender == FEMALE)
 		return 0
 	var/mob/living/carbon/human/H = user
-	user.visible_message("<span class='suicide'>[user] is donning [src]! It looks like [user.p_theyre()] trying to be nice to girls.</span>")
+	user.visible_message(span_suicide("[user] is donning [src]! It looks like [user.p_theyre()] trying to be nice to girls."))
 	user.say("M'lady.", forced = "fedora suicide")
 	sleep(10)
 	H.facial_hairstyle = "Neckbeard"
@@ -258,7 +258,7 @@
 	desc = ""
 	icon_state = "hunter"
 	item_state = "hunter"
-	armor = list("melee" = 5, "bullet" = 5, "laser" = 5, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	armor = list("blunt" = 5, "slash" = 0, "stab" = 2, "bullet" = 5, "laser" = 5, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
 	resistance_flags = FIRE_PROOF | ACID_PROOF
 
 /obj/item/clothing/head/cone
@@ -317,7 +317,7 @@
 	name = "crown"
 	desc = ""
 	icon_state = "crown"
-	armor = list("melee" = 15, "bullet" = 0, "laser" = 0,"energy" = 15, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 100, "acid" = 50)
+	armor = list("blunt" = 5, "slash" = 15, "stab" = 10, "bullet" = 0, "laser" = 0,"energy" = 15, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 100, "acid" = 50)
 	resistance_flags = FIRE_PROOF
 	allowed_race = list(/datum/species/goblinp)
 	dynamic_hair_suffix = ""

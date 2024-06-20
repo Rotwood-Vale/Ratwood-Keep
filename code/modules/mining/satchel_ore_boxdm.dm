@@ -14,7 +14,7 @@
 		user.transferItemToLoc(W, src)
 	else if(SEND_SIGNAL(W, COMSIG_CONTAINS_STORAGE))
 		SEND_SIGNAL(W, COMSIG_TRY_STORAGE_TAKE_TYPE, /obj/item/stack/ore, src)
-		to_chat(user, "<span class='notice'>I empty the ore in [W] into \the [src].</span>")
+		to_chat(user, span_notice("I empty the ore in [W] into \the [src]."))
 	else
 		return ..()
 
@@ -24,9 +24,9 @@
 
 /obj/structure/ore_box/crowbar_act(mob/living/user, obj/item/I)
 	if(I.use_tool(src, user, 50, volume=50))
-		user.visible_message("<span class='notice'>[user] pries \the [src] apart.</span>",
-			"<span class='notice'>I pry apart \the [src].</span>",
-			"<span class='hear'>I hear splitting wood.</span>")
+		user.visible_message(span_notice("[user] pries \the [src] apart."),
+			span_notice("I pry apart \the [src]."),
+			span_hear("I hear splitting wood."))
 		deconstruct(TRUE, user)
 	return TRUE
 
@@ -79,7 +79,7 @@
 	add_fingerprint(usr)
 	if(href_list["removeall"])
 		dump_box_contents()
-		to_chat(usr, "<span class='notice'>I open the release hatch on the box..</span>")
+		to_chat(usr, span_notice("I open the release hatch on the box.."))
 	updateUsrDialog()
 
 /obj/structure/ore_box/deconstruct(disassembled = TRUE, mob/user)

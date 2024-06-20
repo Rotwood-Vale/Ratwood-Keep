@@ -51,7 +51,7 @@
 	STR.set_holdable(null, list(/obj/item/disk/nuclear))
 
 /obj/item/storage/bag/trash/suicide_act(mob/user)
-	user.visible_message("<span class='suicide'>[user] puts [src] over [user.p_their()] head and starts chomping at the insides! Disgusting!</span>")
+	user.visible_message(span_suicide("[user] puts [src] over [user.p_their()] head and starts chomping at the insides! Disgusting!"))
 	playsound(loc, 'sound/blank.ogg', 50, TRUE, -1)
 	return (TOXLOSS)
 
@@ -73,7 +73,7 @@
 		J.mybag=src
 		J.update_icon()
 	else
-		to_chat(user, "<span class='warning'>I are unable to fit my [name] into the [J.name].</span>")
+		to_chat(user, span_warning("I are unable to fit my [name] into the [J.name]."))
 		return
 
 /obj/item/storage/bag/trash/bluespace
@@ -150,17 +150,17 @@
 				show_message = TRUE
 			else
 				if(!spam_protection)
-					to_chat(user, "<span class='warning'>My [name] is full and can't hold any more!</span>")
+					to_chat(user, span_warning("My [name] is full and can't hold any more!"))
 					spam_protection = TRUE
 					continue
 	if(show_message)
 		playsound(user, "rustle", 50, TRUE)
 		if (box)
-			user.visible_message("<span class='notice'>[user] offloads the ores beneath [user.p_them()] into [box].</span>", \
-			"<span class='notice'>I offload the ores beneath you into my [box].</span>")
+			user.visible_message(span_notice("[user] offloads the ores beneath [user.p_them()] into [box]."), \
+			span_notice("I offload the ores beneath you into my [box]."))
 		else
-			user.visible_message("<span class='notice'>[user] scoops up the ores beneath [user.p_them()].</span>", \
-				"<span class='notice'>I scoop up the ores beneath you with my [name].</span>")
+			user.visible_message(span_notice("[user] scoops up the ores beneath [user.p_them()]."), \
+				span_notice("I scoop up the ores beneath you with my [name]."))
 	spam_protection = FALSE
 
 /obj/item/storage/bag/ore/cyborg

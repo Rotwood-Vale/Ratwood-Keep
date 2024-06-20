@@ -19,7 +19,7 @@
 	var/can_max_release_pressure = (ONE_ATMOSPHERE * 10)
 	var/can_min_release_pressure = (ONE_ATMOSPHERE / 10)
 
-	armor = list("melee" = 50, "bullet" = 50, "laser" = 50, "energy" = 100, "bomb" = 10, "bio" = 100, "rad" = 100, "fire" = 80, "acid" = 50)
+	armor = list("blunt" = 50, "slash" = 50, "stab" = 50, "bullet" = 50, "laser" = 50, "energy" = 100, "bomb" = 10, "bio" = 100, "rad" = 100, "fire" = 80, "acid" = 50)
 	max_integrity = 250
 	integrity_failure = 0.4
 	pressure_resistance = 7 * ONE_ATMOSPHERE
@@ -57,7 +57,7 @@
 
 /obj/machinery/portable_atmospherics/canister/interact(mob/user)
 	if(!allowed(user))
-		to_chat(user, "<span class='alert'>Error - Unauthorized User.</span>")
+		to_chat(user, span_alert("Error - Unauthorized User."))
 		playsound(src, 'sound/blank.ogg', 50, TRUE)
 		return
 	..()
@@ -303,11 +303,11 @@
 	if(stat & BROKEN)
 		if(!I.tool_start_check(user, amount=0))
 			return TRUE
-		to_chat(user, "<span class='notice'>I begin cutting [src] apart...</span>")
+		to_chat(user, span_notice("I begin cutting [src] apart..."))
 		if(I.use_tool(src, user, 30, volume=50))
 			deconstruct(TRUE)
 	else
-		to_chat(user, "<span class='warning'>I cannot slice [src] apart when it isn't broken!</span>")
+		to_chat(user, span_warning("I cannot slice [src] apart when it isn't broken!"))
 
 	return TRUE
 

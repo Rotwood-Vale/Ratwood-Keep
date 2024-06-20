@@ -250,7 +250,7 @@
 	sellprice = 80
 
 /datum/crafting_recipe/roguetown/sewing/sexydress
-	name = "sexy dress of legendary sewers"
+	name = "sexy dress of legendary sewists"
 	result = list(/obj/item/clothing/suit/roguetown/shirt/dress/gen/sexy)
 	reqs = list(/obj/item/natural/cloth = 6,
 				/obj/item/natural/fibers = 3)

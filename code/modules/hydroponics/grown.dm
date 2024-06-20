@@ -28,7 +28,7 @@
 	if(W && isturf(loc))
 		if(seed && (user.used_intent.blade_class == BCLASS_BLUNT) && (!user.used_intent.noaa))
 			playsound(src,'sound/items/seedextract.ogg', 100, FALSE)
-			user.visible_message("<span class='info'>[user] extracts the seeds.</span>")
+			user.visible_message(span_info("[user] extracts the seeds."))
 			if(prob(5))
 				qdel(src)
 				return
@@ -49,7 +49,7 @@
 	if(prob(33))
 		if(istype(H))
 			if(eat_effect == /datum/status_effect/debuff/rotfood)
-				visible_message("<span class='warning'>[H] crushes [src] underfoot.</span>")
+				visible_message(span_warning("[H] crushes [src] underfoot."))
 				qdel(src)
 
 /obj/item/reagent_containers/food/snacks/grown/Initialize(mapload, obj/item/seeds/new_seed)
@@ -144,7 +144,7 @@
 	if(trash)
 		generate_trash(T)
 
-	visible_message("<span class='warning'>[src] has been squashed.</span>","<span class='hear'>I hear a smack.</span>")
+	visible_message(span_warning("[src] has been squashed."),span_hear("I hear a smack."))
 	if(seed)
 		for(var/datum/plant_gene/trait/trait in seed.genes)
 			trait.on_squash(src, target)
@@ -171,7 +171,7 @@
 
 /obj/item/reagent_containers/food/snacks/grown/grind_requirements()
 	if(dry_grind && !dry)
-		to_chat(usr, "<span class='warning'>[src] needs to be dry before it can be ground up!</span>")
+		to_chat(usr, span_warning("[src] needs to be dry before it can be ground up!"))
 		return
 	return TRUE
 
@@ -208,4 +208,4 @@
 		qdel(src)
 		//put trash obj in hands or drop to ground
 		user.put_in_hands(T, user.active_hand_index, TRUE)
-		to_chat(user, "<span class='notice'>I open [src]\'s shell, revealing \a [T].</span>")
+		to_chat(user, span_notice("I open [src]\'s shell, revealing \a [T]."))

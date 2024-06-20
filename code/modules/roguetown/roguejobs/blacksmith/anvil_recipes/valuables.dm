@@ -98,7 +98,9 @@
 	created_item = /obj/item/clothing/ring/diamond
 	i_type = "Valuables"
 
-//Steel Rings
+//Steel rings
+//BE AWARE THOSE RINGS SHOULD BE TURNED TO SILVER ONCE SILVER INGOTS ARE IN PLAY - Sarkness
+
 /datum/anvil_recipe/valuables/emerings
 	name = "Gemerald Ring (+1 Gemerald)"
 	req_bar = /obj/item/ingot/steel
@@ -149,3 +151,9 @@
 	craftdiff = 3
 	i_type = "Weapons"
 
+/datum/anvil_recipe/valuables/dragon
+	name = "Dragon Ring (+ Secrets)"
+	req_bar =  /obj/item/ingot/steel
+	additional_items = list(/obj/item/ingot/gold, /obj/item/ingot/steel, /obj/item/roguegem/blue, /obj/item/roguegem/violet, /obj/item/clothing/neck/roguetown/psicross)	
+	created_item = /obj/item/clothing/ring/dragon_ring
+	i_type = "Valuables"

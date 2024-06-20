@@ -45,8 +45,12 @@
 				dust(just_ash=TRUE,drop_items=TRUE)
 				return
 
-	if(!gibbed && can_death_zombify(src))
-		zombie_check()
+	if(!gibbed)
+		var/datum/antagonist/zombie/zomble = mind?.has_antag_datum(/datum/antagonist/zombie)
+		if(zomble)
+			addtimer(CALLBACK(zomble, TYPE_PROC_REF(/datum/antagonist/zombie, wake_zombie)), 5 SECONDS)
+		else if(can_death_zombify())
+			zombie_check()
 
 	if(client || mind)
 		SSticker.deaths++
@@ -81,10 +85,10 @@
 				if(real_name in GLOB.outlawed_players)
 					yeae = FALSE
 
-		if(tris2take)
-			adjust_triumphs(tris2take)
-		else
-			if(get_triumphs() > 0)
+		if(get_triumphs() > 0)
+			if(tris2take)
+				adjust_triumphs(tris2take)
+			else
 				adjust_triumphs(-1)
 
 		switch(job)
@@ -94,11 +98,11 @@
 					if(!HU.stat && is_in_roguetown(HU))
 						HU.playsound_local(get_turf(HU), 'sound/music/lorddeath.ogg', 80, FALSE, pressure_affected = FALSE)
 			if("Priest")
-				addomen("nopriest")
+				addomen(OMEN_NOPRIEST)
 //		if(yeae)
 //			if(mind)
 //				if((mind.assigned_role == "Lord") || (mind.assigned_role == "Priest") || (mind.assigned_role == "Guard Captain") || (mind.assigned_role == "Merchant"))
-//					addomen("importantdeath")
+//					addomen(OMEN_NOBLEDEATH)
 
 		if(!gibbed && yeae)
 			for(var/mob/living/carbon/human/HU in viewers(7, src))
@@ -134,25 +138,9 @@
 		return
 	switch(job)
 		if("King")
-			removeomen("nolord")
+			removeomen(OMEN_NOLORD)
 		if("Priest")
-			removeomen("nopriest")
-
-/mob/living/carbon/human/proc/zombie_check()
-	if(!mind)
-		return
-	var/already_zombie = mind.has_antag_datum(/datum/antagonist/zombie)
-	if(already_zombie)
-		return already_zombie
-	if(mind.has_antag_datum(/datum/antagonist/vampirelord))
-		return
-	if(mind.has_antag_datum(/datum/antagonist/werewolf))
-		return
-	if(mind.has_antag_datum(/datum/antagonist/skeleton))
-		return
-	if(HAS_TRAIT(src, TRAIT_ZOMBIE_IMMUNE))
-		return
-	return mind.add_antag_datum(/datum/antagonist/zombie)
+			removeomen(OMEN_NOPRIEST)
 
 /mob/living/carbon/human/gib(no_brain, no_organs, no_bodyparts, safe_gib = FALSE)
 	for(var/mob/living/carbon/human/CA in viewers(7, src))
@@ -162,7 +150,7 @@
 			if(CA.marriedto == src)
 				CA.adjust_triumphs(-1)
 			CA.add_stress(/datum/stressevent/viewgib)
-	. = ..()
+	return ..()
 
 /mob/living/carbon/human/proc/makeSkeleton()
 	ADD_TRAIT(src, TRAIT_DISFIGURED, TRAIT_GENERIC)
@@ -181,4 +169,4 @@
 	return TRUE
 
 /proc/can_death_zombify(mob/living/carbon/human)
-	return hasomen("nopriest") || !is_in_roguetown(human)
+	return hasomen(OMEN_NOPRIEST) || !is_in_roguetown(human)

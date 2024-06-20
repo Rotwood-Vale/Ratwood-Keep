@@ -13,8 +13,7 @@ Format:
 	votable (is this map votable)
 endmap
 
-map roguetown
+map rockhill
 	default
-	#voteweight 1.5
 	votable
 endmap

@@ -37,7 +37,7 @@
 		if(istype(attackby_item, /obj/item/rogueweapon))
 			if(!COOLDOWN_FINISHED(src, shield_bang))
 				return
-			user.visible_message("<span class='danger'>[user] bangs [src] with [attackby_item]!</span>")
+			user.visible_message(span_danger("[user] bangs [src] with [attackby_item]!"))
 			playsound(user.loc, 'sound/combat/shieldbang.ogg', 50, TRUE)
 			COOLDOWN_START(src, shield_bang, SHIELD_BANG_COOLDOWN)
 			return
@@ -48,11 +48,11 @@
 	SEND_SIGNAL(src, COMSIG_ITEM_HIT_REACT, args)
 	if(attack_type == THROWN_PROJECTILE_ATTACK || attack_type == PROJECTILE_ATTACK)
 		if(owner.client?.chargedprog == 100 && owner.used_intent?.tranged)
-			owner.visible_message("<span class='danger'>[owner] blocks [hitby] with [src]!</span>")
+			owner.visible_message(span_danger("[owner] blocks [hitby] with [src]!"))
 			return 1
 		else
 			if(prob(coverage))
-				owner.visible_message("<span class='danger'>[owner] blocks [hitby] with [src]!</span>")
+				owner.visible_message(span_danger("[owner] blocks [hitby] with [src]!"))
 				return 1
 	return 0
 

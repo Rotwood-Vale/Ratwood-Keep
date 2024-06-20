@@ -10,7 +10,7 @@
 	throwforce = 7
 	w_class = WEIGHT_CLASS_NORMAL
 	attack_verb = list("beaten")
-	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 50, "bio" = 0, "rad" = 0, "fire" = 80, "acid" = 80)
+	armor = list("blunt" = 0, "slash" = 0, "stab" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 50, "bio" = 0, "rad" = 0, "fire" = 80, "acid" = 80)
 
 	var/cooldown_check = 0
 
@@ -26,7 +26,7 @@
 	return cell
 
 /obj/item/melee/baton/suicide_act(mob/user)
-	user.visible_message("<span class='suicide'>[user] is putting the live [name] in [user.p_their()] mouth! It looks like [user.p_theyre()] trying to commit suicide!</span>")
+	user.visible_message(span_suicide("[user] is putting the live [name] in [user.p_their()] mouth! It looks like [user.p_theyre()] trying to commit suicide!"))
 	return (FIRELOSS)
 
 /obj/item/melee/baton/Initialize()
@@ -70,23 +70,23 @@
 /obj/item/melee/baton/examine(mob/user)
 	. = ..()
 	if(cell)
-		. += "<span class='notice'>\The [src] is [round(cell.percent())]% charged.</span>"
+		. += span_notice("\The [src] is [round(cell.percent())]% charged.")
 	else
-		. += "<span class='warning'>\The [src] does not have a power source installed.</span>"
+		. += span_warning("\The [src] does not have a power source installed.")
 
 /obj/item/melee/baton/attackby(obj/item/W, mob/user, params)
 	if(istype(W, /obj/item/stock_parts/cell))
 		var/obj/item/stock_parts/cell/C = W
 		if(cell)
-			to_chat(user, "<span class='warning'>[src] already has a cell!</span>")
+			to_chat(user, span_warning("[src] already has a cell!"))
 		else
 			if(C.maxcharge < hitcost)
-				to_chat(user, "<span class='notice'>[src] requires a higher capacity cell.</span>")
+				to_chat(user, span_notice("[src] requires a higher capacity cell."))
 				return
 			if(!user.transferItemToLoc(W, src))
 				return
 			cell = W
-			to_chat(user, "<span class='notice'>I install a cell in [src].</span>")
+			to_chat(user, span_notice("I install a cell in [src]."))
 			update_icon()
 
 	else if(W.tool_behaviour == TOOL_SCREWDRIVER)
@@ -94,7 +94,7 @@
 			cell.update_icon()
 			cell.forceMove(get_turf(src))
 			cell = null
-			to_chat(user, "<span class='notice'>I remove the cell from [src].</span>")
+			to_chat(user, span_notice("I remove the cell from [src]."))
 			status = 0
 			update_icon()
 	else
@@ -103,21 +103,21 @@
 /obj/item/melee/baton/attack_self(mob/user)
 	if(cell && cell.charge > hitcost)
 		status = !status
-		to_chat(user, "<span class='notice'>[src] is now [status ? "on" : "off"].</span>")
+		to_chat(user, span_notice("[src] is now [status ? "on" : "off"]."))
 		playsound(loc, "sparks", 75, TRUE, -1)
 	else
 		status = 0
 		if(!cell)
-			to_chat(user, "<span class='warning'>[src] does not have a power source!</span>")
+			to_chat(user, span_warning("[src] does not have a power source!"))
 		else
-			to_chat(user, "<span class='warning'>[src] is out of charge.</span>")
+			to_chat(user, span_warning("[src] is out of charge."))
 	update_icon()
 	add_fingerprint(user)
 
 /obj/item/melee/baton/attack(mob/M, mob/living/carbon/human/user)
 	if(status && HAS_TRAIT(user, TRAIT_CLUMSY) && prob(50))
-		user.visible_message("<span class='danger'>[user] accidentally hits [user.p_them()]self with [src]!</span>", \
-							"<span class='danger'>I accidentally hit myself with [src]!</span>")
+		user.visible_message(span_danger("[user] accidentally hits [user.p_them()]self with [src]!"), \
+							span_danger("I accidentally hit myself with [src]!"))
 		user.Knockdown(stunforce*3)
 		deductcharge(hitcost)
 		return
@@ -139,10 +139,10 @@
 					user.do_attack_animation(M)
 					return
 			else
-				to_chat(user, "<span class='danger'>The baton is still charging!</span>")
+				to_chat(user, span_danger("The baton is still charging!"))
 		else
-			M.visible_message("<span class='warning'>[user] has prodded [M] with [src]. Luckily it was off.</span>", \
-							"<span class='warning'>[user] has prodded you with [src]. Luckily it was off</span>")
+			M.visible_message(span_warning("[user] has prodded [M] with [src]. Luckily it was off."), \
+							span_warning("[user] has prodded you with [src]. Luckily it was off"))
 	else
 		if(status)
 			if(cooldown_check <= world.time)
@@ -177,8 +177,8 @@
 	if(user)
 		L.lastattacker = user.real_name
 		L.lastattackerckey = user.ckey
-		L.visible_message("<span class='danger'>[user] has stunned [L] with [src]!</span>", \
-								"<span class='danger'>[user] has stunned you with [src]!</span>")
+		L.visible_message(span_danger("[user] has stunned [L] with [src]!"), \
+								span_danger("[user] has stunned you with [src]!"))
 		log_combat(user, L, "stunned")
 
 	playsound(loc, 'sound/blank.ogg', 50, TRUE, -1)
@@ -199,7 +199,7 @@
 	else
 		target.Knockdown(stunforce)
 	if(!target.IsKnockdown())
-		to_chat(target, "<span class='warning'>I muscles seize, making you collapse[trait_check ? ", but your body quickly recovers..." : "!"]</span>")
+		to_chat(target, span_warning("I muscles seize, making you collapse[trait_check ? ", but your body quickly recovers..." : "!"]"))
 
 /obj/item/melee/baton/emp_act(severity)
 	. = ..()

@@ -31,16 +31,16 @@
 /datum/antagonist/fugitive_hunter/greet()
 	switch(backstory)
 		if("space cop")
-			to_chat(owner, "<span class='boldannounce'>Justice has arrived. I am a member of the Spacepol!</span>")
+			to_chat(owner, span_boldannounce("Justice has arrived. I am a member of the Spacepol!"))
 			to_chat(owner, "<B>The criminals should be on the station, we have special huds implanted to recognize them.</B>")
 			to_chat(owner, "<B>As we have lost pretty much all power over these damned lawless megacorporations, it's a mystery if their security will cooperate with us.</B>")
 		if("russian")
-			to_chat(src, "<span class='danger'>Ay blyat. I am a space-russian smuggler! We were mid-flight when our cargo was beamed off our ship!</span>")
-			to_chat(src, "<span class='danger'>We were hailed by a man in a green uniform, promising the safe return of our goods in exchange for a favor:</span>")
-			to_chat(src, "<span class='danger'>There is a local station housing fugitives that the man is after, he wants them returned; dead or alive.</span>")
-			to_chat(src, "<span class='danger'>We will not be able to make ends meet without our cargo, so we must do as he says and capture them.</span>")
+			to_chat(src, span_danger("Ay blyat. I am a space-russian smuggler! We were mid-flight when our cargo was beamed off our ship!"))
+			to_chat(src, span_danger("We were hailed by a man in a green uniform, promising the safe return of our goods in exchange for a favor:"))
+			to_chat(src, span_danger("There is a local station housing fugitives that the man is after, he wants them returned; dead or alive."))
+			to_chat(src, span_danger("We will not be able to make ends meet without our cargo, so we must do as he says and capture them."))
 
-	to_chat(owner, "<span class='boldannounce'>I are not an antagonist in that you may kill whomever you please, but you can do anything to ensure the capture of the fugitives, even if that means going through the station.</span>")
+	to_chat(owner, span_boldannounce("I are not an antagonist in that you may kill whomever you please, but you can do anything to ensure the capture of the fugitives, even if that means going through the station."))
 	owner.announce_objectives()
 
 /datum/antagonist/fugitive_hunter/create_team(datum/team/fugitive_hunters/new_team)
@@ -137,34 +137,34 @@
 
 	switch(get_result())
 		if(FUGITIVE_RESULT_BADASS_HUNTER)//use defines
-			result += "<span class='greentext big'>Badass [capitalize(backstory)] Victory!</span>"
+			result += span_greentextbig("Badass [capitalize(backstory)] Victory!")
 			result += "<B>The [backstory]s managed to capture every fugitive, alive!</B>"
 		if(FUGITIVE_RESULT_POSTMORTEM_HUNTER)
-			result += "<span class='greentext big'>Postmortem [capitalize(backstory)] Victory!</span>"
+			result += span_greentextbig("Postmortem [capitalize(backstory)] Victory!")
 			result += "<B>The [backstory]s managed to capture every fugitive, but all of them died! Spooky!</B>"
 		if(FUGITIVE_RESULT_MAJOR_HUNTER)
-			result += "<span class='greentext big'>Major [capitalize(backstory)] Victory</span>"
+			result += span_greentextbig("Major [capitalize(backstory)] Victory")
 			result += "<B>The [backstory]s managed to capture every fugitive, dead or alive.</B>"
 		if(FUGITIVE_RESULT_HUNTER_VICTORY)
-			result += "<span class='greentext big'>[capitalize(backstory)] Victory</span>"
+			result += span_greentextbig("[capitalize(backstory)] Victory")
 			result += "<B>The [backstory]s managed to capture a fugitive, dead or alive.</B>"
 		if(FUGITIVE_RESULT_MINOR_HUNTER)
-			result += "<span class='greentext big'>Minor [capitalize(backstory)] Victory</span>"
+			result += span_greentextbig("Minor [capitalize(backstory)] Victory")
 			result += "<B>All the [backstory]s died, but managed to capture a fugitive, dead or alive.</B>"
 		if(FUGITIVE_RESULT_STALEMATE)
-			result += "<span class='neutraltext big'>Bloody Stalemate</span>"
+			result += span_neutraltextbig("Bloody Stalemate")
 			result += "<B>Everyone died, and no fugitives were recovered!</B>"
 		if(FUGITIVE_RESULT_MINOR_FUGITIVE)
-			result += "<span class='redtext big'>Minor Fugitive Victory</span>"
+			result += span_redtextbig("Minor Fugitive Victory")
 			result += "<B>All the fugitives died, but none were recovered!</B>"
 		if(FUGITIVE_RESULT_FUGITIVE_VICTORY)
-			result += "<span class='redtext big'>Fugitive Victory</span>"
+			result += span_redtextbig("Fugitive Victory")
 			result += "<B>A fugitive survived, and no bodies were recovered by the [backstory]s.</B>"
 		if(FUGITIVE_RESULT_MAJOR_FUGITIVE)
-			result += "<span class='redtext big'>Major Fugitive Victory</span>"
+			result += span_redtextbig("Major Fugitive Victory")
 			result += "<B>All of the fugitives survived and avoided capture!</B>"
 		else //get_result returned null- either bugged or no fugitives showed
-			result += "<span class='neutraltext big'>Prank Call!</span>"
+			result += span_neutraltextbig("Prank Call!")
 			result += "<B>[capitalize(backstory)]s were called, yet there were no fugitives...?</B>"
 
 	result += "</div>"

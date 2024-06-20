@@ -1,4 +1,8 @@
 // Tool types
+#define TOOL_NONE			"none" //exclusively used for surgery validation
+#define TOOL_HAND			"hand" //exclusively used for surgery validation
+#define TOOL_SHARP			"sharp"	//exclusively used for surgery validation
+#define TOOL_HOT			"hot" //exclusively used for surgery validation
 #define TOOL_CROWBAR 		"crowbar"
 #define TOOL_MULTITOOL 		"multitool"
 #define TOOL_SCREWDRIVER 	"screwdriver"
@@ -14,6 +18,8 @@
 #define TOOL_DRILL			"drill"
 #define TOOL_SCALPEL		"scalpel"
 #define TOOL_SAW			"saw"
+#define TOOL_BONESETTER		"bonesetter"
+#define TOOL_SUTURE			"suture"
 
 // If delay between the start and the end of tool operation is less than MIN_TOOL_SOUND_DELAY,
 // tool sound is only played when op is started. If not, it's played twice.
