@@ -185,18 +185,6 @@
 	required_count = 3
 	wanted_types = list(/obj/item/grenade/iedcasing)
 
-/datum/bounty/item/assistant/bonfire
-	name = "Lit Bonfire"
-	description = "Space heaters are malfunctioning and the cargo crew of Central Command is starting to feel cold. Ship a lit bonfire to warm them up."
-	reward = 5000
-	wanted_types = list(/obj/structure/bonfire)
-
-/datum/bounty/item/assistant/bonfire/applies_to(obj/O)
-	if(!..())
-		return FALSE
-	var/obj/structure/bonfire/B = O
-	return !!B.burning
-
 /datum/bounty/item/assistant/corgimeat
 	name = "Raw Corgi Meat"
 	description = "The Syndicate recently stole all of CentCom's Corgi meat. Ship out a replacement immediately."

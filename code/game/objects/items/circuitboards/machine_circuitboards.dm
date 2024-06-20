@@ -996,16 +996,6 @@
 		/obj/item/stock_parts/manipulator = 1)
 	needs_anchored = FALSE
 
-/obj/item/circuitboard/machine/hydroponics
-	name = "Hydroponics Tray (Machine Board)"
-	icon_state = "service"
-	build_path = /obj/machinery/hydroponics/constructable
-	req_components = list(
-		/obj/item/stock_parts/matter_bin = 2,
-		/obj/item/stock_parts/manipulator = 1,
-		/obj/item/stack/sheet/glass = 1)
-	needs_anchored = FALSE
-
 /obj/item/circuitboard/machine/microwave
 	name = "Microwave (Machine Board)"
 	icon_state = "service"
@@ -1016,16 +1006,6 @@
 		/obj/item/stack/cable_coil = 2,
 		/obj/item/stack/sheet/glass = 2)
 	needs_anchored = FALSE
-
-/obj/item/circuitboard/machine/plantgenes
-	name = "Plant DNA Manipulator (Machine Board)"
-	icon_state = "service"
-	build_path = /obj/machinery/plantgenes
-	req_components = list(
-		/obj/item/stock_parts/manipulator = 1,
-		/obj/item/stock_parts/micro_laser = 1,
-		/obj/item/stack/sheet/glass = 1,
-		/obj/item/stock_parts/scanning_module = 1)
 
 /obj/item/circuitboard/machine/processor
 	name = "Food Processor (Machine Board)"
@@ -1058,15 +1038,6 @@
 	name = "Recycler (Machine Board)"
 	icon_state = "service"
 	build_path = /obj/machinery/recycler
-	req_components = list(
-		/obj/item/stock_parts/matter_bin = 1,
-		/obj/item/stock_parts/manipulator = 1)
-	needs_anchored = FALSE
-
-/obj/item/circuitboard/machine/seed_extractor
-	name = "Seed Extractor (Machine Board)"
-	icon_state = "service"
-	build_path = /obj/machinery/seed_extractor
 	req_components = list(
 		/obj/item/stock_parts/matter_bin = 1,
 		/obj/item/stock_parts/manipulator = 1)
