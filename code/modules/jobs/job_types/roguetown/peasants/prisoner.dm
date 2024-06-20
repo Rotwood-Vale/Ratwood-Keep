@@ -1,18 +1,18 @@
-/datum/job/roguetown/prisoner
-	title = "Prisoner"
-	flag = PRISONER
+/datum/job/roguetown/prisonerr
+	title = "Prisoner (Rockhill)"
+	flag = PRISONERR
 	department_flag = NOBLEMEN
 	faction = "Station"
 	total_positions = 0
-	spawn_positions = 1
+	spawn_positions = 4
 
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
 	tutorial = "How does it feel to be the rat in the cage? You're alone and at the mercy of your captors, kept around as a hostage. You spend your days waiting for the oft chance someone comes to pay your ransom. Might as well start praying to whatever god you find solace in."
 
-	outfit = /datum/outfit/job/roguetown/prisoner
+	outfit = /datum/outfit/job/roguetown/prisonerr
 	bypass_jobban = TRUE
-	display_order = JDO_PRISONER
+	display_order = JDO_PRISONERR
 	give_bank_account = 10
 	min_pq = -14
 	max_pq = null
@@ -20,7 +20,7 @@
 
 	cmode_music = 'sound/music/combat_bum.ogg'
 
-/datum/outfit/job/roguetown/prisoner/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/job/roguetown/prisonerr/pre_equip(mob/living/carbon/human/H)
 	..()
 	neck = /obj/item/clothing/neck/roguetown/gorget/prisoner
 	shoes = /obj/item/clothing/shoes/roguetown/shortboots

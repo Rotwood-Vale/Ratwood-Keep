@@ -1962,7 +1962,10 @@
 	},
 /area/rogue/indoors/town/church)
 "cCz" = (
-/obj/effect/landmark/start/prisoner,
+/obj/structure/bed/rogue/shit,
+/obj/effect/landmark/start/prisonerr{
+	dir = 4
+	},
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/under/town/basement)
 "cCQ" = (
@@ -2217,6 +2220,9 @@
 /area/rogue/outdoors/bog)
 "cSq" = (
 /obj/structure/bed/rogue/shit,
+/obj/effect/landmark/start/prisonerr{
+	dir = 1
+	},
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/town/basement)
 "cSF" = (
@@ -2913,6 +2919,9 @@
 /area/rogue/under/cavewet/bogcaves)
 "dPO" = (
 /obj/structure/bed/rogue/shit,
+/obj/effect/landmark/start/prisonerr{
+	dir = 1
+	},
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/under/town/basement)
 "dSq" = (
@@ -8129,6 +8138,9 @@
 "kMi" = (
 /obj/structure/bed/rogue/inn/hay,
 /obj/item/bedsheet/rogue/cloth,
+/obj/effect/landmark/start/prisonerb{
+	dir = 4
+	},
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/basement)
 "kNa" = (
@@ -8142,6 +8154,9 @@
 /obj/item/bedsheet/rogue/cloth,
 /obj/effect/decal/cleanable/cobweb{
 	icon_state = "cobweb2"
+	},
+/obj/effect/landmark/start/prisonerb{
+	dir = 8
 	},
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/basement)
@@ -9091,7 +9106,11 @@
 /turf/open/floor/rogue/cobble,
 /area/rogue/indoors/town)
 "mik" = (
-/obj/effect/landmark/start/prisoner,
+/obj/structure/bed/rogue/inn/hay,
+/obj/item/bedsheet/rogue/cloth,
+/obj/effect/landmark/start/prisonerb{
+	dir = 8
+	},
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/basement)
 "miM" = (
@@ -12767,6 +12786,11 @@
 	},
 /turf/open/floor/rogue/churchbrick,
 /area/rogue/indoors/town/manor)
+"rkz" = (
+/obj/structure/bed/rogue/shit,
+/obj/effect/landmark/start/prisonerr,
+/turf/open/floor/rogue/dirt/road,
+/area/rogue/under/town/basement)
 "rla" = (
 /obj/structure/mineral_door/wood/donjon{
 	locked = 1;
@@ -67995,7 +68019,7 @@ whb
 whb
 txa
 iho
-mik
+iTw
 iTw
 ida
 iJR
@@ -70809,8 +70833,8 @@ whb
 whb
 txa
 kNd
+iTw
 mik
-kMi
 ida
 tWb
 cBf
@@ -196522,7 +196546,7 @@ rSC
 cTA
 cEK
 hec
-dPO
+cCz
 jyI
 cEK
 pSj
@@ -196922,7 +196946,7 @@ vRu
 vRu
 cTA
 cTA
-dPO
+rkz
 cEK
 cEK
 cTA
@@ -197329,7 +197353,7 @@ nvW
 oDW
 jyI
 iTw
-mik
+iTw
 cBf
 hfI
 cTA
@@ -197726,7 +197750,7 @@ vRu
 vRu
 cTA
 hec
-cCz
+cEK
 jMl
 cEK
 cTA

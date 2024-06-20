@@ -2263,6 +2263,7 @@
 #include "code\modules\jobs\job_types\roguetown\other\tester.dm"
 #include "code\modules\jobs\job_types\roguetown\peasants\bathmaid.dm"
 #include "code\modules\jobs\job_types\roguetown\peasants\beggar.dm"
+#include "code\modules\jobs\job_types\roguetown\peasants\bogprisoner.dm"
 #include "code\modules\jobs\job_types\roguetown\peasants\butcher.dm"
 #include "code\modules\jobs\job_types\roguetown\peasants\cook.dm"
 #include "code\modules\jobs\job_types\roguetown\peasants\hostage.dm"
