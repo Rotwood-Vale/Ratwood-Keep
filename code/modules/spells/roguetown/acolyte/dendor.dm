@@ -40,7 +40,7 @@
 	invocation = "Be still and calm, brotherbeast."
 	invocation_type = "whisper" //can be none, whisper, emote and shout
 	miracle = TRUE
-	devotion_cost = 60
+	devotion_cost = 30
 
 /obj/effect/proc_holder/spell/targeted/beasttame/cast(list/targets,mob/user = usr)
 	. = ..()
@@ -65,7 +65,7 @@
 	associated_skill = /datum/skill/magic/holy
 	invocation = "Treefather light the way."
 	invocation_type = "whisper" //can be none, whisper, emote and shout
-	devotion_cost = 75
+	devotion_cost = 40
 
 /obj/effect/proc_holder/spell/targeted/conjure_glowshroom/cast(list/targets, mob/user = usr)
 	. = ..()
