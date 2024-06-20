@@ -65,9 +65,9 @@
 	worshippers = "The Sick, Phyicians, Apothecaries"
 	mob_traits = list(TRAIT_EMPATH, TRAIT_ROT_EATER)
 	t0 = list(/obj/effect/proc_holder/spell/invoked/diagnose)
-	t1 = list(/obj/effect/proc_holder/spell/invoked/lesser_heal)
+	t1 = list(/obj/effect/proc_holder/spell/invoked/attach_bodypart, /obj/effect/proc_holder/spell/invoked/lesser_heal)
 	t2 = list(/obj/effect/proc_holder/spell/invoked/heal)
-	t3 = list(/obj/effect/proc_holder/spell/invoked/attach_bodypart, /obj/effect/proc_holder/spell/invoked/cure_rot)
+	t3 = list(/obj/effect/proc_holder/spell/invoked/cure_rot)
 
 /datum/patron/divine/malum
 	name = "Malum"
