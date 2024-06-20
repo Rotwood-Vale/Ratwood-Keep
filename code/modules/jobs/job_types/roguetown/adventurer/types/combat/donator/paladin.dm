@@ -132,11 +132,9 @@
 		
 	ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
-	if(H.dna?.species)
-		if(H.dna.species.id == "humen")
-			H.dna.species.soundpack_m = new /datum/voicepack/male/knight()
-		if(H.dna.species.id == "tiefling")
-			cloak = /obj/item/clothing/cloak/tabard/crusader/tief
+	H.dna.species.soundpack_m = new /datum/voicepack/male/knight()
+	if(H.dna.species.type == /datum/species/tieberian)
+		cloak = /obj/item/clothing/cloak/tabard/crusader/tief
 	var/datum/devotion/C = new /datum/devotion(H, H.patron)
 	//Max devotion limit - Paladins are stronger but cannot pray to gain all abilities beyond t1
 	C.grant_spells_templar(H)
