@@ -1042,7 +1042,6 @@
 	if(stat)
 		return
 	surrendering = 1
-	//if(alert(src, "Yield in surrender?",,"YES","NO") == "YES")
 	changeNext_move(CLICK_CD_EXHAUSTED)
 	var/image/flaggy = image('icons/effects/effects.dmi',src,"surrender_large",ABOVE_MOB_LAYER)
 	flaggy.appearance_flags = RESET_TRANSFORM|KEEP_APART
