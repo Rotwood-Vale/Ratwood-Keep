@@ -611,6 +611,19 @@ GLOBAL_LIST_INIT(roguetown_areas_typecache, typecacheof(/area/rogue/indoors/town
 	droning_sound_dusk = null
 	droning_sound_night = null
 
+/area/rogue/outdoors/town/park
+	name = "park"
+	icon_state = "park"
+	droning_sound = 'sound/music/area/park.ogg'
+	droning_sound_dusk = null
+	droning_sound_night = null
+	converted_type = /area/rogue/indoors/shelter/town/park
+/area/rogue/indoors/shelter/town/park
+	icon_state = "park"
+	droning_sound = 'sound/music/area/park.ogg'
+	droning_sound_dusk = null
+	droning_sound_night = null
+
 
 /// under
 
