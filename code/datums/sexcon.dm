@@ -1350,14 +1350,6 @@
 							yee = 1
 							husbando = 1
 							owner.add_stress(/datum/stressevent/cumlove)
-						if(HAS_TRAIT(F, RTRAIT_GOODLOVER))
-							if(!H.mob_timers["cumtri"])
-								H.mob_timers["cumtri"] = world.time
-								H.adjust_triumphs(1)
-						if(HAS_TRAIT(H, RTRAIT_GOODLOVER))
-							if(!F.mob_timers["cumtri"])
-								F.mob_timers["cumtri"] = world.time
-								F.adjust_triumphs(1)
 					if(!yee)
 						owner.add_stress(/datum/stressevent/cummax)
 				else
