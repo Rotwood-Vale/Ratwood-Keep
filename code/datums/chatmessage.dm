@@ -118,6 +118,9 @@
 	// We dim italicized text to make it more distinguishable from regular text
 	var/tgt_color = extra_classes.Find("italics") ? target.chat_color_darkened : target.chat_color
 
+	if(extra_classes.Find("emote"))
+		tgt_color = "#adadad"
+
 	// Approximate text height
 	// Note we have to replace HTML encoded metacharacters otherwise MeasureText will return a zero height
 	// BYOND Bug #2563917
@@ -217,8 +220,14 @@
 	if (originalSpeaker != src && speaker == src)
 		return
 
+	var/text
+	if(spans.Find("emote"))
+		text = raw_message
+	else
+		text = lang_treat(speaker, message_language, raw_message, spans, null, TRUE)
+
 	// Display visual above source
-	new /datum/chatmessage(lang_treat(speaker, message_language, raw_message, spans, null, TRUE), speaker, src, spans)
+	new /datum/chatmessage(text, speaker, src, spans)
 
 
 // Tweak these defines to change the available color ranges
