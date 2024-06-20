@@ -292,8 +292,8 @@
 			return
 		if(buckled)
 			Feedstop(silent = TRUE)
-			visible_message("<span class='danger'>[M] pulls [src] off!</span>", \
-				"<span class='danger'>I pull [src] off!</span>")
+			visible_message(span_danger("[M] pulls [src] off!"), \
+				span_danger("I pull [src] off!"))
 			return
 		attacked += 5
 		if(nutrition >= 100) //steal some nutrition. negval handled in life()
@@ -328,35 +328,49 @@
 		M.do_attack_animation(src, ATTACK_EFFECT_DISARM)
 		if(buckled == M)
 			if(prob(60))
-				M.visible_message("<span class='warning'>[M] attempts to wrestle \the [name] off!</span>", \
-					"<span class='danger'>I attempt to wrestle \the [name] off!</span>")
+				M.visible_message(span_warning("[M] attempts to wrestle \the [name] off!"), \
+					span_danger("I attempt to wrestle \the [name] off!"))
 				playsound(loc, 'sound/blank.ogg', 25, TRUE, -1)
 
 			else
-				M.visible_message("<span class='warning'>[M] manages to wrestle \the [name] off!</span>", \
-					"<span class='notice'>I manage to wrestle \the [name] off!</span>")
+				M.visible_message(span_warning("[M] manages to wrestle \the [name] off!"), \
+					span_notice("I manage to wrestle \the [name] off!"))
 				playsound(loc, 'sound/blank.ogg', 50, TRUE, -1)
 
 				discipline_slime(M)
 
 		else
 			if(prob(30))
-				buckled.visible_message("<span class='warning'>[M] attempts to wrestle \the [name] off of [buckled]!</span>", \
-					"<span class='warning'>[M] attempts to wrestle \the [name] off of you!</span>")
+				buckled.visible_message(span_warning("[M] attempts to wrestle \the [name] off of [buckled]!"), \
+					span_warning("[M] attempts to wrestle \the [name] off of you!"))
 				playsound(loc, 'sound/blank.ogg', 25, TRUE, -1)
 
 			else
-				buckled.visible_message("<span class='warning'>[M] manages to wrestle \the [name] off of [buckled]!</span>", \
-					"<span class='notice'>[M] manage to wrestle \the [name] off of you!</span>")
+				buckled.visible_message(span_warning("[M] manages to wrestle \the [name] off of [buckled]!"), \
+					span_notice("[M] manage to wrestle \the [name] off of you!"))
 				playsound(loc, 'sound/blank.ogg', 50, TRUE, -1)
 
 				discipline_slime(M)
 	else
-		if(stat == DEAD && surgeries.len)
-			if(M.used_intent.type == INTENT_HELP || M.used_intent.type == INTENT_DISARM)
-				for(var/datum/surgery/S in surgeries)
-					if(S.next_step(M,M.a_intent))
-						return 1
+		if(stat == DEAD && !M.cmode)
+			var/try_to_fail = !istype(M.rmb_intent, /datum/rmb_intent/weak)
+			var/list/possible_steps = list()
+			for(var/datum/surgery_step/surgery_step as anything in GLOB.surgery_steps)
+				if(!surgery_step.name)
+					continue
+				if(surgery_step.can_do_step(M, src, M.zone_selected, null, M.used_intent))
+					possible_steps[surgery_step.name] = surgery_step
+			var/possible_len = length(possible_steps)
+			if(possible_len)
+				var/datum/surgery_step/done_step
+				if(possible_len > 1)
+					var/input = input(M, "Which surgery step do you want to perform?", "PESTRA", ) as null|anything in possible_steps
+					if(input)
+						done_step = possible_steps[input]
+				else
+					done_step = possible_steps[possible_steps[1]]
+				if(done_step?.try_op(M, src, M.zone_selected, null, M.used_intent, try_to_fail))
+					return TRUE
 		if(..()) //successful attack
 			attacked += 10
 
@@ -367,17 +381,32 @@
 
 
 /mob/living/simple_animal/slime/attackby(obj/item/W, mob/living/user, params)
-	if(stat == DEAD && surgeries.len)
-		if(user.used_intent.type == INTENT_HELP || user.used_intent.type == INTENT_DISARM)
-			for(var/datum/surgery/S in surgeries)
-				if(S.next_step(user,user.a_intent))
-					return 1
+	if(stat == DEAD && !user.cmode)
+		var/list/possible_steps = list()
+		for(var/datum/surgery_step/surgery_step as anything in GLOB.surgery_steps)
+			if(!surgery_step.name)
+				continue
+			if(surgery_step.can_do_step(user, src, user.zone_selected, W, user.used_intent))
+				possible_steps[surgery_step.name] = surgery_step
+		var/possible_len = length(possible_steps)
+		if(possible_len)
+			var/datum/surgery_step/done_step
+			if(length(possible_steps) > 1)
+				var/input = input(user, "Which surgery step do you want to perform?", "PESTRA", ) as null|anything in possible_steps
+				if(input)
+					done_step = possible_steps[input]
+			else
+				done_step = possible_steps[possible_steps[1]]
+			if(done_step?.try_op(user, src, user.zone_selected, W, user.used_intent))
+				return TRUE
+		if(W.item_flags & SURGICAL_TOOL)
+			return TRUE
 	if(istype(W, /obj/item/stack/sheet/mineral/plasma) && !stat) //Let's you feed slimes plasma.
 		if (user in Friends)
 			++Friends[user]
 		else
 			Friends[user] = 1
-		to_chat(user, "<span class='notice'>I feed the slime the plasma. It chirps happily.</span>")
+		to_chat(user, span_notice("I feed the slime the plasma. It chirps happily."))
 		var/obj/item/stack/sheet/mineral/plasma/S = W
 		S.use(1)
 		return
@@ -386,7 +415,7 @@
 		if(prob(25))
 			user.do_attack_animation(src)
 			user.changeNext_move(CLICK_CD_MELEE)
-			to_chat(user, "<span class='danger'>[W] passes right through [src]!</span>")
+			to_chat(user, span_danger("[W] passes right through [src]!"))
 			return
 		if(Discipline && prob(50)) // wow, buddy, why am I getting attacked??
 			Discipline = 0
@@ -399,7 +428,7 @@
 	if(istype(W, /obj/item/storage/bag/bio))
 		var/obj/item/storage/P = W
 		if(!effectmod)
-			to_chat(user, "<span class='warning'>The slime is not currently being mutated.</span>")
+			to_chat(user, span_warning("The slime is not currently being mutated."))
 			return
 		var/hasOutput = FALSE //Have we outputted text?
 		var/hasFound = FALSE //Have we found an extract to be added?
@@ -410,23 +439,23 @@
 				applied++
 				hasFound = TRUE
 			if(applied >= SLIME_EXTRACT_CROSSING_REQUIRED)
-				to_chat(user, "<span class='notice'>I feed the slime as many of the extracts from the bag as you can, and it mutates!</span>")
+				to_chat(user, span_notice("I feed the slime as many of the extracts from the bag as you can, and it mutates!"))
 				playsound(src, 'sound/blank.ogg', 50, TRUE)
 				spawn_corecross()
 				hasOutput = TRUE
 				break
 		if(!hasOutput)
 			if(!hasFound)
-				to_chat(user, "<span class='warning'>There are no extracts in the bag that this slime will accept!</span>")
+				to_chat(user, span_warning("There are no extracts in the bag that this slime will accept!"))
 			else
-				to_chat(user, "<span class='notice'>I feed the slime some extracts from the bag.</span>")
+				to_chat(user, span_notice("I feed the slime some extracts from the bag."))
 				playsound(src, 'sound/blank.ogg', 50, TRUE)
 		return
 	..()
 
 /mob/living/simple_animal/slime/proc/spawn_corecross()
 	var/static/list/crossbreeds = subtypesof(/obj/item/slimecross)
-	visible_message("<span class='danger'>[src] shudders, its mutated core consuming the rest of its body!</span>")
+	visible_message(span_danger("[src] shudders, its mutated core consuming the rest of its body!"))
 	playsound(src, 'sound/blank.ogg', 50, TRUE)
 	var/crosspath
 	for(var/X in crossbreeds)
@@ -437,7 +466,7 @@
 	if(crosspath)
 		new crosspath(loc)
 	else
-		visible_message("<span class='warning'>The mutated core shudders, and collapses into a puddle, unable to maintain its form.</span>")
+		visible_message(span_warning("The mutated core shudders, and collapses into a puddle, unable to maintain its form."))
 	qdel(src)
 
 /mob/living/simple_animal/slime/proc/apply_water()
@@ -451,10 +480,10 @@
 /mob/living/simple_animal/slime/examine(mob/user)
 	. = list("<span class='info'>*---------*\nThis is [icon2html(src, user)] \a <EM>[src]</EM>!")
 	if (stat == DEAD)
-		. += "<span class='deadsay'>It is limp and unresponsive.</span>"
+		. += span_deadsay("It is limp and unresponsive.")
 	else
 		if (stat == UNCONSCIOUS) // Slime stasis
-			. += "<span class='deadsay'>It appears to be alive but unresponsive.</span>"
+			. += span_deadsay("It appears to be alive but unresponsive.")
 		if (getBruteLoss())
 			. += "<span class='warning'>"
 			if (getBruteLoss() < 40)
@@ -471,10 +500,10 @@
 				. += "It is glowing gently with moderate levels of electrical activity."
 
 			if(6 to 9)
-				. += "<span class='warning'>It is glowing brightly with high levels of electrical activity.</span>"
+				. += span_warning("It is glowing brightly with high levels of electrical activity.")
 
 			if(10)
-				. += "<span class='warning'><B>It is radiating with massive levels of electrical activity!</B></span>"
+				. += span_warning("<B>It is radiating with massive levels of electrical activity!</B>")
 
 	. += "*---------*</span>"
 

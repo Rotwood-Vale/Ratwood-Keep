@@ -45,7 +45,7 @@
 	var/inputty = input("Make an announcement", "ROGUETOWN") as text|null
 	if(inputty)
 		if(!istype(get_area(src), /area/rogue/indoors/shelter/mountains/decap))
-			to_chat(src, "<span class='warning'>I need to do this from the Goblin Kingdom.</span>")
+			to_chat(src, span_warning("I need to do this from the Goblin Kingdom."))
 			return FALSE
 		priority_announce("[inputty]", title = "The Goblin King Squeals", sound = 'sound/misc/dun.ogg')
 /*
@@ -60,7 +60,7 @@
 	var/list/souloptions = list("Goblin Cook", "Goblin Guard", "Goblin Smith")
 	var/pickedsoul = input("Which worker shall join kingdom?", "Available workers") as null|anything in souloptions
 	if(!istype(get_area(src), /area/rogue/indoors/shelter/mountains/decap))
-		to_chat(src, "<span class='warning'>I need to do this from the Goblin Kingdom.</span>")
+		to_chat(src, span_warning("I need to do this from the Goblin Kingdom."))
 		return FALSE
 	if(!pickedsoul)
 		return

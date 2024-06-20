@@ -70,8 +70,8 @@
 	backr = /obj/item/storage/backpack/rogue/satchel/black
 	backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger/steel = 1, /obj/item/rope/chain = 1)
 	if(is_bowman)
-		backl = /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow
-		beltr = /obj/item/quiver/bolts //replaces mace
+		backl = /obj/item/gun/ballistic/revolver/grenadelauncher/bow
+		beltr = /obj/item/quiver/arrows //replaces mace
 	else
 		backl = null
 	if(H.mind)

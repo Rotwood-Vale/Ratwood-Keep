@@ -13,7 +13,9 @@
 	allowed_races = RACES_ALL_KINDS
 	tutorial = ""
 
+	spells = list(/obj/effect/proc_holder/spell/invoked/projectile/lightningbolt, /obj/effect/proc_holder/spell/invoked/projectile/fetch)
 	outfit = /datum/outfit/job/roguetown/deathknight
+
 	show_in_credits = FALSE
 	give_bank_account = FALSE
 	
@@ -45,8 +47,6 @@
 			qdel(O)
 		H.regenerate_limb(BODY_ZONE_R_ARM)
 		H.regenerate_limb(BODY_ZONE_L_ARM)
-		for(var/obj/item/bodypart/B in H.bodyparts)
-			B.skeletonize()
 //		H.remove_all_languages()
 		H.base_intents = list(INTENT_HELP, INTENT_DISARM, INTENT_GRAB, /datum/intent/simple/claw)
 		H.update_a_intents()
@@ -61,7 +61,6 @@
 		H.underwear = "Nude"
 		if(H.charflaw)
 			QDEL_NULL(H.charflaw)
-		H.update_body()
 		H.mob_biotypes = MOB_UNDEAD
 		H.faction = list("undead")
 		H.name = "Death Knight"
@@ -76,6 +75,9 @@
 		ADD_TRAIT(H, TRAIT_NOSLEEP, TRAIT_GENERIC)
 		ADD_TRAIT(H, TRAIT_SHOCKIMMUNE, TRAIT_GENERIC)
 		ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
+		for(var/obj/item/bodypart/B in H.bodyparts)
+			B.skeletonize(FALSE)
+		H.update_body()
 
 /datum/outfit/job/roguetown/deathknight/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -103,8 +105,6 @@
 	H.change_stat("endurance", 2)
 	H.change_stat("constitution", 2)
 	H.change_stat("speed", -3)
-	H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/projectile/lightningbolt)
-	H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/projectile/fetch)
 
 	H.ambushable = FALSE
 

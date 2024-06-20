@@ -91,6 +91,8 @@
 	)
 
 
+	gender_swapping = TRUE
+
 /datum/species/elf/dark/get_span_language(datum/language/message_language)
 	if(!message_language)
 		return

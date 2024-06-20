@@ -1,0 +1,201 @@
+"aR" = (/obj/structure/closet/crate/roguecloset/inn/south,/turf/open/floor/rogue/cobble,/area/rogue/indoors/shelter/mountains/decap)
+"aT" = (/obj/effect/landmark/start/goblincook,/turf/open/floor/rogue/cobble,/area/rogue/indoors/shelter/mountains/decap)
+"br" = (/obj/structure/mineral_door/wood/donjon{dir = 4; lockid = "goblinkey"},/turf/open/floor/rogue/cobble,/area/rogue/indoors/shelter/mountains/decap)
+"bY" = (/obj/structure/closet/crate/drawer,/obj/item/roguekey/custom{name = "goblin key"; lockid = "goblinkey"},/obj/item/roguekey/custom{name = "goblin key"; lockid = "goblinkey"},/obj/item/roguekey/custom{name = "goblin key"; lockid = "goblinkey"},/obj/item/roguekey/custom{name = "goblin key"; lockid = "goblinkey"},/obj/item/roguekey/custom{name = "goblin key"; lockid = "goblinkey"},/obj/item/roguekey/custom{name = "goblin key"; lockid = "goblinkey"},/obj/item/roguekey/custom{name = "goblin key"; lockid = "goblinkey"},/obj/item/roguekey/custom{name = "goblin key"; lockid = "goblinkey"},/obj/machinery/light/rogue/torchholder{pixel_y = 26},/turf/open/floor/rogue/cobble,/area/rogue/indoors/shelter/mountains/decap)
+"cN" = (/turf/open/floor/rogue/naturalstone,/area/rogue/under/cavewet/bogcaves)
+"dK" = (/obj/machinery/light/rogue/torchholder{dir = 8},/turf/open/floor/rogue/dirt/road,/area/rogue/indoors/shelter/mountains/decap)
+"eF" = (/turf/closed/wall/mineral/rogue/stone/window,/area/rogue/indoors/shelter/mountains/decap)
+"eJ" = (/obj/structure/stairs/stone{dir = 4},/turf/open/floor/rogue/cobble,/area/rogue/indoors/shelter/mountains/decap)
+"eX" = (/turf/closed/wall/mineral/rogue/stone,/area/rogue/indoors/shelter/mountains/decap)
+"fA" = (/obj/item/roguegem/green,/obj/item/roguegem/violet,/obj/structure/table/wood{icon_state = "tablewood1"},/turf/open/floor/rogue/cobble,/area/rogue/indoors/shelter/mountains/decap)
+"fU" = (/turf/closed/mineral/random/rogue,/area/rogue/under/cavewet/bogcaves)
+"gY" = (/obj/structure/rack/rogue,/obj/item/reagent_containers/food/snacks/rogue/bread,/turf/open/floor/rogue/cobble,/area/rogue/indoors/shelter/mountains/decap)
+"io" = (/obj/structure/rack/rogue,/obj/item/rogueweapon/spear,/obj/item/rogueweapon/spear,/obj/item/rogueweapon/spear,/turf/open/floor/rogue/cobble,/area/rogue/indoors/shelter/mountains/decap)
+"iV" = (/obj/structure/fluff/nest,/turf/open/floor/rogue/cobble,/area/rogue/indoors/shelter/mountains/decap)
+"jm" = (/obj/item/roguegem,/turf/open/floor/rogue/cobble,/area/rogue/indoors/shelter/mountains/decap)
+"jJ" = (/obj/item/reagent_containers/food/snacks/rogue/bread,/obj/structure/closet/crate/chest,/turf/open/floor/rogue/cobble,/area/rogue/indoors/shelter/mountains/decap)
+"kc" = (/obj/machinery/light/rogue/torchholder{dir = 1},/turf/open/floor/rogue/cobble,/area/rogue/indoors/shelter/mountains/decap)
+"kN" = (/obj/structure/rack/rogue,/obj/item/rogueweapon/huntingknife/idagger/steel,/obj/item/rogueweapon/huntingknife/idagger/steel,/obj/item/rogueweapon/huntingknife/idagger/steel,/turf/open/floor/rogue/cobble,/area/rogue/indoors/shelter/mountains/decap)
+"kX" = (/obj/structure/mineral_door/wood/donjon/stone{lockid = "goblinkey"},/turf/open/floor/rogue/cobble,/area/rogue/indoors/shelter/mountains/decap)
+"lr" = (/turf/open/floor/rogue/woodturned/nosmooth,/area/rogue/indoors/shelter/mountains/decap)
+"lE" = (/obj/machinery/light/rogue/torchholder,/turf/closed/wall/mineral/rogue/stone,/area/rogue/indoors/shelter/mountains/decap)
+"lV" = (/obj/structure/bed/rogue/inn/wooldouble,/turf/open/floor/rogue/naturalstone,/area/rogue/indoors/shelter/mountains/decap)
+"mb" = (/turf/open/floor/rogue/naturalstone,/area/rogue/indoors/shelter/mountains/decap)
+"md" = (/obj/machinery/light/rogue/oven/south,/turf/open/floor/rogue/cobble,/area/rogue/indoors/shelter/mountains/decap)
+"mJ" = (/obj/item/clothing/neck/roguetown/talkstone,/obj/item/clothing/neck/roguetown/talkstone,/obj/item/clothing/neck/roguetown/talkstone,/obj/item/clothing/neck/roguetown/talkstone,/obj/structure/lever/wall{dir = 4; redstone_id = "goblingemgate"},/obj/structure/closet/crate/chest,/turf/open/floor/rogue/cobble,/area/rogue/indoors/shelter/mountains/decap)
+"nt" = (/obj/structure/bed/rogue/inn/pileofshit,/turf/open/floor/rogue/cobble,/area/rogue/indoors/shelter/mountains/decap)
+"op" = (/obj/structure/closet/crate/drawer,/obj/item/roguekey/lord{name = "King Goblin key"; desc = "The King Goblin's key."; lockid = "kinggoblin"},/turf/open/floor/rogue/cobble,/area/rogue/indoors/shelter/mountains/decap)
+"pY" = (/obj/structure/rack/rogue/shelf/big,/obj/item/storage/bag/tray,/obj/item/storage/bag/tray,/obj/item/reagent_containers/glass/cup/wooden,/obj/item/reagent_containers/glass/cup/wooden,/obj/item/reagent_containers/glass/cup/wooden,/turf/open/floor/rogue/cobble,/area/rogue/indoors/shelter/mountains/decap)
+"qH" = (/obj/item/roguecoin/gold/pile,/turf/open/floor/rogue/cobble,/area/rogue/indoors/shelter/mountains/decap)
+"qO" = (/obj/machinery/light/rogue/chand,/turf/open/transparent/openspace,/area/rogue/indoors/shelter/mountains/decap)
+"qZ" = (/obj/machinery/light/rogue/torchholder{dir = 1},/turf/open/floor/rogue/dirt/road,/area/rogue/indoors/shelter/mountains/decap)
+"rz" = (/obj/structure/bearpelt,/turf/open/floor/rogue/cobble,/area/rogue/indoors/shelter/mountains/decap)
+"rI" = (/obj/structure/chair/wood/rogue/chair3,/obj/machinery/light/rogue/torchholder{dir = 8},/obj/effect/landmark/start/goblinguard,/turf/open/floor/rogue/cobble,/area/rogue/indoors/shelter/mountains/decap)
+"sv" = (/turf/open/transparent/openspace,/area/rogue/under/cavewet/bogcaves)
+"un" = (/obj/structure/bars{icon_state = "barsbent"; layer = 2.81},/obj/structure/table/wood{icon_state = "tablewood1"},/turf/open/floor/rogue/cobble,/area/rogue/indoors/shelter/mountains/decap)
+"uW" = (/obj/item/reagent_containers/glass/pot,/turf/open/floor/rogue/cobble,/area/rogue/indoors/shelter/mountains/decap)
+"wG" = (/obj/machinery/light/rogue/torchholder{dir = 4},/turf/open/floor/rogue/cobble,/area/rogue/indoors/shelter/mountains/decap)
+"wX" = (/obj/structure/bed/rogue/inn/pileofshit,/obj/effect/landmark/start/goblinguard,/turf/open/floor/rogue/cobble,/area/rogue/indoors/shelter/mountains/decap)
+"xc" = (/obj/structure/table/wood{icon_state = "tablewood1"},/obj/machinery/light/rogue/torchholder{pixel_y = 26},/turf/open/floor/rogue/cobble,/area/rogue/indoors/shelter/mountains/decap)
+"xH" = (/obj/structure/rack/rogue,/obj/item/rogueweapon/stoneaxe/woodcut/steel,/obj/item/rogueweapon/stoneaxe/woodcut/steel,/obj/item/rogueweapon/stoneaxe/woodcut/steel,/turf/open/floor/rogue/cobble,/area/rogue/indoors/shelter/mountains/decap)
+"xL" = (/turf/closed/mineral/rogue/bedrock,/area/rogue/under/cavewet/bogcaves)
+"yh" = (/obj/machinery/light/rogue/torchholder{dir = 4},/obj/item/reagent_containers/food/snacks/grown/apple,/obj/item/reagent_containers/food/snacks/grown/apple,/obj/item/flashlight/flare/torch,/obj/item/flashlight/flare/torch,/obj/structure/closet/crate/chest,/turf/open/floor/rogue/cobble,/area/rogue/indoors/shelter/mountains/decap)
+"yo" = (/obj/structure/lever/wall{pixel_x = 18; redstone_id = "goblingate"},/turf/open/floor/rogue/cobble,/area/rogue/indoors/shelter/mountains/decap)
+"zC" = (/turf/open/transparent/openspace,/area/rogue/indoors/shelter/mountains/decap)
+"AB" = (/obj/structure/chair/wood/rogue/chair3,/turf/open/floor/rogue/cobble,/area/rogue/indoors/shelter/mountains/decap)
+"AT" = (/turf/open/floor/rogue/cobble,/area/rogue/indoors/shelter/mountains/decap)
+"Bp" = (/obj/structure/closet/crate/chest,/obj/item/reagent_containers/food/snacks/grown/apple,/obj/item/reagent_containers/food/snacks/grown/apple,/obj/item/reagent_containers/food/snacks/grown/apple,/obj/item/reagent_containers/food/snacks/grown/apple,/obj/machinery/light/rogue/torchholder{dir = 4},/turf/open/floor/rogue/cobble,/area/rogue/indoors/shelter/mountains/decap)
+"Bz" = (/obj/structure/mineral_door/wood/donjon{locked = 1; lockid = "GArmory"},/turf/open/floor/rogue/cobble,/area/rogue/indoors/shelter/mountains/decap)
+"BR" = (/obj/machinery/light/rogue/firebowl/standing/blue,/turf/open/floor/rogue/naturalstone,/area/rogue/under/cavewet/bogcaves)
+"CS" = (/turf/open/floor/rogue/dirt/road,/area/rogue/indoors/shelter/mountains/decap)
+"Ef" = (/obj/structure/mineral_door/wood/donjon{dir = 1; locked = 1; lockid = "kinggoblin"},/turf/open/floor/rogue/cobble,/area/rogue/indoors/shelter/mountains/decap)
+"Ew" = (/obj/structure/bars/passage{redstone_id = "goblingate"},/turf/open/floor/rogue/cobble,/area/rogue/indoors/shelter/mountains/decap)
+"EP" = (/obj/structure/stairs/stone,/turf/open/floor/rogue/cobble,/area/rogue/indoors/shelter/mountains/decap)
+"Fu" = (/obj/machinery/light/rogue/torchholder{dir = 1; layer = 4.09},/turf/open/floor/rogue/cobble,/area/rogue/indoors/shelter/mountains/decap)
+"Gf" = (/obj/effect/landmark/start/goblinsmith,/turf/open/floor/rogue/cobble,/area/rogue/indoors/shelter/mountains/decap)
+"Go" = (/obj/structure/mineral_door/wood/donjon{dir = 1; lockid = "goblinkey"},/turf/open/floor/rogue/cobble,/area/rogue/indoors/shelter/mountains/decap)
+"GT" = (/obj/item/natural/rock,/turf/open/floor/rogue/naturalstone,/area/rogue/indoors/shelter/mountains/decap)
+"Hq" = (/obj/structure/closet/crate/chest,/turf/open/floor/rogue/cobble,/area/rogue/indoors/shelter/mountains/decap)
+"Hr" = (/obj/effect/landmark/start/goblinking,/turf/open/floor/rogue/cobble,/area/rogue/indoors/shelter/mountains/decap)
+"Iq" = (/obj/structure/closet/crate/chest,/obj/item/roguegem,/obj/item/roguegem/violet,/turf/open/floor/rogue/cobble,/area/rogue/indoors/shelter/mountains/decap)
+"Is" = (/obj/structure/table/wood{icon_state = "tablewood1"},/obj/item/roguekey/custom{name = "goblin key"; lockid = "goblinkey"},/turf/open/floor/rogue/cobble,/area/rogue/indoors/shelter/mountains/decap)
+"Ix" = (/obj/structure/rack/rogue,/obj/item/rogueweapon/halberd/bardiche,/obj/item/rogueweapon/halberd/bardiche,/turf/open/floor/rogue/cobble,/area/rogue/indoors/shelter/mountains/decap)
+"IE" = (/obj/structure/rack/rogue,/obj/item/clothing/head/roguetown/helmet/goblin,/obj/item/clothing/head/roguetown/helmet/goblin,/obj/item/clothing/head/roguetown/helmet/goblin,/turf/open/floor/rogue/cobble,/area/rogue/indoors/shelter/mountains/decap)
+"IJ" = (/obj/structure/chair/wood/rogue/chair3,/obj/machinery/light/rogue/torchholder{dir = 4},/turf/open/floor/rogue/cobble,/area/rogue/indoors/shelter/mountains/decap)
+"IW" = (/obj/structure/table/wood{icon_state = "tablewood1"},/obj/item/reagent_containers/food/snacks/rogue/pie/cooked/apple,/obj/item/reagent_containers/food/snacks/rogue/pie/cooked/apple,/obj/item/reagent_containers/food/snacks/rogue/pie/cooked/apple,/obj/item/reagent_containers/food/snacks/rogue/pie/cooked/apple,/obj/item/reagent_containers/food/snacks/rogue/pie/cooked/apple,/obj/item/reagent_containers/food/snacks/rogue/pie/cooked/apple,/turf/open/floor/rogue/cobble,/area/rogue/indoors/shelter/mountains/decap)
+"JF" = (/obj/structure/stairs/stone{dir = 1},/turf/open/floor/rogue/naturalstone,/area/rogue/under/cavewet/bogcaves)
+"Km" = (/obj/item/natural/rock,/obj/machinery/light/rogue/torchholder{pixel_y = 26},/turf/open/floor/rogue/cobble,/area/rogue/indoors/shelter/mountains/decap)
+"Lq" = (/obj/structure/mineral_door/wood/deadbolt{dir = 8},/turf/open/floor/rogue/cobble,/area/rogue/indoors/shelter/mountains/decap)
+"Lx" = (/obj/structure/chair/wood/rogue/throne{icon_state = "0,2"},/turf/open/floor/rogue/cobble,/area/rogue/indoors/shelter/mountains/decap)
+"LW" = (/obj/structure/rack/rogue,/obj/item/rogueweapon/shield/wood,/obj/item/rogueweapon/shield/wood,/obj/item/rogueweapon/shield/wood,/obj/item/rogueweapon/shield/wood,/obj/item/rogueweapon/shield/wood,/turf/open/floor/rogue/cobble,/area/rogue/indoors/shelter/mountains/decap)
+"Mm" = (/obj/item/reagent_containers/glass/bucket/wooden,/turf/open/floor/rogue/cobble,/area/rogue/indoors/shelter/mountains/decap)
+"MW" = (/obj/machinery/light/rogue/torchholder{pixel_y = 26},/turf/open/floor/rogue/cobble,/area/rogue/indoors/shelter/mountains/decap)
+"Nb" = (/obj/structure/fermenting_barrel/beer,/turf/open/floor/rogue/cobble,/area/rogue/indoors/shelter/mountains/decap)
+"Nm" = (/obj/item/rogueweapon/pick,/obj/structure/rack/rogue,/obj/item/rogueweapon/tongs,/obj/item/rogueweapon/hammer,/turf/open/floor/rogue/cobble,/area/rogue/indoors/shelter/mountains/decap)
+"Oe" = (/obj/structure/mineral_door/wood/donjon{locked = 1; armor = list(blunt=90, slash=90, stab=90, bullet=0, laser=0, energy=100, bomb=10, bio=100, rad=100, fire=50, acid=50); lockid = "kinggoblin"},/turf/open/floor/rogue/cobble,/area/rogue/indoors/shelter/mountains/decap)
+"OZ" = (/obj/structure/rack/rogue,/obj/item/clothing/suit/roguetown/armor/plate/half/iron/goblin,/obj/item/clothing/suit/roguetown/armor/plate/half/iron/goblin,/obj/item/clothing/suit/roguetown/armor/plate/half/iron/goblin,/turf/open/floor/rogue/cobble,/area/rogue/indoors/shelter/mountains/decap)
+"Pf" = (/obj/item/roguekey/custom{name = "goblin key"; lockid = "goblinkey"},/obj/item/roguekey/custom{name = "goblin key"; lockid = "goblinkey"},/obj/item/roguekey/custom{name = "goblin key"; lockid = "goblinkey"},/obj/item/roguekey/custom{name = "goblin key"; lockid = "goblinkey"},/obj/item/roguekey/custom{name = "goblin key"; lockid = "goblinkey"},/obj/item/roguekey/custom{name = "goblin key"; lockid = "goblinkey"},/obj/item/roguekey/custom{name = "goblin key"; lockid = "goblinkey"},/obj/item/roguekey/custom{name = "goblin key"; lockid = "goblinkey"},/obj/structure/table/wood{icon_state = "tablewood1"},/turf/open/floor/rogue/cobble,/area/rogue/indoors/shelter/mountains/decap)
+"Pj" = (/obj/structure/bars/passage{redstone_id = "goblingemgate"},/turf/open/floor/rogue/cobble,/area/rogue/indoors/shelter/mountains/decap)
+"Qf" = (/obj/machinery/light/rogue/firebowl,/turf/open/floor/rogue/naturalstone,/area/rogue/indoors/shelter/mountains/decap)
+"Qo" = (/obj/item/storage/roguebag,/obj/item/reagent_containers/powder/flour,/obj/item/reagent_containers/powder/flour,/obj/item/reagent_containers/powder/flour,/obj/item/reagent_containers/powder/flour,/obj/item/reagent_containers/powder/flour,/obj/item/reagent_containers/powder/flour,/turf/open/floor/rogue/cobble,/area/rogue/indoors/shelter/mountains/decap)
+"Qs" = (/obj/structure/rack/rogue,/obj/item/rogueweapon/mace/goden,/obj/item/rogueweapon/mace/goden,/obj/item/rogueweapon/mace/goden,/turf/open/floor/rogue/cobble,/area/rogue/indoors/shelter/mountains/decap)
+"Qu" = (/obj/structure/table/wood{icon_state = "tablewood1"},/obj/item/reagent_containers/powder/flour,/obj/item/reagent_containers/food/snacks/rogue/meat/poultry,/obj/item/reagent_containers/food/snacks/rogue/dough,/turf/open/floor/rogue/cobble,/area/rogue/indoors/shelter/mountains/decap)
+"Qz" = (/obj/structure/stairs/stone{dir = 1},/turf/open/floor/rogue/naturalstone,/area/rogue/indoors/shelter/mountains/decap)
+"RD" = (/obj/item/roguegem,/obj/item/roguegem/violet,/obj/structure/table/wood{icon_state = "tablewood1"},/obj/item/roguegem/violet,/obj/item/roguegem/green,/turf/open/floor/rogue/cobble,/area/rogue/indoors/shelter/mountains/decap)
+"RQ" = (/obj/structure/table/wood{icon_state = "tablewood1"},/obj/item/reagent_containers/powder/flour,/obj/item/reagent_containers/powder/flour,/obj/item/reagent_containers/food/snacks/rogue/meat/bacon,/turf/open/floor/rogue/cobble,/area/rogue/indoors/shelter/mountains/decap)
+"RZ" = (/obj/structure/mineral_door/wood/deadbolt{dir = 8; lockid = "goblinkey"},/turf/open/floor/rogue/cobble,/area/rogue/indoors/shelter/mountains/decap)
+"SQ" = (/obj/machinery/light/rogue/torchholder{dir = 4},/turf/open/floor/rogue/dirt/road,/area/rogue/indoors/shelter/mountains/decap)
+"Tc" = (/obj/item/ingot/gold,/obj/item/ingot/gold,/obj/item/ingot/gold,/obj/item/ingot/gold,/obj/item/rogueore/gold,/obj/item/rogueore/gold,/obj/item/rogueore/gold,/obj/structure/closet/crate/chest/gold{locked = 1; lockid = "kinggoblin"},/turf/open/floor/rogue/cobble,/area/rogue/indoors/shelter/mountains/decap)
+"Tu" = (/obj/structure/toilet,/turf/open/floor/rogue/cobble,/area/rogue/indoors/shelter/mountains/decap)
+"Vi" = (/obj/item/natural/rock,/turf/open/floor/rogue/cobble,/area/rogue/indoors/shelter/mountains/decap)
+"VF" = (/obj/structure/chair/wood/rogue/chair3{dir = 1},/turf/open/floor/rogue/cobble,/area/rogue/indoors/shelter/mountains/decap)
+"WJ" = (/obj/effect/landmark/start/goblinguard,/turf/open/floor/rogue/cobble,/area/rogue/indoors/shelter/mountains/decap)
+"XW" = (/obj/machinery/light/rogue/torchholder{dir = 8},/turf/open/floor/rogue/cobble,/area/rogue/indoors/shelter/mountains/decap)
+"Yg" = (/obj/structure/table/wood{icon_state = "tablewood1"},/obj/machinery/light/rogue/torchholder{dir = 8},/obj/item/reagent_containers/food/snacks/rogue/meat/poultry/baked,/turf/open/floor/rogue/cobble,/area/rogue/indoors/shelter/mountains/decap)
+"Ys" = (/obj/item/roguebin/water,/turf/open/floor/rogue/cobble,/area/rogue/indoors/shelter/mountains/decap)
+"YS" = (/obj/structure/table/wood{icon_state = "tablewood1"},/obj/item/roguekey/garrison{name = "Goblin's armory key"; desc = "This key belongs to goblins!"; lockid = "GArmory"},/turf/open/floor/rogue/cobble,/area/rogue/indoors/shelter/mountains/decap)
+
+(1,1,1) = {"
+fUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfU
+fUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfU
+fUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfU
+fUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfU
+fUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfU
+fUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfU
+fUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfU
+fUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfU
+fUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfU
+fUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfU
+fUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUeXfUfUfUfUfUfUfUfUfUfUfUfU
+fUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUeXfUQfQzQzGTfUfUfUfUfUfUfU
+fUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUeXeXeXeXeXeXeXeXeXfUfUeXeXeXeXmbmbmbmbmbfUfUfUfUfUfUfU
+fUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUeXLWioxHQsIxkNHqeXfUeXeXATATeFGTmbmbmbmbfUfUfUfUfUfUfU
+fUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUeXwGATATATATATHqeXfUeXxcATATunmbmbmbmbmbfUfUfUfUfUfUfU
+fUfUfUfUfUfUfUfUeXeXeXeXeXeXeXeXfUfUfUfUfUfUfUeXIEATATATATFuOZeXfUeXATWJATEwmbmbmbGTfUfUfUfUfUfUfUfU
+fUeXeXeXeXeXeXeXeXbYwXATATATPfeXfUfUfUfUfUfUfUeXeXeXBzeXeXeXeXeXeXeXATATATeFQffUfUfUfUfUfUfUfUfUfUfU
+fUeXiVkcATLqMWATATATATATATATwXeXfUfUfUfUfUfUfUfUeXATATATATMWYSeXeXATATyoeXeXfUfUfUfUfUfUfUfUfUfUfUfU
+fUeXeXeXeXlEATeXeXntWJATATATjJeXfUfUfUfUfUfUfUfUeXATATATWJATVFeXATATATeXeXfUfUfUfUfUfUfUfUfUfUfUfUfU
+fUeXIJATATATATeXeXNbATATATATATeXfUfUfUfUfUfUfUfUeXATATATATATeXeXATATeXeXfUfUfUfUfUfUfUfUfUfUfUfUfUfU
+fUeXntATWJATYgeXeXyhATATATATrIeXfUfUfUfUfUfUfUfUeXeXFuATATeXeXATATATeXfUfUfUfUfUfUfUfUfUfUfUfUfUfUfU
+fUeXNbkcATATnteXeXntWJATATATnteXfUfUfUfUfUfUfUfUfUeXeXATeXeXATATATeFeXeXeXeXeXeXeXeXfUfUfUfUfUfUfUfU
+fUeXeXeXeXeXeXeXeXeXeXeXGoeXeXeXfUfUfUfUfUfUfUfUfUeXATATATATATATeFeFNmMWATATATMWVieXeXfUfUfUfUfUfUfU
+fUfUfUfUfUfUfUfUfUfUeXATATATeXfUfUfUfUfUfUfUfUfUfUeXATATATATATeFeFATViATATATATATATATeXfUfUfUfUfUfUfU
+fUfUfUfUfUfUfUfUfUfUeXATATXWeXfUfUfUfUfUfUfUfUfUfUeXwGATATeXeXeXATATATATATATATATATATeXfUfUfUfUfUfUfU
+fUfUfUfUfUfUfUfUfUfUeXATATATeXfUfUfUfUfUfUfUfUfUfUeXATATATeXeXeXwGATATGfATATViATATATeXfUfUfUfUfUfUfU
+fUfUfUeXeXeXeXeXeXeXeXATATATeXfUfUfUfUfUfUfUfUfUfUeXATATATbrATATATATATATATATATATATXWeXfUfUfUfUfUfUfU
+fUfUfUeXATmdmdQopYNbeXATATXWeXfUfUfUfUfUfUfUfUfUfUeXATATXWeXeXeXeXATATATATATATGfATeXeXfUfUfUfUfUfUfU
+fUfUfUeXIsABaTATATMmeXATATATeXeXeXeXeXeXeXeXeXeXeXeXATATATeXfUfUeXeXViATATATATATATeXfUfUfUfUfUfUfUfU
+fUfUfUeXBpATATuWATATeXATATATATATATKmATATATATMWATATATATATATeXfUfUfUeXeXCSCSCSCSCSeXeXfUfUfUfUfUfUfUfU
+fUfUfUeXATATATATaTATRZATkcATATATATATATATATATATATATATATATATeXfUfUfUfUeXeXqZCSeXeXeXfUfUfUfUfUfUfUfUfU
+fUfUfUeXYsgYgYQuRQATeXeXeXeXeXATATATATATATATATATeXeXeXeXeXeXfUfUfUfUfUeXeXeXeXfUfUfUfUfUfUfUfUfUfUfU
+fUfUfUeXeXeXeXeXeXeXeXfUfUfUeXATATrzATATATrzATATeXfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfU
+fUfUfUfUfUfUfUfUfUfUfUfUfUfUeXwGATATATrzATATATXWeXfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfU
+fUfUfUfUfUfUfUfUfUfUfUfUfUfUeXATATrzATATATATATATeXfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfU
+fUfUfUfUfUfUfUfUfUfUfUfUfUfUeXATATATrzATATrzATATeXfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfU
+fUfUfUfUfUfUfUfUfUfUfUfUfUfUeXATATATATATATATATATeXfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfU
+fUfUfUfUfUfUfUfUfUfUfUfUfUfUeXEPEPATATATATATEPEPeXfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfU
+fUfUfUfUfUfUfUfUfUfUfUfUfUfUeXeXeXeXeXeXeXeXeXeXeXfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfU
+fUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfU
+fUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfU
+fUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfU
+fUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfU
+fUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfU
+fUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfU
+fUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfU
+fUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfU
+fUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfU
+fUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfU
+fUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfU
+"}
+(1,1,2) = {"
+fUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfU
+fUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfU
+fUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUxLxL
+fUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUJFJF
+fUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUcNcN
+fUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUcNcNcN
+fUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUBRcNcN
+fUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUcNcNcNcNcN
+fUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUcNcNcNcNcNcNcNcNcNcNcN
+fUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUcNcNcNcNcNcNcNcNcNcNcN
+fUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUcNJFJFcNcNcNcNcNcNcNfU
+fUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUcNcNsvsvcNcNcNcNfUfUfUfU
+fUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUBRcNcNcNcNcNfUfUfUfUfUfU
+fUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfU
+fUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfU
+fUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfU
+fUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfU
+fUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfU
+fUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfU
+fUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfU
+fUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfU
+fUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfU
+fUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfU
+fUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfU
+fUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfU
+fUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfU
+fUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfU
+fUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfU
+fUfUfUfUfUfUfUfUfUfUfUfUfUfUeXeXeXeXeXeXeXeXeXeXeXfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfU
+fUfUfUfUfUfUfUfUfUfUeXeXeXeXeXzCzCzCzCzCzCzCzCzCeXfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfU
+fUfUfUfUfUfUfUfUfUfUeXATATATATlrlrlrlrlrlrlrlrlreXfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfU
+fUfUfUfUfUfUfUfUfUfUeXATeXeXeXzCzCzCzCzCzCzCzCzCeXfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfU
+fUfUfUfUfUfUfUfUfUfUeXATeXeXeXzCzCzCzCqOzCzCzCzCeXfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfU
+fUfUfUfUfUfUfUfUfUeXeXATeXeXeXzCzCzCzCzCzCzCzCzCeXeXeXfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfU
+fUfUfUfUfUfUfUfUfUeXATATRDIqeXlrlrlrlrlrlrlrlrlrATATeXfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfU
+fUfUfUfUfUfUfUfUfUeXjmATATqHeXzCzCzCzCzCzCzCzCzCeXATeXfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfU
+fUfUfUfUfUfUfUfUfUeXTcATATqHeXzCzCzCzCqOzCzCzCzCeXATeXfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfU
+fUfUfUfUfUfUfUfUfUeXfAATkcqHeXzCzCzCzCzCzCzCzCzCeXPjeXfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfU
+fUfUfUfUfUfUfUfUfUeXeXOeeXeXeXEPEPeXeFeFeFeXEPEPeXATeXeXfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfU
+fUfUfUfUfUfUfUfUfUfUeXATATATATATATATATATATATATATATATATeXfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfU
+fUfUfUfUfUfUfUfUfUfUeXATATATATkcWJATATATATATATWJkcATATeXeXeXeXeXeXfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfU
+fUfUfUfUfUfUfUfUfUfUeXeXeXeXeXeXeXeXeXkXkXeXeXeXeXATATeXlVopMWaReXeXfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfU
+fUfUfUfUfUfUfUfUfUfUfUfUfUfUeXATATATATATATATeXfUeXATATeXATATATATTueXfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfU
+fUfUfUfUfUfUfUfUfUfUfUfUfUfUeXSQATATATATATXWeXfUeXATATeXATrzATATeXeXfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfU
+fUfUfUfUfUfUfUfUfUfUfUfUfUfUeXCSCSCSATATATCSeXfUeXATXWeXATHrATATeXfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfU
+fUfUfUfUfUfUfUfUfUfUfUfUfUfUeXEfeXCSATATATCSeXfUeXATATeXATATATABeXfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfU
+fUfUfUfUfUfUfUfUfUfUfUfUfUfUeXATeXCSCSATATdKeXfUeXATATeJATATATIWeXfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfU
+fUfUfUfUfUfUfUfUfUfUfUfUfUfUeXmJeXATCSHqLxATeXfUeXeXeXeXATATkcATeXfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfU
+fUfUfUfUfUfUfUfUfUfUfUfUfUfUeXeXeXeXeXeXeXeXeXfUfUfUfUeXeXeXeXeXeXfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfU
+fUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfU
+"}

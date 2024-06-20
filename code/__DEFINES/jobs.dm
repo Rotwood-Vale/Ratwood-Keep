@@ -47,13 +47,14 @@
 #define JOB_UNAVAILABLE_BANNED 2
 #define JOB_UNAVAILABLE_PLAYTIME 3
 #define JOB_UNAVAILABLE_ACCOUNTAGE 4
-#define JOB_UNAVAILABLE_SLOTFULL 5
+#define JOB_UNAVAILABLE_PATRON 5
 #define JOB_UNAVAILABLE_RACE 6
 #define JOB_UNAVAILABLE_SEX 7
-#define JOB_UNAVAILABLE_WTEAM 8
-#define JOB_UNAVAILABLE_LASTCLASS 9
-#define JOB_UNAVAILABLE_PATRON 10
-#define JOB_UNAVAILABLE_ADVENTURER_COOLDOWN 11
+#define JOB_UNAVAILABLE_AGE 8
+#define JOB_UNAVAILABLE_WTEAM 9
+#define JOB_UNAVAILABLE_LASTCLASS 10
+#define JOB_UNAVAILABLE_JOB_COOLDOWN 11
+#define JOB_UNAVAILABLE_SLOTFULL 12
 
 #define DEFAULT_RELIGION "Christianity"
 #define DEFAULT_DEITY "Space Jesus"
@@ -109,10 +110,8 @@
 #define MANATARMS	(1<<1)
 #define DUNGEONEER	(1<<2)
 #define GATEMASTER	(1<<3)
-#define VETERAN		(1<<4)
-#define ELDER		(1<<5)
-#define BOGGUARD	(1<<6)
-#define BOGMASTER	(1<<7)
+#define BOGGUARD	(1<<4)
+#define BOGMASTER	(1<<5)
 
 #define CHURCHMEN		(1<<2)
 
@@ -121,6 +120,7 @@
 #define MONK		(1<<3)
 #define GRAVEDIGGER	(1<<4)
 #define CONFESSOR	(1<<5)
+#define DRUID		(1<<6)
 
 #define COURTIERS	(1<<3)
 
@@ -141,12 +141,14 @@
 #define TAILOR		(1<<6)
 #define MERCHANT	(1<<7)
 #define SCRIBE		(1<<8)
+#define ELDER		(1<<9)
+#define APOTHECARY	(1<<10)
 
 #define PEASANTS	(1<<5)
 
 #define HUNTER		(1<<0)
 #define FARMER		(1<<1)
-#define BUTCHER	(1<<2)
+#define BUTCHER		(1<<2)
 #define FISHER		(1<<3)
 #define LUMBERJACK	(1<<4)
 #define MINER		(1<<5)
@@ -160,6 +162,7 @@
 #define VILLAGER	(1<<13)
 #define PRISONER	(1<<14)
 #define LUNATIC		(1<<15)
+#define WAVE_DRIFTER (1<<16)
 
 #define YOUNGFOLK	(1<<6)
 
@@ -177,6 +180,7 @@
 
 #define DESERT_RIDER	(1<<0)
 #define GRENZELHOFT		(1<<1)
+#define VETERAN		(1<<2)
 
 #define GOBLIN		(1<<8)
 
@@ -227,15 +231,14 @@
 #define JDO_GATEMASTER 8.4
 #define JDO_TOWNGUARD 8.5
 #define JDO_DUNGEONEER 8.6
-#define JDO_VET 8.7
 #define JDO_BOGMASTER 9
 #define JDO_BOGGUARD 9.1
-#define JDO_CHIEF 9.2
 
 #define JDO_PRIEST 10
 #define JDO_PURITAN 11
 #define JDO_TEMPLAR 12
 #define JDO_MONK 13
+#define JDO_DRUID 13.1
 #define JDO_CHURCHLING 14
 #define JDO_GRAVEMAN 15
 #define JDO_SHEPHERD 16
@@ -246,6 +249,7 @@
 
 #define JDO_ARCHIVIST 18
 
+#define JDO_CHIEF 18.1
 #define JDO_ARMORER 19
 #define JDO_WEAPONSMITH 20
 #define JDO_APPRENTICE 21
@@ -264,9 +268,11 @@
 #define JDO_VILLAGER 30
 #define JDO_ADVENTURER 30.1
 #define JDO_PILGRIM 30.2
+#define JDO_DRIFTER 32.3
 
 #define JDO_GRENZELHOFT 31
-#define JDO_DESERT_RIDER 32
+#define JDO_DESERT_RIDER 31.1
+#define JDO_VET 31.2
 
 #define JDO_VAGRANT 33
 #define JDO_ORPHAN 34

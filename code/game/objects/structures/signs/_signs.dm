@@ -5,7 +5,7 @@
 	density = FALSE
 	layer = SIGN_LAYER
 	max_integrity = 100
-	armor = list("melee" = 50, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 50, "acid" = 50)
+	armor = list("blunt" = 50, "slash" = 25, "stab" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 50, "acid" = 50)
 	var/buildable_sign = 1 //unwrenchable and modifiable
 	rad_flags = RAD_PROTECT_CONTENTS | RAD_NO_CONTAMINATE
 
@@ -26,13 +26,13 @@
 
 /obj/structure/sign/attackby(obj/item/I, mob/user, params)
 	if(I.tool_behaviour == TOOL_WRENCH && buildable_sign)
-		user.visible_message("<span class='notice'>[user] starts removing [src]...</span>", \
-							 "<span class='notice'>I start unfastening [src].</span>")
+		user.visible_message(span_notice("[user] starts removing [src]..."), \
+							 span_notice("I start unfastening [src]."))
 		I.play_tool_sound(src)
 		if(I.use_tool(src, user, 40))
 			playsound(src, 'sound/blank.ogg', 50, TRUE)
-			user.visible_message("<span class='notice'>[user] unfastens [src].</span>", \
-								 "<span class='notice'>I unfasten [src].</span>")
+			user.visible_message(span_notice("[user] unfastens [src]."), \
+								 span_notice("I unfasten [src]."))
 			var/obj/item/sign_backing/SB = new (get_turf(user))
 			SB.icon_state = icon_state
 			SB.sign_path = type
@@ -120,8 +120,8 @@
 	. = ..()
 	if(isturf(target) && proximity)
 		var/turf/T = target
-		user.visible_message("<span class='notice'>[user] fastens [src] to [T].</span>", \
-							 "<span class='notice'>I attach the sign to [T].</span>")
+		user.visible_message(span_notice("[user] fastens [src] to [T]."), \
+							 span_notice("I attach the sign to [T]."))
 		playsound(T, 'sound/blank.ogg', 50, TRUE)
 		var/obj/structure/sign/S = new sign_path(T)
 		S.setDir(dir)

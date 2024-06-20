@@ -46,7 +46,7 @@
 	attack_verb = list("stung")
 
 /obj/item/reagent_containers/food/snacks/grown/nettle/suicide_act(mob/user)
-	user.visible_message("<span class='suicide'>[user] is eating some of [src]! It looks like [user.p_theyre()] trying to commit suicide!</span>")
+	user.visible_message(span_suicide("[user] is eating some of [src]! It looks like [user.p_theyre()] trying to commit suicide!"))
 	return (BRUTELOSS|TOXLOSS)
 
 /obj/item/reagent_containers/food/snacks/grown/nettle/pickup(mob/living/user)
@@ -63,7 +63,7 @@
 	if(affecting)
 		if(affecting.receive_damage(0, force))
 			C.update_damage_overlays()
-	to_chat(C, "<span class='danger'>The nettle burns your bare hand!</span>")
+	to_chat(C, span_danger("The nettle burns your bare hand!"))
 	return TRUE
 
 /obj/item/reagent_containers/food/snacks/grown/nettle/afterattack(atom/A as mob|obj, mob/user,proximity)
@@ -73,7 +73,7 @@
 	if(force > 0)
 		force -= rand(1, (force / 3) + 1) // When you whack someone with it, leaves fall off
 	else
-		to_chat(usr, "<span class='warning'>All the leaves have fallen off the nettle from violent whacking.</span>")
+		to_chat(usr, span_warning("All the leaves have fallen off the nettle from violent whacking."))
 		qdel(src)
 
 /obj/item/reagent_containers/food/snacks/grown/nettle/basic
@@ -99,13 +99,13 @@
 	if(..())
 		if(prob(50))
 			user.Paralyze(100)
-			to_chat(user, "<span class='danger'>I are stunned by the Deathnettle as you try picking it up!</span>")
+			to_chat(user, span_danger("I are stunned by the Deathnettle as you try picking it up!"))
 
 /obj/item/reagent_containers/food/snacks/grown/nettle/death/attack(mob/living/carbon/M, mob/user)
 	if(!..())
 		return
 	if(isliving(M))
-		to_chat(M, "<span class='danger'>I are stunned by the powerful acid of the Deathnettle!</span>")
+		to_chat(M, span_danger("I are stunned by the powerful acid of the Deathnettle!"))
 		log_combat(user, M, "attacked", src)
 
 		M.adjust_blurriness(force/7)

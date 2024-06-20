@@ -52,7 +52,7 @@ IF YOU MODIFY THE PRODUCTS LIST OF A MACHINE, MAKE SURE TO UPDATE ITS RESUPPLY C
 	verb_exclaim = "beeps"
 	max_integrity = 300
 	integrity_failure = 0.33
-	armor = list("melee" = 20, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 50, "acid" = 70)
+	armor = list("blunt" = 20, "slash" = 20, "stab" = 20, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 50, "acid" = 70)
 	circuit = /obj/item/circuitboard/machine/vendor
 	payment_department = ACCOUNT_SRV
 	/// Is the machine active (No sales pitches if off)!
@@ -374,7 +374,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 			add_overlay("[initial(icon_state)]-panel")
 		updateUsrDialog()
 	else
-		to_chat(user, "<span class='warning'>I must first secure [src].</span>")
+		to_chat(user, span_warning("I must first secure [src]."))
 	return TRUE
 
 /obj/machinery/vending/attackby(obj/item/I, mob/user, params)
@@ -384,21 +384,21 @@ GLOBAL_LIST_EMPTY(vending_products)
 
 	if(refill_canister && istype(I, refill_canister))
 		if (!panel_open)
-			to_chat(user, "<span class='warning'>I should probably unscrew the service panel first!</span>")
+			to_chat(user, span_warning("I should probably unscrew the service panel first!"))
 		else if (stat & (BROKEN|NOPOWER))
-			to_chat(user, "<span class='notice'>[src] does not respond.</span>")
+			to_chat(user, span_notice("[src] does not respond."))
 		else
 			//if the panel is open we attempt to refill the machine
 			var/obj/item/vending_refill/canister = I
 			if(canister.get_part_rating() == 0)
-				to_chat(user, "<span class='warning'>[canister] is empty!</span>")
+				to_chat(user, span_warning("[canister] is empty!"))
 			else
 				// instantiate canister if needed
 				var/transferred = restock(canister)
 				if(transferred)
-					to_chat(user, "<span class='notice'>I loaded [transferred] items in [src].</span>")
+					to_chat(user, span_notice("I loaded [transferred] items in [src]."))
 				else
-					to_chat(user, "<span class='warning'>There's nothing to restock!</span>")
+					to_chat(user, span_warning("There's nothing to restock!"))
 			return
 	if(compartmentLoadAccessCheck(user))
 		if(canLoadItem(I))
@@ -411,7 +411,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 			var/denied_items = 0
 			for(var/obj/item/the_item in T.contents)
 				if(contents.len >= MAX_VENDING_INPUT_AMOUNT) // no more than 30 item can fit inside, legacy from snack vending although not sure why it exists
-					to_chat(user, "<span class='warning'>[src]'s compartment is full.</span>")
+					to_chat(user, span_warning("[src]'s compartment is full."))
 					break
 				if(canLoadItem(the_item) && loadingAttempt(the_item,user))
 					SEND_SIGNAL(T, COMSIG_TRY_STORAGE_TAKE, the_item, src, TRUE)
@@ -419,9 +419,9 @@ GLOBAL_LIST_EMPTY(vending_products)
 				else
 					denied_items++
 			if(denied_items)
-				to_chat(user, "<span class='warning'>[src] refuses some items!</span>")
+				to_chat(user, span_warning("[src] refuses some items!"))
 			if(loaded)
-				to_chat(user, "<span class='notice'>I insert [loaded] dishes into [src]'s compartment.</span>")
+				to_chat(user, span_notice("I insert [loaded] dishes into [src]'s compartment."))
 				updateUsrDialog()
 
 	else
@@ -435,7 +435,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 		vending_machine_input[format_text(I.name)]++
 	else
 		vending_machine_input[format_text(I.name)] = 1
-	to_chat(user, "<span class='notice'>I insert [I] into [src]'s input compartment.</span>")
+	to_chat(user, span_notice("I insert [I] into [src]'s input compartment."))
 	loaded_items++
 
 /**
@@ -461,7 +461,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 		if(do_you_have_access)
 			return TRUE
 		else
-			to_chat(user, "<span class='warning'>[src]'s input compartment blinks red: Access denied.</span>")
+			to_chat(user, span_warning("[src]'s input compartment blinks red: Access denied."))
 			return FALSE
 
 /obj/machinery/vending/exchange_parts(mob/user, obj/item/storage/part_replacer/W)
@@ -482,7 +482,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 	else
 		display_parts(user)
 	if(moved)
-		to_chat(user, "<span class='notice'>[moved] items restocked.</span>")
+		to_chat(user, span_notice("[moved] items restocked."))
 		W.play_rped_sound()
 	return TRUE
 
@@ -494,7 +494,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 	if(obj_flags & EMAGGED)
 		return
 	obj_flags |= EMAGGED
-	to_chat(user, "<span class='notice'>I short out the product lock on [src].</span>")
+	to_chat(user, span_notice("I short out the product lock on [src]."))
 
 /obj/machinery/vending/_try_interact(mob/user)
 	if(seconds_electrified && !(stat & NOPOWER))
@@ -587,7 +587,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 		if(vending_machine_input[N] <= 0) // Sanity check, there are probably ways to press the button when it shouldn't be possible.
 			return
 		if(panel_open)
-			to_chat(usr, "<span class='warning'>The vending machine cannot dispense products while its service panel is open!</span>")
+			to_chat(usr, span_warning("The vending machine cannot dispense products while its service panel is open!"))
 			return
 		vend_ready = FALSE
 
@@ -641,7 +641,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 
 	if((href_list["vend"]) && (vend_ready))
 		if(panel_open)
-			to_chat(usr, "<span class='warning'>The vending machine cannot dispense products while its service panel is open!</span>")
+			to_chat(usr, span_warning("The vending machine cannot dispense products while its service panel is open!"))
 			return
 		vend_ready = FALSE //One thing at a time!!
 
@@ -781,7 +781,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 	pre_throw(throw_item)
 
 	throw_item.throw_at(target, 16, 3)
-	visible_message("<span class='danger'>[src] launches [throw_item] at [target]!</span>")
+	visible_message(span_danger("[src] launches [throw_item] at [target]!"))
 	return 1
 /**
   * A callback called before an item is tossed out
@@ -1019,7 +1019,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 
 /obj/item/price_tagger/attack_self(mob/user)
 	price = max(1, round(input(user,"set price","price") as num|null, 1))
-	to_chat(user, "<span class='notice'> The [src] will now give things an $[price] tag.</span>")
+	to_chat(user, span_notice(" The [src] will now give things an $[price] tag."))
 
 /obj/item/price_tagger/afterattack(atom/target, mob/user, proximity)
 	. = ..()
@@ -1028,4 +1028,4 @@ GLOBAL_LIST_EMPTY(vending_products)
 	if(isitem(target))
 		var/obj/item/I = target
 		I.custom_price = price
-		to_chat(user, "<span class='notice'>I set the price of [I] to $[price].</span>")
+		to_chat(user, span_notice("I set the price of [I] to $[price]."))

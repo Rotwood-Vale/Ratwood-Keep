@@ -9,7 +9,7 @@
 
 	var/wled = 0
 	if(holder)
-		to_chat(src, "<span class='info'>Loading Whom, please wait...</span>")
+		to_chat(src, span_info("Loading Whom, please wait..."))
 //		if (check_rights(R_ADMIN,0) )//If they have +ADMIN and are a ghost they can see players IC names and statuses.
 //			var/mob/dead/observer/G = src.mob
 //			if(!G.started_as_observer)//If you aghost to do this, KorPhaeron will deadmin you in your sleep.
@@ -62,10 +62,10 @@
 //				if(C.ckey in GLOB.anonymize)
 //					usedkey = get_fake_key(C.ckey)
 /*				if(WL)
-					Lines += "<span class='biginfo'>[C.key][hidden ? " (as [get_fake_key(C.ckey)])" : ""]</span>"
+					Lines += span_biginfo("[C.key][hidden ? " (as [get_fake_key(C.ckey)])" : ""]")
 				else
-					Lines += "<span class='info'>[C.key][hidden ? " (as [get_fake_key(C.ckey)])" : ""]</span>"*/
-				var/entry = "<span class='info'>[usedkey]</span>"
+					Lines += span_info("[C.key][hidden ? " (as [get_fake_key(C.ckey)])" : ""]")*/
+				var/entry = span_info("[usedkey]")
 				entry += " ([CheckIPCountry(C.address)])"
 				Lines += entry*/
 	else
@@ -80,10 +80,10 @@
 			if(C.ckey in GLOB.anonymize)
 				usedkey = get_fake_key(C.ckey)
 /*			if(WL)
-				Lines += "<span class='biginfo'>[usedkey]</span>"
+				Lines += span_biginfo("[usedkey]")
 			else
-				Lines += "<span class='info'>[usedkey]</span>"*/
-			Lines += "<span class='info'>[usedkey]</span>"
+				Lines += span_info("[usedkey]")*/
+			Lines += span_info("[usedkey]")
 //	if(holder && check_rights(R_ADMIN,0)) //thius is the part where admins see the lines but nobody else
 	for(var/line in sortList(Lines))
 		msg += "[line]\n"
@@ -129,6 +129,6 @@
 				continue //Don't show afk admins to adminwho
 			if(!C.holder.fakekey)
 				msg += "\t[C] is a [C.holder.rank]\n"
-		msg += "<span class='info'>Adminhelps are also sent to IRC. If no admins are available in game adminhelp anyways and an admin on IRC will see it and respond.</span>"
+		msg += span_info("Adminhelps are also sent to IRC. If no admins are available in game adminhelp anyways and an admin on IRC will see it and respond.")
 	to_chat(src, msg)
 

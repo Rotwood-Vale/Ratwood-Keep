@@ -26,7 +26,7 @@
 	if(chem.type == /datum/reagent/consumable/milk)
 		if(chem.volume > 10)
 			H.reagents.remove_reagent(chem.type, chem.volume - 10)
-			to_chat(H, "<span class='warning'>The excess milk is dripping off my bones!</span>")
+			to_chat(H, span_warning("The excess milk is dripping off my bones!"))
 		H.heal_bodypart_damage(1,1, 0)
 		H.reagents.remove_reagent(chem.type, chem.metabolization_rate)
 		return TRUE
@@ -40,18 +40,18 @@
 				if(2)
 					H.emote("me", 1, pick("oofs silently.", "looks like their bones hurt.", "grimaces, as though their bones hurt."))
 				if(3)
-					to_chat(H, "<span class='warning'>My bones hurt!</span>")
+					to_chat(H, span_warning("My bones hurt!"))
 		if(chem.overdosed)
 			if(prob(4) && iscarbon(H)) //big oof
 				var/selected_part = pick(BODY_ZONE_L_ARM, BODY_ZONE_R_ARM, BODY_ZONE_L_LEG, BODY_ZONE_R_LEG) //God help you if the same limb gets picked twice quickly.
 				var/obj/item/bodypart/bp = H.get_bodypart(selected_part) //We're so sorry skeletons, you're so misunderstood
 				if(bp)
 					playsound(H, get_sfx("desceration"), 50, TRUE, -1) //You just want to socialize
-					H.visible_message("<span class='warning'>[H] rattles loudly and flails around!!</span>", "<span class='danger'>My bones hurt so much that my missing muscles spasm!!</span>")
+					H.visible_message(span_warning("[H] rattles loudly and flails around!!"), span_danger("My bones hurt so much that my missing muscles spasm!!"))
 					H.say("OOF!!", forced=/datum/reagent/toxin/bonehurtingjuice)
 					bp.receive_damage(200, 0, 0) //But I don't think we should
 				else
-					to_chat(H, "<span class='warning'>My missing arm aches from wherever you left it.</span>")
+					to_chat(H, span_warning("My missing arm aches from wherever you left it."))
 					H.emote("sigh")
 		H.reagents.remove_reagent(chem.type, chem.metabolization_rate)
 		return TRUE

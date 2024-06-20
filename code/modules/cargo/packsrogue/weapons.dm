@@ -18,6 +18,13 @@
 					/obj/item/rogueweapon/mace,
 					/obj/item/rogueweapon/mace)
 
+/datum/supply_pack/rogue/weapons/daggerss
+	name = "Daggers"
+	cost = 100
+	contains = list(/obj/item/rogueweapon/huntingknife/idagger/steel,
+					/obj/item/rogueweapon/huntingknife/idagger/steel,
+					/obj/item/rogueweapon/huntingknife/idagger/steel)
+
 /datum/supply_pack/rogue/weapons/stunmace
 	name = "Stunmace"
 	cost = 290

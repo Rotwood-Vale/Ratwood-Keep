@@ -2,7 +2,7 @@
 	force = 12
 	possible_item_intents = list(SPEAR_BASH,ROD_CAST)
 	name = "fishing rod"
-	desc = ""
+	desc = "Made from weathered wood and coarse twine. The tool of the battle against the dark waters below."
 	icon_state = "rod"
 	icon = 'icons/roguetown/weapons/tools.dmi'
 	sharpness = IS_BLUNT
@@ -29,21 +29,11 @@
 
 /obj/item/fishingrod/attackby(obj/item/I, mob/user, params)
 	if(I.baitchance && !baited)
-		user.visible_message("<span class='notice'>[user] hooks something to the line.</span>", \
-							"<span class='notice'>I hook [I] to my line.</span>")
+		user.visible_message(span_notice("[user] hooks something to the line."), \
+							span_notice("I hook [I] to my line."))
 		playsound(src.loc, 'sound/foley/pierce.ogg', 50, FALSE)
-		if(istype(I,/obj/item/natural/worms))
-			var/obj/item/natural/worms/W = I
-			if(W.amt > 1)
-				W.amt--
-				var/obj/item/natural/worms/N = new W.type(src)
-				baited = N
-			else
-				W.forceMove(src)
-				baited = W
-		else
-			I.forceMove(src)
-			baited = I
+		I.forceMove(src)
+		baited = I
 		update_icon()
 		return
 	. = ..()
@@ -69,8 +59,8 @@
 		return ..()
 
 	var/mob/living/current_fisherman = user
-	current_fisherman.visible_message("<span class='warning'>[current_fisherman] casts a line!</span>", \
-						"<span class='notice'>I cast a line.</span>")
+	current_fisherman.visible_message(span_warning("[current_fisherman] casts a line!"), \
+						span_notice("I cast a line."))
 	playsound(loc, 'sound/items/fishing_plouf.ogg', 100, TRUE)
 
 	var/amt2raise = 0 //How much exp we gain on catch
@@ -86,19 +76,19 @@
 	if(!do_after(current_fisherman, casting_time, target = target))
 		return
 	if(!baited)
-		to_chat(current_fisherman, "<span class='warning'>This seems pointless.</span>")
+		to_chat(current_fisherman, span_warning("This seems pointless."))
 		return
 
 	if(!prob(baited.baitchance))
-		to_chat(current_fisherman, "<span class='warning'>Damn, got away...</span>")
+		to_chat(current_fisherman, span_warning("Damn, got away..."))
 		QDEL_NULL(baited)
 		update_icon()
 		return
 
-	to_chat(current_fisherman, "<span class='notice'>Something tugs the line!</span>")
+	to_chat(current_fisherman, span_notice("Something tugs the line!"))
 	playsound(loc, 'sound/items/fishing_plouf.ogg', 100, TRUE)
 	if(!do_after(current_fisherman, fishing_time, target = target))
-		to_chat(current_fisherman, "<span class='warning'>Damn, got away...</span>")
+		to_chat(current_fisherman, span_warning("Damn, got away..."))
 		QDEL_NULL(baited)
 		update_icon()
 		return

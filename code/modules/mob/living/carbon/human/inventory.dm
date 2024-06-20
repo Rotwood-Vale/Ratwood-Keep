@@ -216,7 +216,7 @@
 		else
 			not_handled = TRUE
 //		else
-//			to_chat(src, "<span class='danger'>I am trying to equip this item to an unsupported inventory slot. Report this to a coder!</span>")
+//			to_chat(src, span_danger("I am trying to equip this item to an unsupported inventory slot. Report this to a coder!"))
 
 	//Item is handled and in slot, valid to call callback, for this proc should always be true
 	if(!not_handled)
@@ -412,7 +412,7 @@
 	var/obj/item/equipped_back = get_item_by_slot(SLOT_BACK)
 	if(!equipped_back) // We also let you equip a backpack like this
 		if(!thing)
-			to_chat(src, "<span class='warning'>I have no backpack to take something out of!</span>")
+			to_chat(src, span_warning("I have no backpack to take something out of!"))
 			return
 		if(equip_to_slot_if_possible(thing, SLOT_BACK))
 			update_inv_hands()
@@ -421,14 +421,14 @@
 		if(!thing)
 			equipped_back.attack_hand(src)
 		else
-			to_chat(src, "<span class='warning'>I can't fit anything in!</span>")
+			to_chat(src, span_warning("I can't fit anything in!"))
 		return
 	if(thing) // put thing in backpack
 		if(!SEND_SIGNAL(equipped_back, COMSIG_TRY_STORAGE_INSERT, thing, src))
-			to_chat(src, "<span class='warning'>I can't fit anything in!</span>")
+			to_chat(src, span_warning("I can't fit anything in!"))
 		return
 	if(!equipped_back.contents.len) // nothing to take out
-		to_chat(src, "<span class='warning'>There's nothing in your backpack to take out!</span>")
+		to_chat(src, span_warning("There's nothing in your backpack to take out!"))
 		return
 	var/obj/item/stored = equipped_back.contents[equipped_back.contents.len]
 	if(!stored || stored.on_found(src))
@@ -443,7 +443,7 @@
 	var/obj/item/equipped_belt = get_item_by_slot(SLOT_BELT)
 	if(!equipped_belt) // We also let you equip a belt like this
 		if(!thing)
-			to_chat(src, "<span class='warning'>I have no belt to take something out of!</span>")
+			to_chat(src, span_warning("I have no belt to take something out of!"))
 			return
 		if(equip_to_slot_if_possible(thing, SLOT_BELT))
 			update_inv_hands()
@@ -452,14 +452,14 @@
 		if(!thing)
 			equipped_belt.attack_hand(src)
 		else
-			to_chat(src, "<span class='warning'>I can't fit anything in!</span>")
+			to_chat(src, span_warning("I can't fit anything in!"))
 		return
 	if(thing) // put thing in belt
 		if(!SEND_SIGNAL(equipped_belt, COMSIG_TRY_STORAGE_INSERT, thing, src))
-			to_chat(src, "<span class='warning'>I can't fit anything in!</span>")
+			to_chat(src, span_warning("I can't fit anything in!"))
 		return
 	if(!equipped_belt.contents.len) // nothing to take out
-		to_chat(src, "<span class='warning'>There's nothing in your belt to take out!</span>")
+		to_chat(src, span_warning("There's nothing in your belt to take out!"))
 		return
 	var/obj/item/stored = equipped_belt.contents[equipped_belt.contents.len]
 	if(!stored || stored.on_found(src))

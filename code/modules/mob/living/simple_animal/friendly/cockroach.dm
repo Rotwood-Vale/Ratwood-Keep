@@ -42,19 +42,19 @@
 					if(ishuman(A))
 						var/mob/living/carbon/human/H = A
 						if(HAS_TRAIT(H, TRAIT_PACIFISM))
-							H.visible_message("<span class='notice'>[src] avoids getting crushed.</span>", "<span class='warning'>I avoid crushing [src]!</span>")
+							H.visible_message(span_notice("[src] avoids getting crushed."), span_warning("I avoid crushing [src]!"))
 							return
-					A.visible_message("<span class='notice'>[A] crushes [src].</span>", "<span class='notice'>I crushed [src].</span>")
+					A.visible_message(span_notice("[A] crushes [src]."), span_notice("I crushed [src]."))
 					adjustBruteLoss(1) //kills a normal cockroach
 				else
-					visible_message("<span class='notice'>[src] avoids getting crushed.</span>")
+					visible_message(span_notice("[src] avoids getting crushed."))
 	else
 		if(isstructure(AM))
 			if(prob(squish_chance))
-				AM.visible_message("<span class='notice'>[src] was crushed under [AM].</span>")
+				AM.visible_message(span_notice("[src] was crushed under [AM]."))
 				adjustBruteLoss(1)
 			else
-				visible_message("<span class='notice'>[src] avoids getting crushed.</span>")
+				visible_message(span_notice("[src] avoids getting crushed."))
 
 /mob/living/simple_animal/cockroach/ex_act() //Explosions are a terrible way to handle a cockroach.
 	return
