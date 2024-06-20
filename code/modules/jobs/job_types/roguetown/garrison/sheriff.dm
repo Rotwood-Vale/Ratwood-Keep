@@ -9,7 +9,7 @@
 	allowed_sexes = list(MALE)
 	allowed_ages = list(AGE_MIDDLEAGED, AGE_OLD)
 	display_order = JDO_SHERIFF
-	tutorial = "Law and Order, your divine reason for existence. These animals are undeserving of your protection, for it is their sons and daughters roving the countryside with blade in hand; how many men have you lost this week just to the horrors in the woods alone? Are you the one to stand between this town and chaos, or will you fail it like they expect you to?"
+	tutorial = "Crime has always been a constant of your life, and you always chose the side of justice. You rose up through the ranks as a watchman, and now rule over them - Ensure that they enforce the laws of this land properly."
 	whitelist_req = FALSE
 	outfit = /datum/outfit/job/roguetown/sheriff
 	give_bank_account = 26
