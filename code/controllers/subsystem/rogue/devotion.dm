@@ -70,7 +70,6 @@
 	if(!prog_amt) // no point in the rest if it's just an expenditure
 		return TRUE
 	progression = clamp(progression + prog_amt, 0, max_progression)
-	//var/obj/effect/spell_unlocked
 	var/list/spell_unlocked
 	switch(level)
 		if(CLERIC_T0)
