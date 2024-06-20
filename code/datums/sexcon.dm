@@ -895,9 +895,15 @@
 						if(!owner.rogfat_add(3))
 							stop_fapping()
 					if(fapping)
-						playsound(owner, 'sound/misc/mat/fap.ogg', 30, TRUE, -2, ignore_walls = FALSE)
+						if(gender == MALE)
+							playsound(owner, 'sound/misc/mat/fap.ogg', 30, TRUE, -2, ignore_walls = FALSE)
+						else
+							playsound(owner, 'modular/sound/misc/mat/fingering.ogg', 30, TRUE, -2, ignore_walls = FALSE)	//Different masturbation sounds - by Gardelin0
 						if(prob(33))
-							owner.visible_message("<span class='[!owner.cmode ? "love" : "warning"]'>[owner] faps.</span>")
+							if(gender == MALE)
+								owner.visible_message("<span class='[!owner.cmode ? "love" : "warning"]'>[owner] faps.</span>")
+							else
+								owner.visible_message("<span class='[!owner.cmode ? "love" : "warning"]'>[owner] masturbates.</span>")	//Slight diffirence - by Gardelin0
 						if(adjust_horny(1, "fapself"))
 							stop_fapping()
 				else
@@ -905,7 +911,10 @@
 						if(!fapping.grabbee.rogfat_add(1))
 							stop_fapping_us()
 					if(fapping)
-						playsound(owner, 'sound/misc/mat/fap.ogg', 30, TRUE, -2, ignore_walls = FALSE)
+						if(gender == MALE)
+							playsound(owner, 'sound/misc/mat/fap.ogg', 30, TRUE, -2, ignore_walls = FALSE)
+						else
+							playsound(owner, 'modular/sound/misc/mat/fingering.ogg', 30, TRUE, -2, ignore_walls = FALSE)	//Different masturbation sounds - by Gardelin0
 						if(prob(33))
 							if(gender == MALE)
 								fapping.grabbee.visible_message("<span class='[!owner.cmode ? "love" : "warning"]'>[fapping.grabbee] jerks [owner].</span>")
@@ -965,7 +974,7 @@
 /*	if(world.time > last_silence_check + 10 SECONDS)
 		if(iscarbon(owner))
 			var/mob/living/carbon/C = owner
-			if(C.silent || !C.canspeak())
+			if(C.silent || !C.can_speak())
 				if(curplaying)
 					curplaying = null
 					if(femmoans)
@@ -1089,6 +1098,11 @@
 		if("fuckcorpse")
 			owner.add_stress(/datum/stressevent/cumcorpse)
 			owner.freak_out()
+
+		if("dildo")	//For dildos - by Gardelin0
+			if(owner.has_flaw(/datum/charflaw/addiction/lovefiend))
+				owner.sate_addiction()
+			owner.add_stress(/datum/stressevent/cumok)
 
 /datum/sex_controller/male/cum(source)
 	..()
@@ -1255,6 +1269,13 @@
 					owner.emote("sexmoanlight")
 			if("suckedoff")
 				owner.emote("sexmoanlight")
+			if("fapping")	//Moaning when masturbating - by Gardelin0
+				if(prob(10))
+					owner.emote("sexmoanlight")
+
+			if("dildo")	//For dildos - by Gardelin0
+				if(!owner.cmode)
+					owner.emote("sexmoanhvy")
 
 /datum/sex_controller/female/cum(source)
 	. = ..()
@@ -1293,7 +1314,9 @@
 		return
 	if(stat == DEAD)
 		return
-	add_nausea(101)
+
+	to_chat(src, "<span class='warning'>I don't feel so good...I'm definetly pregnant!</span>")	//Some kind of a notification - by Gardelin0
+//	add_nausea(101)	Stop throwing up after sex - by Gardelin0
 
 /datum/sex_controller/proc/add_cum_floor(turfu)
 	if(!turfu || !isturf(turfu))

@@ -3,6 +3,7 @@ GLOBAL_LIST_INIT(character_flaws, list("Alcoholic"=/datum/charflaw/addiction/alc
 	"Devout Follower"=/datum/charflaw/addiction/godfearing,
 	"Smoker"=/datum/charflaw/addiction/smoker,
 	"Junkie"=/datum/charflaw/addiction/junkie,
+	"Love Fiend"=/datum/charflaw/addiction/lovefiend,	// Turned back on - by Gardelin0
 	"Cyclops (R)"=/datum/charflaw/noeyer,
 	"Cyclops (L)"=/datum/charflaw/noeyel,
 	"No Arm (R)"=/datum/charflaw/limbloss/arm_r,
