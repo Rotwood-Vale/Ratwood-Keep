@@ -13,6 +13,7 @@
 	var/message_monkey = "" //Message displayed if the user is a monkey
 	var/message_simple = "" //Message to display if the user is a simple_animal
 	var/message_param = "" //Message to display if a param was given
+	var/message_muffled = null //Message to display if the user is muffled
 	var/emote_type = EMOTE_VISIBLE //Whether the emote is visible or audible
 	var/restraint_check = FALSE //Checks if the mob is restrained before performing the emote
 	var/muzzle_ignore = FALSE //Will only work if the emote is EMOTE_AUDIBLE
@@ -30,7 +31,7 @@
 	var/snd_range = -1
 	var/mute_time = 30//time after where someone can't do another emote
 	// Whether this should show on runechat
-	var/show_runechat = TRUE
+	var/show_runechat = FALSE
 	// Shortened version of the emote message, for purposes of displaying in runechat and cluttering less
 	var/runechat_short_msg = null
 
@@ -175,17 +176,21 @@
 /mob/living/proc/get_sound(input)
 	return
 
-/datum/emote/proc/replace_pronoun(mob/user, message)
+/datum/emote/proc/replace_pronoun(mob/user, msg)
 	if(findtext(message, "their"))
-		message = replacetext(message, "their", user.p_their())
+		msg = replacetext(message, "their", user.p_their())
 	if(findtext(message, "them"))
-		message = replacetext(message, "them", user.p_them())
+		msg = replacetext(message, "them", user.p_them())
 	if(findtext(message, "%s"))
-		message = replacetext(message, "%s", user.p_s())
-	return message
+		msg = replacetext(message, "%s", user.p_s())
+	return msg
 
 /datum/emote/proc/select_message_type(mob/user, intentional)
 	. = message
+	if(message_muffled && iscarbon(user))
+		var/mob/living/carbon/C = user
+		if(C.silent || !C.can_speak_vocal())
+			. = message_muffled
 	if(!muzzle_ignore && user.is_muzzled() && emote_type == EMOTE_AUDIBLE)
 		return "makes a [pick("strong ", "weak ", "")]noise."
 	if(user.mind && user.mind.miming && message_mime)
