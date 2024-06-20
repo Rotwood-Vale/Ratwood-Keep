@@ -1657,7 +1657,7 @@
 /mob/living/carbon/human/proc/become_pregnant(husband)
 	if(QDELETED(src))
 		return
-	if(getorganslot(ORGAN_SLOT_VAGINA)) //Vrell - only triggers on humans, no need to test if human.
+	if(!getorganslot(ORGAN_SLOT_VAGINA)) //Vrell - only triggers on humans, no need to test if human.
 		return
 	if(stat == DEAD)
 		return
