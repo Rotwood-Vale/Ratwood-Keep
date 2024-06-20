@@ -65,7 +65,7 @@ GLOBAL_LIST_INIT(randomizable_character_flaws, list("Alcoholic"=/datum/charflaw/
 					charflaw = GLOB.randomizable_character_flaws[charflaw]
 				if((charflaw == type) || (charflaw == /datum/charflaw/noflaw))
 					charflaw = pick_n_take(flawz)
-					charflaw = GLOB.randomizable_character_flawss[charflaw]
+					charflaw = GLOB.randomizable_character_flaws[charflaw]
 				H.charflaw = new charflaw()
 				H.charflaw.on_mob_creation(H)
 			else
