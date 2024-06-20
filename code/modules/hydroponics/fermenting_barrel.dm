@@ -25,7 +25,7 @@
 
 /obj/structure/fermenting_barrel/examine(mob/user)
 	. = ..()
-//	. += "<span class='notice'>It is currently [open?"open, letting you pour liquids in.":"closed, letting you draw liquids."]</span>"
+//	. += span_notice("It is currently [open?"open, letting you pour liquids in.":"closed, letting you draw liquids."]")
 
 /obj/structure/fermenting_barrel/proc/makeWine(obj/item/reagent_containers/food/snacks/grown/fruit)
 	if(fruit.reagents)
@@ -41,12 +41,12 @@
 	var/obj/item/reagent_containers/food/snacks/grown/fruit = I
 	if(istype(fruit))
 		if(!fruit.can_distill)
-			to_chat(user, "<span class='warning'>I can't ferment this into anything.</span>")
+			to_chat(user, span_warning("I can't ferment this into anything."))
 			return TRUE
 		else if(!user.transferItemToLoc(I,src))
-			to_chat(user, "<span class='warning'>[I] is stuck to my hand!</span>")
+			to_chat(user, span_warning("[I] is stuck to my hand!"))
 			return TRUE
-		to_chat(user, "<span class='info'>I place [I] into [src].</span>")
+		to_chat(user, span_info("I place [I] into [src]."))
 		addtimer(CALLBACK(src, PROC_REF(makeWine), fruit), rand(1 MINUTES, 3 MINUTES))
 		return TRUE
 	..()
@@ -56,11 +56,11 @@
 //	if(open)
 //		ENABLE_BITFIELD(reagents.flags, DRAINABLE)
 //		ENABLE_BITFIELD(reagents.flags, REFILLABLE)
-//		to_chat(user, "<span class='notice'>I open [src].</span>")
+//		to_chat(user, span_notice("I open [src]."))
 //	else
 //		DISABLE_BITFIELD(reagents.flags, DRAINABLE)
 //		DISABLE_BITFIELD(reagents.flags, REFILLABLE)
-//		to_chat(user, "<span class='notice'>I close [src].</span>")
+//		to_chat(user, span_notice("I close [src]."))
 //	update_icon()
 
 /obj/structure/fermenting_barrel/update_icon()

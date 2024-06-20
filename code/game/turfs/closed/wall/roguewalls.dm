@@ -37,7 +37,7 @@
 	name = "stone window"
 	desc = "A window with solid and sturdy stone frame."
 	opacity = FALSE
-	max_integrity = 900
+	max_integrity = 1300
 
 /turf/closed/wall/mineral/rogue/stone/window/CanPass(atom/movable/mover, turf/target)
 	if(istype(mover) && ((mover.pass_flags & PASSTABLE) || (mover.pass_flags & PASSGRILLE)) )
@@ -60,7 +60,7 @@
 
 /turf/closed/wall/mineral/rogue/craftstone
 	name = "stone wall"
-	desc = "A wall of unyielding, smooth stone."
+	desc = "A durable wall made from specially crafted stone."
 	icon = 'icons/turf/walls/craftstone.dmi'
 	icon_state = "box"
 	smooth = SMOOTH_MORE
@@ -178,7 +178,7 @@
 	name = "dark wood window"
 	icon_state = "subwindow"
 	opacity = FALSE
-	max_integrity = 550
+	max_integrity = 850
 
 /turf/closed/wall/mineral/rogue/wooddark/window/CanPass(atom/movable/mover, turf/target)
 	if(istype(mover) && ((mover.pass_flags & PASSTABLE) || (mover.pass_flags & PASSGRILLE)) )
@@ -314,11 +314,11 @@
 					res_replenish = world.time + 8 MINUTES
 				var/obj/item/B = new /obj/item/grown/log/tree/stick(user.loc)
 				user.put_in_hands(B)
-				user.visible_message("<span class='notice'>[user] finds [B] in [src].</span>")
+				user.visible_message(span_notice("[user] finds [B] in [src]."))
 				return
-			user.visible_message("<span class='warning'>[user] searches through [src].</span>")
+			user.visible_message(span_warning("[user] searches through [src]."))
 			if(!res)
-				to_chat(user, "<span class='warning'>Picked clean... I should try later.</span>")
+				to_chat(user, span_warning("Picked clean... I should try later."))
 	..()
 
 /turf/closed/wall/shroud/Initialize()

@@ -34,7 +34,7 @@ It is possible to destroy the net by the occupant or someone else.
 /obj/structure/energy_net/Destroy()
 	if(!success)
 		if(!QDELETED(affecting))
-			affecting.visible_message("<span class='notice'>[affecting.name] was recovered from the energy net!</span>", "<span class='notice'>I were recovered from the energy net!</span>", "<span class='hear'>I hear a grunt.</span>")
+			affecting.visible_message(span_notice("[affecting.name] was recovered from the energy net!"), span_notice("I were recovered from the energy net!"), span_hear("I hear a grunt."))
 		if(!QDELETED(master))//As long as they still exist.
 			to_chat(master, "<span class='danger'>ERROR</span>: unable to initiate transport protocol. Procedure terminated.")
 	return ..()
@@ -65,12 +65,12 @@ It is possible to destroy the net by the occupant or someone else.
 	playsound(affecting, 'sound/blank.ogg', 50, TRUE)
 	new /obj/effect/temp_visual/dir_setting/ninja/phase/out(affecting.drop_location(), affecting.dir)
 
-	visible_message("<span class='notice'>[affecting] suddenly vanishes!</span>")
+	visible_message(span_notice("[affecting] suddenly vanishes!"))
 	affecting.forceMove(pick(GLOB.holdingfacility)) //Throw mob in to the holding facility.
-	to_chat(affecting, "<span class='danger'>I appear in a strange place!</span>")
+	to_chat(affecting, span_danger("I appear in a strange place!"))
 
 	if(!QDELETED(master))//As long as they still exist.
-		to_chat(master, "<span class='notice'><b>SUCCESS</b>: transport procedure of [affecting] complete.</span>")
+		to_chat(master, span_notice("<b>SUCCESS</b>: transport procedure of [affecting] complete."))
 	do_sparks(5, FALSE, affecting)
 	playsound(affecting, 'sound/blank.ogg', 25, TRUE)
 	playsound(affecting, 'sound/blank.ogg', 50, TRUE)

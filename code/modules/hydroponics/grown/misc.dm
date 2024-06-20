@@ -209,7 +209,7 @@
 	wine_power = 80
 
 /obj/item/reagent_containers/food/snacks/grown/cherry_bomb/attack_self(mob/living/user)
-	user.visible_message("<span class='warning'>[user] plucks the stem from [src]!</span>", "<span class='danger'>I pluck the stem from [src], which begins to hiss loudly!</span>")
+	user.visible_message(span_warning("[user] plucks the stem from [src]!"), span_danger("I pluck the stem from [src], which begins to hiss loudly!"))
 	log_bomber(user, "primed a", src, "for detonation")
 	prime()
 

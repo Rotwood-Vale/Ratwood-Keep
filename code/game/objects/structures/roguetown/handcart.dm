@@ -53,7 +53,7 @@
 		return
 	if(user == O) //try to climb into or onto it
 		if(!(user.mobility_flags & MOBILITY_STAND))
-			if(!do_after(user, 40, target = src))
+			if(!do_after(user, 20, target = src))
 				return FALSE
 			if(put_in(O))
 				playsound(loc, 'sound/foley/cartadd.ogg', 100, FALSE, -1)
@@ -65,7 +65,7 @@
 	if(user.used_intent.type == INTENT_HELP || user.used_intent.type == /datum/intent/grab/move)
 		if(isliving(O))
 			var/list/targets = list(O, src)
-			if(!do_after_mob(user, targets, 40))
+			if(!do_after_mob(user, targets, 20))
 				return FALSE
 		if(put_in(O))
 			playsound(loc, 'sound/foley/cartadd.ogg', 100, FALSE, -1)
@@ -138,7 +138,7 @@
 	user.changeNext_move(CLICK_CD_MELEE)
 	if(stuff_shit.len)
 		dump_contents()
-		visible_message("<span class='info'>[user] dumps out [src]!</span>")
+		visible_message(span_info("[user] dumps out [src]!"))
 		playsound(loc, 'sound/foley/cartdump.ogg', 100, FALSE, -1)
 	update_icon()
 

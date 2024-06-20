@@ -345,7 +345,7 @@ What a mess.*/
 					rank = I.assignment
 					screen = 1
 				else
-					to_chat(usr, "<span class='danger'>Unauthorized Access.</span>")
+					to_chat(usr, span_danger("Unauthorized Access."))
 				playsound(src, 'sound/blank.ogg', 50, FALSE)
 
 //RECORD FUNCTIONS
@@ -372,18 +372,18 @@ What a mess.*/
 						if(C && istype(C))
 							var/pay = C.get_item_credit_value()
 							if(!pay)
-								to_chat(usr, "<span class='warning'>[C] doesn't seem to be worth anything!</span>")
+								to_chat(usr, span_warning("[C] doesn't seem to be worth anything!"))
 							else
 								var/diff = p.fine - p.paid
 								GLOB.data_core.payCitation(active2.fields["id"], text2num(href_list["cdataid"]), pay)
-								to_chat(usr, "<span class='notice'>I have paid [pay] credit\s towards your fine.</span>")
+								to_chat(usr, span_notice("I have paid [pay] credit\s towards your fine."))
 								if (pay == diff || pay > diff || pay >= diff)
 									investigate_log("Citation Paid off: <strong>[p.crimeName]</strong> Fine: [p.fine] | Paid off by [key_name(usr)]", INVESTIGATE_RECORDS)
-									to_chat(usr, "<span class='notice'>The fine has been paid in full.</span>")
+									to_chat(usr, span_notice("The fine has been paid in full."))
 								qdel(C)
 								playsound(src, "terminal_type", 25, FALSE)
 						else
-							to_chat(usr, "<span class='warning'>Fines can only be paid with holochips!</span>")
+							to_chat(usr, span_warning("Fines can only be paid with holochips!"))
 
 			if("Print Record")
 				if(!( printing ))
@@ -737,7 +737,7 @@ What a mess.*/
 								return
 
 							if(fine < 0)
-								to_chat(usr, "<span class='warning'>You're pretty sure that's not how money works.</span>")
+								to_chat(usr, span_warning("You're pretty sure that's not how money works."))
 								return
 
 							fine = min(fine, maxFine)

@@ -282,7 +282,7 @@
 
 /obj/effect/sliding_puzzle/prison/Destroy()
 	if(prisoner)
-		to_chat(prisoner,"<span class='danger'>With the cube broken by force, you can feel your body falling apart.</span>")
+		to_chat(prisoner,span_danger("With the cube broken by force, you can feel your body falling apart."))
 		prisoner.death()
 		qdel(prisoner)
 	. = ..()
@@ -294,7 +294,7 @@
 
 //Some armor so it's harder to kill someone by mistake.
 /obj/structure/puzzle_element/prison
-	armor = list("melee" = 50, "bullet" = 50, "laser" = 50, "energy" = 50, "bomb" = 50, "bio" = 50, "rad" = 50, "fire" = 50, "acid" = 50)
+	armor = list("blunt" = 50, "slash" = 50, "stab" = 50, "bullet" = 50, "laser" = 50, "energy" = 50, "bomb" = 50, "bio" = 50, "rad" = 50, "fire" = 50, "acid" = 50)
 
 /obj/structure/puzzle_element/prison/relaymove(mob/user)
 	return
@@ -314,12 +314,12 @@
 	//Handcuffed or unconcious
 	if(istype(carbon_victim) && carbon_victim.handcuffed || victim.stat != CONSCIOUS)
 		if(!puzzle_imprison(target))
-			to_chat(user,"<span class='warning'>[src] does nothing.</span>")
+			to_chat(user,span_warning("[src] does nothing."))
 			return
-		to_chat(user,"<span class='warning'>I trap [victim] in the prison cube!</span>")
+		to_chat(user,span_warning("I trap [victim] in the prison cube!"))
 		qdel(src)
 	else
-		to_chat(user,"<span class='notice'>[src] only accepts restrained or unconcious prisoners.</span>")
+		to_chat(user,span_notice("[src] only accepts restrained or unconcious prisoners."))
 
 /proc/puzzle_imprison(mob/living/prisoner)
 	var/turf/T = get_turf(prisoner)
@@ -331,7 +331,7 @@
 	//First grab the prisoner and move them temporarily into the generator so they won't get thrown around.
 	prisoner.notransform = TRUE
 	prisoner.forceMove(cube)
-	to_chat(prisoner,"<span class='danger'>You're trapped by the prison cube! You will remain trapped until someone solves it.</span>")
+	to_chat(prisoner,span_danger("You're trapped by the prison cube! You will remain trapped until someone solves it."))
 
 	//Clear the area from objects (and cube user)
 	var/list/things_to_throw = list()

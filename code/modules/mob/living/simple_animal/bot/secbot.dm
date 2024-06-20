@@ -112,7 +112,7 @@
 		base_speed += 3
 		addtimer(VARSET_CALLBACK(src, base_speed, base_speed - 3), 60)
 		playsound(src, 'sound/blank.ogg', 50)
-		visible_message("<span class='warning'>[src] shakes and speeds up!</span>")
+		visible_message(span_warning("[src] shakes and speeds up!"))
 
 /mob/living/simple_animal/bot/secbot/set_custom_texts()
 	text_hack = "You overload [name]'s target identification system."
@@ -216,9 +216,9 @@ Auto Patrol: []"},
 	..()
 	if(emagged == 2)
 		if(user)
-			to_chat(user, "<span class='danger'>I short out [src]'s target assessment circuits.</span>")
+			to_chat(user, span_danger("I short out [src]'s target assessment circuits."))
 			oldtarget_name = user.name
-		audible_message("<span class='danger'>[src] buzzes oddly!</span>")
+		audible_message(span_danger("[src] buzzes oddly!"))
 		declare_arrests = FALSE
 		update_icon()
 
@@ -244,7 +244,7 @@ Auto Patrol: []"},
 	else
 		..()
 
-/mob/living/simple_animal/bot/secbot/hitby(atom/movable/AM, skipcatch = FALSE, hitpush = TRUE, blocked = FALSE, datum/thrownthing/throwingdatum)
+/mob/living/simple_animal/bot/secbot/hitby(atom/movable/AM, skipcatch = FALSE, hitpush = TRUE, blocked = FALSE, datum/thrownthing/throwingdatum, d_type = "blunt")
 	if(istype(AM, /obj/item))
 		var/obj/item/I = AM
 		if(I.throwforce < src.health && I.thrownby && ishuman(I.thrownby))
@@ -255,8 +255,8 @@ Auto Patrol: []"},
 /mob/living/simple_animal/bot/secbot/proc/cuff(mob/living/carbon/C)
 	mode = BOT_ARREST
 	playsound(src, 'sound/blank.ogg', 30, TRUE, -2)
-	C.visible_message("<span class='danger'>[src] is trying to put zipties on [C]!</span>",\
-						"<span class='danger'>[src] is trying to put zipties on you!</span>")
+	C.visible_message(span_danger("[src] is trying to put zipties on [C]!"),\
+						span_danger("[src] is trying to put zipties on you!"))
 	addtimer(CALLBACK(src, PROC_REF(attempt_handcuff), C), 60)
 
 /mob/living/simple_animal/bot/secbot/proc/attempt_handcuff(mob/living/carbon/C)
@@ -291,8 +291,8 @@ Auto Patrol: []"},
 	if(declare_arrests)
 		var/area/location = get_area(src)
 		speak("[arrest_type ? "Detaining" : "Arresting"] level [threat] scumbag <b>[C]</b> in [location].", radio_channel)
-	C.visible_message("<span class='danger'>[src] has stunned [C]!</span>",\
-							"<span class='danger'>[src] has stunned you!</span>")
+	C.visible_message(span_danger("[src] has stunned [C]!"),\
+							span_danger("[src] has stunned you!"))
 
 /mob/living/simple_animal/bot/secbot/handle_automated_action()
 	if(!..())
@@ -441,7 +441,7 @@ Auto Patrol: []"},
 /mob/living/simple_animal/bot/secbot/explode()
 
 	walk_to(src,0)
-	visible_message("<span class='boldannounce'>[src] blows apart!</span>")
+	visible_message(span_boldannounce("[src] blows apart!"))
 	var/atom/Tsec = drop_location()
 	if(ranged)
 		var/obj/item/bot_assembly/ed209/Sa = new (Tsec)

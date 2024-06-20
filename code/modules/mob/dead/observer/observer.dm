@@ -413,7 +413,7 @@ Works together with spawning an observer, noted above.
 				return ..()
 			else if(!zomble.revived)
 				if(!(world.time % 5))
-					to_chat(src, "<span class='warning'>I'm preparing to walk again.</span>")
+					to_chat(src, span_warning("I'm preparing to walk again."))
 				return
 	return ..()
 
@@ -492,13 +492,13 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	if(!client)
 		return
 	if(!mind || QDELETED(mind.current))
-		to_chat(src, "<span class='warning'>I have no body.</span>")
+		to_chat(src, span_warning("I have no body."))
 		return
 	if(!can_reenter_corpse)
-		to_chat(src, "<span class='warning'>I cannot re-enter my body.</span>")
+		to_chat(src, span_warning("I cannot re-enter my body."))
 		return
 	if(mind.current.key && copytext(mind.current.key,1,2)!="@")	//makes sure we don't accidentally kick any clients
-		to_chat(usr, "<span class='warning'>Another consciousness is in my body... It is resisting me.</span>")
+		to_chat(usr, span_warning("Another consciousness is in my body... It is resisting me."))
 		return
 //	stop_all_loops()
 	SSdroning.kill_rain(src.client)
@@ -518,11 +518,11 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	if (CONFIG_GET(flag/norespawn))
 		return
 	if ((stat != DEAD || !( SSticker )))
-		to_chat(usr, "<span class='boldnotice'>I must be dead to use this!</span>")
+		to_chat(usr, span_boldnotice("I must be dead to use this!"))
 		return
 
 //	if(mind?.current && (world.time < mind.current.timeofdeath + RESPAWNTIME))
-//		to_chat(usr, "<span class='warning'>I can return in [mind.current.timeofdeath + RESPAWNTIME - world.time].</span>")
+//		to_chat(usr, span_warning("I can return in [mind.current.timeofdeath + RESPAWNTIME - world.time]."))
 //		return
 
 	if(key)
@@ -533,7 +533,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 
 	log_game("[key_name(usr)] used abandon mob.")
 
-	to_chat(src, "<span class='info'>Returned to lobby successfully.</span>")
+	to_chat(src, span_info("Returned to lobby successfully."))
 
 	if(!client)
 		log_game("[key_name(usr)] AM failed due to disconnect.")
@@ -555,8 +555,8 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		qdel(M)
 		return
 
-	client?.verbs -= GLOB.ghost_verbs
 	M.key = key
+	client.verbs -= GLOB.ghost_verbs
 //	M.Login()	//wat
 	return
 
@@ -570,7 +570,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	if(!client)
 		return
 	if(!can_reenter_corpse)
-		to_chat(usr, "<span class='warning'>You're already stuck out of your body!</span>")
+		to_chat(usr, span_warning("You're already stuck out of your body!"))
 		return FALSE
 
 	var/response = alert(src, "Are you sure you want to prevent (almost) all means of resuscitation? This cannot be undone. ","Are you sure you want to stay dead?","DNR","Save Me")
@@ -578,14 +578,14 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		return
 
 	can_reenter_corpse = FALSE
-	to_chat(src, "<span class='boldnotice'>I can no longer be brought back into your body.</span>")
+	to_chat(src, span_boldnotice("I can no longer be brought back into your body."))
 	return TRUE
 
 /mob/dead/observer/proc/notify_cloning(message, sound, atom/source, flashwindow = TRUE)
 	if(flashwindow)
 		window_flash(client)
 	if(message)
-		to_chat(src, "<span class='ghostalert'>[message]</span>")
+		to_chat(src, span_ghostalert("[message]"))
 		if(source)
 			var/atom/movable/screen/alert/A = throw_alert("[REF(source)]_notify_cloning", /atom/movable/screen/alert/notify_cloning)
 			if(A)
@@ -599,7 +599,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 				A.add_overlay(source)
 				source.layer = old_layer
 				source.plane = old_plane
-	to_chat(src, "<span class='ghostalert'><a href=?src=[REF(src)];reenter=1>(Click to re-enter)</a></span>")
+	to_chat(src, span_ghostalert("<a href=?src=[REF(src)];reenter=1>(Click to re-enter)</a>"))
 	if(sound)
 		SEND_SOUND(src, sound(sound))
 
@@ -611,7 +611,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	if(!check_rights(R_WATCH))
 		return
 	if(!isobserver(usr))
-		to_chat(usr, "<span class='warning'>Not when you're not dead!</span>")
+		to_chat(usr, span_warning("Not when you're not dead!"))
 		return
 	var/list/filtered = list()
 	for(var/V in GLOB.sortedAreas)
@@ -628,7 +628,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		L+=T
 
 	if(!L || !L.len)
-		to_chat(usr, "<span class='warning'>No area available.</span>")
+		to_chat(usr, span_warning("No area available."))
 		return
 
 	usr.forceMove(pick(L))
@@ -664,20 +664,20 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	if(myfriends)
 		for(var/A in myfriends)
 			if(target.real_name && A == target.real_name)
-				to_chat(src, "<span class='danger'>I can no longer haunt that person.</span>")
+				to_chat(src, span_danger("I can no longer haunt that person."))
 				ManualFollow(target)
 				skipprocess = FALSE
 				return TRUE
 	if(attackedme)
 		for(var/A in attackedme)
 			if(target.real_name && A == target.real_name)
-				to_chat(src, "<span class='danger'>I can no longer haunt that person.</span>")
+				to_chat(src, span_danger("I can no longer haunt that person."))
 				hauntexpire = world.time
 				ManualFollow(target)
 				skipprocess = FALSE
 				return FALSE
 	hauntexpire = null
-	to_chat(src, "<span class='danger'>There is nobody left to haunt.</span>")
+	to_chat(src, span_danger("There is nobody left to haunt."))
 	if(!reenter_corpse())
 		returntolobby(RESPAWNTIME*-1)*/
 
@@ -788,7 +788,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 				A.forceMove(T)
 				A.update_parallax_contents()
 			else
-				to_chat(A, "<span class='danger'>This mob is not located in the game world.</span>")
+				to_chat(A, span_danger("This mob is not located in the game world."))
 
 /mob/dead/observer/verb/change_view_range()
 	set category = "Ghost"
@@ -833,11 +833,11 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 
 /mob/dead/observer/memory()
 	set hidden = 1
-	to_chat(src, "<span class='danger'>I are dead! You have no mind to store memory!</span>")
+	to_chat(src, span_danger("I are dead! You have no mind to store memory!"))
 
 /mob/dead/observer/add_memory()
 	set hidden = 1
-	to_chat(src, "<span class='danger'>I are dead! You have no mind to store memory!</span>")
+	to_chat(src, span_danger("I are dead! You have no mind to store memory!"))
 
 /mob/dead/observer/verb/toggle_ghostsee()
 	set name = "Toggle Ghost Vision"
@@ -846,7 +846,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	set hidden = 1
 	ghostvision = !(ghostvision)
 	update_sight()
-	to_chat(usr, "<span class='boldnotice'>I [(ghostvision?"now":"no longer")] have ghost vision.</span>")
+	to_chat(usr, span_boldnotice("I [(ghostvision?"now":"no longer")] have ghost vision."))
 
 /mob/dead/observer/verb/toggle_darkness()
 	set name = "Toggle Darkness"
@@ -891,7 +891,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	SEND_SOUND(src, sound('sound/misc/notice (2).ogg'))
 	if(alert(src, "A lich has summoned you to destroy ROGUETOWN!", "Join the Horde", "Yes", "No") == "Yes")
 		if(world.time > bt + 5 MINUTES)
-			to_chat(src, "<span class='warning'>Too late.</span>")
+			to_chat(src, span_warning("Too late."))
 			return FALSE
 		returntolobby(RESPAWNTIME*-1)
 
@@ -934,14 +934,14 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		return FALSE
 
 	if(ismegafauna(target))
-		to_chat(src, "<span class='warning'>This creature is too powerful for you to possess!</span>")
+		to_chat(src, span_warning("This creature is too powerful for you to possess!"))
 		return FALSE
 
 	if(can_reenter_corpse && mind?.current)
 		if(alert(src, "Your soul is still tied to your former life as [mind.current.name], if you go forward there is no going back to that life. Are you sure you wish to continue?", "Move On", "Yes", "No") == "No")
 			return FALSE
 	if(target.key)
-		to_chat(src, "<span class='warning'>Someone has taken this body while you were choosing!</span>")
+		to_chat(src, span_warning("Someone has taken this body while you were choosing!"))
 		return FALSE
 
 	target.key = key
@@ -954,7 +954,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 /mob/dead/observer/pointed(atom/A as mob|obj|turf in view(client.view, src))
 	if(!..())
 		return FALSE
-	usr.visible_message("<span class='deadsay'><b>[src]</b> points to [A].</span>")
+	usr.visible_message(span_deadsay("<b>[src]</b> points to [A]."))
 	return TRUE
 
 /mob/dead/observer/verb/view_manifest()
@@ -1023,11 +1023,11 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		return
 	if(data_huds_on) //remove old huds
 		remove_data_huds()
-		to_chat(src, "<span class='notice'>Data HUDs disabled.</span>")
+		to_chat(src, span_notice("Data HUDs disabled."))
 		data_huds_on = 0
 	else
 		show_data_huds()
-		to_chat(src, "<span class='notice'>Data HUDs enabled.</span>")
+		to_chat(src, span_notice("Data HUDs enabled."))
 		data_huds_on = 1
 
 /mob/dead/observer/verb/toggle_health_scan()
@@ -1038,10 +1038,10 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	if(!check_rights(R_WATCH))
 		return
 	if(health_scan) //remove old huds
-		to_chat(src, "<span class='notice'>Health scan disabled.</span>")
+		to_chat(src, span_notice("Health scan disabled."))
 		health_scan = FALSE
 	else
-		to_chat(src, "<span class='notice'>Health scan enabled.</span>")
+		to_chat(src, span_notice("Health scan enabled."))
 		health_scan = TRUE
 
 /mob/dead/observer/verb/toggle_gas_scan()
@@ -1052,10 +1052,10 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	if(!check_rights(R_WATCH))
 		return
 	if(gas_scan)
-		to_chat(src, "<span class='notice'>Gas scan disabled.</span>")
+		to_chat(src, span_notice("Gas scan disabled."))
 		gas_scan = FALSE
 	else
-		to_chat(src, "<span class='notice'>Gas scan enabled.</span>")
+		to_chat(src, span_notice("Gas scan enabled."))
 		gas_scan = TRUE
 
 /mob/dead/observer/verb/restore_ghost_appearance()
@@ -1167,7 +1167,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	if(isobserver(src))
 		SSpai.recruitWindow(src)
 	else
-		to_chat(usr, "<span class='warning'>Can't become a pAI candidate while not dead!</span>")
+		to_chat(usr, span_warning("Can't become a pAI candidate while not dead!"))
 
 /mob/dead/observer/CtrlShiftClick(mob/user)
 	if(isobserver(user) && check_rights(R_SPAWN))

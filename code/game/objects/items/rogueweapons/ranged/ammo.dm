@@ -20,6 +20,7 @@
 	name = "bolt"
 	damage = 35
 	damage_type = BRUTE
+	armor_penetration = 35
 	icon = 'icons/roguetown/weapons/ammo.dmi'
 	icon_state = "bolt_proj"
 	ammo_type = /obj/item/ammo_casing/caseless/rogue/bolt
@@ -58,6 +59,7 @@
 	name = "arrow"
 	damage = 35
 	damage_type = BRUTE
+	armor_penetration = 10
 	icon = 'icons/roguetown/weapons/ammo.dmi'
 	icon_state = "arrow_proj"
 	ammo_type = /obj/item/ammo_casing/caseless/rogue/arrow
@@ -68,18 +70,29 @@
 	flag = "bullet"
 	speed = 0.4
 
+/obj/projectile/bullet/reusable/arrow/stone
+	name = "stone arrow"
+	ammo_type = /obj/item/ammo_casing/caseless/rogue/arrow/stone
+
 /obj/item/ammo_casing/caseless/rogue/arrow/stone
 	name = "stone arrow"
 	desc = "A wooden shaft with a jagged rock on the end."
 	icon_state = "stonearrow"
 	max_integrity = 5
-/*
+	projectile_type = /obj/projectile/bullet/reusable/arrow/stone
+
 /obj/item/ammo_casing/caseless/rogue/arrow/poison
 	name = "poisoned arrow"
-	desc = "A wooden shaft with a pointy iron end. This one is coated in a clear liquid."
+	desc = "A wooden shaft with a pointy iron end. This one is stained green with floral toxins."
 	projectile_type = /obj/projectile/bullet/reusable/arrow/poison
 	icon_state = "arrow_poison"
-	max_integrity = 10
+	max_integrity = 20 // same as normal arrow; usually breaks on impact with a mob anyway
+
+/obj/item/ammo_casing/caseless/rogue/arrow/stone/poison
+	name = "poisoned stone arrow"
+	desc = "A wooden shaft with a jagged rock on the end. This one is stained green with floral toxins."
+	projectile_type = /obj/projectile/bullet/reusable/arrow/poison/stone
+	icon_state = "stonearrow_poison"
 
 /obj/projectile/bullet/reusable/arrow/poison
 	name = "arrow"
@@ -90,14 +103,22 @@
 	ammo_type = /obj/item/ammo_casing/caseless/rogue/arrow
 	range = 15
 	hitsound = 'sound/combat/hits/hi_arrow2.ogg'
+	poisontype = /datum/reagent/berrypoison //Support for future variations of poison for arrow-crafting
+	poisonfeel = "burning" //Ditto
+	poisonamount = 5 //Support and balance for bodkins, which will hold less poison due to how
 
+/obj/projectile/bullet/reusable/arrow/poison/stone
+	name = "stone arrow"
+	ammo_type = /obj/item/ammo_casing/caseless/rogue/arrow/stone
 
 /obj/projectile/bullet/reusable/arrow/poison/on_hit(atom/target, blocked = FALSE)
 	. = ..()
-	if(iscarbon(target))
-		var/mob/living/carbon/M = target
-		M.reagents.add_reagent(/datum/reagent/toxin/drow, 5) //a REALLY slow burn for this arrow, and its lasting
-*/
+	if(istype(target, /mob/living/simple_animal)) //On-hit for carbon mobs has been moved to projectile act in living_defense.dm, to ensure poison is not applied if armor prevents damage.
+		var/mob/living/simple_animal/M = target
+		M.show_message(span_danger("You feel an intense burning sensation spreading swiftly from the puncture!")) //In case a player is in control of the mob.
+		addtimer(CALLBACK(M, TYPE_PROC_REF(/mob/living, adjustToxLoss), 100), 10 SECONDS)
+		addtimer(CALLBACK(M, TYPE_PROC_REF(/atom, visible_message), span_danger("[M] appears greatly weakened by the poison!")), 10 SECONDS)
+
 /obj/projectile/bullet/reusable/bullet
 	name = "lead ball"
 	damage = 50

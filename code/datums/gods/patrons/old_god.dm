@@ -6,6 +6,6 @@
 	associated_faith = /datum/faith/old_god
 	confess_lines = list(
 		"THERE IS ONLY ONE GOD!",
-		"THE NINE ARE FALSE GODS!",
+		"THE TEN ARE FALSE GODS!",
 		"PSYDON IS MY SHEPHERD!",
 	)

@@ -19,7 +19,7 @@ Contents:
 	allowed = list(/obj/item/gun, /obj/item/ammo_box, /obj/item/ammo_casing, /obj/item/melee/baton, /obj/item/restraints/handcuffs, /obj/item/tank/internals, /obj/item/stock_parts/cell)
 	slowdown = 1
 	resistance_flags = LAVA_PROOF | ACID_PROOF
-	armor = list("melee" = 60, "bullet" = 50, "laser" = 30,"energy" = 15, "bomb" = 30, "bio" = 30, "rad" = 30, "fire" = 100, "acid" = 100)
+	armor = list("blunt" = 60, "slash" = 55, "stab" = 50, "bullet" = 50, "laser" = 30,"energy" = 15, "bomb" = 30, "bio" = 30, "rad" = 30, "fire" = 100, "acid" = 100)
 	strip_delay = 12
 
 	actions_types = list(/datum/action/item_action/initialize_ninja_suit, /datum/action/item_action/ninjasmoke, /datum/action/item_action/ninjaboost, /datum/action/item_action/ninjapulse, /datum/action/item_action/ninjastar, /datum/action/item_action/ninjanet, /datum/action/item_action/ninja_sword_recall, /datum/action/item_action/ninja_stealth, /datum/action/item_action/toggle_glove)
@@ -98,7 +98,7 @@ Contents:
 	if(!istype(H))
 		return FALSE
 	if(!is_ninja(H))
-		to_chat(H, "<span class='danger'><B>fÄTaL ÈÈRRoR</B>: 382200-*#00CÖDE <B>RED</B>\nUNAUHORIZED USÈ DETÈCeD\nCoMMÈNCING SUB-R0UIN3 13...\nTÈRMInATING U-U-USÈR...</span>")
+		to_chat(H, span_danger("<B>fÄTaL ÈÈRRoR</B>: 382200-*#00CÖDE <B>RED</B>\nUNAUHORIZED USÈ DETÈCeD\nCoMMÈNCING SUB-R0UIN3 13...\nTÈRMInATING U-U-USÈR..."))
 		H.gib()
 		return FALSE
 	if(!istype(H.head, /obj/item/clothing/head/helmet/space/space_ninja))
@@ -161,7 +161,7 @@ Contents:
 		toggle_on_off()
 		return TRUE
 	if(!s_initialized)
-		to_chat(user, "<span class='warning'><b>ERROR</b>: suit offline. Please activate suit.</span>")
+		to_chat(user, span_warning("<b>ERROR</b>: suit offline. Please activate suit."))
 		return FALSE
 	if(istype(action, /datum/action/item_action/ninjasmoke))
 		ninjasmoke()

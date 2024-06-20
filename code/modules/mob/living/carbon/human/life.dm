@@ -36,7 +36,7 @@
 		handle_ai()
 
 	if(advsetup)
-		Stun(100)
+		Stun(50)
 
 	if(mind)
 		for(var/datum/antagonist/A in mind.antag_datums)
@@ -48,7 +48,7 @@
 				HM.on_life()
 
 		if(mode == AI_OFF)
-			if(stat)
+			if(IsSleeping())
 				if(health > 0)
 					if(has_status_effect(/datum/status_effect/debuff/sleepytime))
 						tiredness = 0
@@ -58,7 +58,7 @@
 							if(mind)
 								if(!mind.antag_datums || !mind.antag_datums.len)
 									allmig_reward++
-									to_chat(src, "<span class='danger'>Nights Survived: \Roman[allmig_reward]</span>")
+									to_chat(src, span_danger("Nights Survived: \Roman[allmig_reward]"))
 									if(C.allmig)
 										if(allmig_reward > 3)
 											adjust_triumphs(1)

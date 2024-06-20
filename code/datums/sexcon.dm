@@ -1378,6 +1378,7 @@
 				playsound(fucking, 'sound/misc/mat/endin.ogg', 100, TRUE, ignore_walls = FALSE)
 				owner.visible_message("<span class='notice'>[owner] tightens in ecstasy!</span>")
 				add_cum_floor(get_turf(fucking))
+				try_award_triumph(fucking)
 
 			if("sleepingbeauty")
 				if(owner.has_flaw(/datum/charflaw/addiction/lovefiend))
@@ -1411,6 +1412,7 @@
 				add_cum_floor(get_turf(owner))
 				owner.visible_message("<span class='notice'>[owner] spills something on the floor!</span>")
 				playsound(owner, 'sound/misc/mat/endout.ogg', 100, TRUE, ignore_walls = FALSE)
+				try_award_triumph(fucking)
 			else
 				add_cum_floor(get_turf(owner))
 				owner.visible_message("<span class='notice'>[owner] spills something on the floor!</span>")
@@ -1443,6 +1445,21 @@
 			curplaying = null
 			if(femmoans)
 				femmoans.stop()
+
+// Tries to award triumphs, giving the target one if the owner has TRAIT_GOODLOVER, and vice versa, but only once per person per round
+/datum/sex_controller/proc/try_award_triumph(mob/living/target)
+	if(!target)
+		return
+	if(HAS_TRAIT(target, TRAIT_GOODLOVER))
+		if(!owner.mob_timers["cumtri"])
+			owner.mob_timers["cumtri"] = world.time
+			owner.adjust_triumphs(1)
+			to_chat(owner, span_love("Our loving is a true TRIUMPH!"))
+	if(HAS_TRAIT(owner, TRAIT_GOODLOVER))
+		if(!target.mob_timers["cumtri"])
+			target.mob_timers["cumtri"] = world.time
+			target.adjust_triumphs(1)
+			to_chat(target, span_love("Our loving is a true TRIUMPH!"))
 /*
 /datum/sex_controller/male/cum(source)
 	..()
@@ -1591,6 +1608,7 @@
 			owner.visible_message("<span class='notice'>[owner] spills something on the floor!</span>")
 			playsound(owner, 'sound/misc/mat/endout.ogg', 100, TRUE, ignore_walls = FALSE)
 */
+	
 
 /*
 /datum/sex_controller/female/adjust_horny(amt, source)

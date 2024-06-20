@@ -8,7 +8,7 @@
 	idle_power_usage = 2
 	active_power_usage = 4
 	max_integrity = 300
-	armor = list("melee" = 50, "bullet" = 30, "laser" = 70, "energy" = 50, "bomb" = 20, "bio" = 0, "rad" = 0, "fire" = 100, "acid" = 70)
+	armor = list("blunt" = 50, "slash" = 40, "stab" = 30, "bullet" = 30, "laser" = 70, "energy" = 50, "bomb" = 20, "bio" = 0, "rad" = 0, "fire" = 100, "acid" = 70)
 	resistance_flags = FIRE_PROOF
 	var/id = null
 	var/on = FALSE
@@ -100,9 +100,9 @@
 		add_fingerprint(user)
 		src.disable = !src.disable
 		if (src.disable)
-			user.visible_message("<span class='notice'>[user] has disabled \the [src]!</span>", "<span class='notice'>I disable the connection to \the [src].</span>")
+			user.visible_message(span_notice("[user] has disabled \the [src]!"), span_notice("I disable the connection to \the [src]."))
 		if (!src.disable)
-			user.visible_message("<span class='notice'>[user] has reconnected \the [src]!</span>", "<span class='notice'>I fix the connection to \the [src].</span>")
+			user.visible_message(span_notice("[user] has reconnected \the [src]!"), span_notice("I fix the connection to \the [src]."))
 		update_icon()
 	else
 		return ..()

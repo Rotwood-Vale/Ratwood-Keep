@@ -17,7 +17,7 @@
 /obj/structure/boatbell/attack_hand(mob/user)
 	if(world.time < last_ring + 50)
 		return
-	user.visible_message("<span class='info'>[user] rings the bell.</span>")
+	user.visible_message(span_info("[user] rings the bell."))
 	SSshuttle.moveShuttle("supply", "supply_away", TRUE)
 	playsound(src, 'sound/misc/boatbell.ogg', 100, extrarange = 5)
 	last_ring = world.time
@@ -25,7 +25,7 @@
 /obj/structure/boatbell/fluff/attack_hand(mob/user)
 	if(world.time < last_ring + 50)
 		return
-	user.visible_message("<span class='info'>[user] rings the bell.</span>")
+	user.visible_message(span_info("[user] rings the bell."))
 	playsound(src, 'sound/misc/boatbell.ogg', 100, extrarange = 5)
 	last_ring = world.time
 
@@ -45,7 +45,7 @@
 			bribe += P.get_real_price()
 			qdel(P)
 			if(bribe >= bribeprice)
-				to_chat(user, "<span class='warning'>That should be enough.</span>")
+				to_chat(user, span_warning("That should be enough."))
 			playsound(loc, 'sound/misc/machinevomit.ogg', 100, TRUE, -1)
 			return
 	..()
@@ -54,7 +54,7 @@
 	if(world.time < last_ring + 50)
 		return
 	last_ring = world.time
-	user.visible_message("<span class='info'>[user] starts ringing the bell.</span>")
+	user.visible_message(span_info("[user] starts ringing the bell."))
 	for(var/i in 1 to rand(1,5))
 		playsound(src, 'sound/misc/boatbell.ogg', 100, extrarange = 5)
 		if(!do_after(user, 30, target = src))
@@ -64,7 +64,7 @@
 		if(user.mind.has_antag_datum(/datum/antagonist/skeleton))
 			realbribe = 0
 	if(bribe < realbribe)
-		to_chat(user, "<span class='warning'>Not enough mammon to make the navigators betray the schedule.</span>")
+		to_chat(user, span_warning("Not enough mammon to make the navigators betray the schedule."))
 		return
 //	SSshuttle.requestEvac(user, href_list["call"])
 	if(SSshuttle.emergency.mode != SHUTTLE_DOCKED)

@@ -233,7 +233,7 @@
 	if(!..())
 		return
 	if(isliving(M))
-		to_chat(M, "<span class='danger'>I are lit on fire from the intense heat of the [name]!</span>")
+		to_chat(M, span_danger("I are lit on fire from the intense heat of the [name]!"))
 		M.adjust_fire_stacks(seed.potency / 20)
 		if(M.IgniteMob())
 			message_admins("[ADMIN_LOOKUPFLW(user)] set [ADMIN_LOOKUPFLW(M)] on fire with [src] at [AREACOORD(user)]")
@@ -246,11 +246,11 @@
 	if(force > 0)
 		force -= rand(1, (force / 3) + 1)
 	else
-		to_chat(usr, "<span class='warning'>All the petals have fallen off the [name] from violent whacking!</span>")
+		to_chat(usr, span_warning("All the petals have fallen off the [name] from violent whacking!"))
 		qdel(src)
 
 /obj/item/grown/novaflower/pickup(mob/living/carbon/human/user)
 	..()
 	if(!user.gloves)
-		to_chat(user, "<span class='danger'>The [name] burns my bare hand!</span>")
+		to_chat(user, span_danger("The [name] burns my bare hand!"))
 		user.adjustFireLoss(rand(1, 5))

@@ -4,7 +4,7 @@
 	desc = ""
 	quality = POSITIVE
 	difficulty = 18
-	text_gain_indication = "<span class='notice'>I feel smarter!</span>"
+	text_gain_indication = span_notice("I feel smarter!")
 	limb_req = BODY_ZONE_HEAD
 	instability = 30
 

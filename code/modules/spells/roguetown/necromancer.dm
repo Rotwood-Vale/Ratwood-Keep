@@ -14,6 +14,7 @@
 	miracle = FALSE
 
 /obj/effect/proc_holder/spell/invoked/bonechill/cast(list/targets, mob/living/user)
+	. = ..()
 	if(isliving(targets[1]))
 		var/mob/living/target = targets[1]
 		if(target.mob_biotypes & MOB_UNDEAD) //positive energy harms the undead
@@ -23,9 +24,9 @@
 					target.update_damage_overlays()
 				if(affecting.heal_wounds(50))
 					target.update_damage_overlays()
-			target.visible_message("<span class='danger'>[target] reforms under the vile energy!</span>", "<span class='notice'>I'm remade by dark magic!</span>")
+			target.visible_message(span_danger("[target] reforms under the vile energy!"), span_notice("I'm remade by dark magic!"))
 			return TRUE
-		target.visible_message("<span class='info'>Necrotic energy floods over [target]!</span>", "<span class='userdanger'>I feel colder as the dark energy floods into me!</span>")
+		target.visible_message(span_info("Necrotic energy floods over [target]!"), span_userdanger("I feel colder as the dark energy floods into me!"))
 		if(iscarbon(target))
 			target.Paralyze(50)
 		else
@@ -50,9 +51,10 @@
 	miracle = FALSE
 
 /obj/effect/proc_holder/spell/invoked/eyebite/cast(list/targets, mob/living/user)
+	. = ..()
 	if(isliving(targets[1]))
 		var/mob/living/carbon/target = targets[1]
-		target.visible_message("<span class='info'>A loud crunching sound has come from [target]!</span>", "<span class='userdanger'>I feel arcane teeth biting into my eyes!</span>")
+		target.visible_message(span_info("A loud crunching sound has come from [target]!"), span_userdanger("I feel arcane teeth biting into my eyes!"))
 		target.adjustBruteLoss(30)
 		target.blind_eyes(2)
 		target.blur_eyes(10)
@@ -76,11 +78,12 @@
 	charge_max = 60 SECONDS
 
 /obj/effect/proc_holder/spell/invoked/raise_undead/cast(list/targets, mob/living/user)
+	. = ..()
 	var/turf/T = get_turf(targets[1])
-	if(!isclosedturf(T))
+	if(isopenturf(T))
 		new /mob/living/carbon/human/species/skeleton/npc/no_equipment(T)
 		return TRUE
-	to_chat(user, "<span class='warning'>The targeted location is blocked. My summon fails to come forth.</span>")
+	to_chat(user, span_warning("The targeted location is blocked. My summon fails to come forth."))
 	return FALSE
 
 /obj/effect/proc_holder/spell/invoked/projectile/sickness

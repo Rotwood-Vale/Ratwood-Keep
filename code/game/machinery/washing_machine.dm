@@ -129,7 +129,7 @@ GLOBAL_LIST_INIT(dye_registry, list(
 /obj/machinery/washing_machine/examine(mob/user)
 	. = ..()
 	if(!busy)
-		. += "<span class='notice'><b>Alt-click</b> it to start a wash cycle.</span>"
+		. += span_notice("<b>Alt-click</b> it to start a wash cycle.")
 
 /obj/machinery/washing_machine/AltClick(mob/user)
 	if(!user.canUseTopic(src, !issilicon(user)))
@@ -137,10 +137,10 @@ GLOBAL_LIST_INIT(dye_registry, list(
 	if(busy)
 		return
 	if(state_open)
-		to_chat(user, "<span class='warning'>Close the door first!</span>")
+		to_chat(user, span_warning("Close the door first!"))
 		return
 	if(bloody_mess)
-		to_chat(user, "<span class='warning'>[src] must be cleaned up first!</span>")
+		to_chat(user, span_warning("[src] must be cleaned up first!"))
 		return
 	busy = TRUE
 	update_icon()
@@ -278,19 +278,19 @@ GLOBAL_LIST_INIT(dye_registry, list(
 
 	else if(user.used_intent.type != INTENT_HARM)
 		if (!state_open)
-			to_chat(user, "<span class='warning'>Open the door first!</span>")
+			to_chat(user, span_warning("Open the door first!"))
 			return TRUE
 
 		if(bloody_mess)
-			to_chat(user, "<span class='warning'>[src] must be cleaned up first!</span>")
+			to_chat(user, span_warning("[src] must be cleaned up first!"))
 			return TRUE
 
 		if(contents.len >= max_wash_capacity)
-			to_chat(user, "<span class='warning'>The washing machine is full!</span>")
+			to_chat(user, span_warning("The washing machine is full!"))
 			return TRUE
 
 		if(!user.transferItemToLoc(W, src))
-			to_chat(user, "<span class='warning'>\The [W] is stuck to your hand, you cannot put it in the washing machine!</span>")
+			to_chat(user, span_warning("\The [W] is stuck to your hand, you cannot put it in the washing machine!"))
 			return TRUE
 
 		if(W.dye_color)
@@ -305,7 +305,7 @@ GLOBAL_LIST_INIT(dye_registry, list(
 	if(.)
 		return
 	if(busy)
-		to_chat(user, "<span class='warning'>[src] is busy!</span>")
+		to_chat(user, span_warning("[src] is busy!"))
 		return
 
 	if(user.pulling && user.used_intent.type == INTENT_GRAB && isliving(user.pulling))

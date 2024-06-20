@@ -41,7 +41,7 @@
 		if(stunning)
 			L.Paralyze(20) //splat!
 		L.adjust_blurriness(1)
-		L.visible_message("<span class='warning'>[L] is hit by [src]!</span>", "<span class='danger'>I'm hit by [src]!</span>")
+		L.visible_message(span_warning("[L] is hit by [src]!"), span_danger("I'm hit by [src]!"))
 	if(is_type_in_typecache(hit_atom, GLOB.creamable))
 		hit_atom.AddComponent(/datum/component/creamed, src)
 	qdel(src)
