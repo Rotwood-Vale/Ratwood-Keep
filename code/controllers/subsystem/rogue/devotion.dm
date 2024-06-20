@@ -70,7 +70,8 @@
 	if(!prog_amt) // no point in the rest if it's just an expenditure
 		return TRUE
 	progression = clamp(progression + prog_amt, 0, max_progression)
-	var/obj/effect/spell_unlocked
+	//var/obj/effect/spell_unlocked
+	var/list/spell_unlocked
 	switch(level)
 		if(CLERIC_T0)
 			if(progression >= CLERIC_REQ_1)
@@ -86,18 +87,21 @@
 				level = CLERIC_T3
 	if(!spell_unlocked || !holder?.mind || holder.mind.has_spell(spell_unlocked, specific = FALSE))
 		return TRUE
-	spell_unlocked = new spell_unlocked
-	if(!silent)
-		to_chat(holder, span_boldnotice("I have unlocked a new spell: [spell_unlocked]"))
-	usr.mind.AddSpell(spell_unlocked)
-	LAZYADD(granted_spells, spell_unlocked)
+	for(var/spell_type in spell_unlocked) //there, now we can expect more than one spell...
+		if(!spell_type || usr.mind.has_spell(spell_type))
+			continue
+		var/newspell = new spell_type
+		if(!silent)
+			to_chat(holder, span_boldnotice("I have unlocked a new spell: [newspell]"))
+		usr.mind.AddSpell(newspell)
+		LAZYADD(granted_spells, newspell)
 	return TRUE
 
 /datum/devotion/proc/grant_spells(mob/living/carbon/human/H)
 	if(!H || !H.mind || !patron)
 		return
 
-	var/list/spelllist = list(patron.t0, patron.t1)
+	var/list/spelllist = (patron.t0 + patron.t1)  //listification
 	for(var/spell_type in spelllist)
 		if(!spell_type || H.mind.has_spell(spell_type))
 			continue
@@ -111,7 +115,7 @@
 	if(!H || !H.mind || !patron)
 		return
 
-	var/list/spelllist = list(/obj/effect/proc_holder/spell/targeted/churn, patron.t0)
+	var/list/spelllist = (patron.t0 + /obj/effect/proc_holder/spell/targeted/churn) //BY LIST I SMITE YE
 	for(var/spell_type in spelllist)
 		if(!spell_type || H.mind.has_spell(spell_type))
 			continue
@@ -126,7 +130,7 @@
 	if(!H || !H.mind || !patron)
 		return
 
-	var/list/spelllist = list(patron.t0)
+	var/list/spelllist = (patron.t0) //listified...??? I mean... churchling bud, its gunna be hard times
 	for(var/spell_type in spelllist)
 		if(!spell_type || H.mind.has_spell(spell_type))
 			continue
@@ -142,7 +146,7 @@
 		return
 
 	granted_spells = list()
-	var/list/spelllist = list(patron.t0, patron.t1, patron.t2, patron.t3)
+	var/list/spelllist = (patron.t0 + patron.t1 + patron.t2 + patron.t3) //listified
 	for(var/spell_type in spelllist)
 		if(!spell_type || H.mind.has_spell(spell_type))
 			continue
@@ -150,7 +154,7 @@
 		H.mind.AddSpell(newspell)
 		LAZYADD(granted_spells, newspell)
 	level = CLERIC_T3
-	passive_devotion_gain = 1
+	//passive_devotion_gain = 1 //No longer important, so less timers good
 	update_devotion(300, CLERIC_REQ_3, silent = TRUE)
 	START_PROCESSING(SSobj, src)
 

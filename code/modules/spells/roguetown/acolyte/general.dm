@@ -14,7 +14,7 @@
 	antimagic_allowed = TRUE
 	charge_max = 10 SECONDS
 	miracle = TRUE
-	devotion_cost = 20
+	devotion_cost = 0 
 
 /obj/effect/proc_holder/spell/invoked/lesser_heal/cast(list/targets, mob/living/user)
 	. = ..()
@@ -96,7 +96,7 @@
 	antimagic_allowed = TRUE
 	charge_max = 20 SECONDS
 	miracle = TRUE
-	devotion_cost = 45
+	devotion_cost = 0
 
 /obj/effect/proc_holder/spell/invoked/heal/cast(list/targets, mob/living/user)
 	. = ..()
