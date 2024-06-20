@@ -420,6 +420,8 @@ GLOBAL_LIST_INIT(roleplay_readme, world.file2list("strings/rt/rp_prompt.txt"))
 		return JOB_UNAVAILABLE_AGE
 	if(length(job.allowed_patrons) && !(client.prefs.selected_patron.type in job.allowed_patrons))
 		return JOB_UNAVAILABLE_PATRON
+	if(length(job.banned_flaws) && (client.prefs.charflaw.type in job.banned_flaws))
+		return JOB_UNAVAILABLE_FLAW
 	if((client.prefs.lastclass == job.title) && !job.bypass_lastclass)
 		return JOB_UNAVAILABLE_LASTCLASS
 	if(istype(SSticker.mode, /datum/game_mode/roguewar))
