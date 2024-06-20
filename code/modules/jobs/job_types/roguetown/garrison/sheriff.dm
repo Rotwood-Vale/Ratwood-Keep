@@ -14,6 +14,7 @@
 	outfit = /datum/outfit/job/roguetown/sheriff
 	give_bank_account = 26
 	min_pq = 8
+	max_pq = null
 
 /datum/outfit/job/roguetown/sheriff/pre_equip(mob/living/carbon/human/H)
 	..()
