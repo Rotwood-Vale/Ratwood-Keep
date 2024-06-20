@@ -3505,7 +3505,6 @@
 #include "modular\code\controllers\configuration\entries\general.dm"
 #include "modular\code\controllers\subsystem\processing\sex.dm"
 #include "modular\code\datums\character_flaw.dm"
-#include "modular\code\datums\gods\patrons\divine_pantheon.dm"
 #include "modular\code\modules\admin\bunker_bypass.dm"
 #include "modular\code\modules\jobs\job_types\roguetown\roguetown.dm"
 #include "modular\code\modules\living\emote.dm"
