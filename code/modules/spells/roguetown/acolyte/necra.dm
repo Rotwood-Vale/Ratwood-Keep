@@ -44,7 +44,7 @@
 	invocation = "The Undermaiden rebukes!"
 	invocation_type = "shout" //can be none, whisper, emote and shout
 	miracle = TRUE
-	devotion_cost = 30
+	devotion_cost = 20
 
 /obj/effect/proc_holder/spell/targeted/churn/cast(list/targets,mob/living/user = usr)
 	var/prob2explode = 100
@@ -97,7 +97,7 @@
 	invocation = "She-Below brooks thee respite, be heard, wanderer."
 	invocation_type = "whisper" //can be none, whisper, emote and shout
 	miracle = TRUE
-	devotion_cost = 40
+	devotion_cost = 30
 
 /obj/effect/proc_holder/spell/targeted/soulspeak/cast(list/targets,mob/user = usr)
 	var/mob/living/carbon/spirit/capturedsoul = null
