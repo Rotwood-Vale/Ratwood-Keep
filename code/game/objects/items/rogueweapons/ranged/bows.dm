@@ -53,6 +53,9 @@
 		return FALSE
 	if(user.get_inactive_held_item())
 		return FALSE
+	if(HAS_TRAIT(user, TRAIT_BIGBOOBS))
+		to_chat(user, span_warning("THEY are preventing me from aiming my bow!.."))
+		return FALSE
 	if(user.client)
 		if(user.client.chargedprog >= 100)
 			spread = 0
@@ -99,6 +102,9 @@
 		if(mastermob.get_num_arms(FALSE) < 2)
 			return FALSE
 		if(mastermob.get_inactive_held_item())
+			return FALSE
+		if(HAS_TRAIT(mastermob, TRAIT_BIGBOOBS))
+			to_chat(mastermob, span_warning("THEY are preventing me from drawing my bowstring!.."))
 			return FALSE
 	return TRUE
 
