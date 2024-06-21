@@ -658,7 +658,10 @@
 				to_chat(user, "<span class='info'>I slow down.</span>")
 		return
 	if(user == owner)
-		owner.visible_message("<span class='love'>[owner] faps.</span>")
+		if(owner.gender == MALE)
+			owner.visible_message("<span class='love'>[owner] faps.</span>")
+		if(owner.gender == FEMALE)	//
+			owner.visible_message("<span class='love'>[owner] masturbates.</span>")		//Different masturbation start - by Gardelin0
 		if(horny < 0)
 			to_chat(owner, "<span class='warning'>I'm spent.</span>")
 			return
@@ -1019,12 +1022,15 @@
 						if(!owner.rogfat_add(3))
 							stop_fapping()
 					if(fapping)
-						playsound(owner, 'sound/misc/mat/fap.ogg', 30, TRUE, -2, ignore_walls = FALSE)
+						if(gender == MALE)
+							playsound(owner, 'sound/misc/mat/fap.ogg', 30, TRUE, -2, ignore_walls = FALSE)
+						else
+							playsound(owner, 'modular/sound/misc/mat/fingering.ogg', 30, TRUE, -2, ignore_walls = FALSE)	//Different masturbation sounds - by Gardelin0
 						if(prob(33))
 							if(!is_fingering)
-								owner.visible_message("<span class='[!owner.cmode ? "love" : "warning"]'>[owner] jerks [owner.p_them(FALSE, owner.gender)]self.</span>")
+								owner.visible_message("<span class='[!owner.cmode ? "love" : "warning"]'>[owner] faps.</span>")
 							else
-								owner.visible_message("<span class='[!owner.cmode ? "love" : "warning"]'>[owner] rubs [owner.p_them(FALSE, owner.gender)]self.</span>")
+								owner.visible_message("<span class='[!owner.cmode ? "love" : "warning"]'>[owner] masturbates.</span>")	//Slight diffirence - by Gardelin0
 						if(adjust_horny(1, "fapself"))
 							stop_fapping()
 				else
@@ -1032,7 +1038,10 @@
 						if(!fapping.grabbee.rogfat_add(1))
 							stop_fapping_us()
 					if(fapping)
-						playsound(owner, 'sound/misc/mat/fap.ogg', 30, TRUE, -2, ignore_walls = FALSE)
+						if(gender == MALE)
+							playsound(owner, 'sound/misc/mat/fap.ogg', 30, TRUE, -2, ignore_walls = FALSE)
+						else
+							playsound(owner, 'modular/sound/misc/mat/fingering.ogg', 30, TRUE, -2, ignore_walls = FALSE)	//Different masturbation sounds - by Gardelin0
 						if(prob(33))
 							if(!is_fingering)
 								fapping.grabbee.visible_message("<span class='[!owner.cmode ? "love" : "warning"]'>[fapping.grabbee] jerks [owner].</span>")
@@ -1193,7 +1202,11 @@
 		if("fuckcorpse")
 			owner.add_stress(/datum/stressevent/cumcorpse)
 			owner.freak_out()
-
+    if("dildo")	//For dildos - by Gardelin0
+			if(owner.has_flaw(/datum/charflaw/addiction/lovefiend))
+				owner.sate_addiction()
+			owner.add_stress(/datum/stressevent/cumok)
+  
 	var/mob/living/carbon/human/UH = owner
 	if((!UH && gender == MALE) || (UH && UH.getorganslot(ORGAN_SLOT_PENIS)))
 		switch(source)
@@ -1325,6 +1338,12 @@
 				add_cum_floor(get_turf(owner))
 				owner.visible_message("<span class='notice'>[owner] spills something on the floor!</span>")
 				playsound(owner, 'sound/misc/mat/endout.ogg', 100, TRUE, ignore_walls = FALSE)
+      if("fapping")	//Moaning when masturbating - by Gardelin0
+				if(prob(10))
+					owner.emote("sexmoanlight")
+			if("dildo")	//For dildos - by Gardelin0
+				if(!owner.cmode)
+					owner.emote("sexmoanhvy")
 			if("otherfapping")
 				add_cum_floor(get_turf(fapping.grabbee))
 				owner.visible_message("<span class='notice'>[owner] spills something on the floor!</span>")
@@ -1389,7 +1408,9 @@
 		return
 	if(stat == DEAD)
 		return
-	add_nausea(101)
+
+	to_chat(src, "<span class='warning'>I don't feel so good...I'm definetly pregnant!</span>")	//Some kind of a notification - by Gardelin0
+//	add_nausea(101)	Stop throwing up after sex - by Gardelin0
 
 /datum/sex_controller/proc/add_cum_floor(turfu)
 	if(!turfu || !isturf(turfu))
