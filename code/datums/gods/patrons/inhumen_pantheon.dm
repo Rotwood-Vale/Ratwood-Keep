@@ -47,12 +47,24 @@
     name = "Baotha"
     domain = "Goddess of Degeneracy, Debauchery and Addiction"
     desc = "Woman turned God, Baotha taught man that life is too short to care for the consequences of their pleasures and leads them to peculiar vices and perversions. "
-    worshippers = "Perverts, Gamblers, Drunkards, and Bards"
+    worshippers = "Perverts, Gamblers, Drunkards and Bards"
     confess_lines = list(
         "BAOTHA DEMANDS PLEASURE!",
         "LIVE, LAUGH, LOVE!",
         "BAOTHA IS MY JOY!",
 	)
+
+/datum/patron/inhumen/Qizyrot
+    name = "Qizyrot"
+    domain = "God of Plots, Envy and Wealth"
+    desc = "Man turned God, Qizyrot taught man that only through amassing great wealth can enlightenment be achieved."
+    worshippers = "Merchants, Money Lenders, Bankers and the Greedy
+    confess_lines = list(
+        "QIZYROT! GRANT ME SUCCOR!",
+        "QIZYROT BRINGS ME WEALTH!",
+        "THE MAMMON-LORD DEMANDS IT!",
+	)
+
 /* RATWOOD EDIT - Back to the main pantheon
 /datum/patron/inhumen/eora
 	name = "Eora"
