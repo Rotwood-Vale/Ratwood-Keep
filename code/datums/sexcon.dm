@@ -1202,7 +1202,7 @@
 		if("fuckcorpse")
 			owner.add_stress(/datum/stressevent/cumcorpse)
 			owner.freak_out()
-   		if("dildo")	//For dildos - by Gardelin0
+		if("dildo")	//For dildos - by Gardelin0
 			if(owner.has_flaw(/datum/charflaw/addiction/lovefiend))
 				owner.sate_addiction()
 			owner.add_stress(/datum/stressevent/cumok)
@@ -1338,7 +1338,7 @@
 				add_cum_floor(get_turf(owner))
 				owner.visible_message("<span class='notice'>[owner] spills something on the floor!</span>")
 				playsound(owner, 'sound/misc/mat/endout.ogg', 100, TRUE, ignore_walls = FALSE)
-      if("fapping")	//Moaning when masturbating - by Gardelin0
+			if("fapping")	//Moaning when masturbating - by Gardelin0
 				if(prob(10))
 					owner.emote("sexmoanlight")
 			if("dildo")	//For dildos - by Gardelin0
