@@ -167,6 +167,7 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 	var/bloody_icon = 'icons/effects/blood.dmi'
 	var/bloody_icon_state = "itemblood"
 	var/boobed = FALSE
+	var/can_hold_big_boobs = FALSE
 
 	var/firefuel = 0 //add this idiot
 
@@ -1237,5 +1238,3 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 	if(..())
 		if(altgripped || wielded)
 			ungrip(M, FALSE)
-
-
