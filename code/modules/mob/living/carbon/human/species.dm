@@ -625,7 +625,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 				return FALSE
 			if(is_nudist)
 				return FALSE
-			if(is_BOOBS)
+			if(is_BOOBS & I.can_hold_big_boobs == FALSE)
 				if(!disable_warning)
 					to_chat(H, span_warning("I can't squeeze THEM in!.."))
 				return FALSE
