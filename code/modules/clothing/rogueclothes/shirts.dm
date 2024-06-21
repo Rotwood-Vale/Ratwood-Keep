@@ -14,6 +14,7 @@
 	boobed = TRUE
 	sewrepair = TRUE
 	flags_inv = HIDEBOOB
+	can_hold_big_boobs = TRUE
 
 /obj/item/clothing/suit/roguetown/shirt/undershirt
 	name = "shirt"
