@@ -18,6 +18,7 @@
 #define span_bad(str) ("<span class='bad'>" + str + "</span>")
 #define span_big(str) ("<span class='big'>" + str + "</span>")
 #define span_bigbold(str) ("<span class='bigbold'>" + str + "</span>")
+#define span_bigboobs(str) ("<span class='bigboobs'>" + str + "</span>")
 #define span_bigicon(str) ("<span class='bigicon'>" + str + "</span>")
 #define span_biginfo(str) ("<span class='biginfo'>" + str + "</span>")
 #define span_bignotice(str) ("<span class='bignotice'>" + str + "</span>")
