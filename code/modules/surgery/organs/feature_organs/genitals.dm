@@ -26,6 +26,16 @@
 	accessory_type = /datum/sprite_accessory/breasts/pair
 	var/breast_size = DEFAULT_BREASTS_SIZE
 
+/obj/item/organ/breasts/Insert(mob/living/carbon/M, special = 0, drop_if_replaced = FALSE)
+	..()
+	if(breast_size == 5)
+		ADD_TRAIT(M, TRAIT_BIGBOOBS, ORGAN_TRAIT)
+
+/obj/item/organ/breasts/Remove(mob/living/carbon/M, special = 0)
+	if(breast_size == 5)
+		REMOVE_TRAIT(M, TRAIT_BIGBOOBS, ORGAN_TRAIT)
+	..()
+
 /obj/item/organ/testicles
 	name = "testicles"
 	icon_state = "severedtail" //placeholder
