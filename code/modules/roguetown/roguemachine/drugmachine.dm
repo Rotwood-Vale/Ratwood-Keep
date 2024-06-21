@@ -199,7 +199,7 @@
 			contents += "[stars(namer)] + [stars(price)] <a href='?src=[REF(src)];buy=[I]'>[stars("BUY")]</a>"
 		contents += "<BR>"
 
-	var/datum/browser/popup = new(user, "VENDORTHING", "", 370, 220)
+	var/datum/browser/popup = new(user, "VENDORTHING", "", 370, 400)
 	popup.set_content(contents)
 	popup.open()
 

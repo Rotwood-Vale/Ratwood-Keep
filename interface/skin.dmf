@@ -16,6 +16,11 @@ window "mainwindow"
 		icon = 'icons\\tg_32.png'
 		macro = "default"
 		menu = "menu"
+		outer-size = 2576x1408
+		outer-pos = -8,-8
+		inner-size = 2560x1349
+		inner-pos = 8,51
+		screen-size = 2560x1392
 	elem "split"
 		type = CHILD
 		pos = 3,0
@@ -39,21 +44,28 @@ window "mainwindow"
 		saved-params = ""
 	elem "tooltip"
 		type = BROWSER
-		pos = 0,0
+		pos = 1065,225
 		size = 999x999
 		anchor1 = -1,-1
 		anchor2 = -1,-1
+		background-color = none
 		is-visible = false
 		saved-params = ""
 
 window "mapwindow"
 	elem "mapwindow"
 		type = MAIN
-		pos = 0,0
+		pos = 382,0
 		size = 640x480
 		anchor1 = -1,-1
 		anchor2 = -1,-1
+		background-color = none
+		saved-params = "pos;size;is-minimized;is-maximized"
 		is-pane = true
+		outer-size = 656x538
+		outer-pos = 382,0
+		inner-pos = 8,31
+		screen-size = 2560x1392
 	elem "map"
 		type = MAP
 		pos = 0,0
@@ -66,23 +78,25 @@ window "mapwindow"
 		saved-params = "icon-size;zoom-mode"
 		style = ".center { text-align: center; }\n.maptext { font-family: 'Small Fonts'; font-size: 7px; -dm-text-outline: 1px black; color: white; line-height: 1.1; }\n.command_headset { font-weight: bold;\tfont-size: 8px; } .small { font-size: 6px; }\n.big { font-size: 8px; }\n.reallybig { font-size: 8px; }\n.extremelybig { font-size: 8px; }\n.greentext { color: #00ff00; font-size: 7px; }\n.redtext { color: #ff0000; font-size: 7px; }\n.clown { color: #ff69bf; font-size: 7px;  font-weight: bold; }\n.his_grace { color: #15d512; }\n.hypnophrase { color: #0d0d0d; font-weight: bold; }\n.yell { font-weight: bold; }\n.italics { font-size: 6px; }"
 
-
 window "infowindow"
 	elem "infowindow"
 		type = MAIN
-		pos = 281,0
-		size = 640x480
+		pos = 382,0
+		size = 640x600
 		anchor1 = -1,-1
 		anchor2 = -1,-1
 		background-color = #000000
 		saved-params = "pos;size"
 		is-pane = true
-		outer-size = 656x538
-		inner-size = 640x499
+		outer-size = 656x638
+		outer-pos = 382,0
+		inner-size = 640x580
+		inner-pos = 8,31
+		screen-size = 2560x1392
 	elem "info"
 		type = CHILD
 		pos = 0,5
-		size = 640x480
+		size = 640x580
 		anchor1 = 0,0
 		anchor2 = 100,100
 		background-color = #000000
@@ -95,13 +109,17 @@ window "infowindow"
 window "outputwindow"
 	elem "outputwindow"
 		type = MAIN
-		pos = 0,0
+		pos = 382,0
 		size = 640x480
 		anchor1 = -1,-1
 		anchor2 = -1,-1
 		background-color = #000000
 		saved-params = "pos;size"
 		is-pane = true
+		outer-size = 656x538
+		outer-pos = 382,0
+		inner-pos = 8,31
+		screen-size = 2560x1392
 	elem "browseroutput"
 		type = BROWSER
 		pos = 0,0
@@ -120,8 +138,9 @@ window "outputwindow"
 		anchor2 = 100,100
 		background-color = #000000
 		is-default = true
-		max-lines = 100
+		saved-params = "max-lines"
 		enable-http-images = true
+		max-lines = 100
 	elem "input"
 		type = INPUT
 		pos = 0,445
@@ -139,7 +158,7 @@ window "outputwindow"
 window "statwindow"
 	elem "statwindow"
 		type = MAIN
-		pos = 0,0
+		pos = 382,0
 		size = 640x480
 		anchor1 = -1,-1
 		anchor2 = -1,-1
@@ -147,6 +166,10 @@ window "statwindow"
 		background-color = #000000
 		saved-params = "pos;size"
 		is-pane = true
+		outer-size = 656x538
+		outer-pos = 382,0
+		inner-pos = 8,31
+		screen-size = 2560x1392
 	elem "stat"
 		type = INFO
 		pos = 0,0
@@ -155,7 +178,6 @@ window "statwindow"
 		anchor2 = 100,100
 		font-family = "Pterra"
 		font-size = 12
-		font-style = "6"
 		text-color = #d6dbd5
 		background-color = #000000
 		is-default = true
@@ -171,23 +193,31 @@ window "statwindow"
 window "popupwindow"
 	elem "popupwindow"
 		type = MAIN
-		pos = 281,150
+		pos = 382,0
 		size = 120x120
 		anchor1 = -1,-1
 		anchor2 = -1,-1
+		background-color = none
 		is-visible = false
+		saved-params = "pos;size;is-minimized;is-maximized"
 		statusbar = false
 		can-resize = false
 		icon = 'icons\\tg_32.png'
+		outer-size = 136x159
+		outer-pos = 382,0
+		inner-size = 120x120
+		inner-pos = 8,31
+		screen-size = 2560x1392
 
 window "preferencess_window"
 	elem "preferencess_window"
 		type = MAIN
-		pos = 372,150
+		pos = 382,0
 		size = 700x530
 		anchor1 = -1,-1
 		anchor2 = -1,-1
 		is-visible = false
+		saved-params = "pos;size;is-minimized;is-maximized"
 		statusbar = false
 		can-close = false
 		can-resize = false
@@ -205,8 +235,8 @@ window "preferencess_window"
 		size = 140x192
 		anchor1 = 75,0
 		anchor2 = 100,100
-		background-color = #000000
 		right-click = true
+		saved-params = "zoom;letterbox;zoom-mode"
 		icon-size = 64
-		zoom-mode = "distort"
+		zoom-mode = distort
 

@@ -33,7 +33,7 @@
 
 	if(!user.can_read(src, TRUE))
 		contents = stars(contents)
-	var/datum/browser/popup = new(user, "VENDORTHING", "", 370, 220)
+	var/datum/browser/popup = new(user, "VENDORTHING", "", 370, 600)
 	popup.set_content(contents)
 	popup.open()
 
