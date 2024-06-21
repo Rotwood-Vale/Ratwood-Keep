@@ -130,8 +130,7 @@ GLOBAL_LIST_EMPTY(bounties_list)
 											/datum/bounty/virus = 1,
 											/datum/bounty/item/engineering = 1,
 											/datum/bounty/item/mining = 2,
-											/datum/bounty/item/medical = 2,
-											/datum/bounty/item/botany = 2)
+											/datum/bounty/item/medical = 2)
 
 	for(var/the_type in easy_add_list_subtypes)
 		for(var/i in 1 to easy_add_list_subtypes[the_type])

@@ -57,14 +57,6 @@
 		visible_message(span_danger("[src] spews out a ton of space lube!"))
 		new /obj/effect/particle_effect/foam(loc) //YEET
 
-/obj/vehicle/sealed/car/clowncar/attacked_by(obj/item/I, mob/living/user)
-	. = ..()
-	if(istype(I, /obj/item/reagent_containers/food/snacks/grown/banana))
-		var/obj/item/reagent_containers/food/snacks/grown/banana/banana = I
-		obj_integrity += min(banana.seed.potency, max_integrity-obj_integrity)
-		to_chat(user, span_danger("I use the [banana] to repair the [src]!"))
-		qdel(banana)
-
 /obj/vehicle/sealed/car/clowncar/Bump(atom/movable/M)
 	. = ..()
 	if(isliving(M))
@@ -112,7 +104,6 @@
 	switch(randomnum)
 		if(1)
 			visible_message(span_danger("[user] presses one of the colorful buttons on [src], and a special banana peel drops out of it."))
-			new /obj/item/grown/bananapeel/specialpeel(loc)
 		if(2)
 			visible_message(span_danger("[user] presses one of the colorful buttons on [src], and unknown chemicals flood out of it."))
 			var/datum/reagents/R = new/datum/reagents(300)

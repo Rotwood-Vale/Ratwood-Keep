@@ -277,7 +277,6 @@
 		/obj/item/reagent_containers/food/drinks,
 		/obj/item/organ/regenerative_core,
 		/obj/item/wormhole_jaunter,
-		/obj/item/storage/bag/plants,
 		/obj/item/stack/marker_beacon
 		))
 

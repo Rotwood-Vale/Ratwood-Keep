@@ -215,6 +215,5 @@
 	shoes = /obj/item/clothing/shoes/sneakers/yellow
 	gloves = /obj/item/clothing/gloves/color/yellow
 	ears = /obj/item/radio/headset
-	belt = /obj/item/storage/belt/fannypack/yellow/bee_terrorist
 	id = /obj/item/card/id
 	mask = /obj/item/clothing/mask/rat/bee

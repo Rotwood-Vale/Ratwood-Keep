@@ -77,14 +77,13 @@
 				if(D.holie)
 					D.holie.attackby(src, user)
 				else
-					if(!D.planted_crop)
-						if(istype(T, /turf/open/floor/rogue/dirt/road))
-							new /obj/structure/closet/dirthole(T)
-						else
-							T.ChangeTurf(/turf/open/floor/rogue/dirt/road, flags = CHANGETURF_INHERIT_AIR)
-						heldclod = new(src)
-						playsound(T,'sound/items/dig_shovel.ogg', 100, TRUE)
-						update_icon()
+					if(istype(T, /turf/open/floor/rogue/dirt/road))
+						new /obj/structure/closet/dirthole(T)
+					else
+						T.ChangeTurf(/turf/open/floor/rogue/dirt/road, flags = CHANGETURF_INHERIT_AIR)
+					heldclod = new(src)
+					playsound(T,'sound/items/dig_shovel.ogg', 100, TRUE)
+					update_icon()
 			return
 		if(heldclod)
 			if(istype(T, /turf/open/water))

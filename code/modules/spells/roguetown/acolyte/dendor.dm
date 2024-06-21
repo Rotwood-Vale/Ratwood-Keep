@@ -19,10 +19,12 @@
 	. = ..()
 	visible_message(span_green("[usr] blesses the crop with Dendor's Favour!"))
 	var/growed = FALSE
+	/* TODO FARMING
 	for(var/obj/machinery/crop/C in view(5))
 		growed = TRUE
 		C.growth += 40
 		C.update_seed_icon()
+	*/
 	return growed
 
 //At some point, this spell should Awaken beasts, allowing a ghost to possess them. Not for this PR though.

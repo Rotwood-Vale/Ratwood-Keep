@@ -542,7 +542,7 @@
 /obj/item/melee/roastingstick/Initialize()
 	. = ..()
 	if (!ovens)
-		ovens = typecacheof(list(/obj/singularity, /obj/machinery/power/supermatter_crystal, /obj/structure/bonfire))
+		ovens = typecacheof(list(/obj/singularity, /obj/machinery/power/supermatter_crystal))
 
 /obj/item/melee/roastingstick/attack_self(mob/user)
 	on = !on

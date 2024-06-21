@@ -87,16 +87,6 @@
 	category = list("Equipment")
 	departmental_flags = DEPARTMENTAL_FLAG_SCIENCE | DEPARTMENTAL_FLAG_ENGINEERING
 
-/datum/design/portaseeder
-	name = "Portable Seed Extractor"
-	desc = ""
-	id = "portaseeder"
-	build_type = PROTOLATHE
-	materials = list(/datum/material/iron = 1000, /datum/material/glass = 400)
-	build_path = /obj/item/storage/bag/plants/portaseeder
-	category = list("Equipment")
-	departmental_flags = DEPARTMENTAL_FLAG_SERVICE
-
 /datum/design/air_horn
 	name = "Air Horn"
 	desc = ""

@@ -1049,6 +1049,7 @@
 					return FALSE
 				var/marriage
 				var/obj/item/reagent_containers/food/snacks/grown/apple/A = W
+				/* TODO FARMING
 				if(A.bitten_names.len)
 					if(A.bitten_names.len == 2)
 						var/list/found_mobs = list()
@@ -1117,6 +1118,7 @@
 //							if(thewoman.has_stress(/datum/stressevent/nobel))
 //								theman.add_stress(/datum/stressevent/nobel)
 
+				*/
 				if(!marriage)
 					A.burn()
 					return

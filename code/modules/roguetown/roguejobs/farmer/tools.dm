@@ -110,15 +110,6 @@
 	max_blade_int = 50
 	smeltresult = /obj/item/ingot/iron
 
-/obj/item/rogueweapon/sickle/attack_turf(turf/T, mob/living/user)
-	user.changeNext_move(CLICK_CD_MELEE)
-	if(istype(T, /turf/open/floor/rogue/dirt))
-		var/turf/open/floor/rogue/dirt/D = T
-		if(D.planted_crop)
-			D.planted_crop.attackby(src, user)
-			return
-	. = ..()
-
 /obj/item/rogueweapon/sickle/getonmobprop(tag)
 	. = ..()
 	if(tag)
@@ -221,11 +212,6 @@
 
 /obj/item/rogueweapon/hoe/attack_turf(turf/T, mob/living/user)
 	user.changeNext_move(CLICK_CD_MELEE)
-	if(istype(T, /turf/open/floor/rogue/dirt))
-		var/turf/open/floor/rogue/dirt/D = T
-		if(D.planted_crop)
-			D.planted_crop.attackby(src, user)
-			return
 	if(istype(T, /turf/open/floor/rogue/grass))
 		if(user.used_intent.type == /datum/intent/till)
 			playsound(T,'sound/items/dig_shovel.ogg', 100, TRUE)

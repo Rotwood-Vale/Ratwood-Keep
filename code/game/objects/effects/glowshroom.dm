@@ -12,14 +12,6 @@
 	max_integrity = 30
 	blade_dulling = DULLING_CUT
 	resistance_flags = FLAMMABLE
-	var/delay = 1200
-	var/floor = 0
-	var/generation = 1
-	var/spreadIntoAdjacentChance = 60
-	var/obj/item/seeds/myseed = /obj/item/seeds/glowshroom
-	var/static/list/blacklisted_glowshroom_turfs = typecacheof(list(
-	/turf/open/lava,
-	/turf/open/floor/plating/beach/water))
 
 /obj/structure/glowshroom/fire_act(added, maxstacks)
 	visible_message(span_warning("[src] catches fire!"))
