@@ -40,6 +40,7 @@
 	anvilrepair = /datum/skill/craft/armorsmithing
 	smeltresult = /obj/item/ingot/steel
 	armor_class = ARMOR_CLASS_LIGHT
+	can_hold_big_boobs = TRUE
 
 /obj/item/clothing/suit/roguetown/armor/chainmail/Initialize()
 	. = ..()
@@ -265,6 +266,7 @@
 	r_sleeve_status = SLEEVE_NORMAL
 	l_sleeve_status = SLEEVE_NORMAL
 	armor_class = ARMOR_CLASS_LIGHT
+	can_hold_big_boobs = TRUE
 
 /obj/item/clothing/suit/roguetown/armor/armordress/alt
 	icon_state = "armordressalt"
@@ -285,6 +287,7 @@
 	r_sleeve_status = SLEEVE_NORMAL
 	l_sleeve_status = SLEEVE_NORMAL
 	armor_class = ARMOR_CLASS_LIGHT
+	can_hold_big_boobs = TRUE
 
 /obj/item/clothing/suit/roguetown/armor/gambeson/councillor
 	color = "#646464"
@@ -312,6 +315,7 @@
 	max_integrity = 150
 	sellprice = 20
 	armor_class = ARMOR_CLASS_LIGHT
+	can_hold_big_boobs = TRUE
 
 /obj/item/clothing/suit/roguetown/armor/leather/hide
 	name = "hide armor"
@@ -414,6 +418,7 @@
 	sleeved = null
 	nodismemsleeves = TRUE
 	boobed = TRUE
+	can_hold_big_boobs = TRUE
 
 /obj/item/clothing/suit/roguetown/armor/workervest/Initialize()
 	color = pick("#94b4b6", "#ba8f9e", "#bd978c", "#92bd8c", "#c7c981")
@@ -440,6 +445,7 @@
 	armor_class = ARMOR_CLASS_LIGHT
 	allowed_sex = list(MALE, FEMALE)
 	allowed_race = CLOTHED_RACES_TYPES
+	can_hold_big_boobs = TRUE
 
 /obj/item/clothing/suit/roguetown/armor/silkcoat/Initialize()
 	. = ..()
