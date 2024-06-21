@@ -657,10 +657,16 @@
 		return
 	if(resting)
 		if(!IsKnockdown() && !IsStun() && !IsParalyzed())
-			src.visible_message(span_notice("[src] stands up."))
-			if(move_after(src, 20, target = src))
-				set_resting(FALSE, FALSE)
-				return TRUE
+			if(HAS_TRAIT(src, TRAIT_BIGBOOBS))
+				src.visible_message(span_notice("[src] stands up, struggling because of THEIR weight."))
+				if(move_after(src, 40, target = src))
+					set_resting(FALSE, FALSE)
+					return TRUE
+			else
+				src.visible_message(span_notice("[src] stands up."))
+				if(move_after(src, 20, target = src))
+					set_resting(FALSE, FALSE)
+					return TRUE
 		else
 			src.visible_message(span_warning("[src] tries to stand up."))
 
@@ -675,9 +681,14 @@
 		return
 	if(resting)
 		if(!IsKnockdown() && !IsStun() && !IsParalyzed())
-			src.visible_message(span_info("[src] begins to stand up."))
-			if(move_after(src, 20, target = src))
-				set_resting(FALSE, FALSE)
+			if(HAS_TRAIT(src, TRAIT_BIGBOOBS))
+				src.visible_message(span_notice("[src] begins to stand up, struggling because of THEIR weight."))
+				if(move_after(src, 40, target = src))
+					set_resting(FALSE, FALSE)
+			else
+				src.visible_message(span_info("[src] begins to stand up."))
+				if(move_after(src, 20, target = src))
+					set_resting(FALSE, FALSE)
 		else
 			src.visible_message(span_warning("[src] struggles to stand up."))
 	else
