@@ -30,6 +30,18 @@
 	var/curplaying
 	var/datum/looping_sound/femmoans
 
+/mob/living/proc/has_penis()
+	return gender == MALE
+
+/mob/living/proc/has_testicles()
+	return gender == MALE
+
+/mob/living/proc/has_vagina()
+	return gender == FEMALE
+
+/mob/living/proc/has_breasts()
+	return gender == FEMALE
+
 /datum/sex_controller/New(Target)
 	. = ..()
 	if(ismob(Target))
@@ -77,11 +89,10 @@
 //		to_chat(user, "<span class='warning'>I can't do this.</span>")
 		return
 	// SELF ONTO SELF
-	var/mob/living/carbon/human/UH = user
 	var/ourgroin = TRUE
 	var/ourmouth = TRUE
-	var/ourpenis = (!UH && user.gender == MALE) || (UH && UH.getorganslot(ORGAN_SLOT_PENIS))
-	var/ourvagina = (!UH && user.gender == FEMALE) || (UH && UH.getorganslot(ORGAN_SLOT_VAGINA))
+	var/ourpenis = user.has_penis()
+	var/ourvagina = user.has_vagina()
 	if(!get_location_accessible(user, BODY_ZONE_PRECISE_MOUTH))
 		ourmouth = FALSE
 	if(!get_location_accessible(user, BODY_ZONE_PRECISE_GROIN))
@@ -104,14 +115,13 @@
 							sexcon.begin_fingering(G, user)
 	//US ONTO VICTIM
 	if(src != target && target == user)
-		var/mob/living/carbon/human/TH = src
 		var/what2do = list()
 		var/theirmouth = TRUE
 		var/theirgroin = TRUE
 		var/theirchest = TRUE
-		var/theirpenis = (!TH && src.gender == MALE) || (TH && TH.getorganslot(ORGAN_SLOT_PENIS))
-		var/theirvagina = (!TH && src.gender == FEMALE) || (TH && TH.getorganslot(ORGAN_SLOT_VAGINA))
-		var/theirbreasts = (!TH && src.gender == FEMALE) || (TH && TH.getorganslot(ORGAN_SLOT_BREASTS))
+		var/theirpenis =  src.has_penis()
+		var/theirvagina = src.has_vagina()
+		var/theirbreasts = src.has_breasts()
 		
 		if(!get_location_accessible(src, BODY_ZONE_PRECISE_MOUTH))
 			theirmouth = FALSE
@@ -185,8 +195,7 @@
 	if(!user)
 		testing("fuckfail")
 		return
-	var/mob/living/carbon/human/UH = owner
-	if((!UH && gender == FEMALE) || (UH && !UH.getorganslot(ORGAN_SLOT_PENIS)))
+	if(!owner.has_penis())
 		testing("fuckfail2")
 		return
 	if(user.loc != owner.loc)
@@ -269,8 +278,7 @@
 	if(user.sexcon.inass)
 		if(user.sexcon.inass != owner)
 			return
-	var/mob/living/carbon/human/UH = owner
-	if((!UH && gender == FEMALE) || (UH && !UH.getorganslot(ORGAN_SLOT_PENIS)))
+	if(!owner.has_penis())
 		testing("fuckfail2")
 		return
 	if(eatingus)
@@ -314,11 +322,10 @@
 		return
 	if(!get_location_accessible(user, BODY_ZONE_CHEST))
 		return
-	var/mob/living/carbon/human/UH = owner
-	var/mob/living/carbon/human/TH = user
-	if((!UH && gender != MALE) || (UH && !UH.getorganslot(ORGAN_SLOT_PENIS)))
-		if((!TH && user.gender != MALE) || (TH && !TH.getorganslot(ORGAN_SLOT_BREASTS)))
-			return
+	if(!owner.has_penis())
+		return
+	if(!user.has_breasts())
+		return
 	if(user.sexcon.ontits)
 		if(user.sexcon.ontits != owner)
 			testing("tfuckfail")
@@ -384,8 +391,7 @@
 	if(HAS_TRAIT(owner, TRAIT_LIMPDICK))
 		to_chat(owner, "<span class='warning'>My soldier won't stand up for me.</span>")
 		return
-	var/mob/living/carbon/human/UH = owner
-	if((!UH && gender != MALE) || (UH && !UH.getorganslot(ORGAN_SLOT_PENIS)))
+	if(!owner.has_penis())
 		return
 	if(fucking)
 		testing("mfuckfail4")
@@ -419,8 +425,7 @@
 		return
 	if(!get_location_accessible(owner, BODY_ZONE_PRECISE_GROIN))
 		return
-	var/mob/living/carbon/human/UH = owner
-	if((!UH && gender != FEMALE) || (UH && !UH.getorganslot(ORGAN_SLOT_VAGINA)))
+	if(!owner.has_vagina())
 		return
 	if(user.loc != owner.loc)
 		return
@@ -479,12 +484,10 @@
 		return
 	if(!user.lying || owner.lying)
 		return
-	var/mob/living/carbon/human/TH = user
-	if((!TH && user.sexcon.gender != MALE) || (TH && !TH.getorganslot(ORGAN_SLOT_PENIS)))
+	if(!user.has_penis())
 		testing("ridefail4")
 		return
-	var/mob/living/carbon/human/UH = owner
-	if((!UH && gender != FEMALE) || (UH && !UH.getorganslot(ORGAN_SLOT_VAGINA)))
+	if(!owner.has_vagina())
 		testing("ridefail5")
 		return
 	if(HAS_TRAIT(user, TRAIT_LIMPDICK))
@@ -550,8 +553,7 @@
 		else if(user.sexcon.riding == owner) //start eating instead
 			testing("eatfail6")
 			user.sexcon.stop_riding()
-	var/mob/living/carbon/human/TH = user
-	if((!TH && user.sexcon.gender != FEMALE) || (TH && !TH.getorganslot(ORGAN_SLOT_VAGINA)))
+	if(!user.has_vagina())
 		return
 	if(weeating)
 		testing("sp1")
@@ -597,8 +599,7 @@
 		else if(user.sexcon.riding == owner) //start eating instead
 			testing("eatfail6")
 			user.sexcon.stop_riding()
-	var/mob/living/carbon/human/TH = user
-	if((!TH && user.sexcon.gender != MALE) || (TH && !TH.getorganslot(ORGAN_SLOT_PENIS)))
+	if(!user.has_penis())
 		return
 	if(user.sexcon.fucking)
 		if(user.sexcon.fucking == owner)
@@ -643,8 +644,7 @@
 	if(HAS_TRAIT(owner, TRAIT_LIMPDICK))
 		to_chat(user, "<span class='warning'>The soldier won't stand up for me.</span>")
 		return
-	var/mob/living/carbon/human/TH = owner
-	if((!TH && gender != MALE) || (TH && !TH.getorganslot(ORGAN_SLOT_PENIS)))
+	if(!owner.has_penis())
 		return
 	if(fapping)
 		testing("fapfail6")
@@ -689,8 +689,7 @@
 	if(!get_location_accessible(owner, BODY_ZONE_PRECISE_GROIN))
 		testing("fapfail4")
 		return
-	var/mob/living/carbon/human/TH = owner
-	if((!TH && gender != FEMALE) || (TH && !TH.getorganslot(ORGAN_SLOT_VAGINA)))
+	if(!owner.has_vagina())
 		return
 	if(fapping)
 		testing("fapfail6")
@@ -1091,8 +1090,7 @@
 	if(owner.stat != CONSCIOUS)
 		cancel_our_actions()
 	
-	var/mob/living/carbon/human/UH = owner
-	if((!UH && gender == MALE) || (UH && UH.getorganslot(ORGAN_SLOT_TESTICLES)))
+	if(owner.has_testicles())
 		if(horny > 30 && !blueballs)
 			blueballs = TRUE
 
@@ -1127,8 +1125,7 @@
 		owner.playsound_local(owner, 'sound/misc/mat/end.ogg', 100)
 		return TRUE
 
-	var/mob/living/carbon/human/UH = owner
-	if((!UH && gender == FEMALE) || (UH && UH.getorganslot(ORGAN_SLOT_VAGINA)))
+	if(owner.has_vagina())
 		if((amt > 0) && prob(80))
 			switch(source)
 				if("pussyfucked")
@@ -1157,7 +1154,7 @@
 						owner.emote("sexmoanhvy")
 					else
 						owner.emote("sexmoanlight")
-	if((!UH && gender == MALE) || (UH && UH.getorganslot(ORGAN_SLOT_TESTICLES))) // Vrell - Can't get blue balls without balls
+	if(owner.has_testicles()) // Vrell - Can't get blue balls without balls
 		if(horny <= 0 && oldhorny > 0 && blueballs && !source)
 			owner.add_stress(/datum/stressevent/blueb)
 			horny = clamp(horny - 80, -100, 250)
@@ -1207,8 +1204,7 @@
 				owner.sate_addiction()
 			owner.add_stress(/datum/stressevent/cumok)
   
-	var/mob/living/carbon/human/UH = owner
-	if((!UH && gender == MALE) || (UH && UH.getorganslot(ORGAN_SLOT_PENIS)))
+	if(owner.has_penis())
 		switch(source)
 			if("ontits")
 				if(owner.has_flaw(/datum/charflaw/addiction/lovefiend))
@@ -1304,7 +1300,7 @@
 								wuzantag = TRUE
 					if(!wuzantag)
 						adjust_playerquality(-2, M.ckey, reason="Raped as a non villain.")
-				if((!UH && gender == MALE) || (UH && UH.getorganslot(ORGAN_SLOT_TESTICLES))) //VRELL - sorry kiddo, gotta have balls to get them pregnant
+				if(owner.has_testicles()) //VRELL - sorry kiddo, gotta have balls to get them pregnant
 					if(prob(20))
 						if(!fucking.mob_timers["preggo"])
 							fucking.mob_timers["preggo"] = world.time
@@ -1357,7 +1353,7 @@
 				add_cum_floor(get_turf(owner))
 				owner.visible_message("<span class='notice'>[owner] spills something on the floor!</span>")
 				playsound(owner, 'sound/misc/mat/endout.ogg', 100, TRUE, ignore_walls = FALSE)
-	if((!UH && gender == FEMALE) || (UH && UH.getorganslot(ORGAN_SLOT_VAGINA)))
+	if(owner.has_vagina())
 		switch(source)
 			if("pussyfucked")
 				if(owner.has_flaw(/datum/charflaw/addiction/lovefiend))
@@ -1404,7 +1400,7 @@
 /mob/living/carbon/human/proc/become_pregnant(husband)
 	if(QDELETED(src))
 		return
-	if(!getorganslot(ORGAN_SLOT_VAGINA)) //Vrell - only triggers on humans, no need to test if human.
+	if(!has_vagina()) //Vrell - only triggers on humans, no need to test if human.
 		return
 	if(stat == DEAD)
 		return
