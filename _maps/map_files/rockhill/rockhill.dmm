@@ -3696,6 +3696,10 @@
 /obj/structure/ladder,
 /turf/open/floor/rogue/cobble,
 /area/rogue/outdoors/town/roofs)
+"eMI" = (
+/obj/structure/plough,
+/turf/open/floor/rogue/twig,
+/area/rogue/indoors)
 "eNY" = (
 /obj/structure/stairs{
 	dir = 8
@@ -9511,6 +9515,11 @@
 /obj/item/rogueweapon/mace/cudgel,
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/basement)
+"mNw" = (
+/obj/structure/fluff/dryingrack,
+/obj/item/needle/thorn,
+/turf/open/floor/rogue/cobblerock,
+/area/rogue/outdoors/rtfield)
 "mNO" = (
 /turf/closed/wall/mineral/rogue/wood,
 /area/rogue/indoors/town/shop)
@@ -12601,9 +12610,8 @@
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue/indoors)
 "qYF" = (
-/obj/structure/fluff/dryingrack,
-/obj/item/needle/thorn,
-/turf/open/floor/rogue/cobblerock,
+/obj/structure/composter/halffull,
+/turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors/rtfield)
 "qYJ" = (
 /turf/open/floor/rogue/carpet,
@@ -271028,7 +271036,7 @@ wvu
 gxC
 wOD
 ryI
-fxx
+hSV
 fxx
 fxx
 bdN
@@ -272234,7 +272242,7 @@ cyr
 shc
 buv
 trG
-hSV
+mNw
 fxx
 fxx
 wSn
@@ -272636,7 +272644,7 @@ hDB
 wOD
 wOD
 ryI
-qYF
+hVZ
 fxx
 fxx
 uaL
@@ -273035,7 +273043,7 @@ trG
 pqA
 kaE
 ltT
-kaE
+eMI
 uaX
 trG
 hVZ
@@ -273437,10 +273445,10 @@ gxC
 pqA
 ltT
 ltT
-ltT
+kaE
 dXz
 gxC
-hVZ
+mNw
 fxx
 fxx
 wSn

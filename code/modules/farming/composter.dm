@@ -13,8 +13,16 @@
 	var/flipped_compost = 0
 	var/ready_compost = 0
 
+/obj/structure/composter/halffull
+	ready_compost = MAXIMUM_TOTAL_COMPOST * 0.5
+
+/obj/structure/composter/update_icon()
+	. = ..()
+	update_overlays()
+
 /obj/structure/composter/Initialize()
 	START_PROCESSING(SSprocessing, src)
+	update_icon()
 	. = ..()
 
 /obj/structure/composter/Destroy()
@@ -67,7 +75,7 @@
 		unflipped_compost += compost_value
 		to_chat(user, span_notice("I add \the [attacking_item] to \the [src]"))
 		qdel(attacking_item)
-		update_overlays()
+		update_icon()
 		return TRUE
 	return FALSE
 
@@ -96,7 +104,7 @@
 		return
 	ready_compost -= COMPOST_PER_PRODUCED_ITEM
 	new /obj/item/compost(get_turf(src))
-	update_overlays()
+	update_icon()
 
 /obj/structure/composter/attackby(obj/item/attacking_item, mob/user, params)
 	user.changeNext_move(CLICK_CD_MELEE)
@@ -126,7 +134,7 @@
 		. += "compost_heavy"
 	else if(total >= MAXIMUM_TOTAL_COMPOST * 0.30)
 		. += "compost_mid"
-	else if (total > 0)
+	else if (total >= COMPOST_PER_PRODUCED_ITEM)
 		. += "compost_low"
 
 /obj/item/compost
@@ -134,5 +142,5 @@
 	desc = "Decomposed produce ready to give life to plants."
 	icon = 'icons/obj/objects.dmi'
 	icon_state = "ash"
-	color = "#a18053"
+	color = "#ffac38"
 	w_class = WEIGHT_CLASS_SMALL

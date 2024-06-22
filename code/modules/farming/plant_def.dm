@@ -46,6 +46,8 @@
 	produce_type = /obj/item/reagent_containers/food/snacks/grown/apple
 	uproot_loot = list(/obj/item/grown/log/tree/small)
 	perennial = TRUE
+	maturation_nutrition = 60
+	produce_nutrition =  30
 
 /datum/plant_def/pipeweed
 	name = "westleach leaf"

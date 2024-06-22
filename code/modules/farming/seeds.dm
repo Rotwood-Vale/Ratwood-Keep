@@ -33,7 +33,7 @@
 	name = "wheat seeds"
 	plant_def_type = /datum/plant_def/wheat
 
-/obj/item/seeds/oat
+/obj/item/seeds/wheat/oat
 	name = "oat seeds"
 	plant_def_type = /datum/plant_def/oat
 

@@ -56,7 +56,7 @@
 	distill_amt = 24
 
 /obj/item/reagent_containers/food/snacks/grown/oat
-	seed = /obj/item/seeds/oat
+	seed = /obj/item/seeds/wheat/oat
 	name = "oat grain"
 	desc = ""
 	icon = 'icons/roguetown/items/produce.dmi'
