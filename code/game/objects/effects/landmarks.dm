@@ -319,7 +319,15 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	name = "Prince"
 	icon_state = "arrow"
 
-/obj/effect/landmark/start/prisoner
+/obj/effect/landmark/start/prisonerr
+	name = "Prisoner (Rockhill)"
+	icon_state = "arrow"
+
+/obj/effect/landmark/start/prisonerb
+	name = "Prisoner (Bog)"
+	icon_state = "arrow"
+
+/obj/effect/landmark/start/hostage
 	name = "Hostage"
 	icon_state = "arrow"
 

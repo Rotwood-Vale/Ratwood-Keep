@@ -103,6 +103,7 @@
 #define KNIGHT		(1<<4)
 #define SHERIFF		(1<<5)
 #define BAILIFF		(1<<6)
+#define HOSTAGE		(1<<7)
 
 #define GARRISON		(1<<1)
 
@@ -160,9 +161,10 @@
 #define ADVENTURER	(1<<11)
 #define PILGRIM		(1<<12)
 #define VILLAGER	(1<<13)
-#define PRISONER	(1<<14)
-#define LUNATIC		(1<<15)
-#define WAVE_DRIFTER (1<<16)
+#define PRISONERR	(1<<14)
+#define PRISONERB	(1<<15)
+#define LUNATIC		(1<<16)
+#define WAVE_DRIFTER (1<<17)
 
 #define YOUNGFOLK	(1<<6)
 
@@ -277,8 +279,10 @@
 #define JDO_VAGRANT 33
 #define JDO_ORPHAN 34
 
-#define JDO_PRISONER 35
-#define JDO_LUNATIC 35.1
+#define JDO_PRISONERR 35
+#define JDO_PRISONERB 35.1
+#define JDO_HOSTAGE 35.2
+#define JDO_LUNATIC 35.3
 
 #define JDO_GOBLINKING 36
 #define JDO_GOBLINCOOK 37
