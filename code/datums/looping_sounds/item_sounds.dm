@@ -63,7 +63,7 @@
 /datum/looping_sound/fireloop
 	mid_sounds = list('sound/misc/fire_place.ogg')
 	mid_length = 35
-	volume = 100
+	volume = 25 
 	extra_range = -2
 	vary = TRUE
 
