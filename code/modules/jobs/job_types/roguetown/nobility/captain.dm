@@ -1,6 +1,6 @@
-/datum/job/roguetown/sheriff
+/datum/job/roguetown/captain
 	title = "Guard Captain"
-	flag = SHERIFF
+	flag = GUARD_CAPTAIN
 	department_flag = NOBLEMEN
 	faction = "Station"
 	allowed_patrons = ALL_DIVINE_PATRONS
@@ -11,19 +11,19 @@
 	allowed_sexes = list(MALE)
 	allowed_ages = list(AGE_MIDDLEAGED, AGE_OLD)
 	tutorial = "Your lineage is noble, and generations of strong, loyal knights have come before you. You served your time gracefully as a knight of his royal majesty, and now you've grown into a role which many men dream to become. Lead your men to victory and keep them in line and you will see this kingdom prosper under a thousand suns."
-	display_order = JDO_SHERIFF
+	display_order = JDO_GUARD_CAPTAIN
 	whitelist_req = FALSE
 
 	spells = list(/obj/effect/proc_holder/spell/self/convertrole/guard)
-	outfit = /datum/outfit/job/roguetown/sheriff
+	outfit = /datum/outfit/job/roguetown/captain
 
 	give_bank_account = 26
-	min_pq = 4
+	min_pq = 8
 	max_pq = null
 
 	cmode_music = 'sound/music/combat_guard2.ogg'
 
-/datum/job/roguetown/sheriff/after_spawn(mob/living/L, mob/M, latejoin = TRUE)
+/datum/job/roguetown/captain/after_spawn(mob/living/L, mob/M, latejoin = TRUE)
 	. = ..()
 	if(ishuman(L))
 		var/mob/living/carbon/human/H = L
@@ -40,7 +40,7 @@
 		H.real_name = "Captain [prev_real_name]"
 		H.name = "Captain [prev_name]"
 
-/datum/outfit/job/roguetown/sheriff/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/job/roguetown/captain/pre_equip(mob/living/carbon/human/H)
 	..()
 	head = /obj/item/clothing/head/roguetown/helmet/heavy/pigface
 	neck = /obj/item/clothing/neck/roguetown/chaincoif
@@ -79,8 +79,7 @@
 		H.change_stat("endurance", 2)
 		H.change_stat("speed", 1)
 		H.change_stat("fortune", 2)
-	if(H.dna?.species)
-		H.dna.species.soundpack_m = new /datum/voicepack/male/knight()
+	H.dna.species.soundpack_m = new /datum/voicepack/male/knight()
 	if(H.gender == FEMALE)
 		var/acceptable = list("Tomboy", "Bob", "Curly Short")
 		if(!(H.hairstyle in acceptable))

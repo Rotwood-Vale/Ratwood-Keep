@@ -936,10 +936,13 @@
 	resistance_flags = FIRE_PROOF
 	sellprice = 666
 	static_price = TRUE
-	var/active_item
+	var/active_item = FALSE
 
 /obj/item/clothing/neck/roguetown/blkknight/equipped(mob/living/user)
 	. = ..()
+	if(active_item)
+		return
+	active_item = TRUE
 	if(user.mind.special_role == "Bandit")
 		to_chat(user, span_notice("I feel bolstered by Matthios Power!..."))
 		user.change_stat("strength", 2)
@@ -949,27 +952,25 @@
 		user.change_stat("endurance", 2)
 		user.change_stat("speed", 2)
 		armor = getArmor("blunt" = 100, "slash" = 100, "stab" = 100, "bullet" = 100, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 50, "acid" = 0)
-		active_item = TRUE
 	else
 		to_chat(user, span_notice("I feel an evil power about that necklace.."))
 		armor = getArmor("blunt" = 0, "slash" = 0, "stab" = 0, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
-		active_item = TRUE
 
 /obj/item/clothing/neck/roguetown/blkknight/dropped(mob/living/user)
-	if(active_item)
-		if(user.mind.special_role == "Bandit")
-			to_chat(user, span_notice("I've removed the necklace of Matthios..."))
-			user.change_stat("strength", -2)
-			user.change_stat("perception", -2)
-			user.change_stat("intelligence", -2)
-			user.change_stat("constitution", -2)
-			user.change_stat("endurance", -2)
-			user.change_stat("speed", -2)
-			active_item = FALSE
-		else
-			to_chat(user, span_notice("Strange, I don't feel that power anymore.."))
-			armor = getArmor("blunt" = 100, "slash" = 100, "stab" = 100, "bullet" = 100, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 50, "acid" = 0)
-			active_item = FALSE
+	if(!active_item)
+		return
+	active_item = FALSE
+	if(user.mind.special_role == "Bandit")
+		to_chat(user, span_notice("I've removed the necklace of Matthios..."))
+		user.change_stat("strength", -2)
+		user.change_stat("perception", -2)
+		user.change_stat("intelligence", -2)
+		user.change_stat("constitution", -2)
+		user.change_stat("endurance", -2)
+		user.change_stat("speed", -2)
+	else
+		to_chat(user, span_notice("Strange, I don't feel that power anymore.."))
+		armor = getArmor("blunt" = 100, "slash" = 100, "stab" = 100, "bullet" = 100, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 50, "acid" = 0)
 
 /obj/item/clothing/suit/roguetown/armor/plate/blkknight
 	slot_flags = ITEM_SLOT_ARMOR

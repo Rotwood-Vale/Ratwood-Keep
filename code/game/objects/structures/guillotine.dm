@@ -102,7 +102,7 @@
 		if (GUILLOTINE_BLADE_RAISED)
 			if (LAZYLEN(buckled_mobs))
 				user.visible_message(span_warning("[user] begins to pull the lever!"),
-					                 span_warning("I begin to the pull the lever."))
+					                 span_warning("I begin to pull the lever!"))
 				current_action = GUILLOTINE_ACTION_INUSE
 
 				if (do_after(user, GUILLOTINE_ACTIVATE_DELAY, target = src) && blade_status == GUILLOTINE_BLADE_RAISED)
