@@ -43,8 +43,8 @@
 		OFFSET_NECK_F = list(0,-1), OFFSET_MOUTH_F = list(0,-1), OFFSET_PANTS_F = list(0,0), \
 		OFFSET_SHIRT_F = list(0,0), OFFSET_ARMOR_F = list(0,0), OFFSET_UNDIES_F = list(0,0), \
 		)
-    specstats = list("strength" = 0, "perception" = 0, "intelligence" = 2, "constitution" = 0, "endurance" = 0, "speed" = 0, "fortune" = 2)
-    specstats_f = list("strength" = 0, "perception" = 0, "intelligence" = 2, "constitution" = 0, "endurance" = 0, "speed" = 0, "fortune" = 2)
+	specstats = list("strength" = 0, "perception" = 0, "intelligence" = 2, "constitution" = 0, "endurance" = 0, "speed" = 0, "fortune" = 2)
+	specstats_f = list("strength" = 0, "perception" = 0, "intelligence" = 2, "constitution" = 0, "endurance" = 0, "speed" = 0, "fortune" = 2)
 	enflamed_icon = "widefire"
 	customizers = list(
 		/datum/customizer/organ/eyes/humanoid,
