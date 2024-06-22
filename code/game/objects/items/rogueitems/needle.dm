@@ -51,9 +51,25 @@
 /obj/item/needle/attack(mob/living/M, mob/user)
 	sew(M, user)
 
+/obj/item/needle/attackby(obj/item/I, mob/user, params)
+	if(istype(I, /obj/item/natural/fibers))
+		if(maxstring - stringamt < 5)
+			to_chat(user, span_warning("Not enough room for more thread!"))
+			return
+		else
+			to_chat(user, "I begin threading the needle with additional fibers...")
+			if(do_after(user, 6 SECONDS - user.mind.get_skill_level(/datum/skill/misc/sewing), target = I))
+				stringamt += 5
+				to_chat(user, "I replenish the needle's thread!")
+				qdel(I)
+			return
+	return ..()
+
+
+
 /obj/item/needle/attack_obj(obj/O, mob/living/user)
-	if(can_repair && isitem(O))
-		var/obj/item/I = O
+	var/obj/item/I = O
+	if(can_repair)
 		if(stringamt < 1)
 			to_chat(user, span_warning("The needle has no thread left!"))
 			return
@@ -84,16 +100,6 @@
 				//Vrell - Part of storage item repair fix
 				if(target_storage)
 					target_storage.being_repaired = FALSE
-		if(istype(O, /obj/item/natural/fibers))
-			if(maxstring - stringamt < 5)
-				to_chat(user, span_warning("Not enough room for more thread!"))
-				return
-			else
-				to_chat(user, "I begin threading the needle with additional fibers...")
-				if(do_after(user, 10 SECONDS / (user.mind.get_skill_level(/datum/skill/misc/sewing)), target = O))
-					stringamt += 5
-					to_chat(user, "I replenish the needle's thread!")
-				return
 		return
 	return ..()
 
@@ -159,7 +165,8 @@
 	name = "needle"
 	icon_state = "thornneedle"
 	desc = "This rough needle can be used to sew cloth and wounds."
-	stringamt = 3
+	stringamt = 5
+	maxstring = 5
 	anvilrepair = null
 
 /obj/item/needle/pestra
