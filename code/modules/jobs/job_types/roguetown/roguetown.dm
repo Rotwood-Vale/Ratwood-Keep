@@ -67,8 +67,34 @@
 			H.mind.adjust_skillrank(/datum/skill/misc/weaving, 1, TRUE)
 		if(H.dna)
 			if(H.dna.species)
-				if(H.dna.species.name in list("Elf", "Half-Elf"))
+				if(H.dna.species.name in list("Dwarf")) //Stonecunning
+					H.mind.adjust_skillrank(/datum/skill/craft/masonry, 1, TRUE)
+					H.mind.adjust_skillrank(/datum/skill/craft/engineering, 2, TRUE) //Engineering is very limited, may be adjusted later.
+					H.mind.adjust_skillrank(/datum/skill/labor/mining, 1, TRUE)
+				if(H.dna.species.name in list("Elf")) //Sagacity
 					H.mind.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
+					H.mind.adjust_skillrank(/datum/skill/magic/arcane, 1, TRUE)
+					H.mind.adjust_skillrank(/datum/skill/magic/druidic, 1, TRUE)
+					H.mind.adjust_skillrank(/datum/skill/craft/alchemy, 1, TRUE)
+				if(H.dna.species.name in list("Dark Elf")) //Shadow Ken
+					H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 1, TRUE)
+					H.mind.adjust_skillrank(/datum/skill/combat/knives, 1, TRUE)
+					H.mind.adjust_skillrank(/datum/skill/misc/stealing, 1, TRUE)
+				if(H.dna.species.name in list("Aasimar")) // Hallowed
+					H.mind.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
+					H.mind.adjust_skillrank(/datum/skill/magic/holy, 1, TRUE)
+					H.mind.adjust_skillrank(/datum/skill/misc/medicine, 1, TRUE)
+				if(H.dna.species.name in list("Half-Kin")) //Bushcraft
+					H.mind.adjust_skillrank(/datum/skill/craft/tanning, 1, TRUE)
+					H.mind.adjust_skillrank(/datum/skill/labor/farming, 1, TRUE)
+					H.mind.adjust_skillrank(/datum/skill/craft/cooking, 1, TRUE)
+				if(H.dna.species.name in list("Tabaxi")) //Secret Kitty Skills
+					H.mind.adjust_skillrank(/datum/skill/misc/climbing, 1, TRUE)
+					H.mind.adjust_skillrank(/datum/skill/misc/swimming, 1, TRUE)
+				if(H.dna.species.name in list("Kobold")) //Kobold Gem Trait Placeholder, REMOVE LATER.
+					H.mind.adjust_skillrank(/datum/skill/craft/masonry, 1, TRUE)
+					H.mind.adjust_skillrank(/datum/skill/craft/engineering, 2, TRUE)
+					H.mind.adjust_skillrank(/datum/skill/labor/mining, 1, TRUE)
 	H.underwear_color = null
 	H.update_body()
 
