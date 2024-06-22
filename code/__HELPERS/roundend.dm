@@ -296,7 +296,7 @@
 	SSblackbox.Seal()
 
 	sleep(10 SECONDS)
-	SSvote.initiate_vote("map", "Blackstone players")
+	SSvote.initiate_vote("map", "Ratwood players")
 	ready_for_reboot = TRUE
 	standard_reboot()
 
