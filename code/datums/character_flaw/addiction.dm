@@ -77,7 +77,7 @@
 /datum/charflaw/addiction/alcoholic
 	name = "Alcoholic"
 	desc = "Drinking alcohol is my favorite thing."
-	time = 30 MINUTES
+	time = 40 MINUTES
 	needsate_text = "Time for a drink."
 
 
@@ -85,16 +85,16 @@
 
 /datum/charflaw/addiction/junkie
 	name = "Junkie"
-	desc = "I need a real high to take the pain of this rotten world away."
-	time = 30 MINUTES
-	needsate_text = "Time to reach a new high."
+	desc = "I need a REAL high to take the pain of this rotten world away."
+	time = 40 MINUTES
+	needsate_text = "Time to get really high."
 
 /// Smoker
 
 /datum/charflaw/addiction/smoker
 	name = "Smoker"
 	desc = "I need to smoke something to take the edge off."
-	time = 30 MINUTES
+	time = 40 MINUTES
 	needsate_text = "Time for a flavorful smoke."
 
 /// GOD-FEARING
@@ -102,5 +102,5 @@
 /datum/charflaw/addiction/godfearing
 	name = "Devout Follower"
 	desc = "I need to pray to my Patron, their blessings are stronger."
-	time = 25 MINUTES
-	needsate_text = "Time to pray."
+	time = 40 MINUTES
+	needsate_text = "Time to pray to my Patron."
