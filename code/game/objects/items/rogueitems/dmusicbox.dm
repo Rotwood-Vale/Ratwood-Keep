@@ -47,7 +47,7 @@
 
 /obj/item/dmusicbox/attackby(obj/item/P, mob/user, params)
 	if(!loaded)
-		if(istype(P, /obj/item/reagent_containers/food/snacks/rogue/honey))
+		if(istype(P, /obj/item/roguecoin/copper))
 			loaded=TRUE
 			qdel(P)
 			update_icon()
@@ -91,10 +91,10 @@
 	var/file_size = length(infile)
 
 	if(file_ext != ".ogg")
-		to_chat(user, "<span class='warning'>SONG MUST BE AN OGG.</span>")
+		to_chat(user, span_warning("SONG MUST BE AN OGG."))
 		return
 	if(file_size > 6485760)
-		to_chat(user, "<span class='warning'>TOO BIG. 6 MEGS OR LESS.</span>")
+		to_chat(user, span_warning("TOO BIG. 6 MEGS OR LESS."))
 		return
 	lastfilechange = world.time
 	fcopy(infile,"data/jukeboxuploads/[user.ckey]/[filename]")

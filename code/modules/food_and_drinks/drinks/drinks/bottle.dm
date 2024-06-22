@@ -55,7 +55,7 @@
 		return ..()
 
 	if(HAS_TRAIT(user, TRAIT_PACIFISM))
-		to_chat(user, "<span class='warning'>I don't want to harm [target]!</span>")
+		to_chat(user, span_warning("I don't want to harm [target]!"))
 		return
 
 	var/obj/item/bodypart/affecting = user.zone_selected //Find what the player is aiming at
@@ -68,11 +68,11 @@
 
 		var/mob/living/carbon/human/H = target
 		var/headarmor = 0 // Target's head armor
-		armor_block = H.run_armor_check(affecting, "melee","","",armor_penetration) // For normal attack damage
+		armor_block = H.run_armor_check(affecting, "blunt","","",armor_penetration) // For normal attack damage
 
 		//If they have a hat/helmet and the user is targeting their head.
 		if(istype(H.head, /obj/item/clothing/head) && affecting == BODY_ZONE_HEAD)
-			headarmor = H.head.armor.melee
+			headarmor = H.head.armor.blunt
 		else
 			headarmor = 0
 
@@ -81,7 +81,7 @@
 
 	else
 		//Only humans can have armor, right?
-		armor_block = target.run_armor_check(affecting, "melee")
+		armor_block = target.run_armor_check(affecting, "blunt")
 		if(affecting == BODY_ZONE_HEAD)
 			armor_duration = duration + force
 
@@ -98,11 +98,11 @@
 
 	//Display an attack message.
 	if(target != user)
-		target.visible_message("<span class='danger'>[user] hits [target][head_attack_message] with a bottle of [src.name]!</span>", \
-				"<span class='danger'>[user] hits you [head_attack_message] with a bottle of [src.name]!</span>")
+		target.visible_message(span_danger("[user] hits [target][head_attack_message] with a bottle of [src.name]!"), \
+				span_danger("[user] hits you [head_attack_message] with a bottle of [src.name]!"))
 	else
-		target.visible_message("<span class='danger'>[target] hits [target.p_them()]self with a bottle of [src.name][head_attack_message]!</span>", \
-				"<span class='danger'>I hit myself with a bottle of [src.name][head_attack_message]!</span>")
+		target.visible_message(span_danger("[target] hits [target.p_them()]self with a bottle of [src.name][head_attack_message]!"), \
+				span_danger("I hit myself with a bottle of [src.name][head_attack_message]!"))
 
 	//Attack logs
 	log_combat(user, target, "attacked", src)
@@ -491,7 +491,7 @@
 		active = TRUE
 		log_bomber(user, "has primed a", src, "for detonation")
 
-		to_chat(user, "<span class='info'>I light [src] on fire.</span>")
+		to_chat(user, span_info("I light [src] on fire."))
 		add_overlay(GLOB.fire_overlay)
 		if(!isGlass)
 			addtimer(CALLBACK(src, PROC_REF(explode)), 5 SECONDS)
@@ -511,8 +511,8 @@
 /obj/item/reagent_containers/food/drinks/bottle/molotov/attack_self(mob/user)
 	if(active)
 		if(!isGlass)
-			to_chat(user, "<span class='danger'>The flame's spread too far on it!</span>")
+			to_chat(user, span_danger("The flame's spread too far on it!"))
 			return
-		to_chat(user, "<span class='info'>I snuff out the flame on [src].</span>")
+		to_chat(user, span_info("I snuff out the flame on [src]."))
 		cut_overlay(GLOB.fire_overlay)
 		active = 0

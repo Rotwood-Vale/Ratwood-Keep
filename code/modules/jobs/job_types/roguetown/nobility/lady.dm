@@ -7,9 +7,10 @@
 	spawn_positions = 1
 
 	allowed_sexes = list(FEMALE)
-	allowed_races = NOBLE_RACES_TYPES
+	allowed_races = RACES_TOLERATED_UP
 	tutorial = "Picked out of your political value rather than likely any form of love, you have become the King's most trusted confidant and likely friend throughout your marriage. Your loyalty and, perhaps, love; will be tested this day. For the daggers that threaten your beloved are as equally pointed at your own throat."
 
+	spells = list(/obj/effect/proc_holder/spell/self/convertrole/servant)
 	outfit = /datum/outfit/job/roguetown/lady
 
 	display_order = JDO_LADY
@@ -37,7 +38,7 @@
 	ADD_TRAIT(H, TRAIT_SEEPRICES, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_NOBLE, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_NUTCRACKER, TRAIT_GENERIC)
-	beltl = /obj/item/roguekey/manor
+	beltl = /obj/item/keyring/royal
 	neck = /obj/item/storage/belt/rogue/pouch/coins/rich
 	belt = /obj/item/storage/belt/rogue/leather/cloth/lady
 	if(isdwarf(H))
@@ -53,7 +54,6 @@
 	id = /obj/item/clothing/ring/silver
 	shoes = /obj/item/clothing/shoes/roguetown/shortboots
 	if(H.mind)
-		H.mind.AddSpell(new /obj/effect/proc_holder/spell/self/convertrole/servant)
 		H.mind.adjust_skillrank(/datum/skill/misc/stealing, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/knives, 3, TRUE)

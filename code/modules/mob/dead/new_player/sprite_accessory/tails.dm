@@ -5,6 +5,9 @@
 	relevant_layers = list(BODY_FRONT_LAYER, BODY_BEHIND_LAYER)
 	var/can_wag = FALSE
 
+/datum/sprite_accessory/tail/is_visible(obj/item/organ/organ, obj/item/bodypart/bodypart, mob/living/carbon/owner)
+	return is_human_part_visible(owner, HIDETAIL)
+
 /datum/sprite_accessory/tail/adjust_appearance_list(list/appearance_list, obj/item/organ/organ, obj/item/bodypart/bodypart, mob/living/carbon/owner)
 	generic_gender_feature_adjust(appearance_list, organ, bodypart, owner, OFFSET_BACK, OFFSET_BACK_F)
 
@@ -295,7 +298,7 @@
 
 /datum/sprite_accessory/tail/lizard
 	abstract_type = /datum/sprite_accessory/tail/lizard
-	icon = 'icons/mob/sprite_accessory/tails/lizard.dmi'
+	icon = 'icons/mob/sprite_accessory/tails/lizard.dmi'	
 	can_wag = TRUE
 
 /datum/sprite_accessory/tail/lizard/smooth
@@ -313,6 +316,10 @@
 /datum/sprite_accessory/tail/lizard/spikes
 	name = "Spikes"
 	icon_state = "spikes"
+	
+/datum/sprite_accessory/tail/lizard/kobold
+	name = "Kobold"
+	icon_state = "kobold"
 
 /datum/sprite_accessory/tail/tiefling
 	name = "Tiefling"

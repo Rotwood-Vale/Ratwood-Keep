@@ -36,13 +36,13 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 
 /datum/antagonist/vampirelord/examine_friendorfoe(datum/antagonist/examined_datum,mob/examiner,mob/examined)
 	if(istype(examined_datum, /datum/antagonist/vampirelord/lesser))
-		return "<span class='boldnotice'>A vampire spawn.</span>"
+		return span_boldnotice("A vampire spawn.")
 	if(istype(examined_datum, /datum/antagonist/vampirelord))
-		return "<span class='boldnotice'>A Vampire Lord!.</span>"
+		return span_boldnotice("A Vampire Lord!.")
 	if(istype(examined_datum, /datum/antagonist/zombie))
-		return "<span class='boldnotice'>Another deadite.</span>"
+		return span_boldnotice("Another deadite.")
 	if(istype(examined_datum, /datum/antagonist/skeleton))
-		return "<span class='boldnotice'>Another deadite.</span>"
+		return span_boldnotice("Another deadite.")
 
 /datum/antagonist/vampirelord/apply_innate_effects(mob/living/mob_override)
 	var/mob/living/M = mob_override || owner.current
@@ -139,7 +139,7 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 	owner.current.ambushable = FALSE
 
 /mob/living/carbon/human/proc/spawn_pick_class()
-	var/list/classoptions = list("Bard", "Fisher", "Hunter", "Miner", "Peasant", "Woodcutter", "Cheesemaker", "Blacksmith", "Carpenter", "Rogue", "Treasure Hunter", "Mage", "Sorceress")
+	var/list/classoptions = list("Bard", "Fisher", "Hunter", "Miner", "Peasant", "Woodcutter", "Cheesemaker", "Blacksmith", "Carpenter", "Rogue", "Treasure Hunter", "Mage")
 	var/list/visoptions = list()
 
 	for(var/T in 1 to 5)
@@ -148,7 +148,7 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 
 	var/selected = input(src, "Which class was I?", "VAMPIRE SPAWN") as anything in visoptions
 
-	for(var/datum/advclass/A in GLOB.adv_classes)
+	for(var/datum/advclass/A in SSrole_class_handler.sorted_class_categories[CTAG_ALLCLASS])
 		if(A.name == selected)
 			equipOutfit(A.outfit)
 			return
@@ -182,8 +182,8 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 	icon_state = "vpants"
 	item_state = "vpants"
 	sewrepair = FALSE
-	armor = list("melee" = 100, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
-	prevent_crits = list(BCLASS_CUT, BCLASS_CHOP, BCLASS_BLUNT, BCLASS_TWIST)
+	armor = list("blunt" = 100, "slash" = 100, "stab" = 90, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT, BCLASS_TWIST)
 	blocksound = PLATEHIT
 	do_sound = FALSE
 	drop_sound = 'sound/foley/dropsound/armor_drop.ogg'
@@ -225,8 +225,8 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 	body_parts_covered = CHEST|GROIN|VITALS
 	icon_state = "vplate"
 	item_state = "vplate"
-	armor = list("melee" = 100, "bullet" = 100, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
-	prevent_crits = list(BCLASS_CUT, BCLASS_CHOP, BCLASS_BLUNT, BCLASS_TWIST)
+	armor = list("blunt" = 100, "slash" = 100, "stab" = 90, "bullet" = 100, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT, BCLASS_TWIST)
 	nodismemsleeves = TRUE
 	max_integrity = 500
 	allowed_sex = list(MALE, FEMALE)
@@ -243,10 +243,10 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 	body_parts_covered = FEET
 	icon_state = "vboots"
 	item_state = "vboots"
-	prevent_crits = list(BCLASS_CUT, BCLASS_CHOP, BCLASS_BLUNT, BCLASS_TWIST)
+	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT, BCLASS_TWIST)
 	color = null
 	blocksound = PLATEHIT
-	armor = list("melee" = 100, "bullet" = 100, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	armor = list("blunt" = 100, "slash" = 100, "stab" = 90, "bullet" = 100, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
 	resistance_flags = FIRE_PROOF | ACID_PROOF
 
 /obj/item/clothing/head/roguetown/helmet/heavy/vampire
@@ -263,7 +263,7 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 
 /datum/antagonist/vampirelord/on_removal()
 	if(!silent && owner.current)
-		to_chat(owner.current,"<span class='danger'>I am no longer a [job_rank]!</span>")
+		to_chat(owner.current,span_danger("I am no longer a [job_rank]!"))
 	owner.special_role = null
 	if(!isnull(batform))
 		owner.current.RemoveSpell(batform)
@@ -300,12 +300,12 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 	objectives += survive
 
 /datum/antagonist/vampirelord/greet()
-	to_chat(owner.current, "<span class='userdanger'>I am ancient. I am the Land. And I am now awoken to these trespassers upon my domain.</span>")
+	to_chat(owner.current, span_userdanger("I am ancient. I am the Land. And I am now awoken to these trespassers upon my domain."))
 	owner.announce_objectives()
 	..()
 
 /datum/antagonist/vampirelord/lesser/greet()
-	to_chat(owner.current, "<span class='userdanger'>We are awakened from our slumber, Spawn of the feared Vampire Lord.</span>")
+	to_chat(owner.current, span_userdanger("We are awakened from our slumber, Spawn of the feared Vampire Lord."))
 	owner.announce_objectives()
 
 /datum/antagonist/vampirelord/proc/finalize_vampire()
@@ -354,13 +354,13 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 				if(T.can_see_sky())
 					if(T.get_lumcount() > 0.15)
 						if(!isspawn)
-							to_chat(H, "<span class='warning'>Astrata spurns me! I must get out of her rays!</span>") // VLord is more punished for daylight excursions.
+							to_chat(H, span_warning("Astrata spurns me! I must get out of her rays!")) // VLord is more punished for daylight excursions.
 							var/turf/N = H.loc
 							if(N.can_see_sky())
 								if(N.get_lumcount() > 0.15)
 									H.fire_act(3)
 									handle_vitae(-500)
-							to_chat(H, "<span class='warning'>That was too close. I must avoid the sun.</span>")
+							to_chat(H, span_warning("That was too close. I must avoid the sun."))
 						else if (isspawn && !disguised)
 							H.fire_act(1,5)
 							handle_vitae(-10)
@@ -379,7 +379,7 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 		H.blood_volume = BLOOD_VOLUME_NORMAL
 		if(vitae < 200)
 			if(disguised)
-				to_chat(H, "<span class='warning'>My disguise fails!</span>")
+				to_chat(H, span_warning("My disguise fails!"))
 				H.vampire_undisguise(src)
 	handle_vitae(-1)
 
@@ -401,7 +401,7 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 		mypool.update_pool(tribute)
 	if(vitae <= 20)
 		if(!starved)
-			to_chat(owner, "<span class='userdanger'>I starve, my power dwindles! I am so weak!</span>")
+			to_chat(owner, span_userdanger("I starve, my power dwindles! I am so weak!"))
 			starved = TRUE
 			for(var/S in MOBSTATS)
 				owner.current.change_stat(S, -5)
@@ -505,8 +505,8 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 				if(!C.kingsubmit)
 					C.kingsubmit = TRUE
 		if("No")
-			lord << "<span class='boldnotice'>They refuse!</span>"
-			src << "<span class='boldnotice'>I refuse!</span>"
+			lord << span_boldnotice("They refuse!")
+			src << span_boldnotice("I refuse!")
 
 /mob/living/carbon/human/proc/vampire_telepathy()
 	set name = "Telepathy"
@@ -517,11 +517,11 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 	if(!msg)
 		return
 	for(var/datum/mind/V in C.vampires)
-		to_chat(V, "<span class='boldnotice'>A message from [src.real_name]:[msg]</span>")
+		to_chat(V, span_boldnotice("A message from [src.real_name]:[msg]"))
 	for(var/datum/mind/D in C.deathknights)
-		to_chat(D, "<span class='boldnotice'>A message from [src.real_name]:[msg]</span>")
+		to_chat(D, span_boldnotice("A message from [src.real_name]:[msg]"))
 	for(var/mob/dead/observer/rogue/arcaneeye/A in GLOB.mob_list)
-		to_chat(A, "<span class='boldnotice'>A message from [src.real_name]:[msg]</span>")
+		to_chat(A, span_boldnotice("A message from [src.real_name]:[msg]"))
 
 /mob/living/carbon/human/proc/punish_spawn()
 	set name = "Punish Minion"
@@ -539,21 +539,21 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 		var/punishmentlevels = list("Pause", "Pain", "Release")
 		switch(input(src, "Severity?", "PUNISHMENT") as anything in punishmentlevels|null)
 			if("Pain")
-				to_chat(choice, "<span class='boldnotice'>You are wracked with pain as your master punishes you!</span>")
+				to_chat(choice, span_boldnotice("You are wracked with pain as your master punishes you!"))
 				choice.apply_damage(30, BRUTE)
 				choice.emote_scream()
 				playsound(choice, 'sound/misc/obey.ogg', 100, FALSE, pressure_affected = FALSE)
 			if("Pause")
-				to_chat(choice, "<span class='boldnotice'>Your body is frozen in place as your master punishes you!</span>")
+				to_chat(choice, span_boldnotice("Your body is frozen in place as your master punishes you!"))
 				choice.Paralyze(300)
 				choice.emote_scream()
 				playsound(choice, 'sound/misc/obey.ogg', 100, FALSE, pressure_affected = FALSE)
 			if("Release")
-				to_chat(choice, "<span class='boldnotice'>You feel only darkness. Your master no longer has use of you.</span>")
+				to_chat(choice, span_boldnotice("You feel only darkness. Your master no longer has use of you."))
 				spawn(10 SECONDS)
 					choice.emote_scream()
 					choice.dust()
-		visible_message("<span class='danger'>[src] reaches out, gripping [choice]'s soul, inflicting punishment!</span>")
+		visible_message(span_danger("[src] reaches out, gripping [choice]'s soul, inflicting punishment!"))
 
 /obj/structure/vampire/portal/Crossed(atom/movable/AM)
 	. = ..()
@@ -581,21 +581,21 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 			var/obj/structure/vampire/portal/P = new(Vamp.loc)
 			P.duration = duration
 			P.spawntime = world.time
-			P.visible_message("<span class='boldnotice'>A sickening tear is heard as a sinister portal emerges.</span>")
+			P.visible_message(span_boldnotice("A sickening tear is heard as a sinister portal emerges."))
 		qdel(Vamp)
 
 /obj/structure/vampire/portalmaker/proc/create_portal(choice,duration)
 	sending = TRUE
 	for(var/obj/effect/landmark/vteleportsending/S in GLOB.landmarks_list)
 		var/obj/structure/vampire/portal/sending/P = new(S.loc)
-		P.visible_message("<span class='boldnotice'>A sickening tear is heard as a sinister portal emerges.</span>")
+		P.visible_message(span_boldnotice("A sickening tear is heard as a sinister portal emerges."))
 
 /obj/structure/vampire/portal/Initialize()
 	. = ..()
 	set_light(3, 20, LIGHT_COLOR_BLOOD_MAGIC)
 	playsound(loc, 'sound/misc/portalopen.ogg', 100, FALSE, pressure_affected = FALSE)
 	sleep(600)
-	visible_message("<span class='boldnotice'>[src] shudders before rapidly closing.</span>")
+	visible_message(span_boldnotice("[src] shudders before rapidly closing."))
 	qdel(src)
 
 /obj/structure/vampire/portal/sending/Destroy()
@@ -609,7 +609,7 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 
 /obj/structure/vampire/bloodpool/examine(mob/user)
 	. = ..()
-	to_chat(user, "<span class='boldnotice'>Blood level: [current]</span>")
+	to_chat(user, span_boldnotice("Blood level: [current]"))
 
 /obj/structure/vampire/bloodpool/attack_hand(mob/living/user)
 	var/datum/antagonist/vampirelord/lord = user.mind.has_antag_datum(/datum/antagonist/vampirelord)
@@ -648,9 +648,12 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 					return
 				if(do_after(user, 100))
 					lord.handle_vitae(-5000)
-					var/list/armorpieces = list(/obj/item/clothing/under/roguetown/platelegs/vampire, /obj/item/clothing/suit/roguetown/armor/chainmail/iron/vampire, /obj/item/clothing/suit/roguetown/armor/plate/vampire, /obj/item/clothing/shoes/roguetown/boots/armor/vampire, /obj/item/clothing/head/roguetown/helmet/heavy/vampire, /obj/item/clothing/gloves/roguetown/chain/vampire)
-					for(var/obj/item/A in armorpieces)
-						new A(src.loc)
+					new /obj/item/clothing/under/roguetown/platelegs/vampire(user.loc)
+					new /obj/item/clothing/suit/roguetown/armor/chainmail/iron/vampire(user.loc)
+					new /obj/item/clothing/suit/roguetown/armor/plate/vampire(user.loc)
+					new /obj/item/clothing/shoes/roguetown/boots/armor/vampire(user.loc)
+					new /obj/item/clothing/head/roguetown/helmet/heavy/vampire(user.loc)
+					new /obj/item/clothing/gloves/roguetown/chain/vampire(user.loc)
 				user.playsound_local(get_turf(src), 'sound/misc/vcraft.ogg', 100, FALSE, pressure_affected = FALSE)
 
 /obj/structure/vampire/bloodpool/proc/update_pool(change)
@@ -763,13 +766,13 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 		if(!unlocked)
 			to_chat(user, "I have yet to regain this aspect of my power!")
 			return
-		if(C.deathknights.len >= 3)
-			to_chat(user, "You cannot summon any more death knights.")
-			return
 		var/choice = input(user,"What to do?", "ROGUETOWN") as anything in useoptions|null
 		switch(choice)
 			if("Create Death Knight")
 				if(alert(user, "Create a Death Knight? Cost:5000","","Yes","No") == "Yes")
+					if(C.deathknights.len >= 3)
+						to_chat(user, "You cannot summon any more death knights.")
+						return
 					if(!lord.mypool.check_withdraw(-5000))
 						to_chat(user, "I don't have enough vitae!")
 						return
@@ -800,11 +803,11 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 							GLOB.todoverride = null
 							sunstolen = FALSE
 						priority_announce("The Sun is torn from the sky!", "Terrible Omen", 'sound/misc/astratascream.ogg')
-						addomen("sunsteal")
+						addomen(OMEN_SUNSTEAL)
 						for(var/mob/living/carbon/human/astrater in GLOB.human_list)
 							if(!istype(astrater.patron, /datum/patron/divine/astrata) || !length(astrater.mind?.antag_datums))
 								continue
-							to_chat(astrater, "<span class='userdanger'>You feel the pain of [astrater.patron.name]!</span>")
+							to_chat(astrater, span_userdanger("You feel the pain of [astrater.patron.name]!"))
 							astrater.emote_scream()
 
 	if(user.mind.special_role == "Vampire Spawn")
@@ -815,7 +818,7 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 	SEND_SOUND(src, sound('sound/misc/notice (2).ogg'))
 	if(alert(src, "A Vampire Lord is summoning you from the Underworld.", "Be Risen?", "Yes", "No") == "Yes")
 		if(!C.deathknightspawn)
-			to_chat(src, "<span class='warning'>Another soul was chosen.</span>")
+			to_chat(src, span_warning("Another soul was chosen."))
 		returntolobby()
 
 // DEATH KNIGHT ANTAG
@@ -838,7 +841,7 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 	add_objective(/datum/objective/vlordserve)
 	greet()
 /datum/antagonist/skeleton/knight/greet()
-	to_chat(owner.current, "<span class='userdanger'>I am returned to serve. I will obey, so that I may return to rest.</span>")
+	to_chat(owner.current, span_userdanger("I am returned to serve. I will obey, so that I may return to rest."))
 	owner.announce_objectives()
 	..()
 
@@ -869,11 +872,11 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 		if(count)
 			if(owner)
 				owner.adjust_triumphs(count)
-		to_chat(world, "<span class='greentext'>The [special_role_text] has TRIUMPHED!</span>")
+		to_chat(world, span_greentext("The [special_role_text] has TRIUMPHED!"))
 		if(owner?.current)
 			owner.current.playsound_local(get_turf(owner.current), 'sound/misc/triumph.ogg', 100, FALSE, pressure_affected = FALSE)
 	else
-		to_chat(world, "<span class='redtext'>The [special_role_text] has FAILED!</span>")
+		to_chat(world, span_redtext("The [special_role_text] has FAILED!"))
 		if(owner?.current)
 			owner.current.playsound_local(get_turf(owner.current), 'sound/misc/fail.ogg', 100, FALSE, pressure_affected = FALSE)
 // OBJECTIVES STORED HERE TEMPORARILY FOR EASE OF REFERENCE
@@ -992,11 +995,11 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 		if(count)
 			if(owner)
 				owner.adjust_triumphs(count)
-		to_chat(world, "<span class='greentext'>The [special_role_text] has TRIUMPHED!</span>")
+		to_chat(world, span_greentext("The [special_role_text] has TRIUMPHED!"))
 		if(owner?.current)
 			owner.current.playsound_local(get_turf(owner.current), 'sound/misc/triumph.ogg', 100, FALSE, pressure_affected = FALSE)
 	else
-		to_chat(world, "<span class='redtext'>The [special_role_text] has FAILED!</span>")
+		to_chat(world, span_redtext("The [special_role_text] has FAILED!"))
 		if(owner?.current)
 			owner.current.playsound_local(get_turf(owner.current), 'sound/misc/fail.ogg', 100, FALSE, pressure_affected = FALSE)
 
@@ -1139,7 +1142,7 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 	set hidden = 0
 
 	if(!isobserver(usr))
-		to_chat(usr, "<span class='warning'>You're not an Eye!</span>")
+		to_chat(usr, span_warning("You're not an Eye!"))
 		return
 	var/list/filtered = list()
 	for(var/V in GLOB.sortedAreas)
@@ -1156,7 +1159,7 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 		L+=T
 
 	if(!L || !L.len)
-		to_chat(usr, "<span class='warning'>No area available.</span>")
+		to_chat(usr, span_warning("No area available."))
 		return
 
 	usr.forceMove(pick(L))
@@ -1210,25 +1213,25 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 	if(!msg)
 		return
 	for(var/datum/mind/V in C.vampires)
-		to_chat(V, "<span class='boldnotice'>A message from [src.real_name]:[msg]</span>")
+		to_chat(V, span_boldnotice("A message from [src.real_name]:[msg]"))
 	for(var/datum/mind/D in C.deathknights)
-		to_chat(D, "<span class='boldnotice'>A message from [src.real_name]:[msg]</span>")
+		to_chat(D, span_boldnotice("A message from [src.real_name]:[msg]"))
 	for(var/mob/dead/observer/rogue/arcaneeye/A in GLOB.mob_list)
-		to_chat(A, "<span class='boldnotice'>A message from [src.real_name]:[msg]</span>")
+		to_chat(A, span_boldnotice("A message from [src.real_name]:[msg]"))
 
 /mob/dead/observer/rogue/arcaneeye/proc/eye_up()
 	set category = "Arcane Eye"
 	set name = "Move Up"
 
 	if(zMove(UP, TRUE))
-		to_chat(src, "<span class='notice'>I move upwards.</span>")
+		to_chat(src, span_notice("I move upwards."))
 
 /mob/dead/observer/rogue/arcaneeye/proc/eye_down()
 	set category = "Arcane Eye"
 	set name = "Move Down"
 
 	if(zMove(DOWN, TRUE))
-		to_chat(src, "<span class='notice'>I move down.</span>")
+		to_chat(src, span_notice("I move down."))
 
 /mob/dead/observer/rogue/arcaneeye/Move(NewLoc, direct)
 	if(world.time < next_gmove)
@@ -1287,19 +1290,37 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 			return
 		if(L.cmode)
 			willroll += 10
+		var/found_psycross = FALSE
+		for(var/obj/item/clothing/neck/roguetown/psicross/silver in L.contents)
+			found_psycross = TRUE
+			break
+			
 		if(bloodroll >= willroll)
-			to_chat(L, "You feel like a curtain is coming over your mind.")
-			to_chat(user, "Their mind gives way, they will soon be asleep.")
-			sleep(50)
-			L.Sleeping(300)
+			if(found_psycross == TRUE)
+				to_chat(L, "<font color='white'>The silver psycross shines and protect me from the unholy magic.</font>")
+				to_chat(user, span_userdanger("[L] has my BANE!It causes me to fail to ensnare their mind!"))
+			else
+				to_chat(L, "You feel like a curtain is coming over your mind.")
+				to_chat(user, "Their mind gives way, they will soon be asleep.")
+				sleep(50)
+				L.Sleeping(300)
+				
 		if(willroll >= bloodroll)
-			to_chat(user, "I fail to ensnare their mind.")
+			if(found_psycross == TRUE)
+				to_chat(L, "<font color='white'>The silver psycross shines and protect me from the unholy magic.</font>")
+				to_chat(user, span_userdanger("[L] has my BANE!It causes me to fail to ensnare their mind!"))
+			else
+				to_chat(user, "I fail to ensnare their mind.")
 			if(willroll - bloodroll >= 3)
-				to_chat(L, "I feel like someone or something unholy is messing with my head. I should get out of here!")
-				var/holyskill = user.mind.get_skill_level(/datum/skill/magic/holy)
-				var/arcaneskill = user.mind.get_skill_level(/datum/skill/magic/arcane)
-				if(holyskill + arcaneskill >= 1)
-					to_chat(L, "I feel like the unholy magic came from [user]. I should use my magic or miracles on them.")
+				if(found_psycross == TRUE)
+					to_chat(L, "<font color='white'> The silver psycross shines and protect me from the blood magic, the one who used blood magic was [user]!</font>")
+				else
+					to_chat(user, "I fail to ensnare their mind.")
+					to_chat(L, "I feel like someone or something unholy is messing with my head. I should get out of here!")
+					var/holyskill = L.mind.get_skill_level(/datum/skill/magic/holy)
+					var/arcaneskill = L.mind.get_skill_level(/datum/skill/magic/arcane)
+					if(holyskill + arcaneskill >= 1)
+						to_chat(L, "I feel like the unholy magic came from [user]. I should use my magic or miracles on them.")
 
 /obj/effect/proc_holder/spell/targeted/transfix/master
 	name = "Subjugate"

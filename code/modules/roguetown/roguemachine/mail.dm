@@ -32,7 +32,7 @@
 		return
 	user.changeNext_move(CLICK_CD_MELEE)
 	if(!coin_loaded)
-		to_chat(user, "<span class='warning'>The machine doesn't respond. It needs a coin.</span>")
+		to_chat(user, span_warning("The machine doesn't respond. It needs a coin."))
 		return
 	var/send2place = input(user, "Where to? (Person or #number)", "ROGUETOWN", null)
 	if(!send2place)
@@ -43,7 +43,7 @@
 	var/t = stripped_multiline_input("Write Your Letter", "ROGUETOWN", no_trim=TRUE)
 	if(t)
 		if(length(t) > 2000)
-			to_chat(user, "<span class='warning'>Too long. Try again.</span>")
+			to_chat(user, span_warning("Too long. Try again."))
 			return
 	if(!coin_loaded)
 		return
@@ -68,14 +68,14 @@
 				playsound(X, 'sound/misc/mail.ogg', 100, FALSE, -1)
 				break
 		if(found)
-			visible_message("<span class='warning'>[user] sends something.</span>")
+			visible_message(span_warning("[user] sends something."))
 			playsound(loc, 'sound/misc/disposalflush.ogg', 100, FALSE, -1)
 			SStreasury.give_money_treasury(coin_loaded, "Mail Income")
 			coin_loaded = FALSE
 			update_icon()
 			return
 		else
-			to_chat(user, "<span class='warning'>Failed to send it. Bad number?</span>")
+			to_chat(user, span_warning("Failed to send it. Bad number?"))
 	else
 		if(!send2place)
 			return
@@ -91,9 +91,9 @@
 			X.update_icon()
 			send_ooc_note("New letter from <b>[sentfrom].</b>", name = send2place)
 		else
-			to_chat(user, "<span class='warning'>The master of mails has perished?</span>")
+			to_chat(user, span_warning("The master of mails has perished?"))
 			return
-		visible_message("<span class='warning'>[user] sends something.</span>")
+		visible_message(span_warning("[user] sends something."))
 		playsound(loc, 'sound/misc/disposalflush.ogg', 100, FALSE, -1)
 		SStreasury.give_money_treasury(coin_loaded, "Mail")
 		coin_loaded = FALSE
@@ -116,7 +116,7 @@
 						else
 							GLOB.confessors += "[C.signed]"
 				qdel(C)
-				visible_message("<span class='warning'>[user] sends something.</span>")
+				visible_message(span_warning("[user] sends something."))
 				send_ooc_note("Confessions: [GLOB.confessors.len]/5", job = list("confessor", "inquisitor", "priest"))
 				playsound(loc, 'sound/magic/hallelujah.ogg', 100, FALSE, -1)
 				playsound(loc, 'sound/misc/disposalflush.ogg', 100, FALSE, -1)
@@ -145,11 +145,11 @@
 						playsound(src.loc, 'sound/misc/hiss.ogg', 100, FALSE, -1)
 						break
 				if(found)
-					visible_message("<span class='warning'>[user] sends something.</span>")
+					visible_message(span_warning("[user] sends something."))
 					playsound(loc, 'sound/misc/disposalflush.ogg', 100, FALSE, -1)
 					return
 				else
-					to_chat(user, "<span class='warning'>Cannot send it. Bad number?</span>")
+					to_chat(user, span_warning("Cannot send it. Bad number?"))
 			else
 				if(!send2place)
 					return
@@ -167,9 +167,9 @@
 					X.update_icon()
 					playsound(src.loc, 'sound/misc/hiss.ogg', 100, FALSE, -1)
 				if(!findmaster)
-					to_chat(user, "<span class='warning'>The master of mails has perished?</span>")
+					to_chat(user, span_warning("The master of mails has perished?"))
 				else
-					visible_message("<span class='warning'>[user] sends something.</span>")
+					visible_message(span_warning("[user] sends something."))
 					playsound(loc, 'sound/misc/disposalflush.ogg', 100, FALSE, -1)
 					send_ooc_note("New letter from <b>[sentfrom].</b>", name = send2place)
 					return
@@ -268,7 +268,7 @@
 			PA.cached_mailer = null
 			PA.cached_mailedto = null
 			PA.update_icon()
-			to_chat(user, "<span class='warning'>I carefully re-seal the letter and place it back in the machine, no one will know.</span>")
+			to_chat(user, span_warning("I carefully re-seal the letter and place it back in the machine, no one will know."))
 		P.forceMove(loc)
 		var/datum/component/storage/STR = GetComponent(/datum/component/storage)
 		STR.handle_item_insertion(P, prevent_warning=TRUE)

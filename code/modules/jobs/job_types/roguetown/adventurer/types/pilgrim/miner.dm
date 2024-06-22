@@ -3,10 +3,10 @@
 	tutorial = "You are a Miner, you mine for the local blacksmith, gathering rare ores. \
 	there are tales of ambitious dwarf miners building great forts in the lavalands, to harvest all of it's hardly touched ores"
 	allowed_sexes = list(MALE)
-	allowed_races = CLOTHED_RACES_TYPES
+	allowed_races = RACES_ALL_KINDS
 	outfit = /datum/outfit/job/roguetown/adventurer/miner
-	isvillager = TRUE
-	ispilgrim = TRUE
+
+	category_tags = list(CTAG_PILGRIM, CTAG_TOWNER)
 
 /datum/outfit/job/roguetown/adventurer/miner/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -36,7 +36,9 @@
 		H.mind.adjust_skillrank(/datum/skill/craft/engineering, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/craft/carpentry, pick(0,1), TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/medicine, 1, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/labor/mining, 4, TRUE)
 		H.change_stat("strength", 2)
 		H.change_stat("intelligence", -1)
 		H.change_stat("endurance", 1)
 		H.change_stat("constitution", 2)
+		H.change_stat("fortune", 2)

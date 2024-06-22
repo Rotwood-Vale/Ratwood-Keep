@@ -26,7 +26,7 @@
 			user.forceMove(T)
 			if(AM)
 				user.start_pulling(AM)
-			to_chat(user, "<span class='notice'>I blink and find myself in [get_area_name(T)].</span>")
+			to_chat(user, span_notice("I blink and find myself in [get_area_name(T)]."))
 		else
 			to_chat(user, "Nothing happens. You feel that this is a bad sign.")
 

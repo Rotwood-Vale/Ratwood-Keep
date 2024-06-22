@@ -41,10 +41,10 @@
 		if(LAZYLEN(contents) < capacity)
 			if(!user.transferItemToLoc(I, src))
 				return
-			to_chat(user, "<span class='notice'>I place [I] in [src].</span>")
+			to_chat(user, span_notice("I place [I] in [src]."))
 			update_icon()
 		else
-			to_chat(user, "<span class='warning'>[src] is full.</span>")
+			to_chat(user, span_warning("[src] is full."))
 		return
 
 	else if(user.used_intent.type != INTENT_HARM)

@@ -51,15 +51,15 @@
 
 /datum/antagonist/abductor/on_removal()
 	if(owner.current)
-		to_chat(owner.current,"<span class='danger'>I are no longer the [owner.special_role]!</span>")
+		to_chat(owner.current,span_danger("I are no longer the [owner.special_role]!"))
 	owner.special_role = null
 	REMOVE_TRAIT(owner, TRAIT_ABDUCTOR_TRAINING, ABDUCTOR_ANTAGONIST)
 	return ..()
 
 /datum/antagonist/abductor/greet()
-	to_chat(owner.current, "<span class='notice'>I are the [owner.special_role]!</span>")
-	to_chat(owner.current, "<span class='notice'>With the help of my teammate, kidnap and experiment on station crew members!</span>")
-	to_chat(owner.current, "<span class='notice'>[greet_text]</span>")
+	to_chat(owner.current, span_notice("I are the [owner.special_role]!"))
+	to_chat(owner.current, span_notice("With the help of my teammate, kidnap and experiment on station crew members!"))
+	to_chat(owner.current, span_notice("[greet_text]"))
 	owner.announce_objectives()
 
 /datum/antagonist/abductor/proc/finalize_abductor()
@@ -111,7 +111,7 @@
 
 /datum/antagonist/abductor/proc/admin_equip(mob/admin)
 	if(!ishuman(owner.current))
-		to_chat(admin, "<span class='warning'>This only works on humans!</span>")
+		to_chat(admin, span_warning("This only works on humans!"))
 		return
 	var/mob/living/carbon/human/H = owner.current
 	var/gear = alert(admin,"Agent or Scientist Gear","Gear","Agent","Scientist")
@@ -149,11 +149,11 @@
 		if(!O.check_completion())
 			won = FALSE
 	if(won)
-		result += "<span class='greentext big'>[name] team fulfilled its mission!</span>"
+		result += span_greentextbig("[name] team fulfilled its mission!")
 	else
-		result += "<span class='redtext big'>[name] team failed its mission.</span>"
+		result += span_redtextbig("[name] team failed its mission.")
 
-	result += "<span class='header'>The abductors of [name] were:</span>"
+	result += span_header("The abductors of [name] were:")
 	for(var/datum/mind/abductor_mind in members)
 		result += printplayer(abductor_mind)
 	result += printobjectives(objectives)
@@ -172,7 +172,7 @@
 	. = ..()
 
 /datum/antagonist/abductee/greet()
-	to_chat(owner, "<span class='warning'><b>My mind snaps!</b></span>")
+	to_chat(owner, span_warning("<b>My mind snaps!</b>"))
 	to_chat(owner, "<big><span class='warning'><b>I can't remember how you got here...</b></span></big>")
 	owner.announce_objectives()
 

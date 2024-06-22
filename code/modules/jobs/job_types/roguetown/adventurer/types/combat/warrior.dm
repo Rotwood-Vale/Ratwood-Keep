@@ -3,10 +3,13 @@
 	name = "Warrior"
 	tutorial = "Warriors are well balanced fighters, skilled in blades and capable of most other weapons. \
 	they are an important member to most parties for their combat prowess, but not for much more"
-	allowed_sexes = list("male", "female")
-	allowed_races = CLOTHED_RACES_TYPES
+	allowed_sexes = list(MALE, FEMALE)
+	allowed_races = RACES_ALL_KINDS
 	outfit = /datum/outfit/job/roguetown/adventurer/sfighter
 	traits_applied = list(TRAIT_HEAVYARMOR)
+
+	category_tags = list(CTAG_ADVENTURER)
+
 
 /datum/outfit/job/roguetown/adventurer/sfighter/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -18,7 +21,7 @@
 	
 		if("Warrior")
 			H.set_blindness(0)
-			to_chat(H, "<span class='warning'>Warriors are well rounded fighters, experienced often in many theaters of warfare and battle they are capable of rising to any challenge that might greet them on the path.</span>")
+			to_chat(H, span_warning("Warriors are well rounded fighters, experienced often in many theaters of warfare and battle they are capable of rising to any challenge that might greet them on the path."))
 			H.mind.adjust_skillrank(/datum/skill/combat/crossbows, rand(1,2), TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/polearms, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/maces, 2, TRUE)
@@ -66,7 +69,7 @@
 				beltr = /obj/item/rogueweapon/sword/sabre
 		if("Monster Hunter")
 			H.set_blindness(0)
-			to_chat(H, "<span class='warning'>Monsters Hunters are typically contracted champions of the common folk dedicated to the slaying of both lesser vermin and greater beasts of the wilds.</span>")
+			to_chat(H, span_warning("Monsters Hunters are typically contracted champions of the common folk dedicated to the slaying of both lesser vermin and greater beasts of the wilds."))
 			H.mind.adjust_skillrank(/datum/skill/combat/crossbows, rand(1,2), TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/bows, rand(1,2), TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)

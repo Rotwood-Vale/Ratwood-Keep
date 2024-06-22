@@ -6,12 +6,14 @@
 	total_positions = 0
 	spawn_positions = 1
 
-	allowed_races = CLOTHED_RACES_TYPES
+	allowed_races = RACES_TOLERATED_UP
 	allowed_ages = list(AGE_ADULT)
 
 	tutorial = "Your master once saw potential in you, something you are uncertain if they still do with your recent studies. The path to using magic is something treacherous and untamed, and you are still decades away from calling yourself even a journeyman in the field. Listen and serve, and someday you will earn your hat."
 
+	spells = list(/obj/effect/proc_holder/spell/invoked/projectile/fetch)
 	outfit = /datum/outfit/job/roguetown/wapprentice
+	
 	display_order = JDO_MAGEAPPRENTICE
 	give_bank_account = TRUE
 
@@ -20,7 +22,6 @@
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/magic/arcane, pick(1,2), TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 2, TRUE)
-		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/projectile/fetch)
 	if(H.gender == MALE)
 		pants = /obj/item/clothing/under/roguetown/tights/random
 		shoes = /obj/item/clothing/shoes/roguetown/simpleshoes

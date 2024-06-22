@@ -7,15 +7,17 @@
 	spawn_positions = 50
 
 	allowed_sexes = list(MALE, FEMALE)
-	allowed_races = CLOTHED_RACES_TYPES
+	allowed_races = RACES_ALL_KINDS
 	allowed_ages = list(AGE_ADULT, AGE_MIDDLEAGED, AGE_OLD)
 	outfit = /datum/outfit/job/roguetown/lunatic
 	bypass_lastclass = TRUE
 	bypass_jobban = FALSE
-	min_pq = null //This role is meant to be locked to only those with -50 PQ, then be unrollable once they hit -49 so they can roll Prisoner, don't fuck with this.
-	max_pq = -50
+	min_pq = null //This role is meant to be locked to only those with less than -15 PQ, then be unrollable once they hit -14 so they can roll Prisoner, don't fuck with this.
+	max_pq = -15
 	tutorial = "The Lunatic, shunned by society and a magnet for misfortune. Your task is simple yet perilous: survive by any means, though your very existence invites danger from every corner. Seek redemption through kindness and camaraderie; it's your quickest escape from this cursed plight. Tread carefully, for trust is hard-won and easily lost."
 	display_order = JDO_LUNATIC
+
+	cmode_music = 'sound/music/combat_bum.ogg'
 
 /datum/outfit/job/roguetown/lunatic/pre_equip(mob/living/carbon/human/H)
 	..()

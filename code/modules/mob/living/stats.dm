@@ -24,15 +24,16 @@
 
 /mob/living/proc/set_patron(datum/patron/new_patron)
 	if(!new_patron)
-		return
+		return TRUE
 	if(ispath(new_patron))
 		new_patron = GLOB.patronlist[new_patron]
 	if(!istype(new_patron))
-		return
+		return TRUE
 	if(istype(patron))
 		patron.on_loss(src)
 	patron = new_patron
 	new_patron.on_gain(src)
+	return TRUE
 
 /datum/species
 	var/list/specstats = list("strength" = 0, "perception" = 0, "intelligence" = 0, "constitution" = 0, "endurance" = 0, "speed" = 0, "fortune" = 0)

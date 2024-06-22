@@ -13,8 +13,8 @@
 	limbs_icon_f = 'icons/mob/species/female.dmi'
 	dam_icon = 'icons/roguetown/mob/bodies/dam/dam_male.dmi'
 	dam_icon_f = 'icons/roguetown/mob/bodies/dam/dam_female.dmi'
-	soundpack_m = /datum/voicepack/male/elf
-	soundpack_f = /datum/voicepack/female/elf
+	soundpack_m = /datum/voicepack/male
+	soundpack_f = /datum/voicepack/female
 	offset_features = list(
 		OFFSET_ID = list(0,1), OFFSET_GLOVES = list(0,1), OFFSET_WRISTS = list(0,1),\
 		OFFSET_CLOAK = list(0,1), OFFSET_FACEMASK = list(0,1), OFFSET_HEAD = list(0,1), \
@@ -101,32 +101,9 @@
 	..()
 	RegisterSignal(C, COMSIG_MOB_SAY, PROC_REF(handle_speech))
 
-/datum/species/dracon/qualifies_for_rank(rank, list/features)
-	return TRUE
-
 /datum/species/dracon/on_species_loss(mob/living/carbon/C)
 	. = ..()
 	UnregisterSignal(C, COMSIG_MOB_SAY)
-
-/datum/species/dracon/handle_speech(datum/source, mob/speech_args)
-	. = ..()
-	var/message = speech_args[SPEECH_MESSAGE]
-	if(message)
-		if(message[1])
-			if(message[1] != "*")
-				message = " [message]"
-				var/list/accent_words = strings("accent_universal.json", "universal")
-
-				for(var/key in accent_words)
-					var/value = accent_words[key]
-					if(islist(value))
-						value = pick(value)
-
-					message = replacetextEx(message, " [uppertext(key)]", " [uppertext(value)]")
-					message = replacetextEx(message, " [capitalize(key)]", " [capitalize(value)]")
-					message = replacetextEx(message, " [key]", " [value]")
-
-	speech_args[SPEECH_MESSAGE] = trim(message)
 
 /datum/species/dracon/get_random_body_markings(list/passed_features)
 	return assemble_body_markings_from_set(GLOB.body_marking_sets_by_type[/datum/body_marking_set/bellyscale], passed_features, src)

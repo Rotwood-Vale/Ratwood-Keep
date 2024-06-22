@@ -6,12 +6,16 @@
 	total_positions = 2
 	spawn_positions = 2
 	allowed_ages = list(AGE_ADULT, AGE_MIDDLEAGED)
-	allowed_races = CLOTHED_RACES_TYPES
+	allowed_races = RACES_TOLERATED_UP
 	allowed_sexes = list(MALE, FEMALE)
 	display_order = JDO_COUNCILLOR
-	tutorial = "You may have inherited this role, bought your way into it, or were appointed by the bailiff; whatever it was you now serve as a assistant, planner, and juror for the Bailiff. You help him oversee the taxation, construction, and planning of new laws. You only answer to the Bailiff, Queen, King, Princes, or Princesses. However, your main focus is to assist the Bailiff."
+	tutorial = "You may have inherited this role, bought your way into it, or were appointed by the bailiff; \
+			Whatever it was you now serve as a assistant, planner, and juror for the Bailiff. \
+			You help him oversee the taxation, construction, and planning of new laws. \
+			You only answer to the Bailiff, Queen, King, Princes, or Princesses. However, your main focus is to assist the Bailiff."
 	whitelist_req = FALSE
 	outfit = /datum/outfit/job/roguetown/councillor
+	
 	give_bank_account = 40
 	min_pq = 2
 	max_pq = null

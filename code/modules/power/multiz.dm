@@ -33,10 +33,10 @@
 ///Allows you to scan the relay with a multitool to see stats.
 /obj/machinery/power/deck_relay/multitool_act(mob/user, obj/item/I)
 	if(powernet && (powernet.avail > 0))		// is it powered?
-		to_chat(user, "<span class='danger'>Total power: [DisplayPower(powernet.avail)]\nLoad: [DisplayPower(powernet.load)]\nExcess power: [DisplayPower(surplus())]</span>")
+		to_chat(user, span_danger("Total power: [DisplayPower(powernet.avail)]\nLoad: [DisplayPower(powernet.load)]\nExcess power: [DisplayPower(surplus())]"))
 	if(!powernet || below.powernet != powernet)
 		icon_state = "cablerelay-off"
-		to_chat(user, "<span class='danger'>Powernet connection lost. Attempting to re-establish. Ensure the relays below this one are connected too.</span>")
+		to_chat(user, span_danger("Powernet connection lost. Attempting to re-establish. Ensure the relays below this one are connected too."))
 		find_relays()
 		addtimer(CALLBACK(src, PROC_REF(refresh)), 20) //Wait a bit so we can find the one below, then get powering
 	return TRUE

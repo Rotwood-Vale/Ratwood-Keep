@@ -5,8 +5,8 @@
 	faction = "Station"
 	total_positions = 2
 	spawn_positions = 2
-	allowed_races = NOBLE_RACES_TYPES
-	allowed_sexes = list(MALE)
+	allowed_races = RACES_TOLERATED_UP
+	allowed_sexes = list(MALE, FEMALE)
 	allowed_ages = list(AGE_ADULT, AGE_MIDDLEAGED)
 	allowed_patrons = ALL_DIVINE_PATRONS
 	tutorial = "A Knight with expert training; Born into petty nobility and raised as a squire from a young age, now you Guard the king as his knight, answer to his commands, and protect his honor. You're wholy dedicated to him, and his safety. Do not fail him."
@@ -17,7 +17,7 @@
 	min_pq = 8
 	max_pq = null
 
-	cmode_music = 'sound/music/combat_guard.ogg'
+	cmode_music = 'sound/music/combat_guard2.ogg'
 
 /datum/job/roguetown/knight/after_spawn(mob/living/L, mob/M, latejoin = TRUE)
 	..()
@@ -49,9 +49,14 @@
 	shirt = /obj/item/clothing/suit/roguetown/armor/chainmail
 	armor = /obj/item/clothing/suit/roguetown/armor/plate/full
 	shoes = /obj/item/clothing/shoes/roguetown/boots/armor
+	beltr = /obj/item/rogueweapon/sword/long
 	beltl = /obj/item/keyring/guardcastle
 	belt = /obj/item/storage/belt/rogue/leather/hand
 	backr = /obj/item/storage/backpack/rogue/satchel/black
+	if(prob(50))
+		r_hand = /obj/item/rogueweapon/eaglebeak/lucerne
+	else
+		r_hand = /obj/item/rogueweapon/mace/goden/steel
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/combat/polearms, 5, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/swords, 5, TRUE)
@@ -65,15 +70,13 @@
 		H.mind.adjust_skillrank(/datum/skill/misc/climbing, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/riding, 4, TRUE)
-		backl = /obj/item/rogueweapon/sword/long
 		H.change_stat("strength", 4)
 		H.change_stat("perception", 1)
 		H.change_stat("intelligence", 2)
 		H.change_stat("constitution", 3)
 		H.change_stat("endurance", 2)
 		H.change_stat("speed", -1)
-	if(ishumannorthern(H))
-		H.dna.species.soundpack_m = new /datum/voicepack/male/knight()
+	H.dna.species.soundpack_m = new /datum/voicepack/male/knight()
 
 	ADD_TRAIT(H, TRAIT_NOBLE, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_NOSEGRAB, TRAIT_GENERIC)

@@ -43,6 +43,7 @@
 		/datum/sprite_accessory/horns/marauder,
 		/datum/sprite_accessory/horns/faceguard,
 		/datum/sprite_accessory/horns/sheephorns,
+		/datum/sprite_accessory/horns/doublehorns,
 		)
 
 /datum/customizer/organ/horns/demihuman
@@ -82,6 +83,7 @@
 		/datum/sprite_accessory/horns/marauder,
 		/datum/sprite_accessory/horns/faceguard,
 		/datum/sprite_accessory/horns/sheephorns,
+		/datum/sprite_accessory/horns/doublehorns,
 		)
 
 /datum/customizer/organ/horns/anthro
@@ -121,4 +123,5 @@
 		/datum/sprite_accessory/horns/marauder,
 		/datum/sprite_accessory/horns/faceguard,
 		/datum/sprite_accessory/horns/sheephorns,
+		/datum/sprite_accessory/horns/doublehorns,
 		)

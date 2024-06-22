@@ -4,15 +4,15 @@
 
 /datum/martial_art/mushpunch/harm_act(mob/living/carbon/human/A, mob/living/carbon/human/D)
 	var/atk_verb
-	to_chat(A, "<span class='spider'>I begin to wind up an attack...</span>")
+	to_chat(A, span_spider("I begin to wind up an attack..."))
 	if(!do_after(A, 25, target = D))
-		to_chat(A, "<span class='spider'><b>My attack was interrupted!</b></span>")
+		to_chat(A, span_spider("<b>My attack was interrupted!</b>"))
 		return TRUE //martial art code was a mistake
 	A.do_attack_animation(D, ATTACK_EFFECT_PUNCH)
 	atk_verb = pick("punch", "smash", "crack")
-	D.visible_message("<span class='danger'>[A] [atk_verb]ed [D] with such inhuman strength that it sends [D.p_them()] flying backwards!</span>", \
-					"<span class='danger'>You're [atk_verb]ed by [A] with such inhuman strength that it sends you flying backwards!</span>", "<span class='hear'>I hear a sickening sound of flesh hitting flesh!</span>", null, A)
-	to_chat(A, "<span class='danger'>I [atk_verb] [D] with such inhuman strength that it sends [D.p_them()] flying backwards!</span>")
+	D.visible_message(span_danger("[A] [atk_verb]ed [D] with such inhuman strength that it sends [D.p_them()] flying backwards!"), \
+					span_danger("You're [atk_verb]ed by [A] with such inhuman strength that it sends you flying backwards!"), span_hear("I hear a sickening sound of flesh hitting flesh!"), null, A)
+	to_chat(A, span_danger("I [atk_verb] [D] with such inhuman strength that it sends [D.p_them()] flying backwards!"))
 	D.apply_damage(rand(15,30), A.dna.species.attack_type)
 	playsound(D, 'sound/blank.ogg', 25, TRUE, -1)
 	var/throwtarget = get_edge_target_turf(A, get_dir(A, get_step_away(D, A)))
@@ -31,10 +31,10 @@
 /obj/item/mushpunch/attack_self(mob/living/carbon/human/user)
 	if(!istype(user) || !user)
 		return
-	var/message = "<span class='spider'>I devour [src], and a confluence of skill and power from the mushroom enhances my punches! You do need a short moment to charge these powerful punches.</span>"
+	var/message = span_spider("I devour [src], and a confluence of skill and power from the mushroom enhances my punches! You do need a short moment to charge these powerful punches.")
 	to_chat(user, message)
 	var/datum/martial_art/mushpunch/mush = new(null)
 	mush.teach(user)
 	qdel(src)
-	visible_message("<span class='warning'>[user] devours [src].</span>", \
-					"<span class='notice'>I devour [src].</span>")
+	visible_message(span_warning("[user] devours [src]."), \
+					span_notice("I devour [src]."))

@@ -1,5 +1,5 @@
 /mob/living/simple_animal/hostile/rogue/demon
-	name = "demon"
+	name = "haunt"
 	desc = ""
 	icon = 'icons/roguetown/mob/monster/wraith.dmi'
 	icon_state = "haunt"
@@ -15,8 +15,8 @@
 	turns_per_move = 5
 	response_help_continuous = "passes through"
 	response_help_simple = "pass through"
-	maxHealth = 50
-	health = 50
+	maxHealth = 75
+	health = 75
 	layer = 16
 	plane = 16
 	spacewalk = TRUE
@@ -26,8 +26,8 @@
 	move_to_delay = 5 //delay for the automated movement.
 	harm_intent_damage = 1
 	obj_damage = 1
-	melee_damage_lower = 15
-	melee_damage_upper = 25
+	melee_damage_lower = 25
+	melee_damage_upper = 35
 	attack_same = FALSE
 	attack_sound = 'sound/combat/wooshes/bladed/wooshmed (1).ogg'
 	dodge_sound = 'sound/combat/dodge.ogg'
@@ -80,9 +80,9 @@
 			return "body"
 		if(BODY_ZONE_PRECISE_GROIN)
 			return "body"
-		if(BODY_ZONE_R_INHAND)
+		if(BODY_ZONE_PRECISE_R_INHAND)
 			return "body"
-		if(BODY_ZONE_L_INHAND)
+		if(BODY_ZONE_PRECISE_L_INHAND)
 			return "body"
 		if(BODY_ZONE_HEAD)
 			return "head"
@@ -146,8 +146,8 @@
 	if(. && prob(8) && iscarbon(target))
 		var/mob/living/carbon/C = target
 		C.Immobilize(50)
-		C.visible_message("<span class='danger'>\The [src] paralyzes \the [C] in fear!</span>", \
-				"<span class='danger'>\The [src] paralyzes me!</span>")
+		C.visible_message(span_danger("\The [src] paralyzes \the [C] in fear!"), \
+				span_danger("\The [src] paralyzes me!"))
 		emote("laugh")
 
 /datum/intent/simple/slash

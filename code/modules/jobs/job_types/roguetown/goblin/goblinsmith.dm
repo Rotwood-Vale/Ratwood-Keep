@@ -6,7 +6,7 @@
 	total_positions = 0
 	spawn_positions = 0
 	allowed_sexes = list(MALE)
-	allowed_races = list(/datum/species/goblinp)
+	allowed_races = list()
 	allowed_patrons = list(/datum/patron/inhumen/graggar)
 	tutorial = "Goblin rensposible for fresh iron and steel"
 	display_order = JDO_GOBLINSMITH
@@ -34,6 +34,7 @@
 		H.mind.adjust_skillrank(/datum/skill/craft/blacksmithing, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/craft/armorsmithing, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/craft/weaponsmithing, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/craft/smelting, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/craft/carpentry, 3, TRUE)
 		H.change_stat("strength", 1)
 		H.change_stat("endurance", 1)

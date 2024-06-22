@@ -7,18 +7,21 @@
 	total_positions = 1
 	spawn_positions = 1
 
-	allowed_races = NOBLE_RACES_TYPES
+	allowed_races = RACES_TOLERATED_UP
 	allowed_sexes = list(MALE)
 	allowed_ages = list(AGE_MIDDLEAGED, AGE_OLD)
 	tutorial = "Your lineage is noble, and generations of strong, loyal knights have come before you. You served your time gracefully as a knight of his royal majesty, and now you've grown into a role which many men dream to become. Lead your men to victory and keep them in line and you will see this kingdom prosper under a thousand suns."
 	display_order = JDO_SHERIFF
 	whitelist_req = FALSE
+
+	spells = list(/obj/effect/proc_holder/spell/self/convertrole/guard)
 	outfit = /datum/outfit/job/roguetown/sheriff
+
 	give_bank_account = 26
 	min_pq = 4
 	max_pq = null
 
-	cmode_music = 'sound/music/combat_guard.ogg'
+	cmode_music = 'sound/music/combat_guard2.ogg'
 
 /datum/job/roguetown/sheriff/after_spawn(mob/living/L, mob/M, latejoin = TRUE)
 	. = ..()
@@ -55,9 +58,8 @@
 	backr = /obj/item/storage/backpack/rogue/satchel/black
 	backpack_contents = list(/obj/item/keyring/sheriff = 1, /obj/item/rogueweapon/huntingknife/idagger/steel/special = 1)
 	if(H.mind)
-		H.mind.AddSpell(new /obj/effect/proc_holder/spell/self/convertrole/guard)
-		H.mind.adjust_skillrank(/datum/skill/combat/swords, 6, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/combat/polearms, 6, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/swords, 5, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/polearms, 5, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 5, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/maces, 3, TRUE)
@@ -77,8 +79,7 @@
 		H.change_stat("endurance", 2)
 		H.change_stat("speed", 1)
 		H.change_stat("fortune", 2)
-	if(H.dna?.species)
-		H.dna.species.soundpack_m = new /datum/voicepack/male/knight()
+	H.dna.species.soundpack_m = new /datum/voicepack/male/knight()
 	if(H.gender == FEMALE)
 		var/acceptable = list("Tomboy", "Bob", "Curly Short")
 		if(!(H.hairstyle in acceptable))
@@ -111,23 +112,23 @@
 /obj/effect/proc_holder/spell/self/convertrole/cast(list/targets,mob/user = usr)
 	. = ..()
 	var/list/recruitment = list()
-	for(var/mob/living/carbon/human/recruit in get_hearers_in_view(recruitment_range, user))
+	for(var/mob/living/carbon/human/recruit in (get_hearers_in_view(recruitment_range, user) - user))
 		//not allowed
 		if(!can_convert(recruit))
 			continue
 		recruitment[recruit.name] = recruit
 	if(!length(recruitment))
-		to_chat(user, "<span class='warning'>There are no potential recruits in range.</span>")
+		to_chat(user, span_warning("There are no potential recruits in range."))
 		return
-	var/inputty = input("Select a potential recruit!", "[name]") as anything in recruitment
+	var/inputty = input(user, "Select a potential recruit!", "[name]") as anything in recruitment
 	if(inputty)
 		var/mob/living/carbon/human/recruit = recruitment[inputty]
 		if(!QDELETED(recruit) && (recruit in get_hearers_in_view(recruitment_range, user)))
 			INVOKE_ASYNC(src, PROC_REF(convert), recruit, user)
 		else
-			to_chat(user, "<span class='warning'>Recruitment failed!</span>")
+			to_chat(user, span_warning("Recruitment failed!"))
 	else
-		to_chat(user, "<span class='warning'>Recruitment cancelled.</span>")
+		to_chat(user, span_warning("Recruitment cancelled."))
 
 /obj/effect/proc_holder/spell/self/convertrole/proc/can_convert(mob/living/carbon/human/recruit)
 	//wtf

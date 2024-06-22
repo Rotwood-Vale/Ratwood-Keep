@@ -24,7 +24,7 @@
 			spore.factory = null
 	if(naut)
 		naut.factory = null
-		to_chat(naut, "<span class='danger'>My factory was destroyed! You feel myself dying!</span>")
+		to_chat(naut, span_danger("My factory was destroyed! You feel myself dying!"))
 		naut.throw_alert("nofactory", /atom/movable/screen/alert/nofactory)
 	spores = null
 	return ..()

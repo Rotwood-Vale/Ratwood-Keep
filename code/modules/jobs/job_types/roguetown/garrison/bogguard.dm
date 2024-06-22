@@ -7,14 +7,14 @@
 	spawn_positions = 10
 	selection_color = JCOLOR_SOLDIER
 	allowed_sexes = list(MALE, FEMALE)
-	allowed_races = CLOTHED_RACES_TYPES
+	allowed_races = RACES_ALL_KINDS
 	allowed_ages = list(AGE_ADULT, AGE_MIDDLEAGED, AGE_OLD)
 	tutorial = "You've handed your resume, which mostly consisted of showing up, and in exchange you have a spot among the Bog Guards. You have a roof over your head, coin in your pocket, and a thankless job protecting the outskirts of town against bandits and volfs."
 	display_order = JDO_TOWNGUARD
 	whitelist_req = TRUE
 	outfit = /datum/outfit/job/roguetown/bogguardsman
 	give_bank_account = 16
-	min_pq = 5
+	min_pq = 1
 	max_pq = null
 	
 	cmode_music = 'sound/music/combat_bog.ogg'
@@ -67,8 +67,8 @@
 	beltr = /obj/item/rogueweapon/sword
 	backr = /obj/item/storage/backpack/rogue/satchel
 	if(is_crossbowman)
-		backl = /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow
-		beltr = /obj/item/quiver/bolts //replaces sword
+		backl = /obj/item/gun/ballistic/revolver/grenadelauncher/bow
+		beltr = /obj/item/quiver/arrows //replaces sword
 	else
 		backl = null
 	wrists = /obj/item/clothing/wrists/roguetown/bracers/leather

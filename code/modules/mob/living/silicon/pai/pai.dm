@@ -179,7 +179,7 @@
 
 /mob/living/silicon/pai/canUseTopic(atom/movable/M, be_close=FALSE, no_dexterity=FALSE, no_tk=FALSE)
 	if(be_close && !in_range(M, src))
-		to_chat(src, "<span class='warning'>I are too far away!</span>")
+		to_chat(src, span_warning("I are too far away!"))
 		return FALSE
 	return TRUE
 
@@ -270,7 +270,7 @@
 	if(cable)
 		if(get_dist(src, cable) > 1)
 			var/turf/T = get_turf(src)
-			T.visible_message("<span class='warning'>[cable] rapidly retracts back into its spool.</span>", "<span class='hear'>I hear a click and the sound of wire spooling rapidly.</span>")
+			T.visible_message(span_warning("[cable] rapidly retracts back into its spool."), span_hear("I hear a click and the sound of wire spooling rapidly."))
 			QDEL_NULL(cable)
 	if(hacking)
 		process_hack()
@@ -294,4 +294,4 @@
 		else if(istype(W, /obj/item/encryptionkey))
 			pai.radio.attackby(W, user, params)
 	else
-		to_chat(user, "<span class='alert'>Encryption Key ports not configured.</span>")
+		to_chat(user, span_alert("Encryption Key ports not configured."))

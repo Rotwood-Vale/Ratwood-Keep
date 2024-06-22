@@ -80,9 +80,9 @@
 			return "body"
 		if(BODY_ZONE_PRECISE_GROIN)
 			return "body"
-		if(BODY_ZONE_R_INHAND)
+		if(BODY_ZONE_PRECISE_R_INHAND)
 			return "body"
-		if(BODY_ZONE_L_INHAND)
+		if(BODY_ZONE_PRECISE_L_INHAND)
 			return "body"
 		if(BODY_ZONE_HEAD)
 			return "head"
@@ -98,6 +98,14 @@
 			return "chest"
 
 	return ..()
+
+/mob/living/simple_animal/hostile/rogue/haunt/omen
+	name = "omen"
+	desc = "A vengeful spirit comes to haunt the living!"
+	maxHealth = 200
+	health = 200
+	melee_damage_lower = 30
+	melee_damage_upper = 40
 
 /obj/structure/bonepile
 	icon = 'icons/roguetown/mob/monster/wraith.dmi'
@@ -217,8 +225,8 @@
 	if(. && prob(8) && iscarbon(target))
 		var/mob/living/carbon/C = target
 		C.Immobilize(50)
-		C.visible_message("<span class='danger'>\The [src] paralyzes \the [C] in fear!</span>", \
-				"<span class='danger'>\The [src] paralyzes me!</span>")
+		C.visible_message(span_danger("\The [src] paralyzes \the [C] in fear!"), \
+				span_danger("\The [src] paralyzes me!"))
 		emote("laugh")
 
 /datum/intent/simple/slash

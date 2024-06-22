@@ -4,7 +4,7 @@
 	possible_item_intents = list(MACE_STRIKE)
 	gripped_intents = list(MACE_STRIKE,/datum/intent/flailthresh)
 	name = "thresher"
-	desc = ""
+	desc = "A shredding tool for farmers."
 	icon_state = "flail"
 	icon = 'icons/roguetown/weapons/tools.dmi'
 	item_state = "mace_greyscale"
@@ -88,8 +88,8 @@
 			if(found)
 				playsound(loc,"plantcross", 100, FALSE)
 				playsound(loc,"smashlimb", 50, FALSE)
-				user.visible_message("<span class='notice'>[user] threshes the stalks!</span>", \
-									"<span class='notice'>I thresh the stalks.</span>")
+				user.visible_message(span_notice("[user] threshes the stalks!"), \
+									span_notice("I thresh the stalks."))
 			return
 	..()
 
@@ -97,7 +97,7 @@
 	force = 10
 	possible_item_intents = list(DAGGER_CUT)
 	name = "sickle"
-	desc = ""
+	desc = "Rusted blade, worn handle, symbol of toil."
 	icon_state = "sickle"
 	icon = 'icons/roguetown/weapons/tools.dmi'
 	item_state = "crysknife"
@@ -155,7 +155,7 @@
 	possible_item_intents = list(/datum/intent/pick)
 	gripped_intents = list(/datum/intent/pick,SPEAR_BASH,TILL_INTENT)
 	name = "hoe"
-	desc = ""
+	desc = "A tool for tiling soil. It's all dirty and worn."
 	icon_state = "hoe"
 	slot_flags = ITEM_SLOT_BACK
 	icon = 'icons/roguetown/weapons/tools.dmi'
@@ -174,14 +174,14 @@
 		switch(tag)
 			if("gen")
 				return list("shrink" = 0.7,
-"sx" = -16,
-"sy" = -3,
-"nx" = 5,
-"ny" = -3,
-"wx" = -13,
-"wy" = -4,
-"ex" = -1,
-"ey" = -4,
+"sx" = -11,
+"sy" = 1,
+"nx" = 12,
+"ny" = 0,
+"wx" = -7,
+"wy" = -0,
+"ex" = 6,
+"ey" = 3,
 "northabove" = 0,
 "southabove" = 1,
 "eastabove" = 1,
@@ -196,22 +196,22 @@
 "eflip" = 0)
 			if("wielded")
 				return list("shrink" = 0.8,
-"sx" = -3,
-"sy" = -14,
-"nx" = -12,
-"ny" = -15,
-"wx" = -9,
-"wy" = -14,
-"ex" = -4,
-"ey" = -13,
+"sx" = 4,
+"sy" = -6,
+"nx" = -8,
+"ny" = -6,
+"wx" = 2,
+"wy" = -6,
+"ex" = 5,
+"ey" = -3,
 "northabove" = 0,
 "southabove" = 1,
 "eastabove" = 1,
-"westabove" = 0,
-"nturn" = 0,
-"sturn" = -6,
-"wturn" = -3,
-"eturn" = -21,
+"westabove" = 1,
+"nturn" = -40,
+"sturn" = 40,
+"wturn" = 60,
+"eturn" = 25,
 "nflip" = 8,
 "sflip" = 0,
 "wflip" = 0,
@@ -252,14 +252,14 @@
 	if(istype(target, /turf/open/floor/rogue/dirt))
 		var/obj/machinery/crop/R = locate() in target
 		if(R)
-			to_chat(user,"<span class='warning'>There's already a mound here.</span>")
+			to_chat(user,span_warning("There's already a mound here."))
 			return
 		if(prob(10)) //ROGTODO make this farming skill based maybe a stat too
-			user.visible_message("<span class='notice'>[user] tills the soil!</span>", \
-								"<span class='notice'>I till the soil.</span>")
+			user.visible_message(span_notice("[user] tills the soil!"), \
+								span_notice("I till the soil."))
 			new /obj/machinery/crop(target)
 		else
-			to_chat(user,"<span class='warning'>I till the soil.</span>")
+			to_chat(user,span_warning("I till the soil."))
 		return
 	..()
 */
@@ -270,7 +270,7 @@
 	possible_item_intents = list(SPEAR_BASH)
 	gripped_intents = list(SPEAR_BASH,SPEAR_THRUST,DUMP_INTENT)
 	name = "pitchfork"
-	desc = ""
+	desc = "Iron tines on a sturdy shaft essential for farmlike labour."
 	icon_state = "pitchfork"
 	icon = 'icons/roguetown/weapons/tools.dmi'
 	item_state = "pitchfork"
@@ -352,7 +352,7 @@
 			for(var/obj/item/I in forked)
 				I.forceMove(target)
 				forked -= I
-			to_chat(user, "<span class='warning'>I dump the stalks.</span>")
+			to_chat(user, span_warning("I dump the stalks."))
 		update_icon()
 		return
 	..()

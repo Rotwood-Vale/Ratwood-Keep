@@ -6,7 +6,7 @@
 	total_positions = 1
 	spawn_positions = 1
 	allowed_sexes = list(MALE)
-	allowed_races = CLOTHED_RACES_TYPES
+	allowed_races = RACES_TOLERATED_UP
 	allowed_patrons = list(
 		/datum/patron/old_god,
 		/datum/patron/divine/astrata,
@@ -88,7 +88,7 @@
 		return
 	H = I.grabbed
 	if(H == src)
-		to_chat(src, "<span class='warning'>I already torture myself.</span>")
+		to_chat(src, span_warning("I already torture myself."))
 		return
 	var/painpercent = (H.get_complex_pain() / (H.STAEND * 10)) * 100
 	if(H.add_stress(/datum/stressevent/tortured))
@@ -106,7 +106,7 @@
 				H.emote("painscream")
 				H.confession_time("antag")
 				return
-	to_chat(src, "<span class='warning'>Not ready to speak yet.</span>")
+	to_chat(src, span_warning("Not ready to speak yet."))
 
 /mob/living/carbon/human/proc/faith_test()
 	set name = "Test Faith"
@@ -118,13 +118,13 @@
 		return
 	H = I.grabbed
 	if(H == src)
-		to_chat(src, "<span class='warning'>I already torture myself.</span>")
+		to_chat(src, span_warning("I already torture myself."))
 		return
 	var/painpercent = (H.get_complex_pain() / (H.STAEND * 10)) * 100
 	if(H.add_stress(/datum/stressevent/tortured))
 		if(!H.stat)
 			var/static/list/faith_lines = list(
-				"DO YOU DENY THE NINE?",
+				"DO YOU DENY THE TEN?",
 				"WHO IS YOUR GOD?",
 				"ARE YOU FAITHFUL?",
 				"WHO IS YOUR SHEPHERD?",
@@ -134,7 +134,7 @@
 				H.emote("painscream")
 				H.confession_time("patron")
 				return
-	to_chat(src, "<span class='warning'>Not ready to speak yet.</span>")
+	to_chat(src, span_warning("Not ready to speak yet."))
 
 /mob/living/carbon/human/proc/confession_time(confession_type = "antag")
 	var/timerid = addtimer(CALLBACK(src, PROC_REF(confess_sins)), 6 SECONDS, TIMER_STOPPABLE)
@@ -144,7 +144,7 @@
 	if(SStimer.timer_id_dict[timerid])
 		deltimer(timerid)
 	else
-		to_chat(src, "<span class='warning'>Too late...</span>")
+		to_chat(src, span_warning("Too late..."))
 		return
 	if(responsey == "Yes")
 		adjust_triumphs(-1)

@@ -130,7 +130,7 @@ GLOBAL_DATUM_INIT(iconCache, /savefile, new("tmp/iconCache.sav")) //Cache of ico
 		regexes["show_filtered_ic_chat"] = list(
 			config.ic_filter_regex.name,
 			"ig",
-			"<span class='boldwarning'>$1</span>"
+			span_boldwarning("$1")
 		)
 
 	if (regexes.len)

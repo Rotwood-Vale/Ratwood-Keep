@@ -1,12 +1,14 @@
 /datum/advclass/amazon
 	name = "Amazon"
 	tutorial = "Amazons are warrior-women from the mysterious isle of Issa. These rare fighters are so tough they can beat an average man!"
-	allowed_sexes = list("female")
-	allowed_races = CLOTHED_RACES_TYPES
+	allowed_sexes = list(FEMALE)
+	allowed_races = RACES_TOLERATED_UP
 	outfit = /datum/outfit/job/roguetown/adventurer/amazon
 	allowed_ages = list(AGE_ADULT, AGE_MIDDLEAGED)
 	pickprob = 13
-	maxchosen = 2
+	maximum_possible_slots = 2
+	category_tags = list(CTAG_ADVENTURER)
+
 	traits_applied = list(TRAIT_CRITICAL_RESISTANCE, TRAIT_NOPAINSTUN, TRAIT_STEELHEARTED)
 	cmode_music = 'sound/music/combat_gronn.ogg'
 

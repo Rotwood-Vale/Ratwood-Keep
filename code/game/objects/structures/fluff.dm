@@ -14,10 +14,10 @@
 
 /obj/structure/fluff/attackby(obj/item/I, mob/living/user, params)
 	if(I.tool_behaviour == TOOL_WRENCH && deconstructible)
-		user.visible_message("<span class='notice'>[user] starts disassembling [src]...</span>", "<span class='notice'>I start disassembling [src]...</span>")
+		user.visible_message(span_notice("[user] starts disassembling [src]..."), span_notice("I start disassembling [src]..."))
 		I.play_tool_sound(src)
 		if(I.use_tool(src, user, 50))
-			user.visible_message("<span class='notice'>[user] disassembles [src]!</span>", "<span class='notice'>I break down [src] into scrap metal.</span>")
+			user.visible_message(span_notice("[user] disassembles [src]!"), span_notice("I break down [src] into scrap metal."))
 			playsound(user, 'sound/blank.ogg', 50, TRUE)
 			new/obj/item/stack/sheet/metal(drop_location())
 			qdel(src)
@@ -567,10 +567,10 @@
 	. = ..()
 	if(!broke)
 		. += "Oh no, it's [station_time_timestamp("hh:mm")]."
-		. += "<span class='info'>(Round Time: [gameTimestamp("hh:mm:ss", REALTIMEOFDAY - SSticker.round_start_irl)].)</span>"
+		. += span_info("(Round Time: [gameTimestamp("hh:mm:ss", REALTIMEOFDAY - SSticker.round_start_irl)].)")
 //		if(SSshuttle.emergency.mode == SHUTTLE_DOCKED)
 //			if(SSshuttle.emergency.timeLeft() < 30 MINUTES)
-//				. += "<span class='warning'>The last boat will leave in [round(SSshuttle.emergency.timeLeft()/600)] minutes.</span>"
+//				. += span_warning("The last boat will leave in [round(SSshuttle.emergency.timeLeft()/600)] minutes.")
 
 /obj/structure/fluff/clock/CanPass(atom/movable/mover, turf/target)
 	if(get_dir(loc, mover) == dir)
@@ -613,7 +613,7 @@
 //		testing("mode is [SSshuttle.emergency.mode] should be [SHUTTLE_DOCKED]")
 //		if(SSshuttle.emergency.mode == SHUTTLE_DOCKED)
 //			if(SSshuttle.emergency.timeLeft() < 30 MINUTES)
-//				. += "<span class='warning'>The last boat will leave in [round(SSshuttle.emergency.timeLeft()/600)] minutes.</span>"
+//				. += span_warning("The last boat will leave in [round(SSshuttle.emergency.timeLeft()/600)] minutes.")
 
 /obj/structure/fluff/wallclock/Initialize()
 	soundloop = new(list(src), FALSE)
@@ -722,11 +722,11 @@
 /obj/structure/fluff/customsign/attackby(obj/item/W, mob/user, params)
 	if(!user.cmode)
 		if(!user.is_literate())
-			to_chat(user, "<span class='warning'>I don't know any verba.</span>")
+			to_chat(user, span_warning("I don't know any verba."))
 			return
 		if((user.used_intent.blade_class == BCLASS_STAB) && (W.wlength == WLENGTH_SHORT))
 			if(wrotesign)
-				to_chat(user, "<span class='warning'>Something is already carved here.</span>")
+				to_chat(user, span_warning("Something is already carved here."))
 				return
 			else
 				var/inputty = stripped_input(user, "What would you like to carve here?", "", null, 200)
@@ -761,6 +761,10 @@
 	blade_dulling = DULLING_BASH
 	max_integrity = 300
 	dir = SOUTH
+
+/obj/structure/fluff/statue/OnCrafted(dirin, user)
+	dirin = turn(dirin, 180)
+	. = ..()
 
 /obj/structure/fluff/statue/attack_right(mob/user)
 	if(user.mind && isliving(user))
@@ -888,17 +892,17 @@
 					if(L.STAINT < 3)
 						probby = 0
 					if(prob(probby) && !L.has_status_effect(/datum/status_effect/debuff/trainsleep) && !user.buckled)
-						user.visible_message("<span class='info'>[user] trains on [src]!</span>")
+						user.visible_message(span_info("[user] trains on [src]!"))
 						var/boon = user.mind.get_learning_boon(W.associated_skill)
 						var/amt2raise = L.STAINT/2
-						if(user.mind.get_skill_level(W.associated_skill) >= SKILL_LEVEL_NOVICE)
-							to_chat(user, "<span class='warning'>I've learned all I can from doing this, it's time for the real thing.</span>")
+						if(user.mind.get_skill_level(W.associated_skill) >= SKILL_LEVEL_APPRENTICE)
+							to_chat(user, span_warning("I've learned all I can from doing this, it's time for the real thing."))
 							amt2raise = 0
 						if(amt2raise > 0)
 							user.mind.adjust_experience(W.associated_skill, amt2raise * boon, FALSE)
 						playsound(loc,pick('sound/combat/hits/onwood/education1.ogg','sound/combat/hits/onwood/education2.ogg','sound/combat/hits/onwood/education3.ogg'), rand(50,100), FALSE)
 					else
-						user.visible_message("<span class='danger'>[user] trains on [src], but [src] ripostes!</span>")
+						user.visible_message(span_danger("[user] trains on [src], but [src] ripostes!"))
 						L.AdjustKnockdown(1)
 						L.throw_at(get_step(L, get_dir(src,L)), 2, 2, L, spin = FALSE)
 						playsound(loc, 'sound/combat/hits/kick/stomp.ogg', 100, TRUE, -1)
@@ -936,9 +940,9 @@
 	if(user.mind)
 		var/datum/antagonist/bandit/B = user.mind.has_antag_datum(/datum/antagonist/bandit)
 		if(B)
-			if(istype(W, /obj/item/roguecoin) || istype(W, /obj/item/roguegem) || istype(W, /obj/item/clothing/ring) || istype(W, /obj/item/ingot) || istype(W, /obj/item/clothing/neck/roguetown/psicross))
+			if(istype(W, /obj/item/roguecoin) || istype(W, /obj/item/roguegem) || istype(W, /obj/item/clothing/ring) || istype(W, /obj/item/ingot) || istype(W, /obj/item/clothing/neck/roguetown/psicross) || istype(W, /obj/item/reagent_containers/glass/cup) || istype(W, /obj/item/roguestatue))
 				if(B.tri_amt >= 10)
-					to_chat(user, "<span class='warning'>The mouth doesn't open.</span>")
+					to_chat(user, span_warning("The mouth doesn't open."))
 					return
 				B.contrib += W.get_real_price()
 				if(B.contrib >= 100)
@@ -1033,6 +1037,7 @@
 /obj/structure/fluff/psycross/crafted
 	name = "wooden pantheon cross"
 	icon_state = "psycrosscrafted"
+	max_integrity = 80
 	chance2hear = 10
 
 /obj/structure/fluff/psycross/attackby(obj/item/W, mob/user, params)
@@ -1040,7 +1045,7 @@
 		if(user.mind.assigned_role == "Priest")
 			if(istype(W, /obj/item/reagent_containers/food/snacks/grown/apple))
 				if(!istype(get_area(user), /area/rogue/indoors/town/church/chapel))
-					to_chat(user, "<span class='warning'>I need to do this in the chapel.</span>")
+					to_chat(user, span_warning("I need to do this in the chapel."))
 					return FALSE
 				var/marriage
 				var/obj/item/reagent_containers/food/snacks/grown/apple/A = W
@@ -1168,7 +1173,7 @@
 	else //caused by emp/remote signal
 		M.log_message("was [targeted? "flashed(targeted)" : "flashed(AOE)"]",LOG_ATTACK)
 	if(generic_message && M != user)
-		to_chat(M, "<span class='danger'>[src] emits a blinding light!</span>")
+		to_chat(M, span_danger("[src] emits a blinding light!"))
 	if(M.flash_act())
 		var/diff = power - M.confused
 		M.confused += min(power, diff)
@@ -1254,3 +1259,52 @@
 	plane = GAME_PLANE_UPPER
 	blade_dulling = DULLING_BASH
 	max_integrity = 300
+
+/obj/structure/fluff/headstake
+	name = "head on a stake"
+	desc = ""
+	icon = 'icons/roguetown/items/natural.dmi'
+	icon_state = "headstake"
+	density = FALSE
+	anchored = TRUE	
+	dir = SOUTH
+	var/obj/item/grown/log/tree/stake/stake
+	var/obj/item/bodypart/head/victim
+
+
+/obj/structure/fluff/headstake/CheckParts(list/parts_list)
+	..()
+	victim = locate(/obj/item/bodypart/head) in parts_list
+	name = "[victim.name] on a stake"
+	update_icon()
+	stake = locate(/obj/item/grown/log/tree/stake) in parts_list
+
+///obj/structure/fluff/headstake/Initialize()
+//	. = ..()	
+
+/obj/structure/fluff/headstake/OnCrafted(dirin, user)
+	dir = SOUTH
+	pixel_x = rand(-8, 8)
+	return
+
+/obj/structure/fluff/headstake/update_icon()
+	..()
+	var/obj/item/bodypart/head/H = locate() in contents
+	var/mutable_appearance/MA = new()
+	if(H)
+		MA.copy_overlays(H)
+		H.pixel_y = rand(9, 11)
+		H.pixel_x = pixel_x
+		H.dir = SOUTH
+		add_overlay(H)
+
+/obj/structure/fluff/headstake/attack_hand(mob/user)
+	. = ..()
+	if(.)
+		return
+	to_chat(user, span_notice("I take down [src]."))
+	victim.forceMove(drop_location())
+	victim = null
+	stake.forceMove(drop_location())
+	stake = null
+	qdel(src)

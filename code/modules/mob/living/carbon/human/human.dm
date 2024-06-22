@@ -85,19 +85,19 @@
 	switch(rand(1,4))
 		if(1)
 			affecting = get_bodypart(pick(BODY_ZONE_R_LEG, BODY_ZONE_L_LEG))
-			chat_message = "<span class='danger'>I fall on my [affecting]!</span>"
+			chat_message = span_danger("I fall on my [affecting]!")
 		if(2)
 			affecting = get_bodypart(pick(BODY_ZONE_R_ARM, BODY_ZONE_L_ARM))
-			chat_message = "<span class='danger'>I fall on my arm!</span>"
+			chat_message = span_danger("I fall on my arm!")
 		if(3)
 			affecting = get_bodypart(BODY_ZONE_CHEST)
-			chat_message = "<span class='danger'>I fall flat! I'm winded!</span>"
+			chat_message = span_danger("I fall flat! I'm winded!")
 			emote("gasp")
 			adjustOxyLoss(50)
 		if(4)
 			affecting = get_bodypart(BODY_ZONE_HEAD)
-			chat_message = "<span class='danger'>I fall on my head!</span>"
-	if(affecting && apply_damage(dam, BRUTE, affecting, run_armor_check(affecting, "melee", damage = dam)))
+			chat_message = span_danger("I fall on my head!")
+	if(affecting && apply_damage(dam, BRUTE, affecting, run_armor_check(affecting, "blunt", damage = dam)))
 		update_damage_overlays()
 		if(levels >= 1)
 			//absurd damage to guarantee a crit
@@ -371,7 +371,7 @@
 					. = 0
 	if(!. && error_msg && user)
 		// Might need re-wording.
-		to_chat(user, "<span class='alert'>There is no exposed flesh or thin material [above_neck(target_zone) ? "on [p_their()] head" : "on [p_their()] body"].</span>")
+		to_chat(user, span_alert("There is no exposed flesh or thin material [above_neck(target_zone) ? "on [p_their()] head" : "on [p_their()] body"]."))
 
 /mob/living/carbon/human/assess_threat(judgement_criteria, lasercolor = "", datum/callback/weaponcheck=null)
 	if(judgement_criteria & JUDGE_EMAGGED)
@@ -462,27 +462,27 @@
 		for(var/obj/item/hand in held_items)
 			if(prob(current_size * 5) && hand.w_class >= ((11-current_size)/2)  && dropItemToGround(hand))
 				step_towards(hand, src)
-				to_chat(src, "<span class='warning'>\The [S] pulls \the [hand] from your grip!</span>")
+				to_chat(src, span_warning("\The [S] pulls \the [hand] from your grip!"))
 	rad_act(current_size * 3)
 
 /mob/living/carbon/human/proc/do_cpr(mob/living/carbon/C)
 	CHECK_DNA_AND_SPECIES(C)
 
 	if(C.stat == DEAD || (HAS_TRAIT(C, TRAIT_FAKEDEATH)))
-		to_chat(src, "<span class='warning'>[C.name] is dead!</span>")
+		to_chat(src, span_warning("[C.name] is dead!"))
 		return
 	if(is_mouth_covered())
-		to_chat(src, "<span class='warning'>Remove your mask first!</span>")
+		to_chat(src, span_warning("Remove your mask first!"))
 		return 0
 	if(C.is_mouth_covered())
-		to_chat(src, "<span class='warning'>Remove [p_their()] mask first!</span>")
+		to_chat(src, span_warning("Remove [p_their()] mask first!"))
 		return 0
 
 	if(C.cpr_time < world.time + 30)
-		visible_message("<span class='notice'>[src] is trying to perform CPR on [C.name]!</span>", \
-						"<span class='notice'>I try to perform CPR on [C.name]... Hold still!</span>")
+		visible_message(span_notice("[src] is trying to perform CPR on [C.name]!"), \
+						span_notice("I try to perform CPR on [C.name]... Hold still!"))
 		if(!do_mob(src, C))
-			to_chat(src, "<span class='warning'>I fail to perform CPR on [C]!</span>")
+			to_chat(src, span_warning("I fail to perform CPR on [C]!"))
 			return 0
 
 		var/they_breathe = !HAS_TRAIT(C, TRAIT_NOBREATH)
@@ -491,7 +491,7 @@
 		if(C.health > C.crit_threshold)
 			return
 
-		src.visible_message("<span class='notice'>[src] performs CPR on [C.name]!</span>", "<span class='notice'>I perform CPR on [C.name].</span>")
+		src.visible_message(span_notice("[src] performs CPR on [C.name]!"), span_notice("I perform CPR on [C.name]."))
 		SEND_SIGNAL(src, COMSIG_ADD_MOOD_EVENT, "perform_cpr", /datum/mood_event/perform_cpr)
 		C.cpr_time = world.time
 		log_combat(src, C, "CPRed")
@@ -500,11 +500,11 @@
 			var/suff = min(C.getOxyLoss(), 7)
 			C.adjustOxyLoss(-suff)
 			C.updatehealth()
-			to_chat(C, "<span class='unconscious'>I feel a breath of fresh air enter your lungs... It feels good...</span>")
+			to_chat(C, span_unconscious("I feel a breath of fresh air enter your lungs... It feels good..."))
 		else if(they_breathe && !they_lung)
-			to_chat(C, "<span class='unconscious'>I feel a breath of fresh air... but you don't feel any better...</span>")
+			to_chat(C, span_unconscious("I feel a breath of fresh air... but you don't feel any better..."))
 		else
-			to_chat(C, "<span class='unconscious'>I feel a breath of fresh air... which is a sensation you don't recognise...</span>")
+			to_chat(C, span_unconscious("I feel a breath of fresh air... which is a sensation you don't recognise..."))
 
 /mob/living/carbon/human/cuff_resist(obj/item/I)
 	if(dna && dna.check_mutation(HULK))
@@ -548,12 +548,12 @@
 
 /mob/living/carbon/human/canUseTopic(atom/movable/M, be_close=FALSE, no_dexterity=FALSE, no_tk=FALSE)
 	if(!(mobility_flags & MOBILITY_UI))
-		to_chat(src, "<span class='warning'>I can't do that right now!</span>")
+		to_chat(src, span_warning("I can't do that right now!"))
 		return FALSE
 	if(!Adjacent(M) && (M.loc != src))
 		if((be_close == FALSE) || (!no_tk && (dna.check_mutation(TK) && tkMaxRangeCheck(src, M))))
 			return TRUE
-		to_chat(src, "<span class='warning'>I am too far away!</span>")
+		to_chat(src, span_warning("I am too far away!"))
 		return FALSE
 	return TRUE
 
@@ -747,8 +747,8 @@
 /mob/living/carbon/human/vomit(lost_nutrition = 10, blood = 0, stun = 1, distance = 0, message = 1, toxic = 0)
 	if(blood && (NOBLOOD in dna.species.species_traits) && !HAS_TRAIT(src, TRAIT_TOXINLOVER))
 		if(message)
-			visible_message("<span class='warning'>[src] dry heaves!</span>", \
-							"<span class='danger'>I try to throw up, but there's nothing in your stomach!</span>")
+			visible_message(span_warning("[src] dry heaves!"), \
+							span_danger("I try to throw up, but there's nothing in your stomach!"))
 		if(stun)
 			Immobilize(200)
 		return 1
@@ -863,14 +863,14 @@
 		if(success)
 			to_chat(usr, "Put [src] on purrbation.")
 			log_admin("[key_name(usr)] has put [key_name(src)] on purrbation.")
-			var/msg = "<span class='notice'>[key_name_admin(usr)] has put [key_name(src)] on purrbation.</span>"
+			var/msg = span_notice("[key_name_admin(usr)] has put [key_name(src)] on purrbation.")
 			message_admins(msg)
 			admin_ticket_log(src, msg)
 
 		else
 			to_chat(usr, "Removed [src] from purrbation.")
 			log_admin("[key_name(usr)] has removed [key_name(src)] from purrbation.")
-			var/msg = "<span class='notice'>[key_name_admin(usr)] has removed [key_name(src)] from purrbation.</span>"
+			var/msg = span_notice("[key_name_admin(usr)] has removed [key_name(src)] from purrbation.")
 			message_admins(msg)
 			admin_ticket_log(src, msg)
 
@@ -909,33 +909,33 @@
 
 	if(can_be_firemanned(target) && !incapacitated(FALSE, TRUE))
 		if(backnotshoulder)
-			visible_message("<span class='notice'>[src] starts lifting [target] onto their back..</span>")
+			visible_message(span_notice("[src] starts lifting [target] onto their back.."))
 		else
-			visible_message("<span class='notice'>[src] starts lifting [target] onto their shoulder..</span>")
+			visible_message(span_notice("[src] starts lifting [target] onto their shoulder.."))
 		if(do_after(src, carrydelay, TRUE, target))
 			//Second check to make sure they're still valid to be carried
 			if(can_be_firemanned(target) && !incapacitated(FALSE, TRUE))
 				buckle_mob(target, TRUE, TRUE, 90, 0, 0)
 				return
-	to_chat(src, "<span class='warning'>I fail to carry [target].</span>")
+	to_chat(src, span_warning("I fail to carry [target]."))
 
 /mob/living/carbon/human/proc/piggyback(mob/living/carbon/target)
 	if(can_piggyback(target))
-		visible_message("<span class='notice'>[target] starts to climb onto [src]...</span>")
+		visible_message(span_notice("[target] starts to climb onto [src]..."))
 		if(do_after(target, 15, target = src))
 			if(can_piggyback(target))
 				if(target.incapacitated(FALSE, TRUE) || incapacitated(FALSE, TRUE))
-					to_chat(target, "<span class='warning'>I can't piggyback ride [src].</span>")
+					to_chat(target, span_warning("I can't piggyback ride [src]."))
 					return
 				buckle_mob(target, TRUE, TRUE, FALSE, 0, 0)
 	else
-		to_chat(target, "<span class='warning'>I can't piggyback ride [src].</span>")
+		to_chat(target, span_warning("I can't piggyback ride [src]."))
 
 /mob/living/carbon/human/buckle_mob(mob/living/target, force = FALSE, check_loc = TRUE, lying_buckle = FALSE, hands_needed = 0, target_hands_needed = 0)
 	if(!force)//humans are only meant to be ridden through piggybacking and special cases
 		return
 	if(!is_type_in_typecache(target, can_ride_typecache))
-		target.visible_message("<span class='warning'>[target] really can't seem to mount [src]...</span>")
+		target.visible_message(span_warning("[target] really can't seem to mount [src]..."))
 		return
 	buckle_lying = lying_buckle
 	var/datum/component/riding/human/riding_datum = LoadComponent(/datum/component/riding/human)
@@ -952,12 +952,12 @@
 
 	if(hands_needed || target_hands_needed)
 		if(hands_needed && !equipped_hands_self)
-			src.visible_message("<span class='warning'>[src] can't get a grip on [target] because their hands are full!</span>",
-				"<span class='warning'>I can't get a grip on [target] because your hands are full!</span>")
+			src.visible_message(span_warning("[src] can't get a grip on [target] because their hands are full!"),
+				span_warning("I can't get a grip on [target] because your hands are full!"))
 			return
 		else if(target_hands_needed && !equipped_hands_target)
-			target.visible_message("<span class='warning'>[target] can't get a grip on [src] because their hands are full!</span>",
-				"<span class='warning'>I can't get a grip on [src] because your hands are full!</span>")
+			target.visible_message(span_warning("[target] can't get a grip on [src] because their hands are full!"),
+				span_warning("I can't get a grip on [src] because your hands are full!"))
 			return
 
 	//stop_pulling()
@@ -977,7 +977,7 @@
 	remove_movespeed_modifier(MOVESPEED_ID_SHOVE)
 	var/active_item = get_active_held_item()
 	if(is_type_in_typecache(active_item, GLOB.shove_disarming_types))
-		visible_message("<span class='warning'>[src.name] regains their grip on \the [active_item]!</span>", "<span class='warning'>I regain your grip on \the [active_item]</span>", null, COMBAT_MESSAGE_RANGE)
+		visible_message(span_warning("[src.name] regains their grip on \the [active_item]!"), span_warning("I regain your grip on \the [active_item]"), null, COMBAT_MESSAGE_RANGE)
 
 /mob/living/carbon/human/do_after_coefficent()
 	. = ..()

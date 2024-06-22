@@ -50,7 +50,7 @@
 		var/obj/O = new /obj/effect/decal/cleanable/food/egg_smudge(T)
 		O.pixel_x = rand(-8,8)
 		O.pixel_y = rand(-8,8)
-		visible_message("<span class='warning'>[H] crushes [src] underfoot.</span>")
+		visible_message(span_warning("[H] crushes [src] underfoot."))
 		qdel(src)
 
 /obj/item/reagent_containers/food/snacks/egg/gland
@@ -82,16 +82,16 @@
 		var/clr = C.crayon_color
 
 		if(!(clr in list("blue", "green", "mime", "orange", "purple", "rainbow", "red", "yellow")))
-			to_chat(usr, "<span class='notice'>[src] refuses to take on this colour!</span>")
+			to_chat(usr, span_notice("[src] refuses to take on this colour!"))
 			return
 
-		to_chat(usr, "<span class='notice'>I colour [src] with [W].</span>")
+		to_chat(usr, span_notice("I colour [src] with [W]."))
 		icon_state = "egg-[clr]"
 	else if(istype(W, /obj/item/stamp/clown))
 		var/clowntype = pick("grock", "grimaldi", "rainbow", "chaos", "joker", "sexy", "standard", "bobble", "krusty", "bozo", "pennywise", "ronald", "jacobs", "kelly", "popov", "cluwne")
 		icon_state = "egg-clown-[clowntype]"
 		desc = ""
-		to_chat(usr, "<span class='notice'>I stamp [src] with [W], creating an artistic and not remotely horrifying likeness of clown makeup.</span>")
+		to_chat(usr, span_notice("I stamp [src] with [W], creating an artistic and not remotely horrifying likeness of clown makeup."))
 	else
 		..()
 
@@ -156,11 +156,11 @@
 	if(istype(W, /obj/item/kitchen/fork))
 		var/obj/item/kitchen/fork/F = W
 		if(F.forkload)
-			to_chat(user, "<span class='warning'>I already have omelette on your fork!</span>")
+			to_chat(user, span_warning("I already have omelette on your fork!"))
 		else
 			F.icon_state = "forkloaded"
-			user.visible_message("<span class='notice'>[user] takes a piece of omelette with [user.p_their()] fork!</span>", \
-				"<span class='notice'>I take a piece of omelette with your fork.</span>")
+			user.visible_message(span_notice("[user] takes a piece of omelette with [user.p_their()] fork!"), \
+				span_notice("I take a piece of omelette with your fork."))
 
 			var/datum/reagent/R = pick(reagents.reagent_list)
 			reagents.remove_reagent(R.type, 1)

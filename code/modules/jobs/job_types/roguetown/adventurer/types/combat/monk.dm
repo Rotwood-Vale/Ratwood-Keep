@@ -2,13 +2,14 @@
 	name = "Monk"
 	tutorial = "Masters of hand-to-hand combat, Monks are trained in the arts of morality, \
 	and try to remain nuetral to the conflict around them unless it interferes with their personal and religious beliefs"
-	allowed_sexes = list("male", "female")
-	allowed_races = CLOTHED_RACES_TYPES
+	allowed_sexes = list(MALE, FEMALE)
+	allowed_races = RACES_ALL_KINDS
 	outfit = /datum/outfit/job/roguetown/adventurer/monk
 	traits_applied = list(TRAIT_DODGEEXPERT)
-	isvillager = FALSE
-	ispilgrim = FALSE
+
 	vampcompat = FALSE
+
+	category_tags = list(CTAG_ADVENTURER)
 
 /datum/outfit/job/roguetown/adventurer/monk/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -22,7 +23,7 @@
 	backl = /obj/item/storage/backpack/rogue/backpack
 	r_hand = /obj/item/rogueweapon/woodstaff
 	if(H.mind)
-		to_chat(src, "<span class='warning'>Monks are pilgrims of powerful belief who empart the teachings of their Temple or God by their interactions with the people of the world. A good monk would seek to help travellers on the road, feed the hungry and teach the weak to become strong. A bad one however...</span>")
+		to_chat(src, span_warning("Monks are pilgrims of powerful belief who empart the teachings of their Temple or God by their interactions with the people of the world. A good monk would seek to help travellers on the road, feed the hungry and teach the weak to become strong. A bad one however..."))
 		H.mind.adjust_skillrank(/datum/skill/combat/swords, pick(0,1), TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE) 
 		H.mind.adjust_skillrank(/datum/skill/combat/bows, pick(0,1), TRUE)

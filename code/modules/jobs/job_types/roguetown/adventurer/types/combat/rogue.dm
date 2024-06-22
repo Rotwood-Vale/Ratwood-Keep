@@ -3,10 +3,11 @@
 	tutorial = "Rogues are men of shadows, and commonly associated with banditry. Most are usually akin to criminals, \
 	and those who aren't are usually treated as such anyway, \
 	they are most commonly associated with the god Xylix due to their skills in thievery"
-	allowed_sexes = list("male", "female")
-	allowed_races = CLOTHED_RACES_TYPES
+	allowed_sexes = list(MALE, FEMALE)
+	allowed_races = RACES_ALL_KINDS
 	outfit = /datum/outfit/job/roguetown/adventurer/rogue
 	traits_applied = list(TRAIT_MEDIUMARMOR, TRAIT_DODGEEXPERT)
+	category_tags = list(CTAG_ADVENTURER)
 
 /datum/outfit/job/roguetown/adventurer/rogue
 	allowed_patrons = list(/datum/patron/divine/xylix, /datum/patron/inhumen/matthios)
