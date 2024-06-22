@@ -211,13 +211,25 @@
 				return list("shrink" = 0.3,"sx" = -2,"sy" = -5,"nx" = 4,"ny" = -5,"wx" = 0,"wy" = -5,"ex" = 2,"ey" = -5,"nturn" = 0,"sturn" = 0,"wturn" = 0,"eturn" = 0,"nflip" = 0,"sflip" = 0,"wflip" = 0,"eflip" = 0,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0)
 
 /obj/item/rogueweapon/hoe/attack_turf(turf/T, mob/living/user)
-	user.changeNext_move(CLICK_CD_MELEE)
-	if(istype(T, /turf/open/floor/rogue/grass))
-		if(user.used_intent.type == /datum/intent/till)
+	if(user.used_intent.type == /datum/intent/till)
+		user.changeNext_move(CLICK_CD_MELEE)
+		if(istype(T, /turf/open/floor/rogue/grass))
 			playsound(T,'sound/items/dig_shovel.ogg', 100, TRUE)
-			if (do_after(user,30, target = src))
+			if (do_after(user, 3 SECONDS, target = src))
+				apply_farming_fatigue(user, 10)
 				T.ChangeTurf(/turf/open/floor/rogue/dirt, flags = CHANGETURF_INHERIT_AIR)
 				playsound(T,'sound/items/dig_shovel.ogg', 100, TRUE)
+			return
+		if(istype(T, /turf/open/floor/rogue/dirt))
+			playsound(T,'sound/items/dig_shovel.ogg', 100, TRUE)
+			if(do_after(user, 3 SECONDS, target = src))	
+				playsound(T,'sound/items/dig_shovel.ogg', 100, TRUE)
+				var/obj/structure/soil/soil = get_soil_on_turf(T)
+				if(soil)
+					soil.user_till_soil(user)
+				else
+					apply_farming_fatigue(user, 10)
+					new /obj/structure/soil(T)
 			return
 	. = ..()
 

@@ -560,11 +560,9 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 				smoketime = initial(smoketime)
 				packeditem = 1
 //				name = "[O.name]-packed [initial(name)]"
-				/* TODO FARMING
 				if(G.pipe_reagents?.len)
 					reagents.add_reagent_list(G.pipe_reagents)
 //					O.reagents.trans_to(src, O.reagents.total_volume, transfered_by = user)
-				*/
 				qdel(O)
 			else
 				to_chat(user, span_warning("It has to be dried first!"))
