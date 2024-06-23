@@ -58,7 +58,6 @@
 
 	var/findonerotten = FALSE
 	var/shouldupdate = FALSE
-	var/dustme = FALSE
 	for(var/obj/item/bodypart/B in C.bodyparts)
 		if(!B.skeletonized && B.is_organic_limb())
 			if(!B.rotted)

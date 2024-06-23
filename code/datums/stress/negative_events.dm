@@ -166,6 +166,11 @@
 	stressadd = 1
 	desc = span_red("Better stay away.")
 
+/datum/stressevent/shunned_race
+	timer = 1 MINUTES
+	stressadd = 1
+	desc = span_red("Better stay away.")
+
 /datum/stressevent/shunned_race_xenophobic
 	timer = 2 MINUTES
 	stressadd = 5

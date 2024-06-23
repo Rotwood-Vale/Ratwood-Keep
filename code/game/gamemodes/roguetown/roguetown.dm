@@ -155,6 +155,9 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "E
 				if("Maniac")
 					pick_maniac()
 					log_game("Minor Antagonist: Maniac)")
+				if("Cultists")
+					pick_cultist()
+					log_game("Minor Antagonist: Cultists)")
 				if("Extended")
 					log_game("Major Antagonist: Extended")
 		return TRUE
@@ -170,7 +173,7 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "E
 			pick_werewolves()
 			log_game("Major Antagonist: Werewolves")
 		if(51 to 75)
-			pick_cultists()
+			pick_cultist()
 			log_game("Major Antagonist: Cultists")
 		if(76 to 100)
 			log_game("Major Antagonist: Extended") //gotta put something here.
@@ -355,7 +358,7 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "E
 		var/blockme = FALSE
 		if(!(villain in allantags))
 			blockme = TRUE
-		if(villain.assigned_role in GLOB.apprentices_positions)
+		if(villain.assigned_role in GLOB.youngfolk_positions)
 			blockme = TRUE
 		if(blockme)
 			return
