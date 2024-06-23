@@ -45,8 +45,7 @@
 	H.change_stat("intelligence", -2)
 	H.change_stat("endurance", 2)
 	H.change_stat("constituion", 2)
-	if(ishumannorthern(H))
-		H.dna.species.soundpack_m = new /datum/voicepack/male/warrior()
+	H.dna.species.soundpack_m = new /datum/voicepack/male/warrior()
 	H.verbs |= /mob/living/carbon/human/proc/torture_victim
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_STEELHEARTED, TRAIT_GENERIC)

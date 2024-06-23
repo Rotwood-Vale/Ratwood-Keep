@@ -218,8 +218,7 @@
 	if(ishumannorthern(H) && prob(70)) //gronn lore
 		H.skin_tone = SKIN_COLOR_GRONN
 		H.update_body()
-	if(H.dna?.species)
-		H.dna.species.soundpack_m = new /datum/voicepack/male/warrior()
+	H.dna.species.soundpack_m = new /datum/voicepack/male/warrior()
 /* 
 	var/randy = rand(1,5)
 	switch(randy) // Pick wep. Choose skill.

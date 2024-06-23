@@ -31,6 +31,7 @@
 #define TRAIT_ANTIMAGIC	"Anti-Magic"
 #define TRAIT_SHOCKIMMUNE "Shock Immunity"
 #define TRAIT_NOSLEEP "Fatal Insomnia"
+#define TRAIT_GOODLOVER "Fabled Lover"
 
 // PATRON GOD TRAITS
 #define TRAIT_ROT_EATER "Blessing of Pestra" //can eat rotten food
@@ -95,6 +96,7 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_CRACKHEAD = span_love("I can use drugs as much as I want!"),
 	TRAIT_COMMIE = span_bloody("I can recognize other free men, and they can recognize me too."),
 	TRAIT_NORUN = span_warning("My body has atrophied in my state of decay; my leg joints just don't have the strength or durability for running anymore"),
+	TRAIT_GOODLOVER = span_love("It's a lucky thing to share my bed."),
 ))
 
 // trait accessor defines

@@ -45,6 +45,7 @@
 
 	var/log_source = M.logging
 	if(source == LOGSRC_CLIENT && M.client)
+		log_source = M.client.player_details.logging //should exist, if it doesn't that's a bug, don't check for it not existing
 		var/datum/player_details/details = GLOB.player_details[M.client]
 		if(details) //we dont want to runtime if an admin aghosted
 			log_source = details.logging
