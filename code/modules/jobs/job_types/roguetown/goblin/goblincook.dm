@@ -3,8 +3,8 @@
 	flag = GOBLINCOOK
 	department_flag = GOBLIN
 	faction = "Station"
-	total_positions = 0
-	spawn_positions = 0
+	total_positions = 2
+	spawn_positions = 2
 	allowed_sexes = list(MALE)
 	allowed_races = list()
 	allowed_patrons = list(/datum/patron/inhumen/graggar)
@@ -13,7 +13,7 @@
 
 	outfit = /datum/outfit/job/roguetown/goblincook
 	display_order = JDO_GOBLINCOOK
-	min_pq = 0
+	min_pq = 1
 	max_pq = null
 
 /datum/outfit/job/roguetown/goblincook/pre_equip(mob/living/carbon/human/H)

@@ -71,7 +71,7 @@
 	)
 
 /datum/species/goblinp/check_roundstart_eligible()
-	return FALSE
+	return TRUE
 
 /datum/species/goblinp/qualifies_for_rank(rank, list/features)
 	return TRUE
@@ -86,6 +86,7 @@
 		"Lime" = "3e8a0f",
 		"Moss" = "538a0f",
 		"Olive" = "6b8a08",
+		"Dark" = "45553A"
 	)
 
 /datum/species/goblinp/on_species_gain(mob/living/carbon/C, datum/species/old_species)
