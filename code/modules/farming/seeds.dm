@@ -3,6 +3,23 @@
 	icon = 'icons/obj/hydroponics/seeds.dmi'
 	icon_state = "seed"
 	var/plant_def_type
+	var/seed_identity = "some seed"
+
+/obj/item/seeds/examine(mob/user)
+	. = ..()
+	var/show_real_identity = FALSE
+	if(isliving(user))
+		var/mob/living/living = user
+		// Seed knowers, know the seeds (druids and such)
+		if(HAS_TRAIT(living, TRAIT_SEEDKNOW))
+			show_real_identity = TRUE
+		// Journeyman farmers know them too
+		else if(living.mind.get_skill_level(/datum/skill/labor/farming) >= 2)
+			show_real_identity = TRUE
+	else
+		show_real_identity = TRUE
+	if(show_real_identity)
+		. += span_info("I can tell these are [seed_identity]")
 
 /obj/item/seeds/attack_turf(turf/T, mob/living/user)
 	var/obj/structure/soil/soil = get_soil_on_turf(T)
@@ -30,30 +47,30 @@
 	qdel(src)
 
 /obj/item/seeds/wheat
-	name = "wheat seeds"
+	seed_identity = "wheat seeds"
 	plant_def_type = /datum/plant_def/wheat
 
 /obj/item/seeds/wheat/oat
-	name = "oat seeds"
+	seed_identity = "oat seeds"
 	plant_def_type = /datum/plant_def/oat
 
 /obj/item/seeds/apple
-	name = "apple seeds"
+	seed_identity = "apple seeds"
 	plant_def_type = /datum/plant_def/apple
 
 /obj/item/seeds/pipeweed
-	name = "westleach leaf seeds"
+	seed_identity = "westleach leaf seeds"
 	plant_def_type = /datum/plant_def/pipeweed
 
 /obj/item/seeds/sweetleaf
-	name = "swampweed seeds"
+	seed_identity = "swampweed seeds"
 	plant_def_type = /datum/plant_def/sweetleaf
 
 /obj/item/seeds/berryrogue
-	name = "berry seeds"
+	seed_identity = "berry seeds"
 	plant_def_type = /datum/plant_def/berry
 
 /obj/item/seeds/berryrogue/poison
-	name = "berry seeds"
+	seed_identity = "berry seeds"
 	plant_def_type = /datum/plant_def/berry_poison
 
