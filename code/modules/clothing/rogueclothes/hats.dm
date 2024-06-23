@@ -47,7 +47,7 @@
 	mob_overlay_icon = 'icons/roguetown/clothing/onmob/head.dmi' //Overrides slot icon behavior
 	alternate_worn_layer  = 8.9 //On top of helmet
 	body_parts_covered = HEAD|HAIR|EARS|NECK
-	slot_flags = ITEM_SLOT_HEAD
+	slot_flags = ITEM_SLOT_HEAD|ITEM_SLOT_MASK
 	armor = list("blunt" = 15, "slash" = 20, "stab" = 15, "bullet" = 1, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
 	dynamic_hair_suffix = ""
 	edelay_type = 1
