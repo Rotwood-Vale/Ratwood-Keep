@@ -17705,11 +17705,6 @@
 	},
 /area/rogue/under/town/basement)
 "vbe" = (
-/obj/structure/stairs{
-	dir = 1
-	},
-/area/rogue/under/town/basement)
-"vbe" = (
 /turf/closed/wall/mineral/rogue/stone,
 /area/rogue/outdoors/town/harbor)
 "vbj" = (

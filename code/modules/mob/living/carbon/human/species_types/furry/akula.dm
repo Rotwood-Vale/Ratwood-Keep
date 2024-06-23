@@ -4,7 +4,14 @@
 /datum/species/akula
 	name = "Axian"
 	id = "akula"
-	desc = "In time you will learn the history of this race"
+	desc = "<b>Axian</b><br>\
+	Axians are a proud, shark-like people that have a heritage founded in maritime trade, \
+	tax evasion, and piracy. They have a strong distaste for the nobility and taxation, \
+	making them a target of discrimination in Ratwood. They are oftentimes scapegoats for crime. \
+	Due to their penchant for trade and travel, they can be found all over the world, oftentimes \
+	seeing places many places could not even dream of. They look down at those they considered the 'settled' \
+	and often uproot themselves quite often in their lifetimes. However, due to the isolation in Ratwood, many Axians \
+	find their sanity being clawed away as they find themselves stuck in one place."
 	species_traits = list(EYECOLOR,LIPS,STUBBLE,MUTCOLORS)
 	inherent_traits = list(TRAIT_NOMOBSWAP)
 	possible_ages = ALL_AGES_LIST
@@ -75,6 +82,33 @@
 		/datum/body_marking/tonage,
 		/datum/body_marking/tiger/dark,
 	)
+
+/datum/species/akula/random_name(gender,unique,lastname)
+	var/randname
+	if(gender == MALE)
+		randname = pick(world.file2list("strings/names/roguetown/axianmale.txt"))
+	if(gender == FEMALE)
+		randname = pick(world.file2list("strings/names/roguetown/axianfemale.txt"))
+	if(prob(33))
+		//Prefix
+		var/prefix = pick(world.file2list("strings/names/roguetown/axianprefix.txt"))
+		randname = "[prefix] [randname]"
+	else
+		//Suffix
+		var/suffix = pick(world.file2list("strings/names/roguetown/axiansuffix.txt"))
+		randname = "[randname] [suffix]"
+	return randname
+
+/datum/species/akula/on_species_gain(mob/living/carbon/C, datum/species/old_species)
+	..()
+	RegisterSignal(C, COMSIG_MOB_SAY, PROC_REF(handle_speech))
+
+/datum/species/akula/on_species_loss(mob/living/carbon/C)
+	. = ..()
+	UnregisterSignal(C, COMSIG_MOB_SAY)
+
+/datum/species/akula/get_accent(mob/living/carbon/human/H)
+	return strings("pirate_replacement.json", "pirate")
 
 /datum/species/akula/check_roundstart_eligible()
 	return TRUE
