@@ -3,8 +3,8 @@
 	flag = NIGHTMASTER
 	department_flag = PEASANTS
 	faction = "Station"
-	total_positions = 0 
-	spawn_positions = 0 // Disabled until he gets his own place on the map
+	total_positions = 1 
+	spawn_positions = 1 // Disabled until he gets his own place on the map
 
 	allowed_sexes = list(MALE)
 	allowed_races = RACES_TOLERATED_UP
