@@ -1,7 +1,7 @@
-/mob/living/carbon/human/species/anthromorph/small
-	race = /datum/species/anthromorph/small
+/mob/living/carbon/human/species/anthromorphsmall
+	race = /datum/species/anthromorphsmall
 
-/datum/species/anthromorph/small
+/datum/species/anthromorphsmall
 	name = "Verminvolk" 
 	id = "anthromorphsmall"
 	desc = "A race akin to wild-kin, except afflicted with significantly smaller stature. A bit less respected than their kin due to their closer resemblance to vermin, like the dichotomy between Kobold and Sissean."
@@ -96,21 +96,21 @@
 		/datum/body_marking/small/front,
 	)
 
-/datum/species/anthromorph/small/on_species_gain(mob/living/carbon/C, datum/species/old_species)
+/datum/species/anthromorphsmall/on_species_gain(mob/living/carbon/C, datum/species/old_species)
 	..()
 	RegisterSignal(C, COMSIG_MOB_SAY, PROC_REF(handle_speech))
 
-/datum/species/anthromorph/small/on_species_loss(mob/living/carbon/C)
+/datum/species/anthromorphsmall/on_species_loss(mob/living/carbon/C)
 	. = ..()
 	UnregisterSignal(C, COMSIG_MOB_SAY)
 
-/datum/species/anthromorph/small/check_roundstart_eligible()
+/datum/species/anthromorphsmall/check_roundstart_eligible()
 	return TRUE
 
-/datum/species/anthromorph/small/qualifies_for_rank(rank, list/features)
+/datum/species/anthromorphsmall/qualifies_for_rank(rank, list/features)
 	return TRUE
 
-/datum/species/anthromorph/small/get_random_features()
+/datum/species/anthromorphsmall/get_random_features()
 	var/list/returned = MANDATORY_FEATURE_LIST
 	var/main_color
 	var/second_color
