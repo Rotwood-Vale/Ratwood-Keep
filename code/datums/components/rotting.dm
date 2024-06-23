@@ -62,13 +62,13 @@
 	for(var/obj/item/bodypart/B in C.bodyparts)
 		if(!B.skeletonized && B.is_organic_limb())
 			if(!B.rotted)
-				if(amount > 5 MINUTES)
+				if(amount > 15 MINUTES) //ROTWOOD EDIT: Adjusts rot timers to be less grief-heavy.
 					B.rotted = TRUE
 					findonerotten = TRUE
 					shouldupdate = TRUE
 					C.change_stat("constitution", -8, "rottenlimbs")
 			else
-				if(amount > 15 MINUTES)
+				if(amount > 30 MINUTES) //ROTWOOD EDIT: Adjusts rot timers to be less grief-heavy.
 					if(!is_zombie)
 						B.skeletonize()
 						if(C.dna && C.dna.species)
@@ -77,7 +77,7 @@
 						shouldupdate = TRUE
 				else
 					findonerotten = TRUE
-		if(amount > 25 MINUTES)
+		if(amount > 45 MINUTES) //ROTWOOD EDIT: Adjusts rot timers to be less grief-heavy.
 			if(!is_zombie)
 				if(B.skeletonized)
 					dustme = TRUE
@@ -113,13 +113,13 @@
 	if(L.stat != DEAD)
 		qdel(src)
 		return
-	if(amount > 10 MINUTES)
+	if(amount > 25 MINUTES) //ROTWOOD EDIT: Things rot slower!
 		if(soundloop && soundloop.stopped)
 			soundloop.start()
 		var/turf/open/T = get_turf(L)
 		if(istype(T))
 			T.add_pollutants(/datum/pollutant/rot, 5)
-	if(amount > 20 MINUTES)
+	if(amount > 35 MINUTES) //ROTWOOD EDIT: Though not too slowly!
 		qdel(src)
 		return L.dust(drop_items=TRUE)
 
