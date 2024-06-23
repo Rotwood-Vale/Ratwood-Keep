@@ -6,28 +6,44 @@
 
 /datum/supply_pack/rogue/apparel/hoods
 	name = "Shoulder Hood"
-	cost = 10
-	contains = list(/obj/item/clothing/head/roguetown/roguehood/random)
+		cost = 30
+	contains = list(
+					/obj/item/clothing/head/roguetown/roguehood/random,
+					/obj/item/clothing/head/roguetown/roguehood/random,
+					/obj/item/clothing/head/roguetown/roguehood/random,
+				)
 
-/datum/supply_pack/rogue/apparel/bags/satchel
-	name = "Satchels"
+/datum/supply_pack/rogue/apparel/bags/satchels
+	name = "Satchel"
 	cost = 10
-	contains = list(/obj/item/storage/backpack/rogue/satchel)
+	contains = list(
+					/obj/item/storage/backpack/rogue/satchel,
+					/obj/item/storage/backpack/rogue/satchel,
+					/obj/item/storage/backpack/rogue/satchel,
+				)
 
-/datum/supply_pack/rogue/apparel/bags/backpack
+/datum/supply_pack/rogue/apparel/bags/backpacks
 	name = "Backpack"
 	cost = 15
 	contains = list(/obj/item/storage/backpack/rogue/backpack)
 
-/datum/supply_pack/rogue/apparel/bags/pouch
-	name = "Pouches"
+/datum/supply_pack/rogue/apparel/bags/pouches
+	name = "Pouch"
 	cost = 10
-	contains = list(/obj/item/storage/belt/rogue/pouch)
+	contains = list(
+					/obj/item/storage/belt/rogue/pouch,
+					/obj/item/storage/belt/rogue/pouch,
+					/obj/item/storage/belt/rogue/pouch,
+				)
 
 /datum/supply_pack/rogue/apparel/belts
-	name = "Belts"
+	name = "Belt"
 	cost = 10
-	contains = list(/obj/item/storage/belt/rogue/leather)
+	contains = list(
+					/obj/item/storage/belt/rogue/leather,
+					/obj/item/storage/belt/rogue/leather,
+					/obj/item/storage/belt/rogue/leather,
+				)
 
 /datum/supply_pack/rogue/apparel/crosses/silver
 	name = "Silver Cross"
@@ -41,39 +57,63 @@
 
 /datum/supply_pack/rogue/apparel/gloves/leather
 	name = "Leather Gloves"
-	cost = 10
-	contains = list(/obj/item/clothing/gloves/roguetown/leather)
+	cost = 15
+	contains = list(
+					/obj/item/clothing/gloves/roguetown/leather,
+					/obj/item/clothing/gloves/roguetown/leather,
+					/obj/item/clothing/gloves/roguetown/leather,
+				)
 
 /datum/supply_pack/rogue/apparel/boots/leather
 	name = "Leather Boots"
-	cost = 10
-	contains = list(/obj/item/clothing/shoes/roguetown/boots/leather)
+	cost = 15
+	contains = list(
+					/obj/item/clothing/shoes/roguetown/boots/leather,
+					/obj/item/clothing/shoes/roguetown/boots/leather,
+					/obj/item/clothing/shoes/roguetown/boots/leather,
+				)
 
 /datum/supply_pack/rogue/apparel/trousers/leather
 	name = "Leather Trousers"
-	cost = 10
-	contains = list(/obj/item/clothing/under/roguetown/trou/leather)
+	cost = 15
+	contains = list(
+					/obj/item/clothing/under/roguetown/trou/leather,
+					/obj/item/clothing/under/roguetown/trou/leather,
+					/obj/item/clothing/under/roguetown/trou/leather,
+				)
 
 /datum/supply_pack/rogue/apparel/cloaks/leather
 	name = "Rain Cloak"
 	cost = 10
-	contains = list(/obj/item/clothing/cloak/raincloak/brown)
+	contains = list(
+					/obj/item/clothing/cloak/raincloak/brown,
+					/obj/item/clothing/cloak/raincloak/brown,
+					/obj/item/clothing/cloak/raincloak/brown,
+				)
 	
 /datum/supply_pack/rogue/apparel/shirts/tunic
 	name = "Shirt"
 	cost = 10
-	contains = list(/obj/item/clothing/suit/roguetown/shirt/tunic)
+	contains = list(
+					/obj/item/clothing/suit/roguetown/shirt/tunic,
+					/obj/item/clothing/suit/roguetown/shirt/tunic,
+					/obj/item/clothing/suit/roguetown/shirt/tunic,
+				)
 
 /datum/supply_pack/rogue/apparel/shirts
-	name = "Undershirts"
-	cost = 5
-	contains = list(/obj/item/clothing/suit/roguetown/shirt/undershirt/random,
+	name = "Undershirt"
+	cost = 10
+	contains = list(
 					/obj/item/clothing/suit/roguetown/shirt/undershirt/random,
-					/obj/item/clothing/suit/roguetown/shirt/undershirt/random)
+					/obj/item/clothing/suit/roguetown/shirt/undershirt/random,
+					/obj/item/clothing/suit/roguetown/shirt/undershirt/random,
+				)
 
 /datum/supply_pack/rogue/apparel/trousrs
 	name = "Trousers"
-	cost = 5
-	contains = list(/obj/item/clothing/under/roguetown/trou,
+	cost = 10
+	contains = list(
 					/obj/item/clothing/under/roguetown/trou,
-					/obj/item/clothing/under/roguetown/trou)
+					/obj/item/clothing/under/roguetown/trou,
+					/obj/item/clothing/under/roguetown/trou,
+				)
