@@ -628,7 +628,7 @@
 	name = "Area Bolt"
 	desc = ""
 	damage = 0
-	var/aoe_range = 1
+	var/aoe_range = 0
 	var/proxdet = TRUE
 
 /obj/projectile/magic/aoe/Range()
