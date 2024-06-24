@@ -318,7 +318,6 @@
 	sellprice = 200
 	resistance_flags = FIRE_PROOF | ACID_PROOF
 	anvilrepair = /datum/skill/craft/armorsmithing
-	var/is_stale = FALSE //Will handle crown logic for determining if it has failed to be moved within X period of time.
 
 /obj/item/clothing/head/roguetown/crown/serpcrown/Initialize()
 	. = ..()
