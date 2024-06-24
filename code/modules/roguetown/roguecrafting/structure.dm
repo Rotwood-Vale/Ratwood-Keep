@@ -15,7 +15,7 @@
 	result = /obj/structure/handcart
 	reqs = list(/obj/item/grown/log/tree/small = 3,
 				/obj/item/rope = 1)
-	verbage_simple = "construct"			
+	verbage_simple = "construct"
 	verbage = "constructs"
 
 /datum/crafting_recipe/roguetown/structure/psycrss
@@ -25,7 +25,7 @@
 				/obj/item/grown/log/tree/stake = 3)
 	verbage_simple = "construct"
 	verbage = "constructs"
-	
+
 /datum/crafting_recipe/roguetown/structure/stonepsycrss
 	name = "stone cross"
 	result = /obj/structure/fluff/psycross
@@ -160,7 +160,7 @@
 	result = /obj/structure/fluff/grindwheel
 	reqs = list(/obj/item/ingot/iron = 1,
 				/obj/item/natural/stone = 1)
-	skillcraft = /datum/skill/craft/blacksmithing	
+	skillcraft = /datum/skill/craft/blacksmithing
 	verbage_simple = "build"
 	verbage = "builds"
 	craftsound = null
@@ -332,6 +332,15 @@
 	verbage_simple = "construct"
 	verbage = "constructs"
 	skillcraft = /datum/skill/craft/carpentry
+
+/datum/crafting_recipe/roguetown/structure/coffin
+	name = "wooden coffin"
+	result = /obj/structure/closet/crate/coffin
+	reqs = list(/obj/item/grown/log/tree/small = 2)
+	verbage_simple = "construct"
+	verbage = "constructs"
+	skillcraft = /datum/skill/craft/carpentry
+	craftdiff = 1
 
 /obj/structure/closet/crate/roguecloset/crafted
 	sellprice = 6

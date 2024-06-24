@@ -84,6 +84,7 @@ GLOBAL_LIST_INIT(garrison_positions, list(
 	"Man at Arms",
 	"Dungeoneer",
 	"Gatemaster",
+	"Town Sheriff",
 ))
 
 GLOBAL_LIST_INIT(church_positions, list(
