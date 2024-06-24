@@ -3,21 +3,19 @@
 	flag = BUTLER
 	department_flag = COURTIERS
 	faction = "Station"
-	total_positions = 2
-	spawn_positions = 3
+	total_positions = 1
+	spawn_positions = 1
 
 	f_title = "Maid"
-	allowed_races = RACES_SHUNNED_UP
-	allowed_ages = ALL_AGES_LIST
+	allowed_races = RACES_TOLERATED_UP
+	allowed_ages = list(AGE_MIDDLEAGED, AGE_OLD)
 
-	tutorial = "Servitude unto death; your blade a charcuterie of artisanal cheeses and meat, your armor wit and classical training. \
-			You don't consider yourself a servant anymore, if anything, you're a part of the family now. \
-			You alone have raised Kings, Queens, Princesses and Princes; without you, the royals would have all starved to death."
+	tutorial = "Servitude unto death; That is your motto. Having nurtured royalty for years, you are nothing short of the King's majordomo, commanding over the rest of the house staff."
 
 	outfit = /datum/outfit/job/roguetown/butler
 	display_order = JDO_BUTLER
-	give_bank_account = 5
-	min_pq = -10
+	give_bank_account = 15
+	min_pq = 0
 	max_pq = null
 
 /datum/outfit/job/roguetown/butler/pre_equip(mob/living/carbon/human/H)
@@ -27,7 +25,7 @@
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/craft/cooking, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/medicine, 1, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/sewing, 1, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/sewing, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/stealing, 3, TRUE)
 
