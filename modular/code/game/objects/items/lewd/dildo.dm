@@ -108,7 +108,7 @@
 		if(!target_groin)
 			to_chat(user, "<span class='warning'>[target] is not naked!</span>")
 			return
-		if(target.getorganslot(ORGAN_SLOT_VAGINA))
+		if(!target.getorganslot(ORGAN_SLOT_VAGINA))
 			to_chat(user, "<span class='warning'>[target] has no vagina!</span>")
 			return
 		if(do_after(user, 2))
