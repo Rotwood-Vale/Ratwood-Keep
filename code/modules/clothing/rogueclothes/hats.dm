@@ -318,10 +318,20 @@
 	sellprice = 200
 	resistance_flags = FIRE_PROOF | ACID_PROOF
 	anvilrepair = /datum/skill/craft/armorsmithing
+	var/is_stale = FALSE //Will handle crown logic for determining if it has failed to be moved within X period of time.
 
 /obj/item/clothing/head/roguetown/crown/serpcrown/Initialize()
 	. = ..()
 	SSroguemachine.crown = src
+	RegisterSignal(src, COMSIG_CROWN_DESTROY, PROC_REF(anti_stall))
+
+/obj/item/clothing/head/roguetown/crown/serpcrown/proc/anti_stall()
+	src.visible_message(span_warning("The Crown of Rockhill crumbles to dust, the ashes spiriting away in the direction of the Keep."))
+	qdel(src) //Anti-stall
+
+/obj/item/clothing/head/roguetown/crown/serpcrown/Destroy()
+	. = ..()
+	UnregisterSignal(src,COMSIG_CROWN_DESTROY)
 
 /obj/item/clothing/head/roguetown/crown/serpcrown/surplus
 	name = "crown"
