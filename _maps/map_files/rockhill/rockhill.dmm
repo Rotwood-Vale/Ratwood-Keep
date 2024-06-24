@@ -57,9 +57,9 @@
 /area/rogue/indoors/town/vault)
 "aaJ" = (
 /obj/structure/mineral_door/wood{
+	locked = 1;
 	lockid = "harborshop1";
-	name = "Harbor Shop I";
-	locked = 1
+	name = "Harbor Shop I"
 	},
 /turf/open/floor/rogue/blocks/stonered/tiny,
 /area/rogue/indoors/town/shop)
@@ -151,8 +151,8 @@
 "aes" = (
 /obj/structure/closet/crate/chest,
 /turf/open/floor/rogue/ruinedwood{
-	icon_state = "wooden_floor2";
-	dir = 1
+	dir = 1;
+	icon_state = "wooden_floor2"
 	},
 /area/rogue/under/town/basement)
 "aeF" = (
@@ -209,8 +209,8 @@
 "ahB" = (
 /obj/structure/closet/crate/roguecloset/crafted,
 /turf/open/floor/rogue/ruinedwood{
-	icon_state = "wooden_floor2";
-	dir = 1
+	dir = 1;
+	icon_state = "wooden_floor2"
 	},
 /area/rogue/under/town/basement)
 "ahH" = (
@@ -327,15 +327,15 @@
 /obj/structure/closet/crate/roguecloset/inn,
 /obj/item/clothing/suit/roguetown/shirt/robe/white,
 /turf/open/floor/rogue/ruinedwood{
-	icon_state = "wooden_floor2";
-	dir = 1
+	dir = 1;
+	icon_state = "wooden_floor2"
 	},
 /area/rogue/outdoors/beach)
 "apT" = (
 /obj/structure/fluff/railing/border,
 /obj/effect/decal/cobbleedge{
-	icon_state = "borderfall";
-	dir = 4
+	dir = 4;
+	icon_state = "borderfall"
 	},
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue/outdoors/town/roofs)
@@ -800,16 +800,16 @@
 /obj/effect/landmark/latejoin,
 /obj/structure/chair/stool/rogue,
 /turf/open/floor/rogue/ruinedwood{
-	icon_state = "wooden_floor2";
-	dir = 1
+	dir = 1;
+	icon_state = "wooden_floor2"
 	},
 /area/rogue/outdoors/beach)
 "aSN" = (
 /obj/structure/bed/rogue/inn/double,
 /obj/item/bedsheet/rogue/fabric_double,
 /turf/open/floor/rogue/ruinedwood{
-	icon_state = "wooden_floor2";
-	dir = 1
+	dir = 1;
+	icon_state = "wooden_floor2"
 	},
 /area/rogue/outdoors/beach)
 "aSO" = (
@@ -1329,8 +1329,8 @@
 /area/rogue/indoors/town/manor)
 "byX" = (
 /obj/structure/table/wood{
-	icon_state = "tablewood2";
-	dir = 10
+	dir = 10;
+	icon_state = "tablewood2"
 	},
 /obj/item/paper/scroll,
 /obj/item/natural/feather,
@@ -1523,8 +1523,8 @@
 	dir = 8
 	},
 /turf/open/floor/rogue/ruinedwood{
-	icon_state = "wooden_floor2";
-	dir = 1
+	dir = 1;
+	icon_state = "wooden_floor2"
 	},
 /area/rogue/outdoors/beach)
 "bLf" = (
@@ -2211,8 +2211,8 @@
 "cCi" = (
 /obj/structure/mineral_door/wood,
 /turf/open/floor/rogue/ruinedwood{
-	icon_state = "wooden_floor2";
-	dir = 1
+	dir = 1;
+	icon_state = "wooden_floor2"
 	},
 /area/rogue/outdoors/beach)
 "cCz" = (
@@ -2288,13 +2288,13 @@
 	icon_state = "torchwall1"
 	},
 /obj/structure/table/wood{
-	icon_state = "largetable";
-	dir = 8
+	dir = 8;
+	icon_state = "largetable"
 	},
 /obj/item/roguecoin/copper/pile,
 /turf/open/floor/rogue/ruinedwood{
-	icon_state = "wooden_floor2";
-	dir = 1
+	dir = 1;
+	icon_state = "wooden_floor2"
 	},
 /area/rogue/under/town/basement)
 "cJJ" = (
@@ -2706,8 +2706,8 @@
 	dir = 8
 	},
 /turf/open/floor/rogue/ruinedwood{
-	icon_state = "wooden_floor2";
-	dir = 1
+	dir = 1;
+	icon_state = "wooden_floor2"
 	},
 /area/rogue/outdoors/beach)
 "dcz" = (
@@ -2835,8 +2835,8 @@
 "djR" = (
 /obj/structure/closet/crate/roguecloset/dark,
 /turf/open/floor/rogue/ruinedwood{
-	icon_state = "wooden_floor2";
-	dir = 1
+	dir = 1;
+	icon_state = "wooden_floor2"
 	},
 /area/rogue/under/town/basement)
 "dld" = (
@@ -3244,11 +3244,10 @@
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/town)
 "dKV" = (
-/turf/open/floor/rogue/ruinedwood{
-	dir = 1;
-	icon_state = "wooden_floor2"
-	},
-/area/rogue/outdoors/beach)
+/obj/structure/toilet,
+/obj/effect/landmark/start/longshoreman,
+/turf/open/floor/rogue/tile,
+/area/rogue/indoors/town/garrison)
 "dLf" = (
 /obj/structure/fluff/railing/border{
 	dir = 4;
@@ -3684,8 +3683,8 @@
 	dir = 10
 	},
 /turf/open/floor/rogue/ruinedwood{
-	icon_state = "wooden_floor2";
-	dir = 1
+	dir = 1;
+	icon_state = "wooden_floor2"
 	},
 /area/rogue/under/town/basement)
 "egx" = (
@@ -4167,8 +4166,8 @@
 /area/rogue/indoors/town/tavern)
 "eIV" = (
 /obj/effect/decal/cobbleedge{
-	icon_state = "borderfall";
-	dir = 4
+	dir = 4;
+	icon_state = "borderfall"
 	},
 /obj/structure/stairs{
 	dir = 4;
@@ -4256,8 +4255,8 @@
 /area/rogue/indoors/town/church/chapel)
 "eOi" = (
 /obj/structure/table/wood{
-	icon_state = "longtable";
-	dir = 1
+	dir = 1;
+	icon_state = "longtable"
 	},
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/town/garrison)
@@ -4732,8 +4731,8 @@
 "fsh" = (
 /obj/structure/feedinghole,
 /turf/open/floor/rogue/ruinedwood{
-	icon_state = "wooden_floor2";
-	dir = 1
+	dir = 1;
+	icon_state = "wooden_floor2"
 	},
 /area/rogue/under/town/basement)
 "fsl" = (
@@ -5412,13 +5411,13 @@
 /area/rogue/indoors/town/manor)
 "gkl" = (
 /obj/structure/table/wood{
-	icon_state = "largetable";
-	dir = 9
+	dir = 9;
+	icon_state = "largetable"
 	},
 /obj/item/reagent_containers/glass/cup/silver,
 /turf/open/floor/rogue/ruinedwood{
-	icon_state = "wooden_floor2";
-	dir = 1
+	dir = 1;
+	icon_state = "wooden_floor2"
 	},
 /area/rogue/under/town/basement)
 "gkv" = (
@@ -5723,8 +5722,8 @@
 /area/rogue/indoors/town/tavern)
 "gEw" = (
 /obj/structure/table/wood{
-	icon_state = "tablewood1";
-	dir = 1
+	dir = 1;
+	icon_state = "tablewood1"
 	},
 /turf/open/floor/rogue/cobble,
 /area/rogue/outdoors/town/harbor)
@@ -6068,8 +6067,8 @@
 /area/rogue/outdoors/beach)
 "gYz" = (
 /obj/structure/table/wood{
-	icon_state = "tablewood2";
-	dir = 10
+	dir = 10;
+	icon_state = "tablewood2"
 	},
 /obj/item/natural/feather,
 /obj/item/paper/scroll,
@@ -6550,8 +6549,8 @@
 	icon_state = "border"
 	},
 /obj/effect/decal/cobbleedge{
-	icon_state = "borderfall";
-	dir = 4
+	dir = 4;
+	icon_state = "borderfall"
 	},
 /obj/structure/fermenting_barrel,
 /turf/open/floor/rogue/ruinedwood,
@@ -6927,8 +6926,8 @@
 	},
 /obj/structure/fluff/walldeco/wantedposter,
 /turf/open/floor/rogue/ruinedwood{
-	icon_state = "wooden_floor2";
-	dir = 1
+	dir = 1;
+	icon_state = "wooden_floor2"
 	},
 /area/rogue/outdoors/beach)
 "hRw" = (
@@ -7410,8 +7409,8 @@
 	},
 /obj/structure/closet/crate/drawer,
 /turf/open/floor/rogue/ruinedwood{
-	icon_state = "wooden_floor2";
-	dir = 1
+	dir = 1;
+	icon_state = "wooden_floor2"
 	},
 /area/rogue/outdoors/beach)
 "iyc" = (
@@ -7784,8 +7783,8 @@
 	},
 /obj/item/book/rogue/abyssor,
 /turf/open/floor/rogue/ruinedwood{
-	icon_state = "wooden_floor2";
-	dir = 1
+	dir = 1;
+	icon_state = "wooden_floor2"
 	},
 /area/rogue/outdoors/beach)
 "iVj" = (
@@ -7812,8 +7811,8 @@
 	},
 /obj/structure/closet/crate/roguecloset/dark,
 /turf/open/floor/rogue/ruinedwood{
-	icon_state = "wooden_floor2";
-	dir = 1
+	dir = 1;
+	icon_state = "wooden_floor2"
 	},
 /area/rogue/under/town/basement)
 "iWj" = (
@@ -7973,9 +7972,9 @@
 /area/rogue/indoors/town/manor)
 "jdD" = (
 /obj/structure/mineral_door/wood{
+	locked = 1;
 	lockid = "garrison";
-	name = "Harbor Master's Office";
-	locked = 1
+	name = "Harbor Master's Office"
 	},
 /turf/open/floor/rogue/blocks,
 /area/rogue/indoors/town/garrison)
@@ -8216,8 +8215,8 @@
 	lockid = "butcher"
 	},
 /turf/open/floor/rogue/ruinedwood{
-	icon_state = "wooden_floor2";
-	dir = 1
+	dir = 1;
+	icon_state = "wooden_floor2"
 	},
 /area/rogue/indoors/town/shop)
 "jwi" = (
@@ -8280,8 +8279,8 @@
 	icon_state = "border"
 	},
 /turf/open/floor/rogue/ruinedwood{
-	icon_state = "wooden_floor2";
-	dir = 1
+	dir = 1;
+	icon_state = "wooden_floor2"
 	},
 /area/rogue/outdoors/beach)
 "jAN" = (
@@ -9654,8 +9653,8 @@
 /area/rogue/indoors/town/tavern)
 "lkZ" = (
 /turf/open/floor/rogue/ruinedwood{
-	icon_state = "wooden_floor2";
-	dir = 1
+	dir = 1;
+	icon_state = "wooden_floor2"
 	},
 /area/rogue/under/town/basement)
 "lli" = (
@@ -9929,6 +9928,7 @@
 /area/rogue/outdoors/beach)
 "lEw" = (
 /obj/structure/chair/wood/rogue,
+/obj/effect/landmark/start/longshoreman,
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/town/garrison)
 "lEJ" = (
@@ -10028,8 +10028,8 @@
 	icon_state = "largetable"
 	},
 /turf/open/floor/rogue/ruinedwood{
-	icon_state = "wooden_floor2";
-	dir = 1
+	dir = 1;
+	icon_state = "wooden_floor2"
 	},
 /area/rogue/outdoors/beach)
 "lIW" = (
@@ -10698,15 +10698,15 @@
 	dir = 5
 	},
 /turf/open/floor/rogue/ruinedwood{
-	icon_state = "wooden_floor2";
-	dir = 1
+	dir = 1;
+	icon_state = "wooden_floor2"
 	},
 /area/rogue/under/town/basement)
 "mCV" = (
 /obj/structure/fluff/clock,
 /turf/open/floor/rogue/ruinedwood{
-	icon_state = "wooden_floor2";
-	dir = 1
+	dir = 1;
+	icon_state = "wooden_floor2"
 	},
 /area/rogue/outdoors/beach)
 "mDe" = (
@@ -10745,8 +10745,8 @@
 /obj/effect/landmark/latejoin,
 /obj/structure/chair/stool/rogue,
 /turf/open/floor/rogue/ruinedwood{
-	icon_state = "wooden_floor2";
-	dir = 1
+	dir = 1;
+	icon_state = "wooden_floor2"
 	},
 /area/rogue/outdoors/beach)
 "mEx" = (
@@ -11028,8 +11028,8 @@
 "mYn" = (
 /obj/structure/ladder,
 /turf/open/floor/rogue/ruinedwood{
-	icon_state = "wooden_floor2";
-	dir = 1
+	dir = 1;
+	icon_state = "wooden_floor2"
 	},
 /area/rogue/outdoors/beach)
 "mZo" = (
@@ -11815,8 +11815,8 @@
 	pixel_y = 0
 	},
 /turf/open/floor/rogue/ruinedwood{
-	icon_state = "wooden_floor2";
-	dir = 1
+	dir = 1;
+	icon_state = "wooden_floor2"
 	},
 /area/rogue/outdoors/beach)
 "nYP" = (
@@ -12174,8 +12174,8 @@
 	dir = 6
 	},
 /turf/open/floor/rogue/ruinedwood{
-	icon_state = "wooden_floor2";
-	dir = 1
+	dir = 1;
+	icon_state = "wooden_floor2"
 	},
 /area/rogue/under/town/basement)
 "otM" = (
@@ -12205,8 +12205,8 @@
 /area/rogue/indoors/town/manor)
 "ovj" = (
 /obj/item/toy/plush/lizardplushie{
-	name = "Rumbles-In-the-Dark";
-	desc = "Looking for secrets, are we?"
+	desc = "Looking for secrets, are we?";
+	name = "Rumbles-In-the-Dark"
 	},
 /turf/open/floor/rogue/greenstone,
 /area/rogue/under/town/sewer)
@@ -12410,8 +12410,8 @@
 	dir = 1
 	},
 /turf/open/floor/rogue/ruinedwood{
-	icon_state = "wooden_floor2";
-	dir = 1
+	dir = 1;
+	icon_state = "wooden_floor2"
 	},
 /area/rogue/outdoors/beach)
 "oGT" = (
@@ -12480,6 +12480,7 @@
 /obj/structure/chair/wood/rogue/fancy{
 	dir = 4
 	},
+/obj/effect/landmark/start/harbormaster,
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/town/garrison)
 "oJn" = (
@@ -12856,8 +12857,8 @@
 /area/rogue/indoors)
 "pfp" = (
 /obj/structure/table/wood{
-	icon_state = "longtable";
-	dir = 1
+	dir = 1;
+	icon_state = "longtable"
 	},
 /obj/effect/decal/cleanable/cobweb{
 	icon_state = "cobweb2"
@@ -14310,9 +14311,9 @@
 /area/rogue/under/town/basement)
 "qWZ" = (
 /obj/structure/mineral_door/wood{
+	locked = 1;
 	lockid = "harborshop1";
-	name = "Harbor Shop III";
-	locked = 1
+	name = "Harbor Shop III"
 	},
 /turf/open/floor/rogue/blocks,
 /area/rogue/indoors/town/shop)
@@ -14756,8 +14757,8 @@
 /area/rogue/indoors/town/shop)
 "rwz" = (
 /obj/structure/table/wood{
-	icon_state = "tablewood1";
-	dir = 1
+	dir = 1;
+	icon_state = "tablewood1"
 	},
 /obj/item/paper/scroll,
 /obj/item/natural/feather,
@@ -15253,6 +15254,10 @@
 	},
 /turf/open/transparent/openspace,
 /area/rogue/outdoors/bog)
+"sdD" = (
+/obj/effect/landmark/start/longshoreman,
+/turf/open/floor/rogue/woodturned,
+/area/rogue/indoors/town/garrison)
 "seb" = (
 /obj/effect/landmark/start/watchman{
 	dir = 1
@@ -15328,8 +15333,8 @@
 	dir = 9
 	},
 /turf/open/floor/rogue/ruinedwood{
-	icon_state = "wooden_floor2";
-	dir = 1
+	dir = 1;
+	icon_state = "wooden_floor2"
 	},
 /area/rogue/under/town/basement)
 "sim" = (
@@ -15496,8 +15501,8 @@
 "ssY" = (
 /obj/effect/landmark/latejoin,
 /turf/open/floor/rogue/ruinedwood{
-	icon_state = "wooden_floor2";
-	dir = 1
+	dir = 1;
+	icon_state = "wooden_floor2"
 	},
 /area/rogue/outdoors/beach)
 "suI" = (
@@ -16016,17 +16021,17 @@
 /area/rogue/indoors/town/church)
 "tdC" = (
 /obj/structure/mineral_door/wood{
+	locked = 1;
 	lockid = "harborshop2";
-	name = "Harbor Shop II";
-	locked = 1
+	name = "Harbor Shop II"
 	},
 /turf/open/floor/rogue/blocks/stonered/tiny,
 /area/rogue/indoors/town/shop)
 "tdJ" = (
 /obj/structure/mineral_door/wood{
-	name = "Room VI";
+	chat_color_name = "room";
 	lockid = "roomvi";
-	chat_color_name = "room"
+	name = "Room VI"
 	},
 /turf/open/floor/rogue/ruinedwood{
 	icon_state = "weird1"
@@ -17280,8 +17285,8 @@
 	},
 /obj/structure/table/wood,
 /turf/open/floor/rogue/ruinedwood{
-	icon_state = "wooden_floor2";
-	dir = 1
+	dir = 1;
+	icon_state = "wooden_floor2"
 	},
 /area/rogue/indoors/town/shop)
 "uDc" = (
@@ -17438,8 +17443,8 @@
 /area/rogue/indoors/town/garrison)
 "uNe" = (
 /turf/open/floor/rogue/ruinedwood{
-	icon_state = "wooden_floor2";
-	dir = 1
+	dir = 1;
+	icon_state = "wooden_floor2"
 	},
 /area/rogue/outdoors/beach)
 "uNz" = (
@@ -17691,17 +17696,14 @@
 /turf/open/floor/rogue/cobble,
 /area/rogue/indoors)
 "vav" = (
-/obj/structure/bed/rogue,
-/obj/effect/landmark/start/guardsman{
-	dir = 1
-	},
-/turf/open/floor/rogue/blocks,
+/obj/effect/landmark/start/longshoreman,
+/turf/open/floor/rogue/blocks/stonered/tiny,
 /area/rogue/indoors/town/garrison)
 "vaB" = (
 /obj/structure/handcart,
 /turf/open/floor/rogue/ruinedwood{
-	icon_state = "wooden_floor2";
-	dir = 1
+	dir = 1;
+	icon_state = "wooden_floor2"
 	},
 /area/rogue/under/town/basement)
 "vbe" = (
@@ -17791,8 +17793,8 @@
 "vgj" = (
 /obj/structure/chair/stool/rogue,
 /turf/open/floor/rogue/ruinedwood{
-	icon_state = "wooden_floor2";
-	dir = 1
+	dir = 1;
+	icon_state = "wooden_floor2"
 	},
 /area/rogue/outdoors/beach)
 "vhR" = (
@@ -18578,8 +18580,8 @@
 /area/rogue/under/cavewet/bogcaves)
 "whl" = (
 /turf/open/floor/rogue/ruinedwood{
-	icon_state = "vertw";
-	dir = 1
+	dir = 1;
+	icon_state = "vertw"
 	},
 /area/rogue/outdoors/town/harbor)
 "whQ" = (
@@ -18610,8 +18612,8 @@
 	icon_state = "torchwall1"
 	},
 /turf/open/floor/rogue/ruinedwood{
-	icon_state = "wooden_floor2";
-	dir = 1
+	dir = 1;
+	icon_state = "wooden_floor2"
 	},
 /area/rogue/under/town/basement)
 "wjr" = (
@@ -18895,8 +18897,8 @@
 	icon_state = "border"
 	},
 /turf/open/floor/rogue/ruinedwood{
-	icon_state = "wooden_floor2";
-	dir = 1
+	dir = 1;
+	icon_state = "wooden_floor2"
 	},
 /area/rogue/under/town/basement)
 "wDZ" = (
@@ -19140,8 +19142,8 @@
 "wQO" = (
 /obj/structure/fluff/railing/border,
 /turf/open/floor/rogue/ruinedwood{
-	icon_state = "wooden_floor2";
-	dir = 1
+	dir = 1;
+	icon_state = "wooden_floor2"
 	},
 /area/rogue/under/town/basement)
 "wQP" = (
@@ -19399,8 +19401,8 @@
 /area/rogue/outdoors/town)
 "xij" = (
 /obj/effect/decal/cobbleedge{
-	icon_state = "borderfall";
-	dir = 4
+	dir = 4;
+	icon_state = "borderfall"
 	},
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue/outdoors/town/roofs)
@@ -19621,8 +19623,8 @@
 	dir = 1
 	},
 /turf/open/floor/rogue/ruinedwood{
-	icon_state = "wooden_floor2";
-	dir = 1
+	dir = 1;
+	icon_state = "wooden_floor2"
 	},
 /area/rogue/under/town/basement)
 "xtc" = (
@@ -20175,8 +20177,8 @@
 /obj/item/reagent_containers/glass/cup/wooden,
 /obj/item/reagent_containers/glass/cup/wooden,
 /turf/open/floor/rogue/ruinedwood{
-	icon_state = "wooden_floor2";
-	dir = 1
+	dir = 1;
+	icon_state = "wooden_floor2"
 	},
 /area/rogue/under/town/basement)
 "xVh" = (
@@ -207833,10 +207835,10 @@ bIl
 bIl
 gRz
 gjl
-dKV
+uNe
 jqM
-dKV
-dKV
+uNe
+uNe
 qQV
 gYr
 rEg
@@ -208238,7 +208240,7 @@ iqf
 qSD
 rEg
 lls
-dKV
+uNe
 rEg
 fgs
 rEg
@@ -208637,10 +208639,10 @@ bIl
 bIl
 lfz
 mPh
-dKV
+uNe
 vFf
-dKV
-dKV
+uNe
+uNe
 qwG
 gYr
 gYr
@@ -303456,7 +303458,7 @@ cwO
 xzI
 tNj
 olM
-hiz
+dKV
 ieu
 jpj
 hgX
@@ -306674,7 +306676,7 @@ oHO
 olM
 wZS
 htd
-htd
+vav
 uJX
 olM
 mRH
@@ -406373,7 +406375,7 @@ vbj
 vbj
 mdb
 vuU
-kIh
+sdD
 vuU
 mdb
 wLl

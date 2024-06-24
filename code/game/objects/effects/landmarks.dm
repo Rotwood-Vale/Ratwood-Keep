@@ -393,6 +393,15 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	name = "Smithy Apprentice"
 	icon_state = "arrow"
 
+// Harbor
+/obj/effect/landmark/start/harbormaster
+	name = "Harbormaster"
+	icon_state = "arrow"
+
+/obj/effect/landmark/start/longshoreman
+	name = "Longshoreman"
+	icon_state = "arrow"
+
 //goblin
 
 /obj/effect/landmark/start/goblinking

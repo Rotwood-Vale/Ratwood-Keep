@@ -33,4 +33,5 @@
 				adjust_nutrition(-(0.1))
 				adjust_hydration(-(0.1))
 		if(m_intent == MOVE_INTENT_RUN) //sprint fatigue add
-			rogfat_add(2)
+			var/stamina_consumption = HAS_TRAIT(src, TRAIT_GOODRUNNER) ? 1 : 2
+			rogfat_add(stamina_consumption)
