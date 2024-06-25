@@ -348,6 +348,7 @@
 	desc = "Multiple wriggly worms."
 	color = "#964B00"
 	maxamount = 12
+	icon_state = "worm2"
 	icon1 = "worm2"
 	icon1step = 4
 	icon2 = "worm4"
