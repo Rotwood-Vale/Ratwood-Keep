@@ -76,7 +76,7 @@ GLOBAL_LIST_INIT(laws_of_the_land, initialize_laws_of_the_land())
 			if(!I)
 				I = new /obj/item/clothing/head/roguetown/crown/serpcrown(src.loc)
 			if(I && !ismob(I.loc))//You MUST MUST MUST keep the Crown on a person to prevent it from being summoned (magical interference)
-				SEND_SIGNAL(I, COMSIG_CROWN_DESTROY) //Comsig this for brownie points.
+				I.anti_stall()
 				I = new /obj/item/clothing/head/roguetown/crown/serpcrown(src.loc)
 			if(ishuman(I.loc))
 				var/mob/living/carbon/human/HC = I.loc
