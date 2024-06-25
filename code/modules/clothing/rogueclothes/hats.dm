@@ -327,9 +327,6 @@
 	src.visible_message(span_warning("The Crown of Rockhill crumbles to dust, the ashes spiriting away in the direction of the Keep."))
 	qdel(src) //Anti-stall
 
-/obj/item/clothing/head/roguetown/crown/serpcrown/Destroy()
-	. = ..()
-
 /obj/item/clothing/head/roguetown/crown/serpcrown/surplus
 	name = "crown"
 	icon_state = "serpcrowno"
