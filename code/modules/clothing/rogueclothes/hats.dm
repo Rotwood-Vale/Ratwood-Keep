@@ -329,7 +329,6 @@
 
 /obj/item/clothing/head/roguetown/crown/serpcrown/Destroy()
 	. = ..()
-	UnregisterSignal(src,COMSIG_CROWN_DESTROY)
 
 /obj/item/clothing/head/roguetown/crown/serpcrown/surplus
 	name = "crown"
