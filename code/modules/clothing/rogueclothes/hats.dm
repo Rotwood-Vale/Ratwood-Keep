@@ -322,7 +322,6 @@
 /obj/item/clothing/head/roguetown/crown/serpcrown/Initialize()
 	. = ..()
 	SSroguemachine.crown = src
-	RegisterSignal(src, COMSIG_CROWN_DESTROY, PROC_REF(anti_stall))
 
 /obj/item/clothing/head/roguetown/crown/serpcrown/proc/anti_stall()
 	src.visible_message(span_warning("The Crown of Rockhill crumbles to dust, the ashes spiriting away in the direction of the Keep."))
