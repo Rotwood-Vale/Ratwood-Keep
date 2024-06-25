@@ -309,6 +309,19 @@
 		heavyfootstep = FOOTSTEP_MUD
 		bloodiness = 20
 
+/turf/open/floor/rogue/sand
+	name = "sand"
+	desc = "It's coarse and gets everywhere."
+	icon_state = "sand"
+	layer = MID_TURF_LAYER
+	footstep = FOOTSTEP_SAND
+	barefootstep = FOOTSTEP_SOFT_BAREFOOT
+	heavyfootstep = FOOTSTEP_GENERIC_HEAVY
+	tiled_dirt = FALSE
+	landsound = 'sound/foley/jumpland/dirtland.wav'
+	slowdown = 2
+	smooth = SMOOTH_FALSE
+
 /turf/open/floor/rogue/dirt/road
 	name = "dirt"
 	desc = "The dirt is pocked with the scars of countless steps."

@@ -7,10 +7,12 @@
 	outfit = /datum/outfit/job/roguetown/adventurer/smuggler
 	traits_applied = list(TRAIT_MEDIUMARMOR, TRAIT_DODGEEXPERT)
 	category_tags = list(CTAG_PILGRIM)
+	cmode_music = 'sound/music/combat_pirate.ogg'
 
 /datum/outfit/job/roguetown/adventurer/smuggler/pre_equip(mob/living/carbon/human/H)
 	..()
-	shoes = /obj/item/clothing/shoes/roguetown/boots
+	head =/obj/item/clothing/head/roguetown/helmet/bandana
+	shoes = /obj/item/clothing/shoes/roguetown/boots/leather
 	neck = /obj/item/storage/belt/rogue/pouch/coins/poor
 	pants = /obj/item/clothing/under/roguetown/trou/leather
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt

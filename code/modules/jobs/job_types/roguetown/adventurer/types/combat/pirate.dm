@@ -7,17 +7,24 @@
 	outfit = /datum/outfit/job/roguetown/adventurer/pirate
 	traits_applied = list(TRAIT_MEDIUMARMOR, TRAIT_DODGEEXPERT)
 	category_tags = list(CTAG_ADVENTURER)
+	cmode_music = 'sound/music/combat_pirate.ogg'
 
 /datum/outfit/job/roguetown/adventurer/pirate/pre_equip(mob/living/carbon/human/H)
 	..()
-	shoes = /obj/item/clothing/shoes/roguetown/boots
+	switch(rand(1,3))
+		if(1)
+			head = /obj/item/clothing/head/roguetown/helmet/tricorn/skull
+		if(2)
+			head = /obj/item/clothing/head/roguetown/helmet/tricorn
+		if(3)
+			head = /obj/item/clothing/head/roguetown/helmet/bandana
+	shoes = /obj/item/clothing/shoes/roguetown/boots/leather
 	neck = /obj/item/storage/belt/rogue/pouch/coins/poor
 	pants = /obj/item/clothing/under/roguetown/trou/leather
-	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
+	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/sailor
 	gloves = /obj/item/clothing/gloves/roguetown/fingerless
 	belt = /obj/item/storage/belt/rogue/leather
 	armor = /obj/item/clothing/suit/roguetown/armor/leather
-	cloak = /obj/item/clothing/cloak/raincloak/mortus
 	backl = /obj/item/storage/backpack/rogue/satchel
 	beltr = /obj/item/rogueweapon/huntingknife/idagger/steel
 	beltl = /obj/item/rogueweapon/huntingknife/idagger/steel

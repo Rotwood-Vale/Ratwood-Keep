@@ -10,7 +10,9 @@
 	allowed_races = list(/datum/species/akula)
 	allowed_ages = list(AGE_ADULT, AGE_MIDDLEAGED, AGE_OLD)
 	allowed_patrons =  list(/datum/patron/divine/abyssor)
-	tutorial = "YARR HARR."
+	tutorial = "You answered Abyssor's call when you were young, though in troublesome ways, \
+	pilaging for treasury from anyone who'd cross your path. Now your captain retires from a life of crime, \
+	setting down on Rockhill as do you, serving your old captain with undying loyalty, even if under a different banner."
 	display_order = JDO_TOWNGUARD
 	whitelist_req = TRUE
 
@@ -18,20 +20,22 @@
 	give_bank_account = 12
 	min_pq = 2
 	max_pq = null
-	cmode_music = 'sound/music/combat_guard.ogg'
+	cmode_music = 'sound/music/combat_pirate.ogg'
 
 /datum/outfit/job/roguetown/longshoreman/pre_equip(mob/living/carbon/human/H)
 	. = ..()
-	shoes = /obj/item/clothing/shoes/roguetown/boots
+	head = /obj/item/clothing/head/roguetown/helmet/bandana
+	shoes = /obj/item/clothing/shoes/roguetown/boots/leather
 	neck = /obj/item/storage/belt/rogue/pouch/coins/poor
 	pants = /obj/item/clothing/under/roguetown/trou/leather
-	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
-	gloves = /obj/item/clothing/gloves/roguetown/fingerless
+	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/sailor/red
+	gloves = /obj/item/clothing/gloves/roguetown/leather
 	belt = /obj/item/storage/belt/rogue/leather
 	armor = /obj/item/clothing/suit/roguetown/armor/leather
 	backl = /obj/item/storage/backpack/rogue/satchel
 	beltr = /obj/item/rogueweapon/sword/cutlass
 	beltl = /obj/item/rogueweapon/huntingknife/idagger/steel
+	backpack_contents = list(/obj/item/roguekey/harbor = 1)
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/combat/maces, pick(3,4), TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 4, TRUE)
