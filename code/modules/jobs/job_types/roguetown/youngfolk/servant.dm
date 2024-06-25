@@ -1,13 +1,13 @@
 /datum/job/roguetown/servant
 	title = "Servant"
 	flag = SERVANT
-	department_flag = ALL_AGES_LIST
+	department_flag = YOUNGFOLK
 	faction = "Station"
 	total_positions = 6
 	spawn_positions = 6
 
 	allowed_races = RACES_SHUNNED_UP
-	allowed_ages = list(AGE_ADULT)
+	allowed_ages = ALL_AGES_LIST
 
 	tutorial = "Granted a life of comfortable servitute in the King's manor, you follow the Butler/Maid's commands and spend your day performing necessary but menial tasks."
 
