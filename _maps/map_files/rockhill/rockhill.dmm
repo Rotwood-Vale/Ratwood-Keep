@@ -1968,12 +1968,18 @@
 /obj/machinery/light/rogue/wallfire/candle{
 	pixel_y = -32
 	},
-/turf/open/floor/rogue/woodturned,
+/turf/open/floor/rogue/hexstone,
 /area/rogue/indoors/town/church)
 "cCz" = (
-/obj/effect/landmark/start/prisoner,
-/turf/open/floor/rogue/dirt/road,
-/area/rogue/under/town/basement)
+/obj/effect/landmark/start/monk{
+	dir = 8
+	},
+/obj/machinery/light/rogue/wallfire/candle{
+	pixel_x = 32;
+	pixel_y = 0
+	},
+/turf/open/floor/rogue/churchmarble,
+/area/rogue/indoors/town/church/chapel)
 "cCQ" = (
 /obj/structure/lever/wall{
 	pixel_x = 32;
@@ -3666,9 +3672,6 @@
 /area/rogue/indoors/town/manor)
 "eHY" = (
 /obj/structure/bed/rogue,
-/obj/effect/landmark/start/prisoner{
-	dir = 4
-	},
 /turf/open/floor/rogue/carpet,
 /area/rogue/under/town/basement)
 "eIK" = (
@@ -9138,6 +9141,12 @@
 	},
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/outdoors/town/roofs)
+"lYn" = (
+/obj/structure/roguewindow,
+/turf/open/floor/rogue/ruinedwood{
+	icon_state = "weird1"
+	},
+/area/rogue/indoors/town/church)
 "lYs" = (
 /obj/structure/table/wood{
 	dir = 1;
@@ -9251,9 +9260,9 @@
 /turf/closed/wall/mineral/rogue/stone,
 /area/rogue/indoors/shelter/mountains)
 "mik" = (
-/obj/effect/landmark/start/prisoner,
-/turf/open/floor/rogue/cobble,
-/area/rogue/under/town/basement)
+/obj/structure/rack/rogue,
+/turf/open/floor/rogue/hexstone,
+/area/rogue/indoors/town/church)
 "miM" = (
 /obj/structure/closet/crate/chest,
 /obj/item/rogueweapon/mace/church,
@@ -11970,7 +11979,7 @@
 /area/rogue/under/cavewet/bogcaves)
 "pNM" = (
 /obj/structure/bed/rogue/inn/hay,
-/turf/open/floor/rogue/woodturned,
+/turf/open/floor/rogue/hexstone,
 /area/rogue/indoors/town/church)
 "pNN" = (
 /obj/structure/fluff/railing/wood{
@@ -13091,10 +13100,9 @@
 	},
 /area/rogue/indoors/town/garrison)
 "roX" = (
-/obj/structure/bed/rogue,
-/obj/effect/landmark/start/prisoner,
-/turf/open/floor/rogue/carpet,
-/area/rogue/under/town/basement)
+/obj/structure/fluff/statue,
+/turf/open/floor/rogue/dirt/road,
+/area/rogue/outdoors/town)
 "rpo" = (
 /turf/open/floor/rogue/tile,
 /area/rogue/indoors/town/vault)
@@ -17706,8 +17714,12 @@
 /turf/open/floor/rogue/churchmarble,
 /area/rogue/indoors/town/church/chapel)
 "xAh" = (
-/obj/machinery/light/rogue/oven,
-/turf/closed/wall/mineral/rogue/decostone,
+/obj/structure/closet/crate/chest,
+/obj/machinery/light/rogue/wallfire/candle{
+	pixel_x = -32;
+	pixel_y = 0
+	},
+/turf/open/floor/rogue/herringbone,
 /area/rogue/indoors/town/church)
 "xAi" = (
 /obj/structure/mineral_door/wood/deadbolt{
@@ -68308,7 +68320,7 @@ whb
 whb
 txa
 iho
-mik
+iTw
 iTw
 ida
 iJR
@@ -71122,7 +71134,7 @@ whb
 whb
 txa
 kNd
-mik
+iTw
 kMi
 ida
 tWb
@@ -181130,7 +181142,7 @@ txa
 iTw
 iTw
 txa
-roX
+eHY
 mVa
 rTG
 txa
@@ -197642,7 +197654,7 @@ nvW
 oDW
 jyI
 iTw
-mik
+iTw
 cBf
 hfI
 cTA
@@ -198039,7 +198051,7 @@ vRu
 vRu
 cTA
 hec
-cCz
+cEK
 jMl
 cEK
 cTA
@@ -309799,7 +309811,7 @@ mwE
 auT
 aOv
 aOv
-aOn
+roX
 rfx
 mrE
 aOv
@@ -415552,11 +415564,11 @@ gys
 swm
 cfw
 fFV
-nzv
+cCz
 cfw
 uSx
 uSx
-fCM
+sKd
 iMA
 nSr
 nSr
@@ -415957,8 +415969,8 @@ tja
 iWj
 prN
 uSx
-fCM
-fCM
+sKd
+sKd
 teW
 nSr
 nSr
@@ -416356,10 +416368,10 @@ eBN
 eBN
 eBN
 teW
-pft
+xAh
 eBN
-fCM
-fCM
+sKd
+sKd
 cBG
 noB
 nOX
@@ -416760,9 +416772,9 @@ eBN
 lpq
 eBN
 eBN
-fCM
-fCM
-fCM
+sKd
+sKd
+sKd
 teW
 nSr
 nSr
@@ -417162,9 +417174,9 @@ eBN
 lpq
 eBN
 eBN
-nxI
+mik
 pNM
-fCM
+pNM
 teW
 nSr
 nSr
@@ -417564,9 +417576,9 @@ eBN
 lpq
 eBN
 eBN
-nxI
-pNM
-pNM
+sKd
+sKd
+sKd
 teW
 nSr
 nSr
@@ -417966,9 +417978,9 @@ eBN
 teW
 eBN
 eBN
-fCM
-fCM
-fCM
+pNM
+pNM
+pNM
 teW
 nSr
 nSr
@@ -418368,10 +418380,10 @@ eBN
 yfN
 eBN
 eBN
-pNM
-nxI
-pNM
-teW
+lug
+wAm
+wAm
+czd
 nSr
 nSr
 tML
@@ -418770,8 +418782,8 @@ wAm
 czd
 eBN
 eBN
-fCM
-fCM
+pNM
+mik
 cBG
 noB
 nOX
@@ -420381,7 +420393,7 @@ wAm
 wAm
 wAm
 hKU
-xAh
+tML
 ffv
 ffv
 tML
@@ -509225,9 +509237,9 @@ ppJ
 oOU
 uSx
 vYT
-xAt
-xAt
-xAt
+vYT
+vYT
+vYT
 xAt
 xAt
 xAt
@@ -509613,7 +509625,7 @@ xAt
 uSx
 tja
 wou
-uSx
+mTi
 czd
 tML
 kwf
@@ -509623,12 +509635,12 @@ kwf
 kwf
 tML
 czd
-uSx
+mTi
 wou
 tja
 uSx
 lug
-wAm
+lYn
 hKU
 tML
 xAt
@@ -510015,7 +510027,7 @@ xAt
 mTi
 wou
 wou
-mTi
+hcx
 uKB
 noB
 pur
@@ -510025,7 +510037,7 @@ wAm
 pur
 noB
 uKB
-mTi
+hcx
 wou
 wou
 mTi
