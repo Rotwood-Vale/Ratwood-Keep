@@ -3917,6 +3917,9 @@
 /area/rogue/outdoors/town/roofs)
 "eMI" = (
 /obj/structure/plough,
+/obj/machinery/light/rogue/torchholder{
+	dir = 4
+	},
 /turf/open/floor/rogue/twig,
 /area/rogue/indoors)
 "eNY" = (
