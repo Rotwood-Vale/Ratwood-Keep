@@ -31,13 +31,13 @@
 	name = "wheat stalks"
 	icon = 'icons/obj/hydroponics/growing.dmi'
 	icon_state = "wheat"
-	produce_type = /obj/item/reagent_containers/food/snacks/grown/wheat
+	produce_type = /obj/item/natural/chaff/wheat
 
 /datum/plant_def/oat
 	name = "oat stalks"
 	icon = 'icons/obj/hydroponics/growing.dmi'
 	icon_state = "oat"
-	produce_type = /obj/item/reagent_containers/food/snacks/grown/oat
+	produce_type = /obj/item/natural/chaff/oat
 
 /datum/plant_def/apple
 	name = "apple tree"

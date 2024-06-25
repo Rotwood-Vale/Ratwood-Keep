@@ -4,7 +4,6 @@
 	name = "chaff"
 	icon_state = "chaff1"
 	desc = "A farmer's chaff." //english is not my native language, upon searching "chaff" i didn't even get what this is.
-	var/chafftype = 1
 	var/canthresh = TRUE
 	//dropshrink = 0.75
 
@@ -62,3 +61,13 @@
 		src.thresh()
 		return
 	..()
+
+/obj/item/natural/chaff/wheat
+	icon_state = "wheatchaff"
+	name = "wheat stalks"
+	foodextracted = /obj/item/reagent_containers/food/snacks/grown/wheat
+
+/obj/item/natural/chaff/oat
+	name = "oat stalks"
+	icon_state = "oatchaff"
+	foodextracted = /obj/item/reagent_containers/food/snacks/grown/oat
