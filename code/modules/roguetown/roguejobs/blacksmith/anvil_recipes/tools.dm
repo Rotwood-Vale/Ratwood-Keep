@@ -116,6 +116,12 @@
 	created_item = /obj/item/reagent_containers/glass/pot //weird how it's a child of glass but whatevs
 	i_type = "Tools"
 
+/datum/anvil_recipe/tools/fishinghooks
+	name = "3x Fishing hooks"
+	req_bar = /obj/item/ingot/iron
+	created_item = list(/obj/item/fishing/hook/iron, /obj/item/fishing/hook/iron, /obj/item/fishing/hook/iron)
+	i_type = "Tools"
+
 // --------- Steel -----------
 
 /datum/anvil_recipe/tools/steelpick
