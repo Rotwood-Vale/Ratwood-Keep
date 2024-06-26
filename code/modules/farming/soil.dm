@@ -1,6 +1,6 @@
 #define MAX_PLANT_HEALTH 100
-#define MAX_PLANT_WATER 200
-#define MAX_PLANT_NUTRITION 200
+#define MAX_PLANT_WATER 300
+#define MAX_PLANT_NUTRITION 300
 #define MAX_PLANT_WEEDS 100
 #define SOIL_DECAY_TIME 10 MINUTES
 
@@ -47,7 +47,7 @@
 /obj/structure/soil/proc/user_harvests(mob/living/user)
 	apply_farming_fatigue(user, 5)
 	if(produce_ready)
-		adjust_experience(user, /datum/skill/labor/farming, user.STAINT * 3)
+		adjust_experience(user, /datum/skill/labor/farming, user.STAINT * 4)
 	yield_produce()
 
 /obj/structure/soil/proc/try_handle_harvest(obj/item/attacking_item, mob/user, params)
@@ -97,12 +97,12 @@
 			to_chat(user, span_warning("The soil is already wet!"))
 			return TRUE
 		var/obj/item/reagent_containers/container = attacking_item
-		if(container.reagents.has_reagent(/datum/reagent/water, 5))
-			container.reagents.remove_reagent(/datum/reagent/water, 5)
-			water_amount = 50
-		else if(container.reagents.has_reagent(/datum/reagent/water/gross, 5))
-			container.reagents.remove_reagent(/datum/reagent/water/gross, 5)
-			water_amount = 50
+		if(container.reagents.has_reagent(/datum/reagent/water, 10))
+			container.reagents.remove_reagent(/datum/reagent/water, 10)
+			water_amount = 150
+		else if(container.reagents.has_reagent(/datum/reagent/water/gross, 10))
+			container.reagents.remove_reagent(/datum/reagent/water/gross, 10)
+			water_amount = 150
 		else
 			to_chat(user, span_warning("There's no water in \the [container]!"))
 			return TRUE
@@ -119,9 +119,9 @@
 	if(istype(attacking_item, /obj/item/ash))
 		fertilize_amount = 100
 	else if (istype(attacking_item, /obj/item/natural/poo))
-		fertilize_amount = 100
+		fertilize_amount = 150
 	else if (istype(attacking_item, /obj/item/compost))
-		fertilize_amount = 100
+		fertilize_amount = 150
 	if(fertilize_amount > 0)
 		if(nutrition >= MAX_PLANT_NUTRITION * 0.8)
 			to_chat(user, span_warning("The soil is already fertilized!"))
@@ -216,9 +216,9 @@
 	if(stepper.m_intent == MOVE_INTENT_SNEAK)
 		return
 	if(stepper.m_intent == MOVE_INTENT_WALK)
-		adjust_plant_health(-15)
+		adjust_plant_health(-5)
 	else if(stepper.m_intent == MOVE_INTENT_RUN)
-		adjust_plant_health(-30)
+		adjust_plant_health(-10)
 	playsound(src,"plantcross", 100, FALSE)
 
 /obj/structure/soil/proc/deweed()
@@ -228,25 +228,31 @@
 
 /obj/structure/soil/proc/user_till_soil(mob/user)
 	apply_farming_fatigue(user, 10)
-	till_soil(10 MINUTES * get_farming_effort_multiplier(user))
+	till_soil(15 MINUTES * get_farming_effort_multiplier(user))
 
-/obj/structure/soil/proc/till_soil(time = 10 MINUTES)
+/obj/structure/soil/proc/till_soil(time = 15 MINUTES)
 	tilled_time = time
-	adjust_plant_health(-30)
+	adjust_plant_health(-20)
 	adjust_weeds(-30)
 	if(plant)
 		playsound(src,"plantcross", 100, FALSE)
 	update_icon()
 
 /obj/structure/soil/proc/bless_soil()
-	blessed_time = 10 MINUTES
+	blessed_time = 15 MINUTES
 	// It's a miracle! Plant comes back to life when blessed by Dendor
 	if(plant && plant_dead)
 		plant_dead = FALSE
 		plant_health = 10.0
+	// If low on nutrition, Dendor provides
+	if(nutrition < 100)
+		adjust_nutrition(max(100 - nutrition, 0))
+	// If low on water, Dendor provides
+	if(water < 100)
+		adjust_water(max(100 - water, 0))
 	// And it grows a little!
 	if(plant)
-		add_growth(1 MINUTES)
+		add_growth(2 MINUTES)
 
 /obj/structure/soil/proc/adjust_water(adjust_amount)
 	water = clamp(water + adjust_amount, 0, MAX_PLANT_WATER)
@@ -300,7 +306,7 @@
 	water_ma.color = "#000033"
 	if(water >= MAX_PLANT_WATER * 0.6)
 		water_ma.alpha = 100
-	else if (water >= MAX_PLANT_WATER * 0.3)
+	else if (water >= MAX_PLANT_WATER * 0.15)
 		water_ma.alpha = 50
 	else
 		water_ma.alpha = 0
@@ -310,7 +316,7 @@
 	nutri_ma.color = "#6d3a00"
 	if(nutrition >= MAX_PLANT_NUTRITION * 0.6)
 		nutri_ma.alpha = 50
-	else if (nutrition >= MAX_PLANT_NUTRITION * 0.3)
+	else if (nutrition >= MAX_PLANT_NUTRITION * 0.15)
 		nutri_ma.alpha = 25
 	else
 		nutri_ma.alpha = 0
@@ -326,25 +332,14 @@
 		else if (plant_health <=  MAX_PLANT_HEALTH * 0.6)
 			plant_color = "#d8b573"
 		if(plant_dead == TRUE)
-			plant_state = "[plant.icon_state]-dead"
+			plant_state = "[plant.icon_state]3"
 		else
 			if(produce_ready)
-				plant_state = "[plant.icon_state]-harvest"
+				plant_state = "[plant.icon_state]2"
 			else if (matured)
-				plant_state = "[plant.icon_state]-grow6"
+				plant_state = "[plant.icon_state]1"
 			else
-				var/growth_factor = growth_time / plant.maturation_time
-				switch(growth_factor)
-					if(0.0 to 0.2)
-						plant_state = "[plant.icon_state]-grow1"
-					if(0.2 to 0.4)
-						plant_state = "[plant.icon_state]-grow2"
-					if(0.4 to 0.6)
-						plant_state = "[plant.icon_state]-grow3"
-					if(0.6 to 0.8)
-						plant_state = "[plant.icon_state]-grow4"
-					if(0.8 to 1.0)
-						plant_state = "[plant.icon_state]-grow5"
+				plant_state = "[plant.icon_state]0"
 		var/mutable_appearance/plant_ma = mutable_appearance(plant.icon, plant_state)
 		plant_ma.color = plant_color
 		. += plant_ma
@@ -374,17 +369,17 @@
 		if(produce_ready)
 			. += span_info("It's ready for harvest.")
 	// Water feedback
-	if(water <= MAX_PLANT_WATER * 0.3)
+	if(water <= MAX_PLANT_WATER * 0.15)
 		. += span_warning("The soil is thirsty.")
-	else if (water <= MAX_PLANT_WATER * 0.6)
+	else if (water <= MAX_PLANT_WATER * 0.5)
 		. += span_info("The soil is moist.")
 	else
 		. += span_info("The soil is wet.")
 	// Nutrition feedback
-	if(nutrition <= MAX_PLANT_NUTRITION * 0.3)
+	if(nutrition <= MAX_PLANT_NUTRITION * 0.15)
 		. += span_warning("The soil is hungry.")
-	else if (nutrition <= MAX_PLANT_NUTRITION * 0.6)
-		. += span_info("The soil is a little pale.")
+	else if (nutrition <= MAX_PLANT_NUTRITION * 0.5)
+		. += span_info("The soil is sated.")
 	else
 		. += span_info("The soil looks fertile.")
 	// Weeds feedback
@@ -400,7 +395,7 @@
 		. += span_good("The soil seems blessed.")
 
 #define BLESSING_WEED_DECAY_RATE 10 / (1 MINUTES)
-#define WEED_GROWTH_RATE 5 / (1 MINUTES)
+#define WEED_GROWTH_RATE 3 / (1 MINUTES)
 #define WEED_DECAY_RATE 5 / (1 MINUTES)
 #define WEED_RESISTANCE_DECAY_RATE 20 / (1 MINUTES)
 
@@ -477,17 +472,17 @@
 	// If soil is blessed, grow faster and take up less nutriments
 	if(blessed_time > 0)
 		growth_multiplier *= 2.0
-		nutriment_eat_mutliplier *= 0.5
+		nutriment_eat_mutliplier *= 0.4
 	// If there's too many weeds, they hamper the growth of the plant
 	if(weeds >= MAX_PLANT_WEEDS * 0.3)
-		growth_multiplier *= 0.6
+		growth_multiplier *= 0.75
 	if(weeds >= MAX_PLANT_WEEDS * 0.6)
-		growth_multiplier *= 0.6
+		growth_multiplier *= 0.75
 	// If we're low on health, also grow slower
 	if(plant_health <= MAX_PLANT_HEALTH * 0.6)
-		growth_multiplier *= 0.6
+		growth_multiplier *= 0.75
 	if(plant_health <= MAX_PLANT_HEALTH * 0.3)
-		growth_multiplier *= 0.6
+		growth_multiplier *= 0.75
 	var/target_growth_time = growth_multiplier * dt
 	process_growth(target_growth_time)
 
@@ -540,6 +535,7 @@
 /obj/structure/soil/proc/uproot()
 	if(!plant)
 		return
+	adjust_weeds(-100)
 	yield_uproot_loot()
 	yield_produce()
 	plant = null

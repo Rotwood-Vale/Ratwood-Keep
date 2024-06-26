@@ -2,6 +2,9 @@
 	name = "seeds"
 	icon = 'icons/obj/hydroponics/seeds.dmi'
 	icon_state = "seed"
+	w_class = WEIGHT_CLASS_TINY
+	resistance_flags = FLAMMABLE
+	possible_item_intents = list(/datum/intent/use)
 	var/plant_def_type
 	var/seed_identity = "some seed"
 

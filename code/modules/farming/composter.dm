@@ -16,6 +16,17 @@
 /obj/structure/composter/halffull
 	ready_compost = MAXIMUM_TOTAL_COMPOST * 0.5
 
+/obj/structure/composter/full
+	ready_compost = MAXIMUM_TOTAL_COMPOST
+
+/obj/structure/composter/examine(mob/user)
+	. = ..()
+	var/show_dry = (unflipped_compost > flipped_compost)
+	if(ready_compost > COMPOST_PER_PRODUCED_ITEM)
+		. += span_info("There is some ready compost.")
+	if(show_dry && unflipped_compost >= COMPOST_PER_PRODUCED_ITEM)
+		. += span_warning("The compost requires flipping!")
+
 /obj/structure/composter/update_icon()
 	. = ..()
 	update_overlays()
@@ -29,15 +40,15 @@
 	STOP_PROCESSING(SSprocessing, src)
 	. = ..()
 
-#define COMPOST_PROCESS_RATE 100 / (1 MINUTES)
+#define COMPOST_PROCESS_RATE 300 / (1 MINUTES)
 
 /obj/structure/composter/process()
 	var/dt = 10
 	var/compost_to_process = min(dt * COMPOST_PROCESS_RATE, flipped_compost)
-	// Change flipped compost into half unflipped and half ready during process
+	// Change flipped compost into most processed compost, and some back unflipped
 	flipped_compost -= compost_to_process
-	unflipped_compost += compost_to_process * 0.5
-	ready_compost += compost_to_process * 0.5
+	unflipped_compost += compost_to_process * 0.25
+	ready_compost += compost_to_process * 0.75
 
 /obj/structure/composter/proc/get_total_compost()
 	return unflipped_compost + flipped_compost + ready_compost
@@ -61,15 +72,18 @@
 	var/flip_amount = unflipped_compost
 	unflipped_compost -= flip_amount
 	flipped_compost += flip_amount
+	update_icon()
 
 /obj/structure/composter/proc/try_handle_adding_compost(obj/item/attacking_item, mob/user, params)
 	var/compost_value = 0
 	if(istype(attacking_item, /obj/item/reagent_containers/food/snacks/grown))
-		compost_value = 100
+		compost_value = 150
+	if(istype(attacking_item, /obj/item/natural/chaff))
+		compost_value = 150
 	if(istype(attacking_item, /obj/item/trash/applecore))
 		compost_value = 50
 	if(compost_value > 0)
-		if(get_total_compost() >= MAXIMUM_TOTAL_COMPOST)
+		if(compost_value + get_total_compost() >= MAXIMUM_TOTAL_COMPOST)
 			to_chat(user, span_warning("There's too much compost!"))
 			return TRUE
 		unflipped_compost += compost_value
@@ -129,13 +143,32 @@
 
 /obj/structure/composter/update_overlays()
 	. = ..()
-	var/total = get_total_compost()
-	if(total >= MAXIMUM_TOTAL_COMPOST * 0.60)
-		. += "compost_heavy"
-	else if(total >= MAXIMUM_TOTAL_COMPOST * 0.30)
-		. += "compost_mid"
-	else if (total >= COMPOST_PER_PRODUCED_ITEM)
-		. += "compost_low"
+	var/total_unprocessed = unflipped_compost + flipped_compost
+	var/total_processed = ready_compost
+	var/show_dry = (unflipped_compost > flipped_compost)
+	var/unprocesed_dry_overlay_name
+	if(total_unprocessed >= MAXIMUM_TOTAL_COMPOST * 0.60)
+		unprocesed_dry_overlay_name = "pre_compost_heavy_dry"
+		. += "pre_compost_heavy"
+	else if(total_unprocessed >= MAXIMUM_TOTAL_COMPOST * 0.30)
+		unprocesed_dry_overlay_name = "pre_compost_mid_dry"
+		. += "pre_compost_mid"
+	else if (total_unprocessed >= COMPOST_PER_PRODUCED_ITEM)
+		unprocesed_dry_overlay_name = "pre_compost_low_dry"
+		. += "pre_compost_low"
+	
+	if(show_dry && unprocesed_dry_overlay_name)
+		var/mutable_appearance/dry_ma = mutable_appearance(icon, unprocesed_dry_overlay_name)
+		dry_ma.color = "#ffbb6d"
+		dry_ma.alpha = 40
+		. += dry_ma
+	
+	if(total_processed >= MAXIMUM_TOTAL_COMPOST * 0.60)
+		. += "post_compost_heavy"
+	else if(total_processed >= MAXIMUM_TOTAL_COMPOST * 0.30)
+		. += "post_compost_mid"
+	else if (total_processed >= COMPOST_PER_PRODUCED_ITEM)
+		. += "post_compost_low"
 
 /obj/item/compost
 	name = "compost"
