@@ -68,7 +68,7 @@
 		/datum/customizer/bodypart_feature/face_detail,
 		/datum/customizer/organ/tail/anthro,
 		/datum/customizer/organ/tail_feature/anthro,
-		/datum/customizer/organ/snout/anthro,
+		/datum/customizer/organ/snout/anthrosmall,
 		/datum/customizer/organ/ears/anthro,
 		/datum/customizer/organ/horns/anthro,
 		/datum/customizer/organ/frills/anthro,
