@@ -78,6 +78,11 @@
 	default_disabled = TRUE
 	customizer_choices = list(/datum/customizer_choice/organ/snout/anthro)
 
+/datum/customizer/organ/snout/anthrosmall
+	allows_disabling = FALSE
+	default_disabled = FALSE
+	customizer_choices = list(/datum/customizer_choice/organ/snout/anthro)
+
 /datum/customizer_choice/organ/snout/anthro
 	name = "Wild-Kin Snout"
 	organ_type = /obj/item/organ/snout/anthro
