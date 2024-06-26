@@ -678,16 +678,28 @@
 	icon_state = "wizardhat"
 	mob_overlay_icon = 'icons/roguetown/clothing/onmob/64x64/head.dmi'
 	dynamic_hair_suffix = "+generic"
-	sellprice = 100
 	worn_x_dimension = 64
 	worn_y_dimension = 64
 	sewrepair = TRUE
+
+/obj/item/clothing/head/roguetown/wizhat/red
+	icon_state = "wizardhatred"
+
+/obj/item/clothing/head/roguetown/wizhat/yellow
+	icon_state = "wizardhatyellow"
+
+/obj/item/clothing/head/roguetown/wizhat/green
+	icon_state = "wizardhatgreen"
+
+/obj/item/clothing/head/roguetown/wizhat/black
+	icon_state = "wizardhatblack"
 
 /obj/item/clothing/head/roguetown/wizhat/gen
 	icon_state = "wizardhatgen"
 
 /obj/item/clothing/head/roguetown/wizhat/gen/wise
 	name = "wise hat"
+	sellprice = 100
 	desc = "Only the wisest of nimrods wear this."
 
 /obj/item/clothing/head/roguetown/wizhat/gen/wise/equipped(mob/user, slot)
