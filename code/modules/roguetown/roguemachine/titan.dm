@@ -56,8 +56,6 @@ GLOBAL_LIST_INIT(laws_of_the_land, initialize_laws_of_the_land())
 	if(!ishuman(speaker))
 		return
 	var/mob/living/carbon/human/H = speaker
-	//.if(!H.head) - This does not do what people believe it does.
-		//return
 	var/nocrown
 	if(!istype(H.head, /obj/item/clothing/head/roguetown/crown/serpcrown))
 		nocrown = TRUE
