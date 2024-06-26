@@ -1,5 +1,4 @@
 
-
 /datum/charflaw/limbloss
 	var/lost_zone
 
@@ -14,8 +13,8 @@
 	return
 
 /datum/charflaw/limbloss/arm_r
-	name = "No Arm (R)"
-	desc = "I lost my right arm long ago, but the wooden arm doesn't bleed as much."
+	name = "Wood Arm (R)"
+	desc = "I lost my right arm long ago, but the wooden arm doesn't bleed as much... but it is flammable."
 	lost_zone = BODY_ZONE_R_ARM
 
 /datum/charflaw/limbloss/arm_r/on_mob_creation(mob/user)
@@ -27,8 +26,8 @@
 	L.attach_limb(H)
 
 /datum/charflaw/limbloss/arm_l
-	name = "No Arm (L)"
-	desc = "I lost my left arm long ago, but the wooden arm doesn't bleed as much."
+	name = "Wood Arm (L)"
+	desc = "I lost my left arm long ago, but the wooden arm doesn't bleed as much... but it is flammable."
 	lost_zone = BODY_ZONE_L_ARM
 
 /datum/charflaw/limbloss/arm_l/on_mob_creation(mob/user)

@@ -44,8 +44,10 @@
 	sleevetype = null
 	sleeved = null
 	icon = 'icons/roguetown/clothing/head.dmi'
-	body_parts_covered = HEAD|HAIR|EARS
-	slot_flags = ITEM_SLOT_HEAD
+	mob_overlay_icon = 'icons/roguetown/clothing/onmob/head.dmi' //Overrides slot icon behavior
+	alternate_worn_layer  = 8.9 //On top of helmet
+	body_parts_covered = HEAD|HAIR|EARS|NECK
+	slot_flags = ITEM_SLOT_HEAD|ITEM_SLOT_MASK
 	armor = list("blunt" = 15, "slash" = 20, "stab" = 15, "bullet" = 1, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
 	dynamic_hair_suffix = ""
 	edelay_type = 1
@@ -157,6 +159,7 @@
 			if(ishuman(user))
 				var/mob/living/carbon/H = user
 				H.update_inv_head()
+				H.update_inv_wear_mask() //Snowflake case for Desert Merc hood
 			block2add = FOV_BEHIND
 		else if(adjustable == CADJUSTED)
 			ResetAdjust(user)
@@ -165,6 +168,7 @@
 				if(ishuman(user))
 					var/mob/living/carbon/H = user
 					H.update_inv_head()
+					H.update_inv_wear_mask() //Snowflake case for Desert Merc hood
 		user.update_fov_angles()
 
 

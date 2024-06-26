@@ -201,7 +201,6 @@
 
 	to_chat(world, "<BR><BR><BR><span class='reallybig'>So ends this tale of Ratwood Keep.</span>")
 	get_end_reason()
-	SSvote.initiate_vote("map", "Ratwood players")
 
 	var/list/key_list = list()
 	for(var/client/C in GLOB.clients)
@@ -297,6 +296,7 @@
 	SSblackbox.Seal()
 
 	sleep(10 SECONDS)
+	SSvote.initiate_vote("map", "Ratwood players")
 	ready_for_reboot = TRUE
 	standard_reboot()
 
@@ -385,6 +385,7 @@
 	shit += "<br><font color='#af2323'><span class='bold'>Blood spilt:</span></font> [round(blood_lost / 100, 1)]L"
 	shit += "<br><font color='#36959c'><span class='bold'>TRIUMPH(s) Awarded:</span></font> [tri_gained]"
 	shit += "<br><font color='#a02fa4'><span class='bold'>TRIUMPH(s) Stolen:</span></font> [tri_lost * -1]"
+	shit += "<br><font color='#ffd4fd'><span class='bold'>Pleasures:</span></font> [cums]"
 	if(GLOB.confessors.len)
 		shit += "<br><font color='#93cac7'><span class='bold'>Confessors:</span></font> "
 		for(var/x in GLOB.confessors)

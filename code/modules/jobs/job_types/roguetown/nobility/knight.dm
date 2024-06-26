@@ -76,8 +76,7 @@
 		H.change_stat("constitution", 3)
 		H.change_stat("endurance", 2)
 		H.change_stat("speed", -1)
-	if(ishumannorthern(H))
-		H.dna.species.soundpack_m = new /datum/voicepack/male/knight()
+	H.dna.species.soundpack_m = new /datum/voicepack/male/knight()
 
 	ADD_TRAIT(H, TRAIT_NOBLE, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_NOSEGRAB, TRAIT_GENERIC)

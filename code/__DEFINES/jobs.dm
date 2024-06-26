@@ -101,8 +101,9 @@
 #define HAND		(1<<2)
 #define STEWARD		(1<<3)
 #define KNIGHT		(1<<4)
-#define SHERIFF		(1<<5)
+#define GUARD_CAPTAIN		(1<<5)
 #define BAILIFF		(1<<6)
+#define HOSTAGE		(1<<7)
 
 #define GARRISON		(1<<1)
 
@@ -110,10 +111,9 @@
 #define MANATARMS	(1<<1)
 #define DUNGEONEER	(1<<2)
 #define GATEMASTER	(1<<3)
-#define VETERAN		(1<<4)
-#define ELDER		(1<<5)
-#define BOGGUARD	(1<<6)
-#define BOGMASTER	(1<<7)
+#define BOGGUARD	(1<<4)
+#define BOGMASTER	(1<<5)
+#define SHERIFF		(1<<6)
 
 #define CHURCHMEN		(1<<2)
 
@@ -143,7 +143,8 @@
 #define TAILOR		(1<<6)
 #define MERCHANT	(1<<7)
 #define SCRIBE		(1<<8)
-#define APOTHECARY	(1<<9)
+#define ELDER		(1<<9)
+#define APOTHECARY	(1<<10)
 
 #define PEASANTS	(1<<5)
 
@@ -161,9 +162,10 @@
 #define ADVENTURER	(1<<11)
 #define PILGRIM		(1<<12)
 #define VILLAGER	(1<<13)
-#define PRISONER	(1<<14)
-#define LUNATIC		(1<<15)
-#define WAVE_DRIFTER (1<<16)
+#define PRISONERR	(1<<14)
+#define PRISONERB	(1<<15)
+#define LUNATIC		(1<<16)
+#define WAVE_DRIFTER (1<<17)
 
 #define YOUNGFOLK	(1<<6)
 
@@ -181,6 +183,7 @@
 
 #define DESERT_RIDER	(1<<0)
 #define GRENZELHOFT		(1<<1)
+#define VETERAN		(1<<2)
 
 #define GOBLIN		(1<<8)
 
@@ -224,17 +227,16 @@
 #define JDO_BUTLER 7.1
 #define JDO_SERVANT 7.2
 
-#define JDO_SHERIFF 8
+#define JDO_GUARD_CAPTAIN 8
 #define JDO_KNIGHT 8.1
 #define JDO_SQUIRE 8.2
 #define JDO_CASTLEGUARD 8.3
 #define JDO_GATEMASTER 8.4
-#define JDO_TOWNGUARD 8.5
-#define JDO_DUNGEONEER 8.6
-#define JDO_VET 8.7
+#define JDO_SHERIFF 8.5
+#define JDO_TOWNGUARD 8.6
+#define JDO_DUNGEONEER 8.7
 #define JDO_BOGMASTER 9
 #define JDO_BOGGUARD 9.1
-#define JDO_CHIEF 9.2
 
 #define JDO_PRIEST 10
 #define JDO_PURITAN 11
@@ -251,6 +253,7 @@
 
 #define JDO_ARCHIVIST 18
 
+#define JDO_CHIEF 18.1
 #define JDO_ARMORER 19
 #define JDO_WEAPONSMITH 20
 #define JDO_APPRENTICE 21
@@ -272,13 +275,16 @@
 #define JDO_DRIFTER 32.3
 
 #define JDO_GRENZELHOFT 31
-#define JDO_DESERT_RIDER 32
+#define JDO_DESERT_RIDER 31.1
+#define JDO_VET 31.2
 
 #define JDO_VAGRANT 33
 #define JDO_ORPHAN 34
 
-#define JDO_PRISONER 35
-#define JDO_LUNATIC 35.1
+#define JDO_PRISONERR 35
+#define JDO_PRISONERB 35.1
+#define JDO_HOSTAGE 35.2
+#define JDO_LUNATIC 35.3
 
 #define JDO_GOBLINKING 36
 #define JDO_GOBLINCOOK 37

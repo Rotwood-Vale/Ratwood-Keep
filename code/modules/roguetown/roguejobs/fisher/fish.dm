@@ -14,26 +14,14 @@
 	list_reagents = list(/datum/reagent/consumable/nutriment = 3)
 	slice_path = /obj/item/reagent_containers/food/snacks/rogue/meat/mince/fish
 	eat_effect = /datum/status_effect/debuff/uncookedfood
+	fishloot = list(/obj/item/reagent_containers/food/snacks/fish/carp = 2)
+	fishingmods //add difficulty stuff later
 
 /obj/item/reagent_containers/food/snacks/fish/dead
 	dead = TRUE
 
 /obj/item/reagent_containers/food/snacks/fish/Initialize()
 	. = ..()
-	var/rarity = pickweight(list("gold" = 1, "ultra" =40, "rare"=50, "com"=900))
-	icon_state = "[initial(icon_state)][rarity]"
-	switch(rarity)
-		if("gold")
-			sellprice = sellprice * 10
-			name = "legendary [initial(name)]"
-		if("ultra")
-			sellprice = sellprice * 4
-			name = "ultra-rare [initial(name)]"
-		if("rare")
-			sellprice = sellprice * 2
-			name = "rare [initial(name)]"
-		if("com")
-			name = "common [initial(name)]"
 	if(!dead)
 		START_PROCESSING(SSobj, src)
 
@@ -125,3 +113,15 @@
 
 /obj/item/reagent_containers/food/snacks/rogue/fryfish/eel
 	icon_state = "eelcooked"
+
+/obj/item/reagent_containers/food/snacks/rogue/fryfish/carp/rare
+	eat_effect = list(/datum/status_effect/buff/foodbuff, /datum/status_effect/buff/blessed)
+
+/obj/item/reagent_containers/food/snacks/rogue/fryfish/clownfish/rare
+	eat_effect = list(/datum/status_effect/buff/foodbuff, /datum/status_effect/buff/blessed)
+
+/obj/item/reagent_containers/food/snacks/rogue/fryfish/angler/rare
+	eat_effect = list(/datum/status_effect/buff/foodbuff, /datum/status_effect/buff/blessed)
+
+/obj/item/reagent_containers/food/snacks/rogue/fryfish/eel/rare
+	eat_effect = list(/datum/status_effect/buff/foodbuff, /datum/status_effect/buff/blessed)

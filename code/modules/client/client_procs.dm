@@ -36,7 +36,6 @@ GLOBAL_LIST_EMPTY(respawncounts)
 	*/
 
 /client
-	var/commendedsomeone
 	var/whitelisted = 2
 	var/blacklisted = 2
 
@@ -122,7 +121,7 @@ GLOBAL_LIST_EMPTY(respawncounts)
 			return
 		view_rogue_manifest()
 		return
-	
+
 	// Schizohelp
 	if(href_list["schizohelp"])
 		answer_schizohelp(locate(href_list["schizohelp"]))
@@ -642,7 +641,7 @@ GLOBAL_LIST_EMPTY(external_rsc_urls)
 	var/datum/DBQuery/query_get_client_age = SSdbcore.NewQuery(
 		"SELECT firstseen, DATEDIFF(Now(),firstseen), accountjoindate, DATEDIFF(Now(),accountjoindate) FROM [format_table_name("player")] WHERE ckey = :ckey",
 		list("ckey" = ckey)
-	)	
+	)
 	if(!query_get_client_age.Execute())
 		qdel(query_get_client_age)
 		return
@@ -1120,10 +1119,17 @@ GLOBAL_LIST_EMPTY(external_rsc_urls)
 			blacklisted = 0
 		return blacklisted
 
-/client/proc/commendsomeone(var/forced = FALSE)
-	if(commendedsomeone)
-		if(!forced)
+/client/proc/can_commend(silent = FALSE)
+	if(!prefs)
+		return FALSE
+	if(prefs.commendedsomeone)
+		if(!silent)
 			to_chat(src, span_danger("You already commended someone this round."))
+		return FALSE
+	return TRUE
+
+/client/proc/commendsomeone(var/forced = FALSE)
+	if(!can_commend(forced))
 		return
 	if(alert(src,"Was there a character during this round that you would like to anonymously commend?", "Commendation", "YES", "NO") != "YES")
 		return
@@ -1137,8 +1143,10 @@ GLOBAL_LIST_EMPTY(external_rsc_urls)
 	if(theykey == ckey)
 		to_chat(src,"You can't commend yourself.")
 		return
+	if(!can_commend(forced))
+		return
 	if(theykey)
-		commendedsomeone = TRUE
+		prefs.commendedsomeone = TRUE
 		add_commend(theykey, ckey)
 		to_chat(src,"[selection] commended.")
 		log_game("COMMEND: [ckey] commends [theykey].")

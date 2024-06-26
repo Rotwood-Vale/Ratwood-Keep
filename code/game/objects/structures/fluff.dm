@@ -1259,3 +1259,52 @@
 	plane = GAME_PLANE_UPPER
 	blade_dulling = DULLING_BASH
 	max_integrity = 300
+
+/obj/structure/fluff/headstake
+	name = "head on a stake"
+	desc = ""
+	icon = 'icons/roguetown/items/natural.dmi'
+	icon_state = "headstake"
+	density = FALSE
+	anchored = TRUE	
+	dir = SOUTH
+	var/obj/item/grown/log/tree/stake/stake
+	var/obj/item/bodypart/head/victim
+
+
+/obj/structure/fluff/headstake/CheckParts(list/parts_list)
+	..()
+	victim = locate(/obj/item/bodypart/head) in parts_list
+	name = "[victim.name] on a stake"
+	update_icon()
+	stake = locate(/obj/item/grown/log/tree/stake) in parts_list
+
+///obj/structure/fluff/headstake/Initialize()
+//	. = ..()	
+
+/obj/structure/fluff/headstake/OnCrafted(dirin, user)
+	dir = SOUTH
+	pixel_x = rand(-8, 8)
+	return
+
+/obj/structure/fluff/headstake/update_icon()
+	..()
+	var/obj/item/bodypart/head/H = locate() in contents
+	var/mutable_appearance/MA = new()
+	if(H)
+		MA.copy_overlays(H)
+		H.pixel_y = rand(9, 11)
+		H.pixel_x = pixel_x
+		H.dir = SOUTH
+		add_overlay(H)
+
+/obj/structure/fluff/headstake/attack_hand(mob/user)
+	. = ..()
+	if(.)
+		return
+	to_chat(user, span_notice("I take down [src]."))
+	victim.forceMove(drop_location())
+	victim = null
+	stake.forceMove(drop_location())
+	stake = null
+	qdel(src)

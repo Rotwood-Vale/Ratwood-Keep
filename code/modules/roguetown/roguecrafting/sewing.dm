@@ -16,6 +16,12 @@
 	reqs = list(/obj/item/natural/cloth = 2)
 	craftdiff = 0
 
+/datum/crafting_recipe/roguetown/sewing/burial_shroud
+	name = "winding sheet"
+	result = list(/obj/item/burial_shroud)
+	reqs = list(/obj/item/natural/cloth = 2)
+	craftdiff = 1
+
 /datum/crafting_recipe/roguetown/sewing/loincloth
 	name = "loincloth"
 	result = list(/obj/item/clothing/under/roguetown/loincloth)

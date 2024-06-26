@@ -50,12 +50,14 @@
 		forge_werewolf_objectives()
 
 	wolfname = "[pick(GLOB.wolf_prefixes)] [pick(GLOB.wolf_suffixes)]"
+	ADD_TRAIT(owner, TRAIT_GOODLOVER, "Werewolf")
 	return ..()
 
 /datum/antagonist/werewolf/on_removal()
 	if(!silent && owner.current)
 		to_chat(owner.current,span_danger("I am no longer a [special_role]!"))
 	owner.special_role = null
+	REMOVE_TRAIT(owner, TRAIT_GOODLOVER, "Werewolf")
 	return ..()
 
 /datum/antagonist/werewolf/proc/add_objective(datum/objective/O)
@@ -137,12 +139,7 @@
 	blade_dulling = DULLING_BASHCHOP
 	sewrepair = FALSE
 	max_integrity = 250
-
-/obj/item/clothing/suit/roguetown/armor/skin_armor/dropped(mob/living/user, show_message = TRUE)
-	. = ..()
-	if(QDELETED(src))
-		return
-	qdel(src)
+	item_flags = DROPDEL
 
 /datum/intent/simple/werewolf
 	name = "claw"
@@ -181,6 +178,7 @@
 	possible_item_intents = list(/datum/intent/simple/werewolf)
 	parrysound = list('sound/combat/parry/parrygen.ogg')
 	embedding = list("embedded_pain_multiplier" = 0, "embed_chance" = 0, "embedded_fall_chance" = 0)
+	item_flags = DROPDEL
 
 /obj/item/rogueweapon/werewolf_claw/right
 	icon_state = "claw_r"
