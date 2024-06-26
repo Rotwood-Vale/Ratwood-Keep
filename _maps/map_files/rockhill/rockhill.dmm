@@ -1901,9 +1901,8 @@
 /turf/closed/wall/mineral/rogue/decostone,
 /area/rogue/indoors/town)
 "cns" = (
-/obj/structure/bars/passage{
-	redstone_id = "dungeonpit";
-	max_integrity = 2000
+/obj/structure/bars/passage/steel{
+	redstone_id = "dungeonpit"
 	},
 /turf/open/floor/rogue/cobble{
 	max_integrity = 1500
@@ -16350,9 +16349,7 @@
 /turf/open/floor/rogue/cobble,
 /area/rogue/indoors)
 "vRn" = (
-/obj/structure/bars{
-	max_integrity = 2000
-	},
+/obj/structure/bars/steel,
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/basement)
 "vRu" = (
@@ -185867,7 +185864,7 @@ txa
 txa
 cBf
 iTw
-cRN
+gMs
 nyz
 klR
 txa
