@@ -511,8 +511,8 @@
 			produce_ready = TRUE
 
 
-#define SOIL_WATER_DECAY_RATE 1 / (1 MINUTES)
-#define SOIL_NUTRIMENT_DECAY_RATE 1 / (1 MINUTES)
+#define SOIL_WATER_DECAY_RATE 0.5 / (1 MINUTES)
+#define SOIL_NUTRIMENT_DECAY_RATE 0.5 / (1 MINUTES)
 
 /obj/structure/soil/proc/process_soil(dt)
 	// If plant exists and is not dead, nutriment or water is not zero, reset the decay timer
