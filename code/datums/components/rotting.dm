@@ -119,7 +119,7 @@
 		var/turf/open/T = get_turf(L)
 		if(istype(T))
 			T.add_pollutants(/datum/pollutant/rot, 5)
-	if(amount > 25 MINUTES) //ROTWOOD EDIT: Though not too slowly!
+	if(amount > 25 MINUTES)
 		qdel(src)
 		return L.dust(drop_items=TRUE)
 
