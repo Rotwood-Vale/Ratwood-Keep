@@ -200,3 +200,36 @@
 		/datum/sprite_accessory/snout/front/sharplight,
 		/datum/sprite_accessory/snout/front/roundlight,
 		)
+
+/datum/customizer/organ/snout/ratpeople
+	customizer_choices = list(/datum/customizer_choice/organ/snout/ratpeople)
+
+/datum/customizer_choice/organ/snout/ratpeople
+	name = "Rhodian Snout"
+	organ_type = /obj/item/organ/snout/ratpeople
+	sprite_accessories = list(
+		/datum/sprite_accessory/snout/rodent,
+		/datum/sprite_accessory/snout/lcanid,
+		/datum/sprite_accessory/snout/lcanidalt,
+		/datum/sprite_accessory/snout/lcanidstriped,
+		/datum/sprite_accessory/snout/lcanidstripedalt,
+		/datum/sprite_accessory/snout/scanid,
+		/datum/sprite_accessory/snout/scanidalt,
+		/datum/sprite_accessory/snout/scanidalt2,
+		/datum/sprite_accessory/snout/scanidalt3,
+		/datum/sprite_accessory/snout/wolf,
+		/datum/sprite_accessory/snout/wolfalt,
+		/datum/sprite_accessory/snout/rat,
+		/datum/sprite_accessory/snout/front/lcanid,
+		/datum/sprite_accessory/snout/front/lcanidalt,
+		/datum/sprite_accessory/snout/front/lcanidstriped,
+		/datum/sprite_accessory/snout/front/lcanidstripedalt,
+		/datum/sprite_accessory/snout/front/scanid,
+		/datum/sprite_accessory/snout/front/scanidalt,
+		/datum/sprite_accessory/snout/front/scanidalt2,
+		/datum/sprite_accessory/snout/front/scanidalt3,
+		/datum/sprite_accessory/snout/front/wolf,
+		/datum/sprite_accessory/snout/front/wolfalt,
+		/datum/sprite_accessory/snout/front/rodent,
+		)
+

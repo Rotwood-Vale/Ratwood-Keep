@@ -108,3 +108,16 @@
 		/datum/sprite_accessory/ears/raccoon,
 		/datum/sprite_accessory/ears/mouse,
 		)
+
+	/datum/customizer/organ/ears/ratpeople
+		customizer_choices = list(/datum/customizer_choice/organ/ears/ratpeople)
+
+
+/datum/customizer_choice/organ/ears/ratpeople
+	name = "Rhodian Ears"
+	organ_type = /obj/item/organ/ears/ratpeople
+	generic_random_pick = TRUE
+	sprite_accessories = list(
+		/datum/sprite_accessory/ears/murid,
+		/datum/sprite_accessory/ears/mouse,
+		)

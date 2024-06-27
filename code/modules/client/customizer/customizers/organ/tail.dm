@@ -125,3 +125,14 @@
 		/datum/sprite_accessory/tail/lizard/ltiger,
 		/datum/sprite_accessory/tail/lizard/spikes,
 		)
+
+
+/datum/customizer/organ/tail/ratpeople
+	customizer_choices = list(/datum/customizer_choice/organ/tail/ratpeople)
+
+/datum/customizer_choice/organ/tail/ratpeople
+	name = "Rhodian Tail"
+	organ_type = /obj/item/organ/tail/ratpeople
+	sprite_accessories = list(
+		/datum/sprite_accessory/tail/murid,
+		)
