@@ -1,4 +1,4 @@
-datum/job/roguetown/wapprentice
+/datum/job/roguetown/wapprentice
 	title = "Magician's Apprentice"
 	flag = MAGEAPPRENTICE
 	department_flag = YOUNGFOLK
