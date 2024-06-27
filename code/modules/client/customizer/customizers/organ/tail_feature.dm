@@ -10,6 +10,7 @@
 
 /datum/customizer/organ/tail_feature/lizard_spines
 	customizer_choices = list(/datum/customizer_choice/organ/tail_feature/lizard_spines)
+	allows_disabling = TRUE
 
 /datum/customizer_choice/organ/tail_feature/lizard_spines
 	name = "Tail Spines"
