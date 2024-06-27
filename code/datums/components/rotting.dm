@@ -113,7 +113,7 @@
 	if(L.stat != DEAD)
 		qdel(src)
 		return
-	if(amount > 15 MINUTES) //ROTWOOD EDIT: Things rot slower!
+	if(amount > 15 MINUTES)
 		if(soundloop && soundloop.stopped)
 			soundloop.start()
 		var/turf/open/T = get_turf(L)
