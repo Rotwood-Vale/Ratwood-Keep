@@ -17,12 +17,12 @@
 
 /obj/effect/proc_holder/spell/targeted/blesscrop/cast(list/targets,mob/user = usr)
 	. = ..()
-	visible_message(span_green("[usr] blesses the crop with Dendor's Favour!"))
 	var/growed = FALSE
-	for(var/obj/machinery/crop/C in view(5))
+	for(var/obj/structure/soil/soil in view(5))
+		soil.bless_soil()
 		growed = TRUE
-		C.growth += 40
-		C.update_seed_icon()
+	if(growed)
+		visible_message(span_green("[usr] blesses the nearby crops with Dendor's Favour!"))
 	return growed
 
 //At some point, this spell should Awaken beasts, allowing a ghost to possess them. Not for this PR though.

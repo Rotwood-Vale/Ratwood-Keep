@@ -610,20 +610,6 @@
 				 /obj/item/stack/sheet/sinew = 3)
 	category = CAT_NONE
 
-/datum/crafting_recipe/bonfire
-	name = "Bonfire"
-	time = 60
-	reqs = list(/obj/item/grown/log = 5)
-	result = /obj/structure/bonfire
-	category = CAT_NONE
-
-/datum/crafting_recipe/rake //Category resorting incoming
-	name = "Rake"
-	time = 30
-	reqs = list(/obj/item/stack/sheet/mineral/wood = 5)
-	result = /obj/item/cultivator/rake
-	category = CAT_NONE
-
 /datum/crafting_recipe/woodbucket
 	name = "Wooden Bucket"
 	time = 30
@@ -700,26 +686,6 @@
 		        /obj/item/stack/sheet/mineral/wood = 20,
 		        /obj/item/stack/cable_coil = 10)
 	tools = list(TOOL_SCREWDRIVER, TOOL_WRENCH, TOOL_WELDER)
-	category = CAT_NONE
-
-/datum/crafting_recipe/aitater
-	name = "intelliTater"
-	result = /obj/item/aicard/aitater
-	time = 30
-	tools = list(TOOL_WIRECUTTER)
-	reqs = list(/obj/item/aicard = 1,
-					/obj/item/reagent_containers/food/snacks/grown/potato = 1,
-					/obj/item/stack/cable_coil = 5)
-	category = CAT_NONE
-
-/datum/crafting_recipe/aispook
-	name = "intelliLantern"
-	result = /obj/item/aicard/aispook
-	time = 30
-	tools = list(TOOL_WIRECUTTER)
-	reqs = list(/obj/item/aicard = 1,
-					/obj/item/reagent_containers/food/snacks/grown/pumpkin = 1,
-					/obj/item/stack/cable_coil = 5)
 	category = CAT_NONE
 
 /datum/crafting_recipe/ghettojetpack
