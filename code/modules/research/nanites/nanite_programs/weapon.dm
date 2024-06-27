@@ -14,7 +14,7 @@
 	else
 		host_mob.adjustBruteLoss(1, TRUE)
 	if(prob(3))
-		to_chat(host_mob, "<span class='warning'>I feel a stab of pain from somewhere inside you.</span>")
+		to_chat(host_mob, span_warning("I feel a stab of pain from somewhere inside you."))
 
 /datum/nanite_program/poison
 	name = "Poisoning"
@@ -25,7 +25,7 @@
 /datum/nanite_program/poison/active_effect()
 	host_mob.adjustToxLoss(1)
 	if(prob(2))
-		to_chat(host_mob, "<span class='warning'>I feel nauseous.</span>")
+		to_chat(host_mob, span_warning("I feel nauseous."))
 		if(iscarbon(host_mob))
 			var/mob/living/carbon/C = host_mob
 			C.vomit(20)
@@ -66,12 +66,12 @@
 
 /datum/nanite_program/meltdown/enable_passive_effect()
 	. = ..()
-	to_chat(host_mob, "<span class='danger'>My blood is burning!</span>")
+	to_chat(host_mob, span_danger("My blood is burning!"))
 	nanites.safety_threshold = 0
 
 /datum/nanite_program/meltdown/disable_passive_effect()
 	. = ..()
-	to_chat(host_mob, "<span class='warning'>My blood cools down, and the pain gradually fades.</span>")
+	to_chat(host_mob, span_warning("My blood cools down, and the pain gradually fades."))
 
 /datum/nanite_program/triggered/explosive
 	name = "Chain Detonation"
@@ -83,8 +83,8 @@
 /datum/nanite_program/triggered/explosive/trigger()
 	if(!..())
 		return
-	host_mob.visible_message("<span class='warning'>[host_mob] starts emitting a high-pitched buzzing, and [host_mob.p_their()] skin begins to glow...</span>",\
-							"<span class='danger'>I start emitting a high-pitched buzzing, and my skin begins to glow...</span>")
+	host_mob.visible_message(span_warning("[host_mob] starts emitting a high-pitched buzzing, and [host_mob.p_their()] skin begins to glow..."),\
+							span_danger("I start emitting a high-pitched buzzing, and my skin begins to glow..."))
 	addtimer(CALLBACK(src, PROC_REF(boom)), CLAMP((nanites.nanite_volume * 0.35), 25, 150))
 
 /datum/nanite_program/triggered/explosive/proc/boom()

@@ -250,13 +250,13 @@
 	..()
 	if(!I.tool_start_check(user, amount=0))
 		return TRUE
-	to_chat(user, "<span class='notice'>I begin welding the vent...</span>")
+	to_chat(user, span_notice("I begin welding the vent..."))
 	if(I.use_tool(src, user, 20, volume=50))
 		if(!welded)
-			user.visible_message("<span class='notice'>[user] welds the vent shut.</span>", "<span class='notice'>I weld the vent shut.</span>", "<span class='hear'>I hear welding.</span>")
+			user.visible_message(span_notice("[user] welds the vent shut."), span_notice("I weld the vent shut."), span_hear("I hear welding."))
 			welded = TRUE
 		else
-			user.visible_message("<span class='notice'>[user] unwelded the vent.</span>", "<span class='notice'>I unweld the vent.</span>", "<span class='hear'>I hear welding.</span>")
+			user.visible_message(span_notice("[user] unwelded the vent."), span_notice("I unweld the vent."), span_hear("I hear welding."))
 			welded = FALSE
 		update_icon()
 		pipe_vision_img = image(src, loc, layer = ABOVE_HUD_LAYER, dir = dir)
@@ -268,7 +268,7 @@
 /obj/machinery/atmospherics/components/unary/vent_pump/can_unwrench(mob/user)
 	. = ..()
 	if(. && on && is_operational())
-		to_chat(user, "<span class='warning'>I cannot unwrench [src], turn it off first!</span>")
+		to_chat(user, span_warning("I cannot unwrench [src], turn it off first!"))
 		return FALSE
 
 /obj/machinery/atmospherics/components/unary/vent_pump/examine(mob/user)
@@ -286,7 +286,7 @@
 /obj/machinery/atmospherics/components/unary/vent_pump/attack_alien(mob/user)
 	if(!welded || !(do_after(user, 20, target = src)))
 		return
-	user.visible_message("<span class='warning'>[user] furiously claws at [src]!</span>", "<span class='notice'>I manage to clear away the stuff blocking the vent.</span>", "<span class='hear'>I hear loud scraping noises.</span>")
+	user.visible_message(span_warning("[user] furiously claws at [src]!"), span_notice("I manage to clear away the stuff blocking the vent."), span_hear("I hear loud scraping noises."))
 	welded = FALSE
 	update_icon()
 	pipe_vision_img = image(src, loc, layer = ABOVE_HUD_LAYER, dir = dir)

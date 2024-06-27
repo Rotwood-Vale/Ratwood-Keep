@@ -36,6 +36,7 @@
 	icon_state = "wooden"
 	drop_sound = 'sound/foley/dropsound/wooden_drop.ogg'
 	anvilrepair = null
+	sellprice = 0
 
 /obj/item/reagent_containers/glass/cup/steel
 	name = "goblet"

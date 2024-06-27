@@ -41,7 +41,7 @@
 
 /obj/machinery/recycler/examine(mob/user)
 	. = ..()
-	. += "<span class='notice'>Reclaiming <b>[amount_produced]%</b> of materials salvaged.</span>"
+	. += span_notice("Reclaiming <b>[amount_produced]%</b> of materials salvaged.")
 	. += {"The power light is [(stat & NOPOWER) ? "off" : "on"].
 	The safety-mode light is [safety_mode ? "on" : "off"].
 	The safety-sensors status light is [obj_flags & EMAGGED ? "off" : "on"]."}
@@ -69,7 +69,7 @@
 		safety_mode = FALSE
 		update_icon()
 	playsound(src, "sparks", 75, TRUE, -1)
-	to_chat(user, "<span class='notice'>I use the cryptographic sequencer on [src].</span>")
+	to_chat(user, span_notice("I use the cryptographic sequencer on [src]."))
 
 /obj/machinery/recycler/update_icon_state()
 	..()
@@ -126,23 +126,14 @@
 /obj/machinery/recycler/proc/recycle_item(obj/item/I)
 
 	I.forceMove(loc)
-	var/obj/item/grown/log/L = I
-	if(istype(L))
-		var/seed_modifier = 0
-		if(L.seed)
-			seed_modifier = round(L.seed.potency / 25)
-		new L.plank_type(src.loc, 1 + seed_modifier)
-		qdel(L)
-		return
-	else
-		var/datum/component/material_container/materials = GetComponent(/datum/component/material_container)
-		var/material_amount = materials.get_item_material_amount(I)
-		if(!material_amount)
-			qdel(I)
-			return
-		materials.insert_item(I, multiplier = (amount_produced / 100))
+	var/datum/component/material_container/materials = GetComponent(/datum/component/material_container)
+	var/material_amount = materials.get_item_material_amount(I)
+	if(!material_amount)
 		qdel(I)
-		materials.retrieve_all()
+		return
+	materials.insert_item(I, multiplier = (amount_produced / 100))
+	qdel(I)
+	materials.retrieve_all()
 
 
 /obj/machinery/recycler/proc/emergency_stop(mob/living/L)

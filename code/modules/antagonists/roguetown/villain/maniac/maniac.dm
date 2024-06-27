@@ -109,7 +109,7 @@
 	forge_villain_objectives()
 	if(length(objectives))
 		SEND_SOUND(owner.current, 'sound/villain/dreamer_warning.ogg')
-		to_chat(owner.current, "<span class='danger'>[antag_memory]</span>")
+		to_chat(owner.current, span_danger("[antag_memory]"))
 		owner.announce_objectives()
 	START_PROCESSING(SSobj, src)
 
@@ -117,7 +117,7 @@
 	STOP_PROCESSING(SSobj, src)
 	if(owner.current)
 		if(!silent)
-			to_chat(owner.current,"<span class='danger'>I am no longer a MANIAC!</span>")
+			to_chat(owner.current,span_danger("I am no longer a MANIAC!"))
 		if(ishuman(owner.current))
 			var/mob/living/carbon/human/dreamer = owner.current
 			dreamer.STASTR = STASTR
@@ -226,16 +226,16 @@
 		trey_liam.SetSleeping(25 SECONDS)
 		trey_liam.add_stress(/datum/stressevent/maniac_woke_up)
 		sleep(1.5 SECONDS)
-		to_chat(trey_liam, "<span class='deadsay'><span class='reallybig'>... WHERE AM I? ...</span></span>")
+		to_chat(trey_liam, span_deadsay("<span class='reallybig'>... WHERE AM I? ...</span>"))
 		sleep(1.5 SECONDS)
 		var/static/list/slop_lore = list(
-			"<span class='deadsay'>... Rockhill? No ... It doesn't exist ...</span>",
-			"<span class='deadsay'>... My name is Trey. Trey Liam, Scientific Overseer ...</span>",
-			"<span class='deadsay'>... I'm on NT Aeon, a self sustaining ship, used to preserve what remains of humanity ...</span>",
-			"<span class='deadsay'>... Launched into the stars, INRL preserves their memories ... Their personalities ...</span>",
-			"<span class='deadsay'>... Keeps them alive in cyberspace, oblivious to the catastrophe ...</span>",
-			"<span class='deadsay'>... There is no hope left. Only the cyberspace deck lets me live in the forgery ...</span>",
-			"<span class='deadsay'>... What have I done!? ...</span>",
+			span_deadsay("... Rockhill? No ... It doesn't exist ..."),
+			span_deadsay("... My name is Trey. Trey Liam, Scientific Overseer ..."),
+			span_deadsay("... I'm on NT Aeon, a self sustaining ship, used to preserve what remains of humanity ..."),
+			span_deadsay("... Launched into the stars, INRL preserves their memories ... Their personalities ..."),
+			span_deadsay("... Keeps them alive in cyberspace, oblivious to the catastrophe ..."),
+			span_deadsay("... There is no hope left. Only the cyberspace deck lets me live in the forgery ..."),
+			span_deadsay("... What have I done!? ..."),
 		)
 		for(var/slop in slop_lore)
 			to_chat(trey_liam, slop)
@@ -243,16 +243,16 @@
 	else
 		INVOKE_ASYNC(src, PROC_REF(cant_wake_up), dreamer)
 	sleep(15 SECONDS)
-	to_chat(world, "<span class='deadsay'><span class='reallybig'>The Maniac has TRIUMPHED!</span></span>")
+	to_chat(world, span_deadsay("<span class='reallybig'>The Maniac has TRIUMPHED!</span>"))
 	SSticker.declare_completion()
 
 /datum/antagonist/maniac/proc/cant_wake_up(mob/living/dreamer)
 	if(!iscarbon(dreamer))
 		return
-	to_chat(dreamer, "<span class='deadsay'><span class='reallybig'>I CAN'T WAKE UP.</span></span>")
+	to_chat(dreamer, span_deadsay("<span class='reallybig'>I CAN'T WAKE UP.</span>"))
 	sleep(2 SECONDS)
 	for(var/i in 1 to 10)
-		to_chat(dreamer, "<span class='deadsay'><span class='reallybig'>ICANTWAKEUP</span></span>")
+		to_chat(dreamer, span_deadsay("<span class='reallybig'>ICANTWAKEUP</span>"))
 		sleep(0.5 SECONDS)
 	var/obj/item/organ/brain/brain = dreamer.getorganslot(ORGAN_SLOT_BRAIN)
 	var/obj/item/bodypart/head/head = dreamer.get_bodypart(BODY_ZONE_HEAD)
@@ -288,10 +288,10 @@
 		if(count)
 			if(owner)
 				owner.adjust_triumphs(count)
-		to_chat(world, "<span class='greentext'>The [special_role_text] has TRIUMPHED!</span>")
+		to_chat(world, span_greentext("The [special_role_text] has TRIUMPHED!"))
 		if(owner?.current)
 			owner.current.playsound_local(get_turf(owner.current), 'sound/misc/triumph.ogg', 100, FALSE, pressure_affected = FALSE)
 	else
-		to_chat(world, "<span class='redtext'>The [special_role_text] has FAILED!</span>")
+		to_chat(world, span_redtext("The [special_role_text] has FAILED!"))
 		if(owner?.current)
 			owner.current.playsound_local(get_turf(owner.current), 'sound/misc/fail.ogg', 100, FALSE, pressure_affected = FALSE)

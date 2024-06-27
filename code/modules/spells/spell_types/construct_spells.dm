@@ -197,22 +197,22 @@
 
 /obj/effect/proc_holder/spell/targeted/abyssal_gaze/cast(list/targets, mob/user = usr)
 	if(!LAZYLEN(targets))
-		to_chat(user, "<span class='warning'>No target found in range!</span>")
+		to_chat(user, span_warning("No target found in range!"))
 		revert_cast()
 		return
 
 	var/mob/living/carbon/target = targets[1]
 
 	if(!(target in oview(range)))
-		to_chat(user, "<span class='warning'>[target] is too far away!</span>")
+		to_chat(user, span_warning("[target] is too far away!"))
 		revert_cast()
 		return
 
 	if(target.anti_magic_check(TRUE, TRUE))
-		to_chat(target, "<span class='warning'>I feel a freezing darkness closing in on you, but it rapidly dissipates.</span>")
+		to_chat(target, span_warning("I feel a freezing darkness closing in on you, but it rapidly dissipates."))
 		return
 
-	to_chat(target, "<span class='danger'>A freezing darkness surrounds you...</span>")
+	to_chat(target, span_danger("A freezing darkness surrounds you..."))
 	target.playsound_local(get_turf(target), 'sound/blank.ogg', 50, 1)
 	user.playsound_local(get_turf(user), 'sound/blank.ogg', 50, 1)
 	target.become_blind(ABYSSAL_GAZE_BLIND)
@@ -244,29 +244,29 @@
 
 /obj/effect/proc_holder/spell/targeted/dominate/cast(list/targets, mob/user = usr)
 	if(!LAZYLEN(targets))
-		to_chat(user, "<span class='notice'>No target found in range.</span>")
+		to_chat(user, span_notice("No target found in range."))
 		revert_cast()
 		return
 
 	var/mob/living/simple_animal/S = targets[1]
 
 	if(S.ckey)
-		to_chat(user, "<span class='warning'>[S] is too intelligent to dominate!</span>")
+		to_chat(user, span_warning("[S] is too intelligent to dominate!"))
 		revert_cast()
 		return
 
 	if(S.stat)
-		to_chat(user, "<span class='warning'>[S] is dead!</span>")
+		to_chat(user, span_warning("[S] is dead!"))
 		revert_cast()
 		return
 
 	if(S.sentience_type != SENTIENCE_ORGANIC)
-		to_chat(user, "<span class='warning'>[S] cannot be dominated!</span>")
+		to_chat(user, span_warning("[S] cannot be dominated!"))
 		revert_cast()
 		return
 
 	if(!(S in oview(range)))
-		to_chat(user, "<span class='warning'>[S] is too far away!</span>")
+		to_chat(user, span_warning("[S] is too far away!"))
 		revert_cast()
 		return
 
@@ -320,5 +320,5 @@
 	new /obj/effect/temp_visual/cult/sac(T)
 	for(var/obj/O in range(src,1))
 		if(O.density && !istype(O, /obj/structure/destructible/cult))
-			O.take_damage(90, BRUTE, "melee", 0)
+			O.take_damage(90, BRUTE, "blunt", 0)
 			new /obj/effect/temp_visual/cult/turf/floor(get_turf(O))

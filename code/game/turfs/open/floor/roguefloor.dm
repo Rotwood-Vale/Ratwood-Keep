@@ -43,6 +43,17 @@
 /turf/open/floor/rogue/ruinedwood/chevron
 	icon_state = "weird2"
 
+/turf/open/floor/rogue/ruinedwood/platform
+	name = "platform"
+	desc = "A destructible platform."
+	damage_deflection = 8
+	break_sound = 'sound/combat/hits/onwood/destroywalldoor.ogg'
+	attacked_sound = list('sound/combat/hits/onwood/woodimpact (1).ogg','sound/combat/hits/onwood/woodimpact (2).ogg')
+
+/turf/open/floor/rogue/ruinedwood/platform/turf_destruction(damage_flag)
+	. = ..()
+	ScrapeAway(flags = CHANGETURF_INHERIT_AIR)
+
 /turf/open/floor/rogue/twig
 	icon_state = "twig"
 	footstep = FOOTSTEP_GRASS
@@ -55,6 +66,18 @@
 /turf/open/floor/rogue/twig/Initialize()
 	dir = pick(GLOB.cardinals)
 	. = ..()
+
+/turf/open/floor/rogue/twig/platform
+	name = "platform"
+	desc = "A destructible platform."
+	damage_deflection = 6
+	max_integrity = 200
+	break_sound = 'sound/combat/hits/onwood/destroywalldoor.ogg'
+	attacked_sound = list('sound/combat/hits/onwood/woodimpact (1).ogg','sound/combat/hits/onwood/woodimpact (2).ogg')
+
+/turf/open/floor/rogue/twig/platform/turf_destruction(damage_flag)
+	. = ..()
+	ScrapeAway(flags = CHANGETURF_INHERIT_AIR)
 
 /turf/open/floor/rogue/wood
 	smooth_icon = 'icons/turf/floors/wood.dmi'
@@ -117,7 +140,7 @@
 
 /turf/open/floor/rogue/grass
 	name = "grass"
-	desc = "Grass, sodden with mud and bogwater." 
+	desc = "Grass, sodden with mud and bogwater."
 	icon_state = "grass"
 	layer = MID_TURF_LAYER
 	footstep = FOOTSTEP_GRASS
@@ -168,7 +191,6 @@
 	var/muddy = FALSE
 	var/bloodiness = 20
 	var/obj/structure/closet/dirthole/holie
-	var/obj/machinery/crop/planted_crop
 	var/dirt_amt = 3
 
 /turf/open/floor/rogue/dirt/get_slowdown(mob/user)
@@ -189,7 +211,7 @@
 			return
 		var/obj/item/I = new /obj/item/natural/dirtclod(src)
 		if(L.put_in_active_hand(I))
-			L.visible_message("<span class='warning'>[L] picks up some dirt.</span>")
+			L.visible_message(span_warning("[L] picks up some dirt."))
 			dirt_amt--
 			if(dirt_amt <= 0)
 				src.ChangeTurf(/turf/open/floor/rogue/dirt/road, flags = CHANGETURF_INHERIT_AIR)
@@ -200,8 +222,6 @@
 /turf/open/floor/rogue/dirt/Destroy()
 	if(holie)
 		QDEL_NULL(holie)
-	if(planted_crop)
-		QDEL_NULL(planted_crop)
 	return ..()
 
 
@@ -222,8 +242,6 @@
 			S.blood_state = BLOOD_STATE_MUD
 			update_icon()
 			H.update_inv_shoes()
-			if(planted_crop)
-				planted_crop.crossed_turf()
 		if(water_level)
 			START_PROCESSING(SSwaterlevel, src)
 
@@ -239,8 +257,6 @@
 	water_level = max(water_level-10,0)
 	if(water_level > 10) //this would be a switch on normal tiles
 		color = "#95776a"
-		if(planted_crop)
-			planted_crop.rainedon()
 	else
 		color = null
 	return TRUE
@@ -254,8 +270,6 @@
 				become_muddy()
 			return TRUE //stop processing
 	if(water_level > 10) //this would be a switch on normal tiles
-		if(planted_crop)
-			planted_crop.rainedon()
 		if(!muddy)
 			become_muddy()
 //flood process goes here to spread to other turfs etc
@@ -453,6 +467,18 @@
 	icon_state = "paving"
 /turf/open/floor/rogue/blocks/paving/vert
 	icon_state = "paving-t"
+
+/turf/open/floor/rogue/blocks/platform
+	name = "platform"
+	desc = "A destructible platform."
+	damage_deflection = 10
+	max_integrity = 800
+	break_sound = 'sound/combat/hits/onstone/stonedeath.ogg'
+	attacked_sound = list('sound/combat/hits/onstone/wallhit.ogg', 'sound/combat/hits/onstone/wallhit2.ogg', 'sound/combat/hits/onstone/wallhit3.ogg')
+
+/turf/open/floor/rogue/blocks/platform/turf_destruction(damage_flag)
+	. = ..()
+	ScrapeAway(flags = CHANGETURF_INHERIT_AIR)
 
 /turf/open/floor/rogue/greenstone
 	icon_state = "greenstone"

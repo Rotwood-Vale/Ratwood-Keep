@@ -6,16 +6,16 @@
 	desc = ""
 	value = 0
 	mob_trait = TRAIT_AGEUSIA
-	gain_text = "<span class='notice'>I can't taste anything!</span>"
-	lose_text = "<span class='notice'>I can taste again!</span>"
+	gain_text = span_notice("I can't taste anything!")
+	lose_text = span_notice("I can taste again!")
 	medical_record_text = "Patient suffers from ageusia and is incapable of tasting food or reagents."
 
 /datum/quirk/vegetarian
 	name = "Vegetarian"
 	desc = ""
 	value = 0
-	gain_text = "<span class='notice'>I feel repulsion at the idea of eating meat.</span>"
-	lose_text = "<span class='notice'>I feel like eating meat isn't that bad.</span>"
+	gain_text = span_notice("I feel repulsion at the idea of eating meat.")
+	lose_text = span_notice("I feel like eating meat isn't that bad.")
 	medical_record_text = "Patient reports a vegetarian diet."
 
 /datum/quirk/vegetarian/add()
@@ -37,8 +37,8 @@
 	name = "Snob"
 	desc = ""
 	value = 0
-	gain_text = "<span class='notice'>I feel like you understand what things should look like.</span>"
-	lose_text = "<span class='notice'>Well who cares about deco anyways?</span>"
+	gain_text = span_notice("I feel like you understand what things should look like.")
+	lose_text = span_notice("Well who cares about deco anyways?")
 	medical_record_text = "Patient seems to be rather stuck up."
 	mob_trait = TRAIT_SNOB
 
@@ -46,8 +46,8 @@
 	name = "Ananas Affinity"
 	desc = ""
 	value = 0
-	gain_text = "<span class='notice'>I feel an intense craving for pineapple.</span>"
-	lose_text = "<span class='notice'>My feelings towards pineapples seem to return to a lukewarm state.</span>"
+	gain_text = span_notice("I feel an intense craving for pineapple.")
+	lose_text = span_notice("My feelings towards pineapples seem to return to a lukewarm state.")
 	medical_record_text = "Patient demonstrates a pathological love of pineapple."
 
 /datum/quirk/pineapple_liker/add()
@@ -65,8 +65,8 @@
 	name = "Ananas Aversion"
 	desc = ""
 	value = 0
-	gain_text = "<span class='notice'>I find myself pondering what kind of idiot actually enjoys pineapples...</span>"
-	lose_text = "<span class='notice'>My feelings towards pineapples seem to return to a lukewarm state.</span>"
+	gain_text = span_notice("I find myself pondering what kind of idiot actually enjoys pineapples...")
+	lose_text = span_notice("My feelings towards pineapples seem to return to a lukewarm state.")
 	medical_record_text = "Patient is correct to think that pineapple is disgusting."
 
 /datum/quirk/pineapple_hater/add()
@@ -84,8 +84,8 @@
 	name = "Deviant Tastes"
 	desc = ""
 	value = 0
-	gain_text = "<span class='notice'>I start craving something that tastes strange.</span>"
-	lose_text = "<span class='notice'>I feel like eating normal food again.</span>"
+	gain_text = span_notice("I start craving something that tastes strange.")
+	lose_text = span_notice("I feel like eating normal food again.")
 	medical_record_text = "Patient demonstrates irregular nutrition preferences."
 
 /datum/quirk/deviant_tastes/add()
@@ -113,7 +113,7 @@
 
 /datum/quirk/monochromatic/post_add()
 	if(quirk_holder.mind.assigned_role == "Detective")
-		to_chat(quirk_holder, "<span class='boldannounce'>Mmm. Nothing's ever clear on this station. It's all shades of gray...</span>")
+		to_chat(quirk_holder, span_boldannounce("Mmm. Nothing's ever clear on this station. It's all shades of gray..."))
 		quirk_holder.playsound_local(quirk_holder, 'sound/blank.ogg', 50, FALSE)
 
 /datum/quirk/monochromatic/remove()

@@ -35,7 +35,7 @@
 
 /obj/item/grenade/c4/attackby(obj/item/I, mob/user, params)
 	if(I.tool_behaviour == TOOL_SCREWDRIVER)
-		to_chat(user, "<span class='notice'>The wire panel can be accessed without a screwdriver.</span>")
+		to_chat(user, span_notice("The wire panel can be accessed without a screwdriver."))
 	else if(is_wire_tool(I))
 		wires.interact(user)
 	else
@@ -82,7 +82,7 @@
 	if(!flag)
 		return
 
-	to_chat(user, "<span class='notice'>I start planting [src]. The timer is set to [det_time]...</span>")
+	to_chat(user, span_notice("I start planting [src]. The timer is set to [det_time]..."))
 
 	if(do_after(user, 30, target = AM))
 		if(!user.temporarilyRemoveItemFromInventory(src))
@@ -105,7 +105,7 @@
 			plastic_overlay.layer = FLOAT_LAYER
 
 		target.add_overlay(plastic_overlay)
-		to_chat(user, "<span class='notice'>I plant the bomb. Timer counting down from [det_time].</span>")
+		to_chat(user, span_notice("I plant the bomb. Timer counting down from [det_time]."))
 		addtimer(CALLBACK(src, PROC_REF(prime)), det_time*10)
 
 /obj/item/grenade/c4/proc/shout_syndicate_crap(mob/M)
@@ -141,7 +141,7 @@
 /obj/item/grenade/c4/suicide_act(mob/user)
 	message_admins("[ADMIN_LOOKUPFLW(user)] suicided with [src] at [ADMIN_VERBOSEJMP(user)]")
 	log_game("[key_name(user)] suicided with [src] at [AREACOORD(user)]")
-	user.visible_message("<span class='suicide'>[user] activates [src] and holds it above [user.p_their()] head! It looks like [user.p_theyre()] going out with a bang!</span>")
+	user.visible_message(span_suicide("[user] activates [src] and holds it above [user.p_their()] head! It looks like [user.p_theyre()] going out with a bang!"))
 	shout_syndicate_crap(user)
 	explosion(user,0,2,0) //Cheap explosion imitation because putting prime() here causes runtimes
 	user.gib(1, 1)

@@ -46,7 +46,7 @@
 	name = "Necra"
 	domain = "Goddess of Death and the Afterlife"
 	desc = "The Veiled Lady, a feared but respected God who leads the dead."
-	worshippers = "The Dead, Gravekeepers"
+	worshippers = "The Dead, Mourners, Gravekeepers"
 	mob_traits = list(TRAIT_SOUL_EXAMINE)
 	t1 = /obj/effect/proc_holder/spell/targeted/burialrite
 	t2 = /obj/effect/proc_holder/spell/targeted/churn
@@ -63,10 +63,11 @@
 	domain = "Goddess of Decay, Disease and Medicine"
 	desc = "The Loving Daughter of Psydon, gifted man medicine."
 	worshippers = "The Sick, Phyicians, Apothecaries"
-	mob_traits = list(TRAIT_ROT_EATER)
-	t1 = /obj/effect/proc_holder/spell/invoked/attach_bodypart
+	mob_traits = list(TRAIT_EMPATH, TRAIT_ROT_EATER)
+	t0 = /obj/effect/proc_holder/spell/invoked/diagnose
+	t1 = /obj/effect/proc_holder/spell/invoked/lesser_heal
 	t2 = /obj/effect/proc_holder/spell/invoked/heal
-	t3 = /obj/effect/proc_holder/spell/invoked/cure_rot
+	t3 = /obj/effect/proc_holder/spell/invoked/attach_bodypart
 
 /datum/patron/divine/malum
 	name = "Malum"

@@ -72,9 +72,9 @@
 			return
 	put_in_hands(new /obj/item/underworld/coin/notracking(get_turf(src)))
 	if(patron)
-		to_chat(src, "<span class='danger'>Your suffering has not gone unnoticed, [patron] has rewarded you with your toll.</span>")
+		to_chat(src, span_danger("Your suffering has not gone unnoticed, [patron] has rewarded you with your toll."))
 	else
-		to_chat(src, "<span class='danger'>Your suffering has not gone unnoticed, your patron has rewarded you with your toll.</span>")
+		to_chat(src, span_danger("Your suffering has not gone unnoticed, your patron has rewarded you with your toll."))
 	playsound(src, 'sound/combat/caught.ogg', 80, TRUE, -1)
 
 /mob/living/carbon/spirit/create_internal_organs()
@@ -128,7 +128,7 @@
 
 	log_game("[key_name(usr)] respawned from underworld")
 
-	to_chat(src, "<span class='info'>Returned to lobby successfully.</span>")
+	to_chat(src, span_info("Returned to lobby successfully."))
 
 	if(!client)
 		log_game("[key_name(usr)] AM failed due to disconnect.")
@@ -177,7 +177,7 @@
 	return src
 
 /// Proc that will search inside a given atom for any corpses, and send the associated ghost to the lobby if possible
-/proc/pacify_coffin(atom/movable/coffin, mob/user, deep = TRUE, give_pq = 0.2)
+/proc/pacify_coffin(atom/movable/coffin, mob/user, deep = TRUE, give_pq = PQ_GAIN_BURIAL)
 	if(!coffin)
 		return FALSE
 	var/success = FALSE
@@ -195,17 +195,21 @@
 			if(isliving(stuffing) || istype(stuffing, /obj/item/bodypart/head))
 				continue
 			success ||= pacify_coffin(stuffing, user, deep, give_pq = FALSE)
-	if(success && give_pq && user?.ckey)
+	// Success is actually the ckey of the last attacker so we can prevent PQ farming from fragging people
+	if(success && give_pq && user?.ckey && (user.ckey != success))
 		adjust_playerquality(give_pq, user.ckey)
 	return success
 
 /// Proc that sends the client associated with a given corpse to the lobby, if possible
-/proc/pacify_corpse(mob/living/corpse, mob/user, coin_pq = 0.2)
-	if(corpse.stat != DEAD)
+/proc/pacify_corpse(mob/living/corpse, mob/user, coin_pq = PQ_GAIN_BURIAL_COIN)
+	if((corpse.stat != DEAD) || !corpse.mind)
 		return FALSE
-	if(ishuman(corpse) && !HAS_TRAIT(corpse, TRAIT_BURIED_COIN_GIVEN))
+	var/attacker_ckey = corpse.lastattackerckey || TRUE
+	if(ishuman(corpse))
 		var/mob/living/carbon/human/human_corpse = corpse
-		if(istype(human_corpse.mouth, /obj/item/roguecoin))
+		human_corpse.buried = TRUE
+		human_corpse.funeral = TRUE
+		if(istype(human_corpse.mouth, /obj/item/roguecoin) && !HAS_TRAIT(corpse, TRAIT_BURIED_COIN_GIVEN))
 			var/obj/item/roguecoin/coin = human_corpse.mouth
 			if(coin.quantity >= 1) // stuffing their mouth full of a fuck ton of coins wont do shit
 				ADD_TRAIT(human_corpse, TRAIT_BURIED_COIN_GIVEN, TRAIT_GENERIC)
@@ -213,13 +217,13 @@
 					var/turf/fallen = get_turf(coin_spawn)
 					fallen = locate(fallen.x + rand(-3, 3), fallen.y + rand(-3, 3), fallen.z)
 					new /obj/item/underworld/coin/notracking(fallen)
-					fallen.visible_message("<span class='warning'>A coin falls from above!</span>")
-					if(coin_pq && user?.ckey)
+					fallen.visible_message(span_warning("A coin falls from above!"))
+					if(coin_pq && user?.ckey && (user.ckey != attacker_ckey))
 						adjust_playerquality(coin_pq, user.ckey)
 					qdel(human_corpse.mouth)
 					human_corpse.update_inv_mouth()
 					break
-	corpse.mind?.remove_antag_datum(/datum/antagonist/zombie)
+	corpse.mind.remove_antag_datum(/datum/antagonist/zombie)
 	var/mob/dead/observer/ghost
 	//Try to find a lost ghost if there is no client
 	if(!corpse.client)
@@ -236,9 +240,9 @@
 	if(ghost)
 		testing("pacify_corpse success ([corpse.mind?.key || "no key"])")
 		var/user_acknowledgement = user ? user.real_name : "a mysterious force"
-		to_chat(ghost, "<span class='rose'>My soul finds peace buried in creation, thanks to [user_acknowledgement].</span>")
+		to_chat(ghost, span_rose("My soul finds peace buried in creation, thanks to [user_acknowledgement]."))
 		ghost.returntolobby(RESPAWNTIME*-1)
-		return TRUE
+		return attacker_ckey
 
 	testing("pacify_corpse fail ([corpse.mind?.key || "no key"])")
 	return FALSE

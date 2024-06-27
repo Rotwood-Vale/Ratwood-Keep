@@ -15,6 +15,7 @@
 	associated_skill = /datum/skill/magic/arcane
 
 /obj/effect/proc_holder/spell/targeted/spiderconjur/cast(list/targets,mob/user = usr)
+	. = ..()
 	if(isopenturf(user.loc))
 		var/turf/open/T = user.loc
 		var/foundwall
@@ -26,5 +27,5 @@
 		if(foundwall)
 			if(!locate(/obj/structure/spider/stickyweb) in T)
 				new /obj/structure/spider/stickyweb(T)
-
-	return TRUE
+		return TRUE
+	return FALSE

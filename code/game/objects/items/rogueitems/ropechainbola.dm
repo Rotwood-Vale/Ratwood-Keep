@@ -52,40 +52,40 @@
 	if(user.aimheight > 4)
 		if(!C.handcuffed)
 			if(C.get_num_arms(FALSE) || C.get_arm_ignore())
-				C.visible_message("<span class='warning'>[user] is trying to tie [C]'s arms with [src.name]!</span>", \
-									"<span class='userdanger'>[user] is trying to tie my arms with [src.name]!</span>")
+				C.visible_message(span_warning("[user] is trying to tie [C]'s arms with [src.name]!"), \
+									span_userdanger("[user] is trying to tie my arms with [src.name]!"))
 
 				playsound(loc, cuffsound, 100, TRUE, -2)
 				if(do_mob(user, C, 60) && C.get_num_arms(FALSE))
 					apply_cuffs(C, user)
-					C.visible_message("<span class='warning'>[user] ties [C] with [src.name].</span>", \
-										"<span class='danger'>[user] ties me up with [src.name].</span>")
+					C.visible_message(span_warning("[user] ties [C] with [src.name]."), \
+										span_danger("[user] ties me up with [src.name]."))
 					SSblackbox.record_feedback("tally", "handcuffs", 1, type)
 
 					log_combat(user, C, "handcuffed")
 				else
-					to_chat(user, "<span class='warning'>I fail to tie up [C]!</span>")
+					to_chat(user, span_warning("I fail to tie up [C]!"))
 			else
-				to_chat(user, "<span class='warning'>[C] has no arms to tie up.</span>")
+				to_chat(user, span_warning("[C] has no arms to tie up."))
 
 	if(user.aimheight <= 4)
 		if(!C.legcuffed)
 			if(C.get_num_legs(TRUE) == 2)
-				C.visible_message("<span class='warning'>[user] is trying to tie [C]'s legs with [src.name]!</span>", \
-									"<span class='userdanger'>[user] is trying to tie my legs with [src.name]!</span>")
+				C.visible_message(span_warning("[user] is trying to tie [C]'s legs with [src.name]!"), \
+									span_userdanger("[user] is trying to tie my legs with [src.name]!"))
 
 				playsound(loc, cuffsound, 30, TRUE, -2)
 				if(do_mob(user, C, 60) && (C.get_num_legs(FALSE) < 2))
 					apply_cuffs(C, user)
-					C.visible_message("<span class='warning'>[user] ties [C]'s legs with [src.name].</span>", \
-										"<span class='danger'>[user] ties my legs with [src.name].</span>")
+					C.visible_message(span_warning("[user] ties [C]'s legs with [src.name]."), \
+										span_danger("[user] ties my legs with [src.name]."))
 					SSblackbox.record_feedback("tally", "legcuffs", 1, type)
 
 					log_combat(user, C, "legcuffed", TRUE)
 				else
-					to_chat(user, "<span class='warning'>I fail to tie up [C]!</span>")
+					to_chat(user, span_warning("I fail to tie up [C]!"))
 			else
-				to_chat(user, "<span class='warning'>[C] is missing two or one legs.</span>")
+				to_chat(user, span_warning("[C] is missing two or one legs."))
 
 /obj/item/rope/proc/apply_cuffs(mob/living/carbon/target, mob/user, leg = FALSE)
 	if(!leg)
@@ -122,8 +122,9 @@
 	name = "strike"
 	blade_class = BCLASS_BLUNT
 	attack_verb = list("whips", "strikes", "smacks")
-	penfactor = 40
+	penfactor = 0 //40
 	chargetime = 5
+	item_d_type = "slash"
 
 /obj/item/rope/chain
 	name = "chain"

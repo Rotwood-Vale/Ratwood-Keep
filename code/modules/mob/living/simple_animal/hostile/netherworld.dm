@@ -92,10 +92,10 @@
 /obj/structure/spawner/nether/attack_hand(mob/user)
 	. = ..()
 	if(isskeleton(user) || iszombie(user))
-		to_chat(user, "<span class='notice'>I don't feel like going home yet...</span>")
+		to_chat(user, span_notice("I don't feel like going home yet..."))
 	else
-		user.visible_message("<span class='warning'>[user] is violently pulled into the link!</span>", \
-							"<span class='danger'>Touching the portal, you are quickly pulled through into a world of unimaginable horror!</span>")
+		user.visible_message(span_warning("[user] is violently pulled into the link!"), \
+							span_danger("Touching the portal, you are quickly pulled through into a world of unimaginable horror!"))
 		contents.Add(user)
 
 /obj/structure/spawner/nether/process()
@@ -109,5 +109,5 @@
 				blank = new(loc)
 				blank.name = "[M]"
 				blank.desc = ""
-				src.visible_message("<span class='warning'>[M] reemerges from the link!</span>")
+				src.visible_message(span_warning("[M] reemerges from the link!"))
 				qdel(M)

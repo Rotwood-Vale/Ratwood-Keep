@@ -33,7 +33,7 @@
 		if(disk)
 			eject(user)
 		if(user.transferItemToLoc(N, src))
-			to_chat(user, "<span class='notice'>I insert [N] into [src].</span>")
+			to_chat(user, span_notice("I insert [N] into [src]."))
 			playsound(src, 'sound/blank.ogg', 50, FALSE)
 			disk = N
 	else

@@ -7,8 +7,8 @@
 	name = "Godwoken Syndrome"
 	desc = ""
 	scan_desc = ""
-	gain_text = "<span class='notice'>I feel a higher power inside your mind...</span>"
-	lose_text = "<span class='warning'>The divine presence leaves your head, no longer interested.</span>"
+	gain_text = span_notice("I feel a higher power inside your mind...")
+	lose_text = span_warning("The divine presence leaves your head, no longer interested.")
 
 /datum/brain_trauma/special/godwoken/on_life()
 	..()
@@ -51,8 +51,8 @@
 	name = "Bluespace Prophecy"
 	desc = ""
 	scan_desc = ""
-	gain_text = "<span class='notice'>I feel the bluespace pulsing around you...</span>"
-	lose_text = "<span class='warning'>The faint pulsing of bluespace fades into silence.</span>"
+	gain_text = span_notice("I feel the bluespace pulsing around you...")
+	lose_text = span_warning("The faint pulsing of bluespace fades into silence.")
 	var/next_portal = 0
 
 /datum/brain_trauma/special/bluespace_prophet/on_life()
@@ -112,27 +112,27 @@
 		"is pulled into an invisible vortex, vanishing from sight")
 	var/slip_out_message = pick("silently fades in", "leaps out of thin air","appears", "walks out of an invisible doorway",\
 		"slides out of a fold in spacetime")
-	to_chat(user, "<span class='notice'>I try to align with the bluespace stream...</span>")
+	to_chat(user, span_notice("I try to align with the bluespace stream..."))
 	if(do_after(user, 20, target = src))
 		new /obj/effect/temp_visual/bluespace_fissure(get_turf(src))
 		new /obj/effect/temp_visual/bluespace_fissure(get_turf(linked_to))
 		user.forceMove(get_turf(linked_to))
-		user.visible_message("<span class='warning'>[user] [slip_in_message].</span>", null, null, null, user)
-		user.visible_message("<span class='warning'>[user] [slip_out_message].</span>", "<span class='notice'>...and find your way to the other side.</span>")
+		user.visible_message(span_warning("[user] [slip_in_message]."), null, null, null, user)
+		user.visible_message(span_warning("[user] [slip_out_message]."), span_notice("...and find your way to the other side."))
 
 /datum/brain_trauma/special/psychotic_brawling
 	name = "Violent Psychosis"
 	desc = ""
 	scan_desc = ""
-	gain_text = "<span class='warning'>I feel unhinged...</span>"
-	lose_text = "<span class='notice'>I feel more balanced.</span>"
+	gain_text = span_warning("I feel unhinged...")
+	lose_text = span_notice("I feel more balanced.")
 	var/datum/martial_art/psychotic_brawling/psychotic_brawling
 
 /datum/brain_trauma/special/psychotic_brawling/on_gain()
 	..()
 	psychotic_brawling = new(null)
 	if(!psychotic_brawling.teach(owner, TRUE))
-		to_chat(owner, "<span class='notice'>But your martial knowledge keeps you grounded.</span>")
+		to_chat(owner, span_notice("But your martial knowledge keeps you grounded."))
 		qdel(src)
 
 /datum/brain_trauma/special/psychotic_brawling/on_lose()
@@ -148,8 +148,8 @@
 	name = "Tenacity"
 	desc = ""
 	scan_desc = ""
-	gain_text = "<span class='warning'>I suddenly stop feeling pain.</span>"
-	lose_text = "<span class='warning'>I realize you can feel pain again.</span>"
+	gain_text = span_warning("I suddenly stop feeling pain.")
+	lose_text = span_warning("I realize you can feel pain again.")
 
 /datum/brain_trauma/special/tenacity/on_gain()
 	ADD_TRAIT(owner, TRAIT_NOSOFTCRIT, TRAUMA_TRAIT)
@@ -165,8 +165,8 @@
 	name = "Functional Cerebral Necrosis"
 	desc = ""
 	scan_desc = ""
-	gain_text = "<span class='warning'>I feel dead inside.</span>"
-	lose_text = "<span class='notice'>I feel alive again.</span>"
+	gain_text = span_warning("I feel dead inside.")
+	lose_text = span_notice("I feel alive again.")
 	var/active = FALSE
 
 /datum/brain_trauma/special/death_whispers/on_life()
@@ -192,8 +192,8 @@
 	name = "Existential Crisis"
 	desc = ""
 	scan_desc = ""
-	gain_text = "<span class='notice'>I feel less real.</span>"
-	lose_text = "<span class='warning'>I feel more substantial again.</span>"
+	gain_text = span_notice("I feel less real.")
+	lose_text = span_warning("I feel more substantial again.")
 	var/obj/effect/abstract/sync_holder/veil/veil
 	var/next_crisis = 0
 
@@ -230,7 +230,7 @@
 
 /datum/brain_trauma/special/existential_crisis/proc/fade_in()
 	QDEL_NULL(veil)
-	to_chat(owner, "<span class='notice'>I fade back into reality.</span>")
+	to_chat(owner, span_notice("I fade back into reality."))
 	next_crisis = world.time + 600
 
 //base sync holder is in desynchronizer.dm
@@ -242,8 +242,8 @@
 	name = "Criminal"
 	desc = ""
 	scan_desc = ""
-	gain_text = "<span class='warning'>Justice is coming for you.</span>"
-	lose_text = "<span class='notice'>I were absolved for your crimes.</span>"
+	gain_text = span_warning("Justice is coming for you.")
+	lose_text = span_notice("I were absolved for your crimes.")
 	clonable = FALSE
 	random_gain = FALSE
 	var/obj/effect/hallucination/simple/securitron/beepsky
@@ -277,7 +277,7 @@
 		return
 	if(get_dist(owner, beepsky) <= 1)
 		owner.playsound_local(owner, 'sound/blank.ogg', 50)
-		owner.visible_message("<span class='warning'>[owner]'s body jerks as if it was shocked.</span>", "<span class='danger'>I feel the fist of the LAW.</span>")
+		owner.visible_message(span_warning("[owner]'s body jerks as if it was shocked."), span_danger("I feel the fist of the LAW."))
 		owner.take_bodypart_damage(0,0,rand(40, 70))
 		QDEL_NULL(beepsky)
 	if(prob(20) && get_dist(owner, beepsky) <= 8)
@@ -300,7 +300,7 @@
 	if(prob(60))
 		forceMove(get_step_towards(src, victim))
 		if(prob(5))
-			to_chat(victim, "<span class='name'>[name]</span> exclaims, \"<span class='robotic'>Level 10 infraction alert!\"</span>")
+			to_chat(victim, span_name("[name]</span> exclaims, \"<span class='robotic'>Level 10 infraction alert!\""))
 
 /obj/effect/hallucination/simple/securitron/Destroy()
 	STOP_PROCESSING(SSfastprocess,src)

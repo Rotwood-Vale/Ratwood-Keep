@@ -49,18 +49,18 @@
 	if(istype(P, /obj/item/paper) || istype(P, /obj/item/folder) || istype(P, /obj/item/photo) || istype(P, /obj/item/documents))
 		if(!user.transferItemToLoc(P, src))
 			return
-		to_chat(user, "<span class='notice'>I put [P] in [src].</span>")
+		to_chat(user, span_notice("I put [P] in [src]."))
 		icon_state = "[initial(icon_state)]-open"
 		sleep(5)
 		icon_state = initial(icon_state)
 		updateUsrDialog()
 	else if(P.tool_behaviour == TOOL_WRENCH)
-		to_chat(user, "<span class='notice'>I begin to [anchored ? "unwrench" : "wrench"] [src].</span>")
+		to_chat(user, span_notice("I begin to [anchored ? "unwrench" : "wrench"] [src]."))
 		if(P.use_tool(src, user, 20, volume=50))
-			to_chat(user, "<span class='notice'>I successfully [anchored ? "unwrench" : "wrench"] [src].</span>")
+			to_chat(user, span_notice("I successfully [anchored ? "unwrench" : "wrench"] [src]."))
 			anchored = !anchored
 	else if(user.used_intent.type != INTENT_HARM)
-		to_chat(user, "<span class='warning'>I can't put [P] in [src]!</span>")
+		to_chat(user, span_warning("I can't put [P] in [src]!"))
 	else
 		return ..()
 
@@ -68,7 +68,7 @@
 /obj/structure/filingcabinet/ui_interact(mob/user)
 	. = ..()
 	if(contents.len <= 0)
-		to_chat(user, "<span class='notice'>[src] is empty.</span>")
+		to_chat(user, span_notice("[src] is empty."))
 		return
 
 	var/dat = "<center><table>"
@@ -92,9 +92,9 @@
 			I.forceMove(loc)
 			if(prob(25))
 				step_rand(I)
-			to_chat(user, "<span class='notice'>I pull \a [I] out of [src] at random.</span>")
+			to_chat(user, span_notice("I pull \a [I] out of [src] at random."))
 			return
-	to_chat(user, "<span class='notice'>I find nothing in [src].</span>")
+	to_chat(user, span_notice("I find nothing in [src]."))
 
 /obj/structure/filingcabinet/Topic(href, href_list)
 	if(!usr.canUseTopic(src, BE_CLOSE, ismonkey(usr)))
@@ -219,5 +219,5 @@ GLOBAL_LIST_EMPTY(employmentCabinets)
 		// prevents the devil from just instantly emptying the cabinet, ensuring an easy win.
 		addtimer(VARSET_CALLBACK(src, cooldown, FALSE), 10 SECONDS)
 	else
-		to_chat(user, "<span class='warning'>[src] is jammed, give it a few seconds.</span>")
+		to_chat(user, span_warning("[src] is jammed, give it a few seconds."))
 	..()

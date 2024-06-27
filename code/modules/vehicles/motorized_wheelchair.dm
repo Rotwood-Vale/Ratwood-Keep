@@ -38,17 +38,17 @@
 		if(!canmove)
 			return FALSE
 		if(!power_cell)
-			to_chat(user, "<span class='warning'>There seems to be no cell installed in [src].</span>")
+			to_chat(user, span_warning("There seems to be no cell installed in [src]."))
 			canmove = FALSE
 			addtimer(VARSET_CALLBACK(src, canmove, TRUE), 20)
 			return FALSE
 		if(power_cell.charge < power_usage / max(power_efficiency, 1))
-			to_chat(user, "<span class='warning'>The display on [src] blinks 'Out of Power'.</span>")
+			to_chat(user, span_warning("The display on [src] blinks 'Out of Power'."))
 			canmove = FALSE
 			addtimer(VARSET_CALLBACK(src, canmove, TRUE), 20)
 			return FALSE
 		if(user.get_num_arms() < arms_required)
-			to_chat(user, "<span class='warning'>I don't have enough arms to operate the motor controller!</span>")
+			to_chat(user, span_warning("I don't have enough arms to operate the motor controller!"))
 			canmove = FALSE
 			addtimer(VARSET_CALLBACK(src, canmove, TRUE), 20)
 			return FALSE
@@ -71,7 +71,7 @@
 		power_cell.update_icon()
 		user.put_in_hands(power_cell)
 		power_cell = null
-		to_chat(user, "<span class='notice'>I remove the power cell from [src].</span>")
+		to_chat(user, span_notice("I remove the power cell from [src]."))
 		return
 	return ..()
 
@@ -79,16 +79,16 @@
 	if(I.tool_behaviour == TOOL_SCREWDRIVER)
 		I.play_tool_sound(src)
 		panel_open = !panel_open
-		user.visible_message("<span class='notice'>[user] [panel_open ? "opens" : "closes"] the maintenance panel on [src].</span>", "<span class='notice'>I [panel_open ? "open" : "close"] the maintenance panel.</span>")
+		user.visible_message(span_notice("[user] [panel_open ? "opens" : "closes"] the maintenance panel on [src]."), span_notice("I [panel_open ? "open" : "close"] the maintenance panel."))
 		return
 	if(panel_open)
 		if(istype(I, /obj/item/stock_parts/cell))
 			if(power_cell)
-				to_chat(user, "<span class='warning'>There is a power cell already installed.</span>")
+				to_chat(user, span_warning("There is a power cell already installed."))
 			else
 				I.forceMove(src)
 				power_cell = I
-				to_chat(user, "<span class='notice'>I install the [I].</span>")
+				to_chat(user, span_notice("I install the [I]."))
 			refresh_parts()
 			return
 		if(istype(I, /obj/item/stock_parts))
@@ -103,16 +103,16 @@
 					if(B.get_part_rating() > A.get_part_rating())
 						B.forceMove(src)
 						user.put_in_hands(A)
-						user.visible_message("<span class='notice'>[user] replaces [A] with [B] in [src].</span>", "<span class='notice'>I replace [A] with [B].</span>")
+						user.visible_message(span_notice("[user] replaces [A] with [B] in [src]."), span_notice("I replace [A] with [B]."))
 						break
 			refresh_parts()
 			return
 	return ..()
 
 /obj/vehicle/ridden/wheelchair/motorized/wrench_act(mob/living/user, obj/item/I)
-	to_chat(user, "<span class='notice'>I begin to detach the wheels...</span>")
+	to_chat(user, span_notice("I begin to detach the wheels..."))
 	if(I.use_tool(src, user, 40, volume=50))
-		to_chat(user, "<span class='notice'>I detach the wheels and deconstruct the chair.</span>")
+		to_chat(user, span_notice("I detach the wheels and deconstruct the chair."))
 		new /obj/item/stack/rods(drop_location(), 8)
 		new /obj/item/stack/sheet/metal(drop_location(), 10)
 		var/turf/T = get_turf(src)
@@ -140,7 +140,7 @@
 	// Here is the shitty emag functionality.
 	if(obj_flags & EMAGGED && (istype(M, /turf/closed) || isliving(M)))
 		explosion(src, -1, 1, 3, 2, 0)
-		visible_message("<span class='boldwarning'>[src] explodes!!</span>")
+		visible_message(span_boldwarning("[src] explodes!!"))
 		return
 	// If the speed is higher than delay_multiplier throw the person on the wheelchair away
 	if(M.density && speed > delay_multiplier && has_buckled_mobs())
@@ -156,13 +156,13 @@
 			D.throw_at(throw_target, 2, 3)
 			D.Knockdown(80)
 			D.adjustStaminaLoss(35)
-			visible_message("<span class='danger'>[src] crashes into [M], sending [H] and [D] flying!</span>")
+			visible_message(span_danger("[src] crashes into [M], sending [H] and [D] flying!"))
 		else
-			visible_message("<span class='danger'>[src] crashes into [M], sending [H] flying!</span>")
+			visible_message(span_danger("[src] crashes into [M], sending [H] flying!"))
 		playsound(src, 'sound/blank.ogg', 50, 1)
 
 /obj/vehicle/ridden/wheelchair/motorized/emag_act(mob/user)
 	if((obj_flags & EMAGGED) || !panel_open)
 		return
-	to_chat(user, "<span class='warning'>A bomb appears in [src], what the fuck?</span>")
+	to_chat(user, span_warning("A bomb appears in [src], what the fuck?"))
 	obj_flags |= EMAGGED

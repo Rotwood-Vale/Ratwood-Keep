@@ -2,8 +2,8 @@
 	name = "Antenna"
 	desc = ""
 	quality = POSITIVE
-	text_gain_indication = "<span class='notice'>I feel an antenna sprout from my forehead.</span>"
-	text_lose_indication = "<span class='notice'>My antenna shrinks back down.</span>"
+	text_gain_indication = span_notice("I feel an antenna sprout from my forehead.")
+	text_lose_indication = span_notice("My antenna shrinks back down.")
 	instability = 5
 	difficulty = 8
 	var/obj/item/implant/radio/antenna/linked_radio
@@ -42,8 +42,8 @@
 	name = "Mind Reader"
 	desc = ""
 	quality = POSITIVE
-	text_gain_indication = "<span class='notice'>I hear distant voices at the corners of my mind.</span>"
-	text_lose_indication = "<span class='notice'>The distant voices fade.</span>"
+	text_gain_indication = span_notice("I hear distant voices at the corners of my mind.")
+	text_lose_indication = span_notice("The distant voices fade.")
 	power = /obj/effect/proc_holder/spell/targeted/mindread
 	instability = 40
 	difficulty = 8
@@ -60,15 +60,15 @@
 /obj/effect/proc_holder/spell/targeted/mindread/cast(list/targets, mob/living/carbon/human/user = usr)
 	for(var/mob/living/M in targets)
 		if(usr.anti_magic_check(FALSE, FALSE, TRUE, 0) || M.anti_magic_check(FALSE, FALSE, TRUE, 0))
-			to_chat(usr, "<span class='warning'>As you reach out with my mind, you're suddenly stopped by a vision of a massive tinfoil wall that streches beyond visible range. It seems you've been foiled.</span>")
+			to_chat(usr, span_warning("As you reach out with my mind, you're suddenly stopped by a vision of a massive tinfoil wall that streches beyond visible range. It seems you've been foiled."))
 			return
 		if(M.stat == DEAD)
-			to_chat(user, "<span class='boldnotice'>[M] is dead!</span>")
+			to_chat(user, span_boldnotice("[M] is dead!"))
 			return
 		if(M.mind)
-			to_chat(user, "<span class='boldnotice'>I plunge into [M]'s mind...</span>")
+			to_chat(user, span_boldnotice("I plunge into [M]'s mind..."))
 			if(prob(20))
-				to_chat(M, "<span class='danger'>I feel something foreign enter my mind.</span>")//chance to alert the read-ee
+				to_chat(M, span_danger("I feel something foreign enter my mind."))//chance to alert the read-ee
 			var/list/recent_speech = list()
 			var/list/say_log = list()
 			var/log_source = M.logging
@@ -86,17 +86,17 @@
 					if(prob(50))
 						recent_speech[spoken_memory] = say_log[spoken_memory]
 			if(recent_speech.len)
-				to_chat(user, "<span class='boldnotice'>I catch some drifting memories of their past conversations...</span>")
+				to_chat(user, span_boldnotice("I catch some drifting memories of their past conversations..."))
 				for(var/spoken_memory in recent_speech)
-					to_chat(user, "<span class='notice'>[recent_speech[spoken_memory]]</span>")
+					to_chat(user, span_notice("[recent_speech[spoken_memory]]"))
 			if(iscarbon(M))
 				var/mob/living/carbon/human/H = M
-				to_chat(user, "<span class='boldnotice'>I find that their intent is to [H.used_intent]...</span>")
+				to_chat(user, span_boldnotice("I find that their intent is to [H.used_intent]..."))
 				var/datum/dna/the_dna = H.has_dna()
 				if(the_dna)
-					to_chat(user, "<span class='boldnotice'>I uncover that [H.p_their()] true identity is [the_dna.real_name].</span>")
+					to_chat(user, span_boldnotice("I uncover that [H.p_their()] true identity is [the_dna.real_name]."))
 		else
-			to_chat(user, "<span class='warning'>I can't find a mind to read inside of [M]!</span>")
+			to_chat(user, span_warning("I can't find a mind to read inside of [M]!"))
 
 /datum/mutation/human/mindreader/New(class_ = MUT_OTHER, timer, datum/mutation/human/copymut)
 	..()

@@ -18,3 +18,11 @@
 	desc = ""
 	color = "#116611"
 	tail_type = "Smooth"
+	accessory_type =  /datum/sprite_accessory/tail/lizard/smooth
+
+/obj/item/organ/tail/kobold
+	name = "kobold tail"
+	desc = ""
+	color = "#116611"
+	tail_type = "Smooth"
+	accessory_type =  /datum/sprite_accessory/tail/lizard/kobold

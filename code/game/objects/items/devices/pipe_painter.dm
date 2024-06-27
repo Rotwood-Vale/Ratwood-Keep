@@ -20,11 +20,11 @@
 	var/obj/machinery/atmospherics/pipe/P = A
 	if(P.paint(GLOB.pipe_paint_colors[paint_color]))
 		playsound(src, 'sound/blank.ogg', 50, TRUE)
-		user.visible_message("<span class='notice'>[user] paints \the [P] [paint_color].</span>","<span class='notice'>I paint \the [P] [paint_color].</span>")
+		user.visible_message(span_notice("[user] paints \the [P] [paint_color]."),span_notice("I paint \the [P] [paint_color]."))
 
 /obj/item/pipe_painter/attack_self(mob/user)
 	paint_color = input("Which colour do you want to use?","Pipe painter") in GLOB.pipe_paint_colors
 
 /obj/item/pipe_painter/examine(mob/user)
 	. = ..()
-	. += "<span class='notice'>It is set to [paint_color].</span>"
+	. += span_notice("It is set to [paint_color].")

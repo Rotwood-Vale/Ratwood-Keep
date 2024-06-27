@@ -143,7 +143,7 @@ GLOBAL_LIST_INIT(meteorsC, list(/obj/effect/meteor/dust)) //for space dust event
 	for(var/atom/A in T)
 		if(A != src)
 			if(isliving(A))
-				A.visible_message("<span class='warning'>[src] slams into [A].</span>", "<span class='danger'>[src] slams into you!.</span>")
+				A.visible_message(span_warning("[src] slams into [A]."), span_danger("[src] slams into you!."))
 			A.ex_act(hitpwr)
 
 	//then, ram the turf if it still exists
@@ -344,26 +344,5 @@ GLOBAL_LIST_INIT(meteorsC, list(/obj/effect/meteor/dust)) //for space dust event
 	..()
 	if(prob(20))
 		explosion(src.loc,2,4,6,8)
-
-//////////////////////////
-//Spookoween meteors
-/////////////////////////
-
-GLOBAL_LIST_INIT(meteorsSPOOKY, list(/obj/effect/meteor/pumpkin))
-
-/obj/effect/meteor/pumpkin
-	name = "PUMPKING"
-	desc = ""
-	icon = 'icons/obj/meteor_spooky.dmi'
-	icon_state = "pumpkin"
-	hits = 10
-	heavy = 1
-	dropamt = 1
-	meteordrop = list(/obj/item/clothing/head/hardhat/pumpkinhead, /obj/item/reagent_containers/food/snacks/grown/pumpkin)
-	threat = 100
-
-/obj/effect/meteor/pumpkin/Initialize()
-	. = ..()
-	meteorsound = pick('sound/blank.ogg')
 //////////////////////////
 #undef DEFAULT_METEOR_LIFETIME

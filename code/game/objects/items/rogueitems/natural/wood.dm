@@ -1,6 +1,5 @@
 /obj/item/grown/log/tree
 	icon = 'icons/roguetown/items/natural.dmi'
-	seed = null
 	name = "log"
 	desc = "A big tree log. It's very heavy, and huge."
 	icon_state = "log"
@@ -39,7 +38,6 @@
 	smeltresult = /obj/item/rogueore/coal
 
 /obj/item/grown/log/tree/stick
-	seed = null
 	name = "stick"
 	icon_state = "stick1"
 	desc = "A dry stick from a tree branch."
@@ -71,7 +69,7 @@
 	..()
 
 /obj/item/grown/log/tree/stick/attack_self(mob/living/user)
-	user.visible_message("<span class='warning'>[user] snaps [src].</span>")
+	user.visible_message(span_warning("[user] snaps [src]."))
 	playsound(user,'sound/items/seedextract.ogg', 100, FALSE)
 	qdel(src)
 
@@ -81,14 +79,14 @@
 	if(user.used_intent?.blade_class == BCLASS_CUT)
 		playsound(get_turf(src.loc), 'sound/items/wood_sharpen.ogg', 100)
 		if(do_after(user, 20))
-			user.visible_message("<span class='notice'>[user] sharpens [src].</span>")
+			user.visible_message(span_notice("[user] sharpens [src]."))
 			var/obj/item/grown/log/tree/stake/S = new /obj/item/grown/log/tree/stake(get_turf(src.loc))
 			if(user.is_holding(src))
 				user.dropItemToGround(src)
 				user.put_in_hands(S)
 			qdel(src)
 		else
-			user.visible_message("<span class='warning'>[user] sharpens [src].</span>")
+			user.visible_message(span_warning("[user] sharpens [src]."))
 		return
 	if(istype(I, /obj/item/grown/log/tree/stick))
 		var/obj/item/natural/bundle/stick/F = new(src.loc)
@@ -123,7 +121,6 @@
 	slot_flags = ITEM_SLOT_MOUTH|ITEM_SLOT_HIP
 
 /obj/item/grown/log/tree/lumber
-	seed = null
 	name = "lumber"
 	icon_state = "lumber"
 	desc = "This is some lumber." // i haven't seen this ingame yet

@@ -54,7 +54,7 @@
 		return
 	return TRUE
 
-/mob/living/carbon/hitby(atom/movable/AM, skipcatch, hitpush = TRUE, blocked = FALSE, datum/thrownthing/throwingdatum)
+/mob/living/carbon/hitby(atom/movable/AM, skipcatch, hitpush = TRUE, blocked = FALSE, datum/thrownthing/throwingdatum, d_type = "blunt")
 	if(!skipcatch)	//ugly, but easy
 		if(can_catch_item())
 			if(istype(AM, /obj/item))
@@ -62,8 +62,8 @@
 				if(isturf(I.loc))
 					I.attack_hand(src)
 					if(get_active_held_item() == I) //if our attack_hand() picks up the item...
-						visible_message("<span class='warning'>[src] catches [I]!</span>", \
-										"<span class='danger'>I catch [I] in mid-air!</span>")
+						visible_message(span_warning("[src] catches [I]!"), \
+										span_danger("I catch [I] in mid-air!"))
 						throw_mode_off()
 						return 1
 	..()
@@ -100,13 +100,13 @@
 		used_limb = parse_zone(I.sublimb_grabbed)
 
 	if(used_limb)
-		target.visible_message("<span class='warning'>[src] grabs [target]'s [used_limb].</span>", \
-						"<span class='warning'>[src] grabs my [used_limb].</span>", "<span class='hear'>I hear shuffling.</span>", null, src)
-		to_chat(src, "<span class='info'>I grab [target]'s [used_limb].</span>")
+		target.visible_message(span_warning("[src] grabs [target]'s [used_limb]."), \
+						span_warning("[src] grabs my [used_limb]."), span_hear("I hear shuffling."), null, src)
+		to_chat(src, span_info("I grab [target]'s [used_limb]."))
 	else
-		target.visible_message("<span class='warning'>[src] grabs [target].</span>", \
-						"<span class='warning'>[src] grabs me.</span>", "<span class='hear'>I hear shuffling.</span>", null, src)
-		to_chat(src, "<span class='info'>I grab [target].</span>")
+		target.visible_message(span_warning("[src] grabs [target]."), \
+						span_warning("[src] grabs me."), span_hear("I hear shuffling."), null, src)
+		to_chat(src, span_info("I grab [target]."))
 
 /mob/living/carbon/send_grabbed_message(mob/living/carbon/user)
 	var/used_limb = "chest"
@@ -119,13 +119,13 @@
 		used_limb = parse_zone(I.sublimb_grabbed)
 
 	if(HAS_TRAIT(user, TRAIT_PACIFISM))
-		visible_message("<span class='danger'>[user] firmly grips [src]'s [used_limb]!</span>",
-						"<span class='danger'>[user] firmly grips my [used_limb]!</span>", "<span class='hear'>I hear aggressive shuffling!</span>", null, user)
-		to_chat(user, "<span class='danger'>I firmly grip [src]'s [used_limb]!</span>")
+		visible_message(span_danger("[user] firmly grips [src]'s [used_limb]!"),
+						span_danger("[user] firmly grips my [used_limb]!"), span_hear("I hear aggressive shuffling!"), null, user)
+		to_chat(user, span_danger("I firmly grip [src]'s [used_limb]!"))
 	else
-		visible_message("<span class='danger'>[user] tightens [user.p_their()] grip on [src]'s [used_limb]!</span>", \
-						"<span class='danger'>[user] tightens [user.p_their()] grip on my [used_limb]!</span>", "<span class='hear'>I hear aggressive shuffling!</span>", null, user)
-		to_chat(user, "<span class='danger'>I tighten my grip on [src]'s [used_limb]!</span>")
+		visible_message(span_danger("[user] tightens [user.p_their()] grip on [src]'s [used_limb]!"), \
+						span_danger("[user] tightens [user.p_their()] grip on my [used_limb]!"), span_hear("I hear aggressive shuffling!"), null, user)
+		to_chat(user, span_danger("I tighten my grip on [src]'s [used_limb]!"))
 
 /mob/living/carbon/proc/precise_attack_check(zone, obj/item/bodypart/affecting) //for striking eyes, throat, etc
 	if(zone && affecting)
@@ -147,20 +147,6 @@
 		else
 			used_limb = affecting.body_zone
 	return used_limb
-
-/mob/living/carbon/proc/parse_inhand(zone, mob/living/target)
-	if (zone == BODY_ZONE_R_INHAND)
-		var/obj/item/I = target.get_item_for_held_index(2)
-		if(I.can_parry)
-			return I.name
-		else
-			return "right hand"
-	else if (zone == BODY_ZONE_L_INHAND)
-		var/obj/item/I = target.get_item_for_held_index(1)
-		if(I.can_parry)
-			return I.name
-		else
-			return "left hand"
 
 /mob/proc/check_arm_grabbed()
 	return
@@ -203,7 +189,7 @@
 		return
 	affecting = get_bodypart(check_zone(useder)) //precise attacks, on yourself or someone you are grabbing
 	if(!affecting) //missing limb
-		to_chat(user, "<span class='warning'>Unfortunately, there's nothing there.</span>")
+		to_chat(user, span_warning("Unfortunately, there's nothing there."))
 		return FALSE
 	SEND_SIGNAL(I, COMSIG_ITEM_ATTACK_ZONE, src, user, affecting)
 	I.funny_attack_effects(src, user)
@@ -250,13 +236,12 @@
 
 //ATTACK HAND IGNORING PARENT RETURN VALUE
 /mob/living/carbon/attack_hand(mob/living/carbon/human/user)
-
 	if(!lying_attack_check(user))
-		return 0
+		return FALSE
 
 	if(!get_bodypart(check_zone(user.zone_selected)))
-		to_chat(user, "<span class='warning'>[src] is missing that.</span>")
-		return 0
+		to_chat(user, span_warning("[src] is missing that."))
+		return FALSE
 
 	for(var/thing in diseases)
 		var/datum/disease/D = thing
@@ -267,17 +252,37 @@
 		var/datum/disease/D = thing
 		if(D.spread_flags & DISEASE_SPREAD_CONTACT_SKIN)
 			ContactContractDisease(D)
-
+	
+	if(!user.cmode)
+		var/try_to_fail = !istype(user.rmb_intent, /datum/rmb_intent/weak)
+		var/list/possible_steps = list()
+		for(var/datum/surgery_step/surgery_step as anything in GLOB.surgery_steps)
+			if(!surgery_step.name)
+				continue
+			if(surgery_step.can_do_step(user, src, user.zone_selected, null, user.used_intent))
+				possible_steps[surgery_step.name] = surgery_step
+		var/possible_len = length(possible_steps)
+		if(possible_len)
+			var/datum/surgery_step/done_step
+			if(possible_len > 1)
+				var/input = input(user, "Which surgery step do you want to perform?", "PESTRA", ) as null|anything in possible_steps
+				if(input)
+					done_step = possible_steps[input]
+			else
+				done_step = possible_steps[possible_steps[1]]
+			if(done_step?.try_op(user, src, user.zone_selected, null, user.used_intent, try_to_fail))
+				return TRUE
+	/*
 	for(var/datum/surgery/S in surgeries)
 		if(!(mobility_flags & MOBILITY_STAND) || !S.lying_required)
 			if(user.used_intent.type == INTENT_HELP || user.used_intent.type == INTENT_DISARM)
 				if(S.next_step(user, user.used_intent))
-					return 1
-	return 0
+					return TRUE
+	*/
+	return FALSE
 
 
 /mob/living/carbon/attack_paw(mob/living/carbon/monkey/M)
-
 	if(can_inject(M, TRUE))
 		for(var/thing in diseases)
 			var/datum/disease/D = thing
@@ -309,8 +314,8 @@
 				if(M.powerlevel < 0)
 					M.powerlevel = 0
 
-				visible_message("<span class='danger'>The [M.name] has shocked [src]!</span>", \
-				"<span class='danger'>The [M.name] has shocked you!</span>")
+				visible_message(span_danger("The [M.name] has shocked [src]!"), \
+				span_danger("The [M.name] has shocked you!"))
 
 				do_sparks(5, TRUE, src)
 				var/power = M.powerlevel + rand(0,3)
@@ -349,7 +354,7 @@
 	if (stat == DEAD)
 		return
 	else
-		show_message("<span class='danger'>The blob attacks!</span>")
+		show_message(span_danger("The blob attacks!"))
 		adjustBruteLoss(10)
 
 /mob/living/carbon/emp_act(severity)
@@ -384,7 +389,7 @@
 	//Stun
 	var/should_stun = (!(flags & SHOCK_TESLA) || siemens_coeff > 0.5) && !(flags & SHOCK_NOSTUN)
 	if(!HAS_TRAIT(src, TRAIT_NOPAIN))
-		if(should_stun)
+		if(should_stun && !HAS_TRAIT(src, TRAIT_NOPAINSTUN))
 			Paralyze(30)
 		//Jitter and other fluff.
 		jitteriness += 1000
@@ -397,22 +402,22 @@
 ///Called slightly after electrocute act to reduce jittering and apply a secondary stun.
 /mob/living/carbon/proc/secondary_shock(should_stun)
 	jitteriness = max(jitteriness - 990, 10)
-	if(should_stun)
+	if(should_stun && !HAS_TRAIT(src, TRAIT_NOPAINSTUN))
 		Paralyze(60)
 
 /mob/living/carbon/proc/help_shake_act(mob/living/carbon/M)
 	if(on_fire)
-		to_chat(M, "<span class='warning'>I can't put [p_them()] out with just my bare hands!</span>")
+		to_chat(M, span_warning("I can't put [p_them()] out with just my bare hands!"))
 		return
 
 //	if(!(mobility_flags & MOBILITY_STAND))
 //		if(buckled)
-//			to_chat(M, "<span class='warning'>I need to unbuckle [src] first to do that!</span>")
+//			to_chat(M, span_warning("I need to unbuckle [src] first to do that!"))
 //			return
-//		M.visible_message("<span class='notice'>[M] shakes [src] trying to get [p_them()] up!</span>", "<span class='notice'>I shake [src] trying to get [p_them()] up!</span>")					
+//		M.visible_message(span_notice("[M] shakes [src] trying to get [p_them()] up!"), span_notice("I shake [src] trying to get [p_them()] up!"))					
 //	else
-	M.visible_message("<span class='notice'>[M] shakes [src].</span>", \
-				"<span class='notice'>I shake [src] to get [p_their()] attention.</span>")
+	M.visible_message(span_notice("[M] shakes [src]."), \
+				span_notice("I shake [src] to get [p_their()] attention."))
 	shake_camera(src, 2, 1)
 	SEND_SIGNAL(src, COMSIG_ADD_MOOD_EVENT, "hug", /datum/mood_event/hug)
 	if(HAS_TRAIT(M, TRAIT_FRIENDLY))
@@ -447,16 +452,16 @@
 			return
 
 		if (damage == 1)
-			to_chat(src, "<span class='warning'>My eyes sting a little.</span>")
+			to_chat(src, span_warning("My eyes sting a little."))
 			if(prob(40))
 				eyes.applyOrganDamage(1)
 
 		else if (damage == 2)
-			to_chat(src, "<span class='warning'>My eyes burn.</span>")
+			to_chat(src, span_warning("My eyes burn."))
 			eyes.applyOrganDamage(rand(2, 4))
 
 		else if( damage >= 3)
-			to_chat(src, "<span class='warning'>My eyes itch and burn severely!</span>")
+			to_chat(src, span_warning("My eyes itch and burn severely!"))
 			eyes.applyOrganDamage(rand(12, 16))
 
 		if(eyes.damage > 10)
@@ -466,22 +471,22 @@
 			if(eyes.damage > 20)
 				if(prob(eyes.damage - 20))
 					if(!HAS_TRAIT(src, TRAIT_NEARSIGHT))
-						to_chat(src, "<span class='warning'>My eyes start to burn badly!</span>")
+						to_chat(src, span_warning("My eyes start to burn badly!"))
 					become_nearsighted(EYE_DAMAGE)
 
 				else if(prob(eyes.damage - 25))
 					if(!HAS_TRAIT(src, TRAIT_BLIND))
-						to_chat(src, "<span class='warning'>I can't see anything!</span>")
+						to_chat(src, span_warning("I can't see anything!"))
 					eyes.applyOrganDamage(eyes.maxHealth)
 
 			else
-				to_chat(src, "<span class='warning'>My eyes are really starting to hurt. This can't be good for you!</span>")
+				to_chat(src, span_warning("My eyes are really starting to hurt. This can't be good for you!"))
 		if(has_bane(BANE_LIGHT))
 			mind.disrupt_spells(-500)
 		return 1
 	else if(damage == 0) // just enough protection
 		if(prob(20))
-			to_chat(src, "<span class='notice'>Something bright flashes in the corner of my vision!</span>")
+			to_chat(src, span_notice("Something bright flashes in the corner of my vision!"))
 		if(has_bane(BANE_LIGHT))
 			mind.disrupt_spells(0)
 
@@ -504,13 +509,13 @@
 			adjustEarDamage(ear_damage,deaf)
 
 			if(ears.damage >= 15)
-				to_chat(src, "<span class='warning'>My ears start to ring badly!</span>")
+				to_chat(src, span_warning("My ears start to ring badly!"))
 				if(prob(ears.damage - 5))
-					to_chat(src, "<span class='danger'>I can't hear anything!</span>")
+					to_chat(src, span_danger("I can't hear anything!"))
 					ears.damage = min(ears.damage, ears.maxHealth)
 					// you need earmuffs, inacusiate, or replacement
 			else if(ears.damage >= 5)
-				to_chat(src, "<span class='warning'>My ears start to ring!</span>")
+				to_chat(src, span_warning("My ears start to ring!"))
 			SEND_SOUND(src, sound('sound/blank.ogg',0,1,0,250))
 		return effect_amount //how soundbanged we are
 

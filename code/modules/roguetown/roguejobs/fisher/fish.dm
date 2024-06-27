@@ -1,6 +1,6 @@
 /obj/item/reagent_containers/food/snacks/fish
 	name = "fish"
-	desc = ""
+	desc = "Fresh blood stains its silvery skin. Silver-coloured scales shimmering softly.."
 	icon_state = "carp"
 	icon = 'icons/roguetown/misc/fish.dmi'
 	verb_say = "glubs"
@@ -14,26 +14,14 @@
 	list_reagents = list(/datum/reagent/consumable/nutriment = 3)
 	slice_path = /obj/item/reagent_containers/food/snacks/rogue/meat/mince/fish
 	eat_effect = /datum/status_effect/debuff/uncookedfood
+	fishloot = list(/obj/item/reagent_containers/food/snacks/fish/carp = 2)
+	fishingmods //add difficulty stuff later
 
 /obj/item/reagent_containers/food/snacks/fish/dead
 	dead = TRUE
 
 /obj/item/reagent_containers/food/snacks/fish/Initialize()
 	. = ..()
-	var/rarity = pickweight(list("gold" = 1, "ultra" =40, "rare"=50, "com"=900))
-	icon_state = "[initial(icon_state)][rarity]"
-	switch(rarity)
-		if("gold")
-			sellprice = sellprice * 10
-			name = "legendary [initial(name)]"
-		if("ultra")
-			sellprice = sellprice * 4
-			name = "ultra-rare [initial(name)]"
-		if("rare")
-			sellprice = sellprice * 2
-			name = "rare [initial(name)]"
-		if("com")
-			name = "common [initial(name)]"
 	if(!dead)
 		START_PROCESSING(SSobj, src)
 
@@ -48,7 +36,7 @@
 	else
 		if(isturf(user.loc))
 			src.forceMove(user.loc)
-		to_chat(user, "<span class='warning'>Too slippery!</span>")
+		to_chat(user, span_warning("Too slippery!"))
 		return
 
 /obj/item/reagent_containers/food/snacks/fish/process()
@@ -73,12 +61,14 @@
 
 /obj/item/reagent_containers/food/snacks/fish/carp
 	name = "carp"
+	desc = "A majestic scaled fish bearing untold tales."
 	icon_state = "carp"
 	fried_type = /obj/item/reagent_containers/food/snacks/rogue/fryfish/carp
 	cooked_type = /obj/item/reagent_containers/food/snacks/rogue/fryfish/carp
 
 /obj/item/reagent_containers/food/snacks/fish/clownfish
 	name = "clownfish"
+	desc = "This fish brings vibrant hues to the dark world of Rockhill."
 	icon_state = "clownfish"
 	sellprice = 40
 	fried_type = /obj/item/reagent_containers/food/snacks/rogue/fryfish/clownfish
@@ -86,6 +76,7 @@
 
 /obj/item/reagent_containers/food/snacks/fish/angler
 	name = "anglerfish"
+	desc = "A menacing abyssal predator."
 	icon_state = "angler"
 	sellprice = 15
 	fried_type = /obj/item/reagent_containers/food/snacks/rogue/fryfish/angler
@@ -93,6 +84,7 @@
 
 /obj/item/reagent_containers/food/snacks/fish/eel
 	name = "eel"
+	desc = "A sinuous eel that slithers through the dark waters."
 	icon_state = "eel"
 	sellprice = 5
 	fried_type = /obj/item/reagent_containers/food/snacks/rogue/fryfish/eel
@@ -104,7 +96,7 @@
 	list_reagents = list(/datum/reagent/consumable/nutriment = 10)
 	tastes = list("fish" = 1)
 	name = "cooked fish"
-	desc = ""
+	desc = "A charred fish, crisped to perfection."
 	icon_state = "carpcooked"
 	foodtype = MEAT
 	warming = 5 MINUTES
@@ -121,3 +113,15 @@
 
 /obj/item/reagent_containers/food/snacks/rogue/fryfish/eel
 	icon_state = "eelcooked"
+
+/obj/item/reagent_containers/food/snacks/rogue/fryfish/carp/rare
+	eat_effect = list(/datum/status_effect/buff/foodbuff, /datum/status_effect/buff/blessed)
+
+/obj/item/reagent_containers/food/snacks/rogue/fryfish/clownfish/rare
+	eat_effect = list(/datum/status_effect/buff/foodbuff, /datum/status_effect/buff/blessed)
+
+/obj/item/reagent_containers/food/snacks/rogue/fryfish/angler/rare
+	eat_effect = list(/datum/status_effect/buff/foodbuff, /datum/status_effect/buff/blessed)
+
+/obj/item/reagent_containers/food/snacks/rogue/fryfish/eel/rare
+	eat_effect = list(/datum/status_effect/buff/foodbuff, /datum/status_effect/buff/blessed)

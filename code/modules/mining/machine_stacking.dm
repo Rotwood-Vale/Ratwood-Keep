@@ -20,7 +20,7 @@
 	. = ..()
 
 	if(!machine)
-		to_chat(user, "<span class='notice'>[src] is not linked to a machine!</span>")
+		to_chat(user, span_notice("[src] is not linked to a machine!"))
 		return
 
 	var/obj/item/stack/sheet/s
@@ -42,7 +42,7 @@
 		return
 	var/obj/item/multitool/M = I
 	M.buffer = src
-	to_chat(user, "<span class='notice'>I store linkage information in [I]'s buffer.</span>")
+	to_chat(user, span_notice("I store linkage information in [I]'s buffer."))
 	return TRUE
 
 /obj/machinery/mineral/stacking_unit_console/Topic(href, href_list)
@@ -101,7 +101,7 @@
 		if(istype(M.buffer, /obj/machinery/mineral/stacking_unit_console))
 			CONSOLE = M.buffer
 			CONSOLE.machine = src
-			to_chat(user, "<span class='notice'>I link [src] to the console in [M]'s buffer.</span>")
+			to_chat(user, span_notice("I link [src] to the console in [M]'s buffer."))
 			return TRUE
 
 /obj/machinery/mineral/stacking_machine/proc/process_sheet(obj/item/stack/sheet/inp)

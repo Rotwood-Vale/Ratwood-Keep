@@ -271,15 +271,14 @@ client/
 		if(H.wear_mask)
 			if(H.wear_mask.block2add)
 				fovangle |= H.wear_mask.block2add
-		var/obj/item/organ/eyes/eyes = H.getorganslot(ORGAN_SLOT_EYES)
-		if(eyes)
-			if(eyes.left_poked)
-				fovangle |= FOV_LEFT
-			if(eyes.right_poked)
-				fovangle |= FOV_RIGHT
 		if(H.STAPER < 5)
 			fovangle |= FOV_LEFT
 			fovangle |= FOV_RIGHT
+		else
+			if(HAS_TRAIT(src, TRAIT_CYCLOPS_LEFT))
+				fovangle |= FOV_LEFT
+			if(HAS_TRAIT(src, TRAIT_CYCLOPS_RIGHT))
+				fovangle |= FOV_RIGHT
 
 	if(!hud_used)
 		return

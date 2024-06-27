@@ -60,6 +60,6 @@ var/global/feeding_hole_reset_timer
 
 	contents += "</center>"
 
-	var/datum/browser/popup = new(user, "FEEDINGHOLE", "", 370, 220)
+	var/datum/browser/popup = new(user, "FEEDINGHOLE", "", 370, 400)
 	popup.set_content(contents)
 	popup.open()

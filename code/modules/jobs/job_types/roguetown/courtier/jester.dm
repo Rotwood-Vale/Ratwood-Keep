@@ -6,9 +6,12 @@
 	total_positions = 1
 	spawn_positions = 1
 
-	allowed_races = CLOTHED_RACES_TYPES
+	allowed_races = RACES_ALL_KINDS
 
-	tutorial = "The Grenzelhofts were known for their Jesters, wisemen with a tongue just as sharp as their wit. You command a position of a fool, envious of the position your superiors have upon you. Your cheap tricks and illusions of intelligence will only work for so long, and someday youll find yourself at the end of something sharper than you."
+	tutorial = "The Grenzelhofts were known for their Jesters, wisemen with a tongue just as sharp as their wit. \
+		You command a position of a fool, envious of the position your superiors have upon you. \
+		Your cheap tricks and illusions of intelligence will only work for so long, \
+		and someday you'll find yourself at the end of something sharper than you."
 
 	allowed_ages = ALL_AGES_LIST
 	spells = list(/obj/effect/proc_holder/spell/self/telljoke,/obj/effect/proc_holder/spell/self/telltragedy)
@@ -43,20 +46,12 @@
 		H.STAINT = rand(1, 20)
 		H.STALUC = rand(1, 20)
 		H.cmode_music = 'sound/music/combat_jester.ogg'
-/*
-		if(H.gender == MALE)
-			if(H.dna?.species)
-				if(iself(H) || ishalfelf(H))
-					H.dna.species.soundpack_m = new /datum/voicepack/male/elf/jester()
-				if(ishumannothern(H))
-					H.dna.species.soundpack_m = new /datum/voicepack/male/jester()
-				if(isdwarf(H))
-					H.dna.species.soundpack_m = new /datum/voicepack/male/dwarf/jester()
-		H.hair_color = "cd65cb"
-		H.facial_hair_color = "cd65cb"
-		H.update_body_parts_head_only()
-*/
-	ADD_TRAIT(H, TRAIT_EMPATH, TRAIT_GENERIC)
+
 	ADD_TRAIT(H, TRAIT_ZJUMP, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_LEAPER, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_NUTCRACKER, TRAIT_GENERIC)
+	if(prob(50))	
+		ADD_TRAIT(H, TRAIT_EMPATH, TRAIT_GENERIC) // Jester :3
+	else	
+		ADD_TRAIT(H, TRAIT_STEELHEARTED, TRAIT_GENERIC) // Joker >:(
+

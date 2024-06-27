@@ -87,7 +87,13 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 /obj/effect/landmark/start/adventurerlate
 	name = "Adventurerlate"
 	icon_state = "arrow"
-	jobspawn_override = list("Adventurer", "Pilgrim", "Skeleton")
+	jobspawn_override = list("Skeleton", "Drifter", "Pilgrim", "Adventurer")
+	delete_after_roundstart = FALSE
+
+/obj/effect/landmark/start/bogguardlate
+	name = "Bogguardlate"
+	icon_state = "arrow"
+	jobspawn_override = list("Bog Master", "Bog Guard")
 	delete_after_roundstart = FALSE
 
 /obj/effect/landmark/start/vagrantlate
@@ -97,9 +103,9 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	delete_after_roundstart = FALSE
 
 /obj/effect/landmark/start/orphanlate
-	name = "Orphanlate"
+	name = "Vagabondlate"
 	icon_state = "arrow"
-	jobspawn_override = list("Orphan")
+	jobspawn_override = list("Vagabond")
 	delete_after_roundstart = FALSE
 
 /obj/effect/landmark/start/desertriderlate
@@ -129,11 +135,19 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/sheriff
+	name = "Town Sheriff"
+	icon_state = "arrow"
+
+/obj/effect/landmark/start/guard_captain
 	name = "Guard Captain"
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/barkeep
 	name = "Barkeep"
+	icon_state = "arrow"
+
+/obj/effect/landmark/start/cook
+	name = "Cook"
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/steward
@@ -208,6 +222,10 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	name = "Acolyte"
 	icon_state = "arrow"
 
+/obj/effect/landmark/start/druid
+	name = "Druid"
+	icon_state = "arrow"
+
 /obj/effect/landmark/start/templar
 	name = "Templar"
 	icon_state = "arrow"
@@ -225,7 +243,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/nightmaiden
-	name = "Bath Wench"
+	name = "Bath Swain"
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/merchant
@@ -289,6 +307,10 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	name = "Mortician"
 	icon_state = "arrow"
 
+/obj/effect/landmark/start/mercenary
+	name = "Mercenary"
+	icon_state = "arrow"
+
 /obj/effect/landmark/start/vagrant
 	name = "Beggar"
 	icon_state = "arrow"
@@ -301,8 +323,16 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	name = "Prince"
 	icon_state = "arrow"
 
-/obj/effect/landmark/start/prisoner
-	name = "Prisoner"
+/obj/effect/landmark/start/prisonerr
+	name = "Prisoner (Rockhill)"
+	icon_state = "arrow"
+
+/obj/effect/landmark/start/prisonerb
+	name = "Prisoner (Bog)"
+	icon_state = "arrow"
+
+/obj/effect/landmark/start/hostage
+	name = "Hostage"
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/jester
@@ -356,7 +386,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/orphan
-	name = "Orphan"
+	name = "Vagabond"
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/sapprentice

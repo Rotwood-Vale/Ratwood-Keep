@@ -134,3 +134,9 @@ GLOBAL_VAR_INIT(cmp_field, "name")
 	if(!GLOB.job_assignment_order)
 		GLOB.job_assignment_order = get_job_assignment_order()
 	return GLOB.job_assignment_order.Find(B.mind?.assigned_role) - GLOB.job_assignment_order.Find(A.mind?.assigned_role)
+
+/proc/cmp_wound_severity_asc(datum/wound/A, datum/wound/B)
+	return A.severity - B.severity
+
+/proc/cmp_wound_severity_dsc(datum/wound/A, datum/wound/B)
+	return B.severity - A.severity

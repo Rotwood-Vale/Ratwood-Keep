@@ -2,12 +2,13 @@
 	name = "Hand of Heartfelt"
 	tutorial = "You serve your lord as the royal hand, taking care of all diplomatic actions in your relm. \
 	maybe one day you will become lord too."
-	allowed_sexes = list("male")
-	allowed_races = list(/datum/species/human/northern)
+	allowed_sexes = list(MALE)
+	allowed_races = RACES_TOLERATED_UP
 	outfit = /datum/outfit/job/roguetown/adventurer/heartfelthand
-	maxchosen = 1
+	maximum_possible_slots = 1
 	pickprob = 100
 	traits_applied = list(TRAIT_HEAVYARMOR, TRAIT_SEEPRICES)
+	category_tags = list(CTAG_ADVENTURER)
 
 /datum/outfit/job/roguetown/adventurer/heartfelthand/pre_equip(mob/living/carbon/human/H)
 	..()

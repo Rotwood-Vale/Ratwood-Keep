@@ -9,7 +9,7 @@
 	idle_power_usage = 2
 	active_power_usage = 4
 	max_integrity = 150
-	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 100, "bomb" = 0, "bio" = 100, "rad" = 100, "fire" = 40, "acid" = 0)
+	armor = list("blunt" = 0, "slash" = 0, "stab" = 0, "bullet" = 0, "laser" = 0, "energy" = 100, "bomb" = 0, "bio" = 100, "rad" = 100, "fire" = 40, "acid" = 0)
 	var/frequency = 0
 	var/atom/target
 	var/id_tag
@@ -115,12 +115,12 @@
 
 /obj/machinery/meter/wrench_act(mob/user, obj/item/I)
 	..()
-	to_chat(user, "<span class='notice'>I begin to unfasten \the [src]...</span>")
+	to_chat(user, span_notice("I begin to unfasten \the [src]..."))
 	if (I.use_tool(src, user, 40, volume=50))
 		user.visible_message(
 			"[user] unfastens \the [src].",
-			"<span class='notice'>I unfasten \the [src].</span>",
-			"<span class='hear'>I hear ratchet.</span>")
+			span_notice("I unfasten \the [src]."),
+			span_hear("I hear ratchet."))
 		deconstruct()
 	return TRUE
 

@@ -49,6 +49,8 @@
 
 	/// The zone this mob is currently targeting
 	var/zone_selected = BODY_ZONE_CHEST
+	/// This is stupid but for the sake of surgery, mobs can target organ slots
+	var/organ_slot_selected = ORGAN_SLOT_HEART
 
 	var/computer_id = null
 	var/list/logging = list()

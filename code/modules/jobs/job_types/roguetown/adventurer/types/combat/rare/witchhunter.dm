@@ -4,12 +4,13 @@
 	tutorial = "Witch Hunters belong to a special sect of the One-God Church that believe all magyk \
 	use is inherently sinful. They are extremely devoted to hunting necromancers and often preach \
 	to magyk users to end their sinful ways."
-	allowed_sexes = list("male")
-	allowed_races = list(/datum/species/human/northern)
+	allowed_sexes = list(MALE)
+	allowed_races = RACES_TOLERATED_UP
 	outfit = /datum/outfit/job/roguetown/adventurer/puritan
-	maxchosen = 2
+	maximum_possible_slots = 2
 	pickprob = 11
 	traits_applied = list(TRAIT_MEDIUMARMOR)
+	category_tags = list(CTAG_ADVENTURER)
 
 /datum/outfit/job/roguetown/adventurer/puritan
 	allowed_patrons = list(/datum/patron/old_god)
@@ -27,7 +28,7 @@
 	gloves = /obj/item/clothing/gloves/roguetown/leather
 	beltl = /obj/item/rogueweapon/sword/rapier
 	backl = /obj/item/storage/backpack/rogue/satchel
-	backpack_contents = list(/obj/item/rogueweapon/huntingknife = 1)
+	backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger/silver = 1)
 
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/combat/swords, rand(4,5), TRUE)

@@ -58,12 +58,12 @@ GLOBAL_LIST_EMPTY(announcement_systems)
 	if(P.tool_behaviour == TOOL_SCREWDRIVER)
 		P.play_tool_sound(src)
 		panel_open = !panel_open
-		to_chat(user, "<span class='notice'>I [panel_open ? "open" : "close"] the maintenance hatch of [src].</span>")
+		to_chat(user, span_notice("I [panel_open ? "open" : "close"] the maintenance hatch of [src]."))
 		update_icon()
 	else if(default_deconstruction_crowbar(P))
 		return
 	else if(P.tool_behaviour == TOOL_MULTITOOL && panel_open && (stat & BROKEN))
-		to_chat(user, "<span class='notice'>I reset [src]'s firmware.</span>")
+		to_chat(user, span_notice("I reset [src]'s firmware."))
 		stat &= ~BROKEN
 		update_icon()
 	else
@@ -100,7 +100,7 @@ GLOBAL_LIST_EMPTY(announcement_systems)
 	if(!user.canUseTopic(src, !issilicon(user)))
 		return
 	if(stat & BROKEN)
-		visible_message("<span class='warning'>[src] buzzes.</span>", "<span class='hear'>I hear a faint buzz.</span>")
+		visible_message(span_warning("[src] buzzes."), span_hear("I hear a faint buzz."))
 		playsound(src.loc, 'sound/blank.ogg', 50, TRUE)
 		return
 
@@ -118,7 +118,7 @@ GLOBAL_LIST_EMPTY(announcement_systems)
 	if(!usr.canUseTopic(src, !issilicon(usr)))
 		return
 	if(stat & BROKEN)
-		visible_message("<span class='warning'>[src] buzzes.</span>", "<span class='hear'>I hear a faint buzz.</span>")
+		visible_message(span_warning("[src] buzzes."), span_hear("I hear a faint buzz."))
 		playsound(src.loc, 'sound/blank.ogg', 50, TRUE)
 		return
 
@@ -152,7 +152,7 @@ GLOBAL_LIST_EMPTY(announcement_systems)
 	if(!user.canUseTopic(src, !issilicon(user)))
 		return
 	if(stat & BROKEN)
-		to_chat(user, "<span class='warning'>[src]'s firmware appears to be malfunctioning!</span>")
+		to_chat(user, span_warning("[src]'s firmware appears to be malfunctioning!"))
 		return
 	interact(user)
 

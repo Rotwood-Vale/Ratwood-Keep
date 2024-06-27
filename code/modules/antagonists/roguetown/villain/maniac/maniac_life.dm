@@ -96,7 +96,7 @@
 	var/image/mob_image = image('icons/roguetown/maniac/dreamer_mobs.dmi', spawning_turf, mob_state, FLOAT_LAYER, get_dir(spawning_turf, dreamer))
 	mob_image.plane = GAME_PLANE_UPPER
 	dreamer.client.images += mob_image
-	to_chat(dreamer, "<span class='userdanger'><span class='big'>[mob_message]</span></span>")
+	to_chat(dreamer, span_userdanger("<span class='big'>[mob_message]</span>"))
 	sleep(5)
 	if(!dreamer?.client)
 		return
@@ -130,7 +130,7 @@
 	if(caught_dreamer)
 		dreamer.Stun(rand(2, 4) SECONDS)
 		var/pain_message = pick("NO!", "THEY GOT ME!", "AGH!")
-		to_chat(dreamer, "<span class='userdanger'>[pain_message]</span>")
+		to_chat(dreamer, span_userdanger("[pain_message]"))
 	sleep(chase_wait)
 	if(!dreamer?.client)
 		return

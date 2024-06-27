@@ -74,11 +74,11 @@
 		if(torchy)
 			if(LR.on && !on)
 				if(torchy.fuel <= 0)
-					to_chat(user, "<span class='warning'>The mounted lantern is burned out.</span>")
+					to_chat(user, span_warning("The mounted lantern is burned out."))
 					return
 				else
 					torchy.spark_act()
-					user.visible_message("<span class='info'>[user] lights [src].</span>")
+					user.visible_message(span_info("[user] lights [src]."))
 					playsound(src.loc, 'sound/items/firelight.ogg', 100)
 					on = TRUE
 					update()
@@ -88,7 +88,7 @@
 			if(!LR.on && on)
 				if(LR.fuel > 0)
 					LR.spark_act()
-					user.visible_message("<span class='info'>[user] lights [LR] in [src].</span>")
+					user.visible_message(span_info("[user] lights [LR] in [src]."))
 					user.update_inv_hands()
 		else
 			if(LR.on)

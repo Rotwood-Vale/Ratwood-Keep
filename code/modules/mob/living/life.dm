@@ -120,8 +120,8 @@
 					mob_timers["painstun"] = world.time
 					Immobilize(10)
 					emote("painscream")
-					visible_message("<span class='warning'>[src] freezes in pain!</span>",
-								"<span class='warning'>I'm frozen in pain!</span>")
+					visible_message(span_warning("[src] freezes in pain!"),
+								span_warning("I'm frozen in pain!"))
 					sleep(10)
 					Stun(110)
 					Knockdown(110)
@@ -167,12 +167,12 @@
 
 		if(prob(embedded.embedding.embedded_pain_chance))
 //			BP.receive_damage(I.w_class*I.embedding.embedded_pain_multiplier)
-			to_chat(src, "<span class='danger'>[embedded] in me hurts!</span>")
+			to_chat(src, span_danger("[embedded] in me hurts!"))
 
 		if(prob(embedded.embedding.embedded_fall_chance))
 //			BP.receive_damage(I.w_class*I.embedding.embedded_fall_pain_multiplier)
 			simple_remove_embedded_object(embedded)
-			to_chat(src,"<span class='danger'>[embedded] falls out of me!</span>")
+			to_chat(src,span_danger("[embedded] falls out of me!"))
 
 //this updates all special effects: knockdown, druggy, stuttering, etc..
 /mob/living/proc/handle_status_effects()

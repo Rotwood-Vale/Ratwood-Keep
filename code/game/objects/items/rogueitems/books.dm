@@ -81,7 +81,7 @@
 
 /obj/item/book/rogue/read(mob/user)
 	if(!open)
-		to_chat(user, "<span class='info'>Open me first.</span>")
+		to_chat(user, span_info("Open me first."))
 		return FALSE
 	. = ..()
 
@@ -114,11 +114,11 @@
 /obj/item/book/rogue/secret/ledger/attackby(obj/item/I, mob/user, params)
 	if(istype(I, /obj/item/paper/scroll/cargo))
 		if(!open)
-			to_chat(user, "<span class='info'>Open me first.</span>")
+			to_chat(user, span_info("Open me first."))
 			return FALSE
 		var/obj/item/paper/scroll/cargo/C = I
 		if(C.orders.len > 4)
-			to_chat(user, "<span class='warning'>Too much order.</span>")
+			to_chat(user, span_warning("Too much order."))
 			return
 		var/picked_cat = input(user, "Categories", "Shipping Ledger") as null|anything in sortList(SSshuttle.supply_cats)
 		if(!picked_cat)
@@ -144,11 +144,11 @@
 		return
 	if(istype(I, /obj/item/paper/scroll))
 		if(!open)
-			to_chat(user, "<span class='info'>Open me first.</span>")
+			to_chat(user, span_info("Open me first."))
 			return FALSE
 		var/obj/item/paper/scroll/P = I
 		if(P.info)
-			to_chat(user, "<span class='warning'>Something is written here already.</span>")
+			to_chat(user, span_warning("Something is written here already."))
 			return
 		var/picked_cat = input(user, "Categories", "Shipping Ledger") as null|anything in sortList(SSshuttle.supply_cats)
 		if(!picked_cat)
@@ -185,7 +185,7 @@
 
 /obj/item/book/rogue/bibble/read(mob/user)
 	if(!open)
-		to_chat(user, "<span class='info'>Open me first.</span>")
+		to_chat(user, span_info("Open me first."))
 		return FALSE
 	if(!user.client || !user.hud_used)
 		return
@@ -204,11 +204,11 @@
 /obj/item/book/rogue/bibble/attack(mob/living/M, mob/user)
 	if(user.mind && user.mind.assigned_role == "Priest")
 		if(!user.can_read(src))
-			to_chat(user, "<span class='warning'>I don't understand these scribbly black lines.</span>")
+			to_chat(user, span_warning("I don't understand these scribbly black lines."))
 			return
 		M.apply_status_effect(/datum/status_effect/buff/blessed)
 		M.add_stress(/datum/stressevent/blessed)
-		user.visible_message("<span class='notice'>[user] blesses [M].</span>")
+		user.visible_message(span_notice("[user] blesses [M]."))
 		playsound(user, 'sound/magic/bless.ogg', 100, FALSE)
 		return
 
@@ -259,7 +259,7 @@
 		return
 	..()
 	user.update_inv_hands()
-	to_chat(user, "<span class='notice'>You feel laughter echo in your head.</span>")
+	to_chat(user, span_notice("You feel laughter echo in your head."))
 
 //player made books
 /obj/item/book/rogue/tales1
@@ -400,7 +400,7 @@
 		player_book_text = text
 		while(!player_book_author_ckey) // doesn't have to be this, but better than defining a bool.
 			player_book_title = dd_limittext(capitalize(sanitize_hear_message(input(in_round_player_mob, "What title do you want to give the book? (max 42 characters)", "Title", "Unknown"))), MAX_NAME_LEN)	
-			player_book_author = "[dd_limittext(sanitize_hear_message(input(in_round_player_mob, "Do you want to preface your author name with an author title? (max 42 characters)", "Author Title", "")), MAX_NAME_LEN)] [in_round_player_mob.real_name]"
+			player_book_author = "[dd_limittext(sanitize_hear_message(input(in_round_player_mob, "What do you want the author text to be? (max 42 characters)", "Author", "")), MAX_NAME_LEN)]"
 			player_book_icon = book_icons[input(in_round_player_mob, "Choose a book style", "Book Style") as anything in book_icons]
 			player_book_author_ckey = in_round_player_mob.ckey
 			if(alert("Confirm?:\nTitle: [player_book_title]\nAuthor: [player_book_author]\nBook Cover: [player_book_icon]", "", "Yes", "No") == "No")
@@ -513,7 +513,7 @@
 		user << browse(dat, "window=reading;size=1000x700;can_close=1;can_minimize=0;can_maximize=0;can_resize=0;titlebar=0")
 		onclose(user, "reading", src)
 	else
-		return "<span class='warning'>I'm too far away to read it.</span>"
+		return span_warning("I'm too far away to read it.")
 
 /obj/item/manuscript/update_icon()
 	. = ..()

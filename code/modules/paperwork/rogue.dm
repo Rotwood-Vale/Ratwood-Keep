@@ -14,7 +14,7 @@
 /obj/item/paper/scroll/attackby(obj/item/P, mob/living/carbon/human/user, params)
 	if(istype(P, /obj/item/pen) || istype(P, /obj/item/natural/thorn) || istype(P, /obj/item/natural/feather))
 		if(!open)
-			to_chat(user, "<span class='warning'>Open me.</span>")
+			to_chat(user, span_warning("Open me."))
 			return
 	..()
 
@@ -36,7 +36,7 @@
 
 /obj/item/paper/scroll/attack_self(mob/user)
 	if(mailer)
-		user.visible_message("<span class='notice'>[user] opens the missive from [mailer].</span>")
+		user.visible_message(span_notice("[user] opens the missive from [mailer]."))
 		mailer = null
 		mailedto = null
 		update_icon()
@@ -49,7 +49,7 @@
 
 /obj/item/paper/scroll/read(mob/user)
 	if(!open)
-		to_chat(user, "<span class='info'>Open me.</span>")
+		to_chat(user, span_info("Open me."))
 		return
 	if(!user.client || !user.hud_used)
 		return
@@ -70,7 +70,7 @@
 		user << browse(dat, "window=reading;size=460x300;can_close=0;can_minimize=0;can_maximize=0;can_resize=0;titlebar=0")
 		onclose(user, "reading", src)
 	else
-		return "<span class='warning'>I'm too far away to read it.</span>"
+		return span_warning("I'm too far away to read it.")
 
 /obj/item/paper/scroll/Initialize()
 	open = FALSE
@@ -149,7 +149,7 @@
 	if(istype(P, /obj/item/natural/feather))
 		if(user.is_literate() && open)
 			if(signedname)
-				to_chat(user, "<span class='warning'>[signedname]</span>")
+				to_chat(user, span_warning("[signedname]"))
 				return
 			switch(alert("Sign your name?",,"Yes","No"))
 				if("Yes")
@@ -158,7 +158,7 @@
 							signedname = user.real_name
 							signedjob = user.mind.assigned_role
 							icon_state = "contractsigned"
-							user.visible_message("<span class='notice'>[user] signs the [src].</span>")
+							user.visible_message(span_notice("[user] signs the [src]."))
 							update_icon_state()
 							playsound(src, 'sound/items/write.ogg', 100, FALSE)
 							rebuild_info()
@@ -207,10 +207,10 @@
 	if(signed)
 		return ..()
 	if(!M.get_bleed_rate())
-		to_chat(user, "<span class='warning'>No. The sinner must be bleeding.</span>")
+		to_chat(user, span_warning("No. The sinner must be bleeding."))
 		return
 	if(!M.stat)
-		to_chat(user, "<span class='info'>I courteously offer the confession to [M].</span>")
+		to_chat(user, span_info("I courteously offer the confession to [M]."))
 		if(alert(M, "Sign the confession with your blood?", "CONFESSION OF SIN", "Yes", "No") != "Yes")
 			return
 		if(M.stat)

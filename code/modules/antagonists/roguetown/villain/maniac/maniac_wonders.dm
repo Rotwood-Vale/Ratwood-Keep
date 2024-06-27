@@ -81,7 +81,7 @@
 			user.mind.forget_crafting_recipe(dream_master.recipe_progression[dream_master.current_wonder])
 		wonder_id = dream_master.current_wonder
 		if(wonder_id >= 4)
-			to_chat(user, "<span class='userdanger'>I must SUM the keys. I am WAKING up!</span>")
+			to_chat(user, span_userdanger("I must SUM the keys. I am WAKING up!"))
 			dream_master.agony(user)
 		key_num = LAZYACCESS(dream_master.num_keys, wonder_id)
 		key_text = LAZYACCESS(dream_master.key_nums, wonder_id)
@@ -96,7 +96,7 @@
 /obj/structure/wonder/examine(mob/user)
 	. = ..()
 	if(gazed_at && (user.mind?.has_antag_datum(/datum/antagonist/maniac) == dream_master))
-		. += "<span class='danger'>They have GAZED at my wonder!</span>"
+		. += span_danger("They have GAZED at my wonder!")
 	if(isobserver(user))
 		return
 	if(dream_master)
@@ -112,7 +112,7 @@
 			for(var/mob/living/carbon/human/other_victim in viewers - victim)
 				other_victim.blur_eyes(2)
 				if(prob(10))
-					to_chat(other_victim, "<span class='userdanger'>It is WONDERFUL!</span>")
+					to_chat(other_victim, span_userdanger("It is WONDERFUL!"))
 		else
 			if(!victim.mind || (victim.stat == DEAD))
 				continue

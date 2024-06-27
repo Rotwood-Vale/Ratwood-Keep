@@ -3,11 +3,11 @@
 	flag = GUARDSMAN
 	department_flag = GARRISON
 	faction = "Station"
-	total_positions = 10
-	spawn_positions = 10
+	total_positions = 9
+	spawn_positions = 9
 	selection_color = JCOLOR_SOLDIER
 	allowed_sexes = list(MALE, FEMALE)
-	allowed_races = CLOTHED_RACES_TYPES
+	allowed_races = RACES_TOLERATED_UP
 	allowed_ages = list(AGE_ADULT, AGE_MIDDLEAGED)
 	tutorial = "Responsible for the safety of the town and the enforcement of the King's law, you are the vanguard of the city faced with punishing those who defy his Royal Majesty. Though you've many lords to obey, as both the Church and the Bailiff have great sway over your life."
 	display_order = JDO_TOWNGUARD
@@ -15,7 +15,7 @@
 
 	outfit = /datum/outfit/job/roguetown/guardsman
 	give_bank_account = 16
-	min_pq = 5
+	min_pq = 1
 	max_pq = null
 
 	cmode_music = 'sound/music/combat_guard.ogg'
@@ -69,8 +69,8 @@
 	backr = /obj/item/storage/backpack/rogue/satchel/black
 	backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger/steel = 1, /obj/item/rope/chain = 1)
 	if(is_bowman)
-		backl = /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow
-		beltr = /obj/item/quiver/bolts //replaces mace
+		backl = /obj/item/gun/ballistic/revolver/grenadelauncher/bow
+		beltr = /obj/item/quiver/arrows //replaces mace
 	else
 		backl = null
 	if(H.mind)

@@ -6,7 +6,7 @@
 	var/datum/team/pirate/crew
 
 /datum/antagonist/pirate/greet()
-	to_chat(owner, "<span class='boldannounce'>I are a Space Pirate!</span>")
+	to_chat(owner, span_boldannounce("I are a Space Pirate!"))
 	to_chat(owner, "<B>The station refused to pay for your protection, protect the ship, siphon the credits from the station and raid it for even more loot.</B>")
 	owner.announce_objectives()
 
@@ -86,7 +86,7 @@
 /datum/team/pirate/roundend_report()
 	var/list/parts = list()
 
-	parts += "<span class='header'>Space Pirates were:</span>"
+	parts += span_header("Space Pirates were:")
 
 	var/all_dead = TRUE
 	for(var/datum/mind/M in members)
@@ -100,8 +100,8 @@
 	parts += "Total loot value : [L.get_loot_value()]/[L.target_value] credits"
 
 	if(L.check_completion() && !all_dead)
-		parts += "<span class='greentext big'>The pirate crew was successful!</span>"
+		parts += span_greentextbig("The pirate crew was successful!")
 	else
-		parts += "<span class='redtext big'>The pirate crew has failed.</span>"
+		parts += span_redtextbig("The pirate crew has failed.")
 
 	return "<div class='panel redborder'>[parts.Join("<br>")]</div>"

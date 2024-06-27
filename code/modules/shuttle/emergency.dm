@@ -62,11 +62,11 @@
 	var/obj/item/card/id/ID = user.get_idcard(TRUE)
 
 	if(!ID)
-		to_chat(user, "<span class='warning'>I don't have an ID.</span>")
+		to_chat(user, span_warning("I don't have an ID."))
 		return
 
 	if(!(ACCESS_HEADS in ID.access))
-		to_chat(user, "<span class='warning'>The access level of your card is not high enough.</span>")
+		to_chat(user, span_warning("The access level of your card is not high enough."))
 		return
 
 	var/old_len = authorized.len
@@ -141,7 +141,7 @@
 		return
 
 	if(CHECK_BITFIELD(obj_flags, EMAGGED) || ENGINES_STARTED)	//SYSTEM ERROR: THE SHUTTLE WILL LA-SYSTEM ERROR: THE SHUTTLE WILL LA-SYSTEM ERROR: THE SHUTTLE WILL LAUNCH IN 10 SECONDS
-		to_chat(user, "<span class='warning'>The shuttle is already about to launch!</span>")
+		to_chat(user, span_warning("The shuttle is already about to launch!"))
 		return
 
 	var/time = TIME_LEFT
@@ -469,7 +469,7 @@
 			launch_status = EARLY_LAUNCHED
 			return ..()
 	else
-		to_chat(usr, "<span class='warning'>Escape pods will only launch during \"Code Red\" security alert.</span>")
+		to_chat(usr, span_warning("Escape pods will only launch during \"Code Red\" security alert."))
 		return TRUE
 
 /obj/docking_port/mobile/pod/cancel()
@@ -491,7 +491,7 @@
 	if(obj_flags & EMAGGED)
 		return
 	ENABLE_BITFIELD(obj_flags, EMAGGED)
-	to_chat(user, "<span class='warning'>I fry the pod's alert level checking system.</span>")
+	to_chat(user, span_warning("I fry the pod's alert level checking system."))
 
 /obj/machinery/computer/shuttle/pod/connect_to_shuttle(obj/docking_port/mobile/port, obj/docking_port/stationary/dock, idnum, override=FALSE)
 	. = ..()

@@ -16,7 +16,7 @@
 		m3 = "I have"
 
 	if (handcuffed)
-		. += "<span class='warning'>[m1] tied up with \a [handcuffed]!</span>"
+		. += span_warning("[m1] tied up with \a [handcuffed]!")
 	if (head)
 		. += "[m3] [head.get_examine_string(user)] on [m2] head. "
 	if(wear_mask && !(SLOT_WEAR_MASK in obscured))
@@ -34,16 +34,16 @@
 /*	if (stat == DEAD)
 		appears_dead = 1
 		if(getorgan(/obj/item/organ/brain))
-			. += "<span class='dead'>[t_He] [t_is] limp and unresponsive, with no signs of life.</span>"
+			. += span_dead("[t_He] [t_is] limp and unresponsive, with no signs of life.")
 		else if(get_bodypart(BODY_ZONE_HEAD))
-			. += "<span class='dead'>It appears that [t_his] brain is missing...</span>"*/
+			. += span_dead("It appears that [t_his] brain is missing...")*/
 
 	var/list/missing = get_missing_limbs()
 	for(var/t in missing)
 		if(t==BODY_ZONE_HEAD)
-			. += "<span class='dead'><B>[capitalize(m2)] [parse_zone(t)] is gone.</B></span>"
+			. += span_dead("<B>[capitalize(m2)] [parse_zone(t)] is gone.</B>")
 			continue
-		. += "<span class='warning'><B>[capitalize(m2)] [parse_zone(t)] is gone.</B></span>"
+		. += span_warning("<B>[capitalize(m2)] [parse_zone(t)] is gone.</B>")
 
 	var/list/msg = list("<span class='warning'>")
 	var/temp = getBruteLoss()
@@ -91,12 +91,12 @@
 
 	if(!appears_dead)
 		if(stat == UNCONSCIOUS)
-			. += "<span class='warning'>[m1] unconscious.</span>"
+			. += span_warning("[m1] unconscious.")
 		else if(InCritical())
-			. += "<span class='warning'>[m1] barely conscious.</span>"
+			. += span_warning("[m1] barely conscious.")
 	if (stat == DEAD)
 		appears_dead = 1
-		. += "<span class='warning'>[m1] unconscious.</span>"
+		. += span_warning("[m1] unconscious.")
 	var/trait_exam = common_trait_examine()
 	if (!isnull(trait_exam))
 		. += trait_exam
@@ -105,9 +105,9 @@
 		var/mob/living/L = user
 		if(STASTR > L.STASTR)
 			if(STASTR > 15)
-				. += "<span class='warning'>[t_He] look[p_s()] stronger than I.</span>"
+				. += span_warning("[t_He] look[p_s()] stronger than I.")
 			else
-				. += "<span class='warning'><B>[t_He] look[p_s()] stronger than I.</B></span>"
+				. += span_warning("<B>[t_He] look[p_s()] stronger than I.</B>")
 
 	var/datum/component/mood/mood = src.GetComponent(/datum/component/mood)
 	if(mood)

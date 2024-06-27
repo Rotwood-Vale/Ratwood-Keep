@@ -10,12 +10,12 @@ SUBSYSTEM_DEF(skills)
 	var/list/all_skills = list()
 	///Static assoc list of levels (ints) - strings
 	var/static/list/level_names = list(
-		SKILL_LEVEL_NOVICE = "<span class='info'><span class='small'>Novice</span></span>", 
-		SKILL_LEVEL_APPRENTICE = "<span class='info'>Apprentice</span>", 
-		SKILL_LEVEL_JOURNEYMAN = "<span class='biginfo'>Journeyman</span>", 
-		SKILL_LEVEL_EXPERT = "<span class='biginfo'>Expert</span>", 
+		SKILL_LEVEL_NOVICE = span_info("<span class='small'>Novice</span>"), 
+		SKILL_LEVEL_APPRENTICE = span_info("Apprentice"), 
+		SKILL_LEVEL_JOURNEYMAN = span_biginfo("Journeyman"), 
+		SKILL_LEVEL_EXPERT = span_biginfo("Expert"), 
 		SKILL_LEVEL_MASTER = "<b>Master</b>", 
-		SKILL_LEVEL_LEGENDARY = "<span class='greentext'><b>Legendary</b></span>",
+		SKILL_LEVEL_LEGENDARY = span_greentext("<b>Legendary</b>"),
 	)//This list is already in the right order, due to indexing
 
 /datum/controller/subsystem/skills/Initialize(timeofday)

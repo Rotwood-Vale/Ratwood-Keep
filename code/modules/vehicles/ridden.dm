@@ -17,9 +17,9 @@
 	. = ..()
 	if(key_type)
 		if(!inserted_key)
-			. += "<span class='notice'>Put a key inside it by clicking it with the key.</span>"
+			. += span_notice("Put a key inside it by clicking it with the key.")
 		else
-			. += "<span class='notice'>Alt-click [src] to remove the key.</span>"
+			. += span_notice("Alt-click [src] to remove the key.")
 
 /obj/vehicle/ridden/generate_action_type(actiontype)
 	var/datum/action/vehicle/ridden/A = ..()
@@ -38,21 +38,21 @@
 /obj/vehicle/ridden/attackby(obj/item/I, mob/user, params)
 	if(key_type && !is_key(inserted_key) && is_key(I))
 		if(user.transferItemToLoc(I, src))
-			to_chat(user, "<span class='notice'>I insert \the [I] into \the [src].</span>")
+			to_chat(user, span_notice("I insert \the [I] into \the [src]."))
 			if(inserted_key)	//just in case there's an invalid key
 				inserted_key.forceMove(drop_location())
 			inserted_key = I
 		else
-			to_chat(user, "<span class='warning'>[I] seems to be stuck to my hand!</span>")
+			to_chat(user, span_warning("[I] seems to be stuck to my hand!"))
 		return
 	return ..()
 
 /obj/vehicle/ridden/AltClick(mob/user)
 	if(inserted_key && user.canUseTopic(src, BE_CLOSE, ismonkey(user)))
 		if(!is_occupant(user))
-			to_chat(user, "<span class='warning'>I must be riding the [src] to remove [src]'s key!</span>")
+			to_chat(user, span_warning("I must be riding the [src] to remove [src]'s key!"))
 			return
-		to_chat(user, "<span class='notice'>I remove \the [inserted_key] from \the [src].</span>")
+		to_chat(user, span_notice("I remove \the [inserted_key] from \the [src]."))
 		inserted_key.forceMove(drop_location())
 		user.put_in_hands(inserted_key)
 		inserted_key = null
@@ -61,14 +61,14 @@
 /obj/vehicle/ridden/driver_move(mob/user, direction)
 	if(key_type && !is_key(inserted_key))
 		if(message_cooldown < world.time)
-			to_chat(user, "<span class='warning'>[src] has no key inserted!</span>")
+			to_chat(user, span_warning("[src] has no key inserted!"))
 			message_cooldown = world.time + 5 SECONDS
 		return FALSE
 	if(legs_required)
 		var/how_many_legs = user.get_num_legs()
 		if(how_many_legs < legs_required)
 			if(message_cooldown < world.time)
-				to_chat(user, "<span class='warning'>I can't seem to manage that with[how_many_legs ? " my leg[how_many_legs > 1 ? "s" : null]" : "out legs"]...</span>")
+				to_chat(user, span_warning("I can't seem to manage that with[how_many_legs ? " my leg[how_many_legs > 1 ? "s" : null]" : "out legs"]..."))
 				message_cooldown = world.time + 5 SECONDS
 			return FALSE
 	if(arms_required)
@@ -76,15 +76,15 @@
 		if(how_many_arms < arms_required)
 			if(fall_off_if_missing_arms)
 				unbuckle_mob(user, TRUE)
-				user.visible_message("<span class='danger'>[user] falls off \the [src].</span>",\
-				"<span class='danger'>I fall off \the [src] while trying to operate it without [arms_required ? "both arms":"an arm"]!</span>")
+				user.visible_message(span_danger("[user] falls off \the [src]."),\
+				span_danger("I fall off \the [src] while trying to operate it without [arms_required ? "both arms":"an arm"]!"))
 				if(isliving(user))
 					var/mob/living/L = user
 					L.Stun(30)
 				return FALSE
 
 			if(message_cooldown < world.time)
-				to_chat(user, "<span class='warning'>I can't seem to manage that with[how_many_arms ? " my arm[how_many_arms > 1 ? "s" : null]" : "out arms"]...</span>")
+				to_chat(user, span_warning("I can't seem to manage that with[how_many_arms ? " my arm[how_many_arms > 1 ? "s" : null]" : "out arms"]..."))
 				message_cooldown = world.time + 5 SECONDS
 			return FALSE
 	var/datum/component/riding/R = GetComponent(/datum/component/riding)

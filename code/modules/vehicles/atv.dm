@@ -4,7 +4,7 @@
 	desc = ""
 	icon_state = "atv"
 	max_integrity = 150
-	armor = list("melee" = 50, "bullet" = 25, "laser" = 20, "energy" = 0, "bomb" = 50, "bio" = 0, "rad" = 0, "fire" = 60, "acid" = 60)
+	armor = list("blunt" = 75, "slash" = 75, "stab" = 50, "bullet" = 25, "laser" = 20, "energy" = 0, "bomb" = 50, "bio" = 0, "rad" = 0, "fire" = 60, "acid" = 60)
 	key_type = /obj/item/key
 	integrity_failure = 0.5
 	var/static/mutable_appearance/atvcover
@@ -68,10 +68,10 @@
 	if(W.tool_behaviour == TOOL_WELDER && user.used_intent.type != INTENT_HARM)
 		if(obj_integrity < max_integrity)
 			if(W.use_tool(src, user, 0, volume=50, amount=1))
-				user.visible_message("<span class='notice'>[user] repairs some damage to [name].</span>", "<span class='notice'>I repair some damage to \the [src].</span>")
+				user.visible_message(span_notice("[user] repairs some damage to [name]."), span_notice("I repair some damage to \the [src]."))
 				obj_integrity += min(10, max_integrity-obj_integrity)
 				if(obj_integrity == max_integrity)
-					to_chat(user, "<span class='notice'>It looks to be fully repaired now.</span>")
+					to_chat(user, span_notice("It looks to be fully repaired now."))
 		return TRUE
 	return ..()
 

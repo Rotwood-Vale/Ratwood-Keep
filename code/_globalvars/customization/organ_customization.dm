@@ -38,7 +38,7 @@ GLOBAL_LIST_INIT(customizers, build_customizers())
 		.[type] = new type()
 	return .
 
-/proc/color_pick_sanitized_lumi(mob/user, description, title, default_value, min_lumi = 0.1, max_lumi = 1.0)
+/proc/color_pick_sanitized_lumi(mob/user, description, title, default_value, min_lumi = 0.07, max_lumi = 1.0)
 	var/color = input(user, description, title, default_value) as color|null
 	if(!color)
 		return

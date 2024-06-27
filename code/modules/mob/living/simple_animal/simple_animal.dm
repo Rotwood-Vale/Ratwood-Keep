@@ -81,6 +81,8 @@ GLOBAL_VAR_INIT(farm_animals, FALSE)
 	var/armor_penetration = 0
 	///Damage type of a simple mob's melee attack, should it do damage.
 	var/melee_damage_type = BRUTE
+	///Type of melee attack
+	var/d_type = "slash"
 	/// 1 for full damage , 0 for none , -1 for 1:1 heal from that source.
 	var/list/damage_coeff = list(BRUTE = 1, BURN = 1, TOX = 1, CLONE = 1, STAMINA = 0, OXY = 1)
 	///Attacking verb in present continuous tense.
@@ -208,7 +210,7 @@ GLOBAL_VAR_INIT(farm_animals, FALSE)
 		return
 	else
 		if(!stat)
-			user.visible_message("<span class='info'>[user] hand-feeds [O] to [src].</span>", "<span class='notice'>I hand-feed [O] to [src].</span>")
+			user.visible_message(span_info("[user] hand-feeds [O] to [src]."), span_notice("I hand-feed [O] to [src]."))
 			playsound(loc,'sound/misc/eat.ogg', rand(30,60), TRUE)
 			qdel(O)
 			food = min(food + 30, 100)
@@ -233,7 +235,7 @@ GLOBAL_VAR_INIT(farm_animals, FALSE)
 //mob/living/simple_animal/examine(mob/user)
 //	. = ..()
 //	if(stat == DEAD)
-//		. += "<span class='deadsay'>Upon closer examination, [p_they()] appear[p_s()] to be dead.</span>"
+//		. += span_deadsay("Upon closer examination, [p_they()] appear[p_s()] to be dead.")
 
 /mob/living/simple_animal/updatehealth()
 	..()
@@ -588,19 +590,19 @@ mob/living/simple_animal/handle_fire()
 		var/turf/target = get_turf(loc)
 		if(target)
 			return new childspawn(target)
-//			visible_message("<span class='warning'>[src] finally gives birth.</span>")
+//			visible_message(span_warning("[src] finally gives birth."))
 			playsound(src, 'sound/foley/gross.ogg', 100, FALSE)
 			breedchildren--
 
 /mob/living/simple_animal/canUseTopic(atom/movable/M, be_close=FALSE, no_dexterity=FALSE, no_tk=FALSE)
 	if(incapacitated())
-		to_chat(src, "<span class='warning'>I can't do that right now!</span>")
+		to_chat(src, span_warning("I can't do that right now!"))
 		return FALSE
 	if(be_close && !in_range(M, src))
-		to_chat(src, "<span class='warning'>I are too far away!</span>")
+		to_chat(src, span_warning("I are too far away!"))
 		return FALSE
 	if(!(no_dexterity || dextrous))
-		to_chat(src, "<span class='warning'>I don't have the dexterity to do this!</span>")
+		to_chat(src, span_warning("I don't have the dexterity to do this!"))
 		return FALSE
 	return TRUE
 
@@ -703,7 +705,7 @@ mob/living/simple_animal/handle_fire()
 		if(istype(held_item, /obj/item/twohanded))
 			var/obj/item/twohanded/T = held_item
 			if(T.wielded == 1)
-				to_chat(usr, "<span class='warning'>My other hand is too busy holding [T].</span>")
+				to_chat(usr, span_warning("My other hand is too busy holding [T]."))
 				return FALSE
 	var/oindex = active_hand_index
 	active_hand_index = hand_index
@@ -755,7 +757,7 @@ mob/living/simple_animal/handle_fire()
 		M.Paralyze(50)
 		M.Stun(50)
 		playsound(src.loc, 'sound/foley/zfall.ogg', 100, FALSE)
-		M.visible_message("<span class='danger'>[M] falls off [src]!</span>")
+		M.visible_message(span_danger("[M] falls off [src]!"))
 	..()
 	update_icon()
 
@@ -830,7 +832,7 @@ mob/living/simple_animal/handle_fire()
 						L.Paralyze(50)
 						L.Stun(50)
 						playsound(L.loc, 'sound/foley/zfall.ogg', 100, FALSE)
-						L.visible_message("<span class='danger'>[L] falls off [src]!</span>")
+						L.visible_message(span_danger("[L] falls off [src]!"))
 
 /mob/living/simple_animal/buckle_mob(mob/living/buckled_mob, force = 0, check_loc = 1)
 	. = ..()

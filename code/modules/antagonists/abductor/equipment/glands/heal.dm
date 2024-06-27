@@ -54,7 +54,7 @@
 		return
 	if(owner.blood_volume < BLOOD_VOLUME_OKAY)
 		owner.blood_volume = BLOOD_VOLUME_NORMAL
-		to_chat(owner, "<span class='warning'>I feel my blood pulsing within you.</span>")
+		to_chat(owner, span_warning("I feel my blood pulsing within you."))
 		return
 
 	var/obj/item/bodypart/chest/chest = owner.get_bodypart(BODY_ZONE_CHEST)
@@ -63,19 +63,19 @@
 		return
 
 /obj/item/organ/heart/gland/heal/proc/reject_implant(obj/item/organ/cyberimp/implant)
-	owner.visible_message("<span class='warning'>[owner] vomits up his [implant.name]!</span>", "<span class='danger'>I suddenly vomit up my [implant.name]!</span>")
+	owner.visible_message(span_warning("[owner] vomits up his [implant.name]!"), span_danger("I suddenly vomit up my [implant.name]!"))
 	owner.vomit(0, TRUE, TRUE, 1, FALSE, FALSE, FALSE, TRUE)
 	implant.Remove(owner)
 	implant.forceMove(owner.drop_location())
 
 /obj/item/organ/heart/gland/heal/proc/replace_liver(obj/item/organ/liver/liver)
 	if(liver)
-		owner.visible_message("<span class='warning'>[owner] vomits up his [liver.name]!</span>", "<span class='danger'>I suddenly vomit up my [liver.name]!</span>")
+		owner.visible_message(span_warning("[owner] vomits up his [liver.name]!"), span_danger("I suddenly vomit up my [liver.name]!"))
 		owner.vomit(0, TRUE, TRUE, 1, FALSE, FALSE, FALSE, TRUE)
 		liver.Remove(owner)
 		liver.forceMove(owner.drop_location())
 	else
-		to_chat(owner, "<span class='warning'>I feel a weird rumble in my bowels...</span>")
+		to_chat(owner, span_warning("I feel a weird rumble in my bowels..."))
 
 	var/liver_type = /obj/item/organ/liver
 	if(owner?.dna?.species?.organs[ORGAN_SLOT_LIVER])
@@ -85,12 +85,12 @@
 
 /obj/item/organ/heart/gland/heal/proc/replace_lungs(obj/item/organ/lungs/lungs)
 	if(lungs)
-		owner.visible_message("<span class='warning'>[owner] vomits up his [lungs.name]!</span>", "<span class='danger'>I suddenly vomit up my [lungs.name]!</span>")
+		owner.visible_message(span_warning("[owner] vomits up his [lungs.name]!"), span_danger("I suddenly vomit up my [lungs.name]!"))
 		owner.vomit(0, TRUE, TRUE, 1, FALSE, FALSE, FALSE, TRUE)
 		lungs.Remove(owner)
 		lungs.forceMove(owner.drop_location())
 	else
-		to_chat(owner, "<span class='warning'>I feel a weird rumble inside my chest...</span>")
+		to_chat(owner, span_warning("I feel a weird rumble inside my chest..."))
 
 	var/lung_type = /obj/item/organ/lungs
 	if(owner.dna.species && owner.dna.species.mutantlungs)
@@ -100,12 +100,12 @@
 
 /obj/item/organ/heart/gland/heal/proc/replace_eyes(obj/item/organ/eyes/eyes)
 	if(eyes)
-		owner.visible_message("<span class='warning'>[owner]'s [eyes.name] fall out of their sockets!</span>", "<span class='danger'>My [eyes.name] fall out of their sockets!</span>")
+		owner.visible_message(span_warning("[owner]'s [eyes.name] fall out of their sockets!"), span_danger("My [eyes.name] fall out of their sockets!"))
 		playsound(owner, 'sound/blank.ogg', 50, TRUE)
 		eyes.Remove(owner)
 		eyes.forceMove(owner.drop_location())
 	else
-		to_chat(owner, "<span class='warning'>I feel a weird rumble behind my eye sockets...</span>")
+		to_chat(owner, span_warning("I feel a weird rumble behind my eye sockets..."))
 
 	addtimer(CALLBACK(src, PROC_REF(finish_replace_eyes)), rand(100, 200))
 
@@ -115,27 +115,27 @@
 		eye_type = owner.dna.species.organs[ORGAN_SLOT_EYES]
 	var/obj/item/organ/eyes/new_eyes = new eye_type()
 	new_eyes.Insert(owner)
-	owner.visible_message("<span class='warning'>A pair of new eyes suddenly inflates into [owner]'s eye sockets!</span>", "<span class='danger'>A pair of new eyes suddenly inflates into my eye sockets!</span>")
+	owner.visible_message(span_warning("A pair of new eyes suddenly inflates into [owner]'s eye sockets!"), span_danger("A pair of new eyes suddenly inflates into my eye sockets!"))
 
 /obj/item/organ/heart/gland/heal/proc/replace_limb(body_zone, obj/item/bodypart/limb)
 	if(limb)
-		owner.visible_message("<span class='warning'>[owner]'s [limb.name] suddenly detaches from [owner.p_their()] body!</span>", "<span class='danger'>My [limb.name] suddenly detaches from my body!</span>")
+		owner.visible_message(span_warning("[owner]'s [limb.name] suddenly detaches from [owner.p_their()] body!"), span_danger("My [limb.name] suddenly detaches from my body!"))
 		playsound(owner, "desceration", 50, TRUE, -1)
 		limb.drop_limb()
 	else
-		to_chat(owner, "<span class='warning'>I feel a weird tingle in my [parse_zone(body_zone)]... even if you don't have one.</span>")
+		to_chat(owner, span_warning("I feel a weird tingle in my [parse_zone(body_zone)]... even if you don't have one."))
 
 	addtimer(CALLBACK(src, PROC_REF(finish_replace_limb), body_zone), rand(150, 300))
 
 /obj/item/organ/heart/gland/heal/proc/finish_replace_limb(body_zone)
-	owner.visible_message("<span class='warning'>With a loud snap, [owner]'s [parse_zone(body_zone)] rapidly grows back from [owner.p_their()] body!</span>",
-	"<span class='danger'>With a loud snap, my [parse_zone(body_zone)] rapidly grows back from my body!</span>",
-	"<span class='warning'>My hear a loud snap.</span>")
+	owner.visible_message(span_warning("With a loud snap, [owner]'s [parse_zone(body_zone)] rapidly grows back from [owner.p_their()] body!"),
+	span_danger("With a loud snap, my [parse_zone(body_zone)] rapidly grows back from my body!"),
+	span_warning("My hear a loud snap."))
 	playsound(owner, 'sound/blank.ogg', 50, TRUE)
 	owner.regenerate_limb(body_zone)
 
 /obj/item/organ/heart/gland/heal/proc/replace_blood()
-	owner.visible_message("<span class='warning'>[owner] starts vomiting huge amounts of blood!</span>", "<span class='danger'>I suddenly start vomiting huge amounts of blood!</span>")
+	owner.visible_message(span_warning("[owner] starts vomiting huge amounts of blood!"), span_danger("I suddenly start vomiting huge amounts of blood!"))
 	keep_replacing_blood()
 
 /obj/item/organ/heart/gland/heal/proc/keep_replacing_blood()
@@ -159,14 +159,14 @@
 
 /obj/item/organ/heart/gland/heal/proc/replace_chest(obj/item/bodypart/chest/chest)
 	if(chest.status == BODYPART_ROBOTIC)
-		owner.visible_message("<span class='warning'>[owner]'s [chest.name] rapidly expels its mechanical components, replacing them with flesh!</span>", "<span class='danger'>My [chest.name] rapidly expels its mechanical components, replacing them with flesh!</span>")
+		owner.visible_message(span_warning("[owner]'s [chest.name] rapidly expels its mechanical components, replacing them with flesh!"), span_danger("My [chest.name] rapidly expels its mechanical components, replacing them with flesh!"))
 		playsound(owner, 'sound/blank.ogg', 50, TRUE)
 		var/list/dirs = GLOB.alldirs.Copy()
 		for(var/i in 1 to 3)
 			var/obj/effect/decal/cleanable/robot_debris/debris = new(get_turf(owner))
 			debris.streak(dirs)
 	else
-		owner.visible_message("<span class='warning'>[owner]'s [chest.name] sheds off its damaged flesh, rapidly replacing it!</span>", "<span class='warning'>My [chest.name] sheds off its damaged flesh, rapidly replacing it!</span>")
+		owner.visible_message(span_warning("[owner]'s [chest.name] sheds off its damaged flesh, rapidly replacing it!"), span_warning("My [chest.name] sheds off its damaged flesh, rapidly replacing it!"))
 		playsound(owner, 'sound/blank.ogg', 50, TRUE)
 		var/list/dirs = GLOB.alldirs.Copy()
 		for(var/i in 1 to 3)

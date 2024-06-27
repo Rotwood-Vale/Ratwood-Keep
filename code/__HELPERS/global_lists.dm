@@ -9,6 +9,11 @@
 		GLOB.species_list[species.name] = species_path
 	sortList(GLOB.species_list, GLOBAL_PROC_REF(cmp_typepaths_asc))
 
+	//Surgery steps
+	for(var/path in subtypesof(/datum/surgery_step))
+		GLOB.surgery_steps += new path()
+	sortList(GLOB.surgery_steps, GLOBAL_PROC_REF(cmp_typepaths_asc))
+
 	//Surgeries
 	for(var/path in subtypesof(/datum/surgery))
 		GLOB.surgeries_list += new path()
@@ -26,8 +31,6 @@
 	GLOB.emote_list = init_emote_list()
 
 	init_subtypes(/datum/crafting_recipe, GLOB.crafting_recipes)
-
-	init_subtypes(/datum/advclass, GLOB.adv_classes)
 
 	init_subtypes(/datum/anvil_recipe, GLOB.anvil_recipes)
 

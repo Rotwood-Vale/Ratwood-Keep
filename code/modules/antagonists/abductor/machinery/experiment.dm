@@ -45,19 +45,19 @@
 		return
 	if(message_cooldown <= world.time)
 		message_cooldown = world.time + 50
-		to_chat(user, "<span class='warning'>[src]'s door won't budge!</span>")
+		to_chat(user, span_warning("[src]'s door won't budge!"))
 
 /obj/machinery/abductor/experiment/container_resist(mob/living/user)
 	user.changeNext_move(CLICK_CD_BREAKOUT)
 	user.last_special = world.time + CLICK_CD_BREAKOUT
-	user.visible_message("<span class='notice'>I see [user] kicking against the door of [src]!</span>", \
-		"<span class='notice'>I lean on the back of [src] and start pushing the door open... (this will take about [DisplayTimeText(breakout_time)].)</span>", \
-		"<span class='hear'>I hear a metallic creaking from [src].</span>")
+	user.visible_message(span_notice("I see [user] kicking against the door of [src]!"), \
+		span_notice("I lean on the back of [src] and start pushing the door open... (this will take about [DisplayTimeText(breakout_time)].)"), \
+		span_hear("I hear a metallic creaking from [src]."))
 	if(do_after(user,(breakout_time), target = src))
 		if(!user || user.stat != CONSCIOUS || user.loc != src || state_open)
 			return
-		user.visible_message("<span class='warning'>[user] successfully broke out of [src]!</span>", \
-			"<span class='notice'>I successfully break out of [src]!</span>")
+		user.visible_message(span_warning("[user] successfully broke out of [src]!"), \
+			span_notice("I successfully break out of [src]!"))
 		open_machine()
 
 /obj/machinery/abductor/experiment/proc/dissection_icon(mob/living/carbon/human/H)
@@ -98,7 +98,7 @@
 		dat += "<a href='?src=[REF(src)];experiment=3'>Analyze</a><br>"
 		dat += "</td></tr></table>"
 	else
-		dat += "<span class='linkOff'>Experiment </span>"
+		dat += span_linkoff("Experiment ")
 
 	if(!occupant)
 		dat += "<h3>Machine Unoccupied</h3>"
@@ -108,11 +108,11 @@
 		var/mob/living/mob_occupant = occupant
 		switch(mob_occupant.stat)
 			if(CONSCIOUS)
-				dat += "<span class='good'>Conscious</span>"
+				dat += span_good("Conscious")
 			if(UNCONSCIOUS)
-				dat += "<span class='average'>Unconscious</span>"
+				dat += span_average("Unconscious")
 			else // DEAD
-				dat += "<span class='bad'>Deceased</span>"
+				dat += span_bad("Deceased")
 	dat += "<br>"
 	dat += "[flash]"
 	dat += "<br>"
@@ -150,18 +150,18 @@
 
 	var/datum/antagonist/abductor/user_abductor = user.mind.has_antag_datum(/datum/antagonist/abductor)
 	if(!user_abductor)
-		return "<span class='bad'>Authorization failure. Contact mothership immidiately.</span>"
+		return span_bad("Authorization failure. Contact mothership immidiately.")
 
 	var/point_reward = 0
 	if(H in history)
-		return "<span class='bad'>Specimen already in database.</span>"
+		return span_bad("Specimen already in database.")
 	if(H.stat == DEAD)
 		say("Specimen deceased - please provide fresh sample.")
-		return "<span class='bad'>Specimen deceased.</span>"
+		return span_bad("Specimen deceased.")
 	var/obj/item/organ/heart/gland/GlandTest = locate() in H.internal_organs
 	if(!GlandTest)
 		say("Experimental dissection not detected!")
-		return "<span class='bad'>No glands detected!</span>"
+		return span_bad("No glands detected!")
 	if(H.mind != null && H.ckey != null)
 		LAZYINITLIST(abductee_minds)
 		LAZYADD(history, H)
@@ -170,11 +170,11 @@
 		sleep(5)
 		switch(text2num(type))
 			if(1)
-				to_chat(H, "<span class='warning'>I feel violated.</span>")
+				to_chat(H, span_warning("I feel violated."))
 			if(2)
-				to_chat(H, "<span class='warning'>I feel myself being sliced apart and put back together.</span>")
+				to_chat(H, span_warning("I feel myself being sliced apart and put back together."))
 			if(3)
-				to_chat(H, "<span class='warning'>I feel intensely watched.</span>")
+				to_chat(H, span_warning("I feel intensely watched."))
 		sleep(5)
 		user_abductor.team.abductees += H.mind
 		H.mind.add_antag_datum(/datum/antagonist/abductee)
@@ -188,16 +188,16 @@
 			playsound(src.loc, 'sound/blank.ogg', 50, TRUE)
 			points += point_reward
 			credits += point_reward
-			return "<span class='good'>Experiment successful! [point_reward] new data-points collected.</span>"
+			return span_good("Experiment successful! [point_reward] new data-points collected.")
 		else
 			playsound(src.loc, 'sound/blank.ogg', 50, TRUE)
-			return "<span class='bad'>Experiment failed! No replacement organ detected.</span>"
+			return span_bad("Experiment failed! No replacement organ detected.")
 	else
 		say("Brain activity nonexistent - disposing sample...")
 		open_machine()
 		SendBack(H)
-		return "<span class='bad'>Specimen braindead - disposed.</span>"
-	return "<span class='bad'>ERROR</span>"
+		return span_bad("Specimen braindead - disposed.")
+	return span_bad("ERROR")
 
 
 /obj/machinery/abductor/experiment/proc/SendBack(mob/living/carbon/human/H)

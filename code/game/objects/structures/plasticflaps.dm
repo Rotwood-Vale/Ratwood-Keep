@@ -4,7 +4,7 @@
 	gender = PLURAL
 	icon = 'icons/obj/stationobjs.dmi'
 	icon_state = "plasticflaps"
-	armor = list("melee" = 100, "bullet" = 80, "laser" = 80, "energy" = 100, "bomb" = 50, "bio" = 100, "rad" = 100, "fire" = 50, "acid" = 50) //what?
+	armor = list("blunt" = 100, "slash" = 80, "stab" = 90, "bullet" = 80, "laser" = 80, "energy" = 100, "bomb" = 50, "bio" = 100, "rad" = 100, "fire" = 50, "acid" = 50) //what?
 	density = FALSE
 	anchored = TRUE
 	CanAtmosPass = ATMOS_PASS_NO
@@ -20,9 +20,9 @@
 /obj/structure/plasticflaps/examine(mob/user)
 	. = ..()
 	if(anchored)
-		. += "<span class='notice'>[src] are <b>screwed</b> to the floor.</span>"
+		. += span_notice("[src] are <b>screwed</b> to the floor.")
 	else
-		. += "<span class='notice'>[src] are no longer <i>screwed</i> to the floor, and the flaps can be <b>cut</b> apart.</span>"
+		. += span_notice("[src] are no longer <i>screwed</i> to the floor, and the flaps can be <b>cut</b> apart.")
 
 /obj/structure/plasticflaps/screwdriver_act(mob/living/user, obj/item/W)
 	if(..())
@@ -30,10 +30,10 @@
 	add_fingerprint(user)
 	var/action = anchored ? "unscrews [src] from" : "screws [src] to"
 	var/uraction = anchored ? "unscrew [src] from " : "screw [src] to"
-	user.visible_message("<span class='warning'>[user] [action] the floor.</span>", "<span class='notice'>I start to [uraction] the floor...</span>", "<span class='hear'>I hear rustling noises.</span>")
+	user.visible_message(span_warning("[user] [action] the floor."), span_notice("I start to [uraction] the floor..."), span_hear("I hear rustling noises."))
 	if(W.use_tool(src, user, 100, volume=100, extra_checks = CALLBACK(src, PROC_REF(check_anchored_state), anchored)))
 		setAnchored(!anchored)
-		to_chat(user, "<span class='notice'>I [anchored ? "unscrew" : "screw"] [src] from the floor.</span>")
+		to_chat(user, span_notice("I [anchored ? "unscrew" : "screw"] [src] from the floor."))
 		return TRUE
 	else
 		return TRUE
@@ -41,11 +41,11 @@
 /obj/structure/plasticflaps/wirecutter_act(mob/living/user, obj/item/W)
 	. = ..()
 	if(!anchored)
-		user.visible_message("<span class='warning'>[user] cuts apart [src].</span>", "<span class='notice'>I start to cut apart [src].</span>", "<span class='hear'>I hear cutting.</span>")
+		user.visible_message(span_warning("[user] cuts apart [src]."), span_notice("I start to cut apart [src]."), span_hear("I hear cutting."))
 		if(W.use_tool(src, user, 50, volume=100))
 			if(anchored)
 				return TRUE
-			to_chat(user, "<span class='notice'>I cut apart [src].</span>")
+			to_chat(user, span_notice("I cut apart [src]."))
 			var/obj/item/stack/sheet/plastic/five/P = new(loc)
 			P.add_fingerprint(user)
 			qdel(src)

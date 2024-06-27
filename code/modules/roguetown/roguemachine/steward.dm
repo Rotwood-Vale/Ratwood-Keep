@@ -7,7 +7,7 @@
 
 /obj/structure/roguemachine/steward
 	name = "nerve master"
-	desc = ""
+	desc = "The stewards most trusted friend."
 	icon = 'icons/roguetown/misc/machines.dmi'
 	icon_state = "steward_machine"
 	density = TRUE
@@ -29,7 +29,7 @@
 			update_icon()
 			return
 		else
-			to_chat(user, "<span class='warning'>Wrong key.</span>")
+			to_chat(user, span_warning("Wrong key."))
 			return
 	if(istype(P, /obj/item/keyring))
 		var/obj/item/keyring/K = P
@@ -39,7 +39,7 @@
 				playsound(loc, 'sound/misc/beep.ogg', 100, FALSE, -1)
 				update_icon()
 				return
-		to_chat(user, "<span class='warning'>Wrong key.</span>")
+		to_chat(user, span_warning("Wrong key."))
 		return
 	return ..()
 
@@ -165,7 +165,7 @@
 				SStreasury.give_money_account(-newtax, A)
 				break
 	if(href_list["payroll"])
-		var/list/L = list(GLOB.noble_positions) + list(GLOB.garrison_positions) + list(GLOB.church_positions) + list(GLOB.yeoman_positions) + list(GLOB.peasant_positions) + list(GLOB.youngfolk_positions)
+		var/list/L = list(GLOB.noble_positions) + list(GLOB.garrison_positions) + list(GLOB.courtier_positions) + list(GLOB.church_positions) + list(GLOB.yeoman_positions) + list(GLOB.peasant_positions) + list(GLOB.youngfolk_positions)
 		var/list/things = list()
 		for(var/list/category in L)
 			for(var/A in category)
@@ -217,7 +217,7 @@
 	if(.)
 		return
 	if(locked)
-		to_chat(user, "<span class='warning'>It's locked. Of course.</span>")
+		to_chat(user, span_warning("It's locked. Of course."))
 		return
 	user.changeNext_move(CLICK_CD_MELEE)
 	playsound(loc, 'sound/misc/keyboard_enter.ogg', 100, FALSE, -1)
@@ -299,7 +299,7 @@
 
 	if(!canread)
 		contents = stars(contents)
-	var/datum/browser/popup = new(user, "VENDORTHING", "", 370, 220)
+	var/datum/browser/popup = new(user, "VENDORTHING", "", 370, 800)
 	popup.set_content(contents)
 	popup.open()
 

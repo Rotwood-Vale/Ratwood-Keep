@@ -22,7 +22,7 @@
 /obj/item/nanite_remote/examine(mob/user)
 	. = ..()
 	if(locked)
-		. += "<span class='notice'>Alt-click to unlock.</span>"
+		. += span_notice("Alt-click to unlock.")
 
 /obj/item/nanite_remote/AltClick(mob/user)
 	. = ..()
@@ -30,16 +30,16 @@
 		return
 	if(locked)
 		if(allowed(user))
-			to_chat(user, "<span class='notice'>I unlock [src].</span>")
+			to_chat(user, span_notice("I unlock [src]."))
 			locked = FALSE
 			update_icon()
 		else
-			to_chat(user, "<span class='warning'>Access denied.</span>")
+			to_chat(user, span_warning("Access denied."))
 
 /obj/item/nanite_remote/emag_act(mob/user)
 	if(obj_flags & EMAGGED)
 		return
-	to_chat(user, "<span class='warning'>I override [src]'s ID lock.</span>")
+	to_chat(user, span_warning("I override [src]'s ID lock."))
 	obj_flags |= EMAGGED
 	if(locked)
 		locked = FALSE
@@ -58,18 +58,18 @@
 		if(REMOTE_MODE_OFF)
 			return
 		if(REMOTE_MODE_SELF)
-			to_chat(user, "<span class='notice'>I activate [src], signaling the nanites in your bloodstream.</span>")
+			to_chat(user, span_notice("I activate [src], signaling the nanites in your bloodstream."))
 			signal_mob(user, code, key_name(user))
 		if(REMOTE_MODE_TARGET)
 			if(isliving(target) && (get_dist(target, get_turf(src)) <= 7))
-				to_chat(user, "<span class='notice'>I activate [src], signaling the nanites inside [target].</span>")
+				to_chat(user, span_notice("I activate [src], signaling the nanites inside [target]."))
 				signal_mob(target, code, key_name(user))
 		if(REMOTE_MODE_AOE)
-			to_chat(user, "<span class='notice'>I activate [src], signaling the nanites inside every host around you.</span>")
+			to_chat(user, span_notice("I activate [src], signaling the nanites inside every host around you."))
 			for(var/mob/living/L in view(user, 7))
 				signal_mob(L, code, key_name(user))
 		if(REMOTE_MODE_RELAY)
-			to_chat(user, "<span class='notice'>I activate [src], signaling all connected relay nanites.</span>")
+			to_chat(user, span_notice("I activate [src], signaling all connected relay nanites."))
 			signal_relay(code, relay_code, key_name(user))
 
 /obj/item/nanite_remote/proc/signal_mob(mob/living/M, code, source)
@@ -177,18 +177,18 @@
 		if(REMOTE_MODE_OFF)
 			return
 		if(REMOTE_MODE_SELF)
-			to_chat(user, "<span class='notice'>I activate [src], signaling the nanites in your bloodstream.</span>")
+			to_chat(user, span_notice("I activate [src], signaling the nanites in your bloodstream."))
 			signal_mob(user, comm_code, comm_message)
 		if(REMOTE_MODE_TARGET)
 			if(isliving(target) && (get_dist(target, get_turf(src)) <= 7))
-				to_chat(user, "<span class='notice'>I activate [src], signaling the nanites inside [target].</span>")
+				to_chat(user, span_notice("I activate [src], signaling the nanites inside [target]."))
 				signal_mob(target, code, comm_message, key_name(user))
 		if(REMOTE_MODE_AOE)
-			to_chat(user, "<span class='notice'>I activate [src], signaling the nanites inside every host around you.</span>")
+			to_chat(user, span_notice("I activate [src], signaling the nanites inside every host around you."))
 			for(var/mob/living/L in view(user, 7))
 				signal_mob(L, code, comm_message, key_name(user))
 		if(REMOTE_MODE_RELAY)
-			to_chat(user, "<span class='notice'>I activate [src], signaling all connected relay nanites.</span>")
+			to_chat(user, span_notice("I activate [src], signaling all connected relay nanites."))
 			signal_relay(code, relay_code, comm_message, key_name(user))
 
 /obj/item/nanite_remote/comm/signal_mob(mob/living/M, code, source)

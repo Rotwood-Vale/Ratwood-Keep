@@ -31,7 +31,7 @@ All ShuttleMove procs go here
 				if(M.pulledby)
 					M.pulledby.stop_pulling()
 				M.stop_pulling()
-				M.visible_message("<span class='warning'>[M] is [pick("unmade","unsewn","strewn")] by the teleportation!</span>")
+				M.visible_message(span_warning("[M] is [pick("unmade","unsewn","strewn")] by the teleportation!"))
 				SSblackbox.record_feedback("tally", "shuttle_gib", 1, M.type)
 				M.gib()
 

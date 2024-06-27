@@ -61,10 +61,10 @@
 
 /obj/machinery/power/tracker/crowbar_act(mob/user, obj/item/I)
 	playsound(src.loc, 'sound/blank.ogg', 50, TRUE)
-	user.visible_message("<span class='notice'>[user] begins to take the glass off [src].</span>", "<span class='notice'>I begin to take the glass off [src]...</span>")
+	user.visible_message(span_notice("[user] begins to take the glass off [src]."), span_notice("I begin to take the glass off [src]..."))
 	if(I.use_tool(src, user, 50))
 		playsound(src.loc, 'sound/blank.ogg', 50, TRUE)
-		user.visible_message("<span class='notice'>[user] takes the glass off [src].</span>", "<span class='notice'>I take the glass off [src].</span>")
+		user.visible_message(span_notice("[user] takes the glass off [src]."), span_notice("I take the glass off [src]."))
 		deconstruct(TRUE)
 	return TRUE
 

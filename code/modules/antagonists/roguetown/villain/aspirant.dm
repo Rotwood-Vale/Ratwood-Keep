@@ -23,14 +23,14 @@
 	owner.special_role = ROLE_ASPIRANT
 
 /datum/antagonist/aspirant/greet()
-	to_chat(owner, "<span class='danger'>I have grown weary of being near the throne, but never on it. I have decided that it is time I ruled Enigma.</span>")
+	to_chat(owner, span_danger("I have grown weary of being near the throne, but never on it. I have decided that it is time I ruled Enigma."))
 	..()
 
 /datum/antagonist/aspirant/loyalist/greet()
-	to_chat(owner, "<span class='danger'>Long live the King! I love my ruler. But I have heard that some seek to overthrow them. I cannot let that happen.</span>")
+	to_chat(owner, span_danger("Long live the King! I love my ruler. But I have heard that some seek to overthrow them. I cannot let that happen."))
 
 /datum/antagonist/aspirant/supporter/greet()
-	to_chat(owner, "<span class='danger'>Long live the King! But not this one. I have been approached by an Aspirant and swayed to their cause. I must ensure they take the throne.</span>")
+	to_chat(owner, span_danger("Long live the King! But not this one. I have been approached by an Aspirant and swayed to their cause. I must ensure they take the throne."))
 
 /datum/antagonist/aspirant/ruler/greet() // No alert for the ruler to always keep them guessing.
 
@@ -136,7 +136,7 @@
 	else return FALSE
 
 /datum/antagonist/aspirant/roundend_report()
-	to_chat(world, "<span class='header'> * [name] * </span>")
+	to_chat(world, span_header(" * [name] * "))
 
 	if(objectives.len)
 		var/win = TRUE
@@ -150,12 +150,12 @@
 				win = FALSE
 			objective_count++
 		if(win)
-			to_chat(world, "<span class='greentext'>The Aspirant has ascended! SUCCESS!</span>")
+			to_chat(world, span_greentext("The Aspirant has ascended! SUCCESS!"))
 		else
-			to_chat(world, "<span class='redtext'>The Aspirant was thwarted! FAIL!</span>")
+			to_chat(world, span_redtext("The Aspirant was thwarted! FAIL!"))
 
 /datum/antagonist/aspirant/ruler/roundend_report()
-	to_chat(owner, "<span class='header'> * [name] * </span>")
+	to_chat(owner, span_header(" * [name] * "))
 
 	if(objectives.len)
 		var/win = TRUE
@@ -169,12 +169,12 @@
 				win = FALSE
 			objective_count++
 		if(win)
-			to_chat(owner, "<span class='greentext'>You defended your throne! SUCCESS!</span>")
+			to_chat(owner, span_greentext("You defended your throne! SUCCESS!"))
 		else
-			to_chat(owner, "<span class='redtext'>You were deposed! FAIL!</span>")
+			to_chat(owner, span_redtext("You were deposed! FAIL!"))
 
 /datum/antagonist/aspirant/supporter/roundend_report()
-	to_chat(owner, "<span class='header'> * [name] * </span>")
+	to_chat(owner, span_header(" * [name] * "))
 
 	if(objectives.len)
 		var/win = TRUE
@@ -188,12 +188,12 @@
 				win = FALSE
 			objective_count++
 		if(win)
-			to_chat(owner, "<span class='greentext'>Your claimant took the throne! SUCCESS!</span>")
+			to_chat(owner, span_greentext("Your claimant took the throne! SUCCESS!"))
 		else
-			to_chat(owner, "<span class='redtext'>Your claimant failed! FAIL!</span>")
+			to_chat(owner, span_redtext("Your claimant failed! FAIL!"))
 
 /datum/antagonist/aspirant/loyalist/roundend_report()
-	to_chat(owner, "<span class='header'> * [name] * </span>")
+	to_chat(owner, span_header(" * [name] * "))
 
 	if(objectives.len)
 		var/win = TRUE
@@ -207,6 +207,6 @@
 				win = FALSE
 			objective_count++
 		if(win)
-			to_chat(owner, "<span class='greentext'>Your ruler retained the throne! SUCCESS!</span>")
+			to_chat(owner, span_greentext("Your ruler retained the throne! SUCCESS!"))
 		else
-			to_chat(owner, "<span class='redtext'>Your ruler was deposed! FAIL!</span>")
+			to_chat(owner, span_redtext("Your ruler was deposed! FAIL!"))

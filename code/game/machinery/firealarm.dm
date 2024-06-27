@@ -19,7 +19,7 @@
 	icon_state = "fire0"
 	max_integrity = 250
 	integrity_failure = 0.4
-	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 100, "rad" = 100, "fire" = 90, "acid" = 30)
+	armor = list("blunt" = 0, "slash" = 0, "stab" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 100, "rad" = 100, "fire" = 90, "acid" = 30)
 	use_power = IDLE_POWER_USE
 	idle_power_usage = 2
 	active_power_usage = 6
@@ -106,8 +106,8 @@
 	obj_flags |= EMAGGED
 	update_icon()
 	if(user)
-		user.visible_message("<span class='warning'>Sparks fly out of [src]!</span>",
-							"<span class='notice'>I emag [src], disabling its thermal sensors.</span>")
+		user.visible_message(span_warning("Sparks fly out of [src]!"),
+							span_notice("I emag [src], disabling its thermal sensors."))
 	playsound(src, "sparks", 50, TRUE)
 
 /obj/machinery/firealarm/temperature_expose(datum/gas_mixture/air, temperature, volume)
@@ -155,7 +155,7 @@
 	if(W.tool_behaviour == TOOL_SCREWDRIVER && buildstage == 2)
 		W.play_tool_sound(src)
 		panel_open = !panel_open
-		to_chat(user, "<span class='notice'>The wires have been [panel_open ? "exposed" : "unexposed"].</span>")
+		to_chat(user, span_notice("The wires have been [panel_open ? "exposed" : "unexposed"]."))
 		update_icon()
 		return
 
@@ -166,12 +166,12 @@
 				if(!W.tool_start_check(user, amount=0))
 					return
 
-				to_chat(user, "<span class='notice'>I begin repairing [src]...</span>")
+				to_chat(user, span_notice("I begin repairing [src]..."))
 				if(W.use_tool(src, user, 40, volume=50))
 					obj_integrity = max_integrity
-					to_chat(user, "<span class='notice'>I repair [src].</span>")
+					to_chat(user, span_notice("I repair [src]."))
 			else
-				to_chat(user, "<span class='warning'>[src] is already in good condition!</span>")
+				to_chat(user, span_warning("[src] is already in good condition!"))
 			return
 
 		switch(buildstage)
@@ -179,16 +179,16 @@
 				if(W.tool_behaviour == TOOL_MULTITOOL)
 					detecting = !detecting
 					if (src.detecting)
-						user.visible_message("<span class='notice'>[user] has reconnected [src]'s detecting unit!</span>", "<span class='notice'>I reconnect [src]'s detecting unit.</span>")
+						user.visible_message(span_notice("[user] has reconnected [src]'s detecting unit!"), span_notice("I reconnect [src]'s detecting unit."))
 					else
-						user.visible_message("<span class='notice'>[user] has disconnected [src]'s detecting unit!</span>", "<span class='notice'>I disconnect [src]'s detecting unit.</span>")
+						user.visible_message(span_notice("[user] has disconnected [src]'s detecting unit!"), span_notice("I disconnect [src]'s detecting unit."))
 					return
 
 				else if(W.tool_behaviour == TOOL_WIRECUTTER)
 					buildstage = 1
 					W.play_tool_sound(src)
 					new /obj/item/stack/cable_coil(user.loc, 5)
-					to_chat(user, "<span class='notice'>I cut the wires from \the [src].</span>")
+					to_chat(user, span_notice("I cut the wires from \the [src]."))
 					update_icon()
 					return
 
@@ -203,31 +203,31 @@
 				if(istype(W, /obj/item/stack/cable_coil))
 					var/obj/item/stack/cable_coil/coil = W
 					if(coil.get_amount() < 5)
-						to_chat(user, "<span class='warning'>I need more cable for this!</span>")
+						to_chat(user, span_warning("I need more cable for this!"))
 					else
 						coil.use(5)
 						buildstage = 2
-						to_chat(user, "<span class='notice'>I wire \the [src].</span>")
+						to_chat(user, span_notice("I wire \the [src]."))
 						update_icon()
 					return
 
 				else if(W.tool_behaviour == TOOL_CROWBAR)
-					user.visible_message("<span class='notice'>[user.name] removes the electronics from [src.name].</span>", \
-										"<span class='notice'>I start prying out the circuit...</span>")
+					user.visible_message(span_notice("[user.name] removes the electronics from [src.name]."), \
+										span_notice("I start prying out the circuit..."))
 					if(W.use_tool(src, user, 20, volume=50))
 						if(buildstage == 1)
 							if(stat & BROKEN)
-								to_chat(user, "<span class='notice'>I remove the destroyed circuit.</span>")
+								to_chat(user, span_notice("I remove the destroyed circuit."))
 								stat &= ~BROKEN
 							else
-								to_chat(user, "<span class='notice'>I pry out the circuit.</span>")
+								to_chat(user, span_notice("I pry out the circuit."))
 								new /obj/item/electronics/firealarm(user.loc)
 							buildstage = 0
 							update_icon()
 					return
 			if(0)
 				if(istype(W, /obj/item/electronics/firealarm))
-					to_chat(user, "<span class='notice'>I insert the circuit.</span>")
+					to_chat(user, span_notice("I insert the circuit."))
 					qdel(W)
 					buildstage = 1
 					update_icon()
@@ -237,15 +237,15 @@
 					var/obj/item/electroadaptive_pseudocircuit/P = W
 					if(!P.adapt_circuit(user, 15))
 						return
-					user.visible_message("<span class='notice'>[user] fabricates a circuit and places it into [src].</span>", \
-					"<span class='notice'>I adapt a fire alarm circuit and slot it into the assembly.</span>")
+					user.visible_message(span_notice("[user] fabricates a circuit and places it into [src]."), \
+					span_notice("I adapt a fire alarm circuit and slot it into the assembly."))
 					buildstage = 1
 					update_icon()
 					return
 
 				else if(W.tool_behaviour == TOOL_WRENCH)
-					user.visible_message("<span class='notice'>[user] removes the fire alarm assembly from the wall.</span>", \
-										 "<span class='notice'>I remove the fire alarm assembly from the wall.</span>")
+					user.visible_message(span_notice("[user] removes the fire alarm assembly from the wall."), \
+										 span_notice("I remove the fire alarm assembly from the wall."))
 					var/obj/item/wallframe/firealarm/frame = new /obj/item/wallframe/firealarm()
 					frame.forceMove(user.drop_location())
 					W.play_tool_sound(src)
@@ -262,8 +262,8 @@
 /obj/machinery/firealarm/rcd_act(mob/user, obj/item/construction/rcd/the_rcd, passed_mode)
 	switch(passed_mode)
 		if(RCD_UPGRADE_SIMPLE_CIRCUITS)
-			user.visible_message("<span class='notice'>[user] fabricates a circuit and places it into [src].</span>", \
-			"<span class='notice'>I adapt a fire alarm circuit and slot it into the assembly.</span>")
+			user.visible_message(span_notice("[user] fabricates a circuit and places it into [src]."), \
+			span_notice("I adapt a fire alarm circuit and slot it into the assembly."))
 			buildstage = 1
 			update_icon()
 			return TRUE

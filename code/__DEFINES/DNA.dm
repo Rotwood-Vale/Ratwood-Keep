@@ -130,52 +130,6 @@
 #define STUBBLE			20
 #define OLDGREY			21
 
-
-//organ slots
-#define ORGAN_SLOT_BRAIN "brain"
-#define ORGAN_SLOT_APPENDIX "appendix"
-#define ORGAN_SLOT_RIGHT_ARM_AUG "r_arm_device"
-#define ORGAN_SLOT_LEFT_ARM_AUG "l_arm_device"
-#define ORGAN_SLOT_STOMACH "stomach"
-#define ORGAN_SLOT_STOMACH_AID "stomach_aid"
-#define ORGAN_SLOT_BREATHING_TUBE "breathing_tube"
-#define ORGAN_SLOT_EARS "ears"
-#define ORGAN_SLOT_EYES "eye_sight"
-#define ORGAN_SLOT_LUNGS "lungs"
-#define ORGAN_SLOT_HEART "heart"
-#define ORGAN_SLOT_ZOMBIE "zombie_infection"
-#define ORGAN_SLOT_THRUSTERS "thrusters"
-#define ORGAN_SLOT_HUD "eye_hud"
-#define ORGAN_SLOT_LIVER "liver"
-#define ORGAN_SLOT_TONGUE "tongue"
-#define ORGAN_SLOT_VOICE "vocal_cords"
-#define ORGAN_SLOT_ADAMANTINE_RESONATOR "adamantine_resonator"
-#define ORGAN_SLOT_HEART_AID "heartdrive"
-#define ORGAN_SLOT_BRAIN_ANTIDROP "brain_antidrop"
-#define ORGAN_SLOT_BRAIN_ANTISTUN "brain_antistun"
-#define ORGAN_SLOT_TAIL "tail"
-#define ORGAN_SLOT_PARASITE_EGG "parasite_egg"
-#define ORGAN_SLOT_REGENERATIVE_CORE "hivecore"
-#define ORGAN_SLOT_FRILLS "frills"
-#define ORGAN_SLOT_HORNS "horns"
-#define ORGAN_SLOT_ANTENNAS "antennas"
-#define ORGAN_SLOT_NECK_FEATURE "neck_feature"
-#define ORGAN_SLOT_HEAD_FEATURE "head_feature"
-#define ORGAN_SLOT_BACK_FEATURE "back_feature"
-#define ORGAN_SLOT_TAIL_FEATURE "tail_feature"
-#define ORGAN_SLOT_TAUR_BODY "taur_body"
-#define ORGAN_SLOT_WINGS "wings"
-#define ORGAN_SLOT_SNOUT "snout"
-#define ORGAN_SLOT_PENIS "penis"
-#define ORGAN_SLOT_TESTICLES "testicles"
-#define ORGAN_SLOT_BREASTS "breasts"
-#define ORGAN_SLOT_VAGINA "vagina"
-
-#define BODYPART_FEATURE_HAIR "hair"
-#define BODYPART_FEATURE_FACIAL_HAIR "facehair"
-#define BODYPART_FEATURE_ACCESSORY "accessory"
-#define BODYPART_FEATURE_FACE_DETAIL "facedetail"
-
 //organ defines
 #define STANDARD_ORGAN_THRESHOLD 	100
 #define STANDARD_ORGAN_HEALING 		0.001
@@ -208,40 +162,3 @@
 #define MAX_BREASTS_SIZE 5
 #define DEFAULT_BREASTS_SIZE 3
 
-
-/mob/living/carbon/human/proc/get_hair_color()
-	var/datum/bodypart_feature/hair/feature = get_bodypart_feature_of_slot(BODYPART_FEATURE_HAIR)
-	if(!feature)
-		return "FFFFFF"
-	return feature.hair_color
-
-/mob/living/carbon/human/proc/get_facial_hair_color()
-	var/datum/bodypart_feature/hair/feature = get_bodypart_feature_of_slot(BODYPART_FEATURE_FACIAL_HAIR)
-	if(!feature)
-		return "FFFFFF"
-	return feature.hair_color
-
-/mob/living/carbon/human/proc/get_eye_color()
-	var/obj/item/organ/eyes/eyes = getorganslot(ORGAN_SLOT_EYES)
-	if(!eyes)
-		return "FFFFFF"
-	return eyes.eye_color
-
-/mob/living/carbon/human/proc/get_chest_color()
-	var/obj/item/bodypart/chest = get_bodypart(BODY_ZONE_CHEST)
-	if(!chest)
-		return null
-	for(var/marking_name in chest.markings)
-		var/datum/body_marking/marking = GLOB.body_markings[marking_name]
-		if(!marking.covers_chest)
-			continue
-		var/marking_color = chest.markings[marking_name]
-		return marking_color
-	return null
-
-/mob/living/carbon/proc/get_bodypart_feature_of_slot(feature_slot)
-	for(var/obj/item/bodypart/bodypart as anything in bodyparts)
-		for(var/datum/bodypart_feature/feature as anything in bodypart.bodypart_features)
-			if(feature.feature_slot == feature_slot)
-				return feature
-	return null

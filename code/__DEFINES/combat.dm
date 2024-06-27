@@ -11,6 +11,9 @@
 #define STAMINA 	"stamina"
 #define BRAIN		"brain"
 
+//Omnibus'ing melee attack types
+#define MELEE_TYPES list("blunt", "slash", "stab")
+
 //bitflag damage defines used for suicide_act
 #define BRUTELOSS 	            	(1<<0)
 #define FIRELOSS 	            	(1<<1)
@@ -45,6 +48,8 @@
 #define HEALTH_THRESHOLD_DEAD -100
 
 #define HEALTH_THRESHOLD_NEARDEATH -90 //Not used mechanically, but to determine if someone is so close to death they hear the other side
+
+#define DAMAGE_THRESHOLD_FIRE_CRIT 150
 
 //Actual combat defines
 
@@ -121,7 +126,6 @@
 #define QINTENT_GIVE		 5
 #define QINTENT_SPELL		 6
 
-
 //used for all items that aren't weapons but have a blunt force
 #define INTENT_GENERIC	 /datum/intent/hit
 #define RANGED_FIRE		/datum/intent/shoot
@@ -129,8 +133,8 @@
 //Weapon intents
 #define SWORD_CUT		 /datum/intent/sword/cut
 #define SWORD_THRUST	 /datum/intent/sword/thrust
-#define SWORD_CHOP		 /datum/intent/sword/chop		//2h swords only
-#define SWORD_STRIKE	 /datum/intent/sword/strike		//mordhau grip
+#define SWORD_CHOP		 /datum/intent/sword/chop //2h swords only
+#define SWORD_STRIKE	 /datum/intent/sword/strike //mordhau grip
 
 #define ELFSWORD_CUT		/datum/intent/sword/cut/elf
 #define ELFSWORD_THRUST		/datum/intent/sword/thrust/elf
@@ -170,15 +174,16 @@
 #define ROD_CAST			/datum/intent/cast
 #define ROD_REEL			/datum/intent/reel
 
-
+#define INTENT_SPLASH		/datum/intent/splash
+#define INTENT_POUR			/datum/intent/pour
 
 //Intent blade class for dismember class
 #define BCLASS_BLUNT		"blunt"
 #define BCLASS_SMASH		"smashing"
-#define BCLASS_CUT			"slashing"
+#define BCLASS_CUT			"slash"
 #define BCLASS_CHOP			"chopping"
 #define BCLASS_STAB			"stabbing"
-#define BCLASS_PICK			"piercing"
+#define BCLASS_PICK			"stab"
 #define BCLASS_TWIST		"twist"
 #define BCLASS_PUNCH		"punch"
 #define BCLASS_BITE			"bite"
@@ -202,13 +207,7 @@
 #define DULLING_BASHCHOP 3
 #define DULLING_PICK 4 //rockwalls
 #define DULLING_FLOOR 5 //floors, only attacked by overhead smash and chop intents like from 2hammers
-//see get_complex_damage(
-
-//item intents
-
-#define INTENT_SPLASH	 /datum/intent/splash
-#define INTENT_POUR		 /datum/intent/pour
-
+//see get_complex_damage()
 
 //NOTE: INTENT_HOTKEY_* defines are not actual intents!
 //they are here to support hotkeys
@@ -225,12 +224,15 @@
 #define SHOVE_KNOCKDOWN_TABLE 30
 #define SHOVE_KNOCKDOWN_COLLATERAL 10
 #define SHOVE_CHAIN_PARALYZE 40
+
 //Shove slowdown
 #define SHOVE_SLOWDOWN_LENGTH 30
 #define SHOVE_SLOWDOWN_STRENGTH 0.85 //multiplier
+
 //Shove disarming item list
 GLOBAL_LIST_INIT(shove_disarming_types, typecacheof(list(
-	/obj/item/gun)))
+	/obj/item/gun,
+)))
 
 
 //Combat object defines
@@ -313,29 +315,6 @@ GLOBAL_LIST_INIT(shove_disarming_types, typecacheof(list(
 #define GRENADE_CLUMSY_FUMBLE 1
 #define GRENADE_NONCLUMSY_FUMBLE 2
 #define GRENADE_NO_FUMBLE 3
-
-#define BODY_ZONE_HEAD		"head"
-#define BODY_ZONE_CHEST		"chest"
-#define BODY_ZONE_L_ARM		"l_arm"
-#define BODY_ZONE_R_ARM		"r_arm"
-#define BODY_ZONE_L_LEG		"l_leg"
-#define BODY_ZONE_R_LEG		"r_leg"
-#define BODY_ZONE_R_INHAND	"r_inhand"
-#define BODY_ZONE_L_INHAND	"l_inhand"
-
-#define BODY_ZONE_PRECISE_STOMACH	"stomach"
-#define BODY_ZONE_PRECISE_R_EYE		"r_eye"
-#define BODY_ZONE_PRECISE_L_EYE		"l_eye"
-#define BODY_ZONE_PRECISE_EARS		"ears"
-#define BODY_ZONE_PRECISE_NOSE		"nose"
-#define BODY_ZONE_PRECISE_NECK		"neck"
-#define BODY_ZONE_PRECISE_SKULL		"skull"
-#define BODY_ZONE_PRECISE_MOUTH		"mouth"
-#define BODY_ZONE_PRECISE_GROIN		"groin"
-#define BODY_ZONE_PRECISE_L_HAND	"l_hand"
-#define BODY_ZONE_PRECISE_R_HAND	"r_hand"
-#define BODY_ZONE_PRECISE_L_FOOT	"l_foot"
-#define BODY_ZONE_PRECISE_R_FOOT	"r_foot"
 
 //We will round to this value in damage calculations.
 #define DAMAGE_PRECISION 0.1

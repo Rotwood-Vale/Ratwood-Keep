@@ -10,21 +10,21 @@ GLOBAL_LIST_EMPTY_TYPED(schizohelps, /datum/schizohelp)
 	if(!msg)
 		return
 
-	to_chat(src, "<span class='info'><i>You meditate...</i>\n[msg]</span>")
+	to_chat(src, span_info("<i>You meditate...</i>\n[msg]"))
 	var/datum/schizohelp/ticket = new(src)
 	var/display_name = get_schizo_name()
-	var/message = "<span class='info'><i>[display_name] meditates...</i>\n[msg]</span>"
-	var/message_admins = "<span class='info'><i>[display_name] ([key || "NO KEY"]) [ADMIN_FLW(src)] [ADMIN_SM(src)] meditates...</i>\n[msg]</span>"
+	var/message = span_info("<i>[display_name] meditates...</i>\n[msg]")
+	var/message_admins = span_info("<i>[display_name] ([key || "NO KEY"]) [ADMIN_FLW(src)] [ADMIN_SM(src)] meditates...</i>\n[msg]")
 	for(var/client/voice in (GLOB.clients - client))
-		if(!(client.prefs.toggles & SCHIZO_VOICE) || check_rights_for(voice, R_ADMIN))
+		if(!(voice.prefs.toggles & SCHIZO_VOICE) || check_rights_for(voice, R_ADMIN))
 			continue
-		var/answer_button = "<span class='info'>(<a href='?src=[voice];schizohelp=[REF(ticket)];'>ANSWER</a>)</span>"
+		var/answer_button = span_info("(<a href='?src=[voice];schizohelp=[REF(ticket)];'>ANSWER</a>)")
 		to_chat(voice, "[message] [answer_button]")
 
 	for(var/client/admin in GLOB.admins)
 		if(!(admin.prefs.chat_toggles & CHAT_PRAYER))
 			continue
-		var/answer_button = "<span class='info'>(<a href='?src=[admin];schizohelp=[REF(ticket)];'>ANSWER</a>)</span>"
+		var/answer_button = span_info("(<a href='?src=[admin];schizohelp=[REF(ticket)];'>ANSWER</a>)")
 		to_chat(admin, "[message_admins] [answer_button]")
 	COOLDOWN_START(src, schizohelp_cooldown, 1 MINUTES)
 
@@ -55,13 +55,13 @@ GLOBAL_LIST_EMPTY_TYPED(schizohelps, /datum/schizohelp)
 
 /client/proc/answer_schizohelp(datum/schizohelp/schizo)
 	if(QDELETED(schizo))
-		to_chat(src, "<span class='warning'>This meditation can no longer be answered...</span>")
+		to_chat(src, span_warning("This meditation can no longer be answered..."))
 		return
 	if(schizo.owner == src.mob)
-		to_chat(src, "<span class='warning'>I can't answer my own meditation!</span>")
+		to_chat(src, span_warning("I can't answer my own meditation!"))
 		return
 	if(schizo.answers[src.key])
-		to_chat(src, "<span class='warning'>I have already answered this meditation!</span>")
+		to_chat(src, span_warning("I have already answered this meditation!"))
 		return
 	var/answer = input("Answer their meditations...", "VOICE")
 	if(!answer || QDELETED(schizo))
@@ -100,7 +100,7 @@ GLOBAL_LIST_EMPTY_TYPED(schizohelps, /datum/schizohelp)
 	for(var/client/admin in GLOB.admins)
 		if(!(admin.prefs.chat_toggles & CHAT_PRAYER))
 			continue
-		to_chat(admin, "<span class='info'><i>[voice] ([voice.key || "NO KEY"]) [ADMIN_FLW(owner)] [ADMIN_SM(owner)] answered [owner] ([owner.key || "NO KEY"])'s [ADMIN_FLW(owner)] [ADMIN_SM(owner)] meditation:</i>\n[answer]</span>")
+		to_chat(admin, span_info("<i>[voice] ([voice.key || "NO KEY"]) [ADMIN_FLW(owner)] [ADMIN_SM(owner)] answered [owner] ([owner.key || "NO KEY"])'s [ADMIN_FLW(owner)] [ADMIN_SM(owner)] meditation:</i>\n[answer]"))
 	answers[voice.key] = answer
 	if(length(answers) >= max_answers)
 		qdel(src)

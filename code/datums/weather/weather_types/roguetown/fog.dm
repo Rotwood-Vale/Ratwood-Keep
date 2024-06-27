@@ -3,7 +3,7 @@
 	desc = ""
 
 	telegraph_duration = 10 SECONDS
-	telegraph_message = "<span class='warning'>The fog is coming.</span>"
+	telegraph_message = span_warning("The fog is coming.")
 	telegraph_sound = 'sound/blank.ogg'
 	weather_message = ""
 	weather_overlay = "rain1"

@@ -98,14 +98,14 @@
 				hood.color = color
 			if(slot_flags == ITEM_SLOT_ARMOR)
 				if(H.wear_armor != src)
-					to_chat(H, "<span class='warning'>I should put that on first.</span>")
+					to_chat(H, span_warning("I should put that on first."))
 					return
 			if(slot_flags == ITEM_SLOT_CLOAK)
 				if(H.cloak != src)
-					to_chat(H, "<span class='warning'>I should put that on first.</span>")
+					to_chat(H, span_warning("I should put that on first."))
 					return
 			if(H.head)
-				to_chat(H, "<span class='warning'>I'm already wearing something on my head.</span>")
+				to_chat(H, span_warning("I'm already wearing something on my head."))
 				return
 			else if(H.equip_to_slot_if_possible(hood,SLOT_HEAD,0,0,1))
 				testing("begintog")
@@ -170,7 +170,7 @@
 	if(!can_use(usr))
 		return 0
 
-	to_chat(usr, "<span class='notice'>I toggle [src]'s [togglename].</span>")
+	to_chat(usr, span_notice("I toggle [src]'s [togglename]."))
 	if(src.hoodtoggled)
 		src.icon_state = "[initial(icon_state)]"
 		src.hoodtoggled = FALSE
@@ -233,7 +233,7 @@
 			helmet.attack_self(H)
 		H.transferItemToLoc(helmet, src, TRUE)
 		H.update_inv_wear_suit()
-		to_chat(H, "<span class='notice'>The helmet on the hardsuit disengages.</span>")
+		to_chat(H, span_notice("The helmet on the hardsuit disengages."))
 		playsound(src.loc, 'sound/blank.ogg', 50, TRUE)
 	else
 		helmet.forceMove(src)
@@ -251,13 +251,13 @@
 	if(!hoodtoggled)
 		if(ishuman(src.loc))
 			if(H.wear_armor != src)
-				to_chat(H, "<span class='warning'>I must be wearing [src] to engage the helmet!</span>")
+				to_chat(H, span_warning("I must be wearing [src] to engage the helmet!"))
 				return
 			if(H.head)
-				to_chat(H, "<span class='warning'>You're already wearing something on your head!</span>")
+				to_chat(H, span_warning("You're already wearing something on your head!"))
 				return
 			else if(H.equip_to_slot_if_possible(helmet,SLOT_HEAD,0,0,1))
-				to_chat(H, "<span class='notice'>I engage the helmet on the hardsuit.</span>")
+				to_chat(H, span_notice("I engage the helmet on the hardsuit."))
 				hoodtoggled = TRUE
 				H.update_inv_wear_suit()
 				playsound(src.loc, 'sound/blank.ogg', 50, TRUE)

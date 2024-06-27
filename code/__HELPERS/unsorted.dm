@@ -643,84 +643,6 @@ Turf and target are separate in case you want to teleport some distance from a t
 /proc/anyprob(value)
 	return (rand(1,value)==value)
 
-/proc/parse_zone(zone)
-	if(zone == BODY_ZONE_PRECISE_R_HAND)
-		return "right hand"
-	else if (zone == BODY_ZONE_PRECISE_L_HAND)
-		return "left hand"
-	else if (zone == BODY_ZONE_L_ARM)
-		return "left arm"
-	else if (zone == BODY_ZONE_R_ARM)
-		return "right arm"
-	else if (zone == BODY_ZONE_L_LEG)
-		return "left leg"
-	else if (zone == BODY_ZONE_R_LEG)
-		return "right leg"
-	else if (zone == BODY_ZONE_PRECISE_L_FOOT)
-		return "left foot"
-	else if (zone == BODY_ZONE_PRECISE_R_FOOT)
-		return "right foot"
-	else if (zone == BODY_ZONE_PRECISE_NECK)
-		return "throat"
-	else if (zone == BODY_ZONE_PRECISE_GROIN)
-		return "groin"
-	else if (zone == BODY_ZONE_PRECISE_EARS)	//we want the chatlog to say 'grabbed his ear' not 'grabbed his ears' etc
-		return "ear"
-	else if (zone == BODY_ZONE_PRECISE_R_EYE)
-		return "right eye"
-	else if (zone == BODY_ZONE_PRECISE_L_EYE)
-		return "left eye"
-	else if (zone == BODY_ZONE_PRECISE_NOSE)
-		return "nose"
-	else if (zone == BODY_ZONE_R_INHAND)
-		return "right hand"
-	else if (zone == BODY_ZONE_L_INHAND)
-		return "left hand"
-	else if (zone == BODY_ZONE_PRECISE_SKULL)
-		return "skull"
-	else if (zone == BODY_ZONE_PRECISE_MOUTH)
-		return "mouth"
-	return zone
-
-/mob/living/carbon/proc/parse_zone(zone, mob/living/target)
-	if(zone == BODY_ZONE_PRECISE_R_HAND)
-		return "right hand"
-	else if (zone == BODY_ZONE_PRECISE_L_HAND)
-		return "left hand"
-	else if (zone == BODY_ZONE_L_ARM)
-		return "left arm"
-	else if (zone == BODY_ZONE_R_ARM)
-		return "right arm"
-	else if (zone == BODY_ZONE_L_LEG)
-		return "left leg"
-	else if (zone == BODY_ZONE_R_LEG)
-		return "right leg"
-	else if (zone == BODY_ZONE_PRECISE_L_FOOT)
-		return "left foot"
-	else if (zone == BODY_ZONE_PRECISE_R_FOOT)
-		return "right foot"
-	else if (zone == BODY_ZONE_PRECISE_NECK)
-		return "throat"
-	else if (zone == BODY_ZONE_PRECISE_GROIN)
-		return "groin"
-	else if (zone == BODY_ZONE_PRECISE_EARS)	//we want the chatlog to say 'grabbed his ear' not 'grabbed his ears' etc
-		return "ear"
-	else if (zone == BODY_ZONE_PRECISE_R_EYE)
-		return "right eye"
-	else if (zone == BODY_ZONE_PRECISE_L_EYE)
-		return "left eye"
-	else if (zone == BODY_ZONE_PRECISE_NOSE)
-		return "nose"
-	else if (zone == BODY_ZONE_R_INHAND)
-		return parse_inhand(zone)
-	else if (zone == BODY_ZONE_L_INHAND)
-		return parse_inhand(zone)
-	else if (zone == BODY_ZONE_PRECISE_SKULL)
-		return "skull"
-	else if (zone == BODY_ZONE_PRECISE_MOUTH)
-		return "mouth"
-	return zone
-
 /*
 
  Gets the turf this atom's *ICON* appears to inhabit
@@ -1522,27 +1444,7 @@ GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 		REMOVE_TRAIT(the_atom2,trait,source)
 
 /proc/get_random_food()
-	var/list/blocked = list(/obj/item/reagent_containers/food/snacks/store/bread,
-		/obj/item/reagent_containers/food/snacks/breadslice,
-		/obj/item/reagent_containers/food/snacks/store/cake,
-		/obj/item/reagent_containers/food/snacks/cakeslice,
-		/obj/item/reagent_containers/food/snacks/store,
-		/obj/item/reagent_containers/food/snacks/pie,
-		/obj/item/reagent_containers/food/snacks/kebab,
-		/obj/item/reagent_containers/food/snacks/pizza,
-		/obj/item/reagent_containers/food/snacks/pizzaslice,
-		/obj/item/reagent_containers/food/snacks/salad,
-		/obj/item/reagent_containers/food/snacks/meat,
-		/obj/item/reagent_containers/food/snacks/meat/slab,
-		/obj/item/reagent_containers/food/snacks/soup,
-		/obj/item/reagent_containers/food/snacks/grown,
-		/obj/item/reagent_containers/food/snacks/grown/mushroom,
-		/obj/item/reagent_containers/food/snacks/deepfryholder,
-		/obj/item/reagent_containers/food/snacks/clothing,
-		/obj/item/reagent_containers/food/snacks/grown/shell, //base types
-		/obj/item/reagent_containers/food/snacks/store/bread,
-		/obj/item/reagent_containers/food/snacks/grown/nettle
-		)
+	var/list/blocked = list()
 	blocked |= typesof(/obj/item/reagent_containers/food/snacks/customizable)
 
 	return pick(subtypesof(/obj/item/reagent_containers/food/snacks) - blocked)

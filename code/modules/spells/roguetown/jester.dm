@@ -7,7 +7,7 @@
 	charge_max = 600
 
 /obj/effect/proc_holder/spell/self/telljoke/cast(list/targets,mob/user = usr)
-	..()
+	. = ..()
 	var/joker = input(user, "Say something funny!", "Comedia")
 	if(!joker)
 		return FALSE
@@ -33,7 +33,7 @@
 	charge_max = 600
 
 /obj/effect/proc_holder/spell/self/telltragedy/cast(list/targets,mob/user = usr)
-	..()
+	. = ..()
 	var/joker = input(user, "Say something sad!", "Tragedia")
 	if(!joker)
 		return FALSE

@@ -94,24 +94,24 @@
 /obj/structure/roguewindow/openclose/attack_right(mob/user)
 	if(get_dir(src,user) == lockdir)
 		if(brokenstate)
-			to_chat(user, "<span class='warning'>It's broken, that would be foolish.</span>")
+			to_chat(user, span_warning("It's broken, that would be foolish."))
 			return
 		if(climbable)
 			close_up(user)
 		else
 			open_up(user)
 	else
-		to_chat(user, "<span class='warning'>The window doesn't close from this side.</span>")
+		to_chat(user, span_warning("The window doesn't close from this side."))
 
 /obj/structure/roguewindow/proc/open_up(mob/user)
-	visible_message("<span class='info'>[user] opens [src].</span>")
+	visible_message(span_info("[user] opens [src]."))
 	playsound(src, 'sound/foley/doors/windowup.ogg', 100, FALSE)
 	climbable = TRUE
 	opacity = FALSE
 	update_icon()
 
 /obj/structure/roguewindow/proc/close_up(mob/user)
-	visible_message("<span class='info'>[user] closes [src].</span>")
+	visible_message(span_info("[user] closes [src]."))
 	playsound(src, 'sound/foley/doors/windowdown.ogg', 100, FALSE)
 	climbable = FALSE
 	opacity = TRUE
@@ -149,7 +149,7 @@
 	if(brokenstate)
 		return
 	user.changeNext_move(CLICK_CD_MELEE)
-	src.visible_message("<span class='info'>[user] knocks on [src].</span>")
+	src.visible_message(span_info("[user] knocks on [src]."))
 	add_fingerprint(user)
 	playsound(src, 'sound/misc/glassknock.ogg', 100)
 

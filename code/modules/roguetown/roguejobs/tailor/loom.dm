@@ -1,7 +1,7 @@
 /obj/machinery/loom
 	icon = 'icons/roguetown/misc/structure.dmi'
 	name = "loom"
-	desc = ""
+	desc = "A wooden frame with taut threads ready to weave fabric."
 	icon_state = "loom"
 	var/storedfiber = 0
 	var/maxfiber = 50
@@ -61,5 +61,5 @@
 				weaver.mind.adjust_experience(/datum/skill/misc/sewing, (weaver.STAINT*0.5))//you get less exp from using the loom
 
 /obj/machinery/loom/examine(mob/user)
-	to_chat(user, "<span class='notice'>There are [storedfiber] strands of fiber strung on [src].</span>")
+	to_chat(user, span_notice("There are [storedfiber] strands of fiber strung on [src]."))
 	. = ..()

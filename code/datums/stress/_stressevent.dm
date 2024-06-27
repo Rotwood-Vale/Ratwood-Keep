@@ -11,9 +11,9 @@
 /datum/stressevent/test
 	timer = 5 SECONDS
 	stressadd = 3
-	desc = "<span class='red'>This is a positive test event.</span>"
+	desc = span_red("This is a positive test event.")
 
 /datum/stressevent/testr
 	timer = 5 SECONDS
 	stressadd = -3
-	desc = "<span class='green'>This is a negative test event.</span>"
+	desc = span_green("This is a negative test event.")

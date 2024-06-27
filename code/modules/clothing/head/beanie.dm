@@ -75,7 +75,7 @@
 	name = "durathread beanie"
 	desc = ""
 	icon_state = "beaniedurathread"
-	armor = list("melee" = 15, "bullet" = 5, "laser" = 15, "energy" = 5, "bomb" = 10, "bio" = 0, "rad" = 0, "fire" = 30, "acid" = 5)
+	armor = list("blunt" = 15, "slash" = 10, "stab" = 10, "bullet" = 5, "laser" = 15, "energy" = 5, "bomb" = 10, "bio" = 0, "rad" = 0, "fire" = 30, "acid" = 5)
 
 /obj/item/clothing/head/beanie/waldo
 	name = "red striped bobble hat"

@@ -37,7 +37,7 @@
 		return
 	if(trigger_mob && isliving(AM))
 		var/mob/living/L = AM
-		to_chat(L, "<span class='warning'>I feel something click beneath you!</span>")
+		to_chat(L, span_warning("I feel something click beneath you!"))
 	else if(!trigger_item)
 		return
 	can_trigger = FALSE
@@ -51,12 +51,12 @@
 /obj/item/pressure_plate/attackby(obj/item/I, mob/living/L)
 	if(istype(I, /obj/item/assembly/signaler) && !istype(sigdev) && removable_signaller && L.transferItemToLoc(I, src))
 		sigdev = I
-		to_chat(L, "<span class='notice'>I attach [I] to [src]!</span>")
+		to_chat(L, span_notice("I attach [I] to [src]!"))
 	return ..()
 
 /obj/item/pressure_plate/attack_self(mob/living/L)
 	if(removable_signaller && istype(sigdev))
-		to_chat(L, "<span class='notice'>I remove [sigdev] from [src].</span>")
+		to_chat(L, span_notice("I remove [sigdev] from [src]."))
 		if(!L.put_in_hands(sigdev))
 			sigdev.forceMove(get_turf(src))
 		sigdev = null

@@ -31,6 +31,6 @@
 				traitorwin = FALSE
 	if(considered_alive(owner))
 		if(traitorwin)
-			to_chat(owner.current, "<span class='greentext'>5/5.</span>")
+			to_chat(owner.current, span_greentext("5/5."))
 		else
-			to_chat(owner.current, "<span class='redtext'>I've FAILED to meet my quota. Someone more capable will be along to replace me.</span>")
+			to_chat(owner.current, span_redtext("I've FAILED to meet my quota. Someone more capable will be along to replace me."))

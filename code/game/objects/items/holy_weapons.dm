@@ -5,7 +5,7 @@
 	desc = ""
 	icon_state = "knight_templar"
 	item_state = "knight_templar"
-	armor = list("melee" = 50, "bullet" = 10, "laser" = 10, "energy" = 10, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 80, "acid" = 80)
+	armor = list("blunt" = 50, "slash" = 30, "stab" = 20, "bullet" = 10, "laser" = 10, "energy" = 10, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 80, "acid" = 80)
 	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE|HIDEHAIR
 	flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH
 	strip_delay = 80
@@ -48,7 +48,7 @@
 		SSblackbox.record_feedback("tally", "chaplain_armor", 1, "[choice]")
 		GLOB.holy_armor_type = choice
 	else
-		to_chat(M, "<span class='warning'>A selection has already been made. Self-Destructing...</span>")
+		to_chat(M, span_warning("A selection has already been made. Self-Destructing..."))
 		return
 
 
@@ -209,7 +209,7 @@
 	AddComponent(/datum/component/anti_magic, TRUE, TRUE, FALSE, null, null, FALSE)
 
 /obj/item/nullrod/suicide_act(mob/user)
-	user.visible_message("<span class='suicide'>[user] is killing [user.p_them()]self with [src]! It looks like [user.p_theyre()] trying to get closer to god!</span>")
+	user.visible_message(span_suicide("[user] is killing [user.p_them()]self with [src]! It looks like [user.p_theyre()] trying to get closer to god!"))
 	return (BRUTELOSS|FIRELOSS)
 
 /obj/item/nullrod/attack_self(mob/user)
@@ -440,7 +440,7 @@
 	if(possessed)
 		return
 
-	to_chat(user, "<span class='notice'>I attempt to wake the spirit of the blade...</span>")
+	to_chat(user, span_notice("I attempt to wake the spirit of the blade..."))
 
 	possessed = TRUE
 
@@ -459,12 +459,12 @@
 			name = input
 			S.fully_replace_character_name(null, "The spirit of [input]")
 	else
-		to_chat(user, "<span class='warning'>The blade is dormant. Maybe you can try again later.</span>")
+		to_chat(user, span_warning("The blade is dormant. Maybe you can try again later."))
 		possessed = FALSE
 
 /obj/item/nullrod/scythe/talking/Destroy()
 	for(var/mob/living/simple_animal/shade/S in contents)
-		to_chat(S, "<span class='danger'>I were destroyed!</span>")
+		to_chat(S, span_danger("I were destroyed!"))
 		qdel(S)
 	return ..()
 
@@ -540,8 +540,8 @@
 	if(prob(30) && ishuman(A))
 		var/mob/living/carbon/human/H = A
 		user.reagents.trans_to(H, user.reagents.total_volume, 1, 1, 0, transfered_by = user)
-		to_chat(user, "<span class='notice'>My pride reflects on [H].</span>")
-		to_chat(H, "<span class='danger'>I feel insecure, taking on [user]'s burden.</span>")
+		to_chat(user, span_notice("My pride reflects on [H]."))
+		to_chat(H, span_danger("I feel insecure, taking on [user]'s burden."))
 
 /obj/item/nullrod/whip
 	name = "holy whip"
@@ -606,7 +606,7 @@
 /obj/item/nullrod/carp/attack_self(mob/living/user)
 	if(used_blessing)
 	else if(user.mind && (user.mind.isholy))
-		to_chat(user, "<span class='boldnotice'>I are blessed by Carp-Sie. Wild space carp will no longer attack you.</span>")
+		to_chat(user, span_boldnotice("I are blessed by Carp-Sie. Wild space carp will no longer attack you."))
 		user.faction |= "carp"
 		used_blessing = TRUE
 

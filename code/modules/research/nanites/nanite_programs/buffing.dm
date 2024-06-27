@@ -28,7 +28,7 @@
 /datum/nanite_program/triggered/adrenaline/trigger()
 	if(!..())
 		return
-	to_chat(host_mob, "<span class='notice'>I feel a sudden surge of energy!</span>")
+	to_chat(host_mob, span_notice("I feel a sudden surge of energy!"))
 	host_mob.set_resting(FALSE)
 	host_mob.reagents.add_reagent(/datum/reagent/medicine/badstims, 3)
 
@@ -44,14 +44,18 @@
 	. = ..()
 	if(ishuman(host_mob))
 		var/mob/living/carbon/human/H = host_mob
-		H.physiology.armor.melee += 50
+		H.physiology.armor.blunt += 50
+		H.physiology.armor.blunt += 50
+		H.physiology.armor.blunt += 50
 		H.physiology.armor.bullet += 35
 
 /datum/nanite_program/hardening/disable_passive_effect()
 	. = ..()
 	if(ishuman(host_mob))
 		var/mob/living/carbon/human/H = host_mob
-		H.physiology.armor.melee -= 50
+		H.physiology.armor.blunt -= 50
+		H.physiology.armor.slash -= 50
+		H.physiology.armor.stab -= 50
 		H.physiology.armor.bullet -= 35
 
 /datum/nanite_program/refractive

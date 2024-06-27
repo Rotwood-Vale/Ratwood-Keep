@@ -2,7 +2,7 @@
 	name = "Geladikinesis"
 	desc = ""
 	quality = POSITIVE
-	text_gain_indication = "<span class='notice'>My hand feels cold.</span>"
+	text_gain_indication = span_notice("My hand feels cold.")
 	instability = 10
 	difficulty = 10
 	synchronizer_coeff = 1
@@ -21,7 +21,7 @@
 	name = "Cryokinesis"
 	desc = ""
 	quality = POSITIVE //upsides and downsides
-	text_gain_indication = "<span class='notice'>My hand feels cold.</span>"
+	text_gain_indication = span_notice("My hand feels cold.")
 	instability = 20
 	difficulty = 12
 	synchronizer_coeff = 1

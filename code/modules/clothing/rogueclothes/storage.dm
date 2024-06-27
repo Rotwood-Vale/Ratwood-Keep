@@ -228,11 +228,3 @@
 		STR.max_w_class = WEIGHT_CLASS_NORMAL
 		STR.max_items = 14
 		STR.not_while_equipped = TRUE
-
-/obj/item/storage/backpack/rogue/backpack/surgery/PopulateContents()
-	new /obj/item/scalpel(src)
-	new /obj/item/hemostat(src)
-	new /obj/item/retractor(src)
-	new /obj/item/circular_saw/bonesaw(src)
-	new /obj/item/cautery(src)
-	new /obj/item/surgical_drapes(src)

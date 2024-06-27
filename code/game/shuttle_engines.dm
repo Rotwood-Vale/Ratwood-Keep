@@ -8,7 +8,7 @@
 	icon = 'icons/turf/shuttle.dmi'
 	resistance_flags = LAVA_PROOF | FIRE_PROOF | ACID_PROOF
 	max_integrity = 500
-	armor = list("melee" = 100, "bullet" = 10, "laser" = 10, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 50, "acid" = 70) //default + ignores melee
+	armor = list("blunt" = 100, "slash" = 100, "stab" = 100, "bullet" = 10, "laser" = 10, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 50, "acid" = 70) //default + ignores melee
 
 /obj/structure/shuttle/engine
 	name = "engine"
@@ -22,7 +22,7 @@
 /obj/structure/shuttle/engine/can_be_unfasten_wrench(mob/user, silent)
 	if(state == ENGINE_WELDED)
 		if(!silent)
-			to_chat(user, "<span class='warning'>[src] is welded to the floor!</span>")
+			to_chat(user, span_warning("[src] is welded to the floor!"))
 		return FAILED_UNFASTEN
 	return ..()
 
@@ -43,31 +43,31 @@
 	. = ..()
 	switch(state)
 		if(ENGINE_UNWRENCHED)
-			to_chat(user, "<span class='warning'>The [src.name] needs to be wrenched to the floor!</span>")
+			to_chat(user, span_warning("The [src.name] needs to be wrenched to the floor!"))
 		if(ENGINE_WRENCHED)
 			if(!I.tool_start_check(user, amount=0))
 				return TRUE
 
-			user.visible_message("<span class='notice'>[user.name] starts to weld the [name] to the floor.</span>", \
-				"<span class='notice'>I start to weld \the [src] to the floor...</span>", \
-				"<span class='hear'>I hear welding.</span>")
+			user.visible_message(span_notice("[user.name] starts to weld the [name] to the floor."), \
+				span_notice("I start to weld \the [src] to the floor..."), \
+				span_hear("I hear welding."))
 
 			if(I.use_tool(src, user, ENGINE_WELDTIME, volume=50))
 				state = ENGINE_WELDED
-				to_chat(user, "<span class='notice'>I weld \the [src] to the floor.</span>")
+				to_chat(user, span_notice("I weld \the [src] to the floor."))
 				alter_engine_power(engine_power)
 
 		if(ENGINE_WELDED)
 			if(!I.tool_start_check(user, amount=0))
 				return TRUE
 
-			user.visible_message("<span class='notice'>[user.name] starts to cut the [name] free from the floor.</span>", \
-				"<span class='notice'>I start to cut \the [src] free from the floor...</span>", \
-				"<span class='hear'>I hear welding.</span>")
+			user.visible_message(span_notice("[user.name] starts to cut the [name] free from the floor."), \
+				span_notice("I start to cut \the [src] free from the floor..."), \
+				span_hear("I hear welding."))
 
 			if(I.use_tool(src, user, ENGINE_WELDTIME, volume=50))
 				state = ENGINE_WRENCHED
-				to_chat(user, "<span class='notice'>I cut \the [src] free from the floor.</span>")
+				to_chat(user, span_notice("I cut \the [src] free from the floor."))
 				alter_engine_power(-engine_power)
 	return TRUE
 

@@ -103,7 +103,7 @@
 			mob.ghostize()
 		else
 			if(!world.time%5)
-				to_chat(src, "<span class='warning'>My spirit hasn't manifested yet.</span>")
+				to_chat(src, span_warning("My spirit hasn't manifested yet."))
 		return FALSE
 	if(mob.force_moving)
 		return FALSE
@@ -189,11 +189,11 @@
 			if(P.facepull)
 				mob.setDir(turn(mob.dir, 180))
 	if(mob.used_intent?.movement_interrupt && mob.atkswinging == "left" && charging)
-		to_chat(src, "<span class='warning'>I lost my concentration!</span>")
+		to_chat(src, span_warning("I lost my concentration!"))
 		mob.stop_attack(FALSE)
 		mob.changeNext_move(CLICK_CD_MELEE)
 	if(mob.mmb_intent?.movement_interrupt && mob.atkswinging == "middle" && charging)
-		to_chat(src, "<span class='warning'>I lost my concentration!</span>")
+		to_chat(src, span_warning("I lost my concentration!"))
 		mob.stop_attack(FALSE)
 		mob.changeNext_move(CLICK_CD_MELEE)
 
@@ -215,20 +215,20 @@
 			return FALSE
 		if(mob.pulledby == mob.pulling)			//Don't autoresist grabs if we're grabbing them too.
 			move_delay = world.time + 10
-			to_chat(src, "<span class='warning'>I can't move!</span>")
+			to_chat(src, span_warning("I can't move!"))
 			return TRUE
 		else if(mob.incapacitated(ignore_restraints = 1))
 			move_delay = world.time + 10
-			to_chat(src, "<span class='warning'>I can't move!</span>")
+			to_chat(src, span_warning("I can't move!"))
 			return TRUE
 		else if(mob.restrained(ignore_grab = 1))
 			move_delay = world.time + 10
-			to_chat(src, "<span class='warning'>I'm restrained! I can't move!</span>")
+			to_chat(src, span_warning("I'm restrained! I can't move!"))
 			return TRUE
 		else
 //			return mob.resist_grab(1)
 			move_delay = world.time + 10
-			to_chat(src, "<span class='warning'>I can't move!</span>")
+			to_chat(src, span_warning("I can't move!"))
 			return TRUE
 
 /**
@@ -301,17 +301,17 @@
 			var/turf/open/floor/stepTurf = get_step(L, direct)
 			if(stepTurf)
 				for(var/obj/effect/decal/cleanable/food/salt/S in stepTurf)
-					to_chat(L, "<span class='warning'>[S] bars your passage!</span>")
+					to_chat(L, span_warning("[S] bars your passage!"))
 					if(isrevenant(L))
 						var/mob/living/simple_animal/revenant/R = L
 						R.reveal(20)
 						R.stun(20)
 					return
 				if(stepTurf.flags_1 & NOJAUNT_1)
-					to_chat(L, "<span class='warning'>Some strange aura is blocking the way.</span>")
+					to_chat(L, span_warning("Some strange aura is blocking the way."))
 					return
 				if (locate(/obj/effect/blessing, stepTurf))
-					to_chat(L, "<span class='warning'>Holy energies block your path!</span>")
+					to_chat(L, span_warning("Holy energies block your path!"))
 					return
 
 				L.forceMove(stepTurf)
@@ -335,7 +335,7 @@
 	if(backup)
 		if(istype(backup) && movement_dir && !backup.anchored)
 			if(backup.newtonian_move(turn(movement_dir, 180))) //You're pushing off something movable, so it moves
-				to_chat(src, "<span class='info'>I push off of [backup] to propel myself.</span>")
+				to_chat(src, span_info("I push off of [backup] to propel myself."))
 		return TRUE
 	return FALSE
 
@@ -577,7 +577,10 @@
 	if(m_intent == MOVE_INTENT_RUN)
 		m_intent = MOVE_INTENT_WALK
 	else
-		m_intent = MOVE_INTENT_RUN
+		if(!HAS_TRAIT(user, TRAIT_NORUN))
+			m_intent = MOVE_INTENT_RUN
+		else
+			to_chat(user, span_warning("My joints have decayed too much for running!"))
 	if(hud_used && hud_used.static_inventory)
 		for(var/atom/movable/screen/mov_intent/selector in hud_used.static_inventory)
 			selector.update_icon()
@@ -706,19 +709,19 @@
 	prefs.chat_toggles ^= CHAT_GHOSTWHISPER
 	prefs.save_preferences()
 	if(prefs.chat_toggles & CHAT_GHOSTEARS)
-		to_chat(src, "<span class='notice'>I will hear all now.</span>")
+		to_chat(src, span_notice("I will hear all now."))
 	else
-		to_chat(src, "<span class='info'>I will hear like a mortal.</span>")
+		to_chat(src, span_info("I will hear like a mortal."))
 
 ///Moves a mob upwards in z level
 /mob/proc/ghost_up()
 	if(zMove(UP, TRUE))
-		to_chat(src, "<span class='notice'>I move upwards.</span>")
+		to_chat(src, span_notice("I move upwards."))
 
 ///Moves a mob down a z level
 /mob/proc/ghost_down()
 	if(zMove(DOWN, TRUE))
-		to_chat(src, "<span class='notice'>I move down.</span>")
+		to_chat(src, span_notice("I move down."))
 
 ///Move a mob between z levels, if it's valid to move z's on this turf
 /mob/proc/zMove(dir, feedback = FALSE)
@@ -727,11 +730,11 @@
 	var/turf/target = get_step_multiz(src, dir)
 	if(!target)
 		if(feedback)
-			to_chat(src, "<span class='warning'>There's nothing in that direction!</span>")
+			to_chat(src, span_warning("There's nothing in that direction!"))
 		return FALSE
 	if(!canZMove(dir, target))
 		if(feedback)
-			to_chat(src, "<span class='warning'>I couldn't move there!</span>")
+			to_chat(src, span_warning("I couldn't move there!"))
 		return FALSE
 	forceMove(target)
 	return TRUE

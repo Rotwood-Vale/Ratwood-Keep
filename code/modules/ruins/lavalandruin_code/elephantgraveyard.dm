@@ -76,7 +76,7 @@
 /obj/structure/sink/oil_well/attack_hand(mob/M)
 	flick("puddle-oil-splash",src)
 	reagents.reaction(M, TOUCH, 20) //Covers target in 20u of oil.
-	to_chat(M, "<span class='notice'>I touch the pool of oil, only to get oil all over myself. It would be wise to wash this off with water.</span>")
+	to_chat(M, span_notice("I touch the pool of oil, only to get oil all over myself. It would be wise to wash this off with water."))
 
 /obj/structure/sink/oil_well/attackby(obj/item/O, mob/user, params)
 	flick("puddle-oil-splash",src)
@@ -90,12 +90,12 @@
 		if(RG.is_refillable())
 			if(!RG.reagents.holder_full())
 				RG.reagents.add_reagent(dispensedreagent, min(RG.volume - RG.reagents.total_volume, RG.amount_per_transfer_from_this))
-				to_chat(user, "<span class='notice'>I fill [RG] from [src].</span>")
+				to_chat(user, span_notice("I fill [RG] from [src]."))
 				return TRUE
-			to_chat(user, "<span class='notice'>\The [RG] is full.</span>")
+			to_chat(user, span_notice("\The [RG] is full."))
 			return FALSE
 	if(user.used_intent.type != INTENT_HARM)
-		to_chat(user, "<span class='notice'>I won't have any luck getting \the [O] out if you drop it in the oil.</span>")
+		to_chat(user, span_notice("I won't have any luck getting \the [O] out if you drop it in the oil."))
 		return 1
 	else
 		return ..()
@@ -149,15 +149,15 @@
 
 /obj/structure/closet/crate/grave/open(mob/living/user, obj/item/S)
 	if(!opened)
-		to_chat(user, "<span class='notice'>The ground here is too hard to dig up with your bare hands. You'll need a shovel.</span>")
+		to_chat(user, span_notice("The ground here is too hard to dig up with your bare hands. You'll need a shovel."))
 	else
-		to_chat(user, "<span class='notice'>The grave has already been dug up.</span>")
+		to_chat(user, span_notice("The grave has already been dug up."))
 
 /obj/structure/closet/crate/grave/tool_interact(obj/item/S, mob/living/carbon/user)
 	if(user.used_intent.type == INTENT_HELP) //checks to attempt to dig the grave, must be done on help intent only.
 		if(!opened)
 			if(istype(S,cutting_tool) && S.tool_behaviour == TOOL_SHOVEL)
-				to_chat(user, "<span class='notice'>I start start to dig open \the [src]  with \the [S]...</span>")
+				to_chat(user, span_notice("I start start to dig open \the [src]  with \the [S]..."))
 				if (do_after(user,20, target = src))
 					opened = TRUE
 					locked = TRUE
@@ -166,22 +166,22 @@
 					SEND_SIGNAL(user, COMSIG_ADD_MOOD_EVENT, "graverobbing", /datum/mood_event/graverobbing)
 					if(lead_tomb == TRUE && first_open == TRUE)
 						user.gain_trauma(/datum/brain_trauma/magic/stalker)
-						to_chat(user, "<span class='boldwarning'>Oh no, no no no, THEY'RE EVERYWHERE! EVERY ONE OF THEM IS EVERYWHERE!</span>")
+						to_chat(user, span_boldwarning("Oh no, no no no, THEY'RE EVERYWHERE! EVERY ONE OF THEM IS EVERYWHERE!"))
 						first_open = FALSE
 					return 1
 				return 1
 			else
-				to_chat(user, "<span class='notice'>I can't dig up a grave with \the [S.name].</span>")
+				to_chat(user, span_notice("I can't dig up a grave with \the [S.name]."))
 				return 1
 		else
-			to_chat(user, "<span class='notice'>The grave has already been dug up.</span>")
+			to_chat(user, span_notice("The grave has already been dug up."))
 			return 1
 
 	else if((user.used_intent.type != INTENT_HELP) && opened) //checks to attempt to remove the grave entirely.
 		if(istype(S,cutting_tool) && S.tool_behaviour == TOOL_SHOVEL)
-			to_chat(user, "<span class='notice'>I start to remove \the [src]  with \the [S].</span>")
+			to_chat(user, span_notice("I start to remove \the [src]  with \the [S]."))
 			if (do_after(user,15, target = src))
-				to_chat(user, "<span class='notice'>I remove \the [src]  completely.</span>")
+				to_chat(user, span_notice("I remove \the [src]  completely."))
 				SEND_SIGNAL(user, COMSIG_ADD_MOOD_EVENT, "graverobbing", /datum/mood_event/graverobbing)
 				deconstruct(TRUE)
 				return 1

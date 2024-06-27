@@ -54,7 +54,7 @@
 	if(istype(I, /obj/item/book/rogue/playerbook))
 		var/obj/item/book/rogue/playerbook/PB = I
 		if(PB.is_in_round_player_generated)
-			to_chat(user, "<span class='notice'>[SSlibrarian.playerbook2file(PB.player_book_text, PB.player_book_title, PB.player_book_author, PB.player_book_author_ckey, PB.player_book_icon)]</span>")
+			to_chat(user, span_notice("[SSlibrarian.playerbook2file(PB.player_book_text, PB.player_book_title, PB.player_book_author, PB.player_book_author_ckey, PB.player_book_icon)]"))
 			PB.is_in_round_player_generated = FALSE
 
 	. = ..()

@@ -4,8 +4,8 @@
 	desc = ""
 	quality = POSITIVE
 	difficulty = 16
-	text_gain_indication = "<span class='notice'>I feel one with your surroundings.</span>"
-	text_lose_indication = "<span class='notice'>I feel oddly exposed.</span>"
+	text_gain_indication = span_notice("I feel one with your surroundings.")
+	text_lose_indication = span_notice("I feel oddly exposed.")
 	time_coeff = 5
 	instability = 25
 

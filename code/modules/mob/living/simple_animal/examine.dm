@@ -29,20 +29,20 @@
 		if(50 to 100)
 			msg += "<B>[m1] severely wounded.</B>"
 		if(100 to INFINITY)
-			msg += "<span class='danger'>[m1] gravely wounded.</span>"
+			msg += span_danger("[m1] gravely wounded.")
 
 	var/has_simple_wounds = HAS_TRAIT(src, TRAIT_SIMPLE_WOUNDS)
 	if(has_simple_wounds)
 		// Blood volume
 		switch(blood_volume)
 			if(-INFINITY to BLOOD_VOLUME_SURVIVE)
-				msg += "<span class='artery'><B>[m1] extremely pale and sickly.</B></span>"
+				msg += span_artery("<B>[m1] extremely pale and sickly.</B>")
 			if(BLOOD_VOLUME_SURVIVE to BLOOD_VOLUME_BAD)
-				msg += "<span class='artery'><B>[m1] very pale.</B></span>"
+				msg += span_artery("<B>[m1] very pale.</B>")
 			if(BLOOD_VOLUME_BAD to BLOOD_VOLUME_OKAY)
-				msg += "<span class='artery'>[m1] pale.</span>"
+				msg += span_artery("[m1] pale.")
 			if(BLOOD_VOLUME_OKAY to BLOOD_VOLUME_SAFE)
-				msg += "<span class='artery'>[m1] a little pale.</span>"
+				msg += span_artery("[m1] a little pale.")
 	
 		// Bleeding
 		if(bleed_rate)
@@ -57,9 +57,9 @@
 				if(10 to INFINITY)
 					bleed_wording = "bleeding profusely"
 			if(bleed_rate >= 5)
-				msg += "<span class='bloody'><B>[m1] [bleed_wording]</B>!</span>"
+				msg += span_bloody("<B>[m1] [bleed_wording]</B>!")
 			else
-				msg += "<span class='bloody'>[m1] [bleed_wording]!</span>"
+				msg += span_bloody("[m1] [bleed_wording]!")
 
 	//Fire/water stacks
 	if(fire_stacks > 0)
@@ -75,7 +75,7 @@
 		msg += "[m1] unconscious."
 
 	if(length(msg))
-		. += "<span class='warning'>[msg.Join("\n")]</span>"
+		. += span_warning("[msg.Join("\n")]")
 
 	if((user != src) && isliving(user))
 		var/mob/living/L = user
@@ -85,15 +85,15 @@
 		var/strength_diff = final_str - L.STASTR
 		switch(strength_diff)
 			if(5 to INFINITY)
-				. += "<span class='warning'><B>[t_He] look[p_s()] much stronger than I.</B></span>"
+				. += span_warning("<B>[t_He] look[p_s()] much stronger than I.</B>")
 			if(1 to 5)
-				. += "<span class='warning'>[t_He] look[p_s()] stronger than I.</span>"
+				. += span_warning("[t_He] look[p_s()] stronger than I.")
 			if(0)
 				. += "[t_He] look[p_s()] about as strong as I."
 			if(-5 to -1)
-				. += "<span class='warning'>[t_He] look[p_s()] weaker than I.</span>"
+				. += span_warning("[t_He] look[p_s()] weaker than I.")
 			if(-INFINITY to -5)
-				. += "<span class='warning'><B>[t_He] look[p_s()] much weaker than I.</B></span>"
+				. += span_warning("<B>[t_He] look[p_s()] much weaker than I.</B>")
 
 	if(Adjacent(user))
 		if(has_simple_wounds)

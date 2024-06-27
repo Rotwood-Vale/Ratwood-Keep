@@ -8,5 +8,5 @@
 	mind_control_duration = 1800
 
 /obj/item/organ/heart/gland/ventcrawling/activate()
-	to_chat(owner, "<span class='notice'>I feel very stretchy.</span>")
+	to_chat(owner, span_notice("I feel very stretchy."))
 	owner.ventcrawler = VENTCRAWLER_ALWAYS

@@ -16,10 +16,6 @@
 
 	if(!length(key_emotes) || custom_param)
 		if(intentional)
-			if(client)
-				if(get_playerquality(client.ckey) <= -10)
-					to_chat(src, "<span class='warning'>Unrecognized emote.</span>")
-					return
 			var/list/custom_emote = GLOB.emote_list["me"]
 			for(var/datum/emote/P in custom_emote)
 				P.run_emote(src, oldact, m_type, intentional, targetted)
@@ -36,7 +32,7 @@
 		var/atom/movable/AM = _AM
 		AM.Hear(rendered, src, message_language, message, , spans, message_mode)
 //	if(intentional)
-//		to_chat(src, "<span class='notice'>Unusable emote '[act]'. Say *help for a list.</span>")
+//		to_chat(src, span_notice("Unusable emote '[act]'. Say *help for a list."))
 /*
 /datum/emote/flip
 	key = "flip"

@@ -14,7 +14,7 @@
 		return
 
 	if(!SSdiscord.enabled)
-		to_chat(usr, "<span class='warning'>TGS is not enabled</span>")
+		to_chat(usr, span_warning("TGS is not enabled"))
 		return
 
 	var/lookup_choice = alert(usr, "Do you wish to lookup account by ID or ckey?", "Lookup Type", "ID", "Ckey", "Cancel")
@@ -27,10 +27,10 @@
 				if(unlink_choice == "Unlink")
 					SSdiscord.unlink_account(returned_ckey)
 			else
-				to_chat(usr, "<span class='warning'>Discord ID <b>[lookup_id]</b> has no associated ckey</span>")
+				to_chat(usr, span_warning("Discord ID <b>[lookup_id]</b> has no associated ckey"))
 		if("Ckey")
 			var/lookup_ckey = input(usr,"Enter Ckey to lookup ID") as text|null
 			var/returned_id = SSdiscord.lookup_id(lookup_ckey)
 			if(returned_id)
-				to_chat(usr, "<span class='notice'>Ckey <b>[lookup_ckey]</b> is assigned to Discord ID <b>[returned_id]</b></span>")
-				to_chat(usr, "<span class='notice'>Discord mention format: <b>&lt;@[returned_id]&gt;</b></span>") // &lt; and &gt; print < > in HTML without using them as tags	
+				to_chat(usr, span_notice("Ckey <b>[lookup_ckey]</b> is assigned to Discord ID <b>[returned_id]</b>"))
+				to_chat(usr, span_notice("Discord mention format: <b>&lt;@[returned_id]&gt;</b>")) // &lt; and &gt; print < > in HTML without using them as tags	

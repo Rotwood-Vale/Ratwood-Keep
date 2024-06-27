@@ -375,7 +375,7 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 	if(href_list["inspect"])
 		if(!usr.canUseTopic(src, be_close=TRUE))
 			return
-		var/list/inspec = list("<span class='notice'>Properties of [src.name]</span>")
+		var/list/inspec = list(span_notice("Properties of [src.name]"))
 		if(minstr)
 			inspec += "\n<b>MIN.STR:</b> [minstr]"
 
@@ -463,14 +463,14 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 
 	if(twohands_required)
 		if(user.get_num_arms() < 2)
-			to_chat(user, "<span class='warning'>[src] is too bulky to carry in one hand!</span>")
+			to_chat(user, span_warning("[src] is too bulky to carry in one hand!"))
 			return
 		var/obj/item/twohanded/required/H
 		H = user.get_inactive_held_item()
 		if(get_dist(src,user) > 1)
 			return
 		if(H != null)
-			to_chat(user, "<span class='warning'>[src] is too bulky to carry in one hand!</span>")
+			to_chat(user, span_warning("[src] is too bulky to carry in one hand!"))
 			return
 
 	if(w_class == WEIGHT_CLASS_GIGANTIC)
@@ -488,9 +488,9 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 
 		if(can_handle_hot)
 			extinguish()
-			user.visible_message("<span class='warning'>[user] puts out the fire on [src].</span>")
+			user.visible_message(span_warning("[user] puts out the fire on [src]."))
 		else
-			user.visible_message("<span class='warning'>[user] burns [user.p_their()] hand putting out the fire on [src]!</span>")
+			user.visible_message(span_warning("[user] burns [user.p_their()] hand putting out the fire on [src]!"))
 			extinguish()
 			var/obj/item/bodypart/affecting = C.get_bodypart("[(user.active_hand_index % 2 == 0) ? "r" : "l" ]_arm")
 			if(affecting && affecting.receive_damage( 0, 5 ))		// 5 burn damage
@@ -501,7 +501,7 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 		var/mob/living/carbon/C = user
 		if(istype(C))
 			if(!C.gloves || (!(C.gloves.resistance_flags & (UNACIDABLE|ACID_PROOF))))
-				to_chat(user, "<span class='warning'>The acid on [src] burns my hand!</span>")
+				to_chat(user, span_warning("The acid on [src] burns my hand!"))
 				var/obj/item/bodypart/affecting = C.get_bodypart("[(user.active_hand_index % 2 == 0) ? "r" : "l" ]_arm")
 				if(affecting && affecting.receive_damage( 0, 5 ))		// 5 burn damage
 					C.update_damage_overlays()
@@ -513,7 +513,7 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 	var/grav = user.has_gravity()
 	if(grav > STANDARD_GRAVITY)
 		var/grav_power = min(3,grav - STANDARD_GRAVITY)
-		to_chat(user,"<span class='notice'>I start picking up [src]...</span>")
+		to_chat(user,span_notice("I start picking up [src]..."))
 		if(!do_mob(user,src,30*grav_power))
 			return
 
@@ -575,7 +575,7 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 	if(!A.has_fine_manipulation)
 		if(src in A.contents) // To stop Aliens having items stuck in their pockets
 			A.dropItemToGround(src)
-		to_chat(user, "<span class='warning'>My claws aren't capable of such fine manipulation!</span>")
+		to_chat(user, span_warning("My claws aren't capable of such fine manipulation!"))
 		return
 	attack_paw(A)
 
@@ -597,7 +597,7 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 /obj/item/proc/hit_reaction(mob/living/carbon/human/owner, atom/movable/hitby, attack_text = "the attack", final_block_chance = 0, damage = 0, attack_type = MELEE_ATTACK)
 	SEND_SIGNAL(src, COMSIG_ITEM_HIT_REACT, args)
 	if(prob(final_block_chance))
-		owner.visible_message("<span class='danger'>[owner] blocks [attack_text] with [src]!</span>")
+		owner.visible_message(span_danger("[owner] blocks [attack_text] with [src]!"))
 		return 1
 	return 0
 
@@ -689,7 +689,7 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 /obj/item/proc/mob_can_equip(mob/living/M, mob/living/equipper, slot, disable_warning = FALSE, bypass_equip_delay_self = FALSE)
 	if(twohands_required)
 		if(!disable_warning)
-			to_chat(M, "<span class='warning'>[src] is too bulky to carry with anything but my hands!</span>")
+			to_chat(M, span_warning("[src] is too bulky to carry with anything but my hands!"))
 		return 0
 
 	if(!M)
@@ -733,15 +733,15 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 
 	if(M.is_eyes_covered())
 		// you can't stab someone in the eyes wearing a mask!
-		to_chat(user, "<span class='warning'>You're going to need to remove [M.p_their()] eye protection first!</span>")
+		to_chat(user, span_warning("You're going to need to remove [M.p_their()] eye protection first!"))
 		return
 
 	if(isalien(M))//Aliens don't have eyes./N     slimes also don't have eyes!
-		to_chat(user, "<span class='warning'>I cannot locate any eyes on this creature!</span>")
+		to_chat(user, span_warning("I cannot locate any eyes on this creature!"))
 		return
 
 	if(isbrain(M))
-		to_chat(user, "<span class='warning'>I cannot locate any organic eyes on this brain!</span>")
+		to_chat(user, span_warning("I cannot locate any organic eyes on this brain!"))
 		return
 
 	src.add_fingerprint(user)
@@ -751,12 +751,12 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 	user.do_attack_animation(M)
 
 	if(M != user)
-		M.visible_message("<span class='danger'>[user] has stabbed [M] in the eye with [src]!</span>", \
-							"<span class='danger'>[user] stabs you in the eye with [src]!</span>")
+		M.visible_message(span_danger("[user] has stabbed [M] in the eye with [src]!"), \
+							span_danger("[user] stabs you in the eye with [src]!"))
 	else
 		user.visible_message( \
-			"<span class='danger'>[user] has stabbed [user.p_them()]self in the eyes with [src]!</span>", \
-			"<span class='danger'>I stab myself in the eyes with [src]!</span>" \
+			span_danger("[user] has stabbed [user.p_them()]self in the eyes with [src]!"), \
+			span_danger("I stab myself in the eyes with [src]!") \
 		)
 	if(is_human_victim)
 		var/mob/living/carbon/human/U = M
@@ -777,20 +777,20 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 	if(eyes.damage >= 10)
 		M.adjust_blurriness(15)
 		if(M.stat != DEAD)
-			to_chat(M, "<span class='danger'>My eyes start to bleed profusely!</span>")
+			to_chat(M, span_danger("My eyes start to bleed profusely!"))
 		if(!(HAS_TRAIT(M, TRAIT_BLIND) || HAS_TRAIT(M, TRAIT_NEARSIGHT)))
-			to_chat(M, "<span class='danger'>I become nearsighted!</span>")
+			to_chat(M, span_danger("I become nearsighted!"))
 		M.become_nearsighted(EYE_DAMAGE)
 		if(prob(50))
 			if(M.stat != DEAD)
 				if(M.drop_all_held_items())
-					to_chat(M, "<span class='danger'>I drop what you're holding and clutch at my eyes!</span>")
+					to_chat(M, span_danger("I drop what you're holding and clutch at my eyes!"))
 			M.adjust_blurriness(10)
 			M.Unconscious(20)
 			M.Paralyze(40)
 		if (prob(eyes.damage - 10 + 1))
 			M.become_blind(EYE_DAMAGE)
-			to_chat(M, "<span class='danger'>I go blind!</span>")
+			to_chat(M, span_danger("I go blind!"))
 
 /obj/item/singularity_pull(S, current_size)
 	..()
@@ -822,7 +822,7 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 
 		else
 			playsound(src, drop_sound, YEET_SOUND_VOLUME, TRUE, ignore_walls = FALSE)
-		return hit_atom.hitby(src, 0, itempush, throwingdatum=throwingdatum)
+		return hit_atom.hitby(src, 0, itempush, throwingdatum=throwingdatum, d_type=d_type)
 
 /obj/item/throw_at(atom/target, range, speed, mob/thrower, spin=1, diagonals_first = 0, datum/callback/callback, force)
 	thrownby = thrower
@@ -917,24 +917,21 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 
 ///Returns the sharpness of src. If you want to get the sharpness of an item use this.
 /obj/item/proc/get_sharpness()
-	//Oh no, we are dulled out
+	//Oh no, we are dulled out!
 	if(max_blade_int && (blade_int <= 0))
 		return FALSE
 	var/max_sharp = sharpness
-	for(var/X in possible_item_intents)
-		var/datum/intent/D = new X()
-		if(D.blade_class == BCLASS_CUT)
+	for(var/datum/intent/intent as anything in possible_item_intents)
+		if(initial(intent.blade_class) == BCLASS_CUT)
 			max_sharp = max(max_sharp, IS_SHARP)
-		if(D.blade_class == BCLASS_CHOP)
+		if(initial(intent.blade_class) == BCLASS_CHOP)
 			max_sharp = max(max_sharp, IS_SHARP)
 	return max_sharp
 
-/obj/item/proc/get_dismemberment_chance(obj/item/bodypart/affecting, input)
+/obj/item/proc/get_dismemberment_chance(obj/item/bodypart/affecting, mob/user)
 	if(!affecting.can_dismember(src))
 		return 0
-	if(!input)
-		input = force
-	if((sharpness || damtype == BURN) && w_class >= WEIGHT_CLASS_NORMAL && input >= 10)
+	if((get_sharpness() || damtype == BURN) && (w_class >= WEIGHT_CLASS_NORMAL) && force >= 10)
 		return force * (affecting.get_damage() / affecting.max_damage)
 
 /obj/item/proc/get_dismember_sound()
@@ -958,11 +955,11 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 
 /obj/item/proc/ignition_effect(atom/A, mob/user)
 	if(get_temperature())
-		. = "<span class='notice'>[user] lights [A] with [src].</span>"
+		. = span_notice("[user] lights [A] with [src].")
 	else
 		. = ""
 
-/obj/item/hitby(atom/movable/AM, skipcatch, hitpush, blocked, datum/thrownthing/throwingdatum)
+/obj/item/hitby(atom/movable/AM, skipcatch, hitpush, blocked, datum/thrownthing/throwingdatum, d_type = "blunt")
 	return
 
 /obj/item/attack_hulk(mob/living/carbon/human/user)
@@ -1154,6 +1151,7 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 	return owner.dropItemToGround(src)
 
 /obj/item/update_icon()
+	. = ..()
 	update_transform()
 
 /obj/item/proc/ungrip(mob/living/carbon/user, show_message = TRUE)
@@ -1163,7 +1161,7 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 		if(!wielded)
 			return
 		if(show_message)
-			to_chat(user, "<span class='notice'>I drop [src].</span>")
+			to_chat(user, span_notice("I drop [src]."))
 		show_message = FALSE
 	if(wielded)
 		wielded = FALSE
@@ -1181,7 +1179,7 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 	else
 		user.update_inv_hands()
 	if(show_message)
-		to_chat(user, "<span class='notice'>I wield [src] normally.</span>")
+		to_chat(user, span_notice("I wield [src] normally."))
 	if(user.get_active_held_item() == src)
 		user.update_a_intents()
 	return
@@ -1191,7 +1189,7 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 		return
 	altgripped = TRUE
 	update_transform()
-	to_chat(user, "<span class='notice'>I wield [src] with an alternate grip</span>")
+	to_chat(user, span_notice("I wield [src] with an alternate grip"))
 	if(user.get_active_held_item() == src)
 		if(alt_intents)
 			user.update_a_intents()
@@ -1200,17 +1198,17 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 	if(wielded)
 		return
 	if(user.get_inactive_held_item())
-		to_chat(user, "<span class='warning'>I need a free hand first.</span>")
+		to_chat(user, span_warning("I need a free hand first."))
 		return
 	if(user.get_num_arms() < 2)
-		to_chat(user, "<span class='warning'>I don't have enough hands.</span>")
+		to_chat(user, span_warning("I don't have enough hands."))
 		return
 	wielded = TRUE
 	if(force_wielded)
 		force = force_wielded
 	wdefense = wdefense + 3
 	update_transform()
-	to_chat(user, "<span class='notice'>I wield [src] with both hands.</span>")
+	to_chat(user, span_notice("I wield [src] with both hands."))
 	playsound(loc, pick('sound/combat/weaponr1.ogg','sound/combat/weaponr2.ogg'), 100, TRUE)
 	var/obj/item/twohanded/offhand/O = new(user) ////Let's reserve his other hand~
 	O.name = "[name] - offhand"

@@ -1,0 +1,18 @@
+Spriting:
+- changed-files:
+  - any-glob-to-any-file: icons/**
+
+Mapping:
+- changed-files:
+  - any-glob-to-any-file: _maps/**
+
+documentation:
+- changed-files:
+  - any-glob-to-any-file:
+    - .github/**
+    - README.md**
+
+Balance:
+- changed-files:
+  - any-glob-to-any-file:
+    - code/modules/jobs/job_types/roguetown/**

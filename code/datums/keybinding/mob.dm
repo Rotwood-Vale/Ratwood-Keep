@@ -63,7 +63,7 @@
 /datum/keybinding/mob/stop_pulling/down(client/user)
 	var/mob/M = user.mob
 	if(!M.pulling)
-		to_chat(user, "<span class='notice'>I are not pulling anything.</span>")
+		to_chat(user, span_notice("I are not pulling anything."))
 	else
 		M.stop_pulling()
 	return TRUE

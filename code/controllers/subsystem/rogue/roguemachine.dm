@@ -48,10 +48,10 @@ PROCESSING_SUBSYSTEM_DEF(roguemachine)
 	if(!T)
 		return FALSE
 	var/area/the_area = get_area(T)
-	var/static/list/safe_areas = typecacheof(list(
+	var/static/list/safe_areas = typecacheof(list(\
 		/area/rogue/outdoors/town,\
 		/area/rogue/indoors/town,\
-		/* 	/area/rogue/under/town,\  */   //to allow zombies in the sewer area
+		/area/rogue/under/town,\
 		/area/rogue/under/town/basement,\
 		/area/rogue/under/town/caverogue,\
 	))

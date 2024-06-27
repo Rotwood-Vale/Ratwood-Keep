@@ -100,15 +100,14 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 
 	if(ic_blocked)
 		//The filter warning message shows the sanitized message though.
-		to_chat(src, "<span class='warning'>That message contained a word prohibited in IC chat! Consider reviewing the server rules.\n<span replaceRegex='show_filtered_ic_chat'>\"[message]\"</span></span>")
+		to_chat(src, span_warning("That message contained a word prohibited in IC chat! Consider reviewing the server rules.\n<span replaceRegex='show_filtered_ic_chat'>\"[message]\"</span>"))
 		SSblackbox.record_feedback("tally", "ic_blocked_words", 1, lowertext(config.ic_filter_regex.match))
 		return
 	
 	var/static/regex/ooc_regex = regex(@"^(?=.*[\(\)\[\]\<\>\{\}]).*$") //Yes, i know.
 	if(findtext(message, ooc_regex))
 		emote("me", 1, "mumbles incoherently.")
-		to_chat(src, "<span class='warning'>That was stupid of me. I should meditate on my actions.</span>")
-		message_admins("[key_name_admin(src)] tried to say an OOC message IC! Laugh at this loser!")
+		to_chat(src, span_warning("That was stupid of me. I should meditate on my actions."))
 		add_stress(/datum/stressevent/ooc_ic)
 		return
 
@@ -178,7 +177,7 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 
 	if(!can_speak_vocal(message))
 //		visible_message("<b>[src]</b> makes a muffled noise.")
-		to_chat(src, "<span class='warning'>I can't talk.</span>")
+		to_chat(src, span_warning("I can't talk."))
 		return
 
 	var/message_range = 7
@@ -265,7 +264,7 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 			deaf_message = "<span class='name'>[speaker]</span> [speaker.verb_say] something but you cannot hear [speaker.p_them()]."
 			deaf_type = 1
 	else
-		deaf_message = "<span class='notice'>I can't hear yourself!</span>"
+		deaf_message = span_notice("I can't hear yourself!")
 		deaf_type = 2 // Since you should be able to hear myself without looking
 
 	// Create map text prior to modifying message for goonchat
@@ -354,7 +353,7 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 /mob/living/proc/can_speak_basic(message, ignore_spam = FALSE, forced = FALSE) //Check BEFORE handling of xeno and ling channels
 	if(client)
 		if(client.prefs.muted & MUTE_IC)
-			to_chat(src, "<span class='danger'>I cannot speak in IC (muted).</span>")
+			to_chat(src, span_danger("I cannot speak in IC (muted)."))
 			return FALSE
 		if(!(ignore_spam || forced) && client.handle_spam_prevention(message,MUTE_IC))
 			return FALSE

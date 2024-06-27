@@ -24,6 +24,8 @@
 	icon_state = "inbash"
 	attack_verb = list("bashes", "strikes")
 	penfactor = 10
+	item_d_type = "blunt"
+
 /datum/intent/lordpoint
 	name = "point"
 	blade_class = null
@@ -47,7 +49,7 @@
 		return
 	if(istype(user.used_intent, /datum/intent/lordpoint))
 		user.changeNext_move(CLICK_CD_MELEE)
-		user.visible_message("<span class='warning'>[user] points [src] at [target].</span>")
+		user.visible_message(span_warning("[user] points [src] at [target]."))
 		if(ishuman(user))
 			var/mob/living/carbon/human/HU = user
 			if((HU.job != "King") && (HU.job != "Queen Consort"))
@@ -55,10 +57,10 @@
 			if(ishuman(target))
 				var/mob/living/carbon/human/H = target
 				if(H.anti_magic_check())
-					to_chat(H, "<span class='warning'>I'm protected from the scepter.</span>")
+					to_chat(H, span_warning("I'm protected from the scepter."))
 					return
 				if(!(H in SStreasury.bank_accounts))
-					to_chat(H, "<span class='warning'>I'm protected from the scepter.</span>")
+					to_chat(H, span_warning("I'm protected from the scepter."))
 					return
 				H.electrocute_act(5, src)
 
@@ -128,9 +130,9 @@
 		on = FALSE
 	else
 		if(charge <= 33)
-			to_chat(user, "<span class='warning'>It's out of juice.</span>")
+			to_chat(user, span_warning("It's out of juice."))
 			return
-		user.visible_message("<span class='warning'>[user] flicks [src] on.</span>")
+		user.visible_message(span_warning("[user] flicks [src] on."))
 		on = TRUE
 		charge--
 	playsound(user, pick('sound/items/stunmace_toggle (1).ogg','sound/items/stunmace_toggle (2).ogg','sound/items/stunmace_toggle (3).ogg'), 100, TRUE)

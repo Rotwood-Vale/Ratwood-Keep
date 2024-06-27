@@ -46,13 +46,11 @@
 	if(isturf(T) && quantity > 1)
 		var/obj/structure/table/TA = locate() in T
 		if(!TA) //no table
-			for(var/i in 2 to quantity) // exclude the first coin
-				var/obj/item/roguecoin/new_coin = new type(T)
-				new_coin.set_quantity(1) // prevent exploits with coin piles
-				new_coin.pixel_x = rand(-8, 8)
-				new_coin.pixel_y = rand(-5, 5)
-
-	set_quantity(1)
+			var/obj/item/roguecoin/new_coin = new type(T)
+			new_coin.set_quantity(1) // prevent exploits with coin piles
+			new_coin.pixel_x = rand(-8, 8)
+			new_coin.pixel_y = rand(-5, 5)
+			set_quantity(quantity - 1)
 
 /obj/item/roguecoin/get_real_price()
 	return sellprice * quantity
@@ -65,7 +63,7 @@
 /obj/item/roguecoin/examine(mob/user)
 	. = ..()
 	if(quantity > 1)
-		. += "<span class='info'>\Roman [quantity] coins.</span>"
+		. += span_info("\Roman [quantity] coins.")
 
 /obj/item/roguecoin/proc/merge(obj/item/roguecoin/G, mob/user)
 	if(!G)
@@ -120,10 +118,10 @@
 	flip_cd = world.time
 	playsound(user, 'sound/foley/coinphy (1).ogg', 100, FALSE)
 	if(prob(50))
-		user.visible_message("<span class='info'>[user] flips the coin. Heads!</span>")
+		user.visible_message(span_info("[user] flips the coin. Heads!"))
 		heads_tails = TRUE
 	else
-		user.visible_message("<span class='info'>[user] flips the coin. Tails!</span>")
+		user.visible_message(span_info("[user] flips the coin. Tails!"))
 		heads_tails = FALSE
 	update_icon()
 

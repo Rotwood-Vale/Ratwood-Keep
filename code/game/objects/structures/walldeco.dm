@@ -8,6 +8,20 @@
 	max_integrity = 0
 	layer = ABOVE_MOB_LAYER+0.1
 
+/obj/structure/fluff/walldeco/OnCrafted(dirin, user)
+	pixel_x = 0
+	pixel_y = 0
+	switch(dirin)
+		if(NORTH)
+			pixel_y = 32
+		if(SOUTH)
+			pixel_y = -32
+		if(EAST)
+			pixel_x = 32
+		if(WEST)
+			pixel_x = -32
+	. = ..()
+
 /obj/structure/fluff/walldeco/proc/get_attached_wall()
 	return
 
@@ -33,10 +47,11 @@
 /obj/structure/fluff/walldeco/wantedposter/examine(mob/user)
 	. = ..()
 	if(user.Adjacent(src))
-		if(ishuman(user))
-			var/mob/living/carbon/human/H = user
-			to_chat(H, "<b>I now know the faces of the local bandits.</b>")
-			H.playsound_local(H, 'sound/misc/notice (2).ogg', 100, FALSE)
+		if(SSrole_class_handler.bandits_in_round)
+			. += span_bold("I see that bandits are active in the region.")
+			user.playsound_local(user, 'sound/misc/notice (2).ogg', 100, FALSE)
+		else
+			. += span_bold("There doesn't seem to be any reports of bandit activity.")
 
 /obj/structure/fluff/walldeco/innsign
 	name = "sign"

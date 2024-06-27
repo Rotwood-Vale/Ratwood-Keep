@@ -2,7 +2,7 @@
 	name = "Radioactivity"
 	desc = ""
 	quality = NEGATIVE
-	text_gain_indication = "<span class='warning'>I can feel it in your bones!</span>"
+	text_gain_indication = span_warning("I can feel it in your bones!")
 	time_coeff = 5
 	instability = 5
 	difficulty = 8

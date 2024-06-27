@@ -87,7 +87,7 @@
 /obj/item/keyring/attackby(obj/item/I, mob/user)
 	if(istype(I,/obj/item/roguekey))
 		if(keys.len >= 10)
-			to_chat(user, "<span class='warning'>Too many keys.</span>")
+			to_chat(user, span_warning("Too many keys."))
 			return
 		user.dropItemToGround(I)
 		addtoring(I)
@@ -96,7 +96,7 @@
 
 /obj/item/keyring/attack_right(mob/user)
 	if(keys.len)
-		to_chat(user, "<span class='notice'>I steal a key off the ring.</span>")
+		to_chat(user, span_notice("I steal a key off the ring."))
 		var/obj/item/roguekey/K = removefromring(user)
 		user.put_in_active_hand(K)
 
@@ -120,7 +120,7 @@
 
 /obj/item/keyring/proc/update_desc()
 	if(keys.len)
-		desc = "<span class='info'>\Roman [keys.len] keys.</span>"
+		desc = span_info("\Roman [keys.len] keys.")
 	else
 		desc = ""
 
@@ -190,3 +190,9 @@
 
 /obj/item/keyring/archivist
 	keys = list(/obj/item/roguekey/manor, /obj/item/roguekey/archive)
+
+/obj/item/keyring/physician
+	keys = list(/obj/item/roguekey/manor, /obj/item/roguekey/garrison, /obj/item/roguekey/physician)
+
+/obj/item/keyring/royal
+	keys = list(/obj/item/roguekey/manor, /obj/item/roguekey/royal)

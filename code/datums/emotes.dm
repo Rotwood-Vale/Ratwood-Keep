@@ -78,17 +78,19 @@
 		user.log_message(msg, LOG_EMOTE)
 		msg = "<b>[user]</b> " + msg
 
-	var/freq = get_rand_frequency() //bespoke vary system so deep voice/high voiced humans
-
+	var/pitch = 1 //bespoke vary system so deep voice/high voiced humans
 	if(isliving(user))
 		var/mob/living/L = user
 		for(var/obj/item/implant/I in L.implants)
 			I.trigger(key, L)
-		freq = L.get_emote_frequency()
+		pitch = L.get_emote_pitch()
 
-	var/tmp_sound = get_sound(user)
+	var/sound/tmp_sound = get_sound(user)
+	if(!istype(tmp_sound))
+		tmp_sound = sound(get_sfx(tmp_sound))
+	tmp_sound.frequency = pitch
 	if(tmp_sound && (!only_forced_audio || !intentional))
-		playsound(user, tmp_sound, snd_vol, FALSE, snd_range, frequency = freq, soundping = soundping)
+		playsound(user, tmp_sound, snd_vol, FALSE, snd_range, soundping = soundping)
 	if(!nomsg)
 		for(var/mob/M in GLOB.dead_mob_list)
 			if(!M.client || isnewplayer(M))
@@ -101,27 +103,18 @@
 		else
 			user.visible_message(msg)
 
-/mob/living/proc/get_emote_frequency()
-	return get_rand_frequency()
+/mob/living/proc/get_emote_pitch()
+	return clamp(voice_pitch, 0.7, 1.5)
 
-/mob/living/carbon/human/get_emote_frequency()
-	var/cont = 44100
-	if(gender == MALE)
+/mob/living/carbon/human/get_emote_pitch()
+	var/final_pitch = ..()
+	var/pitch_modifier = 0
+	if(!HAS_TRAIT(src, TRAIT_DECEIVING_MEEKNESS))
 		if(STASTR > 10)
-			for(var/i in 1 to STASTR)
-				cont -= 200
-		if(STASTR < 10)
-			for(var/i in 1 to STASTR)
-				cont += 100
-	else
-		if(STASTR > 10)
-			for(var/i in 1 to STASTR)
-				cont -= 200
-		if(STASTR < 5)
-			for(var/i in 1 to STASTR)
-				cont += 100
-	return cont
-
+			pitch_modifier -= (STASTR - 10) * 0.03
+		else if(STASTR < 10)
+			pitch_modifier += (10 - STASTR) * 0.06
+	return clamp(final_pitch + pitch_modifier, 0.8, 1.35)
 
 /datum/emote/proc/get_env(mob/living/user)
 	return
@@ -218,11 +211,11 @@
 				return FALSE
 /*			switch(user.stat)
 				if(SOFT_CRIT)
-					to_chat(user, "<span class='warning'>I cannot [key] while dying!</span>")
+					to_chat(user, span_warning("I cannot [key] while dying!"))
 				if(UNCONSCIOUS)
-					to_chat(user, "<span class='warning'>I cannot [key] while unconscious!</span>")
+					to_chat(user, span_warning("I cannot [key] while unconscious!"))
 				if(DEAD)
-					to_chat(user, "<span class='warning'>I cannot [key] while dead!</span>")*/
+					to_chat(user, span_warning("I cannot [key] while dead!"))*/
 			return FALSE
 		if(restraint_check)
 			if(isliving(user))
@@ -230,15 +223,13 @@
 				if(L.IsParalyzed() || L.IsStun())
 					if(!intentional)
 						return FALSE
-//					to_chat(user, "<span class='warning'>I cannot [key] while stunned!</span>")
+//					to_chat(user, span_warning("I cannot [key] while stunned!"))
 					return FALSE
 		if(restraint_check && user.restrained())
 			if(!intentional)
 				return FALSE
-//			to_chat(user, "<span class='warning'>I cannot [key] while restrained!</span>")
+//			to_chat(user, span_warning("I cannot [key] while restrained!"))
 			return FALSE
 
-	if(isliving(user))
-		var/mob/living/L = user
-		if(HAS_TRAIT(L, TRAIT_EMOTEMUTE))
-			return FALSE
+	if(intentional && HAS_TRAIT(user, TRAIT_EMOTEMUTE))
+		return FALSE

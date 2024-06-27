@@ -84,7 +84,7 @@
 			if(!override_find_book)
 				pages = SSlibrarian.get_book(bookfile)
 		if(!pages.len)
-			to_chat(user, "<span class='warning'>This book is completely blank.</span>")
+			to_chat(user, span_warning("This book is completely blank."))
 		if(curpage > pages.len)
 			curpage = 1
 //		var/curdat = pages[curpage]
@@ -99,4 +99,4 @@
 		user << browse(dat, "window=reading;size=1000x700;can_close=1;can_minimize=0;can_maximize=0;can_resize=1;titlebar=0;border=0")
 		onclose(user, "reading", src)
 	else
-		return "<span class='warning'>You're too far away to read it.</span>"
+		return span_warning("You're too far away to read it.")

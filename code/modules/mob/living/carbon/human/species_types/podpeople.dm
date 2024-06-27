@@ -46,7 +46,7 @@
 			if(prob(15))
 				H.rad_act(rand(30,80))
 				H.Paralyze(100)
-				H.visible_message("<span class='warning'>[H] writhes in pain as [H.p_their()] vacuoles boil.</span>", "<span class='danger'>I writhe in pain as your vacuoles boil!</span>", "<span class='hear'>I hear the crunching of leaves.</span>")
+				H.visible_message(span_warning("[H] writhes in pain as [H.p_their()] vacuoles boil."), span_danger("I writhe in pain as your vacuoles boil!"), span_hear("I hear the crunching of leaves."))
 				if(prob(80))
 					H.easy_randmut(NEGATIVE+MINOR_NEGATIVE)
 				else
@@ -55,6 +55,6 @@
 				H.domutcheck()
 			else
 				H.adjustFireLoss(rand(5,15))
-				H.show_message("<span class='danger'>The radiation beam singes you!</span>")
+				H.show_message(span_danger("The radiation beam singes you!"))
 		if(/obj/projectile/energy/florayield)
 			H.set_nutrition(min(H.nutrition+30, NUTRITION_LEVEL_FULL))

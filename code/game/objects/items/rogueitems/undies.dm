@@ -27,7 +27,7 @@
 		if(H.gender != gendered)
 			return
 		if(H.underwear == "Nude" && H.cached_underwear != "Nude")
-			user.visible_message("<span class='notice'>[user] tries to put [src] on [H]...</span>")
+			user.visible_message(span_notice("[user] tries to put [src] on [H]..."))
 			if(do_after(user, 50, needhand = 1, target = H))
 				get_location_accessible(H, BODY_ZONE_PRECISE_GROIN)
 				H.underwear = H.cached_underwear

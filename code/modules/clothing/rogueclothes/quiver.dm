@@ -26,7 +26,7 @@
 			arrows += A
 			update_icon()
 		else
-			to_chat(loc, "<span class='warning'>Full!</span>")
+			to_chat(loc, span_warning("Full!"))
 		return
 	if(istype(A, /obj/item/gun/ballistic/revolver/grenadelauncher/bow))
 		var/obj/item/gun/ballistic/revolver/grenadelauncher/bow/B = A
@@ -51,7 +51,7 @@
 /obj/item/quiver/examine(mob/user)
 	. = ..()
 	if(arrows.len)
-		. += "<span class='notice'>[arrows.len] inside.</span>"
+		. += span_notice("[arrows.len] inside.")
 
 /obj/item/quiver/update_icon()
 	if(arrows.len)

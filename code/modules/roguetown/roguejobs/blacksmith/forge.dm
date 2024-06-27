@@ -1,7 +1,8 @@
 
 /obj/machinery/light/rogue/forge
 	icon = 'icons/roguetown/misc/forge.dmi'
-	name = "forge"
+	name = "stone forge"
+	desc = "This forge sings of war and creation."
 	icon_state = "forge0"
 	base_state = "forge"
 	density = TRUE
@@ -18,6 +19,6 @@
 			T.hott = tyme
 			addtimer(CALLBACK(T, TYPE_PROC_REF(/obj/item/rogueweapon/tongs, make_unhot), tyme), 100)
 			T.update_icon()
-			user.visible_message("<span class='info'>[user] heats the bar.</span>")
+			user.visible_message(span_info("[user] heats the bar."))
 			return
-	..()
+	return ..()

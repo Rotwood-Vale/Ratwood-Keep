@@ -5,15 +5,15 @@
 	switch(M.used_intent.type)
 		if(INTENT_HELP)
 			if (health > 0)
-				visible_message("<span class='notice'>[M] [response_help_continuous] [src].</span>", \
-								"<span class='notice'>[M] [response_help_continuous] you.</span>", null, null, M)
-				to_chat(M, "<span class='notice'>I [response_help_simple] [src].</span>")
+				visible_message(span_notice("[M] [response_help_continuous] [src]."), \
+								span_notice("[M] [response_help_continuous] you."), null, null, M)
+				to_chat(M, span_notice("I [response_help_simple] [src]."))
 				playsound(loc, 'sound/blank.ogg', 50, TRUE, -1)
 			return TRUE
 
 		if(INTENT_GRAB)
 			if(!M.has_hand_for_held_index(M.active_hand_index, TRUE)) //we obviously have a hadn, but we need to check for fingers/prosthetics
-				to_chat(M, "<span class='warning'>I can't move the fingers.</span>")
+				to_chat(M, span_warning("I can't move the fingers."))
 				return
 			grabbedby(M)
 			return TRUE
@@ -21,7 +21,7 @@
 		if(INTENT_HARM)
 			var/atk_verb = pick(M.used_intent.attack_verb)
 			if(HAS_TRAIT(M, TRAIT_PACIFISM))
-				to_chat(M, "<span class='warning'>I don't want to hurt [src]!</span>")
+				to_chat(M, span_warning("I don't want to hurt [src]!"))
 				return
 			M.do_attack_animation(src, M.used_intent.animname)
 			playsound(loc, attacked_sound, 25, TRUE, -1)
@@ -32,8 +32,8 @@
 			updatehealth()
 			var/hitlim = simple_limb_hit(M.zone_selected)
 			simple_woundcritroll(M.used_intent.blade_class, damage, M, hitlim)
-			visible_message("<span class='danger'>[M] [atk_verb] [src]![next_attack_msg.Join()]</span>",\
-							"<span class='danger'>[M] [atk_verb] me![next_attack_msg.Join()]</span>", null, COMBAT_MESSAGE_RANGE)
+			visible_message(span_danger("[M] [atk_verb] [src]![next_attack_msg.Join()]"),\
+							span_danger("[M] [atk_verb] me![next_attack_msg.Join()]"), null, COMBAT_MESSAGE_RANGE)
 			next_attack_msg.Cut()
 			return TRUE
 
@@ -82,35 +82,35 @@
 									break
 					if((!target_table && !target_collateral_mob) || directional_blocked)
 						target.Stun(10)
-						target.visible_message("<span class='danger'>[user.name] shoves [target.name]!</span>",
-										"<span class='danger'>I'm shoved by [user.name]!</span>", "<span class='hear'>I hear aggressive shuffling followed by a loud thud!</span>", COMBAT_MESSAGE_RANGE, user)
-						to_chat(user, "<span class='danger'>I shove [target.name]!</span>")
+						target.visible_message(span_danger("[user.name] shoves [target.name]!"),
+										span_danger("I'm shoved by [user.name]!"), span_hear("I hear aggressive shuffling followed by a loud thud!"), COMBAT_MESSAGE_RANGE, user)
+						to_chat(user, span_danger("I shove [target.name]!"))
 						log_combat(user, target, "shoved", "knocking them down")
 					else if(target_table)
 						target.Stun(10)
-						target.visible_message("<span class='danger'>[user.name] shoves [target.name] onto \the [target_table]!</span>",
-										"<span class='danger'>I'm shoved onto \the [target_table] by [user.name]!</span>", "<span class='hear'>I hear aggressive shuffling followed by a loud thud!</span>", COMBAT_MESSAGE_RANGE, user)
-						to_chat(user, "<span class='danger'>I shove [target.name] onto \the [target_table]!</span>")
+						target.visible_message(span_danger("[user.name] shoves [target.name] onto \the [target_table]!"),
+										span_danger("I'm shoved onto \the [target_table] by [user.name]!"), span_hear("I hear aggressive shuffling followed by a loud thud!"), COMBAT_MESSAGE_RANGE, user)
+						to_chat(user, span_danger("I shove [target.name] onto \the [target_table]!"))
 						target.throw_at(target_table, 1, 1, null, FALSE) //1 speed throws with no spin are basically just forcemoves with a hard collision check
 						log_combat(user, target, "shoved", "onto [target_table] (table)")
 					else if(target_collateral_mob)
 						target.Stun(10)
 						target_collateral_mob.Stun(SHOVE_KNOCKDOWN_COLLATERAL)
-						target.visible_message("<span class='danger'>[user.name] shoves [target.name] into [target_collateral_mob.name]!</span>",
-							"<span class='danger'>I'm shoved into [target_collateral_mob.name] by [user.name]!</span>", "<span class='hear'>I hear aggressive shuffling followed by a loud thud!</span>", COMBAT_MESSAGE_RANGE, user)
-						to_chat(user, "<span class='danger'>I shove [target.name] into [target_collateral_mob.name]!</span>")
+						target.visible_message(span_danger("[user.name] shoves [target.name] into [target_collateral_mob.name]!"),
+							span_danger("I'm shoved into [target_collateral_mob.name] by [user.name]!"), span_hear("I hear aggressive shuffling followed by a loud thud!"), COMBAT_MESSAGE_RANGE, user)
+						to_chat(user, span_danger("I shove [target.name] into [target_collateral_mob.name]!"))
 						log_combat(user, target, "shoved", "into [target_collateral_mob.name]")
 				else
-					target.visible_message("<span class='danger'>[user.name] shoves [target.name]!</span>",
-									"<span class='danger'>I'm shoved by [user.name]!</span>", "<span class='hear'>I hear aggressive shuffling!</span>", COMBAT_MESSAGE_RANGE, user)
-					to_chat(user, "<span class='danger'>I shove [target.name]!</span>")
+					target.visible_message(span_danger("[user.name] shoves [target.name]!"),
+									span_danger("I'm shoved by [user.name]!"), span_hear("I hear aggressive shuffling!"), COMBAT_MESSAGE_RANGE, user)
+					to_chat(user, span_danger("I shove [target.name]!"))
 					log_combat(user, target, "shoved")
 			return TRUE
 
 	if(M.used_intent.unarmed)
 		var/atk_verb = pick(M.used_intent.attack_verb)
 		if(HAS_TRAIT(M, TRAIT_PACIFISM))
-			to_chat(M, "<span class='warning'>I don't want to hurt [src]!</span>")
+			to_chat(M, span_warning("I don't want to hurt [src]!"))
 			return
 		M.do_attack_animation(src, M.used_intent.animname)
 		playsound(loc, attacked_sound, 25, TRUE, -1)
@@ -121,8 +121,8 @@
 		updatehealth()
 		var/hitlim = simple_limb_hit(M.zone_selected)
 		simple_woundcritroll(M.used_intent.blade_class, damage, M, hitlim)
-		visible_message("<span class='danger'>[M] [atk_verb] [src]![next_attack_msg.Join()]</span>",\
-						"<span class='danger'>[M] [atk_verb] me![next_attack_msg.Join()]</span>", null, COMBAT_MESSAGE_RANGE)
+		visible_message(span_danger("[M] [atk_verb] [src]![next_attack_msg.Join()]"),\
+						span_danger("[M] [atk_verb] me![next_attack_msg.Join()]"), null, COMBAT_MESSAGE_RANGE)
 		next_attack_msg.Cut()
 		return TRUE
 
@@ -131,9 +131,9 @@
 	if(!.)
 		return
 	playsound(loc, "punch", 25, TRUE, -1)
-	visible_message("<span class='danger'>[user] punches [src]!</span>", \
-					"<span class='danger'>You're punched by [user]!</span>", null, COMBAT_MESSAGE_RANGE, user)
-	to_chat(user, "<span class='danger'>I punch [src]!</span>")
+	visible_message(span_danger("[user] punches [src]!"), \
+					span_danger("You're punched by [user]!"), null, COMBAT_MESSAGE_RANGE, user)
+	to_chat(user, span_danger("I punch [src]!"))
 	adjustBruteLoss(15)
 
 /mob/living/simple_animal/attack_paw(mob/living/carbon/monkey/M)
@@ -144,9 +144,9 @@
 			return 1
 	if (M.used_intent.type == INTENT_HELP)
 		if (health > 0)
-			visible_message("<span class='notice'>[M.name] [response_help_continuous] [src].</span>", \
-							"<span class='notice'>[M.name] [response_help_continuous] you.</span>", null, COMBAT_MESSAGE_RANGE, M)
-			to_chat(M, "<span class='notice'>I [response_help_simple] [src].</span>")
+			visible_message(span_notice("[M.name] [response_help_continuous] [src]."), \
+							span_notice("[M.name] [response_help_continuous] you."), null, COMBAT_MESSAGE_RANGE, M)
+			to_chat(M, span_notice("I [response_help_simple] [src]."))
 			playsound(loc, 'sound/blank.ogg', 50, TRUE, -1)
 
 
@@ -154,15 +154,15 @@
 	if(..()) //if harm or disarm intent.
 		if(M.used_intent.type == INTENT_DISARM)
 			playsound(loc, 'sound/blank.ogg', 25, TRUE, -1)
-			visible_message("<span class='danger'>[M] [response_disarm_continuous] [name]!</span>", \
-							"<span class='danger'>[M] [response_disarm_continuous] you!</span>", null, COMBAT_MESSAGE_RANGE, M)
-			to_chat(M, "<span class='danger'>I [response_disarm_simple] [name]!</span>")
+			visible_message(span_danger("[M] [response_disarm_continuous] [name]!"), \
+							span_danger("[M] [response_disarm_continuous] you!"), null, COMBAT_MESSAGE_RANGE, M)
+			to_chat(M, span_danger("I [response_disarm_simple] [name]!"))
 			log_combat(M, src, "disarmed")
 		else
 			var/damage = rand(15, 30)
-			visible_message("<span class='danger'>[M] slashes at [src]!</span>", \
-							"<span class='danger'>You're slashed at by [M]!</span>", null, COMBAT_MESSAGE_RANGE, M)
-			to_chat(M, "<span class='danger'>I slash at [src]!</span>")
+			visible_message(span_danger("[M] slashes at [src]!"), \
+							span_danger("You're slashed at by [M]!"), null, COMBAT_MESSAGE_RANGE, M)
+			to_chat(M, span_danger("I slash at [src]!"))
 			playsound(loc, 'sound/blank.ogg', 25, TRUE, -1)
 			attack_threshold_check(damage)
 			log_combat(M, src, "attacked")
@@ -184,8 +184,8 @@
 		var/hitlim = simple_limb_hit(M.zone_selected)
 		attack_threshold_check(damage, M.melee_damage_type)
 		simple_woundcritroll(M.a_intent.blade_class, damage, M, hitlim)
-		visible_message("<span class='danger'>\The [M] [pick(M.a_intent.attack_verb)] [src]![next_attack_msg.Join()]</span>", \
-					"<span class='danger'>\The [M] [pick(M.a_intent.attack_verb)] me![next_attack_msg.Join()]</span>", null, COMBAT_MESSAGE_RANGE)
+		visible_message(span_danger("\The [M] [pick(M.a_intent.attack_verb)] [src]![next_attack_msg.Join()]"), \
+					span_danger("\The [M] [pick(M.a_intent.attack_verb)] me![next_attack_msg.Join()]"), null, COMBAT_MESSAGE_RANGE)
 		next_attack_msg.Cut()
 
 
@@ -194,19 +194,19 @@
 	var/mob/living/simple_animal/target = src
 	var/mob/living/carbon/human/user = M
 	if(HAS_TRAIT(user, TRAIT_PACIFISM))
-		to_chat(user, "<span class='warning'>I don't want to harm [target]!</span>")
+		to_chat(user, span_warning("I don't want to harm [target]!"))
 		return FALSE
 	if(user.IsKnockdown())
 		return FALSE
 	if(user == target)
 		return FALSE
 	if(user.check_leg_grabbed(1) || user.check_leg_grabbed(2))
-		to_chat(user, "<span class='notice'>I can't move my leg!</span>")
+		to_chat(user, span_notice("I can't move my leg!"))
 		return
 	if(user.rogfat >= user.maxrogfat)
 		return FALSE
 	if(user.loc == target.loc)
-		to_chat(user, "<span class='warning'>I'm too close to get a good kick in.</span>")
+		to_chat(user, span_warning("I'm too close to get a good kick in."))
 		return FALSE
 	else
 		user.do_attack_animation(target, ATTACK_EFFECT_DISARM)
@@ -217,9 +217,9 @@
 
 		target.Move(target_shove_turf, shove_dir)
 
-		target.visible_message("<span class='danger'>[user.name] kicks [target.name]!</span>",
-						"<span class='danger'>I'm kicked by [user.name]!</span>", "<span class='hear'>I hear aggressive shuffling!</span>", COMBAT_MESSAGE_RANGE, user)
-		to_chat(user, "<span class='danger'>I kick [target.name]!</span>")
+		target.visible_message(span_danger("[user.name] kicks [target.name]!"),
+						span_danger("I'm kicked by [user.name]!"), span_hear("I hear aggressive shuffling!"), COMBAT_MESSAGE_RANGE, user)
+		to_chat(user, span_danger("I kick [target.name]!"))
 		log_combat(user, target, "kicked")
 		playsound(target, 'sound/combat/hits/kick/kick.ogg', 100, TRUE, -1)
 		target.lastattacker = user.real_name
@@ -240,7 +240,7 @@
 		return
 	return ..()
 
-/mob/living/simple_animal/proc/attack_threshold_check(damage, damagetype = BRUTE, armorcheck = "melee")
+/mob/living/simple_animal/proc/attack_threshold_check(damage, damagetype = BRUTE, armorcheck = d_type)
 	var/temp_damage = damage
 	if(!damage_coeff[damagetype])
 		temp_damage = 0
@@ -248,7 +248,7 @@
 		temp_damage *= damage_coeff[damagetype]
 
 	if(temp_damage >= 0 && temp_damage <= force_threshold)
-		visible_message("<span class='warning'>[src] looks unharmed!</span>")
+		visible_message(span_warning("[src] looks unharmed!"))
 		return FALSE
 	else
 		apply_damage(damage, damagetype, null, getarmor(null, armorcheck))

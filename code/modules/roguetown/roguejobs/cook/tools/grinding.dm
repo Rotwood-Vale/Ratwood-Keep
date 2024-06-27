@@ -1,6 +1,6 @@
 /obj/structure/fluff/millstone
 	name = "millstone"
-	desc = ""
+	desc = "A millstone used to grind grain into flour."
 	icon = 'icons/roguetown/misc/structure.dmi'
 	icon_state = "millstone"
 	density = TRUE

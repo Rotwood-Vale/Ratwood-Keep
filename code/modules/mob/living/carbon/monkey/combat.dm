@@ -151,7 +151,7 @@
 						var/mob/M = pickupTarget.loc
 						if(!pickpocketing)
 							pickpocketing = TRUE
-							M.visible_message("<span class='warning'>[src] starts trying to take [pickupTarget] from [M]!</span>", "<span class='danger'>[src] tries to take [pickupTarget]!</span>")
+							M.visible_message(span_warning("[src] starts trying to take [pickupTarget] from [M]!"), span_danger("[src] tries to take [pickupTarget]!"))
 							INVOKE_ASYNC(src, PROC_REF(pickpocket), M)
 			return TRUE
 
@@ -307,12 +307,12 @@
 	if(do_mob(src, M, MONKEY_ITEM_SNATCH_DELAY) && pickupTarget)
 		for(var/obj/item/I in M.held_items)
 			if(I == pickupTarget)
-				M.visible_message("<span class='danger'>[src] snatches [pickupTarget] from [M].</span>", "<span class='danger'>[src] snatched [pickupTarget]!</span>")
+				M.visible_message(span_danger("[src] snatches [pickupTarget] from [M]."), span_danger("[src] snatched [pickupTarget]!"))
 				if(M.temporarilyRemoveItemFromInventory(pickupTarget))
 					if(!QDELETED(pickupTarget) && !equip_item(pickupTarget))
 						pickupTarget.forceMove(drop_location())
 				else
-					M.visible_message("<span class='danger'>[src] tried to snatch [pickupTarget] from [M], but failed!</span>", "<span class='danger'>[src] tried to grab [pickupTarget]!</span>")
+					M.visible_message(span_danger("[src] tried to snatch [pickupTarget] from [M], but failed!"), span_danger("[src] tried to grab [pickupTarget]!"))
 	pickpocketing = FALSE
 	pickupTarget = null
 	pickupTimer = 0
@@ -400,7 +400,7 @@
 				retaliate(Proj.firer)
 	. = ..()
 
-/mob/living/carbon/monkey/hitby(atom/movable/AM, skipcatch = FALSE, hitpush = TRUE, blocked = FALSE, datum/thrownthing/throwingdatum)
+/mob/living/carbon/monkey/hitby(atom/movable/AM, skipcatch = FALSE, hitpush = TRUE, blocked = FALSE, datum/thrownthing/throwingdatum, d_type = "blunt")
 	if(istype(AM, /obj/item))
 		var/obj/item/I = AM
 		if(I.throwforce < src.health && I.thrownby && ishuman(I.thrownby))

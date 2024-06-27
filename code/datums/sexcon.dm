@@ -575,7 +575,10 @@
 				to_chat(user, "<span class='info'>I slow down.</span>")
 		return
 	if(user == owner)
-		owner.visible_message("<span class='love'>[owner] faps.</span>")
+		if(owner.gender == MALE)
+			owner.visible_message("<span class='love'>[owner] faps.</span>")
+		if(owner.gender == FEMALE)	//
+			owner.visible_message("<span class='love'>[owner] masturbates.</span>")		//Different masturbation start - by Gardelin0
 		if(horny < 0)
 			to_chat(owner, "<span class='warning'>I'm spent.</span>")
 			return
@@ -779,7 +782,7 @@
 							usedsource = "fuckcorpse"
 							stop_fucking()
 						else
-							if(D.owner.stat != CONSCIOUS)
+							if(!D.owner.client)
 								usedsource = "sleepingbeauty"
 						if(D.owner.cmode)
 							D.owner.flash_fullscreen("redflash1")
@@ -895,9 +898,15 @@
 						if(!owner.rogfat_add(3))
 							stop_fapping()
 					if(fapping)
-						playsound(owner, 'sound/misc/mat/fap.ogg', 30, TRUE, -2, ignore_walls = FALSE)
+						if(gender == MALE)
+							playsound(owner, 'sound/misc/mat/fap.ogg', 30, TRUE, -2, ignore_walls = FALSE)
+						else
+							playsound(owner, 'modular/sound/misc/mat/fingering.ogg', 30, TRUE, -2, ignore_walls = FALSE)	//Different masturbation sounds - by Gardelin0
 						if(prob(33))
-							owner.visible_message("<span class='[!owner.cmode ? "love" : "warning"]'>[owner] faps.</span>")
+							if(gender == MALE)
+								owner.visible_message("<span class='[!owner.cmode ? "love" : "warning"]'>[owner] faps.</span>")
+							else
+								owner.visible_message("<span class='[!owner.cmode ? "love" : "warning"]'>[owner] masturbates.</span>")	//Slight diffirence - by Gardelin0
 						if(adjust_horny(1, "fapself"))
 							stop_fapping()
 				else
@@ -905,7 +914,10 @@
 						if(!fapping.grabbee.rogfat_add(1))
 							stop_fapping_us()
 					if(fapping)
-						playsound(owner, 'sound/misc/mat/fap.ogg', 30, TRUE, -2, ignore_walls = FALSE)
+						if(gender == MALE)
+							playsound(owner, 'sound/misc/mat/fap.ogg', 30, TRUE, -2, ignore_walls = FALSE)
+						else
+							playsound(owner, 'modular/sound/misc/mat/fingering.ogg', 30, TRUE, -2, ignore_walls = FALSE)	//Different masturbation sounds - by Gardelin0
 						if(prob(33))
 							if(gender == MALE)
 								fapping.grabbee.visible_message("<span class='[!owner.cmode ? "love" : "warning"]'>[fapping.grabbee] jerks [owner].</span>")
@@ -1090,9 +1102,28 @@
 			owner.add_stress(/datum/stressevent/cumcorpse)
 			owner.freak_out()
 
+		if("dildo")	//For dildos - by Gardelin0
+			if(owner.has_flaw(/datum/charflaw/addiction/lovefiend))
+				owner.sate_addiction()
+			owner.add_stress(/datum/stressevent/cumok)
+
+// Tries to award triumphs, giving the target one if the owner has TRAIT_GOODLOVER, and vice versa, but only once per person per round
+/datum/sex_controller/proc/try_award_triumph(mob/living/target)
+	if(!target)
+		return
+	if(HAS_TRAIT(target, TRAIT_GOODLOVER))
+		if(!owner.mob_timers["cumtri"])
+			owner.mob_timers["cumtri"] = world.time
+			owner.adjust_triumphs(1)
+			to_chat(owner, span_love("Our loving is a true TRIUMPH!"))
+	if(HAS_TRAIT(owner, TRAIT_GOODLOVER))
+		if(!target.mob_timers["cumtri"])
+			target.mob_timers["cumtri"] = world.time
+			target.adjust_triumphs(1)
+			to_chat(target, span_love("Our loving is a true TRIUMPH!"))
+
 /datum/sex_controller/male/cum(source)
 	..()
-
 	switch(source)
 		if("ontits")
 			if(owner.has_flaw(/datum/charflaw/addiction/lovefiend))
@@ -1146,6 +1177,7 @@
 			owner.visible_message("<span class='notice'>[owner] tightens in ecstasy!</span>")
 			playsound(owner, 'sound/misc/mat/endin.ogg', 100, TRUE, ignore_walls = FALSE)
 			add_cum_floor(get_turf(fucking))
+			try_award_triumph(fucking)
 		if("insidepussy")
 			if(owner.has_flaw(/datum/charflaw/addiction/lovefiend))
 				owner.sate_addiction()
@@ -1176,14 +1208,6 @@
 						yee = 1
 						husbando = 1
 						owner.add_stress(/datum/stressevent/cumlove)
-					if(HAS_TRAIT(F, RTRAIT_GOODLOVER))
-						if(!H.mob_timers["cumtri"])
-							H.mob_timers["cumtri"] = world.time
-							H.adjust_triumphs(1)
-					if(HAS_TRAIT(H, RTRAIT_GOODLOVER))
-						if(!F.mob_timers["cumtri"])
-							F.mob_timers["cumtri"] = world.time
-							F.adjust_triumphs(1)
 				if(!yee)
 					owner.add_stress(/datum/stressevent/cummax)
 			else
@@ -1203,6 +1227,7 @@
 			playsound(fucking, 'sound/misc/mat/endin.ogg', 100, TRUE, ignore_walls = FALSE)
 			owner.visible_message("<span class='notice'>[owner] tightens in ecstasy!</span>")
 			add_cum_floor(get_turf(fucking))
+			try_award_triumph(fucking)
 
 		if("sleepingbeauty")
 			if(owner.has_flaw(/datum/charflaw/addiction/lovefiend))
@@ -1218,7 +1243,7 @@
 							if(H.mind.antag_datums.len)
 								wuzantag = TRUE
 					if(!wuzantag)
-						adjust_playerquality(-1, H.ckey, reason="Fucked a sleeping player as a non-villain.")
+						adjust_playerquality(-1, H.ckey, reason="Fucked an AFK player as a non-villain.")
 			owner.add_stress(/datum/stressevent/cumok)
 			playsound(fucking, 'sound/misc/mat/endin.ogg', 100, TRUE, ignore_walls = FALSE)
 			add_cum_floor(get_turf(fucking))
@@ -1236,6 +1261,7 @@
 			add_cum_floor(get_turf(owner))
 			owner.visible_message("<span class='notice'>[owner] spills something on the floor!</span>")
 			playsound(owner, 'sound/misc/mat/endout.ogg', 100, TRUE, ignore_walls = FALSE)
+			try_award_triumph(fucking)
 
 
 /datum/sex_controller/female/adjust_horny(amt, source)
@@ -1255,6 +1281,14 @@
 					owner.emote("sexmoanlight")
 			if("suckedoff")
 				owner.emote("sexmoanlight")
+
+			if("fapping")	//Moaning when masturbating - by Gardelin0
+				if(prob(10))
+					owner.emote("sexmoanlight")
+
+			if("dildo")	//For dildos - by Gardelin0
+				if(!owner.cmode)
+					owner.emote("sexmoanhvy")
 
 /datum/sex_controller/female/cum(source)
 	. = ..()
@@ -1293,7 +1327,9 @@
 		return
 	if(stat == DEAD)
 		return
-	add_nausea(101)
+
+	to_chat(src, "<span class='warning'>I don't feel so good...I'm definetly pregnant!</span>")	//Some kind of a notification - by Gardelin0
+//	add_nausea(101)	Stop throwing up after sex - by Gardelin0
 
 /datum/sex_controller/proc/add_cum_floor(turfu)
 	if(!turfu || !isturf(turfu))

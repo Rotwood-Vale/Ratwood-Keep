@@ -5,7 +5,7 @@
 	name = "Nervousness"
 	desc = ""
 	quality = MINOR_NEGATIVE
-	text_gain_indication = "<span class='danger'>I feel nervous.</span>"
+	text_gain_indication = span_danger("I feel nervous.")
 
 /datum/mutation/human/nervousness/on_life()
 	if(prob(10))
@@ -16,8 +16,8 @@
 	name = "Wacky"
 	desc = ""
 	quality = MINOR_NEGATIVE
-	text_gain_indication = "<span class='sans'>I feel an off sensation in my voicebox.</span>"
-	text_lose_indication = "<span class='notice'>The off sensation passes.</span>"
+	text_gain_indication = span_sans("I feel an off sensation in my voicebox.")
+	text_lose_indication = span_notice("The off sensation passes.")
 
 /datum/mutation/human/wacky/on_acquiring(mob/living/carbon/human/owner)
 	if(..())
@@ -36,8 +36,8 @@
 	name = "Mute"
 	desc = ""
 	quality = NEGATIVE
-	text_gain_indication = "<span class='danger'>I feel unable to express myself at all.</span>"
-	text_lose_indication = "<span class='danger'>I feel able to speak freely again.</span>"
+	text_gain_indication = span_danger("I feel unable to express myself at all.")
+	text_lose_indication = span_danger("I feel able to speak freely again.")
 
 /datum/mutation/human/mute/on_acquiring(mob/living/carbon/human/owner)
 	if(..())
@@ -54,8 +54,8 @@
 	name = "Smile"
 	desc = ""
 	quality = MINOR_NEGATIVE
-	text_gain_indication = "<span class='notice'>I feel so happy. Nothing can be wrong with anything. :)</span>"
-	text_lose_indication = "<span class='notice'>Everything is terrible again. :(</span>"
+	text_gain_indication = span_notice("I feel so happy. Nothing can be wrong with anything. :)")
+	text_lose_indication = span_notice("Everything is terrible again. :(")
 
 /datum/mutation/human/smile/on_acquiring(mob/living/carbon/human/owner)
 	if(..())
@@ -123,8 +123,8 @@
 	name = "Unintelligible"
 	desc = ""
 	quality = NEGATIVE
-	text_gain_indication = "<span class='danger'>I can't seem to form any coherent thoughts!</span>"
-	text_lose_indication = "<span class='danger'>My mind feels more clear.</span>"
+	text_gain_indication = span_danger("I can't seem to form any coherent thoughts!")
+	text_lose_indication = span_danger("My mind feels more clear.")
 
 /datum/mutation/human/unintelligible/on_acquiring(mob/living/carbon/human/owner)
 	if(..())
@@ -140,8 +140,8 @@
 	name = "Swedish"
 	desc = ""
 	quality = MINOR_NEGATIVE
-	text_gain_indication = "<span class='notice'>I feel Swedish, however that works.</span>"
-	text_lose_indication = "<span class='notice'>The feeling of Swedishness passes.</span>"
+	text_gain_indication = span_notice("I feel Swedish, however that works.")
+	text_lose_indication = span_notice("The feeling of Swedishness passes.")
 
 /datum/mutation/human/swedish/on_acquiring(mob/living/carbon/human/owner)
 	if(..())
@@ -169,8 +169,8 @@
 	name = "Chav"
 	desc = ""
 	quality = MINOR_NEGATIVE
-	text_gain_indication = "<span class='notice'>Ye feel like a reet prat like, innit?</span>"
-	text_lose_indication = "<span class='notice'>I no longer feel like being rude and sassy.</span>"
+	text_gain_indication = span_notice("Ye feel like a reet prat like, innit?")
+	text_lose_indication = span_notice("I no longer feel like being rude and sassy.")
 
 /datum/mutation/human/chav/on_acquiring(mob/living/carbon/human/owner)
 	if(..())
@@ -215,8 +215,8 @@
 	desc = ""
 	quality = MINOR_NEGATIVE
 	locked = TRUE
-	text_gain_indication = "<span class='notice'>I feel pretty good, honeydoll.</span>"
-	text_lose_indication = "<span class='notice'>I feel a little less conversation would be great.</span>"
+	text_gain_indication = span_notice("I feel pretty good, honeydoll.")
+	text_lose_indication = span_notice("I feel a little less conversation would be great.")
 
 /datum/mutation/human/elvis/on_life()
 	switch(pick(1,2))
@@ -261,8 +261,8 @@
 	desc = ""
 	quality = NEGATIVE
 	locked = TRUE
-	text_gain_indication = "<span class='notice'>I feel...totally chill, man!</span>"
-	text_lose_indication = "<span class='notice'>I feel like you have a better sense of time.</span>"
+	text_gain_indication = span_notice("I feel...totally chill, man!")
+	text_lose_indication = span_notice("I feel like you have a better sense of time.")
 
 /datum/mutation/human/stoner/on_acquiring(mob/living/carbon/human/owner)
 	..()

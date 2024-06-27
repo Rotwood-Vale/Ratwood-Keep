@@ -126,7 +126,7 @@
 	H.equipOutfit(outfit_type)
 
 /datum/antagonist/wizard/greet()
-	to_chat(owner, "<span class='boldannounce'>I are the Space Wizard!</span>")
+	to_chat(owner, span_boldannounce("I are the Space Wizard!"))
 	to_chat(owner, "<B>The Space Wizards Federation has given you the following tasks:</B>")
 	owner.announce_objectives()
 	to_chat(owner, "You will find a list of available spells in my spell book. Choose my magic arsenal carefully.")
@@ -135,7 +135,7 @@
 	to_chat(owner,"<B>Remember:</B> do not forget to prepare my spells.")
 
 /datum/antagonist/wizard/farewell()
-	to_chat(owner, "<span class='danger'>I have been brainwashed! You are no longer a wizard!</span>")
+	to_chat(owner, span_danger("I have been brainwashed! You are no longer a wizard!"))
 
 /datum/antagonist/wizard/proc/rename_wizard()
 	set waitfor = FALSE
@@ -294,9 +294,9 @@
 		count++
 
 	if(wizardwin)
-		parts += "<span class='greentext'>The wizard was successful!</span>"
+		parts += span_greentext("The wizard was successful!")
 	else
-		parts += "<span class='redtext'>The wizard has failed!</span>"
+		parts += span_redtext("The wizard has failed!")
 
 	if(owner.spell_list.len>0)
 		parts += "<B>[owner.name] used the following spells: </B>"
@@ -311,10 +311,10 @@
 /datum/team/wizard/roundend_report()
 	var/list/parts = list()
 
-	parts += "<span class='header'>Wizards/witches of [master_wizard.owner.name] team were:</span>"
+	parts += span_header("Wizards/witches of [master_wizard.owner.name] team were:")
 	parts += master_wizard.roundend_report()
 	parts += " "
-	parts += "<span class='header'>[master_wizard.owner.name] apprentices were:</span>"
+	parts += span_header("[master_wizard.owner.name] apprentices were:")
 	parts += printplayerlist(members - master_wizard.owner)
 
 	return "<div class='panel redborder'>[parts.Join("<br>")]</div>"

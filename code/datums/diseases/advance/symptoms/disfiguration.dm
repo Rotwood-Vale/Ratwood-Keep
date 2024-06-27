@@ -37,9 +37,9 @@ BONUS
 	switch(A.stage)
 		if(5)
 			ADD_TRAIT(M, TRAIT_DISFIGURED, DISEASE_TRAIT)
-			M.visible_message("<span class='warning'>[M]'s face appears to cave in!</span>", "<span class='notice'>I feel my face crumple and cave in!</span>")
+			M.visible_message(span_warning("[M]'s face appears to cave in!"), span_notice("I feel my face crumple and cave in!"))
 		else
-			M.visible_message("<span class='warning'>[M]'s face begins to contort...</span>", "<span class='notice'>My face feels wet and malleable...</span>")
+			M.visible_message(span_warning("[M]'s face begins to contort..."), span_notice("My face feels wet and malleable..."))
 
 
 /datum/symptom/disfiguration/End(datum/disease/advance/A)

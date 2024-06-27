@@ -6,14 +6,14 @@ GLOBAL_LIST_INIT(stone_sharpness_names, list(
 	"Acute",
 	"Edged",
 	"Fierce",
-	"Stinging"
+	"Stinging",
 ))
 
 GLOBAL_LIST_INIT(stone_sharpness_descs, list(
 	"It has a vicious edge.",
 	"This stone is akin to a knife.",
 	"It has a pointed side.",
-	"It has a serrated edge."
+	"It has a serrated edge.",
 ))
 
 GLOBAL_LIST_INIT(stone_bluntness_names, list(
@@ -26,7 +26,7 @@ GLOBAL_LIST_INIT(stone_bluntness_names, list(
 	"Meaty",
 	"Dumpy",
 	"Stout",
-	"Plump"
+	"Plump",
 ))
 
 GLOBAL_LIST_INIT(stone_bluntness_descs, list(
@@ -34,7 +34,7 @@ GLOBAL_LIST_INIT(stone_bluntness_descs, list(
 	"It is kinda hefty.",
 	"It fills the hand.",
 	"It is quite a handfull",
-	"This stone feels like it was made for ME!"
+	"This stone feels like it was made for ME!",
 ))
 
 GLOBAL_LIST_INIT(stone_magic_names, list(
@@ -58,7 +58,7 @@ GLOBAL_LIST_INIT(stone_magic_names, list(
 	"Angelic",
 	"Demonic",
 	"Devilish",
-	"Mischievous"
+	"Mischievous",
 ))
 
 GLOBAL_LIST_INIT(stone_magic_descs, list(
@@ -67,7 +67,7 @@ GLOBAL_LIST_INIT(stone_magic_descs, list(
 	"It has an odd sigil on it.",
 	"It has a small red stone pressed into it.",
 	"It is covered in tiny cracks.",
-	"It looks unsafe."
+	"It looks unsafe.",
 ))
 
 GLOBAL_LIST_INIT(stone_personalities, list(
@@ -112,18 +112,19 @@ GLOBAL_LIST_INIT(stone_personalities, list(
 	"Horripilation",
 	"Terror",
 	"Earthquakes",
-	"Thunder"
+	"Thunder",
 ))
 
 GLOBAL_LIST_INIT(stone_personality_descs, list(
-	"This stone is full of personality",
+	"This stone is full of personality!",
 	"They say the intelligent races built their foundations with stones.",
 	"One must think, where did this stone come from?",
 	"If all stones were like this, then they would be some pretty great stones.",
-	"I wish my personality was like this stones",
-	"I could sure do a whole lot with this stone", 
-	"I love stones!"
+	"I wish my personality was like this stone's...",
+	"I could sure do a whole lot with this stone.", 
+	"I love stones!",
 ))
+
 /obj/item/natural/stone
 	name = "stone"
 	icon_state = "stone1"
@@ -138,8 +139,8 @@ GLOBAL_LIST_INIT(stone_personality_descs, list(
 	w_class = WEIGHT_CLASS_TINY
 
 /obj/item/natural/stone/Initialize()
+	. = ..()
 	stone_lore()
-	..()
 
 /*
 	This right here is stone lore,
@@ -157,10 +158,10 @@ GLOBAL_LIST_INIT(stone_personality_descs, list(
 	var/list/blunt_intents = list(/datum/intent/mace/strike/wood, /datum/intent/mace/smash/wood)
 	var/list/sharp_intents = list(/datum/intent/dagger/cut, /datum/intent/dagger/thrust, /datum/intent/dagger/chop)
 
-	var/bluntness_rating = rand(1,10)
-	var/sharpness_rating = rand(1,10)
+	var/bluntness_rating = rand(0,10)
+	var/sharpness_rating = rand(0,10)
 
-	var/stone_personality_rating = rand(1,25)
+	var/stone_personality_rating = rand(0,25)
 
 	//This is so sharpness and bluntness's name and descs come in randomly before or after each other
 	//Magic will always be in front for now, and personality will be after magic.
@@ -168,7 +169,7 @@ GLOBAL_LIST_INIT(stone_personality_descs, list(
 	var/list/desc_jumbler = list()
 
 	switch(bluntness_rating)
-		if(1 to 8)
+		if(2 to 8)
 			extra_intent_list += pick(blunt_intents) // Add one
 		if(9 to 10)
 			for(var/muhdik in blunt_intents) // add all intent to possible things
@@ -178,7 +179,7 @@ GLOBAL_LIST_INIT(stone_personality_descs, list(
 			desc_jumbler += pick(GLOB.stone_bluntness_descs)
 
 	switch(sharpness_rating)
-		if(1 to 8)
+		if(2 to 8)
 			extra_intent_list += pick(sharp_intents) // Add one
 		if(9 to 10)
 			for(var/mofugga in sharp_intents) // add all intent to possible things
@@ -214,7 +215,7 @@ GLOBAL_LIST_INIT(stone_personality_descs, list(
 	var/max_force_range = sharpness_rating + bluntness_rating // Add them together
 	//max_force_range = round(max_force_range/2) // Divide by 2 and round jus incase
 
-	bonus_force = rand(1, max_force_range) // Your total bonus force is now between 1 and your sharpness/bluntness totals
+	bonus_force = rand(0, max_force_range) // Your total bonus force is now between 1 and your sharpness/bluntness totals
 
 	if(prob(5)) // We hit the jackpot, a magical stone! JUST FOR ME!
 		filters += filter(type="drop_shadow", x=0, y=0, size=1, offset=2, color=rgb(rand(1,255),rand(1,255),rand(1,255)))
@@ -224,8 +225,9 @@ GLOBAL_LIST_INIT(stone_personality_descs, list(
 		bonus_force += magic_force // Add on the magic force modifier
 
 	if(extra_intent_list.len)
-		for(var/i in 1 to extra_intent_list.len)
-			if((given_intent_list.len >= 4) || !(extra_intent_list.len)) // No more than 4 bro, and if we are empty on intents just stop here
+		for(var/i in 1 to min(4, extra_intent_list.len))
+			// No more than 4 bro, and if we are empty on intents just stop here
+			if(!length(extra_intent_list))
 				break
 			var/cock = pick(extra_intent_list) // We pick one
 			given_intent_list += cock // Add it to the list
@@ -238,14 +240,11 @@ GLOBAL_LIST_INIT(stone_personality_descs, list(
 	throwforce += bonus_force // It gets added to throw damage too
 	possible_item_intents = given_intent_list // And heres ur new extra intents too
 
-
-
-
 /obj/item/natural/stone/attackby(obj/item/W, mob/user, params)
 	user.changeNext_move(CLICK_CD_MELEE)
 	if(istype(W, /obj/item/natural/stone))
 		playsound(src.loc, pick('sound/items/stonestone.ogg'), 100)
-		user.visible_message("<span class='info'>[user] strikes the stones together.</span>")
+		user.visible_message(span_info("[user] strikes the stones together."))
 		if(prob(10))
 			var/datum/effect_system/spark_spread/S = new()
 			var/turf/front = get_step(user,user.dir)
@@ -283,7 +282,7 @@ GLOBAL_LIST_INIT(stone_personality_descs, list(
 /obj/item/natural/rock/Crossed(mob/living/L)
 	if(istype(L) && !L.throwing)
 		if(L.m_intent == MOVE_INTENT_RUN)
-			L.visible_message("<span class='warning'>[L] trips over the rock!</span>","<span class='warning'>I trip over the rock!</span>")
+			L.visible_message(span_warning("[L] trips over the rock!"),span_warning("I trip over the rock!"))
 			L.Knockdown(10)
 			L.consider_ambush()
 	..()
@@ -311,7 +310,7 @@ GLOBAL_LIST_INIT(stone_personality_descs, list(
 /obj/item/natural/rock/attackby(obj/item/W, mob/user, params)
 	user.changeNext_move(CLICK_CD_MELEE)
 	if(istype(W, /obj/item/natural/stone))
-		user.visible_message("<span class='info'>[user] strikes the stone against the rock.</span>")
+		user.visible_message(span_info("[user] strikes the stone against the rock."))
 		playsound(src.loc, 'sound/items/stonestone.ogg', 100)
 		if(prob(35))
 			var/datum/effect_system/spark_spread/S = new()
@@ -321,7 +320,7 @@ GLOBAL_LIST_INIT(stone_personality_descs, list(
 		return
 	if(istype(W, /obj/item/natural/rock))
 		playsound(src.loc, pick('sound/items/stonestone.ogg'), 100)
-		user.visible_message("<span class='info'>[user] strikes the rocks together.</span>")
+		user.visible_message(span_info("[user] strikes the rocks together."))
 		if(prob(10))
 			var/datum/effect_system/spark_spread/S = new()
 			var/turf/front = get_turf(src)

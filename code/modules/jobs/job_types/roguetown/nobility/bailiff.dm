@@ -6,12 +6,15 @@
 	total_positions = 1
 	spawn_positions = 1
 	allowed_sexes = list(MALE)
-	allowed_races = NOBLE_RACES_TYPES
+	allowed_races = RACES_TOLERATED_UP
 	allowed_ages = list(AGE_MIDDLEAGED, AGE_OLD)
 	display_order = JDO_BAILIFF
 	tutorial = "You judge the common folk and their wrongdoings if necessary. You help plan with the Councillors and maybe the King on any new issues, laws, judgings, and construction that are required to adapt to the world. You have two assistant Councillors that may serve as jurors to assist you in your job. You are required to enforce taxes for the King, judge people for breaking the law, make sure the town and manor are not in decay, and to help plan or construct new buildings. You are allowed some limited control over Guards, however it is not the focus of your job unless special circumstances are to change this."
 	whitelist_req = FALSE
+
+	spells = list(/obj/effect/proc_holder/spell/self/convertrole/guard, /obj/effect/proc_holder/spell/self/convertrole/bog)
 	outfit = /datum/outfit/job/roguetown/bailiff
+
 	give_bank_account = 40
 	min_pq = 4
 	max_pq = null
@@ -35,8 +38,6 @@
 	wrists = /obj/item/clothing/wrists/roguetown/bracers
 	backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger/steel/special = 1)
 	if(H.mind)
-		H.mind.AddSpell(new /obj/effect/proc_holder/spell/self/convertrole/guard)
-		H.mind.AddSpell(new /obj/effect/proc_holder/spell/self/convertrole/bog)
 		H.mind.adjust_skillrank(/datum/skill/combat/maces, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 3, TRUE)
@@ -65,7 +66,7 @@
 		return
 	var/inputty = input("Write a new law", "BAILIFF") as text|null
 	if(inputty)
-		if(hasomen("nolord"))
+		if(hasomen(OMEN_NOLORD))
 			make_law(inputty)
 		else
 			var/lord = find_lord()
@@ -82,7 +83,7 @@
 	var/inputty = input("Remove a law", "BAILIFF") as text|null
 	var/law_index = text2num(inputty) || 0
 	if(law_index && GLOB.laws_of_the_land[law_index])
-		if(hasomen("nolord"))
+		if(hasomen(OMEN_NOLORD))
 			remove_law(law_index)
 		else
 			var/lord = find_lord()
@@ -96,7 +97,7 @@
 	set category = "Bailiff"
 	if(stat)
 		return
-	if(hasomen("nolord"))
+	if(hasomen(OMEN_NOLORD))
 		purge_laws()
 	else
 		var/lord = find_lord()
@@ -112,7 +113,7 @@
 		return
 	var/inputty = input("Outlaw a person", "BAILIFF") as text|null
 	if(inputty)
-		if(hasomen("nolord"))
+		if(hasomen(OMEN_NOLORD))
 			make_outlaw(inputty)
 		else
 			var/lord = find_lord()
@@ -134,7 +135,7 @@
 	var/choice = alert(lord, "The bailiff requests a new law!\n[requested_law]", "BAILIFF LAW REQUEST", "Yes", "No")
 	if(choice != "Yes" || QDELETED(lord) || lord.stat > CONSCIOUS)
 		if(bailiff)
-			to_chat("<span class='warning'>The lord has denied the request for a new law!</span>")
+			to_chat(span_warning("The lord has denied the request for a new law!"))
 		return
 	make_law(requested_law)
 
@@ -144,7 +145,7 @@
 	var/choice = alert(lord, "The bailiff requests the removal of a law!\n[GLOB.laws_of_the_land[requested_law]]", "BAILIFF LAW REQUEST", "Yes", "No")
 	if(choice != "Yes" || QDELETED(lord) || lord.stat > CONSCIOUS)
 		if(bailiff)
-			to_chat("<span class='warning'>The lord has denied the request for a law removal!</span>")
+			to_chat(span_warning("The lord has denied the request for a law removal!"))
 		return
 	remove_law(requested_law)
 
@@ -152,7 +153,7 @@
 	var/choice = alert(lord, "The bailiff requests a purge of all laws!", "BAILIFF PURGE REQUEST", "Yes", "No")
 	if(choice != "Yes" || QDELETED(lord) || lord.stat > CONSCIOUS)
 		if(bailiff)
-			to_chat("<span class='warning'>The lord has denied the request for a purge of all laws!</span>")
+			to_chat(span_warning("The lord has denied the request for a purge of all laws!"))
 		return
 	purge_laws()
 
@@ -160,6 +161,6 @@
 	var/choice = alert(lord, "The bailiff requests to outlaw someone!\n[requested_outlaw]", "BAILIFF OUTLAW REQUEST", "Yes", "No")
 	if(choice != "Yes" || QDELETED(lord) || lord.stat > CONSCIOUS)
 		if(bailiff)
-			to_chat("<span class='warning'>The lord has denied the request for declaring an outlaw!</span>")
+			to_chat(span_warning("The lord has denied the request for declaring an outlaw!"))
 		return
 	make_outlaw(requested_outlaw)

@@ -24,7 +24,7 @@
 	log_admin("[key_name(usr)] checked the individual player panel for [key_name(M)][isobserver(usr)?"":" while in game"].")
 
 	if(!M)
-		to_chat(usr, "<span class='warning'>I seem to be selecting a mob that doesn't exist anymore.</span>")
+		to_chat(usr, span_warning("I seem to be selecting a mob that doesn't exist anymore."))
 		return
 
 	var/body = "<html><head><title>Options for [M.key]</title></head>"
@@ -201,7 +201,7 @@
 		return
 
 	M.fully_heal(admin_revive = TRUE)
-	message_admins("<span class='danger'>Admin [key_name_admin(usr)] healed [key_name_admin(M)]!</span>")
+	message_admins(span_danger("Admin [key_name_admin(usr)] healed [key_name_admin(M)]!"))
 	log_admin("[key_name(usr)] healed [key_name(M)].")
 
 /datum/admins/proc/admin_revive(mob/living/M in GLOB.mob_list)
@@ -213,7 +213,7 @@
 		return
 
 	M.revive(full_heal = TRUE, admin_revive = TRUE)
-	message_admins("<span class='danger'>Admin [key_name_admin(usr)] revived [key_name_admin(M)]!</span>")
+	message_admins(span_danger("Admin [key_name_admin(usr)] revived [key_name_admin(M)]!"))
 	log_admin("[key_name(usr)] Revived [key_name(M)].")
 
 /datum/admins/proc/checkpq(mob/living/M in GLOB.mob_list)
@@ -225,7 +225,7 @@
 		return
 	
 	if(!M.ckey)
-		to_chat(src, "<span class='warning'>There is no ckey attached to this mob.</span>")
+		to_chat(src, span_warning("There is no ckey attached to this mob."))
 		return
 
 	check_pq_menu(M.ckey)
@@ -244,7 +244,7 @@
 		M.set_resting(FALSE, TRUE)
 	else
 		M.SetSleeping(999999)
-	message_admins("<span class='danger'>Admin [key_name_admin(usr)] toggled [key_name_admin(M)]'s sleeping state!</span>")
+	message_admins(span_danger("Admin [key_name_admin(usr)] toggled [key_name_admin(M)]'s sleeping state!"))
 	log_admin("[key_name(usr)] toggled [key_name(M)]'s sleeping state.")
 
 /datum/admins/proc/start_vote()
@@ -253,7 +253,7 @@
 	set category = "Server"
 
 	if(!check_rights(R_POLL))
-		to_chat(usr, "<span class='warning'>You do not have the rights to start a vote.</span>")
+		to_chat(usr, span_warning("You do not have the rights to start a vote."))
 		return
 
 	var/type = input("What kind of vote?") as null|anything in list("End Round", "Custom")
@@ -273,17 +273,17 @@
 		return
 	
 	if(!M.ckey)
-		to_chat(src, "<span class='warning'>There is no ckey attached to this mob.</span>")
+		to_chat(src, span_warning("There is no ckey attached to this mob."))
 		return
 
 	var/ckey = lowertext(M.ckey)
 	var/admin = lowertext(usr.key)
 
 	if(ckey == admin)
-		to_chat(src, "<span class='boldwarning'>That's you!</span>")
+		to_chat(src, span_boldwarning("That's you!"))
 		return
 	if(!fexists("data/player_saves/[copytext(ckey,1,2)]/[ckey]/preferences.sav"))
-		to_chat(src, "<span class='boldwarning'>User does not exist.</span>")
+		to_chat(src, span_boldwarning("User does not exist."))
 		return
 	var/amt2change = input("How much to modify the PQ by? (20 to -20, or 0 to just add a note)") as null|num
 	if(!check_rights(R_ADMIN,0))
@@ -631,7 +631,7 @@
 	else
 		message_admins("[key_name(usr)] set the admin notice.")
 		log_admin("[key_name(usr)] set the admin notice:\n[new_admin_notice]")
-		to_chat(world, "<span class='adminnotice'><b>Admin Notice:</b>\n \t [new_admin_notice]</span>")
+		to_chat(world, span_adminnotice("<b>Admin Notice:</b>\n \t [new_admin_notice]"))
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Set Admin Notice") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 	GLOB.admin_notice = new_admin_notice
 	return
@@ -703,7 +703,7 @@
 	else
 		to_chat(world, "<B>New players may now enter the game.</B>")
 	log_admin("[key_name(usr)] toggled new player game entering.")
-	message_admins("<span class='adminnotice'>[key_name_admin(usr)] toggled new player game entering.</span>")
+	message_admins(span_adminnotice("[key_name_admin(usr)] toggled new player game entering."))
 	world.update_status()
 	SSblackbox.record_feedback("nested tally", "admin_toggle", 1, list("Toggle Entering", "[GLOB.enter_allowed ? "Enabled" : "Disabled"]")) //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
@@ -731,7 +731,7 @@
 		to_chat(world, "<B>I may now respawn.</B>")
 	else
 		to_chat(world, "<B>I may no longer respawn :(</B>")
-	message_admins("<span class='adminnotice'>[key_name_admin(usr)] toggled respawn to [!new_nores ? "On" : "Off"].</span>")
+	message_admins(span_adminnotice("[key_name_admin(usr)] toggled respawn to [!new_nores ? "On" : "Off"]."))
 	log_admin("[key_name(usr)] toggled respawn to [!new_nores ? "On" : "Off"].")
 	world.update_status()
 	SSblackbox.record_feedback("nested tally", "admin_toggle", 1, list("Toggle Respawn", "[!new_nores ? "Enabled" : "Disabled"]")) //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
@@ -881,7 +881,7 @@
 	else
 		to_chat(world, "<B>Guests may now enter the game.</B>")
 	log_admin("[key_name(usr)] toggled guests game entering [!new_guest_ban ? "" : "dis"]allowed.")
-	message_admins("<span class='adminnotice'>[key_name_admin(usr)] toggled guests game entering [!new_guest_ban ? "" : "dis"]allowed.</span>")
+	message_admins(span_adminnotice("[key_name_admin(usr)] toggled guests game entering [!new_guest_ban ? "" : "dis"]allowed."))
 	SSblackbox.record_feedback("nested tally", "admin_toggle", 1, list("Toggle Guests", "[!new_guest_ban ? "Enabled" : "Disabled"]")) //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /datum/admins/proc/output_ai_laws()
@@ -1053,7 +1053,7 @@
 
 	tomob.ghostize(0)
 
-	message_admins("<span class='adminnotice'>[key_name_admin(usr)] has put [frommob.key] in control of [tomob.name].</span>")
+	message_admins(span_adminnotice("[key_name_admin(usr)] has put [frommob.key] in control of [tomob.name]."))
 	log_admin("[key_name(usr)] stuffed [frommob.key] into [tomob.name].")
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Ghost Drag Control")
 

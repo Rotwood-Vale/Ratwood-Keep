@@ -1,3 +1,4 @@
+
 /datum/skill/mining
 	name = "Mining"
 	desc = ""

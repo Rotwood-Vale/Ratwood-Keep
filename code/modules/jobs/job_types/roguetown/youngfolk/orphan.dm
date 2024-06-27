@@ -1,21 +1,23 @@
 /datum/job/roguetown/orphan
-	title = "Orphan"
+	title = "Vagabond"
 	flag = ORPHAN
 	department_flag = YOUNGFOLK
 	faction = "Station"
-	total_positions = 8
-	spawn_positions = 8
+	total_positions = 12
+	spawn_positions = 12
 
-	allowed_races = CLOTHED_RACES_TYPES
+	allowed_races = RACES_ALL_KINDS
 	allowed_ages = list(AGE_ADULT)
 
-	tutorial = "Dozens of unwanted children are born in the kingdom of Psydonia every day. They sometimes make something of themselves but much more often die early in the streets."
+	tutorial = "Dozens of people end up down on their luck in the kingdom of Psydonia every day. They sometimes make something of themselves but much more often die in the streets."
 
 	outfit = /datum/outfit/job/roguetown/orphan
 	display_order = JDO_ORPHAN
 	show_in_credits = FALSE
 	min_pq = -30
 	max_pq = null
+
+	cmode_music = 'sound/music/combat_bum.ogg'
 
 /datum/job/roguetown/orphan/New()
 	. = ..()

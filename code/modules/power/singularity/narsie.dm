@@ -28,7 +28,7 @@
 
 /obj/singularity/narsie/large/Initialize()
 	. = ..()
-	send_to_playing_players("<span class='narsie'>NAR'SIE HAS RISEN</span>")
+	send_to_playing_players(span_narsie("NAR'SIE HAS RISEN"))
 	sound_to_playing_players('sound/blank.ogg')
 
 	var/area/A = get_area(src)
@@ -120,7 +120,7 @@
 	for(var/mob/living/carbon/M in viewers(consume_range, src))
 		if(M.stat == CONSCIOUS)
 			if(!iscultist(M))
-				to_chat(M, "<span class='cultsmall'>I feel conscious thought crumble away in an instant as you gaze upon [src.name]...</span>")
+				to_chat(M, span_cultsmall("I feel conscious thought crumble away in an instant as you gaze upon [src.name]..."))
 				M.apply_effect(60, EFFECT_STUN)
 
 
@@ -169,12 +169,12 @@
 /obj/singularity/narsie/proc/acquire(atom/food)
 	if(food == target)
 		return
-	to_chat(target, "<span class='cultsmall'>NAR'SIE HAS LOST INTEREST IN YOU.</span>")
+	to_chat(target, span_cultsmall("NAR'SIE HAS LOST INTEREST IN YOU."))
 	target = food
 	if(ishuman(target))
-		to_chat(target, "<span class='cult'>NAR'SIE HUNGERS FOR YOUR SOUL.</span>")
+		to_chat(target, span_cult("NAR'SIE HUNGERS FOR YOUR SOUL."))
 	else
-		to_chat(target, "<span class='cult'>NAR'SIE HAS CHOSEN YOU TO LEAD HER TO HER NEXT MEAL.</span>")
+		to_chat(target, span_cult("NAR'SIE HAS CHOSEN YOU TO LEAD HER TO HER NEXT MEAL."))
 
 //Wizard narsie
 /obj/singularity/narsie/wizard

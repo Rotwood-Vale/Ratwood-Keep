@@ -106,12 +106,13 @@
 #define INIT_ORDER_INPUT			85
 #define INIT_ORDER_MATURITY_GUARD	84  // RATWOOD EDIT
 #define INIT_ORDER_VIS				80
-#define INIT_ORDER_TRIUMPHS			78
 #define INIT_ORDER_ACHIEVEMENTS		77
 #define INIT_ORDER_MATERIALS		76
 #define INIT_ORDER_RESEARCH			75
 #define INIT_ORDER_EVENTS			70
 #define INIT_ORDER_JOBS				65
+#define INIT_ORDER_ROLE_CLASS_HANDLER 66
+#define INIT_ORDER_TRIUMPHS			67
 #define INIT_ORDER_QUIRKS			60
 #define INIT_ORDER_TICKER			55
 #define INIT_ORDER_MAPPING			50
@@ -141,6 +142,7 @@
 // Subsystem fire priority, from lowest to highest priority
 // If the subsystem isn't listed here it's either DEFAULT or PROCESS (if it's a processing subsystem child)
 
+#define FIRE_PRIORITY_ROLE_CLASS_HANDLER 10
 #define FIRE_PRIORITY_PING			10
 #define FIRE_PRIORITY_WET_FLOORS	10
 #define FIRE_PRIORITY_WATER_LEVEL	10

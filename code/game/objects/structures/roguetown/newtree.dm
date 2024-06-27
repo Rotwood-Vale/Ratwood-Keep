@@ -71,10 +71,10 @@
 			return
 		var/turf/target = get_step_multiz(user, UP)
 		if(!istype(target, /turf/open/transparent/openspace))
-			to_chat(user, "<span class='warning'>I can't climb here.</span>")
+			to_chat(user, span_warning("I can't climb here."))
 			return
 		if(!L.can_zTravel(target, UP))
-			to_chat(user, "<span class='warning'>I can't climb there.</span>")
+			to_chat(user, span_warning("I can't climb there."))
 			return
 		var/used_time = 0
 		var/exp_to_gain = 0 
@@ -90,7 +90,7 @@
 					myskill += 1
 			used_time = max(70 - (myskill * 10) - (L.STASPD * 3), 30)
 		playsound(user, 'sound/foley/climb.ogg', 100, TRUE)
-		user.visible_message("<span class='warning'>[user] starts to climb [src].</span>", "<span class='warning'>I start to climb [src]...</span>")
+		user.visible_message(span_warning("[user] starts to climb [src]."), span_warning("I start to climb [src]..."))
 		if(do_after(L, used_time, target = src))
 			var/pulling = user.pulling
 			if(ismob(pulling))

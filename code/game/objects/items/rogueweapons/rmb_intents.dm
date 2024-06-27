@@ -13,7 +13,7 @@
 	var/mob/living/L = target
 	user.changeNext_move(CLICK_CD_RAPID)
 	playsound(user, 'sound/combat/feint.ogg', 100, TRUE)
-	user.visible_message("<span class='danger'>[user] feints an attack at [target]!</span>")
+	user.visible_message(span_danger("[user] feints an attack at [target]!"))
 	var/perc = 50
 	if(user.mind)
 		var/obj/item/I = user.get_active_held_item()
@@ -47,11 +47,11 @@
 		L.apply_status_effect(/datum/status_effect/debuff/feinted)
 		L.changeNext_move(4)
 		L.Immobilize(5)
-		to_chat(user, "<span class='notice'>[L] fell for my feint attack!</span>")
-		to_chat(L, "<span class='danger'>I fall for [user]'s feint attack!</span>")
+		to_chat(user, span_notice("[L] fell for my feint attack!"))
+		to_chat(L, span_danger("I fall for [user]'s feint attack!"))
 	else
 		if(user.client?.prefs.showrolls)
-			to_chat(user, "<span class='warning'>[L] did not fall for my feint... [perc]%</span>")
+			to_chat(user, span_warning("[L] did not fall for my feint... [perc]%"))
 
 /datum/rmb_intent/aimed
 	name = "aimed"
@@ -102,5 +102,5 @@
 
 /datum/rmb_intent/weak
 	name = "weak"
-	desc = "Your attacks have -1 strength and will never critically-hit. Useful for longer punishments, play-fighting, and bloodletting."
+	desc = "Your attacks have -1 strength and will never critically-hit. Surgery steps can only be done with this intent. Useful for longer punishments, play-fighting, and bloodletting."
 	icon_state = "rmbweak"

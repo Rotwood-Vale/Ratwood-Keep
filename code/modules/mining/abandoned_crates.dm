@@ -44,8 +44,6 @@
 		if(26 to 30)
 			new /obj/item/vending_refill/sovietsoda(src)
 			new /obj/item/circuitboard/machine/vending(src)
-		if(31 to 35)
-			new /obj/item/seeds/firelemon(src)
 		if(36 to 40)
 			new /obj/item/toy/snappop/phoenix(src)
 			new /obj/item/toy/snappop/phoenix(src)
@@ -133,9 +131,6 @@
 			new /obj/item/gun/ballistic/automatic/toy/unrestricted(src)
 			new /obj/item/gun/ballistic/automatic/l6_saw/toy/unrestricted(src)
 			new /obj/item/ammo_box/foambox(src)
-		if(98)
-			for(var/i in 1 to 3)
-			 new /mob/living/simple_animal/hostile/poison/bees/toxin(src)
 		if(99)
 			new /obj/item/implanter/sad_trombone(src)
 		if(100)
@@ -144,7 +139,7 @@
 //ATTACK HAND IGNORING PARENT RETURN VALUE
 /obj/structure/closet/crate/secure/loot/attack_hand(mob/user)
 	if(locked)
-		to_chat(user, "<span class='notice'>The crate is locked with a Deca-code lock.</span>")
+		to_chat(user, span_notice("The crate is locked with a Deca-code lock."))
 		var/input = input(usr, "Enter [codelen] digits. All digits must be unique.", "Deca-Code Lock", "") as text|null
 		if(user.canUseTopic(src, BE_CLOSE))
 			var/list/sanitised = list()
@@ -156,15 +151,15 @@
 					if(sanitised[i] == sanitised[j])
 						sanitycheck = null //if a digit is repeated, reject the input
 			if (input == code)
-				to_chat(user, "<span class='notice'>The crate unlocks!</span>")
+				to_chat(user, span_notice("The crate unlocks!"))
 				locked = FALSE
 				cut_overlays()
 				add_overlay("securecrateg")
 				tamperproof = 0 // set explosion chance to zero, so we dont accidently hit it with a multitool and instantly die
 			else if (input == null || sanitycheck == null || length(input) != codelen)
-				to_chat(user, "<span class='notice'>I leave the crate alone.</span>")
+				to_chat(user, span_notice("I leave the crate alone."))
 			else
-				to_chat(user, "<span class='warning'>A red light flashes.</span>")
+				to_chat(user, span_warning("A red light flashes."))
 				lastattempt = input
 				attempts--
 				if(attempts == 0)
@@ -180,11 +175,11 @@
 /obj/structure/closet/crate/secure/loot/attackby(obj/item/W, mob/user)
 	if(locked)
 		if(W.tool_behaviour == TOOL_MULTITOOL)
-			to_chat(user, "<span class='notice'>DECA-CODE LOCK REPORT:</span>")
+			to_chat(user, span_notice("DECA-CODE LOCK REPORT:"))
 			if(attempts == 1)
-				to_chat(user, "<span class='warning'>* Anti-Tamper Bomb will activate on next failed access attempt.</span>")
+				to_chat(user, span_warning("* Anti-Tamper Bomb will activate on next failed access attempt."))
 			else
-				to_chat(user, "<span class='notice'>* Anti-Tamper Bomb will activate after [attempts] failed access attempts.</span>")
+				to_chat(user, span_notice("* Anti-Tamper Bomb will activate after [attempts] failed access attempts."))
 			if(lastattempt != null)
 				var/list/guess = list()
 				var/list/answer = list()
@@ -201,14 +196,14 @@
 						++bulls
 						--cows
 
-				to_chat(user, "<span class='notice'>Last code attempt, [lastattempt], had [bulls] correct digits at correct positions and [cows] correct digits at incorrect positions.</span>")
+				to_chat(user, span_notice("Last code attempt, [lastattempt], had [bulls] correct digits at correct positions and [cows] correct digits at incorrect positions."))
 			return
 	return ..()
 
 /obj/structure/closet/secure/loot/dive_into(mob/living/user)
 	if(!locked)
 		return ..()
-	to_chat(user, "<span class='notice'>That seems like a stupid idea.</span>")
+	to_chat(user, span_notice("That seems like a stupid idea."))
 	return FALSE
 
 /obj/structure/closet/crate/secure/loot/emag_act(mob/user)

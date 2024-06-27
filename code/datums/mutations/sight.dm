@@ -3,7 +3,7 @@
 	name = "Near Sightness"
 	desc = ""
 	quality = MINOR_NEGATIVE
-	text_gain_indication = "<span class='danger'>I can't see very well.</span>"
+	text_gain_indication = span_danger("I can't see very well.")
 
 /datum/mutation/human/nearsight/on_acquiring(mob/living/carbon/human/owner)
 	if(..())
@@ -21,7 +21,7 @@
 	name = "Blindness"
 	desc = ""
 	quality = NEGATIVE
-	text_gain_indication = "<span class='danger'>I can't seem to see anything.</span>"
+	text_gain_indication = span_danger("I can't seem to see anything.")
 
 /datum/mutation/human/blind/on_acquiring(mob/living/carbon/human/owner)
 	if(..())
@@ -39,7 +39,7 @@
 	desc = ""
 	quality = POSITIVE
 	difficulty = 18
-	text_gain_indication = "<span class='notice'>I can see the heat rising off of your skin...</span>"
+	text_gain_indication = span_notice("I can see the heat rising off of your skin...")
 	time_coeff = 2
 	instability = 25
 	var/visionflag = TRAIT_THERMAL_VISION
@@ -61,7 +61,7 @@
 /datum/mutation/human/thermal/x_ray
 	name = "X Ray Vision"
 	desc = "" //actual x-ray would mean you'd constantly be blasting rads, wich might be fun for later //hmb
-	text_gain_indication = "<span class='notice'>The walls suddenly disappear!</span>"
+	text_gain_indication = span_notice("The walls suddenly disappear!")
 	instability = 35
 	locked = TRUE
 	visionflag = TRAIT_XRAY_VISION
@@ -73,7 +73,7 @@
 	quality = POSITIVE
 	locked = TRUE
 	difficulty = 16
-	text_gain_indication = "<span class='notice'>I feel pressure building up behind your eyes.</span>"
+	text_gain_indication = span_notice("I feel pressure building up behind your eyes.")
 	layer_used = FRONT_MUTATIONS_LAYER
 	limb_req = BODY_ZONE_HEAD
 
@@ -101,7 +101,7 @@
 /datum/mutation/human/laser_eyes/proc/on_ranged_attack(mob/living/carbon/human/source, atom/target, mouseparams)
 	if(source.used_intent.type != INTENT_HARM)
 		return
-	to_chat(source, "<span class='warning'>I shoot with your laser eyes!</span>")
+	to_chat(source, span_warning("I shoot with your laser eyes!"))
 	source.changeNext_move(CLICK_CD_RANGE)
 	source.newtonian_move(get_dir(target, source))
 	var/obj/projectile/beam/laser_eyes/LE = new(source.loc)

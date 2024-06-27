@@ -71,7 +71,7 @@
 			L.add_stress(/datum/stressevent/psyprayer)
 			return TRUE
 	else 
-		to_chat(L, "<span class='danger'>My prayer was kinda short...</span>")
+		to_chat(L, span_danger("My prayer was kinda short..."))
 
 /mob/living/proc/check_prayer_underworld(mob/living/L,message)
 	if(!L || !message)
@@ -103,7 +103,7 @@
 		else
 			return TRUE
 	else 
-		to_chat(L, "<span class='danger'>My prayer was kinda short...</span>")
+		to_chat(L, span_danger("My prayer was kinda short..."))
 
 /datum/emote/living/meditate
 	key = "meditate"
@@ -121,7 +121,7 @@
 /datum/emote/living/meditate/run_emote(mob/user, params, type_override, intentional)
 	if(isliving(user))
 		if(!COOLDOWN_FINISHED(user, schizohelp_cooldown))
-			to_chat(user, "<span class='warning'>I need to wait before meditating again.</span>")
+			to_chat(user, span_warning("I need to wait before meditating again."))
 			return
 		var/msg = input("Say your meditation:", "Voices in your head") as text|null
 		if(msg)
@@ -532,7 +532,7 @@
 				var/mob/living/carbon/human/E = target
 				if(iself(E) || ishalfelf(E))
 					if(!E.cmode)
-						to_chat(target, "<span class='love'>It tickles...</span>")
+						to_chat(target, span_love("It tickles..."))
 			else if(H.zone_selected == BODY_ZONE_PRECISE_R_EYE || H.zone_selected == BODY_ZONE_PRECISE_L_EYE)
 				message_param = "kisses %t on the brow."
 			else
@@ -560,7 +560,7 @@
 		var/mob/living/carbon/human/H = user
 		if(H.mouth)
 			if(H.mouth.spitoutmouth)
-				H.visible_message("<span class='warning'>[H] spits out [H.mouth].</span>")
+				H.visible_message(span_warning("[H] spits out [H.mouth]."))
 				H.dropItemToGround(H.mouth, silent = FALSE)
 			return
 	..()
@@ -612,7 +612,7 @@
 /datum/emote/living/holdbreath/can_run_emote(mob/living/user, status_check = TRUE, intentional)
 	. = ..()
 	if(. && intentional && !HAS_TRAIT(user, TRAIT_HOLDBREATH) && !HAS_TRAIT(user, TRAIT_PARALYSIS))
-		to_chat(user, "<span class='warning'>I'm not desperate enough to do that.</span>")
+		to_chat(user, span_warning("I'm not desperate enough to do that."))
 		return FALSE
 
 /datum/emote/living/holdbreath/run_emote(mob/user, params, type_override, intentional)
@@ -778,7 +778,7 @@
 			message = "makes a muffled scream!"
 		if(intentional)
 			if(!C.rogfat_add(10))
-				to_chat(C, "<span class='warning'>I try to scream but my voice fails me.</span>")
+				to_chat(C, span_warning("I try to scream but my voice fails me."))
 				. = FALSE
 
 /datum/emote/living/scream/painscream
@@ -1204,13 +1204,13 @@
 /datum/emote/living/custom/proc/check_invalid(mob/user, input)
 	. = TRUE
 	if(copytext(input,1,5) == "says")
-		to_chat(user, "<span class='danger'>Invalid emote.</span>")
+		to_chat(user, span_danger("Invalid emote."))
 	else if(copytext(input,1,9) == "exclaims")
-		to_chat(user, "<span class='danger'>Invalid emote.</span>")
+		to_chat(user, span_danger("Invalid emote."))
 	else if(copytext(input,1,6) == "yells")
-		to_chat(user, "<span class='danger'>Invalid emote.</span>")
+		to_chat(user, span_danger("Invalid emote."))
 	else if(copytext(input,1,5) == "asks")
-		to_chat(user, "<span class='danger'>Invalid emote.</span>")
+		to_chat(user, span_danger("Invalid emote."))
 	else
 		. = FALSE
 
@@ -1218,12 +1218,12 @@
 	if(!can_run_emote(user, TRUE, intentional))
 		return FALSE
 	if(is_banned_from(user.ckey, "Emote"))
-		to_chat(user, "<span class='boldwarning'>I cannot send custom emotes (banned).</span>")
+		to_chat(user, span_boldwarning("I cannot send custom emotes (banned)."))
 		return FALSE
 	else if(QDELETED(user))
 		return FALSE
 	else if(user.client && user.client.prefs.muted & MUTE_IC)
-		to_chat(user, "<span class='boldwarning'>I cannot send IC messages (muted).</span>")
+		to_chat(user, span_boldwarning("I cannot send IC messages (muted)."))
 		return FALSE
 	else if(!params)
 		var/custom_emote = copytext(sanitize(input("What does your character do?") as text|null), 1, MAX_MESSAGE_LEN)
@@ -1295,10 +1295,10 @@
 	. = ..()
 	var/obj/item/circlegame/N = new(user)
 	if(user.put_in_hands(N))
-		to_chat(user, "<span class='notice'>I make a circle with your hand.</span>")
+		to_chat(user, span_notice("I make a circle with your hand."))
 	else
 		qdel(N)
-		to_chat(user, "<span class='warning'>I don't have any free hands to make a circle with.</span>")
+		to_chat(user, span_warning("I don't have any free hands to make a circle with."))
 
 /datum/emote/living/slap
 	key = "slap"
@@ -1311,7 +1311,7 @@
 		return
 	var/obj/item/slapper/N = new(user)
 	if(user.put_in_hands(N))
-		to_chat(user, "<span class='notice'>I ready your slapping hand.</span>")
+		to_chat(user, span_notice("I ready your slapping hand."))
 	else
-		to_chat(user, "<span class='warning'>You're incapable of slapping in your current state.</span>")
+		to_chat(user, span_warning("You're incapable of slapping in your current state."))
 */

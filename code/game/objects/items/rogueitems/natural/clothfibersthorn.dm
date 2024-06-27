@@ -17,7 +17,7 @@
 	bundletype = /obj/item/natural/bundle/fibers
 
 /obj/item/natural/fibers/attack_right(mob/user)
-	to_chat(user, "<span class='warning'>I start to collect [src]...</span>")
+	to_chat(user, span_warning("I start to collect [src]..."))
 	if(move_after(user, 5 SECONDS, target = src))
 		var/fibercount = 0
 		for(var/obj/item/natural/fibers/F in get_turf(src))
@@ -53,7 +53,7 @@
 	bundletype = /obj/item/natural/bundle/silk
 
 /obj/item/natural/silk/attack_right(mob/user)
-	to_chat(user, "<span class='warning'>I start to collect [src]...</span>")
+	to_chat(user, span_warning("I start to collect [src]..."))
 	if(move_after(user, 5 SECONDS, target = src))
 		var/silkcount = 0
 		for(var/obj/item/natural/silk/F in get_turf(src))
@@ -112,7 +112,7 @@
 /obj/item/natural/cloth/examine(mob/user)
 	. = ..()
 	if(wet)
-		. += "<span class='notice'>It's wet!</span>"
+		. += span_notice("It's wet!")
 
 /obj/item/natural/cloth/bandit
 	color = "#ff0000"
@@ -122,7 +122,7 @@
 /obj/item/natural/cloth/attack_obj(obj/O, mob/living/user)
 	testing("attackobj")
 	if(user.client && ((O in user.client.screen) && !user.is_holding(O)))
-		to_chat(user, "<span class='warning'>I need to take that [O.name] off before cleaning it!</span>")
+		to_chat(user, span_warning("I need to take that [O.name] off before cleaning it!"))
 		return
 	if(istype(O, /obj/effect/decal/cleanable))
 		var/cleanme = TRUE
@@ -132,14 +132,14 @@
 			add_blood_DNA(O.return_blood_DNA())
 		if(prob(33 + (wet*10)) && cleanme)
 			wet = max(wet-1, 0)
-			user.visible_message("<span class='notice'>[user] wipes \the [O.name] with [src].</span>", "<span class='notice'>I wipe \the [O.name] with [src].</span>")
+			user.visible_message(span_notice("[user] wipes \the [O.name] with [src]."), span_notice("I wipe \the [O.name] with [src]."))
 			qdel(O)
 		else
-			user.visible_message("<span class='warning'>[user] wipes \the [O.name] with [src].</span>", "<span class='warning'>I wipe \the [O.name] with [src].</span>")
+			user.visible_message(span_warning("[user] wipes \the [O.name] with [src]."), span_warning("I wipe \the [O.name] with [src]."))
 		playsound(user, "clothwipe", 100, TRUE)
 	else
 		if(prob(30 + (wet*10)))
-			user.visible_message("<span class='notice'>[user] wipes \the [O.name] with [src].</span>", "<span class='notice'>I wipe \the [O.name] with [src].</span>")
+			user.visible_message(span_notice("[user] wipes \the [O.name] with [src]."), span_notice("I wipe \the [O.name] with [src]."))
 
 			if(O.return_blood_DNA())
 				add_blood_DNA(O.return_blood_DNA())
@@ -151,20 +151,20 @@
 				SEND_SIGNAL(O, COMSIG_COMPONENT_CLEAN_ACT, CLEAN_STRONG)
 			wet = max(wet-1, 0)
 		else
-			user.visible_message("<span class='warning'>[user] wipes \the [O.name] with [src].</span>", "<span class='warning'>I wipe \the [O.name] with [src].</span>")
+			user.visible_message(span_warning("[user] wipes \the [O.name] with [src]."), span_warning("I wipe \the [O.name] with [src]."))
 		playsound(user, "clothwipe", 100, TRUE)
 
 /obj/item/natural/cloth/attack_turf(turf/T, mob/living/user)
 	if(istype(T, /turf/open/water))
 		return ..()
 	if(prob(30 + (wet*10)))
-		user.visible_message("<span class='notice'>[user] wipes \the [T.name] with [src].</span>", "<span class='notice'>I wipe \the [T.name] with [src].</span>")
+		user.visible_message(span_notice("[user] wipes \the [T.name] with [src]."), span_notice("I wipe \the [T.name] with [src]."))
 		if(wet)
 			for(var/obj/effect/decal/cleanable/C in T)
 				qdel(C)
 			wet = max(wet-1, 0)
 	else
-		user.visible_message("<span class='warning'>[user] wipes \the [T.name] with [src].</span>", "<span class='warning'>I wipe \the [T.name] with [src].</span>")
+		user.visible_message(span_warning("[user] wipes \the [T.name] with [src]."), span_warning("I wipe \the [T.name] with [src]."))
 	playsound(user, "clothwipe", 100, TRUE)
 
 
@@ -187,10 +187,10 @@
 	if(!affecting)
 		return
 	if(!get_location_accessible(H, check_zone(user.zone_selected)))
-		to_chat(user, "<span class='warning'>Something in the way.</span>")
+		to_chat(user, span_warning("Something in the way."))
 		return
 	if(affecting.bandage)
-		to_chat(user, "<span class='warning'>There is already a bandage.</span>")
+		to_chat(user, span_warning("There is already a bandage."))
 		return
 	var/used_time = 70
 	if(H.mind)
@@ -205,9 +205,9 @@
 	H.update_damage_overlays()
 
 	if(M == user)
-		user.visible_message("<span class='notice'>[user] bandages [user.p_their()] [affecting].</span>", "<span class='notice'>I bandage my [affecting].</span>")
+		user.visible_message(span_notice("[user] bandages [user.p_their()] [affecting]."), span_notice("I bandage my [affecting]."))
 	else
-		user.visible_message("<span class='notice'>[user] bandages [M]'s [affecting].</span>", "<span class='notice'>I bandage [M]'s [affecting].</span>")
+		user.visible_message(span_notice("[user] bandages [M]'s [affecting]."), span_notice("I bandage [M]'s [affecting]."))
 
 /obj/item/natural/thorn
 	name = "thorn"
@@ -221,7 +221,7 @@
 	resistance_flags = FLAMMABLE
 	max_integrity = 20
 /obj/item/natural/thorn/attack_self(mob/living/user)
-	user.visible_message("<span class='warning'>[user] snaps [src].</span>")
+	user.visible_message(span_warning("[user] snaps [src]."))
 	playsound(user,'sound/items/seedextract.ogg', 100, FALSE)
 	qdel(src)
 
@@ -348,6 +348,7 @@
 	desc = "Multiple wriggly worms."
 	color = "#964B00"
 	maxamount = 12
+	icon_state = "worm2"
 	icon1 = "worm2"
 	icon1step = 4
 	icon2 = "worm4"
@@ -357,17 +358,17 @@
 	stackname = "worms"
 
 /obj/item/natural/worms/attack_right(mob/user)
-	to_chat(user, "<span class='warning'>I start to collect [src]...</span>")
+	to_chat(user, span_warning("I start to collect [src]..."))
 	if(move_after(user, 5 SECONDS, target = src))
 		var/wormcount = 0
 		for(var/obj/item/natural/worms/F in get_turf(src))
 			wormcount++
 		while(wormcount > 0)
 			if(wormcount == 1)
-				new /obj/item/natural/worms(get_turf(user))
+				new /obj/item/natural/worms(user.drop_location())
 				wormcount--
 			else if(wormcount >= 2)
-				var/obj/item/natural/bundle/worms/B = new(get_turf(user))
+				var/obj/item/natural/bundle/worms/B = new(user.drop_location())
 				B.amount = clamp(wormcount, 2, 12)
 				B.update_bundle()
 				wormcount -= clamp(wormcount, 2, 12)

@@ -39,8 +39,8 @@
 
 /datum/objective/werewolf
 	name = "conquer"
-	explanation_text = "Destroy all elder vampires in ROGUETOWN. I can sniff them in my true form."
-	team_explanation_text = ""
+	explanation_text = "Put an end to the vampire scourge in Rockhill, or unite with them against the forces of the Nine."
+	team_explanation_text = "The feud between werewolves and vampires reaches back to the dawn of time. Will the two factions destroy each other, or find a way to coexist and face the mortals of Rockhill together?"
 	triumph_count = 5
 
 /datum/objective/werewolf/check_completion()
@@ -51,8 +51,8 @@
 
 /datum/objective/vampire
 	name = "conquer"
-	explanation_text = "Destroy all alpha werewolves in ROGUETOWN. I can detect them in my true form."
-	team_explanation_text = ""
+	explanation_text = "Put an end to the werewolf menace in Rockhill, or unite with them against the forces of the Nine."
+	team_explanation_text = "The feud between werewolves and vampires reaches back to the dawn of time. Will the two factions destroy each other, or find a way to coexist and face the mortals of Rockhill together?"
 	triumph_count = 5
 
 /datum/objective/vampire/check_completion()

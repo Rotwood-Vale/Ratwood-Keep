@@ -10,9 +10,9 @@
 		safe_throw_at(get_edge_target_turf(src, get_dir(user, src)), 2, 1, user)
 		hitverb = "slam"
 	playsound(loc, "punch", 25, TRUE, -1)
-	visible_message("<span class='danger'>[user] [hitverb]s [src]!</span>", \
-					"<span class='danger'>[user] [hitverb]s you!</span>", "<span class='hear'>I hear a sickening sound of flesh hitting flesh!</span>", COMBAT_MESSAGE_RANGE, user)
-	to_chat(user, "<span class='danger'>I [hitverb] [src]!</span>")
+	visible_message(span_danger("[user] [hitverb]s [src]!"), \
+					span_danger("[user] [hitverb]s you!"), span_hear("I hear a sickening sound of flesh hitting flesh!"), COMBAT_MESSAGE_RANGE, user)
+	to_chat(user, span_danger("I [hitverb] [src]!"))
 
 /mob/living/carbon/alien/humanoid/attack_hand(mob/living/carbon/human/M)
 	if(..())
@@ -21,22 +21,22 @@
 				var/damage = rand(1, 9)
 				if (prob(90))
 					playsound(loc, "punch", 25, TRUE, -1)
-					visible_message("<span class='danger'>[M] punches [src]!</span>", \
-									"<span class='danger'>[M] punches you!</span>", "<span class='hear'>I hear a sickening sound of flesh hitting flesh!</span>", COMBAT_MESSAGE_RANGE, M)
-					to_chat(M, "<span class='danger'>I punch [src]!</span>")
+					visible_message(span_danger("[M] punches [src]!"), \
+									span_danger("[M] punches you!"), span_hear("I hear a sickening sound of flesh hitting flesh!"), COMBAT_MESSAGE_RANGE, M)
+					to_chat(M, span_danger("I punch [src]!"))
 					if ((stat != DEAD) && (damage > 9 || prob(5)))//Regular humans have a very small chance of knocking an alien down.
 						Unconscious(40)
-						visible_message("<span class='danger'>[M] knocks [src] down!</span>", \
-										"<span class='danger'>[M] knocks you down!</span>", "<span class='hear'>I hear a sickening sound of flesh hitting flesh!</span>", null, M)
-						to_chat(M, "<span class='danger'>I knock [src] down!</span>")
+						visible_message(span_danger("[M] knocks [src] down!"), \
+										span_danger("[M] knocks you down!"), span_hear("I hear a sickening sound of flesh hitting flesh!"), null, M)
+						to_chat(M, span_danger("I knock [src] down!"))
 					var/obj/item/bodypart/affecting = get_bodypart(ran_zone(M.zone_selected))
 					apply_damage(damage, BRUTE, affecting)
 					log_combat(M, src, "attacked")
 				else
 					playsound(loc, 'sound/blank.ogg', 25, TRUE, -1)
-					visible_message("<span class='danger'>[M]'s punch misses [src]!</span>", \
-									"<span class='danger'>I avoid [M]'s punch!</span>", "<span class='hear'>I hear a swoosh!</span>", COMBAT_MESSAGE_RANGE, M)
-					to_chat(M, "<span class='warning'>My punch misses [src]!</span>")
+					visible_message(span_danger("[M]'s punch misses [src]!"), \
+									span_danger("I avoid [M]'s punch!"), span_hear("I hear a swoosh!"), COMBAT_MESSAGE_RANGE, M)
+					to_chat(M, span_warning("My punch misses [src]!"))
 
 			if (INTENT_DISARM)
 				if (!(mobility_flags & MOBILITY_STAND))
@@ -44,21 +44,21 @@
 						Unconscious(40)
 						playsound(loc, 'sound/blank.ogg', 50, TRUE, -1)
 						log_combat(M, src, "pushed")
-						visible_message("<span class='danger'>[M] pushes [src] down!</span>", \
-										"<span class='danger'>[M] pushes you down!</span>", "<span class='hear'>I hear aggressive shuffling followed by a loud thud!</span>", null, M)
-						to_chat(M, "<span class='danger'>I push [src] down!</span>")
+						visible_message(span_danger("[M] pushes [src] down!"), \
+										span_danger("[M] pushes you down!"), span_hear("I hear aggressive shuffling followed by a loud thud!"), null, M)
+						to_chat(M, span_danger("I push [src] down!"))
 					else
 						if (prob(50))
 							dropItemToGround(get_active_held_item(), silent = FALSE)
 							playsound(loc, 'sound/blank.ogg', 50, TRUE, -1)
-							visible_message("<span class='danger'>[M] disarms [src]!</span>", \
-											"<span class='danger'>[M] disarms you!</span>", "<span class='hear'>I hear aggressive shuffling!</span>", COMBAT_MESSAGE_RANGE, M)
-							to_chat(M, "<span class='danger'>I disarm [src]!</span>")
+							visible_message(span_danger("[M] disarms [src]!"), \
+											span_danger("[M] disarms you!"), span_hear("I hear aggressive shuffling!"), COMBAT_MESSAGE_RANGE, M)
+							to_chat(M, span_danger("I disarm [src]!"))
 						else
 							playsound(loc, 'sound/blank.ogg', 25, TRUE, -1)
-							visible_message("<span class='danger'>[M] fails to disarm [src]!</span>",\
-											"<span class='danger'>[M] fails to disarm you!</span>", "<span class='hear'>I hear a swoosh!</span>", COMBAT_MESSAGE_RANGE, M)
-							to_chat(M, "<span class='warning'>I fail to disarm [src]!</span>")
+							visible_message(span_danger("[M] fails to disarm [src]!"),\
+											span_danger("[M] fails to disarm you!"), span_hear("I hear a swoosh!"), COMBAT_MESSAGE_RANGE, M)
+							to_chat(M, span_warning("I fail to disarm [src]!"))
 
 
 

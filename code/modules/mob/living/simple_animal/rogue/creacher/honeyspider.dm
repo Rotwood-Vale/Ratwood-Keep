@@ -108,7 +108,7 @@
 		if(!target)
 			if(production >= 100)
 				production = 0
-				visible_message("<span class='alertalien'>[src] creates some honey.</span>")
+				visible_message(span_alertalien("[src] creates some honey."))
 				var/turf/T = get_turf(src)
 				playsound(T, pick('sound/vo/mobs/spider/speak (1).ogg','sound/vo/mobs/spider/speak (2).ogg','sound/vo/mobs/spider/speak (3).ogg','sound/vo/mobs/spider/speak (4).ogg'), 100, TRUE, -1)
 				new /obj/item/reagent_containers/food/snacks/rogue/honey(T)

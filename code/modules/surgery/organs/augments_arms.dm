@@ -39,7 +39,7 @@
 
 /obj/item/organ/cyberimp/arm/examine(mob/user)
 	. = ..()
-	. += "<span class='info'>[src] is assembled in the [zone == BODY_ZONE_R_ARM ? "right" : "left"] arm configuration. You can use a screwdriver to reassemble it.</span>"
+	. += span_info("[src] is assembled in the [zone == BODY_ZONE_R_ARM ? "right" : "left"] arm configuration. You can use a screwdriver to reassemble it.")
 
 /obj/item/organ/cyberimp/arm/screwdriver_act(mob/living/user, obj/item/I)
 	. = ..()
@@ -51,7 +51,7 @@
 	else
 		zone = BODY_ZONE_R_ARM
 	SetSlotFromZone()
-	to_chat(user, "<span class='notice'>I modify [src] to be installed on the [zone == BODY_ZONE_R_ARM ? "right" : "left"] arm.</span>")
+	to_chat(user, span_notice("I modify [src] to be installed on the [zone == BODY_ZONE_R_ARM ? "right" : "left"] arm."))
 	update_icon()
 
 /obj/item/organ/cyberimp/arm/Remove(mob/living/carbon/M, special = 0)
@@ -63,7 +63,7 @@
 	if(. & EMP_PROTECT_SELF)
 		return
 	if(prob(15/severity) && owner)
-		to_chat(owner, "<span class='warning'>[src] is hit by EMP!</span>")
+		to_chat(owner, span_warning("[src] is hit by EMP!"))
 		// give the owner an idea about why his implant is glitching
 		Retract()
 
@@ -71,9 +71,9 @@
 	if(!holder || (holder in src))
 		return
 
-	owner.visible_message("<span class='notice'>[owner] retracts [holder] back into [owner.p_their()] [zone == BODY_ZONE_R_ARM ? "right" : "left"] arm.</span>",
-		"<span class='notice'>[holder] snaps back into my [zone == BODY_ZONE_R_ARM ? "right" : "left"] arm.</span>",
-		"<span class='hear'>I hear a short mechanical noise.</span>")
+	owner.visible_message(span_notice("[owner] retracts [holder] back into [owner.p_their()] [zone == BODY_ZONE_R_ARM ? "right" : "left"] arm."),
+		span_notice("[holder] snaps back into my [zone == BODY_ZONE_R_ARM ? "right" : "left"] arm."),
+		span_hear("I hear a short mechanical noise."))
 
 	if(istype(holder, /obj/item/assembly/flash/armimplant))
 		var/obj/item/assembly/flash/F = holder
@@ -109,23 +109,23 @@
 		for(var/i in 1 to hand_items.len) //Can't just use *in* here.
 			var/I = hand_items[i]
 			if(!owner.dropItemToGround(I))
-				failure_message += "<span class='warning'>My [I] interferes with [src]!</span>"
+				failure_message += span_warning("My [I] interferes with [src]!")
 				continue
-			to_chat(owner, "<span class='notice'>I drop [I] to activate [src]!</span>")
+			to_chat(owner, span_notice("I drop [I] to activate [src]!"))
 			success = owner.put_in_hand(holder, owner.get_empty_held_index_for_side(side))
 			break
 		if(!success)
 			for(var/i in failure_message)
 				to_chat(owner, i)
 			return
-	owner.visible_message("<span class='notice'>[owner] extends [holder] from [owner.p_their()] [zone == BODY_ZONE_R_ARM ? "right" : "left"] arm.</span>",
-		"<span class='notice'>I extend [holder] from my [zone == BODY_ZONE_R_ARM ? "right" : "left"] arm.</span>",
-		"<span class='hear'>I hear a short mechanical noise.</span>")
+	owner.visible_message(span_notice("[owner] extends [holder] from [owner.p_their()] [zone == BODY_ZONE_R_ARM ? "right" : "left"] arm."),
+		span_notice("I extend [holder] from my [zone == BODY_ZONE_R_ARM ? "right" : "left"] arm."),
+		span_hear("I hear a short mechanical noise."))
 	playsound(get_turf(owner), 'sound/blank.ogg', 50, TRUE)
 
 /obj/item/organ/cyberimp/arm/ui_action_click()
 	if((organ_flags & ORGAN_FAILING) || (!holder && !contents.len))
-		to_chat(owner, "<span class='warning'>The implant doesn't respond. It seems to be broken...</span>")
+		to_chat(owner, span_warning("The implant doesn't respond. It seems to be broken..."))
 		return
 
 	if(!holder || (holder in src))
@@ -150,9 +150,9 @@
 		return
 	if(prob(30/severity) && owner && !(organ_flags & ORGAN_FAILING))
 		Retract()
-		owner.visible_message("<span class='danger'>A loud bang comes from [owner]\'s [zone == BODY_ZONE_R_ARM ? "right" : "left"] arm!</span>")
+		owner.visible_message(span_danger("A loud bang comes from [owner]\'s [zone == BODY_ZONE_R_ARM ? "right" : "left"] arm!"))
 		playsound(get_turf(owner), 'sound/blank.ogg', 100, TRUE)
-		to_chat(owner, "<span class='danger'>I feel an explosion erupt inside my [zone == BODY_ZONE_R_ARM ? "right" : "left"] arm as my implant breaks!</span>")
+		to_chat(owner, span_danger("I feel an explosion erupt inside my [zone == BODY_ZONE_R_ARM ? "right" : "left"] arm as my implant breaks!"))
 		owner.adjust_fire_stacks(20)
 		owner.IgniteMob()
 		owner.adjustFireLoss(25)
@@ -189,7 +189,7 @@
 
 /obj/item/organ/cyberimp/arm/toolset/emag_act()
 	if(!(locate(/obj/item/kitchen/knife/combat/cyborg) in items_list))
-		to_chat(usr, "<span class='notice'>I unlock [src]'s integrated knife!</span>")
+		to_chat(usr, span_notice("I unlock [src]'s integrated knife!"))
 		items_list += new /obj/item/kitchen/knife/combat/cyborg(src)
 		return 1
 	return 0

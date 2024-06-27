@@ -32,13 +32,13 @@
 
 /obj/structure/geyser/plunger_act(obj/item/plunger/P, mob/living/user, _reinforced)
 	if(!_reinforced)
-		to_chat(user, "<span class='warning'>The [P.name] isn't strong enough!</span>")
+		to_chat(user, span_warning("The [P.name] isn't strong enough!"))
 		return
 	if(activated)
 		to_chat(user, "<span class'warning'>The [name] is already active!</span>")
 		return
 
-	to_chat(user, "<span class='notice'>I start vigorously plunging [src]!</span>")
+	to_chat(user, span_notice("I start vigorously plunging [src]!"))
 	if(do_after(user, 50*P.plunge_mod, target = src) && !activated)
 		start_chemming()
 

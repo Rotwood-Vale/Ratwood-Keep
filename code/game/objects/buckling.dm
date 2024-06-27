@@ -53,9 +53,9 @@
 	M.buckling = src
 	if(!M.can_buckle() && !force)
 		if(M == usr)
-			to_chat(M, "<span class='warning'>I am unable to [buckleverb] on [src].</span>")
+			to_chat(M, span_warning("I am unable to [buckleverb] on [src]."))
 		else
-			to_chat(usr, "<span class='warning'>I am unable to [buckleverb] [M] on [src].</span>")
+			to_chat(usr, span_warning("I am unable to [buckleverb] [M] on [src]."))
 		M.buckling = null
 		return FALSE
 
@@ -123,23 +123,23 @@
 	. = buckle_mob(M, check_loc = check_loc)
 	if(.)
 		if(M == user)
-			M.visible_message("<span class='notice'>[M] [buckleverb]s on [src].</span>",\
-				"<span class='notice'>I [buckleverb] on [src].</span>")
+			M.visible_message(span_notice("[M] [buckleverb]s on [src]."),\
+				span_notice("I [buckleverb] on [src]."))
 		else
-			M.visible_message("<span class='warning'>[user] [buckleverb]s [M] on [src]!</span>",\
-				"<span class='warning'>[user] [buckleverb]s me on [src]!</span>")
+			M.visible_message(span_warning("[user] [buckleverb]s [M] on [src]!"),\
+				span_warning("[user] [buckleverb]s me on [src]!"))
 
 /atom/movable/proc/user_unbuckle_mob(mob/living/buckled_mob, mob/user)
 	var/mob/living/M = unbuckle_mob(buckled_mob)
 	if(M)
 		if(M != user)
-			M.visible_message("<span class='notice'>[user] pulls [M] from [src].</span>",\
-				"<span class='notice'>[user] pulls me from [src].</span>",\
-				"<span class='hear'>I hear metal clanking.</span>")
+			M.visible_message(span_notice("[user] pulls [M] from [src]."),\
+				span_notice("[user] pulls me from [src]."),\
+				span_hear("I hear metal clanking."))
 		else
-			M.visible_message("<span class='notice'>[M] gets off of [src].</span>",\
-				"<span class='notice'>I get off of [src].</span>",\
-				"<span class='hear'>I hear metal clanking.</span>")
+			M.visible_message(span_notice("[M] gets off of [src]."),\
+				span_notice("I get off of [src]."),\
+				span_hear("I hear metal clanking."))
 		add_fingerprint(user)
 		if(isliving(M.pulledby))
 			var/mob/living/L = M.pulledby

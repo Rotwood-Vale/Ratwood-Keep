@@ -9,7 +9,7 @@
 	explosion_block = 3
 	point_return = 4
 	atmosblock = TRUE
-	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 90, "acid" = 90)
+	armor = list("blunt" = 0, "slash" = 0, "stab" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 90, "acid" = 90)
 
 /obj/structure/blob/shield/scannerreport()
 	if(atmosblock)
@@ -54,5 +54,5 @@
 	var/new_angle_s = SIMPLIFY_DEGREES(face_angle + incidence_s)
 	P.setAngle(new_angle_s)
 	if(!(P.reflectable & REFLECT_FAKEPROJECTILE))
-		visible_message("<span class='warning'>[P] reflects off [src]!</span>")
+		visible_message(span_warning("[P] reflects off [src]!"))
 	return TRUE

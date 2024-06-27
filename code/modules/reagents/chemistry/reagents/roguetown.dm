@@ -9,4 +9,4 @@
 	if(!HAS_TRAIT(M, TRAIT_NOSTINK))
 		M.add_nausea(15)
 		M.add_stress(/datum/stressevent/miasmagas)
-	. = ..()
+	return ..()

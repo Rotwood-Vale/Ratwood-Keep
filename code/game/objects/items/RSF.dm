@@ -14,14 +14,14 @@ RSF
 	density = FALSE
 	anchored = FALSE
 	item_flags = NOBLUDGEON
-	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	armor = list("blunt" = 0, "slash" = 0, "stab" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
 	var/matter = 0
 	var/mode = 1
 	w_class = WEIGHT_CLASS_NORMAL
 
 /obj/item/rsf/examine(mob/user)
 	. = ..()
-	. += "<span class='notice'>It currently holds [matter]/30 fabrication-units.</span>"
+	. += span_notice("It currently holds [matter]/30 fabrication-units.")
 
 /obj/item/rsf/cyborg
 	matter = 30
@@ -29,12 +29,12 @@ RSF
 /obj/item/rsf/attackby(obj/item/W, mob/user, params)
 	if(istype(W, /obj/item/rcd_ammo))
 		if((matter + 10) > 30)
-			to_chat(user, "<span class='warning'>The RSF can't hold any more matter!</span>")
+			to_chat(user, span_warning("The RSF can't hold any more matter!"))
 			return
 		qdel(W)
 		matter += 10
 		playsound(src.loc, 'sound/blank.ogg', 10, TRUE)
-		to_chat(user, "<span class='notice'>The RSF now holds [matter]/30 fabrication-units.</span>")
+		to_chat(user, span_notice("The RSF now holds [matter]/30 fabrication-units."))
 	else
 		return ..()
 
@@ -43,19 +43,19 @@ RSF
 	switch(mode)
 		if(5)
 			mode = 1
-			to_chat(user, "<span class='notice'>Changed dispensing mode to 'Drinking Glass'.</span>")
+			to_chat(user, span_notice("Changed dispensing mode to 'Drinking Glass'."))
 		if(1)
 			mode = 2
-			to_chat(user, "<span class='notice'>Changed dispensing mode to 'Paper'.</span>")
+			to_chat(user, span_notice("Changed dispensing mode to 'Paper'."))
 		if(2)
 			mode = 3
-			to_chat(user, "<span class='notice'>Changed dispensing mode to 'Pen'.</span>")
+			to_chat(user, span_notice("Changed dispensing mode to 'Pen'."))
 		if(3)
 			mode = 4
-			to_chat(user, "<span class='notice'>Changed dispensing mode to 'Dice Pack'.</span>")
+			to_chat(user, span_notice("Changed dispensing mode to 'Dice Pack'."))
 		if(4)
 			mode = 5
-			to_chat(user, "<span class='notice'>Changed dispensing mode to 'Cigarette'.</span>")
+			to_chat(user, span_notice("Changed dispensing mode to 'Cigarette'."))
 	// Change mode
 
 /obj/item/rsf/afterattack(atom/A, mob/user, proximity)
@@ -68,33 +68,33 @@ RSF
 	if(iscyborg(user))
 		var/mob/living/silicon/robot/R = user
 		if(!R.cell || R.cell.charge < 200)
-			to_chat(user, "<span class='warning'>I do not have enough power to use [src].</span>")
+			to_chat(user, span_warning("I do not have enough power to use [src]."))
 			return
 	else if (matter < 1)
-		to_chat(user, "<span class='warning'>\The [src] doesn't have enough matter left.</span>")
+		to_chat(user, span_warning("\The [src] doesn't have enough matter left."))
 		return
 
 	var/turf/T = get_turf(A)
 	playsound(src.loc, 'sound/blank.ogg', 10, TRUE)
 	switch(mode)
 		if(1)
-			to_chat(user, "<span class='notice'>Dispensing Drinking Glass...</span>")
+			to_chat(user, span_notice("Dispensing Drinking Glass..."))
 			new /obj/item/reagent_containers/food/drinks/drinkingglass(T)
 			use_matter(20, user)
 		if(2)
-			to_chat(user, "<span class='notice'>Dispensing Paper Sheet...</span>")
+			to_chat(user, span_notice("Dispensing Paper Sheet..."))
 			new /obj/item/paper(T)
 			use_matter(10, user)
 		if(3)
-			to_chat(user, "<span class='notice'>Dispensing Pen...</span>")
+			to_chat(user, span_notice("Dispensing Pen..."))
 			new /obj/item/pen(T)
 			use_matter(50, user)
 		if(4)
-			to_chat(user, "<span class='notice'>Dispensing Dice Pack...</span>")
+			to_chat(user, span_notice("Dispensing Dice Pack..."))
 			new /obj/item/storage/pill_bottle/dice(T)
 			use_matter(200, user)
 		if(5)
-			to_chat(user, "<span class='notice'>Dispensing Cigarette...</span>")
+			to_chat(user, span_notice("Dispensing Cigarette..."))
 			new /obj/item/clothing/mask/cigarette(T)
 			use_matter(10, user)
 
@@ -104,7 +104,7 @@ RSF
 		R.cell.charge -= charge
 	else
 		matter--
-		to_chat(user, "<span class='notice'>The RSF now holds [matter]/30 fabrication-units.</span>")
+		to_chat(user, span_notice("The RSF now holds [matter]/30 fabrication-units."))
 
 /obj/item/cookiesynth
 	name = "Cookie Synthesizer"
@@ -121,7 +121,7 @@ RSF
 
 /obj/item/cookiesynth/examine(mob/user)
 	. = ..()
-	. += "<span class='notice'>It currently holds [matter]/10 cookie-units.</span>"
+	. += span_notice("It currently holds [matter]/10 cookie-units.")
 
 /obj/item/cookiesynth/attackby()
 	return
@@ -129,9 +129,9 @@ RSF
 /obj/item/cookiesynth/emag_act(mob/user)
 	obj_flags ^= EMAGGED
 	if(obj_flags & EMAGGED)
-		to_chat(user, "<span class='warning'>I short out [src]'s reagent safety checker!</span>")
+		to_chat(user, span_warning("I short out [src]'s reagent safety checker!"))
 	else
-		to_chat(user, "<span class='warning'>I reset [src]'s reagent safety checker!</span>")
+		to_chat(user, span_warning("I reset [src]'s reagent safety checker!"))
 		toxin = 0
 
 /obj/item/cookiesynth/attack_self(mob/user)
@@ -140,13 +140,13 @@ RSF
 		P = user
 	if((obj_flags & EMAGGED)&&!toxin)
 		toxin = 1
-		to_chat(user, "<span class='alert'>Cookie Synthesizer hacked.</span>")
+		to_chat(user, span_alert("Cookie Synthesizer hacked."))
 	else if(P.emagged&&!toxin)
 		toxin = 1
-		to_chat(user, "<span class='alert'>Cookie Synthesizer hacked.</span>")
+		to_chat(user, span_alert("Cookie Synthesizer hacked."))
 	else
 		toxin = 0
-		to_chat(user, "<span class='notice'>Cookie Synthesizer reset.</span>")
+		to_chat(user, span_notice("Cookie Synthesizer reset."))
 
 /obj/item/cookiesynth/process()
 	if(matter < 10)
@@ -161,16 +161,16 @@ RSF
 	if (!(istype(A, /obj/structure/table) || isfloorturf(A)))
 		return
 	if(matter < 1)
-		to_chat(user, "<span class='warning'>[src] doesn't have enough matter left. Wait for it to recharge!</span>")
+		to_chat(user, span_warning("[src] doesn't have enough matter left. Wait for it to recharge!"))
 		return
 	if(iscyborg(user))
 		var/mob/living/silicon/robot/R = user
 		if(!R.cell || R.cell.charge < 400)
-			to_chat(user, "<span class='warning'>I do not have enough power to use [src].</span>")
+			to_chat(user, span_warning("I do not have enough power to use [src]."))
 			return
 	var/turf/T = get_turf(A)
 	playsound(src.loc, 'sound/blank.ogg', 10, TRUE)
-	to_chat(user, "<span class='notice'>Fabricating Cookie...</span>")
+	to_chat(user, span_notice("Fabricating Cookie..."))
 	var/obj/item/reagent_containers/food/snacks/cookie/S = new /obj/item/reagent_containers/food/snacks/cookie(T)
 	if(toxin)
 		S.reagents.add_reagent(/datum/reagent/toxin/chloralhydrate, 10)

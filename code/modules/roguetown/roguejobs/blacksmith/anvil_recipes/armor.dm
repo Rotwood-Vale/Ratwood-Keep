@@ -25,7 +25,7 @@
 	req_bar = /obj/item/ingot/iron
 	additional_items = list(/obj/item/ingot/iron)
 	created_item = /obj/item/clothing/suit/roguetown/armor/plate/half/iron
-	i_type = "armor"
+	i_type = "Armor"
 
 /datum/anvil_recipe/armor/ichainglove
 	name = "Chain Gauntlets"

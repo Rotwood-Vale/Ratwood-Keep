@@ -20,3 +20,5 @@
 /datum/skill/labor/butchering
 	name = "Butchering"
 
+/datum/skill/labor/lumberjacking
+	name = "Lumberjacking"

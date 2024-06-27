@@ -22,7 +22,7 @@
 	idle_power_usage = 10
 	active_power_usage = 100
 	max_integrity = 500
-	armor = list("melee" = 45, "bullet" = 30, "laser" = 30, "energy" = 30, "bomb" = 10, "bio" = 30, "rad" = 30, "fire" = 30, "acid" = 30)
+	armor = list("blunt" = 45, "slash" = 40, "stab" = 35, "bullet" = 30, "laser" = 30, "energy" = 30, "bomb" = 10, "bio" = 30, "rad" = 30, "fire" = 30, "acid" = 30)
 	var/static/list/numbers = list("0" = "green", "1" = "red", "3" = "red", "5" = "red", "7" = "red", "9" = "red", "12" = "red", "14" = "red", "16" = "red",\
 	"18" = "red", "19" = "red", "21" = "red", "23" = "red", "25" = "red", "27" = "red", "30" = "red", "32" = "red", "34" = "red", "36" = "red",\
 	"2" = "black", "4" = "black", "6" = "black", "8" = "black", "10" = "black", "11" = "black", "13" = "black", "15" = "black", "17" = "black", "20" = "black",\
@@ -114,13 +114,13 @@
 		playsound(src, 'sound/blank.ogg', 50, TRUE)
 
 		if(stat & MAINT || !on || locked)
-			to_chat(user, "<span class='notice'>The machine appears to be disabled.</span>")
+			to_chat(user, span_notice("The machine appears to be disabled."))
 			return FALSE
 
 		if(my_card)
 			var/obj/item/card/id/player_card = W
 			if(player_card.registered_account.account_balance < chosen_bet_amount) //Does the player have enough funds
-				audible_message("<span class='warning'>I do not have the funds to play! Lower your bet or get more money.</span>")
+				audible_message(span_warning("I do not have the funds to play! Lower your bet or get more money."))
 				playsound(src, 'sound/blank.ogg', 30, TRUE)
 				return FALSE
 			if(!chosen_bet_amount || isnull(chosen_bet_type))
@@ -152,7 +152,7 @@
 				name = msg
 				desc = ""
 				my_card = new_card
-				to_chat(user, "<span class='notice'>I link the wheel to your account.</span>")
+				to_chat(user, span_notice("I link the wheel to your account."))
 				power_change()
 				return
 	return ..()
@@ -186,18 +186,18 @@
 	var/color = numbers["[rolled_number]"] //Weird syntax, but dict uses strings.
 	var/result = "[rolled_number] [color]" //e.g. 31 black
 
-	audible_message("<span class='notice'>The result is: [result]</span>")
+	audible_message(span_notice("The result is: [result]"))
 
 	playing = FALSE
 	update_icon(potential_payout, color, rolled_number, is_winner)
 	handle_color_light(color)
 
 	if(!is_winner)
-		audible_message("<span class='warning'>I lost! Better luck next time</span>")
+		audible_message(span_warning("I lost! Better luck next time"))
 		playsound(src, 'sound/blank.ogg', 50)
 		return FALSE
 
-	audible_message("<span class='notice'>I have won [potential_payout] credits! Congratulations!</span>")
+	audible_message(span_notice("I have won [potential_payout] credits! Congratulations!"))
 	playsound(src, 'sound/blank.ogg', 50)
 
 	dispense_prize(potential_payout)
@@ -283,7 +283,7 @@
 /obj/machinery/roulette/proc/check_bartender_funds(payout)
 	if(my_card.registered_account.account_balance >= payout)
 		return TRUE //We got the betting amount
-	audible_message("<span class='warning'>The bank account of [my_card.registered_account.account_holder] does not have enough funds to pay out the potential prize, contact them to fill up their account or lower your bet!</span>")
+	audible_message(span_warning("The bank account of [my_card.registered_account.account_holder] does not have enough funds to pay out the potential prize, contact them to fill up their account or lower your bet!"))
 	playsound(src, 'sound/blank.ogg', 30, TRUE)
 	return FALSE
 
@@ -331,15 +331,15 @@
 /obj/machinery/roulette/welder_act(mob/living/user, obj/item/I)
 	. = ..()
 	if(stat & MAINT)
-		to_chat(user, "<span class='notice'>I start re-attaching the top section of [src]...</span>")
+		to_chat(user, span_notice("I start re-attaching the top section of [src]..."))
 		if(I.use_tool(src, user, 30, volume=50))
-			to_chat(user, "<span class='notice'>I re-attach the top section of [src].</span>")
+			to_chat(user, span_notice("I re-attach the top section of [src]."))
 			stat &= ~MAINT
 			icon_state = "idle"
 	else
-		to_chat(user, "<span class='notice'>I start welding the top section from [src]...</span>")
+		to_chat(user, span_notice("I start welding the top section from [src]..."))
 		if(I.use_tool(src, user, 30, volume=50))
-			to_chat(user, "<span class='notice'>I removed the top section of [src].</span>")
+			to_chat(user, span_notice("I removed the top section of [src]."))
 			stat |= MAINT
 			icon_state = "open"
 
@@ -364,7 +364,7 @@
 /obj/item/roulette_wheel_beacon/attack_self()
 	if(used)
 		return
-	loc.visible_message("<span class='warning'>\The [src] begins to beep loudly!</span>")
+	loc.visible_message(span_warning("\The [src] begins to beep loudly!"))
 	used = TRUE
 	addtimer(CALLBACK(src, PROC_REF(launch_payload)), 40)
 

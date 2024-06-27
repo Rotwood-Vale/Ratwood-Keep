@@ -6,6 +6,8 @@
 	return disableable
 
 /obj/item/bodypart
+	/// Wound we get when surgically reattached
+	var/attach_wound = /datum/wound/artery/reattachment
 	/// Wound we leave on the chest when violently dismembered
 	var/dismember_wound
 	/// Sound we make when violently dismembered
@@ -36,10 +38,10 @@
 		affecting.add_wound(dismember_wound)
 	playsound(C, pick(dismemsound), 50, FALSE, -1)
 	if(body_zone == BODY_ZONE_HEAD)
-		C.visible_message("<span class='danger'><B>[C] is [pick("BRUTALLY","VIOLENTLY","BLOODILY","MESSILY")] DECAPITATED!</B></span>")
+		C.visible_message(span_danger("<B>[C] is [pick("BRUTALLY","VIOLENTLY","BLOODILY","MESSILY")] DECAPITATED!</B>"))
 	else
-		C.visible_message("<span class='warning'><B>The [src.name] is [pick("torn off", "sundered", "severed", "seperated", "unsewn")]!</B></span>")
-		C.emote("painscream")
+		C.visible_message(span_danger("<B>The [src.name] is [pick("torn off", "sundered", "severed", "seperated", "unsewn")]!</B>"))
+	C.emote("painscream")
 	src.add_mob_blood(C)
 	SEND_SIGNAL(C, COMSIG_ADD_MOOD_EVENT, "dismembered", /datum/mood_event/dismembered)
 	C.add_stress(/datum/stressevent/dismembered)
@@ -62,8 +64,8 @@
 	if(grabbedby)
 		qdel(grabbedby)
 		grabbedby = null
-	drop_limb()
 
+	drop_limb()
 	if(dam_type == BURN)
 		burn()
 		return TRUE
@@ -90,36 +92,28 @@
 	var/mob/living/carbon/C = owner
 	if(!dismemberable)
 		return FALSE
-	if(skeletonized)
+	if(C.status_flags & GODMODE)
 		return FALSE
 	if(HAS_TRAIT(C, TRAIT_NODISMEMBER))
 		return FALSE
-	. = list()
-	var/organ_spilled = 0
-	var/turf/T = get_turf(C)
-	C.add_splatter_floor(T)
-	playsound(C, 'sound/combat/crit2.ogg', 100, FALSE, 5)
-	C.emote("painscream")
-	for(var/X in C.internal_organs)
-		var/obj/item/organ/O = X
-		var/org_zone = check_zone(O.zone)
-		if(org_zone != BODY_ZONE_CHEST)
-			continue
-		O.Remove(C)
-		O.forceMove(T)
-		O.add_mob_blood(C)
-		organ_spilled = 1
-		. += X
-	if(cavity_item)
-		cavity_item.forceMove(T)
-		. += cavity_item
-		cavity_item = null
-		organ_spilled = 1
-
-	if(organ_spilled)
-		C.visible_message("<span class='danger'><B>[C] spills [C.p_their()] guts!</B></span>")
+	add_wound(/datum/wound/slash/disembowel)
 	return TRUE
 
+/obj/item/bodypart/head/dismember(dam_type = BRUTE, bclass = BCLASS_CUT, mob/living/user, zone_precise = src.body_zone)
+	var/mob/living/carbon/was_owner = owner
+	var/datum/mind/ihaveamind = owner?.mind
+	. = ..()
+	if(. && was_owner && ihaveamind && !HAS_TRAIT(was_owner, TRAIT_IWASHAUNTED) && hasomen(OMEN_NOPRIEST))
+		var/drop_location = was_owner.drop_location()
+		if(!drop_location) //how the fuck?
+			return
+		ADD_TRAIT(was_owner, TRAIT_IWASHAUNTED, OMEN_NOPRIEST)
+		var/mob/living/simple_animal/hostile/rogue/haunt/omen/haunt = new(drop_location)
+		var/haunt_name = real_name ? "omen of [real_name]" : "omen"
+		haunt.name = haunt_name
+		haunt.real_name = haunt_name
+		ihaveamind.transfer_to(haunt, force_key_move = TRUE)
+	
 //limb removal. The "special" argument is used for swapping a limb with a new one without the effects of losing a limb kicking in.
 /obj/item/bodypart/proc/drop_limb(special)
 	if(!owner)
@@ -133,12 +127,16 @@
 		var/list/stored_wounds = list()
 		for(var/datum/wound/wound as anything in wounds)
 			wound.remove_from_bodypart()
-			stored_wounds += wound //store for later when the limb is reattached
+			if(wound.qdel_on_droplimb)
+				qdel(wound)
+			else
+				stored_wounds += wound //store for later when the limb is reattached
 		wounds = stored_wounds
-	for(var/datum/surgery/surgery as anything in was_owner.surgeries) //if we had an ongoing surgery on that limb, we stop it.
-		if(surgery.operated_bodypart == src)
-			was_owner.surgeries -= surgery
-			qdel(surgery)
+	//if we had an ongoing surgery on this limb, we stop it
+	for(var/body_zone in was_owner.surgeries)
+		if(check_zone(body_zone) != body_zone)
+			continue
+		was_owner.surgeries -= body_zone
 	for(var/obj/item/embedded in embedded_objects)
 		remove_embedded_object(embedded)
 	if(bandage)
@@ -197,7 +195,8 @@
 /obj/item/organ/brain/transfer_to_limb(obj/item/bodypart/head/LB, mob/living/carbon/human/C)
 	Remove(C) //Changeling brain concerns are now handled in Remove
 	forceMove(LB)
-	LB.brain = src
+	if(istype(LB))
+		LB.brain = src
 	if(brainmob)
 		LB.brainmob = brainmob
 		LB.brainmob.forceMove(LB)
@@ -206,15 +205,18 @@
 	return TRUE
 
 /obj/item/organ/eyes/transfer_to_limb(obj/item/bodypart/head/LB, mob/living/carbon/human/C)
-	LB.eyes = src
+	if(istype(LB))
+		LB.eyes = src
 	return ..()
 
 /obj/item/organ/ears/transfer_to_limb(obj/item/bodypart/head/LB, mob/living/carbon/human/C)
-	LB.ears = src
+	if(istype(LB))
+		LB.ears = src
 	return ..()
 
 /obj/item/organ/tongue/transfer_to_limb(obj/item/bodypart/head/LB, mob/living/carbon/human/C)
-	LB.tongue = src
+	if(istype(LB))
+		LB.tongue = src
 	return ..()
 
 /obj/item/bodypart/chest/drop_limb(special)
@@ -306,13 +308,6 @@
 
 	qdel(owner.GetComponent(/datum/component/creamed)) //clean creampie overlay
 
-	//Handle dental implants
-	for(var/datum/action/item_action/hands_free/activate_pill/AP in owner.actions)
-		AP.Remove(owner)
-		var/obj/pill = AP.target
-		if(pill)
-			pill.forceMove(src)
-
 	//Make sure de-zombification happens before organ removal instead of during it
 	var/obj/item/organ/zombie_infection/ooze = owner.getorganslot(ORGAN_SLOT_ZOMBIE)
 	if(istype(ooze))
@@ -334,7 +329,7 @@
 	var/obj/item/bodypart/O = C.get_bodypart(body_zone)
 	if(O)
 		O.drop_limb(1)
-	attach_limb(C, special)
+	return attach_limb(C, special)
 
 /obj/item/bodypart/head/replace_limb(mob/living/carbon/C, special)
 	if(!istype(C))
@@ -345,7 +340,7 @@
 			return
 		else
 			O.drop_limb(1)
-	attach_limb(C, special)
+	return attach_limb(C, special)
 
 /obj/item/bodypart/proc/attach_limb(mob/living/carbon/C, special)
 	moveToNullspace()
@@ -364,11 +359,11 @@
 		C.update_inv_gloves()
 
 	if(special) //non conventional limb attachment
-		for(var/datum/surgery/surgery as anything in C.surgeries) //if we had an ongoing surgery to attach a new limb, we stop it.
-			var/surgery_zone = check_zone(surgery.location)
-			if(surgery_zone == body_zone)
-				C.surgeries -= surgery
-				qdel(surgery)
+		//if we had an ongoing surgery to attach a new limb, we stop it.
+		for(var/body_zone in C.surgeries)
+			if(check_zone(body_zone) != body_zone)
+				continue
+			C.surgeries -= body_zone
 
 	for(var/obj/item/organ/stored_organ in src)
 		stored_organ.Insert(C)
@@ -420,13 +415,6 @@
 		C.real_name = real_name
 	real_name = ""
 	name = initial(name)
-
-	//Handle dental implants
-	for(var/obj/item/reagent_containers/pill/P in src)
-		for(var/datum/action/item_action/hands_free/activate_pill/AP in P.actions)
-			P.forceMove(C)
-			AP.Grant(C)
-			break
 
 	return ..()
 

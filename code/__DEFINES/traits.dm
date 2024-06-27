@@ -1,36 +1,47 @@
 // ROGUETRAITS (description when rmb skills button)
-#define TRAIT_WEBWALK 					"Webwalker"
-#define TRAIT_NOSTINK 					"Dead Nose"
-#define TRAIT_ZJUMP 					"High Jumping"
-#define TRAIT_LEAPER 					"Leaper"
-#define TRAIT_NOSEGRAB 				"Intimidating"
-#define TRAIT_NUTCRACKER 				"Nutcracker"
-#define TRAIT_SEEPRICES				"Giza Blooded"
-#define TRAIT_SEEPRICES_SHITTY			"Giza-in-training"
-#define TRAIT_STRONGBITE				"Strong Bite"
-#define RTRAIT_GOODLOVER				"Fabled Lover"
-#define TRAIT_NOBLE					"Noble Blooded"
-#define TRAIT_EMPATH					"Empath"
-#define TRAIT_BREADY					"Battleready"
-#define TRAIT_MEDIUMARMOR				"Maille Training"
-#define TRAIT_HEAVYARMOR				"Plate Training"
-#define TRAIT_DODGEEXPERT              "Fast Reflexes"
-#define TRAIT_DECEIVING_MEEKNESS		"Deceiving Meekness"
-#define TRAIT_CRITICAL_RESISTANCE		"Critical Resistance"
-#define TRAIT_CRITICAL_WEAKNESS		"Critical Weakness"
-#define TRAIT_MANIAC_AWOKEN			"Awoken"
-#define TRAIT_NOROGSTAM				"Indefatigable" //for ai
-#define TRAIT_NUDIST					"Nudist" //you can't wear most clothes
-#define TRAIT_KNEESTINGER_IMMUNITY		"Blessing of Dendor"
-#define TRAIT_RETARD_ANATOMY			"Inhumen Anatomy" //can't wear hats and shoes
-#define TRAIT_NASTY_EATER 				"Inhumen Digestion" //can eat rotten food, organs, poison berries, and drink murky water
-#define TRAIT_ROT_EATER				"Blessing of Pestra" //can eat rotten food
-#define TRAIT_ORGAN_EATER				"Blessing of Graggar" //can eat organs
-#define TRAIT_SOUL_EXAMINE					"Blessing of Necra" //can check bodies to see if they have departed
-
+#define TRAIT_WEBWALK "Webwalker"
+#define TRAIT_NOSTINK "Dead Nose"
+#define TRAIT_ZJUMP "High Jumping"
+#define TRAIT_LEAPER "Leaper"
+#define TRAIT_NOSEGRAB "Nosey"
+#define TRAIT_NUTCRACKER "Nutcracker"
+#define TRAIT_SEEPRICES "Giza Blooded"
+#define TRAIT_SEEPRICES_SHITTY "Giza-in-training"
+#define TRAIT_STRONGBITE "Strong Bite"
+#define TRAIT_NOBLE "Noble Blooded"
+#define TRAIT_EMPATH "Empath"
+#define TRAIT_BREADY "Battleready"
+#define TRAIT_MEDIUMARMOR "Maille Training"
+#define TRAIT_HEAVYARMOR "Plate Training"
+#define TRAIT_DODGEEXPERT "Fast Reflexes"
+#define TRAIT_DECEIVING_MEEKNESS "Deceiving Meekness"
+#define TRAIT_CRITICAL_RESISTANCE "Critical Resistance"
+#define TRAIT_CRITICAL_WEAKNESS "Critical Weakness"
+#define TRAIT_MANIAC_AWOKEN "Awoken"
+#define TRAIT_NOROGSTAM "Indefatigable" //for ai
+#define TRAIT_NUDIST "Nudist" //you can't wear most clothes
+#define TRAIT_CYCLOPS_LEFT "Cyclops (Left)" //poked left eye
+#define TRAIT_CYCLOPS_RIGHT "Cyclops (Right)" //poked right eye
+#define TRAIT_RETARD_ANATOMY "Inhumen Anatomy" //can't wear hats and shoes
+#define TRAIT_NASTY_EATER "Inhumen Digestion" //can eat rotten food, organs, poison berries, and drink murky water
+#define TRAIT_NOFALLDAMAGE1 "Minor fall damage immunity"
 #define TRAIT_MISSING_NOSE "Missing Nose" //halved stamina regeneration
-#define TRAIT_SPELLCOCKBLOCK "spellcockblock" //prevents spellcasting
+#define TRAIT_DISFIGURED "Disfigured"
+#define TRAIT_SPELLCOCKBLOCK "Bewitched" //prevents spellcasting
+#define TRAIT_ANTIMAGIC	"Anti-Magic"
+#define TRAIT_SHOCKIMMUNE "Shock Immunity"
 #define TRAIT_NOSLEEP "Fatal Insomnia"
+#define TRAIT_GOODLOVER "Fabled Lover"
+#define TRAIT_SEEDKNOW "Seed Knower"
+
+// PATRON GOD TRAITS
+#define TRAIT_ROT_EATER "Blessing of Pestra" //can eat rotten food
+#define TRAIT_ORGAN_EATER "Blessing of Graggar" //can eat organs
+#define TRAIT_KNEESTINGER_IMMUNITY "Blessing of Dendor"
+#define TRAIT_SOUL_EXAMINE "Blessing of Necra" //can check bodies to see if they have departed
+#define TRAIT_CRACKHEAD "Blessing of Eora" //will never overdose
+#define TRAIT_COMMIE "Blessing of Matthios" //recognized by bandits as an ally
+
 #define TRAIT_BASHDOORS "bashdoors"
 #define TRAIT_NOMOOD "no_mood"
 #define TRAIT_SIMPLE_WOUNDS "simple_wounds"
@@ -41,12 +52,14 @@
 #define TRAIT_STEELHEARTED "steelhearted" //no bad mood from dismembering or seeing this
 #define TRAIT_IWASREVIVED "iwasrevived" //prevents PQ gain from reviving the same person twice
 #define TRAIT_IWASUNZOMBIFIED "iwasunzombified" //prevents PQ gain from curing a zombie twice
+#define TRAIT_IWASHAUNTED "iwashaunted" //prevents spawning a haunt from a decapitated body twice
 #define TRAIT_SCHIZO_AMBIENCE "schizo_ambience" //replaces all ambience with creepy shit
 #define TRAIT_SCREENSHAKE "screenshake" //screen will always be shaking, you cannot stop it
+#define TRAIT_NORUN "Decayed Flesh"
 
 GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_WEBWALK = "I can move freely between webs.",
-	TRAIT_NOSTINK = "<span class='dead'>My nose is numb to the smell of decay.</span>",
+	TRAIT_NOSTINK = span_dead("My nose is numb to the smell of decay."),
 	TRAIT_ZJUMP = "Time to reach a new high.",
 	TRAIT_LEAPER = "I can leap like a frog.",
 	TRAIT_NOSEGRAB = "I love to grab idiots by their noses!",
@@ -54,29 +67,38 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_SEEPRICES = "I can tell the prices of things down to the zenny.",
 	TRAIT_SEEPRICES_SHITTY = "I can tell the prices of things... <i>Kind of</i>.",
 	TRAIT_STRONGBITE = "Stronger bites, critical bite attacks.",
-	TRAIT_GOODLOVER = "It's a lucky thing to share my bed.",
-	TRAIT_NOBLE = "<span class='blue'>I'm of noble blood.</span>",
+	TRAIT_NOBLE = span_blue("I'm of noble blood."),
 	TRAIT_EMPATH = "I can notice when people are in pain.",
 	TRAIT_BREADY = "Defensive stance does not passively fatigue me.",
 	TRAIT_MEDIUMARMOR = "I can move freely in medium armor.",
 	TRAIT_HEAVYARMOR = "I can move freely in heavy armor.",
-	TRAIT_DODGEEXPERT = "I can dodge easly while only wearing light armor.",
+	TRAIT_DODGEEXPERT = "I can dodge easily while only wearing light armor.",
 	TRAIT_DECEIVING_MEEKNESS = "People look at me and think I am a weakling. They are mistaken.",
 	TRAIT_CRITICAL_RESISTANCE = "I am resistant to wounds that would be life threatening to others.",
-	TRAIT_CRITICAL_WEAKNESS = "<span class='danger'>I am weak to wounds that others could survive.</span>",
-	TRAIT_MANIAC_AWOKEN = "<span class='danger'>I am <b>WAKING UP</b> and the sheeple know this. They will resist.</span>",
+	TRAIT_CRITICAL_WEAKNESS = span_danger("I am weak to wounds that others could survive."),
+	TRAIT_MANIAC_AWOKEN = span_danger("I am <b>WAKING UP</b> and the sheeple know this. They will resist."),
 	TRAIT_NOROGSTAM = "I have boundless energy, I will never tire.",
 	TRAIT_NUDIST = "I <b>refuse</b> to wear clothes. They are a hindrance to my freedom.",
-	TRAIT_KNEESTINGER_IMMUNITY = "I am immune to the shock of kneestingers.",
+	TRAIT_CYCLOPS_LEFT = span_warning("My left eye has been poked out..."),
+	TRAIT_CYCLOPS_RIGHT = span_warning("My right eye has been poked out..."),
 	TRAIT_RETARD_ANATOMY = "My anatomy is inhumen, preventing me from wearing hats and shoes.",
-	TRAIT_NASTY_EATER = "<span class='dead'>I can eat bad food, and water that would be toxic to humen will not affect me.</span>",
-	TRAIT_ROT_EATER = "<span class='necrosis'>I can eat rotten food.</span>",
-	TRAIT_ORGAN_EATER = "<span class='bloody'>I can eat organs and raw flesh.</span>",
-	TRAIT_SOUL_EXAMINE = "<span class='deadsay'>I know when someone's soul has departed.</span>",
-	TRAIT_MISSING_NOSE = "<span class='warning'>I struggle to breathe.</span>",
+	TRAIT_NASTY_EATER = span_dead("I can eat bad food, and water that would be toxic to humen will not affect me."),
+	TRAIT_NOFALLDAMAGE1 = span_warning("I can easily handle minor falls."),
+	TRAIT_DISFIGURED = span_warning("No one can recognize me..."),
+	TRAIT_MISSING_NOSE = span_warning("I struggle to breathe."),
+	TRAIT_SPELLCOCKBLOCK = span_warning("I cannot cast any spells."),
 	TRAIT_ANTIMAGIC = "I am immune to most forms of magic.",
 	TRAIT_SHOCKIMMUNE = "I am immune to electrical shocks.",
-	TRAIT_NOSLEEP = "<span class='warning'>I can't sleep.</span>",
+	TRAIT_NOSLEEP = span_warning("I can't sleep."),
+	TRAIT_ROT_EATER = span_necrosis("I can eat rotten food."),
+	TRAIT_ORGAN_EATER = span_bloody("I can eat organs and raw flesh."),
+	TRAIT_KNEESTINGER_IMMUNITY = "I am immune to the shock of kneestingers.",
+	TRAIT_SOUL_EXAMINE = span_deadsay("I know when someone's soul has departed."),
+	TRAIT_CRACKHEAD = span_love("I can use drugs as much as I want!"),
+	TRAIT_COMMIE = span_bloody("I can recognize other free men, and they can recognize me too."),
+	TRAIT_NORUN = span_warning("My body has atrophied in my state of decay; my leg joints just don't have the strength or durability for running anymore"),
+	TRAIT_GOODLOVER = span_love("It's a lucky thing to share my bed."),
+	TRAIT_SEEDKNOW = span_info("I know which seeds grow which crops."),
 ))
 
 // trait accessor defines
@@ -161,13 +183,11 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_IGNOREDAMAGESLOWDOWN "ignoredamageslowdown"
 #define TRAIT_DEATHCOMA			"deathcoma" //Causes death-like unconsciousness
 #define TRAIT_FAKEDEATH			"fakedeath" //Makes the owner appear as dead to most forms of medical examination
-#define TRAIT_DISFIGURED		"disfigured"
 #define TRAIT_XENO_HOST			"xeno_host"	//Tracks whether we're gonna be a baby alien's mummy.
 #define TRAIT_STUNIMMUNE		"stun_immunity"
 #define TRAIT_STUNRESISTANCE    "stun_resistance"
 #define TRAIT_SLEEPIMMUNE		"sleep_immunity"
 #define TRAIT_PUSHIMMUNE		"push_immunity"
-#define TRAIT_SHOCKIMMUNE		"shock_immunity"
 #define TRAIT_STABLEHEART		"stable_heart"
 #define TRAIT_STABLELIVER		"stable_liver"
 #define TRAIT_NOPAINSTUN		"no_pain-stun"
@@ -193,7 +213,6 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_TOXINLOVER		"toxinlover"
 #define TRAIT_NOBREATH			"no_breath"
 #define TRAIT_HOLDBREATH		"hold_breath"
-#define TRAIT_ANTIMAGIC			"Anti-Magic"
 #define TRAIT_HOLY				"holy"
 #define TRAIT_DEPRESSION		"depression"
 #define TRAIT_JOLLY				"jolly"

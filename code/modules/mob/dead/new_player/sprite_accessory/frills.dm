@@ -49,3 +49,29 @@
 	icon_state = "cobraears"
 	color_keys = 2
 	color_key_names = list("Hood", "Inner")
+
+/datum/sprite_accessory/frills/split
+	name = "Split"
+	icon_state = "split"
+
+/datum/sprite_accessory/frills/split_big
+	name = "Split (Big)"
+	icon_state = "split_big"
+
+/datum/sprite_accessory/frills/split_slim
+	name = "Split (Slim)"
+	icon_state = "split_slim"
+
+/datum/sprite_accessory/frills/earlike
+	name = "Earlike"
+	icon_state = "earlike"
+	color_keys = 2
+	color_key_names = list("Outer", "Inner")
+
+/datum/sprite_accessory/frills/earlike_thick
+	name = "Earlike (Thick)"
+	icon_state = "earlike_thick"
+
+/datum/sprite_accessory/frills/earlike_angled
+	name = "Earlike (Angled)"
+	icon_state = "earlike_angled"

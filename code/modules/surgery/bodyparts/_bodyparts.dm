@@ -63,7 +63,7 @@
 	var/heavy_brute_msg = "MANGLED"
 	var/medium_brute_msg = "battered"
 	var/light_brute_msg = "bruised"
-	var/no_bruise_msg = "unbruised"
+	var/no_brute_msg = "unbruised"
 
 	var/heavy_burn_msg = "CHARRED"
 	var/medium_burn_msg = "peeling"
@@ -151,8 +151,8 @@
 /obj/item/bodypart/onbite(mob/living/carbon/human/user)
 	if((user.mind && user.mind.has_antag_datum(/datum/antagonist/zombie)) || istype(user.dna.species, /datum/species/werewolf))
 		if(do_after(user, 50, target = src))
-			user.visible_message("<span class='warning'>[user] consumes [src]!</span>",\
-							"<span class='notice'>I consume [src]!</span>")
+			user.visible_message(span_warning("[user] consumes [src]!"),\
+							span_notice("I consume [src]!"))
 			playsound(get_turf(user), pick(dismemsound), 100, FALSE, -1)
 			new /obj/effect/gibspawner/generic(get_turf(src), user)
 			user.fully_heal()
@@ -166,11 +166,11 @@
 		if(HAS_TRAIT(C, TRAIT_LIMBATTACHMENT))
 			if(!H.get_bodypart(body_zone) && !animal_origin)
 				if(H == user)
-					H.visible_message("<span class='warning'>[H] jams [src] into [H.p_their()] empty socket!</span>",\
-					"<span class='notice'>I force [src] into my empty socket, and it locks into place!</span>")
+					H.visible_message(span_warning("[H] jams [src] into [H.p_their()] empty socket!"),\
+					span_notice("I force [src] into my empty socket, and it locks into place!"))
 				else
-					H.visible_message("<span class='warning'>[user] jams [src] into [H]'s empty socket!</span>",\
-					"<span class='notice'>[user] forces [src] into my empty socket, and it locks into place!</span>")
+					H.visible_message(span_warning("[user] jams [src] into [H]'s empty socket!"),\
+					span_notice("[user] forces [src] into my empty socket, and it locks into place!"))
 				user.temporarilyRemoveItemFromInventory(src, TRUE)
 				attach_limb(C)
 				return
@@ -180,17 +180,17 @@
 	if(length(contents) && I.get_sharpness() && !user.cmode)
 		add_fingerprint(user)
 		playsound(loc, 'sound/combat/hits/bladed/genstab (1).ogg', 60, vary = FALSE)
-		user.visible_message("<span class='warning'>[user] begins to cut open [src].</span>",\
-			"<span class='notice'>You begin to cut open [src]...</span>")
+		user.visible_message(span_warning("[user] begins to cut open [src]."),\
+			span_notice("You begin to cut open [src]..."))
 		if(do_after(user, 5 SECONDS, target = src))
 			drop_organs(user)
-			user.visible_message("<span class='danger'>[user] cuts [src] open!</span>",\
-				"<span class='notice'>You finish cutting [src] open.</span>")
+			user.visible_message(span_danger("[user] cuts [src] open!"),\
+				span_notice("You finish cutting [src] open."))
 		return
 	return ..()
 
 /obj/item/bodypart/throw_impact(atom/hit_atom, datum/thrownthing/throwingdatum)
-	..()
+	. = ..()
 	if(status != BODYPART_ROBOTIC)
 		playsound(get_turf(src), 'sound/blank.ogg', 50, TRUE, -1)
 	pixel_x = rand(-3, 3)
@@ -206,7 +206,7 @@
 	for(var/obj/item/I in src)
 		I.forceMove(T)
 
-/obj/item/bodypart/proc/skeletonize()
+/obj/item/bodypart/proc/skeletonize(lethal = TRUE)
 	if(bandage)
 		remove_bandage()
 	for(var/obj/item/I in embedded_objects)
@@ -214,15 +214,19 @@
 	for(var/obj/item/I in src) //dust organs
 		qdel(I)
 	skeletonized = TRUE
+	for(var/datum/wound/bloody_wound as anything in wounds)
+		if(isnull(bloody_wound.bleed_rate))
+			continue
+		qdel(bloody_wound)
 
-/obj/item/bodypart/chest/skeletonize()
+/obj/item/bodypart/chest/skeletonize(lethal = TRUE)
 	. = ..()
-	if(owner && !(NOBLOOD in owner.dna?.species?.species_traits))
+	if(lethal && owner && !(NOBLOOD in owner.dna?.species?.species_traits))
 		owner.death()
 
-/obj/item/bodypart/head/skeletonize()
+/obj/item/bodypart/head/skeletonize(lethal = TRUE)
 	. = ..()
-	if(owner && !(NOBLOOD in owner.dna?.species?.species_traits))
+	if(lethal && owner && !(NOBLOOD in owner.dna?.species?.species_traits))
 		owner.death()
 
 /obj/item/bodypart/proc/consider_processing()
@@ -244,12 +248,12 @@
 	update_HP()
 
 /obj/item/bodypart/proc/update_HP()
+	if(!is_organic_limb() || !owner)
+		return
 	var/old_max_damage = max_damage
-	if(is_organic_limb())
-		if(owner)
-			var/new_max_damage = initial(max_damage) * (owner.STACON / 10)
-			if(new_max_damage != old_max_damage)
-				max_damage = new_max_damage
+	var/new_max_damage = initial(max_damage) * (owner.STACON / 10)
+	if(new_max_damage != old_max_damage)
+		max_damage = new_max_damage
 
 //Applies brute and burn damage to the organ. Returns 1 if the damage-icon states changed at all.
 //Damage will not exceed max_damage using this proc
@@ -342,7 +346,7 @@
 	set_disabled(is_disabled())
 
 /obj/item/bodypart/proc/is_disabled()
-	if(!can_disable() || HAS_TRAIT(owner, TRAIT_NOLIMBDISABLE))
+	if(!owner || !can_disable() || HAS_TRAIT(owner, TRAIT_NOLIMBDISABLE))
 		return BODYPART_NOT_DISABLED
 	//yes this does mean vampires can use rotten limbs
 	if((rotted || skeletonized) && !(owner.mob_biotypes & MOB_UNDEAD))
@@ -353,6 +357,9 @@
 		return BODYPART_DISABLED_WOUND
 	if(HAS_TRAIT(owner, TRAIT_PARALYSIS) || HAS_TRAIT(src, TRAIT_PARALYSIS))
 		return BODYPART_DISABLED_PARALYSIS
+	var/surgery_flags = get_surgery_flags()
+	if(surgery_flags & SURGERY_CLAMPED)
+		return BODYPART_DISABLED_CLAMPED
 	var/total_dam = get_damage()
 	if((total_dam >= max_damage) || (HAS_TRAIT(owner, TRAIT_EASYLIMBDISABLE) && (total_dam >= (max_damage * 0.6))))
 		return BODYPART_DISABLED_DAMAGE
@@ -363,9 +370,10 @@
 		return
 	disabled = new_disabled
 	last_disable = world.time
-	owner.update_health_hud() //update the healthdoll
-	owner.update_body()
-	owner.update_mobility()
+	if(owner)
+		owner.update_health_hud() //update the healthdoll
+		owner.update_body()
+		owner.update_mobility()
 	return TRUE //if there was a change.
 
 //Updates an organ's brute/burn states for use by update_damage_overlays()
@@ -630,11 +638,11 @@
 
 /obj/item/bodypart/chest/set_disabled(new_disabled)
 	. = ..()
-	if(!.)
+	if(!. || !owner)
 		return
 	if(disabled == BODYPART_DISABLED_DAMAGE || disabled == BODYPART_DISABLED_WOUND)
 		if(owner.stat < DEAD)
-			to_chat(owner, "<span class='warning'>I feel a sharp pain in my back!</span>")
+			to_chat(owner, span_warning("I feel a sharp pain in my back!"))
 
 /obj/item/bodypart/chest/Destroy()
 	QDEL_NULL(cavity_item)
@@ -698,16 +706,16 @@
 
 /obj/item/bodypart/l_arm/set_disabled(new_disabled)
 	. = ..()
-	if(!.)
+	if(!. || !owner)
 		return
 	if(disabled == BODYPART_DISABLED_DAMAGE || disabled == BODYPART_DISABLED_WOUND)
 		if(owner.stat < DEAD)
-			to_chat(owner, "<span class='boldwarning'>I can no longer move my [name]!</span>")
+			to_chat(owner, span_boldwarning("I can no longer move my [name]!"))
 		if(held_index)
 			owner.dropItemToGround(owner.get_item_for_held_index(held_index))
 	else if(disabled == BODYPART_DISABLED_PARALYSIS)
 		if(owner.stat < DEAD)
-			to_chat(owner, "<span class='danger'>I can no longer feel my [name].</span>")
+			to_chat(owner, span_danger("I can no longer feel my [name]."))
 			if(held_index)
 				owner.dropItemToGround(owner.get_item_for_held_index(held_index))
 	if(owner.hud_used)
@@ -764,16 +772,16 @@
 
 /obj/item/bodypart/r_arm/set_disabled(new_disabled)
 	. = ..()
-	if(!.)
+	if(!. || !owner)
 		return
 	if(disabled == BODYPART_DISABLED_DAMAGE || disabled == BODYPART_DISABLED_WOUND)
 		if(owner.stat < DEAD)
-			to_chat(owner, "<span class='danger'>I can no longer move my [name]!</span>")
+			to_chat(owner, span_danger("I can no longer move my [name]!"))
 		if(held_index)
 			owner.dropItemToGround(owner.get_item_for_held_index(held_index))
 	else if(disabled == BODYPART_DISABLED_PARALYSIS)
 		if(owner.stat < DEAD)
-			to_chat(owner, "<span class='danger'>I can no longer feel my [name].</span>")
+			to_chat(owner, span_danger("I can no longer feel my [name]."))
 			if(held_index)
 				owner.dropItemToGround(owner.get_item_for_held_index(held_index))
 	if(owner.hud_used)
@@ -825,14 +833,14 @@
 
 /obj/item/bodypart/l_leg/set_disabled(new_disabled)
 	. = ..()
-	if(!.)
+	if(!. || !owner)
 		return
 	if(disabled == BODYPART_DISABLED_DAMAGE || disabled == BODYPART_DISABLED_WOUND)
 		if(owner.stat < DEAD)
-			to_chat(owner, "<span class='danger'>I can no longer move my [name]!</span>")
+			to_chat(owner, span_danger("I can no longer move my [name]!"))
 	else if(disabled == BODYPART_DISABLED_PARALYSIS)
 		if(owner.stat < DEAD)
-			to_chat(owner, "<span class='danger'>I can no longer feel my [name].</span>")
+			to_chat(owner, span_danger("I can no longer feel my [name]."))
 
 /obj/item/bodypart/l_leg/digitigrade
 	name = "left digitigrade leg"
@@ -882,14 +890,14 @@
 
 /obj/item/bodypart/r_leg/set_disabled(new_disabled)
 	. = ..()
-	if(!.)
+	if(!. || !owner)
 		return
 	if(disabled == BODYPART_DISABLED_DAMAGE || disabled == BODYPART_DISABLED_WOUND)
 		if(owner.stat < DEAD)
-			to_chat(owner, "<span class='danger'>I can no longer move my [name]!</span>")
+			to_chat(owner, span_danger("I can no longer move my [name]!"))
 	else if(disabled == BODYPART_DISABLED_PARALYSIS)
 		if(owner.stat < DEAD)
-			to_chat(owner, "<span class='danger'>I can no longer feel my [name].</span>")
+			to_chat(owner, span_danger("I can no longer feel my [name]."))
 
 /obj/item/bodypart/r_leg/digitigrade
 	name = "right digitigrade leg"

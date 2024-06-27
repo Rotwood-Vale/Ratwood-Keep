@@ -134,9 +134,9 @@
 	description = "Yield to your enemy, which may save your life or end it quicker."
 
 /datum/keybinding/living/submit/down(client/user)
-	if(!isliving(user))
-		return
 	var/mob/living/L = user.mob
+	if(!isliving(L))
+		return
 	if(L.doing)
 		L.doing = 0
 	L.submit()
@@ -254,3 +254,4 @@
 		return TRUE
 	else
 		return FALSE
+

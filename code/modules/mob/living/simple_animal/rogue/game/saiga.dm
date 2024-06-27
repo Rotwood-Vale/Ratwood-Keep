@@ -127,9 +127,6 @@
 	can_buckle = FALSE
 	aggressive = 1
 
-/mob/living/simple_animal/hostile/retaliate/rogue/saiga/saigakid/get_emote_frequency()
-	return 55100
-
 /mob/living/simple_animal/hostile/retaliate/rogue/saiga/simple_limb_hit(zone)
 	if(!zone)
 		return ""
@@ -344,10 +341,6 @@
 	tame = TRUE
 	can_buckle = FALSE
 	aggressive = 1
-
-/mob/living/simple_animal/hostile/retaliate/rogue/saiga/saigaboy/get_emote_frequency()
-	return 55100
-
 /mob/living/simple_animal/hostile/retaliate/rogue/saiga/tame
 	tame = TRUE
 

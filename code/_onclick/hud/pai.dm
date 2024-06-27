@@ -1,4 +1,4 @@
-#define PAI_MISSING_SOFTWARE_MESSAGE "<span class='warning'>I must download the required software to use this.</span>"
+#define PAI_MISSING_SOFTWARE_MESSAGE span_warning("I must download the required software to use this.")
 
 /atom/movable/screen/pai
 	icon = 'icons/mob/screen_pai.dmi'
@@ -89,7 +89,7 @@
 	if(iscarbon(pAI.card.loc))
 		pAI.hostscan.attack(pAI.card.loc, pAI)
 	else
-		to_chat(src, "<span class='warning'>I are not being carried by anyone!</span>")
+		to_chat(src, span_warning("I are not being carried by anyone!"))
 		return 0
 
 /atom/movable/screen/pai/crew_manifest

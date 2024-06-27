@@ -18,6 +18,8 @@ GLOBAL_LIST_EMPTY(preference_patrons)
 	var/datum/faith/associated_faith = /datum/faith
 	/// Whether or not we are accessible in preferences
 	var/preference_accessible = TRUE
+	/// Whether or not this patron hates undead - Mostly so we know whether miracles should actually harm
+	var/undead_hater = TRUE
 	/// Some gods have related confessions, if they're evil and such
 	var/list/confess_lines
 	/// Some patrons have related traits, why not?

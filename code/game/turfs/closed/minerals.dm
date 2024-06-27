@@ -22,6 +22,7 @@
 	var/last_act = 0
 	var/scan_state = "" //Holder for the image we display when we're pinged by a mining scanner
 	var/defer_change = 0
+	var/mob/living/lastminer //for xp gain and luck shenanigans
 	blade_dulling = DULLING_PICK
 	max_integrity = 1000
 	break_sound = 'sound/combat/hits/onstone/stonedeath.ogg'
@@ -59,8 +60,9 @@
 
 /turf/closed/mineral/attackby(obj/item/I, mob/user, params)
 	if (!user.IsAdvancedToolUser())
-		to_chat(usr, "<span class='warning'>I don't have the dexterity to do this!</span>")
+		to_chat(usr, span_warning("I don't have the dexterity to do this!"))
 		return
+	lastminer = user
 	..()
 	var/olddam = turf_integrity
 	if(turf_integrity && turf_integrity > 10)
@@ -71,11 +73,14 @@
 					S.forceMove(get_turf(user))
 
 /turf/closed/mineral/turf_destruction(damage_flag)
-	gets_drilled(give_exp = FALSE)
+	if(lastminer.goodluck(2) && mineralType)
+//		to_chat(lastminer, span_notice("Bonus ducks!"))
+		new mineralType(src)
+	gets_drilled(lastminer, give_exp = FALSE)
 	queue_smooth_neighbors(src)
 	..()
 
-/turf/closed/mineral/proc/gets_drilled(user, give_exp = TRUE)
+/turf/closed/mineral/proc/gets_drilled(mob/living/user, give_exp = TRUE)
 	new /obj/item/natural/stone(src)
 	if(prob(30))
 		new /obj/item/natural/stone(src)
@@ -87,6 +92,10 @@
 			if(prob(23))
 				new rockType(src)
 		SSblackbox.record_feedback("tally", "ore_mined", mineralAmt, mineralType)
+	else if(user.goodluck(2))
+		var/newthing = pickweight(list(/obj/item/natural/rock/salt = 2, /obj/item/natural/rock/iron = 1, /obj/item/natural/rock/coal = 2))
+//		to_chat(user, span_notice("Bonus ducks!"))
+		new newthing(src)
 //	if(ishuman(user))
 //		var/mob/living/carbon/human/H = user
 //		if(give_exp)
@@ -110,10 +119,10 @@
 	..()
 
 /turf/closed/mineral/attack_alien(mob/living/carbon/alien/M)
-	to_chat(M, "<span class='notice'>I start digging into the rock...</span>")
+	to_chat(M, span_notice("I start digging into the rock..."))
 	playsound(src, 'sound/blank.ogg', 50, TRUE)
 	if(do_after(M, 40, target = src))
-		to_chat(M, "<span class='notice'>I tunnel into the rock.</span>")
+		to_chat(M, span_notice("I tunnel into the rock."))
 		gets_drilled(M)
 /*
 /turf/closed/mineral/Bumped(atom/movable/AM)
@@ -464,7 +473,7 @@
 
 /turf/closed/mineral/gibtonite/attackby(obj/item/I, mob/user, params)
 	if(istype(I, /obj/item/mining_scanner) || istype(I, /obj/item/t_scanner/adv_mining_scanner) && stage == 1)
-		user.visible_message("<span class='notice'>[user] holds [I] to [src]...</span>", "<span class='notice'>I use [I] to locate where to cut off the chain reaction and attempt to stop it...</span>")
+		user.visible_message(span_notice("[user] holds [I] to [src]..."), span_notice("I use [I] to locate where to cut off the chain reaction and attempt to stop it..."))
 		defuse()
 	..()
 
@@ -475,7 +484,7 @@
 		name = "gibtonite deposit"
 		desc = ""
 		stage = GIBTONITE_ACTIVE
-		visible_message("<span class='danger'>There was gibtonite inside! It's going to explode!</span>")
+		visible_message(span_danger("There was gibtonite inside! It's going to explode!"))
 
 		var/notify_admins = 0
 		if(z != 5)
@@ -509,7 +518,7 @@
 		stage = GIBTONITE_STABLE
 		if(det_time < 0)
 			det_time = 0
-		visible_message("<span class='notice'>The chain reaction was stopped! The gibtonite had [det_time] reactions left till the explosion!</span>")
+		visible_message(span_notice("The chain reaction was stopped! The gibtonite had [det_time] reactions left till the explosion!"))
 
 /turf/closed/mineral/gibtonite/gets_drilled(mob/user, triggered_by_explosion = 0)
 	if(stage == GIBTONITE_UNSTRUCK && mineralAmt >= 1) //Gibtonite deposit is activated
@@ -556,13 +565,13 @@
 
 /turf/closed/mineral/strong/attackby(obj/item/I, mob/user, params)
 	if(!ishuman(user))
-		to_chat(usr, "<span class='warning'>Only a more advanced species could break a rock such as this one!</span>")
+		to_chat(usr, span_warning("Only a more advanced species could break a rock such as this one!"))
 		return FALSE
 	var/mob/living/carbon/human/H = user
 	if(H.mind.get_skill_level(/datum/skill/mining) >= SKILL_LEVEL_LEGENDARY)
 		. = ..()
 	else
-		to_chat(usr, "<span class='warning'>The rock seems to be too strong to destroy. Maybe I can break it once I become a master miner.</span>")
+		to_chat(usr, span_warning("The rock seems to be too strong to destroy. Maybe I can break it once I become a master miner."))
 
 
 /turf/closed/mineral/strong/gets_drilled(user)
@@ -681,5 +690,5 @@
 
 /turf/closed/mineral/rogue/bedrock/attackby(obj/item/I, mob/user, params)
 	..()
-	to_chat(user, "<span class='warning'>TOO HARD!</span>")
+	to_chat(user, span_warning("TOO HARD!"))
 	turf_integrity = max_integrity

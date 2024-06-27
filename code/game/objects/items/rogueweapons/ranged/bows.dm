@@ -37,7 +37,7 @@
 	return
 
 /obj/item/gun/ballistic/revolver/grenadelauncher/bow/dropped()
-	..()
+	. = ..()
 	if(chambered)
 		chambered = null
 		var/num_unloaded = 0
@@ -69,7 +69,7 @@
 			BB.damage = BB.damage
 			BB.embedchance = 100
 		BB.damage = BB.damage * (user.STAPER / 10) * damfactor
-	..()
+	. = ..()
 
 /obj/item/gun/ballistic/revolver/grenadelauncher/bow/update_icon()
 	. = ..()
@@ -104,7 +104,7 @@
 
 /datum/intent/shoot/bow/prewarning()
 	if(mastermob)
-		mastermob.visible_message("<span class='warning'>[mastermob] draws [masteritem]!</span>")
+		mastermob.visible_message(span_warning("[mastermob] draws [masteritem]!"))
 		playsound(mastermob, pick('sound/combat/Ranged/bow-draw-01.ogg'), 100, FALSE)
 
 /datum/intent/shoot/bow/get_chargetime()
@@ -140,7 +140,7 @@
 
 /datum/intent/arc/bow/prewarning()
 	if(mastermob)
-		mastermob.visible_message("<span class='warning'>[mastermob] draws [masteritem]!</span>")
+		mastermob.visible_message(span_warning("[mastermob] draws [masteritem]!"))
 		playsound(mastermob, pick('sound/combat/Ranged/bow-draw-01.ogg'), 100, FALSE)
 
 /datum/intent/arc/bow/get_chargetime()
