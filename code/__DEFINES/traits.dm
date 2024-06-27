@@ -34,6 +34,7 @@
 #define TRAIT_GOODRUNNER "Good Runner"
 #define TRAIT_CARGOHAULER "Cargo Hauler"
 #define TRAIT_GOODLOVER "Fabled Lover"
+#define TRAIT_SEEDKNOW "Seed Knower"
 
 // PATRON GOD TRAITS
 #define TRAIT_ROT_EATER "Blessing of Pestra" //can eat rotten food
@@ -101,6 +102,7 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_CARGOHAULER = span_info("I've hauled enough crates in my life, it's not a big deal to pull them around anymore."),
 	TRAIT_GOODRUNNER = span_info("I can run without breaking a sweat!"),
 	TRAIT_GOODLOVER = span_love("It's a lucky thing to share my bed."),
+	TRAIT_SEEDKNOW = span_info("I know which seeds grow which crops."),
 ))
 
 // trait accessor defines

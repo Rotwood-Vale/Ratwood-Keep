@@ -3680,6 +3680,8 @@
 /obj/structure/closet/crate/chest,
 /obj/item/seeds/wheat,
 /obj/item/seeds/wheat/oat,
+/obj/item/seeds/wheat/oat,
+/obj/item/seeds/wheat,
 /obj/item/seeds/wheat,
 /turf/open/floor/rogue/twig,
 /area/rogue/indoors)
@@ -4462,6 +4464,13 @@
 /obj/structure/ladder,
 /turf/open/floor/rogue/cobble,
 /area/rogue/outdoors/town/roofs)
+"eMI" = (
+/obj/structure/plough,
+/obj/machinery/light/rogue/torchholder{
+	dir = 4
+	},
+/turf/open/floor/rogue/twig,
+/area/rogue/indoors)
 "eNY" = (
 /obj/structure/stairs{
 	dir = 8
@@ -9537,6 +9546,8 @@
 /obj/structure/closet/crate/chest,
 /obj/item/seeds/apple,
 /obj/item/seeds/apple,
+/obj/item/seeds/apple,
+/obj/item/seeds/pipeweed,
 /obj/item/seeds/pipeweed,
 /obj/item/seeds/pipeweed,
 /turf/open/floor/rogue/twig,
@@ -11068,6 +11079,11 @@
 	},
 /turf/open/floor/rogue/blocks,
 /area/rogue/outdoors/town/harbor)
+"mNw" = (
+/obj/structure/fluff/dryingrack,
+/obj/item/needle/thorn,
+/turf/open/floor/rogue/cobblerock,
+/area/rogue/outdoors/rtfield)
 "mNO" = (
 /turf/closed/wall/mineral/rogue/wood,
 /area/rogue/indoors/town/shop)
@@ -13121,6 +13137,8 @@
 "ppa" = (
 /obj/structure/closet/crate/chest,
 /obj/item/seeds/wheat,
+/obj/item/seeds/wheat,
+/obj/item/seeds/apple,
 /obj/item/seeds/apple,
 /obj/item/seeds/pipeweed,
 /obj/item/seeds/pipeweed,
@@ -14494,9 +14512,8 @@
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue/indoors)
 "qYF" = (
-/obj/structure/fluff/dryingrack,
-/obj/item/needle/thorn,
-/turf/open/floor/rogue/cobblerock,
+/obj/structure/composter/full,
+/turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors/rtfield)
 "qYJ" = (
 /turf/open/floor/rogue/carpet,
@@ -16971,6 +16988,8 @@
 /obj/item/seeds/wheat,
 /obj/item/seeds/wheat,
 /obj/item/seeds/wheat/oat,
+/obj/item/seeds/wheat/oat,
+/obj/item/seeds/wheat,
 /obj/item/seeds/wheat,
 /turf/open/floor/rogue/twig,
 /area/rogue/indoors)
@@ -273585,7 +273604,7 @@ wvu
 gxC
 wOD
 ryI
-fxx
+hSV
 fxx
 fxx
 bdN
@@ -274791,7 +274810,7 @@ cyr
 shc
 buv
 trG
-hSV
+mNw
 fxx
 fxx
 wSn
@@ -275193,7 +275212,7 @@ hDB
 wOD
 wOD
 ryI
-qYF
+hVZ
 fxx
 fxx
 uaL
@@ -275592,7 +275611,7 @@ trG
 pqA
 kaE
 ltT
-aap
+eMI
 uaX
 trG
 hVZ
@@ -275994,10 +276013,10 @@ gxC
 pqA
 ltT
 ltT
-ltT
+kaE
 dXz
 gxC
-hVZ
+mNw
 fxx
 fxx
 wSn
