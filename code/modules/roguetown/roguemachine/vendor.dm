@@ -265,3 +265,12 @@
 		held_items[P]["NAME"] = P.name
 		held_items[P]["PRICE"] = 10
 	update_icon()
+
+/obj/structure/roguemachine/vendor/shop_one
+	keycontrol = "shop_one"
+
+/obj/structure/roguemachine/vendor/shop_two
+	keycontrol = "shop_two"
+
+/obj/structure/roguemachine/vendor/shop_three
+	keycontrol = "shop_three"

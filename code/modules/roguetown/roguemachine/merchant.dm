@@ -174,12 +174,26 @@
 		if(!ispath(path, /datum/supply_pack))
 			message_admins("RETARDED MOTHERFUCKER [usr.key] IS TRYING TO BUY A [path] WITH THE GOLDFACE")
 			return
-		var/datum/supply_pack/PA = new path
-		var/cost = PA.cost
-		var/tax_amt=round(SStreasury.tax_value * cost)
-		cost=cost+tax_amt
-		if(upgrade_flags & UPGRADE_NOTAX)
-			cost = PA.cost
+		var/datum/supply_pack/rogue/PA = SSshuttle.supply_packs[path]
+		var/shipment_purchase = (href_list["buytype"] == "ship")
+		var/cost
+		if(shipment_purchase)
+			cost = PA.shipment_cost
+		else
+			cost = PA.teleport_cost
+		if(shipment_purchase)
+			if(!SSshipments.shipments_allowed())
+				return
+			if(!PA.allows_shipment_buy)
+				return
+		else
+			if(!PA.allows_teleport_buy)
+				return
+
+		var/tax_amt = round(SStreasury.tax_value * cost)
+		if(!(upgrade_flags & UPGRADE_NOTAX))
+			cost = cost + tax_amt
+
 		if(budget >= cost)
 			budget -= cost
 			if(!(upgrade_flags & UPGRADE_NOTAX))
@@ -187,13 +201,14 @@
 		else
 			say("Not enough!")
 			return
-		var/shoplength = PA.contains.len
-		var/l
-		for(l=1,l<=shoplength,l++)
-			var/pathi = pick(PA.contains)
-			var/obj/item/I = new pathi(get_turf(src))
-			M.put_in_hands(I)
-		qdel(PA)
+		if(shipment_purchase)
+			SSshipments.add_shipment(PA.type)
+			to_chat(usr, span_notice("I purchase the [PA.name] shipment."))
+		else
+			to_chat(usr, span_notice("I purchase the [PA.name] wares."))
+			for(var/item_type in PA.contains)
+				var/obj/item/I = new item_type(get_turf(src))
+				M.put_in_hands(I)
 	if(href_list["change"])
 		if(budget > 0)
 			budget2change(budget, usr)
@@ -295,18 +310,27 @@
 			contents += "<a href='?src=[REF(src)];changecat=[X]'>[X]</a><BR>"
 		contents += "</center>"
 	else
+		var/shipments_allowed = SSshipments.shipments_allowed()
 		contents += "<center>[current_cat]<BR></center>"
 		contents += "<center><a href='?src=[REF(src)];changecat=1'>\[RETURN\]</a><BR><BR></center>"
 		var/list/pax = list()
 		for(var/pack in SSshuttle.supply_packs)
-			var/datum/supply_pack/PA = SSshuttle.supply_packs[pack]
+			var/datum/supply_pack/rogue/PA = SSshuttle.supply_packs[pack]
 			if(PA.group == current_cat)
 				pax += PA
-		for(var/datum/supply_pack/PA in sortList(pax))
-			var/costy = PA.cost
+		for(var/datum/supply_pack/rogue/PA in sortList(pax))
+			var/tele_cost = PA.teleport_cost
 			if(!(upgrade_flags & UPGRADE_NOTAX))
-				costy=round(costy+(SStreasury.tax_value * costy))
-			contents += "[PA.name] - ([costy])<a href='?src=[REF(src)];buy=[PA.type]'>BUY</a><BR>"
+				tele_cost = round(tele_cost+(SStreasury.tax_value * tele_cost))
+			var/ship_cost = PA.shipment_cost
+			if(!(upgrade_flags & UPGRADE_NOTAX))
+				ship_cost = round(ship_cost+(SStreasury.tax_value * ship_cost))
+			contents += "[PA.name] -"
+			if(PA.allows_teleport_buy)
+				contents += " <a href='?src=[REF(src)];buy=[PA.type];buytype=tele'>BUY</a>([tele_cost])"
+			if(PA.allows_shipment_buy && shipments_allowed)
+				contents += " <a href='?src=[REF(src)];buy=[PA.type];buytype=ship'>SHIPMENT</a>([ship_cost])"
+			contents += "<BR>"
 
 	if(!canread)
 		contents = stars(contents)
