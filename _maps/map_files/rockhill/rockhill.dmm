@@ -1523,18 +1523,6 @@
 /area/rogue/indoors/town/manor)
 "bxD" = (
 /obj/structure/closet/crate/chest/crafted,
-/obj/item/roguekey/roomv{
-	lockid = "harborshop1";
-	name = "Harbor Shop I Key"
-	},
-/obj/item/roguekey/roomv{
-	lockid = "harborshop2";
-	name = "Harbor Shop II Key"
-	},
-/obj/item/roguekey/roomv{
-	lockid = "harborshop3";
-	name = "Harbor Shop III Key"
-	},
 /turf/open/floor/rogue/tile/masonic/single,
 /area/rogue/indoors/town/manor)
 "byk" = (
