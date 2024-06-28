@@ -34,6 +34,7 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "E
 	var/skeletons = FALSE
 
 	var/headrebdecree = FALSE
+	var/reb_end_time = 0
 
 	var/check_for_lord = TRUE
 	var/next_check_lord = 0
@@ -75,7 +76,16 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "E
 				SSvote.initiate_vote("endround", pick("Zlod", "Sun King", "Gaia", "Moon Queen", "Aeon", "Gemini", "Aries"))
 
 	if(headrebdecree)
-		return TRUE
+		if(reb_end_time == 0)
+			to_chat(world, span_boldannounce("The peasant rebels took control of the throne, hail the new community!"))
+			if(ttime >= INITIAL_ROUND_TIMER)
+				reb_end_time = world.time + REBEL_RULE_TIME
+				to_char(world, span_boldwarning("The round will end in 15 minutes."))
+			else
+				reb_end_time = SSticker.round_start_time + INITIAL_ROUND_TIMER
+				to_char(world, span_boldwarning("The round will end at the 2:30 hour mark."))
+		if(world.time >= reb_end_time)
+			return TRUE
 
 	check_for_lord()
 /*

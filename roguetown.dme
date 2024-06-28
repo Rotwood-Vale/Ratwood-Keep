@@ -129,6 +129,7 @@
 #include "code\__DEFINES\dcs\helpers.dm"
 #include "code\__DEFINES\dcs\signals.dm"
 #include "code\__DEFINES\dcs\signals_atom_lighting.dm"
+#include "code\__DEFINES\roguetown\rebel.dm"
 #include "code\__DEFINES\roguetown\werewolf.dm"
 #include "code\__HELPERS\_lists.dm"
 #include "code\__HELPERS\_logging.dm"
