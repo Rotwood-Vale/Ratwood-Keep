@@ -231,9 +231,10 @@ GLOBAL_LIST_INIT(laws_of_the_land, initialize_laws_of_the_land())
 	if(P.rev_team.members.len < 3)
 		to_chat(user, span_warning("I need more folk on my side to declare victory."))
 		return
-	if(GLOB.king_throne == null)
+	var/obj/structure/roguethrone/throne = GLOB.king_throne
+	if(throne == null)
 		return
-	if(GLOB.king_throne.rebel_leader_sit_time < REBEL_THRONE_TIME)
+	if(throne.rebel_leader_sit_time < REBEL_THRONE_TIME)
 		to_chat(user, span_warning("I need to get more comfortable on the throne before I declare victory."))
 		return
 	for(var/datum/objective/prebel/obj in user.mind.get_all_objectives())

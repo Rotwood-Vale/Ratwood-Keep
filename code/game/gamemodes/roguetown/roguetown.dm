@@ -24,7 +24,7 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "E
 	var/datum/team/roguecultists
 // DEBUG
 	var/list/forcedmodes = list()
-	var/mob/living/carbon/human/vlord = null	
+	var/mob/living/carbon/human/vlord = null
 // GAMEMODE SPECIFIC
 	var/banditcontrib = 0
 	var/banditgoal = 1
@@ -80,10 +80,10 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "E
 			to_chat(world, span_boldannounce("The peasant rebels took control of the throne, hail the new community!"))
 			if(ttime >= INITIAL_ROUND_TIMER)
 				reb_end_time = world.time + REBEL_RULE_TIME
-				to_char(world, span_boldwarning("The round will end in 15 minutes."))
+				to_chat(world, span_boldwarning("The round will end in 15 minutes."))
 			else
 				reb_end_time = SSticker.round_start_time + INITIAL_ROUND_TIMER
-				to_char(world, span_boldwarning("The round will end at the 2:30 hour mark."))
+				to_chat(world, span_boldwarning("The round will end at the 2:30 hour mark."))
 		if(world.time >= reb_end_time)
 			return TRUE
 
@@ -206,22 +206,22 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "E
 	if(num_bandits)
 		//antag_candidates = get_players_for_role(ROLE_BANDIT, pre_do=TRUE) //pre_do checks for their preferences since they don't have a job yet
 		/*
-			Lets go over some things here to whomever sees this from my observations (which may be incorrect). 
+			Lets go over some things here to whomever sees this from my observations (which may be incorrect).
 
 			The other modes (that aren't this) choose antags in pre_setup() which makes the restricted_jobs list work as its checked in DivideOccupations()
 			DivideOccupations() occurs and checks it right after the current mode pre_setup() call on SSticker
 			Then we call this brand new after_DO() proc AFTER the jobs have been assigned to the mind/checks occur on SSticker via DivideOccupations()
 			In after_DO() we go through all the mode/antag selection instructions linking into these pick_antag() procs
 			All the characters are made and equipped in the instruction sets between now and post_setup()
-			Then the post_setup() proc which is called on SSticker doles out the antag datums from anything stuck into the pre_antag lists here 
+			Then the post_setup() proc which is called on SSticker doles out the antag datums from anything stuck into the pre_antag lists here
 			Both pre_setup() and post_setup() get called within the Setup() proc in SSticker at earlier and later timings.
 
-			Also the pre_do param only checks to see if a job preference is set to HIGH, 
+			Also the pre_do param only checks to see if a job preference is set to HIGH,
 			so if it was working a medium priority king would still get shunted into a bandit.
 			Along with that every person who has a restricted job set to HIGH would also just get rejected from it.
 
 			Also to note, we check the restricted jobs list on the mind in get_players_for_role() too
-			Except all these pick procs also set the list after the assignment/use of it too. 
+			Except all these pick procs also set the list after the assignment/use of it too.
 			And the get_players_for_role in pre_setup to put them into the allantags list to be sorted in the pick procs also has no restricted_jobs list on mind at that point also
 
 		*/
@@ -415,7 +415,7 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "E
 	"Cleric",
 	"Guard Captain",
 	"Court Magician",
-	"Templar", 
+	"Templar",
 	"Bog Guard",
 	"Bog Master",
 	"Knight",
@@ -424,7 +424,7 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "E
 	"Desert Rider Mercenary",
 	"Grenzelhoft Mercenary"
 	)
-	
+
 	var/num_werewolves = rand(1,2)
 	antag_candidates = get_players_for_role(ROLE_WEREWOLF)
 	antag_candidates = shuffle(antag_candidates)
