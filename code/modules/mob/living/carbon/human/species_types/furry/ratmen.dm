@@ -4,7 +4,14 @@
 /datum/species/ratpeople
 	name = "Rhodian" 
 	id = "ratpeople"
-	desc = "Rats, rats, we're the rats, we prey at night, we stalk at night, we're the rats. (Placeholder)"
+	desc = "<b>Rhodian</b><br>\
+	The Rodent-Like Rhodians are a race that had faced the rise and fall of their grand capital and survived with a distinct and deep religious divide. \
+	Once they were considered no more than Demi-humans that only appeared during the darkest hours of the night to steal and kill, until the one day they broke out of their hovels during the midday sun. \
+	Enraptured by the allure of gold in the sky, they built up a city constructed from their previous ill gotten gains, spires of gold and homes of marble, where they worshipped Astrata.<br><br>\
+	But lo, did the calling of their old goddess creep into their ears, clawing at the mortar of their empire and their minds. \
+	Kretch struck the final blow to their foundations, resulting in 'The Final Feast' that ruined their kingdom, burned their halls, and saw their king cannibalized by his people. \
+	Today Rhodians are nothing more than Vegabonds that can never find themselves settled and organized for long. \
+	Astrata promises succor, and Kretch subverts it every time."
 	default_color = "444"
 	species_traits = list(
 		MUTCOLORS,
