@@ -8,6 +8,9 @@
 	category_tags = list(CTAG_PILGRIM)
 	cmode_music = 'sound/music/combat_pirate.ogg'
 
+/datum/outfit/job/roguetown/adventurer/smuggler
+	allowed_patrons =  list(/datum/patron/divine/abyssor, /datum/patron/inhumen/matthios)
+
 /datum/outfit/job/roguetown/adventurer/smuggler/pre_equip(mob/living/carbon/human/H)
 	..()
 	head =/obj/item/clothing/head/roguetown/helmet/bandana

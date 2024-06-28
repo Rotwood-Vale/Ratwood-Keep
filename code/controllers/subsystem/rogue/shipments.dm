@@ -1,4 +1,4 @@
-#define MAX_SHIPMENT_CHESTS 5
+#define MAX_SHIPMENT_CHESTS 10
 
 SUBSYSTEM_DEF(shipments)
 	name = "Shipments"

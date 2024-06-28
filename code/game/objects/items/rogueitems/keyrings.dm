@@ -150,7 +150,7 @@
 	keys = list(/obj/item/roguekey/dungeon, /obj/item/roguekey/garrison, /obj/item/roguekey/walls, /obj/item/roguekey/manor)
 
 /obj/item/keyring/merchant
-	keys = list(/obj/item/roguekey/shop, /obj/item/roguekey/merchant, /obj/item/roguekey/ship)
+	keys = list(/obj/item/roguekey/shop, /obj/item/roguekey/merchant)
 
 /obj/item/keyring/mguard
 	keys = list(/obj/item/roguekey/dungeon, /obj/item/roguekey/garrison, /obj/item/roguekey/walls, /obj/item/roguekey/manor)
@@ -177,7 +177,7 @@
 	keys = list(/obj/item/roguekey/hand, /obj/item/roguekey/steward, /obj/item/roguekey/tavern, /obj/item/roguekey/church, /obj/item/roguekey/walls, /obj/item/roguekey/dungeon, /obj/item/roguekey/garrison, /obj/item/roguekey/manor, /obj/item/roguekey/graveyard)
 
 /obj/item/keyring/steward
-	keys = list(/obj/item/roguekey/steward, /obj/item/roguekey/walls, /obj/item/roguekey/dungeon, /obj/item/roguekey/manor, /obj/item/roguekey/graveyard, /obj/item/roguekey/ship)
+	keys = list(/obj/item/roguekey/steward, /obj/item/roguekey/walls, /obj/item/roguekey/dungeon, /obj/item/roguekey/manor, /obj/item/roguekey/graveyard)
 
 /obj/item/keyring/clerk
 	keys = list(/obj/item/roguekey/walls, /obj/item/roguekey/dungeon, /obj/item/roguekey/manor, /obj/item/roguekey/graveyard)
@@ -201,4 +201,5 @@
 	keys = list(/obj/item/roguekey/harbor, /obj/item/roguekey/ship)
 
 /obj/item/keyring/rentables
+	name = "rentables keyring"
 	keys = list(/obj/item/roguekey/shop_one, /obj/item/roguekey/shop_two, /obj/item/roguekey/shop_three)

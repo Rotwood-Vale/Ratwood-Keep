@@ -8,6 +8,9 @@
 	category_tags = list(CTAG_ADVENTURER)
 	cmode_music = 'sound/music/combat_pirate.ogg'
 
+/datum/outfit/job/roguetown/adventurer/pirate
+	allowed_patrons =  list(/datum/patron/divine/abyssor, /datum/patron/inhumen/matthios)
+
 /datum/outfit/job/roguetown/adventurer/pirate/pre_equip(mob/living/carbon/human/H)
 	..()
 	switch(rand(1,3))
