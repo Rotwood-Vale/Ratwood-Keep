@@ -14,7 +14,7 @@
 	head = /obj/item/clothing/head/roguetown/roguehood/mage
 	shoes = /obj/item/clothing/shoes/roguetown/simpleshoes
 	pants = /obj/item/clothing/under/roguetown/trou/leather
-	shirt = /obj/item/clothing/suit/roguetown/shirt/shortshirt/clean
+	shirt = /obj/item/clothing/suit/roguetown/shirt/shortshirt
 	armor = /obj/item/clothing/suit/roguetown/shirt/robe/mage
 	belt = /obj/item/storage/belt/rogue/leather/rope
 	beltr = /obj/item/reagent_containers/glass/bottle/rogue/manapot
