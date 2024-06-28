@@ -2,7 +2,6 @@
 	abstract_type = /datum/sprite_accessory/wings
 	icon = 'icons/mob/sprite_accessory/wings/wings.dmi'
 	color_key_name = "Wings"
-	//This handles if they should layer atop of other parts of your sprite, specifically directional states. If you add wings that cover the front/back, you need to update this variable on the wingtype!
 	relevant_layers = list(BODY_BEHIND_LAYER, BODY_FRONT_LAYER)
 	/// Whether the sprite accessory has states for open wings (With an "_open" suffix).
 	var/can_open = FALSE
