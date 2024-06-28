@@ -45,10 +45,30 @@
 		on_stepped(AM)
 
 /obj/structure/soil/proc/user_harvests(mob/living/user)
+	if(!produce_ready)
+		return
 	apply_farming_fatigue(user, 5)
-	if(produce_ready)
-		adjust_experience(user, /datum/skill/labor/farming, user.STAINT * 4)
-	yield_produce()
+	adjust_experience(user, /datum/skill/labor/farming, user.STAINT * 4)
+
+	var/farming_skill = user.mind.get_skill_level(/datum/skill/labor/farming)
+	var/chance_to_ruin = 50 - (farming_skill * 25)
+	if(prob(chance_to_ruin))
+		ruin_produce()
+		to_chat(user, span_warning("I ruin the produce..."))
+		return
+	var/feedback = "I harvest the produce."
+	var/modifier = 0
+	var/chance_to_ruin_single = 75 - (farming_skill * 25)
+	if(prob(chance_to_ruin_single))
+		feedback = "I harvest the produce, ruining a little."
+		modifier -= 1
+	var/chance_to_get_extra = -75 + (farming_skill * 25)
+	if(prob(chance_to_get_extra))
+		feedback = "I harvest the produce well."
+		modifier += 1
+
+	to_chat(user, span_notice(feedback))
+	yield_produce(modifier)
 
 /obj/structure/soil/proc/try_handle_harvest(obj/item/attacking_item, mob/user, params)
 	if(istype(attacking_item, /obj/item/rogueweapon/sickle))
@@ -57,7 +77,6 @@
 			return TRUE
 		user_harvests(user)
 		playsound(src,'sound/items/seed.ogg', 100, FALSE)
-		to_chat(user, span_notice("I harvest the crop."))
 		return TRUE
 	return FALSE
 
@@ -169,7 +188,6 @@
 	if(plant && produce_ready)
 		to_chat(user, span_notice("I begin collecting the produce..."))
 		if(do_after(user, get_farming_do_time(user, 4 SECONDS), target = src))
-			to_chat(user, span_notice("I collect the produce."))
 			playsound(src,'sound/items/seed.ogg', 100, FALSE)
 			user_harvests(user)
 		return
@@ -537,7 +555,7 @@
 		return
 	adjust_weeds(-100)
 	yield_uproot_loot()
-	yield_produce()
+	ruin_produce()
 	plant = null
 	update_icon()
 
@@ -549,10 +567,17 @@
 		new loot_type(loc)
 
 /// Yields produce on its tile if it's ready for harvest
-/obj/structure/soil/proc/yield_produce()
+/obj/structure/soil/proc/ruin_produce()
+	produce_ready = FALSE
+	update_icon()
+
+/// Yields produce on its tile if it's ready for harvest
+/obj/structure/soil/proc/yield_produce(modifier = 0)
 	if(!produce_ready)
 		return
-	for(var/i in 1 to plant.produce_amount)
+	var/base_amount = rand(plant.produce_amount_min, plant.produce_amount_max)
+	var/spawn_amount = max(base_amount + modifier, 1)
+	for(var/i in 1 to spawn_amount)
 		new plant.produce_type(loc)
 	produce_ready = FALSE
 	if(!plant.perennial)

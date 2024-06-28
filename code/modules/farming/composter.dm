@@ -76,7 +76,7 @@
 
 /obj/structure/composter/proc/try_handle_adding_compost(obj/item/attacking_item, mob/user, params)
 	var/compost_value = 0
-	if(istype(attacking_item, /obj/item/reagent_containers/food/snacks/grown))
+	if(istype(attacking_item, /obj/item/reagent_containers/food/snacks))
 		compost_value = 150
 	if(istype(attacking_item, /obj/item/natural/chaff))
 		compost_value = 150
