@@ -130,6 +130,9 @@
 /obj/item/clothing/suit/roguetown/shirt/shortshirt/bog
 	color = "#9ac878"
 
+/obj/item/clothing/suit/roguetown/shirt/shortshirt/clean
+	color = "#ffffff"
+
 /obj/item/clothing/suit/roguetown/shirt/rags
 	slot_flags = ITEM_SLOT_ARMOR
 	name = "rags"

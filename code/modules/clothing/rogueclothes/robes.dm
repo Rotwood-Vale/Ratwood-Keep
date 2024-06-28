@@ -113,7 +113,7 @@
 	color = "#6c6c6c"
 
 /obj/item/clothing/suit/roguetown/shirt/robe/mage/Initialize()
-	color = pick("#4756d8", "#759259", "#bf6f39", "#c1b144")
+	color = pick("#4756d8", "#759259", "#bf6f39", "#c1b144", "#b8252c")
 	. = ..()
 
 /obj/item/clothing/suit/roguetown/shirt/robe/mageblue
@@ -124,6 +124,9 @@
 
 /obj/item/clothing/suit/roguetown/shirt/robe/mageorange
 	color = "#bf6f39"
+
+/obj/item/clothing/suit/roguetown/shirt/robe/magered
+	color = "#b8252c"
 
 /obj/item/clothing/suit/roguetown/shirt/robe/mageyellow
 	color = "#c1b144"
