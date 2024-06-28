@@ -169,9 +169,6 @@
 	zombie.aggressive = TRUE
 	zombie.mode = AI_IDLE
 	zombie.handle_ai()
-
-	var/obj/item/organ/eyes/eyes = new /obj/item/organ/eyes/night_vision/zombie
-	eyes.Insert(zombie, drop_if_replaced = TRUE)
 	ambushable = zombie.ambushable
 	zombie.ambushable = FALSE
 
