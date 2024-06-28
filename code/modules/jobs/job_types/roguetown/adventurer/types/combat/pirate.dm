@@ -3,7 +3,6 @@
 	tutorial = "YARRR"
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = list(/datum/species/akula)
-	allowed_patrons =  list(/datum/patron/divine/abyssor, /datum/patron/inhumen/matthios)
 	outfit = /datum/outfit/job/roguetown/adventurer/pirate
 	category_tags = list(CTAG_ADVENTURER)
 	cmode_music = 'sound/music/combat_pirate.ogg'
@@ -46,10 +45,10 @@
 	H.mind.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/medicine, 1, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/labor/fishing, 2, TRUE)
-	H.change_stat("strength", 1)
+	H.change_stat("strength", 2)
 	H.change_stat("perception", 1) 
 	H.change_stat("constitution", 1)
-	H.change_stat("endurance", 1)
+	H.change_stat("endurance", 2)
 	H.change_stat("speed", 1)
 	H.change_stat("fortune", 1)
 

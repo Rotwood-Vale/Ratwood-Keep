@@ -3,7 +3,6 @@
 	tutorial = "YARRR"
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = list(/datum/species/akula)
-	allowed_patrons =  list(/datum/patron/divine/abyssor, /datum/patron/inhumen/matthios)
 	outfit = /datum/outfit/job/roguetown/adventurer/smuggler
 	category_tags = list(CTAG_PILGRIM)
 	cmode_music = 'sound/music/combat_pirate.ogg'
@@ -21,7 +20,6 @@
 	gloves = /obj/item/clothing/gloves/roguetown/fingerless
 	belt = /obj/item/storage/belt/rogue/leather
 	armor = /obj/item/clothing/suit/roguetown/armor/leather
-	cloak = /obj/item/clothing/cloak/raincloak/mortus
 	backl = /obj/item/storage/backpack/rogue/backpack
 	backr = /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow
 	beltr = /obj/item/rogueweapon/huntingknife/idagger/steel
@@ -36,7 +34,7 @@
 	H.mind.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE) 
-	H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 3, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 2, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/swimming, 3, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/climbing, 2, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
