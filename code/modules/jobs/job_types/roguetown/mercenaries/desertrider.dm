@@ -12,7 +12,7 @@
 	total_positions = 5
 	spawn_positions = 5
 	give_bank_account = 3
-	min_pq = 2 //good fragger role
+	min_pq = 0 //good fragger role
 	max_pq = null
 	cmode_music = 'sound/music/combat_desertrider.ogg' //GREATEST COMBAT TRACK IN THE GAME SO FAR BESIDES MAYBE MANIAC2.OGG
 

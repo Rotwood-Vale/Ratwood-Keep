@@ -13,7 +13,7 @@
 	outfit = /datum/outfit/job/roguetown/armorsmith
 	display_order = JDO_ARMORER
 	give_bank_account = 11
-	min_pq = 1
+	min_pq = 0
 	max_pq = null
 
 /datum/outfit/job/roguetown/armorsmith/pre_equip(mob/living/carbon/human/H)
@@ -75,7 +75,7 @@
 	outfit = /datum/outfit/job/roguetown/weaponsmith
 	display_order = JDO_WEAPONSMITH
 	give_bank_account = 11
-	min_pq = 1
+	min_pq = 0
 	max_pq = null
 
 /datum/outfit/job/roguetown/weaponsmith/pre_equip(mob/living/carbon/human/H)

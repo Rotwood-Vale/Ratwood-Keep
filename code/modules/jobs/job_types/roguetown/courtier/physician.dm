@@ -18,7 +18,7 @@
 	whitelist_req = TRUE
 
 	give_bank_account = 25
-	min_pq = 2
+	min_pq = 0
 	max_pq = null
 
 	cmode_music = 'sound/music/combat_physician.ogg'
