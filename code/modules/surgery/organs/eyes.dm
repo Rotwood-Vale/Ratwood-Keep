@@ -150,8 +150,6 @@
 /obj/item/organ/eyes/night_vision/zombie
 	name = "undead eyes"
 	desc = ""
-	organ_flags = ORGAN_FAILING
-	damage = 25
 
 /obj/item/organ/eyes/night_vision/werewolf
 	name = "moonlight eyes"
