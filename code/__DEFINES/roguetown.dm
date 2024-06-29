@@ -21,25 +21,6 @@
 	/datum/species/goblinp,\
 )
 
-#define ALL_RACES_NONGOBLIN \
-	/datum/species/human/northern,\
-	/datum/species/human/halfelf,\
-	/datum/species/elf/dark,\
-	/datum/species/elf/wood,\
-	/datum/species/dwarf/mountain,\
-	/datum/species/tieberian,\
-	/datum/species/aasimar,\
-	/datum/species/lizardfolk,\
-	/datum/species/tabaxi,\
-	/datum/species/vulpkanin,\
-	/datum/species/akula,\
-	/datum/species/moth,\
-	/datum/species/dracon,\
-	/datum/species/anthromorph,\
-	/datum/species/demihuman,\
-	/datum/species/halforc,\
-	/datum/species/kobold,\
-
 #define RACES_RESPECTED \
 	/datum/species/human/northern,\
 	/datum/species/elf/wood,\
