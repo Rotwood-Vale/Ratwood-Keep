@@ -4,8 +4,8 @@
 	flag = GOBLINKING
 	department_flag = GOBLIN
 	faction = "Station"
-	total_positions = 1
-	spawn_positions = 1
+	total_positions = 0
+	spawn_positions = 0
 	allowed_sexes = list(MALE)
 	allowed_races = list()
 	allowed_patrons = list(/datum/patron/inhumen/graggar)
@@ -13,7 +13,7 @@
 	whitelist_req = FALSE
 	outfit = /datum/outfit/job/roguetown/goblinking
 	display_order = JDO_GOBLINKING
-	min_pq = 1 // change to 1
+	min_pq = 2 // change to 2
 	max_pq = null
 
 /datum/outfit/job/roguetown/goblinking/pre_equip(mob/living/carbon/human/H)
