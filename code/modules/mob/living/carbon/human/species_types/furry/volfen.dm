@@ -1,14 +1,14 @@
-/mob/living/carbon/human/species/volfen
-	race = /datum/species/volfen
+/mob/living/carbon/human/species/lupian
+	race = /datum/species/lupian
 
-/datum/species/volfen
-	name = "Volfen"
-	id = "volfen"
-	desc = "<b>Volfen</b><br>\
-	Volfen are a volf-life people hailing from the Northern Regions of the world. \
+/datum/species/lupian
+	name = "Lupian"
+	id = "lupian"
+	desc = "<b>Lupian</b><br>\
+	Lupians are a volf-life people hailing from the Northern Regions of the world. \
 	They are resilient, sharp witted and fight ready creatures capable of surviving and thriving thanks to their \
 	rugged pelts, sharp teeth and deep-rooted spirit of community. \
-	Volfen prefer a carnivorous diet and have not adapted to agriculture like the rest of the world. \
+	Lupian prefer a carnivorous diet and have not adapted to agriculture like the rest of the world. \
 	Thanks to their pack minded nature they are slow to trust other races but form deep connections with those they do. \
 	They are very dutiful individuals and make fantastic and fearsome warriors to those who earn their loyalty."
 	default_color = "444"
@@ -50,13 +50,13 @@
 		ORGAN_SLOT_HEART = /obj/item/organ/heart,
 		ORGAN_SLOT_LUNGS = /obj/item/organ/lungs,
 		ORGAN_SLOT_EYES = /obj/item/organ/eyes,
-		ORGAN_SLOT_EARS = /obj/item/organ/ears/volfen,
+		ORGAN_SLOT_EARS = /obj/item/organ/ears/lupian,
 		ORGAN_SLOT_TONGUE = /obj/item/organ/tongue,
 		ORGAN_SLOT_LIVER = /obj/item/organ/liver,
 		ORGAN_SLOT_STOMACH = /obj/item/organ/stomach,
 		ORGAN_SLOT_APPENDIX = /obj/item/organ/appendix,
-		ORGAN_SLOT_TAIL = /obj/item/organ/tail/volfen,
-		ORGAN_SLOT_SNOUT = /obj/item/organ/snout/volfen,
+		ORGAN_SLOT_TAIL = /obj/item/organ/tail/lupian,
+		ORGAN_SLOT_SNOUT = /obj/item/organ/snout/lupian,
 		ORGAN_SLOT_TESTICLES = /obj/item/organ/testicles,
 		ORGAN_SLOT_PENIS = /obj/item/organ/penis,
 		ORGAN_SLOT_BREASTS = /obj/item/organ/breasts,
@@ -72,9 +72,9 @@
 		/datum/customizer/bodypart_feature/hair/facial/humanoid,
 		/datum/customizer/bodypart_feature/accessory,
 		/datum/customizer/bodypart_feature/face_detail,
-		/datum/customizer/organ/tail/volfen,
-		/datum/customizer/organ/snout/volfen,
-		/datum/customizer/organ/ears/volfen,
+		/datum/customizer/organ/tail/lupian,
+		/datum/customizer/organ/snout/lupian,
+		/datum/customizer/organ/ears/lupian,
 		/datum/customizer/organ/neck_feature/anthro,
 		/datum/customizer/organ/testicles/external,
 		/datum/customizer/organ/penis/knotted,
@@ -101,21 +101,21 @@
 		/datum/body_marking/tonage,
 	)
 	
-/datum/species/volfen/check_roundstart_eligible()
+/datum/species/lupian/check_roundstart_eligible()
 	return TRUE
 
-/datum/species/volfen/qualifies_for_rank(rank, list/features)
+/datum/species/lupian/qualifies_for_rank(rank, list/features)
 	return TRUE
 
-/datum/species/volfen/on_species_gain(mob/living/carbon/C, datum/species/old_species)
+/datum/species/lupian/on_species_gain(mob/living/carbon/C, datum/species/old_species)
 	. = ..()
 	RegisterSignal(C, COMSIG_MOB_SAY, PROC_REF(handle_speech))
 
-/datum/species/volfen/on_species_loss(mob/living/carbon/C)
+/datum/species/lupian/on_species_loss(mob/living/carbon/C)
 	. = ..()
 	UnregisterSignal(C, COMSIG_MOB_SAY)
 
-/datum/species/volfen/get_random_features()
+/datum/species/lupian/get_random_features()
 	var/list/returned = MANDATORY_FEATURE_LIST
 	var/main_color
 	var/second_color

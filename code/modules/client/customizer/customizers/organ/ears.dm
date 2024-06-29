@@ -16,12 +16,12 @@
 	organ_type = /obj/item/organ/ears/vulpkanin
 	sprite_accessories = list(/datum/sprite_accessory/ears/fox)
 
-/datum/customizer/organ/ears/volfen
-	customizer_choices = list(/datum/customizer_choice/organ/ears/volfen)
+/datum/customizer/organ/ears/lupian
+	customizer_choices = list(/datum/customizer_choice/organ/ears/lupian)
 
-/datum/customizer_choice/organ/ears/volfen
-	name = "Volfen Ears"
-	organ_type = /obj/item/organ/ears/volfen
+/datum/customizer_choice/organ/ears/lupian
+	name = "Lupian Ears"
+	organ_type = /obj/item/organ/ears/lupian
 	sprite_accessories = list(
 		/datum/sprite_accessory/ears/bigwolf,
 		/datum/sprite_accessory/ears/bigwolf_inner,

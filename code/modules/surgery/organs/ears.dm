@@ -149,8 +149,8 @@
 /obj/item/organ/ears/anthro
 	name = "wild-kin ears"
 
-/obj/item/organ/ears/volfen
-	name = "volfen ears"
+/obj/item/organ/ears/lupian
+	name = "lupian ears"
 
 /obj/item/organ/ears/vulpkanin
 	name = "vulpkian ears"

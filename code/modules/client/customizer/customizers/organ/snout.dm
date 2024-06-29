@@ -47,12 +47,12 @@
 		/datum/sprite_accessory/snout/front/roundlight,
 		)
 
-/datum/customizer/organ/snout/volfen
-	customizer_choices = list(/datum/customizer_choice/organ/snout/volfen)
+/datum/customizer/organ/snout/lupian
+	customizer_choices = list(/datum/customizer_choice/organ/snout/lupian)
 
-/datum/customizer_choice/organ/snout/volfen
-	name = "Volfen Snout"
-	organ_type = /obj/item/organ/snout/volfen
+/datum/customizer_choice/organ/snout/lupian
+	name = "Lupian Snout"
+	organ_type = /obj/item/organ/snout/lupian
 	sprite_accessories = list(
 		/datum/sprite_accessory/snout/husky,
 		/datum/sprite_accessory/snout/lcanid,
