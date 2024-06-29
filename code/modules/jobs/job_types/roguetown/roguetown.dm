@@ -103,6 +103,12 @@
 					H.mind.adjust_skillrank(/datum/skill/craft/masonry, 1, TRUE)
 					H.mind.adjust_skillrank(/datum/skill/craft/engineering, 2, TRUE)
 					H.mind.adjust_skillrank(/datum/skill/labor/mining, 1, TRUE)
+				if(H.dna.species.name in list("Axian")) //Sharkies!
+					H.mind.adjust_skillrank(/datum/skill/labor/fishing, 1, TRUE)
+					H.mind.adjust_skillrank(/datum/skill/misc/swimming, 2, TRUE)
+				if(H.dna.species.name in list("Sissean")) //Bog Gator Xenotype
+					H.mind.adjust_skillrank(/datum/skill/labor/fishing, 1, TRUE)
+					H.mind.adjust_skillrank(/datum/skill/misc/swimming, 2, TRUE)
 	H.underwear_color = null
 	H.update_body()
 
