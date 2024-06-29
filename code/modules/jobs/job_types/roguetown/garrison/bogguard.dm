@@ -7,7 +7,11 @@
 	spawn_positions = 10
 	selection_color = JCOLOR_SOLDIER
 	allowed_sexes = list(MALE, FEMALE)
+<<<<<<< Updated upstream
 	allowed_races = list(RACES_SHUNNED_UP)
+=======
+	allowed_races = RACES_SHUNNED_UP
+>>>>>>> Stashed changes
 	allowed_ages = list(AGE_ADULT, AGE_MIDDLEAGED, AGE_OLD)
 	tutorial = "You've handed your resume, which mostly consisted of showing up, and in exchange you have a spot among the Bog Guards. You have a roof over your head, coin in your pocket, and a thankless job protecting the outskirts of town against bandits and volfs."
 	display_order = JDO_TOWNGUARD
