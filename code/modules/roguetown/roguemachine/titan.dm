@@ -69,6 +69,11 @@ GLOBAL_LIST_INIT(laws_of_the_land, initialize_laws_of_the_land())
 			mode = 0
 			return
 	if(findtext(message2recognize, "summon crown")) //This must never fail, thus place it before all other modestuffs.
+		if(!SSroguemachine.crown)
+			new /obj/item/clothing/head/roguetown/crown/serpcrown(src.loc)
+			say("The crown is summoned!")
+			playsound(src, 'sound/misc/machinetalk.ogg', 100, FALSE, -1)
+			playsound(src, 'sound/misc/hiss.ogg', 100, FALSE, -1)
 		if(SSroguemachine.crown)
 			var/obj/item/clothing/head/roguetown/crown/serpcrown/I = SSroguemachine.crown
 			if(!I)
@@ -76,6 +81,10 @@ GLOBAL_LIST_INIT(laws_of_the_land, initialize_laws_of_the_land())
 			if(I && !ismob(I.loc))//You MUST MUST MUST keep the Crown on a person to prevent it from being summoned (magical interference)
 				I.anti_stall()
 				I = new /obj/item/clothing/head/roguetown/crown/serpcrown(src.loc)
+				say("The crown is summoned!")
+				playsound(src, 'sound/misc/machinetalk.ogg', 100, FALSE, -1)
+				playsound(src, 'sound/misc/hiss.ogg', 100, FALSE, -1)
+				return 
 			if(ishuman(I.loc))
 				var/mob/living/carbon/human/HC = I.loc
 				if(HC.stat != DEAD)
@@ -87,6 +96,8 @@ GLOBAL_LIST_INIT(laws_of_the_land, initialize_laws_of_the_land())
 						say("[HC.real_name] wears the crown!")
 						playsound(src, 'sound/misc/machinetalk.ogg', 100, FALSE, -1)
 						return
+				else
+					HC.dropItemToGround(I, TRUE) //If you're dead, forcedrop it, then move it.
 			I.forceMove(src.loc)
 			say("The crown is summoned!")
 			playsound(src, 'sound/misc/machinetalk.ogg', 100, FALSE, -1)
