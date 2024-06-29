@@ -79,12 +79,12 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "E
 		if(reb_end_time == 0)
 			to_chat(world, span_boldannounce("The peasant rebels took control of the throne, hail the new community!"))
 			if(ttime >= INITIAL_ROUND_TIMER)
-				reb_end_time = world.time + REBEL_RULE_TIME
+				reb_end_time = ttime + REBEL_RULE_TIME
 				to_chat(world, span_boldwarning("The round will end in 15 minutes."))
 			else
 				reb_end_time = SSticker.round_start_time + INITIAL_ROUND_TIMER
 				to_chat(world, span_boldwarning("The round will end at the 2:30 hour mark."))
-		if(world.time >= reb_end_time)
+		if(ttime >= reb_end_time)
 			return TRUE
 
 	check_for_lord()
