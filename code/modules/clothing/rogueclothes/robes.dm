@@ -116,6 +116,18 @@
 	color = pick("#4756d8", "#759259", "#bf6f39", "#c1b144")
 	. = ..()
 
+/obj/item/clothing/suit/roguetown/shirt/robe/mageblue
+	color = "#4756d8"
+
+/obj/item/clothing/suit/roguetown/shirt/robe/magegreen
+	color = "#759259"
+
+/obj/item/clothing/suit/roguetown/shirt/robe/mageorange
+	color = "#bf6f39"
+
+/obj/item/clothing/suit/roguetown/shirt/robe/mageyellow
+	color = "#c1b144"
+
 /obj/item/clothing/suit/roguetown/shirt/robe/merchant
 	name = "guilder jacket"
 	icon_state = "merrobe"
@@ -153,6 +165,6 @@
 	sleeved = null
 	boobed = TRUE
 	color = null
-	flags_inv = HIDEBOOB
+	flags_inv = HIDEBOOB|HIDETAIL
 	r_sleeve_status = SLEEVE_NORMAL
 	l_sleeve_status = SLEEVE_NORMAL

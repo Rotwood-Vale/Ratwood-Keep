@@ -15,6 +15,8 @@
 
 	/// Whats displayed when consulting the bounties
 	var/banner
+	///Is this a bandit bounty?
+	var/bandit
 
 /obj/structure/roguemachine/bounty/attack_hand(mob/user)
 
@@ -68,13 +70,6 @@
 			reward_amount += b.amount
 			GLOB.head_bounties -= b
 
-	for(var/mob/living/banditcheck in GLOB.mob_list)
-		if(banditcheck.mind?.has_antag_datum(/datum/antagonist/bandit) && banditcheck.real_name == stored_head.real_name)
-			correct_head = TRUE
-			say("A bounty has been sated.")
-			reward_amount += 80
-			break
-
 	if(correct_head)
 		budget2change(reward_amount, user)
 	else // No valid bounty for this head?
@@ -90,7 +85,7 @@
 
 ///Composes a random bounty banner based on the given bounty info.
 ///@param new_bounty:  The bounty datum.
-/obj/structure/roguemachine/bounty/proc/compose_bounty(var/datum/bounty/new_bounty)
+/obj/structure/roguemachine/bounty/proc/compose_bounty(datum/bounty/new_bounty)
 	switch(rand(1, 3))
 		if(1)
 			new_bounty.banner += "A dire bounty hangs upon the head of [new_bounty.target], for '[new_bounty.reason]'.<BR>"
@@ -104,18 +99,18 @@
 	new_bounty.banner += "--------------<BR>"
 
 ///Shows all active bounties to the user.
-/obj/structure/roguemachine/bounty/proc/consult_bounties(var/mob/living/carbon/human/user)
+/obj/structure/roguemachine/bounty/proc/consult_bounties(mob/living/carbon/human/user)
 	var/bounty_found = FALSE
 	var/consult_menu
 	consult_menu += "<center>BOUNTIES<BR>"
 	consult_menu += "--------------<BR>"
-	for(var/mob/living/banditcheck in GLOB.mob_list)
-		if(banditcheck.mind?.has_antag_datum(/datum/antagonist/bandit))
-			consult_menu += "The head of each Bandit is wanted by The Crown for 80 mammons.<BR>"
-			consult_menu += "--------------<BR>"
-			bounty_found = TRUE
-			break
+	if(SSrole_class_handler.bandits_in_round)
+		consult_menu += "The head of each Bandit is wanted by The Crown for 80 mammons.<BR>"
+		consult_menu += "--------------<BR>"
+		bounty_found = TRUE
 	for(var/datum/bounty/saved_bounty in GLOB.head_bounties)
+		if(saved_bounty.bandit)
+			continue
 		consult_menu += saved_bounty.banner
 		bounty_found = TRUE
 
@@ -128,7 +123,7 @@
 
 ///Sets a bounty on a target player through user input.
 ///@param user: The player setting the bounty.
-/obj/structure/roguemachine/bounty/proc/set_bounty(var/mob/living/carbon/human/user)
+/obj/structure/roguemachine/bounty/proc/set_bounty(mob/living/carbon/human/user)
 	var/list/eligible_players = list()
 
 	if(user.mind.known_people.len)

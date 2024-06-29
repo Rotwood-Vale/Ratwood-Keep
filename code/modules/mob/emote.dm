@@ -16,10 +16,6 @@
 
 	if(!length(key_emotes) || custom_param)
 		if(intentional)
-			if(client)
-				if(get_playerquality(client.ckey) <= -10)
-					to_chat(src, span_warning("Unrecognized emote."))
-					return
 			var/list/custom_emote = GLOB.emote_list["me"]
 			for(var/datum/emote/P in custom_emote)
 				P.run_emote(src, oldact, m_type, intentional, targetted)

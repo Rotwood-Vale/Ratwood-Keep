@@ -552,35 +552,6 @@
 	var/golem_name = "[uppertext(clown_name)]"
 	return golem_name
 
-/datum/species/golem/bananium/spec_attack_hand(mob/living/carbon/human/M, mob/living/carbon/human/H, datum/martial_art/attacker_style)
-	..()
-	if(world.time > last_banana + banana_cooldown && M != H &&  M.used_intent.type != INTENT_HELP)
-		new/obj/item/grown/bananapeel/specialpeel(get_turf(H))
-		last_banana = world.time
-
-/datum/species/golem/bananium/spec_attacked_by(obj/item/I, mob/living/user, obj/item/bodypart/affecting, intent, mob/living/carbon/human/H)
-	..()
-	if(world.time > last_banana + banana_cooldown && user != H)
-		new/obj/item/grown/bananapeel/specialpeel(get_turf(H))
-		last_banana = world.time
-
-/datum/species/golem/bananium/on_hit(obj/projectile/P, mob/living/carbon/human/H)
-	..()
-	if(world.time > last_banana + banana_cooldown)
-		new/obj/item/grown/bananapeel/specialpeel(get_turf(H))
-		last_banana = world.time
-
-/datum/species/golem/bananium/spec_hitby(atom/movable/AM, mob/living/carbon/human/H)
-	..()
-	var/obj/item/I
-	if(istype(AM, /obj/item))
-		I = AM
-		if(I.thrownby == H) //No throwing stuff at myself to make bananas
-			return 0
-		else
-			new/obj/item/grown/bananapeel/specialpeel(get_turf(H))
-			last_banana = world.time
-
 /datum/species/golem/bananium/spec_life(mob/living/carbon/human/H)
 	if(!active)
 		if(world.time > last_honk + honkooldown)
@@ -1043,7 +1014,6 @@
 		H.dropItemToGround(W)
 	for(var/i=1, i <= rand(3,5), i++)
 		new /obj/item/stack/sheet/mineral/snow(get_turf(H))
-	new /obj/item/reagent_containers/food/snacks/grown/carrot(get_turf(H))
 	qdel(H)
 
 /datum/species/golem/snow/on_species_gain(mob/living/carbon/C, datum/species/old_species)
