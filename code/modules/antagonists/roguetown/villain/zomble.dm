@@ -225,8 +225,8 @@
 	if(world.time > next_idle_sound)
 		zombie.emote("idle")
 		next_idle_sound = world.time + rand(5 SECONDS, 10 SECONDS)
-	//fuck friendly zombies - tries to bite humans in range
-	if(world.time - last_bite < 10 SECONDS)
+	//fuck friendly zombies - tries to bite humans in range - disabled because zombies are no longer
+	/* if(world.time - last_bite < 10 SECONDS)
 		return
 	var/obj/item/grabbing/bite/bite = zombie.get_item_by_slot(SLOT_MOUTH)
 	if(!bite || !get_location_accessible(src, BODY_ZONE_PRECISE_MOUTH, grabs = TRUE))
@@ -235,7 +235,7 @@
 				continue
 			human.onbite(zombie)
 	else if(istype(bite))
-		bite.bitelimb(zombie)
+		bite.bitelimb(zombie)*/
 
 //Infected wake param is just a transition from living to zombie, via zombie_infect()
 //Previously you just died without warning in 3 minutes, now you just become an antag
