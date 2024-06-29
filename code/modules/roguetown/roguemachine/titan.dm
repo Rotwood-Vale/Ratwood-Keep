@@ -246,6 +246,8 @@ GLOBAL_LIST_INIT(laws_of_the_land, initialize_laws_of_the_land())
 /obj/structure/roguemachine/titan/proc/make_decree(mob/living/user, raw_message)
 	if(!SScommunications.can_announce(user))
 		return
+
+	GLOB.lord_decrees += raw_message
 	try_make_rebel_decree(user)
 
 	SScommunications.make_announcement(user, TRUE, raw_message)
