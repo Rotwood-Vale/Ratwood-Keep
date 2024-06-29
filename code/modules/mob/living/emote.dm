@@ -147,6 +147,7 @@
 	message = "burps."
 	message_muffled = "makes a muffled noise."
 	emote_type = EMOTE_AUDIBLE
+	show_runechat = FALSE
 
 /mob/living/carbon/human/verb/emote_burp()
 	set name = "Burp"
@@ -160,6 +161,7 @@
 	message = "chokes!"
 	emote_type = EMOTE_AUDIBLE
 	ignore_silent = TRUE
+	show_runechat = FALSE
 
 /mob/living/carbon/human/verb/emote_choke()
 	set name = "Choke"
@@ -185,6 +187,7 @@
 	key_third_person = "collapses"
 	message = "collapses."
 	emote_type = EMOTE_AUDIBLE
+	show_runechat = FALSE
 
 /datum/emote/living/collapse/run_emote(mob/user, params, type_override, intentional)
 	. = ..()
@@ -198,6 +201,7 @@
 	message = "whispers."
 	message_mime = "appears to whisper."
 	emote_type = EMOTE_AUDIBLE
+	show_runechat = FALSE
 
 /datum/emote/living/aggro
 	key = "aggro"
@@ -205,6 +209,7 @@
 	message = ""
 	nomsg = TRUE
 	emote_type = EMOTE_AUDIBLE
+	show_runechat = FALSE
 
 /datum/emote/living/cough
 	key = "cough"
@@ -212,6 +217,7 @@
 	message = "coughs."
 	message_muffled = "makes a muffled noise."
 	emote_type = EMOTE_AUDIBLE
+	show_runechat = FALSE
 
 /mob/living/carbon/human/verb/emote_cough()
 	set name = "Cough"
@@ -225,6 +231,7 @@
 	message = "clears their throat."
 	message_muffled = "makes a muffled noise."
 	emote_type = EMOTE_AUDIBLE
+	show_runechat = FALSE
 
 /mob/living/carbon/human/verb/emote_clearthroat()
 	set name = "Clear Throat"
@@ -341,6 +348,7 @@
 	message = "gags."
 	emote_type = EMOTE_AUDIBLE
 	ignore_silent = TRUE
+	show_runechat = FALSE
 
 /mob/living/carbon/human/verb/emote_gag()
 	set name = "Gag"
@@ -355,6 +363,7 @@
 	message_muffled = "makes a muffled noise."
 	emote_type = EMOTE_AUDIBLE
 	stat_allowed = UNCONSCIOUS
+	show_runechat = FALSE
 
 /mob/living/carbon/human/verb/emote_gasp()
 	set name = "Gasp"
@@ -367,6 +376,7 @@
 	key_third_person = "breathgasps"
 	message = "gasps for air!"
 	emote_type = EMOTE_AUDIBLE
+	show_runechat = FALSE
 
 /datum/emote/living/giggle
 	key = "giggle"
@@ -375,6 +385,7 @@
 	message_mime = "giggles silently!"
 	message_muffled = "makes a muffled giggle."
 	emote_type = EMOTE_AUDIBLE
+	show_runechat = FALSE
 
 /mob/living/carbon/human/verb/emote_giggle()
 	set name = "Giggle"
@@ -388,6 +399,7 @@
 	message = "chuckles."
 	message_muffled = "makes a muffled chuckle."
 	emote_type = EMOTE_AUDIBLE
+	show_runechat = FALSE
 
 /mob/living/carbon/human/verb/emote_chuckle()
 	set name = "Chuckle"
@@ -425,6 +437,7 @@
 	message = "groans."
 	message_muffled = "makes a muffled groan."
 	emote_type = EMOTE_AUDIBLE
+	show_runechat = FALSE
 
 /mob/living/carbon/human/verb/emote_groan()
 	set name = "Groan"
@@ -652,6 +665,7 @@
 	message_mime = "laughs silently!"
 	message_muffled = "makes a muffled laugh."
 	emote_type = EMOTE_AUDIBLE
+	show_runechat = FALSE
 
 /datum/emote/living/laugh/can_run_emote(mob/living/user, status_check = TRUE , intentional)
 	. = ..()
@@ -708,6 +722,7 @@
 	key_third_person = "pouts"
 	message = "pouts."
 	emote_type = EMOTE_AUDIBLE
+	show_runechat = FALSE
 
 /datum/emote/living/scream
 	key = "scream"
@@ -716,6 +731,7 @@
 	message_mime = "acts out a scream!"
 	message_muffled = "makes a muffled noise in attempt to scream!"
 	emote_type = EMOTE_AUDIBLE
+	show_runechat = FALSE
 
 /mob/living/carbon/human/verb/emote_scream()
 	set name = "Scream"
@@ -737,30 +753,35 @@
 	message = "screams in pain!"
 	emote_type = EMOTE_AUDIBLE
 	only_forced_audio = TRUE
+	show_runechat = FALSE
 
 /datum/emote/living/scream/agony
 	key = "agony"
 	message = "screams in agony!"
 	emote_type = EMOTE_AUDIBLE
 	only_forced_audio = TRUE
+	show_runechat = FALSE
 
 /datum/emote/living/scream/firescream
 	key = "firescream"
 	nomsg = TRUE
 	emote_type = EMOTE_AUDIBLE
 	only_forced_audio = TRUE
+	show_runechat = FALSE
 
 /datum/emote/living/aggro
 	key = "aggro"
 	emote_type = EMOTE_AUDIBLE
 	nomsg = TRUE
 	only_forced_audio = TRUE
+	show_runechat = FALSE
 
 /datum/emote/living/idle
 	key = "idle"
 	emote_type = EMOTE_AUDIBLE
 	nomsg = TRUE
 	only_forced_audio = TRUE
+	show_runechat = FALSE
 
 /datum/emote/living/death
 	key = "death"
@@ -769,12 +790,14 @@
 	only_forced_audio = TRUE
 	stat_allowed = UNCONSCIOUS
 	mob_type_ignore_stat_typecache = list(/mob/living)
+	show_runechat = FALSE
 
 /datum/emote/living/pain
 	key = "pain"
 	emote_type = EMOTE_AUDIBLE
 	nomsg = TRUE
 	only_forced_audio = TRUE
+	show_runechat = FALSE
 
 /datum/emote/living/drown
 	key = "drown"
@@ -782,53 +805,62 @@
 	nomsg = TRUE
 	only_forced_audio = TRUE
 	ignore_silent = TRUE
+	show_runechat = FALSE
 
 /datum/emote/living/paincrit
 	key = "paincrit"
 	emote_type = EMOTE_AUDIBLE
 	nomsg = TRUE
 	only_forced_audio = TRUE
+	show_runechat = FALSE
 
 /datum/emote/living/embed
 	key = "embed"
 	emote_type = EMOTE_AUDIBLE
 	nomsg = TRUE
 	only_forced_audio = TRUE
+	show_runechat = FALSE
 
 /datum/emote/living/painmoan
 	key = "painmoan"
 	emote_type = EMOTE_AUDIBLE
 	nomsg = TRUE
 	only_forced_audio = TRUE
+	show_runechat = FALSE
 
 /datum/emote/living/groin
 	key = "groin"
 	emote_type = EMOTE_AUDIBLE
 	nomsg = TRUE
 	only_forced_audio = TRUE
+	show_runechat = FALSE
 
 /datum/emote/living/fatigue
 	key = "fatigue"
 	emote_type = EMOTE_AUDIBLE
 	nomsg = TRUE
 	only_forced_audio = TRUE
+	show_runechat = FALSE
 
 /datum/emote/living/jump
 	key = "jump"
 	emote_type = EMOTE_AUDIBLE
 	nomsg = TRUE
 	only_forced_audio = TRUE
+	show_runechat = FALSE
 
 /datum/emote/living/haltyell
 	key = "haltyell"
 	message = "shouts a halt!"
 	emote_type = EMOTE_AUDIBLE
 	only_forced_audio = TRUE
+	show_runechat = FALSE
 
 /datum/emote/living/rage
 	key = "rage"
 	message = "screams in rage!"
 	emote_type = EMOTE_AUDIBLE
+	show_runechat = FALSE
 
 /mob/living/carbon/human/verb/emote_rage()
 	set name = "Rage"
@@ -841,6 +873,7 @@
 	message = "whistles for attention!"
 	message_muffled = "makes a muffled noise."
 	emote_type = EMOTE_AUDIBLE
+	show_runechat = FALSE
 
 /mob/living/carbon/human/verb/emote_attnwhistle()
 	set name = "Attnwhistle"
@@ -853,12 +886,14 @@
 	key_third_person = "chokes"
 	message = "chokes!"
 	emote_type = EMOTE_AUDIBLE
+	show_runechat = FALSE
 
 /datum/emote/living/scowl
 	key = "scowl"
 	key_third_person = "scowls"
 	message = "scowls."
 	emote_type = EMOTE_AUDIBLE
+	show_runechat = FALSE
 
 /datum/emote/living/shakehead
 	key = "shakehead"
@@ -892,6 +927,7 @@
 	message = "sighs."
 	message_muffled = "makes a muffled sigh."
 	emote_type = EMOTE_AUDIBLE
+	show_runechat = FALSE
 
 /mob/living/carbon/human/verb/emote_sigh()
 	set name = "Sigh"
@@ -905,6 +941,7 @@
 	message = "whistles."
 	message_muffled = "makes a muffled noise."
 	emote_type = EMOTE_AUDIBLE
+	show_runechat = FALSE
 
 /mob/living/carbon/human/verb/emote_whistle()
 	set name = "Whistle"
@@ -918,6 +955,7 @@
 	message = "hmms."
 	message_muffled = "makes a muffled hmm."
 	emote_type = EMOTE_AUDIBLE
+	show_runechat = FALSE
 
 /mob/living/carbon/human/verb/emote_hmm()
 	set name = "Hmm"
@@ -931,6 +969,7 @@
 	message_muffled = "makes a muffled noise."
 	emote_type = EMOTE_AUDIBLE
 	nomsg = TRUE
+	show_runechat = FALSE
 
 /mob/living/carbon/human/verb/emote_huh()
 	set name = "Huh"
@@ -944,6 +983,7 @@
 	message = "hums."
 	emote_type = EMOTE_AUDIBLE
 	message_muffled = "makes a muffled hum."
+	show_runechat = FALSE
 
 /mob/living/carbon/human/verb/emote_hum()
 	set name = "Hum"
@@ -968,6 +1008,7 @@
 	message = "sneezes."
 	message_muffled = "makes a muffled sneeze."
 	emote_type = EMOTE_AUDIBLE
+	show_runechat = FALSE
 
 /datum/emote/living/shh
 	key = "shh"
@@ -975,6 +1016,7 @@
 	message = "shooshes."
 	message_muffled = "makes a muffled shh."
 	emote_type = EMOTE_AUDIBLE
+	show_runechat = FALSE
 
 /mob/living/carbon/human/verb/emote_shh()
 	set name = "Shh"
@@ -992,6 +1034,7 @@
 	key_third_person = "sniffs"
 	message = "sniffs."
 	emote_type = EMOTE_AUDIBLE
+	show_runechat = FALSE
 
 /datum/emote/living/snore
 	key = "snore"
@@ -1001,6 +1044,7 @@
 	emote_type = EMOTE_AUDIBLE
 	stat_allowed = UNCONSCIOUS
 	snd_range = -4
+	show_runechat = FALSE
 
 /datum/emote/living/stare
 	key = "stare"
@@ -1068,6 +1112,7 @@
 	message = "yawns."
 	message_muffled = "makes a muffled yawn."
 	emote_type = EMOTE_AUDIBLE
+	show_runechat = FALSE
 
 /mob/living/carbon/human/verb/emote_yawn()
 	set name = "Yawn"

@@ -31,11 +31,13 @@
 	var/snd_range = -1
 	var/mute_time = 30//time after where someone can't do another emote
 	// Whether this should show on runechat
-	var/show_runechat = FALSE
-	// Shortened version of the emote message, for purposes of displaying in runechat and cluttering less
-	var/runechat_short_msg = null
+	var/show_runechat = TRUE
+	// Explicitly defined runechat message, if it's not defined and `show_runechat` is TRUE then it will use `message` instaed
+	var/runechat_msg = null
 
 /datum/emote/New()
+	if(!runechat_msg)
+		runechat_msg = strip_punctuation(message)
 	if (ispath(mob_type_allowed_typecache))
 		switch (mob_type_allowed_typecache)
 			if (/mob)
@@ -104,13 +106,13 @@
 			var/T = get_turf(user)
 			if(M.stat == DEAD && M.client && (M.client.prefs?.chat_toggles & CHAT_GHOSTSIGHT) && !(M in viewers(T, null)))
 				M.show_message(msg)
-		var/runechat_msg = null
+		var/runechat_msg_to_use = null
 		if(show_runechat)
-			runechat_msg = runechat_short_msg ? runechat_short_msg : raw_msg
+			runechat_msg_to_use = runechat_msg ? runechat_msg : raw_msg
 		if(emote_type == EMOTE_AUDIBLE)
-			user.audible_message(msg, runechat_message = runechat_msg)
+			user.audible_message(msg, runechat_message = runechat_msg_to_use)
 		else
-			user.visible_message(msg, runechat_message = runechat_msg)
+			user.visible_message(msg, runechat_message = runechat_msg_to_use)
 
 /mob/living/proc/get_emote_pitch()
 	return clamp(voice_pitch, 0.7, 1.5)
