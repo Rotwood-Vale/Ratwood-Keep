@@ -37,3 +37,4 @@
 
 /obj/item/organ/snout/ratpeople
 	name = "Rhodian snout"
+	accessory_type = /datum/sprite_accessory/snout/rodent
