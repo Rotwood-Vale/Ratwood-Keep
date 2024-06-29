@@ -73,6 +73,9 @@
 			if(H.anti_magic_check())
 				return
 		
+			if(!(H in SStreasury.bank_accounts))
+				return
+
 			if(istype(user.used_intent, /datum/intent/lord_electrocute))
 				HU.visible_message(span_warning("[HU] electrocutes [H] with the [src]."))
 				H.electrocute_act(5, src)
