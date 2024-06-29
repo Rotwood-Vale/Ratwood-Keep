@@ -136,7 +136,7 @@ GLOBAL_LIST_INIT(freqtospan, list(
 	return "[say_mod(input, message_mode)], \"[spanned]\""
 
 /atom/movable/proc/quoteless_say_quote(input, list/spans = list(speech_span), message_mode)
-	var/pos = findtext(input, "*")
+	var/pos = findtext_char(input, "*")
 	return pos? copytext_char(input, pos + 1) : input
 
 /atom/movable/proc/check_language_hear(language)

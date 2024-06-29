@@ -105,7 +105,7 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 		return
 	
 	var/static/regex/ooc_regex = regex(@"^(?=.*[\(\)\[\]\<\>\{\}]).*$") //Yes, i know.
-	if(findtext(message, ooc_regex))
+	if(findtext_char(message, ooc_regex))
 		emote("me", 1, "mumbles incoherently.")
 		to_chat(src, span_warning("That was stupid of me. I should meditate on my actions."))
 		add_stress(/datum/stressevent/ooc_ic)
@@ -120,7 +120,7 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 		message = copytext(message, 2)
 	else if(message_mode || saymode)
 		message = copytext(message, 3)
-	if(findtext(message, " ", 1, 2))
+	if(findtext_char(message, " ", 1, 2))
 		message = copytext(message, 2)
 
 	if(message_mode == MODE_ADMIN)
@@ -162,7 +162,7 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 		message = copytext(message, 3)
 
 		// Trim the space if they said ",0 I LOVE LANGUAGES"
-		if(findtext(message, " ", 1, 2))
+		if(findtext_char(message, " ", 1, 2))
 			message = copytext(message, 2)
 
 	if(!language)
