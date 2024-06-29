@@ -45,7 +45,7 @@ GLOBAL_LIST_INIT(laws_of_the_land, initialize_laws_of_the_land())
 //	add_overlay(eye_lights)
 	set_light(5)
 
-/obj/structure/roguemachine/titan/Hear(message, atom/movable/speaker, message_language, raw_message, radio_freq, list/spans, message_mode)
+/obj/structure/roguemachine/titan/Hear(message, atom/movable/speaker, message_language, raw_message, radio_freq, list/spans, message_mode, original_message)
 //	. = ..()
 	if(speaker == src)
 		return
@@ -64,7 +64,7 @@ GLOBAL_LIST_INIT(laws_of_the_land, initialize_laws_of_the_land())
 	var/notlord
 	if(SSticker.rulermob != H)
 		notlord = TRUE
-	var/message2recognize = sanitize_hear_message(raw_message)
+	var/message2recognize = sanitize_hear_message(original_message)
 
 	if(mode)
 		if(findtext(message2recognize, "nevermind"))
@@ -190,7 +190,7 @@ GLOBAL_LIST_INIT(laws_of_the_land, initialize_laws_of_the_land())
 			make_decree(H, raw_message)
 			mode = 0
 		if(3)
-			declare_outlaw(H, raw_message)
+			declare_outlaw(H, original_message)
 			mode = 0
 		if(4)
 			if(!SScommunications.can_announce(speaker))

@@ -122,7 +122,7 @@
 	interact(user)
 	return ..()
 
-/obj/item/toy/eightball/haunted/Hear(message, atom/movable/speaker, message_langs, raw_message, radio_freq, spans, message_mode)
+/obj/item/toy/eightball/haunted/Hear(message, atom/movable/speaker, message_langs, raw_message, radio_freq, spans, message_mode, original_message)
 	. = ..()
 	last_message = raw_message
 

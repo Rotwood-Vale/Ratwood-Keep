@@ -240,7 +240,7 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 		spans |= SPAN_ITALICS
 
 
-	send_speech(message, message_range, src, bubble_type, spans, language, message_mode)
+	send_speech(message, message_range, src, bubble_type, spans, language, message_mode, original_message)
 
 	if(succumbed)
 		succumb(1)
@@ -253,7 +253,7 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 		return
 	return message_language.spans
 
-/mob/living/Hear(message, atom/movable/speaker, datum/language/message_language, raw_message, radio_freq, list/spans, message_mode)
+/mob/living/Hear(message, atom/movable/speaker, datum/language/message_language, raw_message, radio_freq, list/spans, message_mode, original_message)
 	. = ..()
 	if(!client)
 		return
@@ -276,7 +276,7 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 	show_message(message, MSG_AUDIBLE, deaf_message, deaf_type)
 	return message
 
-/mob/living/send_speech(message, message_range = 6, obj/source = src, bubble_type = bubble_icon, list/spans, datum/language/message_language=null, message_mode)
+/mob/living/send_speech(message, message_range = 6, obj/source = src, bubble_type = bubble_icon, list/spans, datum/language/message_language=null, message_mode, original_message)
 	var/static/list/eavesdropping_modes = list(MODE_WHISPER = TRUE, MODE_WHISPER_CRIT = TRUE)
 	var/eavesdrop_range = 0
 	var/Zs_too = FALSE
@@ -327,9 +327,9 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 			if(AM.z != src.z)
 				continue
 		if(eavesdrop_range && get_dist(source, AM) > message_range && !(the_dead[AM]))
-			AM.Hear(eavesrendered, src, message_language, eavesdropping, , spans, message_mode)
+			AM.Hear(eavesrendered, src, message_language, eavesdropping, , spans, message_mode, original_message)
 		else
-			AM.Hear(rendered, src, message_language, message, , spans, message_mode)
+			AM.Hear(rendered, src, message_language, message, , spans, message_mode, original_message)
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_LIVING_SAY_SPECIAL, src, message)
 
 	//speech bubble
