@@ -9,7 +9,7 @@
 	tax evasion, and piracy. They have a strong distaste for the nobility and taxation, \
 	making them a target of discrimination in Ratwood. They are oftentimes scapegoats for crime. \
 	Due to their penchant for trade and travel, they can be found all over the world, oftentimes \
-	seeing places places many could not even dream of. They look down at those they considered the 'settled' \
+	seeing places many could not even dream of. They look down at those they considered the 'settled' \
 	and often uproot themselves quite often in their lifetimes. However, due to the isolation in Ratwood, many Axians \
 	find their sanity being clawed away as they find themselves stuck in one place."
 	species_traits = list(EYECOLOR,LIPS,STUBBLE,MUTCOLORS)
