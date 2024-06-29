@@ -172,10 +172,6 @@
 	chargedloop = /datum/looping_sound/invokegen
 	associated_skill = /datum/skill/magic/arcane
 
-/obj/effect/proc_holder/spell/invoked/projectile/fireball/fire_projectile(list/targets, mob/living/user)
-	projectile_var_overrides = list("range" = 8)
-	return ..()
-
 /obj/projectile/magic/aoe/fireball/rogue
 	name = "fireball"
 	exp_heavy = 0
@@ -187,6 +183,7 @@
 	nodamage = FALSE
 	flag = "magic"
 	hitsound = 'sound/blank.ogg'
+	aoe_range = 0
 
 
 /obj/projectile/magic/aoe/fireball/rogue/on_hit(target)

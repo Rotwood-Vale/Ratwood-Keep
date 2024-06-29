@@ -107,6 +107,18 @@
 /obj/item/chair/rogue/crafted
 	sellprice = 6
 
+/datum/crafting_recipe/roguetown/structure/fancychair
+	name = "fancy wooden chair"
+	result = /obj/item/chair/rogue/fancy/crafted
+	reqs = list(/obj/item/grown/log/tree/small = 1,
+				/obj/item/natural/silk = 1)
+	verbage_simple = "construct"
+	verbage = "constructs"
+	skillcraft = /datum/skill/craft/carpentry
+
+/obj/item/chair/rogue/fancy/crafted
+	sellprice = 12
+
 /datum/crafting_recipe/roguetown/structure/stool
 	name = "wooden stool"
 	result = /obj/item/chair/stool/bar/rogue/crafted

@@ -14,6 +14,7 @@
 	/datum/species/moth,\
 	/datum/species/dracon,\
 	/datum/species/anthromorph,\
+	/datum/species/anthromorphsmall,\
 	/datum/species/demihuman,\
 	/datum/species/halforc,\
 	/datum/species/kobold,\
@@ -42,7 +43,9 @@
 #define RACES_SHUNNED \
 	/datum/species/halforc,\
 	/datum/species/kobold,\
-	/datum/species/ratpeople
+	/datum/species/ratpeople,\
+	/datum/species/anthromorphsmall,\
+	/datum/species/kobold
 
 #define RACES_DESPISED \
 	/datum/species/goblinp,\
@@ -68,6 +71,7 @@
 	/datum/species/moth,\
 	/datum/species/dracon,\
 	/datum/species/anthromorph,\
+	/datum/species/anthromorphsmall,\
 	/datum/species/demihuman,\
 	/datum/species/kobold,\
 	/datum/species/goblinp,\
@@ -89,6 +93,7 @@
 	/datum/species/moth,\
 	/datum/species/dracon,\
 	/datum/species/anthromorph,\
+	/datum/species/anthromorphsmall,\
 	/datum/species/demihuman,\
 	/datum/species/halforc,\
 	/datum/species/kobold,\

@@ -44,8 +44,10 @@
 	sleevetype = null
 	sleeved = null
 	icon = 'icons/roguetown/clothing/head.dmi'
-	body_parts_covered = HEAD|HAIR|EARS
-	slot_flags = ITEM_SLOT_HEAD
+	mob_overlay_icon = 'icons/roguetown/clothing/onmob/head.dmi' //Overrides slot icon behavior
+	alternate_worn_layer  = 8.9 //On top of helmet
+	body_parts_covered = HEAD|HAIR|EARS|NECK
+	slot_flags = ITEM_SLOT_HEAD|ITEM_SLOT_MASK
 	armor = list("blunt" = 15, "slash" = 20, "stab" = 15, "bullet" = 1, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
 	dynamic_hair_suffix = ""
 	edelay_type = 1
@@ -157,6 +159,7 @@
 			if(ishuman(user))
 				var/mob/living/carbon/H = user
 				H.update_inv_head()
+				H.update_inv_wear_mask() //Snowflake case for Desert Merc hood
 			block2add = FOV_BEHIND
 		else if(adjustable == CADJUSTED)
 			ResetAdjust(user)
@@ -165,6 +168,7 @@
 				if(ishuman(user))
 					var/mob/living/carbon/H = user
 					H.update_inv_head()
+					H.update_inv_wear_mask() //Snowflake case for Desert Merc hood
 		user.update_fov_angles()
 
 
@@ -674,16 +678,28 @@
 	icon_state = "wizardhat"
 	mob_overlay_icon = 'icons/roguetown/clothing/onmob/64x64/head.dmi'
 	dynamic_hair_suffix = "+generic"
-	sellprice = 100
 	worn_x_dimension = 64
 	worn_y_dimension = 64
 	sewrepair = TRUE
+
+/obj/item/clothing/head/roguetown/wizhat/red
+	icon_state = "wizardhatred"
+
+/obj/item/clothing/head/roguetown/wizhat/yellow
+	icon_state = "wizardhatyellow"
+
+/obj/item/clothing/head/roguetown/wizhat/green
+	icon_state = "wizardhatgreen"
+
+/obj/item/clothing/head/roguetown/wizhat/black
+	icon_state = "wizardhatblack"
 
 /obj/item/clothing/head/roguetown/wizhat/gen
 	icon_state = "wizardhatgen"
 
 /obj/item/clothing/head/roguetown/wizhat/gen/wise
 	name = "wise hat"
+	sellprice = 100
 	desc = "Only the wisest of nimrods wear this."
 
 /obj/item/clothing/head/roguetown/wizhat/gen/wise/equipped(mob/user, slot)

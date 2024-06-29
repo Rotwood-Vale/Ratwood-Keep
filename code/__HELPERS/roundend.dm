@@ -201,7 +201,6 @@
 
 	to_chat(world, "<BR><BR><BR><span class='reallybig'>So ends this tale of Ratwood Keep.</span>")
 	get_end_reason()
-	SSvote.initiate_vote("map", "Ratwood players")
 
 	var/list/key_list = list()
 	for(var/client/C in GLOB.clients)
@@ -297,6 +296,7 @@
 	SSblackbox.Seal()
 
 	sleep(10 SECONDS)
+	SSvote.initiate_vote("map", "Ratwood players")
 	ready_for_reboot = TRUE
 	standard_reboot()
 
