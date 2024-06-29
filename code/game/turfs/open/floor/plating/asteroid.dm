@@ -172,8 +172,6 @@ GLOBAL_LIST_INIT(megafauna_spawn_list, list(/mob/living/simple_animal/hostile/me
 		mob_spawn_list = list(/mob/living/simple_animal/hostile/asteroid/goldgrub = 1, /mob/living/simple_animal/hostile/asteroid/goliath = 5, /mob/living/simple_animal/hostile/asteroid/basilisk = 4, /mob/living/simple_animal/hostile/asteroid/hivelord = 3)
 	if (!megafauna_spawn_list)
 		megafauna_spawn_list = GLOB.megafauna_spawn_list
-	if (!flora_spawn_list)
-		flora_spawn_list = list(/obj/structure/flora/ash/leaf_shroom = 2 , /obj/structure/flora/ash/cap_shroom = 2 , /obj/structure/flora/ash/stem_shroom = 2 , /obj/structure/flora/ash/cacti = 1, /obj/structure/flora/ash/tall_shroom = 2)
 	if(!terrain_spawn_list)
 		terrain_spawn_list = list(/obj/structure/geyser/random = 1)
 	. = ..()
@@ -296,9 +294,6 @@ GLOBAL_LIST_INIT(megafauna_spawn_list, list(/mob/living/simple_animal/hostile/me
 		if(istype(loc, /area/mine/explored) || istype(loc, /area/lavaland/surface/outdoors/explored))
 			return
 		var/randumb = pickweight(flora_spawn_list)
-		for(var/obj/structure/flora/ash/F in range(4, T)) //Allows for growing patches, but not ridiculous stacks of flora
-			if(!istype(F, randumb))
-				return
 		new randumb(T)
 
 /turf/open/floor/plating/asteroid/airless/cave/proc/SpawnTerrain(turf/T)

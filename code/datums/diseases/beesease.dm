@@ -32,8 +32,4 @@
 												span_danger("My stomach buzzes violently!"))
 			if(prob(5))
 				to_chat(affected_mob, span_danger("I feel something moving in my throat."))
-			if(prob(1))
-				affected_mob.visible_message(span_danger("[affected_mob] coughs up a swarm of bees!"), \
-													span_danger("I cough up a swarm of bees!"))
-				new /mob/living/simple_animal/hostile/poison/bees(affected_mob.loc)
 	return
