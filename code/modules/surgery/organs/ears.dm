@@ -182,4 +182,5 @@
 
 /obj/item/organ/ears/ratpeople
 	name = "rhodian ears"
+	accessory_type = /datum/sprite_accessory/ears/murid
 
