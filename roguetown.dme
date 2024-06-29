@@ -2501,6 +2501,7 @@
 #include "code\modules\mob\living\carbon\human\species_types\furry\kobold.dm"
 #include "code\modules\mob\living\carbon\human\species_types\furry\lizardfolk.dm"
 #include "code\modules\mob\living\carbon\human\species_types\furry\moth.dm"
+#include "code\modules\mob\living\carbon\human\species_types\furry\volfen.dm"
 #include "code\modules\mob\living\carbon\human\species_types\furry\tabaxi.dm"
 #include "code\modules\mob\living\carbon\human\species_types\furry\vulpkanin.dm"
 #include "code\modules\mob\living\carbon\human\species_types\roguetown\roguetown_species.dm"

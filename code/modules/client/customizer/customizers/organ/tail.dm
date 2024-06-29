@@ -16,6 +16,18 @@
 	organ_type = /obj/item/organ/tail/vulpkanin
 	sprite_accessories = list(/datum/sprite_accessory/tail/fox)
 
+/datum/customizer/organ/tail/volfen
+	customizer_choices = list(/datum/customizer_choice/organ/tail/volfen)
+
+/datum/customizer_choice/organ/tail/volfen
+	name = "Volfen Tail"
+	organ_type = /obj/item/organ/tail/volfen
+	sprite_accessories = list(
+		/datum/sprite_accessory/tail/otie,
+		/datum/sprite_accessory/tail/shepherd,
+		/datum/sprite_accessory/tail/wolf
+		)
+
 /datum/customizer/organ/tail/tajaran
 	customizer_choices = list(/datum/customizer_choice/organ/tail/tajaran)
 

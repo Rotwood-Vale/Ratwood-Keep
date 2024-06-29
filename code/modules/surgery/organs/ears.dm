@@ -149,6 +149,9 @@
 /obj/item/organ/ears/anthro
 	name = "wild-kin ears"
 
+/obj/item/organ/ears/volfen
+	name = "volfen ears"
+
 /obj/item/organ/ears/vulpkanin
 	name = "vulpkian ears"
 	accessory_type = /datum/sprite_accessory/ears/fox
