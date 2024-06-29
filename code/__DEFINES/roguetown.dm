@@ -42,7 +42,6 @@
 
 #define RACES_SHUNNED \
 	/datum/species/halforc,\
-	/datum/species/kobold,\
 	/datum/species/ratpeople,\
 	/datum/species/anthromorphsmall,\
 	/datum/species/kobold
