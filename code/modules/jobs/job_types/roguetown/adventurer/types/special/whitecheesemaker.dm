@@ -45,9 +45,7 @@
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/black
 	beltl = /obj/item/storage/belt/rogue/pouch/coins/rich
 
-	if(H.dna?.species)
-		if(H.dna.species.id == "humen")
-			H.dna.species.soundpack_m = new /datum/voicepack/male/evil/blkknight()
+	H.dna.species.soundpack_m = new /datum/voicepack/male/evil/blkknight()
 
 	H.change_stat("intelligence", 3)
 	H.change_stat("strength", 4)

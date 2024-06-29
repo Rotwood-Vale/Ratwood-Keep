@@ -80,6 +80,14 @@
 
 	return TRUE
 
+/datum/antagonist/bandit/after_name_change()
+	if(owner && owner.current)
+		var/datum/bounty/new_bounty = new /datum/bounty
+		new_bounty.amount = 80 //TODO: Make bandit bounty adjustable by King
+		new_bounty.target = owner.current.real_name
+		new_bounty.bandit = TRUE
+		GLOB.head_bounties += new_bounty
+
 /datum/outfit/job/roguetown/bandit/pre_equip(mob/living/carbon/human/H)
 	..()
 	H.mind.adjust_skillrank(/datum/skill/combat/polearms, 3, TRUE)

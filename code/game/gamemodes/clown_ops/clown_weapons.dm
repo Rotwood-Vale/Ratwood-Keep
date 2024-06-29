@@ -33,7 +33,6 @@
 	resistance_flags = NONE
 	permeability_coefficient = 0.05
 	pocket_storage_component_path = /datum/component/storage/concrete/pockets/shoes
-	always_noslip = TRUE
 	var/max_recharge = 3000 //30 peels worth
 	var/recharge_rate = 34 //about 1/3 of a peel per tick
 
@@ -164,13 +163,11 @@
 	trash = /obj/item/grown/bananapeel/bombanana
 	bitesize = 1
 	customfoodfilling = FALSE
-	seed = null
 	tastes = list("explosives" = 10)
 	list_reagents = list(/datum/reagent/consumable/nutriment/vitamin = 1)
 
 /obj/item/grown/bananapeel/bombanana
 	desc = ""
-	seed = null
 	var/det_time = 50
 	var/obj/item/grenade/syndieminibomb/bomb
 

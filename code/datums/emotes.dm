@@ -120,10 +120,10 @@
 	var/pitch_modifier = 0
 	if(!HAS_TRAIT(src, TRAIT_DECEIVING_MEEKNESS))
 		if(STASTR > 10)
-			pitch_modifier -= (STASTR - 10) * 0.05
+			pitch_modifier -= (STASTR - 10) * 0.03
 		else if(STASTR < 10)
-			pitch_modifier += (10 - STASTR) * 0.1
-	return clamp(final_pitch + pitch_modifier, 0.7, 1.5)
+			pitch_modifier += (10 - STASTR) * 0.06
+	return clamp(final_pitch + pitch_modifier, 0.8, 1.35)
 
 /datum/emote/proc/get_env(mob/living/user)
 	return
