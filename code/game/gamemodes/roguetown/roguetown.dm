@@ -82,7 +82,7 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "E
 				reb_end_time = ttime + REBEL_RULE_TIME
 				to_chat(world, span_boldwarning("The round will end in 15 minutes."))
 			else
-				reb_end_time = SSticker.round_start_time + INITIAL_ROUND_TIMER
+				reb_end_time = INITIAL_ROUND_TIMER
 				to_chat(world, span_boldwarning("The round will end at the 2:30 hour mark."))
 		if(ttime >= reb_end_time)
 			return TRUE
