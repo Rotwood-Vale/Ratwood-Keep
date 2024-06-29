@@ -150,3 +150,27 @@
 
 /datum/species/ratpeople/get_random_body_markings(list/passed_features)
 	return assemble_body_markings_from_set(GLOB.body_marking_sets_by_type[/datum/body_marking_set/bellysockstertiary], passed_features, src)
+
+/datum/species/ratpeople/random_name(gender,unique,lastname)
+
+	var/randname
+	if(unique)
+		if(gender == MALE)
+			for(var/i in 1 to 10)
+				randname = pick( world.file2list("strings/rt/names/furry/ratmale.txt") )
+				if(!findname(randname))
+					break
+		if(gender == FEMALE)
+			for(var/i in 1 to 10)
+				randname = pick( world.file2list("strings/rt/names/furry/ratfemale.txt") )
+				if(!findname(randname))
+					break
+	else
+		if(gender == MALE)
+			randname = pick( world.file2list("strings/rt/names/furry/ratmale.txt") )
+		if(gender == FEMALE)
+			randname = pick( world.file2list("strings/rt/names/furry/ratfemale.txt") )
+	return randname
+
+/datum/species/ratpeople/random_surname()
+	return " [pick(world.file2list("strings/rt/names/furry/ratlast.txt"))]"
