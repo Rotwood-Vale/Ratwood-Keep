@@ -175,7 +175,7 @@
 /mob/living/carbon/handle_inwater()
 	..()
 	if(!(mobility_flags & MOBILITY_STAND))
-		if(HAS_TRAIT(src, TRAIT_NOBREATH))
+		if(HAS_TRAIT(src, TRAIT_NOBREATH TRAIT_WATERBREATHING) || HAS_TRAIT(src, TRAIT_WATERBREATHING))
 			return TRUE
 		adjustOxyLoss(5)
 		emote("drown")
