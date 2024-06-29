@@ -269,7 +269,7 @@
 	if(visuals_only_outfit)
 		outfit_override = visuals_only_outfit
 	if(H.gender == FEMALE)
-		if(outfit_override || outfit_female || visuals_only_outfit)
+		if(outfit_override || outfit_female)
 			H.equipOutfit(outfit_override ? outfit_override : outfit_female, visualsOnly)
 		else
 			var/final_outfit = get_outfit(H, visualsOnly, announce, latejoin, preference_source)
