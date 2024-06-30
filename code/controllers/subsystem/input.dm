@@ -24,6 +24,7 @@ SUBSYSTEM_DEF(input)
 	"Any+UP" = "\"KeyUp \[\[*\]\]\"",
 	"T" = "say",
 	"M" = "me",
+	"," = "me(big)",
 	"Back" = "\".winset \\\"input.text=\\\"\\\"\\\"\"",
 	"Tab" = "\".winset \\\"input.focus=true?map.focus=true command=disableInput input.text-color = #ad9eb4 input.background-color=[COLOR_INPUT_DISABLED] : input.focus=true command=activeInput input.text-color=#EEEEEE input.background-color=[COLOR_INPUT_ENABLED]\\\"\"",
 	"Escape" = "\".winset \\\"input.text=\\\"\\\"\\\"\"")

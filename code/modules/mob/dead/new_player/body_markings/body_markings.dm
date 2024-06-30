@@ -200,3 +200,90 @@
 	icon_state = "drake_eyes"
 	affected_bodyparts = HEAD
 	default_color = "FF0000"
+
+/datum/body_marking/small/plain
+	icon = 'icons/mob/body_markings/small_plain_markings.dmi'
+	name = "Plain (Volk)"
+	icon_state = "plain_s"
+	affected_bodyparts = HEAD | CHEST | HAND_LEFT | HAND_RIGHT | ARM_LEFT | ARM_RIGHT | LEG_LEFT | LEG_RIGHT
+	default_color = DEFAULT_SECONDARY
+	covers_chest = TRUE
+
+/datum/body_marking/small/sock
+	icon = 'icons/mob/body_markings/small_sock_markings.dmi'
+	name = "Sock (Volk)"
+	icon_state = "sock_s"
+	affected_bodyparts = HAND_LEFT | HAND_RIGHT | LEG_LEFT | LEG_RIGHT
+	default_color = DEFAULT_SECONDARY
+
+/datum/body_marking/small/sock/tertiary
+	name = "Sock (Tertiary) (Volk)"
+	default_color = DEFAULT_TERTIARY
+
+/datum/body_marking/small/socklonger
+	icon = 'icons/mob/body_markings/small_sock_markings.dmi'
+	name = "Sock (Longer) (Volk)"
+	icon_state = "socklonger_s"
+	affected_bodyparts = ARM_LEFT | ARM_RIGHT | LEG_LEFT | LEG_RIGHT
+	default_color = DEFAULT_SECONDARY
+
+/datum/body_marking/small/tips
+	icon = 'icons/mob/body_markings/small_tips_markings.dmi'
+	name = "Tips (Volk)"
+	icon_state = "tips_s"
+	affected_bodyparts = HAND_LEFT | HAND_RIGHT | LEG_LEFT | LEG_RIGHT
+	default_color = DEFAULT_SECONDARY
+
+/datum/body_marking/small/belly
+	icon = 'icons/mob/body_markings/small_chest_markings.dmi'
+	name = "Belly (Volk)"
+	icon_state = "belly_s"
+	affected_bodyparts = CHEST
+	default_color = DEFAULT_SECONDARY
+	covers_chest = TRUE
+
+/datum/body_marking/small/bellyslim
+	icon = 'icons/mob/body_markings/small_chest_markings.dmi'
+	name = "Belly (Slim) (Volk)"
+	icon_state = "bellyslim_s"
+	affected_bodyparts = CHEST
+	default_color = DEFAULT_SECONDARY
+	covers_chest = TRUE
+
+/datum/body_marking/small/butt
+	icon = 'icons/mob/body_markings/small_chest_markings.dmi'
+	name = "Butt (Volk)"
+	icon_state = "butt_s"
+	affected_bodyparts = CHEST
+	default_color = DEFAULT_SECONDARY
+
+/datum/body_marking/small/tie
+	icon = 'icons/mob/body_markings/small_chest_markings.dmi'
+	name = "Tie (Volk)"
+	icon_state = "tie_s"
+	affected_bodyparts = CHEST
+	default_color = DEFAULT_SECONDARY
+	covers_chest = TRUE
+
+/datum/body_marking/small/tiesmall
+	icon = 'icons/mob/body_markings/small_chest_markings.dmi'
+	name = "Tie (Small) (Volk)"
+	icon_state = "tiesmall_s"
+	affected_bodyparts = CHEST
+	default_color = DEFAULT_SECONDARY
+	covers_chest = TRUE
+
+/datum/body_marking/small/backspots
+	icon = 'icons/mob/body_markings/small_chest_markings.dmi'
+	name = "Back Spots (Volk)"
+	icon_state = "backspots_s"
+	affected_bodyparts = CHEST
+	default_color = DEFAULT_SECONDARY
+
+/datum/body_marking/small/front
+	icon = 'icons/mob/body_markings/small_chest_markings.dmi'
+	name = "Front (Volk)"
+	icon_state = "front_s"
+	affected_bodyparts = CHEST
+	default_color = DEFAULT_SECONDARY
+	covers_chest = TRUE

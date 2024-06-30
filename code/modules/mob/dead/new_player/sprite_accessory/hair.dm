@@ -1,6 +1,7 @@
 /datum/sprite_accessory/hair
 	abstract_type = /datum/sprite_accessory/hair
 	color_key_name = "Hair"
+	layer = HAIR_LAYER
 
 /datum/sprite_accessory/hair/adjust_appearance_list(list/appearance_list, obj/item/organ/organ, obj/item/bodypart/bodypart, mob/living/carbon/owner)
 	generic_gender_feature_adjust(appearance_list, organ, bodypart, owner, OFFSET_FACE, OFFSET_FACE_F)
@@ -55,10 +56,6 @@
 /datum/sprite_accessory/hair/head/bedheadlong
 	name = "Bedhead (Long)"
 	icon_state = "bedhead-long"
-
-/datum/sprite_accessory/hair/head/bedheadfloorlength
-	name = "Bedhead (Floorlength)"
-	icon_state = "bedhead-floorlength"
 
 /datum/sprite_accessory/hair/head/beehive
 	name = "Beehive"
@@ -720,6 +717,114 @@
 	name = "Hyena Mane"
 	icon_state = "hyenamane"
 
+/datum/sprite_accessory/hair/head/forelock
+	name = "Forelock"
+	icon_state = "forelock"
+
+/datum/sprite_accessory/hair/head/pirate
+	name = "Pirate"
+	icon_state = "pirate"
+
+/datum/sprite_accessory/hair/head/shavedmohawk
+	name = "Shaved Mohawk"
+	icon_state = "shavedmohawk"
+
+/datum/sprite_accessory/hair/head/baldfade
+	name = "Bald Fade"
+	icon_state = "baldfade"
+
+/datum/sprite_accessory/hair/head/rogue
+	name = "Rogue"
+	icon_state = "rogue"
+
+/datum/sprite_accessory/hair/head/romantic
+	name = "Romantic"
+	icon_state = "romantic"
+
+/datum/sprite_accessory/hair/head/runt
+	name = "Runt"
+	icon_state = "runt"
+
+/datum/sprite_accessory/hair/head/son
+	name = "Son"
+	icon_state = "son"
+
+/datum/sprite_accessory/hair/head/bog
+	name = "Bog"
+	icon_state = "bog"
+
+/datum/sprite_accessory/hair/head/scout
+	name = "Scout"
+	icon_state = "scout"
+
+/datum/sprite_accessory/hair/head/son2
+	name = "Son (Alt)"
+	icon_state = "son2"
+
+/datum/sprite_accessory/hair/head/long4
+	name = "Long (Fourth)"
+	icon_state = "long4"
+
+/datum/sprite_accessory/hair/head/amazon
+	name = "Amazon"
+	icon_state = "amazon"
+
+/datum/sprite_accessory/hair/head/longstraightponytail
+	name = "Long Ponytail"
+	icon_state = "longstraightponytail"
+
+/datum/sprite_accessory/hair/head/barmaid
+	name = "Barmaid"
+	icon_state = "barmaid"
+
+/datum/sprite_accessory/hair/head/bob_rt
+	name = "Bob (Rogue)"
+	icon_state = "bob_rt"
+
+/datum/sprite_accessory/hair/head/messy_rt
+	name = "Messy (Rogue)"
+	icon_state = "messy_rt"
+
+/datum/sprite_accessory/hair/head/homely
+	name = "Homely"
+	icon_state = "homely"
+
+/datum/sprite_accessory/hair/head/longtails
+	name = "Longtails"
+	icon_state = "longtails"
+
+/datum/sprite_accessory/hair/head/hime
+	name = "Hime"
+	icon_state = "hime"
+
+/datum/sprite_accessory/hair/head/manbun
+	name = "Manbun"
+	icon_state = "manbun"
+
+/datum/sprite_accessory/hair/head/tied
+	name = "Tied"
+	icon_state = "tied"
+
+/datum/sprite_accessory/hair/head/tied2
+	name = "Tied (Alt)"
+	icon_state = "tied2"
+
+/datum/sprite_accessory/hair/head/fatherless
+	name = "Fatherless"
+	icon_state = "fatherless"
+
+/datum/sprite_accessory/hair/head/fatherless2
+	name = "Fatherless (Alt)"
+	icon_state = "fatherless2"
+
+/datum/sprite_accessory/hair/head/kepthair
+	name = "Kepthair"
+	icon_state = "kepthair"
+
+/datum/sprite_accessory/hair/head/singlebraid
+	name = "Single Braid"
+	icon_state = "singlebraid"
+
 /datum/sprite_accessory/hair/facial
 	abstract_type = /datum/sprite_accessory/hair/facial
 	icon = 'icons/mob/sprite_accessory/hair/human_facial_hair.dmi'
@@ -819,9 +924,33 @@
 	name = "Beard (Seven o Clock Moustache)"
 	icon_state = "7oclock_moustache"
 
+/datum/sprite_accessory/hair/facial/stubble
+	name = "Beard (Stubble)"
+	icon_state = "stubble"
+
+/datum/sprite_accessory/hair/facial/pipe
+	name = "Beard (Pipe)"
+	icon_state = "pipe"
+
+/datum/sprite_accessory/hair/facial/knightly
+	name = "Beard (Knightly)"
+	icon_state = "knightly"
+
+/datum/sprite_accessory/hair/facial/manly
+	name = "Beard (Manly)"
+	icon_state = "manly"
+
+/datum/sprite_accessory/hair/facial/viking
+	name = "Beard (Viking)"
+	icon_state = "viking"
+
 /datum/sprite_accessory/hair/facial/moustache
 	name = "Moustache"
 	icon_state = "moustache"
+
+/datum/sprite_accessory/hair/facial/fiveoclockmoustache
+	name = "Moustache (Five o Clock)"
+	icon_state = "5oclockmoustache"
 
 /datum/sprite_accessory/hair/facial/pencilstache
 	name = "Moustache (Pencilstache)"
@@ -859,6 +988,14 @@
 	name = "Moustache (Watson)"
 	icon_state = "watson"
 
+/datum/sprite_accessory/hair/facial/sideburn
+	name = "Sideburns"
+	icon_state = "sideburns"
+
+/datum/sprite_accessory/hair/facial/burns
+	name = "Sideburns (Burns)"
+	icon_state = "burns"
+
 /datum/sprite_accessory/hair/facial/elvis
 	name = "Sideburns (Elvis)"
 	icon_state = "elvis"
@@ -866,10 +1003,6 @@
 /datum/sprite_accessory/hair/facial/mutton
 	name = "Sideburns (Mutton Chops)"
 	icon_state = "mutton"
-
-/datum/sprite_accessory/hair/facial/sideburn
-	name = "Sideburns"
-	icon_state = "sideburns"
 
 /datum/sprite_accessory/hair/head/vox
 	abstract_type = /datum/sprite_accessory/hair/head/vox
