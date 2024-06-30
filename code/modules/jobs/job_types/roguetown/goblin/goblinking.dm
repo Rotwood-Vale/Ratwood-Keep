@@ -13,12 +13,12 @@
 	whitelist_req = FALSE
 	outfit = /datum/outfit/job/roguetown/goblinking
 	display_order = JDO_GOBLINKING
-	min_pq = 2 // change to 2
+	min_pq = 2
 	max_pq = null
 
 /datum/outfit/job/roguetown/goblinking/pre_equip(mob/living/carbon/human/H)
 	..()
-	//H.verbs |= /mob/living/carbon/human/proc/goblinannouncement
+	H.verbs |= /mob/living/carbon/human/proc/goblinannouncement
 	//H.verbs |= /mob/living/carbon/human/proc/goblinopenslot
 	beltl = /obj/item/rogueweapon/huntingknife/idagger/steel/special
 	belt = /obj/item/storage/belt/rogue/leather/rope
@@ -35,18 +35,23 @@
 		H.change_stat("endurance", 1)
 		H.change_stat("speed", -2)
 
-/*
 /mob/living/carbon/human/proc/goblinannouncement()
-	set name = "Announcement"
-	set category = "Goblin King"
-	if(stat)
-		return
-	var/inputty = input("Make an announcement", "ROGUETOWN") as text|null
-	if(inputty)
-		if(!istype(get_area(src), /area/rogue/indoors/shelter/mountains/decap))
-			to_chat(src, span_warning("I need to do this from the Goblin Kingdom."))
-			return FALSE
-		priority_announce("[inputty]", title = "The Goblin King Squeals", sound = 'sound/misc/dun.ogg')
+    set name = "Announcement"
+    set category = "Goblin King"
+    if(stat)
+        return
+    var/inputty = input("Make an announcement", "ROGUETOWN") as text|null
+    if(!inputty)
+        return
+    if(!istype(get_area(src), /area/rogue/indoors/shelter/mountains/decap))
+        to_chat(src, span_warning("I need to do this from the Goblin Kingdom."))
+        return FALSE
+    for(var/mob/living/carbon/human/H in world)
+        if(H.job == "Goblin King" || H.job == "Goblin Cook" || H.job == "Goblin Guard" || H.job == "Goblin Smith")
+            var/message = "<br><span class='alert'><h1 class='alert'>The Goblin King Squeals:</h1> [inputty]</span></span>"
+            to_chat(H, message)
+            playsound(H.loc, 'sound/misc/dun.ogg', 50, TRUE)
+
 /*
 /mob/living/carbon/human/proc/goblinopenslot()
 	set name = "Open Slot"
@@ -74,5 +79,5 @@
 			smithjob.total_positions += 1
 			priority_announce("Goblin Smith shall join our Kingdom", title = "The Goblin King Hires", sound = 'sound/misc/dun.ogg')
 */
-*/
+
 
