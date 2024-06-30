@@ -17,6 +17,9 @@
 	display_order = JDO_MAGEAPPRENTICE
 	give_bank_account = TRUE
 
+	min_pq = 0
+	max_pq = null
+
 /datum/outfit/job/roguetown/wapprentice/pre_equip(mob/living/carbon/human/H)
 	..()
 	if(H.mind)
