@@ -16427,6 +16427,13 @@
 "vtw" = (
 /turf/closed/wall/mineral/rogue/stone,
 /area/rogue/indoors/town/church/chapel)
+"vue" = (
+/obj/structure/mineral_door/wood/donjon/stone{
+	locked = 1;
+	lockid = "royal"
+	},
+/turf/open/floor/rogue/carpet,
+/area/rogue/indoors/town/manor)
 "vup" = (
 /obj/structure/bars,
 /turf/open/floor/rogue/blocks,
@@ -388939,7 +388946,7 @@ wtF
 hxn
 nBW
 nBW
-hxn
+vue
 nBW
 nBW
 wtF
