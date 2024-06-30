@@ -41,14 +41,7 @@
 #ifndef MATURESERVER
 	return
 #endif
-//	if(!client.whitelisted())
-//		to_chat(usr, span_warning("I can't do custom emotes. (NOT WHITELISTED)"))
-//		return
-	if(client)
-		if(get_playerquality(client.ckey) <= -10)
-			to_chat(usr, span_warning("I can't use custom emotes. (LOW PQ)"))
-			return
-	var/message = input(usr, "", "me") as text|null
+	var/message = input(usr, "", "me") as message|null
 	// If they don't type anything just drop the message.
 	set_typing_indicator(FALSE)
 	if(!length(message))
