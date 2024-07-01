@@ -58,8 +58,8 @@
 /datum/patron/inhumen/kretch
 	name = "Kretch, The Swarmer"
 	domain = "Godess of Hunger, Greed and Vermin"
-	desc = "Gluttonous, forever emancipated, wearing a rat king as a crown. She taught the Mortal Races that their own prosperity trumps all others. Considered by many to be the mother of Rhodians."
-	worshippers = "Thieves, Nobles, Gluttons, and Rhodians"
+	desc = "Gluttonous, forever emancipated, wearing a rat king as a crown. She taught the Mortal Races that their own prosperity trumps all others. Considered by many to be the mother of the Rodeetch species."
+	worshippers = "Thieves, Nobles, Gluttons, and Rodeetch"
 	mob_traits = list(TRAIT_NASTY_EATER)
 	confess_lines = list(
 		"ALL MUST BE MINE!",

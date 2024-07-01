@@ -181,6 +181,6 @@
 	accessory_type = /datum/sprite_accessory/ears/goblin
 
 /obj/item/organ/ears/ratpeople
-	name = "rhodian ears"
+	name = "rodeetch ears"
 	accessory_type = /datum/sprite_accessory/ears/murid
 

@@ -210,7 +210,7 @@
 	customizer_choices = list(/datum/customizer_choice/organ/snout/ratpeople)
 
 /datum/customizer_choice/organ/snout/ratpeople
-	name = "Rhodian Snout"
+	name = "Rodeetch Snout"
 	organ_type = /obj/item/organ/snout/ratpeople
 	sprite_accessories = list(
 		/datum/sprite_accessory/snout/rodent,

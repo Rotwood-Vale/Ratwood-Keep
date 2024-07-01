@@ -36,5 +36,5 @@
 	accessory_type = /datum/sprite_accessory/snout/sergal
 
 /obj/item/organ/snout/ratpeople
-	name = "Rhodian snout"
+	name = "rodeetch snout"
 	accessory_type = /datum/sprite_accessory/snout/rodent

@@ -114,7 +114,7 @@
 
 
 /datum/customizer_choice/organ/ears/ratpeople
-	name = "Rhodian Ears"
+	name = "Rodeetch Ears"
 	organ_type = /obj/item/organ/ears/ratpeople
 	generic_random_pick = TRUE
 	sprite_accessories = list(
