@@ -28,6 +28,7 @@
 	limbs_icon_f = 'icons/mob/species/female.dmi'
 	dam_icon = 'icons/roguetown/mob/bodies/dam/dam_male.dmi'
 	dam_icon_f = 'icons/roguetown/mob/bodies/dam/dam_female.dmi'
+	use_m = TRUE
 	soundpack_m = /datum/voicepack/male
 	soundpack_f = /datum/voicepack/female
 	offset_features = list(
@@ -43,7 +44,7 @@
 		OFFSET_SHIRT_F = list(0,0), OFFSET_ARMOR_F = list(0,0), OFFSET_UNDIES_F = list(0,0), \
 		)
 	specstats = list("strength" = 2, "perception" = -2, "intelligence" = 1, "constitution" = 0, "endurance" = 1, "speed" = -1, "fortune" = 0) //+1 total
-	specstats_f = list("strength" = 1, "perception" = -1, "intelligence" = 1, "constitution" = 0, "endurance" = 0, "speed" = 0, "fortune" = 0) //+1 total
+	specstats_f = list("strength" = 2, "perception" = -2, "intelligence" = 1, "constitution" = 0, "endurance" = 0, "speed" = 0, "fortune" = 0) //+1 total
 	enflamed_icon = "widefire"
 	organs = list(
 		ORGAN_SLOT_BRAIN = /obj/item/organ/brain,
