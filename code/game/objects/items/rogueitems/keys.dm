@@ -97,6 +97,12 @@
 	icon_state = "ekey"
 	lockid = "shop"
 
+/obj/item/roguekey/townie // For use in round-start available houses in town. Do not use default lockID.
+	name = "Town Dwelling Key"
+	desc = "The key of some townie's home. Hope it's not lost."
+	icon_state ="brownkey"
+	lockid = "townie"
+
 /obj/item/roguekey/tavern
 	name = "tavern key"
 	desc = "This key should open and close any tavern door."
