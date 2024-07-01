@@ -171,6 +171,19 @@
 	icon_state = "psicrossiron"
 	sellprice = 50
 
+/obj/item/clothing/neck/roguetown/psicross/silver/funny_attack_effects(mob/living/target, mob/living/user, nodmg)
+	if(ishuman(target))
+		var/mob/living/carbon/human/H = target
+		if(H.dna && H.dna.species)
+			if(istype(H.dna.species, /datum/species/werewolf))
+				target.Knockdown(30)
+				target.Stun(30)
+	if(target.mind && target.mind.has_antag_datum(/datum/antagonist/vampirelord))
+		var/datum/antagonist/vampirelord/VD = target.mind.has_antag_datum(/datum/antagonist/vampirelord)
+		if(!VD.disguised)
+			target.Knockdown(30)
+			target.Stun(30)
+			
 /obj/item/clothing/neck/roguetown/psicross/silver/pickup(mob/user)
 	. = ..()
 	var/mob/living/carbon/human/H = user
