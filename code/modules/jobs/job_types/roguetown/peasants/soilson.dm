@@ -33,7 +33,7 @@
 		H.mind.adjust_skillrank(/datum/skill/misc/alchemy, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/labor/farming, pick(4,5), TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/medicine, 1, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/craft/sewing, 1, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/sewing, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/craft/cooking, 1, TRUE)
 		H.change_stat("strength", 1)
 		H.change_stat("constitution", 1)
