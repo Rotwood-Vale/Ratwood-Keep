@@ -100,7 +100,6 @@
 	mind.transfer_to(W)
 	W.mind.known_skills = list()
 	W.mind.skill_experience = list()
-	W.remove_all_languages()
 	W.grant_language(/datum/language/beast)
 
 	W.base_intents = list(INTENT_HELP, INTENT_DISARM, INTENT_GRAB)
@@ -165,7 +164,6 @@
 	mind.transfer_to(W)
 
 	var/mob/living/carbon/human/species/werewolf/WA = src
-	W.remove_all_languages()
 	W.copy_known_languages_from(WA.stored_language)
 	W.mind.known_skills = WA.stored_skills.Copy()
 	W.mind.skill_experience = WA.stored_experience.Copy()
