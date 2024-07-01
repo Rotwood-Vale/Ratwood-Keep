@@ -63,12 +63,6 @@
 		icon_dead = "Frat1"
 	update_icon()
 
-/mob/living/simple_animal/hostile/retaliate/rogue/bigrat/find_food()
-	. = ..()
-	if(!.)
-		return eat_bodies()
-
-
 /mob/living/simple_animal/hostile/retaliate/rogue/bigrat/death(gibbed)
 	..()
 	update_icon()

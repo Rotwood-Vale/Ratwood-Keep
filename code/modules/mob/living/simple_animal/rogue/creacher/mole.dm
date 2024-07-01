@@ -87,11 +87,6 @@
 		Retaliate()
 		GiveTarget(pulledby)
 
-/mob/living/simple_animal/hostile/retaliate/rogue/mole/find_food()
-	. = ..()
-	if(!.)
-		return eat_bodies()
-
 /mob/living/simple_animal/hostile/retaliate/rogue/mole/simple_limb_hit(zone)
 	if(!zone)
 		return ""

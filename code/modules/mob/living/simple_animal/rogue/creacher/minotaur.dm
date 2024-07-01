@@ -60,11 +60,6 @@
 		Retaliate()
 		GiveTarget(pulledby)
 
-/mob/living/simple_animal/hostile/retaliate/rogue/minotaur/find_food()
-	. = ..()
-	if(!.)
-		return eat_bodies()
-
 /mob/living/simple_animal/hostile/retaliate/rogue/minotaur/simple_limb_hit(zone)
 	if(!zone)
 		return ""
