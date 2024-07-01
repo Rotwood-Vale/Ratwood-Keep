@@ -136,5 +136,3 @@
 /datum/species/halforc/random_surname()
 	return
 
-/datum/species/halforc/get_accent(mob/living/carbon/human/H)
-	return strings("middlespeak.json", "middle")

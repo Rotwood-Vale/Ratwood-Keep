@@ -143,6 +143,3 @@
 
 /datum/species/aasimar/random_surname()
 	return
-
-/datum/species/aasimar/get_accent(mob/living/carbon/human/H)
-	return strings("proper_replacement.json", "proper")

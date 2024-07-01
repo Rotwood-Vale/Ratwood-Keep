@@ -92,6 +92,3 @@
 
 /datum/species/lizard/brazil/random_surname()
 	return " [pick(world.file2list("strings/rt/names/other/arglast.txt"))]"
-
-/datum/species/lizard/brazil/get_accent(mob/living/carbon/human/H)
-	return strings("brazillian_replacement.json", "brazillian")
