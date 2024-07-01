@@ -5,10 +5,10 @@
 	name = "Lupian"
 	id = "lupian"
 	desc = "<b>Lupian</b><br>\
-	Lupians are the sons and daughters of Noc. They are a volf-life people hailing from the Northern Regions of the world. \
+	Lupians are the sons and daughters of Noc. They are a volf-like people hailing from the Northern Regions of the world. \
 	They are resilient, cunning and fight ready creachures capable of surviving the north thanks to their rugged pelts, \
 	sharp teeth and deep-rooted spirit of community. They are very dutiful individuals and make fantastic and fearsome \
-	warriors to those who earn their loyalty. Thanks to their pack minded nature they are slow to trust the	other races \
+	warriors to those who earn their loyalty. Thanks to their pack minded nature they are slow to trust the other races \
 	but form deep connections with those they do. In recent years they have been driven from the forests by unrest and pressed \
 	into cohabitation with races they'd deem lesser."
 	default_color = "444"
