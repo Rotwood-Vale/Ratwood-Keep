@@ -293,7 +293,7 @@
 	name = "arming jacket"
 	icon_state = "dgamb"
 	allowed_sex = list(MALE, FEMALE)
-	allowed_race = HUMANLIKE_RACE_TYPES
+	allowed_race = NON_DWARVEN_RACE_TYPES
 
 /obj/item/clothing/suit/roguetown/armor/leather
 	name = "leather armor"
@@ -385,7 +385,7 @@
 	icon_state = "nightman"
 	sleeved = 'icons/roguetown/clothing/onmob/armor.dmi'
 	allowed_sex = list(MALE, FEMALE)
-	allowed_race = HUMANLIKE_RACE_TYPES
+	allowed_race = NON_DWARVEN_RACE_TYPES
 
 
 /obj/item/clothing/suit/roguetown/armor/leather/vest/hand

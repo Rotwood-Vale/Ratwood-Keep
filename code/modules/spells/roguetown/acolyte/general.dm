@@ -14,7 +14,7 @@
 	antimagic_allowed = TRUE
 	charge_max = 10 SECONDS
 	miracle = TRUE
-	devotion_cost = 20
+	devotion_cost = 10
 
 /obj/effect/proc_holder/spell/invoked/lesser_heal/cast(list/targets, mob/living/user)
 	. = ..()
@@ -49,13 +49,15 @@
 			if(/datum/patron/divine/malum)
 				target.visible_message("<span class='info'>A tempering heat is discharged out of [target]!</span>", "<span class='notice'>I feel the heat of a forge soothing my pains!</span>")
 			if(/datum/patron/divine/eora)
-				target.visible_message("<span class='info'>A heady heat flushes the flesh of [target] and potent scents hit you!</span>", "<span class='notice'>My ills drift away in a rush of narcotic pleasure!</span>")
+				target.visible_message("<span class='info'>An emanance of love blossoms around [target]!</span>", "<span class='notice'>I'm filled with the restorative warmth of love!</span>")
 			if(/datum/patron/inhumen/zizo)
 				target.visible_message(span_info("Vital energies are sapped towards [target]!"), span_notice("The life around me pales as I am restored!"))
 			if(/datum/patron/inhumen/graggar)
 				target.visible_message(span_info("Foul fumes billow outward as [target] is restored!"), span_notice("A noxious scent burns my nostrils, but I feel better!"))
 			if(/datum/patron/inhumen/matthios)
-				target.visible_message(span_info("A wreath of strange light passes over [target]!"), span_notice("I'm bathed in strange holy light?"))
+				target.visible_message(span_info("A wreath of... strange light passes over [target]?"), span_notice("I'm bathed in a... strange holy light?"))
+			if(/datum/patron/inhumen/baotha)
+				target.visible_message(span_info("Hedonistic impulses and emotions throb all about from [target]."), span_notice("An intoxicating rush of narcotic delight wipes away my pains!"))
 			if(/datum/patron/godless)
 				target.visible_message(span_info("Without any particular cause or reason, [target] is healed!"), span_notice("My wounds close without cause."))
 			else
@@ -96,7 +98,7 @@
 	antimagic_allowed = TRUE
 	charge_max = 20 SECONDS
 	miracle = TRUE
-	devotion_cost = 45
+	devotion_cost = 20
 
 /obj/effect/proc_holder/spell/invoked/heal/cast(list/targets, mob/living/user)
 	. = ..()

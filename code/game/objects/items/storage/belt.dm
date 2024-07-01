@@ -277,7 +277,6 @@
 		/obj/item/reagent_containers/food/drinks,
 		/obj/item/organ/regenerative_core,
 		/obj/item/wormhole_jaunter,
-		/obj/item/storage/bag/plants,
 		/obj/item/stack/marker_beacon
 		))
 
@@ -449,8 +448,6 @@
 		/obj/item/multitool,
 		/obj/item/reagent_containers/food/drinks/bottle/molotov,
 		/obj/item/grenade/c4,
-		/obj/item/reagent_containers/food/snacks/grown/cherry_bomb,
-		/obj/item/reagent_containers/food/snacks/grown/firelemon
 		))
 
 /obj/item/storage/belt/grenade/full/PopulateContents()

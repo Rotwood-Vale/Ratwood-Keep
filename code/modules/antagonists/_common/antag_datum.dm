@@ -36,6 +36,10 @@ GLOBAL_LIST_EMPTY(antagonists)
 	owner = null
 	return ..()
 
+//Called after antags choose a new name with choose_name_popup
+/datum/antagonist/proc/after_name_change()
+	return
+
 /datum/antagonist/proc/examine_friendorfoe(datum/antagonist/examined_datum,mob/examiner,mob/examined)
 	return
 
