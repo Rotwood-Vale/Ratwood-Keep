@@ -59,11 +59,6 @@
 		gender = FEMALE
 	update_icon()
 
-/mob/living/simple_animal/hostile/retaliate/rogue/spider/find_food()
-	. = ..()
-	if(!.)
-		return eat_bodies()
-
 /mob/living/simple_animal/hostile/retaliate/rogue/spider/AttackingTarget()
 	. = ..()
 	if(. && isliving(target))
