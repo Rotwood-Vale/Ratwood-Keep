@@ -3,9 +3,8 @@
 	flag = GRAVEDIGGER
 	department_flag = CHURCHMEN
 	faction = "Station"
-	total_positions = 3
-	spawn_positions = 3
-	category_tags = list(CTAG_DISABLED)
+	total_positions = 0
+	spawn_positions = 0
 
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_TOLERATED_UP
