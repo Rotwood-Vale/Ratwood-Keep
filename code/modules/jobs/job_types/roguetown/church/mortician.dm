@@ -5,6 +5,7 @@
 	faction = "Station"
 	total_positions = 3
 	spawn_positions = 3
+	category_tags = list(CTAG_DISABLED)
 
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_TOLERATED_UP
