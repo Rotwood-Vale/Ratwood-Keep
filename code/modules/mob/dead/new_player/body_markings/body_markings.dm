@@ -55,7 +55,7 @@
 	name = "Spots"
 	icon_state = "spotted"
 	affected_bodyparts = HEAD | CHEST | HAND_LEFT | HAND_RIGHT | ARM_LEFT | ARM_RIGHT | LEG_LEFT | LEG_RIGHT
-	default_color = DEFAULT_SECONDARY
+	default_color = DEFAULT_TERTIARY
 
 /datum/body_marking/tiger
 	icon = 'icons/mob/body_markings/tiger_markings.dmi'
@@ -221,7 +221,7 @@
 	name = "Spots (Volk)"
 	icon_state = "spotted"
 	affected_bodyparts = HEAD | CHEST | HAND_LEFT | HAND_RIGHT | ARM_LEFT | ARM_RIGHT | LEG_LEFT | LEG_RIGHT
-	default_color = DEFAULT_SECONDARY
+	default_color = DEFAULT_TERTIARY
 
 /datum/body_marking/small/sock
 	icon = 'icons/mob/body_markings/small_sock_markings.dmi'
