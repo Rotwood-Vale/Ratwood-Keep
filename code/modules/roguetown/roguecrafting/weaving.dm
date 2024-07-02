@@ -144,6 +144,14 @@
 	craftdiff = 4
 	sellprice = 30
 
+/datum/crafting_recipe/roguetown/weaving/robe/magered
+	name = "robe (red)"
+	result = list (/obj/item/clothing/suit/roguetown/shirt/robe/magered)
+	reqs = list(/obj/item/natural/cloth = 1,
+				/obj/item/natural/silk = 2)
+	craftdiff = 4
+	sellprice = 30
+
 /datum/crafting_recipe/roguetown/weaving/robe/mageyellow
 	name = "robe (yellow)"
 	result = list (/obj/item/clothing/suit/roguetown/shirt/robe/mageyellow)
