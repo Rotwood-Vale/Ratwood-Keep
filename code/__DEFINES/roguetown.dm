@@ -42,6 +42,7 @@
 
 #define RACES_SHUNNED \
 	/datum/species/halforc,\
+	/datum/species/ratpeople,\
 	/datum/species/anthromorphsmall,\
 	/datum/species/kobold
 
@@ -73,6 +74,7 @@
 	/datum/species/demihuman,\
 	/datum/species/kobold,\
 	/datum/species/goblinp,\
+	/datum/species/ratpeople\
 )
 
 #define CLOTHED_RACES_TYPES list(\
@@ -95,6 +97,7 @@
 	/datum/species/halforc,\
 	/datum/species/kobold,\
 	/datum/species/goblinp,\
+	/datum/species/ratpeople,\
 )
 // Non-dwarf non-kobold non-goblin mostly
 #define NON_DWARVEN_RACE_TYPES list(\
@@ -127,6 +130,7 @@
 	/datum/species/dracon,\
 	/datum/species/anthromorph,\
 	/datum/species/demihuman,\
+	/datum/species/ratpeople,\
 )
 #define ALL_CLERIC_PATRONS list(/datum/patron/divine/astrata, /datum/patron/divine/noc, /datum/patron/divine/dendor, /datum/patron/divine/necra, /datum/patron/divine/pestra)
 

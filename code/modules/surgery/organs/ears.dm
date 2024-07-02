@@ -179,3 +179,8 @@
 /obj/item/organ/ears/goblin
 	name = "goblin ears"
 	accessory_type = /datum/sprite_accessory/ears/goblin
+
+/obj/item/organ/ears/ratpeople
+	name = "rodeetch ears"
+	accessory_type = /datum/sprite_accessory/ears/murid
+

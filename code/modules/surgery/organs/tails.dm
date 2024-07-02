@@ -26,3 +26,10 @@
 	color = "#116611"
 	tail_type = "Smooth"
 	accessory_type =  /datum/sprite_accessory/tail/lizard/kobold
+
+/obj/item/organ/tail/ratpeople
+	name = "rodeetch tail"
+	desc = ""
+	color = "#D89C9E"
+	tail_type = "Murid"
+	accessory_type = /datum/sprite_accessory/tail/murid

@@ -88,6 +88,15 @@
 		/datum/sprite_accessory/penis/hemiknot,
 		)
 
+/datum/customizer/organ/penis/ratpeople
+	customizer_choices = list(/datum/customizer_choice/organ/penis/ratpeople)
+
+/datum/customizer_choice/organ/penis/ratpeople
+	sprite_accessories = list(
+		/datum/sprite_accessory/penis/human,
+		/datum/sprite_accessory/penis/tapered,
+		)
+
 /datum/customizer/organ/testicles
 	abstract_type = /datum/customizer/organ/testicles
 	name = "Testicles"
