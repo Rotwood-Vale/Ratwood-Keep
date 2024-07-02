@@ -8,6 +8,7 @@
 	/datum/species/tieberian,\
 	/datum/species/aasimar,\
 	/datum/species/lizardfolk,\
+	/datum/species/lupian,\
 	/datum/species/tabaxi,\
 	/datum/species/vulpkanin,\
 	/datum/species/akula,\
@@ -27,6 +28,7 @@
 	/datum/species/human/halfelf,\
 	/datum/species/dwarf/mountain,\
 	/datum/species/aasimar,\
+	/datum/species/lupian,\
 	/datum/species/vulpkanin,\
 	/datum/species/moth,\
 	/datum/species/dracon,
@@ -63,6 +65,7 @@
 	/datum/species/tieberian,\
 	/datum/species/aasimar,\
 	/datum/species/lizardfolk,\
+	/datum/species/lupian,\
 	/datum/species/tabaxi,\
 	/datum/species/vulpkanin,\
 	/datum/species/akula,\
@@ -84,6 +87,7 @@
 	/datum/species/tieberian,\
 	/datum/species/aasimar,\
 	/datum/species/lizardfolk,\
+	/datum/species/lupian,\
 	/datum/species/tabaxi,\
 	/datum/species/vulpkanin,\
 	/datum/species/akula,\
@@ -105,6 +109,7 @@
 	/datum/species/tieberian,\
 	/datum/species/aasimar,\
 	/datum/species/lizardfolk,\
+	/datum/species/lupian,\
 	/datum/species/tabaxi,\
 	/datum/species/vulpkanin,\
 	/datum/species/akula,\
@@ -120,6 +125,7 @@
 	/datum/species/tieberian,\
 	/datum/species/aasimar,\
 	/datum/species/lizardfolk,\
+	/datum/species/lupian,\
 	/datum/species/tabaxi,\
 	/datum/species/vulpkanin,\
 	/datum/species/akula,\
