@@ -104,6 +104,7 @@
 		/datum/body_marking/front,
 		/datum/body_marking/drake_eyes,
 		/datum/body_marking/tonage,
+		/datum/body_marking/spotted,
 	)
 
 /datum/species/anthromorph/on_species_gain(mob/living/carbon/C, datum/species/old_species)

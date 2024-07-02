@@ -94,6 +94,7 @@
 		/datum/body_marking/small/tiesmall,
 		/datum/body_marking/small/backspots,
 		/datum/body_marking/small/front,
+		/datum/body_marking/small/spotted,
 	)
 
 /datum/species/anthromorphsmall/on_species_gain(mob/living/carbon/C, datum/species/old_species)
