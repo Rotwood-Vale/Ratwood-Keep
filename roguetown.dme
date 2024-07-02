@@ -3449,7 +3449,6 @@
 #include "modular\code\game\objects\items\lewd\dildo.dm"
 #include "modular\code\modules\admin\bunker_bypass.dm"
 #include "modular\code\modules\crafting\lewd\dildo_crafting.dm"
-#include "modular\code\modules\jobs\job_types\roguetown\roguetown.dm"
 #include "modular\code\modules\living\emote.dm"
 #include "modular\code\modules\living\say.dm"
 #include "modular\code\modules\living\carbon\stress.dm"

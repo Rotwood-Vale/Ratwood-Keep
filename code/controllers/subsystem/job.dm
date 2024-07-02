@@ -15,6 +15,9 @@ SUBSYSTEM_DEF(job)
 	var/overflow_role = "Fuckyou"
 	var/list/level_order = list(JP_HIGH,JP_MEDIUM,JP_LOW)
 
+	var/list/played_assigned_jobs
+	var/list/last_player_assigned_jobs
+
 /datum/controller/subsystem/job/Initialize(timeofday)
 	SSmapping.HACK_LoadMapConfig()
 	if(!occupations.len)
@@ -22,7 +25,57 @@ SUBSYSTEM_DEF(job)
 	if(CONFIG_GET(flag/load_jobs_from_txt))
 		LoadJobs()
 	set_overflow_role(CONFIG_GET(string/overflow_job))
+	load_last_round_player_assigned_jobs()
 	return ..()
+
+/datum/controller/subsystem/job/Shutdown()
+	save_player_assigned_jobs()
+	. = ..()
+
+/datum/controller/subsystem/job/proc/clear_last_round_player_jobs()
+	last_player_assigned_jobs = list()
+
+/datum/controller/subsystem/job/proc/load_last_round_player_assigned_jobs()
+	if(last_player_assigned_jobs)
+		return
+	// Try loading the file
+	var/target_file = file("data/last_round_assigned_jobs.json") 
+	if(fexists(target_file))
+		last_player_assigned_jobs = json_decode(file2text(target_file))
+	else
+		// Else just make an empty list
+		last_player_assigned_jobs = list()
+
+/datum/controller/subsystem/job/proc/save_player_assigned_jobs()
+	if(!played_assigned_jobs)
+		played_assigned_jobs = list()
+	var/target_file = file("data/last_round_assigned_jobs.json") 
+	WRITE_FILE(target_file, json_encode(played_assigned_jobs))
+
+/datum/controller/subsystem/job/proc/add_player_assigned_job(ckey, job_name)
+	if(!played_assigned_jobs)
+		played_assigned_jobs = list()
+	if(!played_assigned_jobs[ckey])
+		played_assigned_jobs[ckey] = list()
+	played_assigned_jobs[ckey] |= job_name
+
+/datum/controller/subsystem/job/proc/was_player_assigned_job_last_round(ckey, job_name)
+	if(!last_player_assigned_jobs)
+		load_last_round_player_assigned_jobs()
+	if(!last_player_assigned_jobs[ckey])
+		return FALSE
+	if(!(job_name in last_player_assigned_jobs[ckey]))
+		return FALSE
+	return TRUE
+
+/datum/controller/subsystem/job/proc/was_player_assigned_job_current_round(ckey, job_name)
+	if(!played_assigned_jobs)
+		played_assigned_jobs = list()
+	if(!played_assigned_jobs[ckey])
+		return FALSE
+	if(!(job_name in played_assigned_jobs[ckey]))
+		return FALSE
+	return TRUE
 
 /datum/controller/subsystem/job/proc/set_overflow_role(new_overflow_role)
 	var/datum/job/new_overflow = GetJob(new_overflow_role)
@@ -94,17 +147,7 @@ SUBSYSTEM_DEF(job)
 		player.mind.assigned_role = rank
 		unassigned -= player
 		job.current_positions++
-		if(!latejoin)
-			if(player.client)
-				if(job.bypass_lastclass)
-					player.client.prefs.lastclass = null
-				else
-					player.client.prefs.lastclass = job.title
-				player.client.prefs.save_preferences()
-		else
-			if(player.client)
-				player.client.prefs.lastclass = null
-				player.client.prefs.save_preferences()
+		add_player_assigned_job(player.ckey, rank)
 		return TRUE
 	JobDebug("AR has failed, Player: [player], Rank: [rank]")
 	return FALSE
@@ -151,7 +194,10 @@ SUBSYSTEM_DEF(job)
 		if(check_blacklist(player.client.ckey) && !job.bypass_jobban)
 			JobDebug("FOC incompatible with blacklist, Player: [player], Job: [job.title]")
 			continue
-		if((player.client.prefs.lastclass == job.title) && !job.bypass_lastclass)
+		if(job.lastclass_forbidden && was_player_assigned_job_last_round(player.client.ckey, job.title))
+			JobDebug("FOC incompatible with lastclass, Player: [player], Job: [job.title]")
+			continue
+		if(job.currentclass_forbidden && was_player_assigned_job_current_round(player.client.ckey, job.title))
 			JobDebug("FOC incompatible with lastclass, Player: [player], Job: [job.title]")
 			continue
 		if(!job.special_job_check(player))
@@ -236,14 +282,17 @@ SUBSYSTEM_DEF(job)
 		if(!job.special_job_check(player))
 			JobDebug("GRJ player did not pass special check, Player: [player], Job:[job.title]")
 			continue
+		
+		if(job.lastclass_forbidden && was_player_assigned_job_last_round(player.client.ckey, job.title))
+			JobDebug("GRJ incompatible with lastclass, Player: [player], Job: [job.title]")
+			continue
+		if(job.currentclass_forbidden && was_player_assigned_job_current_round(player.client.ckey, job.title))
+			JobDebug("GRJ incompatible with lastclass, Player: [player], Job: [job.title]")
+			continue
 
 		if(CONFIG_GET(flag/usewhitelist))
 			if(job.whitelist_req && (!player.client.whitelisted()))
 				continue
-
-//		if((player.client.prefs.lastclass == job.title) && (!job.bypass_lastclass))
-//			JobDebug("GRJ incompatible with lastclass, Player: [player], Job: [job.title]")
-//			continue
 
 		if(job.spawn_positions)
 			if((job.current_positions < job.spawn_positions) || job.spawn_positions == -1)
@@ -458,8 +507,10 @@ SUBSYSTEM_DEF(job)
 
 				if(!isnull(job.max_pq) && (get_playerquality(player.ckey) > job.max_pq))
 					continue
-
-				if((player.client.prefs.lastclass == job.title) && (!job.bypass_lastclass))
+				
+				if(job.lastclass_forbidden && was_player_assigned_job_last_round(player.client.ckey, job.title))
+					continue
+				if(job.currentclass_forbidden && was_player_assigned_job_current_round(player.client.ckey, job.title))
 					continue
 
 				if(check_blacklist(player.client.ckey) && !job.bypass_jobban)
@@ -547,8 +598,10 @@ SUBSYSTEM_DEF(job)
 
 				if(!isnull(job.min_pq) && (get_playerquality(player.ckey) < job.min_pq) && level != JP_LOW) //since its required people on low can roll for it
 					continue
-
-				if((player.client.prefs.lastclass == job.title) && (!job.bypass_lastclass))
+				
+				if(job.lastclass_forbidden && was_player_assigned_job_last_round(player.client.ckey, job.title))
+					continue
+				if(job.currentclass_forbidden && was_player_assigned_job_current_round(player.client.ckey, job.title))
 					continue
 
 				if(check_blacklist(player.client.ckey) && !job.bypass_jobban)

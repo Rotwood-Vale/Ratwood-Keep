@@ -86,7 +86,6 @@
 	var/whitelist_req = FALSE
 
 	var/bypass_jobban = FALSE
-	var/bypass_lastclass = TRUE
 
 	var/list/peopleiknow = list()
 	var/list/peopleknowme = list()
@@ -94,6 +93,11 @@
 	var/plevel_req = 0
 	var/min_pq = 0
 	var/max_pq = 0
+
+	/// Whether this job is forbidden to players who played it during the previous round
+	var/lastclass_forbidden = TRUE
+	/// Whether this job is forbidden to players who played it during the current round (Think: Respawns)
+	var/currentclass_forbidden = FALSE
 
 	var/show_in_credits = TRUE
 

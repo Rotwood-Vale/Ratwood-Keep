@@ -356,7 +356,7 @@ GLOBAL_LIST_INIT(roleplay_readme, world.file2list("strings/rt/rp_prompt.txt"))
 	return "Error: Unknown job availability."
 
 //used for latejoining
-/mob/dead/new_player/proc/IsJobUnavailable(rank, latejoin = FALSE)
+/mob/dead/new_player/proc/IsJobUnavailable(rank, latejoin = FALSE, check_maxslots = TRUE)
 	if(QDELETED(src))
 		return JOB_UNAVAILABLE_GENERIC
 	if(istype(SSticker.mode, /datum/game_mode/chaosmode))
@@ -420,7 +420,9 @@ GLOBAL_LIST_INIT(roleplay_readme, world.file2list("strings/rt/rp_prompt.txt"))
 		return JOB_UNAVAILABLE_AGE
 	if(length(job.allowed_patrons) && !(client.prefs.selected_patron.type in job.allowed_patrons))
 		return JOB_UNAVAILABLE_PATRON
-	if((client.prefs.lastclass == job.title) && !job.bypass_lastclass)
+	if(job.lastclass_forbidden && SSjob.was_player_assigned_job_last_round(client.ckey, job.title))
+		return JOB_UNAVAILABLE_LASTCLASS
+	if(job.currentclass_forbidden && SSjob.was_player_assigned_job_current_round(client.ckey, job.title))
 		return JOB_UNAVAILABLE_LASTCLASS
 	if(istype(SSticker.mode, /datum/game_mode/roguewar))
 		var/datum/game_mode/roguewar/W = SSticker.mode
@@ -431,15 +433,16 @@ GLOBAL_LIST_INIT(roleplay_readme, world.file2list("strings/rt/rp_prompt.txt"))
 	if((job.same_job_respawn_delay) && (ckey in GLOB.job_respawn_delays))
 		if(world.time < GLOB.job_respawn_delays[ckey])
 			return JOB_UNAVAILABLE_JOB_COOLDOWN
-	if((job.current_positions >= job.total_positions) && job.total_positions != -1)
-		if(job.title == "Assistant")
-			if(isnum(client.player_age) && client.player_age <= 14) //Newbies can always be assistants
-				return JOB_AVAILABLE
-			for(var/datum/job/J in SSjob.occupations)
-				if(J && J.current_positions < J.total_positions && J.title != job.title)
-					return JOB_UNAVAILABLE_SLOTFULL
-		else
-			return JOB_UNAVAILABLE_SLOTFULL
+	if(check_maxslots)
+		if((job.current_positions >= job.total_positions) && job.total_positions != -1)
+			if(job.title == "Assistant")
+				if(isnum(client.player_age) && client.player_age <= 14) //Newbies can always be assistants
+					return JOB_AVAILABLE
+				for(var/datum/job/J in SSjob.occupations)
+					if(J && J.current_positions < J.total_positions && J.title != job.title)
+						return JOB_UNAVAILABLE_SLOTFULL
+			else
+				return JOB_UNAVAILABLE_SLOTFULL
 //	if(job.title == "Adventurer" && latejoin)
 //		for(var/datum/job/J in SSjob.occupations)
 //			if(J && J.total_positions && J.current_positions < 1 && J.title != job.title && (IsJobUnavailable(J.title))

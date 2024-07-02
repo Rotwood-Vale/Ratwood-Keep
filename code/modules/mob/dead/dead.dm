@@ -85,6 +85,9 @@ INITIALIZE_IMMEDIATE(/mob/dead)
 			if(!player)
 				continue
 			if(player.client.prefs.job_preferences[job.title] == JP_HIGH)
+				// Don't display players who are not eligible for the job
+				if(player.IsJobUnavailable(job.title, FALSE, FALSE))
+					continue
 				if(player.ready == PLAYER_READY_TO_PLAY)
 					readiedas++
 					if(!(player.client.ckey in GLOB.hiderole))

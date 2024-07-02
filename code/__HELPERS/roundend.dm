@@ -291,6 +291,9 @@
 	//Collects persistence features
 	if(mode.allow_persistence_save)
 		SSpersistence.CollectData()
+	
+	// Save assigned job informations (done in SSjob.Shutdown() too, but here is for safety)
+	SSjob.save_player_assigned_jobs()
 
 	//stop collecting feedback during grifftime
 	SSblackbox.Seal()

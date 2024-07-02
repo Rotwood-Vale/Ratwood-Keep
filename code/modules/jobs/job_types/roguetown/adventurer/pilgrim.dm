@@ -10,8 +10,8 @@
 
 	outfit = null
 	outfit_female = null
-	bypass_lastclass = TRUE
 	bypass_jobban = FALSE
+	lastclass_forbidden = FALSE
 
 	advclass_cat_rolls = list(CTAG_PILGRIM = 10)
 	PQ_boost_divider = 10
