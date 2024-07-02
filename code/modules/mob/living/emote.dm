@@ -1094,6 +1094,8 @@
 	message = "whimpers."
 	message_mime = "appears hurt."
 	message_muffled = "makes a muffled whimper."
+	emote_type = EMOTE_AUDIBLE
+	show_runechat = FALSE
 
 /mob/living/carbon/human/verb/emote_whimper()
 	set name = "Whimper"
