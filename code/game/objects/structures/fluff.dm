@@ -389,6 +389,10 @@
 /obj/structure/bars/chainlink
 	icon_state = "chainlink"
 
+/obj/structure/bars/steel
+	name = "steel bars"
+	max_integrity = 2000
+
 /obj/structure/bars/tough
 	max_integrity = 9000
 	damage_deflection = 40
@@ -414,6 +418,10 @@
 	icon_state = "passage0"
 	density = TRUE
 	max_integrity = 1500
+
+/obj/structure/bars/passage/steel
+	name = "steel bars"
+	max_integrity = 2000
 
 /obj/structure/bars/passage/redstone_triggered()
 	if(obj_broken)
