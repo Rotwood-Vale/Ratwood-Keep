@@ -425,6 +425,12 @@
 	minstr = 4
 	wdefense = 2
 
+/obj/item/rogueweapon/sword/iron/messer/steel
+	name = "steel messer" //People often ask for messers when the smithy only has steel, now they can make it.
+	desc = "A single edged blade to slice and chop with. This one is made of sturdy steel."
+	icon_state = "smesser"
+	max_integrity = 175 //Stout blades last a long time before breakage
+
 /obj/item/rogueweapon/sword/sabre
 	name = "sabre"
 	desc = "A swift saber. Parries realiantly and strikes swiftly"
@@ -476,6 +482,26 @@
 	max_integrity = 300
 	max_blade_int = 300
 	wdefense = 7
+
+/obj/item/rogueweapon/sword/estoc
+	name = "estoc"
+	desc = "An specialised steel longsword, tailor made for stabbing and little else."
+	force = 18
+	force_wielded = 30
+	possible_item_intents = list(/datum/intent/sword/cut/rapier, /datum/intent/sword/thrust/short) //Better at stabbing than the longsword, worse at evrything else. It fits the time period because of our use of bervors and visored sallets.
+	icon_state = "estoc"
+	gripped_intents = list(/datum/intent/sword/cut/rapier, /datum/intent/sword/thrust/short, /datum/intent/sword/strike)
+	minstr = 6
+	wdefense = 4
+
+/obj/item/rogueweapon/sword/krieg
+	force = 20
+	force_wielded = 30
+	possible_item_intents = list(/datum/intent/sword/cut, /datum/intent/axe/chop, /datum/intent/sword/strike)
+	gripped_intents = list(/datum/intent/sword/cut, /datum/intent/axe/chop, /datum/intent/sword/thrust, /datum/intent/sword/strike)
+	icon_state = "krieg"
+	name = "Langesmesser"
+	desc = "A lengthened messer, inspired by those from grenzelhoft. It chops and cuts with terrifying efficiency."
 
 /obj/item/rogueweapon/sword/cutlass
 	name = "cutlass"

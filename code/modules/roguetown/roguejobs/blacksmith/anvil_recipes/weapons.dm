@@ -22,6 +22,12 @@
 	created_item = /obj/item/rogueweapon/sword/iron/messer
 	i_type = "Weapons"
 
+/datum/anvil_recipe/weapons/smesser
+	name = "Messer"
+	req_bar = /obj/item/ingot/steel
+	created_item = /obj/item/rogueweapon/sword/iron/messer/steel
+	i_type = "Weapons"
+
 /datum/anvil_recipe/weapons/idagger
 	name = "Dagger"
 	req_bar = /obj/item/ingot/iron
@@ -125,6 +131,22 @@
 	req_bar = /obj/item/ingot/steel
 	additional_items = list(/obj/item/ingot/steel)
 	created_item = /obj/item/rogueweapon/mace/steel
+	craftdiff = 2
+	i_type = "Weapons"
+
+/datum/anvil_recipe/weapons/langesmesser
+	name = "Langesmesser (+1 Steel)"
+	req_bar = /obj/item/ingot/steel
+	additional_items = list(/obj/item/ingot/steel)
+	created_item = /obj/item/rogueweapon/sword/krieg
+	craftdiff = 2
+	i_type = "Weapons"
+
+/datum/anvil_recipe/weapons/estoc
+	name = "Estoc (+1 Steel)"
+	req_bar = /obj/item/ingot/steel
+	additional_items = list(/obj/item/ingot/steel)
+	created_item = /obj/item/rogueweapon/sword/estoc
 	craftdiff = 2
 	i_type = "Weapons"
 
@@ -348,7 +370,7 @@
 /datum/anvil_recipe/valuables/execution
 	name = "Execution Sword (+ 1 Steel, + 1 Iron)"
 	req_bar = /obj/item/ingot/steel
-	additional_items = list(/obj/item/ingot/iron, /obj/item/ingot/steel)	
+	additional_items = list(/obj/item/ingot/iron, /obj/item/ingot/steel)
 	created_item = /obj/item/rogueweapon/sword/long/exe
 	i_type = "Weapons"
 
