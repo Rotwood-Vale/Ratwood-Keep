@@ -38,7 +38,7 @@
 		H.mind.add_antag_datum(new_antag)
 	ADD_TRAIT(H, TRAIT_BANDITCAMP, TRAIT_GENERIC)
 	if(H.gender == FEMALE)
-		H.change_stat("strength", -2)
+		H.change_stat("strength", -1)
 		armor = /obj/item/clothing/suit/roguetown/shirt/dress/gen/random
 	if(H.gender == MALE)
 		H.change_stat("strength", -1)

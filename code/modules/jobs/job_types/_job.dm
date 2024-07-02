@@ -44,6 +44,7 @@
 	var/minimal_player_age = 0
 
 	var/outfit = null
+	var/visuals_only_outfit = null //Handles outfits specifically for cases where you may need to prevent sensitive items from spawning. (e.g Crowns)
 	var/outfit_female = null
 
 	var/exp_requirements = 0
@@ -265,6 +266,8 @@
 
 	//Equip the rest of the gear
 	H.dna.species.before_equip_job(src, H, visualsOnly)
+	if(!outfit_override && visualsOnly && visuals_only_outfit)
+		outfit_override = visuals_only_outfit
 	if(H.gender == FEMALE)
 		if(outfit_override || outfit_female)
 			H.equipOutfit(outfit_override ? outfit_override : outfit_female, visualsOnly)

@@ -68,6 +68,7 @@
 	t1 = /obj/effect/proc_holder/spell/invoked/lesser_heal
 	t2 = /obj/effect/proc_holder/spell/invoked/heal
 	t3 = /obj/effect/proc_holder/spell/invoked/attach_bodypart
+	t4 = /obj/effect/proc_holder/spell/invoked/cure_rot
 
 /datum/patron/divine/malum
 	name = "Malum"
@@ -75,3 +76,9 @@
 	desc = "The Opinionless God, his children hold no malice in their actions."
 	worshippers = "Smiths, Miners, Artists"
 	t1 = /obj/effect/proc_holder/spell/invoked/sacred_flame_rogue
+
+/datum/patron/divine/eora
+	name = "Eora"
+	domain = "Goddess of the Family, Love and Lust"
+	desc = "The Lovely One, her divine gift was that of family and love."
+	worshippers = "Lovers, Harlots, Doting Grandparents"

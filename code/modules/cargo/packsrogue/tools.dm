@@ -5,7 +5,7 @@
 	crate_type = /obj/structure/closet/crate/chest/merchant
 
 /datum/supply_pack/rogue/tools/ropes
-	name = "Rope"
+	name = "Ropes"
 	cost = 10
 	contains = list(
 					/obj/item/rope,
@@ -24,12 +24,21 @@
 					/obj/item/scomstone/bad)
 */
 /datum/supply_pack/rogue/tools/chains
-	name = "Chain"
+	name = "Chains"
 	cost = 15
 	contains = list(
 					/obj/item/rope/chain,
 					/obj/item/rope/chain,
 					/obj/item/rope/chain,
+				)
+
+/datum/supply_pack/rogue/tools/sacks
+	name = "Sacks"
+	cost = 10
+	contains = list(
+					/obj/item/storage/roguebag,
+					/obj/item/storage/roguebag,
+					/obj/item/storage/roguebag,
 				)
 
 /datum/supply_pack/rogue/tools/paper
@@ -56,7 +65,7 @@
 				)
 
 /datum/supply_pack/rogue/tools/bottl
-	name = "Glass Bottle"
+	name = "Glass Bottles"
 	cost = 15
 	contains = list(
 					/obj/item/reagent_containers/glass/bottle/rogue,
