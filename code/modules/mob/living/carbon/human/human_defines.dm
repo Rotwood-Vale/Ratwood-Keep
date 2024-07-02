@@ -121,3 +121,15 @@
 	/datum/rmb_intent/weak)
 
 	rot_type = /datum/component/rot/corpse
+
+/mob/living/carbon/human/has_penis()
+	return getorganslot(ORGAN_SLOT_PENIS)
+
+/mob/living/carbon/human/has_testicles()
+	return getorganslot(ORGAN_SLOT_TESTICLES)
+
+/mob/living/carbon/human/has_vagina()
+	return getorganslot(ORGAN_SLOT_VAGINA)
+
+/mob/living/carbon/human/has_breasts()
+	return getorganslot(ORGAN_SLOT_BREASTS)
