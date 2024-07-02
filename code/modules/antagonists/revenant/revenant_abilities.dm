@@ -361,4 +361,12 @@
 		vine.add_atom_colour("#823abb", TEMPORARY_COLOUR_PRIORITY)
 		new /obj/effect/temp_visual/revenant(vine.loc)
 		QDEL_IN(vine, 10)
-
+	for(var/obj/structure/glowshroom/shroom in T)
+		shroom.add_atom_colour("#823abb", TEMPORARY_COLOUR_PRIORITY)
+		new /obj/effect/temp_visual/revenant(shroom.loc)
+		QDEL_IN(shroom, 10)
+	for(var/obj/machinery/hydroponics/tray in T)
+		new /obj/effect/temp_visual/revenant(tray.loc)
+		tray.pestlevel = rand(8, 10)
+		tray.weedlevel = rand(8, 10)
+		tray.toxic = rand(45, 55)

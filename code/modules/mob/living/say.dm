@@ -105,7 +105,7 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 		return
 	
 	var/static/regex/ooc_regex = regex(@"^(?=.*[\(\)\[\]\<\>\{\}]).*$") //Yes, i know.
-	if(findtext_char(message, ooc_regex))
+	if(findtext(message, ooc_regex))
 		emote("me", 1, "mumbles incoherently.")
 		to_chat(src, span_warning("That was stupid of me. I should meditate on my actions."))
 		add_stress(/datum/stressevent/ooc_ic)
@@ -120,7 +120,7 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 		message = copytext(message, 2)
 	else if(message_mode || saymode)
 		message = copytext(message, 3)
-	if(findtext_char(message, " ", 1, 2))
+	if(findtext(message, " ", 1, 2))
 		message = copytext(message, 2)
 
 	if(message_mode == MODE_ADMIN)
@@ -162,7 +162,7 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 		message = copytext(message, 3)
 
 		// Trim the space if they said ",0 I LOVE LANGUAGES"
-		if(findtext_char(message, " ", 1, 2))
+		if(findtext(message, " ", 1, 2))
 			message = copytext(message, 2)
 
 	if(!language)
@@ -240,7 +240,7 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 		spans |= SPAN_ITALICS
 
 
-	send_speech(message, message_range, src, bubble_type, spans, language, message_mode, original_message)
+	send_speech(message, message_range, src, bubble_type, spans, language, message_mode)
 
 	if(succumbed)
 		succumb(1)
@@ -253,7 +253,7 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 		return
 	return message_language.spans
 
-/mob/living/Hear(message, atom/movable/speaker, datum/language/message_language, raw_message, radio_freq, list/spans, message_mode, original_message)
+/mob/living/Hear(message, atom/movable/speaker, datum/language/message_language, raw_message, radio_freq, list/spans, message_mode)
 	. = ..()
 	if(!client)
 		return
@@ -276,7 +276,7 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 	show_message(message, MSG_AUDIBLE, deaf_message, deaf_type)
 	return message
 
-/mob/living/send_speech(message, message_range = 6, obj/source = src, bubble_type = bubble_icon, list/spans, datum/language/message_language=null, message_mode, original_message)
+/mob/living/send_speech(message, message_range = 6, obj/source = src, bubble_type = bubble_icon, list/spans, datum/language/message_language=null, message_mode)
 	var/static/list/eavesdropping_modes = list(MODE_WHISPER = TRUE, MODE_WHISPER_CRIT = TRUE)
 	var/eavesdrop_range = 0
 	var/Zs_too = FALSE
@@ -327,9 +327,9 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 			if(AM.z != src.z)
 				continue
 		if(eavesdrop_range && get_dist(source, AM) > message_range && !(the_dead[AM]))
-			AM.Hear(eavesrendered, src, message_language, eavesdropping, , spans, message_mode, original_message)
+			AM.Hear(eavesrendered, src, message_language, eavesdropping, , spans, message_mode)
 		else
-			AM.Hear(rendered, src, message_language, message, , spans, message_mode, original_message)
+			AM.Hear(rendered, src, message_language, message, , spans, message_mode)
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_LIVING_SAY_SPECIAL, src, message)
 
 	//speech bubble

@@ -23,6 +23,16 @@
 	req_components = list(
 		/obj/item/stack/ore/bluespace_crystal = 20,
 		/obj/item/stack/cable_coil = 2)
+
+/obj/item/circuitboard/machine/dna_vault
+	name = "DNA Vault (Machine Board)"
+	icon_state = "command"
+	build_path = /obj/machinery/dna_vault //No freebies!
+	req_components = list(
+		/obj/item/stock_parts/capacitor/super = 5,
+		/obj/item/stock_parts/manipulator/pico = 5,
+		/obj/item/stack/cable_coil = 2)
+
 //Engineering
 
 /obj/item/circuitboard/machine/announcement_system
@@ -510,6 +520,8 @@
 		/obj/machinery/vending/wallmed = "NanoMed",
 		/obj/machinery/vending/assist  = "Vendomat",
 		/obj/machinery/vending/engivend = "Engi-Vend",
+		/obj/machinery/vending/hydronutrients = "NutriMax",
+		/obj/machinery/vending/hydroseeds = "MegaSeed Servitor",
 		/obj/machinery/vending/sustenance = "Sustenance Vendor",
 		/obj/machinery/vending/dinnerware = "Plasteel Chef's Dinnerware Vendor",
 		/obj/machinery/vending/cart = "PTech",
@@ -821,6 +833,11 @@
 		/obj/item/stock_parts/micro_laser = 2,
 		/obj/item/stock_parts/scanning_module = 1)
 
+/obj/item/circuitboard/machine/processor/slime
+	name = "Slime Processor (Machine Board)"
+	icon_state = "science"
+	build_path = /obj/machinery/processor/slime
+
 /obj/item/circuitboard/machine/protolathe/department/science
 	name = "Departmental Protolathe (Machine Board) - Science"
 	icon_state = "science"
@@ -910,6 +927,16 @@
 
 //Service
 
+/obj/item/circuitboard/machine/biogenerator
+	name = "Biogenerator (Machine Board)"
+	icon_state = "service"
+	build_path = /obj/machinery/biogenerator
+	req_components = list(
+		/obj/item/stock_parts/matter_bin = 1,
+		/obj/item/stock_parts/manipulator = 1,
+		/obj/item/stack/cable_coil = 1,
+		/obj/item/stack/sheet/glass = 1)
+
 /obj/item/circuitboard/machine/chem_dispenser/drinks
 	name = "Soda Dispenser (Machine Board)"
 	icon_state = "service"
@@ -969,6 +996,16 @@
 		/obj/item/stock_parts/manipulator = 1)
 	needs_anchored = FALSE
 
+/obj/item/circuitboard/machine/hydroponics
+	name = "Hydroponics Tray (Machine Board)"
+	icon_state = "service"
+	build_path = /obj/machinery/hydroponics/constructable
+	req_components = list(
+		/obj/item/stock_parts/matter_bin = 2,
+		/obj/item/stock_parts/manipulator = 1,
+		/obj/item/stack/sheet/glass = 1)
+	needs_anchored = FALSE
+
 /obj/item/circuitboard/machine/microwave
 	name = "Microwave (Machine Board)"
 	icon_state = "service"
@@ -980,6 +1017,38 @@
 		/obj/item/stack/sheet/glass = 2)
 	needs_anchored = FALSE
 
+/obj/item/circuitboard/machine/plantgenes
+	name = "Plant DNA Manipulator (Machine Board)"
+	icon_state = "service"
+	build_path = /obj/machinery/plantgenes
+	req_components = list(
+		/obj/item/stock_parts/manipulator = 1,
+		/obj/item/stock_parts/micro_laser = 1,
+		/obj/item/stack/sheet/glass = 1,
+		/obj/item/stock_parts/scanning_module = 1)
+
+/obj/item/circuitboard/machine/processor
+	name = "Food Processor (Machine Board)"
+	icon_state = "service"
+	build_path = /obj/machinery/processor
+	req_components = list(
+		/obj/item/stock_parts/matter_bin = 1,
+		/obj/item/stock_parts/manipulator = 1)
+	needs_anchored = FALSE
+
+/obj/item/circuitboard/machine/processor/attackby(obj/item/I, mob/user, params)
+	if(I.tool_behaviour == TOOL_SCREWDRIVER)
+		if(build_path == /obj/machinery/processor)
+			name = "Slime Processor (Machine Board)"
+			build_path = /obj/machinery/processor/slime
+			to_chat(user, span_notice("Name protocols successfully updated."))
+		else
+			name = "Food Processor (Machine Board)"
+			build_path = /obj/machinery/processor
+			to_chat(user, span_notice("Defaulting name protocols."))
+	else
+		return ..()
+
 /obj/item/circuitboard/machine/protolathe/department/service
 	name = "Departmental Protolathe - Service (Machine Board)"
 	icon_state = "service"
@@ -989,6 +1058,15 @@
 	name = "Recycler (Machine Board)"
 	icon_state = "service"
 	build_path = /obj/machinery/recycler
+	req_components = list(
+		/obj/item/stock_parts/matter_bin = 1,
+		/obj/item/stock_parts/manipulator = 1)
+	needs_anchored = FALSE
+
+/obj/item/circuitboard/machine/seed_extractor
+	name = "Seed Extractor (Machine Board)"
+	icon_state = "service"
+	build_path = /obj/machinery/seed_extractor
 	req_components = list(
 		/obj/item/stock_parts/matter_bin = 1,
 		/obj/item/stock_parts/manipulator = 1)

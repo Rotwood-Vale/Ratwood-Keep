@@ -1,5 +1,6 @@
 /obj/item/grown/log/tree
 	icon = 'icons/roguetown/items/natural.dmi'
+	seed = null
 	name = "log"
 	desc = "A big tree log. It's very heavy, and huge."
 	icon_state = "log"
@@ -38,6 +39,7 @@
 	smeltresult = /obj/item/rogueore/coal
 
 /obj/item/grown/log/tree/stick
+	seed = null
 	name = "stick"
 	icon_state = "stick1"
 	desc = "A dry stick from a tree branch."
@@ -121,6 +123,7 @@
 	slot_flags = ITEM_SLOT_MOUTH|ITEM_SLOT_HIP
 
 /obj/item/grown/log/tree/lumber
+	seed = null
 	name = "lumber"
 	icon_state = "lumber"
 	desc = "This is some lumber." // i haven't seen this ingame yet

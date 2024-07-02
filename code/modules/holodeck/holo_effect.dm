@@ -93,6 +93,9 @@
 		/mob/living/simple_animal/pet/dog/corgi, /mob/living/simple_animal/pet/dog/corgi/puppy,
 		/mob/living/simple_animal/pet/dog/pug, /mob/living/simple_animal/pet/fox)
 
+/obj/effect/holodeck_effect/mobspawner/bee
+	mobtype = /mob/living/simple_animal/hostile/poison/bees/toxin
+
 /obj/effect/holodeck_effect/mobspawner/monkey
 	mobtype = /mob/living/simple_animal/holodeck_monkey
 

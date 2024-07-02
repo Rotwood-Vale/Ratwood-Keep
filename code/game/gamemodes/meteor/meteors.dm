@@ -344,5 +344,26 @@ GLOBAL_LIST_INIT(meteorsC, list(/obj/effect/meteor/dust)) //for space dust event
 	..()
 	if(prob(20))
 		explosion(src.loc,2,4,6,8)
+
+//////////////////////////
+//Spookoween meteors
+/////////////////////////
+
+GLOBAL_LIST_INIT(meteorsSPOOKY, list(/obj/effect/meteor/pumpkin))
+
+/obj/effect/meteor/pumpkin
+	name = "PUMPKING"
+	desc = ""
+	icon = 'icons/obj/meteor_spooky.dmi'
+	icon_state = "pumpkin"
+	hits = 10
+	heavy = 1
+	dropamt = 1
+	meteordrop = list(/obj/item/clothing/head/hardhat/pumpkinhead, /obj/item/reagent_containers/food/snacks/grown/pumpkin)
+	threat = 100
+
+/obj/effect/meteor/pumpkin/Initialize()
+	. = ..()
+	meteorsound = pick('sound/blank.ogg')
 //////////////////////////
 #undef DEFAULT_METEOR_LIFETIME

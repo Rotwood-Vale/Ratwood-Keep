@@ -40,10 +40,37 @@ SUBSYSTEM_DEF(research)
 	//Around 450000 points max???
 
 /datum/controller/subsystem/research/Initialize()
+	point_types = TECHWEB_POINT_TYPE_LIST_ASSOCIATIVE_NAMES
+	initialize_all_techweb_designs()
+	initialize_all_techweb_nodes()
+	science_tech = new /datum/techweb/science
+	admin_tech = new /datum/techweb/admin
+	autosort_categories()
+	error_design = new
+	error_node = new
 	return ..()
 
 /datum/controller/subsystem/research/fire()
-	return
+	var/list/bitcoins = list()
+	if(multiserver_calculation)
+		var/eff = calculate_server_coefficient()
+		for(var/obj/machinery/rnd/server/miner in servers)
+			var/list/result = (miner.mine())	//SLAVE AWAY, SLAVE.
+			for(var/i in result)
+				result[i] *= eff
+				bitcoins[i] = bitcoins[i]? bitcoins[i] + result[i] : result[i]
+	else
+		for(var/obj/machinery/rnd/server/miner in servers)
+			if(miner.working)
+				bitcoins = single_server_income.Copy()
+				break			//Just need one to work.
+	if (!isnull(last_income))
+		var/income_time_difference = world.time - last_income
+		science_tech.last_bitcoins = bitcoins  // Doesn't take tick drift into account
+		for(var/i in bitcoins)
+			bitcoins[i] *= income_time_difference / 10
+		science_tech.add_point_list(bitcoins)
+	last_income = world.time
 
 /datum/controller/subsystem/research/proc/calculate_server_coefficient()	//Diminishing returns.
 	var/amt = servers.len

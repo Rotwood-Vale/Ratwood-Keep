@@ -40,8 +40,6 @@
 			set_typing_indicator(TRUE, TRUE)
 		if(_key == "M")
 			set_typing_indicator(TRUE, TRUE)
-		if(_key == ",")
-			set_typing_indicator(TRUE, TRUE)
 	return ..()
 
 /mob/proc/handle_typing_indicator()

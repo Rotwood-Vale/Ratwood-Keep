@@ -39,6 +39,13 @@
 	name = "Mister Scrubby"
 	spawner_type = /obj/item/soap/syndie
 
+/obj/item/grenade/spawnergrenade/buzzkill
+	name = "Buzzkill grenade"
+	desc = ""
+	icon_state = "holy_grenade"
+	spawner_type = /mob/living/simple_animal/hostile/poison/bees/toxin
+	deliveryamt = 10
+
 /obj/item/grenade/spawnergrenade/clown
 	name = "C.L.U.W.N.E."
 	desc = ""

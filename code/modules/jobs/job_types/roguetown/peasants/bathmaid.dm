@@ -4,7 +4,7 @@
 	flag = WENCH
 	department_flag = PEASANTS
 	faction = "Station"
-	total_positions = 5
+	total_positions = 3
 	spawn_positions = 5
 
 	allowed_sexes = list(MALE, FEMALE)
@@ -26,8 +26,7 @@
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
 	armor = /obj/item/clothing/suit/roguetown/shirt/dress/gen/sexy
 	neck = /obj/item/storage/belt/rogue/pouch
-	r_hand = /obj/item/roguekey/nightmaiden
-	l_hand = /obj/item/rogue/instrument/harp
+	backpack_contents = list(/obj/item/roguekey/nightmaiden = 1, /obj/item/rogue/instrument/harp = 1)
 
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 3, TRUE)

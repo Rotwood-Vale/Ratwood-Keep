@@ -234,13 +234,3 @@
 /datum/sprite_accessory/wings/huge/robotic
 	name = "Robotic"
 	icon_state = "robotic"
-
-/datum/sprite_accessory/wings/large
-	abstract_type = /datum/sprite_accessory/wings/large
-	icon = 'icons/mob/sprite_accessory/wings/wings_64x32.dmi'
-	relevant_layers = list(BODY_BEHIND_LAYER, BODY_FRONT_LAYER)
-	pixel_x = -16
-
-/datum/sprite_accessory/wings/large/harpyswept
-	name = "Harpy (Swept)"
-	icon_state = "harpys"

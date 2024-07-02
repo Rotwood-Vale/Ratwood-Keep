@@ -143,6 +143,17 @@
 
 		return
 
+	if(istype(target, /obj/machinery/crop))
+		if(!reagents.total_volume)
+			to_chat(user, span_warning("[src] is empty!"))
+			return
+		var/obj/machinery/crop/C = target
+		C.water = 100
+		reagents.clear_reagents()
+		user.visible_message(span_notice("[user] waters [target]."), \
+							span_notice("I water [target]."))
+		return
+
 	if(reagents.total_volume && user.used_intent.type == INTENT_SPLASH)
 		user.visible_message(span_danger("[user] splashes the contents of [src] onto [target]!"), \
 							span_notice("I splash the contents of [src] onto [target]."))

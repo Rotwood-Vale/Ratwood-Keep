@@ -16,6 +16,10 @@
 
 	if(!length(key_emotes) || custom_param)
 		if(intentional)
+			if(client)
+				if(get_playerquality(client.ckey) <= -10)
+					to_chat(src, span_warning("Unrecognized emote."))
+					return
 			var/list/custom_emote = GLOB.emote_list["me"]
 			for(var/datum/emote/P in custom_emote)
 				P.run_emote(src, oldact, m_type, intentional, targetted)
@@ -26,7 +30,7 @@
 			next_emote = world.time + P.mute_time
 			return
 
-/atom/movable/proc/send_speech_emote(message, range = 7, obj/source = src, bubble_type, list/spans, datum/language/message_language = null, message_mode, original_message)
+/atom/movable/proc/send_speech_emote(message, range = 7, obj/source = src, bubble_type, list/spans, datum/language/message_language = null, message_mode)
 	var/rendered = compose_message(src, message_language, message, , spans, message_mode)
 	for(var/_AM in get_hearers_in_view(range, source))
 		var/atom/movable/AM = _AM

@@ -256,5 +256,9 @@
 /mob/living/simple_animal/drone/experience_pressure_difference(pressure_difference, direction)
 	return
 
+/mob/living/simple_animal/drone/bee_friendly()
+	// Why would bees pay attention to drones?
+	return 1
+
 /mob/living/simple_animal/drone/electrocute_act(shock_damage, source, siemens_coeff, flags = NONE)
 	return 0 //So they don't die trying to fix wiring

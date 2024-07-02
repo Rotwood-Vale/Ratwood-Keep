@@ -1,6 +1,6 @@
 /datum/advclass/seamstress
-	name = "Seamster"
-	allowed_sexes = list(MALE, FEMALE)
+	name = "Seamstress"
+	allowed_sexes = list(FEMALE)
 	allowed_races = RACES_ALL_KINDS
 	outfit = /datum/outfit/job/roguetown/adventurer/seamstress
 	category_tags = list(CTAG_PILGRIM, CTAG_TOWNER)
@@ -10,7 +10,7 @@
 	H.mind.adjust_skillrank(/datum/skill/misc/sewing, 4, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/weaving, 4, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/craft/crafting, 3, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/combat/knives, 3, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/medicine, 2, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 2, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
@@ -32,4 +32,3 @@
 	H.change_stat("intelligence", 2)
 	H.change_stat("speed", 2)  
 	H.change_stat("perception", 1)
-	H.change_stat("strength", -1)

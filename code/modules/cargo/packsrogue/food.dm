@@ -5,7 +5,7 @@
 
 /datum/supply_pack/rogue/food/healthpot
 	name = "Healing Potion"
-	cost = 18
+	cost = 45
 	contains = list(
 					/obj/item/reagent_containers/glass/bottle/rogue/healthpot,
 					/obj/item/reagent_containers/glass/bottle/rogue/healthpot,
@@ -14,7 +14,7 @@
 
 /datum/supply_pack/rogue/food/manapot
 	name = "Manna Potion"
-	cost = 24
+	cost = 45
 	contains = list(
 					/obj/item/reagent_containers/glass/bottle/rogue/manapot,
 					/obj/item/reagent_containers/glass/bottle/rogue/manapot,

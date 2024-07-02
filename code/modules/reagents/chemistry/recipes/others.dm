@@ -682,6 +682,15 @@
 	required_reagents = list(/datum/reagent/fuel = 3)
 	required_container = /obj/item/reagent_containers/food/snacks/deadmouse
 
+
+/datum/chemical_reaction/slimejelly
+	name = "artificial slime jelly"
+	id = /datum/reagent/toxin/slimejelly
+	results = list(/datum/reagent/toxin/slimejelly = 5)
+	required_reagents = list(/datum/reagent/fuel/oil = 3, /datum/reagent/uranium/radium = 2, /datum/reagent/consumable/tinlux =1)
+	required_container = /obj/item/reagent_containers/food/snacks/grown/mushroom/glowshroom
+	mix_message = "The mushroom's insides bubble and pop and it becomes very limp."
+
 /datum/chemical_reaction/slime_extractification
 	name = "slime extractification"
 	id = "slime extractification"

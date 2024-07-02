@@ -32,11 +32,16 @@
 		if("threatening")
 			wave_type = GLOB.meteors_threatening
 		if("catastrophic")
-			wave_type = GLOB.meteors_catastrophic
+			if(SSevents.holidays && SSevents.holidays[HALLOWEEN])
+				wave_type = GLOB.meteorsSPOOKY
+			else
+				wave_type = GLOB.meteors_catastrophic
 		if("meaty")
 			wave_type = GLOB.meteorsB
 		if("space dust")
 			wave_type = GLOB.meteorsC
+		if("halloween")
+			wave_type = GLOB.meteorsSPOOKY
 		else
 			WARNING("Wave name of [wave_name] not recognised.")
 			kill()

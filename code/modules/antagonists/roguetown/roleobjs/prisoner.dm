@@ -35,14 +35,14 @@
 		count = 1
 
 	if(traitorwin)
-		owner.adjust_triumphs(3)
+		owner.adjust_triumphs(count)
 		to_chat(owner.current, span_greentext("I've ESCAPED THAT AWFUL CELL! THE WORLD IS MINE!"))
 		if(owner.current)
 			owner.current.playsound_local(get_turf(owner.current), 'sound/misc/triumph.ogg', 100, FALSE, pressure_affected = FALSE)
 	else
 		if(considered_alive(owner))
-			owner.adjust_triumphs(1)
-			to_chat(owner.current, span_redtext("I didn't get away this week, but I live to try again!"))
+			owner.adjust_triumphs(-2)
+			to_chat(owner.current, span_redtext("I'LL NEVER ESCAPE!!"))
 		else
 			to_chat(owner.current, span_redtext("I've escaped... in DEATH!"))
 		if(owner.current)

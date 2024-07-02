@@ -162,6 +162,14 @@
 				to_chat(H, span_warning("My disguise fails!"))
 				H.vampire_undisguise(src)
 		vitae -= 1
+	else
+		to_chat(H, span_userdanger("I RAN OUT OF VITAE!"))
+		var/obj/shapeshift_holder/SS = locate() in H
+		if(SS)
+			SS.shape.dust()
+		H.dust()
+		return
+
 
 /mob/living/carbon/human/proc/disguise_button()
 	set name = "Disguise"

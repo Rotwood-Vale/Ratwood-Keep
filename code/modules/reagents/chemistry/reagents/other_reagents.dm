@@ -209,10 +209,6 @@
 	if(reac_volume >= 5)
 //		T.MakeSlippery(TURF_WET_WATER, reac_volume*1.5 SECONDS, reac_volume*1.5 SECONDS)
 		T.add_water(reac_volume * 3) //nuproc
-	
-	var/obj/structure/soil/soil = get_soil_on_turf(T)
-	if(soil)
-		soil.adjust_water(reac_volume)
 
 //	for(var/mob/living/simple_animal/slime/M in T)
 //		M.apply_water()

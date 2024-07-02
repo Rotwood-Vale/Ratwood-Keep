@@ -327,17 +327,7 @@
 	. = ..()
 	SSroguemachine.crown = src
 
-/obj/item/clothing/head/roguetown/crown/serpcrown/proc/anti_stall()
-	src.visible_message(span_warning("The Crown of Rockhill crumbles to dust, the ashes spiriting away in the direction of the Keep."))
-	SSroguemachine.crown = null //Do not harddel.
-	qdel(src) //Anti-stall
-
-/obj/item/clothing/head/roguetown/crown/fakecrown
-	name = "fake crown"
-	desc = "You shouldn't be seeing this."
-	icon_state = "serpcrown"
-
-/obj/item/clothing/head/roguetown/crown/surplus
+/obj/item/clothing/head/roguetown/crown/serpcrown/surplus
 	name = "crown"
 	icon_state = "serpcrowno"
 	sellprice = 100
@@ -688,28 +678,16 @@
 	icon_state = "wizardhat"
 	mob_overlay_icon = 'icons/roguetown/clothing/onmob/64x64/head.dmi'
 	dynamic_hair_suffix = "+generic"
+	sellprice = 100
 	worn_x_dimension = 64
 	worn_y_dimension = 64
 	sewrepair = TRUE
-
-/obj/item/clothing/head/roguetown/wizhat/red
-	icon_state = "wizardhatred"
-
-/obj/item/clothing/head/roguetown/wizhat/yellow
-	icon_state = "wizardhatyellow"
-
-/obj/item/clothing/head/roguetown/wizhat/green
-	icon_state = "wizardhatgreen"
-
-/obj/item/clothing/head/roguetown/wizhat/black
-	icon_state = "wizardhatblack"
 
 /obj/item/clothing/head/roguetown/wizhat/gen
 	icon_state = "wizardhatgen"
 
 /obj/item/clothing/head/roguetown/wizhat/gen/wise
 	name = "wise hat"
-	sellprice = 100
 	desc = "Only the wisest of nimrods wear this."
 
 /obj/item/clothing/head/roguetown/wizhat/gen/wise/equipped(mob/user, slot)

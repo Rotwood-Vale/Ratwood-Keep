@@ -23,7 +23,7 @@
 "oN" = (/turf/open/floor/rogue/dirt,/area/rogue/under/cave)
 "oO" = (/turf/open/floor/rogue/dirt/road,/area/rogue/outdoors/rtfield)
 "pL" = (/turf/open/floor/rogue/cobblerock,/area/rogue/outdoors/town/sargoth)
-"rb" = (/obj/item/clothing/head/roguetown/crown/surplus,/obj/effect/decal/remains/human,/obj/effect/decal/cleanable/blood/old,/turf/open/floor/rogue/dirt/road,/area/rogue/under/cave)
+"rb" = (/obj/item/clothing/head/roguetown/crown/serpcrown/surplus,/obj/effect/decal/remains/human,/obj/effect/decal/cleanable/blood/old,/turf/open/floor/rogue/dirt/road,/area/rogue/under/cave)
 "rg" = (/turf/open/floor/rogue/dirt,/area/rogue/outdoors/rtfield)
 "rN" = (/turf/closed/mineral/rogue/salt,/area/rogue/outdoors/rtfield)
 "rU" = (/mob/living/carbon/human/species/skeleton/npc,/turf/open/floor/rogue/dirt/road,/area/rogue/under/cave)

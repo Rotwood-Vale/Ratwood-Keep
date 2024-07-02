@@ -406,6 +406,24 @@
 	build_path = /obj/item/reagent_containers/food/drinks/shaker
 	category = list("initial","Dinnerware")
 
+/datum/design/cultivator
+	name = "Cultivator"
+	id = "cultivator"
+	build_type = AUTOLATHE | PROTOLATHE
+	materials = list(/datum/material/iron=50)
+	build_path = /obj/item/cultivator
+	category = list("initial","Misc", "Tool Designs")
+	departmental_flags = DEPARTMENTAL_FLAG_SERVICE
+
+/datum/design/plant_analyzer
+	name = "Plant Analyzer"
+	id = "plant_analyzer"
+	build_type = AUTOLATHE | PROTOLATHE
+	materials = list(/datum/material/iron = 30, /datum/material/glass = 20)
+	build_path = /obj/item/plant_analyzer
+	category = list("initial","Misc", "Tool Designs")
+	departmental_flags = DEPARTMENTAL_FLAG_SERVICE
+
 /datum/design/shovel
 	name = "Shovel"
 	id = "shovel"

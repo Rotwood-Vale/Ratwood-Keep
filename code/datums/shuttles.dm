@@ -179,6 +179,13 @@
 	admin_notes = "No brig, no medical facilities, no shuttle console."
 	credit_cost = 2500
 
+/datum/map_template/shuttle/emergency/airless/post_load()
+	. = ..()
+	//enable buying engines from cargo
+	var/datum/supply_pack/P = SSshuttle.supply_packs[/datum/supply_pack/engineering/shuttle_engine]
+	P.special_enabled = TRUE
+
+
 /datum/map_template/shuttle/emergency/asteroid
 	suffix = "asteroid"
 	name = "Asteroid Station Emergency Shuttle"

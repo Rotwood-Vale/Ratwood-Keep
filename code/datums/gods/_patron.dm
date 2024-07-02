@@ -30,10 +30,8 @@ GLOBAL_LIST_EMPTY(preference_patrons)
 	var/t1
 	/// Tier 2 spell
 	var/t2
-	/// Tier 3 spell
-	var/t3
 	/// Final tier spell
-	var/t4
+	var/t3
 
 /datum/patron/proc/on_gain(mob/living/pious)
 	for(var/trait in mob_traits)

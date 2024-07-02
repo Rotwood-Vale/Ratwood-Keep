@@ -111,7 +111,7 @@
 		say(message, language = message_language)
 	voicecolor_override = null
 
-/obj/structure/roguemachine/scomm/Hear(message, atom/movable/speaker, message_language, raw_message, radio_freq, list/spans, message_mode, original_message)
+/obj/structure/roguemachine/scomm/Hear(message, atom/movable/speaker, message_language, raw_message, radio_freq, list/spans, message_mode)
 	if(speaker == src)
 		return
 	if(speaker.loc != loc)
@@ -237,7 +237,7 @@
 	else
 		send_speech(message, 1, src, , spans, message_language=language)
 
-/obj/item/scomstone/Hear(message, atom/movable/speaker, message_language, raw_message, radio_freq, list/spans, message_mode, original_message)
+/obj/item/scomstone/Hear(message, atom/movable/speaker, message_language, raw_message, radio_freq, list/spans, message_mode)
 	if(speaker == src)
 		return
 	if(loc != speaker)
@@ -264,7 +264,7 @@
 	listening = FALSE
 	sellprice = 2
 
-/obj/item/scomstone/bad/Hear(message, atom/movable/speaker, message_language, raw_message, radio_freq, list/spans, message_mode, original_message)
+/obj/item/scomstone/bad/Hear()
 	return
 //LISTENSTONE		LISTENSTONE
 /obj/item/listenstone

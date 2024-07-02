@@ -508,7 +508,7 @@
 	nodismemsleeves = TRUE
 	inhand_mod = TRUE
 //	allowed_sex = list(MALE)
-	allowed_race = NON_DWARVEN_RACE_TYPES
+	allowed_race = HUMANLIKE_RACE_TYPES
 	detail_tag = "_det"
 	detail_color = CLOTHING_PURPLE
 
@@ -795,7 +795,7 @@
 	sleevetype = "shirt"
 	slot_flags = ITEM_SLOT_CLOAK
 	allowed_sex = list(MALE, FEMALE)
-	allowed_race = NON_DWARVEN_RACE_TYPES
+	allowed_race = HUMANLIKE_RACE_TYPES
 	nodismemsleeves = TRUE
 
 
@@ -823,7 +823,7 @@
 	sleevetype = "shirt"
 	slot_flags = ITEM_SLOT_CLOAK
 	allowed_sex = list(MALE, FEMALE)
-	allowed_race = NON_DWARVEN_RACE_TYPES
+	allowed_race = HUMANLIKE_RACE_TYPES
 	sellprice = 50
 	nodismemsleeves = TRUE
 
@@ -836,7 +836,7 @@
 	sleevetype = "shirt"
 	slot_flags = ITEM_SLOT_CLOAK
 	allowed_sex = list(MALE, FEMALE)
-	allowed_race = NON_DWARVEN_RACE_TYPES
+	allowed_race = HUMANLIKE_RACE_TYPES
 	sellprice = 50
 	nodismemsleeves = TRUE
 
@@ -874,7 +874,7 @@
 	icon_state = "guardcloak"
 	color = CLOTHING_RED
 	allowed_sex = list(MALE, FEMALE)
-	allowed_race = NON_DWARVEN_RACE_TYPES
+	allowed_race = HUMANLIKE_RACE_TYPES
 	inhand_mod = FALSE
 
 /obj/item/clothing/cloak/half/vet/Initialize()

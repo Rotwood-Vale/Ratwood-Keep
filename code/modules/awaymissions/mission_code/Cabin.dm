@@ -87,6 +87,20 @@
 
 //other Cabin Stuff//
 
+/obj/machinery/recycler/lumbermill
+	name = "lumbermill saw"
+	desc = ""
+	obj_flags = CAN_BE_HIT | EMAGGED
+	item_recycle_sound = 'sound/blank.ogg'
+
+/obj/machinery/recycler/lumbermill/recycle_item(obj/item/grown/log/L)
+	if(!istype(L))
+		return
+	else
+		var/potency = L.seed.potency
+		..()
+		new L.plank_type(src.loc, 1 + round(potency / 25))
+
 /mob/living/simple_animal/chicken/rabbit/normal
 	icon_state = "b_rabbit"
 	icon_living = "b_rabbit"

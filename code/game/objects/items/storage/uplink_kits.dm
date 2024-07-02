@@ -169,9 +169,12 @@
 			new /obj/item/gun/energy/decloner/unrestricted(src)
 
 		if("bee")
+			new /obj/item/paper/fluff/bee_objectives(src) // 0 tc (motivation)
 			new /obj/item/clothing/suit/hooded/bee_costume(src) // 0 tc
 			new /obj/item/clothing/mask/rat/bee(src) // 0 tc
 			new /obj/item/storage/belt/fannypack/yellow(src) // 0 tc
+			new /obj/item/grenade/spawnergrenade/buzzkill(src)
+			new /obj/item/grenade/spawnergrenade/buzzkill(src)
 			new /obj/item/reagent_containers/glass/bottle/beesease(src) // 10 tc?
 			new /obj/item/melee/beesword(src) //priceless
 
@@ -520,6 +523,10 @@
 /obj/item/storage/box/syndie_kit/bee_grenades
 	name = "buzzkill grenade box"
 	desc = ""
+
+/obj/item/storage/box/syndie_kit/bee_grenades/PopulateContents()
+	for(var/i in 1 to 3)
+		new /obj/item/grenade/spawnergrenade/buzzkill(src)
 
 ///Subtype for the sabotage bundle. Contains three C4, two X4 and 6 signalers
 /obj/item/storage/backpack/duffelbag/syndie/sabotage

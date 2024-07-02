@@ -3,8 +3,8 @@
 	flag = MONK
 	department_flag = CHURCHMEN
 	faction = "Station"
-	total_positions = 4
-	spawn_positions = 4
+	total_positions = 3
+	spawn_positions = 3
 
 	allowed_races = RACES_TOLERATED_UP
 	allowed_patrons = ALL_ACOLYTE_PATRONS

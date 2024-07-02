@@ -2,6 +2,7 @@
 	category = CATEGORY_ADMIN
 	weight = WEIGHT_ADMIN
 
+/*
 /datum/keybinding/admin/admin_say
 	hotkey_keys = list("F3")
 	name = "admin_say"
@@ -29,13 +30,9 @@
 	description = "Opens up the new player panel"
 
 /datum/keybinding/admin/player_panel_new/down(client/user)
-	if(!check_rights(R_ADMIN))
-		to_chat(user, "<span class='warning'>You do not have permission to access the player panel.</span>")
-		return
 	user.holder.player_panel_new()
 	return TRUE
 
-/*
 /datum/keybinding/admin/toggle_buildmode_self
 	hotkey_keys = list("F7")
 	name = "toggle_buildmode_self"

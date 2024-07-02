@@ -87,7 +87,6 @@
 							sexcon.begin_fapping(G, user)
 	//US ONTO VICTIM
 	if(src != target && target == user)
-		log_combat(user, target, "attempted to begin mechanical ERP between", src)
 		var/what2do = list()
 		var/theirgroin = TRUE
 		var/ourgroin = TRUE
@@ -150,7 +149,6 @@
 				if(G)
 					src.sexcon.begin_fapping(G, user)
 
-		
 /datum/sex_controller/proc/begin_fuck(mob/living/user)
 	testing("fuckstart")
 	if(!user)
@@ -211,7 +209,6 @@
 			user.visible_message("<span class='warning'>[user] loses her purity!</span>")
 			H.flash_fullscreen("redflash3")
 			H.on_virgin_loss()
-			log_combat(user, owner, "deflowered(ERP)", src)
 	START_PROCESSING(SSsex, user.sexcon)
 	START_PROCESSING(SSsex, src)
 
@@ -278,7 +275,6 @@
 		user.emote("embed", forced = TRUE)
 	playsound(owner, list('sound/misc/mat/insert (1).ogg','sound/misc/mat/insert (2).ogg'), 20, TRUE, ignore_walls = FALSE)
 	owner.visible_message("<span class='[!user.cmode ? "love" : "warning"]'>[owner] zodomizes [user].</span>")
-	log_combat(owner, user, "initiated sodomy(ERP)", src)
 	START_PROCESSING(SSsex, user.sexcon)
 	START_PROCESSING(SSsex, src)
 
