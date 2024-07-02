@@ -177,6 +177,8 @@
 			return "ADJ"
 		if(BODY_BEHIND_LAYER)
 			return "BEHIND"
+		if(BODY_UNDER_LAYER)
+			return "UNDER"
 		else
 			CRASH("Tried to get an unimplemented layer suffix for sprite accessory of type [type]")
 
