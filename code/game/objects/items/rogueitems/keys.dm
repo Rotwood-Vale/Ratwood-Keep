@@ -305,6 +305,41 @@
 	icon_state = "eyekey"
 	lockid = "porta"
 
+// Ship key
+/obj/item/roguekey/ship
+	name = "ship key"
+	desc = "This rusty key should open the lower dock of the harbor ship."
+	icon_state = "rustkey"
+	lockid = "ship"
+
+// Harbor key
+/obj/item/roguekey/harbor
+	name = "harbor key"
+	desc = "This iron key should open harbor office, barracks and the watchtower."
+	icon_state = "spikekey"
+	lockid = "harbor"
+
+// Rentable shop one
+/obj/item/roguekey/shop_one
+	name = "harbor shop I key"
+	desc = "This bronze key should open one of the harbor shops."
+	icon_state = "brownkey"
+	lockid = "shop_one"
+
+// Rentable shop two
+/obj/item/roguekey/shop_two
+	name = "harbor shop II key"
+	desc = "This bronze key should open one of the harbor shops."
+	icon_state = "brownkey"
+	lockid = "shop_two"
+
+// Rentable shop three
+/obj/item/roguekey/shop_three
+	name = "harbor shop III key"
+	desc = "This bronze key should open one of the harbor shops."
+	icon_state = "brownkey"
+	lockid = "shop_three"
+
 //custom key
 /obj/item/roguekey/custom
 	name = "custom key"

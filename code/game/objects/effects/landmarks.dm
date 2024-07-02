@@ -393,6 +393,15 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	name = "Smithy Apprentice"
 	icon_state = "arrow"
 
+// Harbor
+/obj/effect/landmark/start/harbormaster
+	name = "Harbormaster"
+	icon_state = "arrow"
+
+/obj/effect/landmark/start/longshoreman
+	name = "Longshoreman"
+	icon_state = "arrow"
+
 //goblin
 
 /obj/effect/landmark/start/goblinking
@@ -808,3 +817,14 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark/start/new_player)
 
 /obj/effect/landmark/underworldsafe // To prevent demons spawn camping will save a lot of ear rape.
 	name = "safe zone"
+
+/obj/effect/landmark/shipping_point
+	name = "shipping point"
+
+/obj/effect/landmark/shipping_point/Initialize()
+	. = ..()
+	SSshipments.shipment_landmarks += src
+
+/obj/effect/landmark/shipping_point/Destroy()
+	SSshipments.shipment_landmarks -= src
+	. = ..()

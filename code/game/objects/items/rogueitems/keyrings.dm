@@ -196,3 +196,10 @@
 
 /obj/item/keyring/royal
 	keys = list(/obj/item/roguekey/manor, /obj/item/roguekey/royal)
+
+/obj/item/keyring/harbormaster
+	keys = list(/obj/item/roguekey/harbor, /obj/item/roguekey/ship)
+
+/obj/item/keyring/rentables
+	name = "rentables keyring"
+	keys = list(/obj/item/roguekey/shop_one, /obj/item/roguekey/shop_two, /obj/item/roguekey/shop_three)
