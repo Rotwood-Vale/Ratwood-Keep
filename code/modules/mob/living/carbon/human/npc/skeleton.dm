@@ -43,12 +43,6 @@
 	src.regenerate_limb(BODY_ZONE_L_ARM)
 	// src.remove_all_languages()
 	// uncomment this to prohibit skeletons from knowing or speaking any languages. This is commented to allow skeletons to be the main subject of admin events. (eg: skeleton traders, skeletons concealing their bones and blending in with the kingdom society, the underworld bar skeletons, skeletons telling skeleton jokes)
-	var/obj/item/organ/eyes/eyes = src.getorganslot(ORGAN_SLOT_EYES)
-	if(eyes)
-		eyes.Remove(src,1)
-		QDEL_NULL(eyes)
-	eyes = new /obj/item/organ/eyes/night_vision/zombie
-	eyes.Insert(src)
 	src.underwear = "Nude"
 	if(src.charflaw)
 		QDEL_NULL(src.charflaw)

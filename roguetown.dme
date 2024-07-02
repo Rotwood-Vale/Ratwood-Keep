@@ -1786,6 +1786,7 @@
 #include "code\modules\cargo\packsrogue\luxury.dm"
 #include "code\modules\cargo\packsrogue\seeds.dm"
 #include "code\modules\cargo\packsrogue\tools.dm"
+#include "code\modules\cargo\packsrogue\wardrobe.dm"
 #include "code\modules\cargo\packsrogue\weapons.dm"
 #include "code\modules\chatter\chatter.dm"
 #include "code\modules\client\asset_cache.dm"
