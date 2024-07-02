@@ -14,8 +14,10 @@
 	var/produce_time = 3 MINUTES
 	/// Typepath of produce to make on harvest
 	var/produce_type
-	/// Amount of produce to make on harvest
-	var/produce_amount = 3
+	/// Amount of minimum produce to make on harvest
+	var/produce_amount_min = 2
+	/// Amount of maximum produce to make on harvest
+	var/produce_amount_max = 3
 	/// How much nutrition will the plant require to mature fully
 	var/maturation_nutrition = 30
 	/// How much nutrition will the plant require to make produce
@@ -26,13 +28,21 @@
 	var/weed_immune = FALSE
 	/// The rate at which the plant drains water, if zero then it'll be able to live without water
 	var/water_drain_rate = 2 / (1 MINUTES)
+	/// Color all seeds of this plant def will have, randomised on init
+	var/seed_color
+
+/datum/plant_def/New()
+	. = ..()
+	var/static/list/random_colors = list("#fffbf7", "#f3c877", "#5e533e", "#db7f62", "#f39945")
+	seed_color = pick(random_colors)
 
 /datum/plant_def/wheat
 	name = "wheat stalks"
 	icon = 'icons/roguetown/misc/crops.dmi'
 	icon_state = "wheat"
 	produce_type = /obj/item/natural/chaff/wheat
-	produce_amount = 4
+	produce_amount_min = 3
+	produce_amount_max = 4
 	uproot_loot = list(/obj/item/natural/fibers, /obj/item/natural/fibers)
 	maturation_nutrition = 30
 	produce_nutrition = 20
@@ -44,7 +54,8 @@
 	icon = 'icons/roguetown/misc/crops.dmi'
 	icon_state = "oat"
 	produce_type = /obj/item/natural/chaff/oat
-	produce_amount = 4
+	produce_amount_min = 3
+	produce_amount_max = 4
 	uproot_loot = list(/obj/item/natural/fibers, /obj/item/natural/fibers)
 	maturation_nutrition = 30
 	produce_nutrition = 20
@@ -58,7 +69,8 @@
 	produce_type = /obj/item/reagent_containers/food/snacks/grown/apple
 	uproot_loot = list(/obj/item/grown/log/tree/small)
 	perennial = TRUE
-	produce_amount = 3
+	produce_amount_min = 2
+	produce_amount_max = 3
 	maturation_nutrition = 60
 	produce_nutrition =  30
 	maturation_time = 6 MINUTES
@@ -83,7 +95,8 @@
 	produce_type = /obj/item/reagent_containers/food/snacks/grown/berries/rogue
 	uproot_loot = list(/obj/item/grown/log/tree/small)
 	perennial = TRUE
-	produce_amount = 3
+	produce_amount_min = 2
+	produce_amount_max = 3
 	maturation_nutrition = 60
 	produce_nutrition =  30
 	maturation_time = 6 MINUTES
