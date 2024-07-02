@@ -39,17 +39,18 @@ SUBSYSTEM_DEF(job)
 	if(last_player_assigned_jobs)
 		return
 	// Try loading the file
-	var/target_file = file("data/last_round_assigned_jobs.json") 
+	var/target_file = file("data/last_round_assigned_jobs.json")
 	if(fexists(target_file))
 		last_player_assigned_jobs = json_decode(file2text(target_file))
-	else
-		// Else just make an empty list
+	if(!last_player_assigned_jobs)
 		last_player_assigned_jobs = list()
 
 /datum/controller/subsystem/job/proc/save_player_assigned_jobs()
 	if(!played_assigned_jobs)
 		played_assigned_jobs = list()
-	var/target_file = file("data/last_round_assigned_jobs.json") 
+	var/target_file = file("data/last_round_assigned_jobs.json")
+	if(fexists(target_file))
+		fdel(target_file)
 	WRITE_FILE(target_file, json_encode(played_assigned_jobs))
 
 /datum/controller/subsystem/job/proc/add_player_assigned_job(ckey, job_name)
@@ -282,7 +283,7 @@ SUBSYSTEM_DEF(job)
 		if(!job.special_job_check(player))
 			JobDebug("GRJ player did not pass special check, Player: [player], Job:[job.title]")
 			continue
-		
+
 		if(job.lastclass_forbidden && was_player_assigned_job_last_round(player.client.ckey, job.title))
 			JobDebug("GRJ incompatible with lastclass, Player: [player], Job: [job.title]")
 			continue
@@ -507,7 +508,7 @@ SUBSYSTEM_DEF(job)
 
 				if(!isnull(job.max_pq) && (get_playerquality(player.ckey) > job.max_pq))
 					continue
-				
+
 				if(job.lastclass_forbidden && was_player_assigned_job_last_round(player.client.ckey, job.title))
 					continue
 				if(job.currentclass_forbidden && was_player_assigned_job_current_round(player.client.ckey, job.title))
@@ -589,7 +590,7 @@ SUBSYSTEM_DEF(job)
 
 				if(length(job.allowed_races) && !(player.client.prefs.pref_species.type in job.allowed_races))
 					continue
-				
+
 				if(length(job.allowed_patrons) && !(player.client.prefs.selected_patron.type in job.allowed_patrons))
 					continue
 
@@ -598,7 +599,7 @@ SUBSYSTEM_DEF(job)
 
 				if(!isnull(job.min_pq) && (get_playerquality(player.ckey) < job.min_pq) && level != JP_LOW) //since its required people on low can roll for it
 					continue
-				
+
 				if(job.lastclass_forbidden && was_player_assigned_job_last_round(player.client.ckey, job.title))
 					continue
 				if(job.currentclass_forbidden && was_player_assigned_job_current_round(player.client.ckey, job.title))

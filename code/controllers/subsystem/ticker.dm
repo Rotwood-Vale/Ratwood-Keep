@@ -266,11 +266,6 @@ SUBSYSTEM_DEF(ticker)
 			if(!player)
 				continue
 			if(player.client.prefs.job_preferences[V] == JP_HIGH)
-				if(player.ready == PLAYER_READY_TO_PLAY)
-					if(player.client.prefs.lastclass == V)
-						if(player.IsJobUnavailable(V) != JOB_AVAILABLE)
-							to_chat(player, span_warning("You cannot be [V] and thus are not considered."))
-							continue
 				readied_jobs.Add(V)
 		/*	
 			// These else conditions stop the round from starting unless there is a merchant, king, and queen.
