@@ -26,21 +26,7 @@
 	key = "blink_r"
 	message = "blinks rapidly."
 
-/datum/emote/living/carbon/clap
-	key = "clap"
-	key_third_person = "claps"
-	message = "claps."
-	muzzle_ignore = TRUE
-	restraint_check = TRUE
-	emote_type = EMOTE_AUDIBLE
-	vary = TRUE
 
-/datum/emote/living/carbon/clap/get_sound(mob/living/user)
-	if(ishuman(user))
-		if(!user.get_bodypart(BODY_ZONE_L_ARM) || !user.get_bodypart(BODY_ZONE_R_ARM))
-			return
-		else
-			return "clap"
 
 /datum/emote/living/carbon/gnarl
 	key = "gnarl"

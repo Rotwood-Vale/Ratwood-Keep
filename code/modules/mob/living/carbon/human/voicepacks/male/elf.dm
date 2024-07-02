@@ -12,9 +12,9 @@
 			if("agony")
 				used = 'sound/vo/male/elf/agony.ogg'
 			if("chuckle")
-				used = list('sound/vo/male/elf/chuckle (1).ogg','sound/vo/male/elf/chuckle (2).ogg','sound/vo/male/elf/chuckle (3).ogg','sound/vo/male/elf/chuckle (4).ogg','sound/vo/male/elf/chuckle (5).ogg','sound/vo/male/elf/chuckle (6).ogg','sound/vo/male/elf/chuckle (7).ogg','sound/vo/male/elf/chuckle (8).ogg')
+				used = list('sound/vo/male/elf/chuckle (1).ogg','sound/vo/male/elf/chuckle (2).ogg','sound/vo/male/elf/chuckle (3).ogg','sound/vo/male/elf/chuckle (4).ogg','sound/vo/male/elf/chuckle (5).ogg','sound/vo/male/elf/chuckle (7).ogg','sound/vo/male/elf/chuckle (8).ogg')
 			if("cry")
-				used = list('sound/vo/male/elf/cry (1).ogg','sound/vo/male/elf/cry (2).ogg','sound/vo/male/elf/cry (3).ogg')
+				used = list('sound/vo/male/gen/cry (1).ogg','sound/vo/male/gen/cry (2).ogg','sound/vo/male/gen/cry (3).ogg','sound/vo/male/gen/cry (4).ogg')
 			if("embed")
 				used = list('sound/vo/male/elf/embed (1).ogg','sound/vo/male/elf/embed (2).ogg')
 			if("firescream")

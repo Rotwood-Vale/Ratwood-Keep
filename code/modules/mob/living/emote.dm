@@ -70,7 +70,7 @@
 			L.playsound_local(L, 'sound/misc/notice (2).ogg', 100, FALSE)
 			L.add_stress(/datum/stressevent/psyprayer)
 			return TRUE
-	else 
+	else
 		to_chat(L, span_danger("My prayer was kinda short..."))
 
 /mob/living/proc/check_prayer_underworld(mob/living/L,message)
@@ -97,12 +97,12 @@
 		if(findtext(message2recognize, "[M.patron]"))
 			L.playsound_local(L, 'sound/misc/notice (2).ogg', 100, FALSE)
 			to_chat(L, "<font color='yellow'>I, [M.patron], have heard your prayer and yet cannot aid you.</font>")
-			/*var/obj/item/underworld/coin/C = new 
+			/*var/obj/item/underworld/coin/C = new
 			L.put_in_active_hand(C)*/
 			return TRUE
 		else
 			return TRUE
-	else 
+	else
 		to_chat(L, span_danger("My prayer was kinda short..."))
 
 /datum/emote/living/meditate
@@ -890,6 +890,8 @@
 	message = "whistles for attention!"
 	emote_type = EMOTE_AUDIBLE
 
+
+
 /mob/living/carbon/human/verb/emote_attnwhistle()
 	set name = "Attnwhistle"
 	set category = "Noises"
@@ -902,6 +904,33 @@
 		var/mob/living/carbon/C = user
 		if(C.silent || !C.can_speak_vocal())
 			message = "makes a muffled noise."
+
+
+/datum/emote/living/clap
+	key = "clap"
+	key_third_person = "claps"
+	message = "claps."
+	muzzle_ignore = TRUE
+	restraint_check = TRUE
+	emote_type = EMOTE_AUDIBLE
+	vary = TRUE
+
+
+/mob/living/carbon/human/verb/emote_clap()
+	set name = "Clap"
+	set category = "Noises"
+
+	emote("clap", intentional = TRUE)
+
+
+/datum/emote/living/carbon/clap/get_sound(mob/living/user)
+	if(ishuman(user))
+		if(!user.get_bodypart(BODY_ZONE_L_ARM) || !user.get_bodypart(BODY_ZONE_R_ARM))
+			return
+		else
+			return "clap"
+
+
 
 /datum/emote/living/choke
 	key = "choke"
