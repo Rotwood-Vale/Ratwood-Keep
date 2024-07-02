@@ -13,14 +13,19 @@
 	invocation = "The Treefather commands thee, be fruitful!"
 	invocation_type = "shout" //can be none, whisper, emote and shout
 	miracle = TRUE
-	devotion_cost = 10
+	devotion_cost = 20
 
 /obj/effect/proc_holder/spell/targeted/blesscrop/cast(list/targets,mob/user = usr)
 	. = ..()
 	var/growed = FALSE
-	for(var/obj/structure/soil/soil in view(5))
+	var/amount_blessed = 0
+	for(var/obj/structure/soil/soil in view(4))
 		soil.bless_soil()
 		growed = TRUE
+		amount_blessed++
+		// Blessed only up to 5 crops
+		if(amount_blessed >= 5)
+			break
 	if(growed)
 		visible_message(span_green("[usr] blesses the nearby crops with Dendor's Favour!"))
 	return growed

@@ -263,11 +263,11 @@
 		plant_dead = FALSE
 		plant_health = 10.0
 	// If low on nutrition, Dendor provides
-	if(nutrition < 100)
-		adjust_nutrition(max(100 - nutrition, 0))
+	if(nutrition < 30)
+		adjust_nutrition(max(30 - nutrition, 0))
 	// If low on water, Dendor provides
-	if(water < 100)
-		adjust_water(max(100 - water, 0))
+	if(water < 30)
+		adjust_water(max(30 - water, 0))
 	// And it grows a little!
 	if(plant)
 		add_growth(2 MINUTES)
