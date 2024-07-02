@@ -6,7 +6,7 @@
 	total_positions = 4
 	spawn_positions = 4
 	allowed_sexes = list(MALE, FEMALE)
-	allowed_races = list()
+	allowed_races = list(RACES_DESPISED)
 	allowed_patrons = list(/datum/patron/inhumen/graggar)
 	tutorial = "Cook, farm, butcher. Make king happy with apple pies! Don't forget about your brothers."
 

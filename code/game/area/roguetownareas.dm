@@ -198,6 +198,28 @@ GLOBAL_LIST_INIT(roguetown_areas_typecache, typecacheof(/area/rogue/indoors/town
 	first_time_text = "THE TERRORBOG"
 	converted_type = /area/rogue/indoors/shelter/bog
 
+/area/rogue/outdoors/goblinfort
+	name = "goblinfort"
+	icon_state = "goblinfort"
+	ambientsounds = AMB_BOGDAY
+	ambientnight = AMB_BOGNIGHT
+	spookysounds = SPOOKY_FROG
+	spookynight = SPOOKY_GEN
+	droning_sound = 'sound/music/area/bog.ogg'
+	droning_sound_dusk = null
+	droning_sound_night = null
+	ambush_times = list("night","dawn","dusk","day")
+	ambush_types = list(
+				/turf/open/floor/rogue/dirt,
+				/turf/open/floor/rogue/grass,
+				/turf/open/water)
+	first_time_text = "Goblin Outpost"
+	converted_type = /area/rogue/indoors/shelter/bog
+
+
+
+
+
 /area/rogue/indoors/shelter/bog
 	icon_state = "bog"
 	droning_sound = 'sound/music/area/bog.ogg'

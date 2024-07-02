@@ -157,6 +157,15 @@ GLOBAL_LIST_INIT(roguewar_positions, list(
 	"Adventurer",
 ))
 
+
+GLOBAL_LIST_INIT(goblin_positions, list(
+	"Goblin Cook",
+	"Goblin Guard",
+	"Goblin King",
+	"Goblin Smith",
+))
+
+
 GLOBAL_LIST_INIT(roguefight_positions, list(
 	"Red Captain",
 	"Red Caster",
@@ -183,6 +192,7 @@ GLOBAL_LIST_INIT(job_assignment_order, get_job_assignment_order())
 	sorting_order += GLOB.yeoman_positions
 	sorting_order += GLOB.peasant_positions
 	sorting_order += GLOB.youngfolk_positions
+	sorting_order += GLOB.goblin_positions
 	return sorting_order
 
 GLOBAL_LIST_INIT(exp_jobsmap, list(

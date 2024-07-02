@@ -6,7 +6,7 @@
 	total_positions = 3
 	spawn_positions = 3
 	allowed_sexes = list(MALE, FEMALE)
-	allowed_races = list()
+	allowed_races = list(RACES_DESPISED)
 	allowed_patrons = list(/datum/patron/inhumen/graggar)
 	tutorial = "Goblin rensposible for fresh iron and steel"
 	display_order = JDO_GOBLINSMITH

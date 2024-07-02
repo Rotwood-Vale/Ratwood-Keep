@@ -411,6 +411,12 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	name = "Goblin Smith"
 	icon_state = "arrow"
 
+/obj/effect/landmark/start/goblinlate
+	name = "Goblinlate"
+	icon_state = "arrow"
+	jobspawn_override = list("Goblin Cook", "Goblin Guard", "Goblin King", "Goblin Smith")
+	delete_after_roundstart = FALSE
+
 // START LANDMARKS FOLLOW. Don't change the names unless
 // you are refactoring shitty landmark code.
 /obj/effect/landmark/start/assistant
