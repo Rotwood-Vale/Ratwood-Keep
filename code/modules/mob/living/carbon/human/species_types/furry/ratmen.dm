@@ -4,7 +4,7 @@
 /datum/species/ratpeople
 	name = "Rodeetch" 
 	id = "ratpeople"
-	desc = "<b>Rhodian</b><br>\
+	desc = "<b>Rodeetch</b><br>\
 	The Rodent-Like Rodeetch are a race that had faced the rise and fall of their grand capital and survived with a distinct and deep religious divide. \
 	Once they were considered no more than Demi-humans that only appeared during the darkest hours of the night to steal and kill, until the one day they broke out of their hovels during the midday sun. \
 	Enraptured by the allure of gold in the sky, they built up a city constructed from their previous ill gotten gains, spires of gold and homes of marble, where they worshipped Astrata.<br><br>\

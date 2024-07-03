@@ -131,7 +131,7 @@
 	customizer_choices = list(/datum/customizer_choice/organ/tail/ratpeople)
 
 /datum/customizer_choice/organ/tail/ratpeople
-	name = "Rhodian Tail"
+	name = "Rodeetch Tail"
 	organ_type = /obj/item/organ/tail/ratpeople
 	sprite_accessories = list(
 		/datum/sprite_accessory/tail/murid,
