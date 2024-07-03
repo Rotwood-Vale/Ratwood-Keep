@@ -70,21 +70,6 @@
 	w_class = WEIGHT_CLASS_NORMAL
 	smeltresult = null
 	var/datum/anvil_recipe/currecipe
-	var/quality = SMELTERY_LEVEL_NORMAL
-	var/smelted = FALSE
-
-/obj/item/ingot/Initialize(mapload, smelt_quality)
-	. = ..()
-	if(smelt_quality)
-		quality = smelt_quality
-		smelted = TRUE
-		switch(quality)
-			if(SMELTERY_LEVEL_SPOIL)
-				name = "spoilt-quality [name]"
-			if(SMELTERY_LEVEL_POOR)
-				name = "poor-quality [name]"
-			if(SMELTERY_LEVEL_GOOD)
-				name = "good-quality [name]"
 
 /obj/item/ingot/attackby(obj/item/I, mob/user, params)
 	if(istype(I, /obj/item/rogueweapon/tongs))
