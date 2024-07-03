@@ -327,7 +327,17 @@
 	. = ..()
 	SSroguemachine.crown = src
 
-/obj/item/clothing/head/roguetown/crown/serpcrown/surplus
+/obj/item/clothing/head/roguetown/crown/serpcrown/proc/anti_stall()
+	src.visible_message(span_warning("The Crown of Rockhill crumbles to dust, the ashes spiriting away in the direction of the Keep."))
+	SSroguemachine.crown = null //Do not harddel.
+	qdel(src) //Anti-stall
+
+/obj/item/clothing/head/roguetown/crown/fakecrown
+	name = "fake crown"
+	desc = "You shouldn't be seeing this."
+	icon_state = "serpcrown"
+
+/obj/item/clothing/head/roguetown/crown/surplus
 	name = "crown"
 	icon_state = "serpcrowno"
 	sellprice = 100
