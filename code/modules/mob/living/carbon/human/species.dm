@@ -538,6 +538,8 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 			return "ADJ"
 		if(BODY_FRONT_LAYER)
 			return "FRONT"
+		if(BODY_UNDER_LAYER)
+			return "UNDER"
 
 
 /datum/species/proc/spec_life(mob/living/carbon/human/H)
