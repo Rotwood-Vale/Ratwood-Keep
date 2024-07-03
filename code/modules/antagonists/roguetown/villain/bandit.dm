@@ -38,7 +38,7 @@
 	ADD_TRAIT(H, TRAIT_COMMIE, TRAIT_GENERIC)
 	H.set_patron(/datum/patron/inhumen/matthios)
 	to_chat(H, span_alertsyndie("I am a BANDIT!"))
-	to_chat(H, span_warning("Long ago I did a crime worthy of my bounty being hung on the wall outside of the local inn. I must feed the idol money and valuable metals to satisfy my greed!"))
+	alert(H, ("Long ago I did a crime worthy of my bounty being hung on the wall outside of the local inn. I live now with fellow free men in reverence to MATTHIOS whose idol grants us boons and wishes when fed the money, treasures, and metals of the civilized wretches. I must feed the idol to satisfy my greed!"))
 
 /* /datum/antagonist/bandit/greet()
 	to_chat(owner.current, span_alertsyndie("I am a BANDIT!"))
