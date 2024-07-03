@@ -1160,7 +1160,7 @@
 								if(H.mind.antag_datums.len)
 									wuzantag = TRUE
 						if(!wuzantag)
-							adjust_playerquality(+1, H.ckey, reason="Raped as a non villain.")
+							adjust_playerquality(1, H.ckey, reason="Raped as a non villain.")
 					addtimer(CALLBACK(eatingus, /mob/.proc/emote, "gag"), rand(10,20))
 		if("insideass")
 			if(owner.has_flaw(/datum/charflaw/addiction/lovefiend))
@@ -1176,7 +1176,7 @@
 							if(H.mind.antag_datums.len)
 								wuzantag = TRUE
 					if(!wuzantag)
-						adjust_playerquality(+1, H.ckey, reason="Raped as a non villain.")
+						adjust_playerquality(1, H.ckey, reason="Raped as a non villain.")
 			owner.add_stress(/datum/stressevent/cumok)
 			owner.visible_message("<span class='notice'>[owner] tightens in ecstasy!</span>")
 			playsound(owner, 'sound/misc/mat/endin.ogg', 100, TRUE, ignore_walls = FALSE)
@@ -1223,7 +1223,7 @@
 						if(M.mind.antag_datums.len)
 							wuzantag = TRUE
 				if(!wuzantag)
-					adjust_playerquality(+1, M.ckey, reason="Raped as a non villain.")
+					adjust_playerquality(1, M.ckey, reason="Raped as a non villain.")
 			if(prob(20))
 				if(!fucking.mob_timers["preggo"])
 					fucking.mob_timers["preggo"] = world.time
@@ -1247,7 +1247,7 @@
 							if(H.mind.antag_datums.len)
 								wuzantag = TRUE
 					if(!wuzantag)
-						adjust_playerquality(+1, H.ckey, reason="Fucked an AFK player as a non-villain.")
+						adjust_playerquality(1, H.ckey, reason="Fucked an AFK player as a non-villain.")
 			owner.add_stress(/datum/stressevent/cumok)
 			playsound(fucking, 'sound/misc/mat/endin.ogg', 100, TRUE, ignore_walls = FALSE)
 			add_cum_floor(get_turf(fucking))
