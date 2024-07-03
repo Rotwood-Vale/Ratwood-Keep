@@ -45,10 +45,30 @@
 		on_stepped(AM)
 
 /obj/structure/soil/proc/user_harvests(mob/living/user)
+	if(!produce_ready)
+		return
 	apply_farming_fatigue(user, 5)
-	if(produce_ready)
-		adjust_experience(user, /datum/skill/labor/farming, user.STAINT * 4)
-	yield_produce()
+	adjust_experience(user, /datum/skill/labor/farming, user.STAINT * 4)
+
+	var/farming_skill = user.mind.get_skill_level(/datum/skill/labor/farming)
+	var/chance_to_ruin = 50 - (farming_skill * 25)
+	if(prob(chance_to_ruin))
+		ruin_produce()
+		to_chat(user, span_warning("I ruin the produce..."))
+		return
+	var/feedback = "I harvest the produce."
+	var/modifier = 0
+	var/chance_to_ruin_single = 75 - (farming_skill * 25)
+	if(prob(chance_to_ruin_single))
+		feedback = "I harvest the produce, ruining a little."
+		modifier -= 1
+	var/chance_to_get_extra = -75 + (farming_skill * 25)
+	if(prob(chance_to_get_extra))
+		feedback = "I harvest the produce well."
+		modifier += 1
+
+	to_chat(user, span_notice(feedback))
+	yield_produce(modifier)
 
 /obj/structure/soil/proc/try_handle_harvest(obj/item/attacking_item, mob/user, params)
 	if(istype(attacking_item, /obj/item/rogueweapon/sickle))
@@ -57,7 +77,6 @@
 			return TRUE
 		user_harvests(user)
 		playsound(src,'sound/items/seed.ogg', 100, FALSE)
-		to_chat(user, span_notice("I harvest the crop."))
 		return TRUE
 	return FALSE
 
@@ -117,7 +136,7 @@
 /obj/structure/soil/proc/try_handle_fertilizing(obj/item/attacking_item, mob/user, params)
 	var/fertilize_amount = 0
 	if(istype(attacking_item, /obj/item/ash))
-		fertilize_amount = 100
+		fertilize_amount = 80
 	else if (istype(attacking_item, /obj/item/natural/poo))
 		fertilize_amount = 150
 	else if (istype(attacking_item, /obj/item/compost))
@@ -169,7 +188,6 @@
 	if(plant && produce_ready)
 		to_chat(user, span_notice("I begin collecting the produce..."))
 		if(do_after(user, get_farming_do_time(user, 4 SECONDS), target = src))
-			to_chat(user, span_notice("I collect the produce."))
 			playsound(src,'sound/items/seed.ogg', 100, FALSE)
 			user_harvests(user)
 		return
@@ -186,7 +204,7 @@
 	. = ..()
 
 /obj/structure/soil/attack_right(mob/user)
-	user.changeNext_move(CLICK_CD_MELEE)
+	user.changeNext_move(CLICK_CD_FAST)
 	var/obj/item = user.get_active_held_item()
 	if(try_handle_deweed(item, user, null))
 		return
@@ -195,7 +213,7 @@
 	return ..()
 
 /obj/structure/soil/attackby(obj/item/attacking_item, mob/user, params)
-	user.changeNext_move(CLICK_CD_MELEE)
+	user.changeNext_move(CLICK_CD_FAST)
 	if(try_handle_seed_planting(attacking_item, user, params))
 		return
 	if(try_handle_uprooting(attacking_item, user, params))
@@ -245,11 +263,11 @@
 		plant_dead = FALSE
 		plant_health = 10.0
 	// If low on nutrition, Dendor provides
-	if(nutrition < 100)
-		adjust_nutrition(max(100 - nutrition, 0))
+	if(nutrition < 30)
+		adjust_nutrition(max(30 - nutrition, 0))
 	// If low on water, Dendor provides
-	if(water < 100)
-		adjust_water(max(100 - water, 0))
+	if(water < 30)
+		adjust_water(max(30 - water, 0))
 	// And it grows a little!
 	if(plant)
 		add_growth(2 MINUTES)
@@ -537,7 +555,7 @@
 		return
 	adjust_weeds(-100)
 	yield_uproot_loot()
-	yield_produce()
+	ruin_produce()
 	plant = null
 	update_icon()
 
@@ -549,10 +567,17 @@
 		new loot_type(loc)
 
 /// Yields produce on its tile if it's ready for harvest
-/obj/structure/soil/proc/yield_produce()
+/obj/structure/soil/proc/ruin_produce()
+	produce_ready = FALSE
+	update_icon()
+
+/// Yields produce on its tile if it's ready for harvest
+/obj/structure/soil/proc/yield_produce(modifier = 0)
 	if(!produce_ready)
 		return
-	for(var/i in 1 to plant.produce_amount)
+	var/base_amount = rand(plant.produce_amount_min, plant.produce_amount_max)
+	var/spawn_amount = max(base_amount + modifier, 1)
+	for(var/i in 1 to spawn_amount)
 		new plant.produce_type(loc)
 	produce_ready = FALSE
 	if(!plant.perennial)
