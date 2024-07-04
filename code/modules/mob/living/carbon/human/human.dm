@@ -33,8 +33,6 @@
 	if(user == src)
 		if(get_num_arms(FALSE) < 1)
 			return
-		if(!can_do_sex())
-			return
 		if(user.zone_selected == BODY_ZONE_PRECISE_GROIN)
 			if(get_location_accessible(src, BODY_ZONE_PRECISE_GROIN, skipundies = TRUE))
 				if(underwear == "Nude")
@@ -53,6 +51,9 @@
 #endif
 
 /mob/living/carbon/human/Initialize()
+#ifdef MATURESERVER
+	sexcon = new /datum/sex_controller(src)
+#endif
 	verbs += /mob/living/proc/mob_sleep
 	verbs += /mob/living/proc/lay_down
 
@@ -120,6 +121,7 @@
 		AddComponent(/datum/component/mood)
 
 /mob/living/carbon/human/Destroy()
+	QDEL_NULL(sexcon)
 	SShumannpc.processing -= src
 	QDEL_NULL(physiology)
 	GLOB.human_list -= src
@@ -327,8 +329,7 @@
 
 #ifdef MATURESERVER
 	if(get_location_accessible(src, BODY_ZONE_PRECISE_GROIN, skipundies = TRUE))
-		if(can_do_sex())
-			dat += "<tr><td><BR><B>Underwear:</B> <A href='?src=[REF(src)];undiesthing=1'>[underwear == "Nude" ? "Nothing" : "Remove"]</A></td></tr>"
+		dat += "<tr><td><BR><B>Underwear:</B> <A href='?src=[REF(src)];undiesthing=1'>[underwear == "Nude" ? "Nothing" : "Remove"]</A></td></tr>"
 #endif
 
 	dat += {"</table>"}

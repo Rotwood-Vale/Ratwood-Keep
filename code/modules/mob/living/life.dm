@@ -66,7 +66,8 @@
 	handle_fire()
 
 	if(sexcon)
-		sexcon.handle_sex()
+		sexcon.process_sexcon(1 SECONDS)
+
 	if(machine)
 		machine.check_eye(src)
 
