@@ -1,5 +1,5 @@
 /datum/sex_action/vaginal_sex
-	name = "Sow seed"
+	name = "Fuck their cunt"
 
 /datum/sex_action/vaginal_sex/shows_on_menu(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(user == target)
@@ -21,6 +21,8 @@
 		return FALSE
 	if(!user.getorganslot(ORGAN_SLOT_PENIS))
 		return FALSE
+	if(!user.sexcon.can_use_penis())
+		return
 	return TRUE
 
 /datum/sex_action/vaginal_sex/on_start(mob/living/carbon/human/user, mob/living/carbon/human/target)

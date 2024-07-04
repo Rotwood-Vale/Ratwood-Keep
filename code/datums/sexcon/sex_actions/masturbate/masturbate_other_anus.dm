@@ -17,14 +17,14 @@
 	user.visible_message(span_warning("[user] starts fingering [target]'s butt..."))
 
 /datum/sex_action/masturbate_other_anus/on_perform(mob/living/carbon/human/user, mob/living/carbon/human/target)
-	user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] fingers his butt..."))
+	user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] fingers [target]'s butt butt..."))
 	playsound(user, 'sound/misc/mat/fingering.ogg', 30, TRUE, -2, ignore_walls = FALSE)
 
-	user.sexcon.perform_sex_action(target, 2, 4, TRUE)
+	user.sexcon.perform_sex_action(target, 2, 6, TRUE)
 	target.sexcon.handle_passive_ejaculation()
 
 /datum/sex_action/masturbate_other_anus/on_finish(mob/living/carbon/human/user, mob/living/carbon/human/target)
-	user.visible_message(span_warning("[user] stops fingering [target]'s butt..."))
+	user.visible_message(span_warning("[user] stops fingering [target]'s butt."))
 
 /datum/sex_action/masturbate_other_anus/is_finished(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(target.sexcon.just_ejaculated())

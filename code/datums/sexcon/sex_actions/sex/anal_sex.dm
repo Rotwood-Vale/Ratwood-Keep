@@ -1,5 +1,5 @@
 /datum/sex_action/anal_sex
-	name = "Sodomize"
+	name = "Sodomize them"
 
 /datum/sex_action/anal_sex/shows_on_menu(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(user == target)
@@ -13,6 +13,8 @@
 		return FALSE
 	if(!get_location_accessible(target, BODY_ZONE_PRECISE_GROIN))
 		return FALSE
+	if(!user.sexcon.can_use_penis())
+		return
 	return TRUE
 
 /datum/sex_action/anal_sex/on_start(mob/living/carbon/human/user, mob/living/carbon/human/target)

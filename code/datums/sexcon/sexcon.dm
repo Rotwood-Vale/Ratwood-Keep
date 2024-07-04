@@ -86,6 +86,7 @@
 /datum/sex_controller/proc/after_ejaculation()
 	set_arousal(55)
 	set_spent(MAX_SPENT)
+	user.emote("sexmoanhvy")
 	user.playsound_local(user, 'sound/misc/mat/end.ogg', 100)
 	last_ejaculation_time = world.time
 	SSticker.cums++
@@ -161,6 +162,8 @@
 	user.apply_damage(damage, BRUTE, part)
 
 /datum/sex_controller/proc/try_do_moan(arousal_amt, pain_amt, applied_force, giving)
+	if(arousal_amt < 1.5)
+		return
 	if(user.stat != CONSCIOUS)
 		return
 	if(last_moan + MOAN_COOLDOWN >= world.time)
@@ -236,9 +239,9 @@
 	return TRUE
 
 /datum/sex_controller/proc/can_ejaculate()
-	if(!user.getorganslot(ORGAN_SLOT_TESTICLES))
+	if(!user.getorganslot(ORGAN_SLOT_TESTICLES) && !user.getorganslot(ORGAN_SLOT_VAGINA))
 		return FALSE
-	if(!user.getorganslot(ORGAN_SLOT_VAGINA))
+	if(HAS_TRAIT(user, TRAIT_LIMPDICK))
 		return FALSE
 	return TRUE
 
@@ -250,6 +253,11 @@
 	if(!can_ejaculate())
 		return FALSE
 	ejaculate()
+
+/datum/sex_controller/proc/can_use_penis()
+	if(HAS_TRAIT(user, TRAIT_LIMPDICK))
+		return FALSE
+	return TRUE
 
 /datum/sex_controller/proc/process_sexcon(dt)
 	handle_arousal_unhorny(dt)
@@ -276,7 +284,10 @@
 		dat += "<center><a href='?src=[REF(src)];task=stop'>Stop</a></center>"
 	else
 		dat += "<br>"
+	dat += "<table><tr>"
+	var/i = 0
 	for(var/action_type in GLOB.sex_actions)
+		dat += "<td>"
 		var/datum/sex_action/action = SEX_ACTION(action_type)
 		if(!action.shows_on_menu(user, target))
 			continue
@@ -285,9 +296,15 @@
 			link = "linkOff"
 		if(current_action == action_type)
 			link = "linkOn"
-		dat += "<br><a class='[link]' href='?src=[REF(src)];task=action;action_type=[action_type]'>[action.name]</a>"
+		dat += "<a class='[link]' href='?src=[REF(src)];task=action;action_type=[action_type]'>[action.name]</a>"
+		dat += "</td>"
+		i++
+		if(i >= 2)
+			i = 0
+			dat += "</tr><tr>"
 
-	var/datum/browser/popup = new(user, "sexcon", "<center>Sate Desire</center>", 350, 550)
+	dat += "</tr></table>"
+	var/datum/browser/popup = new(user, "sexcon", "<center>Sate Desire</center>", 450, 550)
 	popup.set_content(dat.Join())
 	popup.open()
 	return
@@ -375,7 +392,7 @@
 	if(!action_type)
 		return FALSE
 	var/datum/sex_action/action = SEX_ACTION(action_type)
-	if(!inherent_perform_check())
+	if(!inherent_perform_check(action_type))
 		return FALSE
 	if(!action.can_perform(user, target))
 		return FALSE
@@ -492,7 +509,7 @@
 		if(SEX_FORCE_LOW)
 			return pick(list("gently", "carefully", "tenderly", "gingerly", "delicately", "lazingly"))
 		if(SEX_FORCE_MID)
-			return pick(list("firmly", "vigorously", "eagerly", "steadily", "willingly", "intently"))
+			return pick(list("firmly", "vigorously", "eagerly", "steadily", "intently"))
 		if(SEX_FORCE_HIGH)
 			return pick(list("roughly", "carelessly", "forcefully", "fervently", "fiercely"))
 		if(SEX_FORCE_EXTREME)
