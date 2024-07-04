@@ -1,13 +1,13 @@
 /datum/job/roguetown/goblinguard
-	title = "Goblin Guard"
+	title = "Tribal Guard"
 	flag = GOBLINGUARD
 	department_flag = GOBLIN
 	faction = "Station"
-	total_positions = 9
-	spawn_positions = 9
+	total_positions = 5
+	spawn_positions = 5
 	allowed_sexes = list(MALE, FEMALE)
-	allowed_races = list(RACES_DESPISED)
-	allowed_patrons = list(/datum/patron/inhumen/graggar)
+	allowed_races = RACES_ALL_KINDS
+	allowed_patrons = ALL_DIVINE_PATRONS
 	tutorial = "Goblin Guards rensposible for their kingdom and his majesty King."
 	display_order = JDO_GOBLINGUARD
 	outfit = /datum/outfit/job/roguetown/goblinguard
