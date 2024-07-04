@@ -87,7 +87,6 @@
 	if(!owner.revive(full_heal = FALSE, admin_revive = FALSE))
 		return
 
-	owner.grab_ghost()
 	owner.visible_message(span_danger("[owner] suddenly convulses, as [owner.p_they()][stand_up ? " stagger to [owner.p_their()] feet and" : ""] gain a ravenous hunger in [owner.p_their()] eyes!"), span_alien("I HUNGER!"))
 	playsound(owner.loc, 'sound/blank.ogg', 50, TRUE)
 	owner.do_jitter_animation(living_transformation_time)
