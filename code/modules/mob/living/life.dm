@@ -65,9 +65,6 @@
 	update_sneak_invis()
 	handle_fire()
 
-	if(sexcon)
-		sexcon.process_sexcon(1 SECONDS)
-
 	if(machine)
 		machine.check_eye(src)
 

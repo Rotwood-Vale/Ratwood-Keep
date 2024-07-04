@@ -13,9 +13,12 @@
 	var/force = SEX_FORCE_MID
 	/// Our arousal
 	var/arousal = 0
+	/// Our spent gauge
+	var/spent = 0
 	var/last_arousal_increase_time = 0
 	var/last_ejaculation_time = 0
 	var/last_moan = 0
+	var/last_pain = 0
 
 /datum/sex_controller/New(mob/living/carbon/human/owner)
 	user = owner
@@ -65,14 +68,24 @@
 	set_target(new_target)
 	show_ui()
 
+/datum/sex_controller/proc/cum_onto()
+	playsound(target, 'sound/misc/mat/endout.ogg', 50, TRUE, ignore_walls = FALSE)
+	add_cum_floor(get_turf(target))
+	after_ejaculation()
+
+/datum/sex_controller/proc/cum_into()
+	playsound(target, 'sound/misc/mat/endin.ogg', 50, TRUE, ignore_walls = FALSE)
+	after_ejaculation()
+
 /datum/sex_controller/proc/ejaculate()
 	user.visible_message(span_love("[user] makes a mess!"))
-	playsound(owner, 'sound/misc/mat/endout.ogg', 30, TRUE, ignore_walls = FALSE)
+	playsound(user, 'sound/misc/mat/endout.ogg', 50, TRUE, ignore_walls = FALSE)
 	add_cum_floor(get_turf(user))
 	after_ejaculation()
 
 /datum/sex_controller/proc/after_ejaculation()
-	set_arousal(0)
+	set_arousal(55)
+	set_spent(MAX_SPENT)
 	user.playsound_local(user, 'sound/misc/mat/end.ogg', 100)
 	last_ejaculation_time = world.time
 	SSticker.cums++
@@ -92,6 +105,24 @@
 /datum/sex_controller/proc/just_ejaculated()
 	return (last_ejaculation_time == world.time)
 
+/datum/sex_controller/proc/set_spent(amount)
+	spent = clamp(amount, 0, MAX_SPENT)
+
+/datum/sex_controller/proc/adjust_spent(amount)
+	set_spent(spent + amount)
+
+/datum/sex_controller/proc/handle_spent(dt)
+	if(spent <= 0)
+		return
+	if(arousal > 60)
+		to_chat(user, span_warning("I'm too spent!"))
+		adjust_arousal(-20)
+	adjust_spent(-dt * SPENT_REDUCTION_RATE)
+	if(spent <= 0)
+		to_chat(user, span_notice("I feel like I'm not so spent anymore"))
+	else
+		adjust_arousal(-dt * SPENT_AROUSAL_RATE)
+
 /datum/sex_controller/proc/set_arousal(amount)
 	if(amount > arousal)
 		last_arousal_increase_time = world.time
@@ -102,34 +133,133 @@
 /datum/sex_controller/proc/adjust_arousal(amount)
 	set_arousal(arousal + amount)
 
-/datum/sex_controller/proc/add_arousal(amount)
-	if(amount <= 0)
+/datum/sex_controller/proc/perform_sex_action(mob/living/carbon/human/action_target, arousal_amt, pain_amt, giving)
+	action_target.sexcon.receive_sex_action(arousal_amt, pain_amt, giving, force, speed)
+
+/datum/sex_controller/proc/receive_sex_action(arousal_amt, pain_amt, giving, applied_force, applied_speed)
+	arousal_amt *= get_force_pleasure_multiplier(applied_force, giving)
+	pain_amt *= get_force_pain_multiplier(applied_force)
+	pain_amt *= get_speed_pain_multiplier(applied_speed)
+
+	if(user.stat == DEAD)
+		arousal_amt = 0
+		pain_amt = 0
+
+	adjust_arousal(arousal_amt)
+
+	damage_from_pain(pain_amt)
+	try_do_moan(arousal_amt, pain_amt, applied_force, giving)
+	try_do_pain_effect(pain_amt, giving)
+
+/datum/sex_controller/proc/damage_from_pain(pain_amt)
+	if(pain_amt < PAIN_MINIMUM_FOR_DAMAGE)
 		return
-	adjust_arousal(amount)
-	// Do moans here
+	var/damage = (pain_amt / PAIN_DAMAGE_DIVISOR)
+	var/obj/item/bodypart/part = user.get_bodypart(BODY_ZONE_CHEST)
+	if(!part)
+		return
+	user.apply_damage(damage, BRUTE, part)
+
+/datum/sex_controller/proc/try_do_moan(arousal_amt, pain_amt, applied_force, giving)
+	if(user.stat != CONSCIOUS)
+		return
+	if(last_moan + MOAN_COOLDOWN >= world.time)
+		return
+	if(prob(50))
+		return
+	var/chosen_emote
+	switch(arousal_amt)
+		if(0 to 5)
+			chosen_emote = "sexmoanlight"
+		if(5 to INFINITY)
+			chosen_emote = "sexmoanhvy"
+
+	var/suppres_heavy_moans = FALSE
+
+	if(pain_amt >= PAIN_MED_EFFECT)
+		if(!giving)
+			suppres_heavy_moans = TRUE
+		if(prob(70))
+			if(giving)
+				chosen_emote = "groan"
+			else
+				if(prob(50))
+					chosen_emote = "whimper"
+				else
+					chosen_emote = "cry"
+	else if (pain_amt >= PAIN_MILD_EFFECT)
+		if(prob(40))
+			chosen_emote = "whimper"
+
+	if(suppres_heavy_moans && chosen_emote == "sexmoanhvy")
+		chosen_emote = "sexmoanlight"
+	last_moan = world.time
+	user.emote(chosen_emote)
+
+/datum/sex_controller/proc/try_do_pain_effect(pain_amt, giving)
+	if(pain_amt < PAIN_MILD_EFFECT)
+		return
+	if(last_pain + PAIN_COOLDOWN >= world.time)
+		return
+	if(prob(50))
+		return
+	last_pain = world.time
+	if(pain_amt >= PAIN_HIGH_EFFECT)
+		var/pain_msg = pick(list("IT HURTS!!!", "IT NEEDS TO STOP!!!", "I CAN'T TAKE IT ANYMORE!!!"))
+		to_chat(user, span_boldwarning(pain_msg))
+		user.flash_fullscreen("redflash2")
+		if(prob(60) && user.stat == CONSCIOUS)
+			user.visible_message(span_warning("[user] shudders in pain!"))
+	else if(pain_amt >= PAIN_MED_EFFECT)
+		var/pain_msg = pick(list("It hurts!", "It pains me!"))
+		to_chat(user, span_boldwarning(pain_msg))
+		user.flash_fullscreen("redflash1")
+		if(prob(30) && user.stat == CONSCIOUS)
+			user.visible_message(span_warning("[user] shudders in pain!"))
+	else
+		var/pain_msg = pick(list("It hurts a little...", "It stings...", "I'm aching..."))
+		to_chat(user, span_warning(pain_msg))
 
 /datum/sex_controller/proc/update_blueballs()
 	if(arousal >= BLUEBALLS_GAIN_THRESHOLD)
-		owner.add_stress(/datum/stressevent/blueb)
+		user.add_stress(/datum/stressevent/blueb)
 	else if (arousal <= BLUEBALLS_LOOSE_THRESHOLD)
-		owner.remove_stress(/datum/stressevent/blueb)
+		user.remove_stress(/datum/stressevent/blueb)
 
 /datum/sex_controller/proc/check_active_ejaculation()
 	if(arousal < ACTIVE_EJAC_THRESHOLD)
+		return FALSE
+	if(spent > 0)
+		return FALSE
+	if(!can_ejaculate())
+		return FALSE
+	return TRUE
+
+/datum/sex_controller/proc/can_ejaculate()
+	if(!user.getorganslot(ORGAN_SLOT_TESTICLES))
+		return FALSE
+	if(!user.getorganslot(ORGAN_SLOT_VAGINA))
 		return FALSE
 	return TRUE
 
 /datum/sex_controller/proc/handle_passive_ejaculation()
 	if(arousal < PASSIVE_EJAC_THRESHOLD)
 		return
+	if(spent > 0)
+		return
+	if(!can_ejaculate())
+		return FALSE
 	ejaculate()
 
 /datum/sex_controller/proc/process_sexcon(dt)
 	handle_arousal_unhorny(dt)
+	handle_spent(dt)
 	handle_passive_ejaculation()
 
 /datum/sex_controller/proc/handle_arousal_unhorny(dt)
-	if(last_arousal_increase_time + AROUSAL_TIME_TO_UNHORNY < world.time)
+	if(!can_ejaculate())
+		adjust_arousal(-dt * IMPOTENT_AROUSAL_LOSS_RATE)
+	if(last_arousal_increase_time + AROUSAL_TIME_TO_UNHORNY >= world.time)
 		return
 	adjust_arousal(-dt * AROUSAL_UNHORNY_RATE)
 
@@ -137,14 +267,15 @@
 	var/list/dat = list()
 	var/force_name = get_force_string()
 	var/speed_name = get_speed_string()
-	dat += "<a href='?src=[REF(src)];task=speed_down'>\<</a> [speed_name] <a href='?src=[REF(src)];task=speed_up'>\></a> ~|~ <a href='?src=[REF(src)];task=force_down'>\<</a> [force_name] <a href='?src=[REF(src)];task=force_up'>\></a>"
+	dat += "<center><a href='?src=[REF(src)];task=speed_down'>\<</a> [speed_name] <a href='?src=[REF(src)];task=speed_up'>\></a> ~|~ <a href='?src=[REF(src)];task=force_down'>\<</a> [force_name] <a href='?src=[REF(src)];task=force_up'>\></a></center>"
 	if(target == user)
 		dat += "<br><center>Doing unto yourself</center>"
 	else
 		dat += "<br><center>Doing unto [target]'s</center>"
-	dat += "<br>"
 	if(current_action)
 		dat += "<center><a href='?src=[REF(src)];task=stop'>Stop</a></center>"
+	else
+		dat += "<br>"
 	for(var/action_type in GLOB.sex_actions)
 		var/datum/sex_action/action = SEX_ACTION(action_type)
 		if(!action.shows_on_menu(user, target))
@@ -156,7 +287,7 @@
 			link = "linkOn"
 		dat += "<br><a class='[link]' href='?src=[REF(src)];task=action;action_type=[action_type]'>[action.name]</a>"
 
-	var/datum/browser/popup = new(user, "sexcon", "Sate Desire", 350, 550)
+	var/datum/browser/popup = new(user, "sexcon", "<center>Sate Desire</center>", 350, 550)
 	popup.set_content(dat.Join())
 	popup.open()
 	return
@@ -187,6 +318,7 @@
 	if(!current_action)
 		return
 	desire_stop = TRUE
+	user.doing = FALSE
 
 /datum/sex_controller/proc/stop_current_action()
 	if(!current_action)
@@ -194,13 +326,16 @@
 	var/datum/sex_action/action = SEX_ACTION(current_action)
 	action.on_finish(user, target)
 	desire_stop = FALSE
+	user.doing = FALSE
 	current_action = null
 
 /datum/sex_controller/proc/try_start_action(action_type)
 	if(action_type == current_action)
-		stop_current_action()
+		try_stop_current_action()
 		return
-	stop_current_action()
+	if(current_action != null)
+		try_stop_current_action()
+		return
 	if(!action_type)
 		return
 	if(!can_perform_action(action_type))
@@ -212,12 +347,15 @@
 
 /datum/sex_controller/proc/sex_action_loop()
 	// Do action loop
+	var/performed_action_type = current_action
 	var/datum/sex_action/action = SEX_ACTION(current_action)
 	action.on_start(user, target)
 	while(TRUE)
 		if(!user.rogfat_add(action.stamina_cost * get_stamina_cost_multiplier()))
 			break
 		if(!do_after(user, (action.do_time / get_speed_multiplier()), target = target))
+			break
+		if(current_action == null || performed_action_type != current_action)
 			break
 		if(!can_perform_action(current_action))
 			break
@@ -243,12 +381,17 @@
 		return FALSE
 	return TRUE
 
-/datum/sex_controller/proc/inherent_perform_check()
+/datum/sex_controller/proc/inherent_perform_check(action_type)
+	var/datum/sex_action/action = SEX_ACTION(action_type)
 	if(!target)
 		return FALSE
 	if(user.stat != CONSCIOUS)
 		return FALSE
 	if(!user.Adjacent(target))
+		return FALSE
+	if(action.check_incapacitated && user.incapacitated())
+		return FALSE
+	if(action.check_same_tile && get_turf(user) != get_turf(target))
 		return FALSE
 	return TRUE
 
@@ -277,16 +420,50 @@
 		if(SEX_SPEED_EXTREME)
 			return 2.5
 
-/datum/sex_controller/proc/get_force_pleasure_multiplier()
-	switch(force)
+/datum/sex_controller/proc/get_force_pleasure_multiplier(passed_force, giving)
+	switch(passed_force)
 		if(SEX_FORCE_LOW)
-			return 1.0
+			if(giving)
+				return 1.0
+			else
+				return 1.0
 		if(SEX_FORCE_MID)
-			return 1.5
+			if(giving)
+				return 1.5
+			else
+				return 1.5
+		if(SEX_FORCE_HIGH)
+			if(giving)
+				return 2.0
+			else
+				return 1.5
+		if(SEX_FORCE_EXTREME)
+			if(giving)
+				return 2.5
+			else
+				return 1.0
+
+/datum/sex_controller/proc/get_force_pain_multiplier(passed_force)
+	switch(passed_force)
+		if(SEX_FORCE_LOW)
+			return 0.5
+		if(SEX_FORCE_MID)
+			return 1.0
 		if(SEX_FORCE_HIGH)
 			return 2.0
 		if(SEX_FORCE_EXTREME)
-			return 2.5
+			return 3.0
+
+/datum/sex_controller/proc/get_speed_pain_multiplier(passed_speed)
+	switch(passed_speed)
+		if(SEX_SPEED_LOW)
+			return 0.8
+		if(SEX_SPEED_MID)
+			return 1.0
+		if(SEX_SPEED_HIGH)
+			return 1.2
+		if(SEX_SPEED_EXTREME)
+			return 1.4
 
 /datum/sex_controller/proc/get_force_string()
 	switch(force)
