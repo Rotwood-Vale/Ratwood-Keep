@@ -1,11 +1,12 @@
 /datum/sex_action
 	abstract_type = /datum/sex_action
 	var/name = "Zodomize"
-	/// Time to do the act
+	/// Time to do the act, modified by up to 2.5x speed by the speed toggle
 	var/do_time = 3 SECONDS
 	/// Whether the act is continous and will be done on repeat
 	var/continous = TRUE
-	var/stamina_cost = 2
+	/// Stamina cost per action, modified by up to 2.5x cost by the force toggle
+	var/stamina_cost = 1.0
 
 /datum/sex_action/proc/can_perform(mob/living/user, mob/living/target)
 	return TRUE
