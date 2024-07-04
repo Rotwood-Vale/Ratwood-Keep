@@ -200,6 +200,8 @@
 		// It could want to finish afterwards the performed action
 		if(action.is_finished(user, target))
 			break
+		if(!action.continous)
+			break
 	stop_current_action()
 
 /datum/sex_controller/proc/can_perform_action(action_type)
@@ -223,17 +225,6 @@
 
 /datum/sex_controller/proc/set_target(mob/living/new_target)
 	target = new_target
-
-/datum/sex_controller/proc/get_speed_string()
-	switch(speed)
-		if(SEX_SPEED_LOW)
-			return "<font color='white'>SLOW</font>"
-		if(SEX_SPEED_MID)
-			return "<font color='pink'>STEADY</font>"
-		if(SEX_SPEED_HIGH)
-			return "<font color='red'>QUICK</font>"
-		if(SEX_SPEED_EXTREME)
-			return "<font color='purple'>UNRELENTING</font>"
 
 /datum/sex_controller/proc/get_speed_multiplier()
 	switch(speed)
@@ -271,10 +262,21 @@
 /datum/sex_controller/proc/get_force_string()
 	switch(force)
 		if(SEX_FORCE_LOW)
-			return "<font color='grey'>GENTLE</font>"
+			return "<font color='maroon'>GENTLE</font>"
 		if(SEX_FORCE_MID)
-			return "<font color='pink'>FIRM</font>"
+			return "<font color='firebrick'>FIRM</font>"
 		if(SEX_FORCE_HIGH)
-			return "<font color='red'>ROUGH</font>"
+			return "<font color='darkmagenta'>ROUGH</font>"
 		if(SEX_SPEED_EXTREME)
-			return "<font color='purple'>BRUTAL</font>"
+			return "<font color='mediumvioletred'>BRUTAL</font>"
+
+/datum/sex_controller/proc/get_speed_string()
+	switch(speed)
+		if(SEX_SPEED_LOW)
+			return "<font color='maroon'>SLOW</font>"
+		if(SEX_SPEED_MID)
+			return "<font color='firebrick'>STEADY</font>"
+		if(SEX_SPEED_HIGH)
+			return "<font color='darkmagenta'>QUICK</font>"
+		if(SEX_SPEED_EXTREME)
+			return "<font color='mediumvioletred'>UNRELENTING</font>"
