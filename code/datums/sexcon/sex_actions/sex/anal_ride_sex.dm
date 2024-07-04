@@ -27,7 +27,7 @@
 	user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] rides [target]."))
 	playsound(target, 'sound/misc/mat/segso.ogg', 50, TRUE, -2, ignore_walls = FALSE)
 
-	user.sexcon.perform_sex_action(target, 2, 7, TRUE)
+	user.sexcon.perform_sex_action(target, 2, 9, TRUE)
 	user.sexcon.handle_passive_ejaculation()
 
 	user.sexcon.perform_sex_action(target, 2, 4, FALSE)

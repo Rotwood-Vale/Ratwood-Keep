@@ -15,6 +15,8 @@
 		return FALSE
 	if(!user.getorganslot(ORGAN_SLOT_PENIS))
 		return FALSE
+	if(!user.sexcon.can_use_penis())
+		return
 	return TRUE
 
 /datum/sex_action/masturbate_penis_over/on_start(mob/living/carbon/human/user, mob/living/carbon/human/target)
@@ -32,7 +34,7 @@
 		user.sexcon.cum_onto()
 
 /datum/sex_action/masturbate_penis_over/on_finish(mob/living/carbon/human/user, mob/living/carbon/human/target)
-	user.visible_message(span_warning("[user] stops jerking off..."))
+	user.visible_message(span_warning("[user] stops jerking off."))
 
 /datum/sex_action/masturbate_penis_over/is_finished(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(user.sexcon.just_ejaculated())

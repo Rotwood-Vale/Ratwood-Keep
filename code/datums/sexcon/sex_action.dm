@@ -8,9 +8,9 @@
 	/// Stamina cost per action, modified by up to 2.5x cost by the force toggle
 	var/stamina_cost = 1.0
 	/// Whether the action requires both participants to be on the same tile
-	var/check_same_tile = FALSE
-	/// Whether the action allows being done while incapacitated (stun, handcuffed)
-	var/check_incapacitated = FALSE
+	var/check_same_tile = TRUE
+	/// Whether the action is forbidden from being done while incapacitated (stun, handcuffed)
+	var/check_incapacitated = TRUE
 
 /datum/sex_action/proc/can_perform(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	return TRUE
