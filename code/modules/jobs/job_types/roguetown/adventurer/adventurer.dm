@@ -21,7 +21,7 @@ GLOBAL_VAR_INIT(adventurer_hugbox_duration_still, 3 MINUTES)
 	show_in_credits = FALSE
 	min_pq = 0
 	max_pq = null
-	lastclass_forbidden = TRUE
+	lastclass_forbidden = FALSE
 	currentclass_forbidden = TRUE
 	
 	advclass_cat_rolls = list(CTAG_ADVENTURER = 5)
