@@ -19,6 +19,7 @@
 	give_bank_account = 47
 	min_pq = 2
 	max_pq = null
+	lastclass_forbidden = TRUE
 
 /datum/outfit/job/roguetown/magician
 	allowed_patrons = list(/datum/patron/divine/noc)

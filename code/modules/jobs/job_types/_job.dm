@@ -95,7 +95,7 @@
 	var/max_pq = 0
 
 	/// Whether this job is forbidden to players who played it during the previous round
-	var/lastclass_forbidden = TRUE
+	var/lastclass_forbidden = FALSE
 	/// Whether this job is forbidden to players who played it during the current round (Think: Respawns)
 	var/currentclass_forbidden = FALSE
 

@@ -20,6 +20,7 @@
 	give_bank_account = 25
 	min_pq = 2
 	max_pq = null
+	lastclass_forbidden = TRUE
 
 	cmode_music = 'sound/music/combat_physician.ogg'
 
