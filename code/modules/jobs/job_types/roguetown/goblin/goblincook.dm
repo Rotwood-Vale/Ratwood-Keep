@@ -1,13 +1,13 @@
 /datum/job/roguetown/goblincook
-	title = "Goblin Cook"
+	title = "Tribal Cook"
 	flag = GOBLINCOOK
 	department_flag = GOBLIN
 	faction = "Station"
-	total_positions = 4
-	spawn_positions = 4
+	total_positions = 3
+	spawn_positions = 3
 	allowed_sexes = list(MALE, FEMALE)
-	allowed_races = list(RACES_DESPISED)
-	allowed_patrons = list(/datum/patron/inhumen/graggar)
+	allowed_races = RACES_ALL_KINDS
+	allowed_patrons = ALL_DIVINE_PATRONS
 	tutorial = "Cook, farm, butcher. Make king happy with apple pies! Don't forget about your brothers."
 
 

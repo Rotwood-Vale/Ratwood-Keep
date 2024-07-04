@@ -1,6 +1,6 @@
 
 /datum/job/roguetown/goblinking
-	title = "Goblin King"
+	title = "Tribal King"
 	f_title = "Goblin Queen"
 	flag = GOBLINKING
 	department_flag = GOBLIN
@@ -8,8 +8,8 @@
 	total_positions = 1
 	spawn_positions = 1
 	allowed_sexes = list(MALE, FEMALE)
-	allowed_races = list(RACES_DESPISED)
-	allowed_patrons = list(/datum/patron/inhumen/graggar)
+	allowed_races = RACES_ALL_KINDS
+	allowed_patrons = ALL_DIVINE_PATRONS
 	tutorial = "Goblin King or Queen is a fatty lazy pig who wishes to do nothing but eat apple pies and fart while sitting on his stone throne."
 	whitelist_req = FALSE
 	outfit = /datum/outfit/job/roguetown/goblinking
