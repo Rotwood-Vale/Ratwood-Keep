@@ -8,8 +8,8 @@ GLOBAL_VAR_INIT(adventurer_hugbox_duration_still, 3 MINUTES)
 	flag = ADVENTURER
 	department_flag = PEASANTS
 	faction = "Station"
-	total_positions = 20
-	spawn_positions = 20
+	total_positions = 35
+	spawn_positions = 35
 	allowed_races = RACES_ALL_KINDS
 	tutorial = "Hero of nothing, adventurer by trade. Whatever led you to this fate is up to the wind to decide, and you've never fancied yourself for much other than the thrill. Someday your pride is going to catch up to you, and you're going to find out why most men don't end up in the annals of history."
 
@@ -22,7 +22,7 @@ GLOBAL_VAR_INIT(adventurer_hugbox_duration_still, 3 MINUTES)
 	min_pq = 0
 	max_pq = null
 	
-	advclass_cat_rolls = list(CTAG_ADVENTURER = 5)
+	advclass_cat_rolls = list(CTAG_ADVENTURER = 10)
 	PQ_boost_divider = 10
 
 	wanderer_examine = TRUE
