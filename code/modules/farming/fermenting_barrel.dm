@@ -33,7 +33,6 @@
 		fruit.reagents.trans_to(src, fruit.reagents.total_volume)
 	if(fruit.distill_reagent)
 		reagents.add_reagent(fruit.distill_reagent, fruit.distill_amt)
-		reagents.add_reagent(/datum/reagent/water, 3)
 	qdel(fruit)
 	playsound(src, "bubbles", 100, TRUE)
 
