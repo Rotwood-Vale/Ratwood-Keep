@@ -21,9 +21,12 @@
 	user.visible_message(span_warning("[user] starts jerking off..."))
 
 /datum/sex_action/masturbate_penis/on_perform(mob/living/carbon/human/user, mob/living/carbon/human/target)
-	user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] jerks his cock..."))
-	playsound(owner, 'sound/misc/mat/fap.ogg', 30, TRUE, -2, ignore_walls = FALSE)
-	user.sexcon.adjust_arousal(3 * user.sexcon.get_force_pleasure_multiplier())
+	var/chosen_verb = pick(list("jerks his cock", "strokes his cock", "masturbates", "jerks off"))
+	user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] [chosen_verb]..."))
+	playsound(user, 'sound/misc/mat/fingering.ogg', 30, TRUE, -2, ignore_walls = FALSE)
+
+	user.sexcon.perform_sex_action(user, 2, 4, TRUE)
+
 	user.sexcon.handle_passive_ejaculation()
 
 /datum/sex_action/masturbate_penis/on_finish(mob/living/carbon/human/user, mob/living/carbon/human/target)

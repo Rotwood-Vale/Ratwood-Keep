@@ -53,15 +53,8 @@
 /mob/living/proc/can_do_sex()
 	return TRUE
 
-/mob/living/carbon/human/proc/become_pregnant(husband)
-	if(QDELETED(src))
-		return
-	if(gender != FEMALE)
-		return
-	if(stat == DEAD)
-		return
-
-	to_chat(src, span_warning("I don't feel so good...I'm definetly pregnant!"))	
+/mob/living/carbon/human/proc/try_impregnate(mob/living/carbon/human/wife)
+	return
 
 /proc/add_cum_floor(turfu)
 	if(!turfu || !isturf(turfu))
