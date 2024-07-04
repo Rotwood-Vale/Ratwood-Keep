@@ -316,7 +316,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/lady
-	name = "Queen Consort"
+	name = "Consort"
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/prince
@@ -396,19 +396,19 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 //goblin
 
 /obj/effect/landmark/start/goblinking
-	name = "Goblin King"
+	name = "Tribal King"
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/goblincook
-	name = "Goblin Cook"
+	name = "Tribal Cook"
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/goblinguard
-	name = "Goblin Guard"
+	name = "Tribal Guard"
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/goblinsmith
-	name = "Goblin Smith"
+	name = "Tribal Smith"
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/goblinlate
