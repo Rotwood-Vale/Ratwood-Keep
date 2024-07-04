@@ -5,7 +5,7 @@ combat_desertrider.ogg: Two Fingers- You Ain't Down
 combat_grenzelhoft.ogg: Helbrede - Sons of Tyr
 combat_jester.ogg: OFF - Pepper Steak
 combat_bandit.ogg: Deus Ex - Battery Park Combat
-combat_bandit2.ogg: Cruelty Squad  - Rent DUe
+combat_bandit2.ogg: Evanora Unlimited - Mithlond (Instrumental)
 combat_werewolf.ogg: Filmmaker - Federal Bestiary
 combat_guard.ogg: Deus Ex - Desolation Combat
 combat_guard2.ogg: Deus Ex - NYC Streets Combat

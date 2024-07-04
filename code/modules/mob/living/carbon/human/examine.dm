@@ -57,8 +57,12 @@
 		on_examine_face(user)
 		var/used_name = name
 		if(observer_privilege)
-			used_name = real_name
-		if(job)
+			used_name = name
+		if(job == "Goblin King")
+			var/used_title =  "King of the Goblins"
+		// Use the possibly modified title in the output
+			. = list("<span class='info'>ø ------------ ø\nThis is <EM>[used_name]</EM>, the [used_title].")
+		else
 			var/datum/job/J = SSjob.GetJob(job)
 			var/used_title = J.title
 			if(J.f_title && (t_He == "She"))
@@ -69,11 +73,6 @@
 				if(J.advjob_examine)
 					used_title = advjob
 				. = list("<span class='info'>ø ------------ ø\nThis is <EM>[used_name]</EM>, the [islatejoin ? "returning " : ""][race_name] [used_title].")
-		else
-			. = list("<span class='info'>ø ------------ ø\nThis is the <EM>[used_name]</EM>, the [race_name].")
-		
-		if(GLOB.lord_titles[name])
-			. += span_notice("[m3] been granted the title of \"[GLOB.lord_titles[name]]\".")
 		
 		if(dna.species.use_skintones)
 			var/skin_tone_wording = dna.species.skin_tone_wording ? lowertext(dna.species.skin_tone_wording) : "skin tone"
