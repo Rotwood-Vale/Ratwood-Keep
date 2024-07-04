@@ -24,6 +24,9 @@ GLOBAL_LIST_INIT(sex_actions, build_sex_actions())
 #define SEX_FORCE_MIN 1
 #define SEX_FORCE_MAX 4
 
+#define BLUEBALLS_GAIN_THRESHOLD 15
+#define BLUEBALLS_LOOSE_THRESHOLD 5
+
 /proc/build_sex_actions()
 	. = list()
 	for(var/path in typesof(/datum/sex_action))

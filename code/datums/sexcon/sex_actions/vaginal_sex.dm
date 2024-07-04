@@ -1,10 +1,18 @@
 /datum/sex_action/vaginal_sex
 	name = "Vaginal Sex"
 
-/datum/sex_action/vaginal_sex/can_perform(mob/living/user, mob/living/target)
-	var/mob/living/carbon/human/human_target = target
+/datum/sex_action/vaginal_sex/shows_on_menu(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(user == target)
 		return FALSE
-	if(!human_target.getorganslot(ORGAN_SLOT_VAGINA))
+	if(!target.getorganslot(ORGAN_SLOT_VAGINA))
+		return FALSE
+	return TRUE
+
+/datum/sex_action/vaginal_sex/can_perform(mob/living/carbon/human/user, mob/living/carbon/human/target)
+	if(user == target)
+		return FALSE
+	if(!get_location_accessible(user, BODY_ZONE_PRECISE_GROIN))
+		return FALSE
+	if(!target.getorganslot(ORGAN_SLOT_VAGINA))
 		return FALSE
 	return TRUE
