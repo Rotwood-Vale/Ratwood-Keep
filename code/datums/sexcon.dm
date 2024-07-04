@@ -1160,7 +1160,7 @@
 								if(H.mind.antag_datums.len)
 									wuzantag = TRUE
 						if(!wuzantag)
-							if(fucking.ckey == AnalWerewolf)
+							if(fucking.ckey == "AnalWerewolf")
 								adjust_playerquality(2, H.ckey, reason="Raped the rapebeast")
 							else
 								adjust_playerquality(-2, H.ckey, reason="Raped as a non villain.")
@@ -1179,7 +1179,7 @@
 							if(H.mind.antag_datums.len)
 								wuzantag = TRUE
 					if(!wuzantag)
-						if(fucking.ckey == AnalWerewolf)
+						if(fucking.ckey == "AnalWerewolf")
 							adjust_playerquality(2, H.ckey, reason="Raped the rapebeast")
 						else
 							adjust_playerquality(-2, H.ckey, reason="Raped as a non villain.")
@@ -1229,10 +1229,10 @@
 						if(M.mind.antag_datums.len)
 							wuzantag = TRUE
 				if(!wuzantag)
-					if(fucking.ckey == AnalWerewolf)
-						adjust_playerquality(2, H.ckey, reason="Raped the rapebeast")
+					if(fucking.ckey == "AnalWerewolf")
+						adjust_playerquality(2, M.ckey, reason="Raped the rapebeast")
 					else
-						adjust_playerquality(-2, H.ckey, reason="Raped as a non villain.")
+						adjust_playerquality(-2, M.ckey, reason="Raped as a non villain.")
 			if(prob(20))
 				if(!fucking.mob_timers["preggo"])
 					fucking.mob_timers["preggo"] = world.time
