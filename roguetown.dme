@@ -659,6 +659,7 @@
 #include "code\datums\sexcon\sexcon_helpers.dm"
 #include "code\datums\sexcon\sex_actions\deviant\footjob.dm"
 #include "code\datums\sexcon\sex_actions\deviant\frotting.dm"
+#include "code\datums\sexcon\sex_actions\deviant\scissoring.dm"
 #include "code\datums\sexcon\sex_actions\deviant\thighjob.dm"
 #include "code\datums\sexcon\sex_actions\deviant\titjob.dm"
 #include "code\datums\sexcon\sex_actions\force\force_blowjob.dm"
