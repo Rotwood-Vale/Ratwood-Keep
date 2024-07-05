@@ -115,7 +115,7 @@
 		priority_announce("[real_name] the [dispjob] has named [HU.real_name] the inheritor of ROCKHILL!", title = "Long Live [HU.real_name]!", sound = 'sound/misc/bell.ogg')
 
 /mob/living/carbon/human/proc/churchexcommunicate()
-	set name = "Curse"
+	set name = "Excommunicate"
 	set category = "Priest"
 	if(stat)
 		return

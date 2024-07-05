@@ -57,6 +57,25 @@
 #define TRAIT_SCREENSHAKE "screenshake" //screen will always be shaking, you cannot stop it
 #define TRAIT_NORUN "Decayed Flesh"
 
+// PATRON CURSE TRAITS
+#define TRAIT_CURSE "Curse" //source
+#define TRAIT_SCIENCE_CURSE "Curse of Atheism"
+#define TRAIT_PSYDON_CURSE "Psydon's Curse"
+#define TRAIT_ASTRATA_CURSE "Astrata's Curse"
+#define TRAIT_NOC_CURSE "Noc's Curse"
+#define TRAIT_DENDOR_CURSE "Dendor's Curse"
+#define TRAIT_ABYSSOR_CURSE "Abyssor's Curse"
+#define TRAIT_RAVOX_CURSE "Ravox's Curse"
+#define TRAIT_NECRA_CURSE "Necra's Curse"
+#define TRAIT_XYLIX_CURSE "Xylix's Curse"
+#define TRAIT_PESTRA_CURSE "Pestra's Curse"
+#define TRAIT_MALUM_CURSE "Malum's Curse"
+#define TRAIT_EORA_CURSE "Eora's Curse"
+#define TRAIT_ZIZO_CURSE "Zizo's Curse"
+#define TRAIT_GRAGGAR_CURSE "Graggar's Curse"
+#define TRAIT_MATTHIOS_CURSE "Matthios' Curse"
+#define TRAIT_BAOTHA_CURSE "Baotha's Curse"
+
 GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_WEBWALK = "I can move freely between webs.",
 	TRAIT_NOSTINK = span_dead("My nose is numb to the smell of decay."),

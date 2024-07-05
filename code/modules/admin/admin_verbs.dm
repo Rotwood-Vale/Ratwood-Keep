@@ -14,6 +14,7 @@ GLOBAL_PROTECT(admin_verbs_default)
 	/datum/admins/proc/show_player_panel,
 	/datum/admins/proc/admin_heal,
 	/datum/admins/proc/admin_revive,
+	/datum/admins/proc/admin_curse,
 	/datum/admins/proc/admin_sleep,
 	/client/proc/jumptoarea,
 	/client/proc/jumptokey,
