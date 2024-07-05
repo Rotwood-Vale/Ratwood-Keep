@@ -13,14 +13,6 @@
 
 /datum/outfit/job/roguetown/adventurer/sfighter/pre_equip(mob/living/carbon/human/H)
 	..()
-	H.adjust_blindness(-3)
-	var/classes = list("Warrior","Monster Hunter",) // To Do - knight errant unique archetype(5 percent chance)
-	var/classchoice = input("Choose your archetypes", "Available archetypes") as anything in classes
-
-	switch(classchoice)
-	
-		if("Warrior")
-			H.set_blindness(0)
 			to_chat(H, span_warning("Warriors are well rounded fighters, experienced often in many theaters of warfare and battle they are capable of rising to any challenge that might greet them on the path."))
 			H.mind.adjust_skillrank(/datum/skill/combat/crossbows, rand(1,2), TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/polearms, 2, TRUE)
@@ -67,7 +59,8 @@
 				beltr = /obj/item/rogueweapon/sword/iron
 			else
 				beltr = /obj/item/rogueweapon/sword/sabre
-		if("Monster Hunter")
+	
+/*if("Monster Hunter")
 			H.set_blindness(0)
 			to_chat(H, span_warning("Monsters Hunters are typically contracted champions of the common folk dedicated to the slaying of both lesser vermin and greater beasts of the wilds."))
 			H.mind.adjust_skillrank(/datum/skill/combat/crossbows, rand(1,2), TRUE)
@@ -109,6 +102,7 @@
 				H.mind.adjust_skillrank(/datum/skill/combat/polearms, 2, TRUE)
 				H.mind.adjust_skillrank(/datum/skill/combat/axes, 3, TRUE)
 				backr = /obj/item/rogueweapon/stoneaxe/battle
+*/
 			backl = /obj/item/storage/backpack/rogue/satchel
 			beltl = /obj/item/rogueweapon/huntingknife
 	if(H.gender == MALE)
