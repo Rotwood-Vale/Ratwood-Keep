@@ -18,9 +18,9 @@
 	if(!get_location_accessible(target, BODY_ZONE_PRECISE_GROIN))
 		return FALSE
 	if(!user.getorganslot(ORGAN_SLOT_PENIS))
-		return
+		return FALSE
 	if(!target.getorganslot(ORGAN_SLOT_PENIS))
-		return
+		return FALSE
 	return TRUE
 
 /datum/sex_action/frotting/on_start(mob/living/carbon/human/user, mob/living/carbon/human/target)

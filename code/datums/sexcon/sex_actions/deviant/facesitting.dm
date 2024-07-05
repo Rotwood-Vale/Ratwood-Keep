@@ -27,7 +27,7 @@
 /datum/sex_action/facesitting/on_perform(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	var/verbstring = pick(list("rubs", "smushes", "forces"))
 	user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] [verbstring] their butt against [target] face."))
-	playsound(user, 'sound/misc/mat/fingering.ogg', 30, TRUE, -2, ignore_walls = FALSE)
+	target.make_sucking_noise()
 
 	user.sexcon.perform_sex_action(user, 1, 3, TRUE)
 	user.sexcon.handle_passive_ejaculation()

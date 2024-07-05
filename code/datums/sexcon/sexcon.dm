@@ -132,9 +132,12 @@
 	add_cum_floor(get_turf(target))
 	after_ejaculation()
 
-/datum/sex_controller/proc/cum_into()
+/datum/sex_controller/proc/cum_into(oral = FALSE)
 	log_combat(user, target, "Came inside the target")
-	playsound(target, 'sound/misc/mat/endin.ogg', 50, TRUE, ignore_walls = FALSE)
+	if(oral)
+		playsound(owner, pick('sound/misc/mat/mouthend (1).ogg','sound/misc/mat/mouthend (2).ogg'), 100, FALSE, ignore_walls = FALSE)
+	else
+		playsound(target, 'sound/misc/mat/endin.ogg', 50, TRUE, ignore_walls = FALSE)
 	after_ejaculation()
 
 /datum/sex_controller/proc/ejaculate()

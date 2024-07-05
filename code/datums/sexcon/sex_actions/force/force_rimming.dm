@@ -22,7 +22,7 @@
 
 /datum/sex_action/force_rimming/on_perform(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] forces [target] to rim his butt."))
-	playsound(user, 'sound/misc/mat/fingering.ogg', 30, TRUE, -2, ignore_walls = FALSE)
+	target.make_sucking_noise()
 
 	user.sexcon.perform_sex_action(user, 2, 4, TRUE)
 	user.sexcon.handle_passive_ejaculation()

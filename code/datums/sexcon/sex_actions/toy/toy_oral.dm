@@ -24,7 +24,7 @@
 /datum/sex_action/toy_oral/on_perform(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	var/obj/item/dildo = get_dildo_in_either_hand(user)
 	user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] blows \the [dildo]..."))
-	playsound(user, 'sound/misc/mat/fingering.ogg', 30, TRUE, -2, ignore_walls = FALSE)
+	user.make_sucking_noise()
 
 /datum/sex_action/toy_oral/on_finish(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	var/obj/item/dildo = get_dildo_in_either_hand(user)
