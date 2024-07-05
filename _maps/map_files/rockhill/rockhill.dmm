@@ -2940,8 +2940,8 @@
 /turf/open/floor/rogue/carpet,
 /area/rogue/indoors/town/manor)
 "dyD" = (
-/obj/structure/mineral_door/wood{
-	icon_state = "wcr";
+/obj/structure/mineral_door/wood/donjon{
+	dir = 1;
 	locked = 1;
 	lockid = "garrison"
 	},
