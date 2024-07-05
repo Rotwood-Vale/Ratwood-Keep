@@ -221,3 +221,21 @@
 		if(entry.type == entry_type)
 			return entry
 	return null
+
+/datum/preferences/proc/genderize_customizer_entries()
+	customizer_entries = SANITIZE_LIST(customizer_entries)
+	var/datum/species/species = pref_species
+	var/list/customizers = species.customizers
+
+	/// Check if we have any missing customizer entries
+	for(var/datum/customizer/customizer_type as anything in customizers)
+		if(customizer_type.gender_enabled == null)
+			continue
+		for(var/datum/customizer_entry/entry as anything in customizer_entries)
+			if(entry.customizer_type != customizer_type)
+				continue
+			if(customizer_type.gender_enabled == gender)
+				entry.disabled = FALSE
+			else
+				entry.disabled = TRUE
+			break
