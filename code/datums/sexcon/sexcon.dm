@@ -178,8 +178,12 @@
 			chosen_emote = "sexmoanhvy"
 
 	if(pain_amt >= PAIN_MILD_EFFECT)
-		if(!giving && prob(40))
-			chosen_emote = "painmoan"
+		if(giving)
+			if(prob(30))
+				chosen_emote = "groan"
+		else
+			if(prob(40))
+				chosen_emote = "painmoan"
 	if(pain_amt >= PAIN_MED_EFFECT)
 		if(giving)
 			if(prob(50))
@@ -187,7 +191,7 @@
 		else
 			if(prob(60))
 				// Because males have atrocious whimper noise
-				if(gender == FEMALE && prob(50))
+				if(user.gender == FEMALE && prob(50))
 					chosen_emote = "whimper"
 				else
 					chosen_emote = "cry"
