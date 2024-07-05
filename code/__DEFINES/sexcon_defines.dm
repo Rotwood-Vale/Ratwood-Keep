@@ -40,6 +40,8 @@ GLOBAL_LIST_INIT(sex_actions, build_sex_actions())
 #define PAIN_MINIMUM_FOR_DAMAGE PAIN_MED_EFFECT
 #define PAIN_DAMAGE_DIVISOR 50
 
+#define VIOLATED_ALLOWED_TIME (10 MINUTES)
+
 /proc/build_sex_actions()
 	. = list()
 	for(var/path in typesof(/datum/sex_action))

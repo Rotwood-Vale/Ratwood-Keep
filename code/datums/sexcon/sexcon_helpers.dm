@@ -37,6 +37,7 @@
 /mob/living
 	var/can_do_sex = TRUE
 	var/virginity = FALSE
+	var/deviant = FALSE
 
 /mob/living/carbon/human/MiddleMouseDrop_T(mob/living/target, mob/living/user)
 	if(user.mmb_intent)
@@ -54,7 +55,13 @@
 	return TRUE
 
 /mob/living/carbon/human/proc/try_impregnate(mob/living/carbon/human/wife)
-	return
+	var/obj/item/organ/testicles/testes = getorganslot(ORGAN_SLOT_TESTICLES)
+	if(!testes)
+		return
+	var/obj/item/organ/vagina/vag = wife.getorganslot(ORGAN_SLOT_VAGINA)
+	if(!vag)
+		return
+	vag.be_impregnated(src)
 
 /mob/living/carbon/human/proc/get_highest_grab_state_on(mob/living/carbon/human/victim)
 	var/grabstate = null

@@ -146,6 +146,7 @@ GLOBAL_LIST_EMPTY(chosen_names)
 	var/update_mutant_colors = TRUE
 
 	var/headshot_link
+	var/list/violated = list()
 
 
 /datum/preferences/New(client/C)
