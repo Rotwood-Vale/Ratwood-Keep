@@ -1,5 +1,7 @@
 /datum/sex_action/force_cunnilingus
-	name = "Fuck them to suck"
+	name = "Force them to suck"
+	require_grab = TRUE
+	stamina_cost = 1.0
 
 /datum/sex_action/force_cunnilingus/shows_on_menu(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(user == target)

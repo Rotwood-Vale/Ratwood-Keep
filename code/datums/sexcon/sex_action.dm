@@ -6,11 +6,17 @@
 	/// Whether the act is continous and will be done on repeat
 	var/continous = TRUE
 	/// Stamina cost per action, modified by up to 2.5x cost by the force toggle
-	var/stamina_cost = 1.0
+	var/stamina_cost = 0.5
 	/// Whether the action requires both participants to be on the same tile
 	var/check_same_tile = TRUE
+	/// Whether the same tile check can be bypassed by an aggro grab on the person
+	var/aggro_grab_instead_same_tile = TRUE
 	/// Whether the action is forbidden from being done while incapacitated (stun, handcuffed)
 	var/check_incapacitated = TRUE
+	/// Whether the action requires an aggressive grab on the victim
+	var/require_grab = FALSE
+	/// If a grab is required, this is the required state of it
+	var/required_grab_state = GRAB_AGGRESSIVE
 
 /datum/sex_action/proc/can_perform(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	return TRUE

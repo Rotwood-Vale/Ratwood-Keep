@@ -1,5 +1,6 @@
 /datum/sex_action/anal_sex
 	name = "Sodomize them"
+	stamina_cost = 1.0
 
 /datum/sex_action/anal_sex/shows_on_menu(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(user == target)
@@ -27,7 +28,7 @@
 
 	user.sexcon.perform_sex_action(user, 2, 4, TRUE)
 	if(user.sexcon.check_active_ejaculation())
-		user.visible_message(span_love("cums into [target]'s butt!"))
+		user.visible_message(span_love("[target] cums into [target]'s butt!"))
 		user.sexcon.cum_into()
 
 	user.sexcon.perform_sex_action(target, 2, 9, FALSE)

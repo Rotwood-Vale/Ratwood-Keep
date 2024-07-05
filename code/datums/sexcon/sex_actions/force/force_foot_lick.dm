@@ -1,5 +1,7 @@
 /datum/sex_action/force_foot_lick
 	name = "Force them to lick your feet"
+	require_grab = TRUE
+	stamina_cost = 1.0
 
 /datum/sex_action/force_foot_lick/shows_on_menu(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(user == target)

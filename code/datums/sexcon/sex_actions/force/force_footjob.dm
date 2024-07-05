@@ -1,5 +1,7 @@
 /datum/sex_action/force_footjob
 	name = "Use their feet to get off"
+	require_grab = TRUE
+	stamina_cost = 1.0
 
 /datum/sex_action/force_footjob/shows_on_menu(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(user == target)

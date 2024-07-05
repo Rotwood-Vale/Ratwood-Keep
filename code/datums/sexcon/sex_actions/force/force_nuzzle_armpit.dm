@@ -1,5 +1,7 @@
 /datum/sex_action/force_armpit_nuzzle
 	name = "Force them against armpit"
+	require_grab = TRUE
+	stamina_cost = 1.0
 
 /datum/sex_action/force_armpit_nuzzle/shows_on_menu(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(user == target)

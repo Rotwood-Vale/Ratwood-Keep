@@ -1,5 +1,7 @@
 /datum/sex_action/force_rimming
 	name = "Force them to rim you"
+	require_grab = TRUE
+	stamina_cost = 1.0
 
 /datum/sex_action/force_rimming/shows_on_menu(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(user == target)
