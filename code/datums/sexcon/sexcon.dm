@@ -28,6 +28,64 @@
 	target = null
 	. = ..()
 
+/datum/sex_controller/proc/can_violate_victim(mob/living/carbon/human/victim)
+	if(!user.client)
+		return FALSE
+	if(!user.mind)
+		return FALSE
+	if(!user.mind.key)
+		return FALSE
+	if(!user.client.prefs.violated[victim.mind.key])
+		return FALSE
+	if(user.client.prefs.violated[victim.mind.key] + VIOLATED_ALLOWED_TIME < world.time)
+		return FALSE
+	return TRUE
+
+/datum/sex_controller/proc/need_to_be_violated(mob/living/carbon/human/victim)
+	// Dont need to violate self
+	if(user == victim)
+		return FALSE
+	// If user and victim both are not deviant, then user needs to violate target
+	if(user.deviant && victim.deviant)
+		return FALSE
+	// Need to violate AFK clients
+	if(!victim.client)
+		return TRUE
+	// Need to violate combat mode people
+	if(victim.cmode)
+		return TRUE
+	return FALSE
+
+/datum/sex_controller/proc/violate_victim(mob/living/carbon/human/victim)
+	if(!user.client)
+		return
+	if(!victim.mind)
+		return
+	if(!victim.mind.key)
+		return
+	if(user.client.prefs.violated[victim.mind.key] && user.client.prefs.violated[victim.mind.key] + VIOLATED_ALLOWED_TIME >= world.time)
+		return
+	var/pq_warning = pick(list("If I continue down this road, my soul will be burdened.", "I feel a terrible omen watching me...", "The forces of dark feel heavy on my soul."))
+	to_chat(user, span_userdanger(pq_warning))
+	user.visible_message(span_boldwarning("[user] begins to violate [victim]!"))
+	if(!do_after(user, 5 SECONDS, target = victim))
+		return
+	if(!need_to_be_violated(victim))
+		return
+	if(!user.client)
+		return
+	if(!victim.mind)
+		return
+	if(!victim.mind.key)
+		return
+	if(user.client.prefs.violated[victim.mind.key] && user.client.prefs.violated[victim.mind.key] + VIOLATED_ALLOWED_TIME >= world.time)
+		return
+	// ZAPED
+	to_chat(user, span_boldwarning(pick(list("I feel tainted...", "I feel less human..."))))
+	log_combat(user, victim, "Initiated rape against")
+	adjust_playerquality(-2, user.ckey, reason = "Initiated rape on an AFK/resisting person.")
+	user.client.prefs.violated[victim.mind.key] = world.time
+
 /datum/sex_controller/proc/adjust_speed(amt)
 	speed = clamp(speed + amt, SEX_SPEED_MIN, SEX_SPEED_MAX)
 
@@ -69,15 +127,18 @@
 	show_ui()
 
 /datum/sex_controller/proc/cum_onto()
+	log_combat(user, target, "Came onto the target")
 	playsound(target, 'sound/misc/mat/endout.ogg', 50, TRUE, ignore_walls = FALSE)
 	add_cum_floor(get_turf(target))
 	after_ejaculation()
 
 /datum/sex_controller/proc/cum_into()
+	log_combat(user, target, "Came inside the target")
 	playsound(target, 'sound/misc/mat/endin.ogg', 50, TRUE, ignore_walls = FALSE)
 	after_ejaculation()
 
 /datum/sex_controller/proc/ejaculate()
+	log_combat(user, user, "Ejaculated")
 	user.visible_message(span_love("[user] makes a mess!"))
 	playsound(user, 'sound/misc/mat/endout.ogg', 50, TRUE, ignore_walls = FALSE)
 	add_cum_floor(get_turf(user))
@@ -211,13 +272,13 @@
 		var/pain_msg = pick(list("IT HURTS!!!", "IT NEEDS TO STOP!!!", "I CAN'T TAKE IT ANYMORE!!!"))
 		to_chat(user, span_boldwarning(pain_msg))
 		user.flash_fullscreen("redflash2")
-		if(prob(60) && user.stat == CONSCIOUS)
+		if(prob(70) && user.stat == CONSCIOUS)
 			user.visible_message(span_warning("[user] shudders in pain!"))
 	else if(pain_amt >= PAIN_MED_EFFECT)
 		var/pain_msg = pick(list("It hurts!", "It pains me!"))
 		to_chat(user, span_boldwarning(pain_msg))
 		user.flash_fullscreen("redflash1")
-		if(prob(30) && user.stat == CONSCIOUS)
+		if(prob(40) && user.stat == CONSCIOUS)
 			user.visible_message(span_warning("[user] shudders in pain!"))
 	else
 		var/pain_msg = pick(list("It hurts a little...", "It stings...", "I'm aching..."))
@@ -304,7 +365,7 @@
 			dat += "</tr><tr>"
 
 	dat += "</tr></table>"
-	var/datum/browser/popup = new(user, "sexcon", "<center>Sate Desire</center>", 450, 550)
+	var/datum/browser/popup = new(user, "sexcon", "<center>Sate Desire</center>", 430, 500)
 	popup.set_content(dat.Join())
 	popup.open()
 	return
@@ -356,10 +417,16 @@
 	if(!action_type)
 		return
 	if(!can_perform_action(action_type))
-		return FALSE
+		return
+	if(need_to_be_violated(target) && !can_violate_victim(target))
+		violate_victim(target)
+	if(need_to_be_violated(target) && !can_violate_victim(target))
+		return
 	// Set vars
 	desire_stop = FALSE
 	current_action = action_type
+	var/datum/sex_action/action = SEX_ACTION(current_action)
+	log_combat(user, target, "Started sex action: [action.name]")
 	INVOKE_ASYNC(src, PROC_REF(sex_action_loop))
 
 /datum/sex_controller/proc/sex_action_loop()
@@ -373,6 +440,8 @@
 		if(!do_after(user, (action.do_time / get_speed_multiplier()), target = target))
 			break
 		if(current_action == null || performed_action_type != current_action)
+			break
+		if(need_to_be_violated(target) && !can_violate_victim(target))
 			break
 		if(!can_perform_action(current_action))
 			break

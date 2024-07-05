@@ -39,6 +39,8 @@
 		user.visible_message(span_love("[user] cums into [target]'s cunt!"))
 		user.sexcon.cum_into()
 		user.try_impregnate(target)
+		user.virginity = FALSE
+		target.virginity = FALSE
 
 	user.sexcon.perform_sex_action(target, 2, 7, FALSE)
 	target.sexcon.handle_passive_ejaculation()
