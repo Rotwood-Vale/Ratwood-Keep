@@ -27,16 +27,8 @@
 		if(/datum/patron/divine/pestra)
 			neck = /obj/item/clothing/neck/roguetown/psicross/pestra
 
-	// CLASS ARCHETYPES
-	H.adjust_blindness(-3)
-	var/classes = list("Life Cleric","War Cleric",)
-	var/classchoice = input("Choose your archetypes", "Available archetypes") as anything in classes
-
-	switch(classchoice)
-
-		if("Life Cleric")
-			H.set_blindness(0)
-			to_chat(H, span_warning("You are a cleric of the life domain. Well versed in the arts of healing and magic."))
+/*
+			to_chat(H, span_warning("You are a cleric of your god. Well versed in the arts of healing and miracles."))
 			H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/polearms, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/bows, 1, TRUE)
@@ -86,7 +78,7 @@
 			H.change_stat("constitution", 2)
 			H.change_stat("endurance", 2) // Stronger but less intelligent/quick compared to life clerics.
 			H.change_stat("speed", -1)
-
+*/
 	armor = /obj/item/clothing/suit/roguetown/armor/plate
 	wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
 	pants = /obj/item/clothing/under/roguetown/trou/leather
