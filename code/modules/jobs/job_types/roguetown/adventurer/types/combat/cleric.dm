@@ -26,8 +26,6 @@
 			neck = /obj/item/clothing/neck/roguetown/psicross/necra
 		if(/datum/patron/divine/pestra)
 			neck = /obj/item/clothing/neck/roguetown/psicross/pestra
-
-/*
 			to_chat(H, span_warning("You are a cleric of your god. Well versed in the arts of healing and miracles."))
 			H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/polearms, 1, TRUE)
@@ -53,7 +51,8 @@
 			H.change_stat("strength", 1)
 			H.change_stat("constitution", 2)
 			H.change_stat("endurance", 2)
-		if("War Cleric")
+/*	
+if("War Cleric")
 			H.set_blindness(0)
 			to_chat(H, span_warning("You are a cleric of the war domain. Experienced in both the granting of life and the taking of it. Unfortunately your study of warcraft has weakened your divine abilities..."))
 			H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 3, TRUE)
