@@ -5,11 +5,28 @@
 /datum/curse
 	var/name = "Debug Curse"
 
+	/// The owner of the curse
+	var/mob/living/carbon/human/owner 
+
 	/// Whats shown to the player upon being cursed
 	var/description = "This is a debug curse."
 
 	/// Trait given by this curse
 	var/trait
+
+///Called on life ticks
+/datum/curse/proc/on_life()
+	return 
+
+///Called on death
+/datum/curse/proc/on_death()
+	return 
+
+/mob/living/carbon/human/proc/handle_curses()
+	for(var/curse in curses)
+		var/datum/curse/C = new curse()
+		C.on_life()
+		qdel(C)
 
 ///Adds a curse to a human mob.
 ///@param C: The curse to be added.
@@ -17,8 +34,9 @@
 /mob/living/carbon/human/proc/add_curse(datum/curse/C)
 	if(is_cursed(C))
 		return FALSE
-		
+	
 	curses += C
+	C.owner = src
 	ADD_TRAIT(src, C.trait, TRAIT_CURSE)
 	to_chat(src, span_userdanger("Something is wrong... I feel cursed."))
 	src.playsound_local(get_turf(src), 'sound/misc/cursed.ogg', 80, FALSE, pressure_affected = FALSE)
@@ -27,7 +45,7 @@
 ///Removes a curse from a human mob.
 ///@param C: The curse to be removed.
 ///@return TRUE if the curse was successfully removed, FALSE otherwise.
-/mob/living/carbon/human/proc/remove_curse(datum/curse/C)
+/mob/living/carbon/human/proc/remove_curse(var/datum/curse/C)
 	if(!is_cursed(C))
 		return FALSE
 	
@@ -140,3 +158,24 @@
 	name = "Baotha's Curse"
 	description = ""
 	trait = TRAIT_BAOTHA_CURSE
+
+//////////////////////////
+/// PERIODICAL EFFECTS ///
+//////////////////////////
+
+/datum/curse/pestra/on_life()
+	. = ..()
+	if(prob(5))
+		owner.vomit()
+	if(prob(5))
+		owner.confused += 10
+	if(prob(5))
+		owner.slurring += 30
+	if(prob(5))
+		owner.blur_eyes(10)
+	if(prob(5))
+		owner.Stun(20)
+	if(prob(5))
+		owner.Unconscious(80)
+
+	return TRUE

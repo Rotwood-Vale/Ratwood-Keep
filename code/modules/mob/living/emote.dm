@@ -584,9 +584,9 @@
 		var/mob/living/carbon/human/H = target
 
 		// cursed is the one being hugged
-		if(HAS_TRAIT(E, TRAIT_EORA_CURSE))
-			to_chat(E, "<span class='warning'>I feel unexplicably repelled!</span>")
-			E.freak_out()
+		if(HAS_TRAIT(H, TRAIT_EORA_CURSE))
+			to_chat(H, "<span class='warning'>I feel unexplicably repelled!</span>")
+			H.freak_out()
 			return
 
 		H.add_stress(/datum/stressevent/hug)
