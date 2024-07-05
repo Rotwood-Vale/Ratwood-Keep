@@ -9,12 +9,6 @@
 
 /datum/outfit/job/roguetown/adventurer/ranger/pre_equip(mob/living/carbon/human/H)
 	..()
-	H.adjust_blindness(-3)
-	var/classes = list("Ranger","Gloom Stalker",) // Ranger Knight is the unique subclass. Gives you steel breastplate and a sword.
-	var/classchoice = input("Choose your archetypes", "Available archetypes") as anything in classes
-
-	switch(classchoice)
-	
 		if("Ranger")
 			H.set_blindness(0)
 			to_chat(H, span_warning("Rangers are masters of nature, often hired as pathfinders, bodyguards and mercenaries in areas of wilderness untraversable to common soldiery."))
@@ -58,7 +52,8 @@
 			H.change_stat("perception", 4)
 			H.change_stat("endurance", 2)
 			H.change_stat("speed", 2)
-		if("Gloom Stalker")
+/*	
+if("Gloom Stalker")
 			H.set_blindness(0)
 			to_chat(H, span_warning("Rangers are masters of nature, often hired as pathfinders, bodyguards and mercenaries in areas of wilderness untraversable to common soldiery."))
 			shoes = /obj/item/clothing/shoes/roguetown/boots/leather
@@ -96,7 +91,7 @@
 			H.change_stat("perception", 2)
 			H.change_stat("endurance", 1)
 			H.change_stat("speed", 3)
-		
+*/		
 	if(H.gender == MALE)
 		pants = /obj/item/clothing/under/roguetown/trou/leather
 		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
