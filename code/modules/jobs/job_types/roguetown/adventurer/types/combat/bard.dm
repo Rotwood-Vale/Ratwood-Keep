@@ -13,14 +13,6 @@
 
 /datum/outfit/job/roguetown/adventurer/bard/pre_equip(mob/living/carbon/human/H)
 	..() // The entertaining jack of all trades, uniquely handy with crossbows and swords. They're incredibly well travelled, can sneak, steal and survive on their own.
-	H.adjust_blindness(-3)
-	var/classes = list("Bard","Skald",)
-	var/classchoice = input("Choose your archetypes", "Available archetypes") as anything in classes
-
-	switch(classchoice)
-
-		if("Bard")
-			H.set_blindness(0)
 			to_chat(H, span_warning("Bards make their fortunes in brothels, flop houses and taverns -- gaining fame for their songs and legends. If there is any truth to them, that is."))
 			H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/polearms, 1, TRUE)
@@ -58,7 +50,8 @@
 			H.change_stat("perception", 2)
 			H.change_stat("endurance", 1)
 			H.change_stat("speed", 2)
-		if("Skald")
+
+/* if("Skald")
 			H.set_blindness(0)
 			to_chat(H, span_warning("Skalds are wandering storytellers, and for many villages they are local historians keeping the tales of great legends and heroes alive."))
 			H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 2, TRUE)
@@ -97,7 +90,7 @@
 			H.change_stat("constitution", 2)
 			H.change_stat("strength", 1)
 			H.change_stat("speed", 1)
-
+*/
 	if(H.dna?.species)
 		if(iself(H) || ishalfelf(H))
 			backr = /obj/item/rogue/instrument/harp
