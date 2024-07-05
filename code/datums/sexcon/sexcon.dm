@@ -86,7 +86,7 @@
 /datum/sex_controller/proc/after_ejaculation()
 	set_arousal(55)
 	set_spent(MAX_SPENT)
-	user.emote("sexmoanhvy")
+	user.emote("sexmoanhvy", TRUE)
 	user.playsound_local(user, 'sound/misc/mat/end.ogg', 100)
 	last_ejaculation_time = world.time
 	SSticker.cums++
@@ -197,7 +197,7 @@
 	if(suppres_heavy_moans && chosen_emote == "sexmoanhvy")
 		chosen_emote = "sexmoanlight"
 	last_moan = world.time
-	user.emote(chosen_emote)
+	user.emote(chosen_emote, TRUE)
 
 /datum/sex_controller/proc/try_do_pain_effect(pain_amt, giving)
 	if(pain_amt < PAIN_MILD_EFFECT)
@@ -284,19 +284,19 @@
 		dat += "<center><a href='?src=[REF(src)];task=stop'>Stop</a></center>"
 	else
 		dat += "<br>"
-	dat += "<table><tr>"
+	dat += "<table width='100%'><td width='50%'></td><td width='50%'></td><tr>"
 	var/i = 0
 	for(var/action_type in GLOB.sex_actions)
-		dat += "<td>"
 		var/datum/sex_action/action = SEX_ACTION(action_type)
 		if(!action.shows_on_menu(user, target))
 			continue
+		dat += "<td>"
 		var/link = ""
 		if(!can_perform_action(action_type))
 			link = "linkOff"
 		if(current_action == action_type)
 			link = "linkOn"
-		dat += "<a class='[link]' href='?src=[REF(src)];task=action;action_type=[action_type]'>[action.name]</a>"
+		dat += "<center><a class='[link]' href='?src=[REF(src)];task=action;action_type=[action_type]'>[action.name]</a></center>"
 		dat += "</td>"
 		i++
 		if(i >= 2)

@@ -1,5 +1,5 @@
 /datum/sex_action/masturbate_other_breasts
-	name = "Stroke their clit"
+	name = "Rub their breasts"
 
 /datum/sex_action/masturbate_other_breasts/shows_on_menu(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(user == target)
