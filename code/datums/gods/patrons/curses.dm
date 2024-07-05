@@ -19,7 +19,7 @@
 		return FALSE
 		
 	curses += C
-	ADD_TRAIT(src.mind, C.trait, TRAIT_CURSE)
+	ADD_TRAIT(src, C.trait, TRAIT_CURSE)
 	to_chat(src, span_userdanger("Something is wrong... I feel cursed."))
 	src.playsound_local(get_turf(src), 'sound/misc/cursed.ogg', 80, FALSE, pressure_affected = FALSE)
 	return TRUE
@@ -31,7 +31,7 @@
 	if(!is_cursed(C))
 		return FALSE
 	
-	REMOVE_TRAIT(src.mind, C.trait, TRAIT_CURSE)
+	REMOVE_TRAIT(src, C.trait, TRAIT_CURSE)
 	curses -= C
 	to_chat(src, span_userdanger("Something has changed... I feel relieved."))
 	src.playsound_local(get_turf(src), 'sound/misc/curse_lifted.ogg', 80, FALSE, pressure_affected = FALSE)
@@ -74,12 +74,12 @@
 
 /datum/curse/noc
 	name = "Noc's Curse"
-	description = ""
+	description = "Magical knowledge is now beyond my grasp."
 	trait = TRAIT_NOC_CURSE
 
 /datum/curse/dendor
 	name = "Dendor's Curse"
-	description = ""
+	description = "My hunger is insatiable."
 	trait = TRAIT_DENDOR_CURSE
 
 /datum/curse/abyssor
@@ -114,7 +114,7 @@
 
 /datum/curse/eora
 	name = "Eora's Curse"
-	description = "I am unable to show any kind of affection or love, neither carnal nor platonic."
+	description = "I am unable to show any kind of affection or love, whether carnal or platonic."
 	trait = TRAIT_EORA_CURSE
 
 //////////////////////
