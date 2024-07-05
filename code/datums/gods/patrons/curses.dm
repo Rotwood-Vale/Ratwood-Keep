@@ -5,9 +5,6 @@
 /datum/curse
 	var/name = "Debug Curse"
 
-	/// The owner of the curse
-	var/mob/living/carbon/human/owner 
-
 	/// Whats shown to the player upon being cursed
 	var/description = "This is a debug curse."
 
@@ -22,10 +19,12 @@
 /datum/curse/proc/on_death()
 	return 
 
+
+///Calls the on_life proc for all curses affecting a mob.
 /mob/living/carbon/human/proc/handle_curses()
 	for(var/curse in curses)
 		var/datum/curse/C = new curse()
-		C.on_life()
+		C.on_life(src)
 		qdel(C)
 
 ///Adds a curse to a human mob.
@@ -34,9 +33,7 @@
 /mob/living/carbon/human/proc/add_curse(datum/curse/C)
 	if(is_cursed(C))
 		return FALSE
-	
 	curses += C
-	C.owner = src
 	ADD_TRAIT(src, C.trait, TRAIT_CURSE)
 	to_chat(src, span_userdanger("Something is wrong... I feel cursed."))
 	src.playsound_local(get_turf(src), 'sound/misc/cursed.ogg', 80, FALSE, pressure_affected = FALSE)
@@ -112,7 +109,7 @@
 
 /datum/curse/necra
 	name = "Necra's Curse"
-	description = ""
+	description = "Necra has claimed my soul. No one will bring me back from the dead."
 	trait = TRAIT_NECRA_CURSE
 
 /datum/curse/xylix
@@ -151,7 +148,7 @@
 
 /datum/curse/matthios
 	name = "Matthios' Curse"
-	description = ""
+	description = "I hate the sight of wealth, and I cannot have anything to do with mammons."
 	trait = TRAIT_MATTHIOS_CURSE	
 
 /datum/curse/baotha
@@ -163,19 +160,20 @@
 /// PERIODICAL EFFECTS ///
 //////////////////////////
 
-/datum/curse/pestra/on_life()
+/datum/curse/pestra/on_life(mob/living/carbon/human/owner)
 	. = ..()
-	if(prob(5))
-		owner.vomit()
-	if(prob(5))
-		owner.confused += 10
-	if(prob(5))
-		owner.slurring += 30
-	if(prob(5))
-		owner.blur_eyes(10)
-	if(prob(5))
-		owner.Stun(20)
-	if(prob(5))
-		owner.Unconscious(80)
-
-	return TRUE
+	if(prob(3))
+		message_admins("Pestra's Curse is active.")
+		var/effect = rand(1, 4)
+		switch(effect)
+			if(1)
+				owner.vomit()
+			if(2)
+				owner.Unconscious(20)
+			if(3)
+				owner.blur_eyes(10)
+			if(4)
+				var/obj/item/bodypart/BP = pick(owner.bodyparts)
+				BP.rotted = TRUE
+				owner.playsound_local(get_turf(owner), 'sound/foley/butcher.ogg', 80, FALSE, pressure_affected = FALSE)
+				owner.regenerate_icons()
