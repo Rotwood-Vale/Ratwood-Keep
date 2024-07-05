@@ -39,6 +39,7 @@
 		/datum/sprite_accessory/wings/huge/mothra,
 		/datum/sprite_accessory/wings/huge/skeleton,
 		/datum/sprite_accessory/wings/huge/robotic,
+		/datum/sprite_accessory/wings/large/harpyswept,
 		)
 
 /datum/customizer/organ/wings/moth

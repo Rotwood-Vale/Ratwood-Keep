@@ -202,22 +202,6 @@
 	build_path = /obj/item/circuitboard/machine/clonescanner
 	category = list("Medical Machinery")
 
-/datum/design/board/biogenerator
-	name = "Machine Design (Biogenerator Board)"
-	desc = ""
-	id = "biogenerator"
-	build_path = /obj/item/circuitboard/machine/biogenerator
-	category = list ("Hydroponics Machinery")
-	departmental_flags = DEPARTMENTAL_FLAG_SERVICE
-
-/datum/design/board/hydroponics
-	name = "Machine Design (Hydroponics Tray Board)"
-	desc = ""
-	id = "hydro_tray"
-	build_path = /obj/item/circuitboard/machine/hydroponics
-	category = list ("Hydroponics Machinery")
-	departmental_flags = DEPARTMENTAL_FLAG_SERVICE
-
 /datum/design/board/destructive_analyzer
 	name = "Machine Design (Destructive Analyzer Board)"
 	desc = ""
@@ -351,22 +335,6 @@
 	desc = ""
 	id = "monkey_recycler"
 	build_path = /obj/item/circuitboard/machine/monkey_recycler
-	category = list ("Misc. Machinery")
-	departmental_flags = DEPARTMENTAL_FLAG_SCIENCE | DEPARTMENTAL_FLAG_SERVICE
-
-/datum/design/board/seed_extractor
-	name = "Machine Design (Seed Extractor Board)"
-	desc = ""
-	id = "seed_extractor"
-	build_path = /obj/item/circuitboard/machine/seed_extractor
-	category = list ("Hydroponics Machinery")
-	departmental_flags = DEPARTMENTAL_FLAG_SERVICE
-
-/datum/design/board/processor
-	name = "Machine Design (Food/Slime Processor Board)"
-	desc = ""
-	id = "processor"
-	build_path = /obj/item/circuitboard/machine/processor
 	category = list ("Misc. Machinery")
 	departmental_flags = DEPARTMENTAL_FLAG_SCIENCE | DEPARTMENTAL_FLAG_SERVICE
 

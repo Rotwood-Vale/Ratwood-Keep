@@ -45,7 +45,7 @@ GLOBAL_LIST_INIT(laws_of_the_land, initialize_laws_of_the_land())
 //	add_overlay(eye_lights)
 	set_light(5)
 
-/obj/structure/roguemachine/titan/Hear(message, atom/movable/speaker, message_language, raw_message, radio_freq, list/spans, message_mode)
+/obj/structure/roguemachine/titan/Hear(message, atom/movable/speaker, message_language, raw_message, radio_freq, list/spans, message_mode, original_message)
 //	. = ..()
 	if(speaker == src)
 		return
@@ -56,21 +56,52 @@ GLOBAL_LIST_INIT(laws_of_the_land, initialize_laws_of_the_land())
 	if(!ishuman(speaker))
 		return
 	var/mob/living/carbon/human/H = speaker
-	if(!H.head)
-		return
 	var/nocrown
 	if(!istype(H.head, /obj/item/clothing/head/roguetown/crown/serpcrown))
 		nocrown = TRUE
 	var/notlord
 	if(SSticker.rulermob != H)
 		notlord = TRUE
-	var/message2recognize = sanitize_hear_message(raw_message)
+	var/message2recognize = sanitize_hear_message(original_message)
 
 	if(mode)
 		if(findtext(message2recognize, "nevermind"))
 			mode = 0
 			return
-
+	if(findtext(message2recognize, "summon crown")) //This must never fail, thus place it before all other modestuffs.
+		if(!SSroguemachine.crown)
+			new /obj/item/clothing/head/roguetown/crown/serpcrown(src.loc)
+			say("The crown is summoned!")
+			playsound(src, 'sound/misc/machinetalk.ogg', 100, FALSE, -1)
+			playsound(src, 'sound/misc/hiss.ogg', 100, FALSE, -1)
+		if(SSroguemachine.crown)
+			var/obj/item/clothing/head/roguetown/crown/serpcrown/I = SSroguemachine.crown
+			if(!I)
+				I = new /obj/item/clothing/head/roguetown/crown/serpcrown(src.loc)
+			if(I && !ismob(I.loc))//You MUST MUST MUST keep the Crown on a person to prevent it from being summoned (magical interference)
+				I.anti_stall()
+				I = new /obj/item/clothing/head/roguetown/crown/serpcrown(src.loc)
+				say("The crown is summoned!")
+				playsound(src, 'sound/misc/machinetalk.ogg', 100, FALSE, -1)
+				playsound(src, 'sound/misc/hiss.ogg', 100, FALSE, -1)
+				return 
+			if(ishuman(I.loc))
+				var/mob/living/carbon/human/HC = I.loc
+				if(HC.stat != DEAD)
+					if(I in HC.held_items)
+						say("[HC.real_name] holds the crown!")
+						playsound(src, 'sound/misc/machinetalk.ogg', 100, FALSE, -1)
+						return
+					if(H.head == I)
+						say("[HC.real_name] wears the crown!")
+						playsound(src, 'sound/misc/machinetalk.ogg', 100, FALSE, -1)
+						return
+				else
+					HC.dropItemToGround(I, TRUE) //If you're dead, forcedrop it, then move it.
+			I.forceMove(src.loc)
+			say("The crown is summoned!")
+			playsound(src, 'sound/misc/machinetalk.ogg', 100, FALSE, -1)
+			playsound(src, 'sound/misc/hiss.ogg', 100, FALSE, -1)
 	switch(mode)
 		if(0)
 			if(findtext(message2recognize, "help"))
@@ -163,26 +194,6 @@ GLOBAL_LIST_INIT(laws_of_the_land, initialize_laws_of_the_land())
 				playsound(src, 'sound/misc/machinetalk.ogg', 100, FALSE, -1)
 				give_tax_popup(H)
 				return
-			if(findtext(message2recognize, "summon crown"))
-				if(SSroguemachine.crown)
-					var/obj/item/I = SSroguemachine.crown
-					if(!I)
-						I = new /obj/item/clothing/head/roguetown/crown/serpcrown(src.loc)
-					if(ishuman(I.loc))
-						var/mob/living/carbon/human/HC = I.loc
-						if(HC.stat != DEAD)
-							if(I in HC.held_items)
-								say("[HC.real_name] holds the crown!")
-								playsound(src, 'sound/misc/machinetalk.ogg', 100, FALSE, -1)
-								return
-							if(H.head == I)
-								say("[HC.real_name] wears the crown!")
-								playsound(src, 'sound/misc/machinetalk.ogg', 100, FALSE, -1)
-								return
-					I.forceMove(src.loc)
-					say("The crown is summoned!")
-					playsound(src, 'sound/misc/machinetalk.ogg', 100, FALSE, -1)
-					playsound(src, 'sound/misc/hiss.ogg', 100, FALSE, -1)
 		if(1)
 			make_announcement(H, raw_message)
 			mode = 0
@@ -190,7 +201,7 @@ GLOBAL_LIST_INIT(laws_of_the_land, initialize_laws_of_the_land())
 			make_decree(H, raw_message)
 			mode = 0
 		if(3)
-			declare_outlaw(H, raw_message)
+			declare_outlaw(H, original_message)
 			mode = 0
 		if(4)
 			if(!SScommunications.can_announce(speaker))
@@ -215,39 +226,41 @@ GLOBAL_LIST_INIT(laws_of_the_land, initialize_laws_of_the_land())
 /obj/structure/roguemachine/titan/proc/make_announcement(mob/living/user, raw_message)
 	if(!SScommunications.can_announce(user))
 		return
-	var/datum/antagonist/prebel/P = user.mind?.has_antag_datum(/datum/antagonist/prebel)
-	if(P)
-		var/datum/game_mode/chaosmode/C = SSticker.mode
-		if(istype(C))
-			if(P.rev_team)
-				if(P.rev_team.members.len < 3)
-					to_chat(user, span_warning("I need more folk on my side to declare victory."))
-				else
-					for(var/datum/objective/prebel/obj in user.mind.get_all_objectives())
-						obj.completed = TRUE
-					if(!C.headrebdecree)
-						user.mind.adjust_triumphs(1)
-					C.headrebdecree = TRUE
+	try_make_rebel_decree(user)
 
 	SScommunications.make_announcement(user, FALSE, raw_message)
+
+/obj/structure/roguemachine/titan/proc/try_make_rebel_decree(mob/living/user)
+	var/datum/antagonist/prebel/P = user.mind?.has_antag_datum(/datum/antagonist/prebel)
+	if(!P)
+		return
+	var/datum/game_mode/chaosmode/C = SSticker.mode
+	if(!istype(C))
+		return
+	if(!P.rev_team)
+		return
+	if(P.rev_team.members.len < 3)
+		to_chat(user, span_warning("I need more folk on my side to declare victory."))
+		return
+	var/obj/structure/roguethrone/throne = GLOB.king_throne
+	if(throne == null)
+		return
+	if(throne.rebel_leader_sit_time < REBEL_THRONE_TIME)
+		to_chat(user, span_warning("I need to get more comfortable on the throne before I declare victory."))
+		return
+	for(var/datum/objective/prebel/obj in user.mind.get_all_objectives())
+		obj.completed = TRUE
+	if(!C.headrebdecree)
+		user.mind.adjust_triumphs(1)
+	C.headrebdecree = TRUE
 
 /obj/structure/roguemachine/titan/proc/make_decree(mob/living/user, raw_message)
 	if(!SScommunications.can_announce(user))
 		return
-	var/datum/antagonist/prebel/P = user.mind?.has_antag_datum(/datum/antagonist/prebel)
-	if(P)
-		var/datum/game_mode/chaosmode/C = SSticker.mode
-		if(istype(C))
-			if(P.rev_team)
-				if(P.rev_team.members.len < 3)
-					to_chat(user, span_warning("I need more folk on my side to declare victory."))
-				else
-					for(var/datum/objective/prebel/obj in user.mind.get_all_objectives())
-						obj.completed = TRUE
-					if(!C.headrebdecree)
-						user.mind.adjust_triumphs(1)
-					C.headrebdecree = TRUE
+
 	GLOB.lord_decrees += raw_message
+	try_make_rebel_decree(user)
+
 	SScommunications.make_announcement(user, TRUE, raw_message)
 
 /obj/structure/roguemachine/titan/proc/declare_outlaw(mob/living/user, raw_message)
