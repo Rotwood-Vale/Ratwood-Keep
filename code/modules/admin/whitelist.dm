@@ -1,7 +1,7 @@
 #ifdef TESTSERVER
-	#define WHITELISTFILE	"[global.config.directory]/roguetown/wl_test.txt"
+	#define WHITELISTFILE	"[global.config.directory]/roguetown/whitelist.txt"
 #else
-	#define WHITELISTFILE	"[global.config.directory]/roguetown/wl_mat.txt"
+	#define WHITELISTFILE	"[global.config.directory]/roguetown/whitelist.txt"
 #endif
 
 GLOBAL_LIST_EMPTY(whitelist)
