@@ -86,7 +86,7 @@
 /datum/sex_controller/proc/after_ejaculation()
 	set_arousal(55)
 	set_spent(MAX_SPENT)
-	user.emote("sexmoanhvy", TRUE)
+	user.emote("sexmoanhvy", forced = TRUE)
 	user.playsound_local(user, 'sound/misc/mat/end.ogg', 100)
 	last_ejaculation_time = world.time
 	SSticker.cums++
@@ -177,27 +177,23 @@
 		if(5 to INFINITY)
 			chosen_emote = "sexmoanhvy"
 
-	var/suppres_heavy_moans = FALSE
-
+	if(pain_amt >= PAIN_MILD_EFFECT)
+		if(!giving && prob(40))
+			chosen_emote = "painmoan"
 	if(pain_amt >= PAIN_MED_EFFECT)
-		if(!giving)
-			suppres_heavy_moans = TRUE
-		if(prob(70))
-			if(giving)
+		if(giving)
+			if(prob(50))
 				chosen_emote = "groan"
-			else
-				if(prob(50))
+		else
+			if(prob(60))
+				// Because males have atrocious whimper noise
+				if(gender == FEMALE && prob(50))
 					chosen_emote = "whimper"
 				else
 					chosen_emote = "cry"
-	else if (pain_amt >= PAIN_MILD_EFFECT)
-		if(prob(40))
-			chosen_emote = "whimper"
 
-	if(suppres_heavy_moans && chosen_emote == "sexmoanhvy")
-		chosen_emote = "sexmoanlight"
 	last_moan = world.time
-	user.emote(chosen_emote, TRUE)
+	user.emote(chosen_emote, forced = TRUE)
 
 /datum/sex_controller/proc/try_do_pain_effect(pain_amt, giving)
 	if(pain_amt < PAIN_MILD_EFFECT)
@@ -408,8 +404,15 @@
 		return FALSE
 	if(action.check_incapacitated && user.incapacitated())
 		return FALSE
-	if(action.check_same_tile && get_turf(user) != get_turf(target))
-		return FALSE
+	if(action.check_same_tile)
+		var/same_tile = (get_turf(user) == get_turf(target))
+		var/grab_bypass = (action.aggro_grab_instead_same_tile && user.get_highest_grab_state_on(target) == GRAB_AGGRESSIVE)
+		if(!same_tile && !grab_bypass)
+			return FALSE
+	if(action.require_grab)
+		var/grabstate = user.get_highest_grab_state_on(target)
+		if(grabstate == null || grabstate < action.required_grab_state)
+			return FALSE
 	return TRUE
 
 /datum/sex_controller/proc/set_target(mob/living/carbon/human/new_target)

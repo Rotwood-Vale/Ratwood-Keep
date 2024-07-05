@@ -3,6 +3,7 @@
 		if(thing == null)
 			continue
 		if(!istype(thing, /obj/item/dildo))
-			return thing
+			continue
+		return thing
 	return null
 
