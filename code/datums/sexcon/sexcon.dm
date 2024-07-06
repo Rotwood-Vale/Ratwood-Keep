@@ -15,6 +15,8 @@
 	var/arousal = 0
 	/// Our spent gauge
 	var/spent = 0
+	/// Whether we want to screw until finished, or non stop
+	var/do_until_finished = TRUE
 	var/last_arousal_increase_time = 0
 	var/last_ejaculation_time = 0
 	var/last_moan = 0
@@ -27,6 +29,13 @@
 	user = null
 	target = null
 	. = ..()
+
+/datum/sex_controller/proc/finished_check()
+	if(!do_until_finished)
+		return FALSE
+	if(!just_ejaculated())
+		return FALSE
+	return TRUE
 
 /datum/sex_controller/proc/can_violate_victim(mob/living/carbon/human/victim)
 	if(!user.client)
@@ -198,6 +207,22 @@
 /datum/sex_controller/proc/adjust_arousal(amount)
 	set_arousal(arousal + amount)
 
+/datum/sex_controller/proc/perform_deepthroat_oxyloss(mob/living/carbon/human/action_target, oxyloss_amt)
+	var/oxyloss_multiplier = 0
+	switch(force)
+		if(SEX_FORCE_LOW)
+			oxyloss_multiplier = 0
+		if(SEX_FORCE_MID)
+			oxyloss_multiplier = 0
+		if(SEX_FORCE_HIGH)
+			oxyloss_multiplier = 1.0
+		if(SEX_FORCE_EXTREME)
+			oxyloss_multiplier = 2.0
+	oxyloss_amt *= oxyloss_multiplier
+	if(oxyloss_amt <= 0)
+		return
+	action_target.adjustOxyLoss(oxyloss_amt)
+
 /datum/sex_controller/proc/perform_sex_action(mob/living/carbon/human/action_target, arousal_amt, pain_amt, giving)
 	action_target.sexcon.receive_sex_action(arousal_amt, pain_amt, giving, force, speed)
 
@@ -340,10 +365,11 @@
 	var/force_name = get_force_string()
 	var/speed_name = get_speed_string()
 	dat += "<center><a href='?src=[REF(src)];task=speed_down'>\<</a> [speed_name] <a href='?src=[REF(src)];task=speed_up'>\></a> ~|~ <a href='?src=[REF(src)];task=force_down'>\<</a> [force_name] <a href='?src=[REF(src)];task=force_up'>\></a></center>"
+	dat += "<center>| <a href='?src=[REF(src)];task=toggle_finished'>[do_until_finished ? "UNTILL IM FINISHED" : "UNTILL I STOP"]</a> |</center>"
 	if(target == user)
-		dat += "<br><center>Doing unto yourself</center>"
+		dat += "<center>Doing unto yourself</center>"
 	else
-		dat += "<br><center>Doing unto [target]'s</center>"
+		dat += "<center>Doing unto [target]'s</center>"
 	if(current_action)
 		dat += "<center><a href='?src=[REF(src)];task=stop'>Stop</a></center>"
 	else
@@ -368,7 +394,7 @@
 			dat += "</tr><tr>"
 
 	dat += "</tr></table>"
-	var/datum/browser/popup = new(user, "sexcon", "<center>Sate Desire</center>", 430, 500)
+	var/datum/browser/popup = new(user, "sexcon", "<center>Sate Desire</center>", 430, 540)
 	popup.set_content(dat.Join())
 	popup.open()
 	return
@@ -393,6 +419,8 @@
 			adjust_force(1)
 		if("force_down")
 			adjust_force(-1)
+		if("toggle_finished")
+			do_until_finished = !do_until_finished
 	show_ui()
 
 /datum/sex_controller/proc/try_stop_current_action()

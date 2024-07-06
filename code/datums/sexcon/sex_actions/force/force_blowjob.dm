@@ -36,6 +36,7 @@
 		user.visible_message(span_love("cums into [target]'s throat!"))
 		user.sexcon.cum_into()
 
+	user.sexcon.perform_deepthroat_oxyloss(user, 1.5)
 	user.sexcon.perform_sex_action(target, 0, 7, FALSE)
 	target.sexcon.handle_passive_ejaculation()
 
@@ -43,6 +44,6 @@
 	user.visible_message(span_warning("[user] pulls his cock out of [target]'s throat."))
 
 /datum/sex_action/force_blowjob/is_finished(mob/living/carbon/human/user, mob/living/carbon/human/target)
-	if(user.sexcon.just_ejaculated())
+	if(user.sexcon.finished_check())
 		return TRUE
 	return FALSE

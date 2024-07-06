@@ -32,6 +32,6 @@
 	user.visible_message(span_warning("[user] stops stroking."))
 
 /datum/sex_action/masturbate_vagina/is_finished(mob/living/carbon/human/user, mob/living/carbon/human/target)
-	if(user.sexcon.just_ejaculated())
+	if(user.sexcon.finished_check())
 		return TRUE
 	return FALSE

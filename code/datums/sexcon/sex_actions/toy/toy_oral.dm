@@ -31,6 +31,6 @@
 	user.visible_message(span_warning("[user] stops blowing \the [dildo]."))
 
 /datum/sex_action/toy_oral/is_finished(mob/living/carbon/human/user, mob/living/carbon/human/target)
-	if(user.sexcon.just_ejaculated())
+	if(user.sexcon.finished_check())
 		return TRUE
 	return FALSE

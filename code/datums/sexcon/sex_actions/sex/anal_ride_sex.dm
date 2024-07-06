@@ -43,6 +43,6 @@
 	user.visible_message(span_warning("[user] gets off [target]."))
 
 /datum/sex_action/anal_ride_sex/is_finished(mob/living/carbon/human/user, mob/living/carbon/human/target)
-	if(user.sexcon.just_ejaculated())
+	if(user.sexcon.finished_check())
 		return TRUE
 	return FALSE

@@ -39,6 +39,6 @@
 	user.visible_message(span_warning("[user] gets off [target]'s face."))
 
 /datum/sex_action/facesitting/is_finished(mob/living/carbon/human/user, mob/living/carbon/human/target)
-	if(user.sexcon.just_ejaculated())
+	if(user.sexcon.finished_check())
 		return TRUE
 	return FALSE
