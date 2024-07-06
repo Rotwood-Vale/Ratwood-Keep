@@ -1248,7 +1248,12 @@ There are several things that need to be remembered:
 			var/mutable_appearance/armor_overlay
 			if(dna.species.custom_clothes)
 				racecustom = dna.species.clothes_id
+			var/desired_gender_render = gender
 			if(dna.species.use_f)
+				desired_gender_render = FEMALE
+			if(dna.species.use_m)
+				desired_gender_render = MALE
+			if(desired_gender_render == FEMALE)
 				armor_overlay = wear_armor.build_worn_icon(default_layer = ARMOR_LAYER, default_icon_file = 'icons/mob/clothing/feet.dmi', female = TRUE, customi = racecustom, sleeveindex = armsindex, boobed_overlay = has_boobed_overlay())
 			else
 				armor_overlay = wear_armor.build_worn_icon(default_layer = ARMOR_LAYER, default_icon_file = 'icons/mob/clothing/feet.dmi', female = FALSE, customi = racecustom, sleeveindex = armsindex)
