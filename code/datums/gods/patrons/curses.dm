@@ -144,7 +144,7 @@
 
 /datum/curse/graggar
 	name = "Graggar's Curse"
-	description = ""
+	description = "I am engulfed by unspeakable rage. I cannot stop myself from harming others. When that's not an option, my rage is directed inward."
 	trait = TRAIT_GRAGGAR_CURSE
 
 /datum/curse/matthios
@@ -191,3 +191,12 @@
 				if(3)
 					owner.freak_out()
 		//else //we dont have male moans yet
+
+/datum/curse/graggar/on_life(mob/living/carbon/human/owner)
+	. = ..()		
+	if(prob(4))
+		for(var/mob/living/carbon/human in view(1, owner))
+			owner.emote("rage")
+			human.attacked_by(owner.get_active_held_item(), owner)
+			owner.freak_out()
+			break
