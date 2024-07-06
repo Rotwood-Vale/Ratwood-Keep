@@ -1,5 +1,6 @@
 {
     "map_name": "Dakkatown",
+	"job_config_id": "dakkatown",
 	"map_zones":[
 		"_maps/map_zones/dakkatown/dakkatown.json",
 		"_maps/map_zones/dakkatown/dakkaforest.json",

@@ -1,4 +1,5 @@
 {
     "map_name": "Roguetown",
+	"job_config_id": "rockhill",
 	"map_zones":["_maps/map_zones/roguetown/roguetown.json"]
 }

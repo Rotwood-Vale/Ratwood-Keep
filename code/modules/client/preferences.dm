@@ -749,6 +749,8 @@ GLOBAL_LIST_EMPTY(chosen_names)
 		for(var/datum/job/job in sortList(SSjob.occupations, GLOBAL_PROC_REF(cmp_job_display_asc)))
 			if(!job.spawn_positions)
 				continue
+			if(job.map_disallowed)
+				continue
 
 			index += 1
 //			if((index >= limit) || (job.title in splitJobs))

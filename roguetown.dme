@@ -2082,6 +2082,7 @@
 #include "code\modules\holodeck\mobs.dm"
 #include "code\modules\holodeck\turfs.dm"
 #include "code\modules\jobs\access.dm"
+#include "code\modules\jobs\job_config.dm"
 #include "code\modules\jobs\job_exp.dm"
 #include "code\modules\jobs\jobs.dm"
 #include "code\modules\jobs\job_types\_job.dm"

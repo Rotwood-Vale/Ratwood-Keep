@@ -59,6 +59,7 @@ SUBSYSTEM_DEF(mapping)
 		if(!config || config.defaulted)
 			to_chat(world, span_boldannounce("Unable to load next or default map config, defaulting to Box Station"))
 			config = old_config
+	SSjob.set_job_config(config.job_config_id)
 	loadWorld()
 	repopulate_sorted_areas()
 	process_teleport_locs()			//Sets up the wizard teleport locations

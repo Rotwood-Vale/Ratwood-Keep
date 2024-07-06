@@ -24,6 +24,20 @@ SUBSYSTEM_DEF(job)
 	set_overflow_role(CONFIG_GET(string/overflow_job))
 	return ..()
 
+/datum/controller/subsystem/job/proc/set_job_config(job_config_id)
+	var/datum/job_config/job_config = null
+	for(var/path in GLOB.job_configs)
+		var/datum/job_config/iterated = GLOB.job_configs[path]
+		if(iterated.id == job_config_id)
+			job_config = iterated
+			break
+	if(!job_config)
+		log_world("Unable to load job config [job_config_id]")
+		return
+	for(var/job_type in job_config.disallowed_jobs)
+		var/datum/job/job = type_occupations[job_type]
+		job.map_disallowed = TRUE
+
 /datum/controller/subsystem/job/proc/set_overflow_role(new_overflow_role)
 	var/datum/job/new_overflow = GetJob(new_overflow_role)
 	if(!new_overflow)
@@ -142,6 +156,8 @@ SUBSYSTEM_DEF(job)
 			continue
 		if(!isnull(job.max_pq) && (get_playerquality(player.ckey) > job.max_pq))
 			continue
+		if(job.map_disallowed)
+			return
 		if(!(player.client.prefs.gender in job.allowed_sexes))
 			JobDebug("FOC incompatible with sex, Player: [player], Job: [job.title]")
 			continue
@@ -227,6 +243,10 @@ SUBSYSTEM_DEF(job)
 
 		if(!isnull(job.max_pq) && (get_playerquality(player.ckey) > job.max_pq))
 			JobDebug("GRJ incompatible with maxPQ, Player: [player], Job: [job.title]")
+			continue
+		
+		if(job.map_disallowed)
+			JobDebug("GRJ incompatible with Map Job config, Player: [player], Job: [job.title]")
 			continue
 
 		if(check_blacklist(player.client.ckey) && !job.bypass_jobban)
@@ -457,6 +477,9 @@ SUBSYSTEM_DEF(job)
 					continue
 
 				if(!isnull(job.max_pq) && (get_playerquality(player.ckey) > job.max_pq))
+					continue
+				
+				if(job.map_disallowed)
 					continue
 
 				if((player.client.prefs.lastclass == job.title) && (!job.bypass_lastclass))

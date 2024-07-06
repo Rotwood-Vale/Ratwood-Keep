@@ -16,6 +16,7 @@
 	// Map name loaded from json
 	var/map_name
 	var/list/map_zones = list()
+	var/job_config_id = "rockhill"
 
 
 /proc/load_map_config(filename = "data/next_map.json", default_to_box, delete_after, error_if_missing = TRUE)
@@ -65,6 +66,9 @@
 
 	CHECK_EXISTS("map_name")
 	map_name = json["map_name"]
+
+	CHECK_EXISTS("job_config_id")
+	job_config_id = json["job_config_id"]
 
 	var/list/map_zone_paths = json["map_zones"]
 	if (islist(map_zone_paths))

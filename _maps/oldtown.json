@@ -1,4 +1,5 @@
 {
     "map_name": "Old Blackstone",
+	"job_config_id": "rockhill",
 	"map_zones":["_maps/map_zones/oldtown/oldtown.json"]
 }
