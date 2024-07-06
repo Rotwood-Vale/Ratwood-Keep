@@ -195,10 +195,6 @@
 /obj/effect/sunlight,
 /turf/open/floor/rogue/grass,
 /area/rogue/outdoors/rtfield)
-"gb" = (
-/mob/living/simple_animal/hostile/retaliate/rogue/trufflepig,
-/turf/open/floor/rogue/dirt,
-/area/rogue/outdoors/rtfield)
 "gq" = (
 /obj/structure/table/wood/plain,
 /obj/item/cooking/pan,
@@ -893,8 +889,8 @@
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors/woods)
 "At" = (
-/obj/item/reagent_containers/powder/salt,
-/obj/item/reagent_containers/powder/salt,
+/obj/item/reagent_containers/powder/flour/salt,
+/obj/item/reagent_containers/powder/flour/salt,
 /obj/item/reagent_containers/food/snacks/egg,
 /obj/item/reagent_containers/food/snacks/egg,
 /obj/structure/closet/crate/chest/wicker,
@@ -1825,7 +1821,7 @@
 /turf/open/floor/rogue/cobble,
 /area/rogue/indoors)
 "Yq" = (
-/obj/item/reagent_containers/powder/salt,
+/obj/item/reagent_containers/powder/flour/salt,
 /obj/structure/closet/crate/chest/wicker,
 /turf/open/floor/rogue/cobble,
 /area/rogue/indoors)
@@ -19838,7 +19834,7 @@ uq
 uq
 XY
 rm
-gb
+TP
 TP
 OA
 Kr
@@ -20310,7 +20306,7 @@ vC
 TP
 rm
 TP
-gb
+TP
 OD
 rm
 Kr

@@ -186,7 +186,7 @@
 /area/rogue/under/cave)
 "Cf" = (
 /obj/structure/rack/rogue,
-/obj/item/rogueweapon/woodcut/steel,
+/obj/item/rogueweapon/stoneaxe/woodcut/steel,
 /turf/open/floor/rogue/blocks/stonered,
 /area/rogue/indoors)
 "Cv" = (
