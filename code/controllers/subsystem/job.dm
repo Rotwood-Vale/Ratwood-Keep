@@ -157,7 +157,7 @@ SUBSYSTEM_DEF(job)
 		if(!isnull(job.max_pq) && (get_playerquality(player.ckey) > job.max_pq))
 			continue
 		if(job.map_disallowed)
-			return
+			continue
 		if(!(player.client.prefs.gender in job.allowed_sexes))
 			JobDebug("FOC incompatible with sex, Player: [player], Job: [job.title]")
 			continue
