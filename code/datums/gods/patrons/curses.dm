@@ -36,6 +36,7 @@
 	curses += C
 	ADD_TRAIT(src, C.trait, TRAIT_CURSE)
 	to_chat(src, span_userdanger("Something is wrong... I feel cursed."))
+	to_chat(src, span_danger(C.description))
 	src.playsound_local(get_turf(src), 'sound/misc/cursed.ogg', 80, FALSE, pressure_affected = FALSE)
 	return TRUE
 
@@ -70,7 +71,7 @@
 
 /datum/curse/science
 	name = "Curse of Atheism"
-	description = "Any mention of the divine sends me into a rage, I cannot be healed by divine magic, and I cannot pray to the gods."
+	description = "Any mention of the divine sends me into a fit of rage, I cannot be healed by divine magic, and I cannot pray to the gods."
 	trait = TRAIT_SCIENCE_CURSE
 
 /datum/curse/psydon
@@ -153,7 +154,7 @@
 
 /datum/curse/baotha
 	name = "Baotha's Curse"
-	description = ""
+	description = "I'm in a constant state of arousal, and I cannot control my urges."
 	trait = TRAIT_BAOTHA_CURSE
 
 //////////////////////////
@@ -163,7 +164,6 @@
 /datum/curse/pestra/on_life(mob/living/carbon/human/owner)
 	. = ..()
 	if(prob(3))
-		message_admins("Pestra's Curse is active.")
 		var/effect = rand(1, 4)
 		switch(effect)
 			if(1)
@@ -177,3 +177,17 @@
 				BP.rotted = TRUE
 				owner.playsound_local(get_turf(owner), 'sound/foley/butcher.ogg', 80, FALSE, pressure_affected = FALSE)
 				owner.regenerate_icons()
+
+/datum/curse/baotha/on_life(mob/living/carbon/human/owner)
+	. = ..()
+	if(prob(3))
+		var/effect = rand(1, 3)
+		if(owner.gender == "female")
+			switch(effect)
+				if(1)
+					owner.emote("sexmoanhvy")
+				if(2)
+					owner.emote("sexmoanlight")
+				if(3)
+					owner.freak_out()
+		//else //we dont have male moans yet
