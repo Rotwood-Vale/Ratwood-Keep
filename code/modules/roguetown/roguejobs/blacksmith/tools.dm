@@ -27,9 +27,6 @@
 		var/obj/item/attacked_item = attacked_object
 		if(!attacked_item.anvilrepair || (attacked_item.obj_integrity >= attacked_item.max_integrity) || !isturf(attacked_item.loc))
 			return
-		if(attacked_item.obj_integrity <= 0)
-			user.visible_message(span_warning("[attacked_item] is broken! I cannot fix it..."))
-			return
 
 		if(blacksmith_mind.get_skill_level(attacked_item.anvilrepair) <= 0)
 			if(prob(30))
@@ -48,6 +45,8 @@
 				to_chat(user, span_warning("You fumble your way into slightly repairing [attacked_item]."))
 			else	
 				user.visible_message(span_info("[user] repairs [attacked_item]!"))
+				if(attacked_item.obj_broken == TRUE)
+					attacked_item.obj_broken = FALSE
 			blacksmith_mind.adjust_experience(attacked_item.anvilrepair, exp_gained/2) //We gain as much exp as we fix divided by 2
 			return
 		else
