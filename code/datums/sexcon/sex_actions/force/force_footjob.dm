@@ -1,5 +1,6 @@
 /datum/sex_action/force_footjob
 	name = "Use their feet to get off"
+	check_same_tile = FALSE
 	require_grab = TRUE
 	stamina_cost = 1.0
 
@@ -13,9 +14,9 @@
 /datum/sex_action/force_footjob/can_perform(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(user == target)
 		return FALSE
-	if(!get_location_accessible(target, BODY_ZONE_L_LEG))
+	if(!get_location_accessible(target, BODY_ZONE_PRECISE_L_FOOT))
 		return FALSE
-	if(!get_location_accessible(target, BODY_ZONE_R_LEG))
+	if(!get_location_accessible(target, BODY_ZONE_PRECISE_R_FOOT))
 		return FALSE
 	if(!get_location_accessible(user, BODY_ZONE_PRECISE_GROIN))
 		return FALSE

@@ -1,5 +1,6 @@
 /datum/sex_action/foot_lick
 	name = "Lick their feet"
+	check_same_tile = FALSE
 
 /datum/sex_action/foot_lick/shows_on_menu(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(user == target)
@@ -9,9 +10,9 @@
 /datum/sex_action/foot_lick/can_perform(mob/living/user, mob/living/target)
 	if(user == target)
 		return FALSE
-	if(!get_location_accessible(target, BODY_ZONE_R_LEG))
+	if(!get_location_accessible(target, BODY_ZONE_PRECISE_R_FOOT))
 		return FALSE
-	if(!get_location_accessible(target, BODY_ZONE_L_LEG))
+	if(!get_location_accessible(target, BODY_ZONE_PRECISE_L_FOOT))
 		return FALSE
 	if(!get_location_accessible(user, BODY_ZONE_PRECISE_MOUTH))
 		return FALSE
