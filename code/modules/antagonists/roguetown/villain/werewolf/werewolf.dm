@@ -87,7 +87,7 @@
 		return FALSE
 	if(mind.has_antag_datum(/datum/antagonist/skeleton))
 		return FALSE
-	return FALSE
+	return TRUE
 
 /mob/living/carbon/human/proc/werewolf_check(werewolf_type = /datum/antagonist/werewolf/lesser)
 	if(!mind)
