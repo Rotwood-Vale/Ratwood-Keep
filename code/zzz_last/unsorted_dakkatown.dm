@@ -598,23 +598,15 @@
 
 /obj/structure/closet/crate/chest/neu
 	name = "sturdy oak chest"
-	icon_state = "chest_neu"
-	base_icon_state = "chest_neu"
 
 /obj/structure/closet/crate/chest/neu_iron
 	name = "reinforced chest"
-	icon_state = "chestiron_neu"
-	base_icon_state = "chestiron_neu"
 
 /obj/structure/closet/crate/chest/neu_fancy
 	name = "fancy chest"
-	icon_state = "chestfancy_neu"
-	base_icon_state = "chestfancy_neu"
 
 /obj/structure/closet/crate/chest/old_crate
 	name = "old crate"
-	base_icon_state = "woodchestalt"
-	icon_state = "woodchestalt"
 
 /obj/structure/closet/crate/drawer/random
 	icon_state = "drawer1"
