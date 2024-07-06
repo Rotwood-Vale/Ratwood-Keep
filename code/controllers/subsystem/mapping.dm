@@ -64,15 +64,6 @@ SUBSYSTEM_DEF(mapping)
 	process_teleport_locs()			//Sets up the wizard teleport locations
 	preloadTemplates()
 #ifndef LOWMEMORYMODE
-	// Create space ruin levels
-	while (space_levels_so_far < config.space_ruin_levels)
-		++space_levels_so_far
-		add_new_zlevel("Empty Area [space_levels_so_far]", ZTRAITS_SPACE)
-	// and one level with no ruins
-	for (var/i in 1 to config.space_empty_levels)
-		++space_levels_so_far
-		empty_space = add_new_zlevel("Empty Area [space_levels_so_far]", list(ZTRAIT_LINKAGE = CROSSLINKED))
-
 	// Pick a random away mission.
 	if(CONFIG_GET(flag/roundstart_away))
 		createRandomZlevel()
@@ -237,23 +228,20 @@ SUBSYSTEM_DEF(mapping)
 	INIT_ANNOUNCE("Loading [config.map_name]...")
 	#endif
 
-	LoadGroup(FailedZs, "Station", config.map_path, config.map_file, config.traits, ZTRAITS_STATION)
+	// Load map zones of our current config map
+	for(var/datum/map_zone_config/map_zone in config.map_zones)
+		LoadGroup(FailedZs, map_zone.map_name, map_zone.map_path, map_zone.map_file, map_zone.traits, ZTRAITS_STATION)
 
 	var/list/otherZ = list()
 
 	#ifndef FASTLOAD
-	//otherZ += load_map_config("_maps/map_files/otherz/smallforest.json")
-	//otherZ += load_map_config("_maps/map_files/otherz/smalldecap.json")
-	//otherZ += load_map_config("_maps/map_files/otherz/smallswamp.json")
-	//otherZ += load_map_config("_maps/map_files/otherz/bog.json")
-	otherZ += load_map_config("_maps/map_files/otherz/underworld.json")
+	otherZ += load_map_zone_config("_maps/map_files/otherz/underworld.json")
 	#endif
 	#ifdef ROGUEWORLD
-	otherZ += load_map_config("_maps/map_files/otherz/rogueworld.json")
+	otherZ += load_map_zone_config("_maps/map_files/otherz/rogueworld.json")
 	#endif
-//	otherZ += load_map_config("_maps/map_files/roguetown/otherz/special.json")
 	if(otherZ.len)
-		for(var/datum/map_config/OtherZ in otherZ)
+		for(var/datum/map_zone_config/OtherZ in otherZ)
 			LoadGroup(FailedZs, OtherZ.map_name, OtherZ.map_path, OtherZ.map_file, OtherZ.traits, ZTRAITS_STATION)
 
 	if(SSdbcore.Connect())
@@ -264,17 +252,6 @@ SUBSYSTEM_DEF(mapping)
 		qdel(query_round_map_name)
 
 	#ifndef LOWMEMORYMODE
-	// TODO: remove this when the DB is prepared for the z-levels getting reordered
-	while (world.maxz < (5 - 1) && space_levels_so_far < config.space_ruin_levels)
-		++space_levels_so_far
-		add_new_zlevel("Empty Area [space_levels_so_far]", ZTRAITS_SPACE)
-
-	// load mining
-	if(config.minetype == "lavaland")
-		LoadGroup(FailedZs, "Lavaland", "map_files/Mining", "Lavaland.dmm", default_traits = ZTRAITS_LAVALAND)
-	else if (!isnull(config.minetype))
-		INIT_ANNOUNCE("WARNING: An unknown minetype '[config.minetype]' was set! This is being ignored! Update the maploader code!")
-	#endif
 
 	if(LAZYLEN(FailedZs))	//but seriously, unless the server's filesystem is messed up this will never happen
 		var/msg = "RED ALERT! The following map files failed to load: [FailedZs[1]]"
@@ -284,12 +261,6 @@ SUBSYSTEM_DEF(mapping)
 		msg += ". Yell at your server host!"
 		INIT_ANNOUNCE(msg)
 #undef INIT_ANNOUNCE
-
-	// Custom maps are removed after station loading so the map files does not persist for no reason.
-	if(config.map_path == "custom")
-		fdel("_maps/custom/[config.map_file]")
-		// And as the file is now removed set the next map to default.
-		next_map_config = load_map_config(default_to_box = TRUE)
 
 GLOBAL_LIST_EMPTY(the_station_areas)
 
