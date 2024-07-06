@@ -148,7 +148,7 @@
 	attack_verb = list("claws", "mauls", "eviscerates")
 	animname = "chop"
 	hitsound = "genslash"
-	penfactor = 50
+	penfactor = 35
 	candodge = TRUE
 	canparry = TRUE
 	miss_text = "slashes the air!"
@@ -164,10 +164,10 @@
 	icon = 'icons/roguetown/weapons/32.dmi'
 	max_blade_int = 900
 	max_integrity = 900
-	force = 25
+	force = 23
 	block_chance = 0
 	wdefense = 4
-	armor_penetration = 15
+	armor_penetration = 5
 	associated_skill = /datum/skill/combat/unarmed
 	wlength = WLENGTH_NORMAL
 	w_class = WEIGHT_CLASS_BULKY

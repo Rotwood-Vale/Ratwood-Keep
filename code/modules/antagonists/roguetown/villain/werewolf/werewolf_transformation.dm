@@ -112,8 +112,8 @@
 	W.stress = stress
 
 	W.mind.adjust_skillrank(/datum/skill/combat/wrestling, 6, TRUE)
-	W.mind.adjust_skillrank(/datum/skill/combat/unarmed, 6, TRUE)
-	W.mind.adjust_skillrank(/datum/skill/misc/climbing, 6, TRUE)
+	W.mind.adjust_skillrank(/datum/skill/combat/unarmed, 5, TRUE)
+	W.mind.adjust_skillrank(/datum/skill/misc/climbing, 5, TRUE)
 
 	W.AddSpell(new /obj/effect/proc_holder/spell/self/howl)
 	W.AddSpell(new /obj/effect/proc_holder/spell/self/claws)
