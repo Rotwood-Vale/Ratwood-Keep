@@ -296,7 +296,8 @@
 	SSblackbox.Seal()
 
 	sleep(10 SECONDS)
-	SSvote.initiate_vote("map", "Ratwood players")
+	// Don't allow players to map vote currently, just let admins toggle maps for now
+	//SSvote.initiate_vote("map", "Ratwood players")
 	ready_for_reboot = TRUE
 	standard_reboot()
 
