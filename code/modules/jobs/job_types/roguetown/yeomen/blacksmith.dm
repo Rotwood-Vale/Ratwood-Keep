@@ -41,7 +41,7 @@
 		backpack_contents = list(/obj/item/rogueweapon/hammer = 1, /obj/item/rogueweapon/tongs = 1)
 		belt = /obj/item/storage/belt/rogue/leather
 		beltl = /obj/item/storage/belt/rogue/pouch/coins/poor
-		beltr = /obj/item/roguekey/blacksmith
+		beltr = /obj/item/keyring/weaponsmith
 		cloak = /obj/item/clothing/cloak/apron/blacksmith
 	else
 		pants = /obj/item/clothing/under/roguetown/trou
@@ -52,7 +52,7 @@
 		belt = /obj/item/storage/belt/rogue/leather
 		cloak = /obj/item/clothing/cloak/apron/blacksmith
 		beltl = /obj/item/storage/belt/rogue/pouch/coins/poor
-		beltr = /obj/item/roguekey/blacksmith
+		beltr = /obj/item/keyring/weaponsmith
 	H.change_stat("strength", 2)
 	H.change_stat("intelligence", 1)
 	H.change_stat("endurance", 2)
@@ -101,7 +101,7 @@
 		backpack_contents = list(/obj/item/rogueweapon/hammer = 1, /obj/item/rogueweapon/tongs = 1)
 		belt = /obj/item/storage/belt/rogue/leather
 		beltl = /obj/item/storage/belt/rogue/pouch/coins/poor
-		beltr = /obj/item/roguekey/blacksmith
+		beltr = /obj/item/keyring/weaponsmith
 		cloak = /obj/item/clothing/cloak/apron/blacksmith
 	else
 		pants = /obj/item/clothing/under/roguetown/trou
@@ -112,7 +112,7 @@
 		belt = /obj/item/storage/belt/rogue/leather
 		cloak = /obj/item/clothing/cloak/apron/blacksmith
 		beltl = /obj/item/storage/belt/rogue/pouch/coins/poor
-		beltr = /obj/item/roguekey/blacksmith
+		beltr = /obj/item/keyring/weaponsmith
 	H.change_stat("strength", 2)
 	H.change_stat("intelligence", 1)
 	H.change_stat("endurance", 2)

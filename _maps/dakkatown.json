@@ -1,0 +1,10 @@
+{
+    "map_name": "Dakkatown",
+	"map_zones":[
+		"_maps/map_zones/dakkatown/dakkatown.json",
+		"_maps/map_zones/dakkatown/dakkaforest.json",
+		"_maps/map_zones/dakkatown/dakkamountain.json",
+		"_maps/map_zones/dakkatown/dakkaswamp.json",
+		"_maps/map_zones/dakkatown/dakkacoast.json"
+	]
+}

@@ -1,0 +1,6 @@
+{
+    "map_name": "dakkamountain",
+    "map_path": "map_files/dakkatown",
+    "map_file": "dakkamountain.dmm",
+	"traits": [{"Up": 1}, {"Up": 1, "Down": -1}, {"Down": -1}]
+}

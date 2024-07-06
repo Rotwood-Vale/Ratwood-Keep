@@ -17,3 +17,7 @@ map rockhill
 	default
 	votable
 endmap
+
+map dakkatown
+	votable
+endmap
