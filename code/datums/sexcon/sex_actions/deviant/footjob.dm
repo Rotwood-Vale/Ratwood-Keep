@@ -1,5 +1,6 @@
 /datum/sex_action/footjob
 	name = "Jerk them off with feet"
+	check_same_tile = FALSE
 
 /datum/sex_action/footjob/shows_on_menu(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(user == target)
@@ -11,9 +12,9 @@
 /datum/sex_action/footjob/can_perform(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(user == target)
 		return FALSE
-	if(!get_location_accessible(user, BODY_ZONE_L_LEG))
+	if(!get_location_accessible(user, BODY_ZONE_PRECISE_L_FOOT))
 		return FALSE
-	if(!get_location_accessible(user, BODY_ZONE_R_LEG))
+	if(!get_location_accessible(user, BODY_ZONE_PRECISE_R_FOOT))
 		return FALSE
 	if(!get_location_accessible(target, BODY_ZONE_PRECISE_GROIN))
 		return FALSE
