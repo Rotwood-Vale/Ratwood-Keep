@@ -36,7 +36,7 @@
 		user.visible_message(span_love("cums into [target]'s throat!"))
 		user.sexcon.cum_into()
 
-	user.sexcon.perform_deepthroat_oxyloss(user, 1.5)
+	user.sexcon.perform_deepthroat_oxyloss(user, 1.3)
 	user.sexcon.perform_sex_action(target, 0, 7, FALSE)
 	target.sexcon.handle_passive_ejaculation()
 
