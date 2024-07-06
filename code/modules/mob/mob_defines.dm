@@ -270,6 +270,7 @@
 	var/last_dodge = 0
 	var/last_parry = 0
 	var/next_emote = 0
+	var/next_me_emote = 0
 	var/lastpoint = 0
 
 	var/mobid = 0 //incremented on spawn
