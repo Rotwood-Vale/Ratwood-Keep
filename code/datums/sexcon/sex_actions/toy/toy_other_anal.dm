@@ -33,6 +33,6 @@
 	user.visible_message(span_warning("[user] pulls \the [dildo] from [target]'s butt."))
 
 /datum/sex_action/toy_other_anal/is_finished(mob/living/carbon/human/user, mob/living/carbon/human/target)
-	if(target.sexcon.just_ejaculated())
+	if(target.sexcon.finished_check())
 		return TRUE
 	return FALSE

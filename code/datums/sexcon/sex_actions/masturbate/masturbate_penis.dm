@@ -27,7 +27,7 @@
 	user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] [chosen_verb]..."))
 	playsound(user, 'sound/misc/mat/fingering.ogg', 30, TRUE, -2, ignore_walls = FALSE)
 
-	user.sexcon.perform_sex_action(user, 2, 4, TRUE)
+	user.sexcon.perform_sex_action(user, 2, 0, TRUE)
 
 	user.sexcon.handle_passive_ejaculation()
 
@@ -35,6 +35,6 @@
 	user.visible_message(span_warning("[user] stops jerking off."))
 
 /datum/sex_action/masturbate_penis/is_finished(mob/living/carbon/human/user, mob/living/carbon/human/target)
-	if(user.sexcon.just_ejaculated())
+	if(user.sexcon.finished_check())
 		return TRUE
 	return FALSE

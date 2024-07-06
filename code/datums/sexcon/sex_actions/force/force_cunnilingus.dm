@@ -38,6 +38,6 @@
 	user.visible_message(span_warning("[user] pulls [target]'s head away."))
 
 /datum/sex_action/force_cunnilingus/is_finished(mob/living/carbon/human/user, mob/living/carbon/human/target)
-	if(user.sexcon.just_ejaculated())
+	if(user.sexcon.finished_check())
 		return TRUE
 	return FALSE

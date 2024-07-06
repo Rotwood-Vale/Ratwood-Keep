@@ -26,7 +26,8 @@
 	user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] sucks [target]'s cock..."))
 	user.make_sucking_noise()
 
-	user.sexcon.perform_sex_action(target, 2, 4, TRUE)
+	user.sexcon.perform_sex_action(target, 2, 0, TRUE)
+	user.sexcon.perform_deepthroat_oxyloss(user, 1.5)
 	if(target.sexcon.check_active_ejaculation())
 		target.visible_message(span_love("[target] cums into [user]'s mouth!"))
 		target.sexcon.cum_into()
@@ -35,6 +36,6 @@
 	user.visible_message(span_warning("[user] stops sucking [target]'s cock ..."))
 
 /datum/sex_action/blowjob/is_finished(mob/living/carbon/human/user, mob/living/carbon/human/target)
-	if(target.sexcon.just_ejaculated())
+	if(target.sexcon.finished_check())
 		return TRUE
 	return FALSE

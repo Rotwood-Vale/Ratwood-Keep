@@ -28,6 +28,6 @@
 	user.visible_message(span_warning("[user] stops nuzzling [target]'s crotch..."))
 
 /datum/sex_action/crotch_nuzzle/is_finished(mob/living/carbon/human/user, mob/living/carbon/human/target)
-	if(target.sexcon.just_ejaculated())
+	if(target.sexcon.finished_check())
 		return TRUE
 	return FALSE
