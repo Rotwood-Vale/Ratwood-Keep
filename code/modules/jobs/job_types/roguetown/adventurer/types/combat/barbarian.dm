@@ -99,6 +99,7 @@
 			H.change_stat("strength", 2) 
 			H.change_stat("constitution", 2)
 			H.change_stat("endurance", 3)
+			H.dna.species.soundpack_m = new /datum/voicepack/male/warrior()
 /*
 			if("ROLL THE DICE!")
 				if(prob(49)) // Warrior
@@ -215,10 +216,6 @@
 					H.change_stat("constitution", 3)
 					H.change_stat("endurance", 4)
 */
-	if(ishumannorthern(H) && prob(70)) //gronn lore
-		H.skin_tone = SKIN_COLOR_GRONN
-		H.update_body()
-	H.dna.species.soundpack_m = new /datum/voicepack/male/warrior()
 /* 
 	var/randy = rand(1,5)
 	switch(randy) // Pick wep. Choose skill.

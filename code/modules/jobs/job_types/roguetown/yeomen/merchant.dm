@@ -38,10 +38,6 @@
 		H.mind.adjust_skillrank(/datum/skill/craft/cooking, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/riding, 3, TRUE)
 	ADD_TRAIT(H, TRAIT_SEEPRICES, type)
-	//50% chance to be raceswapped to Giza because slop lore
-	if(ishumannorthern(H) && prob(50))
-		H.skin_tone = SKIN_COLOR_GIZA
-		H.update_body()
 	if(H.gender == MALE)
 		shoes = /obj/item/clothing/shoes/roguetown/boots/leather
 		beltr = /obj/item/storage/belt/rogue/pouch/coins/rich
@@ -61,7 +57,7 @@
 		shoes = /obj/item/clothing/shoes/roguetown/gladiator
 		beltr = /obj/item/storage/belt/rogue/pouch/coins/rich
 		belt = /obj/item/storage/belt/rogue/leather/rope
-		beltl = /obj/item/roguekey/merchant
+		beltl = /obj/item/keyring/merchant
 		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/sailor
 		neck = /obj/item/clothing/neck/roguetown/horus
 		armor = /obj/item/clothing/suit/roguetown/shirt/robe/merchant

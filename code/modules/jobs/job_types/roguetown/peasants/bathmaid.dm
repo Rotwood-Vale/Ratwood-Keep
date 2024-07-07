@@ -1,6 +1,6 @@
 /datum/job/roguetown/nightmaiden
-	title = "Bath Swain"
-	f_title = "Bath Wench"
+	title = "Nightswain"
+	f_title = "Nightmaiden"
 	flag = WENCH
 	department_flag = PEASANTS
 	faction = "Station"

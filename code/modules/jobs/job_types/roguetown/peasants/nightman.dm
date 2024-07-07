@@ -1,12 +1,13 @@
 /datum/job/roguetown/nightman
 	title = "Nightmaster"
+	f_title = "Nightmistress"
 	flag = NIGHTMASTER
 	department_flag = PEASANTS
 	faction = "Station"
 	total_positions = 0 
 	spawn_positions = 0 // Disabled until he gets his own place on the map
 
-	allowed_sexes = list(MALE)
+	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
 
 	tutorial = "The Nightmaster is technically a noble. Owner of the Whitevein Lounge, a decaying bathhouse converted into a den of low-lifes. A troublemaking rake that the others hate to tolerate."

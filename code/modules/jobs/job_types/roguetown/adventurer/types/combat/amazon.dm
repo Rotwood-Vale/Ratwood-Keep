@@ -1,6 +1,6 @@
 /datum/advclass/amazon
 	name = "Amazon"
-	tutorial = "Amazons are warrior-women from the mysterious isle of Issa. These rare fighters are so tough they can beat an average man!"
+	tutorial = "Amazons are warrior-women from the mysterious isle of Issa."
 	allowed_sexes = list(FEMALE)
 	allowed_races = RACES_TOLERATED_UP
 	outfit = /datum/outfit/job/roguetown/adventurer/amazon
@@ -14,8 +14,8 @@
 
 /datum/outfit/job/roguetown/adventurer/amazon/pre_equip(mob/living/carbon/human/H)
 	..()
-	H.mind.adjust_skillrank(/datum/skill/combat/polearms, 3, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/combat/polearms, 2, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/combat/swords, 2, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/combat/knives, 1, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/combat/bows, 3, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE)
@@ -42,10 +42,10 @@
 		shoes = /obj/item/clothing/shoes/roguetown/boots
 	if(prob(75))
 		beltr = /obj/item/rogueweapon/sword/iron
-		H.mind.adjust_skillrank(/datum/skill/combat/swords, 2, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/swords, 3, TRUE)
 	else
 		r_hand = /obj/item/rogueweapon/spear
-		H.mind.adjust_skillrank(/datum/skill/combat/polearms, 2, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/polearms, 3, TRUE)
 	H.change_stat("strength", 2)
 	H.change_stat("intelligence", -2)
 	H.change_stat("constitution", 3)
