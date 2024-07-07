@@ -32,7 +32,8 @@
 			/obj/item/clothing/head/roguetown/chaperon,
 			/obj/item/storage/belt/rogue/leather/rope,
 			/obj/item/storage/belt/rogue/leather/cloth,
-			/obj/item/clothing/shoes/roguetown/simpleshoes
+			/obj/item/clothing/shoes/roguetown/simpleshoes,
+			/obj/item/clothing/suit/roguetown/armor/gambeson
 			)
 
 /obj/machinery/gear_painter/Initialize(mapload)
