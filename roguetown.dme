@@ -1160,7 +1160,7 @@
 #include "code\game\objects\items\rogueitems\natural.dm"
 #include "code\game\objects\items\rogueitems\needle.dm"
 #include "code\game\objects\items\rogueitems\painting.dm"
-#include "code\game\objects\items\rogueitems\prostheticarm.dm"
+#include "code\game\objects\items\rogueitems\prosthetics.dm"
 #include "code\game\objects\items\rogueitems\ropechainbola.dm"
 #include "code\game\objects\items\rogueitems\undies.dm"
 #include "code\game\objects\items\rogueitems\waterskin.dm"
