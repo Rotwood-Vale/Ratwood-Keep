@@ -59,3 +59,4 @@
 	H.change_stat("intelligence", 2)
 	H.change_stat("perception", 3)
 	H.change_stat("strength", -1)
+
