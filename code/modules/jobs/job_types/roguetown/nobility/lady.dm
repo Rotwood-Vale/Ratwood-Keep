@@ -18,6 +18,8 @@
 	min_pq = 2
 	max_pq = null
 
+	allow_custom_genitals = TRUE
+
 /datum/job/roguetown/exlady //just used to change the ladys title
 	title = "Queen Dowager"
 	flag = LADY

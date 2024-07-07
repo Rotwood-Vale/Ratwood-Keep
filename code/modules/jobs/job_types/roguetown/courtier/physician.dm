@@ -13,7 +13,9 @@
 		Perhaps in another life, you would have turned out to be a powerful mage, wise archivist or a shrewd steward, \
 		but leprosy took away your younger years. \
 		Out of desperation, you followed the ways of Pestra and managed to be cured. \
-		Now you serve in the King's court ensuring the good health of those inhabiting the keep."
+		Now you serve in the King's court ensuring the good health of those inhabiting the keep. \
+		\
+		This role allows for full customization."
 	outfit = /datum/outfit/job/roguetown/physician
 	whitelist_req = TRUE
 
@@ -22,6 +24,8 @@
 	max_pq = null
 
 	cmode_music = 'sound/music/combat_physician.ogg'
+
+	allow_custom_genitals = TRUE
 
 /datum/outfit/job/roguetown/physician
 	name = "Physician"
