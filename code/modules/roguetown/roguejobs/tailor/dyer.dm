@@ -23,10 +23,16 @@
 			/obj/item/clothing/suit/roguetown/shirt/undershirt,
 			/obj/item/clothing/suit/roguetown/shirt/shortshirt,
 			/obj/item/clothing/under/roguetown/tights,
+			/obj/item/clothing/cloak/raincloak,
+			/obj/item/clothing/cloak/cape,
+			/obj/item/clothing/cloak/half,
 			/obj/item/clothing/head/roguetown/roguehood,
 			/obj/item/clothing/head/roguetown/headband,
 			/obj/item/clothing/head/roguetown/armingcap,
-			/obj/item/clothing/head/roguetown/chaperon
+			/obj/item/clothing/head/roguetown/chaperon,
+			/obj/item/storage/belt/rogue/leather/rope,
+			/obj/item/storage/belt/rogue/leather/cloth,
+			/obj/item/clothing/shoes/roguetown/simpleshoes
 			)
 
 /obj/machinery/gear_painter/Initialize(mapload)
