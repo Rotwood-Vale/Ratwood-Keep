@@ -438,7 +438,7 @@
 		return
 	if(!get_location_accessible(owner, BODY_ZONE_PRECISE_GROIN))
 		return
-	if(~owner.hasVagina())
+	if(!owner.hasVagina())
 		return
 	if(user.loc != owner.loc)
 		return
