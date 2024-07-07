@@ -74,7 +74,7 @@ GLOBAL_LIST_INIT(courtier_positions, list(
 	"Court Magician",
 	"Court Physician",
 	"Jester",
-	"Butler",
+	"Head Butler",
 ))
 
 GLOBAL_LIST_INIT(garrison_positions, list(
@@ -141,7 +141,7 @@ GLOBAL_LIST_INIT(youngfolk_positions, list(
 	"Squire",
 	"Clerk",
 	"Smithy Apprentice",
-	"Magician's Apprentice",
+	"Magicians Apprentice",
 	"Churchling",
 	"Servant",
 	"Shophand",

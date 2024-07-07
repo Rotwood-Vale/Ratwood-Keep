@@ -169,3 +169,23 @@
 
 /obj/item/clothing/under/roguetown/loincloth/pink
 	color = "#b98ae3"
+
+/obj/item/clothing/under/roguetown/grenzelpants
+	name = "grenzelhoftian paumpers"
+	desc = "Padded pants for extra comfort and protection, adorned in vibrant colors."
+	icon_state = "grenzelpants"
+	item_state = "grenzelpants"
+	sleeved = 'icons/roguetown/clothing/onmob/helpers/stonekeep_merc.dmi'
+	detail_tag = "_detail"
+	armor = list("blunt" = 15, "slash" = 15, "stab" = 15, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	prevent_crits = list(BCLASS_BLUNT)
+	colorgrenz = TRUE
+
+/obj/item/clothing/under/roguetown/grenzelpants/update_icon()
+	cut_overlays()
+	if(get_detail_tag())
+		var/mutable_appearance/pic = mutable_appearance(icon(icon, "[icon_state][detail_tag]"))
+		pic.appearance_flags = RESET_COLOR
+		if(get_detail_color())
+			pic.color = get_detail_color()
+		add_overlay(pic)

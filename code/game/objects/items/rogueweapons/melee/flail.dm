@@ -115,9 +115,21 @@
 	icon_state = "incrack"
 	item_d_type = "slash"
 
+/datum/intent/whip/punish
+	name = "punish"
+	blade_class = BCLASS_BLUNT
+	attack_verb = list("lashes")
+	hitsound = list('sound/combat/hits/blunt/flailhit.ogg')
+	chargetime = 0
+	recovery = 10
+	penfactor = 0
+	reach = 2
+	icon_state = "inpunish"
+	item_d_type = "blunt"
+
 /obj/item/rogueweapon/whip
 	force = 21
-	possible_item_intents = list(/datum/intent/whip/crack, /datum/intent/whip/lash)
+	possible_item_intents = list(/datum/intent/whip/crack, /datum/intent/whip/lash, /datum/intent/whip/punish)
 	name = "whip"
 	desc = "A leather whip, built to last with an sharp stone for a tip"
 	icon_state = "whip"
