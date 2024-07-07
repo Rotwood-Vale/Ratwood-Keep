@@ -13,55 +13,56 @@
 
 
 //Human Overlays Indexes/////////
-#define MUTATIONS_LAYER			48		//mutations. Tk headglows, cold resistance glow, etc
-#define CLOAK_BEHIND_LAYER		47
-#define HANDS_BEHIND_LAYER		46
-#define BELT_BEHIND_LAYER		45
-#define BACK_BEHIND_LAYER		44
-#define BODY_BEHIND_LAYER		43		//certain mutantrace features (tail when looking south) that must appear behind the body parts
-#define BODY_UNDER_LAYER		42		// Things under the bodyparts but above the "behind body" layer
-#define BODYPARTS_LAYER			41		//Initially "AUGMENTS", this was repurposed to be a catch-all bodyparts flag
-#define BODY_ADJ_LAYER			40		//certain mutantrace features (snout, body markings) that must appear above the body parts
-#define BODY_LAYER				39		//underwear, undershirts, socks, eyes, lips(makeup)
-#define FRONT_MUTATIONS_LAYER	38		//mutations that should appear above body, body_adj and bodyparts layer (e.g. laser eyes)
-#define DAMAGE_LAYER			37		//damage indicators (cuts and burns)
-#define PANTS_LAYER				36
-#define SHOES_LAYER				35
-#define LEG_PART_LAYER			34
-#define LEG_DAMAGE_LAYER		33
-#define LEGSLEEVE_LAYER			32
-#define SHOESLEEVE_LAYER		31
-#define SHIRT_LAYER				30
-#define WRISTS_LAYER			29
-#define ARMOR_LAYER				28
-#define TABARD_LAYER			27
-#define BELT_LAYER				26		//only when looking south
-#define UNDER_CLOAK_LAYER		25
-#define HANDS_PART_LAYER		24
-#define GLOVES_LAYER			23
-#define ARM_DAMAGE_LAYER		22
-#define SHIRTSLEEVE_LAYER		21
-#define GLOVESLEEVE_LAYER		20
-#define WRISTSLEEVE_LAYER		19
-#define ARMORSLEEVE_LAYER		18
-#define RING_LAYER				17
-#define GLASSES_LAYER			16
-#define NECK_LAYER				15
-#define CLOAK_LAYER				14		//only when looking north or west/east
-#define HAIR_LAYER				13		//TODO: make part of head layer?
-#define MASK_LAYER				12
-#define HAIREXTRA_LAYER			11
-#define MOUTH_LAYER				10
-#define HEAD_LAYER				9
-#define BACK_LAYER				8		//only when looking north
-#define HANDS_LAYER				7
-#define HANDCUFF_LAYER			6
-#define LEGCUFF_LAYER			5
-#define BODY_FRONT_LAYER		4
+#define MUTATIONS_LAYER			49		//mutations. Tk headglows, cold resistance glow, etc
+#define CLOAK_BEHIND_LAYER		48
+#define HANDS_BEHIND_LAYER		47
+#define BELT_BEHIND_LAYER		46
+#define BACK_BEHIND_LAYER		45
+#define BODY_BEHIND_LAYER		44		//certain mutantrace features (tail when looking south) that must appear behind the body parts
+#define BODY_UNDER_LAYER		43		// Things under the bodyparts but above the "behind body" layer
+#define BODYPARTS_LAYER			42		//Initially "AUGMENTS", this was repurposed to be a catch-all bodyparts flag
+#define BODY_ADJ_LAYER			41		//certain mutantrace features (snout, body markings) that must appear above the body parts
+#define BODY_LAYER				40		//underwear, undershirts, socks, eyes, lips(makeup)
+#define FRONT_MUTATIONS_LAYER	39		//mutations that should appear above body, body_adj and bodyparts layer (e.g. laser eyes)
+#define DAMAGE_LAYER			38		//damage indicators (cuts and burns)
+#define PANTS_LAYER				37
+#define SHOES_LAYER				36
+#define LEG_PART_LAYER			35
+#define LEG_DAMAGE_LAYER		34
+#define LEGSLEEVE_LAYER			33
+#define SHOESLEEVE_LAYER		32
+#define SHIRT_LAYER				31
+#define WRISTS_LAYER			30
+#define ARMOR_LAYER				29
+#define TABARD_LAYER			28
+#define BELT_LAYER				27		//only when looking south
+#define UNDER_CLOAK_LAYER		26
+#define HANDS_PART_LAYER		25
+#define GLOVES_LAYER			24
+#define ARM_DAMAGE_LAYER		23
+#define SHIRTSLEEVE_LAYER		22
+#define GLOVESLEEVE_LAYER		21
+#define WRISTSLEEVE_LAYER		20
+#define ARMORSLEEVE_LAYER		19
+#define RING_LAYER				18
+#define GLASSES_LAYER			17
+#define NECK_LAYER				16
+#define CLOAK_LAYER				15		//only when looking north or west/east
+#define HAIR_LAYER				14		//TODO: make part of head layer?
+#define MASK_LAYER				13
+#define HAIREXTRA_LAYER			12
+#define MOUTH_LAYER				11
+#define HEAD_LAYER				10
+#define BACK_LAYER				9		//only when looking north
+#define HANDS_LAYER				8
+#define HANDCUFF_LAYER			7
+#define LEGCUFF_LAYER			6
+#define BODY_FRONT_LAYER		5
+#define BODY_FRONT_FRONT_LAYER	4
 #define HALO_LAYER				3		//blood cult ascended halo, because there's currently no better solution for adding/removing
 #define FIRE_LAYER				2		//If you're on fire
 #define TURF_LAYER				1		//If you're on fire
-#define TOTAL_LAYERS			48		//KEEP THIS UP-TO-DATE OR SHIT WILL BREAK ;_;
+#define TOTAL_LAYERS			49		//KEEP THIS UP-TO-DATE OR SHIT WILL BREAK ;_;
 
 #define BACK_CLOAK_SOUTH_LAYER		(BODY_BEHIND_LAYER+1)
 

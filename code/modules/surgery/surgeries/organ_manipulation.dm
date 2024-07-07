@@ -1,3 +1,6 @@
+GLOBAL_LIST_INIT(moldable_organs, list(BODY_ZONE_PRECISE_GROIN=list(ORGAN_SLOT_PENIS, ORGAN_SLOT_VAGINA, ORGAN_SLOT_TESTICLES),
+	BODY_ZONE_CHEST=list(ORGAN_SLOT_BREASTS))) //Vrell - If we want to do this to other organs down the line, we can just add their slots here.
+
 /datum/surgery/organ_manipulation
 	name = "Organ manipulation"
 	target_mobtypes = list(/mob/living/carbon/human, /mob/living/carbon/monkey)
@@ -151,4 +154,70 @@
 	selected_organ.Remove(target)
 	selected_organ.forceMove(target.drop_location())
 	user.put_in_hands(selected_organ)
+	return TRUE
+
+/datum/surgery_step/make_organs
+	name = "Mold organs"
+	time = 6.4 SECONDS
+	accept_hand = TRUE
+	implements = list(
+		TOOL_HEMOSTAT = 80,
+		TOOL_CROWBAR = 65
+	)
+	target_mobtypes = list(/mob/living/carbon/human, /mob/living/carbon/monkey)
+	surgery_flags = SURGERY_INCISED | SURGERY_RETRACTED
+	skill_min = SKILL_LEVEL_JOURNEYMAN
+	skill_median = SKILL_LEVEL_EXPERT
+
+/datum/surgery_step/make_organs/validate_bodypart(mob/user, mob/living/carbon/target, obj/item/bodypart/bodypart, target_zone)
+	var/static/list/hard_zones = list(
+		BODY_ZONE_PRECISE_SKULL,
+		BODY_ZONE_CHEST,
+	)
+	if(target_zone in hard_zones)
+		surgery_flags |= SURGERY_BROKEN
+	else
+		surgery_flags &= ~SURGERY_BROKEN
+	return ..()
+
+/datum/surgery_step/make_organs/preop(mob/user, mob/living/target, target_zone, obj/item/tool, datum/intent/intent)
+	if(!iscarbon(target))
+		to_chat(user, span_warning("There are no organs you can mold in [target]!"))
+		return FALSE
+	var/mob/living/carbon/carbonize = target
+	var/list/organs = GLOB.moldable_organs[target_zone]
+	for(var/organslot as anything in organs)
+		if(carbonize.getorganslot(organslot))
+			organs -= organslot
+			continue
+		if(!carbonize.dna.organ_dna[organslot])
+			organs -= organslot
+			continue
+	if(!length(organs))
+		to_chat(user, span_warning("There are no organs you can mold in [target]'s [parse_zone(target_zone)]!"))
+		return FALSE
+	var/selected = input(user, "Create which organ?", "PESTRA") as null|anything in sortList(organs)
+	if(QDELETED(user) || QDELETED(target) || !user.Adjacent(target) || (user.get_active_held_item() != tool))
+		return FALSE
+	if(target.getorganslot(selected))
+		to_chat(user, span_warning("[target] alread has that organ!"))
+		return FALSE
+	user.select_organ_slot(selected)
+	display_results(user, target, span_notice("I begin to mold [parse_organ_slot(selected)] in [target]'s [parse_zone(target_zone)]..."),
+		span_notice("[user] begins to mold [parse_organ_slot(selected)] in [target]'s [parse_zone(target_zone)]."),
+		span_notice("[user] begins to mold something in [target]'s' [parse_zone(target_zone)]."))
+	return TRUE
+
+/datum/surgery_step/make_organs/success(mob/user, mob/living/target, target_zone, obj/item/tool, datum/intent/intent)
+	if(!isnull(target.getorganslot(user.organ_slot_selected)))
+		to_chat(user, span_warning("[target] alread has that organ!"))
+		return FALSE
+	display_results(user, target, span_notice("I successfully mold [parse_organ_slot(user.organ_slot_selected)] in [target]'s [parse_zone(target_zone)]."),
+		span_notice("[user] successfully molds [parse_organ_slot(user.organ_slot_selected)] in [target]'s [parse_zone(target_zone)]!"),
+		span_notice("[user] successfully molds something in [target]'s [parse_zone(target_zone)]!"))
+	log_combat(user, target, "surgically made [parse_organ_slot(user.organ_slot_selected)] from")
+	var/mob/living/carbon/carbonized = target
+	var/datum/organ_dna/organ_template = carbonized.dna.organ_dna[user.organ_slot_selected]
+	var/obj/item/organ/organ_to_add = organ_template.create_organ(target)
+	organ_to_add.Insert(target)
 	return TRUE

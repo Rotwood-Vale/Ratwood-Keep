@@ -1,11 +1,18 @@
 /datum/advclass/torso
 	name = "Torso"
-	tutorial = "Some horrible accident in the forest away all of your limbs!\nSurvival will be a true TRIUMPH."
+	tutorial = "Some horrible accident in the forest away all of your limbs!\nSurvival will be a true TRIUMPH. \
+		\
+		This role allows for full customization."
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
 	outfit = /datum/outfit/job/roguetown/adventurer/torso
 	traits_applied = list(TRAIT_HEAVYARMOR, TRAIT_MEDIUMARMOR, TRAIT_STEELHEARTED)
+<<<<<<< HEAD
 	category_tags = list(CTAG_DISABLED)
+=======
+	category_tags = list(CTAG_PILGRIM)
+	allow_custom_genitals = TRUE
+>>>>>>> 17a93c1ad (Allows any genitals on any race (#31))
 
 /datum/outfit/job/roguetown/adventurer/torso/pre_equip(mob/living/carbon/human/H)
 	..()

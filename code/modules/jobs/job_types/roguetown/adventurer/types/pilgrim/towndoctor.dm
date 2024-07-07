@@ -1,12 +1,20 @@
 /datum/advclass/towndoctor
 	name = "Barber Surgeon"
+<<<<<<< HEAD
 	tutorial = "You are the closest thing to a doctor that the townsfolk here will ever meet. Wielding crude tools and accumulated knowledge, you have probably cut into as many people as the average Knight."
 	allowed_sexes = list(MALE, FEMALE)
+=======
+	tutorial = "You are the closest thing to a doctor that the townsfolk here will ever meet. Wielding crude tools and accumulated knowledge, you have probably cut into as many people as the average Knight. \
+		\
+		This role allows for full customization."
+	allowed_sexes = list(MALE, FEMALE) //Vrell - Changing this to not be genderlocked to get more doctors out there.
+>>>>>>> 17a93c1ad (Allows any genitals on any race (#31))
 	allowed_races = RACES_TOLERATED_UP
 	outfit = /datum/outfit/job/roguetown/adventurer/doctor
 	category_tags = list(CTAG_PILGRIM, CTAG_TOWNER)
 	traits_applied = list(TRAIT_EMPATH, TRAIT_NOSTINK)
 	cmode_music = 'sound/music/combat_physician.ogg'
+	allow_custom_genitals = TRUE
 
 /datum/outfit/job/roguetown/adventurer/doctor
 	allowed_patrons = list(/datum/patron/divine/pestra, /datum/patron/inhumen/graggar)
