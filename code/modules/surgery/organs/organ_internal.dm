@@ -69,6 +69,10 @@
 	update_accessory_colors()
 	STOP_PROCESSING(SSobj, src)
 
+	if(ishuman(M))
+		var/mob/living/carbon/human/humanized = M
+		humanized.update_body_parts(TRUE)
+
 //Special is for instant replacement like autosurgeons
 /obj/item/organ/proc/Remove(mob/living/carbon/M, special = FALSE, drop_if_replaced = TRUE)
 	owner = null
@@ -82,6 +86,10 @@
 		var/datum/action/A = X
 		A.Remove(M)
 	update_icon()
+
+	if(ishuman(M))
+		var/mob/living/carbon/human/humanized = M
+		humanized.update_body_parts(TRUE)
 //	START_PROCESSING(SSobj, src)
 
 
