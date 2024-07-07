@@ -48,7 +48,7 @@
 	if(!produce_ready)
 		return
 	apply_farming_fatigue(user, 5)
-	adjust_experience(user, /datum/skill/labor/farming, user.STAINT * 4)
+	adjust_experience(user, /datum/skill/labor/farming, user.STAINT * 2)
 
 	var/farming_skill = user.mind.get_skill_level(/datum/skill/labor/farming)
 	var/chance_to_ruin = 50 - (farming_skill * 25)
