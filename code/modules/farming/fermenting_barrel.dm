@@ -32,7 +32,7 @@
 		fruit.reagents.remove_reagent(/datum/reagent/consumable/nutriment, fruit.reagents.total_volume)
 		fruit.reagents.trans_to(src, fruit.reagents.total_volume)
 	if(fruit.distill_reagent)
-		var/unwateredamt = fruit.distill_amt += 3
+		var/unwateredamt = fruit.distill_amt + 3
 		reagents.add_reagent(fruit.distill_reagent, unwateredamt)
 	qdel(fruit)
 	playsound(src, "bubbles", 100, TRUE)
