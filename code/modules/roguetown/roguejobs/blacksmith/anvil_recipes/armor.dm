@@ -82,6 +82,13 @@
 	created_item = /obj/item/clothing/suit/roguetown/armor/chainmail
 	i_type = "Armor"
 
+/datum/anvil_recipe/armor/chainkini
+	name = "Chainmail Bikini (+2 Cloth)"
+	req_bar = /obj/item/ingot/steel
+	additional_items = list(/obj/item/natural/cloth, /obj/item/natural/cloth)
+	created_item = /obj/item/clothing/suit/roguetown/armor/chainmail/chainkini
+	i_type = "Armor"
+
 /datum/anvil_recipe/armor/hauberk
 	name = "Hauberk (+1 Steel)"
 	req_bar = /obj/item/ingot/steel

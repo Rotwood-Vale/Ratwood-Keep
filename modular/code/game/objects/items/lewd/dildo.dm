@@ -16,7 +16,6 @@
 	var/pleasure = 4
 	var/can_custom = TRUE
 	var/dildo_material
-	var/hole = "vagina"
 
 /obj/item/dildo/New()
 	. = ..()
@@ -28,9 +27,6 @@
 		return
 	if(can_custom)
 		customize(user)
-	if(!can_custom)
-		var/choice = input(user, "Choose a hole to fuck.","Hole") as null|anything in list("vagina", "ass", "mouth")
-		hole = choice
 
 /obj/item/dildo/proc/customize(mob/living/user)
 	if(!can_custom)
@@ -85,73 +81,3 @@
 	color = "#A0A075"
 	dildo_material = "golden"
 	sellprice = 50
-
-/obj/item/dildo/attack(mob/living/carbon/human/target, mob/living/user)
-	if(can_custom)
-		return
-	if(user.mmb_intent)
-		return ..()
-	if(!istype(target))
-		return
-	if(!user.can_do_sex())
-		to_chat(user, "<span class='warning'>I can't do this.</span>")
-		return
-
-	var/target_mouth = TRUE
-	var/target_groin = TRUE
-	if(!get_location_accessible(target, BODY_ZONE_PRECISE_MOUTH))
-		target_mouth = FALSE
-	if(!get_location_accessible(target, BODY_ZONE_PRECISE_GROIN))
-		target_groin = FALSE
-
-	if(hole == "vagina")
-		if(!target_groin)
-			to_chat(user, "<span class='warning'>[target] is not naked!</span>")
-			return
-		if(!target.hasVagina())
-			to_chat(user, "<span class='warning'>[target] has no vagina!</span>")
-			return
-		if(do_after(user, 2))
-			if(target.hasVagina())
-				if(prob(33))
-					if(user == target)
-						target.visible_message("<span class='love'>[target] masturbates with [src].</span>")
-					if(user != target)
-						target.visible_message("<span class='[!target.cmode ? "love" : "warning"]'>[user] fucks [target] with [src].</span>")
-				if(target.virginity)
-					target.visible_message("<span class='warning'>[target] loses her purity!</span>")
-					target.flash_fullscreen("redflash3")
-					target.virginity = FALSE
-
-				playsound(target, 'sound/misc/mat/segso.ogg', 50, TRUE, -2, ignore_walls = FALSE)
-				target.sexcon.adjust_horny(pleasure, "dildo")
-	if(hole == "ass")
-		if(!target_groin)
-			to_chat(user, "<span class='warning'>[target] is not naked!</span>")
-			return
-
-		else
-			if(do_after(user, 2))
-				if(prob(33))
-					if(user == target)
-						target.visible_message("<span class='love'>[target] fuck their ass with [src].</span>")
-					if(user != target)
-						target.visible_message("<span class='[!target.cmode ? "love" : "warning"]'>[user] fucks [target]'s ass with [src].</span>")
-
-				playsound(target, 'sound/misc/mat/segso.ogg', 50, TRUE, -2, ignore_walls = FALSE)
-				target.sexcon.adjust_horny(pleasure, "dildo")
-
-	if(hole == "mouth")
-		if(!target_mouth)
-			to_chat(user, "<span class='warning'>[target]'s mouth is covered!</span>")
-			return
-
-		else
-			if(do_after(user, 2))
-				if(prob(33))
-					if(user == target)
-						target.visible_message("<span class='love'>[target] sucks [src].</span>")
-					if(user != target)
-						target.visible_message("<span class='[!target.cmode ? "love" : "warning"]'>[user] forces [target] to suck [src].</span>")
-
-				playsound(target, pick('sound/misc/mat/mouthend (1).ogg','sound/misc/mat/mouthend (2).ogg'), 50, FALSE, ignore_walls = FALSE)

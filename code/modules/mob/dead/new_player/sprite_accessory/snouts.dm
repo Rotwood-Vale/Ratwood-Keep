@@ -64,6 +64,12 @@
 	name = "Hook Beak Big"
 	icon_state = "hookbeakbig"
 
+/datum/sprite_accessory/snout/bat
+	name = "Bat"
+	icon_state = "bat"
+	color_keys = 3
+	color_key_names = list("Top", "Detail", "Nose")
+
 /datum/sprite_accessory/snout/bug
 	name = "Bug"
 	icon_state = "bug"
