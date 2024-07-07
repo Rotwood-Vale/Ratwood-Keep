@@ -109,8 +109,8 @@
 		/datum/sprite_accessory/ears/mouse,
 		)
 
-	/datum/customizer/organ/ears/ratpeople
-		customizer_choices = list(/datum/customizer_choice/organ/ears/ratpeople)
+/datum/customizer/organ/ears/ratpeople
+	customizer_choices = list(/datum/customizer_choice/organ/ears/ratpeople)
 
 
 /datum/customizer_choice/organ/ears/ratpeople
