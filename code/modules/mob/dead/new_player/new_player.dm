@@ -184,6 +184,10 @@ GLOBAL_LIST_INIT(roleplay_readme, world.file2list("strings/rt/rp_prompt.txt"))
 		if(!SSticker?.IsRoundInProgress())
 			to_chat(usr, span_boldwarning("The game is starting. You cannot join yet."))
 			return
+		
+		if(client && client.prefs.is_active_migrant())
+			to_chat(usr, span_boldwarning("You are in the migrant queue."))
+			return
 
 		if(href_list["late_join"] == "override")
 			LateChoices()
@@ -249,6 +253,10 @@ GLOBAL_LIST_INIT(roleplay_readme, world.file2list("strings/rt/rp_prompt.txt"))
 			if((living_player_count() >= relevant_cap) || (src != SSticker.queued_players[1]))
 				to_chat(usr, span_warning("Server is full."))
 				return
+
+		if(client && client.prefs.is_active_migrant())
+			to_chat(usr, span_boldwarning("You are in the migrant queue."))
+			return
 
 		AttemptLateSpawn(href_list["SelectedJob"])
 		return

@@ -628,6 +628,8 @@
 #include "code\datums\martial\wrestling.dm"
 #include "code\datums\materials\_material.dm"
 #include "code\datums\materials\basemats.dm"
+#include "code\datums\migrants\migrant_assignment.dm"
+#include "code\datums\migrants\migrant_job.dm"
 #include "code\datums\migrants\migrant_pref.dm"
 #include "code\datums\migrants\migrant_role.dm"
 #include "code\datums\migrants\migrant_wave.dm"

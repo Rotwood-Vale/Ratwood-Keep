@@ -70,7 +70,7 @@ SUBSYSTEM_DEF(role_class_handler)
 	We setup the class handler here, aka the menu
 	We will cache it per server session via an assc list with a ckey leading to the datum.
 */
-/datum/controller/subsystem/role_class_handler/proc/setup_class_handler(mob/living/carbon/human/H)
+/datum/controller/subsystem/role_class_handler/proc/setup_class_handler(mob/living/carbon/human/H, advclass_rolls_override = null)
 	// insure they somehow aren't closing the datum they got and opening a new one w rolls
 	var/datum/class_select_handler/GOT_IT = class_select_handlers[H.client.ckey]
 	if(GOT_IT)
@@ -82,12 +82,17 @@ SUBSYSTEM_DEF(role_class_handler)
 	var/datum/class_select_handler/XTRA_MEATY = new()
 	XTRA_MEATY.linked_client = H.client
 
-	var/datum/job/roguetown/RT_JOB = SSjob.GetJob(H.job)
-	if(RT_JOB.advclass_cat_rolls.len)
-		XTRA_MEATY.class_cat_alloc_attempts = RT_JOB.advclass_cat_rolls
+	// Hack for Migrants
+	if(advclass_rolls_override)
+		XTRA_MEATY.class_cat_alloc_attempts = advclass_rolls_override
+		XTRA_MEATY.PQ_boost_divider = 10
+	else
+		var/datum/job/roguetown/RT_JOB = SSjob.GetJob(H.job)
+		if(RT_JOB.advclass_cat_rolls.len)
+			XTRA_MEATY.class_cat_alloc_attempts = RT_JOB.advclass_cat_rolls
 
-	if(RT_JOB.PQ_boost_divider)
-		XTRA_MEATY.PQ_boost_divider = RT_JOB.PQ_boost_divider
+		if(RT_JOB.PQ_boost_divider)
+			XTRA_MEATY.PQ_boost_divider = RT_JOB.PQ_boost_divider
 
 	if(H.client.ckey in special_session_queue)
 		XTRA_MEATY.special_session_queue = list()
@@ -121,14 +126,14 @@ SUBSYSTEM_DEF(role_class_handler)
 	H.cure_blind("advsetup")
 
 	//If we get any plus factor at all, we run the datums boost proc on the human also.
-	if(plus_factor) 
+	if(plus_factor)
 		picked_class.boost_by_plus_power(plus_factor, H)
 
 
 	// In retrospect, If I don't just delete these Ill have to actually attempt to keep track of when a byond browser window is actually open lol
 	// soooo..... this will be the place where we take it out, as it means they finished class selection, and we can safely delete the handler.
 	related_handler.ForceCloseMenus() // force menus closed
-	
+
 	// Remove the key from the list and with it the value too
 	class_select_handlers.Remove(related_handler.linked_client.ckey)
 	// Call qdel on it
@@ -144,7 +149,7 @@ SUBSYSTEM_DEF(role_class_handler)
 		if((target_datum.total_slots_occupied >= target_datum.maximum_possible_slots)) // We just hit a cap, iterate all the class handlers and inform them.
 			for(var/CUCKS in class_select_handlers)
 				var/datum/class_select_handler/found_menu = class_select_handlers[CUCKS]
-				
+
 				if(target_datum in found_menu.rolled_classes) // We found the target datum in one of the classes they rolled aka in the list of options they got visible,
 					found_menu.rolled_class_is_full(target_datum) //  inform the datum of its error.
 

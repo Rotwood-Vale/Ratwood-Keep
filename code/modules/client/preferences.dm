@@ -132,7 +132,7 @@ GLOBAL_LIST_EMPTY(chosen_names)
 	var/list/exp = list()
 	var/list/menuoptions
 	
-	var/datum/migrant_pref/migrant = new /datum/migrant_pref()
+	var/datum/migrant_pref/migrant
 
 	var/action_buttons_screen_locs = list()
 
@@ -152,6 +152,7 @@ GLOBAL_LIST_EMPTY(chosen_names)
 
 /datum/preferences/New(client/C)
 	parent = C
+	migrant  = new /datum/migrant_pref(src)
 
 	for(var/custom_name_id in GLOB.preferences_custom_names)
 		custom_names[custom_name_id] = get_default_name(custom_name_id)
@@ -666,7 +667,12 @@ GLOBAL_LIST_EMPTY(chosen_names)
 			if(PLAYER_READY_TO_PLAY)
 				dat += "<a href='byond://?src=[REF(N)];ready=[PLAYER_NOT_READY]'>UNREADY</a> <b>READY</b>"
 	else
-		dat += "<a href='byond://?src=[REF(N)];late_join=1'>JOINLATE</a>"
+		if(!is_active_migrant())
+			dat += "<a href='byond://?src=[REF(N)];late_join=1'>JOINLATE</a>"
+		else
+			dat += "<a class='linkOff' href='byond://?src=[REF(N)];late_join=1'>JOINLATE</a>"
+		dat += " - <a href='?_src_=prefs;preference=migrants'>MIGRATION</a>"
+		
 	dat += "</td>"
 	dat += "<td width='33%' align='right'>"
 	dat += "<b>Be voice:</b> <a href='?_src_=prefs;preference=schizo_voice'>[(toggles & SCHIZO_VOICE) ? "Enabled":"Disabled"]</a><br>"
@@ -1904,6 +1910,10 @@ Slots: [job.spawn_positions]</span>
 										Good voices will be rewarded with PQ for answering meditations, while bad ones are punished at the discretion of jannies.</span>")
 					else
 						to_chat(user, span_warning("You are no longer a voice."))
+				
+				if("migrants")
+					migrant.show_ui()
+					return
 
 				if("save")
 					save_preferences()
@@ -2113,5 +2123,12 @@ Slots: [job.spawn_positions]</span>
 	if(find_index != 9)
 		if(!silent)
 			to_chat(usr, "<span class='warning'>The image must be hosted on one of the following sites: 'Gyazo, Lensdump, Imgbox, Catbox'</span>")
+		return FALSE
+	return TRUE
+
+/datum/preferences/proc/is_active_migrant()
+	if(!migrant)
+		return FALSE
+	if(!migrant.active)
 		return FALSE
 	return TRUE
