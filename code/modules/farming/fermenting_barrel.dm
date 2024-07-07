@@ -32,7 +32,7 @@
 		fruit.reagents.remove_reagent(/datum/reagent/consumable/nutriment, fruit.reagents.total_volume)
 		fruit.reagents.trans_to(src, fruit.reagents.total_volume)
 	if(fruit.distill_reagent)
-		var/unwateredamt = fruit.distill_amt += 3
+		var/unwateredamt = fruit.distill_amt + 3 //Vrell - fixing this shit so my code can compile and I can test things. This should just be +, not +=, since there is no reason to adjust anything on fruit if we're going to destroy it after.
 		reagents.add_reagent(fruit.distill_reagent, unwateredamt)
 	qdel(fruit)
 	playsound(src, "bubbles", 100, TRUE)

@@ -108,11 +108,11 @@
 		if(!target_groin)
 			to_chat(user, "<span class='warning'>[target] is not naked!</span>")
 			return
-		if(target.gender == MALE)
+		if(!target.hasVagina())
 			to_chat(user, "<span class='warning'>[target] has no vagina!</span>")
 			return
 		if(do_after(user, 2))
-			if(target.gender == FEMALE)
+			if(target.hasVagina())
 				if(prob(33))
 					if(user == target)
 						target.visible_message("<span class='love'>[target] masturbates with [src].</span>")
