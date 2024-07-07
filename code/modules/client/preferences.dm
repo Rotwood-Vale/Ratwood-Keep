@@ -131,6 +131,8 @@ GLOBAL_LIST_EMPTY(chosen_names)
 
 	var/list/exp = list()
 	var/list/menuoptions
+	
+	var/datum/migrant_pref/migrant = new /datum/migrant_pref()
 
 	var/action_buttons_screen_locs = list()
 
