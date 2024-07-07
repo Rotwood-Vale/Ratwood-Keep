@@ -260,9 +260,6 @@ GLOBAL_LIST_EMPTY(chosen_names)
 			dat += "</td>"
 
 			dat += "<td style='width:33%;text-align:right'>"
-			if(SSrole_class_handler.drifter_queue_enabled)
-				dat += "<style>#drifter_queue {color:aliceblue;font-weight: bold;} #drifter_queue:hover{color: #eac0b9;}</style>"
-				dat += "<a id='drifter_queue' href='?_src_=prefs;preference=drifters;task=show_drifter_queue'>Special Latejoin Queue</a>"
 			dat += "</td>"
 			dat += "</tr>"
 
@@ -1270,11 +1267,6 @@ Slots: [job.spawn_positions]</span>
 
 	else if(href_list["preference"] == "triumphs")
 		user.show_triumphs_list()
-	
-	else if(href_list["preference"] == "drifters")
-		switch(href_list["task"])
-			if("show_drifter_queue")
-				SSrole_class_handler.add_drifter_queue_viewer(user.client)
 
 	else if(href_list["preference"] == "playerquality")
 		check_pq_menu(user.ckey)
