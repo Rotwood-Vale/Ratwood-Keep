@@ -4924,7 +4924,7 @@
 /area/rogue/outdoors/town)
 "fTV" = (
 /obj/effect/landmark/travel_spawn_point,
-/turf/open/floor/rogue/dirt,
+/turf/open/floor/rogue/cobblerock,
 /area/rogue/outdoors/bog)
 "fUS" = (
 /obj/item/grown/log/tree,
@@ -7388,7 +7388,7 @@
 /area/rogue/outdoors/town)
 "iQM" = (
 /obj/effect/landmark/travel_tile_location,
-/turf/open/floor/rogue/dirt,
+/turf/open/floor/rogue/cobblerock,
 /area/rogue/under/cavewet/bogcaves)
 "iRe" = (
 /obj/machinery/light/rogue/wallfire/candle/r,
@@ -427409,7 +427409,7 @@ dVO
 dVO
 dVO
 dVO
-dVO
+pEm
 gxt
 gxt
 gxt
@@ -525320,7 +525320,7 @@ lOV
 lOV
 lOV
 lOV
-sYx
+lOV
 sYx
 sYx
 sYx
@@ -525722,7 +525722,7 @@ lOV
 lOV
 lOV
 lOV
-sYx
+lOV
 sYx
 sYx
 sYx
@@ -526121,11 +526121,11 @@ sYx
 sYx
 sYx
 sYx
+lOV
 sYx
-sYx
-sYx
-sYx
-sYx
+lOV
+lOV
+lOV
 sYx
 sYx
 sYx
@@ -526524,10 +526524,10 @@ sYx
 sYx
 sYx
 sYx
-sYx
-sYx
-sYx
-sYx
+lOV
+lOV
+lOV
+lOV
 sYx
 sYx
 sYx
@@ -526927,8 +526927,8 @@ sYx
 sYx
 sYx
 sYx
-sYx
-sYx
+lOV
+lOV
 sYx
 sYx
 sYx
@@ -527329,8 +527329,8 @@ sYx
 sYx
 sYx
 sYx
-sYx
-sYx
+lOV
+lOV
 sYx
 sYx
 sYx
@@ -527730,10 +527730,10 @@ sYx
 sYx
 sYx
 sYx
+lOV
+lOV
 sYx
-sYx
-sYx
-sYx
+lOV
 sYx
 sYx
 sYx
@@ -528133,8 +528133,8 @@ sYx
 sYx
 sYx
 sYx
-sYx
-sYx
+lOV
+lOV
 sYx
 sYx
 sYx
@@ -528534,9 +528534,9 @@ sYx
 sYx
 sYx
 sYx
-sYx
-sYx
-sYx
+lOV
+lOV
+lOV
 sYx
 sYx
 sYx
@@ -528936,9 +528936,9 @@ sYx
 sYx
 sYx
 sYx
-sYx
-sYx
-sYx
+lOV
+lOV
+lOV
 sYx
 sYx
 sYx
@@ -529338,10 +529338,10 @@ sYx
 sYx
 sYx
 sYx
-sYx
-sYx
-sYx
-sYx
+lOV
+lOV
+lOV
+lOV
 sYx
 sYx
 sYx
@@ -529740,9 +529740,9 @@ sYx
 sYx
 sYx
 sYx
-sYx
-sYx
-sYx
+lOV
+lOV
+lOV
 sYx
 sYx
 sYx
@@ -530141,10 +530141,10 @@ whb
 whb
 sYx
 sYx
-sYx
-sYx
+uyE
+lOV
 fTV
-sYx
+lOV
 sYx
 sYx
 sYx
