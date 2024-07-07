@@ -1702,6 +1702,7 @@ Slots: [job.spawn_positions]</span>
 						ResetJobs()
 						to_chat(user, "<font color='red'>Classes reset.</font>")
 						random_character(gender)
+					genderize_customizer_entries()
 				if("domhand")
 					if(domhand == 1)
 						domhand = 2
