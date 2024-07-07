@@ -41,6 +41,14 @@
 /datum/sprite_accessory/wings/bat
 	name = "Bat"
 	icon_state = "bat"
+	color_keys = 2
+	color_key_names = list("Outer", "Inner")
+
+/datum/sprite_accessory/wings/dragonfold
+	name = "Dragon Wings Folded"
+	icon_state = "dragonfold"
+	color_keys = 2
+	color_key_names = list("Outer", "Inner")
 
 /datum/sprite_accessory/wings/moth
 	abstract_type = /datum/sprite_accessory/wings/moth
@@ -232,7 +240,7 @@
 	icon_state = "skele"
 
 /datum/sprite_accessory/wings/huge/robotic
-	name = "Robotic"
+	name = "Steampunk"
 	icon_state = "robotic"
 
 /datum/sprite_accessory/wings/large
