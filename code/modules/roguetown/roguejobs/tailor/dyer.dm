@@ -7,16 +7,12 @@
 	anchored = TRUE
 	var/atom/movable/inserted
 	var/activecolor = "#FFFFFF"
-	var/list/color_matrix_last
-	var/matrix_mode = FALSE
 	/// Allow holder'd mobs
 	var/allow_mobs = TRUE
-	/// Minimum lightness for normal mode
-	var/minimum_normal_lightness = 25
-	/// Minimum lightness for matrix mode, tested using 4 test colors of full red, green, blue, white.
-	var/minimum_matrix_lightness = 50
-	/// Minimum matrix tests that must pass for something to be considered a valid color (see above)
-	var/minimum_matrix_tests = 2
+	/// Minimum lightness for normal mode out of 255
+	var/minimum_normal_lightness = 50
+	/// Max saturation for normal mode out of 255
+	var/maximum_normal_saturation = 256
 	var/list/allowed_types = list(
 			/obj/item/clothing/suit/roguetown/shirt/robe,
 			/obj/item/clothing/suit/roguetown/shirt/dress,
@@ -35,15 +31,6 @@
 			/obj/item/clothing/shoes/roguetown/simpleshoes,
 			/obj/item/clothing/suit/roguetown/armor/gambeson
 			)
-
-/obj/machinery/gear_painter/Initialize(mapload)
-	. = ..()
-	color_matrix_last = list(
-		1, 0, 0,
-		0, 1, 0,
-		0, 0, 1,
-		0, 0, 0
-	)
 
 /obj/machinery/gear_painter/Destroy()
 	inserted.forceMove(drop_location())
@@ -101,37 +88,9 @@
 		dat += "No item inserted."
 	else
 		dat += "Item inserted: [inserted]<HR>"
-		dat += "<a href='?src=[REF(src)];toggle_matrix_mode=1'>Matrix mode: [matrix_mode? "On" : "Off"]</a>"
-		if(!matrix_mode)
-			dat += "<A href='?src=\ref[src];select=1'>Select new color.</A><BR>"
-			dat += "Color: <font color='[activecolor]'>&#9899;</font>"
-			dat += "<A href='?src=\ref[src];paint=1'>Apply new color.</A><BR><BR>"
-		else
-			// POGGERS
-#define MATRIX_FIELD(field, default) "<b><label for='[##field]'>[##field]</label></b> <input type='number' step='0.001' name='[field]' value='[default]'>"
-			dat += "<br><form name='matrix paint' action='?src=[REF(src)]'>"
-			dat += "<input type='hidden' name='src' value='[REF(src)]'>"
-			dat += "<input type='hidden' name='matrix_paint' value='1'"
-			dat += "<br><br>"
-			dat += MATRIX_FIELD("rr", color_matrix_last[1])
-			dat += MATRIX_FIELD("rg", color_matrix_last[2])
-			dat += MATRIX_FIELD("rb", color_matrix_last[3])
-			dat += "<br><br>"
-			dat += MATRIX_FIELD("gr", color_matrix_last[4])
-			dat += MATRIX_FIELD("gg", color_matrix_last[5])
-			dat += MATRIX_FIELD("gb", color_matrix_last[6])
-			dat += "<br><br>"
-			dat += MATRIX_FIELD("br", color_matrix_last[7])
-			dat += MATRIX_FIELD("bg", color_matrix_last[8])
-			dat += MATRIX_FIELD("bb", color_matrix_last[9])
-			dat += "<br><br>"
-			dat += MATRIX_FIELD("cr", color_matrix_last[10])
-			dat += MATRIX_FIELD("cg", color_matrix_last[11])
-			dat += MATRIX_FIELD("cb", color_matrix_last[12])
-			dat += "<br><br>"
-			dat += "<input type='submit' value='Matrix Paint'>"
-			dat += "</form><br>"
-#undef MATRIX_FIELD
+		dat += "<A href='?src=\ref[src];select=1'>Select new color.</A><BR>"
+		dat += "Color: <font color='[activecolor]'>&#9899;</font>"
+		dat += "<A href='?src=\ref[src];paint=1'>Apply new color.</A><BR><BR>"
 		dat += "<A href='?src=\ref[src];clear=1'>Remove paintjob.</A><BR><BR>"
 		dat += "<A href='?src=\ref[src];eject=1'>Eject item.</A><BR><BR>"
 
@@ -164,35 +123,6 @@
 		playsound(src, "bubbles", 50, 1)
 		updateUsrDialog()
 
-	if(href_list["toggle_matrix_mode"])
-		matrix_mode = !matrix_mode
-		updateUsrDialog()
-
-	if(href_list["matrix_paint"])
-		if(!inserted)
-			return
-		// assemble matrix
-		var/list/cm = rgb_construct_color_matrix(
-			text2num(href_list["rr"]),
-			text2num(href_list["rg"]),
-			text2num(href_list["rb"]),
-			text2num(href_list["gr"]),
-			text2num(href_list["gg"]),
-			text2num(href_list["gb"]),
-			text2num(href_list["br"]),
-			text2num(href_list["bg"]),
-			text2num(href_list["bb"]),
-			text2num(href_list["cr"]),
-			text2num(href_list["cg"]),
-			text2num(href_list["cb"])
-		)
-		color_matrix_last = cm.Copy()
-		if(!check_valid_color(cm, usr))
-			return
-		inserted.add_atom_colour(cm, FIXED_COLOUR_PRIORITY)
-		playsound(src, "bubbles", 50, 1)
-		updateUsrDialog()
-
 	if(href_list["clear"])
 		if(!inserted)
 			return
@@ -213,18 +143,7 @@
 		if(HSV[3] < minimum_normal_lightness)
 			to_chat(user, "<span class='warning'>[cm] is far too dark (min lightness [minimum_normal_lightness]!</span>")
 			return FALSE
-		return TRUE
-	else	// matrix
-		// We test using full red, green, blue, and white
-		// A predefined number of them must pass to be considered valid
-		var/passed = 0
-#define COLORTEST(thestring, thematrix) passed += (ReadHSV(RGBtoHSV(RGBMatrixTransform(thestring, thematrix)))[3] >= minimum_matrix_lightness)
-		COLORTEST("FF0000", cm)
-		COLORTEST("00FF00", cm)
-		COLORTEST("0000FF", cm)
-		COLORTEST("FFFFFF", cm)
-#undef COLORTEST
-		if(passed < minimum_matrix_tests)
-			to_chat(user, "<span class='warning'>[english_list(color)] is not allowed (pased [passed] out of 4, minimum [minimum_matrix_tests], minimum lightness [minimum_matrix_lightness]).</span>")
+		if(HSV[2] > maximum_normal_saturation)
+			to_chat(user, "<span class='warning'>[cm] is far too gaudy (max saturation [maximum_normal_saturation]!</span>")
 			return FALSE
 		return TRUE
