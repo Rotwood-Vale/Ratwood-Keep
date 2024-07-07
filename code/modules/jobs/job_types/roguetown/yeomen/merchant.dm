@@ -61,7 +61,7 @@
 		shoes = /obj/item/clothing/shoes/roguetown/gladiator
 		beltr = /obj/item/storage/belt/rogue/pouch/coins/rich
 		belt = /obj/item/storage/belt/rogue/leather/rope
-		beltl = /obj/item/roguekey/merchant
+		beltl = /obj/item/keyring/merchant
 		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/sailor
 		neck = /obj/item/clothing/neck/roguetown/horus
 		armor = /obj/item/clothing/suit/roguetown/shirt/robe/merchant
