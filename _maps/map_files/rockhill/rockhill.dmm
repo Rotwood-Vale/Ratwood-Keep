@@ -918,11 +918,8 @@
 /turf/open/floor/rogue/hexstone,
 /area/rogue/indoors/town/manor)
 "aRA" = (
-/mob/living/simple_animal/hostile/retaliate/rogue/wolf{
-	del_on_deaggro = 0;
-	name = "Aruzhan"
-	},
-/turf/open/floor/rogue/blocks,
+/obj/structure/chair/stool/rogue,
+/turf/open/floor/rogue/cobble,
 /area/rogue/under/town/basement)
 "aRU" = (
 /obj/structure/table/wood{
@@ -1444,11 +1441,7 @@
 /obj/structure/floordoor/gatehatch/inner{
 	redstone_id = "gatelava"
 	},
-/obj/structure/kybraxor{
-	pixel_x = -32;
-	pixel_y = -32
-	},
-/turf/open/transparent/openspace,
+/turf/open/floor/rogue/cobble,
 /area/rogue/indoors/town/manor)
 "bzD" = (
 /turf/open/floor/rogue/tile/masonic{
@@ -2309,6 +2302,10 @@
 /obj/item/reagent_containers/food/snacks/smallrat,
 /turf/open/floor/rogue/cobble,
 /area/rogue/outdoors/town)
+"cFQ" = (
+/obj/machinery/light/rogue/firebowl/stump,
+/turf/open/floor/rogue/cobble,
+/area/rogue/under/town/basement)
 "cFR" = (
 /obj/item/natural/rock,
 /turf/open/floor/rogue/naturalstone,
@@ -2832,6 +2829,10 @@
 	icon_state = "weird1"
 	},
 /area/rogue/indoors/town)
+"dkI" = (
+/obj/structure/fermenting_barrel,
+/turf/open/floor/rogue/cobble,
+/area/rogue/under/town/basement)
 "dkS" = (
 /obj/structure/closet/crate/roguecloset/crafted,
 /obj/item/roguecoin/gold/pile,
@@ -3382,10 +3383,10 @@
 /turf/open/floor/rogue/twig,
 /area/rogue/indoors)
 "dYd" = (
-/obj/structure/floordoor{
-	redstone_id = "thronegrille"
+/obj/structure/floordoor/gatehatch/outer{
+	redstone_id = "gatelava"
 	},
-/turf/open/transparent/openspace,
+/turf/open/floor/rogue/cobble,
 /area/rogue/indoors/town/manor)
 "dYj" = (
 /obj/structure/chair/bench{
@@ -4284,12 +4285,6 @@
 /obj/item/rope/chain,
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/town/garrison)
-"eZm" = (
-/obj/structure/lever{
-	redstone_id = "thronegrille"
-	},
-/turf/open/floor/rogue/carpet/lord/left,
-/area/rogue/indoors/town/manor)
 "eZy" = (
 /obj/structure/rack/rogue,
 /obj/item/rogueweapon/huntingknife/idagger/steel,
@@ -4642,6 +4637,12 @@
 /obj/item/ingot/iron,
 /turf/open/floor/rogue/blocks,
 /area/rogue/indoors/town/dwarfin)
+"fye" = (
+/obj/structure/lever{
+	redstone_id = "thronegrille"
+	},
+/turf/open/floor/rogue/carpet/lord/left,
+/area/rogue/indoors/town/manor)
 "fyi" = (
 /obj/structure/fluff/railing/border{
 	dir = 4
@@ -5057,9 +5058,6 @@
 "fZJ" = (
 /turf/open/transparent/openspace,
 /area/rogue/outdoors/town/roofs)
-"fZO" = (
-/turf/open/lava/acid,
-/area/rogue/under/town/sewer)
 "gas" = (
 /obj/structure/mineral_door/wood{
 	icon_state = "wcv";
@@ -8971,7 +8969,7 @@
 /obj/structure/floordoor/gatehatch/outer{
 	redstone_id = "gatelava"
 	},
-/turf/open/transparent/openspace,
+/turf/open/floor/rogue/blocks,
 /area/rogue/indoors/town/manor)
 "lfz" = (
 /obj/structure/fluff/railing/border{
@@ -9306,6 +9304,10 @@
 	},
 /turf/open/floor/rogue/blocks,
 /area/rogue/outdoors/town)
+"lAy" = (
+/obj/structure/fermenting_barrel,
+/turf/open/floor/rogue/blocks,
+/area/rogue/under/town/basement)
 "lBP" = (
 /obj/structure/roguemachine/atm,
 /turf/open/floor/rogue/wood,
@@ -9781,9 +9783,11 @@
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/basement)
 "mkk" = (
-/mob/living/simple_animal/hostile/retaliate/rogue/wolf{
-	del_on_deaggro = 0;
-	name = "Beatrix"
+/obj/structure/table/wood{
+	icon_state = "tablewood1"
+	},
+/obj/structure/fluff/walldeco/rpainting/forest{
+	pixel_y = 18
 	},
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/basement)
@@ -9906,10 +9910,7 @@
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors)
 "msE" = (
-/mob/living/simple_animal/hostile/retaliate/rogue/wolf{
-	del_on_deaggro = 0;
-	name = "Rowena"
-	},
+/obj/structure/bed/rogue/shit,
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/basement)
 "mtF" = (
@@ -15015,6 +15016,12 @@
 	},
 /turf/open/floor/carpet/royalblack,
 /area/rogue/indoors/town/manor)
+"tjo" = (
+/obj/structure/floordoor{
+	redstone_id = "thronegrille"
+	},
+/turf/open/transparent/openspace,
+/area/rogue/indoors/town/manor)
 "tjU" = (
 /obj/structure/rack/rogue,
 /obj/item/rogueweapon/flail/sflail,
@@ -16827,7 +16834,7 @@
 /obj/structure/floordoor/gatehatch/inner{
 	redstone_id = "gatelava"
 	},
-/turf/open/transparent/openspace,
+/turf/open/floor/rogue/blocks,
 /area/rogue/indoors/town/manor)
 "vBH" = (
 /obj/item/reagent_containers/food/snacks/crow{
@@ -17046,12 +17053,6 @@
 /obj/structure/closet/crate/chest,
 /turf/open/floor/rogue/cobble,
 /area/rogue/indoors)
-"vRn" = (
-/obj/structure/bars{
-	alpha = 150
-	},
-/turf/open/floor/rogue/dirt,
-/area/rogue/under/town/sewer)
 "vRu" = (
 /turf/closed/mineral/rogue,
 /area/rogue/under/cave)
@@ -18862,6 +18863,12 @@
 	dir = 8
 	},
 /area/rogue/indoors/town/manor)
+"yes" = (
+/obj/structure/fluff/walldeco/chains{
+	pixel_x = 23
+	},
+/turf/open/floor/rogue/cobble,
+/area/rogue/under/town/basement)
 "yeM" = (
 /obj/machinery/light/rogue/wallfire/candle/blue,
 /turf/open/floor/rogue/tile{
@@ -184997,7 +185004,7 @@ vRu
 txa
 iTw
 txa
-iTw
+cFQ
 cBf
 iTw
 iTw
@@ -185026,10 +185033,10 @@ vRu
 vRu
 vRu
 vRu
-sYw
-sYw
-sYw
-sYw
+vRu
+vRu
+vRu
+vRu
 vRu
 rSC
 rSC
@@ -185397,7 +185404,7 @@ txa
 txa
 txa
 txa
-iTw
+syh
 cBf
 iTw
 iTw
@@ -185428,11 +185435,11 @@ vRu
 vRu
 vRu
 vRu
-sYw
-vRn
-vRn
-sYw
-sYw
+vRu
+vRu
+vRu
+vRu
+vRu
 rSC
 rSC
 rSC
@@ -185830,11 +185837,11 @@ vRu
 vRu
 vRu
 vRu
-sYw
-fZO
-fZO
-fZO
-sYw
+vRu
+vRu
+vRu
+vRu
+vRu
 rSC
 rSC
 rSC
@@ -186201,9 +186208,9 @@ pUz
 iTw
 egU
 jvC
-iTw
-cBf
 aRA
+cBf
+cBf
 iTw
 iTw
 ida
@@ -186232,11 +186239,11 @@ vRu
 vRu
 vRu
 vRu
-sYw
-fZO
-fZO
-fZO
-sYw
+vRu
+vRu
+vRu
+vRu
+vRu
 rSC
 rSC
 rSC
@@ -186603,11 +186610,11 @@ dfS
 iTw
 jMA
 txa
+mkk
 iTw
 iTw
 iTw
-iTw
-cBf
+lAy
 txa
 cBf
 iTw
@@ -186634,11 +186641,11 @@ vRu
 vRu
 vRu
 vRu
-sYw
-fZO
-fZO
-fZO
-sYw
+vRu
+vRu
+vRu
+vRu
+vRu
 rSC
 rSC
 rSC
@@ -187005,11 +187012,11 @@ sKU
 iTw
 nZt
 txa
-iTw
+msE
 iTw
 cBf
 iTw
-iTw
+dkI
 txa
 iTw
 iTw
@@ -187036,11 +187043,11 @@ vRu
 vRu
 vRu
 vRu
-sYw
-fZO
-fZO
-fZO
-sYw
+vRu
+vRu
+vRu
+vRu
+vRu
 rSC
 rSC
 rSC
@@ -187407,7 +187414,7 @@ tHU
 iTw
 mdI
 txa
-iTw
+msE
 cBf
 iTw
 cBf
@@ -187438,11 +187445,11 @@ vRu
 vRu
 vRu
 vRu
-sYw
-fZO
-fZO
-fZO
-sYw
+vRu
+vRu
+vRu
+vRu
+vRu
 rSC
 rSC
 rSC
@@ -187809,11 +187816,11 @@ qlD
 iTw
 wZJ
 jvC
-iTw
+msE
 cBf
 iTw
 iTw
-msE
+iTw
 ida
 iTw
 iTw
@@ -187840,11 +187847,11 @@ vRu
 vRu
 vRu
 vRu
-sYw
-vRn
-vRn
-sYw
-sYw
+vRu
+vRu
+vRu
+vRu
+vRu
 rSC
 rSC
 rSC
@@ -188211,8 +188218,8 @@ aEN
 iTw
 tjU
 txa
+dkI
 iTw
-mkk
 cBf
 iTw
 iTw
@@ -188242,10 +188249,10 @@ vRu
 vRu
 vRu
 vRu
-sYw
-sYw
-sYw
-sYw
+vRu
+vRu
+vRu
+vRu
 vRu
 rSC
 rSC
@@ -188613,9 +188620,9 @@ nda
 iTw
 mMO
 txa
+dkI
 iTw
-iTw
-iTw
+yes
 iTw
 cBf
 txa
@@ -288710,7 +288717,7 @@ hcW
 hcW
 ltM
 sHm
-eZm
+fye
 ohU
 qsZ
 ohU
@@ -289115,7 +289122,7 @@ sHm
 kQW
 wxB
 eTM
-dYd
+tjo
 sqd
 miX
 wxB
@@ -289549,8 +289556,8 @@ wbg
 wbg
 xXq
 leV
-vAF
-leV
+byB
+dYd
 xXq
 czO
 czO

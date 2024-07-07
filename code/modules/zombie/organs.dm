@@ -9,8 +9,8 @@
 	var/living_transformation_time = 30
 	var/converts_living = FALSE
 
-	var/revive_time_min = 900
-	var/revive_time_max = 1400
+	var/revive_time_min = 450
+	var/revive_time_max = 700
 	var/timer_id
 
 /obj/item/organ/zombie_infection/Initialize()
