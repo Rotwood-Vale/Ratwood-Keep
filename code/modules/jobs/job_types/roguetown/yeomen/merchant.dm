@@ -38,32 +38,25 @@
 		H.mind.adjust_skillrank(/datum/skill/craft/cooking, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/riding, 3, TRUE)
 	ADD_TRAIT(H, TRAIT_SEEPRICES, type)
+	//50% chance to be raceswapped to Giza because slop lore
+	if(ishumannorthern(H) && prob(50))
+		H.skin_tone = SKIN_COLOR_GIZA
+		H.update_body()
+	head = /obj/item/clothing/head/roguetown/chaperon
+	neck = /obj/item/clothing/neck/roguetown/horus
+	armor = /obj/item/clothing/suit/roguetown/shirt/robe/merchant
+	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/sailor
+	pants = /obj/item/clothing/under/roguetown/tights/sailor
+	belt = /obj/item/storage/belt/rogue/leather/rope
+	beltl = /obj/item/keyring/merchant
+	beltr = /obj/item/storage/belt/rogue/pouch/coins/rich
+	id = /obj/item/clothing/ring/gold
 	if(H.gender == MALE)
 		shoes = /obj/item/clothing/shoes/roguetown/boots/leather
-		beltr = /obj/item/storage/belt/rogue/pouch/coins/rich
-		belt = /obj/item/storage/belt/rogue/leather/rope
-		beltl = /obj/item/keyring/merchant
-		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/sailor
-		pants = /obj/item/clothing/under/roguetown/tights/sailor
-		neck = /obj/item/clothing/neck/roguetown/horus
-		armor = /obj/item/clothing/suit/roguetown/shirt/robe/merchant
-		head = /obj/item/clothing/head/roguetown/chaperon
-		id = /obj/item/clothing/ring/gold
-		H.change_stat("intelligence", 2)
-		H.change_stat("perception", 3)
-		H.change_stat("strength", -1)
 		H.dna.species.soundpack_m = new /datum/voicepack/male/wizard()
 	else
 		shoes = /obj/item/clothing/shoes/roguetown/gladiator
-		beltr = /obj/item/storage/belt/rogue/pouch/coins/rich
-		belt = /obj/item/storage/belt/rogue/leather/rope
-		beltl = /obj/item/keyring/merchant
-		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/sailor
-		neck = /obj/item/clothing/neck/roguetown/horus
-		armor = /obj/item/clothing/suit/roguetown/shirt/robe/merchant
-		pants = /obj/item/clothing/under/roguetown/tights/sailor
-		head = /obj/item/clothing/head/roguetown/chaperon
-		id = /obj/item/clothing/ring/gold
-		H.change_stat("intelligence", 2)
-		H.change_stat("perception", 3)
-		H.change_stat("strength", -1)
+	H.change_stat("intelligence", 2)
+	H.change_stat("perception", 3)
+	H.change_stat("strength", -1)
+
