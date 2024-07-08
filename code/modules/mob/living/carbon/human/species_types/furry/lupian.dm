@@ -18,7 +18,7 @@
 		LIPS,
 		HAIR,
 	)
-	inherent_traits = list(TRAIT_NOMOBSWAP, TRAIT_NASTY_EATER)
+	inherent_traits = list(TRAIT_NOMOBSWAP, TRAIT_WILD_EATER)
 	inherent_biotypes = MOB_ORGANIC|MOB_HUMANOID
 	attack_verb = "slash"
 	liked_food = GROSS | MEAT | FRIED
