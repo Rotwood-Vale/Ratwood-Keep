@@ -20,7 +20,10 @@
 	if(role_type in role_preferences)
 		role_preferences -= role_type
 	else
-		role_preferences += role_type
+		if(SSmigrants.can_be_role(prefs.parent, role_type))
+			role_preferences += role_type
+		else
+			to_chat(prefs.parent span_warning("You can't be this role. (Wrong species, gender or age)"))
 
 /datum/migrant_pref/proc/post_spawn()
 	set_active(FALSE)

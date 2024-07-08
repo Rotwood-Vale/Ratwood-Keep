@@ -23,17 +23,81 @@
 	/// How many times this wave successfuly spawned
 	var/spawned_amount = 0
 
-/datum/migrant_wave/test
-	name = "Testing"
-	roles = list(
-		/datum/migrant_role/test = 1,
-	)
-	greet_text = "This is a test, you are in a simulation"
-	weight = 0
-
-/datum/migrant_wave/pilgrim
+/datum/migrant_wave/pilgrim_test
 	name = "Pilgrimage"
+	weight = 0
 	roles = list(
 		/datum/migrant_role/pilgrim = 1,
 	)
 
+/datum/migrant_wave/adventurer_test
+	name = "Adventure Party"
+	weight = 0
+	roles = list(
+		/datum/migrant_role/adventurer = 1,
+	)
+
+/datum/migrant_wave/bandit_test
+	name = "Bandits"
+	weight = 0
+	roles = list(
+		/datum/migrant_role/bandit = 1,
+	)
+
+/datum/migrant_wave/pilgrim_small
+	name = "Small Pilgrimage"
+	max_active = 3
+	roles = list(
+		/datum/migrant_role/pilgrim = 3,
+	)
+
+/datum/migrant_wave/adventurer_small
+	name = "Meek Adventure Party"
+	max_active = 3
+	roles = list(
+		/datum/migrant_role/adventurer = 3,
+	)
+
+/datum/migrant_wave/bandit_small
+	name = "Bandits"
+	max_active = 3
+	weight = 20
+	roles = list(
+		/datum/migrant_role/bandit = 3,
+	)
+
+/datum/migrant_wave/pilgrim
+	name = "Pilgrimage"
+	min_active = 4
+	roles = list(
+		/datum/migrant_role/pilgrim = 6,
+	)
+
+/datum/migrant_wave/adventurer
+	name = "Adventure Party"
+	min_active = 4
+	roles = list(
+		/datum/migrant_role/adventurer = 6,
+	)
+
+/datum/migrant_wave/bandit
+	name = "Bandit Raid"
+	min_active = 4
+	weight = 20
+	roles = list(
+		/datum/migrant_role/bandit = 6,
+	)
+
+/datum/migrant_wave/heartfelt
+	name = "The Lord's Visit"
+	max_spawns = 1
+	min_active = 4
+	weight = 50
+	roles = list(
+		/datum/migrant_role/heartfelt_lord = 1,
+		/datum/migrant_role/heartfelt_lady = 1,
+		/datum/migrant_role/heartfelt_hand = 1,
+		/datum/migrant_role/heartfelt_knight = 1,
+		/datum/migrant_role/heartfelt_magos = 1,
+		/datum/migrant_role/heartfelt_prior = 1,
+	)

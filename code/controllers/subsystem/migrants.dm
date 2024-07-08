@@ -8,6 +8,10 @@ SUBSYSTEM_DEF(migrants)
 	var/wave_timer = 0
 	var/failed_times = 0
 
+	var/time_between_waves = 3 MINUTES
+	var/retry_time = 20 SECONDS
+	var/wave_wait_time = 40 SECONDS
+
 
 /datum/controller/subsystem/migrants/Initialize()
 	return ..()
@@ -40,16 +44,16 @@ SUBSYSTEM_DEF(migrants)
 	// Allows the wave to try and roll once more if it fails for some reason
 	if(!success && failed_times < 1)
 		failed_times++
-		wave_timer = 20 SECONDS
+		wave_timer = retry_time
 		return
 	// Unset some values, increment wave number if success
 	if(success)
 		wave_number++
 	set_current_wave(null, 0)
 	if(success)
-		time_until_next_wave = 1 MINUTES // TODO MAKE THIS A NORMAL NUMBER
+		time_until_next_wave = time_between_waves
 	else
-		time_until_next_wave = 20 SECONDS
+		time_until_next_wave = retry_time
 
 /datum/controller/subsystem/migrants/proc/try_spawn_wave()
 	var/datum/migrant_wave/wave = MIGRANT_WAVE(current_wave)
@@ -257,9 +261,9 @@ SUBSYSTEM_DEF(migrants)
 	var/wave_type = roll_wave()
 	if(wave_type)
 		log_game("Migrants: Rolled wave: [wave_type]")
-		set_current_wave(wave_type, (1 MINUTES))
+		set_current_wave(wave_type, wave_wait_time)
 	else
-		time_until_next_wave = 1 MINUTES
+		time_until_next_wave = retry_time
 
 /datum/controller/subsystem/migrants/proc/roll_wave()
 	var/list/available_weighted_waves = list()
@@ -377,3 +381,8 @@ SUBSYSTEM_DEF(migrants)
 	if(GLOB.adventurer_hugbox_duration)
 		///FOR SOME RETARDED FUCKING REASON THIS REFUSED TO WORK WITHOUT A FUCKING TIMER IT JUST FUCKED SHIT UP
 		addtimer(CALLBACK(character, TYPE_PROC_REF(/mob/living/carbon/human, adv_hugboxing_start)), 1)
+
+/proc/grant_lit_torch(mob/living/carbon/human/character)
+	var/obj/item/flashlight/flare/torch/torch = new()
+	torch.spark_act()
+	character.put_in_hands(torch, forced = TRUE)
