@@ -4,12 +4,11 @@ SUBSYSTEM_DEF(migrants)
 	runlevels = RUNLEVEL_GAME
 	var/wave_number = 1
 	var/current_wave = null
-	var/time_until_next_wave = 3 MINUTES
+	var/time_until_next_wave = 2 MINUTES
 	var/wave_timer = 0
-	var/failed_times = 0
 
 	var/time_between_waves = 3 MINUTES
-	var/retry_time = 20 SECONDS
+	var/time_between_fail_wave = 90 SECONDS
 	var/wave_wait_time = 40 SECONDS
 
 
@@ -23,7 +22,6 @@ SUBSYSTEM_DEF(migrants)
 /datum/controller/subsystem/migrants/proc/set_current_wave(wave_type, time)
 	current_wave = wave_type
 	wave_timer = time
-	failed_times = 0
 
 /datum/controller/subsystem/migrants/proc/process_migrants(dt)
 	if(current_wave)
@@ -41,11 +39,6 @@ SUBSYSTEM_DEF(migrants)
 		log_game("Migrants: Successfully spawned wave: [current_wave]")
 	else
 		log_game("Migrants: FAILED to spawn wave: [current_wave]")
-	// Allows the wave to try and roll once more if it fails for some reason
-	if(!success && failed_times < 1)
-		failed_times++
-		wave_timer = retry_time
-		return
 	// Unset some values, increment wave number if success
 	if(success)
 		wave_number++
@@ -53,7 +46,7 @@ SUBSYSTEM_DEF(migrants)
 	if(success)
 		time_until_next_wave = time_between_waves
 	else
-		time_until_next_wave = retry_time
+		time_until_next_wave = time_between_fail_wave
 
 /datum/controller/subsystem/migrants/proc/try_spawn_wave()
 	var/datum/migrant_wave/wave = MIGRANT_WAVE(current_wave)
@@ -265,8 +258,8 @@ SUBSYSTEM_DEF(migrants)
 	if(wave_type)
 		log_game("Migrants: Rolled wave: [wave_type]")
 		set_current_wave(wave_type, wave_wait_time)
-	else
-		time_until_next_wave = retry_time
+	
+	time_until_next_wave = time_between_fail_wave
 
 /datum/controller/subsystem/migrants/proc/roll_wave()
 	var/list/available_weighted_waves = list()
@@ -293,7 +286,7 @@ SUBSYSTEM_DEF(migrants)
 	return pickweight(available_weighted_waves)
 
 /datum/controller/subsystem/migrants/proc/update_ui()
-	for(var/client/client as anything in get_active_migrants())
+	for(var/client/client as anything in get_all_migrants())
 		client.prefs.migrant.show_ui()
 
 /datum/controller/subsystem/migrants/proc/get_active_migrant_amount()

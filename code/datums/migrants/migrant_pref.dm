@@ -20,6 +20,9 @@
 	if(role_type in role_preferences)
 		role_preferences -= role_type
 	else
+		// Currently only allow 1 role preffed up for clarity
+		role_preferences.Cut()
+
 		if(SSmigrants.can_be_role(prefs.parent, role_type))
 			role_preferences += role_type
 		else
@@ -56,9 +59,10 @@
 
 		dat += "<br><center>They will arrive in [(SSmigrants.wave_timer / (1 SECONDS))] seconds...</center>"
 
-	var/datum/browser/popup = new(client.mob, "migration", "<center>Find a purpose</center>", 330, 380)
+	var/datum/browser/popup = new(client.mob, "migration", "<center>Find a purpose</center>", 330, 410)
+	popup.set_window_options("can_close=0")
 	popup.set_content(dat.Join())
-	popup.open()
+	popup.open(FALSE)
 
 /datum/migrant_pref/Topic(href, href_list)
 	var/client/client = prefs.parent
