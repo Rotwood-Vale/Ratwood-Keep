@@ -32,7 +32,7 @@
 
 	user.sexcon.perform_sex_action(user, 2, 0, TRUE)
 	if(user.sexcon.check_active_ejaculation())
-		user.visible_message(span_love("[target] cums into [target]'s butt!"))
+		user.visible_message(span_love("[user] cums into [target]'s butt!"))
 		user.sexcon.cum_into()
 		user.virginity = FALSE
 
