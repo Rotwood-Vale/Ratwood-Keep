@@ -62,9 +62,9 @@ a.white:hover
 
 .linkOff, a.linkOff:link, a.linkOff:visited, a.linkOff:active, a.linkOff:hover
 {
-	color: #000000;
-	background: #999999;
-	border-color: #7b5353;
+	color: #5e5959;
+	background: #000000;
+	border-color: #000000;
 }
 
 a.icon, .linkOn.icon, .linkOff.icon

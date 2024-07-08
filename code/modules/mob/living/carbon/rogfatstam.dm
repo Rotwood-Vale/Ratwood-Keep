@@ -77,8 +77,6 @@
 		stop_attack()
 		changeNext_move(CLICK_CD_EXHAUSTED)
 		flash_fullscreen("blackflash")
-		if(sexcon)
-			sexcon.cancel_our_actions()
 		if(rogstam <= 0)
 			addtimer(CALLBACK(src, PROC_REF(Knockdown), 30), 10)
 		addtimer(CALLBACK(src, PROC_REF(Immobilize), 30), 10)
