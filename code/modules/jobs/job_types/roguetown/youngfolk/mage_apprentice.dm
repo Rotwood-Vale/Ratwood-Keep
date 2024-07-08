@@ -42,9 +42,9 @@
 		shoes = /obj/item/clothing/shoes/roguetown/sandals
 		armor = /obj/item/clothing/suit/roguetown/armor/workervest
 		backr = /obj/item/storage/backpack/rogue/satchel
+	H.change_stat("intelligence", 2)
+	H.change_stat("speed", -1)
 	if(prob(50)
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/projectile/lightningbolt)
 	else
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/projectile/fireball)
-	H.change_stat("intelligence", 2)
-	H.change_stat("speed", -1)
