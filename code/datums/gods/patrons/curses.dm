@@ -49,17 +49,25 @@
 	if(!is_cursed(C))
 		return FALSE
 	
-	curses -= C
-	C.on_loss(src)
-	return TRUE
+	for(var/datum/curse/curse in curses)
+		if(curse.name == C.name)
+			curse.on_loss(src)
+			curses -= curse
+			return TRUE
+			break
+
+	return FALSE
 
 /mob/living/carbon/human/proc/is_cursed(datum/curse/C)
 	if(!src)
 		return FALSE
 	if(!C)
 		return FALSE
-	if(C in curses)
-		return TRUE
+	if(!length(curses))
+		return FALSE
+	if(!C in curses)
+		return FALSE
+	return TRUE
 
 //////////////////////
 /// SPECIAL CURSES ///
@@ -81,7 +89,7 @@
 
 /datum/curse/astrata
 	name = "Astrata's Curse"
-	description = ""
+	description = "I am forsaken by the Sun. Miracles have no effect on me."
 	trait = TRAIT_ASTRATA_CURSE
 
 /datum/curse/noc

@@ -26,6 +26,10 @@
 			target.Paralyze(30)
 			target.fire_act(1,5)
 			return TRUE
+		if(HAS_TRAIT(target, TRAIT_ASTRATA_CURSE))
+			target.visible_message(span_danger("[target] recoils in pain!"), span_userdanger("Divine healing shuns me!"))
+			target.freak_out()
+			return FALSE
 		//this if chain is stupid, replace with variables on /datum/patron when possible?
 		switch(user.patron.type)
 			if(/datum/patron/old_god)
@@ -110,6 +114,10 @@
 			target.Paralyze(50)
 			target.fire_act(1,5)
 			return TRUE
+		if(HAS_TRAIT(target, TRAIT_ASTRATA_CURSE))
+			target.visible_message(span_danger("[target] recoils in pain!"), span_userdanger("Divine healing shuns me!"))
+			target.freak_out()
+			return FALSE
 		target.visible_message(span_info("A wreath of gentle light passes over [target]!"), span_notice("I'm bathed in holy light!"))
 		if(iscarbon(target))
 			var/mob/living/carbon/C = target

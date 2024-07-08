@@ -242,21 +242,18 @@
 
 	var/datum/curse/C = curse
 
-	if(M.is_cursed(C))
-		if(!M.remove_curse(C))
-			return FALSE
-
-		message_admins(span_danger("Admin [key_name_admin(usr)] lifted [C.name] from [key_name_admin(M)]!"))
-		log_admin("[key_name(usr)] lifted [C.name] from [key_name(M)].")
-
-	else
-		if(!M.add_curse(C))
-			return FALSE
-
+	if(M.add_curse(C))
 		message_admins(span_danger("Admin [key_name_admin(usr)] cursed [key_name_admin(M)] with [C.name]!"))
 		log_admin("[key_name(usr)] cursed [key_name(M)] with [C.name].")
+		return TRUE
 
-	return TRUE
+	else if(M.remove_curse(C))
+		message_admins(span_danger("Admin [key_name_admin(usr)] lifted [C.name] from [key_name_admin(M)]!"))
+		log_admin("[key_name(usr)] lifted [C.name] from [key_name(M)].")
+		return TRUE
+
+	else
+		return FALSE
 
 /datum/admins/proc/checkpq(mob/living/M in GLOB.mob_list)
 	set name = "Check PQ"
