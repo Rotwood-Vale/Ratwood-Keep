@@ -225,6 +225,9 @@ SUBSYSTEM_DEF(migrants)
 	// Adding antag datums can move your character to places, so here's a bandaid
 	character.forceMove(assignment.spawn_location)
 
+	if(role.grant_lit_torch)
+		grant_lit_torch(character)
+
 	role.after_spawn(character)
 
 	if(role.advclass_cat_rolls)
@@ -246,7 +249,7 @@ SUBSYSTEM_DEF(migrants)
 	if(!player.prefs)
 		return FALSE
 	var/datum/preferences/prefs = player.prefs
-	if(role.allowed_species && !(prefs.pref_species.type in role.allowed_species))
+	if(role.allowed_races && !(prefs.pref_species.type in role.allowed_races))
 		return FALSE
 	if(role.allowed_sexes && !(prefs.gender in role.allowed_sexes))
 		return FALSE

@@ -87,17 +87,3 @@
 	roles = list(
 		/datum/migrant_role/bandit = 6,
 	)
-
-/datum/migrant_wave/heartfelt
-	name = "The Lord's Visit"
-	max_spawns = 1
-	min_active = 4
-	weight = 50
-	roles = list(
-		/datum/migrant_role/heartfelt_lord = 1,
-		/datum/migrant_role/heartfelt_lady = 1,
-		/datum/migrant_role/heartfelt_hand = 1,
-		/datum/migrant_role/heartfelt_knight = 1,
-		/datum/migrant_role/heartfelt_magos = 1,
-		/datum/migrant_role/heartfelt_prior = 1,
-	)

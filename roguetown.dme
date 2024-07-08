@@ -633,6 +633,8 @@
 #include "code\datums\migrants\migrant_pref.dm"
 #include "code\datums\migrants\migrant_role.dm"
 #include "code\datums\migrants\migrant_wave.dm"
+#include "code\datums\migrants\migrant_waves\heartfelt roles.dm"
+#include "code\datums\migrants\migrant_waves\heartfelt wave.dm"
 #include "code\datums\mood_events\_mood_event.dm"
 #include "code\datums\mood_events\beauty_events.dm"
 #include "code\datums\mood_events\drink_events.dm"
