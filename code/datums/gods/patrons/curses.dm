@@ -116,7 +116,7 @@
 
 /datum/curse/pestra
 	name = "Pestra's Curse"
-	description = "I feel sick to my stomach, and my skin is covered in a sickly green hue."
+	description = "I feel sick to my stomach, and my skin is slowly starting to rot."
 	trait = TRAIT_PESTRA_CURSE
 
 /datum/curse/malum
@@ -135,7 +135,7 @@
 
 /datum/curse/zizo
 	name = "Zizo's Curse"
-	description = "There's something terribly, terribly wrong with me."
+	description = "I can no longer distinguish reality from delusion."
 	trait = TRAIT_ZIZO_CURSE
 	var/atom/movable/screen/fullscreen/maniac/hallucinations
 
