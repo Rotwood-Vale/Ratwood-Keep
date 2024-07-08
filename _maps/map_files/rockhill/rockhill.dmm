@@ -230,6 +230,10 @@
 /obj/effect/decal/cleanable/blood/old,
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/outdoors/town)
+"amf" = (
+/obj/effect/landmark/travel_spawn_point,
+/turf/open/floor/rogue/naturalstone,
+/area/rogue/under/cavewet)
 "amn" = (
 /obj/effect/landmark/start/butler{
 	dir = 8
@@ -2105,10 +2109,7 @@
 	},
 /area/rogue/indoors/town/manor)
 "cJP" = (
-/obj/structure/fluff/traveltile/bandit{
-	aportalgoesto = "banditin";
-	aportalid = "banditexit"
-	},
+/obj/effect/landmark/travel_tile_location,
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/under/cavewet)
 "cJZ" = (
@@ -4028,6 +4029,10 @@
 	},
 /turf/open/floor/rogue/churchmarble,
 /area/rogue/indoors/town/church/chapel)
+"eSX" = (
+/obj/effect/landmark/travel_spawn_point,
+/turf/open/floor/rogue/naturalstone,
+/area/rogue/under/cavewet/bogcaves)
 "eTo" = (
 /obj/effect/landmark/start/manorguardsman{
 	dir = 8
@@ -4917,6 +4922,10 @@
 	},
 /turf/open/floor/rogue/blocks,
 /area/rogue/outdoors/town)
+"fTV" = (
+/obj/effect/landmark/travel_spawn_point,
+/turf/open/floor/rogue/cobblerock,
+/area/rogue/outdoors/bog)
 "fUS" = (
 /obj/item/grown/log/tree,
 /turf/open/floor/rogue/ruinedwood/spiral,
@@ -7377,6 +7386,10 @@
 	},
 /turf/closed/wall/mineral/rogue/stone,
 /area/rogue/outdoors/town)
+"iQM" = (
+/obj/effect/landmark/travel_tile_location,
+/turf/open/floor/rogue/cobblerock,
+/area/rogue/under/cavewet/bogcaves)
 "iRe" = (
 /obj/machinery/light/rogue/wallfire/candle/r,
 /obj/structure/table/wood{
@@ -12346,10 +12359,7 @@
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/under/town/basement)
 "pvK" = (
-/obj/structure/fluff/traveltile/vampire{
-	aportalgoesto = "vampin";
-	aportalid = "vampexit"
-	},
+/obj/effect/landmark/travel_tile_location,
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/under/cavewet/bogcaves)
 "pvV" = (
@@ -327695,10 +327705,10 @@ gxt
 gxt
 gxt
 gxt
-gxt
-gxt
-gxt
-gxt
+pvK
+pvK
+pvK
+pvK
 gxt
 gxt
 gxt
@@ -328096,11 +328106,11 @@ uuE
 uuE
 gxt
 gxt
-gxt
-gxt
-gxt
-gxt
-gxt
+dVO
+dVO
+dVO
+eSX
+dVO
 gxt
 gxt
 gxt
@@ -328499,10 +328509,10 @@ uuE
 uuE
 uuE
 uuE
-gxt
-gxt
-gxt
-gxt
+dVO
+dVO
+dVO
+pEm
 gxt
 gxt
 gxt
@@ -328903,7 +328913,7 @@ uuE
 uuE
 uuE
 uuE
-gxt
+dVO
 gxt
 gxt
 gxt
@@ -363085,7 +363095,7 @@ uuE
 uuE
 uuE
 uuE
-gxt
+dVO
 gxt
 fyc
 fyc
@@ -363487,7 +363497,7 @@ uuE
 uuE
 uuE
 uuE
-gxt
+dVO
 gxt
 fyc
 fyc
@@ -363889,7 +363899,7 @@ uuE
 uuE
 uuE
 gxt
-gxt
+dVO
 gxt
 fyc
 fyc
@@ -364291,7 +364301,7 @@ uuE
 uuE
 uuE
 gxt
-gxt
+dVO
 gxt
 fyc
 fyc
@@ -364693,7 +364703,7 @@ uuE
 uuE
 uuE
 gxt
-gxt
+dVO
 gxt
 fyc
 fyc
@@ -365095,7 +365105,7 @@ uuE
 uuE
 uuE
 gxt
-gxt
+dVO
 gxt
 fyc
 fyc
@@ -365497,8 +365507,8 @@ uuE
 uuE
 uuE
 gxt
-gxt
-gxt
+dVO
+dVO
 fyc
 fyc
 "}
@@ -365899,8 +365909,8 @@ uuE
 uuE
 uuE
 gxt
-gxt
-gxt
+dVO
+dVO
 fyc
 fyc
 "}
@@ -366301,8 +366311,8 @@ uuE
 uuE
 uuE
 gxt
-gxt
-gxt
+dVO
+dVO
 fyc
 fyc
 "}
@@ -366703,8 +366713,8 @@ uuE
 uuE
 uuE
 gxt
-gxt
-gxt
+dVO
+pvK
 fyc
 fyc
 "}
@@ -367105,8 +367115,8 @@ uuE
 uuE
 uuE
 gxt
-gxt
-gxt
+eSX
+pvK
 fyc
 fyc
 "}
@@ -367507,8 +367517,8 @@ uuE
 uuE
 uuE
 gxt
-gxt
-gxt
+pEm
+pvK
 fyc
 fyc
 "}
@@ -394038,7 +394048,7 @@ uuE
 uuE
 uuE
 uuE
-gxt
+dVO
 gxt
 gxt
 fyc
@@ -394440,9 +394450,9 @@ uuE
 uuE
 uuE
 uuE
-gxt
-gxt
-gxt
+dVO
+dVO
+pvK
 fyc
 fyc
 "}
@@ -394842,9 +394852,9 @@ uuE
 uuE
 uuE
 uuE
-gxt
-gxt
-gxt
+dVO
+eSX
+pvK
 fyc
 fyc
 "}
@@ -395244,9 +395254,9 @@ uuE
 uuE
 uuE
 gxt
-gxt
-gxt
-gxt
+dVO
+dVO
+pvK
 fyc
 fyc
 "}
@@ -395647,7 +395657,7 @@ uuE
 uuE
 gxt
 gxt
-gxt
+pEm
 gxt
 fyc
 fyc
@@ -410519,7 +410529,7 @@ uuE
 uuE
 uuE
 uuE
-gxt
+dVO
 gxt
 gxt
 gxt
@@ -410921,10 +410931,10 @@ uuE
 uuE
 uuE
 uuE
-gxt
-gxt
-gxt
-gxt
+dVO
+dVO
+dVO
+pvK
 fyc
 fyc
 "}
@@ -411323,10 +411333,10 @@ uuE
 uuE
 uuE
 uuE
-gxt
-gxt
-gxt
-gxt
+dVO
+dVO
+eSX
+pvK
 fyc
 fyc
 "}
@@ -411725,10 +411735,10 @@ uuE
 uuE
 uuE
 uuE
-gxt
-gxt
-gxt
-gxt
+dVO
+dVO
+dVO
+pvK
 fyc
 fyc
 "}
@@ -412127,9 +412137,9 @@ uuE
 uuE
 uuE
 uuE
-gxt
-gxt
-gxt
+dVO
+dVO
+pEm
 gxt
 fyc
 fyc
@@ -427395,11 +427405,11 @@ uuE
 uuE
 uuE
 uuE
-gxt
-gxt
-gxt
-gxt
-gxt
+dVO
+dVO
+dVO
+dVO
+pEm
 gxt
 gxt
 gxt
@@ -427796,13 +427806,13 @@ uuE
 uuE
 uuE
 uuE
-gxt
-gxt
-gxt
-gxt
-gxt
-gxt
-gxt
+dVO
+dVO
+dVO
+dVO
+eSX
+dVO
+dVO
 gxt
 gxt
 gxt
@@ -428200,11 +428210,11 @@ gxt
 gxt
 gxt
 gxt
-gxt
-gxt
-gxt
-gxt
-gxt
+dVO
+pvK
+pvK
+pvK
+pvK
 gxt
 gxt
 gxt
@@ -430511,7 +430521,7 @@ aaf
 aaf
 aaf
 aaf
-aaf
+amf
 aaf
 aad
 uuE
@@ -525310,7 +525320,7 @@ lOV
 lOV
 lOV
 lOV
-sYx
+lOV
 sYx
 sYx
 sYx
@@ -525712,7 +525722,7 @@ lOV
 lOV
 lOV
 lOV
-sYx
+lOV
 sYx
 sYx
 sYx
@@ -526111,11 +526121,11 @@ sYx
 sYx
 sYx
 sYx
+lOV
 sYx
-sYx
-sYx
-sYx
-sYx
+lOV
+lOV
+lOV
 sYx
 sYx
 sYx
@@ -526514,10 +526524,10 @@ sYx
 sYx
 sYx
 sYx
-sYx
-sYx
-sYx
-sYx
+lOV
+lOV
+lOV
+lOV
 sYx
 sYx
 sYx
@@ -526917,8 +526927,8 @@ sYx
 sYx
 sYx
 sYx
-sYx
-sYx
+lOV
+lOV
 sYx
 sYx
 sYx
@@ -527319,8 +527329,8 @@ sYx
 sYx
 sYx
 sYx
-sYx
-sYx
+lOV
+lOV
 sYx
 sYx
 sYx
@@ -527720,10 +527730,10 @@ sYx
 sYx
 sYx
 sYx
+lOV
+lOV
 sYx
-sYx
-sYx
-sYx
+lOV
 sYx
 sYx
 sYx
@@ -528123,8 +528133,8 @@ sYx
 sYx
 sYx
 sYx
-sYx
-sYx
+lOV
+lOV
 sYx
 sYx
 sYx
@@ -528524,9 +528534,9 @@ sYx
 sYx
 sYx
 sYx
-sYx
-sYx
-sYx
+lOV
+lOV
+lOV
 sYx
 sYx
 sYx
@@ -528926,9 +528936,9 @@ sYx
 sYx
 sYx
 sYx
-sYx
-sYx
-sYx
+lOV
+lOV
+lOV
 sYx
 sYx
 sYx
@@ -529328,10 +529338,10 @@ sYx
 sYx
 sYx
 sYx
-sYx
-sYx
-sYx
-sYx
+lOV
+lOV
+lOV
+lOV
 sYx
 sYx
 sYx
@@ -529730,9 +529740,9 @@ sYx
 sYx
 sYx
 sYx
-sYx
-sYx
-sYx
+lOV
+lOV
+lOV
 sYx
 sYx
 sYx
@@ -530131,10 +530141,10 @@ whb
 whb
 sYx
 sYx
-sYx
-sYx
-sYx
-sYx
+uyE
+lOV
+fTV
+lOV
 sYx
 sYx
 sYx
@@ -530534,9 +530544,9 @@ whb
 whb
 whb
 whb
-whb
-whb
-whb
+iQM
+iQM
+iQM
 whb
 whb
 whb
@@ -531017,7 +531027,7 @@ fyc
 fyc
 dVO
 dVO
-dVO
+eSX
 dVO
 dVO
 fyc
