@@ -4,8 +4,8 @@
 	speech_verb = "hisses"
 	ask_verb = "hisses"
 	exclaim_verb = "roars"
-	key = "10"
-	flags = TONGUELESS_SPEECH
+	key = "s"
+	flags = TONGUELESS_SPEECH | LANGUAGE_HIDE_ICON_IF_UNDERSTOOD | LANGUAGE_HIDE_ICON_IF_NOT_UNDERSTOOD
 	space_chance = 40
 	syllables = list(
 		"za", "az", "ze", "ez", "zi", "iz", "zo", "oz", "zu", "uz", "zs", "sz",
