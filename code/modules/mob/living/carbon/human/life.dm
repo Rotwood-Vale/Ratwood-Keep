@@ -103,6 +103,9 @@
 	//Update our name based on whether our face is obscured/disfigured
 	name = get_visible_name()
 
+	if(sexcon)
+		sexcon.process_sexcon(1 SECONDS)
+
 	if(stat != DEAD)
 		return 1
 
