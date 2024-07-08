@@ -331,11 +331,11 @@ SUBSYSTEM_DEF(migrants)
 	var/list/migrants = list()
 	for(var/mob/dead/new_player/player as anything in GLOB.new_player_list)
 		if(!player.client)
-			return
+			continue
 		if(!player.client.prefs)
-			return
+			continue
 		if(!player.client.prefs.migrant.active)
-			return
+			continue
 		migrants += player.client
 	return migrants
 
@@ -344,9 +344,9 @@ SUBSYSTEM_DEF(migrants)
 	var/list/migrants = list()
 	for(var/mob/dead/new_player/player as anything in GLOB.new_player_list)
 		if(!player.client)
-			return
+			continue
 		if(!player.client.prefs)
-			return
+			continue
 		migrants += player.client
 	return migrants
 
