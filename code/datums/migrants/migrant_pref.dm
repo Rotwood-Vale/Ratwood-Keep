@@ -47,7 +47,7 @@
 			var/role_amount = wave.roles[role_type]
 			var/role_name = role.name
 			if(active  && (role_type in role_preferences))
-				role_name = "<b>[role_name]</b>"
+				role_name = "<u><b>[role_name]</b></u>"
 			var/stars_amount = SSmigrants.get_stars_on_role(role_type)
 			var/stars_string = ""
 			if(stars_amount)
