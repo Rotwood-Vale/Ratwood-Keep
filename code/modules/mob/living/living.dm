@@ -1920,12 +1920,11 @@
 	if(!istype(T))
 		return
 	changeNext_move(CLICK_CD_MELEE)
-
+	
 	var/_x = T.x-loc.x
 	var/_y = T.y-loc.y
-	if(_x > 7 || _x < -7)
-		return
-	if(_y > 7 || _y < -7)
+	var/dist = get_dist(src, T)
+	if(dist > 7 || dist  <= 2)
 		return
 	hide_cone()
 	var/ttime = 10
