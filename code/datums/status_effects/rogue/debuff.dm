@@ -128,7 +128,7 @@
 	duration = 1
 
 /datum/status_effect/debuff/rotfood/on_apply()
-	if(HAS_TRAIT(owner, TRAIT_NASTY_EATER) || HAS_TRAIT(owner, TRAIT_ROT_EATER) || HAS_TRAIT(owner, TRAIT_WILD_EATER))
+	if(HAS_TRAIT(owner, TRAIT_NASTY_EATER) || HAS_TRAIT(owner, TRAIT_ROT_EATER))
 		return ..()
 	owner.add_stress(/datum/stressevent/rotfood)
 	if(iscarbon(owner))
