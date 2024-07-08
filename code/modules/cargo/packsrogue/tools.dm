@@ -5,7 +5,7 @@
 	crate_type = /obj/structure/closet/crate/chest/merchant
 
 /datum/supply_pack/rogue/tools/ropes
-	name = "Rope"
+	name = "Ropes"
 	cost = 10
 	contains = list(
 					/obj/item/rope,
@@ -24,12 +24,21 @@
 					/obj/item/scomstone/bad)
 */
 /datum/supply_pack/rogue/tools/chains
-	name = "Chain"
+	name = "Chains"
 	cost = 15
 	contains = list(
 					/obj/item/rope/chain,
 					/obj/item/rope/chain,
 					/obj/item/rope/chain,
+				)
+
+/datum/supply_pack/rogue/tools/sacks
+	name = "Sacks"
+	cost = 10
+	contains = list(
+					/obj/item/storage/roguebag,
+					/obj/item/storage/roguebag,
+					/obj/item/storage/roguebag,
 				)
 
 /datum/supply_pack/rogue/tools/paper
@@ -56,7 +65,7 @@
 				)
 
 /datum/supply_pack/rogue/tools/bottl
-	name = "Glass Bottle"
+	name = "Glass Bottles"
 	cost = 15
 	contains = list(
 					/obj/item/reagent_containers/glass/bottle/rogue,
@@ -84,18 +93,14 @@
 
 /datum/supply_pack/rogue/tools/bait
 	name = "Premium Fishing Bait"
-	cost = 15
-	contains = list(/obj/item/fishing/bait/deluxe)
-
-/datum/supply_pack/rogue/tools/fishingline
-	name = "Premium Fishing line"
-	cost = 45
-	contains = list(/obj/item/fishing/reel/deluxe)
-
-/datum/supply_pack/rogue/tools/fishinghook
-	name = "Premium Fishing hook"
-	cost = 45
-	contains = list(/obj/item/fishing/hook/deluxe)
+	cost = 25
+	contains = list(
+					/obj/item/natural/worms/grubs,
+					/obj/item/natural/worms/grubs,
+					/obj/item/natural/worms/leech,
+					/obj/item/natural/worms/leech,
+					/obj/item/natural/worms/leech,
+				)
 
 /datum/supply_pack/rogue/tools/prarml
 	name = "Proesthetic Arm (L)"

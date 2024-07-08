@@ -411,10 +411,6 @@ Works together with spawning an observer, noted above.
 			if(force_respawn)
 				mind.remove_antag_datum(/datum/antagonist/zombie)
 				return ..()
-			else if(!zomble.revived)
-				if(!(world.time % 5))
-					to_chat(src, span_warning("I'm preparing to walk again."))
-				return
 	return ..()
 
 /mob/proc/scry_ghost()

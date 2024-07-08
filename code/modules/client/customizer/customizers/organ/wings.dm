@@ -33,12 +33,8 @@
 		/datum/sprite_accessory/wings/wide/low_wings,
 		/datum/sprite_accessory/wings/wide/low_wings_top,
 		/datum/sprite_accessory/wings/wide/spider,
-		/datum/sprite_accessory/wings/huge/angel,
 		/datum/sprite_accessory/wings/huge/dragon,
-		/datum/sprite_accessory/wings/huge/megamoth,
-		/datum/sprite_accessory/wings/huge/mothra,
-		/datum/sprite_accessory/wings/huge/skeleton,
-		/datum/sprite_accessory/wings/huge/robotic,
+		/datum/sprite_accessory/wings/large/harpyswept,
 		)
 
 /datum/customizer/organ/wings/moth

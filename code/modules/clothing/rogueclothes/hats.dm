@@ -327,7 +327,17 @@
 	. = ..()
 	SSroguemachine.crown = src
 
-/obj/item/clothing/head/roguetown/crown/serpcrown/surplus
+/obj/item/clothing/head/roguetown/crown/serpcrown/proc/anti_stall()
+	src.visible_message(span_warning("The Crown of Rockhill crumbles to dust, the ashes spiriting away in the direction of the Keep."))
+	SSroguemachine.crown = null //Do not harddel.
+	qdel(src) //Anti-stall
+
+/obj/item/clothing/head/roguetown/crown/fakecrown
+	name = "fake crown"
+	desc = "You shouldn't be seeing this."
+	icon_state = "serpcrown"
+
+/obj/item/clothing/head/roguetown/crown/surplus
 	name = "crown"
 	icon_state = "serpcrowno"
 	sellprice = 100
@@ -678,16 +688,28 @@
 	icon_state = "wizardhat"
 	mob_overlay_icon = 'icons/roguetown/clothing/onmob/64x64/head.dmi'
 	dynamic_hair_suffix = "+generic"
-	sellprice = 100
 	worn_x_dimension = 64
 	worn_y_dimension = 64
 	sewrepair = TRUE
+
+/obj/item/clothing/head/roguetown/wizhat/red
+	icon_state = "wizardhatred"
+
+/obj/item/clothing/head/roguetown/wizhat/yellow
+	icon_state = "wizardhatyellow"
+
+/obj/item/clothing/head/roguetown/wizhat/green
+	icon_state = "wizardhatgreen"
+
+/obj/item/clothing/head/roguetown/wizhat/black
+	icon_state = "wizardhatblack"
 
 /obj/item/clothing/head/roguetown/wizhat/gen
 	icon_state = "wizardhatgen"
 
 /obj/item/clothing/head/roguetown/wizhat/gen/wise
 	name = "wise hat"
+	sellprice = 100
 	desc = "Only the wisest of nimrods wear this."
 
 /obj/item/clothing/head/roguetown/wizhat/gen/wise/equipped(mob/user, slot)
@@ -722,3 +744,25 @@
 	sellprice = 100
 	resistance_flags = FIRE_PROOF
 	anvilrepair = /datum/skill/craft/armorsmithing
+
+/obj/item/clothing/head/roguetown/grenzelhofthat
+	name = "grenzelhoft plume hat"
+	desc = "Slaying monsters or fair maidens: Grenzelhoft stands."
+	icon_state = "grenzelhat"
+	item_state = "grenzelhat"
+	icon = 'icons/roguetown/clothing/head.dmi'
+	sleeved = 'icons/roguetown/clothing/onmob/helpers/stonekeep_merc.dmi'
+	slot_flags = ITEM_SLOT_HEAD
+	detail_tag = "_detail"
+	dynamic_hair_suffix = ""
+	max_integrity = 150
+	colorgrenz = TRUE
+
+/obj/item/clothing/head/roguetown/grenzelhofthat/update_icon()
+	cut_overlays()
+	if(get_detail_tag())
+		var/mutable_appearance/pic = mutable_appearance(icon(icon, "[icon_state][detail_tag]"))
+		pic.appearance_flags = RESET_COLOR
+		if(get_detail_color())
+			pic.color = get_detail_color()
+		add_overlay(pic)

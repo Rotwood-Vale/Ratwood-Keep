@@ -30,7 +30,7 @@
 	icon_state = "priestunder"
 	sleeved = null
 	allowed_sex = list(MALE, FEMALE)
-	allowed_race = HUMANLIKE_RACE_TYPES
+	allowed_race = NON_DWARVEN_RACE_TYPES
 
 /obj/item/clothing/suit/roguetown/shirt/undershirt/black
 	color = CLOTHING_BLACK
@@ -280,3 +280,57 @@
 	r_sleeve_status = SLEEVE_NORMAL
 	l_sleeve_status = SLEEVE_NORMAL
 	flags_inv = HIDECROTCH|HIDEBOOB
+
+/obj/item/clothing/suit/roguetown/shirt/grenzelhoft
+	slot_flags = ITEM_SLOT_SHIRT|ITEM_SLOT_ARMOR
+	name = "grenzelhoftian hip-shirt"
+	desc = ""
+	body_parts_covered = CHEST|GROIN|ARMS|VITALS
+	icon_state = "grenzelshirt"
+	sleeved = 'icons/roguetown/clothing/onmob/helpers/stonekeep_merc.dmi'
+	boobed = TRUE
+	detail_tag = "_detail"
+	detail_color = CLOTHING_WHITE
+	r_sleeve_status = SLEEVE_NORMAL
+	l_sleeve_status = SLEEVE_NORMAL
+	var/picked = FALSE
+	colorgrenz = TRUE
+
+/obj/item/clothing/suit/roguetown/shirt/grenzelhoft/attack_right()
+	..()
+	if(!picked)
+		var/list/colors = list(
+		"PURPLE"="#865c9c",
+		"RED"="#933030",
+		"BROWN"="#685542",
+		"GREEN"="#79763f",
+		"BLUE"="#395480",
+		"YELLOW"="#b5b004",
+		"TEAL"="#249589",
+		"WHITE"="#ffffff",
+		"ORANGE"="#b86f0c",
+		"MAJENTA"="#962e5c")
+
+		var/mob/living/carbon/human/L = loc
+		var/choice = input(L, "Choose a color.", "GRENZELHOFTIAN COLORPLEX") as anything in colors
+		var/playerchoice = colors[choice]
+		picked = TRUE
+		detail_color = playerchoice
+		update_icon()
+		for(var/obj/item/clothing/V in L.get_equipped_items(FALSE))
+			testing("clothes to color are [V]")
+			if(V.colorgrenz)
+				V.detail_color = playerchoice
+				V.update_icon()
+		L.regenerate_icons()
+
+
+
+/obj/item/clothing/suit/roguetown/shirt/grenzelhoft/update_icon()
+	cut_overlays()
+	if(get_detail_tag())
+		var/mutable_appearance/pic = mutable_appearance(icon(icon, "[icon_state][detail_tag]"))
+		pic.appearance_flags = RESET_COLOR
+		if(get_detail_color())
+			pic.color = get_detail_color()
+		add_overlay(pic)

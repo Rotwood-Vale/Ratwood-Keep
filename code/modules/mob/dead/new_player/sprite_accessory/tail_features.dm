@@ -7,7 +7,7 @@
 	return is_human_part_visible(owner, HIDETAIL)
 
 /datum/sprite_accessory/tail_feature/adjust_appearance_list(list/appearance_list, obj/item/organ/organ, obj/item/bodypart/bodypart, mob/living/carbon/owner)
-	generic_gender_feature_adjust(appearance_list, organ, bodypart, owner, OFFSET_BACK, OFFSET_BACK_F)
+	generic_gender_feature_adjust(appearance_list, organ, bodypart, owner, OFFSET_UNDIES, OFFSET_UNDIES_F)
 
 /datum/sprite_accessory/tail_feature/get_icon_state(obj/item/organ/organ, obj/item/bodypart/bodypart, mob/living/carbon/owner)
 	if(!owner || !can_wag)
@@ -30,6 +30,7 @@
 	abstract_type = /datum/sprite_accessory/tail_feature/spines
 	icon = 'icons/mob/sprite_accessory/tail_features/spines.dmi'
 	color_key_name = "Spines"
+	relevant_layers = list(BODY_BEHIND_LAYER, BODY_ADJ_LAYER, BODY_UNDER_LAYER)
 
 /datum/sprite_accessory/tail_feature/spines/short
 	name = "Short"

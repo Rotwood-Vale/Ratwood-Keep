@@ -32,13 +32,14 @@
 #define TRAIT_SHOCKIMMUNE "Shock Immunity"
 #define TRAIT_NOSLEEP "Fatal Insomnia"
 #define TRAIT_GOODLOVER "Fabled Lover"
+#define TRAIT_SEEDKNOW "Seed Knower"
 
 // PATRON GOD TRAITS
 #define TRAIT_ROT_EATER "Blessing of Pestra" //can eat rotten food
 #define TRAIT_ORGAN_EATER "Blessing of Graggar" //can eat organs
 #define TRAIT_KNEESTINGER_IMMUNITY "Blessing of Dendor"
 #define TRAIT_SOUL_EXAMINE "Blessing of Necra" //can check bodies to see if they have departed
-#define TRAIT_CRACKHEAD "Blessing of Eora" //will never overdose
+#define TRAIT_CRACKHEAD "Blessing of Baotha" //will never overdose
 #define TRAIT_COMMIE "Blessing of Matthios" //recognized by bandits as an ally
 
 #define TRAIT_BASHDOORS "bashdoors"
@@ -97,6 +98,7 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_COMMIE = span_bloody("I can recognize other free men, and they can recognize me too."),
 	TRAIT_NORUN = span_warning("My body has atrophied in my state of decay; my leg joints just don't have the strength or durability for running anymore"),
 	TRAIT_GOODLOVER = span_love("It's a lucky thing to share my bed."),
+	TRAIT_SEEDKNOW = span_info("I know which seeds grow which crops."),
 ))
 
 // trait accessor defines

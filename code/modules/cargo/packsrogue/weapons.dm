@@ -5,7 +5,7 @@
 	crate_type = /obj/structure/closet/crate/chest/merchant
 
 /datum/supply_pack/rogue/weapons/sword
-	name = "Iron Sword"
+	name = "Iron Swords"
 	cost = 60
 	contains = list(
 					/obj/item/rogueweapon/sword/iron,
@@ -14,34 +14,34 @@
 				)
 
 /datum/supply_pack/rogue/weapons/mace
-	name = "Iron Mace"
+	name = "Iron Maces"
 	cost = 60
 	contains = list(
 					/obj/item/rogueweapon/mace,
 					/obj/item/rogueweapon/mace,
 					/obj/item/rogueweapon/mace,
 				)
-	
+
 /datum/supply_pack/rogue/weapons/dagger
-	name = "Iron Dagger"
+	name = "Iron Daggers"
 	cost = 60
 	contains = list(
 					/obj/item/rogueweapon/huntingknife/idagger,
 					/obj/item/rogueweapon/huntingknife/idagger,
 					/obj/item/rogueweapon/huntingknife/idagger,
 				)
-	
+
 /datum/supply_pack/rogue/weapons/axe
-	name = "Iron axe"
+	name = "Iron Axes"
 	cost = 60
 	contains = list(
 					/obj/item/rogueweapon/stoneaxe/woodcut,
 					/obj/item/rogueweapon/stoneaxe/woodcut,
 					/obj/item/rogueweapon/stoneaxe/woodcut,
 				)
-	
+
 /datum/supply_pack/rogue/weapons/spear
-	name = "Iron spear"
+	name = "Iron Spears"
 	cost = 60
 	contains = list(
 					/obj/item/rogueweapon/spear,
@@ -50,7 +50,7 @@
 				)
 
 /datum/supply_pack/rogue/weapons/flail
-	name = "Iron flail"
+	name = "Iron Flails"
 	cost = 60
 	contains = list(
 					/obj/item/rogueweapon/flail,
@@ -59,7 +59,7 @@
 				)
 
 /datum/supply_pack/rogue/weapons/daggerss
-	name = "Daggers"
+	name = "Steel Daggers"
 	cost = 100
 	contains = list(
 					/obj/item/rogueweapon/huntingknife/idagger/steel,
@@ -68,8 +68,8 @@
 				)
 
 /datum/supply_pack/rogue/weapons/stunmace
-	name = "Stunmace"
-	cost = 150
+	name = "Stunmaces"
+	cost = 300
 	contains = list(
 					/obj/item/rogueweapon/mace/stunmace,
 					/obj/item/rogueweapon/mace/stunmace,
@@ -77,7 +77,7 @@
 				)
 
 /datum/supply_pack/rogue/weapons/shield
-	name = "Wooden Shield"
+	name = "Wooden Shields"
 	cost = 45
 	contains = list(
 					/obj/item/rogueweapon/shield/wood,
@@ -86,7 +86,7 @@
 				)
 
 /datum/supply_pack/rogue/weapons/crossbow
-	name = "Crossbow"
+	name = "Crossbows"
 	cost = 100
 	contains = list(
 					/obj/item/gun/ballistic/revolver/grenadelauncher/crossbow,
@@ -95,8 +95,8 @@
 				)
 
 /datum/supply_pack/rogue/weapons/bow
-	name = "Bow"
-	cost = 45
+	name = "Bows"
+	cost = 30
 	contains = list(
 					/obj/item/gun/ballistic/revolver/grenadelauncher/bow,
 					/obj/item/gun/ballistic/revolver/grenadelauncher/bow,
@@ -146,7 +146,7 @@
 					/obj/item/quiver/arrows,
 					/obj/item/quiver/arrows,
 				)
-	
+
 /datum/supply_pack/rogue/weapons/quivers/bolts
 	name = "Quiver of Bolts"
 	cost = 50

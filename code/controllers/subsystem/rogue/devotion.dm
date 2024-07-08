@@ -3,11 +3,13 @@
 #define CLERIC_T1 1
 #define CLERIC_T2 2
 #define CLERIC_T3 3
+#define CLERIC_T4 4
 
 #define CLERIC_REQ_0 0
 #define CLERIC_REQ_1 100
 #define CLERIC_REQ_2 250
 #define CLERIC_REQ_3 500
+#define CLERIC_REQ_4 750
 
 // Cleric Holder Datums
 
@@ -23,7 +25,7 @@
 	/// Current progression (experience)
 	var/progression = 0
 	/// Maximum progression (experience) we can achieve
-	var/max_progression = CLERIC_REQ_3
+	var/max_progression = CLERIC_REQ_4
 	/// Current spell tier, basically
 	var/level = CLERIC_T0
 	/// How much devotion is gained per process call
@@ -84,6 +86,10 @@
 			if(progression >= CLERIC_REQ_3)
 				spell_unlocked = patron.t3
 				level = CLERIC_T3
+		if(CLERIC_T3)
+			if(progression >= CLERIC_REQ_4)
+				spell_unlocked = patron.t4
+				level = CLERIC_T4
 	if(!spell_unlocked || !holder?.mind || holder.mind.has_spell(spell_unlocked, specific = FALSE))
 		return TRUE
 	spell_unlocked = new spell_unlocked
@@ -126,7 +132,7 @@
 	if(!H || !H.mind || !patron)
 		return
 
-	var/list/spelllist = list(patron.t0)
+	var/list/spelllist = list(/obj/effect/proc_holder/spell/invoked/lesser_heal, /obj/effect/proc_holder/spell/invoked/diagnose) //This would have caused jank.
 	for(var/spell_type in spelllist)
 		if(!spell_type || H.mind.has_spell(spell_type))
 			continue
@@ -134,7 +140,7 @@
 		H.mind.AddSpell(newspell)
 		LAZYADD(granted_spells, newspell)
 	level = CLERIC_T0
-	max_devotion = CLERIC_REQ_1 //Max devotion limit - Churchlings only get the t0 spell
+	max_devotion = CLERIC_REQ_1 //Max devotion limit - Churchlings only get diagnose and lesser miracle.
 	max_progression = CLERIC_REQ_0
 
 /datum/devotion/proc/grant_spells_priest(mob/living/carbon/human/H)
@@ -142,16 +148,16 @@
 		return
 
 	granted_spells = list()
-	var/list/spelllist = list(patron.t0, patron.t1, patron.t2, patron.t3)
+	var/list/spelllist = list(patron.t0, patron.t1, patron.t2, patron.t3, patron.t4)
 	for(var/spell_type in spelllist)
 		if(!spell_type || H.mind.has_spell(spell_type))
 			continue
 		var/newspell = new spell_type
 		H.mind.AddSpell(newspell)
 		LAZYADD(granted_spells, newspell)
-	level = CLERIC_T3
+	level = CLERIC_T4
 	passive_devotion_gain = 1
-	update_devotion(300, CLERIC_REQ_3, silent = TRUE)
+	update_devotion(300, CLERIC_REQ_4, silent = TRUE)
 	START_PROCESSING(SSobj, src)
 
 // Debug verb

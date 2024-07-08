@@ -70,8 +70,8 @@ Slimecrossing Potions
 /obj/item/slimepotion/lovepotion
 	name = "love potion"
 	desc = ""
-	icon = 'icons/obj/chemical.dmi'
-	icon_state = "potpink"
+	icon = 'icons/roguetown/items/cooking.dmi'
+	icon_state = "lovebottle"
 
 /obj/item/slimepotion/lovepotion/attack(mob/living/M, mob/user)
 	if(!isliving(M) || M.stat == DEAD)
