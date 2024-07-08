@@ -44,7 +44,7 @@
 	. = ..()
 	if(HAS_TRAIT(user, TRAIT_MATTHIOS_CURSE))
 		var/mob/living/carbon/human/H = user
-		to_chat(H, "<span class='warning'>The idea repulses me!</span>")
+		to_chat(H, span_warning("The idea repulses me!"))
 		H.freak_out()
 		H.Paralyze(20)
 		return
