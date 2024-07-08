@@ -10,7 +10,9 @@
 	allowed_races = RACES_ALL_KINDS
 	allowed_sexes = list(MALE)
 	allowed_ages = list(AGE_MIDDLEAGED, AGE_OLD)
-	tutorial = "Your lineage is noble, and generations of strong, loyal knights have come before you. You served your time gracefully as a knight of his royal majesty, and now you've grown into a role which many men dream to become. Lead your men to victory and keep them in line and you will see this kingdom prosper under a thousand suns."
+	tutorial = "Your lineage is noble, and generations of strong, loyal knights have come before you. You served your time gracefully as a knight of his royal majesty, and now you've grown into a role which many men dream to become. Lead your men to victory and keep them in line and you will see this kingdom prosper under a thousand suns. \
+		\
+		This role allows for full customization."
 	display_order = JDO_GUARD_CAPTAIN
 	whitelist_req = FALSE
 
@@ -22,6 +24,8 @@
 	max_pq = null
 
 	cmode_music = 'sound/music/combat_guard2.ogg'
+
+	allow_custom_genitals = TRUE
 
 /datum/job/roguetown/captain/after_spawn(mob/living/L, mob/M, latejoin = TRUE)
 	. = ..()
@@ -80,11 +84,6 @@
 		H.change_stat("speed", 1)
 		H.change_stat("fortune", 2)
 	H.dna.species.soundpack_m = new /datum/voicepack/male/knight()
-	if(H.gender == FEMALE)
-		var/acceptable = list("Tomboy", "Bob", "Curly Short")
-		if(!(H.hairstyle in acceptable))
-			H.hairstyle = pick(acceptable)
-			H.update_hair()
 	ADD_TRAIT(H, TRAIT_NOBLE, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)

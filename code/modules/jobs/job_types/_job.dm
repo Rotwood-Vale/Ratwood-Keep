@@ -44,6 +44,7 @@
 	var/minimal_player_age = 0
 
 	var/outfit = null
+	var/visuals_only_outfit = null //Handles outfits specifically for cases where you may need to prevent sensitive items from spawning. (e.g Crowns)
 	var/outfit_female = null
 
 	var/exp_requirements = 0
@@ -142,6 +143,9 @@
 */
 	var/PQ_boost_divider = 0
 
+	//VRELL - Stuff to support custom genital restrictions
+	var/allow_custom_genitals = FALSE
+
 
 /datum/job/proc/special_job_check(mob/dead/new_player/player)
 	return TRUE
@@ -204,6 +208,28 @@
 	
 	if(cmode_music)
 		H.cmode_music = cmode_music
+	
+	//Vrell - Removing people's bits if their role doesn't allow it.
+	if(!allow_custom_genitals)
+		var/obj/item/organ/organ_to_remove = null
+		if(H.gender == MALE)
+			organ_to_remove = H.getorganslot(ORGAN_SLOT_BREASTS)
+			if(organ_to_remove)
+				organ_to_remove.Remove(H)
+				qdel(organ_to_remove)
+			organ_to_remove = H.getorganslot(ORGAN_SLOT_VAGINA)
+			if(organ_to_remove)
+				organ_to_remove.Remove(H)
+				qdel(organ_to_remove)
+		else
+			organ_to_remove = H.getorganslot(ORGAN_SLOT_PENIS)
+			if(organ_to_remove)
+				organ_to_remove.Remove(H)
+				qdel(organ_to_remove)
+			organ_to_remove = H.getorganslot(ORGAN_SLOT_TESTICLES)
+			if(organ_to_remove)
+				organ_to_remove.Remove(H)
+				qdel(organ_to_remove)
 
 /mob/living/carbon/human/proc/add_credit()
 	if(!mind || !client)
@@ -265,6 +291,8 @@
 
 	//Equip the rest of the gear
 	H.dna.species.before_equip_job(src, H, visualsOnly)
+	if(!outfit_override && visualsOnly && visuals_only_outfit)
+		outfit_override = visuals_only_outfit
 	if(H.gender == FEMALE)
 		if(outfit_override || outfit_female)
 			H.equipOutfit(outfit_override ? outfit_override : outfit_female, visualsOnly)

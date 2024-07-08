@@ -20,7 +20,7 @@
 	name = "gnarly bite"
 	whp = 40
 	sewn_whp = 15
-	bleed_rate = 1
+	bleed_rate = 0.5
 	sewn_bleed_rate = 0.2
 	clotting_rate = 0.01
 	sewn_clotting_rate = 0.01

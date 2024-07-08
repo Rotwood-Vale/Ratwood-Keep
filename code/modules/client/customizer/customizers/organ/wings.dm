@@ -22,6 +22,7 @@
 		/datum/sprite_accessory/wings/wide/succubus,
 		/datum/sprite_accessory/wings/fairy,
 		/datum/sprite_accessory/wings/bee,
+		/datum/sprite_accessory/wings/dragonfold,
 		/datum/sprite_accessory/wings/wide/dragon_alt1,
 		/datum/sprite_accessory/wings/wide/dragon_alt2,
 		/datum/sprite_accessory/wings/wide/harpywings,

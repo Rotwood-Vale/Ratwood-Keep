@@ -11,7 +11,9 @@
 	tutorial = "The Grenzelhofts were known for their Jesters, wisemen with a tongue just as sharp as their wit. \
 		You command a position of a fool, envious of the position your superiors have upon you. \
 		Your cheap tricks and illusions of intelligence will only work for so long, \
-		and someday you'll find yourself at the end of something sharper than you."
+		and someday you'll find yourself at the end of something sharper than you. \
+		\
+		This role allows for full customization."
 
 	allowed_ages = ALL_AGES_LIST
 	spells = list(/obj/effect/proc_holder/spell/self/telljoke,/obj/effect/proc_holder/spell/self/telltragedy)
@@ -20,6 +22,8 @@
 	give_bank_account = TRUE
 	min_pq = -4 //retard jesters are funny so low PQ requirement
 	max_pq = null
+
+	allow_custom_genitals = TRUE
 
 /datum/outfit/job/roguetown/jester/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -31,10 +35,6 @@
 	beltl = /obj/item/storage/belt/rogue/pouch
 	head = /obj/item/clothing/head/roguetown/jester
 	neck = /obj/item/clothing/neck/roguetown/coif
-	//Desc says grenzelhoft has great jesters so 50% change to raceswap because slop lore
-	if(ishumannorthern(H) && prob(50))
-		H.skin_tone = SKIN_COLOR_GRENZELHOFT
-		H.update_body()
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/combat/knives, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 4, TRUE)

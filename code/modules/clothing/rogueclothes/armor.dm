@@ -71,8 +71,8 @@
 	armor_class = ARMOR_CLASS_MEDIUM
 
 /obj/item/clothing/suit/roguetown/armor/chainmail/chainkini
-	name = "amazon mail"
-	desc = ""
+	name = "chainmail bikini"
+	desc = "This does not have the magical full torso coverage as promised..."
 	icon_state = "chainkini"
 	item_state = "chainkini"
 	allowed_sex = list(FEMALE)

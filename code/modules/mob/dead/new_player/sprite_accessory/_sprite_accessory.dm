@@ -171,12 +171,16 @@
 
 /datum/sprite_accessory/proc/get_layer_suffix(passed_layer)
 	switch(passed_layer)
-		if(BODY_FRONT_LAYER)
-			return "FRONT"
-		if(BODY_ADJ_LAYER)
-			return "ADJ"
 		if(BODY_BEHIND_LAYER)
 			return "BEHIND"
+		if(BODY_ADJ_LAYER)
+			return "ADJ"
+		if(BODY_FRONT_LAYER)
+			return "FRONT"
+		if(BODY_FRONT_FRONT_LAYER)
+			return "FFRONT"
+		if(BODY_UNDER_LAYER)
+			return "UNDER"
 		else
 			CRASH("Tried to get an unimplemented layer suffix for sprite accessory of type [type]")
 

@@ -41,7 +41,6 @@
 		TRAIT_BASHDOORS,
 		TRAIT_SPELLCOCKBLOCK,
 		TRAIT_BLOODLOSS_IMMUNE,
-		TRAIT_LIMPDICK,
 		TRAIT_ZOMBIE_SPEECH,
 		TRAIT_ZOMBIE_IMMUNE,
 		TRAIT_EMOTEMUTE,
@@ -55,7 +54,6 @@
 		TRAIT_NOPAINSTUN,
 		TRAIT_NOBREATH,
 		TRAIT_TOXIMMUNE,
-		TRAIT_LIMPDICK,
 		TRAIT_ZOMBIE_IMMUNE,
 		TRAIT_ROTMAN,
 	)
@@ -169,9 +167,6 @@
 	zombie.aggressive = TRUE
 	zombie.mode = AI_IDLE
 	zombie.handle_ai()
-
-	var/obj/item/organ/eyes/eyes = new /obj/item/organ/eyes/night_vision/zombie
-	eyes.Insert(zombie, drop_if_replaced = TRUE)
 	ambushable = zombie.ambushable
 	zombie.ambushable = FALSE
 
@@ -212,7 +207,6 @@
 
 	// Ghosts you because this shit was just not working whatsoever, let the AI handle the rest
 	zombie.ghostize(FALSE)
-	zombie.mind.key = null
 
 /datum/antagonist/zombie/greet()
 	to_chat(owner.current, span_userdanger("Death is not the end..."))

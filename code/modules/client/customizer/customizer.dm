@@ -10,6 +10,8 @@
 	var/allows_disabling = FALSE
 	/// Whether this choice defaults to being missing.
 	var/default_disabled = FALSE
+	// Vrell - Used for automatic disabling for gendered parts
+	var/gender_enabled = null
 
 /datum/customizer/New()
 	. = ..()
@@ -29,6 +31,8 @@
 	var/datum/customizer_entry/created_entry = chosen_custom.make_default_customizer_entry(prefs, type, changed_entry)
 	if(!changed_entry)
 		created_entry.disabled = default_disabled
+		if(gender_enabled == prefs.gender) // Makes parts that are auto-enabled for that gender automatically enabled.
+			created_entry.disabled = FALSE
 	return created_entry
 
 /datum/customizer/proc/validate_entry(datum/preferences/prefs, datum/customizer_entry/entry)
