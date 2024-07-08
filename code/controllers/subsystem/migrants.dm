@@ -9,7 +9,9 @@ SUBSYSTEM_DEF(migrants)
 
 	var/time_between_waves = 3 MINUTES
 	var/time_between_fail_wave = 90 SECONDS
-	var/wave_wait_time = 40 SECONDS
+	var/wave_wait_time = 30 SECONDS
+
+	var/list/spawned_waves = list()
 
 
 /datum/controller/subsystem/migrants/Initialize()
@@ -42,11 +44,15 @@ SUBSYSTEM_DEF(migrants)
 	// Unset some values, increment wave number if success
 	if(success)
 		wave_number++
+	var/datum/migrant_wave/wave = MIGRANT_WAVE(current_wave)
 	set_current_wave(null, 0)
 	if(success)
 		time_until_next_wave = time_between_waves
 	else
-		time_until_next_wave = time_between_fail_wave
+		if(wave.downgrade_wave)
+			set_current_wave(wave.downgrade_wave, wave_wait_time)
+		else
+			time_until_next_wave = time_between_fail_wave
 
 /datum/controller/subsystem/migrants/proc/try_spawn_wave()
 	var/datum/migrant_wave/wave = MIGRANT_WAVE(current_wave)
@@ -140,7 +146,12 @@ SUBSYSTEM_DEF(migrants)
 		spawn_migrant(wave, assignment)
 
 	// Increment wave spawn counter
-	wave.spawned_amount++
+	var/used_wave_type = wave.type
+	if(wave.shared_wave_type)
+		used_wave_type = wave.shared_wave_type
+	if(!spawned_waves[used_wave_type])
+		spawned_waves[used_wave_type] = 0
+	spawned_waves[used_wave_type] += 1
 
 	return TRUE
 
@@ -269,6 +280,8 @@ SUBSYSTEM_DEF(migrants)
 
 	for(var/wave_type in GLOB.migrant_waves)
 		var/datum/migrant_wave/wave = MIGRANT_WAVE(wave_type)
+		if(!wave.can_roll)
+			continue
 		if(!isnull(wave.min_active) && active_migrants < wave.min_active)
 			continue
 		if(!isnull(wave.max_active) && active_migrants > wave.max_active)
@@ -277,8 +290,12 @@ SUBSYSTEM_DEF(migrants)
 			continue
 		if(!isnull(wave.max_pop) && active_players > wave.max_pop)
 			continue
-		if(!isnull(wave.max_spawns) && wave.spawned_amount >= wave.max_spawns)
-			continue
+		if(!isnull(wave.max_spawns))
+			var/used_wave_type = wave.type
+			if(wave.shared_wave_type)
+				used_wave_type = wave.shared_wave_type
+			if(spawned_waves[used_wave_type] && spawned_waves[used_wave_type] >= wave.max_spawns)
+				continue
 		available_weighted_waves[wave_type] = wave.weight
 
 	if(!length(available_weighted_waves))
