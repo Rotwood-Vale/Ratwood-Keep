@@ -22,9 +22,6 @@
 	//What categories we are going to sort it in
 	var/list/category_tags = list(CTAG_DISABLED)
 
-	//Vrell - So we can do this on a per-class basis
-	var/allow_custom_genitals = FALSE
-
 /datum/advclass/proc/equipme(mob/living/carbon/human/H)
 	// input sleeps....
 	set waitfor = FALSE
@@ -56,28 +53,6 @@
 		for(var/mob/M in GLOB.billagerspawns)
 			to_chat(M, span_info("[H.real_name] is the [name]."))
 		GLOB.billagerspawns -= H
-	
-	//Vrell - Removing people's bits if their role doesn't allow it.
-	if(!allow_custom_genitals)
-		var/obj/item/organ/organ_to_remove = null
-		if(H.gender == MALE)
-			organ_to_remove = H.getorganslot(ORGAN_SLOT_BREASTS)
-			if(organ_to_remove)
-				organ_to_remove.Remove(H)
-				qdel(organ_to_remove)
-			organ_to_remove = H.getorganslot(ORGAN_SLOT_VAGINA)
-			if(organ_to_remove)
-				organ_to_remove.Remove(H)
-				qdel(organ_to_remove)
-		else
-			organ_to_remove = H.getorganslot(ORGAN_SLOT_PENIS)
-			if(organ_to_remove)
-				organ_to_remove.Remove(H)
-				qdel(organ_to_remove)
-			organ_to_remove = H.getorganslot(ORGAN_SLOT_TESTICLES)
-			if(organ_to_remove)
-				organ_to_remove.Remove(H)
-				qdel(organ_to_remove)
 
 /datum/advclass/proc/post_equip(mob/living/carbon/human/H)
 	addtimer(CALLBACK(H,TYPE_PROC_REF(/mob/living/carbon/human, add_credit)), 20)

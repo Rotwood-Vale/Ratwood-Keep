@@ -1,27 +1,3 @@
-/mob/living/proc/hasPenis()
-	return gender == MALE
-
-/mob/living/proc/hasTesticles()
-	return gender == MALE
-
-/mob/living/proc/hasVagina()
-	return gender == FEMALE
-
-/mob/living/proc/hasBreasts()
-	return gender == FEMALE
-
-/mob/living/carbon/human/hasPenis()
-	return getorganslot(ORGAN_SLOT_PENIS)
-
-/mob/living/carbon/human/hasTesticles()
-	return getorganslot(ORGAN_SLOT_TESTICLES)
-
-/mob/living/carbon/human/hasVagina()
-	return getorganslot(ORGAN_SLOT_VAGINA)
-
-/mob/living/carbon/human/hasBreasts()
-	return getorganslot(ORGAN_SLOT_BREASTS)
-
 /datum/sex_controller
 	var/mob/living/owner
 	//intruders
@@ -102,8 +78,8 @@
 		return
 	var/ourgroin = TRUE
 	var/ourmouth = TRUE
-	var/ourpenis = user.hasPenis()
-	var/ourvagina = user.hasVagina()
+	var/ourpenis = user.has_penis()
+	var/ourvagina = user.has_vagina()
 	if(!get_location_accessible(user, BODY_ZONE_PRECISE_MOUTH))
 		ourmouth = FALSE
 	if(!get_location_accessible(user, BODY_ZONE_PRECISE_GROIN))
@@ -126,9 +102,9 @@
 		var/theirgroin = TRUE
 		var/theirmouth = TRUE
 		var/theirchest = TRUE
-		var/theirvagina = src.hasVagina()
-		var/theirpenis = src.hasPenis()
-		var/theirbreasts = src.hasBreasts()
+		var/theirvagina = src.has_vagina()
+		var/theirpenis = src.has_penis()
+		var/theirbreasts = src.has_breasts()
 		if(!get_location_accessible(src, BODY_ZONE_PRECISE_MOUTH))
 			theirmouth = FALSE
 		if(!get_location_accessible(src, BODY_ZONE_PRECISE_GROIN))
@@ -202,7 +178,7 @@
 	if(!user)
 		testing("fuckfail")
 		return
-	if(!owner.hasPenis())
+	if(!owner.has_penis())
 		testing("fuckfail2")
 		return
 	if(user.loc != owner.loc)
@@ -288,7 +264,7 @@
 	if(user.sexcon.inass)
 		if(user.sexcon.inass != owner)
 			return
-	if(!owner.hasPenis())
+	if(!owner.has_penis())
 		testing("fuckfail2")
 		return
 	if(eatingus)
@@ -335,7 +311,7 @@
 		return
 	if(!get_location_accessible(user, BODY_ZONE_CHEST))
 		return
-	if(!user.hasBreasts() || !owner.hasPenis())
+	if(!user.has_breasts() || !owner.has_penis())
 		return
 	if(user.sexcon.ontits)
 		if(user.sexcon.ontits != owner)
@@ -404,7 +380,7 @@
 	if(HAS_TRAIT(owner, TRAIT_LIMPDICK))
 		to_chat(owner, "<span class='warning'>My soldier won't stand up for me.</span>")
 		return
-	if(!owner.hasPenis())
+	if(!owner.has_penis())
 		return
 	if(fucking)
 		testing("mfuckfail4")
@@ -438,7 +414,7 @@
 		return
 	if(!get_location_accessible(owner, BODY_ZONE_PRECISE_GROIN))
 		return
-	if(!owner.hasVagina())
+	if(!owner.has_vagina())
 		return
 	if(user.loc != owner.loc)
 		return
@@ -497,10 +473,10 @@
 		return
 	if(!user.lying || owner.lying)
 		return
-	if(!user.hasPenis())
+	if(!user.has_penis())
 		testing("ridefail4")
 		return
-	if(!owner.hasVagina())
+	if(!owner.has_vagina())
 		testing("ridefail5")
 		return
 	if(HAS_TRAIT(user, TRAIT_LIMPDICK))
@@ -566,7 +542,7 @@
 		else if(user.sexcon.riding == owner) //start eating instead
 			testing("eatfail6")
 			user.sexcon.stop_riding()
-	if(!user.hasVagina()) //start sucking instead
+	if(!user.has_vagina()) //start sucking instead
 		return
 	if(weeating)
 		testing("sp1")
@@ -612,7 +588,7 @@
 		else if(user.sexcon.riding == owner) //start eating instead
 			testing("eatfail6")
 			user.sexcon.stop_riding()
-	if(!user.hasPenis()) //start sucking instead
+	if(!user.has_penis()) //start sucking instead
 		return
 	if(weeating)
 		testing("sp1")
@@ -1092,7 +1068,7 @@
 	if(owner.stat != CONSCIOUS)
 		cancel_our_actions()
 	
-	if(owner.hasTesticles())
+	if(owner.has_testicles())
 		if(horny > 30 && !blueballs)
 			blueballs = TRUE
 
@@ -1127,7 +1103,7 @@
 		owner.playsound_local(owner, 'sound/misc/mat/end.ogg', 100)
 		return TRUE
 	
-	if(owner.hasTesticles())
+	if(owner.has_testicles())
 		if(horny <= 0 && oldhorny > 0 && blueballs && !source)
 			owner.add_stress(/datum/stressevent/blueb)
 			horny = clamp(horny - 80, -100, 250)
@@ -1260,7 +1236,7 @@
 							wuzantag = TRUE
 				if(!wuzantag)
 					adjust_playerquality(-2, M.ckey, reason="Raped as a non villain.")
-			if(owner.hasTesticles() && prob(20))
+			if(owner.has_testicles() && prob(20))
 				if(!fucking.mob_timers["preggo"])
 					fucking.mob_timers["preggo"] = world.time
 					addtimer(CALLBACK(fucking, /mob/living/carbon/human/.proc/become_pregnant, husbando), rand(3 MINUTES, 13 MINUTES))
@@ -1320,7 +1296,7 @@
 					owner.add_stress(/datum/stressevent/cummid)
 			else
 				owner.add_stress(/datum/stressevent/cumbad)
-	if(owner.hasVagina())
+	if(owner.has_vagina())
 		if(!owner.cmode)
 			owner.visible_message("<span class='notice'>[owner] tightens in pleasure!</span>")
 		else
@@ -1375,7 +1351,7 @@
 /mob/living/carbon/human/proc/become_pregnant(husband)
 	if(QDELETED(src))
 		return
-	if(!hasVagina())
+	if(!has_vagina())
 		return
 	if(stat == DEAD)
 		return

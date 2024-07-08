@@ -114,6 +114,18 @@
 		for(var/obj/item/embedded as anything in embedded_objects)
 			bodypart_status += "<a href='?src=[owner_ref];embedded_object=[REF(embedded)];embedded_limb=[REF(src)]'>[embedded.name]</a>"
 	
+	if(owner)
+		if(body_zone == BODY_ZONE_CHEST || body_zone == BODY_ZONE_PRECISE_GROIN) //Vrell - Makes genitals visible when inspecting the chest.
+			bodypart_status += "<B>Genitalia:</B>"
+			if(owner.has_penis())
+				bodypart_status += "[owner] has a penis."
+			if(owner.has_testicles())
+				bodypart_status += "[owner] has testicles."
+			if(owner.has_breasts())
+				bodypart_status += "[owner] has breasts."
+			if(owner.has_vagina())
+				bodypart_status += "[owner] has a vagina."
+
 	return bodypart_status
 
 /obj/item/bodypart/proc/check_for_injuries(mob/user, advanced = FALSE)

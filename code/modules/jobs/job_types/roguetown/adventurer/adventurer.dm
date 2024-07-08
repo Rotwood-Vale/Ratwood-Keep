@@ -31,8 +31,6 @@ GLOBAL_VAR_INIT(adventurer_hugbox_duration_still, 3 MINUTES)
 	job_reopens_slots_on_death = TRUE
 	same_job_respawn_delay = 15 MINUTES
 
-	allow_custom_genitals = TRUE //Vrell - This prevents the job itself from culling the parts since advanced classes determine if they are allowed
-
 
 /datum/job/roguetown/adventurer/after_spawn(mob/living/L, mob/M, latejoin = TRUE)
 	..()
