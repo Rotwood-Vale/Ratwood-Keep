@@ -11,52 +11,48 @@
 	/// Trait given by this curse
 	var/trait
 
-///Called on life ticks
 /datum/curse/proc/on_life()
 	return 
 
-///Called on death
 /datum/curse/proc/on_death()
 	return 
 
+/datum/curse/proc/on_gain(mob/living/carbon/human/owner)
+	ADD_TRAIT(owner, trait, TRAIT_CURSE)
+	to_chat(owner, span_userdanger("Something is wrong... I feel cursed."))
+	to_chat(owner, span_danger(description))
+	owner.playsound_local(get_turf(owner), 'sound/misc/cursed.ogg', 80, FALSE, pressure_affected = FALSE)
+	return
 
-///Calls the on_life proc for all curses affecting a mob.
+/datum/curse/proc/on_loss(mob/living/carbon/human/owner)
+	REMOVE_TRAIT(owner, trait, TRAIT_CURSE)
+	to_chat(owner, span_userdanger("Something has changed... I feel relieved."))
+	owner.playsound_local(get_turf(owner), 'sound/misc/curse_lifted.ogg', 80, FALSE, pressure_affected = FALSE)
+	qdel(src)
+	return
+
 /mob/living/carbon/human/proc/handle_curses()
 	for(var/curse in curses)
-		var/datum/curse/C = new curse()
+		var/datum/curse/C = curse
 		C.on_life(src)
-		qdel(C)
 
-///Adds a curse to a human mob.
-///@param C: The curse to be added.
-///@return TRUE if the curse was successfully added, FALSE otherwise.
 /mob/living/carbon/human/proc/add_curse(datum/curse/C)
 	if(is_cursed(C))
 		return FALSE
+
+	C = new C()
 	curses += C
-	ADD_TRAIT(src, C.trait, TRAIT_CURSE)
-	to_chat(src, span_userdanger("Something is wrong... I feel cursed."))
-	to_chat(src, span_danger(C.description))
-	src.playsound_local(get_turf(src), 'sound/misc/cursed.ogg', 80, FALSE, pressure_affected = FALSE)
+	C.on_gain(src)
 	return TRUE
 
-///Removes a curse from a human mob.
-///@param C: The curse to be removed.
-///@return TRUE if the curse was successfully removed, FALSE otherwise.
-/mob/living/carbon/human/proc/remove_curse(var/datum/curse/C)
+/mob/living/carbon/human/proc/remove_curse(datum/curse/C)
 	if(!is_cursed(C))
 		return FALSE
 	
-	REMOVE_TRAIT(src, C.trait, TRAIT_CURSE)
 	curses -= C
-	to_chat(src, span_userdanger("Something has changed... I feel relieved."))
-	src.playsound_local(get_turf(src), 'sound/misc/curse_lifted.ogg', 80, FALSE, pressure_affected = FALSE)
+	C.on_loss(src)
 	return TRUE
 
-
-///Checks if a given curse is affecting a human mob.
-///@param C: The curse to check.
-///@return TRUE if the curse is affecting the mob, FALSE otherwise.
 /mob/living/carbon/human/proc/is_cursed(datum/curse/C)
 	if(!src)
 		return FALSE
@@ -139,8 +135,13 @@
 
 /datum/curse/zizo
 	name = "Zizo's Curse"
-	description = ""
+	description = "There's something terribly, terribly wrong with me."
 	trait = TRAIT_ZIZO_CURSE
+	var/atom/movable/screen/fullscreen/maniac/hallucinations
+
+/datum/curse/zizo/on_gain(mob/living/carbon/human/owner)
+	. = ..()
+	hallucinations = owner.overlay_fullscreen("maniac", /atom/movable/screen/fullscreen/maniac)
 
 /datum/curse/graggar
 	name = "Graggar's Curse"
@@ -158,7 +159,7 @@
 	trait = TRAIT_BAOTHA_CURSE
 
 //////////////////////////
-/// PERIODICAL EFFECTS ///
+///      ON LIFE       ///
 //////////////////////////
 
 /datum/curse/pestra/on_life(mob/living/carbon/human/owner)
@@ -194,9 +195,18 @@
 
 /datum/curse/graggar/on_life(mob/living/carbon/human/owner)
 	. = ..()		
-	if(prob(4))
+	if(prob(5))
 		for(var/mob/living/carbon/human in view(1, owner))
 			owner.emote("rage")
 			human.attacked_by(owner.get_active_held_item(), owner)
 			owner.freak_out()
 			break
+
+// Currently calls maniac hallucinations
+/datum/curse/zizo/on_life(mob/living/carbon/human/owner)
+	. = ..()
+	handle_visions(owner, hallucinations)
+	handle_hallucinations(owner)
+	handle_floors(owner)
+	handle_walls(owner)
+	
