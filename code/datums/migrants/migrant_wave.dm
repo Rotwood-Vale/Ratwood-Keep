@@ -100,7 +100,7 @@
 /datum/migrant_wave/bandit
 	name = "Bandit Raid"
 	downgrade_wave = /datum/migrant_wave/bandit_down_one
-	weight = 50
+	weight = 5
 	roles = list(
 		/datum/migrant_role/bandit = 4,
 	)
@@ -109,7 +109,6 @@
 	name = "Bandit Raid"
 	downgrade_wave = /datum/migrant_wave/bandit_down_two
 	can_roll = FALSE
-	weight = 20
 	roles = list(
 		/datum/migrant_role/bandit = 3,
 	)
