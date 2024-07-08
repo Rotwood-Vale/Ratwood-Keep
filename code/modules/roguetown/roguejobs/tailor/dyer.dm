@@ -9,10 +9,6 @@
 	var/activecolor = "#FFFFFF"
 	/// Allow holder'd mobs
 	var/allow_mobs = TRUE
-	/// Minimum lightness for normal mode out of 255
-	var/minimum_normal_lightness = 50
-	/// Max saturation for normal mode out of 255
-	var/maximum_normal_saturation = 256
 	var/list/allowed_types = list(
 			/obj/item/clothing/suit/roguetown/shirt/robe,
 			/obj/item/clothing/suit/roguetown/shirt/dress,
@@ -31,7 +27,41 @@
 			/obj/item/clothing/shoes/roguetown/simpleshoes,
 			/obj/item/clothing/suit/roguetown/armor/gambeson
 			)
-
+	var/static/list/selectable_colors = list(
+  		"White" = "#ffffff", 
+		"Black" = "#414143",
+		"Light Grey" = "#999999",
+		"Mage Grey" = "#6c6c6c",
+		"Mage Red" = "#b8252c",
+		"Mage Blue" = "#4756d8",
+		"Mage Yellow" = "#c1b144",
+		"Mage Green" = "#759259",
+		"Chalk White" = "#f4ecde",
+		"Dunked in Water" = "#bbbbbb",
+		"Cream" = "#fffdd0",
+		"Orange" = "#bd6606",
+		"Gold" = "#f9a602",
+		"Yarrow" = "#f0cb76",
+		"Yellow Weld" = "#f4c430",
+		"Yellow Ochre" = "#cb9d06",
+		"Baby Puke" = "#b5b004",
+		"Olive" = "#98bf64",
+		"Green" = "#428138",
+		"Dark Green" = "#264d26",
+		"Teal" = "#249589",
+		"Periwinkle Blue" = "#8f99fb",
+		"Woad Blue" = "#597fb9",
+		"Royal Purple" = "#8747b1",
+		"Magenta" = "#962e5c",
+		"Orchil" = "#66023C",
+		"Red Ochre" = "#913831",
+		"Red" = "#a32121",
+		"Maroon" = "#550000",
+		"Peasant Brown" = "#685542",
+		"Dirt" = "#7c6d5c",
+		"Chestnut" = "#613613",
+		"Russet" = "#7f461b"
+		)
 /obj/machinery/gear_painter/Destroy()
 	inserted.forceMove(drop_location())
 	return ..()
@@ -39,13 +69,11 @@
 /obj/machinery/gear_painter/attackby(obj/item/I, mob/living/user)
 	if(allow_mobs && istype(I, /obj/item/clothing/head/mob_holder))
 		var/obj/item/clothing/head/mob_holder/H = I
-		var/mob/victim = H.held_mob
 		if(!user.transferItemToLoc(I, src))
 			to_chat(user, "<span class='warning'>[I] is stuck to your hand!</span>")
 			return
 		if(!QDELETED(H))
 			H.release()
-		insert_mob(victim, user)
 
 	if(is_type_in_list(I, allowed_types) && is_operational())
 		if(!user.transferItemToLoc(I, src))
@@ -57,27 +85,8 @@
 	else
 		return ..()
 
-/obj/machinery/gear_painter/proc/insert_mob(mob/victim, mob/user)
-	if(inserted)
-		return
-	if(user)
-		visible_message("<span class='warning'>[user] stuffs [victim] into [src]!</span>")
-	inserted = victim
-	inserted.forceMove(src)
-
 /obj/machinery/gear_painter/AllowDrop()
 	return FALSE
-
-/obj/machinery/gear_painter/AltClick(mob/user)
-	. = ..()
-	if(!user.CanReach(src))
-		return
-	if(!inserted)
-		return
-	to_chat(user, "<span class='notice'>You remove [inserted] from [src]")
-	inserted.forceMove(drop_location())
-	inserted = null
-	updateUsrDialog()
 
 /obj/machinery/gear_painter/ui_interact(mob/user)
 	if(!is_operational())
@@ -94,7 +103,7 @@
 		dat += "<A href='?src=\ref[src];clear=1'>Remove paintjob.</A><BR><BR>"
 		dat += "<A href='?src=\ref[src];eject=1'>Eject item.</A><BR><BR>"
 
-	var/datum/browser/menu = new(user, "colormate","Dye Station Control Panel", 800, 600, src)
+	var/datum/browser/menu = new(user, "colormate","Dye Station Control Panel", 400, 400, src)
 	menu.set_content(dat.Join(""))
 	menu.open()
 
@@ -109,15 +118,14 @@
 		return
 
 	if(href_list["select"])
-		var/newcolor = input(usr, "Choose a color.", "", activecolor) as color|null
-		if(newcolor)
-			activecolor = newcolor
+		var/choice = input(usr,"Choose your dye:","Dyes",null) as null|anything in selectable_colors
+		if(!choice)
+			return
+		activecolor = selectable_colors[choice]
 		updateUsrDialog()
 
 	if(href_list["paint"])
 		if(!inserted)
-			return
-		if(!check_valid_color(activecolor, usr))
 			return
 		inserted.add_atom_colour(activecolor, FIXED_COLOUR_PRIORITY)
 		playsound(src, "bubbles", 50, 1)
@@ -136,14 +144,3 @@
 		inserted.forceMove(drop_location())
 		inserted = null
 		updateUsrDialog()
-
-/obj/machinery/gear_painter/proc/check_valid_color(list/cm, mob/user)
-	if(!islist(cm))		// normal
-		var/list/HSV = ReadHSV(RGBtoHSV(cm))
-		if(HSV[3] < minimum_normal_lightness)
-			to_chat(user, "<span class='warning'>[cm] is far too dark (min lightness [minimum_normal_lightness]!</span>")
-			return FALSE
-		if(HSV[2] > maximum_normal_saturation)
-			to_chat(user, "<span class='warning'>[cm] is far too gaudy (max saturation [maximum_normal_saturation]!</span>")
-			return FALSE
-		return TRUE
