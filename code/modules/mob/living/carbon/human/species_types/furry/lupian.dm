@@ -28,7 +28,6 @@
 	limbs_icon_f = 'icons/mob/species/female.dmi'
 	dam_icon = 'icons/roguetown/mob/bodies/dam/dam_male.dmi'
 	dam_icon_f = 'icons/roguetown/mob/bodies/dam/dam_female.dmi'
-	use_m = TRUE
 	soundpack_m = /datum/voicepack/male
 	soundpack_f = /datum/voicepack/female
 	offset_features = list(
