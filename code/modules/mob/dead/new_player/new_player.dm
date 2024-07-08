@@ -260,7 +260,7 @@ GLOBAL_LIST_INIT(roleplay_readme, world.file2list("strings/rt/rp_prompt.txt"))
 
 		AttemptLateSpawn(href_list["SelectedJob"])
 		return
- 
+
 	if(!ready && href_list["preference"])
 		if(client)
 			client.prefs.process_link(src, href_list)
@@ -603,7 +603,7 @@ GLOBAL_LIST_INIT(roleplay_readme, world.file2list("strings/rt/rp_prompt.txt"))
 		if(!SSjob.name_occupations[category[1]])
 			testing("HELP NO THING FOUND FOR [category[1]]")
 			continue
-		
+
 		var/list/available_jobs = list()
 		for(var/job in category)
 			var/datum/job/job_datum = SSjob.name_occupations[job]
@@ -657,7 +657,7 @@ GLOBAL_LIST_INIT(roleplay_readme, world.file2list("strings/rt/rp_prompt.txt"))
 					if(column_counter > 0 && (column_counter % 3 == 0))
 						dat += "</td><td valign='top'>"
 					break
-			
+
 			for(var/job in available_jobs)
 				var/datum/job/job_datum = SSjob.name_occupations[job]
 				if(job_datum)
@@ -725,12 +725,6 @@ GLOBAL_LIST_INIT(roleplay_readme, world.file2list("strings/rt/rp_prompt.txt"))
 	return
 
 /mob/living/carbon/human/after_creation()
-#ifdef MATURESERVER
-	if(gender == MALE)
-		sexcon = new/datum/sex_controller/male(src)
-	else
-		sexcon = new/datum/sex_controller/female(src)
-#endif
 	if(dna?.species)
 		dna.species.after_creation(src)
 	roll_stats()
@@ -739,7 +733,6 @@ GLOBAL_LIST_INIT(roleplay_readme, world.file2list("strings/rt/rp_prompt.txt"))
 	. = new_character
 	if(.)
 		new_character.key = key		//Manually transfer the key to log them in
-		new_character.can_do_sex()
 		new_character.stop_sound_channel(CHANNEL_LOBBYMUSIC)
 		var/area/joined_area = get_area(new_character.loc)
 		if(joined_area)
