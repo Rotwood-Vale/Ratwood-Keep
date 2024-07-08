@@ -130,7 +130,7 @@
 	name = "verewolf's skin"
 	desc = ""
 	icon_state = null
-	body_parts_covered = CHEST|VITALS|LEGS|ARMS|NECK|HEAD|FEET|HANDS
+	body_parts_covered = CHEST|VITALS|LEGS|ARMS|NECK|HEAD|FEET|HANDS|HAIR|EARS|HEAD
 	armor = list("blunt" = 100, "slash" = 90, "stab" = 80, "bullet" = 70, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
 	prevent_crits = list(BCLASS_CUT, BCLASS_CHOP, BCLASS_STAB, BCLASS_BLUNT, BCLASS_TWIST)
 	blocksound = SOFTHIT
