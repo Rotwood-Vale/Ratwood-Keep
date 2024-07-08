@@ -625,10 +625,10 @@
 /datum/sex_controller/proc/spanify_force(string)
 	switch(force)
 		if(SEX_FORCE_LOW)
-			return "<span class='love_low'>[string]</font>"
+			return "<span class='love_low'>[string]</span>"
 		if(SEX_FORCE_MID)
-			return "<span class='love_mid'>[string]</font>"
+			return "<span class='love_mid'>[string]</span>"
 		if(SEX_FORCE_HIGH)
-			return "<span class='love_high'>[string]</font>"
+			return "<span class='love_high'>[string]</span>"
 		if(SEX_FORCE_EXTREME)
-			return "<span class='love_extreme'>[string]</font>"
+			return "<span class='love_extreme'>[string]</span>"
