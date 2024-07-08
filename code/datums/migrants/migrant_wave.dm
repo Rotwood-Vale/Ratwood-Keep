@@ -50,6 +50,7 @@
 	roles = list(
 		/datum/migrant_role/pilgrim = 3,
 	)
+	greet_text = "Fleeing from unfortune and hardship, you and a handful of survivors get closer to Rockhill, looking for refuge and work, finally almost being there, almost..."
 
 /datum/migrant_wave/adventurer_small
 	name = "Meek Adventure Party"
@@ -57,6 +58,7 @@
 	roles = list(
 		/datum/migrant_role/adventurer = 3,
 	)
+	greet_text = "Together with a party of trusted friends we decided to venture out, seeking thrills, glory and treasure, ending up in the misty and damp bog underneath Rockhill, perhaps getting ourselves into more than what we bargained for."
 
 /datum/migrant_wave/bandit_small
 	name = "Bandits"
@@ -72,6 +74,7 @@
 	roles = list(
 		/datum/migrant_role/pilgrim = 6,
 	)
+	greet_text = "Fleeing from unfortune and hardship, you and a handful of survivors get closer to Rockhill, looking for refuge and work, finally almost being there, almost..."
 
 /datum/migrant_wave/adventurer
 	name = "Adventure Party"
@@ -79,6 +82,7 @@
 	roles = list(
 		/datum/migrant_role/adventurer = 6,
 	)
+	greet_text = "Together with a party of trusted friends we decided to venture out, seeking thrills, glory and treasure, ending up in the misty and damp bog underneath Rockhill, perhaps getting ourselves into more than what we bargained for."
 
 /datum/migrant_wave/bandit
 	name = "Bandit Raid"
