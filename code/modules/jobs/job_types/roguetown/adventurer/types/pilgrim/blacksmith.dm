@@ -43,6 +43,7 @@
 		H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 3, TRUE) // The strongest fists in the land.
 		H.mind.adjust_skillrank(/datum/skill/combat/knives, 1, TRUE) 
 		H.mind.adjust_skillrank(/datum/skill/craft/crafting, 2, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/craft/masonry, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/craft/engineering, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/craft/blacksmithing, 2, TRUE)
