@@ -388,7 +388,8 @@
 /datum/crafting_recipe/roguetown/rod
 	name = "fishing rod"
 	result = /obj/item/fishingrod/crafted
-	reqs = list(/obj/item/grown/log/tree/small = 1)
+	reqs = list(/obj/item/grown/log/tree/small = 1,
+		/obj/item/natural/fibers = 2)
 
 
 /obj/item/fishingrod/crafted
