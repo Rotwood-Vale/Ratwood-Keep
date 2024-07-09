@@ -5,10 +5,10 @@
 	name = "Humen"
 	id = "humen"
 	desc = "<b>Humen</b><br>\
-	Humen (or Human) are the eldest of the weeping gods creation. Noted for their\
-	tenacity and overwhelming population, humans tend to outnumber the other races. \
-	at a rate of about ten to one in regions such as Grenzelhoft. Althrough to the west \
-	the opposite is true. Humen come from a vast swathe of cultures and ethnicity, most of which\
+	Humen are the eldest of the weeping god's creation. Noted for their\
+	tenacity and overwhelming population, humans tend to outnumber the other races; \
+	at a rate of about ten to one in regions such as Grenzelhoft, althrough to the west \
+	the opposite is true. Humen come from a vast swathe of cultures and ethnicities, most of which\
 	have historically been at odds with one another. Being the eldest of the weeping God, humen\
 	tend to find fortune easier than the other races, and are so diverse that no other racial trait\
 	are dominant in their species..."
@@ -43,8 +43,8 @@
 		OFFSET_NECK_F = list(0,-1), OFFSET_MOUTH_F = list(0,-1), OFFSET_PANTS_F = list(0,0), \
 		OFFSET_SHIRT_F = list(0,0), OFFSET_ARMOR_F = list(0,0), OFFSET_UNDIES_F = list(0,0), \
 		)
-	specstats = list("strength" = 0, "perception" = 1, "intelligence" = -1, "constitution" = 0, "endurance" = 1, "speed" = -1, "fortune" = 0)
-	specstats_f = list("strength" = -1, "perception" = 0, "intelligence" = 2, "constitution" = -1, "endurance" = 0, "speed" = 1, "fortune" = 0)
+	specstats = list("strength" = 0, "perception" = -1, "intelligence" = 2, "constitution" = 0, "endurance" = 2, "speed" = 0, "fortune" = 0) // Better stats, no traits
+	specstats_f = list("strength" = 0, "perception" = 0, "intelligence" = 2, "constitution" = 0, "endurance" = 1, "speed" = 0, "fortune" = 0)
 	enflamed_icon = "widefire"
 	customizers = list(
 		/datum/customizer/organ/eyes/humanoid,

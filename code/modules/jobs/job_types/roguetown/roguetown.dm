@@ -77,6 +77,10 @@
 			H.mind.adjust_skillrank(/datum/skill/craft/cooking, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/sewing, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/weaving, 1, TRUE)
+		if(H.gender != weak_gender) // I don't like it but whatever
+			H.mind.adjust_skillrank(/datum/skill/misc/climbing, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/craft/crafting, 1, TRUE)
 		if(H.dna)
 			if(H.dna.species)
 				if(H.dna.species.name in list("Elf", "Half-Elf"))

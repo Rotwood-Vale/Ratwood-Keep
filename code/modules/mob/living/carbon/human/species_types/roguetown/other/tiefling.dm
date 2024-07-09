@@ -5,8 +5,8 @@
 	name = "Tiefling"
 	id = "tiefling"
 	desc = "<b>Tiefling</b><br>\
-	Tieflings, also known as Infernal-Spawn by the Dwarves, are a relatively new species in Grimmoria\
-	Having shown up sometime within the past two centuries, very little is known about their culture \
+	Tieflings, also known as Infernal-Spawn by the Dwarves, are a relatively new species\
+	having shown up sometime within the past two centuries, very little is known about their culture \
 	as many seem to simply intergrate within whatever society they find themselves in. \
 	Tieflings usually cause strong disturbances with their presence, as their fiendish looks \
 	Many have claimed that they are the spawn of a succubus (Or incubus) laying with a mortal. \
