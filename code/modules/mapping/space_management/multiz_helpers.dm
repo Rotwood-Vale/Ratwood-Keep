@@ -13,7 +13,7 @@
 	if(my_z == compare_z)
 		return TRUE
 	if(my_z > compare_z)
-		for(var/i in my_z to compare_z)
+		for(var/i in compare_z to my_z)
 			if(!i || i<0)
 				return FALSE
 			if(i == compare_z)
