@@ -49,6 +49,17 @@ SUBSYSTEM_DEF(mapping)
 		config = load_map_config(error_if_missing = FALSE)
 #endif
 
+/datum/controller/subsystem/mapping/proc/spawn_random_travel_tiles()
+	spawn_random_travel_transition("vampexit", "vampin", TRAIT_VAMPMANSION)
+	spawn_random_travel_transition("banditexit", "banditin", TRAIT_BANDITCAMP)
+
+/datum/controller/subsystem/mapping/proc/spawn_random_travel_transition(travel_id, travel_goes_to_id, required_trait)
+	var/atom/location = get_free_travel_spawn_point()
+	if(!location)
+		log_world("Unable to find spot for random travel transition: [travel_id] [travel_goes_to_id]")
+		return
+	create_travel_tiles(location, travel_id, travel_goes_to_id, required_trait)
+
 /datum/controller/subsystem/mapping/Initialize(timeofday)
 	HACK_LoadMapConfig()
 	if(initialized)
@@ -104,6 +115,7 @@ SUBSYSTEM_DEF(mapping)
 	setup_map_transitions()
 	generate_station_area_list()
 	initialize_reserved_level(transit.z_value)
+	spawn_random_travel_tiles()
 	return ..()
 
 /datum/controller/subsystem/mapping/proc/wipe_reservations(wipe_safety_delay = 100)

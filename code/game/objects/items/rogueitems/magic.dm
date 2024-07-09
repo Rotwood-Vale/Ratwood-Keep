@@ -45,6 +45,8 @@
 			S.ManualFollow(HL)
 			last_scry = world.time
 			user.visible_message(span_danger("[user] stares into [src], [user.p_their()] eyes rolling back into [user.p_their()] head."))
+			message_admins("SCRYING: [user] ([user.ckey]) has used the scrying orb to leer at [HL] ([HL.ckey])")
+			log_game("SCRYING: [user] ([user.ckey]) has used the scrying orb to leer at [HL] ([HL.ckey])")
 			addtimer(CALLBACK(S, TYPE_PROC_REF(/mob/dead/observer, reenter_corpse)), 8 SECONDS)
 			if(!HL.stat)
 				if(HL.STAPER >= 15)
