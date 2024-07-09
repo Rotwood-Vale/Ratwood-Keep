@@ -149,6 +149,9 @@
 		if("toggle_missing")
 			if(customizer.allows_disabling)
 				entry.disabled = !entry.disabled
+			if(ishuman(user))
+				var/mob/living/carbon/human/humanized = user
+				humanized.update_body_parts(TRUE)
 		if("change_choice")
 			var/list/choice_list = list()
 			for(var/choice_type in customizer.customizer_choices)

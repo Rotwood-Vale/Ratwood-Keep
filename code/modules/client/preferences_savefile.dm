@@ -486,6 +486,8 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 
 	S["customizer_entries"] >> customizer_entries
 	validate_customizer_entries()
+	if(!S["is_updated_for_genitalia"]) //Vrell - should fix loading old characters giving all genitals.
+		genderize_customizer_entries()
 
 	return TRUE
 
@@ -555,6 +557,8 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	
 	WRITE_FILE(S["update_mutant_colors"] , update_mutant_colors)
 	WRITE_FILE(S["headshot_link"] , headshot_link)
+
+	WRITE_FILE(S["is_updated_for_genitalia"], TRUE)
 
 	return TRUE
 
