@@ -40,6 +40,7 @@
 	var/aportalid = "REPLACETHIS"
 	var/aportalgoesto = "REPLACETHIS"
 	var/aallmig
+	var/required_trait = null
 
 /obj/structure/fluff/traveltile/Initialize()
 	GLOB.traveltiles += src
@@ -95,10 +96,21 @@
 	. = ..()
 
 /obj/structure/fluff/traveltile/proc/can_go(atom/movable/AM)
+	. = TRUE
 	if(AM.recent_travel)
 		if(world.time < AM.recent_travel + 15 SECONDS)
+			. = FALSE
+	if(. && required_trait && isliving(AM))
+		var/mob/living/L = AM
+		if(HAS_TRAIT(L, required_trait))
+			for(var/mob/living/carbon/human/H in hearers(6,src))
+				if(!HAS_TRAIT(H, required_trait))
+					to_chat(H, "<b>I discover a well hidden entrance</b>")
+					ADD_TRAIT(H, required_trait, TRAIT_GENERIC)
+			return TRUE
+		else
+			to_chat(L, "<b>It is a dead end.</b>")
 			return FALSE
-	return TRUE
 
 /atom/movable
 	var/recent_travel = 0
@@ -136,33 +148,9 @@
 	if(!fou)
 		to_chat(AM, "<b>It is a dead end.</b>")
 
-/obj/structure/fluff/traveltile/bandit/can_go(mob/user)
-	. = ..()
-	if(.)
-		var/mob/living/L = user
-		if(HAS_TRAIT(L, TRAIT_BANDITCAMP))
-			for(var/mob/living/carbon/human/H in hearers(6,src))
-				if(!HAS_TRAIT(H, TRAIT_BANDITCAMP))
-					to_chat(user, "<b>I discover the entrance to the strange mansion</b>")
-					ADD_TRAIT(H, TRAIT_BANDITCAMP, TRAIT_GENERIC)
-			return TRUE
-		else
-			to_chat(user, "<b>It is a dead end.</b>")
-			return FALSE
+/obj/structure/fluff/traveltile/bandit
 
-/obj/structure/fluff/traveltile/vampire/can_go(mob/user)
-	. = ..()
-	if(.)
-		var/mob/living/L = user
-		if(HAS_TRAIT(L, TRAIT_VAMPMANSION))
-			for(var/mob/living/carbon/human/H in hearers(6,src))
-				if(!HAS_TRAIT(H, TRAIT_VAMPMANSION))
-					to_chat(user, "<b>I discover the entrance to the vampire mansion.</b>")
-					ADD_TRAIT(H, TRAIT_VAMPMANSION, TRAIT_GENERIC)
-			return TRUE
-		else
-			to_chat(user, "<b>It is a dead end.</b>")
-			return FALSE
+/obj/structure/fluff/traveltile/vampire
 
 /obj/structure/fluff/traveltile/dungeon
 	name = "gate"

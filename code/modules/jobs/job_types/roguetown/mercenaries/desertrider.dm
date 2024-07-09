@@ -24,14 +24,11 @@
 	belt = /obj/item/storage/belt/rogue/leather/shalal
 	armor = /obj/item/clothing/suit/roguetown/armor/plate/scale
 	beltr = /obj/item/storage/belt/rogue/pouch/coins/poor
-	beltl = /obj/item/rogueweapon/sword/long/rider
+	backl = /obj/item/rogueweapon/sword/long/rider
+	beltl = /obj/item/flashlight/flare/torch
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/black
 	pants = /obj/item/clothing/under/roguetown/chainlegs/iron
 	neck = /obj/item/clothing/neck/roguetown/shalal
-
-	var/obj/item/flashlight/flare/torch/T = new()
-	T.spark_act()
-	H.put_in_hands(T,forced=TRUE)
 
 	// A quick check to make sure the desert rider is canonical
 	var/static/list/canonical_heritage_check_list = list(

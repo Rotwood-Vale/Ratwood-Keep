@@ -69,9 +69,8 @@
 
 /datum/supply_pack/rogue/weapons/stunmace
 	name = "Stunmaces"
-	cost = 300
+	cost = 450
 	contains = list(
-					/obj/item/rogueweapon/mace/stunmace,
 					/obj/item/rogueweapon/mace/stunmace,
 					/obj/item/rogueweapon/mace/stunmace,
 				)
