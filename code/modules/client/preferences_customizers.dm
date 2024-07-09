@@ -149,7 +149,7 @@
 		if("toggle_missing")
 			if(customizer.allows_disabling)
 				entry.disabled = !entry.disabled
-			if(ishuman(user))
+			if(ishuman(user)) // Vrell - idk why this is needed here but it fixes shit.
 				var/mob/living/carbon/human/humanized = user
 				humanized.update_body_parts(TRUE)
 		if("change_choice")
