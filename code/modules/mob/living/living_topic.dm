@@ -33,3 +33,16 @@
 			else
 				message += span_deadsay("[p_they(TRUE)] [p_are()] still earthbound.")
 	return message
+
+//Vrell - Moved this here 
+/mob/living/proc/has_penis()
+	return gender == MALE
+
+/mob/living/proc/has_testicles()
+	return gender == MALE
+
+/mob/living/proc/has_vagina()
+	return gender == FEMALE
+
+/mob/living/proc/has_breasts()
+	return gender == FEMALE

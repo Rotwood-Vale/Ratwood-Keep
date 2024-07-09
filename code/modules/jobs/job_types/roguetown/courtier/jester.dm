@@ -11,9 +11,7 @@
 	tutorial = "The Grenzelhofts were known for their Jesters, wisemen with a tongue just as sharp as their wit. \
 		You command a position of a fool, envious of the position your superiors have upon you. \
 		Your cheap tricks and illusions of intelligence will only work for so long, \
-		and someday you'll find yourself at the end of something sharper than you. \
-		\
-		This role allows for full customization."
+		and someday you'll find yourself at the end of something sharper than you."
 
 	allowed_ages = ALL_AGES_LIST
 	spells = list(/obj/effect/proc_holder/spell/self/telljoke,/obj/effect/proc_holder/spell/self/telltragedy)
@@ -22,8 +20,6 @@
 	give_bank_account = TRUE
 	min_pq = -4 //retard jesters are funny so low PQ requirement
 	max_pq = null
-
-	allow_custom_genitals = TRUE
 
 /datum/outfit/job/roguetown/jester/pre_equip(mob/living/carbon/human/H)
 	..()

@@ -46,7 +46,6 @@
 	var/list/customizers = pref_species.customizers
 	if(!customizers)
 		return
-	dat += "Some options, such as genitalia, may be altered due to role at round start. Your preferences can be obtained in-game through procedures such as surgery."
 	dat += "<table width='100%'>"
 	dat += "<td valign='top' width='33%'>"
 	var/iterated_customizers = 0

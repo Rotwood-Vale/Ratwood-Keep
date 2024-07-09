@@ -8,9 +8,7 @@
 
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
-	tutorial = "Picked out of your political value rather than likely any form of love, you have become the King's most trusted confidant and likely friend throughout your marriage. Your loyalty and, perhaps, love; will be tested this day. For the daggers that threaten your beloved are as equally pointed at your own throat. \
-		\
-		This role allows for full customization."
+	tutorial = "Picked out of your political value rather than likely any form of love, you have become the King's most trusted confidant and likely friend throughout your marriage. Your loyalty and, perhaps, love; will be tested this day. For the daggers that threaten your beloved are as equally pointed at your own throat."
 
 	spells = list(/obj/effect/proc_holder/spell/self/convertrole/servant)
 	outfit = /datum/outfit/job/roguetown/lady
@@ -19,8 +17,6 @@
 	give_bank_account = TRUE
 	min_pq = 0
 	max_pq = null
-
-	allow_custom_genitals = TRUE
 
 /datum/job/roguetown/exlady //just used to change the ladys title
 	title = "Queen Dowager"

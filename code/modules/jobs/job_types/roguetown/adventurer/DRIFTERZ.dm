@@ -29,8 +29,6 @@
 	spawn_positions = 0
 	advclass_cat_rolls = list(CTAG_PILGRIM = 10, CTAG_ADVENTURER = 5)
 
-	allow_custom_genitals = TRUE //Vrell - This prevents the job itself from culling the parts since advanced classes determine if they are allowed
-
 /datum/job/roguetown/drifters/after_spawn(mob/living/L, mob/M, latejoin = TRUE)
 	..()
 	if(L)
