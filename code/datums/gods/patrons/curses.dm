@@ -73,10 +73,11 @@
 /// SPECIAL CURSES ///
 //////////////////////
 
-/datum/curse/science
+/datum/curse/atheism
 	name = "Curse of Atheism"
-	description = "Any mention of the divine sends me into a fit of rage, I cannot be healed by divine magic, and I cannot pray to the gods."
-	trait = TRAIT_SCIENCE_CURSE
+	description = "I cannot stand any mention of the divine, and I refuse to believe either the gods or miracles are real."
+	trait = TRAIT_ATHEISM_CURSE
+	var/datum/patron/old_patron
 
 /datum/curse/psydon
 	name = "Curse of Psydon"
@@ -89,7 +90,7 @@
 
 /datum/curse/astrata
 	name = "Astrata's Curse"
-	description = "I am forsaken by the Sun. Miracles have no effect on me."
+	description = "I am forsaken by the Sun. Healing miracles have no effect on me."
 	trait = TRAIT_ASTRATA_CURSE
 
 /datum/curse/noc
@@ -147,10 +148,6 @@
 	trait = TRAIT_ZIZO_CURSE
 	var/atom/movable/screen/fullscreen/maniac/hallucinations
 
-/datum/curse/zizo/on_gain(mob/living/carbon/human/owner)
-	. = ..()
-	hallucinations = owner.overlay_fullscreen("maniac", /atom/movable/screen/fullscreen/maniac)
-
 /datum/curse/graggar
 	name = "Graggar's Curse"
 	description = "I am engulfed by unspeakable rage. I cannot stop myself from harming others. When that's not an option, my rage is directed inward."
@@ -166,9 +163,46 @@
 	description = "I'm in a constant state of arousal, and I cannot control my urges."
 	trait = TRAIT_BAOTHA_CURSE
 
-//////////////////////////
-///      ON LIFE       ///
-//////////////////////////
+//////////////////////
+/// ON GAIN / LOSS ///
+//////////////////////
+
+/datum/curse/godless/on_gain(mob/living/carbon/human/owner)
+	. = ..()
+	old_patron = owner.patron
+	owner.patron = /datum/patron/godless
+	owner.gain_trauma(/datum/brain_trauma/mild/phobia/religion)
+
+/datum/curse/godless/on_loss(mob/living/carbon/human/owner)
+	. = ..()
+	owner.patron = old_patron
+	owner.cure_trauma_type(/datum/brain_trauma/mild/phobia/religion)
+
+/datum/curse/zizo/on_gain(mob/living/carbon/human/owner)
+	. = ..()
+	hallucinations = owner.overlay_fullscreen("maniac", /atom/movable/screen/fullscreen/maniac)
+
+/datum/curse/zizo/on_loss(mob/living/carbon/human/owner)
+	. = ..()
+	hallucinations = null
+
+/datum/curse/xylix/on_gain(mob/living/carbon/human/owner)
+	. = ..()
+	owner.STALUC -= 10
+
+/datum/curse/xylix/on_loss(mob/living/carbon/human/owner)
+	. = ..()
+	owner.STALUC += 10
+
+
+//////////////////////
+///    ON LIFE     ///
+//////////////////////
+
+
+/datum/curse/abyssor/on_life(mob/living/carbon/human/owner)
+	. = ..()
+
 
 /datum/curse/pestra/on_life(mob/living/carbon/human/owner)
 	. = ..()

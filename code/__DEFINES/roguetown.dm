@@ -178,7 +178,7 @@
 
 #define SPECIAL_CURSES list(\
 	/datum/curse/psydon,\
-	/datum/curse/science\
+	/datum/curse/atheism\
 )
 
 #define ALL_CURSES list(\

@@ -59,7 +59,7 @@
 
 // PATRON CURSE TRAITS
 #define TRAIT_CURSE "Curse" //source
-#define TRAIT_SCIENCE_CURSE "Curse of Atheism"
+#define TRAIT_ATHEISM_CURSE "Curse of Atheism"
 #define TRAIT_PSYDON_CURSE "Psydon's Curse"
 #define TRAIT_ASTRATA_CURSE "Astrata's Curse"
 #define TRAIT_NOC_CURSE "Noc's Curse"
