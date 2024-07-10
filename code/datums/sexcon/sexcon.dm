@@ -167,7 +167,7 @@
 	after_ejaculation()
 
 /datum/sex_controller/proc/after_ejaculation()
-	set_arousal(55)
+	set_arousal(40)
 	adjust_charge(-CHARGE_FOR_CLIMAX)
 	user.emote("sexmoanhvy", forced = TRUE)
 	user.playsound_local(user, 'sound/misc/mat/end.ogg', 100)
