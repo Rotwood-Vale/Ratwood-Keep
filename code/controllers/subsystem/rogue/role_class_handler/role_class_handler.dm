@@ -11,6 +11,7 @@ SUBSYSTEM_DEF(role_class_handler)
 	init_order = INIT_ORDER_ROLE_CLASS_HANDLER
 	priority = FIRE_PRIORITY_ROLE_CLASS_HANDLER
 	runlevels = RUNLEVEL_LOBBY|RUNLEVEL_GAME|RUNLEVEL_SETUP
+	flags = SS_NO_FIRE
 
 /*
 	a list of datums dedicated to helping handle a class selection session
@@ -35,6 +36,8 @@ SUBSYSTEM_DEF(role_class_handler)
 		CTAG_ALLCLASS = list(every single class datum that exists outside of the parent)
 */
 	var/list/sorted_class_categories = list()
+	/// Whether bandits have been injected in the game
+	var/bandits_in_round = FALSE
 
 
 /*
@@ -43,28 +46,13 @@ SUBSYSTEM_DEF(role_class_handler)
 /datum/controller/subsystem/role_class_handler/Initialize()
 	build_dumbass_category_lists()
 
-	rebuild_drifter_time_string()
-	if(drifter_queue_enabled)
-		handle_drifter_wave_scheduling()
-
 	initialized = TRUE
 
 	return ..()
 
 
-// This covers both class datums and drifter waves
+// This covers both adventurer classes
 /datum/controller/subsystem/role_class_handler/proc/build_dumbass_category_lists()
-	var/list/all_drifter_waves = list()
-	init_subtypes(/datum/drifter_wave, all_drifter_waves) // Init all the drifter waves
-	sorted_drifter_wave_categories[DTAG_ALLWAVES] = all_drifter_waves
-
-	for(var/datum/drifter_wave/stupidass_datum in all_drifter_waves)
-		for(var/dtag in stupidass_datum.drifter_wave_categories)
-			if(!sorted_drifter_wave_categories[dtag])
-				sorted_drifter_wave_categories[dtag] = list()
-			sorted_drifter_wave_categories[dtag] += stupidass_datum
-
-
 	var/list/all_classes = list()
 	init_subtypes(/datum/advclass, all_classes) // Init all the classes
 	sorted_class_categories[CTAG_ALLCLASS] = all_classes
@@ -82,7 +70,7 @@ SUBSYSTEM_DEF(role_class_handler)
 	We setup the class handler here, aka the menu
 	We will cache it per server session via an assc list with a ckey leading to the datum.
 */
-/datum/controller/subsystem/role_class_handler/proc/setup_class_handler(mob/living/carbon/human/H)
+/datum/controller/subsystem/role_class_handler/proc/setup_class_handler(mob/living/carbon/human/H, advclass_rolls_override = null)
 	// insure they somehow aren't closing the datum they got and opening a new one w rolls
 	var/datum/class_select_handler/GOT_IT = class_select_handlers[H.client.ckey]
 	if(GOT_IT)
@@ -94,22 +82,17 @@ SUBSYSTEM_DEF(role_class_handler)
 	var/datum/class_select_handler/XTRA_MEATY = new()
 	XTRA_MEATY.linked_client = H.client
 
-	var/datum/job/roguetown/RT_JOB = SSjob.GetJob(H.job)
-	if(RT_JOB.drifter_wave_attachment) // We got a drifter wave attachment, time to setup a different and specific set of information, yaaay two job systems
-		var/datum/drifter_wave/dwave = RT_JOB.drifter_wave_attachment
-		XTRA_MEATY.class_cat_alloc_attempts = dwave.advclass_cat_rolls
-		XTRA_MEATY.class_cat_alloc_bypass_reqs = dwave.class_cat_alloc_bypass_reqs
-		XTRA_MEATY.class_cat_plusboost_attempts = dwave.class_cat_plusboost_attempts
-
-		XTRA_MEATY.forced_class_additions = dwave.forced_class_additions
-		XTRA_MEATY.forced_class_bypass_reqs = dwave.forced_class_bypass_reqs
-		XTRA_MEATY.forced_class_plusboost = dwave.forced_class_plusboost
+	// Hack for Migrants
+	if(advclass_rolls_override)
+		XTRA_MEATY.class_cat_alloc_attempts = advclass_rolls_override
+		XTRA_MEATY.PQ_boost_divider = 10
 	else
+		var/datum/job/roguetown/RT_JOB = SSjob.GetJob(H.job)
 		if(RT_JOB.advclass_cat_rolls.len)
 			XTRA_MEATY.class_cat_alloc_attempts = RT_JOB.advclass_cat_rolls
 
-	if(RT_JOB.PQ_boost_divider)
-		XTRA_MEATY.PQ_boost_divider = RT_JOB.PQ_boost_divider
+		if(RT_JOB.PQ_boost_divider)
+			XTRA_MEATY.PQ_boost_divider = RT_JOB.PQ_boost_divider
 
 	if(H.client.ckey in special_session_queue)
 		XTRA_MEATY.special_session_queue = list()
@@ -143,14 +126,14 @@ SUBSYSTEM_DEF(role_class_handler)
 	H.cure_blind("advsetup")
 
 	//If we get any plus factor at all, we run the datums boost proc on the human also.
-	if(plus_factor) 
+	if(plus_factor)
 		picked_class.boost_by_plus_power(plus_factor, H)
 
 
 	// In retrospect, If I don't just delete these Ill have to actually attempt to keep track of when a byond browser window is actually open lol
 	// soooo..... this will be the place where we take it out, as it means they finished class selection, and we can safely delete the handler.
 	related_handler.ForceCloseMenus() // force menus closed
-	
+
 	// Remove the key from the list and with it the value too
 	class_select_handlers.Remove(related_handler.linked_client.ckey)
 	// Call qdel on it
@@ -166,7 +149,7 @@ SUBSYSTEM_DEF(role_class_handler)
 		if((target_datum.total_slots_occupied >= target_datum.maximum_possible_slots)) // We just hit a cap, iterate all the class handlers and inform them.
 			for(var/CUCKS in class_select_handlers)
 				var/datum/class_select_handler/found_menu = class_select_handlers[CUCKS]
-				
+
 				if(target_datum in found_menu.rolled_classes) // We found the target datum in one of the classes they rolled aka in the list of options they got visible,
 					found_menu.rolled_class_is_full(target_datum) //  inform the datum of its error.
 

@@ -128,7 +128,6 @@ GLOBAL_LIST_INIT(peasant_positions, list(
 	"Beggar",
 	"Adventurer",
 	"Pilgrim",
-	"Drifter"
 ))
 
 GLOBAL_LIST_INIT(mercenary_positions, list(
