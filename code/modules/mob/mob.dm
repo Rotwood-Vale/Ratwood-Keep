@@ -1365,6 +1365,7 @@ GLOBAL_VAR_INIT(mobids, 1)
 	return "[message_spans_start(spans)][input]</span>"
 
 // pixelshifting from Sojourn
+
 /*
 /mob/verb/pixelshifteast()
 	set hidden = TRUE
@@ -1372,8 +1373,6 @@ GLOBAL_VAR_INIT(mobids, 1)
 		return FALSE
 	if(pixel_x <= 16)
 		pixel_x++
-
-	set_mob_offsets("pixel_shift", _x = _x--, _y = _y)	
 
 /mob/verb/pixelshiftwest()
 	set hidden = TRUE
@@ -1395,4 +1394,5 @@ GLOBAL_VAR_INIT(mobids, 1)
 		return FALSE
 	if(pixel_y >= -16)
 		pixel_y--
+	
 */

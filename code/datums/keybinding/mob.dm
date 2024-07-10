@@ -187,8 +187,7 @@
 	return TRUE
 
 
-//pixel shifting
-
+/*
 /datum/keybinding/mob/pixel_shift_north
 	hotkey_keys = list("CtrlShiftW")
 	name = "pixel_shift_north"
@@ -197,38 +196,9 @@
 
 /datum/keybinding/mob/pixel_shift_north/down(client/user)
 	var/mob/M = user.mob
-	M.pixelshiftnorth()
+	//if(M.pixel_y <= 16)
+	M.pixelshiftnorth()	
 	return TRUE
 
-/datum/keybinding/mob/pixel_shift_east
-	hotkey_keys = list("CtrlShiftD")
-	name = "pixel_shift_east"
-	full_name = "Pixel-Shift East"
-	description = ""
 
-/datum/keybinding/mob/pixel_shift_east/down(client/user)
-	var/mob/M = user.mob
-	M.pixelshifteast()
-	return TRUE
-
-/datum/keybinding/mob/pixel_shift_south
-	hotkey_keys = list("CtrlShiftS")
-	name = "pixel_shift_south"
-	full_name = "Pixel-Shift South"
-	description = ""
-
-/datum/keybinding/mob/pixel_shift_south/down(client/user)
-	var/mob/M = user.mob
-	M.pixelshiftsouth()
-	return TRUE
-
-/datum/keybinding/mob/face_west
-	hotkey_keys = list("CtrlShiftA")
-	name = "pixel_shift_west"
-	full_name = "Pixel-Shift West"
-	description = ""
-
-/datum/keybinding/mob/pixel_shift_west/down(client/user)
-	var/mob/M = user.mob
-	M.pixelshiftwest()
-	return TRUE
+*/
