@@ -257,8 +257,6 @@
 
 //pixel shifting
 
-
-
 /datum/keybinding/living/pixel_shift_north
 	hotkey_keys = list("CtrlShiftW")
 	name = "pixel_shift_north"

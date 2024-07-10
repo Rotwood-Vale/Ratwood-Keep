@@ -864,9 +864,17 @@
 /mob/living/proc/update_pixelshift(turf/T, atom/newloc, direct)
 	if(!pixelshifted)
 		reset_offsets("pixel_shift")
+		if(lying)
+			layer = LYING_MOB_LAYER
+		else
+			layer = initial(layer)
 		return FALSE
 	pixelshifted = FALSE
 	reset_offsets("pixel_shift")
+	if(lying)
+		layer = LYING_MOB_LAYER
+	else
+		layer = initial(layer)
 
 /mob/living/Move(atom/newloc, direct, glide_size_override)
 
@@ -1993,3 +2001,20 @@
 	reset_perspective()
 	update_cone_show()
 //	UnregisterSignal(src, COMSIG_MOVABLE_PRE_MOVE)
+
+
+/mob/living/verb/shift_layer_up()
+	set name = "Layer Shift Up"
+	set category = "Emotes"
+	if (layer < 4.05)
+		pixelshifted = TRUE
+		layer = layer + 0.01
+	return
+
+/mob/living/verb/shift_layer_down()
+	set name = "Layer Shift Down"
+	set category = "Emotes"
+	if (layer > 3.95)
+		pixelshifted = TRUE
+		layer = layer - 0.01
+	return
