@@ -94,6 +94,7 @@
 	bogger.mind.adjust_skillrank(/datum/skill/misc/swimming, 2, TRUE)
 	bogger.mind.adjust_skillrank(/datum/skill/misc/medicine, 1, TRUE)
 	bogger.mind.adjust_skillrank(/datum/skill/misc/riding, 3, TRUE)
+	bogger.mind.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
 	bogger.change_stat("strength", 2)
 	bogger.change_stat("perception", 2)
 	bogger.change_stat("constitution", 1)

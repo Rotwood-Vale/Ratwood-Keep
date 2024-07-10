@@ -57,7 +57,6 @@
 		return
 	user.changeNext_move(CLICK_CD_MELEE)
 	playsound(loc, 'sound/misc/beep.ogg', 100, FALSE, -1)
-	var/canread = user.can_read(src, TRUE)
 	var/contents
 	if(SSticker.rulertype == "King")
 		contents += "<center>KING'S DECREES<BR>"
@@ -66,8 +65,6 @@
 	contents += "-----------<BR><BR></center>"
 	for(var/i = GLOB.lord_decrees.len to 1 step -1)
 		contents += "[i]. <span class='info'>[GLOB.lord_decrees[i]]</span><BR>"
-	if(!canread)
-		contents = stars(contents)
 	var/datum/browser/popup = new(user, "VENDORTHING", "", 370, 220)
 	popup.set_content(contents)
 	popup.open()
