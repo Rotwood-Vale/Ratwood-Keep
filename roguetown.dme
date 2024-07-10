@@ -3501,4 +3501,7 @@
 #include "modular\code\modules\maturity-prompt\code\config_entries.dm"
 #include "modular\code\modules\maturity-prompt\code\maturity_prompt.dm"
 #include "modular\code\modules\maturity-prompt\code\maturity_subsystem.dm"
+#include "modular_hearthstone\code\game\area\roguetownareas.dm"
+#include "modular_hearthstone\code\game\objects\structures\fluff.dm"
+#include "modular_hearthstone\code\modules\mob\living\simple_animal\rogue\creacher\volf.dm"
 // END_INCLUDE
