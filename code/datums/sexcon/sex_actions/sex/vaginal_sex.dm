@@ -42,7 +42,10 @@
 		user.virginity = FALSE
 		target.virginity = FALSE
 
-	user.sexcon.perform_sex_action(target, 2, 7, FALSE)
+	if(user.sexcon.considered_limp())
+		user.sexcon.perform_sex_action(target, 1.2, 3, FALSE)
+	else
+		user.sexcon.perform_sex_action(target, 2.4, 7, FALSE)
 	target.sexcon.handle_passive_ejaculation()
 
 /datum/sex_action/vaginal_sex/on_finish(mob/living/carbon/human/user, mob/living/carbon/human/target)
