@@ -57,17 +57,20 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 	C.vampires |= owner
 	. = ..()
 	owner.special_role = name
-	ADD_TRAIT(owner.current, TRAIT_CRITICAL_WEAKNESS, "[type]") //half assed but necessary otherwise these guys be invincible
+	//ADD_TRAIT(owner.current, TRAIT_CRITICAL_WEAKNESS, "[type]") //This was a shitty solution to a shitty problem. Calls AFFECTED.DEATH() whenever a crit is scored on chest or head, which removes the point of staking vampyres.
 	ADD_TRAIT(owner.current, TRAIT_STRONGBITE, "[type]")
 	ADD_TRAIT(owner.current, TRAIT_NOROGSTAM, "[type]")
 	ADD_TRAIT(owner.current, TRAIT_NOHUNGER, "[type]")
 	ADD_TRAIT(owner.current, TRAIT_NOBREATH, "[type]")
 	ADD_TRAIT(owner.current, TRAIT_NOPAIN, "[type]")
+	ADD_TRAIT(owner.current, TRAIT_NOPAINSTUN, "[type]") //Added as they already have NOPAIN, thus PAINSTUN from breaking limbs shouldn't affect them.
 	ADD_TRAIT(owner.current, TRAIT_TOXIMMUNE, "[type]")
 	ADD_TRAIT(owner.current, TRAIT_STEELHEARTED, "[type]")
 	ADD_TRAIT(owner.current, TRAIT_NOSLEEP, "[type]")
+	ADD_TRAIT(owner.current, TRAIT_DECEIVING_MEEKNESS, "[type]") //They've been alive for centuries, and shouldn't appear outright monstrously strong on examine.
 	ADD_TRAIT(owner.current, TRAIT_LIMPDICK, "[type]")
 	ADD_TRAIT(owner.current, TRAIT_VAMPMANSION, "[type]")
+	ADD_TRAIT(owner.current, TRAIT_MIRACLE_IMMUNE, "[type]")
 	owner.current.cmode_music = 'sound/music/combat_vamp.ogg'
 	var/obj/item/organ/eyes/eyes = owner.current.getorganslot(ORGAN_SLOT_EYES)
 	if(eyes)
@@ -81,6 +84,10 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 	vamp_look()
 	if(isspawn)
 		owner.current.verbs |= /mob/living/carbon/human/proc/disguise_button
+		ADD_TRAIT(owner.current, TRAIT_CRITICAL_WEAKNESS, "[type]") //Vassals are weaker.
+		REMOVE_TRAIT(owner.current, TRAIT_MIRACLE_IMMUNE, "[type]") //They shouldn't recieve miracle immunity.
+		REMOVE_TRAIT(owner.current, TRAIT_NOPAINSTUN, "[type]") //Vassals are weaker.
+		REMOVE_TRAIT(owner.current, TRAIT_DECEIVING_MEEKNESS, "[type]") //Vassals do not need this.
 		add_objective(/datum/objective/vlordserve)
 		finalize_vampire_lesser()
 		for(var/obj/structure/vampire/bloodpool/mansion in GLOB.vampire_objects)
@@ -1291,7 +1298,7 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 		if(L.cmode)
 			willroll += 10
 		var/found_psycross = FALSE
-		for(var/obj/item/clothing/neck/roguetown/psicross/silver in L.contents)
+		for(var/obj/item/clothing/neck/roguetown/psicross/silver/I in L.contents) //Fixes Psycross bug. Thanks Zeth!
 			found_psycross = TRUE
 			break
 			

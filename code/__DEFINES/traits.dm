@@ -56,6 +56,7 @@
 #define TRAIT_SCHIZO_AMBIENCE "schizo_ambience" //replaces all ambience with creepy shit
 #define TRAIT_SCREENSHAKE "screenshake" //screen will always be shaking, you cannot stop it
 #define TRAIT_NORUN "Decayed Flesh"
+#define TRAIT_MIRACLE_IMMUNE "Miracle Immune" //Makes you entirely immune to all forms of miracles!
 
 GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_WEBWALK = "I can move freely between webs.",
@@ -67,6 +68,7 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_SEEPRICES = "I can tell the prices of things down to the zenny.",
 	TRAIT_SEEPRICES_SHITTY = "I can tell the prices of things... <i>Kind of</i>.",
 	TRAIT_STRONGBITE = "Stronger bites, critical bite attacks.",
+	TRAIT_MIRACLE_IMMUNE = "Your patron protects you from Miracles.",
 	TRAIT_NOBLE = span_blue("I'm of noble blood."),
 	TRAIT_EMPATH = "I can notice when people are in pain.",
 	TRAIT_BREADY = "Defensive stance does not passively fatigue me.",

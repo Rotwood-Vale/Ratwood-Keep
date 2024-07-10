@@ -20,12 +20,6 @@
 	. = ..()
 	if(isliving(targets[1]))
 		var/mob/living/target = targets[1]
-		if(user.patron?.undead_hater && (target.mob_biotypes & MOB_UNDEAD)) //positive energy harms the undead
-			target.visible_message(span_danger("[target] is burned by holy light!"), span_userdanger("I'm burned by holy light!"))
-			target.adjustFireLoss(50)
-			target.Paralyze(30)
-			target.fire_act(1,5)
-			return TRUE
 		//this if chain is stupid, replace with variables on /datum/patron when possible?
 		switch(user.patron.type)
 			if(/datum/patron/old_god)
@@ -62,6 +56,19 @@
 				target.visible_message(span_info("Without any particular cause or reason, [target] is healed!"), span_notice("My wounds close without cause."))
 			else
 				target.visible_message(span_info("A choral sound comes from above and [target] is healed!"), span_notice("I am bathed in healing choral hymns!"))
+		if(user.patron?.undead_hater && (target.mob_biotypes & MOB_UNDEAD)) //positive energy harms the undead
+			if(HAS_TRAIT(target, TRAIT_MIRACLE_IMMUNE))
+				user.rogstam_add(-250) //trolled
+				to_chat(target,span_boldannounce("[user] has had their VILE divine magicks defeated by my RESISTANCES..."))
+				if(prob(5))
+					to_chat(user,span_boldannounce("[target] was unusually exhausting to heal..."))
+				return FALSE //Stops the chain here to ensure that Vampyres/etc are not ACTUALLY healed, but appear so.
+			else
+				target.visible_message(span_danger("[target] is burned by holy light!"), span_userdanger("I'm burned by holy light!"))
+				target.adjustFireLoss(50)
+				target.Paralyze(30)
+				target.fire_act(1,5)
+				return TRUE
 		if(iscarbon(target))
 			var/mob/living/carbon/C = target
 			var/obj/item/bodypart/affecting = C.get_bodypart(check_zone(user.zone_selected))
@@ -104,13 +111,20 @@
 	. = ..()
 	if(isliving(targets[1]))
 		var/mob/living/target = targets[1]
-		if(user.patron?.undead_hater && (target.mob_biotypes & MOB_UNDEAD)) //positive energy harms the undead
-			target.visible_message(span_danger("[target] is burned by holy light!"), span_userdanger("I'm burned by holy light!"))
-			target.adjustFireLoss(100)
-			target.Paralyze(50)
-			target.fire_act(1,5)
-			return TRUE
 		target.visible_message(span_info("A wreath of gentle light passes over [target]!"), span_notice("I'm bathed in holy light!"))
+		if(user.patron?.undead_hater && (target.mob_biotypes & MOB_UNDEAD)) //positive energy harms the undead
+			if(HAS_TRAIT(target, TRAIT_MIRACLE_IMMUNE)) //UNLESS they're immune to miracles.
+				user.rogstam_add(-250) //trolled
+				to_chat(target,span_boldannounce("[user] has had their VILE divine magicks defeated by my RESISTANCES..."))
+				if(prob(5))
+					to_chat(user,span_boldannounce("[target] was unusually exhausting to heal..."))
+				return FALSE //Stops the chain here to ensure that Vampyres/etc are not ACTUALLY healed, but appear so.
+			else
+				target.visible_message(span_danger("[target] is burned by holy light!"), span_userdanger("I'm burned by holy light!"))
+				target.adjustFireLoss(50)
+				target.Paralyze(30)
+				target.fire_act(1,5)
+				return TRUE
 		if(iscarbon(target))
 			var/mob/living/carbon/C = target
 			var/obj/item/bodypart/affecting = C.get_bodypart(check_zone(user.zone_selected))

@@ -20,14 +20,16 @@
 		TRAIT_BREADY,
 		TRAIT_TOXIMMUNE,
 		TRAIT_ORGAN_EATER,
+		TRAIT_PIERCEIMMUNE, //Experimental Change to prevent Caltrops from stunning volfs. Also stops embeds from qdeling items when verewolf is killed.
 		TRAIT_NASTY_EATER,
 		TRAIT_NOSTINK,
 		TRAIT_CRITICAL_RESISTANCE,
-		TRAIT_IGNOREDAMAGESLOWDOWN,
+		TRAIT_IGNOREDAMAGESLOWDOWN, 
+		TRAIT_NOPAINSTUN, //They have IGNOREDAMAGESLOWDOWN. Crits stunning them removes the point of this trait.
 		TRAIT_IGNORESLOWDOWN
 	)
 	inherent_biotypes = MOB_HUMANOID
-	armor = 30
+	armor = 45 //Experimental change. Revert if strong.
 	no_equip = list(SLOT_SHIRT, SLOT_HEAD, SLOT_WEAR_MASK, SLOT_ARMOR, SLOT_GLOVES, SLOT_SHOES, SLOT_PANTS, SLOT_CLOAK, SLOT_BELT, SLOT_BACK_R, SLOT_BACK_L, SLOT_S_STORE)
 	nojumpsuit = 1
 	sexes = 1
