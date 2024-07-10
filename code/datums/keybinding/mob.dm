@@ -186,19 +186,3 @@
 	user.body_l_leg()
 	return TRUE
 
-
-/*
-/datum/keybinding/mob/pixel_shift_north
-	hotkey_keys = list("CtrlShiftW")
-	name = "pixel_shift_north"
-	full_name = "Pixel-Shift North"
-	description = ""
-
-/datum/keybinding/mob/pixel_shift_north/down(client/user)
-	var/mob/M = user.mob
-	//if(M.pixel_y <= 16)
-	M.pixelshiftnorth()	
-	return TRUE
-
-
-*/

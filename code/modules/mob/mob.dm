@@ -1363,3 +1363,4 @@ GLOBAL_VAR_INIT(mobids, 1)
 	if(customsayverb)
 		input = capitalize(copytext_char(input, customsayverb+1))
 	return "[message_spans_start(spans)][input]</span>"
+
