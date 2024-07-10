@@ -194,9 +194,9 @@
 			held_items[I]["NAME"] = "thing"
 			namer = "thing"
 		if(canread)
-			contents += "[namer] + [price] <a href='?src=[REF(src)];buy=[I]'>BUY</a>"
+			contents += "[icon2html(I, user)] [namer] - [price] <a href='?src=[REF(src)];buy=[I]'>BUY</a>"
 		else
-			contents += "[stars(namer)] + [stars(price)] <a href='?src=[REF(src)];buy=[I]'>[stars("BUY")]</a>"
+			contents += "[icon2html(I, user)] [stars(namer)] - [stars(price)] <a href='?src=[REF(src)];buy=[I]'>[stars("BUY")]</a>"
 		contents += "<BR>"
 
 	var/datum/browser/popup = new(user, "VENDORTHING", "", 370, 400)
