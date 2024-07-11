@@ -90,8 +90,8 @@
 
 /obj/item/clothing/mask/rogue/facemask/prisoner/Initialize()
 	. = ..()
-	name = "cursed mask"
-	ADD_TRAIT(src, TRAIT_NODROP, CURSED_ITEM_TRAIT)
+	name = "shameful mask"
+	ADD_TRAIT(src)
 
 /obj/item/clothing/mask/rogue/facemask/prisoner/dropped(mob/living/carbon/human/user)
 	. = ..()
