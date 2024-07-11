@@ -4,7 +4,7 @@
 	department_flag = YEOMEN
 	faction = "Station"
 	total_positions = 3
-	spawn_positions = 2
+	spawn_positions = 3
 
 	allowed_races = RACES_TOLERATED_UP
 	allowed_sexes = list(MALE, FEMALE)
