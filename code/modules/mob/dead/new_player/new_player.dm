@@ -560,6 +560,8 @@ GLOBAL_LIST_INIT(roleplay_readme, world.file2list("strings/rt/rp_prompt.txt"))
 	else
 		GLOB.respawncounts[character.ckey] = 1
 //	add_roundplayed(character.ckey)
+	if(humanc)
+		apply_random_special_trait(humanc)
 	log_manifest(character.mind.key,character.mind,character,latejoin = TRUE)
 
 /mob/dead/new_player/proc/AddEmploymentContract(mob/living/carbon/human/employee)

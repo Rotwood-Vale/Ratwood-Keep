@@ -35,6 +35,8 @@ GLOBAL_LIST_INIT(special_traits, build_special_traits())
             continue
         if(!isnull(special.allowed_patrons) && !(character.patron in special.allowed_patrons))
             continue
+        if(!special.can_apply(character))
+            continue
         eligible_weight[trait_type] = special.weight
 
     if(!length(eligible_weight))

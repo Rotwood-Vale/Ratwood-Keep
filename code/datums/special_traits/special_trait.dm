@@ -12,5 +12,8 @@
     /// Not yet implemented
     var/list/allowed_migrants
 
+/datum/special_trait/proc/can_apply(mob/living/carbon/human/character)
+    return TRUE
+
 /datum/special_trait/proc/on_apply(mob/living/carbon/human/character, silent)
     return
