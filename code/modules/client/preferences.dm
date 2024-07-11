@@ -133,6 +133,7 @@ GLOBAL_LIST_EMPTY(chosen_names)
 	var/list/menuoptions
 	
 	var/datum/migrant_pref/migrant
+	var/get_special_trait = FALSE
 
 	var/action_buttons_screen_locs = list()
 
@@ -352,6 +353,7 @@ GLOBAL_LIST_EMPTY(chosen_names)
 			dat += "<b>Patron:</b> <a href='?_src_=prefs;preference=patron;task=input'>[selected_patron?.name || "FUCK!"]</a><BR>"
 //			dat += "<b>Family:</b> <a href='?_src_=prefs;preference=family'>Unknown</a><BR>" // Disabling until its working
 			dat += "<b>Dominance:</b> <a href='?_src_=prefs;preference=domhand'>[domhand == 1 ? "Left-handed" : "Right-handed"]</a><BR>"
+			dat += "<b>Be Special:</b> <a href='?_src_=prefs;preference=bespecial'>[get_special_trait ? "<font color='red'><b>YES</b></font>" : "No"]</a><BR>"
 
 /*
 			dat += "<br><br><b>Special Names:</b><BR>"
@@ -1707,6 +1709,8 @@ Slots: [job.spawn_positions]</span>
 						domhand = 2
 					else
 						domhand = 1
+				if("bespecial")
+					get_special_trait = !get_special_trait
 				if("family")
 					var/list/loly = list("Not yet.","Work in progress.","Don't click me.","Stop clicking this.","Nope.","Be patient.","Sooner or later.")
 					to_chat(user, "<font color='red'>[pick(loly)]</font>")
