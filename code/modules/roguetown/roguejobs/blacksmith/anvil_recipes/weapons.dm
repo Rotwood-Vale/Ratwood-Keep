@@ -82,6 +82,12 @@
 	created_item = /obj/item/rogueweapon/sword/cutlass
 	i_type = "Weapons"
 
+/datum/anvil_recipe/weapons/katar
+	name = "Katar"
+	req_bar = /obj/item/ingot/steel
+	created_item = /obj/item/rogueweapon/katar
+	i_typer = "Weapons"
+
 /datum/anvil_recipe/weapons/hknife
 	name = "Hunting knife"
 	req_bar = /obj/item/ingot/iron
