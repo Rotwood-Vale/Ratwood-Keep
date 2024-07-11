@@ -4,12 +4,12 @@
 	tutorial = "You are the proud lord of heartfelt \
 	but why did you come to the isle of enigma?"
 	allowed_sexes = list(MALE)
-	allowed_races = list(/datum/species/human/northern)
+	allowed_races = RACES_TOLERATED_UP
 	outfit = /datum/outfit/job/roguetown/adventurer/heartfeltlord
 	maximum_possible_slots = 1
 	pickprob = 100
 	traits_applied = list(TRAIT_NOBLE, TRAIT_NOSEGRAB, TRAIT_HEAVYARMOR)
-	category_tags = list(CTAG_ADVENTURER)
+	category_tags = list(CTAG_DISABLED)
 
 /datum/outfit/job/roguetown/adventurer/heartfeltlord/pre_equip(mob/living/carbon/human/H)
 	..()

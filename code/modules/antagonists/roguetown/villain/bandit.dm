@@ -38,7 +38,7 @@
 	ADD_TRAIT(H, TRAIT_COMMIE, TRAIT_GENERIC)
 	H.set_patron(/datum/patron/inhumen/matthios)
 	to_chat(H, span_alertsyndie("I am a BANDIT!"))
-	to_chat(H, span_warning("Long ago I did a crime worthy of my bounty being hung on the wall outside of the local inn. I must feed the idol money and valuable metals to satisfy my greed!"))
+	to_chat(H, span_boldwarning("Long ago I did a crime worthy of my bounty being hung on the wall outside of the local inn. I live now with fellow free men in reverence to MATTHIOS whose idol grants us boons and wishes when fed the money, treasures, and metals of the civilized wretches. I must feed the idol to satisfy my greed!"))
 
 /* /datum/antagonist/bandit/greet()
 	to_chat(owner.current, span_alertsyndie("I am a BANDIT!"))
@@ -79,6 +79,14 @@
 	H.equipOutfit(/datum/outfit/job/roguetown/bandit)
 
 	return TRUE
+
+/datum/antagonist/bandit/after_name_change()
+	if(owner && owner.current)
+		var/datum/bounty/new_bounty = new /datum/bounty
+		new_bounty.amount = 80 //TODO: Make bandit bounty adjustable by King
+		new_bounty.target = owner.current.real_name
+		new_bounty.bandit = TRUE
+		GLOB.head_bounties += new_bounty
 
 /datum/outfit/job/roguetown/bandit/pre_equip(mob/living/carbon/human/H)
 	..()

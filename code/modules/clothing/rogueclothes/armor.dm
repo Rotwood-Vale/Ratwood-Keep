@@ -293,7 +293,7 @@
 	name = "arming jacket"
 	icon_state = "dgamb"
 	allowed_sex = list(MALE, FEMALE)
-	allowed_race = HUMANLIKE_RACE_TYPES
+	allowed_race = NON_DWARVEN_RACE_TYPES
 
 /obj/item/clothing/suit/roguetown/armor/leather
 	name = "leather armor"
@@ -385,7 +385,7 @@
 	icon_state = "nightman"
 	sleeved = 'icons/roguetown/clothing/onmob/armor.dmi'
 	allowed_sex = list(MALE, FEMALE)
-	allowed_race = HUMANLIKE_RACE_TYPES
+	allowed_race = NON_DWARVEN_RACE_TYPES
 
 
 /obj/item/clothing/suit/roguetown/armor/leather/vest/hand
@@ -444,3 +444,13 @@
 /obj/item/clothing/suit/roguetown/armor/silkcoat/Initialize()
 	. = ..()
 	color = pick(CLOTHING_PURPLE, null,CLOTHING_GREEN, CLOTHING_RED)
+
+/obj/item/clothing/suit/roguetown/armor/plate/half/grenzelhoft
+	slot_flags = ITEM_SLOT_ARMOR
+	name = "Grenzelhoft cuirass"
+	desc = "A basic cuirass built from black-steel. It's somewhat more durable than regular steel."
+	icon_state = "grenzelcuirass"
+	item_state = "grenzelcuirass"
+	sleeved = 'icons/roguetown/clothing/onmob/helpers/stonekeep_merc.dmi'
+	boobed = TRUE
+	max_integrity = 400

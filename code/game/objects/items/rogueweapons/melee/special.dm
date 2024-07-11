@@ -1,7 +1,7 @@
 /obj/item/rogueweapon/lordscepter
 	force = 20
 	force_wielded = 20
-	possible_item_intents = list(/datum/intent/lordbash, /datum/intent/lordpoint)
+	possible_item_intents = list(/datum/intent/lordbash, /datum/intent/lord_electrocute, /datum/intent/lord_silence)
 	gripped_intents = list(/datum/intent/lordbash)
 	name = "master's rod"
 	desc = "Bend the knee."
@@ -26,8 +26,15 @@
 	penfactor = 10
 	item_d_type = "blunt"
 
-/datum/intent/lordpoint
-	name = "point"
+/datum/intent/lord_electrocute
+	name = "electrocute"
+	blade_class = null
+	icon_state = "inuse"
+	tranged = TRUE
+	noaa = TRUE
+
+/datum/intent/lord_silence
+	name = "silence"
 	blade_class = null
 	icon_state = "inuse"
 	tranged = TRUE
@@ -47,22 +54,40 @@
 	. = ..()
 	if(get_dist(user, target) > 7)
 		return
-	if(istype(user.used_intent, /datum/intent/lordpoint))
-		user.changeNext_move(CLICK_CD_MELEE)
-		user.visible_message(span_warning("[user] points [src] at [target]."))
-		if(ishuman(user))
-			var/mob/living/carbon/human/HU = user
-			if((HU.job != "King") && (HU.job != "Queen Consort"))
+	
+	user.changeNext_move(CLICK_CD_MELEE)
+
+	if(ishuman(user))
+		var/mob/living/carbon/human/HU = user
+
+		if((HU.job != "King") && (HU.job != "Queen Consort"))
+			to_chat(user, span_danger("The rod doesn't obey me."))
+			return
+
+		if(ishuman(target))
+			var/mob/living/carbon/human/H = target
+
+			if(H == HU)
 				return
-			if(ishuman(target))
-				var/mob/living/carbon/human/H = target
-				if(H.anti_magic_check())
-					to_chat(H, span_warning("I'm protected from the scepter."))
-					return
-				if(!(H in SStreasury.bank_accounts))
-					to_chat(H, span_warning("I'm protected from the scepter."))
-					return
+
+			if(H.anti_magic_check())
+				return
+		
+			if(!(H in SStreasury.bank_accounts))
+				return
+
+			if(istype(user.used_intent, /datum/intent/lord_electrocute))
+				HU.visible_message(span_warning("[HU] electrocutes [H] with the [src]."))
 				H.electrocute_act(5, src)
+				to_chat(H, span_danger("I'm electrocuted by the scepter!"))
+				return
+
+			if(istype(user.used_intent, /datum/intent/lord_silence))
+				HU.visible_message(span_warning("[HU] silences [H] with the [src]."))
+				H.dna.add_mutation(/datum/mutation/human/mute)
+				addtimer(CALLBACK(H.dna, TYPE_PROC_REF(/datum/dna/, remove_mutation), /datum/mutation/human/mute), 20 SECONDS)
+				to_chat(H, span_danger("I'm silenced by the scepter!"))
+				return
 
 /obj/item/rogueweapon/mace/stunmace
 	force = 15

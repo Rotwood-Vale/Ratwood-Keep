@@ -44,6 +44,7 @@
 	var/minimal_player_age = 0
 
 	var/outfit = null
+	var/visuals_only_outfit = null //Handles outfits specifically for cases where you may need to prevent sensitive items from spawning. (e.g Crowns)
 	var/outfit_female = null
 
 	var/exp_requirements = 0
@@ -130,12 +131,6 @@
 	You will still need to contact the subsystem though
 */
 	var/list/advclass_cat_rolls
-/*
-	Basically this is just a ref to a drifter wave if its attached to one
-	The role class handler will grab relevant data out of it it uses a class select
-	Just make sure to unattach afterward we are done.
-*/
-	var/datum/drifter_wave/drifter_wave_attachment
 
 /*
 	How this works, they get one extra roll on every category per PQ amount
@@ -265,6 +260,8 @@
 
 	//Equip the rest of the gear
 	H.dna.species.before_equip_job(src, H, visualsOnly)
+	if(!outfit_override && visualsOnly && visuals_only_outfit)
+		outfit_override = visuals_only_outfit
 	if(H.gender == FEMALE)
 		if(outfit_override || outfit_female)
 			H.equipOutfit(outfit_override ? outfit_override : outfit_female, visualsOnly)

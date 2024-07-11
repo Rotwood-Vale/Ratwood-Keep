@@ -146,7 +146,7 @@ GLOBAL_VAR_INIT(mobids, 1)
 	if(!client)
 		return
 
-	msg = copytext(msg, 1, MAX_MESSAGE_LEN)
+	msg = copytext_char(msg, 1, MAX_MESSAGE_LEN)
 
 	if(type)
 		if(type & MSG_VISUAL && eye_blind )//Vision related
@@ -570,7 +570,7 @@ GLOBAL_VAR_INIT(mobids, 1)
 		if (world.time < memory_throttle_time)
 			return
 		memory_throttle_time = world.time + 5 SECONDS
-		msg = copytext(msg, 1, MAX_MESSAGE_LEN)
+		msg = copytext_char(msg, 1, MAX_MESSAGE_LEN)
 		msg = sanitize(msg)
 
 		mind.store_memory(msg)
@@ -871,9 +871,6 @@ GLOBAL_VAR_INIT(mobids, 1)
 		return
 	if(pulledby && pulledby.grab_state >= GRAB_AGGRESSIVE) //the reason this isn't a mobility_flags check is because you want them to be able to change dir if you're passively grabbing them
 		return FALSE
-	if(sexcon)
-		if(!sexcon.can_change_dir())
-			return FALSE
 	if(IsImmobilized())
 		return FALSE
 	return ..()
@@ -1356,14 +1353,14 @@ GLOBAL_VAR_INIT(mobids, 1)
 
 
 /mob/say_mod(input, message_mode)
-	var/customsayverb = findtext(input, "*")
+	var/customsayverb = findtext_char(input, "*")
 	if(customsayverb)
-		return lowertext(copytext(input, 1, customsayverb))
+		return lowertext(copytext_char(input, 1, customsayverb))
 	. = ..()
 
 /atom/movable/proc/attach_spans(input, list/spans)
-	var/customsayverb = findtext(input, "*")
+	var/customsayverb = findtext_char(input, "*")
 	if(customsayverb)
-		input = capitalize(copytext(input, customsayverb+1))
+		input = capitalize(copytext_char(input, customsayverb+1))
 	return "[message_spans_start(spans)][input]</span>"
 

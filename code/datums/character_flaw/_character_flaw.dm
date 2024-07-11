@@ -5,11 +5,11 @@ GLOBAL_LIST_INIT(character_flaws, list("Alcoholic"=/datum/charflaw/addiction/alc
 	"Junkie"=/datum/charflaw/addiction/junkie,
 	"Cyclops (R)"=/datum/charflaw/noeyer,
 	"Cyclops (L)"=/datum/charflaw/noeyel,
-	"No Arm (R)"=/datum/charflaw/limbloss/arm_r,
-	"No Arm (L)"=/datum/charflaw/limbloss/arm_l,
+	"Wood Arm (R)"=/datum/charflaw/limbloss/arm_r,
+	"Wood Arm (L)"=/datum/charflaw/limbloss/arm_l,
 	"Paranoid"=/datum/charflaw/paranoid,
-	"Random Flaw"=/datum/charflaw/randflaw,
-	"No Flaw (3 TRI)"=/datum/charflaw/noflaw))
+	"Random or No Flaw"=/datum/charflaw/randflaw,
+	"No Flaw (3 TRIUMPHS)"=/datum/charflaw/noflaw))
 
 /datum/charflaw
 	var/name
@@ -32,8 +32,8 @@ GLOBAL_LIST_INIT(character_flaws, list("Alcoholic"=/datum/charflaw/addiction/alc
 		return TRUE
 
 /datum/charflaw/randflaw
-	name = "Random Flaw"
-	desc = "Chooses a random flaw (50% chance for no flaw)"
+	name = "Random or None"
+	desc = "A 50% chance to be given a random flaw, or a 50% chance to have NO flaw."
 	var/nochekk = TRUE
 
 /datum/charflaw/randflaw/flaw_on_life(mob/user)
@@ -66,7 +66,7 @@ GLOBAL_LIST_INIT(character_flaws, list("Alcoholic"=/datum/charflaw/addiction/alc
 
 /datum/charflaw/noflaw
 	name = "No Flaw (3 TRI)"
-	desc = "I'm a normal person, how rare! (Consumes 3 triumphs or randomizes)"
+	desc = "I'm a normal person, how rare! (Consumes 3 triumphs or gives a random flaw.)"
 	var/nochekk = TRUE
 
 /datum/charflaw/noflaw/flaw_on_life(mob/user)
@@ -118,7 +118,7 @@ GLOBAL_LIST_INIT(character_flaws, list("Alcoholic"=/datum/charflaw/addiction/alc
 /datum/status_effect/debuff/badvision
 	id = "badvision"
 	alert_type = null
-	effectedstats = list("perception" = -20, "speed" = -5,"fortune" = -20)
+	effectedstats = list("perception" = -20, "speed" = -5)
 	duration = 100
 
 /datum/charflaw/badsight/on_mob_creation(mob/user)
@@ -133,7 +133,7 @@ GLOBAL_LIST_INIT(character_flaws, list("Alcoholic"=/datum/charflaw/addiction/alc
 
 /datum/charflaw/paranoid
 	name = "Paranoid"
-	desc = "I'm even more anxious than most towners. I'm extra paranoid of other races, the price of higher intelligence."
+	desc = "I'm even more anxious than most people. I'm extra paranoid of other races and the sight of blood."
 	var/last_check = 0
 
 /datum/charflaw/paranoid/flaw_on_life(mob/user)
@@ -168,7 +168,7 @@ GLOBAL_LIST_INIT(character_flaws, list("Alcoholic"=/datum/charflaw/addiction/alc
 
 /datum/charflaw/noeyer
 	name = "Cyclops (R)"
-	desc = "I lost my right eye long ago. But it made me great at noticing things."
+	desc = "I lost my right eye long ago."
 
 /datum/charflaw/noeyer/on_mob_creation(mob/user)
 	..()
@@ -183,7 +183,7 @@ GLOBAL_LIST_INIT(character_flaws, list("Alcoholic"=/datum/charflaw/addiction/alc
 
 /datum/charflaw/noeyel
 	name = "Cyclops (L)"
-	desc = "I lost my left eye long ago. But it made me great at noticing things."
+	desc = "I lost my left eye long ago."
 
 /datum/charflaw/noeyel/on_mob_creation(mob/user)
 	..()

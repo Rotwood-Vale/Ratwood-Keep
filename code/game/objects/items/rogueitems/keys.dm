@@ -97,6 +97,12 @@
 	icon_state = "ekey"
 	lockid = "shop"
 
+/obj/item/roguekey/townie // For use in round-start available houses in town. Do not use default lockID.
+	name = "Town Dwelling Key"
+	desc = "The key of some townie's home. Hope it's not lost."
+	icon_state ="brownkey"
+	lockid = "townie"
+
 /obj/item/roguekey/tavern
 	name = "tavern key"
 	desc = "This key should open and close any tavern door."
@@ -315,7 +321,7 @@
 	if(istype(I, /obj/item/rogueweapon/hammer))
 		var/input = (input(user, "What would you name this key?", "", "") as text) 
 		if(input)
-			name = name + " key"
+			name = input + " key"
 			to_chat(user, span_notice("You rename the key to [name]."))
 
 //custom key blank

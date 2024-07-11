@@ -1,6 +1,6 @@
 /obj/item/fishingrod
 	force = 12
-	possible_item_intents = list(SPEAR_BASH,ROD_CAST)
+	possible_item_intents = list(ROD_CAST, SPEAR_BASH)
 	name = "fishing rod"
 	desc = "Made from weathered wood and coarse twine. The tool of the battle against the dark waters below."
 	icon_state = "rod"

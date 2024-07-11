@@ -538,6 +538,8 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 			return "ADJ"
 		if(BODY_FRONT_LAYER)
 			return "FRONT"
+		if(BODY_UNDER_LAYER)
+			return "UNDER"
 
 
 /datum/species/proc/spec_life(mob/living/carbon/human/H)
@@ -2021,7 +2023,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 	if(!T)
 		return FALSE
 	T.wagging = TRUE
-	H.update_body()
+	H.update_body_parts(TRUE)
 
 /datum/species/proc/stop_wagging_tail(mob/living/carbon/human/H)
 	if(!H) //Somewhere in the core code we're getting those procs with H being null
@@ -2030,7 +2032,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 	if(!T)
 		return
 	T.wagging = FALSE
-	H.update_body()
+	H.update_body_parts(TRUE)
 
 ///////////////
 //FLIGHT SHIT//

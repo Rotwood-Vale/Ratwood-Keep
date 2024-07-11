@@ -687,8 +687,6 @@
 	resting = rest
 	update_resting()
 	if(rest == resting)
-		if(sexcon)
-			sexcon.mob_moved()
 		if(resting)
 			if(m_intent == MOVE_INTENT_RUN)
 				toggle_rogmove_intent(MOVE_INTENT_WALK, TRUE)
@@ -911,8 +909,6 @@
 		stop_looking()
 		if(doing)
 			doing = 0
-		if(sexcon)
-			sexcon.mob_moved()
 		if(client)
 			update_vision_cone()
 
@@ -999,10 +995,6 @@
 
 	changeNext_move(CLICK_CD_RESIST)
 
-	if(sexcon)
-		if(sexcon.cancel_our_actions())
-			return
-
 	if(atkswinging)
 		stop_attack(FALSE)
 
@@ -1012,11 +1004,6 @@
 		log_combat(src, pulledby, "resisted grab")
 		resist_grab()
 		return
-
-	if(!restrained(ignore_grab = 1) && !pulledby)
-		if(sexcon)
-			if(sexcon.cancel_others_actions())
-				return
 
 	//unbuckling yourself
 	if(buckled && last_special <= world.time)
@@ -1042,17 +1029,16 @@
 	if(stat)
 		return
 	surrendering = 1
-	if(alert(src, "Yield in surrender?",,"YES","NO") == "YES")
-		changeNext_move(CLICK_CD_EXHAUSTED)
-		var/image/flaggy = image('icons/effects/effects.dmi',src,"surrender",ABOVE_MOB_LAYER)
-		flaggy.appearance_flags = RESET_TRANSFORM|KEEP_APART
-		flaggy.transform = null
-		flaggy.pixel_y = 12
-		flick_overlay_view(flaggy, src, 150)
-		Stun(150)
-		src.visible_message(span_notice("[src] yields!"))
-		playsound(src, 'sound/misc/surrender.ogg', 100, FALSE, -1)
-		sleep(150)
+	changeNext_move(CLICK_CD_EXHAUSTED)
+	var/image/flaggy = image('icons/effects/effects.dmi',src,"surrender_large",ABOVE_MOB_LAYER)
+	flaggy.appearance_flags = RESET_TRANSFORM|KEEP_APART
+	flaggy.transform = null
+	flaggy.pixel_y = 8
+	flick_overlay_view(flaggy, src, 150)
+	Stun(150)
+	src.visible_message(span_notice("[src] yields!"))
+	playsound(src, 'sound/misc/surrender.ogg', 100, FALSE, -1)
+	sleep(150)
 	surrendering = 0
 
 
@@ -1934,12 +1920,11 @@
 	if(!istype(T))
 		return
 	changeNext_move(CLICK_CD_MELEE)
-
+	
 	var/_x = T.x-loc.x
 	var/_y = T.y-loc.y
-	if(_x > 7 || _x < -7)
-		return
-	if(_y > 7 || _y < -7)
+	var/dist = get_dist(src, T)
+	if(dist > 7 || dist  <= 2)
 		return
 	hide_cone()
 	var/ttime = 10

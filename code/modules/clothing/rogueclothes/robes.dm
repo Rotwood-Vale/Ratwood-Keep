@@ -24,7 +24,6 @@
 	sleeved = null
 	boobed = TRUE
 	color = null
-	flags_inv = HIDEBOOB
 	r_sleeve_status = SLEEVE_NORMAL
 	l_sleeve_status = SLEEVE_NORMAL
 
@@ -39,7 +38,6 @@
 	sleeved = null
 	boobed = TRUE
 	color = null
-	flags_inv = HIDEBOOB
 	r_sleeve_status = SLEEVE_NORMAL
 	l_sleeve_status = SLEEVE_NORMAL
 
@@ -54,7 +52,6 @@
 	sleeved = null
 	boobed = TRUE
 	color = null
-	flags_inv = HIDEBOOB
 	r_sleeve_status = SLEEVE_NORMAL
 	l_sleeve_status = SLEEVE_NORMAL
 
@@ -69,7 +66,6 @@
 	sleeved = null
 	boobed = TRUE
 	color = null
-	flags_inv = HIDEBOOB
 	r_sleeve_status = SLEEVE_NORMAL
 	l_sleeve_status = SLEEVE_NORMAL
 
@@ -84,7 +80,6 @@
 	sleeved = 'icons/roguetown/clothing/onmob/helpers/sleeves_armor.dmi'
 	boobed = TRUE
 	color = null
-	flags_inv = HIDEBOOB
 	r_sleeve_status = SLEEVE_NORMAL
 	l_sleeve_status = SLEEVE_NORMAL
 
@@ -113,8 +108,23 @@
 	color = "#6c6c6c"
 
 /obj/item/clothing/suit/roguetown/shirt/robe/mage/Initialize()
-	color = pick("#4756d8", "#759259", "#bf6f39", "#c1b144")
+	color = pick("#4756d8", "#759259", "#bf6f39", "#c1b144", "#b8252c")
 	. = ..()
+
+/obj/item/clothing/suit/roguetown/shirt/robe/mageblue
+	color = "#4756d8"
+
+/obj/item/clothing/suit/roguetown/shirt/robe/magegreen
+	color = "#759259"
+
+/obj/item/clothing/suit/roguetown/shirt/robe/mageorange
+	color = "#bf6f39"
+
+/obj/item/clothing/suit/roguetown/shirt/robe/magered
+	color = "#b8252c"
+
+/obj/item/clothing/suit/roguetown/shirt/robe/mageyellow
+	color = "#c1b144"
 
 /obj/item/clothing/suit/roguetown/shirt/robe/merchant
 	name = "guilder jacket"
@@ -135,7 +145,6 @@
 	mob_overlay_icon = 'icons/roguetown/clothing/onmob/shirts.dmi'
 	sleeved = 'icons/roguetown/clothing/onmob/shirts.dmi'
 	boobed = TRUE
-	flags_inv = HIDEBOOB
 	r_sleeve_status = SLEEVE_NORMAL
 	l_sleeve_status = SLEEVE_NORMAL
 	allowed_sex = list(MALE, FEMALE)
@@ -153,6 +162,6 @@
 	sleeved = null
 	boobed = TRUE
 	color = null
-	flags_inv = HIDEBOOB
+	flags_inv = HIDEBOOB|HIDETAIL
 	r_sleeve_status = SLEEVE_NORMAL
 	l_sleeve_status = SLEEVE_NORMAL

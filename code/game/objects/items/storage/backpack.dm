@@ -313,14 +313,6 @@
 		icon_state = initial(icon_state)
 		REMOVE_TRAIT(src, TRAIT_T_RAY_VISIBLE, TRAIT_GENERIC)
 
-/obj/item/storage/backpack/satchel/flat/PopulateContents()
-	var/datum/supply_pack/costumes_toys/randomised/contraband/C = new
-	for(var/i in 1 to 2)
-		var/ctype = pick(C.contains)
-		new ctype(src)
-
-	qdel(C)
-
 /obj/item/storage/backpack/satchel/flat/with_tools/PopulateContents()
 	new /obj/item/stack/tile/plasteel(src)
 	new /obj/item/crowbar(src)

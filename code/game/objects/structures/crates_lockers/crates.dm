@@ -84,6 +84,7 @@
 	close_sound = 'sound/blank.ogg'
 	open_sound_volume = 25
 	close_sound_volume = 50
+	drag_slowdown = 2
 
 /obj/structure/closet/crate/coffin/vampire
 	name = "sleep casket"

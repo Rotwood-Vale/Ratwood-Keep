@@ -39,6 +39,8 @@
 			var/turf/T = get_turf(HL)
 			if(!T)
 				continue
+			message_admins("SCRYING: [user.real_name] ([user.ckey]) has used the scrying orb to leer at [HL.real_name] ([HL.ckey])")
+			log_game("SCRYING: [user.real_name] ([user.ckey]) has used the scrying orb to leer at [HL.real_name] ([HL.ckey])")
 			var/mob/dead/observer/screye/S = user.scry_ghost()
 			if(!S)
 				return
