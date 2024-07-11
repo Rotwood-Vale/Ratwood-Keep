@@ -52,11 +52,11 @@
 	shoes = /obj/item/clothing/shoes/roguetown/boots/armor
 	belt = /obj/item/storage/belt/rogue/leather/plaquesilver
 	beltr = /obj/item/rogueweapon/mace/steel
-	beltl = /obj/item/rogueweapon/sword/sabre
+	beltl = /obj/item/keyring/captain
 	cloak = /obj/item/clothing/cloak/stabard/guardhood
 	backl = /obj/item/rogueweapon/shield/tower
 	backr = /obj/item/storage/backpack/rogue/satchel/black
-	backpack_contents = list(/obj/item/keyring/sheriff = 1, /obj/item/rogueweapon/huntingknife/idagger/steel/special = 1)
+	backpack_contents = list(/obj/item/keyring/captain = 1, /obj/item/rogueweapon/huntingknife/idagger/steel/special = 1)
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/combat/swords, 5, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/polearms, 5, TRUE)

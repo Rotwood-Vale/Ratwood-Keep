@@ -49,35 +49,11 @@
 	icon_state = "ekey"
 	lockid = "royal"
 
-/obj/item/roguekey/manor
-	name = "manor key"
-	desc = "This key will open any manor doors."
-	icon_state = "mazekey"
-	lockid = "manor"
-
-/obj/item/roguekey/garrison
-	name = "town watch key"
-	desc = "This key belongs to the town guards."
-	icon_state = "spikekey"
-	lockid = "garrison"
-
-/obj/item/roguekey/dungeon
-	name = "dungeon key"
-	desc = "This key should unlock the rusty bars and doors of the dungeon."
-	icon_state = "rustkey"
-	lockid = "dungeon"
-
 /obj/item/roguekey/vault
 	name = "vault key"
 	desc = "This key opens the mighty vault."
 	icon_state = "cheesekey"
 	lockid = "vault"
-
-/obj/item/roguekey/sheriff
-	name = "guard captain's key"
-	desc = "This key belongs to the captain of the guard."
-	icon_state = "cheesekey"
-	lockid = "sheriff"
 
 /obj/item/roguekey/bailiff
 	name = "bailiff's key"
@@ -303,6 +279,84 @@
 	desc = "This key looks barely used."
 	icon_state = "ekey"
 	lockid = "archive"
+
+/obj/item/roguekey/manor
+	name = "manor key"
+	desc = "This key will open any manor doors."
+	icon_state = "mazekey"
+	lockid = "manor"
+
+/obj/item/roguekey/bog_gatehouse
+	name = "bog gatehouse key"
+	desc = "This key opens the bog gatehouse."
+	icon_state = "spikekey"
+	lockid = "bog_gate"
+	
+/obj/item/roguekey/bog_barracks
+	name = "bog barracks key"
+	desc = "This key opens the bog barracks."
+	icon_state = "spikekey"
+	lockid = "bog_barracks"
+	
+/obj/item/roguekey/bog_dungeon
+	name = "bog dungeon key"
+	desc = "This key opens the bog dungeon."
+	icon_state = "spikekey"
+	lockid = "bog_dungeon"
+	
+/obj/item/roguekey/bog_armory
+	name = "bog armory key"
+	desc = "This key opens the bog armory."
+	icon_state = "spikekey"
+	lockid = "bog_armory"
+
+/obj/item/roguekey/town_barracks
+	name = "town barracks key"
+	desc = "This key opens the town barracks."
+	icon_state = "spikekey"
+	lockid = "town_barracks"
+
+/obj/item/roguekey/town_dungeon
+	name = "town dungeon key"
+	desc = "This key opens the town dungeon."
+	icon_state = "spikekey"
+	lockid = "town_dungeon"
+
+/obj/item/roguekey/town_armory
+	name = "town armory key"
+	desc = "This key opens the town armory."
+	icon_state = "spikekey"
+	lockid = "bog_armory"
+
+/obj/item/roguekey/sheriff_office
+	name = "sheriff's office key"
+	desc = "This key opens the sheriff's office."
+	icon_state = "spikekey"
+	lockid = "sheriff_office"
+
+/obj/item/roguekey/keep_gatehouse
+	name = "keep gatehouse key"
+	desc = "This key opens the keep gatehouse."
+	icon_state = "spikekey"
+	lockid = "keep_barracks"
+
+/obj/item/roguekey/keep_barracks
+	name = "keep barracks key"
+	desc = "This key opens the keep barracks."
+	icon_state = "spikekey"
+	lockid = "keep_barracks"
+
+/obj/item/roguekey/keep_dungeon
+	name = "keep dungeon key"
+	desc = "This key opens the keep dungeon."
+	icon_state = "spikekey"
+	lockid = "keep_dungeon"
+
+/obj/item/roguekey/keep_armory
+	name = "keep armory key"
+	desc = "This key opens the keep armory."
+	icon_state = "spikekey"
+	lockid = "keep_armory"
 
 //grenchensnacker
 /obj/item/roguekey/porta
