@@ -63,8 +63,8 @@
 	flag = WEAPONSMITH
 	department_flag = YEOMEN
 	faction = "Station"
-	total_positions = 1
-	spawn_positions = 1
+	total_positions = 3
+	spawn_positions = 3
 
 	allowed_races = RACES_TOLERATED_UP
 
