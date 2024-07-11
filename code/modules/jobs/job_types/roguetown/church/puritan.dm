@@ -5,8 +5,13 @@
 	faction = "Station"
 	total_positions = 1
 	spawn_positions = 1
+<<<<<<< HEAD
 	allowed_sexes = list(MALE)
 	allowed_races = RACES_TOLERATED_UP
+=======
+	allowed_sexes = list(MALE, FEMALE)
+	allowed_races = RACES_ALL_KINDS
+>>>>>>> 4358b8396 (Changes any job without a lore reason to be unisex (#62))
 	allowed_patrons = list(
 		/datum/patron/old_god,
 		ALL_DIVINE_PATRONS,

@@ -2,7 +2,7 @@
 /datum/advclass/barbarian
 	name = "Barbarian"
 	tutorial = "A jack-of-all-trades warrior sort. Is skilled in all weapons, but master of none"
-	allowed_sexes = list(MALE)
+	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
 	outfit = /datum/outfit/job/roguetown/adventurer/barbarian
 	traits_applied = list(TRAIT_CRITICAL_RESISTANCE, TRAIT_NOPAINSTUN, TRAIT_STEELHEARTED)
