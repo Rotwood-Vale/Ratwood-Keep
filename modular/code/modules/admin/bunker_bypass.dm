@@ -33,6 +33,7 @@ GLOBAL_LIST_INIT(bunker_bypasses, load_bypasses_from_file())
 	else
 		return list()
 
+
 /proc/save_bypasses_to_file()
 	var/json_file = file("data/whitelist.json")
 	var/list/file_data = list()
