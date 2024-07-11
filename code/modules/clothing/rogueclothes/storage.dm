@@ -185,7 +185,7 @@
 
 /obj/item/storage/backpack/rogue/satchel/heartfelt/PopulateContents()
 	new /obj/item/natural/feather(src)
-	new /obj/item/paper/heartfelt/random(src)
+	new /obj/item/paper(src)
 
 
 /obj/item/storage/backpack/rogue/satchel/black
