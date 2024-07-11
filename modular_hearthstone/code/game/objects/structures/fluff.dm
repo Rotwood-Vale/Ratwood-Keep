@@ -3,8 +3,9 @@
 	desc = "A one-armed wild-kin."
 	icon = 'modular_hearthstone/icons/roguetown/misc/64x64.dmi'
 	icon_state = "who"
+	layer = 3
 
-/obj/structure/fluff/statue/secret/what/examine(mob/user)
+/obj/structure/fluff/statue/secret/examine(mob/user)
 	. = ..()
 	if(!user.is_literate())
 		. += "Her name escapes me."
@@ -21,4 +22,4 @@
 	if(!user.is_literate())
 		. += "I have no idea what this is!"
 	else
-		. += "I recognize this as the ancient remains of an ancient once-drill. The rusted wrought-iron chains dangle loosely in my face."
+		. += "I recognize this as the remains of an ancient once-gate. The rusted wrought-iron chains dangle loosely in my face. The Breach happened here."
