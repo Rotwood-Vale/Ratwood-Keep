@@ -3,8 +3,8 @@
 	flag = MERCHANT
 	department_flag = YEOMEN
 	faction = "Station"
-	total_positions = 1
-	spawn_positions = 1
+	total_positions = 3
+	spawn_positions = 3
 	selection_color = JCOLOR_YEOMAN
 	allowed_races = RACES_TOLERATED_UP
 	tutorial = "You were born into wealth, learning from before you could talk about the basics of mathematics. Counting coins is a simple pleasure for any person, but you've made it an artform. These people are addicted to your wares and you are the literal beating heart of this economy: Dont let these filthy-covered troglodytes ever forget that."
@@ -12,7 +12,7 @@
 	display_order = JDO_MERCHANT
 
 	outfit = /datum/outfit/job/roguetown/merchant
-	give_bank_account = 22
+	give_bank_account = 50
 	min_pq = 1
 	max_pq = null
 	required = TRUE
