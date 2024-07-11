@@ -540,15 +540,12 @@
 		for(var/AC in atomrefs)
 			var/AD = "[AC] ([atomcounts[AC]])"
 			atomy[AD] = atomrefs[AC]
-	var/UR = "I"
-	if(user.real_name)
-		UR = user.real_name
-	var/atom/AB = input(user, "What will [UR] pick up?","",null) as null|anything in atomy
+	var/atom/AB = input(user, "What will I take?","Items on [src.name ? "\the [src.name]:" : "the floor:"]",null) as null|anything in atomy
 	if(!AB)
 		return
 	if(QDELETED(atomy[AB]))
 		return
-	if(atomy[AB].in_contents_of(/mob) || atomy[AB].in_contents_of(/obj))
+	if(atomy[AB].loc != src)
 		return
 	var/AE = atomy[AB]
 	user.used_intent = user.a_intent
