@@ -30,6 +30,13 @@
 
 /datum/migrant_pref/proc/post_spawn()
 	set_active(FALSE)
+	hide_ui()
+
+/datum/migrant_pref/proc/hide_ui()
+	var/client/client = prefs.parent
+	if(!client)
+		return
+	client.mob << browse(null, "window=migration")
 
 /datum/migrant_pref/proc/show_ui()
 	var/client/client = prefs.parent
