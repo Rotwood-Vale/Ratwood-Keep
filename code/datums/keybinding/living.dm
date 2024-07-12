@@ -266,9 +266,10 @@
 
 /datum/keybinding/living/pixel_shift_north/down(client/user)
 	var/mob/living/M = user.mob
-	if(M.pixel_y <= 16 && M.wallpressed == FALSE && !M.lying)
+	if(M.pixel_y <= 16 && M.pixelshift_y <= 16 && M.wallpressed == FALSE)
 		M.pixelshifted = TRUE
-		M.set_mob_offsets("pixel_shift", _x = M.pixel_x, _y = M.pixel_y + 1)	
+		M.pixelshift_y = M.pixelshift_y + 1
+		M.set_mob_offsets("pixel_shift", _x = M.pixelshift_x, _y = M.pixelshift_y)	
 	return TRUE
 
 /datum/keybinding/living/pixel_shift_east
@@ -280,9 +281,10 @@
 
 /datum/keybinding/living/pixel_shift_east/down(client/user)
 	var/mob/living/M = user.mob
-	if(M.pixel_x <= 16 && M.wallpressed == FALSE && !M.lying)
+	if(M.pixel_x <= 16 && M.pixelshift_x <= 16 && M.wallpressed == FALSE)
 		M.pixelshifted = TRUE
-		M.set_mob_offsets("pixel_shift", _x = M.pixel_x + 1, _y = M.pixel_y)	
+		M.pixelshift_x = M.pixelshift_x + 1
+		M.set_mob_offsets("pixel_shift", _x = M.pixelshift_x, _y = M.pixelshift_y)	
 	return TRUE
 
 /datum/keybinding/living/pixel_shift_south
@@ -294,9 +296,10 @@
 
 /datum/keybinding/living/pixel_shift_south/down(client/user)
 	var/mob/living/M = user.mob
-	if(M.pixel_y >= -16 && M.wallpressed == FALSE && !M.lying)
+	if(M.pixel_y >= -16 && M.pixelshift_y >= -16 && M.wallpressed == FALSE)
 		M.pixelshifted = TRUE
-		M.set_mob_offsets("pixel_shift", _x = M.pixel_x, _y = M.pixel_y - 1)		
+		M.pixelshift_y = M.pixelshift_y - 1
+		M.set_mob_offsets("pixel_shift", _x = M.pixelshift_x, _y = M.pixelshift_y)		
 	return TRUE
 
 /datum/keybinding/living/pixel_shift_west
@@ -308,9 +311,10 @@
 
 /datum/keybinding/living/pixel_shift_west/down(client/user)
 	var/mob/living/M = user.mob
-	if(M.pixel_x >= -16 && M.wallpressed == FALSE && !M.lying)
+	if(M.pixel_x >= -16 && M.pixelshift_x >= -16 && M.wallpressed == FALSE)
 		M.pixelshifted = TRUE
-		M.set_mob_offsets("pixel_shift", _x = M.pixel_x - 1, _y = M.pixel_y)	
+		M.pixelshift_x = M.pixelshift_x - 1
+		M.set_mob_offsets("pixel_shift", _x = M.pixelshift_x, _y = M.pixelshift_y)	
 	return TRUE
 
 
