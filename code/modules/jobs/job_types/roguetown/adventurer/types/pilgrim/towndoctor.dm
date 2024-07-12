@@ -1,7 +1,7 @@
 /datum/advclass/towndoctor
 	name = "Barber Surgeon"
 	tutorial = "You are the closest thing to a doctor that the townsfolk here will ever meet. Wielding crude tools and accumulated knowledge, you have probably cut into as many people as the average Knight."
-	allowed_sexes = list(MALE)
+	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_TOLERATED_UP
 	outfit = /datum/outfit/job/roguetown/adventurer/doctor
 	category_tags = list(CTAG_PILGRIM, CTAG_TOWNER)
@@ -53,15 +53,16 @@
 			H.change_stat("strength", -2)
 			H.mind.adjust_skillrank(/datum/skill/misc/medicine, 5, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/sewing, 3, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/craft/alchemy, 2, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/craft/alchemy, 3, TRUE)
 		if(H.age == AGE_MIDDLEAGED)
 			H.change_stat("intelligence", 2)
 			H.change_stat("strength", -1)
 			H.mind.adjust_skillrank(/datum/skill/misc/medicine, 4, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/misc/sewing, 2, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/craft/alchemy, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/sewing, 3, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/craft/alchemy, 2, TRUE)
 		else
 			H.change_stat("intelligence", 1)
 			H.change_stat("fortune", 1)
-			H.mind.adjust_skillrank(/datum/skill/misc/medicine, 3, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/misc/sewing, 2, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/medicine, 4, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/sewing, 3, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/craft/alchemy, 1, TRUE)
