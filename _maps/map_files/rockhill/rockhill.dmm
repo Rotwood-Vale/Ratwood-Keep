@@ -10671,6 +10671,10 @@
 /obj/structure/roguewindow/openclose,
 /turf/closed/wall/mineral/rogue/wooddark/vertical,
 /area/rogue/indoors)
+"lKO" = (
+/obj/structure/fluff/statue/secret/why,
+/turf/open/floor/rogue/blocks/stonered,
+/area/rogue/under/cavewet/bogcaves/sunkencity)
 "lLa" = (
 /turf/open/floor/rogue/rooftop{
 	dir = 8
@@ -67013,7 +67017,7 @@ bpD
 bpD
 bpD
 abe
-abo
+lKO
 abo
 abo
 abo
