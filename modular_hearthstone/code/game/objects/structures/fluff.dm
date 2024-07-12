@@ -23,3 +23,15 @@
 		. += "I have no idea what this is!"
 	else
 		. += "I recognize this as the remains of an ancient once-gate. The rusted wrought-iron chains dangle loosely in my face. The Breach happened here."
+
+/obj/structure/fluff/statue/secret/why
+	name = "...?"
+	desc = ""
+	icon = "why" //literal codersprite. todo: this is bad
+
+/obj/structure/fluff/statue/secret/why/examine(mob/user)
+	. = ..()
+	if(!user.is_literate())
+		. += "Foul liquid in a glass cask."
+	else
+		. += "Expired True Draught. The stuff that the foul creatyres which came through the Breach bled. Mimickry of their life-stuff is what makes up the red and blue elixirs I quaff."
