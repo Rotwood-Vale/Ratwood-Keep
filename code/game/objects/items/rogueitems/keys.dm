@@ -290,7 +290,7 @@
 	name = "bog gatehouse key"
 	desc = "This key opens the bog gatehouse."
 	icon_state = "spikekey"
-	lockid = "bog_gate"
+	lockid = "bog_gatehouse"
 	
 /obj/item/roguekey/bog_barracks
 	name = "bog barracks key"
@@ -326,7 +326,7 @@
 	name = "town armory key"
 	desc = "This key opens the town armory."
 	icon_state = "spikekey"
-	lockid = "bog_armory"
+	lockid = "town_armory"
 
 /obj/item/roguekey/sheriff_office
 	name = "sheriff's office key"
@@ -338,7 +338,7 @@
 	name = "keep gatehouse key"
 	desc = "This key opens the keep gatehouse."
 	icon_state = "spikekey"
-	lockid = "keep_barracks"
+	lockid = "keep_gatehouse"
 
 /obj/item/roguekey/keep_barracks
 	name = "keep barracks key"
