@@ -3,7 +3,7 @@
 	throwforce = 15
 	possible_item_intents = list(INTENT_GENERIC)
 	name = "glass pot"
-	desc = "A delicate glass pot." // i've never seen this ingame
+	desc = "A delicate glass pot."
 	icon_state = "pot"
 	icon = 'icons/roguetown/items/cooking.dmi'
 	item_state = "rods"
@@ -19,3 +19,13 @@
 	possible_item_intents = list(INTENT_GENERIC, /datum/intent/fill, INTENT_POUR, INTENT_SPLASH)
 	drop_sound = 'sound/foley/dropsound/shovel_drop.ogg'
 	slot_flags = null
+
+/obj/item/reagent_containers/glass/pot/stone
+	//for stone crafting.
+	name = "stone pot"
+	desc = "A rough stone pot."
+
+/obj/item/reagent_containers/glass/pot/iron
+	//for stone crafting.
+	name = "iron pot"
+	desc = "A smooth iron pot."

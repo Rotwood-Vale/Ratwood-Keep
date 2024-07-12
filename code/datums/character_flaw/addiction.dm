@@ -78,7 +78,7 @@
 	name = "Alcoholic"
 	desc = "Drinking alcohol is my favorite thing."
 	time = 40 MINUTES
-	needsate_text = "Time for a drink."
+	needsate_text = "Time for some booze."
 
 
 /// JUNKIE

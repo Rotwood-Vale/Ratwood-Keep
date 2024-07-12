@@ -71,6 +71,11 @@
 			user.visible_message(span_warning("[user] strikes the bar!"))
 		else
 			user.visible_message(span_info("[user] strikes the bar!"))
+			var/obj/item/rogueweapon/heldstuff = user.get_active_held_item()
+			if(istype(heldstuff, /obj/item/rogueweapon/hammer/stone))
+				heldstuff.obj_integrity -= 1
+				if(heldstuff.obj_integrity <= 0)
+					heldstuff.obj_destruction()
 		return TRUE
 
 /datum/anvil_recipe/proc/item_added(mob/user)

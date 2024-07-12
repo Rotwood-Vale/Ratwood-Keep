@@ -27,7 +27,7 @@
 	return TRUE
 
 /datum/sex_action/vaginal_sex/on_start(mob/living/carbon/human/user, mob/living/carbon/human/target)
-	user.visible_message(span_warning("[user] slides his cock into [target]'s cunt!"))
+	user.visible_message(span_warning("[user] slides their cock into [target]'s cunt!"))
 	playsound(target, list('sound/misc/mat/insert (1).ogg','sound/misc/mat/insert (2).ogg'), 20, TRUE, ignore_walls = FALSE)
 
 /datum/sex_action/vaginal_sex/on_perform(mob/living/carbon/human/user, mob/living/carbon/human/target)
@@ -49,7 +49,7 @@
 	target.sexcon.handle_passive_ejaculation()
 
 /datum/sex_action/vaginal_sex/on_finish(mob/living/carbon/human/user, mob/living/carbon/human/target)
-	user.visible_message(span_warning("[user] pulls his cock out of [target]'s cunt."))
+	user.visible_message(span_warning("[user] pulls their cock out of [target]'s cunt."))
 
 /datum/sex_action/vaginal_sex/is_finished(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(user.sexcon.finished_check())

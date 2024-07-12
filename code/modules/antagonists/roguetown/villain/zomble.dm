@@ -27,7 +27,6 @@
 	/// Traits applied to the owner mob when we turn into a zombie
 	var/static/list/traits_zombie = list(
 		TRAIT_CRITICAL_RESISTANCE,
-		TRAIT_NOROGSTAM,
 		TRAIT_NOMOOD,
 		TRAIT_NOHUNGER,
 		TRAIT_EASYDISMEMBER,
@@ -206,7 +205,7 @@
 		zombie.dropItemToGround(zombie.get_item_by_slot(slot), TRUE)
 
 	// Ghosts you because this shit was just not working whatsoever, let the AI handle the rest
-	zombie.ghostize(FALSE)
+	//zombie.ghostize(FALSE)
 
 /datum/antagonist/zombie/greet()
 	to_chat(owner.current, span_userdanger("Death is not the end..."))

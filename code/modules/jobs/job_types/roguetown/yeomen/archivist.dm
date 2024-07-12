@@ -15,6 +15,7 @@
 	min_pq = 0
 	max_pq = null
 
+
 /datum/outfit/job/roguetown/archivist
 	allowed_patrons = list(/datum/patron/divine/noc)
 

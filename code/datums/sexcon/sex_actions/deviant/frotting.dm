@@ -24,7 +24,7 @@
 	return TRUE
 
 /datum/sex_action/frotting/on_start(mob/living/carbon/human/user, mob/living/carbon/human/target)
-	user.visible_message(span_warning("[user] shoves his cock against [target]'s own!"))
+	user.visible_message(span_warning("[user] shoves their cock against [target]'s own!"))
 
 /datum/sex_action/frotting/on_perform(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] frots cocks together with [target]'s."))

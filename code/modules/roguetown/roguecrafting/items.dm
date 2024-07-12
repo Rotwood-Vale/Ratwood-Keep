@@ -103,6 +103,23 @@
 	reqs = list(/obj/item/grown/log/tree/small = 1,
 				/obj/item/natural/stone = 1)
 
+/datum/crafting_recipe/roguetown/stonehammer
+	name = "stone hammer"
+	result = /obj/item/rogueweapon/hammer/stone
+	reqs = list(/obj/item/grown/log/tree/small = 1,
+				/obj/item/natural/stone = 3)
+
+/datum/crafting_recipe/roguetown/stonetongs
+	name = "stone tongs"
+	result = /obj/item/rogueweapon/tongs/stone
+	reqs = list(/obj/item/grown/log/tree/stick = 2,
+				/obj/item/natural/stone = 1)
+
+/datum/crafting_recipe/roguetown/stonepick
+	name = "stone pick"
+	result = /obj/item/rogueweapon/pick/stone
+	reqs = list(/obj/item/grown/log/tree/small = 1,
+				/obj/item/natural/stone = 2)
 
 /datum/crafting_recipe/roguetown/stoneknife
 	name = "stone knife"
@@ -225,7 +242,7 @@
 
 /datum/crafting_recipe/roguetown/pot
 	name = "stone pot"
-	result = /obj/item/reagent_containers/glass/pot
+	result = /obj/item/reagent_containers/glass/pot/stone
 	reqs = list(/obj/item/natural/stone = 2)
 
 /datum/crafting_recipe/roguetown/stonearrow
@@ -338,7 +355,7 @@
 				/obj/item/natural/cloth = 1)
 	tools = list(/obj/item/needle)
 	skillcraft = /datum/skill/misc/sewing
-	req_table = TRUE
+	req_table = FALSE
 
 /obj/item/storage/roguebag/crafted
 	sellprice = 4

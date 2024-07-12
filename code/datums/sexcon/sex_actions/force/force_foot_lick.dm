@@ -24,7 +24,7 @@
 	user.visible_message(span_warning("[user] shoves their feet against [target]'s head!"))
 
 /datum/sex_action/force_foot_lick/on_perform(mob/living/carbon/human/user, mob/living/carbon/human/target)
-	user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] forces [target] to lick his feet."))
+	user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] forces [target] to lick their feet."))
 	target.make_sucking_noise()
 
 /datum/sex_action/force_foot_lick/on_finish(mob/living/carbon/human/user, mob/living/carbon/human/target)

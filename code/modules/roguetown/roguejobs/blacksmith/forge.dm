@@ -20,5 +20,13 @@
 			addtimer(CALLBACK(T, TYPE_PROC_REF(/obj/item/rogueweapon/tongs, make_unhot), tyme), 100)
 			T.update_icon()
 			user.visible_message(span_info("[user] heats the bar."))
+			var/obj/item/rogueweapon/tongs/heldstuff = user.get_active_held_item()
+			if(istype(heldstuff, /obj/item/rogueweapon/tongs/stone))
+				heldstuff.obj_integrity -= 1
+				if(heldstuff.obj_integrity <= 0)
+					heldstuff.hingot.forceMove(get_turf(user))
+					heldstuff.hingot = null
+					heldstuff.hott = FALSE
+					heldstuff.obj_break()
 			return
 	return ..()

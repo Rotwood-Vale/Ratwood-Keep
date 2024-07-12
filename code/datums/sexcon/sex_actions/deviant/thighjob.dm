@@ -18,7 +18,7 @@
 	return TRUE
 
 /datum/sex_action/thighjob/on_start(mob/living/carbon/human/user, mob/living/carbon/human/target)
-	user.visible_message(span_warning("[user] grabs [target]'s thighs and shoves his cock inbetween!"))
+	user.visible_message(span_warning("[user] grabs [target]'s thighs and shoves their cock inbetween!"))
 
 /datum/sex_action/thighjob/on_perform(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] fucks [target]'s thighs."))
@@ -28,4 +28,4 @@
 	user.sexcon.handle_passive_ejaculation()
 
 /datum/sex_action/thighjob/on_finish(mob/living/carbon/human/user, mob/living/carbon/human/target)
-	user.visible_message(span_warning("[user] pulls his cock out from inbetween [target]'s thighs."))
+	user.visible_message(span_warning("[user] pulls their cock out from inbetween [target]'s thighs."))

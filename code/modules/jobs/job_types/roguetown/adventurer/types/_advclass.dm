@@ -15,6 +15,7 @@
 	var/vampcompat = TRUE
 	var/list/traits_applied
 	var/cmode_music
+	var/f_title
 
 	/// This class is immune to species-based swapped gender locks
 	var/immune_to_genderswap = FALSE

@@ -33,7 +33,7 @@
 "rI" = (/obj/structure/chair/wood/rogue/chair3,/obj/machinery/light/rogue/torchholder{dir = 8},/obj/effect/landmark/start/goblinguard,/turf/open/floor/rogue/cobble,/area/rogue/indoors/shelter/mountains/decap)
 "sv" = (/turf/open/transparent/openspace,/area/rogue/under/cavewet/bogcaves)
 "un" = (/obj/structure/bars{icon_state = "barsbent"; layer = 2.81},/obj/structure/table/wood{icon_state = "tablewood1"},/turf/open/floor/rogue/cobble,/area/rogue/indoors/shelter/mountains/decap)
-"uW" = (/obj/item/reagent_containers/glass/pot,/turf/open/floor/rogue/cobble,/area/rogue/indoors/shelter/mountains/decap)
+"uW" = (/obj/item/reagent_containers/glass/pot/stone,/turf/open/floor/rogue/cobble,/area/rogue/indoors/shelter/mountains/decap)
 "wG" = (/obj/machinery/light/rogue/torchholder{dir = 4},/turf/open/floor/rogue/cobble,/area/rogue/indoors/shelter/mountains/decap)
 "wX" = (/obj/structure/bed/rogue/inn/pileofshit,/obj/effect/landmark/start/goblinguard,/turf/open/floor/rogue/cobble,/area/rogue/indoors/shelter/mountains/decap)
 "xc" = (/obj/structure/table/wood{icon_state = "tablewood1"},/obj/machinery/light/rogue/torchholder{pixel_y = 26},/turf/open/floor/rogue/cobble,/area/rogue/indoors/shelter/mountains/decap)

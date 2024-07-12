@@ -52,3 +52,13 @@
 	gripped_intents = list(/datum/intent/pick)
 	max_integrity = 600
 	smeltresult = /obj/item/ingot/steel
+
+/obj/item/rogueweapon/pick/stone
+	name = "stone pick"
+	desc = "Stone versus sharp stone, who wins?"
+	force_wielded = 17
+	icon_state = "stonepick"
+	possible_item_intents = list(/datum/intent/pick)
+	gripped_intents = list(/datum/intent/pick)
+	max_integrity = 250
+	smeltresult = /obj/item/ingot/steel
