@@ -1,17 +1,16 @@
 /datum/job/roguetown/prince
-	title = "Prince"
-	f_title = "Princess"
+	title = "Scion"
+	f_title = "Scion"
 	flag = PRINCE
 	department_flag = YOUNGFOLK
 	faction = "Station"
 	total_positions = 2
 	spawn_positions = 2
-	f_title = "Princess"
 	allowed_races = RACES_ALL_KINDS //Maybe a system to force-pick lineage based on king and queen should be implemented.
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_ages = list(AGE_ADULT)
 
-	tutorial = "You’ve never felt the gnawing of the winter, never known the bite of hunger and certainly have never known a honest day's work. You are as free as any bird in the sky, and you may revel in your debauchery for as long as your parents remain upon the throne: But someday you’ll have to grow up, and that will be the day your carelessness will cost you more than a few mammons."
+	tutorial = "Born into the royal family or to parents in its good graces, your heritage has bought you a \"free\" ride through life. You’ve never felt the gnawing of the winter, never known the bite of hunger and certainly have never known a honest day's work. You are as free as any bird in the sky, and you may revel in your debauchery for as long as your parents remain in their favourable position: But someday you’ll have to grow up, and that will be the day your carelessness will cost you more than a few mammons."
 
 	outfit = /datum/outfit/job/roguetown/prince
 	display_order = JDO_PRINCE
@@ -22,7 +21,8 @@
 /datum/job/roguetown/prince/after_spawn(mob/living/H, mob/M, latejoin)
 	. = ..()
 	if(GLOB.lordsurname && H)
-		give_lord_surname(H)
+		if(input("Take the surname of the current ruler and be a Prince/Princess?"))
+			give_lord_surname(H)
 
 /datum/outfit/job/roguetown/prince/pre_equip(mob/living/carbon/human/H)
 	..()
