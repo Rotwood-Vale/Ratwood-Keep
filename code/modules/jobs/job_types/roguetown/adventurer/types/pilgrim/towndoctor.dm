@@ -35,7 +35,7 @@
 		/obj/item/needle = 1,
 		/obj/item/natural/cloth = 2,
 	)
-	if(h.mind)
+	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/combat/knives, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/craft/crafting, 2, TRUE)
