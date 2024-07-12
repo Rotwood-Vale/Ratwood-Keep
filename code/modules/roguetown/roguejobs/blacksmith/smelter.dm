@@ -28,7 +28,7 @@
 			ore -= I
 			I.forceMove(T)
 			T.hingot =  I //VRELL - THIS IS AN UNSAFE CONVERSION!!!!
-			if(istype(I, var/obj/item/ingot))
+			if(istype(I, /obj/item/ingot))
 				if(user.mind && isliving(user) && T.hingot.smelted)
 					var/mob/living/L = user
 					var/boon = user.mind.get_learning_boon(/datum/skill/craft/smelting)
