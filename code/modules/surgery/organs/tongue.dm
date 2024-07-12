@@ -16,7 +16,8 @@
 		/datum/language/celestial,
 		/datum/language/hellspeak,
 		/datum/language/beast,
-		/datum/language/orcish
+		/datum/language/orcish,
+		/datum/language/draconic
 	))
 
 /obj/item/organ/tongue/Initialize(mapload)
@@ -51,7 +52,7 @@
 	icon_state = "tonguelizard"
 	say_mod = "hisses"
 	taste_sensitivity = 10 // combined nose + tongue, extra sensitive
-	modifies_speech = TRUE
+//	modifies_speech = TRUE
 /*
 /obj/item/organ/tongue/lizard/handle_speech(datum/source, list/speech_args)
 	var/static/regex/lizard_hiss = new("s+", "g")

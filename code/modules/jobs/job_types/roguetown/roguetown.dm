@@ -62,7 +62,12 @@
 			H.set_patron(default_patron || pick(preferredgods))
 		else
 			H.set_patron(default_patron || pick(possiblegods))
-		to_chat(H, "<span class='warning'>[old_patron] had not endorsed my practices in my younger years. I've since grown accustomed to [H.patron].")
+		var/change_message = span_warning("[old_patron] had not endorsed my practices in my younger years. I've since grown accustomed to [H.patron].")
+		if(H.client)
+			to_chat(H, change_message)
+		else
+			// Characters during round start are first equipped before clients are moved into them. This is a bandaid to give an important piece of information correctly to the client
+			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), H, change_message), 5 SECONDS)
 	if(H.mind)
 		var/datum/species/pref_species = H.dna?.species
 		var/weak_gender = FEMALE

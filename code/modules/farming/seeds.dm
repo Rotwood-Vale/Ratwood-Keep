@@ -8,6 +8,18 @@
 	var/plant_def_type
 	var/seed_identity = "some seed"
 
+/obj/item/seeds/Initialize()
+	. = ..()
+	if(plant_def_type)
+		var/datum/plant_def/def = GLOB.plant_defs[plant_def_type]
+		color = def.seed_color
+
+/obj/item/seeds/Crossed(mob/living/L)
+	. = ..()
+	// Chance to destroy the seed as it's being stepped on
+	if(prob(35) && istype(L))
+		qdel(src)
+
 /obj/item/seeds/examine(mob/user)
 	. = ..()
 	var/show_real_identity = FALSE

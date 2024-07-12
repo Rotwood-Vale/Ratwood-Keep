@@ -10,7 +10,6 @@
 	density = TRUE
 	damage_deflection = 25
 	climbable = TRUE
-	var/previous_material_quality = 0
 
 /obj/machinery/anvil/crafted
 	icon_state = "caveanvil"
@@ -94,13 +93,6 @@
 
 	if(hingot && hingot.currecipe && hingot.currecipe.needed_item && istype(W, hingot.currecipe.needed_item))
 		hingot.currecipe.item_added(user)
-		if(istype(W, /obj/item/ingot))
-			var/obj/item/ingot/I = W
-			hingot.currecipe.material_quality += I.quality
-			previous_material_quality = I.quality
-		else
-			hingot.currecipe.material_quality += previous_material_quality
-		hingot.currecipe.num_of_materials += 1 
 		qdel(W)
 		return
 
@@ -113,41 +105,39 @@
 /obj/machinery/anvil/proc/choose_recipe(user)
 	if(!hingot || !hott)
 		return
-	
+
 	var/list/valid_types = list()
-	
+
 	for(var/datum/anvil_recipe/R in GLOB.anvil_recipes)
 		if(istype(hingot, R.req_bar))
 			if(!valid_types.Find(R.i_type))
 				valid_types += R.i_type
-	
+
 	if(!valid_types.len)
 		return
-	
+
 	var/i_type_choice = input(user, "Choose a type", "Anvil") as null|anything in valid_types
 	if(!i_type_choice)
 		return
-	
+
 	var/list/appro_recipe = list()
 	for(var/datum/anvil_recipe/R in GLOB.anvil_recipes)
 		if(R.i_type == i_type_choice && istype(hingot, R.req_bar))
 			appro_recipe += R
-	
+
 	for(var/I in appro_recipe)
 		var/datum/anvil_recipe/R = I
 		if(!R.req_bar)
 			appro_recipe -= R
 		if(!istype(hingot, R.req_bar))
 			appro_recipe -= R
-	
+
 	if(appro_recipe.len)
 		var/datum/chosen_recipe = input(user, "Choose A Creation", "Anvil") as null|anything in sortNames(appro_recipe.Copy())
 		if(!hingot.currecipe && chosen_recipe)
 			hingot.currecipe = new chosen_recipe.type(hingot)
-			hingot.currecipe.material_quality += hingot.quality
-			previous_material_quality = hingot.quality
 			return TRUE
-	
+
 	return FALSE
 
 /obj/machinery/anvil/attack_hand(mob/user, params)
