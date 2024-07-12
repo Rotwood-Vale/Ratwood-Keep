@@ -27,7 +27,8 @@
 	user.make_sucking_noise()
 
 	user.sexcon.perform_sex_action(target, 2, 0, TRUE)
-	user.sexcon.perform_deepthroat_oxyloss(user, 1.3)
+	if(!target.sexcon.considered_limp())
+		user.sexcon.perform_deepthroat_oxyloss(user, 1.3)
 	if(target.sexcon.check_active_ejaculation())
 		target.visible_message(span_love("[target] cums into [user]'s mouth!"))
 		target.sexcon.cum_into()

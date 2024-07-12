@@ -56,25 +56,25 @@
 	list_reagents = list(/datum/reagent/consumable/nutriment = 8)
 	eat_effect = /datum/status_effect/debuff/uncookedfood
 
-/obj/item/reagent_containers/food/snacks/fat/salo
+/obj/item/reagent_containers/food/snacks/salo
 	name = "salo"
 	desc = "A salty piece of fatty salo. Delicious!"
 	icon_state = "suet4"
 	eat_effect = null
 	list_reagents = list(/datum/reagent/consumable/nutriment = 12)
 	bitesize = 4
-	slice_path = /obj/item/reagent_containers/food/snacks/fat/salo/slice
+	slice_path = /obj/item/reagent_containers/food/snacks/salo/slice
 	slices_num = 4
 	slice_batch = FALSE
 	rotprocess = null
 
-/obj/item/reagent_containers/food/snacks/fat/salo/update_icon()
+/obj/item/reagent_containers/food/snacks/salo/update_icon()
 	if(slices_num)
 		icon_state = "suet[slices_num]"
 	else
 		icon_state = "suetslice"
 
-/obj/item/reagent_containers/food/snacks/fat/salo/On_Consume(mob/living/eater)
+/obj/item/reagent_containers/food/snacks/salo/On_Consume(mob/living/eater)
 	..()
 	if(slices_num)
 		if(bitecount == 1)
@@ -85,12 +85,12 @@
 			changefood(slice_path, eater)
 
 
-/obj/item/reagent_containers/food/snacks/fat/salo/slice
+/obj/item/reagent_containers/food/snacks/salo/slice
 	name = "salo"
 	desc = "A fatty, salty slice of salo!"
 	icon_state = "suetslice"
 	eat_effect = null
 	slices_num = 0
 	bitesize = 2
-	slice_path = /obj/item/reagent_containers/food/snacks/fat/salo/slice
+	slice_path = /obj/item/reagent_containers/food/snacks/salo/slice
 	list_reagents = list(/datum/reagent/consumable/nutriment = 3)

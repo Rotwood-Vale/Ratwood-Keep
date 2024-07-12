@@ -835,7 +835,7 @@
 //	var/turf/MT = get_turf(src)
 	if(stat)
 		return
-	if(A.Adjacent(src))
+	if(get_dist(src, A) <= 2)
 		if(T == loc)
 			look_up()
 		else
