@@ -53,6 +53,7 @@
 
 	var/list/datum/mind/villains = list() //Murders Runtimes via shoving this into parent
 	var/list/datum/mind/vampires = list()
+	var/list/datum/mind/deathknights = list() //Vrell - moving this here to maybe fix runtime bugs.
 	var/list/datum/mind/werewolves = list()
 	var/list/datum/mind/bandits = list()
 

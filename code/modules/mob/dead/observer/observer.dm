@@ -552,7 +552,8 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		return
 
 	M.key = key
-	client.verbs -= GLOB.ghost_verbs
+	if(client) //Vrell - we need a non-null check to fix a runtime error.
+		client.verbs -= GLOB.ghost_verbs
 //	M.Login()	//wat
 	return
 

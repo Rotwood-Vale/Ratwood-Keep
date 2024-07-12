@@ -27,14 +27,15 @@
 			var/obj/item/I = ore[ore.len]
 			ore -= I
 			I.forceMove(T)
-			T.hingot = I
-			if(user.mind && isliving(user) && T.hingot?.smelted)
-				var/mob/living/L = user
-				var/boon = user.mind.get_learning_boon(/datum/skill/craft/smelting)
-				var/amt2raise = L.STAINT*2 // (L.STAINT+L.STASTR)/4 optional: add another stat that isn't int
-				//i feel like leveling up takes forever regardless, this would just make it faster
-				if(amt2raise > 0)
-					user.mind.adjust_experience(/datum/skill/craft/smelting, amt2raise * boon, FALSE)
+			T.hingot =  I //VRELL - THIS IS AN UNSAFE CONVERSION!!!!
+			if(istype(I, var/obj/item/ingot))
+				if(user.mind && isliving(user) && T.hingot.smelted)
+					var/mob/living/L = user
+					var/boon = user.mind.get_learning_boon(/datum/skill/craft/smelting)
+					var/amt2raise = L.STAINT*2 // (L.STAINT+L.STASTR)/4 optional: add another stat that isn't int
+					//i feel like leveling up takes forever regardless, this would just make it faster
+					if(amt2raise > 0)
+						user.mind.adjust_experience(/datum/skill/craft/smelting, amt2raise * boon, FALSE)
 			user.visible_message(span_info("[user] retrieves [I] from [src]."))
 			if(on)
 				var/tyme = world.time

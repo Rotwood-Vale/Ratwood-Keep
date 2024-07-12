@@ -1,7 +1,6 @@
 	
 /datum/advclass/heartfeltlord
 	name = "Lord of Heartfelt"
-	f_title = "Lady of Heartfelt"
 	tutorial = "You are the proud lord of heartfelt \
 	but why did you come to the isle of enigma?"
 	allowed_sexes = list(MALE, FEMALE)
