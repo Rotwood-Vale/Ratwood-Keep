@@ -26,8 +26,22 @@
 			update_icon()
 			return attack_hand(user)
 		else
-			to_chat(user, span_warning("Wrong key."))
-			return
+			if(!locked)
+				if(P.w_class <= WEIGHT_CLASS_BULKY)
+					testing("startadd")
+					if(held_items.len < 15)
+						held_items[P] = list()
+						held_items[P]["NAME"] = P.name
+						held_items[P]["PRICE"] = 0
+						P.forceMove(src)
+						playsound(loc, 'sound/misc/machinevomit.ogg', 100, TRUE, -1)
+						return attack_hand(user)
+					else
+						to_chat(user, span_warning("Full."))
+						return
+			else	
+				to_chat(user, span_warning("Wrong key."))
+				return
 	if(istype(P, /obj/item/keyring))
 		var/obj/item/keyring/K = P
 		for(var/obj/item/roguekey/KE in K.keys)
