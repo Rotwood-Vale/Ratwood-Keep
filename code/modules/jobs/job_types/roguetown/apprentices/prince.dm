@@ -1,6 +1,6 @@
 /datum/job/roguetown/prince
-	title = "Scion"
-	f_title = "Scion"
+	title = "Royal Heir"
+	f_title = "Royal Heir"
 	flag = PRINCE
 	department_flag = YOUNGFOLK
 	faction = "Station"

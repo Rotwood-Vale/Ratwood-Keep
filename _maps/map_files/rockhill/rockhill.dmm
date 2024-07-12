@@ -3465,7 +3465,7 @@
 /obj/structure/mineral_door/wood{
 	locked = 1;
 	lockid = "manor";
-	name = "Scion's Room"
+	name = "Royal Heir's Room"
 	},
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/town/manor)
