@@ -429,7 +429,7 @@
 	name = "steel messer" //People often ask for messers when the smithy only has steel, now they can make it.
 	desc = "A single edged blade to slice and chop with. This one is made of sturdy steel."
 	icon_state = "smesser"
-	max_integrity = 175 //Stout blades last a long time before breakage
+	max_integrity = 175 //A stout blade that will last a long time before breakage
 
 /obj/item/rogueweapon/sword/sabre
 	name = "sabre"
@@ -485,14 +485,18 @@
 
 /obj/item/rogueweapon/sword/estoc
 	name = "estoc"
-	desc = "An specialised steel longsword, tailor made for stabbing and little else."
+	desc = "An specialised steel longsword, tailor made for stabbing through armor."
 	force = 18
 	force_wielded = 30
-	possible_item_intents = list(/datum/intent/sword/cut/rapier, /datum/intent/sword/thrust/short) //Better at stabbing than the longsword, worse at evrything else. It fits the time period because of our use of bervors and visored sallets.
+	possible_item_intents = list(/datum/intent/sword/cut/rapier, /datum/intent/sword/thrust) //Better at stabbing than the longsword, worse at evrything else. It fits the time period because of our use of bervors and visored sallets.
 	icon_state = "estoc"
-	gripped_intents = list(/datum/intent/sword/cut/rapier, /datum/intent/sword/thrust/short, /datum/intent/sword/strike)
+	gripped_intents = list(/datum/intent/sword/cut/rapier, /datum/intent/sword/thrust/estoc, /datum/intent/sword/strike)
 	minstr = 6
 	wdefense = 4
+
+/datum/intent/sword/thrust/estoc // Around 12 or so dmg gets through armor, making it weaker than spears, but more portable
+	clickcd = 10
+	penfactor = 40
 
 /obj/item/rogueweapon/sword/krieg
 	force = 20

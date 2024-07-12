@@ -65,7 +65,7 @@
 			if("onbelt")
 				return list("shrink" = 0.3,"sx" = -2,"sy" = -5,"nx" = 4,"ny" = -5,"wx" = 0,"wy" = -5,"ex" = 2,"ey" = -5,"nturn" = 0,"sturn" = 0,"wturn" = 0,"eturn" = 0,"nflip" = 0,"sflip" = 0,"wflip" = 0,"eflip" = 0,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0)
 
-/obj/item/rogueweapon/woodstaff/wise 
+/obj/item/rogueweapon/woodstaff/wise
 	name = "wise staff"
 	desc = "A staff for keeping the volfs at bay..."
 
@@ -181,7 +181,7 @@
 	possible_item_intents = list(SPEAR_THRUST, SPEAR_BASH) //bash is for nonlethal takedowns, only targets limbs
 	gripped_intents = list(SPEAR_THRUST, /datum/intent/spear/cut/halberd, /datum/intent/sword/chop, SPEAR_BASH)
 	name = "halberd"
-	desc = "An iron halberd, mostly used by town guards."
+	desc = "A steel halberd, useful for both cutting and thrusting."
 	icon_state = "halberd"
 	icon = 'icons/roguetown/weapons/64.dmi'
 	pixel_y = -16
@@ -233,7 +233,7 @@
 	possible_item_intents = list(/datum/intent/spear/thrust/eaglebeak, SPEAR_BASH) //bash is for nonlethal takedowns, only targets limbs
 	gripped_intents = list(/datum/intent/spear/thrust/eaglebeak, /datum/intent/mace/smash/eaglebeak, SPEAR_BASH)
 	name = "eagle's beak"
-	desc = ""
+	desc = "A steel polehammer, for use against armored foes."
 	icon_state = "eaglebeak"
 	icon = 'icons/roguetown/weapons/64.dmi'
 	pixel_y = -16
