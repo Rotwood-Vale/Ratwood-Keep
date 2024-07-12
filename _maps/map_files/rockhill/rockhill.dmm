@@ -7598,7 +7598,7 @@
 "iYz" = (
 /obj/structure/mineral_door/wood/donjon{
 	dir = 4;
-	lockid = "keep_dungeon";
+	lockid = "keep_barracks";
 	locked = 1
 	},
 /turf/open/floor/rogue/blocks,
@@ -10819,6 +10819,14 @@
 	lockid = "bog_dungeon"
 	},
 /turf/open/floor/rogue/blocks,
+/area/rogue/under/town/basement)
+"noG" = (
+/obj/structure/mineral_door/bars{
+	locked = 1;
+	lockid = "keep_barracks";
+	name = "Holding Cell"
+	},
+/turf/open/floor/rogue/cobble,
 /area/rogue/under/town/basement)
 "npJ" = (
 /obj/structure/ladder,
@@ -16628,6 +16636,14 @@
 "uJh" = (
 /turf/open/floor/rogue/rooftop,
 /area/rogue/outdoors/town/roofs)
+"uJw" = (
+/obj/structure/mineral_door/wood/donjon{
+	dir = 4;
+	lockid = "keep_barracks";
+	locked = 1
+	},
+/turf/open/floor/rogue/cobble,
+/area/rogue/under/town/basement)
 "uJF" = (
 /turf/closed/wall/mineral/rogue/stonebrick,
 /area/rogue/outdoors/town)
@@ -18447,7 +18463,7 @@
 "xdq" = (
 /obj/structure/mineral_door/wood{
 	locked = 1;
-	lockid = "keep_dungeon"
+	lockid = "keep_barracks"
 	},
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/basement)
@@ -18953,7 +18969,7 @@
 /obj/structure/mineral_door/wood/donjon{
 	dir = 1;
 	locked = 1;
-	lockid = "keep_dungeon"
+	lockid = "keep_barracks"
 	},
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/basement)
@@ -181838,8 +181854,8 @@ txa
 txa
 txa
 txa
-iTw
-iTw
+txa
+oRf
 txa
 dhm
 mVa
@@ -182254,8 +182270,8 @@ txa
 pSj
 cBf
 jyI
-cBf
-cBf
+iTw
+iTw
 cBf
 cBf
 txa
@@ -182657,9 +182673,9 @@ cBf
 cBf
 jyI
 lsd
-cBf
-cBf
-cBf
+iTw
+iTw
+iTw
 txa
 txa
 vRu
@@ -183059,9 +183075,9 @@ cBf
 iTw
 jIp
 cBf
+iTw
 cBf
-cBf
-cBf
+iTw
 sZN
 txa
 vRu
@@ -183460,8 +183476,8 @@ txa
 cBf
 iTw
 kaR
-cBf
-cBf
+iTw
+iTw
 cBf
 cBf
 cBf
@@ -183863,8 +183879,8 @@ iTw
 iTw
 txa
 fNa
-cBf
-cBf
+iTw
+iTw
 cBf
 cBf
 txa
@@ -184265,10 +184281,10 @@ iTw
 iTw
 txa
 igW
-cBf
+iTw
 nka
-cBf
-cBf
+iTw
+iTw
 kaR
 vRu
 vRu
@@ -184667,7 +184683,7 @@ iTw
 iTw
 jyI
 pjF
-cBf
+iTw
 cBf
 cBf
 cBf
@@ -185072,7 +185088,7 @@ cBf
 cBf
 cBf
 cBf
-cBf
+iTw
 txa
 vRu
 vRu
@@ -185473,8 +185489,8 @@ txa
 vup
 mvD
 vup
-cBf
-cBf
+iTw
+iTw
 txa
 vRu
 vRu
@@ -185875,8 +185891,8 @@ jyI
 cBf
 cBf
 vup
-cBf
-cBf
+iTw
+iTw
 txa
 vRu
 vRu
@@ -186275,7 +186291,7 @@ cBf
 iTw
 txa
 jGw
-cBf
+nCN
 txa
 txa
 txa
@@ -187483,7 +187499,7 @@ txa
 txa
 txa
 txa
-vRu
+txa
 vRu
 vRu
 vRu
@@ -187881,11 +187897,11 @@ iTw
 txa
 hVj
 iTw
+vup
+cBf
+cBf
+syh
 txa
-vRu
-vRu
-vRu
-vRu
 vRu
 vRu
 vRu
@@ -188283,11 +188299,11 @@ cBf
 txa
 cBf
 iTw
-jyI
-vRu
-vRu
-vRu
-vRu
+ida
+iTw
+cBf
+cBf
+txa
 vRu
 vRu
 vRu
@@ -188685,11 +188701,11 @@ iTw
 txa
 cBf
 iTw
-jyI
-vRu
-vRu
-vRu
-vRu
+noG
+iTw
+iTw
+cBf
+txa
 vRu
 vRu
 vRu
@@ -189087,11 +189103,11 @@ cBf
 txa
 cBf
 iTw
+vup
+iTw
+iTw
+nka
 txa
-vRu
-vRu
-vRu
-vRu
 vRu
 vRu
 vRu
@@ -189488,7 +189504,7 @@ cEK
 cEK
 txa
 txa
-oRf
+uJw
 txa
 txa
 txa
