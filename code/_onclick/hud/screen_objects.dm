@@ -124,7 +124,7 @@
 	if(world.time < lastclick + 3 SECONDS)
 		return
 	lastclick = world.time
-
+	
 	if(ishuman(usr))
 		var/mob/living/carbon/human/H = usr
 		if(modifiers["right"])
@@ -793,11 +793,13 @@
 		qdel(src)
 		return
 	var/mob/living/carbon/human/H = hud.mymob
-	if(H.mind && H.mind.antag_datums)
-		for(var/datum/antagonist/D in H.mind.antag_datums)
-			if(istype(D, /datum/antagonist/vampirelord) || istype(D, /datum/antagonist/vampire) || istype(D, /datum/antagonist/bandit))
-				qdel(src)
-				return
+	// Eh this will work for now mayb? Just don't startup class select if its the first set of guys and we got these antags
+	if(SSrole_class_handler.current_wave_number == 1)
+		if(H.mind && H.mind.antag_datums)
+			for(var/datum/antagonist/D in H.mind.antag_datums)
+				if(istype(D, /datum/antagonist/vampirelord) || istype(D, /datum/antagonist/vampire) || istype(D, /datum/antagonist/bandit))
+					qdel(src)
+					return
 	if(H.advsetup)
 		alpha = 0
 		icon = 'icons/mob/advsetup.dmi'
@@ -852,7 +854,7 @@
 		if(isliving(hud.mymob))
 			var/mob/living/L = hud.mymob
 			L.look_around()
-
+	
 /atom/movable/screen/eye_intent/update_icon_state()
 	. = ..()
 	var/mob/living/L = hud.mymob

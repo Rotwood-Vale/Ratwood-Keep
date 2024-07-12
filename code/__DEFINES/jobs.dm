@@ -165,7 +165,7 @@
 #define PRISONERR	(1<<14)
 #define PRISONERB	(1<<15)
 #define LUNATIC		(1<<16)
-#define MIGRANT		(1<<17)
+#define WAVE_DRIFTER (1<<17)
 
 #define YOUNGFOLK	(1<<6)
 
@@ -272,7 +272,7 @@
 #define JDO_VILLAGER 30
 #define JDO_ADVENTURER 30.1
 #define JDO_PILGRIM 30.2
-#define JDO_MIGRANT 32.3
+#define JDO_DRIFTER 32.3
 
 #define JDO_GRENZELHOFT 31
 #define JDO_DESERT_RIDER 31.1
