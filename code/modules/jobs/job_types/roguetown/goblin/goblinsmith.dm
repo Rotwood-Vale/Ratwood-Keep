@@ -7,8 +7,7 @@
 	spawn_positions = 3
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
-	allowed_patrons = ALL_DIVINE_PATRONS
-	tutorial = "Goblin rensposible for fresh iron and steel"
+	tutorial = "Tribal smith responsible for forging weapons, armor, and tools for the tribe."
 	display_order = JDO_GOBLINSMITH
 	outfit = /datum/outfit/job/roguetown/goblinsmith
 	min_pq = 0

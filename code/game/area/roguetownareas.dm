@@ -213,7 +213,7 @@ GLOBAL_LIST_INIT(roguetown_areas_typecache, typecacheof(/area/rogue/indoors/town
 				/turf/open/floor/rogue/dirt,
 				/turf/open/floor/rogue/grass,
 				/turf/open/water)
-	first_time_text = "Goblin Outpost"
+	first_time_text = "The Tribe"
 	converted_type = /area/rogue/indoors/shelter/bog
 
 

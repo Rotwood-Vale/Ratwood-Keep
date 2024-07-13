@@ -59,7 +59,7 @@
 		if(observer_privilege)
 			used_name = name
 		if(job == "Goblin King")
-			var/used_title =  "King or Queen of the Goblins"
+			var/used_title =  "King or Queen of the Tribe"
 		// Use the possibly modified title in the output
 			. = list("<span class='info'>ø ------------ ø\nThis is <EM>[used_name]</EM>, the [used_title].")
 		else

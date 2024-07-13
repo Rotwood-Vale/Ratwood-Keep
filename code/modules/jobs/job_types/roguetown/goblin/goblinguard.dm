@@ -7,8 +7,7 @@
 	spawn_positions = 5
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
-	allowed_patrons = ALL_DIVINE_PATRONS
-	tutorial = "Goblin Guards rensposible for their kingdom and his majesty King."
+	tutorial = "Tribal guards rensposible for their kingdom and his majesty king or queen protection."
 	display_order = JDO_GOBLINGUARD
 	outfit = /datum/outfit/job/roguetown/goblinguard
 	min_pq = 0

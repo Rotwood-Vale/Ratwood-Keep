@@ -7,8 +7,7 @@
 	spawn_positions = 3
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
-	allowed_patrons = ALL_DIVINE_PATRONS
-	tutorial = "Cook, farm, butcher. Make king happy with apple pies! Don't forget about your brothers."
+	tutorial = "Cook, farm, butcher. Make king or queen happy with apple pies! Don't forget about your brothers and sisters."
 
 
 	outfit = /datum/outfit/job/roguetown/goblincook

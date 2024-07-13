@@ -9449,10 +9449,6 @@
 	},
 /turf/open/floor/rogue/twig,
 /area/rogue/indoors)
-"kmm" = (
-/obj/effect/landmark/start/goblinlate,
-/turf/open/floor/rogue/grass,
-/area/rogue/outdoors/goblinfort)
 "kms" = (
 /obj/structure/chair/wood/rogue/fancy{
 	dir = 4
@@ -19148,8 +19144,10 @@
 /area/rogue/outdoors/town)
 "wCP" = (
 /obj/effect/landmark/start/goblinlate,
-/turf/open/floor/rogue/dirt,
-/area/rogue/outdoors/goblinfort)
+/turf/open/floor/rogue/twig{
+	dir = 4
+	},
+/area/rogue/indoors)
 "wDj" = (
 /obj/structure/roguewindow/openclose{
 	dir = 8
@@ -281053,10 +281051,10 @@ kXN
 kXN
 jOI
 lPu
-wCP
 kXN
 kXN
-wCP
+kXN
+kXN
 kXN
 kXN
 lPu
@@ -281858,7 +281856,7 @@ kXN
 kXN
 lPu
 kXN
-wCP
+kXN
 kXN
 kXN
 kXN
@@ -283465,10 +283463,10 @@ kXN
 fPm
 fPm
 kXN
-kmm
+lPu
 kXN
 mDK
-kmm
+lPu
 kXN
 kXN
 lqR
@@ -285074,7 +285072,7 @@ kXN
 kXN
 lPu
 lPu
-kmm
+lPu
 lPu
 lqR
 lPu
@@ -384335,9 +384333,9 @@ gnR
 gnR
 eZD
 fdF
+wCP
 kru
-kru
-kru
+wCP
 gSl
 kru
 kru
@@ -384737,9 +384735,9 @@ gnR
 gnR
 uPB
 xBJ
+wCP
 kru
-kru
-kru
+wCP
 kru
 kru
 iuI
@@ -385139,9 +385137,9 @@ gnR
 gnR
 eZD
 kru
+wCP
 kru
-kru
-kru
+wCP
 hmz
 kru
 kru
