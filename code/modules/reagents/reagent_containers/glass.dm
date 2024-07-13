@@ -542,11 +542,10 @@
 	amount_per_transfer_from_this = 9
 	volume = 100
 	reagent_flags = OPENCONTAINER|REFILLABLE|DRAINABLE
-	possible_item_intents = list(INTENT_GENERIC)
 	spillable = TRUE
 	var/obj/item/grinded
 
-/obj/item/reagent_containers/glass/mortar/AltClick(mob/user)
+/obj/item/reagent_containers/glass/mortar/attack_self(mob/user)
 	if(grinded)
 		grinded.forceMove(drop_location())
 		grinded = null
