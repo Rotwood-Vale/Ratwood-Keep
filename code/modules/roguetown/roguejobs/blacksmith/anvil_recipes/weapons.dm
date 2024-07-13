@@ -65,10 +65,10 @@
 	i_type = "Weapons"
 
 /datum/anvil_recipe/weapons/sswordshort
-	name = "steel short sword"
-	appro_skill = /datum/skill/craft/weaponsmithing
+	name = "Arming Sword"
 	req_bar = /obj/item/ingot/steel
 	created_item = /obj/item/rogueweapon/sword/short
+	i_type = "Weapons"
 
 /datum/anvil_recipe/weapons/ssaber
 	name = "Sabre"

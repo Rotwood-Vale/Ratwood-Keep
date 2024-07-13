@@ -81,13 +81,14 @@
 	item_d_type = "stab"
 
 /obj/item/rogueweapon/sword/short
-	name = "short sword"
-	desc = "An archaic steel sword made for stabbing."
-	force = 19
-	possible_item_intents = list(/datum/intent/sword/cut/short, /datum/intent/sword/thrust/short)
+	slot_flags = ITEM_SLOT_HIP
+	name = "Arming sword"
+	desc = "A short arming sword, designed as a knightly sidearm. Best used with a shield or out of desperation."
 	icon_state = "swordshort"
+	possible_item_intents = list(/datum/intent/sword/cut, /datum/intent/sword/thrust, /datum/intent/sword/strike)
 	gripped_intents = null
-	minstr = 4
+	swingsound = BLADEWOOSH_SMALL
+	minstr = 6
 	wdefense = 4
 
 /obj/item/rogueweapon/sword/long
