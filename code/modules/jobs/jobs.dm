@@ -122,7 +122,7 @@ GLOBAL_LIST_INIT(peasant_positions, list(
 	"Towner",
 	"Grabber",
 	"Nightmaster",
-	"Bath Wench",
+	"Nightswain",
 	"Docker",
 	"Prisoner",
 	"Beggar",

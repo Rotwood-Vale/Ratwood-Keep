@@ -53,11 +53,11 @@
 /obj/structure/roguemachine/drugmachine/process()
 	if(recent_payments)
 		if(world.time > last_payout + rand(6 MINUTES,8 MINUTES))
-			var/amt = recent_payments * 0.10
+			var/amt = recent_payments * 0.25
 			if(drugrade_flags & DRUGRADE_MONEYA)
-				amt = recent_payments * 0.25
-			if(drugrade_flags & DRUGRADE_MONEYB)
 				amt = recent_payments * 0.50
+			if(drugrade_flags & DRUGRADE_MONEYB)
+				amt = recent_payments * 0.75
 			recent_payments = 0
 			send_ooc_note("<b>Income from PURITY:</b> [amt]", job = "Nightmaster")
 			secret_budget += amt
@@ -102,10 +102,10 @@
 		else
 			options += "Stop Paying Taxes"
 		if(!(drugrade_flags & DRUGRADE_MONEYA))
-			options += "Unlock 25% Cut (30)"
+			options += "Unlock 50% Cut (55)"
 		else
 			if(!(drugrade_flags & DRUGRADE_MONEYB))
-				options += "Unlock 50% Cut (105)"
+				options += "Unlock 75% Cut (145)"
 		var/select = input(usr, "Please select an option.", "", null) as null|anything in options
 		if(!select)
 			return
@@ -134,24 +134,24 @@
 			if("Stop Paying Taxes")
 				drugrade_flags |= DRUGRADE_NOTAX
 				playsound(loc, 'sound/misc/beep.ogg', 100, FALSE, -1)
-			if("Unlock 25% Cut (30)")
+			if("Unlock 50% Cut (55)")
 				if(drugrade_flags & DRUGRADE_MONEYA)
 					return
-				if(budget < 30)
+				if(budget < 55)
 					say("Ask again when you're serious.")
 					playsound(src, 'sound/misc/machinetalk.ogg', 100, FALSE, -1)
 					return
-				budget -= 30
+				budget -= 55
 				drugrade_flags |= DRUGRADE_MONEYA
 				playsound(loc, 'sound/misc/beep.ogg', 100, FALSE, -1)
-			if("Unlock 50% Cut (105)")
+			if("Unlock 75% Cut (145)")
 				if(drugrade_flags & DRUGRADE_MONEYB)
 					return
-				if(budget < 105)
+				if(budget < 145)
 					say("Ask again when you're serious.")
 					playsound(src, 'sound/misc/machinetalk.ogg', 100, FALSE, -1)
 					return
-				budget -= 105
+				budget -= 145
 				drugrade_flags |= DRUGRADE_MONEYB
 				playsound(loc, 'sound/misc/beep.ogg', 100, FALSE, -1)
 	return attack_hand(usr)
@@ -179,11 +179,11 @@
 	var/mob/living/carbon/human/H = user
 	if(H.job == "Nightmaster")
 		if(canread)
-			contents = "<a href='?src=[REF(src)];secrets=1'>Secrets</a>"
+			contents += "<a href='?src=[REF(src)];secrets=1'>Secrets</a>"
 		else
-			contents = "<a href='?src=[REF(src)];secrets=1'>[stars("Secrets")]</a>"
+			contents += "<a href='?src=[REF(src)];secrets=1'>[stars("Secrets")]</a>"
 
-	contents += "</center>"
+	contents += "</center><BR>"
 
 	for(var/I in held_items)
 		var/price = held_items[I]["PRICE"] + (SStreasury.tax_value * held_items[I]["PRICE"])
@@ -228,11 +228,11 @@
 	. = ..()
 	START_PROCESSING(SSroguemachine, src)
 	update_icon()
-	held_items[/obj/item/reagent_containers/powder] = list("PRICE" = rand(41,55),"NAME" = "chuckledust")
-	held_items[/obj/item/reagent_containers/powder/ozium] = list("PRICE" = rand(25,47),"NAME" = "ozium")
-	held_items[/obj/item/reagent_containers/powder/moondust] = list("PRICE" = rand(13,25),"NAME" = "moondust")
-	held_items[/obj/item/clothing/mask/cigarette/rollie/cannabis] = list("PRICE" = rand(12,18),"NAME" = "swampweed zig")
-	held_items[/obj/item/clothing/mask/cigarette/rollie/nicotine] = list("PRICE" = rand(5,10),"NAME" = "zig")
+	held_items[/obj/item/reagent_containers/powder] = list("PRICE" = 55,"NAME" = "chuckledust")
+	held_items[/obj/item/reagent_containers/powder/ozium] = list("PRICE" = 45,"NAME" = "ozium")
+	held_items[/obj/item/reagent_containers/powder/moondust] = list("PRICE" = 25,"NAME" = "moondust")
+	held_items[/obj/item/clothing/mask/cigarette/rollie/cannabis] = list("PRICE" = 18,"NAME" = "swampweed zig")
+	held_items[/obj/item/clothing/mask/cigarette/rollie/nicotine] = list("PRICE" = 10,"NAME" = "zig")
 /*	held_items[/obj/item/reagent_containers/glass/bottle/rogue/wine] = list("PRICE" = rand(35,77),"NAME" = "vino")
 	held_items[/obj/item/rogueweapon/huntingknife/idagger] = list("PRICE" = rand(20,33),"NAME" = "kinfe")
 	held_items[/obj/item/clothing/cloak/half] = list("PRICE" = rand(103,110),"NAME" = "black halfcloak")
