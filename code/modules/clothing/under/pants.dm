@@ -23,10 +23,10 @@
 	desc = ""
 	icon_state = "jeansblack"
 
-/obj/item/clothing/under/pants/youngfolksjeans
+/obj/item/clothing/under/pants/apprenticessjeans
 	name = "Young Folks jeans"
 	desc = ""
-	icon_state = "jeansyoungfolks"
+	icon_state = "jeansapprenticess"
 
 /obj/item/clothing/under/pants/white
 	name = "white pants"

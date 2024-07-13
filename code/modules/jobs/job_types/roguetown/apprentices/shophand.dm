@@ -1,7 +1,7 @@
 /datum/job/roguetown/shophand
 	title = "Shophand"
 	flag = SHOPHAND
-	department_flag = YOUNGFOLK
+	department_flag = APPRENTICES
 	faction = "Station"
 	total_positions = 2
 	spawn_positions = 2
@@ -40,7 +40,7 @@
 		beltl = /obj/item/keyring/merchant
 		backr = /obj/item/storage/backpack/rogue/satchel
 	if(H.mind)
-		//basically orphan+ skills
+		//basically vagabond+ skills
 		H.mind.adjust_skillrank(/datum/skill/misc/stealing, rand(3,6), TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/sneaking, rand(2,3), TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/climbing, rand(1,2), TRUE)

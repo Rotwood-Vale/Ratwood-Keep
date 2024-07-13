@@ -166,7 +166,7 @@
 "dP" = (/obj/machinery/light/rogue/lanternpost{dir = 1},/turf/open/floor/rogue/blocks,/area/rogue/indoors)
 "dQ" = (/obj/structure/table/vtable/v2,/obj/item/candle/skull/lit,/turf/open/floor/rogue/woodturned,/area/rogue/indoors)
 "dR" = (/obj/structure/table/wood{icon_state = "tablewood1"},/obj/item/roguekey/manor,/obj/item/roguekey/manor,/turf/open/floor/rogue/cobble,/area/rogue/indoors/town/manor)
-"dT" = (/obj/effect/landmark/start/orphan,/turf/open/floor/rogue/dirt/road,/area/rogue/under/town/basement)
+"dT" = (/obj/effect/landmark/start/vagabond,/turf/open/floor/rogue/dirt/road,/area/rogue/under/town/basement)
 "dU" = (/obj/structure/fluff/walldeco/goblet,/turf/open/floor/rogue/blocks,/area/rogue/indoors)
 "dV" = (/obj/structure/ladder,/turf/open/floor/rogue/ruinedwood{icon_state = "horzw"},/area/rogue/indoors/town/church)
 "dX" = (/obj/structure/closet/crate/roguecloset/inn/chest,/turf/open/floor/rogue/blocks,/area/rogue/indoors)

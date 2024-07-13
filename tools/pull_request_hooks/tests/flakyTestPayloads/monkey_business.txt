@@ -2448,4 +2448,4 @@
 2022-11-01T15:37:32.0279431Z Remove container network: github_network_7d8483aa88b2460d91b946ac72079065
 2022-11-01T15:37:32.0288111Z ##[command]/usr/bin/docker network rm github_network_7d8483aa88b2460d91b946ac72079065
 2022-11-01T15:37:32.1478643Z github_network_7d8483aa88b2460d91b946ac72079065
-2022-11-01T15:37:32.1688580Z Cleaning up orphan processes
+2022-11-01T15:37:32.1688580Z Cleaning up vagabond processes

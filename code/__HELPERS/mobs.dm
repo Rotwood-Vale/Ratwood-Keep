@@ -147,9 +147,7 @@ GLOBAL_LIST_EMPTY(species_list)
 
 /proc/age2agedescription(age)
 	switch(age)
-		if(0 to 30)
-			return "young adult"
-		if(30 to 45)
+		if(18 to 45)
 			return "adult"
 		if(45 to 60)
 			return "middle-aged"

@@ -2,7 +2,7 @@
 	title = "Royal Heir"
 	f_title = "Royal Heir"
 	flag = PRINCE
-	department_flag = YOUNGFOLK
+	department_flag = APPRENTICES
 	faction = "Station"
 	total_positions = 2
 	spawn_positions = 2

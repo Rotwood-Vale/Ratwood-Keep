@@ -61,7 +61,7 @@ GLOBAL_LIST_EMPTY(jam_on_wardec)
 	for(var/obj/machinery/computer/camera_advanced/shuttle_docker/D in GLOB.jam_on_wardec)
 		D.jammed = TRUE
 
-	var/list/orphans = list()
+	var/list/vagabonds = list()
 	var/list/uplinks = list()
 
 	for (var/datum/mind/M in get_antag_minds(/datum/antagonist/nukeop))
@@ -69,19 +69,19 @@ GLOBAL_LIST_EMPTY(jam_on_wardec)
 			continue
 		var/datum/component/uplink/uplink = M.find_syndicate_uplink()
 		if (!uplink)
-			orphans += M.current
+			vagabonds += M.current
 			continue
 		uplinks += uplink
 
 
 	var/tc_to_distribute = CHALLENGE_TELECRYSTALS
-	var/tc_per_nukie = round(tc_to_distribute / (length(orphans)+length(uplinks)))
+	var/tc_per_nukie = round(tc_to_distribute / (length(vagabonds)+length(uplinks)))
 
 	for (var/datum/component/uplink/uplink in uplinks)
 		uplink.telecrystals += tc_per_nukie
 		tc_to_distribute -= tc_per_nukie
 
-	for (var/mob/living/L in orphans)
+	for (var/mob/living/L in vagabonds)
 		var/TC = new /obj/item/stack/telecrystal(user.drop_location(), tc_per_nukie)
 		to_chat(L, span_warning("My uplink could not be found so my share of the team's bonus telecrystals has been bluespaced to my [L.put_in_hands(TC) ? "hands" : "feet"]."))
 		tc_to_distribute -= tc_per_nukie

@@ -212,7 +212,7 @@
 						found = FALSE
 					if(rebelguy.assigned_role in GLOB.noble_positions)
 						found = FALSE
-					if(rebelguy.assigned_role in GLOB.youngfolk_positions)
+					if(rebelguy.assigned_role in GLOB.apprentices_positions)
 						found = FALSE
 					if(rebelguy.assigned_role in GLOB.church_positions)
 						found = FALSE
@@ -252,7 +252,7 @@
 			for(var/M in allantags)
 				if(M == villain)
 					found = TRUE
-			if(villain.assigned_role in GLOB.youngfolk_positions)
+			if(villain.assigned_role in GLOB.apprentices_positions)
 				found = FALSE
 			if(villain.current)
 				if(villain.current.gender == FEMALE)
@@ -287,7 +287,7 @@
 					found = TRUE
 					allantags -= M
 					break
-			if(vampire.assigned_role in GLOB.youngfolk_positions)
+			if(vampire.assigned_role in GLOB.apprentices_positions)
 				found = FALSE
 			if(!found)
 				continue
@@ -317,7 +317,7 @@
 					found = TRUE
 					allantags -= M
 					break
-			if(werewolf.assigned_role in GLOB.youngfolk_positions)
+			if(werewolf.assigned_role in GLOB.apprentices_positions)
 				found = FALSE
 			if(!found)
 				continue

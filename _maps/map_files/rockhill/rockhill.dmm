@@ -9004,7 +9004,7 @@
 /turf/open/floor/rogue/churchbrick,
 /area/rogue/indoors/town/church/chapel)
 "jHP" = (
-/obj/effect/landmark/start/orphanlate,
+/obj/effect/landmark/start/vagabondlate,
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/outdoors/rtfield)
 "jHU" = (
@@ -9160,7 +9160,7 @@
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/town/shop)
 "jTp" = (
-/obj/effect/landmark/start/orphanlate,
+/obj/effect/landmark/start/vagabondlate,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors/rtfield)
 "jTP" = (
@@ -17365,7 +17365,7 @@
 /turf/open/floor/rogue/tile,
 /area/rogue/indoors/town/church)
 "unM" = (
-/obj/effect/landmark/start/orphanlate,
+/obj/effect/landmark/start/vagabondlate,
 /turf/open/floor/rogue/grass,
 /area/rogue/outdoors/rtfield)
 "uoM" = (

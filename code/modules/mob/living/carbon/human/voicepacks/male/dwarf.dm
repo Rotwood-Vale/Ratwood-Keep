@@ -3,8 +3,6 @@
 	switch(modifiers)
 		if("old")
 			used = getmold(soundin)
-		if("young")
-			used = getmyoung(soundin)
 		if("silenced")
 			used = getmsilenced(soundin)
 	if(!used)

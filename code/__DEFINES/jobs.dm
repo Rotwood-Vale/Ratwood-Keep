@@ -158,26 +158,26 @@
 #define GRABBER		(1<<7)
 #define NIGHTMASTER	(1<<8)
 #define BEGGAR		(1<<9)
-#define WENCH		(1<<10)
-#define ADVENTURER	(1<<11)
-#define PILGRIM		(1<<12)
-#define VILLAGER	(1<<13)
-#define PRISONERR	(1<<14)
-#define PRISONERB	(1<<15)
-#define LUNATIC		(1<<16)
-#define MIGRANT		(1<<17)
+#define VAGABOND		(1<<10)
+#define WENCH		(1<<11)
+#define ADVENTURER	(1<<12)
+#define PILGRIM		(1<<13)
+#define VILLAGER	(1<<14)
+#define PRISONERR	(1<<15)
+#define PRISONERB	(1<<16)
+#define LUNATIC		(1<<17)
+#define MIGRANT (1<<18)
 
-#define YOUNGFOLK	(1<<6)
+#define APPRENTICES	(1<<6)
 
 #define APPRENTICE	(1<<0)
 #define CHURCHLING	(1<<1)
 #define SQUIRE		(1<<2)
 #define SERVANT		(1<<3)
-#define ORPHAN		(1<<4)
-#define PRINCE		(1<<5)
-#define SHOPHAND	(1<<6)
-#define CLERK 		(1<<7)
-#define MAGEAPPRENTICE	(1<<8)
+#define PRINCE		(1<<4)
+#define SHOPHAND	(1<<5)
+#define CLERK 		(1<<6)
+#define MAGEAPPRENTICE	(1<<7)
 
 #define MERCENARIES		(1<<7)
 
@@ -279,7 +279,7 @@
 #define JDO_VET 31.2
 
 #define JDO_VAGRANT 33
-#define JDO_ORPHAN 34
+#define JDO_VAGABOND 34
 
 #define JDO_PRISONERR 35
 #define JDO_PRISONERB 35.1

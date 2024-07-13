@@ -22,7 +22,7 @@
 		for(var/X in GLOB.courtier_positions)
 			peopleiknow += X
 			peopleknowme += X
-		for(var/X in GLOB.youngfolk_positions)
+		for(var/X in GLOB.apprentices_positions)
 			peopleiknow += X
 			peopleknowme += X
 		for(var/X in GLOB.mercenary_positions)
