@@ -3,6 +3,26 @@
 	stressadd = -2
 	desc = span_green("I saw a sinner get punished!")
 
+/datum/stressevent/miasmagasmaniac
+	timer = 10 SECONDS
+	stressadd = -1
+	desc = "<span class='green'>It smells like death in here.</span>"
+
+/datum/stressevent/viewdeathmaniac
+	timer = 30 SECONDS
+	stressadd = -1
+	desc = "<span class='green'>Death. Hehe...</span>"
+
+/datum/stressevent/viewdismembermaniac
+	timer = 2 MINUTES
+	stressadd = -1
+	desc = "<span class='green'>I've seen limbs fly. Hehe...</span>"
+
+/datum/stressevent/viewgibmaniac
+	timer = 2 MINUTES
+	stressadd = -2
+	desc = "<span class='green'>That was amazing! Can someone do it again? I wanna see it again.</span>"
+
 /datum/stressevent/viewexecution
 	timer = 5 MINUTES
 	stressadd = -2

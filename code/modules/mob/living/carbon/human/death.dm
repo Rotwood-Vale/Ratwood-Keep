@@ -108,12 +108,16 @@
 			for(var/mob/living/carbon/human/HU in viewers(7, src))
 				if(HU.marriedto == src)
 					HU.adjust_triumphs(-1)
-//				if(HU != src && !HAS_TRAIT(HU, TRAIT_BLIND))
-//					if(!HAS_TRAIT(HU, TRAIT_ANTAG))
-//						if(HU.dna?.species && dna?.species)
-//							if(HU.dna.species.id == dna.species.id)
-//								HU.add_stress(/datum/stressevent/viewdeath)
-
+				if(HU != src && !HAS_TRAIT(HU, TRAIT_BLIND))
+					if(HU.dna?.species && dna?.species)
+						if(HU.dna.species.id == dna.species.id)
+							var/mob/living/carbon/D = HU
+							//D.add_stress(/datum/stressevent/viewdeath)
+							if(D.has_flaw(/datum/charflaw/addiction/maniac))
+								D.add_stress(/datum/stressevent/viewdeathmaniac)
+								D.sate_addiction()
+							else
+								//D.add_stress(/datum/stressevent/viewdeath)
 	. = ..()
 
 	dizziness = 0
@@ -149,6 +153,11 @@
 				continue
 			if(CA.marriedto == src)
 				CA.adjust_triumphs(-1)
+			var/mob/living/carbon/V = CA
+			if(V.has_flaw(/datum/charflaw/addiction/maniac))
+				V.add_stress(/datum/stressevent/viewgibmaniac)
+				V.sate_addiction()
+				continue
 			CA.add_stress(/datum/stressevent/viewgib)
 	return ..()
 

@@ -1135,6 +1135,8 @@
 				owner.add_stress(/datum/stressevent/cumbad)
 		if("fuckcorpse")
 			owner.add_stress(/datum/stressevent/cumcorpse)
+			if(owner.has_flaw(/datum/charflaw/addiction/lovefiend))
+				owner.sate_addiction() //guess it would
 			owner.freak_out()
 
 		if("dildo")	//For dildos - by Gardelin0

@@ -1,6 +1,7 @@
 
 GLOBAL_LIST_INIT(character_flaws, list("Alcoholic"=/datum/charflaw/addiction/alcoholic,
 	"Devout Follower"=/datum/charflaw/addiction/godfearing,
+	"Nymphomaniac"=/datum/charflaw/addiction/lovefiend,
 	"Smoker"=/datum/charflaw/addiction/smoker,
 	"Junkie"=/datum/charflaw/addiction/junkie,
 	"Cyclops (R)"=/datum/charflaw/noeyer,
@@ -8,6 +9,11 @@ GLOBAL_LIST_INIT(character_flaws, list("Alcoholic"=/datum/charflaw/addiction/alc
 	"Wood Arm (R)"=/datum/charflaw/limbloss/arm_r,
 	"Wood Arm (L)"=/datum/charflaw/limbloss/arm_l,
 	"Paranoid"=/datum/charflaw/paranoid,
+	"Clingy"=/datum/charflaw/clingy,
+	"Isolationist"=/datum/charflaw/isolationist,
+	"Fire Servant"=/datum/charflaw/addiction/pyromaniac,
+	"Thief-Borne"=/datum/charflaw/addiction/kleptomaniac,
+	"Pain Freek"=/datum/charflaw/addiction/masochist,
 	"Random or No Flaw"=/datum/charflaw/randflaw,
 	"No Flaw (3 TRIUMPHS)"=/datum/charflaw/noflaw))
 
@@ -165,6 +171,57 @@ GLOBAL_LIST_INIT(character_flaws, list("Alcoholic"=/datum/charflaw/addiction/alc
 	if(cnt > 6)
 		user.add_stress(/datum/stressevent/parablood)
 
+/datum/charflaw/isolationist
+	name = "Isolationist"
+	desc = "I don't like being near people. They might be trying to do something to me..."
+	var/last_check = 0
+
+/datum/charflaw/isolationist/flaw_on_life(mob/user)
+	. = ..()
+	if(world.time < last_check + 10 SECONDS)
+		return
+	if(!user)
+		return
+	last_check = world.time
+	var/cnt = 0
+	for(var/mob/living/carbon/human/L in hearers(7, user))
+		if(L == src)
+			continue
+		if(L.stat)
+			continue
+		if(L.dna.species)
+			cnt++
+		if(cnt > 3)
+			break
+	var/mob/living/carbon/P = user
+	if(cnt > 3)
+		P.add_stress(/datum/stressevent/crowd)
+
+/datum/charflaw/clingy
+	name = "Clingy"
+	desc = "I like being around people, it's just so lively..."
+	var/last_check = 0
+
+/datum/charflaw/clingy/flaw_on_life(mob/user)
+	. = ..()
+	if(world.time < last_check + 10 SECONDS)
+		return
+	if(!user)
+		return
+	last_check = world.time
+	var/cnt = 0
+	for(var/mob/living/carbon/human/L in hearers(7, user))
+		if(L == src)
+			continue
+		if(L.stat)
+			continue
+		if(L.dna.species)
+			cnt++
+		if(cnt > 2)
+			break
+	var/mob/living/carbon/P = user
+	if(cnt < 2)
+		P.add_stress(/datum/stressevent/nopeople)
 
 /datum/charflaw/noeyer
 	name = "Cyclops (R)"
