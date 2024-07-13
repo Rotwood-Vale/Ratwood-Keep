@@ -27,11 +27,9 @@
 		TRAIT_HARDDISMEMBER,
 		TRAIT_NOSLEEP,
 		TRAIT_SHOCKIMMUNE,
-		TRAIT_STABLEHEART,
 		TRAIT_STABLELIVER,
 		TRAIT_ANTIMAGIC,
 		TRAIT_SCHIZO_AMBIENCE,
-		TRAIT_BLOODLOSS_IMMUNE,
 	)
 	/// Traits that only get applied in the final sequence
 	var/static/list/final_traits = list(
@@ -101,9 +99,10 @@
 			STASTR = dreamer.STASTR
 			STACON = dreamer.STACON
 			STAEND = dreamer.STAEND
-			dreamer.STASTR = 20
-			dreamer.STACON = 20
-			dreamer.STAEND = 20
+			dreamer.STASTR = 15		//15 strength; was 20, seemed too strong (Reminder strong-er mobs have ~14, plus this scales with weapons used)
+			dreamer.STACON = 16		//16 con; was 20, seemed too strong
+			dreamer.STAEND = 16		//16 endurance; was 20, semed too strong
+			dreamer.STASPD = 14		//Added in exchange for lowered other stats; this makes them a bit faster than normal likely. Helps dodging. Equal to goblin.
 		for(var/trait in applied_traits)
 			ADD_TRAIT(owner.current, trait, "[type]")
 		hallucinations = owner.current.overlay_fullscreen("maniac", /atom/movable/screen/fullscreen/maniac)
