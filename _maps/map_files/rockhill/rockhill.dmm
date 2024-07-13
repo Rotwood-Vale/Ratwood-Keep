@@ -8958,6 +8958,13 @@
 /obj/item/seeds/wheat,
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors)
+"jCW" = (
+/obj/structure/fluff/statue/secret{
+	color = "#3F3E3D";
+	pixel_y = 16
+	},
+/turf/open/floor/rogue/church,
+/area/rogue/under/cavewet/bogcaves/chapel)
 "jDm" = (
 /turf/closed/wall/mineral/rogue/decostone/long,
 /area/rogue/indoors/town/manor)
@@ -10672,7 +10679,7 @@
 /turf/closed/wall/mineral/rogue/wooddark/vertical,
 /area/rogue/indoors)
 "lKO" = (
-/obj/structure/fluff/statue/secret/why,
+/obj/structure/fluff/statue/why,
 /turf/open/floor/rogue/blocks/stonered,
 /area/rogue/under/cavewet/bogcaves/sunkencity)
 "lLa" = (
@@ -17026,9 +17033,12 @@
 /turf/open/floor/rogue/cobble/mossy,
 /area/rogue/indoors/town/manor)
 "tOM" = (
-/obj/structure/spacevine,
-/turf/open/floor/rogue/church,
-/area/rogue/under/cavewet/bogcaves/chapel)
+/obj/structure/fluff/statue/secret{
+	color = "#3F3E3D";
+	pixel_y = 16
+	},
+/turf/open/floor/rogue/cobble/mossy,
+/area/rogue/under/cavewet/bogcaves/sunkencity)
 "tOX" = (
 /obj/structure/table/wood,
 /obj/item/flint,
@@ -18493,6 +18503,10 @@
 /obj/machinery/light/rogue/firebowl/stump,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors/goblinfort)
+"vDO" = (
+/obj/machinery/light/rogue/wallfire/candle/blue/r,
+/turf/open/floor/rogue/church,
+/area/rogue/under/cavewet/bogcaves/chapel)
 "vES" = (
 /obj/structure/fluff/railing/border{
 	dir = 1
@@ -20633,12 +20647,9 @@
 /turf/closed/mineral/rogue,
 /area/rogue/under/town/basement)
 "ylQ" = (
-/mob/living/simple_animal/hostile/retaliate/rogue/wolf/poison,
-/obj/structure/spacevine{
-	opacity = 1
-	},
-/turf/open/floor/rogue/church,
-/area/rogue/under/cavewet/bogcaves/chapel)
+/obj/structure/fluff/statue/what,
+/turf/open/floor/rogue/dirt/road,
+/area/rogue/under/cavewet/bogcaves/sunkencity)
 
 (1,1,1) = {"
 sYw
@@ -39315,7 +39326,7 @@ acL
 acL
 acK
 adC
-abc
+ylQ
 adF
 adI
 adG
@@ -56580,7 +56591,7 @@ abU
 aci
 aci
 acB
-abg
+tOM
 abg
 acl
 abg
@@ -167181,7 +167192,7 @@ whb
 whb
 whb
 vCg
-gdF
+jCW
 uLS
 gdF
 skn
@@ -167583,8 +167594,8 @@ whb
 whb
 whb
 vCg
+vDO
 gdF
-tOM
 fgy
 eoA
 eoA
@@ -167986,7 +167997,7 @@ whb
 whb
 vCg
 vCg
-ylQ
+pFS
 eoA
 igS
 igS
