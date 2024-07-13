@@ -503,10 +503,7 @@
 				if(user.can_see_reagents() || user.mind.get_skill_level(/datum/skill/misc/alchemy) >= 2) //Show each individual reagent
 					. += "It contains:"
 					for(var/datum/reagent/R in reagents.reagent_list)
-						if(R.volume / 3 < 1)
-							. += "less than 1 oz of <font color=[R.color]>[R.name]</font>"
-						else
-							. += "[round(R.volume / 3)] oz of <font color=[R.color]>[R.name]</font>"
+						. += "[round(R.volume / 3, 0.1)] oz of <font color=[R.color]>[R.name]</font>"
 				else //Otherwise, just show the total volume
 					var/total_volume = 0
 					var/reagent_color
