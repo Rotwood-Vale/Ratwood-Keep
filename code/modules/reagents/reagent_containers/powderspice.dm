@@ -7,6 +7,7 @@
 	possible_transfer_amounts = list()
 	volume = 15
 	list_reagents = list(/datum/reagent/druqks = 15)
+	grind_results = list(/datum/reagent/druqks = 15)
 	sellprice = 10
 
 /datum/reagent/druqks
@@ -160,7 +161,8 @@
 	desc = ""
 	gender = PLURAL
 	icon_state = "salt"
-	list_reagents = list(/datum/reagent/floure = 1)
+	list_reagents = list(/datum/reagent/consumable/sodiumchloride = 15)
+	grind_results = list(/datum/reagent/consumable/sodiumchloride = 15)
 	volume = 1
 
 /obj/item/reagent_containers/powder/ozium
@@ -171,6 +173,7 @@
 	possible_transfer_amounts = list()
 	volume = 15
 	list_reagents = list(/datum/reagent/ozium = 15)
+	grind_results = list(/datum/reagent/ozium = 15)
 	sellprice = 5
 
 /datum/reagent/ozium
@@ -206,6 +209,7 @@
 	possible_transfer_amounts = list()
 	volume = 15
 	list_reagents = list(/datum/reagent/moondust = 15)
+	grind_results = list(/datum/reagent/moondust = 15)
 	sellprice = 5
 
 /datum/reagent/moondust/overdose_process(mob/living/M)
@@ -246,6 +250,7 @@
 	possible_transfer_amounts = list()
 	volume = 18
 	list_reagents = list(/datum/reagent/moondust_purest = 18)
+	grind_results = list(/datum/reagent/moondust_purest = 15)
 	sellprice = 30
 
 /datum/reagent/moondust_purest
