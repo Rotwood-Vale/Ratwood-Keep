@@ -25,7 +25,11 @@
 	sprite_accessories = list(
 		/datum/sprite_accessory/tail/otie,
 		/datum/sprite_accessory/tail/shepherd,
-		/datum/sprite_accessory/tail/wolf
+		/datum/sprite_accessory/tail/wolf,
+		/datum/sprite_accessory/tail/eevee,
+		/datum/sprite_accessory/tail/fox,
+		/datum/sprite_accessory/tail/fox2,
+		/datum/sprite_accessory/tail/husky
 		)
 
 /datum/customizer/organ/tail/tajaran

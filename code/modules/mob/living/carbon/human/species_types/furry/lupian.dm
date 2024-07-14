@@ -11,7 +11,7 @@
 	warriors to those who earn their loyalty. Thanks to their pack minded nature they are slow to trust the other races \
 	but form deep connections with those they do. In recent years they have been driven from the forests by unrest and pressed \
 	into cohabitation with races they'd deem lesser."
-	default_color = "444"
+	skin_tone_wording = "Pack"
 	species_traits = list(
 		MUTCOLORS,
 		EYECOLOR,
@@ -20,6 +20,7 @@
 	)
 	inherent_traits = list(TRAIT_NOMOBSWAP)
 	inherent_biotypes = MOB_ORGANIC|MOB_HUMANOID
+	use_skintones = 1
 	attack_verb = "slash"
 	liked_food = GROSS | MEAT | FRIED
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
@@ -115,38 +116,45 @@
 	. = ..()
 	UnregisterSignal(C, COMSIG_MOB_SAY)
 
+/datum/species/lupian/get_skin_list() 
+	return list(
+		"Vakran" = "271f1b",
+		"Lanarain" = "271f1c",
+		"Frostfell" = "271f1d",
+		"Varghelm" = "271f1e",
+		"Dawnbreak" = "271f1f",
+		"Bloodmoon" = "271f2a",
+		"Felsaad" = "271f2b",
+		"Hizmut" = "271f2c",
+		"Langqan" = "271f2d",
+		"a tangled lineage" = "271f2e",
+		"disputed" = "271f2f",
+		"bastardized" = "271f3a"
+	) // This is a dirty hack that stops me using mob defines, the colors do not do anything, it just a var that relates to their pack name on examine
+
 /datum/species/lupian/get_random_features()
 	var/list/returned = MANDATORY_FEATURE_LIST
 	var/main_color
 	var/second_color
-	var/third_color
-	var/random = rand(1,6)
+	var/random = rand(1,5)
+	//Choose from a variety of mostly dark, wolfish colors
 	switch(random)
 		if(1)
-			main_color = "FFFFFF"
-			second_color = "333333"
-			third_color = "333333"
+			main_color = "f3efe6"
+			second_color = "dcd8ce"
 		if(2)
-			main_color = "FFFFDD"
-			second_color = "DD6611"
-			third_color = "AA5522"
+			main_color = "948e86"
+			second_color = "cdcccc"
 		if(3)
-			main_color = "DD6611"
-			second_color = "FFFFFF"
-			third_color = "DD6611"
+			main_color = "4d4c4c"
+			second_color = "706c69"
 		if(4)
-			main_color = "CCCCCC"
-			second_color = "FFFFFF"
-			third_color = "FFFFFF"
+			main_color = "32312c"
+			second_color = "8D7F69"
 		if(5)
-			main_color = "AA5522"
-			second_color = "CC8833"
-			third_color = "FFFFFF"
-		if(6)
-			main_color = "FFFFDD"
-			second_color = "FFEECC"
-			third_color = "FFDDBB"
+			main_color = "282421"
+			second_color = "645b54"
 	returned["mcolor"] = main_color
 	returned["mcolor2"] = second_color
-	returned["mcolor3"] = third_color
+	returned["mcolor3"] = "373330"
 	return returned
