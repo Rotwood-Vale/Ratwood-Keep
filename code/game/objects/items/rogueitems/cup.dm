@@ -74,6 +74,28 @@
 	if(M.mind && M.mind.has_antag_datum(/datum/antagonist/vampirelord))
 		return FALSE
 
+/obj/item/reagent_containers/glass/cup/silver/pickup(mob/user)
+	. = ..()
+	var/mob/living/carbon/human/H = user
+	var/datum/antagonist/vampirelord/V_lord = H.mind.has_antag_datum(/datum/antagonist/vampirelord/)
+	var/datum/antagonist/werewolf/W = H.mind.has_antag_datum(/datum/antagonist/werewolf/)
+	if(ishuman(H))
+		if(H.mind.has_antag_datum(/datum/antagonist/vampirelord/lesser) || H.mind.has_antag_datum(/datum/antagonist/vampire))
+			to_chat(H, span_userdanger("I can't pick up the silver, it is my BANE!"))
+			H.Knockdown(20)
+			H.adjustFireLoss(30)
+			H.Paralyze(20)
+			H.fire_act(1,5)
+		if(V_lord)
+			if(V_lord.vamplevel < 4 && !H.mind.has_antag_datum(/datum/antagonist/vampirelord/lesser))
+				to_chat(H, span_userdanger("I can't pick up the silver, it is my BANE!"))
+				H.Knockdown(10)
+				H.Paralyze(10)
+		if(W && W.transformed == TRUE)
+			to_chat(H, span_userdanger("I can't pick up the silver, it is my BANE!"))
+			H.Knockdown(20)
+			H.Paralyze(20)
+
 /obj/item/reagent_containers/glass/cup/golden
 	name = "golden goblet"
 	desc = "Adorned with gemstones, this goblet radiates opulence and grandeur."
