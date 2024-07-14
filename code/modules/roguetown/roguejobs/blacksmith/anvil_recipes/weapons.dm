@@ -205,17 +205,17 @@
 
 // SILVER
 /datum/anvil_recipe/weapons/esaber
-	name = "Elvish Saber"
+	name = "Elvish Saber (+1 Silver)"
 	req_bar = /obj/item/ingot/silver
 	additional_items = list(/obj/item/ingot/silver)
-	created_item = /obj/item/rogueweapon/sword/sabre/elf
+	created_item = /obj/item/rogueweapon/sword/silver/sabre/elf
 	craftdiff = 3
 	i_type = "Weapons"
 
 /datum/anvil_recipe/weapons/edagger
 	name = "Elvish Dagger"
 	req_bar = /obj/item/ingot/silver
-	created_item = /obj/item/rogueweapon/huntingknife/elvish
+	created_item = /obj/item/rogueweapon/huntingknife/idagger/silver/elvish
 	craftdiff = 3
 	i_type = "Weapons"
 

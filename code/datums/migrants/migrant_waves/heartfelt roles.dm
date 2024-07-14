@@ -71,7 +71,7 @@
 			armor = /obj/item/clothing/suit/roguetown/armor/armordress
 	belt = /obj/item/storage/belt/rogue/leather/cloth/lady
 	beltl = /obj/item/flashlight/flare/torch/lantern
-	beltr = /obj/item/rogueweapon/huntingknife/elvish
+	beltr = /obj/item/rogueweapon/huntingknife/idagger/silver/elvish
 	id = /obj/item/clothing/ring/silver
 	shoes = /obj/item/clothing/shoes/roguetown/shortboots
 	if(H.mind)

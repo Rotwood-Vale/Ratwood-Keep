@@ -485,7 +485,115 @@
 	gripped_intents = null
 	wdefense = 6
 
-/obj/item/rogueweapon/sword/sabre/elf
+/obj/item/rogueweapon/sword/silver
+	//no sprite, used as base for silver swords because this code fucking sucks.
+	name = "silver sword"
+	desc = "Ouchies vampies and werewolfies big."
+	var/last_used = 0
+
+/obj/item/rogueweapon/sword/silver/pickup(mob/user)
+	. = ..()
+	var/mob/living/carbon/human/H = user
+	var/datum/antagonist/vampirelord/V_lord = H.mind.has_antag_datum(/datum/antagonist/vampirelord/)
+	var/datum/antagonist/werewolf/W = H.mind.has_antag_datum(/datum/antagonist/werewolf/)
+	if(ishuman(H))
+		if(H.mind.has_antag_datum(/datum/antagonist/vampirelord/lesser) || H.mind.has_antag_datum(/datum/antagonist/vampire))
+			to_chat(H, span_userdanger("I can't pick up the silver, it is my BANE!"))
+			H.Knockdown(20)
+			H.adjustFireLoss(60)
+			H.Paralyze(20)
+			H.fire_act(1,5)
+		if(V_lord)
+			if(V_lord.vamplevel < 4 && !H.mind.has_antag_datum(/datum/antagonist/vampirelord/lesser))
+				to_chat(H, span_userdanger("I can't pick up the silver, it is my BANE!"))
+				H.Knockdown(10)
+				H.Paralyze(10)
+		if(W && W.transformed == TRUE)
+			to_chat(H, span_userdanger("I can't pick up the silver, it is my BANE!"))
+			H.Knockdown(20)
+			H.Paralyze(20)
+
+/obj/item/rogueweapon/sword/silver/mob_can_equip(mob/living/M, mob/living/equipper, slot, disable_warning = FALSE, bypass_equip_delay_self = FALSE)
+	. = ..()
+	if(ishuman(M))
+		var/mob/living/carbon/human/H = M
+		var/datum/antagonist/vampirelord/V_lord = H.mind.has_antag_datum(/datum/antagonist/vampirelord/)
+		var/datum/antagonist/werewolf/W = H.mind.has_antag_datum(/datum/antagonist/werewolf/)
+		if(H.mind.has_antag_datum(/datum/antagonist/vampirelord/lesser))
+			to_chat(H, span_userdanger("I can't equip the silver, it is my BANE!"))
+			H.Knockdown(20)
+			H.adjustFireLoss(60)
+			H.Paralyze(20)
+			H.fire_act(1,5)
+		if(V_lord)
+			if(V_lord.vamplevel < 4 && !H.mind.has_antag_datum(/datum/antagonist/vampirelord/lesser))
+				to_chat(H, span_userdanger("I can't equip the silver, it is my BANE!"))
+				H.Knockdown(10)
+				H.Paralyze(10)
+		if(W && W.transformed == TRUE)
+			to_chat(H, span_userdanger("I can't equip the silver, it is my BANE!"))
+			H.Knockdown(20)
+			H.Paralyze(20)
+
+/obj/item/rogueweapon/sword/silver/funny_attack_effects(mob/living/target, mob/living/user = usr, nodmg)
+	if(world.time < src.last_used + 100)
+		to_chat(user, span_notice("The silver needs more time to purify again."))
+		return
+
+	. = ..()
+	if(ishuman(target))
+		var/mob/living/carbon/human/s_user = user
+		var/mob/living/carbon/human/H = target
+		var/datum/antagonist/werewolf/W = H.mind.has_antag_datum(/datum/antagonist/werewolf/)
+		var/datum/antagonist/vampirelord/lesser/Vp = H.mind.has_antag_datum(/datum/antagonist/vampire)
+		var/datum/antagonist/vampirelord/lesser/V = H.mind.has_antag_datum(/datum/antagonist/vampirelord/lesser)
+		var/datum/antagonist/vampirelord/V_lord = H.mind.has_antag_datum(/datum/antagonist/vampirelord/)
+		if(Vp)
+			H.Stun(20)
+			to_chat(H, span_userdanger("The silver burns me!"))
+			H.adjustFireLoss(30)
+			H.Paralyze(20)
+			H.fire_act(1,4)
+			H.apply_status_effect(/datum/status_effect/debuff/silver_curse)
+			src.last_used = world.time
+		if(V)
+			if(V.disguised)
+				H.Stun(20)
+				H.visible_message("<font color='white'>The silver weapon manifests the [H] curse!</font>")
+				to_chat(H, span_userdanger("The silver burns me!"))
+				H.adjustFireLoss(30)
+				H.Paralyze(20)
+				H.fire_act(1,4)
+				H.apply_status_effect(/datum/status_effect/debuff/silver_curse)
+				src.last_used = world.time
+			else
+				H.Stun(20)
+				to_chat(H, span_userdanger("The silver burns me!"))
+				H.adjustFireLoss(30)
+				H.Paralyze(20)
+				H.fire_act(1,4)
+				H.apply_status_effect(/datum/status_effect/debuff/silver_curse)
+				src.last_used = world.time
+		if(V_lord)
+			if(V_lord.vamplevel < 4 && !V)
+				H.Stun(10)
+				to_chat(H, span_userdanger("The silver burns me!"))
+				H.adjustFireLoss(25)
+				H.Paralyze(10)
+				H.fire_act(1,4)
+				src.last_used = world.time
+			if(V_lord.vamplevel == 4 && !V)
+				s_user.Stun(10)
+				s_user.Paralyze(10)
+				to_chat(s_user, "<font color='red'> The silver weapon fails!</font>")
+				H.visible_message(H, span_userdanger("This feeble metal can't hurt me, I AM THE ANCIENT!"))
+		if(W && W.transformed == TRUE)
+			H.Stun(40)
+			H.Paralyze(40)
+			to_chat(H, span_userdanger("The silver burns me!"))
+			src.last_used = world.time
+
+/obj/item/rogueweapon/sword/silver/sabre/elf
 	force = 25
 	name = "elvish saber"
 	desc = "This finely crafted saber is of elven smithcraft."
