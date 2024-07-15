@@ -35,7 +35,7 @@
 /datum/crafting_recipe/roguetown/cooking/crackers
 	name = "crackers"
 	reqs = list(
-		/obj/item/reagent_containers/powder/flour/salt = 1,
+		/obj/item/reagent_containers/powder/salt = 1,
 		/obj/item/reagent_containers/food/snacks/rogue/doughslice= 1)
 	result = /obj/item/reagent_containers/food/snacks/rogue/crackers
 	subtype_reqs = FALSE

@@ -1,4 +1,14 @@
-/obj/item/reagent_containers/powder
+/obj/item/reagent_containers/powder/
+	name = "default powder"
+	desc = ""
+	icon = 'icons/roguetown/items/produce.dmi'
+	icon_state = "spice"
+	item_state = "spice"
+	possible_transfer_amounts = list()
+	volume = 15
+	sellprice = 10
+
+/obj/item/reagent_containers/powder/spice
 	name = "spice"
 	desc = ""
 	icon = 'icons/roguetown/items/produce.dmi'
@@ -156,7 +166,7 @@
 	..()
 	qdel(src)
 
-/obj/item/reagent_containers/powder/flour/salt
+/obj/item/reagent_containers/powder/salt
 	name = "salt"
 	desc = ""
 	gender = PLURAL
@@ -164,6 +174,11 @@
 	list_reagents = list(/datum/reagent/consumable/sodiumchloride = 15)
 	grind_results = list(/datum/reagent/consumable/sodiumchloride = 15)
 	volume = 1
+
+/obj/item/reagent_containers/powder/salt/throw_impact(atom/hit_atom, datum/thrownthing/thrownthing)
+	new /obj/effect/decal/cleanable/food/salt(get_turf(src))
+	..()
+	qdel(src)
 
 /obj/item/reagent_containers/powder/ozium
 	name = "powder"
