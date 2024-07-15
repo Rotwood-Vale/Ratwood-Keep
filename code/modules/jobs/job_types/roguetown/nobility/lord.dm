@@ -30,6 +30,8 @@ GLOBAL_LIST_EMPTY(lord_titles)
 	give_bank_account = 1000
 	required = TRUE
 
+	cmode_music = 'sound/music/combat_king.ogg'
+
 /datum/job/roguetown/exlord //just used to change the lords title
 	title = "King Emeritus"
 	f_title = "Queen Emeritus"
