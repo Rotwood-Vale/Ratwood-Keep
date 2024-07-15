@@ -332,9 +332,6 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "E
 			blockme = TRUE
 		if(villain.assigned_role in GLOB.youngfolk_positions)
 			blockme = TRUE
-		if(villain.current)
-			if(villain.current.gender == FEMALE)
-				blockme = TRUE
 		if(blockme)
 			return
 		allantags -= villain
