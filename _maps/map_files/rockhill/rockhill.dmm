@@ -7808,9 +7808,10 @@
 /area/rogue/indoors/town/church/chapel)
 "hPx" = (
 /obj/structure/fluff/statue/answer{
+	color = null;
 	pixel_y = 8
 	},
-/turf/open/lava,
+/turf/open/floor/rogue/metal/barograte,
 /area/rogue/under/cavewet/bogcaves/sunkencity/psydon)
 "hQa" = (
 /obj/machinery/light/rogue/torchholder{
@@ -15247,6 +15248,9 @@
 "qYJ" = (
 /turf/open/floor/rogue/carpet,
 /area/rogue/indoors/town/tavern)
+"qZr" = (
+/turf/open/lava,
+/area/rogue/under/cavewet/bogcaves/sunkencity/psydon)
 "qZw" = (
 /obj/structure/closet/crate/drawer{
 	pixel_y = 16
@@ -18944,6 +18948,7 @@
 "vnt" = (
 /obj/structure/window/plasma/fulltile{
 	desc = "I can't see my own reflection.";
+	max_integrity = 30000;
 	name = "purple crystal"
 	},
 /turf/open/floor/rogue/metal/barograte,
@@ -34080,9 +34085,9 @@ lFd
 sWl
 bgS
 cue
-jAY
+qZr
 xpt
-jAY
+qZr
 cue
 bgS
 sWl
@@ -34884,9 +34889,9 @@ sWl
 sWl
 bgS
 cue
-jAY
+qZr
 xpt
-jAY
+qZr
 cue
 bgS
 sWl
