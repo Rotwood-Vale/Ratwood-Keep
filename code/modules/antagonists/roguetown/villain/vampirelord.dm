@@ -57,7 +57,7 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 	C.vampires |= owner
 	. = ..()
 	owner.special_role = name
-	//ADD_TRAIT(owner.current, TRAIT_CRITICAL_WEAKNESS, "[type]") //This was a shitty solution to a shitty problem. Calls AFFECTED.DEATH() whenever a crit is scored on chest or head, which removes the point of staking vampyres.
+	ADD_TRAIT(owner.current, TRAIT_CRITICAL_WEAKNESS, "[type]") //This is still a god-awful solution and needs to be reworked ASAP.
 	ADD_TRAIT(owner.current, TRAIT_STRONGBITE, "[type]")
 	ADD_TRAIT(owner.current, TRAIT_NOROGSTAM, "[type]")
 	ADD_TRAIT(owner.current, TRAIT_NOHUNGER, "[type]")
