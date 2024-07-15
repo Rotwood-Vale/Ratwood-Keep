@@ -51,7 +51,6 @@
 	bitesize_mod = 2
 	foodtype = GRAIN
 	tastes = list("wheat" = 1)
-	mill_result = /obj/item/reagent_containers/powder/flour
 	can_distill = TRUE
 	distill_reagent = /datum/reagent/consumable/ethanol/beer
 	distill_amt = 24
@@ -67,7 +66,6 @@
 	bitesize_mod = 2
 	foodtype = GRAIN
 	tastes = list("oat" = 1)
-	mill_result = /obj/item/reagent_containers/powder/flour
 	can_distill = TRUE
 	distill_reagent = /datum/reagent/consumable/ethanol/ale
 	distill_amt = 12
