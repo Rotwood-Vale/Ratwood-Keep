@@ -123,7 +123,7 @@
 				/obj/item/natural/fibers = 1)
 
 /obj/item/clothing/cloak/raincloak/brown
-	sellprice = 20
+	sellprice = 3
 
 /datum/crafting_recipe/roguetown/leather/cloakfur
 	name = "fur cloak"
