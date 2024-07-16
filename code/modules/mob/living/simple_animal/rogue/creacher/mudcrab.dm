@@ -43,3 +43,46 @@
 			return pick('sound/vo/mobs/crab/crab noise (1).ogg','sound/vo/mobs/crab/crab noise (2).ogg','sound/vo/mobs/crab/crab noise (3).ogg')
 		if("death")
 			return pick('sound/vo/mobs/crab/crab death.ogg')
+
+/obj/structure/crabnest
+	name = "Mudcrab Burrow"
+	icon = 'icons/roguetown/misc/structure.dmi'
+	icon_state = "crabnest"
+	max_integrity = 200
+	anchored = TRUE
+	density = FALSE
+	layer = BELOW_OBJ_LAYER
+	var/crabs = 0
+	var/maxcrabs = 3
+	var/spawning = FALSE
+	attacked_sound = null
+
+/obj/structure/crabnest/Initialize()
+	. = ..()
+	spawn_crab()
+
+/obj/structure/crabnest/proc/createcrab()
+	if(QDELETED(src))
+		return
+	if(!spawning)
+		return
+	spawning = FALSE
+	new /mob/living/simple_animal/hostile/retaliate/rogue/mudcrab(get_turf(src))
+	crabs++
+	update_icon()
+	if(crabs < maxcrabs)
+		spawn_crab()
+
+/obj/structure/crabnest/proc/spawn_crab()
+	if(QDELETED(src))
+		return
+	if(spawning)
+		return
+	spawning = TRUE
+	update_icon()
+	spawn(2 SECONDS)
+		createcrab()
+	//addtimer(CALLBACK(src, PROC_REF(creategob)), 4 SECONDS)
+
+
+
