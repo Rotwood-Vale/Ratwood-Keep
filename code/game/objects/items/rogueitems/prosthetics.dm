@@ -19,7 +19,7 @@
 	name = "wooden arm (L)"
 	desc = "A left arm of wood."
 	icon = 'icons/roguetown/items/misc.dmi'
-	icon_state = "prarm"
+	icon_state = "pr_arm"
 	resistance_flags = FLAMMABLE
 	obj_flags = CAN_BE_HIT
 	status = BODYPART_ROBOTIC
@@ -35,7 +35,8 @@
 	name = "iron arm (L)"
 	desc = "A left arm of iron."
 	icon = 'icons/roguetown/items/misc.dmi'
-	icon_state = "prarm"
+	icon_state = "pri_arm"
+	prosthetic_prefix = "pri"
 	brute_reduction = 5
 	burn_reduction = 5
 	sellprice = 30
@@ -44,7 +45,8 @@
 	name = "steel arm (L)"
 	desc = "A left arm of steel."
 	icon = 'icons/roguetown/items/misc.dmi'
-	icon_state = "prarm"
+	icon_state = "prs_arm"
+	prosthetic_prefix = "prs"
 	brute_reduction = 10
 	burn_reduction = 10
 	sellprice = 40
@@ -53,7 +55,8 @@
 	name = "clockwork arm (L)"
 	desc = "A left arm of cogs and gold."
 	icon = 'icons/roguetown/items/misc.dmi'
-	icon_state = "prarm"
+	icon_state = "prc_arm"
+	prosthetic_prefix = "prc"
 	fingers = TRUE
 	sellprice = 50
 
@@ -64,7 +67,7 @@
 	name = "wooden arm (R)"
 	desc = "A right arm of wood."
 	icon = 'icons/roguetown/items/misc.dmi'
-	icon_state = "prarm"
+	icon_state = "pr_arm"
 	resistance_flags = FLAMMABLE
 	obj_flags = CAN_BE_HIT
 	status = BODYPART_ROBOTIC
@@ -80,7 +83,8 @@
 	name = "iron arm (R)"
 	desc = "A right arm of iron."
 	icon = 'icons/roguetown/items/misc.dmi'
-	icon_state = "prarm"
+	icon_state = "pri_arm"
+	prosthetic_prefix = "pri"
 	brute_reduction = 5
 	burn_reduction = 5
 	sellprice = 30
@@ -89,7 +93,8 @@
 	name = "steel arm (R)"
 	desc = "A right arm of steel."
 	icon = 'icons/roguetown/items/misc.dmi'
-	icon_state = "prarm"
+	icon_state = "prs_arm"
+	prosthetic_prefix = "prs"
 	brute_reduction = 10
 	burn_reduction = 10
 	sellprice = 40
@@ -98,7 +103,8 @@
 	name = "clockwork arm (R)"
 	desc = "A right arm of cogs and gold."
 	icon = 'icons/roguetown/items/misc.dmi'
-	icon_state = "prarm"
+	icon_state = "prc_arm"
+	prosthetic_prefix = "prc"
 	fingers = TRUE
 	sellprice = 50
 
@@ -109,7 +115,7 @@
 	name = "peg leg (L)"
 	desc = "A left leg of wood."
 	icon = 'icons/roguetown/items/misc.dmi'
-	icon_state = "prleg"
+	icon_state = "pr_leg"
 	resistance_flags = FLAMMABLE
 	obj_flags = CAN_BE_HIT
 	status = BODYPART_ROBOTIC
@@ -125,7 +131,8 @@
 	name = "iron leg (L)"
 	desc = "A left leg of iron."
 	icon = 'icons/roguetown/items/misc.dmi'
-	icon_state = "prleg"
+	icon_state = "pri_leg"
+	prosthetic_prefix = "pri"
 	organ_slowdown = 1.2
 	brute_reduction = 5
 	burn_reduction = 5
@@ -135,7 +142,8 @@
 	name = "steel leg (L)"
 	desc = "A left leg of steel."
 	icon = 'icons/roguetown/items/misc.dmi'
-	icon_state = "prleg"
+	icon_state = "prs_leg"
+	prosthetic_prefix = "prs"
 	organ_slowdown = 1.1
 	brute_reduction = 10
 	burn_reduction = 10
@@ -145,7 +153,8 @@
 	name = "clockwork leg (L)"
 	desc = "A left leg of cogs and gold."
 	icon = 'icons/roguetown/items/misc.dmi'
-	icon_state = "prleg"
+	icon_state = "prc_leg"
+	prosthetic_prefix = "prc"
 	organ_slowdown = 0
 	sellprice = 50
 
@@ -156,7 +165,7 @@
 	name = "peg leg (R)"
 	desc = "A right leg of wood."
 	icon = 'icons/roguetown/items/misc.dmi'
-	icon_state = "prleg"
+	icon_state = "pr_leg"
 	resistance_flags = FLAMMABLE
 	obj_flags = CAN_BE_HIT
 	status = BODYPART_ROBOTIC
@@ -172,7 +181,8 @@
 	name = "iron leg (R)"
 	desc = "A right leg of iron."
 	icon = 'icons/roguetown/items/misc.dmi'
-	icon_state = "prleg"
+	icon_state = "pri_leg"
+	prosthetic_prefix = "pri"
 	organ_slowdown = 1.2
 	brute_reduction = 5
 	burn_reduction = 5
@@ -182,7 +192,8 @@
 	name = "steel leg (R)"
 	desc = "A right leg of steel."
 	icon = 'icons/roguetown/items/misc.dmi'
-	icon_state = "prleg"
+	icon_state = "prs_leg"
+	prosthetic_prefix = "prs"
 	organ_slowdown = 1.1
 	brute_reduction = 10
 	burn_reduction = 10
@@ -192,7 +203,8 @@
 	name = "clockwork leg (R)"
 	desc = "A right leg of cogs and gold."
 	icon = 'icons/roguetown/items/misc.dmi'
-	icon_state = "prleg"
+	icon_state = "prc_leg"
+	prosthetic_prefix = "prc"
 	organ_slowdown = 0
 	sellprice = 50
 
