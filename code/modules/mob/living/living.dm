@@ -866,6 +866,8 @@
 		reset_offsets("pixel_shift")
 		return FALSE
 	pixelshifted = FALSE
+	pixelshift_x = 0
+	pixelshift_y = 0
 	reset_offsets("pixel_shift")
 
 /mob/living/Move(atom/newloc, direct, glide_size_override)
