@@ -38,11 +38,11 @@
 	/datum/species/tabaxi,\
 	/datum/species/akula,\
 	/datum/species/anthromorph,\
+	/datum/species/ratpeople,\
 	/datum/species/demihuman
 
 #define RACES_SHUNNED \
 	/datum/species/halforc,\
-	/datum/species/ratpeople,\
 	/datum/species/anthromorphsmall,\
 	/datum/species/kobold
 
