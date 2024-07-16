@@ -444,3 +444,13 @@
 /obj/item/clothing/suit/roguetown/armor/silkcoat/Initialize()
 	. = ..()
 	color = pick(CLOTHING_PURPLE, null,CLOTHING_GREEN, CLOTHING_RED)
+
+/obj/item/clothing/suit/roguetown/armor/plate/half/grenzelhoft
+	slot_flags = ITEM_SLOT_ARMOR
+	name = "Grenzelhoft cuirass"
+	desc = "A basic cuirass built from black-steel. It's somewhat more durable than regular steel."
+	icon_state = "grenzelcuirass"
+	item_state = "grenzelcuirass"
+	sleeved = 'icons/roguetown/clothing/onmob/helpers/stonekeep_merc.dmi'
+	boobed = TRUE
+	max_integrity = 400

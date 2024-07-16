@@ -74,7 +74,7 @@ GLOBAL_LIST_INIT(courtier_positions, list(
 	"Court Magician",
 	"Court Physician",
 	"Jester",
-	"Butler",
+	"Head Butler",
 ))
 
 GLOBAL_LIST_INIT(garrison_positions, list(
@@ -122,13 +122,12 @@ GLOBAL_LIST_INIT(peasant_positions, list(
 	"Towner",
 	"Grabber",
 	"Nightmaster",
-	"Bath Wench",
+	"Bath Swain",
 	"Docker",
 	"Prisoner",
 	"Beggar",
 	"Adventurer",
 	"Pilgrim",
-	"Drifter"
 ))
 
 GLOBAL_LIST_INIT(mercenary_positions, list(

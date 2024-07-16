@@ -11,6 +11,11 @@
 	t1 = /obj/effect/proc_holder/spell/invoked/sacred_flame_rogue
 	t2 = /obj/effect/proc_holder/spell/invoked/heal
 	t3 = /obj/effect/proc_holder/spell/invoked/revive
+	confess_lines = list(
+		"ASTRATA IS MY LIGHT!",
+		"ASTRATA BRINGS LAW!",
+		"I SERVE THE GLORY OF THE SUN!",
+	)
 
 /datum/patron/divine/noc
 	name = "Noc"
@@ -19,6 +24,11 @@
 	worshippers = "Wizards and Scholars"
 	t1 = /obj/effect/proc_holder/spell/invoked/blindness
 	t2 = /obj/effect/proc_holder/spell/invoked/invisibility
+	confess_lines = list(
+		"NOC IS NIGHT!",
+		"NOC SEES ALL!",
+		"I SEEK THE MYSTERIES OF THE MOON!",
+	)
 
 /datum/patron/divine/dendor
 	name = "Dendor"
@@ -29,18 +39,33 @@
 	t1 = /obj/effect/proc_holder/spell/targeted/blesscrop
 	t2 = /obj/effect/proc_holder/spell/targeted/beasttame
 	t3 = /obj/effect/proc_holder/spell/targeted/conjure_glowshroom
+	confess_lines = list(
+		"DENDOR PROVIDES!",
+		"THE TREEFATHER BRINGS BOUNTY!",
+		"I ANSWER THE CALL OF THE WILD!",
+	)
 
 /datum/patron/divine/abyssor
 	name = "Abyssor"
 	domain = "God of the Ocean, Storms and the Tide"
 	desc = "The Beloved Son, gifted primordial men food and water."
 	worshippers = "Men of the Sea, Primitive Aquatics"
+	confess_lines = list(
+		"ABYSSOR COMMANDS THE WAVES!",
+		"THE OCEAN'S FURY IS ABYSSOR'S WILL!",
+		"I AM DRAWN BY THE PULL OF THE TIDE!",
+	)
 
 /datum/patron/divine/ravox
 	name = "Ravox"
 	domain = "God of War, Justice and Strength"
 	desc = "The strongest of Psydon's children, he watches man from afar."
 	worshippers = "Warriors, Sellswords & those who seek Justice"
+	confess_lines = list(
+		"RAVOX IS JUSTICE!",
+		"THROUGH STRIFE, GRACE!",
+		"THE DRUMS OF WAR BEAT IN MY CHEST!",
+	)
 
 /datum/patron/divine/necra
 	name = "Necra"
@@ -51,12 +76,29 @@
 	t1 = /obj/effect/proc_holder/spell/targeted/burialrite
 	t2 = /obj/effect/proc_holder/spell/targeted/churn
 	t3 = /obj/effect/proc_holder/spell/targeted/soulspeak
+	confess_lines = list(
+		"ALL SOULS FIND THEIR WAY TO NECRA!",
+		"THE UNDERMAIDEN IS OUR FINAL REPOSE!",
+		"I FEAR NOT DEATH, MY LADY AWAITS ME!",
+	)
 
 /datum/patron/divine/xylix
 	name = "Xylix"
 	domain = "God of Trickery, Freedom and Inspiration"
 	desc = "The Mad-God, gifted man wanderlust and a thousand tricks."
 	worshippers = "Cheats, Frauds, Silver-Tongued devils and Roguish Types"
+	confess_lines = list(
+		"ASTRATA IS MY LIGHT!",
+		"NOC IS NIGHT!",
+		"DENDOR PROVIDES!",
+		"ABYSSOR COMMANDS THE WAVES!",
+		"RAVOX IS JUSTICE!",
+		"ALL SOULS FIND THEIR WAY TO NECRA!",
+		"HAHAHAHA! AHAHAHA! HAHAHAHA!",
+		"PESTRA SOOTHES ALL ILLS!",
+		"MALUM IS MY MUSE!",
+		"EORA BRINGS US TOGETHER!",
+	)
 
 /datum/patron/divine/pestra
 	name = "Pestra"
@@ -69,6 +111,11 @@
 	t2 = /obj/effect/proc_holder/spell/invoked/heal
 	t3 = /obj/effect/proc_holder/spell/invoked/attach_bodypart
 	t4 = /obj/effect/proc_holder/spell/invoked/cure_rot
+	confess_lines = list(
+		"PESTRA SOOTHES ALL ILLS!",
+		"DECAY IS A CONTINUATION OF LIFE!",
+		"MY AFFLICTION IS MY TESTAMENT!",
+	)
 
 /datum/patron/divine/malum
 	name = "Malum"
@@ -76,9 +123,19 @@
 	desc = "The Opinionless God, his children hold no malice in their actions."
 	worshippers = "Smiths, Miners, Artists"
 	t1 = /obj/effect/proc_holder/spell/invoked/sacred_flame_rogue
+	confess_lines = list(
+		"MALUM IS MY MUSE!",
+		"TRUE VALUE IS IN THE TOIL!",
+		"I AM AN INSTRUMENT OF CREATION!",
+	)
 
 /datum/patron/divine/eora
 	name = "Eora"
 	domain = "Goddess of the Family, Love and Lust"
 	desc = "The Lovely One, her divine gift was that of family and love."
 	worshippers = "Lovers, Harlots, Doting Grandparents"
+	confess_lines = list(
+		"EORA BRINGS US TOGETHER!",
+		"HER BEAUTY IS EVEN IN THIS TORMENT!",
+		"I LOVE YOU, EVEN AS YOU TRESPASS AGAINST ME!",
+	)
