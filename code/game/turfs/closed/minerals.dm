@@ -656,7 +656,7 @@
 
 /turf/closed/mineral/rogue/salt
 	icon_state = "mingold"
-	mineralType = /obj/item/reagent_containers/powder/flour/salt
+	mineralType = /obj/item/reagent_containers/powder/salt
 	rockType = /obj/item/natural/rock/salt
 	spreadChance = 33
 	spread = 15
