@@ -1,4 +1,4 @@
-/obj/item/reagent_containers/powder/
+/obj/item/reagent_containers/powder
 	name = "default powder"
 	desc = ""
 	icon = 'icons/roguetown/items/produce.dmi'
