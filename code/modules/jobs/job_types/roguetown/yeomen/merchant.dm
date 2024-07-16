@@ -29,7 +29,7 @@
 		H.mind.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/maces, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 2, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/combat/bows, 2), TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/bows, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 5, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/alchemy, rand(2,4), TRUE)
 		H.mind.adjust_skillrank(/datum/skill/labor/mathematics, 5, TRUE)
@@ -38,3 +38,20 @@
 		H.mind.adjust_skillrank(/datum/skill/craft/cooking, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/riding, 3, TRUE)
 	ADD_TRAIT(H, TRAIT_SEEPRICES, type)
+	head = /obj/item/clothing/head/roguetown/chaperon
+	neck = /obj/item/clothing/neck/roguetown/horus
+	armor = /obj/item/clothing/suit/roguetown/shirt/robe/merchant
+	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/sailor
+	pants = /obj/item/clothing/under/roguetown/tights/sailor
+	belt = /obj/item/storage/belt/rogue/leather/rope
+	beltl = /obj/item/keyring/merchant
+	beltr = /obj/item/storage/belt/rogue/pouch/coins/rich
+	id = /obj/item/clothing/ring/gold
+	if(H.gender == MALE)
+		shoes = /obj/item/clothing/shoes/roguetown/boots/leather
+		H.dna.species.soundpack_m = new /datum/voicepack/male/wizard()
+	else
+		shoes = /obj/item/clothing/shoes/roguetown/gladiator
+	H.change_stat("intelligence", 2)
+	H.change_stat("perception", 3)
+	H.change_stat("strength", -1)
