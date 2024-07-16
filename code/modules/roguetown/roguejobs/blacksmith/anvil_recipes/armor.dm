@@ -238,8 +238,14 @@
 	craftdiff = 2
 	i_type = "Armor"
 
-/datum/anvil_recipe/armor/plateboot
-	name = "Plated Boots"
+/datum/anvil_recipe/armor/plateironboot
+	name = "Iron Plated Boots"
+	req_bar = /obj/item/ingot/iron
+	created_item = /obj/item/clothing/shoes/roguetown/boots/armoriron
+	i_type = "Armor"
+
+/datum/anvil_recipe/armor/platesteelboot
+	name = "Steel Plated Boots"
 	req_bar = /obj/item/ingot/steel
 	created_item = /obj/item/clothing/shoes/roguetown/boots/armor
 	i_type = "Armor"

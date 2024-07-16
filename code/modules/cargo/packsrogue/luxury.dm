@@ -63,7 +63,7 @@
 
 /datum/supply_pack/rogue/luxury/scrying
 	name = "Scrying Orb"
-	cost = 120
+	cost = 1000
 	contains = list(/obj/item/scrying)
 
 /datum/supply_pack/rogue/luxury/listenst

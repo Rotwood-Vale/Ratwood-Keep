@@ -118,7 +118,7 @@
 	anchored = TRUE
 	layer = BELOW_OBJ_LAYER
 	var/list/held_items = list()
-	var/locked = FALSE
+	var/locked = TRUE
 	var/budget = 0
 	var/upgrade_flags
 	var/current_cat = "1"
@@ -286,7 +286,7 @@
 	contents += "<a href='?src=[REF(src)];change=1'>MAMMON LOADED:</a> [budget]<BR>"
 
 	var/mob/living/carbon/human/H = user
-	if(H.job == "Merchant")
+	if(H.job == "Merchant" || "Shophand")
 		if(canread)
 			contents += "<a href='?src=[REF(src)];secrets=1'>Secrets</a>"
 		else

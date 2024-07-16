@@ -108,8 +108,21 @@
 	item_state = "shalal"
 	sewrepair = TRUE
 
+/obj/item/clothing/shoes/roguetown/boots/armoriron
+	name = "iron plated boots"
+	desc = ""
+	body_parts_covered = FEET
+	icon_state = "armorironboots"
+	item_state = "armorironboots"
+	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT, BCLASS_TWIST)
+	color = null
+	blocksound = PLATEHIT
+	armor = list("blunt" = 80, "slash" = 100, "stab" = 70, "bullet" = 100, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	anvilrepair = /datum/skill/craft/armorsmithing
+	smeltresult = /obj/item/ingot/steel
+
 /obj/item/clothing/shoes/roguetown/boots/armor
-	name = "plated boots"
+	name = "steel plated boots"
 	desc = ""
 	body_parts_covered = FEET
 	icon_state = "armorboots"
@@ -119,7 +132,7 @@
 	blocksound = PLATEHIT
 	armor = list("blunt" = 90, "slash" = 100, "stab" = 80, "bullet" = 100, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
 	anvilrepair = /datum/skill/craft/armorsmithing
-	smeltresult = /obj/item/ingot/iron
+	smeltresult = /obj/item/ingot/steel
 
 /obj/item/clothing/shoes/roguetown/boots/leather
 	name = "leather boots"

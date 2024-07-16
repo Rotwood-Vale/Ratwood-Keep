@@ -52,12 +52,12 @@
 					/obj/item/clothing/gloves/roguetown/chain,
 				)
 	
-/datum/supply_pack/rogue/armor/boots
-	name = "Steel Boots"
+/datum/supply_pack/rogue/armor/ironboots
+	name = "Iron Armor Boots"
 	cost = 50
 	contains = list(
-					/obj/item/clothing/shoes/roguetown/boots,
-					/obj/item/clothing/shoes/roguetown/boots,
+					/obj/item/clothing/shoes/roguetown/boots/armoriron,
+					/obj/item/clothing/shoes/roguetown/boots/armoriron,
 				)
 
 /datum/supply_pack/rogue/armor/gambeson
