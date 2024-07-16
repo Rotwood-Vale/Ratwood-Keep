@@ -8,11 +8,11 @@ SUBSYSTEM_DEF(nightshift)
 	var/current_tod = null
 
 	var/nightshift_active = FALSE
-	var/nightshift_start_time = 576000	//4pm	//702000=7:30 PM, station time
-	var/nightshift_end_time = 360000	//10am	//270000=7:30 AM, station time
-	var/nightshift_dawn_start = 288000		//198000=530am
-	var/nightshift_day_start = 360000		//270000=730am
-	var/nightshift_dusk_start = 504000		//630000=530pm
+	var/nightshift_start_time = 720000	//4pm	//702000=7:30 PM, station time
+	var/nightshift_end_time = 144000	//10am	//270000=7:30 AM, station time //Vrell - Unused, setting it anyway
+	var/nightshift_dawn_start = 144000		//198000=530am
+	var/nightshift_day_start = 288000		//270000=730am
+	var/nightshift_dusk_start = 576000		//630000=530pm
 
 	//1hr = 36000
 	//30m = 18000
@@ -24,7 +24,7 @@ SUBSYSTEM_DEF(nightshift)
 /datum/controller/subsystem/nightshift/Initialize()
 	if(!CONFIG_GET(flag/enable_night_shifts))
 		can_fire = FALSE
-	current_tod = settod()
+	current_tod = "night"
 	return ..()
 
 /datum/controller/subsystem/nightshift/fire(resumed = FALSE)

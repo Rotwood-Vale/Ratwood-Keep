@@ -78,8 +78,8 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 	owner.current.verbs |= /mob/living/carbon/human/proc/vamp_regenerate
 	owner.current.verbs |= /mob/living/carbon/human/proc/vampire_telepathy
 	vamp_look()
+	owner.current.verbs |= /mob/living/carbon/human/proc/disguise_button
 	if(isspawn)
-		owner.current.verbs |= /mob/living/carbon/human/proc/disguise_button
 		add_objective(/datum/objective/vlordserve)
 		finalize_vampire_lesser()
 		for(var/obj/structure/vampire/bloodpool/mansion in GLOB.vampire_objects)
@@ -352,17 +352,18 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 				var/turf/T = H.loc
 				if(T.can_see_sky())
 					if(T.get_lumcount() > 0.15)
-						if(!isspawn)
-							to_chat(H, span_warning("Astrata spurns me! I must get out of her rays!")) // VLord is more punished for daylight excursions.
-							var/turf/N = H.loc
-							if(N.can_see_sky())
-								if(N.get_lumcount() > 0.15)
-									H.fire_act(3)
-									handle_vitae(-500)
-							to_chat(H, span_warning("That was too close. I must avoid the sun."))
-						else if (isspawn && !disguised)
-							H.fire_act(1,5)
-							handle_vitae(-10)
+						if(!disguised)
+							if(!isspawn)
+								to_chat(H, span_warning("Astrata spurns me! I must get out of her rays!")) // VLord is more punished for daylight excursions.
+								var/turf/N = H.loc
+								if(N.can_see_sky())
+									if(N.get_lumcount() > 0.15)
+										H.fire_act(3)
+										handle_vitae(-500)
+								to_chat(H, span_warning("That was too close. I must avoid the sun."))
+							else
+								H.fire_act(1,5)
+								handle_vitae(-10)
 
 	if(H.on_fire)
 		if(disguised)

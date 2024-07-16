@@ -141,8 +141,10 @@
 				src.last_used = world.time
 		if(V_lord)
 			if(V_lord.vamplevel < 4 && !V)
-				H.Stun(10)
+				if(V_lord.disguised)
+					H.visible_message("<font color='white'>The silver weapon manifests the [H] curse!</font>")
 				to_chat(H, span_userdanger("The silver burns me!"))
+				H.Stun(10)
 				H.adjustFireLoss(25)
 				H.Paralyze(10)
 				H.fire_act(1,4)
