@@ -38,7 +38,7 @@
 	)
 	/// Cached old stats in case we get removed
 	var/STASTR
-	var/STACON 
+	var/STACON
 	var/STAEND
 	/// Weapons we can give to the dreamer
 	var/static/list/possible_weapons = list(
@@ -48,12 +48,12 @@
 	)
 	/// Wonder recipes
 	var/static/list/recipe_progression = list(
-		/datum/crafting_recipe/roguetown/structure/wonder/first, 
-		/datum/crafting_recipe/roguetown/structure/wonder/second, 
-		/datum/crafting_recipe/roguetown/structure/wonder/third, 
+		/datum/crafting_recipe/roguetown/structure/wonder/first,
+		/datum/crafting_recipe/roguetown/structure/wonder/second,
+		/datum/crafting_recipe/roguetown/structure/wonder/third,
 		/datum/crafting_recipe/roguetown/structure/wonder/fourth,
 	)
-	/// Key number > Key text 
+	/// Key number > Key text
 	var/list/num_keys = list()
 	/// Key text > key number
 	var/list/key_nums = list()
@@ -95,7 +95,7 @@
 			owner.adjust_skillrank(/datum/skill/combat/unarmed, 4, TRUE)
 			var/medicine_skill = dreamer.mind.get_skill_level(/datum/skill/misc/medicine)
 			if(medicine_skill < 3)// Bumps his skill up to 3 for surgery, not higher
-				owner.adjust_skillrank(/datum/skill/misc/medicine, 3 - medicine_skill, TRUE) 
+				owner.adjust_skillrank(/datum/skill/misc/medicine, 3 - medicine_skill, TRUE)
 			STASTR = dreamer.STASTR
 			STACON = dreamer.STACON
 			STAEND = dreamer.STAEND
@@ -103,9 +103,6 @@
 			dreamer.STACON = 16		//16 con; was 20, seemed too strong
 			dreamer.STAEND = 16		//16 endurance; was 20, semed too strong
 			dreamer.STASPD = 14		//Added in exchange for lowered other stats; this makes them a bit faster than normal likely. Helps dodging. Equal to goblin.
-		for(var/trait in applied_traits)
-			ADD_TRAIT(owner.current, trait, "[type]")
-		hallucinations = owner.current.overlay_fullscreen("maniac", /atom/movable/screen/fullscreen/maniac)
 	LAZYINITLIST(owner.learned_recipes)
 	owner.learned_recipes |= recipe_progression[1]
 	forge_villain_objectives()
@@ -154,7 +151,7 @@
 		//Stick then in the lists, continue the loop
 		num_keys[randumb] = rantelligent
 		key_nums[rantelligent] = randumb
-	
+
 	sum_keys = 0
 	for(var/i in num_keys)
 		sum_keys += text2num(i)
