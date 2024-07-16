@@ -4100,10 +4100,6 @@
 "dHZ" = (
 /turf/closed/wall/mineral/rogue/wooddark,
 /area/rogue/indoors/town)
-"dIB" = (
-/obj/structure/bars/cemetery,
-/turf/closed,
-/area/rogue/outdoors/rtfield)
 "dJa" = (
 /obj/machinery/light/rogue/wallfire/candle/r,
 /turf/closed/wall/mineral/rogue/decostone/long{
@@ -9143,10 +9139,6 @@
 	},
 /turf/closed/wall/mineral/rogue/stonebrick,
 /area/rogue/indoors/town)
-"jsT" = (
-/obj/structure/roguewindow,
-/turf/closed,
-/area/rogue/indoors)
 "jtp" = (
 /obj/structure/table/wood{
 	dir = 1;
@@ -9464,8 +9456,8 @@
 /area/rogue/indoors/town/church/chapel)
 "jQy" = (
 /obj/structure/bars/cemetery,
-/turf/closed,
-/area/rogue/outdoors/town)
+/turf/open/floor/rogue/cobblerock,
+/area/rogue/outdoors/rtfield)
 "jRk" = (
 /obj/structure/bars/pipe{
 	dir = 8;
@@ -15956,7 +15948,7 @@
 /obj/structure/stairs/stone{
 	dir = 4
 	},
-/turf/closed,
+/turf/closed/wall/mineral/rogue/decostone,
 /area/rogue/indoors/town/church/chapel)
 "rOX" = (
 /obj/structure/closet/crate/chest,
@@ -17733,7 +17725,7 @@
 	locked = 1;
 	lockid = "archive"
 	},
-/turf/closed,
+/turf/open/floor/rogue/blocks,
 /area/rogue/indoors/town/garrison)
 "tOz" = (
 /turf/open/floor/rogue/cobble/mossy,
@@ -18356,10 +18348,6 @@
 /obj/machinery/light/rogue/torchholder,
 /turf/closed/wall/mineral/rogue/stonebrick,
 /area/rogue/under/town/sewer)
-"uAS" = (
-/obj/structure/flora/newtree,
-/turf/closed,
-/area/rogue/outdoors/bog)
 "uAZ" = (
 /obj/structure/table/wood{
 	dir = 1;
@@ -264166,7 +264154,7 @@ uaL
 fxx
 uaL
 uaL
-dfk
+jQy
 vIa
 vIa
 vIa
@@ -264568,7 +264556,7 @@ uaL
 fxx
 uaL
 uaL
-dfk
+jQy
 vIa
 vIa
 vIa
@@ -264970,7 +264958,7 @@ vFU
 fxx
 uaL
 uaL
-dfk
+jQy
 vIa
 vIa
 vIa
@@ -265372,7 +265360,7 @@ fxx
 fxx
 fxx
 fxx
-dfk
+jQy
 vIa
 vIa
 vIa
@@ -265762,7 +265750,7 @@ qvR
 fxx
 qvR
 qvR
-dIB
+dfk
 uaL
 uaL
 uaL
@@ -265774,7 +265762,7 @@ uaL
 uaL
 uaL
 uaL
-dfk
+jQy
 vIa
 vIa
 vIa
@@ -266164,7 +266152,7 @@ uaL
 fxx
 uaL
 wSn
-dIB
+dfk
 uaL
 uaL
 uaL
@@ -266176,7 +266164,7 @@ uaL
 uaL
 uaL
 uaL
-dfk
+jQy
 vIa
 vIa
 vIa
@@ -266970,15 +266958,15 @@ wSn
 wSn
 xqX
 qeY
-dIB
-dIB
-dIB
+dfk
+dfk
+dfk
 fxx
-dIB
-dIB
-dIB
-dIB
-dIB
+dfk
+dfk
+dfk
+dfk
+dfk
 snP
 xqX
 vIa
@@ -271359,7 +271347,7 @@ fxx
 qvR
 qvR
 ryI
-jsT
+rKe
 wOD
 oQJ
 wOD
@@ -301707,7 +301695,7 @@ odi
 sYx
 oXL
 sYx
-uAS
+kWT
 odi
 sYx
 wLx
@@ -307037,7 +307025,7 @@ mwE
 pkK
 jHc
 mwE
-jQy
+qTQ
 aOn
 xEB
 jHc
