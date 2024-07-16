@@ -1216,7 +1216,7 @@
 	icon_state = "largetable";
 	dir = 8
 	},
-/obj/item/reagent_containers/powder/flour/salt,
+/obj/item/reagent_containers/powder/salt,
 /turf/open/floor/rogue/hexstone,
 /area/rogue/indoors)
 "dp" = (
@@ -1279,8 +1279,8 @@
 	icon_state = "largetable";
 	dir = 10
 	},
-/obj/item/reagent_containers/powder/flour/salt,
-/obj/item/reagent_containers/powder/flour/salt,
+/obj/item/reagent_containers/powder/salt,
+/obj/item/reagent_containers/powder/salt,
 /obj/item/reagent_containers/food/snacks/butter,
 /obj/item/reagent_containers/food/snacks/butter,
 /turf/open/floor/rogue/tile,
@@ -1604,9 +1604,9 @@
 /turf/open/floor/rogue/cobble,
 /area/rogue)
 "nZ" = (
-/obj/item/reagent_containers/powder/flour/salt,
-/obj/item/reagent_containers/powder/flour/salt,
-/obj/item/reagent_containers/powder/flour/salt,
+/obj/item/reagent_containers/powder/salt,
+/obj/item/reagent_containers/powder/salt,
+/obj/item/reagent_containers/powder/salt,
 /obj/structure/closet/crate/chest,
 /turf/open/floor/rogue/tile{
 	icon_state = "chess"
