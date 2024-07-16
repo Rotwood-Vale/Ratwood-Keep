@@ -4627,6 +4627,10 @@
 	},
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/under/cavewet/bogcaves)
+"ejC" = (
+/obj/structure/crabnest,
+/turf/open/floor/rogue/grass,
+/area/rogue/outdoors/bog)
 "ejJ" = (
 /obj/structure/table/wood{
 	icon_state = "tablewood1"
@@ -9239,6 +9243,10 @@
 /obj/item/storage/backpack/rogue/satchel,
 /turf/open/floor/carpet/royalblack,
 /area/rogue/indoors/town/garrison)
+"jAV" = (
+/obj/structure/crabnest,
+/turf/open/water/cleanshallow,
+/area/rogue/outdoors/beach)
 "jAY" = (
 /turf/open/floor/rogue/metal/barograte,
 /area/rogue/under/cavewet/bogcaves/sunkencity/psydon)
@@ -9557,6 +9565,10 @@
 	icon_state = "weird1"
 	},
 /area/rogue/indoors/town)
+"jXy" = (
+/obj/structure/crabnest,
+/turf/open/floor/rogue/dirt,
+/area/rogue/outdoors/bog)
 "jXK" = (
 /obj/machinery/light/rogue/campfire,
 /turf/open/floor/rogue/churchrough,
@@ -10498,6 +10510,10 @@
 /obj/machinery/light/rogue/firebowl/standing/blue,
 /turf/open/floor/rogue/dirt,
 /area/rogue/under/cavewet/bogcaves)
+"lev" = (
+/obj/structure/crabnest,
+/turf/open/water/swamp,
+/area/rogue/outdoors/bog)
 "lfz" = (
 /obj/structure/fluff/railing/border{
 	dir = 1
@@ -12208,6 +12224,10 @@
 /obj/structure/chair/wood/rogue/fancy,
 /turf/open/floor/rogue/tile,
 /area/rogue/indoors/town/manor)
+"nmR" = (
+/obj/structure/crabnest,
+/turf/open/floor/rogue/cobblerock,
+/area/rogue/outdoors/rtfield)
 "nnI" = (
 /obj/structure/table/wood{
 	dir = 10;
@@ -17402,6 +17422,10 @@
 /obj/machinery/light/rogue/chand,
 /turf/open/transparent/openspace,
 /area/rogue/indoors/town/manor)
+"twT" = (
+/obj/structure/crabnest,
+/turf/open/floor/rogue/dirt/road,
+/area/rogue/outdoors/rtfield)
 "txa" = (
 /turf/closed/wall/mineral/rogue/craftstone,
 /area/rogue/under/town/basement)
@@ -17836,6 +17860,10 @@
 	},
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/town/garrison)
+"tYv" = (
+/obj/structure/crabnest,
+/turf/open/water/cleanshallow,
+/area/rogue/under/cavewet/bogcaves)
 "tYD" = (
 /obj/machinery/light/rogue/wallfire/candle,
 /turf/closed/wall/mineral/rogue/wood,
@@ -19905,6 +19933,10 @@
 	},
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/tavern)
+"wxd" = (
+/obj/structure/crabnest,
+/turf/open/water/sewer,
+/area/rogue/outdoors/rtfield)
 "wxy" = (
 /turf/closed/wall/mineral/rogue/stone/blue_moss,
 /area/rogue/under/cavewet/bogcaves/sunkencity)
@@ -170052,7 +170084,7 @@ dSL
 dSL
 dSL
 oNE
-oNE
+tYv
 gTv
 vCg
 vCg
@@ -205394,8 +205426,8 @@ oNE
 oNE
 oNE
 oNE
-oNE
-oNE
+tYv
+tYv
 oNE
 oNE
 oNE
@@ -205456,8 +205488,8 @@ oNE
 oNE
 oNE
 oNE
-oNE
-oNE
+tYv
+tYv
 oNE
 oNE
 oNE
@@ -205796,7 +205828,7 @@ oNE
 oNE
 oNE
 oNE
-oNE
+tYv
 oNE
 oNE
 oNE
@@ -205858,7 +205890,7 @@ oNE
 oNE
 oNE
 oNE
-oNE
+tYv
 oNE
 oNE
 oNE
@@ -206199,7 +206231,7 @@ oNE
 oNE
 oNE
 oNE
-oNE
+tYv
 oNE
 oNE
 oNE
@@ -210113,7 +210145,7 @@ bIl
 bIl
 bIl
 bIl
-bIl
+jAV
 bIl
 bIl
 bIl
@@ -217876,7 +217908,7 @@ oNE
 oNE
 oNE
 oNE
-oNE
+tYv
 oNE
 oNE
 oNE
@@ -218278,7 +218310,7 @@ oNE
 oNE
 oNE
 oNE
-oNE
+tYv
 oNE
 oNE
 oNE
@@ -241692,7 +241724,7 @@ wLx
 wLx
 wLx
 wLx
-wLx
+lev
 wLx
 kDc
 kDc
@@ -242093,7 +242125,7 @@ wLx
 wLx
 wLx
 wLx
-wLx
+lev
 kDc
 kDc
 kDc
@@ -244826,7 +244858,7 @@ sJZ
 sJZ
 sJZ
 sJZ
-uaL
+twT
 wSn
 qQZ
 qvR
@@ -254989,7 +255021,7 @@ odi
 sYx
 uRH
 oXL
-sYx
+jXy
 odi
 odi
 sYx
@@ -255390,7 +255422,7 @@ kWT
 sYx
 kWT
 uRH
-sYx
+jXy
 odi
 kWT
 odi
@@ -255456,7 +255488,7 @@ wLx
 kWT
 odi
 odi
-odi
+ejC
 sYx
 wLx
 wLx
@@ -258270,7 +258302,7 @@ odi
 oXL
 kWT
 sYx
-odi
+ejC
 odi
 sYx
 uRH
@@ -258671,7 +258703,7 @@ sYx
 uRH
 odi
 sYx
-odi
+ejC
 sYx
 sYx
 sYx
@@ -261763,7 +261795,7 @@ wLx
 odi
 oXL
 odi
-odi
+ejC
 odi
 uRH
 odi
@@ -261887,7 +261919,7 @@ wLx
 uRH
 odi
 odi
-odi
+ejC
 sYx
 uRH
 odi
@@ -267393,7 +267425,7 @@ wLx
 odi
 odi
 oXL
-odi
+ejC
 oXL
 wLx
 wLx
@@ -267794,7 +267826,7 @@ wLx
 wLx
 sYx
 kWT
-sYx
+jXy
 odi
 uRH
 oXL
@@ -270619,7 +270651,7 @@ wLx
 sYx
 oXL
 odi
-odi
+ejC
 kWT
 odi
 wLx
@@ -287120,8 +287152,8 @@ wLx
 wLx
 wLx
 wLx
-wLx
-wLx
+lev
+lev
 kDc
 kDc
 kDc
@@ -287523,7 +287555,7 @@ kWT
 odi
 sYx
 wLx
-wLx
+lev
 wLx
 kDc
 kDc
@@ -302478,7 +302510,7 @@ odi
 sYx
 odi
 sYx
-odi
+ejC
 odi
 oXL
 wLx
@@ -304852,7 +304884,7 @@ sYx
 wLx
 wLx
 wLx
-wLx
+lev
 kDc
 kDc
 kDc
@@ -305255,7 +305287,7 @@ wLx
 wLx
 wLx
 wLx
-wLx
+lev
 kDc
 kDc
 kDc
@@ -306507,7 +306539,7 @@ sYx
 oXL
 uRH
 oXL
-sYx
+jXy
 odi
 kWT
 sYx
@@ -319905,8 +319937,8 @@ uaL
 uaL
 uaL
 adp
-adp
-adp
+wxd
+wxd
 fxx
 fxx
 uaL
@@ -320307,7 +320339,7 @@ uaL
 uaL
 uaL
 uaL
-uaL
+twT
 uaL
 fxx
 fxx
@@ -321119,7 +321151,7 @@ fxx
 fxx
 fxx
 fxx
-fxx
+nmR
 fxx
 fxx
 uaL
@@ -321521,8 +321553,8 @@ uaL
 uaL
 uaL
 uaL
-uaL
-uaL
+twT
+twT
 byt
 byt
 uaL
