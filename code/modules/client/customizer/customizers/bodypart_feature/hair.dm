@@ -317,6 +317,13 @@
 		/datum/sprite_accessory/hair/head/fatherless2,
 		/datum/sprite_accessory/hair/head/kepthair,
 		/datum/sprite_accessory/hair/head/singlebraid,
+		/datum/sprite_accessory/hair/head/vulp_anita,
+		/datum/sprite_accessory/hair/head/vulp_jagged,
+		/datum/sprite_accessory/hair/head/vulp_kajam1,
+		/datum/sprite_accessory/hair/head/vulp_kajam2,
+		/datum/sprite_accessory/hair/head/vulp_keid,
+		/datum/sprite_accessory/hair/head/vulp_mizar,
+		/datum/sprite_accessory/hair/head/vulp_raine,
 		)
 
 /datum/customizer_choice/bodypart_feature/hair/head/humanoid/get_random_accessory(datum/customizer_entry/entry, datum/preferences/prefs)
