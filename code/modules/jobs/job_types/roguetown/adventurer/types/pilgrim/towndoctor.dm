@@ -14,14 +14,10 @@
 /datum/outfit/job/roguetown/adventurer/doctor/pre_equip(mob/living/carbon/human/H)
 	..()
 	mask = /obj/item/clothing/mask/rogue/spectacles
-	head = /obj/item/clothing/head/roguetown/nightman
 	neck = /obj/item/clothing/neck/roguetown/psicross/wood
-	armor = /obj/item/clothing/suit/roguetown/armor/leather/vest
-	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/puritan
 	belt = /obj/item/storage/belt/rogue/leather
 	beltl = /obj/item/storage/belt/rogue/pouch/coins/poor
 	beltr = /obj/item/rogueweapon/huntingknife/idagger
-	pants = /obj/item/clothing/under/roguetown/trou
 	shoes = /obj/item/clothing/shoes/roguetown/simpleshoes
 	backl = /obj/item/storage/backpack/rogue/backpack
 	backpack_contents = list(
@@ -35,6 +31,16 @@
 		/obj/item/needle = 1,
 		/obj/item/natural/cloth = 2,
 	)
+	if(H.gender == MALE)
+		armor = /obj/item/clothing/suit/roguetown/armor/leather/vest
+		pants = /obj/item/clothing/under/roguetown/trou
+		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/puritan
+		head = /obj/item/clothing/head/roguetown/nightman
+	else
+		armor = /obj/item/clothing/suit/roguetown/shirt/dress/silkdress
+		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
+		head = /obj/item/clothing/head/roguetown/armingcap
+
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/combat/knives, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
