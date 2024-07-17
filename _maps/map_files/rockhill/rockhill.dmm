@@ -6474,10 +6474,6 @@
 /obj/item/reagent_containers/powder/salt,
 /obj/item/reagent_containers/powder/salt,
 /obj/item/reagent_containers/powder/salt,
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
 /obj/structure/closet/crate/chest{
 	lockid = "keep_armory"
 	},
@@ -6485,10 +6481,6 @@
 /obj/item/reagent_containers/food/snacks/egg/loaded,
 /obj/item/reagent_containers/food/snacks/egg/loaded,
 /obj/item/reagent_containers/food/snacks/egg/loaded,
-/obj/item/reagent_containers/powder/flour/salt,
-/obj/item/reagent_containers/powder/flour/salt,
-/obj/item/reagent_containers/powder/flour/salt,
-/obj/item/reagent_containers/powder/flour/salt,
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/manor)
 "hIV" = (
@@ -10380,10 +10372,6 @@
 /obj/item/reagent_containers/powder/salt,
 /obj/item/reagent_containers/powder/salt,
 /obj/item/flashlight/flare/torch/metal,
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/basement)
 "mzq" = (
@@ -18092,8 +18080,6 @@
 /obj/structure/closet/crate/roguecloset,
 /obj/item/reagent_containers/food/snacks/butter,
 /obj/item/flashlight/flare/torch/metal,
-/obj/item/reagent_containers/powder/flour/salt,
-/obj/item/reagent_containers/powder/flour/salt,
 /obj/item/natural/cloth,
 /obj/item/natural/cloth,
 /obj/item/natural/cloth,
@@ -18128,17 +18114,11 @@
 /obj/item/reagent_containers/food/snacks/egg,
 /obj/item/reagent_containers/powder/salt,
 /obj/item/reagent_containers/powder/salt,
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
 /obj/structure/closet/crate/chest{
 	lockid = "keep_armory"
 	},
 /obj/item/reagent_containers/food/snacks/egg,
 /obj/item/reagent_containers/food/snacks/egg,
-/obj/item/reagent_containers/powder/flour/salt,
-/obj/item/reagent_containers/powder/flour/salt,
 /turf/open/floor/rogue/tile,
 /area/rogue/indoors)
 "wBu" = (
