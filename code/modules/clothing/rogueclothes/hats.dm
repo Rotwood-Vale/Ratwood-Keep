@@ -223,6 +223,13 @@
 	icon_state = "hatfur"
 	sewrepair = TRUE
 
+/obj/item/clothing/head/roguetown/papakha
+	name = "papakha"
+	icon_state = "papakha"
+	item_state = "papakha"
+	sewrepair = TRUE
+	flags_inv = HIDEEARS
+
 /obj/item/clothing/head/roguetown/hatblu
 	name = "fur hat"
 	icon_state = "hatblu"
