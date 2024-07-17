@@ -1,4 +1,14 @@
 /obj/item/reagent_containers/powder
+	name = "default powder"
+	desc = ""
+	icon = 'icons/roguetown/items/produce.dmi'
+	icon_state = "spice"
+	item_state = "spice"
+	possible_transfer_amounts = list()
+	volume = 15
+	sellprice = 10
+
+/obj/item/reagent_containers/powder/spice
 	name = "spice"
 	desc = ""
 	icon = 'icons/roguetown/items/produce.dmi'
@@ -7,6 +17,7 @@
 	possible_transfer_amounts = list()
 	volume = 15
 	list_reagents = list(/datum/reagent/druqks = 15)
+	grind_results = list(/datum/reagent/druqks = 15)
 	sellprice = 10
 
 /datum/reagent/druqks
@@ -155,13 +166,19 @@
 	..()
 	qdel(src)
 
-/obj/item/reagent_containers/powder/flour/salt
+/obj/item/reagent_containers/powder/salt
 	name = "salt"
 	desc = ""
 	gender = PLURAL
 	icon_state = "salt"
-	list_reagents = list(/datum/reagent/floure = 1)
+	list_reagents = list(/datum/reagent/consumable/sodiumchloride = 15)
+	grind_results = list(/datum/reagent/consumable/sodiumchloride = 15)
 	volume = 1
+
+/obj/item/reagent_containers/powder/salt/throw_impact(atom/hit_atom, datum/thrownthing/thrownthing)
+	new /obj/effect/decal/cleanable/food/salt(get_turf(src))
+	..()
+	qdel(src)
 
 /obj/item/reagent_containers/powder/ozium
 	name = "powder"
@@ -171,6 +188,7 @@
 	possible_transfer_amounts = list()
 	volume = 15
 	list_reagents = list(/datum/reagent/ozium = 15)
+	grind_results = list(/datum/reagent/ozium = 15)
 	sellprice = 5
 
 /datum/reagent/ozium
@@ -206,6 +224,7 @@
 	possible_transfer_amounts = list()
 	volume = 15
 	list_reagents = list(/datum/reagent/moondust = 15)
+	grind_results = list(/datum/reagent/moondust = 15)
 	sellprice = 5
 
 /datum/reagent/moondust/overdose_process(mob/living/M)
@@ -246,6 +265,7 @@
 	possible_transfer_amounts = list()
 	volume = 18
 	list_reagents = list(/datum/reagent/moondust_purest = 18)
+	grind_results = list(/datum/reagent/moondust_purest = 15)
 	sellprice = 30
 
 /datum/reagent/moondust_purest
