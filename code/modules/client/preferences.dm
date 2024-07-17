@@ -148,6 +148,8 @@ GLOBAL_LIST_EMPTY(chosen_names)
 	var/update_mutant_colors = TRUE
 
 	var/headshot_link
+	var/nudeshot_link
+
 	var/list/violated = list()
 
 
@@ -199,6 +201,8 @@ GLOBAL_LIST_EMPTY(chosen_names)
 	accessory = "Nothing"
 
 	headshot_link = null
+	nudeshot_link = null
+
 	customizer_entries = list()
 	validate_customizer_entries()
 	reset_all_customizer_accessory_colors()
@@ -406,9 +410,14 @@ GLOBAL_LIST_EMPTY(chosen_names)
 			dat += "<br><b>Features:</b> <a href='?_src_=prefs;preference=customizers;task=menu'>Change</a>"
 			dat += "<br><b>Markings:</b> <a href='?_src_=prefs;preference=markings;task=menu'>Change</a>"
 
-			dat += "<br><b>Headshot:</b> <a href='?_src_=prefs;preference=headshot;task=input'>Change</a>"
+			dat += "<br><b>Headshot(1:1):</b> <a href='?_src_=prefs;preference=headshot;task=input'>Change</a>"
 			if(headshot_link != null)
-				dat += "<br><img src='[headshot_link]' width='100px' height='100px'>"
+				dat += "<a href='?src=prefs;preference=view_headshot;task=input'>View</a>"
+			//dat += "</td>"
+
+			dat += "<br><b>Nudeshot(4:3):</b> <a href='?_src_=prefs;preference=nudeshot;task=input'>Change</a>"
+			if(nudeshot_link != null)
+				dat += "<a href='?src=prefs;preference=view_nudeshot;task=input'>View</a>"
 			dat += "</td>"
 
 			dat += "</tr></table>"
@@ -1506,6 +1515,24 @@ Slots: [job.spawn_positions]</span>
 							to_chat(user, "<font color='red'>This voice color is too dark for mortals.</font>")
 							return
 						voice_color = sanitize_hexcolor(new_voice)
+
+				if("view_headshot")
+					message_admins("asdad")
+					var/list/dat = list("<img src='[headshot_link]' width='250px' height='250px'>")
+					var/datum/browser/popup = new(user, "headshot", "<div align='center'>[src]'s Headshot</div>", 310, 320)
+					popup.set_content(dat.Join())
+					popup.open(FALSE)
+					return
+
+				if("view_nudeshot")
+					message_admins("asdad")
+					var/list/dat = list("<img src='[nudeshot_link]' width='360px' height='480px'>")
+					var/datum/browser/popup = new(user, "nudeshot", "<div align='center'>[src]'s Nudeshot</div>", 500, 500)
+					popup.set_content(dat.Join())
+					popup.open(FALSE)
+					return
+
+
 				if("headshot")
 					to_chat(user, "<span class='notice'>Please use a relatively SFW image of the head and shoulder area to maintain immersion level. Lastly, ["<span class='bold'>do not use a real life photo or use any image that is less than serious.</span>"]</span>")
 					to_chat(user, "<span class='notice'>If the photo doesn't show up properly in-game, ensure that it's a direct image link that opens properly in a browser.</span>")
@@ -1524,6 +1551,25 @@ Slots: [job.spawn_positions]</span>
 					headshot_link = new_headshot_link
 					to_chat(user, "<span class='notice'>Successfully updated headshot picture</span>")
 					log_game("[user] has set their Headshot image to '[headshot_link]'.")
+
+				if("nudeshot")
+					to_chat(user, "<span class='notice'>["<span class='bold'>do not use a real life photo or use any image that is less than serious.</span>"]</span>")
+					to_chat(user, "<span class='notice'>If the photo doesn't show up properly in-game, ensure that it's a direct image link that opens properly in a browser.</span>")
+					to_chat(user, "<span class='notice'>Keep in mind that the photo will be downsized to 360x480 pixels, so the more square the photo, the better it will look.</span>")
+					var/new_nudeshot_link = input(user, "Input the nudeshot link (https, hosts: gyazo, discord, lensdump, imgbox, catbox):", "Nudeshot", nudeshot_link) as text|null
+					if(new_nudeshot_link == null)
+						return
+					if(new_nudeshot_link == "")
+						nudeshot_link = null
+						ShowChoices(user)
+						return
+					if(!valid_headshot_link(user, new_nudeshot_link))
+						nudeshot_link = null
+						ShowChoices(user)
+						return
+					nudeshot_link = new_nudeshot_link
+					to_chat(user, "<span class='notice'>Successfully updated nudeshot picture</span>")
+					log_game("[user] has set their Nudeshot image to '[nudeshot_link]'.")
 
 				if("species")
 
@@ -2036,6 +2082,7 @@ Slots: [job.spawn_positions]</span>
 	character.dna.real_name = character.real_name
 
 	character.headshot_link = headshot_link
+	character.nudeshot_link = nudeshot_link
 
 	if(parent)
 		var/list/L = get_player_curses(parent.ckey)
