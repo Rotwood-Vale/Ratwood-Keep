@@ -1524,7 +1524,7 @@ Slots: [job.spawn_positions]</span>
 
 				if("view_nudeshot")
 					var/list/dat = list("<img src='[nudeshot_link]' width='360px' height='480px'>")
-					var/datum/browser/popup = new(user, "nudeshot", "<div align='center'>Nudeshot</div>", 400, 510)	
+					var/datum/browser/popup = new(user, "nudeshot", "<div align='center'>Nudeshot</div>", 400, 525)	
 					popup.set_content(dat.Join())
 					popup.open(FALSE)
 					return

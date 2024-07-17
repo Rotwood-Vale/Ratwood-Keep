@@ -20,7 +20,7 @@
 			return
 		var/mob/user = usr
 		var/list/dat = list("<img src='[nudeshot_link]' width='360px' height='480px'>")
-		var/datum/browser/popup = new(user, "nudeshot", "<div align='center'>[src]'s Nudeshot</div>", 500, 500)
+		var/datum/browser/popup = new(user, "nudeshot", "<div align='center'>[src]'s Nudeshot</div>", 400, 525)
 		popup.set_content(dat.Join())
 		popup.open(FALSE)
 		return
