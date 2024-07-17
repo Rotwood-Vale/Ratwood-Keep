@@ -15,6 +15,9 @@
 	plane = GAME_PLANE_UPPER
 	var/locked = 0
 	var/base_icon = "pillory_single"
+	var/lockhash
+	var/lockid = "dungeon"
+	var/masterkey = FALSE
 
 /obj/structure/pillory/double
 	icon_state = "pillory_double"
@@ -26,6 +29,20 @@
 
 /obj/structure/pillory/Initialize()
 	LAZYINITLIST(buckled_mobs)
+	if(lockid)
+		if(GLOB.lockids[lockid])
+			lockhash = GLOB.lockids[lockid]
+		else
+			lockhash = rand(1000,9999)
+			while(lockhash in GLOB.lockhashes)
+				lockhash = rand(1000,9999)
+			GLOB.lockhashes += lockhash
+			GLOB.lockids[lockid] = lockhash
+	else
+		lockhash = rand(1000,9999)
+		while(lockhash in GLOB.lockhashes)
+			lockhash = rand(1000,9999)
+		GLOB.lockhashes += lockhash
 	. = ..()
 
 /obj/structure/pillory/examine(mob/user)
@@ -34,22 +51,53 @@
 	var/msg = "It is [locked ? "locked." : "unlocked."]<br/>"
 	. += msg
 
-/obj/structure/pillory/attack_right(mob/user)
-	add_fingerprint(user)
-	if(user.loc == src.loc)
+/obj/structure/pillory/attackby(obj/item/W, mob/user, params)
+	if(user in src)
 		to_chat(user, span_warning("I can't reach the lock!"))
 		return
+	if(istype(W, /obj/item/roguekey) || istype(W, /obj/item/keyring))
+		trykeylock(W, user)
+		return
 	else
-		if(do_after(user, 5))
-			if(locked)
-				user.visible_message(span_warning("[user] unlocks [src]."), \
-					span_notice("I unlock [src]."))
-				locked = 0
+		return ..()
+
+/obj/structure/pillory/proc/trykeylock(obj/item/I, mob/user)
+	if(istype(I,/obj/item/keyring))
+		var/obj/item/keyring/R = I
+		if(!R.keys.len)
+			return
+		var/list/keysy = shuffle(R.keys.Copy())
+		for(var/obj/item/roguekey/K in keysy)
+			if(user.cmode)
+				if(!do_after(user, 10, TRUE, src))
+					break
+			if(K.lockhash == lockhash)
+				togglelock(user)
+				break
 			else
-				user.visible_message(span_warning("[user] locks [src]."), \
-					span_notice("I lock [src]."))
-				locked = 1
-			playsound(src, 'sound/foley/doors/woodlock.ogg', 100, TRUE)
+				if(user.cmode)
+					playsound(src, 'sound/foley/doors/lockrattle.ogg', 100)
+		return
+	else
+		var/obj/item/roguekey/K = I
+		if(K.lockhash == lockhash)
+			togglelock(user)
+			return
+		else
+			playsound(src, 'sound/foley/doors/lockrattle.ogg', 100)
+
+/obj/structure/pillory/proc/togglelock(mob/living/user, silent)
+	user.changeNext_move(CLICK_CD_MELEE)
+	if(locked)
+		user.visible_message(span_warning("[user] unlocks [src]."), \
+			span_notice("I unlock [src]."))
+		playsound(src, 'sound/foley/doors/lock.ogg', 100)
+		locked = 0
+	else
+		user.visible_message(span_warning("[user] locks [src]."), \
+			span_notice("I lock [src]."))
+		playsound(src, 'sound/foley/doors/lock.ogg', 100)
+		locked = 1
 
 /obj/structure/pillory/buckle_mob(mob/living/M, force = FALSE, check_loc = TRUE)
 	if (!anchored)
