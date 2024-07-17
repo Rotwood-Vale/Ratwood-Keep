@@ -18,6 +18,10 @@
 	name = "Plain"
 	color_key_defaults = list(KEY_SKIN_COLOR)
 
+/datum/sprite_accessory/penis/thick
+	icon_state = "thick"
+	name = "Thick"
+
 /datum/sprite_accessory/penis/knotted
 	icon_state = "knotted"
 	name = "Knotted"
