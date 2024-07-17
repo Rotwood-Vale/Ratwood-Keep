@@ -135,6 +135,23 @@
 	r_sleeve_status = SLEEVE_NOMOD
 	l_sleeve_status = SLEEVE_NOMOD
 
+/obj/item/clothing/under/roguetown/brayette
+	name = "brayette"
+	desc = ""
+	gender = PLURAL
+	icon_state = "chain_bootyshorts"
+	item_state = "chain_bootyshorts"
+	sewrepair = FALSE
+	armor = list("blunt" = 70, "slash" = 100, "stab" = 80, "bullet" = 50, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT)
+	body_parts_covered = GROIN
+	blocksound = CHAINHIT
+	drop_sound = 'sound/foley/dropsound/chain_drop.ogg'
+	anvilrepair = /datum/skill/craft/armorsmithing
+	smeltresult = /obj/item/ingot/steel
+	r_sleeve_status = SLEEVE_NOMOD
+	l_sleeve_status = SLEEVE_NOMOD
+
 /obj/item/clothing/under/roguetown/chainlegs/iron
 
 	name = "iron chain chausses"

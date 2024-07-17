@@ -189,6 +189,11 @@
 	additional_items = list(/obj/item/ingot/steel)
 	created_item = /obj/item/clothing/under/roguetown/platelegs/skirt
 	craftdiff = 2
+	
+/datum/anvil_recipe/armor/brayette
+	name = "Brayette"
+	req_bar = /obj/item/ingot/steel
+	created_item = /obj/item/clothing/under/roguetown/brayette
 	i_type = "Armor"
 
 /datum/anvil_recipe/armor/platelegs
