@@ -15,9 +15,6 @@
 	plane = GAME_PLANE_UPPER
 	var/locked = 0
 	var/base_icon = "pillory_single"
-	var/lockhash
-	var/lockid = "dungeon"
-	var/masterkey = FALSE
 
 /obj/structure/pillory/double
 	icon_state = "pillory_double"
@@ -29,20 +26,6 @@
 
 /obj/structure/pillory/Initialize()
 	LAZYINITLIST(buckled_mobs)
-	if(lockid)
-		if(GLOB.lockids[lockid])
-			lockhash = GLOB.lockids[lockid]
-		else
-			lockhash = rand(1000,9999)
-			while(lockhash in GLOB.lockhashes)
-				lockhash = rand(1000,9999)
-			GLOB.lockhashes += lockhash
-			GLOB.lockids[lockid] = lockhash
-	else
-		lockhash = rand(1000,9999)
-		while(lockhash in GLOB.lockhashes)
-			lockhash = rand(1000,9999)
-		GLOB.lockhashes += lockhash
 	. = ..()
 
 /obj/structure/pillory/examine(mob/user)
@@ -51,40 +34,25 @@
 	var/msg = "It is [locked ? "locked." : "unlocked."]<br/>"
 	. += msg
 
-/obj/structure/pillory/attackby(obj/item/W, mob/user, params)
+/obj/structure/pillory/attackby(obj/item/P, mob/user, params)
 	if(user in src)
 		to_chat(user, span_warning("I can't reach the lock!"))
 		return
-	if(istype(W, /obj/item/roguekey) || istype(W, /obj/item/keyring))
-		trykeylock(W, user)
-		return
-	else
-		return ..()
-
-/obj/structure/pillory/proc/trykeylock(obj/item/I, mob/user)
-	if(istype(I,/obj/item/keyring))
-		var/obj/item/keyring/R = I
-		if(!R.keys.len)
-			return
-		var/list/keysy = shuffle(R.keys.Copy())
-		for(var/obj/item/roguekey/K in keysy)
-			if(user.cmode)
-				if(!do_after(user, 10, TRUE, src))
-					break
-			if(K.lockhash == lockhash)
-				togglelock(user)
-				break
-			else
-				if(user.cmode)
-					playsound(src, 'sound/foley/doors/lockrattle.ogg', 100)
-		return
-	else
-		var/obj/item/roguekey/K = I
-		if(K.lockhash == lockhash)
+	if(istype(P, /obj/item/roguekey))
+		var/obj/item/roguekey/K = P
+		if(K.lockid == "dungeon" || K.lockid == "garrison")
 			togglelock(user)
-			return
+			return attack_hand(user)
 		else
+			to_chat(user, span_warning("Wrong key."))
 			playsound(src, 'sound/foley/doors/lockrattle.ogg', 100)
+			return
+	if(istype(P, /obj/item/keyring))
+		var/obj/item/keyring/K = P
+		for(var/obj/item/roguekey/KE in K.keys)
+			if(KE.lockid == "dungeoneer" || KE.lockid == "garrison")
+				togglelock(user)
+				return attack_hand(user)
 
 /obj/structure/pillory/proc/togglelock(mob/living/user, silent)
 	user.changeNext_move(CLICK_CD_MELEE)
