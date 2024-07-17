@@ -2620,6 +2620,11 @@
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/outdoors/bog)
 "djE" = (
+/obj/structure/fluff/railing/wood{
+	dir = 4;
+	layer = 2.8;
+	pixel_x = 8
+	},
 /turf/open/floor/rogue/ruinedwood{
 	icon_state = "wooden_floort"
 	},
@@ -18534,6 +18539,17 @@
 	icon_state = "vertw"
 	},
 /area/rogue/indoors/town/tavern)
+"xyy" = (
+/obj/structure/fluff/railing/wood{
+	dir = 4;
+	layer = 2.8;
+	pixel_x = 8
+	},
+/obj/structure/gravemarker,
+/turf/open/floor/rogue/ruinedwood{
+	icon_state = "wooden_floort"
+	},
+/area/rogue/outdoors/town/roofs)
 "xyC" = (
 /obj/structure/chair/stool/rogue,
 /obj/effect/landmark/start/adventurer{
@@ -390991,7 +391007,7 @@ fZJ
 fZJ
 ilQ
 djE
-djE
+xyy
 djE
 dAQ
 fZJ
