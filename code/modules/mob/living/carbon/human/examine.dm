@@ -498,7 +498,7 @@
 	if(!obscure_name && headshot_link)
 		. += "<a href='?src=[REF(src)];task=view_headshot;'>View headshot</a>"
 	
-	if(!obscure_name && nudeshot_link)
+	if(nudeshot_link && get_location_accessible(user, BODY_ZONE_CHEST) && get_location_accessible(user, BODY_ZONE_PRECISE_GROIN))
 		. += "<a href='?src=[REF(src)];task=view_nudeshot;'>View nudeshot</a>"
 
 	var/trait_exam = common_trait_examine()
