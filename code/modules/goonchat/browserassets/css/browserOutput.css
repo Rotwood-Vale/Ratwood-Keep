@@ -296,7 +296,7 @@ em						{font-style: normal;	font-weight: bold;}
 
 .alert					{color: #d82020;}
 
-.emote					{color: #b1bb9f;}
+.emote					{color: #b1bb9f; font-size: 75%;}
 
 .userdanger				{color: #c71d1d;	font-weight: bold;	font-size: 115%;}
 .danger					{color: #b9322b;	font-weight: bold;}

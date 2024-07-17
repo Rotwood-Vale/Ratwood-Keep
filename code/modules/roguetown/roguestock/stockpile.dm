@@ -3,10 +3,10 @@
 	desc = "Wooden logs cut short for transport."
 	item_type = /obj/item/grown/log/tree/small
 	held_items = list(2, 2)
-	payout_price = 3
-	withdraw_price = 5
+	payout_price = 2
+	withdraw_price = 4
 	transport_fee = 3
-	export_price = 5
+	export_price = 4
 	importexport_amt = 10
 
 /datum/roguestock/stockpile/stone
@@ -100,7 +100,7 @@
 /datum/roguestock/stockpile/salt
 	name = "Salt"
 	desc = "Rock salt useful for curing and cooking."
-	item_type = /obj/item/reagent_containers/powder/flour/salt
+	item_type = /obj/item/reagent_containers/powder/salt
 	held_items = list(2, 0)
 	payout_price = 3
 	withdraw_price = 5

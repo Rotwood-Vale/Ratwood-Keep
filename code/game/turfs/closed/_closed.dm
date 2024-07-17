@@ -29,6 +29,8 @@
 /turf/closed/proc/wallpress(mob/living/user)
 	if(user.wallpressed)
 		return
+	if(user.pixelshifted)
+		return
 	if(!(user.mobility_flags & MOBILITY_STAND))
 		return
 	var/dir2wall = get_dir(user,src)

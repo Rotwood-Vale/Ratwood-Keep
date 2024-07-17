@@ -13,8 +13,8 @@
 	var/force = SEX_FORCE_MID
 	/// Our arousal
 	var/arousal = 0
-	/// Our spent gauge
-	var/spent = 0
+	/// Our charge gauge
+	var/charge = SEX_MAX_CHARGE
 	/// Whether we want to screw until finished, or non stop
 	var/do_until_finished = TRUE
 	var/last_arousal_increase_time = 0
@@ -29,6 +29,11 @@
 	user = null
 	target = null
 	. = ..()
+
+/datum/sex_controller/proc/is_spent()
+	if(charge < CHARGE_FOR_CLIMAX)
+		return TRUE
+	return FALSE
 
 /datum/sex_controller/proc/finished_check()
 	if(!do_until_finished)
@@ -76,6 +81,9 @@
 		return
 	var/pq_warning = pick(list("If I continue down this road, my soul will be burdened.", "I feel a terrible omen watching me...", "The forces of dark feel heavy on my soul."))
 	to_chat(user, span_userdanger(pq_warning))
+	var/alert = alert(user, "Do I really want to do this?", "Violate", "Yes", "No")
+	if(alert != "Yes")
+		return
 	user.visible_message(span_boldwarning("[user] begins to violate [victim]!"))
 	if(!do_after(user, 5 SECONDS, target = victim))
 		return
@@ -148,6 +156,8 @@
 	else
 		playsound(target, 'sound/misc/mat/endin.ogg', 50, TRUE, ignore_walls = FALSE)
 	after_ejaculation()
+	if(!oral)
+		after_intimate_climax()
 
 /datum/sex_controller/proc/ejaculate()
 	log_combat(user, user, "Ejaculated")
@@ -157,14 +167,16 @@
 	after_ejaculation()
 
 /datum/sex_controller/proc/after_ejaculation()
-	set_arousal(55)
-	set_spent(MAX_SPENT)
+	set_arousal(40)
+	adjust_charge(-CHARGE_FOR_CLIMAX)
 	user.emote("sexmoanhvy", forced = TRUE)
 	user.playsound_local(user, 'sound/misc/mat/end.ogg', 100)
 	last_ejaculation_time = world.time
 	SSticker.cums++
 
 /datum/sex_controller/proc/after_intimate_climax()
+	if(user == target)
+		return
 	if(HAS_TRAIT(target, TRAIT_GOODLOVER))
 		if(!user.mob_timers["cumtri"])
 			user.mob_timers["cumtri"] = world.time
@@ -177,24 +189,26 @@
 			to_chat(target, span_love("Our loving is a true TRIUMPH!"))
 
 /datum/sex_controller/proc/just_ejaculated()
-	return (last_ejaculation_time == world.time)
+	return (last_ejaculation_time + 2 SECONDS >= world.time)
 
-/datum/sex_controller/proc/set_spent(amount)
-	spent = clamp(amount, 0, MAX_SPENT)
-
-/datum/sex_controller/proc/adjust_spent(amount)
-	set_spent(spent + amount)
-
-/datum/sex_controller/proc/handle_spent(dt)
-	if(spent <= 0)
-		return
-	if(arousal > 60)
-		to_chat(user, span_warning("I'm too spent!"))
-		adjust_arousal(-20)
-	adjust_spent(-dt * SPENT_REDUCTION_RATE)
-	if(spent <= 0)
+/datum/sex_controller/proc/set_charge(amount)
+	var/empty = (charge < CHARGE_FOR_CLIMAX)
+	charge = clamp(amount, 0, SEX_MAX_CHARGE)
+	var/after_empty = (charge < CHARGE_FOR_CLIMAX)
+	if(empty && !after_empty)
 		to_chat(user, span_notice("I feel like I'm not so spent anymore"))
-	else
+	if(!empty && after_empty)
+		to_chat(user, span_notice("I'm spent!"))
+
+/datum/sex_controller/proc/adjust_charge(amount)
+	set_charge(charge + amount)
+
+/datum/sex_controller/proc/handle_charge(dt)
+	adjust_charge(dt * CHARGE_RECHARGE_RATE)
+	if(is_spent())
+		if(arousal > 60)
+			to_chat(user, span_warning("I'm too spent!"))
+			adjust_arousal(-20)
 		adjust_arousal(-dt * SPENT_AROUSAL_RATE)
 
 /datum/sex_controller/proc/set_arousal(amount)
@@ -321,7 +335,7 @@
 /datum/sex_controller/proc/check_active_ejaculation()
 	if(arousal < ACTIVE_EJAC_THRESHOLD)
 		return FALSE
-	if(spent > 0)
+	if(is_spent())
 		return FALSE
 	if(!can_ejaculate())
 		return FALSE
@@ -337,7 +351,7 @@
 /datum/sex_controller/proc/handle_passive_ejaculation()
 	if(arousal < PASSIVE_EJAC_THRESHOLD)
 		return
-	if(spent > 0)
+	if(is_spent())
 		return
 	if(!can_ejaculate())
 		return FALSE
@@ -348,9 +362,14 @@
 		return FALSE
 	return TRUE
 
+/datum/sex_controller/proc/considered_limp()
+	if(arousal >= AROUSAL_HARD_ON_THRESHOLD)
+		return FALSE
+	return TRUE
+
 /datum/sex_controller/proc/process_sexcon(dt)
 	handle_arousal_unhorny(dt)
-	handle_spent(dt)
+	handle_charge(dt)
 	handle_passive_ejaculation()
 
 /datum/sex_controller/proc/handle_arousal_unhorny(dt)
@@ -548,24 +567,24 @@
 	switch(passed_force)
 		if(SEX_FORCE_LOW)
 			if(giving)
-				return 1.0
+				return 0.8
 			else
-				return 1.0
+				return 0.8
 		if(SEX_FORCE_MID)
 			if(giving)
-				return 1.5
+				return 1.2
 			else
-				return 1.5
+				return 1.2
 		if(SEX_FORCE_HIGH)
+			if(giving)
+				return 1.6
+			else
+				return 1.2
+		if(SEX_FORCE_EXTREME)
 			if(giving)
 				return 2.0
 			else
-				return 1.5
-		if(SEX_FORCE_EXTREME)
-			if(giving)
-				return 2.5
-			else
-				return 1.0
+				return 0.8
 
 /datum/sex_controller/proc/get_force_pain_multiplier(passed_force)
 	switch(passed_force)
