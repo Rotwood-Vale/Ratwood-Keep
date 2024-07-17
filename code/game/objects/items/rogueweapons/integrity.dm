@@ -12,6 +12,7 @@
 	blade_int = blade_int - amt
 	if(blade_int <= 0)
 		blade_int = 0
+		return FALSE
 	return TRUE
 
 /obj/item/proc/degrade_bintegrity(amt as num)
