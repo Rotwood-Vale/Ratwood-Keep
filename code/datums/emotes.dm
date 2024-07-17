@@ -13,6 +13,7 @@
 	var/message_monkey = "" //Message displayed if the user is a monkey
 	var/message_simple = "" //Message to display if the user is a simple_animal
 	var/message_param = "" //Message to display if a param was given
+	var/message_muffled = null //Message to display if the user is muffled
 	var/emote_type = EMOTE_VISIBLE //Whether the emote is visible or audible
 	var/restraint_check = FALSE //Checks if the mob is restrained before performing the emote
 	var/muzzle_ignore = FALSE //Will only work if the emote is EMOTE_AUDIBLE
@@ -29,8 +30,14 @@
 	var/snd_vol = 100
 	var/snd_range = -1
 	var/mute_time = 30//time after where someone can't do another emote
+	// Whether this should show on runechat
+	var/show_runechat = TRUE
+	// Explicitly defined runechat message, if it's not defined and `show_runechat` is TRUE then it will use `message` instaed
+	var/runechat_msg = null
 
 /datum/emote/New()
+	if(!runechat_msg)
+		runechat_msg = strip_punctuation(message)
 	if (ispath(mob_type_allowed_typecache))
 		switch (mob_type_allowed_typecache)
 			if (/mob)
@@ -65,7 +72,8 @@
 			if(user.Adjacent(chosenmob))
 				params = chosenmob.name
 				adjacentaction(user, chosenmob)
-	var/msg = select_message_type(user, intentional)
+	var/raw_msg = select_message_type(user, intentional)
+	var/msg = raw_msg
 	if(params && message_param)
 		msg = select_param(user, params)
 
@@ -98,10 +106,13 @@
 			var/T = get_turf(user)
 			if(M.stat == DEAD && M.client && (M.client.prefs?.chat_toggles & CHAT_GHOSTSIGHT) && !(M in viewers(T, null)))
 				M.show_message(msg)
+		var/runechat_msg_to_use = null
+		if(show_runechat)
+			runechat_msg_to_use = runechat_msg ? runechat_msg : raw_msg
 		if(emote_type == EMOTE_AUDIBLE)
-			user.audible_message(msg)
+			user.audible_message(msg, runechat_message = runechat_msg_to_use)
 		else
-			user.visible_message(msg)
+			user.visible_message(msg, runechat_message = runechat_msg_to_use)
 
 /mob/living/proc/get_emote_pitch()
 	return clamp(voice_pitch, 0.7, 1.5)
@@ -167,17 +178,21 @@
 /mob/living/proc/get_sound(input)
 	return
 
-/datum/emote/proc/replace_pronoun(mob/user, message)
+/datum/emote/proc/replace_pronoun(mob/user, msg)
 	if(findtext(message, "their"))
-		message = replacetext(message, "their", user.p_their())
+		msg = replacetext(message, "their", user.p_their())
 	if(findtext(message, "them"))
-		message = replacetext(message, "them", user.p_them())
+		msg = replacetext(message, "them", user.p_them())
 	if(findtext(message, "%s"))
-		message = replacetext(message, "%s", user.p_s())
-	return message
+		msg = replacetext(message, "%s", user.p_s())
+	return msg
 
 /datum/emote/proc/select_message_type(mob/user, intentional)
 	. = message
+	if(message_muffled && iscarbon(user))
+		var/mob/living/carbon/C = user
+		if(C.silent || !C.can_speak_vocal())
+			. = message_muffled
 	if(!muzzle_ignore && user.is_muzzled() && emote_type == EMOTE_AUDIBLE)
 		return "makes a [pick("strong ", "weak ", "")]noise."
 	if(user.mind && user.mind.miming && message_mime)
@@ -200,7 +215,6 @@
 
 /datum/emote/proc/can_run_emote(mob/user, status_check = TRUE, intentional = FALSE)
 	. = TRUE
-	message = initial(message)
 	if(!is_type_in_typecache(user, mob_type_allowed_typecache))
 		return FALSE
 	if(is_type_in_typecache(user, mob_type_blacklist_typecache))

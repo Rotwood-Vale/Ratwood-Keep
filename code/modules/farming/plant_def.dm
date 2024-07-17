@@ -30,6 +30,8 @@
 	var/water_drain_rate = 2 / (1 MINUTES)
 	/// Color all seeds of this plant def will have, randomised on init
 	var/seed_color
+	/// Whether the plant can grow underground
+	var/can_grow_underground = FALSE
 
 /datum/plant_def/New()
 	. = ..()
