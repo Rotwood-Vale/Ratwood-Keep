@@ -10651,12 +10651,10 @@
 	},
 /area/rogue/under/town/basement)
 "nrx" = (
-/obj/item/flashlight/flare/torch/lantern,
-/obj/item/flashlight/flare/torch/metal,
-/obj/item/flashlight/flare/torch/metal,
-/obj/structure/closet/crate/roguecloset,
-/obj/item/storage/backpack/rogue/satchel,
-/turf/open/floor/rogue/herringbone,
+/obj/structure/chair/wood/rogue{
+	dir = 4
+	},
+/turf/open/floor/rogue/wood/nosmooth,
 /area/rogue/indoors/town/church)
 "nrB" = (
 /obj/structure/table/wood{
@@ -11108,6 +11106,12 @@
 /obj/structure/bookcase/random,
 /turf/open/floor/rogue/carpet/lord/left,
 /area/rogue/indoors/town/manor)
+"nRA" = (
+/obj/structure/chair/wood/rogue{
+	dir = 8
+	},
+/turf/open/floor/rogue/wood/nosmooth,
+/area/rogue/indoors/town/church)
 "nSr" = (
 /turf/open/floor/rogue/blocks{
 	icon_state = "newstone2"
@@ -15765,6 +15769,17 @@
 	icon_state = "vertw"
 	},
 /area/rogue/indoors/town/tavern)
+"tXL" = (
+/obj/item/flashlight/flare/torch/lantern,
+/obj/item/flashlight/flare/torch/metal,
+/obj/item/flashlight/flare/torch/metal,
+/obj/structure/closet/crate/roguecloset,
+/obj/item/storage/backpack/rogue/satchel,
+/obj/machinery/light/rogue/wallfire/candle{
+	pixel_y = -32
+	},
+/turf/open/floor/rogue/herringbone,
+/area/rogue/indoors/town/church)
 "tYD" = (
 /obj/machinery/light/rogue/wallfire/candle,
 /turf/closed/wall/mineral/rogue/wood,
@@ -15905,6 +15920,10 @@
 /obj/structure/fluff/wallclock/r,
 /turf/open/floor/rogue/cobble,
 /area/rogue/indoors)
+"uhg" = (
+/obj/structure/mineral_door/wood/deadbolt,
+/turf/open/floor/rogue/wood/nosmooth,
+/area/rogue/indoors/town/church)
 "uhw" = (
 /obj/item/grown/log/tree/small,
 /obj/item/grown/log/tree/small,
@@ -17986,10 +18005,8 @@
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/town/tavern)
 "wSd" = (
-/obj/machinery/light/rogue/wallfire/candle{
-	pixel_y = -32
-	},
-/turf/open/floor/rogue/herringbone,
+/obj/structure/roguewindow,
+/turf/open/floor/rogue/wood/nosmooth,
 /area/rogue/indoors/town/church)
 "wSl" = (
 /obj/structure/closet/crate/chest,
@@ -416665,8 +416682,8 @@ xQs
 hcx
 nSr
 nSr
-teW
-eBN
+noB
+jMf
 eBN
 eBN
 ukA
@@ -417069,10 +417086,10 @@ fUW
 nSr
 teW
 eBN
+lbH
 eBN
-eBN
-wSd
-noB
+oTN
+teW
 vIa
 vIa
 vIa
@@ -417469,12 +417486,12 @@ fCM
 teW
 nSr
 nSr
+uaS
+eBN
+rWn
+eBN
+tXL
 noB
-jMf
-eBN
-eBN
-eBN
-teW
 vIa
 vIa
 vIa
@@ -417871,12 +417888,12 @@ hna
 teW
 nSr
 nSr
-teW
+uZy
 eBN
-lbH
+wOR
 eBN
-oTN
-teW
+vCr
+uZy
 vIa
 vIa
 vIa
@@ -418273,12 +418290,12 @@ hna
 teW
 nSr
 nSr
-uaS
-eBN
-rWn
-eBN
-nrx
-teW
+tML
+lug
+czd
+wAm
+wAm
+tML
 vIa
 vIa
 vIa
@@ -418675,12 +418692,12 @@ fCM
 teW
 nSr
 nSr
-uZy
-eBN
-wOR
-eBN
-vCr
-uZy
+uhg
+nrx
+teW
+vIa
+vIa
+vIa
 vIa
 vIa
 vIa
@@ -419077,12 +419094,12 @@ hna
 teW
 nSr
 nSr
-tML
-lug
-wAm
-wAm
-wAm
-tML
+okF
+wSd
+teW
+vIa
+vIa
+vIa
 vIa
 vIa
 vIa
@@ -419479,9 +419496,9 @@ wqM
 noB
 fUW
 nSr
-iMA
-vIa
-vIa
+uhg
+nRA
+uZy
 vIa
 vIa
 vIa
@@ -419881,9 +419898,9 @@ sKd
 tDw
 agy
 cMN
-teW
-vIa
-vIa
+tML
+tML
+tML
 vIa
 vIa
 vIa
@@ -420685,7 +420702,7 @@ eUg
 uZy
 ffv
 ffv
-uZy
+teW
 vIa
 vIa
 vIa
@@ -421087,7 +421104,7 @@ hKU
 nZg
 ffv
 ffv
-tML
+uZy
 vIa
 vIa
 vIa
