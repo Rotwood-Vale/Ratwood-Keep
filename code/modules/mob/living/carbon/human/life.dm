@@ -39,8 +39,7 @@
 		Stun(50)
 
 	if(mind)
-		var/datum/component/mood/mood = GetComponent(/datum/component/mood)
-		mind.sleep_adv.add_mood_cycle(mood.mood_level)
+		mind.sleep_adv.add_mood_cycle(stress)
 		for(var/datum/antagonist/A in mind.antag_datums)
 			A.on_life(src)
 
@@ -58,7 +57,7 @@
 						var/datum/game_mode/chaosmode/C = SSticker.mode
 						if(istype(C))
 							if(mind)
-								mind.sleep_adv.advance_cycle(src)
+								mind.sleep_adv.advance_cycle()
 								if(!mind.antag_datums || !mind.antag_datums.len)
 									allmig_reward++
 									to_chat(src, span_danger("Nights Survived: \Roman[allmig_reward]"))
