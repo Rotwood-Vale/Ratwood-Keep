@@ -51,7 +51,7 @@
 	med_hud_set_status()
 
 /mob/living/onZImpact(turf/T, levels)
-	if(HAS_TRAIT(src, TRAIT_NOFALLDAMAGE1))
+	if(HAS_TRAIT(src, TRAIT_NOFALLDAMAGE1) || src.mind.get_skill_level(/datum/skill/misc/climbing) >= 4)
 		if(levels <= 2)	
 			return 
 	var/points
