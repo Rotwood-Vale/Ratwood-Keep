@@ -86,7 +86,7 @@
 	name = "iron arrow"
 	ammo_type = /obj/item/ammo_casing/caseless/rogue/arrow/iron
 
-bullet/reusable/arrow/stone
+/obj/bullet/reusable/arrow/stone
 	name = "stone arrow"
 	ammo_type = /obj/item/ammo_casing/caseless/rogue/arrow/stone
 
