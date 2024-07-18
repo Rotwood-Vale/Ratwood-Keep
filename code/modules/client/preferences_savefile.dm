@@ -470,6 +470,10 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	body_markings = SANITIZE_LIST(body_markings)
 	validate_body_markings()
 
+	S["descriptor_entries"] >> descriptor_entries
+	descriptor_entries = SANITIZE_LIST(descriptor_entries)
+	validate_descriptors()
+
 	var/list/valid_skin_tones = pref_species.get_skin_list()
 	var/list/valid_skin_colors = list()
 	for(var/skin_tone in pref_species.get_skin_list())
@@ -552,6 +556,8 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	WRITE_FILE(S["customizer_entries"] , customizer_entries)
 	// Body markings
 	WRITE_FILE(S["body_markings"] , body_markings)
+	// Descriptor entries
+	WRITE_FILE(S["descriptor_entries"] , descriptor_entries)
 	
 	WRITE_FILE(S["update_mutant_colors"] , update_mutant_colors)
 	WRITE_FILE(S["headshot_link"] , headshot_link)

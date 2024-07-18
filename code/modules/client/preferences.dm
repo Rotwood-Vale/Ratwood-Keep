@@ -149,6 +149,7 @@ GLOBAL_LIST_EMPTY(chosen_names)
 
 	var/headshot_link
 	var/list/violated = list()
+	var/list/descriptor_entries = list()
 
 
 /datum/preferences/New(client/C)
@@ -405,6 +406,7 @@ GLOBAL_LIST_EMPTY(chosen_names)
 
 			dat += "<br><b>Features:</b> <a href='?_src_=prefs;preference=customizers;task=menu'>Change</a>"
 			dat += "<br><b>Markings:</b> <a href='?_src_=prefs;preference=markings;task=menu'>Change</a>"
+			dat += "<br><b>Descriptors:</b> <a href='?_src_=prefs;preference=descriptors;task=menu'>Change</a>"
 
 			dat += "<br><b>Headshot:</b> <a href='?_src_=prefs;preference=headshot;task=input'>Change</a>"
 			if(headshot_link != null)
@@ -1283,6 +1285,9 @@ Slots: [job.spawn_positions]</span>
 	else if(href_list["preference"] == "markings")
 		ShowMarkings(user)
 		return
+	else if(href_list["preference"] == "descriptors")
+		show_descriptors_ui(user)
+		return
 
 	else if(href_list["preference"] == "customizers")
 		ShowCustomizers(user)
@@ -1377,6 +1382,10 @@ Slots: [job.spawn_positions]</span>
 			handle_body_markings_topic(user, href_list)
 			ShowChoices(user)
 			ShowMarkings(user)
+			return
+		if("change_descriptor")
+			handle_descriptors_topic(user, href_list)
+			show_descriptors_ui(user)
 			return
 		if("random")
 			switch(href_list["preference"])
