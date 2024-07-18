@@ -23,7 +23,6 @@
 /datum/special_trait/duelist
 	name = "Swordmaster Apprentice"
 	greet_text = span_notice("You were the student of a legendary sword master, your skill is rivalled by few!")
-	//allowed all
 	
 /datum/special_trait/duelist/on_apply(mob/living/carbon/human/character, silent)
 	character.cmode_music = 'sound/music/combat_duelist.ogg'
@@ -53,13 +52,6 @@
 	ADD_TRAIT(character, TRAIT_CIVILIZEDBARBARIAN, TRAIT_GENERIC) //punches are slightly more deadly. Need to make trait also improve hitting people with chairs, mugs, goblets.	
 	
 //neutral
-/datum/special_trait/trans
-	name = "Secret Gender"
-	greet_text = span_notice("You never really felt comfortable with your gender.")//I wanna keep this vague, but, also not too vague.
-	
-/datum/special_trait/trans/on_apply(mob/living/carbon/human/character, silent)
-	//So. After alot of deliberation, I've decided this should only change genitals and MAYBE bodytype if it doesn't conflict with clothing too much.
-	
 /datum/special_trait/backproblems
 	name = "Giant Amongst Humen"
 	greet_text = span_notice("You've always been called a giant! You are valued for your stature, but, you've found these small doors and rooms quite a curse for your mobility!")
