@@ -106,7 +106,7 @@ GLOBAL_LIST_INIT(searaider_aggro, world.file2list("strings/rt/searaideraggroline
 	H.hair_color = pick ("4f4f4f", "61310f", "faf6b9")
 	H.facial_hair_color = H.hair_color
 	if(H.gender == FEMALE)
-		H.STASTR = rand(9,12)
+		H.STASTR = rand(11,12)
 		H.hairstyle = pick("Ponytail (Country)","Braid (Low)", "Braid (Short)", "Messy (Rogue)")
 	else
 		H.STASTR = rand(14,16)

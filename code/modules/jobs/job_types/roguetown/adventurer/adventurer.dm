@@ -47,7 +47,8 @@ GLOBAL_VAR_INIT(adventurer_hugbox_duration_still, 3 MINUTES)
 /mob/living/carbon/human/proc/adv_hugboxing_start()
 	to_chat(src, span_warning("I will be in danger once I start moving."))
 	status_flags |= GODMODE
-	ADD_TRAIT(src, TRAIT_PACIFISM, HUGBOX_TRAIT)
+	ADD_TRAIT(src, TRAIT_PACIFISM, TRAIT_GENERIC)
+	ADD_TRAIT(src, HUGBOX_TRAIT, TRAIT_GENERIC)
 	RegisterSignal(src, COMSIG_MOVABLE_MOVED, PROC_REF(adv_hugboxing_moved))
 	//Lies, it goes away even if you don't move after enough time
 	if(GLOB.adventurer_hugbox_duration_still)
@@ -65,5 +66,6 @@ GLOBAL_VAR_INIT(adventurer_hugbox_duration_still, 3 MINUTES)
 	if(!(status_flags & GODMODE))
 		return
 	status_flags &= ~GODMODE
-	REMOVE_TRAIT(src, TRAIT_PACIFISM, HUGBOX_TRAIT)
+	REMOVE_TRAIT(src, TRAIT_PACIFISM, TRAIT_GENERIC)
+	REMOVE_TRAIT(src, HUGBOX_TRAIT, TRAIT_GENERIC)
 	to_chat(src, span_danger("My joy is gone! Danger surrounds me."))
