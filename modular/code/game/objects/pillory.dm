@@ -77,7 +77,7 @@
 
 	if (!istype(M, /mob/living/carbon/human))
 		to_chat(usr, span_warning("It doesn't look like [M.p_they()] can fit into this properly!"))
-		return FALSE // Can't decapitate non-humans
+		return FALSE // Can't hold non-humanoids
 
 	return ..(M, force, FALSE)
 
