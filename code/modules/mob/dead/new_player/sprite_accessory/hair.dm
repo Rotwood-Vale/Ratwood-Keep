@@ -406,7 +406,7 @@
 	icon_state = "modern"
 
 /datum/sprite_accessory/hair/head/modern2
-	name = "Modern 2"
+	name = "Modern (New)"
 	icon_state = "modern2"
 
 
