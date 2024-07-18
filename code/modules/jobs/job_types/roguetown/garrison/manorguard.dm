@@ -3,8 +3,8 @@
 	flag = MANATARMS
 	department_flag = GARRISON
 	faction = "Station"
-	total_positions = 8
-	spawn_positions = 8
+	total_positions = 10
+	spawn_positions = 10
 
 	allowed_sexes = list(MALE)
 	allowed_races = RACES_TOLERATED_UP
