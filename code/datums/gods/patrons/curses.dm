@@ -79,11 +79,6 @@
 	trait = TRAIT_ATHEISM_CURSE
 	var/datum/patron/old_patron
 
-/datum/curse/psydon
-	name = "Curse of Psydon"
-	description = ""
-	trait = TRAIT_PSYDON_CURSE
-
 //////////////////////
 ///   TEN CURSES   ///
 //////////////////////
@@ -97,16 +92,6 @@
 	name = "Noc's Curse"
 	description = "Magical knowledge is now beyond my grasp."
 	trait = TRAIT_NOC_CURSE
-
-/datum/curse/dendor
-	name = "Dendor's Curse"
-	description = "My hunger is insatiable."
-	trait = TRAIT_DENDOR_CURSE
-
-/datum/curse/abyssor
-	name = "Abyssor's Curse"
-	description = "Nothing can quench my thirst."
-	trait = TRAIT_ABYSSOR_CURSE
 
 /datum/curse/ravox
 	name = "Ravox's Curse"
@@ -127,11 +112,6 @@
 	name = "Pestra's Curse"
 	description = "I feel sick to my stomach, and my skin is slowly starting to rot."
 	trait = TRAIT_PESTRA_CURSE
-
-/datum/curse/malum
-	name = "Malum's Curse"
-	description = ""
-	trait = TRAIT_MALUM_CURSE
 
 /datum/curse/eora
 	name = "Eora's Curse"
