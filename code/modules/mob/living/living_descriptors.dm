@@ -22,7 +22,13 @@
 	var/list/extras = get_extra_mob_descriptors()
 	if(extras)
 		descriptors += extras
-	return descriptors
+	var/list/passed_descriptors = list()
+	for(var/desc_type in descriptors)
+		var/datum/mob_descriptor/descriptor = MOB_DESCRIPTOR(descriptor_type)
+		if(!descriptor.can_describe(src))
+			continue
+		passed_descriptors += desc_type
+	return passed_descriptors
 
 /mob/living/proc/get_extra_mob_descriptors()
 	return null

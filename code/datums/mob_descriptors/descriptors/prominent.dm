@@ -53,6 +53,14 @@
 	verbage = "%HAVE%"
 	prefix = "a"
 
+/datum/mob_descriptor/prominent/thick_tail/can_describe(mob/living/described)
+	if(!ishuman(described))
+		return TRUE
+	var/mob/living/carbon/human/human = described
+	if(!human.getorganslot(ORGAN_SLOT_TAIL))
+		return FALSE
+	return TRUE
+
 /datum/mob_descriptor/prominent/cleft_lip
 	name = "Cleft Lip"
 	verbage = "%HAVE%"
