@@ -474,7 +474,7 @@ SUBSYSTEM_DEF(job)
 					JobDebug("DO incompatible with age, Player: [player], Job: [job.title]")
 					continue
 
-				if(length(job.allowed_sexes) && !(player.client.prefs.gender in job.allowed_sexes))
+				if(length(job.allowed_sexes) && !(player.client.prefs.gender in job.allowed_sexes) && !(player.client.prefs.pref_species?.gender_swapping))
 					JobDebug("DO incompatible with gender preference, Player: [player], Job: [job.title]")
 					continue
 
@@ -561,7 +561,7 @@ SUBSYSTEM_DEF(job)
 				if(length(job.allowed_ages) && !(player.client.prefs.age in job.allowed_ages))
 					continue
 
-				if(length(job.allowed_sexes) && !(player.client.prefs.gender in job.allowed_sexes))
+				if(length(job.allowed_sexes) && !(player.client.prefs.gender in job.allowed_sexes) && !(player.client.prefs.pref_species?.gender_swapping))
 					continue
 
 				if(!job.special_job_check(player))
