@@ -62,7 +62,7 @@
 			playsound(src.loc, list('sound/vo/mobs/plant/attack (1).ogg','sound/vo/mobs/plant/attack (2).ogg','sound/vo/mobs/plant/attack (3).ogg','sound/vo/mobs/plant/attack (4).ogg'), 100, FALSE, -1)
 			if(iscarbon(L))
 				var/mob/living/carbon/C = L
-				src.visible_message(span_danger("[src] starts to rip apart [C]!"))
+				src.visible_message(span_danger("[src] starts to crush [C]!"))
 				spawn(50)
 					if(C && (C.buckled == src))
 						var/obj/item/bodypart/limb
@@ -71,6 +71,10 @@
 							limb = C.get_bodypart(zone)
 							if(limb)
 								playsound(src,'sound/misc/eat.ogg', rand(30,60), TRUE)
+								C.apply_damage(rand(10, 20), BRUTE, limb)
+								if(C.reagents)
+									L.reagents.add_reagent(/datum/reagent/toxin/venom, 1)
+								/* --- Old code for dismembering instead of doing damage.
 								limb.dismember()
 								qdel(limb)
 								return
@@ -84,9 +88,9 @@
 						if(limb)
 							if(!limb.dismember())
 								C.gib()
-							return
+							return */
 			else
-				src.visible_message(span_danger("[src] starts to rip apart [L]!"))
+				src.visible_message(span_danger("[src] starts to smash apart [L]!"))
 				spawn(50)
 					if(L && (L.buckled == src))
 						L.gib()
