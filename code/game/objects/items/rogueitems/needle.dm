@@ -147,7 +147,7 @@
 		if(target_wound.sew_progress < target_wound.sew_threshold)
 			continue
 		if(doctor.mind)
-			doctor.mind.adjust_experience(/datum/skill/misc/medicine, doctor.STAINT * 5)
+			doctor.mind.add_sleep_experience(/datum/skill/misc/medicine, doctor.STAINT * 5)
 		use(1)
 		target_wound.sew_wound()
 		if(patient == doctor)

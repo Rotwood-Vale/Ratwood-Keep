@@ -82,14 +82,18 @@
 	var/list/notes = list() //RTD add notes button
 
 	var/lastrecipe
+	
+	var/datum/sleep_adv/sleep_adv = null
 
 /datum/mind/New(key)
 	src.key = key
 	soulOwner = src
 	martial_art = default_martial_art
+	sleep_adv = new /datum/sleep_adv(src)
 
 /datum/mind/Destroy()
 	SSticker.minds -= src
+	QDEL_NULL(sleep_adv)
 	if(islist(antag_datums))
 		QDEL_LIST(antag_datums)
 	return ..()
@@ -1011,3 +1015,7 @@
 
 /datum/mind/proc/get_learning_boon(skill)
 	return 1 + (get_skill_level(skill) / 10)
+
+/datum/mind/proc/add_sleep_experience(skill, amt, silent = FALSE)
+	sleep_adv.add_sleep_experience(skill, amt, silent)
+

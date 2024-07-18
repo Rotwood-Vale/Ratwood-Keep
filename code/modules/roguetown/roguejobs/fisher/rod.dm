@@ -100,7 +100,7 @@
 	playsound(loc, 'sound/items/Fish_out.ogg', 100, TRUE)
 
 	QDEL_NULL(baited)
-	current_fisherman.mind.adjust_experience(/datum/skill/labor/fishing, amt2raise * boon) 
+	current_fisherman.mind.add_sleep_experience(/datum/skill/labor/fishing, amt2raise * boon) 
 	update_icon()
 
 /obj/item/fishingrod/update_icon()

@@ -282,7 +282,7 @@
 							if(R.craftdiff > 0) //difficult recipe
 								amt2raise += (R.craftdiff * 6) // also gets more
 							if(amt2raise > 0)
-								user.mind.adjust_experience(R.skillcraft, amt2raise * boon, FALSE)
+								user.mind.add_sleep_experience(R.skillcraft, amt2raise * boon, FALSE)
 					return
 //				if(isitem(I))
 //					user.put_in_hands(I)

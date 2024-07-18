@@ -439,7 +439,8 @@
 						U.log_message("has attempted to pickpocket [key_name(V)]", LOG_ATTACK, color="black")
 						to_chat(src, span_danger("I failed to pick the pocket!"))
 						exp_to_gain /= 5 // these can be removed or changed on reviewer's discretion
-					src.mind.adjust_experience(/datum/skill/misc/stealing, exp_to_gain, FALSE)
+					if(src != A)
+						mind.add_sleep_experience(/datum/skill/misc/stealing, exp_to_gain, FALSE)
 					changeNext_move(mmb_intent.clickcd)
 				return
 			if(INTENT_SPELL)

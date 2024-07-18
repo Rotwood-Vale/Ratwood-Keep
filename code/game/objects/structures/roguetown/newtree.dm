@@ -99,7 +99,7 @@
 			user.start_pulling(pulling,supress_message = TRUE)
 			playsound(user, 'sound/foley/climb.ogg', 100, TRUE)
 			if(L.mind) // idk just following whats going on above
-				L.mind.adjust_experience(/datum/skill/misc/climbing, exp_to_gain, FALSE)
+				L.mind.add_sleep_experience(/datum/skill/misc/climbing, exp_to_gain, FALSE)
 
 /obj/structure/flora/newtree/update_icon()
 	icon_state = ""

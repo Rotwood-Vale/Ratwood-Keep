@@ -63,10 +63,6 @@
 
 	var/display_order = JOB_DISPLAY_ORDER_DEFAULT
 
-
-	///Levels unlocked at roundstart in physiology
-	var/list/roundstart_experience
-
 	//allowed sex/race for picking
 	var/list/allowed_sexes = list(MALE, FEMALE)
 	var/list/allowed_races = RACES_ALL_KINDS
@@ -148,17 +144,9 @@
 	if(mind_traits)
 		for(var/t in mind_traits)
 			ADD_TRAIT(H.mind, t, JOB_TRAIT)
-	var/list/roundstart_experience
 
 	if(!ishuman(H))
 		return
-
-	roundstart_experience = skills
-
-	if(roundstart_experience)
-		var/mob/living/carbon/human/experiencer = H
-		for(var/i in roundstart_experience)
-			experiencer.mind.adjust_experience(i, roundstart_experience[i], TRUE)
 
 	if(spells && H.mind)	
 		for(var/S in spells)
