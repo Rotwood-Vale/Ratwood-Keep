@@ -252,7 +252,7 @@
 	name = "poisoned arrow"
 	result = /obj/item/ammo_casing/caseless/rogue/arrow/poison
 	reqs = list(
-				/obj/item/ammo_casing/caseless/rogue/arrow = 1,
+				/obj/item/ammo_casing/caseless/rogue/arrow/iron = 1,
 				/datum/reagent/berrypoison = 5
 				)
 	req_table = TRUE
@@ -285,7 +285,7 @@
 				/obj/item/ammo_casing/caseless/rogue/arrow/poison
 				)
 	reqs = list(
-				/obj/item/ammo_casing/caseless/rogue/arrow = 5,
+				/obj/item/ammo_casing/caseless/rogue/arrow/iron = 5,
 				/datum/reagent/berrypoison = 25
 				)
 
