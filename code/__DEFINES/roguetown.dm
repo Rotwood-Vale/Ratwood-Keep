@@ -159,13 +159,10 @@
 #define TEN_CURSES list(\
 	/datum/curse/astrata,\
 	/datum/curse/noc,\
-	/datum/curse/dendor,\
-	/datum/curse/abyssor,\
 	/datum/curse/ravox,\
 	/datum/curse/necra,\
 	/datum/curse/xylix,\
 	/datum/curse/pestra,\
-	/datum/curse/malum,\
 	/datum/curse/eora\
 )
 
@@ -177,7 +174,6 @@
 )
 
 #define SPECIAL_CURSES list(\
-	/datum/curse/psydon,\
 	/datum/curse/atheism\
 )
 

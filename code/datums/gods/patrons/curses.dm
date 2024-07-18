@@ -147,13 +147,13 @@
 /// ON GAIN / LOSS ///
 //////////////////////
 
-/datum/curse/godless/on_gain(mob/living/carbon/human/owner)
+/datum/curse/atheism/on_gain(mob/living/carbon/human/owner)
 	. = ..()
 	old_patron = owner.patron
 	owner.patron = /datum/patron/godless
 	owner.gain_trauma(/datum/brain_trauma/mild/phobia/religion)
 
-/datum/curse/godless/on_loss(mob/living/carbon/human/owner)
+/datum/curse/atheism/on_loss(mob/living/carbon/human/owner)
 	. = ..()
 	owner.patron = old_patron
 	owner.cure_trauma_type(/datum/brain_trauma/mild/phobia/religion)
@@ -178,11 +178,6 @@
 //////////////////////
 ///    ON LIFE     ///
 //////////////////////
-
-
-/datum/curse/abyssor/on_life(mob/living/carbon/human/owner)
-	. = ..()
-
 
 /datum/curse/pestra/on_life(mob/living/carbon/human/owner)
 	. = ..()
