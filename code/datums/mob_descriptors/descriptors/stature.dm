@@ -25,3 +25,12 @@
 
 /datum/mob_descriptor/stature/snob
 	name = "Snob"
+
+/datum/mob_descriptor/stature/slob
+	name = "Slob"
+
+/datum/mob_descriptor/stature/brute
+	name = "Brute"
+
+/datum/mob_descriptor/stature/highbrow
+	name = "Highbrow"

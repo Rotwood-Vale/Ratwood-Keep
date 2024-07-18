@@ -52,7 +52,7 @@
 /datum/preferences/proc/show_descriptors_ui(mob/user)
 	var/list/dat = list()
 	dat += print_descriptors_page()
-	var/datum/browser/popup = new(user, "descriptors_customization", "<div align='center'>Describe myself</div>", 280, 300)
+	var/datum/browser/popup = new(user, "descriptors_customization", "<div align='center'>Describe myself</div>", 280, 320)
 	popup.set_content(dat.Join())
 	popup.open(FALSE)
 

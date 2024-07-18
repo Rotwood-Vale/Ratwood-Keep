@@ -46,6 +46,9 @@
 		/datum/mob_descriptor/stature/gentleman,
 		/datum/mob_descriptor/stature/thug,
 		/datum/mob_descriptor/stature/snob,
+		/datum/mob_descriptor/stature/slob,
+		/datum/mob_descriptor/stature/brute,
+		/datum/mob_descriptor/stature/highbrow,
 	)
 
 /datum/descriptor_choice/voice
