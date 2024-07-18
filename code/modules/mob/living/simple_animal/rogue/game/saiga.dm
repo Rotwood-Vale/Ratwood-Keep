@@ -53,7 +53,7 @@
 	animal_species = /mob/living/simple_animal/hostile/retaliate/rogue/saigabuck
 	butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat/steak = 4,
 						/obj/item/reagent_containers/food/snacks/fat = 2,
-						/obj/item/natural/hide = 4)
+						/obj/item/natural/hide = 4, /obj/item/natural/bundle/bone/full =1)
 	base_intents = list(/datum/intent/simple/headbutt)
 	health = 156
 	maxHealth = 156
@@ -108,7 +108,7 @@
 	icon_dead = "saigakid_dead"
 	icon_gib = "saigakid_gib"
 	animal_species = null
-	butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat/steak = 1)
+	butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat/steak = 1, /obj/item/natural/bone = 3)
 	base_intents = list(/datum/intent/simple/headbutt)
 	health = 20
 	pass_flags = PASSTABLE | PASSMOB
@@ -184,7 +184,7 @@
 	base_intents = list(/datum/intent/simple/headbutt)
 	butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat/steak = 4,
 						/obj/item/reagent_containers/food/snacks/fat = 1,
-						/obj/item/natural/hide = 4)
+						/obj/item/natural/hide = 4, /obj/item/natural/bundle/bone/full = 1)
 	faction = list("saiga")
 	mob_biotypes = MOB_ORGANIC|MOB_BEAST
 	attack_verb_continuous = "headbutts"
@@ -325,7 +325,7 @@
 	icon_dead = "saigaboy_dead"
 	icon_gib = "saigaboy_gib"
 	animal_species = null
-	butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat/steak = 1)
+	butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat/steak = 1, /obj/item/natural/bone = 3)
 	base_intents = list(/datum/intent/simple/headbutt)
 	health = 20
 	maxHealth = 20

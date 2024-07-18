@@ -13,7 +13,7 @@
 	speak_chance = 2
 	turns_per_move = 5
 	faction = list("chickens")
-	butcher_results = list(/obj/item/reagent_containers/food/snacks/fat = 1, /obj/item/reagent_containers/food/snacks/rogue/meat/poultry = 1)
+	butcher_results = list(/obj/item/reagent_containers/food/snacks/fat = 1, /obj/item/reagent_containers/food/snacks/rogue/meat/poultry = 1, /obj/item/natural/bone = 2)
 	var/egg_type = /obj/item/reagent_containers/food/snacks/egg
 	food_type = list(/obj/item/reagent_containers/food/snacks/grown/berries/rogue,/obj/item/natural/worms,/obj/item/reagent_containers/food/snacks/grown/wheat,/obj/item/reagent_containers/food/snacks/grown/oat)
 	response_help_continuous = "pets"

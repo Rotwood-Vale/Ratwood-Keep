@@ -17,7 +17,7 @@
 	move_to_delay = 8
 	animal_species = /mob/living/simple_animal/hostile/retaliate/rogue/bull
 	butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat/steak = 6,
-						/obj/item/natural/hide=2)
+						/obj/item/natural/hide=2, /obj/item/natural/bundle/bone/full = 1)
 	base_intents = list(/datum/intent/simple/headbutt)
 	health = 80
 	maxHealth = 80
@@ -64,7 +64,8 @@
 	icon_dead = "cowlet_dead"
 	icon_gib = "cowlet_gib"
 	animal_species = null
-	butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat/steak = 1)
+	butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat/steak = 1,
+	/obj/item/natural/bone = 3)
 	base_intents = list(/datum/intent/simple/headbutt)
 	health = 20
 	pass_flags = PASSTABLE | PASSMOB
@@ -148,7 +149,7 @@
 	see_in_dark = 6
 	move_to_delay = 8
 	base_intents = list(/datum/intent/simple/headbutt)
-	butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat/steak = 6)
+	butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat/steak = 6, /obj/item/natural/bundle/bone/full = 1)
 	faction = list("cows")
 	mob_biotypes = MOB_ORGANIC|MOB_BEAST
 	attack_same = 0
@@ -241,7 +242,7 @@
 	icon_dead = "bullet_dead"
 	icon_gib = "bullet_gib"
 	animal_species = null
-	butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat/steak = 1)
+	butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat/steak = 1, /obj/item/natural/bone = 3)
 	base_intents = list(/datum/intent/simple/headbutt)
 	health = 20
 	maxHealth = 20
