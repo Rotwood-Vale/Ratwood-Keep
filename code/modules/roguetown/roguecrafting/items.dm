@@ -460,3 +460,57 @@
 	tools = list(/obj/item/rogueweapon/huntingknife = 1)
 	structurecraft = /obj/structure/fluff/dryingrack
 	craftdiff = 1
+
+/datum/crafting_recipe/roguetown/tribalrags
+	name = "tribal rags"
+	result = /obj/item/clothing/suit/roguetown/shirt/tribalrag
+	reqs = list(/obj/item/natural/hide = 1,
+				/obj/item/natural/fibers = 1)
+	sellprice = 6
+	tools = list(/obj/item/needle)
+	skillcraft = /datum/skill/misc/sewing
+	verbage_simple = "sew"
+	verbage = "sews"
+	craftdiff = 0
+
+/datum/crafting_recipe/roguetown/skullmask
+	name = "skull mask"
+	result = /obj/item/clothing/mask/rogue/skullmask
+	reqs = list(/obj/item/natural/bone = 3,
+				/obj/item/natural/fibers = 1)
+	sellprice = 10
+	verbage_simple = "craft"
+	verbage = "crafted"
+	craftdiff = 0
+
+
+/datum/crafting_recipe/roguetown/antlerhood
+	name = "antlerhood"
+	result = /obj/item/clothing/head/roguetown/antlerhood
+	reqs = list(/obj/item/natural/hide = 1,
+				/obj/item/natural/bone = 2)
+	sellprice = 12
+	tools = list(/obj/item/needle)
+	skillcraft = /datum/skill/misc/sewing
+	verbage_simple = "sew"
+	verbage = "sews"
+	craftdiff = 0
+
+
+
+/datum/crafting_recipe/roguetown/bonespear
+	name = "bone spear"
+	result = /obj/item/rogueweapon/spear/bonespear
+	reqs = list(/obj/item/rogueweapon/woodstaff = 1,
+				/obj/item/natural/bone = 2,
+				/obj/item/natural/fibers = 1)
+	craftdiff = 3
+
+
+/datum/crafting_recipe/roguetown/boneaxe
+	name = "bone axe"
+	result = /obj/item/rogueweapon/stoneaxe/boneaxe
+	reqs = list(/obj/item/grown/log/tree/small = 1,
+				/obj/item/natural/bone = 2,
+				/obj/item/natural/fibers = 1)
+	craftdiff = 2

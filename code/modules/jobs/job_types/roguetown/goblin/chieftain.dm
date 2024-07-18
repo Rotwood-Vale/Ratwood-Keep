@@ -1,9 +1,9 @@
 
-/datum/job/roguetown/goblinking
-	title = "Tribal King"
-	f_title = "Tribal Queen"
-	flag = GOBLINKING
-	department_flag = GOBLIN
+/datum/job/roguetown/chieftain
+	title = "Chieftain"
+	f_title = "Chieftress"
+	flag = CHIEFTAIN
+	department_flag = TRIBAL
 	faction = "Station"
 	total_positions = 1
 	spawn_positions = 1
@@ -11,17 +11,19 @@
 	allowed_races = RACES_ALL_KINDS
 	tutorial = "Tribal King or Queen is a fatty lazy pig who wishes to do nothing but eat apple pies and fart while sitting on his stone throne."
 	whitelist_req = FALSE
-	outfit = /datum/outfit/job/roguetown/goblinking
+	outfit = /datum/outfit/job/roguetown/chieftain
 
-	display_order = JDO_GOBLINKING
+	display_order = JDO_CHIEFTAIN
 	min_pq = 0
 	max_pq = null
 
-/datum/outfit/job/roguetown/goblinking/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/job/roguetown/chieftain/pre_equip(mob/living/carbon/human/H)
 	..()
 	//H.verbs |= /mob/living/carbon/human/proc/goblinannouncement
 	//H.verbs |= /mob/living/carbon/human/proc/goblinopenslot
 	beltl = /obj/item/rogueweapon/huntingknife/idagger/steel/special
+	shirt = /obj/item/clothing/suit/roguetown/shirt/tribalrag
+	pants = /obj/item/clothing/under/roguetown/loincloth/brown
 	belt = /obj/item/storage/belt/rogue/leather/rope
 	beltr = /obj/item/storage/belt/rogue/pouch/coins/rich
 	armor = /obj/item/clothing/suit/roguetown/armor/leather/hide/goblin

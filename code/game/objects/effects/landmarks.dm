@@ -396,7 +396,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 //goblin
 
 /obj/effect/landmark/start/goblinking
-	name = "Tribal King"
+	name = "Chieftain"
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/goblincook
@@ -414,7 +414,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 /obj/effect/landmark/start/goblinlate
 	name = "Goblinlate"
 	icon_state = "arrow"
-	jobspawn_override = list("Tribal Cook", "Tribal Guard", "Tribal King", "Tribal Smith")
+	jobspawn_override = list("Tribal Cook", "Tribal Guard", "Chieftain", "Tribal Smith")
 	delete_after_roundstart = FALSE
 
 // START LANDMARKS FOLLOW. Don't change the names unless

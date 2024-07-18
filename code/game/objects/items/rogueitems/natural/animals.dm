@@ -58,3 +58,17 @@
 	var/can_saddle = FALSE
 	var/obj/item/ssaddle
 
+/obj/item/natural/bone
+	name = "bone"
+	icon_state = "bone"
+	desc = "A bone from a dead animal or person."
+	blade_dulling = 0
+	max_integrity = 20
+	static_debris = null
+	obj_flags = null
+	firefuel = null
+	w_class = WEIGHT_CLASS_NORMAL
+	twohands_required = FALSE
+	gripped_intents = null
+	slot_flags = ITEM_SLOT_MOUTH|ITEM_SLOT_HIP
+	bundletype = /obj/item/natural/bundle/bone

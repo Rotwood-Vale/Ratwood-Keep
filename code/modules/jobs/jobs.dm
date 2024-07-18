@@ -160,7 +160,7 @@ GLOBAL_LIST_INIT(roguewar_positions, list(
 GLOBAL_LIST_INIT(goblin_positions, list(
 	"Tribal Cook",
 	"Tribal Guard",
-	"Tribal King",
+	"Chieftain",
 	"Tribal Smith",
 ))
 

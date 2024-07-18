@@ -1,7 +1,7 @@
-/datum/job/roguetown/goblincook
+/datum/job/roguetown/tribalcook
 	title = "Tribal Cook"
-	flag = GOBLINCOOK
-	department_flag = GOBLIN
+	flag = TRIBALCOOK
+	department_flag = TRIBAL
 	faction = "Station"
 	total_positions = 3
 	spawn_positions = 3
@@ -10,14 +10,16 @@
 	tutorial = "Cook, farm, butcher. Make king or queen happy with apple pies! Don't forget about your brothers and sisters."
 
 
-	outfit = /datum/outfit/job/roguetown/goblincook
-	display_order = JDO_GOBLINCOOK
+	outfit = /datum/outfit/job/roguetown/tribalcook
+	display_order = JDO_TRIBALCOOK
 	min_pq = 0
 	max_pq = null
 
-/datum/outfit/job/roguetown/goblincook/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/job/roguetown/tribalcook/pre_equip(mob/living/carbon/human/H)
 	..()
 	armor = /obj/item/clothing/suit/roguetown/armor/leather/hide/goblin
+	shirt = /obj/item/clothing/suit/roguetown/shirt/tribalrag
+	pants = /obj/item/clothing/under/roguetown/loincloth/brown
 	belt = /obj/item/storage/belt/rogue/leather/rope
 	cloak = /obj/item/clothing/cloak/apron/cook
 	neck = /obj/item/storage/belt/rogue/pouch/coins/poor

@@ -185,12 +185,12 @@
 #define GRENZELHOFT		(1<<1)
 #define VETERAN		(1<<2)
 
-#define GOBLIN		(1<<8)
+#define TRIBAL		(1<<8)
 
-#define GOBLINKING	(1<<0)
-#define GOBLINCOOK	(1<<1)
-#define GOBLINGUARD	(1<<2)
-#define GOBLINSMITH	(1<<3)
+#define CHIEFTAIN	(1<<0)
+#define TRIBALCOOK	(1<<1)
+#define TRIBALGUARD	(1<<2)
+#define TRIBALSMITH	(1<<3)
 
 #define SLOP		(1<<9)
 
@@ -286,7 +286,7 @@
 #define JDO_HOSTAGE 35.2
 #define JDO_LUNATIC 35.3
 
-#define JDO_GOBLINKING 36
-#define JDO_GOBLINCOOK 37
-#define JDO_GOBLINGUARD 38
-#define JDO_GOBLINSMITH 39
+#define JDO_CHIEFTAIN 36
+#define JDO_TRIBALCOOK 37
+#define JDO_TRIBALGUARD 38
+#define JDO_TRIBALSMITH 39

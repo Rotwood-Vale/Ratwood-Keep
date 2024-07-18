@@ -1,21 +1,23 @@
-/datum/job/roguetown/goblinsmith
+/datum/job/roguetown/tribalsmith
 	title = "Tribal Smith"
-	flag = GOBLINSMITH
-	department_flag = GOBLIN
+	flag = TRIBALSMITH
+	department_flag = TRIBAL
 	faction = "Station"
 	total_positions = 3
 	spawn_positions = 3
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
 	tutorial = "Tribal smith responsible for forging weapons, armor, and tools for the tribe."
-	display_order = JDO_GOBLINSMITH
-	outfit = /datum/outfit/job/roguetown/goblinsmith
+	display_order = JDO_TRIBALSMITH
+	outfit = /datum/outfit/job/roguetown/tribalsmith
 	min_pq = 0
 	max_pq = null
 
-/datum/outfit/job/roguetown/goblinsmith/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/job/roguetown/tribalsmith/pre_equip(mob/living/carbon/human/H)
 	..()
 	armor = /obj/item/clothing/suit/roguetown/armor/leather/hide/goblin
+	shirt = /obj/item/clothing/suit/roguetown/shirt/tribalrag
+	pants = /obj/item/clothing/under/roguetown/loincloth/brown
 	belt = /obj/item/storage/belt/rogue/leather
 	neck = /obj/item/storage/belt/rogue/pouch/coins/poor
 	cloak = /obj/item/clothing/cloak/apron/blacksmith
