@@ -127,8 +127,9 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 
 	/// List of descriptor choices this species gets in preferences customization
 	var/list/descriptor_choices = list(
-		/datum/descriptor_choice/face,
 		/datum/descriptor_choice/body,
+		/datum/descriptor_choice/stature,
+		/datum/descriptor_choice/face,
 		/datum/descriptor_choice/skin,
 		/datum/descriptor_choice/voice,
 		/datum/descriptor_choice/prominent_one,

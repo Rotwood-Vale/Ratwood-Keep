@@ -500,10 +500,9 @@
 		. += "<a href='?src=[REF(src)];task=view_headshot;'>View headshot</a>"
 	
 	if(!obscure_name)
-		var/list/all_descriptors = get_mob_descriptors()
-		for(var/descriptor_type in all_descriptors)
-			var/datum/mob_descriptor/descriptor = MOB_DESCRIPTOR(descriptor_type)
-			. += descriptor.get_standalone_text(src)
+		var/list/lines = build_cool_description(get_mob_descriptors(), src)
+		for(var/line in lines)
+			. += span_info(line)
 
 	var/trait_exam = common_trait_examine()
 	if(!isnull(trait_exam))

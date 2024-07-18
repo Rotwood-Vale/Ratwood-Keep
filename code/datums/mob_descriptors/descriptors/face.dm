@@ -1,12 +1,12 @@
 /datum/mob_descriptor/face
 	abstract_type = /datum/mob_descriptor/face
+	prefix = "a"
+	suffix = "face"
 	slot = MOB_DESCRIPTOR_SLOT_FACE
-
-/datum/mob_descriptor/face/get_coalesce_text(mob/living/described)
-	return "a [lowertext_singular] face"
 
 /datum/mob_descriptor/face/unremarkable
 	name = "Unremarkable"
+	prefix = "an"
 
 /datum/mob_descriptor/face/smooth
 	name = "Smooth"
@@ -25,6 +25,7 @@
 
 /datum/mob_descriptor/face/angular
 	name = "Angular"
+	prefix = "an"
 
 /datum/mob_descriptor/face/gaunt
 	name = "Gaunt"

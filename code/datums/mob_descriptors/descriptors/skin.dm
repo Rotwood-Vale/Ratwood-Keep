@@ -1,68 +1,84 @@
 /datum/mob_descriptor/skin
 	abstract_type = /datum/mob_descriptor/skin
 	slot = MOB_DESCRIPTOR_SLOT_SKIN
+	verbage = "%HAVE%"
 
 /datum/mob_descriptor/skin/normal
-	name = "Normal"
+	name = "Normal Skin"
 
 /datum/mob_descriptor/skin/hairy
-	name = "Hairy"
+	name = "Hairy Skin"
 
 /datum/mob_descriptor/skin/soft
-	name = "Soft"
+	name = "Soft Skin"
 
 /datum/mob_descriptor/skin/rugged
-	name = "Rugged"
+	name = "Rugged Skin"
 
 /datum/mob_descriptor/skin/diseased
-	name = "Diseased"
+	name = "Diseased Skin"
 
 /datum/mob_descriptor/skin/dry
-	name = "Dry"
+	name = "Dry Skin"
 
 /datum/mob_descriptor/skin/fine
-	name = "Fine"
+	name = "Fine Skin"
 
 /datum/mob_descriptor/scales
 	abstract_type = /datum/mob_descriptor/scales
 	slot = MOB_DESCRIPTOR_SLOT_SKIN
 
 /datum/mob_descriptor/scales/plain
-	name = "Plain"
+	name = "Plain Scales"
 
 /datum/mob_descriptor/scales/rough
-	name = "Rough"
+	name = "Rough Scales"
 
 /datum/mob_descriptor/scales/smooth
-	name = "Smooth"
+	name = "Smooth Scales"
 
 /datum/mob_descriptor/scales/plated
-	name = "Plated"
+	name = "Plated Scales"
+
+/datum/mob_descriptor/scales/peeling
+	name = "Peeling Scales"
 
 /datum/mob_descriptor/fur
 	abstract_type = /datum/mob_descriptor/fur
 	slot = MOB_DESCRIPTOR_SLOT_SKIN
 
 /datum/mob_descriptor/fur/plain
-	name = "Plain"
+	name = "Plain Fur"
 
 /datum/mob_descriptor/fur/short
-	name = "Short"
+	name = "Short Fur"
 
 /datum/mob_descriptor/fur/coarse
-	name = "Coarse"
+	name = "Coarse Fur"
 
 /datum/mob_descriptor/fur/bristly
-	name = "Bristly"
+	name = "Bristly Fur"
 
 /datum/mob_descriptor/fur/fluffy
-	name = "Fluffy"
+	name = "Fluffy Fur"
 
 /datum/mob_descriptor/fur/shaggy
-	name = "Shaggy"
+	name = "Shaggy Fur"
 
 /datum/mob_descriptor/fur/silky
-	name = "Silky"
+	name = "Silky Fur"
 
 /datum/mob_descriptor/fur/lank
-	name = "Lank"
+	name = "Lank Fur"
+
+/datum/mob_descriptor/fur/mangy
+	name = "Mangy Fur"
+
+/datum/mob_descriptor/fur/velvety
+	name = "Velvety Fur"
+
+/datum/mob_descriptor/fur/dense
+	name = "Dense Fur"
+
+/datum/mob_descriptor/fur/matted
+	name = "Matted Fur"

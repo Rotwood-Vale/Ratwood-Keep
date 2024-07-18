@@ -26,3 +26,78 @@
 
 /mob/living/proc/get_extra_mob_descriptors()
 	return null
+
+/mob/living/proc/get_descriptor_of_slot(descriptor_slot, list/descs)
+	if(!descs)
+		descs = get_mob_descriptors()
+	for(var/descriptor_type in descs)
+		var/datum/mob_descriptor/descriptor = MOB_DESCRIPTOR(descriptor_type)
+		if(descriptor.slot != descriptor_slot)
+			continue
+		return descriptor_type
+	return null
+
+/mob/living/proc/get_descriptor_slot_list(list/slots)
+	var/list/descs = list()
+	var/list/desc_copy = get_mob_descriptors()
+	for(var/slot in slots)
+		var/desc_type = get_descriptor_of_slot(slot, desc_copy)
+		if(!desc_type)
+			continue
+		desc_copy -= desc_type
+		descs += desc_type
+	if(descs.len != slots.len)
+		return null
+	return descs
+
+/proc/build_cool_description(list/descriptors, mob/living/described)
+	var/list/lines = list()
+	var/list/desc_copy = descriptors.Copy()
+
+	var/first_line = build_coalesce_description(desc_copy, described, list(MOB_DESCRIPTOR_SLOT_BODY, MOB_DESCRIPTOR_SLOT_STATURE, MOB_DESCRIPTOR_SLOT_FACE), "You see %DESC1% %DESC2% with %DESC3%")
+	if(first_line)
+		lines += first_line
+
+	var/second_line = build_coalesce_description(desc_copy, described, list(MOB_DESCRIPTOR_SLOT_SKIN, MOB_DESCRIPTOR_SLOT_VOICE), "%THEY% %DESC1% and %DESC2%")
+	if(second_line)
+		lines += second_line
+
+	var/third_line = build_coalesce_description(desc_copy, described, list(MOB_DESCRIPTOR_SLOT_PROMINENT, MOB_DESCRIPTOR_SLOT_PROMINENT), "%THEY% %DESC1% and %DESC2%")
+	if(third_line)
+		lines += third_line
+
+	/// Print the remaining ones in seperate lines
+	for(var/descriptor_type in desc_copy)
+		var/datum/mob_descriptor/descriptor = MOB_DESCRIPTOR(descriptor_type)
+		lines += treat_mob_descriptor_string(descriptor.get_standalone_text(described), described)
+	
+	return lines
+
+/proc/build_coalesce_description(list/descriptors, mob/living/described, list/slots, string)
+	var/list/descs = described.get_descriptor_slot_list(slots)
+	if(!descs)
+		return
+	descriptors -= descs
+	for(var/i in 1 to descs.len)
+		var/desc_type = descs[i]
+		var/datum/mob_descriptor/descriptor = MOB_DESCRIPTOR(desc_type)
+		string = replacetext(string, "%DESC[i]%", descriptor.get_coalesce_text(described))
+	string = treat_mob_descriptor_string(string, described)
+	return string
+
+/proc/treat_mob_descriptor_string(string, mob/living/described)
+	var/they_replace
+	if(described.gender == MALE)
+		they_replace = "he"
+	else
+		they_replace = "she"
+	var/man_replace
+	if(described.gender == MALE)
+		man_replace = "man"
+	else
+		man_replace = "woman"
+	string = replacetext(string, "%THEY%", they_replace)
+	string = replacetext(string, "%HAVE%", "has")
+	string = replacetext(string, "%MAN%", man_replace)
+	string = capitalize(string)
+	return string

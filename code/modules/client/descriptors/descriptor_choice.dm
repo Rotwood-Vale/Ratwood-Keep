@@ -26,14 +26,26 @@
 /datum/descriptor_choice/body
 	name = "Body"
 	descriptors = list(
-		/datum/mob_descriptor/body/plain,
+		/datum/mob_descriptor/body/average,
 		/datum/mob_descriptor/body/athletic,
-		/datum/mob_descriptor/body/round,
+		/datum/mob_descriptor/body/muscular,
+		/datum/mob_descriptor/body/fat,
+		/datum/mob_descriptor/body/chubby,
+		/datum/mob_descriptor/body/curvy,
+		/datum/mob_descriptor/body/decrepit,
 		/datum/mob_descriptor/body/thin,
-		/datum/mob_descriptor/body/surly,
 		/datum/mob_descriptor/body/bulky,
 		/datum/mob_descriptor/body/tall,
 		/datum/mob_descriptor/body/short,
+	)
+
+/datum/descriptor_choice/stature
+	name = "Stature"
+	descriptors = list(
+		/datum/mob_descriptor/stature/man,
+		/datum/mob_descriptor/stature/gentleman,
+		/datum/mob_descriptor/stature/thug,
+		/datum/mob_descriptor/stature/snob,
 	)
 
 /datum/descriptor_choice/voice
@@ -47,6 +59,7 @@
 		/datum/mob_descriptor/voice/sleepy,
 		/datum/mob_descriptor/voice/commanding,
 		/datum/mob_descriptor/voice/kind,
+		/datum/mob_descriptor/voice/growly,
 		/datum/mob_descriptor/voice/androgynous,
 	)
 
@@ -82,6 +95,10 @@
 		/datum/mob_descriptor/fur/shaggy,
 		/datum/mob_descriptor/fur/silky,
 		/datum/mob_descriptor/fur/lank,
+		/datum/mob_descriptor/fur/mangy,
+		/datum/mob_descriptor/fur/velvety,
+		/datum/mob_descriptor/fur/dense,
+		/datum/mob_descriptor/fur/matted,
 	)
 
 #define PROMINENT_DESCRIPTORS list(\
