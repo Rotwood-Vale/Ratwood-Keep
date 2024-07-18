@@ -82,6 +82,16 @@
 	languages = list(
 		/datum/language/common,
 	)
+	descriptor_choices = list(
+		/datum/descriptor_choice/body,
+		/datum/descriptor_choice/stature,
+		/datum/descriptor_choice/face,
+		/datum/descriptor_choice/face_exp,
+		/datum/descriptor_choice/fur,
+		/datum/descriptor_choice/voice,
+		/datum/descriptor_choice/prominent_one,
+		/datum/descriptor_choice/prominent_two,
+	)
 
 /datum/species/tabaxi/check_roundstart_eligible()
 	return TRUE

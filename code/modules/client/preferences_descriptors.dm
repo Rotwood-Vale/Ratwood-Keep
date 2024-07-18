@@ -25,7 +25,11 @@
 	switch(href_list["preference"])
 		if("choose_descriptor")
 			var/choice_type = text2path(href_list["descriptor_choice"])
+			if(!(choice_type in pref_species.descriptor_choices))
+				return
 			var/datum/descriptor_choice/choice = DESCRIPTOR_CHOICE(choice_type)
+			if(!choice)
+				return
 			var/list/picklist = list()
 			for(var/desc_type in choice.descriptors)
 				var/datum/mob_descriptor/descriptor = MOB_DESCRIPTOR(desc_type)

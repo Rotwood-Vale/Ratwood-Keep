@@ -82,3 +82,35 @@
 
 /datum/mob_descriptor/fur/matted
 	name = "Matted Fur"
+
+/datum/mob_descriptor/feathers
+	abstract_type = /datum/mob_descriptor/feathers
+	slot = MOB_DESCRIPTOR_SLOT_SKIN
+
+/datum/mob_descriptor/feathers/fine
+	name = "Fine Feathers"
+
+/datum/mob_descriptor/feathers/stiff
+	name = "Stiff Feathers"
+
+/datum/mob_descriptor/feathers/frayed
+	name = "Frayed Feathers"
+
+/datum/mob_descriptor/feathers/delicate
+	name = "Delicate Feathers"
+
+/datum/mob_descriptor/feathers/soft
+	name = "Soft Feathers"
+
+/datum/mob_descriptor/chitin
+	abstract_type = /datum/mob_descriptor/chitin
+	slot = MOB_DESCRIPTOR_SLOT_SKIN
+
+/datum/mob_descriptor/chitin/smooth
+	name = "Smooth Chitin"
+
+/datum/mob_descriptor/chitin/hard
+	name = "Hard Chitin"
+
+/datum/mob_descriptor/chitin/fine
+	name = "Fine Chitin"

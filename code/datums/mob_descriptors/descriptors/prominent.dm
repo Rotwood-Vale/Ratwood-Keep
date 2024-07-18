@@ -133,7 +133,7 @@
 /datum/mob_descriptor/prominent/lordly_presence
 	name = "Lordly Presence"
 	verbage = "%HAVE%"
-	prefix = "an"
+	prefix = "a"
 
 /datum/mob_descriptor/prominent/aristocratic_haughtiness
 	name = "Aristocratic Haughtiness"
