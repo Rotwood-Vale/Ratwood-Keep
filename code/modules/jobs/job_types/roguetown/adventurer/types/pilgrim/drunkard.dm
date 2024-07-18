@@ -30,7 +30,6 @@
 		H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/climbing, 2, TRUE) //Climbing into windows to steal drugs or booze.
-		H.mind.adjust_skillrank(/datum/skill/craft/alchemy, 1, TRUE) //They know what substances is and things.
 		H.mind.adjust_skillrank(/datum/skill/misc/lockpicking, 1, TRUE) //Breaking into the houses of anyone who ever loved them.
 		H.change_stat("intelligence", -2)
 		H.change_stat("constitution", 1)
