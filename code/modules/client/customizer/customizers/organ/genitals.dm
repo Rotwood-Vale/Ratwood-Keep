@@ -59,6 +59,7 @@
 /datum/customizer_choice/organ/penis/anthro
 	sprite_accessories = list(
 		/datum/sprite_accessory/penis/human,
+		/datum/sprite_accessory/penis/thick,
 		/datum/sprite_accessory/penis/knotted,
 		/datum/sprite_accessory/penis/knotted2,
 		/datum/sprite_accessory/penis/flared,
