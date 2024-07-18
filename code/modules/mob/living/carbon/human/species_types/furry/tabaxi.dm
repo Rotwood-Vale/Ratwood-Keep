@@ -68,15 +68,22 @@
 		/datum/customizer/bodypart_feature/accessory,
 		/datum/customizer/bodypart_feature/face_detail,
 		/datum/customizer/organ/snout/tabaxi,
+		/datum/customizer/organ/tail/tabaxi,
 		/datum/customizer/organ/testicles/external,
 		/datum/customizer/organ/penis/knotted,
 		/datum/customizer/organ/breasts/animal,
 		/datum/customizer/organ/vagina/animal,
 		)
 	body_marking_sets = list(
-		/datum/body_marking_set/tiger_dark
+		/datum/body_marking_set/none,
+		/datum/body_marking_set/bellysocks,
+		/datum/body_marking_set/bellysockstertiary,
+		/datum/body_marking_set/belly,
 	)
 	body_markings = list(
+		/datum/body_marking/belly,
+		/datum/body_marking/bellyslim,
+		/datum/body_marking/butt,
 		/datum/body_marking/tonage,
 	)
 	languages = list(

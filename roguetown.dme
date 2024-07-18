@@ -3399,7 +3399,6 @@
 #include "code\modules\surgery\organs\lungs.dm"
 #include "code\modules\surgery\organs\organ_internal.dm"
 #include "code\modules\surgery\organs\stomach.dm"
-#include "code\modules\surgery\organs\tails.dm"
 #include "code\modules\surgery\organs\tongue.dm"
 #include "code\modules\surgery\organs\vocal_cords.dm"
 #include "code\modules\surgery\organs\feature_organs\antennas.dm"
