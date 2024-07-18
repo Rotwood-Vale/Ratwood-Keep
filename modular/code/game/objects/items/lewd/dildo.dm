@@ -55,8 +55,10 @@
 /obj/item/dildo/proc/update_appearance()
 	icon_state = "dildo_[dildo_type]_[dildo_size]"
 	name = "[dildo_size] [dildo_type] [dildo_material] dildo"
-	if(!istype(src, /obj/item/dildo/gold) && !istype(src, /obj/item/dildo/silver)) //hopefully will maintain desc
+	if(!istype(src, /obj/item/dildo/gold) && !istype(src, /obj/item/dildo/silver) && !istype(src, /obj/item/dildo/stone) && !istype(src, /obj/item/dildo/wood)) //will maintain desc
 		desc = pick("To quench the woman's thirst.","To kiss the lower lips.","Bane of men.","Suitable chair replacement for women.","Don't sit and spin, don't sit and spin, don't sit and spin...","Woman's best friend.")
+	if(istype(src, /obj/item/dildo/gold))
+		desc = pick("Fitting for the most royal of holes.","9 out of 10 princesses suggest this.","Kingcucker9000","Best investment ever.")
 	can_custom = FALSE
 
 /obj/item/dildo/wood
@@ -66,18 +68,30 @@
 	sellprice = 1
 	desc = "Watch for splinters."
 
+/obj/item/dildo/stone
+	color = "#3f3f3f"
+	dildo_material = "stone"
+	sellprice = 3
+	desc = "Feel the earth... It's rough around the edges."
+
 /obj/item/dildo/iron
-	color = "#9EA48E"
+	color = "#909090"
 	dildo_material = "iron"
 	sellprice = 5
 
+
+/obj/item/dildo/copper
+	color = "#a86918"
+	dildo_material = "copper"
+	sellprice = 8
+
 /obj/item/dildo/steel
-	color = "#9BADB7"
+	color = "#887e99"
 	dildo_material = "steel"
-	sellprice = 10
+	sellprice = 12
 
 /obj/item/dildo/silver
-	color = "#C6D5E1"
+	color = "#ffffff"
 	dildo_material = "silver"
 	sellprice = 30
 	desc = "Not recommended for vampires and verevolves in heat."
@@ -161,9 +175,6 @@
 			src.last_used = world.time
 
 /obj/item/dildo/gold
-	color = "#A0A075"
+	color = "#b38f1b"
 	dildo_material = "golden"
 	sellprice = 50
-
-/obj/item/dildo/gold/New()
-	desc = pick("Fitting for the most royal.","9 out of 10 princesses (Would) suggest.","Kingcucker9000","Best investment to be made.")
