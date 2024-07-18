@@ -15,7 +15,7 @@
 /mob/living/proc/clear_mob_descriptors()
 	mob_descriptors = null
 
-/mob/living/proc/get_mob_descriptors()
+/mob/living/proc/get_mob_descriptors(is_obscured)
 	var/list/descriptors = list()
 	if(mob_descriptors)
 		descriptors += mob_descriptors
@@ -24,7 +24,9 @@
 		descriptors += extras
 	var/list/passed_descriptors = list()
 	for(var/desc_type in descriptors)
-		var/datum/mob_descriptor/descriptor = MOB_DESCRIPTOR(descriptor_type)
+		var/datum/mob_descriptor/descriptor = MOB_DESCRIPTOR(desc_type)
+		if(is_obscured && !descriptor.show_obscured)
+			continue
 		if(!descriptor.can_describe(src))
 			continue
 		passed_descriptors += desc_type
@@ -34,8 +36,6 @@
 	return null
 
 /mob/living/proc/get_descriptor_of_slot(descriptor_slot, list/descs)
-	if(!descs)
-		descs = get_mob_descriptors()
 	for(var/descriptor_type in descs)
 		var/datum/mob_descriptor/descriptor = MOB_DESCRIPTOR(descriptor_type)
 		if(descriptor.slot != descriptor_slot)
@@ -43,9 +43,9 @@
 		return descriptor_type
 	return null
 
-/mob/living/proc/get_descriptor_slot_list(list/slots)
+/mob/living/proc/get_descriptor_slot_list(list/slots, list/descriptors)
 	var/list/descs = list()
-	var/list/desc_copy = get_mob_descriptors()
+	var/list/desc_copy = descriptors.Copy()
 	for(var/slot in slots)
 		var/desc_type = get_descriptor_of_slot(slot, desc_copy)
 		if(!desc_type)
@@ -76,11 +76,11 @@
 	for(var/descriptor_type in desc_copy)
 		var/datum/mob_descriptor/descriptor = MOB_DESCRIPTOR(descriptor_type)
 		lines += treat_mob_descriptor_string(descriptor.get_standalone_text(described), described)
-	
+
 	return lines
 
 /proc/build_coalesce_description(list/descriptors, mob/living/described, list/slots, string)
-	var/list/descs = described.get_descriptor_slot_list(slots)
+	var/list/descs = described.get_descriptor_slot_list(slots, descriptors)
 	if(!descs)
 		return
 	descriptors -= descs

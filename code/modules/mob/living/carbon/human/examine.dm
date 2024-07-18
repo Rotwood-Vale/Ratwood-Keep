@@ -499,10 +499,9 @@
 	if(!obscure_name && headshot_link)
 		. += "<a href='?src=[REF(src)];task=view_headshot;'>View headshot</a>"
 	
-	if(!obscure_name)
-		var/list/lines = build_cool_description(get_mob_descriptors(), src)
-		for(var/line in lines)
-			. += span_info(line)
+	var/list/lines = build_cool_description(get_mob_descriptors(obscure_name), src)
+	for(var/line in lines)
+		. += span_info(line)
 
 	var/trait_exam = common_trait_examine()
 	if(!isnull(trait_exam))
