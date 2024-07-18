@@ -74,8 +74,8 @@
 	name = "Extensive Scarring"
 	verbage = "%HAVE%"
 
-/datum/mob_descriptor/prominent/elaborate_tattoo
-	name = "Elaborate Tattoes"
+/datum/mob_descriptor/prominent/elaborate_tattoos
+	name = "Elaborate Tattos"
 	verbage = "%HAVE%"
 
 /datum/mob_descriptor/prominent/move_strange
@@ -130,6 +130,11 @@
 	verbage = "%HAVE%"
 	prefix = "an"
 
+/datum/mob_descriptor/prominent/lordly_presence
+	name = "Lordly Presence"
+	verbage = "%HAVE%"
+	prefix = "an"
+
 /datum/mob_descriptor/prominent/aristocratic_haughtiness
 	name = "Aristocratic Haughtiness"
 	verbage = "%HAVE%"
@@ -158,3 +163,33 @@
 /datum/mob_descriptor/prominent/ghastly_pale
 	name = "Ghastly Pale"
 	verbage = "is"
+
+/datum/mob_descriptor/prominent/ritual_tattoos
+	name = "Ritual Tattoos"
+	verbage = "%HAVE%"
+
+/datum/mob_descriptor/prominent/tribal_tattoos
+	name = "Tribal Tattoos"
+	verbage = "%HAVE%"
+
+/datum/mob_descriptor/prominent/slave_tattoos
+	name = "Slave Tattoos"
+	verbage = "%HAVE%"
+
+/datum/mob_descriptor/prominent/enigmatic_tattoos
+	name = "Enigmatic Tattoos"
+	verbage = "%HAVE%"
+
+/datum/mob_descriptor/prominent/mean_look
+	name = "Mean Look"
+	verbage = "%HAVE%"
+	prefix = "a"
+
+/datum/mob_descriptor/prominent/haughty_atmosphere
+	name = "Haughty Atmosphere"
+	verbage = "%HAVE%"
+	prefix = "a"
+
+/datum/mob_descriptor/prominent/untrustworthy
+	name = "Untrustworthy"
+	verbage = "appears"

@@ -10,7 +10,7 @@
 
 	for(var/datum/descriptor_entry/entry as anything in descriptor_entries)
 		var/datum/descriptor_choice/choice = DESCRIPTOR_CHOICE(entry.descriptor_choice_type)
-		if(!(entry.descriptor_type in choice.descriptors))
+		if(entry.descriptor_type == null || !(entry.descriptor_type in choice.descriptors))
 			entry.descriptor_type = pick(choice.descriptors)
 
 /datum/preferences/proc/reset_descriptors()
@@ -52,7 +52,7 @@
 /datum/preferences/proc/show_descriptors_ui(mob/user)
 	var/list/dat = list()
 	dat += print_descriptors_page()
-	var/datum/browser/popup = new(user, "descriptors_customization", "<div align='center'>Describe myself</div>", 280, 320)
+	var/datum/browser/popup = new(user, "descriptors_customization", "<div align='center'>Describe myself</div>", 280, 345)
 	popup.set_content(dat.Join())
 	popup.open(FALSE)
 

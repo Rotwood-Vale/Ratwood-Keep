@@ -130,6 +130,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 		/datum/descriptor_choice/body,
 		/datum/descriptor_choice/stature,
 		/datum/descriptor_choice/face,
+		/datum/descriptor_choice/face_exp,
 		/datum/descriptor_choice/skin,
 		/datum/descriptor_choice/voice,
 		/datum/descriptor_choice/prominent_one,

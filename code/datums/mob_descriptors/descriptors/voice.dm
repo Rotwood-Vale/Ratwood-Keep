@@ -36,3 +36,33 @@
 /datum/mob_descriptor/voice/androgynous
 	name = "Androgynous"
 	prefix = "an"
+
+/datum/mob_descriptor/voice/nasal
+	name = "Nasal"
+
+/datum/mob_descriptor/voice/refined
+	name = "Refined"
+
+/datum/mob_descriptor/voice/cheery
+	name = "Cheery"
+
+/datum/mob_descriptor/voice/dispassionate
+	name = "Dispassionate"
+
+/datum/mob_descriptor/voice/gravelly
+	name = "Gravelly"
+
+/datum/mob_descriptor/voice/whiny
+	name = "Whiny"
+
+/datum/mob_descriptor/voice/melodic
+	name = "Melodic"
+
+/datum/mob_descriptor/voice/drawling
+	name = "Drawling"
+
+/datum/mob_descriptor/voice/stilted
+	name = "Stilted"
+
+/datum/mob_descriptor/voice/grave
+	name = "Grave"

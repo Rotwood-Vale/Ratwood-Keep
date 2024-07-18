@@ -1,8 +1,7 @@
 /datum/mob_descriptor/face
 	abstract_type = /datum/mob_descriptor/face
 	prefix = "a"
-	suffix = "face"
-	slot = MOB_DESCRIPTOR_SLOT_FACE
+	slot = MOB_DESCRIPTOR_SLOT_FACE_SHAPE
 
 /datum/mob_descriptor/face/unremarkable
 	name = "Unremarkable"
@@ -50,4 +49,33 @@
 
 /datum/mob_descriptor/face/disfigured
 	name = "Disfigured"
+
+/datum/mob_descriptor/face_exp
+	abstract_type = /datum/mob_descriptor/face_exp
+	suffix = "face"
+	slot = MOB_DESCRIPTOR_SLOT_FACE_EXPRESSION
+
+/datum/mob_descriptor/face_exp/refined
+	name = "Refined"
+
+/datum/mob_descriptor/face_exp/disinterested
+	name = "Disinterested"
+
+/datum/mob_descriptor/face_exp/sour
+	name = "Sour"
+
+/datum/mob_descriptor/face_exp/bright
+	name = "Bright"
+
+/datum/mob_descriptor/face_exp/starry_eyed
+	name = "Starry-eyed"
+
+/datum/mob_descriptor/face_exp/youthful
+	name = "Youthful"
+
+/datum/mob_descriptor/face_exp/cold
+	name = "Cold"
+
+/datum/mob_descriptor/face_exp/tall
+	name = "Tall"
 

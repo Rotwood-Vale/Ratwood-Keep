@@ -14,6 +14,9 @@
 /datum/mob_descriptor/body/muscular
 	name = "Muscular"
 
+/datum/mob_descriptor/body/herculean
+	name = "Herculean"
+
 /datum/mob_descriptor/body/fat
 	name = "Fat"
 
@@ -22,6 +25,9 @@
 
 /datum/mob_descriptor/body/curvy
 	name = "Curvy"
+
+/datum/mob_descriptor/body/voluptuous
+	name = "Voluptuous"
 
 /datum/mob_descriptor/body/decrepit
 	name = "Decrepit"
@@ -37,3 +43,27 @@
 
 /datum/mob_descriptor/body/short
 	name = "Short"
+
+/datum/mob_descriptor/body/slender
+	name = "Slender"
+
+/datum/mob_descriptor/body/lissome
+	name = "Lissome"
+
+/datum/mob_descriptor/body/lanky
+	name = "Lanky"
+
+/datum/mob_descriptor/body/twiggy
+	name = "Twiggy"
+
+/datum/mob_descriptor/body/dainty
+	name = "Dainty"
+
+/datum/mob_descriptor/body/petite
+	name = "Petite"
+
+/datum/mob_descriptor/body/gaunt
+	name = "Gaunt"
+
+/datum/mob_descriptor/body/lean
+	name = "Lean"

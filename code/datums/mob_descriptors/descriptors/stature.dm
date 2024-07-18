@@ -3,7 +3,7 @@
 	slot = MOB_DESCRIPTOR_SLOT_STATURE
 
 /datum/mob_descriptor/stature/man
-	name = "Man"
+	name = "Man/Woman"
 
 /datum/mob_descriptor/stature/man/get_description(mob/living/described)
 	if(described.gender == MALE)
@@ -12,7 +12,7 @@
 		return "woman"
 
 /datum/mob_descriptor/stature/gentleman
-	name = "Gentleman"
+	name = "Gentleman/Gentlewoman"
 
 /datum/mob_descriptor/stature/gentleman/get_description(mob/living/described)
 	if(described.gender == MALE)

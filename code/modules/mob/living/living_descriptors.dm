@@ -60,7 +60,7 @@
 	var/list/lines = list()
 	var/list/desc_copy = descriptors.Copy()
 
-	var/first_line = build_coalesce_description(desc_copy, described, list(MOB_DESCRIPTOR_SLOT_BODY, MOB_DESCRIPTOR_SLOT_STATURE, MOB_DESCRIPTOR_SLOT_FACE), "You see %DESC1% %DESC2% with %DESC3%")
+	var/first_line = build_coalesce_description(desc_copy, described, list(MOB_DESCRIPTOR_SLOT_BODY, MOB_DESCRIPTOR_SLOT_STATURE, MOB_DESCRIPTOR_SLOT_FACE_SHAPE, MOB_DESCRIPTOR_SLOT_FACE_EXPRESSION), "You see %DESC1% %DESC2% with %DESC3%, %DESC4%")
 	if(first_line)
 		lines += first_line
 
@@ -83,11 +83,14 @@
 	var/list/descs = described.get_descriptor_slot_list(slots, descriptors)
 	if(!descs)
 		return
+	var/list/used_verbage = list()
 	descriptors -= descs
 	for(var/i in 1 to descs.len)
 		var/desc_type = descs[i]
 		var/datum/mob_descriptor/descriptor = MOB_DESCRIPTOR(desc_type)
-		string = replacetext(string, "%DESC[i]%", descriptor.get_coalesce_text(described))
+		string = replacetext(string, "%DESC[i]%", descriptor.get_coalesce_text(described, used_verbage))
+		if(descriptor.verbage)
+			used_verbage |= descriptor.verbage
 	string = treat_mob_descriptor_string(string, described)
 	return string
 
