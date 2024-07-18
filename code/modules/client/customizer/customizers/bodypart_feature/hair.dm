@@ -606,13 +606,13 @@
 		/datum/sprite_accessory/hair/head/fatherless2,
 		/datum/sprite_accessory/hair/head/kepthair,
 		/datum/sprite_accessory/hair/head/singlebraid,
-		/datum/sprite_accessory/hair/head/vulp_anita,
-		/datum/sprite_accessory/hair/head/vulp_jagged,
-		/datum/sprite_accessory/hair/head/vulp_kajam1,
-		/datum/sprite_accessory/hair/head/vulp_kajam2,
-		/datum/sprite_accessory/hair/head/vulp_keid,
-		/datum/sprite_accessory/hair/head/vulp_mizar,
-		/datum/sprite_accessory/hair/head/vulp_raine,
+		/datum/sprite_accessory/hair/head/vulpkian/anita,
+		/datum/sprite_accessory/hair/head/vulpkian/jagged,
+		/datum/sprite_accessory/hair/head/vulpkian/kajam1,
+		/datum/sprite_accessory/hair/head/vulpkian/kajam2,
+		/datum/sprite_accessory/hair/head/vulpkian/keid,
+		/datum/sprite_accessory/hair/head/vulpkian/mizar,
+		/datum/sprite_accessory/hair/head/vulpkian/raine,
 		)
 
 

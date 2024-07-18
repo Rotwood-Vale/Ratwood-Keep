@@ -825,31 +825,35 @@
 	name = "Single Braid"
 	icon_state = "singlebraid"
 
-/datum/sprite_accessory/hair/head/vulp_anita
+/datum/sprite_accessory/hair/head/vulpkian
+	abstract_type = /datum/sprite_accessory/hair/head/vulpkian
+	icon = 'icons/mob/sprite_accessory/hair/vulpkian_hair.dmi'
+
+/datum/sprite_accessory/hair/head/vulpkian/anita
 	name = "Vulp Anita"
 	icon_state = "anita"
 
-/datum/sprite_accessory/hair/head/vulp_jagged
+/datum/sprite_accessory/hair/head/vulpkian/jagged
 	name = "Vulp Jagged"
 	icon_state = "jagged"
 
-/datum/sprite_accessory/hair/head/vulp_kajam1
+/datum/sprite_accessory/hair/head/vulpkian/kajam1
 	name = "Vulp Kajam 1"
 	icon_state = "kajam1"
 
-/datum/sprite_accessory/hair/head/vulp_kajam2
+/datum/sprite_accessory/hair/head/vulpkian/kajam2
 	name = "Vulp Kajam 2"
 	icon_state = "kajam2"
 
-/datum/sprite_accessory/hair/head/vulp_keid
+/datum/sprite_accessory/hair/head/vulpkian/keid
 	name = "Vulp Keid"
 	icon_state = "keid"
 
-/datum/sprite_accessory/hair/head/vulp_mizar
+/datum/sprite_accessory/hair/head/vulpkian/mizar
 	name = "Vulp Mizar"
 	icon_state = "mizar"
 
-/datum/sprite_accessory/hair/head/vulp_raine
+/datum/sprite_accessory/hair/head/vulpkian/raine
 	name = "Vulp Raine"
 	icon_state = "raine"
 
