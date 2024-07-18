@@ -188,8 +188,6 @@
 		return TRUE
 	if(isclothing(wear_mask) && (wear_mask.clothing_flags & SCAN_REAGENTS))
 		return TRUE
-	if(usr.mind.get_skill_level(/datum/skill/misc/alchemy) >= 2)
-		return TRUE
 
 /mob/living/carbon/human/get_punch_dmg()
 	var/damage = 12
