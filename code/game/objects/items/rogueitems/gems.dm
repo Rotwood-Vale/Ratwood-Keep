@@ -26,6 +26,10 @@
 	playsound(loc, pick('sound/items/gems (1).ogg','sound/items/gems (2).ogg'), 100, TRUE, -2)
 	..()
 
+var/global/sellprice_multiplier = 1
+proc/update_sellprice_multiplier()
+    sellprice_multiplier = rand(40, 160) / 100
+
 /obj/item/roguegem/green
 	name = "gemerald"
 	icon_state = "emerald_cut"
