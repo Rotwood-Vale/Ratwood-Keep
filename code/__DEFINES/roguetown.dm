@@ -32,16 +32,16 @@
 	/datum/species/dracon,
 
 #define RACES_TOLERATED \
-	/datum/species/elf/dark,\
-	/datum/species/tieberian,\
 	/datum/species/lizardfolk,\
 	/datum/species/tabaxi,\
 	/datum/species/akula,\
 	/datum/species/anthromorph,\
-	/datum/species/demihuman
+	/datum/species/demihuman,
 
 #define RACES_SHUNNED \
 	/datum/species/halforc,\
+	/datum/species/elf/dark,\
+	/datum/species/tieberian,\
 	/datum/species/anthromorphsmall,\
 	/datum/species/kobold
 
