@@ -456,6 +456,18 @@
 	structurecraft = /obj/structure/fluff/dryingrack
 	craftdiff = 1
 
+/datum/crafting_recipe/roguetown/tribalrags
+	name = "tribal rags"
+	result = /obj/item/clothing/suit/roguetown/shirt/tribalrag
+	reqs = list(/obj/item/natural/hide = 1,
+				/obj/item/natural/fibers = 1)
+	sellprice = 6
+	tools = list(/obj/item/needle)
+	skillcraft = /datum/skill/misc/sewing
+	verbage_simple = "sew"
+	verbage = "sews"
+	craftdiff = 0
+
 /datum/crafting_recipe/roguetown/skullmask
 	name = "skull mask"
 	result = /obj/item/clothing/mask/rogue/skullmask
@@ -465,6 +477,7 @@
 	verbage_simple = "craft"
 	verbage = "crafted"
 	craftdiff = 0
+
 
 /datum/crafting_recipe/roguetown/antlerhood
 	name = "antlerhood"
@@ -477,6 +490,8 @@
 	verbage_simple = "sew"
 	verbage = "sews"
 	craftdiff = 0
+
+
 
 /datum/crafting_recipe/roguetown/bonespear
 	name = "bone spear"

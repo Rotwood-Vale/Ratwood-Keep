@@ -184,7 +184,7 @@ GLOBAL_LIST_INIT(roleplay_readme, world.file2list("strings/rt/rp_prompt.txt"))
 		if(!SSticker?.IsRoundInProgress())
 			to_chat(usr, span_boldwarning("The game is starting. You cannot join yet."))
 			return
-		
+
 		if(client && client.prefs.is_active_migrant())
 			to_chat(usr, span_boldwarning("You are in the migrant queue."))
 			return
