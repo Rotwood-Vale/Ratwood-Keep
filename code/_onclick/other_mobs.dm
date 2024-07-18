@@ -310,7 +310,7 @@
 						to_chat(src, span_warning("I should stand up first."))
 						return
 				if(A.z != src.z)
-					if(!HAS_TRAIT(src, TRAIT_ZJUMP) || src.mind.get_skill_level(/datum/skill/misc/climbing) >= 5)
+					if(!HAS_TRAIT(src, TRAIT_ZJUMP))
 						return
 				changeNext_move(mmb_intent.clickcd)
 				face_atom(A)
