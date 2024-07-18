@@ -455,7 +455,7 @@
 "aDe" = (
 /obj/structure/mineral_door/wood/fancywood{
 	locked = 1;
-	lockid = "manor"
+	lockid = "councillor"
 	},
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue/indoors/town/manor)
@@ -2990,7 +2990,7 @@
 "dCo" = (
 /obj/structure/mineral_door/wood/donjon{
 	dir = 1;
-	lockid = "keep_dungeon";
+	lockid = "keep_dungeon_torture";
 	locked = 1
 	},
 /turf/open/floor/rogue/blocks,
@@ -5750,7 +5750,7 @@
 "gRb" = (
 /obj/structure/mineral_door/wood{
 	locked = 1;
-	lockid = "royal";
+	lockid = "prince";
 	name = "Prince's Room"
 	},
 /turf/open/floor/rogue/woodturned,
@@ -7993,7 +7993,7 @@
 /area/rogue/under/town/basement)
 "jBw" = (
 /obj/structure/mineral_door/wood/fancywood{
-	lockid = "manor"
+	lockid = "councillor"
 	},
 /turf/open/floor/rogue/carpet,
 /area/rogue/indoors/town/manor)
@@ -11623,7 +11623,7 @@
 /area/rogue/indoors/town/church/chapel)
 "ogw" = (
 /obj/structure/mineral_door/wood/fancywood{
-	lockid = "manor"
+	lockid = "councillor"
 	},
 /turf/open/floor/rogue/cobble,
 /area/rogue/indoors/town/manor)

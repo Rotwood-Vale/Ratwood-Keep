@@ -49,17 +49,23 @@
 	icon_state = "ekey"
 	lockid = "royal"
 
+/obj/item/roguekey/prince_rooms
+	name = "Princely Key"
+	desc = "The Key to the heirs chambers."
+	icon_state = "ekey"
+	lockid = "prince"
+
 /obj/item/roguekey/vault
 	name = "vault key"
 	desc = "This key opens the mighty vault."
 	icon_state = "cheesekey"
 	lockid = "vault"
 
-/obj/item/roguekey/bailiff
-	name = "bailiff's key"
-	desc = "This key belongs to the bailiff."
+/obj/item/roguekey/councillor_rooms
+	name = "councillor rooms key"
+	desc = "This key opens the councillor's rooms."
 	icon_state = "cheesekey"
-	lockid = "sheriff"
+	lockid = "councillor"
 
 /obj/item/roguekey/merchant
 	name = "merchant's key"
@@ -351,6 +357,12 @@
 	desc = "This key opens the keep dungeon."
 	icon_state = "spikekey"
 	lockid = "keep_dungeon"
+
+/obj/item/roguekey/keep_dungeon_torture
+	name = "keep dungeon torture room key"
+	desc = "This key opens the keep dungeon torture room."
+	icon_state = "spikekey"
+	lockid = "keep_dungeon_torture"
 
 /obj/item/roguekey/keep_armory
 	name = "keep armory key"
