@@ -2154,7 +2154,7 @@
 "gBf" = (/obj/structure/stairs{dir = 8},/turf/open/floor/rogue/wood,/area/rogue/outdoors/beach)
 "gBh" = (/obj/machinery/light/rogue/lanternpost{dir = 1},/turf/open/floor/rogue/dirt,/area/rogue/outdoors/beach)
 "gBm" = (/obj/structure/roguemachine/scomm/r,/turf/open/floor/rogue/ruinedwood{icon_state = "horzw"},/area/rogue/indoors/town/dwarfin)
-"gCd" = (/obj/structure/closet/crate/chest,/obj/item/clothing/suit/roguetown/armor/chainmail/chainkini,/turf/open/floor/rogue/dirt/road,/area/rogue/under/cave)
+"gCd" = (/obj/structure/closet/crate/chest,/obj/item/clothing/suit/roguetown/armor/chainmail/bikini,/turf/open/floor/rogue/dirt/road,/area/rogue/under/cave)
 "gEN" = (/obj/structure/fluff/railing/border{dir = 10},/turf/open/floor/rogue/wood,/area/rogue/indoors/town/church)
 "gGu" = (/turf/closed/wall/mineral/rogue/stone,/area/rogue/indoors/town/bath)
 "gHN" = (/obj/structure/stairs{dir = 8},/turf/open/floor/rogue/wood,/area/rogue/indoors/town/garrison)

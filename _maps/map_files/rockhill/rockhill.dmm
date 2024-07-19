@@ -1916,10 +1916,9 @@
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors/tribalfort)
 "bfl" = (
-/obj/structure/closet/crate/chest,
-/obj/item/reagent_containers/food/snacks/rogue/meat/steak,
-/obj/item/reagent_containers/food/snacks/rogue/meat/steak,
-/obj/item/reagent_containers/food/snacks/rogue/meat/steak,
+/obj/machinery/light/rogue/torchholder{
+	dir = 4
+	},
 /turf/open/floor/rogue/twig{
 	dir = 8
 	},
@@ -2344,6 +2343,13 @@
 	},
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/basement)
+"bFG" = (
+/obj/structure/bed/rogue/inn/hay,
+/obj/effect/landmark/start/goblinshaman,
+/turf/open/floor/rogue/twig{
+	dir = 8
+	},
+/area/rogue/indoors)
 "bFU" = (
 /turf/open/floor/rogue/tile/masonic,
 /area/rogue/indoors/town/manor)
@@ -5398,12 +5404,9 @@
 /turf/open/floor/rogue/blocks/stonered/tiny,
 /area/rogue/indoors/town/dwarfin)
 "fcp" = (
-/obj/structure/fluff/railing/wood{
-	dir = 4
-	},
-/obj/structure/fermenting_barrel/beer,
+/obj/structure/fluff/psycross/crafted,
 /turf/open/floor/rogue/twig{
-	dir = 4
+	dir = 8
 	},
 /area/rogue/indoors)
 "fcJ" = (
@@ -5536,6 +5539,7 @@
 /area/rogue/indoors/town/magician)
 "fkL" = (
 /obj/machinery/light/rogue/oven/west,
+/obj/effect/landmark/start/goblincook,
 /turf/open/floor/rogue/twig{
 	dir = 8
 	},
@@ -5831,8 +5835,7 @@
 	dir = 8
 	},
 /obj/structure/bars/pipe{
-	dir = 9;
-	icon_state = "pipe"
+	dir = 9
 	},
 /obj/structure/bars/pipe{
 	dir = 1
@@ -6983,6 +6986,17 @@
 	},
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue/indoors/town/tavern)
+"gXB" = (
+/obj/structure/closet/crate/roguecloset/crafted,
+/obj/item/reagent_containers/food/snacks/rogue/crackerscooked,
+/obj/item/seeds/wheat,
+/obj/item/seeds/apple,
+/obj/item/seeds/berryrogue,
+/obj/item/seeds/sweetleaf,
+/turf/open/floor/rogue/twig{
+	dir = 8
+	},
+/area/rogue/indoors)
 "gXW" = (
 /obj/machinery/light/rogue/firebowl/stump,
 /obj/structure/fluff/railing/wood{
@@ -8125,6 +8139,7 @@
 	icon_state = "tablewood1"
 	},
 /obj/item/cooking/pan,
+/obj/item/rogueweapon/huntingknife/stoneknife,
 /turf/open/floor/rogue/twig{
 	dir = 8
 	},
@@ -8548,10 +8563,18 @@
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/basement)
 "iEL" = (
-/obj/structure/table/wood{
-	icon_state = "tablewood1"
-	},
-/obj/item/rogueweapon/huntingknife/stoneknife,
+/obj/structure/closet/crate/chest,
+/obj/item/reagent_containers/food/snacks/rogue/meat/steak,
+/obj/item/reagent_containers/food/snacks/rogue/meat/steak,
+/obj/item/reagent_containers/food/snacks/rogue/meat/steak,
+/obj/item/reagent_containers/powder/flour,
+/obj/item/reagent_containers/powder/flour,
+/obj/item/reagent_containers/food/snacks/rogue/raisins,
+/obj/item/reagent_containers/food/snacks/rogue/raisins,
+/obj/item/reagent_containers/powder/flour,
+/obj/item/reagent_containers/powder/flour,
+/obj/item/reagent_containers/powder/flour,
+/obj/item/reagent_containers/food/snacks/rogue/raisins,
 /turf/open/floor/rogue/twig{
 	dir = 8
 	},
@@ -9709,8 +9732,7 @@
 /area/rogue/under/town/basement)
 "keO" = (
 /obj/structure/bars/pipe{
-	dir = 9;
-	icon_state = "pipe"
+	dir = 9
 	},
 /turf/open/floor/rogue/metal/barograte,
 /area/rogue/under/cavewet/bogcaves/sunkencity/psydon)
@@ -10357,6 +10379,17 @@
 	pixel_y = -6
 	},
 /turf/open/floor/rogue/ruinedwood/spiral,
+/area/rogue/indoors)
+"kUB" = (
+/obj/machinery/light/rogue/torchholder{
+	dir = 8
+	},
+/obj/structure/table/wood{
+	icon_state = "tablewood1"
+	},
+/turf/open/floor/rogue/twig{
+	dir = 8
+	},
 /area/rogue/indoors)
 "kUR" = (
 /turf/open/floor/rogue/church,
@@ -11332,8 +11365,7 @@
 "mee" = (
 /obj/structure/bars/pipe,
 /obj/structure/bars/pipe{
-	dir = 6;
-	icon_state = "pipe"
+	dir = 6
 	},
 /turf/open/floor/rogue/metal/barograte,
 /area/rogue/under/cavewet/bogcaves/sunkencity)
@@ -12139,17 +12171,9 @@
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/indoors)
 "nhU" = (
-/obj/structure/closet/crate/chest,
-/obj/item/reagent_containers/powder/flour,
-/obj/item/reagent_containers/powder/flour,
-/obj/item/reagent_containers/powder/flour,
-/obj/item/reagent_containers/powder/flour,
-/obj/item/reagent_containers/powder/flour,
-/obj/item/reagent_containers/food/snacks/rogue/raisins,
-/obj/item/reagent_containers/food/snacks/rogue/raisins,
-/obj/item/reagent_containers/food/snacks/rogue/raisins,
+/obj/structure/fermenting_barrel/beer,
 /turf/open/floor/rogue/twig{
-	dir = 8
+	dir = 4
 	},
 /area/rogue/indoors)
 "nhW" = (
@@ -13395,7 +13419,6 @@
 /area/rogue/under/cavewet/bogcaves/sunkencity)
 "oGv" = (
 /obj/machinery/light/rogue/oven/east,
-/obj/effect/landmark/start/goblincook,
 /turf/open/floor/rogue/twig{
 	dir = 8
 	},
@@ -16103,8 +16126,7 @@
 	},
 /obj/structure/bars/pipe,
 /obj/structure/bars/pipe{
-	dir = 9;
-	icon_state = "pipe"
+	dir = 9
 	},
 /turf/open/floor/rogue/metal/barograte,
 /area/rogue/under/cavewet/bogcaves/sunkencity/psydon)
@@ -17793,6 +17815,10 @@
 	},
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/indoors)
+"tUR" = (
+/obj/effect/landmark/start/shepherd,
+/turf/open/floor/rogue/church,
+/area/rogue/indoors/town/church/chapel)
 "tVd" = (
 /obj/structure/gate{
 	gid = "gatemanor2";
@@ -20830,8 +20856,7 @@
 "xyG" = (
 /obj/structure/bars/pipe,
 /obj/structure/bars/pipe{
-	dir = 6;
-	icon_state = "pipe"
+	dir = 6
 	},
 /obj/structure/bars/pipe{
 	dir = 8
@@ -386100,9 +386125,9 @@ nad
 nad
 nad
 gnR
-gnR
+cFR
 eZD
-kru
+nhU
 wCP
 kru
 wCP
@@ -386504,13 +386529,13 @@ nad
 gnR
 gnR
 wjG
-fcp
+pAa
 wjG
 srJ
 pAa
 wjG
 pAa
-pAa
+cKH
 wjG
 nXL
 wjG
@@ -386905,14 +386930,14 @@ nad
 nad
 gnR
 gnR
-gnR
-gnR
-wjG
+pAa
+fcp
 irV
 irV
+pAa
 oGv
-bfl
-nhU
+irV
+irV
 pAa
 gnR
 cFR
@@ -387307,14 +387332,14 @@ nad
 gnR
 gnR
 gnR
-cFR
-tCd
 wjG
+gXB
 irV
+wjG
+wjG
 iEL
 irV
-irV
-irV
+dLx
 wjG
 gnR
 gnR
@@ -387709,14 +387734,14 @@ nad
 gnR
 gnR
 gnR
-gnR
-tCd
-wjG
-irV
-epY
+pAa
+kUB
+bFG
+pAa
+bfl
 fkL
 epY
-dLx
+epY
 pAa
 gnR
 nad
@@ -388111,11 +388136,11 @@ nad
 gnR
 gnR
 gnR
-gnR
-tCd
+wjG
+pAa
+pAa
 wjG
 srJ
-pAa
 wjG
 ihr
 tAq
@@ -418760,7 +418785,7 @@ nJy
 uSx
 nJy
 uSx
-ntK
+tUR
 ujc
 swm
 jlM
@@ -420368,7 +420393,7 @@ nJy
 nJy
 hcx
 uSx
-ntK
+tUR
 ujc
 swm
 jlM

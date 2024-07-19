@@ -30,7 +30,7 @@
 	shoes = /obj/item/clothing/shoes/roguetown/gladiator
 	backl = /obj/item/storage/backpack/rogue/satchel
 	if(prob(100))
-		armor = /obj/item/clothing/suit/roguetown/armor/chainmail/chainkini
+		armor = /obj/item/clothing/suit/roguetown/armor/chainmail/bikini
 	wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
 	if(prob(50))
 		shoes = /obj/item/clothing/shoes/roguetown/boots

@@ -191,6 +191,8 @@
 #define TRIBALCOOK	(1<<1)
 #define TRIBALGUARD	(1<<2)
 #define TRIBALSMITH	(1<<3)
+#define TRIBALSHAMAN	(1<<3)
+#define TRIBALVILLAGER	(1<<3)
 
 #define SLOP		(1<<9)
 
@@ -290,3 +292,5 @@
 #define JDO_TRIBALCOOK 37
 #define JDO_TRIBALGUARD 38
 #define JDO_TRIBALSMITH 39
+#define JDO_TRIBALSHAMAN 40
+#define JDO_TRIBALVILLAGER 41

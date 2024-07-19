@@ -3,8 +3,8 @@
 	flag = TRIBALSMITH
 	department_flag = TRIBAL
 	faction = "Station"
-	total_positions = 3
-	spawn_positions = 3
+	total_positions = 2
+	spawn_positions = 2
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
 	tutorial = "Tribal smith responsible for forging weapons, armor, and tools for the tribe."
@@ -25,6 +25,7 @@
 
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/maces, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/swimming, pick(0,0,1), TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/climbing, pick(1,1,2), TRUE)
 		H.mind.adjust_skillrank(/datum/skill/craft/crafting, 2 , TRUE)

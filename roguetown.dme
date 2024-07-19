@@ -2246,6 +2246,7 @@
 #include "code\modules\jobs\job_types\roguetown\goblin\chieftain.dm"
 #include "code\modules\jobs\job_types\roguetown\goblin\tribalcook.dm"
 #include "code\modules\jobs\job_types\roguetown\goblin\tribalguard.dm"
+#include "code\modules\jobs\job_types\roguetown\goblin\tribalshaman.dm"
 #include "code\modules\jobs\job_types\roguetown\goblin\tribalsmith.dm"
 #include "code\modules\jobs\job_types\roguetown\mercenaries\desertrider.dm"
 #include "code\modules\jobs\job_types\roguetown\mercenaries\grenzelhoft.dm"

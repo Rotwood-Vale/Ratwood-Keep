@@ -403,6 +403,10 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	name = "Tribal Cook"
 	icon_state = "arrow"
 
+/obj/effect/landmark/start/goblinshaman
+	name = "Tribal Shaman"
+	icon_state = "arrow"
+
 /obj/effect/landmark/start/goblinguard
 	name = "Tribal Guard"
 	icon_state = "arrow"

@@ -118,7 +118,7 @@
 	color = "#151615"
 
 /obj/item/clothing/under/roguetown/chainlegs
-	name = "chain chausses"
+	name = "steel chain chausses"
 	desc = "Chain leggings composed of interlinked metal rings."
 	gender = PLURAL
 	icon_state = "chain_legs"
@@ -136,7 +136,10 @@
 	l_sleeve_status = SLEEVE_NOMOD
 
 /obj/item/clothing/under/roguetown/chainlegs/iron
+
+	name = "iron chain chausses"
 	icon_state = "ichain_legs"
+	armor = list("blunt" = 40, "slash" = 80, "stab" = 40, "bullet" = 10, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
 	anvilrepair = /datum/skill/craft/armorsmithing
 	smeltresult = /obj/item/ingot/iron
 
@@ -144,8 +147,8 @@
 	name = "plated chausses"
 	desc = "Plated armor to protect the legs."
 	gender = PLURAL
-	icon_state = "chain_legs"
-	item_state = "chain_legs"
+	icon_state = "plate_legs"
+	item_state = "plate_legs"
 //	adjustable = CAN_CADJUST
 	sewrepair = FALSE
 	armor = list("blunt" = 90, "slash" = 100, "stab" = 80, "bullet" = 50, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
@@ -156,6 +159,16 @@
 	anvilrepair = /datum/skill/craft/armorsmithing
 	r_sleeve_status = SLEEVE_NOMOD
 	l_sleeve_status = SLEEVE_NOMOD
+
+/obj/item/clothing/under/roguetown/chainlegs/skirt
+	name = "plated skirt"
+	icon_state = "chain_skirt"
+	item_state = "chain_skirt"
+
+/obj/item/clothing/under/roguetown/platelegs/skirt
+	name = "chain skirt"
+	icon_state = "plate_skirt"
+	item_state = "plate_skirt"
 
 /obj/item/clothing/under/roguetown/loincloth
 	name = "loincloth"

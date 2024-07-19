@@ -2023,7 +2023,7 @@
 "gAW" = (/obj/structure/ladder,/turf/open/floor/rogue/woodturned,/area/rogue/outdoors/rtfield)
 "gBe" = (/mob/living/simple_animal/hostile/retaliate/rogue/bigrat,/turf/open/floor/rogue/dirt/road,/area/rogue/under/cave)
 "gBf" = (/obj/structure/stairs{icon_state = "stairs"; dir = 8},/turf/open/floor/rogue/wood,/area/rogue/outdoors/beach)
-"gCd" = (/obj/structure/closet/crate/chest,/obj/item/clothing/suit/roguetown/armor/chainmail/chainkini,/turf/open/floor/rogue/dirt/road,/area/rogue/under/cave)
+"gCd" = (/obj/structure/closet/crate/chest,/obj/item/clothing/suit/roguetown/armor/chainmail/bikini,/turf/open/floor/rogue/dirt/road,/area/rogue/under/cave)
 "gGu" = (/obj/structure/mineral_door/wood/deadbolt{dir = 1; icon_state = "wooddir"; locked = 1},/turf/open/floor/rogue/dirt/road,/area/rogue/outdoors/rtfield)
 "gHN" = (/obj/machinery/light/rogue/firebowl,/obj/machinery/light/rogue/firebowl/stump,/turf/open/floor/rogue/dirt/road,/area/rogue/outdoors/rtfield)
 "gLB" = (/obj/structure/table/wood{icon_state = "longtable"},/turf/open/floor/rogue/ruinedwood{icon_state = "horzw"},/area/rogue)

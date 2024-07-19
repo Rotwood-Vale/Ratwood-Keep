@@ -162,6 +162,7 @@ GLOBAL_LIST_INIT(goblin_positions, list(
 	"Tribal Guard",
 	"Chieftain",
 	"Tribal Smith",
+	"Tribal Shaman",
 ))
 
 
