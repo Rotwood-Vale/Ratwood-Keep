@@ -1,4 +1,5 @@
 /datum/skill/misc
+	abstract_type = /datum/skill/misc
 	name = "Misc"
 	desc = ""
 
@@ -13,6 +14,7 @@
 
 /datum/skill/misc/reading
 	name = "Reading"
+	randomable_dream_xp = FALSE
 
 /datum/skill/misc/swimming
 	name = "Swimming"

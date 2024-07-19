@@ -24,6 +24,8 @@ SUBSYSTEM_DEF(skills)
 
 ///Ran on initialize, populates the skills dictionary
 /datum/controller/subsystem/skills/proc/InitializeSkills(timeofday)
-	for(var/type in subtypesof(/datum/skill))
+	for(var/type in typesof(/datum/skill))
+		if(is_abstract(type))
+			continue
 		var/datum/skill/ref = new type
 		all_skills[type] = ref

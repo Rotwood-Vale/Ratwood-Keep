@@ -39,7 +39,7 @@
 		Stun(50)
 
 	if(mind)
-		mind.sleep_adv.add_mood_cycle(stress)
+		mind.sleep_adv.add_stress_cycle(stress)
 		for(var/datum/antagonist/A in mind.antag_datums)
 			A.on_life(src)
 
@@ -52,12 +52,13 @@
 			if(IsSleeping())
 				if(health > 0)
 					if(has_status_effect(/datum/status_effect/debuff/sleepytime))
+						if(mind)
+							mind.sleep_adv.advance_cycle()
 						tiredness = 0
 						remove_status_effect(/datum/status_effect/debuff/sleepytime)
 						var/datum/game_mode/chaosmode/C = SSticker.mode
 						if(istype(C))
 							if(mind)
-								mind.sleep_adv.advance_cycle()
 								if(!mind.antag_datums || !mind.antag_datums.len)
 									allmig_reward++
 									to_chat(src, span_danger("Nights Survived: \Roman[allmig_reward]"))

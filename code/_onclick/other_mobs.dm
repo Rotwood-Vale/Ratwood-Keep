@@ -413,14 +413,14 @@
 									if (V.get_item_by_slot(SLOT_BELT_R))
 										stealpos.Add(V.get_item_by_slot(SLOT_BELT_R))
 									if (V.get_item_by_slot(SLOT_BELT_L))
-										stealpos.Add(V.get_item_by_slot(SLOT_BELT_L))	
+										stealpos.Add(V.get_item_by_slot(SLOT_BELT_L))
 								if("r_hand" || "l_hand")
 									if (V.get_item_by_slot(SLOT_RING))
 										stealpos.Add(V.get_item_by_slot(SLOT_RING))
 							if (length(stealpos) > 0)
 								var/obj/item/picked = pick(stealpos)
 								V.dropItemToGround(picked)
-								put_in_active_hand(picked)						
+								put_in_active_hand(picked)
 								to_chat(src, span_green("I stole [picked]!"))
 								V.log_message("has had \the [picked] stolen by [key_name(U)]", LOG_ATTACK, color="black")
 								U.log_message("has stolen \the [picked] from [key_name(V)]", LOG_ATTACK, color="black")
@@ -439,7 +439,8 @@
 						U.log_message("has attempted to pickpocket [key_name(V)]", LOG_ATTACK, color="black")
 						to_chat(src, span_danger("I failed to pick the pocket!"))
 						exp_to_gain /= 5 // these can be removed or changed on reviewer's discretion
-					if(src != A)
+					// If we're pickpocketing someone else, and that person is conscious, grant XP
+					if(src != V && V.stat == CONSCIOUS)
 						mind.add_sleep_experience(/datum/skill/misc/stealing, exp_to_gain, FALSE)
 					changeNext_move(mmb_intent.clickcd)
 				return

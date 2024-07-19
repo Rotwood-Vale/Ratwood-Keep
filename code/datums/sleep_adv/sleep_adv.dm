@@ -2,8 +2,8 @@
 	var/sleep_adv_cycle = 0
 	var/sleep_adv_points = 0
 	var/list/skill_floors = list()
-	var/mood_amount = 0
-	var/mood_cycles = 0
+	var/stress_amount = 0
+	var/stress_cycles = 0
 	var/rolled_specials = 0
 	var/list/sleep_exp = list()
 	var/datum/mind/mind = null
@@ -16,9 +16,9 @@
 	mind = null
 	. = ..()
 
-/datum/sleep_adv/proc/add_mood_cycle(moodlet_amount)
-	mood_amount += moodlet_amount
-	mood_cycles++
+/datum/sleep_adv/proc/add_stress_cycle(add_amount)
+	stress_amount += add_amount
+	stress_cycles++
 	process_sleep()//This could get hooked somewhere else
 
 /datum/sleep_adv/proc/get_sleep_xp(skill)
@@ -27,7 +27,7 @@
 	return sleep_exp[skill]
 
 /datum/sleep_adv/proc/adjust_sleep_xp(skill, adjust)
-	var/current_xp = get_sleep_xp()
+	var/current_xp = get_sleep_xp(skill)
 	sleep_exp[skill] = current_xp + adjust
 
 /datum/sleep_adv/proc/needed_xp_for_level(skill_level)
@@ -80,15 +80,44 @@
 	if(prob(100))
 		rolled_specials++
 	to_chat(mind.current, span_notice("My consciousness slips and I start dreaming..."))
-	to_chat(mind.current, span_notice("With no stresses throughout the day I dream vividly..."))
-	sleep_adv_points += 30
+
+	var/dream_dust = 300
+	if(mind.current.STAINT > 10)
+		dream_dust += (mind.current.STAINT - 10) * 1
+	
+	var/stress_median = stress_amount / stress_cycles
+
+	if(stress_median <= 0.5)
+		// Unstressed, happy
+		to_chat(mind.current, span_notice("With no stresses throughout the day I dream vividly..."))
+		dream_dust += 100
+		grant_random_xp(2, SLEEP_EXP_NOVICE)
+	else if (stress_median >= 1.5)
+		// Stressed, unhappy
+		to_chat(mind.current, span_boldwarning("Bothered by the stresses of the day my dreams are short..."))
+		dream_dust -= 100
+	else
+		// In the middle
+		grant_random_xp(1, SLEEP_EXP_NOVICE)
+
+	stress_amount = 0
+	stress_cycles = 0
+
+	var/dream_points = FLOOR(dream_dust / 100, 1)
+	var/extra_point_prob = dream_dust % 100
+	if(extra_point_prob)
+		dream_points += 1
+
+	sleep_adv_points += dream_points
 	sleep_adv_cycle++
+
 	show_ui(mind.current)
 
 /datum/sleep_adv/proc/show_ui(mob/living/user)
 	var/list/dat = list()
-	dat += "<center>\Roman[sleep_adv_points]</center>"
+	dat += "<center>Cycle \Roman[sleep_adv_cycle]</center>"
 	dat += "<br><center>Dream, for those who dream may reach higher heights</center><br>"
+	dat += "<center>\Roman[sleep_adv_points]</center>"
 	var/can_buy_anything = FALSE
 	for(var/skill_type in SSskills.all_skills)
 		var/datum/skill/skill = GetSkillRef(skill_type)
@@ -97,9 +126,9 @@
 		var/can_buy = can_buy_skill(skill_type)
 		if(can_buy)
 			can_buy_anything = TRUE
-		var/next_level = mind.get_skill_level(skill_type) + 1
+		var/next_level = get_next_level_for_skill(skill_type)
 		var/level_name = SSskills.level_names[next_level]
-		dat += "<br><a [can_buy ? "" : "class='linkOff'"] href='?src=[REF(src)];task=buy_skill;skill_type=[skill_type]'>[skill.name] [level_name]</a> - \Roman[get_skill_cost(skill_type)]"
+		dat += "<br><a [can_buy ? "" : "class='linkOff'"] href='?src=[REF(src)];task=buy_skill;skill_type=[skill_type]'>[skill.name] ([level_name])</a> - \Roman[get_skill_cost(skill_type)]"
 	dat += "<br>"
 	if(rolled_specials > 0)
 		var/can_buy = can_buy_special()
@@ -111,7 +140,7 @@
 	if(!can_buy_anything)
 		finish()
 		return
-	var/datum/browser/popup = new(user, "dreams", "<center>Dreams</center>", 300, 400)
+	var/datum/browser/popup = new(user, "dreams", "<center>Dreams</center>", 350, 450)
 	popup.set_window_options("can_close=0")
 	popup.set_content(dat.Join())
 	popup.open(FALSE)
@@ -134,8 +163,16 @@
 /datum/sleep_adv/proc/can_buy_special()
 	return (sleep_adv_points >= get_special_cost())
 
+/datum/sleep_adv/proc/get_next_level_for_skill(skill_type)
+	if(!mind.current)
+		return 0
+	var/next_level = mind.get_skill_level(skill_type) + 1
+	return next_level
+
 /datum/sleep_adv/proc/get_skill_cost(skill_type)
-	return 2
+	var/datum/skill/skill = GetSkillRef(skill_type)
+	var/next_level = get_next_level_for_skill(skill_type)
+	return skill.get_dream_cost_for_level(next_level)
 
 /datum/sleep_adv/proc/get_special_cost()
 	return 3
@@ -145,9 +182,26 @@
 		return
 	if(!enough_sleep_xp_to_advance(skill_type))
 		return
+	var/datum/skill/skill = GetSkillRef(skill_type)
+	var/dream_text = skill.get_random_dream()
+	if(dream_text)
+		to_chat(mind.current, span_notice(dream_text))
 	mind.adjust_skillrank(skill_type, 1, FALSE)
 	sleep_adv_points -= get_skill_cost(skill_type)
 	adjust_sleep_xp(skill_type, -get_requried_sleep_xp_for_skill(skill_type))
+
+/datum/sleep_adv/proc/grant_random_xp(skill_amt, exp_amount)
+	var/list/viable_skills = list()
+	for(var/skill_type in SSskills.all_skills)
+		var/datum/skill/skill = GetSkillRef(skill_type)
+		if(!skill.randomable_dream_xp)
+			continue
+		viable_skills += skill_type
+	for(var/i in 1 to skill_amt)
+		if(!length(viable_skills))
+			break
+		var/skill_type = pick_n_take(viable_skills)
+		add_sleep_experience(skill_type, exp_amount, TRUE)
 
 /datum/sleep_adv/proc/buy_special()
 	if(!can_buy_special())
@@ -156,7 +210,10 @@
 	sleep_adv_points -= get_special_cost()
 
 /datum/sleep_adv/proc/test()
-	add_sleep_experience(/datum/skill/misc/alchemy, 2000)
+	add_sleep_experience(/datum/skill/labor/lumberjacking, 2000)
+	add_sleep_experience(/datum/skill/craft/crafting, 2000)
+	add_sleep_experience(/datum/skill/combat/swords, 2000)
+	sleep_adv_points += 30
 	advance_cycle()
 
 /datum/sleep_adv/proc/finish()
