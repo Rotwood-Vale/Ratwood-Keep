@@ -51,3 +51,18 @@
 	name = "internal testicles"
 	visible_organ = FALSE
 	accessory_type = /datum/sprite_accessory/none
+
+/obj/item/organ/penis/internal
+	name = "internal penis"
+	visible_organ = FALSE
+	accessory_type = /datum/sprite_accessory/none
+
+/obj/item/organ/vagina/internal
+	name = "internal vagina"
+	visible_organ = FALSE
+	accessory_type = /datum/sprite_accessory/none
+
+/obj/item/organ/breasts/internal
+	name = "internal breasts"
+	visible_organ = FALSE
+	accessory_type = /datum/sprite_accessory/none
