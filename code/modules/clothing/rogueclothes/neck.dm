@@ -90,6 +90,7 @@
 
 /obj/item/clothing/neck/roguetown/bervor
 	name = "bervor"
+	desc = "A steel bervor designed to protect the neck."
 	icon_state = "bervor"
 	armor = list("blunt" = 90, "slash" = 100, "stab" = 80, "bullet" = 100, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
 	anvilrepair = /datum/skill/craft/armorsmithing
@@ -104,6 +105,7 @@
 
 /obj/item/clothing/neck/roguetown/gorget
 	name = "gorget"
+	desc = "An iron gorget to protect the neck."
 	icon_state = "gorget"
 	armor = list("blunt" = 90, "slash" = 100, "stab" = 80, "bullet" = 100, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
 	smeltresult = /obj/item/ingot/iron

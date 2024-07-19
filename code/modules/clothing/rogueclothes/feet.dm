@@ -16,7 +16,7 @@
 	name = "dark boots"
 	//dropshrink = 0.75
 	color = "#d5c2aa"
-	desc = ""
+	desc = "A fine set of dark boots."
 	gender = PLURAL
 	icon_state = "blackboots"
 	item_state = "blackboots"
@@ -37,7 +37,7 @@
 /obj/item/clothing/shoes/roguetown/shortboots
 	name = "shortboots"
 	color = "#d5c2aa"
-	desc = ""
+	desc = "Boots which are a bit shorter at the ankles."
 	gender = PLURAL
 	icon_state = "shortboots"
 	item_state = "shortboots"
@@ -46,7 +46,7 @@
 /obj/item/clothing/shoes/roguetown/ridingboots
 	name = "riding boots"
 	color = "#d5c2aa"
-	desc = ""
+	desc = "Boots worn by those who ride Saigas often."
 	gender = PLURAL
 	icon_state = "ridingboots"
 	item_state = "ridingboots"
@@ -58,7 +58,7 @@
 
 /obj/item/clothing/shoes/roguetown/simpleshoes
 	name = "shoes"
-	desc = ""
+	desc = "Better than going barefoot."
 	gender = PLURAL
 	icon_state = "simpleshoe"
 	item_state = "simpleshoe"
@@ -102,7 +102,7 @@
 
 /obj/item/clothing/shoes/roguetown/shalal
 	name = "babouche"
-	desc = ""
+	desc = "Simple cheap shoes."
 	gender = PLURAL
 	icon_state = "shalal"
 	item_state = "shalal"
@@ -110,7 +110,7 @@
 
 /obj/item/clothing/shoes/roguetown/boots/armoriron
 	name = "iron plated boots"
-	desc = ""
+	desc = "Boots with iron for added protection."
 	body_parts_covered = FEET
 	icon_state = "armorironboots"
 	item_state = "armorironboots"
@@ -123,7 +123,7 @@
 
 /obj/item/clothing/shoes/roguetown/boots/armor
 	name = "steel plated boots"
-	desc = ""
+	desc = "A heavy pair of steel plated boots."
 	body_parts_covered = FEET
 	icon_state = "armorboots"
 	item_state = "armorboots"
@@ -137,7 +137,7 @@
 /obj/item/clothing/shoes/roguetown/boots/leather
 	name = "leather boots"
 	//dropshrink = 0.75
-	desc = ""
+	desc = "Boots made of leather."
 	gender = PLURAL
 	icon_state = "leatherboots"
 	item_state = "leatherboots"
@@ -146,6 +146,7 @@
 
 /obj/item/clothing/shoes/roguetown/jester
 	name = "funny shoes"
+	desc = "Perfect for performing a jig or running for your life after a bad joke."
 	icon_state = "jestershoes"
 	resistance_flags = null
 	sewrepair = TRUE

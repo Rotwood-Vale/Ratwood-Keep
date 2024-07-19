@@ -356,7 +356,7 @@
 
 /obj/item/clothing/cloak/stabard/bog
 	name = "bogman tabard"
-	desc = "A tabard colored in a glorius green of the mighty protectors of the BOG." // THE BOG DESERVES A BETTER DESCRIPTION!
+	desc = "A tabard worn by those that protect the citizenry from the horrors of the Terrorbog" // THE BOG DESERVES A BETTER DESCRIPTION!
 	color = CLOTHING_GREEN
 	detail_color = CLOTHING_DARK_GREEN
 
@@ -667,7 +667,7 @@
 
 /obj/item/clothing/cloak/raincloak/mortus
 	name = "funeral cloak"
-	desc = "You're always shrouded by death."
+	desc = "A cloak worn by morticians on their solemn task of putting the dead to rest."
 	color = CLOTHING_BLACK
 
 /obj/item/clothing/cloak/raincloak/brown
@@ -801,7 +801,7 @@
 
 /obj/item/clothing/cloak/stole
 	name = "stole"
-	desc = ""
+	desc = "Garments of a priest, usually worn when giving mass to the people."
 	icon_state = "stole_gold"
 	sleeved = null
 	sleevetype = null
@@ -842,7 +842,7 @@
 
 /obj/item/clothing/cloak/half
 	name = "halfcloak"
-	desc = ""
+	desc = "A cloak designed to cover one half of the body predominantly over the other."
 	color = null
 	icon_state = "halfcloak"
 	alternate_worn_layer = CLOAK_BEHIND_LAYER
