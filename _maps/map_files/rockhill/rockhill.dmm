@@ -20241,6 +20241,12 @@
 	},
 /turf/open/floor/rogue/blocks,
 /area/rogue/outdoors/town)
+"wPt" = (
+/obj/structure/long_sleep,
+/turf/open/floor/rogue/ruinedwood{
+	icon_state = "wooden_floort"
+	},
+/area/rogue/outdoors/beach)
 "wPU" = (
 /obj/structure/fermenting_barrel,
 /turf/open/floor/rogue/woodturned,
@@ -208949,7 +208955,7 @@ dKV
 dKV
 qQV
 xjC
-rEg
+wPt
 rEg
 kzz
 bIl
