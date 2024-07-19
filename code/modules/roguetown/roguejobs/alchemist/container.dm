@@ -5,6 +5,9 @@
 /obj/item/reagent_containers/glass/bottle/rogue/manapot
 	list_reagents = list(/datum/reagent/medicine/manapot = 45)
 
+/obj/item/reagent_containers/glass/bottle/rogue/antipoisonpot
+	list_reagents = list(/datum/reagent/medicine/antipoisonpot = 45)
+
 /obj/item/reagent_containers/glass/bottle/rogue/poison
 	list_reagents = list(/datum/reagent/toxin/killersice = 1)
 

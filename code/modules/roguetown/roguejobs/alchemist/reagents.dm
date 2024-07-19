@@ -37,6 +37,28 @@
 	..()
 	. = 1
 
+/datum/reagent/medicine/antipoisonpot
+	name = "Anti Poison Potion"
+	description = "Quickly nullifies toxins."
+	reagent_state = LIQUID
+	color = "#64bf49"
+	taste_description = "ashes"
+	overdose_threshold = 60
+	metabolization_rate = REAGENTS_METABOLISM
+	alpha = 200
+
+/datum/reagent/medicine/antipoisonpot/on_mob_life(mob/living/carbon/M)
+	for(var/datum/reagent/toxin/R in M.reagents.reagent_list)
+		if(R != src)
+			M.reagents.remove_reagent(R.type,0.5)
+	M.adjustToxLoss(-0.5*REM, 0)
+	..()
+	. = 1
+
+/datum/reagent/medicine/antipoisonpot/overdose_process(mob/living/carbon/M)
+	M.add_nausea(9)
+	M.adjustToxLoss(3, 0)
+
 /datum/reagent/berrypoison
 	name = "Berry Poison"
 	description = "Contains a poisonous thick, dark purple liquid."

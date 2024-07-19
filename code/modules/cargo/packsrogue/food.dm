@@ -21,6 +21,15 @@
 					/obj/item/reagent_containers/glass/bottle/rogue/manapot,
 				)
 
+/datum/supply_pack/rogue/food/antipoisonpot
+	name = "Anti Poison Potion"
+	cost = 22
+	contains = list(
+					/obj/item/reagent_containers/glass/bottle/rogue/antipoisonpot,
+					/obj/item/reagent_containers/glass/bottle/rogue/antipoisonpot,
+					/obj/item/reagent_containers/glass/bottle/rogue/antipoisonpot,
+				)
+
 /datum/supply_pack/rogue/food/wineb
 	name = "Wine"
 	cost = 45
