@@ -70,9 +70,6 @@
 /datum/mob_descriptor/face_exp/starry_eyed
 	name = "Starry-eyed"
 
-/datum/mob_descriptor/face_exp/youthful
-	name = "Youthful"
-
 /datum/mob_descriptor/face_exp/cold
 	name = "Cold"
 

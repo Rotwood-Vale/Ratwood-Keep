@@ -31,7 +31,6 @@
 		/datum/mob_descriptor/face_exp/sour,
 		/datum/mob_descriptor/face_exp/bright,
 		/datum/mob_descriptor/face_exp/starry_eyed,
-		/datum/mob_descriptor/face_exp/youthful,
 		/datum/mob_descriptor/face_exp/cold,
 		/datum/mob_descriptor/face_exp/tall,
 	)
