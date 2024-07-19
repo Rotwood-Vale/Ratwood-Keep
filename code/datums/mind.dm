@@ -326,7 +326,7 @@
 		if(!skill_experience[S])
 			amt2gain = SKILL_EXP_NOVICE+1
 		skill_experience[S] = max(0, skill_experience[S] + amt2gain) //Prevent going below 0
-	var/old_level = known_skills[S]
+	var/old_level = get_skill_level(skill)
 	switch(skill_experience[S])
 		if(SKILL_EXP_LEGENDARY to INFINITY)
 			known_skills[S] = SKILL_LEVEL_LEGENDARY
@@ -342,7 +342,7 @@
 			known_skills[S] = SKILL_LEVEL_NOVICE
 		if(0 to SKILL_EXP_NOVICE)
 			known_skills[S] = SKILL_LEVEL_NONE
-	if(isnull(old_level) || known_skills[S] == old_level)
+	if(known_skills[S] == old_level)
 		return //same level or we just started earning xp towards the first level.
 	if(silent)
 		return
