@@ -27,6 +27,7 @@
 /datum/mob_descriptor/scales
 	abstract_type = /datum/mob_descriptor/scales
 	slot = MOB_DESCRIPTOR_SLOT_SKIN
+	verbage = "%HAVE%"
 
 /datum/mob_descriptor/scales/plain
 	name = "Plain Scales"
@@ -46,6 +47,7 @@
 /datum/mob_descriptor/fur
 	abstract_type = /datum/mob_descriptor/fur
 	slot = MOB_DESCRIPTOR_SLOT_SKIN
+	verbage = "%HAVE%"
 
 /datum/mob_descriptor/fur/plain
 	name = "Plain Fur"
@@ -86,6 +88,7 @@
 /datum/mob_descriptor/feathers
 	abstract_type = /datum/mob_descriptor/feathers
 	slot = MOB_DESCRIPTOR_SLOT_SKIN
+	verbage = "%HAVE%"
 
 /datum/mob_descriptor/feathers/fine
 	name = "Fine Feathers"
@@ -105,6 +108,7 @@
 /datum/mob_descriptor/chitin
 	abstract_type = /datum/mob_descriptor/chitin
 	slot = MOB_DESCRIPTOR_SLOT_SKIN
+	verbage = "%HAVE%"
 
 /datum/mob_descriptor/chitin/smooth
 	name = "Smooth Chitin"
