@@ -17,6 +17,7 @@
 	. = ..()
 
 /datum/sleep_adv/proc/add_stress_cycle(add_amount)
+	add_amount = clamp(add_amount, -10, 10) // Only -10 to 10, clamping things like Ozmium
 	stress_amount += add_amount
 	stress_cycles++
 	process_sleep()//This could get hooked somewhere else
@@ -77,7 +78,7 @@
 	// Stuff
 	if(!mind.current)
 		return
-	if(prob(100))
+	if(prob(0)) //TODO SLEEP ADV SPECIALS
 		rolled_specials++
 	to_chat(mind.current, span_notice("My consciousness slips and I start dreaming..."))
 
@@ -87,7 +88,7 @@
 	
 	var/stress_median = stress_amount / stress_cycles
 
-	if(stress_median <= 0.5)
+	if(stress_median <= -1.5)
 		// Unstressed, happy
 		to_chat(mind.current, span_notice("With no stresses throughout the day I dream vividly..."))
 		dream_dust += 100
@@ -207,14 +208,8 @@
 	if(!can_buy_special())
 		return
 	// Apply special here
+	 //TODO SLEEP ADV SPECIALS
 	sleep_adv_points -= get_special_cost()
-
-/datum/sleep_adv/proc/test()
-	add_sleep_experience(/datum/skill/labor/lumberjacking, 2000)
-	add_sleep_experience(/datum/skill/craft/crafting, 2000)
-	add_sleep_experience(/datum/skill/combat/swords, 2000)
-	sleep_adv_points += 30
-	advance_cycle()
 
 /datum/sleep_adv/proc/finish()
 	if(!mind.current)
