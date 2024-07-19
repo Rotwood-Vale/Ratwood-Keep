@@ -39,7 +39,7 @@
 
 /obj/item/clothing/head/roguetown/roguehood/shalal
 	name = "keffiyeh"
-	desc = ""
+	desc = "A protective covering worn by those native to the desert."
 	color = null
 	icon_state = "shalal"
 	item_state = "shalal"
@@ -196,6 +196,7 @@
 
 /obj/item/clothing/head/roguetown/strawhat
 	name = "straw hat"
+	desc = "Keeps the sun off your head while toiling the fields."
 	icon_state = "strawhat"
 	sewrepair = TRUE
 
@@ -307,6 +308,7 @@
 
 /obj/item/clothing/head/roguetown/headband
 	name = "headband"
+	desc = "A simple headband to keep sweat out of your eyes."
 	icon_state = "headband"
 	item_state = "headband"
 	sewrepair = TRUE
@@ -395,6 +397,7 @@
 
 /obj/item/clothing/head/roguetown/hennin
 	name = "hennin"
+	desc = "A hat typically worn by women in nobility."
 	icon_state = "hennin"
 	sellprice = 19
 	dynamic_hair_suffix = "+generic"
@@ -402,6 +405,7 @@
 
 /obj/item/clothing/head/roguetown/paddedcap
 	name = "padded cap"
+	desc = "A modest arming cap"
 	icon_state = "armingcap"
 	item_state = "armingcap"
 	sleevetype = null
@@ -420,7 +424,7 @@
 	mob_overlay_icon = 'icons/roguetown/clothing/onmob/head.dmi'
 	slot_flags = ITEM_SLOT_HEAD|ITEM_SLOT_HIP
 	name = "helmet"
-	desc = ""
+	desc = "A helmet that doesn't get any more simple in design."
 	body_parts_covered = HEAD|HAIR|NOSE
 	icon_state = "nasal"
 	sleevetype = null
@@ -458,7 +462,7 @@
 	body_parts_covered = HEAD|HAIR
 
 /obj/item/clothing/head/roguetown/helmet/kettle
-	desc = "A steel helmet which protects the ears."
+	desc = "A steel helmet which protects the whole of the head."
 	icon_state = "kettle"
 	body_parts_covered = HEAD|HAIR|EARS
 	armor = list("blunt" = 80, "slash" = 90, "stab" = 70, "bullet" = 100, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
