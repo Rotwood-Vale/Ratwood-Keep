@@ -74,10 +74,6 @@
 	name = "Extensive Scarring"
 	verbage = "%HAVE%"
 
-/datum/mob_descriptor/prominent/elaborate_tattoos
-	name = "Elaborate Tattoos"
-	verbage = "%HAVE%"
-
 /datum/mob_descriptor/prominent/move_strange
 	name = "Moves Strangely"
 
@@ -111,8 +107,13 @@
 	verbage = "%HAVE%"
 	prefix = "a"
 
+/datum/mob_descriptor/prominent/innocent_gaze
+	name = "Innocent Gaze"
+	verbage = "%HAVE%"
+	prefix = "an"
+
 /datum/mob_descriptor/prominent/promiscuous_mannerisms
-	name = "Promiscuous Mannerisms"
+	name = "Sensual Manners"
 	verbage = "%HAVE%"
 
 /datum/mob_descriptor/prominent/intimidating_presence
@@ -132,6 +133,11 @@
 
 /datum/mob_descriptor/prominent/lordly_presence
 	name = "Lordly Presence"
+	verbage = "%HAVE%"
+	prefix = "a"
+
+/datum/mob_descriptor/prominent/doting_presence
+	name = "Doting Presence"
 	verbage = "%HAVE%"
 	prefix = "a"
 
@@ -161,8 +167,13 @@
 	prefix = "a"
 
 /datum/mob_descriptor/prominent/ghastly_pale
-	name = "Ghastly Pale"
-	verbage = "is"
+	name = "Ghastly Pallor"
+	verbage = "%HAVE%"
+	prefix = "a"
+
+/datum/mob_descriptor/prominent/elaborate_tattoos
+	name = "Elaborate Tattoos"
+	verbage = "%HAVE%"
 
 /datum/mob_descriptor/prominent/ritual_tattoos
 	name = "Ritual Tattoos"
@@ -193,3 +204,21 @@
 /datum/mob_descriptor/prominent/untrustworthy
 	name = "Untrustworthy"
 	verbage = "appears"
+
+/datum/mob_descriptor/prominent/ratty_hair
+	name = "Ratty Hair"
+	verbage = "%HAVE%"
+
+/datum/mob_descriptor/prominent/predatory_look
+	name = "Predatory Look"
+	verbage = "%HAVE%"
+	prefix = "a"
+
+/datum/mob_descriptor/prominent/chaste_mannerism
+	name = "Chaste Mannerisms"
+	verbage = "%HAVE%"
+
+/datum/mob_descriptor/prominent/whimsy
+	name = "Air of Whimsy"
+	verbage = "%HAVE%"
+	prefix = "an"

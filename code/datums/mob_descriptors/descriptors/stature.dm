@@ -34,3 +34,18 @@
 
 /datum/mob_descriptor/stature/highbrow
 	name = "Highbrow"
+
+/datum/mob_descriptor/stature/stooge
+	name = "Stooge"
+
+/datum/mob_descriptor/stature/fool
+	name = "Fool"
+
+/datum/mob_descriptor/stature/bookworm
+	name = "Bookworm"
+
+/datum/mob_descriptor/stature/lowlife
+	name = "Lowlife"
+
+/datum/mob_descriptor/stature/dignitary
+	name = "Dignitary"

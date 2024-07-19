@@ -17,11 +17,29 @@
 /datum/mob_descriptor/body/herculean
 	name = "Herculean"
 
-/datum/mob_descriptor/body/fat
-	name = "Fat"
+/datum/mob_descriptor/body/plump
+	name = "Plump"
 
-/datum/mob_descriptor/body/chubby
-	name = "Chubby"
+/datum/mob_descriptor/body/pearshaped
+	name = "Pear-shaped"
+
+/datum/mob_descriptor/body/pudgy
+	name = "Pudgy"
+
+/datum/mob_descriptor/body/strongfat
+	name = "Strong-fat"
+
+/datum/mob_descriptor/body/round
+	name = "Round"
+
+/datum/mob_descriptor/body/heavy
+	name = "Heavy"
+
+/datum/mob_descriptor/body/topheavy
+	name = "Top Heavy"
+
+/datum/mob_descriptor/body/bottomheavy
+	name = "Bottom Heavy"
 
 /datum/mob_descriptor/body/curvy
 	name = "Curvy"
@@ -67,3 +85,15 @@
 
 /datum/mob_descriptor/body/lean
 	name = "Lean"
+
+/datum/mob_descriptor/body/skeletal
+	name = "Skeletal"
+
+/datum/mob_descriptor/body/broadshoulder
+	name = "Broad-shouldered"
+
+/datum/mob_descriptor/body/waspwaist
+	name = "Wasp-waisted"
+
+/datum/mob_descriptor/body/burly
+	name = "Burly"

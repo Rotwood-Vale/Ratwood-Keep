@@ -16,9 +16,6 @@
 /datum/mob_descriptor/face/chiseled
 	name = "Chiseled"
 
-/datum/mob_descriptor/face/wrinkled
-	name = "Wrinkled"
-
 /datum/mob_descriptor/face/scarred
 	name = "Scarred"
 
@@ -50,6 +47,18 @@
 /datum/mob_descriptor/face/disfigured
 	name = "Disfigured"
 
+/datum/mob_descriptor/face/tall
+	name = "Tall"
+
+/datum/mob_descriptor/face/chubby
+	name = "Chubby"
+
+/datum/mob_descriptor/face/mousy
+	name = "Mousy"
+
+/datum/mob_descriptor/face/full
+	name = "Full"
+
 /datum/mob_descriptor/face_exp
 	abstract_type = /datum/mob_descriptor/face_exp
 	suffix = "face"
@@ -73,6 +82,59 @@
 /datum/mob_descriptor/face_exp/cold
 	name = "Cold"
 
-/datum/mob_descriptor/face_exp/tall
-	name = "Tall"
+/datum/mob_descriptor/face_exp/haggard
+	name = "Haggard"
 
+/datum/mob_descriptor/face_exp/fake
+	name = "Fake"
+
+/datum/mob_descriptor/face_exp/bitchy
+	name = "Bitchy"
+
+/datum/mob_descriptor/face_exp/spiteful
+	name = "Spiteful"
+
+/datum/mob_descriptor/face_exp/warm
+	name = "Warm"
+
+/datum/mob_descriptor/face_exp/salacious
+	name = "Salacious"
+
+/datum/mob_descriptor/face_exp/contemptous
+	name = "Contemptous"
+
+/datum/mob_descriptor/face_exp/mocking
+	name = "Mocking"
+
+/datum/mob_descriptor/face_exp/knowing
+	name = "Knowing"
+
+/datum/mob_descriptor/face_exp/cocky
+	name = "Cocky"
+
+/datum/mob_descriptor/face_exp/coy
+	name = "Coy"
+
+/datum/mob_descriptor/face_exp/frustrated
+	name = "Frustrated"
+
+/datum/mob_descriptor/face_exp/stern
+	name = "Stern"
+
+/datum/mob_descriptor/face_exp/genuine
+	name = "Genuine"
+
+/datum/mob_descriptor/face_exp/jaded
+	name = "Jaded"
+
+/datum/mob_descriptor/face_exp/inquisitive
+	name = "Inquisitive"
+
+/datum/mob_descriptor/face_exp/suspicious
+	name = "Suspicious"
+
+/datum/mob_descriptor/face_exp/tender
+	name = "Tender"
+
+/datum/mob_descriptor/face_exp/affectionate
+	name = "Affectionate"

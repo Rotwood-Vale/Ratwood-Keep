@@ -10,7 +10,6 @@
 		/datum/mob_descriptor/face/smooth,
 		/datum/mob_descriptor/face/rough,
 		/datum/mob_descriptor/face/chiseled,
-		/datum/mob_descriptor/face/wrinkled,
 		/datum/mob_descriptor/face/scarred,
 		/datum/mob_descriptor/face/angular,
 		/datum/mob_descriptor/face/gaunt,
@@ -21,10 +20,14 @@
 		/datum/mob_descriptor/face/sleek,
 		/datum/mob_descriptor/face/broad,
 		/datum/mob_descriptor/face/disfigured,
+		/datum/mob_descriptor/face/tall,
+		/datum/mob_descriptor/face/chubby,
+		/datum/mob_descriptor/face/mousy,
+		/datum/mob_descriptor/face/full,
 	)
 
 /datum/descriptor_choice/face_exp
-	name = "Expression"
+	name = "Resting Expression"
 	descriptors = list(
 		/datum/mob_descriptor/face_exp/refined,
 		/datum/mob_descriptor/face_exp/disinterested,
@@ -32,7 +35,25 @@
 		/datum/mob_descriptor/face_exp/bright,
 		/datum/mob_descriptor/face_exp/starry_eyed,
 		/datum/mob_descriptor/face_exp/cold,
-		/datum/mob_descriptor/face_exp/tall,
+		/datum/mob_descriptor/face_exp/haggard,
+		/datum/mob_descriptor/face_exp/fake,
+		/datum/mob_descriptor/face_exp/bitchy,
+		/datum/mob_descriptor/face_exp/spiteful,
+		/datum/mob_descriptor/face_exp/warm,
+		/datum/mob_descriptor/face_exp/salacious,
+		/datum/mob_descriptor/face_exp/contemptous,
+		/datum/mob_descriptor/face_exp/mocking,
+		/datum/mob_descriptor/face_exp/knowing,
+		/datum/mob_descriptor/face_exp/cocky,
+		/datum/mob_descriptor/face_exp/coy,
+		/datum/mob_descriptor/face_exp/frustrated,
+		/datum/mob_descriptor/face_exp/stern,
+		/datum/mob_descriptor/face_exp/genuine,
+		/datum/mob_descriptor/face_exp/jaded,
+		/datum/mob_descriptor/face_exp/inquisitive,
+		/datum/mob_descriptor/face_exp/suspicious,
+		/datum/mob_descriptor/face_exp/tender,
+		/datum/mob_descriptor/face_exp/affectionate,
 	)
 
 /datum/descriptor_choice/body
@@ -42,8 +63,14 @@
 		/datum/mob_descriptor/body/athletic,
 		/datum/mob_descriptor/body/muscular,
 		/datum/mob_descriptor/body/herculean,
-		/datum/mob_descriptor/body/fat,
-		/datum/mob_descriptor/body/chubby,
+		/datum/mob_descriptor/body/plump,
+		/datum/mob_descriptor/body/pearshaped,
+		/datum/mob_descriptor/body/pudgy,
+		/datum/mob_descriptor/body/strongfat,
+		/datum/mob_descriptor/body/round,
+		/datum/mob_descriptor/body/heavy,
+		/datum/mob_descriptor/body/topheavy,
+		/datum/mob_descriptor/body/bottomheavy,
 		/datum/mob_descriptor/body/curvy,
 		/datum/mob_descriptor/body/voluptuous,
 		/datum/mob_descriptor/body/decrepit,
@@ -59,6 +86,10 @@
 		/datum/mob_descriptor/body/petite,
 		/datum/mob_descriptor/body/gaunt,
 		/datum/mob_descriptor/body/lean,
+		/datum/mob_descriptor/body/skeletal,
+		/datum/mob_descriptor/body/broadshoulder,
+		/datum/mob_descriptor/body/waspwaist,
+		/datum/mob_descriptor/body/burly,
 	)
 
 /datum/descriptor_choice/stature
@@ -71,6 +102,11 @@
 		/datum/mob_descriptor/stature/slob,
 		/datum/mob_descriptor/stature/brute,
 		/datum/mob_descriptor/stature/highbrow,
+		/datum/mob_descriptor/stature/stooge,
+		/datum/mob_descriptor/stature/fool,
+		/datum/mob_descriptor/stature/bookworm,
+		/datum/mob_descriptor/stature/lowlife,
+		/datum/mob_descriptor/stature/dignitary,
 	)
 
 /datum/descriptor_choice/voice
@@ -96,6 +132,14 @@
 		/datum/mob_descriptor/voice/drawling,
 		/datum/mob_descriptor/voice/stilted,
 		/datum/mob_descriptor/voice/grave,
+		/datum/mob_descriptor/voice/doting,
+		/datum/mob_descriptor/voice/booming,
+		/datum/mob_descriptor/voice/lisping,
+		/datum/mob_descriptor/voice/honeyed,
+		/datum/mob_descriptor/voice/facetious,
+		/datum/mob_descriptor/voice/snide,
+		/datum/mob_descriptor/voice/smoker,
+		/datum/mob_descriptor/voice/venomous,
 	)
 
 /datum/descriptor_choice/skin
@@ -108,6 +152,13 @@
 		/datum/mob_descriptor/skin/diseased,
 		/datum/mob_descriptor/skin/dry,
 		/datum/mob_descriptor/skin/fine,
+		/datum/mob_descriptor/skin/wrinkled,
+		/datum/mob_descriptor/skin/sunkissed,
+		/datum/mob_descriptor/skin/aged,
+		/datum/mob_descriptor/skin/pockmarked,
+		/datum/mob_descriptor/skin/dusky,
+		/datum/mob_descriptor/skin/irritated,
+		/datum/mob_descriptor/skin/ashen,
 	)
 
 /datum/descriptor_choice/scales
@@ -165,6 +216,13 @@
 		/datum/mob_descriptor/skin/diseased,
 		/datum/mob_descriptor/skin/dry,
 		/datum/mob_descriptor/skin/fine,
+		/datum/mob_descriptor/skin/wrinkled,
+		/datum/mob_descriptor/skin/sunkissed,
+		/datum/mob_descriptor/skin/aged,
+		/datum/mob_descriptor/skin/pockmarked,
+		/datum/mob_descriptor/skin/dusky,
+		/datum/mob_descriptor/skin/irritated,
+		/datum/mob_descriptor/skin/ashen,
 		/datum/mob_descriptor/scales/plain,
 		/datum/mob_descriptor/scales/rough,
 		/datum/mob_descriptor/scales/smooth,
@@ -203,7 +261,6 @@
 		/datum/mob_descriptor/prominent/cleft_lip,\
 		/datum/mob_descriptor/prominent/physically_deformed,\
 		/datum/mob_descriptor/prominent/extensive_scars,\
-		/datum/mob_descriptor/prominent/elaborate_tattoos,\
 		/datum/mob_descriptor/prominent/move_strange,\
 		/datum/mob_descriptor/prominent/ghoulish_appearance,\
 		/datum/mob_descriptor/prominent/prominent_chest,\
@@ -211,16 +268,19 @@
 		/datum/mob_descriptor/prominent/prominent_potbelly,\
 		/datum/mob_descriptor/prominent/cold_gaze,\
 		/datum/mob_descriptor/prominent/piercing_gaze,\
+		/datum/mob_descriptor/prominent/innocent_gaze,\
 		/datum/mob_descriptor/prominent/promiscuous_mannerisms,\
 		/datum/mob_descriptor/prominent/intimidating_presence,\
 		/datum/mob_descriptor/prominent/meek_presence,\
 		/datum/mob_descriptor/prominent/adorable_presence,\
 		/datum/mob_descriptor/prominent/lordly_presence,\
+		/datum/mob_descriptor/prominent/doting_presence,\
 		/datum/mob_descriptor/prominent/aristocratic_haughtiness,\
 		/datum/mob_descriptor/prominent/cutthroat_expression,\
 		/datum/mob_descriptor/prominent/suave_expression,\
 		/datum/mob_descriptor/prominent/humble_expression,\
 		/datum/mob_descriptor/prominent/ghastly_pale,\
+		/datum/mob_descriptor/prominent/elaborate_tattoos,\
 		/datum/mob_descriptor/prominent/ritual_tattoos,\
 		/datum/mob_descriptor/prominent/tribal_tattoos,\
 		/datum/mob_descriptor/prominent/slave_tattoos,\
@@ -228,6 +288,10 @@
 		/datum/mob_descriptor/prominent/mean_look,\
 		/datum/mob_descriptor/prominent/haughty_atmosphere,\
 		/datum/mob_descriptor/prominent/untrustworthy,\
+		/datum/mob_descriptor/prominent/ratty_hair,\
+		/datum/mob_descriptor/prominent/predatory_look,\
+		/datum/mob_descriptor/prominent/chaste_mannerism,\
+		/datum/mob_descriptor/prominent/whimsy,\
 	)
 
 /datum/descriptor_choice/prominent_one

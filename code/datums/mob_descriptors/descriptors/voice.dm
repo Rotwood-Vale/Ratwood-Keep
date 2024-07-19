@@ -66,3 +66,27 @@
 
 /datum/mob_descriptor/voice/grave
 	name = "Grave"
+
+/datum/mob_descriptor/voice/doting
+	name = "Doting"
+
+/datum/mob_descriptor/voice/booming
+	name = "Booming"
+
+/datum/mob_descriptor/voice/lisping
+	name = "Lisping"
+
+/datum/mob_descriptor/voice/honeyed
+	name = "Honeyed"
+
+/datum/mob_descriptor/voice/facetious
+	name = "Facetious"
+
+/datum/mob_descriptor/voice/snide
+	name = "Snide"
+
+/datum/mob_descriptor/voice/smoker
+	name = "Smoker's"
+
+/datum/mob_descriptor/voice/venomous
+	name = "Venomous"

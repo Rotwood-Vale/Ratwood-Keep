@@ -24,6 +24,27 @@
 /datum/mob_descriptor/skin/fine
 	name = "Fine Skin"
 
+/datum/mob_descriptor/skin/wrinkled
+	name = "Wrinkled Skin"
+
+/datum/mob_descriptor/skin/sunkissed
+	name = "Sunkissed Skin"
+
+/datum/mob_descriptor/skin/aged
+	name = "Aged Skin"
+
+/datum/mob_descriptor/skin/pockmarked
+	name = "Pockmarked Skin"
+
+/datum/mob_descriptor/skin/dusky
+	name = "Dusky Skin"
+
+/datum/mob_descriptor/skin/irritated
+	name = "Irritated Skin"
+
+/datum/mob_descriptor/skin/ashen
+	name = "Ashen Skin"
+
 /datum/mob_descriptor/scales
 	abstract_type = /datum/mob_descriptor/scales
 	slot = MOB_DESCRIPTOR_SLOT_SKIN
