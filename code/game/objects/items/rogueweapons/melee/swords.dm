@@ -82,7 +82,7 @@
 
 /obj/item/rogueweapon/sword/short
 	slot_flags = ITEM_SLOT_HIP
-	name = "Arming sword"
+	name = "arming sword"
 	desc = "A short arming sword, designed as a knightly sidearm. Best used with a shield or out of desperation."
 	icon_state = "swordshort"
 	possible_item_intents = list(/datum/intent/sword/cut, /datum/intent/sword/thrust, /datum/intent/sword/strike)
@@ -505,7 +505,7 @@
 	possible_item_intents = list(/datum/intent/sword/cut, /datum/intent/axe/chop, /datum/intent/sword/strike)
 	gripped_intents = list(/datum/intent/sword/cut, /datum/intent/axe/chop, /datum/intent/sword/thrust, /datum/intent/sword/strike)
 	icon_state = "krieg"
-	name = "Langesmesser"
+	name = "langesmesser"
 	desc = "A lengthened messer, inspired by those from grenzelhoft. It chops and cuts with terrifying efficiency."
 
 /obj/item/rogueweapon/sword/cutlass
