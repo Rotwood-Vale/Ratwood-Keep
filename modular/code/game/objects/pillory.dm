@@ -130,5 +130,45 @@
 
 	..()
 
+////TRIBAL STUFF////
+/obj/item/roguekey/tribal
+	name = "worn key"
+	desc = "This key should unlock the pillories of the tribe."
+	icon_state = "rustkey"
+	lockid = "tribal"
+
+/obj/structure/pillory/tribal
+	name = "Tribal-Made Pillory"
+	desc = "To keep the criminals locked! This one has more crude craftsmanship."
+
+/obj/structure/pillory/tribal/double
+	icon_state = "pillory_double"
+	base_icon = "pillory_double"
+
+/obj/structure/pillory/tribal/reinforced
+	icon_state = "pillory_reinforced"
+	base_icon = "pillory_reinforced"
+
+/obj/structure/pillory/tribal/attackby(obj/item/P, mob/user, params)
+	if(user in src)
+		to_chat(user, span_warning("I can't reach the lock!"))
+		return
+	if(istype(P, /obj/item/roguekey))
+		var/obj/item/roguekey/K = P
+		if(K.lockid == "tribal")
+			togglelock(user)
+			return attack_hand(user)
+		else
+			to_chat(user, span_warning("Wrong key."))
+			playsound(src, 'sound/foley/doors/lockrattle.ogg', 100)
+			return
+	if(istype(P, /obj/item/keyring))
+		var/obj/item/keyring/K = P
+		for(var/obj/item/roguekey/KE in K.keys)
+			if(KE.lockid == "tribal")
+				togglelock(user)
+				return attack_hand(user)
+
+
 #undef PILLORY_HEAD_OFFSET
 #undef PILLORY_LAYER_DIFF
