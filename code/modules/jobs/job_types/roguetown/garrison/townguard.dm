@@ -71,6 +71,7 @@
 	if(is_bowman)
 		backl = /obj/item/gun/ballistic/revolver/grenadelauncher/bow
 		beltr = /obj/item/quiver/arrows //replaces mace
+		pants = /obj/item/clothing/under/roguetown/brayette //replaces chausses
 	else
 		backl = null
 	if(H.mind)

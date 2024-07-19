@@ -32,6 +32,9 @@
 /obj/item/organ/tail/anthro
 	name = "wild-kin tail"
 
+/obj/item/organ/tail/lupian
+	name = "lupian tail"
+
 /obj/item/organ/tail/avali
 	name = "avali tail"
 
