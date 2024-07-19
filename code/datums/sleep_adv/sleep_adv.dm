@@ -88,12 +88,12 @@
 	
 	var/stress_median = stress_amount / stress_cycles
 
-	if(stress_median <= -4)
+	if(stress_median <= -1)
 		// Unstressed, happy
 		to_chat(mind.current, span_notice("With no stresses throughout the day I dream vividly..."))
 		dream_dust += 100
 		grant_random_xp(2, SLEEP_EXP_NOVICE)
-	else if (stress_median >= 4)
+	else if (stress_median >= 3.5)
 		// Stressed, unhappy
 		to_chat(mind.current, span_boldwarning("Bothered by the stresses of the day my dreams are short..."))
 		dream_dust -= 100
@@ -137,7 +137,7 @@
 			can_buy_anything = TRUE
 		dat += "<br><a [can_buy ? "" : "class='linkOff'"] href='?src=[REF(src)];task=buy_special'>Dream something <b>special</b></a> - \Roman[get_special_cost()]"
 		dat += "<br>Specials can have negative or positive effects"
-	dat += "<br><br><center><a href='?src=[REF(src)];task=continue'>Continue</a></center>"
+	dat += "<br><br><center>Your points will be retained<br><a href='?src=[REF(src)];task=continue'>Continue</a></center>"
 	if(!can_buy_anything)
 		finish()
 		return
