@@ -105,8 +105,14 @@
 		man_replace = "man"
 	else
 		man_replace = "woman"
+	var/him_replace
+	if(described.gender == MALE)
+		him_replace = "him"
+	else
+		him_replace = "her"
 	string = replacetext(string, "%THEY%", they_replace)
 	string = replacetext(string, "%HAVE%", "has")
 	string = replacetext(string, "%MAN%", man_replace)
+	string = replacetext(string, "%HIM%", him_replace)
 	string = capitalize(string)
 	return string

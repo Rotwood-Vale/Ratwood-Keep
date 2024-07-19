@@ -222,3 +222,9 @@
 	name = "Air of Whimsy"
 	verbage = "%HAVE%"
 	prefix = "an"
+	suffix = "about %HIM%"
+
+/datum/mob_descriptor/prominent/dim_look
+	name = "Dim Look"
+	verbage = "%HAVE%"
+	prefix = "a"

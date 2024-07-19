@@ -292,6 +292,7 @@
 		/datum/mob_descriptor/prominent/predatory_look,\
 		/datum/mob_descriptor/prominent/chaste_mannerism,\
 		/datum/mob_descriptor/prominent/whimsy,\
+		/datum/mob_descriptor/prominent/dim_look,\
 	)
 
 /datum/descriptor_choice/prominent_one
