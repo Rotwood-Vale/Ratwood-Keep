@@ -140,6 +140,9 @@
 
 	invisibility = oldinv
 
+	W.internal_organs = internal_organs
+	W.internal_organs_slot = internal_organs_slot
+
 
 /mob/living/carbon/human/proc/werewolf_untransform(dead,gibbed)
 	if(!stored_mob)
