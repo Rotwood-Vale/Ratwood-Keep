@@ -85,5 +85,5 @@
 		shake_camera(src, 2, 2)
 		if(iscarbon(src))
 			var/mob/living/carbon/C = src
-			if(C.stress >= 30 && (prob(50)))
+			if(C.get_stress_amount() >= 30 && (prob(50)))
 				C.heart_attack()

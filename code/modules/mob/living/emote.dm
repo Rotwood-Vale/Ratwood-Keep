@@ -553,14 +553,6 @@
 
 	emote("hug", intentional = TRUE, targetted = TRUE)
 
-/datum/emote/living/hug/adjacentaction(mob/user, mob/target)
-	. = ..()
-	if(!user || !target)
-		return
-	if(ishuman(target))
-		var/mob/living/carbon/human/H = target
-		H.add_stress(/datum/stressevent/hug)
-
 /datum/emote/living/holdbreath
 	key = "hold"
 	key_third_person = "holds"

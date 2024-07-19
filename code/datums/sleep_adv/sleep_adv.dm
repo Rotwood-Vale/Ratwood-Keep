@@ -88,12 +88,12 @@
 	
 	var/stress_median = stress_amount / stress_cycles
 
-	if(stress_median <= -1.5)
+	if(stress_median <= -4)
 		// Unstressed, happy
 		to_chat(mind.current, span_notice("With no stresses throughout the day I dream vividly..."))
 		dream_dust += 100
 		grant_random_xp(2, SLEEP_EXP_NOVICE)
-	else if (stress_median >= 1.5)
+	else if (stress_median >= 4)
 		// Stressed, unhappy
 		to_chat(mind.current, span_boldwarning("Bothered by the stresses of the day my dreams are short..."))
 		dream_dust -= 100

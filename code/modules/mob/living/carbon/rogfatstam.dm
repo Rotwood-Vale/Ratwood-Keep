@@ -82,7 +82,7 @@
 		addtimer(CALLBACK(src, PROC_REF(Immobilize), 30), 10)
 		if(iscarbon(src))
 			var/mob/living/carbon/C = src
-			if(C.stress >= 30)
+			if(C.get_stress_amount() >= 30)
 				C.heart_attack()
 			if(!HAS_TRAIT(C, TRAIT_NOHUNGER))
 				if(C.nutrition <= 0)
@@ -125,18 +125,18 @@
 	flash_fullscreen("stressflash")
 	changeNext_move(CLICK_CD_EXHAUSTED)
 	add_stress(/datum/stressevent/freakout)
-	if(stress >= 30)
+	if(get_stress_amount() >= 30)
 		heart_attack()
 	else
 		emote("fatigue", forced = TRUE)
-		if(stress > 15)
+		if(get_stress_amount() > 15)
 			addtimer(CALLBACK(src, TYPE_PROC_REF(/mob, do_freakout_scream)), rand(30,50))
 	if(hud_used)
 //		var/list/screens = list(hud_used.plane_masters["[OPENSPACE_BACKDROP_PLANE]"],hud_used.plane_masters["[BLACKNESS_PLANE]"],hud_used.plane_masters["[GAME_PLANE_UPPER]"],hud_used.plane_masters["[GAME_PLANE_FOV_HIDDEN]"], hud_used.plane_masters["[FLOOR_PLANE]"], hud_used.plane_masters["[GAME_PLANE]"], hud_used.plane_masters["[LIGHTING_PLANE]"])
 		var/matrix/skew = matrix()
 		skew.Scale(2)
 		//skew.Translate(-224,0)
-		var/matrix/newmatrix = skew 
+		var/matrix/newmatrix = skew
 		for(var/C in hud_used.plane_masters)
 			var/atom/movable/screen/plane_master/whole_screen = hud_used.plane_masters[C]
 			if(whole_screen.plane == HUD_PLANE)

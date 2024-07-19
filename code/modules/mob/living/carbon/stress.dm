@@ -1,195 +1,113 @@
-/mob/proc/add_stress(event)
-	return FALSE
+/mob/proc/add_stress(event_type)
+	return
 
-/mob/proc/remove_stress(event)
-	return FALSE
+/mob/proc/remove_stress(event_type)
+	return
+
+/mob/proc/add_stress_list(list/event_list)
+	return
+
+/mob/proc/remove_stress_list(list/event_list)
+	return
 
 /mob/proc/update_stress()
+	return
+
+/mob/proc/get_stress_amount()
+	return 0
+
+/mob/proc/get_stress_event(event_type)
+	return null
+
+/mob/proc/has_stress_event(event_type)
 	return FALSE
 
-/mob/proc/adjust_stress(amt)
-	return FALSE
+/mob/proc/get_positive_stressors()
+	return list()
 
-/mob/proc/has_stress(event)
-	return FALSE
+/mob/proc/get_negative_stressors()
+	return list()
 
 /mob/living/carbon
-	var/stress = 0
-	var/list/stress_timers = list()
 	var/oldstress = 0
-	var/stressbuffer = 0
-	var/list/negative_stressors = list()
-	var/list/positive_stressors = list()
+	var/list/stressors = list()
 
-/mob/living/carbon/adjust_stress(amt)
-	stressbuffer = stressbuffer + amt
-	stress = stress + stressbuffer
-	stressbuffer = 0
-	if(stress > 30)
-		stressbuffer = 30 - stress
-		stress = 30
-	if(stress < 0)
-		stressbuffer = stress
-		stress = 0
+/mob/living/carbon/add_stress(event_type)
+	var/datum/stressevent/event = get_stress_event(event_type)
+	if(!event)
+		event = new event_type()
+		stressors[event_type] = event
+	event.time_added = world.time
+	if(event.stacks >= event.max_stacks)
+		return
+	event.stacks++
+
+/mob/living/carbon/remove_stress(event_type)
+	var/datum/stressevent/event = get_stress_event(event_type)
+	if(!event)
+		return
+	stressors -= event_type
+
+/mob/living/carbon/add_stress_list(list/event_list)
+	for(var/event_type in event_list)
+		add_stress(event_type)
+
+/mob/living/carbon/remove_stress_list(list/event_list)
+	for(var/event_type in event_list)
+		remove_stress(event_type)
 
 /mob/living/carbon/update_stress()
-	if(HAS_TRAIT(src, TRAIT_NOMOOD))
-		stress = 0
-//		if(hud_used)
-//			if(hud_used.stressies)
-//				hud_used.stressies.update_icon(stress)
-		return
-	for(var/datum/stressevent/D in negative_stressors)
-		if(D.timer)
-			if(world.time > D.time_added + D.timer)
-				adjust_stress(-1*D.stressadd)
-				negative_stressors -= D
-				qdel(D)
-	for(var/datum/stressevent/D in positive_stressors)
-		if(D.timer)
-			if(world.time > D.time_added + D.timer)
-				adjust_stress(-1*D.stressadd)
-				positive_stressors -= D
-				qdel(D)
-	if(stress != oldstress)
-		if(stress > oldstress)
+	// Handle expiration
+	for(var/stressor_type in stressors)
+		var/datum/stressevent/event = stressors[stressor_type]
+		if(event.time_added + event.timer > world.time)
+			continue
+		remove_stress(stressor_type)
+	// Update stress status and prompts
+	var/new_stress = get_stress_amount()
+
+	if(new_stress != oldstress)
+		if(new_stress > oldstress)
 			to_chat(src, span_red("I gain stress."))
 		else
 			to_chat(src, span_green("I gain peace."))
-	oldstress = stress
-	if(hud_used)
-		if(hud_used.stressies)
-			hud_used.stressies.update_icon()
-	if(stress > 15)
-		change_stat("fortune", -1*round((stress-16)/2), "stress")
+
+	if(new_stress > 15)
+		change_stat("fortune", -1, "stress")
 	else
 		change_stat("fortune", 0, "stress")
 
-/mob/living/carbon/has_stress(event)
-	var/amount
-	for(var/datum/stressevent/D in negative_stressors)
-		if(D.type == event)
-			amount++
-	for(var/datum/stressevent/D in positive_stressors)
-		if(D.type == event)
-			amount++
-	return amount
+	oldstress = new_stress
 
-/mob/living/carbon/add_stress(event)
+
+/mob/living/carbon/get_stress_amount()
 	if(HAS_TRAIT(src, TRAIT_NOMOOD))
-		return FALSE
-	var/datum/stressevent/N = new event()
-	var/countofus = 0
-	if(N.stressadd > 0)
-		for(var/datum/stressevent/D in negative_stressors)
-			if(D.type == event)
-				countofus++
-				D.time_added = world.time
-				if(N.stressadd > D.stressadd)
-					D.stressadd = N.stressadd
-	else
-		for(var/datum/stressevent/D in positive_stressors)
-			if(D.type == event)
-				countofus++
-				D.time_added = world.time
-				if(N.stressadd < D.stressadd)
-					D.stressadd = N.stressadd
-	if(N.max_stacks) //we need to check if we should be added
-		if(countofus >= N.max_stacks)
-			return
-	else //we refreshed the timer
-		if(countofus >= 1)
-			return
-	if(N.stressadd > 0)
-		negative_stressors += N
-	else
-		positive_stressors += N
-	adjust_stress(N.stressadd)
-	return TRUE
+		return 0
+	var/total_stress = 0
+	for(var/stressor_type in stressors)
+		var/datum/stressevent/event = stressors[stressor_type]
+		var/stress_amt = event.get_stress(src)
+		total_stress += stress_amt
+	return total_stress
 
-/mob/living/carbon/remove_stress(event)
-	if(HAS_TRAIT(src, TRAIT_NOMOOD))
-		return FALSE
-	var/list/eventL
-	if(islist(event))
-		eventL = event
-	for(var/datum/stressevent/D in negative_stressors)
-		if(eventL)
-			if(D.type in eventL)
-				adjust_stress(-1*D.stressadd)
-				negative_stressors -= D
-				qdel(D)
-		else
-			if(D.type == event)
-				adjust_stress(-1*D.stressadd)
-				negative_stressors -= D
-				qdel(D)
-	for(var/datum/stressevent/D in positive_stressors)
-		if(eventL)
-			if(D.type in eventL)
-				adjust_stress(-1*D.stressadd)
-				positive_stressors -= D
-				qdel(D)
-		else
-			if(D.type == event)
-				adjust_stress(-1*D.stressadd)
-				positive_stressors -= D
-				qdel(D)
-	return TRUE
+/mob/living/carbon/get_stress_event(event_type)
+	return stressors[event_type]
 
-#ifdef TESTSERVER
-/client/verb/add_stress()
-	set category = "DEBUGTEST"
-	set name = "stressBad"
-	if(mob)
-		mob.add_stress(/datum/stressevent/test)
+/mob/living/carbon/has_stress_event(event_type)
+	if(stressors[event_type])
+		return TRUE
+	return FALSE
 
-/client/verb/remove_stress()
-	set category = "DEBUGTEST"
-	set name = "stressGood"
-	if(mob)
-		mob.add_stress(/datum/stressevent/testr)
+/mob/living/carbon/get_positive_stressors()
+	. = list()
+	for(var/stressor_type in stressors)
+		var/datum/stressevent/event = stressors[stressor_type]
+		if(event.get_stress(src) <= 0)
+			. += event
 
-/client/verb/filter1()
-	set category = "DEBUGTEST"
-	set name = "TestFilter1"
-	if(mob)
-		mob.remove_client_colour(/datum/client_colour/test1)
-		mob.remove_client_colour(/datum/client_colour/test2)
-		mob.remove_client_colour(/datum/client_colour/test3)
-		mob.add_client_colour(/datum/client_colour/test1)
-
-/client/verb/filter2()
-	set category = "DEBUGTEST"
-	set name = "TestFilter2"
-	if(mob)
-		mob.remove_client_colour(/datum/client_colour/test1)
-		mob.remove_client_colour(/datum/client_colour/test2)
-		mob.remove_client_colour(/datum/client_colour/test3)
-		mob.add_client_colour(/datum/client_colour/test2)
-
-/client/verb/filter3()
-	set category = "DEBUGTEST"
-	set name = "TestFilter3"
-	if(mob)
-		mob.remove_client_colour(/datum/client_colour/test1)
-		mob.remove_client_colour(/datum/client_colour/test2)
-		mob.remove_client_colour(/datum/client_colour/test3)
-		mob.add_client_colour(/datum/client_colour/test3)
-
-/client/verb/do_undesaturate()
-	set category = "DEBUGTEST"
-	set name = "TestFilterOff"
-	if(mob)
-		mob.remove_client_colour(/datum/client_colour/test1)
-		mob.remove_client_colour(/datum/client_colour/test2)
-		mob.remove_client_colour(/datum/client_colour/test3)
-
-/client/verb/do_flash()
-	set category = "DEBUGTEST"
-	set name = "doflash"
-	if(mob)
-		var/turf/T = get_turf(mob)
-		if(T)
-			T.flash_lighting_fx(30)
-#endif
+/mob/living/carbon/get_negative_stressors()
+	. = list()
+	for(var/stressor_type in stressors)
+		var/datum/stressevent/event = stressors[stressor_type]
+		if(event.get_stress(src) > 0)
+			. += event

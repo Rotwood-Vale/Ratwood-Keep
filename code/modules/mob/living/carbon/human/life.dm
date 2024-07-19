@@ -39,7 +39,7 @@
 		Stun(50)
 
 	if(mind)
-		mind.sleep_adv.add_stress_cycle(stress)
+		mind.sleep_adv.add_stress_cycle(get_stress_amount())
 		for(var/datum/antagonist/A in mind.antag_datums)
 			A.on_life(src)
 
@@ -56,6 +56,7 @@
 							mind.sleep_adv.advance_cycle()
 						tiredness = 0
 						remove_status_effect(/datum/status_effect/debuff/sleepytime)
+						remove_stress(/datum/stressevent/sleepytime)
 						var/datum/game_mode/chaosmode/C = SSticker.mode
 						if(istype(C))
 							if(mind)
@@ -97,7 +98,7 @@
 			else
 				if(mob_timers["slo"])
 					mob_timers["slo"] = null
-					
+
 		if(dna?.species)
 			dna.species.spec_life(src) // for mutantraces
 

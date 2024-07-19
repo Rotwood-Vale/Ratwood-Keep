@@ -8,7 +8,6 @@
 /mob/living/carbon/human/sate_addiction()
 	if(istype(charflaw, /datum/charflaw/addiction))
 		var/datum/charflaw/addiction/A = charflaw
-//		remove_stress(list(/datum/stressevent/vice1,/datum/stressevent/vice2,/datum/stressevent/vice3))
 		A.sated = TRUE
 		A.time = initial(A.time) //reset roundstart sate offset to standard
 		A.next_sate = world.time + A.time
@@ -46,13 +45,6 @@
 		if(needsate_text)
 			to_chat(user, span_warning("[needsate_text]"))
 	if(!sated)
-/*		switch(world.time - unsate_time)
-			if(0 to 5 MINUTES)
-				H.add_stress(/datum/stressevent/vice1)
-			if(5 MINUTES to 15 MINUTES)
-				H.add_stress(/datum/stressevent/vice2)
-			if(15 MINUTES to INFINITY)
-				H.add_stress(/datum/stressevent/vice3)*/
 		H.add_stress(/datum/stressevent/vice)
 		if(debuff)
 			H.apply_status_effect(debuff)
