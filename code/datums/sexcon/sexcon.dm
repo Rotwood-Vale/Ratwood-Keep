@@ -59,8 +59,8 @@
 	// Dont need to violate self
 	if(user == victim)
 		return FALSE
-	// If user and victim both are not deviant, then user needs to violate target
-	if(user.deviant && victim.deviant)
+	// If user and victim both are not defiant, then no violation needs to happen
+	if(!user.defiant && !victim.defiant)
 		return FALSE
 	// Need to violate AFK clients
 	if(!victim.client)

@@ -33,7 +33,10 @@
 	return passed_descriptors
 
 /mob/living/proc/get_extra_mob_descriptors()
-	return null
+	return list(
+		/datum/mob_descriptor/defiant,
+		/datum/mob_descriptor/age,
+		)
 
 /mob/living/proc/get_descriptor_of_slot(descriptor_slot, list/descs)
 	for(var/descriptor_type in descs)
@@ -60,7 +63,7 @@
 	var/list/lines = list()
 	var/list/desc_copy = descriptors.Copy()
 
-	var/first_line = build_coalesce_description(desc_copy, described, list(MOB_DESCRIPTOR_SLOT_BODY, MOB_DESCRIPTOR_SLOT_STATURE, MOB_DESCRIPTOR_SLOT_FACE_SHAPE, MOB_DESCRIPTOR_SLOT_FACE_EXPRESSION), "You see %DESC1% %DESC2% with %DESC3%, %DESC4%")
+	var/first_line = build_coalesce_description(desc_copy, described, list(MOB_DESCRIPTOR_SLOT_AGE, MOB_DESCRIPTOR_SLOT_BODY, MOB_DESCRIPTOR_SLOT_STATURE, MOB_DESCRIPTOR_SLOT_FACE_SHAPE, MOB_DESCRIPTOR_SLOT_FACE_EXPRESSION), "You see %DESC1%, %DESC2% %DESC3% with %DESC4%, %DESC5%")
 	if(first_line)
 		lines += first_line
 

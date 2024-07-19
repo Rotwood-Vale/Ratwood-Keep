@@ -1,15 +1,12 @@
 /datum/mob_descriptor/body
 	abstract_type = /datum/mob_descriptor/body
 	slot = MOB_DESCRIPTOR_SLOT_BODY
-	prefix = "a"
 
 /datum/mob_descriptor/body/average
 	name = "Average"
-	prefix = "an"
 
 /datum/mob_descriptor/body/athletic
 	name = "Athletic"
-	prefix = "an"
 
 /datum/mob_descriptor/body/muscular
 	name = "Muscular"

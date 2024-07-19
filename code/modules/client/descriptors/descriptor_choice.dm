@@ -264,6 +264,9 @@
 		/datum/mob_descriptor/prominent/move_strange,\
 		/datum/mob_descriptor/prominent/ghoulish_appearance,\
 		/datum/mob_descriptor/prominent/prominent_chest,\
+		/datum/mob_descriptor/prominent/prominent_thighs,\
+		/datum/mob_descriptor/prominent/prominent_shoulders,\
+		/datum/mob_descriptor/prominent/prominent_jawline,\
 		/datum/mob_descriptor/prominent/prominent_bottom,\
 		/datum/mob_descriptor/prominent/prominent_potbelly,\
 		/datum/mob_descriptor/prominent/cold_gaze,\

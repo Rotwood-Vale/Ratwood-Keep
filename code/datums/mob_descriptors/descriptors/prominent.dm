@@ -97,6 +97,19 @@
 	verbage = "%HAVE%"
 	prefix = "a"
 
+/datum/mob_descriptor/prominent/prominent_thighs
+	name = "Prominent Thighs"
+	verbage = "%HAVE%"
+
+/datum/mob_descriptor/prominent/prominent_shoulders
+	name = "Prominent Shoulders"
+	verbage = "%HAVE%"
+
+/datum/mob_descriptor/prominent/prominent_jawline
+	name = "Prominent Jawline"
+	verbage = "%HAVE%"
+	prefix = "a"
+
 /datum/mob_descriptor/prominent/cold_gaze
 	name = "Cold Gaze"
 	verbage = "%HAVE%"

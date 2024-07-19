@@ -6,7 +6,7 @@
 #define MOB_DESCRIPTOR_SLOT_VOICE 6
 #define MOB_DESCRIPTOR_SLOT_STATURE 7
 #define MOB_DESCRIPTOR_SLOT_PROMINENT 8
-
+#define MOB_DESCRIPTOR_SLOT_AGE 9
 
 #define MOB_DESCRIPTOR(descriptor_type) GLOB.mob_descriptors[descriptor_type]
 
