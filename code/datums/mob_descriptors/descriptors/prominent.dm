@@ -75,7 +75,7 @@
 	verbage = "%HAVE%"
 
 /datum/mob_descriptor/prominent/elaborate_tattoos
-	name = "Elaborate Tattos"
+	name = "Elaborate Tattoos"
 	verbage = "%HAVE%"
 
 /datum/mob_descriptor/prominent/move_strange
@@ -92,7 +92,7 @@
 	prefix = "a"
 
 /datum/mob_descriptor/prominent/prominent_bottom
-	name = "Prominent Porsterior"
+	name = "Prominent Posterior"
 	verbage = "%HAVE%"
 	prefix = "a"
 
