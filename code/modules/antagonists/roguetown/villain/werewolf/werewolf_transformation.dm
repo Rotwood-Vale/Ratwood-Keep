@@ -142,7 +142,7 @@
 
 	W.internal_organs = internal_organs
 	W.internal_organs_slot = internal_organs_slot
-
+	W.internal_organs += new /obj/item/organ/eyes/night_vision/werewolf
 
 /mob/living/carbon/human/proc/werewolf_untransform(dead,gibbed)
 	if(!stored_mob)
