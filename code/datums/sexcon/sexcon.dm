@@ -100,7 +100,7 @@
 	// ZAPED
 	to_chat(user, span_boldwarning(pick(list("I feel tainted...", "I feel less human..."))))
 	log_combat(user, victim, "Initiated rape against")
-	adjust_playerquality(-2, user.ckey, reason = "Initiated rape on an AFK/resisting person.")
+	adjust_playerquality(-4, user.ckey, reason = "Initiated rape on an AFK/resisting person.")
 	user.client.prefs.violated[victim.mind.key] = world.time
 
 /datum/sex_controller/proc/adjust_speed(amt)
