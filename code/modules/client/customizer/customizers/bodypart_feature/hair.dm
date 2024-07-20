@@ -213,6 +213,7 @@
 		/datum/sprite_accessory/hair/head/megaeyebrows,
 		/datum/sprite_accessory/hair/head/messy,
 		/datum/sprite_accessory/hair/head/modern,
+		/datum/sprite_accessory/hair/head/modern2,
 		/datum/sprite_accessory/hair/head/mohawk,
 		/datum/sprite_accessory/hair/head/reversemohawk,
 		/datum/sprite_accessory/hair/head/shavedmohawk,
