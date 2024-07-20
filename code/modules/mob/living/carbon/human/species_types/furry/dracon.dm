@@ -92,7 +92,7 @@
 	)
 
 /datum/species/dracon/check_roundstart_eligible()
-	return TRUE
+	return FALSE 
 
 /datum/species/dracon/qualifies_for_rank(rank, list/features)
 	return TRUE

@@ -66,7 +66,7 @@
 	)
 
 /datum/species/demihuman/check_roundstart_eligible()
-	return TRUE
+	return FALSE 
 
 /datum/species/demihuman/qualifies_for_rank(rank, list/features)
 	return TRUE
