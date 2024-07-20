@@ -52,10 +52,16 @@
 			mod = CONFIG_GET(number/movedelay/run_delay)
 		if(MOVE_INTENT_SNEAK)
 			mod = 6
-	if(STASPD < 6)
-		mod = mod+1
-	if(STASPD > 14)
-		mod = mod-0.5
+
+//	if(STASPD < 6)
+//		mod = mod+1
+//	if(STASPD > 14)
+//		mod = mod-0.5
+//this is the old SPDCODE
+
+	mod = mod-((10-STASPD)*0.1)
+	//This is equivalent at 15spd, a nerf for people who dump spd, until they hit 5 spd, at which point it's a buff for them, and equivalent againt 0spd
+	//example 15spd = (10-15)*0.1 = -0.5
 	add_movespeed_modifier(MOVESPEED_ID_MOB_WALK_RUN_CONFIG_SPEED, TRUE, 100, override = TRUE, multiplicative_slowdown = mod)
 
 /mob/living/proc/update_turf_movespeed(turf/open/T)
