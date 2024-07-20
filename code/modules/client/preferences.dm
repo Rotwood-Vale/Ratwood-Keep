@@ -2031,8 +2031,6 @@ Slots: [job.spawn_positions]</span>
 	character.jumpsuit_style = jumpsuit_style
 
 	if(charflaw)
-		if(istype(charflaw, /datum/charflaw/badsight))
-			charflaw = new /datum/charflaw/randflaw()
 		character.charflaw = new charflaw.type()
 		character.charflaw.on_mob_creation(character)
 
