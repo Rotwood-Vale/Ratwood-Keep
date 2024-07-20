@@ -54,6 +54,11 @@
 		/datum/mob_descriptor/face_exp/suspicious,
 		/datum/mob_descriptor/face_exp/tender,
 		/datum/mob_descriptor/face_exp/affectionate,
+		/datum/mob_descriptor/face_exp/calm,
+		/datum/mob_descriptor/face_exp/cutthroat,
+		/datum/mob_descriptor/face_exp/suave,
+		/datum/mob_descriptor/face_exp/humble,
+		/datum/mob_descriptor/face_exp/smug,
 	)
 
 /datum/descriptor_choice/body
@@ -256,6 +261,7 @@
 		/datum/mob_descriptor/prominent/twitchy,\
 		/datum/mob_descriptor/prominent/clumsy,\
 		/datum/mob_descriptor/prominent/unkempt,\
+		/datum/mob_descriptor/prominent/tidy,\
 		/datum/mob_descriptor/prominent/eloquent,\
 		/datum/mob_descriptor/prominent/thick_tail,\
 		/datum/mob_descriptor/prominent/cleft_lip,\
@@ -279,9 +285,6 @@
 		/datum/mob_descriptor/prominent/lordly_presence,\
 		/datum/mob_descriptor/prominent/doting_presence,\
 		/datum/mob_descriptor/prominent/aristocratic_haughtiness,\
-		/datum/mob_descriptor/prominent/cutthroat_expression,\
-		/datum/mob_descriptor/prominent/suave_expression,\
-		/datum/mob_descriptor/prominent/humble_expression,\
 		/datum/mob_descriptor/prominent/ghastly_pale,\
 		/datum/mob_descriptor/prominent/elaborate_tattoos,\
 		/datum/mob_descriptor/prominent/ritual_tattoos,\

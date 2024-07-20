@@ -44,6 +44,10 @@
 	name = "Unkempt"
 	verbage = "is"
 
+/datum/mob_descriptor/prominent/tidy
+	name = "Tidy"
+	verbage = "is"
+
 /datum/mob_descriptor/prominent/eloquent
 	name = "Eloquent"
 	verbage = "is"
@@ -159,30 +163,9 @@
 	verbage = "%HAVE%"
 	prefix = "an"
 
-/datum/mob_descriptor/prominent/cutthroat_expression
-	name = "Cutthroat Expression"
-	verbage = "%HAVE%"
-	prefix = "a"
-
-/datum/mob_descriptor/prominent/suave_expression
-	name = "Suave Expression"
-	verbage = "%HAVE%"
-	prefix = "a"
-
-/datum/mob_descriptor/prominent/humble_expression
-	name = "Humble Expression"
-	verbage = "%HAVE%"
-	prefix = "a"
-
-/datum/mob_descriptor/prominent/smug_expression
-	name = "Smug Expression"
-	verbage = "%HAVE%"
-	prefix = "a"
-
 /datum/mob_descriptor/prominent/ghastly_pale
-	name = "Ghastly Pallor"
-	verbage = "%HAVE%"
-	prefix = "a"
+	name = "Ghastly Pale"
+	verbage = "is"
 
 /datum/mob_descriptor/prominent/elaborate_tattoos
 	name = "Elaborate Tattoos"

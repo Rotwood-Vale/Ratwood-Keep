@@ -138,3 +138,18 @@
 
 /datum/mob_descriptor/face_exp/affectionate
 	name = "Affectionate"
+
+/datum/mob_descriptor/face_exp/calm
+	name = "Calm"
+
+/datum/mob_descriptor/face_exp/cutthroat
+	name = "Cutthroat"
+
+/datum/mob_descriptor/face_exp/suave
+	name = "Suave"
+
+/datum/mob_descriptor/face_exp/humble
+	name = "Humble"
+
+/datum/mob_descriptor/face_exp/smug
+	name = "Smug"
