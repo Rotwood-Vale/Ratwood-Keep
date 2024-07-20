@@ -14,19 +14,19 @@ $include antag_rep.txt
 # There are various options which are hard-locked for security reasons.
 
 ## Server name: This appears at the top of the screen in-game and in the BYOND hub. Uncomment and replace 'tgstation' with the name of your choice.
-SERVERNAME Roguetown
+SERVERNAME Kasırga Zirvesi
 
 ## Server tagline: This will appear right below the server's title.
-# SERVERTAGLINE A generic TG-based server
+ SERVERTAGLINE A generic roguetown-based server
 
 ## Server SQL name: This is the name used to identify the server to the SQL DB, distinct from SERVERNAME as it must be at most 32 characters.
 # SERVERSQLNAME tgstation
 
 ## Station name: The name of the station as it is referred to in-game. If commented out, the game will generate a random name instead.
-STATIONNAME Roguetown
+STATIONNAME Kasırga Zirvesi
 
 ## Put on byond hub: Uncomment this to put your server on the byond hub.
-#HUB
+HUB
 
 ## Lobby time: This is the amount of time between rounds that players have to setup their characters and be ready.
 LOBBY_COUNTDOWN 600
@@ -238,7 +238,7 @@ USEBLACKLIST
 # SERVER ss13.example.com:2506
 
 ## Discod address
-DISCORDURL https://discord.gg/bx9c7ha5Qk
+DISCORDURL https://discord.gg/GVcT6Ydh
 
 ## Wiki address
 WIKIURL https://wiki.moviesfreepremium.xyz/blackstone
@@ -247,7 +247,7 @@ WIKIURL https://wiki.moviesfreepremium.xyz/blackstone
 RULESURL https://wiki.moviesfreepremium.xyz/blackstone/rules
 
 ## Github address
-GITHUBURL https://github.com/Blackstone-SS13/BLACKSTONE
+GITHUBURL https://github.com/Ansuiweb/Stormpeak
 
 ## Round specific stats address
 ## Link to round specific parsed logs; IE statbus. It is appended with the RoundID automatically by ticker/Reboot()
