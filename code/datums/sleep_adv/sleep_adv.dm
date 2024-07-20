@@ -17,7 +17,7 @@
 	. = ..()
 
 /datum/sleep_adv/proc/add_stress_cycle(add_amount)
-	add_amount = clamp(add_amount, -10, 10) // Only -10 to 10, clamping things like Ozmium
+	add_amount = clamp(add_amount, -15, 15) // Only -15 to 15, clamping things like Ozmium
 	stress_amount += add_amount
 	stress_cycles++
 	process_sleep()//This could get hooked somewhere else
