@@ -22,6 +22,9 @@
 /datum/mob_descriptor/proc/can_describe(mob/living/described)
 	return TRUE
 
+/datum/mob_descriptor/proc/can_user_see(mob/living/described, mob/user)
+	return TRUE
+
 /datum/mob_descriptor/proc/should_add_verbage(mob/living/described, list/used_verbage)
 	if(!verbage)
 		return FALSE

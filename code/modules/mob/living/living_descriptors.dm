@@ -15,7 +15,7 @@
 /mob/living/proc/clear_mob_descriptors()
 	mob_descriptors = null
 
-/mob/living/proc/get_mob_descriptors(is_obscured)
+/mob/living/proc/get_mob_descriptors(is_obscured, mob/watcher)
 	var/list/descriptors = list()
 	if(mob_descriptors)
 		descriptors += mob_descriptors
@@ -28,6 +28,8 @@
 		if(is_obscured && !descriptor.show_obscured)
 			continue
 		if(!descriptor.can_describe(src))
+			continue
+		if(!descriptor.can_user_see(src, watcher))
 			continue
 		passed_descriptors += desc_type
 	return passed_descriptors
