@@ -42,7 +42,7 @@
 		beltl = /obj/item/storage/belt/rogue/pouch/coins/poor
 		armor = /obj/item/clothing/suit/roguetown/armor/leather/vest/black
 	else
-		armor = /obj/item/clothing/suit/roguetown/shirt/dress/gen
+		armor = /obj/item/clothing/suit/roguetown/shirt/dress/gen/black
 		shoes = /obj/item/clothing/shoes/roguetown/simpleshoes
 		cloak = /obj/item/clothing/cloak/apron/waist
 		belt = /obj/item/storage/belt/rogue/leather
