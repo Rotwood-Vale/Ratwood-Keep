@@ -232,16 +232,16 @@
 					if(!I.remove_bintegrity(1))
 						dullfactor = 0.2
 					else
-						dullfactor = 0.45 + (lumberskill * 0.15)
+						dullfactor = 0.5 + (lumberskill * 0.15)
 						lumberjacker.mind.adjust_experience(/datum/skill/labor/lumberjacking, (lumberjacker.STAINT*0.2))
 					cont = TRUE
 				if(BCLASS_CHOP)
 					var/mob/living/lumberjacker = user
 					var/lumberskill = lumberjacker.mind.get_skill_level(/datum/skill/labor/lumberjacking)
 					if(!I.remove_bintegrity(1))
-						dullfactor = 0.2
+						dullfactor = 0.3
 					else
-						dullfactor = 1.2 + (lumberskill * 0.15)
+						dullfactor = 1.0 + (lumberskill * 0.25)
 						lumberjacker.mind.adjust_experience(/datum/skill/labor/lumberjacking, (lumberjacker.STAINT*0.2))
 					cont = TRUE
 			if(!cont)
