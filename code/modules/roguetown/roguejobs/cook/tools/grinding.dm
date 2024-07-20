@@ -16,4 +16,9 @@
 				new S.mill_result(get_turf(loc))
 				qdel(S)
 			return
+	if(istype(W, /obj/item/natural/stone))
+		if(do_after(user, 10, target = src))
+			new /obj/item/reagent_containers/powder/flour/salt(get_turf(loc))
+			qdel(W)
+		return
 	..()
