@@ -10,7 +10,7 @@
 	allowed_patrons = ALL_ACOLYTE_PATRONS
 	allowed_sexes = list(MALE, FEMALE)
 	outfit = /datum/outfit/job/roguetown/monk
-	tutorial = "Chores, some more chores- Even more chores.. Oh how the life of a humble cleric is exhausting… You have faith, but even you know you gave up a life of adventure for that of the security in the Church. Assist the Priest in their daily tasks, maybe today will be the day something interesting happens."
+	tutorial = "Ah, işler, daha çok işler- Daha da fazla işler... Mütevazı bir rahip olarak hayat ne kadar da yorucu… İnancın var, ama sen bile kilisede güvenli bir hayat uğruna maceradan vazgeçtiğini biliyorsun. Rahibe günlük görevlerinde yardım et, belki bugün ilginç bir şey olur."
 
 	display_order = JDO_MONK
 	give_bank_account = TRUE
