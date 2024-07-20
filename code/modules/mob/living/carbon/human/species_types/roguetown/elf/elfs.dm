@@ -160,8 +160,12 @@
 		switch(H.skin_tone)
 				if(SKIN_COLOR_DANDELION_CREEK)
 						return strings("welsh_replacement.json", "welsh")
+				if(SKIN_COLOR_AZUREGROVE)
+						return strings("russian_replacement.json", "russian")
 				if(SKIN_COLOR_ALMONDVALLE)
 						return strings("Anglish.json", "Anglish")
+				if(SKIN_COLOR_WALNUT_WOODS)
+						return strings("welsh_replacement.json", "welsh")
 				if(SKIN_COLOR_TIMBERBORN)
 						return strings("russian_replacement.json", "russian")
 		return null
