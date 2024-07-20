@@ -139,3 +139,13 @@
 
 /datum/species/tieberian/random_surname()
 	return " [pick(world.file2list("strings/rt/names/other/tieflast.txt"))]"
+
+/datum/species/human/northern/get_accent(mob/living/carbon/human/H)
+		switch(H.skin_tone)
+				if(SKIN_COLOR_CASTILLIAN)
+						return strings("spanish_replacement.json", "spanish")
+				if(SKIN_COLOR_SUCCUBUS)
+						return strings("proper_replacement.json", "proper")
+				if(SKIN_COLOR_INCUBUS)
+						return strings("middlespeak.json", "middle")
+		return null

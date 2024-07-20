@@ -138,3 +138,6 @@
 /datum/species/tabaxi/on_species_loss(mob/living/carbon/C)
 	. = ..()
 	UnregisterSignal(C, COMSIG_MOB_SAY)
+
+/datum/species/tabaxi/get_accent(mob/living/carbon/human/H)
+		return strings("russian_replacement.json", "russian")

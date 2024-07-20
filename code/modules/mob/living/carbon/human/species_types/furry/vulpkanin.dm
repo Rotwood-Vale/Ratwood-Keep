@@ -84,7 +84,7 @@
 		/datum/body_marking/butt,
 		/datum/body_marking/tonage,
 	)
-	
+
 /datum/species/vulpkanin/check_roundstart_eligible()
 	return TRUE
 
@@ -128,3 +128,6 @@
 
 /datum/species/vulpkanin/get_random_body_markings(list/passed_features)
 	return assemble_body_markings_from_set(GLOB.body_marking_sets_by_type[/datum/body_marking_set/bellysockstertiary], passed_features, src)
+
+/datum/species/vulpkanin/get_accent(mob/living/carbon/human/H)
+		return strings("proper_replacement.json", "proper")

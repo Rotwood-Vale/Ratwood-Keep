@@ -139,3 +139,6 @@
 	returned["mcolor2"] = second_color
 	returned["mcolor3"] = second_color
 	return returned
+
+/datum/species/lizardfolk/get_accent(mob/living/carbon/human/H)
+		return strings("brazillian_replacement.json", "brazillian")

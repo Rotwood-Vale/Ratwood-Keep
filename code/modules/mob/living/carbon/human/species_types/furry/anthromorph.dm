@@ -2,7 +2,7 @@
 	race = /datum/species/anthromorph
 
 /datum/species/anthromorph
-	name = "Wild-Kin" 
+	name = "Wild-Kin"
 	id = "anthromorph"
 	desc = "In time you will learn the history of this race"
 	default_color = "444"
@@ -157,3 +157,5 @@
 	returned["mcolor3"] = third_color
 	return returned
 
+/datum/species/anthromorph/get_accent(mob/living/carbon/human/H)
+		return strings("Anglish.json", "Anglish")

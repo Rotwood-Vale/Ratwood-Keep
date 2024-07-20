@@ -1,11 +1,7 @@
 {
-
     "russian": {
-		"c": "k",
-		"kh": "ch",
-		"r": "rr",
-		"yes": "da",
-		"hello": "privyet"
-		}
-		
+        "c": "k",
+        "kh": "ch",
+        "r": "rr"
+    }
 }

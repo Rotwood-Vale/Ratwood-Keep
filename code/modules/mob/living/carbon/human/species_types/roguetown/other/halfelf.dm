@@ -129,3 +129,13 @@
 
 /datum/species/human/halfelf/random_surname()
 	return ""
+
+/datum/species/human/halfelf/get_accent(mob/living/carbon/human/H)
+		switch(H.skin_tone)
+				if(SKIN_COLOR_TIMBER_GRONN)
+						return strings("russian_replacement.json", "russian")
+				if(SKIN_COLOR_ETRUSTCAN_DANDELION)
+						return strings("welsh_replacement.json", "welsh")
+				if(SKIN_COLOR_EBON_BORN)
+						return strings("middlespeak.json", "middle")
+		return null

@@ -96,3 +96,7 @@
 /datum/species/goblinp/on_species_loss(mob/living/carbon/C)
 	. = ..()
 	UnregisterSignal(C, COMSIG_MOB_SAY)
+
+
+/datum/species/goblinp/get_accent(mob/living/carbon/human/H)
+		return strings("norf_replacement.json", "norf")

@@ -13,7 +13,7 @@
 				message = " [message]"
 //				var/list/spellcheck_words = strings("spellcheck.json", "spellcheck") Not necessary to fix, but it's just deleting the word. Temporarily commented out, probably permanent.
 				var/list/accent_words = strings("accent_universal.json", "universal")
-				
+
 /* 				for(var/key in spellcheck_words)
 					var/value = accent_words[key]
 					if(islist(value))
@@ -26,9 +26,9 @@
 					if(islist(value))
 						value = pick(value)
 
-					message = replacetextEx(message, " [uppertext(key)]", " [uppertext(value)]")
-					message = replacetextEx(message, " [capitalize(key)]", " [capitalize(value)]")
-					message = replacetextEx(message, " [key]", " [value]")
+					message = replacetextEx(message, "[uppertext(key)]", "[uppertext(value)]")
+					message = replacetextEx(message, "[capitalize(key)]", "[capitalize(value)]")
+					message = replacetextEx(message, "[key]", "[value]")
 
 		var/list/species_accent = get_accent(source)
 		if(species_accent)
@@ -38,9 +38,9 @@
 					var/value = species_accent[key]
 					if(islist(value))
 						value = pick(value)
-					
-					message = replacetextEx(message, " [uppertext(key)]", " [uppertext(value)]")
-					message = replacetextEx(message, " [capitalize(key)]", " [capitalize(value)]")
-					message = replacetextEx(message, " [key]", " [value]")
+
+					message = replacetextEx(message, "[uppertext(key)]", "[uppertext(value)]")
+					message = replacetextEx(message, "[capitalize(key)]", "[capitalize(value)]")
+					message = replacetextEx(message, "[key]", "[value]")
 
 	speech_args[SPEECH_MESSAGE] = trim(message)

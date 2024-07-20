@@ -137,4 +137,9 @@
 	return
 
 /datum/species/halforc/get_accent(mob/living/carbon/human/H)
-	return strings("middlespeak.json", "middle")
+		switch(H.skin_tone)
+				if(SKIN_COLOR_BLOOD_AXE) //Grenzelhoft
+						return strings("norf_replacement.json", "norf")
+				if(SKIN_COLOR_BLACK_HAMMER) //Hammerhold
+						return strings("norf_replacement.json", "norf")
+		return strings("middlespeak.json", "middle")

@@ -147,4 +147,13 @@
 	return " [pick(world.file2list("strings/rt/names/elf/elfsnf.txt"))]"
 
 /datum/species/elf/dark/get_accent(mob/living/carbon/human/H)
-	return strings("french_replacement.json", "french")
+		switch(H.skin_tone)
+				if(SKIN_COLOR_COMMORAH)
+						return strings("Anglish.json", "Anglish")
+				if(SKIN_COLOR_SSHANNTYNLAN)
+						return strings("french_replacement.json", "french")
+				if(SKIN_COLOR_TAFRAVMA)
+						return strings("french_replacement.json", "french")
+				if(SKIN_COLOR_YUETHINDRYNN)
+						return strings("russian_replacement.json", "russian")
+		return null
