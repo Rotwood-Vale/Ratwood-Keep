@@ -87,7 +87,7 @@
 	)
 
 /datum/species/moth/check_roundstart_eligible()
-	return TRUE
+	return FALSE 
 
 /datum/species/moth/qualifies_for_rank(rank, list/features)
 	return TRUE

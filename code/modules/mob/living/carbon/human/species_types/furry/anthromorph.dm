@@ -108,7 +108,7 @@
 	UnregisterSignal(C, COMSIG_MOB_SAY)
 
 /datum/species/anthromorph/check_roundstart_eligible()
-	return TRUE
+	return FALSE 
 
 /datum/species/anthromorph/qualifies_for_rank(rank, list/features)
 	return TRUE

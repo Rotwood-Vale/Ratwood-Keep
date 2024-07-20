@@ -78,7 +78,7 @@
 	)
 	
 /datum/species/vulpkanin/check_roundstart_eligible()
-	return TRUE
+	return FALSE
 
 /datum/species/vulpkanin/qualifies_for_rank(rank, list/features)
 	return TRUE

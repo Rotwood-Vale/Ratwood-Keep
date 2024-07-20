@@ -76,7 +76,7 @@
 	)
 
 /datum/species/tabaxi/check_roundstart_eligible()
-	return TRUE
+	return FALSE 
 
 /datum/species/tabaxi/qualifies_for_rank(rank, list/features)
 	return TRUE
