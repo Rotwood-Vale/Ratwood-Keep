@@ -54,10 +54,6 @@
 		ORGAN_SLOT_TAIL_FEATURE = /obj/item/organ/tail_feature/lizard_spines,
 		ORGAN_SLOT_FRILLS = /obj/item/organ/frills/lizard,
 		ORGAN_SLOT_HORNS = /obj/item/organ/horns,
-		ORGAN_SLOT_TESTICLES = /obj/item/organ/testicles,
-		ORGAN_SLOT_PENIS = /obj/item/organ/penis,
-		ORGAN_SLOT_BREASTS = /obj/item/organ/breasts,
-		ORGAN_SLOT_VAGINA = /obj/item/organ/vagina,
 		)
 	customizers = list(
 		/datum/customizer/organ/eyes/humanoid,
@@ -70,10 +66,6 @@
 		/datum/customizer/organ/snout/lizard,
 		/datum/customizer/organ/frills/lizard,
 		/datum/customizer/organ/horns/humanoid/sissean,
-		/datum/customizer/organ/testicles/anthro,
-		/datum/customizer/organ/penis/lizard,
-		/datum/customizer/organ/breasts/animal,
-		/datum/customizer/organ/vagina/animal,
 		)
 	body_marking_sets = list(
 		/datum/body_marking_set/none,
@@ -97,7 +89,7 @@
 	)
 
 /datum/species/lizardfolk/check_roundstart_eligible()
-	return TRUE
+	return FALSE 
 
 /datum/species/lizardfolk/qualifies_for_rank(rank, list/features)
 	return TRUE

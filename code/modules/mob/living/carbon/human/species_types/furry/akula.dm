@@ -43,10 +43,6 @@
 		ORGAN_SLOT_APPENDIX = /obj/item/organ/appendix,
 		ORGAN_SLOT_TAIL = /obj/item/organ/tail/akula,
 		ORGAN_SLOT_SNOUT = /obj/item/organ/snout/akula,
-		ORGAN_SLOT_TESTICLES = /obj/item/organ/testicles,
-		ORGAN_SLOT_PENIS = /obj/item/organ/penis,
-		ORGAN_SLOT_BREASTS = /obj/item/organ/breasts,
-		ORGAN_SLOT_VAGINA = /obj/item/organ/vagina,
 		)
 	bodypart_features = list(
 		/datum/bodypart_feature/hair/head,
@@ -59,10 +55,6 @@
 		/datum/customizer/bodypart_feature/accessory,
 		/datum/customizer/bodypart_feature/face_detail,
 		/datum/customizer/organ/snout/akula,
-		/datum/customizer/organ/testicles/anthro,
-		/datum/customizer/organ/penis/lizard,
-		/datum/customizer/organ/breasts/human,
-		/datum/customizer/organ/vagina/human,
 		)
 	body_marking_sets = list(
 		/datum/body_marking_set/none,
@@ -77,7 +69,7 @@
 	)
 
 /datum/species/akula/check_roundstart_eligible()
-	return TRUE
+	return FALSE
 
 /datum/species/akula/qualifies_for_rank(rank, list/features)
 	return TRUE

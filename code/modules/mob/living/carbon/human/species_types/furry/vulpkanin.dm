@@ -49,10 +49,6 @@
 		ORGAN_SLOT_APPENDIX = /obj/item/organ/appendix,
 		ORGAN_SLOT_TAIL = /obj/item/organ/tail/vulpkanin,
 		ORGAN_SLOT_SNOUT = /obj/item/organ/snout/vulpkanin,
-		ORGAN_SLOT_TESTICLES = /obj/item/organ/testicles,
-		ORGAN_SLOT_PENIS = /obj/item/organ/penis,
-		ORGAN_SLOT_BREASTS = /obj/item/organ/breasts,
-		ORGAN_SLOT_VAGINA = /obj/item/organ/vagina,
 		)
 	bodypart_features = list(
 		/datum/bodypart_feature/hair/head,
@@ -67,10 +63,6 @@
 		/datum/customizer/organ/tail/vulpkanin,
 		/datum/customizer/organ/snout/vulpkanin,
 		/datum/customizer/organ/ears/vulpkanin,
-		/datum/customizer/organ/testicles/external,
-		/datum/customizer/organ/penis/knotted,
-		/datum/customizer/organ/breasts/animal,
-		/datum/customizer/organ/vagina/animal,
 		)
 	body_marking_sets = list(
 		/datum/body_marking_set/none,
@@ -86,7 +78,7 @@
 	)
 	
 /datum/species/vulpkanin/check_roundstart_eligible()
-	return TRUE
+	return FALSE
 
 /datum/species/vulpkanin/qualifies_for_rank(rank, list/features)
 	return TRUE

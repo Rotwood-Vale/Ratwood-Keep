@@ -50,10 +50,6 @@
 		/datum/customizer/organ/ears/demihuman,
 		/datum/customizer/organ/horns/demihuman,
 		/datum/customizer/organ/tail/demihuman,
-		/datum/customizer/organ/testicles/human,
-		/datum/customizer/organ/penis/knotted,
-		/datum/customizer/organ/breasts/animal,
-		/datum/customizer/organ/vagina/animal,
 		)
 	body_marking_sets = list(
 		/datum/body_marking_set/none,
@@ -66,7 +62,7 @@
 	)
 
 /datum/species/demihuman/check_roundstart_eligible()
-	return TRUE
+	return FALSE 
 
 /datum/species/demihuman/qualifies_for_rank(rank, list/features)
 	return TRUE

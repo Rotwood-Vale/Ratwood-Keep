@@ -64,10 +64,6 @@
 		/datum/customizer/bodypart_feature/hair/facial/humanoid,
 		/datum/customizer/bodypart_feature/accessory,
 		/datum/customizer/bodypart_feature/face_detail,
-		/datum/customizer/organ/testicles/human,
-		/datum/customizer/organ/penis/human,
-		/datum/customizer/organ/breasts/human,
-		/datum/customizer/organ/vagina/human,
 		)
 	body_markings = list(
 		/datum/body_marking/tonage,

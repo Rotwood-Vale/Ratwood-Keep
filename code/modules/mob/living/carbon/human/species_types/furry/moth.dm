@@ -46,10 +46,6 @@
 		ORGAN_SLOT_ANTENNAS = /obj/item/organ/antennas/moth,
 		ORGAN_SLOT_NECK_FEATURE = /obj/item/organ/neck_feature/moth_fluff,
 		ORGAN_SLOT_WINGS = /obj/item/organ/wings/moth,
-		ORGAN_SLOT_TESTICLES = /obj/item/organ/testicles,
-		ORGAN_SLOT_PENIS = /obj/item/organ/penis,
-		ORGAN_SLOT_BREASTS = /obj/item/organ/breasts,
-		ORGAN_SLOT_VAGINA = /obj/item/organ/vagina,
 		)
 	customizers = list(
 		/datum/customizer/organ/eyes/moth,
@@ -58,10 +54,6 @@
 		/datum/customizer/organ/wings/moth,
 		/datum/customizer/organ/antennas/moth,
 		/datum/customizer/organ/neck_feature/moth_fluff,
-		/datum/customizer/organ/testicles/anthro,
-		/datum/customizer/organ/penis/lizard,
-		/datum/customizer/organ/breasts/animal,
-		/datum/customizer/organ/vagina/animal,
 		)
 	body_marking_sets = list(
 		/datum/body_marking_set/moth/reddish,
@@ -95,7 +87,7 @@
 	)
 
 /datum/species/moth/check_roundstart_eligible()
-	return TRUE
+	return FALSE 
 
 /datum/species/moth/qualifies_for_rank(rank, list/features)
 	return TRUE
