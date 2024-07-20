@@ -13,7 +13,7 @@
 	climbable = FALSE
 	static_debris = list(/obj/item/grown/log/tree = 1)
 	obj_flags = CAN_BE_HIT | BLOCK_Z_IN_UP | BLOCK_Z_OUT_DOWN
-	max_integrity = 300
+	max_integrity = 400
 
 /obj/structure/flora/newtree/fire_act(added, maxstacks)
 	if(added <= 5)
