@@ -84,7 +84,7 @@
 
 	var/dream_dust = 300
 	if(mind.current.STAINT > 10)
-		dream_dust += (mind.current.STAINT - 10) * 1
+		dream_dust += (mind.current.STAINT - 10) * 20 //20% dream points for each int point above 10
 	
 	var/stress_median = stress_amount / stress_cycles
 
