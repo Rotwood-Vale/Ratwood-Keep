@@ -82,9 +82,8 @@
 		rolled_specials++
 	to_chat(mind.current, span_notice("My consciousness slips and I start dreaming..."))
 
-	var/dream_dust = 300
-	if(mind.current.STAINT > 10)
-		dream_dust += (mind.current.STAINT - 10) * 20 //20% dream points for each int point above 10
+	var/dream_dust = 100
+	dream_dust += mind.current.STAINT * 20 //20% dream points for each int
 	
 	var/stress_median = stress_amount / stress_cycles
 
@@ -103,6 +102,9 @@
 
 	stress_amount = 0
 	stress_cycles = 0
+
+	// Minimum one point granted (bad int + bad mood could end up in 0 otherwise)
+	dream_dust = max(dream_dust, 100)
 
 	var/dream_points = FLOOR(dream_dust / 100, 1)
 	var/extra_point_prob = dream_dust % 100
