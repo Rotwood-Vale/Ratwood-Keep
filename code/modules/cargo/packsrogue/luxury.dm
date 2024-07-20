@@ -19,7 +19,7 @@
 /datum/supply_pack/rogue/luxury/spice
 	name = "Spice"
 	cost = 50
-	contains = list(/obj/item/reagent_containers/powder)
+	contains = list(/obj/item/reagent_containers/powder/spice)
 
 /datum/supply_pack/rogue/luxury/mbox
 	name = "Music Box"
