@@ -141,25 +141,10 @@
 	stressadd = 2
 	desc = span_red("My loins ache!")
 
-/datum/stressevent/delf
+/datum/stressevent/shunned_race
 	timer = 1 MINUTES
 	stressadd = 1
-	desc = span_red("A loathesome dark elf.")
-
-/datum/stressevent/tieb
-	timer = 1 MINUTES
-	stressadd = 1
-	desc = span_red("Helldweller... better stay away.")
-
-/datum/stressevent/kobold
-	timer = 1 MINUTES
-	stressadd = 1
-	desc = span_red("Thieving little kobold...")
-
-/datum/stressevent/vermin
-	timer = 1 MINUTES
-	stressadd = 1
-	desc = span_red("Filthy vermin...")
+	desc = span_red("Better stay away.")
 
 /datum/stressevent/paracrowd
 	timer = 15 SECONDS

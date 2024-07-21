@@ -96,7 +96,8 @@
 		/datum/body_marking/small/front,
 		/datum/body_marking/small/spotted,
 	)
-	stress_examine = /datum/stressevent/vermin
+	stress_examine = TRUE
+	stress_desc = span_red("Filthy vermin...")
 
 /datum/species/anthromorphsmall/on_species_gain(mob/living/carbon/C, datum/species/old_species)
 	..()

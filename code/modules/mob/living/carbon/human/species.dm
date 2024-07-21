@@ -138,7 +138,8 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 	var/list/languages = list(/datum/language/common)
 	/// Some species have less than standard gender locks
 	var/gender_swapping = FALSE 
-	var/stress_examine = null
+	var/stress_examine = FALSE
+	var/stress_desc = null
 
 ///////////
 // PROCS //

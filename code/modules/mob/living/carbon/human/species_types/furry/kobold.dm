@@ -80,7 +80,8 @@
 		/datum/language/common,
 		/datum/language/draconic
 	)
-	stress_examine = /datum/stressevent/kobold
+	stress_examine = TRUE
+	stress_desc = span_red("Thieving little kobold...")
 
 /datum/species/kobold/check_roundstart_eligible()
 	return TRUE

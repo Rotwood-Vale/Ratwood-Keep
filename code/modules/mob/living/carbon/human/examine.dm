@@ -6,7 +6,8 @@
 	var/datum/species/self_species = dna.species
 	var/datum/species/examiner_species = user.dna.species
 	if(self_species.stress_examine && self_species.type != examiner_species.type)
-		user.add_stress(self_species.stress_examine)
+		var/datum/stressevent/shunned_race/event = user.add_stress(/datum/stressevent/shunned_race)
+		event.desc = self_species.stress_desc
 	if(user.has_flaw(/datum/charflaw/paranoid) && (STASTR - user.STASTR) > 1)
 		user.add_stress(/datum/stressevent/parastr)
 
