@@ -13,8 +13,6 @@
 	name = "The Fablefield Troupe"
 	shared_wave_type = /datum/migrant_wave/fablefield
 	can_roll = FALSE
-	max_spawns = 1
-	weight = 30
 	roles = list(
 		/datum/migrant_role/fablefield/goliard = 1,
 		/datum/migrant_role/fablefield/troubadour = 2,
