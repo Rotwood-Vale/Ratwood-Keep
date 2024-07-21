@@ -3246,6 +3246,7 @@
 #include "code\modules\roguetown\roguejobs\gravedigger\tools.dm"
 #include "code\modules\roguetown\roguejobs\miner\rogueores.dm"
 #include "code\modules\roguetown\roguejobs\miner\tools.dm"
+#include "code\modules\roguetown\roguejobs\tailor\dyer.dm"
 #include "code\modules\roguetown\roguejobs\tailor\loom.dm"
 #include "code\modules\roguetown\roguemachine\_roguemachine.dm"
 #include "code\modules\roguetown\roguemachine\_withdraw_tab.dm"

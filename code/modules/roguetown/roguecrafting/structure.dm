@@ -186,6 +186,14 @@
 	verbage_simple = "construct"
 	verbage = "constructs"
 	craftdiff = 2
+
+/datum/crafting_recipe/roguetown/structure/dyestation
+	name = "dye station"
+	result = /obj/machinery/gear_painter
+	reqs = list(/obj/item/natural/stone = 2)
+	verbage_simple = "make"
+	verbage = "makes"
+	craftdiff = 0
 /*
 /datum/crafting_recipe/roguetown/structure/stairs
 	name = "stairs (up)"
