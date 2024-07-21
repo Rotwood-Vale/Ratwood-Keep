@@ -52,7 +52,7 @@
 	timer = 15 MINUTES
 	max_stacks = 5
 	stressadd = 2
-	stressadd_per_extra_stack = 1
+	stressadd_per_extra_stack = 2
 	desc = span_red("Butchery.")
 
 /datum/stressevent/fviewdismember
