@@ -395,28 +395,28 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 
 //goblin
 
-/obj/effect/landmark/start/goblinking
+/obj/effect/landmark/start/chieftain
 	name = "Chieftain"
 	icon_state = "arrow"
 
-/obj/effect/landmark/start/goblincook
+/obj/effect/landmark/start/tribalcook
 	name = "Tribal Cook"
 	icon_state = "arrow"
 
-/obj/effect/landmark/start/goblinshaman
+/obj/effect/landmark/start/tribalshaman
 	name = "Tribal Shaman"
 	icon_state = "arrow"
 
-/obj/effect/landmark/start/goblinguard
+/obj/effect/landmark/start/tribalguard
 	name = "Tribal Guard"
 	icon_state = "arrow"
 
-/obj/effect/landmark/start/goblinsmith
+/obj/effect/landmark/start/tribalsmith
 	name = "Tribal Smith"
 	icon_state = "arrow"
 
-/obj/effect/landmark/start/goblinlate
-	name = "Goblinlate"
+/obj/effect/landmark/start/triballate
+	name = "Triballate"
 	icon_state = "arrow"
 	jobspawn_override = list("Tribal Cook", "Tribal Guard", "Chieftain", "Tribal Smith", "Tribal Shaman")
 	delete_after_roundstart = FALSE
