@@ -29,7 +29,7 @@
 
 	// CLASS ARCHETYPES
 	H.adjust_blindness(-3)
-	var/classes = list("Life Cleric","War Cleric",)
+	var/classes = list("Life Cleric","War Cleric","Nature Cleric")
 	var/classchoice = input("Choose your archetypes", "Available archetypes") as anything in classes
 
 	switch(classchoice)
@@ -86,6 +86,37 @@
 			H.change_stat("constitution", 2)
 			H.change_stat("endurance", 2) // Stronger but less intelligent/quick compared to life clerics.
 			H.change_stat("speed", -1)
+		if("Nature Cleric")
+			H.set_blindness(0)
+			to_chat(H, span_warning("You are a cleric of the nature domain."))
+			H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 2, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/polearms, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/bows, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/swimming, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/climbing, 2, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/athletics, 2, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/swords, 2, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/knives, 3, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/reading, 3, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/alchemy, 2, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/sewing, 2, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/weaving, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/medicine, 4, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/craft/cooking, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/riding, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/maces, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/magic/holy, 4, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/craft/crafting, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/labor/farming, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/craft/carpentry, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/magic/druidic, 2, TRUE)
+			H.change_stat("intelligence", 2)
+			H.change_stat("perception", 1)
+			H.change_stat("strength", 1)
+			H.change_stat("constitution", 2)
+			H.change_stat("endurance", 2)
 
 	armor = /obj/item/clothing/suit/roguetown/armor/plate
 	wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
@@ -97,7 +128,13 @@
 	backl = /obj/item/storage/backpack/rogue/satchel
 	backr = /obj/item/rogueweapon/shield/wood
 	backpack_contents = list(/obj/item/rogueweapon/huntingknife)
-
+	if(classchoice == "Nature Cleric")
+		beltr = /obj/item/rogueweapon/sword
+		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
+		armor = /obj/item/clothing/suit/roguetown/armor/leather
+		pants = /obj/item/clothing/under/roguetown/trou
+		cloak = /obj/item/clothing/cloak/raincloak/furcloak
+		shoes = /obj/item/clothing/shoes/roguetown/boots
 
 	ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
