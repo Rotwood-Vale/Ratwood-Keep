@@ -408,7 +408,7 @@ GLOBAL_VAR_INIT(farm_animals, FALSE)
 	if((bodytemperature < minbodytemp) || (bodytemperature > maxbodytemp))
 		adjustHealth(unsuitable_atmos_damage)
 
-/mob/living/simple_animal/MiddleClick(mob/user, params)
+/mob/living/simple_animal/MiddleClick(mob/living/user, params)
 	if(stat == DEAD)
 		var/obj/item/held_item = user.get_active_held_item()
 		if(held_item)
