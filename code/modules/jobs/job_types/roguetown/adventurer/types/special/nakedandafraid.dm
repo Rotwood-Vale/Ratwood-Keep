@@ -28,5 +28,5 @@
 		H.mind.adjust_skillrank(/datum/skill/misc/medicine, 2, TRUE)
 	H.change_stat("strength", 3)
 	H.change_stat("endurance", 4)
-	H.change_stat("constitution", 3)
+	H.change_stat("constitution", 2)
 	H.change_stat("intelligence", -5)

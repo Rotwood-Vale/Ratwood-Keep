@@ -27,7 +27,7 @@
 		/obj/item/rogueweapon/surgery/retractor = 1,
 		/obj/item/rogueweapon/surgery/bonesetter = 1,
 		/obj/item/rogueweapon/surgery/cautery = 1,
-		/obj/item/natural/worms/leech = 3,
+		/obj/item/natural/worms/leech/cheele = 1,
 		/obj/item/needle = 1,
 		/obj/item/natural/cloth = 2,
 	)
@@ -42,7 +42,7 @@
 		head = /obj/item/clothing/head/roguetown/armingcap
 
 	if(H.mind)
-		H.mind.adjust_skillrank(/datum/skill/combat/knives, 4, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/knives, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/craft/crafting, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/athletics, 1, TRUE)
@@ -50,7 +50,7 @@
 		H.mind.adjust_skillrank(/datum/skill/misc/climbing, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/medicine, 5, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/sewing, 2, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/sewing, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/alchemy, 3, TRUE)
 		H.change_stat("strength", -1)
 		H.change_stat("intelligence", 1)
