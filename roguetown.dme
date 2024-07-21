@@ -3505,4 +3505,5 @@
 #include "modular\code\modules\maturity-prompt\code\config_entries.dm"
 #include "modular\code\modules\maturity-prompt\code\maturity_prompt.dm"
 #include "modular\code\modules\maturity-prompt\code\maturity_subsystem.dm"
+#include "modular_rotwood-vale\zombie_fix\code.dm"
 // END_INCLUDE
