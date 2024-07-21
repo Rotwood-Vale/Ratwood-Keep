@@ -11,7 +11,7 @@
 	faction = "Station"
 	total_positions = 5
 	spawn_positions = 5
-	min_pq = 2 //good fragger role
+	min_pq = 3 //good fragger role
 	max_pq = null
 	cmode_music = 'sound/music/combat_grenzelhoft.ogg'
 

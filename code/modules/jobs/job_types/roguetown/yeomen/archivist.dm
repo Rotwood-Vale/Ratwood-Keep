@@ -1,6 +1,6 @@
 /datum/job/roguetown/archivist
 	title = "Archivist"
-	tutorial = " The Archivist meticulously preserves and organizes ancient scrolls and tomes, safeguarding the collective knowledge of the realm for generations to come. Nobles and Peasants alike often seek the Archivists expertise on matters of history and fact."
+	tutorial = "Arşivci, kadim parşömenleri ve ciltleri titizlikle korur ve düzenler, diyarın toplu bilgisini gelecek nesiller için güvence altına alır. Asiller ve köylüler, tarih ve gerçekler konusunda Arşivci'nin uzmanlığını sık sık ararlar"
 	flag = ARCHIVIST
 	department_flag = YEOMEN
 	faction = "Station"

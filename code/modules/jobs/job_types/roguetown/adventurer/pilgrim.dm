@@ -17,7 +17,7 @@
 	PQ_boost_divider = 10
 
 	display_order = JDO_PILGRIM
-	min_pq = -20
+	min_pq = 2
 	max_pq = null
 	wanderer_examine = TRUE
 	advjob_examine = TRUE
