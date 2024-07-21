@@ -26,13 +26,13 @@
 		H.mind.adjust_skillrank(/datum/skill/misc/medicine, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/craft/cooking, 3, TRUE)
-		if(H.age == AGE_OLD)
-        	H.mind.adjust_skillrank(/datum/skill/labor/fishing, 1, TRUE)
+
 		H.change_stat("intelligence", 1)
 		H.change_stat("perception", 2)
 		H.change_stat("constitution", 1)
 		H.change_stat("speed", 1)
-
+			if(H.age == AGE_OLD)
+				H.mind.adjust_skillrank(/datum/skill/labor/fishing, 1, TRUE)
 	if(H.gender == MALE)
 		pants = /obj/item/clothing/under/roguetown/tights/random
 		shirt = /obj/item/clothing/suit/roguetown/shirt/shortshirt/random
