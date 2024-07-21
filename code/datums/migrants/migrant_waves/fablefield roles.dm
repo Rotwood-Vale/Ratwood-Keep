@@ -10,20 +10,20 @@
 
 /datum/outfit/job/roguetown/fablefield/goliard/pre_equip(mob/living/carbon/human/H)
 	..()
-		head = /obj/item/clothing/head/roguetown/bardhat
-		neck = /obj/item/storage/belt/rogue/pouch/coins/mid
-		shoes = /obj/item/clothing/shoes/roguetown/boots
-		pants = /obj/item/clothing/under/roguetown/tights/random
-		shirt = /obj/item/clothing/suit/roguetown/shirt/shortshirt
-		gloves = /obj/item/clothing/gloves/roguetown/fingerless
-		belt = /obj/item/storage/belt/rogue/leather
-		armor = /obj/item/clothing/suit/roguetown/armor/leather/vest
-		cloak = /obj/item/clothing/cloak/half/red
-		backl = /obj/item/storage/backpack/rogue/satchel
-		backr = /obj/item/rogue/instrument/guitar
-		beltl = /obj/item/rogueweapon/sword/rapier/dec
-		beltr = /obj/item/rogueweapon/huntingknife/elvish
-		backpack_contents = list(/obj/item/book/rogue/tales1, /obj/item/book/rogue/blackmountain /obj/item/book/rogue/tales3)
+	head = /obj/item/clothing/head/roguetown/bardhat
+	neck = /obj/item/storage/belt/rogue/pouch/coins/mid
+	shoes = /obj/item/clothing/shoes/roguetown/boots
+	pants = /obj/item/clothing/under/roguetown/tights/random
+	shirt = /obj/item/clothing/suit/roguetown/shirt/shortshirt
+	gloves = /obj/item/clothing/gloves/roguetown/fingerless
+	belt = /obj/item/storage/belt/rogue/leather
+	armor = /obj/item/clothing/suit/roguetown/armor/leather/vest
+	cloak = /obj/item/clothing/cloak/half/red
+	backl = /obj/item/storage/backpack/rogue/satchel
+	backr = /obj/item/rogue/instrument/guitar
+	beltl = /obj/item/rogueweapon/sword/rapier/dec
+	beltr = /obj/item/rogueweapon/huntingknife/elvish
+	backpack_contents = list(/obj/item/book/rogue/tales1, /obj/item/book/rogue/blackmountain /obj/item/book/rogue/tales3)
 		if(H.mind)
 			H.mind.adjust_skillrank(/datum/skill/misc/music, 6, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/reading, 5, TRUE)
@@ -60,20 +60,20 @@
 
 /datum/outfit/job/roguetown/fablefield/troubadour/pre_equip(mob/living/carbon/human/H)
 	..()
-			head = /obj/item/clothing/head/roguetown/bardhat
-		neck = /obj/item/storage/belt/rogue/pouch/coins/poor
-		shoes = /obj/item/clothing/shoes/roguetown/boots
-		pants = /obj/item/clothing/under/roguetown/tights/random
-		shirt = /obj/item/clothing/suit/roguetown/shirt/shortshirt
-		gloves = /obj/item/clothing/gloves/roguetown/fingerless
-		belt = /obj/item/storage/belt/rogue/leather
-		armor = /obj/item/clothing/suit/roguetown/armor/leather/vest
-		cloak = /obj/item/clothing/cloak/half/orange
-		backl = /obj/item/storage/backpack/rogue/satchel
-		backr = /obj/item/rogue/instrument/lute
-		beltl = /obj/item/rogueweapon/sword/rapier
-		beltr = /obj/item/rogueweapon/huntingknife/idagger/steel
-		backpack_contents = list(/obj/item/book/rogue/nitebeast, /obj/item/flashlight/flare/torch/lantern, /obj/item/flint)
+	head = /obj/item/clothing/head/roguetown/bardhat
+	neck = /obj/item/storage/belt/rogue/pouch/coins/poor
+	shoes = /obj/item/clothing/shoes/roguetown/boots
+	pants = /obj/item/clothing/under/roguetown/tights/random
+	shirt = /obj/item/clothing/suit/roguetown/shirt/shortshirt
+	gloves = /obj/item/clothing/gloves/roguetown/fingerless
+	belt = /obj/item/storage/belt/rogue/leather
+	armor = /obj/item/clothing/suit/roguetown/armor/leather/vest
+	cloak = /obj/item/clothing/cloak/half/orange
+	backl = /obj/item/storage/backpack/rogue/satchel
+	backr = /obj/item/rogue/instrument/lute
+	beltl = /obj/item/rogueweapon/sword/rapier
+	beltr = /obj/item/rogueweapon/huntingknife/idagger/steel
+	backpack_contents = list(/obj/item/book/rogue/nitebeast, /obj/item/flashlight/flare/torch/lantern, /obj/item/flint)
 		if(H.mind)
 			H.mind.adjust_skillrank(/datum/skill/misc/music, 5, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/reading, 4, TRUE)
