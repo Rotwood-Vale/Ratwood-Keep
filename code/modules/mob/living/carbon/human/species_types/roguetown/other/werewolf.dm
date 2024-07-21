@@ -5,6 +5,12 @@
 	var/list/stored_skills
 	var/list/stored_experience
 
+/mob/living/carbon/human/species/werewolf/male
+	gender = MALE
+
+/mob/living/carbon/human/species/werewolf/female
+	gender = FEMALE
+
 /datum/species/werewolf
 	name = "verewolf"
 	id = "werewolf"

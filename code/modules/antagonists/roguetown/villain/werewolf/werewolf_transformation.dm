@@ -77,7 +77,13 @@
 
 	src.fully_heal(FALSE)
 
-	var/mob/living/carbon/human/species/werewolf/W = new (loc)
+	var/ww_path
+	if(gender == MALE)
+		ww_path = /mob/living/carbon/human/species/werewolf/male
+	else
+		ww_path = /mob/living/carbon/human/species/werewolf/female
+
+	var/mob/living/carbon/human/species/werewolf/W = new ww_path(loc)
 
 	W.set_patron(src.patron)
 	W.gender = gender
