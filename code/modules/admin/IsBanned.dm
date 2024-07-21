@@ -45,7 +45,7 @@ GLOBAL_VAR(last_connection)
 					addclientmessage(ckey,span_adminnotice("I have been allowed to bypass the whitelist"))
 			else
 				log_access("Failed Login: [key] - Not on whitelist")
-				return list("reason"="whitelist", "desc" = "\nBecome whitelisted! discord.gg/bx9c7ha5Qk")
+				return list("reason"="whitelist", "desc" = "\nBecome whitelisted! https://discord.gg/WGy2K8deAc")
 /*
 #ifdef MATURESERVER
 	if(!check_whitelist(ckey))
@@ -53,7 +53,7 @@ GLOBAL_VAR(last_connection)
 		if(num >= 10)
 			if(check_patreon_lvl(ckey) < 2)
 				log_access("Failed Login: [key] - TrialExpire")
-				return list("reason"="trialexpire", "desc" = "\nBecome whitelisted to continue playing here! discord.gg/6UzZQYqVHT")
+				return list("reason"="trialexpire", "desc" = "\nBecome whitelisted to continue playing here! https://discord.gg/WGy2K8deAc")
 #endif
 */
 /*	//Blacklist
@@ -72,8 +72,8 @@ GLOBAL_VAR(last_connection)
 
 	if(!real_bans_only && !C)
 		if (!admin)
-			if(get_playerquality(ckey) <= -100)
-				log_access("Failed Login: [ckey] - PQ at -100")
+			if(get_playerquality(ckey) <= -101)
+				log_access("Failed Login: [ckey] - PQ at -101")
 				return list("reason"="pqlow", "desc"="\nYou have completed the game!")
 
 	//Guest Checking

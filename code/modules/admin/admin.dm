@@ -503,7 +503,7 @@
 
 
 /datum/admins/proc/Game()
-	if(!check_rights(0))
+	if(!check_rights(R_SPAWN))
 		return
 
 	var/dat = {"
@@ -1076,7 +1076,7 @@
 
 
 /client/proc/returntolobby()
-	set category = "Debug"
+	set category = "Special Verbs"
 	set name = "Return to Lobby"
 
 	var/mob/living/carbon/human/H = mob

@@ -138,7 +138,7 @@ GLOBAL_LIST_INIT(admin_verbs_fun, list(
 	/client/proc/admin_away
 	))
 GLOBAL_PROTECT(admin_verbs_fun)
-GLOBAL_LIST_INIT(admin_verbs_spawn, list(/datum/admins/proc/spawn_atom, /datum/admins/proc/podspawn_atom, /datum/admins/proc/spawn_cargo, /datum/admins/proc/spawn_objasmob, /client/proc/respawn_character, /datum/admins/proc/beaker_panel))
+GLOBAL_LIST_INIT(admin_verbs_spawn, list(/datum/admins/proc/spawn_atom, /datum/admins/proc/podspawn_atom, /datum/admins/proc/spawn_cargo, /datum/admins/proc/spawn_objasmob, /client/proc/respawn_character, /datum/admins/proc/beaker_panel, /client/proc/game_panel, /client/proc/cmd_admin_delete, /client/proc/drop_bomb, /client/proc/cmd_admin_local_narrate, /client/proc/cmd_admin_direct_narrate, /client/proc/cmd_admin_world_narrate, /datum/admins/proc/announce ))
 GLOBAL_PROTECT(admin_verbs_spawn)
 GLOBAL_LIST_INIT(admin_verbs_server, world.AVerbsServer())
 GLOBAL_PROTECT(admin_verbs_server)
@@ -365,7 +365,7 @@ GLOBAL_PROTECT(admin_verbs_hideable)
 
 
 /client/proc/set_context_menu_enabled()
-	set category = "Admin"
+	set category = "Fun"
 	set name = "Toggle Right-Click Menus"
 	if(!holder)
 		return
@@ -373,7 +373,7 @@ GLOBAL_PROTECT(admin_verbs_hideable)
 	to_chat(src, show_popup_menus ? "Right click menus are now enabled" : "Right click menus are now disabled")
 
 /client/proc/admin_ghost()
-	set category = "GameMaster"
+	set category = "Fun"
 	set name = "Aghost"
 	if(!holder)
 		return
@@ -481,7 +481,7 @@ GLOBAL_PROTECT(admin_verbs_hideable)
 
 /client/proc/game_panel()
 	set name = "Game Panel"
-	set category = "Admin"
+	set category = "Fun"
 	if(holder)
 		holder.Game()
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Game Panel") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
@@ -549,7 +549,7 @@ GLOBAL_PROTECT(admin_verbs_hideable)
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Stealth Mode") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /client/proc/drop_bomb()
-	set category = "Special Verbs"
+	set category = "Fun"
 	set name = "Drop Bomb"
 	set desc = ""
 
@@ -702,7 +702,7 @@ GLOBAL_PROTECT(admin_verbs_hideable)
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Object Say") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 /client/proc/togglebuildmodeself()
 	set name = "Toggle Build Mode Self"
-	set category = "Special Verbs"
+	set category = "Fun"
 	if (!(holder.rank.rights & R_BUILD))
 		return
 	if(src.mob)

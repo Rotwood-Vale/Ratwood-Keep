@@ -26,7 +26,7 @@
 
 /client/proc/jumptoturf(turf/T in world)
 	set name = "Jump to Turf"
-	set category = "Admin"
+	set category = "GameMaster"
 	if(!src.holder)
 //		//to_chat(src, "Only administrators may use this command.")
 		return
@@ -57,7 +57,7 @@
 			to_chat(A, "This mob is not located in the game world.")
 
 /client/proc/jumptocoord(tx as num, ty as num, tz as num)
-	set category = "Admin"
+	set category = "GameMaster"
 	set name = "Jump to Coordinate"
 
 	if (!holder)

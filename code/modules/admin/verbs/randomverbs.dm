@@ -132,7 +132,7 @@
 	set category = "Special Verbs"
 	set name = "Global Narrate"
 
-	if(!check_rights(R_ADMIN))
+	if(!check_rights(R_FUN))
 		return
 
 	var/msg = input("Message:", text("Enter the text you wish to appear to everyone:")) as text|null
@@ -148,7 +148,7 @@
 	set category = "Special Verbs"
 	set name = "Direct Narrate"
 
-	if(!check_rights(R_ADMIN))
+	if(!check_rights(R_FUN))
 		return
 
 	if(!M)
@@ -173,7 +173,7 @@
 	set category = "Special Verbs"
 	set name = "Local Narrate"
 
-	if(!check_rights(R_ADMIN))
+	if(!check_rights(R_FUN))
 		return
 	if(!A)
 		return
@@ -591,7 +591,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	set category = "Admin"
 	set name = "Delete"
 
-	if(!check_rights(R_SPAWN|R_DEBUG))
+	if(!check_rights(R_SPAWN))
 		return
 
 	admin_delete(A)
@@ -600,7 +600,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	set category = "Admin"
 	set name = "Manage Job Slots"
 
-	if(!check_rights(R_DEBUG))
+	if(!check_rights(R_ADMIN))
 		return
 	holder.manage_free_slots()
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Manage Job Slots") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
