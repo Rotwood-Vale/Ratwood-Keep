@@ -219,7 +219,7 @@
 						else
 							attacker_skill_type = /datum/skill/combat/unarmed
 						if((U.mobility_flags & MOBILITY_STAND) && can_train_combat_skill(U, attacker_skill_type, defender_skill - SKILL_LEVEL_NOVICE))
-							U.mind.add_sleep_experience(attacker_skill, max(round(STAINT/2), 0), FALSE)
+							U.mind.add_sleep_experience(attacker_skill_type, max(round(STAINT/2), 0), FALSE)
 
 					if(prob(66) && AB)
 						if((used_weapon.flags_1 & CONDUCT_1) && (AB.flags_1 & CONDUCT_1))
