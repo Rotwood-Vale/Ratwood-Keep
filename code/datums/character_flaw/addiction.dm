@@ -13,9 +13,9 @@
 		A.sated = TRUE
 		A.time = initial(A.time) //reset roundstart sate offset to standard
 		A.next_sate = world.time + A.time
-		H.remove_stress(/datum/stressevent/vice)
+		remove_stress(/datum/stressevent/vice)
 		if(A.debuff)
-			H.remove_status_effect(A.debuff)
+			remove_status_effect(A.debuff)
 
 /datum/charflaw/addiction
 	var/next_sate = 0

@@ -95,7 +95,7 @@
 
 	var/caught_thing = pickweight(baited.fishloot)
 	new caught_thing(current_fisherman.loc)
-	amt2raise = current_fisherman.STAINT
+	amt2raise = current_fisherman.STAINT * 2
 	playsound(loc, 'sound/items/Fish_out.ogg', 100, TRUE)
 
 	QDEL_NULL(baited)
