@@ -48,7 +48,7 @@
 	if(!produce_ready)
 		return
 	apply_farming_fatigue(user, 5)
-	adjust_experience(user, /datum/skill/labor/farming, user.STAINT * 4)
+	adjust_experience(user, /datum/skill/labor/farming, user.STAINT * 2)
 
 	var/farming_skill = user.mind.get_skill_level(/datum/skill/labor/farming)
 	var/chance_to_ruin = 50 - (farming_skill * 25)
@@ -475,6 +475,9 @@
 		adjust_plant_health(dt * PLANT_BLESS_HEAL_RATE)
 
 /obj/structure/soil/proc/process_plant_nutrition(dt)
+	var/turf/location = loc
+	if(!plant.can_grow_underground && location.can_see_sky == SEE_SKY_NO)
+		return
 	// If matured and produce is ready, don't process plant nutrition
 	if(matured && produce_ready)
 		return

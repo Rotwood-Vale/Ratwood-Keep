@@ -38,7 +38,8 @@ Difficulty: Medium
 	attack_verb_continuous = "chomps"
 	attack_verb_simple = "chomp"
 	attack_sound = 'sound/blank.ogg'
-	icon = 'icons/mob/lavaland/64x64megafauna.dmi'
+//	icon = 'icons/mob/lavaland/64x64megafauna.dmi'	Added new sprites from MrAnimeBar - Gardelin0
+	icon = 'modular/icons/mob/96x96/ratwood_dragon.dmi'
 	icon_state = "dragon"
 	icon_living = "dragon"
 	icon_dead = "dragon_dead"
@@ -393,7 +394,7 @@ Difficulty: Medium
 		return FALSE
 	return ..()
 
-/mob/living/simple_animal/hostile/megafauna/dragon/visible_message(message, self_message, blind_message, vision_distance = DEFAULT_MESSAGE_RANGE, list/ignored_mobs)
+/mob/living/simple_animal/hostile/megafauna/dragon/visible_message(message, self_message, blind_message, vision_distance = DEFAULT_MESSAGE_RANGE, list/ignored_mobs, runechat_message = null)
 	if(swooping & SWOOP_INVULNERABLE) //to suppress attack messages without overriding every single proc that could send a message saying we got hit
 		return
 	return ..()
@@ -474,7 +475,8 @@ Difficulty: Medium
 /obj/effect/temp_visual/dragon_swoop
 	name = "certain death"
 	desc = ""
-	icon = 'icons/effects/96x96.dmi'
+//	icon = 'icons/effects/96x96.dmi'	Added new sprites from MrAnimeBar - Gardelin0
+	icon = 'modular/icons/mob/96x96/ratwood_dragon.dmi'
 	icon_state = "landing"
 	layer = BELOW_MOB_LAYER
 	pixel_x = -32
@@ -483,8 +485,10 @@ Difficulty: Medium
 	duration = 10
 
 /obj/effect/temp_visual/dragon_flight
-	icon = 'icons/mob/lavaland/64x64megafauna.dmi'
-	icon_state = "dragon"
+//	icon = 'icons/mob/lavaland/64x64megafauna.dmi'	Added new sprites from MrAnimeBar - Gardelin0
+	icon = 'modular/icons/mob/96x96/ratwood_dragon.dmi'
+//	icon_state = "dragon"
+	icon_state = "shadow"
 	layer = ABOVE_ALL_MOB_LAYER
 	pixel_x = -16
 	duration = 10

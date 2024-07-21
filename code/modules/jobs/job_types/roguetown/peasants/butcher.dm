@@ -29,19 +29,16 @@
 		H.mind.adjust_skillrank(/datum/skill/misc/riding, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/craft/crafting, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/labor/butchering, 5, TRUE)
+	beltl = /obj/item/roguekey/butcher
+	armor = /obj/item/clothing/suit/roguetown/armor/leather/vest
+	backl = /obj/item/storage/backpack/rogue/satchel
+	belt = /obj/item/storage/belt/rogue/leather
+	shoes = /obj/item/clothing/shoes/roguetown/boots/leather
 	if(H.gender == MALE)
 		pants = /obj/item/clothing/under/roguetown/trou
-		armor = /obj/item/clothing/suit/roguetown/armor/leather/vest
-		shoes = /obj/item/clothing/shoes/roguetown/boots/leather
-		belt = /obj/item/storage/belt/rogue/leather
-		backl = /obj/item/storage/backpack/rogue/satchel
 		wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
 	else
-		shoes = /obj/item/clothing/shoes/roguetown/boots/leather
-		belt = /obj/item/storage/belt/rogue/leather
-		shirt = /obj/item/clothing/suit/roguetown/shirt/dress/gen/random
-		backl = /obj/item/storage/backpack/rogue/satchel
-		armor = /obj/item/clothing/suit/roguetown/armor/leather/vest
+		shirt = /obj/item/clothing/suit/roguetown/shirt/dress/gen/random	
 	if(H.mind)
 		H.change_stat("strength", 1)
 		H.change_stat("endurance", 1)

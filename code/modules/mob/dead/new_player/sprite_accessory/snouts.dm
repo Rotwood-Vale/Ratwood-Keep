@@ -30,6 +30,12 @@
 	name = "Round + Light"
 	icon_state = "roundlight"
 
+/datum/sprite_accessory/snout/vulp
+	name = "Vulp Two-shade"
+	icon_state = "vulp"
+	color_keys = 2
+	color_key_names = list("Snout", "Inner")
+
 /datum/sprite_accessory/snout/bird
 	name = "Beak"
 	icon_state = "bird"
