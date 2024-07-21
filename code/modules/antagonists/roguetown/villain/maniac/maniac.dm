@@ -103,6 +103,9 @@
 			dreamer.STACON = 16		//16 con; was 20, seemed too strong
 			dreamer.STAEND = 16		//16 endurance; was 20, semed too strong
 			dreamer.STASPD = 14		//Added in exchange for lowered other stats; this makes them a bit faster than normal likely. Helps dodging. Equal to goblin.
+		for(var/trait in applied_traits)
+			ADD_TRAIT(owner.current, trait, "[type]")
+		hallucinations = owner.current.overlay_fullscreen("maniac", /atom/movable/screen/fullscreen/maniac)
 	LAZYINITLIST(owner.learned_recipes)
 	owner.learned_recipes |= recipe_progression[1]
 	forge_villain_objectives()
