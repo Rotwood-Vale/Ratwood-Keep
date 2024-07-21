@@ -40,6 +40,7 @@
 /datum/config_entry/flag/hub	// if the game appears on the hub or not
 
 /datum/config_entry/flag/log_ooc	// log OOC channel
+/datum/config_entry/flag/log_looc	// log LOOC channel
 
 /datum/config_entry/flag/log_access	// log login/logout
 
