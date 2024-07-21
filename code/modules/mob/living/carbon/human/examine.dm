@@ -501,6 +501,8 @@
 	if(!obscure_name && headshot_link)
 		. += "<a href='?src=[REF(src)];task=view_headshot;'>View headshot</a>"
 
+	. += "<a href='?src=[REF(src)];task=view_erp_preferences;'>View ERP Preferences</a>"
+
 	var/trait_exam = common_trait_examine()
 	if(!isnull(trait_exam))
 		. += trait_exam

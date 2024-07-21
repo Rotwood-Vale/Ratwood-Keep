@@ -149,6 +149,8 @@
 	if(getorganslot(ORGAN_SLOT_VAGINA))
 		W.internal_organs_slot[ORGAN_SLOT_VAGINA] = /obj/item/organ/vagina/internal
 
+	W.client.prefs.sexable = client.prefs.sexable
+
 /mob/living/carbon/human/proc/werewolf_untransform(dead,gibbed)
 	if(!stored_mob)
 		return

@@ -129,6 +129,13 @@
 			// Display a warning if the user mocks up
 			to_chat(src, span_warning("I feel your [pocket_side] pocket being fumbled with!"))
 
+	if(href_list["task"] == "view_erp_preferences") //To know if they want to ERP
+		switch (client.prefs.sexable)
+			if(TRUE)
+				to_chat(usr, span_love("They allowed to use ERP Panel on them!"))
+			else
+				to_chat(usr, span_warning("They DID NOT ALLOW to use ERP Panel on them!"))
+
 ///////HUDs///////
 	if(href_list["hud"])
 		if(!ishuman(usr))
