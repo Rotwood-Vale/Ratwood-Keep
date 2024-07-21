@@ -92,8 +92,7 @@
 	if(prob(0)) //TODO SLEEP ADV SPECIALS
 		rolled_specials++
 	var/inspirations = 1
-	var/visible_dust_base = BASE_DREAM_DUST + (10 * DREAM_DUST_PER_INT)
-	to_chat(mind.current, span_notice("My consciousness slips and I start dreaming...(+[visible_dust_base]%, +1 Insp.)"))
+	to_chat(mind.current, span_notice("My consciousness slips and I start dreaming..."))
 
 	var/dream_dust = retained_dust
 	dream_dust += BASE_DREAM_DUST
@@ -101,22 +100,20 @@
 	var/int = mind.current.STAINT
 	dream_dust += mind.current.STAINT * DREAM_DUST_PER_INT //25% dream points for each int
 	if(int < 10)
-		var/diff = (10 - int) * DREAM_DUST_PER_INT
-		to_chat(mind.current, span_boldwarning("My shallow imagination makes them dull... (-[diff]%)"))
+		to_chat(mind.current, span_boldwarning("My shallow imagination makes them dull..."))
 	else if (int > 10)
-		var/diff = (int - 10) * DREAM_DUST_PER_INT
-		to_chat(mind.current, span_notice("My creative thinking enhances them... (+[diff]%)"))
+		to_chat(mind.current, span_notice("My creative thinking enhances them..."))
 
 	var/stress_median = stress_amount / stress_cycles
 
 	if(stress_median <= -1)
 		// Unstressed, happy
-		to_chat(mind.current, span_notice("With no stresses throughout the day I dream vividly... (+100%, +1 Insp.)"))
+		to_chat(mind.current, span_notice("With no stresses throughout the day I dream vividly..."))
 		dream_dust += 100
 		inspirations++
 	else if (stress_median >= 5.0)
 		// Stressed, unhappy
-		to_chat(mind.current, span_boldwarning("Bothered by the stresses of the day my dreams are short... (-100%)"))
+		to_chat(mind.current, span_boldwarning("Bothered by the stresses of the day my dreams are short..."))
 		dream_dust -= 100
 
 	grant_inspiration_xp(inspirations)
@@ -232,7 +229,7 @@
 	var/skill_string
 	for(var/i in 1 to inspired_skill_names.len)
 		var/skill_name = inspired_skill_names[i]
-		if(i >= 1 && i == inspired_skill_names.len)
+		if(i > 1 && i == inspired_skill_names.len)
 			skill_string += " and "
 		else if(i != 1)
 			skill_string += ", "
@@ -250,7 +247,7 @@
 /datum/sleep_adv/proc/finish()
 	if(!mind.current)
 		return
-	to_chat(mind.current, span_notice("..and that's all I dreamt of ([retained_dust]%)"))
+	to_chat(mind.current, span_notice("..and that's all I dreamt of"))
 	close_ui()
 
 /datum/sleep_adv/Topic(href, list/href_list)

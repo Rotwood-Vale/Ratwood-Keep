@@ -31,6 +31,7 @@
 /mob/living/carbon
 	var/oldstress = 0
 	var/list/stressors = list()
+	var/list/gray_matrix_color = list(0.30,0.30,0.30,0, 0.60,0.60,0.60,0, 0.10,0.10,0.10,0, 0,0,0,1, 0,0,0,0)
 
 /mob/living/carbon/add_stress(event_type)
 	var/datum/stressevent/event = get_stress_event(event_type)
@@ -78,6 +79,48 @@
 		change_stat("fortune", 0, "stress")
 
 	oldstress = new_stress
+	update_stress_visual(new_stress)
+
+/mob/living/carbon/proc/update_stress_visual(new_stress)
+	if(!client)
+		return
+	/// Update grain alpha
+	var/atom/movable/screen/grain_obj = hud_used.grain
+	grain_obj.alpha = 55 + (new_stress * 1.5)
+
+	var/fade_progress = 0
+	if(new_stress < 5)
+		fade_progress = 0
+		remove_client_colour(/datum/client_colour/stress_fade)
+	else
+		fade_progress = clamp(((new_stress - 5) / 50), 0, 0.6)
+
+	/// Update screen black/white
+	var/datum/client_colour/stress_fade/fade_color = add_client_colour(/datum/client_colour/stress_fade)
+	var/list/matrix = fade_color.colour
+	//RED FADE
+	// R fade is 0.3
+	var/r_fade = 0.3 * fade_progress
+	var/red = 1.0 - (0.7 * fade_progress)
+	matrix[1] = red // RED
+	matrix[2] = r_fade
+	matrix[3] = r_fade 
+	//GREEN FADE
+	// G fade is 0.6
+	var/g_fade = 0.6 * fade_progress
+	var/green = 1.0 - (0.4 * fade_progress)
+	matrix[5] = g_fade
+	matrix[6] = green // GREEN
+	matrix[7] = g_fade
+	//BLUE FADE
+	// B fade is 0.1
+	var/b_fade = 0.1 * fade_progress
+	var/blue = 1.0 - (0.9 * fade_progress)
+	matrix[9] = b_fade
+	matrix[10] = b_fade
+	matrix[11] = blue // BLUE
+
+	update_client_colour()
 
 
 /mob/living/carbon/get_stress_amount()
