@@ -23,7 +23,7 @@
 	backr = /obj/item/rogue/instrument/guitar
 	beltl = /obj/item/rogueweapon/sword/rapier/dec
 	beltr = /obj/item/rogueweapon/huntingknife/elvish
-	backpack_contents = list(/obj/item/book/rogue/tales1, /obj/item/book/rogue/blackmountain /obj/item/book/rogue/tales3)
+	backpack_contents = list(/obj/item/book/rogue/tales1, /obj/item/book/rogue/blackmountain, /obj/item/book/rogue/tales3)
 		if(H.mind)
 			H.mind.adjust_skillrank(/datum/skill/misc/music, 6, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/reading, 5, TRUE)
