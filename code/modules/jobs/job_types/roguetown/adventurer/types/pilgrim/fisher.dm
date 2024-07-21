@@ -31,8 +31,8 @@
 		H.change_stat("perception", 2)
 		H.change_stat("constitution", 1)
 		H.change_stat("speed", 1)
-			if(H.age == AGE_OLD)
-				H.mind.adjust_skillrank(/datum/skill/labor/fishing, 1, TRUE)
+		if(H.age == AGE_OLD)
+			H.mind.adjust_skillrank(/datum/skill/labor/fishing, 1, TRUE)
 	if(H.gender == MALE)
 		pants = /obj/item/clothing/under/roguetown/tights/random
 		shirt = /obj/item/clothing/suit/roguetown/shirt/shortshirt/random
