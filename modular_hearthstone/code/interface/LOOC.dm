@@ -27,7 +27,7 @@
 
 	msg = emoji_parse(msg)
 
-	mob.log_talk(msg,LOG_OOC, tag="LOOC")
+	mob.log_talk(msg, LOG_LOOC)
 
 	var/list/heard = get_hearers_in_view(7, get_top_level_mob(src.mob))
 	for(var/mob/M in heard)
@@ -42,13 +42,6 @@
 
 		if(C.prefs.chat_toggles & CHAT_OOC)
 			to_chat(C, "<font color='["#6699CC"]'><b><span class='prefix'>LOOC:</span> <EM>[src.mob.name]:</EM> <span class='message'>[msg]</span></b></font>")
-
-	for(var/client/C in GLOB.admins)
-		if(C.prefs.chat_toggles & CHAT_OOC)
-			var/prefix = "(R)LOOC"
-			if (C.mob in heard)
-				prefix = "LOOC"
-			to_chat(C, "<font color='["#6699CC"]'><b>[ADMIN_FLW(usr)] <span class='prefix'>[prefix]:</span> <EM>[src.key]/[src.mob.name]:</EM> <span class='message'>[msg]</span></b></font>")
 
 /mob/proc/get_top_level_mob()
 	if(ismob(src.loc) && src.loc != src)
