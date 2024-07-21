@@ -80,6 +80,7 @@
 		/datum/language/common,
 		/datum/language/draconic
 	)
+	stress_examine = /datum/stressevent/kobold
 
 /datum/species/kobold/check_roundstart_eligible()
 	return TRUE

@@ -84,6 +84,7 @@
 		/datum/language/common,
 		/datum/language/hellspeak,
 	)
+	stress_examine = /datum/stressevent/tieb
 
 /datum/species/tieberian/on_species_gain(mob/living/carbon/C, datum/species/old_species)
 	..()

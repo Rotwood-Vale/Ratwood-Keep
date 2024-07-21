@@ -49,10 +49,10 @@
 	desc = span_boldred("I'd rather cut my own throat than my beard.")
 
 /datum/stressevent/viewdismember
-	timer = 20 MINUTES
-	max_stacks = 10
+	timer = 15 MINUTES
+	max_stacks = 5
 	stressadd = 2
-	stressadd_per_extra_stack = 2
+	stressadd_per_extra_stack = 1
 	desc = span_red("Butchery.")
 
 /datum/stressevent/fviewdismember
@@ -133,7 +133,7 @@
 
 /datum/stressevent/cumcorpse
 	timer = 1 MINUTES
-	stressadd = 20
+	stressadd = 10
 	desc = span_boldred("What have I done?")
 
 /datum/stressevent/blueb
@@ -151,10 +151,15 @@
 	stressadd = 1
 	desc = span_red("Helldweller... better stay away.")
 
-/datum/stressevent/brazillian
+/datum/stressevent/kobold
 	timer = 1 MINUTES
 	stressadd = 1
-	desc = span_red("A vile lizard.")
+	desc = span_red("Thieving little kobold...")
+
+/datum/stressevent/vermin
+	timer = 1 MINUTES
+	stressadd = 1
+	desc = span_red("Filthy vermin...")
 
 /datum/stressevent/paracrowd
 	timer = 15 SECONDS

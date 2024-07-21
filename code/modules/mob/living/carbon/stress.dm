@@ -31,7 +31,6 @@
 /mob/living/carbon
 	var/oldstress = 0
 	var/list/stressors = list()
-	var/list/gray_matrix_color = list(0.30,0.30,0.30,0, 0.60,0.60,0.60,0, 0.10,0.10,0.10,0, 0,0,0,1, 0,0,0,0)
 
 /mob/living/carbon/add_stress(event_type)
 	var/datum/stressevent/event = get_stress_event(event_type)
@@ -40,8 +39,9 @@
 		stressors[event_type] = event
 	event.time_added = world.time
 	if(event.stacks >= event.max_stacks)
-		return
+		return event
 	event.stacks++
+	return event
 
 /mob/living/carbon/remove_stress(event_type)
 	var/datum/stressevent/event = get_stress_event(event_type)
@@ -67,16 +67,45 @@
 	// Update stress status and prompts
 	var/new_stress = get_stress_amount()
 
-	if(new_stress != oldstress)
-		if(new_stress > oldstress)
-			to_chat(src, span_red("I gain stress."))
-		else
-			to_chat(src, span_green("I gain peace."))
+	var/ascending = (new_stress > oldstress)
 
-	if(new_stress > 15)
+	if(new_stress != oldstress)
+		if(ascending)
+			to_chat(src, span_smallred("I gain stress."))
+		else
+			to_chat(src, span_smallgreen("I gain peace."))
+
+	var/old_threshold = get_stress_threshold(oldstress)
+	var/new_threshold = get_stress_threshold(new_stress)
+	if(old_threshold != new_threshold)
+		switch(new_threshold)
+			if(STRESS_THRESHOLD_NICE)
+				to_chat(src, span_green("I feel good"))
+			if(STRESS_THRESHOLD_NEUTRAL)
+				if(ascending)
+					to_chat(src, span_info("I no longer feel good"))
+				else
+					to_chat(src, span_info("I no longer feel stressed"))
+			if(STRESS_THRESHOLD_STRESSED)
+				if(ascending)
+					to_chat(src, span_red("I'm getting stressed..."))
+				else
+					to_chat(src, span_red("I'm stressed a little less, now"))
+			if(STRESS_THRESHOLD_STRESSED_BAD)
+				if(ascending)
+					to_chat(src, span_boldred("I'm getting at my limit.."))
+				else
+					to_chat(src, span_boldred("I'm not freaking out that badly anymore..."))
+			if(STRESS_THRESHOLD_FREAKING_OUT)
+				to_chat(src, span_boldred("I'M FREAKING OUT!!!"))
+
+	if(new_stress >= 15)
 		change_stat("fortune", -1, "stress")
 	else
 		change_stat("fortune", 0, "stress")
+
+	if(new_stress >= 20)
+		roll_streak_freakout()
 
 	oldstress = new_stress
 	update_stress_visual(new_stress)
@@ -104,7 +133,7 @@
 	var/red = 1.0 - (0.7 * fade_progress)
 	matrix[1] = red // RED
 	matrix[2] = r_fade
-	matrix[3] = r_fade 
+	matrix[3] = r_fade
 	//GREEN FADE
 	// G fade is 0.6
 	var/g_fade = 0.6 * fade_progress
@@ -122,6 +151,47 @@
 
 	update_client_colour()
 
+/mob/living/carbon/proc/roll_streak_freakout()
+	if(stat != CONSCIOUS)
+		return
+	if(mob_timers["next_stress_freakout"])
+		if(world.time < mob_timers["next_stress_freakout"])
+			return
+	if(!prob(20)) // 20% per update to make it less consistent
+		return
+	// Randomized cooldown
+	mob_timers["next_stress_freakout"] = world.time + rand(60 SECONDS, 120 SECONDS)
+	stress_freakout()
+
+/mob/living/carbon/proc/stress_freakout()
+	to_chat(src, span_boldred("I PANIC!!!"))
+	Stun(2 SECONDS)
+	blur_eyes(2)
+	freakout_hud_skew()
+	add_stress(/datum/stressevent/freakout)
+	if(get_stress_amount() >= 30)
+		heart_attack()
+	else
+		emote("fatigue", forced = TRUE)
+		addtimer(CALLBACK(src, PROC_REF(do_stress_freakout_scream)), rand(1 SECONDS, 2 SECONDS))
+
+/mob/living/carbon/proc/do_stress_freakout_scream()
+	if(stat != CONSCIOUS)
+		return
+	emote("scream", forced = TRUE)
+
+/mob/living/carbon/proc/freakout_hud_skew()
+	if(!hud_used)
+		return
+	var/matrix/skew = matrix()
+	skew.Scale(1.5)
+	var/matrix/newmatrix = skew
+	for(var/C in hud_used.plane_masters)
+		var/atom/movable/screen/plane_master/whole_screen = hud_used.plane_masters[C]
+		if(whole_screen.plane == HUD_PLANE)
+			continue
+		animate(whole_screen, transform = newmatrix, time = 1, easing = QUAD_EASING)
+		animate(transform = -newmatrix, time = 30, easing = QUAD_EASING)
 
 /mob/living/carbon/get_stress_amount()
 	if(HAS_TRAIT(src, TRAIT_NOMOOD))
@@ -154,3 +224,17 @@
 		var/datum/stressevent/event = stressors[stressor_type]
 		if(event.get_stress(src) > 0)
 			. += event
+
+/proc/get_stress_threshold(stress_amt)
+	switch(stress_amt)
+		if(-INFINITY to -4)
+			return STRESS_THRESHOLD_NICE
+		if(-4 to 4)
+			return STRESS_THRESHOLD_NEUTRAL
+		if(4 to 11)
+			return STRESS_THRESHOLD_STRESSED
+		if(11 to 19)
+			return STRESS_THRESHOLD_STRESSED_BAD
+		if(19 to INFINITY)
+			return STRESS_THRESHOLD_FREAKING_OUT
+

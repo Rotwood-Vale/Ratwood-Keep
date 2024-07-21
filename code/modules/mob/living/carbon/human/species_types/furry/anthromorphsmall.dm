@@ -96,6 +96,7 @@
 		/datum/body_marking/small/front,
 		/datum/body_marking/small/spotted,
 	)
+	stress_examine = /datum/stressevent/vermin
 
 /datum/species/anthromorphsmall/on_species_gain(mob/living/carbon/C, datum/species/old_species)
 	..()

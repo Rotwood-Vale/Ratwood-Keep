@@ -82,8 +82,10 @@ h1.alert, h2.alert	{color: #c9c1ba;font-family: Pterra, TrueType;}
 .unconscious			{color: #c9c1ba;	font-weight: bold;}
 .suicide				{color: #ff5050;	font-style: italic;}
 .green					{color: #80b077;}
+.smallgreen				{color: #80b077;	font-size: 75%;}
 .boldgreen				{color: #80b077;	font-weight: bold;}
 .red					{color: #b84d47;}
+.smallred				{color: #b84d47;	font-size: 75%;}
 .boldred				{color: #b84d47;	font-weight: bold;}
 .blue					{color: #6a8cb7;}
 .purple					{color: #967aaf;}
