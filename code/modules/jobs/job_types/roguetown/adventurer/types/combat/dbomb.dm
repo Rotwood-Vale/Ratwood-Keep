@@ -1,8 +1,8 @@
 /datum/advclass/dbomb
 	name = "Vagrant"
-	tutorial = "Dwarves like to blow things up."
+	tutorial = "What makes me a good vagrant? If i were a bad vagrant, i wouldn't be standing here, walking into the bog now would i?."
 	allowed_sexes = list(MALE, FEMALE)
-	allowed_races = list(/datum/species/dwarf/mountain)
+	allowed_races = list(/datum/species/dwarf/mountain, /datum/species/halforc)
 	outfit = /datum/outfit/job/roguetown/adventurer/dbomb
 	traits_applied = list(TRAIT_HEAVYARMOR)
 	category_tags = list(CTAG_ADVENTURER)
@@ -20,7 +20,7 @@
 	armor = /obj/item/clothing/suit/roguetown/armor/chainmail/iron
 	wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
 	backl = /obj/item/storage/backpack/rogue/backpack
-	backpack_contents = list(/obj/item/bomb = 1, /obj/item/flint = 1, /obj/item/reagent_containers/glass/mortar = 1, /obj/item/pestle = 1, /obj/item/natural/rock/coal = 3)
+	backpack_contents = list(/obj/item/bomb = 1, /obj/item/flint = 1, /obj/item/reagent_containers/glass/mortar = 1, /obj/item/pestle = 1, /obj/item/rogueore/coal = 1, /obj/item/reagent_containers/glass/bottle = 3)
 	if(prob(50))
 		beltr = /obj/item/rogueweapon/pick
 	else

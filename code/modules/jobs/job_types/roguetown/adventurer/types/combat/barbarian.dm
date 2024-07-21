@@ -23,9 +23,9 @@
 			to_chat(H, span_warning("Barbarians are great warriors of the outlands, often regarded as the strongest of their tribes -- should they have any that live. These incredible titans of strength and brutality are motivated most often by a single... all consuming instinct. SURVIVE."))
 			H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 3, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/craft/crafting, pick(0,1), TRUE)
-			H.mind.adjust_skillrank(/datum/skill/misc/athletics, pick(3,4), TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/knives, 3, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/craft/crafting, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/athletics, 4, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/swimming, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/climbing, 2, TRUE)
@@ -33,11 +33,10 @@
 			H.mind.adjust_skillrank(/datum/skill/craft/cooking, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/labor/butchering, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/craft/traps, 1, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/labor/fishing, pick(0,1), TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/bows, 1, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/combat/polearms, 2, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/polearms, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/axes, 3, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/combat/maces, 2, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/maces, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/swords, 3, TRUE)
 			beltr = /obj/item/rogueweapon/sword/iron
 			belt = /obj/item/storage/belt/rogue/leather
@@ -54,33 +53,33 @@
 				armor = /obj/item/clothing/suit/roguetown/armor/leather/hide
 			if(prob(40))
 				cloak = /obj/item/clothing/cloak/raincloak/furcloak/brown
-			H.change_stat("intelligence", -2)
+			H.change_stat("intelligence", -3)
 			H.change_stat("strength", 3) // Barbs are traditionally a mix of strength/resilience. 
 			H.change_stat("constitution", 3)
-			H.change_stat("endurance", 2)
+			H.change_stat("endurance", 3)
 		if("Hunter Killer")
 			H.set_blindness(0)
 			to_chat(H, span_warning("Barbarians are great warriors of the outlands, often regarded as the strongest of their tribes -- should they have any that live. These incredible titans of strength and brutality are motivated most often by a single... all consuming instinct. SURVIVE."))
-			H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/knives, 3, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/craft/crafting, pick(1,2), TRUE)
+			H.mind.adjust_skillrank(/datum/skill/craft/crafting, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/swimming, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/craft/tanning, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/climbing, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/riding, 2, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/craft/cooking, pick(1,2), TRUE)
+			H.mind.adjust_skillrank(/datum/skill/craft/cooking, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/labor/butchering, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/craft/traps, 2, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/labor/fishing, 1, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/misc/sewing, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/labor/fishing, 2, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/sewing, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/bows, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/polearms, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/axes, 3, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/combat/maces, 1, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/maces, 2, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/swords, 2, TRUE)
 			beltr = /obj/item/rogueweapon/stoneaxe/woodcut
 			r_hand = /obj/item/gun/ballistic/revolver/grenadelauncher/bow
 			l_hand = /obj/item/quiver/arrows
@@ -95,10 +94,10 @@
 				armor = /obj/item/clothing/suit/roguetown/armor/leather
 			else
 				armor = /obj/item/clothing/suit/roguetown/armor/leather/hide
-			H.change_stat("intelligence", -1) // The hunter is smarter, more skilled -- but not as tough.
-			H.change_stat("strength", 2) 
+			H.change_stat("intelligence", 1) // The hunter is smarter, more skilled -- but not as tough.
+			H.change_stat("strength", 1) 
 			H.change_stat("constitution", 2)
-			H.change_stat("endurance", 3)
+			H.change_stat("endurance", 2)
 /*
 			if("ROLL THE DICE!")
 				if(prob(49)) // Warrior
