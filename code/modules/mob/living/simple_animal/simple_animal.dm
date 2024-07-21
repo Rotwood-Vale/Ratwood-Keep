@@ -420,6 +420,8 @@ GLOBAL_VAR_INIT(farm_animals, FALSE)
 				playsound(src, 'sound/foley/gross.ogg', 100, FALSE)
 				if(do_after(user, used_time, target = src))
 					gib()
+					if(user.mind)
+						user.mind.add_sleep_experience(/datum/skill/labor/butchering, user.STAINT * 4)
 	..()
 
 /mob/living/simple_animal/gib()
