@@ -27,7 +27,7 @@
 		H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/craft/cooking, 3, TRUE)
 		if(H.age == AGE_OLD)
-        	 H.mind.adjust_skillrank(/datum/skill/labor/fishing, 1, TRUE)
+        	H.mind.adjust_skillrank(/datum/skill/labor/fishing, 1, TRUE)
 		H.change_stat("intelligence", 1)
 		H.change_stat("perception", 2)
 		H.change_stat("constitution", 1)
