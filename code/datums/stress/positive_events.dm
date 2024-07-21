@@ -1,3 +1,8 @@
+/datum/stressevent/vicesatisfied
+	timer = 5 MINUTES
+	stressadd = -3
+	desc = list(span_red("I have my vice satisfied."),span_red("I got my vice fulfilled."))
+
 /datum/stressevent/viewsinpunish
 	timer = 5 MINUTES
 	stressadd = -2

@@ -157,7 +157,7 @@
 	if(accept_message)
 		recruit.say(accept_message, forced = "[name]")
 	if(new_role)
-		recruit.job = new_role
+		recruit.funnyrole = new_role
 	return TRUE
 
 /obj/effect/proc_holder/spell/self/convertrole/guard

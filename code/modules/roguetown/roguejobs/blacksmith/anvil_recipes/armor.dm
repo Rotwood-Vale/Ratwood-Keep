@@ -61,6 +61,13 @@
 /datum/anvil_recipe/armor/studdedbikini
 	name = "Studded Leather Bikini (+Leather Bikini)"
 	req_bar = /obj/item/ingot/iron
+	additional_items = list(/obj/item/clothing/suit/roguetown/armor/leather/bikini)
+	created_item = /obj/item/clothing/suit/roguetown/armor/leather/studded/bikini
+	i_type = "Armor"
+
+/datum/anvil_recipe/armor/studdedbikinitwo
+	name = "Studded Leather Bikini (+Leather Armor)"
+	req_bar = /obj/item/ingot/iron
 	additional_items = list(/obj/item/clothing/suit/roguetown/armor/leather)
 	created_item = /obj/item/clothing/suit/roguetown/armor/leather/studded/bikini
 	i_type = "Armor"

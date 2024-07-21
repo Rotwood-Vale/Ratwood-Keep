@@ -27,7 +27,7 @@
 
 	total_positions = 0
 	spawn_positions = 0
-	advclass_cat_rolls = list(CTAG_PILGRIM = 10, CTAG_ADVENTURER = 5)
+	advclass_cat_rolls = list(CTAG_PILGRIM = 10, CTAG_ADVENTURER = 5, CTAG_CHALLENGE = 5)
 
 /datum/job/roguetown/drifters/after_spawn(mob/living/L, mob/M, latejoin = TRUE)
 	..()

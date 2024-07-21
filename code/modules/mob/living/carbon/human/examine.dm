@@ -73,7 +73,6 @@
 				if(J.advjob_examine)
 					used_title = advjob
 				. = list("<span class='info'>ø ------------ ø\nThis is <EM>[used_name]</EM>, the [islatejoin ? "returning " : ""][race_name] [used_title].")
-
 		if(dna.species.use_skintones)
 			var/skin_tone_wording = dna.species.skin_tone_wording ? lowertext(dna.species.skin_tone_wording) : "skin tone"
 			var/list/skin_tones = dna.species.get_skin_list()
@@ -98,6 +97,10 @@
 					slop_lore_string = ", <span class='danger'>A TRAITOR!</span>"
 			. += span_info("[capitalize(m2)] [skin_tone_wording] is [skin_tone_seen][slop_lore_string]")
 
+		if(funnyrole)
+			. += span_info("[used_name] is a [funnyrole].")
+		if(HAS_TRAIT(src, TRAIT_NOBLE))
+			. += span_info("[used_name] is a NOBLE.")
 		if(ishuman(user))
 			var/mob/living/carbon/human/H = user
 			if(H.marriedto == name)

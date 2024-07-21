@@ -16,7 +16,7 @@
 	return TRUE
 
 /datum/sex_action/crotch_nuzzle/on_start(mob/living/carbon/human/user, mob/living/carbon/human/target)
-	user.visible_message(span_warning("[user] moves his head against [target]'s crotch..."))
+	user.visible_message(span_warning("[user] moves their head against [target]'s crotch..."))
 
 /datum/sex_action/crotch_nuzzle/on_perform(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] nuzzles [target]'s crotch..."))

@@ -31,7 +31,6 @@ GLOBAL_VAR_INIT(adventurer_hugbox_duration_still, 3 MINUTES)
 	job_reopens_slots_on_death = TRUE
 	same_job_respawn_delay = 15 MINUTES
 
-
 /datum/job/roguetown/adventurer/after_spawn(mob/living/L, mob/M, latejoin = TRUE)
 	..()
 	if(L)

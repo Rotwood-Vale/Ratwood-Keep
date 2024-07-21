@@ -1385,6 +1385,12 @@
 /area/rogue/indoors/town/manor)
 "azj" = (
 /obj/machinery/light/rogue/firebowl/stump,
+/obj/structure/fluff/railing/wood{
+	dir = 1;
+	layer = 2.7;
+	pixel_x = 2;
+	pixel_y = 7
+	},
 /turf/open/floor/rogue/twig{
 	dir = 4
 	},
@@ -1661,6 +1667,17 @@
 "aOv" = (
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/outdoors/town)
+"aOA" = (
+/obj/structure/bed/rogue/inn/hay,
+/obj/effect/landmark/start/goblinguard,
+/obj/structure/fluff/railing/wood{
+	dir = 1;
+	layer = 2.7;
+	pixel_x = 2;
+	pixel_y = 7
+	},
+/turf/open/floor/rogue/twig,
+/area/rogue/outdoors/tribalfort)
 "aOW" = (
 /obj/effect/decal/cleanable/blood/gibs/limb,
 /turf/open/floor/rogue/church,
@@ -2570,6 +2587,14 @@
 /obj/effect/decal/cleanable/blood/old,
 /turf/open/floor/rogue/tile,
 /area/rogue/indoors/town/garrison)
+"bSo" = (
+/obj/structure/fluff/railing/wood{
+	dir = 8
+	},
+/turf/open/floor/rogue/twig{
+	dir = 4
+	},
+/area/rogue/indoors)
 "bTy" = (
 /obj/structure/chair/bench/church/smallbench,
 /obj/machinery/light/rogue/wallfire/candle/r,
@@ -2871,6 +2896,12 @@
 "cpf" = (
 /turf/closed/wall/mineral/rogue/wood,
 /area/rogue/indoors/town/manor)
+"cpi" = (
+/obj/machinery/light/rogue/torchholder{
+	pixel_y = 26
+	},
+/turf/open/floor/rogue/naturalstone,
+/area/rogue/under/cavewet/bogcaves)
 "cps" = (
 /obj/effect/landmark/start/knight,
 /turf/open/floor/rogue/wood,
@@ -3174,7 +3205,7 @@
 /area/rogue/indoors/town/church)
 "cBW" = (
 /turf/closed/wall/mineral/rogue/wood,
-/area/rogue/outdoors/goblinfort)
+/area/rogue/outdoors/tribalfort)
 "cCz" = (
 /obj/structure/bed/rogue/shit,
 /obj/effect/landmark/start/prisonerr{
@@ -3229,7 +3260,7 @@
 "cFR" = (
 /obj/item/natural/rock,
 /turf/open/floor/rogue/naturalstone,
-/area/rogue/outdoors/goblinfort)
+/area/rogue/outdoors/tribalfort)
 "cGw" = (
 /turf/open/floor/rogue/tile{
 	icon_state = "glyph1"
@@ -5134,7 +5165,7 @@
 /turf/open/floor/rogue/twig{
 	dir = 4
 	},
-/area/rogue/indoors)
+/area/rogue/outdoors/tribalfort)
 "eKe" = (
 /obj/structure/bars/pipe{
 	dir = 8
@@ -5988,6 +6019,12 @@
 /obj/machinery/light/rogue/torchholder/c,
 /turf/open/transparent/openspace,
 /area/rogue/outdoors/town/roofs)
+"fJR" = (
+/obj/structure/lever{
+	redstone_id = "gobmines"
+	},
+/turf/open/floor/rogue/dirt/road,
+/area/rogue/indoors)
 "fKe" = (
 /obj/effect/decal/cleanable/blood/tracks,
 /turf/closed/mineral/rogue,
@@ -6113,7 +6150,7 @@
 	dir = 1
 	},
 /turf/open/floor/rogue/naturalstone,
-/area/rogue/outdoors/goblinfort)
+/area/rogue/outdoors/tribalfort)
 "fRC" = (
 /obj/structure/chair/wood/rogue/throne,
 /obj/effect/landmark/start/prince,
@@ -6434,7 +6471,7 @@
 /area/rogue/outdoors/rtfield)
 "gnR" = (
 /turf/open/floor/rogue/naturalstone,
-/area/rogue/outdoors/goblinfort)
+/area/rogue/outdoors/tribalfort)
 "gnU" = (
 /obj/structure/closet/crate/drawer,
 /obj/item/natural/feather,
@@ -6887,6 +6924,10 @@
 /obj/structure/fluff/walldeco/stone,
 /turf/closed/wall/mineral/rogue/stone/moss,
 /area/rogue/outdoors/town)
+"gOa" = (
+/obj/structure/stairs,
+/turf/open/floor/rogue/twig,
+/area/rogue/outdoors/tribalfort)
 "gOl" = (
 /obj/structure/table/wood,
 /turf/open/floor/rogue/wood,
@@ -7451,6 +7492,19 @@
 	},
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/indoors)
+"hpz" = (
+/obj/structure/fluff/railing/wood{
+	dir = 1;
+	layer = 2.7;
+	pixel_x = 2;
+	pixel_y = 7
+	},
+/obj/structure/fluff/railing/wood{
+	dir = 4
+	},
+/obj/structure/fermenting_barrel/beer,
+/turf/open/floor/rogue/twig,
+/area/rogue/outdoors/tribalfort)
 "hpF" = (
 /obj/structure/chair/bench/coucha/r,
 /turf/open/floor/rogue/blocks,
@@ -8272,6 +8326,10 @@
 /obj/effect/decal/cobbleedge{
 	dir = 1
 	},
+/obj/effect/decal/cobbleedge{
+	dir = 1
+	},
+/obj/effect/decal/cobbleedge,
 /turf/open/floor/plating/ashplanet/rocky,
 /area/rogue/outdoors/beach)
 "iov" = (
@@ -9049,10 +9107,8 @@
 	},
 /area/rogue/indoors/town/church)
 "jiS" = (
-/obj/machinery/light/rogue/torchholder{
-	dir = 4
-	},
-/turf/open/floor/rogue/dirt/road,
+/obj/structure/rack/rogue,
+/turf/open/floor/rogue/blocks,
 /area/rogue/indoors)
 "jiT" = (
 /obj/structure/fluff/railing/border{
@@ -9464,7 +9520,7 @@
 /area/rogue/indoors)
 "jNC" = (
 /turf/closed/wall/mineral/rogue/tent,
-/area/rogue/outdoors/goblinfort)
+/area/rogue/outdoors/tribalfort)
 "jNG" = (
 /obj/structure/mineral_door/wood/donjon{
 	dir = 1;
@@ -9794,7 +9850,7 @@
 /area/rogue/outdoors/rtfield)
 "kgj" = (
 /turf/open/floor/rogue/twig,
-/area/rogue/outdoors/goblinfort)
+/area/rogue/outdoors/tribalfort)
 "kgq" = (
 /obj/effect/spawner/lootdrop/roguetown/sewers,
 /turf/open/floor/rogue/dirt/road,
@@ -11210,6 +11266,18 @@
 /obj/item/natural/feather,
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors)
+"lRY" = (
+/obj/structure/fluff/railing/wood{
+	dir = 8
+	},
+/obj/structure/fluff/railing/wood{
+	dir = 1;
+	layer = 2.7;
+	pixel_x = 2;
+	pixel_y = 7
+	},
+/turf/open/floor/rogue/twig,
+/area/rogue/outdoors/tribalfort)
 "lSE" = (
 /obj/structure/closet/crate/roguecloset/inn/south{
 	pixel_y = 8
@@ -11351,10 +11419,11 @@
 /turf/open/floor/carpet/royalblack,
 /area/rogue/indoors/town/tavern)
 "mdw" = (
-/obj/item/roguebin/water/gross,
-/obj/machinery/light/rogue/torchholder{
-	pixel_y = 32
-	},
+/obj/item/ingot/iron,
+/obj/item/ingot/iron,
+/obj/item/ingot/iron,
+/obj/item/ingot/iron,
+/obj/item/ingot/iron,
 /turf/open/floor/rogue/blocks,
 /area/rogue/indoors)
 "mdz" = (
@@ -11422,7 +11491,7 @@
 "mfm" = (
 /obj/item/natural/rock/iron,
 /turf/open/floor/rogue/naturalstone,
-/area/rogue/outdoors/goblinfort)
+/area/rogue/outdoors/tribalfort)
 "mfK" = (
 /turf/closed/wall/mineral/rogue/wooddark,
 /area/rogue/indoors/town/magician)
@@ -11930,17 +11999,7 @@
 /turf/open/floor/rogue/dirt,
 /area/rogue/outdoors/tribalfort)
 "mOd" = (
-/obj/item/clothing/under/roguetown/loincloth/brown,
-/obj/item/clothing/under/roguetown/loincloth/brown,
-/obj/item/clothing/under/roguetown/loincloth/brown,
-/obj/item/clothing/under/roguetown/loincloth/brown,
-/obj/item/clothing/under/roguetown/loincloth/brown,
-/obj/item/clothing/under/roguetown/loincloth/brown,
-/obj/item/clothing/under/roguetown/loincloth/brown,
-/obj/item/clothing/under/roguetown/loincloth/brown,
-/obj/structure/rack/rogue,
-/obj/item/rogueweapon/whip,
-/obj/item/rogueweapon/whip,
+/obj/structure/stairs,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/indoors)
 "mOE" = (
@@ -12117,7 +12176,7 @@
 /area/rogue/indoors/town/manor)
 "nad" = (
 /turf/open/transparent/openspace,
-/area/rogue/outdoors/goblinfort)
+/area/rogue/outdoors/tribalfort)
 "naI" = (
 /turf/closed/wall/mineral/rogue/decowood,
 /area/rogue/indoors/town/manor)
@@ -12328,6 +12387,12 @@
 	},
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/town/church/chapel)
+"npY" = (
+/obj/structure/fluff/railing/wood{
+	dir = 8
+	},
+/turf/open/floor/rogue/twig,
+/area/rogue/outdoors/tribalfort)
 "nqh" = (
 /obj/structure/bed/rogue,
 /turf/open/floor/carpet/purple,
@@ -12904,6 +12969,13 @@
 	dir = 8
 	},
 /area/rogue/outdoors/town)
+"nYR" = (
+/obj/item/roguebin/water/gross,
+/obj/machinery/light/rogue/torchholder{
+	pixel_y = 32
+	},
+/turf/closed/mineral/rogue/bedrock,
+/area/rogue/indoors)
 "nZm" = (
 /obj/effect/decal/cobbleedge{
 	dir = 1;
@@ -13408,9 +13480,9 @@
 /turf/closed/wall/mineral/rogue/craftstone,
 /area/rogue/outdoors/town)
 "oAz" = (
-/obj/structure/fermenting_barrel/beer,
-/turf/open/floor/rogue/twig,
-/area/rogue/outdoors/goblinfort)
+/obj/structure/long_sleep,
+/turf/open/floor/rogue/dirt,
+/area/rogue/indoors)
 "oAC" = (
 /obj/structure/table/wood{
 	dir = 1;
@@ -14079,6 +14151,16 @@
 /obj/item/rope/chain,
 /obj/item/rope,
 /obj/item/rope,
+/obj/item/rogueweapon/whip,
+/obj/item/rogueweapon/whip,
+/obj/item/clothing/under/roguetown/loincloth/brown,
+/obj/item/clothing/under/roguetown/loincloth/brown,
+/obj/item/clothing/under/roguetown/loincloth/brown,
+/obj/item/clothing/under/roguetown/loincloth/brown,
+/obj/item/clothing/under/roguetown/loincloth/brown,
+/obj/item/clothing/under/roguetown/loincloth/brown,
+/obj/item/clothing/under/roguetown/loincloth/brown,
+/obj/item/clothing/under/roguetown/loincloth/brown,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/indoors)
 "prZ" = (
@@ -15200,9 +15282,13 @@
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/outdoors/town)
 "qLl" = (
+/obj/effect/decal/cobbleedge{
+	dir = 1
+	},
 /obj/structure/stairs{
 	dir = 8
 	},
+/obj/effect/decal/cobbleedge,
 /turf/open/floor/plating/ashplanet/rocky,
 /area/rogue/outdoors/beach)
 "qLr" = (
@@ -15986,6 +16072,11 @@
 /obj/structure/fluff/wallclock/r,
 /turf/open/floor/rogue/blocks/stonered/tiny,
 /area/rogue/indoors/town/dwarfin)
+"rMF" = (
+/obj/effect/landmark/start/goblinguard,
+/obj/item/storage/roguebag,
+/turf/open/floor/rogue/dirt/road,
+/area/rogue/indoors)
 "rMK" = (
 /obj/structure/closet/crate/drawer{
 	pixel_y = 16
@@ -16356,6 +16447,12 @@
 /obj/item/natural/feather,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/indoors)
+"shd" = (
+/obj/machinery/light/rogue/torchholder{
+	pixel_y = 26
+	},
+/turf/open/floor/rogue/dirt/road,
+/area/rogue/indoors)
 "shu" = (
 /obj/structure/chair/wood,
 /turf/open/floor/rogue/wood,
@@ -16528,6 +16625,10 @@
 	},
 /turf/open/floor/rogue/carpet/lord/center,
 /area/rogue/indoors/town/manor)
+"sqm" = (
+/obj/structure/fluff/railing/fence,
+/turf/open/floor/rogue/grass,
+/area/rogue/outdoors/tribalfort)
 "squ" = (
 /turf/open/floor/rogue/blocks,
 /area/rogue/outdoors/town/roofs)
@@ -16889,6 +16990,10 @@
 	},
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/basement)
+"sPP" = (
+/obj/structure/stairs,
+/turf/open/floor/rogue/naturalstone,
+/area/rogue/under/cavewet/bogcaves)
 "sPZ" = (
 /obj/item/paper/confession,
 /obj/item/paper/confession,
@@ -17654,7 +17759,7 @@
 /area/rogue/indoors)
 "tCd" = (
 /turf/closed/mineral/rogue/bedrock,
-/area/rogue/outdoors/goblinfort)
+/area/rogue/outdoors/tribalfort)
 "tCr" = (
 /obj/effect/landmark/map_load_mark/sewers_top,
 /turf/closed/wall/mineral/rogue/stonebrick,
@@ -18437,7 +18542,7 @@
 "uAs" = (
 /obj/machinery/light/rogue/firebowl/stump,
 /turf/open/floor/rogue/naturalstone,
-/area/rogue/outdoors/goblinfort)
+/area/rogue/outdoors/tribalfort)
 "uAt" = (
 /obj/effect/spawner/lootdrop/roguetown/sewers,
 /turf/open/floor/rogue/cobble,
@@ -19018,9 +19123,8 @@
 /obj/structure/fluff/railing/fence{
 	dir = 8
 	},
-/obj/structure/fluff/railing/fence,
-/turf/open/floor/rogue/dirt,
-/area/rogue/outdoors/tribalfort)
+/turf/closed/wall/mineral/rogue/wood,
+/area/rogue/indoors)
 "vhR" = (
 /obj/structure/closet/crate/chest,
 /obj/item/reagent_containers/food/snacks/rogue/meat/steak,
@@ -20069,14 +20173,12 @@
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/town/basement)
 "wzL" = (
-/obj/effect/landmark/start/goblinsmith,
-/obj/item/ingot/iron,
-/obj/item/ingot/iron,
-/obj/item/ingot/iron,
-/obj/item/ingot/iron,
-/obj/item/ingot/iron,
-/turf/open/floor/rogue/blocks,
-/area/rogue/indoors)
+/obj/structure/fluff/railing/fence,
+/obj/structure/fluff/railing/fence{
+	dir = 8
+	},
+/turf/open/floor/rogue/grass,
+/area/rogue/outdoors/tribalfort)
 "wAm" = (
 /turf/closed/wall/mineral/rogue/decostone/long,
 /area/rogue/indoors/town/church)
@@ -20840,6 +20942,16 @@
 	},
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/town/basement)
+"xtq" = (
+/obj/structure/stairs{
+	dir = 8
+	},
+/obj/effect/decal/cobbleedge{
+	dir = 1
+	},
+/obj/effect/decal/cobbleedge,
+/turf/open/floor/plating/ashplanet/rocky,
+/area/rogue/outdoors/beach)
 "xuh" = (
 /obj/structure/bars/pipe{
 	dir = 1
@@ -20891,6 +21003,12 @@
 /obj/structure/chair/wood/rogue/fancy,
 /turf/open/floor/rogue/carpet,
 /area/rogue/indoors/town/manor)
+"xvy" = (
+/obj/structure/stairs/stone{
+	dir = 1
+	},
+/turf/open/floor/rogue/blocks,
+/area/rogue/outdoors/town)
 "xvK" = (
 /obj/item/rogueweapon/hammer/claw,
 /turf/open/floor/rogue/metal/barograte,
@@ -21203,6 +21321,15 @@
 /obj/item/ingot/steel,
 /turf/open/floor/rogue/blocks,
 /area/rogue/indoors/town/dwarfin)
+"xKx" = (
+/obj/structure/fluff/railing/wood{
+	dir = 1;
+	layer = 2.7;
+	pixel_x = 2;
+	pixel_y = 7
+	},
+/turf/open/floor/rogue/twig,
+/area/rogue/outdoors/tribalfort)
 "xKz" = (
 /obj/structure/chair/wood/rogue{
 	dir = 8
@@ -21531,6 +21658,12 @@
 	icon_state = "glyph4"
 	},
 /area/rogue/indoors/town/vault)
+"yeS" = (
+/obj/structure/bars/passage{
+	redstone_id = "gobmines"
+	},
+/turf/open/floor/rogue/dirt/road,
+/area/rogue/indoors)
 "yfk" = (
 /turf/open/floor/rogue/concrete,
 /area/rogue/under/town/basement)
@@ -179984,14 +180117,14 @@ whb
 whb
 whb
 whb
+dVO
+dVO
 whb
 whb
 whb
-whb
-whb
-whb
-whb
-whb
+dVO
+dVO
+dVO
 whb
 whb
 whb
@@ -180386,18 +180519,18 @@ whb
 whb
 whb
 whb
-whb
-whb
-whb
-whb
-whb
-whb
-whb
-whb
-whb
-whb
-whb
-whb
+dVO
+dVO
+dVO
+dVO
+dVO
+dVO
+dVO
+dVO
+dVO
+dVO
+dVO
+dVO
 whb
 whb
 whb
@@ -180788,20 +180921,20 @@ whb
 whb
 whb
 whb
-whb
-whb
-whb
-whb
-whb
-whb
-whb
-whb
-whb
-whb
-whb
-whb
-whb
-whb
+dVO
+dVO
+dVO
+dVO
+dVO
+dVO
+eiV
+cpi
+dVO
+dVO
+eiV
+cpi
+dVO
+dVO
 whb
 whb
 whb
@@ -181189,19 +181322,19 @@ whb
 whb
 whb
 whb
-whb
-whb
-whb
-whb
-whb
-whb
-whb
-whb
-whb
-whb
-whb
-whb
-whb
+dVO
+dVO
+dVO
+sPP
+eiV
+cpi
+dVO
+dVO
+dVO
+dVO
+dVO
+dVO
+dVO
 whb
 whb
 whb
@@ -181593,13 +181726,13 @@ whb
 whb
 whb
 whb
-whb
-whb
-whb
-whb
-whb
-whb
-whb
+dVO
+dVO
+dVO
+dVO
+dVO
+dVO
+dVO
 whb
 whb
 whb
@@ -181995,12 +182128,12 @@ whb
 whb
 whb
 whb
-whb
-whb
-whb
-whb
-whb
-whb
+dVO
+dVO
+dVO
+dVO
+dVO
+dVO
 whb
 whb
 whb
@@ -182397,7 +182530,7 @@ whb
 whb
 whb
 whb
-whb
+dVO
 whb
 whb
 whb
@@ -204644,8 +204777,8 @@ rRb
 lrs
 lrs
 lrs
-lrs
-lrs
+dLD
+dLD
 lrs
 lrs
 lrs
@@ -205448,7 +205581,7 @@ rRb
 vRu
 qvA
 wXz
-qLl
+xtq
 qLl
 rWJ
 qvA
@@ -277286,10 +277419,10 @@ elm
 elm
 elm
 elm
-elm
-elm
 vhg
-lPu
+vhg
+vhg
+wzL
 kXN
 kXN
 kXN
@@ -277688,10 +277821,10 @@ kXN
 kXN
 kXN
 kXN
-kXN
-kXN
-lXJ
-lPu
+wjG
+wjG
+wjG
+sqm
 kXN
 kXN
 kXN
@@ -278091,9 +278224,9 @@ pAa
 pAa
 pAa
 wjG
-pAa
+oAz
 wjG
-lPu
+sqm
 kXN
 kXN
 kXN
@@ -278486,7 +278619,7 @@ fPm
 fPm
 fPm
 fPm
-hHF
+pAa
 hHF
 ncl
 sSC
@@ -278495,7 +278628,7 @@ hRl
 pnn
 hRl
 wjG
-lPu
+sqm
 kXN
 kXN
 kXN
@@ -278888,7 +279021,7 @@ fPm
 fPm
 fPm
 fPm
-hHF
+emp
 hHF
 hHF
 hHF
@@ -278897,7 +279030,7 @@ hHF
 hHF
 hHF
 wjG
-lPu
+sqm
 kXN
 kXN
 kXN
@@ -279290,7 +279423,7 @@ fPm
 fPm
 fPm
 fPm
-hHF
+pAa
 hHF
 hHF
 hHF
@@ -279299,7 +279432,7 @@ pnn
 wjG
 hRl
 wjG
-lPu
+sqm
 kXN
 kXN
 kXN
@@ -279693,15 +279826,15 @@ fPm
 wXD
 kXN
 wjG
-pAa
 wjG
+shd
 hHF
 hHF
 hHF
-wAr
-pnn
+rMF
+hHF
 wjG
-lPu
+sqm
 kXN
 kXN
 kXN
@@ -280088,22 +280221,22 @@ fPm
 fPm
 fPm
 fPm
-fPm
-fPm
-kXN
-kXN
-kXN
-sxp
+wjG
 pAa
+pAa
+wjG
+pAa
+pAa
+wjG
 wbo
-jiS
+hHF
 hHF
 wAr
-hHF
-sov
+mOd
+wjG
 hRl
 wjG
-lPu
+sqm
 kXN
 kXN
 kXN
@@ -280489,13 +280622,13 @@ fPm
 kXN
 kXN
 kXN
-kXN
-wjG
-wjG
-wjG
-wjG
-wjG
-wjG
+sue
+sue
+nYR
+xWN
+cBC
+bvs
+aqc
 wjG
 sgV
 hHF
@@ -280505,7 +280638,7 @@ ncl
 wjG
 pAa
 wjG
-lPu
+sqm
 kXN
 kXN
 kXN
@@ -280892,13 +281025,13 @@ kXN
 kXN
 sue
 sue
-wjG
+jQc
 mdw
-xWN
-cBC
-aqc
-bvs
-wjG
+yjW
+ddv
+ddv
+jiS
+pAa
 scd
 hHF
 hHF
@@ -280907,7 +281040,7 @@ gtF
 pAa
 kXN
 lXJ
-lPu
+elm
 kXN
 kXN
 kXN
@@ -281294,8 +281427,8 @@ kXN
 sxp
 sue
 sue
-jQc
-wzL
+ddv
+ddv
 ddv
 ddv
 ddv
@@ -281701,7 +281834,7 @@ ecU
 yjW
 ddv
 yjW
-ddv
+iDE
 pAa
 pqX
 hHF
@@ -282103,7 +282236,7 @@ muu
 xWN
 cBC
 ddv
-iDE
+jiS
 wjG
 mhq
 sKP
@@ -282502,15 +282635,15 @@ sue
 sue
 wjG
 wjG
-wjG
+pAa
 wjG
 lpC
 pAa
 wjG
 pAa
 wjG
-hHF
-hHF
+pAa
+emp
 pAa
 wjG
 kXN
@@ -283303,8 +283436,8 @@ jOI
 sue
 sue
 sue
-ncl
-hHF
+sue
+fJR
 wjG
 rnh
 ncl
@@ -283703,9 +283836,9 @@ fPm
 fPm
 kXN
 sue
-sue
-sue
-mOd
+jCh
+ots
+yeS
 hHF
 hHF
 hHF
@@ -309121,7 +309254,7 @@ fxx
 uaL
 wVI
 wVI
-wVI
+xvy
 xAt
 xAt
 xAt
@@ -376207,8 +376340,8 @@ nad
 nad
 nad
 nad
-uuE
-uuE
+nad
+nad
 gxt
 fyc
 fyc
@@ -376609,8 +376742,8 @@ nad
 nad
 nad
 nad
-uuE
-uuE
+nad
+nad
 gxt
 fyc
 fyc
@@ -377011,8 +377144,8 @@ nad
 nad
 nad
 nad
-uuE
-uuE
+nad
+nad
 gxt
 fyc
 fyc
@@ -377413,8 +377546,8 @@ nad
 nad
 nad
 nad
-uuE
-uuE
+nad
+nad
 gxt
 fyc
 fyc
@@ -377815,8 +377948,8 @@ nad
 nad
 nad
 nad
-uuE
-uuE
+nad
+nad
 gxt
 fyc
 fyc
@@ -378217,8 +378350,8 @@ nad
 nad
 nad
 nad
-uuE
-uuE
+nad
+nad
 gxt
 fyc
 fyc
@@ -378619,8 +378752,8 @@ nad
 nad
 nad
 nad
-uuE
-uuE
+nad
+nad
 gxt
 fyc
 fyc
@@ -379021,8 +379154,8 @@ nad
 nad
 nad
 nad
-uuE
-uuE
+nad
+nad
 gxt
 fyc
 fyc
@@ -379423,8 +379556,8 @@ nad
 nad
 nad
 nad
-uuE
-uuE
+nad
+nad
 gxt
 fyc
 fyc
@@ -379797,6 +379930,9 @@ nad
 nad
 nad
 nad
+lRY
+npY
+cBW
 nad
 nad
 nad
@@ -379824,9 +379960,6 @@ nad
 nad
 nad
 nad
-nad
-uuE
-uuE
 gxt
 fyc
 fyc
@@ -380199,6 +380332,9 @@ nad
 nad
 nad
 nad
+xKx
+kgj
+cBW
 nad
 nad
 nad
@@ -380226,9 +380362,6 @@ nad
 nad
 nad
 nad
-nad
-uuE
-uuE
 gxt
 fyc
 fyc
@@ -380600,10 +380733,10 @@ jNC
 jNC
 jNC
 jNC
-jNC
 cBW
+kgj
+kgj
 jNC
-cBW
 nad
 nad
 nad
@@ -380629,8 +380762,8 @@ nad
 nad
 nad
 nad
-uuE
-uuE
+nad
+nad
 gxt
 fyc
 fyc
@@ -381002,10 +381135,10 @@ nad
 nad
 nad
 nad
-nad
+aOA
 kgj
 kgj
-cBW
+jNC
 nad
 nad
 nad
@@ -381031,8 +381164,8 @@ nad
 nad
 nad
 nad
-uuE
-uuE
+nad
+nad
 gxt
 fyc
 fyc
@@ -381399,15 +381532,15 @@ nad
 nad
 nad
 nad
+jNC
 nad
 nad
 nad
 nad
-nad
-nad
+xKx
 kgj
 kgj
-cBW
+jNC
 nad
 nad
 nad
@@ -381433,8 +381566,8 @@ nad
 nad
 nad
 nad
-uuE
-uuE
+nad
+nad
 gxt
 fyc
 fyc
@@ -381801,15 +381934,15 @@ nad
 nad
 nad
 nad
+jNC
 nad
 nad
 nad
 nad
-nad
-nad
+aOA
 kgj
 kgj
-cBW
+jNC
 nad
 nad
 nad
@@ -381835,8 +381968,8 @@ nad
 nad
 nad
 nad
-uuE
-uuE
+nad
+nad
 gxt
 fyc
 fyc
@@ -382204,14 +382337,14 @@ nad
 nad
 nad
 cBW
-jNC
 cBW
 nad
 nad
 nad
+hpz
 kgj
-oAz
-cBW
+kgj
+jNC
 nad
 nad
 nad
@@ -382237,8 +382370,8 @@ nad
 nad
 nad
 nad
-uuE
-uuE
+nad
+nad
 gxt
 fyc
 fyc
@@ -382605,13 +382738,13 @@ nad
 nad
 nad
 nad
-jNC
+cBW
 nad
 nad
 nad
 nad
 nad
-kgj
+gOa
 kgj
 cBW
 nad
@@ -382639,8 +382772,8 @@ nad
 nad
 nad
 nad
-uuE
-uuE
+nad
+nad
 gxt
 fyc
 fyc
@@ -383041,7 +383174,7 @@ nad
 nad
 nad
 nad
-uuE
+nad
 gxt
 gxt
 fyc
@@ -383443,7 +383576,7 @@ nad
 nad
 nad
 nad
-uuE
+nad
 gxt
 gxt
 fyc
@@ -385019,7 +385152,7 @@ pAa
 cKH
 wjG
 eKa
-wjG
+cBW
 nad
 nad
 jNC
@@ -385419,7 +385552,7 @@ wCP
 gSl
 kru
 kru
-kru
+nXL
 kru
 aEw
 nad
@@ -386223,7 +386356,7 @@ wCP
 hmz
 kru
 kru
-kru
+bSo
 kru
 aEw
 nad
@@ -387463,7 +387596,7 @@ nad
 nad
 nad
 nad
-uuE
+nad
 gxt
 gxt
 fyc
@@ -387865,7 +387998,7 @@ nad
 nad
 nad
 nad
-uuE
+nad
 gxt
 gxt
 fyc
@@ -388267,7 +388400,7 @@ nad
 nad
 nad
 nad
-uuE
+nad
 gxt
 gxt
 fyc
@@ -388669,7 +388802,7 @@ nad
 nad
 nad
 nad
-uuE
+nad
 gxt
 gxt
 fyc
@@ -389071,7 +389204,7 @@ nad
 nad
 nad
 nad
-uuE
+nad
 gxt
 gxt
 fyc
@@ -389473,7 +389606,7 @@ nad
 nad
 nad
 nad
-uuE
+nad
 gxt
 gxt
 fyc
@@ -389875,7 +390008,7 @@ nad
 nad
 nad
 nad
-uuE
+nad
 gxt
 gxt
 fyc
@@ -390277,7 +390410,7 @@ nad
 nad
 nad
 nad
-uuE
+nad
 gxt
 gxt
 fyc
@@ -390679,8 +390812,8 @@ nad
 nad
 nad
 nad
-uuE
-uuE
+nad
+nad
 gxt
 fyc
 fyc
@@ -391081,8 +391214,8 @@ nad
 nad
 nad
 nad
-uuE
-uuE
+nad
+nad
 gxt
 fyc
 fyc
@@ -391483,8 +391616,8 @@ nad
 nad
 nad
 nad
-uuE
-uuE
+nad
+nad
 gxt
 fyc
 fyc
@@ -391885,8 +392018,8 @@ nad
 nad
 nad
 nad
-uuE
-uuE
+nad
+nad
 gxt
 fyc
 fyc
@@ -392287,8 +392420,8 @@ nad
 nad
 nad
 nad
-uuE
-uuE
+nad
+nad
 gxt
 fyc
 fyc
@@ -392689,8 +392822,8 @@ nad
 nad
 nad
 nad
-uuE
-uuE
+nad
+nad
 gxt
 fyc
 fyc
@@ -393091,8 +393224,8 @@ nad
 nad
 nad
 nad
-uuE
-uuE
+nad
+nad
 gxt
 fyc
 fyc
@@ -393493,8 +393626,8 @@ nad
 nad
 nad
 nad
-uuE
-uuE
+nad
+nad
 gxt
 fyc
 fyc
@@ -393895,8 +394028,8 @@ nad
 nad
 nad
 nad
-uuE
-uuE
+nad
+nad
 gxt
 fyc
 fyc
@@ -394297,7 +394430,7 @@ nad
 nad
 nad
 nad
-uuE
+nad
 gxt
 gxt
 fyc
@@ -394699,7 +394832,7 @@ nad
 nad
 nad
 nad
-uuE
+nad
 gxt
 gxt
 fyc
@@ -395101,7 +395234,7 @@ nad
 nad
 nad
 nad
-uuE
+nad
 gxt
 gxt
 fyc
@@ -395503,7 +395636,7 @@ nad
 nad
 nad
 nad
-uuE
+nad
 gxt
 gxt
 fyc
@@ -478711,15 +478844,15 @@ nad
 nad
 nad
 nad
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
+nad
+nad
+nad
+nad
+nad
+nad
+nad
+nad
+nad
 gxt
 fyc
 fyc
@@ -479113,15 +479246,15 @@ nad
 nad
 nad
 nad
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
+nad
+nad
+nad
+nad
+nad
+nad
+nad
+nad
+nad
 gxt
 fyc
 fyc
@@ -479515,15 +479648,15 @@ nad
 nad
 nad
 nad
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
+nad
+nad
+nad
+nad
+nad
+nad
+nad
+nad
+nad
 gxt
 fyc
 fyc
@@ -479917,15 +480050,15 @@ nad
 nad
 nad
 nad
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
+nad
+nad
+nad
+nad
+nad
+nad
+nad
+nad
+nad
 gxt
 fyc
 fyc
@@ -480319,15 +480452,15 @@ nad
 nad
 nad
 nad
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
+nad
+nad
+nad
+nad
+nad
+nad
+nad
+nad
+nad
 gxt
 fyc
 fyc
@@ -480721,15 +480854,15 @@ nad
 nad
 nad
 nad
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
+nad
+nad
+nad
+nad
+nad
+nad
+nad
+nad
+nad
 gxt
 fyc
 fyc
@@ -481123,15 +481256,15 @@ nad
 nad
 nad
 nad
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
+nad
+nad
+nad
+nad
+nad
+nad
+nad
+nad
+nad
 gxt
 fyc
 fyc
@@ -481525,15 +481658,15 @@ nad
 nad
 nad
 nad
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
+nad
+nad
+nad
+nad
+nad
+nad
+nad
+nad
+nad
 gxt
 fyc
 fyc
@@ -481927,15 +482060,15 @@ nad
 nad
 nad
 nad
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
+nad
+nad
+nad
+nad
+nad
+nad
+nad
+nad
+nad
 gxt
 fyc
 fyc
@@ -482310,6 +482443,7 @@ nad
 nad
 nad
 nad
+ltT
 nad
 nad
 nad
@@ -482329,15 +482463,14 @@ nad
 nad
 nad
 nad
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
+nad
+nad
+nad
+nad
+nad
+nad
+nad
+nad
 gxt
 fyc
 fyc
@@ -482694,6 +482827,25 @@ nad
 nad
 nad
 nad
+jCh
+jCh
+jCh
+jCh
+jCh
+nad
+nad
+nad
+nad
+nad
+nad
+nad
+nad
+nad
+nad
+nad
+nad
+nad
+ltT
 nad
 nad
 nad
@@ -482721,25 +482873,6 @@ nad
 nad
 nad
 nad
-nad
-nad
-nad
-nad
-nad
-nad
-nad
-nad
-nad
-nad
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
 gxt
 fyc
 fyc
@@ -483096,6 +483229,25 @@ nad
 nad
 nad
 nad
+jCh
+jCh
+jCh
+jCh
+jCh
+nad
+nad
+nad
+nad
+nad
+ltT
+ltT
+ltT
+ltT
+ltT
+ltT
+ltT
+ltT
+ltT
 nad
 nad
 nad
@@ -483123,25 +483275,6 @@ nad
 nad
 nad
 nad
-nad
-nad
-nad
-nad
-nad
-nad
-nad
-nad
-nad
-nad
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
 gxt
 fyc
 fyc
@@ -483498,6 +483631,25 @@ nad
 nad
 nad
 nad
+jCh
+jCh
+jCh
+jCh
+jCh
+nad
+nad
+nad
+nad
+nad
+ltT
+nad
+nad
+nad
+nad
+nad
+nad
+nad
+ltT
 nad
 nad
 nad
@@ -483525,25 +483677,6 @@ nad
 nad
 nad
 nad
-nad
-nad
-nad
-nad
-nad
-nad
-nad
-nad
-nad
-nad
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
 gxt
 fyc
 fyc
@@ -483900,6 +484033,25 @@ nad
 nad
 nad
 nad
+jCh
+jCh
+jCh
+jCh
+jCh
+nad
+nad
+nad
+nad
+nad
+ltT
+nad
+nad
+nad
+nad
+nad
+nad
+nad
+ltT
 nad
 nad
 nad
@@ -483927,25 +484079,6 @@ nad
 nad
 nad
 nad
-nad
-nad
-nad
-nad
-nad
-nad
-nad
-nad
-nad
-nad
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
 gxt
 fyc
 fyc
@@ -484312,6 +484445,15 @@ nad
 nad
 nad
 nad
+ltT
+nad
+nad
+nad
+nad
+nad
+nad
+nad
+ltT
 nad
 nad
 nad
@@ -484339,15 +484481,6 @@ nad
 nad
 nad
 nad
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
 gxt
 fyc
 fyc
@@ -484714,6 +484847,15 @@ nad
 nad
 nad
 nad
+ltT
+ltT
+nad
+nad
+nad
+nad
+nad
+nad
+ltT
 nad
 nad
 nad
@@ -484741,15 +484883,6 @@ nad
 nad
 nad
 nad
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
 gxt
 fyc
 fyc
@@ -485116,6 +485249,15 @@ nad
 nad
 nad
 nad
+ltT
+nad
+nad
+nad
+nad
+nad
+nad
+nad
+ltT
 nad
 nad
 nad
@@ -485143,15 +485285,6 @@ nad
 nad
 nad
 nad
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
 gxt
 fyc
 fyc
@@ -485511,14 +485644,22 @@ nad
 nad
 nad
 nad
-kgj
-kgj
-kgj
-kgj
-kgj
-kgj
-kgj
-kgj
+ltT
+ltT
+ltT
+ltT
+ltT
+ltT
+ltT
+ltT
+nad
+nad
+nad
+nad
+nad
+ltT
+ltT
+ltT
 nad
 nad
 nad
@@ -485545,14 +485686,6 @@ nad
 nad
 nad
 nad
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
 gxt
 gxt
 fyc
@@ -485913,14 +486046,20 @@ nad
 nad
 nad
 nad
-kgj
-kgj
-kgj
-kgj
-kgj
-kgj
-kgj
-kgj
+ltT
+ltT
+ltT
+ltT
+ltT
+ltT
+ltT
+ltT
+nad
+nad
+nad
+nad
+nad
+ltT
 nad
 nad
 nad
@@ -485947,14 +486086,8 @@ nad
 nad
 nad
 nad
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
+nad
+nad
 gxt
 gxt
 fyc
@@ -486315,14 +486448,20 @@ nad
 nad
 nad
 nad
-kgj
-kgj
-kgj
-kgj
-kgj
-kgj
-kgj
-kgj
+ltT
+ltT
+ltT
+ltT
+ltT
+ltT
+ltT
+ltT
+nad
+nad
+nad
+nad
+nad
+ltT
 nad
 nad
 nad
@@ -486349,13 +486488,7 @@ nad
 nad
 nad
 nad
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
+nad
 gxt
 gxt
 gxt
@@ -486717,14 +486850,20 @@ nad
 nad
 nad
 nad
-kgj
-kgj
-kgj
-kgj
-kgj
-kgj
-kgj
-kgj
+ltT
+ltT
+ltT
+ltT
+ltT
+ltT
+ltT
+ltT
+nad
+nad
+nad
+nad
+nad
+ltT
 nad
 nad
 nad
@@ -486751,13 +486890,7 @@ nad
 nad
 nad
 nad
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
+nad
 gxt
 gxt
 gxt
@@ -487119,14 +487252,20 @@ nad
 nad
 nad
 nad
-kgj
-kgj
-kgj
-kgj
-kgj
-kgj
-kgj
-kgj
+ltT
+ltT
+ltT
+ltT
+ltT
+ltT
+ltT
+ltT
+nad
+nad
+nad
+nad
+nad
+ltT
 nad
 nad
 nad
@@ -487153,13 +487292,7 @@ nad
 nad
 nad
 nad
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
+nad
 gxt
 gxt
 gxt
@@ -487520,17 +487653,21 @@ nad
 nad
 nad
 nad
-kgj
-kgj
-kgj
-kgj
-kgj
-kgj
-kgj
-kgj
-kgj
-kgj
-kgj
+ltT
+ltT
+ltT
+ltT
+ltT
+ltT
+ltT
+ltT
+ltT
+ltT
+ltT
+ltT
+ltT
+ltT
+ltT
 nad
 nad
 nad
@@ -487555,13 +487692,9 @@ nad
 nad
 nad
 nad
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
+nad
+nad
+nad
 gxt
 gxt
 gxt
@@ -487922,17 +488055,17 @@ nad
 nad
 nad
 nad
-kgj
-kgj
-kgj
-kgj
-kgj
-kgj
-kgj
-kgj
-kgj
-kgj
-kgj
+ltT
+ltT
+ltT
+ltT
+ltT
+ltT
+ltT
+ltT
+ltT
+ltT
+ltT
 nad
 nad
 nad
@@ -487957,13 +488090,13 @@ nad
 nad
 nad
 nad
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
+nad
+nad
+nad
+nad
+nad
+nad
+nad
 gxt
 gxt
 gxt
@@ -488324,17 +488457,17 @@ nad
 nad
 nad
 nad
-kgj
-kgj
-kgj
-kgj
-kgj
-kgj
-kgj
-kgj
-kgj
-kgj
-kgj
+ltT
+ltT
+ltT
+ltT
+ltT
+ltT
+ltT
+ltT
+ltT
+ltT
+ltT
 nad
 nad
 nad
@@ -488359,13 +488492,13 @@ nad
 nad
 nad
 nad
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
+nad
+nad
+nad
+nad
+nad
+nad
+nad
 gxt
 gxt
 gxt
@@ -488726,17 +488859,17 @@ nad
 nad
 nad
 nad
-kgj
-kgj
-kgj
-kgj
-kgj
-kgj
-kgj
-kgj
-kgj
-kgj
-kgj
+ltT
+ltT
+ltT
+ltT
+ltT
+ltT
+ltT
+ltT
+ltT
+ltT
+ltT
 nad
 nad
 nad
@@ -488761,13 +488894,13 @@ nad
 nad
 nad
 nad
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
+nad
+nad
+nad
+nad
+nad
+nad
+nad
 gxt
 gxt
 gxt
@@ -489128,17 +489261,17 @@ nad
 nad
 nad
 nad
-kgj
-kgj
-kgj
-kgj
-kgj
-kgj
-kgj
-kgj
-kgj
-kgj
-kgj
+ltT
+ltT
+ltT
+ltT
+ltT
+ltT
+ltT
+ltT
+ltT
+ltT
+ltT
 nad
 nad
 nad
@@ -489163,13 +489296,13 @@ nad
 nad
 nad
 nad
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
+nad
+nad
+nad
+nad
+nad
+nad
+nad
 gxt
 gxt
 gxt
@@ -489530,15 +489663,15 @@ nad
 nad
 nad
 nad
-kgj
-kgj
-kgj
-kgj
-kgj
-kgj
-kgj
-kgj
-kgj
+ltT
+ltT
+ltT
+ltT
+ltT
+ltT
+ltT
+ltT
+ltT
 nad
 nad
 nad
@@ -489565,13 +489698,13 @@ nad
 nad
 nad
 nad
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
+nad
+nad
+nad
+nad
+nad
+nad
+nad
 gxt
 gxt
 gxt
@@ -489932,15 +490065,15 @@ nad
 nad
 nad
 nad
-kgj
-kgj
-kgj
-kgj
-kgj
-kgj
-kgj
-kgj
-kgj
+ltT
+ltT
+ltT
+ltT
+ltT
+ltT
+ltT
+ltT
+ltT
 nad
 nad
 nad
@@ -489967,14 +490100,14 @@ nad
 nad
 nad
 nad
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
+nad
+nad
+nad
+nad
+nad
+nad
+nad
+nad
 gxt
 gxt
 fyc
@@ -490334,15 +490467,15 @@ nad
 nad
 nad
 nad
-kgj
-kgj
-kgj
-kgj
-kgj
-kgj
-kgj
-kgj
-kgj
+ltT
+ltT
+ltT
+ltT
+ltT
+ltT
+ltT
+ltT
+ltT
 nad
 nad
 nad
@@ -490369,14 +490502,14 @@ nad
 nad
 nad
 nad
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
+nad
+nad
+nad
+nad
+nad
+nad
+nad
+nad
 gxt
 gxt
 fyc
@@ -490736,15 +490869,15 @@ nad
 nad
 nad
 nad
-kgj
-kgj
-kgj
-kgj
-kgj
-kgj
-kgj
-kgj
-kgj
+ltT
+ltT
+ltT
+ltT
+ltT
+ltT
+ltT
+ltT
+ltT
 nad
 nad
 nad
@@ -490771,14 +490904,14 @@ nad
 nad
 nad
 nad
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
+nad
+nad
+nad
+nad
+nad
+nad
+nad
+nad
 gxt
 gxt
 fyc
@@ -491173,14 +491306,14 @@ nad
 nad
 nad
 nad
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
+nad
+nad
+nad
+nad
+nad
+nad
+nad
+nad
 gxt
 gxt
 fyc
@@ -491575,14 +491708,14 @@ nad
 nad
 nad
 nad
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
+nad
+nad
+nad
+nad
+nad
+nad
+nad
+nad
 gxt
 gxt
 fyc
@@ -491977,14 +492110,14 @@ nad
 nad
 nad
 nad
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
+nad
+nad
+nad
+nad
+nad
+nad
+nad
+nad
 gxt
 gxt
 fyc
@@ -492379,14 +492512,14 @@ nad
 nad
 nad
 nad
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
+nad
+nad
+nad
+nad
+nad
+nad
+nad
+nad
 gxt
 gxt
 fyc
@@ -492781,14 +492914,14 @@ nad
 nad
 nad
 nad
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
+nad
+nad
+nad
+nad
+nad
+nad
+nad
+nad
 gxt
 gxt
 fyc
@@ -493160,6 +493293,10 @@ nad
 nad
 nad
 nad
+jCh
+jCh
+jCh
+jCh
 nad
 nad
 nad
@@ -493183,15 +493320,11 @@ nad
 nad
 nad
 nad
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
+nad
+nad
+nad
+nad
+nad
 gxt
 fyc
 fyc
@@ -493548,6 +493681,24 @@ nad
 nad
 nad
 nad
+jCh
+jCh
+jCh
+jCh
+jCh
+nad
+nad
+nad
+nad
+nad
+nad
+nad
+nad
+nad
+jCh
+jCh
+jCh
+jCh
 nad
 nad
 nad
@@ -493576,24 +493727,6 @@ nad
 nad
 nad
 nad
-nad
-nad
-nad
-nad
-nad
-nad
-nad
-nad
-nad
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
 gxt
 fyc
 fyc
@@ -493950,6 +494083,24 @@ nad
 nad
 nad
 nad
+jCh
+jCh
+jCh
+jCh
+jCh
+nad
+nad
+nad
+nad
+nad
+nad
+nad
+nad
+nad
+jCh
+jCh
+jCh
+jCh
 nad
 nad
 nad
@@ -493978,24 +494129,6 @@ nad
 nad
 nad
 nad
-nad
-nad
-nad
-nad
-nad
-nad
-nad
-nad
-nad
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
 gxt
 fyc
 fyc
@@ -494352,6 +494485,24 @@ nad
 nad
 nad
 nad
+jCh
+jCh
+jCh
+jCh
+jCh
+nad
+nad
+nad
+nad
+nad
+nad
+nad
+nad
+nad
+jCh
+jCh
+jCh
+jCh
 nad
 nad
 nad
@@ -494380,24 +494531,6 @@ nad
 nad
 nad
 nad
-nad
-nad
-nad
-nad
-nad
-nad
-nad
-nad
-nad
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
 gxt
 fyc
 fyc
@@ -494754,6 +494887,11 @@ nad
 nad
 nad
 nad
+jCh
+jCh
+jCh
+jCh
+jCh
 nad
 nad
 nad
@@ -494791,15 +494929,10 @@ nad
 nad
 nad
 nad
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
+nad
+nad
+nad
+nad
 gxt
 fyc
 fyc
@@ -495193,15 +495326,15 @@ nad
 nad
 nad
 nad
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
+nad
+nad
+nad
+nad
+nad
+nad
+nad
+nad
+nad
 gxt
 fyc
 fyc
@@ -495595,15 +495728,15 @@ nad
 nad
 nad
 nad
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
+nad
+nad
+nad
+nad
+nad
+nad
+nad
+nad
+nad
 gxt
 fyc
 fyc
@@ -495997,15 +496130,15 @@ nad
 nad
 nad
 nad
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
+nad
+nad
+nad
+nad
+nad
+nad
+nad
+nad
+nad
 gxt
 fyc
 fyc
@@ -496399,15 +496532,15 @@ nad
 nad
 nad
 nad
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
+nad
+nad
+nad
+nad
+nad
+nad
+nad
+nad
+nad
 gxt
 fyc
 fyc
@@ -496801,14 +496934,14 @@ nad
 nad
 nad
 nad
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
+nad
+nad
+nad
+nad
+nad
+nad
+nad
+nad
 gxt
 gxt
 fyc
@@ -497203,14 +497336,14 @@ nad
 nad
 nad
 nad
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
+nad
+nad
+nad
+nad
+nad
+nad
+nad
+nad
 gxt
 gxt
 fyc
@@ -497605,14 +497738,14 @@ nad
 nad
 nad
 nad
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
+nad
+nad
+nad
+nad
+nad
+nad
+nad
+nad
 gxt
 gxt
 fyc
@@ -498007,14 +498140,14 @@ nad
 nad
 nad
 nad
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
+nad
+nad
+nad
+nad
+nad
+nad
+nad
+nad
 gxt
 gxt
 fyc
@@ -498409,13 +498542,13 @@ nad
 nad
 nad
 nad
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
+nad
+nad
+nad
+nad
+nad
+nad
+nad
 gxt
 gxt
 gxt

@@ -1,3 +1,4 @@
+#define CONTRIBUTORS "[global.config.directory]/roguetown/patreon/contributors.txt"
 #define PATREONT1 "[global.config.directory]/roguetown/patreon/p1.txt"
 #define PATREONT2 "[global.config.directory]/roguetown/patreon/p2.txt"
 #define PATREONT3 "[global.config.directory]/roguetown/patreon/p3.txt"
@@ -6,6 +7,8 @@
 
 #define PATREON_FILE "data/Members_7968561.csv"
 
+GLOBAL_LIST_EMPTY(contributor_ckey_list)
+GLOBAL_LIST_EMPTY(allcontributors)
 GLOBAL_LIST_EMPTY(patreont1)
 GLOBAL_LIST_EMPTY(patreont2)
 GLOBAL_LIST_EMPTY(patreont3)
@@ -366,4 +369,23 @@ GLOBAL_LIST_EMPTY(temporary_donators)
 			if(findtext(line, "Active patron"))
 				return TRUE
 
+//fucking contributor list i guess cuz i dont have the brain power to understand wtf the code above is
+/proc/load_contributors()
+	for(var/line in world.file2list(CONTRIBUTORS))
+		if(!line)
+			continue
+		if(findtextEx(line,"#",1,2))
+			continue
+		GLOB.contributor_ckey_list |= ckey(line)
+		GLOB.allcontributors |= ckey(line)
+
+/proc/check_contributor(ckey)
+	if(!ckey)
+		return
+	if(GLOB.contributor_ckey_list)
+		return TRUE
+	else
+		return FALSE
+
 #undef PATREON_FILE
+#undef CONTRIBUTORS

@@ -157,7 +157,7 @@
 		if(ejacmessaged != 1)
 			target.visible_message(span_info("With every load I swallow, with Eora's blessing I feel more satiated so I may go longer."))
 			ejacmessaged = 1
-		target.adjust_nutrition(50)
+		target.adjust_nutrition(100)
 	else
 		playsound(target, 'sound/misc/mat/endin.ogg', 50, TRUE, ignore_walls = FALSE)
 	after_ejaculation()
@@ -179,7 +179,7 @@
 	if(ejacmessaged != 1)
 		user.visible_message(span_info("With every ejaculation I feel Eora's blessing satiate me so I may go longer."))
 		ejacmessaged = 1
-	user.adjust_nutrition(25)
+	user.adjust_nutrition(50)
 	set_arousal(40)
 	adjust_charge(-CHARGE_FOR_CLIMAX)
 	if(user.has_flaw(/datum/charflaw/addiction/lovefiend))

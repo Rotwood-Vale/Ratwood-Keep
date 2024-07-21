@@ -1,7 +1,8 @@
 GLOBAL_LIST_INIT(ghost_verbs, list(
 	/client/proc/ghost_up,
 	/client/proc/ghost_down,
-	/client/proc/descend
+	/client/proc/descend,
+	/client/proc/returntobody
 	))
 
 /client/proc/ghost_up()
@@ -15,6 +16,12 @@ GLOBAL_LIST_INIT(ghost_verbs, list(
 	set name = "GhostDown"
 	if(isobserver(mob))
 		mob.ghost_down()
+
+/client/proc/returntobody()
+	set name = "Return to body"
+	set category = "Spirit"
+	if(isobserver(mob))
+		mob.grab_ghost(force = TRUE)
 
 /client/proc/descend()
 	set name = "Journey to the Underworld"
