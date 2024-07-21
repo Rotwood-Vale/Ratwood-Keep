@@ -206,7 +206,6 @@
 /mob/living/carbon/human/species/goblin/after_creation()
 	..()
 	gender = MALE
-	QDEL_NULL(sexcon)
 	if(src.dna && src.dna.species)
 		src.dna.species.soundpack_m = new /datum/voicepack/male/goblin()
 		src.dna.species.soundpack_f = new /datum/voicepack/male/goblin()

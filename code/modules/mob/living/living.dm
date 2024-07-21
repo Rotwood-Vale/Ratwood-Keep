@@ -687,8 +687,6 @@
 	resting = rest
 	update_resting()
 	if(rest == resting)
-		if(sexcon)
-			sexcon.mob_moved()
 		if(resting)
 			if(m_intent == MOVE_INTENT_RUN)
 				toggle_rogmove_intent(MOVE_INTENT_WALK, TRUE)
@@ -862,6 +860,16 @@
 	reset_offsets("wall_press")
 	update_wallpress_slowdown()
 
+
+/mob/living/proc/update_pixelshift(turf/T, atom/newloc, direct)
+	if(!pixelshifted)
+		reset_offsets("pixel_shift")
+		return FALSE
+	pixelshifted = FALSE
+	pixelshift_x = 0
+	pixelshift_y = 0
+	reset_offsets("pixel_shift")
+
 /mob/living/Move(atom/newloc, direct, glide_size_override)
 
 	var/old_direction = dir
@@ -869,6 +877,9 @@
 
 	if(wallpressed)
 		update_wallpress(T, newloc, direct)
+
+	if(pixelshifted)
+		update_pixelshift(T, newloc, direct)
 
 	if(lying)
 		if(direct & EAST)
@@ -911,8 +922,6 @@
 		stop_looking()
 		if(doing)
 			doing = 0
-		if(sexcon)
-			sexcon.mob_moved()
 		if(client)
 			update_vision_cone()
 
@@ -999,10 +1008,6 @@
 
 	changeNext_move(CLICK_CD_RESIST)
 
-	if(sexcon)
-		if(sexcon.cancel_our_actions())
-			return
-
 	if(atkswinging)
 		stop_attack(FALSE)
 
@@ -1012,11 +1017,6 @@
 		log_combat(src, pulledby, "resisted grab")
 		resist_grab()
 		return
-
-	if(!restrained(ignore_grab = 1) && !pulledby)
-		if(sexcon)
-			if(sexcon.cancel_others_actions())
-				return
 
 	//unbuckling yourself
 	if(buckled && last_special <= world.time)
@@ -1933,12 +1933,11 @@
 	if(!istype(T))
 		return
 	changeNext_move(CLICK_CD_MELEE)
-
+	
 	var/_x = T.x-loc.x
 	var/_y = T.y-loc.y
-	if(_x > 7 || _x < -7)
-		return
-	if(_y > 7 || _y < -7)
+	var/dist = get_dist(src, T)
+	if(dist > 7 || dist  <= 2)
 		return
 	hide_cone()
 	var/ttime = 10
@@ -1996,3 +1995,4 @@
 	reset_perspective()
 	update_cone_show()
 //	UnregisterSignal(src, COMSIG_MOVABLE_PRE_MOVE)
+

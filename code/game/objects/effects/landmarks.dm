@@ -87,7 +87,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 /obj/effect/landmark/start/adventurerlate
 	name = "Adventurerlate"
 	icon_state = "arrow"
-	jobspawn_override = list("Skeleton", "Drifter", "Pilgrim", "Adventurer")
+	jobspawn_override = list("Skeleton", "Pilgrim", "Adventurer", "Migrant")
 	delete_after_roundstart = FALSE
 
 /obj/effect/landmark/start/bogguardlate
@@ -808,3 +808,50 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark/start/new_player)
 
 /obj/effect/landmark/underworldsafe // To prevent demons spawn camping will save a lot of ear rape.
 	name = "safe zone"
+
+GLOBAL_LIST_EMPTY(travel_tile_locations)
+
+/obj/effect/landmark/travel_tile_location
+	name = "travel tile location"
+
+/obj/effect/landmark/travel_tile_location/Initialize()
+	. = ..()
+	GLOB.travel_tile_locations += src
+
+/obj/effect/landmark/travel_tile_location/Destroy()
+	GLOB.travel_tile_locations -= src
+	. = ..()
+
+GLOBAL_LIST_EMPTY(travel_spawn_points)
+
+/obj/effect/landmark/travel_spawn_point
+	name = "travel spawn point"
+	icon_state = "generic_event"
+	var/taken = FALSE
+
+/obj/effect/landmark/travel_spawn_point/Initialize()
+	. = ..()
+	GLOB.travel_spawn_points += src
+
+/obj/effect/landmark/travel_spawn_point/Destroy()
+	GLOB.travel_spawn_points -= src
+	. = ..()
+
+/proc/get_free_travel_spawn_point()
+	var/list/shuffled = shuffle(GLOB.travel_spawn_points)
+	for(var/obj/effect/landmark/travel_spawn_point/point as anything in shuffled)
+		if(point.taken)
+			continue
+		point.taken = TRUE
+		return point.loc
+	return null
+
+/proc/create_travel_tiles(var/atom/location, travel_id, travel_goes_to_id, required_trait)
+	for(var/obj/effect/landmark/travel_tile_location/landmark as anything in GLOB.travel_tile_locations)
+		if(get_dist(location, landmark) > 5)
+			continue
+		// Create travel tile here
+		var/obj/structure/fluff/traveltile/tile = new /obj/structure/fluff/traveltile(landmark.loc)
+		tile.aportalid = travel_id
+		tile.aportalgoesto = travel_goes_to_id
+		tile.required_trait = required_trait

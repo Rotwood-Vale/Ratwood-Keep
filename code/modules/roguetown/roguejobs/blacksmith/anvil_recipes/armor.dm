@@ -146,6 +146,12 @@
 	created_item = /obj/item/clothing/under/roguetown/chainlegs
 	i_type = "Armor"
 
+/datum/anvil_recipe/armor/brayette
+	name = "Brayette"
+	req_bar = /obj/item/ingot/steel
+	created_item = /obj/item/clothing/under/roguetown/brayette
+	i_type = "Armor"
+
 /datum/anvil_recipe/armor/platelegs
 	name = "Plated Chausses (+1 Steel)"
 	req_bar = /obj/item/ingot/steel 

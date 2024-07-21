@@ -515,6 +515,8 @@
 	if(user.get_active_held_item())
 		return
 	var/list/atomy = list()
+	var/list/atomcounts = list()
+	var/list/atomrefs = list()
 	var/list/overrides = list()
 	for(var/image/I in user.client.images)
 		if(I.loc && I.loc.loc == src && I.override)
@@ -528,12 +530,26 @@
 			continue
 		if(A.IsObscured())
 			continue
-		atomy += A
-	var/atom/AB = input(user, "[src.name]","",null) as null|anything in atomy
+		if(!A.name)
+			continue
+		var/AN = A.name
+		atomcounts[AN] += 1
+		if(!atomrefs[AN]) // Only the FIRST item that matches the same name
+			atomrefs[AN] = A // If this one item can't get picked up, sucks to be you
+	if(length(atomrefs))
+		for(var/AC in atomrefs)
+			var/AD = "[AC] ([atomcounts[AC]])"
+			atomy[AD] = atomrefs[AC]
+	var/atom/AB = input(user, "What will I take?","Items on [src.name ? "\the [src.name]:" : "the floor:"]",null) as null|anything in atomy
 	if(!AB)
 		return
+	if(QDELETED(atomy[AB]))
+		return
+	if(atomy[AB].loc != src)
+		return
+	var/AE = atomy[AB]
 	user.used_intent = user.a_intent
-	user.UnarmedAttack(AB,1,params)
+	user.UnarmedAttack(AE,1,params)
 
 /mob/proc/ShiftMiddleClickOn(atom/A, params)
 	. = SEND_SIGNAL(src, COMSIG_MOB_MIDDLECLICKON, A)
@@ -835,7 +851,7 @@
 //	var/turf/MT = get_turf(src)
 	if(stat)
 		return
-	if(A.Adjacent(src))
+	if(get_dist(src, A) <= 2)
 		if(T == loc)
 			look_up()
 		else

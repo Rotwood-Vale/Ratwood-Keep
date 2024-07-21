@@ -14,7 +14,25 @@
 /datum/customizer_choice/organ/ears/vulpkanin
 	name = "Vulpkian Ears"
 	organ_type = /obj/item/organ/ears/vulpkanin
-	sprite_accessories = list(/datum/sprite_accessory/ears/fox)
+	sprite_accessories = list(
+		/datum/sprite_accessory/ears/fox,
+		/datum/sprite_accessory/ears/vulp
+		)
+
+/datum/customizer/organ/ears/lupian
+	customizer_choices = list(/datum/customizer_choice/organ/ears/lupian)
+
+/datum/customizer_choice/organ/ears/lupian
+	name = "Lupian Ears"
+	organ_type = /obj/item/organ/ears/lupian
+	sprite_accessories = list(
+		/datum/sprite_accessory/ears/bigwolf,
+		/datum/sprite_accessory/ears/bigwolf_inner,
+		/datum/sprite_accessory/ears/fox,
+		/datum/sprite_accessory/ears/husky,
+		/datum/sprite_accessory/ears/otie,
+		/datum/sprite_accessory/ears/wolf
+	)
 
 /datum/customizer/organ/ears/tajaran
 	customizer_choices = list(/datum/customizer_choice/organ/ears/tajaran)
@@ -64,6 +82,7 @@
 		/datum/sprite_accessory/ears/fennec,
 		/datum/sprite_accessory/ears/fish,
 		/datum/sprite_accessory/ears/fox,
+		/datum/sprite_accessory/ears/vulp,
 		/datum/sprite_accessory/ears/husky,
 		/datum/sprite_accessory/ears/jellyfish,
 		/datum/sprite_accessory/ears/kangaroo,
@@ -114,6 +133,7 @@
 		/datum/sprite_accessory/ears/fennec,
 		/datum/sprite_accessory/ears/fish,
 		/datum/sprite_accessory/ears/fox,
+		/datum/sprite_accessory/ears/vulp,
 		/datum/sprite_accessory/ears/husky,
 		/datum/sprite_accessory/ears/jellyfish,
 		/datum/sprite_accessory/ears/kangaroo,
