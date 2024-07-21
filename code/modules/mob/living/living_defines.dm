@@ -164,6 +164,8 @@
 
 	var/rot_type = /datum/component/rot/simple
 
+	var/list/mob_descriptors
+
 	/**This variable updated in mob_movement.dm primarily. Mainly a shitcode measure for existing shitcode because this is SHITCODE!
 	 * All it does is track when a mob is sneaking so we don't have to constantly reset alpha values as this fucks with how things are intended to be.
 	 * if you really need to cancel someone who is sneaking, call update_sneak_invis(TRUE).*/
