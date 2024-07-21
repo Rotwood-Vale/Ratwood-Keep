@@ -33,23 +33,22 @@
 		armor = /obj/item/clothing/suit/roguetown/shirt/dress/gen/random
 		shoes = /obj/item/clothing/shoes/roguetown/shortboots
 	if(H.mind)
-		H.mind.adjust_skillrank(/datum/skill/combat/swords, pick(1,2), TRUE) // If you can make a sword you can swing one.
-		H.mind.adjust_skillrank(/datum/skill/combat/maces, 2, TRUE) 
-		H.mind.adjust_skillrank(/datum/skill/combat/axes, 2, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 1, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/athletics, 2, TRUE) 
-		H.mind.adjust_skillrank(/datum/skill/combat/bows, 1, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE) // If you can make a sword you can swing one.
+		H.mind.adjust_skillrank(/datum/skill/combat/maces, 1, TRUE) 
+		H.mind.adjust_skillrank(/datum/skill/combat/axes, 1, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE) 
 		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 3, TRUE) // The strongest fists in the land.
-		H.mind.adjust_skillrank(/datum/skill/combat/knives, 1, TRUE) 
+		H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE) 
+		H.mind.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE) 
 		H.mind.adjust_skillrank(/datum/skill/craft/crafting, 2, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/craft/masonry, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/craft/engineering, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/craft/blacksmithing, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/craft/armorsmithing, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/craft/weaponsmithing, 2, TRUE)
 		H.change_stat("strength", 1)
-		H.change_stat("endurance", 2)
 		H.change_stat("constitution", 2)
+		H.change_stat("intelligence", 2)
 		H.change_stat("speed", -1)
 		H.change_stat("fortune", 1)

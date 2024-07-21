@@ -7,7 +7,7 @@
 	category_tags = list(CTAG_TOWNER)
 
 /datum/outfit/job/roguetown/adventurer/drunkard
-	allowed_patrons = list(/datum/patron/inhumen/baotha, /datum/patron/divine/xylix)
+	allowed_patrons = list(/datum/patron/inhumen/baotha, /datum/patron/inhumen/eora, /datum/patron/divine/xylix)
 
 /datum/outfit/job/roguetown/adventurer/drunkard/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -25,11 +25,10 @@
 		backpack_contents = list(/obj/item/storage/pill_bottle/dice = 1, /obj/item/toy/cards/deck = 1, /obj/item/reagent_containers/glass/bottle/rogue/wine = 1)
 		H.mind.adjust_skillrank(/datum/skill/misc/stealing, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 3, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/climbing, 2, TRUE) //Climbing into windows to steal drugs or booze.
-		H.mind.adjust_skillrank(/datum/skill/misc/lockpicking, 1, TRUE) //Breaking into the houses of anyone who ever loved them.
 		H.change_stat("intelligence", -2)
 		H.change_stat("constitution", 1)
 		H.change_stat("strength", 1)

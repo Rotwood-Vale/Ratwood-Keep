@@ -12,12 +12,10 @@
 	..()
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/combat/axes, 2, TRUE) // They use hammers, sawes and axes all day.
-		H.mind.adjust_skillrank(/datum/skill/combat/maces, 2, TRUE) 
 		H.mind.adjust_skillrank(/datum/skill/misc/athletics, 4, TRUE) 
-		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/combat/polearms, 2, TRUE) 
 		H.mind.adjust_skillrank(/datum/skill/misc/swimming, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/climbing, 3, TRUE) // They work at great heights.
 		H.mind.adjust_skillrank(/datum/skill/craft/crafting, 3, TRUE)
@@ -40,8 +38,7 @@
 	beltl = /obj/item/rogueweapon/hammer/claw
 	backl = /obj/item/storage/backpack/rogue/backpack
 	backpack_contents = list(/obj/item/flint = 1, /obj/item/rogueweapon/huntingknife = 1)
-	H.change_stat("strength", 1)
-	H.change_stat("endurance", 2)
+	H.change_stat("strength", 2)
 	H.change_stat("constitution", 1)
-	H.change_stat("intelligence", 1)
+	H.change_stat("intelligence", 2)
 	H.change_stat("speed", -1)
