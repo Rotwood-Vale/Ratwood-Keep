@@ -342,7 +342,7 @@
 	set name = "Regenerate"
 	set category = "VAMPIRE"
 	var/silver_curse_status = FALSE
-	for(var/datum/status_effect/debuff/silver_curse in status_effects)
+	for(var/datum/status_effect/debuff/silver_curse/silver_curse in status_effects)
 		silver_curse_status = TRUE
 		break
 	var/datum/antagonist/vampirelord/VD = mind.has_antag_datum(/datum/antagonist/vampirelord)
