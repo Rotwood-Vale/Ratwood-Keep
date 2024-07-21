@@ -119,7 +119,7 @@
 ///Check if this message is an emote
 /mob/proc/check_emote(message, forced)
 	if(copytext_char(message, 1, 2) == "*")
-		emote(copytext_char(message, 2), intentional = !forced)
+		emote(copytext_char(message, 2), intentional = !forced, custom_me = TRUE)
 		return 1
 
 /mob/proc/check_whisper(message, forced)
