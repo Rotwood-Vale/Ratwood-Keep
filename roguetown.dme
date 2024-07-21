@@ -636,6 +636,8 @@
 #include "code\datums\migrants\migrant_wave.dm"
 #include "code\datums\migrants\migrant_waves\heartfelt roles.dm"
 #include "code\datums\migrants\migrant_waves\heartfelt wave.dm"
+#include "code\datums\migrants\migrant_waves\fablefield roles.dm"
+#include "code\datums\migrants\migrant_waves\fablefield wave.dm"
 #include "code\datums\mob_descriptors\mob_descriptor.dm"
 #include "code\datums\mob_descriptors\descriptors\body.dm"
 #include "code\datums\mob_descriptors\descriptors\face.dm"
@@ -3517,4 +3519,5 @@
 #include "modular\code\modules\maturity-prompt\code\config_entries.dm"
 #include "modular\code\modules\maturity-prompt\code\maturity_prompt.dm"
 #include "modular\code\modules\maturity-prompt\code\maturity_subsystem.dm"
+#include "code\modules\japes.dm"
 // END_INCLUDE
