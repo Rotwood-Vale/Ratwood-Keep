@@ -96,11 +96,10 @@
 	var/caught_thing = pickweight(baited.fishloot)
 	new caught_thing(current_fisherman.loc)
 	amt2raise = current_fisherman.STAINT
-	var/boon = user.mind.get_learning_boon(skill_level)
 	playsound(loc, 'sound/items/Fish_out.ogg', 100, TRUE)
 
 	QDEL_NULL(baited)
-	current_fisherman.mind.add_sleep_experience(/datum/skill/labor/fishing, amt2raise * boon) 
+	current_fisherman.mind.add_sleep_experience(/datum/skill/labor/fishing, amt2raise) 
 	update_icon()
 
 /obj/item/fishingrod/update_icon()

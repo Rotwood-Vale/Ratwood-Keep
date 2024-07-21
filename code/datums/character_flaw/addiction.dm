@@ -8,17 +8,22 @@
 /mob/living/carbon/human/sate_addiction()
 	if(istype(charflaw, /datum/charflaw/addiction))
 		var/datum/charflaw/addiction/A = charflaw
+		if(!A.sated)
+			to_chat(src, span_blue(A.sated_text))
 		A.sated = TRUE
 		A.time = initial(A.time) //reset roundstart sate offset to standard
 		A.next_sate = world.time + A.time
+		H.remove_stress(/datum/stressevent/vice)
+		if(A.debuff)
+			H.remove_status_effect(A.debuff)
 
 /datum/charflaw/addiction
 	var/next_sate = 0
 	var/sated = TRUE
 	var/time = 5 MINUTES
-//	var/debuff = /datum/status_effect/debuff/addiction
-	var/debuff //so heroin junkies can have big problems
+	var/debuff = /datum/status_effect/debuff/addiction
 	var/needsate_text
+	var/sated_text = "That's much better..."
 	var/unsate_time
 
 
@@ -43,7 +48,7 @@
 	if(sated != oldsated)
 		unsate_time = world.time
 		if(needsate_text)
-			to_chat(user, span_warning("[needsate_text]"))
+			to_chat(user, span_boldwarning("[needsate_text]"))
 	if(!sated)
 		H.add_stress(/datum/stressevent/vice)
 		if(debuff)
@@ -89,10 +94,3 @@
 	time = 40 MINUTES
 	needsate_text = "Time for a flavorful smoke."
 
-/// GOD-FEARING
-
-/datum/charflaw/addiction/godfearing
-	name = "Devout Follower"
-	desc = "I need to pray to my Patron, their blessings are stronger."
-	time = 40 MINUTES
-	needsate_text = "Time to pray to my Patron."

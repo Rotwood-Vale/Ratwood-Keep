@@ -25,9 +25,6 @@
 /datum/skill/misc/sneaking
 	name = "Sneaking"
 
-/datum/skill/misc/lockpicking
-	name = "Lockpicking"
-
 /datum/skill/misc/riding
 	name = "Riding"
 

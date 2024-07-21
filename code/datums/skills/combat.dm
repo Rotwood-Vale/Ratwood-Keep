@@ -2,7 +2,7 @@
 	abstract_type = /datum/skill/combat
 	name = "Combat"
 	desc = ""
-	dream_cost_base = 3
+	dream_cost_base = 2
 	dream_cost_per_level = 1
 
 /datum/skill/combat/proc/get_skill_parry_modifier(level) //added parry drain/neg in parries and dodges

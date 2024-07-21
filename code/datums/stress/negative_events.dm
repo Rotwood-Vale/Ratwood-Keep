@@ -1,7 +1,7 @@
 /datum/stressevent/vice
 	timer = 5 MINUTES
 	stressadd = 5
-	desc = list(span_red("I don't indulge my vice."),span_red("I need to sate my vice."))
+	desc = list(span_boldred("I don't indulge my vice."),span_boldred("I need to sate my vice."))
 
 /datum/stressevent/miasmagas
 	timer = 10 SECONDS
@@ -21,7 +21,7 @@
 /datum/stressevent/starving
 	timer = 10 MINUTES
 	stressadd = 5
-	desc = span_red("I'm starving.")
+	desc = span_boldred("I'm starving.")
 
 /datum/stressevent/drym
 	timer = 10 MINUTES
@@ -36,17 +36,17 @@
 /datum/stressevent/parched
 	timer = 10 MINUTES
 	stressadd = 5
-	desc = span_red("I'm going to die of thirst.")
+	desc = span_boldred("I'm going to die of thirst.")
 
 /datum/stressevent/dismembered
 	timer = 40 MINUTES
 	stressadd = 5
-	desc = span_red("I've lost a limb.")
+	desc = span_boldred("I've lost a limb.")
 
 /datum/stressevent/dwarfshaved
 	timer = 40 MINUTES
 	stressadd = 6
-	desc = span_red("I'd rather cut my own throat than my beard.")
+	desc = span_boldred("I'd rather cut my own throat than my beard.")
 
 /datum/stressevent/viewdismember
 	timer = 20 MINUTES
@@ -100,12 +100,12 @@
 /datum/stressevent/psycurse
 	timer = 5 MINUTES
 	stressadd = 5
-	desc = span_red("Oh no! I've received divine punishment!")
+	desc = span_boldred("Oh no! I've received divine punishment!")
 
 /datum/stressevent/virginchurch
 	timer = 999 MINUTES
 	stressadd = 10
-	desc = span_red("I have broken my oath of chastity to The Gods!")
+	desc = span_boldred("I have broken my oath of chastity to The Gods!")
 
 /datum/stressevent/badmeal
 	timer = 3 MINUTES
@@ -129,12 +129,12 @@
 /datum/stressevent/cumbad
 	timer = 5 MINUTES
 	stressadd = 5
-	desc = span_red("I was violated.")
+	desc = span_boldred("I was violated.")
 
 /datum/stressevent/cumcorpse
 	timer = 1 MINUTES
 	stressadd = 20
-	desc = span_red("What have I done?")
+	desc = span_boldred("What have I done?")
 
 /datum/stressevent/blueb
 	timer = 1 MINUTES
@@ -190,7 +190,7 @@
 	stressadd = 3
 	max_stacks = 5
 	stressadd_per_extra_stack = 2
-	desc = span_red("I'm broken.")
+	desc = span_boldred("I'm broken.")
 	timer = 60 SECONDS
 
 /datum/stressevent/confessed
@@ -205,12 +205,12 @@
 
 /datum/stressevent/saw_wonder
 	stressadd = 4
-	desc = span_dead("<B>I have seen something nightmarish, and I fear for my life!</B>")
+	desc = span_boldred("<B>I have seen something nightmarish, and I fear for my life!</B>")
 	timer = 999 MINUTES
 
 /datum/stressevent/maniac_woke_up
 	stressadd = 10
-	desc = span_danger("No... I want to go back...")
+	desc = span_boldred("No... I want to go back...")
 	timer = 999 MINUTES
 
 /datum/stressevent/drankrat
@@ -229,5 +229,5 @@
 
 /datum/stressevent/ooc_ic
 	stressadd = 6
-	desc = span_red("Bad omen! I've broken some kind of wall...")
+	desc = span_boldred("Bad omen! I've broken some kind of wall...")
 	timer = 5 MINUTES

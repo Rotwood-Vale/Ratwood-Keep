@@ -424,7 +424,6 @@
 								to_chat(src, span_green("I stole [picked]!"))
 								V.log_message("has had \the [picked] stolen by [key_name(U)]", LOG_ATTACK, color="black")
 								U.log_message("has stolen \the [picked] from [key_name(V)]", LOG_ATTACK, color="black")
-								exp_to_gain *= src.mind.get_learning_boon(thiefskill)
 							else
 								exp_to_gain /= 2 // these can be removed or changed on reviewer's discretion
 								to_chat(src, span_warning("I didn't find anything there. Perhaps I should look elsewhere."))

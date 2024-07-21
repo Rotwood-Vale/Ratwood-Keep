@@ -26,7 +26,7 @@
 /datum/stressevent/triumph
 	timer = 20 MINUTES
 	stressadd = -5
-	desc = span_green("I remember a TRIUMPH.")
+	desc = span_boldgreen("I remember a TRIUMPH.")
 
 /datum/stressevent/drunk
 	timer = 1 MINUTES
@@ -56,7 +56,7 @@
 /datum/stressevent/prebel
 	timer = 5 MINUTES
 	stressadd = -5
-	desc = span_green("Down with the tyranny!")
+	desc = span_boldgreen("Down with the tyranny!")
 
 /datum/stressevent/music
 	timer = 1 MINUTES
@@ -86,11 +86,11 @@
 /datum/stressevent/music/six
 	stressadd = -4
 	timer = 10 MINUTES
-	desc = span_green("The music is a blessing from Eora.")
+	desc = span_boldgreen("The music is a blessing from Eora.")
 
 /datum/stressevent/vblood
 	stressadd = -5
-	desc = span_red(span_bold("Virgin blood!"))
+	desc = span_boldred("Virgin blood!")
 	timer = 5 MINUTES
 
 /datum/stressevent/bathwater
@@ -105,8 +105,8 @@
 
 /datum/stressevent/moondust
 	stressadd = -5
-	desc = span_green("Moondust surges through me.")
+	desc = span_boldgreen("Moondust surges through me.")
 
 /datum/stressevent/moondust_purest
 	stressadd = -6
-	desc = span_green("PUREST moondust surges through me!")
+	desc = span_boldgreen("PUREST moondust surges through me!")
