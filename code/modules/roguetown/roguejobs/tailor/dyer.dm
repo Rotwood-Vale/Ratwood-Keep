@@ -103,7 +103,7 @@
 		dat += "<A href='?src=\ref[src];clear=1'>Remove paintjob.</A><BR><BR>"
 		dat += "<A href='?src=\ref[src];eject=1'>Eject item.</A><BR><BR>"
 
-	var/datum/browser/menu = new(user, "colormate","Dye Station Control Panel", 400, 400, src)
+	var/datum/browser/menu = new(user, "colormate","Dye Station", 400, 400, src)
 	menu.set_content(dat.Join(""))
 	menu.open()
 
