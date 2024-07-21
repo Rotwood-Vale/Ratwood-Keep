@@ -106,6 +106,9 @@
 		"Mysterious" = SKIN_COLOR_MYSTERIOUS,
 		"Succubus" = SKIN_COLOR_SUCCUBUS,
 		"Incubus" = SKIN_COLOR_INCUBUS,
+		"Mephistopheles" = SKIN_COLOR_MEPHISTOPHELES,
+		"Zariel" = SKIN_COLOR_ZARIEL,
+		"Dispater" = SKIN_COLOR_DISPATER,
 	)
 
 /datum/species/tieberian/get_hairc_list()

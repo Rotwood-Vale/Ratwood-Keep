@@ -98,6 +98,7 @@
 		"Almondvalle" = SKIN_COLOR_ALMONDVALLE,
 		"Walnut Woods" = SKIN_COLOR_WALNUT_WOODS,
 		"Timberborn" = SKIN_COLOR_TIMBERBORN,
+		"Ashen" 	= SKIN_COLOR_ASHEN,
 	)
 
 /datum/species/elf/wood/get_hairc_list()
