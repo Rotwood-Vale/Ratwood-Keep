@@ -53,7 +53,7 @@
 	greet_text = "At the last grand festival of tales in Fablefield, you were inspired by a figure who sung of dragons, faeries, gods and heroes. This year, you plan to be the hero of your own story. A talented bard, and good with a blade, you follow your muse with nothing but the highest hopes, although so far Enigma isn't quite what you expected..."
 	outfit = /datum/outfit/job/roguetown/fablefield/troubadour
 	allowed_sexes = list(MALE, FEMALE)
-	allowed_races = list(RACES_TOLERATED_UP)
+	allowed_races = list(RACES_SHUNNED_UP)
 
 /datum/outfit/job/roguetown/fablefield/troubadour
 	allowed_patrons = list(/datum/patron/divine/xylix)
