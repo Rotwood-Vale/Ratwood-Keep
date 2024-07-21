@@ -901,7 +901,7 @@
 						probby = 0
 					if(prob(probby) && !L.has_status_effect(/datum/status_effect/debuff/trainsleep) && !user.buckled)
 						user.visible_message(span_info("[user] trains on [src]!"))
-						var/amt2raise = L.STAINT*0.25
+						var/amt2raise = L.STAINT * 0.35
 						if(!can_train_combat_skill(user, W.associated_skill, SKILL_LEVEL_APPRENTICE))
 							to_chat(user, span_warning("I've learned all I can from doing this, it's time for the real thing."))
 							amt2raise = 0
