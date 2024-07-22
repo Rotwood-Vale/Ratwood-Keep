@@ -25,6 +25,8 @@ SUBSYSTEM_DEF(droning)
 		new_droning = list('sound/music/dreamer_is_still_asleep.ogg')
 	else if(HAS_TRAIT(entering.mob, TRAIT_DRUQK))
 		new_droning = list('sound/music/spice.ogg')
+	else if(HAS_TRAIT(entering.mob, TRAIT_ANCESTORCURSE))
+		new_droning = list('sound/music/gurglingflesh.ogg')
 
 	//Same ambience, don't bother
 	if(last_droning ~= new_droning)
@@ -106,6 +108,8 @@ SUBSYSTEM_DEF(droning)
 			droning.file = 'sound/music/dreamer_is_still_asleep.ogg'
 		else if(HAS_TRAIT(listener.mob, TRAIT_DRUQK))
 			droning.file = 'sound/music/spice.ogg'
+		else if(HAS_TRAIT(listener.mob, TRAIT_ANCESTORCURSE))
+			droning.file = 'sound/music/gurglingflesh.ogg'
 
 		listener.droning_sound = droning
 		listener.last_droning_sound = area_player.droning_sound
@@ -129,6 +133,8 @@ SUBSYSTEM_DEF(droning)
 			droning.file = 'sound/music/dreamer_is_still_asleep.ogg'
 		else if(HAS_TRAIT(listener.mob, TRAIT_DRUQK))
 			droning.file = 'sound/music/spice.ogg'
+		else if(HAS_TRAIT(listener.mob, TRAIT_ANCESTORCURSE))
+			droning.file = 'sound/music/gurglingflesh.ogg'
 
 		listener.droning_sound = droning
 		listener.last_droning_sound = area_player.droning_sound_current

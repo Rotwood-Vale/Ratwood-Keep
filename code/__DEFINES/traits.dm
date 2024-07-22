@@ -35,6 +35,7 @@
 #define TRAIT_SEEDKNOW "Seed Knower"
 // ROGUEspecialTRAITS (description when rmb skills button)
 #define TRAIT_CIVILIZEDBARBARIAN "Tavern Brawler"
+#define TRAIT_ANCESTORCURSE "Ancestor Curse"
 
 // PATRON GOD TRAITS
 #define TRAIT_ROT_EATER "Blessing of Pestra" //can eat rotten food
