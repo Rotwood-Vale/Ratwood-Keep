@@ -59,15 +59,14 @@
 	return FALSE
 
 /mob/living/carbon/human/proc/is_cursed(datum/curse/C)
-	if(!src)
-		return FALSE
 	if(!C)
 		return FALSE
-	if(!length(curses))
-		return FALSE
-	if(!(C in curses))
-		return FALSE
-	return TRUE
+
+	for(var/datum/curse/curse in curses)
+		if(curse.name == C.name)
+			return TRUE
+	
+	return FALSE
 
 //////////////////////
 /// SPECIAL CURSES ///
@@ -180,44 +179,55 @@
 //////////////////////
 
 /datum/curse/pestra/on_life(mob/living/carbon/human/owner)
-	. = ..()
-	if(prob(3))
-		var/effect = rand(1, 4)
-		switch(effect)
-			if(1)
-				owner.vomit()
-			if(2)
-				owner.Unconscious(20)
-			if(3)
-				owner.blur_eyes(10)
-			if(4)
-				var/obj/item/bodypart/BP = pick(owner.bodyparts)
-				BP.rotted = TRUE
-				owner.playsound_local(get_turf(owner), 'sound/foley/butcher.ogg', 80, FALSE, pressure_affected = FALSE)
-				owner.regenerate_icons()
+	. = ..()		
+	if(owner.mob_timers["pestra_curse"])
+		if(world.time < owner.mob_timers["pestra_curse"] + rand(30,60)SECONDS)
+			return
+	owner.mob_timers["pestra_curse"] = world.time
+	var/effect = rand(1, 4)
+	switch(effect)
+		if(1)
+			owner.vomit()
+		if(2)
+			owner.Unconscious(20)
+		if(3)
+			owner.blur_eyes(10)
+		if(4)
+			var/obj/item/bodypart/BP = pick(owner.bodyparts)
+			BP.rotted = TRUE
+			owner.playsound_local(get_turf(owner), 'sound/foley/butcher.ogg', 80, FALSE, pressure_affected = FALSE)
+			owner.regenerate_icons()
 
 /datum/curse/baotha/on_life(mob/living/carbon/human/owner)
 	. = ..()
-	if(prob(3))
-		var/effect = rand(1, 3)
-		if(owner.gender == "female")
-			switch(effect)
-				if(1)
-					owner.emote("sexmoanhvy")
-				if(2)
-					owner.emote("sexmoanlight")
-				if(3)
-					owner.cursed_freak_out()
-		//else //we dont have male moans yet
+	if(owner.mob_timers["baotha_curse"])
+		if(world.time < owner.mob_timers["baotha_curse"] + rand(15,60)SECONDS)
+			return
+	owner.mob_timers["baotha_curse"] = world.time
+
+	var/effect = rand(1, 3)
+	if(owner.gender == "female")
+		switch(effect)
+			if(1)
+				owner.emote("sexmoanhvy")
+			if(2)
+				owner.emote("sexmoanlight")
+			if(3)
+				owner.cursed_freak_out()
+	//else //we dont have male moans yet
 
 /datum/curse/graggar/on_life(mob/living/carbon/human/owner)
 	. = ..()		
-	if(prob(5))
-		for(var/mob/living/carbon/human in view(1, owner))
-			owner.emote("rage")
-			human.attacked_by(owner.get_active_held_item(), owner)
-			owner.cursed_freak_out()
-			break
+	if(owner.mob_timers["graggar_curse"])
+		if(world.time < owner.mob_timers["graggar_curse"] + rand(15,60)SECONDS)
+			return
+	owner.mob_timers["graggar_curse"] = world.time
+
+	for(var/mob/living/carbon/human in view(1, owner))
+		owner.emote("rage")
+		human.attacked_by(owner.get_active_held_item(), owner)
+		owner.cursed_freak_out()
+		break
 
 // Currently calls maniac hallucinations
 /datum/curse/zizo/on_life(mob/living/carbon/human/owner)
