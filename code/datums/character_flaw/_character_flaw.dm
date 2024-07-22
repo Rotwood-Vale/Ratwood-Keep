@@ -277,13 +277,13 @@ GLOBAL_LIST_INIT(character_flaws, list(
 	pain_pity_charges = rand(2,4)
 
 /datum/charflaw/narcoleptic/flaw_on_life(mob/living/carbon/human/user)
+	if(user.stat != CONSCIOUS)
+		do_sleep = FALSE
+		last_unconsciousness = world.time
+		pain_pity_charges = rand(2,4)
+		concious_timer = rand(7 MINUTES, 15 MINUTES)
+		return
 	if(do_sleep)
-		// Process sleep attempt
-		if(user.stat != CONSCIOUS)
-			do_sleep = FALSE
-			last_unconsciousness = world.time
-			pain_pity_charges = rand(3,5)
-			return
 		if(next_sleep <= world.time)
 			var/pain = user.get_complex_pain()
 			if(pain >= 40 && pain_pity_charges > 0)
@@ -297,15 +297,11 @@ GLOBAL_LIST_INIT(character_flaws, list(
 				else
 					concious_timer = rand(7 MINUTES, 15 MINUTES)
 					to_chat(user, span_boldwarning("I can't keep my eyes open any longer..."))
-					user.Sleeping(rand(40 SECONDS, 60 SECONDS))
+					user.Sleeping(rand(30 SECONDS, 50 SECONDS))
 			do_sleep = FALSE
 			last_unconsciousness = world.time
 	else
-		// Process drowsy attempt
-		if(user.stat != CONSCIOUS)
-			last_unconsciousness = world.time
-			pain_pity_charges = rand(2,4)
-		// Been conscious for 10 minutes
+		// Been conscious for ~10 minutes (whatever is the conscious timer)
 		if(last_unconsciousness + concious_timer < world.time)
 			to_chat(user, span_warning("I'm getting drowsy..."))
 			user.emote("yawn", forced = TRUE)
