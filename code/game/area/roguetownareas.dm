@@ -197,12 +197,42 @@ GLOBAL_LIST_INIT(roguetown_areas_typecache, typecacheof(/area/rogue/indoors/town
 				/mob/living/carbon/human/species/goblin/npc/ambush/cave = 30)
 	first_time_text = "THE TERRORBOG"
 	converted_type = /area/rogue/indoors/shelter/bog
+	
+	Initialize()
+		. = ..()
+		start_spawning()
+	
+	proc/start_spawning()
+		spawn_timer = addtimer(CALLBACK(src, .proc/spawn_and_continue), 600, TIMER_STOPPABLE) // Spawn every 60 seconds (600)
+	
+	proc/spawn_and_continue()
+		spawn_random_mobs()
+		start_spawning()
+		
+	proc/spawn_random_mobs()
+		var/spawn_chance = 20 // Adjust this value to control how often mobs spawn (default 20 say)
+		if(prob(spawn_chance))
+			var/turf/spawn_turf = get_random_valid_turf()
+			if(spawn_turf)
+				var/mob_type = pickweight(ambush_mobs)
+				new mob_type(spawn_turf)
 
-/area/rogue/indoors/shelter/bog
-	icon_state = "bog"
-	droning_sound = 'sound/music/area/bog.ogg'
-	droning_sound_dusk = null
-	droning_sound_night = null
+	proc/get_random_valid_turf()
+		var/list/valid_turfs = list()
+		for(var/turf/T in src)
+			if(is_valid_spawn_turf(T))
+				valid_turfs += T
+		return pick(valid_turfs)
+	
+	proc/is_valid_spawn_turf(turf/T)
+		return (istype(T, /turf/open/floor/rogue/dirt) || \
+				istype(T, /turf/open/floor/rogue/grass) || \
+				istype(T, /turf/open/water))
+				
+	var/spawn_timer
+	
+	var/max_spawned_mobs = 60  // Maximum number of mobs to be spawned by this function (say 60)
+
 
 /area/rogue/outdoors/bog/dense
 	name = "dense bog"
