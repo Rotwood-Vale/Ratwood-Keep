@@ -178,12 +178,12 @@
 	l_sleeve_status = SLEEVE_NOMOD
 
 /obj/item/clothing/under/roguetown/chainlegs/skirt
-	name = "plated skirt"
+	name = "chain skirt"
 	icon_state = "chain_skirt"
 	item_state = "chain_skirt"
 
 /obj/item/clothing/under/roguetown/platelegs/skirt
-	name = "chain skirt"
+	name = "plated skirt"
 	icon_state = "plate_skirt"
 	item_state = "plate_skirt"
 

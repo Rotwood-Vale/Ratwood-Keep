@@ -165,8 +165,9 @@
 #define VILLAGER	(1<<14)
 #define PRISONERR	(1<<15)
 #define PRISONERB	(1<<16)
-#define LUNATIC		(1<<17)
-#define MIGRANT (1<<18)
+#define PRISONERC	(1<<17)
+#define LUNATIC		(1<<18)
+#define MIGRANT (1<<19)
 
 #define APPRENTICES	(1<<6)
 
@@ -285,8 +286,9 @@
 
 #define JDO_PRISONERR 35
 #define JDO_PRISONERB 35.1
-#define JDO_HOSTAGE 35.2
-#define JDO_LUNATIC 35.3
+#define JDO_PRISONERC 35.2
+#define JDO_HOSTAGE 35.3
+#define JDO_LUNATIC 35.4
 
 #define JDO_CHIEFTAIN 36
 #define JDO_TRIBALCOOK 37

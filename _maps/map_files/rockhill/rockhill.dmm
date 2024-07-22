@@ -1669,13 +1669,13 @@
 /area/rogue/outdoors/town)
 "aOA" = (
 /obj/structure/bed/rogue/inn/hay,
-/obj/effect/landmark/start/goblinguard,
 /obj/structure/fluff/railing/wood{
 	dir = 1;
 	layer = 2.7;
 	pixel_x = 2;
 	pixel_y = 7
 	},
+/obj/effect/landmark/start/tribalguard,
 /turf/open/floor/rogue/twig,
 /area/rogue/outdoors/tribalfort)
 "aOW" = (
@@ -2385,7 +2385,7 @@
 /area/rogue/under/town/basement)
 "bFG" = (
 /obj/structure/bed/rogue/inn/hay,
-/obj/effect/landmark/start/goblinshaman,
+/obj/effect/landmark/start/tribalshaman,
 /turf/open/floor/rogue/twig{
 	dir = 8
 	},
@@ -3383,6 +3383,10 @@
 "cNY" = (
 /turf/open/floor/rogue/tile/checker,
 /area/rogue/indoors/town/manor)
+"cOz" = (
+/obj/machinery/light/rogue/firebowl/stump,
+/turf/open/floor/rogue/naturalstone,
+/area/rogue/under/cavewet/bogcaves)
 "cOD" = (
 /obj/structure/flora/roguetree/stump/log{
 	pixel_x = -10
@@ -4825,7 +4829,7 @@
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors/rtfield)
 "epY" = (
-/obj/effect/landmark/start/goblincook,
+/obj/effect/landmark/start/tribalcook,
 /turf/open/floor/rogue/twig{
 	dir = 8
 	},
@@ -5599,7 +5603,6 @@
 /area/rogue/indoors/town/magician)
 "fkL" = (
 /obj/machinery/light/rogue/oven/west,
-/obj/effect/landmark/start/goblincook,
 /turf/open/floor/rogue/twig{
 	dir = 8
 	},
@@ -5686,6 +5689,7 @@
 /area/rogue/indoors/town/shop)
 "fpQ" = (
 /obj/structure/bed/rogue/shit,
+/obj/effect/landmark/start/tribalguard,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/indoors)
 "fqj" = (
@@ -7987,10 +7991,9 @@
 	},
 /area/rogue/indoors/town/manor)
 "hRl" = (
-/obj/structure/bed/rogue/shit,
-/obj/effect/landmark/start/goblinguard,
-/turf/open/floor/rogue/dirt/road,
-/area/rogue/indoors)
+/obj/effect/landmark/start/triballate,
+/turf/open/floor/rogue/dirt,
+/area/rogue/outdoors/tribalfort)
 "hRw" = (
 /obj/structure/chair/wood/rogue/fancy{
 	dir = 8
@@ -9537,6 +9540,13 @@
 /obj/structure/closet/crate/chest,
 /turf/open/floor/rogue/carpet,
 /area/rogue/indoors/town/manor)
+"jOn" = (
+/obj/machinery/light/rogue/torchholder{
+	pixel_y = 26
+	},
+/obj/machinery/light/rogue/firebowl/stump,
+/turf/open/floor/rogue/naturalstone,
+/area/rogue/under/cavewet/bogcaves)
 "jOo" = (
 /obj/structure/fluff/walldeco/customflag{
 	pixel_y = 32
@@ -13562,6 +13572,7 @@
 /area/rogue/under/cavewet/bogcaves/sunkencity)
 "oGv" = (
 /obj/machinery/light/rogue/oven/east,
+/obj/effect/landmark/start/tribalcook,
 /turf/open/floor/rogue/twig{
 	dir = 8
 	},
@@ -14008,6 +14019,11 @@
 /obj/structure/well/fountain,
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/outdoors/town)
+"pin" = (
+/obj/structure/bed/rogue/shit,
+/obj/effect/landmark/start/tribalvillager,
+/turf/open/floor/rogue/dirt/road,
+/area/rogue/indoors)
 "pjg" = (
 /obj/item/natural/stone,
 /turf/open/floor/rogue/churchmarble,
@@ -14055,7 +14071,7 @@
 /area/rogue/under/town/basement)
 "pnn" = (
 /obj/structure/bed/rogue/inn/hay,
-/obj/effect/landmark/start/goblinguard,
+/obj/effect/landmark/start/tribalguard,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/indoors)
 "pnH" = (
@@ -14638,7 +14654,7 @@
 /area/rogue/under/town/basement)
 "pVW" = (
 /obj/structure/chair/stool/rogue,
-/turf/open/floor/rogue/dirt,
+/turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors/tribalfort)
 "pWB" = (
 /turf/open/floor/rogue/dirt/road,
@@ -15367,6 +15383,12 @@
 /mob/living/simple_animal/hostile/retaliate/rogue/wolf/poison,
 /turf/open/floor/rogue/churchmarble,
 /area/rogue/under/cavewet/bogcaves/chapel)
+"qSi" = (
+/obj/structure/bed/rogue/shit,
+/obj/effect/landmark/start/tribalvillager,
+/obj/effect/landmark/start/tribalvillager,
+/turf/open/floor/rogue/dirt/road,
+/area/rogue/indoors)
 "qSv" = (
 /obj/machinery/light/rogue/wallfire/candle/blue,
 /turf/open/floor/rogue/tile/masonic/single,
@@ -16073,10 +16095,9 @@
 /turf/open/floor/rogue/blocks/stonered/tiny,
 /area/rogue/indoors/town/dwarfin)
 "rMF" = (
-/obj/effect/landmark/start/goblinguard,
-/obj/item/storage/roguebag,
-/turf/open/floor/rogue/dirt/road,
-/area/rogue/indoors)
+/obj/effect/landmark/start/triballate,
+/turf/open/floor/rogue/grass,
+/area/rogue/outdoors/tribalfort)
 "rMK" = (
 /obj/structure/closet/crate/drawer{
 	pixel_y = 16
@@ -16807,6 +16828,12 @@
 /obj/item/rogueweapon/huntingknife/idagger/steel,
 /obj/item/rogueweapon/huntingknife/idagger/steel,
 /obj/item/rogueweapon/huntingknife/idagger/steel,
+/obj/item/gun/ballistic/revolver/grenadelauncher/bow,
+/obj/item/gun/ballistic/revolver/grenadelauncher/bow,
+/obj/item/gun/ballistic/revolver/grenadelauncher/bow,
+/obj/item/quiver/arrows,
+/obj/item/quiver/arrows,
+/obj/item/quiver/arrows,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/indoors)
 "sFi" = (
@@ -19787,6 +19814,10 @@
 	},
 /turf/closed/mineral/rogue,
 /area/rogue/indoors/shelter/mountains)
+"vYw" = (
+/obj/effect/landmark/start/triballate,
+/turf/open/floor/rogue/dirt/road,
+/area/rogue/indoors)
 "vYT" = (
 /turf/open/floor/rogue/rooftop{
 	icon_state = "roofg"
@@ -19918,6 +19949,12 @@
 	},
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors)
+"wgu" = (
+/obj/structure/fluff/railing/fence{
+	dir = 4
+	},
+/turf/open/floor/rogue/dirt/road,
+/area/rogue/outdoors/tribalfort)
 "wgO" = (
 /obj/structure/closet/crate/chest,
 /obj/item/ingot/silver,
@@ -19982,7 +20019,7 @@
 /area/rogue/indoors)
 "wlH" = (
 /obj/item/natural/rock,
-/turf/open/floor/rogue/dirt,
+/turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors/tribalfort)
 "wlM" = (
 /obj/structure/mineral_door/wood{
@@ -20183,9 +20220,12 @@
 /turf/closed/wall/mineral/rogue/decostone/long,
 /area/rogue/indoors/town/church)
 "wAr" = (
-/obj/effect/landmark/start/goblinguard,
+/obj/item/bait,
+/obj/item/bait,
+/obj/item/bait,
+/obj/structure/table/wood/crafted,
 /turf/open/floor/rogue/dirt/road,
-/area/rogue/indoors)
+/area/rogue/outdoors/tribalfort)
 "wAU" = (
 /obj/structure/table/wood{
 	dir = 5;
@@ -20230,10 +20270,8 @@
 /turf/open/floor/rogue/grass,
 /area/rogue/outdoors/town)
 "wCP" = (
-/obj/effect/landmark/start/goblinlate,
-/turf/open/floor/rogue/twig{
-	dir = 4
-	},
+/obj/effect/landmark/start/prisonerc,
+/turf/open/floor/rogue/dirt/road,
 /area/rogue/indoors)
 "wDj" = (
 /obj/structure/roguewindow/openclose{
@@ -21131,7 +21169,7 @@
 /area/rogue/indoors/town/shop)
 "xBJ" = (
 /obj/structure/chair/wood/rogue/throne,
-/obj/effect/landmark/start/goblinking,
+/obj/effect/landmark/start/chieftain,
 /turf/open/floor/rogue/twig{
 	dir = 4
 	},
@@ -21718,7 +21756,7 @@
 /turf/open/floor/rogue/herringbone,
 /area/rogue/indoors/town/bath)
 "yjW" = (
-/obj/effect/landmark/start/goblinsmith,
+/obj/effect/landmark/start/tribalsmith,
 /turf/open/floor/rogue/blocks,
 /area/rogue/indoors)
 "yke" = (
@@ -180930,7 +180968,7 @@ dVO
 eiV
 cpi
 dVO
-dVO
+cOz
 eiV
 cpi
 dVO
@@ -181327,7 +181365,7 @@ dVO
 dVO
 sPP
 eiV
-cpi
+jOn
 dVO
 dVO
 dVO
@@ -278208,7 +278246,7 @@ kXN
 kXN
 kXN
 pAa
-fpQ
+pin
 hHF
 hHF
 pAa
@@ -278612,7 +278650,7 @@ kXN
 pAa
 fwM
 hHF
-fpQ
+pin
 pAa
 fPm
 fPm
@@ -278624,9 +278662,9 @@ hHF
 ncl
 sSC
 tbR
-hRl
+fpQ
 pnn
-hRl
+vYw
 wjG
 sqm
 kXN
@@ -279025,7 +279063,7 @@ emp
 hHF
 hHF
 hHF
-wAr
+hHF
 hHF
 hHF
 hHF
@@ -279412,7 +279450,7 @@ kXN
 wCg
 kXN
 kXN
-kXN
+fPm
 fPm
 fPm
 fPm
@@ -279430,7 +279468,7 @@ hHF
 hHF
 pnn
 wjG
-hRl
+fpQ
 wjG
 sqm
 kXN
@@ -279831,7 +279869,7 @@ shd
 hHF
 hHF
 hHF
-rMF
+sov
 hHF
 wjG
 sqm
@@ -279853,7 +279891,7 @@ kXN
 kXN
 kXN
 lPu
-kXN
+hRl
 lPu
 kXN
 kXN
@@ -280214,13 +280252,13 @@ mFC
 chN
 chN
 kXN
+fPm
+fPm
+fPm
+fPm
+fPm
+fPm
 kXN
-fPm
-fPm
-fPm
-fPm
-fPm
-fPm
 wjG
 pAa
 pAa
@@ -280231,10 +280269,10 @@ wjG
 wbo
 hHF
 hHF
-wAr
+hHF
 mOd
 wjG
-hRl
+fpQ
 wjG
 sqm
 kXN
@@ -280255,7 +280293,7 @@ mDK
 kXN
 kXN
 kXN
-kXN
+hRl
 kXN
 kXN
 kXN
@@ -280615,12 +280653,12 @@ lPu
 nuE
 lPu
 lPu
-kXN
 fPm
 fPm
 fPm
-kXN
-kXN
+fPm
+fPm
+fPm
 kXN
 sue
 sue
@@ -280657,7 +280695,7 @@ kXN
 kXN
 kXN
 kXN
-kXN
+hRl
 kXN
 kXN
 kXN
@@ -281017,11 +281055,11 @@ kXN
 wCg
 lPu
 lPu
-kXN
 fPm
 fPm
-kXN
-kXN
+fPm
+fPm
+fPm
 kXN
 sue
 sue
@@ -281059,7 +281097,7 @@ kXN
 kXN
 mDK
 kXN
-kXN
+hRl
 kXN
 kXN
 kXN
@@ -281419,18 +281457,18 @@ lqR
 wCg
 lPu
 nxl
-kXN
 fPm
 fPm
-kXN
-kXN
+fPm
+fPm
+fPm
 sxp
 sue
 sue
 ddv
 ddv
-ddv
-ddv
+yjW
+yjW
 ddv
 ddv
 lpC
@@ -281461,7 +281499,7 @@ kXN
 kXN
 lPu
 kXN
-kXN
+hRl
 kXN
 mDK
 kXN
@@ -281824,7 +281862,7 @@ lGR
 pVW
 fPm
 fPm
-kXN
+fPm
 kXN
 sue
 sue
@@ -281833,7 +281871,7 @@ jQc
 ecU
 yjW
 ddv
-yjW
+ddv
 iDE
 pAa
 pqX
@@ -281863,7 +281901,7 @@ kXN
 kXN
 lPu
 kXN
-kXN
+hRl
 kXN
 kXN
 kXN
@@ -282223,7 +282261,7 @@ lPu
 nuE
 kXN
 irG
-kXN
+fPm
 fPm
 fPm
 kXN
@@ -282625,7 +282663,7 @@ lPu
 nuE
 kXN
 kXN
-kXN
+fPm
 fPm
 fPm
 kXN
@@ -282667,7 +282705,7 @@ kXN
 mDK
 lPu
 kXN
-kXN
+hRl
 kXN
 kXN
 kXN
@@ -283027,7 +283065,7 @@ kXN
 nuE
 kXN
 kXN
-kXN
+fPm
 fPm
 fPm
 kXN
@@ -283037,9 +283075,9 @@ sue
 prO
 hHF
 hHF
+wCP
 hHF
-hHF
-hHF
+wCP
 hHF
 hHF
 hHF
@@ -283069,7 +283107,7 @@ kXN
 kXN
 lPu
 kXN
-kXN
+hRl
 kXN
 kXN
 kXN
@@ -283471,7 +283509,7 @@ kXN
 fPm
 fPm
 kXN
-kXN
+hRl
 kXN
 kXN
 kXN
@@ -283831,7 +283869,7 @@ kXN
 wCg
 kXN
 lPu
-kXN
+fPm
 fPm
 fPm
 kXN
@@ -283841,9 +283879,9 @@ ots
 yeS
 hHF
 hHF
+wCP
 hHF
-hHF
-hHF
+wCP
 hHF
 hHF
 hHF
@@ -283873,7 +283911,7 @@ fPm
 fPm
 fPm
 fPm
-kXN
+hRl
 kXN
 kXN
 kXN
@@ -284233,7 +284271,7 @@ lPu
 wCg
 lPu
 lPu
-kXN
+fPm
 fPm
 fPm
 kXN
@@ -284250,7 +284288,7 @@ eRi
 wjG
 pAa
 wjG
-fPm
+pVW
 fPm
 fPm
 fPm
@@ -284275,7 +284313,7 @@ fPm
 fPm
 kXN
 kXN
-kXN
+hRl
 kXN
 kXN
 kXN
@@ -284636,7 +284674,7 @@ nuE
 lPu
 lPu
 lPu
-kXN
+fPm
 fPm
 kXN
 sue
@@ -284652,7 +284690,7 @@ txR
 pAa
 sue
 sue
-fPm
+wAr
 fPm
 fPm
 fPm
@@ -284677,7 +284715,7 @@ fPm
 fPm
 kXN
 lPu
-kXN
+hRl
 mDK
 lPu
 kXN
@@ -285038,7 +285076,7 @@ nuE
 lPu
 mXg
 oze
-kXN
+fPm
 fPm
 wjG
 wjG
@@ -285054,7 +285092,7 @@ fzQ
 wjG
 sue
 sue
-fPm
+pVW
 fPm
 fPm
 fPm
@@ -285079,7 +285117,7 @@ fPm
 fPm
 kXN
 kXN
-kXN
+hRl
 kXN
 lPu
 lPu
@@ -285440,7 +285478,7 @@ nuE
 kXN
 lPu
 oze
-kXN
+fPm
 fPm
 pAa
 sTW
@@ -285842,10 +285880,10 @@ nuE
 kXN
 mXg
 oze
-kXN
+fPm
 fPm
 pAa
-fpQ
+pin
 hHF
 sue
 sue
@@ -285883,7 +285921,7 @@ kXN
 lPu
 lqR
 kXN
-lPu
+rMF
 lPu
 lPu
 lPu
@@ -286244,7 +286282,7 @@ wCg
 kXN
 lPu
 lPu
-kXN
+fPm
 fPm
 wjG
 pAa
@@ -286285,7 +286323,7 @@ kXN
 kXN
 lPu
 lPu
-lPu
+rMF
 lPu
 lqR
 lPu
@@ -286646,7 +286684,7 @@ ccg
 snX
 hJJ
 kXN
-kXN
+fPm
 fPm
 fPm
 fPm
@@ -286687,7 +286725,7 @@ jOI
 kXN
 kXN
 lPu
-kXN
+hRl
 lPu
 lPu
 lPu
@@ -287049,7 +287087,7 @@ kXN
 lPu
 wCg
 kXN
-kXN
+fPm
 fPm
 fPm
 fPm
@@ -287063,7 +287101,7 @@ sue
 sue
 sue
 sxp
-kXN
+fPm
 fPm
 fPm
 fPm
@@ -287089,7 +287127,7 @@ kXN
 lPu
 kiU
 kXN
-lPu
+rMF
 lPu
 lPu
 lPu
@@ -287452,20 +287490,20 @@ lPu
 wCg
 kXN
 kXN
-kXN
 fPm
 fPm
 fPm
-kXN
-kXN
-kXN
+fPm
+fPm
+fPm
+fPm
 wlH
-kXN
+fPm
 pVW
-kXN
-kXN
-kXN
-kXN
+fPm
+fPm
+fPm
+fPm
 fPm
 fPm
 fPm
@@ -287491,7 +287529,7 @@ kXN
 lPu
 kiU
 lPu
-lPu
+rMF
 lPu
 lPu
 lPu
@@ -288257,8 +288295,8 @@ wCg
 kXN
 kXN
 kXN
-kXN
-kXN
+fPm
+fPm
 fPm
 fPm
 fPm
@@ -289062,14 +289100,14 @@ kXN
 kXN
 kXN
 pAa
-fpQ
+qSi
 hHF
 hHF
 pAa
 jOI
-kXN
 fPm
-kXN
+fPm
+fPm
 ust
 ust
 ust
@@ -289464,14 +289502,14 @@ kXN
 kXN
 kXN
 pAa
-fpQ
+pin
 hHF
 fwM
 pAa
 kXN
-kXN
 fPm
-kXN
+fPm
+fPm
 kXN
 ust
 ust
@@ -289871,9 +289909,9 @@ pAa
 pAa
 wjG
 kXN
-kXN
 fPm
-kXN
+fPm
+fPm
 kXN
 sxp
 ust
@@ -290273,9 +290311,9 @@ snX
 snX
 snX
 snX
-snX
+wgu
 oVs
-snX
+wgu
 snX
 snX
 snX
@@ -385546,9 +385584,9 @@ gnR
 gnR
 eZD
 fdF
-wCP
 kru
-wCP
+kru
+kru
 gSl
 kru
 kru
@@ -385948,9 +385986,9 @@ gnR
 gnR
 uPB
 xBJ
-wCP
 kru
-wCP
+kru
+kru
 kru
 kru
 iuI
@@ -386350,9 +386388,9 @@ gnR
 cFR
 eZD
 nhU
-wCP
 kru
-wCP
+kru
+kru
 hmz
 kru
 kru
@@ -387158,8 +387196,8 @@ irV
 irV
 pAa
 oGv
-irV
-irV
+epY
+epY
 pAa
 gnR
 cFR
@@ -387962,8 +388000,8 @@ bFG
 pAa
 bfl
 fkL
-epY
-epY
+irV
+irV
 pAa
 gnR
 nad
@@ -482443,7 +482481,7 @@ nad
 nad
 nad
 nad
-ltT
+kgj
 nad
 nad
 nad
@@ -482827,11 +482865,6 @@ nad
 nad
 nad
 nad
-jCh
-jCh
-jCh
-jCh
-jCh
 nad
 nad
 nad
@@ -482845,7 +482878,12 @@ nad
 nad
 nad
 nad
-ltT
+nad
+nad
+nad
+nad
+nad
+kgj
 nad
 nad
 nad
@@ -483229,25 +483267,25 @@ nad
 nad
 nad
 nad
-jCh
-jCh
-jCh
-jCh
-jCh
 nad
 nad
 nad
 nad
 nad
-ltT
-ltT
-ltT
-ltT
-ltT
-ltT
-ltT
-ltT
-ltT
+nad
+nad
+nad
+nad
+nad
+kgj
+kgj
+kgj
+kgj
+kgj
+kgj
+kgj
+kgj
+kgj
 nad
 nad
 nad
@@ -483631,17 +483669,6 @@ nad
 nad
 nad
 nad
-jCh
-jCh
-jCh
-jCh
-jCh
-nad
-nad
-nad
-nad
-nad
-ltT
 nad
 nad
 nad
@@ -483649,7 +483676,18 @@ nad
 nad
 nad
 nad
-ltT
+nad
+nad
+nad
+kgj
+nad
+nad
+nad
+nad
+nad
+nad
+nad
+kgj
 nad
 nad
 nad
@@ -484033,17 +484071,6 @@ nad
 nad
 nad
 nad
-jCh
-jCh
-jCh
-jCh
-jCh
-nad
-nad
-nad
-nad
-nad
-ltT
 nad
 nad
 nad
@@ -484051,7 +484078,18 @@ nad
 nad
 nad
 nad
-ltT
+nad
+nad
+nad
+kgj
+nad
+nad
+nad
+nad
+nad
+nad
+nad
+kgj
 nad
 nad
 nad
@@ -484445,7 +484483,7 @@ nad
 nad
 nad
 nad
-ltT
+kgj
 nad
 nad
 nad
@@ -484453,7 +484491,7 @@ nad
 nad
 nad
 nad
-ltT
+kgj
 nad
 nad
 nad
@@ -484847,15 +484885,15 @@ nad
 nad
 nad
 nad
-ltT
-ltT
+kgj
+kgj
 nad
 nad
 nad
 nad
 nad
 nad
-ltT
+kgj
 nad
 nad
 nad
@@ -485249,7 +485287,7 @@ nad
 nad
 nad
 nad
-ltT
+kgj
 nad
 nad
 nad
@@ -485257,7 +485295,7 @@ nad
 nad
 nad
 nad
-ltT
+kgj
 nad
 nad
 nad
@@ -485644,22 +485682,22 @@ nad
 nad
 nad
 nad
-ltT
-ltT
-ltT
-ltT
-ltT
-ltT
-ltT
-ltT
+kgj
+kgj
+kgj
+kgj
+kgj
+kgj
+kgj
+kgj
 nad
 nad
 nad
 nad
 nad
-ltT
-ltT
-ltT
+kgj
+kgj
+kgj
 nad
 nad
 nad
@@ -486046,20 +486084,20 @@ nad
 nad
 nad
 nad
-ltT
-ltT
-ltT
-ltT
-ltT
-ltT
-ltT
-ltT
+kgj
+kgj
+kgj
+kgj
+kgj
+kgj
+kgj
+kgj
 nad
 nad
 nad
 nad
 nad
-ltT
+kgj
 nad
 nad
 nad
@@ -486448,20 +486486,20 @@ nad
 nad
 nad
 nad
-ltT
-ltT
-ltT
-ltT
-ltT
-ltT
-ltT
-ltT
+kgj
+kgj
+kgj
+kgj
+kgj
+kgj
+kgj
+kgj
 nad
 nad
 nad
 nad
 nad
-ltT
+kgj
 nad
 nad
 nad
@@ -486850,20 +486888,20 @@ nad
 nad
 nad
 nad
-ltT
-ltT
-ltT
-ltT
-ltT
-ltT
-ltT
-ltT
+kgj
+kgj
+kgj
+kgj
+kgj
+kgj
+kgj
+kgj
 nad
 nad
 nad
 nad
 nad
-ltT
+kgj
 nad
 nad
 nad
@@ -487252,20 +487290,20 @@ nad
 nad
 nad
 nad
-ltT
-ltT
-ltT
-ltT
-ltT
-ltT
-ltT
-ltT
+kgj
+kgj
+kgj
+kgj
+kgj
+kgj
+kgj
+kgj
 nad
 nad
 nad
 nad
 nad
-ltT
+kgj
 nad
 nad
 nad
@@ -487653,21 +487691,21 @@ nad
 nad
 nad
 nad
-ltT
-ltT
-ltT
-ltT
-ltT
-ltT
-ltT
-ltT
-ltT
-ltT
-ltT
-ltT
-ltT
-ltT
-ltT
+kgj
+kgj
+kgj
+kgj
+kgj
+kgj
+kgj
+kgj
+kgj
+kgj
+kgj
+kgj
+kgj
+kgj
+kgj
 nad
 nad
 nad
@@ -488055,17 +488093,17 @@ nad
 nad
 nad
 nad
-ltT
-ltT
-ltT
-ltT
-ltT
-ltT
-ltT
-ltT
-ltT
-ltT
-ltT
+kgj
+kgj
+kgj
+kgj
+kgj
+kgj
+kgj
+kgj
+kgj
+kgj
+kgj
 nad
 nad
 nad
@@ -488457,17 +488495,17 @@ nad
 nad
 nad
 nad
-ltT
-ltT
-ltT
-ltT
-ltT
-ltT
-ltT
-ltT
-ltT
-ltT
-ltT
+kgj
+kgj
+kgj
+kgj
+kgj
+kgj
+kgj
+kgj
+kgj
+kgj
+kgj
 nad
 nad
 nad
@@ -488859,17 +488897,17 @@ nad
 nad
 nad
 nad
-ltT
-ltT
-ltT
-ltT
-ltT
-ltT
-ltT
-ltT
-ltT
-ltT
-ltT
+kgj
+kgj
+kgj
+kgj
+kgj
+kgj
+kgj
+kgj
+kgj
+kgj
+kgj
 nad
 nad
 nad
@@ -489261,17 +489299,17 @@ nad
 nad
 nad
 nad
-ltT
-ltT
-ltT
-ltT
-ltT
-ltT
-ltT
-ltT
-ltT
-ltT
-ltT
+kgj
+kgj
+kgj
+kgj
+kgj
+kgj
+kgj
+kgj
+kgj
+kgj
+kgj
 nad
 nad
 nad
@@ -489663,15 +489701,15 @@ nad
 nad
 nad
 nad
-ltT
-ltT
-ltT
-ltT
-ltT
-ltT
-ltT
-ltT
-ltT
+kgj
+kgj
+kgj
+kgj
+kgj
+kgj
+kgj
+kgj
+kgj
 nad
 nad
 nad
@@ -490065,15 +490103,15 @@ nad
 nad
 nad
 nad
-ltT
-ltT
-ltT
-ltT
-ltT
-ltT
-ltT
-ltT
-ltT
+kgj
+kgj
+kgj
+kgj
+kgj
+kgj
+kgj
+kgj
+kgj
 nad
 nad
 nad
@@ -490467,15 +490505,15 @@ nad
 nad
 nad
 nad
-ltT
-ltT
-ltT
-ltT
-ltT
-ltT
-ltT
-ltT
-ltT
+kgj
+kgj
+kgj
+kgj
+kgj
+kgj
+kgj
+kgj
+kgj
 nad
 nad
 nad
@@ -490869,15 +490907,15 @@ nad
 nad
 nad
 nad
-ltT
-ltT
-ltT
-ltT
-ltT
-ltT
-ltT
-ltT
-ltT
+kgj
+kgj
+kgj
+kgj
+kgj
+kgj
+kgj
+kgj
+kgj
 nad
 nad
 nad
@@ -493293,10 +493331,10 @@ nad
 nad
 nad
 nad
-jCh
-jCh
-jCh
-jCh
+nad
+nad
+nad
+nad
 nad
 nad
 nad
@@ -493681,11 +493719,6 @@ nad
 nad
 nad
 nad
-jCh
-jCh
-jCh
-jCh
-jCh
 nad
 nad
 nad
@@ -493695,10 +493728,15 @@ nad
 nad
 nad
 nad
-jCh
-jCh
-jCh
-jCh
+nad
+nad
+nad
+nad
+nad
+nad
+nad
+nad
+nad
 nad
 nad
 nad
@@ -494083,11 +494121,6 @@ nad
 nad
 nad
 nad
-jCh
-jCh
-jCh
-jCh
-jCh
 nad
 nad
 nad
@@ -494097,10 +494130,15 @@ nad
 nad
 nad
 nad
-jCh
-jCh
-jCh
-jCh
+nad
+nad
+nad
+nad
+nad
+nad
+nad
+nad
+nad
 nad
 nad
 nad
@@ -494485,11 +494523,6 @@ nad
 nad
 nad
 nad
-jCh
-jCh
-jCh
-jCh
-jCh
 nad
 nad
 nad
@@ -494499,10 +494532,15 @@ nad
 nad
 nad
 nad
-jCh
-jCh
-jCh
-jCh
+nad
+nad
+nad
+nad
+nad
+nad
+nad
+nad
+nad
 nad
 nad
 nad
@@ -494887,11 +494925,11 @@ nad
 nad
 nad
 nad
-jCh
-jCh
-jCh
-jCh
-jCh
+nad
+nad
+nad
+nad
+nad
 nad
 nad
 nad

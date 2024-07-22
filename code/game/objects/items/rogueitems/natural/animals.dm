@@ -72,3 +72,28 @@
 	gripped_intents = null
 	slot_flags = ITEM_SLOT_MOUTH|ITEM_SLOT_HIP
 	bundletype = /obj/item/natural/bundle/bone
+
+/obj/item/natural/volf_head
+	name = "volf head"
+	icon_state = "volf_head"
+	desc = "Dismembered head of a volf."
+	dropshrink = null
+	force = 0
+	throwforce = 0
+	w_class = WEIGHT_CLASS_SMALL
+	resistance_flags = FLAMMABLE
+	drop_sound = 'sound/foley/dropsound/gen_drop.ogg'
+	sellprice = 20
+
+
+/obj/item/natural/antler
+	name = "antler"
+	icon_state = "antler"
+	desc = "Antler of an animal"
+	dropshrink = null
+	force = 0
+	throwforce = 0
+	w_class = WEIGHT_CLASS_SMALL
+	resistance_flags = FLAMMABLE
+	drop_sound = 'sound/foley/dropsound/gen_drop.ogg'
+	sellprice = 20

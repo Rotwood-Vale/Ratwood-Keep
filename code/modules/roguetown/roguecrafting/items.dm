@@ -488,7 +488,7 @@
 	name = "antlerhood"
 	result = /obj/item/clothing/head/roguetown/antlerhood
 	reqs = list(/obj/item/natural/hide = 1,
-				/obj/item/natural/bone = 2)
+				/obj/item/natural/antler = 2)
 	sellprice = 12
 	tools = list(/obj/item/needle)
 	skillcraft = /datum/skill/misc/sewing

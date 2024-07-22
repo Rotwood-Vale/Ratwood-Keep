@@ -102,37 +102,39 @@
 	var/list/used_footsteps
 
 	if(H.shoes || feetCover) //are we wearing shoes
-		//SANITY CHECK, WILL NOT PLAY A SOUND IF THE LIST IS INVALID
-		if(!GLOB.footstep[T.footstep] || (LAZYLEN(GLOB.footstep[T.footstep]) < 3))
-			testing("SOME RETARD GAVE AN INVALID FOOTSTEP VALUE ([T.footstep]) TO [T.type]!!! FIX THIS SHIT!!!")
-			return
-		used_footsteps = GLOB.footstep[T.footstep][1]
-		used_footsteps = used_footsteps.Copy()
-		used_sound = pick_n_take(used_footsteps)
-		if(used_sound == last_sound)
-			if(used_footsteps.len)
+		var/obj/item/clothing/shoes/humshoes = H.shoes
+		if(humshoes.isbarefoot == FALSE) //are the shoes actually not barefoot
+			//SANITY CHECK, WILL NOT PLAY A SOUND IF THE LIST IS INVALID
+			if(!GLOB.footstep[T.footstep] || (LAZYLEN(GLOB.footstep[T.footstep]) < 3))
+				testing("SOME RETARD GAVE AN INVALID FOOTSTEP VALUE ([T.footstep]) TO [T.type]!!! FIX THIS SHIT!!!")
+				return
+			used_footsteps = GLOB.footstep[T.footstep][1]
+			used_footsteps = used_footsteps.Copy()
+			used_sound = pick_n_take(used_footsteps)
+			if(used_sound == last_sound)
+				if(used_footsteps.len)
+					used_sound = pick(used_footsteps)
+			if(!used_sound)
+				used_sound = last_sound
+			last_sound = used_sound
+			playsound(T, used_sound,
+				GLOB.footstep[T.footstep][2],
+				FALSE,
+				GLOB.footstep[T.footstep][3] + e_range)
+		else
+			//SANITY CHECK, WILL NOT PLAY A SOUND IF THE LIST IS INVALID
+			if(!GLOB.barefootstep[T.barefootstep] || (LAZYLEN(GLOB.barefootstep[T.barefootstep]) < 3))
+				testing("SOME RETARD GAVE AN INVALID BAREFOOTSTEP VALUE ([T.barefootstep]) TO [T.type]!!! FIX THIS SHIT!!!")
+				return
+			used_footsteps = GLOB.barefootstep[T.barefootstep][1]
+			used_footsteps = used_footsteps.Copy()
+			used_sound = pick_n_take(used_footsteps)
+			if(used_sound == last_sound)
 				used_sound = pick(used_footsteps)
-		if(!used_sound)
-			used_sound = last_sound
-		last_sound = used_sound
-		playsound(T, used_sound,
-			GLOB.footstep[T.footstep][2],
-			FALSE,
-			GLOB.footstep[T.footstep][3] + e_range)
-	else
-		//SANITY CHECK, WILL NOT PLAY A SOUND IF THE LIST IS INVALID
-		if(!GLOB.barefootstep[T.barefootstep] || (LAZYLEN(GLOB.barefootstep[T.barefootstep]) < 3))
-			testing("SOME RETARD GAVE AN INVALID BAREFOOTSTEP VALUE ([T.barefootstep]) TO [T.type]!!! FIX THIS SHIT!!!")
-			return
-		used_footsteps = GLOB.barefootstep[T.barefootstep][1]
-		used_footsteps = used_footsteps.Copy()
-		used_sound = pick_n_take(used_footsteps)
-		if(used_sound == last_sound)
-			used_sound = pick(used_footsteps)
-		if(!used_sound)
-			used_sound = last_sound
-		last_sound = used_sound
-		playsound(T, used_sound,
-			GLOB.barefootstep[T.barefootstep][2],
-			TRUE,
-			GLOB.barefootstep[T.barefootstep][3] + e_range)
+			if(!used_sound)
+				used_sound = last_sound
+			last_sound = used_sound
+			playsound(T, used_sound,
+				GLOB.barefootstep[T.barefootstep][2],
+				TRUE,
+				GLOB.barefootstep[T.barefootstep][3] + e_range)
