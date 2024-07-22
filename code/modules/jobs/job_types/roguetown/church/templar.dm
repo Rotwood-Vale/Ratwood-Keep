@@ -59,10 +59,10 @@
 	gloves = /obj/item/clothing/gloves/roguetown/chain
 	neck = /obj/item/clothing/neck/roguetown/chaincoif
 	if(H.mind)
-		H.mind.adjust_skillrank(/datum/skill/combat/maces, 2, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/maces, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/bows, 2, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/swords, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/climbing, 1, TRUE)
