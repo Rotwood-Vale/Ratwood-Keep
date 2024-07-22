@@ -222,8 +222,8 @@
 // Currently calls maniac hallucinations
 /datum/curse/zizo/on_life(mob/living/carbon/human/owner)
 	. = ..()
-	handle_visions(owner, hallucinations)
-	handle_hallucinations(owner)
-	handle_floors(owner)
-	handle_walls(owner)
+	handle_maniac_visions(owner, hallucinations)
+	handle_maniac_hallucinations(owner)
+	handle_maniac_floors(owner)
+	handle_maniac_walls(owner)
 	
