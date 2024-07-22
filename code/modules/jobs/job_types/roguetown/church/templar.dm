@@ -45,8 +45,8 @@
 			wrists = /obj/item/clothing/neck/roguetown/psicross/noc
 			head = /obj/item/clothing/head/roguetown/helmet/heavy/nochelm
 			cloak = /obj/item/clothing/cloak/tabard/crusader/noc
-	armor = /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk
-	shirt = /obj/item/clothing/suit/roguetown/armor/gambeson
+	armor = /obj/item/clothing/suit/roguetown/armor/plate/half
+	shirt = /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk
 	pants = /obj/item/clothing/under/roguetown/chainlegs
 	shoes = /obj/item/clothing/shoes/roguetown/boots
 	backl = /obj/item/storage/backpack/rogue/satchel
