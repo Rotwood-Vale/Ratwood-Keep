@@ -65,7 +65,7 @@
 		return FALSE
 	if(!length(curses))
 		return FALSE
-	if(!C in curses)
+	if(!(C in curses))
 		return FALSE
 	return TRUE
 
