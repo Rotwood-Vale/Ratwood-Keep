@@ -288,6 +288,16 @@
 			if("onbelt")
 				return list("shrink" = 0.5,"sx" = -4,"sy" = -6,"nx" = 5,"ny" = -6,"wx" = 0,"wy" = -6,"ex" = -1,"ey" = -6,"nturn" = 100,"sturn" = 156,"wturn" = 90,"eturn" = 180,"nflip" = 0,"sflip" = 0,"wflip" = 0,"eflip" = 0,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0)
 
+/obj/item/rogueweapon/sword/long/rider/messer
+	force = 20
+	force_wielded = 30
+	possible_item_intents = list(/datum/intent/sword/cut, /datum/intent/axe/chop, /datum/intent/sword/strike)
+	gripped_intents = list(/datum/intent/sword/cut, /datum/intent/axe/chop, /datum/intent/sword/thrust, /datum/intent/sword/strike)
+	icon_state = "Kmesser"
+	item_state = "Kmesser"
+	name = "langesmesser"
+	desc = "A lengthened messer, inspired by those from grenzelhoft. It chops and cuts with terrifying efficiency."
+
 /obj/item/rogueweapon/sword/long/marlin
 	force = 26
 	force_wielded = 31
@@ -498,15 +508,6 @@
 /datum/intent/sword/thrust/estoc // Around 12 or so dmg gets through armor, making it weaker than spears, but more portable
 	clickcd = 10
 	penfactor = 40
-
-/obj/item/rogueweapon/sword/krieg
-	force = 20
-	force_wielded = 30
-	possible_item_intents = list(/datum/intent/sword/cut, /datum/intent/axe/chop, /datum/intent/sword/strike)
-	gripped_intents = list(/datum/intent/sword/cut, /datum/intent/axe/chop, /datum/intent/sword/thrust, /datum/intent/sword/strike)
-	icon_state = "krieg"
-	name = "langesmesser"
-	desc = "A lengthened messer, inspired by those from grenzelhoft. It chops and cuts with terrifying efficiency."
 
 /obj/item/rogueweapon/sword/cutlass
 	name = "cutlass"

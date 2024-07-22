@@ -138,7 +138,7 @@
 	name = "Langesmesser (+1 Steel)"
 	req_bar = /obj/item/ingot/steel
 	additional_items = list(/obj/item/ingot/steel)
-	created_item = /obj/item/rogueweapon/sword/krieg
+	created_item = /obj/item/rogueweapon/sword/long/rider/messer
 	craftdiff = 2
 	i_type = "Weapons"
 
