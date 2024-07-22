@@ -546,8 +546,6 @@
 
 /mob/living/carbon
 	var/nausea = 0
-	///used for in-round gained roles for examine.
-	var/funnyrole = null
 
 /mob/living/carbon/proc/add_nausea(amt)
 	nausea = clamp(nausea + amt, 0, 300)

@@ -97,10 +97,11 @@
 					slop_lore_string = ", <span class='danger'>A TRAITOR!</span>"
 			. += span_info("[capitalize(m2)] [skin_tone_wording] is [skin_tone_seen][slop_lore_string]")
 
-		if(funnyrole)
-			. += span_info("[used_name] is a [funnyrole].")
+		var/usedrole = funnyrole
+		if(usedrole)
+			. += span_notice("[used_name] is a [usedrole].")
 		if(HAS_TRAIT(src, TRAIT_NOBLE))
-			. += span_info("[used_name] is a NOBLE.")
+			. += span_notice("[used_name] is a <EM>NOBLE</EM>.")
 		if(ishuman(user))
 			var/mob/living/carbon/human/H = user
 			if(H.marriedto == name)

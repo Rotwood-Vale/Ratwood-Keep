@@ -183,7 +183,7 @@
 	reqs = list(/obj/item/natural/hide = 1,/obj/item/natural/fur = 1)
 	craftdiff = 1
 
-/datum/crafting_recipe/roguetown/leather/furlinedboots
+/datum/crafting_recipe/roguetown/leather/furlinedanklets
 	name = "fur-lined anklets"
 	result = /obj/item/clothing/shoes/roguetown/boots/furlinedanklets
 	reqs = list(/obj/item/natural/hide = 1,/obj/item/natural/fur = 1)

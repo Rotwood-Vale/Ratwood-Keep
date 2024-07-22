@@ -84,6 +84,7 @@
 	resistance_flags = FLAMMABLE
 	drop_sound = 'sound/foley/dropsound/gen_drop.ogg'
 	sellprice = 20
+	dropshrink = 0.50
 
 
 /obj/item/natural/antler
@@ -97,3 +98,4 @@
 	resistance_flags = FLAMMABLE
 	drop_sound = 'sound/foley/dropsound/gen_drop.ogg'
 	sellprice = 20
+	dropshrink = 0.50
