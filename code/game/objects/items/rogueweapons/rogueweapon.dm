@@ -47,7 +47,7 @@
 	if(HAS_TRAIT(user, TRAIT_RAVOX_CURSE))
 		var/mob/living/carbon/human/H = user
 		to_chat(H, span_warning("The idea repulses me!"))
-		H.freak_out()
+		H.cursed_freak_out()
 		H.Paralyze(20)
 		return
 

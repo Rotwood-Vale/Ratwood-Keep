@@ -14,7 +14,7 @@
 
 	if(HAS_TRAIT(user, TRAIT_MATTHIOS_CURSE))
 		to_chat(H, "<span class='warning'>The idea repulses me!</span>")
-		H.freak_out()
+		H.cursed_freak_out()
 		return
 
 	if(H in SStreasury.bank_accounts)
@@ -78,7 +78,7 @@
 		if(HAS_TRAIT(user, TRAIT_MATTHIOS_CURSE))
 			var/mob/living/carbon/human/H = user
 			to_chat(H, "<span class='warning'>The idea repulses me!</span>")
-			H.freak_out()
+			H.cursed_freak_out()
 			return
 
 		if(istype(P, /obj/item/roguecoin))

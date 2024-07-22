@@ -207,7 +207,7 @@
 				if(2)
 					owner.emote("sexmoanlight")
 				if(3)
-					owner.freak_out()
+					owner.cursed_freak_out()
 		//else //we dont have male moans yet
 
 /datum/curse/graggar/on_life(mob/living/carbon/human/owner)
@@ -216,7 +216,7 @@
 		for(var/mob/living/carbon/human in view(1, owner))
 			owner.emote("rage")
 			human.attacked_by(owner.get_active_held_item(), owner)
-			owner.freak_out()
+			owner.cursed_freak_out()
 			break
 
 // Currently calls maniac hallucinations
@@ -226,4 +226,32 @@
 	handle_maniac_hallucinations(owner)
 	handle_maniac_floors(owner)
 	handle_maniac_walls(owner)
+
+
+/mob/proc/do_cursed_freakout_scream()
+	emote("scream", forced=TRUE)
+
+/mob/living/carbon/cursed_freak_out()
+	if(mob_timers["freakout"])
+		if(world.time < mob_timers["freakout"] + 10 SECONDS)
+			flash_fullscreen("stressflash")
+			return
+	mob_timers["freakout"] = world.time
+	shake_camera(src, 1, 3)
+	flash_fullscreen("stressflash")
+	changeNext_move(CLICK_CD_EXHAUSTED)
+	emote("fatigue", forced = TRUE)
+	if(stress > 15)
+		addtimer(CALLBACK(src, TYPE_PROC_REF(/mob, do_freakout_scream)), rand(30,50))
+
+	if(hud_used)
+		var/matrix/skew = matrix()
+		skew.Scale(2)
+		var/matrix/newmatrix = skew 
+		for(var/C in hud_used.plane_masters)
+			var/atom/movable/screen/plane_master/whole_screen = hud_used.plane_masters[C]
+			if(whole_screen.plane == HUD_PLANE)
+				continue
+			animate(whole_screen, transform = newmatrix, time = 1, easing = QUAD_EASING)
+			animate(transform = -newmatrix, time = 30, easing = QUAD_EASING)
 	

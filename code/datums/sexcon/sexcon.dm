@@ -143,7 +143,7 @@
 
 	if(HAS_TRAIT(user, TRAIT_EORA_CURSE))
 		to_chat(user, "<span class='warning'>The idea repulses me!</span>")
-		user.freak_out()
+		user.cursed_freak_out()
 		return FALSE
 
 	set_target(new_target)

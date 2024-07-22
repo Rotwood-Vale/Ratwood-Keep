@@ -485,7 +485,7 @@
 	if(HAS_TRAIT(user, TRAIT_EORA_CURSE))
 		var/mob/living/carbon/human/H = user
 		to_chat(H, "<span class='warning'>The idea repulses me!</span>")
-		H.freak_out()
+		H.cursed_freak_out()
 		return FALSE
 
 /datum/emote/living/kiss/adjacentaction(mob/user, mob/target)
@@ -500,7 +500,7 @@
 		// cursed is the one being kissed
 		if(HAS_TRAIT(E, TRAIT_EORA_CURSE))
 			to_chat(E, "<span class='warning'>I feel unexplicably repelled!</span>")
-			E.freak_out()
+			E.cursed_freak_out()
 
 		var/do_change
 		if(target.loc == user.loc)
@@ -578,7 +578,7 @@
 	if(HAS_TRAIT(user, TRAIT_EORA_CURSE))
 		var/mob/living/carbon/human/H = user
 		to_chat(H, "<span class='warning'>The idea repulses me!</span>")
-		H.freak_out()
+		H.cursed_freak_out()
 		return FALSE
 
 /datum/emote/living/hug/adjacentaction(mob/user, mob/target)
@@ -591,7 +591,7 @@
 		// cursed is the one being hugged
 		if(HAS_TRAIT(H, TRAIT_EORA_CURSE))
 			to_chat(H, "<span class='warning'>I feel unexplicably repelled!</span>")
-			H.freak_out()
+			H.cursed_freak_out()
 			return
 
 		H.add_stress(/datum/stressevent/hug)
