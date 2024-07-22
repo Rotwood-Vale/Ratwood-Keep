@@ -219,7 +219,7 @@ GLOBAL_LIST_INIT(character_flaws, list(
 
 /datum/charflaw/greedy/proc/mammon_increase(mob/living/carbon/human/user)
 	if(last_passed_check + (50 MINUTES) < world.time) //If we spend a REALLY long time without being able to satisfy, then pity downgrade
-		required_mammons -= rand(30, 40)
+		required_mammons -= rand(10, 20)
 		to_chat(user, span_blue("Maybe a little less mammons is enough..."))
 	else
 		required_mammons += rand(30, 40)
