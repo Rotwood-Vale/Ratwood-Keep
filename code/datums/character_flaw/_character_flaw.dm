@@ -1,14 +1,19 @@
 
-GLOBAL_LIST_INIT(character_flaws, list("Alcoholic"=/datum/charflaw/addiction/alcoholic,
+GLOBAL_LIST_INIT(character_flaws, list(
+	"Alcoholic"=/datum/charflaw/addiction/alcoholic,
 	"Smoker"=/datum/charflaw/addiction/smoker,
 	"Junkie"=/datum/charflaw/addiction/junkie,
+	"Greedy"=/datum/charflaw/greedy,
+	"Nacroleptic"=/datum/charflaw/narcoleptic,
+	"Masochist"=/datum/charflaw/masochist,
+	"Paranoid"=/datum/charflaw/paranoid,
 	"Cyclops (R)"=/datum/charflaw/noeyer,
 	"Cyclops (L)"=/datum/charflaw/noeyel,
 	"Wood Arm (R)"=/datum/charflaw/limbloss/arm_r,
 	"Wood Arm (L)"=/datum/charflaw/limbloss/arm_l,
-	"Paranoid"=/datum/charflaw/paranoid,
 	"Random or No Flaw"=/datum/charflaw/randflaw,
-	"No Flaw (3 TRIUMPHS)"=/datum/charflaw/noflaw))
+	"No Flaw (3 TRIUMPHS)"=/datum/charflaw/noflaw
+	))
 
 /datum/charflaw
 	var/name
@@ -194,3 +199,170 @@ GLOBAL_LIST_INIT(character_flaws, list("Alcoholic"=/datum/charflaw/addiction/alc
 	var/obj/item/bodypart/head/head = H.get_bodypart(BODY_ZONE_HEAD)
 	head?.add_wound(/datum/wound/facial/eyes/left/permanent)
 	H.update_fov_angles()
+
+/datum/charflaw/greedy
+	name = "Greedy"
+	desc = "I just can't get enough mammons!"
+	var/last_checked_mammons = 0
+	var/required_mammons = 0
+	var/next_mammon_increase = 0
+	var/last_passed_check = 0
+
+/datum/charflaw/greedy/on_mob_creation(mob/user)
+	next_mammon_increase = world.time + rand(35 MINUTES, 45 MINUTES)
+	last_passed_check = world.time
+
+/datum/charflaw/greedy/flaw_on_life(mob/user)
+	if(world.time >= next_mammon_increase)
+		mammon_increase(user)
+	mammon_check(user)
+
+/datum/charflaw/greedy/proc/mammon_increase(mob/living/carbon/human/user)
+	if(last_passed_check + (50 MINUTES) < world.time) //If we spend a REALLY long time without being able to satisfy, then pity downgrade
+		required_mammons -= rand(30, 40)
+		to_chat(user, span_blue("Maybe a little less mammons is enough..."))
+	else
+		required_mammons += rand(30, 40)
+	required_mammons = min(required_mammons, 150) //Cap at 140 coins maximum
+	next_mammon_increase = world.time + rand(35 MINUTES, 40 MINUTES)
+	var/current_mammons = get_mammons_in_atom(user)
+	if(current_mammons >= required_mammons)
+		to_chat(user, span_blue("I'm quite happy with the amount of mammons I have..."))
+	else
+		to_chat(user, span_boldwarning("I need more mammons, what I have is not enough..."))
+
+	last_checked_mammons = current_mammons
+
+/datum/charflaw/greedy/proc/mammon_check(mob/living/carbon/human/user)
+	var/new_mammon_amount = get_mammons_in_atom(user)
+	var/ascending = (new_mammon_amount > last_checked_mammons)
+
+	var/do_update_msg = TRUE
+	if(new_mammon_amount >= required_mammons)
+		// Feel better
+		if(user.has_stress_event(/datum/stressevent/vice))
+			to_chat(user, span_blue("[new_mammon_amount] mammons... That's more like it.."))
+		user.remove_stress(/datum/stressevent/vice)
+		user.remove_status_effect(/datum/status_effect/debuff/addiction)
+		last_passed_check = world.time
+		do_update_msg = FALSE
+	else
+		// Feel bad
+		user.add_stress(/datum/stressevent/vice)
+		user.apply_status_effect(/datum/status_effect/debuff/addiction)
+
+	if(new_mammon_amount == last_checked_mammons)
+		do_update_msg = FALSE
+
+	if(do_update_msg)
+		if(ascending)
+			to_chat(user, span_warning("Only [new_mammon_amount] mammons.. I need more..."))
+		else
+			to_chat(user, span_boldwarning("No! My precious mammons..."))
+
+	last_checked_mammons = new_mammon_amount
+
+/datum/charflaw/narcoleptic
+	name = "Narcoleptic"
+	desc = "I get drowsy during the day and tend to fall asleep suddenly."
+	var/last_unconsciousness = 0
+	var/next_sleep = 0
+	var/concious_timer = (10 MINUTES)
+	var/do_sleep = FALSE
+
+/datum/charflaw/narcoleptic/on_mob_creation(mob/user)
+	last_unconsciousness = world.time
+	concious_timer = rand(7 MINUTES, 15 MINUTES)
+
+/datum/charflaw/narcoleptic/flaw_on_life(mob/living/carbon/human/user)
+	if(do_sleep)
+		// Process sleep attempt
+		if(user.stat != CONSCIOUS)
+			do_sleep = FALSE
+			return
+		if(next_sleep <= world.time)
+			if(prob(50))
+				concious_timer = rand(1 MINUTES, 3 MINUTES)
+				to_chat(user, span_info("The feeling has passed."))
+			else
+				concious_timer = rand(7 MINUTES, 15 MINUTES)
+				to_chat(user, span_warning("I can't keep my eyes open any longer..."))
+				user.Sleeping(rand(40 SECONDS, 60 SECONDS))
+			do_sleep = FALSE
+	else
+		// Process drowsy attempt
+		if(user.stat != CONSCIOUS)
+			last_unconsciousness = world.time
+		// Been conscious for 10 minutes
+		if(last_unconsciousness + concious_timer < world.time)
+			to_chat(user, span_warning("I'm getting drowsy..."))
+			user.emote("yawn", forced = TRUE)
+			next_sleep = world.time + rand(4 SECONDS, 8 SECONDS)
+			do_sleep = TRUE
+
+
+#define MASO_THRESHOLD_ONE 1
+#define MASO_THRESHOLD_TWO 2
+#define MASO_THRESHOLD_THREE 3
+#define MASO_THRESHOLD_FOUR 4
+
+/datum/charflaw/masochist
+	name = "Masochist"
+	desc = "I love the feeling of pain, so much I can't get enough of it."
+	var/next_paincrave = 0
+	var/last_pain_threshold = NONE
+
+/datum/charflaw/masochist/on_mob_creation(mob/living/carbon/human/user)
+	next_paincrave = world.time + rand(35 MINUTES, 45 MINUTES)
+
+/datum/charflaw/masochist/flaw_on_life(mob/living/carbon/human/user)
+	if(next_paincrave > world.time)
+		last_pain_threshold = NONE
+		return
+	var/current_pain = user.get_complex_pain()
+	var/new_pain_threshold = get_pain_threshold(current_pain)
+	if(last_pain_threshold == NONE)
+		to_chat(user, span_boldwarning("I could really use some pain right now..."))
+		user.add_stress(/datum/stressevent/vice)
+		user.apply_status_effect(/datum/status_effect/debuff/addiction)
+	else if (new_pain_threshold != last_pain_threshold)
+		var/ascending = (new_pain_threshold > last_pain_threshold)
+		switch(new_pain_threshold)
+			if(MASO_THRESHOLD_ONE)
+				to_chat(user, span_warning("The pain is gone..."))
+			if(MASO_THRESHOLD_TWO)
+				if(ascending)
+					to_chat(user, span_blue("Yes, more pain!"))
+				else
+					to_chat(user, span_warning("No, my pain!"))
+			if(MASO_THRESHOLD_THREE)
+				to_chat(user, span_blue("More, I love it!"))
+
+	last_pain_threshold = new_pain_threshold
+	if(new_pain_threshold == MASO_THRESHOLD_FOUR)
+		to_chat(user, span_blue("<b>This's more like it...</b>"))
+		next_paincrave = world.time + rand(35 MINUTES, 45 MINUTES)
+		user.remove_stress(/datum/stressevent/vice)
+		user.remove_status_effect(/datum/status_effect/debuff/addiction)
+
+
+/datum/charflaw/masochist/proc/get_pain_threshold(pain_amt)
+	switch(pain_amt)
+		if(-INFINITY to 50)
+			return MASO_THRESHOLD_ONE
+		if(50 to 95)
+			return MASO_THRESHOLD_TWO
+		if(95 to 140)
+			return MASO_THRESHOLD_THREE
+		if(140 to INFINITY)
+			return MASO_THRESHOLD_FOUR
+
+/proc/get_mammons_in_atom(atom/movable/movable)
+	var/static/list/coins_types = typecacheof(/obj/item/roguecoin)
+	var/mammons = 0
+	if(coins_types[movable.type])
+		var/obj/item/roguecoin/coin = movable
+		mammons += coin.quantity * coin.sellprice
+	for(var/atom/movable/content in movable.contents)
+		mammons += get_mammons_in_atom(content)
+	return mammons
