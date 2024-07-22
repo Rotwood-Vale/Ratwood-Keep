@@ -264,6 +264,7 @@
 	if(active || force_key_move)
 		testing("dotransfer to [new_character]")
 		new_character.key = key		//now transfer the key to link the client to our new body
+	new_character.update_fov_angles()
 
 
 	///Adjust experience of a specific skill

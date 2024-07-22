@@ -213,7 +213,7 @@
 	desc = span_red("I'm dead... what comes next?")
 
 /datum/stressevent/oziumoff
-	stressadd = 20
+	stressadd = 10
 	desc = span_blue("I need another hit.")
 	timer = 1 MINUTES
 
