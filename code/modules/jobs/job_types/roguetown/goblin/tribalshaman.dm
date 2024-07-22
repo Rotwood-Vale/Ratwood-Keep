@@ -67,7 +67,7 @@
 
 /obj/effect/proc_holder/spell/self/convertrole/tribal
 	name = "Recruit Tribemember"
-	new_role = "Tribal Villager"
+	new_role = "Tribe Member"
 	recruitment_faction = "Tribals"
 	recruitment_message = "Serve the tribe, %RECRUIT!"
 	accept_message = "FOR THE TRIBE!"

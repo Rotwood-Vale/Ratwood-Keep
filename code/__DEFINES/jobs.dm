@@ -192,8 +192,8 @@
 #define TRIBALCOOK	(1<<1)
 #define TRIBALGUARD	(1<<2)
 #define TRIBALSMITH	(1<<3)
-#define TRIBALSHAMAN	(1<<3)
-#define TRIBALVILLAGER	(1<<3)
+#define TRIBALSHAMAN	(1<<4)
+#define TRIBALVILLAGER	(1<<5)
 
 #define SLOP		(1<<9)
 

@@ -163,7 +163,8 @@ GLOBAL_LIST_INIT(goblin_positions, list(
 	"Chieftain",
 	"Tribal Smith",
 	"Tribal Shaman",
-	"Tribal Slave",
+	"Tribal Villager",
+	/*"Tribal Slave",*/
 ))
 
 
