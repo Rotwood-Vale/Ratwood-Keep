@@ -7,7 +7,7 @@
 	spawn_positions = 5
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
-	tutorial = "Tribal guards rensposible for their kingdom and his majesty king or queen protection."
+	tutorial = "Tribal guards rensposible for the defence of their tribe and their chieftain."
 	display_order = JDO_TRIBALGUARD
 	outfit = /datum/outfit/job/roguetown/tribalguard
 	min_pq = 0
@@ -16,8 +16,8 @@
 
 /datum/outfit/job/roguetown/tribalguard/pre_equip(mob/living/carbon/human/H)
 	. = ..()
-	head = /obj/item/clothing/head/roguetown/helmet/leather/goblin
-	armor = /obj/item/clothing/suit/roguetown/armor/leather/hide/goblin
+	head = /obj/item/clothing/head/roguetown/helmet/leather/volfhelm
+	shoes = /obj/item/clothing/shoes/roguetown/boots/furlinedboots
 	shirt = /obj/item/clothing/suit/roguetown/shirt/tribalrag
 	pants = /obj/item/clothing/under/roguetown/loincloth/brown
 	belt = /obj/item/storage/belt/rogue/leather

@@ -29,16 +29,24 @@
 	belt = /obj/item/storage/belt/rogue/leather/rope
 	beltr = /obj/item/storage/belt/rogue/pouch/coins/rich
 	armor = /obj/item/clothing/suit/roguetown/armor/leather/hide/goblin
-	head = /obj/item/clothing/head/roguetown/crown/surplus
+	shoes = /obj/item/clothing/shoes/roguetown/boots/furlinedboots
 	cloak = /obj/item/clothing/cloak/heartfelt
 	if(H.mind)
-		H.mind.adjust_skillrank(/datum/skill/combat/polearms, 2, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/combat/maces, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/maces, 3, TRUE) // Chieftess gets nearly same skills as guard.
+		H.mind.adjust_skillrank(/datum/skill/combat/bows, 2, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/swords, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/polearms, 2 , TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/whipsflails, 3 , TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/knives, 4, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/swimming, 2, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/climbing, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/medicine, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/combat/knives, 3, TRUE)
 		H.change_stat("strength", -1)
 		H.change_stat("intelligence", 2)
 		H.change_stat("constitution", 6)
@@ -56,7 +64,7 @@
 		if(!istype(get_area(src), /area/rogue/outdoors/tribalfort))
 			to_chat(src, span_warning("I need to do this from the tribe."))
 			return FALSE
-		priority_announce("[inputty]", title = "The Tribe Squeals", sound = 'sound/misc/dun.ogg')
+		priority_announce("[inputty]", title = "The Tribe announces", sound = 'sound/misc/tribal announcement.ogg')
 
 /mob/living/carbon/human/proc/tribalopenslot()
 	set name = "Open Slot"
@@ -67,7 +75,8 @@
 	var/datum/job/guardjob = SSjob.GetJob("Tribal Guard")
 	var/datum/job/smithjob = SSjob.GetJob("Tribal Smith")
 	var/datum/job/shamanjob = SSjob.GetJob("Tribal Shaman")
-	var/list/souloptions = list("Tribal Cook", "Tribal Guard", "Tribal Smith", "Tribal Shaman")
+	var/datum/job/slavejob = SSjob.GetJob("Tribal Slave")
+	var/list/souloptions = list("Tribal Cook", "Tribal Guard", "Tribal Smith", "Tribal Shaman", "Tribal Slave")
 	var/pickedsoul = input("Which worker shall join tribe?", "Available workers") as null|anything in souloptions
 	if(!istype(get_area(src), /area/rogue/outdoors/tribalfort))
 		to_chat(src, span_warning("I need to do this from the tribe."))
@@ -87,3 +96,6 @@
 		if("Tribal Shaman")
 			shamanjob.total_positions += 1
 			priority_announce("Tribal Shaman shall join our tribe", title = "The Tribe Accept New Kin", sound = 'sound/misc/dun.ogg')
+		if("Tribal Slave")
+			slavejob.total_positions += 1
+			priority_announce("Tribal Slave shall join our tribe", title = "The Tribe Accept New Slave", sound = 'sound/misc/dun.ogg')

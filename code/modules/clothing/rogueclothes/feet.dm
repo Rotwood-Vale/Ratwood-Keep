@@ -157,3 +157,22 @@
 	item_state = "grenzelboots"
 	sleeved = 'icons/roguetown/clothing/onmob/helpers/stonekeep_merc.dmi'
 	armor = list("blunt" = 15, "slash" = 15, "stab" = 15, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+
+/obj/item/clothing/shoes/roguetown/boots/furlinedboots
+	name = "fur lined boots"
+	desc = "Leather boots lined with fur."
+	gender = PLURAL
+	icon_state = "furlinedboots"
+	item_state = "furlinedboots"
+	sewrepair = TRUE
+	armor = list("blunt" = 30, "slash" = 10, "stab" = 20, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+
+/obj/item/clothing/shoes/roguetown/boots/furlinedanklets
+	name = "fur lined anklets"
+	desc = "Leather anklets lined with fur, foot remains bare."
+	gender = PLURAL
+	icon_state = "furlinedboots"
+	item_state = "furlinedboots"
+	sewrepair = TRUE
+	armor = list("blunt" = 30, "slash" = 10, "stab" = 20, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	isbarefoot = TRUE

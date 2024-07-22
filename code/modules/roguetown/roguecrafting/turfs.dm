@@ -13,11 +13,10 @@
 /datum/crafting_recipe/roguetown/turfs/woodfloor/TurfCheck(mob/user, turf/T)
 	if(isclosedturf(T))
 		return
-	if(!istype(T, /turf/open/floor/rogue/dirt))
-		if(!istype(T, /turf/open/floor/rogue/grass))
-			if(!istype(T, /turf/open/transparent/openspace))
-				if(!istype(T, /turf/open/water))
-					return
+	if(!istype(T, /turf/open/floor/rogue))
+		if(!istype(T, /turf/open/transparent/openspace))
+			if(!istype(T, /turf/open/water))
+				return
 	return TRUE
 
 /datum/crafting_recipe/roguetown/turfs/woodwall
@@ -82,11 +81,10 @@
 /datum/crafting_recipe/roguetown/turfs/stonefloor/TurfCheck(mob/user, turf/T)
 	if(isclosedturf(T))
 		return
-	if(!istype(T, /turf/open/floor/rogue/dirt))
-		if(!istype(T, /turf/open/floor/rogue/grass))
-			if(!istype(T, /turf/open/transparent/openspace))
-				if(!istype(T, /turf/open/water))
-					return
+	if(!istype(T, /turf/open/floor/rogue))
+		if(!istype(T, /turf/open/transparent/openspace))
+			if(!istype(T, /turf/open/water))
+				return
 	return TRUE
 
 /datum/crafting_recipe/roguetown/turfs/stonewall
@@ -167,11 +165,10 @@
 /datum/crafting_recipe/roguetown/turfs/twig/TurfCheck(mob/user, turf/T)
 	if(isclosedturf(T))
 		return
-	if(!istype(T, /turf/open/floor/rogue/dirt))
-		if(!istype(T, /turf/open/floor/rogue/grass))
-			if(!istype(T, /turf/open/transparent/openspace))
-				if(!istype(T, /turf/open/water))
-					return
+	if(!istype(T, /turf/open/floor/rogue))
+		if(!istype(T, /turf/open/transparent/openspace))
+			if(!istype(T, /turf/open/water))
+				return
 	return TRUE
 
 /datum/crafting_recipe/roguetown/turfs/tentwall
