@@ -29,8 +29,8 @@
 	belt = /obj/item/storage/belt/rogue/leather/rope
 	beltr = /obj/item/storage/belt/rogue/pouch/coins/rich
 	armor = /obj/item/clothing/suit/roguetown/armor/leather/hide/goblin
-	head = /obj/item/clothing/head/roguetown/crown/surplus
 	cloak = /obj/item/clothing/cloak/heartfelt
+	shoes = /obj/item/clothing/shoes/roguetown/boots/furlinedboots
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/combat/polearms, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/maces, 3, TRUE)
@@ -56,7 +56,7 @@
 		if(!istype(get_area(src), /area/rogue/outdoors/tribalfort))
 			to_chat(src, span_warning("I need to do this from the tribe."))
 			return FALSE
-		priority_announce("[inputty]", title = "The Tribe Squeals", sound = 'sound/misc/dun.ogg')
+		priority_announce("[inputty]", title = "The Tribe announces", sound = 'sound/misc/tribal announcement.ogg')
 
 /mob/living/carbon/human/proc/tribalopenslot()
 	set name = "Open Slot"
