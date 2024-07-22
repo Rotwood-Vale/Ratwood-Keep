@@ -118,3 +118,8 @@
 /datum/stressevent/moondust_purest
 	stressadd = -6
 	desc = span_green("PUREST moondust surges through me!")
+
+/datum/stressevent/perfume
+	stressadd = -1
+	desc = span_green("A soothing fragrance envelops me.")
+	timer = 5 MINUTES

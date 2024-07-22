@@ -4346,6 +4346,7 @@
 	dir = 10;
 	icon_state = "largetable"
 	},
+/obj/item/perfume/random,
 /turf/open/floor/carpet/inn,
 /area/rogue/indoors/town/manor)
 "fiL" = (
@@ -4803,6 +4804,7 @@
 	dir = 1;
 	icon_state = "tablewood1"
 	},
+/obj/item/perfume/random,
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/shop)
 "fKO" = (
@@ -8524,6 +8526,7 @@
 	icon_state = "longtable"
 	},
 /obj/item/reagent_containers/glass/bottle/rogue/wine,
+/obj/item/perfume/random,
 /turf/open/floor/rogue/tile/masonic{
 	dir = 4
 	},
@@ -10386,6 +10389,7 @@
 	dir = 1;
 	icon_state = "longtable"
 	},
+/obj/item/perfume/random,
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue/indoors/town/magician)
 "mTO" = (
@@ -14256,6 +14260,7 @@
 /obj/item/rogueweapon/mace/wsword,
 /obj/item/rogueweapon/mace/wsword,
 /obj/structure/closet/crate/roguecloset/inn/chest,
+/obj/item/perfume,
 /turf/open/floor/rogue/carpet,
 /area/rogue/indoors/town/manor)
 "rYz" = (
@@ -14700,6 +14705,11 @@
 /obj/machinery/light/rogue/wallfire/candle/blue/r,
 /turf/open/floor/rogue/wood/nosmooth,
 /area/rogue/indoors/town/church)
+"sAJ" = (
+/obj/structure/table/wood,
+/obj/item/perfume/random,
+/turf/open/floor/rogue/hexstone,
+/area/rogue/indoors/town/bath)
 "sDZ" = (
 /obj/structure/mineral_door/wood{
 	chat_color_name = "room";
@@ -280835,7 +280845,7 @@ eoy
 wbg
 wbg
 pRW
-csG
+sAJ
 eKY
 oXU
 kHR
