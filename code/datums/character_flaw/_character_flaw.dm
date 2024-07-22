@@ -4,7 +4,7 @@ GLOBAL_LIST_INIT(character_flaws, list(
 	"Smoker"=/datum/charflaw/addiction/smoker,
 	"Junkie"=/datum/charflaw/addiction/junkie,
 	"Greedy"=/datum/charflaw/greedy,
-	"Nacroleptic"=/datum/charflaw/narcoleptic,
+	"Narcoleptic"=/datum/charflaw/narcoleptic,
 	"Masochist"=/datum/charflaw/masochist,
 	"Paranoid"=/datum/charflaw/paranoid,
 	"Cyclops (R)"=/datum/charflaw/noeyer,
@@ -269,10 +269,12 @@ GLOBAL_LIST_INIT(character_flaws, list(
 	var/next_sleep = 0
 	var/concious_timer = (10 MINUTES)
 	var/do_sleep = FALSE
+	var/pain_pity_charges = 3
 
 /datum/charflaw/narcoleptic/on_mob_creation(mob/user)
 	last_unconsciousness = world.time
 	concious_timer = rand(7 MINUTES, 15 MINUTES)
+	pain_pity_charges = rand(2,4)
 
 /datum/charflaw/narcoleptic/flaw_on_life(mob/living/carbon/human/user)
 	if(do_sleep)
@@ -280,21 +282,29 @@ GLOBAL_LIST_INIT(character_flaws, list(
 		if(user.stat != CONSCIOUS)
 			do_sleep = FALSE
 			last_unconsciousness = world.time
+			pain_pity_charges = rand(3,5)
 			return
 		if(next_sleep <= world.time)
-			if(prob(40))
+			var/pain = user.get_complex_pain()
+			if(pain >= 40 && pain_pity_charges > 0)
+				pain_pity_charges--
 				concious_timer = rand(1 MINUTES, 2 MINUTES)
-				to_chat(user, span_info("The feeling has passed."))
+				to_chat(user, span_warning("The pain keeps me awake..."))
 			else
-				concious_timer = rand(7 MINUTES, 15 MINUTES)
-				to_chat(user, span_warning("I can't keep my eyes open any longer..."))
-				user.Sleeping(rand(40 SECONDS, 60 SECONDS))
+				if(prob(40))
+					concious_timer = rand(2 MINUTES, 3 MINUTES)
+					to_chat(user, span_info("The feeling has passed."))
+				else
+					concious_timer = rand(7 MINUTES, 15 MINUTES)
+					to_chat(user, span_boldwarning("I can't keep my eyes open any longer..."))
+					user.Sleeping(rand(40 SECONDS, 60 SECONDS))
 			do_sleep = FALSE
 			last_unconsciousness = world.time
 	else
 		// Process drowsy attempt
 		if(user.stat != CONSCIOUS)
 			last_unconsciousness = world.time
+			pain_pity_charges = rand(2,4)
 		// Been conscious for 10 minutes
 		if(last_unconsciousness + concious_timer < world.time)
 			to_chat(user, span_warning("I'm getting drowsy..."))
