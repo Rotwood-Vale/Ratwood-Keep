@@ -52,7 +52,7 @@
 	shoes = /obj/item/clothing/shoes/roguetown/boots/armor
 	belt = /obj/item/storage/belt/rogue/leather/plaquesilver
 	beltr = /obj/item/rogueweapon/mace/steel
-	beltl = /obj/item/keyring/captain
+	beltl = /obj/item/rogueweapon/sword/sabre
 	cloak = /obj/item/clothing/cloak/stabard/guardhood
 	backl = /obj/item/rogueweapon/shield/tower
 	backr = /obj/item/storage/backpack/rogue/satchel/black
