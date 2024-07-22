@@ -228,6 +228,11 @@
 	handle_maniac_walls(owner)
 
 
+// cursed_freak_out() is freak_out() without stress adjustments
+// bandaid deserves a second look
+/mob/living/proc/cursed_freak_out()
+	return
+
 /mob/proc/do_cursed_freakout_scream()
 	emote("scream", forced=TRUE)
 
