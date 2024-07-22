@@ -101,12 +101,14 @@
 /datum/stressevent/ozium
 	stressadd = -99
 	desc = span_blue("I've taken a hit and entered a painless world.")
-	timer = 1 MINUTES
+	timer = 2 MINUTES
 
 /datum/stressevent/moondust
-	stressadd = -5
+	stressadd = -6
 	desc = span_boldgreen("Moondust surges through me.")
+	timer = 4 MINUTES
 
 /datum/stressevent/moondust_purest
-	stressadd = -6
+	stressadd = -8
 	desc = span_boldgreen("PUREST moondust surges through me!")
+	timer = 4 MINUTES
