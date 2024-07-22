@@ -7,6 +7,9 @@
 	var/max_stacks = 1
 	var/stressadd_per_extra_stack = 0
 
+/datum/stressevent/proc/can_apply(mob/living/user)
+	return TRUE
+
 /datum/stressevent/proc/get_stress(mob/living/user)
 	return stressadd + ((stacks - 1) * stressadd_per_extra_stack)
 

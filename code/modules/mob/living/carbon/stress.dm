@@ -36,6 +36,8 @@
 	var/datum/stressevent/event = get_stress_event(event_type)
 	if(!event)
 		event = new event_type()
+		if(!event.can_apply(src))
+			return
 		stressors[event_type] = event
 	event.time_added = world.time
 	if(event.stacks >= event.max_stacks)

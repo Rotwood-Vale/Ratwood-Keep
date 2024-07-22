@@ -279,16 +279,18 @@ GLOBAL_LIST_INIT(character_flaws, list(
 		// Process sleep attempt
 		if(user.stat != CONSCIOUS)
 			do_sleep = FALSE
+			last_unconsciousness = world.time
 			return
 		if(next_sleep <= world.time)
-			if(prob(50))
-				concious_timer = rand(1 MINUTES, 3 MINUTES)
+			if(prob(40))
+				concious_timer = rand(1 MINUTES, 2 MINUTES)
 				to_chat(user, span_info("The feeling has passed."))
 			else
 				concious_timer = rand(7 MINUTES, 15 MINUTES)
 				to_chat(user, span_warning("I can't keep my eyes open any longer..."))
 				user.Sleeping(rand(40 SECONDS, 60 SECONDS))
 			do_sleep = FALSE
+			last_unconsciousness = world.time
 	else
 		// Process drowsy attempt
 		if(user.stat != CONSCIOUS)
@@ -297,7 +299,7 @@ GLOBAL_LIST_INIT(character_flaws, list(
 		if(last_unconsciousness + concious_timer < world.time)
 			to_chat(user, span_warning("I'm getting drowsy..."))
 			user.emote("yawn", forced = TRUE)
-			next_sleep = world.time + rand(4 SECONDS, 8 SECONDS)
+			next_sleep = world.time + rand(5 SECONDS, 10 SECONDS)
 			do_sleep = TRUE
 
 
@@ -319,12 +321,12 @@ GLOBAL_LIST_INIT(character_flaws, list(
 	if(next_paincrave > world.time)
 		last_pain_threshold = NONE
 		return
+	user.add_stress(/datum/stressevent/vice)
+	user.apply_status_effect(/datum/status_effect/debuff/addiction)
 	var/current_pain = user.get_complex_pain()
 	var/new_pain_threshold = get_pain_threshold(current_pain)
 	if(last_pain_threshold == NONE)
 		to_chat(user, span_boldwarning("I could really use some pain right now..."))
-		user.add_stress(/datum/stressevent/vice)
-		user.apply_status_effect(/datum/status_effect/debuff/addiction)
 	else if (new_pain_threshold != last_pain_threshold)
 		var/ascending = (new_pain_threshold > last_pain_threshold)
 		switch(new_pain_threshold)
