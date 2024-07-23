@@ -6,11 +6,10 @@
 	weight = 0
 	
 /datum/special_trait/nightvision/on_apply(mob/living/carbon/human/character, silent)
-	var/obj/item/organ/eyes/halfelf/eyes = new()
-	if(!eyes)
-		return "FFFFFF"
-	return eyes.eye_color
-	eyes.Insert(character) //refresh their eyesight and vision
+	var/obj/item/organ/eyes/eyes = character.getorganslot(ORGAN_SLOT_EYES)
+	eyes.see_in_dark = 3
+	eyes.lighting_alpha = LIGHTING_PLANE_ALPHA_LESSER_NV_TRAIT
+	eyes.Insert(character)
 
 /datum/special_trait/thickskin
 	name = "Tough"
