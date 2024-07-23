@@ -1,7 +1,27 @@
+/datum/keybinding/looc
+	category = CATEGORY_CLIENT
+	weight = WEIGHT_HIGHEST
+	hotkey_keys = list("Y")
+	name = "LOOC"
+	full_name = "LOOC Chat"
+	description = "Local OOC Chat."
+
+/datum/keybinding/looc/down(client/user)
+	user.get_looc()
+	return TRUE
+
+/client/proc/get_looc()
+	var/msg = input(src, null, "looc \"text\"") as text|null
+	do_looc(msg)
+
 /client/verb/looc(msg as text)
 	set name = "LOOC"
 	set desc = "Local OOC, seen only by those in view."
 	set category = "OOC"
+
+	do_looc(msg)
+
+/client/proc/do_looc(msg as text)
 
 	if(GLOB.say_disabled)	//This is here to try to identify lag problems
 		to_chat(usr, "<span class='danger'> Speech is currently admin-disabled.</span>")
@@ -29,28 +49,14 @@
 
 	mob.log_talk(msg, LOG_LOOC)
 
-	var/list/heard = get_hearers_in_view(7, get_top_level_mob(src.mob))
-	for(var/mob/M in heard)
+	var/prefix = "LOOC"
+	for(var/mob/M in range(7,src))
+		var/client/C = M.client
 		if(!M.client)
 			continue
-		var/client/C = M.client
-		if (C in GLOB.admins)
-			continue //they are handled after that
-
 		if (isobserver(M))
 			continue //Also handled later.
 
 		if(C.prefs.chat_toggles & CHAT_OOC)
-			to_chat(C, "<font color='["#6699CC"]'><b><span class='prefix'>LOOC:</span> <EM>[src.mob.name]:</EM> <span class='message'>[msg]</span></b></font>")
-
-/mob/proc/get_top_level_mob()
-	if(ismob(src.loc) && src.loc != src)
-		var/mob/M = src.loc
-		return M.get_top_level_mob()
-	return src
-
-/proc/get_top_level_mob(mob/S)
-	if(ismob(S.loc) && S.loc != S)
-		var/mob/M = S.loc
-		return M.get_top_level_mob()
-	return S
+			to_chat(C, "<font color='["#6699CC"]'><b><span class='prefix'>[prefix]:</span> <EM>[src.mob.name]:</EM> <span class='message'>[msg]</span></b></font>")
+	to_chat(usr, "<font color='["#6699CC"]'><b><span class='prefix'>[prefix]:</span> <EM>[src.mob.name]:</EM> <span class='message'>[msg]</span></b></font>")
