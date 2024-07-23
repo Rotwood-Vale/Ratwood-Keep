@@ -37,7 +37,7 @@
 	switch(classchoice)
 	
 		if("Paladin")
-			to_chat(src, span_warning("Paladins are holy warriors who have taken sacred vows to uphold justice and righteousness. Often, they were promised redemption for past sins if they crusaded in the name of the gods."))
+			to_chat(H, span_warning("Paladins are holy warriors who have taken sacred vows to uphold justice and righteousness. Often, they were promised redemption for past sins if they crusaded in the name of the gods."))
 			H.set_blindness(0) // No introduction text due to there being no real difference in Paladin archetypes for now.
 			to_chat(H, span_warning("You are a paladin."))
 			H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 1, TRUE)
@@ -93,7 +93,7 @@
 			backl = /obj/item/storage/backpack/rogue/satchel
 			
 		if("Battle Master")
-			to_chat(src, span_warning("Paladins are holy warriors who have taken sacred vows to uphold justice and righteousness. Often, they were promised redemption for past sins if they crusaded in the name of the gods."))
+			to_chat(H, span_warning("Paladins are holy warriors who have taken sacred vows to uphold justice and righteousness. Often, they were promised redemption for past sins if they crusaded in the name of the gods."))
 			H.set_blindness(0)
 			to_chat(H, span_warning("You are a battle-master."))
 			H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 2, TRUE)
@@ -160,9 +160,10 @@
 	var/datum/devotion/C = new /datum/devotion(H, H.patron)
 	//Max devotion limit - Paladins are stronger but cannot pray to gain all abilities beyond t1
 	switch(H.patron.name)
-		if("Psydon")
+		if("Psydon") 
 			C.grant_spells_templar_psydon(H)
-			backpack_contents = list(/obj/item/needle)
+			to_chat(H, span_warning("You are a believer of the Old God. You lack the ability to heal than the false Gods, yet you make up to it in faith and skill."))
+			H.mind.adjust_skillrank(/datum/skill/misc/athletics, 1, TRUE) 
 		else
 			C.grant_spells_templar(H)
 	H.verbs += list(/mob/living/carbon/human/proc/devotionreport, /mob/living/carbon/human/proc/clericpray)
