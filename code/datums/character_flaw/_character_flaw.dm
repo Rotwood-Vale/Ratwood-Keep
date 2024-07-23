@@ -310,6 +310,7 @@ GLOBAL_LIST_INIT(character_flaws, list(
 					concious_timer = rand(7 MINUTES, 15 MINUTES)
 					to_chat(user, span_boldwarning("I can't keep my eyes open any longer..."))
 					user.Sleeping(rand(30 SECONDS, 50 SECONDS))
+					user.visible_message(span_warning("[user] suddenly collapses!"))
 			do_sleep = FALSE
 			last_unconsciousness = world.time
 	else
