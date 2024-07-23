@@ -58,10 +58,6 @@
 		ORGAN_SLOT_APPENDIX = /obj/item/organ/appendix,
 		ORGAN_SLOT_TAIL = /obj/item/organ/tail/lupian,
 		ORGAN_SLOT_SNOUT = /obj/item/organ/snout/lupian,
-		ORGAN_SLOT_TESTICLES = /obj/item/organ/testicles,
-		ORGAN_SLOT_PENIS = /obj/item/organ/penis,
-		ORGAN_SLOT_BREASTS = /obj/item/organ/breasts,
-		ORGAN_SLOT_VAGINA = /obj/item/organ/vagina,
 		)
 	bodypart_features = list(
 		/datum/bodypart_feature/hair/head,
@@ -112,7 +108,7 @@
 		/datum/descriptor_choice/prominent_one,
 		/datum/descriptor_choice/prominent_two,
 	)
-	
+
 /datum/species/lupian/check_roundstart_eligible()
 	return TRUE
 
@@ -127,7 +123,7 @@
 	. = ..()
 	UnregisterSignal(C, COMSIG_MOB_SAY)
 
-/datum/species/lupian/get_skin_list() 
+/datum/species/lupian/get_skin_list()
 	return list(
 		"Vakran" = "271f1b",
 		"Lanarain" = "271f1c",
