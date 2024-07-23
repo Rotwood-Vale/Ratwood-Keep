@@ -108,7 +108,7 @@
 		/datum/descriptor_choice/prominent_one,
 		/datum/descriptor_choice/prominent_two,
 	)
-	
+
 /datum/species/lupian/check_roundstart_eligible()
 	return TRUE
 
@@ -123,7 +123,7 @@
 	. = ..()
 	UnregisterSignal(C, COMSIG_MOB_SAY)
 
-/datum/species/lupian/get_skin_list() 
+/datum/species/lupian/get_skin_list()
 	return list(
 		"Vakran" = "271f1b",
 		"Lanarain" = "271f1c",
