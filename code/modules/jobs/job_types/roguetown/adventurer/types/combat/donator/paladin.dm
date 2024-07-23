@@ -143,7 +143,10 @@
 			else
 				head = /datum/anvil_recipe/armor/helmetnasal
 			backl = /obj/item/storage/backpack/rogue/satchel
-		
+		if(H.age == AGE_OLD)
+		H.mind.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE)
+
+
 	ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_STEELHEARTED, TRAIT_GENERIC)
 	H.dna.species.soundpack_m = new /datum/voicepack/male/knight()
