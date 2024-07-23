@@ -20,6 +20,7 @@
 	var/grant_lit_torch = FALSE
 	/// Whether to show wanderer examine like adventurers or pilgrims
 	var/show_wanderer_examine = TRUE
+	var/advjob_examine = TRUE
 
 /datum/migrant_role/proc/after_spawn(mob/living/carbon/human/character)
 	return

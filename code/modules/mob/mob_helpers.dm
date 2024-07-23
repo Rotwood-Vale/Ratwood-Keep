@@ -970,6 +970,8 @@
 	if(migrant_type)
 		var/datum/migrant_role/migrant = MIGRANT_ROLE(migrant_type)
 		used_title = migrant.name
+		if(migrant.advjob_examine && advjob)
+			used_title = advjob
 	else if(job)
 		var/datum/job/J = SSjob.GetJob(job)
 		used_title = J.title
