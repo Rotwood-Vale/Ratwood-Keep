@@ -207,18 +207,28 @@ GLOBAL_LIST_INIT(roguetown_areas_typecache, typecacheof(/area/rogue/indoors/town
 
 	proc/spawn_and_continue()
 		if(current_spawned_mobs < max_spawned_mobs)
-			spawn_random_mobs()
+			spawn_random_mobs(3) // Specify the number of mobs to spawn
 		start_spawning()
 
-	proc/spawn_random_mobs()
+	proc/spawn_random_mobs(var/num_to_spawn)
 		var/spawn_chance = 100 // Adjust this value to control how often mobs spawn (default 20 say)
 		if(prob(spawn_chance) && current_spawned_mobs < max_spawned_mobs)
-			var/turf/spawn_turf = get_random_valid_turf()
-			if(spawn_turf)
-				var/mob_type = pickweight(ambush_mobs)
-				var/mob/new_mob = new mob_type(spawn_turf)
-				if(new_mob)
-					current_spawned_mobs++
+			var/turf/spawn_turf
+			var/mob_type
+			var/mob/new_mob
+			var/i = 0 // Initialize counter variable
+			while(i < num_to_spawn) // Use while loop to spawn mobs
+				if(current_spawned_mobs >= max_spawned_mobs)
+					break
+				spawn_turf = get_random_valid_turf()
+				if(spawn_turf)
+					mob_type = pickweight(ambush_mobs)
+					new_mob = new mob_type(spawn_turf)
+					if(new_mob)
+						current_spawned_mobs++
+				i++ // Increment counter
+					
+			
 
 	proc/get_random_valid_turf()
 		var/list/valid_turfs = list()
@@ -235,11 +245,25 @@ GLOBAL_LIST_INIT(roguetown_areas_typecache, typecacheof(/area/rogue/indoors/town
 		return (istype(T, /turf/open/floor/rogue/dirt) || \
 				istype(T, /turf/open/floor/rogue/grass) || \
 				istype(T, /turf/open/water))
+		if(!istype(T, /turf/closed))
+			var/list/landmarks = get_all_adventurer_landmarks()
+			for(var/L in landmarks)
+				if(get_dist(T, L) < 10) // Replace 10 with your desired radius
+					return FALSE
+			return FALSE
 		if(T.get_lumcount() > 0.2)
 			return FALSE
 		if(players_nearby(T, 15))
 			return FALSE
 		return TRUE
+		
+	proc/get_all_adventurer_landmarks()
+		var/list/landmarks = list()
+		for(var/obj/effect/landmark/start/adventurer/L in world)
+			landmarks += L
+		for(var/obj/effect/landmark/start/adventurerlate/L in world)
+			landmarks += L
+		return landmarks
 	
 	proc/players_nearby(turf/T, distance)
 		for(var/mob/living/carbon/human/H in range(distance, T))
@@ -249,7 +273,7 @@ GLOBAL_LIST_INIT(roguetown_areas_typecache, typecacheof(/area/rogue/indoors/town
 
 	var/spawn_timer
 
-	var/max_spawned_mobs = 60 // Maximum number of mobs to be spawned by this function (say 60)
+	var/max_spawned_mobs = 40 // Maximum number of mobs to be spawned by this function (say 60)
 	var/current_spawned_mobs = 0
 
 /area/rogue/indoors/shelter/bog
