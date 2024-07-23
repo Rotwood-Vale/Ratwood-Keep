@@ -1,34 +1,34 @@
 GLOBAL_LIST_INIT(named_penis_sizes, list(
-	"Small" = 1,
-	"Average" = 2,
-	"Large" = 3,
+	"small" = 1,
+	"average" = 2,
+	"large" = 3,
 ))
 
 GLOBAL_LIST_INIT(named_ball_sizes, list(
-	"Small" = 1,
-	"Average" = 2,
-	"Large" = 3,
+	"small" = 1,
+	"average" = 2,
+	"large" = 3,
 ))
 
 GLOBAL_LIST_INIT(named_breast_sizes, list(
-	"Flat" = 0,
-	"Very Small" = 1,
-	"Small" = 2,
-	"Normal" = 3,
-	"Large" = 4,
-	"Enormous" = 5,
-	"Towering" = 6,
-	"Gigantic" = 7,
-	"Gargantuan" = 8,
-	"Impossible" = 9,
-	"Ungodly" = 10,
+	"flat" = 0,
+	"sery small" = 1,
+	"small" = 2,
+	"normal" = 3,
+	"large" = 4,
+	"enormous" = 5,
+	"towering" = 6,
+	"gigantic" = 7,
+	"gargantuan" = 8,
+	"colossal" = 9,
+	"ungodly big" = 10,
 ))
 
 GLOBAL_LIST_INIT(named_belly_sizes, list(
-	"Flat" = 0,
-	"Small" = 1,
-	"Medium" = 2,
-	"Large" = 3,
+	"flat" = 0,
+	"small" = 1,
+	"medium" = 2,
+	"large" = 3,
 ))
 
 GLOBAL_LIST_INIT(customizer_choices, build_customizer_choices())
