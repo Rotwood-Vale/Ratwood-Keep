@@ -89,7 +89,7 @@
 			if(prob(50))
 				head = /obj/item/clothing/neck/roguetown/chaincoif
 			else
-				head = /datum/anvil_recipe/armor/helmetnasal
+				head = /obj/item/clothing/head/roguetown/helmet
 			backl = /obj/item/storage/backpack/rogue/satchel
 			
 		if("Battle Master")
