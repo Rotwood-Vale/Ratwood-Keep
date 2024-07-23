@@ -316,7 +316,7 @@ GLOBAL_LIST_INIT(character_flaws, list(
 	else
 		// Been conscious for ~10 minutes (whatever is the conscious timer)
 		if(last_unconsciousness + concious_timer < world.time)
-			to_chat(user, span_warning("I'm getting drowsy..."))
+			to_chat(user, span_blue("I'm getting drowsy..."))
 			user.emote("yawn", forced = TRUE)
 			next_sleep = world.time + rand(5 SECONDS, 10 SECONDS)
 			do_sleep = TRUE
