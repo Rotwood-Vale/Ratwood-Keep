@@ -74,7 +74,7 @@
   * This proc is dangerously laggy, avoid it or die
   */
 /proc/stars(n, pr)
-	n = html_strip_simple(n)
+	n = strip_html_simple(n)
 	if (pr == null)
 		pr = 25
 	if (pr <= 0)
@@ -98,7 +98,7 @@
   * Makes you speak like you're drunk
   */
 /proc/slur(n)
-	var/phrase = html_strip_simple(n)
+	var/phrase = strip_html_simple(n)
 	var/leng = length_char(phrase)
 	var/counter=length_char(phrase)
 	var/newphrase=""
@@ -133,7 +133,7 @@
 
 /// Makes you talk like you got cult stunned, which is slurring but with some dark messages
 /proc/cultslur(n) // Inflicted on victims of a stun talisman
-	var/phrase = html_strip_simple(n)
+	var/phrase = strip_html_simple(n)
 	var/leng = length_char(phrase)
 	var/counter=length_char(phrase)
 	var/newphrase=""
@@ -175,7 +175,7 @@
 
 ///Adds stuttering to the message passed in
 /proc/stutter(n)
-	var/te = html_strip_simple(n)
+	var/te = strip_html_simple(n)
 	var/t = ""//placed before the message. Not really sure what it's for.
 	n = length_char(n)//length_char of the entire word
 	var/p = null
