@@ -1,8 +1,8 @@
 /obj/item/reagent_containers/glass/pot
 	force = 10
 	throwforce = 15
-	name = "metal pot"
-	desc = "A sturdy metal pot." // glass/pot doesn't mean it's made of glass dingus
+	name = "pot"
+	desc = "A sturdy pot." // glass/pot doesn't mean it's made of glass dingus
 	icon_state = "pot"
 	icon = 'icons/roguetown/items/cooking.dmi'
 	item_state = "paintcan"
