@@ -206,16 +206,19 @@ GLOBAL_LIST_INIT(roguetown_areas_typecache, typecacheof(/area/rogue/indoors/town
 		spawn_timer = addtimer(CALLBACK(src, .proc/spawn_and_continue), 600, TIMER_STOPPABLE) // Spawn every 60 seconds
 
 	proc/spawn_and_continue()
-		spawn_random_mobs()
+		if(current_spawned_mobs < max_spawned_mobs)
+			spawn_random_mobs()
 		start_spawning()
 
 	proc/spawn_random_mobs()
-		var/spawn_chance = 20 // Adjust this value to control how often mobs spawn (default 20 say)
-		if(prob(spawn_chance))
+		var/spawn_chance = 100 // Adjust this value to control how often mobs spawn (default 20 say)
+		if(prob(spawn_chance) && current_spawned_mobs < max_spawned_mobs)
 			var/turf/spawn_turf = get_random_valid_turf()
 			if(spawn_turf)
 				var/mob_type = pickweight(ambush_mobs)
-				new mob_type(spawn_turf)
+				var/mob/new_mob = new mob_type(spawn_turf)
+				if(new_mob)
+					current_spawned_mobs++
 
 	proc/get_random_valid_turf()
 		var/list/valid_turfs = list()
@@ -223,6 +226,10 @@ GLOBAL_LIST_INIT(roguetown_areas_typecache, typecacheof(/area/rogue/indoors/town
 			if(is_valid_spawn_turf(T))
 				valid_turfs += T
 		return pick(valid_turfs)
+		
+	proc/on_mob_destroy(mob/M)
+		UnregisterSignal(M, COMSIG_PARENT_QDELETING)
+		current_spawned_mobs = max(0, current_spawned_mobs - 1)
 
 	proc/is_valid_spawn_turf(turf/T)
 		return (istype(T, /turf/open/floor/rogue/dirt) || \
@@ -243,6 +250,7 @@ GLOBAL_LIST_INIT(roguetown_areas_typecache, typecacheof(/area/rogue/indoors/town
 	var/spawn_timer
 
 	var/max_spawned_mobs = 60 // Maximum number of mobs to be spawned by this function (say 60)
+	var/current_spawned_mobs = 0
 
 /area/rogue/indoors/shelter/bog
 	icon_state = "bog"
