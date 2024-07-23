@@ -68,19 +68,36 @@
 		/datum/customizer/bodypart_feature/accessory,
 		/datum/customizer/bodypart_feature/face_detail,
 		/datum/customizer/organ/snout/tabaxi,
+		/datum/customizer/organ/tail/tabaxi,
 		/datum/customizer/organ/testicles/external,
 		/datum/customizer/organ/penis/knotted,
 		/datum/customizer/organ/breasts/animal,
 		/datum/customizer/organ/vagina/animal,
 		)
 	body_marking_sets = list(
-		/datum/body_marking_set/tiger_dark
+		/datum/body_marking_set/none,
+		/datum/body_marking_set/bellysocks,
+		/datum/body_marking_set/bellysockstertiary,
+		/datum/body_marking_set/belly,
 	)
 	body_markings = list(
+		/datum/body_marking/belly,
+		/datum/body_marking/bellyslim,
+		/datum/body_marking/butt,
 		/datum/body_marking/tonage,
 	)
 	languages = list(
 		/datum/language/common,
+	)
+	descriptor_choices = list(
+		/datum/descriptor_choice/body,
+		/datum/descriptor_choice/stature,
+		/datum/descriptor_choice/face,
+		/datum/descriptor_choice/face_exp,
+		/datum/descriptor_choice/fur,
+		/datum/descriptor_choice/voice,
+		/datum/descriptor_choice/prominent_one,
+		/datum/descriptor_choice/prominent_two,
 	)
 
 /datum/species/tabaxi/check_roundstart_eligible()

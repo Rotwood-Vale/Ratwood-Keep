@@ -149,6 +149,8 @@ GLOBAL_LIST_EMPTY(chosen_names)
 
 	var/headshot_link
 	var/list/violated = list()
+	var/list/descriptor_entries = list()
+	var/defiant = TRUE
 
 
 /datum/preferences/New(client/C)
@@ -164,7 +166,7 @@ GLOBAL_LIST_EMPTY(chosen_names)
 			load_path(C.ckey)
 			unlock_content = C.IsByondMember()
 			if(unlock_content)
-				max_save_slots = 8
+				max_save_slots = 30
 	var/loaded_preferences_successfully = load_preferences()
 	if(loaded_preferences_successfully)
 		if(load_character())
@@ -203,6 +205,7 @@ GLOBAL_LIST_EMPTY(chosen_names)
 	validate_customizer_entries()
 	reset_all_customizer_accessory_colors()
 	randomize_all_customizer_accessories()
+	reset_descriptors()
 
 #define APPEARANCE_CATEGORY_COLUMN "<td valign='top' width='14%'>"
 #define MAX_MUTANT_ROWS 4
@@ -405,6 +408,7 @@ GLOBAL_LIST_EMPTY(chosen_names)
 
 			dat += "<br><b>Features:</b> <a href='?_src_=prefs;preference=customizers;task=menu'>Change</a>"
 			dat += "<br><b>Markings:</b> <a href='?_src_=prefs;preference=markings;task=menu'>Change</a>"
+			dat += "<br><b>Descriptors:</b> <a href='?_src_=prefs;preference=descriptors;task=menu'>Change</a>"
 
 			dat += "<br><b>Headshot:</b> <a href='?_src_=prefs;preference=headshot;task=input'>Change</a>"
 			if(headshot_link != null)
@@ -676,7 +680,8 @@ GLOBAL_LIST_EMPTY(chosen_names)
 		
 	dat += "</td>"
 	dat += "<td width='33%' align='right'>"
-	dat += "<b>Be voice:</b> <a href='?_src_=prefs;preference=schizo_voice'>[(toggles & SCHIZO_VOICE) ? "Enabled":"Disabled"]</a><br>"
+	dat += "<b>Be defiant:</b> <a href='?_src_=prefs;preference=be_defiant'>[(defiant) ? "Yes":"No"]</a><br>"
+	dat += "<b>Be voice:</b> <a href='?_src_=prefs;preference=schizo_voice'>[(toggles & SCHIZO_VOICE) ? "Enabled":"Disabled"]</a>"
 	dat += "</td>"
 	dat += "</tr>"
 	dat += "</table>"
@@ -1283,6 +1288,9 @@ Slots: [job.spawn_positions]</span>
 	else if(href_list["preference"] == "markings")
 		ShowMarkings(user)
 		return
+	else if(href_list["preference"] == "descriptors")
+		show_descriptors_ui(user)
+		return
 
 	else if(href_list["preference"] == "customizers")
 		ShowCustomizers(user)
@@ -1377,6 +1385,10 @@ Slots: [job.spawn_positions]</span>
 			handle_body_markings_topic(user, href_list)
 			ShowChoices(user)
 			ShowMarkings(user)
+			return
+		if("change_descriptor")
+			handle_descriptors_topic(user, href_list)
+			show_descriptors_ui(user)
 			return
 		if("random")
 			switch(href_list["preference"])
@@ -1898,6 +1910,13 @@ Slots: [job.spawn_positions]</span>
 				if("widescreenpref")
 					widescreenpref = !widescreenpref
 					user.client.change_view(CONFIG_GET(string/default_view))
+				
+				if("be_defiant")
+					defiant = !defiant
+					if(defiant)
+						to_chat(user, span_notice("You will now have resistance from people violating you, but be punished for trying to violate others. This is not full protection."))
+					else
+						to_chat(user, span_boldwarning("You fully immerse yourself in the grim experience, waiving your resistance from people violating you, but letting you do the same unto other non-defiants"))
 
 				if("schizo_voice")
 					toggles ^= SCHIZO_VOICE
@@ -2024,6 +2043,7 @@ Slots: [job.spawn_positions]</span>
 	character.socks = socks
 	character.set_patron(selected_patron)
 	character.backpack = backpack
+	character.defiant = defiant
 
 	character.jumpsuit_style = jumpsuit_style
 
