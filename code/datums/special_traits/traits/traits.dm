@@ -1,6 +1,58 @@
+////🌙Sleep Specials🌙 (っ˕ -｡)ᶻ 𝗓 𐰁
+/datum/special_trait/nightvision
+	name = "Night Vision"
+	greet_text = span_notice("You now can easily see in the dark.")
+	allowed_races = list("") //all except elves who already have this or better
+	weight = 0
+	
+/datum/special_trait/nightvision/on_apply(mob/living/carbon/human/character, silent)
+	var/obj/item/organ/eyes/halfelf/eyes = new()
+	if(!eyes)
+		return "FFFFFF"
+	return eyes.eye_color
+	eyes.Insert(character) //refresh their eyesight and vision
+
+/datum/special_trait/thickskin
+	name = "Tough"
+	greet_text = span_notice("You feel it. Thick Skin. Dense Flesh. Durable Bones. You are a punch-taking machine.")
+	weight = 0
+
+/datum/special_trait/thickskin/on_apply(mob/living/carbon/human/character, silent)
+	ADD_TRAIT(character, TRAIT_BREADY, TRAIT_GENERIC)
+	character.change_stat("constitution", 2)
+
+
+/datum/special_trait/curseofcain
+	name = "Flawed Immortality"
+	greet_text = span_notice("You feel like you don't need to eat anymore, and your veins feel empty... Is this normal?")
+	weight = 0 //make this one quite uncommon when we do add a weight
+
+/datum/special_trait/curseofcain/on_apply(mob/living/carbon/human/character, silent)
+	ADD_TRAIT(character, TRAIT_NOHUNGER, TRAIT_GENERIC)
+	ADD_TRAIT(character, TRAIT_NOBREATH, TRAIT_GENERIC)
+	
+/datum/special_trait/value
+	name = "Coin Counter"
+	greet_text = span_notice("You now know how to estimate a item's value.")
+	weight = 0
+	
+/datum/special_trait/value/on_apply(mob/living/carbon/human/character, silent)
+	ADD_TRAIT(character, TRAIT_SEEPRICES, TRAIT_GENERIC)
+	REMOVE_TRAIT(character, TRAIT_SEEPRICES_SHITTY, "[type]")
+
+//datum/special_trait/nimrod
+//    name = "Nimrod"
+//    greet_text = span_warning("In the past I learned slower than my peers, and I tend to be clumsy.")
+
+//datum/special_trait/nimrod/on_apply(mob/living/carbon/human/character, silent)
+//    character.change_stat("speed", -2)
+//    character.change_stat("intelligence", -4)	
+
+
+//positive ❀⸜(˶´ ˘ `˶)⸝❀ 
 /datum/special_trait/natural_talent
     name = "Natural Talent"
-    greet_text = span_notice("Ever since I was little, with enough effort, I could do anything I put my mind to")
+    greet_text = span_notice("Ever since I was little, with enough effort, I could do anything I put my mind to.")
 
 /datum/special_trait/natural_talent/on_apply(mob/living/carbon/human/character, silent)
     character.change_stat("strength", 1)
@@ -9,24 +61,6 @@
     character.change_stat("constitution", 1)
     character.change_stat("endurance", 1)
     character.change_stat("intelligence", 1)
-
-//datum/special_trait/nimrod
-//    name = "Nimrod"
-//    greet_text = span_warning("In the past I learned slower than my peers, and I tend to be clumsy")
-
-//datum/special_trait/nimrod/on_apply(mob/living/carbon/human/character, silent)
-//    character.change_stat("speed", -2)
-//    character.change_stat("intelligence", -4)
-
-//positive
-
-/datum/special_trait/novice
-	name = "No Vice"
-	greet_text = span_notice("Self-Disipline has saved you from many misfortunes. You have no vices.")
-
-/datum/special_trait/novice/on_apply(mob/living/carbon/human/character, silent)
-		QDEL_NULL(character.charflaw)
-		character.charflaw = new /datum/charflaw/eznoflaw()
 
 /datum/special_trait/duelist
 	name = "Swordmaster Apprentice"
@@ -83,7 +117,7 @@
 /datum/special_trait/bleublood/on_apply(mob/living/carbon/human/character, silent)
 	ADD_TRAIT(character, TRAIT_NOBLE, TRAIT_GENERIC)
 
-//neutral
+//neutral ┐(￣ヘ￣)┌
 /datum/special_trait/backproblems
 	name = "Giant"
 	greet_text = span_notice("You've always been called a giant. You are valued for your stature, but, this world made for smaller folk has forced you to move cautiously.")
@@ -100,7 +134,7 @@
 	character.transform = character.transform.Scale(1.15, 1.15)
 	character.update_transform()
 	
-/datum/special_trait/punknoble
+/datum/special_trait/punknoble //I think everyone no-doubt will like the Rebellous Prince-Like Princess. Up to you if you wanna get rid of the Princess-Like Prince.
 	name = "Rebellous Noble"
 	greet_text = span_notice("You are quite rebellous for a child of the King. Screw Noble Customs!")
 	allowed_jobs = list("Prince")
@@ -158,7 +192,7 @@
 		character.mind.adjust_skillrank(/datum/skill/misc/sneaking, 2, TRUE)
 		character.mind.adjust_skillrank(/datum/skill/misc/stealing, 2, TRUE)
 	
-//negative
+//negative ( ꩜ ᯅ ꩜;)⁭
 /datum/special_trait/hussite
 	name = "Known Heretic"
 	greet_text = span_notice("You've been denounced by the church for either reasons legitimate or not! A strange sympathetic noble from a nearby mountain manor has given you some coin to aid you in these times.")
