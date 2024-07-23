@@ -86,7 +86,7 @@
 
 /obj/item/keyring/attackby(obj/item/I, mob/user)
 	if(istype(I,/obj/item/roguekey))
-		if(keys.len >= 10)
+		if(keys.len >= 20) //could be made per keyring
 			to_chat(user, span_warning("Too many keys."))
 			return
 		user.dropItemToGround(I)
