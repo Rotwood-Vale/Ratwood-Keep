@@ -210,7 +210,7 @@ GLOBAL_LIST_INIT(character_flaws, list(
 	var/first_tick = FALSE
 
 /datum/charflaw/greedy/on_mob_creation(mob/user)
-	next_mammon_increase = world.time + rand(35 MINUTES, 45 MINUTES)
+	next_mammon_increase = world.time + rand(15 MINUTES, 25 MINUTES)
 	last_passed_check = world.time
 	ADD_TRAIT(user, TRAIT_SEEPRICES, "[type]")
 
@@ -331,7 +331,7 @@ GLOBAL_LIST_INIT(character_flaws, list(
 	var/last_pain_threshold = NONE
 
 /datum/charflaw/masochist/on_mob_creation(mob/living/carbon/human/user)
-	next_paincrave = world.time + rand(35 MINUTES, 45 MINUTES)
+	next_paincrave = world.time + rand(15 MINUTES, 25 MINUTES)
 
 /datum/charflaw/masochist/flaw_on_life(mob/living/carbon/human/user)
 	if(next_paincrave > world.time)
