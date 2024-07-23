@@ -28,6 +28,7 @@
 	neck = /obj/item/storage/belt/rogue/pouch
 	r_hand = /obj/item/roguekey/nightmaiden
 	l_hand = /obj/item/rogue/instrument/harp
+	pants = /obj/item/clothing/under/roguetown/tights/stockings/fishnet/random //Added fishnet stockings to the wenches
 
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 3, TRUE)

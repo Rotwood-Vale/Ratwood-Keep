@@ -33,6 +33,7 @@
 		head = /obj/item/clothing/head/roguetown/hatblu
 		cloak = /obj/item/clothing/cloak/raincloak/purple
 		beltl = /obj/item/storage/belt/rogue/pouch/food
+		pants = /obj/item/clothing/under/roguetown/tights/stockings/silk/random	//Added Silk Stockings for the female nobles
 	if(H.gender == MALE)
 		H.change_stat("strength", -1)
 		H.mind.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
