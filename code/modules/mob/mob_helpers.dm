@@ -74,7 +74,7 @@
   * This proc is dangerously laggy, avoid it or die
   */
 /proc/stars(n, pr)
-	n = html_encode(n)
+	n = html_strip_simple(n)
 	if (pr == null)
 		pr = 25
 	if (pr <= 0)
@@ -93,12 +93,12 @@
 			t = text("[]*", t)
 	if(n > MAX_BROADCAST_LEN)
 		t += "..." //signals missing text
-	return sanitize(t)
+	return t
 /**
   * Makes you speak like you're drunk
   */
 /proc/slur(n)
-	var/phrase = html_decode(n)
+	var/phrase = html_strip_simple(n)
 	var/leng = length_char(phrase)
 	var/counter=length_char(phrase)
 	var/newphrase=""
@@ -133,7 +133,7 @@
 
 /// Makes you talk like you got cult stunned, which is slurring but with some dark messages
 /proc/cultslur(n) // Inflicted on victims of a stun talisman
-	var/phrase = html_decode(n)
+	var/phrase = html_strip_simple(n)
 	var/leng = length_char(phrase)
 	var/counter=length_char(phrase)
 	var/newphrase=""
@@ -175,7 +175,7 @@
 
 ///Adds stuttering to the message passed in
 /proc/stutter(n)
-	var/te = html_decode(n)
+	var/te = html_strip_simple(n)
 	var/t = ""//placed before the message. Not really sure what it's for.
 	n = length_char(n)//length_char of the entire word
 	var/p = null
@@ -195,7 +195,7 @@
 						n_letter = text("[n_letter]-[n_letter]")
 		t = text("[t][n_letter]")//since the above is ran through for each letter, the text just adds up back to the original word.
 		p++//for each letter p is increased to find where the next letter will be.
-	return copytext_char(sanitize(t),1,MAX_MESSAGE_LEN)
+	return copytext_char(t,1,MAX_MESSAGE_LEN)
 
 ///Convert a message to derpy speak
 /proc/derpspeech(message, stuttering)
