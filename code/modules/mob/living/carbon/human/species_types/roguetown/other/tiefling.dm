@@ -106,6 +106,9 @@
 		"Mysterious" = SKIN_COLOR_MYSTERIOUS,
 		"Succubus" = SKIN_COLOR_SUCCUBUS,
 		"Incubus" = SKIN_COLOR_INCUBUS,
+		"Leonese" = SKIN_COLOR_LEONESE,
+		"Aragonese" = SKIN_COLOR_ARAGONESE,
+		"Navarrese" = SKIN_COLOR_NAVARRESE,
 	)
 
 /datum/species/tieberian/get_hairc_list()
