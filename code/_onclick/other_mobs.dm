@@ -250,8 +250,7 @@
 				if(A == src)
 					return
 				if(isliving(A))
-					var/mob/living/L = A
-					if(!(L.mobility_flags & MOBILITY_STAND) && L.pulling != src)
+					if(!(mobility_flags & MOBILITY_STAND) && pulledby)
 						return
 				if(IsOffBalanced())
 					to_chat(src, span_warning("I haven't regained my balance yet."))
@@ -413,14 +412,14 @@
 									if (V.get_item_by_slot(SLOT_BELT_R))
 										stealpos.Add(V.get_item_by_slot(SLOT_BELT_R))
 									if (V.get_item_by_slot(SLOT_BELT_L))
-										stealpos.Add(V.get_item_by_slot(SLOT_BELT_L))	
+										stealpos.Add(V.get_item_by_slot(SLOT_BELT_L))
 								if("r_hand" || "l_hand")
 									if (V.get_item_by_slot(SLOT_RING))
 										stealpos.Add(V.get_item_by_slot(SLOT_RING))
 							if (length(stealpos) > 0)
 								var/obj/item/picked = pick(stealpos)
 								V.dropItemToGround(picked)
-								put_in_active_hand(picked)						
+								put_in_active_hand(picked)
 								to_chat(src, span_green("I stole [picked]!"))
 								V.log_message("has had \the [picked] stolen by [key_name(U)]", LOG_ATTACK, color="black")
 								U.log_message("has stolen \the [picked] from [key_name(V)]", LOG_ATTACK, color="black")

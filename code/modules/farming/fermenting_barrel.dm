@@ -70,13 +70,6 @@
 	if(broken)
 		icon_state = "barrel_destroyed"
 
-/datum/crafting_recipe/fermenting_barrel
-	name = "Wooden Barrel"
-	result = /obj/structure/fermenting_barrel
-	reqs = list(/obj/item/stack/sheet/mineral/wood = 30)
-	time = 50
-	category = CAT_NONE
-
 /obj/structure/fermenting_barrel/random/water/Initialize()
 	. = ..()
 	reagents.add_reagent(/datum/reagent/water, rand(0,300))

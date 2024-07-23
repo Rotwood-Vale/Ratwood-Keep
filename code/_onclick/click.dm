@@ -96,17 +96,13 @@
 	if(next_move > world.time)
 		return
 
-	if(modifiers["middle"])
-		if(atkswinging != "middle")
-			return
+	if(modifiers["middle"] && atkswinging == "middle")
 		if(mmb_intent)
 			if(mmb_intent.get_chargetime())
 				if(mmb_intent.no_early_release && client?.chargedprog < 100)
 					changeNext_move(mmb_intent.clickcd)
 					return
-	if(modifiers["left"])
-		if(atkswinging != "left")
-			return
+	if(modifiers["left"] && atkswinging == "left")
 		if(active_hand_index == 1)
 			used_hand = 1
 			if(next_lmove > world.time)
@@ -124,22 +120,19 @@
 					adf = round(adf * 0.6)
 				changeNext_move(adf,used_hand)
 				return
-	if(modifiers["right"])
-		if(oactive)
-			if(atkswinging != "right")
+	if(modifiers["right"] && oactive && atkswinging == "right")
+		if(active_hand_index == 1)
+			used_hand = 2
+			if(next_rmove > world.time)
 				return
-			if(active_hand_index == 1)
-				used_hand = 2
-				if(next_rmove > world.time)
-					return
-			else
-				used_hand = 1
-				if(next_lmove > world.time)
-					return
-			if(used_intent.get_chargetime())
-				if(used_intent.no_early_release && client?.chargedprog < 100)
-					changeNext_move(used_intent.clickcd,used_hand)
-					return
+		else
+			used_hand = 1
+			if(next_lmove > world.time)
+				return
+		if(used_intent.get_chargetime())
+			if(used_intent.no_early_release && client?.chargedprog < 100)
+				changeNext_move(used_intent.clickcd,used_hand)
+				return
 
 
 //	if(modifiers["shift"] && modifiers["middle"])
