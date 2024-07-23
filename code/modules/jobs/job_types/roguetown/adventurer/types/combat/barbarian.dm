@@ -15,7 +15,7 @@
 /datum/outfit/job/roguetown/adventurer/barbarian/pre_equip(mob/living/carbon/human/H)
 	..() // Compared to the Warrior the barbarian is more suited to the wilds. But they are able to make use of almost any weapon by talent and killer instinct.
 	H.adjust_blindness(-3)
-	var/classes = list("Warrior","Hunter Killer",)
+	var/classes = list("Warrior","Hunter Killer", "Ravager")
 	var/classchoice = input("Choose your archetypes", "Available archetypes") as anything in classes
 	switch(classchoice)
 		if("Warrior")
@@ -100,6 +100,42 @@
 			H.change_stat("constitution", 2)
 			H.change_stat("endurance", 3)
 			H.dna.species.soundpack_m = new /datum/voicepack/male/warrior()
+		if("Ravager") //Lower constitution/weaponskills, but they're better at unarmed combat than barbs are with a weapon. Good skills, not much gear. Gets extra bite damage.
+			H.set_blindness(0)
+			to_chat(H, span_warning("Some barbarians eschew the axe in favour of the most faithful weapons anyone could hope for: fist, claw, and fang."))
+			H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 4, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/craft/crafting, pick(0,1), TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/athletics, 4, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 2, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/swimming, 3, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/climbing, 3, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/riding, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/craft/cooking, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/labor/butchering, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/craft/traps, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/labor/fishing, pick(0,1), TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/polearms, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/axes, 2, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/maces, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE)
+			belt = /obj/item/storage/belt/rogue/leather
+			neck = /obj/item/storage/belt/rogue/pouch/coins/poor
+			beltl = /obj/item/rogueweapon/huntingknife
+			shoes = /obj/item/clothing/shoes/roguetown/boots/leather
+			backr = /obj/item/storage/backpack/rogue/satchel
+			cloak = /obj/item/clothing/cloak/raincloak/furcloak/brown
+			wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
+			if(prob(33))
+				armor = /obj/item/clothing/suit/roguetown/armor/leather
+			else
+				armor = /obj/item/clothing/suit/roguetown/armor/leather/hide
+			H.change_stat("intelligence", -2) 
+			H.change_stat("strength", 3) 
+			H.change_stat("constitution", 2)
+			H.change_stat("endurance", 2)
+			ADD_TRAIT(H, TRAIT_STRONGBITE, TRAIT_GENERIC) //doubles bite damage, which is 50% of STR. 
 /*
 			if("ROLL THE DICE!")
 				if(prob(49)) // Warrior
