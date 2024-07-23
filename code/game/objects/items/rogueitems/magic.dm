@@ -20,7 +20,7 @@
 
 /obj/item/scrying/attack_self(mob/living/user)
 	. = ..()
-	if(user.mind.get_skill_level(/datum/skill/magic/arcane) < 1)
+	if(user.mind.get_skill_level(/datum/skill/magic/arcane) < 1 && !HAS_TRAIT(user, TRAIT_SCRYORBUSER))
 		to_chat(user, span_warning("I'm not quite sure how to use this..."))
 		return
 	if(world.time < last_scry + 30 SECONDS)

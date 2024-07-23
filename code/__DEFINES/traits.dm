@@ -34,6 +34,7 @@
 #define TRAIT_NOSLEEP "Fatal Insomnia"
 #define TRAIT_GOODLOVER "Fabled Lover"
 #define TRAIT_SEEDKNOW "Seed Knower"
+#define TRAIT_SCRYORBUSER "Magical Scrier"
 
 // PATRON GOD TRAITS
 #define TRAIT_ROT_EATER "Blessing of Pestra" //can eat rotten food
@@ -103,6 +104,7 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_NORUN = span_warning("My body has atrophied in my state of decay; my leg joints just don't have the strength or durability for running anymore"),
 	TRAIT_GOODLOVER = span_love("It's a lucky thing to share my bed."),
 	TRAIT_SEEDKNOW = span_info("I know which seeds grow which crops."),
+	TRAIT_SCRYORBUSER = span_info("I was trained to use the scrying orb, despite not knowing magic."),
 ))
 
 // trait accessor defines
