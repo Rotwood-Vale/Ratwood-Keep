@@ -18,8 +18,11 @@
 	var/last_scry
 
 
-/obj/item/scrying/attack_self(mob/user)
+/obj/item/scrying/attack_self(mob/living/user)
 	. = ..()
+	if(user.mind.get_skill_level(/datum/skill/magic/arcane) < 1)
+		to_chat(user, span_warning("I'm not quite sure how to use this..."))
+		return
 	if(world.time < last_scry + 30 SECONDS)
 		to_chat(user, span_warning("I look into the ball but only see inky smoke. Maybe I should wait."))
 		return
