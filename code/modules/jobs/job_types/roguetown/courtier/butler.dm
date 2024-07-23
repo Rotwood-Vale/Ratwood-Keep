@@ -49,6 +49,7 @@
 		neck = /obj/item/storage/belt/rogue/pouch/coins/poor
 		belt = /obj/item/storage/belt/rogue/leather
 		beltr = /obj/item/keyring/servant
+		pants = /obj/item/clothing/under/roguetown/tights/stockings/black //Added stockings for the maids
 		H.change_stat("strength", -1)
 		H.change_stat("intelligence", 1)
 		H.change_stat("perception", 1)

@@ -49,6 +49,7 @@
 		else
 			armor = /obj/item/clothing/suit/roguetown/armor/armordress
 	head = /obj/item/clothing/head/roguetown/hennin
+	pants = /obj/item/clothing/under/roguetown/tights/stockings/silk/random	//Added Silk Stockings for the female nobles
 //		SSticker.rulermob = H
 
 	id = /obj/item/clothing/ring/silver

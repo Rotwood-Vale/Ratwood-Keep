@@ -46,6 +46,7 @@
 		H.change_stat("strength", -1)
 		armor = /obj/item/clothing/suit/roguetown/shirt/dress/gen/purple
 		head = /obj/item/clothing/head/roguetown/hatblu
+		pants = /obj/item/clothing/under/roguetown/tights/stockings/silk/random	//Added Silk Stockings for the female hostages
 	if(H.gender == MALE)
 		H.change_stat("strength", -1)
 		pants = /obj/item/clothing/under/roguetown/tights/purple
