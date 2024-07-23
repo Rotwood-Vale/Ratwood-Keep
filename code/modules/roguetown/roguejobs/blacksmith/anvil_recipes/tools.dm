@@ -79,6 +79,12 @@
 	created_item = /obj/item/flashlight/flare/torch/lantern
 	i_type = "General"
 
+/datum/anvil_recipe/tools/chains
+	name = "Chains"
+	req_bar = /obj/item/ingot/iron
+	created_item = /obj/item/rope/chain
+	i_type = "General"
+
 /datum/anvil_recipe/tools/cups
 	name = "Cups 3x"
 	req_bar = /obj/item/ingot/iron

@@ -382,7 +382,7 @@ GLOBAL_LIST_EMPTY(temporary_donators)
 /proc/check_contributor(ckey)
 	if(!ckey)
 		return
-	if(GLOB.contributor_ckey_list)
+	if(ckey in GLOB.contributor_ckey_list)
 		return TRUE
 	else
 		return FALSE

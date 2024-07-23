@@ -66,6 +66,7 @@
 		/datum/customizer/organ/testicles/external,
 		/datum/customizer/organ/penis/knotted,
 		/datum/customizer/organ/breasts/animal,
+		/datum/customizer/organ/belly/animal,
 		/datum/customizer/organ/vagina/animal,
 		)
 	body_marking_sets = list(

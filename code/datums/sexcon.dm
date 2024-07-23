@@ -105,6 +105,7 @@
 		var/theirvagina = src.has_vagina()
 		var/theirpenis = src.has_penis()
 		var/theirbreasts = src.has_breasts()
+		var/theirbelly = src.has_belly()
 		if(!get_location_accessible(src, BODY_ZONE_PRECISE_MOUTH))
 			theirmouth = FALSE
 		if(!get_location_accessible(src, BODY_ZONE_PRECISE_GROIN))

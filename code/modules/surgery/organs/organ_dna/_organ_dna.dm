@@ -59,3 +59,11 @@
 	..()
 	var/obj/item/organ/breasts/breasts_organ = organ
 	breasts_organ.breast_size = breast_size
+
+/datum/organ_dna/belly
+	var/belly_size = DEFAULT_BELLY_SIZE
+
+/datum/organ_dna/belly/imprint_organ(obj/item/organ/organ)
+	..()
+	var/obj/item/organ/belly/belly_organ = organ
+	belly_organ.belly_size = belly_size

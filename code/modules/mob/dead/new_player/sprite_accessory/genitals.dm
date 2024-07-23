@@ -133,6 +133,11 @@
 	name = "Hairy"
 	color_key_defaults = list(KEY_HAIR_COLOR)
 
+/datum/sprite_accessory/vagina/extrahairy
+	icon_state = "extrahairy"
+	name = "Extra Hairy"
+	color_key_defaults = list(KEY_HAIR_COLOR)
+
 /datum/sprite_accessory/vagina/spade
 	icon_state = "spade"
 	name = "Spade"
@@ -152,3 +157,23 @@
 	icon_state = "cloaca"
 	name = "Cloaca"
 	default_colors = list("f99696")
+
+/datum/sprite_accessory/belly
+	icon = 'icons/mob/sprite_accessory/genitals/belly.dmi'
+	color_key_name = "Belly"
+	relevant_layers = list(BODY_BEHIND_LAYER, BODY_FRONT_LAYER)
+
+/datum/sprite_accessory/belly/get_icon_state(obj/item/organ/organ, obj/item/bodypart/bodypart, mob/living/carbon/owner)
+	var/obj/item/organ/belly/belleh = organ
+	return "belly_[icon_state]_[belleh.belly_size]"
+
+/datum/sprite_accessory/belly/adjust_appearance_list(list/appearance_list, obj/item/organ/organ, obj/item/bodypart/bodypart, mob/living/carbon/owner)
+	generic_gender_feature_adjust(appearance_list, organ, bodypart, owner, OFFSET_SHIRT_F, OFFSET_SHIRT_F)
+
+/datum/sprite_accessory/belly/is_visible(obj/item/organ/organ, obj/item/bodypart/bodypart, mob/living/carbon/owner)
+	return is_human_part_visible(owner, HIDEBOOB|HIDEJUMPSUIT)
+
+/datum/sprite_accessory/belly
+	icon_state = "pair"
+	name = "Belly"
+	color_key_defaults = list(KEY_CHEST_COLOR)

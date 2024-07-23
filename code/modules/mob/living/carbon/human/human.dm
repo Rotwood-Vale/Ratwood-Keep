@@ -80,7 +80,7 @@
 
 /mob/living/carbon/human/ZImpactDamage(turf/T, levels)
 	var/obj/item/bodypart/affecting
-	var/dam = levels * rand(10,50)
+	var/dam = levels * rand(10,25)
 	add_stress(/datum/stressevent/felldown)
 	var/chat_message
 	switch(rand(1,4))
@@ -94,15 +94,15 @@
 			affecting = get_bodypart(BODY_ZONE_CHEST)
 			chat_message = span_danger("I fall flat! I'm winded!")
 			emote("gasp")
-			adjustOxyLoss(50)
+			adjustOxyLoss(25)
 		if(4)
 			affecting = get_bodypart(BODY_ZONE_HEAD)
 			chat_message = span_danger("I fall on my head!")
 	if(affecting && apply_damage(dam, BRUTE, affecting, run_armor_check(affecting, "blunt", damage = dam)))
 		update_damage_overlays()
 		if(levels >= 1)
-			//absurd damage to guarantee a crit
-			affecting.try_crit(BCLASS_TWIST, 300)
+			//ouchie
+			affecting.try_crit(BCLASS_TWIST, 125*levels)
 
 	if(chat_message)
 		to_chat(src, chat_message)
@@ -1204,3 +1204,6 @@
 
 /mob/living/carbon/human/has_breasts()
 	return getorganslot(ORGAN_SLOT_BREASTS)
+
+/mob/living/carbon/human/proc/has_belly()
+	return getorganslot(ORGAN_SLOT_BELLY)

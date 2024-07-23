@@ -69,6 +69,7 @@
 		/datum/customizer/organ/testicles/human,
 		/datum/customizer/organ/penis/human,
 		/datum/customizer/organ/breasts/human,
+		/datum/customizer/organ/belly/human,
 		/datum/customizer/organ/vagina/human,
 		)
 	languages = list(
@@ -92,12 +93,15 @@
 	return TRUE
 
 /datum/species/halforc/get_skin_list()
-	return list(
-		"Shellcrest" = SKIN_COLOR_SHELLCREST,
-		"Bloodaxe" = SKIN_COLOR_BLOOD_AXE,
-		"Splitjaw" = SKIN_COLOR_GROONN, //Changed name from Gronn, which no longer aligned with lore here or elsewhere.
-		"Blackhammer" = SKIN_COLOR_BLACK_HAMMER,
-		"Skullseeker" = SKIN_COLOR_SKULL_SEEKER
+    return list(
+        "Shellcrest" = SKIN_COLOR_SHELLCREST,
+        "Bloodaxe" = SKIN_COLOR_BLOOD_AXE,
+        "Splitjaw" = SKIN_COLOR_GROONN, //Changed name from Gronn, which no longer aligned with lore here or elsewhere.
+        "Blackhammer" = SKIN_COLOR_BLACK_HAMMER,
+        "Skullseeker" = SKIN_COLOR_SKULL_SEEKER,
+        "Crescent Fang" = SKIN_COLOR_CRESCENT_FANG,
+        "Murkwalker" = SKIN_COLOR_MURKWALKER,
+        "Shatterhorn" = SKIN_COLOR_SHATTERHORN,
 	)
 
 /datum/species/halforc/get_hairc_list()
