@@ -10,7 +10,8 @@
 	category_tags = list(CTAG_ADVENTURER)
 
 /datum/outfit/job/roguetown/adventurer/paladin
-	allowed_patrons = ALL_CLERIC_PATRONS
+	allowed_patrons = list(/datum/patron/old_god, ALL_CLERIC_PATRONS)
+	
 
 /datum/outfit/job/roguetown/adventurer/paladin/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -25,6 +26,8 @@
 			neck = /obj/item/clothing/neck/roguetown/psicross/pestra
 		if("Noc")
 			neck = /obj/item/clothing/neck/roguetown/psicross/noc
+		if("Psydon")
+			neck = /obj/item/clothing/neck/roguetown/psicross/silver
 
 
 	H.adjust_blindness(-3)
@@ -37,8 +40,8 @@
 			to_chat(src, span_warning("Paladins are holy warriors who have taken sacred vows to uphold justice and righteousness. Often, they were promised redemption for past sins if they crusaded in the name of the gods."))
 			H.set_blindness(0) // No introduction text due to there being no real difference in Paladin archetypes for now.
 			to_chat(H, span_warning("You are a paladin."))
-			H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 1, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/combat/polearms, 2, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 3, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/polearms, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/maces, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/bows, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE)
@@ -48,15 +51,16 @@
 			H.mind.adjust_skillrank(/datum/skill/combat/swords, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 1, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/misc/swimming, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/swimming, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/climbing, pick(2,3), TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/riding, 2, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/magic/holy, 2, TRUE)
-			H.change_stat("perception", 1)
+			H.mind.adjust_skillrank(/datum/skill/magic/holy, 3, TRUE) //Better than War Cleric, worse than Life Cleric.
+			H.mind.adjust_skillrank(/datum/skill/misc/medicine, 2, TRUE)
 			H.change_stat("strength", 2)
-			H.change_stat("constitution", 2) // Classic paladin is faster then the battle master.
-			H.change_stat("endurance", 1)
+			H.change_stat("constitution", 3) // Classic paladin is faster then the battle master.
+			H.change_stat("endurance", 2)
 			armor = /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk
+			wrists = /obj/item/clothing/wrists/roguetown/bracers
 			pants = /obj/item/clothing/under/roguetown/chainlegs
 			shoes = /obj/item/clothing/shoes/roguetown/boots/leather
 			belt = /obj/item/storage/belt/rogue/leather/hand
@@ -79,12 +83,17 @@
 				backr = /obj/item/rogueweapon/sword
 			else
 				backr = /obj/item/rogueweapon/sword/long
+			if(prob(50))
+				head = /obj/item/clothing/neck/roguetown/chaincoif
+			else
+				head = /datum/anvil_recipe/armor/helmetnasal
 			backl = /obj/item/storage/backpack/rogue/satchel
 		if("Battle Master")
+			to_chat(src, span_warning("Paladins are holy warriors who have taken sacred vows to uphold justice and righteousness. Often, they were promised redemption for past sins if they crusaded in the name of the gods."))
 			H.set_blindness(0)
 			to_chat(H, span_warning("You are a battle-master."))
-			H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 2, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/combat/polearms, 2, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 3, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/polearms, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/maces, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/bows, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE)
@@ -94,17 +103,18 @@
 			H.mind.adjust_skillrank(/datum/skill/combat/swords, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 1, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/misc/swimming, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/swimming, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/climbing, pick(2,3), TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/riding, 2, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/magic/holy, 2, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/magic/holy, 3, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/medicine, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/whipsflails, 3, TRUE)
-			H.change_stat("perception", 1)
 			H.change_stat("strength", 2)
-			H.change_stat("constitution", 2) 
-			H.change_stat("endurance", 1)
+			H.change_stat("constitution", 3) 
+			H.change_stat("endurance", 2)
 			H.change_stat("speed", -1)
 			armor = /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk
+			wrists = /obj/item/clothing/wrists/roguetown/bracers
 			pants = /obj/item/clothing/under/roguetown/chainlegs
 			shoes = /obj/item/clothing/shoes/roguetown/boots/leather
 			belt = /obj/item/storage/belt/rogue/leather/hand
@@ -128,14 +138,23 @@
 				l_hand = /obj/item/rogueweapon/shield/wood
 			else
 				l_hand = /obj/item/rogueweapon/shield/tower/metal
+			if(prob(50))
+				head = /obj/item/clothing/neck/roguetown/chaincoif
+			else
+				head = /datum/anvil_recipe/armor/helmetnasal
 			backl = /obj/item/storage/backpack/rogue/satchel
 		
 	ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
-	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
+	ADD_TRAIT(H, TRAIT_STEELHEARTED, TRAIT_GENERIC)
 	H.dna.species.soundpack_m = new /datum/voicepack/male/knight()
 	if(H.dna.species.type == /datum/species/tieberian)
 		cloak = /obj/item/clothing/cloak/tabard/crusader/tief
 	var/datum/devotion/C = new /datum/devotion(H, H.patron)
 	//Max devotion limit - Paladins are stronger but cannot pray to gain all abilities beyond t1
-	C.grant_spells_templar(H)
+	switch(H.patron.name)
+		if("Psydon")
+			C.grant_spells_templar_psydon(H)
+			backpack_contents = list(/obj/item/needle)
+		else
+			C.grant_spells_templar(H)
 	H.verbs += list(/mob/living/carbon/human/proc/devotionreport, /mob/living/carbon/human/proc/clericpray)

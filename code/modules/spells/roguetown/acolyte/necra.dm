@@ -83,6 +83,9 @@
 	..()
 	return TRUE
 
+/obj/effect/proc_holder/spell/targeted/churn/psydon
+	invocation = "Psydon hates you!"
+
 /obj/effect/proc_holder/spell/targeted/soulspeak
 	name = "Speak with Soul"
 	range = 5
