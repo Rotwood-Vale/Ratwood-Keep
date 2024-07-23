@@ -227,14 +227,14 @@ GLOBAL_LIST_INIT(character_flaws, list(
 /datum/charflaw/greedy/proc/determine_starting_mammons(mob/living/carbon/human/user)
 	var/starting_mammons = get_mammons_in_atom(user)
 	required_mammons = round(starting_mammons * 0.7)
-	extra_increment_value = round(starting_mammons * 0.1)
+	extra_increment_value = round(starting_mammons * 0.15)
 
 /datum/charflaw/greedy/proc/mammon_increase(mob/living/carbon/human/user)
 	if(last_passed_check + (50 MINUTES) < world.time) //If we spend a REALLY long time without being able to satisfy, then pity downgrade
 		required_mammons -= rand(10, 20)
 		to_chat(user, span_blue("Maybe a little less mammons is enough..."))
 	else
-		required_mammons += rand(20, 30) + extra_increment_value
+		required_mammons += rand(25, 35) + extra_increment_value
 	required_mammons = min(required_mammons, 250) //Cap at 250 coins maximum
 	next_mammon_increase = world.time + rand(35 MINUTES, 40 MINUTES)
 	var/current_mammons = get_mammons_in_atom(user)
