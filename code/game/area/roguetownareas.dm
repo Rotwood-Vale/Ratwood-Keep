@@ -228,6 +228,17 @@ GLOBAL_LIST_INIT(roguetown_areas_typecache, typecacheof(/area/rogue/indoors/town
 		return (istype(T, /turf/open/floor/rogue/dirt) || \
 				istype(T, /turf/open/floor/rogue/grass) || \
 				istype(T, /turf/open/water))
+		if(T.get_lumcount() > 0.2)
+			return FALSE
+		if(players_nearby(T, 15))
+			return FALSE
+		return TRUE
+	
+	proc/players_nearby(turf/T, distance)
+		for(var/mob/living/carbon/human/H in range(distance, T))
+			if(H.client)
+				return TRUE
+			return FALSE
 
 	var/spawn_timer
 
