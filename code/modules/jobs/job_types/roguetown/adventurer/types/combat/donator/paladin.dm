@@ -56,9 +56,12 @@
 			H.mind.adjust_skillrank(/datum/skill/misc/riding, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/magic/holy, 3, TRUE) //Better than War Cleric, worse than Life Cleric.
 			H.mind.adjust_skillrank(/datum/skill/misc/medicine, 2, TRUE)
+			if(H.age == AGE_OLD)
+				H.mind.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE)
 			H.change_stat("strength", 2)
 			H.change_stat("constitution", 3) // Classic paladin is faster then the battle master.
 			H.change_stat("endurance", 2)
+
 			armor = /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk
 			wrists = /obj/item/clothing/wrists/roguetown/bracers
 			pants = /obj/item/clothing/under/roguetown/chainlegs
@@ -88,6 +91,7 @@
 			else
 				head = /datum/anvil_recipe/armor/helmetnasal
 			backl = /obj/item/storage/backpack/rogue/satchel
+			
 		if("Battle Master")
 			to_chat(src, span_warning("Paladins are holy warriors who have taken sacred vows to uphold justice and righteousness. Often, they were promised redemption for past sins if they crusaded in the name of the gods."))
 			H.set_blindness(0)
@@ -109,6 +113,8 @@
 			H.mind.adjust_skillrank(/datum/skill/magic/holy, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/medicine, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/whipsflails, 3, TRUE)
+			if(H.age == AGE_OLD)
+				H.mind.adjust_skillrank(/datum/skill/combat/whipsflails, 1, TRUE)
 			H.change_stat("strength", 2)
 			H.change_stat("constitution", 3) 
 			H.change_stat("endurance", 2)
@@ -143,8 +149,7 @@
 			else
 				head = /datum/anvil_recipe/armor/helmetnasal
 			backl = /obj/item/storage/backpack/rogue/satchel
-		if(H.age == AGE_OLD)
-		H.mind.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE)
+			
 
 
 	ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
