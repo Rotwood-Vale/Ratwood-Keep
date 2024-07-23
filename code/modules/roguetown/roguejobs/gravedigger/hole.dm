@@ -287,6 +287,10 @@
 			if(!(locate(/obj/item/natural/stone) in T))
 				if(prob(23))
 					new /obj/item/natural/stone(T)
+			else 
+				if(!(locate(/obj/item/natural/clay) in T))
+					if(prob(30))	
+						new /obj/item/natural/clay(T)
 	return ..()
 
 /obj/structure/closet/dirthole/Destroy()

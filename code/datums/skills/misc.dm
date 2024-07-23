@@ -40,3 +40,6 @@
 
 /datum/skill/misc/weaving
 	name = "Weaving"
+
+/datum/skill/misc/ceramics
+	name = "Pottery"
