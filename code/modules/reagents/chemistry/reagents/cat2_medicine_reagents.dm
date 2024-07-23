@@ -218,7 +218,7 @@
 	return TRUE
 
 /datum/reagent/medicine/C2/multiver //enhanced with MULTIple medicines
-	name = "Multiver"
+	name = "Charcoal"
 	description = "A chem-purger that becomes more effective the more unique medicines present. Slightly heals toxicity but causes lung damage (mitigatable by unique medicines)."
 
 /datum/reagent/medicine/C2/multiver/on_mob_life(mob/living/carbon/human/M)
