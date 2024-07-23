@@ -168,6 +168,8 @@
 
 	/// What job does this mob have
 	var/job = null//Living
+	var/migrant_type = null
+	var/advjob = null
 
 	/// A list of factions that this mob is currently in, for hostile mob targetting, amongst other things
 	var/list/faction = list("neutral")
