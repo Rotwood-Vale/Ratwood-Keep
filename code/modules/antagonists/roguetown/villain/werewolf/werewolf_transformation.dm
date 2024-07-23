@@ -77,7 +77,13 @@
 
 	src.fully_heal(FALSE)
 
-	var/mob/living/carbon/human/species/werewolf/W = new (loc)
+	var/ww_path
+	if(gender == MALE)
+		ww_path = /mob/living/carbon/human/species/werewolf/male
+	else
+		ww_path = /mob/living/carbon/human/species/werewolf/female
+
+	var/mob/living/carbon/human/species/werewolf/W = new ww_path(loc)
 
 	W.set_patron(src.patron)
 	W.gender = gender
@@ -135,6 +141,8 @@
 	ADD_TRAIT(W, TRAIT_CRITICAL_RESISTANCE, TRAIT_GENERIC)
 	ADD_TRAIT(W, TRAIT_IGNOREDAMAGESLOWDOWN, TRAIT_GENERIC)
 	ADD_TRAIT(W, TRAIT_IGNORESLOWDOWN, TRAIT_GENERIC)
+	ADD_TRAIT(W, TRAIT_HARDDISMEMBER, TRAIT_GENERIC)
+	ADD_TRAIT(W, TRAIT_PIERCEIMMUNE, TRAIT_GENERIC)
 
 	invisibility = oldinv
 

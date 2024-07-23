@@ -283,3 +283,5 @@
 	var/list/mob_timers = list()
 
 	var/music_playing = FALSE
+	/// Tracker for amount of turfs we sprinted over, for things like bumping and charging
+	var/sprinted_tiles = 0

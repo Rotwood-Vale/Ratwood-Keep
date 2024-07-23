@@ -1291,7 +1291,7 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 		if(L.cmode)
 			willroll += 10
 		var/found_psycross = FALSE
-		for(var/obj/item/clothing/neck/roguetown/psicross/silver in L.contents)
+		for(var/obj/item/clothing/neck/roguetown/psicross/silver/I in L.contents) //Subpath fix.
 			found_psycross = TRUE
 			break
 			

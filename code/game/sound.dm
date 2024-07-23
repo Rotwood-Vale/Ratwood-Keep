@@ -347,8 +347,6 @@
 				soundin = pick('sound/combat/hits/punch/punch_hard (1).ogg','sound/combat/hits/punch/punch_hard (2).ogg','sound/combat/hits/punch/punch_hard (3).ogg')
 			if("smallslash")
 				soundin = pick('sound/combat/hits/bladed/smallslash (1).ogg', 'sound/combat/hits/bladed/smallslash (2).ogg', 'sound/combat/hits/bladed/smallslash (3).ogg')
-			if("fart")
-				soundin = pick('sound/vo/fart (1).ogg','sound/vo/fart (2).ogg','sound/vo/fart (3).ogg')
 			if("woodimpact")
 				soundin = pick('sound/combat/hits/onwood/woodimpact (1).ogg','sound/combat/hits/onwood/woodimpact (2).ogg')
 			if("bubbles")
