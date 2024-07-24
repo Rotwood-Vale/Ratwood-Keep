@@ -34,6 +34,7 @@
 #define TRAIT_NOSLEEP "Fatal Insomnia"
 #define TRAIT_GOODLOVER "Fabled Lover"
 #define TRAIT_SEEDKNOW "Seed Knower"
+#define TRAIT_WATERBREATHING "Water Breathing"
 
 // PATRON GOD TRAITS
 #define TRAIT_ROT_EATER "Blessing of Pestra" //can eat rotten food
@@ -86,7 +87,7 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_CYCLOPS_RIGHT = span_warning("My right eye has been poked out..."),
 	TRAIT_RETARD_ANATOMY = "My anatomy is inhumen, preventing me from wearing hats and shoes.",
 	TRAIT_NASTY_EATER = span_dead("I can eat bad food, and water that would be toxic to humen will not affect me."),
-	TRAIT_WILD_EATER = "I can eat raw food and drink from dirty water.",
+	TRAIT_WILD_EATER = span_info("I can eat raw food and drink from dirty water."),
 	TRAIT_NOFALLDAMAGE1 = span_warning("I can easily handle minor falls."),
 	TRAIT_DISFIGURED = span_warning("No one can recognize me..."),
 	TRAIT_MISSING_NOSE = span_warning("I struggle to breathe."),
@@ -103,6 +104,7 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_NORUN = span_warning("My body has atrophied in my state of decay; my leg joints just don't have the strength or durability for running anymore"),
 	TRAIT_GOODLOVER = span_love("It's a lucky thing to share my bed."),
 	TRAIT_SEEDKNOW = span_info("I know which seeds grow which crops."),
+	TRAIT_WATERBREATHING = span_info("I do not drown in bodies of water."),
 ))
 
 // trait accessor defines
