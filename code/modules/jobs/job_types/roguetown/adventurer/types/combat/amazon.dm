@@ -6,7 +6,7 @@
 	outfit = /datum/outfit/job/roguetown/adventurer/amazon
 	pickprob = 13
 	maximum_possible_slots = 2
-	category_tags = list(CTAG_ADVENTURER)
+	category_tags = list(CTAG_DISABLED)
 
 	traits_applied = list(TRAIT_CRITICAL_RESISTANCE, TRAIT_NOPAINSTUN, TRAIT_STEELHEARTED)
 	cmode_music = 'sound/music/combat_gronn.ogg'
