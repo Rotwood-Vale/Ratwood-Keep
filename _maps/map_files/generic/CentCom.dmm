@@ -1002,8 +1002,6 @@
 /obj/structure/fluff/railing/wood,
 /obj/structure/closet/crate/roguecloset/inn/chest,
 /obj/item/reagent_containers/glass/bottle/rogue/healthpot,
-/obj/item/reagent_containers/glass/bottle/rogue/healthpot,
-/obj/item/reagent_containers/glass/bottle/rogue/healthpot,
 /turf/open/floor/rogue/ruinedwood{
 	icon_state = "weird1"
 	},
