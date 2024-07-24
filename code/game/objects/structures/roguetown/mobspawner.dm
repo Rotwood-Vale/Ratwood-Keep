@@ -54,6 +54,8 @@ var/global/total_spawned_mobs = 0
         for (var/turf/T in range(7, src))
             if (is_valid_spawn_turf(T))
                 valid_turfs += T
+        if (valid_turfs.len == 0)
+            return null
         return pick(valid_turfs)
 
     proc/is_valid_spawn_turf(turf/T)
@@ -68,8 +70,6 @@ var/global/total_spawned_mobs = 0
         for (var/L in adventurer_landmarks)
             if (get_dist(T, L) < 10)
                 return FALSE
-        if (T.get_lumcount() > 0.2)
-            return FALSE
         if (players_nearby(T, 15))
             return FALSE
         return TRUE
