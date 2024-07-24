@@ -83,9 +83,6 @@
 	..()
 	return TRUE
 
-/obj/effect/proc_holder/spell/targeted/churn/psydon
-	invocation = list("The Light purifies!", "My faith is my sword!")
-
 /obj/effect/proc_holder/spell/targeted/soulspeak
 	name = "Speak with Soul"
 	range = 5
