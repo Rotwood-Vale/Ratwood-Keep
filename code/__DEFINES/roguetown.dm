@@ -34,8 +34,6 @@
 	/datum/species/dracon,
 
 #define RACES_TOLERATED \
-	/datum/species/elf/dark,\
-	/datum/species/tieberian,\
 	/datum/species/lizardfolk,\
 	/datum/species/tabaxi,\
 	/datum/species/akula,\
@@ -43,6 +41,8 @@
 	/datum/species/demihuman
 
 #define RACES_SHUNNED \
+	/datum/species/elf/dark,\
+	/datum/species/tieberian,\
 	/datum/species/halforc,\
 	/datum/species/anthromorphsmall,\
 	/datum/species/kobold
@@ -55,6 +55,8 @@
 #define RACES_SHUNNED_UP list(RACES_SHUNNED, RACES_TOLERATED, RACES_RESPECTED)
 
 #define RACES_TOLERATED_UP list(RACES_TOLERATED, RACES_RESPECTED)
+
+#define RACES_RESPECTED_UP list(RACES_RESPECTED)
 
 #define NOBLE_RACES_TYPES list(\
 	/datum/species/human/northern,\
