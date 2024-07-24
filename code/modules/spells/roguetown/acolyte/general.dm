@@ -127,34 +127,3 @@
 		target.blood_volume += BLOOD_VOLUME_SURVIVE
 		return TRUE
 	return FALSE
-
-//Psydon's Judgement
-/obj/effect/proc_holder/spell/invoked/psyjudgement
-	name = "Judgement"
-	overlay_state = "lesserheal"
-	releasedrain = 30
-	chargedrain = 0
-	chargetime = 0
-	range = 7
-	warnie = "sydwarning"
-	movement_interrupt = FALSE
-	sound = 'sound/magic/heal.ogg'
-	invocation_type = "none"
-	associated_skill = /datum/skill/magic/holy
-	antimagic_allowed = TRUE
-	charge_max = 10 SECONDS
-	miracle = TRUE
-	devotion_cost = 20
-
-/obj/effect/proc_holder/spell/invoked/psyjudgement/cast(list/targets, mob/living/user)
-	. = ..()
-	if(isliving(targets[1]))
-		var/mob/living/target = targets[1]
-		if(user.patron?.undead_hater && (target.mob_biotypes & MOB_UNDEAD)) //positive energy harms the undead
-			target.visible_message(span_danger("[target] is burned by holy light!"), span_userdanger("I'm burned by holy light!"))
-			target.adjustFireLoss(50)
-			target.Paralyze(30)
-			target.fire_act(1,5)
-			return TRUE
-		target.visible_message(span_info("A strange feeling pours from [target]!"), span_notice("I have been given judgement!"))
-			
