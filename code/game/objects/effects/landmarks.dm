@@ -120,6 +120,12 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	jobspawn_override = list("Grenzelhoft Mercenary")
 	delete_after_roundstart = FALSE
 
+/obj/effect/landmark/start/Guildmasterlate
+	name = "Guildmasterlate"
+	icon_state = "arrow"
+	jobspawn_override = list("Mercenary Guildmaster")
+	delete_after_roundstart = FALSE
+
 /obj/effect/landmark/start/villagerlate
 	name = "Townerlate"
 	icon_state = "arrow"

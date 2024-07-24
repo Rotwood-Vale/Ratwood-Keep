@@ -12723,6 +12723,11 @@
 /obj/item/grown/log/tree/stick,
 /turf/open/floor/rogue/hexstone,
 /area/rogue/indoors)
+"pOP" = (
+/obj/machinery/light/rogue/wallfire/candle,
+/obj/effect/landmark/start/Guildmasterlate,
+/turf/open/floor/rogue/wood,
+/area/rogue/indoors/town/garrison)
 "pPy" = (
 /obj/structure/flora/roguetree/stump/log,
 /turf/open/floor/rogue/dirt/road,
@@ -297321,7 +297326,7 @@ afa
 rBV
 rBV
 tNj
-xdq
+pOP
 nka
 rBV
 rBV
