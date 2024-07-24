@@ -1,4 +1,5 @@
 var/global/total_spawned_mobs = 0
+var/global/max_total_spawned_mobs = 40 // New global variable for the total limit
 
 /obj/effect/mob_spawner
     var/spawn_timer
@@ -27,18 +28,18 @@ var/global/total_spawned_mobs = 0
         spawn_timer = addtimer(CALLBACK(src, .proc/spawn_and_continue), spawn_interval, TIMER_STOPPABLE)
 
     proc/spawn_and_continue()
-        if (current_spawned_mobs < max_spawned_mobs)
+        if (total_spawned_mobs < max_total_spawned_mobs)
             spawn_random_mobs(3) // Attempt to spawn 3 mobs each time
         start_spawning()
 
     proc/spawn_random_mobs(var/num_to_spawn)
         var/spawn_chance = 100 // 100% chance to spawn if conditions are met
-        if (prob(spawn_chance) && current_spawned_mobs < max_spawned_mobs)
+        if (prob(spawn_chance) && total_spawned_mobs < max_total_spawned_mobs)
             var/turf/spawn_turf
             var/mob_type
             var/mob/new_mob
             var/i = 0
-            while (i < num_to_spawn && current_spawned_mobs < max_spawned_mobs)
+            while (i < num_to_spawn && total_spawned_mobs < max_total_spawned_mobs)
                 spawn_turf = get_random_valid_turf()
                 if (spawn_turf)
                     mob_type = pickweight(ambush_mobs)
