@@ -304,7 +304,7 @@ GLOBAL_LIST_INIT(character_flaws, list(
 				to_chat(user, span_warning("The pain keeps me awake..."))
 			else
 				if(prob(40))
-					concious_timer = rand(2 MINUTES, 3 MINUTES)
+					concious_timer = rand(4 MINUTES, 6 MINUTES)
 					to_chat(user, span_info("The feeling has passed."))
 				else
 					concious_timer = rand(7 MINUTES, 15 MINUTES)
