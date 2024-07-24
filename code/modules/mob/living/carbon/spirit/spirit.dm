@@ -170,7 +170,7 @@
 	if(!mind_key)
 		return
 	for(var/mob/living/carbon/spirit/spirit in GLOB.carbon_list)
-		if((spirit.key == mind_key) || (spirit.mind?.key == mind_key))
+		if((ckey(spirit.key) == ckey(mind_key)) || (ckey(spirit.mind?.key) == ckey(mind_key)))
 			return spirit
 
 /mob/living/carbon/spirit/get_spirit()
@@ -182,19 +182,23 @@
 		return FALSE
 	var/success = FALSE
 	if(isliving(coffin))
-		success ||= pacify_corpse(coffin, user)
+		if(pacify_corpse(coffin, user))
+			success = TRUE
 	for(var/mob/living/corpse in coffin)
-		success ||= pacify_corpse(corpse, user)
+		if(pacify_corpse(corpse, user))
+			success = TRUE
 	for(var/obj/item/bodypart/head/head in coffin)
 		if(!head.brainmob)
 			continue
-		success ||= pacify_corpse(head.brainmob, user)
+		if(pacify_corpse(head.brainmob, user))
+			success = TRUE
 	//if this is a deep search, we will also search the contents of the coffin to pacify (EXCEPT MOBS, SINCE WE HANDLED THOSE)
 	if(deep)
 		for(var/atom/movable/stuffing in coffin)
 			if(isliving(stuffing) || istype(stuffing, /obj/item/bodypart/head))
 				continue
-			success ||= pacify_coffin(stuffing, user, deep, give_pq = FALSE)
+			if(pacify_coffin(stuffing, user, deep, give_pq = FALSE))
+				success = TRUE
 	// Success is actually the ckey of the last attacker so we can prevent PQ farming from fragging people
 	if(success && give_pq && user?.ckey && (user.ckey != success))
 		adjust_playerquality(give_pq, user.ckey)
@@ -241,8 +245,31 @@
 		testing("pacify_corpse success ([corpse.mind?.key || "no key"])")
 		var/user_acknowledgement = user ? user.real_name : "a mysterious force"
 		to_chat(ghost, span_rose("My soul finds peace buried in creation, thanks to [user_acknowledgement]."))
-		ghost.returntolobby(RESPAWNTIME*-1)
-		return attacker_ckey
+		burial_rite_return_ghost_to_lobby(ghost)
+		return TRUE
 
 	testing("pacify_corpse fail ([corpse.mind?.key || "no key"])")
 	return FALSE
+
+/proc/burial_rite_return_ghost_to_lobby(mob/dead/observer/ghost)
+	if(ghost.key)
+		GLOB.respawntimes[ghost.key] = world.time - RESPAWNTIME
+
+	log_game("[key_name(ghost)] returned to lobby from burial rites.")
+
+	if(!ghost.client)
+		log_game("[key_name(ghost)] had no client in game during burial rites.")
+
+	if(ghost.client)
+		ghost.client.screen.Cut()
+		ghost.client.screen += ghost.client.void
+		SSdroning.kill_rain(ghost.client)
+		SSdroning.kill_loop(ghost.client)
+		SSdroning.kill_droning(ghost.client)
+		ghost.remove_client_colour(/datum/client_colour/monochrome)
+
+	var/mob/dead/new_player/M = new /mob/dead/new_player()
+
+	M.key = ghost.key
+	if(ghost.client)
+		ghost.client.verbs -= GLOB.ghost_verbs

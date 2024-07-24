@@ -514,7 +514,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	if (CONFIG_GET(flag/norespawn))
 		return
 	if ((stat != DEAD || !( SSticker )))
-		to_chat(usr, span_boldnotice("I must be dead to use this!"))
+		to_chat(src, span_boldnotice("I must be dead to use this!"))
 		return
 
 //	if(mind?.current && (world.time < mind.current.timeofdeath + RESPAWNTIME))
@@ -527,12 +527,12 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		else
 			GLOB.respawntimes[key] = world.time
 
-	log_game("[key_name(usr)] used abandon mob.")
+	log_game("[key_name(src)] used abandon mob.")
 
 	to_chat(src, span_info("Returned to lobby successfully."))
 
 	if(!client)
-		log_game("[key_name(usr)] AM failed due to disconnect.")
+		log_game("[key_name(src)] AM failed due to disconnect.")
 		return
 	client.screen.Cut()
 	client.screen += client.void
@@ -542,12 +542,12 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	SSdroning.kill_droning(src.client)
 	remove_client_colour(/datum/client_colour/monochrome)
 	if(!client)
-		log_game("[key_name(usr)] AM failed due to disconnect.")
+		log_game("[key_name(src)] AM failed due to disconnect.")
 		return
 
 	var/mob/dead/new_player/M = new /mob/dead/new_player()
 	if(!client)
-		log_game("[key_name(usr)] AM failed due to disconnect.")
+		log_game("[key_name(src)] AM failed due to disconnect.")
 		qdel(M)
 		return
 
