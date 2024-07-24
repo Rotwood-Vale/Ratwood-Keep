@@ -534,14 +534,14 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 			possible[V.current.real_name] = V.current
 	for(var/datum/mind/D in C.deathknights)
 		possible[D.current.real_name] = D.current
-	var/name_choice = input(src, "Who to punish?", "PUNISHMENT") as anything in possible|null
+	var/name_choice = input(src, "Who to punish?", "PUNISHMENT") as null|anything in possible
 	if(!name_choice)
 		return
 	var/mob/living/carbon/human/choice = possible[name_choice]
-	if(!choice)
+	if(!choice || QDELETED(choice))
 		return
 	var/punishmentlevels = list("Pause", "Pain", "DESTROY")
-	var/punishment = input(src, "Severity?", "PUNISHMENT") as anything in punishmentlevels|null
+	var/punishment = input(src, "Severity?", "PUNISHMENT") as null|anything in punishmentlevels
 	if(!punishment)
 		return
 	switch(punishment)
