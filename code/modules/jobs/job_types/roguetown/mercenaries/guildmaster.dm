@@ -6,7 +6,7 @@
 	allowed_ages = list(AGE_OLD)
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_TOLERATED_UP
-	outfit = null
+	outfit = /datum/outfit/roguetown/mercenary/guildmaster
 	display_order = JDO_GUILDMASTER
 	selection_color = JCOLOR_MERCENARY
 	faction = "Station"
@@ -19,7 +19,7 @@
 /datum/job/roguetown/mercenary/guildmaster
 	allowed_patrons = list(ALL_DIVINE_PATRONS, /datum/patron/old_god, /datum/patron/inhumen/graggar)
 	
-/datum/job/roguetown/mercenary/guildmaster/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/roguetown/mercenary/guildmaster/pre_equip(mob/living/carbon/human/H)
 	var/classes = list("Quartermaster","Grenzelhoftian Veteran","Desert Rider Veteran",)
 	var/classchoice = input("Choose your archetypes", "Available archetypes") as anything in classes
 	H.adjust_blindness(-3)
@@ -175,8 +175,8 @@
 			SKIN_COLOR_EBON
 			)
 			if(ishumannorthern(H) && !(H.skin_tone in canonical_heritage_check_list))
-			H.skin_tone = pick(canonical_heritage_check_list)
-			H.update_body()
+				H.skin_tone = pick(canonical_heritage_check_list)
+				H.update_body()
 
 			if(H.gender == FEMALE)
 				var/acceptable = list("Tomboy", "Bob", "Curly Short")
