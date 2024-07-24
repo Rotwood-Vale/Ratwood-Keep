@@ -39,7 +39,7 @@
 		if("Paladin")
 			to_chat(H, span_warning("Paladins are holy warriors who have taken sacred vows to uphold justice and righteousness. Often, they were promised redemption for past sins if they crusaded in the name of the gods."))
 			H.set_blindness(0) // No introduction text due to there being no real difference in Paladin archetypes for now.
-			to_chat(H, span_warning("You are a paladin."))
+			to_chat(H, span_warning("You are a Paladin."))
 			H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/polearms, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/maces, 3, TRUE)
@@ -82,10 +82,11 @@
 					cloak = /obj/item/clothing/cloak/tabard/crusader/pestra
 				if("Noc")
 					cloak = /obj/item/clothing/cloak/tabard/crusader/noc
-			if(prob(70))
+			if(prob(20))
 				backr = /obj/item/rogueweapon/sword
 			else
 				backr = /obj/item/rogueweapon/sword/long
+
 			if(prob(50))
 				head = /obj/item/clothing/neck/roguetown/chaincoif
 			else
@@ -95,7 +96,7 @@
 		if("Battle Master")
 			to_chat(H, span_warning("Paladins are holy warriors who have taken sacred vows to uphold justice and righteousness. Often, they were promised redemption for past sins if they crusaded in the name of the gods."))
 			H.set_blindness(0)
-			to_chat(H, span_warning("You are a battle-master."))
+			to_chat(H, span_warning("You are a Battle Master."))
 			H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/polearms, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/maces, 3, TRUE)
@@ -161,9 +162,9 @@
 	//Max devotion limit - Paladins are stronger but cannot pray to gain all abilities beyond t1
 	switch(H.patron.name)
 		if("Psydon") 
-			C.grant_spells_templar_psydon(H)
-			to_chat(H, span_warning("You are a believer of the Old God. You lack the ability to heal than the false Gods, yet you make up to it in faith and skill."))
-			H.mind.adjust_skillrank(/datum/skill/misc/athletics, 1, TRUE) 
+			to_chat(H, span_warning("You are a believer of the Old God. Despite all this time you have kept to your faith and continue to serve him. You lack powers, what you make up in prowess and experience."))
+			H.mind.adjust_skillrank(/datum/skill/misc/athletics, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/sewing, 2, TRUE) // For healing.
 		else
 			C.grant_spells_templar(H)
 	H.verbs += list(/mob/living/carbon/human/proc/devotionreport, /mob/living/carbon/human/proc/clericpray)
