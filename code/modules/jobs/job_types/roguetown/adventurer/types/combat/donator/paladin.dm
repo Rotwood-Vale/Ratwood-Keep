@@ -10,7 +10,7 @@
 	category_tags = list(CTAG_ADVENTURER)
 
 /datum/outfit/job/roguetown/adventurer/paladin
-	allowed_patrons = list(/datum/patron/old_god, ALL_CLERIC_PATRONS)
+	allowed_patrons = list(ALL_CLERIC_PATRONS)
 	
 
 /datum/outfit/job/roguetown/adventurer/paladin/pre_equip(mob/living/carbon/human/H)
@@ -26,8 +26,6 @@
 			neck = /obj/item/clothing/neck/roguetown/psicross/pestra
 		if("Noc")
 			neck = /obj/item/clothing/neck/roguetown/psicross/noc
-		if("Psydon")
-			neck = /obj/item/clothing/neck/roguetown/psicross/silver
 
 
 	H.adjust_blindness(-3)
@@ -160,11 +158,5 @@
 		cloak = /obj/item/clothing/cloak/tabard/crusader/tief
 	var/datum/devotion/C = new /datum/devotion(H, H.patron)
 	//Max devotion limit - Paladins are stronger but cannot pray to gain all abilities beyond t1
-	switch(H.patron.name)
-		if("Psydon") 
-			to_chat(H, span_warning("You are a believer of the Old God. Despite all this time you have kept to your faith and continue to serve him. You lack powers, what you make up in prowess and experience."))
-			H.mind.adjust_skillrank(/datum/skill/misc/athletics, 1, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/misc/sewing, 2, TRUE) // For healing.
-		else
-			C.grant_spells_templar(H)
+	C.grant_spells_templar(H)
 	H.verbs += list(/mob/living/carbon/human/proc/devotionreport, /mob/living/carbon/human/proc/clericpray)
