@@ -49,6 +49,7 @@
 				HM.on_life()
 
 		if(mode == AI_OFF)
+			handle_vamp_dreams()
 			if(IsSleeping())
 				if(health > 0)
 					if(has_status_effect(/datum/status_effect/debuff/sleepytime))
@@ -404,6 +405,25 @@
 		Unconscious(80)
 	// Tissues die without blood circulation
 	adjustBruteLoss(2)
+
+/mob/living/carbon/human/proc/handle_vamp_dreams()
+	if(!HAS_TRAIT(src, TRAIT_VAMP_DREAMS))
+		return
+	if(!mind)
+		return
+	if(!has_status_effect(/datum/status_effect/debuff/vamp_dreams))
+		return
+	if(!eyesclosed)
+		return
+	if(mobility_flags & MOBILITY_STAND)
+		return
+	if(!istype(loc, /obj/structure/closet/crate/coffin))
+		return
+	var/obj/structure/closet/crate/coffin/coffin = loc
+	if(coffin.opened)
+		return
+	remove_status_effect(/datum/status_effect/debuff/vamp_dreams)
+	mind.sleep_adv.advance_cycle()
 
 #undef THERMAL_PROTECTION_HEAD
 #undef THERMAL_PROTECTION_CHEST

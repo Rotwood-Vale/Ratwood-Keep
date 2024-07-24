@@ -161,11 +161,19 @@
 	mind.current << browse(null, "window=dreams")
 
 /datum/sleep_adv/proc/process_sleep()
-	if(!mind.current)
-		return
-	if(mind.current.IsSleeping())
+	if(is_considered_sleeping())
 		return
 	close_ui()
+
+/datum/sleep_adv/proc/is_considered_sleeping()
+	if(!mind.current)
+		return FALSE
+	var/has_vamp_trait = HAS_TRAIT(mind.current, TRAIT_VAMP_DREAMS)
+	if(has_vamp_trait)
+		return TRUE
+	if(mind.current.IsSleeping())
+		return TRUE
+	return FALSE
 
 /datum/sleep_adv/proc/can_buy_skill(skill_type)
 	return (sleep_adv_points >= get_skill_cost(skill_type))
@@ -255,7 +263,7 @@
 	if(!mind.current)
 		close_ui()
 		return
-	if(!mind.current.IsSleeping())
+	if(!is_considered_sleeping())
 		close_ui()
 		return
 	switch(href_list["task"])
