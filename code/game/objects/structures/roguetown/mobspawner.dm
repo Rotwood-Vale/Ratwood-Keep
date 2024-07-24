@@ -18,8 +18,12 @@ var/global/total_spawned_mobs = 0
         ..() // Call the parent constructor
         // Initialize landmarks
         adventurer_landmarks = get_all_adventurer_landmarks()
-        // Start the spawning process immediately upon creation
-        start_spawning()
+        // Ensure the spawner is in the valid area
+        if (!is_in_valid_area(src))
+            src.dell() // Delete the spawner if it’s not in the valid area
+        else
+            // Start the spawning process immediately upon creation
+            start_spawning()
 
     proc/start_spawning()
         // Start a timer with a controlled interval
@@ -76,10 +80,10 @@ var/global/total_spawned_mobs = 0
 
         return TRUE
 
-    proc/is_in_valid_area(turf/T)
-        // This function checks if the turf is within the valid area
-        var/area/A = T.area // Get the area of the turf
-        return (A == valid_area) // Check if it matches the valid area
+    proc/is_in_valid_area(atom/A)
+        // This function checks if the given atom is within the valid area
+        var/area/area_check = locate(A.x, A.y, A.z) // Locate the area based on the atom's coordinates
+        return (area_check == valid_area) // Check if it matches the valid area
 
     proc/get_all_adventurer_landmarks()
         var/list/landmarks = list()
