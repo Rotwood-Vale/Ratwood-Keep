@@ -13884,6 +13884,10 @@
 	},
 /turf/open/floor/rogue/hexstone,
 /area/rogue/indoors/town/church)
+"rsN" = (
+/obj/structure/roguemachine/vendor/smiths,
+/turf/closed/wall/mineral/rogue/craftstone,
+/area/rogue/indoors/town/dwarfin)
 "rsW" = (
 /obj/machinery/light/rogue/firebowl/standing/blue,
 /turf/open/floor/rogue/ruinedwood{
@@ -282068,7 +282072,7 @@ wbg
 qPK
 wVI
 wVI
-sco
+rsN
 rCt
 gnI
 gnI

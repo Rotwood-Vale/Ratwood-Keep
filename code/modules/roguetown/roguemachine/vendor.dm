@@ -270,3 +270,6 @@
 		held_items[P]["NAME"] = P.name
 		held_items[P]["PRICE"] = 10
 	update_icon()
+
+/obj/structure/roguemachine/vendor/smiths
+	keycontrol = "blacksmith"
