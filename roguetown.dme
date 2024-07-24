@@ -2254,6 +2254,7 @@
 #include "code\modules\jobs\job_types\roguetown\goblin\goblinsmith.dm"
 #include "code\modules\jobs\job_types\roguetown\mercenaries\desertrider.dm"
 #include "code\modules\jobs\job_types\roguetown\mercenaries\grenzelhoft.dm"
+#include "code\modules\jobs\job_types\roguetown\mercenaries\guildmaster.dm"
 #include "code\modules\jobs\job_types\roguetown\nobility\bailiff.dm"
 #include "code\modules\jobs\job_types\roguetown\nobility\captain.dm"
 #include "code\modules\jobs\job_types\roguetown\nobility\hand.dm"
