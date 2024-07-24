@@ -10352,6 +10352,12 @@
 /obj/structure/chair/stool/rogue,
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/under/cavewet/bogcaves)
+"mQF" = (
+/obj/machinery/light/rogue/torchholder{
+	pixel_y = 26
+	},
+/turf/open/floor/rogue/cobblerock,
+/area/rogue/outdoors/rtfield)
 "mRr" = (
 /obj/structure/ladder,
 /turf/open/floor/rogue/cobble,
@@ -16252,6 +16258,9 @@
 /area/rogue/indoors/town/manor)
 "uxf" = (
 /mob/living/simple_animal/hostile/retaliate/rogue/cow,
+/obj/machinery/light/rogue/torchholder{
+	pixel_y = 26
+	},
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors/rtfield)
 "uxU" = (
@@ -263265,7 +263274,7 @@ fxx
 fxx
 fxx
 fxx
-fxx
+mQF
 fxx
 fxx
 fxx
@@ -267306,7 +267315,7 @@ uaL
 uaL
 paf
 uaL
-qvR
+gex
 wSn
 qbG
 qbG
