@@ -1,12 +1,14 @@
 {
-    "german": {
+    "full": {
         "axe": "axt",
         "bad": "schlecht",
         "beautiful": "schön",
         "big": "groß",
+        "great": "groß",
         "good bye": ["auf wiedersehen", "tschüss"],
-        "idiot":"schweinhund",
-        "dumb":"dummkopf",
+        "goodbye": ["auf wiedersehen", "tschüss"],
+        "idiot": "schweinhund",
+        "dumb": "dummkopf",
         "cake": "kuchen",
         "captain": "kapitän",
         "cat": "katze",
@@ -37,7 +39,7 @@
         "sword": "schwert",
         "thanks": "danke",
         "thank you": "danke",
-        "the ": "die",
+        "the": "die",
         "thi": "tii",
         "ugly": "hässlich",
         "very": "sehr",
@@ -64,12 +66,18 @@
         "vampire": "vampir",
         "black": "schwarz",
         "church": "kirche",
-        "is ": "ist",
+        "is": "ist",
         "queen": "königin",
         "bog": ["moor", "sumpf"],
         "town": "stadt",
         "an": "eine",
         "fellow": "kollege",
         "colleague": "kollege"
+    },
+    "start": {
+
+    },
+    "syllable": {
+
     }
 }

@@ -94,7 +94,7 @@
 		/datum/descriptor_choice/prominent_one,
 		/datum/descriptor_choice/prominent_two,
 	)
-	
+
 /datum/species/vulpkanin/check_roundstart_eligible()
 	return TRUE
 
@@ -139,5 +139,15 @@
 /datum/species/vulpkanin/get_random_body_markings(list/passed_features)
 	return assemble_body_markings_from_set(GLOB.body_marking_sets_by_type[/datum/body_marking_set/bellysockstertiary], passed_features, src)
 
+		//Groups of Accents for each race set by associated 'skin_tone', see 'get_skin_list' above
+		// "full" group in JSON lists
 /datum/species/vulpkanin/get_accent(mob/living/carbon/human/H)
-		return strings("proper_replacement.json", "proper")
+		return strings("proper_replacement.json", "full")
+
+		// "start" group in JSON lists
+/datum/species/vulpkanin/get_accent_start(mob/living/carbon/human/H)
+		return strings("proper_replacement.json", "start")
+
+		// "syllable" group in JSON lists
+/datum/species/vulpkanin/get_accent_any(mob/living/carbon/human/H)
+		return strings("proper_replacement.json", "syllable")

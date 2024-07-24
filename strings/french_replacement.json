@@ -1,18 +1,25 @@
 {
     "french": {
-        "shi": "shee",
-        "thi": "thee",
-        "no": "non",
-        "I'm ": "j' ",
-        " a ": " un ",
-        " and ": " et ",
-        "the ": "l' ",
-        "I ": "j' ",
-        "with": "weeth",
-        "of ": "de ",
-        "bye": ["adieu",  "au revoir"],
-        "mom ": "mama ",
-        "my ": "mon ",
-        "thanks": "merci"
+        "full": {
+            "no": "non",
+            "I\'m ": "j\'",
+            "a": "un",
+            "and": "et",
+            "the": "l\'",
+            "I": "j\'",
+            "with": "weeth",
+            "of": "de",
+            "bye": ["adieu",  "au revoir"],
+            "mom": "mama",
+            "my": "mon",
+            "thanks": "merci"
+        },
+        "start": {
+
+        },
+        "syllable": {
+            "shi": "shee",
+            "thi": "thee",
+        }
     }
 }

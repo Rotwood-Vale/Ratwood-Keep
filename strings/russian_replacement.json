@@ -1,7 +1,19 @@
 {
     "russian": {
-        "c": "k",
-        "kh": "ch",
-        "r": "rr"
+        "full": {
+            "I", "We"
+        },
+        "start": {
+            "who": "whom"
+        },
+        "syllable": {
+            "c": "k",
+            "h": "kh",
+            "i": "ee",
+            "ing": "in\'",
+            "kh": "ch",
+            "r": "rr",
+            "w": "v"
+        }
     }
 }

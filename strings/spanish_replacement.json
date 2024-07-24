@@ -1,19 +1,35 @@
 {
     "spanish": {
-        "shi": "chee",
-        "thi": "thee",
-        "sh": "ch",
-        "the ": "el ",
-        "s": "ss",
-        "r": "rr",
-        "ish": "eesh",
-        "hello": "hola",
-        "goodbye": "adios",
-        "my": "mi",
-        "it": "et",
-        "is": "es",
-        "in": "en",
-        "bye": "adios",
-        "thanks": "gracias"
+        "full": {
+            "hello": "hola",
+            "goodbye": "adiós",
+            "bye": "adiós",
+            "my": "mi",
+            "it": "et",
+            "is": "es",
+            "in": "en",
+            "the": "el",
+            "jerk": "weón",
+            "fool": "weón",
+            "idiot": "weón",
+            "mate": "weón",
+            "bro": "weón",
+            "dude": "weón",
+            "nimrod": "weón",
+            "gnerd": "weón",
+            "thing": "wea",
+            "form of": "forma de",
+            "shape of": "forma de"
+        },
+        "start": {
+            "friend": "weón"
+        },
+        "syllable": {
+            "shi": "chee",
+            "thi": "thee",
+            "sh": "ch",
+            "s": "ss",
+            "r": "rr"
+        }
     }
 }

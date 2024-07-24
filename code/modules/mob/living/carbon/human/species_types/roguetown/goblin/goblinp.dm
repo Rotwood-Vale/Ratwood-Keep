@@ -98,5 +98,15 @@
 	UnregisterSignal(C, COMSIG_MOB_SAY)
 
 
+		//Groups of Accents for each race set by associated 'skin_tone', see 'get_skin_list' above
+		// "full" group in JSON lists
 /datum/species/goblinp/get_accent(mob/living/carbon/human/H)
-		return strings("norf_replacement.json", "norf")
+		return strings("norf_replacement.json", "full")
+
+		// "start" group in JSON lists
+/datum/species/goblinp/get_accent_start(mob/living/carbon/human/H)
+		return strings("norf_replacement.json", "start")
+
+		// "syllable" group in JSON lists
+/datum/species/goblinp/get_accent_any(mob/living/carbon/human/H)
+		return strings("norf_replacement.json", "syllable")

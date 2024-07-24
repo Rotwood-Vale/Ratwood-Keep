@@ -136,10 +136,30 @@
 /datum/species/halforc/random_surname()
 	return
 
+		//Groups of Accents for each race set by associated 'skin_tone', see 'get_skin_list' above
+		// "full" group in JSON lists
 /datum/species/halforc/get_accent(mob/living/carbon/human/H)
 		switch(H.skin_tone)
 				if(SKIN_COLOR_BLOOD_AXE) //Grenzelhoft
-						return strings("norf_replacement.json", "norf")
+						return strings("norf_replacement.json", "full")
 				if(SKIN_COLOR_BLACK_HAMMER) //Hammerhold
-						return strings("norf_replacement.json", "norf")
-		return strings("middlespeak.json", "middle")
+						return strings("norf_replacement.json", "full")
+		return strings("middlespeak.json", "full")
+
+		// "start" group in JSON lists
+/datum/species/halforc/get_accent_start(mob/living/carbon/human/H)
+		switch(H.skin_tone)
+				if(SKIN_COLOR_BLOOD_AXE) //Grenzelhoft
+						return strings("norf_replacement.json", "start")
+				if(SKIN_COLOR_BLACK_HAMMER) //Hammerhold
+						return strings("norf_replacement.json", "start")
+		return strings("middlespeak.json", "start")
+
+		// "syllable" group in JSON lists
+/datum/species/halforc/get_accent_any(mob/living/carbon/human/H)
+		switch(H.skin_tone)
+				if(SKIN_COLOR_BLOOD_AXE) //Grenzelhoft
+						return strings("norf_replacement.json", "syllable")
+				if(SKIN_COLOR_BLACK_HAMMER) //Hammerhold
+						return strings("norf_replacement.json", "syllable")
+		return strings("middlespeak.json", "syllable")

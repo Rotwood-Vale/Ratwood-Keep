@@ -1,16 +1,24 @@
 {
-  "welsh": {
-      "a": "aa",
-      "ed": "t",
-      "er": "a",
-      "h": "\'",
-      "ing": "en",
-      "i": "e",
-      "o": "uu",
-      "r": "rr",
-      "y ": "i ",
-      "y": "\'",
-      "z": "ss",
-      "fuck": "ffyc"
-  }
+    "welsh": {
+        "full": {
+
+        },
+        "start": {
+
+        },
+        "syllable": {
+            "a": "aa",
+            "ed": "t",
+            "er": "a",
+            "h": "\'",
+            "ing": "en",
+            "i": "e",
+            "o": "uu",
+            "r": "rr",
+            "y ": "i ",
+            "y": "\'",
+            "z": "ss",
+            "fuck": "ffyc"
+        }
+    }
 }
