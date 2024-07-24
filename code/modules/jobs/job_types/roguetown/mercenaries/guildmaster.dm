@@ -61,6 +61,7 @@
 				shoes = /obj/item/clothing/shoes/roguetown/boots
 				armor = /obj/item/clothing/suit/roguetown/armor/brigandine
 				belt = /obj/item/storage/belt/rogue/leather/hand
+				beltl = /obj/item/rogueweapon/sword/sabre/dec
 				id = /obj/item/clothing/ring/gold
 				backl = /obj/item/storage/backpack/rogue/backpack
 				// Two pies. Two wine. One healing. One mana. Spare keys keyring(Told that keys are being touched. WIL)
@@ -146,6 +147,7 @@
 				H.change_stat("speed", -1) //-3 You are old, man. Life ain't shit. Also +2 Int from Age.
 				H.change_stat("fortune", 2) // Beware of an old man in a profession where men usually die young
 				//Equipment
+				horse = /mob/living/simple_animal/hostile/retaliate/rogue/saigabuck/tame/saddled
 				wrists = /obj/item/clothing/wrists/roguetown/bracers
 				shoes = /obj/item/clothing/shoes/roguetown/shalal
 				head = /obj/item/clothing/head/roguetown/roguehood/shalal
