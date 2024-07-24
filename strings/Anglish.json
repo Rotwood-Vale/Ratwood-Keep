@@ -1,5 +1,8 @@
 {
-    "Anglish": {
+    "full": {
+
+    },
+    "start": {
         "venison": "deerflesh",
         "pork": "pigflesh",
         "bacon": "pigskin",
@@ -83,7 +86,7 @@
         "friday": "freyasdag",
         "foul": "fule",
         "helmet": "helm",
-        "in front": "to fore",
+        "in front": "to the fore",
         "apart": "asunder",
         "support": "back",
         "apartment": "bedsit",
@@ -177,5 +180,8 @@
         "vocabulary": "wordstock",
         "ubiquitous": "everywhere",
         "fascinating": "bewitching"
+    },
+    "syllable": {
+
     }
 }

@@ -1,9 +1,9 @@
 {
-    "proper": {
+    "full": {
         "shit": "excrement",
         "ass": "buttocks",
         "cunt": "genitals",
-        "pussy ": "genitals",
+        "pussy": "genitals",
         "fuck": "coitus",
         "cum": "emission",
         "titty": "breast",
@@ -18,5 +18,11 @@
         "whore": "maiden",
         "bastard": "fatherless",
         "twat": "genitals"
+    },
+    "start": {
+
+    },
+    "syllable": {
+
     }
 }

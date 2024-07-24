@@ -103,16 +103,48 @@
 
 	))
 
+//Groups of Accents for each race set by associated 'skin_tone', see 'get_skin_list' above
+// "full" group in JSON lists
 /datum/species/human/northern/get_accent(mob/living/carbon/human/H)
 		switch(H.skin_tone)
 				if(SKIN_COLOR_GRENZELHOFT) //Grenzelhoft
-						return strings("german_replacement.json", "german")
+						return strings("german_replacement.json", "full")
 				if(SKIN_COLOR_HAMMERHOLD) //Hammerhold
-						return strings("Anglish.json", "Anglish")
+						return strings("Anglish.json", "full")
 				if(SKIN_COLOR_OTAVA) //Mama mia
-						return strings("italian_replacement.json", "italian")
+						return strings("italian_replacement.json", "full")
 				if(SKIN_COLOR_ETRUSCA) //Papa pia
-						return strings("spanish_replacement.json", "spanish")
+						return strings("spanish_replacement.json", "full")
 				if(SKIN_COLOR_EBON)
-						return strings("middlespeak.json", "middle")
+						return strings("middlespeak.json", "full")
+		return null
+
+// "start" group in JSON lists
+/datum/species/human/northern/get_accent_start(mob/living/carbon/human/H)
+		switch(H.skin_tone)
+				if(SKIN_COLOR_GRENZELHOFT) //Grenzelhoft
+						return strings("german_replacement.json", "start")
+				if(SKIN_COLOR_HAMMERHOLD) //Hammerhold
+						return strings("Anglish.json", "start")
+				if(SKIN_COLOR_OTAVA) //Mama mia
+						return strings("italian_replacement.json", "start")
+				if(SKIN_COLOR_ETRUSCA) //Papa pia
+						return strings("spanish_replacement.json", "start")
+				if(SKIN_COLOR_EBON)
+						return strings("middlespeak.json", "start")
+		return null
+
+// "syllable" group in JSON lists
+/datum/species/human/northern/get_accent_any(mob/living/carbon/human/H)
+		switch(H.skin_tone)
+				if(SKIN_COLOR_GRENZELHOFT) //Grenzelhoft
+						return strings("german_replacement.json", "syllable")
+				if(SKIN_COLOR_HAMMERHOLD) //Hammerhold
+						return strings("Anglish.json", "syllable")
+				if(SKIN_COLOR_OTAVA) //Mama mia
+						return strings("italian_replacement.json", "syllable")
+				if(SKIN_COLOR_ETRUSCA) //Papa pia
+						return strings("spanish_replacement.json", "syllable")
+				if(SKIN_COLOR_EBON)
+						return strings("middlespeak.json", "syllable")
 		return null

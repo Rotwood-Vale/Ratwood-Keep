@@ -17,12 +17,11 @@
 /datum/species/proc/handle_speech(datum/source, mob/speech_args)
 	var/message = speech_args[SPEECH_MESSAGE]
 
-	message = treat_message_accent(message, get_accent(source), REGEX_FULLWORD)
-	message = treat_message_accent(message, get_accent_start(source), REGEX_STARTWORD)
-	message = treat_message_accent(message, get_accent_any(source), REGEX_ANY)
-
 	message = treat_message_accent(message, strings("accent_universal.json", "universal"), REGEX_FULLWORD)
 
+	message = treat_message_accent(message, get_accent(source), REGEX_FULLWORD) // "full" group in JSON
+	message = treat_message_accent(message, get_accent_start(source), REGEX_STARTWORD) // "start" group in JSON
+	message = treat_message_accent(message, get_accent_any(source), REGEX_ANY) // "syllable" group in JSON
 	speech_args[SPEECH_MESSAGE] = trim(message)
 
 
