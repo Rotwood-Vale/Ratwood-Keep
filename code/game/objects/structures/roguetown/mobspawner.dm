@@ -21,17 +21,19 @@ var/global/total_spawned_mobs = 0
         adventurer_landmarks = get_all_adventurer_landmarks()
         // Start the spawning process immediately upon creation
         start_spawning()
+        // Test spawn directly
+        spawn_random_mobs(1)
 
     proc/start_spawning()
-        // Start a timer with a controlled interval
-        spawn_timer = addtimer(CALLBACK(src, .proc/spawn_and_continue), spawn_interval, TIMER_STOPPABLE)
+        world << "Debug: Starting spawn timer"
+        spawn_timer = addtimer(spawn_interval, CALLBACK(src, .proc/spawn_and_continue))
 
     proc/spawn_and_continue()
-        // Check if we need to spawn more mobs
+        world << "Debug: Checking spawn conditions"
         if (current_spawned_mobs < max_spawned_mobs)
+            world << "Debug: Attempting to spawn mobs"
             spawn_random_mobs(1) // Attempt to spawn 1 mob each time
-        // Continue spawning with a controlled interval
-        spawn_timer = addtimer(CALLBACK(src, .proc/spawn_and_continue), spawn_interval, TIMER_STOPPABLE)
+        spawn_timer = addtimer(spawn_interval, CALLBACK(src, .proc/spawn_and_continue))
 
     proc/spawn_random_mobs(var/num_to_spawn)
         var/spawn_chance = 100 // 100% chance to spawn if conditions are met
@@ -42,7 +44,6 @@ var/global/total_spawned_mobs = 0
                 if (spawn_turf)
                     var/mob_type = pick(mob_types) // Pick a random mob type from the list
                     if (mob_type)
-                        // Ensure we do not exceed the maximum number of spawned mobs
                         if (total_spawned_mobs < max_spawned_mobs)
                             var/mob/new_mob = new mob_type(spawn_turf)
                             if (new_mob)
@@ -56,40 +57,30 @@ var/global/total_spawned_mobs = 0
         for (var/turf/T in range(7, src)) // Check a range of turfs around the spawner
             if (is_valid_spawn_turf(T))
                 valid_turfs += T
-        // Return a random valid turf if available
-        if (valid_turfs)
+        world << "Debug: Found " + valid_turfs.len + " valid turfs"
+        if (valid_turfs.len > 0)
             return pick(valid_turfs)
         return null // Return null if no valid turfs found
 
     proc/is_valid_spawn_turf(turf/T)
-        // Check if the turf is in the correct biome area
         if (!(istype(T, /turf/open/floor/rogue/dirt) || \
             istype(T, /turf/open/floor/rogue/grass) || \
             istype(T, /turf/open/water)))
             return FALSE
-
-        // Check if the turf is within the valid area using a different approach
         if (!is_in_valid_area(T))
             return FALSE
-
-        // Check if the turf is too close to adventurer start markers
         for (var/obj/effect/landmark/start/adventurer/L in adventurer_landmarks)
             if (get_dist(T, L) < 10) // Replace 10 with your desired radius
                 return FALSE
-
         return TRUE
 
     proc/is_in_valid_area(turf/T)
-        // This function checks if the turf is within the valid area
-        for (var/area/A in world)
-            if (istype(A, valid_area))
-                if (A.contains(T))
-                    return TRUE
-        return FALSE
+        var/area/A = locate(T.x, T.y, T.z)
+        world << "Debug: Turf " + T + " is in area " + A
+        return (A == valid_area)
 
     proc/get_all_adventurer_landmarks()
         var/list/landmarks = list()
-        // Check for adventurer landmarks in the world
         for (var/obj/effect/landmark/start/adventurer/L in world)
             landmarks += L
         for (var/obj/effect/landmark/start/adventurerlate/L in world)
@@ -100,10 +91,8 @@ var/global/total_spawned_mobs = 0
         UnregisterSignal(M, COMSIG_PARENT_QDELETING)
         current_spawned_mobs = max(0, current_spawned_mobs - 1)
         total_spawned_mobs = max(0, total_spawned_mobs - 1) // Decrement global counter
-        // Spawn a new mob to replace the destroyed one, but respect the hard limit
         if (total_spawned_mobs < max_spawned_mobs)
             spawn_random_mobs(1)
 
     proc/players_nearby(turf/T, distance)
-        // Removed player checks as requested
         return FALSE
