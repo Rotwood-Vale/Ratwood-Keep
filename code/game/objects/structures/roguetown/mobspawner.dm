@@ -68,6 +68,8 @@ var/global/max_total_spawned_mobs = 40 // New global variable for the total limi
             return FALSE
         if (!is_in_valid_area(T))
             return FALSE
+        if (T.get_lumcount() > 0.2)
+            return FALSE
         for (var/L in adventurer_landmarks)
             if (get_dist(T, L) < 10)
                 return FALSE
