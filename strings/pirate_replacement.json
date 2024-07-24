@@ -59,6 +59,13 @@
 		"servant": "knave",
 		"rear": "dungbie",
 		"chest": "coffer",
-		"chests": "coffers"
+		"chests": "coffers",
+		"punish": "keelhaul",
+		"punished": "keelhauled",
+		"floor": "deck",
+		"ass": "booty",
+		"butt": "booty",
+		"mercenary": "privateer",
+		"mercenaries": "privateers"
 		}		
 }
