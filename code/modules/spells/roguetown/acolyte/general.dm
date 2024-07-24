@@ -127,4 +127,3 @@
 		target.blood_volume += BLOOD_VOLUME_SURVIVE
 		return TRUE
 	return FALSE
-	
