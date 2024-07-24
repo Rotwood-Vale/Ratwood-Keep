@@ -129,22 +129,6 @@
 	max_devotion = CLERIC_REQ_1 //Max devotion limit - Paladins are stronger but cannot pray to gain all abilities beyond t1
 	max_progression = CLERIC_REQ_1
 
-/datum/devotion/proc/grant_spells_templar_psydon(mob/living/carbon/human/H)
-	if(!H || !H.mind || !patron)
-		return
-
-	var/list/spelllist = list(/obj/effect/proc_holder/spell/targeted/churn/psydon, patron.t0)
-	for(var/spell_type in spelllist)
-		if(!spell_type || H.mind.has_spell(spell_type))
-			continue
-		var/newspell = new spell_type
-		H.mind.AddSpell(newspell)
-		LAZYADD(granted_spells, newspell)
-	level = CLERIC_T0
-	update_devotion(50, 50, silent = TRUE)
-	max_devotion = CLERIC_REQ_1 //Max devotion limit - Paladins are stronger but cannot pray to gain all abilities beyond t1
-	max_progression = CLERIC_REQ_1
-
 /datum/devotion/proc/grant_spells_churchling(mob/living/carbon/human/H)
 	if(!H || !H.mind || !patron)
 		return
