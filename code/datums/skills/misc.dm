@@ -33,6 +33,7 @@
 
 /datum/skill/misc/medicine
 	name = "Medicine"
+	dream_cost_base = 3
 
 /datum/skill/misc/sewing
 	name = "Sewing"
