@@ -43,11 +43,9 @@
 	return TRUE
 
 /datum/sex_controller/proc/can_violate_victim(mob/living/carbon/human/victim)
-	if(!user.client)
+	if(!victim.mind)
 		return FALSE
-	if(!user.mind)
-		return FALSE
-	if(!user.mind.key)
+	if(!victim.mind.key)
 		return FALSE
 	if(!user.client.prefs.violated[victim.mind.key])
 		return FALSE
@@ -63,7 +61,7 @@
 	if(!user.defiant && !victim.defiant)
 		return FALSE
 	// Need to violate AFK clients
-	if(!victim.client)
+	if(victim.mind && victim.mind.key && !victim.client)
 		return TRUE
 	// Need to violate combat mode people
 	if(victim.cmode)
