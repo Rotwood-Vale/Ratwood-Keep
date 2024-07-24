@@ -25,14 +25,12 @@ var/global/total_spawned_mobs = 0
         spawn_random_mobs(1)
 
     proc/start_spawning()
-        world << "Debug: Starting spawn timer"
         spawn_timer = addtimer(spawn_interval, CALLBACK(src, .proc/spawn_and_continue))
 
     proc/spawn_and_continue()
-        world << "Debug: Checking spawn conditions"
         if (current_spawned_mobs < max_spawned_mobs)
-            world << "Debug: Attempting to spawn mobs"
             spawn_random_mobs(1) // Attempt to spawn 1 mob each time
+        // Continue spawning with a controlled interval
         spawn_timer = addtimer(spawn_interval, CALLBACK(src, .proc/spawn_and_continue))
 
     proc/spawn_random_mobs(var/num_to_spawn)
@@ -57,7 +55,6 @@ var/global/total_spawned_mobs = 0
         for (var/turf/T in range(7, src)) // Check a range of turfs around the spawner
             if (is_valid_spawn_turf(T))
                 valid_turfs += T
-        world << "Debug: Found " + valid_turfs.len + " valid turfs"
         if (valid_turfs.len > 0)
             return pick(valid_turfs)
         return null // Return null if no valid turfs found
@@ -76,7 +73,6 @@ var/global/total_spawned_mobs = 0
 
     proc/is_in_valid_area(turf/T)
         var/area/A = locate(T.x, T.y, T.z)
-        world << "Debug: Turf " + T + " is in area " + A
         return (A == valid_area)
 
     proc/get_all_adventurer_landmarks()
