@@ -11920,7 +11920,8 @@
 /area/rogue/indoors/town/bath)
 "oQJ" = (
 /obj/structure/mineral_door/wood{
-	lockid = "butcher"
+	lockid = "butcher";
+	locked = 1
 	},
 /turf/open/floor/rogue/cobble,
 /area/rogue/indoors)
