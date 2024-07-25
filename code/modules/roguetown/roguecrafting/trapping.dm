@@ -1,9 +1,10 @@
 
 /datum/crafting_recipe/roguetown/trapping
 	tools = list(/obj/item/rogueweapon/hammer)
+	req_table = TRUE
 	skillcraft = /datum/skill/craft/traps
 	verbage_simple = "puts together"
-	verbage = "constructs"
+	verbage = "puts together"
 
 
 /datum/crafting_recipe/roguetown/trapping/mantrap
