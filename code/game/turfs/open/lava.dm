@@ -178,10 +178,10 @@
 
 //			L.adjustFireLoss(50)
 			if(L) //mobs turning into object corpses could get deleted here.
-				L.adjust_fire_stacks(100)
+				L.adjust_fire_stacks(25) //reduced from 100 since fire already fucks shit on its own pretty fast...
 				L.IgniteMob()
-				if(L.health <= 0)
-					L.dust(drop_items = TRUE)
+//				if(L.health <= 0)
+//					L.dust(drop_items = TRUE)
 /turf/open/lava/smooth
 	name = "lava"
 	baseturfs = /turf/open/lava/smooth
