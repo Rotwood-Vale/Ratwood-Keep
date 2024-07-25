@@ -31,7 +31,7 @@
 	head = /obj/item/clothing/head/roguetown/chaperon/bailiff
 	backl = /obj/item/storage/backpack/rogue/satchel
 	belt = /obj/item/storage/belt/rogue/leather/plaquegold
-	beltl = /obj/item/keyring/sheriff
+	beltl = /obj/item/keyring/bailiff
 	beltr = /obj/item/rogueweapon/mace
 	cloak = /obj/item/clothing/cloak/stabard/surcoat/bailiff
 	gloves = /obj/item/clothing/gloves/roguetown/angle
