@@ -199,7 +199,7 @@
 				continue
 			if(pacify_coffin(stuffing, user, deep, give_pq = FALSE))
 				success = TRUE
-	// Success is actually the ckey of the last attacker so we can prevent PQ farming from fragging people
+	// Success is actually the ckey of the last attacker so we can prevent PQ farming from fragging people // DOESNT WORK "success" is not a ckey, just a bool for now
 	if(success && give_pq && user?.ckey && (user.ckey != success))
 		adjust_playerquality(give_pq, user.ckey)
 	return success
