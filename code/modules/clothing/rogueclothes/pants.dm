@@ -132,6 +132,7 @@
 	smeltresult = /obj/item/ingot/steel
 	r_sleeve_status = SLEEVE_NOMOD
 	l_sleeve_status = SLEEVE_NOMOD
+	w_class = WEIGHT_CLASS_NORMAL
 
 /obj/item/clothing/under/roguetown/brayette
 	name = "brayette"
@@ -149,6 +150,7 @@
 	smeltresult = /obj/item/ingot/steel
 	r_sleeve_status = SLEEVE_NOMOD
 	l_sleeve_status = SLEEVE_NOMOD
+	w_class = WEIGHT_CLASS_NORMAL
 
 /obj/item/clothing/under/roguetown/chainlegs/iron
 	icon_state = "ichain_legs"
@@ -171,6 +173,7 @@
 	anvilrepair = /datum/skill/craft/armorsmithing
 	r_sleeve_status = SLEEVE_NOMOD
 	l_sleeve_status = SLEEVE_NOMOD
+	w_class = WEIGHT_CLASS_BULKY
 
 /obj/item/clothing/under/roguetown/loincloth
 	name = "loincloth"
