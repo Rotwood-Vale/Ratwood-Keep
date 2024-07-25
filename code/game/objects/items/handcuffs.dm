@@ -257,7 +257,7 @@
 	icon_state = "beartrap"
 	desc = ""
 	var/armed = 0
-	var/trap_damage = 90
+	var/trap_damage = 120
 	embedding = list("embedded_unsafe_removal_time" = 40, "embedded_pain_chance" = 10, "embedded_pain_multiplier" = 1, "embed_chance" = 0, "embedded_fall_chance" = 0)
 	max_integrity = 100
 
@@ -277,7 +277,7 @@
 					span_userdanger("I trigger \the [src]!"))
 			C.emote("agony")
 			C.Stun(80)
-			BP.add_wound(/datum/wound/fracture)
+			BP.add_wound(/datum/wound/dislocation, /datum/wound/fracture)
 			BP.update_disabled()
 			C.apply_damage(trap_damage, BRUTE, def_zone)
 			C.consider_ambush()
@@ -301,7 +301,7 @@
 				C.visible_message(span_boldwarning("[C] triggers \the [src]."), \
 						span_userdanger("I trigger \the [src]!"))
 				C.emote("agony")
-				BP.add_wound(/datum/wound/fracture)
+				BP.add_wound(/datum/wound/dislocation, /datum/wound/fracture)
 				BP.update_disabled()
 				C.apply_damage(trap_damage, BRUTE, def_zone)
 				C.consider_ambush()
