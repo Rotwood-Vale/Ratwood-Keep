@@ -55,6 +55,7 @@
 		if(B.aggressive)
 			tamed = TRUE
 		B.aggressive = 0
+		user.log_message("tamed [B.name ? "\the [B.name]" : "an animal"] using Tame Beast.", LOG_ATTACK, color="orange")
 	return tamed
 
 /obj/effect/proc_holder/spell/targeted/conjure_glowshroom

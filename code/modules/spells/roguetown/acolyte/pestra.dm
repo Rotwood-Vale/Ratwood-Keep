@@ -20,6 +20,8 @@
 	if(ishuman(targets[1]))
 		var/mob/living/carbon/human/human_target = targets[1]
 		human_target.check_for_injuries(user)
+		user.log_message("checked [key_name(human_target)] for injuries with [miracle ? "" : "Secular"] Diagnose.", LOG_ATTACK, color="black")
+		human_target.log_message("was checked for injuries using [miracle ? "" : "Secular"] Diagnose by [key_name(user)].", LOG_ATTACK, color="black")
 		return TRUE
 	return FALSE
 
@@ -73,11 +75,15 @@
 		if(potential_organ.owner || !(potential_organ.slot in missing_organs))
 			continue
 		organs += potential_organ
+		user.log_message("reattached [key_name(target)]'s [potential_organ.slot] using Bodypart Miracle.", LOG_ATTACK, color="black")
+		target.log_message("had their [potential_organ.slot] reattached using Bodypart Miracle by [key_name(user)].", LOG_ATTACK, color="black")
 	//then target's hands
 	for(var/obj/item/organ/dismembered in target.held_items)
 		if(dismembered.owner || !(dismembered.slot in missing_organs))
 			continue
 		organs += dismembered
+		user.log_message("reattached [key_name(target)]'s [dismembered.slot] using Bodypart Miracle.", LOG_ATTACK, color="black")
+		target.log_message("had their [dismembered.slot] reattached using Bodypart Miracle by [key_name(user)].", LOG_ATTACK, color="black")
 	//then finally, 1 tile range around target
 	for(var/obj/item/organ/dismembered in range(1, target))
 		if(dismembered.owner || !(dismembered.slot in missing_organs))
@@ -116,11 +122,15 @@
 				continue
 			human_target.visible_message(span_info("\The [limb] attaches itself to [human_target]!"), \
 								span_notice("\The [limb] attaches itself to me!"))
+			user.log_message("reattached [key_name(human_target)]'s [limb] using Bodypart Miracle.", LOG_ATTACK, color="black")
+			human_target.log_message("had their [limb] reattached using Bodypart Miracle by [key_name(user)].", LOG_ATTACK, color="black")
 		for(var/obj/item/organ/organ as anything in get_organs(human_target, user))
 			if(human_target.getorganslot(organ.slot) || !organ.Insert(human_target))
 				continue
 			human_target.visible_message(span_info("\The [organ] attaches itself to [human_target]!"), \
 								span_notice("\The [organ] attaches itself to me!"))
+			user.log_message("reattached [key_name(human_target)]'s [organ] using Bodypart Miracle.", LOG_ATTACK, color="black")
+			human_target.log_message("had their [organ] reattached using Bodypart Miracle by [key_name(user)].", LOG_ATTACK, color="black")
 		if(!(human_target.mob_biotypes & MOB_UNDEAD))
 			for(var/obj/item/bodypart/limb as anything in human_target.bodyparts)
 				limb.rotted = FALSE
@@ -196,8 +206,12 @@
 		target.update_body()
 		if(!HAS_TRAIT(target, TRAIT_ROTMAN))
 			target.visible_message(span_notice("The rot leaves [target]'s body!"), span_green("I feel the rot leave my body!"))
+			user.log_message("cured [key_name(target)]'s rot using Cure Rot.", LOG_ATTACK, color="black")
+			target.log_message("had their rot cured using Cure Rot by [key_name(user)].", LOG_ATTACK, color="black")
 		else
 			target.visible_message(span_warning("The rot fails to leave [target]'s body!"), span_warning("I feel no different..."))
+			user.log_message("cast Cure Rot on [key_name(target)] but remained a rotman.", LOG_ATTACK, color="black")
+			target.log_message("had Cure Rot cast on them by [key_name(user)] but remained a rotman.", LOG_ATTACK, color="black")
 		return TRUE
 	return FALSE
 

@@ -1491,16 +1491,21 @@
 			var/firesplit = (fire_stacks + L.fire_stacks)/2
 			fire_stacks = firesplit
 			L.fire_stacks = firesplit
+			src.log_message("bumped into [key_name(L)] while both were on fire. Fire stacks: ME [src.fire_stacks], THEM [L.fire_stacks]", LOG_ATTACK, color="red")
+			L.log_message("was bumped into by [key_name(src)] while both were on fire. Fire stacks: ME [L.fire_stacks], THEM [src.fire_stacks]", LOG_ATTACK, color="orange")
 		else // If they were not
 			fire_stacks /= 2
 			L.fire_stacks += fire_stacks
-			if(L.IgniteMob()) // Ignite them
-				log_game("[key_name(src)] bumped into [key_name(L)] and set them on fire")
+			if(L.IgniteMob()) // Ignite them without extra logging
+				src.log_message("ignited [key_name(L)] by bumping into them. Fire stacks: ME [src.fire_stacks], THEM [L.fire_stacks]", LOG_ATTACK, color="red")
+				L.log_message("was ignited by [key_name(src)] from being bumped. Fire stacks: ME [L.fire_stacks], THEM [src.fire_stacks]", LOG_ATTACK, color="orange")
 
 	else if(L.on_fire) // If they were on fire and we were not
 		L.fire_stacks /= 2
 		fire_stacks += L.fire_stacks
-		IgniteMob() // Ignite us
+		if(IgniteMob()) // Ignite us without extra logging
+			src.log_message("ignited self by running into [key_name(L)]. Fire stacks: ME [src.fire_stacks], THEM [L.fire_stacks]", LOG_ATTACK, color="red")
+			L.log_message("was bumped into while on fire, igniting [key_name(src)]. Fire stacks: ME [L.fire_stacks], THEM [src.fire_stacks]", LOG_ATTACK, color="orange")
 
 //Mobs on Fire end
 

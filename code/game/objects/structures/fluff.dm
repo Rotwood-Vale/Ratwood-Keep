@@ -1119,6 +1119,7 @@
 							thewoman.adjust_triumphs(1)
 							priority_announce("[theman.real_name] has married [womanfirst]!", title = "Holy Union!", sound = 'sound/misc/bell.ogg')
 							marriage = TRUE
+							user.log_message("has joined [key_name(theman)], groom, and [key_name(thewoman)], bride, in marriage. (PRIEST)", LOG_GAME, color="black")
 							qdel(A)
 //							if(theman.has_stress(/datum/stressevent/nobel))
 //								thewoman.add_stress(/datum/stressevent/nobel)

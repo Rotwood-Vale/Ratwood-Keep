@@ -28,15 +28,12 @@
 	. += "<b>THE LAWS OF THE LAND:</b>"
 	if(!length(GLOB.laws_of_the_land))
 		. += span_danger("The land has no laws! <b>We are doomed!</b>")
-		user.log_message("looked at laws but none were set.", LOG_GAME, color="black")
 		return
 	if(!user.is_literate())
 		. += span_warning("Uhhh... I can't read them...")
-		user.log_message("looked at laws but was illiterate.", LOG_GAME, color="black")
 		return
 	for(var/i in 1 to length(GLOB.laws_of_the_land))
 		. += span_small("[i]. [GLOB.laws_of_the_land[i]]")
-	user.log_message("looked at laws of the land via SCOM.", LOG_GAME, color="black")
 
 /obj/structure/roguemachine/scomm/process()
 	if(world.time > next_decree)
@@ -53,7 +50,7 @@
 	listening = !listening
 	speaking = !speaking
 	to_chat(user, span_info("I [speaking ? "unmute" : "mute"] the SCOM."))
-	user.log_message("[speaking ? "unmuted" : "muted"] the SCOM", LOG_GAME, color="black")
+	user.log_message("[speaking ? "unmuted" : "muted"] the SCOM", LOG_ATTACK, color="black")
 	update_icon()
 
 /obj/structure/roguemachine/scomm/attack_right(mob/user)
@@ -139,8 +136,9 @@
 			S.repeat_message(raw_message, src, usedcolor, message_language)
 		for(var/obj/item/listenstone/S in SSroguemachine.scomm_machines)
 			S.repeat_message(raw_message, src, usedcolor, message_language)
-		H.log_talk("[raw_message]", LOG_TELECOMMS, tag="SCOM[message_language.name ? " [message_language.name]" : ""][usedcolor ? " #[usedcolor]" : ""]")
- 
+		var/datum/language/L = message_language
+		H.log_talk("[raw_message]", LOG_TELECOMMS, tag="SCOM[L.name ? " [L.name]" : ""][usedcolor ? " #[usedcolor]" : ""]")
+
 /obj/structure/roguemachine/scomm/proc/dictate_laws()
 	if(dictating)
 		return
@@ -189,12 +187,12 @@
 /obj/item/scomstone/attack_right(mob/user)
     user.changeNext_move(CLICK_CD_MELEE)
     var/input_text = input(user, "Enter your message:", "Message")
-	if(!ishuman(user))
-		return
-	var/mob/living/carbon/human/H = user
-	var/usedcolor = H.voice_color
-	if(H.voicecolor_override)
-		usedcolor = H.voicecolor_override
+    if(!ishuman(user))
+        return
+    var/mob/living/carbon/human/H = user
+    var/usedcolor = H.voice_color
+    if(H.voicecolor_override)
+        usedcolor = H.voicecolor_override
     if(input_text)
         for(var/obj/structure/roguemachine/scomm/S in SSroguemachine.scomm_machines)
             S.repeat_message(input_text)
@@ -202,7 +200,7 @@
             S.repeat_message(input_text)
         for(var/obj/item/listenstone/S in SSroguemachine.scomm_machines)
             S.repeat_message(input_text)
-		H.log_talk("[input_text]", LOG_TELECOMMS, tag="ERNG RMB #[usedcolor]")
+        H.log_talk("[input_text]", LOG_TELECOMMS, tag="RING RMB #[usedcolor]")
 
 /obj/item/scomstone/MiddleClick(mob/user)
 	if(.)
@@ -212,7 +210,7 @@
 	listening = !listening
 	speaking = !speaking
 	to_chat(user, span_info("I [speaking ? "unmute" : "mute"] the scomstone."))
-	user.log_message("[speaking ? "unmuted" : "muted"] the scomstone/emerald ring", LOG_GAME, color="black")
+	user.log_message("[speaking ? "unmuted" : "muted"] the scomstone/emerald ring", LOG_ATTACK, color="black")
 	update_icon()
 
 /obj/item/scomstone/Destroy()
@@ -271,7 +269,8 @@
 			S.repeat_message(raw_message, src, usedcolor, message_language)
 		for(var/obj/item/listenstone/S in SSroguemachine.scomm_machines)
 			S.repeat_message(raw_message, src, usedcolor, message_language)
-		H.log_talk("[input_text]", LOG_TELECOMMS, tag="ERNG HEAR [message_language.name ? message_language.name : "nolang"] #[usedcolor]")
+		var/datum/language/L = message_language
+		H.log_talk("[raw_message]", LOG_TELECOMMS, tag="RING HEAR[L.name ? " [L.name]" : ""][usedcolor ? " #[usedcolor]" : ""]")
 
 /obj/item/scomstone/bad
 	name = "serfstone"
@@ -310,7 +309,7 @@
 	listening = !listening
 	speaking = !speaking
 	to_chat(user, span_info("I [speaking ? "unmute" : "mute"] the scomstone."))
-	user.log_message("[speaking ? "unmuted" : "muted"] the listenstone", LOG_GAME, color="black")
+	user.log_message("[speaking ? "unmuted" : "muted"] the listenstone", LOG_ATTACK, color="black")
 	update_icon()
 	if(listening)
 		icon_state = "listenstone"

@@ -114,6 +114,7 @@
 		removeomen(OMEN_NOLORD)
 		say("By the authority of the gods, I pronounce you Ruler of all Rockhill!")
 		priority_announce("[real_name] the [dispjob] has named [HU.real_name] the inheritor of ROCKHILL!", title = "Long Live [HU.real_name]!", sound = 'sound/misc/bell.ogg')
+		src.log_message("has coronated [key_name(HU)] the new ruler of Rockhill. (PRIEST)", LOG_GAME, color="black")
 
 /mob/living/carbon/human/proc/churchexcommunicate()
 	set name = "Curse"
@@ -131,6 +132,7 @@
 			for(var/mob/living/carbon/human/H in GLOB.player_list)
 				if(H.real_name == inputty)
 					H.remove_stress(/datum/stressevent/psycurse)
+			src.log_message("has removed heretic status from [inputty]. (PRIEST)", LOG_GAME, color="black")
 			return
 		var/found = FALSE
 		for(var/mob/living/carbon/human/H in GLOB.player_list)
@@ -143,6 +145,7 @@
 			return FALSE
 		GLOB.excommunicated_players += inputty
 		priority_announce("[real_name] has put Xylix's curse of woe on [inputty] for offending the church!", title = "SHAME", sound = 'sound/misc/excomm.ogg')
+		src.log_message("has declared [inputty] a heretic. (PRIEST)", LOG_GAME, color="black")
 
 /mob/living/carbon/human/proc/churchannouncement()
 	set name = "Announcement"
@@ -155,6 +158,7 @@
 			to_chat(src, span_warning("I need to do this from the chapel."))
 			return FALSE
 		priority_announce("[inputty]", title = "The Priest Speaks", sound = 'sound/misc/bell.ogg')
+	src.log_message("makes an announcement: \"[inputty]\". (PRIEST)", LOG_GAME, color="black")
 
 /obj/effect/proc_holder/spell/self/convertrole/templar
 	name = "Recruit Templar"

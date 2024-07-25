@@ -24,9 +24,13 @@
 		var/mob/living/L = targets[1]
 		user.visible_message("<font color='yellow'>[user] points at [L]!</font>")
 		if(L.anti_magic_check(TRUE, TRUE))
+			user.log_message("failed to cast Sacred Flame on [key_name(L)] due to antimagic.", LOG_ATTACK, color="black")
+			L.log_message("was antimagic protected from Sacred Flame cast by [key_name(user)].", LOG_ATTACK, color="black")
 			return FALSE
 		L.adjust_fire_stacks(5)
 		L.IgniteMob()
+		user.log_message("ignited [key_name(L)] with Sacred Flame.", LOG_ATTACK, color="orange")
+		L.log_message("was ignited using Sacred Flame by [key_name(user)].", LOG_ATTACK, color="orange")
 		addtimer(CALLBACK(L, TYPE_PROC_REF(/mob/living, ExtinguishMob)), 5 SECONDS)
 		return TRUE
 
@@ -79,6 +83,8 @@
 		if(target.mob_biotypes & MOB_UNDEAD) //positive energy harms the undead
 			target.visible_message(span_danger("[target] is unmade by holy light!"), span_userdanger("I'm unmade by holy light!"))
 			target.gib()
+			user.log_message("gibbed undead [key_name(target)] via Anastasis.", LOG_ATTACK, color="orange")
+			target.log_message("was gibbed via Anastasis by [key_name(user)].", LOG_ATTACK, color="red")
 			return TRUE
 		if(!target.revive(full_heal = FALSE))
 			to_chat(user, span_warning("Nothing happens."))
@@ -95,6 +101,8 @@
 		target.Jitter(100)
 		target.update_body()
 		target.visible_message(span_notice("[target] is revived by holy light!"), span_green("I awake from the void."))
+		user.log_message("brought [key_name(target)] back to life via Anastasis. (NEWHP: [target.health])", LOG_ATTACK, color="black")
+		target.log_message("was brought back to life via Anastasis by [key_name(user)].", LOG_ATTACK, color="black")
 		if(target.mind)
 			if(revive_pq && !HAS_TRAIT(target, TRAIT_IWASREVIVED) && user?.ckey)
 				adjust_playerquality(revive_pq, user.ckey)
