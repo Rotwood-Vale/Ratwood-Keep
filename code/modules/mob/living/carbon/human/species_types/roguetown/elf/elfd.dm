@@ -63,8 +63,8 @@
 		"perception" = -2, 
 		"intelligence" = 0, 
 		"constitution" = 0, 
-		"endurance" = 2, 
-		"speed" = 2, 
+		"endurance" = 1, 
+		"speed" = 1, 
 		"fortune" = 0
 		)
 	specstats_m = list(
