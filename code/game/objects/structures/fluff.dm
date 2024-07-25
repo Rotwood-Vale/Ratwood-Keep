@@ -889,17 +889,12 @@
 					user.changeNext_move(CLICK_CD_MELEE)
 					if(W.max_blade_int)
 						W.remove_bintegrity(5)
-					if(!L.rogfat_add(rand(4,6)))
-						if(ishuman(L))
-							var/mob/living/carbon/human/H = L
-							if(H.tiredness >= 50)
-								H.apply_status_effect(/datum/status_effect/debuff/trainsleep)
-						probby = 0
+					L.rogfat_add(rand(4,6))
 					if(!(L.mobility_flags & MOBILITY_STAND))
 						probby = 0
 					if(L.STAINT < 3)
 						probby = 0
-					if(prob(probby) && !L.has_status_effect(/datum/status_effect/debuff/trainsleep) && !user.buckled)
+					if(prob(probby) && !user.buckled)
 						user.visible_message(span_info("[user] trains on [src]!"))
 						var/amt2raise = L.STAINT * 0.35
 						if(!can_train_combat_skill(user, W.associated_skill, SKILL_LEVEL_APPRENTICE))

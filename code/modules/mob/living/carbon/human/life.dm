@@ -53,7 +53,6 @@
 			if(IsSleeping())
 				if(health > 0)
 					if(has_status_effect(/datum/status_effect/debuff/sleepytime))
-						tiredness = 0
 						remove_status_effect(/datum/status_effect/debuff/sleepytime)
 						remove_stress(/datum/stressevent/sleepytime)
 						if(mind)
@@ -67,8 +66,6 @@
 									if(C.allmig)
 										if(allmig_reward > 3)
 											adjust_triumphs(1)
-					if(has_status_effect(/datum/status_effect/debuff/trainsleep))
-						remove_status_effect(/datum/status_effect/debuff/trainsleep)
 			if(leprosy == 1)
 				adjustToxLoss(2)
 			else if(leprosy == 2)

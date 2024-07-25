@@ -80,7 +80,6 @@
 					rogstam_add(10)
 			else if(fallingas)
 				fallingas = 0
-			tiredness = min(tiredness + 1, 100)
 
 		handle_brain_damage()
 

@@ -86,4 +86,3 @@
 	var/stam_paralyzed = FALSE
 
 	var/domhand = 0
-	var/tiredness = 0
