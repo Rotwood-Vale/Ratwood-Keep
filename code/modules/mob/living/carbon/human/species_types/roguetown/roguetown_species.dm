@@ -16,7 +16,7 @@
 
 /datum/species/proc/handle_speech(datum/source, mob/speech_args)
 	var/message = speech_args[SPEECH_MESSAGE]
-	
+
 	message = treat_message_accent(message, strings("accent_universal.json", "universal"), REGEX_FULLWORD)
 
 	message = treat_message_accent(message, get_accent(source), REGEX_FULLWORD)
@@ -52,6 +52,7 @@
 				message = replacetextEx(message, regex("\\b[key]\\b", "(\[\\w'-\]+)"), value)
 			if(REGEX_ANY)
 				// Any regex (syllables)
+				// Careful about use of syllables as they will continually reapply to themselves, potentially canceling each other out
 				message = replacetextEx(message, uppertext(key), uppertext(value))
 				message = replacetextEx(message, capitalize(key), capitalize(value))
 				message = replacetextEx(message, key, value)
