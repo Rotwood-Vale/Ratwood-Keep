@@ -55,6 +55,18 @@
 	possible_item_intents = list(/datum/intent/dagger/cut, /datum/intent/dagger/thrust)
 	max_integrity = 20
 
+/obj/item/ammo_casing/caseless/rogue/arrow/iron
+	name = "iron arrow"
+	desc = "A wooden shaft with a pointy iron end."
+	projectile_type = /obj/projectile/bullet/reusable/arrow/iron
+	caliber = "arrow"
+	icon = 'icons/roguetown/weapons/ammo.dmi'
+	icon_state = "arrow"
+	force = 30
+	dropshrink = 0.6
+	possible_item_intents = list(/datum/intent/dagger/cut, /datum/intent/dagger/thrust)
+	max_integrity = 20
+
 /obj/projectile/bullet/reusable/arrow
 	name = "arrow"
 	damage = 35
@@ -69,6 +81,10 @@
 	woundclass = BCLASS_STAB
 	flag = "bullet"
 	speed = 0.4
+
+/obj/projectile/bullet/reusable/arrow/iron
+	name = "iron arrow"
+	ammo_type = /obj/item/ammo_casing/caseless/rogue/arrow/iron
 
 /obj/projectile/bullet/reusable/arrow/stone
 	name = "stone arrow"
@@ -95,12 +111,12 @@
 	icon_state = "stonearrow_poison"
 
 /obj/projectile/bullet/reusable/arrow/poison
-	name = "arrow"
+	name = "poison arrow"
 	damage = 35
 	damage_type = BRUTE
 	icon = 'icons/roguetown/weapons/ammo.dmi'
 	icon_state = "arrow_proj"
-	ammo_type = /obj/item/ammo_casing/caseless/rogue/arrow
+	ammo_type = /obj/item/ammo_casing/caseless/rogue/arrow/iron
 	range = 15
 	hitsound = 'sound/combat/hits/hi_arrow2.ogg'
 	poisontype = /datum/reagent/berrypoison //Support for future variations of poison for arrow-crafting
