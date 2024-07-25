@@ -137,6 +137,26 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 		/datum/descriptor_choice/prominent_two,
 	)
 
+	var/list/specstats = list(
+		"strength" = 0, 
+		"perception" = 0, 
+		"intelligence" = 0, 
+		"constitution" = 0, 
+		"endurance" = 0, 
+		"speed" = 0, 
+		"fortune" = 0
+		)
+	var/list/specstats_m = list(
+		"strength" = 1, 
+		"constitution" = 1, 
+	)
+	var/list/specstats_f = list(
+		"intelligence" = 1, 
+		"speed" = 1,
+	)
+	var/list/specskills
+	var/list/specskills_m
+	var/list/specskills_f
 	var/obj/item/mutanthands
 
 	/// List of organ customizers for preferences to customize organs.
