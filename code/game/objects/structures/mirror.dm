@@ -1,7 +1,7 @@
 //wip wip wup
 /obj/structure/mirror
 	name = "mirror"
-	desc = "This is me, allegedly."
+	desc = "It's me, allegedly."
 	icon = 'icons/roguetown/misc/structure.dmi'
 	icon_state = "mirror"
 	density = FALSE
