@@ -3867,7 +3867,7 @@
 /obj/structure/chair/wood{
 	dir = 8
 	},
-/obj/effect/landmark/start/watchman{
+/obj/effect/landmark/start/gatemaster{
 	dir = 8
 	},
 /turf/open/floor/rogue/blocks,
@@ -405839,7 +405839,7 @@ eZy
 kIh
 kIh
 tNj
-kIh
+aXd
 gIg
 gIg
 wvE
@@ -407851,7 +407851,7 @@ kIh
 tNj
 tEb
 tEb
-kIh
+tEb
 aKC
 tNj
 ohm
