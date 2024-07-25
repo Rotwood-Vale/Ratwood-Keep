@@ -68,6 +68,7 @@
 	clickcd = 14
 	swingdelay = 12
 	damfactor = 1.1
+	blade_class = BCLASS_PICK
 
 /obj/item/rogueweapon/huntingknife/getonmobprop(tag)
 	. = ..()
@@ -171,6 +172,12 @@
 	icon_state = "sdagger"
 	max_integrity = 150
 	smeltresult = /obj/item/ingot/steel
+
+/obj/item/rogueweapon/huntingknife/idagger/steel/parrying
+	name = "steel parrying dagger"
+	desc = "This is a parrying dagger made of solid steel, used to catch opponent's weapons in the handguard."
+	icon_state = "spdagger"
+	wdefense = 6
 
 /obj/item/rogueweapon/huntingknife/idagger/steel/special
 	icon_state = "sdaggeralt"

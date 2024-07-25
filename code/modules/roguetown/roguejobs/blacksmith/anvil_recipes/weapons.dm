@@ -34,6 +34,14 @@
 	created_item = /obj/item/rogueweapon/huntingknife/idagger/steel
 	i_type = "Weapons"
 
+/datum/anvil_recipe/weapons/sdaggerparrying
+	name = "Parrying Dagger (+1 Steel)"
+	req_bar = /obj/item/ingot/steel
+	additional_items = list(/obj/item/ingot/steel)
+	created_item = /obj/item/rogueweapon/huntingknife/idagger/steel/parrying
+	i_type = "Weapons"
+	craftdiff = 2
+
 /datum/anvil_recipe/weapons/sidagger
 	name = "Dagger"
 	req_bar = /obj/item/ingot/silver

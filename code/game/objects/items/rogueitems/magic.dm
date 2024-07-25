@@ -2,7 +2,7 @@
 
 /obj/item/scrying
 	name = "scrying orb"
-	desc = "On it's glass depths, you can scry on many beings..."
+	desc = "On it's glass depths, you can scry on many beings... After each use it must recharge for three minutes."
 	icon = 'icons/roguetown/items/misc.dmi'
 	icon_state ="scrying"
 	throw_speed = 3
@@ -20,7 +20,7 @@
 
 /obj/item/scrying/attack_self(mob/user)
 	. = ..()
-	if(world.time < last_scry + 30 SECONDS)
+	if(world.time < last_scry + 3 MINUTES)
 		to_chat(user, span_warning("I look into the ball but only see inky smoke. Maybe I should wait."))
 		return
 	var/input = stripped_input(user, "Who are you looking for?", "Scrying Orb")
@@ -28,7 +28,7 @@
 		return
 	if(!user.key)
 		return
-	if(world.time < last_scry + 30 SECONDS)
+	if(world.time < last_scry + 3 MINUTES)
 		to_chat(user, span_warning("I look into the ball but only see inky smoke. Maybe I should wait."))
 		return
 	if(!user.mind || !user.mind.do_i_know(name=input))
