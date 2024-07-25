@@ -3216,6 +3216,7 @@
 #include "code\modules\roguetown\roguecrafting\alchemy.dm"
 #include "code\modules\roguetown\roguecrafting\cooking.dm"
 #include "code\modules\roguetown\roguecrafting\items.dm"
+#include "code\modules\roguetown\roguecrafting\trapping.dm"
 #include "code\modules\roguetown\roguecrafting\leather.dm"
 #include "code\modules\roguetown\roguecrafting\sewing.dm"
 #include "code\modules\roguetown\roguecrafting\structure.dm"
