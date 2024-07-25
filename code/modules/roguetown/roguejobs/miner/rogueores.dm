@@ -85,6 +85,12 @@
 				name = "poor-quality [name]"
 			if(SMELTERY_LEVEL_GOOD)
 				name = "good-quality [name]"
+			if(SMELTERY_LEVEL_EXPERT)         //This ores are getting the same quality as good. Can be expanded for better ones in the future
+				name = "good-quality [name]"
+			if(SMELTERY_LEVEL_MASTER)
+				name = "good-quality [name]"
+			if(SMELTERY_LEVEL_LEGENDARY)
+				name = "good-quality [name]"
 
 /obj/item/ingot/attackby(obj/item/I, mob/user, params)
 	if(istype(I, /obj/item/rogueweapon/tongs))
