@@ -276,7 +276,7 @@ GLOBAL_LIST_INIT(character_flaws, list(
 
 /datum/charflaw/narcoleptic
 	name = "Narcoleptic"
-	desc = "I get drowsy during the day and tend to fall asleep suddenly."
+	desc = "I get drowsy during the day and tend to fall asleep suddenly, but I can sleep easier if I want to"
 	var/last_unconsciousness = 0
 	var/next_sleep = 0
 	var/concious_timer = (10 MINUTES)
@@ -284,6 +284,7 @@ GLOBAL_LIST_INIT(character_flaws, list(
 	var/pain_pity_charges = 3
 
 /datum/charflaw/narcoleptic/on_mob_creation(mob/user)
+	ADD_TRAIT(user, TRAIT_FASTSLEEP, "[type]")
 	last_unconsciousness = world.time
 	concious_timer = rand(7 MINUTES, 15 MINUTES)
 	pain_pity_charges = rand(2,4)
@@ -343,7 +344,9 @@ GLOBAL_LIST_INIT(character_flaws, list(
 	user.add_stress(/datum/stressevent/vice)
 	user.apply_status_effect(/datum/status_effect/debuff/addiction)
 	var/current_pain = user.get_complex_pain()
-	var/new_pain_threshold = get_pain_threshold(current_pain)
+	// Bloodloss makes the pain count as extra large to allow people to bloodlet themselves with cutting weapons to satisfy vice
+	var/bloodloss_factor = clamp(1.0 - (user.blood_volume / BLOOD_VOLUME_NORMAL), 0.0, 0.5)
+	var/new_pain_threshold = get_pain_threshold(current_pain * (1.0 + (bloodloss_factor * 1.4))) // Bloodloss factor goes up to 50%, and then counts at 140% value of that
 	if(last_pain_threshold == NONE)
 		to_chat(user, span_boldwarning("I could really use some pain right now..."))
 	else if (new_pain_threshold != last_pain_threshold)
@@ -361,7 +364,7 @@ GLOBAL_LIST_INIT(character_flaws, list(
 
 	last_pain_threshold = new_pain_threshold
 	if(new_pain_threshold == MASO_THRESHOLD_FOUR)
-		to_chat(user, span_blue("<b>This's more like it...</b>"))
+		to_chat(user, span_blue("<b>That's more like it...</b>"))
 		next_paincrave = world.time + rand(35 MINUTES, 45 MINUTES)
 		user.remove_stress(/datum/stressevent/vice)
 		user.remove_status_effect(/datum/status_effect/debuff/addiction)

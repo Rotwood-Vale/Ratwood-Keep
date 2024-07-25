@@ -64,6 +64,8 @@
 					if(!fallingas)
 						to_chat(src, span_warning("I'll fall asleep soon..."))
 					fallingas++
+					if(HAS_TRAIT(src, TRAIT_FASTSLEEP))
+						fallingas++
 					if(fallingas > 15)
 						Sleeping(300)
 				else
@@ -74,6 +76,8 @@
 					if(!fallingas)
 						to_chat(src, span_warning("I'll fall asleep soon, although a bed would be more comfortable..."))
 					fallingas++
+					if(HAS_TRAIT(src, TRAIT_FASTSLEEP))
+						fallingas++
 					if(fallingas > 25)
 						Sleeping(300)
 				else
