@@ -1,17 +1,14 @@
 {
     "full": {
-        "I", "We"
+        "I": "We"
     },
     "start": {
         "who": "whom"
     },
     "syllable": {
-        "c": "k",
+        "g": "'",
         "h": "kh",
         "i": "ee",
-        "ing": "in\'",
-        "kh": "ch",
-        "r": "rr",
-        "w": "v"
+        "r": "rr"
     }
 }
