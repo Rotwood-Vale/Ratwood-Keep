@@ -2272,6 +2272,7 @@
 #include "code\modules\jobs\job_types\roguetown\nobility\knight.dm"
 #include "code\modules\jobs\job_types\roguetown\nobility\lady.dm"
 #include "code\modules\jobs\job_types\roguetown\nobility\lord.dm"
+#include "code\modules\jobs\job_types\roguetown\nobility\noble.dm"
 #include "code\modules\jobs\job_types\roguetown\nobility\steward.dm"
 #include "code\modules\jobs\job_types\roguetown\other\deathknight.dm"
 #include "code\modules\jobs\job_types\roguetown\other\skeleton.dm"

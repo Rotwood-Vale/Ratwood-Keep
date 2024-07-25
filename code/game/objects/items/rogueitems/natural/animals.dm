@@ -77,7 +77,7 @@
 	name = "volf head"
 	icon_state = "volf_head"
 	desc = "Dismembered head of a volf."
-	dropshrink = null
+	dropshrink = 0.90
 	force = 0
 	throwforce = 0
 	w_class = WEIGHT_CLASS_SMALL

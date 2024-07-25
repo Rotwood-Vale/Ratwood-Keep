@@ -104,6 +104,7 @@
 #define GUARD_CAPTAIN		(1<<5)
 #define BAILIFF		(1<<6)
 #define HOSTAGE		(1<<7)
+#define NOBLE		(1<<8)
 
 #define GARRISON		(1<<1)
 
@@ -221,6 +222,7 @@
 #define JDO_CLERK 3.1
 #define JDO_BAILIFF 4
 #define JDO_COUNCILLOR 4.1
+#define JDO_NOBLE 5
 
 // Courtiers
 #define JDO_MAGICIAN 5
