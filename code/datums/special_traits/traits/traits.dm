@@ -1,9 +1,10 @@
 ////🌙Sleep Specials🌙 (っ˕ -｡)ᶻ 𝗓 𐰁
+//// these should still be in the round-start/late join specials as well! It's just these are contextually fitting for Sleep Specials as well!
 /datum/special_trait/nightvision
 	name = "Night Vision"
 	greet_text = span_notice("You now can easily see in the dark.")
 	allowed_races = list("") //all except elves who already have this or better
-	weight = 0
+	weight = 100
 	
 /datum/special_trait/nightvision/on_apply(mob/living/carbon/human/character, silent)
 	var/obj/item/organ/eyes/eyes = character.getorganslot(ORGAN_SLOT_EYES)
@@ -14,17 +15,16 @@
 /datum/special_trait/thickskin
 	name = "Tough"
 	greet_text = span_notice("You feel it. Thick Skin. Dense Flesh. Durable Bones. You are a punch-taking machine.")
-	weight = 0
+	weight = 100
 
 /datum/special_trait/thickskin/on_apply(mob/living/carbon/human/character, silent)
 	ADD_TRAIT(character, TRAIT_BREADY, TRAIT_GENERIC)
 	character.change_stat("constitution", 2)
 
-
 /datum/special_trait/curseofcain
 	name = "Flawed Immortality"
 	greet_text = span_notice("You feel like you don't need to eat anymore, and your veins feel empty... Is this normal?")
-	weight = 0 //make this one quite uncommon when we do add a weight
+	weight = 25
 
 /datum/special_trait/curseofcain/on_apply(mob/living/carbon/human/character, silent)
 	ADD_TRAIT(character, TRAIT_NOHUNGER, TRAIT_GENERIC)
@@ -33,11 +33,21 @@
 /datum/special_trait/value
 	name = "Coin Counter"
 	greet_text = span_notice("You now know how to estimate a item's value.")
-	weight = 0
+	weight = 100
+	allowed_jobs = list("") //anyone but merchant
 	
 /datum/special_trait/value/on_apply(mob/living/carbon/human/character, silent)
 	ADD_TRAIT(character, TRAIT_SEEPRICES, TRAIT_GENERIC)
 	REMOVE_TRAIT(character, TRAIT_SEEPRICES_SHITTY, "[type]")
+
+/datum/special_trait/lightstep
+	name = "Light Step"
+	greet_text = span_notice("I am quiet, nobody can hear my steps.")
+	weight = 100
+	
+/datum/special_trait/lightstep/on_apply(mob/living/carbon/human/character, silent)
+	ADD_TRAIT(character, TRAIT_LIGHT_STEP, TRAIT_GENERIC)
+
 
 //datum/special_trait/nimrod
 //    name = "Nimrod"
@@ -90,8 +100,8 @@
 	greet_text = span_notice("You are skilled at using Improvised Weapons and your fists feel heavier!")
 	
 /datum/special_trait/civilizedbarbarian/on_apply(mob/living/carbon/human/character, silent)
-	ADD_TRAIT(character, TRAIT_CIVILIZEDBARBARIAN, TRAIT_GENERIC) //punches are slightly more deadly. Need to make trait also improve hitting people with chairs, mugs, goblets.	
-	
+	ADD_TRAIT(character, TRAIT_CIVILIZEDBARBARIAN, TRAIT_GENERIC) //Need to make trait improve hitting people with chairs, mugs, goblets.
+
 /datum/special_trait/mastercraftsmen
     name = "Guildmaster"
     greet_text = "In your youth, you decided you'd get a grasp on every trade, and pursued the 10 arts of the craft."
@@ -133,64 +143,6 @@
 	character.transform = character.transform.Scale(1.15, 1.15)
 	character.update_transform()
 	
-/datum/special_trait/punknoble //I think everyone no-doubt will like the Rebellous Prince-Like Princess. Up to you if you wanna get rid of the Princess-Like Prince.
-	name = "Rebellous Noble"
-	greet_text = span_notice("You are quite rebellous for a child of the King. Screw Noble Customs!")
-	allowed_jobs = list("Prince")
-
-/datum/special_trait/punknoble/on_apply(mob/living/carbon/human/character, silent)
-	if(character.gender == FEMALE)
-		QDEL_NULL(character.wear_pants)
-		QDEL_NULL(character.wear_shirt)
-		QDEL_NULL(character.wear_armor)
-		QDEL_NULL(character.shoes)
-		QDEL_NULL(character.belt)
-		QDEL_NULL(character.beltl)
-		QDEL_NULL(character.beltr)
-		QDEL_NULL(character.backr)
-		QDEL_NULL(character.head)
-		character.equip_to_slot_or_del(new /obj/item/clothing/under/roguetown/tights/random(character), SLOT_PANTS)
-		character.equip_to_slot_or_del(new /obj/item/clothing/suit/roguetown/shirt/undershirt/guard(character), SLOT_SHIRT)
-		character.equip_to_slot_or_del(new /obj/item/clothing/suit/roguetown/armor/chainmail(character), SLOT_ARMOR)
-		character.equip_to_slot_or_del(new /obj/item/storage/belt/rogue/leather(character), SLOT_BELT)
-		character.equip_to_slot_or_del(new /obj/item/storage/belt/rogue/pouch/coins/rich(character), SLOT_BELT_R)
-		character.equip_to_slot_or_del(new /obj/item/storage/backpack/rogue/satchel(character), SLOT_BACK_R)
-		character.mind.adjust_skillrank(/datum/skill/combat/maces, 1, TRUE)
-		character.mind.adjust_skillrank(/datum/skill/combat/bows, 3, TRUE)
-		character.mind.adjust_skillrank(/datum/skill/combat/crossbows, 2, TRUE)
-		character.mind.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
-		character.mind.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
-		character.mind.adjust_skillrank(/datum/skill/combat/swords, 2, TRUE)
-		character.mind.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
-		character.mind.adjust_skillrank(/datum/skill/misc/reading, -2, TRUE)
-		character.mind.adjust_skillrank(/datum/skill/misc/sneaking, -2, TRUE)
-		character.mind.adjust_skillrank(/datum/skill/misc/stealing, -2, TRUE)
-	else
-		QDEL_NULL(character.wear_pants)
-		QDEL_NULL(character.wear_shirt)
-		QDEL_NULL(character.wear_armor)
-		QDEL_NULL(character.shoes)
-		QDEL_NULL(character.belt)
-		QDEL_NULL(character.beltl)
-		QDEL_NULL(character.beltr)
-		QDEL_NULL(character.backr)
-		character.equip_to_slot_or_del(new /obj/item/clothing/head/roguetown/hennin(character), SLOT_HEAD)
-		character.equip_to_slot_or_del(new /obj/item/clothing/suit/roguetown/shirt/dress/silkdress/princess(character), SLOT_SHIRT)
-		character.equip_to_slot_or_del(new /obj/item/clothing/suit/roguetown/armor/silkcoat(character), SLOT_ARMOR) //I will add a male sprite for this!
-		character.equip_to_slot_or_del(new /obj/item/clothing/shoes/roguetown/shortboots(character), SLOT_SHOES)
-		character.equip_to_slot_or_del(new /obj/item/storage/belt/rogue/leather/cloth/lady(character), SLOT_BELT)
-		character.equip_to_slot_or_del(new /obj/item/storage/belt/rogue/pouch/coins/rich(character), SLOT_NECK)
-		character.mind.adjust_skillrank(/datum/skill/combat/maces, -1, TRUE)
-		character.mind.adjust_skillrank(/datum/skill/combat/bows, -3, TRUE)
-		character.mind.adjust_skillrank(/datum/skill/combat/crossbows, -2, TRUE)
-		character.mind.adjust_skillrank(/datum/skill/combat/wrestling, -2, TRUE)
-		character.mind.adjust_skillrank(/datum/skill/combat/unarmed, -2, TRUE)
-		character.mind.adjust_skillrank(/datum/skill/combat/swords, -2, TRUE)
-		character.mind.adjust_skillrank(/datum/skill/combat/knives, -2, TRUE)
-		character.mind.adjust_skillrank(/datum/skill/misc/reading, 2, TRUE)
-		character.mind.adjust_skillrank(/datum/skill/misc/sneaking, 2, TRUE)
-		character.mind.adjust_skillrank(/datum/skill/misc/stealing, 2, TRUE)
-	
 //negative ( ꩜ ᯅ ꩜;)⁭
 /datum/special_trait/hussite
 	name = "Known Heretic"
@@ -220,3 +172,36 @@ datum/special_trait/sillyvoice/on_apply((mob/living/carbon/human/character))
 	ADD_TRAIT(character, TRAIT_COMICSANS, TRAIT_GENERIC)
 	addtimer(CALLBACK(character,TYPE_PROC_REF(/mob/living/carbon/human, add_credit)), 10)
 	character.dna.add_mutation(WACKY)
+	
+//job specials ᕙ⁠(⁠⇀⁠‸⁠↼⁠‶⁠)⁠ᕗ
+/datum/special_trait/punkprincess //I think everyone will like the Rebellous Prince-Like Princess. I'd love to do one for the prince as well that gives him princess loadout, but, up to you!
+	name = "Rebellous Daughter"
+	greet_text = span_notice("You are quite rebellous for princess. Screw Noble Customs!")
+	allowed_jobs = list("Prince")
+
+/datum/special_trait/punkprincess/on_apply(mob/living/carbon/human/character, silent)
+		QDEL_NULL(character.wear_pants)
+		QDEL_NULL(character.wear_shirt)
+		QDEL_NULL(character.wear_armor)
+		QDEL_NULL(character.shoes)
+		QDEL_NULL(character.belt)
+		QDEL_NULL(character.beltl)
+		QDEL_NULL(character.beltr)
+		QDEL_NULL(character.backr)
+		QDEL_NULL(character.head)
+		character.equip_to_slot_or_del(new /obj/item/clothing/under/roguetown/tights/random(character), SLOT_PANTS)
+		character.equip_to_slot_or_del(new /obj/item/clothing/suit/roguetown/shirt/undershirt/guard(character), SLOT_SHIRT)
+		character.equip_to_slot_or_del(new /obj/item/clothing/suit/roguetown/armor/chainmail(character), SLOT_ARMOR)
+		character.equip_to_slot_or_del(new /obj/item/storage/belt/rogue/leather(character), SLOT_BELT)
+		character.equip_to_slot_or_del(new /obj/item/storage/belt/rogue/pouch/coins/rich(character), SLOT_BELT_R)
+		character.equip_to_slot_or_del(new /obj/item/storage/backpack/rogue/satchel(character), SLOT_BACK_R)
+		character.mind.adjust_skillrank(/datum/skill/combat/maces, 1, TRUE)
+		character.mind.adjust_skillrank(/datum/skill/combat/bows, 3, TRUE)
+		character.mind.adjust_skillrank(/datum/skill/combat/crossbows, 2, TRUE)
+		character.mind.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
+		character.mind.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
+		character.mind.adjust_skillrank(/datum/skill/combat/swords, 2, TRUE)
+		character.mind.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
+		character.mind.adjust_skillrank(/datum/skill/misc/reading, -2, TRUE)
+		character.mind.adjust_skillrank(/datum/skill/misc/sneaking, -2, TRUE)
+		character.mind.adjust_skillrank(/datum/skill/misc/stealing, -2, TRUE)
