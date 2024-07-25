@@ -277,7 +277,7 @@
 					span_userdanger("I trigger \the [src]!"))
 			C.emote("agony")
 			C.Stun(80)
-			BP.add_wound(/datum/wound/dislocation, /datum/wound/fracture)
+			BP.add_wound(/datum/wound/fracture)
 			BP.update_disabled()
 			C.apply_damage(trap_damage, BRUTE, def_zone)
 			C.consider_ambush()
@@ -301,7 +301,7 @@
 				C.visible_message(span_boldwarning("[C] triggers \the [src]."), \
 						span_userdanger("I trigger \the [src]!"))
 				C.emote("agony")
-				BP.add_wound(/datum/wound/dislocation, /datum/wound/fracture)
+				BP.add_wound(/datum/wound/fracture)
 				BP.update_disabled()
 				C.apply_damage(trap_damage, BRUTE, def_zone)
 				C.consider_ambush()
