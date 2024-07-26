@@ -177,24 +177,27 @@
 
 /turf/open/water/onbite(mob/user)
 	if(isliving(user))
-		var/mob/living/L = user
-		if(L.stat != CONSCIOUS)
-			return
-		if(iscarbon(user))
-			var/mob/living/carbon/C = user
-			if(C.is_mouth_covered())
-				return
-		playsound(user, pick('sound/foley/waterwash (1).ogg','sound/foley/waterwash (2).ogg'), 100, FALSE)
-		user.visible_message(span_info("[user] starts to drink from [src]."))
-		if(do_after(L, 25, target = src))
-			var/list/waterl = list()
-			waterl[water_reagent] = 2
-			var/datum/reagents/reagents = new()
-			reagents.add_reagent_list(waterl)
-			reagents.trans_to(L, reagents.total_volume, transfered_by = user, method = INGEST)
-			playsound(user,pick('sound/items/drink_gen (1).ogg','sound/items/drink_gen (2).ogg','sound/items/drink_gen (3).ogg'), 100, TRUE)
+		INVOKE_ASYNC(src, PROC_REF(water_sip_loop), user)
 		return
 	..()
+
+/turf/open/water/proc/water_sip_loop(mob/living/user, recursed = FALSE)
+	if(user.stat != CONSCIOUS)
+		return
+	if(iscarbon(user))
+		var/mob/living/carbon/C = user
+		if(C.is_mouth_covered())
+			return
+	playsound(user, pick('sound/foley/waterwash (1).ogg','sound/foley/waterwash (2).ogg'), 100, FALSE)
+	user.visible_message(span_info("[user] [recursed ? "continues" : "starts"] to drink from [src]."))
+	if(do_after(user, 25, target = src))
+		var/list/waterl = list()
+		waterl[water_reagent] = 2
+		var/datum/reagents/reagents = new()
+		reagents.add_reagent_list(waterl)
+		reagents.trans_to(user, reagents.total_volume, transfered_by = user, method = INGEST)
+		playsound(user,pick('sound/items/drink_gen (1).ogg','sound/items/drink_gen (2).ogg','sound/items/drink_gen (3).ogg'), 100, TRUE)
+		water_sip_loop(user, TRUE)
 
 /turf/open/water/Destroy()
 	. = ..()
