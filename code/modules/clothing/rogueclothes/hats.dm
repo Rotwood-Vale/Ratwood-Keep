@@ -9,6 +9,7 @@
 	dynamic_hair_suffix = "+generic"
 	bloody_icon_state = "helmetblood"
 	experimental_onhip = TRUE
+	w_class = WEIGHT_CLASS_SMALL
 
 /obj/item/clothing/head/roguetown/equipped(mob/user, slot)
 	. = ..()

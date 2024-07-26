@@ -11,6 +11,7 @@
 	bloody_icon_state = "shoeblood"
 	equip_delay_self = 30
 	resistance_flags = FIRE_PROOF
+	w_class = WEIGHT_CLASS_SMALL
 
 /obj/item/clothing/shoes/roguetown/boots
 	name = "dark boots"
