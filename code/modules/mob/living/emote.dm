@@ -1365,3 +1365,27 @@
 	else
 		to_chat(user, span_warning("You're incapable of slapping in your current state."))
 */
+
+/datum/emote/living/shake
+	key = "shake"
+	key_third_person = "shakes"
+	message = "shakes their head."
+	emote_type = EMOTE_VISIBLE
+
+/mob/living/carbon/human/verb/emote_shake()
+	set name = "Shake Head"
+	set category = "Emotes"
+
+	emote("shake", intentional = TRUE)
+
+/datum/emote/living/squint
+	key = "squint"
+	key_third_person = "squints"
+	message = "squints their eyes."
+	emote_type = EMOTE_VISIBLE
+
+/mob/living/carbon/human/verb/emote_squint()
+	set name = "Squint"
+	set category = "Emotes"
+
+	emote("squint", intentional = TRUE)
