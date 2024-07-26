@@ -49,8 +49,6 @@
 	var/message2recognize = sanitize_hear_message(message)
 	var/mob/living/carbon/human/M = L
 	if(length(message2recognize) > 15)
-		if(L.has_flaw(/datum/charflaw/addiction/godfearing))
-			L.sate_addiction()
 		if(L.mob_timers[MT_PSYPRAY])
 			if(world.time < L.mob_timers[MT_PSYPRAY] + 1 MINUTES)
 				L.mob_timers[MT_PSYPRAY] = world.time
@@ -552,14 +550,6 @@
 	set category = "Emotes"
 
 	emote("hug", intentional = TRUE, targetted = TRUE)
-
-/datum/emote/living/hug/adjacentaction(mob/user, mob/target)
-	. = ..()
-	if(!user || !target)
-		return
-	if(ishuman(target))
-		var/mob/living/carbon/human/H = target
-		H.add_stress(/datum/stressevent/hug)
 
 /datum/emote/living/holdbreath
 	key = "hold"

@@ -3,14 +3,11 @@
 		return
 	if(user.mind)
 		user.mind.i_know_person(src)
-	if(!isdarkelf(user) && isdarkelf(src))
-		user.add_stress(/datum/stressevent/delf)
-	if(!istiefling(user) && istiefling(src))
-		user.add_stress(/datum/stressevent/tieb)
-	/*
-	if(!isargonian(user) && isargonian(src))
-		user.add_stress(/datum/stressevent/brazillian)
-	*/
+	var/datum/species/self_species = dna.species
+	var/datum/species/examiner_species = user.dna.species
+	if(self_species.stress_examine && self_species.type != examiner_species.type)
+		var/datum/stressevent/shunned_race/event = user.add_stress(/datum/stressevent/shunned_race)
+		event.desc = self_species.stress_desc
 	if(user.has_flaw(/datum/charflaw/paranoid) && (STASTR - user.STASTR) > 1)
 		user.add_stress(/datum/stressevent/parastr)
 
@@ -71,10 +68,10 @@
 				. = list("<span class='info'>ø ------------ ø\nThis is <EM>[used_name]</EM>, the [islatejoin ? "returning " : ""][race_name] [used_title].")
 		else
 			. = list("<span class='info'>ø ------------ ø\nThis is the <EM>[used_name]</EM>, the [race_name].")
-		
+
 		if(GLOB.lord_titles[name])
 			. += span_notice("[m3] been granted the title of \"[GLOB.lord_titles[name]]\".")
-		
+
 		if(dna.species.use_skintones)
 			var/skin_tone_wording = dna.species.skin_tone_wording ? lowertext(dna.species.skin_tone_wording) : "skin tone"
 			var/list/skin_tones = dna.species.get_skin_list()
@@ -109,8 +106,8 @@
 
 		if(name in GLOB.outlawed_players)
 			. += span_userdanger("OUTLAW!")
-		
-		
+
+
 		var/commie_text
 		if(mind)
 			if(mind.special_role == "Bandit")
@@ -122,7 +119,7 @@
 				. += span_userdanger("A MONSTER!")
 			if(mind.assigned_role == "Lunatic")
 				. += span_userdanger("LUNATIC!")
-		
+
 		if(HAS_TRAIT(src, TRAIT_MANIAC_AWOKEN))
 			. += span_userdanger("MANIAC!")
 
@@ -261,7 +258,7 @@
 	var/appears_dead = FALSE
 	if(stat == DEAD || (HAS_TRAIT(src, TRAIT_FAKEDEATH)))
 		appears_dead = TRUE
-	
+
 	var/temp = getBruteLoss() + getFireLoss() //no need to calculate each of these twice
 
 	if(!(user == src && src.hal_screwyhud == SCREWYHUD_HEALTHY)) //fake healthy
@@ -332,7 +329,7 @@
 		if(missing_zone == BODY_ZONE_HEAD)
 			missing_head = TRUE
 		missing_limbs += parse_zone(missing_zone)
-	
+
 	if(length(missing_limbs))
 		var/missing_limb_message = "<B>[capitalize(m2)] [english_list(missing_limbs)] [missing_limbs.len > 1 ? "are" : "is"] gone.</B>"
 		if(missing_head)
@@ -398,8 +395,9 @@
 					msg += "[m1] looking like a drunken mess."
 				if(91.01 to INFINITY)
 					msg += "[m1] a shitfaced, slobbering wreck."
-			
+
 			//Stress
+			var/stress = get_stress_amount()
 			if(HAS_TRAIT(user, TRAIT_EMPATH))
 				switch(stress)
 					if(20 to INFINITY)
@@ -425,7 +423,7 @@
 				msg += "[m1] extremely jittery."
 			if(100 to 200)
 				msg += "[m1] twitching ever so slightly."
-		
+
 		if(InCritical())
 			msg += span_warning("[m1] barely conscious.")
 		else

@@ -79,11 +79,6 @@
 	overdose_threshold=999
 	metabolization_rate = 0.1 * REAGENTS_METABOLISM
 
-
-/datum/reagent/drug/nicotine/on_mob_end_metabolize(mob/living/M)
-//	M.remove_stress(/datum/stressevent/pweed)
-	..()
-
 /datum/reagent/drug/nicotine/on_mob_metabolize(mob/living/M)
 	M.add_stress(/datum/stressevent/pweed)
 	..()
