@@ -104,23 +104,9 @@
 //	if(!checking.zPassIn(AM, UP, get_turf(src)))
 //		return
 	var/turf/target = get_step_multiz(get_turf(src), UP)
-	if(istype(target))
-		var/based = FALSE
-		var/turf/newtarg = get_step(target, dirmove)
-		for(var/obj/structure/stairs/S in newtarg.contents)
-			if(S.dir == dir)
-				based = TRUE
-		if(based)
-			if(isliving(AM))
-				var/mob/living/L = AM
-				var/pulling = L.pulling
-				if(pulling)
-					L.pulling.forceMove(newtarg)
-				L.forceMove(newtarg)
-				L.start_pulling(pulling, supress_message = TRUE)
-			else
-				AM.forceMove(newtarg)
-			return TRUE
+	if(!istype(target))
+		return
+	return user_walk_into_target_loc(AM, dirmove, target)
 
 /obj/structure/stairs/proc/stair_descend(atom/movable/AM, dirmove)
 	var/turf/checking = get_step_multiz(get_turf(src), DOWN)
@@ -129,23 +115,37 @@
 //	if(!checking.zPassIn(AM, DOWN, get_turf(src)))
 //		return
 	var/turf/target = get_step_multiz(get_turf(src), DOWN)
-	if(istype(target))
-		var/based = FALSE
-		var/turf/newtarg = get_step(target, dirmove)
-		for(var/obj/structure/stairs/S in newtarg.contents)
-			if(S.dir == dir)
-				based = TRUE
-		if(based)
-			if(isliving(AM))
-				var/mob/living/L = AM
-				var/pulling = L.pulling
-				if(pulling)
-					L.pulling.forceMove(newtarg)
-				L.forceMove(newtarg)
-				L.start_pulling(pulling)
-			else
-				AM.forceMove(newtarg)
-			return TRUE
+	if(!istype(target))
+		return
+	return user_walk_into_target_loc(AM, dirmove, target)
+
+/obj/structure/stairs/proc/user_walk_into_target_loc(atom/movable/AM, dirmove, turf/target)
+	var/based = FALSE
+	var/turf/newtarg = get_step(target, dirmove)
+	for(var/obj/structure/stairs/S in newtarg.contents)
+		if(S.dir == dir)
+			based = TRUE
+	if(based)
+		if(isliving(AM))
+			var/mob/living/L = AM
+			var/atom/movable/pulling = L.pulling
+			var/was_pulled_buckled = FALSE
+			if(pulling)
+				if(pulling in L.buckled_mobs)
+					was_pulled_buckled = TRUE
+			L.forceMove(newtarg)
+			if(pulling)
+				L.stop_pulling()
+				pulling.forceMove(newtarg)
+				L.start_pulling(pulling, supress_message = TRUE)
+				if(was_pulled_buckled) // Assume this was a fireman carry since piggybacking is not a thing
+					var/mob/living/pulled_mob = pulling
+					pulled_mob.grippedby(L, TRUE)
+					L.buckle_mob(pulling, TRUE, TRUE, 90, 0, 0)
+		else
+			AM.forceMove(newtarg)
+		return TRUE
+	return FALSE
 
 /obj/structure/stairs/intercept_zImpact(atom/movable/AM, levels = 1)
 	. = ..()
