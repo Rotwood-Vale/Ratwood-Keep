@@ -8,7 +8,6 @@
 	craftsound = 'sound/foley/Building-01.ogg'
 	structurecraft = /obj/structure/closet/dirthole
 	craftdiff = 0
-	w_class = WEIGHT_CLASS_SMALL
 
 /datum/crafting_recipe/roguetown/gravemarker/TurfCheck(mob/user, turf/T)
 	if(!(locate(/obj/structure/closet/dirthole) in T))
