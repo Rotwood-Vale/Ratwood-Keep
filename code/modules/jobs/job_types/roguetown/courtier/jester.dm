@@ -42,7 +42,8 @@
 		H.STAINT = rand(1, 20)
 		H.STALUC = rand(1, 20)
 		H.cmode_music = 'sound/music/combat_jester.ogg'
-
+	H.verbs |= /mob/living/carbon/human/proc/ventriloquate
+	H.verbs |= /mob/living/carbon/human/proc/ear_trick
 	ADD_TRAIT(H, TRAIT_ZJUMP, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_LEAPER, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_NUTCRACKER, TRAIT_GENERIC)
