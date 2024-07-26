@@ -77,6 +77,7 @@
 					else
 						leprosy = 3
 			//heart attack stuff
+			handle_curses()
 			handle_heart()
 			handle_liver()
 			update_rogfat()
