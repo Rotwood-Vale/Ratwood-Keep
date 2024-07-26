@@ -19,9 +19,9 @@
 	var/new_state = ERECT_STATE_NONE
 	if(owner)
 		var/mob/living/carbon/human/human = owner
-		if(human.sexcon.arousal > 30)
+		if(human.sexcon.arousal > 20)
 			new_state = ERECT_STATE_HARD
-		else if(human.sexcon.arousal > 15)
+		else if(human.sexcon.arousal > 10)
 			new_state = ERECT_STATE_PARTIAL
 		else
 			new_state = ERECT_STATE_NONE
