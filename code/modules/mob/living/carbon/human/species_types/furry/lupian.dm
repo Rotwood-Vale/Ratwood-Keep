@@ -48,8 +48,8 @@
 		"perception" = -2, 
 		"intelligence" = 1, 
 		"constitution" = 0, 
-		"endurance" = 0, 
-		"speed" = 0, 
+		"endurance" = 1, 
+		"speed" = -1, 
 		"fortune" = 0
 		)
 	enflamed_icon = "widefire"
