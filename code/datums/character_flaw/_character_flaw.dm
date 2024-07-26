@@ -35,6 +35,16 @@ GLOBAL_LIST_INIT(character_flaws, list(
 	if(istype(charflaw, flaw))
 		return TRUE
 
+/mob/proc/get_flaw(flaw_type)
+	return
+
+/mob/living/carbon/human/get_flaw(flaw_type)
+	if(!flaw_type)
+		return
+	if(charflaw != flaw_type)
+		return
+	return charflaw
+
 /datum/charflaw/randflaw
 	name = "Random or None"
 	desc = "A 50% chance to be given a random flaw, or a 50% chance to have NO flaw."
@@ -276,7 +286,7 @@ GLOBAL_LIST_INIT(character_flaws, list(
 
 /datum/charflaw/narcoleptic
 	name = "Narcoleptic"
-	desc = "I get drowsy during the day and tend to fall asleep suddenly, but I can sleep easier if I want to"
+	desc = "I get drowsy during the day and tend to fall asleep suddenly, but I can sleep easier if I want to, and moon dust can help me stay awake."
 	var/last_unconsciousness = 0
 	var/next_sleep = 0
 	var/concious_timer = (10 MINUTES)
@@ -285,16 +295,17 @@ GLOBAL_LIST_INIT(character_flaws, list(
 
 /datum/charflaw/narcoleptic/on_mob_creation(mob/user)
 	ADD_TRAIT(user, TRAIT_FASTSLEEP, "[type]")
+	reset_timer()
+
+/datum/charflaw/narcoleptic/proc/reset_timer()
+	do_sleep = FALSE
 	last_unconsciousness = world.time
 	concious_timer = rand(7 MINUTES, 15 MINUTES)
 	pain_pity_charges = rand(2,4)
 
 /datum/charflaw/narcoleptic/flaw_on_life(mob/living/carbon/human/user)
 	if(user.stat != CONSCIOUS)
-		do_sleep = FALSE
-		last_unconsciousness = world.time
-		pain_pity_charges = rand(2,4)
-		concious_timer = rand(7 MINUTES, 15 MINUTES)
+		reset_timer()
 		return
 	if(do_sleep)
 		if(next_sleep <= world.time)
@@ -319,9 +330,14 @@ GLOBAL_LIST_INIT(character_flaws, list(
 		if(last_unconsciousness + concious_timer < world.time)
 			to_chat(user, span_blue("I'm getting drowsy..."))
 			user.emote("yawn", forced = TRUE)
-			next_sleep = world.time + rand(5 SECONDS, 10 SECONDS)
+			next_sleep = world.time + rand(7 SECONDS, 11 SECONDS)
 			do_sleep = TRUE
-
+	
+/proc/mob_narco_timer_reset(mob/living/living)
+	var/datum/charflaw/narcoleptic/narco = living.get_flaw(/datum/charflaw/narcoleptic)
+	if(!narco)
+		return
+	narco.reset_timer()
 
 #define MASO_THRESHOLD_ONE 1
 #define MASO_THRESHOLD_TWO 2
