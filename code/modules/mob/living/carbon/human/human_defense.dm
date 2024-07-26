@@ -221,7 +221,6 @@
 /mob/living/carbon/human/attacked_by(obj/item/I, mob/living/user)
 	if(!I || !user)
 		return 0
-
 	var/obj/item/bodypart/affecting
 	var/useder = user.zone_selected
 	if(!lying_attack_check(user,I))

@@ -517,7 +517,7 @@
 	var/datum/sex_action/action = SEX_ACTION(current_action)
 	action.on_start(user, target)
 	while(TRUE)
-		if(target.client.prefs.sexable == FALSE)
+		if(!isnull(target.client) && target.client.prefs.sexable == FALSE) //Vrell - Needs changed to let me test sex mechanics solo
 			break
 		if(!user.rogfat_add(action.stamina_cost * get_stamina_cost_multiplier()))
 			break
