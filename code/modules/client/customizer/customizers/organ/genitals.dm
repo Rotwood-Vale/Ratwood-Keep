@@ -328,6 +328,17 @@
 		)
 	allows_accessory_color_customization = FALSE
 
+/datum/customizer/organ/vagina/human_anthro
+	customizer_choices = list(/datum/customizer_choice/organ/vagina/human_anthro)
+
+/datum/customizer_choice/organ/vagina/human_anthro
+	sprite_accessories = list(
+		/datum/sprite_accessory/vagina/human,
+		/datum/sprite_accessory/vagina/gaping,
+		/datum/sprite_accessory/vagina/hairy,
+		)
+	allows_accessory_color_customization = TRUE
+
 /datum/customizer/organ/vagina/animal
 	customizer_choices = list(/datum/customizer_choice/organ/vagina/animal)
 
