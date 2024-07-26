@@ -48,7 +48,7 @@
 
 /datum/customizer/organ/penis/anthro
 	customizer_choices = list(
-		/datum/customizer_choice/organ/penis/human,
+		/datum/customizer_choice/organ/penis/human_anthro,
 		/datum/customizer_choice/organ/penis/knotted,
 		/datum/customizer_choice/organ/penis/equine,
 		/datum/customizer_choice/organ/penis/tapered_mammal,
@@ -62,20 +62,20 @@
 
 /datum/customizer/organ/penis/canine
 	customizer_choices = list(
-		/datum/customizer_choice/organ/penis/human,
+		/datum/customizer_choice/organ/penis/human_anthro,
 		/datum/customizer_choice/organ/penis/knotted,
 		)
 
 /datum/customizer/organ/penis/feline
 	customizer_choices = list(
-		/datum/customizer_choice/organ/penis/human,
+		/datum/customizer_choice/organ/penis/human_anthro,
 		/datum/customizer_choice/organ/penis/barbed,
 		/datum/customizer_choice/organ/penis/barbed_knotted,
 		)
 
 /datum/customizer/organ/penis/lizard
 	customizer_choices = list(
-		/datum/customizer_choice/organ/penis/human,
+		/datum/customizer_choice/organ/penis/human_anthro,
 		/datum/customizer_choice/organ/penis/tapered,
 		/datum/customizer_choice/organ/penis/tapered_double,
 		/datum/customizer_choice/organ/penis/tapered_double_knot,
@@ -83,7 +83,7 @@
 
 /datum/customizer/organ/penis/equine
 	customizer_choices = list(
-		/datum/customizer_choice/organ/penis/human,
+		/datum/customizer_choice/organ/penis/human_anthro,
 		/datum/customizer_choice/organ/penis/equine,
 		)
 
@@ -92,6 +92,12 @@
 	organ_type = /obj/item/organ/penis
 	sprite_accessories = list(/datum/sprite_accessory/penis/human)
 	allows_accessory_color_customization = FALSE
+
+/datum/customizer_choice/organ/penis/human_anthro
+	name = "Plain Penis"
+	organ_type = /obj/item/organ/penis
+	sprite_accessories = list(/datum/sprite_accessory/penis/human)
+	allows_accessory_color_customization = TRUE
 
 /datum/customizer_choice/organ/penis/knotted
 	name = "Knotted Penis"
