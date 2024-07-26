@@ -68,11 +68,23 @@
 	switch(penis.penis_size)
 		if(1)
 			adjective = "a small"
-		if(1)
+		if(2)
 			adjective = "an average"
-		if(1)
+		if(3)
 			adjective = "a large"
-	return "[adjective] penis"
+	var/used_name
+	if(penis.erect_state != ERECT_STATE_HARD && penis.sheath_type != SHEATH_TYPE_NONE)
+		switch(penis.sheath_type)
+			if(SHEATH_TYPE_NORMAL)
+				if(penis.penis_size == 3)
+					used_name = "a fat sheath"
+				else
+					used_name = "a sheath"
+			if(SHEATH_TYPE_SLIT)
+				used_name = "a genital slit"
+	else
+		used_name = "[adjective] [penis.name]"
+	return "[used_name]"
 
 /datum/mob_descriptor/testicles
 	name = "balls"
@@ -88,6 +100,9 @@
 		return FALSE
 	if(!get_location_accessible(human, BODY_ZONE_PRECISE_GROIN))
 		return FALSE
+	var/obj/item/organ/penis/penis = human.getorganslot(ORGAN_SLOT_PENIS)
+	if(penis && penis.sheath_type == SHEATH_TYPE_SLIT) //If our penis hides in a slit, dont describe testicles
+		return FALSE
 	return TRUE
 
 /datum/mob_descriptor/testicles/get_description(mob/living/described)
@@ -97,9 +112,9 @@
 	switch(testes.ball_size)
 		if(1)
 			adjective = "a small"
-		if(1)
+		if(2)
 			adjective = "an average"
-		if(1)
+		if(3)
 			adjective = "a large"
 	return "[adjective] pair of balls"
 
@@ -120,8 +135,6 @@
 	return TRUE
 
 /datum/mob_descriptor/vagina/get_description(mob/living/described)
-	var/mob/living/carbon/human/human = described
-	var/obj/item/organ/vagina/vagina = human.getorganslot(ORGAN_SLOT_VAGINA)
 	return "a vagina"
 
 /datum/mob_descriptor/breasts

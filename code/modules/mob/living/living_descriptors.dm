@@ -36,12 +36,12 @@
 
 /mob/living/proc/get_extra_mob_descriptors()
 	return list(
-		/datum/mob_descriptor/defiant,
 		/datum/mob_descriptor/age,
 		/datum/mob_descriptor/penis,
 		/datum/mob_descriptor/testicles,
 		/datum/mob_descriptor/breasts,
 		/datum/mob_descriptor/vagina,
+		/datum/mob_descriptor/defiant,
 		)
 
 /mob/living/proc/get_descriptor_of_slot(descriptor_slot, list/descs)

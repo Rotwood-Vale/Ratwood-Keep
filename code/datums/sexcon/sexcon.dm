@@ -215,6 +215,12 @@
 	arousal = clamp(amount, 0, MAX_AROUSAL)
 	update_pink_screen()
 	update_blueballs()
+	update_erect_state()
+
+/datum/sex_controller/proc/update_erect_state()
+	var/obj/item/organ/penis/penis = user.getorganslot(ORGAN_SLOT_PENIS)
+	if(penis)
+		penis.update_erect_state()
 
 /datum/sex_controller/proc/adjust_arousal(amount)
 	set_arousal(arousal + amount)
