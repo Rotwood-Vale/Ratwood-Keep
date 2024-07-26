@@ -202,11 +202,13 @@
 	var/datum/organ_dna/breasts/breasts_dna = organ_dna
 	var/datum/customizer_entry/organ/breasts/breasts_entry = entry
 	breasts_dna.breast_size = breasts_entry.breast_size
+	breasts_dna.lactating = breasts_entry.lactating
 
 /datum/customizer_choice/organ/breasts/generate_pref_choices(list/dat, datum/preferences/prefs, datum/customizer_entry/entry, customizer_type)
 	..()
 	var/datum/customizer_entry/organ/breasts/breasts_entry = entry
 	dat += "<br>Breast size: <a href='?_src_=prefs;task=change_customizer;customizer=[customizer_type];customizer_task=breast_size''>[find_key_by_value(GLOB.named_breast_sizes, breasts_entry.breast_size)]</a>"
+	dat += "<br>Lactation: <a href='?_src_=prefs;task=change_customizer;customizer=[customizer_type];customizer_task=lactating''>[breasts_entry.lactating ? "Enabled" : "Disabled"]</a>"
 
 /datum/customizer_choice/organ/breasts/handle_topic(mob/user, list/href_list, datum/preferences/prefs, datum/customizer_entry/entry, customizer_type)
 	..()
@@ -218,9 +220,12 @@
 				return
 			var/new_size = GLOB.named_breast_sizes[named_size]
 			breasts_entry.breast_size = sanitize_integer(new_size, MIN_BREASTS_SIZE, MAX_BREASTS_SIZE, DEFAULT_BREASTS_SIZE)
+		if("lactating")
+			breasts_entry.lactating = !breasts_entry.lactating
 
 /datum/customizer_entry/organ/breasts
 	var/breast_size = DEFAULT_BREASTS_SIZE
+	var/lactating = FALSE
 
 /datum/customizer/organ/breasts/human
 	customizer_choices = list(/datum/customizer_choice/organ/breasts/human)
