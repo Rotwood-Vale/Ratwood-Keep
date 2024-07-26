@@ -181,6 +181,7 @@
 		return
 	..()
 
+///Handles drinking water inherent to this turf, loops until conditions unfilfilled.
 /turf/open/water/proc/water_sip_loop(mob/living/user)
 	if(!can_drink_from_this(user))
 		return
@@ -199,6 +200,10 @@
 			return
 		user.visible_message(span_info("[user] continues to drink from [src]."))
 
+/**
+ * Checks if the passed living mob can drink from this turf.
+ * * Returns TRUE if yes, FALSE otherwise.
+ */
 /turf/open/water/proc/can_drink_from_this(mob/living/user)
 	if(user.stat != CONSCIOUS)
 		return FALSE
