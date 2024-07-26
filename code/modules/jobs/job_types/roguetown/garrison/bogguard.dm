@@ -16,7 +16,7 @@
 	give_bank_account = 16
 	min_pq = -2
 	max_pq = null
-	
+
 	cmode_music = 'sound/music/combat_bog.ogg'
 
 	/// Chance to be spawned as a crossbowman instead
@@ -72,7 +72,7 @@
 	else
 		backl = null
 	wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
-	backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger/steel = 1)
+	backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger/steel = 1, /obj/item/signal_horn = 1)
 	if(H.mind)
 		assign_skills(H)
 	H.verbs |= /mob/proc/haltyell

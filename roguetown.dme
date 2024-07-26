@@ -3529,6 +3529,7 @@
 #include "modular\code\modules\maturity-prompt\code\maturity_prompt.dm"
 #include "modular\code\modules\maturity-prompt\code\maturity_subsystem.dm"
 #include "modular_hearthstone\code\game\area\roguetownareas.dm"
+#include "modular_hearthstone\code\game\objects\items\signal_horn.dm"
 #include "modular_hearthstone\code\game\objects\items\clothes\stockings.dm"
 #include "modular_hearthstone\code\game\objects\items\clothes\strapless_dress.dm"
 #include "modular_hearthstone\code\game\objects\structures\fluff.dm"
