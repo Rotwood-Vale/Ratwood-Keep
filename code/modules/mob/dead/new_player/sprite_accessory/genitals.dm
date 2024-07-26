@@ -32,29 +32,29 @@
 /datum/sprite_accessory/penis/human
 	icon_state = "human"
 	name = "Plain"
-	color_key_defaults = list(KEY_SKIN_COLOR, KEY_SKIN_COLOR)
+	color_key_defaults = list(KEY_CHEST_COLOR, KEY_CHEST_COLOR)
 
 /datum/sprite_accessory/penis/knotted
 	icon_state = "knotted"
 	name = "Knotted"
-	color_key_defaults = list(null, KEY_SKIN_COLOR)
+	color_key_defaults = list(null, KEY_CHEST_COLOR)
 	default_colors = list("C52828", null)
 
 /datum/sprite_accessory/penis/knotted2
 	name = "Knotted 2"
 	icon_state = "knotted2"
-	color_key_defaults = list(null, KEY_SKIN_COLOR)
+	color_key_defaults = list(null, KEY_CHEST_COLOR)
 	default_colors = list("C52828", null)
 
 /datum/sprite_accessory/penis/flared
 	icon_state = "flared"
 	name = "Flared"
-	color_key_defaults = list(KEY_SKIN_COLOR, KEY_SKIN_COLOR)
+	color_key_defaults = list(KEY_CHEST_COLOR, KEY_CHEST_COLOR)
 
 /datum/sprite_accessory/penis/barbknot
 	icon_state = "barbknot"
 	name = "Barbed, Knotted"
-	color_key_defaults = list(null, KEY_SKIN_COLOR)
+	color_key_defaults = list(null, KEY_CHEST_COLOR)
 	default_colors = list("C52828", null)
 
 /datum/sprite_accessory/penis/tapered
@@ -65,7 +65,7 @@
 /datum/sprite_accessory/penis/tapered_mammal
 	icon_state = "tapered"
 	name = "Tapered"
-	color_key_defaults = list(null, KEY_SKIN_COLOR)
+	color_key_defaults = list(null, KEY_CHEST_COLOR)
 	default_colors = list("C52828", null)
 
 /datum/sprite_accessory/penis/tentacle
