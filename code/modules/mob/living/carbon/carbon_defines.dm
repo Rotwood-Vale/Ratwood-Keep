@@ -87,3 +87,6 @@
 
 	var/domhand = 0
 	var/tiredness = 0
+
+	/// Amount of remaining vitae that can be drained from this mob
+	var/vitae_bank = 9000
