@@ -19,18 +19,12 @@ SUBSYSTEM_DEF(communications)
 /datum/controller/subsystem/communications/proc/make_announcement(mob/living/user, is_silicon, input)
 	if(is_silicon)
 		if(user.job)
-			var/datum/job/J = SSjob.GetJob(user.job)
-			var/used_title = J.title
-			if(user.gender == FEMALE && J.f_title)
-				used_title = J.f_title
+			var/used_title = user.get_role_title()
 			priority_announce(html_decode(user.treat_message(input)), "The [used_title] Decrees", pick('sound/misc/royal_decree.ogg', 'sound/misc/royal_decree2.ogg'), "Captain")
 			silicon_message_cooldown = world.time + 5 SECONDS
 	else
 		if(user.job)
-			var/datum/job/J = SSjob.GetJob(user.job)
-			var/used_title = J.title
-			if(user.gender == FEMALE && J.f_title)
-				used_title = J.f_title
+			var/used_title = user.get_role_title()
 			priority_announce(html_decode(user.treat_message(input)), "The [used_title] Speaks", 'sound/misc/bell.ogg', "Captain")
 			nonsilicon_message_cooldown = world.time + 5 SECONDS
 		else
