@@ -28,9 +28,8 @@
 		//sound played for other players
 		if(player == src) continue
 		if(get_dist(player, src) > 7)
-			player.playsound_local(get_turf(player), pick('sound/vo/mobs/wwolf/howldist (1).ogg','sound/vo/mobs/wwolf/howldist (2).ogg'), 100, FALSE, pressure_affected = FALSE)
-
-	user.log_message("howls: [message] (WEREWOLF)")
+			player.playsound_local(get_turf(player), pick('sound/vo/mobs/wwolf/howldist (1).ogg','sound/vo/mobs/wwolf/howldist (2).ogg'), 100, FALSE, pressure_affected = FALSEmessage
+	user.log_talk("[message]", LOG_SAY, tag="WEREWOLF")
 
 /obj/effect/proc_holder/spell/self/claws
 	name = "Lupine Claws"

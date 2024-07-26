@@ -522,6 +522,7 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 		to_chat(D, span_boldnotice("A message from [src.real_name]:[msg]"))
 	for(var/mob/dead/observer/rogue/arcaneeye/A in GLOB.mob_list)
 		to_chat(A, span_boldnotice("A message from [src.real_name]:[msg]"))
+	src.log_talk("[msg]", LOG_SAY, tag="VAMPIRE")
 
 /mob/living/carbon/human/proc/punish_spawn()
 	set name = "Punish Minion"
@@ -1218,6 +1219,7 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 		to_chat(D, span_boldnotice("A message from [src.real_name]:[msg]"))
 	for(var/mob/dead/observer/rogue/arcaneeye/A in GLOB.mob_list)
 		to_chat(A, span_boldnotice("A message from [src.real_name]:[msg]"))
+	src.log_talk("[msg]", LOG_SAY, tag="VAMPIRE")
 
 /mob/dead/observer/rogue/arcaneeye/proc/eye_up()
 	set category = "Arcane Eye"
