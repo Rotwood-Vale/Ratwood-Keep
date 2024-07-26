@@ -5,23 +5,22 @@
     "start": {
 
     },
+    "end": {
+
+    },
     "syllable": {
-        "a": "aa",
         "b": "b'",
-        "ch": "ssch",
-        "c": "k'",
-        "d": "dd",
-        "f": "ff",
+        "f": "fh",
         "g": "'k",
-        "i": "ii",
-        "j": "sh'",
         "qu":"kw",
         "r": "rr",
-        "s": "sss",
-        "t": "tt",
-        "v": "vvv",
-        "x": "ksss",
-        "y": "yy",
-        "z": "zzz"
+        "s": "ss",
+        "t": "t'",
+        "v": "vv",
+        "x": "kz",
+        "z": "zz",
+        "j": "sh'",
+        "ch": "sch",
+        "c": "k"
     }
 }

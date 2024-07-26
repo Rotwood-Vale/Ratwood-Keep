@@ -153,6 +153,17 @@
 						return strings("middlespeak.json", "start")
 		return null
 
+// "end" group in JSON lists
+/datum/species/human/halfelf/get_accent_end(mob/living/carbon/human/H)
+		switch(H.skin_tone)
+				if(SKIN_COLOR_TIMBER_GRONN)
+						return strings("russian_replacement.json", "end")
+				if(SKIN_COLOR_ETRUSTCAN_DANDELION)
+						return strings("welsh_replacement.json", "end")
+				if(SKIN_COLOR_EBON_BORN)
+						return strings("middlespeak.json", "end")
+		return null
+
 // "syllable" group in JSON lists
 /datum/species/human/halfelf/get_accent_any(mob/living/carbon/human/H)
 		switch(H.skin_tone)

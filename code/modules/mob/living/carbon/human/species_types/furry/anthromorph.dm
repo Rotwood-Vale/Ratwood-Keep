@@ -176,6 +176,10 @@
 /datum/species/anthromorph/get_accent_start(mob/living/carbon/human/H)
 		return strings("Anglish.json", "start")
 
+// "end" group in JSON lists
+/datum/species/anthromorph/get_accent_end(mob/living/carbon/human/H)
+		return strings("Anglish.json", "end")
+
 // "syllable" group in JSON lists
 /datum/species/anthromorph/get_accent_any(mob/living/carbon/human/H)
 		return strings("Anglish.json", "syllable")

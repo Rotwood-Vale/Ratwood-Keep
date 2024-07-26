@@ -163,6 +163,17 @@
 						return strings("middlespeak.json", "start")
 		return null
 
+// "end" group in JSON lists
+/datum/species/tieberian/get_accent_end(mob/living/carbon/human/H)
+		switch(H.skin_tone)
+				if(SKIN_COLOR_CASTILLIAN)
+						return strings("spanish_replacement.json", "end")
+				if(SKIN_COLOR_SUCCUBUS)
+						return strings("proper_replacement.json", "end")
+				if(SKIN_COLOR_INCUBUS)
+						return strings("middlespeak.json", "end")
+		return null
+
 // "syllable" group in JSON lists
 /datum/species/tieberian/get_accent_any(mob/living/carbon/human/H)
 		switch(H.skin_tone)

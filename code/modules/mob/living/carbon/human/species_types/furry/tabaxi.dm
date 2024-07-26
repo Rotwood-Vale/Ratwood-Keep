@@ -159,12 +159,16 @@
 //Groups of Accents for each race set by associated 'skin_tone', see 'get_skin_list' above
 // "full" group in JSON lists
 /datum/species/tabaxi/get_accent(mob/living/carbon/human/H)
-		return strings("russian_replacement.json", "full")
+		return strings("tabaxi_replacement.json", "full")
 
 // "start" group in JSON lists
 /datum/species/tabaxi/get_accent_start(mob/living/carbon/human/H)
-		return strings("russian_replacement.json", "start")
+		return strings("tabaxi_replacement.json", "start")
+
+// "end" group in JSON lists
+/datum/species/tabaxi/get_accent_end(mob/living/carbon/human/H)
+		return strings("tabaxi_replacement.json", "end")
 
 // "syllable" group in JSON lists
 /datum/species/tabaxi/get_accent_any(mob/living/carbon/human/H)
-		return strings("russian_replacement.json", "syllable")
+		return strings("tabaxi_replacement.json", "syllable")

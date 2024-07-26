@@ -1,28 +1,25 @@
 {
     "full": {
-        "I'm": "I'mma",
-        "am": "amma",
-        "and": "andda",
-        "it's": "it'ssa",
         "make": "makea",
         "mom": "mamma",
         "my": "myya",
-        "sing": "singga",
         "spicy": "a'spicy",
         "thanks": "grazie",
-        "thing": "thingga",
         "use": "usea",
-        "want": "wantta",
-        "what's": "what'ssa",
-        "who's": "who'ssa",
         "whose": "whosea",
-        "why": "forra what reason",
+        "why": "fora what reason",
         "wine": "vino"
     },
     "start": {
 
     },
+    "end": {
+        "d": "dda",
+        "g": "gga",
+        "m": "mma",
+        "s": "ssa"
+    },
     "syllable": {
-
+        "r": "rr"
     }
 }

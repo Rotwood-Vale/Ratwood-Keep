@@ -156,6 +156,10 @@
 /datum/species/kobold/get_accent_start(mob/living/carbon/human/H)
 		return strings("hissy_replacement.json", "start")
 
+// "end" group in JSON lists
+/datum/species/kobold/get_accent_end(mob/living/carbon/human/H)
+		return strings("hissy_replacement.json", "end")
+
 // "syllable" group in JSON lists
 /datum/species/kobold/get_accent_any(mob/living/carbon/human/H)
 		return strings("hissy_replacement.json", "syllable")

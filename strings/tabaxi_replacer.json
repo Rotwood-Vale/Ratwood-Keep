@@ -1,0 +1,24 @@
+{
+    "full": {
+        "myself": "Tabaxi"
+    },
+    "start": {
+        "I": "We",
+        "who": "whom",
+        "a": "aa",
+        "e": "ee",
+        "o": "oo",
+        "u": "uu"
+    },
+    "end": {
+        "?": "?~"
+    },
+    "syllable": {
+        "h": "kh",
+        "f": "fv",
+        "m": "mm",
+        "v": "vv",
+        "x": "xx",
+        "r": "rr"
+    }
+}

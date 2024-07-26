@@ -155,6 +155,15 @@
 						return strings("norf_replacement.json", "start")
 		return strings("middlespeak.json", "start")
 
+// "end" group in JSON lists
+/datum/species/halforc/get_accent_end(mob/living/carbon/human/H)
+		switch(H.skin_tone)
+				if(SKIN_COLOR_GROONN)
+						return strings("norf_replacement.json", "end")
+				if(SKIN_COLOR_BLACK_HAMMER)
+						return strings("norf_replacement.json", "end")
+		return strings("middlespeak.json", "end")
+
 // "syllable" group in JSON lists
 /datum/species/halforc/get_accent_any(mob/living/carbon/human/H)
 		switch(H.skin_tone)

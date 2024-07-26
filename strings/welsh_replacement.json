@@ -1,22 +1,19 @@
 {
     "full": {
-
+        "the": "t'"
     },
     "start": {
-
+        "h": "'"
+    },
+    "end": {
+        "ed": "'t",
+        "er": "a",
+        "ing": "en'"
     },
     "syllable": {
+        "fuck": "ffyc",
         "a": "aa",
-        "ed": "t",
-        "er": "a",
-        "h": "'",
-        "ing": "en",
-        "i": "e",
         "o": "uu",
-        "r": "rr",
-        "y ": "i ",
-        "y": "'",
-        "z": "ss",
-        "fuck": "ffyc"
+        "r": "rr"
     }
 }

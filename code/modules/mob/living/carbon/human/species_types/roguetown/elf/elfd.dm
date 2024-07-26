@@ -173,6 +173,19 @@
 						return strings("russian_replacement.json", "start")
 		return null
 
+// "end" group in JSON lists
+/datum/species/elf/dark/get_accent_end(mob/living/carbon/human/H)
+		switch(H.skin_tone)
+				if(SKIN_COLOR_COMMORAH)
+						return strings("Anglish.json", "end")
+				if(SKIN_COLOR_SSHANNTYNLAN)
+						return strings("french_replacement.json", "end")
+				if(SKIN_COLOR_TAFRAVMA)
+						return strings("french_replacement.json", "end")
+				if(SKIN_COLOR_YUETHINDRYNN)
+						return strings("russian_replacement.json", "end")
+		return null
+
 // "syllable" group in JSON lists
 /datum/species/elf/dark/get_accent_any(mob/living/carbon/human/H)
 		switch(H.skin_tone)
