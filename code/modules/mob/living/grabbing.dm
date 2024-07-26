@@ -33,7 +33,7 @@
 	valid_check()
 
 /obj/item/grabbing/proc/valid_check()
-	if(grabbee.Adjacent(grabbed) && grabbee.pulling == grabbed)
+	if(grabbee.Adjacent(grabbed) && (grabbee.pulling == grabbed || grabbee == grabbed))
 		return TRUE
 	grabbee.stop_pulling(FALSE)
 	qdel(src)
