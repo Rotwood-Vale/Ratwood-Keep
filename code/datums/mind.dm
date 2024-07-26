@@ -125,12 +125,7 @@
 		if(!known_people[H.real_name])
 			known_people[H.real_name] = list()
 		known_people[H.real_name]["VCOLOR"] = H.voice_color
-		var/used_title
-		if(H.job)
-			var/datum/job/J = SSjob.GetJob(H.job)
-			used_title = J.title
-			if(H.gender == FEMALE && J.f_title)
-				used_title = J.f_title
+		var/used_title = H.get_role_title()
 		if(!used_title)
 			used_title = "unknown"
 		known_people[H.real_name]["FJOB"] = used_title

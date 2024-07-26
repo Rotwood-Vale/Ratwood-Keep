@@ -5,6 +5,7 @@
 	allowed_sexes = list(MALE)
 	allowed_races = RACES_TOLERATED_UP
 	grant_lit_torch = TRUE
+	show_wanderer_examine = FALSE
 
 /datum/outfit/job/roguetown/heartfelt/lord/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -56,6 +57,7 @@
 	allowed_sexes = list(FEMALE)
 	allowed_races = RACES_TOLERATED_UP
 	grant_lit_torch = TRUE
+	show_wanderer_examine = FALSE
 
 /datum/outfit/job/roguetown/heartfelt/lady/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -98,6 +100,7 @@
 	outfit = /datum/outfit/job/roguetown/heartfelt/hand
 	allowed_races = RACES_TOLERATED_UP
 	grant_lit_torch = TRUE
+	show_wanderer_examine = FALSE
 
 /datum/outfit/job/roguetown/heartfelt/hand/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -138,6 +141,7 @@
 	outfit = /datum/outfit/job/roguetown/heartfelt/knight
 	allowed_races = RACES_TOLERATED_UP
 	grant_lit_torch = TRUE
+	show_wanderer_examine = FALSE
 
 /datum/outfit/job/roguetown/heartfelt/knight/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -210,6 +214,7 @@
 	outfit = /datum/outfit/job/roguetown/heartfelt/magos
 	allowed_races = RACES_TOLERATED_UP
 	grant_lit_torch = TRUE
+	show_wanderer_examine = FALSE
 
 /datum/outfit/job/roguetown/heartfelt/magos
 	allowed_patrons = list(/datum/patron/divine/noc)
@@ -267,6 +272,7 @@
 	outfit = /datum/outfit/job/roguetown/heartfelt/prior
 	allowed_races = RACES_TOLERATED_UP
 	grant_lit_torch = TRUE
+	show_wanderer_examine = FALSE
 
 
 /datum/outfit/job/roguetown/heartfelt/prior

@@ -53,19 +53,25 @@
 	else
 		on_examine_face(user)
 		var/used_name = name
+		var/used_title = get_role_title()
+		var/display_as_wanderer = FALSE
+		var/is_returning = FALSE
 		if(observer_privilege)
 			used_name = real_name
-		if(job)
+		if(migrant_type)
+			var/datum/migrant_role/migrant = MIGRANT_ROLE(migrant_type)
+			if(migrant.show_wanderer_examine)
+				display_as_wanderer = TRUE
+		else if(job)
 			var/datum/job/J = SSjob.GetJob(job)
-			var/used_title = J.title
-			if(J.f_title && (t_He == "She"))
-				used_title = J.f_title
 			if(J.wanderer_examine)
-				. = list("<span class='info'>ø ------------ ø\nThis is <EM>[used_name]</EM>, the wandering [race_name].")
-			else
-				if(J.advjob_examine)
-					used_title = advjob
-				. = list("<span class='info'>ø ------------ ø\nThis is <EM>[used_name]</EM>, the [islatejoin ? "returning " : ""][race_name] [used_title].")
+				display_as_wanderer = TRUE
+			if(islatejoin)
+				is_returning = TRUE
+		if(display_as_wanderer)
+			. = list("<span class='info'>ø ------------ ø\nThis is <EM>[used_name]</EM>, the wandering [race_name].")
+		else if(used_title)
+			. = list("<span class='info'>ø ------------ ø\nThis is <EM>[used_name]</EM>, the [is_returning ? "returning " : ""][race_name] [used_title].")
 		else
 			. = list("<span class='info'>ø ------------ ø\nThis is the <EM>[used_name]</EM>, the [race_name].")
 
@@ -496,7 +502,7 @@
 
 	if(!obscure_name && headshot_link)
 		. += "<a href='?src=[REF(src)];task=view_headshot;'>View headshot</a>"
-	
+
 	var/list/lines = build_cool_description(get_mob_descriptors(obscure_name, user), src)
 	for(var/line in lines)
 		. += span_info(line)
