@@ -529,32 +529,39 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 	set category = "VAMPIRE"
 
 	var/datum/game_mode/chaosmode/C = SSticker.mode
-	var/list/mob/living/carbon/human/possible = list()
+	var/list/possible = list()
 	for(var/datum/mind/V in C.vampires)
 		if(V.special_role == "Vampire Spawn")
-			possible |= V.current
+			possible[V.current.real_name] = V.current
 	for(var/datum/mind/D in C.deathknights)
-		possible |= D.current
-	var/mob/living/carbon/human/choice = input(src, "Who to punish?", "PUNISHMENT") as anything in possible|null
-	if(choice)
-		var/punishmentlevels = list("Pause", "Pain", "Release")
-		switch(input(src, "Severity?", "PUNISHMENT") as anything in punishmentlevels|null)
-			if("Pain")
-				to_chat(choice, span_boldnotice("You are wracked with pain as your master punishes you!"))
-				choice.apply_damage(30, BRUTE)
+		possible[D.current.real_name] = D.current
+	var/name_choice = input(src, "Who to punish?", "PUNISHMENT") as null|anything in possible
+	if(!name_choice)
+		return
+	var/mob/living/carbon/human/choice = possible[name_choice]
+	if(!choice || QDELETED(choice))
+		return
+	var/punishmentlevels = list("Pause", "Pain", "DESTROY")
+	var/punishment = input(src, "Severity?", "PUNISHMENT") as null|anything in punishmentlevels
+	if(!punishment)
+		return
+	switch(punishment)
+		if("Pain")
+			to_chat(choice, span_boldnotice("You are wracked with pain as your master punishes you!"))
+			choice.apply_damage(30, BRUTE)
+			choice.emote_scream()
+			playsound(choice, 'sound/misc/obey.ogg', 100, FALSE, pressure_affected = FALSE)
+		if("Pause")
+			to_chat(choice, span_boldnotice("Your body is frozen in place as your master punishes you!"))
+			choice.Paralyze(300)
+			choice.emote_scream()
+			playsound(choice, 'sound/misc/obey.ogg', 100, FALSE, pressure_affected = FALSE)
+		if("DESTROY")
+			to_chat(choice, span_boldnotice("You feel only darkness. Your master no longer has use of you."))
+			spawn(10 SECONDS)
 				choice.emote_scream()
-				playsound(choice, 'sound/misc/obey.ogg', 100, FALSE, pressure_affected = FALSE)
-			if("Pause")
-				to_chat(choice, span_boldnotice("Your body is frozen in place as your master punishes you!"))
-				choice.Paralyze(300)
-				choice.emote_scream()
-				playsound(choice, 'sound/misc/obey.ogg', 100, FALSE, pressure_affected = FALSE)
-			if("Release")
-				to_chat(choice, span_boldnotice("You feel only darkness. Your master no longer has use of you."))
-				spawn(10 SECONDS)
-					choice.emote_scream()
-					choice.dust()
-		visible_message(span_danger("[src] reaches out, gripping [choice]'s soul, inflicting punishment!"))
+				choice.dust()
+	visible_message(span_danger("[src] reaches out, gripping [choice]'s soul, inflicting punishment!"))
 
 /obj/structure/vampire/portal/Crossed(atom/movable/AM)
 	. = ..()
