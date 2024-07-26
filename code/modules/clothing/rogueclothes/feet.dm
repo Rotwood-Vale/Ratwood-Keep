@@ -46,7 +46,7 @@
 /obj/item/clothing/shoes/roguetown/ridingboots
 	name = "riding boots"
 	color = "#d5c2aa"
-	desc = "Boots worn by those who ride Saigas often."
+	desc = "Boots worn by those who ride Saigas often, complete with spurs."
 	gender = PLURAL
 	icon_state = "ridingboots"
 	item_state = "ridingboots"
@@ -58,7 +58,7 @@
 
 /obj/item/clothing/shoes/roguetown/simpleshoes
 	name = "shoes"
-	desc = "Better than going barefoot."
+	desc = "Pair of simple, cheap shoes."
 	gender = PLURAL
 	icon_state = "simpleshoe"
 	item_state = "simpleshoe"
@@ -102,7 +102,7 @@
 
 /obj/item/clothing/shoes/roguetown/shalal
 	name = "babouche"
-	desc = "Simple cheap shoes."
+	desc = "Shoes with a point at the toes."
 	gender = PLURAL
 	icon_state = "shalal"
 	item_state = "shalal"
@@ -153,6 +153,7 @@
 
 /obj/item/clothing/shoes/roguetown/grenzelhoft
 	name = "grenzelhoft boots"
+	desc = "A pair of fine boots worn by mercenaries."
 	icon_state = "grenzelboots"
 	item_state = "grenzelboots"
 	sleeved = 'icons/roguetown/clothing/onmob/helpers/stonekeep_merc.dmi'

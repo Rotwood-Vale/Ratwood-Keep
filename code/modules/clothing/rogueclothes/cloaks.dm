@@ -356,7 +356,7 @@
 
 /obj/item/clothing/cloak/stabard/bog
 	name = "bogman tabard"
-	desc = "A tabard worn by those that protect the citizenry from the horrors of the Terrorbog" // THE BOG DESERVES A BETTER DESCRIPTION!
+	desc = "A tabard worn by those that protect the citizenry from the horrors of the Terrorbog." // THE BOG DESERVES A BETTER DESCRIPTION!
 	color = CLOTHING_GREEN
 	detail_color = CLOTHING_DARK_GREEN
 
@@ -684,7 +684,7 @@
 
 /obj/item/clothing/head/hooded/rainhood
 	name = "hood"
-	desc = "This one will shelter me from the weather and my identity too."
+	desc = "This one will shelter you from the weather and hide your identity too."
 	icon_state = "rain_hood"
 	item_state = "rain_hood"
 	slot_flags = ITEM_SLOT_HEAD
@@ -801,7 +801,7 @@
 
 /obj/item/clothing/cloak/stole
 	name = "stole"
-	desc = "Garments of a priest, usually worn when giving mass to the people."
+	desc = "Garments of a priest, usually worn when giving religious speeches to the people."
 	icon_state = "stole_gold"
 	sleeved = null
 	sleevetype = null

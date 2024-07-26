@@ -28,7 +28,7 @@
 
 /obj/item/clothing/gloves/roguetown/fingerless
 	name = "fingerless gloves"
-	desc = "Gloves with holes for fingers, preferred by archers."
+	desc = "Gloves with holes for fingers, preferred by archers and thieves."
 	icon_state = "fingerless_gloves"
 	resistance_flags = null
 	blocksound = SOFTHIT
