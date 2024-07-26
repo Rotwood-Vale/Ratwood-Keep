@@ -165,7 +165,7 @@
 		if(2)
 			adjective = "a small"
 		if(3)
-			adjective = "a normal"
+			adjective = "an average"
 		if(4)
 			adjective = "a large"
 		if(5)
