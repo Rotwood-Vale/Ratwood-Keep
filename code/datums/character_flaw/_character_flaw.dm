@@ -292,6 +292,7 @@ GLOBAL_LIST_INIT(character_flaws, list(
 	var/concious_timer = (10 MINUTES)
 	var/do_sleep = FALSE
 	var/pain_pity_charges = 3
+	var/drugged_up = FALSE
 
 /datum/charflaw/narcoleptic/on_mob_creation(mob/user)
 	ADD_TRAIT(user, TRAIT_FASTSLEEP, "[type]")
@@ -315,7 +316,8 @@ GLOBAL_LIST_INIT(character_flaws, list(
 				concious_timer = rand(1 MINUTES, 2 MINUTES)
 				to_chat(user, span_warning("The pain keeps me awake..."))
 			else
-				if(prob(40))
+				if(prob(40) || drugged_up)
+					drugged_up = FALSE
 					concious_timer = rand(4 MINUTES, 6 MINUTES)
 					to_chat(user, span_info("The feeling has passed."))
 				else
@@ -328,16 +330,17 @@ GLOBAL_LIST_INIT(character_flaws, list(
 	else
 		// Been conscious for ~10 minutes (whatever is the conscious timer)
 		if(last_unconsciousness + concious_timer < world.time)
+			drugged_up = FALSE
 			to_chat(user, span_blue("I'm getting drowsy..."))
 			user.emote("yawn", forced = TRUE)
 			next_sleep = world.time + rand(7 SECONDS, 11 SECONDS)
 			do_sleep = TRUE
 	
-/proc/mob_narco_timer_reset(mob/living/living)
+/proc/narcolepsy_drug_up(mob/living/living)
 	var/datum/charflaw/narcoleptic/narco = living.get_flaw(/datum/charflaw/narcoleptic)
 	if(!narco)
 		return
-	narco.reset_timer()
+	narco.drugged_up = TRUE
 
 #define MASO_THRESHOLD_ONE 1
 #define MASO_THRESHOLD_TWO 2
