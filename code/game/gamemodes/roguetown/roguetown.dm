@@ -2,187 +2,194 @@
 var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "Extended", "Aspirants", "Bandits", "Maniac", "CANCEL") // This is mainly used for forcemgamemodes
 
 /datum/game_mode/chaosmode
-	name = "roguemode"
-	config_tag = "roguemode"
-	report_type = "roguemode"
-	false_report_weight = 0
-	required_players = 0
-	required_enemies = 0
-	recommended_enemies = 0
-	enemy_minimum_age = 0
+    name = "roguemode"
+    config_tag = "roguemode"
+    report_type = "roguemode"
+    false_report_weight = 0
+    required_players = 0
+    required_enemies = 0
+    recommended_enemies = 0
+    enemy_minimum_age = 0
 
-	announce_span = "danger"
-	announce_text = "The"
+    announce_span = "danger"
+    announce_text = "The"
 
-	var/allmig = FALSE
-	var/roguefight = FALSE
-	var/redscore = 0
-	var/greenscore = 0
+    var/allmig = FALSE
+    var/roguefight = FALSE
+    var/redscore = 0
+    var/greenscore = 0
 
-	var/list/allantags = list()
+    var/list/allantags = list()
 
-	var/datum/team/roguecultists
-// DEBUG
-	var/list/forcedmodes = list()
-	var/mob/living/carbon/human/vlord = null
-// GAMEMODE SPECIFIC
-	var/banditcontrib = 0
-	var/banditgoal = 1
-	var/delfcontrib = 0
-	var/delfgoal = 1
+    var/datum/team/roguecultists
+    // DEBUG
+    var/list/forcedmodes = list()
+    var/mob/living/carbon/human/vlord = null
+    // GAMEMODE SPECIFIC
+    var/banditcontrib = 0
+    var/banditgoal = 1
+    var/delfcontrib = 0
+    var/delfgoal = 1
 
-	var/skeletons = FALSE
+    var/skeletons = FALSE
 
-	var/headrebdecree = FALSE
-	var/reb_end_time = 0
+    var/headrebdecree = FALSE
+    var/reb_end_time = 0
 
-	var/check_for_lord = TRUE
-	var/next_check_lord = 0
-	var/missing_lord_time = FALSE
-	var/roundvoteend = FALSE
-	var/ttime
+    var/check_for_lord = TRUE
+    var/next_check_lord = 0
+    var/missing_lord_time = FALSE
+    var/roundvoteend = FALSE
+    var/ttime
 
-	var/kingsubmit = FALSE
-	var/deathknightspawn = FALSE
-	var/ascended = FALSE
-	var/list/datum/mind/deathknights = list()
+    var/kingsubmit = FALSE
+    var/deathknightspawn = FALSE
+    var/ascended = FALSE
+    var/list/datum/mind/deathknights = list()
 
 /datum/game_mode/chaosmode/proc/reset_skeletons()
-	skeletons = FALSE
+    skeletons = FALSE
 
 /datum/game_mode/chaosmode/check_finished()
-	ttime = world.time - SSticker.round_start_time
-	if(roguefight)
-		if(ttime >= 30 MINUTES)
-			return TRUE
-		if((redscore >= 100) || (greenscore >= 100))
-			return TRUE
-		return FALSE
+    ttime = world.time - SSticker.round_start_time
+    if(roguefight)
+        if(ttime >= 30 MINUTES)
+            return TRUE
+        if((redscore >= 100) || (greenscore >= 100))
+            return TRUE
+        return FALSE
 
-	if(allmig)
-		return FALSE
+    if(allmig)
+        return FALSE
 
-	if(ttime >= GLOB.round_timer)
-		if(roundvoteend)
-			if(ttime >= (GLOB.round_timer + ROUND_END_TIME) )
-				for(var/mob/living/carbon/human/H in GLOB.human_list)
-					if(H.stat != DEAD)
-						if(H.allmig_reward)
-							H.adjust_triumphs(H.allmig_reward)
-							H.allmig_reward = 0
-				return TRUE
-		else
-			if(!SSvote.mode && SSticker.autovote)
-				SSvote.initiate_vote("endround", pick("Zlod", "Sun King", "Gaia", "Moon Queen", "Aeon", "Gemini", "Aries"))
+    if(ttime >= GLOB.round_timer)
+        if(roundvoteend)
+            if(ttime >= (GLOB.round_timer + ROUND_END_TIME))
+                for(var/mob/living/carbon/human/H in GLOB.human_list)
+                    if(H.stat != DEAD)
+                        if(H.allmig_reward)
+                            H.adjust_triumphs(H.allmig_reward)
+                            H.allmig_reward = 0
+                return TRUE
+        else
+            if(!SSvote.mode && SSticker.autovote)
+                SSvote.initiate_vote("endround", pick("Zlod", "Sun King", "Gaia", "Moon Queen", "Aeon", "Gemini", "Aries"))
 
-	if(headrebdecree)
-		if(reb_end_time == 0)
-			to_chat(world, span_boldannounce("The peasant rebels took control of the throne, hail the new community!"))
-			if(ttime >= INITIAL_ROUND_TIMER)
-				reb_end_time = ttime + REBEL_RULE_TIME
-				to_chat(world, span_boldwarning("The round will end in 15 minutes."))
-			else
-				reb_end_time = INITIAL_ROUND_TIMER
-				to_chat(world, span_boldwarning("The round will end at the 2:30 hour mark."))
-		if(ttime >= reb_end_time)
-			return TRUE
+    if(headrebdecree)
+        if(reb_end_time == 0)
+            to_chat(world, span_boldannounce("The peasant rebels took control of the throne, hail the new community!"))
+            if(ttime >= INITIAL_ROUND_TIMER)
+                reb_end_time = ttime + REBEL_RULE_TIME
+                to_chat(world, span_boldwarning("The round will end in 15 minutes."))
+            else
+                reb_end_time = INITIAL_ROUND_TIMER
+                to_chat(world, span_boldwarning("The round will end at the 2:30 hour mark."))
+        if(ttime >= reb_end_time)
+            return TRUE
 
-	check_for_lord()
-/*
-	if(ttime > 180 MINUTES) //3 hour cutoff
-		return TRUE*/
+    check_for_lord()
+    /*
+    if(ttime > 180 MINUTES) //3 hour cutoff
+        return TRUE*/
 
 /datum/game_mode/chaosmode/proc/check_for_lord(forced = FALSE)
-	if(!forced && world.time < next_check_lord)
-		return
-	next_check_lord = world.time + 1 MINUTES
-	var/lord_found = FALSE
-	var/lord_dead = FALSE
-	for(var/mob/living/carbon/human/H in GLOB.human_list)
-		if(H.mind)
-			if(H.job == "King")
-				lord_found = TRUE
-				if(H.stat == DEAD)
-					lord_dead = TRUE
-				else
-					if(lord_dead)
-						lord_dead = FALSE
-					break
-	if(lord_dead || !lord_found)
-		if(!missing_lord_time)
-			missing_lord_time = world.time
-		if(world.time > missing_lord_time + 10 MINUTES)
-			missing_lord_time = world.time
-			addomen(OMEN_NOLORD)
-		return FALSE
-	else
-		return TRUE
+    if(!forced && world.time < next_check_lord)
+        return
+    next_check_lord = world.time + 1 MINUTES
+    var/lord_found = FALSE
+    var/lord_dead = FALSE
+    for(var/mob/living/carbon/human/H in GLOB.human_list)
+        if(H.mind)
+            if(H.job == "King")
+                lord_found = TRUE
+                if(H.stat == DEAD)
+                    lord_dead = TRUE
+                else
+                    if(lord_dead)
+                        lord_dead = FALSE
+                    break
+    if(lord_dead || !lord_found)
+        if(!missing_lord_time)
+            missing_lord_time = world.time
+        if(world.time > missing_lord_time + 10 MINUTES)
+            missing_lord_time = world.time
+            addomen(OMEN_NOLORD)
+        return FALSE
+    else
+        return TRUE
 
 /datum/game_mode/chaosmode/pre_setup()
-	if(allmig || roguefight)
-		return TRUE
-	for(var/A in GLOB.special_roles_rogue)
-		allantags |= get_players_for_role(A)
+    if(allmig || roguefight)
+        return TRUE
+    for(var/A in GLOB.special_roles_rogue)
+        allantags |= get_players_for_role(A)
 
-	return TRUE
+    return TRUE
 
 /datum/game_mode/proc/after_DO()
-	return
+    return
 
 /datum/game_mode/chaosmode/after_DO()
-	if(allmig || roguefight)
-		return TRUE
-	if(SSticker.manualmodes)
-		forcedmodes |= SSticker.manualmodes
+    if(allmig || roguefight)
+        return TRUE
+    if(SSticker.manualmodes)
+        forcedmodes |= SSticker.manualmodes
+    if(forcedmodes.len)
+        message_admins("Manual gamemodes selected.")
+        for(var/G in forcedmodes)
+            pick_antagonist(G)
+        return TRUE
 
-	if(forcedmodes.len)
-		message_admins("Manual gamemodes selected.")
-		for(var/G in forcedmodes)
-			switch(G)
-				if("Rebellion")
-					pick_rebels()
-					log_game("Major Antagonist: Rebellion")
-				if("Vampires and Werewolves")
-					pick_vampires()
-					pick_werewolves()
-					log_game("Major Antagonist: Vampires and Werewolves")
-				if("Bandits")
-					pick_bandits()
-					log_game("Minor Antagonist: Bandit")
-				if("Aspirants")
-					pick_aspirants()
-					log_game("Minor Antagonist: Aspirant")
-				if("Maniac")
-					pick_maniac()
-					log_game("Minor Antagonist: Maniac)")
-				if("Extended")
-					log_game("Major Antagonist: Extended")
-		return TRUE
-
-	var/major_roll = rand(1,100)
-	switch(major_roll)
-		if(1 to 35)
-			pick_rebels()
-			log_game("Major Antagonist: Rebellion")
-		if(36 to 80)
-			//WWs and Vamps now normally roll together
-			pick_vampires()
-			pick_werewolves()
-			log_game("Major Antagonist: Vampires and Werewolves")
-		if(81 to 100)
-			log_game("Major Antagonist: Extended") //gotta put something here.
-	
-	if(prob(45))
-		pick_bandits()
-		log_game("Minor Antagonist: Bandit")
-	if(prob(45))
-		pick_aspirants()
-		log_game("Minor Antagonist: Aspirant")
-	if(prob(10))
-		pick_maniac()
-		log_game("Minor Antagonist: Maniac")
-	
-	return TRUE
+    // Major Antagonists
+    if(prob(35))
+        pick_rebels()
+        log_game("Major Antagonist: Rebellion")
+    if(prob(45))
+        pick_vampires()
+        log_game("Major Antagonist: Vampires")
+    if(prob(45))
+        pick_werewolves()
+        log_game("Major Antagonist: Werewolves")
+    if(prob(20))
+        log_game("Major Antagonist: Extended")
+        
+    // Minor Antagonists
+    if(prob(45))
+        pick_bandits()
+        log_game("Minor Antagonist: Bandit")
+    if(prob(45))
+        pick_aspirants()
+        log_game("Minor Antagonist: Aspirant")
+    if(prob(10))
+        pick_maniac()
+        log_game("Minor Antagonist: Maniac")
+    
+    return TRUE
+    
+/datum/game_mode/chaosmode/proc/pick_antagonist(mode)
+    switch(mode)
+        if("Rebellion")
+            pick_rebels()
+            log_game("Major Antagonist: Rebellion")
+        if("Vampires")
+            pick_vampires()
+            log_game("Major Antagonist: Vampires")
+        if("Werewolves")
+            pick_werewolves()
+            log_game("Major Antagonist: Werewolves")
+        if("Bandits")
+            pick_bandits()
+            log_game("Minor Antagonist: Bandit")
+        if("Aspirants")
+            pick_aspirants()
+            log_game("Minor Antagonist: Aspirant")
+        if("Maniac")
+            pick_maniac()
+            log_game("Minor Antagonist: Maniac")
+        if("Extended")
+            log_game("Major Antagonist: Extended")
+    
+    return TRUE
 
 /datum/game_mode/chaosmode/proc/pick_bandits()
 	//BANDITS
