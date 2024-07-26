@@ -19,7 +19,7 @@
 
 	display_order = JDO_PRIEST
 	give_bank_account = 115
-	min_pq = 4
+	min_pq = 2
 	max_pq = null
 
 /datum/outfit/job/roguetown/priest
