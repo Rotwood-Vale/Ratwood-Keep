@@ -44,3 +44,117 @@
 		return "middle-aged"
 	else
 		return "adult"
+
+/datum/mob_descriptor/penis
+	name = "penis"
+	slot = MOB_DESCRIPTOR_SLOT_PENIS
+	verbage = "has"
+
+/datum/mob_descriptor/penis/can_describe(mob/living/described)
+	if(!ishuman(described))
+		return FALSE
+	var/mob/living/carbon/human/human = described
+	var/obj/item/organ/penis/penis = human.getorganslot(ORGAN_SLOT_PENIS)
+	if(!penis)
+		return FALSE
+	if(!get_location_accessible(human, BODY_ZONE_PRECISE_GROIN))
+		return FALSE
+	return TRUE
+
+/datum/mob_descriptor/penis/get_description(mob/living/described)
+	var/mob/living/carbon/human/human = described
+	var/obj/item/organ/penis/penis = human.getorganslot(ORGAN_SLOT_PENIS)
+	var/adjective
+	switch(penis.penis_size)
+		if(1)
+			adjective = "a small"
+		if(1)
+			adjective = "an average"
+		if(1)
+			adjective = "a large"
+	return "[adjective] penis"
+
+/datum/mob_descriptor/testicles
+	name = "balls"
+	slot = MOB_DESCRIPTOR_SLOT_TESTICLES
+	verbage = "has"
+
+/datum/mob_descriptor/testicles/can_describe(mob/living/described)
+	if(!ishuman(described))
+		return FALSE
+	var/mob/living/carbon/human/human = described
+	var/obj/item/organ/testicles/testes = human.getorganslot(ORGAN_SLOT_TESTICLES)
+	if(!testes)
+		return FALSE
+	if(!get_location_accessible(human, BODY_ZONE_PRECISE_GROIN))
+		return FALSE
+	return TRUE
+
+/datum/mob_descriptor/testicles/get_description(mob/living/described)
+	var/mob/living/carbon/human/human = described
+	var/obj/item/organ/testicles/testes = human.getorganslot(ORGAN_SLOT_TESTICLES)
+	var/adjective
+	switch(testes.ball_size)
+		if(1)
+			adjective = "a small"
+		if(1)
+			adjective = "an average"
+		if(1)
+			adjective = "a large"
+	return "[adjective] pair of balls"
+
+/datum/mob_descriptor/vagina
+	name = "vagina"
+	slot = MOB_DESCRIPTOR_SLOT_VAGINA
+	verbage = "has"
+
+/datum/mob_descriptor/vagina/can_describe(mob/living/described)
+	if(!ishuman(described))
+		return FALSE
+	var/mob/living/carbon/human/human = described
+	var/obj/item/organ/vagina/vagina = human.getorganslot(ORGAN_SLOT_VAGINA)
+	if(!vagina)
+		return FALSE
+	if(!get_location_accessible(human, BODY_ZONE_PRECISE_GROIN))
+		return FALSE
+	return TRUE
+
+/datum/mob_descriptor/vagina/get_description(mob/living/described)
+	var/mob/living/carbon/human/human = described
+	var/obj/item/organ/vagina/vagina = human.getorganslot(ORGAN_SLOT_VAGINA)
+	return "a vagina"
+
+/datum/mob_descriptor/breasts
+	name = "breasts"
+	slot = MOB_DESCRIPTOR_SLOT_BREASTS
+	verbage = "has"
+
+/datum/mob_descriptor/breasts/can_describe(mob/living/described)
+	if(!ishuman(described))
+		return FALSE
+	var/mob/living/carbon/human/human = described
+	var/obj/item/organ/breasts/breasts = human.getorganslot(ORGAN_SLOT_BREASTS)
+	if(!breasts)
+		return FALSE
+	if(!get_location_accessible(human, BODY_ZONE_CHEST))
+		return FALSE
+	return TRUE
+
+/datum/mob_descriptor/breasts/get_description(mob/living/described)
+	var/mob/living/carbon/human/human = described
+	var/obj/item/organ/breasts/breasts = human.getorganslot(ORGAN_SLOT_BREASTS)
+	var/adjective
+	switch(breasts.breast_size)
+		if(0)
+			adjective = "a flat"
+		if(1)
+			adjective = "a very small"
+		if(2)
+			adjective = "a small"
+		if(3)
+			adjective = "a normal"
+		if(4)
+			adjective = "a large"
+		if(5)
+			adjective = "an enormous"
+	return "[adjective] pair of breasts"
