@@ -1368,6 +1368,10 @@
 "avY" = (
 /turf/open/floor/carpet/purple,
 /area/rogue/under/town/basement)
+"awb" = (
+/obj/structure/long_sleep,
+/turf/open/floor/rogue/grass,
+/area/rogue/outdoors/rtfield)
 "awG" = (
 /obj/structure/closet/crate/roguecloset,
 /obj/item/clothing/suit/roguetown/shirt/rags,
@@ -2695,10 +2699,6 @@
 	icon_state = "bfloorz"
 	},
 /area/rogue/indoors/town/manor)
-"bVs" = (
-/obj/structure/long_sleep,
-/turf/open/floor/rogue/grass,
-/area/rogue/outdoors/rtfield)
 "bWj" = (
 /obj/structure/fluff/statue/knight/interior/r,
 /turf/open/floor/rogue/church,
@@ -5679,10 +5679,6 @@
 /turf/open/floor/rogue/twig{
 	dir = 8
 	},
-/area/rogue/indoors)
-"fcv" = (
-/obj/structure/long_sleep,
-/turf/open/floor/rogue/hexstone,
 /area/rogue/indoors)
 "fcJ" = (
 /obj/structure/roguewindow/openclose,
@@ -9925,10 +9921,6 @@
 	},
 /turf/open/floor/rogue/blocks,
 /area/rogue/indoors)
-"jNH" = (
-/obj/structure/long_sleep,
-/turf/open/floor/rogue/dirt,
-/area/rogue/outdoors/town)
 "jNI" = (
 /turf/open/floor/rogue/cobble/mossy,
 /area/rogue/under/cavewet/bogcaves/chapel)
@@ -10613,10 +10605,6 @@
 /obj/item/clothing/neck/roguetown/psicross/necra,
 /turf/open/floor/rogue/tile,
 /area/rogue/indoors/town/church/chapel)
-"kBQ" = (
-/obj/structure/long_sleep,
-/turf/open/floor/rogue/grass,
-/area/rogue/indoors/town/manor)
 "kCh" = (
 /obj/effect/decal/cleanable/blood/old,
 /turf/open/floor/rogue/blocks,
@@ -13365,6 +13353,10 @@
 /obj/item/natural/feather,
 /turf/open/floor/rogue/tile/masonic/inverted,
 /area/rogue/indoors/town/manor)
+"nPP" = (
+/obj/structure/long_sleep,
+/turf/open/floor/rogue/grass,
+/area/rogue/outdoors/bog)
 "nPR" = (
 /obj/structure/stairs/stone{
 	dir = 1
@@ -14001,6 +13993,10 @@
 	},
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/town/tavern)
+"oyJ" = (
+/obj/structure/long_sleep,
+/turf/open/floor/rogue/dirt,
+/area/rogue/outdoors/town)
 "oyP" = (
 /obj/structure/stairs/stone{
 	dir = 1
@@ -14128,6 +14124,10 @@
 	icon_state = "wooden_floort"
 	},
 /area/rogue/outdoors/beach)
+"oFR" = (
+/obj/structure/long_sleep,
+/turf/open/floor/rogue/hexstone,
+/area/rogue/indoors)
 "oFS" = (
 /obj/structure/ladder,
 /turf/open/floor/rogue/ruinedwood,
@@ -14949,12 +14949,6 @@
 	dir = 4
 	},
 /area/rogue/indoors)
-"pBp" = (
-/obj/structure/long_sleep,
-/turf/open/floor/rogue/tile{
-	icon_state = "greenstone"
-	},
-/area/rogue/indoors/town/bath)
 "pBL" = (
 /obj/structure/gate/bars{
 	gid = "forestgate1";
@@ -16297,6 +16291,12 @@
 	icon_state = "paving"
 	},
 /area/rogue/indoors)
+"rgZ" = (
+/obj/structure/long_sleep,
+/turf/open/floor/rogue/tile{
+	icon_state = "greenstone"
+	},
+/area/rogue/indoors/town/bath)
 "rhL" = (
 /obj/effect/landmark/start/grenzelhoftlate{
 	dir = 8
@@ -16744,6 +16744,10 @@
 /obj/item/storage/roguebag,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/indoors)
+"rJa" = (
+/obj/structure/long_sleep,
+/turf/open/floor/rogue/grass,
+/area/rogue/indoors/town/manor)
 "rJC" = (
 /obj/structure/roguemachine/atm,
 /turf/open/floor/rogue/blocks,
@@ -21285,10 +21289,6 @@
 	icon_state = "iron_corner"
 	},
 /area/rogue/under/cavewet/bogcaves/sunkencity)
-"wLe" = (
-/obj/structure/long_sleep,
-/turf/open/floor/rogue/grass,
-/area/rogue/outdoors/bog)
 "wLx" = (
 /turf/open/water/swamp,
 /area/rogue/outdoors/bog)
@@ -265382,7 +265382,7 @@ xCA
 qhH
 hHI
 qhH
-fcv
+oFR
 hHI
 qhH
 hAg
@@ -281805,7 +281805,7 @@ ryI
 xAi
 ryI
 ryI
-bVs
+awb
 fxx
 fxx
 qQZ
@@ -287707,7 +287707,7 @@ vNh
 aqP
 lte
 lte
-pBp
+rgZ
 lte
 sYf
 oXU
@@ -288682,7 +288682,7 @@ sYx
 wLx
 uRH
 wLx
-wLe
+nPP
 wGD
 lOV
 lOV
@@ -295310,7 +295310,7 @@ uYE
 pHI
 uOL
 iHC
-kBQ
+rJa
 buc
 usA
 tOz
@@ -313050,7 +313050,7 @@ jHc
 jHc
 tOZ
 aOv
-jNH
+oyJ
 jHc
 jHc
 tOZ
