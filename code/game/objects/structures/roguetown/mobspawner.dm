@@ -16,7 +16,7 @@ var/global/max_total_spawned_mobs = 30 // New global variable for the total limi
 	var/list/adventurer_landmarks = list() // Store landmarks here
 	var/area/valid_area = /area/rogue/outdoors/bog // Define the valid area
 
-	New()
+/obj/effect/mob_spawner/Initialize()
 		..() // Call the parent constructor
 		spawn_interval = rand(600, 1200) // RNG between 60 seconds and 120 seconds
 		adventurer_landmarks = get_all_adventurer_landmarks()
