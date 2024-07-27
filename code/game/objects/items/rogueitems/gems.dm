@@ -1,3 +1,15 @@
+var/global/sellprice_multiplier = 1
+
+/proc/update_sellprice_multiplier()
+	global.sellprice_multiplier = rand(40, 160) / 100
+	for(var/obj/item/I in world)
+		if(I.sellprice)
+			I.sellprice = initial(I.sellprice) * global.sellprice_multiplier
+
+/world/New()
+	..()
+	update_sellprice_multiplier()
+	message_admins("Sell prices have been randomized.")
 
 /obj/item/roguegem
 	name = "rontz"
@@ -18,17 +30,13 @@
 	if(tag)
 		switch(tag)
 			if("gen")
-				return list("shrink" = 0.4,"sx" = -1,"sy" = 0,"nx" = 11,"ny" = 1,"wx" = 0,"wy" = 1,"ex" = 4,"ey" = 0,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0,"nturn" = 15,"sturn" = 0,"wturn" = 0,"eturn" = 39,"nflip" = 8,"sflip" = 0,"wflip" = 0,"eflip" = 8)
+				return list("shrink" = 0.4, "sx" = -1, "sy" = 0, "nx" = 11, "ny" = 1, "wx" = 0, "wy" = 1, "ex" = 4, "ey" = 0, "northabove" = 0, "southabove" = 1, "eastabove" = 1, "westabove" = 0, "nturn" = 15, "sturn" = 0, "wturn" = 0, "eturn" = 39, "nflip" = 8, "sflip" = 0, "wflip" = 0, "eflip" = 8)
 			if("onbelt")
-				return list("shrink" = 0.3,"sx" = -2,"sy" = -5,"nx" = 4,"ny" = -5,"wx" = 0,"wy" = -5,"ex" = 2,"ey" = -5,"nturn" = 0,"sturn" = 0,"wturn" = 0,"eturn" = 0,"nflip" = 0,"sflip" = 0,"wflip" = 0,"eflip" = 0,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0)
+				return list("shrink" = 0.3, "sx" = -2, "sy" = -5, "nx" = 4, "ny" = -5, "wx" = 0, "wy" = -5, "ex" = 2, "ey" = -5, "nturn" = 0, "sturn" = 0, "wturn" = 0, "eturn" = 0, "nflip" = 0, "sflip" = 0, "wflip" = 0, "eflip" = 0, "northabove" = 0, "southabove" = 1, "eastabove" = 1, "westabove" = 0)
 
 /obj/item/roguegem/throw_impact(atom/hit_atom, datum/thrownthing/throwingdatum)
-	playsound(loc, pick('sound/items/gems (1).ogg','sound/items/gems (2).ogg'), 100, TRUE, -2)
+	playsound(loc, pick('sound/items/gems (1).ogg', 'sound/items/gems (2).ogg'), 100, TRUE, -2)
 	..()
-
-var/global/sellprice_multiplier = 1
-proc/update_sellprice_multiplier()
-    sellprice_multiplier = rand(40, 160) / 100
 
 /obj/item/roguegem/green
 	name = "gemerald"
@@ -60,7 +68,6 @@ proc/update_sellprice_multiplier()
 	sellprice = 121
 	desc = "Beautifully clear, it demands respect."
 
-
 /obj/item/roguegem/random
 	name = "random gem"
 	desc = "You shouldn't be seeing this."
@@ -71,10 +78,6 @@ proc/update_sellprice_multiplier()
 	var/pickgem = pickweight(newgem)
 	new pickgem(get_turf(src))
 	qdel(src)
-
-
-/// riddle
-
 
 /obj/item/riddleofsteel
 	name = "riddle of steel"
