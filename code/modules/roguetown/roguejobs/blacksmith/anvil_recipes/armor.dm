@@ -51,6 +51,12 @@
 	created_item = /obj/item/clothing/head/roguetown/helmet/skullcap
 	i_type = "Armor"
 
+/datum/anvil_recipe/armor/kettle
+	name = "Kettle Helm"
+	req_bar = /obj/item/ingot/iron
+	created_item = "/obj/item/clothing/head/roguetown/helmet/kettle"
+	i_type = "Armor"
+
 /datum/anvil_recipe/armor/studded
 	name = "Studded Leather Armor (+Leather Armor)"
 	req_bar = /obj/item/ingot/iron
