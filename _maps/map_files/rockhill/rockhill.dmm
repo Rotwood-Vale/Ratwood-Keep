@@ -6988,9 +6988,9 @@
 "iqB" = (
 /obj/structure/closet/crate/chest,
 /obj/machinery/light/rogue/wallfire/candle/r,
-/obj/item/reagent_containers/food/snacks/egg/loaded,
-/obj/item/reagent_containers/food/snacks/egg/loaded,
-/obj/item/reagent_containers/food/snacks/egg/loaded,
+/obj/item/reagent_containers/food/snacks/egg,
+/obj/item/reagent_containers/food/snacks/egg,
+/obj/item/reagent_containers/food/snacks/egg,
 /obj/item/reagent_containers/powder/salt,
 /obj/item/reagent_containers/powder/salt,
 /obj/item/reagent_containers/powder/salt,
