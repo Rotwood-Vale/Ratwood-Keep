@@ -33,7 +33,7 @@
 
 	user.sexcon.perform_sex_action(user, 2, 4, TRUE)
 	if(user.sexcon.check_active_ejaculation())
-		user.visible_message(span_love("cums into [target]'s throat!"))
+		user.visible_message(span_love("[user] cums into [target]'s throat!"))
 		user.sexcon.cum_into()
 
 	user.sexcon.perform_sex_action(target, 0, 7, FALSE)
