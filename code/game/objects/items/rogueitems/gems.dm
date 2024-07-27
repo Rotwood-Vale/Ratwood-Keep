@@ -4,12 +4,28 @@ var/global/sellprice_multiplier = 1
 	global.sellprice_multiplier = rand(40, 160) / 100
 	for(var/obj/item/I in world)
 		if(I.sellprice)
-			I.sellprice = initial(I.sellprice) * global.sellprice_multiplier
+			if(!I.vars["original_sellprice"])
+				I.vars["original_sellprice"] = I.sellprice
+			I.sellprice = I.vars["original_sellprice"] * global.sellprice_multiplier
+	message_admins("Sell prices have been randomized. Multiplier: [global.sellprice_multiplier]")
 
 /world/New()
 	..()
 	update_sellprice_multiplier()
-	message_admins("Sell prices have been randomized.")
+
+/client/verb/update_prices()
+	set name = "Update Item Prices"
+	set category = "Debug"
+	update_sellprice_multiplier()
+	to_chat(usr, "Prices updated. Check admin log for details.")
+
+/obj/item
+	var/original_sellprice
+
+/obj/item/Initialize()
+	. = ..()
+	if(sellprice)
+		original_sellprice = sellprice
 
 /obj/item/roguegem
 	name = "rontz"
@@ -74,10 +90,11 @@ var/global/sellprice_multiplier = 1
 	icon_state = null
 
 /obj/item/roguegem/random/Initialize()
+	. = ..()
 	var/newgem = list(/obj/item/roguegem = 5, /obj/item/roguegem/green = 15, /obj/item/roguegem/blue = 10, /obj/item/roguegem/yellow = 20, /obj/item/roguegem/violet = 10, /obj/item/roguegem/diamond = 5, /obj/item/riddleofsteel = 1)
 	var/pickgem = pickweight(newgem)
 	new pickgem(get_turf(src))
-	qdel(src)
+	return INITIALIZE_HINT_QDEL
 
 /obj/item/riddleofsteel
 	name = "riddle of steel"
@@ -93,5 +110,5 @@ var/global/sellprice_multiplier = 1
 	sellprice = 400
 
 /obj/item/riddleofsteel/Initialize()
-	..()
+	. = ..()
 	set_light(2, 1, "#ff0d0d")
