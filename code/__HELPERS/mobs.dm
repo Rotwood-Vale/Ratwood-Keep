@@ -196,6 +196,12 @@ GLOBAL_LIST_EMPTY(species_list)
 			. = 0
 			break
 
+		if(starttime < user.doafter_cancel_time)
+			. = 0
+			if(progress)
+				qdel(progbar)
+			return //Special case - when we force doafters to end from this, the doafter should not modify doing since that would interfere with potential new doafters being started after the cancel.
+
 		if(uninterruptible)
 			continue
 
@@ -227,6 +233,8 @@ GLOBAL_LIST_EMPTY(species_list)
 
 /mob
 	var/doing = 0
+	///Used to force-cancel all doafters started BEFORE this world.time
+	var/doafter_cancel_time = 0
 
 /proc/do_after(mob/user, delay, needhand = 1, atom/target = null, progress = 1, datum/callback/extra_checks = null)
 	if(!user)
@@ -277,6 +285,12 @@ GLOBAL_LIST_EMPTY(species_list)
 		if(!user.doing)
 			. = 0
 			break
+		
+		if(starttime < user.doafter_cancel_time)
+			. = 0
+			if(progbar)
+				qdel(progbar)
+			return //Special case - when we force doafters to end from this, the doafter should not modify doing since that would interfere with potential new doafters being started after the cancel.
 
 		if(isliving(user))
 			var/mob/living/L = user
@@ -356,6 +370,12 @@ GLOBAL_LIST_EMPTY(species_list)
 			. = 0
 			break
 
+		if(starttime < user.doafter_cancel_time)
+			. = 0
+			if(progbar)
+				qdel(progbar)
+			return //Special case - when we force doafters to end from this, the doafter should not modify doing since that would interfere with potential new doafters being started after the cancel.
+
 		if(isliving(user))
 			var/mob/living/L = user
 			if(L.IsStun() || L.IsParalyzed())
@@ -428,6 +448,12 @@ GLOBAL_LIST_EMPTY(species_list)
 				. = 0
 				break
 
+			if(starttime < user.doafter_cancel_time)
+				. = 0
+				if(progbar)
+					qdel(progbar)
+				return //Special case - when we force doafters to end from this, the doafter should not modify doing since that would interfere with potential new doafters being started after the cancel.
+
 			if(uninterruptible)
 				continue
 
@@ -446,6 +472,14 @@ GLOBAL_LIST_EMPTY(species_list)
 	user.doing = 0
 	if(progbar)
 		qdel(progbar)
+
+/**
+ * Terminates (fails) all doafters by this mob that were started BEFORE the current tick. 
+ * * PERMITS doafters started during the same tick. Intended as "soft-cancel" that allows for something else to start during the same tick.
+ */
+/mob/proc/stop_doafters()
+	doing = FALSE
+	doafter_cancel_time = world.time
 
 /proc/is_species(A, species_datum)
 	. = FALSE

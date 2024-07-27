@@ -138,7 +138,7 @@
 	if(!isliving(L))
 		return
 	if(L.doing)
-		L.doing = 0
+		L.stop_doafters()
 	L.submit()
 	return TRUE
 
@@ -154,7 +154,7 @@
 	if(!istype(L))
 		return FALSE
 	if(L.doing)
-		L.doing = 0
+		L.stop_doafters()
 	L.resist()
 	return TRUE
 

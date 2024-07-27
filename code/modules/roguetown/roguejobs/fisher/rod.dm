@@ -22,7 +22,7 @@
 
 /obj/item/fishingrod/attack_self(mob/user)
 	if(user.doing)
-		user.doing = 0
+		user.stop_doafters() //Not sure why this case exists but oh well!
 	else
 		..()
 
