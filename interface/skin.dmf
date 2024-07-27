@@ -120,7 +120,7 @@ window "outputwindow"
 		anchor2 = 100,100
 		background-color = #000000
 		is-default = true
-		max-lines = 100
+		max-lines = 200
 		enable-http-images = true
 	elem "input"
 		type = INPUT

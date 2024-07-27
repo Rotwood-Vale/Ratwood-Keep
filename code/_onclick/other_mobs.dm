@@ -423,7 +423,6 @@
 								to_chat(src, span_green("I stole [picked]!"))
 								V.log_message("has had \the [picked] stolen by [key_name(U)]", LOG_ATTACK, color="black")
 								U.log_message("has stolen \the [picked] from [key_name(V)]", LOG_ATTACK, color="black")
-								exp_to_gain *= src.mind.get_learning_boon(thiefskill)
 							else
 								exp_to_gain /= 2 // these can be removed or changed on reviewer's discretion
 								to_chat(src, span_warning("I didn't find anything there. Perhaps I should look elsewhere."))
@@ -438,7 +437,9 @@
 						U.log_message("has attempted to pickpocket [key_name(V)]", LOG_ATTACK, color="black")
 						to_chat(src, span_danger("I failed to pick the pocket!"))
 						exp_to_gain /= 5 // these can be removed or changed on reviewer's discretion
-					src.mind.adjust_experience(/datum/skill/misc/stealing, exp_to_gain, FALSE)
+					// If we're pickpocketing someone else, and that person is conscious, grant XP
+					if(src != V && V.stat == CONSCIOUS)
+						mind.add_sleep_experience(/datum/skill/misc/stealing, exp_to_gain, FALSE)
 					changeNext_move(mmb_intent.clickcd)
 				return
 			if(INTENT_SPELL)

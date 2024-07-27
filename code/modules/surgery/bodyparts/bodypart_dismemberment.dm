@@ -69,7 +69,7 @@
 	if(dam_type == BURN)
 		burn()
 		return TRUE
-	
+
 	var/turf/location = C.loc
 	if(istype(location))
 		C.add_splatter_floor(location)
@@ -98,7 +98,7 @@
 		return FALSE
 	add_wound(/datum/wound/slash/disembowel)
 	return TRUE
-	
+
 //limb removal. The "special" argument is used for swapping a limb with a new one without the effects of losing a limb kicking in.
 /obj/item/bodypart/proc/drop_limb(special)
 	if(!owner)
@@ -356,7 +356,7 @@
 	for(var/datum/wound/wound as anything in wounds)
 		wounds -= wound
 		wound.apply_to_bodypart(src, silent = TRUE, crit_message = FALSE)
-	
+
 	var/obj/item/bodypart/affecting = C.get_bodypart(BODY_ZONE_CHEST)
 	if(affecting && dismember_wound)
 		affecting.remove_wound(dismember_wound)
