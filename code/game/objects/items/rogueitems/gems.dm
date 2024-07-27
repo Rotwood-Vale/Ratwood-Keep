@@ -30,11 +30,11 @@
     ..()
     // Ensure prices are updated when the world starts
     // Use a delayed call to ensure all items are loaded
-    spawn(10) // Delay for 10 ticks to ensure items are fully initialized
+    spawn(600) // Delay to ensure items are fully initialized
         update_real_price_multiplier()
 
 /client/verb/update_prices()
-    set name = "Update Item Prices"
+    set name = "Update Item Prices (Changes prices live)"
     set category = "Debug"
     // Update prices when this verb is used
     update_real_price_multiplier()
