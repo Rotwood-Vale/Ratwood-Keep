@@ -17,7 +17,6 @@ var/global/max_total_spawned_mobs = 30 // New global variable for the total limi
     var/area/valid_area = /area/rogue/outdoors/bog // Define the valid area
 
     proc/setup_spawner()
-        // Removed ..() since there's no parent procedure to call
         spawn_interval = rand(600, 1200) // RNG between 60 seconds and 120 seconds
         adventurer_landmarks = get_all_adventurer_landmarks()
         if (!is_in_valid_area(src))
