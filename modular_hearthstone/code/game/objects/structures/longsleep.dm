@@ -1,8 +1,8 @@
 //AKA cryosleep.
 
 /obj/structure/long_sleep //Shamelessly jury-rigged from the way Fallout13 handles this.
-	name = "long-sleeper cabins"
-	desc = "A door to the lower levels of the ship, where weary souls rest until another voyage.\n(Drag your sprite onto this to exit the round!)"
+	name = "long-sleep mushrooms"
+	desc = "A magical mushroom capable of transporting people elsewhere.\n(Drag your sprite onto this to exit the round!)"
 	icon = 'icons/roguetown/misc/longsleep.dmi'
 	icon_state = "longsleep"
 	layer = ABOVE_MOB_LAYER
