@@ -160,7 +160,7 @@
 	for(var/H in haunts)
 		var/mob/living/simple_animal/hostile/rogue/haunt/D = H
 		D.death()
-	var/spawned = pick(/obj/item/reagent_containers/powder)
+	var/spawned = pick(/obj/item/reagent_containers/powder/spice)
 	new spawned(get_turf(src))
 	. = ..()
 

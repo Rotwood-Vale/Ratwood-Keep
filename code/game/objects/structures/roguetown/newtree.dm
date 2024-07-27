@@ -86,7 +86,7 @@
 		var/exp_to_gain = 0 
 		if(L.mind)
 			var/myskill = L.mind.get_skill_level(/datum/skill/misc/climbing)
-			exp_to_gain = (L.STAINT/2) * L.mind.get_learning_boon(/datum/skill/misc/climbing)
+			exp_to_gain = L.STAINT/2
 			var/obj/structure/table/TA = locate() in L.loc
 			if(TA)
 				myskill += 1
@@ -105,7 +105,7 @@
 			user.start_pulling(pulling,supress_message = TRUE)
 			playsound(user, 'sound/foley/climb.ogg', 100, TRUE)
 			if(L.mind) // idk just following whats going on above
-				L.mind.adjust_experience(/datum/skill/misc/climbing, exp_to_gain, FALSE)
+				L.mind.add_sleep_experience(/datum/skill/misc/climbing, exp_to_gain, FALSE)
 
 /obj/structure/flora/newtree/update_icon()
 	icon_state = ""

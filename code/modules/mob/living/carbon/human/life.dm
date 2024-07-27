@@ -39,6 +39,7 @@
 		Stun(50)
 
 	if(mind)
+		mind.sleep_adv.add_stress_cycle(get_stress_amount())
 		for(var/datum/antagonist/A in mind.antag_datums)
 			A.on_life(src)
 
@@ -48,11 +49,14 @@
 				HM.on_life()
 
 		if(mode == AI_OFF)
+			handle_vamp_dreams()
 			if(IsSleeping())
 				if(health > 0)
 					if(has_status_effect(/datum/status_effect/debuff/sleepytime))
-						tiredness = 0
 						remove_status_effect(/datum/status_effect/debuff/sleepytime)
+						remove_stress(/datum/stressevent/sleepytime)
+						if(mind)
+							mind.sleep_adv.advance_cycle()
 						var/datum/game_mode/chaosmode/C = SSticker.mode
 						if(istype(C))
 							if(mind)
@@ -62,8 +66,6 @@
 									if(C.allmig)
 										if(allmig_reward > 3)
 											adjust_triumphs(1)
-					if(has_status_effect(/datum/status_effect/debuff/trainsleep))
-						remove_status_effect(/datum/status_effect/debuff/trainsleep)
 			if(leprosy == 1)
 				adjustToxLoss(2)
 			else if(leprosy == 2)
@@ -94,7 +96,7 @@
 			else
 				if(mob_timers["slo"])
 					mob_timers["slo"] = null
-					
+
 		if(dna?.species)
 			dna.species.spec_life(src) // for mutantraces
 
@@ -400,6 +402,25 @@
 		Unconscious(80)
 	// Tissues die without blood circulation
 	adjustBruteLoss(2)
+
+/mob/living/carbon/human/proc/handle_vamp_dreams()
+	if(!HAS_TRAIT(src, TRAIT_VAMP_DREAMS))
+		return
+	if(!mind)
+		return
+	if(!has_status_effect(/datum/status_effect/debuff/vamp_dreams))
+		return
+	if(!eyesclosed)
+		return
+	if(mobility_flags & MOBILITY_STAND)
+		return
+	if(!istype(loc, /obj/structure/closet/crate/coffin))
+		return
+	var/obj/structure/closet/crate/coffin/coffin = loc
+	if(coffin.opened)
+		return
+	remove_status_effect(/datum/status_effect/debuff/vamp_dreams)
+	mind.sleep_adv.advance_cycle()
 
 #undef THERMAL_PROTECTION_HEAD
 #undef THERMAL_PROTECTION_CHEST
