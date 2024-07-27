@@ -1,31 +1,30 @@
-// Global multiplier for sell prices
-var/global/real_price_multiplier = 1
-
 // Updates the real price multiplier and item prices
 /proc/update_real_price_multiplier()
-    // Set a new random multiplier between 0.40 and 1.60
-    global.real_price_multiplier = rand(40, 160) / 100.0
-
     // Ensure that the item list is processed correctly
     var/items_updated = 0
+    var/total_items = 0
 
     // Loop through all items in the world
     for (var/obj/item/I in world)
+        total_items++
         // Only update items that have a sellprice
         if (I.sellprice)
             // If this item doesn't have the original price recorded yet, do it now
             if (!I.vars["original_real_price"])
                 I.vars["original_real_price"] = I.sellprice
 
-            // Update the sellprice based on the multiplier
-            I.sellprice = I.vars["original_real_price"] * global.real_price_multiplier
+            // Generate a unique random multiplier for each item
+            var/real_price_multiplier = rand(40, 160) / 100.0
+            
+            // Update the sellprice based on the unique multiplier
+            I.sellprice = I.vars["original_real_price"] * real_price_multiplier
             items_updated++
 
     // Notify admins about the update
     if (items_updated > 0)
-        message_admins("Real prices have been randomized. Multiplier: [global.real_price_multiplier]")
+        message_admins("Real prices have been randomized with unique multipliers. Items Updated: [items_updated] of [total_items].")
     else
-        message_admins("No items with sell prices found to update.")
+        message_admins("No items with sell prices found to update. Total items checked: [total_items].")
 
 /world/New()
     ..()
