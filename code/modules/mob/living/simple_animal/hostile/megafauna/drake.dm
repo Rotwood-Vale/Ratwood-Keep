@@ -280,7 +280,7 @@ Difficulty: Medium
 			if(L in hit_list || L == source)
 				continue
 			hit_list += L
-			L.adjustFireLoss(5)
+			L.adjustFireLoss(1)
 			to_chat(L, span_danger("You're hit by [source]'s fire breath!"))
 
 		// deals damage to mechs
@@ -361,9 +361,9 @@ Difficulty: Medium
 	for(var/mob/living/L in orange(1, src))
 		if(L.stat)
 			visible_message(span_warning("[src] slams down on [L], crushing [L.p_them()]!"))
-			L.adjustBruteLoss(75) //instead of gib
+			L.adjustBruteLoss(5) //instead of gib
 		else
-			L.adjustBruteLoss(23)
+			L.adjustBruteLoss(5)
 			if(L && !QDELETED(L)) // Some mobs are deleted on death
 				var/throw_dir = get_dir(src, L)
 				if(L.loc == loc)
@@ -439,7 +439,7 @@ Difficulty: Medium
 	for(var/mob/living/L in T.contents)
 		if(istype(L, /mob/living/simple_animal/hostile/megafauna/dragon))
 			continue
-		L.adjustFireLoss(4.5)
+		L.adjustFireLoss(1)
 		to_chat(L, span_danger("I fall directly into the pool of lava!"))
 
 	// deals damage to mechs
@@ -565,11 +565,11 @@ obj/effect/temp_visual/fireball
 		if(istype(L, /mob/living/simple_animal/hostile/megafauna/dragon))
 			continue
 		if(islist(flame_hit) && !flame_hit[L])
-			L.adjustFireLoss(10)
+			L.adjustFireLoss(1)
 			to_chat(L, span_danger("You're hit by the drake's fire breath!"))
 			flame_hit[L] = TRUE
 		else
-			L.adjustFireLoss(3.5) //if we've already hit them, do way less damage
+			L.adjustFireLoss(1) //if we've already hit them, do way less damage
 
 /mob/living/simple_animal/hostile/megafauna/dragon/lesser
 	name = "lesser ash drake"
