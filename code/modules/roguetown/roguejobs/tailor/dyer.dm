@@ -110,6 +110,7 @@
 		dat += "Nothing inside."
 	else
 		dat += "Item inserted: [inserted]<BR>"
+		dat += "<A href='?src=\ref[src];eject=1'>Take [inserted] out.</A><BR><BR>"
 		if(berry_charges <= 0)
 			dat += "No dye inside."
 		else
@@ -117,7 +118,6 @@
 			dat += "Color: <font color='[activecolor]'>&#9899;</font>"
 			dat += "<A href='?src=\ref[src];paint=1'>Rub the dyes in.</A><BR><BR>"
 			dat += "<A href='?src=\ref[src];clear=1'>Bleach it.</A><BR><BR>"
-			dat += "<A href='?src=\ref[src];eject=1'>Take [inserted] out.</A><BR><BR>"
 
 	var/datum/browser/menu = new(user, "colormate","dye bucket", 400, 400, src)
 	menu.set_content(dat.Join(""))
