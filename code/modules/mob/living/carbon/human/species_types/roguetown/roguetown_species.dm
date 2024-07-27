@@ -61,7 +61,7 @@
 				message = replacetextEx(message, regex("[key]\\b|[key]\\Z", "(\\w+)/g"), value)
 			if(REGEX_ANY)
 				// Any regex (syllables)
-				// Careful about use of syllables as they will continually reapply to themselves, potentially canceling each other out
+				// Be careful with the use and order of syllable replacers as they will continually reapply from first to last, potentially canceling each other out
 				message = replacetextEx(message, uppertext(key), uppertext(value))
 				message = replacetextEx(message, key, value)
 
