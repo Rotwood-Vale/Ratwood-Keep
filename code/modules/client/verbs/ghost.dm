@@ -48,6 +48,7 @@ GLOBAL_LIST_INIT(ghost_verbs, list(
 				O.ckey = ckey
 				O.set_patron(prefs.selected_patron)
 				SSdroning.area_entered(get_area(O), O.client)
+				
 				break
 			verbs -= GLOB.ghost_verbs
 		if("No")

@@ -409,7 +409,7 @@ GLOBAL_LIST_INIT(spells, typesof(/obj/effect/proc_holder/spell)) //needed for th
 	before_cast(targets, user = user)
 	invocation(user)
 	if(user && user.ckey)
-		user.log_message(span_danger("cast the spell [name]."), LOG_ATTACK)
+		user.log_message("cast the spell [name][isliving(targets[1]) ? "at [key_name(targets[1])] and [length(targets) - 1] others." : ""].", LOG_ATTACK)
 	if(recharge)
 		recharging = TRUE
 	if(cast(targets, user = user))

@@ -1534,8 +1534,8 @@ Slots: [job.spawn_positions]</span>
 						ShowChoices(user)
 						return
 					headshot_link = new_headshot_link
-					to_chat(user, "<span class='notice'>Successfully updated headshot picture</span>")
-					log_game("[user] has set their Headshot image to '[headshot_link]'.")
+					to_chat(user, "<span class='notice'>Successfully updated headshot picture.</span>")
+					log_game("[user] has set their Headshot image for [real_name] to '[headshot_link]'.")
 
 				if("species")
 

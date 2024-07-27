@@ -50,6 +50,7 @@
 	listening = !listening
 	speaking = !speaking
 	to_chat(user, span_info("I [speaking ? "unmute" : "mute"] the SCOM."))
+	user.log_message("[speaking ? "unmuted" : "muted"] the SCOM", LOG_ATTACK, color="black")
 	update_icon()
 
 /obj/structure/roguemachine/scomm/attack_right(mob/user)
@@ -127,13 +128,16 @@
 	if(raw_message)
 		if(lowertext(raw_message) == "say laws")
 			dictate_laws()
+			H.log_message("triggered SCOM \"say laws\".", LOG_GAME, color="black")
 			return
 		for(var/obj/structure/roguemachine/scomm/S in SSroguemachine.scomm_machines)
 			S.repeat_message(raw_message, src, usedcolor, message_language)
 		for(var/obj/item/scomstone/S in SSroguemachine.scomm_machines)
 			S.repeat_message(raw_message, src, usedcolor, message_language)
 		for(var/obj/item/listenstone/S in SSroguemachine.scomm_machines)
-			S.repeat_message(raw_message, src, usedcolor, message_language)//make the listenstone hear scom
+			S.repeat_message(raw_message, src, usedcolor, message_language)
+		var/datum/language/L = message_language
+		H.log_talk("[raw_message]", LOG_TELECOMMS, tag="SCOM[L.name ? " [L.name]" : ""][usedcolor ? " #[usedcolor]" : ""]")
 
 /obj/structure/roguemachine/scomm/proc/dictate_laws()
 	if(dictating)
@@ -183,13 +187,20 @@
 /obj/item/scomstone/attack_right(mob/user)
     user.changeNext_move(CLICK_CD_MELEE)
     var/input_text = input(user, "Enter your message:", "Message")
+    if(!ishuman(user))
+        return
+    var/mob/living/carbon/human/H = user
+    var/usedcolor = H.voice_color
+    if(H.voicecolor_override)
+        usedcolor = H.voicecolor_override
     if(input_text)
         for(var/obj/structure/roguemachine/scomm/S in SSroguemachine.scomm_machines)
             S.repeat_message(input_text)
         for(var/obj/item/scomstone/S in SSroguemachine.scomm_machines)
             S.repeat_message(input_text)
-        for(var/obj/item/listenstone/S in SSroguemachine.scomm_machines)//make the listenstone hear scomstone
+        for(var/obj/item/listenstone/S in SSroguemachine.scomm_machines)
             S.repeat_message(input_text)
+        H.log_talk("[input_text]", LOG_TELECOMMS, tag="RING RMB #[usedcolor]")
 
 /obj/item/scomstone/MiddleClick(mob/user)
 	if(.)
@@ -199,6 +210,7 @@
 	listening = !listening
 	speaking = !speaking
 	to_chat(user, span_info("I [speaking ? "unmute" : "mute"] the scomstone."))
+	user.log_message("[speaking ? "unmuted" : "muted"] the scomstone/emerald ring", LOG_ATTACK, color="black")
 	update_icon()
 
 /obj/item/scomstone/Destroy()
@@ -256,7 +268,9 @@
 		for(var/obj/item/scomstone/S in SSroguemachine.scomm_machines)
 			S.repeat_message(raw_message, src, usedcolor, message_language)
 		for(var/obj/item/listenstone/S in SSroguemachine.scomm_machines)
-			S.repeat_message(raw_message, src, usedcolor, message_language)//make the listenstone hear scomstone scream
+			S.repeat_message(raw_message, src, usedcolor, message_language)
+		var/datum/language/L = message_language
+		H.log_talk("[raw_message]", LOG_TELECOMMS, tag="RING HEAR[L.name ? " [L.name]" : ""][usedcolor ? " #[usedcolor]" : ""]")
 
 /obj/item/scomstone/bad
 	name = "serfstone"
@@ -295,6 +309,7 @@
 	listening = !listening
 	speaking = !speaking
 	to_chat(user, span_info("I [speaking ? "unmute" : "mute"] the scomstone."))
+	user.log_message("[speaking ? "unmuted" : "muted"] the listenstone", LOG_ATTACK, color="black")
 	update_icon()
 	if(listening)
 		icon_state = "listenstone"

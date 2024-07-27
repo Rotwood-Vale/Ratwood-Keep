@@ -25,6 +25,8 @@
 			target.adjustFireLoss(50)
 			target.Paralyze(30)
 			target.fire_act(1,5)
+			user.log_message("burned and stunned [key_name(target)] with Lesser Miracle.", LOG_ATTACK, color="orange")
+			target.log_message("has been burned and stunned via Lesser Miracle by [key_name(user)].", LOG_ATTACK, color="orange")
 			return TRUE
 		//this if chain is stupid, replace with variables on /datum/patron when possible?
 		switch(user.patron.type)
@@ -70,9 +72,12 @@
 					C.update_damage_overlays()
 				if(affecting.heal_wounds(25))
 					C.update_damage_overlays()
+				user.log_message("healed [key_name(C)] [affecting.name ? "in \the [affecting.name]" : ""]with Lesser Miracle. ([C.health]HP, [affecting.get_damage()]LHP, [length(affecting.wounds) ? "[length(affecting.wounds)]W" : "0W"])", LOG_ATTACK, color="black")
+				C.log_message("was healed [affecting.name ? "in \the [affecting.name]" : ""]via Lesser Miracle by [key_name(user)]. ([C.health]HP, [affecting.get_damage()]LHP, [length(affecting.wounds) ? "[length(affecting.wounds)]W" : "0W"])", LOG_ATTACK, color="black")
 		else
 			target.adjustBruteLoss(-25)
 			target.adjustFireLoss(-25)
+			user.log_message("healed [key_name(target)] with Lesser Miracle.", LOG_ATTACK, color="black")
 		target.adjustToxLoss(-25)
 		target.adjustOxyLoss(-25)
 		target.blood_volume += BLOOD_VOLUME_SURVIVE/2
@@ -109,6 +114,8 @@
 			target.adjustFireLoss(100)
 			target.Paralyze(50)
 			target.fire_act(1,5)
+			user.log_message("burned and stunned [key_name(target)] with Greater Miracle.", LOG_ATTACK, color="red")
+			target.log_message("has been burned and stunned via Greater Miracle by [key_name(user)].", LOG_ATTACK, color="orange")
 			return TRUE
 		target.visible_message(span_info("A wreath of gentle light passes over [target]!"), span_notice("I'm bathed in holy light!"))
 		if(iscarbon(target))
@@ -119,9 +126,12 @@
 					C.update_damage_overlays()
 				if(affecting.heal_wounds(50))
 					C.update_damage_overlays()
+				user.log_message("healed [key_name(C)] [affecting.name ? "in \the [affecting.name]" : ""]with Greater Miracle. ([C.health]HP, [affecting.get_damage()]LHP, [length(affecting.wounds) ? "[length(affecting.wounds)]W" : "0W"])", LOG_ATTACK, color="black")
+				C.log_message("was healed [affecting.name ? "in \the [affecting.name]" : ""]via Greater Miracle by [key_name(user)]. ([C.health]HP, [affecting.get_damage()]LHP, [length(affecting.wounds) ? "[length(affecting.wounds)]W" : "0W"])", LOG_ATTACK, color="black")
 		else
 			target.adjustBruteLoss(-50)
 			target.adjustFireLoss(-50)
+			user.log_message("healed [key_name(target)] with Greater Miracle.", LOG_ATTACK, color="black")
 		target.adjustToxLoss(-50)
 		target.adjustOxyLoss(-50)
 		target.blood_volume += BLOOD_VOLUME_SURVIVE
