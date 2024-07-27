@@ -1,114 +1,129 @@
-var/global/sellprice_multiplier = 1
+// Global multiplier for sell prices
+var/global/real_price_multiplier = 1
 
-/proc/update_sellprice_multiplier()
-	global.sellprice_multiplier = rand(40, 160) / 100
-	for(var/obj/item/I in world)
-		if(I.sellprice)
-			if(!I.vars["original_sellprice"])
-				I.vars["original_sellprice"] = I.sellprice
-			I.sellprice = I.vars["original_sellprice"] * global.sellprice_multiplier
-	message_admins("Sell prices have been randomized. Multiplier: [global.sellprice_multiplier]")
+// Updates the real price multiplier and item prices
+/proc/update_real_price_multiplier()
+    // Set a new random multiplier between 0.40 and 1.60
+    global.real_price_multiplier = rand(40, 160) / 100.0
+
+    // Ensure that the item list is processed correctly
+    var/items_updated = 0
+
+    // Loop through all items in the world
+    for (var/obj/item/I in world)
+        // Only update items that have a sellprice
+        if (I.sellprice)
+            // If this item doesn't have the original price recorded yet, do it now
+            if (!I.vars["original_real_price"])
+                I.vars["original_real_price"] = I.sellprice
+
+            // Update the sellprice based on the multiplier
+            I.sellprice = I.vars["original_real_price"] * global.real_price_multiplier
+            items_updated++
+
+    // Notify admins about the update
+    if (items_updated > 0)
+        message_admins("Real prices have been randomized. Multiplier: [global.real_price_multiplier]")
+    else
+        message_admins("No items with sell prices found to update.")
 
 /world/New()
-	..()
-	update_sellprice_multiplier()
+    ..()
+    // Ensure prices are updated when the world starts
+    update_real_price_multiplier()
 
 /client/verb/update_prices()
-	set name = "Update Item Prices"
-	set category = "Debug"
-	update_sellprice_multiplier()
-	to_chat(usr, "Prices updated. Check admin log for details.")
+    set name = "Update Item Prices"
+    set category = "Debug"
+    // Update prices when this verb is used
+    update_real_price_multiplier()
+    to_chat(usr, "Prices updated. Check admin log for details.")
 
 /obj/item
-	var/original_sellprice
+    var/original_real_price
 
-/obj/item/Initialize()
-	. = ..()
-	if(sellprice)
-		original_sellprice = sellprice
+    // Initialize method to record the original price
+    /obj/item/Initialize()
+        ..()
+        if (sellprice)
+            original_real_price = sellprice
 
+// Define roguegem items and their specific price updates
 /obj/item/roguegem
-	name = "rontz"
-	icon_state = "ruby_cut"
-	icon = 'icons/roguetown/items/gems.dmi'
-	desc = "Its facets shine so brightly.."
-	lefthand_file = 'icons/mob/inhands/misc/food_lefthand.dmi'
-	righthand_file = 'icons/mob/inhands/misc/food_righthand.dmi'
-	w_class = WEIGHT_CLASS_TINY
-	slot_flags = ITEM_SLOT_MOUTH
-	dropshrink = 0.4
-	drop_sound = 'sound/items/gem.ogg'
-	sellprice = 100
-	static_price = FALSE
+    name = "rontz"
+    icon_state = "ruby_cut"
+    icon = 'icons/roguetown/items/gems.dmi'
+    desc = "Its facets shine so brightly.."
+    lefthand_file = 'icons/mob/inhands/misc/food_lefthand.dmi'
+    righthand_file = 'icons/mob/inhands/misc/food_righthand.dmi'
+    w_class = WEIGHT_CLASS_TINY
+    slot_flags = ITEM_SLOT_MOUTH
+    dropshrink = 0.4
+    drop_sound = 'sound/items/gem.ogg'
+    sellprice = 100
+    static_price = FALSE
 
-/obj/item/roguegem/getonmobprop(tag)
-	. = ..()
-	if(tag)
-		switch(tag)
-			if("gen")
-				return list("shrink" = 0.4, "sx" = -1, "sy" = 0, "nx" = 11, "ny" = 1, "wx" = 0, "wy" = 1, "ex" = 4, "ey" = 0, "northabove" = 0, "southabove" = 1, "eastabove" = 1, "westabove" = 0, "nturn" = 15, "sturn" = 0, "wturn" = 0, "eturn" = 39, "nflip" = 8, "sflip" = 0, "wflip" = 0, "eflip" = 8)
-			if("onbelt")
-				return list("shrink" = 0.3, "sx" = -2, "sy" = -5, "nx" = 4, "ny" = -5, "wx" = 0, "wy" = -5, "ex" = 2, "ey" = -5, "nturn" = 0, "sturn" = 0, "wturn" = 0, "eturn" = 0, "nflip" = 0, "sflip" = 0, "wflip" = 0, "eflip" = 0, "northabove" = 0, "southabove" = 1, "eastabove" = 1, "westabove" = 0)
+/obj/item/roguegem/Initialize()
+    ..()
+    if (sellprice)
+        original_real_price = sellprice
 
-/obj/item/roguegem/throw_impact(atom/hit_atom, datum/thrownthing/throwingdatum)
-	playsound(loc, pick('sound/items/gems (1).ogg', 'sound/items/gems (2).ogg'), 100, TRUE, -2)
-	..()
-
+// Specific roguegem types
 /obj/item/roguegem/green
-	name = "gemerald"
-	icon_state = "emerald_cut"
-	sellprice = 42
-	desc = "Glints with verdant brilliance."
+    name = "gemerald"
+    icon_state = "emerald_cut"
+    sellprice = 42
+    desc = "Glints with verdant brilliance."
 
 /obj/item/roguegem/blue
-	name = "blortz"
-	icon_state = "quartz_cut"
-	sellprice = 88
-	desc = "Pale blue, like a frozen tear." // i am not sure if this is really quartz.
+    name = "blortz"
+    icon_state = "quartz_cut"
+    sellprice = 88
+    desc = "Pale blue, like a frozen tear."
 
 /obj/item/roguegem/yellow
-	name = "toper"
-	icon_state = "topaz_cut"
-	sellprice = 34
-	desc = "Its amber hues remind you of the sunset."
+    name = "toper"
+    icon_state = "topaz_cut"
+    sellprice = 34
+    desc = "Its amber hues remind you of the sunset."
 
 /obj/item/roguegem/violet
-	name = "saffira"
-	icon_state = "sapphire_cut"
-	sellprice = 56
-	desc = "This gem is admired by many wizards."
+    name = "saffira"
+    icon_state = "sapphire_cut"
+    sellprice = 56
+    desc = "This gem is admired by many wizards."
 
 /obj/item/roguegem/diamond
-	name = "dorpel"
-	icon_state = "diamond_cut"
-	sellprice = 121
-	desc = "Beautifully clear, it demands respect."
+    name = "dorpel"
+    icon_state = "diamond_cut"
+    sellprice = 121
+    desc = "Beautifully clear, it demands respect."
 
 /obj/item/roguegem/random
-	name = "random gem"
-	desc = "You shouldn't be seeing this."
-	icon_state = null
+    name = "random gem"
+    desc = "You shouldn't be seeing this."
+    icon_state = null
 
 /obj/item/roguegem/random/Initialize()
-	. = ..()
-	var/newgem = list(/obj/item/roguegem = 5, /obj/item/roguegem/green = 15, /obj/item/roguegem/blue = 10, /obj/item/roguegem/yellow = 20, /obj/item/roguegem/violet = 10, /obj/item/roguegem/diamond = 5, /obj/item/riddleofsteel = 1)
-	var/pickgem = pickweight(newgem)
-	new pickgem(get_turf(src))
-	return INITIALIZE_HINT_QDEL
+    ..()
+    var/newgem = list(/obj/item/roguegem = 5, /obj/item/roguegem/green = 15, /obj/item/roguegem/blue = 10, /obj/item/roguegem/yellow = 20, /obj/item/roguegem/violet = 10, /obj/item/roguegem/diamond = 5, /obj/item/riddleofsteel = 1)
+    var/pickgem = pickweight(newgem)
+    new pickgem(get_turf(src))
+    return INITIALIZE_HINT_QDEL
 
 /obj/item/riddleofsteel
-	name = "riddle of steel"
-	icon_state = "ros"
-	icon = 'icons/roguetown/items/gems.dmi'
-	desc = "Flesh, mind."
-	lefthand_file = 'icons/mob/inhands/misc/food_lefthand.dmi'
-	righthand_file = 'icons/mob/inhands/misc/food_righthand.dmi'
-	w_class = WEIGHT_CLASS_TINY
-	slot_flags = ITEM_SLOT_MOUTH
-	dropshrink = 0.4
-	drop_sound = 'sound/items/gem.ogg'
-	sellprice = 400
+    name = "riddle of steel"
+    icon_state = "ros"
+    icon = 'icons/roguetown/items/gems.dmi'
+    desc = "Flesh, mind."
+    lefthand_file = 'icons/mob/inhands/misc/food_lefthand.dmi'
+    righthand_file = 'icons/mob/inhands/misc/food_righthand.dmi'
+    w_class = WEIGHT_CLASS_TINY
+    slot_flags = ITEM_SLOT_MOUTH
+    dropshrink = 0.4
+    drop_sound = 'sound/items/gem.ogg'
+    sellprice = 400
 
 /obj/item/riddleofsteel/Initialize()
-	. = ..()
-	set_light(2, 1, "#ff0d0d")
+    ..()
+    set_light(2, 1, "#ff0d0d")
