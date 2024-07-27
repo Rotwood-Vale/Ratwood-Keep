@@ -7,13 +7,9 @@
 
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_PRIDE | MIRROR_MAGIC | RACE_SWAP | ERT_SPAWN | SLIME_EXTRACT
 	desc = "<b>Tabaxi</b><br>\
-		Tabaxi are taller than most humans at six to seven feet.\
-		Their bodies are slender and covered in spotted or striped fur.\
-		Like most felines, Tabaxi have long tails and retractable claws.\
-		Tabaxi fur color ranges from light yellow to brownish red.\
-		Tabaxi eyes are slit-pupilled and usually green or yellow.\
-		Tabaxi are competent swimmers and climbers as well as speedy runners.\
-		They have a good sense of balance and an acute sense of smell."
+		Tabaxi are lithe felenid humanoids that hail from the far-western Desert-Lands. Our bodies are slender, covered in a layer of fur with many possible patterns. \
+		The desert-lands, though unconquered, also lack a central strong government; as such, our people are adept at fighting our enemies, whoever they may be. \
+		Though we are rather quick, we lack strength and constitution."
 	skin_tone_wording = "Fur Colors"
 	species_traits = list(EYECOLOR,HAIR,FACEHAIR,LIPS,STUBBLE, MUTCOLORS)
 	inherent_traits = list(TRAIT_NOMOBSWAP)
@@ -37,8 +33,8 @@
 		OFFSET_NECK_F = list(0,-1), OFFSET_MOUTH_F = list(0,-1), OFFSET_PANTS_F = list(0,0), \
 		OFFSET_SHIRT_F = list(0,0), OFFSET_ARMOR_F = list(0,0), OFFSET_UNDIES_F = list(0,0)
 		)
-	specstats = list("strength" = 0, "perception" = 1, "intelligence" = -1, "constitution" = 0, "endurance" = 1, "speed" = -1, "fortune" = 0)
-	specstats_f = list("strength" = -1, "perception" = 0, "intelligence" = 2, "constitution" = -1, "endurance" = 0, "speed" = 1, "fortune" = 0)
+	specstats = list("strength" = 0, "perception" = 1, "intelligence" = -1, "constitution" = 0, "endurance" = 1, "speed" = 2, "fortune" = 0)
+	specstats_f = list("strength" = -1, "perception" = 0, "intelligence" = 1, "constitution" = -1, "endurance" = 0, "speed" = 2, "fortune" = 0)
 	enflamed_icon = "widefire"
 	organs = list(
 		ORGAN_SLOT_BRAIN = /obj/item/organ/brain,

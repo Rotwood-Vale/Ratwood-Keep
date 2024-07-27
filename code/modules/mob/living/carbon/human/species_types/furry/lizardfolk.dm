@@ -5,11 +5,10 @@
 	name = "Sissean"
 	id = "lizardfolk"
 	desc = "<b>Sissean</b><br>\
-	Sisseans are semi-aquatic reptilian humanoids.\
-	Their skin is covered in scales and varied in color from dark green through to shades of brown and gray.\
-	Taller than humans and powerfully built, sisseans are often between 6 and 7 feet tall.\
-	Sisseans have non-prehensile muscular tails that grow to three or four feet in length, and these are used for balance.\
-	They also have sharp claws and teeth."
+	Sisseans are semi-aquatic reptilian humanoids that have lived in the low bogs surrounding Rockhill for centuries. \
+	Though not as inclined to industry as the dwarves, and not as crafty as the other Humen and Wild-Kin natives, our strength is enormous, eclipsed only perhaps by the Draken.\
+	Though we are less perceptive and slower than other races, our constitution and strength are impressive. \
+	We also have sharp claws and teeth."
 	skin_tone_wording = "Skin Colors"
 	species_traits = list(EYECOLOR,LIPS,STUBBLE,MUTCOLORS)
 	inherent_traits = list(TRAIT_NOMOBSWAP)
@@ -33,8 +32,8 @@
 		OFFSET_NECK_F = list(0,-1), OFFSET_MOUTH_F = list(0,-1), OFFSET_PANTS_F = list(0,0), \
 		OFFSET_SHIRT_F = list(0,0), OFFSET_ARMOR_F = list(0,0), OFFSET_UNDIES_F = list(0,0), \
 		)
-	specstats = list("strength" = 1, "perception" = 1, "intelligence" = -2, "constitution" = 0, "endurance" = 1, "speed" = -1, "fortune" = 0)
-	specstats_f = list("strength" = 0, "perception" = 0, "intelligence" = 1, "constitution" = -1, "endurance" = 0, "speed" = 1, "fortune" = 0)
+	specstats = list("strength" = 2, "perception" = 0, "intelligence" = -1, "constitution" = 1, "endurance" = 1, "speed" = -1, "fortune" = 0)
+	specstats_f = list("strength" = 1, "perception" = -1, "intelligence" = 2, "constitution" = 0, "endurance" = 1, "speed" = 0, "fortune" = 0)
 	enflamed_icon = "widefire"
 	attack_verb = "slash"
 	attack_sound = 'sound/blank.ogg'

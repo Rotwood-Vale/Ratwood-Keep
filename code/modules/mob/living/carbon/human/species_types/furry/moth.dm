@@ -4,7 +4,9 @@
 /datum/species/moth
 	name = "Fluvian"
 	id = "moth"
-	desc = "In time you will learn the history of this race"
+	desc = "A race that hails from the far-away land of Deine-Coad, a grassy, forested land. We are an astute, proud people, albiet slightly weak of constitution. \
+	The creation myth of the Fluvian are that Eora, to emulate even a shred of her grace, plucked a palmful of moon-dust from Noc's mane and salted it upon Humens and other Creachers to create something which mimicked a fraction of her beauty. \
+	We are delicate of constiution and strength, but intellegent, and agile. Due to our unique biology, the males and females of our race are equal in strength."
 	species_traits = list(EYECOLOR,LIPS,STUBBLE,MUTCOLORS)
 	inherent_traits = list(TRAIT_NOMOBSWAP)
 	possible_ages = ALL_AGES_LIST
@@ -27,8 +29,8 @@
 		OFFSET_NECK_F = list(0,0), OFFSET_MOUTH_F = list(0,0), OFFSET_PANTS_F = list(0,0), \
 		OFFSET_SHIRT_F = list(0,0), OFFSET_ARMOR_F = list(0,0), OFFSET_UNDIES_F = list(0,0)
 		)
-	specstats = list("strength" = 0, "perception" = 1, "intelligence" = -1, "constitution" = 0, "endurance" = 1, "speed" = -1, "fortune" = 0)
-	specstats_f = list("strength" = -1, "perception" = 0, "intelligence" = 2, "constitution" = -1, "endurance" = 0, "speed" = 1, "fortune" = 0)
+	specstats = list("strength" = -1, "perception" = 1, "intelligence" = 1, "constitution" = -1, "endurance" = 1, "speed" = 0, "fortune" = 0)
+	specstats_f = list("strength" = -1, "perception" = 1, "intelligence" = 2, "constitution" = -2, "endurance" = 0, "speed" = 1, "fortune" = 0)
 	enflamed_icon = "widefire"
 	attack_verb = "slash"
 	attack_sound = 'sound/blank.ogg'

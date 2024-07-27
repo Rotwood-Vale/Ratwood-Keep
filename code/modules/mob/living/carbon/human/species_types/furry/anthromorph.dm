@@ -2,9 +2,12 @@
 	race = /datum/species/anthromorph
 
 /datum/species/anthromorph
-	name = "Wild-Kin" 
+	name = "Wild-Kin"
 	id = "anthromorph"
-	desc = "In time you will learn the history of this race"
+	desc = "Wild-Kin; a name for a furred creacher that does not fall under any particular race. \
+	It is sometimes difficult to tell one of us from another race at a glance; one of Wild-Kin ancestry may look very similar to a Tabaxi or Vulpkanin. \
+	Due to the fact we are so numerous, we are welcome almost anywhere, along with our Half-Kin sister-race \
+	We are average of constitution, strength, and intellegence."
 	default_color = "444"
 	species_traits = list(
 		MUTCOLORS,
