@@ -84,7 +84,7 @@
 
 /datum/supply_pack/rogue/apparel/cloaks/leather
 	name = "Rain Cloak"
-	cost = 10
+	cost = 80
 	contains = list(
 					/obj/item/clothing/cloak/raincloak/brown,
 					/obj/item/clothing/cloak/raincloak/brown,

@@ -672,6 +672,7 @@
 
 /obj/item/clothing/cloak/raincloak/brown
 	color = CLOTHING_BROWN
+	sellprice = 25
 
 /obj/item/clothing/cloak/raincloak/green
 	color = CLOTHING_GREEN

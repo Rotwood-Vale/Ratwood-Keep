@@ -62,7 +62,7 @@
 /obj/item/quiver/arrows/Initialize()
 	..()
 	for(var/i in 1 to max_storage)
-		var/obj/item/ammo_casing/caseless/rogue/arrow/A = new()
+		var/obj/item/ammo_casing/caseless/rogue/arrow/iron/A = new()
 		arrows += A
 	update_icon()
 

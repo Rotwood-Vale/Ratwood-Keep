@@ -25,8 +25,11 @@
 	icon_state = "basichood"
 	item_state = "basichood"
 	icon = 'icons/roguetown/clothing/head.dmi'
+	mob_overlay_icon = 'icons/roguetown/clothing/onmob/head.dmi' //Overrides slot icon behavior
 	body_parts_covered = NECK
-	slot_flags = ITEM_SLOT_HEAD|ITEM_SLOT_CLOAK
+	slot_flags = ITEM_SLOT_HEAD|ITEM_SLOT_MASK
+	sleevetype = null
+	sleeved = null
 	dynamic_hair_suffix = ""
 	edelay_type = 1
 	adjustable = CAN_CADJUST
@@ -766,3 +769,38 @@
 		if(get_detail_color())
 			pic.color = get_detail_color()
 		add_overlay(pic)
+
+/obj/item/clothing/head/roguetown/helmet/tricorn
+	slot_flags = ITEM_SLOT_HEAD
+	name = "tricorn"
+	desc = ""
+	body_parts_covered = HEAD|HAIR|EARS|NOSE
+	icon_state = "tricorn"
+	armor = list("blunt" = 47, "slash" = 27, "stab" = 37, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	prevent_crits = list(BCLASS_BLUNT, BCLASS_TWIST)
+	anvilrepair = null
+	smeltresult = null
+	sewrepair = TRUE
+	blocksound = SOFTHIT
+
+/obj/item/clothing/head/roguetown/helmet/tricorn/skull
+	icon_state = "tricorn_skull"
+	desc = "It has a skull sewn onto it. Clear sign of piracy"
+
+/obj/item/clothing/head/roguetown/helmet/tricorn/lucky
+	name = "lucky tricorn"
+	desc = "A weathered tricorn that has seen many skirmishes. You'd feel lucky with this on your head."
+	armor = list("blunt" = 60, "slash" = 40, "stab" = 45, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+
+/obj/item/clothing/head/roguetown/helmet/bandana
+	slot_flags = ITEM_SLOT_HEAD
+	name = "bandana"
+	desc = ""
+	body_parts_covered = HEAD|HAIR|EARS|NOSE
+	icon_state = "bandana"
+	armor = list("blunt" = 47, "slash" = 27, "stab" = 37, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	prevent_crits = list(BCLASS_BLUNT, BCLASS_TWIST)
+	anvilrepair = null
+	smeltresult = null
+	sewrepair = TRUE
+	blocksound = SOFTHIT

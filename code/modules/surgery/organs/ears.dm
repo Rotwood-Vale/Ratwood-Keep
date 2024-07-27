@@ -149,6 +149,9 @@
 /obj/item/organ/ears/anthro
 	name = "wild-kin ears"
 
+/obj/item/organ/ears/lupian
+	name = "lupian ears"
+
 /obj/item/organ/ears/vulpkanin
 	name = "vulpkian ears"
 	accessory_type = /datum/sprite_accessory/ears/fox
@@ -170,7 +173,7 @@
 
 /obj/item/organ/ears/akula
 	name = "axian ears"
-	accessory_type = /datum/sprite_accessory/ears/sergal
+	accessory_type = /datum/sprite_accessory/ears/shark
 
 /obj/item/organ/ears/halforc
 	name = "halforc ears"

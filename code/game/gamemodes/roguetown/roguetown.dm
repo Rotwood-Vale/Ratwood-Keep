@@ -64,7 +64,7 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "E
 
 	if(ttime >= GLOB.round_timer)
 		if(roundvoteend)
-			if(ttime >= (GLOB.round_timer + 15 MINUTES) )
+			if(ttime >= (GLOB.round_timer + ROUND_END_TIME) )
 				for(var/mob/living/carbon/human/H in GLOB.human_list)
 					if(H.stat != DEAD)
 						if(H.allmig_reward)
@@ -330,11 +330,6 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "E
 		var/blockme = FALSE
 		if(!(villain in allantags))
 			blockme = TRUE
-		if(villain.assigned_role in GLOB.youngfolk_positions)
-			blockme = TRUE
-		if(villain.current)
-			if(villain.current.gender == FEMALE)
-				blockme = TRUE
 		if(blockme)
 			return
 		allantags -= villain

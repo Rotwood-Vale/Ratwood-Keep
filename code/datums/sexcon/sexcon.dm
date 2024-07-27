@@ -43,11 +43,9 @@
 	return TRUE
 
 /datum/sex_controller/proc/can_violate_victim(mob/living/carbon/human/victim)
-	if(!user.client)
+	if(!victim.mind)
 		return FALSE
-	if(!user.mind)
-		return FALSE
-	if(!user.mind.key)
+	if(!victim.mind.key)
 		return FALSE
 	if(!user.client.prefs.violated[victim.mind.key])
 		return FALSE
@@ -59,11 +57,11 @@
 	// Dont need to violate self
 	if(user == victim)
 		return FALSE
-	// If user and victim both are not deviant, then user needs to violate target
-	if(user.deviant && victim.deviant)
+	// If user and victim both are not defiant, then no violation needs to happen
+	if(!user.defiant && !victim.defiant)
 		return FALSE
 	// Need to violate AFK clients
-	if(!victim.client)
+	if(victim.mind && victim.mind.key && !victim.client)
 		return TRUE
 	// Need to violate combat mode people
 	if(victim.cmode)
@@ -100,7 +98,7 @@
 	// ZAPED
 	to_chat(user, span_boldwarning(pick(list("I feel tainted...", "I feel less human..."))))
 	log_combat(user, victim, "Initiated rape against")
-	adjust_playerquality(-2, user.ckey, reason = "Initiated rape on an AFK/resisting person.")
+	adjust_playerquality(-4, user.ckey, reason = "Initiated rape on an AFK/resisting person.")
 	user.client.prefs.violated[victim.mind.key] = world.time
 
 /datum/sex_controller/proc/adjust_speed(amt)

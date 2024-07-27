@@ -82,14 +82,18 @@
 	var/list/notes = list() //RTD add notes button
 
 	var/lastrecipe
+	
+	var/datum/sleep_adv/sleep_adv = null
 
 /datum/mind/New(key)
 	src.key = key
 	soulOwner = src
 	martial_art = default_martial_art
+	sleep_adv = new /datum/sleep_adv(src)
 
 /datum/mind/Destroy()
 	SSticker.minds -= src
+	QDEL_NULL(sleep_adv)
 	if(islist(antag_datums))
 		QDEL_LIST(antag_datums)
 	return ..()
@@ -121,12 +125,7 @@
 		if(!known_people[H.real_name])
 			known_people[H.real_name] = list()
 		known_people[H.real_name]["VCOLOR"] = H.voice_color
-		var/used_title
-		if(H.job)
-			var/datum/job/J = SSjob.GetJob(H.job)
-			used_title = J.title
-			if(H.gender == FEMALE && J.f_title)
-				used_title = J.f_title
+		var/used_title = H.get_role_title()
 		if(!used_title)
 			used_title = "unknown"
 		known_people[H.real_name]["FJOB"] = used_title
@@ -260,6 +259,7 @@
 	if(active || force_key_move)
 		testing("dotransfer to [new_character]")
 		new_character.key = key		//now transfer the key to link the client to our new body
+	new_character.update_fov_angles()
 
 
 	///Adjust experience of a specific skill
@@ -322,7 +322,7 @@
 		if(!skill_experience[S])
 			amt2gain = SKILL_EXP_NOVICE+1
 		skill_experience[S] = max(0, skill_experience[S] + amt2gain) //Prevent going below 0
-	var/old_level = known_skills[S]
+	var/old_level = get_skill_level(skill)
 	switch(skill_experience[S])
 		if(SKILL_EXP_LEGENDARY to INFINITY)
 			known_skills[S] = SKILL_LEVEL_LEGENDARY
@@ -338,7 +338,7 @@
 			known_skills[S] = SKILL_LEVEL_NOVICE
 		if(0 to SKILL_EXP_NOVICE)
 			known_skills[S] = SKILL_LEVEL_NONE
-	if(isnull(old_level) || known_skills[S] == old_level)
+	if(known_skills[S] == old_level)
 		return //same level or we just started earning xp towards the first level.
 	if(silent)
 		return
@@ -1007,7 +1007,6 @@
 	mind.assigned_role = ROLE_PAI
 	mind.special_role = ""
 
+/datum/mind/proc/add_sleep_experience(skill, amt, silent = FALSE)
+	sleep_adv.add_sleep_experience(skill, amt, silent)
 
-
-/datum/mind/proc/get_learning_boon(skill)
-	return 1 + (get_skill_level(skill) / 10)

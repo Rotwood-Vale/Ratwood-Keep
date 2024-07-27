@@ -737,6 +737,7 @@ GLOBAL_LIST_INIT(roleplay_readme, world.file2list("strings/rt/rp_prompt.txt"))
 		var/area/joined_area = get_area(new_character.loc)
 		if(joined_area)
 			joined_area.on_joining_game(new_character)
+		new_character.update_fov_angles()
 		new_character = null
 		qdel(src)
 

@@ -1547,7 +1547,7 @@
 "aDQ" = (/obj/structure/bed/rogue/shit,/turf/open/floor/rogue/ruinedwood{icon_state = "horzw"},/area/rogue/indoors/town)
 "aDR" = (/turf/open/floor/rogue/blocks,/area/rogue/indoors)
 "aDS" = (/obj/structure/table/wood{icon_state = "largetable"; dir = 10},/turf/open/floor/rogue/cobble,/area/rogue/indoors/town)
-"aDT" = (/obj/structure/closet/crate/chest,/obj/item/gun/ballistic/revolver/grenadelauncher/bow,/obj/item/ammo_casing/caseless/rogue/arrow/stone,/obj/item/ammo_casing/caseless/rogue/arrow/stone,/obj/item/ammo_casing/caseless/rogue/arrow,/obj/item/ammo_casing/caseless/rogue/arrow,/obj/item/ammo_casing/caseless/rogue/arrow,/turf/open/floor/rogue/wood,/area/rogue/indoors/town)
+"aDT" = (/obj/structure/closet/crate/chest,/obj/item/gun/ballistic/revolver/grenadelauncher/bow,/obj/item/ammo_casing/caseless/rogue/arrow/stone,/obj/item/ammo_casing/caseless/rogue/arrow/stone,/obj/item/ammo_casing/caseless/rogue/arrow/iron,/obj/item/ammo_casing/caseless/rogue/arrow/iron,/obj/item/ammo_casing/caseless/rogue/arrow/iron,/turf/open/floor/rogue/wood,/area/rogue/indoors/town)
 "aDU" = (/obj/structure/fluff/psycross/copper,/turf/open/floor/rogue/church,/area/rogue/indoors/town/church/chapel)
 "aDV" = (/obj/structure/stairs,/turf/open/transparent/openspace,/area/rogue/outdoors/town/roofs)
 "aDW" = (/obj/item/reagent_containers/food/snacks/crow{dir = 8},/turf/open/floor/rogue/rooftop,/area/rogue/outdoors/town/roofs)

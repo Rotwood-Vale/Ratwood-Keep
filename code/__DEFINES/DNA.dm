@@ -129,6 +129,8 @@
 #define YOUNGBEARD		19 //dwarves only
 #define STUBBLE			20
 #define OLDGREY			21
+#define NO_ORGAN_FEATURES			22
+#define NO_BODYPART_FEATURES			23
 
 //organ defines
 #define STANDARD_ORGAN_THRESHOLD 	100
