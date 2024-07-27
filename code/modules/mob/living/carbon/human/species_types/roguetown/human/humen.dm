@@ -47,7 +47,7 @@
 		"strength" = 0, 
 		"perception" = 0, 
 		"intelligence" = 1, 
-		"constitution" = -1, 
+		"constitution" = 0, 
 		"endurance" = 0, 
 		"speed" = 0, 
 		"fortune" = 0

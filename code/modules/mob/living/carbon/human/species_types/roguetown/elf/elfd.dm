@@ -60,7 +60,7 @@
 		)
 	specstats = list(
 		"strength" = 0, 
-		"perception" = -2, 
+		"perception" = -1, 
 		"intelligence" = 0, 
 		"constitution" = 0, 
 		"endurance" = 1, 
@@ -68,12 +68,12 @@
 		"fortune" = 0
 		)
 	specstats_m = list(
-		"intelligence" = 1, 
+		"strength" = -1, 
 		"speed" = 1,
 	)
 	specstats_f = list(
-		"strength" = 1, 
 		"constitution" = 1, 
+		"intelligence" = -1,
 	)
 	enflamed_icon = "widefire"
 	organs = list(

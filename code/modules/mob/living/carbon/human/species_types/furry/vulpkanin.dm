@@ -36,7 +36,7 @@
 		)
 	specstats = list(
 		"strength" = -1, 
-		"perception" = 1, 
+		"perception" = 2, 
 		"intelligence" = 1, 
 		"constitution" = -1, 
 		"endurance" = 0, 

@@ -51,6 +51,8 @@
 		"speed" = -2, 
 		"fortune" = 0
 		)
+	specstats_m = null
+	specstats_f = null
 	enflamed_icon = "widefire"
 	organs = list(
 		ORGAN_SLOT_BRAIN = /obj/item/organ/brain,
