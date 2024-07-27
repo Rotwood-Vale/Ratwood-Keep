@@ -19,7 +19,7 @@
 			continue
 		if(CA.cmode)
 			continue
-		if(CA.stress <= 0)
+		if(CA.get_stress_amount() <= 0)
 			CA.add_stress(/datum/stressevent/joke)
 			CA.emote(pick("laugh","chuckle","giggle"), forced = TRUE)
 		sleep(rand(1,5))
@@ -45,7 +45,7 @@
 			continue
 		if(CA.cmode)
 			continue
-		if(CA.stress > 0)
+		if(CA.get_stress_amount() > 0)
 			CA.add_stress(/datum/stressevent/tragedy)
 			CA.emote(pick("sigh","hmm"), forced = TRUE)
 		sleep(rand(1,5))

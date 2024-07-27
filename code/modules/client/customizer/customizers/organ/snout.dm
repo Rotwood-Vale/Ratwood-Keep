@@ -150,12 +150,10 @@
 		/datum/sprite_accessory/snout/pede,
 		/datum/sprite_accessory/snout/sergal,
 		/datum/sprite_accessory/snout/shark,
-		/datum/sprite_accessory/snout/hshark,
 		/datum/sprite_accessory/snout/toucan,
 		/datum/sprite_accessory/snout/redpanda,
 		/datum/sprite_accessory/snout/redpandaalt,
 		/datum/sprite_accessory/snout/sbeak,
-		/datum/sprite_accessory/snout/shark_light,
 		/datum/sprite_accessory/snout/rat,
 		/datum/sprite_accessory/snout/stubby,
 		/datum/sprite_accessory/snout/alienlizard,
@@ -188,7 +186,6 @@
 		/datum/sprite_accessory/snout/front/rodent,
 		/datum/sprite_accessory/snout/front/pede,
 		/datum/sprite_accessory/snout/front/sergal,
-		/datum/sprite_accessory/snout/front/shark,
 		/datum/sprite_accessory/snout/front/toucan,
 		/datum/sprite_accessory/snout/front/redpanda,
 		/datum/sprite_accessory/snout/front/redpandaalt,
@@ -211,6 +208,7 @@
 	name = "Axian Snout"
 	organ_type = /obj/item/organ/snout/akula
 	sprite_accessories = list(
+		/datum/sprite_accessory/snout/shark,
 		/datum/sprite_accessory/snout/sergal,
 		/datum/sprite_accessory/snout/sharp,
 		/datum/sprite_accessory/snout/round,

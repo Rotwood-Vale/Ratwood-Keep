@@ -639,11 +639,6 @@
 	icon_state = "rack"
 	climbable = TRUE
 	climb_offset = 10
-	obj_flags = NONE
-
-/obj/structure/rack/rogue/OnCrafted(dirin, user)
-	. = ..()
-	obj_flags |= CAN_BE_HIT
 
 /obj/structure/rack/rogue/deconstruct(disassembled = TRUE)
 	qdel(src)
