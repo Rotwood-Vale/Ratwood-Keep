@@ -21,7 +21,7 @@ var/global/max_total_spawned_mobs = 30 // New global variable for the total limi
 		spawn_interval = rand(600, 1200) // RNG between 60 seconds and 120 seconds
 		adventurer_landmarks = get_all_adventurer_landmarks()
 		if (!is_in_valid_area(src))
-			del src  // Delete the spawner if it's not in the valid area
+			qdel(src)  // Delete the spawner if it's not in the valid area
 		else
 			start_spawning()
 
