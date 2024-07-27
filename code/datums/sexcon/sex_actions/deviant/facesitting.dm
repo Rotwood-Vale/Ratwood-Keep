@@ -14,10 +14,10 @@
 	if(!get_location_accessible(target, BODY_ZONE_PRECISE_MOUTH))
 		return FALSE
 	// Need to stand up
-	if(user.resting)
+	if(!(user.mobility_flags & MOBILITY_STAND))
 		return FALSE
 	// Target can't stand up
-	if(!target.resting)
+	if(target.mobility_flags & MOBILITY_STAND)
 		return FALSE
 	return TRUE
 

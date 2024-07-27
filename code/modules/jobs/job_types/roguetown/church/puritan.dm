@@ -5,7 +5,7 @@
 	faction = "Station"
 	total_positions = 1
 	spawn_positions = 1
-	allowed_sexes = list(MALE)
+	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_TOLERATED_UP
 	allowed_patrons = list(
 		/datum/patron/old_god,
@@ -19,15 +19,6 @@
 	give_bank_account = 36
 	min_pq = 5
 	max_pq = null
-
-/*/datum/job/roguetown/puritan/after_spawn(mob/living/L, mob/M, latejoin = TRUE)
-	..()
-	if(!L.mind)
-		return
-	if(L.mind.has_antag_datum(/datum/antagonist))
-		return
-	var/datum/antagonist/new_antag = new /datum/antagonist/purishep()
-	L.mind.add_antag_datum(new_antag)*/
 
 /datum/outfit/job/roguetown/puritan
 	name = "Inquisitor"

@@ -149,6 +149,7 @@ GLOBAL_VAR(restart_counter)
 	GLOB.world_cloning_log = "[GLOB.log_directory]/cloning.log"
 	GLOB.world_asset_log = "[GLOB.log_directory]/asset.log"
 	GLOB.world_attack_log = "[GLOB.log_directory]/attack.log"
+	GLOB.world_seen_log = "[GLOB.log_directory]/seen.log"
 	GLOB.world_pda_log = "[GLOB.log_directory]/pda.log"
 	GLOB.world_telecomms_log = "[GLOB.log_directory]/telecomms.log"
 	GLOB.world_manifest_log = "[GLOB.log_directory]/manifest.log"
@@ -165,6 +166,7 @@ GLOBAL_VAR(restart_counter)
 
 	start_log(GLOB.world_game_log)
 	start_log(GLOB.world_attack_log)
+	start_log(GLOB.world_seen_log)
 	start_log(GLOB.world_pda_log)
 	start_log(GLOB.world_telecomms_log)
 	start_log(GLOB.world_manifest_log)

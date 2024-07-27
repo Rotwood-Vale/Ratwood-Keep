@@ -215,6 +215,12 @@
 	arousal = clamp(amount, 0, MAX_AROUSAL)
 	update_pink_screen()
 	update_blueballs()
+	update_erect_state()
+
+/datum/sex_controller/proc/update_erect_state()
+	var/obj/item/organ/penis/penis = user.getorganslot(ORGAN_SLOT_PENIS)
+	if(penis)
+		penis.update_erect_state()
 
 /datum/sex_controller/proc/adjust_arousal(amount)
 	set_arousal(arousal + amount)
@@ -375,7 +381,15 @@
 		adjust_arousal(-dt * IMPOTENT_AROUSAL_LOSS_RATE)
 	if(last_arousal_increase_time + AROUSAL_TIME_TO_UNHORNY >= world.time)
 		return
-	adjust_arousal(-dt * AROUSAL_UNHORNY_RATE)
+	var/rate
+	switch(arousal)
+		if(-INFINITY to 25)
+			rate = AROUSAL_LOW_UNHORNY_RATE
+		if(25 to 40)
+			rate = AROUSAL_MID_UNHORNY_RATE
+		if(40 to INFINITY)
+			rate = AROUSAL_HIGH_UNHORNY_RATE
+	adjust_arousal(-dt * rate)
 
 /datum/sex_controller/proc/show_ui()
 	var/list/dat = list()
