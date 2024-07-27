@@ -86,3 +86,6 @@
 	var/stam_paralyzed = FALSE
 
 	var/domhand = 0
+	/// Amount of remaining vitae that can be drained from this mob
+	var/vitae_bank = 9000
+

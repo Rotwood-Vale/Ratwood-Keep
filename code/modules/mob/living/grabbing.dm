@@ -486,8 +486,9 @@
 			else
 				if(VVictim)
 					to_chat(user, span_warning("It's vitae, just like mine."))
-				else
+				else if (C.vitae_bank > 500)
 					C.blood_volume = max(C.blood_volume-45, 0)
+					C.vitae_bank -= 500
 					if(ishuman(C))
 						var/mob/living/carbon/human/H = C
 						if(H.virginity)
@@ -495,11 +496,13 @@
 							if(VDrinker.isspawn)
 								VDrinker.handle_vitae(750, 750)
 							else
-								VDrinker.handle_vitae(1000)
+								VDrinker.handle_vitae(750)
 					if(VDrinker.isspawn)
 						VDrinker.handle_vitae(500, 500)
 					else
 						VDrinker.handle_vitae(500)
+				else
+					to_chat(user, span_warning("No more vitae from this blood..."))
 		else
 /*			if(VVictim)
 				to_chat(user, "<span class='notice'>A strange, sweet taste tickles my throat.</span>")
