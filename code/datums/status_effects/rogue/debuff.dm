@@ -193,6 +193,7 @@
 	id = "goblingas"
 	alert_type = /atom/movable/screen/alert/status_effect/debuff/goblingas
 	effectedstats = list("intelligence" = -3, "endurance" = -3)
+	duration = 40 SECONDS
 
 /atom/movable/screen/alert/status_effect/debuff/goblingas
 	name = "Goblin Brained"
