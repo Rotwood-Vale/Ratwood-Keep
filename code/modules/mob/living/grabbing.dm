@@ -33,6 +33,10 @@
 	valid_check()
 
 /obj/item/grabbing/proc/valid_check()
+	// Mouth grab while we're adjacent is good
+	if(grabbee.mouth == src && grabbee.Adjacent(grabbed))
+		return TRUE
+	// Other grab requires adjacency and pull status, unless we're grabbing ourselves
 	if(grabbee.Adjacent(grabbed) && (grabbee.pulling == grabbed || grabbee == grabbed))
 		return TRUE
 	grabbee.stop_pulling(FALSE)
@@ -389,6 +393,8 @@
 
 /obj/item/grabbing/bite/Click(location, control, params)
 	var/list/modifiers = params2list(params)
+	if(!valid_check())
+		return
 	if(iscarbon(usr))
 		var/mob/living/carbon/C = usr
 		if(C != grabbee || C.incapacitated() || C.stat == DEAD)
