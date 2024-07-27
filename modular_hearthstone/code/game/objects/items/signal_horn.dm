@@ -8,7 +8,7 @@
 
 /obj/item/signal_horn/attack_self(mob/living/user)
 	. = ..()
-		user.visible_message(span_warning("[user] is about to sound the [src]!"))
+	user.visible_message(span_warning("[user] is about to sound the [src]!"))
 	if(do_after(user, 15))
 		sound_horn(user)
 
