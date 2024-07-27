@@ -49,15 +49,8 @@
 		additional_items -= needed_item
 		progress = 0
 	if(!moveup)
-		if(prob(round(proab/2)))
-			user.visible_message(span_warning("[user] spoils the bar!"))
-			if(parent)
-				var/obj/item/P = parent
-				qdel(P)
-			return FALSE
-		else
-			user.visible_message(span_warning("[user] fumbles with the bar!"))
-			return FALSE
+		user.visible_message(span_warning("[user] fumbles with the bar!"))
+		return FALSE
 	else
 		if(user.mind && isliving(user))
 			skill_quality += (rand(skill_level*8, skill_level*17)*moveup)

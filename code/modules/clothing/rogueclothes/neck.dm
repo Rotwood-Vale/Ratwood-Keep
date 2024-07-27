@@ -43,7 +43,7 @@
 
 
 /obj/item/clothing/neck/roguetown/chaincoif
-	name = "chain coif"
+	name = "steel chain coif"
 	icon_state = "chaincoif"
 	item_state = "chaincoif"
 	flags_inv = HIDEEARS|HIDEHAIR
@@ -83,6 +83,7 @@
 
 
 /obj/item/clothing/neck/roguetown/chaincoif/iron
+	name = "iron chain coif"
 	icon_state = "ichaincoif"
 	anvilrepair = /datum/skill/craft/armorsmithing
 	smeltresult = /obj/item/ingot/iron

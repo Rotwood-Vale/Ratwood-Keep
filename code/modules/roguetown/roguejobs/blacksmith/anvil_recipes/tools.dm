@@ -131,6 +131,15 @@
 	created_item = /obj/item/rogueweapon/pick/steel
 	i_type = "Tools"
 
+/datum/anvil_recipe/tools/surgery/surgerytools
+	name = "Surgery tools set (+1 Steel)"
+	req_bar = /obj/item/ingot/steel
+	additional_items = list(/obj/item/ingot/steel, /obj/item/ingot/steel)
+	created_item = list(/obj/item/rogueweapon/surgery/scalpel, /obj/item/rogueweapon/surgery/saw, /obj/item/rogueweapon/surgery/hemostat, /obj/item/rogueweapon/surgery/retractor, /obj/item/rogueweapon/surgery/bonesetter, /obj/item/rogueweapon/surgery/cautery)
+	i_type = "Tools"
+
+/*
+//those shit were so expensive one by one nobody ever used them unless they spawn with them.
 /datum/anvil_recipe/tools/surgery/scalpel
 	name = "Scalpel"
 	req_bar = /obj/item/ingot/steel
@@ -166,6 +175,7 @@
 	req_bar = /obj/item/ingot/steel
 	created_item = /obj/item/rogueweapon/surgery/cautery
 	i_type = "Tools"
+*/
 
 /datum/anvil_recipe/tools/cupssteel
 	name = "Goblets 3x"
