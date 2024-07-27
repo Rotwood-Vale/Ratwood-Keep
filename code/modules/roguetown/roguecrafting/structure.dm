@@ -191,7 +191,6 @@
 	name = "dye bin"
 	result = /obj/structure/dye_bin
 	reqs = list(
-		/datum/reagent/water = 10,
 		/obj/item/grown/log/tree/small = 1,
 	)
 	verbage_simple = "make"
