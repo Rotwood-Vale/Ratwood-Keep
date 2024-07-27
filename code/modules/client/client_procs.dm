@@ -1135,8 +1135,15 @@ GLOBAL_LIST_EMPTY(external_rsc_urls)
 	var/list/selections = GLOB.character_ckey_list.Copy()
 	if(!selections.len)
 		return
-	var/selection = input(src,"Which Character?") as null|anything in sortList(selections)
+	var/selection
+	if(SSticker.current_state == GAME_STATE_FINISHED)
+		selection = input(src,"Which Character?") as null|anything in sortList(selections)
+	else
+		selection = input(src, "Which Character?") as null|text
 	if(!selection)
+		return
+	if(!selections[selection])
+		to_chat(src, span_warning("Not found anyone with that name"))
 		return
 	var/theykey = selections[selection]
 	if(theykey == ckey)
