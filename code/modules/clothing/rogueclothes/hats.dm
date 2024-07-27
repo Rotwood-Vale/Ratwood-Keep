@@ -552,10 +552,11 @@
 	desc = "A steel helmet which protects the ears, nose, and eyes."
 	icon_state = "sallet_visor"
 	adjustable = CAN_CADJUST
-	flags_inv = HIDEEARS|HIDEFACE
-	flags_cover = HEADCOVERSEYES
-	body_parts_covered = HEAD|EARS|HAIR|NOSE|EYES
+	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR
+	flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH
+	body_parts_covered = FULL_HEAD
 	block2add = FOV_BEHIND
+	max_integrity = 400
 
 /obj/item/clothing/head/roguetown/helmet/sallet/visored/AdjustClothes(mob/user)
 	if(loc == user)
@@ -588,7 +589,7 @@
 	flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH
 	armor = list("blunt" = 90, "slash" = 100, "stab" = 80, "bullet" = 100, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
 	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT, BCLASS_SMASH, BCLASS_TWIST)
-	block2add = FOV_RIGHT|FOV_LEFT
+	block2add = FOV_BEHIND
 	smeltresult = /obj/item/ingot/steel
 	max_integrity = 400
 
@@ -598,7 +599,7 @@
 	icon_state = "guardhelm"
 	emote_environment = 3
 	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR
-	block2add = FOV_RIGHT|FOV_LEFT
+	block2add = FOV_BEHIND
 	smeltresult = /obj/item/ingot/iron
 
 /obj/item/clothing/head/roguetown/helmet/heavy/sheriff
@@ -607,7 +608,7 @@
 	icon_state = "gatehelm"
 	emote_environment = 3
 	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR
-	block2add = FOV_RIGHT|FOV_LEFT
+	block2add = FOV_BEHIND
 	smeltresult = /obj/item/ingot/iron
 
 /obj/item/clothing/head/roguetown/helmet/heavy/knight
@@ -618,7 +619,7 @@
 	adjustable = CAN_CADJUST
 	emote_environment = 3
 	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR
-	block2add = FOV_RIGHT|FOV_LEFT
+	block2add = FOV_BEHIND
 	smeltresult = /obj/item/ingot/steel
 
 /obj/item/clothing/head/roguetown/helmet/heavy/knight/black
@@ -697,7 +698,7 @@
 	item_state = "topfhelm"
 	emote_environment = 3
 	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR
-	block2add = FOV_RIGHT|FOV_LEFT
+	block2add = FOV_BEHIND
 	smeltresult = /obj/item/ingot/steel
 
 /obj/item/clothing/head/roguetown/helmet/heavy/astratahelm
@@ -707,7 +708,7 @@
 	item_state = "astratahelm"
 	emote_environment = 3
 	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR
-	block2add = FOV_RIGHT|FOV_LEFT
+	block2add = FOV_BEHIND
 	smeltresult = /obj/item/ingot/steel
 
 /obj/item/clothing/head/roguetown/helmet/heavy/nochelm
@@ -717,7 +718,7 @@
 	item_state = "nochelm"
 	emote_environment = 3
 	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR
-	block2add = FOV_RIGHT|FOV_LEFT
+	block2add = FOV_BEHIND
 	smeltresult = /obj/item/ingot/steel
 
 /obj/item/clothing/head/roguetown/helmet/heavy/necrahelm
@@ -727,7 +728,7 @@
 	item_state = "necrahelm"
 	emote_environment = 3
 	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR
-	block2add = FOV_RIGHT|FOV_LEFT
+	block2add = FOV_BEHIND
 	smeltresult = /obj/item/ingot/steel
 
 /obj/item/clothing/head/roguetown/helmet/heavy/dendorhelm
@@ -737,7 +738,7 @@
 	item_state = "dendorhelm"
 	emote_environment = 3
 	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR
-	block2add = FOV_RIGHT|FOV_LEFT
+	block2add = FOV_BEHIND
 	smeltresult = /obj/item/ingot/steel
 
 /obj/item/clothing/head/roguetown/helmet/heavy/pigface
@@ -749,7 +750,7 @@
 	emote_environment = 3
 	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR
 	flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH
-	block2add = FOV_RIGHT|FOV_LEFT
+	block2add = FOV_BEHIND
 	smeltresult = /obj/item/ingot/steel
 
 /obj/item/clothing/head/roguetown/helmet/heavy/pigface/AdjustClothes(mob/user)
