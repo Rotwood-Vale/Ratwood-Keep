@@ -2,15 +2,31 @@
 
 /datum/sprite_accessory/penis
 	icon = 'icons/mob/sprite_accessory/genitals/penis.dmi'
-	color_key_name = "Member"
-	relevant_layers = list(BODY_BEHIND_LAYER,BODY_FRONT_FRONT_LAYER) //Vrell - Yes I know this is hacky but it works for now
+	color_keys = 2
+	color_key_names = list("Member", "Skin")
+	relevant_layers = list(BODY_BEHIND_LAYER, BODY_FRONT_LAYER)
 
 /datum/sprite_accessory/penis/adjust_appearance_list(list/appearance_list, obj/item/organ/organ, obj/item/bodypart/bodypart, mob/living/carbon/owner)
 	generic_gender_feature_adjust(appearance_list, organ, bodypart, owner, OFFSET_BELT, OFFSET_BELT_F)
 
 /datum/sprite_accessory/penis/get_icon_state(obj/item/organ/organ, obj/item/bodypart/bodypart, mob/living/carbon/owner)
 	var/obj/item/organ/penis/pp = organ
-	return "[icon_state]_[pp.penis_size]"
+	if(pp.sheath_type != SHEATH_TYPE_NONE && pp.erect_state != ERECT_STATE_HARD)
+		switch(pp.sheath_type)
+			if(SHEATH_TYPE_NORMAL)
+				if(pp.erect_state == ERECT_STATE_NONE)
+					return "sheath_1"
+				else
+					return "sheath_2"
+			if(SHEATH_TYPE_SLIT)
+				if(pp.erect_state == ERECT_STATE_NONE)
+					return "slit_1"
+				else
+					return "slit_2"
+	if(pp.erect_state == ERECT_STATE_HARD)
+		return "[icon_state]_2"
+	else
+		return "[icon_state]_1"
 
 /datum/sprite_accessory/penis/is_visible(obj/item/organ/organ, obj/item/bodypart/bodypart, mob/living/carbon/owner)
 	return is_human_part_visible(owner, HIDEJUMPSUIT|HIDECROTCH)
@@ -18,7 +34,7 @@
 /datum/sprite_accessory/penis/human
 	icon_state = "human"
 	name = "Plain"
-	color_key_defaults = list(KEY_SKIN_COLOR)
+	color_key_defaults = list(KEY_CHEST_COLOR, KEY_CHEST_COLOR)
 
 /datum/sprite_accessory/penis/thick
 	icon_state = "thick"
@@ -27,42 +43,51 @@
 /datum/sprite_accessory/penis/knotted
 	icon_state = "knotted"
 	name = "Knotted"
-	default_colors = list("C52828")
+	color_key_defaults = list(null, KEY_CHEST_COLOR)
+	default_colors = list("C52828", null)
 
 /datum/sprite_accessory/penis/knotted2
 	name = "Knotted 2"
 	icon_state = "knotted2"
-	default_colors = list("C52828")
+	color_key_defaults = list(null, KEY_CHEST_COLOR)
+	default_colors = list("C52828", null)
 
 /datum/sprite_accessory/penis/flared
 	icon_state = "flared"
 	name = "Flared"
-	color_key_defaults = list(KEY_SKIN_COLOR)
+	color_key_defaults = list(KEY_CHEST_COLOR, KEY_CHEST_COLOR)
 
 /datum/sprite_accessory/penis/barbknot
 	icon_state = "barbknot"
 	name = "Barbed, Knotted"
-	default_colors = list("C52828")
+	color_key_defaults = list(null, KEY_CHEST_COLOR)
+	default_colors = list("C52828", null)
 
 /datum/sprite_accessory/penis/tapered
 	icon_state = "tapered"
 	name = "Tapered"
-	default_colors = list("C52828")
+	default_colors = list("C52828", "C52828")
+
+/datum/sprite_accessory/penis/tapered_mammal
+	icon_state = "tapered"
+	name = "Tapered"
+	color_key_defaults = list(null, KEY_CHEST_COLOR)
+	default_colors = list("C52828", null)
 
 /datum/sprite_accessory/penis/tentacle
 	icon_state = "tentacle"
 	name = "Tentacled"
-	default_colors = list("C52828")
+	default_colors = list("C52828", "C52828")
 
 /datum/sprite_accessory/penis/hemi
 	icon_state = "hemi"
 	name = "Hemi"
-	default_colors = list("C52828")
+	default_colors = list("C52828", "C52828")
 
 /datum/sprite_accessory/penis/hemiknot
 	icon_state = "hemiknot"
 	name = "Knotted Hemi"
-	default_colors = list("C52828")
+	default_colors = list("C52828", "C52828")
 
 /datum/sprite_accessory/testicles
 	icon = 'icons/mob/sprite_accessory/genitals/testicles.dmi'
@@ -77,6 +102,9 @@
 	return "[icon_state]_[testes.ball_size]"
 
 /datum/sprite_accessory/testicles/is_visible(obj/item/organ/organ, obj/item/bodypart/bodypart, mob/living/carbon/owner)
+	var/obj/item/organ/penis/pp = owner.getorganslot(ORGAN_SLOT_PENIS)
+	if(pp && pp.sheath_type == SHEATH_TYPE_SLIT)
+		return FALSE
 	return is_human_part_visible(owner, HIDEJUMPSUIT|HIDECROTCH)
 
 /datum/sprite_accessory/testicles/pair

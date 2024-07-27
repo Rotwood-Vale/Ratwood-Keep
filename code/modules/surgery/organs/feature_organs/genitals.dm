@@ -7,8 +7,78 @@
 	slot = ORGAN_SLOT_PENIS
 	organ_dna_type = /datum/organ_dna/penis
 	accessory_type = /datum/sprite_accessory/penis/human
+	var/sheath_type = SHEATH_TYPE_NONE
+	var/erect_state = ERECT_STATE_NONE
+	var/penis_type = PENIS_TYPE_PLAIN
 	var/penis_size = DEFAULT_PENIS_SIZE
-	
+
+/obj/item/organ/penis/Initialize()
+	. = ..()
+
+/obj/item/organ/penis/proc/update_erect_state()
+	var/oldstate = erect_state
+	var/new_state = ERECT_STATE_NONE
+	if(owner)
+		var/mob/living/carbon/human/human = owner
+		if(human.sexcon.arousal > 20)
+			new_state = ERECT_STATE_HARD
+		else if(human.sexcon.arousal > 10)
+			new_state = ERECT_STATE_PARTIAL
+		else
+			new_state = ERECT_STATE_NONE
+
+	erect_state = new_state
+	if(oldstate != erect_state && owner)
+		owner.update_body_parts(TRUE)
+
+/obj/item/organ/penis/knotted
+	name = "knotted penis"
+	penis_type = PENIS_TYPE_KNOTTED
+	sheath_type = SHEATH_TYPE_NORMAL
+
+/obj/item/organ/penis/knotted/big
+	penis_size = 3
+
+/obj/item/organ/penis/equine
+	name = "equine penis"
+	penis_type = PENIS_TYPE_EQUINE
+	sheath_type = SHEATH_TYPE_NORMAL
+
+/obj/item/organ/penis/tapered_mammal
+	name = "tapered penis"
+	penis_type = PENIS_TYPE_TAPERED
+	sheath_type = SHEATH_TYPE_NORMAL
+
+/obj/item/organ/penis/tapered
+	name = "tapered penis"
+	penis_type = PENIS_TYPE_TAPERED
+	sheath_type = SHEATH_TYPE_SLIT
+
+/obj/item/organ/penis/tapered_double
+	name = "hemi tapered penis"
+	penis_type = PENIS_TYPE_TAPERED_DOUBLE
+	sheath_type = SHEATH_TYPE_SLIT
+
+/obj/item/organ/penis/tapered_double_knotted
+	name = "hemi knotted tapered penis"
+	penis_type = PENIS_TYPE_TAPERED_DOUBLE_KNOTTED
+	sheath_type = SHEATH_TYPE_SLIT
+
+/obj/item/organ/penis/barbed
+	name = "barbed penis"
+	penis_type = PENIS_TYPE_BARBED
+	sheath_type = SHEATH_TYPE_NORMAL
+
+/obj/item/organ/penis/barbed_knotted
+	name = "barbed knotted penis"
+	penis_type = PENIS_TYPE_BARBED_KNOTTED
+	sheath_type = SHEATH_TYPE_NORMAL
+
+/obj/item/organ/penis/tentacle
+	name = "tentacle penis"
+	penis_type = PENIS_TYPE_TENTACLE
+	sheath_type = SHEATH_TYPE_NONE
+
 /obj/item/organ/vagina
 	name = "vagina"
 	icon_state = "vagina"
