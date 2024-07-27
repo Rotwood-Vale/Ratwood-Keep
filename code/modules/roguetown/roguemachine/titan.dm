@@ -23,7 +23,7 @@ GLOBAL_LIST_INIT(laws_of_the_land, initialize_laws_of_the_land())
 	flags_1 = HEAR_1
 	anchored = TRUE
 	var/mode = 0
-
+	COOLDOWN_DECLARE(king_announcement)
 
 /obj/structure/roguemachine/titan/obj_break(damage_flag)
 	..()
@@ -115,6 +115,9 @@ GLOBAL_LIST_INIT(laws_of_the_land, initialize_laws_of_the_land())
 				if(!SScommunications.can_announce(H))
 					say("I must gather my strength!")
 					return
+				if(!COOLDOWN_FINISHED(src, king_announcement))
+					say("I am not ready to speak again.")
+					return
 				say("Speak and they will listen.")
 				playsound(src, 'sound/misc/machineyes.ogg', 100, FALSE, -1)
 				mode = 1
@@ -196,6 +199,7 @@ GLOBAL_LIST_INIT(laws_of_the_land, initialize_laws_of_the_land())
 				return
 		if(1)
 			make_announcement(H, raw_message)
+			COOLDOWN_START(src, king_announcement, 30 SECONDS)
 			mode = 0
 		if(2)
 			make_decree(H, raw_message)
