@@ -29,7 +29,9 @@
 /world/New()
     ..()
     // Ensure prices are updated when the world starts
-    update_real_price_multiplier()
+    // Use a delayed call to ensure all items are loaded
+    spawn(1) // Delay for 1 tick to ensure items are fully initialized
+        update_real_price_multiplier()
 
 /client/verb/update_prices()
     set name = "Update Item Prices"
