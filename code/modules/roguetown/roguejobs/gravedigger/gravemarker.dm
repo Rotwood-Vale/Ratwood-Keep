@@ -48,5 +48,6 @@
 /obj/structure/gravemarker/OnCrafted(dir, user)
 	icon_state = "gravemarker[rand(1,3)]"
 	for(var/obj/structure/closet/dirthole/hole in loc)
-		pacify_coffin(hole, user)
+		if(pacify_coffin(hole, user))
+			to_chat(user, span_notice("I feel their soul finding peace..."))
 	return ..()

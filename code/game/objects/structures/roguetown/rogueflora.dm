@@ -34,8 +34,9 @@
 			return
 
 /obj/structure/flora/roguetree/fire_act(added, maxstacks)
-	if(added > 5)
-		return ..()
+	if(added <= 5)
+		return
+	return ..()
 
 /obj/structure/flora/roguetree/Initialize()
 	. = ..()
@@ -441,8 +442,9 @@
 	return 1
 
 /obj/structure/flora/rogueshroom/fire_act(added, maxstacks)
-	if(added > 5)
-		return ..()
+	if(added <= 5)
+		return
+	return ..()
 
 /obj/structure/flora/rogueshroom/obj_destruction(damage_flag)
 	var/obj/structure/S = new /obj/structure/flora/shroomstump(loc)

@@ -1178,3 +1178,15 @@ GLOBAL_LIST_INIT(freon_color_matrix, list("#2E5E69", "#60A2A8", "#A1AFB1", rgb(0
 
 	var/icon/I = getFlatIcon(thing)
 	return icon2html(I, target)
+
+/proc/RGBMatrixTransform(list/color, list/cm)
+	ASSERT(cm.len >= 9)
+	if(cm.len < 12)		// fill in the rest
+		for(var/i in 1 to (12 - cm.len))
+			cm += 0
+	if(!islist(color))
+		color = ReadRGB(color)
+	color[1] = color[1] * cm[1] + color[2] * cm[2] + color[3] * cm[3] + cm[10] * 255
+	color[2] = color[1] * cm[4] + color[2] * cm[5] + color[3] * cm[6] + cm[11] * 255
+	color[3] = color[1] * cm[7] + color[2] * cm[8] + color[3] * cm[9] + cm[12] * 255
+	return rgb(color[1], color[2], color[3])

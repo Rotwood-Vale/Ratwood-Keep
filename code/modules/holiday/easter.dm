@@ -42,7 +42,7 @@
 	emote_hear = list("hops.")
 	emote_see = list("hops around","bounces up and down")
 	butcher_results = list(/obj/item/reagent_containers/food/snacks/meat/slab = 1)
-	egg_type = /obj/item/reagent_containers/food/snacks/egg/loaded
+	egg_type = /obj/item/reagent_containers/food/snacks/egg
 	eggsleft = 10
 	eggsFertile = FALSE
 	icon_prefix = "rabbit"
@@ -100,42 +100,6 @@
 	slowdown = -1
 	body_parts_covered = CHEST|GROIN|LEGS|ARMS
 	flags_inv = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT
-
-//Egg prizes and egg spawns!
-/obj/item/reagent_containers/food/snacks/egg
-	var/containsPrize = FALSE
-
-/obj/item/reagent_containers/food/snacks/egg/loaded
-	containsPrize = TRUE
-
-/obj/item/reagent_containers/food/snacks/egg/loaded/Initialize()
-	. = ..()
-	var/eggcolor = pick("blue","green","mime","orange","purple","rainbow","red","yellow")
-	icon_state = "egg-[eggcolor]"
-
-/obj/item/reagent_containers/food/snacks/egg/proc/dispensePrize(turf/where)
-	var/won = pick(/obj/item/clothing/head/bunnyhead,
-	/obj/item/clothing/suit/bunnysuit,
-	/obj/item/reagent_containers/food/snacks/chocolateegg,
-	/obj/item/toy/balloon,
-	/obj/item/toy/gun,
-	/obj/item/toy/sword,
-	/obj/item/toy/foamblade,
-	/obj/item/toy/prize/ripley,
-	/obj/item/toy/prize/honk,
-	/obj/item/toy/plush/carpplushie,
-	/obj/item/toy/redbutton,
-	/obj/item/clothing/head/collectable/rabbitears)
-	new won(where)
-	new/obj/item/reagent_containers/food/snacks/chocolateegg(where)
-
-/obj/item/reagent_containers/food/snacks/egg/attack_self(mob/user)
-	..()
-	if(containsPrize)
-		to_chat(user, span_notice("I unwrap [src] and find a prize inside!"))
-		dispensePrize(get_turf(user))
-		containsPrize = FALSE
-		qdel(src)
 
 //Easter Recipes + food
 /obj/item/reagent_containers/food/snacks/hotcrossbun

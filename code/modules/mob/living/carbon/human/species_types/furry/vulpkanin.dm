@@ -50,7 +50,7 @@
 		ORGAN_SLOT_TAIL = /obj/item/organ/tail/vulpkanin,
 		ORGAN_SLOT_SNOUT = /obj/item/organ/snout/vulpkanin,
 		ORGAN_SLOT_TESTICLES = /obj/item/organ/testicles,
-		ORGAN_SLOT_PENIS = /obj/item/organ/penis,
+		ORGAN_SLOT_PENIS = /obj/item/organ/penis/knotted,
 		ORGAN_SLOT_BREASTS = /obj/item/organ/breasts,
 		ORGAN_SLOT_VAGINA = /obj/item/organ/vagina,
 		)
@@ -60,7 +60,7 @@
 	)
 	customizers = list(
 		/datum/customizer/organ/eyes/humanoid,
-		/datum/customizer/bodypart_feature/hair/head/humanoid,
+		/datum/customizer/bodypart_feature/hair/head/humanoid/vulpkian,
 		/datum/customizer/bodypart_feature/hair/facial/humanoid,
 		/datum/customizer/bodypart_feature/accessory,
 		/datum/customizer/bodypart_feature/face_detail,
@@ -68,7 +68,7 @@
 		/datum/customizer/organ/snout/vulpkanin,
 		/datum/customizer/organ/ears/vulpkanin,
 		/datum/customizer/organ/testicles/external,
-		/datum/customizer/organ/penis/knotted,
+		/datum/customizer/organ/penis/canine,
 		/datum/customizer/organ/breasts/animal,
 		/datum/customizer/organ/vagina/animal,
 		)
@@ -83,6 +83,16 @@
 		/datum/body_marking/bellyslim,
 		/datum/body_marking/butt,
 		/datum/body_marking/tonage,
+	)
+	descriptor_choices = list(
+		/datum/descriptor_choice/body,
+		/datum/descriptor_choice/stature,
+		/datum/descriptor_choice/face,
+		/datum/descriptor_choice/face_exp,
+		/datum/descriptor_choice/fur,
+		/datum/descriptor_choice/voice,
+		/datum/descriptor_choice/prominent_one,
+		/datum/descriptor_choice/prominent_two,
 	)
 	
 /datum/species/vulpkanin/check_roundstart_eligible()

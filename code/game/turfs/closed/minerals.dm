@@ -96,13 +96,6 @@
 		var/newthing = pickweight(list(/obj/item/natural/rock/salt = 2, /obj/item/natural/rock/iron = 1, /obj/item/natural/rock/coal = 2))
 //		to_chat(user, span_notice("Bonus ducks!"))
 		new newthing(src)
-//	if(ishuman(user))
-//		var/mob/living/carbon/human/H = user
-//		if(give_exp)
-//			if (mineralType && (mineralAmt > 0))
-//				H.mind.adjust_experience(/datum/skill/mining, initial(mineralType.mine_experience) * mineralAmt)
-//			else
-//				H.mind.adjust_experience(/datum/skill/mining, 4)
 
 	for(var/obj/effect/temp_visual/mining_overlay/M in src)
 		qdel(M)
@@ -567,11 +560,7 @@
 	if(!ishuman(user))
 		to_chat(usr, span_warning("Only a more advanced species could break a rock such as this one!"))
 		return FALSE
-	var/mob/living/carbon/human/H = user
-	if(H.mind.get_skill_level(/datum/skill/mining) >= SKILL_LEVEL_LEGENDARY)
-		. = ..()
-	else
-		to_chat(usr, span_warning("The rock seems to be too strong to destroy. Maybe I can break it once I become a master miner."))
+	to_chat(usr, span_warning("The rock seems to be too strong to destroy. Maybe I can break it once I become a master miner."))
 
 
 /turf/closed/mineral/strong/gets_drilled(user)
@@ -656,7 +645,7 @@
 
 /turf/closed/mineral/rogue/salt
 	icon_state = "mingold"
-	mineralType = /obj/item/reagent_containers/powder/flour/salt
+	mineralType = /obj/item/reagent_containers/powder/salt
 	rockType = /obj/item/natural/rock/salt
 	spreadChance = 33
 	spread = 15

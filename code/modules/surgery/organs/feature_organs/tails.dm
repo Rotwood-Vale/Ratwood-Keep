@@ -11,7 +11,7 @@
 /obj/item/organ/tail/cat
 	name = "cat tail"
 	desc = "A severed cat tail. Who's wagging now?"
-	accessory_type = /datum/sprite_accessory/tail/cat
+	accessory_type = /datum/sprite_accessory/tail/catbig
 
 /obj/item/organ/tail/lizard
 	name = "sissean tail"
@@ -31,6 +31,9 @@
 
 /obj/item/organ/tail/anthro
 	name = "wild-kin tail"
+
+/obj/item/organ/tail/lupian
+	name = "lupian tail"
 
 /obj/item/organ/tail/avali
 	name = "avali tail"
@@ -59,3 +62,15 @@
 /obj/item/organ/tail/akula
 	name = "axian tail"
 	accessory_type =  /datum/sprite_accessory/tail/shark
+
+/obj/item/organ/tail/lizard
+	name = "sissean tail"
+	desc = ""
+	color = "#116611"
+	accessory_type =  /datum/sprite_accessory/tail/lizard/smooth
+
+/obj/item/organ/tail/kobold
+	name = "kobold tail"
+	desc = ""
+	color = "#116611"
+	accessory_type =  /datum/sprite_accessory/tail/lizard/kobold
