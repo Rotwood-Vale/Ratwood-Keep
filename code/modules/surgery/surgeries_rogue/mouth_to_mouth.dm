@@ -23,7 +23,7 @@
 	surgery_flags = NONE
 	repeating = TRUE
 
-	// How much burn damage we heal per completion
+	// How much oxy damage we heal per completion
 	var/oxyhealing = 10
 
 /datum/surgery_step/mouth_to_mouth/validate_target(mob/user, mob/living/target, target_zone, datum/intent/intent)
