@@ -109,8 +109,8 @@
 		if(LAZYACCESS(dream_master.recipe_progression, dream_master.current_wonder))
 			user.mind.teach_crafting_recipe(dream_master.recipe_progression[dream_master.current_wonder])
 		dream_master.wonders_made |= src
-		user.log_message("crafted Maniac Wonder [key_text] (#[wonder_id]).", LOG_GAME)
-		message_admins("Maniac [ADMIN_LOOKUPFLW(user)] constructed Wonder [key_text] (#[wonder_id]). [ADMIN_JMP(src)]")
+		user.log_message("crafted [wonder_id_desc] Maniac Wonder [key_text].", LOG_GAME)
+		message_admins("[wonder_id_desc] Maniac Wonder [key_text] constructed. [ADMIN_JMP(src)]")
 	START_PROCESSING(SSobj, src)
 	
 /obj/structure/wonder/examine(mob/user)
