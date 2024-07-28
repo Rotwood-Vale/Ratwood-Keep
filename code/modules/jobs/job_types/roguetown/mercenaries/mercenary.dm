@@ -11,6 +11,7 @@
 	display_order = JDO_GRENZELHOFT
 	selection_color = JCOLOR_MERCENARY
 	min_pq = 0		//Will be handled by classes if PQ limiting is needed.
+	max_pq = null
 	outfit = null	//Handled by classes
 	outfit_female = null
 	advclass_cat_rolls = list(CTAG_MERCENARY = 20)
