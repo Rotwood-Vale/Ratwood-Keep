@@ -418,7 +418,7 @@ GLOBAL_LIST_EMPTY(chosen_names)
 			if(headshot_link != null)
 				dat += "<a href='?_src_=prefs;preference=view_headshot;task=input'>View</a>"
 
-			dat += "<br><b>Nudeshot(4:3):</b> <a href='?_src_=prefs;preference=nudeshot;task=input'>Change</a>"
+			dat += "<br><b>Nudeshot(3:4):</b> <a href='?_src_=prefs;preference=nudeshot;task=input'>Change</a>"
 			if(nudeshot_link != null)
 				dat += "<a href='?_src_=prefs;preference=view_nudeshot;task=input'>View</a>"
 			dat += "</td>"
