@@ -57,6 +57,8 @@
 				dreamer.hearts_seen += my_inscryption
 				SEND_SOUND(dreamer, 'sound/villain/newheart.ogg')
 				user.log_message("got the Maniac inscryption [wonder_code ? " for Wonder #[wonder_code]" : ""][my_inscryption ? ": \"[strip_html_simple(my_inscryption)].\"" : ""]", LOG_GAME)
+				if(wonder_code == 4)
+					message_admins("Maniac [ADMIN_LOOKUPFLW(user)] has obtained the fourth and final heart code.")
 
 /obj/item/organ/heart/update_icon()
 	if(beating)
