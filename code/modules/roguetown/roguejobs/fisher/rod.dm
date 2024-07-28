@@ -22,7 +22,7 @@
 
 /obj/item/fishingrod/attack_self(mob/user)
 	if(user.doing)
-		user.stop_doafters() //Not sure why this case exists but oh well!
+		user.omni_stop_doafters() //Not sure why this case exists but oh well!
 	else
 		..()
 

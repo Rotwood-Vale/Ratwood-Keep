@@ -496,3 +496,8 @@
 #define WHITEBROWN_FUR "c69b83"
 #define DARKBROWN_FUR "3b2e27"
 #define BLACK_FUR	 "271f1a"
+
+//Doafter defines
+#define NO_DOAFTER 0 		//! Not doing something.
+#define NORMAL_DOAFTER 1	//! Doing something.
+#define MOVING_DOAFTER 2	//! Doing something not cancelled by movement.

@@ -127,7 +127,7 @@
 ///////////////////////////////// IMMOBILIZED ////////////////////////////////////
 /mob/living/proc/IsImmobilized() //If we're immobilized
 	if(has_status_effect(STATUS_EFFECT_IMMOBILIZED))
-		stop_doafters()
+		omni_stop_doafters()
 		return has_status_effect(STATUS_EFFECT_IMMOBILIZED)
 
 /mob/living/proc/AmountImmobilized() //How many deciseconds remain in our Immobilized status effect

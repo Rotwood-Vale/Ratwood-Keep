@@ -166,7 +166,7 @@
 		var/mob/M = AM
 		log_combat(src, M, "grabbed", addition="passive grab")
 		if(M.doing)
-			M.stop_doafters()
+			M.omni_stop_doafters()
 		if(!supress_message)
 			M.visible_message(span_warning("[src] grabs [M]."), \
 				span_danger("[src] grabs you."))
