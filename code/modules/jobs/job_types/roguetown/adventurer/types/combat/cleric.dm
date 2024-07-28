@@ -26,6 +26,8 @@
 			neck = /obj/item/clothing/neck/roguetown/psicross/necra
 		if(/datum/patron/divine/pestra)
 			neck = /obj/item/clothing/neck/roguetown/psicross/pestra
+		if(/datum/patron/divine/eora) //Eora content from Stonekeep
+			neck = /obj/item/clothing/neck/roguetown/psicross/eora
 
 	// CLASS ARCHETYPES
 	H.adjust_blindness(-3)

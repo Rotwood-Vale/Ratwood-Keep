@@ -45,6 +45,9 @@
 			wrists = /obj/item/clothing/neck/roguetown/psicross/noc
 			head = /obj/item/clothing/head/roguetown/helmet/heavy/nochelm
 			cloak = /obj/item/clothing/cloak/tabard/crusader/noc
+		if("Eora") //Eora content from Stonekeep
+			head = /obj/item/clothing/head/roguetown/helmet/heavy/bucket
+			wrists = /obj/item/clothing/neck/roguetown/psicross/eora
 	armor = /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk
 	shirt = /obj/item/clothing/suit/roguetown/armor/gambeson
 	pants = /obj/item/clothing/under/roguetown/chainlegs

@@ -130,11 +130,17 @@
 		"I AM AN INSTRUMENT OF CREATION!",
 	)
 
+//Eora content from Stonekeep
+
 /datum/patron/divine/eora
 	name = "Eora"
-	domain = "Goddess of the Family, Love and Lust"
-	desc = "The Lovely One, her divine gift was that of family and love."
+	domain = "Saint of the Love, Life and Beauty"
+	desc = "Blind love for all, without a shred of hate in her heart"
 	worshippers = "Lovers, Harlots, Doting Grandparents"
+	t0 = /obj/effect/proc_holder/spell/invoked/lesser_heal
+	t1 = /obj/effect/proc_holder/spell/invoked/bud
+	t2 = /obj/effect/proc_holder/spell/invoked/eoracurse
+	t3 = null
 	confess_lines = list(
 		"EORA BRINGS US TOGETHER!",
 		"HER BEAUTY IS EVEN IN THIS TORMENT!",

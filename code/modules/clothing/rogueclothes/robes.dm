@@ -167,3 +167,49 @@
 	flags_inv = HIDEBOOB|HIDETAIL
 	r_sleeve_status = SLEEVE_NORMAL
 	l_sleeve_status = SLEEVE_NORMAL
+
+//Eora content from Stonekeep
+
+/obj/item/clothing/suit/roguetown/shirt/robe/eora
+	slot_flags = ITEM_SLOT_ARMOR
+	name = "eoran robe"
+	desc = "Holy robes, intended for use by followers of Eora"
+	body_parts_covered = CHEST|GROIN|ARMS|LEGS|VITALS
+	icon_state = "eorarobes"
+	icon = 'icons/roguetown/clothing/armor.dmi'
+	mob_overlay_icon = 'icons/roguetown/clothing/onmob/armor.dmi'
+	sleeved = 'icons/roguetown/clothing/onmob/helpers/sleeves_armor.dmi'
+	boobed = TRUE
+	color = null
+	flags_inv = HIDEBOOB
+	r_sleeve_status = SLEEVE_NORMAL
+	l_sleeve_status = SLEEVE_NORMAL
+	var/fanatic_wear = FALSE
+
+/obj/item/clothing/suit/roguetown/shirt/robe/eora/alt
+	name = "open eoran robe"
+	desc = "Used by more radical followers of the Eoran Church"
+	body_parts_covered = null
+	icon_state = "eorastraps"
+	fanatic_wear = TRUE
+
+/obj/item/clothing/suit/roguetown/shirt/robe/eora/attack_right(mob/user)
+	switch(fanatic_wear)
+		if(FALSE)
+			name = "open eoran robe"
+			desc = "Used by more radical followers of the Eoran Church"
+			body_parts_covered = null
+			icon_state = "eorastraps"
+			fanatic_wear = TRUE
+			to_chat(usr, span_warning("Now wearing radically!"))
+		if(TRUE)
+			name = "eoran robe"
+			desc = "Holy robes, intended for use by followers of Eora"
+			body_parts_covered = CHEST|GROIN|ARMS|LEGS|VITALS
+			icon_state = "eorarobes"
+			fanatic_wear = FALSE
+			to_chat(usr, span_warning("Now wearing normally!"))
+	update_icon()
+	if(ismob(loc))
+		var/mob/L = loc
+		L.update_inv_armor()

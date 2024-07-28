@@ -2,7 +2,7 @@
 
 /datum/advclass/paladin
 	name = "Paladin"
-	tutorial = "Paladins are holy warriors who have taken sacred vows to uphold justice and righteousness. Often, they were promised redemption for past sins if they crusaded in the name of the gods."	
+	tutorial = "Paladins are holy warriors who have taken sacred vows to uphold justice and righteousness. Often, they were promised redemption for past sins if they crusaded in the name of the gods."
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
 	outfit = /datum/outfit/job/roguetown/adventurer/paladin
@@ -25,6 +25,8 @@
 			neck = /obj/item/clothing/neck/roguetown/psicross/pestra
 		if("Noc")
 			neck = /obj/item/clothing/neck/roguetown/psicross/noc
+		if("Eora") //Eora content from Stonekeep
+			neck = /obj/item/clothing/neck/roguetown/psicross/eora
 
 
 	H.adjust_blindness(-3)
@@ -32,7 +34,7 @@
 	var/classchoice = input("Choose your archetypes", "Available archetypes") as anything in classes
 
 	switch(classchoice)
-	
+
 		if("Paladin")
 			to_chat(src, span_warning("Paladins are holy warriors who have taken sacred vows to uphold justice and righteousness. Often, they were promised redemption for past sins if they crusaded in the name of the gods."))
 			H.set_blindness(0) // No introduction text due to there being no real difference in Paladin archetypes for now.
@@ -65,7 +67,7 @@
 			beltr = /obj/item/rogueweapon/huntingknife
 			id = /obj/item/clothing/ring/silver
 			cloak = /obj/item/clothing/cloak/tabard/crusader
-			switch(H.patron.name)	
+			switch(H.patron.name)
 				if("Astrata")
 					cloak = /obj/item/clothing/cloak/tabard/crusader/astrata
 				if("Dendor")
@@ -102,7 +104,7 @@
 			H.mind.adjust_skillrank(/datum/skill/combat/whipsflails, 3, TRUE)
 			H.change_stat("perception", 1)
 			H.change_stat("strength", 2)
-			H.change_stat("constitution", 2) 
+			H.change_stat("constitution", 2)
 			H.change_stat("endurance", 1)
 			H.change_stat("speed", -1)
 			armor = /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk
@@ -113,7 +115,7 @@
 			beltr = /obj/item/rogueweapon/huntingknife
 			id = /obj/item/clothing/ring/silver
 			cloak = /obj/item/clothing/cloak/tabard/crusader
-			switch(H.patron.name)	
+			switch(H.patron.name)
 				if("Astrata")
 					cloak = /obj/item/clothing/cloak/tabard/crusader/astrata
 				if("Dendor")
@@ -124,13 +126,15 @@
 					cloak = /obj/item/clothing/cloak/tabard/crusader/pestra
 				if("Noc")
 					cloak = /obj/item/clothing/cloak/tabard/crusader/noc
+				if("Eora") //Eora content from Stonekeep
+					cloak = /obj/item/clothing/cloak/tabard/crusader/eora
 			backr = /obj/item/rogueweapon/flail
 			if(prob(50))
 				l_hand = /obj/item/rogueweapon/shield/wood
 			else
 				l_hand = /obj/item/rogueweapon/shield/tower/metal
 			backl = /obj/item/storage/backpack/rogue/satchel
-		
+
 	ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 	H.dna.species.soundpack_m = new /datum/voicepack/male/knight()
