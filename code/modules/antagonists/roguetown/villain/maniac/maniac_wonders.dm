@@ -156,7 +156,7 @@
 /obj/structure/wonder/proc/mark_victim(var/mob/living/carbon/human/V)
 	var/obj/item/organ/heart/H = V.getorganslot(ORGAN_SLOT_HEART)
 	if(H && !QDELETED(dream_master))
-		if(!H.maniacs)
+		if(!length(H.maniacs))
 			V.add_stress(/datum/stressevent/saw_wonder)
 			V.add_client_colour(/datum/client_colour/maniac_marked)
 		if(!(dream_master in H.maniacs))
