@@ -185,6 +185,8 @@
 /turf/open/water/proc/water_sip_loop(mob/living/user)
 	if(!can_drink_from_this(user))
 		return
+	if(user.doing)
+		return
 	playsound(user, pick('sound/foley/waterwash (1).ogg','sound/foley/waterwash (2).ogg'), 100, FALSE)
 	user.visible_message(span_info("[user] starts to drink from [src]."))
 	while(TRUE)
