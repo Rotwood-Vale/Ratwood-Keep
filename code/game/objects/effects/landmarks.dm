@@ -108,6 +108,12 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	jobspawn_override = list("Vagabond")
 	delete_after_roundstart = FALSE
 
+/obj/effect/landmark/start/mercenarylate
+	name = "Mercenarylate"
+	icon_state = "arrow"
+	jobspawn_override = list("Mercenary")
+	delete_after_roundstart = FALSE
+
 /obj/effect/landmark/start/desertriderlate
 	name = "DesertRiderlate"
 	icon_state = "arrow"
@@ -175,7 +181,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/manorguardsman
-	name = "Man at Arms"
+	name = "Royal Guard"
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/bogmaster

@@ -27,3 +27,4 @@
 		if(get_dist(player, src) > 7)
 			player.playsound_local(get_turf(player), 'modular_hearthstone/sound/items/signalhorn.ogg', 35, FALSE, pressure_affected = FALSE)
 			to_chat(player, span_warning("I hear the horn alarm!"))
+

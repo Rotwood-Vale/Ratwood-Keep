@@ -55,6 +55,9 @@
 /obj/item/clothing/under/roguetown/tights/black
 	color = CLOTHING_BLACK
 
+/obj/item/clothing/under/roguetown/tights/red
+	color = CLOTHING_RED
+
 /obj/item/clothing/under/roguetown/tights/purple
 	color = CLOTHING_PURPLE
 
