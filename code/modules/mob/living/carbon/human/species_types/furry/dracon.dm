@@ -77,6 +77,12 @@
 		/datum/body_marking_set/tiger_dark,
 	)
 	body_markings = list(
+		/datum/body_marking/plain,
+		/datum/body_marking/tiger,
+		/datum/body_marking/tiger/dark,
+		/datum/body_marking/sock,
+		/datum/body_marking/socklonger,
+		/datum/body_marking/tips,
 		/datum/body_marking/bellyscale,
 		/datum/body_marking/bellyscaleslim,
 		/datum/body_marking/bellyscaleslimsmooth,
@@ -85,6 +91,7 @@
 		/datum/body_marking/tiger/dark,
 		/datum/body_marking/drake_eyes,
 		/datum/body_marking/tonage,
+		/datum/body_marking/spotted
 	)
 	languages = list(
 		/datum/language/common,
