@@ -150,12 +150,10 @@
 		if("toggle_missing")
 			if(customizer.allows_disabling)
 				entry.disabled = !entry.disabled
-<<<<<<< HEAD
-=======
 			if(ishuman(user)) // Vrell - idk why this is needed here but it fixes shit.
 				var/mob/living/carbon/human/humanized = user
 				humanized.update_body_parts(TRUE)
->>>>>>> 028258ac6 (Genitals Part 3: Bug Fix Part 2 (#52))
+// 028258ac6 (Genitals Part 3: Bug Fix Part 2 (#52))
 		if("change_choice")
 			var/list/choice_list = list()
 			for(var/choice_type in customizer.customizer_choices)
@@ -213,7 +211,7 @@
 		return entry.eye_color
 	else
 		return "FFFFFF"
-	
+
 /datum/preferences/proc/get_chest_color()
 	var/list/zone_list = body_markings[BODY_ZONE_CHEST]
 	if(!zone_list)
