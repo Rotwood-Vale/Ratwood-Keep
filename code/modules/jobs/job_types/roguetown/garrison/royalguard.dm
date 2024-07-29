@@ -17,7 +17,7 @@
 	advclass_cat_rolls = list(CTAG_ROYALGUARD = 20)
 
 	give_bank_account = 22
-	min_pq = 0
+	min_pq = 1
 	max_pq = null
 
 	cmode_music = 'sound/music/combat_guard2.ogg'
@@ -53,7 +53,7 @@
 	neck = /obj/item/clothing/neck/roguetown/gorget
 	shirt = /obj/item/clothing/suit/roguetown/armor/chainmail
 	armor = /obj/item/clothing/suit/roguetown/armor/plate/half
-	shoes = /obj/item/clothing/shoes/roguetown/boots/leather
+	shoes = /obj/item/clothing/shoes/roguetown/boots/armoriron
 	beltl = /obj/item/keyring/guardcastle
 	belt = /obj/item/storage/belt/rogue/leather/black
 	backr = /obj/item/storage/backpack/rogue/satchel/black
@@ -105,7 +105,7 @@
 	// Iron mace + tower shield
 	else
 		beltr = /obj/item/rogueweapon/mace
-		backl = /obj/item/rogueweapon/shield/tower
+		backl = /obj/item/rogueweapon/shield/buckler
 	
 	backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger/steel/special = 1, /obj/item/rope/chain = 1, /obj/item/signal_horn = 1)
 
@@ -149,12 +149,12 @@
 	H.change_stat("endurance", 2)
 	// Flail + tower shield
 	if(prob (33))
-		beltr = /obj/item/rogueweapon/halberd/bardiche
-		backl = /obj/item/rogueweapon/shield/tower
+		beltr = /obj/item/rogueweapon/flail
+		backl = /obj/item/rogueweapon/shield/buckler
 	// Regular sword + tower shield
 	else if(prob (33))
 		beltr = /obj/item/rogueweapon/sword
-		backl = /obj/item/rogueweapon/shield/tower
+		backl = /obj/item/rogueweapon/shield/buckler
 	// Bastard sword (traditional knight loadout; can be 1-handed but far better 2-handed. Higher stam drain.)
 	else
 		backl = /obj/item/rogueweapon/sword/long
