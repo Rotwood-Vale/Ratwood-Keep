@@ -49,7 +49,7 @@
 		ORGAN_SLOT_TAIL = /obj/item/organ/tail/lizard,
 		ORGAN_SLOT_SNOUT = /obj/item/organ/snout/lizard,
 		ORGAN_SLOT_TAIL_FEATURE = /obj/item/organ/tail_feature/lizard_spines,
-		ORGAN_SLOT_FRILLS = /obj/item/organ/frills/lizard,
+		ORGAN_SLOT_FRILLS = /obj/item/organ/frills/anthro,
 		ORGAN_SLOT_HORNS = /obj/item/organ/horns,
 		ORGAN_SLOT_WINGS = /obj/item/organ/wings/dracon,
 		)
@@ -62,7 +62,7 @@
 		/datum/customizer/organ/tail/lizard,
 		/datum/customizer/organ/tail_feature/lizard_spines,
 		/datum/customizer/organ/snout/lizard,
-		/datum/customizer/organ/frills/lizard,
+		/datum/customizer/organ/frills/anthro,
 		/datum/customizer/organ/horns/humanoid,
 		/datum/customizer/organ/testicles/anthro,
 		/datum/customizer/organ/penis/lizard,
