@@ -7,7 +7,7 @@
 	spawn_positions = 1
 <<<<<<< HEAD
 	allowed_sexes = list(MALE)
-	allowed_races = RACES_ALL_KINDS
+	allowed_races = RACES_TOLERATED_UP
 =======
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
