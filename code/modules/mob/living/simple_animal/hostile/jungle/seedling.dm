@@ -158,7 +158,7 @@
 			final.Scale(1,32)
 			final.Translate(0,512)
 			K.transform = final
-			living_target.adjustFireLoss(30)
+			living_target.adjustFireLoss(1)
 			living_target.adjust_fire_stacks(0.2)//Just here for the showmanship
 			living_target.IgniteMob()
 			playsound(living_target,'sound/blank.ogg', 50, TRUE)
