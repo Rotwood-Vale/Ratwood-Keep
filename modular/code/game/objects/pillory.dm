@@ -13,8 +13,9 @@
 	density = TRUE
 	layer = ABOVE_ALL_MOB_LAYER
 	plane = GAME_PLANE_UPPER
-	var/locked = 0
+	var/locked = FALSE
 	var/base_icon = "pillory_single"
+	var/list/lockid = list()
 
 /obj/structure/pillory/double
 	icon_state = "pillory_double"
@@ -38,9 +39,11 @@
 	if(user in src)
 		to_chat(user, span_warning("I can't reach the lock!"))
 		return
+	if(!lockid.len)
+		return
 	if(istype(P, /obj/item/roguekey))
 		var/obj/item/roguekey/K = P
-		if(K.lockid == "dungeon" || K.lockid == "garrison")
+		if(K.lockid in lockid)
 			togglelock(user)
 			return attack_hand(user)
 		else
@@ -50,7 +53,7 @@
 	if(istype(P, /obj/item/keyring))
 		var/obj/item/keyring/K = P
 		for(var/obj/item/roguekey/KE in K.keys)
-			if(KE.lockid == "dungeoneer" || KE.lockid == "garrison")
+			if(KE.lockid in lockid)
 				togglelock(user)
 				return attack_hand(user)
 
@@ -60,12 +63,12 @@
 		user.visible_message(span_warning("[user] unlocks [src]."), \
 			span_notice("I unlock [src]."))
 		playsound(src, 'sound/foley/doors/lock.ogg', 100)
-		locked = 0
+		locked = FALSE
 	else
 		user.visible_message(span_warning("[user] locks [src]."), \
 			span_notice("I lock [src]."))
 		playsound(src, 'sound/foley/doors/lock.ogg', 100)
-		locked = 1
+		locked = TRUE
 
 /obj/structure/pillory/buckle_mob(mob/living/M, force = FALSE, check_loc = TRUE)
 	if (!anchored)
@@ -120,7 +123,7 @@
 		if(user.STASTR >= 18)
 			if(do_after(user, 25))
 				user.visible_message(span_warning("[user] breaks [src] open!"))
-				locked = 0
+				locked = FALSE
 				..()
 		else
 			to_chat(usr, span_warning("Unlock it first!"))
@@ -131,4 +134,3 @@
 	..()
 
 #undef PILLORY_HEAD_OFFSET
-#undef PILLORY_LAYER_DIFF
