@@ -65,6 +65,7 @@
 		H.change_stat("strength", 2)
 		H.change_stat("speed", 2)
 		H.change_stat("perception", 1)
+		H.cmode_music = 'sound/music/combat_clergy.ogg'
 		if(H.mind.has_antag_datum(/datum/antagonist))
 			return
 		var/datum/antagonist/new_antag = new /datum/antagonist/purishep()

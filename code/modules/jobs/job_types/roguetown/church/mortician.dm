@@ -53,6 +53,7 @@
 		H.change_stat("speed", 1)
 	ADD_TRAIT(H, TRAIT_NOSTINK, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_SOUL_EXAMINE, TRAIT_GENERIC)
+	H.cmode_music = 'sound/music/combat_clergy.ogg'
 	var/datum/devotion/C = new /datum/devotion(H, H.patron)
 	C.grant_spells(H)
 	H.verbs += list(/mob/living/carbon/human/proc/devotionreport, /mob/living/carbon/human/proc/clericpray)
