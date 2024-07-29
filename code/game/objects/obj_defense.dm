@@ -227,6 +227,9 @@ GLOBAL_DATUM_INIT(acid_overlay, /mutable_appearance, mutable_appearance('icons/e
 
 ///called when the obj is destroyed by fire
 /obj/proc/burn()
+	for(var/mob/living/carbon/human/H in viewers(2, src))
+		if(H.has_flaw(/datum/charflaw/addiction/pyromaniac))
+			H.sate_addiction()
 	if(resistance_flags & ON_FIRE)
 		SSfire_burning.processing -= src
 	deconstruct(FALSE)

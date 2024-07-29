@@ -184,7 +184,7 @@
 		qdel(src)
 		return
 
-	for(var/mob/living/carbon/human/H in view(2, H))
+	for(var/mob/living/carbon/human/H in viewers(2, get_turf(src)))
 		if(H.has_flaw(/datum/charflaw/addiction/pyromaniac))
 			H.sate_addiction()
 
