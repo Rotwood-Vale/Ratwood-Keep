@@ -78,8 +78,6 @@
 	)
 	body_markings = list(
 		/datum/body_marking/plain,
-		/datum/body_marking/tiger,
-		/datum/body_marking/tiger/dark,
 		/datum/body_marking/sock,
 		/datum/body_marking/socklonger,
 		/datum/body_marking/tips,
