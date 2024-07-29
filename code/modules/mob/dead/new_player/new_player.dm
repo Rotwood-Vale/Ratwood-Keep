@@ -392,11 +392,12 @@ GLOBAL_LIST_INIT(roleplay_readme, world.file2list("strings/rt/rp_prompt.txt"))
 	if(CONFIG_GET(flag/usewhitelist))
 		if(job.whitelist_req && !client.whitelisted())
 			return JOB_UNAVAILABLE_GENERIC
-	if(!job.bypass_jobban)
-		if(is_banned_from(ckey, rank))
-			return JOB_UNAVAILABLE_BANNED
-		if(client.blacklisted())
-			return JOB_UNAVAILABLE_BANNED
+	if(is_role_banned(client.ckey, job.title))
+		return JOB_UNAVAILABLE_BANNED
+	if(job.banned_leprosy && is_misc_banned(client.ckey, BAN_MISC_LEPROSY))
+		return JOB_UNAVAILABLE_BANNED
+	if(job.banned_lunatic && is_misc_banned(client.ckey, BAN_MISC_LUNATIC))
+		return JOB_UNAVAILABLE_BANNED
 	if(!job.player_old_enough(client))
 		return JOB_UNAVAILABLE_ACCOUNTAGE
 	if(job.required_playtime_remaining(client))
@@ -464,6 +465,10 @@ GLOBAL_LIST_INIT(roleplay_readme, world.file2list("strings/rt/rp_prompt.txt"))
 
 	if(SSticker.late_join_disabled)
 		alert(src, "Something went bad.")
+		return FALSE
+	
+	if(!client.prefs.allowed_respawn())
+		to_chat(src, span_boldwarning("You cannot respawn."))
 		return FALSE
 /*
 	var/arrivals_docked = TRUE
@@ -688,14 +693,6 @@ GLOBAL_LIST_INIT(roleplay_readme, world.file2list("strings/rt/rp_prompt.txt"))
 	close_spawn_windows()
 
 	var/mob/living/carbon/human/H = new(loc)
-
-	var/frn = CONFIG_GET(flag/force_random_names)
-	if(!frn)
-		frn = is_banned_from(ckey, "Appearance")
-		if(QDELETED(src))
-			return
-	if(frn)
-		client.prefs.random_character()
 
 	var/is_antag
 	if(mind in GLOB.pre_setup_antags)

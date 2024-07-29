@@ -12,9 +12,6 @@
 /datum/emote/living/subtle/run_emote(mob/user, params, type_override = null, intentional = FALSE)
 	if(!can_run_emote(user, TRUE, intentional))
 		return FALSE
-	if(is_banned_from(user.ckey, "Emote"))
-		to_chat(user, "<span class='boldwarning'>I cannot send custom emotes (banned).</span>")
-		return FALSE
 	else if(QDELETED(user))
 		return FALSE
 	else if(user.client && user.client.prefs.muted & MUTE_IC)

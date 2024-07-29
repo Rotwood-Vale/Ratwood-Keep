@@ -125,6 +125,8 @@
 				. += span_userdanger("A MONSTER!")
 			if(mind.assigned_role == "Lunatic")
 				. += span_userdanger("LUNATIC!")
+			if(HAS_TRAIT(src, TRAIT_PSYCHOKILLER))
+				. += span_userdanger("PSYCHO!")
 
 		if(HAS_TRAIT(src, TRAIT_MANIAC_AWOKEN))
 			. += span_userdanger("MANIAC!")
@@ -134,7 +136,7 @@
 		else if(HAS_TRAIT(src, TRAIT_COMMIE) && HAS_TRAIT(user, TRAIT_COMMIE))
 			. += span_notice("Comrade!")
 
-	if(leprosy == 1)
+	if(HAS_TRAIT(src, TRAIT_LEPROSY))
 		. += span_necrosis("A LEPER...")
 
 	if(user != src)

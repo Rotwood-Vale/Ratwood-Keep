@@ -383,6 +383,14 @@
 	// Ultimate randomizing code right here
 	for(var/i in GLOB.new_player_list)
 		var/mob/dead/new_player/player = i
+		if(is_misc_banned(player.ckey, BAN_MISC_LEPROSY))
+			continue
+		if(is_misc_banned(player.ckey, BAN_MISC_LUNATIC))
+			continue
+		if(is_antag_banned(player.ckey, role))
+			continue
+		if(is_antag_banned(player.ckey, ROLE_SYNDICATE)) // "Traitor" ban applies to all antags currently
+			continue
 		if(player.ready == PLAYER_READY_TO_PLAY && player.check_preferences())
 //			if(player.client && player.client.whitelisted() && !player.client.blacklisted())
 			players += player
@@ -397,7 +405,6 @@
 				if(get_playerquality(player.ckey) <= -10)
 					continue
 			if(role in player.client.prefs.be_special)
-//				if(!is_banned_from(player.ckey, list(role, ROLE_SYNDICATE)) && !QDELETED(player))
 				candidates += player.mind				// Get a list of all the people who want to be the antagonist for this round
 				continue
 			if(role == ROLE_NBEAST)

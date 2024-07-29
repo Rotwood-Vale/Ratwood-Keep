@@ -19,7 +19,6 @@
 #define THERMAL_PROTECTION_HAND_RIGHT	0.025
 
 /mob/living/carbon/human
-	var/leprosy = 2
 	var/allmig_reward = 0
 
 /mob/living/carbon/human/Life()
@@ -66,18 +65,8 @@
 									if(C.allmig)
 										if(allmig_reward > 3)
 											adjust_triumphs(1)
-			if(leprosy == 1)
-				adjustToxLoss(2)
-			else if(leprosy == 2)
-				if(client)
-					if(check_blacklist(client.ckey))
-						ADD_TRAIT(src, TRAIT_NOPAIN, TRAIT_GENERIC)
-						leprosy = 1
-						var/obj/item/bodypart/B = get_bodypart(BODY_ZONE_HEAD)
-						if(B)
-							B.sellprice = rand(16, 33)
-					else
-						leprosy = 3
+			if(HAS_TRAIT(src, TRAIT_LEPROSY))
+				adjustToxLoss(0.2)
 			//heart attack stuff
 			handle_heart()
 			handle_liver()
