@@ -1,6 +1,6 @@
 //Look Sir, free crabs!
 /mob/living/simple_animal/hostile/retaliate/rogue/mudcrab
-	name = "mudcrab"
+	name = "bogcrab"
 	desc = ""
 	icon_state = "mudcrab"
 	icon_living = "mudcrab"
@@ -10,7 +10,7 @@
 	emote_see = list("clacks.")
 	speak_chance = 1
 	turns_per_move = 5
-	butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat/crabmeat = 4)
+	butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat/crabmeat = 4, /obj/item/natural/carapace = 2)
 	faction = list("crabs")
 	response_help_continuous = "pets"
 	response_help_simple = "pet"

@@ -24,6 +24,17 @@
 	color = "#5c5243"
 	sellprice = 40
 
+/obj/item/natural/carapace
+	name = "carapace"
+	icon_state = "carapace"
+	desc = "Carapace from one of Gott's watery creachers."
+	force = 0
+	throwforce = 0
+	w_class = WEIGHT_CLASS_SMALL
+	resistance_flags = FLAMMABLE
+	drop_sound = 'sound/foley/dropsound/food_drop.ogg'
+	sellprice = 20
+
 //RTD make this a storage item and make clickign on animals with things put it in storage
 /obj/item/natural/saddle
 	name = "saddle"

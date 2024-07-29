@@ -14,9 +14,24 @@
 	armor = list("blunt" = 90, "slash" = 100, "stab" = 80, "bullet" = 100, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
 	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT, BCLASS_TWIST)
 	blocksound = PLATEHIT
-	max_integrity = 300
+	max_integrity = 150
 	anvilrepair = /datum/skill/craft/armorsmithing
 	smeltresult = /obj/item/ingot/steel
+
+/obj/item/clothing/wrists/roguetown/bracers/carapace
+	name = "carapace bracers"
+	desc = "Fiber bracers lined with carapace to protect your wrists"
+	body_parts_covered = ARMS
+	icon_state = "carapace_bracers"
+	item_state = "carapace_bracers"
+	armor = list("blunt" = 60, "slash" = 100, "stab" = 60, "bullet" = 100, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 30, "acid" = 0)
+	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT, BCLASS_TWIST)
+	blocksound = PLATEHIT
+	drop_sound = 'sound/foley/dropsound/chain_drop.ogg'
+	max_integrity = 150
+	anvilrepair = null
+	smeltresult = /obj/item/ash
+	sewrepair = TRUE
 
 /obj/item/clothing/wrists/roguetown/bracers/leather
 	name = "leather bracers"

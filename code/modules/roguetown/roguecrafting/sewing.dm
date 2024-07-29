@@ -34,6 +34,12 @@
 	reqs = list(/obj/item/natural/cloth = 1)
 	craftdiff = 0
 
+/datum/crafting_recipe/roguetown/sewing/halfcloak
+	name = "halfcloak"
+	result = list(/obj/item/clothing/cloak/half)
+	reqs = list(/obj/item/natural/cloth = 1)
+	craftdiff = 0
+
 
 /* craftdif of 1 */
 

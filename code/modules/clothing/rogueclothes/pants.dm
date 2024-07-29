@@ -180,6 +180,23 @@
 	r_sleeve_status = SLEEVE_NOMOD
 	l_sleeve_status = SLEEVE_NOMOD
 
+/obj/item/clothing/under/roguetown/carapacelegs
+	name = "carapace chausses"
+	desc = "aquatic plated armor to protect the legs."
+	gender = PLURAL
+	icon_state = "carapace_legs"
+	item_state = "carapace_legs"
+	smeltresult = /obj/item/ash
+	sewrepair = TRUE
+	anvilrepair = null
+	armor = list("blunt" = 60, "slash" = 100, "stab" = 60, "bullet" = 50, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 30, "acid" = 0)
+	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT)
+	blocksound = PLATEHIT
+	var/do_sound = FALSE
+	drop_sound = 'sound/foley/dropsound/chain_drop.ogg'
+	r_sleeve_status = SLEEVE_NOMOD
+	l_sleeve_status = SLEEVE_NOMOD
+
 /obj/item/clothing/under/roguetown/chainlegs/skirt
 	name = "chain skirt"
 	icon_state = "chain_skirt"
@@ -189,6 +206,11 @@
 	name = "plated skirt"
 	icon_state = "plate_skirt"
 	item_state = "plate_skirt"
+
+/obj/item/clothing/under/roguetown/carapacelegs/skirt
+	name = "carapace plated skirt"
+	icon_state = "carapace_skirt"
+	item_state = "carapace_skirt"
 
 /obj/item/clothing/under/roguetown/loincloth
 	name = "loincloth"
