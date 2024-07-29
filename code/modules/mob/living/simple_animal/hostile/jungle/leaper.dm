@@ -4,17 +4,17 @@
 //It has no melee attack, and its damage comes from the toxin in its bubbles and its crushing leap.
 //Its eyes will turn red to signal an imminent attack!
 /mob/living/simple_animal/hostile/jungle/leaper
-	name = "leaper"
+	name = "Rabid Drake"
 	desc = ""
-	icon = 'icons/mob/jungle/leaper.dmi'
-	icon_state = "leaper"
-	icon_living = "leaper"
-	icon_dead = "leaper_dead"
+	icon = 'modular/icons/mob/96x96/ratwood_dragon.dmi'
+	icon_state = "dragonclipped"
+	icon_living = "dragonclipped"
+	icon_dead = "dragon_dead"
 	mob_biotypes = MOB_ORGANIC|MOB_BEAST
 	maxHealth = 300
 	health = 300
 	ranged = TRUE
-	projectiletype = /obj/projectile/leaper
+	projectiletype = /obj/projectile/rock
 	projectilesound = 'sound/blank.ogg'
 	ranged_cooldown_time = 30
 	pixel_x = -16
@@ -28,10 +28,10 @@
 
 	footstep_type = FOOTSTEP_MOB_HEAVY
 
-/obj/projectile/leaper
+/obj/projectile/rock
 	name = "leaper bubble"
-	icon_state = "leaper"
-	paralyze = 50
+	icon_state = "rock"
+	paralyze = 30
 	damage = 0
 	range = 7
 	hitsound = 'sound/blank.ogg'
@@ -65,7 +65,7 @@
 	new /obj/effect/decal/cleanable/leaper_sludge(get_turf(src))
 
 /obj/effect/decal/cleanable/leaper_sludge
-	name = "leaper sludge"
+	name = "dragon blood"
 	desc = ""
 	icon = 'icons/effects/tomatodecal.dmi'
 	icon_state = "tomato_floor1"
@@ -93,7 +93,7 @@
 		var/mob/living/L = AM
 		if(!istype(L, /mob/living/simple_animal/hostile/jungle/leaper))
 			playsound(src,'sound/blank.ogg',50, TRUE, -1)
-			L.Paralyze(50)
+			L.Paralyze(30)
 			if(iscarbon(L))
 				var/mob/living/carbon/C = L
 				C.reagents.add_reagent(/datum/reagent/toxin/leaper_venom, 5)
@@ -254,12 +254,12 @@
 /mob/living/simple_animal/hostile/jungle/leaper/update_icons()
 	. = ..()
 	if(stat)
-		icon_state = "leaper_dead"
+		icon_state = "dragon_dead"
 		return
 	if(ranged_cooldown <= world.time)
 		if(AIStatus == AI_ON && projectile_ready || ckey)
-			icon_state = "leaper_alert"
+			icon_state = "dragonclipped"
 			return
-	icon_state = "leaper"
+	icon_state = "dragonclipped"
 
 #undef PLAYER_HOP_DELAY
