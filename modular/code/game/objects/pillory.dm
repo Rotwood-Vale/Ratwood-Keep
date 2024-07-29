@@ -13,6 +13,7 @@
 	density = TRUE
 	layer = ABOVE_ALL_MOB_LAYER
 	plane = GAME_PLANE_UPPER
+	var/latched = FALSE
 	var/locked = FALSE
 	var/base_icon = "pillory_single"
 	var/list/lockid = list()
@@ -25,6 +26,19 @@
 	icon_state = "pillory_reinforced"
 	base_icon = "pillory_reinforced"
 
+/obj/structure/pillory/town_square
+	lockid = list("keep_dungeon", "keep_barracks", "town_dungeon", "town_barracks", "bog_dungeon", "bog_barracks", "church")
+
+/obj/structure/pillory/reinforced/keep_dungeon
+	lockid = list("keep_dungeon")
+
+/obj/structure/pillory/reinforced/town_dungeon
+	lockid = list("town_dungeon")
+
+/obj/structure/pillory/reinforced/bog_dungeon
+	lockid = list("bog_dungeon")
+
+
 /obj/structure/pillory/Initialize()
 	LAZYINITLIST(buckled_mobs)
 	. = ..()
@@ -32,20 +46,34 @@
 /obj/structure/pillory/examine(mob/user)
 	. = ..()
 
-	var/msg = "It is [locked ? "locked." : "unlocked."]<br/>"
+	var/msg = "It is [latched ? "latched" : "unlatched"] and [locked ? "locked." : "unlocked."]<br/>"
 	. += msg
 
+/obj/structure/pillory/attack_right(mob/living/user)
+	. = ..()
+	if(!buckled_mobs.len)
+		to_chat(user, span_warning("What's the point of latching it with nobody inside?"))
+		return
+	if(user in buckled_mobs)
+		to_chat(user, span_warning("I can't reach the latch!"))
+		return
+	if(locked)
+		to_chat(usr, span_warning("Unlock it first!"))
+		return
+	togglelatch(user)
+	
 /obj/structure/pillory/attackby(obj/item/P, mob/user, params)
-	if(user in src)
+	if(user in buckled_mobs)
 		to_chat(user, span_warning("I can't reach the lock!"))
 		return
-	if(!lockid.len)
+	if(!latched)
+		to_chat(user, span_warning("It's not latched shut!"))
 		return
 	if(istype(P, /obj/item/roguekey))
 		var/obj/item/roguekey/K = P
 		if(K.lockid in lockid)
 			togglelock(user)
-			return attack_hand(user)
+			return
 		else
 			to_chat(user, span_warning("Wrong key."))
 			playsound(src, 'sound/foley/doors/lockrattle.ogg', 100)
@@ -55,10 +83,25 @@
 		for(var/obj/item/roguekey/KE in K.keys)
 			if(KE.lockid in lockid)
 				togglelock(user)
-				return attack_hand(user)
+				return
+
+/obj/structure/pillory/proc/togglelatch(mob/living/user, silent)
+	user.changeNext_move(CLICK_CD_MELEE)
+	if(locked)
+		user.visible_message(span_warning("[user] unlatches [src]."), \
+			span_notice("I unlatch [src]."))
+		playsound(src, 'sound/foley/doors/lock.ogg', 100)
+		latched = FALSE
+	else
+		user.visible_message(span_warning("[user] latches [src]."), \
+			span_notice("I latch [src]."))
+		playsound(src, 'sound/foley/doors/lock.ogg', 100)
+		latched = TRUE
 
 /obj/structure/pillory/proc/togglelock(mob/living/user, silent)
 	user.changeNext_move(CLICK_CD_MELEE)
+	if (!latched)
+		to_chat(user, span_warning("\The [src] is not latched shut."))
 	if(locked)
 		user.visible_message(span_warning("[user] unlocks [src]."), \
 			span_notice("I unlock [src]."))
@@ -119,11 +162,12 @@
 	..()
 
 /obj/structure/pillory/unbuckle_mob(mob/living/user)
-	if(locked)
+	if(latched)
 		if(user.STASTR >= 18)
 			if(do_after(user, 25))
 				user.visible_message(span_warning("[user] breaks [src] open!"))
 				locked = FALSE
+				latched = FALSE
 				..()
 		else
 			to_chat(usr, span_warning("Unlock it first!"))

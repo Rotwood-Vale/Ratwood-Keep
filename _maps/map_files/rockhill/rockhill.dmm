@@ -365,6 +365,10 @@
 	},
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors/town)
+"axD" = (
+/obj/structure/pillory/reinforced/town_dungeon,
+/turf/open/floor/rogue/concrete,
+/area/rogue/indoors/town/garrison)
 "axG" = (
 /obj/structure/table/wood{
 	dir = 1;
@@ -3850,6 +3854,10 @@
 	},
 /turf/open/floor/carpet/red,
 /area/rogue/indoors/town/church/chapel)
+"ezV" = (
+/obj/structure/pillory/reinforced/bog_dungeon,
+/turf/open/floor/rogue/blocks,
+/area/rogue/under/town/basement)
 "eAr" = (
 /obj/structure/table/wood,
 /turf/open/floor/rogue/blocks/stonered,
@@ -5543,6 +5551,10 @@
 	},
 /turf/open/floor/rogue/church,
 /area/rogue/indoors/town/church/chapel)
+"gGL" = (
+/obj/structure/pillory/town_square,
+/turf/open/floor/rogue/wood,
+/area/rogue/outdoors/town)
 "gGN" = (
 /obj/machinery/light/rogue/wallfire/candle/r,
 /turf/open/floor/rogue/wood,
@@ -6200,9 +6212,9 @@
 "hpz" = (
 /obj/structure/closet/crate/chest,
 /obj/machinery/light/rogue/wallfire/candle/r,
-/obj/item/reagent_containers/food/snacks/egg/loaded,
-/obj/item/reagent_containers/food/snacks/egg/loaded,
-/obj/item/reagent_containers/food/snacks/egg/loaded,
+/obj/item/reagent_containers/food/snacks/egg,
+/obj/item/reagent_containers/food/snacks/egg,
+/obj/item/reagent_containers/food/snacks/egg,
 /obj/item/reagent_containers/powder/salt,
 /obj/item/reagent_containers/powder/salt,
 /obj/item/reagent_containers/powder/salt,
@@ -6211,16 +6223,16 @@
 	lockid = "keep_armory"
 	},
 /obj/machinery/light/rogue/wallfire/candle/r,
-/obj/item/reagent_containers/food/snacks/egg/loaded,
-/obj/item/reagent_containers/food/snacks/egg/loaded,
-/obj/item/reagent_containers/food/snacks/egg/loaded,
+/obj/item/reagent_containers/food/snacks/egg,
+/obj/item/reagent_containers/food/snacks/egg,
+/obj/item/reagent_containers/food/snacks/egg,
 /obj/structure/closet/crate/chest{
 	lockid = "keep_armory"
 	},
 /obj/machinery/light/rogue/wallfire/candle/r,
-/obj/item/reagent_containers/food/snacks/egg/loaded,
-/obj/item/reagent_containers/food/snacks/egg/loaded,
-/obj/item/reagent_containers/food/snacks/egg/loaded,
+/obj/item/reagent_containers/food/snacks/egg,
+/obj/item/reagent_containers/food/snacks/egg,
+/obj/item/reagent_containers/food/snacks/egg,
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/manor)
 "hpF" = (
@@ -7091,26 +7103,6 @@
 	icon_state = "vertw"
 	},
 /area/rogue/outdoors/beach)
-"iqB" = (
-/obj/structure/closet/crate/chest,
-/obj/machinery/light/rogue/wallfire/candle/r,
-/obj/item/reagent_containers/food/snacks/egg,
-/obj/item/reagent_containers/food/snacks/egg,
-/obj/item/reagent_containers/food/snacks/egg,
-/obj/item/reagent_containers/powder/salt,
-/obj/item/reagent_containers/powder/salt,
-/obj/item/reagent_containers/powder/salt,
-/obj/item/reagent_containers/powder/salt,
-/turf/open/floor/rogue/wood,
-/area/rogue/indoors/town/manor)
-"iqY" = (
-/obj/structure/closet/crate/chest{
-	locked = 1;
-	lockid = "dungeon"
-	},
-/obj/item/rogueweapon/sword/long/exe/cloth,
-/turf/open/floor/rogue/concrete,
-/area/rogue/under/town/basement)
 "irF" = (
 /obj/machinery/light/rogue/wallfire/candle{
 	pixel_x = 32;
@@ -18309,6 +18301,10 @@
 	icon_state = "horzw"
 	},
 /area/rogue/under/cavewet/bogcaves)
+"wIj" = (
+/obj/structure/pillory/reinforced/keep_dungeon,
+/turf/open/floor/rogue/blocks,
+/area/rogue/under/town/basement)
 "wJw" = (
 /obj/structure/fluff/walldeco/chains,
 /turf/open/floor/rogue/ruinedwood{
@@ -71910,7 +71906,7 @@ ida
 cBf
 cBf
 cBf
-cBf
+ezV
 csU
 txa
 whb
@@ -181923,7 +181919,7 @@ txa
 iho
 cBf
 txa
-cBf
+pRt
 rjZ
 cDr
 cDr
@@ -183131,9 +183127,9 @@ iTw
 dCo
 cBf
 iTw
-cBf
+wIj
 iTw
-pRt
+cBf
 txa
 vRu
 vRu
@@ -291690,7 +291686,7 @@ wVI
 wVI
 cXf
 cXf
-cXf
+gGL
 gLw
 wbg
 rET
@@ -292494,7 +292490,7 @@ wbg
 wVI
 cXf
 cXf
-cXf
+gGL
 gLw
 wbg
 cka
@@ -304560,7 +304556,7 @@ hpj
 ssG
 hNW
 hNW
-hNW
+axD
 hNW
 hNW
 tNj
