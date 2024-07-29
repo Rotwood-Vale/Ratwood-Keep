@@ -13,7 +13,7 @@
 	bypass_lastclass = TRUE
 	bypass_jobban = FALSE
 
-	advclass_cat_rolls = list(CTAG_PILGRIM = 10, CTAG_ADVENTURER = 5)
+	advclass_cat_rolls = list(CTAG_PILGRIM = 10)
 	PQ_boost_divider = 10
 
 	display_order = JDO_PILGRIM
@@ -23,8 +23,6 @@
 	advjob_examine = TRUE
 	always_show_on_latechoices = TRUE
 	same_job_respawn_delay = 0
-	
-	allow_custom_genitals = TRUE //Vrell - This prevents the job itself from culling the parts since advanced classes determine if they are allowed
 
 /datum/job/roguetown/pilgrim/after_spawn(mob/living/L, mob/M, latejoin = TRUE)
 	..()

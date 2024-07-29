@@ -482,10 +482,6 @@ GLOBAL_LIST_INIT(roleplay_readme, world.file2list("strings/rt/rp_prompt.txt"))
 	SSticker.queued_players -= src
 	SSticker.queue_delay = 4
 
-	// Jus remove them from drifter queue if they were in it. 
-	// This shit shouldn't be firing before the round starts anyways sooo this is one of the only ways in
-	SSrole_class_handler.cleanup_drifter_queue(client)
-
 	testing("basedtest 1")
 
 	SSjob.AssignRole(src, rank, 1)
@@ -595,7 +591,6 @@ GLOBAL_LIST_INIT(roleplay_readme, world.file2list("strings/rt/rp_prompt.txt"))
 	omegalist += list(GLOB.peasant_positions)
 	omegalist += list(GLOB.mercenary_positions)
 	omegalist += list(GLOB.youngfolk_positions)
-	omegalist += list(GLOB.goblin_positions)
 
 	if(istype(SSticker.mode, /datum/game_mode/chaosmode))
 		var/datum/game_mode/chaosmode/C = SSticker.mode

@@ -553,12 +553,12 @@
 			var/obj/item/storage/this_item = parent
 			//Vrell - since hammering is instant, i gotta find another option than the double click thing that needle has for a bypass.
 			//Thankfully, IIRC, no hammerable containers can hold a hammer, so not an issue ATM. For that same reason, this here is largely semi future-proofing.
-			if(this_item.anvilrepair != null && this_item.max_integrity && (this_item.obj_integrity < this_item.max_integrity) && isturf(this_item.loc))
+			if(this_item.anvilrepair != null && this_item.max_integrity && !this_item.obj_broken && (this_item.obj_integrity < this_item.max_integrity) && isturf(this_item.loc))
 				return FALSE
 		if(istype(I, /obj/item/needle))
 			var/obj/item/needle/sewer = I
 			var/obj/item/storage/this_item = parent
-			if(sewer.can_repair && this_item.sewrepair && this_item.max_integrity && this_item.obj_integrity < this_item.max_integrity && M.mind.get_skill_level(/datum/skill/misc/sewing) >= this_item.required_repair_skill && this_item.ontable() && !being_repaired)
+			if(sewer.can_repair && this_item.sewrepair && this_item.max_integrity && !this_item.obj_broken && this_item.obj_integrity < this_item.max_integrity && M.mind.get_skill_level(/datum/skill/misc/sewing) >= this_item.required_repair_skill && this_item.ontable() && !being_repaired)
 				being_repaired = TRUE
 				return FALSE
 	being_repaired = FALSE

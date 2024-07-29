@@ -1,15 +1,12 @@
 //challenge class, spawns with no items at all
 /datum/advclass/nudist
 	name = "Nudist"
-	tutorial = "You have come to this land wholly unprepared!\nSurvival will be a true TRIUMPH. \
-		\
-		This role allows for full customization."
+	tutorial = "You have come to this land wholly unprepared!\nSurvival will be a true TRIUMPH."
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
 	outfit = /datum/outfit/job/roguetown/adventurer/nudist
 	traits_applied = list(TRAIT_NUDIST)
 	category_tags = list(CTAG_PILGRIM)
-	allow_custom_genitals = TRUE
 
 /datum/outfit/job/roguetown/adventurer/nudist
 	allowed_patrons = list(/datum/patron/divine/dendor)

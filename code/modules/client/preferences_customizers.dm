@@ -46,7 +46,6 @@
 	var/list/customizers = pref_species.customizers
 	if(!customizers)
 		return
-	dat += "Some options, such as genitalia, may be altered due to role at round start. Your preferences can be obtained in-game through procedures such as surgery."
 	dat += "<table width='100%'>"
 	dat += "<td valign='top' width='33%'>"
 	var/iterated_customizers = 0
@@ -150,12 +149,6 @@
 		if("toggle_missing")
 			if(customizer.allows_disabling)
 				entry.disabled = !entry.disabled
-<<<<<<< HEAD
-=======
-			if(ishuman(user)) // Vrell - idk why this is needed here but it fixes shit.
-				var/mob/living/carbon/human/humanized = user
-				humanized.update_body_parts(TRUE)
->>>>>>> 028258ac6 (Genitals Part 3: Bug Fix Part 2 (#52))
 		if("change_choice")
 			var/list/choice_list = list()
 			for(var/choice_type in customizer.customizer_choices)
@@ -171,9 +164,6 @@
 			customizer_entries += customizer.create_customizer_entry(src, choice_type)
 		else
 			choice.handle_topic(user, href_list, src, entry, customizer_type)
-	if(ishuman(user))
-		var/mob/living/carbon/human/humanized = user
-		humanized.update_body_parts(TRUE)
 
 /datum/preferences/proc/reset_all_customizer_accessory_colors()
 	for(var/datum/customizer_entry/entry as anything in customizer_entries)
@@ -231,21 +221,3 @@
 		if(entry.type == entry_type)
 			return entry
 	return null
-
-/datum/preferences/proc/genderize_customizer_entries()
-	customizer_entries = SANITIZE_LIST(customizer_entries)
-	var/datum/species/species = pref_species
-	var/list/customizers = species.customizers
-
-	/// Check if we have any missing customizer entries
-	for(var/datum/customizer/customizer_type as anything in customizers)
-		if(customizer_type.gender_enabled == null)
-			continue
-		for(var/datum/customizer_entry/entry as anything in customizer_entries)
-			if(entry.customizer_type != customizer_type)
-				continue
-			if(customizer_type.gender_enabled == gender)
-				entry.disabled = FALSE
-			else
-				entry.disabled = TRUE
-			break
