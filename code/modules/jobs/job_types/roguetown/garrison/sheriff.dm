@@ -5,13 +5,8 @@
 	faction = "Station"
 	total_positions = 1
 	spawn_positions = 1
-<<<<<<< HEAD
 	allowed_races = RACES_TOLERATED_UP
 	allowed_sexes = list(MALE)
-=======
-	allowed_races = RACES_ALL_KINDS
-	allowed_sexes = list(MALE, FEMALE)
->>>>>>> 4358b8396 (Changes any job without a lore reason to be unisex (#62))
 	allowed_ages = list(AGE_MIDDLEAGED, AGE_OLD)
 	display_order = JDO_SHERIFF
 	tutorial = "Crime has always been a constant of your life, and you always chose the side of justice. You rose up through the ranks as a watchman, and now rule over them - Ensure that they enforce the laws of this land properly."

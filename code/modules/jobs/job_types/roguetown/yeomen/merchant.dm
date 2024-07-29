@@ -6,15 +6,8 @@
 	total_positions = 1
 	spawn_positions = 1
 	selection_color = JCOLOR_YEOMAN
-<<<<<<< HEAD
-	allowed_races = RRACES_ALL_KINDS
+	allowed_races = RACES_TOLERATED_UP
 	tutorial = "You were born into wealth, learning from before you could talk about the basics of mathematics. Counting coins is a simple pleasure for any person, but you've made it an artform. These people are addicted to your wares and you are the literal beating heart of this economy: Dont let these filthy-covered troglodytes ever forget that."
-=======
-	allowed_races = RACES_ALL_KINDS
-	tutorial = "You were born into wealth, learning from before you could talk about the basics of mathematics. Counting coins is a simple pleasure for any person, but you've made it an artform. These people are addicted to your wares and you are the literal beating heart of this economy: Dont let these filthy-covered troglodytes ever forget that. \
-		\
-		This role allows for full customization."
->>>>>>> 17a93c1ad (Allows any genitals on any race (#31))
 
 	display_order = JDO_MERCHANT
 
@@ -25,8 +18,6 @@
 	required = TRUE
 
 	cmode_music = 'sound/music/combat_giza.ogg'
-
-	allow_custom_genitals = TRUE
 
 /datum/outfit/job/roguetown/merchant/pre_equip(mob/living/carbon/human/H)
 	..()

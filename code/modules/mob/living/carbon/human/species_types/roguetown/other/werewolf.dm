@@ -62,7 +62,6 @@
 		)
 	languages = list(
 		/datum/language/beast,
-		/datum/language/common,
 	)
 
 /datum/species/werewolf/send_voice(mob/living/carbon/human/H)

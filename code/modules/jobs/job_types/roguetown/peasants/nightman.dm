@@ -9,9 +9,7 @@
 	allowed_sexes = list(MALE)
 	allowed_races = RACES_TOLERATED_UP
 
-	tutorial = "The Nightmaster is technically a noble. Owner of the Whitevein Lounge, a decaying bathhouse converted into a den of low-lifes. A troublemaking rake that the others hate to tolerate. \
-		\
-		This role allows for full customization."
+	tutorial = "The Nightmaster is technically a noble. Owner of the Whitevein Lounge, a decaying bathhouse converted into a den of low-lifes. A troublemaking rake that the others hate to tolerate."
 
 	allowed_ages = ALL_AGES_LIST
 	outfit = /datum/outfit/job/roguetown/nightman
@@ -19,8 +17,6 @@
 	give_bank_account = TRUE
 	min_pq = -10
 	max_pq = null
-
-	allow_custom_genitals = TRUE
 
 /datum/outfit/job/roguetown/nightman/pre_equip(mob/living/carbon/human/H)
 	..()
