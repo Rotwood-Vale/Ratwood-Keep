@@ -87,7 +87,7 @@
 
 /obj/structure/pillory/proc/togglelatch(mob/living/user, silent)
 	user.changeNext_move(CLICK_CD_MELEE)
-	if(locked)
+	if(latched)
 		user.visible_message(span_warning("[user] unlatches [src]."), \
 			span_notice("I unlatch [src]."))
 		playsound(src, 'sound/foley/doors/lock.ogg', 100)
