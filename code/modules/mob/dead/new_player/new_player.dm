@@ -184,7 +184,7 @@ GLOBAL_LIST_INIT(roleplay_readme, world.file2list("strings/rt/rp_prompt.txt"))
 		if(!SSticker?.IsRoundInProgress())
 			to_chat(usr, span_boldwarning("The game is starting. You cannot join yet."))
 			return
-		
+
 		if(client && client.prefs.is_active_migrant())
 			to_chat(usr, span_boldwarning("You are in the migrant queue."))
 			return
@@ -408,7 +408,7 @@ GLOBAL_LIST_INIT(roleplay_readme, world.file2list("strings/rt/rp_prompt.txt"))
 	if(!job.required || latejoin)
 		if(!isnull(job.min_pq) && (get_playerquality(ckey) < job.min_pq))
 			return JOB_UNAVAILABLE_GENERIC
-		if(!isnull(job.max_pq) && (get_playerquality(ckey) > job.max_pq))
+		if(!isnull(job.max_pq) && (get_playerquality(ckey) > job.max_pq) && !is_misc_banned(ckey, BAN_MISC_LUNATIC))
 			return JOB_UNAVAILABLE_GENERIC
 	var/datum/species/pref_species = client.prefs.pref_species
 	if(length(job.allowed_races) && !(pref_species.type in job.allowed_races))
@@ -466,7 +466,7 @@ GLOBAL_LIST_INIT(roleplay_readme, world.file2list("strings/rt/rp_prompt.txt"))
 	if(SSticker.late_join_disabled)
 		alert(src, "Something went bad.")
 		return FALSE
-	
+
 	if(!client.prefs.allowed_respawn())
 		to_chat(src, span_boldwarning("You cannot respawn."))
 		return FALSE

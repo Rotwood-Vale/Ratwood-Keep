@@ -73,9 +73,8 @@
 	var/datum/role_bans/ban_datum = get_role_bans_for_ckey(passed_ckey)
 	var/list/valid_list = list()
 	for(var/datum/role_ban_instance/instance as anything in ban_datum.bans)
-		if(!instance.permanent)
-			if(world.realtime <= instance.apply_date + instance.duration)
-				continue
+		if(!instance.permanent && world.realtime >= instance.apply_date + instance.duration)
+			continue
 		valid_list += instance
 	return valid_list
 

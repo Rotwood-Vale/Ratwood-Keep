@@ -14,7 +14,7 @@
 
 /datum/role_ban_instance/proc/get_ban_string_list()
 	var/list/strings = list()
-	strings += "Applied by [applied_by], on date: [time2text(apply_date, "DD,MM,YYYY")]; Duration: [permanent ? "Permanent" : duration]"
+	strings += "Applied by [applied_by], on date: [time2text(apply_date, "DD,MM,YYYY")]; Duration: [permanent ? "Permanent" : "[duration / (24 HOURS)] days"]"
 	strings += "Round ID: [round_id];Reason: [reason]"
 	if(roles)
 		var/role_string = "Roles: "
@@ -120,7 +120,7 @@
 	dat += "<BR><b>CKEY:</b> [selected_ckey] <a href='?src=[REF(src)];task=ckey'>Change</a>"
 	dat += "<BR><b>Permanent:</b> <a href='?src=[REF(src)];task=permanent'>[selected_is_permanent ? "Yes": "No"]</a>"
 	if(!selected_is_permanent)
-		dat += "<BR><b>Duration:</b> [selected_duration] minutes <a href='?src=[REF(src)];task=duration'>Change</a>"
+		dat += "<BR><b>Duration:</b> [selected_duration / (24 HOURS)] days <a href='?src=[REF(src)];task=duration'>Change</a>"
 	dat += "<BR><b>Reason:</b> [selected_reason] <a href='?src=[REF(src)];task=reason'>Change</a>"
 	dat += "<HR>"
 	dat += "<b>Banned Roles:</b> <a href='?src=[REF(src)];task=add_role'>Add</a>"
@@ -184,12 +184,22 @@
 		if("permanent")
 			selected_is_permanent = !selected_is_permanent
 		if("duration")
-			var/duration_type = input(user, "Choose duration type", "Duration", null) as null|anything in list("Minutes", "Hours", "Days")
+			var/duration_type = input(user, "Choose duration type", "Duration", null) as null|anything in list("Minutes", "Hours", "Days", "Weeks")
 			if(!duration_type)
 				return
 			var/chosen_amount = input(user, "Choose amount (in [duration_type])", "Duration", 0) as num|null
 			if(!chosen_amount)
 				return
+			switch(duration_type)
+				if("Minutes")
+					chosen_amount = chosen_amount * (1 MINUTES)
+				if("Hours")
+					chosen_amount = chosen_amount * (1 HOURS)
+				if("Days")
+					chosen_amount = chosen_amount * (24 HOURS) 
+				if("Weeks")
+					chosen_amount = chosen_amount * (24 HOURS) * 7
+
 			selected_duration = chosen_amount
 		if("reason")
 			var/chosen_reason = input(user, "Input reason", "Reason", selected_reason) as message|null
