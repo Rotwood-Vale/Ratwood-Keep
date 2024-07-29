@@ -8,7 +8,7 @@
 
 <<<<<<< HEAD
 	allowed_sexes = list(MALE) //same as town guard
-	allowed_races = RACES_TOLERATED_UP // same as town guard
+	allowed_races = RACES_ALL_KINDS // same as town guard
 =======
 	allowed_sexes = list(MALE, FEMALE) //same as town guard
 	allowed_races = RACES_ALL_KINDS // same as town guard
