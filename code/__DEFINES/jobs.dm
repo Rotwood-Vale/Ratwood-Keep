@@ -109,7 +109,7 @@
 #define GARRISON		(1<<1)
 
 #define GUARDSMAN	(1<<0)
-#define MANATARMS	(1<<1)
+#define ROYALGUARD	(1<<1)
 #define DUNGEONEER	(1<<2)
 #define GATEMASTER	(1<<3)
 #define BOGGUARD	(1<<4)
@@ -181,11 +181,10 @@
 #define CLERK 		(1<<6)
 #define MAGEAPPRENTICE	(1<<7)
 
-#define MERCENARIES		(1<<7)
-
-#define DESERT_RIDER	(1<<0)
-#define GRENZELHOFT		(1<<1)
-#define VETERAN		(1<<2)
+#define MERCENARIES		(1<<0)
+#define DESERT_RIDER	(1<<1)
+#define GRENZELHOFT		(1<<2)
+#define VETERAN		(1<<3)
 
 #define TRIBAL		(1<<8)
 
@@ -235,7 +234,7 @@
 #define JDO_GUARD_CAPTAIN 8
 #define JDO_KNIGHT 8.1
 #define JDO_SQUIRE 8.2
-#define JDO_CASTLEGUARD 8.3
+#define JDO_ROYALGUARD 8.3
 #define JDO_GATEMASTER 8.4
 #define JDO_SHERIFF 8.5
 #define JDO_TOWNGUARD 8.6
@@ -279,9 +278,10 @@
 #define JDO_PILGRIM 30.2
 #define JDO_MIGRANT 32.3
 
-#define JDO_GRENZELHOFT 31
-#define JDO_DESERT_RIDER 31.1
-#define JDO_VET 31.2
+#define JDO_MERCENARY 31
+#define JDO_GRENZELHOFT 31.1
+#define JDO_DESERT_RIDER 31.2
+#define JDO_VET 31.3
 
 #define JDO_VAGRANT 33
 #define JDO_VAGABOND 34

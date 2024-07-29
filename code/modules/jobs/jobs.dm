@@ -82,7 +82,7 @@ GLOBAL_LIST_INIT(garrison_positions, list(
 	"Watchman",
 	"Bog Guard",
 	"Bog Master",
-	"Man at Arms",
+	"Royal Guard",
 	"Dungeoneer",
 	"Gatemaster",
 	"Town Sheriff",
@@ -132,6 +132,7 @@ GLOBAL_LIST_INIT(peasant_positions, list(
 ))
 
 GLOBAL_LIST_INIT(mercenary_positions, list(
+	"Mercenary",
 	"Grenzelhoft Mercenary",
 	"Desert Rider Mercenary",
 	"Veteran",

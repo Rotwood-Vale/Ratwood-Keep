@@ -180,7 +180,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	name = "Watchman"
 	icon_state = "arrow"
 
-/obj/effect/landmark/start/manorguardsman
+/obj/effect/landmark/start/royalguard
 	name = "Royal Guard"
 	icon_state = "arrow"
 

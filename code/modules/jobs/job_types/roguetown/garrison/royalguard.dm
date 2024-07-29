@@ -1,30 +1,34 @@
-/datum/job/roguetown/manorguard
+/datum/job/roguetown/royalguard
 	title = "Royal Guard"
-	flag = MANATARMS
+	flag = ROYALGUARD
 	department_flag = GARRISON
 	faction = "Station"
-	total_positions = 3
-	spawn_positions = 3
+	total_positions = 4
+	spawn_positions = 4
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
 	allowed_ages = list(AGE_ADULT, AGE_MIDDLEAGED)
 	tutorial = "Having proven yourself loyal and capable, you have been knighted to serve the realm as the monarch's personal guard. You listen to your Lord and the Captain of the Guard, defending your Lord and realm."
-	display_order = JDO_CASTLEGUARD
+	display_order = JDO_ROYALGUARD
+	allowed_patrons = ALL_DIVINE_PATRONS
 	whitelist_req = TRUE
 
-	outfit = /datum/outfit/job/roguetown/manorguard
-	advclass_cat_rolls = list(CTAG_GUARD = 20)
+	outfit = /datum/outfit/job/roguetown/royalguard
+	advclass_cat_rolls = list(CTAG_ROYALGUARD = 20)
 
 	give_bank_account = 22
-	min_pq = 1
+	min_pq = 0
 	max_pq = null
 
 	cmode_music = 'sound/music/combat_guard2.ogg'
 
-/datum/job/roguetown/manorguard/after_spawn(mob/living/L, mob/M, latejoin = TRUE)
+/datum/job/roguetown/royalguard/after_spawn(mob/living/L, mob/M, latejoin = TRUE)
 	..()
 	if(ishuman(L))
 		var/mob/living/carbon/human/H = L
+		H.advsetup = 1
+		H.invisibility = INVISIBILITY_MAXIMUM
+		H.become_blind("advsetup")
 		if(istype(H.cloak, /obj/item/clothing/cloak/stabard/surcoat/guard))
 			var/obj/item/clothing/S = H.cloak
 			var/index = findtext(H.real_name, " ")
@@ -41,7 +45,7 @@
 		H.real_name = "[honorary] [prev_real_name]"
 		H.name = "[honorary] [prev_name]"
 
-/datum/outfit/job/roguetown/manorguard
+/datum/outfit/job/roguetown/royalguard
 	head = /obj/item/clothing/head/roguetown/helmet/bascinet
 	pants = /obj/item/clothing/under/roguetown/chainlegs
 	cloak = /obj/item/clothing/cloak/stabard/surcoat/guard
@@ -54,14 +58,14 @@
 	belt = /obj/item/storage/belt/rogue/leather/black
 	backr = /obj/item/storage/backpack/rogue/satchel/black
 
-/datum/advclass/manorguard/heavy
+/datum/advclass/royalguard/heavy
 	name = "Heavy Knight"
 	tutorial = "While other knights may specialize in horse riding and swords, you specialize in two-handed weapons and maces. People may fear the mounted knights, but they should truly fear those who come off their mount.."
-	outfit = /datum/outfit/job/roguetown/manorguard/heavy
+	outfit = /datum/outfit/job/roguetown/royalguard/heavy
 
-	category_tags = list(CTAG_GUARD)
+	category_tags = list(CTAG_ROYALGUARD)
 
-/datum/outfit/job/roguetown/manorguard/heavy/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/job/roguetown/royalguard/heavy/pre_equip(mob/living/carbon/human/H)
 	..()
 	H.mind.adjust_skillrank(/datum/skill/combat/polearms, 4, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/combat/swords, 3, TRUE)
@@ -105,14 +109,14 @@
 	
 	backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger/steel/special = 1, /obj/item/rope/chain = 1, /obj/item/signal_horn = 1)
 
-/datum/advclass/manorguard/knight
+/datum/advclass/royalguard/knight
 	name = "Foot Knight"
 	tutorial = "You are acustomed to traditional knight training, swords, shields, and mounts. You are swifter than some other knights and you know it; it's time to make use of it.."
-	outfit = /datum/outfit/job/roguetown/manorguard/knight
+	outfit = /datum/outfit/job/roguetown/royalguard/knight
 
-	category_tags = list(CTAG_GUARD)
+	category_tags = list(CTAG_ROYALGUARD)
 
-/datum/outfit/job/roguetown/manorguard/knight/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/job/roguetown/royalguard/knight/pre_equip(mob/living/carbon/human/H)
 	..()
 	H.mind.adjust_skillrank(/datum/skill/combat/polearms, 3, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/combat/swords, 4, TRUE)

@@ -203,7 +203,7 @@ GLOBAL_LIST_EMPTY(job_respawn_delays)
 #define CTAG_CONTRIBUTOR 	"CAT_CONTRIBUTOR"  	// Contributor classes so they can get some appreciation.
 
 #define CTAG_WATCH			"CAT_WATCH"			// Town-Watch classes; sloppy class selection system.
-#define CTAG_GUARD			"CAT_GUARD"			// Royal Guard classes; sloppy class selection system.
+#define CTAG_ROYALGUARD		"CAT_ROYALGUARD"	// Royal Guard classes; sloppy class selection system.
 
 /*
 	Defines for the triumph buy datum categories

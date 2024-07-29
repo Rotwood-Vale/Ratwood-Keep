@@ -5527,7 +5527,7 @@
 /turf/open/floor/rogue/ruinedwood/turned,
 /area/rogue/indoors/shelter/mountains)
 "eTo" = (
-/obj/effect/landmark/start/manorguardsman{
+/obj/effect/landmark/start/royalguard{
 	dir = 8
 	},
 /turf/open/floor/rogue/tile/masonic,
@@ -8610,7 +8610,7 @@
 /obj/structure/fluff/walldeco/customflag{
 	pixel_y = 32
 	},
-/obj/effect/landmark/start/manorguardsman{
+/obj/effect/landmark/start/royalguard{
 	dir = 4
 	},
 /turf/open/floor/rogue/tile/masonic{
@@ -15261,7 +15261,7 @@
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/manor)
 "pKA" = (
-/obj/effect/landmark/start/manorguardsman{
+/obj/effect/landmark/start/royalguard{
 	dir = 8
 	},
 /turf/open/floor/rogue/tile/masonic{
@@ -17708,7 +17708,7 @@
 /turf/open/floor/rogue/grass,
 /area/rogue/outdoors/rtfield)
 "syY" = (
-/obj/effect/landmark/start/manorguardsman{
+/obj/effect/landmark/start/royalguard{
 	dir = 4
 	},
 /turf/open/floor/rogue/tile/masonic,
@@ -21914,7 +21914,7 @@
 	},
 /area/rogue/indoors/town)
 "xdZ" = (
-/obj/effect/landmark/start/manorguardsman{
+/obj/effect/landmark/start/royalguard{
 	dir = 4
 	},
 /turf/open/floor/rogue/tile/masonic{

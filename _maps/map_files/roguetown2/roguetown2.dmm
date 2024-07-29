@@ -1705,7 +1705,7 @@
 /turf/open/floor/rogue/cobble,
 /area/rogue/outdoors/town)
 "gQ" = (
-/obj/effect/landmark/start/manorguardsman{
+/obj/effect/landmark/start/royalguard{
 	dir = 4
 	},
 /turf/open/floor/rogue/tile/masonic,
@@ -2924,7 +2924,7 @@
 /turf/open/floor/rogue/blocks/stonered,
 /area/rogue/indoors/town/dwarfin)
 "mw" = (
-/obj/effect/landmark/start/manorguardsman{
+/obj/effect/landmark/start/royalguard{
 	dir = 8
 	},
 /turf/open/floor/rogue/tile/masonic,
@@ -3234,7 +3234,7 @@
 /turf/open/transparent/openspace,
 /area/rogue/indoors/town/manor)
 "nR" = (
-/obj/effect/landmark/start/manorguardsman{
+/obj/effect/landmark/start/royalguard{
 	dir = 4
 	},
 /turf/open/floor/rogue/tile/masonic{
@@ -3595,7 +3595,7 @@
 	},
 /area/rogue/outdoors/town)
 "ps" = (
-/obj/effect/landmark/start/manorguardsman{
+/obj/effect/landmark/start/royalguard{
 	dir = 8
 	},
 /turf/open/floor/rogue/tile/masonic{
@@ -3643,7 +3643,7 @@
 /obj/structure/fluff/walldeco/customflag{
 	pixel_y = 32
 	},
-/obj/effect/landmark/start/manorguardsman{
+/obj/effect/landmark/start/royalguard{
 	dir = 4
 	},
 /turf/open/floor/rogue/tile/masonic{
@@ -3831,7 +3831,7 @@
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/outdoors/rtfield)
 "qr" = (
-/obj/effect/landmark/start/manorguardsman{
+/obj/effect/landmark/start/royalguard{
 	dir = 4
 	},
 /turf/open/floor/rogue/tile/masonic{
@@ -5151,7 +5151,7 @@
 /obj/structure/fluff/walldeco/customflag{
 	pixel_y = 32
 	},
-/obj/effect/landmark/start/manorguardsman{
+/obj/effect/landmark/start/royalguard{
 	dir = 8
 	},
 /turf/open/floor/rogue/tile/masonic,
@@ -11011,7 +11011,7 @@
 /turf/open/floor/rogue/blocks,
 /area/rogue/indoors/town/manor)
 "Sg" = (
-/obj/effect/landmark/start/manorguardsman{
+/obj/effect/landmark/start/royalguard{
 	dir = 8
 	},
 /turf/open/floor/rogue/tile/masonic{
@@ -11397,7 +11397,7 @@
 /obj/structure/fluff/walldeco/customflag{
 	pixel_y = 32
 	},
-/obj/effect/landmark/start/manorguardsman{
+/obj/effect/landmark/start/royalguard{
 	dir = 4
 	},
 /turf/open/floor/rogue/tile/masonic{
