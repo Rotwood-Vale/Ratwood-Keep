@@ -37,6 +37,10 @@
 		/datum/sprite_accessory/snout/lcanidalt,
 		/datum/sprite_accessory/snout/lcanidstriped,
 		/datum/sprite_accessory/snout/lcanidstripedalt,
+		/datum/sprite_accessory/snout/scanid,
+		/datum/sprite_accessory/snout/scanidalt,
+		/datum/sprite_accessory/snout/scanidalt2,
+		/datum/sprite_accessory/snout/scanidalt3,
 		/datum/sprite_accessory/snout/sharp,
 		/datum/sprite_accessory/snout/round,
 		/datum/sprite_accessory/snout/sharplight,
@@ -228,6 +232,10 @@
 	organ_type = /obj/item/organ/snout/cat
 	sprite_accessories = list(
 	    /datum/sprite_accessory/snout/cat,
+		/datum/sprite_accessory/snout/scanid,
+		/datum/sprite_accessory/snout/scanidalt,
+		/datum/sprite_accessory/snout/scanidalt2,
+		/datum/sprite_accessory/snout/scanidalt3,
 		/datum/sprite_accessory/snout/sharp,
 		/datum/sprite_accessory/snout/round,
 		/datum/sprite_accessory/snout/sharplight,
