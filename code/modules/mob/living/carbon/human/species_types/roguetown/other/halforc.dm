@@ -56,10 +56,6 @@
 		ORGAN_SLOT_STOMACH = /obj/item/organ/stomach,
 		ORGAN_SLOT_APPENDIX = /obj/item/organ/appendix,
 		ORGAN_SLOT_HORNS = /obj/item/organ/horns/halforc,
-		ORGAN_SLOT_TESTICLES = /obj/item/organ/testicles,
-		ORGAN_SLOT_PENIS = /obj/item/organ/penis,
-		ORGAN_SLOT_BREASTS = /obj/item/organ/breasts,
-		ORGAN_SLOT_VAGINA = /obj/item/organ/vagina,
 		)
 	body_markings = list(
 		/datum/body_marking/tonage,

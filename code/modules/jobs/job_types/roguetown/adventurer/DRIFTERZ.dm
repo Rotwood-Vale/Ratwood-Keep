@@ -1,32 +1,37 @@
-/datum/job/roguetown/pilgrim
-	title = "Pilgrim"
-	flag = PILGRIM
+
+/*
+	Once again we are back here, ha hahaha....
+	Also this is basically just a shell for the drifter queue system to manipulate.
+*/
+/datum/job/roguetown/drifters
+	title = "Drifter"
+	flag = WAVE_DRIFTER
 	department_flag = PEASANTS
 	faction = "Station"
-	total_positions = -1
-	spawn_positions = -1
+
+	// Everyone can be a homeless man looking for work!
 	allowed_races = RACES_ALL_KINDS
-	tutorial = "Fleeing misfortune you head your way towards Rockhill, you're not a soldier or an explorer, but a humble migrant trying to look for a better life, if you get to survive the trip that is."
+
+	tutorial = "A drifter of unknown origin searching things such as fame, fortune, and perhaps just some work to do."
+
 
 	outfit = null
 	outfit_female = null
-	bypass_lastclass = TRUE
-	bypass_jobban = FALSE
 
-	advclass_cat_rolls = list(CTAG_PILGRIM = 10, CTAG_ADVENTURER = 5)
-	PQ_boost_divider = 10
-
-	display_order = JDO_PILGRIM
-	min_pq = -20
+	display_order = JDO_DRIFTER
+	show_in_credits = FALSE
 	max_pq = null
+	min_pq = -999
 	wanderer_examine = TRUE
 	advjob_examine = TRUE
-	always_show_on_latechoices = TRUE
-	same_job_respawn_delay = 0
-	
+
+	total_positions = 0
+	spawn_positions = 0
+	advclass_cat_rolls = list(CTAG_PILGRIM = 10, CTAG_ADVENTURER = 5)
+
 	allow_custom_genitals = TRUE //Vrell - This prevents the job itself from culling the parts since advanced classes determine if they are allowed
 
-/datum/job/roguetown/pilgrim/after_spawn(mob/living/L, mob/M, latejoin = TRUE)
+/datum/job/roguetown/drifters/after_spawn(mob/living/L, mob/M, latejoin = TRUE)
 	..()
 	if(L)
 		var/mob/living/carbon/human/H = L
@@ -37,3 +42,4 @@
 		if(GLOB.adventurer_hugbox_duration)
 			///FOR SOME RETARDED FUCKING REASON THIS REFUSED TO WORK WITHOUT A FUCKING TIMER IT JUST FUCKED SHIT UP
 			addtimer(CALLBACK(H, TYPE_PROC_REF(/mob/living/carbon/human, adv_hugboxing_start)), 1)
+

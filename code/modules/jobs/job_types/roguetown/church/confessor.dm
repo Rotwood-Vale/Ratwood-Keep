@@ -6,8 +6,13 @@
 	total_positions = 0
 	spawn_positions = 0
 
+<<<<<<< HEAD
 	allowed_races = RACES_TOLERATED_UP
 	allowed_sexes = list(MALE)
+=======
+	allowed_races = RACES_ALL_KINDS
+	allowed_sexes = list(MALE, FEMALE)
+>>>>>>> 4358b8396 (Changes any job without a lore reason to be unisex (#62))
 	tutorial = "Confessors are shady agents of the church hired to spy on the populace and keep them moral. As the most fanatical members of the clergy, their main concern is assisting the local Puritan with their work in extracting confessions of sin as well as hunting night beasts and cultists that hide in plain sight."
 
 	outfit = /datum/outfit/job/roguetown/shepherd
