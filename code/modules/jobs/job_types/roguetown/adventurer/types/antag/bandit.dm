@@ -5,7 +5,7 @@
 */
 /datum/advclass/bandit
 	name = "Bandit"
-	tutorial = "A person living in service of the god Matthios, through theft and social woes can ones suffering be alleviated."
+	tutorial = "A Free Man of the wilderness, you draw nigh to the flaming lure Matthios laid to gather prey within walls, fearful of the darkness beyond. Win back what the Giver's flame created; what these slaves of gold greedily hoard!"
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
 	outfit = /datum/outfit/job/roguetown/adventurer/bandit

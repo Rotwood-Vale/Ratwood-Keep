@@ -31,16 +31,16 @@
 		"THE BLACK SUN DEMANDS BLOOD!",
 	)
 
-/datum/patron/inhumen/matthios 
+/datum/patron/inhumen/matthios		// Removing 'class warfare' language in favor of 'uncivilized v civilized' language.
 	name = "Matthios"
-	domain = "God of Robbery, Mugging and Redistribution of Wealth"
-	desc = "Man turned God, Matthios taught man that only through theft and popular revolts can social woes be alleviated."
-	worshippers = "Highwaymen, Robbers and Downtrodden Peasants"
+	domain = "God of Fire, Sacrifice and those who prey upon Civilization"
+	desc = "Man turned God, the 'Giver' Matthios stole fire from Astrata and gave it to primitive Man huddled in darkness and demands the riches flame creates in sacrifice."
+	worshippers = "Free-Men, Outlaws and Frontiersmen"
 	mob_traits = list(TRAIT_COMMIE)
 	confess_lines = list(
-		"MATTHIOS STEALS FROM THE WORTHLESS!",
-		"MATTHIOS IS JUSTICE!",
-		"MATTHIOS IS MY LORD!",
+		"I SACRIFICE GLADLY TO THE GIVER!",
+		"MATTHIOS'S GIFT CONSUME YOU!",
+		"THE GIVER IS OWED HIS SACRIFICE!",
 	)
 
 /datum/patron/inhumen/baotha

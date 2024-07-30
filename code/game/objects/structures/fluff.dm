@@ -932,7 +932,7 @@
 
 /obj/structure/fluff/statue/evil
 	name = "idol"
-	desc = "A statue built to the robber-god, Matthios, who stole the gift of fire from the underworld. It is said that he grants the wishes of those pagan bandits (free folk) who feed him money and valuable metals."
+	desc = "A statue built to the Giver, Matthios, who stole the gift of fire from Astrata. It is said that he grants the wishes of those pagan bandits (free folk) who feed him money and valuable metals."
 	icon_state = "evilidol"
 	icon = 'icons/roguetown/misc/structure.dmi'
 
