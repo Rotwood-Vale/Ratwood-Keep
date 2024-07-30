@@ -301,7 +301,7 @@ GLOBAL_LIST_INIT(character_flaws, list(
 /datum/charflaw/narcoleptic/proc/reset_timer()
 	do_sleep = FALSE
 	last_unconsciousness = world.time
-	concious_timer = rand(7 MINUTES, 15 MINUTES)
+	concious_timer = rand(8 MINUTES, 16 MINUTES)
 	pain_pity_charges = rand(2,4)
 
 /datum/charflaw/narcoleptic/flaw_on_life(mob/living/carbon/human/user)
@@ -321,7 +321,7 @@ GLOBAL_LIST_INIT(character_flaws, list(
 					concious_timer = rand(4 MINUTES, 6 MINUTES)
 					to_chat(user, span_info("The feeling has passed."))
 				else
-					concious_timer = rand(7 MINUTES, 15 MINUTES)
+					concious_timer = rand(8 MINUTES, 16 MINUTES)
 					to_chat(user, span_boldwarning("I can't keep my eyes open any longer..."))
 					user.Sleeping(rand(30 SECONDS, 50 SECONDS))
 					user.visible_message(span_warning("[user] suddenly collapses!"))
@@ -333,7 +333,7 @@ GLOBAL_LIST_INIT(character_flaws, list(
 			drugged_up = FALSE
 			to_chat(user, span_blue("I'm getting drowsy..."))
 			user.emote("yawn", forced = TRUE)
-			next_sleep = world.time + rand(7 SECONDS, 11 SECONDS)
+			next_sleep = world.time + rand(8 SECONDS, 12 SECONDS)
 			do_sleep = TRUE
 	
 /proc/narcolepsy_drug_up(mob/living/living)
