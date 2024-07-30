@@ -151,10 +151,10 @@
 	slowdown = 0
 	neighborlay = "grassedge"
 
-/turf/open/floor/rogue/grass/Initialize()
-	dir = pick(GLOB.cardinals)
+// /turf/open/floor/rogue/grass/Initialize()
+//	dir = pick(GLOB.cardinals)
 //	GLOB.dirt_list += src
-	. = ..()
+//	. = ..()
 
 /turf/open/floor/rogue/dirt/ambush
 	name = "dirt"
@@ -248,10 +248,10 @@
 /turf/open/floor/rogue/dirt/cardinal_smooth(adjacencies)
 	roguesmooth(adjacencies)
 
-/turf/open/floor/rogue/dirt/Initialize()
-	dir = pick(GLOB.cardinals)
-	. = ..()
-	update_water()
+// /turf/open/floor/rogue/dirt/Initialize()
+//	dir = pick(GLOB.cardinals)
+//	. = ..()
+//	update_water()
 
 /turf/open/floor/rogue/dirt/update_water()
 	water_level = max(water_level-10,0)
@@ -384,19 +384,19 @@
 	return New
 
 
-/turf/open/floor/rogue/dirt/road/Initialize()
-	dir = pick(GLOB.cardinals)
-	for(var/P in subtypesof(/turf/closed/wall/mineral))
-		canSmoothWith += P
-	for(var/P in subtypesof(/turf/closed/mineral))
-		canSmoothWith += P
-	for(var/P in subtypesof(/turf/open/floor/rogue))
+// /turf/open/floor/rogue/dirt/road/Initialize()
+//	dir = pick(GLOB.cardinals)
+//	for(var/P in subtypesof(/turf/closed/wall/mineral))
+//		canSmoothWith += P
+//	for(var/P in subtypesof(/turf/closed/mineral))
+//		canSmoothWith += P
+//	for(var/P in subtypesof(/turf/open/floor/rogue))
 //		if(prob(90))
-		if(P == /turf/open/floor/rogue/dirt/road)
-			continue
-		canSmoothWith += P
+//		if(P == /turf/open/floor/rogue/dirt/road)
+//			continue
+//		canSmoothWith += P
 //	queue_smooth(src)
-	. = ..()
+//	. = ..()
 
 /turf/open/floor/rogue/underworld/road
 	name = "ash"
@@ -608,9 +608,9 @@
 /turf/open/floor/rogue/cobble/cardinal_smooth(adjacencies)
 	roguesmooth(adjacencies)
 
-/turf/open/floor/rogue/cobble/Initialize()
-	. = ..()
-	icon_state = "cobblestone[rand(1,3)]"
+///turf/open/floor/rogue/cobble/Initialize()
+//	. = ..()
+//	icon_state = "cobblestone[rand(1,3)]"
 
 /turf/open/floor/rogue/cobble/mossy
 	icon_state = "mossystone1"

@@ -1,5 +1,5 @@
 /datum/job/roguetown/lady
-	title = "Consort"
+	title = "Consort Candidate"
 	flag = LADY
 	department_flag = NOBLEMEN
 	faction = "Station"
@@ -8,10 +8,13 @@
 
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
-	tutorial = "Picked out of your political value rather than likely any form of love, you have become the King's most trusted confidant and likely friend throughout your marriage. Your loyalty and, perhaps, love; will be tested this day. For the daggers that threaten your beloved are as equally pointed at your own throat."
+	tutorial = "In an effort to unite your kingdom with the kingdom of Rockhill, you have visited as an emissary to the kingdom. As a potential candidate to become the Consort of Rockhill, you work alongside the King. Beneath your watch, are the warriors of your nation, and it is your duty to ensure they are held liable for their actions. They are not your personal guards."
 
-	spells = list(/obj/effect/proc_holder/spell/self/convertrole/servant)
-	outfit = /datum/outfit/job/roguetown/lady
+	spells = list(/obj/effect/proc_holder/spell/self/convertrole/servant,
+	/obj/effect/proc_holder/spell/self/grant_nobility,
+	/obj/effect/proc_holder/spell/self/convertrole/mercenary)
+	outfit = /datum/outfit/job/roguetown/noble
+	
 
 	display_order = JDO_LADY
 	give_bank_account = TRUE
@@ -58,6 +61,13 @@
 		H.mind.adjust_skillrank(/datum/skill/misc/stealing, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/knives, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/polearms, 2, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/maces, 2, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 1, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/swords, 4, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/riding, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/swimming, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/climbing, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/athletics, 4, TRUE)
@@ -75,5 +85,14 @@
 	recruitment_faction = "Servants"
 	recruitment_message = "Serve the crown, %RECRUIT!"
 	accept_message = "FOR THE CROWN!"
+	refuse_message = "I refuse."
+	charge_max = 100
+
+/obj/effect/proc_holder/spell/self/convertrole/mercenary
+	name = "Recruit Mercenary"
+	new_role = "Mercenary"
+	recruitment_faction = "MERCENARIES"
+	recruitment_message = "Serve the Guild, %RECRUIT!"
+	accept_message = "FOR THE GUILD!"
 	refuse_message = "I refuse."
 	charge_max = 100
