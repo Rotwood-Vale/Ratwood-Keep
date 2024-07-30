@@ -12,7 +12,7 @@
 	outfit = /datum/outfit/job/roguetown/tribalsmith
 	min_pq = 0
 	max_pq = null
-	cmode_music = 'sound/music/combat_gronn.ogg'
+	cmode_music = 'sound/music/combat_tribal.ogg'
 
 /datum/outfit/job/roguetown/tribalsmith/pre_equip(mob/living/carbon/human/H)
 	..()

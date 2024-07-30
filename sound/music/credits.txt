@@ -11,3 +11,13 @@ combat_guard.ogg: Deus Ex - Desolation Combat
 combat_guard2.ogg: Deus Ex - NYC Streets Combat
 combat_physician.ogg: Pathologic (Classic) - Utroba Aggression
 combat_bum.ogg: Pathologic (Classic) - Most Combat Theme
+combat_clergy.ogg: Fear & Hunger 2: Termina - Mataneko-Kone Magnificat
+combat.ogg: Domina - Mire
+combat_guard.ogg: Domina - Spartacus
+combat_knight.ogg: Battle Brothers - Laying Siege to Hammerburg
+combat_tribal.ogg: Battle Brothers - Black Iron Pact
+combat_vamp.ogg: Battle Brothers - Curse of the Emperor
+combat_squire.ogg: Exanima - Term'd
+combat_weird.ogg: Filmmaker - Counterspell
+bog.ogg: Kenshi - Bog
+manorgarri.ogg: Exanima - Arena Hub
