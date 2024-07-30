@@ -434,7 +434,7 @@
 			dat += "</tr><tr>"
 
 	dat += "</tr></table>"
-	var/datum/browser/popup = new(user, "sexcon", "<center>Sate Desire</center>", 470, 540)
+	var/datum/browser/popup = new(user, "sexcon", "<center>Sate Desire</center>", 490, 550)
 	popup.set_content(dat.Join())
 	popup.open()
 	return
