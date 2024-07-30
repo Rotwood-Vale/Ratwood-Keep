@@ -66,7 +66,14 @@
 										if(allmig_reward > 3)
 											adjust_triumphs(1)
 			if(HAS_TRAIT(src, TRAIT_LEPROSY))
-				adjustToxLoss(0.2)
+				if(!mob_timers["leper_bleed"] || mob_timers["leper_bleed"] + 3 MINUTES < world.time)
+					if(prob(10))
+						to_chat(src, span_warning("My skin opens up and bleeds..."))
+						mob_timers["leper_bleed"] = world.time
+						var/obj/item/bodypart/part = pick(bodyparts)
+						if(part)
+							part.add_wound(/datum/wound/slash)
+				adjustToxLoss(0.3)
 			//heart attack stuff
 			handle_heart()
 			handle_liver()
