@@ -66,7 +66,7 @@
 										if(allmig_reward > 3)
 											adjust_triumphs(1)
 			if(HAS_TRAIT(src, TRAIT_LEPROSY))
-				if(!mob_timers["leper_bleed"] || mob_timers["leper_bleed"] + 3 MINUTES < world.time)
+				if(!mob_timers["leper_bleed"] || mob_timers["leper_bleed"] + 6 MINUTES < world.time)
 					if(prob(10))
 						to_chat(src, span_warning("My skin opens up and bleeds..."))
 						mob_timers["leper_bleed"] = world.time
