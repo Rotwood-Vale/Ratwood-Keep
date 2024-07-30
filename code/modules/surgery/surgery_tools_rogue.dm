@@ -17,7 +17,7 @@
 	thrown_bclass = BCLASS_CUT
 	associated_skill = /datum/skill/combat/knives
 	anvilrepair = /datum/skill/craft/blacksmithing
-	smeltresult = /obj/item/ingot/steel
+	smeltresult = /obj/item/ash
 
 /obj/item/rogueweapon/surgery/Initialize()
 	. = ..()
@@ -33,6 +33,7 @@
 	swingsound = list('sound/combat/wooshes/bladed/wooshsmall (1).ogg','sound/combat/wooshes/bladed/wooshsmall (2).ogg','sound/combat/wooshes/bladed/wooshsmall (3).ogg')
 	pickup_sound = 'sound/foley/equip/swordsmall2.ogg'
 	tool_behaviour = TOOL_SCALPEL
+	smeltresult = /obj/item/ingot/steel
 
 /obj/item/rogueweapon/surgery/saw
 	name = "saw"
@@ -50,6 +51,7 @@
 	w_class = WEIGHT_CLASS_NORMAL
 	thrown_bclass = BCLASS_CHOP
 	tool_behaviour = TOOL_SAW
+	smeltresult = /obj/item/ingot/steel
 
 /obj/item/rogueweapon/surgery/hemostat
 	name = "forceps"
@@ -108,6 +110,7 @@
 	var/cool_timer
 	/// Whether or not we are heated up
 	var/heated = FALSE
+	smeltresult = /obj/item/ingot/steel
 
 /obj/item/rogueweapon/surgery/cautery/examine(mob/user)
 	. = ..()
