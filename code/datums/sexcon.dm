@@ -1239,7 +1239,7 @@
 							wuzantag = TRUE
 				if(!wuzantag)
 					adjust_playerquality(-2, M.ckey, reason="Raped as a non villain.")
-			if(owner.has_testicles() && prob(20))
+			if(owner.has_testicles() && prob(20) && fucking.is_fertile() && owner.is_virile())
 				if(!fucking.mob_timers["preggo"])
 					fucking.mob_timers["preggo"] = world.time
 					addtimer(CALLBACK(fucking, /mob/living/carbon/human/.proc/become_pregnant, husbando), rand(3 MINUTES, 13 MINUTES))
