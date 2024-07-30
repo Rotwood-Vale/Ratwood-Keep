@@ -85,15 +85,15 @@
 	color = "#cbcac9"
 
 /obj/item/clothing/shoes/roguetown/gladiator
-	name = "leather sandals"
-	desc = ""
+	name = "leather soleae"
+	desc = "A form of fashionable sandaled boots whose design comes from a distant land, with straps that extend partway up the lower leg."
 	gender = PLURAL
 	icon_state = "gladiator"
 	item_state = "gladiator"
 	sewrepair = TRUE
 
 /obj/item/clothing/shoes/roguetown/sandals
-	name = "sandals"
+	name = "leather sandals"
 	desc = ""
 	gender = PLURAL
 	icon_state = "sandals"
