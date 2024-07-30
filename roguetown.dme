@@ -3552,5 +3552,6 @@
 #include "modular_hearthstone\code\game\objects\structures\fluff.dm"
 #include "modular_hearthstone\code\game\objects\structures\longsleep.dm"
 #include "modular_hearthstone\code\interface\LOOC.dm"
+#include "modular_hearthstone\code\modules\datums\accents.dm"
 #include "modular_hearthstone\code\modules\mob\living\simple_animal\rogue\creacher\volf.dm"
 // END_INCLUDE
