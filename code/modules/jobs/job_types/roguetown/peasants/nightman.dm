@@ -4,7 +4,7 @@
 	flag = NIGHTMASTER
 	department_flag = PEASANTS
 	faction = "Station"
-	total_positions = 1 
+	total_positions = 1
 	spawn_positions = 1
 
 	allowed_sexes = list(MALE, FEMALE)
@@ -23,9 +23,6 @@
 
 /datum/outfit/job/roguetown/nightman/pre_equip(mob/living/carbon/human/H)
 	..()
-	shoes = /obj/item/clothing/shoes/roguetown/shortboots
-	pants = /obj/item/clothing/under/roguetown/trou/leather
-	armor = /obj/item/clothing/suit/roguetown/armor/leather/vest/sailor/nightman
 	beltr = /obj/item/keyring/nightman
 	belt = /obj/item/storage/belt/rogue/leather
 	beltl = /obj/item/storage/belt/rogue/pouch/coins/poor
@@ -46,6 +43,7 @@
 	if(H.gender == MALE)
 		pants = /obj/item/clothing/under/roguetown/trou/leather
 		armor = /obj/item/clothing/suit/roguetown/armor/leather/vest/sailor/nightman
+		shoes = /obj/item/clothing/shoes/roguetown/shortboots
 		if(H.dna?.species)
 			if(iself(H) || ishalfelf(H))
 				armor = /obj/item/clothing/suit/roguetown/armor/leather/vest/sailor
@@ -54,5 +52,14 @@
 			else if(isdwarf(H))
 				armor = /obj/item/clothing/suit/roguetown/armor/leather/vest/sailor
 	else
-		pants = /obj/item/clothing/under/roguetown/tights
-		armor = /obj/item/clothing/suit/roguetown/armor/armordress/alt
+		switch(H.patron?.type)
+			if(/datum/patron/divine/eora) //Eoran loadouts
+				shoes = /obj/item/clothing/shoes/roguetown/sandals
+				armor = /obj/item/clothing/suit/roguetown/shirt/dress/gen/strapless/random
+				wrists = /obj/item/clothing/neck/roguetown/psicross/eora
+				head  = /obj/item/clothing/head/peaceflower
+			else
+				armor = /obj/item/clothing/suit/roguetown/armor/armordress/alt
+				shoes = /obj/item/clothing/shoes/roguetown/shortboots
+
+		pants = /obj/item/clothing/under/roguetown/tights/stockings/silk/random
