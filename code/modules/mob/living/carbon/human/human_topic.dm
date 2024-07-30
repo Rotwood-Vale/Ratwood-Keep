@@ -7,8 +7,19 @@
 		if(!valid_headshot_link(null, headshot_link, TRUE))
 			return
 		var/mob/user = usr
-		var/list/dat = list("<img src='[headshot_link]' width='250px' height='250px'>")
-		var/datum/browser/popup = new(user, "headshot", "<div align='center'>[src]'s Headshot</div>", 310, 320)
+		var/list/dat = list()
+		if(headshot_link)
+			dat += "<br>"
+			dat += ("<div align='center'><img src='[headshot_link]' width='325px' height='325px'></div>")
+		if(flavortext)
+			dat += "<br>"
+			dat += "<div align='center'><b>[src]</b>"
+			dat += "<div align='left'>[flavortext]</div>"
+		if(ooc_notes)
+			dat += "<br>"
+			dat += "<div align='center'><b>OOC notes</b>"
+			dat += "<div align='left'>[ooc_notes]"
+		var/datum/browser/popup = new(user, "[src]", 400, 600)
 		popup.set_content(dat.Join())
 		popup.open(FALSE)
 		return
