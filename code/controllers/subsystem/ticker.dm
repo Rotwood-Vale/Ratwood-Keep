@@ -214,7 +214,7 @@ SUBSYSTEM_DEF(ticker)
 							fire()
 					else*/
 					current_state = GAME_STATE_STARTUP
-					start_at = world.time + 600
+					start_at = world.time + 15 MINUTES
 					timeLeft = null
 					Master.SetRunLevel(RUNLEVEL_LOBBY)
 				else
@@ -227,7 +227,7 @@ SUBSYSTEM_DEF(ticker)
 			if(!setup())
 				//setup failed
 				current_state = GAME_STATE_STARTUP
-				start_at = world.time + 600
+				start_at = world.time + 15 MINUTES
 				timeLeft = null
 				Master.SetRunLevel(RUNLEVEL_LOBBY)
 
