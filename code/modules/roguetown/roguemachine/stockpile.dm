@@ -96,7 +96,7 @@
 					playsound(loc, 'sound/misc/hiss.ogg', 100, FALSE, -1)
 				var/amt = R.payout_price * B.amount
 				if(!SStreasury.give_money_account(amt, H, "+[amt] from [R.name] bounty") && message == TRUE)
-					say("No account found. Submit your fingers to a shylock for inspection.")
+					say("No account found. Submit your fingers to a meister for inspection.")
 			continue
 		else if(istype(I,R.item_type))
 			if(!R.check_item(I))
@@ -125,7 +125,7 @@
 					playsound(loc, 'sound/misc/disposalflush.ogg', 100, FALSE, -1)
 			if(amt)
 				if(!SStreasury.give_money_account(amt, H, "+[amt] from [R.name] bounty") && message == TRUE)
-					say("No account found. Submit your fingers to a shylock for inspection.")
+					say("No account found. Submit your fingers to a meister for inspection.")
 			return
 
 /obj/structure/roguemachine/stockpile/attackby(obj/item/P, mob/user, params)

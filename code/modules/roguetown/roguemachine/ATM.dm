@@ -1,5 +1,5 @@
 /obj/structure/roguemachine/atm
-	name = "SHYLOCK"
+	name = "MEISTER"
 	desc = "Stores and withdraws currency for accounts managed by the Kingdom of Rockhill."
 	icon = 'icons/roguetown/misc/machines.dmi'
 	icon_state = "atm"
