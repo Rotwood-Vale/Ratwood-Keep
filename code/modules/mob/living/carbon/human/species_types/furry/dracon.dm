@@ -62,13 +62,14 @@
 		/datum/customizer/organ/tail/lizard,
 		/datum/customizer/organ/tail_feature/lizard_spines,
 		/datum/customizer/organ/snout/lizard,
-		/datum/customizer/organ/frills/lizard,
+		/datum/customizer/organ/frills/anthro,
 		/datum/customizer/organ/horns/humanoid,
 		/datum/customizer/organ/testicles/anthro,
 		/datum/customizer/organ/penis/lizard,
 		/datum/customizer/organ/breasts/animal,
 		/datum/customizer/organ/belly/animal,
 		/datum/customizer/organ/vagina/animal,
+		/datum/customizer/organ/wings/dracon,
 		)
 	body_marking_sets = list(
 		/datum/body_marking_set/none,
