@@ -1122,7 +1122,7 @@
 	if(pulledby.grab_state >= GRAB_AGGRESSIVE)
 		resist_chance -= clamp(15 - (wrestling_diff * 4), 0, 15)
 
-	var/minimum_roll = 45
+	var/minimum_roll = 40
 	if(pulledby.grab_state >= GRAB_AGGRESSIVE || !(mobility_flags & MOBILITY_STAND))
 		minimum_roll = 25
 
