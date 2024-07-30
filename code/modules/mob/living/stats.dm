@@ -83,10 +83,10 @@
 				change_stat("constitution", -2)
 				change_stat("intelligence", -20)
 				change_stat("fortune", -20)
-			if(check_psychokiller(ckey(key)))
+			/*if(check_psychokiller(ckey(key)))
 				testing("foundpsych")
 				H.eye_color = "ff0000"
-				H.voice_color = "ff0000"
+				H.voice_color = "ff0000"*/
 
 /mob/living/proc/change_stat(stat, amt, index)
 	if(!stat)

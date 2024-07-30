@@ -50,7 +50,7 @@ GLOBAL_PROTECT(nameban)
 
 #undef NAMEBANFILE
 
-
+/*
 #define PSYCHOFILE "[global.config.directory]/roguetown/psychokiller.txt"
 
 GLOBAL_LIST(psychokiller)
@@ -74,7 +74,7 @@ GLOBAL_PROTECT(psychokiller)
 	. = (ckey in GLOB.psychokiller)
 
 #undef PSYCHOFILE
-
+*/
 
 #define BYPASSAGEFILE "[global.config.directory]/roguetown/bypassage.txt"
 
