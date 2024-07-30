@@ -98,4 +98,3 @@ GLOBAL_PROTECT(bypassage)
 		return FALSE
 	. = (ckey in GLOB.bypassage)
 
-#undef BYPASSAGEFILE
