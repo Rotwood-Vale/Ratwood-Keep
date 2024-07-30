@@ -207,7 +207,7 @@
 			if((bclass in GLOB.artery_strong_bclasses) && istype(user.rmb_intent, /datum/rmb_intent/strong))
 				used += 10
 			else if(istype(user.rmb_intent, /datum/rmb_intent/aimed))
-				used += 10
+				used += user.STAPER
 		if(prob(used))
 			attempted_wounds += /datum/wound/artery
 
@@ -254,7 +254,7 @@
 			if((bclass in GLOB.artery_strong_bclasses) && istype(user.rmb_intent, /datum/rmb_intent/strong))
 				used += 10
 			else if(istype(user.rmb_intent, /datum/rmb_intent/aimed))
-				used += 10
+				used += user.STAPER
 		if(prob(used))
 			if((zone_precise == BODY_ZONE_PRECISE_STOMACH) && !resistance)
 				attempted_wounds += /datum/wound/slash/disembowel
@@ -331,7 +331,7 @@
 					used += 10
 			else
 				if(istype(user.rmb_intent, /datum/rmb_intent/aimed))
-					used += 10
+					used += user.STAPER
 		var/artery_type = /datum/wound/artery
 		if(zone_precise == BODY_ZONE_PRECISE_NECK)
 			artery_type = /datum/wound/artery/neck
