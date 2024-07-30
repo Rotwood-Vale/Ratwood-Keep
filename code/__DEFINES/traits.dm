@@ -61,7 +61,7 @@
 #define TRAIT_SCHIZO_AMBIENCE "schizo_ambience" //replaces all ambience with creepy shit
 #define TRAIT_SCREENSHAKE "screenshake" //screen will always be shaking, you cannot stop it
 #define TRAIT_NORUN "Decayed Flesh"
-#define TRAIT_PSYCHOKILLER "Psychokiller"
+#define TRAIT_PUNISHMENT_CURSE "PunishmentCurse"
 #define TRAIT_LEPROSY "Leprosy"
 
 GLOBAL_LIST_INIT(roguetraits, list(

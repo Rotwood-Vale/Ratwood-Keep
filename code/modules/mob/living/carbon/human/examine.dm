@@ -125,8 +125,8 @@
 				. += span_userdanger("A MONSTER!")
 			if(mind.assigned_role == "Lunatic")
 				. += span_userdanger("LUNATIC!")
-			if(HAS_TRAIT(src, TRAIT_PSYCHOKILLER))
-				. += span_userdanger("PSYCHO!")
+			if(HAS_TRAIT(src, TRAIT_PUNISHMENT_CURSE))
+				. += span_userdanger("CURSED!")
 
 		if(HAS_TRAIT(src, TRAIT_MANIAC_AWOKEN))
 			. += span_userdanger("MANIAC!")

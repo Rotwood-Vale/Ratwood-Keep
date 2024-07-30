@@ -280,6 +280,7 @@
 			var/msg = "[key_name_admin(user)] REMOVED a ROLE BAN from ckey: [selected_ckey] \n[instance.get_ban_string_list().Join("\n")]"
 			message_admins(msg)
 			log_admin(msg)
+			log_game(msg)
 			remove_role_ban_for_ckey(ckey, instance)
 			show_ckey_role_bans_ui(user, ckey)
 			return
@@ -346,6 +347,7 @@
 	var/msg = "[key_name_admin(user)] applied a ROLE BAN for ckey: [selected_ckey] \n[instance.get_ban_string_list().Join("\n")]"
 	message_admins(msg)
 	log_admin(msg)
+	log_game(msg)
 	add_role_ban_for_ckey(selected_ckey, instance)
 	reset_panel(user)
 
