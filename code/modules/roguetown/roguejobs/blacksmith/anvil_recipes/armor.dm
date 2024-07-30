@@ -267,10 +267,10 @@
 	i_type = "Armor"
 
 /datum/anvil_recipe/armor/helmetpig
-	name = "Pigface Helmet (+1 Steel)"
+	name = "Bascinet Pigface Helmet (+1 Steel)"
 	req_bar = /obj/item/ingot/steel
 	additional_items = list(/obj/item/ingot/steel)
-	created_item = /obj/item/clothing/head/roguetown/helmet/heavy/pigface
+	created_item = /obj/item/clothing/head/roguetown/helmet/bascinet/pigface
 	craftdiff = 2
 	i_type = "Armor"
 
