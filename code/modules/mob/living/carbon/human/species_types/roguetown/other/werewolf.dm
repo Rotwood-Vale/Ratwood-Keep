@@ -114,4 +114,4 @@
 	return TRUE
 
 /datum/species/werewolf/random_name(gender,unique,lastname)
-	return "VEREWOLF"
+	return "WEREVOLF"

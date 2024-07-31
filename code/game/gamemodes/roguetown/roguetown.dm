@@ -161,21 +161,21 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "E
 
 	var/major_roll = rand(1,100)
 	switch(major_roll)
-		if(1 to 35)
+		if(1 to 15)
 			pick_rebels()
 			log_game("Major Antagonist: Rebellion")
-		if(36 to 80)
+		if(16 to 60)
 			//WWs and Vamps now normally roll together
 			pick_vampires()
 			pick_werewolves()
 			log_game("Major Antagonist: Vampires and Werewolves")
-		if(81 to 100)
+		if(61 to 100)
 			log_game("Major Antagonist: Extended") //gotta put something here.
 	
-	if(prob(45))
+	if(prob(50))
 		pick_bandits()
 		log_game("Minor Antagonist: Bandit")
-	if(prob(45))
+	if(prob(40))
 		pick_aspirants()
 		log_game("Minor Antagonist: Aspirant")
 	if(prob(10))
