@@ -199,6 +199,15 @@
 	glass_name = "glass of milk"
 	glass_desc = ""
 
+/datum/reagent/consumable/breastmilk
+	name = "Milk"
+	description = "An opaque white liquid produced by the mammary glands of mammals."
+	color = "#f7f6f3" // rgb: 247, 246, 243
+	taste_description = "milk"
+	glass_icon_state = "glass_white"
+	glass_name = "glass of milk"
+	glass_desc = ""
+
 /datum/reagent/consumable/milk/on_mob_life(mob/living/carbon/M)
 	if(M.getBruteLoss() && prob(20))
 		M.heal_bodypart_damage(1,0, 0)
