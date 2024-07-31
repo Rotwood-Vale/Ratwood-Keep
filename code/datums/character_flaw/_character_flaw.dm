@@ -41,7 +41,7 @@ GLOBAL_LIST_INIT(character_flaws, list(
 /mob/living/carbon/human/get_flaw(flaw_type)
 	if(!flaw_type)
 		return
-	if(charflaw != flaw_type)
+	if(charflaw.type != flaw_type)
 		return
 	return charflaw
 
@@ -286,7 +286,7 @@ GLOBAL_LIST_INIT(character_flaws, list(
 
 /datum/charflaw/narcoleptic
 	name = "Narcoleptic"
-	desc = "I get drowsy during the day and tend to fall asleep suddenly, but I can sleep easier if I want to, and moon dust can help me stay awake."
+	desc = "I get drowsy during the day and tend to fall asleep suddenly, but I can sleep easier and moondust can help me stay awake."
 	var/last_unconsciousness = 0
 	var/next_sleep = 0
 	var/concious_timer = (10 MINUTES)
@@ -316,8 +316,11 @@ GLOBAL_LIST_INIT(character_flaws, list(
 				concious_timer = rand(1 MINUTES, 2 MINUTES)
 				to_chat(user, span_warning("The pain keeps me awake..."))
 			else
-				if(prob(40) || drugged_up)
+				if(drugged_up)
 					drugged_up = FALSE
+					concious_timer = rand(8 MINUTES, 16 MINUTES)
+					to_chat(user, span_notice("I feel wide awake!"))
+				else if(prob(40))
 					concious_timer = rand(4 MINUTES, 6 MINUTES)
 					to_chat(user, span_info("The feeling has passed."))
 				else
