@@ -112,7 +112,7 @@
 
 /datum/special_trait/richpouch
 	name = "Rich Pouch"
-	greet_text = span_notice("I've recently found a pouch filled with mammons, probably some noble lost it.")
+	greet_text = span_notice("I've recently found a pouch filled with mammons, probably belonging to some noble.")
 
 /datum/special_trait/richpouch/on_apply(mob/living/carbon/human/character, silent)
 	var/obj/item/pouch = new /obj/item/storage/belt/rogue/pouch/coins/rich(get_turf(character))
