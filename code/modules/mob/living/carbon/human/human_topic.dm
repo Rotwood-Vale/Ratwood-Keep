@@ -27,6 +27,18 @@
 		popup.set_content(dat.Join())
 		popup.open(FALSE)
 		return
+	
+	if(href_list["task"] == "view_nudeshot")
+		if(!ismob(usr))
+			return
+		if(!valid_headshot_link(null, nudeshot_link, TRUE))
+			return
+		var/mob/user = usr
+		var/list/dat = list("<img src='[nudeshot_link]' width='360px' height='480px'>")
+		var/datum/browser/popup = new(user, "nudeshot", "<div align='center'>[src]'s Nudeshot</div>", 400, 525)
+		popup.set_content(dat.Join())
+		popup.open(FALSE)
+		return
 
 	if(href_list["inspect_limb"] && (observer_privilege || usr.canUseTopic(src, BE_CLOSE, NO_DEXTERITY)))
 		var/list/msg = list()
