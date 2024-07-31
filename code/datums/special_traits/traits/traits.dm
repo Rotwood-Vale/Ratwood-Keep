@@ -139,14 +139,14 @@
 
 /datum/special_trait/nopouch/on_apply(mob/living/carbon/human/character, silent)
 	var/obj/item/pouch = locate(/obj/item/storage/belt/rogue/pouch) in character
-	if(character.neck == pouch)
-		character.neck = null
+	if(character.wear_neck == pouch)
+		character.wear_neck = null
 	if(character.beltl == pouch)
 		character.beltl = null
 	if(character.beltr == pouch)
 		character.beltr = null
 	qdel(pouch)
-	
+
 /datum/special_trait/hussite
 	name = "Known Heretic"
 	greet_text = span_notice("I've been denounced by the church for either reasons legitimate or not!")
@@ -172,7 +172,7 @@
 //job specials
 /datum/special_trait/punkprincess //I think everyone will like the Rebellous Prince-Like Princess. I'd love to do one for the prince as well that gives him princess loadout, but, up to you!
 	name = "Rebellous Daughter"
-	greet_text = span_notice("I am quite rebellious for princess. Screw Noble Customs!")
+	greet_text = span_notice("I am quite rebellious for a princess. Screw Noble Customs!")
 	allowed_sexes = list(FEMALE)
 	allowed_jobs = list(/datum/job/roguetown/prince)
 	weight = 300

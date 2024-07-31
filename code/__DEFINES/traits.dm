@@ -110,7 +110,7 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_GOODLOVER = span_love("It's a lucky thing to share my bed."),
 	TRAIT_SEEDKNOW = span_info("I know which seeds grow which crops."),
 	TRAIT_CIVILIZEDBARBARIAN = span_info("Your fists are heavier."),
-	TRAIT_COMICSANS = span_sans("I am cursed with a odd voice.")
+	TRAIT_COMICSANS = span_sans("I am cursed with a odd voice."),
 	TRAIT_WATERBREATHING = span_info("I do not drown in bodies of water."),
 ))
 

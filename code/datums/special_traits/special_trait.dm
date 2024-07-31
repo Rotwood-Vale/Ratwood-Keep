@@ -7,11 +7,9 @@
 	var/list/allowed_races
 	var/list/allowed_ages
 	var/list/allowed_patrons
-	/// Not yet implemented
 	var/list/allowed_jobs
-	/// Not yet implemented
 	var/list/allowed_migrants
-
+	var/list/restricted_migrants
 	var/list/restricted_traits
 	var/list/restricted_races
 	var/list/restricted_jobs
