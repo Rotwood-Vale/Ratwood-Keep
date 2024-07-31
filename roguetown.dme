@@ -3521,5 +3521,10 @@
 #include "modular\code\modules\maturity-prompt\code\config_entries.dm"
 #include "modular\code\modules\maturity-prompt\code\maturity_prompt.dm"
 #include "modular\code\modules\maturity-prompt\code\maturity_subsystem.dm"
+#include "modular_azurepeak\_statpacks.dm"
+#include "modular_azurepeak\statpacks\agile.dm"
+#include "modular_azurepeak\statpacks\mental.dm"
+#include "modular_azurepeak\statpacks\physical.dm"
+#include "modular_azurepeak\statpacks\wildcard.dm"
 #include "modular_hearthstone\code\interface\LOOC.dm"
 // END_INCLUDE
