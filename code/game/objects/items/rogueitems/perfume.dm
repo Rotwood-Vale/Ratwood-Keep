@@ -59,7 +59,7 @@
 		user.visible_message(span_notice("[user] sprays [target] with \the [src]."), span_notice("You spray [target] with \the [src]."))
 	user.changeNext_move(CLICK_CD_RANGE*2)
 	playsound(user.loc, 'sound/items/perfume.ogg', 100, TRUE)
-	target.AddComponent(/datum/component/pollutant, fragrance_type, 1 MINUTES)
+	target.AddComponent(/datum/component/pollutant, fragrance_type, 10 MINUTES)
 
 /obj/item/perfume/random/Initialize()
 	fragrance_type = pick(subtypesof(/datum/pollutant/fragrance))
