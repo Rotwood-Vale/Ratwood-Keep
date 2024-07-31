@@ -112,6 +112,7 @@
 
 	var/headshot_link = null
 	var/nudeshot_link = null
+	var/flavor_text
 
 	possible_rmb_intents = list(/datum/rmb_intent/feint,\
 	/datum/rmb_intent/aimed,\

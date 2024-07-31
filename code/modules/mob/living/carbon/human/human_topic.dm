@@ -12,18 +12,20 @@
 			
 		var/mob/user = usr
 
-		var/height_px = 0
+		var/height_px = 50
 		if(flavor_text)
-			height_px += 140
+			height_px += 85
 		if(headshot_to_use)
-			height_px += 330
+			height_px += 275
 		var/list/dat = list()
 		if(headshot_to_use)
-			dat += "<img src='[headshot_link]' width='260px' height='260px'>"
+			dat += "<img valign='middle' src='[headshot_link]' width='260px' height='260px'>"
 		if(flavor_text)
-			dat += "<br><center>[flavor_text]</center>"
+			if(headshot_to_use)
+				dat += "<br><br>"
+			dat += "<center>[flavor_text]</center>"
 
-		var/datum/browser/popup = new(user, "headshot", "<div align='center'>[src]'s Headshot</div>", 310, height_px)
+		var/datum/browser/popup = new(user, "headshot", "<div align='center'>[src]</div>", 310, height_px)
 		popup.set_content(dat.Join())
 		popup.open(FALSE)
 		return
@@ -35,7 +37,7 @@
 			return
 		var/mob/user = usr
 		var/list/dat = list("<img src='[nudeshot_link]' width='360px' height='480px'>")
-		var/datum/browser/popup = new(user, "nudeshot", "<div align='center'>[src]'s Nudeshot</div>", 400, 525)
+		var/datum/browser/popup = new(user, "nudeshot", "<div align='center'>[src]</div>", 400, 525)
 		popup.set_content(dat.Join())
 		popup.open(FALSE)
 		return

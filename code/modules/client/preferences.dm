@@ -133,7 +133,7 @@ GLOBAL_LIST_EMPTY(chosen_names)
 
 	var/list/exp = list()
 	var/list/menuoptions
-	
+
 	var/datum/migrant_pref/migrant
 
 	var/action_buttons_screen_locs = list()
@@ -151,7 +151,6 @@ GLOBAL_LIST_EMPTY(chosen_names)
 
 	var/headshot_link
 	var/nudeshot_link
-	var/flavor_text
 	var/list/violated = list()
 	var/list/descriptor_entries = list()
 	var/defiant = TRUE
@@ -246,27 +245,11 @@ GLOBAL_LIST_EMPTY(chosen_names)
 
 			// Top-level menu table
 			dat += "<table style='width: 100%; line-height: 20px;'>"
-			// FIRST ROW
-			dat += "<tr>"
-			dat += "<td style='width:33%;text-align:left'>"
-			dat += "<a style='white-space:nowrap;' href='?_src_=prefs;preference=changeslot;'>Change Character</a>"
-			dat += "</td>"
-
-
-			dat += "<td style='width:33%;text-align:center'>"
-			if(SStriumphs.triumph_buys_enabled)
-				dat += "<a style='white-space:nowrap;' href='?_src_=prefs;preference=triumph_buy_menu'>Triumph Buy</a>"
-			dat += "</td>"
-
-			dat += "<td style='width:33%;text-align:right'>"
-			dat += "<a href='?_src_=prefs;preference=keybinds;task=menu'>Keybinds</a>"
-			dat += "</td>"
-			dat += "</tr>"
-
 
 			// NEXT ROW
 			dat += "<tr>"
 			dat += "<td style='width:33%;text-align:left'>"
+			dat += "<a style='white-space:nowrap;' href='?_src_=prefs;preference=changeslot;'>Change Character</a>"
 			dat += "</td>"
 
 			dat += "<td style='width:33%;text-align:center'>"
@@ -274,6 +257,7 @@ GLOBAL_LIST_EMPTY(chosen_names)
 			dat += "</td>"
 
 			dat += "<td style='width:33%;text-align:right'>"
+			dat += "<a href='?_src_=prefs;preference=keybinds;task=menu'>Keybinds</a>"
 			dat += "</td>"
 			dat += "</tr>"
 
@@ -298,6 +282,8 @@ GLOBAL_LIST_EMPTY(chosen_names)
 
 			dat += "<td style='width:33%;text-align:center'>"
 			dat += "<a href='?_src_=prefs;preference=triumphs;task=menu'><b>TRIUMPHS:</b></a> [user.get_triumphs() ? "\Roman [user.get_triumphs()]" : "None"]"
+			if(SStriumphs.triumph_buys_enabled)
+				dat += "<a style='white-space:nowrap;' href='?_src_=prefs;preference=triumph_buy_menu'>Triumph Buy</a>"
 			dat += "</td>"
 
 			dat += "<td style='width:33%;text-align:right'>"
@@ -361,7 +347,16 @@ GLOBAL_LIST_EMPTY(chosen_names)
 			dat += "<b>Faith:</b> <a href='?_src_=prefs;preference=faith;task=input'>[selected_faith?.name || "FUCK!"]</a><BR>"
 			dat += "<b>Patron:</b> <a href='?_src_=prefs;preference=patron;task=input'>[selected_patron?.name || "FUCK!"]</a><BR>"
 //			dat += "<b>Family:</b> <a href='?_src_=prefs;preference=family'>Unknown</a><BR>" // Disabling until its working
-			dat += "<b>Dominance:</b> <a href='?_src_=prefs;preference=domhand'>[domhand == 1 ? "Left-handed" : "Right-handed"]</a><BR>"
+			dat += "<b>Dominance:</b> <a href='?_src_=prefs;preference=domhand'>[domhand == 1 ? "Left-handed" : "Right-handed"]</a>"
+
+			dat += "<br><b>Headshot(1:1):</b> <a href='?_src_=prefs;preference=headshot;task=input'>Change</a>"
+			if(headshot_link != null)
+				dat += "<a href='?_src_=prefs;preference=view_headshot;task=input'>View</a>"
+
+			dat += "<br><b>Nudeshot(3:4):</b> <a href='?_src_=prefs;preference=nudeshot;task=input'>Change</a>"
+			if(nudeshot_link != null)
+				dat += "<a href='?_src_=prefs;preference=view_nudeshot;task=input'>View</a>"
+
 
 /*
 			dat += "<br><br><b>Special Names:</b><BR>"
@@ -409,7 +404,6 @@ GLOBAL_LIST_EMPTY(chosen_names)
 				dat += "<b>Mutant Color #3:</b><span style='border: 1px solid #161616; background-color: #[features["mcolor3"]];'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;preference=mutant_color3;task=input'>Change</a><BR>"
 
 
-			dat += "<br>"
 			dat += "<b>Voice Color: </b><a href='?_src_=prefs;preference=voice;task=input'>Change</a>"
 
 
@@ -417,14 +411,6 @@ GLOBAL_LIST_EMPTY(chosen_names)
 			dat += "<br><b>Markings:</b> <a href='?_src_=prefs;preference=markings;task=menu'>Change</a>"
 			dat += "<br><b>Descriptors:</b> <a href='?_src_=prefs;preference=descriptors;task=menu'>Change</a>"
 			dat += "<br><b>Short Flavor:</b> <a href='?_src_=prefs;preference=flavor_text;task=menu'>Change</a>"
-
-			dat += "<br><b>Headshot(1:1):</b> <a href='?_src_=prefs;preference=headshot;task=input'>Change</a>"
-			if(headshot_link != null)
-				dat += "<a href='?_src_=prefs;preference=view_headshot;task=input'>View</a>"
-
-			dat += "<br><b>Nudeshot(3:4):</b> <a href='?_src_=prefs;preference=nudeshot;task=input'>Change</a>"
-			if(nudeshot_link != null)
-				dat += "<a href='?_src_=prefs;preference=view_nudeshot;task=input'>View</a>"
 			dat += "</td>"
 
 			dat += "</tr></table>"
@@ -670,7 +656,7 @@ GLOBAL_LIST_EMPTY(chosen_names)
 
 	if(!IsGuestKey(user.key))
 		dat += "<a href='?_src_=prefs;preference=save'>Save</a><br>"
-		dat += "<a href='?_src_=prefs;preference=load'>Undo</a><br>"
+		dat += "<a href='?_src_=prefs;preference=load'>Undo</a>"
 
 	// well.... one empty slot here for something I suppose lol
 	dat += "<table width='100%'>"
@@ -689,7 +675,7 @@ GLOBAL_LIST_EMPTY(chosen_names)
 		else
 			dat += "<a class='linkOff' href='byond://?src=[REF(N)];late_join=1'>JOINLATE</a>"
 		dat += " - <a href='?_src_=prefs;preference=migrants'>MIGRATION</a>"
-		
+
 	dat += "</td>"
 	dat += "<td width='33%' align='right'>"
 	dat += "<b>Be defiant:</b> <a href='?_src_=prefs;preference=be_defiant'>[(defiant) ? "Yes":"No"]</a><br>"
@@ -1304,15 +1290,15 @@ Slots: [job.spawn_positions]</span>
 		show_descriptors_ui(user)
 		return
 	else if (href_list["preference"] == "flavor_text")
-		var/new_flavor = input(user, "Choose your character's short flavor text (100 characters):", "Flavor text", flavor_text)  as message|null
+		var/new_flavor = input(user, "Choose your character's short flavor text (150 characters):", "Flavor text", flavor_text)  as message|null
 		if(new_flavor == "")
 			flavor_text = ""
 			to_chat(user, span_info("Flavor text removed"))
 		else if(new_flavor == null)
 			return
 		else
-			flavor_text = strip_html_simple(new_flavor, t)
-			to_chat(user, span_info(flavor_text))
+			flavor_text = strip_html_simple(new_flavor, 150)
+			to_chat(user, span_info("New flavor text:\n[flavor_text]"))
 
 	else if(href_list["preference"] == "customizers")
 		ShowCustomizers(user)
@@ -1550,7 +1536,7 @@ Slots: [job.spawn_positions]</span>
 
 				if("view_nudeshot")
 					var/list/dat = list("<img src='[nudeshot_link]' width='360px' height='480px'>")
-					var/datum/browser/popup = new(user, "nudeshot", "<div align='center'>Nudeshot</div>", 400, 525)	
+					var/datum/browser/popup = new(user, "nudeshot", "<div align='center'>Nudeshot</div>", 400, 525)
 					popup.set_content(dat.Join())
 					popup.open(FALSE)
 					return
@@ -1966,7 +1952,7 @@ Slots: [job.spawn_positions]</span>
 				if("widescreenpref")
 					widescreenpref = !widescreenpref
 					user.client.change_view(CONFIG_GET(string/default_view))
-				
+
 				if("be_defiant")
 					defiant = !defiant
 					if(defiant)
@@ -1982,7 +1968,7 @@ Slots: [job.spawn_positions]</span>
 										Good voices will be rewarded with PQ for answering meditations, while bad ones are punished at the discretion of jannies.</span>")
 					else
 						to_chat(user, span_warning("You are no longer a voice."))
-				
+
 				if("migrants")
 					migrant.show_ui()
 					return
