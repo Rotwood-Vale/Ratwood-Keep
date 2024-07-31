@@ -96,17 +96,13 @@
 	if(next_move > world.time)
 		return
 
-	if(modifiers["middle"])
-		if(atkswinging != "middle")
-			return
+	if(modifiers["middle"] && atkswinging == "middle")
 		if(mmb_intent)
 			if(mmb_intent.get_chargetime())
 				if(mmb_intent.no_early_release && client?.chargedprog < 100)
 					changeNext_move(mmb_intent.clickcd)
 					return
-	if(modifiers["left"])
-		if(atkswinging != "left")
-			return
+	if(modifiers["left"] && atkswinging == "left")
 		if(active_hand_index == 1)
 			used_hand = 1
 			if(next_lmove > world.time)
@@ -124,22 +120,19 @@
 					adf = round(adf * 0.6)
 				changeNext_move(adf,used_hand)
 				return
-	if(modifiers["right"])
-		if(oactive)
-			if(atkswinging != "right")
+	if(modifiers["right"] && oactive && atkswinging == "right")
+		if(active_hand_index == 1)
+			used_hand = 2
+			if(next_rmove > world.time)
 				return
-			if(active_hand_index == 1)
-				used_hand = 2
-				if(next_rmove > world.time)
-					return
-			else
-				used_hand = 1
-				if(next_lmove > world.time)
-					return
-			if(used_intent.get_chargetime())
-				if(used_intent.no_early_release && client?.chargedprog < 100)
-					changeNext_move(used_intent.clickcd,used_hand)
-					return
+		else
+			used_hand = 1
+			if(next_lmove > world.time)
+				return
+		if(used_intent.get_chargetime())
+			if(used_intent.no_early_release && client?.chargedprog < 100)
+				changeNext_move(used_intent.clickcd,used_hand)
+				return
 
 
 //	if(modifiers["shift"] && modifiers["middle"])
@@ -515,6 +508,8 @@
 	if(user.get_active_held_item())
 		return
 	var/list/atomy = list()
+	var/list/atomcounts = list()
+	var/list/atomrefs = list()
 	var/list/overrides = list()
 	for(var/image/I in user.client.images)
 		if(I.loc && I.loc.loc == src && I.override)
@@ -528,12 +523,26 @@
 			continue
 		if(A.IsObscured())
 			continue
-		atomy += A
-	var/atom/AB = input(user, "[src.name]","",null) as null|anything in atomy
+		if(!A.name)
+			continue
+		var/AN = A.name
+		atomcounts[AN] += 1
+		if(!atomrefs[AN]) // Only the FIRST item that matches the same name
+			atomrefs[AN] = A // If this one item can't get picked up, sucks to be you
+	if(length(atomrefs))
+		for(var/AC in atomrefs)
+			var/AD = "[AC] ([atomcounts[AC]])"
+			atomy[AD] = atomrefs[AC]
+	var/atom/AB = input(user, "What will I take?","Items on [src.name ? "\the [src.name]:" : "the floor:"]",null) as null|anything in atomy
 	if(!AB)
 		return
+	if(QDELETED(atomy[AB]))
+		return
+	if(atomy[AB].loc != src)
+		return
+	var/AE = atomy[AB]
 	user.used_intent = user.a_intent
-	user.UnarmedAttack(AB,1,params)
+	user.UnarmedAttack(AE,1,params)
 
 /mob/proc/ShiftMiddleClickOn(atom/A, params)
 	. = SEND_SIGNAL(src, COMSIG_MOB_MIDDLECLICKON, A)

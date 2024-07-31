@@ -9,7 +9,7 @@
 		SEND_SIGNAL(M, COMSIG_CLEAR_MOOD_EVENT, "[type]_high")
 
 /datum/reagent/drug/space_drugs
-	name = "Space drugs"
+	name = "Swamp drugs"
 	description = "An illegal chemical compound used as drug."
 	color = "#60A584" // rgb: 96, 165, 132
 	overdose_threshold = 30
@@ -78,11 +78,6 @@
 	trippy = FALSE
 	overdose_threshold=999
 	metabolization_rate = 0.1 * REAGENTS_METABOLISM
-
-
-/datum/reagent/drug/nicotine/on_mob_end_metabolize(mob/living/M)
-//	M.remove_stress(/datum/stressevent/pweed)
-	..()
 
 /datum/reagent/drug/nicotine/on_mob_metabolize(mob/living/M)
 	M.add_stress(/datum/stressevent/pweed)

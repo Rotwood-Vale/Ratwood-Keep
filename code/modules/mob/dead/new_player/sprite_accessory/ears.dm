@@ -110,6 +110,12 @@
 	color_keys = 2
 	color_key_names = list("Ears", "Inner")
 
+/datum/sprite_accessory/ears/vulp
+	name = "Vulp"
+	icon_state = "vulp"
+	color_keys = 2
+	color_key_names = list("Ears", "Inner")
+
 /datum/sprite_accessory/ears/husky
 	name = "Husky"
 	icon_state = "wolf"
@@ -157,6 +163,12 @@
 /datum/sprite_accessory/ears/sergal
 	name = "Sergal"
 	icon_state = "sergal"
+	color_keys = 2
+	color_key_names = list("Ears", "Inner")
+
+/datum/sprite_accessory/ears/shark
+	name = "Shark"
+	icon_state = "shark"
 	color_keys = 2
 	color_key_names = list("Ears", "Inner")
 

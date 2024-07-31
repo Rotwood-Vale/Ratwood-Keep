@@ -96,7 +96,7 @@
 	var/light_system = STATIC_LIGHT
 	///Bitflags to determine lighting-related atom properties.
 	var/light_flags = NONE
-	
+
 
 /**
   * Called when an atom is created in byond (built in engine proc)
@@ -500,13 +500,10 @@
 	if(reagents)
 		if(reagents.flags & TRANSPARENT)
 			if(length(reagents.reagent_list))
-				if(user.can_see_reagents()) //Show each individual reagent
+				if(user.can_see_reagents() || (user.Adjacent(src) && user.mind.get_skill_level(/datum/skill/misc/alchemy) >= 2)) //Show each individual reagent
 					. += "It contains:"
 					for(var/datum/reagent/R in reagents.reagent_list)
-						if(R.volume / 3 < 1)
-							. += "less than 1 oz of <font color=[R.color]>[R.name]</font>"
-						else
-							. += "[round(R.volume / 3)] oz of <font color=[R.color]>[R.name]</font>"
+						. += "[round(R.volume / 3, 0.1)] oz of <font color=[R.color]>[R.name]</font>"
 				else //Otherwise, just show the total volume
 					var/total_volume = 0
 					var/reagent_color
@@ -1112,6 +1109,8 @@
 
 	var/log_text = "[key_name(src)] [message] [loc_name(src)]"
 	switch(message_type)
+		if(LOG_SEEN)
+			log_seen_internal(log_text)
 		if(LOG_ATTACK)
 			log_attack(log_text)
 		if(LOG_SAY)
@@ -1173,7 +1172,7 @@
   * 4 is a tool with which the action was made (usually an item)
   * 5 is any additional text, which will be appended to the rest of the log line
   */
-/proc/log_combat(atom/user, atom/target, what_done, atom/object=null, addition=null)
+/proc/log_combat(atom/user, atom/target, what_done, atom/object=null, addition=null, log_seen = TRUE)
 	var/ssource = key_name(user)
 	var/starget = key_name(target)
 
@@ -1192,9 +1191,50 @@
 	var/message = "has [what_done] [starget][postfix]"
 	user.log_message(message, LOG_ATTACK, color="red")
 
+	if(log_seen)
+		log_seen_viewers(user, target, message, SEEN_LOG_ATTACK)
+
 	if(user != target)
 		var/reverse_message = "has been [what_done] by [ssource][postfix]"
 		target.log_message(reverse_message, LOG_ATTACK, color="orange", log_globally=FALSE)
+
+/proc/log_seen(mob/user, atom/target, list/viewers, message, seen_type)
+	var/color
+	switch(seen_type)
+		if(SEEN_LOG_SAY)
+			color = "orange"
+		if(SEEN_LOG_EMOTE)
+			color = "grey"
+		if(SEEN_LOG_ATTACK)
+			color = "red"
+	var/count = 0
+	var/viewer_string = ""
+	for(var/mob/viewer as anything in viewers)
+		if(viewer == user)
+			continue
+		if(!isliving(viewer))
+			continue
+		if(!viewer.client)
+			continue
+		count++
+		if(count > 1)
+			viewer_string += ", "
+		viewer_string += key_name(viewer)
+	if(target)
+		if(ismob(target))
+			var/mob/mob_target = target
+			message += " [key_name(mob_target)]"
+		else
+			message += " [target]"
+	user.log_message("[message] ([viewer_string])", LOG_SEEN, color=color, log_globally=FALSE)
+
+/proc/log_seen_viewers(mob/user, mob/target, message, seen_type, vision_distance = DEFAULT_MESSAGE_RANGE)
+	var/list/viewers = get_hearers_in_view(vision_distance, user)
+	log_seen(user, target, viewers, message, seen_type)
+
+/proc/log_seen_hearers(mob/user, mob/target, message, seen_type, vision_distance = DEFAULT_MESSAGE_RANGE)
+	var/list/hearers = get_hearers_in_view(vision_distance, user)
+	log_seen(user, target, hearers, message, seen_type)
 
 /atom/movable/proc/add_filter(name,priority,list/params)
 	if(!filter_data)

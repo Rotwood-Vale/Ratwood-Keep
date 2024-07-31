@@ -5,20 +5,12 @@
 	faction = "Station"
 	total_positions = 1
 	spawn_positions = 1
-	allowed_sexes = list(MALE)
+	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_TOLERATED_UP
 	allowed_patrons = list(
 		/datum/patron/old_god,
-		/datum/patron/divine/astrata,
-		/datum/patron/divine/noc,
-		/datum/patron/divine/dendor,
-		/datum/patron/divine/abyssor,
-		/datum/patron/divine/ravox,
-		/datum/patron/divine/necra,
-		/datum/patron/divine/xylix,
-		/datum/patron/divine/pestra,
-		/datum/patron/divine/malum,
-	) //gets set to old god anyways
+		ALL_DIVINE_PATRONS,
+	) //gets set to old god.
 	tutorial = "As an Inquisitor, the Queen has emboldened your radical sect to root out cultists and the cursed night beasts, using your practice of extracting involuntary 'sin confessions' as a guise to spy on the local populace. Witch Hunters are hired for their extreme paranoia and religious fervor."
 	whitelist_req = TRUE
 
@@ -27,15 +19,6 @@
 	give_bank_account = 36
 	min_pq = 5
 	max_pq = null
-
-/datum/job/roguetown/puritan/after_spawn(mob/living/L, mob/M, latejoin = TRUE)
-	..()
-	if(!L.mind)
-		return
-	if(L.mind.has_antag_datum(/datum/antagonist))
-		return
-	var/datum/antagonist/new_antag = new /datum/antagonist/purishep()
-	L.mind.add_antag_datum(new_antag)
 
 /datum/outfit/job/roguetown/puritan
 	name = "Inquisitor"

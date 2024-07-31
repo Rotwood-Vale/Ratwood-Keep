@@ -16,9 +16,11 @@
 	pants = /obj/item/clothing/under/roguetown/trou
 	shoes = /obj/item/clothing/shoes/roguetown/boots/leather
 	belt = /obj/item/storage/belt/rogue/leather
-	armor = /obj/item/clothing/suit/roguetown/armor/chainmail/iron
+	armor = /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk
+	neck = /obj/item/storage/belt/rogue/pouch/coins/poor
 	wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
 	backr = /obj/item/rogueweapon/shield/wood
+	backl = /obj/item/storage/backpack/rogue/satchel
 	if(prob(25))
 		mask = /obj/item/clothing/mask/rogue/facemask
 	if(prob(25))
@@ -27,19 +29,27 @@
 		gloves = /obj/item/clothing/gloves/roguetown/angle
 	if(prob(50))
 		beltl = /obj/item/rogueweapon/mace/steel
-	else
+	else if(prob(50))
 		beltl = /obj/item/rogueweapon/stoneaxe/battle
+	else
+		r_hand = /obj/item/rogueweapon/halberd
+		beltl = /obj/item/rogueweapon/huntingknife
+		
 
+	H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 2, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/combat/maces, 3, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/combat/axes, 3, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/combat/swords, 2, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/combat/polearms, 3, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 3, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/craft/crafting, 1, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/misc/climbing, 1, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/misc/climbing, 2, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/sewing, 1, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/medicine, 1, TRUE)
-	H.change_stat("constitution", 2)
-	H.change_stat("speed", -1)
+	H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 1,, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/misc/swimming, 1, TRUE)
+	H.change_stat("constitution", 3) // Seven points just like Warrior. They already get a debuff racial to speed. Please do not stack it God please.
 	H.change_stat("strength", 2)
 	H.change_stat("endurance", 2)

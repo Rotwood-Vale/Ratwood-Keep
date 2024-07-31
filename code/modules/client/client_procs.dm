@@ -607,8 +607,7 @@ GLOBAL_LIST_EMPTY(external_rsc_urls)
 		qdel(query_client_in_db)
 		return
 	if(!query_client_in_db.NextRow())
-		// if (CONFIG_GET(flag/panic_bunker) && !holder && !GLOB.deadmins[ckey])
-		if (CONFIG_GET(flag/panic_bunker) && !holder && !GLOB.deadmins[ckey] && !(ckey in GLOB.bunker_bypasses)) //MODULAR RATWOOD
+		if (CONFIG_GET(flag/panic_bunker) && !holder && !GLOB.deadmins[ckey] && !bunker_bypass_check())
 			log_access("Failed Login: [key] - New account attempting to connect during panic bunker")
 			message_admins(span_adminnotice("Failed Login: [key] - New account attempting to connect during panic bunker"))
 			to_chat(src, CONFIG_GET(string/panic_bunker_message))
@@ -1136,8 +1135,15 @@ GLOBAL_LIST_EMPTY(external_rsc_urls)
 	var/list/selections = GLOB.character_ckey_list.Copy()
 	if(!selections.len)
 		return
-	var/selection = input(src,"Which Character?") as null|anything in sortList(selections)
+	var/selection
+	if(SSticker.current_state == GAME_STATE_FINISHED)
+		selection = input(src,"Which Character?") as null|anything in sortList(selections)
+	else
+		selection = input(src, "Which Character?") as null|text
 	if(!selection)
+		return
+	if(!selections[selection])
+		to_chat(src, span_warning("Not found anyone with that name"))
 		return
 	var/theykey = selections[selection]
 	if(theykey == ckey)

@@ -1,4 +1,14 @@
 /obj/item/reagent_containers/powder
+	name = "default powder"
+	desc = ""
+	icon = 'icons/roguetown/items/produce.dmi'
+	icon_state = "spice"
+	item_state = "spice"
+	possible_transfer_amounts = list()
+	volume = 15
+	sellprice = 10
+
+/obj/item/reagent_containers/powder/spice
 	name = "spice"
 	desc = ""
 	icon = 'icons/roguetown/items/produce.dmi'
@@ -7,6 +17,7 @@
 	possible_transfer_amounts = list()
 	volume = 15
 	list_reagents = list(/datum/reagent/druqks = 15)
+	grind_results = list(/datum/reagent/druqks = 15)
 	sellprice = 10
 
 /datum/reagent/druqks
@@ -137,10 +148,11 @@
 	gender = PLURAL
 	icon_state = "flour"
 	list_reagents = list(/datum/reagent/floure = 1)
+	grind_results = list(/datum/reagent/floure = 10)
 	volume = 1
 	sellprice = 0
 /datum/reagent/floure
-	name = "flower"
+	name = "flour"
 	description = ""
 	color = "#FFFFFF" // rgb: 96, 165, 132
 
@@ -155,13 +167,29 @@
 	..()
 	qdel(src)
 
-/obj/item/reagent_containers/powder/flour/salt
+/datum/chemical_reaction/graintopowder
+	name = "Powder Piling"
+	id = "powderpiling"
+	required_reagents = list(/datum/reagent/floure = 10)
+
+/datum/chemical_reaction/graintopowder/on_reaction(datum/reagents/holder, created_volume)
+	var/location = get_turf(holder.my_atom)
+	for(var/i = 1, i <= created_volume, i++)
+		new /obj/item/reagent_containers/powder/flour(location)
+
+/obj/item/reagent_containers/powder/salt
 	name = "salt"
 	desc = ""
 	gender = PLURAL
 	icon_state = "salt"
-	list_reagents = list(/datum/reagent/floure = 1)
+	list_reagents = list(/datum/reagent/consumable/sodiumchloride = 15)
+	grind_results = list(/datum/reagent/consumable/sodiumchloride = 15)
 	volume = 1
+
+/obj/item/reagent_containers/powder/salt/throw_impact(atom/hit_atom, datum/thrownthing/thrownthing)
+	new /obj/effect/decal/cleanable/food/salt(get_turf(src))
+	..()
+	qdel(src)
 
 /obj/item/reagent_containers/powder/ozium
 	name = "powder"
@@ -171,6 +199,7 @@
 	possible_transfer_amounts = list()
 	volume = 15
 	list_reagents = list(/datum/reagent/ozium = 15)
+	grind_results = list(/datum/reagent/ozium = 15)
 	sellprice = 5
 
 /datum/reagent/ozium
@@ -206,6 +235,7 @@
 	possible_transfer_amounts = list()
 	volume = 15
 	list_reagents = list(/datum/reagent/moondust = 15)
+	grind_results = list(/datum/reagent/moondust = 15)
 	sellprice = 5
 
 /datum/reagent/moondust/overdose_process(mob/living/M)
@@ -222,6 +252,7 @@
 	animate(M.client)
 
 /datum/reagent/moondust/on_mob_life(mob/living/carbon/M)
+	narcolepsy_drug_up(M)
 	if(M.reagents.has_reagent(/datum/reagent/moondust_purest))
 		M.Sleeping(40, 0)
 	if(M.has_flaw(/datum/charflaw/addiction/junkie))
@@ -246,6 +277,7 @@
 	possible_transfer_amounts = list()
 	volume = 18
 	list_reagents = list(/datum/reagent/moondust_purest = 18)
+	grind_results = list(/datum/reagent/moondust_purest = 15)
 	sellprice = 30
 
 /datum/reagent/moondust_purest
@@ -272,6 +304,7 @@
 	M.clear_fullscreen("purest_kaif")
 
 /datum/reagent/moondust_purest/on_mob_life(mob/living/carbon/M)
+	narcolepsy_drug_up(M)
 	if(M.reagents.has_reagent(/datum/reagent/moondust))
 		M.Sleeping(40, 0)
 	if(M.has_flaw(/datum/charflaw/addiction/junkie))

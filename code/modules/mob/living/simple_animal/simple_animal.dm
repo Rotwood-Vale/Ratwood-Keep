@@ -218,8 +218,6 @@ GLOBAL_VAR_INIT(farm_animals, FALSE)
 				return
 			var/realchance = tame_chance
 			if(realchance)
-				if(user.mind)
-					realchance += (user.mind.get_skill_level(/datum/skill/labor/taming) * 20)
 				if(prob(realchance))
 					tamed()
 				else
@@ -410,7 +408,7 @@ GLOBAL_VAR_INIT(farm_animals, FALSE)
 	if((bodytemperature < minbodytemp) || (bodytemperature > maxbodytemp))
 		adjustHealth(unsuitable_atmos_damage)
 
-/mob/living/simple_animal/MiddleClick(mob/user, params)
+/mob/living/simple_animal/MiddleClick(mob/living/user, params)
 	if(stat == DEAD)
 		var/obj/item/held_item = user.get_active_held_item()
 		if(held_item)
@@ -422,6 +420,8 @@ GLOBAL_VAR_INIT(farm_animals, FALSE)
 				playsound(src, 'sound/foley/gross.ogg', 100, FALSE)
 				if(do_after(user, used_time, target = src))
 					gib()
+					if(user.mind)
+						user.mind.add_sleep_experience(/datum/skill/labor/butchering, user.STAINT * 4)
 	..()
 
 /mob/living/simple_animal/gib()

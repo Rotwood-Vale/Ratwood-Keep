@@ -10,11 +10,16 @@
 	. = ..()
 	prefs = passed_prefs
 
-/datum/migrant_pref/proc/set_active(new_state)
+/datum/migrant_pref/proc/set_active(new_state, silent = FALSE)
 	if(active == new_state)
 		return
 	active = new_state
 	role_preferences.Cut()
+	if(!silent && prefs.parent)
+		if(new_state)
+			to_chat(prefs.parent, span_notice("You are now in the migrant queue, and will join the game with them when they arrive"))
+		else
+			to_chat(prefs.parent, span_boldwarning("You are no longer in the migrant queue"))
 
 /datum/migrant_pref/proc/toggle_role_preference(role_type)
 	if(role_type in role_preferences)
@@ -25,11 +30,20 @@
 
 		if(SSmigrants.can_be_role(prefs.parent, role_type))
 			role_preferences += role_type
+			var/datum/migrant_role/role = MIGRANT_ROLE(role_type)
+			to_chat(prefs.parent, span_nicegreen("You have prioritizd the [role.name]. This does not guarantee getting the role"))
 		else
 			to_chat(prefs.parent, span_warning("You can't be this role. (Wrong species, gender or age)"))
 
 /datum/migrant_pref/proc/post_spawn()
-	set_active(FALSE)
+	set_active(FALSE, TRUE)
+	hide_ui()
+
+/datum/migrant_pref/proc/hide_ui()
+	var/client/client = prefs.parent
+	if(!client)
+		return
+	client.mob << browse(null, "window=migration")
 
 /datum/migrant_pref/proc/show_ui()
 	var/client/client = prefs.parent

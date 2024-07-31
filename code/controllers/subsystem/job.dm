@@ -105,6 +105,7 @@ SUBSYSTEM_DEF(job)
 			if(player.client)
 				player.client.prefs.lastclass = null
 				player.client.prefs.save_preferences()
+		job.greet(player)
 		return TRUE
 	JobDebug("AR has failed, Player: [player], Rank: [rank]")
 	return FALSE

@@ -43,6 +43,7 @@
 		/obj/item/needle/pestra = 1,
 		/obj/item/natural/worms/leech/cheele = 1, //little buddy
 	)
+	ADD_TRAIT(H, TRAIT_CHOSEN, TRAIT_GENERIC)
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 5, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 5, TRUE)
@@ -69,7 +70,6 @@
 //		H.underwear = "Femleotard"
 //		H.underwear_color = CLOTHING_BLACK
 //		H.update_body()
-
 
 /mob/living/carbon/human/proc/coronate_lord()
 	set name = "Coronate"
@@ -143,17 +143,30 @@
 		GLOB.excommunicated_players += inputty
 		priority_announce("[real_name] has put Xylix's curse of woe on [inputty] for offending the church!", title = "SHAME", sound = 'sound/misc/excomm.ogg')
 
+/mob/living/carbon/human
+	COOLDOWN_DECLARE(church_announcement)
+
 /mob/living/carbon/human/proc/churchannouncement()
 	set name = "Announcement"
 	set category = "Priest"
-	if(stat)
+
+	if(!COOLDOWN_FINISHED(src, church_announcement))
+		to_chat(src, span_warning("I should wait..."))
 		return
+
+	if(stat)
+		return FALSE
+
 	var/inputty = input("Make an announcement", "ROGUETOWN") as text|null
-	if(inputty)
-		if(!istype(get_area(src), /area/rogue/indoors/town/church/chapel))
-			to_chat(src, span_warning("I need to do this from the chapel."))
-			return FALSE
-		priority_announce("[inputty]", title = "The Priest Speaks", sound = 'sound/misc/bell.ogg')
+	if(!inputty)
+		return FALSE
+
+	if(!istype(get_area(src), /area/rogue/indoors/town/church/chapel))
+		to_chat(src, span_warning("I need to do this from the chapel."))
+		return FALSE
+
+	priority_announce("[inputty]", title = "The Priest Speaks", sound = 'sound/misc/bell.ogg')
+	COOLDOWN_START(src, church_announcement, 30 SECONDS)
 
 /obj/effect/proc_holder/spell/self/convertrole/templar
 	name = "Recruit Templar"

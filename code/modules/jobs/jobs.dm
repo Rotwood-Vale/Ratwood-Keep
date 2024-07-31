@@ -122,7 +122,7 @@ GLOBAL_LIST_INIT(peasant_positions, list(
 	"Towner",
 	"Grabber",
 	"Nightmaster",
-	"Bath Wench",
+	"Bath Swain",
 	"Docker",
 	"Prisoner",
 	"Beggar",
@@ -144,7 +144,7 @@ GLOBAL_LIST_INIT(youngfolk_positions, list(
 	"Churchling",
 	"Servant",
 	"Shophand",
-	"Orphan",
+	"Vagabond",
 ))
 
 GLOBAL_LIST_INIT(allmig_positions, list(

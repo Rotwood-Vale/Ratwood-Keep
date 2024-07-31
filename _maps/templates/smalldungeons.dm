@@ -78,7 +78,7 @@
 		/obj/item/rogueweapon/huntingknife/idagger/steel = 3,
 		/obj/item/gun/ballistic/revolver/grenadelauncher/bow = 2,
 		/obj/item/gun/ballistic/revolver/grenadelauncher/crossbow = 2,
-		/obj/item/ammo_casing/caseless/rogue/arrow = 4,
+		/obj/item/ammo_casing/caseless/rogue/arrow/iron = 4,
 		/obj/item/ammo_casing/caseless/rogue/bolt = 4,
 		/obj/item/rogueweapon/mace/woodclub/crafted = 3,
 		/obj/item/rogueweapon/mace/cudgel = 2,
@@ -118,7 +118,7 @@
 		//food
 		/obj/item/reagent_containers/food/snacks/rogue/crackers = 3,
 		/obj/item/reagent_containers/food/snacks/butterslice = 3,
-		/obj/item/reagent_containers/powder/flour/salt = 3,
+		/obj/item/reagent_containers/powder/salt = 3,
 		/obj/item/reagent_containers/food/snacks/egg = 3,
 
 	)
@@ -212,7 +212,7 @@
 		/obj/item/rogueweapon/huntingknife/idagger/steel = 3,
 		/obj/item/gun/ballistic/revolver/grenadelauncher/bow = 2,
 		/obj/item/gun/ballistic/revolver/grenadelauncher/crossbow = 2,
-		/obj/item/ammo_casing/caseless/rogue/arrow = 4,
+		/obj/item/ammo_casing/caseless/rogue/arrow/iron = 4,
 		/obj/item/ammo_casing/caseless/rogue/bolt = 4,
 		/obj/item/rogueweapon/mace/woodclub/crafted = 3,
 		/obj/item/rogueweapon/mace/cudgel = 2,
@@ -263,7 +263,7 @@
 		//food
 		/obj/item/reagent_containers/food/snacks/rogue/crackers = 3,
 		/obj/item/reagent_containers/food/snacks/butterslice = 3,
-		/obj/item/reagent_containers/powder/flour/salt = 3,
+		/obj/item/reagent_containers/powder/salt = 3,
 		/obj/item/reagent_containers/food/snacks/egg = 3
 	)
 	lootcount = 2

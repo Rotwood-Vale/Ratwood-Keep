@@ -3,8 +3,8 @@
 	flag = GUARDSMAN
 	department_flag = GARRISON
 	faction = "Station"
-	total_positions = 9
-	spawn_positions = 9
+	total_positions = 11
+	spawn_positions = 11
 	selection_color = JCOLOR_SOLDIER
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_TOLERATED_UP
@@ -62,7 +62,7 @@
 	armor = /obj/item/clothing/suit/roguetown/armor/chainmail
 	neck = /obj/item/clothing/neck/roguetown/chaincoif
 	shoes = /obj/item/clothing/shoes/roguetown/boots
-	beltl = /obj/item/keyring/guard
+	beltl = /obj/item/keyring/town_watch
 	belt = /obj/item/storage/belt/rogue/leather/black
 	beltr = /obj/item/rogueweapon/mace/cudgel
 	wrists = /obj/item/clothing/wrists/roguetown/bracers
@@ -71,15 +71,11 @@
 	if(is_bowman)
 		backl = /obj/item/gun/ballistic/revolver/grenadelauncher/bow
 		beltr = /obj/item/quiver/arrows //replaces mace
+		pants = /obj/item/clothing/under/roguetown/brayette //replaces chausses
 	else
 		backl = null
 	if(H.mind)
 		assign_skills(H)
-	if(H.gender == FEMALE)
-		var/acceptable = list("Tomboy", "Bob", "Curly Short")
-		if(!(H.hairstyle in acceptable))
-			H.hairstyle = pick(acceptable)
-			H.update_hair()
 	H.verbs |= /mob/proc/haltyell
 	ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)

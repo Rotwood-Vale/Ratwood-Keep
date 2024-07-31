@@ -739,6 +739,7 @@ GLOBAL_LIST_INIT(roleplay_readme, world.file2list("strings/rt/rp_prompt.txt"))
 		var/area/joined_area = get_area(new_character.loc)
 		if(joined_area)
 			joined_area.on_joining_game(new_character)
+		new_character.update_fov_angles()
 		new_character = null
 		qdel(src)
 
@@ -760,6 +761,7 @@ GLOBAL_LIST_INIT(roleplay_readme, world.file2list("strings/rt/rp_prompt.txt"))
 	src << browse(null, "window=preferences") //closes job selection
 	src << browse(null, "window=mob_occupation")
 	src << browse(null, "window=latechoices") //closes late job selection
+	src << browse(null, "window=migration") // Closes migrant menu
 
 	SStriumphs.remove_triumph_buy_menu(client)
 

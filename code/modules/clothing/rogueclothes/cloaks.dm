@@ -605,7 +605,7 @@
 	color = null
 	icon_state = "aproncook"
 	item_state = "aproncook"
-	body_parts_covered = GROIN
+	body_parts_covered = CHEST|GROIN
 	boobed = FALSE
 
 /*
@@ -672,6 +672,7 @@
 
 /obj/item/clothing/cloak/raincloak/brown
 	color = CLOTHING_BROWN
+	sellprice = 25
 
 /obj/item/clothing/cloak/raincloak/green
 	color = CLOTHING_GREEN
