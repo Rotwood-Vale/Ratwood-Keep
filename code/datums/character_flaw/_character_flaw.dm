@@ -305,6 +305,8 @@ GLOBAL_LIST_INIT(character_flaws, list(
 	pain_pity_charges = rand(2,4)
 
 /datum/charflaw/narcoleptic/flaw_on_life(mob/living/carbon/human/user)
+	if(HAS_TRAIT(user, TRAIT_NOSLEEP))
+		return
 	if(user.stat != CONSCIOUS)
 		reset_timer()
 		return
