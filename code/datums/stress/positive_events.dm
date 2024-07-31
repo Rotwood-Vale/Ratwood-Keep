@@ -116,4 +116,4 @@
 /datum/stressevent/perfume
 	stressadd = -1
 	desc = span_green("A soothing fragrance envelops me.")
-	timer = 5 MINUTES
+	timer = 10 MINUTES
