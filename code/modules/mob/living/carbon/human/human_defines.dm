@@ -122,3 +122,5 @@
 	/datum/rmb_intent/weak)
 
 	rot_type = /datum/component/rot/corpse
+
+	var/datum/statpack/statpack = null // Lethalstone Port - statpacks for greater customization
