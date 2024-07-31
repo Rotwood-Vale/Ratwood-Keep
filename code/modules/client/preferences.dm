@@ -1765,6 +1765,10 @@ Slots: [job.spawn_positions]</span>
 						domhand = 1
 				if("bespecial")
 					get_special_trait = !get_special_trait
+					if(get_special_trait)
+						to_chat(user, span_boldwarning("You will become special, this could be something negative, positve or neutral and could have a high impact on your character and your experience."))
+					else
+						to_chat(user, span_notice("You will no longer be special."))
 				if("family")
 					var/list/loly = list("Not yet.","Work in progress.","Don't click me.","Stop clicking this.","Nope.","Be patient.","Sooner or later.")
 					to_chat(user, "<font color='red'>[pick(loly)]</font>")
