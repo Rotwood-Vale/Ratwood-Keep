@@ -24,7 +24,7 @@
 		/datum/migrant_role/heartfelt/lady = 1,
 		/datum/migrant_role/heartfelt/hand = 1,
 		/datum/migrant_role/heartfelt/knight = 1,
-		/datum/migrant_role/heartfelt/prior = 1,
+		/datum/migrant_role/heartfelt/magos = 1,
 	)
 	greet_text = "Fleeing disaster, you have come together as a court, united in a final effort to restore the former glory and promise of Heartfelt. Stay close and watch out for each other, for all of your sakes! Some of you already did not make it on the way here..."
 
@@ -37,7 +37,7 @@
 		/datum/migrant_role/heartfelt/lord = 1,
 		/datum/migrant_role/heartfelt/lady = 1,
 		/datum/migrant_role/heartfelt/hand = 1,
-		/datum/migrant_role/heartfelt/prior = 1,
+		/datum/migrant_role/heartfelt/knight = 1,
 	)
 	greet_text = "Fleeing disaster, you have come together as a court, united in a final effort to restore the former glory and promise of Heartfelt. Stay close and watch out for each other, for all of your sakes! Some of you already did not make it on the way here..."
 
@@ -48,7 +48,7 @@
 	can_roll = FALSE
 	roles = list(
 		/datum/migrant_role/heartfelt/lord = 1,
-		/datum/migrant_role/heartfelt/lady = 1,
+		/datum/migrant_role/heartfelt/knight = 1,
 		/datum/migrant_role/heartfelt/hand = 1,
 	)
 	greet_text = "Fleeing disaster, you have come together as a court, united in a final effort to restore the former glory and promise of Heartfelt. Stay close and watch out for each other, for all of your sakes! Some of you already did not make it on the way here..."

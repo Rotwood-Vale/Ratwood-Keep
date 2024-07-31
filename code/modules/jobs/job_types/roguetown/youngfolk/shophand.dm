@@ -29,7 +29,7 @@
 		shoes = /obj/item/clothing/shoes/roguetown/simpleshoes
 		belt = /obj/item/storage/belt/rogue/leather
 		beltr = /obj/item/storage/belt/rogue/pouch/coins/poor
-		beltl = /obj/item/keyring/merchant
+		beltl = /obj/item/keyring/shophand
 		backr = /obj/item/storage/backpack/rogue/satchel
 	if(H.gender == FEMALE)
 		pants = /obj/item/clothing/under/roguetown/tights
@@ -37,7 +37,7 @@
 		shoes = /obj/item/clothing/shoes/roguetown/simpleshoes
 		belt = /obj/item/storage/belt/rogue/leather
 		beltr = /obj/item/storage/belt/rogue/pouch/coins/poor
-		beltl = /obj/item/keyring/merchant
+		beltl = /obj/item/keyring/shophand
 		backr = /obj/item/storage/backpack/rogue/satchel
 	if(H.mind)
 		//basically orphan+ skills
@@ -46,7 +46,6 @@
 		H.mind.adjust_skillrank(/datum/skill/misc/climbing, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/medicine, 1, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/labor/mathematics, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
 		H.change_stat("strength", -2)
 		H.change_stat("intelligence", 1)

@@ -31,7 +31,7 @@
 	if(HAS_TRAIT(src, TRAIT_NOROGSTAM))
 		return TRUE
 	if(m_intent == MOVE_INTENT_RUN)
-		mind.adjust_experience(/datum/skill/misc/athletics, (STAINT*0.02))
+		mind.add_sleep_experience(/datum/skill/misc/athletics, (STAINT*0.02))
 	rogstam += added
 	if(rogstam > maxrogstam)
 		rogstam = maxrogstam
@@ -82,7 +82,7 @@
 		addtimer(CALLBACK(src, PROC_REF(Immobilize), 30), 10)
 		if(iscarbon(src))
 			var/mob/living/carbon/C = src
-			if(C.stress >= 30)
+			if(C.get_stress_amount() >= 30)
 				C.heart_attack()
 			if(!HAS_TRAIT(C, TRAIT_NOHUNGER))
 				if(C.nutrition <= 0)
@@ -109,13 +109,13 @@
 		emote("breathgasp", forced = TRUE)
 		addtimer(CALLBACK(src, PROC_REF(adjustOxyLoss), 110), 30)
 
-/mob/living/proc/freak_out()
+/mob/living/proc/freak_out() // currently solely used for vampire snowflake stuff
 	return
 
-/mob/proc/do_freakout_scream()
+/mob/proc/do_freakout_scream() // currently solely used for vampire snowflake stuff
 	emote("scream", forced=TRUE)
 
-/mob/living/carbon/freak_out()
+/mob/living/carbon/freak_out() // currently solely used for vampire snowflake stuff
 	if(mob_timers["freakout"])
 		if(world.time < mob_timers["freakout"] + 10 SECONDS)
 			flash_fullscreen("stressflash")
@@ -125,18 +125,11 @@
 	flash_fullscreen("stressflash")
 	changeNext_move(CLICK_CD_EXHAUSTED)
 	add_stress(/datum/stressevent/freakout)
-	if(stress >= 30)
-		heart_attack()
-	else
-		emote("fatigue", forced = TRUE)
-		if(stress > 15)
-			addtimer(CALLBACK(src, TYPE_PROC_REF(/mob, do_freakout_scream)), rand(30,50))
+	emote("fatigue", forced = TRUE)
 	if(hud_used)
-//		var/list/screens = list(hud_used.plane_masters["[OPENSPACE_BACKDROP_PLANE]"],hud_used.plane_masters["[BLACKNESS_PLANE]"],hud_used.plane_masters["[GAME_PLANE_UPPER]"],hud_used.plane_masters["[GAME_PLANE_FOV_HIDDEN]"], hud_used.plane_masters["[FLOOR_PLANE]"], hud_used.plane_masters["[GAME_PLANE]"], hud_used.plane_masters["[LIGHTING_PLANE]"])
 		var/matrix/skew = matrix()
 		skew.Scale(2)
-		//skew.Translate(-224,0)
-		var/matrix/newmatrix = skew 
+		var/matrix/newmatrix = skew
 		for(var/C in hud_used.plane_masters)
 			var/atom/movable/screen/plane_master/whole_screen = hud_used.plane_masters[C]
 			if(whole_screen.plane == HUD_PLANE)
