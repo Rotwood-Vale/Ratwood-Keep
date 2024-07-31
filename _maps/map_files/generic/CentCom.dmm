@@ -1915,6 +1915,10 @@
 /obj/machinery/light/rogue/wallfire/candle/blue/r,
 /turf/open/floor/rogue/hexstone,
 /area/rogue/indoors)
+"Dm" = (
+/obj/structure/pillory,
+/turf/open/floor/rogue/dirt/road,
+/area/rogue/outdoors/woods)
 "Do" = (
 /turf/open/floor/rogue/grass,
 /area/rogue/outdoors)
@@ -5403,7 +5407,7 @@ mp
 vQ
 vQ
 vQ
-vQ
+Dm
 vQ
 vQ
 Te
