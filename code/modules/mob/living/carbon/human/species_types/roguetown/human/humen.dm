@@ -52,6 +52,12 @@
 		"speed" = 0, 
 		"fortune" = 0
 		)
+	specstats_f = list(
+		"intelligence" = 1,
+		"constitution" = -1, 
+		"strength" = -1, 
+		"speed" = 1,
+	)
 	enflamed_icon = "widefire"
 	customizers = list(
 		/datum/customizer/organ/eyes/humanoid,
