@@ -80,6 +80,7 @@
 /obj/item/clothing/shoes/roguetown/shortboots,
 /obj/item/clothing/shoes/roguetown/shortboots,
 /obj/item/clothing/cloak/half,
+/obj/item/perfume/random,
 /turf/open/floor/rogue/carpet,
 /area/rogue/indoors/town/manor)
 "abK" = (
@@ -7369,6 +7370,7 @@
 /obj/structure/table/wood{
 	icon_state = "longtable"
 	},
+/obj/item/perfume/random,
 /turf/open/floor/carpet/royalblack,
 /area/rogue/indoors/town/church)
 "iLG" = (
@@ -8637,6 +8639,7 @@
 	icon_state = "longtable"
 	},
 /obj/item/reagent_containers/glass/bottle/rogue/wine,
+/obj/item/perfume/random,
 /turf/open/floor/rogue/tile/masonic{
 	dir = 4
 	},
@@ -9407,6 +9410,7 @@
 "loK" = (
 /obj/structure/closet/crate/roguecloset,
 /obj/item/rogueweapon/sword/rapier,
+/obj/item/perfume/random,
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/manor)
 "lpa" = (
@@ -10042,6 +10046,7 @@
 	},
 /obj/item/candle/skull/lit,
 /obj/item/natural/feather,
+/obj/item/perfume/random,
 /turf/open/floor/rogue/tile{
 	icon_state = "linoleum"
 	},
@@ -17340,6 +17345,11 @@
 	},
 /turf/open/floor/rogue/churchbrick,
 /area/rogue/indoors/town/manor)
+"vvJ" = (
+/obj/structure/table/wood,
+/obj/item/perfume/random,
+/turf/open/floor/rogue/hexstone,
+/area/rogue/indoors/town/bath)
 "vvV" = (
 /obj/structure/closet/crate/chest{
 	lockid = "keep_armory"
@@ -281231,7 +281241,7 @@ eoy
 wbg
 wbg
 pRW
-csG
+vvJ
 eKY
 oXU
 kHR

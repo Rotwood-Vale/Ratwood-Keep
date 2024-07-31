@@ -53,7 +53,10 @@
 
 	uses_remaining--
 	update_icon()
-	user.visible_message(span_notice("[user] sprays [target] with \the [src]."), span_notice("You spray [target] with \the [src]."))
+	if(target == user)
+		user.visible_message(span_notice("[user] sprays \themself with \the [src]."), span_notice("You spray yourself with \the [src]."))
+	else
+		user.visible_message(span_notice("[user] sprays [target] with \the [src]."), span_notice("You spray [target] with \the [src]."))
 	user.changeNext_move(CLICK_CD_RANGE*2)
 	playsound(user.loc, 'sound/items/perfume.ogg', 100, TRUE)
 	target.AddComponent(/datum/component/pollutant, fragrance_type, 1 MINUTES)
