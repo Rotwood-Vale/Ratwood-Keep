@@ -110,12 +110,6 @@
 /datum/special_trait/bleublood/on_apply(mob/living/carbon/human/character, silent)
 	ADD_TRAIT(character, TRAIT_NOBLE, "[type]")
 
-/datum/special_trait/innocent
-	name = "Remorseful"
-	//no greet text, silent.
-
-/datum/special_trait/innocent/on_apply(mob/living/carbon/human/character, silent)
-
 /datum/special_trait/richpouch
 	name = "Rich Pouch"
 	greet_text = span_notice("I've recently found a pouch filled with mammons, probably some noble lost it.")
