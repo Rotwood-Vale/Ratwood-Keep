@@ -188,3 +188,47 @@
 	name = "Muscle Soreness"
 	desc = "My muscles need some sleep to recover."
 	icon_state = "muscles"
+
+//ANCESTRAL CURSE
+
+/datum/status_effect/debuff/ancestort1
+	id = "ancestort1"
+	alert_type = /atom/movable/screen/alert/status_effect/debuff/ancestort1
+	effectedstats = list("intelligence" = -1)
+	duration = 100
+
+/atom/movable/screen/alert/status_effect/debuff/ancestort1
+	name = "Graggar Is Displeased"
+	desc = "Whispers claw and tear away at your psyche..."
+	icon_state = "ancestor1"
+
+/datum/status_effect/debuff/ancestort2
+	id = "ancestort2"
+	alert_type = /atom/movable/screen/alert/status_effect/debuff/ancestort2
+	effectedstats = list("intelligence" = -2, "constitution" = 1, "strength" = 1)
+	duration = 100
+
+/atom/movable/screen/alert/status_effect/debuff/ancestort2
+	name = "Graggar Is Angry"
+	desc = "It's becoming harder and harder to think as PRIMAL fear takes over, the whispering is turning into screams."
+	icon_state = "ancestor2"
+
+/datum/status_effect/debuff/ancestort3
+	id = "ancestort3"
+	alert_type = /atom/movable/screen/alert/status_effect/debuff/ancestort3
+	effectedstats = list("intelligence" = -5, "constitution" = 3, "strength" = 2) //add Amputated Marshmellow as oppressive song that constantly plays until the debuff is dealt with.
+	duration = 100
+	
+/datum/status_effect/debuff/ancestort3/on_apply()
+	if(iscarbon(owner))
+		var/mob/living/carbon/human/C = owner
+		ADD_TRAIT(owner, TRAIT_ANCESTORCURSE, TRAIT_GENERIC)
+		C.cmode_music = 'sound/music/combat_murderer.ogg'
+		//to_chat(owner, span_reallybigboldnotice("IT MUST BE DONE!")) ***gotta make this trigger only once, easy fix no doubt but gonna do this later***
+		owner.add_client_colour(/datum/client_colour/monochrome)
+		..()
+
+/atom/movable/screen/alert/status_effect/debuff/ancestort3
+	name = "GRAGGAR IS FURIOUS"
+	desc = "they scream they scream clawing at YOUR EARS demanding ascension escape death deliver DELIVER deliver"
+	icon_state = "ancestor3"

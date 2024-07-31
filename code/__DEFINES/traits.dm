@@ -33,6 +33,10 @@
 #define TRAIT_NOSLEEP "Fatal Insomnia"
 #define TRAIT_GOODLOVER "Fabled Lover"
 #define TRAIT_SEEDKNOW "Seed Knower"
+// ROGUEspecialTRAITS (description when rmb skills button)
+#define TRAIT_CIVILIZEDBARBARIAN "Tavern Brawler"
+#define TRAIT_ANCESTORCURSE "Ancestor Curse"
+#define TRAIT_COMICSANS "Annoying Face"
 
 // PATRON GOD TRAITS
 #define TRAIT_ROT_EATER "Blessing of Pestra" //can eat rotten food
@@ -99,6 +103,9 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_NORUN = span_warning("My body has atrophied in my state of decay; my leg joints just don't have the strength or durability for running anymore"),
 	TRAIT_GOODLOVER = span_love("It's a lucky thing to share my bed."),
 	TRAIT_SEEDKNOW = span_info("I know which seeds grow which crops."),
+	TRAIT_CIVILIZEDBARBARIAN = span_info("Your fists are heavier, you know how to use mugs and furniture as proper weapons."),
+	TRAIT_ANCESTORCURSE = span_bloody("The Truest Form Of Freedom Is Murder."),
+	TRAIT_COMICSANS = span_sans("I am cursed with a odd voice.")
 ))
 
 // trait accessor defines
