@@ -11,8 +11,6 @@
 	can_sew = FALSE
 	can_cauterize = FALSE
 	passive_healing = 0.5
-	zombie_infection_probability = 10
-	werewolf_infection_probability = 10
 
 /datum/wound/bite/small
 	name = "nip"
@@ -33,5 +31,3 @@
 	can_sew = TRUE
 	can_cauterize = TRUE
 	passive_healing = 0
-	zombie_infection_probability = 25
-	werewolf_infection_probability = 25
