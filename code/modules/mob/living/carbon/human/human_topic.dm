@@ -4,11 +4,26 @@
 	if(href_list["task"] == "view_headshot")
 		if(!ismob(usr))
 			return
+		var/headshot_to_use = headshot_link
 		if(!valid_headshot_link(null, headshot_link, TRUE))
+			headshot_to_use = null
+		if(!headshot_to_use && !flavor_text)
 			return
+			
 		var/mob/user = usr
-		var/list/dat = list("<img src='[headshot_link]' width='250px' height='250px'>")
-		var/datum/browser/popup = new(user, "headshot", "<div align='center'>[src]'s Headshot</div>", 310, 320)
+
+		var/height_px = 0
+		if(flavor_text)
+			height_px += 140
+		if(headshot_to_use)
+			height_px += 330
+		var/list/dat = list()
+		if(headshot_to_use)
+			dat += "<img src='[headshot_link]' width='260px' height='260px'>"
+		if(flavor_text)
+			dat += "<br><center>[flavor_text]</center>"
+
+		var/datum/browser/popup = new(user, "headshot", "<div align='center'>[src]'s Headshot</div>", 310, height_px)
 		popup.set_content(dat.Join())
 		popup.open(FALSE)
 		return

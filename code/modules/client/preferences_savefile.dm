@@ -426,6 +426,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	S["headshot_link"]			>> headshot_link
 	if(!valid_headshot_link(null, headshot_link, TRUE))
 		headshot_link = null
+	S["flavor_text"]			>> flavor_text
 
 	//try to fix any outdated data if necessary
 	if(needs_update >= 0)
@@ -565,6 +566,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	
 	WRITE_FILE(S["update_mutant_colors"] , update_mutant_colors)
 	WRITE_FILE(S["headshot_link"] , headshot_link)
+	WRITE_FILE(S["flavor_text"] , flavor_text)
 
 	return TRUE
 

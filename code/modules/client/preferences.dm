@@ -96,6 +96,8 @@ GLOBAL_LIST_EMPTY(chosen_names)
 	var/preferred_ai_core_display = "Blue"
 	var/prefered_security_department = SEC_DEPT_RANDOM
 
+	var/flavor_text = ""
+
 	//Quirk list
 	var/list/all_quirks = list()
 
@@ -148,6 +150,7 @@ GLOBAL_LIST_EMPTY(chosen_names)
 	var/update_mutant_colors = TRUE
 
 	var/headshot_link
+	var/flavor_text
 	var/list/violated = list()
 	var/list/descriptor_entries = list()
 	var/defiant = TRUE
@@ -206,6 +209,7 @@ GLOBAL_LIST_EMPTY(chosen_names)
 	reset_all_customizer_accessory_colors()
 	randomize_all_customizer_accessories()
 	reset_descriptors()
+	flavor_text = ""
 
 #define APPEARANCE_CATEGORY_COLUMN "<td valign='top' width='14%'>"
 #define MAX_MUTANT_ROWS 4
@@ -409,6 +413,7 @@ GLOBAL_LIST_EMPTY(chosen_names)
 			dat += "<br><b>Features:</b> <a href='?_src_=prefs;preference=customizers;task=menu'>Change</a>"
 			dat += "<br><b>Markings:</b> <a href='?_src_=prefs;preference=markings;task=menu'>Change</a>"
 			dat += "<br><b>Descriptors:</b> <a href='?_src_=prefs;preference=descriptors;task=menu'>Change</a>"
+			dat += "<br><b>Short Flavor:</b> <a href='?_src_=prefs;preference=flavor_text;task=menu'>Change</a>"
 
 			dat += "<br><b>Headshot:</b> <a href='?_src_=prefs;preference=headshot;task=input'>Change</a>"
 			if(headshot_link != null)
@@ -1291,6 +1296,16 @@ Slots: [job.spawn_positions]</span>
 	else if(href_list["preference"] == "descriptors")
 		show_descriptors_ui(user)
 		return
+	else if (href_list["preference"] == "flavor_text")
+		var/new_flavor = input(user, "Choose your character's short flavor text (100 characters):", "Flavor text", flavor_text)  as message|null
+		if(new_flavor == "")
+			flavor_text = ""
+			to_chat(user, span_info("Flavor text removed"))
+		else if(new_flavor == null)
+			return
+		else
+			flavor_text = strip_html_simple(new_flavor, t)
+			to_chat(user, span_info(flavor_text))
 
 	else if(href_list["preference"] == "customizers")
 		ShowCustomizers(user)
@@ -2056,6 +2071,9 @@ Slots: [job.spawn_positions]</span>
 	character.dna.real_name = character.real_name
 
 	character.headshot_link = headshot_link
+
+	if(flavor_text && flavor_text != "")
+		character.flavor_text = flavor_text
 
 	if(parent)
 		var/list/L = get_player_curses(parent.ckey)
