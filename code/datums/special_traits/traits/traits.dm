@@ -1,8 +1,13 @@
 //// Sleep Specials
 //// these should still be in the round-start/late join specials as well! It's just these are contextually fitting for Sleep Specials as well!
+/datum/special_trait/nothing
+	name = "Nothing"
+	greet_text = span_notice("I'm not particularly special")
+	weight = 1000
+
 /datum/special_trait/nightvision
 	name = "Night Vision"
-	greet_text = span_notice("You now can easily see in the dark.")
+	greet_text = span_notice("I can easily see in the dark.")
 	weight = 100
 
 /datum/special_trait/nightvision/on_apply(mob/living/carbon/human/character, silent)
@@ -13,7 +18,7 @@
 
 /datum/special_trait/thickskin
 	name = "Tough"
-	greet_text = span_notice("You feel it. Thick Skin. Dense Flesh. Durable Bones. You are a punch-taking machine.")
+	greet_text = span_notice("I feel it. Thick Skin. Dense Flesh. Durable Bones. I'm a punch-taking machine.")
 	weight = 100
 
 /datum/special_trait/thickskin/on_apply(mob/living/carbon/human/character, silent)
@@ -22,7 +27,7 @@
 
 /datum/special_trait/curseofcain
 	name = "Flawed Immortality"
-	greet_text = span_notice("You feel like you don't need to eat anymore, and your veins feel empty... Is this normal?")
+	greet_text = span_notice("I feel like I don't need to eat anymore, and my veins feel empty... Is this normal?")
 	weight = 25
 
 /datum/special_trait/curseofcain/on_apply(mob/living/carbon/human/character, silent)
@@ -31,7 +36,7 @@
 
 /datum/special_trait/value
 	name = "Coin Counter"
-	greet_text = span_notice("You now know how to estimate a item's value.")
+	greet_text = span_notice("I know how to estimate an item's value.")
 	weight = 100
 	restricted_traits = list(TRAIT_SEEPRICES)
 
@@ -49,20 +54,20 @@
 //positive
 /datum/special_trait/duelist
 	name = "Swordmaster Apprentice"
-	greet_text = span_notice("You were the student of a legendary sword master, your skill is rivalled by few!")
+	greet_text = span_notice("I was the student of a legendary sword master, my skill is rivalled by few!")
 	weight = 100
 
 /datum/special_trait/duelist/on_apply(mob/living/carbon/human/character, silent)
 	character.cmode_music = 'sound/music/combat_duelist.ogg'
 	character.change_stat("speed", 2)
-	character.mind.adjust_skillrank(/datum/skill/combat/swords, 5, TRUE) //will make a unique trait later on
+	character.mind.adjust_skillrank_up_to(/datum/skill/combat/swords, 5, TRUE) //will make a unique trait later on
 	var/obj/item/rapier = new /obj/item/rogueweapon/sword/rapier(get_turf(character))
 	if(!character.equip_to_appropriate_slot(rapier))
 		character.put_in_hands(rapier, TRUE)
 
 /datum/special_trait/languagesavant
 	name = "Polyglot"
-	greet_text = span_notice("You have always picked up on languages easily, even those that are forbidden to mortals.")
+	greet_text = span_notice("I have always picked up on languages easily, even those that are forbidden to mortals.")
 	weight = 100
 
 /datum/special_trait/languagesavant/on_apply(mob/living/carbon/human/character, silent)
@@ -75,14 +80,14 @@
 
 /datum/special_trait/civilizedbarbarian
 	name = "Tavern Brawler"
-	greet_text = span_notice("You are skilled at using Improvised Weapons and your fists feel heavier!")
+	greet_text = span_notice("My fists feel heavier!")
 
 /datum/special_trait/civilizedbarbarian/on_apply(mob/living/carbon/human/character, silent)
 	ADD_TRAIT(character, TRAIT_CIVILIZEDBARBARIAN, TRAIT_GENERIC) //Need to make trait improve hitting people with chairs, mugs, goblets.
 
 /datum/special_trait/mastercraftsmen
 	name = "Master Crasftman"
-	greet_text = "In your youth, you decided you'd get a grasp on every trade, and pursued the 10 arts of the craft."
+	greet_text = "In your youth, I've decided I'd get a grasp on every trade, and pursued the 10 arts of the craft."
 	allowed_ages = list(AGE_MIDDLEAGED, AGE_OLD)
 
 /datum/special_trait/mastercraftsmen/on_apply(mob/living/carbon/human/character)
@@ -99,7 +104,7 @@
 
 /datum/special_trait/bleublood
 	name = "Noble Lineage"
-	greet_text = span_notice("You come are of noble blood.")
+	greet_text = span_notice("I come are of noble blood.")
 	restricted_traits = list(TRAIT_NOBLE)
 
 /datum/special_trait/bleublood/on_apply(mob/living/carbon/human/character, silent)
@@ -111,11 +116,19 @@
 
 /datum/special_trait/innocent/on_apply(mob/living/carbon/human/character, silent)
 
+/datum/special_trait/richpouch
+	name = "Rich Pouch"
+	greet_text = span_notice("I've recently found a pouch filled with mammons, probably some noble lost it.")
+
+/datum/special_trait/richpouch/on_apply(mob/living/carbon/human/character, silent)
+	var/obj/item/pouch = new /obj/item/storage/belt/rogue/pouch/coins/rich(get_turf(character))
+	if(!character.equip_to_appropriate_slot(pouch))
+		character.put_in_hands(pouch, TRUE)
 
 //neutral
 /datum/special_trait/backproblems
 	name = "Giant"
-	greet_text = span_notice("You've always been called a giant. You are valued for your stature, but, this world made for smaller folk has forced you to move cautiously.")
+	greet_text = span_notice("I've always been called a giant. I am are valued for your stature, but, this world made for smaller folk has forced me to move cautiously.")
 	restricted_races = list(/datum/species/anthromorphsmall, /datum/species/dwarf/mountain, /datum/species/kobold)
 
 /datum/special_trait/backproblems/on_apply(mob/living/carbon/human/character)
@@ -126,40 +139,49 @@
 	character.update_transform()
 
 //negative
+/datum/special_trait/nopouch
+	name = "No Pouch"
+	greet_text = span_notice("I lost my pouch recently...")
+
+/datum/special_trait/nopouch/on_apply(mob/living/carbon/human/character, silent)
+	var/obj/item/pouch = locate(/obj/item/storage/belt/rogue/pouch) in character
+	if(character.neck == pouch)
+		character.neck = null
+	if(character.beltl == pouch)
+		character.beltl = null
+	if(character.beltr == pouch)
+		character.beltr = null
+	qdel(pouch)
+	
 /datum/special_trait/hussite
 	name = "Known Heretic"
-	greet_text = span_notice("You've been denounced by the church for either reasons legitimate or not! A strange sympathetic noble from a nearby mountain manor has given you some coin to aid you in these times.")
+	greet_text = span_notice("I've been denounced by the church for either reasons legitimate or not!")
 
 /datum/special_trait/hussite/on_apply(mob/living/carbon/human/character, silent)
 	GLOB.excommunicated_players += character.real_name
-	var/obj/item/pouch = new /obj/item/storage/belt/rogue/pouch/coins/rich(get_turf(character))
-	if(!character.equip_to_appropriate_slot(pouch))
-		character.put_in_hands(pouch, TRUE)
+
+/datum/special_trait/outlaw
+	name = "Known Outlaw"
+	greet_text = span_notice("Whether for crimes I did or was accused of, I have been declared an outlaw!")
+
+/datum/special_trait/outlaw/on_apply(mob/living/carbon/human/character, silent)
+	make_outlaw(character.real_name, TRUE)
 
 /datum/special_trait/sillyvoice
 	name = "Annoying"
-	greet_text = span_sans("People really hate your voice for some reason.")
+	greet_text = span_sans("People really hate my voice for some reason.")
 
 /datum/special_trait/sillyvoice/on_apply((mob/living/carbon/human/character))
 	ADD_TRAIT(character, TRAIT_COMICSANS, "[type]")
 	character.dna.add_mutation(WACKY)
 
-/datum/special_trait/debtevasion
-	name = "Loanshark"
-	greet_text = span_warning("You took out a massive loan from the Keep. But, that was awhile ago, and you have most of the money still, just not the amount they might be hoping for.")
-
-/datum/special_trait/bathcarrier
-	name = "Lover's Itch"
-	greet_text = span_love("Baotha has made you a carrier of Lover's Itch. For every person you spread it to, you will have triumphed against the world.")
-
-/datum/special_trait/bathcarrier/on_apply(mob/living/carbon/human/character)
-
 //job specials
 /datum/special_trait/punkprincess //I think everyone will like the Rebellous Prince-Like Princess. I'd love to do one for the prince as well that gives him princess loadout, but, up to you!
 	name = "Rebellous Daughter"
-	greet_text = span_notice("You are quite rebellous for princess. Screw Noble Customs!")
+	greet_text = span_notice("I am quite rebellious for princess. Screw Noble Customs!")
 	allowed_sexes = list(FEMALE)
 	allowed_jobs = list(/datum/job/roguetown/prince)
+	weight = 300
 
 /datum/special_trait/punkprincess/on_apply(mob/living/carbon/human/character, silent)
 	QDEL_NULL(character.wear_pants)
