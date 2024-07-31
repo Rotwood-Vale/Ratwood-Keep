@@ -334,6 +334,8 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	S["real_name"]			>> real_name
 	S["gender"]				>> gender
 	S["domhand"]			>> domhand
+	S["get_special_trait"]			>> get_special_trait
+	get_special_trait = sanitize_integer(get_special_trait, FALSE, TRUE, FALSE)
 //	S["alignment"]			>> alignment
 	S["age"]				>> age
 	S["hair_color"]			>> hair_color
@@ -515,6 +517,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	WRITE_FILE(S["real_name"]			, real_name)
 	WRITE_FILE(S["gender"]				, gender)
 	WRITE_FILE(S["domhand"]				, domhand)
+	WRITE_FILE(S["get_special_trait"]				, get_special_trait)
 //	WRITE_FILE(S["alignment"]			, alignment)
 	WRITE_FILE(S["age"]					, age)
 	WRITE_FILE(S["hair_color"]			, hair_color)

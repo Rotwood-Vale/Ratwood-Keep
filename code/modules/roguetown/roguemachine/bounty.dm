@@ -83,21 +83,6 @@
 	stored_head.name = "mutilated head"
 	stored_head.desc = "This head has been violated beyond recognition, the work of a horrific machine."
 
-///Composes a random bounty banner based on the given bounty info.
-///@param new_bounty:  The bounty datum.
-/obj/structure/roguemachine/bounty/proc/compose_bounty(datum/bounty/new_bounty)
-	switch(rand(1, 3))
-		if(1)
-			new_bounty.banner += "A dire bounty hangs upon the head of [new_bounty.target], for '[new_bounty.reason]'.<BR>"
-			new_bounty.banner += "The patron, [new_bounty.employer], offers [new_bounty.amount] mammons for the task.<BR>"	
-		if(2)
-			new_bounty.banner += "The head of [new_bounty.target] is wanted for '[new_bounty.reason]''.<BR>"
-			new_bounty.banner += "The employer, [new_bounty.employer], offers [new_bounty.amount] mammons for the deed.<BR>"
-		if(3)
-			new_bounty.banner += "[new_bounty.employer] hath offered to pay [new_bounty.amount] mammons for the head of [new_bounty.target].<BR>"
-			new_bounty.banner += "By reason of the following: '[new_bounty.reason]'.<BR>"
-	new_bounty.banner += "--------------<BR>"
-
 ///Shows all active bounties to the user.
 /obj/structure/roguemachine/bounty/proc/consult_bounties(mob/living/carbon/human/user)
 	var/bounty_found = FALSE
@@ -189,5 +174,22 @@
 	new_bounty.amount = amount
 	new_bounty.target = target_realname
 	new_bounty.bandit = bandit_status
+	new_bounty.reason = reason
+	new_bounty.employer = employer_name
 	compose_bounty(new_bounty)
 	GLOB.head_bounties += new_bounty
+
+///Composes a random bounty banner based on the given bounty info.
+///@param new_bounty:  The bounty datum.
+/proc/compose_bounty(datum/bounty/new_bounty)
+	switch(rand(1, 3))
+		if(1)
+			new_bounty.banner += "A dire bounty hangs upon the head of [new_bounty.target], for '[new_bounty.reason]'.<BR>"
+			new_bounty.banner += "The patron, [new_bounty.employer], offers [new_bounty.amount] mammons for the task.<BR>"	
+		if(2)
+			new_bounty.banner += "The head of [new_bounty.target] is wanted for '[new_bounty.reason]''.<BR>"
+			new_bounty.banner += "The employer, [new_bounty.employer], offers [new_bounty.amount] mammons for the deed.<BR>"
+		if(3)
+			new_bounty.banner += "[new_bounty.employer] hath offered to pay [new_bounty.amount] mammons for the head of [new_bounty.target].<BR>"
+			new_bounty.banner += "By reason of the following: '[new_bounty.reason]'.<BR>"
+	new_bounty.banner += "--------------<BR>"

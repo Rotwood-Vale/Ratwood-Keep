@@ -12,9 +12,11 @@
 
 /datum/special_trait/nightvision/on_apply(mob/living/carbon/human/character, silent)
 	var/obj/item/organ/eyes/eyes = character.getorganslot(ORGAN_SLOT_EYES)
+	if(!eyes)
+		return
 	eyes.see_in_dark = 3
-	eyes.lighting_alpha = LIGHTING_PLANE_ALPHA_LESSER_NV_TRAIT
-	eyes.Insert(character)
+	eyes.lighting_alpha = LIGHTING_PLANE_ALPHA_NV_TRAIT
+	character.update_sight()
 
 /datum/special_trait/thickskin
 	name = "Tough"
@@ -62,8 +64,7 @@
 	character.change_stat("speed", 2)
 	character.mind.adjust_skillrank_up_to(/datum/skill/combat/swords, 5, TRUE) //will make a unique trait later on
 	var/obj/item/rapier = new /obj/item/rogueweapon/sword/rapier(get_turf(character))
-	if(!character.equip_to_appropriate_slot(rapier))
-		character.put_in_hands(rapier, TRUE)
+	character.put_in_hands(rapier, TRUE)
 
 /datum/special_trait/languagesavant
 	name = "Polyglot"
@@ -81,6 +82,7 @@
 /datum/special_trait/civilizedbarbarian
 	name = "Tavern Brawler"
 	greet_text = span_notice("My fists feel heavier!")
+	weight = 100
 
 /datum/special_trait/civilizedbarbarian/on_apply(mob/living/carbon/human/character, silent)
 	ADD_TRAIT(character, TRAIT_CIVILIZEDBARBARIAN, TRAIT_GENERIC) //Need to make trait improve hitting people with chairs, mugs, goblets.
@@ -89,6 +91,7 @@
 	name = "Master Crasftman"
 	greet_text = "In your youth, I've decided I'd get a grasp on every trade, and pursued the 10 arts of the craft."
 	allowed_ages = list(AGE_MIDDLEAGED, AGE_OLD)
+	weight = 100
 
 /datum/special_trait/mastercraftsmen/on_apply(mob/living/carbon/human/character)
 	character.mind.adjust_skillrank(/datum/skill/craft/crafting, 1, TRUE)
@@ -104,8 +107,9 @@
 
 /datum/special_trait/bleublood
 	name = "Noble Lineage"
-	greet_text = span_notice("I come are of noble blood.")
+	greet_text = span_notice("I come of noble blood.")
 	restricted_traits = list(TRAIT_NOBLE)
+	weight = 100
 
 /datum/special_trait/bleublood/on_apply(mob/living/carbon/human/character, silent)
 	ADD_TRAIT(character, TRAIT_NOBLE, "[type]")
@@ -113,17 +117,18 @@
 /datum/special_trait/richpouch
 	name = "Rich Pouch"
 	greet_text = span_notice("I've recently found a pouch filled with mammons, probably belonging to some noble.")
+	weight = 100
 
 /datum/special_trait/richpouch/on_apply(mob/living/carbon/human/character, silent)
 	var/obj/item/pouch = new /obj/item/storage/belt/rogue/pouch/coins/rich(get_turf(character))
-	if(!character.equip_to_appropriate_slot(pouch))
-		character.put_in_hands(pouch, TRUE)
+	character.put_in_hands(pouch, TRUE)
 
 //neutral
 /datum/special_trait/backproblems
 	name = "Giant"
 	greet_text = span_notice("I've always been called a giant. I am are valued for your stature, but, this world made for smaller folk has forced me to move cautiously.")
 	restricted_races = list(/datum/species/anthromorphsmall, /datum/species/dwarf/mountain, /datum/species/kobold)
+	weight = 100
 
 /datum/special_trait/backproblems/on_apply(mob/living/carbon/human/character)
 	character.change_stat("strength", 2)
@@ -136,6 +141,7 @@
 /datum/special_trait/nopouch
 	name = "No Pouch"
 	greet_text = span_notice("I lost my pouch recently, I'm without a zenny..")
+	weight = 100
 
 /datum/special_trait/nopouch/on_apply(mob/living/carbon/human/character, silent)
 	var/obj/item/pouch = locate(/obj/item/storage/belt/rogue/pouch) in character
@@ -150,18 +156,20 @@
 /datum/special_trait/hussite
 	name = "Known Heretic"
 	greet_text = span_notice("I've been denounced by the church for either reasons legitimate or not!")
+	weight = 100
 
 /datum/special_trait/hussite/on_apply(mob/living/carbon/human/character, silent)
 	GLOB.excommunicated_players += character.real_name
 
 /datum/special_trait/bounty
 	name = "Bounty On My Head"
-	greet_text = span_notice("For acts that I have done, or been accused of - someone put a bounty on my head!")
+	greet_text = null
+	weight = 100
 
 /datum/special_trait/bounty/on_apply(mob/living/carbon/human/character, silent)
 	var/reason = ""
 	var/employer = "unknown employer"
-	var/amount = 50
+	var/amount = 60
 	switch(rand(1,7))
 		if(1)
 			reason = "murder"
@@ -178,10 +186,13 @@
 		if(7)
 			reason = "robbing a noble"
 	add_bounty(character.real_name, amount, FALSE, reason, employer)
+	if(!silent)
+		to_chat(character, span_notice("Whether I done it or not, I have been accused of [reason], and someone put a bounty on my head!"))
 
 /datum/special_trait/outlaw
 	name = "Known Outlaw"
 	greet_text = span_notice("Whether for crimes I did or was accused of, I have been declared an outlaw!")
+	weight = 100
 
 /datum/special_trait/outlaw/on_apply(mob/living/carbon/human/character, silent)
 	make_outlaw(character.real_name, TRUE)
@@ -189,6 +200,7 @@
 /datum/special_trait/sillyvoice
 	name = "Annoying"
 	greet_text = span_sans("People really hate my voice for some reason.")
+	weight = 100
 
 /datum/special_trait/sillyvoice/on_apply((mob/living/carbon/human/character))
 	ADD_TRAIT(character, TRAIT_COMICSANS, "[type]")
