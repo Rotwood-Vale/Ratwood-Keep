@@ -125,6 +125,13 @@
 	
 /datum/special_trait/bleublood/on_apply(mob/living/carbon/human/character, silent)
 	ADD_TRAIT(character, TRAIT_NOBLE, TRAIT_GENERIC)
+	
+/datum/special_trait/innocent
+	name = "Remorseful"
+	//no greet text, silent.
+
+/datum/special_trait/innocent/on_apply(mob/living/carbon/human/character, silent)
+
 
 //neutral ┐(￣ヘ￣)┌
 /datum/special_trait/backproblems
@@ -158,6 +165,7 @@
 datum/special_trait/murderer
 	name = "Ancestral Curse"
 	greet_text = span_warning("Graggar is your ancestor and nothing will let you escape this fact! The God of Cannibalism and Murder watches you with a judging eye, demanding that blood be spilled by your hands.")
+	weight = 25
 	
 datum/special_trait/murderer/on_apply((mob/living/carbon/human/character))
 	if(character.charflaw)
@@ -172,6 +180,16 @@ datum/special_trait/sillyvoice/on_apply((mob/living/carbon/human/character))
 	ADD_TRAIT(character, TRAIT_COMICSANS, TRAIT_GENERIC)
 	addtimer(CALLBACK(character,TYPE_PROC_REF(/mob/living/carbon/human, add_credit)), 10)
 	character.dna.add_mutation(WACKY)
+	
+datum/special_trait/debtevasion
+	name = "Loanshark"
+	greet_text = span_warning("You took out a massive loan from the Keep. But, that was awhile ago, and you have most of the money still, just not the amount they might be hoping for."
+	
+datum/special_trait/bathcarrier
+	name = "Lover's Itch"
+	greet_text = span_love("Baotha has made you a carrier of Lover's Itch. For every person you spread it to, you will have triumphed against the world.")
+
+datum/special_trait/bathcarrier/on_apply(mob/living/carbon/human/character)
 	
 //job specials ᕙ⁠(⁠⇀⁠‸⁠↼⁠‶⁠)⁠ᕗ
 /datum/special_trait/punkprincess //I think everyone will like the Rebellous Prince-Like Princess. I'd love to do one for the prince as well that gives him princess loadout, but, up to you!
