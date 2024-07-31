@@ -70,4 +70,7 @@
 	name = "Wrestling"
 
 /datum/skill/combat/unarmed
-	name = "Fist-fighting"
+	name = "Unarmed"
+
+/datum/skill/combat/shields
+	name = "Shields"

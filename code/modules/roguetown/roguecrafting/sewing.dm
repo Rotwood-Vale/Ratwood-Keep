@@ -98,6 +98,13 @@
 				/obj/item/natural/fibers = 1)
 	craftdiff = 1
 
+/datum/crafting_recipe/roguetown/sewing/lgambeson
+    name = "light gambeson"
+    result = list(/obj/item/clothing/suit/roguetown/armor/gambeson/light)
+    reqs = list(/obj/item/natural/cloth = 2,
+                /obj/item/natural/fibers = 1)
+    craftdiff = 1
+
 /* craftdif of 2+ */
 
 /datum/crafting_recipe/roguetown/sewing/wrappings
@@ -214,6 +221,13 @@
 				/obj/item/natural/fibers = 1)
 	craftdiff = 4
 	sellprice = 14
+
+/datum/crafting_recipe/roguetown/sewing/hgambeson
+    name = "padded gambeson"
+    result = list(/obj/item/clothing/suit/roguetown/armor/gambeson/heavy)
+    reqs = list(/obj/item/natural/cloth = 6,
+                /obj/item/natural/fibers = 4)
+    craftdiff = 3
 
 /datum/crafting_recipe/roguetown/sewing/chaperon
 	name = "chaperon hat"

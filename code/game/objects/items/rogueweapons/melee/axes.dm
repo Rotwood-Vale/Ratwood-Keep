@@ -149,6 +149,16 @@
 	gripped_intents = list(/datum/intent/axe/cut,/datum/intent/axe/chop)
 	wdefense = 2
 
+//Pickaxe-axe ; Technically both a tool and a weapon, but it goes here due to weapon function. Subtype of woodcutter axe, mostly a weapon.
+/obj/item/rogueweapon/stoneaxe/woodcut/pick
+	name = "Pulaski axe"
+	desc = "An odd mix of a pickaxe front and a hatchet blade back, capable of being switched between."
+	icon_state = "paxe"
+	possible_item_intents = list(/datum/intent/axe/cut,/datum/intent/axe/chop, /datum/intent/pick)
+	gripped_intents = list(/datum/intent/axe/cut,/datum/intent/axe/chop)
+	wlength = WLENGTH_NORMAL
+	toolspeed = 2
+
 /obj/item/rogueweapon/stoneaxe/handaxe
 	force = 19
 	possible_item_intents = list(/datum/intent/axe/cut,/datum/intent/axe/chop)
