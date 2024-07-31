@@ -1082,7 +1082,7 @@
 								return
 							var/surname2use
 							var/index = findtext(FirstPerson.real_name, " ")
-							var/womanfirst
+							var/SecondPersonFirstName
 							FirstPerson.original_name = FirstPerson.real_name
 							SecondPerson.original_name = SecondPerson.real_name
 							if(!index)
@@ -1097,14 +1097,14 @@
 							index = findtext(SecondPerson.real_name, " ")
 							if(index)
 								SecondPerson.change_name(copytext(SecondPerson.real_name, 1,index))
-							womanfirst = SecondPerson.real_name
+							SecondPersonFirstName = SecondPerson.real_name
 							FirstPerson.change_name(FirstPerson.real_name + surname2use)
 							SecondPerson.change_name(SecondPerson.real_name + surname2use)
 							FirstPerson.marriedto = SecondPerson.real_name
 							SecondPerson.marriedto = FirstPerson.real_name
 							FirstPerson.adjust_triumphs(1)
 							SecondPerson.adjust_triumphs(1)
-							priority_announce("[FirstPerson.real_name] has married [womanfirst]!", title = "Holy Union!", sound = 'sound/misc/bell.ogg')
+							priority_announce("[FirstPerson.real_name] has married [SecondPersonFirstName]!", title = "Holy Union!", sound = 'sound/misc/bell.ogg')
 							marriage = TRUE
 							qdel(A)
 //							if(FirstPerson.has_stress(/datum/stressevent/nobel))
