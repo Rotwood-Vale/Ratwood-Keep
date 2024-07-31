@@ -124,9 +124,6 @@
 	else
 		desc = ""
 
-/obj/item/keyring/sheriff
-	keys = list(/obj/item/roguekey/town_dungeon, /obj/item/roguekey/town_barracks, /obj/item/roguekey/town_armory)
-
 /obj/item/keyring/bailiff
 	keys = list(/obj/item/roguekey/town_dungeon, /obj/item/roguekey/town_barracks, /obj/item/roguekey/councillor_rooms, /obj/item/roguekey/keep_barracks, /obj/item/roguekey/keep_dungeon, /obj/item/roguekey/walls, /obj/item/roguekey/manor)
 
@@ -140,25 +137,25 @@
 	keys = list(/obj/item/roguekey/bog_armory, /obj/item/roguekey/bog_gatehouse, /obj/item/roguekey/bog_barracks, /obj/item/roguekey/bog_dungeon)
 
 /obj/item/keyring/town_watch
-	keys = list(/obj/item/roguekey/town_barracks, /obj/item/roguekey/town_dungeon)
+	keys = list(/obj/item/roguekey/town_walls, /obj/item/roguekey/town_barracks, /obj/item/roguekey/town_dungeon)
 
 /obj/item/keyring/sheriff
-	keys = list(/obj/item/roguekey/sheriff_office, /obj/item/roguekey/town_armory, /obj/item/roguekey/town_barracks, /obj/item/roguekey/town_dungeon)
+	keys = list(/obj/item/roguekey/town_walls, /obj/item/roguekey/sheriff_office, /obj/item/roguekey/town_armory, /obj/item/roguekey/town_barracks, /obj/item/roguekey/town_dungeon)
 
 /obj/item/keyring/man_at_arms
-	keys = list(/obj/item/roguekey/keep_gatehouse, /obj/item/roguekey/keep_barracks, /obj/item/roguekey/walls, /obj/item/roguekey/manor)
+	keys = list(/obj/item/roguekey/town_walls, /obj/item/roguekey/keep_gatehouse, /obj/item/roguekey/keep_barracks, /obj/item/roguekey/walls, /obj/item/roguekey/manor)
 
 /obj/item/keyring/captain
-	keys = list(/obj/item/roguekey/councillor_rooms, /obj/item/roguekey/prince_rooms, /obj/item/roguekey/keep_gatehouse, /obj/item/roguekey/keep_armory, /obj/item/roguekey/keep_barracks, /obj/item/roguekey/walls, /obj/item/roguekey/manor)
+	keys = list(/obj/item/roguekey/town_walls, /obj/item/roguekey/councillor_rooms, /obj/item/roguekey/prince_rooms, /obj/item/roguekey/keep_gatehouse, /obj/item/roguekey/keep_armory, /obj/item/roguekey/keep_barracks, /obj/item/roguekey/walls, /obj/item/roguekey/manor)
 
 /obj/item/keyring/dungeoneer
 	keys = list(/obj/item/roguekey/keep_dungeon, /obj/item/roguekey/keep_dungeon_torture, /obj/item/roguekey/town_dungeon, /obj/item/roguekey/bog_dungeon, /obj/item/roguekey/manor, /obj/item/roguekey/keep_barracks)
 
 /obj/item/keyring/veteran
-	keys = list(/obj/item/roguekey/keep_barracks, /obj/item/roguekey/walls, /obj/item/roguekey/manor)
+	keys = list(/obj/item/roguekey/town_walls, /obj/item/roguekey/keep_barracks, /obj/item/roguekey/walls, /obj/item/roguekey/manor)
 
 /obj/item/keyring/knight
-	keys = list(/obj/item/roguekey/councillor_rooms, /obj/item/roguekey/prince_rooms, /obj/item/roguekey/royal, /obj/item/roguekey/keep_gatehouse, /obj/item/roguekey/keep_armory, /obj/item/roguekey/keep_barracks, /obj/item/roguekey/walls, /obj/item/roguekey/manor)
+	keys = list(/obj/item/roguekey/town_walls, /obj/item/roguekey/councillor_rooms, /obj/item/roguekey/prince_rooms, /obj/item/roguekey/royal, /obj/item/roguekey/keep_gatehouse, /obj/item/roguekey/keep_armory, /obj/item/roguekey/keep_barracks, /obj/item/roguekey/walls, /obj/item/roguekey/manor)
 
 /obj/item/keyring/velder
 	keys = list(/obj/item/roguekey/velder, /obj/item/roguekey/blacksmith/town, /obj/item/roguekey/farm, /obj/item/roguekey/butcher)
@@ -167,7 +164,7 @@
 	keys = list(/obj/item/roguekey/tavern/village, /obj/item/roguekey/roomvi/village, /obj/item/roguekey/roomv/village, /obj/item/roguekey/roomiv/village, /obj/item/roguekey/roomiii/village, /obj/item/roguekey/roomii/village, /obj/item/roguekey/roomi/village)
 
 /obj/item/keyring/gatemaster
-	keys = list(/obj/item/roguekey/keep_gatehouse, /obj/item/roguekey/keep_barracks, /obj/item/roguekey/walls, /obj/item/roguekey/manor)
+	keys = list(/obj/item/roguekey/town_walls, /obj/item/roguekey/keep_gatehouse, /obj/item/roguekey/keep_barracks, /obj/item/roguekey/walls, /obj/item/roguekey/manor)
 
 /obj/item/keyring/merchant
 	keys = list(/obj/item/roguekey/shop, /obj/item/roguekey/merchant)
@@ -194,7 +191,7 @@
 	keys = list(/obj/item/roguekey/nightman, /obj/item/roguekey/nightmaiden)
 
 /obj/item/keyring/hand
-	keys = list(/obj/item/roguekey/keep_armory, /obj/item/roguekey/steward, /obj/item/roguekey/town_dungeon, /obj/item/roguekey/town_barracks, /obj/item/roguekey/keep_gatehouse, /obj/item/roguekey/councillor_rooms, /obj/item/roguekey/prince_rooms, /obj/item/roguekey/hand, /obj/item/roguekey/royal, /obj/item/roguekey/walls, /obj/item/roguekey/keep_dungeon, /obj/item/roguekey/keep_barracks, /obj/item/roguekey/manor)
+	keys = list(/obj/item/roguekey/town_walls, /obj/item/roguekey/keep_armory, /obj/item/roguekey/steward, /obj/item/roguekey/town_dungeon, /obj/item/roguekey/town_barracks, /obj/item/roguekey/keep_gatehouse, /obj/item/roguekey/councillor_rooms, /obj/item/roguekey/prince_rooms, /obj/item/roguekey/hand, /obj/item/roguekey/royal, /obj/item/roguekey/walls, /obj/item/roguekey/keep_dungeon, /obj/item/roguekey/keep_barracks, /obj/item/roguekey/manor)
 
 /obj/item/keyring/steward
 	keys = list(/obj/item/roguekey/steward, /obj/item/roguekey/walls, /obj/item/roguekey/manor)

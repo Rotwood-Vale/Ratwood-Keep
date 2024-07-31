@@ -334,6 +334,12 @@
 	icon_state = "spikekey"
 	lockid = "town_armory"
 
+/obj/item/roguekey/town_walls
+	name = "town walls key"
+	desc = "This key gives access to the town walls."
+	icon_state = "spikekey"
+	lockid = "town_walls"
+
 /obj/item/roguekey/sheriff_office
 	name = "sheriff's office key"
 	desc = "This key opens the sheriff's office."
