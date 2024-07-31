@@ -104,12 +104,3 @@
 	desc = "I need to pray to my Patron, their blessings are stronger."
 	time = 40 MINUTES
 	needsate_text = "Time to pray to my Patron."
-
-/// MURDERER - SPECIAL
-
-/datum/charflaw/addiction/murderer
-	name = "Ancestral Curse"
-	desc = "I must murder to avoid HIS wrath."
-	time = 50 MINUTES	
-	needsate_text = "Time to stainz your hands with blood."
-	debuff = /datum/status_effect/debuff/ancestort3 //tried a bunch of solutions to make this be split into several effects, from adding new debufft1-debufft2 variables for flaws to making a special version of the switch(world time - unsate_time) just for this. I wish I knew how to code.
