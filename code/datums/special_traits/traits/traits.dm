@@ -135,7 +135,7 @@
 //negative
 /datum/special_trait/nopouch
 	name = "No Pouch"
-	greet_text = span_notice("I lost my pouch recently...")
+	greet_text = span_notice("I lost my pouch recently, I'm without a zenny..")
 
 /datum/special_trait/nopouch/on_apply(mob/living/carbon/human/character, silent)
 	var/obj/item/pouch = locate(/obj/item/storage/belt/rogue/pouch) in character
@@ -153,6 +153,31 @@
 
 /datum/special_trait/hussite/on_apply(mob/living/carbon/human/character, silent)
 	GLOB.excommunicated_players += character.real_name
+
+/datum/special_trait/bounty
+	name = "Bounty On My Head"
+	greet_text = span_notice("For acts that I have done, or been accused of - someone put a bounty on my head!")
+
+/datum/special_trait/bounty/on_apply(mob/living/carbon/human/character, silent)
+	var/reason = ""
+	var/employer = "unknown employer"
+	var/amount = 50
+	switch(rand(1,7))
+		if(1)
+			reason = "murder"
+		if(2)
+			reason = "kinslaying"
+		if(3)
+			reason = "besmirching a noble's name"
+		if(4)
+			reason = "treason"
+		if(5)
+			reason = "arson"
+		if(6)
+			reason = "heresy"
+		if(7)
+			reason = "robbing a noble"
+	add_bounty(character.real_name, amount, FALSE, reason, employer)
 
 /datum/special_trait/outlaw
 	name = "Known Outlaw"

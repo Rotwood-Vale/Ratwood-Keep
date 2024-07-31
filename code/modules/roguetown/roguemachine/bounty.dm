@@ -174,13 +174,7 @@
 	amount -= royal_tax
 
 	// Finally create bounty
-	var/datum/bounty/new_bounty = new /datum/bounty
-	new_bounty.amount = round(amount)
-	new_bounty.target = target
-	new_bounty.reason = reason
-	new_bounty.employer = user.real_name
-	compose_bounty(new_bounty)
-	GLOB.head_bounties += new_bounty
+	add_bounty(target, amount, FALSE, reason, user.real_name)
 
 	//Announce it locally and on scomm
 	playsound(src, 'sound/misc/machinetalk.ogg', 100, FALSE, -1)
@@ -189,3 +183,11 @@
 	scom_announce(bounty_announcement)
 
 	message_admins("[ADMIN_LOOKUPFLW(user)] has set a bounty on [ADMIN_LOOKUPFLW(target)] with the reason of: '[reason]'")
+
+/proc/add_bounty(target_realname, amount, bandit_status, reason, employer_name)
+	var/datum/bounty/new_bounty = new /datum/bounty
+	new_bounty.amount = amount
+	new_bounty.target = target_realname
+	new_bounty.bandit = bandit_status
+	compose_bounty(new_bounty)
+	GLOB.head_bounties += new_bounty
