@@ -10,9 +10,10 @@
 
 	user << browse(create_panel_helper(create_mob_html), "window=create_mob;size=425x475")
 
-/proc/randomize_human(mob/living/carbon/human/H)
+/proc/randomize_human(mob/living/carbon/human/H, include_gender = FALSE)
 	set waitfor = 0
-	H.gender = pick(MALE, FEMALE)
+	if(include_gender)
+		H.gender = pick(MALE, FEMALE)
 	H.real_name = random_unique_name(H.gender)
 	H.name = H.real_name
 	H.skin_tone = random_skin_tone()

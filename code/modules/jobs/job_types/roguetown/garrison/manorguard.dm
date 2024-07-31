@@ -3,8 +3,8 @@
 	flag = MANATARMS
 	department_flag = GARRISON
 	faction = "Station"
-	total_positions = 8
-	spawn_positions = 8
+	total_positions = 6
+	spawn_positions = 6
 
 	allowed_sexes = list(MALE)
 	allowed_races = RACES_TOLERATED_UP
@@ -43,7 +43,7 @@
 	shirt = /obj/item/clothing/suit/roguetown/armor/chainmail
 	armor = /obj/item/clothing/suit/roguetown/armor/plate/half
 	shoes = /obj/item/clothing/shoes/roguetown/boots/leather
-	beltl = /obj/item/keyring/guardcastle
+	beltl = /obj/item/keyring/man_at_arms
 	belt = /obj/item/storage/belt/rogue/leather/black
 	backr = /obj/item/storage/backpack/rogue/satchel/black
 	backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger/steel/special = 1, /obj/item/rope/chain = 1)
@@ -69,11 +69,6 @@
 		H.change_stat("constitution", 1)
 		H.change_stat("endurance", 1)
 		H.change_stat("speed", 1)
-	if(H.gender == FEMALE)
-		var/acceptable = list("Tomboy", "Bob", "Curly Short")
-		if(!(H.hairstyle in acceptable))
-			H.hairstyle = pick(acceptable)
-			H.update_hair()
 	H.verbs |= /mob/proc/haltyell
 	ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)

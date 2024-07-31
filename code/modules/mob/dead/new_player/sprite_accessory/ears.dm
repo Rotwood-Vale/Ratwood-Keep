@@ -166,6 +166,12 @@
 	color_keys = 2
 	color_key_names = list("Ears", "Inner")
 
+/datum/sprite_accessory/ears/shark
+	name = "Shark"
+	icon_state = "shark"
+	color_keys = 2
+	color_key_names = list("Ears", "Inner")
+
 /datum/sprite_accessory/ears/skunk
 	name = "skunk"
 	icon_state = "skunk"

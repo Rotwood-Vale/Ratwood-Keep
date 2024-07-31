@@ -16,8 +16,28 @@
 	var/keycontrol = "merchant"
 	var/funynthing = FALSE
 
+/obj/structure/roguemachine/vendor/proc/insert(obj/item/P, mob/living/user)
+	if(P.w_class <= WEIGHT_CLASS_BULKY)
+		testing("startadd")
+		if(held_items.len < 15)
+			held_items[P] = list()
+			held_items[P]["NAME"] = P.name
+			held_items[P]["PRICE"] = 0
+			P.forceMove(src)
+			playsound(loc, 'sound/misc/machinevomit.ogg', 100, TRUE, -1)
+			return attack_hand(user)
+		else
+			to_chat(user, span_warning("Full."))
+			return
+
 /obj/structure/roguemachine/vendor/attackby(obj/item/P, mob/user, params)
 
+	if(istype(P, /obj/item/roguecoin))
+		budget += P.get_real_price()
+		qdel(P)
+		update_icon()
+		playsound(loc, 'sound/misc/machinevomit.ogg', 100, TRUE, -1)
+		return attack_hand(user)
 	if(istype(P, /obj/item/roguekey))
 		var/obj/item/roguekey/K = P
 		if(K.lockid == keycontrol)
@@ -26,8 +46,11 @@
 			update_icon()
 			return attack_hand(user)
 		else
-			to_chat(user, span_warning("Wrong key."))
-			return
+			if(!locked)
+				insert(P, user)
+			else	
+				to_chat(user, span_warning("Wrong key."))
+				return
 	if(istype(P, /obj/item/keyring))
 		var/obj/item/keyring/K = P
 		for(var/obj/item/roguekey/KE in K.keys)
@@ -36,27 +59,9 @@
 				playsound(loc, 'sound/misc/beep.ogg', 100, FALSE, -1)
 				update_icon()
 				return attack_hand(user)
-	if(istype(P, /obj/item/roguecoin))
-		budget += P.get_real_price()
-		qdel(P)
-		update_icon()
-		playsound(loc, 'sound/misc/machinevomit.ogg', 100, TRUE, -1)
-		return attack_hand(user)
 	if(!locked)
-		if(P.w_class <= WEIGHT_CLASS_BULKY)
-			testing("startadd")
-			if(held_items.len < 15)
-				held_items[P] = list()
-				held_items[P]["NAME"] = P.name
-				held_items[P]["PRICE"] = 0
-				P.forceMove(src)
-				playsound(loc, 'sound/misc/machinevomit.ogg', 100, TRUE, -1)
-				return attack_hand(user)
-			else
-				to_chat(user, span_warning("Full."))
-				return
+		insert(P, user)
 	..()
-
 
 /obj/structure/roguemachine/vendor/Topic(href, href_list)
 	. = ..()

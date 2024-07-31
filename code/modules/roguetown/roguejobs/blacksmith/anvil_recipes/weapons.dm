@@ -82,6 +82,12 @@
 	created_item = /obj/item/rogueweapon/sword/cutlass
 	i_type = "Weapons"
 
+/datum/anvil_recipe/weapons/katar
+	name = "Katar"
+	req_bar = /obj/item/ingot/steel
+	created_item = /obj/item/rogueweapon/katar
+	i_type = "Weapons"
+
 /datum/anvil_recipe/weapons/hknife
 	name = "Hunting knife"
 	req_bar = /obj/item/ingot/iron
@@ -341,7 +347,7 @@
 	name = "Arrows 5x (+1 Stick)"
 	req_bar = /obj/item/ingot/iron
 	additional_items = list(/obj/item/grown/log/tree/stick)
-	created_item = list(/obj/item/ammo_casing/caseless/rogue/arrow,/obj/item/ammo_casing/caseless/rogue/arrow,/obj/item/ammo_casing/caseless/rogue/arrow, /obj/item/ammo_casing/caseless/rogue/arrow, /obj/item/ammo_casing/caseless/rogue/arrow)
+	created_item = list(/obj/item/ammo_casing/caseless/rogue/arrow/iron,/obj/item/ammo_casing/caseless/rogue/arrow/iron,/obj/item/ammo_casing/caseless/rogue/arrow/iron, /obj/item/ammo_casing/caseless/rogue/arrow/iron, /obj/item/ammo_casing/caseless/rogue/arrow/iron)
 	i_type = "Ammo"
 
 //Rarity

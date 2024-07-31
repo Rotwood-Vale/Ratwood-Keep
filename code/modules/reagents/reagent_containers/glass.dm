@@ -57,7 +57,6 @@
 
 				if(isturf(target) && reagents.reagent_list.len && thrownby)
 					log_combat(thrownby, target, "splashed (thrown) [english_list(reagents.reagent_list)]")
-					message_admins("[ADMIN_LOOKUPFLW(thrownby)] splashed (thrown) [english_list(reagents.reagent_list)] on [target] at [ADMIN_VERBOSEJMP(target)].")
 				reagents.reaction(M, TOUCH)
 				log_combat(user, M, "splashed", R)
 				reagents.clear_reagents()
@@ -588,7 +587,7 @@
 				to_chat(user, span_warning("[src] is full."))
 				return
 			user.visible_message(span_notice("[user] pours [I] into [src]."), \
-							span_notice("I pour I] into [src]."))
+							span_notice("I pour [I] into [src]."))
 			if(user.m_intent != MOVE_INTENT_SNEAK)
 				if(poursounds)
 					playsound(user.loc,pick(poursounds), 100, TRUE)
