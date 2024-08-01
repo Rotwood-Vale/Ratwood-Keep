@@ -23,6 +23,8 @@
 /datum/mob_descriptor/prominent/custom/get_pre_string(mob/living/described)
 	var/datum/custom_descriptor_entry/entry = described.custom_descriptors[custom_index]
 	switch(entry.prefix_type)
+		if(CUSTOM_PREFIX_HAS)
+			return null
 		if(CUSTOM_PREFIX_HAS_A)
 			return "a "
 		if(CUSTOM_PREFIX_HAS_AN)
@@ -35,6 +37,8 @@
 /datum/mob_descriptor/prominent/custom/get_verbage(mob/living/described)
 	var/datum/custom_descriptor_entry/entry = described.custom_descriptors[custom_index]
 	switch(entry.prefix_type)
+		if(CUSTOM_PREFIX_HAS)
+			return "%HAVE%"
 		if(CUSTOM_PREFIX_HAS_A)
 			return "%HAVE%"
 		if(CUSTOM_PREFIX_HAS_AN)
