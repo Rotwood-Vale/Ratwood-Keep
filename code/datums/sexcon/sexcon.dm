@@ -32,7 +32,7 @@
 	target = null
 	. = ..()
 
-/proc/do_thrust_animate(atom/movable/user, atom/movable/target, pixels = 6, time = 2.0)
+/proc/do_thrust_animate(atom/movable/user, atom/movable/target, pixels = 4, time = 2.7)
 	var/oldx = user.pixel_x
 	var/oldy = user.pixel_y
 	var/target_x = oldx
@@ -271,6 +271,9 @@
 	if(oxyloss_amt <= 0)
 		return
 	action_target.adjustOxyLoss(oxyloss_amt)
+	// Indicate someone is choking through sex
+	if(action_target.oxyloss >= 50 && prob(33))
+		action_target.emote(pick(list("gag", "choke", "gasp")), forced = TRUE)
 
 /datum/sex_controller/proc/perform_sex_action(mob/living/carbon/human/action_target, arousal_amt, pain_amt, giving)
 	action_target.sexcon.receive_sex_action(arousal_amt, pain_amt, giving, force, speed)
