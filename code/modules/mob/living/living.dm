@@ -1107,7 +1107,7 @@
 	. = TRUE
 
 	var/wrestling_diff = 0
-	var/resist_chance = 50
+	var/resist_chance = 60
 	var/mob/living/L = pulledby
 
 	if(mind)
