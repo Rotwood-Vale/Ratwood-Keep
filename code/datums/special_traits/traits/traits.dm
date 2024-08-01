@@ -3,7 +3,7 @@
 /datum/special_trait/nothing
 	name = "Nothing"
 	greet_text = span_notice("I'm not particularly special")
-	weight = 1000
+	weight = 2000
 
 /datum/special_trait/nightvision
 	name = "Night Vision"
