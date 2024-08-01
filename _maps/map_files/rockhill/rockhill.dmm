@@ -7547,8 +7547,7 @@
 	dir = 1
 	},
 /obj/structure/closet/crate/chest{
-	lockid = "steward";
-	locked = 1
+	lockid = "steward"
 	},
 /obj/item/roguekey/manor,
 /obj/item/roguekey/walls,
@@ -14511,6 +14510,10 @@
 	},
 /turf/open/floor/rogue/cobble,
 /area/rogue/outdoors/bog)
+"rUF" = (
+/obj/structure/handcart,
+/turf/open/floor/rogue/wood,
+/area/rogue/indoors/town/shop)
 "rVc" = (
 /obj/effect/landmark/start/monk{
 	dir = 8
@@ -16395,7 +16398,6 @@
 /area/rogue/indoors/town)
 "uml" = (
 /obj/machinery/light/rogue/wallfire/candle/blue,
-/obj/structure/handcart,
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/shop)
 "umv" = (
@@ -292927,7 +292929,7 @@ adK
 wCp
 toW
 ssb
-hUt
+rUF
 fmR
 aOn
 wVI
