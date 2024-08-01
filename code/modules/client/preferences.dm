@@ -355,7 +355,7 @@ GLOBAL_LIST_EMPTY(chosen_names)
 
 //			dat += "<b><a href='?_src_=prefs;preference=name;task=random'>Random Name</A></b><BR>"
 			dat += "<b>Flaw:</b> <a href='?_src_=prefs;preference=charflaw;task=input'>[charflaw]</a><BR>"
-			dat += "<b>Be Special:</b> <a href='?_src_=prefs;preference=bespecial'>[next_special_trait ? "<font color='red'><b>YES</b></font>" : "No"]</a><BR>"
+			dat += "<b>Make Special:</b> <a href='?_src_=prefs;preference=bespecial'>[next_special_trait ? "<font color='red'><b>YES</b></font>" : "No"]</a><BR>"
 			var/datum/faith/selected_faith = GLOB.faithlist[selected_patron?.associated_faith]
 			dat += "<b>Faith:</b> <a href='?_src_=prefs;preference=faith;task=input'>[selected_faith?.name || "FUCK!"]</a><BR>"
 			dat += "<b>Patron:</b> <a href='?_src_=prefs;preference=patron;task=input'>[selected_patron?.name || "FUCK!"]</a><BR>"
@@ -1776,6 +1776,7 @@ Slots: [job.spawn_positions]</span>
 					if(next_special_trait)
 						log_game("SPECIALS: Rolled [next_special_trait] for ckey: [user.ckey]")
 						print_special_text(user, next_special_trait)
+						user.playsound_local(user, 'sound/misc/alert.ogg', 100)
 
 				if("family")
 					var/list/loly = list("Not yet.","Work in progress.","Don't click me.","Stop clicking this.","Nope.","Be patient.","Sooner or later.")
