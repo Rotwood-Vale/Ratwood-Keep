@@ -158,7 +158,7 @@
 				qdel(C)
 			wet = max(wet-1, 0)
 	
-	to_chat(user, span_info("I wipe \the [O.name] with [src]."))
+	to_chat(user, span_info("I wipe \the [T.name] with [src]."))
 	playsound(user, "clothwipe", 100, TRUE)
 
 
