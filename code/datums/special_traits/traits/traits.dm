@@ -139,14 +139,16 @@
 /datum/special_trait/backproblems
 	name = "Giant"
 	greet_text = span_notice("I've always been called a giant. I am valued for my stature, but, this world made for smaller folk has forced me to move cautiously.")
+	req_text = "Not a kobold, verminvolk or a dwarf"
 	restricted_races = list(/datum/species/anthromorphsmall, /datum/species/dwarf/mountain, /datum/species/kobold)
-	weight = 100
+	weight = 50
 
 /datum/special_trait/backproblems/on_apply(mob/living/carbon/human/character)
 	character.change_stat("strength", 2)
 	character.change_stat("constitution", 1)
 	character.change_stat("speed", -2)
 	character.transform = character.transform.Scale(1.25, 1.25)
+	character.transform = character.transform.Translate(0, (0.25 * 16))
 	character.update_transform()
 
 //negative
