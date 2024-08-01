@@ -62,7 +62,7 @@
 /datum/special_trait/duelist/on_apply(mob/living/carbon/human/character, silent)
 	character.cmode_music = 'sound/music/combat_duelist.ogg'
 	character.change_stat("speed", 2)
-	character.mind.adjust_skillrank_up_to(/datum/skill/combat/swords, 5, TRUE) //will make a unique trait later on
+	character.mind.adjust_skillrank_up_to(/datum/skill/combat/swords, 6, TRUE) //will make a unique trait later on
 	var/obj/item/rapier = new /obj/item/rogueweapon/sword/rapier(get_turf(character))
 	character.put_in_hands(rapier, TRUE)
 
@@ -146,7 +146,7 @@
 	character.change_stat("strength", 2)
 	character.change_stat("constitution", 1)
 	character.change_stat("speed", -2)
-	character.transform = character.transform.Scale(1.15, 1.15)
+	character.transform = character.transform.Scale(1.25, 1.25)
 	character.update_transform()
 
 //negative
