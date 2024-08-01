@@ -1777,6 +1777,7 @@ Slots: [job.spawn_positions]</span>
 						log_game("SPECIALS: Rolled [next_special_trait] for ckey: [user.ckey]")
 						print_special_text(user, next_special_trait)
 						user.playsound_local(user, 'sound/misc/alert.ogg', 100)
+						to_chat(user, span_warning("This will be applied on your next game join, if able. You cannot reroll this, and it will not carry over to other rounds"))
 
 				if("family")
 					var/list/loly = list("Not yet.","Work in progress.","Don't click me.","Stop clicking this.","Nope.","Be patient.","Sooner or later.")
