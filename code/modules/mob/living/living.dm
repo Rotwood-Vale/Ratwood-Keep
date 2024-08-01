@@ -1079,6 +1079,7 @@
 	playsound(src, 'sound/misc/surrender.ogg', 100, FALSE, -1)
 	sleep(150)
 	surrendering = 0
+	log_combat(src, null, "surrender ended")
 
 
 /mob/proc/stop_attack(message = FALSE)
