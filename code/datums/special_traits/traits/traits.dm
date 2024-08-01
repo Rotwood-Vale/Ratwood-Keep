@@ -94,16 +94,16 @@
 	weight = 100
 
 /datum/special_trait/mastercraftsmen/on_apply(mob/living/carbon/human/character)
-	character.mind.adjust_skillrank(/datum/skill/craft/crafting, 1, TRUE)
-	character.mind.adjust_skillrank(/datum/skill/craft/weaponsmithing, 1, TRUE)
-	character.mind.adjust_skillrank(/datum/skill/craft/armorsmithing, 1, TRUE)
-	character.mind.adjust_skillrank(/datum/skill/craft/blacksmithing, 1, TRUE)
-	character.mind.adjust_skillrank(/datum/skill/craft/carpentry, 1, TRUE)
-	character.mind.adjust_skillrank(/datum/skill/craft/masonry, 1, TRUE)
-	character.mind.adjust_skillrank(/datum/skill/craft/traps, 1, TRUE)
-	character.mind.adjust_skillrank(/datum/skill/craft/cooking, 1, TRUE)
-	character.mind.adjust_skillrank(/datum/skill/craft/engineering, 1, TRUE)
-	character.mind.adjust_skillrank(/datum/skill/craft/tanning, 1, TRUE)
+	character.mind.adjust_skillrank_up_to(/datum/skill/craft/crafting, 2, TRUE)
+	character.mind.adjust_skillrank_up_to(/datum/skill/craft/weaponsmithing, 2, TRUE)
+	character.mind.adjust_skillrank_up_to(/datum/skill/craft/armorsmithing, 2, TRUE)
+	character.mind.adjust_skillrank_up_to(/datum/skill/craft/blacksmithing, 2, TRUE)
+	character.mind.adjust_skillrank_up_to(/datum/skill/craft/carpentry, 2, TRUE)
+	character.mind.adjust_skillrank_up_to(/datum/skill/craft/masonry, 2, TRUE)
+	character.mind.adjust_skillrank_up_to(/datum/skill/craft/traps, 2, TRUE)
+	character.mind.adjust_skillrank_up_to(/datum/skill/craft/cooking, 2, TRUE)
+	character.mind.adjust_skillrank_up_to(/datum/skill/craft/engineering, 2, TRUE)
+	character.mind.adjust_skillrank_up_to(/datum/skill/craft/tanning, 2, TRUE)
 
 /datum/special_trait/bleublood
 	name = "Noble Lineage"
@@ -126,7 +126,7 @@
 //neutral
 /datum/special_trait/backproblems
 	name = "Giant"
-	greet_text = span_notice("I've always been called a giant. I am are valued for your stature, but, this world made for smaller folk has forced me to move cautiously.")
+	greet_text = span_notice("I've always been called a giant. I am valued for my stature, but, this world made for smaller folk has forced me to move cautiously.")
 	restricted_races = list(/datum/species/anthromorphsmall, /datum/species/dwarf/mountain, /datum/species/kobold)
 	weight = 100
 
@@ -138,6 +138,15 @@
 	character.update_transform()
 
 //negative
+/datum/special_trait/nimrod
+	name = "Nimrod"
+	greet_text = span_warning("In the past I learned slower than my peers, and I tend to be clumsy.")
+	weight = 100
+
+/datum/special_trait/nimrod/on_apply(mob/living/carbon/human/character, silent)
+	character.change_stat("speed", -2)
+	character.change_stat("intelligence", -4)	
+
 /datum/special_trait/nopouch
 	name = "No Pouch"
 	greet_text = span_notice("I lost my pouch recently, I'm without a zenny..")
@@ -157,6 +166,7 @@
 	name = "Known Heretic"
 	greet_text = span_notice("I've been denounced by the church for either reasons legitimate or not!")
 	weight = 100
+	restricted_jobs = list(CHURCH_ROLES)
 
 /datum/special_trait/hussite/on_apply(mob/living/carbon/human/character, silent)
 	GLOB.excommunicated_players += character.real_name
@@ -165,11 +175,23 @@
 	name = "Bounty On My Head"
 	greet_text = null
 	weight = 100
+	restricted_migrants = list(MIGRANT_LORDS)
+	restricted_jobs = list(KING_QUEEN_ROLES)
 
 /datum/special_trait/bounty/on_apply(mob/living/carbon/human/character, silent)
 	var/reason = ""
 	var/employer = "unknown employer"
-	var/amount = 60
+	var/employer_gender
+	if(prob(65))
+		employer_gender = MALE
+	else
+		employer_gender = FEMALE
+	if(employer_gender == MALE)
+		employer = pick(list("Baron", "Lord", "Nobleman", "Prince"))
+	else
+		employer = pick(list("Duchess", "Lady", "Noblelady", "Princess"))
+	employer = "[employer] [random_human_name(employer_gender, FALSE, FALSE)]"
+	var/amount = rand(40,100)
 	switch(rand(1,7))
 		if(1)
 			reason = "murder"
@@ -187,12 +209,14 @@
 			reason = "robbing a noble"
 	add_bounty(character.real_name, amount, FALSE, reason, employer)
 	if(!silent)
-		to_chat(character, span_notice("Whether I done it or not, I have been accused of [reason], and someone put a bounty on my head!"))
+		to_chat(character, span_notice("Whether I done it or not, I have been accused of [reason], and the [employer] put a bounty on my head!"))
 
 /datum/special_trait/outlaw
 	name = "Known Outlaw"
 	greet_text = span_notice("Whether for crimes I did or was accused of, I have been declared an outlaw!")
 	weight = 100
+	restricted_migrants = list(MIGRANT_NOBILITY)
+	restricted_jobs = list(NOBLE_ROLES, MANOR_ROLES)
 
 /datum/special_trait/outlaw/on_apply(mob/living/carbon/human/character, silent)
 	make_outlaw(character.real_name, TRUE)
