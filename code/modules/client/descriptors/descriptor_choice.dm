@@ -219,6 +219,7 @@
 
 /datum/descriptor_choice/height
 	name = "Height"
+	default_descriptor = /datum/mob_descriptor/height/moderate
 	descriptors = list(
 		/datum/mob_descriptor/height/moderate,
 		/datum/mob_descriptor/height/tall,
