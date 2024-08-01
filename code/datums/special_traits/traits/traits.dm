@@ -185,7 +185,7 @@
 
 /datum/special_trait/bounty
 	name = "Bounty On My Head"
-	greet_text = null
+	greet_text = span_notice("Someone put a bounty on my head!")
 	weight = 100
 
 /datum/special_trait/bounty/on_apply(mob/living/carbon/human/character, silent)
