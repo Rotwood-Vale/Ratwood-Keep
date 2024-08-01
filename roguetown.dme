@@ -3555,4 +3555,5 @@
 #include "modular_hearthstone\code\interface\LOOC.dm"
 #include "modular_hearthstone\code\modules\datums\accents.dm"
 #include "modular_hearthstone\code\modules\mob\living\simple_animal\rogue\creacher\volf.dm"
+#include "modular_hearthstone\code\modules\mob\sprite_accessory\hair_styles.dm"
 // END_INCLUDE
