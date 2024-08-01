@@ -38,8 +38,7 @@
 		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/guard
 		shoes = /obj/item/clothing/shoes/roguetown/nobleboot
 		belt = /obj/item/storage/belt/rogue/leather
-		beltl = /obj/item/roguekey/dungeon
-		r_hand = /obj/item/roguekey/manor
+		beltl = /obj/item/roguekey/manor
 		beltr = /obj/item/storage/belt/rogue/pouch/coins/rich
 		backr = /obj/item/storage/backpack/rogue/satchel
 		if(prob(50))

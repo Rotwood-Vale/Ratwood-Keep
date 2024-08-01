@@ -8,7 +8,7 @@
 
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
-	tutorial = "In an effort to unite your kingdom with the kingdom of Rockhill, you have visited as an emissary to the kingdom. As a potential candidate to become the Consort of Rockhill, you work alongside the King. Beneath your watch, are the warriors of your nation, and it is your duty to ensure they are held liable for their actions. They are not your personal guards."
+	tutorial = "With the help of foreign matchmakers, you have been paired with the Ruler of Rockhill as a potential candidate to take the side of the Ruler. It is your duty to gain the favor of the King/Queen to unite your kingdoms."
 
 	spells = list(/obj/effect/proc_holder/spell/self/convertrole/servant,
 	/obj/effect/proc_holder/spell/self/grant_nobility,
