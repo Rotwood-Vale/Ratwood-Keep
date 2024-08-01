@@ -12,16 +12,17 @@ GLOBAL_LIST_INIT(special_traits, build_special_traits())
 
 /// Applies random special trait IF the client has specials enabled in prefs
 /proc/apply_random_special_trait(mob/living/carbon/human/character, client/player)
-    if(!player)
-        player = character.client
-    if(!player)
-        return
-    if(!player.prefs.get_special_trait)
-        return
-    var/special_type = get_random_special_for_char(character, player)
-    if(!special_type) // Ineligible for all of them, somehow
-        return
-    apply_special_trait(character, special_type)
+	if(!player)
+		player = character.client
+	if(!player)
+		return
+	if(!player.prefs.get_special_trait)
+		return
+	var/special_type = get_random_special_for_char(character, player)
+	if(!special_type) // Ineligible for all of them, somehow
+		return
+	log_game("SPECIALS: Rolled [special_type] for [key_name(character)]")
+	apply_special_trait(character, special_type)
 
 /proc/get_random_special_for_char(mob/living/carbon/human/character, client/player)
 	var/list/eligible_weight = list()

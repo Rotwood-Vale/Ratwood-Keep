@@ -275,3 +275,17 @@
 	character.mind.adjust_skillrank(/datum/skill/misc/reading, -2, TRUE)
 	character.mind.adjust_skillrank(/datum/skill/misc/sneaking, -2, TRUE)
 	character.mind.adjust_skillrank(/datum/skill/misc/stealing, -2, TRUE)
+
+/datum/special_trait/vengantbum
+	name = "Vengant Bum"
+	greet_text = span_notice("You were once a nobleman, high on life when your father was murdered right in front of you. Thankfully, your mentor took you to safety and taught you all you need to survive in these disgusting lands. They think you're a lowlife, but that's just an advantage.")
+	allowed_jobs = list(/datum/job/roguetown/beggar)
+	weight = 25
+
+/datum/special_trait/vengantbum/on_apply(mob/living/carbon/human/character, silent)
+	ADD_TRAIT(character, TRAIT_DECEIVING_MEEKNESS, "[type]")
+	character.mind.adjust_skillrank(/datum/skill/combat/wrestling, 6, TRUE)
+	character.mind.adjust_skillrank(/datum/skill/combat/unarmed, 6, TRUE)
+	character.STASTR = 20
+	character.STACON = 20
+	character.STAEND = 20
