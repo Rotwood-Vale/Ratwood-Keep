@@ -1766,8 +1766,8 @@ Slots: [job.spawn_positions]</span>
 				if("bespecial")
 					if(next_special_trait)
 						return
-					to_chat(user, span_boldwarning("You will become special, this could be something negative, positve or neutral and could have a high impact on your character and your experience."))
-					var/result = alert(user, "Do I really want become special?", "Be Special", "Yes", "No")
+					to_chat(user, span_boldwarning("You will become special for one round, this could be something negative, positve or neutral and could have a high impact on your character and your experience."))
+					var/result = alert(user, "You'll receive a unique trait for one round\nDo I really want become special?", "Be Special", "Yes", "No")
 					if(result != "Yes")
 						return
 					if(next_special_trait)
