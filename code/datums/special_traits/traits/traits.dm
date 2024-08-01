@@ -2,12 +2,12 @@
 //// these should still be in the round-start/late join specials as well! It's just these are contextually fitting for Sleep Specials as well!
 /datum/special_trait/nothing
 	name = "Nothing"
-	greet_text = span_notice("I'm not particularly special")
+	greet_text = span_notice("You're not special (This is a placeholder chance to not get anything due to a low amount of specials currently. Eventually this chance will be removed. Sorry about this!)")
 	weight = 2000
 
 /datum/special_trait/nightvision
 	name = "Night Vision"
-	greet_text = span_notice("I can easily see in the dark.")
+	greet_text = span_notice("You now can easily see in the dark.")
 	weight = 100
 
 /datum/special_trait/nightvision/on_apply(mob/living/carbon/human/character, silent)
@@ -69,7 +69,6 @@
 /datum/special_trait/thief
 	name = "Thief"
 	greet_text = span_notice("Life's not easy around here, but I've made mine a little easier by taking things of others")
-	restricted_jobs = list(/datum/job/roguetown/beggar, /datum/job/roguetown/orphan) //Jobs which already have good stealing skills
 	weight = 100
 
 /datum/special_trait/thief/on_apply(mob/living/carbon/human/character, silent)
@@ -101,6 +100,7 @@
 /datum/special_trait/mastercraftsmen
 	name = "Master Crasftman"
 	greet_text = "In your youth, I've decided I'd get a grasp on every trade, and pursued the 10 arts of the craft."
+	req_text = "Middle-aged or Old"
 	allowed_ages = list(AGE_MIDDLEAGED, AGE_OLD)
 	weight = 100
 
@@ -176,6 +176,7 @@
 /datum/special_trait/hussite
 	name = "Known Heretic"
 	greet_text = span_notice("I've been denounced by the church for either reasons legitimate or not!")
+	req_text = "Non-church role"
 	weight = 100
 	restricted_jobs = list(CHURCH_ROLES)
 
@@ -186,8 +187,6 @@
 	name = "Bounty On My Head"
 	greet_text = null
 	weight = 100
-	restricted_migrants = list(MIGRANT_LORDS)
-	restricted_jobs = list(KING_QUEEN_ROLES)
 
 /datum/special_trait/bounty/on_apply(mob/living/carbon/human/character, silent)
 	var/reason = ""
@@ -226,8 +225,6 @@
 	name = "Known Outlaw"
 	greet_text = span_notice("Whether for crimes I did or was accused of, I have been declared an outlaw!")
 	weight = 100
-	restricted_migrants = list(MIGRANT_NOBILITY)
-	restricted_jobs = list(NOBLE_ROLES, MANOR_ROLES)
 
 /datum/special_trait/outlaw/on_apply(mob/living/carbon/human/character, silent)
 	make_outlaw(character.real_name, TRUE)
@@ -245,9 +242,10 @@
 /datum/special_trait/punkprincess //I think everyone will like the Rebellous Prince-Like Princess. I'd love to do one for the prince as well that gives him princess loadout, but, up to you!
 	name = "Rebellous Daughter"
 	greet_text = span_notice("I am quite rebellious for a princess. Screw Noble Customs!")
+	req_text = "Be a princess"
 	allowed_sexes = list(FEMALE)
 	allowed_jobs = list(/datum/job/roguetown/prince)
-	weight = 300
+	weight = 100
 
 /datum/special_trait/punkprincess/on_apply(mob/living/carbon/human/character, silent)
 	QDEL_NULL(character.wear_pants)
@@ -279,8 +277,9 @@
 /datum/special_trait/vengantbum
 	name = "Vengant Bum"
 	greet_text = span_notice("You were once a nobleman, high on life when your father was murdered right in front of you. Thankfully, your mentor took you to safety and taught you all you need to survive in these disgusting lands. They think you're a lowlife, but that's just an advantage.")
+	req_text = "Be a beggar"
 	allowed_jobs = list(/datum/job/roguetown/beggar)
-	weight = 25
+	weight = 7
 
 /datum/special_trait/vengantbum/on_apply(mob/living/carbon/human/character, silent)
 	ADD_TRAIT(character, TRAIT_DECEIVING_MEEKNESS, "[type]")

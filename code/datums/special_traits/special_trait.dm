@@ -2,6 +2,7 @@
 	abstract_type = /datum/special_trait
 	var/name
 	var/greet_text
+	var/req_text
 	var/weight = 100
 	var/list/allowed_sexes
 	var/list/allowed_races
