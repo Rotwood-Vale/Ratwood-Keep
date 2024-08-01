@@ -24,7 +24,7 @@ GLOBAL_LIST_INIT(special_traits, build_special_traits())
 /proc/print_special_text(mob/user, trait_type)
 	var/datum/special_trait/special = SPECIAL_TRAIT(trait_type)
 	to_chat(user, span_notice("<b>[special.name]</b>"))
-	to_chat(user, span_notice(special.greet_text))
+	to_chat(user, special.greet_text)
 	if(special.req_text)
 		to_chat(user, span_boldwarning("Requirements: [special.req_text]"))
 
