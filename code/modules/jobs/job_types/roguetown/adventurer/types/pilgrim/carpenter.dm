@@ -23,7 +23,7 @@
 		H.mind.adjust_skillrank(/datum/skill/misc/swimming, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/climbing, 3, TRUE) // They work at great heights.
 		H.mind.adjust_skillrank(/datum/skill/craft/crafting, 3, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/craft/carpentry, 4, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/craft/carpentry, 5, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/craft/masonry, pick(0,1), TRUE)
 		H.mind.adjust_skillrank(/datum/skill/craft/engineering, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 2, TRUE)
