@@ -100,8 +100,7 @@
 		return FALSE
 	if(!get_location_accessible(human, BODY_ZONE_PRECISE_GROIN))
 		return FALSE
-	var/obj/item/organ/penis/penis = human.getorganslot(ORGAN_SLOT_PENIS)
-	if(penis && penis.sheath_type == SHEATH_TYPE_SLIT) //If our penis hides in a slit, dont describe testicles
+	if(!testes.visible_organ)
 		return FALSE
 	return TRUE
 
