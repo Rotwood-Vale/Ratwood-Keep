@@ -606,7 +606,7 @@
 				to_chat(user, span_warning("[src] is full."))
 				return
 			user.visible_message(span_notice("[user] pours [I] into [src]."), \
-							span_notice("I pour I] into [src]."))
+							span_notice("I pour [I] into [src]."))
 			if(user.m_intent != MOVE_INTENT_SNEAK)
 				if(poursounds)
 					playsound(user.loc,pick(poursounds), 100, TRUE)

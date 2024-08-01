@@ -138,10 +138,11 @@
 	gender = PLURAL
 	icon_state = "flour"
 	list_reagents = list(/datum/reagent/floure = 1)
+	grind_results = list(/datum/reagent/floure = 10)
 	volume = 1
 	sellprice = 0
 /datum/reagent/floure
-	name = "flower"
+	name = "flour"
 	description = ""
 	color = "#FFFFFF" // rgb: 96, 165, 132
 
@@ -155,6 +156,26 @@
 	new /obj/effect/decal/cleanable/food/flour(get_turf(src))
 	..()
 	qdel(src)
+
+/datum/chemical_reaction/graintopowder
+	name = "Powder Piling"
+	id = "powderpiling"
+	required_reagents = list(/datum/reagent/floure = 10)
+
+/datum/chemical_reaction/graintopowder/on_reaction(datum/reagents/holder, created_volume)
+	var/location = get_turf(holder.my_atom)
+	for(var/i = 1, i <= created_volume, i++)
+		new /obj/item/reagent_containers/powder/flour(location)
+
+/datum/chemical_reaction/salttopowder
+	name = "Powder Piling Salt"
+	id = "powderpiling"
+	required_reagents = list(/datum/reagent/consumable/sodiumchloride = 15)
+
+/datum/chemical_reaction/salttopowder/on_reaction(datum/reagents/holder, created_volume)
+	var/location = get_turf(holder.my_atom)
+	for(var/i = 1, i <= created_volume, i++)
+		new /obj/item/reagent_containers/powder/flour/salt(location)
 
 /obj/item/reagent_containers/powder/flour/salt
 	name = "salt"

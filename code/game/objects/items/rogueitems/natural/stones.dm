@@ -137,6 +137,7 @@ GLOBAL_LIST_INIT(stone_personality_descs, list(
 	slot_flags = ITEM_SLOT_MOUTH
 	obj_flags = null
 	w_class = WEIGHT_CLASS_TINY
+	grind_results = list(/datum/reagent/consumable/sodiumchloride = 15)
 
 /obj/item/natural/stone/Initialize()
 	. = ..()
