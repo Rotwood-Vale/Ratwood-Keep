@@ -11,6 +11,31 @@
 #define MOB_DESCRIPTOR_SLOT_TESTICLES 11
 #define MOB_DESCRIPTOR_SLOT_BREASTS 12
 #define MOB_DESCRIPTOR_SLOT_VAGINA 13
+#define MOB_DESCRIPTOR_SLOT_HEIGHT 14
+
+#define CUSTOM_DESCRIPTOR_AMOUNT 2
+#define CUSTOM_DESCRIPTOR_TEXT_LENGTH 25
+
+#define CUSTOM_PREFIX_HAS_A 1
+#define CUSTOM_PREFIX_HAS_AN 2
+#define CUSTOM_PREFIX_IS 3
+#define CUSTOM_PREFIX_LOOKS 4
+
+#define CUSTOM_PREFIX_AMOUNT 4 //Keep this to match the max
+
+#define CUSTOM_PREFIX_INPUT_LIST list(\
+	"Has a" = CUSTOM_PREFIX_HAS_A,\
+	"Has an" = CUSTOM_PREFIX_HAS_AN,\
+	"Is" = CUSTOM_PREFIX_IS,\
+	"Looks" = CUSTOM_PREFIX_LOOKS\
+)
+
+#define CUSTOM_PREFIX_TRANSLATION_LIST list(\
+	"[CUSTOM_PREFIX_HAS_A]" = "Has a",\
+	"[CUSTOM_PREFIX_HAS_AN]" = "Has an",\
+	"[CUSTOM_PREFIX_IS]" = "Is",\
+	"[CUSTOM_PREFIX_LOOKS]" = "Looks"\
+)
 
 #define MOB_DESCRIPTOR(descriptor_type) GLOB.mob_descriptors[descriptor_type]
 
