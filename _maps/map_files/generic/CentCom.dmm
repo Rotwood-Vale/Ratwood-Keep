@@ -1854,7 +1854,7 @@
 /turf/closed,
 /area/rogue/indoors)
 "zf" = (
-/obj/item/reagent_containers/powder,
+/obj/item/reagent_containers/powder/spice,
 /obj/structure/closet/crate/chest,
 /turf/open/floor/rogue/herringbone,
 /area/rogue/indoors)

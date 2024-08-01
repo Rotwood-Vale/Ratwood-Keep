@@ -157,9 +157,7 @@
 	if(!ishuman(H))
 		return
 
-	if(spells && H.mind)	
-		for(var/S in spells)
-			H.mind.AddSpell(new S)
+	add_spells(H)
 
 	if(H.gender == FEMALE)
 		if(jobstats_f)
@@ -196,6 +194,20 @@
 	
 	if(cmode_music)
 		H.cmode_music = cmode_music
+
+/datum/job/proc/add_spells(mob/living/H)
+	if(spells && H.mind)	
+		for(var/S in spells)
+			if(H.mind.has_spell(S))
+				continue
+			H.mind.AddSpell(new S)
+
+/datum/job/proc/remove_spells(mob/living/H)
+	if(spells && H.mind)	
+		for(var/S in spells)
+			if(!H.mind.has_spell(S))
+				continue
+			H.mind.RemoveSpell(S)
 
 /mob/living/carbon/human/proc/add_credit()
 	if(!mind || !client)

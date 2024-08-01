@@ -4036,7 +4036,7 @@
 /area/rogue/indoors/town/dwarfin)
 "eLh" = (
 /obj/structure/closet/crate/roguecloset,
-/obj/item/reagent_containers/powder,
+/obj/item/reagent_containers/powder/spice,
 /obj/item/roguekey/merchant,
 /turf/open/floor/carpet/stellar,
 /area/rogue/indoors/town/shop)
@@ -15236,7 +15236,7 @@
 /area/rogue/indoors/town/church)
 "sSm" = (
 /obj/structure/closet/crate/coffin,
-/obj/item/reagent_containers/powder,
+/obj/item/reagent_containers/powder/spice,
 /turf/open/floor/carpet/purple,
 /area/rogue/under/town/basement)
 "sSS" = (
