@@ -66,6 +66,17 @@
 	var/obj/item/rapier = new /obj/item/rogueweapon/sword/rapier(get_turf(character))
 	character.put_in_hands(rapier, TRUE)
 
+/datum/special_trait/thief
+	name = "Thief"
+	greet_text = span_notice("Life's not easy around here, but I've made mine a little easier by taking things of others")
+	restricted_jobs = list(/datum/job/roguetown/beggar, /datum/job/roguetown/orphan) //Jobs which already have good stealing skills
+	weight = 100
+
+/datum/special_trait/thief/on_apply(mob/living/carbon/human/character, silent)
+	character.mind.adjust_skillrank_up_to(/datum/skill/misc/stealing, 4, TRUE)
+	character.mind.adjust_skillrank_up_to(/datum/skill/misc/sneaking, 3, TRUE)
+	character.mind.adjust_skillrank_up_to(/datum/skill/misc/climbing, 2, TRUE)
+
 /datum/special_trait/languagesavant
 	name = "Polyglot"
 	greet_text = span_notice("I have always picked up on languages easily, even those that are forbidden to mortals.")
