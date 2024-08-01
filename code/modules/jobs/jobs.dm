@@ -135,7 +135,7 @@ GLOBAL_LIST_INIT(mercenary_positions, list(
 	"Mercenary",
 	"Grenzelhoft Mercenary",
 	"Desert Rider Mercenary",
-	"Veteran",
+	"Veteran Mercenary",
 ))
 
 GLOBAL_LIST_INIT(apprentices_positions, list(
