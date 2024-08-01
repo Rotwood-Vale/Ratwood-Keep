@@ -334,7 +334,8 @@
 	/datum/mob_descriptor/prominent/avian_features,\
 	/datum/mob_descriptor/prominent/amphibian_features,\
 	/datum/mob_descriptor/prominent/insectoid_features,\
-	/datum/mob_descriptor/prominent/marine_features
+	/datum/mob_descriptor/prominent/marine_features,\
+	/datum/mob_descriptor/prominent/vulpine_features
 
 /datum/descriptor_choice/prominent_one
 	name = "Prominent #1"

@@ -331,3 +331,6 @@
 	name = "Marine Features"
 	verbage = "%HAVE%"
 
+/datum/mob_descriptor/prominent/vulpine_features
+	name = "Vulpine Features"
+	verbage = "%HAVE%"
