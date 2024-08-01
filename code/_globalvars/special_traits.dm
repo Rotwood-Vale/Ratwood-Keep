@@ -45,7 +45,7 @@ GLOBAL_LIST_INIT(special_traits, build_special_traits())
 	if(!charactet_eligible_for_trait(character, player, trait_type))
 		log_game("SPECIALS: Failed to apply [trait_type] for [key_name(character)]")
 		return FALSE
-	log_game("SPECIALS: Applied [trait_type] for [key_name(character)]")
+	log_game("SPECIALS: Applied [trait_type] for [key_name(character)] ([character.get_role_title()])")
 	apply_special_trait(character, trait_type)
 	return TRUE
 
