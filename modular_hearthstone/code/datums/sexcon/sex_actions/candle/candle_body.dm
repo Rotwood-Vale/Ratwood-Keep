@@ -17,13 +17,13 @@
 		return FALSE
 	var/obj/item/candle/C = get_candle_in_either_hand(user)
 	if(!C.lit)
-		to_chat(usr, span_warning("Lit it first!"))
+		to_chat(usr, span_warning("Light it first!"))
 		return FALSE
 
 	return TRUE
 
 /datum/sex_action/candle_body/on_start(mob/living/carbon/human/user, mob/living/carbon/human/target)
-	user.visible_message(span_warning("[user] begins to drop wax [target]'s body..."))
+	user.visible_message(span_warning("[user] begins to drop wax on [target]'s body..."))
 
 /datum/sex_action/candle_body/on_perform(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] drops wax on [target]'s body..."))
