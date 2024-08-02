@@ -187,7 +187,7 @@
 	GLOB.excommunicated_players += character.real_name
 
 /datum/special_trait/bounty
-	name = "Bounty On My Head"
+	name = "Hunted Man"
 	greet_text = span_notice("Someone put a bounty on my head!")
 	weight = 100
 
