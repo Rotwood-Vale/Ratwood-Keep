@@ -19,7 +19,7 @@
 		return FALSE
 	var/obj/item/candle/C = get_candle_in_either_hand(user)
 	if(!C.lit)
-		to_chat(usr, span_warning("Lit it first!"))
+		to_chat(usr, span_warning("Light it first!"))
 		return FALSE
 
 	return TRUE
