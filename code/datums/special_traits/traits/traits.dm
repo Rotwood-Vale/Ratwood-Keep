@@ -7,7 +7,7 @@
 
 /datum/special_trait/nightvision
 	name = "Night Vision"
-	greet_text = span_notice("You now can easily see in the dark.")
+	greet_text = span_notice("I can easily see in the dark.")
 	weight = 100
 
 /datum/special_trait/nightvision/on_apply(mob/living/carbon/human/character, silent)
