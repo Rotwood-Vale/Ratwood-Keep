@@ -2,7 +2,7 @@
 	title = "Sellsword"
 	flag = SELLSWORD
 	department_flag = MERCENARIES
-	tutorial = "You are a common sellsword, albeit with some experience under your belt. You travelled the isle working as a bodyguard, mercenary or a cutthroat. You're loyal only to your own well being and the sounds mammons make in your pouch."
+	tutorial = "You are a common sellsword, though with some experience under your belt. You travelled the isle working as a bodyguard, mercenary or a cutthroat, some consider you a scum. You're loyal only to your own well being and the sounds mammons make in your pouch."
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_VERY_SHUNNED_UP
 	outfit = /datum/outfit/job/roguetown/mercenary/sellsword
