@@ -184,6 +184,7 @@
 #define DESERT_RIDER	(1<<0)
 #define GRENZELHOFT		(1<<1)
 #define VETERAN		(1<<2)
+#define SELLSWORD		(1<<3)
 
 #define GOBLIN		(1<<8)
 
@@ -277,6 +278,7 @@
 #define JDO_GRENZELHOFT 31
 #define JDO_DESERT_RIDER 31.1
 #define JDO_VET 31.2
+#define JDO_SELLSWORD 31.3
 
 #define JDO_VAGRANT 33
 #define JDO_ORPHAN 34
