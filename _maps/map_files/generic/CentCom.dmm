@@ -1925,6 +1925,10 @@
 "Dw" = (
 /turf/open/floor/rogue/dirt/road,
 /area/rogue)
+"DD" = (
+/obj/structure/roguewindow/stained/silver,
+/turf/open/floor/rogue/herringbone,
+/area/rogue/indoors)
 "Eq" = (
 /obj/structure/table/wood{
 	dir = 10;
@@ -4116,7 +4120,7 @@ Zl
 Zl
 Zl
 Zl
-Sq
+DD
 vQ
 vQ
 vQ
