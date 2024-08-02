@@ -99,10 +99,13 @@
 				HL.job = "King Emeritus"
 			if(HL.job == "Queen Consort")
 				HL.job = "Queen Dowager"
+			SSjob.type_occupations[/datum/job/roguetown/lord].remove_spells(HL)
 
 		//Coronate new King (or Queen)
 		HU.mind.assigned_role = "King"
 		HU.job = "King"
+		SSjob.type_occupations[/datum/job/roguetown/lord].add_spells(HU)
+
 		switch(HU.gender)
 			if("male")
 				SSticker.rulertype = "King"
