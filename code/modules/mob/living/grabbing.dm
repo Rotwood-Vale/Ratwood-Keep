@@ -25,6 +25,21 @@
 /turf
 	var/list/grabbedby = list()
 
+/obj/item/grabbing/Initialize()
+	. = ..()
+	START_PROCESSING(SSfastprocess, src)
+
+/obj/item/grabbing/process()
+	valid_check()
+
+/obj/item/grabbing/proc/valid_check()
+	// We require adjacency to count the grab as valid
+	if(grabbee.Adjacent(grabbed))
+		return TRUE
+	grabbee.stop_pulling(FALSE)
+	qdel(src)
+	return FALSE
+
 /obj/item/grabbing/Click(location, control, params)
 	var/list/modifiers = params2list(params)
 	if(iscarbon(usr))
