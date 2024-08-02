@@ -20,7 +20,8 @@
 	wlength = WLENGTH_SHORT
 	resistance_flags = FLAMMABLE
 	can_parry = TRUE
-	wdefense = 15
+	associated_skill = /datum/skill/combat/shields		//Trained via blocking or attacking dummys with; makes better at parrying w/ shields.
+	wdefense = 5										//Was 15, lowered to 5 - Reason: Shield skill now handles your better parrying w/ shields.
 	var/coverage = 90
 	parrysound = "parrywood"
 	attacked_sound = "parrywood"
@@ -104,9 +105,9 @@
 
 /obj/item/rogueweapon/shield/tower
 	name = "tower shield"
-	desc = "A huge iron shield!"
+	desc = "A gigantic, iron reinforced shield that covers the entire body, a design-copy of the Aasimar shields of an era gone by."
 	icon_state = "shield_tower"
-	force = 15
+	force = 6
 	throwforce = 10
 	throw_speed = 1
 	throw_range = 3
@@ -137,7 +138,7 @@
 	wlength = WLENGTH_NORMAL
 	resistance_flags = null
 	flags_1 = CONDUCT_1
-	wdefense = 18
+	wdefense = 8
 	coverage = 70
 	attacked_sound = list('sound/combat/parry/shield/metalshield (1).ogg','sound/combat/parry/shield/metalshield (2).ogg','sound/combat/parry/shield/metalshield (3).ogg')
 	parrysound = list('sound/combat/parry/shield/metalshield (1).ogg','sound/combat/parry/shield/metalshield (2).ogg','sound/combat/parry/shield/metalshield (3).ogg')
@@ -170,7 +171,7 @@
 	else
 		..()
 
-obj/item/rogueweapon/shield/buckler
+/obj/item/rogueweapon/shield/buckler
 	name = "buckler shield"
 	desc = "A sturdy buckler shield. Will block anything you can imagine."
 	icon_state = "bucklersh"
@@ -179,7 +180,7 @@ obj/item/rogueweapon/shield/buckler
 	throwforce = 10
 	dropshrink = 0.8
 	resistance_flags = null
-	wdefense = 9
+	wdefense = 7
 	coverage = 10
 	attacked_sound = list('sound/combat/parry/shield/metalshield (1).ogg','sound/combat/parry/shield/metalshield (2).ogg','sound/combat/parry/shield/metalshield (3).ogg')
 	parrysound = list('sound/combat/parry/shield/metalshield (1).ogg','sound/combat/parry/shield/metalshield (2).ogg','sound/combat/parry/shield/metalshield (3).ogg')
@@ -187,7 +188,7 @@ obj/item/rogueweapon/shield/buckler
 	blade_dulling = DULLING_BASH
 	associated_skill = 0
 
-obj/item/rogueweapon/shield/buckler/proc/bucklerskill(mob/living/user)
+/obj/item/rogueweapon/shield/buckler/proc/bucklerskill(mob/living/user)
 	if(!ishuman(user))
 		return
 	var/mob/living/carbon/bucklerer = user

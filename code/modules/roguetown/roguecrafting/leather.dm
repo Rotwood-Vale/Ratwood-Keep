@@ -141,6 +141,14 @@
 /obj/item/clothing/cloak/raincloak/furcloak/crafted
 	sellprice = 55
 
+/datum/crafting_recipe/roguetown/leather/papakha
+	name = "papakha hat"
+	result = /obj/item/clothing/head/roguetown/papakha/crafted
+	reqs = list(/obj/item/natural/fur = 1, /obj/item/natural/fibers = 2)
+
+/obj/item/clothing/head/roguetown/papakha/crafted
+	sellprice = 10
+
 /datum/crafting_recipe/roguetown/leather/saddle
 	name = "saddle"
 	result = /obj/item/natural/saddle

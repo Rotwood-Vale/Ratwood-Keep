@@ -226,6 +226,15 @@
 	icon_state = "hatfur"
 	sewrepair = TRUE
 
+/obj/item/clothing/head/roguetown/papakha
+	name = "papakha"
+	icon_state = "papakha"
+	item_state = "papakha"
+	sewrepair = TRUE
+	flags_inv = HIDEEARS
+	armor = list("blunt" = 15, "slash" = 15, "stab" = 20, "bullet" = 1, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	blocksound = SOFTHIT
+
 /obj/item/clothing/head/roguetown/hatblu
 	name = "fur hat"
 	icon_state = "hatblu"
@@ -503,6 +512,12 @@
 					H.update_inv_head()
 		user.update_fov_angles()
 
+/obj/item/clothing/head/roguetown/helmet/sallet/elven
+	desc = "A steel helmet with a thin gold plating designed for Elven woodland guardians."
+	icon_state = "bascinet_novisor"
+	item_state = "bascinet_novisor"
+	color = COLOR_ASSEMBLY_GOLD
+
 /obj/item/clothing/head/roguetown/helmet/heavy
 	name = "barbute"
 	desc = ""
@@ -685,6 +700,42 @@
 	sewrepair = TRUE
 	blocksound = SOFTHIT
 
+/obj/item/clothing/head/roguetown/helmet/leather/minershelm
+	name = "leather miners helmet"
+	desc = "A leather kettle-like helmet with a headlamp, fueled by magiks."
+	icon_state = "minerslamp"
+	var/brightness_on = 4 //less than a torch; basically good for one person.
+	var/on = FALSE
+	actions_types = list(/datum/action/item_action/toggle_helmet_light)
+
+/obj/item/clothing/head/roguetown/helmet/leather/minershelm/attack_self(mob/living/user)
+	toggle_helmet_light(user)
+
+/obj/item/clothing/head/roguetown/helmet/leather/minershelm/proc/toggle_helmet_light(mob/living/user)
+	on = !on
+	if(on)
+		turn_on(user)
+	else
+		turn_off(user)
+	update_icon()
+
+/obj/item/clothing/head/roguetown/helmet/leather/minershelm/update_icon()
+	icon_state = "minerslamp[on]"
+	item_state = "minerslamp[on]"
+	if(ishuman(loc))
+		var/mob/living/carbon/human/H = loc
+		H.update_inv_head()
+	for(var/X in actions)
+		var/datum/action/A = X
+		A.UpdateButtonIcon(force = TRUE)
+	..()
+
+/obj/item/clothing/head/roguetown/helmet/leather/minershelm/proc/turn_on(mob/user)
+	set_light(brightness_on)
+
+/obj/item/clothing/head/roguetown/helmet/leather/minershelm/proc/turn_off(mob/user)
+	set_light(0)
+
 /obj/item/clothing/head/roguetown/wizhat
 	name = "wizard hat"
 	desc = "Used to distinguish dangerous wizards from senile old men."
@@ -759,7 +810,37 @@
 	detail_tag = "_detail"
 	dynamic_hair_suffix = ""
 	max_integrity = 150
-	colorgrenz = TRUE
+	armor = list("blunt" = 15, "slash" = 20, "stab" = 15, "bullet" = 1, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	var/picked = FALSE
+
+/obj/item/clothing/head/roguetown/grenzelhofthat/attack_right(mob/user)
+	..()
+	if(!picked)
+		var/list/colors = list(
+		"Swan White"="#ffffff",
+		"Lavender"="#865c9c",
+		"Royal Purple"="#5E4687",
+		"Wine Rouge"="#752B55",
+		"Sow's skin"="#CE929F",
+		"Knight's Red"="#933030",
+		"Madroot Red"="#AD4545",
+		"Marigold Orange"="#E2A844",
+		"Politely, Yuck"="#685542",
+		"Astrata's Yellow"="#FFFD8D",
+		"Bog Green"="#375B48",
+		"Seafoam Green"="#49938B",
+		"Woad Blue"="#395480",
+		"Cornflower Blue"="#749EE8",
+		"Blacksteel Grey"="#404040",)
+		var/choice = input(user, "Choose a color.", "Grenzelhoft colors") as anything in colors
+		var/playerchoice = colors[choice]
+		picked = TRUE
+		detail_color = playerchoice
+		detail_tag = "_detail"
+		update_icon()
+		if(loc == user && ishuman(user))
+			var/mob/living/carbon/H = user
+			H.update_inv_head()
 
 /obj/item/clothing/head/roguetown/grenzelhofthat/update_icon()
 	cut_overlays()

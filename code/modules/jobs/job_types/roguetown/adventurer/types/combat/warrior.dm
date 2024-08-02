@@ -31,6 +31,7 @@
 			H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/athletics, 4, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/swords, 3, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/shields, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/knives, rand(1,3), TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/sneaking, pick(1,1,2), TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/swimming, 1, TRUE)
@@ -67,6 +68,8 @@
 				beltr = /obj/item/rogueweapon/sword/iron
 			else
 				beltr = /obj/item/rogueweapon/sword/sabre
+			ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
+
 		if("Monster Hunter")
 			H.set_blindness(0)
 			to_chat(H, span_warning("Monsters Hunters are typically contracted champions of the common folk dedicated to the slaying of both lesser vermin and greater beasts of the wilds."))
@@ -81,6 +84,7 @@
 			H.mind.adjust_skillrank(/datum/skill/misc/climbing, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/riding, pick(2,3), TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/medicine, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/shields, 2, TRUE)
 			H.change_stat("strength", 2)
 			H.change_stat("endurance", 1) // Weaker endurance compared to a traditional warrior/soldier. Smarter due to study of rare magical beasts.
 			H.change_stat("constitution", 2)
@@ -111,6 +115,7 @@
 				backr = /obj/item/rogueweapon/stoneaxe/battle
 			backl = /obj/item/storage/backpack/rogue/satchel
 			beltl = /obj/item/rogueweapon/huntingknife
+			ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
 	if(H.gender == MALE)
 		pants = /obj/item/clothing/under/roguetown/tights/black
 	else
@@ -118,6 +123,3 @@
 		H.underwear_color = CLOTHING_BLACK
 		H.update_body()
 		pants = /obj/item/clothing/under/roguetown/tights/black
-
-	ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
-	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
