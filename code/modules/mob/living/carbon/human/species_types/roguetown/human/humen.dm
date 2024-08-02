@@ -103,3 +103,11 @@
 	"red - blood" = "822b2b"
 
 	))
+
+/datum/species/human/northern/get_accent(mob/living/carbon/human/H)
+    switch(H.skin_tone)
+        if(SKIN_COLOR_GRENZELHOFT) //Grenzelhoft
+            return strings("german_replacement.json", "german")
+        if(SKIN_COLOR_HAMMERHOLD) //Hammerhold
+            return strings("Anglish.json", "Anglish")
+    return null
