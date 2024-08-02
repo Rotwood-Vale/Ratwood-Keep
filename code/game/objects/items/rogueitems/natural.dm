@@ -85,9 +85,9 @@
 		if(2)
 			var/obj/F = new stacktype(src.loc)
 			var/obj/I = new stacktype(src.loc)
+			qdel(src)
 			H.put_in_hands(F)
 			H.put_in_hands(I)
-			qdel(src)
 			return
 		else
 			amount -= 1
