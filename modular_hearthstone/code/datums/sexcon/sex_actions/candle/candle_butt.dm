@@ -1,5 +1,5 @@
 /datum/sex_action/candle_butt
-	name = "Use candle wax on their bossom"
+	name = "Use candle wax on their buttocks"
 
 /datum/sex_action/candle_butt/shows_on_menu(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(user == target)
@@ -17,16 +17,16 @@
 		return FALSE
 	var/obj/item/candle/C = get_candle_in_either_hand(user)
 	if(!C.lit)
-		to_chat(usr, span_warning("Lit it first!"))
+		to_chat(usr, span_warning("Light it first!"))
 		return FALSE
 
 	return TRUE
 
 /datum/sex_action/candle_butt/on_start(mob/living/carbon/human/user, mob/living/carbon/human/target)
-	user.visible_message(span_warning("[user] begins to drop wax [target]'s bossom..."))
+	user.visible_message(span_warning("[user] begins to drop wax [target]'s buttocks..."))
 
 /datum/sex_action/candle_butt/on_perform(mob/living/carbon/human/user, mob/living/carbon/human/target)
-	user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] drops wax on [target]'s bossom..."))
+	user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] drops wax on [target]'s buttocks..."))
 
 	user.sexcon.perform_sex_action(target, 0.5, 0, TRUE)
 	target.sexcon.handle_passive_ejaculation()
@@ -36,7 +36,7 @@
 		playsound(src, 'sound/items/firesnuff.ogg', 20)
 
 /datum/sex_action/candle_butt/on_finish(mob/living/carbon/human/user, mob/living/carbon/human/target)
-	user.visible_message(span_warning("[user] stops dropping wax on [target]'s bossom..."))
+	user.visible_message(span_warning("[user] stops dropping wax on [target]'s buttocks..."))
 
 /datum/sex_action/candle_butt/is_finished(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(target.sexcon.finished_check())
