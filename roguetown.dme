@@ -3536,6 +3536,7 @@
 #include "modular\code\modules\maturity-prompt\code\config_entries.dm"
 #include "modular\code\modules\maturity-prompt\code\maturity_prompt.dm"
 #include "modular\code\modules\maturity-prompt\code\maturity_subsystem.dm"
+#include "modular_hearthstone\code\datums\accents.dm"
 #include "modular_hearthstone\code\datums\sexcon\item_helpers.dm"
 #include "modular_hearthstone\code\datums\sexcon\sex_actions\candle\candle_body.dm"
 #include "modular_hearthstone\code\datums\sexcon\sex_actions\candle\candle_breasts.dm"
