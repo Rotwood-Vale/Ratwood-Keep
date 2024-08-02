@@ -17,7 +17,7 @@
 	advclass_cat_rolls = list(CTAG_WATCH = 20)
 
 	give_bank_account = 16
-	min_pq = 1
+	min_pq = 0
 	max_pq = null
 
 	cmode_music = 'sound/music/combat_guard.ogg'
@@ -78,7 +78,7 @@ Archer is basically a 'bounty-catcher' in function, less specialized at close-qu
 	H.mind.adjust_skillrank(/datum/skill/combat/whipsflails, 2, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/climbing, 3, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 2, TRUE) 
+	H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 2, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/swimming, 2, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/medicine, 1, TRUE)
@@ -119,7 +119,7 @@ Archer is basically a 'bounty-catcher' in function, less specialized at close-qu
 	H.mind.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/climbing, 4, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 3, TRUE) 
+	H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 3, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/swimming, 2, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/medicine, 1, TRUE)
