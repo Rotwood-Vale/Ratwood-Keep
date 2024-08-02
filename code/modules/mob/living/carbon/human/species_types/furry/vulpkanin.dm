@@ -51,7 +51,7 @@
 		ORGAN_SLOT_TAIL = /obj/item/organ/tail/vulpkanin,
 		ORGAN_SLOT_SNOUT = /obj/item/organ/snout/vulpkanin,
 		ORGAN_SLOT_TESTICLES = /obj/item/organ/testicles,
-		ORGAN_SLOT_PENIS = /obj/item/organ/penis,
+		ORGAN_SLOT_PENIS = /obj/item/organ/penis/knotted,
 		ORGAN_SLOT_BREASTS = /obj/item/organ/breasts,
 		ORGAN_SLOT_VAGINA = /obj/item/organ/vagina,
 		)
@@ -69,7 +69,7 @@
 		/datum/customizer/organ/snout/vulpkanin,
 		/datum/customizer/organ/ears/vulpkanin,
 		/datum/customizer/organ/testicles/external,
-		/datum/customizer/organ/penis/knotted,
+		/datum/customizer/organ/penis/canine,
 		/datum/customizer/organ/breasts/animal,
 		/datum/customizer/organ/vagina/animal,
 		)

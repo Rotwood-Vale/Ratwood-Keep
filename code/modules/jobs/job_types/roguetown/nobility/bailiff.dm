@@ -5,11 +5,13 @@
 	faction = "Station"
 	total_positions = 1
 	spawn_positions = 1
-	allowed_sexes = list(MALE)
+	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_TOLERATED_UP
 	allowed_ages = list(AGE_MIDDLEAGED, AGE_OLD)
 	display_order = JDO_BAILIFF
-	tutorial = "You judge the common folk and their wrongdoings if necessary. You help plan with the Councillors and maybe the King on any new issues, laws, judgings, and construction that are required to adapt to the world. You have two assistant Councillors that may serve as jurors to assist you in your job. You are required to enforce taxes for the King, judge people for breaking the law, make sure the town and manor are not in decay, and to help plan or construct new buildings. You are allowed some limited control over Guards, however it is not the focus of your job unless special circumstances are to change this."
+	tutorial = "You judge the common folk and their wrongdoings if necessary. You help plan with the Councillors and maybe the King on any new issues, laws, judgings, and construction that are required to adapt to the world. You have two assistant Councillors that may serve as jurors to assist you in your job. You are required to enforce taxes for the King, judge people for breaking the law, make sure the town and manor are not in decay, and to help plan or construct new buildings. You are allowed some limited control over Guards, however it is not the focus of your job unless special circumstances are to change this. \
+		\
+		This role allows for full customization."
 	whitelist_req = FALSE
 
 	spells = list(/obj/effect/proc_holder/spell/self/convertrole/guard, /obj/effect/proc_holder/spell/self/convertrole/bog)
@@ -20,6 +22,8 @@
 	max_pq = null
 
 	cmode_music = 'sound/music/combat_guard.ogg'
+
+	allow_custom_genitals = TRUE
 
 /datum/outfit/job/roguetown/bailiff/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -121,7 +125,7 @@
 				INVOKE_ASYNC(GLOBAL_PROC, GLOBAL_PROC_REF(lord_outlaw_requested), src, lord, inputty)
 			else
 				make_outlaw(inputty)
-				
+
 /proc/find_lord(required_stat = CONSCIOUS)
 	var/mob/living/lord
 	for(var/mob/living/carbon/human/H in GLOB.human_list)

@@ -164,6 +164,9 @@
 			customizer_entries += customizer.create_customizer_entry(src, choice_type)
 		else
 			choice.handle_topic(user, href_list, src, entry, customizer_type)
+	if(ishuman(user))
+		var/mob/living/carbon/human/humanized = user
+		humanized.update_body_parts(TRUE)
 
 /datum/preferences/proc/reset_all_customizer_accessory_colors()
 	for(var/datum/customizer_entry/entry as anything in customizer_entries)
@@ -203,7 +206,7 @@
 		return entry.eye_color
 	else
 		return "FFFFFF"
-	
+
 /datum/preferences/proc/get_chest_color()
 	var/list/zone_list = body_markings[BODY_ZONE_CHEST]
 	if(!zone_list)
@@ -221,3 +224,21 @@
 		if(entry.type == entry_type)
 			return entry
 	return null
+
+/datum/preferences/proc/genderize_customizer_entries()
+	customizer_entries = SANITIZE_LIST(customizer_entries)
+	var/datum/species/species = pref_species
+	var/list/customizers = species.customizers
+
+	/// Check if we have any missing customizer entries
+	for(var/datum/customizer/customizer_type as anything in customizers)
+		if(customizer_type.gender_enabled == null)
+			continue
+		for(var/datum/customizer_entry/entry as anything in customizer_entries)
+			if(entry.customizer_type != customizer_type)
+				continue
+			if(customizer_type.gender_enabled == gender)
+				entry.disabled = FALSE
+			else
+				entry.disabled = TRUE
+			break

@@ -2,7 +2,7 @@
 	name = "Hand of Heartfelt"
 	tutorial = "You serve your lord as the royal hand, taking care of all diplomatic actions in your relm. \
 	maybe one day you will become lord too."
-	allowed_sexes = list(MALE)
+	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_TOLERATED_UP
 	outfit = /datum/outfit/job/roguetown/adventurer/heartfelthand
 	maximum_possible_slots = 1
@@ -39,7 +39,7 @@
 		H.change_stat("strength", 2)
 		H.change_stat("perception", 3)
 		H.change_stat("intelligence", 3)
-	
+
 	ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_SEEPRICES, TRAIT_GENERIC)
-	
+
