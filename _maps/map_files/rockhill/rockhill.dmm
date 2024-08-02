@@ -9984,7 +9984,9 @@
 /turf/open/floor/rogue/grass,
 /area/rogue/outdoors/bog)
 "lXO" = (
-/obj/structure/mineral_door/bars,
+/obj/structure/mineral_door/bars{
+	lockid = "town_dungeon"
+	},
 /turf/open/floor/rogue/greenstone,
 /area/rogue/under/town/sewer)
 "lYq" = (
