@@ -119,8 +119,10 @@
 			icon_state = "keyring4"
 
 /obj/item/keyring/proc/update_desc()
-	if(keys.len)
-		desc = span_info("\Roman [keys.len] keys.")
+	if(length(keys))
+		desc = span_info("\Roman [keys.len] key\s, including:")
+		for(var/obj/item/roguekey/KE in keys)
+			desc += span_info("[KE.name ? "\A [KE.name]." : "An unknown key."]")
 	else
 		desc = ""
 
