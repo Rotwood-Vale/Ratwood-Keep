@@ -33,11 +33,8 @@
 	valid_check()
 
 /obj/item/grabbing/proc/valid_check()
-	// Mouth grab while we're adjacent is good
-	if(grabbee.mouth == src && grabbee.Adjacent(grabbed))
-		return TRUE
-	// Other grab requires adjacency and pull status, unless we're grabbing ourselves
-	if(grabbee.Adjacent(grabbed) && (grabbee.pulling == grabbed || grabbee == grabbed))
+	// We require adjacency to count the grab as valid
+	if(grabbee.Adjacent(grabbed))
 		return TRUE
 	grabbee.stop_pulling(FALSE)
 	qdel(src)
