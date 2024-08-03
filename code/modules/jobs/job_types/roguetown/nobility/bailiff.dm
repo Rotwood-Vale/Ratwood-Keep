@@ -67,16 +67,16 @@
 	var/inputty = input("Write a new law", "BAILIFF") as text|null
 	if(inputty)
 		if(hasomen(OMEN_NOLORD))
-			src.log_message("makes a new law [length(GLOB.laws_of_the_land) + 1] with the current ruler dead. (THRONE)", LOG_GAME, color="black")
+			src.log_message("makes a new law [length(GLOB.laws_of_the_land) + 1] with the current ruler dead. (THRONE)", LOG_GAME)
 			make_law(inputty, src)
 		else
 			var/lord = find_lord()
 			if(lord)
-				src.log_message("requests new law to [key_name(lord)]: \"[length(GLOB.laws_of_the_land) + 1]. [inputty]\" (THRONE)", LOG_GAME, color="black")
+				src.log_message("requests new law to [key_name(lord)]: \"[length(GLOB.laws_of_the_land) + 1]. [inputty]\" (THRONE)", LOG_GAME)
 				to_chat(src, span_warning("I request that the ruler add the following law: \"[length(GLOB.laws_of_the_land) + 1]. [inputty]\""))
 				INVOKE_ASYNC(GLOBAL_PROC, GLOBAL_PROC_REF(lord_law_requested), src, lord, inputty)
 			else
-				src.log_message("makes a new law [length(GLOB.laws_of_the_land) + 1] with no ruler. (THRONE)", LOG_GAME, color="black")
+				src.log_message("makes a new law [length(GLOB.laws_of_the_land) + 1] with no ruler. (THRONE)", LOG_GAME)
 				make_law(inputty, src)
 
 
@@ -91,15 +91,15 @@
 	var/law_index = input("Remove a law by number:", "BAILIFF", null) as null|num
 	if(law_index && GLOB.laws_of_the_land[law_index])
 		if(hasomen(OMEN_NOLORD))
-			src.log_message("removes law [law_index] with ruler dead. (THRONE)", LOG_GAME, color="black")
+			src.log_message("removes law [law_index] with ruler dead. (THRONE)", LOG_GAME)
 			remove_law(law_index, src)
 		else
 			var/lord = find_lord()
 			if(lord)
-				src.log_message("requests law removal to [key_name(lord)]: \"[law_index]. [GLOB.laws_of_the_land[law_index]]\" (THRONE)", LOG_GAME, color="black")
+				src.log_message("requests law removal to [key_name(lord)]: \"[law_index]. [GLOB.laws_of_the_land[law_index]]\" (THRONE)", LOG_GAME)
 				INVOKE_ASYNC(GLOBAL_PROC, GLOBAL_PROC_REF(lord_law_removal_requested), src, lord, law_index)
 			else
-				src.log_message("removes law [law_index] with no ruler. (THRONE)", LOG_GAME, color="black")
+				src.log_message("removes law [law_index] with no ruler. (THRONE)", LOG_GAME)
 				remove_law(law_index, src)
 
 /mob/living/carbon/human/proc/request_purge()
@@ -111,15 +111,15 @@
 		to_chat(src, "There are no laws to remove!")
 		return
 	if(hasomen(OMEN_NOLORD))
-		src.log_message("purged laws with ruler dead. (THRONE)", LOG_GAME, color="black")
+		src.log_message("purged laws with ruler dead. (THRONE)", LOG_GAME)
 		purge_laws(src)
 	else
 		var/lord = find_lord()
 		if(lord)
-			src.log_message("requests law purge to [key_name(lord)]. (THRONE)", LOG_GAME, color="black")
+			src.log_message("requests law purge to [key_name(lord)]. (THRONE)", LOG_GAME)
 			INVOKE_ASYNC(GLOBAL_PROC, GLOBAL_PROC_REF(lord_purge_requested), src, lord)
 		else
-			src.log_message("purged laws with no ruler. (THRONE)", LOG_GAME, color="black")
+			src.log_message("purged laws with no ruler. (THRONE)", LOG_GAME)
 			purge_laws(src)
 
 /mob/living/carbon/human/proc/request_outlaw()
@@ -132,16 +132,16 @@
 		if(hasomen(OMEN_NOLORD))
 			make_outlaw(inputty, src)
 			if(inputty in GLOB.outlawed_players)
-				src.log_message("made [inputty] an outlaw with ruler dead. (THRONE)", LOG_GAME, color="black")
+				src.log_message("made [inputty] an outlaw with ruler dead. (THRONE)", LOG_GAME)
 		else
 			var/lord = find_lord()
 			if(lord)
-				src.log_message("requests that [key_name(lord)] make [inputty] an outlaw. (THRONE)", LOG_GAME, color="black")
+				src.log_message("requests that [key_name(lord)] make [inputty] an outlaw. (THRONE)", LOG_GAME)
 				INVOKE_ASYNC(GLOBAL_PROC, GLOBAL_PROC_REF(lord_outlaw_requested), src, lord, inputty)
 			else
 				make_outlaw(inputty, src)
 				if(inputty in GLOB.outlawed_players)
-					src.log_message("made [inputty] an outlaw with no ruler. (THRONE)", LOG_GAME, color="black")
+					src.log_message("made [inputty] an outlaw with no ruler. (THRONE)", LOG_GAME)
 				
 /proc/find_lord(required_stat = CONSCIOUS)
 	var/mob/living/lord
@@ -158,9 +158,9 @@
 		if(bailiff)
 			to_chat(bailiff, span_warning("The lord has denied the request for a new law!"))
 		to_chat(lord, span_warning("I deny the request for a new law: \"[length(GLOB.laws_of_the_land) + 1]. [requested_law]\""))
-		lord.log_message("DENIED the request [bailiff ? "from bailiff [key_name(bailiff)] " : ""]to add law: \"[length(GLOB.laws_of_the_land) + 1]. [requested_law]\" (THRONE)", LOG_GAME, color="black")
+		lord.log_message("DENIED the request [bailiff ? "from bailiff [key_name(bailiff)] " : ""]to add law: \"[length(GLOB.laws_of_the_land) + 1]. [requested_law]\" (THRONE)", LOG_GAME)
 		return
-	lord.log_message("APPROVED the request [bailiff ? "from bailiff [key_name(bailiff)] " : ""]to add new law [length(GLOB.laws_of_the_land) + 1]. (THRONE)", LOG_GAME, color="black")
+	lord.log_message("APPROVED the request [bailiff ? "from bailiff [key_name(bailiff)] " : ""]to add new law [length(GLOB.laws_of_the_land) + 1]. (THRONE)", LOG_GAME)
 	make_law(requested_law, lord)
 
 /proc/lord_law_removal_requested(mob/living/bailiff, mob/living/carbon/human/lord, requested_law)
@@ -171,9 +171,9 @@
 		if(bailiff)
 			to_chat(bailiff, span_warning("The lord has denied the request for a law removal!"))
 		to_chat(lord, span_warning("I deny the request to remove law [requested_law]."))
-		lord.log_message("DENIED the request [bailiff ? "from bailiff [key_name(bailiff)] " : ""]to remove law: \"[requested_law]. [GLOB.laws_of_the_land[requested_law]]\" (THRONE)", LOG_GAME, color="black")
+		lord.log_message("DENIED the request [bailiff ? "from bailiff [key_name(bailiff)] " : ""]to remove law: \"[requested_law]. [GLOB.laws_of_the_land[requested_law]]\" (THRONE)", LOG_GAME)
 		return
-	lord.log_message("APPROVED the request [bailiff ? "from bailiff [key_name(bailiff)] " : ""]to remove law: \"[requested_law]. [GLOB.laws_of_the_land[requested_law]]\" (THRONE)", LOG_GAME, color="black")
+	lord.log_message("APPROVED the request [bailiff ? "from bailiff [key_name(bailiff)] " : ""]to remove law: \"[requested_law]. [GLOB.laws_of_the_land[requested_law]]\" (THRONE)", LOG_GAME)
 	remove_law(requested_law, lord)
 
 /proc/lord_purge_requested(mob/living/bailiff, mob/living/carbon/human/lord)
@@ -182,10 +182,10 @@
 		if(bailiff)
 			to_chat(bailiff, span_warning("The lord has denied the request for a purge of all laws!"))
 		to_chat(lord, span_warning("I deny the request to purge all laws."))
-		lord.log_message("DENIED the request [bailiff ? "from bailiff [key_name(bailiff)] " : ""]to purge all laws. (THRONE)", LOG_GAME, color="black")
+		lord.log_message("DENIED the request [bailiff ? "from bailiff [key_name(bailiff)] " : ""]to purge all laws. (THRONE)", LOG_GAME)
 		return
 	purge_laws(lord)
-	lord.log_message("ACCEPTED the request [bailiff ? "from bailiff [key_name(bailiff)] " : ""]to purge all laws. (THRONE)", LOG_GAME, color="black")
+	lord.log_message("ACCEPTED the request [bailiff ? "from bailiff [key_name(bailiff)] " : ""]to purge all laws. (THRONE)", LOG_GAME)
 
 /proc/lord_outlaw_requested(mob/living/bailiff, mob/living/carbon/human/lord, requested_outlaw)
 	var/choice = alert(lord, "The bailiff requests to outlaw someone!\n[requested_outlaw]", "BAILIFF OUTLAW REQUEST", "Yes", "No")
@@ -193,7 +193,7 @@
 		if(bailiff)
 			to_chat(bailiff, span_warning("The lord has denied the request for declaring [requested_outlaw] an outlaw!"))
 		to_chat(lord, span_warning("I deny the request to make [requested_outlaw] an outlaw."))
-		lord.log_message("DENIED the request [bailiff ? "from bailiff [key_name(bailiff)] " : ""]to make [requested_outlaw] an outlaw. (THRONE)", LOG_GAME, color="black")
+		lord.log_message("DENIED the request [bailiff ? "from bailiff [key_name(bailiff)] " : ""]to make [requested_outlaw] an outlaw. (THRONE)", LOG_GAME)
 		return
 	make_outlaw(requested_outlaw, lord)
-	lord.log_message("ACCEPTED the request [bailiff ? "from bailiff [key_name(bailiff)] " : ""]to make [requested_outlaw] an outlaw. (THRONE)", LOG_GAME, color="black")
+	lord.log_message("ACCEPTED the request [bailiff ? "from bailiff [key_name(bailiff)] " : ""]to make [requested_outlaw] an outlaw. (THRONE)", LOG_GAME)

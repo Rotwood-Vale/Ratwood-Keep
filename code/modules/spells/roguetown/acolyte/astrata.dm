@@ -24,8 +24,8 @@
 		var/mob/living/L = targets[1]
 		user.visible_message("<font color='yellow'>[user] points at [L]!</font>")
 		if(L.anti_magic_check(TRUE, TRUE))
-			user.log_message("failed to cast Sacred Flame on [key_name(L)] due to antimagic.", LOG_ATTACK, color="black")
-			L.log_message("was antimagic protected from Sacred Flame cast by [key_name(user)].", LOG_ATTACK, color="black")
+			user.log_message("failed to cast Sacred Flame on [key_name(L)] due to antimagic.", LOG_ATTACK)
+			L.log_message("was antimagic protected from Sacred Flame cast by [key_name(user)].", LOG_ATTACK)
 			return FALSE
 		L.adjust_fire_stacks(5)
 		L.IgniteMob()
@@ -101,8 +101,8 @@
 		target.Jitter(100)
 		target.update_body()
 		target.visible_message(span_notice("[target] is revived by holy light!"), span_green("I awake from the void."))
-		user.log_message("brought [key_name(target)] back to life via Anastasis. (NEWHP: [target.health])", LOG_ATTACK, color="black")
-		target.log_message("was brought back to life via Anastasis by [key_name(user)].", LOG_ATTACK, color="black")
+		user.log_message("brought [key_name(target)] back to life via Anastasis. (NEWHP: [target.health])", LOG_ATTACK)
+		target.log_message("was brought back to life via Anastasis by [key_name(user)].", LOG_ATTACK)
 		if(target.mind)
 			if(revive_pq && !HAS_TRAIT(target, TRAIT_IWASREVIVED) && user?.ckey)
 				adjust_playerquality(revive_pq, user.ckey)

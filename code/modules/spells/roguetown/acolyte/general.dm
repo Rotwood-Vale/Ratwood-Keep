@@ -72,12 +72,12 @@
 					C.update_damage_overlays()
 				if(affecting.heal_wounds(25))
 					C.update_damage_overlays()
-				user.log_message("healed [key_name(C)] [affecting.name ? "in \the [affecting.name]" : ""]with Lesser Miracle. ([C.health]HP, [affecting.get_damage()]LHP, [length(affecting.wounds) ? "[length(affecting.wounds)]W" : "0W"])", LOG_ATTACK, color="black")
-				C.log_message("was healed [affecting.name ? "in \the [affecting.name]" : ""]via Lesser Miracle by [key_name(user)]. ([C.health]HP, [affecting.get_damage()]LHP, [length(affecting.wounds) ? "[length(affecting.wounds)]W" : "0W"])", LOG_ATTACK, color="black")
+				user.log_message("healed [key_name(C)] [affecting.name ? "in \the [affecting.name]" : ""]with Lesser Miracle. ([C.health]HP, [affecting.get_damage()]LHP, [length(affecting.wounds) ? "[length(affecting.wounds)]W" : "0W"])", LOG_ATTACK)
+				C.log_message("was healed [affecting.name ? "in \the [affecting.name]" : ""]via Lesser Miracle by [key_name(user)]. ([C.health]HP, [affecting.get_damage()]LHP, [length(affecting.wounds) ? "[length(affecting.wounds)]W" : "0W"])", LOG_ATTACK)
 		else
 			target.adjustBruteLoss(-25)
 			target.adjustFireLoss(-25)
-			user.log_message("healed [key_name(target)] with Lesser Miracle.", LOG_ATTACK, color="black")
+			user.log_message("healed [key_name(target)] with Lesser Miracle.", LOG_ATTACK)
 		target.adjustToxLoss(-25)
 		target.adjustOxyLoss(-25)
 		target.blood_volume += BLOOD_VOLUME_SURVIVE/2
@@ -126,12 +126,12 @@
 					C.update_damage_overlays()
 				if(affecting.heal_wounds(50))
 					C.update_damage_overlays()
-				user.log_message("healed [key_name(C)] [affecting.name ? "in \the [affecting.name]" : ""]with Greater Miracle. ([C.health]HP, [affecting.get_damage()]LHP, [length(affecting.wounds) ? "[length(affecting.wounds)]W" : "0W"])", LOG_ATTACK, color="black")
-				C.log_message("was healed [affecting.name ? "in \the [affecting.name]" : ""]via Greater Miracle by [key_name(user)]. ([C.health]HP, [affecting.get_damage()]LHP, [length(affecting.wounds) ? "[length(affecting.wounds)]W" : "0W"])", LOG_ATTACK, color="black")
+				user.log_message("healed [key_name(C)] [affecting.name ? "in \the [affecting.name]" : ""]with Greater Miracle. ([C.health]HP, [affecting.get_damage()]LHP, [length(affecting.wounds) ? "[length(affecting.wounds)]W" : "0W"])", LOG_ATTACK)
+				C.log_message("was healed [affecting.name ? "in \the [affecting.name]" : ""]via Greater Miracle by [key_name(user)]. ([C.health]HP, [affecting.get_damage()]LHP, [length(affecting.wounds) ? "[length(affecting.wounds)]W" : "0W"])", LOG_ATTACK)
 		else
 			target.adjustBruteLoss(-50)
 			target.adjustFireLoss(-50)
-			user.log_message("healed [key_name(target)] with Greater Miracle.", LOG_ATTACK, color="black")
+			user.log_message("healed [key_name(target)] with Greater Miracle.", LOG_ATTACK)
 		target.adjustToxLoss(-50)
 		target.adjustOxyLoss(-50)
 		target.blood_volume += BLOOD_VOLUME_SURVIVE

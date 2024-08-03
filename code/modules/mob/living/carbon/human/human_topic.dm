@@ -51,7 +51,7 @@
 			playsound(loc, 'sound/foley/flesh_rem.ogg', 100, TRUE, -2)
 			if(usr == src)
 				usr.visible_message(span_notice("[usr] rips [I] out of [usr.p_their()] [L.name]!"), span_notice("I successfully remove [I] from my [L.name]."))
-				usr.log_message("forcefully removed [I] from [usr.p_their()] own [L.name]", LOG_ATTACK, color="black")
+				usr.log_message("forcefully removed [I] from [usr.p_their()] own [L.name]", LOG_ATTACK)
 			else
 				usr.visible_message(span_notice("[usr] rips [I] out of [src]'s [L.name]!"), span_notice("I successfully remove [I] from [src]'s [L.name]."))
 				usr.log_message("forcefully removed [I] from [key_name(src)]'s [L.name], dealing [I.embedding.embedded_unsafe_removal_pain_multiplier*I.w_class] damage. (LIMBHP: [L.get_damage()])", LOG_ATTACK, color="red")

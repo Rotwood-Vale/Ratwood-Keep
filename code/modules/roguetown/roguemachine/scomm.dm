@@ -50,7 +50,7 @@
 	listening = !listening
 	speaking = !speaking
 	to_chat(user, span_info("I [speaking ? "unmute" : "mute"] the SCOM."))
-	user.log_message("[speaking ? "unmuted" : "muted"] the SCOM", LOG_ATTACK, color="black")
+	user.log_message("[speaking ? "unmuted" : "muted"] the SCOM", LOG_ATTACK)
 	update_icon()
 
 /obj/structure/roguemachine/scomm/attack_right(mob/user)
@@ -128,7 +128,7 @@
 	if(raw_message)
 		if(lowertext(raw_message) == "say laws")
 			dictate_laws()
-			H.log_message("triggered SCOM \"say laws\".", LOG_GAME, color="black")
+			H.log_message("triggered SCOM \"say laws\".", LOG_GAME)
 			return
 		for(var/obj/structure/roguemachine/scomm/S in SSroguemachine.scomm_machines)
 			S.repeat_message(raw_message, src, usedcolor, message_language)
@@ -210,7 +210,7 @@
 	listening = !listening
 	speaking = !speaking
 	to_chat(user, span_info("I [speaking ? "unmute" : "mute"] the scomstone."))
-	user.log_message("[speaking ? "unmuted" : "muted"] the scomstone/emerald ring", LOG_ATTACK, color="black")
+	user.log_message("[speaking ? "unmuted" : "muted"] the scomstone/emerald ring", LOG_ATTACK)
 	update_icon()
 
 /obj/item/scomstone/Destroy()
@@ -309,7 +309,7 @@
 	listening = !listening
 	speaking = !speaking
 	to_chat(user, span_info("I [speaking ? "unmute" : "mute"] the scomstone."))
-	user.log_message("[speaking ? "unmuted" : "muted"] the listenstone", LOG_ATTACK, color="black")
+	user.log_message("[speaking ? "unmuted" : "muted"] the listenstone", LOG_ATTACK)
 	update_icon()
 	if(listening)
 		icon_state = "listenstone"

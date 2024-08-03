@@ -74,13 +74,13 @@ GLOBAL_LIST_INIT(laws_of_the_land, initialize_laws_of_the_land())
 			say("The crown is summoned!")
 			playsound(src, 'sound/misc/machinetalk.ogg', 100, FALSE, -1)
 			playsound(src, 'sound/misc/hiss.ogg', 100, FALSE, -1)
-			H.log_message("summoned the Crown out of thin air. (THRONE)", LOG_GAME, color="black")
+			H.log_message("summoned the Crown out of thin air. (THRONE)", LOG_GAME)
 		if(SSroguemachine.crown)
 			var/obj/item/clothing/head/roguetown/crown/serpcrown/I = SSroguemachine.crown
 			if(!I)
 				I = new /obj/item/clothing/head/roguetown/crown/serpcrown(src.loc)
 			if(I && !ismob(I.loc))//You MUST MUST MUST keep the Crown on a person to prevent it from being summoned (magical interference)
-				H.log_message("summoned the Crown, destroying the old one at [AREACOORD(I)] (THRONE)", LOG_GAME, color="black")
+				H.log_message("summoned the Crown, destroying the old one at [AREACOORD(I)] (THRONE)", LOG_GAME)
 				I.anti_stall()
 				I = new /obj/item/clothing/head/roguetown/crown/serpcrown(src.loc)
 				say("The crown is summoned!")
@@ -93,17 +93,17 @@ GLOBAL_LIST_INIT(laws_of_the_land, initialize_laws_of_the_land())
 					if(I in HC.held_items)
 						say("[HC.real_name ? HC.real_name : "Someone"] holds the crown!")
 						playsound(src, 'sound/misc/machinetalk.ogg', 100, FALSE, -1)
-						H.log_message("failed to summon the Crown, held by [key_name(HC)] at [COORD(HC)]. (THRONE)", LOG_GAME, color="black")
+						H.log_message("failed to summon the Crown, held by [key_name(HC)] at [COORD(HC)]. (THRONE)", LOG_GAME)
 						return
 					if(HC.head == I)
 						say("[HC.real_name ? HC.real_name : "Someone"] wears the crown!")
 						playsound(src, 'sound/misc/machinetalk.ogg', 100, FALSE, -1)
-						H.log_message("failed to summon the Crown, worn by [key_name(HC)] at [COORD(HC)]. (THRONE)", LOG_GAME, color="black")
+						H.log_message("failed to summon the Crown, worn by [key_name(HC)] at [COORD(HC)]. (THRONE)", LOG_GAME)
 						return
 				else
 					HC.dropItemToGround(I, TRUE) //If you're dead, forcedrop it, then move it.
-					HC.log_message("had the Crown, but could not block summoning due to being dead. (THRONE)", LOG_GAME, color="black")
-			H.log_message("summoned the Crown, moving it from [COORD(I.loc)]. (THRONE)", LOG_GAME, color="black")
+					HC.log_message("had the Crown, but could not block summoning due to being dead. (THRONE)", LOG_GAME)
+			H.log_message("summoned the Crown, moving it from [COORD(I.loc)]. (THRONE)", LOG_GAME)
 			I.visible_message(span_warning("The Crown of Rockhill crumbles to dust, the ashes spiriting away in the direction of the Keep."))
 			I.forceMove(src.loc)
 			say("The crown is summoned!")
@@ -228,7 +228,7 @@ GLOBAL_LIST_INIT(laws_of_the_land, initialize_laws_of_the_land())
 		newtax = CLAMP(newtax, 1, 99)
 		SStreasury.tax_value = newtax / 100
 		priority_announce("The new tax in Rockhill shall be [newtax] percent.", "The Generous Lord Decrees", pick('sound/misc/royal_decree.ogg', 'sound/misc/royal_decree2.ogg'), "Captain")
-		user.log_message("has set the tax rate to [newtax] percent. (THRONE)", LOG_GAME, color="black")
+		user.log_message("has set the tax rate to [newtax] percent. (THRONE)", LOG_GAME)
 
 /obj/structure/roguemachine/titan/proc/make_announcement(mob/living/user, raw_message)
 	if(!SScommunications.can_announce(user))
@@ -236,7 +236,7 @@ GLOBAL_LIST_INIT(laws_of_the_land, initialize_laws_of_the_land())
 	try_make_rebel_decree(user)
 
 	SScommunications.make_announcement(user, FALSE, raw_message)
-	user.log_message("makes an announcement: \"[raw_message]\" (THRONE)", LOG_GAME, color="black") //for log-searching convenience
+	user.log_message("makes an announcement: \"[raw_message]\" (THRONE)", LOG_GAME) //for log-searching convenience
 
 /obj/structure/roguemachine/titan/proc/try_make_rebel_decree(mob/living/user)
 	var/datum/antagonist/prebel/P = user.mind?.has_antag_datum(/datum/antagonist/prebel)
@@ -270,7 +270,7 @@ GLOBAL_LIST_INIT(laws_of_the_land, initialize_laws_of_the_land())
 	try_make_rebel_decree(user)
 
 	SScommunications.make_announcement(user, TRUE, raw_message)
-	user.log_message("makes a decree: \"[raw_message]\" (THRONE)", LOG_GAME, color="black") //for log-searching convenience
+	user.log_message("makes a decree: \"[raw_message]\" (THRONE)", LOG_GAME) //for log-searching convenience
 
 /obj/structure/roguemachine/titan/proc/declare_outlaw(mob/living/user, raw_message)
 	if(!SScommunications.can_announce(user))
@@ -286,7 +286,7 @@ GLOBAL_LIST_INIT(laws_of_the_land, initialize_laws_of_the_land())
 	if(raw_message in GLOB.outlawed_players)
 		GLOB.outlawed_players -= raw_message
 		priority_announce("[raw_message] is no longer an outlaw in Rockhill lands.", "The King Decrees", 'sound/misc/royal_decree.ogg', "Captain")
-		noble.log_message("has cleared outlaw status from [raw_message].", LOG_GAME, color="black")
+		noble.log_message("has cleared outlaw status from [raw_message].", LOG_GAME)
 		return FALSE
 	var/found = FALSE
 	for(var/mob/living/carbon/human/H in GLOB.player_list)
@@ -296,13 +296,13 @@ GLOBAL_LIST_INIT(laws_of_the_land, initialize_laws_of_the_land())
 		return FALSE
 	GLOB.outlawed_players += raw_message
 	priority_announce("[raw_message] has been declared an outlaw and must be captured or slain.", "The King Decrees", 'sound/misc/royal_decree2.ogg', "Captain")
-	noble.log_message("has declared [raw_message] an outlaw. (THRONE)", LOG_GAME, color="black")
+	noble.log_message("has declared [raw_message] an outlaw. (THRONE)", LOG_GAME)
 	return TRUE
 
 /proc/make_law(raw_message, mob/living/noble)
 	GLOB.laws_of_the_land += raw_message
 	priority_announce("[length(GLOB.laws_of_the_land)]. [raw_message]", "A LAW IS DECLARED", pick('sound/misc/new_law.ogg', 'sound/misc/new_law2.ogg'), "Captain")
-	noble.log_message("creates a new law: \"[length(GLOB.laws_of_the_land)]. [raw_message]\" (THRONE)", LOG_GAME, color="black")
+	noble.log_message("creates a new law: \"[length(GLOB.laws_of_the_land)]. [raw_message]\" (THRONE)", LOG_GAME)
 
 /proc/remove_law(law_index, mob/living/noble)
 	if(!GLOB.laws_of_the_land[law_index])
@@ -310,9 +310,9 @@ GLOBAL_LIST_INIT(laws_of_the_land, initialize_laws_of_the_land())
 	var/law_text = GLOB.laws_of_the_land[law_index]
 	GLOB.laws_of_the_land -= law_text
 	priority_announce("[law_index]. [law_text]", "A LAW IS ABOLISHED", pick('sound/misc/new_law.ogg', 'sound/misc/new_law2.ogg'), "Captain")
-	noble.log_message("removes law: \"[law_index]. [law_text]\" (THRONE)", LOG_GAME, color="black")
+	noble.log_message("removes law: \"[law_index]. [law_text]\" (THRONE)", LOG_GAME)
 
 /proc/purge_laws(mob/living/noble)
 	GLOB.laws_of_the_land = list()
 	priority_announce("All laws of the land have been purged!", "LAWS PURGED", 'sound/misc/lawspurged.ogg', "Captain")
-	noble.log_message("purged all laws of the land. (THRONE)", LOG_GAME, color="black")
+	noble.log_message("purged all laws of the land. (THRONE)", LOG_GAME)
