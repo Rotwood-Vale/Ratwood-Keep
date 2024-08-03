@@ -685,7 +685,7 @@
 
 /obj/item/clothing/head/hooded/rainhood
 	name = "hood"
-	desc = "This one will shelter me from the weather and my identity too."
+	desc = "This one will shelter you from the weather and hide your identity too."
 	icon_state = "rain_hood"
 	item_state = "rain_hood"
 	slot_flags = ITEM_SLOT_HEAD
