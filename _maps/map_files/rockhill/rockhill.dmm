@@ -13270,6 +13270,11 @@
 	dir = 4
 	},
 /area/rogue/outdoors/rtfield)
+"pML" = (
+/obj/structure/dye_bin,
+/obj/item/reagent_containers/food/snacks/grown/berries/rogue,
+/turf/open/floor/rogue/wood,
+/area/rogue/indoors/town)
 "pNf" = (
 /obj/structure/table/wood{
 	icon_state = "map3"
@@ -295434,7 +295439,7 @@ evo
 uNX
 rNm
 thT
-rNm
+pML
 nqr
 nqr
 vce
