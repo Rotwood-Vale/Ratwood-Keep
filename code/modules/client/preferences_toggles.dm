@@ -29,6 +29,22 @@
 		prefs.toggles ^= TOGGLE_FULLSCREEN
 		toggle_fullscreeny(prefs.toggles & TOGGLE_FULLSCREEN)
 
+/client/verb/toggle_screenshake()
+	set category = "Options"
+	set name = "Toggle Screen Shake"
+	if(prefs)
+		prefs.shake = !prefs.shake
+		to_chat(src, "Screen shake toggled")
+
+/client/verb/toggle_ERP() // Alters if other people can use the ERP panel ON you.
+	set category = "Options"
+	set name = "Toggle ERP Panel"
+	if(prefs)
+		prefs.sexable = !prefs.sexable
+		if(prefs.sexable)
+			to_chat(src, "Others can play with you.")
+		else to_chat(src, "Others can't touch you.")
+
 /client/verb/stop_sounds_rogue()
 	set name = "StopSounds"
 	set category = "Options"
