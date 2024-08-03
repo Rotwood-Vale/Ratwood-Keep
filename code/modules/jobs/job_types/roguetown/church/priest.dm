@@ -19,7 +19,7 @@
 
 	display_order = JDO_PRIEST
 	give_bank_account = 115
-	min_pq = 8
+	min_pq = 0
 	max_pq = null
 
 /datum/outfit/job/roguetown/priest
@@ -89,7 +89,7 @@
 			continue
 		if(!istype(HU.head, /obj/item/clothing/head/roguetown/crown/serpcrown))
 			continue
-		
+
 		//Abdicate previous King
 		for(var/mob/living/carbon/human/HL in GLOB.human_list)
 			if(HL.mind)

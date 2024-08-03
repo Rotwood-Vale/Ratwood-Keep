@@ -1,6 +1,8 @@
 /datum/advclass/torso
 	name = "Torso"
-	tutorial = "Some horrible accident in the forest away all of your limbs!\nSurvival will be a true TRIUMPH."
+	tutorial = "Some horrible accident in the forest away all of your limbs!\nSurvival will be a true TRIUMPH. \
+		\
+		This role allows for full customization."
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
 	outfit = /datum/outfit/job/roguetown/adventurer/torso

@@ -112,3 +112,17 @@
 
 #define ALL_AGES_LIST list(AGE_ADULT, AGE_MIDDLEAGED, AGE_OLD)
 
+// Pronouns (LETHALSTONE)
+#define HE_HIM			"he/him"
+#define SHE_HER			"she/her"
+#define THEY_THEM		"they/them"
+#define IT_ITS			"it/its"
+
+GLOBAL_LIST_INIT(pronouns_list, list(HE_HIM, SHE_HER, THEY_THEM, IT_ITS))
+
+// Voice types (LETHALSTONE)
+
+#define VOICE_TYPE_MASC	"Masculine"
+#define VOICE_TYPE_FEM	"Feminine"
+
+GLOBAL_LIST_INIT(voice_types_list, list(VOICE_TYPE_MASC, VOICE_TYPE_FEM))

@@ -6,14 +6,14 @@
 	total_positions = 1
 	spawn_positions = 1
 	allowed_races = RACES_TOLERATED_UP
-	allowed_sexes = list(MALE)
+	allowed_sexes = list(MALE, FEMALE)
 	allowed_ages = list(AGE_MIDDLEAGED, AGE_OLD)
 	display_order = JDO_SHERIFF
 	tutorial = "Crime has always been a constant of your life, and you always chose the side of justice. You rose up through the ranks as a watchman, and now rule over them - Ensure that they enforce the laws of this land properly."
 	whitelist_req = FALSE
 	outfit = /datum/outfit/job/roguetown/sheriff
 	give_bank_account = 26
-	min_pq = 8
+	min_pq = 0
 	max_pq = null
 
 /datum/outfit/job/roguetown/sheriff/pre_equip(mob/living/carbon/human/H)

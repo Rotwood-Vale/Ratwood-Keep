@@ -64,7 +64,9 @@ GLOBAL_LIST_EMPTY(chosen_names)
 	//character preferences
 	var/slot_randomized					//keeps track of round-to-round randomization of the character slot, prevents overwriting
 	var/real_name						//our character's name
-	var/gender = MALE					//gender of character (well duh)
+	var/gender = MALE					//gender of character (well duh) (LETHALSTONE EDIT: this no longer references anything but whether the masculine or feminine model is used)
+	var/pronouns = HE_HIM				// LETHALSTONE EDIT: character's pronouns (well duh)
+	var/voice_type = VOICE_TYPE_MASC	// LETHALSTONE EDIT: the type of soundpack the mob should use
 	var/datum/statpack/statpack	= new /datum/statpack/wildcard/fated // LETHALSTONE EDIT: the statpack we're giving our char instead of racial bonuses
 	var/age = AGE_ADULT						//age of character
 	var/origin = "Default"
@@ -90,7 +92,7 @@ GLOBAL_LIST_EMPTY(chosen_names)
 	var/static/datum/patron/default_patron = /datum/patron/divine/astrata
 	var/list/features = MANDATORY_FEATURE_LIST
 	var/list/randomise = list(RANDOM_UNDERWEAR = TRUE, RANDOM_UNDERWEAR_COLOR = TRUE, RANDOM_UNDERSHIRT = TRUE, RANDOM_SOCKS = TRUE, RANDOM_BACKPACK = TRUE, RANDOM_JUMPSUIT_STYLE = FALSE, RANDOM_SKIN_TONE = TRUE, RANDOM_EYE_COLOR = TRUE)
-	var/list/friendlyGenders = list("Male" = "male", "Female" = "female")
+	var/list/friendlyGenders = list("male" = "masculine", "female" = "feminine")
 	var/phobia = "spiders"
 
 	var/list/custom_names = list()
@@ -329,6 +331,11 @@ GLOBAL_LIST_EMPTY(chosen_names)
 			else
 				dat += "<a href='?_src_=prefs;preference=name;task=input'>[real_name]</a> <a href='?_src_=prefs;preference=name;task=random'>\[R\]</a>"
 
+			// LETHALSTONE EDIT BEGIN: add pronoun prefs
+			dat += "<BR>"
+			dat += "<b>Pronouns:</b> <a href='?_src_=prefs;preference=pronouns;task=input'>[pronouns]</a><BR>"
+			// LETHALSTONE EDIT END
+
 			dat += "<BR>"
 			dat += "<b>Race:</b> <a href='?_src_=prefs;preference=species;task=input'>[pref_species.name]</a>[spec_check(user) ? "" : " (!)"]<BR>"
 
@@ -340,15 +347,19 @@ GLOBAL_LIST_EMPTY(chosen_names)
 			if(!(AGENDER in pref_species.species_traits))
 				var/dispGender
 				if(gender == MALE)
-					dispGender = "Man"
+					dispGender = "Masculine" // LETHALSTONE EDIT: repurpose gender as bodytype, display accordingly
 				else if(gender == FEMALE)
-					dispGender = "Woman"
+					dispGender = "Feminine" // LETHALSTONE EDIT: repurpose gender as bodytype, display accordingly
 				else
 					dispGender = "Other"
-				dat += "<b>Sex:</b> <a href='?_src_=prefs;preference=gender'>[dispGender]</a><BR>"
+				dat += "<b>Body Type:</b> <a href='?_src_=prefs;preference=gender'>[dispGender]</a><BR>"
 				if(randomise[RANDOM_BODY] || randomise[RANDOM_BODY_ANTAG]) //doesn't work unless random body
-					dat += "<a href='?_src_=prefs;preference=toggle_random;random_type=[RANDOM_GENDER]'>Always Random Gender: [(randomise[RANDOM_GENDER]) ? "Yes" : "No"]</A>"
+					dat += "<a href='?_src_=prefs;preference=toggle_random;random_type=[RANDOM_GENDER]'>Always Random Bodytype: [(randomise[RANDOM_GENDER]) ? "Yes" : "No"]</A>"
 					dat += "<a href='?_src_=prefs;preference=toggle_random;random_type=[RANDOM_GENDER_ANTAG]'>When Antagonist: [(randomise[RANDOM_GENDER_ANTAG]) ? "Yes" : "No"]</A>"
+
+			// LETHALSTONE EDIT BEGIN: add voice type prefs
+			dat += "<b>Voice Type</b>: <a href='?_src_=prefs;preference=voicetype;task=input'>[voice_type]</a><BR>"
+			// LETHALSTONE EDIT END
 
 			dat += "<b>Age:</b> <a href='?_src_=prefs;preference=age;task=input'>[age]</a><BR>"
 
@@ -1513,6 +1524,19 @@ Slots: [job.spawn_positions]</span>
 						statpack = statpack_chosen
 						to_chat(user, "<font color='purple'>[statpack.name]</font>")
 						to_chat(user, "<font color='purple'>[statpack.description_string()]</font>")
+				// LETHALSTONE EDIT: add pronouns
+				if ("pronouns")
+					var pronouns_input = input(user, "Choose your character's pronouns", "Pronouns") as null|anything in GLOB.pronouns_list
+					if(pronouns_input)
+						pronouns = pronouns_input
+						to_chat(user, "<font color='red'>Your character's pronouns are now [pronouns].")
+
+				// LETHALSTONE EDIT: add voice type selection
+				if ("voicetype")
+					var voicetype_input = input(user, "Choose your character's voice type", "Voice Type") as null|anything in GLOB.voice_types_list
+					if(voicetype_input)
+						voice_type = voicetype_input
+						to_chat(user, "<font color='red'>Your character will now vocalize with a [lowertext(voice_type)] affect.")
 
 				if("faith")
 					var/list/faiths_named = list()
@@ -1774,8 +1798,10 @@ Slots: [job.spawn_positions]</span>
 					if(pickedGender && pickedGender != gender)
 						gender = pickedGender
 						ResetJobs()
-						to_chat(user, "<font color='red'>Classes reset.</font>")
+						to_chat(user, "<font color='red'>Your character will now use a [friendlyGenders[pickedGender]] sprite.")
+						to_chat(user, "<font color='red'><b>Your classes have been reset.</b></font>")
 						random_character(gender)
+					genderize_customizer_entries()
 				if("domhand")
 					if(domhand == 1)
 						domhand = 2
@@ -2124,6 +2150,12 @@ Slots: [job.spawn_positions]</span>
 	character.flavortext = flavortext
 
 	character.ooc_notes = ooc_notes
+	// LETHALSTONE ADDITION BEGIN: additional customizations
+
+	character.pronouns = pronouns
+	character.voice_type = voice_type
+
+	// LETHALSTONE ADDITION END
 
 	if(parent)
 		var/list/L = get_player_curses(parent.ckey)

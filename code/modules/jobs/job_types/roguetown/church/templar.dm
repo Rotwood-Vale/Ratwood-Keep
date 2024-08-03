@@ -9,7 +9,7 @@
 	allowed_races = RACES_TOLERATED_UP
 	allowed_patrons = ALL_CLERIC_PATRONS
 	outfit = /datum/outfit/job/roguetown/templar
-	min_pq = 2
+	min_pq = 0
 	max_pq = null
 	total_positions = 3
 	spawn_positions = 3
@@ -70,6 +70,7 @@
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/magic/holy, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/medicine, 1, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/shields, 3, TRUE)	//May tone down to 2; seems OK.
 		H.change_stat("strength", 3)
 		H.change_stat("perception", 2)
 		H.change_stat("intelligence", 2)

@@ -15,8 +15,8 @@
 	antag_hud_type = ANTAG_HUD_TRAITOR
 	antag_hud_name = "vampire"
 	confess_lines = list(
-		"I WANT YOUR BLOOD!", 
-		"DRINK THE BLOOD!", 
+		"I WANT YOUR BLOOD!",
+		"DRINK THE BLOOD!",
 		"CHILD OF KAIN!",
 	)
 	var/disguised = TRUE
@@ -119,7 +119,7 @@
 
 /datum/antagonist/vampire/proc/finalize_vampire()
 	owner.current.playsound_local(get_turf(owner.current), 'sound/music/vampintro.ogg', 80, FALSE, pressure_affected = FALSE)
-	
+
 
 
 /datum/antagonist/vampire/on_life(mob/user)
@@ -131,17 +131,6 @@
 	if(H.advsetup)
 		return
 
-	if(world.time % 5)
-		if(GLOB.tod != "night")
-			if(isturf(H.loc))
-				var/turf/T = H.loc
-				if(T.can_see_sky())
-					if(T.get_lumcount() > 0.15)
-						if(disguised)
-							vitae -= 8
-							to_chat(H, span_warning("My vitae dwindles!"))
-						else
-							H.fire_act(1,5)
 
 	if(H.on_fire)
 		if(disguised)
@@ -161,7 +150,6 @@
 			if(disguised)
 				to_chat(H, span_warning("My disguise fails!"))
 				H.vampire_undisguise(src)
-		vitae -= 1
 
 /mob/living/carbon/human/proc/disguise_button()
 	set name = "Disguise"
@@ -353,7 +341,7 @@
 		to_chat(src, span_warning("My curse is hidden."))
 		return
 	if(silver_curse_status)
-		to_chat(src, span_warning("My BANE is not letting me REGEN!."))	
+		to_chat(src, span_warning("My BANE is not letting me REGEN!."))
 		return
 	if(VD.vitae < 500)
 		to_chat(src, span_warning("Not enough vitae."))

@@ -8,9 +8,11 @@
 	spawn_positions = 1
 
 	allowed_races = RACES_TOLERATED_UP
-	allowed_sexes = list(MALE)
+	allowed_sexes = list(MALE, FEMALE)
 	allowed_ages = list(AGE_MIDDLEAGED, AGE_OLD)
-	tutorial = "Your lineage is noble, and generations of strong, loyal knights have come before you. You served your time gracefully as a knight of his royal majesty, and now you've grown into a role which many men dream to become. Lead your men to victory and keep them in line and you will see this kingdom prosper under a thousand suns."
+	tutorial = "Your lineage is noble, and generations of strong, loyal knights have come before you. You served your time gracefully as a knight of his royal majesty, and now you've grown into a role which many men dream to become. Lead your men to victory and keep them in line and you will see this kingdom prosper under a thousand suns. \
+		\
+		This role allows for full customization."
 	display_order = JDO_GUARD_CAPTAIN
 	whitelist_req = FALSE
 
@@ -18,10 +20,12 @@
 	outfit = /datum/outfit/job/roguetown/captain
 
 	give_bank_account = 26
-	min_pq = 8
+	min_pq = 0
 	max_pq = null
 
 	cmode_music = 'sound/music/combat_guard2.ogg'
+
+	allow_custom_genitals = TRUE
 
 /datum/job/roguetown/captain/after_spawn(mob/living/L, mob/M, latejoin = TRUE)
 	. = ..()

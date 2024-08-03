@@ -6,7 +6,7 @@
 	total_positions = 1
 	spawn_positions = 1
 
-	allowed_sexes = list(MALE) //same as town guard
+	allowed_sexes = list(MALE, FEMALE) //same as town guard
 	allowed_races = RACES_TOLERATED_UP // same as town guard
 	tutorial = "You've known combat your entire life. There isn't a way to kill a man you havent practiced in the tapestries of war itself. You wouldn't call yourself a hero, those belong to the men left rotting in the fields of where you practiced your ancient trade. You don't sleep well at night anymore, you don't like remembering what you've had to do to survive. Trading adventure for stable pay was the only logical solution, and maybe someday you'll get to lay down the blade..."
 	allowed_ages = list(AGE_OLD)
@@ -15,7 +15,7 @@
 
 	outfit = /datum/outfit/job/roguetown/veteran
 	give_bank_account = 35
-	min_pq = 5
+	min_pq = 0
 	max_pq = null
 
 	cmode_music = 'sound/music/combat_guard.ogg'

@@ -117,10 +117,10 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 		ORGAN_SLOT_LIVER = /obj/item/organ/liver,
 		ORGAN_SLOT_STOMACH = /obj/item/organ/stomach,
 		ORGAN_SLOT_APPENDIX = /obj/item/organ/appendix,
-		ORGAN_SLOT_TESTICLES = /obj/item/organ/testicles,
-		ORGAN_SLOT_PENIS = /obj/item/organ/penis,
-		ORGAN_SLOT_BREASTS = /obj/item/organ/breasts,
-		ORGAN_SLOT_VAGINA = /obj/item/organ/vagina,
+		//ORGAN_SLOT_TESTICLES = /obj/item/organ/testicles,
+		//ORGAN_SLOT_PENIS = /obj/item/organ/penis,
+		//ORGAN_SLOT_BREASTS = /obj/item/organ/breasts,
+		//ORGAN_SLOT_VAGINA = /obj/item/organ/vagina,
 		)
 	/// List of bodypart features of this species
 	var/list/bodypart_features
@@ -158,15 +158,6 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 ///////////
 
 /datum/species/proc/is_organ_slot_allowed(mob/living/carbon/human/human, organ_slot)
-	switch(organ_slot)
-		if(ORGAN_SLOT_VAGINA)
-			return (human.gender == FEMALE)
-		if(ORGAN_SLOT_BREASTS)
-			return (human.gender == FEMALE)
-		if(ORGAN_SLOT_PENIS)
-			return (human.gender == MALE)
-		if(ORGAN_SLOT_TESTICLES)
-			return (human.gender == MALE)
 	return TRUE
 
 /datum/species/proc/is_bodypart_feature_slot_allowed(mob/living/carbon/human/human, feature_slot)
@@ -553,6 +544,8 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 			return "ADJ"
 		if(BODY_FRONT_LAYER)
 			return "FRONT"
+		if(BODY_FRONT_FRONT_LAYER)
+			return "FFRONT"
 		if(BODY_UNDER_LAYER)
 			return "UNDER"
 
