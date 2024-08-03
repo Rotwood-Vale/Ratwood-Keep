@@ -501,9 +501,9 @@
 				. += "<a href='?src=[REF(src)];check_hb=1'>Listen to Heartbeat</a>"
 
 	if(!obscure_name && headshot_link)
-		. += "<a href='?src=[REF(src)];task=view_headshot;'>View headshot</a>"
+		. += "<a href='?src=[REF(src)];task=view_headshot;'>View face closely</a>"
 	if(nudeshot_link && get_location_accessible(src, BODY_ZONE_CHEST) && get_location_accessible(src, BODY_ZONE_PRECISE_GROIN))
-		. += "<a href='?src=[REF(src)];task=view_nudeshot;'>View nudeshot</a>"
+		. += "<a href='?src=[REF(src)];task=view_nudeshot;'>View body closely</a>"
 
 	var/list/lines = build_cool_description(get_mob_descriptors(obscure_name, user), src)
 	for(var/line in lines)
