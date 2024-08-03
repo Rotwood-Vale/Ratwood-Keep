@@ -3387,7 +3387,9 @@
 /obj/structure/fluff/railing/border{
 	dir = 8
 	},
-/obj/structure/roguewindow,
+/obj/structure/roguewindow/openclose{
+	dir = 4
+	},
 /turf/open/floor/rogue/ruinedwood{
 	dir = 1;
 	icon_state = "vertw"
@@ -6329,12 +6331,9 @@
 /turf/open/water/cleanshallow,
 /area/rogue/under/cave)
 "hnr" = (
-/obj/structure/roguewindow,
-/turf/open/floor/rogue/ruinedwood{
-	dir = 1;
-	icon_state = "vertw"
-	},
-/area/rogue/indoors/town)
+/obj/structure/roguemachine/scomm,
+/turf/open/floor/rogue/blocks,
+/area/rogue/outdoors/town)
 "hnK" = (
 /obj/structure/closet/crate/roguecloset,
 /obj/item/reagent_containers/glass/cup/silver,
@@ -297077,7 +297076,7 @@ wbg
 wVI
 dHZ
 thT
-hnr
+oqe
 thT
 nyK
 thT
@@ -297865,7 +297864,7 @@ mxM
 evo
 evo
 evo
-wVI
+hnr
 wbg
 wbg
 aOv
@@ -298667,7 +298666,7 @@ oaH
 bXl
 uNX
 evo
-xAt
+bTC
 dQQ
 wbg
 wbg
@@ -300288,7 +300287,7 @@ wbg
 wbg
 wVI
 dHZ
-fYB
+fSf
 qkH
 dHZ
 evo
@@ -301894,7 +301893,7 @@ rTw
 wbg
 wbg
 wVI
-hnr
+jXd
 iVT
 bmi
 bmi
