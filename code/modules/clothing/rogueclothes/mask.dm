@@ -7,6 +7,7 @@
 
 /obj/item/clothing/mask/rogue/spectacles
 	name = "spectacles"
+	desc = "A finely made set of spectacles for those with trouble seeing."
 	icon_state = "glasses"
 	break_sound = "glassbreak"
 	attacked_sound = 'sound/combat/hits/onglass/glasshit.ogg'
@@ -19,6 +20,7 @@
 
 /obj/item/clothing/mask/rogue/spectacles/golden
 	name = "golden spectacles"
+	desc = "A finely made set of spectacles, these ones seem to have been commissioned by a noble."
 	icon_state = "goggles"
 	break_sound = "glassbreak"
 	attacked_sound = 'sound/combat/hits/onglass/glasshit.ogg'
