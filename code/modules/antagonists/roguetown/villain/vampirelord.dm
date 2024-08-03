@@ -1357,4 +1357,8 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 			to_chat(L, "<font color='purple'>You feel like a curtain is coming over your mind.</font>")
 			sleep(50)
 			L.Sleeping(300)
+			L.log_message("failed Subjugate willpower roll [willroll] (cmode [L.cmode]) against [key_name(user)]'s [bloodroll].", LOG_ATTACK, color="orange")
+		else
+			to_chat(L, span_notice("My mind holds fast! I resist the urge to submit."))
+			L.log_message("succeeded Subjugate willpower roll [willroll] (cmode [L.cmode]) against [key_name(user)]'s [bloodroll].", LOG_ATTACK, color="orange")
 
