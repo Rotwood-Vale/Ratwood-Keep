@@ -303,6 +303,8 @@
 	name = "palisade"
 	desc = ""
 	icon = 'icons/roguetown/misc/structure.dmi'
+	attacked_sound = 'sound/misc/woodhit.ogg'
+	destroy_sound = 'sound/misc/treefall.ogg'
 	icon_state = "fence"
 	density = TRUE
 	opacity = TRUE
