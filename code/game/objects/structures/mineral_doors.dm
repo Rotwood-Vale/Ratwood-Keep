@@ -85,6 +85,13 @@
 		return
 	if(!grant_resident_key)
 		return
+	var/spare_key = alert(user, "Have I got an extra spare key?", "Home", "Yes", "No")
+	if(!grant_resident_key)
+		return
+	if(spare_key == "Yes")
+		resident_key_amount = 2
+	else
+		resident_key_amount = 1
 	for(var/i in 1 to resident_key_amount)
 		var/obj/item/roguekey/key
 		if(resident_key_type)
