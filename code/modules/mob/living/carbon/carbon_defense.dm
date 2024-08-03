@@ -148,16 +148,16 @@
 			used_limb = affecting.body_zone
 	return used_limb
 
-/mob/proc/check_arm_grabbed()
+/mob/proc/check_arm_grabbed(index)
 	return
 
 /mob/living/carbon/check_arm_grabbed(index)
 	if(pulledby && pulledby != src)
 		var/obj/item/bodypart/BP
 		if(index == 1)
-			BP = get_bodypart(BODY_ZONE_R_ARM)
-		else if(index == 2)
 			BP = get_bodypart(BODY_ZONE_L_ARM)
+		else if(index == 2)
+			BP = get_bodypart(BODY_ZONE_R_ARM)
 		if(BP)
 			for(var/obj/item/grabbing/G in src.grabbedby)
 				if(G.limb_grabbed == BP)

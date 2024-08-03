@@ -1066,6 +1066,7 @@
 		return
 	if(stat)
 		return
+	log_combat(src, null, "surrendered")
 	surrendering = 1
 	changeNext_move(CLICK_CD_EXHAUSTED)
 	var/image/flaggy = image('icons/effects/effects.dmi',src,"surrender_large",ABOVE_MOB_LAYER)
@@ -1078,6 +1079,7 @@
 	playsound(src, 'sound/misc/surrender.ogg', 100, FALSE, -1)
 	sleep(150)
 	surrendering = 0
+	log_combat(src, null, "surrender ended")
 
 
 /mob/proc/stop_attack(message = FALSE)
