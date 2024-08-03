@@ -587,33 +587,64 @@
 
 
 /mob/proc/update_sneak_invis(reset = FALSE)
-	return
+    return
 
-//* Updates a mob's sneaking status, rendering them invisible or visible in accordance to their status. TODO:Fix people bypassing the sneak fade by turning, and add a proc var to have a timer after resetting visibility.
-/mob/living/update_sneak_invis(reset = FALSE) //Why isn't this in mob/living/living_movements.dm? Why, I'm glad you asked!
-	if(!reset && world.time < mob_timers[MT_INVISIBILITY]) // Check if the mob is affected by the invisibility spell
-		rogue_sneaking = TRUE
-		return
-	var/turf/T = get_turf(src)
-	var/light_amount = T.get_lumcount()
-	var/used_time = 50
-	if(mind)
-		used_time = max(used_time - (mind.get_skill_level(/datum/skill/misc/sneaking) * 8), 0)
+//* Updates a mob's sneaking status, rendering them invisible or visible in accordance to their status. 
+/mob/living/update_sneak_invis(reset = FALSE)
+    if(!reset && world.time < mob_timers[MT_INVISIBILITY]) // Check if the mob is affected by the invisibility spell
+        set_rogue_sneaking(TRUE)
+        return
 
-	if(rogue_sneaking) //If sneaking, check if they should be revealed
-		if((stat > SOFT_CRIT) || IsSleeping() || (world.time < mob_timers[MT_FOUNDSNEAK] + 30 SECONDS) || !T || reset || (m_intent != MOVE_INTENT_SNEAK) || light_amount >= rogue_sneaking_light_threshhold)
-			used_time = round(clamp((50 - (used_time*1.75)), 5, 50),1)
-			animate(src, alpha = initial(alpha), time =	used_time) //sneak skill makes you reveal slower but not as drastic as disappearing speed
-			spawn(used_time) regenerate_icons()
-			rogue_sneaking = FALSE
-			return
+    var/turf/T = get_turf(src)
+    // Ensure turf is not null
+    if (!T)
+        return
 
-	else //not currently sneaking, check if we can sneak
-		if(light_amount < rogue_sneaking_light_threshhold && m_intent == MOVE_INTENT_SNEAK)
-			animate(src, alpha = 0, time = used_time)
-			spawn(used_time + 5) regenerate_icons()
-			rogue_sneaking = TRUE
-	return
+    var/light_amount = T.get_lumcount()
+    var/used_time = 50
+    if(mind)
+        used_time = max(used_time - (mind.get_skill_level(/datum/skill/misc/sneaking) * 8), 0)
+
+    if(rogue_sneaking) // If sneaking, check if they should be revealed
+        if((stat > SOFT_CRIT) || IsSleeping() || (world.time < mob_timers[MT_FOUNDSNEAK] + 30 SECONDS) || (m_intent != MOVE_INTENT_SNEAK) || light_amount >= rogue_sneaking_light_threshhold)
+            used_time = round(clamp((50 - (used_time*1.75)), 5, 50),1)
+            animate(src, alpha = initial(alpha), time = used_time) // Sneak skill makes you reveal slower but not as drastic as disappearing speed
+            spawn(used_time) regenerate_icons()
+            set_rogue_sneaking(FALSE)
+            return
+    else // Not currently sneaking, check if we can sneak
+        if(light_amount < rogue_sneaking_light_threshhold && m_intent == MOVE_INTENT_SNEAK)
+            animate(src, alpha = 0, time = used_time)
+            spawn(used_time + 5) regenerate_icons()
+            set_rogue_sneaking(TRUE)
+    return
+
+/mob/living/proc/set_rogue_sneaking(sneaking, fade_time = 20)
+    rogue_sneaking = sneaking
+    var/target_alpha = sneaking ? 0 : initial(alpha)
+    
+    // Cancel any ongoing fade animations
+    animate(src, alpha = target_alpha, time = fade_time)
+    
+    // Use a server-side timer to update the sneaking status
+    addtimer(CALLBACK(src, .proc/finalize_rogue_sneaking, sneaking), fade_time)
+
+/mob/living/proc/finalize_rogue_sneaking(sneaking)
+    alpha = sneaking ? 0 : initial(alpha)
+    update_sneaking_icon()
+
+/mob/living/proc/update_sneaking_icon()
+    // Update any sneaking-related overlays or effects here
+    regenerate_icons()
+    // Force an update to all clients by refreshing the mob's appearance
+    update_all_clients()
+
+/mob/living/proc/update_all_clients()
+    // Force an update to all clients in the view range
+    var/view_range = 100 // Define an appropriate view range
+    for (var/mob/M in view(view_range))
+        if (M.client)
+            M.client.screen << src
 
 /mob/proc/toggle_rogmove_intent(intent, silent = FALSE)
 	// If we're becoming sprinting from non-sprinting, reset the counter
