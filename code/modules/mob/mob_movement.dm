@@ -641,7 +641,7 @@
 
 /mob/living/proc/update_all_clients()
     // Force an update to all clients in the view range
-    var/view_range = 100 // Define an appropriate view range
+    var/view_range = 15 // Define an appropriate view range
     for (var/mob/M in view(view_range))
         if (M.client)
             M.client.screen << src
