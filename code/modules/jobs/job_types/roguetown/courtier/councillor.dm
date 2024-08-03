@@ -15,9 +15,9 @@
 			You only answer to the Bailiff, Queen, King, Princes, or Princesses. However, your main focus is to assist the Bailiff."
 	whitelist_req = FALSE
 	outfit = /datum/outfit/job/roguetown/councillor
-	
+
 	give_bank_account = 40
-	min_pq = 2
+	min_pq = 0
 	max_pq = null
 
 /datum/outfit/job/roguetown/councillor/pre_equip(mob/living/carbon/human/H)
