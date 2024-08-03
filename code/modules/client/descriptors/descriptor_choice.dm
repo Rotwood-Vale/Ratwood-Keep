@@ -326,6 +326,7 @@
 	/datum/mob_descriptor/prominent/hyaenidae_features,\
 	/datum/mob_descriptor/prominent/equine_features,\
 	/datum/mob_descriptor/prominent/bovine_features,\
+	/datum/mob_descriptor/prominent/cervine_features,\
 	/datum/mob_descriptor/prominent/lapine_features,\
 	/datum/mob_descriptor/prominent/rodent_features,\
 	/datum/mob_descriptor/prominent/primate_features,\

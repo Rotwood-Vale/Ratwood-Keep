@@ -110,8 +110,9 @@
 		var/desc_type = descs[i]
 		var/datum/mob_descriptor/descriptor = MOB_DESCRIPTOR(desc_type)
 		string = replacetext(string, "%DESC[i]%", descriptor.get_coalesce_text(described, used_verbage))
-		if(descriptor.verbage)
-			used_verbage |= descriptor.verbage
+		var/used_verb = descriptor.get_verbage(described)
+		if(used_verb)
+			used_verbage |= used_verb
 	string = treat_mob_descriptor_string(string, described)
 	return string
 

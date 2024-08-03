@@ -299,6 +299,10 @@
 	name = "Bovine Features"
 	verbage = "%HAVE%"
 
+/datum/mob_descriptor/prominent/cervine_features
+	name = "Cervine Features"
+	verbage = "%HAVE%"
+
 /datum/mob_descriptor/prominent/lapine_features
 	name = "Lapine Features"
 	verbage = "%HAVE%"
