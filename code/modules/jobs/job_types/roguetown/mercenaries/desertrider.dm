@@ -9,6 +9,7 @@
 		/datum/species/human/northern,
 		/datum/species/demihuman,
 		/datum/species/anthromorph,
+		/datum/species/elf/dark,
 	)
 	department_flag = MERCENARIES
 	tutorial = "Blood, like the desert sand, stains your hands, a crimson testament to the gold you covet. A desert rider, renowned mercenary of the far east, your scimitar whispers tales of centuries-old tradition. Your loyalty, a fleeting mirage in the shifting sands, will yield to the allure of fortune."
