@@ -74,6 +74,7 @@
 
 /obj/item/clothing/mask/rogue/facemask
 	name = "iron mask"
+	desc = "An iron mask which protects the fact and obscures it."
 	icon_state = "imask"
 	max_integrity = 100
 	blocksound = PLATEHIT
@@ -103,6 +104,7 @@
 
 /obj/item/clothing/mask/rogue/facemask/steel
 	name = "steel mask"
+	desc = "A mask of steel to both protect and hide the face."
 	icon_state = "smask"
 	max_integrity = 200
 	smeltresult = /obj/item/ingot/steel

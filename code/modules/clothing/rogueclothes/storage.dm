@@ -31,7 +31,7 @@
 
 /obj/item/storage/belt/rogue/leather
 	name = "belt"
-	desc = ""
+	desc = "A leather belt."
 	icon_state = "leather"
 	item_state = "leather"
 	equip_sound = 'sound/blank.ogg'
@@ -48,6 +48,7 @@
 
 /obj/item/storage/belt/rogue/leather/plaquegold
 	name = "plaque belt"
+	desc = "A belt with a golden plate on its front."
 	icon_state = "goldplaque"
 	sellprice = 50
 	sewrepair = FALSE
@@ -65,6 +66,7 @@
 
 /obj/item/storage/belt/rogue/leather/plaquesilver
 	name = "plaque belt"
+	desc = "A belt with a silver plate on its front."
 	icon_state = "silverplaque"
 	sellprice = 30
 	sewrepair = FALSE
@@ -72,6 +74,7 @@
 
 /obj/item/storage/belt/rogue/leather/hand
 	name = "steel belt"
+	desc = "A belt with a steel plate on its front."
 	icon_state = "steelplaque"
 	sellprice = 30
 	sewrepair = FALSE
@@ -79,7 +82,7 @@
 
 /obj/item/storage/belt/rogue/leather/rope
 	name = "rope belt"
-	desc = ""
+	desc = "A simple belt made of rope."
 	icon_state = "rope"
 	item_state = "rope"
 	color = "#b9a286"
@@ -87,7 +90,7 @@
 
 /obj/item/storage/belt/rogue/leather/cloth
 	name = "cloth sash"
-	desc = ""
+	desc = "A simple cloth sash."
 	icon_state = "cloth"
 	heldz_items = 1
 
@@ -99,7 +102,7 @@
 
 /obj/item/storage/belt/rogue/pouch
 	name = "pouch"
-	desc = ""
+	desc = "Usually used for holding coins."
 	icon = 'icons/roguetown/clothing/storage.dmi'
 	mob_overlay_icon = null
 	icon_state = "pouch"
@@ -168,7 +171,7 @@
 
 /obj/item/storage/backpack/rogue/satchel
 	name = "satchel"
-	desc = ""
+	desc = "A bulky bag worn over the shoulder which can be used to hold many things."
 	icon_state = "satchel"
 	item_state = "satchel"
 	icon = 'icons/roguetown/clothing/storage.dmi'
@@ -208,7 +211,7 @@
 
 /obj/item/storage/backpack/rogue/backpack
 	name = "backpack"
-	desc = ""
+	desc = "A bulky backpack worn on the back which can store many items."
 	icon_state = "backpack"
 	item_state = "backpack"
 	icon = 'icons/roguetown/clothing/storage.dmi'

@@ -131,7 +131,7 @@
 	force = 21
 	possible_item_intents = list(/datum/intent/whip/crack, /datum/intent/whip/lash, /datum/intent/whip/punish)
 	name = "whip"
-	desc = "A leather whip, built to last with an sharp stone for a tip"
+	desc = "A leather whip, built to last with an sharp stone for a tip."
 	icon_state = "whip"
 	icon = 'icons/roguetown/weapons/32.dmi'
 	sharpness = IS_BLUNT
@@ -160,7 +160,7 @@
 /obj/item/rogueweapon/whip/antique
 	force = 29
 	name = "Repenta En"
-	desc = "An extremely well maintained whip, with a polished steel tip and gilded handle"
+	desc = "An extremely well maintained whip, with a polished steel tip and gilded handle. It clearly needs to see more use."
 	minstr = 11
 	icon_state = "gwhip"
 
