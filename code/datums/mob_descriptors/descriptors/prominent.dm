@@ -2,6 +2,60 @@
 	abstract_type = /datum/mob_descriptor/prominent
 	slot = MOB_DESCRIPTOR_SLOT_PROMINENT
 
+/datum/mob_descriptor/prominent/none
+	name = "None"
+
+/datum/mob_descriptor/prominent/none/can_describe(mob/living/described)
+	return FALSE
+
+/datum/mob_descriptor/prominent/custom
+	var/custom_index
+
+/datum/mob_descriptor/prominent/custom/can_describe(mob/living/described)
+	if(length(described.custom_descriptors) < custom_index)
+		return FALSE
+	return TRUE
+
+/datum/mob_descriptor/prominent/custom/get_description(mob/living/described)
+	var/datum/custom_descriptor_entry/entry = described.custom_descriptors[custom_index]
+	return entry.content_text
+
+/datum/mob_descriptor/prominent/custom/get_pre_string(mob/living/described)
+	var/datum/custom_descriptor_entry/entry = described.custom_descriptors[custom_index]
+	switch(entry.prefix_type)
+		if(CUSTOM_PREFIX_HAS)
+			return null
+		if(CUSTOM_PREFIX_HAS_A)
+			return "a "
+		if(CUSTOM_PREFIX_HAS_AN)
+			return "an "
+		if(CUSTOM_PREFIX_IS)
+			return null
+		if(CUSTOM_PREFIX_LOOKS)
+			return null
+
+/datum/mob_descriptor/prominent/custom/get_verbage(mob/living/described)
+	var/datum/custom_descriptor_entry/entry = described.custom_descriptors[custom_index]
+	switch(entry.prefix_type)
+		if(CUSTOM_PREFIX_HAS)
+			return "%HAVE%"
+		if(CUSTOM_PREFIX_HAS_A)
+			return "%HAVE%"
+		if(CUSTOM_PREFIX_HAS_AN)
+			return "%HAVE%"
+		if(CUSTOM_PREFIX_IS)
+			return "is"
+		if(CUSTOM_PREFIX_LOOKS)
+			return "looks"
+
+/datum/mob_descriptor/prominent/custom/one
+	name = "Custom #1"
+	custom_index = 1
+
+/datum/mob_descriptor/prominent/custom/two
+	name = "Custom #2"
+	custom_index = 2
+
 /datum/mob_descriptor/prominent/hunched_over
 	name = "Hunched Over"
 	verbage = "is"
@@ -224,3 +278,67 @@
 	name = "Dim Look"
 	verbage = "%HAVE%"
 	prefix = "a"
+
+/datum/mob_descriptor/prominent/canine_features
+	name = "Canine Features"
+	verbage = "%HAVE%"
+
+/datum/mob_descriptor/prominent/feline_features
+	name = "Feline Features"
+	verbage = "%HAVE%"
+
+/datum/mob_descriptor/prominent/hyaenidae_features
+	name = "Hyaenidae Features"
+	verbage = "%HAVE%"
+
+/datum/mob_descriptor/prominent/equine_features
+	name = "Equine Features"
+	verbage = "%HAVE%"
+
+/datum/mob_descriptor/prominent/bovine_features
+	name = "Bovine Features"
+	verbage = "%HAVE%"
+
+/datum/mob_descriptor/prominent/cervine_features
+	name = "Cervine Features"
+	verbage = "%HAVE%"
+
+/datum/mob_descriptor/prominent/lapine_features
+	name = "Lapine Features"
+	verbage = "%HAVE%"
+
+/datum/mob_descriptor/prominent/rodent_features
+	name = "Rodent Features"
+	verbage = "%HAVE%"
+
+/datum/mob_descriptor/prominent/primate_features
+	name = "Primate Features"
+	verbage = "%HAVE%"
+
+/datum/mob_descriptor/prominent/marsupial_features
+	name = "Marsupial Features"
+	verbage = "%HAVE%"
+
+/datum/mob_descriptor/prominent/lizard_features
+	name = "Lizard Features"
+	verbage = "%HAVE%"
+
+/datum/mob_descriptor/prominent/avian_features
+	name = "Avian Features"
+	verbage = "%HAVE%"
+
+/datum/mob_descriptor/prominent/amphibian_features
+	name = "Amphibian Features"
+	verbage = "%HAVE%"
+
+/datum/mob_descriptor/prominent/insectoid_features
+	name = "Instectoid Features"
+	verbage = "%HAVE%"
+
+/datum/mob_descriptor/prominent/marine_features
+	name = "Marine Features"
+	verbage = "%HAVE%"
+
+/datum/mob_descriptor/prominent/vulpine_features
+	name = "Vulpine Features"
+	verbage = "%HAVE%"
