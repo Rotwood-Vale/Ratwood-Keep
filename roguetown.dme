@@ -3549,6 +3549,8 @@
 #include "modular_hearthstone\code\game\area\roguetownareas.dm"
 #include "modular_hearthstone\code\game\objects\sick_wheels.dm"
 #include "modular_hearthstone\code\game\objects\items\signal_horn.dm"
+#include "modular_hearthstone\code\game\objects\items\clothes\bell_dress.dm"
+#include "modular_hearthstone\code\game\objects\items\clothes\ribbonsash.dm"
 #include "modular_hearthstone\code\game\objects\items\clothes\stockings.dm"
 #include "modular_hearthstone\code\game\objects\items\clothes\strapless_dress.dm"
 #include "modular_hearthstone\code\game\objects\structures\fluff.dm"
