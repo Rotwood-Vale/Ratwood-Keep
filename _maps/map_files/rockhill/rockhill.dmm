@@ -2998,6 +2998,12 @@
 	},
 /turf/open/floor/rogue/carpet,
 /area/rogue/indoors/town/manor)
+"dxY" = (
+/obj/structure/bars/pipe{
+	dir = 1
+	},
+/turf/open/transparent/openspace,
+/area/rogue/outdoors/town)
 "dzb" = (
 /obj/structure/fluff/railing/border{
 	dir = 4
@@ -3942,12 +3948,6 @@
 /obj/structure/pillory/reinforced/bog_dungeon,
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/town/basement)
-"ezZ" = (
-/obj/structure/roguewindow,
-/turf/open/floor/rogue/ruinedwood{
-	icon_state = "weird1"
-	},
-/area/rogue/indoors/town)
 "eAr" = (
 /obj/structure/table/wood,
 /turf/open/floor/rogue/blocks/stonered,
@@ -16083,6 +16083,12 @@
 /obj/item/natural/stone,
 /turf/open/floor/rogue/twig,
 /area/rogue/indoors)
+"tre" = (
+/obj/structure/roguewindow,
+/turf/open/floor/rogue/ruinedwood{
+	icon_state = "weird1"
+	},
+/area/rogue/indoors/town)
 "trG" = (
 /turf/closed/wall/mineral/rogue/wooddark/vertical,
 /area/rogue/indoors)
@@ -18925,6 +18931,9 @@
 /obj/structure/fluff/railing/border,
 /turf/open/floor/rogue/ruinedwood/turned,
 /area/rogue/indoors/shelter/mountains)
+"wQK" = (
+/turf/closed/wall/mineral/rogue/craftstone,
+/area/rogue/outdoors/town/roofs)
 "wQN" = (
 /obj/structure/rogue/trophy/deer,
 /turf/open/floor/carpet/royalblack,
@@ -404381,7 +404390,7 @@ fZJ
 fZJ
 fZJ
 fZJ
-ezZ
+tre
 hvF
 bmi
 bmi
@@ -408006,7 +408015,7 @@ uJh
 uJh
 uJh
 uJh
-uJh
+wQK
 uJh
 uJh
 uJh
@@ -508909,7 +508918,7 @@ xAt
 xAt
 xAt
 xAt
-xAt
+dxY
 xAt
 xAt
 xAt
@@ -509311,7 +509320,7 @@ xAt
 xAt
 xAt
 xAt
-xAt
+dxY
 xAt
 xAt
 xAt
@@ -509713,7 +509722,7 @@ xAt
 xAt
 xAt
 xAt
-xAt
+dxY
 xAt
 xAt
 xAt
@@ -510115,7 +510124,7 @@ xAt
 xAt
 xAt
 xAt
-xAt
+dxY
 xAt
 xAt
 xAt
@@ -510517,7 +510526,7 @@ xAt
 xAt
 xAt
 xAt
-xAt
+rOt
 xAt
 xAt
 xAt
