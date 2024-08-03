@@ -28,7 +28,7 @@
 	return
 
 /mob/living/rogstam_add(added as num)
-	if(HAS_TRAIT(src, TRAIT_NOROGSTAM))
+	if(HAS_TRAIT(src, TRAIT_NOROGSTAM) || HAS_TRAIT(src, TRAIT_ZOMBIE_SPEECH))
 		return TRUE
 	if(m_intent == MOVE_INTENT_RUN)
 		mind.adjust_experience(/datum/skill/misc/athletics, (STAINT*0.02))
@@ -98,7 +98,7 @@
 	var/heart_attacking = FALSE
 
 /mob/living/carbon/proc/heart_attack()
-	if(HAS_TRAIT(src, TRAIT_NOROGSTAM))
+	if(HAS_TRAIT(src, TRAIT_NOROGSTAM) || HAS_TRAIT(src, TRAIT_ZOMBIE_SPEECH))
 		return
 	if(!heart_attacking)
 		heart_attacking = TRUE
@@ -136,7 +136,7 @@
 		var/matrix/skew = matrix()
 		skew.Scale(2)
 		//skew.Translate(-224,0)
-		var/matrix/newmatrix = skew 
+		var/matrix/newmatrix = skew
 		for(var/C in hud_used.plane_masters)
 			var/atom/movable/screen/plane_master/whole_screen = hud_used.plane_masters[C]
 			if(whole_screen.plane == HUD_PLANE)

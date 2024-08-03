@@ -591,22 +591,23 @@
 			limb.color = "#[draw_color]"
 			if(aux_zone && !hideaux)
 				aux.color = "#[draw_color]"
-	
+
 	// Markings overlays
 	if(!skeletonized)
 		var/list/marking_overlays = get_markings_overlays(override_color)
 		if(marking_overlays)
 			. += marking_overlays
-	
+
 	// Organ overlays
-	if(!rotted && !skeletonized)
+	//if(!rotted && !skeletonized) //Original way. This was causing parts to vanish when rotted.
+	if(!skeletonized)
 		for(var/obj/item/organ/organ as anything in get_organs())
 			if(!organ.is_visible())
 				continue
 			var/mutable_appearance/organ_appearance = organ.get_bodypart_overlay(src)
 			if(organ_appearance)
 				. += organ_appearance
-	
+
 	// Feature overlays
 	if(!skeletonized)
 		for(var/datum/bodypart_feature/feature as anything in bodypart_features)

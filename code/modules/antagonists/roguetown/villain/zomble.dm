@@ -35,7 +35,6 @@
 		TRAIT_NOPAIN,
 		TRAIT_NOPAINSTUN,
 		TRAIT_NOBREATH,
-		TRAIT_NOBREATH,
 		TRAIT_TOXIMMUNE,
 		TRAIT_CHUNKYFINGERS,
 		TRAIT_NOSLEEP,
@@ -44,7 +43,6 @@
 		TRAIT_BLOODLOSS_IMMUNE,
 		TRAIT_ZOMBIE_SPEECH,
 		TRAIT_ZOMBIE_IMMUNE,
-		TRAIT_EMOTEMUTE,
 		TRAIT_ROTMAN,
 		TRAIT_NORUN
 	)
@@ -157,6 +155,7 @@
 		qdel(src)
 		return
 	revived = TRUE //so we can die for real later
+	zombie.remove_client_colour(/datum/client_colour/monochrome)
 	for(var/trait_applied in traits_zombie)
 		ADD_TRAIT(zombie, trait_applied, "[type]")
 	if(zombie.mind)
@@ -174,7 +173,7 @@
 	zombie.mode = AI_IDLE
 	zombie.handle_ai()
 	ambushable = zombie.ambushable
-	zombie.ambushable = FALSE
+	zombie.ambushable = TRUE
 
 	if(zombie.charflaw)
 		zombie.charflaw.ephemeral = TRUE
@@ -224,9 +223,13 @@
 	if(!user || user.stat >= DEAD || !has_turned)
 		return
 	var/mob/living/carbon/human/zombie = user
-	if(world.time > next_idle_sound)
-		zombie.emote("idle")
-		next_idle_sound = world.time + rand(5 SECONDS, 10 SECONDS)
+	if(!zombie.eyesclosed && zombie.resting)
+		if(world.time > next_idle_sound)
+			zombie.emote("idle")
+			next_idle_sound = world.time + rand(10 SECONDS, 20 SECONDS)
+	if(zombie.client)
+		zombie.mode = AI_OFF
+	else zombie.mode = AI_ON
 
 //Infected wake param is just a transition from living to zombie, via zombie_infect()
 //Previously you just died without warning in 3 minutes, now you just become an antag
