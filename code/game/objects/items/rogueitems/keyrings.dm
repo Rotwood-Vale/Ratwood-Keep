@@ -21,6 +21,7 @@
 			addtoring(new X())
 			keys -= X
 	update_icon()
+	update_desc()
 
 /obj/item/keyring/getonmobprop(tag)
 	. = ..()
@@ -120,7 +121,9 @@
 
 /obj/item/keyring/proc/update_desc()
 	if(keys.len)
-		desc = span_info("\Roman [keys.len] keys.")
+		desc = span_info("Holds \Roman[keys.len] key\s, including:")
+		for(var/obj/item/roguekey/KE in keys)
+			desc += span_info("\n- [KE.name ? "A [KE.name]." : "An unknown key."]")
 	else
 		desc = ""
 
