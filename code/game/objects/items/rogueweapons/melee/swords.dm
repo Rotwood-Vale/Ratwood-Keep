@@ -354,6 +354,11 @@
 	damfactor = 0.8
 	item_d_type = "slash"
 
+/datum/intent/sword/chop/falchion
+	attack_verb = list("chops", "hacks", "cleaves")
+	penfactor = 20
+	damfactor = 1.2
+
 /obj/item/rogueweapon/sword/long/exe
 	possible_item_intents = list(/datum/intent/sword/strike)
 	gripped_intents = list(/datum/intent/axe/chop)
@@ -424,6 +429,16 @@
 	gripped_intents = null
 	minstr = 4
 	wdefense = 2
+
+/obj/item/rogueweapon/sword/falchion
+	force = 20
+	name = "falchion"
+	desc = "A steel, single-edged sword, capable of chopping and slicing with ease."
+	icon_state = "falchion"
+	possible_item_intents = list(/datum/intent/sword/cut/sabre, /datum/intent/sword/thrust, /datum/intent/sword/chop/falchion)
+	gripped_intents = null
+	minstr = 6
+	wdefense = 3
 
 /obj/item/rogueweapon/sword/sabre
 	name = "sabre"

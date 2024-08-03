@@ -600,7 +600,7 @@
 	emote_environment = 3
 	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR
 	block2add = FOV_BEHIND
-	smeltresult = /obj/item/ingot/iron
+	smeltresult = /obj/item/ingot/steel
 
 /obj/item/clothing/head/roguetown/helmet/heavy/sheriff
 	name = "barred helmet"
@@ -609,7 +609,7 @@
 	emote_environment = 3
 	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR
 	block2add = FOV_BEHIND
-	smeltresult = /obj/item/ingot/iron
+	smeltresult = /obj/item/ingot/steel
 
 /obj/item/clothing/head/roguetown/helmet/heavy/knight
 	name = "knight's helmet"

@@ -102,6 +102,12 @@
 	created_item = /obj/item/rogueweapon/huntingknife/cleaver
 	i_type = "Weapons"
 
+/datum/anvil_recipe/weapons/falchion
+	name = "Falchion"
+	req_bar = /obj/item/ingot/steel
+	created_item = /obj/item/rogueweapon/sword/falchion
+	i_type = "Weapons"
+
 /// ADVANCED WEAPONS
 
 /datum/anvil_recipe/weapons/tsword
