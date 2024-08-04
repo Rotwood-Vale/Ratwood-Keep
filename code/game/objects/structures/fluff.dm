@@ -962,6 +962,7 @@
 							I = new /obj/item/reagent_containers/powder/moondust(user.loc)
 							I = new /obj/item/reagent_containers/powder/moondust(user.loc)
 							I = new /obj/item/reagent_containers/powder/moondust(user.loc)
+							I = new /obj/item/slimepotion/lovepotion(user.loc)
 						if(3)
 							I = new /obj/item/clothing/suit/roguetown/armor/plate/scale(user.loc)
 						if(4)
@@ -980,7 +981,6 @@
 							I = new /obj/item/clothing/wrists/roguetown/bracers(user.loc)
 						if(10)
 							I = new /obj/item/clothing/neck/roguetown/blkknight(user.loc)
-							I = new /obj/item/slimepotion/lovepotion(user.loc)
 					if(I)
 						I.sellprice = 0
 					playsound(loc,'sound/items/carvgood.ogg', 50, TRUE)
