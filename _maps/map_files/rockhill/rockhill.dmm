@@ -3276,6 +3276,12 @@
 	},
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors)
+"dUL" = (
+/obj/structure/closet/crate/drawer,
+/obj/item/book/rogue/playerbook,
+/obj/item/flint,
+/turf/open/floor/rogue/ruinedwood/spiral,
+/area/rogue/under/town/basement)
 "dUY" = (
 /obj/structure/stairs,
 /turf/open/floor/rogue/ruinedwood{
@@ -7755,6 +7761,29 @@
 	},
 /turf/open/floor/rogue/cobble,
 /area/rogue/indoors)
+"jke" = (
+/obj/structure/closet/crate/roguecloset,
+/obj/item/clothing/under/roguetown/tights/stockings/silk/black,
+/obj/item/clothing/suit/roguetown/shirt/dress/gen/strapless/purple,
+/obj/item/clothing/shoes/roguetown/sandals,
+/obj/item/natural/feather,
+/obj/item/candle/yellow,
+/obj/item/candle/yellow,
+/obj/item/candle/yellow,
+/obj/item/candle/yellow,
+/obj/item/candle/yellow,
+/obj/item/candle/yellow,
+/obj/item/candle/yellow,
+/obj/item/candle/yellow,
+/obj/item/candle/yellow,
+/obj/item/candle/yellow,
+/obj/item/candle/yellow,
+/obj/item/candle/yellow,
+/obj/item/candle/yellow,
+/obj/item/candle/yellow,
+/obj/item/candle/yellow,
+/turf/open/floor/rogue/ruinedwood/spiral,
+/area/rogue/under/town/basement)
 "jkg" = (
 /obj/machinery/light/rogue/wallfire/candle,
 /turf/open/floor/rogue/tile,
@@ -12089,6 +12118,21 @@
 /obj/structure/stairs,
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/town)
+"oHI" = (
+/obj/structure/table/wood{
+	icon_state = "tablewood3"
+	},
+/obj/item/paper,
+/obj/item/candle/skull/lit{
+	pixel_y = 5;
+	pixel_x = 9
+	},
+/obj/item/natural/feather{
+	pixel_y = 9;
+	pixel_x = -4
+	},
+/turf/open/floor/rogue/ruinedwood/spiral,
+/area/rogue/under/town/basement)
 "oHO" = (
 /obj/structure/fluff/psycross/crafted,
 /turf/open/floor/rogue/dirt/road,
@@ -13226,30 +13270,6 @@
 /obj/item/reagent_containers/food/snacks/rogue/meat/steak,
 /turf/open/floor/rogue/church,
 /area/rogue/indoors/town/church)
-"qfE" = (
-/obj/structure/closet/crate/roguecloset,
-/obj/item/natural/feather,
-/obj/item/natural/feather,
-/obj/item/candle/yellow,
-/obj/item/candle/yellow,
-/obj/item/candle/yellow,
-/obj/item/candle/yellow,
-/obj/item/candle/yellow,
-/obj/item/candle/yellow,
-/obj/item/candle/yellow,
-/obj/item/candle/yellow,
-/obj/item/candle/yellow,
-/obj/item/candle/yellow,
-/obj/item/candle/yellow,
-/obj/item/candle/yellow,
-/obj/item/candle/yellow,
-/obj/item/candle/yellow,
-/obj/item/candle/yellow,
-/obj/item/clothing/under/roguetown/tights/stockings/silk/black,
-/obj/item/clothing/suit/roguetown/shirt/dress/gen/strapless/purple,
-/obj/item/clothing/shoes/roguetown/sandals,
-/turf/open/floor/rogue/ruinedwood/spiral,
-/area/rogue/under/town/basement)
 "qfL" = (
 /obj/structure/bed/rogue/shit,
 /turf/open/floor/rogue/grass,
@@ -17659,12 +17679,6 @@
 	},
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue/indoors/town)
-"vOQ" = (
-/obj/structure/closet/crate/drawer,
-/obj/item/flint,
-/obj/item/book/rogue/playerbook,
-/turf/open/floor/rogue/ruinedwood/spiral,
-/area/rogue/under/town/basement)
 "vOS" = (
 /obj/structure/stairs/stone{
 	dir = 4
@@ -194798,9 +194812,9 @@ eJr
 eJr
 eJr
 txa
-ylC
-ylC
 jyI
+txa
+txa
 jyI
 jwi
 kGY
@@ -195200,10 +195214,10 @@ eJr
 pAg
 eJr
 jyI
-jyI
+jke
+qug
+qug
 txa
-txa
-jyI
 jwi
 kGY
 avY
@@ -195602,10 +195616,10 @@ wKe
 jJh
 eJr
 jyI
-qfE
-qug
+eJr
+eJr
+eJr
 txa
-jyI
 jwi
 kGY
 avY
@@ -196006,8 +196020,8 @@ eJr
 kqT
 eJr
 eJr
+pAg
 txa
-jyI
 jyI
 jwi
 kGY
@@ -196406,10 +196420,10 @@ hLl
 dKq
 gAp
 txa
+dUL
 hNJ
-vOQ
+oHI
 txa
-jyI
 jyI
 jyI
 jwi
@@ -196811,7 +196825,7 @@ txa
 txa
 txa
 txa
-jyI
+txa
 jyI
 jyI
 jyI
