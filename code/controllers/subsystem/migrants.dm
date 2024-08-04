@@ -141,9 +141,11 @@ SUBSYSTEM_DEF(migrants)
 	for(var/client/client as anything in picked_migrants)
 		client.prefs.migrant.post_spawn()
 
+	var/migrant_wave_id = "migrant[wave_number]"
+
 	/// Spawn the migrants, hooray
 	for(var/datum/migrant_assignment/assignment as anything in assignments)
-		spawn_migrant(wave, assignment, wave.spawn_on_location)
+		spawn_migrant(wave, assignment, wave.spawn_on_location, migrant_wave_id)
 
 	// Increment wave spawn counter
 	var/used_wave_type = wave.type
@@ -188,7 +190,7 @@ SUBSYSTEM_DEF(migrants)
 	turfs = shuffle(turfs)
 	return turfs
 
-/datum/controller/subsystem/migrants/proc/spawn_migrant(datum/migrant_wave/wave, datum/migrant_assignment/assignment, spawn_on_location)
+/datum/controller/subsystem/migrants/proc/spawn_migrant(datum/migrant_wave/wave, datum/migrant_assignment/assignment, spawn_on_location, migrant_wave_id)
 	var/rank = "Migrant"
 	var/mob/dead/new_player/newplayer = assignment.client.mob
 	var/ckey = assignment.client.ckey
@@ -257,7 +259,7 @@ SUBSYSTEM_DEF(migrants)
 	role.after_spawn(character)
 
 	if(role.advclass_cat_rolls)
-		SSrole_class_handler.setup_class_handler(character, role.advclass_cat_rolls)
+		SSrole_class_handler.setup_class_handler(character, role.advclass_cat_rolls, migrant_wave_id)
 		hugboxify_for_class_selection(character)
 	else
 		// Apply a special if we're not applying an adv class, otherwise let the adv class apply it afterwards

@@ -39,7 +39,7 @@
 
 /obj/item/clothing/head/roguetown/roguehood/shalal
 	name = "keffiyeh"
-	desc = ""
+	desc = "A protective covering worn by those native to the desert."
 	color = null
 	icon_state = "shalal"
 	item_state = "shalal"
@@ -62,7 +62,7 @@
 
 /obj/item/clothing/head/roguetown/roguehood/astrata
 	name = "sun hood"
-	desc = ""
+	desc = "A hood worn by those who favor Astrata. Praise the firstborn sun!"
 	color = null
 	icon_state = "astratahood"
 	item_state = "astratahood"
@@ -77,7 +77,7 @@
 
 /obj/item/clothing/head/roguetown/roguehood/nochood
 	name = "moon hood"
-	desc = ""
+	desc = "A hood worn by those who favor Noc with a mask in the shape of a crescent."
 	color = null
 	icon_state = "nochood"
 	item_state = "nochood"
@@ -102,6 +102,7 @@
 
 /obj/item/clothing/head/roguetown/dendormask
 	name = "briarmask"
+	desc = "A mask of wood worn by druids in service to Dendor."
 	color = null
 	icon_state = "dendormask"
 	item_state = "dendormask"
@@ -177,6 +178,7 @@
 
 /obj/item/clothing/head/roguetown/menacing
 	name = "sack hood"
+	desc = "A hood commonly worn by executioners. Hides the face, the stigma of pulling that lever makes many executioners outcasts in their own right."
 	icon_state = "menacing"
 	item_state = "menacing"
 	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR|HIDEFACIALHAIR
@@ -189,6 +191,7 @@
 
 /obj/item/clothing/head/roguetown/jester
 	name = "jester's hat"
+	desc = "A funny looking hat with jingly bells attached to it."
 	icon_state = "jester"
 	item_state = "jester"
 	dynamic_hair_suffix = "+generic"
@@ -196,6 +199,7 @@
 
 /obj/item/clothing/head/roguetown/strawhat
 	name = "straw hat"
+	desc = "Keeps the sun off your head while toiling the fields."
 	icon_state = "strawhat"
 	sewrepair = TRUE
 
@@ -217,22 +221,26 @@
 
 /obj/item/clothing/head/roguetown/fancyhat
 	name = "fancy hat"
+	desc = "A fancy looking hat with colorful feathers sticking out of it."
 	icon_state = "fancy_hat"
 	item_state = "fancyhat"
 	sewrepair = TRUE
 
 /obj/item/clothing/head/roguetown/hatfur
 	name = "fur hat"
+	desc = "A comfortable warm hat lined with fur."
 	icon_state = "hatfur"
 	sewrepair = TRUE
 
 /obj/item/clothing/head/roguetown/hatblu
 	name = "fur hat"
+	desc = "A blue hat lined with fur."
 	icon_state = "hatblu"
 	sewrepair = TRUE
 
 /obj/item/clothing/head/roguetown/fisherhat
 	name = "straw hat"
+	desc = "A hat worn by fishermen to protect from the sun."
 	icon_state = "fisherhat"
 	item_state = "fisherhat"
 	sewrepair = TRUE
@@ -248,6 +256,7 @@
 
 /obj/item/clothing/head/roguetown/chaperon
 	name = "chaperon hat"
+	desc = "A fancy hat worn by nobles."
 	icon_state = "chaperon"
 	item_state = "chaperon"
 	flags_inv = HIDEEARS
@@ -256,6 +265,7 @@
 
 /obj/item/clothing/head/roguetown/cookhat
 	name = "cook hat"
+	desc = "A hat which signifies one as well versed in the arts of cooking."
 	icon_state = "chef"
 	item_state = "chef"
 	flags_inv = HIDEEARS
@@ -263,6 +273,7 @@
 
 /obj/item/clothing/head/roguetown/chaperon/greyscale
 	name = "chaperon hat"
+	desc = "A fancy hat worn by nobles."
 	icon_state = "chap_alt"
 	item_state = "chap_alt"
 	flags_inv = HIDEEARS
@@ -270,6 +281,7 @@
 
 /obj/item/clothing/head/roguetown/chaperon/bailiff
 	name = "chaperon hat"
+	desc = "A fancy hat worn by nobles."
 	icon_state = "chap_alt"
 	item_state = "chap_alt"
 	flags_inv = HIDEEARS
@@ -277,6 +289,7 @@
 
 /obj/item/clothing/head/roguetown/chaperon/councillor
 	name = "chaperon hat"
+	desc = "A fancy hat worn by nobles."
 	icon_state = "chap_alt"
 	item_state = "chap_alt"
 	flags_inv = HIDEEARS
@@ -284,12 +297,14 @@
 
 /obj/item/clothing/head/roguetown/chef
 	name = "chef's hat"
+	desc = "A hat which signifies one as well versed in the arts of cooking."
 	icon_state = "chef"
 	sewrepair = TRUE
 	//dropshrink = 0.75
 
 /obj/item/clothing/head/roguetown/armingcap
 	name = "cap"
+	desc = "A light cap made of leather, usually worn under a helmet."
 	icon_state = "armingcap"
 	item_state = "armingcap"
 	flags_inv = HIDEEARS
@@ -298,6 +313,7 @@
 
 /obj/item/clothing/head/roguetown/knitcap
 	name = "knit cap"
+	desc = "A simple knitted cap."
 	icon_state = "knitcap"
 	sewrepair = TRUE
 	//dropshrink = 0.75
@@ -307,6 +323,7 @@
 
 /obj/item/clothing/head/roguetown/headband
 	name = "headband"
+	desc = "A simple headband to keep sweat out of your eyes."
 	icon_state = "headband"
 	item_state = "headband"
 	sewrepair = TRUE
@@ -395,6 +412,7 @@
 
 /obj/item/clothing/head/roguetown/hennin
 	name = "hennin"
+	desc = "A hat typically worn by women in nobility."
 	icon_state = "hennin"
 	sellprice = 19
 	dynamic_hair_suffix = "+generic"
@@ -402,6 +420,7 @@
 
 /obj/item/clothing/head/roguetown/paddedcap
 	name = "padded cap"
+	desc = "A modest arming cap"
 	icon_state = "armingcap"
 	item_state = "armingcap"
 	sleevetype = null
@@ -420,7 +439,7 @@
 	mob_overlay_icon = 'icons/roguetown/clothing/onmob/head.dmi'
 	slot_flags = ITEM_SLOT_HEAD|ITEM_SLOT_HIP
 	name = "helmet"
-	desc = ""
+	desc = "A helmet that doesn't get any more simple in design."
 	body_parts_covered = HEAD|HAIR|NOSE
 	icon_state = "nasal"
 	sleevetype = null
@@ -436,7 +455,7 @@
 
 /obj/item/clothing/head/roguetown/helmet/skullcap
 	name = "skull cap"
-	desc = ""
+	desc = "A helmet which covers the top of the head."
 	icon_state = "skullcap"
 	body_parts_covered = HEAD|HAIR
 	max_integrity = 200
@@ -444,12 +463,14 @@
 
 /obj/item/clothing/head/roguetown/helmet/horned
 	name = "horned cap"
+	desc = "A helmet with two horns poking out of the sides."
 	icon_state = "hornedcap"
 	max_integrity = 200
 	body_parts_covered = HEAD|HAIR
 
 /obj/item/clothing/head/roguetown/helmet/winged
 	name = "winged cap"
+	desc = "A helmet with two wings on its sides."
 	icon_state = "wingedcap"
 	max_integrity = 200
 	mob_overlay_icon = 'icons/roguetown/clothing/onmob/64x64/head.dmi'
@@ -458,7 +479,7 @@
 	body_parts_covered = HEAD|HAIR
 
 /obj/item/clothing/head/roguetown/helmet/kettle
-	desc = "A steel helmet which protects the ears."
+	desc = "A steel helmet which protects the whole of the head."
 	icon_state = "kettle"
 	body_parts_covered = HEAD|HAIR|EARS
 	armor = list("blunt" = 80, "slash" = 90, "stab" = 70, "bullet" = 100, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
@@ -505,7 +526,7 @@
 
 /obj/item/clothing/head/roguetown/helmet/heavy
 	name = "barbute"
-	desc = ""
+	desc = "A simple helmet with a visor in the shape of a Y."
 	body_parts_covered = FULL_HEAD
 	icon_state = "barbute"
 	item_state = "barbute"
@@ -519,7 +540,7 @@
 
 /obj/item/clothing/head/roguetown/helmet/heavy/guard
 	name = "savoyard"
-	desc = ""
+	desc = "A helmet with a menacing visage."
 	icon_state = "guardhelm"
 	emote_environment = 3
 	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR
@@ -528,7 +549,7 @@
 
 /obj/item/clothing/head/roguetown/helmet/heavy/sheriff
 	name = "barred helmet"
-	desc = ""
+	desc = "A helmet which offers good protection to the face at the expense of vision."
 	icon_state = "gatehelm"
 	emote_environment = 3
 	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR
@@ -537,6 +558,7 @@
 
 /obj/item/clothing/head/roguetown/helmet/heavy/knight
 	name = "knight's helmet"
+	desc = "A noble knight's helmet."
 	icon_state = "knight"
 	item_state = "knight"
 	adjustable = CAN_CADJUST
@@ -572,6 +594,7 @@
 
 /obj/item/clothing/head/roguetown/helmet/heavy/bucket
 	name = "bucket helmet"
+	desc = "A helmet which covers the whole of the head. Offers excellent protection."
 	icon_state = "topfhelm"
 	item_state = "topfhelm"
 	emote_environment = 3
@@ -581,6 +604,7 @@
 
 /obj/item/clothing/head/roguetown/helmet/heavy/astratahelm
 	name = "astrata helmet"
+	desc = "Headwear commonly worn by Templars in service to Astrata. The firstborn child's light will forever shine on within its crest."
 	icon_state = "astratahelm"
 	item_state = "astratahelm"
 	emote_environment = 3
@@ -590,6 +614,7 @@
 
 /obj/item/clothing/head/roguetown/helmet/heavy/nochelm
 	name = "noc helmet"
+	desc = "Hearwear commonly worn by Templars in service to Noc. Without the night there can be no day, without Noc there can be no light in the dark hours."
 	icon_state = "nochelm"
 	item_state = "nochelm"
 	emote_environment = 3
@@ -599,6 +624,7 @@
 
 /obj/item/clothing/head/roguetown/helmet/heavy/necrahelm
 	name = "necra helmet"
+	desc = "Headwear commonly worn by Templars in service to Necra. Let its skeletal features remind you of the only thing which is guaranteed in life. You will die."
 	icon_state = "necrahelm"
 	item_state = "necrahelm"
 	emote_environment = 3
@@ -608,6 +634,7 @@
 
 /obj/item/clothing/head/roguetown/helmet/heavy/dendorhelm
 	name = "dendor helmet"
+	desc = "Headwear commonly worn by Templars in service to Dendor. Its protrusions almost resemble branches. Take root in the earth, and you will never be moved."
 	icon_state = "dendorhelm"
 	item_state = "dendorhelm"
 	emote_environment = 3
@@ -662,7 +689,7 @@
 /obj/item/clothing/head/roguetown/helmet/leather
 	slot_flags = ITEM_SLOT_HEAD|ITEM_SLOT_HIP
 	name = "leather helmet"
-	desc = ""
+	desc = "A helmet made of leather."
 	body_parts_covered = HEAD|HAIR|EARS|NOSE
 	icon_state = "leatherhelm"
 	armor = list("blunt" = 47, "slash" = 27, "stab" = 37, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)

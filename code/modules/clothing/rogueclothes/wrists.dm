@@ -20,7 +20,7 @@
 
 /obj/item/clothing/wrists/roguetown/bracers/leather
 	name = "leather bracers"
-	desc = ""
+	desc = "Leather bracers worn on the wrists."
 	icon_state = "lbracers"
 	item_state = "lbracers"
 	armor = list("blunt" = 32, "slash" = 12, "stab" = 22, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)

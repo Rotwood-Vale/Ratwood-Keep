@@ -107,14 +107,17 @@
 		/datum/body_marking/spotted,
 	)
 	descriptor_choices = list(
+		/datum/descriptor_choice/height,
 		/datum/descriptor_choice/body,
 		/datum/descriptor_choice/stature,
 		/datum/descriptor_choice/face,
 		/datum/descriptor_choice/face_exp,
 		/datum/descriptor_choice/skin_all,
 		/datum/descriptor_choice/voice,
-		/datum/descriptor_choice/prominent_one,
-		/datum/descriptor_choice/prominent_two,
+		/datum/descriptor_choice/prominent_one_wild,
+		/datum/descriptor_choice/prominent_two_wild,
+		/datum/descriptor_choice/prominent_three_wild,
+		/datum/descriptor_choice/prominent_four_wild,
 	)
 
 /datum/species/anthromorph/on_species_gain(mob/living/carbon/C, datum/species/old_species)
