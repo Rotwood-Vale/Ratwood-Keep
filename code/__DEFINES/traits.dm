@@ -6,7 +6,7 @@
 #define TRAIT_NOSEGRAB "Nosey"
 #define TRAIT_NUTCRACKER "Nutcracker"
 #define TRAIT_SEEPRICES "Skilled Appraiser"
-#define TRAIT_SEEPRICES_SHITTY "Merchant-in-training"
+#define TRAIT_SEEPRICES_SHITTY "Appraiser"
 #define TRAIT_STRONGBITE "Strong Bite"
 #define TRAIT_NOBLE "Noble Blooded"
 #define TRAIT_EMPATH "Empath"
