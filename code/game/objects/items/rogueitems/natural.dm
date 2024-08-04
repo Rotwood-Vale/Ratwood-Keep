@@ -23,10 +23,10 @@
 		var/obj/item/natural/B = W
 		if(B.bundletype == src.bundletype && src.bundletype != null)
 			var/obj/item/natural/bundle/N = new bundletype(src.loc)
-			user.put_in_hands(N)
-			to_chat(user, "You tie the [N.stackname] into a bundle.")
 			qdel(B)
 			qdel(src)
+			user.put_in_hands(N)
+			to_chat(user, "You tie the [N.stackname] into a bundle.")
 	else
 		return ..()
 
@@ -85,9 +85,9 @@
 		if(2)
 			var/obj/F = new stacktype(src.loc)
 			var/obj/I = new stacktype(src.loc)
+			qdel(src)
 			H.put_in_hands(F)
 			H.put_in_hands(I)
-			qdel(src)
 			return
 		else
 			amount -= 1
