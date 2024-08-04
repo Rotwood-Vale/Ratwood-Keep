@@ -149,7 +149,7 @@
 	keys = list(/obj/item/roguekey/sheriff_office, /obj/item/roguekey/town_armory, /obj/item/roguekey/town_barracks, /obj/item/roguekey/town_dungeon)
 
 /obj/item/keyring/man_at_arms
-	keys = list(/obj/item/roguekey/keep_gatehouse, /obj/item/roguekey/keep_barracks, /obj/item/roguekey/walls, /obj/item/roguekey/manor)
+	keys = list(/obj/item/roguekey/keep_gatehouse, /obj/item/roguekey/keep_barracks, /obj/item/roguekey/manor)
 
 /obj/item/keyring/captain
 	keys = list(/obj/item/roguekey/councillor_rooms, /obj/item/roguekey/prince_rooms, /obj/item/roguekey/keep_gatehouse, /obj/item/roguekey/keep_armory, /obj/item/roguekey/keep_barracks, /obj/item/roguekey/walls, /obj/item/roguekey/manor)

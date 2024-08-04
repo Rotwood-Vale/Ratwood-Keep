@@ -2306,6 +2306,7 @@
 /obj/item/roguekey/bog_barracks,
 /obj/item/roguekey/bog_armory,
 /obj/item/roguekey/tower,
+/obj/item/roguekey/walls,
 /turf/open/floor/rogue/tile/tilerg,
 /area/rogue/indoors/town/manor)
 "cQf" = (
@@ -2443,6 +2444,16 @@
 	},
 /turf/open/floor/rogue/dirt,
 /area/rogue/outdoors/rtfield)
+"cUk" = (
+/obj/structure/mineral_door/wood{
+	icon_state = "wcv";
+	lockid = "shop";
+	masterkey = 0
+	},
+/turf/open/floor/rogue/ruinedwood{
+	icon_state = "weird1"
+	},
+/area/rogue/indoors/town/shop)
 "cUy" = (
 /turf/closed/wall/mineral/rogue/decostone/end{
 	dir = 8
@@ -4432,6 +4443,13 @@
 /obj/machinery/light/rogue/firebowl,
 /turf/open/floor/rogue/tile,
 /area/rogue/indoors/town/garrison)
+"ffG" = (
+/obj/structure/mineral_door/wood{
+	locked = 1;
+	lockid = "walls"
+	},
+/turf/open/floor/rogue/cobble,
+/area/rogue/outdoors/town)
 "fge" = (
 /obj/structure/bars/passage/shutter{
 	redstone_id = "warehouse_shutter"
@@ -7570,7 +7588,8 @@
 "iWx" = (
 /obj/structure/mineral_door/wood{
 	icon_state = "wcv";
-	lockid = "merchant"
+	lockid = "merchant";
+	masterkey = 0
 	},
 /turf/open/floor/rogue/ruinedwood{
 	icon_state = "weird1"
@@ -8084,7 +8103,8 @@
 "jEB" = (
 /obj/structure/mineral_door/wood{
 	icon_state = "wcv";
-	lockid = "shop"
+	lockid = "shop";
+	masterkey = 0
 	},
 /turf/open/floor/rogue/ruinedwood{
 	icon_state = "horzw"
@@ -15174,13 +15194,6 @@
 	},
 /turf/open/floor/rogue/carpet/lord/center,
 /area/rogue/indoors/town/manor)
-"sKU" = (
-/obj/structure/rack/rogue,
-/obj/item/roguekey/walls,
-/obj/item/roguekey/walls,
-/obj/item/roguekey/walls,
-/turf/open/floor/rogue/cobble,
-/area/rogue/under/town/basement)
 "sLn" = (
 /obj/structure/mineral_door/wood/window{
 	lockid = "town_barracks";
@@ -15226,10 +15239,10 @@
 /turf/open/floor/carpet/royalblack,
 /area/rogue/indoors/town/bath)
 "sPb" = (
-/obj/structure/mineral_door/wood{
-	icon_state = "wcv";
+/obj/structure/mineral_door/wood/donjon{
 	locked = 1;
-	lockid = "shop"
+	lockid = "shop";
+	masterkey = 0
 	},
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue/indoors/town/shop)
@@ -16653,10 +16666,11 @@
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors)
 "uyw" = (
-/obj/structure/mineral_door/wood{
-	icon_state = "wcv";
+/obj/structure/mineral_door/wood/donjon{
+	dir = 4;
 	locked = 1;
-	lockid = "shop"
+	lockid = "shop";
+	masterkey = 0
 	},
 /turf/open/floor/rogue/concrete,
 /area/rogue/indoors/town/shop)
@@ -17308,10 +17322,10 @@
 /turf/open/floor/rogue/herringbone,
 /area/rogue/indoors/town/church)
 "vsl" = (
-/obj/structure/mineral_door/wood{
-	icon_state = "wcv";
+/obj/structure/mineral_door/wood/donjon{
 	locked = 1;
-	lockid = "shop"
+	lockid = "shop";
+	masterkey = 0
 	},
 /turf/open/floor/rogue/ruinedwood{
 	icon_state = "weird1"
@@ -187554,7 +187568,7 @@ sYw
 txa
 dhN
 iTw
-sKU
+jRC
 iTw
 nZt
 txa
@@ -187958,7 +187972,7 @@ quC
 iTw
 tHU
 iTw
-jRC
+wZJ
 txa
 iTw
 cBf
@@ -188360,7 +188374,7 @@ kzT
 iTw
 tnK
 iTw
-wZJ
+tjU
 jvC
 iTw
 cBf
@@ -188762,7 +188776,7 @@ daI
 iTw
 aEN
 iTw
-tjU
+mMO
 txa
 iTw
 nFa
@@ -189164,7 +189178,7 @@ brV
 iTw
 nda
 iTw
-mMO
+vse
 txa
 iTw
 iTw
@@ -189566,7 +189580,7 @@ aAe
 iTw
 rbr
 iTw
-vse
+iTw
 txa
 jyI
 txa
@@ -287286,7 +287300,7 @@ wbg
 wbg
 wbg
 mwE
-rfx
+ffG
 wbg
 wbg
 rfx
@@ -294120,7 +294134,7 @@ wbg
 wbg
 wbg
 mwE
-rfx
+ffG
 wbg
 wbg
 esR
@@ -394660,7 +394674,7 @@ swZ
 pFW
 swZ
 swZ
-gAk
+cUk
 swZ
 swZ
 swZ
@@ -395060,7 +395074,7 @@ aMR
 nDX
 nDX
 nDX
-gAk
+cUk
 nDX
 nDX
 swZ
@@ -396274,7 +396288,7 @@ igh
 qAB
 nDX
 nDX
-gAk
+cUk
 nDX
 nDX
 nDX
