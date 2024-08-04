@@ -3528,6 +3528,8 @@
 #include "modular\code\modules\maturity-prompt\code\maturity_subsystem.dm"
 #include "modular_azurepeak\_statpacks.dm"
 #include "modular_azurepeak\code\game\objects\structures\fartravel.dm"
+#include "modular_hearthstone\code\game\objects\items\clothes\stockings.dm"
+#include "modular_hearthstone\code\game\objects\items\clothes\strapless_dress.dm"
 #include "modular_azurepeak\statpacks\agile.dm"
 #include "modular_azurepeak\statpacks\mental.dm"
 #include "modular_azurepeak\statpacks\physical.dm"
