@@ -51,6 +51,8 @@
 			user.visible_message(span_notice("[user] sharpens [src]!"))
 			degrade_bintegrity(0.5)
 			add_bintegrity(max_blade_int * 0.1)
+			if(blade_int >= max_blade_int)
+				to_chat(user, span_info("Fully sharpened."))
 			if(prob(35))
 				var/datum/effect_system/spark_spread/S = new()
 				var/turf/front = get_step(user,user.dir)
