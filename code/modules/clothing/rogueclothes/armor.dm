@@ -104,8 +104,8 @@
 	if(do_sound)
 		AddComponent(/datum/component/squeak, list('sound/foley/footsteps/armor/chain (1).ogg',\
 													'sound/foley/footsteps/armor/chain (2).ogg',\
-													'sound/foley/footsteps/armor/chain (3).ogg'), 70)
-
+													'sound/foley/footsteps/armor/chain (3).ogg'), 70)		
+									
 /obj/item/clothing/suit/roguetown/armor/carapace/cuirass
 	name = "carapace cuirass"
 	desc = "vest styled watery shell chest armor sown in layers."
@@ -158,6 +158,23 @@
 	smeltresult = /obj/item/ingot/steel
 	armor_class = ARMOR_CLASS_MEDIUM
 
+/obj/item/clothing/suit/roguetown/armor/plate/halfplateroyalguard
+	slot_flags = ITEM_SLOT_ARMOR
+	name = "royal halfplate"
+	desc = "A basic cuirass of steel, decorated with gold."
+	body_parts_covered = CHEST|VITALS
+	icon_state = "halfplateroyalguard"
+	item_state = "halfplateroyalguard"
+	armor = list("blunt" = 80, "slash" = 100, "stab" = 80, "bullet" = 100, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	allowed_race = CLOTHED_RACES_TYPES
+	nodismemsleeves = TRUE
+	do_sound = FALSE
+	blocking_behavior = null
+	max_integrity = 300
+	anvilrepair = /datum/skill/craft/armorsmithing
+	smeltresult = /obj/item/ingot/steel
+	armor_class = ARMOR_CLASS_MEDIUM	
+
 /obj/item/clothing/suit/roguetown/armor/plate/bikini
 	name = "plate bikini"
 	desc = "Half plate in bikini form, still just as protective somehow."
@@ -201,7 +218,7 @@
 	anvilrepair = /datum/skill/craft/armorsmithing
 	smeltresult = /obj/item/ingot/steel
 	equip_delay_self = 40
-	armor_class = ARMOR_CLASS_MEDIUM
+	armor_class = ARMOR_CLASS_MEDIUM			
 
 /obj/item/clothing/suit/roguetown/armor/heartfelt/lord
 	slot_flags = ITEM_SLOT_ARMOR
@@ -532,3 +549,20 @@
 	sleeved = 'icons/roguetown/clothing/onmob/helpers/stonekeep_merc.dmi'
 	boobed = TRUE
 	max_integrity = 400
+
+/obj/item/clothing/suit/roguetown/armor/barrelarmor
+	slot_flags = ITEM_SLOT_ARMOR
+	name = "Barrel Armor"
+	desc = "Makeshift armor made using a barrel with two holes made for the hands to fit through."
+	icon_state = "barrelarmor"
+	item_state = "barrelarmor"
+	armor = list("blunt" = 5, "slash" = 1, "stab" = 1, "bullet" = 1, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	blocksound = SOFTHIT
+	prevent_crits = list(BCLASS_CUT,BCLASS_TWIST)
+	break_sound = 'sound/combat/hits/onwood/woodimpact (1).ogg'
+	drop_sound = 'sound/foley/dropsound/wooden_drop.ogg'
+	sleeved = FALSE
+	blade_dulling = DULLING_BASHCHOP
+	body_parts_covered = CHEST|VITALS|ARMS
+	boobed = FALSE
+	max_integrity = 300

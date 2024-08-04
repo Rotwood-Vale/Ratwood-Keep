@@ -46,13 +46,13 @@
 		H.name = "[honorary] [prev_name]"
 
 /datum/outfit/job/roguetown/royalguard
-	head = /obj/item/clothing/head/roguetown/helmet/bascinet/pigface
+	head = /obj/item/clothing/head/roguetown/helmet/heavy/royalknight
 	pants = /obj/item/clothing/under/roguetown/chainlegs
-	cloak = /obj/item/clothing/cloak/stabard/surcoat/guard
+	cloak = /obj/item/clothing/cloak/half
 	gloves = /obj/item/clothing/gloves/roguetown/chain
 	neck = /obj/item/clothing/neck/roguetown/gorget
 	shirt = /obj/item/clothing/suit/roguetown/armor/chainmail
-	armor = /obj/item/clothing/suit/roguetown/armor/plate/half
+	armor = /obj/item/clothing/suit/roguetown/armor/plate/halfplateroyalguard
 	shoes = /obj/item/clothing/shoes/roguetown/boots/armoriron
 	beltl = /obj/item/keyring/guardcastle
 	belt = /obj/item/storage/belt/rogue/leather/black

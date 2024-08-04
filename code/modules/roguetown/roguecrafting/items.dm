@@ -357,6 +357,22 @@
 	skillcraft = /datum/skill/misc/sewing
 	req_table = FALSE
 
+/datum/crafting_recipe/roguetown/psydonhood
+	name = "psydon hood"
+	result = /obj/item/clothing/head/roguetown/psydonhood
+	reqs = list(/obj/item/natural/cloth = 1)
+	tools = list(/obj/item/needle)
+	skillcraft = /datum/skill/misc/sewing
+	req_table = TRUE
+
+/datum/crafting_recipe/roguetown/psydonrobe
+	name = "psydon robe"
+	result = /obj/item/clothing/suit/roguetown/shirt/robe/psydonrobe
+	reqs = list(/obj/item/natural/cloth = 2)
+	tools = list(/obj/item/needle)
+	skillcraft = /datum/skill/misc/sewing
+	req_table = TRUE
+
 /obj/item/storage/roguebag/crafted
 	sellprice = 4
 

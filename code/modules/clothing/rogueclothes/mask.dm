@@ -72,6 +72,11 @@
 /obj/item/clothing/mask/rogue/lordmask/l
 	icon_state = "lmask_l"
 
+/obj/item/clothing/mask/rogue/lepermask
+    name = "leper mask"
+    desc = "A mask worn by those suffering with leprocy."
+    icon_state = "lepermask"
+
 /obj/item/clothing/mask/rogue/facemask
 	name = "iron mask"
 	desc = "An iron mask which protects the fact and obscures it."

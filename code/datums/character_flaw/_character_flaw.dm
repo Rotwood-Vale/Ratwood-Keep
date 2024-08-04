@@ -4,6 +4,7 @@ GLOBAL_LIST_INIT(character_flaws, list("Alcoholic"=/datum/charflaw/addiction/alc
 	"Nymphomaniac"=/datum/charflaw/addiction/lovefiend,
 	"Smoker"=/datum/charflaw/addiction/smoker,
 	"Junkie"=/datum/charflaw/addiction/junkie,
+	"Leper"=/datum/charflaw/rotten,
 	"Cyclops (R)"=/datum/charflaw/noeyer,
 	"Cyclops (L)"=/datum/charflaw/noeyel,
 	"Wood Arm (R)"=/datum/charflaw/limbloss/arm_r,
@@ -253,3 +254,16 @@ GLOBAL_LIST_INIT(character_flaws, list("Alcoholic"=/datum/charflaw/addiction/alc
 	var/obj/item/bodypart/head/head = H.get_bodypart(BODY_ZONE_HEAD)
 	head?.add_wound(/datum/wound/facial/eyes/left/permanent)
 	H.update_fov_angles()
+
+/datum/charflaw/rotten
+    name = "Leprosy"
+    desc = "I am cursed, or blessed as some would say, with leprosy. Sometimes I lose control of my limbs, and suffer with constant sickness. Society shuns me for the disease riddled creature I have devolved into."
+/datum/charflaw/rotten/on_mob_creation(mob/user)
+	..()
+	if(!ishuman(user))
+		return
+	var/mob/living/carbon/human/H = user
+	if(!H.wear_mask)
+		H.equip_to_slot_or_del(new /obj/item/clothing/mask/rogue/lepermask(H), SLOT_WEAR_MASK)
+ H.apply_status_effect(STATUS_EFFECT_SPASMS)
+ H.apply_status_effect(STATUS_EFFECT_FAKE_VIRUS)
