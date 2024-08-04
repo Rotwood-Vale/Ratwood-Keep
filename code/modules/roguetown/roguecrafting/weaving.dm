@@ -119,3 +119,20 @@
 				/obj/item/natural/fur = 2)
 	craftdiff = 5
 	sellprice = 60
+
+//Eora content from Stonekeep
+/datum/crafting_recipe/roguetown/weaving/eoramask
+	name = "eora mask"
+	result = list(/obj/item/clothing/head/roguetown/eoramask)
+	reqs = list(/obj/item/ingot/silver,
+				/obj/item/natural/silk = 4)
+	craftdiff = 3
+	sellprice = 20
+
+/datum/crafting_recipe/roguetown/weaving/eorarobes
+	name = "eora robes"
+	result = list(/obj/item/clothing/suit/roguetown/shirt/robe/eora)
+	reqs = list(/obj/item/natural/cloth = 2,
+				/obj/item/natural/silk = 1)
+	craftdiff = 3
+	sellprice = 20

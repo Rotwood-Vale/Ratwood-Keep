@@ -94,10 +94,12 @@ Slimecrossing Armor
 		to_chat(owner, span_notice("I channel nearby light into a glowing, ethereal prism."))
 		new /obj/structure/light_prism(get_turf(owner), glasses.glasses_color)
 
+//Eora content from Stonekeep
+
 /obj/item/clothing/head/peaceflower
-	name = "heroine bud"
-	desc = ""
-	icon = 'icons/obj/slimecrossing.dmi'
+	name = "eoran bud"
+	desc = "A flower of gentle petals, associated with Eora or Necra. Usually adorned as a headress or laid at graves as a symbol of love or peace."
+	icon = 'icons/roguetown/items/produce.dmi'
 	icon_state = "peaceflower"
 	item_state = "peaceflower"
 	slot_flags = ITEM_SLOT_HEAD
@@ -122,7 +124,7 @@ Slimecrossing Armor
 	if(iscarbon(user))
 		var/mob/living/carbon/C = user
 		if(src == C.head)
-			to_chat(user, span_warning("I feel at peace. <b style='color:pink'>Why would you want anything else?</b>"))
+			to_chat(user, "<span class='warning'>I feel at peace. <b style='color:pink'>Why would you want anything else?</b></span>")
 			return
 	return ..()
 
