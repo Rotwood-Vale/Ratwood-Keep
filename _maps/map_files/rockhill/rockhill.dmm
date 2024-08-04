@@ -80,6 +80,8 @@
 /obj/item/clothing/shoes/roguetown/shortboots,
 /obj/item/clothing/shoes/roguetown/shortboots,
 /obj/item/clothing/cloak/half,
+/obj/item/clothing/under/roguetown/tights/stockings/silk/random,
+/obj/item/clothing/under/roguetown/tights/stockings/silk/random,
 /turf/open/floor/rogue/carpet,
 /area/rogue/indoors/town/manor)
 "abK" = (
@@ -6387,6 +6389,8 @@
 /obj/item/clothing/head/roguetown/headdress,
 /obj/item/clothing/head/roguetown/headdress/alt,
 /obj/item/clothing/suit/roguetown/shirt/dress/silkdress/random,
+/obj/item/clothing/under/roguetown/tights/stockings/silk/random,
+/obj/item/clothing/suit/roguetown/shirt/dress/gen/strapless/random,
 /turf/open/floor/rogue/carpet/lord/center,
 /area/rogue/indoors/town/manor)
 "hxn" = (
@@ -13241,6 +13245,9 @@
 /obj/item/candle/yellow,
 /obj/item/candle/yellow,
 /obj/item/candle/yellow,
+/obj/item/clothing/under/roguetown/tights/stockings/silk/black,
+/obj/item/clothing/suit/roguetown/shirt/dress/gen/strapless/purple,
+/obj/item/clothing/shoes/roguetown/sandals,
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/under/town/basement)
 "qfL" = (
@@ -13552,6 +13559,13 @@
 /obj/structure/chair/wood/rogue,
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/town)
+"qCx" = (
+/obj/structure/closet/crate/roguecloset/inn/south,
+/obj/item/clothing/under/roguetown/tights/stockings/fishnet/random,
+/obj/item/clothing/under/roguetown/tights/stockings/fishnet/random,
+/obj/item/clothing/under/roguetown/tights/stockings/fishnet/random,
+/turf/open/floor/rogue/herringbone,
+/area/rogue/indoors/town/bath)
 "qCI" = (
 /obj/structure/closet/crate/roguecloset{
 	lockid = "bog_gatehouse";
@@ -14790,6 +14804,9 @@
 /area/rogue/outdoors/rtfield)
 "slZ" = (
 /obj/structure/closet/crate/roguecloset/inn/south,
+/obj/item/clothing/suit/roguetown/shirt/dress/gen/strapless/random,
+/obj/item/clothing/suit/roguetown/shirt/dress/gen/strapless/random,
+/obj/item/clothing/suit/roguetown/shirt/dress/gen/strapless/random,
 /turf/open/floor/rogue/herringbone,
 /area/rogue/indoors/town/bath)
 "sma" = (
@@ -281643,7 +281660,7 @@ oXU
 eKY
 eKY
 vNh
-slZ
+qCx
 nAd
 nAd
 gJm
