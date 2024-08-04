@@ -92,6 +92,7 @@
 		"Malachite" = SKIN_COLOR_MALACHITE,
 		"Obsidian" = SKIN_COLOR_OBSIDIAN,
 		"Brimstone" = SKIN_COLOR_BRIMSTONE,
+		"Jade" = SKIN_COLOR_JADE
 	)
 
 /datum/species/dwarf/mountain/get_hairc_list()

@@ -105,10 +105,15 @@
 
 /datum/species/tieberian/get_skin_list()
 	return list(
-		"Castillian" = SKIN_COLOR_CASTILLIAN,
-		"Mysterious" = SKIN_COLOR_MYSTERIOUS,
-		"Succubus" = SKIN_COLOR_SUCCUBUS,
-		"Incubus" = SKIN_COLOR_INCUBUS,
+		"Jehoel" = SKIN_COLOR_JEHOEL,
+		"Urvix" = SKIN_COLOR_URVIX,
+		"Sarvyra" = SKIN_COLOR_SARVYRA,
+		"Vheslyn" = SKIN_COLOR_VHESLYN,
+		"Arlenneth" = SKIN_COLOR_ARLENNETH,
+		"Izrail" = SKIN_COLOR_IZRAIL,
+		"Helixia" = SKIN_COLOR_HELIXIA,
+		"Nymsea" = SKIN_COLOR_NYMSEA,
+		"Calvus" = SKIN_COLOR_CALVUS
 	)
 
 /datum/species/tieberian/get_hairc_list()

@@ -105,7 +105,8 @@
 		"Skullseeker" = SKIN_COLOR_SKULL_SEEKER,
 		"Crescent Fang" = SKIN_COLOR_CRESCENT_FANG,
 		"Murkwalker" = SKIN_COLOR_MURKWALKER,
-		"Shatterhorn" = SKIN_COLOR_SHATTERHORN
+		"Shatterhorn" = SKIN_COLOR_SHATTERHORN,
+		"Spirit Crusher" = SKIN_COLOR_SPIRITCRUSHER
 	)
 
 /datum/species/halforc/get_hairc_list()
