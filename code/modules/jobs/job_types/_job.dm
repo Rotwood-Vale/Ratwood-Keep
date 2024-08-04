@@ -160,7 +160,7 @@
 	if(!ishuman(H))
 		return
 
-	if(spells && H.mind)	
+	if(spells && H.mind)
 		for(var/S in spells)
 			H.mind.AddSpell(new S)
 
@@ -196,10 +196,10 @@
 
 	if(show_in_credits)
 		SScrediticons.processing += H
-	
+
 	if(cmode_music)
 		H.cmode_music = cmode_music
-	
+/* This is stupid as hell. I am going to wring Vrell's neck.
 	//Vrell - Removing people's bits if their role doesn't allow it.
 	if(!allow_custom_genitals)
 		var/obj/item/organ/organ_to_remove = null
@@ -221,6 +221,7 @@
 			if(organ_to_remove)
 				organ_to_remove.Remove(H)
 				qdel(organ_to_remove)
+*/
 
 /mob/living/carbon/human/proc/add_credit()
 	if(!mind || !client)
