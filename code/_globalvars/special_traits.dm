@@ -28,6 +28,20 @@ GLOBAL_LIST_INIT(special_traits, build_special_traits())
 	if(special.req_text)
 		to_chat(user, span_boldwarning("Requirements: [special.req_text]"))
 
+/proc/apply_job_prefs_special(mob/living/carbon/human/character, client/player)
+	var/datum/job/job
+	if(character.job)
+		job = SSjob.name_occupations[character.job]
+	if(!job)
+		// Apply special if we dont have a job for some reason
+		apply_prefs_special(character, player)
+		return
+	if(length(job.advclass_cat_rolls))
+		// Dont apply special if our job has adv classes, let the adv class handler apply it later
+		return
+	// Apply specials if we have a job, and not have adv classes
+	apply_prefs_special(character, player)
+
 /proc/apply_prefs_special(mob/living/carbon/human/character, client/player)
 	if(!player)
 		player = character.client

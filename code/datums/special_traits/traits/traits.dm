@@ -64,7 +64,7 @@
 	character.change_stat("speed", 2)
 	character.mind.adjust_skillrank_up_to(/datum/skill/combat/swords, 6, TRUE) //will make a unique trait later on
 	var/obj/item/rapier = new /obj/item/rogueweapon/sword/rapier(get_turf(character))
-	character.put_in_hands(rapier, TRUE)
+	character.put_in_hands(rapier, forced = TRUE)
 
 /datum/special_trait/thief
 	name = "Thief"
@@ -133,7 +133,7 @@
 
 /datum/special_trait/richpouch/on_apply(mob/living/carbon/human/character, silent)
 	var/obj/item/pouch = new /obj/item/storage/belt/rogue/pouch/coins/rich(get_turf(character))
-	character.put_in_hands(pouch, TRUE)
+	character.put_in_hands(pouch, forced = TRUE)
 
 //neutral
 /datum/special_trait/backproblems
@@ -266,6 +266,7 @@
 	character.equip_to_slot_or_del(new /obj/item/storage/belt/rogue/leather(character), SLOT_BELT)
 	character.equip_to_slot_or_del(new /obj/item/storage/belt/rogue/pouch/coins/rich(character), SLOT_BELT_R)
 	character.equip_to_slot_or_del(new /obj/item/storage/backpack/rogue/satchel(character), SLOT_BACK_R)
+	character.equip_to_slot_or_del(new /obj/item/clothing/shoes/roguetown/nobleboot(character), SLOT_SHOES)
 	character.mind.adjust_skillrank(/datum/skill/combat/maces, 1, TRUE)
 	character.mind.adjust_skillrank(/datum/skill/combat/bows, 3, TRUE)
 	character.mind.adjust_skillrank(/datum/skill/combat/crossbows, 2, TRUE)
