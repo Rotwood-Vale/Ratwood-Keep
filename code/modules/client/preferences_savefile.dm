@@ -442,6 +442,9 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	if(!valid_headshot_link(null, headshot_link, TRUE))
 		headshot_link = null
 
+	S["flavortext"]			>> flavortext
+	S["ooc_notes"]			>> ooc_notes
+
 	S["pronouns"] >> pronouns
 	S["voice_type"] >> voice_type
 	//try to fix any outdated data if necessary
@@ -581,9 +584,11 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	WRITE_FILE(S["body_markings"] , body_markings)
 	// Descriptor entries
 	WRITE_FILE(S["descriptor_entries"] , descriptor_entries)
-	
+
 	WRITE_FILE(S["update_mutant_colors"] , update_mutant_colors)
 	WRITE_FILE(S["headshot_link"] , headshot_link)
+	WRITE_FILE(S["flavortext"] , flavortext)
+	WRITE_FILE(S["ooc_notes"] , ooc_notes)
 	WRITE_FILE(S["voice_type"] , voice_type)
 	WRITE_FILE(S["pronouns"] , pronouns)
 	WRITE_FILE(S["statpack"] , statpack.type)
