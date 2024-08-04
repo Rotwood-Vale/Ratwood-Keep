@@ -274,6 +274,24 @@
 	created_item = /obj/item/clothing/neck/roguetown/bervor
 	i_type = "Armor"
 
+/datum/anvil_recipe/armor/kettle
+	name = "Kettle"
+	req_bar = /obj/item/ingot/steel
+	created_item = /obj/item/clothing/head/roguetown/helmet/kettle
+	i_type = "Armor"
+
+/datum/anvil_recipe/armor/winged
+	name = "Winged cap"
+	req_bar = /obj/item/ingot/steel
+	created_item = /obj/item/clothing/head/roguetown/helmet/winged
+	i_type = "Armor"
+
+/datum/anvil_recipe/armor/horned
+	name = "Horned cap"
+	req_bar = /obj/item/ingot/steel
+	created_item = /obj/item/clothing/head/roguetown/helmet/horned
+	i_type = "Armor"
+
 /datum/anvil_recipe/armor/helmetsall
 	name = "Sallet"
 	req_bar = /obj/item/ingot/steel
