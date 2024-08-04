@@ -21,7 +21,8 @@
 	var/next_sate = 0
 	var/sated = TRUE
 	var/time = 5 MINUTES
-	var/debuff = /datum/status_effect/debuff/addiction
+//	var/debuff = /datum/status_effect/debuff/addiction
+	var/debuff //so heroin junkies can have big problems
 	var/needsate_text
 	var/sated_text = "That's much better..."
 	var/unsate_time
