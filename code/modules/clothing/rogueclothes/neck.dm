@@ -161,6 +161,11 @@
 	name = "amulet of Pestra"
 	desc = ""
 
+/obj/item/clothing/neck/roguetown/psicross/eora
+	name = "amulet of Eora"
+	desc = ""
+	icon_state = "eora"
+
 /obj/item/clothing/neck/roguetown/psicross/wood
 	name = "wooden psycross"
 	icon_state = "psicrossw"
@@ -193,7 +198,7 @@
 		if(W && W.transformed == TRUE)
 			to_chat(H, span_userdanger("I can't equip the silver, it is my BANE!"))
 			H.Knockdown(20)
-			H.Paralyze(20)	
+			H.Paralyze(20)
 
 /obj/item/clothing/neck/roguetown/psicross/silver/mob_can_equip(mob/living/M, mob/living/equipper, slot, disable_warning = FALSE, bypass_equip_delay_self = FALSE)
 	. = ..()
