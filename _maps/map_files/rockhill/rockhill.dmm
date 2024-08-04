@@ -2496,6 +2496,7 @@
 	icon_state = "tablewood1"
 	},
 /obj/item/rogueweapon/huntingknife,
+/obj/machinery/light/rogue/wallfire/candle,
 /turf/open/floor/rogue/ruinedwood{
 	icon_state = "weird1"
 	},
@@ -9049,6 +9050,15 @@
 /obj/item/chair/rogue/fancy,
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/town/basement)
+"kGA" = (
+/obj/machinery/light/rogue/torchholder{
+	dir = 8
+	},
+/turf/open/floor/rogue/ruinedwood{
+	dir = 1;
+	icon_state = "vertw"
+	},
+/area/rogue/indoors/town)
 "kGY" = (
 /turf/open/floor/rogue/tile{
 	icon_state = "greenstone"
@@ -11637,6 +11647,8 @@
 /obj/machinery/light/rogue/torchholder{
 	dir = 8
 	},
+/obj/item/reagent_containers/glass/mortar,
+/obj/item/pestle,
 /turf/open/floor/rogue/ruinedwood{
 	dir = 1;
 	icon_state = "vertw"
@@ -12956,6 +12968,15 @@
 	},
 /turf/open/floor/carpet/stellar,
 /area/rogue/indoors/town/magician)
+"prp" = (
+/obj/structure/fluff/railing/wood{
+	dir = 1;
+	layer = 2.7;
+	pixel_x = 2;
+	pixel_y = 7
+	},
+/turf/open/transparent/openspace,
+/area/rogue/outdoors/town/roofs)
 "prY" = (
 /obj/structure/mineral_door/wood{
 	locked = 1;
@@ -13840,6 +13861,7 @@
 /obj/structure/bed/rogue/shit,
 /obj/effect/decal/cleanable/cobweb/cobweb2,
 /obj/item/rope,
+/obj/machinery/light/rogue/wallfire/candle,
 /turf/open/floor/rogue/ruinedwood{
 	icon_state = "weird1"
 	},
@@ -16591,6 +16613,7 @@
 /area/rogue/indoors)
 "tXd" = (
 /obj/effect/decal/cleanable/cobweb,
+/obj/machinery/light/rogue/wallfire/candle,
 /turf/open/floor/rogue/ruinedwood{
 	icon_state = "weird1"
 	},
@@ -401197,7 +401220,7 @@ uJh
 dHZ
 abK
 xrP
-xrP
+kGA
 xrP
 dHZ
 fZJ
@@ -405203,8 +405226,8 @@ dFM
 mUu
 jZJ
 dHZ
-uJh
-fZJ
+qor
+prp
 fZJ
 fZJ
 fZJ
@@ -405605,7 +405628,7 @@ fQP
 bmi
 bmi
 fYB
-stu
+qor
 stu
 jHl
 jHl
@@ -406007,8 +406030,8 @@ iVT
 dmk
 bmi
 dHZ
-uJh
-fZJ
+qor
+prp
 fZJ
 fZJ
 fZJ
@@ -406409,8 +406432,8 @@ qkH
 xzP
 qkH
 dHZ
-uJh
-fZJ
+cpi
+prp
 fZJ
 fZJ
 fZJ

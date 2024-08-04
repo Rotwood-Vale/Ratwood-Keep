@@ -871,7 +871,7 @@
 	lockid = "towner_miner"
 
 /obj/structure/mineral_door/wood/towner/farmer
-	resident_advclass = /datum/advclass/miner
+	resident_advclass = /datum/advclass/farmer
 	lockid = "towner_farmer"
 
 /obj/structure/mineral_door/wood/towner/seamstress
