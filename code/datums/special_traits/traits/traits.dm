@@ -100,7 +100,7 @@
 
 /datum/special_trait/mastercraftsmen
 	name = "Master Crasftman"
-	greet_text = "In your youth, I've decided I'd get a grasp on every trade, and pursued the 10 arts of the craft."
+	greet_text = "In my youth, I've decided I'd get a grasp on every trade, and pursued the 10 arts of the craft."
 	req_text = "Middle-aged or Old"
 	allowed_ages = list(AGE_MIDDLEAGED, AGE_OLD)
 	weight = 100
@@ -135,6 +135,34 @@
 	var/obj/item/pouch = new /obj/item/storage/belt/rogue/pouch/coins/rich(get_turf(character))
 	character.put_in_hands(pouch, forced = TRUE)
 
+/datum/special_trait/swift
+	name = "Speedster"
+	greet_text = span_notice("I feel like the fastest person alive and I can probably dodge anything, as long as I'm not weighed down by medium or heavy armor")
+	weight = 50
+
+/datum/special_trait/swift/on_apply(mob/living/carbon/human/character, silent)
+	ADD_TRAIT(character, TRAIT_DODGEEXPERT, "[type]")
+	character.mind.adjust_skillrank(/datum/skill/misc/athletics, 6, TRUE)
+	character.change_stat("speed", 3)
+
+/datum/special_trait/gourmand
+	name = "Gourmand"
+	greet_text = span_notice("I can eat even the most spoiled, raw, or toxic food and water as if they were delicacies..")
+	weight = 100
+
+/datum/special_trait/gourmand/on_apply(mob/living/carbon/human/character, silent)
+	ADD_TRAIT(character, TRAIT_NASTY_EATER, "[type]")
+
+/datum/special_trait/lucky
+	name = "Fortune's Grace"
+	greet_text = span_notice("Xylix favor me, I am extremely lucky.")
+	req_text = "Have Xylix as your Patron"
+	allowed_patrons = list(/datum/patron/divine/xylix)
+	weight = 7
+
+/datum/special_trait/lucky/on_apply(mob/living/carbon/human/character, silent)
+	character.STALUC = rand(15, 20) //In other words, In the next round following the special, you are effectively lucky.
+
 //neutral
 /datum/special_trait/backproblems
 	name = "Giant"
@@ -150,6 +178,16 @@
 	character.transform = character.transform.Scale(1.25, 1.25)
 	character.transform = character.transform.Translate(0, (0.25 * 16))
 	character.update_transform()
+
+/datum/special_trait/atheism
+	name = "Godless"
+	greet_text = span_notice("Gods may exist, but know what? I care not.")
+	req_text = "Non-Church Role"
+	restricted_jobs = list(CHURCH_ROLES)
+	weight = 100
+
+/datum/special_trait/atheism/on_apply(mob/living/carbon/human/character, silent)
+	character.set_patron(/datum/patron/godless)
 
 //negative
 /datum/special_trait/nimrod
@@ -241,6 +279,14 @@
 	ADD_TRAIT(character, TRAIT_COMICSANS, "[type]")
 	character.dna.add_mutation(WACKY)
 
+/datum/special_trait/unlucky
+	name = "Xylix's Curse"
+	greet_text = span_notice("Fortune was never on my side.")
+	weight = 50 //I'm unsure if i should set it to 100.
+
+/datum/special_trait/unlucky/on_apply(mob/living/carbon/human/character, silent)
+	character.STALUC = rand(1, 10)
+
 //job specials
 /datum/special_trait/punkprincess //I think everyone will like the Rebellous Prince-Like Princess. I'd love to do one for the prince as well that gives him princess loadout, but, up to you!
 	name = "Rebellous Daughter"
@@ -280,7 +326,7 @@
 
 /datum/special_trait/vengantbum
 	name = "Vengant Bum"
-	greet_text = span_notice("You were once a nobleman, high on life when your father was murdered right in front of you. Thankfully, your mentor took you to safety and taught you all you need to survive in these disgusting lands. They think you're a lowlife, but that's just an advantage.")
+	greet_text = span_notice("I was once a nobleman, high on life until my father was murdered right in front of me. Thankfully, my mentor took me to safety and taught me all I needed to survive in these disgusting lands. They think I am a lowlife, but that's just an advantage.")
 	req_text = "Be a beggar"
 	allowed_jobs = list(/datum/job/roguetown/beggar)
 	weight = 7
