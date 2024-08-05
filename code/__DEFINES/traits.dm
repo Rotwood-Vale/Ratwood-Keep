@@ -39,7 +39,7 @@
 #define TRAIT_CIVILIZEDBARBARIAN "Tavern Brawler"
 #define TRAIT_COMICSANS "Annoying Face"
 #define TRAIT_WATERBREATHING "Water Breathing"
-#define TRAIT_DONT_CARE_ABOUT_RACES "Everyone are same"
+#define TRAIT_DONT_CARE_ABOUT_RACES "Everyone are Same"
 
 // PATRON GOD TRAITS
 #define TRAIT_ROT_EATER "Blessing of Pestra" //can eat rotten food
