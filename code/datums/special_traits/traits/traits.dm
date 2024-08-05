@@ -491,7 +491,7 @@
 	req_text = "Be a princess"
 	allowed_sexes = list(FEMALE)
 	allowed_jobs = list(/datum/job/roguetown/prince)
-	weight = 100
+	weight = 50
 
 /datum/special_trait/punkprincess/on_apply(mob/living/carbon/human/character, silent)
 	QDEL_NULL(character.wear_pants)
