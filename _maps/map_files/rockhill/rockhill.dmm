@@ -8273,7 +8273,7 @@
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/under/town/basement)
 "gAv" = (
-/obj/machinery/gear_painter,
+/obj/structure/dye_bin,
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue/indoors/town)
 "gAA" = (
@@ -21165,6 +21165,16 @@
 /obj/item/rope,
 /turf/open/floor/rogue/herringbone,
 /area/rogue/indoors/town/church)
+"sfd" = (
+/obj/structure/bars{
+	icon_state = "barsbent";
+	layer = 2.81
+	},
+/obj/structure/roguewindow/openclose/reinforced{
+	dir = 4
+	},
+/turf/open/floor/rogue/woodturned,
+/area/rogue/indoors/town/garrison)
 "sfJ" = (
 /obj/structure/ladder,
 /turf/open/floor/rogue/ruinedwood{
@@ -378867,7 +378877,7 @@ ebe
 ebe
 xbD
 xbD
-xbD
+jCr
 xbD
 nqU
 erZ
@@ -407376,7 +407386,7 @@ hfJ
 mdb
 mdb
 mdb
-hfJ
+sfd
 mdb
 jWa
 fZJ
