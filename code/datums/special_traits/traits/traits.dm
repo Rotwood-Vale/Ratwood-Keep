@@ -138,7 +138,7 @@
 /datum/special_trait/swift
 	name = "Speedster"
 	greet_text = span_notice("I feel like the fastest person alive and I can probably dodge anything, as long as I'm not weighed down by medium or heavy armor")
-	weight = 100
+	weight = 50
 
 /datum/special_trait/swift/on_apply(mob/living/carbon/human/character, silent)
 	ADD_TRAIT(character, TRAIT_DODGEEXPERT, "[type]")
