@@ -25,6 +25,8 @@
 			return strings("spanish_replacement.json", "spanish")
 		if("Half Orc accent")
 			return strings("middlespeak.json", "middle")
+		if("Valley Girl accent")
+			return strings("valley_replacement.json", "valley")
 
 /datum/species/proc/handle_speech(datum/source, mob/speech_args)
 	var/message = speech_args[SPEECH_MESSAGE]

@@ -8,7 +8,8 @@ GLOBAL_LIST_INIT(character_accents, list("No accent"=/datum/char_accent/none,
 	"Assimar accent"=/datum/char_accent/assimar,
 	"Lizard accent"=/datum/char_accent/lizard,
 	"Tiefling accent"=/datum/char_accent/tiefling,
-	"Half Orc accent"=/datum/char_accent/half_orc))
+	"Half Orc accent"=/datum/char_accent/half_orc,
+	"Valley Girl accent"=/datum/char_accent/valley))
 
 /datum/char_accent
 	var/name
@@ -48,3 +49,6 @@ GLOBAL_LIST_INIT(character_accents, list("No accent"=/datum/char_accent/none,
 
 /datum/char_accent/half_orc
 	name = "Half Orc accent"
+
+/datum/char_accent/valley
+	name = "Valley Girl accent"
