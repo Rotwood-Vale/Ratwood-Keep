@@ -4,6 +4,7 @@
 	icon = 'icons/roguetown/clothing/wrists.dmi'
 	mob_overlay_icon = 'icons/roguetown/clothing/onmob/wrists.dmi'
 	sleevetype = "shirt"
+	w_class = WEIGHT_CLASS_SMALL
 
 /obj/item/clothing/wrists/roguetown/bracers
 	name = "bracers"

@@ -14,6 +14,7 @@
 	list_reagents = list(/datum/reagent/consumable/nutriment = 3)
 	slice_path = /obj/item/reagent_containers/food/snacks/rogue/meat/mince/fish
 	eat_effect = /datum/status_effect/debuff/uncookedfood
+	w_class = WEIGHT_CLASS_SMALL
 
 /obj/item/reagent_containers/food/snacks/fish/dead
 	dead = TRUE

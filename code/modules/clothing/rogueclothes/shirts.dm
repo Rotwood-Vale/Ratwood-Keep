@@ -14,6 +14,7 @@
 	boobed = TRUE
 	sewrepair = TRUE
 	flags_inv = HIDEBOOB
+	w_class = WEIGHT_CLASS_SMALL
 
 /obj/item/clothing/suit/roguetown/shirt/undershirt
 	name = "shirt"
@@ -221,10 +222,10 @@
 	icon_state = "silkdress"
 	item_state = "silkdress"
 	color = "#e6e5e5"
-	
+
 /obj/item/clothing/suit/roguetown/shirt/dress/silkdress/princess
 	color = CLOTHING_WHITE
-	
+
 /obj/item/clothing/suit/roguetown/shirt/dress/silkdress/princess/Initialize()
 	. = ..()
 	if(GLOB.lordprimary)
@@ -235,13 +236,13 @@
 /obj/item/clothing/suit/roguetown/shirt/dress/silkdress/princess/Destroy()
 	GLOB.lordcolor -= src
 	return ..()
-	
+
 /obj/item/clothing/suit/roguetown/shirt/dress/silkdress/black
 	color = CLOTHING_BLACK
 
 /obj/item/clothing/suit/roguetown/shirt/dress/silkdress/green
 	color = CLOTHING_DARK_GREEN
-	
+
 /obj/item/clothing/suit/roguetown/shirt/dress/silkdress/random/Initialize()
 	. = ..()
 	color = pick("#e6e5e5", "#52BE80", "#C39BD3", "#EC7063","#5DADE2")

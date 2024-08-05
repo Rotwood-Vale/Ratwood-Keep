@@ -9,6 +9,7 @@
 	dynamic_hair_suffix = "+generic"
 	bloody_icon_state = "helmetblood"
 	experimental_onhip = TRUE
+	w_class = WEIGHT_CLASS_SMALL
 
 /obj/item/clothing/head/roguetown/equipped(mob/user, slot)
 	. = ..()
@@ -452,6 +453,7 @@
 	smeltresult = /obj/item/ingot/steel
 	blocksound = PLATEHIT
 	max_integrity = 200
+	w_class = WEIGHT_CLASS_NORMAL
 
 /obj/item/clothing/head/roguetown/helmet/skullcap
 	name = "skull cap"

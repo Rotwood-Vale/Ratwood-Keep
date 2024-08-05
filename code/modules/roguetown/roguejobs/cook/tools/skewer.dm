@@ -11,3 +11,4 @@
 	sharpness = IS_BLUNT
 	//dropshrink = 0.8
 	slot_flags = null
+	w_class = WEIGHT_CLASS_SMALL

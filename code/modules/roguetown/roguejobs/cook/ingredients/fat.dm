@@ -9,6 +9,7 @@
 	slices_num = 6
 	slice_batch = FALSE
 	bitesize = 6
+	w_class = WEIGHT_CLASS_SMALL
 
 /obj/item/reagent_containers/food/snacks/butter/update_icon()
 	if(slices_num)
@@ -47,6 +48,7 @@
 	foodtype = DAIRY
 	list_reagents = list(/datum/reagent/consumable/nutriment = 2)
 	slices_num = 0
+	w_class = WEIGHT_CLASS_TINY
 
 /obj/item/reagent_containers/food/snacks/fat
 	icon = 'icons/roguetown/items/food.dmi'
@@ -55,6 +57,7 @@
 	icon_state = "fat"
 	list_reagents = list(/datum/reagent/consumable/nutriment = 8)
 	eat_effect = /datum/status_effect/debuff/uncookedfood
+	w_class = WEIGHT_CLASS_TINY
 
 /obj/item/reagent_containers/food/snacks/salo
 	name = "salo"
@@ -67,6 +70,7 @@
 	slices_num = 4
 	slice_batch = FALSE
 	rotprocess = null
+	w_class = WEIGHT_CLASS_TINY
 
 /obj/item/reagent_containers/food/snacks/salo/update_icon()
 	if(slices_num)
@@ -94,3 +98,4 @@
 	bitesize = 2
 	slice_path = /obj/item/reagent_containers/food/snacks/salo/slice
 	list_reagents = list(/datum/reagent/consumable/nutriment = 3)
+	w_class = WEIGHT_CLASS_TINY
