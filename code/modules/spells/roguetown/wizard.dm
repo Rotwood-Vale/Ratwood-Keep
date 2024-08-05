@@ -224,6 +224,40 @@
 	exp_fire = 2
 	flag = "magic"
 
+
+/obj/effect/proc_holder/spell/invoked/projectile/spitfire
+	name = "spitfire"
+	desc = ""
+	clothes_req = FALSE
+	range = 8
+	projectile_type = /obj/projectile/magic/aoe/fireball/rogue2
+	overlay_state = "fireball"
+	sound = list('sound/magic/whiteflame.ogg')
+	active = FALSE
+	releasedrain = 30
+	chargedrain = 1
+	chargetime = 3
+	charge_max = 3 SECONDS
+	warnie = "spellwarning"
+	no_early_release = TRUE
+	movement_interrupt = FALSE
+	charging_slowdown = 3
+	chargedloop = /datum/looping_sound/invokegen
+	associated_skill = /datum/skill/magic/arcane
+
+/obj/projectile/magic/aoe/fireball/rogue2
+	name = "fireball"
+	exp_heavy = 0
+	exp_light = 0
+	exp_flash = 0
+	exp_fire = 0
+	damage = 20
+	damage_type = BURN
+	nodamage = FALSE
+	flag = "magic"
+	hitsound = 'sound/blank.ogg'
+	aoe_range = 0
+
 /obj/effect/proc_holder/spell/invoked/projectile/fetch
 	name = "Fetch"
 	desc = ""

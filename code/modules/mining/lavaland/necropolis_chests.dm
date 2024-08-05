@@ -254,30 +254,31 @@
 
 //Wisp Lantern
 /obj/item/wisp_lantern
-	name = "magical lantern"
-	desc = "What is inside it?"
+	name = "magic lantern"
+	desc = "A magical lantern with a dancing spirit."
 	icon = 'icons/roguetown/items/lighting.dmi'
 	icon_state = "lantern_wisp"
 	item_state = "lantern"
 	lefthand_file = 'icons/mob/inhands/equipment/mining_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/equipment/mining_righthand.dmi'
+	slot_flags = ITEM_SLOT_HIP
 	var/obj/effect/wisp/wisp
 
 /obj/item/wisp_lantern/attack_self(mob/user)
 	if(!wisp)
-		to_chat(user, span_warning("The wisp has gone missing!"))
-		icon_state = "lantern"
+		to_chat(user, span_warning("The spirit has gone missing!"))
+		icon_state = "lantern_wisp-on"
 		return
 
 	if(wisp.loc == src)
-		to_chat(user, span_notice("I release the wisp. It begins to bob around my head."))
-		icon_state = "lantern"
+		to_chat(user, span_notice("I release the spirit. It dances around me and guides my path."))
+		icon_state = "lantern_wisp-on"
 		wisp.orbit(user, 20)
 		SSblackbox.record_feedback("tally", "wisp_lantern", 1, "Freed")
 
 	else
-		to_chat(user, span_notice("I return the wisp to the lantern."))
-		icon_state = "lantern-blue"
+		to_chat(user, span_notice("I return the spirit to it's cage."))
+		icon_state = "lantern_wisp"
 		wisp.forceMove(src)
 		SSblackbox.record_feedback("tally", "wisp_lantern", 1, "Returned")
 
@@ -290,16 +291,17 @@
 		if(wisp.loc == src)
 			qdel(wisp)
 		else
-			wisp.visible_message(span_notice("[wisp] has a sad feeling for a moment, then it passes."))
+			wisp.visible_message(span_notice("[wisp] weeps for a time, then it passes."))
 	return ..()
 
 /obj/effect/wisp
-	name = "friendly wisp"
-	desc = "Happy to light your way."
-	icon = 'icons/obj/lighting.dmi'
-	icon_state = "orb"
+	name = "benevolent spirit"
+	desc = "My companion in these dark times."
+	icon = 'icons/roguetown/items/lighting.dmi'
+	icon_state = "wisp"
 	light_system = MOVABLE_LIGHT
 	light_range = 7
+	pixel_x = 20
 	light_flags = LIGHT_ATTACHED
 	layer = ABOVE_ALL_MOB_LAYER
 	var/sight_flags = SEE_MOBS
@@ -317,7 +319,7 @@
 	. = ..()
 	if(ismob(orbits.parent))
 		UnregisterSignal(orbits.parent, COMSIG_MOB_UPDATE_SIGHT)
-		to_chat(orbits.parent, span_notice("My vision returns to normal."))
+		to_chat(orbits.parent, span_notice("Darkness consumes me once more."))
 
 /obj/effect/wisp/proc/update_user_sight(mob/user)
 	user.sight |= sight_flags

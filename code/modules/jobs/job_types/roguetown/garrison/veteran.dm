@@ -13,6 +13,8 @@
 	display_order = JDO_VET
 	whitelist_req = TRUE
 
+	spells = list(/obj/effect/proc_holder/spell/self/convertrole/mercenary)
+
 	outfit = /datum/outfit/job/roguetown/veteran
 	give_bank_account = 35
 	min_pq = 3
