@@ -264,6 +264,7 @@
 
 /datum/special_trait/bleublood/on_apply(mob/living/carbon/human/character, silent)
 	ADD_TRAIT(character, TRAIT_NOBLE, "[type]")
+	character.mind.adjust_skillrank_up_to(/datum/skill/misc/reading, 2, TRUE)
 
 /datum/special_trait/richpouch
 	name = "Rich Pouch"
@@ -531,6 +532,7 @@
 	ADD_TRAIT(character, TRAIT_DECEIVING_MEEKNESS, "[type]")
 	character.mind.adjust_skillrank(/datum/skill/combat/wrestling, 6, TRUE)
 	character.mind.adjust_skillrank(/datum/skill/combat/unarmed, 6, TRUE)
+	character.mind.adjust_skillrank_up_to(/datum/skill/misc/reading, 3, TRUE)
 	character.STASTR = 20
 	character.STACON = 20
 	character.STAEND = 20
