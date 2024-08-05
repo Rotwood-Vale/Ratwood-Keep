@@ -5,7 +5,7 @@
 		user.mind.i_know_person(src)
 	var/datum/species/self_species = dna.species
 	var/datum/species/examiner_species = user.dna.species
-	if(self_species.stress_examine && self_species.type != examiner_species.type)
+	if(self_species.stress_examine && self_species.type != examiner_species.type && !(HAS_TRAIT(user, TRAIT_DONT_CARE_ABOUT_RACES)))
 		var/datum/stressevent/shunned_race/event = user.add_stress(/datum/stressevent/shunned_race)
 		event.desc = self_species.stress_desc
 	if(user.has_flaw(/datum/charflaw/paranoid) && (STASTR - user.STASTR) > 1)

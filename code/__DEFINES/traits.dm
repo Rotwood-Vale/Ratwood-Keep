@@ -39,6 +39,7 @@
 #define TRAIT_CIVILIZEDBARBARIAN "Tavern Brawler"
 #define TRAIT_COMICSANS "Annoying Face"
 #define TRAIT_WATERBREATHING "Water Breathing"
+#define TRAIT_DONT_CARE_ABOUT_RACES "Everyone are same"
 
 // PATRON GOD TRAITS
 #define TRAIT_ROT_EATER "Blessing of Pestra" //can eat rotten food
@@ -112,6 +113,7 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_CIVILIZEDBARBARIAN = span_info("Your fists are heavier."),
 	TRAIT_COMICSANS = span_sans("I am cursed with a odd voice."),
 	TRAIT_WATERBREATHING = span_info("I do not drown in bodies of water."),
+	TRAIT_DONT_CARE_ABOUT_RACES = span_info("I have done so many and so horrible things to various people, their origins can no longer concern me."),
 ))
 
 // trait accessor defines
