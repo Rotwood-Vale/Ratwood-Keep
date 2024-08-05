@@ -64,7 +64,7 @@
 	var/list/datum/mind/pre_rebels = list()
 	var/list/datum/mind/pre_aspirants = list()
 	var/list/datum/mind/aspirants = list()
-	
+
 /datum/game_mode/proc/announce() //Shows the gamemode's name and a fast description.
 	to_chat(world, "<b>The gamemode is: <span class='[announce_span]'>[name]</span>!</b>")
 	to_chat(world, "<b>[announce_text]</b>")
@@ -389,7 +389,7 @@
 			continue
 		if(is_antag_banned(player.ckey, role))
 			continue
-		if(is_antag_banned(player.ckey, ROLE_SYNDICATE)) // "Traitor" ban applies to all antags currently
+		if(is_total_antag_banned(player.ckey))
 			continue
 		if(player.ready == PLAYER_READY_TO_PLAY && player.check_preferences())
 //			if(player.client && player.client.whitelisted() && !player.client.blacklisted())

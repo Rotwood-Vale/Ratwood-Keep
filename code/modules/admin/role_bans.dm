@@ -124,3 +124,14 @@
 /proc/apply_trait_bans(mob/living/carbon/human/character, ckey)
 	for(var/trait in get_trait_bans(ckey))
 		ADD_TRAIT(character, trait, TRAIT_BAN_PUNISHMENT)
+
+/proc/is_total_antag_banned(ckey)
+	if(is_antag_banned(ckey, ROLE_SYNDICATE))
+		return TRUE
+	if(is_misc_banned(ckey, BAN_MISC_LEPROSY))
+		return TRUE
+	if(is_misc_banned(ckey, BAN_MISC_LUNATIC))
+		return TRUE
+	if(is_misc_banned(ckey, BAN_MISC_PUNISHMENT_CURSE))
+		return TRUE
+	return FALSE
