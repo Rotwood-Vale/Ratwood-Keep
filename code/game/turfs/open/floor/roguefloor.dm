@@ -400,8 +400,8 @@
 
 /turf/open/floor/rogue/dirt/nrich
 	name = "enriched soil"
-	desc = "transplanted dirt, made into a pile and smoothed over to crow crops."
-	icon_state = "mud[rand (1,3)]"
+	desc = "transplanted dirt, made into a pile and smoothed over to grow crops."
+	icon_state = "dirt"
 	layer = MID_TURF_LAYER
 	footstep = FOOTSTEP_MUD
 	barefootstep = FOOTSTEP_MUD
