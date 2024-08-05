@@ -679,8 +679,8 @@
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/cavewet/bogcaves/sunkencity)
 "act" = (
-/mob/living/carbon/human/species/skeleton/npc,
-/turf/open/floor/rogue/concrete,
+/mob/living/carbon/human/species/skeleton/npc/dungeon/ambush,
+/turf/open/water/swamp,
 /area/rogue/under/cavewet/bogcaves/sunkencity)
 "acu" = (
 /turf/open/floor/rogue/metal,
@@ -728,10 +728,8 @@
 /turf/closed/wall/mineral/rogue/stone/moss,
 /area/rogue/under/cave)
 "acE" = (
-/mob/living/carbon/human/species/skeleton/npc,
-/turf/open/floor/rogue/ruinedwood{
-	icon_state = "weird1"
-	},
+/mob/living/carbon/human/species/skeleton/npc/dungeon/boss,
+/turf/open/floor/rogue/dirt/road,
 /area/rogue/under/cavewet/bogcaves/sunkencity)
 "acF" = (
 /obj/structure/stone_tile/surrounding_tile/cracked,
@@ -754,8 +752,8 @@
 /turf/open/floor/rogue/cobble/mossy,
 /area/rogue/under/cavewet/bogcaves/sunkencity)
 "acJ" = (
-/mob/living/carbon/human/species/skeleton/npc,
-/turf/open/floor/rogue/cobble/mossy,
+/mob/living/carbon/human/species/skeleton/npc/dungeon/ambush,
+/turf/open/water/swamp/deep,
 /area/rogue/under/cavewet/bogcaves/sunkencity)
 "acK" = (
 /turf/open/water/swamp,
@@ -1064,7 +1062,7 @@
 /turf/open/floor/carpet/royalblack,
 /area/rogue/under/cavewet/bogcaves/sunkencity)
 "adU" = (
-/mob/living/carbon/human/species/skeleton/npc,
+/mob/living/carbon/human/species/skeleton/npc/dungeon,
 /turf/open/floor/rogue/metal,
 /area/rogue/under/cavewet/bogcaves/sunkencity)
 "adV" = (
@@ -1095,6 +1093,7 @@
 /area/rogue/under/cavewet/bogcaves/sunkencity)
 "adZ" = (
 /obj/item/roguegear,
+/mob/living/carbon/human/species/skeleton/npc/dungeon,
 /turf/open/floor/rogue/metal,
 /area/rogue/under/cavewet/bogcaves/sunkencity)
 "aea" = (
@@ -11349,6 +11348,11 @@
 /obj/structure/flora/newtree,
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/outdoors/bog)
+"jcj" = (
+/obj/structure/glowshroom,
+/mob/living/carbon/human/species/skeleton/npc/dungeon/ambush,
+/turf/open/water/swamp/deep,
+/area/rogue/under/cavewet/bogcaves/sunkencity)
 "jct" = (
 /obj/structure/flora/roguetree/stump/burnt,
 /turf/open/floor/rogue/dirt,
@@ -20163,7 +20167,7 @@
 /turf/open/floor/rogue/blocks,
 /area/rogue/outdoors/town)
 "rjB" = (
-/mob/living/carbon/human/species/skeleton/npc,
+/mob/living/carbon/human/species/skeleton/npc/dungeon,
 /turf/open/floor/rogue/church,
 /area/rogue/under/cavewet/bogcaves/sunkencity)
 "rjZ" = (
@@ -24629,7 +24633,7 @@
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/outdoors/rtfield)
 "vfj" = (
-/mob/living/carbon/human/species/skeleton/npc,
+/mob/living/carbon/human/species/skeleton/npc/dungeon,
 /turf/open/floor/rogue/herringbone,
 /area/rogue/under/cavewet/bogcaves/sunkencity)
 "vfC" = (
@@ -43682,7 +43686,7 @@ acL
 acL
 acL
 acL
-acQ
+jcj
 acL
 acL
 acL
@@ -44491,12 +44495,12 @@ acL
 acQ
 acL
 acL
+acJ
 acL
 acL
 acL
 acL
-acL
-acL
+acJ
 aaY
 aaY
 acK
@@ -45689,7 +45693,7 @@ acQ
 acL
 acL
 acQ
-acL
+acJ
 acL
 acL
 acL
@@ -46103,7 +46107,7 @@ abc
 acK
 acK
 acL
-acL
+acJ
 acL
 acL
 acL
@@ -46501,7 +46505,7 @@ acK
 adF
 adF
 adI
-abc
+acE
 abc
 acK
 acL
@@ -48097,7 +48101,7 @@ aaY
 acL
 acL
 acL
-acL
+acJ
 acL
 acL
 acL
@@ -48515,7 +48519,7 @@ acK
 acL
 acL
 acL
-acL
+acJ
 acL
 acL
 acL
@@ -48906,7 +48910,7 @@ acL
 acL
 acL
 acL
-acK
+act
 acK
 acK
 acK
@@ -49312,7 +49316,7 @@ acK
 acK
 acK
 acK
-acK
+act
 acK
 acL
 acL
@@ -50921,7 +50925,7 @@ acK
 acK
 abc
 abc
-acK
+act
 acL
 acQ
 acL
@@ -52535,7 +52539,7 @@ abc
 abc
 acK
 acL
-acL
+acJ
 acL
 acL
 acL
@@ -52923,7 +52927,7 @@ acL
 acK
 abc
 abc
-acK
+act
 acL
 acL
 ady
@@ -159428,10 +159432,10 @@ pHS
 pHS
 scN
 acl
-acJ
+hto
 abg
 acl
-act
+lNs
 acl
 dcV
 scN
@@ -160227,14 +160231,14 @@ whb
 whb
 fyc
 scN
-acf
+rjB
 gxJ
 acf
 scN
 acl
-abg
+hto
 acl
-acl
+lNs
 tou
 tou
 tou
@@ -161427,7 +161431,7 @@ hJf
 dVO
 fyc
 acB
-uwJ
+vfj
 aaY
 uwJ
 uwJ
@@ -162654,7 +162658,7 @@ adP
 adP
 adP
 adP
-acu
+adU
 adY
 acu
 adP
@@ -164242,7 +164246,7 @@ dVO
 aab
 acB
 jDJ
-ukU
+cev
 ukU
 ukU
 vfj
@@ -165048,7 +165052,7 @@ acB
 jtp
 ukU
 ukU
-acE
+cev
 uwJ
 uwJ
 hhH
