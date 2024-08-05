@@ -71,7 +71,7 @@
 	ADD_TRAIT(character, TRAIT_NIGHT_OWL, "[type]")
 
 /datum/special_trait/beautiful
-	name = "Beaitful"
+	name = "Beautiful"
 	greet_text = span_notice("My face is a work of art")
 	weight = 100
 
