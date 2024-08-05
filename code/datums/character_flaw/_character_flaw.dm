@@ -15,6 +15,19 @@ GLOBAL_LIST_INIT(character_flaws, list(
 	"No Flaw (3 TRIUMPHS)"=/datum/charflaw/noflaw
 	))
 
+GLOBAL_LIST_INIT(randomable_flaws, list(
+	/datum/charflaw/addiction/alcoholic,
+	/datum/charflaw/addiction/smoker,
+	/datum/charflaw/addiction/junkie,
+	/datum/charflaw/greedy,
+	/datum/charflaw/masochist,
+	/datum/charflaw/paranoid,
+	/datum/charflaw/noeyer,
+	/datum/charflaw/noeyel,
+	/datum/charflaw/limbloss/arm_r,
+	/datum/charflaw/limbloss/arm_l,
+))
+
 /datum/charflaw
 	var/name
 	var/desc
@@ -61,15 +74,7 @@ GLOBAL_LIST_INIT(character_flaws, list(
 		if(H.ckey)
 			nochekk = FALSE
 			if(prob(50))
-				var/flawz = GLOB.character_flaws.Copy()
-				var/charflaw = pick_n_take(flawz)
-				charflaw = GLOB.character_flaws[charflaw]
-				if((charflaw == type) || (charflaw == /datum/charflaw/noflaw))
-					charflaw = pick_n_take(flawz)
-					charflaw = GLOB.character_flaws[charflaw]
-				if((charflaw == type) || (charflaw == /datum/charflaw/noflaw))
-					charflaw = pick_n_take(flawz)
-					charflaw = GLOB.character_flaws[charflaw]
+				var/charflaw = pick(GLOB.randomable_flaws)
 				H.charflaw = new charflaw()
 				H.charflaw.on_mob_creation(H)
 			else
@@ -94,15 +99,7 @@ GLOBAL_LIST_INIT(character_flaws, list(
 		if(H.ckey)
 			if(H.get_triumphs() < 3)
 				nochekk = FALSE
-				var/flawz = GLOB.character_flaws.Copy()
-				var/charflaw = pick_n_take(flawz)
-				charflaw = GLOB.character_flaws[charflaw]
-				if((charflaw == type) || (charflaw == /datum/charflaw/randflaw))
-					charflaw = pick_n_take(flawz)
-					charflaw = GLOB.character_flaws[charflaw]
-				if((charflaw == type) || (charflaw == /datum/charflaw/randflaw))
-					charflaw = pick_n_take(flawz)
-					charflaw = GLOB.character_flaws[charflaw]
+				var/charflaw = pick(GLOB.randomable_flaws)
 				H.charflaw = new charflaw()
 				H.charflaw.on_mob_creation(H)
 			else
