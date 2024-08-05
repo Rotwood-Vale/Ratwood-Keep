@@ -446,7 +446,7 @@
 
 /datum/special_trait/wild_night
 	name = "Wild Night"
-	greet_text = span_boldwarning("I'm lost!")
+	greet_text = span_boldwarning("I don't remember what I did last night, and now I'm lost!")
 	weight = 200
 
 /datum/special_trait/wild_night/on_apply(mob/living/carbon/human/character, silent)
