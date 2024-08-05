@@ -17,7 +17,9 @@
 	wander = FALSE
 
 /mob/living/carbon/human/species/skeleton/npc/ambush
+	wander = TRUE
 
+/mob/living/carbon/human/species/skeleton/npc/dungeon/ambush
 	wander = TRUE
 
 /mob/living/carbon/human/species/skeleton/Initialize()
@@ -58,6 +60,8 @@
 	ADD_TRAIT(src, TRAIT_NOPAIN, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_TOXIMMUNE, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_LIMBATTACHMENT, TRAIT_GENERIC)
+	ADD_TRAIT(src, TRAIT_CRITICAL_RESISTANCE, TRAIT_GENERIC)
+	ADD_TRAIT(src, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
 	for(var/obj/item/bodypart/B in src.bodyparts)
 		B.skeletonize(FALSE)
 	update_body()
@@ -93,12 +97,74 @@
 	H.STAEND = 15
 	H.STAINT = 1
 	if(prob(50))
-		r_hand = /obj/item/rogueweapon/sword
+		r_hand = /obj/item/rogueweapon/sword/iron
 	else
 		r_hand = /obj/item/rogueweapon/stoneaxe/woodcut
+
+/datum/outfit/job/roguetown/npc/skeleton/dungeon/pre_equip(mob/living/carbon/human/H)
+	..()
+	wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
+	armor = /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk
+	if(prob(50))
+		shirt = /obj/item/clothing/suit/roguetown/armor/gambeson
+	else
+		shirt = /obj/item/clothing/suit/roguetown/armor/chainmail/iron
+	pants = /obj/item/clothing/under/roguetown/chainlegs
+	head = /obj/item/clothing/head/roguetown/helmet/skullcap
+	neck = /obj/item/clothing/neck/roguetown/coif
+	belt = /obj/item/storage/belt/rogue/leather/hand
+	if(prob(30))
+		beltl = /obj/item/storage/belt/rogue/pouch/coins/poor
+	if(H.gender == FEMALE)
+		H.STASTR = rand(10,13)
+	else
+		H.STASTR = rand(15,17)
+	H.STASPD = 11
+	H.STACON = 8
+	H.STAEND = 17
+	H.STAINT = 1
+	if(prob(50))
+		r_hand = /obj/item/rogueweapon/spear
+	else
+		r_hand = /obj/item/rogueweapon/sword
+		l_hand = /obj/item/rogueweapon/shield/tower
+
+/datum/outfit/job/roguetown/npc/skeleton/dungeon/boss/pre_equip(mob/living/carbon/human/H)
+	..()
+	wrists = /obj/item/clothing/wrists/roguetown/bracers
+	gloves = /obj/item/clothing/gloves/roguetown/plate
+	armor = /obj/item/clothing/suit/roguetown/armor/plate/full
+	shoes = /obj/item/clothing/shoes/roguetown/boots/armor
+	shirt = /obj/item/clothing/suit/roguetown/armor/gambeson
+	pants = /obj/item/clothing/under/roguetown/platelegs
+	neck = /obj/item/clothing/neck/roguetown/bervor
+	head = /obj/item/clothing/head/roguetown/helmet/heavy/knight
+	belt = /obj/item/storage/belt/rogue/leather/hand
+	beltl = /obj/item/storage/belt/rogue/pouch/coins/rich
+	beltr = /obj/item/storage/belt/rogue/pouch/coins/rich
+	if(H.gender == FEMALE)
+		H.STASTR = rand(18,20)
+	else
+		H.STASTR = 20
+	H.STASPD = 10
+	H.STACON = 20
+	H.STAEND = 20
+	H.STAINT = 1
+	if(prob(50))
+		r_hand = /obj/item/rogueweapon/eaglebeak/lucerne
+		l_hand = null
+	else
+		r_hand = /obj/item/rogueweapon/greatsword/zwei
+		l_hand = null
 
 /mob/living/carbon/human/species/skeleton/npc/no_equipment
     skel_outfit = null
 
 /mob/living/carbon/human/species/skeleton/no_equipment
     skel_outfit = null
+
+/mob/living/carbon/human/species/skeleton/npc/dungeon
+	skel_outfit = /datum/outfit/job/roguetown/npc/skeleton/dungeon
+
+/mob/living/carbon/human/species/skeleton/npc/dungeon/boss
+	skel_outfit = /datum/outfit/job/roguetown/npc/skeleton/dungeon/boss

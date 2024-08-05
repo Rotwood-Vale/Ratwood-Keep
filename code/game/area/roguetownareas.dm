@@ -96,7 +96,8 @@ GLOBAL_LIST_INIT(roguetown_areas_typecache, typecacheof(/area/rogue/indoors/town
 				/turf/open/floor/rogue/dirt)
 	ambush_mobs = list(
 				/mob/living/simple_animal/hostile/retaliate/rogue/bigrat = 30,
-				/mob/living/carbon/human/species/skeleton/npc/ambush = 10,
+				/mob/living/carbon/human/species/skeleton/npc/ambush = 20,
+				/mob/living/carbon/human/species/skeleton/npc/dungeon/ambush = 10,
 				/mob/living/carbon/human/species/goblin/npc/ambush/hell = 20)
 	droning_sound = 'sound/music/area/decap.ogg'
 	droning_sound_dusk = null
@@ -151,6 +152,7 @@ GLOBAL_LIST_INIT(roguetown_areas_typecache, typecacheof(/area/rogue/indoors/town
 	ambush_mobs = list(
 				/mob/living/simple_animal/hostile/retaliate/rogue/wolf = 40,
 				/mob/living/carbon/human/species/skeleton/npc/ambush = 10,
+				/mob/living/carbon/human/species/skeleton/npc/dungeon/ambush = 5,
 				/mob/living/carbon/human/species/goblin/npc/ambush = 30)
 	first_time_text = "THE MURDERWOOD"
 	converted_type = /area/rogue/indoors/shelter/woods
@@ -190,11 +192,12 @@ GLOBAL_LIST_INIT(roguetown_areas_typecache, typecacheof(/area/rogue/indoors/town
 				/turf/open/water)
 	//Minotaurs too strong for the lazy amount of places this area covers
 	ambush_mobs = list(
-				/mob/living/carbon/human/species/skeleton/npc/ambush = 20,
-				/mob/living/simple_animal/hostile/retaliate/rogue/wolf = 40,
+				/mob/living/carbon/human/species/skeleton/npc/dungeon/ambush = 30,
+				/mob/living/carbon/human/species/skeleton/npc/ambush = 50,
+				/mob/living/simple_animal/hostile/retaliate/rogue/wolf = 60,
 				/mob/living/simple_animal/hostile/retaliate/rogue/bigrat = 60,
 				/mob/living/simple_animal/hostile/retaliate/rogue/spider = 40,
-				/mob/living/carbon/human/species/goblin/npc/ambush/cave = 30)
+				/mob/living/carbon/human/species/goblin/npc/ambush/cave = 40)
 	first_time_text = "THE TERRORBOG"
 	converted_type = /area/rogue/indoors/shelter/bog
 
@@ -293,6 +296,7 @@ GLOBAL_LIST_INIT(roguetown_areas_typecache, typecacheof(/area/rogue/indoors/town
 				/mob/living/simple_animal/hostile/retaliate/rogue/bigrat = 30,
 				/mob/living/carbon/human/species/goblin/npc/ambush/cave = 20,
 				/mob/living/carbon/human/species/skeleton/npc/ambush = 10,
+				/mob/living/carbon/human/species/skeleton/npc/dungeon/ambush = 5,
 				/mob/living/simple_animal/hostile/retaliate/rogue/minotaur = 5)
 	converted_type = /area/rogue/outdoors/caves
 /area/rogue/outdoors/caves
@@ -317,6 +321,7 @@ GLOBAL_LIST_INIT(roguetown_areas_typecache, typecacheof(/area/rogue/indoors/town
 				/turf/open/floor/rogue/dirt)
 	ambush_mobs = list(
 				/mob/living/carbon/human/species/skeleton/npc = 10,
+				/mob/living/carbon/human/species/skeleton/npc/dungeon = 5,
 				/mob/living/simple_animal/hostile/retaliate/rogue/bigrat = 30,
 				/mob/living/carbon/human/species/goblin/npc/sea = 20)
 	converted_type = /area/rogue/outdoors/caves
@@ -381,6 +386,7 @@ GLOBAL_LIST_INIT(roguetown_areas_typecache, typecacheof(/area/rogue/indoors/town
 	ambush_mobs = list(
 				/mob/living/simple_animal/hostile/retaliate/rogue/bigrat = 30,
 				/mob/living/carbon/human/species/skeleton/npc = 10,
+				/mob/living/carbon/human/species/skeleton/npc/dungeon = 5,
 				/mob/living/carbon/human/species/goblin/npc/hell = 20,
 				/mob/living/simple_animal/hostile/retaliate/rogue/minotaur = 5)
 	droning_sound = 'sound/music/area/decap.ogg'
