@@ -24,11 +24,11 @@
 
 /datum/migrant_role/pilgrim
 	name = "Pilgrim"
-	advclass_cat_rolls = list(CTAG_PILGRIM = 10, CTAG_CHALLENGE = 5)
+	advclass_cat_rolls = list(CTAG_PILGRIM = 20, CTAG_CHALLENGE = 5)
 
 /datum/migrant_role/adventurer
 	name = "Adventurer"
-	advclass_cat_rolls = list(CTAG_ADVENTURER = 5, CTAG_CHALLENGE = 5)
+	advclass_cat_rolls = list(CTAG_ADVENTURER = 20, CTAG_CHALLENGE = 5)
 
 /datum/migrant_role/bandit
 	name = "Bandit"
