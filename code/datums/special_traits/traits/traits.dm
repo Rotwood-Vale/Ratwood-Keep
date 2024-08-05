@@ -447,7 +447,7 @@
 /datum/special_trait/wild_night
 	name = "Wild Night"
 	greet_text = span_boldwarning("I'm lost!")
-	weight = 300
+	weight = 200
 
 /datum/special_trait/wild_night/on_apply(mob/living/carbon/human/character, silent)
 	var/turf/location = get_spawn_turf_for_job("Pilgrim")
