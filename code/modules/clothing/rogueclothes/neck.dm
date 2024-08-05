@@ -74,7 +74,7 @@
 				H.update_inv_head()
 		else if(adjustable == CADJUSTED)
 			ResetAdjust(user)
-			flags_inv = HIDEEARS|HIDEHAIR
+			flags_inv = HIDEHAIR
 			if(user)
 				if(ishuman(user))
 					var/mob/living/carbon/H = user
