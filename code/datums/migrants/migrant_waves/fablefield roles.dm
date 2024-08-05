@@ -3,7 +3,7 @@
 	greet_text = "For years you've travelled to Fablefield, honing your craft at the annual grand festival of tales. You are a respected weaver of glorious and valorous stories, with a tongue and wit as sharp as your blade. Of late, you've been obsessed with the isle of Enigma... What fantastical adventures could you embark on here, with your proteges?"
 	outfit = /datum/outfit/job/roguetown/fablefield/goliard
 	allowed_sexes = list(MALE, FEMALE)
-	allowed_races = RACES_SHUNNED_UP
+	allowed_races = RACES_ALL_KINDS
 
 /datum/outfit/job/roguetown/fablefield/goliard
 	allowed_patrons = list(/datum/patron/divine/xylix)
