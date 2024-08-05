@@ -80,7 +80,7 @@
 	lockid = "shop"
 
 /obj/item/roguekey/townie // For use in round-start available houses in town. Do not use default lockID.
-	name = "Town Dwelling Key"
+	name = "town dwelling Key"
 	desc = "The key of some townie's home. Hope it's not lost."
 	icon_state ="brownkey"
 	lockid = "townie"
@@ -376,6 +376,8 @@
 	desc = "Was this key enchanted by a wizard locksmith...?"//what is grenchensnacker.
 	icon_state = "eyekey"
 	lockid = "porta"
+
+// Towner homes keys
 
 //custom key
 /obj/item/roguekey/custom
