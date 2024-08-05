@@ -28,19 +28,29 @@ GLOBAL_LIST_INIT(special_traits, build_special_traits())
 	if(special.req_text)
 		to_chat(user, span_boldwarning("Requirements: [special.req_text]"))
 
-/proc/apply_job_prefs_special(mob/living/carbon/human/character, client/player)
+/proc/try_apply_character_post_equipment(mob/living/carbon/human/character, client/player)
 	var/datum/job/job
 	if(character.job)
 		job = SSjob.name_occupations[character.job]
 	if(!job)
-		// Apply special if we dont have a job for some reason
-		apply_prefs_special(character, player)
+		// Apply the stuff if we dont have a job for some reason
+		apply_character_post_equipment(character, player)
 		return
 	if(length(job.advclass_cat_rolls))
-		// Dont apply special if our job has adv classes, let the adv class handler apply it later
+		// Dont apply the stuff, let adv class handler do it later
 		return
-	// Apply specials if we have a job, and not have adv classes
+	// Apply the stuff if we have a job that has no adv classes
+	apply_character_post_equipment(character, player)
+
+/proc/apply_character_post_equipment(mob/living/carbon/human/character, client/player)
+	if(!player)
+		player = character.client
+	apply_charflaw_equipment(character, player)
 	apply_prefs_special(character, player)
+
+/proc/apply_charflaw_equipment(mob/living/carbon/human/character, client/player)
+	if(character.charflaw)
+		character.charflaw.apply_post_equipment(character)
 
 /proc/apply_prefs_special(mob/living/carbon/human/character, client/player)
 	if(!player)
@@ -56,7 +66,7 @@ GLOBAL_LIST_INIT(special_traits, build_special_traits())
 	player.prefs.next_special_trait = null
 
 /proc/apply_special_trait_if_able(mob/living/carbon/human/character, client/player, trait_type)
-	if(!charactet_eligible_for_trait(character, player, trait_type))
+	if(!character_eligible_for_trait(character, player, trait_type))
 		log_game("SPECIALS: Failed to apply [trait_type] for [key_name(character)]")
 		return FALSE
 	log_game("SPECIALS: Applied [trait_type] for [key_name(character)] ([character.get_role_title()])")
@@ -74,7 +84,7 @@ GLOBAL_LIST_INIT(special_traits, build_special_traits())
 		return
 	apply_special_trait(character, special_type)
 
-/proc/charactet_eligible_for_trait(mob/living/carbon/human/character, client/player, trait_type)
+/proc/character_eligible_for_trait(mob/living/carbon/human/character, client/player, trait_type)
 	var/datum/special_trait/special = SPECIAL_TRAIT(trait_type)
 	var/datum/job/job
 	if(character.job)
@@ -119,7 +129,7 @@ GLOBAL_LIST_INIT(special_traits, build_special_traits())
 	var/list/eligible_weight = list()
 	for(var/trait_type in GLOB.special_traits)
 		var/datum/special_trait/special = SPECIAL_TRAIT(trait_type)
-		if(!charactet_eligible_for_trait(character, player, trait_type))
+		if(!character_eligible_for_trait(character, player, trait_type))
 			continue
 		eligible_weight[trait_type] = special.weight
 
