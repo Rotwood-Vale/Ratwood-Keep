@@ -2,6 +2,9 @@
 #define TRAIT_WEBWALK "Webwalker"
 #define TRAIT_NOSTINK "Dead Nose"
 #define TRAIT_ZJUMP "High Jumping"
+#define TRAIT_JESTERPHOBIA "Jesterphobic"
+#define TRAIT_XENOPHOBIC "Xenophobic"
+#define TRAIT_TOLERANT "Tolerant"
 #define TRAIT_LEAPER "Leaper"
 #define TRAIT_NOSEGRAB "Nosey"
 #define TRAIT_NUTCRACKER "Nutcracker"
@@ -51,6 +54,9 @@
 
 #define TRAIT_BASHDOORS "bashdoors"
 #define TRAIT_NOMOOD "no_mood"
+#define TRAIT_BAD_MOOD "Bad Mood"
+#define TRAIT_NIGHT_OWL "Night Owl"
+#define TRAIT_BEAUTIFUL "Beautiful"
 #define TRAIT_SIMPLE_WOUNDS "simple_wounds"
 #define TRAIT_BANDITCAMP "banditcamp"
 #define TRAIT_VAMPMANSION "vampiremansion"
@@ -70,6 +76,12 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_WEBWALK = "I can move freely between webs.",
 	TRAIT_NOSTINK = span_dead("My nose is numb to the smell of decay."),
 	TRAIT_ZJUMP = "Time to reach a new high.",
+	TRAIT_JESTERPHOBIA = span_warning("I have a severe irrational fear of Jesters"),
+	TRAIT_XENOPHOBIC = span_warning("Lesser races pollute our land"),
+	TRAIT_TOLERANT = span_info("I dream of an ideal future, one with peace between all races"),
+	TRAIT_NIGHT_OWL = span_info("I enjoy spending my time in the night"),
+	TRAIT_BEAUTIFUL = span_info("People love looking at my face"),
+	TRAIT_BAD_MOOD = span_warning("Everything just seems to piss me off"),
 	TRAIT_LEAPER = "I can leap like a frog.",
 	TRAIT_NOSEGRAB = "I love to grab idiots by their noses!",
 	TRAIT_NUTCRACKER = "I love kicking idiots on the nuts!",
