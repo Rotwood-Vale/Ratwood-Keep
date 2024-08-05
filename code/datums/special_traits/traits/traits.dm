@@ -285,7 +285,7 @@
 	weight = 50 //I'm unsure if i should set it to 100.
 
 /datum/special_trait/unlucky/on_apply(mob/living/carbon/human/character, silent)
-	character.STALUC = rand(10, -10)
+	character.STALUC = rand(1, 10)
 
 //job specials
 /datum/special_trait/punkprincess //I think everyone will like the Rebellous Prince-Like Princess. I'd love to do one for the prince as well that gives him princess loadout, but, up to you!
