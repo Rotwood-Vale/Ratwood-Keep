@@ -402,7 +402,6 @@
 	name = "enriched soil"
 	desc = "transplanted dirt, made into a pile and smoothed over to crow crops."
 	icon_state = "mud[rand (1,3)]"
-	water_level = max(water_level-100,0)
 	layer = MID_TURF_LAYER
 	footstep = FOOTSTEP_MUD
 	barefootstep = FOOTSTEP_MUD
