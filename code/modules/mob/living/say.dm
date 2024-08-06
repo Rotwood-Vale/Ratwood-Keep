@@ -103,13 +103,6 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 		to_chat(src, span_warning("That message contained a word prohibited in IC chat! Consider reviewing the server rules.\n<span replaceRegex='show_filtered_ic_chat'>\"[message]\"</span>"))
 		SSblackbox.record_feedback("tally", "ic_blocked_words", 1, lowertext(config.ic_filter_regex.match))
 		return
-	
-	var/static/regex/ooc_regex = regex(@"^(?=.*[\(\)\[\]\<\>\{\}]).*$") //Yes, i know.
-	if(findtext_char(message, ooc_regex))
-		emote("me", 1, "mumbles incoherently.")
-		to_chat(src, span_warning("That was stupid of me. I should meditate on my actions."))
-		add_stress(/datum/stressevent/ooc_ic)
-		return
 
 	var/datum/saymode/saymode = SSradio.saymodes[talk_key]
 	var/message_mode = get_message_mode(message)

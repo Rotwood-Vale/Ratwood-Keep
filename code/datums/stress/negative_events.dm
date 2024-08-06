@@ -226,8 +226,3 @@
 	stressadd = 10
 	desc = span_blue("I need another hit.")
 	timer = 1 MINUTES
-
-/datum/stressevent/ooc_ic
-	stressadd = 6
-	desc = span_boldred("Bad omen! I've broken some kind of wall...")
-	timer = 5 MINUTES

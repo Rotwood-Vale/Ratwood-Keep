@@ -173,11 +173,8 @@
 	blur_eyes(2)
 	freakout_hud_skew()
 	add_stress(/datum/stressevent/freakout)
-	if(get_stress_amount() >= 30)
-		heart_attack()
-	else
-		emote("fatigue", forced = TRUE)
-		addtimer(CALLBACK(src, PROC_REF(do_stress_freakout_scream)), rand(1 SECONDS, 2 SECONDS))
+	emote("fatigue", forced = TRUE)
+	addtimer(CALLBACK(src, PROC_REF(do_stress_freakout_scream)), rand(1 SECONDS, 2 SECONDS))
 
 /mob/living/carbon/proc/do_stress_freakout_scream()
 	if(stat != CONSCIOUS)
