@@ -12792,7 +12792,8 @@
 /area/rogue/indoors/town/bath)
 "oQJ" = (
 /obj/structure/mineral_door/wood{
-	lockid = "butcher"
+	lockid = "butcher";
+	locked = 1
 	},
 /turf/open/floor/rogue/cobble,
 /area/rogue/indoors)
@@ -17407,6 +17408,9 @@
 /area/rogue/indoors/town/manor)
 "uxf" = (
 /mob/living/simple_animal/hostile/retaliate/rogue/cow,
+/obj/machinery/light/rogue/torchholder{
+	pixel_y = 26
+	},
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors/rtfield)
 "uxU" = (
@@ -268613,7 +268617,7 @@ uaL
 uaL
 paf
 uaL
-qvR
+gex
 wSn
 qbG
 qbG
