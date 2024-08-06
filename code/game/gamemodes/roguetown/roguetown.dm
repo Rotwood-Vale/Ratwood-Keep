@@ -411,7 +411,8 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "E
 	"Mortician",
 	"Desert Rider",
 	"Desert Rider Mercenary",
-	"Grenzelhoft Mercenary"
+	"Grenzelhoft Mercenary",
+	"Sellsword"
 	)
 
 	var/num_werewolves = rand(1,2)
