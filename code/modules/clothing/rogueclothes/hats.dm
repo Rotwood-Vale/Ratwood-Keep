@@ -497,12 +497,14 @@
 			icon_state = "[initial(icon_state)]_raised"
 			body_parts_covered = HEAD|EARS|HAIR
 			flags_cover = null
+			flags_inv = null
 			if(ishuman(user))
 				var/mob/living/carbon/H = user
 				H.update_inv_head()
 			block2add = null
 		else if(adjustable == CADJUSTED)
 			ResetAdjust(user)
+			flags_inv = HIDEFACE
 			if(user)
 				if(ishuman(user))
 					var/mob/living/carbon/H = user
