@@ -5,7 +5,7 @@
 	skillcraft = /datum/skill/craft/tanning
 
 /datum/crafting_recipe/roguetown/leather/bedroll
-	name = "Bedroll"
+	name = "bedroll"
 	result = /obj/item/bedroll
 	reqs = list(/obj/item/natural/hide = 2,
 				/obj/item/rope = 1)
