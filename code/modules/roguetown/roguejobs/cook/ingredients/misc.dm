@@ -35,7 +35,7 @@
 
 /obj/item/reagent_containers/food/snacks/rogue/cheese
 	name = "cheese"
-	desc = "A wheel of mozzarella cheese, adorned with a little bit of mold."
+	desc = "A ball of unaged farmer's cheese, plain but pleasant."
 	icon = 'icons/roguetown/items/food.dmi'
 	icon_state = "freshcheese"
 	bitesize = 1
