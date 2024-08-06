@@ -30,6 +30,8 @@
 		/obj/item/natural/worms/leech/cheele = 1,
 		/obj/item/needle = 1,
 		/obj/item/natural/cloth = 2,
+		/obj/item/bedroll,
+		
 	)
 	if(H.gender == MALE)
 		armor = /obj/item/clothing/suit/roguetown/armor/leather/vest
