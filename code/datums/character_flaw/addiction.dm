@@ -95,3 +95,10 @@
 	time = 40 MINUTES
 	needsate_text = "Time for a flavorful smoke."
 
+/// GOD-FEARING
+
+/datum/charflaw/addiction/godfearing
+	name = "Devout Follower"
+	desc = "I need to pray to my Patron, their blessings are stronger."
+	time = 40 MINUTES
+	needsate_text = "Time to pray to my Patron."
