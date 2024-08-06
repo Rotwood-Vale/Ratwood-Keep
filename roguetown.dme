@@ -3238,6 +3238,7 @@
 #include "code\modules\roguetown\roguejobs\blacksmith\items.dm"
 #include "code\modules\roguetown\roguejobs\blacksmith\smelter.dm"
 #include "code\modules\roguetown\roguejobs\blacksmith\tools.dm"
+#include "code\modules\roguetown\roguejobs\blacksmith\treatingfurnace.dm"
 #include "code\modules\roguetown\roguejobs\blacksmith\anvil_recipes\_anvil_recipe.dm"
 #include "code\modules\roguetown\roguejobs\blacksmith\anvil_recipes\armor.dm"
 #include "code\modules\roguetown\roguejobs\blacksmith\anvil_recipes\tools.dm"
