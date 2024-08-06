@@ -159,9 +159,6 @@ SUBSYSTEM_DEF(role_class_handler)
 
 	adjust_class_amount(picked_class, 1) // adjust the amount here, we are handling one guy right now.
 
-	// After the end of adv class handling, apply a SPECIAL trait if able
-	apply_character_post_equipment(H)
-
 // A dum helper to adjust the class amount, we could do it elsewhere but this will also inform any relevant class handlers open.
 /datum/controller/subsystem/role_class_handler/proc/adjust_class_amount(datum/advclass/target_datum, amount)
 	target_datum.total_slots_occupied += amount
