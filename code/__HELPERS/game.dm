@@ -463,9 +463,6 @@
 		if(gametypeCheck)
 			if(!gametypeCheck.age_check(M.client))
 				continue
-		if(jobbanType)
-			if(is_banned_from(M.ckey, list(jobbanType, ROLE_SYNDICATE)) || QDELETED(M))
-				continue
 
 		showCandidatePollWindow(M, poll_time, Question, result, ignore_category, time_passed, flashwindow)
 	sleep(poll_time)

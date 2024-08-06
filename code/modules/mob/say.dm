@@ -79,7 +79,7 @@
 		to_chat(usr, span_danger("Speech is currently admin-disabled."))
 		return
 
-	var/jb = is_banned_from(ckey, "Deadchat")
+	var/jb = is_misc_banned(ckey, BAN_MISC_DEADCHAT)
 	if(QDELETED(src))
 		return
 
