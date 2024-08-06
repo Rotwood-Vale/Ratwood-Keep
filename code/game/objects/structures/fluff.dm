@@ -944,7 +944,7 @@
 	if(user.mind)
 		var/datum/antagonist/bandit/B = user.mind.has_antag_datum(/datum/antagonist/bandit)
 		if(B)
-			if(istype(W, /obj/item/roguecoin) || istype(W, /obj/item/roguegem) || istype(W, /obj/item/clothing/ring) || istype(W, /obj/item/ingot) || istype(W, /obj/item/clothing/neck/roguetown/psicross) || istype(W, /obj/item/reagent_containers/glass/cup) || istype(W, /obj/item/roguestatue))
+			if(istype(W, /obj/item/roguecoin) || istype(W, /obj/item/roguegem) || istype(W, /obj/item/clothing/ring) || istype(W, /obj/item/ingot) || istype(W, /obj/item/clothing/neck/roguetown/psicross) || istype(W, /obj/item/reagent_containers/glass/cup) || istype(W, /obj/item/roguestatue) || istype(W, /obj/item/riddleofsteel) || istype(W, /obj/item/listenstone) || istype(W, /obj/item/clothing/neck/roguetown/shalal) || istype(W, /obj/item/clothing/neck/roguetown/horus) || istype(W, /obj/item/clothing/head/roguetown/crown/serpcrown) || istype(W, /obj/item/rogue/painting))
 				if(B.tri_amt >= 10)
 					to_chat(user, span_warning("The mouth doesn't open."))
 					return
