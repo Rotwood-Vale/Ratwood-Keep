@@ -169,6 +169,12 @@ GLOBAL_LIST_INIT(goblin_positions, list(
 	/*"Tribal Slave",*/
 ))
 
+GLOBAL_LIST_INIT(viking_positions, list(
+	"Northmen King",
+	"Northern Hostage",
+	"Northmen Berserkir"
+))
+
 
 GLOBAL_LIST_INIT(roguefight_positions, list(
 	"Red Captain",

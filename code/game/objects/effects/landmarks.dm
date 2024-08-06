@@ -439,6 +439,8 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	jobspawn_override = list("Tribal Cook", "Tribal Guard", "Chieftain", "Tribal Smith", "Tribal Shaman", "Tribal Villager"/*, "Tribal Slave"*/)
 	delete_after_roundstart = FALSE
 
+//Hearthstone Additions
+
 /obj/effect/landmark/start/ladylate
 	name = "ladylate"
 	icon_state = "arrow"
@@ -450,6 +452,39 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	icon_state = "arrow"
 	jobspawn_override = list("Noble Guest")
 	delete_after_roundstart = FALSE
+
+//Vikings Additions
+
+/obj/effect/landmark/start/highking
+	name = "Northmen King"
+	icon_state = "arrow"
+
+/obj/effect/landmark/start/highkinglate
+	name = "NorthmenKinglate"
+	icon_state = "arrow"
+	jobspawn_override = list("Northmen King")
+	delete_after_roundstart = FALSE
+
+/obj/effect/landmark/start/vikingfarmer
+	name = "Northern Hostage"
+	icon_state = "arrow"
+
+/obj/effect/landmark/start/vikingfarmerlate
+	name = "northernhostagelate"
+	icon_state = "arrow"
+	jobspawn_override = list("Northern Hostage")
+	delete_after_roundstart = FALSE
+
+/obj/effect/landmark/start/NorthmenBerserkir
+	name = "Northmen Berserkir"
+	icon_state = "arrow"
+
+/obj/effect/landmark/start/NorthmenBerserkirlate
+	name = "NorthmenBerserkirlate"
+	icon_state = "arrow"
+	jobspawn_override = list("Northmen Berserkir")
+	delete_after_roundstart = FALSE
+	
 
 // START LANDMARKS FOLLOW. Don't change the names unless
 // you are refactoring shitty landmark code.

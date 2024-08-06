@@ -195,7 +195,13 @@
 #define TRIBALSHAMAN	(1<<4)
 #define TRIBALVILLAGER	(1<<5)
 
-#define SLOP		(1<<9)
+
+#define VIKING		(1<<9)
+#define HIGHKING	(1<<0)
+#define VIKINGFARMER	(1<<1)
+#define VIKINGGRUNT	(1<<1)
+
+#define SLOP		(1<<10)
 
 #define TESTER		(1<<0)
 #define DEATHKNIGHT (1<<1)
@@ -298,3 +304,7 @@
 #define JDO_TRIBALSMITH 39
 #define JDO_TRIBALSHAMAN 40
 #define JDO_TRIBALVILLAGER 41
+
+#define JDO_HIGHKING 42
+#define JDO_VIKINGFARMER 43
+#define JDO_VIKINGGRUNT 44
