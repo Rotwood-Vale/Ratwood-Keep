@@ -152,9 +152,6 @@
 	else
 		to_chat(user, span_warning("The window doesn't close from this side."))
 
-
-
-
 /obj/structure/roguewindow/proc/open_up(mob/user)
 	visible_message(span_info("[user] opens [src]."))
 	playsound(src, 'sound/foley/doors/windowup.ogg', 100, FALSE)
