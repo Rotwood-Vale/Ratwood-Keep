@@ -8416,7 +8416,7 @@
 /obj/structure/fluff/railing/border{
 	dir = 8
 	},
-/obj/structure/roguewindow/openclose{
+/obj/structure/roguewindow/curtain{
 	dir = 4
 	},
 /turf/open/floor/rogue/ruinedwood{
@@ -14450,6 +14450,15 @@
 /obj/structure/stairs,
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue/outdoors/bog)
+"qYk" = (
+/obj/structure/roguewindow/curtain{
+	dir = 4
+	},
+/turf/open/floor/rogue/ruinedwood{
+	dir = 1;
+	icon_state = "vertw"
+	},
+/area/rogue/indoors/town)
 "qYl" = (
 /obj/structure/mineral_door/wood/deadbolt{
 	dir = 1
@@ -297449,7 +297458,7 @@ wbg
 wVI
 dHZ
 thT
-iFj
+qYk
 thT
 rQY
 thT
