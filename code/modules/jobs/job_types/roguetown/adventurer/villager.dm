@@ -11,7 +11,7 @@
 	outfit = null
 	outfit_female = null
 	bypass_lastclass = TRUE
-	bypass_jobban = FALSE
+	banned_leprosy = FALSE
 	display_order = JDO_VILLAGER
 	give_bank_account = TRUE
 	min_pq = -20

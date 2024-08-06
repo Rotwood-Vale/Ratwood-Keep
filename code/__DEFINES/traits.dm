@@ -63,8 +63,12 @@
 #define TRAIT_SCHIZO_AMBIENCE "schizo_ambience" //replaces all ambience with creepy shit
 #define TRAIT_SCREENSHAKE "screenshake" //screen will always be shaking, you cannot stop it
 #define TRAIT_NORUN "Decayed Flesh"
+#define TRAIT_PUNISHMENT_CURSE "PunishmentCurse"
+#define TRAIT_LEPROSY "Leprosy"
 
 GLOBAL_LIST_INIT(roguetraits, list(
+	TRAIT_LEPROSY = span_necrosis("I'm a disgusting leper..."),
+	TRAIT_CHOSEN = "Astrata choose you to represent her glory.",
 	TRAIT_WEBWALK = "I can move freely between webs.",
 	TRAIT_NOSTINK = span_dead("My nose is numb to the smell of decay."),
 	TRAIT_ZJUMP = "Time to reach a new high.",

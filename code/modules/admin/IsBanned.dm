@@ -46,29 +46,6 @@ GLOBAL_VAR(last_connection)
 			else
 				log_access("Failed Login: [key] - Not on whitelist")
 				return list("reason"="whitelist", "desc" = "\nBecome whitelisted! https://discord.gg/WGy2K8deAc")
-/*
-#ifdef MATURESERVER
-	if(!check_whitelist(ckey))
-		var/num = get_roundsplayed(ckey)
-		if(num >= 10)
-			if(check_patreon_lvl(ckey) < 2)
-				log_access("Failed Login: [key] - TrialExpire")
-				return list("reason"="trialexpire", "desc" = "\nBecome whitelisted to continue playing here! https://discord.gg/WGy2K8deAc")
-#endif
-*/
-/*	//Blacklist
-	if(!real_bans_only && !C && CONFIG_GET(flag/useblacklist))
-		if(check_blacklist(ckey))
-			if (admin)
-				log_admin("The admin [key] has been allowed to bypass the blacklist")
-				if (message)
-					message_admins(span_adminnotice("The admin [key] has been allowed to bypass the blacklist"))
-					addclientmessage(ckey,span_adminnotice("I have been allowed to bypass the blacklist"))
-			else
-				log_access("Failed Login: [key] - Blacklisted")
-				return list("reason"="blacklist", "desc" = "\nSomething went wrong. Contact the Game Master.")
-*/
-
 
 	if(!real_bans_only && !C)
 		if (!admin)

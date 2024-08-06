@@ -253,6 +253,14 @@ SUBSYSTEM_DEF(migrants)
 	if(!player.prefs)
 		return FALSE
 	var/datum/preferences/prefs = player.prefs
+	if(role.banned_leprosy && is_misc_banned(player.ckey, BAN_MISC_LEPROSY))
+		return FALSE
+	if(role.banned_lunatic && is_misc_banned(player.ckey, BAN_MISC_LUNATIC))
+		return FALSE
+	if(!player.prefs.allowed_respawn())
+		return FALSE
+	if(is_migrant_banned(player.ckey, role.name))
+		return FALSE
 	if(role.allowed_races && !(prefs.pref_species.type in role.allowed_races))
 		return FALSE
 	if(role.allowed_sexes && !(prefs.gender in role.allowed_sexes))

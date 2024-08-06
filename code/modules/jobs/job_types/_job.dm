@@ -85,8 +85,10 @@
 
 	var/whitelist_req = FALSE
 
-	var/bypass_jobban = FALSE
 	var/bypass_lastclass = TRUE
+
+	var/banned_leprosy = TRUE
+	var/banned_lunatic = TRUE
 
 	var/list/peopleiknow = list()
 	var/list/peopleknowme = list()

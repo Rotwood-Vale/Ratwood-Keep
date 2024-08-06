@@ -17,6 +17,8 @@
 	min_pq = -30
 	max_pq = null
 
+	banned_leprosy = FALSE
+
 	cmode_music = 'sound/music/combat_bum.ogg'
 
 /datum/job/roguetown/vagabond/New()

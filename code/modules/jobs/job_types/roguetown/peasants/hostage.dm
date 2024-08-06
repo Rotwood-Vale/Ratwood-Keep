@@ -11,7 +11,7 @@
 	tutorial = "You're too valuable to outright kill yet not a free person. You either messed up really bad or got very unlucky. Either way, the crown has held you hostage until you home country pays your ransom, as if that would ever happen. Might as well start praying to whatever god you find solace in."
 
 	outfit = /datum/outfit/job/roguetown/hostage
-	bypass_jobban = TRUE
+	banned_leprosy = FALSE
 	display_order = JDO_HOSTAGE
 	give_bank_account = 10
 	min_pq = -14

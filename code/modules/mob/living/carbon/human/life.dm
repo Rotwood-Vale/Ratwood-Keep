@@ -19,7 +19,6 @@
 #define THERMAL_PROTECTION_HAND_RIGHT	0.025
 
 /mob/living/carbon/human
-	var/leprosy = 2
 	var/allmig_reward = 0
 
 /mob/living/carbon/human/Life()
@@ -64,18 +63,15 @@
 											adjust_triumphs(1)
 					if(has_status_effect(/datum/status_effect/debuff/trainsleep))
 						remove_status_effect(/datum/status_effect/debuff/trainsleep)
-			if(leprosy == 1)
-				adjustToxLoss(2)
-			else if(leprosy == 2)
-				if(client)
-					if(check_blacklist(client.ckey))
-						ADD_TRAIT(src, TRAIT_NOPAIN, TRAIT_GENERIC)
-						leprosy = 1
-						var/obj/item/bodypart/B = get_bodypart(BODY_ZONE_HEAD)
-						if(B)
-							B.sellprice = rand(16, 33)
-					else
-						leprosy = 3
+			if(HAS_TRAIT(src, TRAIT_LEPROSY))
+				if(!mob_timers["leper_bleed"] || mob_timers["leper_bleed"] + 6 MINUTES < world.time)
+					if(prob(10))
+						to_chat(src, span_warning("My skin opens up and bleeds..."))
+						mob_timers["leper_bleed"] = world.time
+						var/obj/item/bodypart/part = pick(bodyparts)
+						if(part)
+							part.add_wound(/datum/wound/slash)
+				adjustToxLoss(0.3)
 			//heart attack stuff
 			handle_heart()
 			handle_liver()

@@ -11,7 +11,7 @@
 	outfit = null
 	outfit_female = null
 	bypass_lastclass = TRUE
-	bypass_jobban = FALSE
+	banned_leprosy = FALSE
 
 	advclass_cat_rolls = list(CTAG_PILGRIM = 20)
 	PQ_boost_divider = 10

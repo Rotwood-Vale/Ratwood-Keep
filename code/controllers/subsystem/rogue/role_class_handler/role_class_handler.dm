@@ -50,6 +50,13 @@ SUBSYSTEM_DEF(role_class_handler)
 
 	return ..()
 
+/datum/controller/subsystem/role_class_handler/proc/get_all_advclass_names()
+	var/list/compiled = list()
+	for(var/cat_name in sorted_class_categories)
+		for(var/datum/advclass/class in sorted_class_categories[cat_name])
+			compiled += class.name
+	return compiled
+
 
 // This covers both adventurer classes
 /datum/controller/subsystem/role_class_handler/proc/build_dumbass_category_lists()
