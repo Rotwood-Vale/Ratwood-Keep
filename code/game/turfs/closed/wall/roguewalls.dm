@@ -58,6 +58,8 @@
 	icon = 'icons/turf/walls/mossy_stone.dmi'
 	climbdiff = 4
 
+// Craftstone Walls and Murder Holes.
+
 /turf/closed/wall/mineral/rogue/craftstone
 	name = "stone wall"
 	desc = "A durable wall made from specially crafted stone."
@@ -73,9 +75,29 @@
 	above_floor = /turf/open/floor/rogue/blocks
 	baseturfs = list(/turf/open/floor/rogue/blocks)
 	neighborlay = "dirtedge"
-	climbdiff = 3
+	climbdiff = 4
 	damage_deflection = 10
 
+// Copypasta spaghetti from rogue/stone/window. Just add water.
+
+/turf/closed/wall/mineral/rogue/craftstone/window
+	name = "stone window"
+	desc = "A carefully-carved opening in a formidable stone wall."
+	opacity = FALSE
+	max_integrity = 1800
+
+/turf/closed/wall/mineral/rogue/craftstone/window/CanPass(atom/movable/mover, turf/target)
+	if(istype(mover) && ((mover.pass_flags & PASSTABLE) || (mover.pass_flags & PASSGRILLE)) )
+		return 1
+	return ..()
+
+/turf/closed/wall/mineral/rogue/craftstone/window/Initialize()
+	. = ..()
+	icon_state = "stonewindow"
+	var/mutable_appearance/M = mutable_appearance(icon, "stonehole", layer = ABOVE_NORMAL_TURF_LAYER)
+	add_overlay(M)
+
+// End of Craftstone.
 
 /turf/closed/wall/mineral/rogue/stonebrick
 	name = "brick wall"

@@ -128,6 +128,22 @@
 	verbage = "builds"
 	craftdiff = 4
 
+/datum/crafting_recipe/roguetown/turfs/craftstonewindow
+	name = "craftstone murder hole"
+	result = /turf/closed/wall/mineral/rogue/craftstone/window
+	reqs = list(/obj/item/natural/stone = 3)
+	skillcraft = /datum/skill/craft/masonry
+	verbage_simple = "build"
+	verbage = "builds"
+	craftdiff = 4
+
+/datum/crafting_recipe/roguetown/turfs/craftstonewindow/TurfCheck(mob/user, turf/T)
+	if(isclosedturf(T))
+		return
+	if(!istype(T, /turf/open/floor/rogue))
+		return
+	return TRUE
+
 /datum/crafting_recipe/roguetown/turfs/fancyswall/TurfCheck(mob/user, turf/T)
 	if(isclosedturf(T))
 		return
@@ -177,7 +193,7 @@
 	reqs = list(/obj/item/grown/log/tree/stick = 1,
 				/obj/item/natural/cloth = 1)
 	skillcraft = /datum/skill/craft/crafting
-	verbage_simple = "set up"	
+	verbage_simple = "set up"
 	verbage = "sets up"
 	craftdiff = 1
 
