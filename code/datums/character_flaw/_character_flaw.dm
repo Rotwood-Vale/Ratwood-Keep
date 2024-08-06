@@ -210,6 +210,16 @@ GLOBAL_LIST_INIT(character_flaws, list(
 	head?.add_wound(/datum/wound/facial/eyes/left/permanent)
 	H.update_fov_angles()
 
+/datum/charflaw/greedy
+	name = "Greedy"
+	desc = "I can't get enough of mammons, I need more and more! I've also become good at knowing how much things are worth"
+	var/last_checked_mammons = 0
+	var/required_mammons = 0
+	var/next_mammon_increase = 0
+	var/last_passed_check = 0
+	var/first_tick = FALSE
+	var/extra_increment_value = 0
+
 /datum/charflaw/greedy/on_mob_creation(mob/user)
 	next_mammon_increase = world.time + rand(15 MINUTES, 25 MINUTES)
 	last_passed_check = world.time
