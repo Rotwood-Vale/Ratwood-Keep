@@ -15,7 +15,7 @@
 	shirt = /obj/item/clothing/suit/roguetown/armor/leather/vest
 	backr = /obj/item/storage/backpack/rogue/satchel
 	belt = /obj/item/storage/belt/rogue/leather
-	backpack_contents = list(/obj/item/bait = 1)
+	backpack_contents = list(/obj/item/bait = 1, /obj/item/flashlight/flare/torch/metal = 1)
 	gloves = /obj/item/clothing/gloves/roguetown/leather
 	cloak = /obj/item/clothing/cloak/raincloak/mortus
 	armor = /obj/item/clothing/suit/roguetown/armor/chainmail
@@ -32,8 +32,9 @@
 		H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/craft/tanning, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/swords, 3, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/combat/whipsflails, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/whipsflails, 4, TRUE) // rogue gets 4 in knives, and a 3 in swords. This role is rarer, and has less stats than a rogue
 		H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/craft/crafting, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 2, TRUE)
