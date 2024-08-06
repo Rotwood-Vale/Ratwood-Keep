@@ -9,7 +9,7 @@
 	allowed_sexes = list(MALE, FEMALE) //same as town guard
 	allowed_races = RACES_ALL_KINDS // same as town guard
 	tutorial = "You've known combat your entire life. There isn't a way to kill a man you havent practiced in the tapestries of war itself. You wouldn't call yourself a hero, those belong to the men left rotting in the fields of where you practiced your ancient trade. You don't sleep well at night anymore, you don't like remembering what you've had to do to survive. Trading adventure for stable pay was the only logical solution, and maybe someday you'll get to lay down the blade..."
-	allowed_ages = list(AGE_OLD)
+	allowed_ages = list(AGE_MIDDLEAGED, AGE_OLD)
 	display_order = JDO_VET
 	whitelist_req = TRUE
 
@@ -45,12 +45,16 @@
 	shoes = /obj/item/clothing/shoes/roguetown/boots/armor
 	belt = /obj/item/storage/belt/rogue/leather/black
 	beltl = /obj/item/rogueweapon/sword/sabre
-	beltr = /obj/item/keyring/guardcastle
+	beltr = /obj/item/roguekey/mercenary
 	backr = /obj/item/storage/backpack/rogue/satchel/black
 	backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger/steel/special = 1)
 	if(H.mind)
-		H.mind.adjust_skillrank(/datum/skill/combat/swords, 6, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/combat/maces, 6, TRUE)
+		if(H.age == AGE_OLD)
+			H.mind.adjust_skillrank(/datum/skill/combat/swords, 6, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/maces, 6, TRUE)
+		else
+			H.mind.adjust_skillrank(/datum/skill/combat/swords, 5, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/maces, 5, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/shields, 4, TRUE)		//Actual cancer but he fucks. Hard.
 		H.mind.adjust_skillrank(/datum/skill/combat/axes, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 5, TRUE)
