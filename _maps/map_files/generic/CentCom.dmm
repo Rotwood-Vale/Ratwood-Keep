@@ -1419,10 +1419,6 @@
 /obj/effect/landmark/shuttle_import,
 /turf/closed,
 /area/rogue)
-"fb" = (
-/obj/machinery/light/rogue/firebowl/stump,
-/turf/open/floor/rogue/cobblerock,
-/area/rogue/outdoors/woods)
 "fe" = (
 /obj/effect/landmark/hellexit,
 /turf/open/lava,
@@ -1468,23 +1464,6 @@
 	},
 /turf/open/floor/rogue/hexstone,
 /area/rogue/indoors)
-"je" = (
-/obj/item/reagent_containers/powder/salt,
-/obj/item/reagent_containers/powder/salt,
-/obj/item/reagent_containers/powder/salt,
-/obj/structure/closet/crate/chest,
-/obj/item/reagent_containers/food/snacks/rogue/meat/steak,
-/obj/item/reagent_containers/food/snacks/rogue/meat/steak,
-/obj/item/reagent_containers/food/snacks/rogue/meat/steak,
-/obj/item/reagent_containers/food/snacks/rogue/meat/steak,
-/obj/item/reagent_containers/food/snacks/rogue/meat/steak,
-/obj/item/reagent_containers/food/snacks/rogue/meat/steak,
-/obj/item/reagent_containers/food/snacks/rogue/meat/steak,
-/obj/item/reagent_containers/food/snacks/rogue/meat/steak,
-/turf/open/floor/rogue/tile{
-	icon_state = "chess"
-	},
-/area/rogue/indoors)
 "jn" = (
 /turf/open/floor/rogue/volcanic,
 /area/rogue)
@@ -1512,6 +1491,18 @@
 /turf/open/floor/rogue/cobble,
 /area/rogue)
 "jU" = (
+/obj/item/roguekey/walls{
+	lockid = "bandit";
+	name = "old key"
+	},
+/obj/item/roguekey/walls{
+	lockid = "bandit";
+	name = "old key"
+	},
+/obj/item/roguekey/walls{
+	lockid = "bandit";
+	name = "old key"
+	},
 /obj/item/roguekey/walls{
 	lockid = "bandit";
 	name = "old key"
@@ -1557,6 +1548,23 @@
 "lw" = (
 /turf/open/floor/rogue/cobble,
 /area/rogue)
+"lU" = (
+/obj/item/reagent_containers/powder/salt,
+/obj/item/reagent_containers/powder/salt,
+/obj/item/reagent_containers/powder/salt,
+/obj/structure/closet/crate/chest,
+/obj/item/reagent_containers/food/snacks/rogue/meat/steak,
+/obj/item/reagent_containers/food/snacks/rogue/meat/steak,
+/obj/item/reagent_containers/food/snacks/rogue/meat/steak,
+/obj/item/reagent_containers/food/snacks/rogue/meat/steak,
+/obj/item/reagent_containers/food/snacks/rogue/meat/steak,
+/obj/item/reagent_containers/food/snacks/rogue/meat/steak,
+/obj/item/reagent_containers/food/snacks/rogue/meat/steak,
+/obj/item/reagent_containers/food/snacks/rogue/meat/steak,
+/turf/open/floor/rogue/tile{
+	icon_state = "chess"
+	},
+/area/rogue/indoors)
 "mp" = (
 /obj/structure/roguewindow/openclose{
 	dir = 1;
@@ -1687,10 +1695,6 @@
 	icon_state = "weird1"
 	},
 /area/rogue/indoors)
-"qn" = (
-/obj/machinery/light/rogue/firebowl/stump,
-/turf/open/floor/rogue/dirt,
-/area/rogue/outdoors/woods)
 "qP" = (
 /obj/structure/rack/rogue,
 /obj/item/quiver/bolts,
@@ -1816,6 +1820,10 @@
 /obj/effect/landmark/start/new_player,
 /turf/open/floor/plating,
 /area/start)
+"wI" = (
+/obj/machinery/light/rogue/firebowl/stump,
+/turf/open/floor/rogue/cobblerock,
+/area/rogue/outdoors/woods)
 "wO" = (
 /turf/closed,
 /area/rogue/outdoors)
@@ -1964,12 +1972,6 @@
 /obj/item/rogueweapon/huntingknife/idagger/silver,
 /turf/open/floor/rogue/cobble,
 /area/rogue)
-"Ey" = (
-/obj/structure/rack/rogue,
-/obj/item/rogueweapon/shield/wood,
-/obj/item/rogueweapon/shield/wood,
-/turf/open/floor/rogue/herringbone,
-/area/rogue/indoors)
 "FJ" = (
 /obj/structure/fluff/railing/fence{
 	dir = 4;
@@ -2137,6 +2139,10 @@
 	},
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/outdoors/woods)
+"OF" = (
+/obj/machinery/light/rogue/firebowl/stump,
+/turf/open/floor/rogue/dirt,
+/area/rogue/outdoors/woods)
 "OQ" = (
 /obj/machinery/light/rogue/firebowl/standing,
 /turf/open/floor/rogue/tile{
@@ -2248,23 +2254,6 @@
 /obj/item/rogueweapon/mace/cudgel,
 /turf/open/floor/rogue/cobble,
 /area/rogue)
-"Ux" = (
-/obj/structure/closet/crate/roguecloset/inn/chest,
-/obj/item/rogueore/coal,
-/obj/item/rogueore/coal,
-/obj/item/natural/stone,
-/obj/item/natural/stone,
-/obj/item/natural/stone,
-/obj/item/natural/stone,
-/obj/item/natural/stone,
-/obj/item/natural/stone,
-/obj/item/natural/stone,
-/obj/item/natural/stone,
-/obj/item/rogueweapon/tongs,
-/turf/open/floor/rogue/tile{
-	icon_state = "chess"
-	},
-/area/rogue/indoors)
 "Ve" = (
 /obj/structure/table/wood{
 	dir = 1;
@@ -2308,6 +2297,23 @@
 "VW" = (
 /obj/structure/fluff/wallclock/r,
 /turf/open/floor/rogue/herringbone,
+/area/rogue/indoors)
+"Wg" = (
+/obj/structure/closet/crate/roguecloset/inn/chest,
+/obj/item/rogueore/coal,
+/obj/item/rogueore/coal,
+/obj/item/natural/stone,
+/obj/item/natural/stone,
+/obj/item/natural/stone,
+/obj/item/natural/stone,
+/obj/item/natural/stone,
+/obj/item/natural/stone,
+/obj/item/natural/stone,
+/obj/item/natural/stone,
+/obj/item/rogueweapon/tongs,
+/turf/open/floor/rogue/tile{
+	icon_state = "chess"
+	},
 /area/rogue/indoors)
 "Wp" = (
 /obj/machinery/light/rogue/campfire,
@@ -2380,6 +2386,12 @@
 /obj/structure/closet/crate/roguecloset,
 /obj/item/reagent_containers/food/snacks/grown/rogue/pipeweeddry,
 /turf/open/floor/rogue/hexstone,
+/area/rogue/indoors)
+"YV" = (
+/obj/structure/rack/rogue,
+/obj/item/rogueweapon/shield/wood,
+/obj/item/rogueweapon/shield/wood,
+/turf/open/floor/rogue/herringbone,
 /area/rogue/indoors)
 "Zl" = (
 /turf/open/floor/rogue/herringbone,
@@ -3371,7 +3383,7 @@ Te
 Te
 Te
 WB
-Ux
+Wg
 ni
 Zl
 Zl
@@ -3900,10 +3912,10 @@ sh
 la
 sh
 WB
-Ey
+YV
 In
 qP
-Ey
+YV
 pc
 ft
 WB
@@ -4151,7 +4163,7 @@ Te
 Te
 Te
 WB
-je
+lU
 up
 Hn
 Yt
@@ -4310,7 +4322,7 @@ Te
 Te
 Te
 Te
-qn
+OF
 Te
 Te
 Te
@@ -4319,7 +4331,7 @@ Te
 Te
 Te
 Te
-qn
+OF
 Te
 Te
 Te
@@ -4328,7 +4340,7 @@ Te
 Te
 Te
 Te
-qn
+OF
 WI
 Sq
 Sq
@@ -5065,7 +5077,7 @@ pb
 pb
 pg
 pg
-fb
+wI
 Sq
 Sq
 Sq
@@ -6109,7 +6121,7 @@ Te
 Te
 bz
 Te
-qn
+OF
 Te
 Te
 Te
@@ -6232,7 +6244,7 @@ bA
 bA
 Te
 Te
-qn
+OF
 Sq
 Sq
 Te
