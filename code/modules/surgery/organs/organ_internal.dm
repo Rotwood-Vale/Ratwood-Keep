@@ -132,6 +132,7 @@
 	icon_state = "appendix"
 	icon = 'icons/obj/surgery.dmi'
 	list_reagents = list(/datum/reagent/consumable/nutriment = 5, /datum/reagent/organpoison = 1)
+	grind_results = list(/datum/reagent/organpoison = 3)
 	foodtype = RAW | MEAT | GROSS
 	eat_effect = /datum/status_effect/debuff/uncookedfood
 
