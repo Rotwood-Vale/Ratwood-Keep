@@ -38,7 +38,7 @@
 /turf/open/floor/rogue/ruinedwood{
 	icon_state = "weird1"
 	},
-/area/rogue/indoors/shelter/rtfield)
+/area/rogue/indoors/town)
 "aas" = (
 /obj/structure/fluff/walldeco/customflag{
 	pixel_y = 32
@@ -699,11 +699,9 @@
 /turf/open/transparent/openspace,
 /area/rogue/outdoors/town/roofs)
 "aQq" = (
-/obj/structure/chair/stool/rogue,
-/turf/open/floor/rogue/ruinedwood{
-	icon_state = "weird1"
-	},
-/area/rogue/indoors/shelter/rtfield)
+/obj/structure/roguemachine/scomm,
+/turf/open/floor/rogue/cobblerock,
+/area/rogue/outdoors/town)
 "aQO" = (
 /obj/structure/bed/rogue,
 /turf/open/floor/rogue/woodturned,
@@ -7752,9 +7750,8 @@
 	},
 /area/rogue/indoors/town/church)
 "iMC" = (
-/obj/structure/roguemachine/scomm,
-/turf/open/floor/rogue/blocks,
-/area/rogue/outdoors/town)
+/turf/open/floor/rogue/naturalstone,
+/area/rogue/indoors/town)
 "iME" = (
 /obj/structure/chair/stool/rogue,
 /obj/effect/landmark/start/adventurer{
@@ -8475,11 +8472,8 @@
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue/indoors/town)
 "jKw" = (
-/obj/structure/bed/rogue/shit,
-/turf/open/floor/rogue/ruinedwood{
-	icon_state = "weird1"
-	},
-/area/rogue/indoors/shelter/rtfield)
+/turf/closed/mineral/rogue,
+/area/rogue/indoors/town)
 "jKT" = (
 /obj/structure/closet/crate/chest{
 	lockid = "town_armory"
@@ -9032,11 +9026,6 @@
 	},
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/under/town/basement)
-"ksF" = (
-/turf/open/floor/rogue/ruinedwood{
-	icon_state = "weird1"
-	},
-/area/rogue/indoors/shelter/rtfield)
 "ksG" = (
 /obj/structure/table/wood{
 	dir = 1;
@@ -11937,7 +11926,7 @@
 /turf/open/floor/rogue/ruinedwood{
 	icon_state = "weird1"
 	},
-/area/rogue/indoors/shelter/rtfield)
+/area/rogue/indoors/town)
 "nUK" = (
 /obj/structure/flora/newtree,
 /turf/open/transparent/openspace,
@@ -14276,7 +14265,7 @@
 "qKi" = (
 /obj/machinery/light/rogue/campfire,
 /turf/open/floor/rogue/naturalstone,
-/area/rogue/indoors/shelter/rtfield)
+/area/rogue/indoors/town)
 "qLq" = (
 /obj/structure/fluff/railing/border{
 	dir = 8
@@ -14406,8 +14395,9 @@
 /turf/open/floor/rogue/blocks/stonered,
 /area/rogue/indoors/town/manor)
 "qUQ" = (
+/obj/effect/decal/remains/human,
 /turf/open/floor/rogue/naturalstone,
-/area/rogue/indoors/shelter/rtfield)
+/area/rogue/indoors/town)
 "qUT" = (
 /obj/structure/table/wood{
 	dir = 1;
@@ -17867,9 +17857,6 @@
 /obj/machinery/light/rogue/wallfire/candle,
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/manor)
-"vcd" = (
-/turf/closed/wall/mineral/rogue/wooddark,
-/area/rogue/indoors/shelter/rtfield)
 "vce" = (
 /obj/structure/rack/rogue,
 /obj/item/natural/fibers,
@@ -18462,7 +18449,7 @@
 "vNG" = (
 /obj/item/grown/log/tree/stake,
 /turf/open/floor/rogue/naturalstone,
-/area/rogue/indoors/shelter/rtfield)
+/area/rogue/indoors/town)
 "vOa" = (
 /obj/structure/stairs{
 	dir = 8
@@ -282636,13 +282623,13 @@ qvR
 qvR
 uaL
 uaL
-vcd
-vcd
-vcd
-hcW
-qUQ
-qUQ
-qUQ
+dHZ
+dHZ
+dHZ
+jKw
+iMC
+iMC
+iMC
 hcW
 hcW
 hcW
@@ -283038,13 +283025,13 @@ qvR
 qvR
 qvR
 uaL
-vcd
-ksF
-aQq
+dHZ
+bmi
+wpJ
 qKi
-qUQ
-hcW
-qUQ
+iMC
+jKw
+iMC
 hcW
 hcW
 hcW
@@ -283440,13 +283427,13 @@ qvR
 qvR
 qvR
 qvR
-vcd
-ksF
+dHZ
+bmi
 qUQ
 vNG
-qUQ
-hcW
-hcW
+iMC
+jKw
+jKw
 hcW
 hcW
 hcW
@@ -283843,12 +283830,12 @@ qvR
 qvR
 qvR
 nUu
-ksF
-qUQ
-qUQ
-hcW
-hcW
-hcW
+bmi
+iMC
+iMC
+jKw
+jKw
+jKw
 hcW
 hcW
 hcW
@@ -284244,13 +284231,13 @@ qvR
 qvR
 qvR
 qvR
-vcd
+dHZ
 aan
+vtg
 jKw
-hcW
-hcW
-hcW
-hcW
+jKw
+jKw
+jKw
 hcW
 hcW
 hcW
@@ -284646,13 +284633,13 @@ spp
 spp
 qvR
 qvR
-vcd
-vcd
-vcd
-hcW
-hcW
-hcW
-hcW
+dHZ
+dHZ
+dHZ
+jKw
+jKw
+jKw
+jKw
 hcW
 hcW
 hcW
@@ -298250,7 +298237,7 @@ mxM
 evo
 evo
 evo
-iMC
+wVI
 wbg
 wbg
 aOv
@@ -299864,7 +299851,7 @@ wbg
 wbg
 wbg
 uJF
-aOv
+aQq
 aOv
 uJF
 wbg
