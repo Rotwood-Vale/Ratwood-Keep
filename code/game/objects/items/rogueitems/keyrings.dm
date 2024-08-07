@@ -137,7 +137,7 @@
 	keys = list(/obj/item/roguekey/councillor_rooms, /obj/item/roguekey/keep_barracks, /obj/item/roguekey/keep_dungeon,  /obj/item/roguekey/manor)
 
 /obj/item/keyring/bog_guard
-	keys = list(/obj/item/roguekey/bog_gatehouse, /obj/item/roguekey/bog_barracks, /obj/item/roguekey/bog_dungeon)
+	keys = list(/obj/item/roguekey/bog_armory, /obj/item/roguekey/bog_gatehouse, /obj/item/roguekey/bog_barracks, /obj/item/roguekey/bog_dungeon)
 
 /obj/item/keyring/bog_master
 	keys = list(/obj/item/roguekey/bog_armory, /obj/item/roguekey/bog_gatehouse, /obj/item/roguekey/bog_barracks, /obj/item/roguekey/bog_dungeon)
