@@ -3,7 +3,6 @@
 	reqs = list(
 		/obj/item/reagent_containers/food/snacks/rogue/meat/mince = 2)
 	result = /obj/item/reagent_containers/food/snacks/rogue/meat/sausage
-
 	req_table = TRUE
 	subtype_reqs = TRUE
 
@@ -73,3 +72,24 @@
 	craftdiff = 0
 	subtype_reqs = TRUE
 	structurecraft = /obj/structure/fluff/dryingrack
+
+/datum/crafting_recipe/roguetown/cooking/meatloaf
+	name = "meatloaf"
+	reqs = list(
+		/obj/item/reagent_containers/food/snacks/rogue/meat/mince = 3,
+		/obj/item/reagent_containers/food/snacks/rogue/onionslice = 3,
+		/obj/item/reagent_containers/food/snacks/grown/garlic = 1)
+	result = /obj/item/reagent_containers/food/snacks/rogue/meat/meatloaf
+	craftdiff = 3
+	subtype_reqs = TRUE
+
+/datum/crafting_recipe/roguetown/cooking/wellington
+	name = "beef à la Kron"
+	reqs = list(
+		/obj/item/reagent_containers/food/snacks/rogue/meat/steak = 3,
+		/obj/item/reagent_containers/food/snacks/grown/plumphelmet = 2,
+		/obj/item/reagent_containers/food/snacks/rogue/onionslice = 5, 
+		/obj/item/reagent_containers/food/snacks/rogue/piedough = 1)
+	result = /obj/item/reagent_containers/food/snacks/rogue/meat/wellington
+	craftdiff = 5
+	subtype_reqs = TRUE

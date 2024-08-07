@@ -45,6 +45,8 @@
 	var/bodypart_emissive_blocker = TRUE
 	/// Type of organ DNA that this organ will create.
 	var/organ_dna_type = /datum/organ_dna
+	var/cooked_type = null  //for ovenn cooking
+	var/fried_type = null	//rockhill mountain oysters when?
 
 
 /obj/item/organ/proc/Insert(mob/living/carbon/M, special = 0, drop_if_replaced = TRUE)

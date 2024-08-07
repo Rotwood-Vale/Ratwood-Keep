@@ -15,9 +15,12 @@
 
 /obj/item/organ/tail/lizard
 	name = "sissean tail"
-	desc = "A severed lizard tail. Somewhere, no doubt, a lizard hater is very pleased with themselves."
+	desc = "A severed sissean tail. Somewhere, no doubt, a lizard hater is very pleased with themselves."
 	color = "#116611"
 	accessory_type = /datum/sprite_accessory/tail/lizard/smooth
+	icon_state = "lizardtail"
+	cooked_type = /obj/item/reagent_containers/food/snacks/rogue/meat/sisseantail
+	fried_type = /obj/item/reagent_containers/food/snacks/rogue/meat/sisseantail
 
 /obj/item/organ/tail/lizard/fake
 	name = "fabricated lizard tail"
@@ -63,14 +66,11 @@
 	name = "axian tail"
 	accessory_type =  /datum/sprite_accessory/tail/shark
 
-/obj/item/organ/tail/lizard
-	name = "sissean tail"
-	desc = ""
-	color = "#116611"
-	accessory_type =  /datum/sprite_accessory/tail/lizard/smooth
-
 /obj/item/organ/tail/kobold
 	name = "kobold tail"
 	desc = ""
 	color = "#116611"
 	accessory_type =  /datum/sprite_accessory/tail/lizard/kobold
+	icon_state = "koboldtail"
+	cooked_type = /obj/item/reagent_containers/food/snacks/rogue/meat/koboldtail
+	fried_type = /obj/item/reagent_containers/food/snacks/rogue/meat/koboldtail
