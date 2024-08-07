@@ -226,3 +226,22 @@
 	for(var/obj/item/reagent_containers/food/snacks/M in parts_list)
 		icon_state = "[initial(M.icon_state)]dried"
 		qdel(M)
+
+/obj/item/reagent_containers/food/snacks/rogue/meat/crabmeat
+	name = "crab meat"
+	desc = "A chunk of raw crab meat, absolutely wonderful."
+	icon_state = "crabmeatraw"
+	slice_path = null
+	fried_type = /obj/item/reagent_containers/food/snacks/rogue/meat/crabmeat/fried
+	cooked_type = /obj/item/reagent_containers/food/snacks/rogue/meat/crabmeat/fried
+	slices_num = null
+	ingredient_size = 1
+
+/obj/item/reagent_containers/food/snacks/rogue/meat/crabmeat/fried
+	eat_effect = null
+	slices_num = 0
+	name = "fried crabmeat"
+	desc = "A fried piece of crabmeat, yum."
+	icon_state = "crabmeat"
+	bonus_reagents = list(/datum/reagent/consumable/nutriment = 5)
+	desc = ""

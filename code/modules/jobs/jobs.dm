@@ -67,7 +67,7 @@ GLOBAL_LIST_INIT(noble_positions, list(
 	"Bailiff",
 	"Councillor",
 	"Steward",
-	"Knight",
+	"Royal Guard",
 ))
 
 GLOBAL_LIST_INIT(courtier_positions, list(
@@ -131,6 +131,7 @@ GLOBAL_LIST_INIT(peasant_positions, list(
 ))
 
 GLOBAL_LIST_INIT(mercenary_positions, list(
+	"Mercenary",
 	"Grenzelhoft Mercenary",
 	"Desert Rider Mercenary",
 	"Veteran",

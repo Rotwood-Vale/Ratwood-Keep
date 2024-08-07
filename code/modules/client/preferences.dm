@@ -94,6 +94,8 @@ GLOBAL_LIST_EMPTY(chosen_names)
 	var/list/randomise = list(RANDOM_UNDERWEAR = TRUE, RANDOM_UNDERWEAR_COLOR = TRUE, RANDOM_UNDERSHIRT = TRUE, RANDOM_SOCKS = TRUE, RANDOM_BACKPACK = TRUE, RANDOM_JUMPSUIT_STYLE = FALSE, RANDOM_SKIN_TONE = TRUE, RANDOM_EYE_COLOR = TRUE)
 	var/list/friendlyGenders = list("male" = "masculine", "female" = "feminine")
 	var/phobia = "spiders"
+	var/shake = TRUE
+	var/sexable = FALSE
 
 	var/list/custom_names = list()
 	var/preferred_ai_core_display = "Blue"
