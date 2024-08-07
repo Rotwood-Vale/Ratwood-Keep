@@ -189,7 +189,7 @@
 /obj/item/clothing/head/roguetown/menacing/bandit
 	icon_state = "bandithood"
 	desc = "A hood worn by the freemen of the wood. It is lined with extra padding, offering modest protection."
-	body_parts_covered = HEAD|HAIR|EARS|NECK|EYES|NOSE
+	body_parts_covered = HEAD|HAIR|EARS|NECK|EYES|NOSE|MOUTH
 	slot_flags = ITEM_SLOT_HEAD|ITEM_SLOT_MASK
 	armor = list("blunt" = 50, "slash" = 30, "stab" = 40, "bullet" = 20, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
 	prevent_crits = list(BCLASS_BLUNT, BCLASS_TWIST)
