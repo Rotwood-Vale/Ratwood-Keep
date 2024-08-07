@@ -523,6 +523,46 @@
 					var/mob/living/carbon/H = user
 					H.update_inv_head()
 		user.update_fov_angles()
+		
+/obj/item/clothing/head/roguetown/helmet/astratahelm
+	name = "astrata helmet"
+	desc = "Headwear commonly worn by Templars in service to Astrata. The firstborn child's light will forever shine on within its crest."
+	icon_state = "astratahelm"
+	item_state = "astratahelm"
+	emote_environment = 3
+	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR
+	block2add = FOV_BEHIND
+	smeltresult = /obj/item/ingot/steel
+
+/obj/item/clothing/head/roguetown/helmet/nochelm
+	name = "noc helmet"
+	desc = "Hearwear commonly worn by Templars in service to Noc. Without the night there can be no day, without Noc there can be no light in the dark hours."
+	icon_state = "nochelm"
+	item_state = "nochelm"
+	emote_environment = 3
+	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR
+	block2add = FOV_BEHIND
+	smeltresult = /obj/item/ingot/steel
+
+/obj/item/clothing/head/roguetown/helmet/necrahelm
+	name = "necra helmet"
+	desc = "Headwear commonly worn by Templars in service to Necra. Let its skeletal features remind you of the only thing which is guaranteed in life. You will die."
+	icon_state = "necrahelm"
+	item_state = "necrahelm"
+	emote_environment = 3
+	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR
+	block2add = FOV_BEHIND
+	smeltresult = /obj/item/ingot/steel
+
+/obj/item/clothing/head/roguetown/helmet/dendorhelm
+	name = "dendor helmet"
+	desc = "Headwear commonly worn by Templars in service to Dendor. Its protrusions almost resemble branches. Take root in the earth, and you will never be moved."
+	icon_state = "dendorhelm"
+	item_state = "dendorhelm"
+	emote_environment = 3
+	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR
+	block2add = FOV_BEHIND
+	smeltresult = /obj/item/ingot/steel
 
 /obj/item/clothing/head/roguetown/helmet/heavy
 	name = "barbute"
@@ -597,46 +637,6 @@
 	desc = "A helmet which covers the whole of the head. Offers excellent protection."
 	icon_state = "topfhelm"
 	item_state = "topfhelm"
-	emote_environment = 3
-	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR
-	block2add = FOV_RIGHT|FOV_LEFT
-	smeltresult = /obj/item/ingot/steel
-
-/obj/item/clothing/head/roguetown/helmet/heavy/astratahelm
-	name = "astrata helmet"
-	desc = "Headwear commonly worn by Templars in service to Astrata. The firstborn child's light will forever shine on within its crest."
-	icon_state = "astratahelm"
-	item_state = "astratahelm"
-	emote_environment = 3
-	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR
-	block2add = FOV_RIGHT|FOV_LEFT
-	smeltresult = /obj/item/ingot/steel
-
-/obj/item/clothing/head/roguetown/helmet/heavy/nochelm
-	name = "noc helmet"
-	desc = "Hearwear commonly worn by Templars in service to Noc. Without the night there can be no day, without Noc there can be no light in the dark hours."
-	icon_state = "nochelm"
-	item_state = "nochelm"
-	emote_environment = 3
-	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR
-	block2add = FOV_RIGHT|FOV_LEFT
-	smeltresult = /obj/item/ingot/steel
-
-/obj/item/clothing/head/roguetown/helmet/heavy/necrahelm
-	name = "necra helmet"
-	desc = "Headwear commonly worn by Templars in service to Necra. Let its skeletal features remind you of the only thing which is guaranteed in life. You will die."
-	icon_state = "necrahelm"
-	item_state = "necrahelm"
-	emote_environment = 3
-	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR
-	block2add = FOV_RIGHT|FOV_LEFT
-	smeltresult = /obj/item/ingot/steel
-
-/obj/item/clothing/head/roguetown/helmet/heavy/dendorhelm
-	name = "dendor helmet"
-	desc = "Headwear commonly worn by Templars in service to Dendor. Its protrusions almost resemble branches. Take root in the earth, and you will never be moved."
-	icon_state = "dendorhelm"
-	item_state = "dendorhelm"
 	emote_environment = 3
 	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR
 	block2add = FOV_RIGHT|FOV_LEFT
