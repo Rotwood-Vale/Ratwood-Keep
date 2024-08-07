@@ -66,6 +66,7 @@
 	H.verbs |= /mob/living/carbon/human/proc/coronate_lord
 	H.verbs |= /mob/living/carbon/human/proc/churchexcommunicate
 	H.verbs |= /mob/living/carbon/human/proc/churchannouncement
+	H.verbs |= /mob/living/carbon/human/proc/churchhereticsbrand
 //	ADD_TRAIT(H, TRAIT_NOBLE, TRAIT_GENERIC)
 //		H.underwear = "Femleotard"
 //		H.underwear_color = CLOTHING_BLACK
@@ -118,18 +119,48 @@
 		priority_announce("[real_name] the [dispjob] has named [HU.real_name] the inheritor of ROCKHILL!", title = "Long Live [HU.real_name]!", sound = 'sound/misc/bell.ogg')
 
 /mob/living/carbon/human/proc/churchexcommunicate()
-	set name = "Curse"
+	set name = "Excommunicate"
 	set category = "Priest"
 	if(stat)
 		return
-	var/inputty = input("Curse someone... (curse them again to remove it)", "Sinner Name") as text|null
+	var/inputty = input("Excommunicate someone, removing their ability to use miracles... (excommunicate them again to remove it)", "Sinner Name") as text|null
 	if(inputty)
 		if(!istype(get_area(src), /area/rogue/indoors/town/church/chapel))
-			to_chat(src, span_warning("I need to do this from the chapel."))
+			to_chat(src, span_warning("I need to do this from the Church's chapel."))
 			return FALSE
 		if(inputty in GLOB.excommunicated_players)
 			GLOB.excommunicated_players -= inputty
-			priority_announce("[real_name] has forgiven [inputty]. Once more walk in the light!", title = "Hail the Ten!", sound = 'sound/misc/bell.ogg')
+			priority_announce("[real_name] has forgiven [inputty]. Their patron hears their prayer once more!", title = "Hail the Ten!", sound = 'sound/misc/bell.ogg')
+			for(var/mob/living/carbon/human/H in GLOB.player_list)
+				if(H.real_name == inputty)
+					H.remove_stress(/datum/stressevent/psycurse)
+					H.devotion.recommunicate()
+			return
+		var/found = FALSE
+		for(var/mob/living/carbon/human/H in GLOB.player_list)
+			if(H.real_name == inputty)
+				found = TRUE
+				H.add_stress(/datum/stressevent/psycurse)
+				H.devotion.excommunicate()
+		if(!found)
+			return FALSE
+
+		GLOB.excommunicated_players += inputty
+		priority_announce("[real_name] has excommunicated [inputty] from the Church!", title = "SHAME", sound = 'sound/misc/excomm.ogg')
+
+/mob/living/carbon/human/proc/churchhereticsbrand()
+	set name = "Brand Heretic"
+	set category = "Priest"
+	if(stat)
+		return
+	var/inputty = input("Brand someone as a foul heretic... (brand them again to remove it)", "Sinner Name") as text|null
+	if(inputty)
+		if(!istype(get_area(src), /area/rogue/indoors/town/church/chapel))
+			to_chat(src, span_warning("I need to do this from the Church."))
+			return FALSE
+		if(inputty in GLOB.heretical_players)
+			GLOB.heretical_players -= inputty
+			priority_announce("[real_name] has removed the Heretic's Brand from [inputty]. Once more walk in the light!", title = "Hail the Ten!", sound = 'sound/misc/bell.ogg')
 			for(var/mob/living/carbon/human/H in GLOB.player_list)
 				if(H.real_name == inputty)
 					H.remove_stress(/datum/stressevent/psycurse)
@@ -143,8 +174,9 @@
 				H.add_stress(/datum/stressevent/psycurse)
 		if(!found)
 			return FALSE
-		GLOB.excommunicated_players += inputty
-		priority_announce("[real_name] has put Xylix's curse of woe on [inputty] for offending the church!", title = "SHAME", sound = 'sound/misc/excomm.ogg')
+
+		GLOB.heretical_players += inputty
+		priority_announce("[real_name] has placed a Heretic's Brand upon [inputty]!", title = "SHAME", sound = 'sound/misc/excomm.ogg')
 
 /mob/living/carbon/human
 	COOLDOWN_DECLARE(church_announcement)
