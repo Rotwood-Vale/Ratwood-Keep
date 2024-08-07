@@ -24,6 +24,7 @@
 							/obj/item/grown/log/tree/stick = 16,
 							/obj/structure/flora/roguetree/stump/log = 3,
 							/obj/structure/flora/roguetree/stump = 4,
+							/obj/effect/mob_spawner =5,
 							/obj/structure/closet/dirthole/closed/loot=3,
 							/obj/item/reagent_containers/food/snacks/grown/rogue/sweetleaf = 4,
 							/obj/structure/flora/roguegrass/maneater/real=3)
