@@ -56,6 +56,7 @@
 			H.change_stat("intelligence", 2)
 
 	else
+		pants = /obj/item/clothing/under/roguetown/tights/stockings/silk/white
 		beltl = /obj/item/keyring/royal
 		head = /obj/item/clothing/head/roguetown/hennin
 		neck = /obj/item/storage/belt/rogue/pouch/coins/rich
