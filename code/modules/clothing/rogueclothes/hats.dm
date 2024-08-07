@@ -192,7 +192,7 @@
 	body_parts_covered = HEAD|HAIR|EARS|NECK|EYES|NOSE|MOUTH
 	slot_flags = ITEM_SLOT_HEAD|ITEM_SLOT_NECK
 	armor = list("blunt" = 50, "slash" = 30, "stab" = 40, "bullet" = 20, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
-	prevent_crits = list(BCLASS_BLUNT, BCLASS_TWIST)
+	prevent_crits = list(BCLASS_BLUNT, BCLASS_CUT)
 	anvilrepair = null
 	sewrepair = TRUE
 	max_integrity = 200
