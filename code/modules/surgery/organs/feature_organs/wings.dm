@@ -44,5 +44,3 @@
 /obj/item/organ/wings/dracon
 	name = "drakian wings"
 	accessory_type = /datum/sprite_accessory/wings/huge/dragon
-	cooked_type = /obj/item/reagent_containers/food/snacks/rogue/meat/drakianwing
-	fried_type = /obj/item/reagent_containers/food/snacks/rogue/meat/drakianwing
