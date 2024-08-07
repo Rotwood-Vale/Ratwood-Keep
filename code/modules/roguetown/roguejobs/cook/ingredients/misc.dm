@@ -128,12 +128,13 @@
 	eat_effect = /datum/status_effect/buff/foodbuff
 
 /obj/item/reagent_containers/food/snacks/rogue/honey
-	name = "honey"
+	name = "honeycomb"
 	desc = "Golden honey rich with the aroma of floral nectar."
 	icon = 'icons/roguetown/items/produce.dmi'
 	icon_state = "honey"
 	bitesize = 3
-	list_reagents = list(/datum/reagent/consumable/nutriment = 5)
+	list_reagents = list(/datum/reagent/consumable/nutriment = 5, /datum/reagent/consumable/honey = 5)
+	grind_results = list(/datum/reagent/consumable/honey = 10)
 	w_class = WEIGHT_CLASS_TINY
 	tastes = list("sweetness and light" = 1)
 	eat_effect = null

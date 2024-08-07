@@ -369,3 +369,12 @@
 	color = "#946114"
 	list_reagents = list(/datum/reagent/consumable/nutriment = 15)
 	bitesize = 3
+
+/obj/item/reagent_containers/food/snacks/rogue/meat/pate
+	eat_effect = /datum/status_effect/buff/foodbuff
+	slices_num = 0
+	name = "pate"
+	icon_state = "pate"
+	desc = "A forcemeat with a prominent flavor of liver."
+	list_reagents = list(/datum/reagent/consumable/nutriment = 15)
+	bitesize = 3

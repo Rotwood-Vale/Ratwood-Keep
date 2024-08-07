@@ -122,3 +122,16 @@
 	craftdiff = 2
 	subtype_reqs = TRUE
 	req_table = TRUE
+
+/datum/crafting_recipe/roguetown/cooking/pate
+	name = "pate"
+	reqs = list(
+		/obj/item/organ/liver = 1,
+		/obj/item/reagent_containers/food/snacks/rogue/onionslice = 2,
+		/obj/item/reagent_containers/food/snacks/rogue/meat/mince = 1
+		)
+	tools = list(/obj/item/rogueweapon/huntingknife)
+	result = /obj/item/reagent_containers/food/snacks/rogue/meat/koboldtail
+	craftdiff = 2
+	subtype_reqs = TRUE
+	req_table = TRUE

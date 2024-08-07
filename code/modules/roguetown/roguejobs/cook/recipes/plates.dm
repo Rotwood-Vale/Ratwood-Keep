@@ -347,7 +347,7 @@
 	bitesize = 5
 	warming = 10 MINUTES
 	rotprocess = 25 MINUTES
-	w_class = WEIGHT_CLASS_SMALL
+	w_class = WEIGHT_CLASS_BULKY
 	list_reagents = list(/datum/reagent/consumable/nutriment = 40, /datum/reagent/drug/happiness = 3)
 
 /datum/crafting_recipe/roguetown/cooking/jadeduck
@@ -361,4 +361,27 @@
 	)
 	result = /obj/item/reagent_containers/food/snacks/rogue/jadepheasant
 	craftdiff = 5
+	subtype_reqs = TRUE
+
+/obj/item/reagent_containers/food/snacks/rogue/cornedbeef
+	eat_effect = /datum/status_effect/buff/foodbuff
+	slices_num = 0
+	name = "corned beef and grenzelkraut"
+	desc = "A slice of salt-cured brisket served with grenzelkraut."
+	icon_state = "corned beef"
+	bitesize = 3
+	warming = 5 MINUTES
+	rotprocess = 20 MINUTES
+	w_class = WEIGHT_CLASS_SMALL
+	list_reagents = list(/datum/reagent/consumable/nutriment = 18)
+
+/datum/crafting_recipe/roguetown/cooking/cornedbeef
+	name = "corned beef and grenzelkraut"
+	reqs = list(
+		/obj/item/reagent_containers/food/snacks/rogue/meat/steak/fried = 1,
+		/obj/item/reagent_containers/powder/salt = 1,
+		/obj/item/reagent_containers/food/snacks/grown/sauerkraut = 1
+	)
+	result = /obj/item/reagent_containers/food/snacks/rogue/cornedbeef
+	craftdiff = 2
 	subtype_reqs = TRUE
