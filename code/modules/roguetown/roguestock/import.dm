@@ -135,7 +135,7 @@
 	name = "Saigabuck"
 	desc = "One Saigabuck tamed with a saddle from a far away land"
 	item_type = /mob/living/simple_animal/hostile/retaliate/rogue/saigabuck/tame/saddled/saigabuck
-	export_price = 100
+	export_price = 400
 	importexport_amt = 1
 
 /mob/living/simple_animal/hostile/retaliate/rogue/saigabuck/tame/saddled/saigabuck/Initialize()
