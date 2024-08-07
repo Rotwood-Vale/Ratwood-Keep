@@ -14,7 +14,7 @@
 	whitelist_req = TRUE
 
 	outfit = /datum/outfit/job/roguetown/manorguard
-	advclass_cat_rolls = CTAG_MENATARMS
+	advclass_cat_rolls = list(CTAG_MENATARMS = 20)
 
 	give_bank_account = 22
 	min_pq = 0
@@ -23,7 +23,7 @@
 	cmode_music = 'sound/music/combat_guard2.ogg'
 
 /datum/job/roguetown/manorguard/after_spawn(mob/living/L, mob/M, latejoin = TRUE)
-	..()
+	. = ..()
 	if(ishuman(L))
 		var/mob/living/carbon/human/H = L
 		H.advsetup = 1
@@ -39,7 +39,7 @@
 			S.name = "man-at-arms jupon ([index])"
 
 /datum/outfit/job/roguetown/manorguard/pre_equip(mob/living/carbon/human/H)
-	..()
+	. = ..()
 	pants = /obj/item/clothing/under/roguetown/chainlegs
 	cloak = /obj/item/clothing/cloak/stabard/surcoat/guard
 	wrists = /obj/item/clothing/wrists/roguetown/bracers
@@ -54,6 +54,7 @@
 		if(!(H.hairstyle in acceptable))
 			H.hairstyle = pick(acceptable)
 			H.update_hair()
+	H.verbs |= /mob/proc/haltyell
 
 // Maces + Axes + Shield	-	Better armor, typical Man-at-Arms loadout
 /datum/advclass/manorguard/footsman
@@ -84,7 +85,6 @@
 	H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/riding, 1, TRUE)
 	ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
-	H.verbs |= /mob/proc/haltyell
 
 	//Basically slight bonuses; slightly better than Watch, less than a knight
 	H.change_stat("strength", 2)
@@ -133,7 +133,6 @@
 	H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/riding, 1, TRUE)
 	ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
-	H.verbs |= /mob/proc/haltyell
 
 	//Basically slight bonuses; slightly better than Watch, less than a knight
 	H.change_stat("strength", 2)
