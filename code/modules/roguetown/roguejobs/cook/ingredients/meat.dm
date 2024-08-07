@@ -323,7 +323,7 @@
 
 /obj/item/reagent_containers/food/snacks/rogue/meat/drakianwing
 	name = "descaled drakian wing"
-	icon = "chickencutlet"
+	icon_state = "chickencutlet"
 	fried_type = /obj/item/reagent_containers/food/snacks/rogue/meat/drakianwing/cooked
 	cooked_type = /obj/item/reagent_containers/food/snacks/rogue/meat/drakianwing/cooked
 
