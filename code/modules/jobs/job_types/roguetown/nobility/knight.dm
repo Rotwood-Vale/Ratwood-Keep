@@ -44,8 +44,7 @@
 		H.real_name = "[honorary] [prev_real_name]"
 		H.name = "[honorary] [prev_name]"
 
-/datum/outfit/job/roguetown/knight/pre_equip(mob/living/carbon/human/H)
-	..()
+/datum/outfit/job/roguetown/knight
 	head = /obj/item/clothing/head/roguetown/helmet/bascinet/pigface
 	pants = /obj/item/clothing/under/roguetown/chainlegs
 	cloak = /obj/item/clothing/cloak/stabard/surcoat/guard
