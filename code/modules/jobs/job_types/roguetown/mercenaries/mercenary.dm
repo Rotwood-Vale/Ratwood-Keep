@@ -1,6 +1,6 @@
 /datum/job/roguetown/mercenary
 	title = "Mercenary"
-	flag = MERCENARIES
+	flag = MERCENARY
 	department_flag = MERCENARIES
 	faction = "Station"
 	total_positions = 6		//Was 3 Grenz and 3 Desert, merging together to 6 total.
