@@ -38,12 +38,12 @@
 		OFFSET_SHIRT_F = list(0,0), OFFSET_ARMOR_F = list(0,0), OFFSET_UNDIES_F = list(0,0)
 		)
 	specstats = list(
-		"strength" = 0, 
-		"perception" = 1, 
-		"intelligence" = 0, 
-		"constitution" = -1, 
-		"endurance" = -1, 
-		"speed" = 2, 
+		"strength" = 0,
+		"perception" = 1,
+		"intelligence" = 0,
+		"constitution" = -1,
+		"endurance" = -1,
+		"speed" = 2,
 		"fortune" = 0
 		)
 	enflamed_icon = "widefire"
@@ -165,3 +165,20 @@
 /datum/species/tabaxi/on_species_loss(mob/living/carbon/C)
 	. = ..()
 	UnregisterSignal(C, COMSIG_MOB_SAY)
+
+//Groups of Accents for each race set by associated 'skin_tone', see 'get_skin_list' above
+// "full" group in JSON lists
+/datum/species/tabaxi/get_accent(mob/living/carbon/human/H)
+		return strings("tabaxi_replacement.json", "full")
+
+// "start" group in JSON lists
+/datum/species/tabaxi/get_accent_start(mob/living/carbon/human/H)
+		return strings("tabaxi_replacement.json", "start")
+
+// "end" group in JSON lists
+/datum/species/tabaxi/get_accent_end(mob/living/carbon/human/H)
+		return strings("tabaxi_replacement.json", "end")
+
+// "syllable" group in JSON lists
+/datum/species/tabaxi/get_accent_any(mob/living/carbon/human/H)
+		return strings("tabaxi_replacement.json", "syllable")
