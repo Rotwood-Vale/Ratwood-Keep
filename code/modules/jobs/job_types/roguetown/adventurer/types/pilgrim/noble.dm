@@ -2,7 +2,7 @@
 	name = "Noble"
 	tutorial = "You are a noble, from some place far away, trying to visit the nobility of the area \
 	you are encouraged to make your own story. But with wealth, come the poor, ready to pilfer you \
-	of your hard earned (inherited) Mammons, so tread lightly unless you want to meet a grizzly end"
+	of your hard earned (inherited) Mammons, so tread lightly unless you want to meet a grizzly end."
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_TOLERATED_UP
 	outfit = /datum/outfit/job/roguetown/adventurer/noble

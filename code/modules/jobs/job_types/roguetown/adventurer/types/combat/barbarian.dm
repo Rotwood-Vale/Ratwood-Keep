@@ -1,7 +1,7 @@
 //terrify mobs scream
 /datum/advclass/barbarian
 	name = "Barbarian"
-	tutorial = "A jack-of-all-trades warrior sort. Is skilled in all weapons, but master of none"
+	tutorial = "A jack-of-all-trades warrior sort. Is skilled in all weapons, but master of none."
 	allowed_sexes = list(MALE)
 	allowed_races = RACES_ALL_KINDS
 	outfit = /datum/outfit/job/roguetown/adventurer/barbarian
