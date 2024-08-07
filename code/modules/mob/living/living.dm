@@ -946,7 +946,7 @@
 	if(olddir != dir)
 		stop_looking()
 		if(doing)
-			doing = 0
+			move_stop_doafters()
 		if(client)
 			update_vision_cone()
 

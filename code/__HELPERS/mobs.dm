@@ -166,7 +166,7 @@ GLOBAL_LIST_EMPTY(species_list)
 
 	if(user.doing)
 		return 0
-	user.doing = 1
+	user.doing = NORMAL_DOAFTER
 
 	var/user_loc = user.loc
 
@@ -196,6 +196,12 @@ GLOBAL_LIST_EMPTY(species_list)
 			. = 0
 			break
 
+		if(starttime < user.doafter_cancel_time)
+			. = 0
+			if(progress)
+				qdel(progbar)
+			return //Special case - when we force doafters to end from this, the doafter should not modify doing since that would interfere with potential new doafters being started after the cancel.
+
 		if(uninterruptible)
 			continue
 
@@ -206,7 +212,7 @@ GLOBAL_LIST_EMPTY(species_list)
 		if((!drifting && user.loc != user_loc) || target.loc != target_loc || user.get_active_held_item() != holding || user.incapacitated() || (extra_checks && !extra_checks.Invoke()))
 			. = 0
 			break
-	user.doing = 0
+	user.doing = NO_DOAFTER
 	if (progress)
 		qdel(progbar)
 
@@ -226,7 +232,10 @@ GLOBAL_LIST_EMPTY(species_list)
 	return ..()
 
 /mob
-	var/doing = 0
+	///If the mob is currently busy with something. NO_DOAFTER = No, NORMAL_DOAFTER = cancelled by all, MOVING_DOAFTER = allows movement-related things
+	var/doing = NO_DOAFTER
+	///Used to force-cancel all doafters started BEFORE this world.time
+	var/doafter_cancel_time = 0
 
 /proc/do_after(mob/user, delay, needhand = 1, atom/target = null, progress = 1, datum/callback/extra_checks = null)
 	if(!user)
@@ -234,7 +243,7 @@ GLOBAL_LIST_EMPTY(species_list)
 
 	if(user.doing)
 		return 0
-	user.doing = 1
+	user.doing = NORMAL_DOAFTER
 
 	var/atom/Tloc = null
 	if(target && !isturf(target))
@@ -277,6 +286,12 @@ GLOBAL_LIST_EMPTY(species_list)
 		if(!user.doing)
 			. = 0
 			break
+		
+		if(starttime < user.doafter_cancel_time)
+			. = 0
+			if(progbar)
+				qdel(progbar)
+			return //Special case - when we force doafters to end from this, the doafter should not modify doing since that would interfere with potential new doafters being started after the cancel.
 
 		if(isliving(user))
 			var/mob/living/L = user
@@ -299,7 +314,7 @@ GLOBAL_LIST_EMPTY(species_list)
 			if(user.get_active_held_item() != holding)
 				. = 0
 				break
-	user.doing = 0
+	user.doing = NO_DOAFTER
 	if (progress)
 		qdel(progbar)
 
@@ -309,7 +324,7 @@ GLOBAL_LIST_EMPTY(species_list)
 
 	if(user.doing)
 		return 0
-	user.doing = 1
+	user.doing = MOVING_DOAFTER
 
 	var/atom/Tloc = null
 	if(target && !isturf(target))
@@ -356,6 +371,12 @@ GLOBAL_LIST_EMPTY(species_list)
 			. = 0
 			break
 
+		if(starttime < user.doafter_cancel_time)
+			. = 0
+			if(progbar)
+				qdel(progbar)
+			return //Special case - when we force doafters to end from this, the doafter should not modify doing since that would interfere with potential new doafters being started after the cancel.
+
 		if(isliving(user))
 			var/mob/living/L = user
 			if(L.IsStun() || L.IsParalyzed())
@@ -377,7 +398,7 @@ GLOBAL_LIST_EMPTY(species_list)
 			if(user.get_active_held_item() != holding)
 				. = 0
 				break
-	user.doing = 0
+	user.doing = NO_DOAFTER
 	if (progress)
 		qdel(progbar)
 
@@ -391,7 +412,7 @@ GLOBAL_LIST_EMPTY(species_list)
 
 	if(user.doing)
 		return 0
-	user.doing = 1
+	user.doing = NORMAL_DOAFTER
 
 	if(!islist(targets))
 		targets = list(targets)
@@ -428,6 +449,12 @@ GLOBAL_LIST_EMPTY(species_list)
 				. = 0
 				break
 
+			if(starttime < user.doafter_cancel_time)
+				. = 0
+				if(progbar)
+					qdel(progbar)
+				return //Special case - when we force doafters to end from this, the doafter should not modify doing since that would interfere with potential new doafters being started after the cancel.
+
 			if(uninterruptible)
 				continue
 
@@ -443,9 +470,28 @@ GLOBAL_LIST_EMPTY(species_list)
 				if((!drifting && user_loc != user.loc) || QDELETED(target) || originalloc[target] != target.loc || user.get_active_held_item() != holding || user.incapacitated() || (extra_checks && !extra_checks.Invoke()))
 					. = 0
 					break mainloop
-	user.doing = 0
+	user.doing = NO_DOAFTER
 	if(progbar)
 		qdel(progbar)
+
+/**
+ * Terminates (fails) all doafters by this mob that were started BEFORE the current tick. 
+ * * PERMITS doafters started during the same tick. Intended as "soft-cancel" that allows for something else to start during the same tick.
+ */
+/mob/proc/omni_stop_doafters()
+	if(!doing)
+		return
+	doing = NO_DOAFTER
+	doafter_cancel_time = world.time
+
+/**
+ * Akin to `omni_stop_doafters()`, but does not terminate if current doafter permits moving.
+ */
+/mob/proc/move_stop_doafters()
+	if(doing != NORMAL_DOAFTER)
+		return
+	doing = NO_DOAFTER
+	doafter_cancel_time = world.time
 
 /proc/is_species(A, species_datum)
 	. = FALSE
