@@ -263,7 +263,7 @@
 	icon_state = "sweetroll"
 	slices_num = 0
 	list_reagents = list(/datum/reagent/consumable/nutriment = 13)
-	w_class = WEIGHT_CLASS_small
+	w_class = WEIGHT_CLASS_SMALL
 	tastes = list("sweetness and sugar" = 1)
 	foodtype = GRAIN | SUGAR
 	bitesize = 2
@@ -278,14 +278,14 @@
 	subtype_reqs = FALSE
 	craftdiff = 1
 
-/obj/item/reagent_containers/food/snacks/rogue/bun/honey
+/obj/item/reagent_containers/food/snacks/rogue/honeybun
 	name = "honey bun"
 	desc = "Delectable, fluffy and sweet."
 	icon = 'icons/roguetown/items/food.dmi'
 	icon_state = "honeybun"
 	slices_num = 0
 	list_reagents = list(/datum/reagent/consumable/nutriment = 13, /datum/reagent/consumable/honey = 5)
-	w_class = WEIGHT_CLASS_small
+	w_class = WEIGHT_CLASS_SMALL
 	tastes = list("sweetness and light" = 1)
 	foodtype = GRAIN | SUGAR
 	bitesize = 2
