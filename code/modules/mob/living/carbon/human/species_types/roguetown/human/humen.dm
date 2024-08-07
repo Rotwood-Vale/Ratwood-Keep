@@ -78,6 +78,7 @@
 		"Shalvistine" = SKIN_COLOR_SHALVISTINE,
 		"Lalvestine" = SKIN_COLOR_LALVESTINE,
 		"Ebon" = SKIN_COLOR_EBON,
+		"Kazengun" = SKIN_COLOR_KAZENGUN
 	)
 
 /datum/species/human/northern/get_hairc_list()

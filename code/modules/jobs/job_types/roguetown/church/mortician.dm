@@ -14,7 +14,7 @@
 	outfit = /datum/outfit/job/roguetown/undertaker
 	display_order = JDO_GRAVEMAN
 	give_bank_account = TRUE
-	min_pq = -5
+	min_pq = 0
 	max_pq = null
 
 /datum/outfit/job/roguetown/undertaker

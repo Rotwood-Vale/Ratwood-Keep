@@ -19,7 +19,7 @@
 	outfit = /datum/outfit/job/roguetown/magician
 	whitelist_req = TRUE
 	give_bank_account = 47
-	min_pq = 2
+	min_pq = 0
 	max_pq = null
 
 	allow_custom_genitals = TRUE

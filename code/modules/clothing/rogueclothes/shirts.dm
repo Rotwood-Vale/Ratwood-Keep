@@ -221,10 +221,10 @@
 	icon_state = "silkdress"
 	item_state = "silkdress"
 	color = "#e6e5e5"
-	
+
 /obj/item/clothing/suit/roguetown/shirt/dress/silkdress/princess
 	color = CLOTHING_WHITE
-	
+
 /obj/item/clothing/suit/roguetown/shirt/dress/silkdress/princess/Initialize()
 	. = ..()
 	if(GLOB.lordprimary)
@@ -235,13 +235,13 @@
 /obj/item/clothing/suit/roguetown/shirt/dress/silkdress/princess/Destroy()
 	GLOB.lordcolor -= src
 	return ..()
-	
+
 /obj/item/clothing/suit/roguetown/shirt/dress/silkdress/black
 	color = CLOTHING_BLACK
 
 /obj/item/clothing/suit/roguetown/shirt/dress/silkdress/green
 	color = CLOTHING_DARK_GREEN
-	
+
 /obj/item/clothing/suit/roguetown/shirt/dress/silkdress/random/Initialize()
 	. = ..()
 	color = pick("#e6e5e5", "#52BE80", "#C39BD3", "#EC7063","#5DADE2")
@@ -259,6 +259,10 @@
 /obj/item/clothing/suit/roguetown/shirt/dress/gen/sexy/Initialize()
 	. = ..()
 	color = pick("#a90707", "#16239a", "#d68fbd", CLOTHING_BLACK)
+
+/obj/item/clothing/suit/roguetown/shirt/dress/gen/sexy/black/Initialize()
+	. = ..()
+	color = CLOTHING_BLACK
 
 /obj/item/clothing/suit/roguetown/shirt/undershirt/webs
 	name = "webbed shirt"
@@ -297,35 +301,37 @@
 	r_sleeve_status = SLEEVE_NORMAL
 	l_sleeve_status = SLEEVE_NORMAL
 	var/picked = FALSE
-	colorgrenz = TRUE
 
-/obj/item/clothing/suit/roguetown/shirt/grenzelhoft/attack_right()
+/obj/item/clothing/suit/roguetown/shirt/grenzelhoft/attack_right(mob/user)
 	..()
 	if(!picked)
 		var/list/colors = list(
-		"PURPLE"="#865c9c",
-		"RED"="#933030",
-		"BROWN"="#685542",
-		"GREEN"="#79763f",
-		"BLUE"="#395480",
-		"YELLOW"="#b5b004",
-		"TEAL"="#249589",
-		"WHITE"="#ffffff",
-		"ORANGE"="#b86f0c",
-		"MAJENTA"="#962e5c")
+		"Swan White"="#ffffff",
+		"Lavender"="#865c9c",
+		"Royal Purple"="#5E4687",
+		"Wine Rouge"="#752B55",
+		"Sow's skin"="#CE929F",
+		"Knight's Red"="#933030",
+		"Madroot Red"="#AD4545",
+		"Marigold Orange"="#E2A844",
+		"Politely, Yuck"="#685542",
+		"Astrata's Yellow"="#FFFD8D",
+		"Bog Green"="#375B48",
+		"Seafoam Green"="#49938B",
+		"Woad Blue"="#395480",
+		"Cornflower Blue"="#749EE8",
+		"Blacksteel Grey"="#404040",)
 
-		var/mob/living/carbon/human/L = loc
-		var/choice = input(L, "Choose a color.", "GRENZELHOFTIAN COLORPLEX") as anything in colors
+		var/choice = input(user, "Choose a color.", "Grenzelhoft colors") as anything in colors
 		var/playerchoice = colors[choice]
 		picked = TRUE
 		detail_color = playerchoice
+		detail_tag = "_detail"
 		update_icon()
-		for(var/obj/item/clothing/V in L.get_equipped_items(FALSE))
-			testing("clothes to color are [V]")
-			if(V.colorgrenz)
-				V.detail_color = playerchoice
-				V.update_icon()
-		L.regenerate_icons()
+		if(loc == user && ishuman(user))
+			var/mob/living/carbon/H = user
+			H.update_inv_shirt()
+
 
 
 

@@ -27,7 +27,7 @@ GLOBAL_LIST_EMPTY(lord_titles)
 		\
 		This role allows for full customization."
 	whitelist_req = FALSE
-	min_pq = 10
+	min_pq = 0
 	max_pq = null
 	give_bank_account = 1000
 	required = TRUE

@@ -14,8 +14,8 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 	antag_hud_type = ANTAG_HUD_VAMPIRE
 	antag_hud_name = "Vlord"
 	confess_lines = list(
-		"I AM ANCIENT", 
-		"I AM THE LAND", 
+		"I AM ANCIENT",
+		"I AM THE LAND",
 		"CHILD OF KAIN!",
 	)
 	var/isspawn = FALSE
@@ -312,13 +312,13 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 /datum/antagonist/vampirelord/proc/finalize_vampire()
 	owner.current.forceMove(pick(GLOB.vlord_starts))
 	owner.current.playsound_local(get_turf(owner.current), 'sound/music/vampintro.ogg', 80, FALSE, pressure_affected = FALSE)
-	
+
 
 /datum/antagonist/vampirelord/proc/finalize_vampire_lesser()
 	if(!sired)
 		owner.current.forceMove(pick(GLOB.vspawn_starts))
 	owner.current.playsound_local(get_turf(owner.current), 'sound/music/vampintro.ogg', 80, FALSE, pressure_affected = FALSE)
-	
+
 
 /datum/antagonist/vampirelord/proc/vamp_look()
 	var/mob/living/carbon/human/V = owner.current
@@ -348,24 +348,6 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 		vitae = mypool.current
 	if(ascended)
 		return
-	if(world.time % 5)
-		if(GLOB.tod != "night")
-			if(isturf(H.loc))
-				var/turf/T = H.loc
-				if(T.can_see_sky())
-					if(T.get_lumcount() > 0.15)
-						if(!isspawn)
-							to_chat(H, span_warning("Astrata spurns me! I must get out of her rays!")) // VLord is more punished for daylight excursions.
-							var/turf/N = H.loc
-							if(N.can_see_sky())
-								if(N.get_lumcount() > 0.15)
-									H.fire_act(3)
-									handle_vitae(-500)
-							to_chat(H, span_warning("That was too close. I must avoid the sun."))
-						else if (isspawn && !disguised)
-							H.fire_act(1,5)
-							handle_vitae(-10)
-
 	if(H.on_fire)
 		if(disguised)
 			last_transform = world.time
@@ -382,7 +364,6 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 			if(disguised)
 				to_chat(H, span_warning("My disguise fails!"))
 				H.vampire_undisguise(src)
-	handle_vitae(-1)
 
 /datum/antagonist/vampirelord/proc/handle_vitae(change, tribute)
 	var/tempcurrent = vitae
@@ -474,8 +455,8 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 	name = "Vampire Spawn"
 	antag_hud_name = "Vspawn"
 	confess_lines = list(
-		"THE CRIMSON CALLS!", 
-		"MY MASTER COMMANDS", 
+		"THE CRIMSON CALLS!",
+		"MY MASTER COMMANDS",
 		"THE SUN IS ENEMY!",
 	)
 	isspawn = TRUE
@@ -1021,7 +1002,7 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 /obj/item/clothing/neck/roguetown/portalamulet/Initialize()
 	GLOB.vampire_objects |= src
 	. = ..()
-	
+
 /obj/item/clothing/neck/roguetown/portalamulet/Destroy()
 	GLOB.vampire_objects -= src
 	return ..()
@@ -1034,7 +1015,7 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 /obj/structure/vampire/Initialize()
 	GLOB.vampire_objects |= src
 	. = ..()
-	
+
 /obj/structure/vampire/Destroy()
 	GLOB.vampire_objects -= src
 	return ..()
@@ -1302,7 +1283,7 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 		for(var/obj/item/clothing/neck/roguetown/psicross/silver/I in L.contents) //Subpath fix.
 			found_psycross = TRUE
 			break
-			
+
 		if(bloodroll >= willroll)
 			if(found_psycross == TRUE)
 				to_chat(L, "<font color='white'>The silver psycross shines and protect me from the unholy magic.</font>")
@@ -1312,7 +1293,7 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 				to_chat(user, "Their mind gives way, they will soon be asleep.")
 				sleep(50)
 				L.Sleeping(300)
-				
+
 		if(willroll >= bloodroll)
 			if(found_psycross == TRUE)
 				to_chat(L, "<font color='white'>The silver psycross shines and protect me from the unholy magic.</font>")

@@ -43,6 +43,15 @@
 		armor = /obj/item/clothing/suit/roguetown/armor/leather/vest/black
 		head = /obj/item/clothing/head/roguetown/fancyhat
 	else
+		switch(H.patron?.type)
+			if(/datum/patron/divine/eora) //Eoran loadouts
+				armor = /obj/item/clothing/suit/roguetown/shirt/dress/gen/sexy/black
+				pants = pick(/obj/item/clothing/under/roguetown/tights/stockings/silk/black, /obj/item/clothing/under/roguetown/tights/stockings/fishnet/black)
+				head  = /obj/item/clothing/head/peaceflower
+			else
+				armor = /obj/item/clothing/suit/roguetown/shirt/dress/gen
+				pants = pick(/obj/item/clothing/under/roguetown/tights/stockings/black, /obj/item/clothing/under/roguetown/tights/stockings/white) //Added stockings for the maids
+
 		armor = /obj/item/clothing/suit/roguetown/shirt/dress/gen/black
 		shoes = /obj/item/clothing/shoes/roguetown/simpleshoes
 		cloak = /obj/item/clothing/cloak/apron/waist

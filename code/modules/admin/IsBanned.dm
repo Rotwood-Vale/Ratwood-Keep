@@ -45,7 +45,7 @@ GLOBAL_VAR(last_connection)
 					addclientmessage(ckey,span_adminnotice("I have been allowed to bypass the whitelist"))
 			else
 				log_access("Failed Login: [key] - Not on whitelist")
-				return list("reason"="whitelist", "desc" = "\nBecome whitelisted! discord.gg/bx9c7ha5Qk")
+				return list("reason"="whitelist", "desc" = "\nBecome whitelisted! discord.gg/NCFXUAgCPT")
 /*
 #ifdef MATURESERVER
 	if(!check_whitelist(ckey))

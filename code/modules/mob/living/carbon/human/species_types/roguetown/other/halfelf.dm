@@ -81,6 +81,7 @@
 		"Walnut-Stine" = SKIN_COLOR_WALNUT_STINE,
 		"Etrustcan-Dandelion" = SKIN_COLOR_ETRUSTCAN_DANDELION,
 		"Ebon-Born" = SKIN_COLOR_EBON_BORN,
+		"Kaze-Lotus" = SKIN_COLOR_KAZE_LOTUS
 	)
 
 /datum/species/human/halfelf/get_hairc_list()
