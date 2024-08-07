@@ -196,7 +196,7 @@
 						to_chat(user, span_warning("Sticking an inactive [M.name] into the frame would sort of defeat the purpose."))
 						return
 
-					if(!CONFIG_GET(flag/allow_ai) || (is_banned_from(M.brainmob.ckey, "AI") && !QDELETED(src) && !QDELETED(user) && !QDELETED(M) && !QDELETED(user) && Adjacent(user)))
+					if(!CONFIG_GET(flag/allow_ai) && !QDELETED(src) && !QDELETED(user) && !QDELETED(M) && !QDELETED(user) && Adjacent(user))
 						if(!QDELETED(M))
 							to_chat(user, span_warning("This [M.name] does not seem to fit!"))
 						return

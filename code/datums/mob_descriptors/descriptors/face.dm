@@ -153,3 +153,6 @@
 
 /datum/mob_descriptor/face_exp/smug
 	name = "Smug"
+
+/datum/mob_descriptor/face_exp/curious
+	name = "Curious"

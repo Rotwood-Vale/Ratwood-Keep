@@ -57,6 +57,7 @@
 	righthand_file = 'icons/mob/inhands/equipment/custodial_righthand.dmi'
 	w_class = WEIGHT_CLASS_TINY
 	item_flags = NOBLUDGEON
+	grind_results = list(/datum/reagent/lye = 15)
 	throwforce = 0
 	throw_speed = 1
 	throw_range = 7
