@@ -602,6 +602,11 @@
 	block2add = FOV_RIGHT|FOV_LEFT
 	smeltresult = /obj/item/ingot/steel
 
+/obj/item/clothing/head/roguetown/helmet/heavy/bucket/gold
+	desc = "A helmet which covers the whole of the head. Offers excellent protection. This one has a golden cross-shaped brow."
+	icon_state = "topfhelm_gold"
+	item_state = "topfhelm_gold"
+
 /obj/item/clothing/head/roguetown/helmet/heavy/astratahelm
 	name = "astrata helmet"
 	desc = "Headwear commonly worn by Templars in service to Astrata. The firstborn child's light will forever shine on within its crest."
