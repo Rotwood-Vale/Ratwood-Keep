@@ -43,12 +43,12 @@
 	OFFSET_NECK_F = list(0,1), OFFSET_MOUTH_F = list(0,1), OFFSET_PANTS_F = list(0,1), \
 	OFFSET_SHIRT_F = list(0,1), OFFSET_ARMOR_F = list(0,1), OFFSET_UNDIES_F = list(0,1))
 	specstats = list(
-		"strength" = 2, 
-		"perception" = 0, 
-		"intelligence" = -2, 
-		"constitution" = 2, 
-		"endurance" = 1, 
-		"speed" = -2, 
+		"strength" = 2,
+		"perception" = 0,
+		"intelligence" = -2,
+		"constitution" = 2,
+		"endurance" = 1,
+		"speed" = -2,
 		"fortune" = 0
 		)
 	specstats_m = null
@@ -145,5 +145,19 @@
 /datum/species/halforc/random_surname()
 	return
 
+//Groups of Accents for each race set by associated 'skin_tone', see 'get_skin_list' above
+// "full" group in JSON lists
 /datum/species/halforc/get_accent(mob/living/carbon/human/H)
-	return strings("middlespeak.json", "middle")
+		return strings("middlespeak.json", "full")
+
+// "start" group in JSON lists
+/datum/species/halforc/get_accent_start(mob/living/carbon/human/H)
+		return strings("middlespeak.json", "start")
+
+// "end" group in JSON lists
+/datum/species/halforc/get_accent_end(mob/living/carbon/human/H)
+		return strings("middlespeak.json", "end")
+
+// "syllable" group in JSON lists
+/datum/species/halforc/get_accent_any(mob/living/carbon/human/H)
+		return strings("middlespeak.json", "syllable")
