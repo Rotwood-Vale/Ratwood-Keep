@@ -28,12 +28,12 @@
 		OFFSET_SHIRT_F = list(0,0), OFFSET_ARMOR_F = list(0,0), OFFSET_UNDIES_F = list(0,0), \
 		)
 	specstats = list(
-		"strength" = 0, 
-		"perception" = 0, 
-		"intelligence" = 1, 
-		"constitution" = 1, 
-		"endurance" = 0, 
-		"speed" = -1, 
+		"strength" = 0,
+		"perception" = 0,
+		"intelligence" = 1,
+		"constitution" = 1,
+		"endurance" = 0,
+		"speed" = -1,
 		"fortune" = 0
 		)
 	enflamed_icon = "widefire"
@@ -166,3 +166,20 @@
 	returned["mcolor2"] = second_color
 	returned["mcolor3"] = second_color
 	return returned
+
+//Groups of Accents for each race set by associated 'skin_tone', see 'get_skin_list' above
+// "full" group in JSON lists
+/datum/species/dracon/get_accent(mob/living/carbon/human/H)
+		return strings("hissy_replacement.json", "full")
+
+// "start" group in JSON lists
+/datum/species/dracon/get_accent_start(mob/living/carbon/human/H)
+		return strings("hissy_replacement.json", "start")
+
+// "end" group in JSON lists
+/datum/species/dracon/get_accent_end(mob/living/carbon/human/H)
+		return strings("hissy_replacement.json", "end")
+
+// "syllable" group in JSON lists
+/datum/species/dracon/get_accent_any(mob/living/carbon/human/H)
+		return strings("hissy_replacement.json", "syllable")
