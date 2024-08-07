@@ -38,8 +38,7 @@
 				index = H.real_name
 			S.name = "watchman tabard ([index])"
 
-/datum/outfit/job/roguetown/guardsman/pre_equip(mob/living/carbon/human/H)
-	. = ..()
+/datum/outfit/job/roguetown/guardsman
 	pants = /obj/item/clothing/under/roguetown/chainlegs
 	cloak = /obj/item/clothing/cloak/stabard/guard
 	shirt = /obj/item/clothing/suit/roguetown/armor/gambeson
@@ -48,12 +47,6 @@
 	belt = /obj/item/storage/belt/rogue/leather/black
 	wrists = /obj/item/clothing/wrists/roguetown/bracers		//Would seperate to leather bracers for archer for dodge but - funnily, armor class doesn't exist on bracers.
 	backr = /obj/item/storage/backpack/rogue/satchel/black
-	if(H.gender == FEMALE)
-		var/acceptable = list("Tomboy", "Bob", "Curly Short")
-		if(!(H.hairstyle in acceptable))
-			H.hairstyle = pick(acceptable)
-			H.update_hair()
-	H.verbs |= /mob/proc/haltyell
 
 /*Design philosophy: Men and women from various areas of life, from hunters to street-brawlers and more 'veteran' levy-men. Know less skills overall than Bog, but far more specialized.
 Footsman is basically a regular foots-soldier with gear to combat criminals, specializes in maces, polearms, and decent flail/sword training.
@@ -99,6 +92,7 @@ Archer is basically a 'bounty-catcher' in function, less specialized at close-qu
 	belt = /obj/item/storage/belt/rogue/leather/black
 	gloves = /obj/item/clothing/gloves/roguetown/leather
 	backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger/steel = 1, /obj/item/rope/chain = 1)
+	H.verbs |= /mob/proc/haltyell
 
 /datum/advclass/watchman/archer
 	name = "Watch Archer"
@@ -142,6 +136,7 @@ Archer is basically a 'bounty-catcher' in function, less specialized at close-qu
 	belt = /obj/item/storage/belt/rogue/leather/black
 	gloves = /obj/item/clothing/gloves/roguetown/leather
 	backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger/steel = 1, /obj/item/rope/chain = 1)
+	H.verbs |= /mob/proc/haltyell
 
 /mob/proc/haltyell()
 	set name = "HALT!"

@@ -38,8 +38,7 @@
 				index = H.real_name
 			S.name = "man-at-arms jupon ([index])"
 
-/datum/outfit/job/roguetown/manorguard/pre_equip(mob/living/carbon/human/H)
-	. = ..()
+/datum/outfit/job/roguetown/manorguard
 	pants = /obj/item/clothing/under/roguetown/chainlegs
 	cloak = /obj/item/clothing/cloak/stabard/surcoat/guard
 	wrists = /obj/item/clothing/wrists/roguetown/bracers
@@ -49,12 +48,6 @@
 	beltl = /obj/item/keyring/guardcastle
 	belt = /obj/item/storage/belt/rogue/leather/black
 	backr = /obj/item/storage/backpack/rogue/satchel/black
-	if(H.gender == FEMALE)
-		var/acceptable = list("Tomboy", "Bob", "Curly Short")
-		if(!(H.hairstyle in acceptable))
-			H.hairstyle = pick(acceptable)
-			H.update_hair()
-	H.verbs |= /mob/proc/haltyell
 
 // Maces + Axes + Shield	-	Better armor, typical Man-at-Arms loadout
 /datum/advclass/manorguard/footsman
@@ -103,6 +96,7 @@
 		backl = /obj/item/rogueweapon/spear/billhook
 
 	backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger/steel/special = 1, /obj/item/rope/chain = 1)
+	H.verbs |= /mob/proc/haltyell
 
 // Shield + Swords + Crossbow/Bow	-	Lighter armor, but ranged + sword skill in exchange for it.
 /datum/advclass/manorguard/boltman
@@ -151,3 +145,4 @@
 	backl = /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow
 
 	backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger/steel/special = 1, /obj/item/rope/chain = 1)
+	H.verbs |= /mob/proc/haltyell
