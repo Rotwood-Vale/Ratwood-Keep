@@ -19,8 +19,6 @@
 	color = "#116611"
 	accessory_type = /datum/sprite_accessory/tail/lizard/smooth
 	icon_state = "lizardtail"
-	cooked_type = /obj/item/reagent_containers/food/snacks/rogue/meat/sisseantail
-	fried_type = /obj/item/reagent_containers/food/snacks/rogue/meat/sisseantail
 
 /obj/item/organ/tail/lizard/fake
 	name = "fabricated lizard tail"
@@ -72,5 +70,3 @@
 	color = "#116611"
 	accessory_type =  /datum/sprite_accessory/tail/lizard/kobold
 	icon_state = "koboldtail"
-	cooked_type = /obj/item/reagent_containers/food/snacks/rogue/meat/koboldtail
-	fried_type = /obj/item/reagent_containers/food/snacks/rogue/meat/koboldtail

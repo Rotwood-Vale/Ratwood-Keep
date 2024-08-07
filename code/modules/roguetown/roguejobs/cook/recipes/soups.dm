@@ -149,7 +149,8 @@
 		/obj/item/reagent_containers/food/snacks/grown/bean = 2,
 		/obj/item/reagent_containers/food/snacks/rogue/onionslice = 1,
 		/datum/reagent/consumable/cooking_oil = 2,
-		/datum/reagent/water = 5
+		/datum/reagent/water = 5,
+		/obj/item/reagent_containers/glass/bowl = 1
 	)
 	result = /obj/item/reagent_containers/food/snacks/rogue/refriedbeans
 	craftdiff = 5

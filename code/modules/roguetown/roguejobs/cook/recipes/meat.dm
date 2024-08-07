@@ -82,6 +82,7 @@
 	result = /obj/item/reagent_containers/food/snacks/rogue/meat/meatloaf
 	craftdiff = 3
 	subtype_reqs = TRUE
+	req_table = TRUE
 
 /datum/crafting_recipe/roguetown/cooking/wellington
 	name = "beef à la Kron"
@@ -93,3 +94,31 @@
 	result = /obj/item/reagent_containers/food/snacks/rogue/meat/wellington
 	craftdiff = 5
 	subtype_reqs = TRUE
+	req_table = TRUE
+
+/datum/crafting_recipe/roguetown/cooking/descaledrakian
+	name = "descale drakian wing"
+	reqs = list(/obj/item/organ/wings/dracon = 1)
+	tools = list(/obj/item/rogueweapon/huntingknife)
+	result = /obj/item/reagent_containers/food/snacks/rogue/meat/drakianwing
+	craftdiff = 2
+	subtype_reqs = TRUE
+	req_table = TRUE
+
+/datum/crafting_recipe/roguetown/cooking/descalesissean
+	name = "descale sissean tail"
+	reqs = list(/obj/item/organ/tail/lizard = 1)
+	tools = list(/obj/item/rogueweapon/huntingknife)
+	result = /obj/item/reagent_containers/food/snacks/rogue/meat/sisseantail
+	craftdiff = 2
+	subtype_reqs = TRUE
+	req_table = TRUE
+
+/datum/crafting_recipe/roguetown/cooking/descalekobold
+	name = "descale kobold tail"
+	reqs = list(/obj/item/organ/tail/kobold = 1)
+	tools = list(/obj/item/rogueweapon/huntingknife)
+	result = /obj/item/reagent_containers/food/snacks/rogue/meat/koboldtail
+	craftdiff = 2
+	subtype_reqs = TRUE
+	req_table = TRUE
