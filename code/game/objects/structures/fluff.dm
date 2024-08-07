@@ -962,6 +962,7 @@
 							I = new /obj/item/reagent_containers/powder/moondust(user.loc)
 							I = new /obj/item/reagent_containers/powder/moondust(user.loc)
 							I = new /obj/item/reagent_containers/powder/moondust(user.loc)
+							I = new /obj/item/slimepotion/lovepotion(user.loc)
 						if(3)
 							I = new /obj/item/clothing/suit/roguetown/armor/plate/scale(user.loc)
 						if(4)
