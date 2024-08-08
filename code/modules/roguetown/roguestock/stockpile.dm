@@ -184,3 +184,47 @@
 	transport_fee = 3
 	export_price = 5
 	importexport_amt = 5
+
+/datum/roguestock/stockpile/carp
+	name = "Carp"
+	desc = "A common freshwater fish."
+	item_type = /obj/item/reagent_containers/food/snacks/fish/carp
+	held_items = list(0, 0)
+	payout_price = 3
+	withdraw_price = 5
+	transport_fee = 1
+	export_price = 5
+	importexport_amt = 3
+
+/datum/roguestock/stockpile/eel
+	name = "Eel"
+	desc = "A sinuous fish."
+	item_type = /obj/item/reagent_containers/food/snacks/fish/eel
+	held_items = list(0, 0)
+	payout_price = 3
+	withdraw_price = 5
+	transport_fee = 3
+	export_price = 5
+	importexport_amt = 3
+
+/datum/roguestock/stockpile/angler
+	name = "Angler"
+	desc = "A sinuous fish."
+	item_type = /obj/item/reagent_containers/food/snacks/fish/angler
+	held_items = list(0, 0)
+	payout_price = 5
+	withdraw_price = 8
+	transport_fee = 3
+	export_price = 8
+	importexport_amt = 3
+
+/datum/roguestock/stockpile/clownfish
+	name = "Clownfish"
+	desc = "A boring fish."
+	item_type = /obj/item/reagent_containers/food/snacks/fish/clownfish
+	held_items = list(0, 0)
+	payout_price = 8
+	withdraw_price = 11
+	transport_fee = 5
+	export_price = 11
+	importexport_amt = 3
