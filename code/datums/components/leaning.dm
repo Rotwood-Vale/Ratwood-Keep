@@ -11,7 +11,20 @@
 	MLparent.wallpressed = TRUE
 	MLparent.add_movespeed_modifier("wallpress", TRUE, 100, override = TRUE, multiplicative_slowdown = 3)
 	dir2wall = get_dir(parent, leaning_on)
-	
+	switch(dir2wall)
+	if(NORTH)
+		MLparent.setDir(SOUTH)
+		MLparent.set_mob_offsets("wall_press", _x = 0, _y = 20)
+	if(SOUTH)
+		MLparent.setDir(NORTH)
+		MLparent.set_mob_offsets("wall_press", _x = 0, _y = -10)
+	if(EAST)
+		MLparent.setDir(WEST)
+		MLparent.set_mob_offsets("wall_press", _x = 12, _y = 0)
+	if(WEST)
+		MLparent.setDir(EAST)
+		MLparent.set_mob_offsets("wall_press", _x = -12, _y = 0)
+
 	RegisterSignal(parent, COMSIG_MOVABLE_BUCKLE, PROC_REF(RemoveComponent))
 	RegisterSignal(parent, COMSIG_MOB_CMODE_ENABLED, PROC_REF(RemoveComponent))
 	RegisterSignal(parent, COMSIG_LIVING_MOBILITY_UPDATED, PROC_REF(mobility_check))
@@ -19,7 +32,6 @@
 	RegisterSignal(leaning_on, COMSIG_DOOR_OPEN, PROC_REF(collapse))
 	RegisterSignal(leaning_on, COMSIG_PARENT_QDELETING, PROC_REF(collapse))
 	
-	update_offsets()
 	. = ..()
 
 /datum/component/leaning/RemoveComponent()
@@ -64,21 +76,6 @@
 	if(leanable_location?.GetComponent(/datum/component/leanable))
 		return leanable_location
 	return null
-
-/datum/component/leaning/proc/update_offsets()
-	switch(dir2wall)
-		if(NORTH)
-			MLparent.setDir(SOUTH)
-			MLparent.set_mob_offsets("wall_press", _x = 0, _y = 20)
-		if(SOUTH)
-			MLparent.setDir(NORTH)
-			MLparent.set_mob_offsets("wall_press", _x = 0, _y = -10)
-		if(EAST)
-			MLparent.setDir(WEST)
-			MLparent.set_mob_offsets("wall_press", _x = 12, _y = 0)
-		if(WEST)
-			MLparent.setDir(EAST)
-			MLparent.set_mob_offsets("wall_press", _x = -12, _y = 0)
 
 /datum/component/leaning/proc/mobility_check(mob/living/L)
 	if(!(MLparent.mobility_flags & MOBILITY_STAND))
