@@ -890,6 +890,8 @@
 	pixelshifted = FALSE
 	pixelshift_x = 0
 	pixelshift_y = 0
+	pixelshift_layer = 0
+	layer = 4
 	reset_offsets("pixel_shift")
 
 /mob/living/Move(atom/newloc, direct, glide_size_override)
@@ -1628,7 +1630,9 @@
 	if(lying)
 		if(!lying_prev)
 			fall(!canstand_involuntary)
-		layer = LYING_MOB_LAYER //so mob lying always appear behind standing mobs
+		layer = LYING_MOB_LAYER
+		if (pixelshifted)
+			layer = LYING_MOB_LAYER + pixelshift_layer //so mob lying always appear behind standing mobs
 	else
 		if(layer == LYING_MOB_LAYER)
 			layer = initial(layer)
