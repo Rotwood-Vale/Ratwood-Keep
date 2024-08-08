@@ -1,11 +1,16 @@
 {
+    "full": {
 
-    "russian": {
+    },
+    "start": {
+        "who": "whom"
+    },
+    "end": {
+
+    },
+    "syllable": {
 		"c": "k",
 		"kh": "ch",
-		"r": "rr",
-		"yes": "da",
-		"hello": "privyet"
-		}
-		
+		"r": "rr"
+    }
 }

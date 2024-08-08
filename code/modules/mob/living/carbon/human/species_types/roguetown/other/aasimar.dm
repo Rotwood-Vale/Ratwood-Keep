@@ -44,12 +44,12 @@
 		OFFSET_SHIRT_F = list(0,0), OFFSET_ARMOR_F = list(0,0), OFFSET_UNDIES_F = list(0,0), \
 		)
 	specstats = list(
-		"strength" = -1, 
-		"perception" = 0, 
-		"intelligence" = 2, 
-		"constitution" = -2, 
-		"endurance" = 1, 
-		"speed" = 0, 
+		"strength" = -1,
+		"perception" = 0,
+		"intelligence" = 2,
+		"constitution" = -2,
+		"endurance" = 1,
+		"speed" = 0,
 		"fortune" = 1,
 		)
 	enflamed_icon = "widefire"
@@ -131,5 +131,19 @@
 /datum/species/aasimar/random_surname()
 	return
 
+//Groups of Accents for each race set by associated 'skin_tone', see 'get_skin_list' above
+// "full" group in JSON lists
 /datum/species/aasimar/get_accent(mob/living/carbon/human/H)
-	return strings("proper_replacement.json", "proper")
+	return strings("proper_replacement.json", "full")
+
+// "start" group in JSON lists
+/datum/species/aasimar/get_accent_start(mob/living/carbon/human/H)
+	return strings("proper_replacement.json", "start")
+
+// "end" group in JSON lists
+/datum/species/aasimar/get_accent_end(mob/living/carbon/human/H)
+	return strings("proper_replacement.json", "end")
+
+// "syllable" group in JSON lists
+/datum/species/aasimar/get_accent_any(mob/living/carbon/human/H)
+	return strings("proper_replacement.json", "syllable")

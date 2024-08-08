@@ -47,12 +47,12 @@
 		OFFSET_SHIRT_F = list(0,0), OFFSET_ARMOR_F = list(0,0), OFFSET_UNDIES_F = list(0,0), \
 		)
 	specstats = list(
-		"strength" = 0, 
-		"perception" = 1, 
-		"intelligence" = 2, 
-		"constitution" = -2, 
-		"endurance" = 1, 
-		"speed" = 0, 
+		"strength" = 0,
+		"perception" = 1,
+		"intelligence" = 2,
+		"constitution" = -2,
+		"endurance" = 1,
+		"speed" = 0,
 		"fortune" = -1
 		)
 	enflamed_icon = "widefire"
@@ -151,3 +151,20 @@
 
 /datum/species/tieberian/random_surname()
 	return " [pick(world.file2list("strings/rt/names/other/tieflast.txt"))]"
+
+//Groups of Accents for each race set by associated 'skin_tone', see 'get_skin_list' above
+// "full" group in JSON lists
+/datum/species/tieberian/get_accent(mob/living/carbon/human/H)
+		return strings("spanish_replacement.json", "full")
+
+// "start" group in JSON lists
+/datum/species/tieberian/get_accent_start(mob/living/carbon/human/H)
+		return strings("spanish_replacement.json", "start")
+
+// "end" group in JSON lists
+/datum/species/tieberian/get_accent_end(mob/living/carbon/human/H)
+		return strings("spanish_replacement.json", "end")
+
+// "syllable" group in JSON lists
+/datum/species/tieberian/get_accent_any(mob/living/carbon/human/H)
+		return strings("spanish_replacement.json", "syllable")
