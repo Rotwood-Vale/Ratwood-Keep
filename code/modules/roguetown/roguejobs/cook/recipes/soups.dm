@@ -129,29 +129,3 @@
 	result = /obj/item/reagent_containers/food/snacks/rogue/tieflingrice
 	craftdiff = 2
 	subtype_reqs = TRUE
-
-/obj/item/reagent_containers/food/snacks/rogue/refriedbeans
-	name = "beans that have been fried many times"
-	desc = "It's an art lost to time, only known by the most learned of tiefling scholars."
-	icon = 'icons/roguetown/items/food.dmi'
-	icon_state = "refriedbeans"
-	tastes = list("heat" = 1, "rice" = 1)
-	list_reagents = list(/datum/reagent/consumable/nutriment = 18)
-	eat_effect = /datum/status_effect/buff/foodbuff
-	warming = 10 MINUTES
-	rotprocess = 15 MINUTES
-	w_class = WEIGHT_CLASS_SMALL
-	trash = /obj/item/reagent_containers/glass/bowl
-
-/datum/crafting_recipe/roguetown/cooking/tieflingrice
-	name = "fry beans many times"
-	reqs = list(
-		/obj/item/reagent_containers/food/snacks/grown/bean = 2,
-		/obj/item/reagent_containers/food/snacks/rogue/onionslice = 1,
-		/datum/reagent/consumable/cooking_oil = 2,
-		/datum/reagent/water = 5,
-		/obj/item/reagent_containers/glass/bowl = 1
-	)
-	result = /obj/item/reagent_containers/food/snacks/rogue/refriedbeans
-	craftdiff = 5
-	subtype_reqs = TRUE
