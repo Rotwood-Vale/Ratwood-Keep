@@ -168,7 +168,7 @@ GLOBAL_VAR_INIT(farm_animals, FALSE)
 	var/swinging = FALSE
 
 	buckle_lying = FALSE
-	cmode = 1
+	cmode = TRUE
 
 	var/remains_type
 

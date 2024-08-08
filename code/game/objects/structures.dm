@@ -13,6 +13,7 @@
 	var/mob/living/structureclimber
 	var/broken = 0 //similar to machinery's stat BROKEN
 	var/hammer_repair
+	var/leanable = FALSE
 //	move_resist = MOVE_FORCE_STRONG
 
 /obj/structure/Initialize()
@@ -27,6 +28,8 @@
 		GLOB.redstone_objs += src
 		. = INITIALIZE_HINT_LATELOAD
 	GLOB.cameranet.updateVisibility(src)
+	if(leanable)
+		AddComponent(/datum/component/leanable)
 
 /obj/structure/Bumped(atom/movable/AM)
 	..()
