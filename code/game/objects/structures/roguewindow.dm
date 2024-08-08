@@ -35,8 +35,6 @@
 	update_icon()
 	if(night_variants)
 		GLOB.TodUpdate += src
-	if(leanable)
-		AddComponent(/datum/component/leanable)
 	return ..()
 
 /obj/structure/roguewindow/Destroy()
