@@ -1389,3 +1389,176 @@
 	set category = "Emotes"
 
 	emote("squint", intentional = TRUE)
+
+/datum/emote/living/yip
+	key = "yip"
+	key_third_person = "yips"
+	message = "yips."
+	emote_type = EMOTE_AUDIBLE
+
+/mob/living/carbon/human/verb/emote_yip()
+	set name = "yip"
+	set category = "Noises"
+
+	emote("yip", intentional = TRUE)
+
+/datum/emote/living/yip/can_run_emote(mob/living/user, status_check = TRUE , intentional)
+	. = ..()
+	if(. && iscarbon(user))
+		var/mob/living/carbon/C = user
+		if(C.silent || !C.can_speak_vocal())
+			message = "makes a muffled yip."
+
+/datum/emote/living/yap
+	key = "yap"
+	key_third_person = "yaps"
+	message = "yaps."
+	emote_type = EMOTE_AUDIBLE
+
+/mob/living/carbon/human/verb/emote_yap()
+	set name = "yap"
+	set category = "Noises"
+
+	emote("yap", intentional = TRUE)
+
+/datum/emote/living/yap/can_run_emote(mob/living/user, status_check = TRUE , intentional)
+	. = ..()
+	if(. && iscarbon(user))
+		var/mob/living/carbon/C = user
+		if(C.silent || !C.can_speak_vocal())
+			message = "makes a muffled yap."
+
+
+/datum/emote/living/coyhowl
+	key = "howl"
+	key_third_person = "howls"
+	message = "howls."
+	emote_type = EMOTE_AUDIBLE
+
+/mob/living/carbon/human/verb/emote_coyhowl()
+	set name = "howl"
+	set category = "Noises"
+
+	emote("howl", intentional = TRUE)
+
+/datum/emote/living/howl/can_run_emote(mob/living/user, status_check = TRUE , intentional)
+	. = ..()
+	if(. && iscarbon(user))
+		var/mob/living/carbon/C = user
+		if(C.silent || !C.can_speak_vocal())
+			message = "makes a muffled howl."
+
+
+/datum/emote/living/snap
+	key = "snap"
+	key_third_person = "snaps"
+	message = "snaps."
+	emote_type = EMOTE_AUDIBLE
+
+/mob/living/carbon/human/verb/emote_snap()
+	set name = "snap"
+	set category = "Noises"
+
+	emote("snap", intentional = TRUE)
+
+
+/datum/emote/living/catrage
+	key = "catrage"
+	key_third_person = "rages"
+	message = "rages."
+	emote_type = EMOTE_AUDIBLE
+
+/mob/living/carbon/human/verb/emote_catrage()
+	set name = "catrage"
+	set category = "Noises"
+
+	emote("catrage", intentional = TRUE)
+
+
+/datum/emote/living/bark
+	key = "bark"
+	key_third_person = "barks"
+	message = "barks."
+	emote_type = EMOTE_AUDIBLE
+
+/mob/living/carbon/human/verb/emote_bark()
+	set name = "bark"
+	set category = "Noises"
+
+	emote("bark", intentional = TRUE)
+
+/datum/emote/living/bark/can_run_emote(mob/living/user, status_check = TRUE , intentional)
+	. = ..()
+	if(. && iscarbon(user))
+		var/mob/living/carbon/C = user
+		if(C.silent || !C.can_speak_vocal())
+			message = "makes a muffled bark."
+
+/datum/emote/living/whine
+	key = "whine"
+	key_third_person = "whines"
+	message = "whine."
+	emote_type = EMOTE_AUDIBLE
+
+/mob/living/carbon/human/verb/emote_whine()
+	set name = "whine"
+	set category = "Noises"
+
+	emote("whine", intentional = TRUE)
+
+/datum/emote/living/whine/can_run_emote(mob/living/user, status_check = TRUE , intentional)
+	. = ..()
+	if(. && iscarbon(user))
+		var/mob/living/carbon/C = user
+		if(C.silent || !C.can_speak_vocal())
+			message = "makes a muffled whine."
+/datum/emote/living/cackle
+	key = "cackle"
+	key_third_person = "cackles"
+	message = "cackles."
+	emote_type = EMOTE_AUDIBLE
+
+/mob/living/carbon/human/verb/emote_cackle()
+	set name = "cackle"
+	set category = "Noises"
+
+	emote("cackle", intentional = TRUE)
+
+/datum/emote/living/cackle/can_run_emote(mob/living/user, status_check = TRUE , intentional)
+	. = ..()
+	if(. && iscarbon(user))
+		var/mob/living/carbon/C = user
+		if(C.silent || !C.can_speak_vocal())
+			message = "makes a muffled cackle."
+
+/datum/emote/living/blink
+	key = "blink"
+	key_third_person = "blinks"
+	message = "blinks."
+	emote_type = EMOTE_AUDIBLE
+
+/mob/living/carbon/human/verb/emote_blink()
+	set name = "blink"
+	set category = "Noises"
+
+	emote("blink", intentional = TRUE)
+
+
+/datum/emote/living/meow
+	key = "meow"
+	key_third_person = "meows"
+	message = "meows."
+	emote_type = EMOTE_AUDIBLE
+
+/mob/living/carbon/human/verb/emote_meow()
+	set name = "meow"
+	set category = "Noises"
+
+	emote("meow", intentional = TRUE)
+
+/datum/emote/living/meow/can_run_emote(mob/living/user, status_check = TRUE , intentional)
+	. = ..()
+	if(. && iscarbon(user))
+		var/mob/living/carbon/C = user
+		if(C.silent || !C.can_speak_vocal())
+			message = "makes a muffled meow."
