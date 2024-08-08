@@ -47,7 +47,7 @@
 	var/press_msg = "[leaning_mob] leans against [parent]."
 	if(istype(pressing_mob) && pressing_mob != leaning_mob)
 		pressing_mob.Move(get_step(pressing_mob, leaning_mob))
-		pressing_mob.SetDir(get_dir(pressing_mob, parent))
+		pressing_mob.setDir(get_dir(pressing_mob, parent))
 		press_msg = "[leaning_mob] is pushed against [parent] by [pressing_mob]."
 	leaning_mob.visible_message(span_info(press_msg))
 	leaning_mob.AddComponent(/datum/component/leaning, parent)
