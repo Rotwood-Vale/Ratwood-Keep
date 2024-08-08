@@ -238,6 +238,7 @@ GLOBAL_LIST_INIT(stone_personality_descs, list(
 	desc = stone_desc
 	force += bonus_force // This will result in a stone that has only 40 max at a extremely low chance damage at this time of this PR.
 	throwforce += bonus_force // It gets added to throw damage too
+	sellprice = bonus_force //funny shiny rock should worth more!
 	possible_item_intents = given_intent_list // And heres ur new extra intents too
 
 /obj/item/natural/stone/attackby(obj/item/W, mob/user, params)
