@@ -11,7 +11,7 @@
 	Most commonly, Aasimar are similar to Humans, albeit taller, and possess uncanny beauty. \
 	They have strangely colored skin and are more physically frail than the average Human. \
 	Because of their upbringing, they make for natural conduits for godly powers. \
-	Rockhills populace holds them with a mixture of uneasy fear or, and respect. \
+	Azure Peak's populace holds them with a mixture of uneasy fear or, and respect. \
 	It is also widely believed that an Aasimars death is a bad omen..."
 
 	skin_tone_wording = "Craft"

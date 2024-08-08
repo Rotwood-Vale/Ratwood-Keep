@@ -31,14 +31,13 @@
 	r_hand = /obj/item/bath/soap
 	l_hand = /obj/item/rogue/instrument/harp
 	mouth = /obj/item/roguekey/nightmaiden
-	if(H.gender == MALE)
-		pants =	/obj/item/clothing/under/roguetown/loincloth
-		belt =	/obj/item/storage/belt/rogue/leather/cloth
-	else
+	if(H.pronouns == SHE_HER)
 		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
 		armor = /obj/item/clothing/suit/roguetown/shirt/dress/gen/sexy
 		pants = /obj/item/clothing/under/roguetown/tights/stockings/fishnet/random //Added fishnet stockings to the wenches
-
+	else
+		pants =	/obj/item/clothing/under/roguetown/loincloth
+		belt =	/obj/item/storage/belt/rogue/leather/cloth
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/stealing, 3, TRUE)

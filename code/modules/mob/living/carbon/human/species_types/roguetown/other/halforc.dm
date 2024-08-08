@@ -11,7 +11,7 @@
 	more common visitors to fur trading posts and prospecting camps, eventually leading to half-orcs \
 	being born in these rough places otherwise devoid of a fairer sex. Your mother-clan is in thrall \
 	to the Ironmask, true orcs would kill you as a mongrel dog and your father’s people cannot decide \
-	between mere distrust and disgust. Yet somehow your wandering feet came to Rockhill, where \
+	between mere distrust and disgust. Yet somehow your wandering feet came to Azure Peak, where \
 	half-orcs ply muscle and their hardiness in the rough underbelly or outer reaches of society."
 
 	skin_tone_wording = "Clan"

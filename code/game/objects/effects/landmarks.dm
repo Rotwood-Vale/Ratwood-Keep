@@ -139,7 +139,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	delete_after_roundstart = FALSE
 
 /obj/effect/landmark/start/lord
-	name = "King"
+	name = "Monarch"
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/knight
@@ -328,7 +328,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/lady
-	name = "Queen Consort"
+	name = "Consort"
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/prince
@@ -336,7 +336,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/prisonerr
-	name = "Prisoner (Rockhill)"
+	name = "Prisoner (Azure Keep)"
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/prisonerb

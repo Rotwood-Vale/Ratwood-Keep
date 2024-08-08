@@ -2,8 +2,7 @@ GLOBAL_VAR(lordsurname)
 GLOBAL_LIST_EMPTY(lord_titles)
 
 /datum/job/roguetown/lord
-	title = "King"
-	f_title = "Queen"
+	title = "Monarch"
 	flag = LORD
 	department_flag = NOBLEMEN
 	faction = "Station"
@@ -35,8 +34,7 @@ GLOBAL_LIST_EMPTY(lord_titles)
 	allow_custom_genitals = TRUE
 
 /datum/job/roguetown/exlord //just used to change the lords title
-	title = "King Emeritus"
-	f_title = "Queen Emeritus"
+	title = "Monarch Emeritus"
 	flag = LORD
 	department_flag = NOBLEMEN
 	faction = "Station"
@@ -56,12 +54,8 @@ GLOBAL_LIST_EMPTY(lord_titles)
 		else
 			GLOB.lordsurname = "of [L.real_name]"
 		SSticker.select_ruler()
-		if(L.gender != FEMALE)
-			to_chat(world, "<b><span class='notice'><span class='big'>[L.real_name] is King of Rockhill.</span></span></b>")
-			addtimer(CALLBACK(L, TYPE_PROC_REF(/mob, lord_color_choice)), 50)
-		else
-			to_chat(world, "<b><span class='notice'><span class='big'>[L.real_name] is Queen of Rockhill.</span></span></b>")
-			addtimer(CALLBACK(L, TYPE_PROC_REF(/mob, lord_color_choice)), 50)
+		to_chat(world, "<b><span class='notice'><span class='big'>[L.real_name] is Monarch of Azure Peak.</span></span></b>")
+		addtimer(CALLBACK(L, TYPE_PROC_REF(/mob, lord_color_choice)), 50)
 
 /datum/outfit/job/roguetown/lord/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -72,7 +66,34 @@ GLOBAL_LIST_EMPTY(lord_titles)
 	l_hand = /obj/item/rogueweapon/lordscepter
 	backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger/steel/special = 1)
 	id = /obj/item/clothing/ring/active/nomag
-	if(H.gender == MALE)
+	if(H.pronouns == SHE_HER)
+		pants = /obj/item/clothing/under/roguetown/tights/black
+		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/black
+		armor = /obj/item/clothing/suit/roguetown/armor/leather/vest/black
+		shoes = /obj/item/clothing/shoes/roguetown/shortboots
+		if(H.mind)
+			H.mind.adjust_skillrank(/datum/skill/combat/polearms, 2, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/maces, 2, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 3, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/swords, 4, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/knives, 3, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/swimming, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/climbing, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/athletics, 4, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/reading, 4, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/riding, 3, TRUE)
+			if(H.age == AGE_OLD)
+				H.mind.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE)
+			H.change_stat("strength", 1)
+			H.change_stat("intelligence", 3)
+			H.change_stat("endurance", 3)
+			H.change_stat("speed", 1)
+			H.change_stat("perception", 2)
+			H.change_stat("fortune", 5)
+		H.dna.species.soundpack_m = new /datum/voicepack/male/evil()
+	else
 		pants = /obj/item/clothing/under/roguetown/tights/black
 		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/black
 		armor = /obj/item/clothing/suit/roguetown/armor/leather/vest/black
@@ -98,35 +119,13 @@ GLOBAL_LIST_EMPTY(lord_titles)
 			H.change_stat("speed", 1)
 			H.change_stat("perception", 2)
 			H.change_stat("fortune", 5)
-		H.dna.species.soundpack_m = new /datum/voicepack/male/evil()
-
-		if(H.wear_mask)
-			if(istype(H.wear_mask, /obj/item/clothing/mask/rogue/eyepatch))
-				qdel(H.wear_mask)
-				mask = /obj/item/clothing/mask/rogue/lordmask
-			if(istype(H.wear_mask, /obj/item/clothing/mask/rogue/eyepatch/left))
-				qdel(H.wear_mask)
-				mask = /obj/item/clothing/mask/rogue/lordmask/l
-	else //Queen, doesn't do anything at the moment as Lord is male-only
-		armor = /obj/item/clothing/suit/roguetown/armor/armordress
-		belt = /obj/item/storage/belt/rogue/leather/plaquegold
-		shoes = /obj/item/clothing/shoes/roguetown/shortboots
-		if(H.mind)
-			H.mind.adjust_skillrank(/datum/skill/combat/swords, 4, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/combat/knives, 3, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/misc/swimming, 1, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/misc/climbing, 1, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/misc/athletics, 4, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/misc/reading, 4, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/misc/medicine, 2, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/combat/bows, 3, TRUE)
-			if(H.age == AGE_OLD)
-				H.mind.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE)
-			H.change_stat("intelligence", 3)
-			H.change_stat("endurance", 3)
-			H.change_stat("speed", 2)
-			H.change_stat("perception", 2)
-			H.change_stat("fortune", 5)
+	if(H.wear_mask)
+		if(istype(H.wear_mask, /obj/item/clothing/mask/rogue/eyepatch))
+			qdel(H.wear_mask)
+			mask = /obj/item/clothing/mask/rogue/lordmask
+		if(istype(H.wear_mask, /obj/item/clothing/mask/rogue/eyepatch/left))
+			qdel(H.wear_mask)
+			mask = /obj/item/clothing/mask/rogue/lordmask/l
 
 	ADD_TRAIT(H, TRAIT_NOBLE, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_NOSEGRAB, TRAIT_GENERIC)
