@@ -466,7 +466,7 @@
 /obj/item/reagent_containers/food/snacks/grown/plumphelmet
 	seed = /obj/item/seeds/mycelium/plumphelmet
 	name = "plump helmet mushroom"
-	icon_state = "plump helmet"
+	icon_state = "plumphelmet"
 	filling_color = "#d0abda"
 	bitesize = 3
 	foodtype = VEGETABLES
