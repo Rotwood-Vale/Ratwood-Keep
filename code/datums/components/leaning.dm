@@ -17,7 +17,7 @@
 	RegisterSignal(leaning_on, COMSIG_DOOR_OPEN, PROC_REF(collapse))
 	RegisterSignal(leaning_on, COMSIG_PARENT_QDELETING, PROC_REF(collapse))
 
-	update_offsets()
+	update_dir()
 	. = ..()
 
 /datum/component/leaning/RemoveComponent()
@@ -35,7 +35,7 @@
 	if(!MLparent.fixedeye)
 		RemoveComponent()
 		return
-	if(!new_leaning_on) 
+	if(!new_leaning_on || !new_leaning_on.density) 
 		RemoveComponent()
 		return
 	if(!leaning_on.Adjacent(new_leaning_on))
@@ -46,10 +46,10 @@
 	RegisterSignal(new_leaning_on, COMSIG_DOOR_OPEN, PROC_REF(collapse))
 	RegisterSignal(new_leaning_on, COMSIG_PARENT_QDELETING, PROC_REF(collapse))
 	leaning_on = new_leaning_on
-	update_offsets()
+	update_dir()
 
 /datum/component/leaning/proc/get_leanable(turf/T)
-	var/turf/leanable_location = get_step(T, get_dir(parent, leaning_on))
+	var/turf/leanable_location = get_step(T, dir2wall)
 	var/obj/structure/leanable_structure = locate(/obj/structure) in leanable_location
 	if(leanable_structure?.GetComponent(/datum/component/leanable))
 		return leanable_structure
@@ -59,7 +59,7 @@
 			return leanable_turf
 	return null
 
-/datum/component/leaning/proc/update_offsets()
+/datum/component/leaning/proc/update_dir()
 	dir2wall = get_dir(parent, leaning_on)
 	switch(dir2wall)
 		if(NORTH)

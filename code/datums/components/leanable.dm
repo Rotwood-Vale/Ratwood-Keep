@@ -3,7 +3,9 @@
 /datum/component/leanable/Initialize()
 	RegisterSignal(parent, COMSIG_MOUSEDROPPED_ONTO, PROC_REF(handle_mousedrop))
 
-/datum/component/leanable/proc/get_highest_grab_state_on(mob/living/carbon/human/grabber, mob/living/carbon/human/victim)
+/datum/component/leanable/proc/is_aggro_grabbing(mob/living/grabber, mob/living/victim)
+	if (!(grabber in victim.grabbedby))
+		return FALSE
 	var/grabstate = null
 	if(grabber.r_grab && grabber.r_grab.grabbed == victim)
 		if(grabstate == null || grabber.r_grab.grab_state > grabstate)
@@ -11,10 +13,10 @@
 	if(grabber.l_grab && grabber.l_grab.grabbed == victim)
 		if(grabstate == null || grabber.l_grab.grab_state > grabstate)
 			grabstate = grabber.l_grab.grab_state
-	return grabstate
+	return (grabstate == GRAB_AGGRESSIVE)
 
 /datum/component/leanable/proc/handle_mousedrop(datum/source, atom/movable/O, mob/user)
-	if((user in O.grabbedby) || (!user == O))
+	if(!is_aggro_grabbing(user, O) && !(user == O))
 		return
 	if(!isliving(O))
 		return
@@ -25,8 +27,10 @@
 			return
 	wallpress(L)
 
-
 /datum/component/leanable/proc/wallpress(mob/living/leaning_mob, mob/living/pressing_mob = null)
+	var/atom/A = parent
+	if(!A.density)
+		return
 	if(leaning_mob.cmode) // no combat leaning memes
 		return
 	if(leaning_mob.GetComponent(/datum/component/leaning))
@@ -35,16 +39,14 @@
 		return
 	if(leaning_mob.buckled)
 		return
-	// This can probably be simplified but I can't be assed to
 	if(!(leaning_mob.mobility_flags & MOBILITY_STAND))
-		return
-	if(!(leaning_mob.mobility_flags & MOBILITY_MOVE))
 		return
 	var/dir2wall = get_dir(leaning_mob, parent)
 	if(!(dir2wall in GLOB.cardinals))
 		return
 	var/press_msg = "[leaning_mob] leans against [parent]."
 	if(istype(pressing_mob) && pressing_mob != leaning_mob)
+		pressing_mob.Move(get_step(pressing_mob, leaning_mob))
 		press_msg = "[leaning_mob] is pushed against [parent] by [pressing_mob]."
 	leaning_mob.visible_message(span_info(press_msg))
 	leaning_mob.AddComponent(/datum/component/leaning, parent)
