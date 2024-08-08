@@ -79,6 +79,12 @@
 	created_item = /obj/item/flashlight/flare/torch/lantern
 	i_type = "General"
 
+/datum/anvil_recipe/tools/steelbelt
+	name = "Steel Belt"
+	req_bar = /obj/item/ingot/steel
+	created_item = /obj/item/storage/belt/rogue/leather/hand
+	i_type = "General"
+
 /datum/anvil_recipe/tools/chains
 	name = "Chains"
 	req_bar = /obj/item/ingot/iron
