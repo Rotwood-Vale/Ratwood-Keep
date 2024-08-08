@@ -1,6 +1,8 @@
 
 GLOBAL_LIST_INIT(character_flaws, list(
 	"Alcoholic"=/datum/charflaw/addiction/alcoholic,
+	"Devout Follower"=/datum/charflaw/addiction/godfearing,
+	"Colorblind"=/datum/charflaw/colorblind,
 	"Smoker"=/datum/charflaw/addiction/smoker,
 	"Junkie"=/datum/charflaw/addiction/junkie,
 	"Greedy"=/datum/charflaw/greedy,
@@ -209,6 +211,14 @@ GLOBAL_LIST_INIT(character_flaws, list(
 	var/obj/item/bodypart/head/head = H.get_bodypart(BODY_ZONE_HEAD)
 	head?.add_wound(/datum/wound/facial/eyes/left/permanent)
 	H.update_fov_angles()
+
+/datum/charflaw/colorblind
+	name = "Colorblind"
+	desc = "I was cursed with flawed eyesight from birth, and can't discern things others can."
+
+/datum/charflaw/colorblind/on_mob_creation(mob/user)
+	..()
+	user.add_client_colour(/datum/client_colour/monochrome)
 
 /datum/charflaw/greedy
 	name = "Greedy"
