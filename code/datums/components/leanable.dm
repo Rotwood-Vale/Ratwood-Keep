@@ -27,6 +27,8 @@
 
 /datum/component/leanable/proc/wallpress(mob/living/leaning_mob, mob/living/pressing_mob = null)
 	var/atom/A = parent
+	if(!leaning_mob.Adjacent(A))
+		return
 	if(!A.density)
 		return
 	if(leaning_mob.cmode) // no combat leaning memes
