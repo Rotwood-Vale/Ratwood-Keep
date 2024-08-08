@@ -49,4 +49,4 @@
 		H.change_stat("intelligence", 1)
 		H.change_stat("speed", 3) 
 		H.change_stat("endurance", -2)
-		H.STALUC += rand(5,10)
+		H.change_stat("fortune", rand(5,10))
