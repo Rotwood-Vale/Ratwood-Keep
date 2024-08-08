@@ -108,7 +108,7 @@
 	skillcraft = null
 	subtype_reqs = FALSE
 
-/obj/item/reagent_containers/food/snacks/rogue/grenzaldog
+/obj/item/reagent_containers/food/snacks/rogue/grenzeldog
 	icon = 'icons/roguetown/items/food.dmi'
 	list_reagents = list(/datum/reagent/consumable/nutriment = 20)
 	tastes = list("sausage" = 1, "bun" = 1, "sauerkraut" = 1)
@@ -120,13 +120,13 @@
 	rotprocess = 30 MINUTES
 	eat_effect = /datum/status_effect/buff/foodbuff
 
-/datum/crafting_recipe/roguetown/cooking/dogroll
-	name = "dogroll"
+/datum/crafting_recipe/roguetown/cooking/grenzeldog
+	name = "grenzeldog"
 	reqs = list(
 		/obj/item/reagent_containers/food/snacks/rogue/dogroll = 1,
 		/obj/item/reagent_containers/food/snacks/grown/sauerkraut = 1
 	)
-	result = /obj/item/reagent_containers/food/snacks/rogue/dogroll
+	result = /obj/item/reagent_containers/food/snacks/rogue/grenzeldog
 	skillcraft = null
 	subtype_reqs = FALSE
 
