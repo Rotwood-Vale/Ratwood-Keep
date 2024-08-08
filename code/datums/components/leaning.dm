@@ -1,6 +1,7 @@
 /datum/component/leaning
 	var/atom/leaning_on
 	var/mob/living/MLparent
+	var/dir2wall
 
 /datum/component/leaning/Initialize(var/atom/atom_to_lean_on)
 	if(!istype(parent, /mob/living))
@@ -12,6 +13,10 @@
 	RegisterSignal(parent, COMSIG_MOVABLE_BUCKLE, PROC_REF(RemoveComponent))
 	RegisterSignal(parent, COMSIG_MOB_CMODE_ENABLED, PROC_REF(RemoveComponent))
 	RegisterSignal(parent, COMSIG_LIVING_MOBILITY_UPDATED, PROC_REF(mobility_check))
+
+	RegisterSignal(leaning_on, COMSIG_DOOR_OPEN, PROC_REF(collapse))
+	RegisterSignal(leaning_on, COMSIG_PARENT_QDELETING, PROC_REF(collapse))
+
 	update_offsets()
 	. = ..()
 
@@ -19,6 +24,9 @@
 	MLparent.wallpressed = FALSE
 	MLparent.remove_movespeed_modifier("wallpress")
 	MLparent.reset_offsets("wall_press")
+	if(leaning_on)
+		UnregisterSignal(leaning_on, COMSIG_DOOR_OPEN, PROC_REF(collapse))
+		UnregisterSignal(leaning_on, COMSIG_PARENT_QDELETING, PROC_REF(collapse))
 	. = ..()
 	
 /datum/component/leaning/proc/wallhug_check(turf/T, atom/newloc, direct)
@@ -33,7 +41,10 @@
 	if(!leaning_on.Adjacent(new_leaning_on))
 		RemoveComponent()
 		return
-		
+	UnregisterSignal(leaning_on, COMSIG_DOOR_OPEN, PROC_REF(collapse))
+	UnregisterSignal(leaning_on, COMSIG_PARENT_QDELETING, PROC_REF(collapse))
+	RegisterSignal(new_leaning_on, COMSIG_DOOR_OPEN, PROC_REF(collapse))
+	RegisterSignal(new_leaning_on, COMSIG_PARENT_QDELETING, PROC_REF(collapse))
 	leaning_on = new_leaning_on
 	update_offsets()
 
@@ -49,7 +60,7 @@
 	return null
 
 /datum/component/leaning/proc/update_offsets()
-	var/dir2wall = get_dir(parent, leaning_on)
+	dir2wall = get_dir(parent, leaning_on)
 	switch(dir2wall)
 		if(NORTH)
 			MLparent.setDir(SOUTH)
@@ -68,3 +79,6 @@
 	if(!(MLparent.mobility_flags & MOBILITY_STAND))
 		RemoveComponent()
 
+/datum/component/leaning/proc/collapse()
+	MLparent.Move(get_step(parent, dir2wall))
+	MLparent.Knockdown(20)

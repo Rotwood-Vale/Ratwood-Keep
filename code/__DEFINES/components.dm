@@ -312,6 +312,11 @@
 // /obj/mecha signals
 #define COMSIG_MECHA_ACTION_ACTIVATE "mecha_action_activate"	//sent from mecha action buttons to the mecha they're linked to
 
+
+// /obj/structure/mineral_door signals
+#define COMSIG_DOOR_OPEN "door_open"							// sent from /obj/structure/mineral_door's
+#define COMSIG_DOOR_CLOSED "door_closed"						// Open(), Close(), force_open(), force_close() (/obj/structure/mineral_door)
+
 // /mob/living/carbon/human signals
 #define COMSIG_HUMAN_EARLY_UNARMED_ATTACK "human_early_unarmed_attack"			//from mob/living/carbon/human/UnarmedAttack(): (atom/target, proximity)
 #define COMSIG_HUMAN_MELEE_UNARMED_ATTACK "human_melee_unarmed_attack"			//from mob/living/carbon/human/UnarmedAttack(): (atom/target, proximity)
