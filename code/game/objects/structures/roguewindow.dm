@@ -26,7 +26,7 @@
 	var/currently_opened = FALSE
 	var/stained = FALSE
 	var/night_variants = FALSE
-	var/leanable = TRUE
+	leanable = TRUE
 
 /obj/structure/roguewindow/Initialize()
 	lockdir = dir
