@@ -23,7 +23,7 @@
 	
 /datum/component/leaning/proc/wallhug_check(turf/T, atom/newloc, direct)
 	var/atom/new_leaning_on = get_leanable(newloc)
-	if(MLparent.fixedeye && leaning_on.Adjacent(new_leaning_on))
+	if(MLparent.fixedeye && new_leaning_on && leaning_on.Adjacent(new_leaning_on))
 		leaning_on = new_leaning_on
 		update_offsets()
 		return
@@ -32,11 +32,11 @@
 /datum/component/leaning/proc/get_leanable(turf/T)
 	var/turf/leanable_location = get_step(T, get_dir(parent, leaning_on))
 	var/obj/structure/leanable_structure = locate(/obj/structure) in leanable_location
-	if(leanable_structure?.leanable)
+	if(leanable_structure?.GetComponent(/datum/component/leanable))
 		return leanable_structure
 	if(isclosedturf(leanable_location))
 		var/turf/closed/leanable_turf = leanable_location
-		if(leanable_turf?.leanable)
+		if(leanable_turf?.GetComponent(/datum/component/leanable))
 			return leanable_turf
 	return null
 
