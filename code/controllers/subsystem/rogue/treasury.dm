@@ -164,13 +164,18 @@ SUBSYSTEM_DEF(treasury)
 		return FALSE
 	if(!character)
 		return FALSE
+	var/tax_check = 0
 	var/taxed_amount = 0
 	var/original_amt = amt
 	if(character in bank_accounts)
-		if(character.job in GLOB.noble_positions)
+		if((character.job in GLOB.noble_positions) || HAS_TRAIT(character, TRAIT_NOBLE))
 			bank_accounts[character] += amt
 		else
-			taxed_amount = round(amt * tax_value)
+			tax_check = round(amt * tax_value)
+			if(tax_check > 1)
+				taxed_amount = tax_check
+			else
+				taxed_amount = 1
 			amt -= taxed_amount
 			bank_accounts[character] += amt
 			treasury_value += taxed_amount
