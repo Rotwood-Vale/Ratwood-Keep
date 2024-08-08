@@ -68,6 +68,9 @@
 	return needed_xp
 
 /datum/sleep_adv/proc/add_sleep_experience(skill, amt, silent = FALSE)
+	if((mind.get_skill_level(skill) < SKILL_LEVEL_APPRENTICE) && !is_considered_sleeping())
+		mind.adjust_experience(skill, amt)
+		return
 	var/capped_pre = enough_sleep_xp_to_advance(skill, 2)
 	var/can_advance_pre = enough_sleep_xp_to_advance(skill, 1)
 	adjust_sleep_xp(skill, amt)
@@ -126,7 +129,7 @@
 
 	retained_dust = dream_dust_modulo
 
-	sleep_adv_points += dream_points
+	sleep_adv_points += dream_points + 1 //Have a dream point. Because you're awesome.
 	sleep_adv_cycle++
 
 	show_ui(mind.current)

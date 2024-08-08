@@ -56,7 +56,8 @@
 		for(var/mob/M in GLOB.billagerspawns)
 			to_chat(M, span_info("[H.real_name] is the [name]."))
 		GLOB.billagerspawns -= H
-	
+
+/* The people can have their bits if they want to.
 	//Vrell - Removing people's bits if their role doesn't allow it.
 	if(!allow_custom_genitals)
 		var/obj/item/organ/organ_to_remove = null
@@ -78,6 +79,7 @@
 			if(organ_to_remove)
 				organ_to_remove.Remove(H)
 				qdel(organ_to_remove)
+*/
 
 /datum/advclass/proc/post_equip(mob/living/carbon/human/H)
 	addtimer(CALLBACK(H,TYPE_PROC_REF(/mob/living/carbon/human, add_credit)), 20)
