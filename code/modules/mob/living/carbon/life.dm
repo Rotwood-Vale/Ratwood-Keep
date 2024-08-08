@@ -17,7 +17,7 @@
 
 		if (QDELETED(src))
 			return
-		
+
 		handle_wounds()
 		handle_embedded_objects()
 		handle_blood()
@@ -61,25 +61,49 @@
 			// Resting on a bed or something
 			if(buckled?.sleepy)
 				if(eyesclosed)
-					if(!fallingas)
-						to_chat(src, span_warning("I'll fall asleep soon..."))
-					fallingas++
-					if(HAS_TRAIT(src, TRAIT_FASTSLEEP))
+					var/armor_blocked
+					if(ishuman(src))
+						var/mob/living/carbon/human/H = src
+						var/list/gear_to_check = list(H.wear_shirt, H.wear_armor, H.head)
+						for(var/obj/item/clothing/gear in gear_to_check)
+							if(gear.armor["slash"] > 50)
+								armor_blocked = TRUE
+								if(!fallingas)
+									to_chat(src, span_warning("I can't sleep like this. My armor is burdening me."))
+								fallingas = TRUE
+								break
+					if(!armor_blocked)
+						if(!fallingas)
+							to_chat(src, span_warning("I'll fall asleep soon..."))
 						fallingas++
-					if(fallingas > 15)
-						Sleeping(300)
+						if(HAS_TRAIT(src, TRAIT_FASTSLEEP))
+							fallingas++
+						if(fallingas > 15)
+							Sleeping(300)
 				else
 					rogstam_add(buckled.sleepy * 10)
 			// Resting on the ground (not sleeping or with eyes closed and about to fall asleep)
 			else if(!(mobility_flags & MOBILITY_STAND))
 				if(eyesclosed)
-					if(!fallingas)
-						to_chat(src, span_warning("I'll fall asleep soon, although a bed would be more comfortable..."))
-					fallingas++
-					if(HAS_TRAIT(src, TRAIT_FASTSLEEP))
+					var/armor_blocked
+					if(ishuman(src))
+						var/mob/living/carbon/human/H = src
+						var/list/gear_to_check = list(H.wear_shirt, H.wear_armor, H.head)
+						for(var/obj/item/clothing/gear in gear_to_check)
+							if(gear.armor["slash"] > 50)
+								armor_blocked = TRUE
+								if(!fallingas)
+									to_chat(src, span_warning("I can't sleep like this. My armor is burdening me."))
+								fallingas = TRUE
+								break
+					if(!armor_blocked)
+						if(!fallingas)
+							to_chat(src, span_warning("I'll fall asleep soon, although a bed would be more comfortable..."))
 						fallingas++
-					if(fallingas > 25)
-						Sleeping(300)
+						if(HAS_TRAIT(src, TRAIT_FASTSLEEP))
+							fallingas++
+						if(fallingas > 25)
+							Sleeping(300)
 				else
 					rogstam_add(10)
 			else if(fallingas)
