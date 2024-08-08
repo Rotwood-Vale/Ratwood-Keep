@@ -1,7 +1,7 @@
 /datum/component/leanable
 
 /datum/component/leanable/Initialize()
-	RegisterSignal(parent, COMSIG_MOUSEDROPPED_ONTO, PROC_REF(handle_mousedrop))
+	RegisterSignal(parent, COMSIG_MOUSEDROP_ONTO, PROC_REF(handle_mousedrop))
 
 /datum/component/leanable/proc/is_aggro_grabbing(mob/living/carbon/human/grabber, mob/living/victim)
 	var/grabstate = null
@@ -14,6 +14,8 @@
 	return (grabstate > GRAB_PASSIVE)
 
 /datum/component/leanable/proc/handle_mousedrop(datum/source, atom/movable/O, mob/user)
+	if(!O.Adjacent(parent) && !user.Adjacent(O))
+		return
 	if(!is_aggro_grabbing(user, O) && !(user == O))
 		return
 	if(!isliving(O))
@@ -23,7 +25,7 @@
 		var/mob/living/simple_animal/A = L
 		if (!A.dextrous)
 			return
-	wallpress(L)
+	wallpress(L, user)
 
 /datum/component/leanable/proc/wallpress(mob/living/leaning_mob, mob/living/pressing_mob = null)
 	var/atom/A = parent
