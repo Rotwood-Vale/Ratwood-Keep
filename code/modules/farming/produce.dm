@@ -37,8 +37,9 @@
 				new seed(location)
 			qdel(src)
 			return
+		else
+			return ..()
 	return ..()
-
 
 /obj/item/reagent_containers/food/snacks/grown/wheat
 	seed = /obj/item/seeds/wheat
