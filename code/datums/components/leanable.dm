@@ -3,9 +3,7 @@
 /datum/component/leanable/Initialize()
 	RegisterSignal(parent, COMSIG_MOUSEDROPPED_ONTO, PROC_REF(handle_mousedrop))
 
-/datum/component/leanable/proc/is_aggro_grabbing(mob/living/grabber, mob/living/victim)
-	if (!(grabber in victim.grabbedby))
-		return FALSE
+/datum/component/leanable/proc/is_aggro_grabbing(mob/living/carbon/human/grabber, mob/living/victim)
 	var/grabstate = null
 	if(grabber.r_grab && grabber.r_grab.grabbed == victim)
 		if(grabstate == null || grabber.r_grab.grab_state > grabstate)
@@ -13,7 +11,7 @@
 	if(grabber.l_grab && grabber.l_grab.grabbed == victim)
 		if(grabstate == null || grabber.l_grab.grab_state > grabstate)
 			grabstate = grabber.l_grab.grab_state
-	return (grabstate == GRAB_AGGRESSIVE)
+	return (grabstate > GRAB_PASSIVE)
 
 /datum/component/leanable/proc/handle_mousedrop(datum/source, atom/movable/O, mob/user)
 	if(!is_aggro_grabbing(user, O) && !(user == O))
