@@ -3,6 +3,7 @@
 	desc = "A dark remnant of decadent flames."
 	icon = 'icons/obj/objects.dmi'
 	icon_state = "ash"
+	grind_results = list(/datum/reagent/ash = 15)
 	w_class = WEIGHT_CLASS_TINY
 
 /obj/item/ash/Crossed(mob/living/L)

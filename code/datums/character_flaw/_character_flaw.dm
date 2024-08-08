@@ -23,6 +23,9 @@ GLOBAL_LIST_INIT(character_flaws, list(
 /datum/charflaw/proc/on_mob_creation(mob/user)
 	return
 
+/datum/charflaw/proc/apply_post_equipment(mob/user)
+	return
+
 /datum/charflaw/proc/flaw_on_life(mob/user)
 	return
 
@@ -41,7 +44,7 @@ GLOBAL_LIST_INIT(character_flaws, list(
 /mob/living/carbon/human/get_flaw(flaw_type)
 	if(!flaw_type)
 		return
-	if(charflaw != flaw_type)
+	if(charflaw.type != flaw_type)
 		return
 	return charflaw
 
@@ -135,15 +138,13 @@ GLOBAL_LIST_INIT(character_flaws, list(
 	effectedstats = list("perception" = -20, "speed" = -5)
 	duration = 100
 
-/datum/charflaw/badsight/on_mob_creation(mob/user)
-	..()
+/datum/charflaw/badsight/apply_post_equipment(mob/user)
 	if(!ishuman(user))
 		return
 	var/mob/living/carbon/human/H = user
-	if(!H.wear_mask)
-		H.equip_to_slot_or_del(new /obj/item/clothing/mask/rogue/spectacles(H), SLOT_WEAR_MASK)
-	else
-		new /obj/item/clothing/mask/rogue/spectacles(get_turf(H))
+	var/obj/item/glasses = new /obj/item/clothing/mask/rogue/spectacles(get_turf(H))
+	H.put_in_hands(glasses, forced = TRUE)
+	H.equip_to_slot_if_possible(glasses, SLOT_WEAR_MASK, FALSE, TRUE, FALSE, TRUE, TRUE)
 
 /datum/charflaw/paranoid
 	name = "Paranoid"
@@ -189,11 +190,19 @@ GLOBAL_LIST_INIT(character_flaws, list(
 	if(!ishuman(user))
 		return
 	var/mob/living/carbon/human/H = user
-	if(!H.wear_mask)
-		H.equip_to_slot_or_del(new /obj/item/clothing/mask/rogue/eyepatch(H), SLOT_WEAR_MASK)
 	var/obj/item/bodypart/head/head = H.get_bodypart(BODY_ZONE_HEAD)
 	head?.add_wound(/datum/wound/facial/eyes/right/permanent)
 	H.update_fov_angles()
+
+
+/datum/charflaw/noeyer/apply_post_equipment(mob/user)
+	..()
+	if(!ishuman(user))
+		return
+	var/mob/living/carbon/human/H = user
+	var/obj/item/eyepatch = new /obj/item/clothing/mask/rogue/eyepatch(get_turf(H))
+	H.put_in_hands(eyepatch, forced = TRUE)
+	H.equip_to_slot_if_possible(eyepatch, SLOT_WEAR_MASK, FALSE, TRUE, FALSE, TRUE, TRUE)
 
 /datum/charflaw/noeyel
 	name = "Cyclops (L)"
@@ -204,11 +213,18 @@ GLOBAL_LIST_INIT(character_flaws, list(
 	if(!ishuman(user))
 		return
 	var/mob/living/carbon/human/H = user
-	if(!H.wear_mask)
-		H.equip_to_slot_or_del(new /obj/item/clothing/mask/rogue/eyepatch/left(H), SLOT_WEAR_MASK)
 	var/obj/item/bodypart/head/head = H.get_bodypart(BODY_ZONE_HEAD)
 	head?.add_wound(/datum/wound/facial/eyes/left/permanent)
 	H.update_fov_angles()
+
+/datum/charflaw/noeyel/apply_post_equipment(mob/user)
+	..()
+	if(!ishuman(user))
+		return
+	var/mob/living/carbon/human/H = user
+	var/obj/item/eyepatch = new /obj/item/clothing/mask/rogue/eyepatch/left(get_turf(H))
+	H.put_in_hands(eyepatch, forced = TRUE)
+	H.equip_to_slot_if_possible(eyepatch, SLOT_WEAR_MASK, FALSE, TRUE, FALSE, TRUE, TRUE)
 
 /datum/charflaw/greedy
 	name = "Greedy"
@@ -223,7 +239,7 @@ GLOBAL_LIST_INIT(character_flaws, list(
 /datum/charflaw/greedy/on_mob_creation(mob/user)
 	next_mammon_increase = world.time + rand(15 MINUTES, 25 MINUTES)
 	last_passed_check = world.time
-	ADD_TRAIT(user, TRAIT_SEEPRICES, "[type]")
+	ADD_TRAIT(user, TRAIT_SEEPRICES_SHITTY, "[type]")
 
 /datum/charflaw/greedy/flaw_on_life(mob/user)
 	if(!first_tick)
@@ -286,7 +302,7 @@ GLOBAL_LIST_INIT(character_flaws, list(
 
 /datum/charflaw/narcoleptic
 	name = "Narcoleptic"
-	desc = "I get drowsy during the day and tend to fall asleep suddenly, but I can sleep easier if I want to, and moon dust can help me stay awake."
+	desc = "I get drowsy during the day and tend to fall asleep suddenly, but I can sleep easier and moondust can help me stay awake."
 	var/last_unconsciousness = 0
 	var/next_sleep = 0
 	var/concious_timer = (10 MINUTES)
@@ -301,10 +317,12 @@ GLOBAL_LIST_INIT(character_flaws, list(
 /datum/charflaw/narcoleptic/proc/reset_timer()
 	do_sleep = FALSE
 	last_unconsciousness = world.time
-	concious_timer = rand(7 MINUTES, 15 MINUTES)
+	concious_timer = rand(8 MINUTES, 16 MINUTES)
 	pain_pity_charges = rand(2,4)
 
 /datum/charflaw/narcoleptic/flaw_on_life(mob/living/carbon/human/user)
+	if(HAS_TRAIT(user, TRAIT_NOSLEEP))
+		return
 	if(user.stat != CONSCIOUS)
 		reset_timer()
 		return
@@ -316,12 +334,15 @@ GLOBAL_LIST_INIT(character_flaws, list(
 				concious_timer = rand(1 MINUTES, 2 MINUTES)
 				to_chat(user, span_warning("The pain keeps me awake..."))
 			else
-				if(prob(40) || drugged_up)
+				if(drugged_up)
 					drugged_up = FALSE
+					concious_timer = rand(8 MINUTES, 16 MINUTES)
+					to_chat(user, span_notice("I feel wide awake!"))
+				else if(prob(40))
 					concious_timer = rand(4 MINUTES, 6 MINUTES)
 					to_chat(user, span_info("The feeling has passed."))
 				else
-					concious_timer = rand(7 MINUTES, 15 MINUTES)
+					concious_timer = rand(8 MINUTES, 16 MINUTES)
 					to_chat(user, span_boldwarning("I can't keep my eyes open any longer..."))
 					user.Sleeping(rand(30 SECONDS, 50 SECONDS))
 					user.visible_message(span_warning("[user] suddenly collapses!"))
@@ -333,7 +354,7 @@ GLOBAL_LIST_INIT(character_flaws, list(
 			drugged_up = FALSE
 			to_chat(user, span_blue("I'm getting drowsy..."))
 			user.emote("yawn", forced = TRUE)
-			next_sleep = world.time + rand(7 SECONDS, 11 SECONDS)
+			next_sleep = world.time + rand(8 SECONDS, 12 SECONDS)
 			do_sleep = TRUE
 	
 /proc/narcolepsy_drug_up(mob/living/living)

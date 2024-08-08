@@ -411,7 +411,8 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "E
 	"Mortician",
 	"Desert Rider",
 	"Desert Rider Mercenary",
-	"Grenzelhoft Mercenary"
+	"Grenzelhoft Mercenary",
+	"Sellsword"
 	)
 
 	var/num_werewolves = rand(1,2)
@@ -525,7 +526,7 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "E
 	if((villains.len + pre_villains.len) >= num_villains) //Upper cap for number of latejoin antagonists
 		return
 	if(ROLE_MANIAC in character.client.prefs.be_special)
-		if(!is_banned_from(character.ckey, list(ROLE_MANIAC)) && !QDELETED(character))
+		if(!is_antag_banned(character.ckey, ROLE_MANIAC) && !QDELETED(character))
 			if(age_check(character.client))
 				if(!(character.job in restricted_jobs))
 					if(prob(66))

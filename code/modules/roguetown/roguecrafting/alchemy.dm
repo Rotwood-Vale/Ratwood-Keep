@@ -5,6 +5,12 @@
 	skillcraft = /datum/skill/misc/alchemy
 	subtype_reqs = TRUE
 
+/datum/crafting_recipe/roguetown/alchemy/thermometer
+	name = "Thermoscope"
+	result = list(/obj/item/thermometer)
+	reqs = list(/obj/item/reagent_containers/glass/bottle = 1, /datum/reagent/mercury = 5)
+	craftdiff = 2
+
 /datum/crafting_recipe/roguetown/alchemy/bbomb
 	name = "Bottle bomb"
 	result = list(/obj/item/bomb)
