@@ -71,3 +71,8 @@
 	name = "oat stalks"
 	icon_state = "oatchaff"
 	foodextracted = /obj/item/reagent_containers/food/snacks/grown/oat
+
+/obj/item/natural/chaff/rice
+	name = "rice stalks"
+	icon_state = "ricechaff"
+	foodextracted = /obj/item/reagent_containers/food/snacks/grown/rice

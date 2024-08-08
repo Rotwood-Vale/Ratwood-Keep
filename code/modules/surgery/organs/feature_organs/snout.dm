@@ -1,7 +1,7 @@
 /obj/item/organ/snout
 	name = "snout"
 	desc = "A severed snout. What did you cut this off of?"
-	icon_state = "severedtail" //placeholder
+	icon_state = "snout" 
 	visible_organ = TRUE
 	zone = BODY_ZONE_HEAD
 	slot = ORGAN_SLOT_SNOUT

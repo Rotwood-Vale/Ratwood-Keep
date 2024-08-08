@@ -80,7 +80,7 @@
 		compost_value = 150
 	if(istype(attacking_item, /obj/item/natural/chaff))
 		compost_value = 150
-	if(istype(attacking_item, /obj/item/trash/applecore))
+	if(istype(attacking_item, /obj/item/trash))
 		compost_value = 50
 	if(compost_value > 0)
 		if(compost_value + get_total_compost() >= MAXIMUM_TOTAL_COMPOST)

@@ -1,7 +1,7 @@
 /obj/item/organ/antennas
-	name = "antennas"
-	desc = "A severed pair of antennas. What did you cut this off of?"
-	icon_state = "severedtail" //placeholder
+	name = "antennae"
+	desc = "A severed pair of antennae. What did you cut this off of?"
+	icon_state = "antennae"
 	visible_organ = TRUE
 	zone = BODY_ZONE_HEAD
 	slot = ORGAN_SLOT_ANTENNAS

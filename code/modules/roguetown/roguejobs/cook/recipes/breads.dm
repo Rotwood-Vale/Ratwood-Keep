@@ -247,25 +247,47 @@
 	bitesize = 3
 	rotprocess = 60 MINUTES
 
+/datum/crafting_recipe/roguetown/cooking/sweetroll
+	name = "sweetroll"
+	reqs = list(
+		/obj/item/reagent_containers/food/snacks/rogue/bun = 1,
+		/datum/reagent/consumable/sugar = 5)
+	result = /obj/item/reagent_containers/food/snacks/rogue/sweetroll
+	subtype_reqs = FALSE
+	craftdiff = 0
+
+/obj/item/reagent_containers/food/snacks/rogue/sweetroll
+	name = "sweetroll"
+	desc = "Stealing it is punishable by death."
+	icon = 'icons/roguetown/items/food.dmi'
+	icon_state = "sweetroll"
+	slices_num = 0
+	list_reagents = list(/datum/reagent/consumable/nutriment = 13)
+	w_class = WEIGHT_CLASS_SMALL
+	tastes = list("sweetness and sugar" = 1)
+	foodtype = GRAIN | SUGAR
+	bitesize = 2
+	rotprocess = 30 MINUTES
+
 /datum/crafting_recipe/roguetown/cooking/honeybun
 	name = "honey bun"
 	reqs = list(
 		/obj/item/reagent_containers/food/snacks/rogue/bun = 1,
-		/obj/item/reagent_containers/food/snacks/rogue/honey = 1)
-	result = /obj/item/reagent_containers/food/snacks/rogue/bun/honey
+		/datum/reagent/consumable/honey = 5)
+	result = /obj/item/reagent_containers/food/snacks/rogue/honeybun
 	subtype_reqs = FALSE
-	craftdiff = 0
+	craftdiff = 1
 
-/obj/item/reagent_containers/food/snacks/rogue/bun/honey
-	name = "bun of honey"
-	desc = ""
+/obj/item/reagent_containers/food/snacks/rogue/honeybun
+	name = "honey bun"
+	desc = "Delectable, fluffy and sweet."
 	icon = 'icons/roguetown/items/food.dmi'
 	icon_state = "honeybun"
 	slices_num = 0
-	list_reagents = list(/datum/reagent/consumable/nutriment = 13)
-	w_class = WEIGHT_CLASS_NORMAL
+	list_reagents = list(/datum/reagent/consumable/nutriment = 13, /datum/reagent/consumable/honey = 5)
+	w_class = WEIGHT_CLASS_SMALL
 	tastes = list("sweetness and light" = 1)
-	foodtype = GRAIN
+	foodtype = GRAIN | SUGAR
 	bitesize = 2
 	rotprocess = 30 MINUTES
 
