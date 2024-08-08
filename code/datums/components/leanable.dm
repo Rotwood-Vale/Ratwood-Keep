@@ -3,8 +3,18 @@
 /datum/component/leanable/Initialize()
 	RegisterSignal(parent, COMSIG_MOUSEDROPPED_ONTO, PROC_REF(handle_mousedrop))
 
+/datum/component/leanable/proc/get_highest_grab_state_on(mob/living/carbon/human/grabber, mob/living/carbon/human/victim)
+	var/grabstate = null
+	if(grabber.r_grab && grabber.r_grab.grabbed == victim)
+		if(grabstate == null || grabber.r_grab.grab_state > grabstate)
+			grabstate = grabber.r_grab.grab_state
+	if(grabber.l_grab && grabber.l_grab.grabbed == victim)
+		if(grabstate == null || grabber.l_grab.grab_state > grabstate)
+			grabstate = grabber.l_grab.grab_state
+	return grabstate
+
 /datum/component/leanable/proc/handle_mousedrop(datum/source, atom/movable/O, mob/user)
-	if(!user == O)
+	if((user in O.grabbedby) || (!user == O))
 		return
 	if(!isliving(O))
 		return
@@ -13,33 +23,28 @@
 		var/mob/living/simple_animal/A = L
 		if (!A.dextrous)
 			return
-	if(L.mobility_flags & MOBILITY_MOVE)
-		wallpress(L)
-		return
+	wallpress(L)
 
-/datum/component/leanable/proc/wallpress(mob/living/user)
-	if(user.wallpressed)
+
+/datum/component/leanable/proc/wallpress(mob/living/leaning_mob, mob/living/pressing_mob = null)
+	if(leaning_mob.cmode) // no combat leaning memes
 		return
-	if(user.pixelshifted)
+	if(leaning_mob.GetComponent(/datum/component/leaning))
 		return
-	if(!(user.mobility_flags & MOBILITY_STAND))
+	if(leaning_mob.pixelshifted)
 		return
-	var/dir2wall = get_dir(user, parent)
+	if(leaning_mob.buckled)
+		return
+	// This can probably be simplified but I can't be assed to
+	if(!(leaning_mob.mobility_flags & MOBILITY_STAND))
+		return
+	if(!(leaning_mob.mobility_flags & MOBILITY_MOVE))
+		return
+	var/dir2wall = get_dir(leaning_mob, parent)
 	if(!(dir2wall in GLOB.cardinals))
 		return
-	user.wallpressed = dir2wall
-	user.update_wallpress_slowdown()
-	user.visible_message(span_info("[user] leans against [parent]."))
-	switch(dir2wall)
-		if(NORTH)
-			user.setDir(SOUTH)
-			user.set_mob_offsets("wall_press", _x = 0, _y = 20)
-		if(SOUTH)
-			user.setDir(NORTH)
-			user.set_mob_offsets("wall_press", _x = 0, _y = -10)
-		if(EAST)
-			user.setDir(WEST)
-			user.set_mob_offsets("wall_press", _x = 12, _y = 0)
-		if(WEST)
-			user.setDir(EAST)
-			user.set_mob_offsets("wall_press", _x = -12, _y = 0)
+	var/press_msg = "[leaning_mob] leans against [parent]."
+	if(istype(pressing_mob) && pressing_mob != leaning_mob)
+		press_msg = "[leaning_mob] is pushed against [parent] by [pressing_mob]."
+	leaning_mob.visible_message(span_info(press_msg))
+	leaning_mob.AddComponent(/datum/component/leaning, parent)

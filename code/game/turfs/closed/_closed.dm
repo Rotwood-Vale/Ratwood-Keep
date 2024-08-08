@@ -12,36 +12,6 @@
 	var/wallclimb = FALSE
 	var/climbdiff = 0
 
-/turf/closed/proc/wallshove(mob/living/user)
-	if(user.wallpressed)
-		return
-	if(!(user.mobility_flags & MOBILITY_STAND))
-		return
-	var/dir2wall = get_dir(user,src)
-	if(!(dir2wall in GLOB.cardinals))
-		return
-	user.wallpressed = dir2wall
-	user.update_wallpress_slowdown()
-	switch(dir2wall)
-		if(NORTH)
-			user.setDir(NORTH)
-			user.set_mob_offsets("wall_press", _x = 0, _y = 20)
-		if(SOUTH)
-			user.setDir(SOUTH)
-			user.set_mob_offsets("wall_press", _x = 0, _y = -10)
-		if(EAST)
-			user.setDir(EAST)
-			user.set_mob_offsets("wall_press", _x = 12, _y = 0)
-		if(WEST)
-			user.setDir(WEST)
-			user.set_mob_offsets("wall_press", _x = -12, _y = 0)
-
-/mob/living/proc/update_wallpress_slowdown()
-	if(wallpressed)
-		add_movespeed_modifier("wallpress", TRUE, 100, override = TRUE, multiplicative_slowdown = 3)
-	else
-		remove_movespeed_modifier("wallpress")
-
 /turf/closed/Bumped(atom/movable/AM)
 	..()
 	if(density)
