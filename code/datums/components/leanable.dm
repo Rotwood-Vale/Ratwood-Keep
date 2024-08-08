@@ -1,9 +1,9 @@
-/datum/component/wall_leaning
+/datum/component/leanable
 
-/datum/component/wall_leaning/Initialize()
+/datum/component/leanable/Initialize()
 	RegisterSignal(parent, COMSIG_MOUSEDROPPED_ONTO, PROC_REF(handle_mousedrop))
 
-/datum/component/wall_leaning/proc/handle_mousedrop(datum/source, atom/movable/O, mob/user)
+/datum/component/leanable/proc/handle_mousedrop(datum/source, atom/movable/O, mob/user)
 	if(!user == O)
 		return
 	if(!isliving(O))
@@ -17,7 +17,7 @@
 		wallpress(L)
 		return
 
-/datum/component/wall_leaning/proc/wallpress(mob/living/user)
+/datum/component/leanable/proc/wallpress(mob/living/user)
 	if(user.wallpressed)
 		return
 	if(user.pixelshifted)

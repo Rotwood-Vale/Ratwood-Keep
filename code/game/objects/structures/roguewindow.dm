@@ -26,7 +26,7 @@
 	var/currently_opened = FALSE
 	var/stained = FALSE
 	var/night_variants = FALSE
-	var/wallpress = TRUE
+	var/leanable = TRUE
 
 /obj/structure/roguewindow/Initialize()
 	lockdir = dir
@@ -35,8 +35,8 @@
 	update_icon()
 	if(night_variants)
 		GLOB.TodUpdate += src
-	if(wallpress)
-		AddComponent(/datum/component/wall_leaning)
+	if(leanable)
+		AddComponent(/datum/component/leanable)
 	return ..()
 
 /obj/structure/roguewindow/Destroy()

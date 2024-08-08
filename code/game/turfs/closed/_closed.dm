@@ -8,7 +8,7 @@
 	rad_insulation = RAD_MEDIUM_INSULATION
 	baseturfs = list(/turf/open/floor/rogue/naturalstone, /turf/open/transparent/openspace)
 	var/above_floor
-	var/wallpress = TRUE
+	var/leanable = TRUE
 	var/wallclimb = FALSE
 	var/climbdiff = 0
 
@@ -61,8 +61,8 @@
 		var/turf/open/transparent/openspace/target = get_step_multiz(src, UP)
 		if(istype(target))
 			target.ChangeTurf(above_floor)
-	if(wallpress)
-		AddComponent(/datum/component/wall_leaning)
+	if(leanable)
+		AddComponent(/datum/component/leanable)
 
 /turf/closed/Destroy()
 	if(above_floor)

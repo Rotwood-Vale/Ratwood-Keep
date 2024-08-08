@@ -14,7 +14,7 @@
 	static_debris = list(/obj/item/grown/log/tree = 1)
 	obj_flags = CAN_BE_HIT | BLOCK_Z_IN_UP | BLOCK_Z_OUT_DOWN
 	max_integrity = 400
-	var/wallpress = TRUE
+	var/leanable = TRUE
 
 /obj/structure/flora/newtree/fire_act(added, maxstacks)
 	if(added <= 5)
@@ -129,8 +129,8 @@
 	if(istype(loc, /turf/open/floor/rogue/grass))
 		var/turf/T = loc
 		T.ChangeTurf(/turf/open/floor/rogue/dirt)
-	if(wallpress)
-		AddComponent(/datum/component/wall_leaning)
+	if(leanable)
+		AddComponent(/datum/component/leanable)
 
 /obj/structure/flora/newtree/proc/build_trees()
 	var/turf/target = get_step_multiz(src, UP)
