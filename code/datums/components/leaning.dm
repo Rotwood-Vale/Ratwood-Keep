@@ -1,6 +1,6 @@
 /datum/component/leaning
-	var/atom/leaning_on
 	var/mob/living/MLparent
+	var/atom/leaning_on
 	var/dir2wall
 
 /datum/component/leaning/Initialize(var/atom/atom_to_lean_on)
@@ -10,14 +10,16 @@
 	MLparent = parent
 	MLparent.wallpressed = TRUE
 	MLparent.add_movespeed_modifier("wallpress", TRUE, 100, override = TRUE, multiplicative_slowdown = 3)
+	dir2wall = get_dir(parent, leaning_on)
+	
 	RegisterSignal(parent, COMSIG_MOVABLE_BUCKLE, PROC_REF(RemoveComponent))
 	RegisterSignal(parent, COMSIG_MOB_CMODE_ENABLED, PROC_REF(RemoveComponent))
 	RegisterSignal(parent, COMSIG_LIVING_MOBILITY_UPDATED, PROC_REF(mobility_check))
 
 	RegisterSignal(leaning_on, COMSIG_DOOR_OPEN, PROC_REF(collapse))
 	RegisterSignal(leaning_on, COMSIG_PARENT_QDELETING, PROC_REF(collapse))
-
-	update_dir()
+	
+	update_offsets()
 	. = ..()
 
 /datum/component/leaning/RemoveComponent()
@@ -27,40 +29,43 @@
 	if(leaning_on)
 		UnregisterSignal(leaning_on, COMSIG_DOOR_OPEN, PROC_REF(collapse))
 		UnregisterSignal(leaning_on, COMSIG_PARENT_QDELETING, PROC_REF(collapse))
+
+		UnregisterSignal(parent, COMSIG_MOVABLE_BUCKLE, PROC_REF(RemoveComponent))
+		UnregisterSignal(parent, COMSIG_MOB_CMODE_ENABLED, PROC_REF(RemoveComponent))
+		UnregisterSignal(parent, COMSIG_LIVING_MOBILITY_UPDATED, PROC_REF(mobility_check))
 	. = ..()
 	
 /datum/component/leaning/proc/wallhug_check(turf/T, atom/newloc, direct)
-	var/atom/new_leaning_on = get_leanable(newloc)
+	var/atom/new_leaning_on = get_leanable(get_turf(newloc))
 
 	if(!MLparent.fixedeye)
 		RemoveComponent()
 		return
-	if(!new_leaning_on || !new_leaning_on.density) 
+	if(!new_leaning_on?.density) 
 		RemoveComponent()
 		return
 	if(!leaning_on.Adjacent(new_leaning_on))
 		RemoveComponent()
 		return
+
 	UnregisterSignal(leaning_on, COMSIG_DOOR_OPEN, PROC_REF(collapse))
 	UnregisterSignal(leaning_on, COMSIG_PARENT_QDELETING, PROC_REF(collapse))
 	RegisterSignal(new_leaning_on, COMSIG_DOOR_OPEN, PROC_REF(collapse))
 	RegisterSignal(new_leaning_on, COMSIG_PARENT_QDELETING, PROC_REF(collapse))
+
 	leaning_on = new_leaning_on
-	update_dir()
+	update_offsets()
 
 /datum/component/leaning/proc/get_leanable(turf/T)
 	var/turf/leanable_location = get_step(T, dir2wall)
 	var/obj/structure/leanable_structure = locate(/obj/structure) in leanable_location
 	if(leanable_structure?.GetComponent(/datum/component/leanable))
 		return leanable_structure
-	if(isclosedturf(leanable_location))
-		var/turf/closed/leanable_turf = leanable_location
-		if(leanable_turf?.GetComponent(/datum/component/leanable))
-			return leanable_turf
+	if(leanable_location?.GetComponent(/datum/component/leanable))
+		return leanable_location
 	return null
 
-/datum/component/leaning/proc/update_dir()
-	dir2wall = get_dir(parent, leaning_on)
+/datum/component/leaning/proc/update_offsets()
 	switch(dir2wall)
 		if(NORTH)
 			MLparent.setDir(SOUTH)
