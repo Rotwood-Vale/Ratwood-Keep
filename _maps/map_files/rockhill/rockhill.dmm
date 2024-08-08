@@ -11665,7 +11665,8 @@
 "nFa" = (
 /mob/living/simple_animal/hostile/retaliate/rogue/wolf{
 	del_on_deaggro = 0;
-	name = "Beatrix"
+	name = "Beatrix";
+	faction = list("pit_wolf_friend")
 	},
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/basement)
@@ -11996,7 +11997,8 @@
 "nZb" = (
 /mob/living/simple_animal/hostile/retaliate/rogue/wolf{
 	del_on_deaggro = 0;
-	name = "Aruzhan"
+	name = "Aruzhan";
+	faction = list("pit_wolf_friend")
 	},
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/town/basement)
@@ -19407,7 +19409,8 @@
 "wXL" = (
 /mob/living/simple_animal/hostile/retaliate/rogue/wolf{
 	del_on_deaggro = 0;
-	name = "Rowena"
+	name = "Rowena";
+	faction = list("pit_wolf_friend")
 	},
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/basement)
