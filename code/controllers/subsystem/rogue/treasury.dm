@@ -140,10 +140,10 @@ SUBSYSTEM_DEF(treasury)
         // Player received money
         if(source)
             send_ooc_note("<b>The Bank:</b> You received money. ([source])", name = name)
-            log_to_steward("+[amt] from treasury to [name] ([source])")
+            log_to_steward("[amt] from treasury to [name] ([source])")
         else
             send_ooc_note("<b>The Bank:</b> You received money.", name = name)
-            log_to_steward("+[amt] from treasury to [name]")
+            log_to_steward("[amt] from treasury to [name]")
     else
         // Player was fined
         if(source)
@@ -182,7 +182,7 @@ SUBSYSTEM_DEF(treasury)
 	else
 		return FALSE
 
-	log_to_steward("+[original_amt] deposited by [character] of which taxed [taxed_amount]")
+	log_to_steward("+[taxed_amount] taxation of [character], who deposited [original_amt]")
 
 	return TRUE
 
