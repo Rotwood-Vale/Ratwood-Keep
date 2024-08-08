@@ -806,7 +806,7 @@ GLOBAL_LIST_EMPTY(chosen_names)
 			HTML += "<tr bgcolor='#000000'><td width='60%' align='right'>"
 			var/rank = job.title
 			var/used_name = "[job.title]"
-			if(gender == FEMALE && job.f_title)
+			if(pronouns == SHE_HER && job.f_title)
 				used_name = "[job.f_title]"
 			lastJob = job
 			if(is_banned_from(user.ckey, rank))
@@ -997,7 +997,7 @@ Slots: [job.spawn_positions]</span>
 			jpval = null
 		else
 			var/used_name = "[job.title]"
-			if(gender == FEMALE && job.f_title)
+			if(pronouns == SHE_HER && job.f_title)
 				used_name = "[job.f_title]"
 			to_chat(user, "<font color='red'>You have too low PQ for [used_name] (Min PQ: [job.min_pq]), you may only set it to low.</font>")
 			jpval = JP_LOW
@@ -1531,7 +1531,9 @@ Slots: [job.spawn_positions]</span>
 					var pronouns_input = input(user, "Choose your character's pronouns", "Pronouns") as null|anything in GLOB.pronouns_list
 					if(pronouns_input)
 						pronouns = pronouns_input
+						ResetJobs()
 						to_chat(user, "<font color='red'>Your character's pronouns are now [pronouns].")
+						to_chat(user, "<font color='red'><b>Your classes have been reset.</b></font>")
 
 				// LETHALSTONE EDIT: add voice type selection
 				if ("voicetype")
@@ -1799,9 +1801,7 @@ Slots: [job.spawn_positions]</span>
 						pickedGender = "female"
 					if(pickedGender && pickedGender != gender)
 						gender = pickedGender
-						ResetJobs()
 						to_chat(user, "<font color='red'>Your character will now use a [friendlyGenders[pickedGender]] sprite.")
-						to_chat(user, "<font color='red'><b>Your classes have been reset.</b></font>")
 						random_character(gender)
 					genderize_customizer_entries()
 				if("domhand")

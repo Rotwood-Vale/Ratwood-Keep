@@ -30,11 +30,32 @@
 
 /datum/outfit/job/roguetown/prince/pre_equip(mob/living/carbon/human/H)
 	..()
-	if(H.gender == MALE)
+	if(H.pronouns == SHE_HER && H.gender == FEMALE)
+		beltl = /obj/item/roguekey/manor
+		head = /obj/item/clothing/head/roguetown/hennin
+		neck = /obj/item/storage/belt/rogue/pouch/coins/rich
+		belt = /obj/item/storage/belt/rogue/leather/cloth/lady
+		armor = /obj/item/clothing/suit/roguetown/armor/silkcoat
+		shirt = /obj/item/clothing/suit/roguetown/shirt/dress/silkdress/princess
+		shoes = /obj/item/clothing/shoes/roguetown/shortboots
+		pants = /obj/item/clothing/under/roguetown/tights/stockings/silk/random	//Added Silk Stockings for the female nobles
+		if(H.mind)
+			H.mind.adjust_skillrank(/datum/skill/misc/swimming, 2, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/climbing, 2, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/athletics, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/reading, 3, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 2, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/stealing, 2, TRUE)
+			H.change_stat("perception", 2)
+			H.change_stat("endurance", -2)
+			H.change_stat("strength", -3)
+			H.change_stat("constitution", 1)
+			H.change_stat("speed", 2)
+	else
 		pants = /obj/item/clothing/under/roguetown/tights
 		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/guard
 		armor = /obj/item/clothing/suit/roguetown/armor/chainmail
-		shoes = /obj/item/clothing/shoes/roguetown/nobleboot
+		shoes = /obj/item/clothing/shoes/roguetown/shortboots
 		belt = /obj/item/storage/belt/rogue/leather
 		beltl = /obj/item/roguekey/manor
 		beltr = /obj/item/storage/belt/rogue/pouch/coins/rich
@@ -56,25 +77,4 @@
 			H.change_stat("endurance", -1)
 			H.change_stat("constitution", 1)
 			H.change_stat("speed", 1)
-	else
-		beltl = /obj/item/roguekey/manor
-		head = /obj/item/clothing/head/roguetown/hennin
-		neck = /obj/item/storage/belt/rogue/pouch/coins/rich
-		belt = /obj/item/storage/belt/rogue/leather/cloth/lady
-		armor = /obj/item/clothing/suit/roguetown/armor/silkcoat
-		shirt = /obj/item/clothing/suit/roguetown/shirt/dress/silkdress/princess
-		shoes = /obj/item/clothing/shoes/roguetown/shortboots
-		pants = /obj/item/clothing/under/roguetown/tights/stockings/silk/random	//Added Silk Stockings for the female nobles
-		if(H.mind)
-			H.mind.adjust_skillrank(/datum/skill/misc/swimming, 2, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/misc/climbing, 2, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/misc/athletics, 1, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/misc/reading, 3, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 2, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/misc/stealing, 2, TRUE)
-			H.change_stat("perception", 2)
-			H.change_stat("endurance", -2)
-			H.change_stat("strength", -3)
-			H.change_stat("constitution", 1)
-			H.change_stat("speed", 2)
 	ADD_TRAIT(H, TRAIT_NOBLE, TRAIT_GENERIC)

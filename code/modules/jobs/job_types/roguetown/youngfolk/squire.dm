@@ -19,7 +19,7 @@
 
 /datum/outfit/job/roguetown/squire/pre_equip(mob/living/carbon/human/H)
 	..()
-	if(H.gender == MALE)
+	if(H.pronouns == SHE_HER)
 		pants = /obj/item/clothing/under/roguetown/tights
 		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/guard
 		armor = /obj/item/clothing/suit/roguetown/armor/chainmail
@@ -43,7 +43,7 @@
 			H.change_stat("perception", 1)
 			H.change_stat("constitution", 1)
 			H.change_stat("speed", 1)
-	if(H.gender == FEMALE)
+	else
 		pants = /obj/item/clothing/under/roguetown/tights
 		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/guard
 		armor = /obj/item/clothing/suit/roguetown/armor/chainmail

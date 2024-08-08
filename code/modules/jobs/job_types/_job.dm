@@ -184,7 +184,7 @@
 
 	if(H.islatejoin && show_in_credits)
 		var/used_title = title
-		if((H.gender == FEMALE) && f_title)
+		if((H.pronouns == SHE_HER) && f_title)
 			used_title = f_title
 		scom_announce("[H.real_name] the [used_title] arrives from Kingsfield.")
 
@@ -231,7 +231,7 @@
 	var/used_title
 	if(J)
 		used_title = J.title
-		if(gender == FEMALE && J.f_title)
+		if(pronouns == SHE_HER && J.f_title)
 			used_title = J.f_title
 	if(used_title)
 		thename = "[real_name] the [used_title]"

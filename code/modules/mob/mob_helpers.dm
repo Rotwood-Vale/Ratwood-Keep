@@ -977,7 +977,7 @@
 	else if(job)
 		var/datum/job/J = SSjob.GetJob(job)
 		used_title = J.title
-		if(J.f_title && (gender == FEMALE))
+		if(J.f_title && (pronouns == SHE_HER))
 			used_title = J.f_title
 		if(J.advjob_examine)
 			used_title = advjob

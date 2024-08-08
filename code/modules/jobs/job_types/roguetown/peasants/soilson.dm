@@ -41,19 +41,19 @@
 		H.change_stat("constitution", 1)
 		H.change_stat("speed", 1)
 
-	if(H.gender == MALE)
+	if(H.pronouns == SHE_HER)
+		head = /obj/item/clothing/head/roguetown/armingcap
+//		pants = /obj/item/clothing/under/roguetown/trou
+		armor = /obj/item/clothing/suit/roguetown/shirt/dress/gen/random
+		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
+		shoes = /obj/item/clothing/shoes/roguetown/simpleshoes
+		belt = /obj/item/storage/belt/rogue/leather/rope
+	else
 		head = /obj/item/clothing/head/roguetown/roguehood/random
 		if(prob(50))
 			head = /obj/item/clothing/head/roguetown/strawhat
 		pants = /obj/item/clothing/under/roguetown/tights/random
 		armor = /obj/item/clothing/suit/roguetown/armor/workervest
 		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/random
-		shoes = /obj/item/clothing/shoes/roguetown/simpleshoes
-		belt = /obj/item/storage/belt/rogue/leather/rope
-	else
-		head = /obj/item/clothing/head/roguetown/armingcap
-//		pants = /obj/item/clothing/under/roguetown/trou
-		armor = /obj/item/clothing/suit/roguetown/shirt/dress/gen/random
-		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
 		shoes = /obj/item/clothing/shoes/roguetown/simpleshoes
 		belt = /obj/item/storage/belt/rogue/leather/rope

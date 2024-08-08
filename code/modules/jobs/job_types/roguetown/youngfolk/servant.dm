@@ -33,7 +33,14 @@
 		H.change_stat("intelligence", 1)
 		H.change_stat("perception", 1)
 
-	if(H.gender == MALE)
+	if(H.pronouns == SHE_HER)
+		armor = /obj/item/clothing/suit/roguetown/shirt/dress/gen/black
+		shoes = /obj/item/clothing/shoes/roguetown/simpleshoes
+		cloak = /obj/item/clothing/cloak/apron/waist
+		belt = /obj/item/storage/belt/rogue/leather
+		beltr = /obj/item/keyring/servant
+		beltl = /obj/item/storage/belt/rogue/pouch/coins/poor
+	else
 		pants = /obj/item/clothing/under/roguetown/tights
 		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
 		shoes = /obj/item/clothing/shoes/roguetown/shortboots
@@ -41,10 +48,3 @@
 		beltr = /obj/item/keyring/servant
 		beltl = /obj/item/storage/belt/rogue/pouch/coins/poor
 		armor = /obj/item/clothing/suit/roguetown/armor/leather/vest/black
-	else
-		armor = /obj/item/clothing/suit/roguetown/shirt/dress/gen/black
-		shoes = /obj/item/clothing/shoes/roguetown/simpleshoes
-		cloak = /obj/item/clothing/cloak/apron/waist
-		belt = /obj/item/storage/belt/rogue/leather
-		beltr = /obj/item/keyring/servant
-		beltl = /obj/item/storage/belt/rogue/pouch/coins/poor
