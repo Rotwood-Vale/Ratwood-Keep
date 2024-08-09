@@ -3,15 +3,18 @@
 	flag = CONFESSOR
 	department_flag = CHURCHMEN
 	faction = "Station"
-	total_positions = 0
-	spawn_positions = 0
+	total_positions = 2
+	spawn_positions = 2
 
+	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_TOLERATED_UP
-	allowed_sexes = list(MALE)
+	allowed_patrons = list(
+		/datum/patron/old_god,
+		ALL_DIVINE_PATRONS,
+	)
 	tutorial = "Confessors are shady agents of the church hired to spy on the populace and keep them moral. As the most fanatical members of the clergy, their main concern is assisting the local Puritan with their work in extracting confessions of sin as well as hunting night beasts and cultists that hide in plain sight."
 
 	outfit = /datum/outfit/job/roguetown/shepherd
-	spells = list(/obj/effect/proc_holder/spell/invoked/heal, /obj/effect/proc_holder/spell/invoked/shepherd)
 	whitelist_req = TRUE
 	display_order = JDO_SHEPHERD
 	give_bank_account = 3
@@ -52,3 +55,4 @@
 		H.change_stat("strength", 2)
 		H.change_stat("speed", 2)
 		H.change_stat("perception", 1)
+	
