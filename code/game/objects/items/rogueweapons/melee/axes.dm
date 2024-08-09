@@ -106,13 +106,6 @@
 /datum/intent/axe/cut/battle
 	penfactor = 30
 
-/datum/intent/axe/chop/battle
-	penfactor = 70
-	damfactor = 1.2 //36 on battleaxe
-
-/datum/intent/axe/cut/battle
-	penfactor = 30
-
 /obj/item/rogueweapon/stoneaxe/battle
 	force = 25
 	force_wielded = 30
@@ -167,7 +160,6 @@
 	force = 22
 	force_wielded = 28
 	desc = "A steel woodcutting axe. Performs much better than its iron counterpart."
-	force = 26
 	max_blade_int = 500
 	smeltresult = /obj/item/ingot/steel
 	wdefense = 3
