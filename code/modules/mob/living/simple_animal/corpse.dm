@@ -217,3 +217,4 @@
 	ears = /obj/item/radio/headset
 	id = /obj/item/card/id
 	mask = /obj/item/clothing/mask/rat/bee
+
