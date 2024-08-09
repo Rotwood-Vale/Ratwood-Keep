@@ -1174,7 +1174,7 @@
   */
 /proc/log_combat(atom/user, atom/target, what_done, atom/object=null, addition=null, log_seen = TRUE)
 	var/ssource = key_name(user)
-	var/starget = key_name(target)
+	var/starget = target ? key_name(target) : ""
 
 	var/mob/living/living_target = target
 	var/hp = istype(living_target) ? " (NEWHP: [living_target.health]) " : ""
@@ -1194,7 +1194,7 @@
 	if(log_seen)
 		log_seen_viewers(user, target, message, SEEN_LOG_ATTACK)
 
-	if(user != target)
+	if(target && user != target)
 		var/reverse_message = "has been [what_done] by [ssource][postfix]"
 		target.log_message(reverse_message, LOG_ATTACK, color="orange", log_globally=FALSE)
 

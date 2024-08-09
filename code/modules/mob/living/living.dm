@@ -1069,18 +1069,16 @@
 	log_combat(src, null, "surrendered")
 	surrendering = 1
 	changeNext_move(CLICK_CD_EXHAUSTED)
-	var/image/flaggy = image('icons/effects/effects.dmi',src,"surrender_large",ABOVE_MOB_LAYER)
-	flaggy.appearance_flags = RESET_TRANSFORM|KEEP_APART
-	flaggy.transform = null
-	flaggy.pixel_y = 8
-	flick_overlay_view(flaggy, src, 150)
+	var/obj/effect/temp_visual/surrender/flaggy = new(src)
+	vis_contents += flaggy
 	Stun(150)
 	src.visible_message(span_notice("[src] yields!"))
-	playsound(src, 'sound/misc/surrender.ogg', 100, FALSE, -1)
-	sleep(150)
+	playsound(src, 'sound/misc/surrender.ogg', 100, FALSE, -1, ignore_walls=TRUE)
+	addtimer(CALLBACK(src, PROC_REF(end_submit)), 150)
+
+/mob/living/proc/end_submit()
 	surrendering = 0
 	log_combat(src, null, "surrender ended")
-
 
 /mob/proc/stop_attack(message = FALSE)
 	if(atkswinging)
