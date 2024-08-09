@@ -52,6 +52,12 @@
 "dQ" = (
 /turf/open/floor/rogue/tile/masonic/single,
 /area/rogue/under/cave/spider)
+"er" = (
+/mob/living/carbon/human/species/skeleton/npc/ambush{
+	inertia_move_delay = 0
+	},
+/turf/open/floor/rogue/blocks,
+/area/rogue/under/cave/spider)
 "eA" = (
 /obj/item/roguecoin/silver/pile,
 /turf/open/floor/rogue/churchmarble,
@@ -76,7 +82,7 @@
 /area/rogue/under/cave/spider)
 "ip" = (
 /mob/living/simple_animal/hostile/retaliate/rogue/minotaur,
-/turf/open/floor/rogue/churchmarble,
+/turf/open/floor/rogue/cobble,
 /area/rogue/under/cave/spider)
 "iZ" = (
 /obj/effect/spawner/roguemap/hauntpile,
@@ -193,6 +199,12 @@
 "tj" = (
 /obj/machinery/light/rogue/torchholder{
 	dir = 8
+	},
+/turf/open/floor/rogue/dirt/road,
+/area/rogue/under/cave/spider)
+"tJ" = (
+/mob/living/carbon/human/species/skeleton/npc/ambush{
+	inertia_move_delay = 0
 	},
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/under/cave/spider)
@@ -400,7 +412,7 @@
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/cave/spider)
 "Nd" = (
-/turf/open/lava,
+/turf/open/water/swamp/deep,
 /area/rogue/under/cave/spider)
 "No" = (
 /obj/structure/table/vtable,
@@ -5737,7 +5749,7 @@ qH
 qH
 qH
 qH
-qH
+er
 qH
 lR
 Ih
@@ -5776,10 +5788,10 @@ SM
 Ew
 SM
 SM
+ip
 SM
 SM
-SM
-SM
+ip
 SM
 lR
 Ih
@@ -6084,7 +6096,7 @@ xu
 SM
 SM
 SM
-SM
+ip
 SM
 SM
 lR
@@ -8436,7 +8448,7 @@ lR
 lR
 qH
 qH
-QZ
+tJ
 Do
 Do
 Km
@@ -8759,7 +8771,7 @@ Ih
 fa
 Bs
 Fa
-ip
+Fa
 kO
 Fa
 Fa
@@ -8961,7 +8973,7 @@ Km
 Km
 Ih
 fa
-ip
+Fa
 Fa
 Fa
 Fa
@@ -9170,7 +9182,7 @@ eA
 Fa
 Fa
 Fa
-ip
+Fa
 Fa
 Fa
 kt
@@ -9276,7 +9288,7 @@ GG
 Eg
 Fa
 Fa
-ip
+Fa
 fa
 Ih
 Ih
@@ -9573,13 +9585,13 @@ Ih
 Ih
 Ih
 fa
-ip
+Fa
 Np
 Fa
 aN
 Eg
 Fa
-ip
+Fa
 Fa
 ww
 Fa
