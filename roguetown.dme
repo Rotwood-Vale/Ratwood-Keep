@@ -3569,4 +3569,6 @@
 #include "modular_hearthstone\code\modules\mob\living\simple_animal\rogue\creacher\volf.dm"
 #include "modular_hearthstone\code\modules\mob\sprite_accessory\hair_styles.dm"
 #include "modular_hearthstone\code\modules\spells\roguetown\wizard.dm"
+#include "modular_hearthstone\code\modules\roguetown\roguejobs\cook\recipes\misc.dm"
+#include "modular_hearthstone\code\modules\food_and_drinks\food\snacks_other.dm"
 // END_INCLUDE
