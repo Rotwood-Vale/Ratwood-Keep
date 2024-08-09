@@ -1174,7 +1174,7 @@
   */
 /proc/log_combat(atom/user, atom/target, what_done, atom/object=null, addition=null, log_seen = TRUE)
 	var/ssource = key_name(user)
-	var/starget = target ? key_name(target) : ""
+	var/starget = key_name(target)
 
 	var/mob/living/living_target = target
 	var/hp = istype(living_target) ? " (NEWHP: [living_target.health]) " : ""
