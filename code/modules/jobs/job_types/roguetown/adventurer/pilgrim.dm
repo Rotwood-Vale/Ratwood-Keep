@@ -4,7 +4,7 @@
 	department_flag = PEASANTS
 	faction = "Station"
 	total_positions = -1
-	spawn_positions = -1
+	spawn_positions = 0
 	allowed_races = RACES_VERY_SHUNNED_UP
 	tutorial = "Fleeing misfortune you head your way towards Rockhill, you're not a soldier or an explorer, but a humble migrant trying to look for a better life, if you get to survive the trip that is."
 
