@@ -145,7 +145,7 @@
 	sound = 'sound/magic/revive.ogg'
 	associated_skill = /datum/skill/magic/holy
 	antimagic_allowed = TRUE
-	charge_max = 2 MINUTES
+	charge_max = 30 MINUTES
 	miracle = TRUE
 	devotion_cost = 30
 	/// Amount of PQ gained for curing zombos
