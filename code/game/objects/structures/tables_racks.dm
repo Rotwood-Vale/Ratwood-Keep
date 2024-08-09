@@ -335,6 +335,11 @@
 		icon_state = "churchtable_mid"
 	. = ..()
 
+/obj/structure/table/church/OnCrafted(dirin, user)
+	if(dirin == EAST)
+		icon_state = "churchtable_end"
+	. = ..()
+
 /obj/structure/table/church/m
 	icon = 'icons/roguetown/misc/tables.dmi'
 	icon_state = "churchtable_mid"
