@@ -136,6 +136,9 @@ GLOBAL_VAR_INIT(maniac_highlander, 0) // THERE CAN ONLY BE ONE!
 			dreamer.STASTR = STASTR
 			dreamer.STACON = STACON
 			dreamer.STAEND = STAEND
+			var/client/clinet = dreamer?.client
+			if(clinet) //clear screenshake animation
+				animate(clinet, dreamer.pixel_y)
 		for(var/trait in applied_traits)
 			REMOVE_TRAIT(owner.current, trait, "[type]")
 		for(var/trait in final_traits)
@@ -223,6 +226,9 @@ GLOBAL_VAR_INIT(maniac_highlander, 0) // THERE CAN ONLY BE ONE!
 	to_chat(dreamer, "...It couldn't be.")
 	dreamer.clear_fullscreen("dream")
 	dreamer.clear_fullscreen("wakeup")
+	var/client/clinet = dreamer?.client
+	if(clinet) //clear screenshake animation
+		animate(clinet, dreamer.pixel_y)
 	for(var/datum/objective/objective in objectives)
 		objective.completed = TRUE
 	for(var/mob/connected_player in GLOB.player_list)
@@ -296,6 +302,12 @@ GLOBAL_VAR_INIT(maniac_highlander, 0) // THERE CAN ONLY BE ONE!
 			competitor.waking_up = FALSE
 			C.clear_fullscreen("dream")
 			C.clear_fullscreen("wakeup")
+			//clear screenshake animation. traits need to be removed in case the guy ghosts in cmode
+			var/client/cnc = C?.client
+			if(cnc)
+				animate(cnc, C.pixel_y)
+			REMOVE_TRAIT(C, TRAIT_SCREENSHAKE, "/datum/antagonist/maniac")
+			REMOVE_TRAIT(C, TRAIT_SCHIZO_AMBIENCE, "/datum/antagonist/maniac")
 			C.log_message("was culled by the TRIUMPH of Maniac [key_name(victor)].", LOG_GAME)
 			sleep(1 SECONDS)
 			to_chat(C, span_userdanger("What?! No, no, this can't be!"))
@@ -303,6 +315,8 @@ GLOBAL_VAR_INIT(maniac_highlander, 0) // THERE CAN ONLY BE ONE!
 			to_chat(C, span_userdanger("How can I be TOO LATE-"))
 			sleep(1 SECONDS)
 			INVOKE_ASYNC(src, PROC_REF(cant_wake_up), C)
+			QDEL_LIST(competitor.wonders_made)
+			competitor.wonders_made = null
 
 //TODO Collate
 /datum/antagonist/roundend_report()
