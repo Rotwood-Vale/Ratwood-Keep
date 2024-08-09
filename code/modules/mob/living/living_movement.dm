@@ -52,10 +52,10 @@
 			mod = CONFIG_GET(number/movedelay/run_delay)
 		if(MOVE_INTENT_SNEAK)
 			mod = 6
-	if(STASPD < 6)
-		mod = mod+1
-	if(STASPD > 14)
-		mod = mod-0.5
+	var/spdchange = (10-STASPD)*0.1
+	spdchange = clamp(spdchange, -0.5, 1)  //if this is not clamped, maniacs will run at unfathomable speed
+	mod = mod+spdchange
+	//maximum speed is achieved at 15spd, everything else results in insanity
 	add_movespeed_modifier(MOVESPEED_ID_MOB_WALK_RUN_CONFIG_SPEED, TRUE, 100, override = TRUE, multiplicative_slowdown = mod)
 
 /mob/living/proc/update_turf_movespeed(turf/open/T)
