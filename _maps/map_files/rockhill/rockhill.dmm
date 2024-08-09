@@ -3477,7 +3477,7 @@
 "uYu" = (/obj/structure/closet/crate/roguecloset,/obj/item/storage/roguebag,/turf/open/floor/rogue/blocks,/area/rogue/under/town/basement)
 "uYx" = (/obj/structure/chair/wood/rogue{dir = 1},/obj/effect/landmark/start/villager{dir = 1},/turf/open/floor/rogue/ruinedwood,/area/rogue/indoors/town/tavern)
 "uYE" = (/turf/open/floor/rogue/tile{icon_state = "bfloorz"},/area/rogue/indoors/town/manor)
-"uZa" = (/obj/structure/table/church{dir = 1},/turf/open/floor/rogue/churchmarble,/area/rogue/indoors/town/church/chapel)
+"uZa" = (/obj/structure/table/church{icon_state = "churchtable_end"},/turf/open/floor/rogue/churchmarble,/area/rogue/indoors/town/church/chapel)
 "uZk" = (/obj/structure/bars,/turf/closed/wall/mineral/rogue/craftstone,/area/rogue/under/town/basement)
 "uZy" = (/turf/closed/wall/mineral/rogue/decostone/end{dir = 8},/area/rogue/indoors/town/church)
 "uZC" = (/obj/structure/chair/wood/rogue{dir = 8},/obj/machinery/light/rogue/torchholder/r,/turf/open/floor/rogue/hexstone,/area/rogue/indoors/town/church)
