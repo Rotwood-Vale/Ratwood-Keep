@@ -3482,9 +3482,12 @@
 /turf/open/floor/rogue/blocks,
 /area/rogue/indoors)
 "ebk" = (
-/obj/structure/portal,
+/obj/structure/fluff/traveltile/dungeon{
+	aportalgoesto = "Dungeon";
+	aportalid = "DungeonRockhill"
+	},
 /turf/open/floor/rogue/naturalstone,
-/area/rogue/outdoors/rtfield)
+/area/rogue/under/cavewet/bogcaves)
 "eby" = (
 /obj/structure/rack/rogue,
 /obj/item/rogueore/coal,
@@ -8601,6 +8604,10 @@
 "jSp" = (
 /turf/closed/wall/mineral/rogue/roofwall/outercorner,
 /area/rogue/outdoors/town)
+"jSt" = (
+/obj/machinery/light/rogue/firebowl/standing/blue,
+/turf/open/floor/rogue/naturalstone,
+/area/rogue/outdoors/rtfield)
 "jTj" = (
 /obj/machinery/light/rogue/torchholder{
 	pixel_y = 26
@@ -188260,7 +188267,7 @@ whb
 whb
 whb
 whb
-whb
+pEm
 dVO
 dVO
 bkq
@@ -188662,7 +188669,7 @@ whb
 whb
 whb
 whb
-whb
+pEm
 dVO
 bkq
 dVO
@@ -189064,7 +189071,7 @@ whb
 whb
 whb
 whb
-whb
+pEm
 dVO
 dVO
 dVO
@@ -189463,10 +189470,10 @@ whb
 whb
 whb
 whb
-whb
-whb
-whb
-whb
+dVO
+dVO
+ebk
+dVO
 dVO
 dVO
 bkq
@@ -189865,10 +189872,10 @@ whb
 whb
 whb
 whb
-whb
-whb
-whb
-whb
+dVO
+dVO
+dVO
+dVO
 dVO
 dVO
 dVO
@@ -190267,10 +190274,10 @@ whb
 whb
 whb
 whb
-whb
-whb
-whb
-whb
+dVO
+dVO
+dVO
+dVO
 dVO
 dVO
 dVO
@@ -190669,12 +190676,12 @@ whb
 whb
 whb
 whb
-whb
-whb
-whb
-whb
-whb
-whb
+dVO
+dVO
+dVO
+dVO
+dVO
+dVO
 dVO
 dVO
 dVO
@@ -191074,9 +191081,9 @@ whb
 whb
 whb
 whb
-whb
-whb
-whb
+pEm
+dVO
+dVO
 dVO
 dVO
 dVO
@@ -191476,11 +191483,11 @@ whb
 whb
 whb
 whb
-whb
-whb
-whb
-whb
-whb
+pEm
+dVO
+dVO
+dVO
+dVO
 dVO
 dVO
 dVO
@@ -191878,12 +191885,12 @@ whb
 whb
 whb
 whb
-whb
-whb
-whb
-whb
-whb
-whb
+pEm
+dVO
+dVO
+dVO
+dVO
+dVO
 dVO
 dVO
 dVO
@@ -192285,7 +192292,7 @@ whb
 whb
 whb
 whb
-whb
+dVO
 dVO
 whb
 dVO
@@ -231996,9 +232003,9 @@ vIa
 vIa
 vIa
 vIa
+jSt
 pog
-pog
-pog
+jSt
 vIa
 vIa
 qvR
@@ -232798,7 +232805,7 @@ vIa
 vIa
 vIa
 vIa
-ebk
+pog
 pog
 pog
 pog
@@ -234409,7 +234416,7 @@ vIa
 vIa
 pog
 pog
-fTe
+uaL
 pog
 uaL
 pog
@@ -234810,9 +234817,9 @@ vIa
 vIa
 vIa
 vIa
+jSt
 pog
-pog
-pog
+jSt
 vIa
 vIa
 vIa
