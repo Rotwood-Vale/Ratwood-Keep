@@ -1562,3 +1562,15 @@
 		var/mob/living/carbon/C = user
 		if(C.silent || !C.can_speak_vocal())
 			message = "makes a muffled meow."
+
+/datum/emote/living/hiss
+	key = "hiss"
+	key_third_person = "hisses"
+	message = "hisses."
+	emote_type = EMOTE_AUDIBLE
+
+/mob/living/carbon/human/verb/emote_hiss()
+	set name = "hiss"
+	set category = "Noises"
+
+	emote("hiss", intentional = TRUE)
