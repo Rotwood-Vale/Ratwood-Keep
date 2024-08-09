@@ -3482,12 +3482,10 @@
 /turf/open/floor/rogue/blocks,
 /area/rogue/indoors)
 "ebk" = (
-/obj/structure/fluff/traveltile/dungeon{
-	aportalgoesto = "Dungeon";
-	aportalid = "DungeonRockhill"
+/turf/open/floor/rogue/blocks{
+	icon_state = "paving"
 	},
-/turf/open/floor/rogue/naturalstone,
-/area/rogue/under/cavewet/bogcaves)
+/area/rogue/outdoors/bog)
 "eby" = (
 /obj/structure/rack/rogue,
 /obj/item/rogueore/coal,
@@ -4944,6 +4942,12 @@
 "fCM" = (
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/town/church)
+"fCS" = (
+/obj/machinery/light/rogue/firebowl/standing/blue,
+/turf/open/floor/rogue/blocks{
+	icon_state = "paving"
+	},
+/area/rogue/outdoors/bog)
 "fDe" = (
 /obj/structure/mineral_door/bars,
 /turf/open/floor/rogue/cobble,
@@ -9929,6 +9933,15 @@
 	},
 /turf/open/floor/rogue/cobble,
 /area/rogue/outdoors/town)
+"lwK" = (
+/obj/structure/fluff/traveltile/dungeon{
+	aportalgoesto = "Dungeon";
+	aportalid = "DungeonRockhill"
+	},
+/turf/open/floor/rogue/blocks{
+	icon_state = "paving"
+	},
+/area/rogue/outdoors/bog)
 "lwN" = (
 /obj/structure/mineral_door/wood,
 /turf/open/floor/rogue/ruinedwood,
@@ -188669,7 +188682,7 @@ whb
 whb
 whb
 whb
-pEm
+dVO
 dVO
 bkq
 dVO
@@ -189071,7 +189084,7 @@ whb
 whb
 whb
 whb
-pEm
+dVO
 dVO
 dVO
 dVO
@@ -189470,9 +189483,9 @@ whb
 whb
 whb
 whb
-dVO
-dVO
-ebk
+whb
+whb
+whb
 dVO
 dVO
 dVO
@@ -189872,9 +189885,9 @@ whb
 whb
 whb
 whb
-dVO
-dVO
-dVO
+whb
+whb
+whb
 dVO
 dVO
 dVO
@@ -190274,9 +190287,9 @@ whb
 whb
 whb
 whb
-dVO
-dVO
-dVO
+whb
+whb
+whb
 dVO
 dVO
 dVO
@@ -190676,9 +190689,9 @@ whb
 whb
 whb
 whb
-dVO
-dVO
-dVO
+whb
+whb
+whb
 dVO
 dVO
 dVO
@@ -191081,8 +191094,8 @@ whb
 whb
 whb
 whb
-pEm
-dVO
+whb
+whb
 dVO
 dVO
 dVO
@@ -191483,8 +191496,8 @@ whb
 whb
 whb
 whb
-pEm
-dVO
+whb
+whb
 dVO
 dVO
 dVO
@@ -191885,8 +191898,8 @@ whb
 whb
 whb
 whb
-pEm
-dVO
+whb
+whb
 dVO
 dVO
 dVO
@@ -248312,7 +248325,7 @@ odi
 odi
 sYx
 odi
-muz
+sYx
 sYx
 odi
 sYx
@@ -252329,7 +252342,7 @@ odi
 wLx
 wLx
 wLx
-kWT
+sYx
 odi
 odi
 odi
@@ -252727,7 +252740,7 @@ wLx
 wLx
 sYx
 sYx
-muz
+sYx
 odi
 sYx
 sYx
@@ -253130,11 +253143,11 @@ wLx
 odi
 sYx
 odi
-kWT
+sYx
 odi
 odi
 sYx
-kWT
+sYx
 odi
 sYx
 wLx
@@ -253931,13 +253944,13 @@ wLx
 wLx
 wLx
 odi
-uRH
-wLx
+odi
+ebk
 sYx
 sYx
-uRH
+odi
 sYx
-wLx
+ebk
 odi
 sYx
 wLx
@@ -254333,13 +254346,13 @@ wLx
 wLx
 odi
 sYx
-wLx
-wLx
+ebk
+ebk
 odi
 odi
 odi
 odi
-wLx
+ebk
 wLx
 sYx
 wLx
@@ -254741,8 +254754,8 @@ odi
 odi
 sYx
 odi
-sYx
-wLx
+ebk
+ebk
 wLx
 wLx
 kDc
@@ -255135,8 +255148,8 @@ wLx
 wLx
 wLx
 sYx
-sYx
-sYx
+ebk
+ebk
 sYx
 odi
 odi
@@ -255536,14 +255549,14 @@ kDc
 wLx
 wLx
 wLx
+fCS
+ebk
+ebk
+ebk
+fCS
 odi
-sYx
-sYx
-odi
-odi
-odi
-wLx
-wLx
+ebk
+ebk
 odi
 sYx
 sYx
@@ -255938,14 +255951,14 @@ wLx
 wLx
 wLx
 wLx
+ebk
+ebk
+ebk
+ebk
+ebk
+odi
 sYx
-odi
-odi
-odi
-sYx
-odi
-sYx
-wLx
+ebk
 sYx
 sYx
 wLx
@@ -256340,13 +256353,13 @@ wLx
 wLx
 wLx
 sYx
-uRH
-uRH
-wLx
-wLx
+lwK
+ebk
+ebk
+ebk
+ebk
+odi
 sYx
-uRH
-kWT
 sYx
 sYx
 sYx
@@ -256741,17 +256754,17 @@ kDc
 wLx
 wLx
 wLx
-uRH
-kWT
-uRH
-kWT
-khC
-khC
-uRH
-uRH
+odi
+ebk
+ebk
+ebk
+ebk
+ebk
+odi
+odi
 sYx
 sYx
-kWT
+sYx
 wLx
 wLx
 kDc
@@ -257144,16 +257157,16 @@ wLx
 wLx
 wLx
 odi
-odi
-uRH
-uRH
-odi
-kWT
-kWT
-kWT
-kWT
-kWT
-kWT
+ebk
+ebk
+ebk
+ebk
+ebk
+sYx
+sYx
+sYx
+sYx
+sYx
 wLx
 kDc
 kDc
@@ -257546,16 +257559,16 @@ wLx
 wLx
 wLx
 odi
+ebk
+ebk
+ebk
+ebk
+ebk
 odi
 odi
-uRH
-odi
-odi
-odi
-odi
-khC
-kWT
-kWT
+ebk
+sYx
+sYx
 wLx
 kDc
 wLx
@@ -257948,15 +257961,15 @@ wLx
 wLx
 wLx
 odi
-sYx
-sYx
-uRH
-sYx
+ebk
+ebk
+ebk
+ebk
+ebk
 odi
 odi
-odi
-wLx
-wLx
+ebk
+ebk
 sYx
 wLx
 kDc
@@ -258350,12 +258363,12 @@ wLx
 wLx
 wLx
 wLx
-odi
-sYx
-kWT
-sYx
-sYx
-sYx
+fCS
+ebk
+ebk
+ebk
+fCS
+ebk
 sYx
 sYx
 odi
@@ -258754,7 +258767,7 @@ wLx
 wLx
 odi
 sYx
-khC
+ebk
 odi
 sYx
 sYx
@@ -259158,9 +259171,9 @@ wLx
 sYx
 odi
 odi
-wLx
+ebk
 odi
-muz
+sYx
 odi
 sYx
 sYx
@@ -260367,7 +260380,7 @@ odi
 odi
 sYx
 odi
-wLx
+ebk
 odi
 sYx
 wLx
@@ -260767,10 +260780,10 @@ wLx
 sYx
 odi
 sYx
-wLx
+ebk
 odi
-wLx
-wLx
+ebk
+ebk
 sYx
 sYx
 wLx
@@ -261172,7 +261185,7 @@ odi
 sYx
 sYx
 sYx
-wLx
+ebk
 sYx
 odi
 odi
@@ -266799,7 +266812,7 @@ odi
 odi
 odi
 odi
-cSk
+odi
 odi
 odi
 uRH
