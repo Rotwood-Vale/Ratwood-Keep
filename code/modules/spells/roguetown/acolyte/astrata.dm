@@ -67,6 +67,9 @@
 	if(isliving(targets[1]))
 		testing("revived1")
 		var/mob/living/target = targets[1]
+		if(!HAS_TRAIT(target, TRAIT_FAITHLESS))
+			to_chat(user, span_warning("Astrata's light has no effect! She denies aiding a non-believer!"))
+			return FALSE
 		if(target == user)
 			return FALSE
 		if(target.stat < DEAD)

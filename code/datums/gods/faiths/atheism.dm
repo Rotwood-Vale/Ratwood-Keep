@@ -1,6 +1,5 @@
 /datum/faith/godless
-	name = "Godless"
-	desc = "Although gods obviously exist in this world, you refuse to bow down to them! You are completely godless."
-	worshippers = "Madmen, beasts and some dwarves"
+	name = "Faithless"
+	desc = "Maybe they exist, maybe they do not, but you don't care. It's only your will, not an unseen force's."
+	worshippers = "Madmen, beasts and the ones beyond saving"
 	godhead = /datum/patron/godless
-	preference_accessible = FALSE

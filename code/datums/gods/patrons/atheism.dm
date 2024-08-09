@@ -1,14 +1,16 @@
 /datum/patron/godless
-	name = "Science"
-	domain = "Ontological Reality"
-	desc = "No gods or kings, only man! Gods exist but you give them the finger."
-	worshippers = "Madmen, beasts and some dwarves"
+	name = "Faithless"
+	domain = "The Real World"
+	desc = "Maybe they exist, maybe they do not, but you don't care. It's only your will, not an unseen force's."
+	worshippers = "Madmen, beasts and the ones beyond saving"
 	associated_faith = /datum/faith/godless
-	preference_accessible = FALSE
+	mob_traits = list(TRAIT_FAITHLESS)
 	undead_hater = FALSE
 	confess_lines = list(
 		"Gods are WORTHLESS!",
 		"I DON'T NEED GODS!",
 		"I AM MY OWN GOD!",
-		"NO GODS, NO MASTERS!",
+		"YOUR WILL IS YOUR OWN, THEY AREN'T REAL!",
+		"YOUR GODS WANT US TO LIVE LIKE THIS?!",
+		"THEY. ARE. NOT. REAL!",
 	)

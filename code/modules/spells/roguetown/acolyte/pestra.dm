@@ -110,6 +110,9 @@
 // consider adding functionality to regrow one entire organ or limb per casting?
 /obj/effect/proc_holder/spell/invoked/attach_bodypart/cast(list/targets, mob/living/user)
 	if(ishuman(targets[1]))
+	if(!HAS_TRAIT(target, TRAIT_FAITHLESS)) //go find a surgeon, non-believer
+		to_chat(user, span_warning("Pestra's grace has no effect, they do not wish to aid a non-believer..."))
+		return FALSE
 		var/mob/living/carbon/human/human_target = targets[1]
 		for(var/obj/item/bodypart/limb as anything in get_limbs(human_target, user))
 			if(human_target.get_bodypart(limb.body_zone) || !limb.attach_limb(human_target))
@@ -155,6 +158,9 @@
 	if(isliving(targets[1]))
 		testing("curerot1")
 		var/mob/living/target = targets[1]
+		if(!HAS_TRAIT(target, TRAIT_FAITHLESS))
+			to_chat(user, span_warning("Pestra's grace has no effect, they do not wish to aid a non-believer..."))
+			return FALSE
 		if(target == user)
 			return FALSE
 		var/datum/antagonist/zombie/was_zombie = target.mind?.has_antag_datum(/datum/antagonist/zombie)
