@@ -32,7 +32,13 @@
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/cave/spider)
 "eH" = (
-/mob/living/carbon/human/species/skeleton/npc/ambush,
+/mob/living/carbon/human/species/skeleton/npc/ambush{
+	inertia_move_delay = 0;
+	STACON = 13;
+	STAEND = 13;
+	STASPD = 13;
+	STASTR = 13
+	},
 /turf/open/floor/rogue/blocks/paving,
 /area/rogue/under/cave/spider)
 "eZ" = (
@@ -64,10 +70,6 @@
 "gF" = (
 /turf/closed/wall/mineral/rogue/stone,
 /area/rogue/under/cave/spider)
-"gW" = (
-/mob/living/carbon/human/species/skeleton/npc/ambush,
-/turf/open/floor/rogue/dirt/road,
-/area/rogue/under/cave/spider)
 "hL" = (
 /obj/machinery/light/rogue/torchholder{
 	dir = 4
@@ -78,12 +80,6 @@
 /obj/structure/table/vtable,
 /obj/item/rogue/painting,
 /turf/open/floor/rogue/tile/masonic/single,
-/area/rogue/under/cave/spider)
-"iD" = (
-/mob/living/carbon/human/species/skeleton/npc/ambush{
-	inertia_move_delay = 0
-	},
-/turf/open/floor/rogue/blocks,
 /area/rogue/under/cave/spider)
 "jb" = (
 /obj/structure/closet/crate/chest{
@@ -224,7 +220,13 @@
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/cave/spider)
 "xu" = (
-/mob/living/carbon/human/species/skeleton/npc/ambush,
+/mob/living/carbon/human/species/skeleton/npc/ambush{
+	inertia_move_delay = 0;
+	STACON = 13;
+	STAEND = 13;
+	STASPD = 13;
+	STASTR = 13
+	},
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/cave/spider)
 "xT" = (
@@ -259,8 +261,14 @@
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/cave/spider)
 "BG" = (
-/mob/living/simple_animal/hostile/retaliate/rogue/minotaur,
-/turf/open/floor/rogue/cobble,
+/mob/living/carbon/human/species/skeleton/npc/ambush{
+	inertia_move_delay = 0;
+	STACON = 13;
+	STAEND = 13;
+	STASPD = 13;
+	STASTR = 13
+	},
+/turf/open/floor/rogue/churchmarble,
 /area/rogue/under/cave/spider)
 "Cu" = (
 /obj/structure/closet/crate/roguecloset/inn/chest,
@@ -320,7 +328,13 @@
 /area/rogue/under/cave/spider)
 "Gj" = (
 /obj/machinery/light/rogue/wallfire/candle/blue,
-/mob/living/carbon/human/species/skeleton/npc/ambush,
+/mob/living/carbon/human/species/skeleton/npc/ambush{
+	inertia_move_delay = 0;
+	STACON = 13;
+	STAEND = 13;
+	STASPD = 13;
+	STASTR = 13
+	},
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/cave/spider)
 "Gk" = (
@@ -347,7 +361,8 @@
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/cave/spider)
 "HS" = (
-/turf/open/floor/rogue/churchmarble,
+/mob/living/simple_animal/hostile/retaliate/rogue/minotaur,
+/turf/open/floor/rogue/cobble,
 /area/rogue/under/cave/spider)
 "Ig" = (
 /turf/open/floor/rogue/ruinedwood/turned,
@@ -384,7 +399,11 @@
 /area/rogue/under/cave/spider)
 "Lw" = (
 /mob/living/carbon/human/species/skeleton/npc/ambush{
-	inertia_move_delay = 0
+	inertia_move_delay = 0;
+	STACON = 13;
+	STAEND = 13;
+	STASPD = 13;
+	STASTR = 13
 	},
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/under/cave/spider)
@@ -401,14 +420,19 @@
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/cave/spider)
 "Mr" = (
-/mob/living/carbon/human/species/skeleton/npc/ambush,
 /turf/open/floor/rogue/churchmarble,
 /area/rogue/under/cave/spider)
 "Mu" = (
 /turf/open/floor/rogue/tile/masonic/single,
 /area/rogue/under/cave/spider)
 "MW" = (
-/mob/living/carbon/human/species/skeleton/npc/ambush,
+/mob/living/carbon/human/species/skeleton/npc/ambush{
+	inertia_move_delay = 0;
+	STACON = 13;
+	STAEND = 13;
+	STASPD = 13;
+	STASTR = 13
+	},
 /turf/open/floor/rogue/tile/masonic/single,
 /area/rogue/under/cave/spider)
 "Nn" = (
@@ -5749,7 +5773,7 @@ XL
 XL
 XL
 XL
-iD
+XL
 XL
 gF
 Dn
@@ -5788,10 +5812,10 @@ CQ
 uZ
 CQ
 CQ
-BG
+HS
 CQ
 CQ
-BG
+HS
 CQ
 gF
 Dn
@@ -6096,7 +6120,7 @@ NB
 CQ
 CQ
 CQ
-BG
+HS
 CQ
 CQ
 gF
@@ -8657,7 +8681,7 @@ za
 za
 za
 QW
-gW
+Lw
 za
 za
 za
@@ -8770,15 +8794,15 @@ Kb
 Dn
 fI
 Jr
-HS
-HS
+Mr
+Mr
 YP
-HS
-HS
+Mr
+Mr
 CL
-HS
+Mr
 Jv
-HS
+Mr
 fI
 Dn
 Dn
@@ -8874,13 +8898,13 @@ fI
 Mr
 CL
 uI
-HS
 Mr
+BG
 xU
-HS
-HS
 Mr
-HS
+Mr
+Mr
+Mr
 fI
 Dn
 Dn
@@ -8973,15 +8997,15 @@ za
 za
 Dn
 fI
-HS
-HS
-HS
-HS
-HS
-HS
-HS
-HS
-HS
+BG
+Mr
+Mr
+Mr
+Mr
+BG
+Mr
+Mr
+BG
 Gk
 fI
 Dn
@@ -9070,21 +9094,21 @@ QW
 za
 QW
 za
-gW
+Lw
 QW
 QW
 za
 fI
-HS
 Mr
-HS
 Mr
+BG
+BG
 uI
-HS
+Mr
 Mr
 Jv
-HS
-HS
+Mr
+Mr
 fI
 Dn
 Dn
@@ -9177,16 +9201,16 @@ za
 QW
 QW
 GU
-HS
+Mr
 xU
-HS
-HS
-HS
-HS
-HS
-HS
+Mr
+Mr
+Mr
+Mr
+BG
+Mr
 CL
-HS
+Mr
 fI
 Dn
 Dn
@@ -9277,18 +9301,18 @@ Dn
 Dn
 Dn
 za
-QW
+Lw
 fI
-HS
-HS
+Mr
+Mr
 uI
 CL
-HS
+Mr
 bK
 uI
-HS
-HS
-HS
+Mr
+BG
+Mr
 fI
 Dn
 Dn
@@ -9383,13 +9407,13 @@ Dn
 fI
 CL
 Jv
-HS
-HS
+Mr
+Mr
 Dh
 xU
-HS
 Mr
-HS
+Mr
+Mr
 Jv
 fI
 Dn
@@ -9483,15 +9507,15 @@ Dn
 Dn
 Dn
 fI
-HS
-HS
 Mr
-HS
-HS
 Mr
+BG
+Mr
+Mr
+BG
 CL
-HS
-HS
+Mr
+BG
 CL
 fI
 Dn
@@ -9585,16 +9609,16 @@ Dn
 Dn
 Dn
 fI
-HS
+BG
 Jv
-HS
+Mr
 NR
 uI
-HS
-HS
-HS
 Mr
-HS
+Mr
+Mr
+Mr
+Mr
 fI
 Dn
 Dn

@@ -52,12 +52,6 @@
 "dQ" = (
 /turf/open/floor/rogue/tile/masonic/single,
 /area/rogue/under/cave/spider)
-"er" = (
-/mob/living/carbon/human/species/skeleton/npc/ambush{
-	inertia_move_delay = 0
-	},
-/turf/open/floor/rogue/blocks,
-/area/rogue/under/cave/spider)
 "eA" = (
 /obj/item/roguecoin/silver/pile,
 /turf/open/floor/rogue/churchmarble,
@@ -67,7 +61,13 @@
 /area/rogue/under/cave/spider)
 "gt" = (
 /obj/machinery/light/rogue/wallfire/candle/blue,
-/mob/living/carbon/human/species/skeleton/npc/ambush,
+/mob/living/carbon/human/species/skeleton/npc/ambush{
+	inertia_move_delay = 0;
+	STACON = 13;
+	STAEND = 13;
+	STASPD = 13;
+	STASTR = 13
+	},
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/cave/spider)
 "ha" = (
@@ -132,7 +132,13 @@
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/cave/spider)
 "mT" = (
-/mob/living/carbon/human/species/skeleton/npc/ambush,
+/mob/living/carbon/human/species/skeleton/npc/ambush{
+	inertia_move_delay = 0;
+	STACON = 13;
+	STAEND = 13;
+	STASPD = 13;
+	STASTR = 13
+	},
 /turf/open/floor/rogue/tile/masonic/single,
 /area/rogue/under/cave/spider)
 "na" = (
@@ -202,12 +208,6 @@
 	},
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/under/cave/spider)
-"tJ" = (
-/mob/living/carbon/human/species/skeleton/npc/ambush{
-	inertia_move_delay = 0
-	},
-/turf/open/floor/rogue/dirt/road,
-/area/rogue/under/cave/spider)
 "uk" = (
 /obj/effect/decal/cleanable/blood/old,
 /turf/open/floor/rogue/blocks,
@@ -224,7 +224,13 @@
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/cave/spider)
 "ww" = (
-/mob/living/carbon/human/species/skeleton/npc/ambush,
+/mob/living/carbon/human/species/skeleton/npc/ambush{
+	inertia_move_delay = 0;
+	STACON = 13;
+	STAEND = 13;
+	STASPD = 13;
+	STASTR = 13
+	},
 /turf/open/floor/rogue/churchmarble,
 /area/rogue/under/cave/spider)
 "wK" = (
@@ -239,7 +245,13 @@
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/cave/spider)
 "xq" = (
-/mob/living/carbon/human/species/skeleton/npc/ambush,
+/mob/living/carbon/human/species/skeleton/npc/ambush{
+	inertia_move_delay = 0;
+	STACON = 13;
+	STAEND = 13;
+	STASPD = 13;
+	STASTR = 13
+	},
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/cave/spider)
 "xu" = (
@@ -488,7 +500,13 @@
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/cave/spider)
 "QZ" = (
-/mob/living/carbon/human/species/skeleton/npc/ambush,
+/mob/living/carbon/human/species/skeleton/npc/ambush{
+	inertia_move_delay = 0;
+	STACON = 13;
+	STAEND = 13;
+	STASPD = 13;
+	STASTR = 13
+	},
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/under/cave/spider)
 "Rv" = (
@@ -530,7 +548,13 @@
 /turf/open/floor/rogue/churchmarble,
 /area/rogue/under/cave/spider)
 "ZL" = (
-/mob/living/carbon/human/species/skeleton/npc/ambush,
+/mob/living/carbon/human/species/skeleton/npc/ambush{
+	inertia_move_delay = 0;
+	STACON = 13;
+	STAEND = 13;
+	STASPD = 13;
+	STASTR = 13
+	},
 /turf/open/floor/rogue/blocks/paving,
 /area/rogue/under/cave/spider)
 
@@ -5749,7 +5773,7 @@ qH
 qH
 qH
 qH
-er
+qH
 qH
 lR
 Ih
@@ -8448,7 +8472,7 @@ lR
 lR
 qH
 qH
-tJ
+QZ
 Do
 Do
 Km
@@ -8871,7 +8895,7 @@ Km
 Km
 Ih
 fa
-ww
+Fa
 kt
 Eg
 Fa
@@ -8879,7 +8903,7 @@ ww
 eA
 Fa
 Fa
-ww
+Fa
 Fa
 fa
 Ih
@@ -8973,15 +8997,15 @@ Km
 Km
 Ih
 fa
+ww
 Fa
 Fa
 Fa
 Fa
+ww
 Fa
 Fa
-Fa
-Fa
-Fa
+ww
 su
 fa
 Ih
@@ -9076,12 +9100,12 @@ Do
 Km
 fa
 Fa
-ww
 Fa
+ww
 ww
 Eg
 Fa
-ww
+Fa
 Np
 Fa
 Fa
@@ -9183,7 +9207,7 @@ Fa
 Fa
 Fa
 Fa
-Fa
+ww
 Fa
 kt
 Fa
@@ -9277,7 +9301,7 @@ Ih
 Ih
 Ih
 Km
-Do
+QZ
 fa
 Fa
 Fa
@@ -9287,7 +9311,7 @@ Fa
 GG
 Eg
 Fa
-Fa
+ww
 Fa
 fa
 Ih
@@ -9388,7 +9412,7 @@ Fa
 YU
 eA
 Fa
-ww
+Fa
 Fa
 Np
 fa
@@ -9491,7 +9515,7 @@ Fa
 ww
 kt
 Fa
-Fa
+ww
 kt
 fa
 Ih
@@ -9585,7 +9609,7 @@ Ih
 Ih
 Ih
 fa
-Fa
+ww
 Np
 Fa
 aN
@@ -9593,7 +9617,7 @@ Eg
 Fa
 Fa
 Fa
-ww
+Fa
 Fa
 fa
 Ih
