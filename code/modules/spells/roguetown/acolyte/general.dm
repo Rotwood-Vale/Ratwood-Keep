@@ -45,7 +45,7 @@
 			if(/datum/patron/divine/xylix)
 				target.visible_message(span_info("A fugue seems to manifest briefly across [target]!"), span_notice("My wounds vanish as if they had never been there! "))
 			if(/datum/patron/divine/pestra)
-				target.visible_message(span_info("A aura of clinical care encompasses [target]!"), span_notice("I'm sewn back together by sacred medicine!"))
+				target.visible_message(span_info("An aura of clinical care encompasses [target]!"), span_notice("I'm sewn back together by sacred medicine!"))
 			if(/datum/patron/divine/malum)
 				target.visible_message("<span class='info'>A tempering heat is discharged out of [target]!</span>", "<span class='notice'>I feel the heat of a forge soothing my pains!</span>")
 			if(/datum/patron/divine/eora)
