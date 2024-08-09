@@ -196,6 +196,7 @@
 	item_state = "jester"
 	dynamic_hair_suffix = "+generic"
 	sewrepair = TRUE
+	flags_inv = HIDEEARS
 
 /obj/item/clothing/head/roguetown/strawhat
 	name = "straw hat"
