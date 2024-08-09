@@ -113,5 +113,6 @@
 				used = list('sound/vo/blink.ogg')
 			if("meow")
 				used = list('sound/vo/cat_meow.ogg')
-
+			if("hiss")
+				used = list('sound/vo/hiss.ogg')
 	return used
