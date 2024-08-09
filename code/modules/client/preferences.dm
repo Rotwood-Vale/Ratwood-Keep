@@ -136,7 +136,7 @@ GLOBAL_LIST_EMPTY(chosen_names)
 
 	var/list/exp = list()
 	var/list/menuoptions
-	
+
 	var/datum/migrant_pref/migrant
 
 	var/action_buttons_screen_locs = list()
@@ -1802,7 +1802,7 @@ Slots: [job.spawn_positions]</span>
 					if(pickedGender && pickedGender != gender)
 						gender = pickedGender
 						to_chat(user, "<font color='red'>Your character will now use a [friendlyGenders[pickedGender]] sprite.")
-						random_character(gender)
+						//random_character(gender)
 					genderize_customizer_entries()
 				if("domhand")
 					if(domhand == 1)
@@ -2000,7 +2000,7 @@ Slots: [job.spawn_positions]</span>
 				if("widescreenpref")
 					widescreenpref = !widescreenpref
 					user.client.change_view(CONFIG_GET(string/default_view))
-				
+
 				if("be_defiant")
 					defiant = !defiant
 					if(defiant)
@@ -2016,7 +2016,7 @@ Slots: [job.spawn_positions]</span>
 										Good voices will be rewarded with PQ for answering meditations, while bad ones are punished at the discretion of jannies.</span>")
 					else
 						to_chat(user, span_warning("You are no longer a voice."))
-				
+
 				if("migrants")
 					migrant.show_ui()
 					return
