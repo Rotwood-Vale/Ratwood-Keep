@@ -1,4 +1,4 @@
-/obj/effect/proc_holder/spell/invoked/shepherd
+  /* /obj/effect/proc_holder/spell/invoked/shepherd
 	name = "Shepherd"
 	range = 7
 	overlay_state = "psy"
@@ -28,3 +28,4 @@
 			target.forceMove(H)
 			return TRUE
 	return FALSE
+*/
