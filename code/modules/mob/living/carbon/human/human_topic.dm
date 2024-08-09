@@ -16,7 +16,7 @@
 		if(ooc_notes)
 			dat += "<br>"
 			dat += "<div align='center'><b>OOC notes</b></div>"
-			dat += "[ooc_notes]"
+			dat += "<div align='left'>[ooc_notes]"
 		var/datum/browser/popup = new(user, "[src]", 400, 600)
 		popup.set_content(dat.Join())
 		popup.open(FALSE)
