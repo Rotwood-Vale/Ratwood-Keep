@@ -3566,6 +3566,8 @@
 #include "modular_hearthstone\code\modules\clothing\rogueclothes\hats.dm"
 #include "modular_hearthstone\code\modules\mob\living\simple_animal\rogue\orc.dm"
 #include "modular_hearthstone\code\modules\mob\living\simple_animal\rogue\rogue_corpse.dm"
+#include "modular_hearthstone\code\modules\mob\living\simple_animal\rogue\simple_skeleton.dm"
+#include "modular_hearthstone\code\modules\mob\living\simple_animal\rogue\wraith.dm"
 #include "modular_hearthstone\code\modules\mob\living\simple_animal\rogue\creacher\volf.dm"
 #include "modular_hearthstone\code\modules\mob\sprite_accessory\hair_styles.dm"
 #include "modular_hearthstone\code\modules\spells\roguetown\wizard.dm"

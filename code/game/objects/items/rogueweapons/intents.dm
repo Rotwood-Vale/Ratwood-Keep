@@ -461,6 +461,8 @@
 	miss_text = "slashes the air!"
 	item_d_type = "slash"
 
+
+
 /datum/intent/simple/bite
 	name = "bite"
 	icon_state = "instrike"
