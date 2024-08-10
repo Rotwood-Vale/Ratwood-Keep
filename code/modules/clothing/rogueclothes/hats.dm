@@ -950,13 +950,22 @@
 
 /obj/item/clothing/head/roguetown/helmet/heavy/blacksunhelm
 	name = "black sun helmet"
-	desc = "Headwear worn by Graggarite fanatics. A twisted depiction of the black sun, a single hate-filled eye peers out of its grinning face."
+	desc = "Headwear worn by those who lead Graggarite fanatics. A twisted depiction of the black sun, a single hate-filled eye peers out of its grinning face."
 	icon_state = "blacksunhelm"
 	item_state = "blacksunhelm"
 	emote_environment = 3
-	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR
+	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR|HIDEFACIALHAIR
 	block2add = FOV_BEHIND
-	smeltresult = /obj/item/ingot/steel	
+	smeltresult = /obj/item/ingot/steel
+
+/obj/item/clothing/head/roguetown/helmet/graggaritehelmet
+	name = "Graggarite Helmet"
+	desc = "A helmet worn by Graggarite fanatics."
+	icon_state = "graggaritehelmet"
+	item_state = "graggaritehelmet"
+	flags_inv = HIDEEARS|HIDEFACE|HIDEFACIALHAIR
+	block2add = FOV_BEHIND
+	smeltresult = /obj/item/ingot/iron
 
 /obj/item/clothing/head/roguetown/helmet/carapacecap
 	slot_flags = ITEM_SLOT_HEAD|ITEM_SLOT_HIP
@@ -1135,6 +1144,57 @@
 			pic.color = get_detail_color()
 		add_overlay(pic)
 
+/obj/item/clothing/head/roguetown/helmet/footmanhelmet
+	name = "footman helmet"
+	desc = "A helmet worn in Grenzelhoft by rank and file soldiery."
+	block2add = FOV_BEHIND
+	flags_inv = HIDEEARS|HIDEHAIR
+	icon_state = "footmanhelmet"
+	item_state = "footmanhelmet"
+	mob_overlay_icon = 'icons/roguetown/clothing/onmob/64x64/head.dmi'
+	worn_x_dimension = 64
+	worn_y_dimension = 64
+	var/picked = FALSE
+	smeltresult = /obj/item/ingot/iron
+
+/obj/item/clothing/head/roguetown/helmet/footmanhelmet/attack_right(mob/user)
+	..()
+	if(!picked)
+		var/list/colors = list(
+		"Swan White"="#ffffff",
+		"Lavender"="#865c9c",
+		"Royal Purple"="#5E4687",
+		"Wine Rouge"="#752B55",
+		"Sow's skin"="#CE929F",
+		"Knight's Red"="#933030",
+		"Madroot Red"="#AD4545",
+		"Marigold Orange"="#E2A844",
+		"Politely, Yuck"="#685542",
+		"Astrata's Yellow"="#FFFD8D",
+		"Bog Green"="#375B48",
+		"Seafoam Green"="#49938B",
+		"Woad Blue"="#395480",
+		"Cornflower Blue"="#749EE8",
+		"Blacksteel Grey"="#404040",)
+
+		var/choice = input(user, "Choose a color.", "Grenzelhoft colors") as anything in colors
+		var/playerchoice = colors[choice]
+		picked = TRUE
+		detail_color = playerchoice
+		detail_tag = "_detail"
+		update_icon()
+		if(loc == user && ishuman(user))
+			var/mob/living/carbon/H = user
+			H.update_inv_head()
+
+/obj/item/clothing/head/roguetown/helmet/footmanhelmet/update_icon()
+	cut_overlays()
+	if(get_detail_tag())
+		var/mutable_appearance/pic = mutable_appearance(icon(icon, "[icon_state][detail_tag]"))
+		pic.appearance_flags = RESET_COLOR
+		if(get_detail_color())
+			pic.color = get_detail_color()
+		add_overlay(pic)		
 //Eora content from Stonekeep
 
 /obj/item/clothing/head/roguetown/eoramask
@@ -1149,3 +1209,52 @@
 	flags_inv = HIDEFACE|HIDEFACIALHAIR|HIDEHAIR
 	dynamic_hair_suffix = ""
 	resistance_flags = FIRE_PROOF // Made of metal
+
+/obj/item/clothing/head/roguetown/helmet/katefractoiihelmet
+	name = "katefractoii helmet"
+	desc = "A helmet worn in Grenzelhoft by rank and file soldiery."
+	block2add = FOV_BEHIND
+	flags_inv = HIDEEARS|HIDEHAIR
+	icon_state = "katefractoiihelmet"
+	item_state = "katefractoiihelmet"
+	mob_overlay_icon = 'icons/roguetown/clothing/onmob/64x64/head.dmi'
+	worn_x_dimension = 64
+	worn_y_dimension = 64
+	smeltresult = /obj/item/ingot/iron	
+
+/obj/item/clothing/head/roguetown/helmet/heavy/dwarfhelm
+	name = "dwarven helmet"
+	desc = "A helmet which offers good protection to the face at the expense of vision."
+	icon_state = "dwarvenhelmet"
+	item_state = "dwarvenhelmet"
+	emote_environment = 3
+	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR
+	block2add = FOV_BEHIND
+	smeltresult = /obj/item/ingot/steel
+
+/obj/item/clothing/head/roguetown/helmet/darkelfhelmet
+	name = "raider helmet"
+	desc = "A steel bascinet helmet without a visor protecting the the head and ears."
+	icon_state = "darkelfhelmet"
+	item_state = "darkelfhelmet"
+	mob_overlay_icon = 'icons/roguetown/clothing/onmob/64x64/head.dmi'
+	worn_x_dimension = 64
+	worn_y_dimension = 64
+	emote_environment = 3
+	body_parts_covered = HEAD|HAIR|EARS
+	flags_inv = HIDEEARS|HIDEHAIR
+	block2add = FOV_BEHIND
+	smeltresult = /obj/item/ingot/steel
+
+/obj/item/clothing/head/roguetown/helmet/foresterhelmet
+	name = "forester helmet"
+	desc = "A helmet worn in Grenzelhoft by rank and file soldiery."
+	icon_state = "foresterhelmet"
+	item_state = "foresterhelmet"
+	mob_overlay_icon = 'icons/roguetown/clothing/onmob/64x64/head.dmi'
+	worn_x_dimension = 64
+	worn_y_dimension = 64
+	emote_environment = 3
+	block2add = FOV_BEHIND
+	flags_inv = HIDEEARS|HIDEHAIR|HIDEFACIALHAIR|HIDEFACE
+	smeltresult = /obj/item/ash

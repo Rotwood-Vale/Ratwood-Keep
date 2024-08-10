@@ -121,3 +121,48 @@
 	drop_sound = 'sound/foley/dropsound/cloth_drop.ogg'
 	anvilrepair = null
 	sewrepair = TRUE
+
+/obj/item/clothing/gloves/roguetown/footmangauntlets
+	name = "footman gauntlets"
+	desc = "Gauntlets worn by Grenzelhoft footmen."
+	icon_state = "footmangauntlets"
+	item_state = "footmangauntlets"
+	smeltresult = /obj/item/ingot/iron
+
+/obj/item/clothing/gloves/roguetown/graggaritegauntlets
+	name = "graggarite gauntlets"
+	desc = "Gauntlets worn by Grenzelhoft footmen."
+	icon_state = "graggaritegauntlets"
+	item_state = "graggaritegauntlets"
+	smeltresult = /obj/item/ingot/iron	
+
+/obj/item/clothing/gloves/roguetown/katefractoiigauntlets
+	name = "katefractoii gauntlets"
+	desc = "Gauntlets worn by Grenzelhoft footmen."
+	icon_state = "katefractoiigauntlets"
+	item_state = "katefractoiigauntlets"
+	smeltresult = /obj/item/ingot/iron	
+
+/obj/item/clothing/gloves/roguetown/dwarfgauntlets
+	name = "dwarven gauntlets"
+	desc = "A heavy set of plate gauntlets which provide excellent protection."
+	icon_state = "dwarvengauntlets"
+	item_state = "dwarvengauntlets"
+	armor = list("blunt" = 90, "slash" = 100, "stab" = 80, "bullet" = 100, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	prevent_crits = list(BCLASS_CHOP, BCLASS_CUT, BCLASS_BLUNT, BCLASS_TWIST)
+	resistance_flags = null
+	blocksound = PLATEHIT
+
+/obj/item/clothing/gloves/roguetown/darkelfbracers
+	name = "raider bracers"
+	desc = "Gauntlets made with interlinking rings, provides adequate protection against slashing attacks."
+	icon_state = "darkelfgauntlets"
+	item_state = "darkelfgauntlets"
+	smeltresult = /obj/item/ingot/steel
+
+/obj/item/clothing/gloves/roguetown/forestergauntlets
+	name = "forester gauntlets"
+	desc = "Gauntlets worn by Grenzelhoft footmen."
+	icon_state = "forestergauntlets"
+	item_state = "forestergauntlets"
+	smeltresult = /obj/item/ash

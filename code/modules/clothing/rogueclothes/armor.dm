@@ -565,6 +565,26 @@
 	boobed = TRUE
 	max_integrity = 400
 
+/obj/item/clothing/suit/roguetown/armor/plate/half/footmanchestplate
+	slot_flags = ITEM_SLOT_ARMOR
+	name = "footman cuirass"
+	desc = "A basic iron cuirass worn by soldiers in Grenzelhoft."
+	icon_state = "footmanchestplate"
+	item_state = "footmanchestplate"
+	max_integrity = 100
+	smeltresult = /obj/item/ingot/iron
+	armor_class = ARMOR_CLASS_MEDIUM
+
+/obj/item/clothing/suit/roguetown/armor/plate/half/graggaritearmor
+	slot_flags = ITEM_SLOT_ARMOR
+	name = "graggarite armor"
+	desc = "A basic iron cuirass worn by soldiers in Grenzelhoft."
+	icon_state = "graggaritechestplate"
+	item_state = "graggaritechestplate"
+	max_integrity = 100
+	smeltresult = /obj/item/ingot/iron
+	armor_class = ARMOR_CLASS_MEDIUM	
+
 /obj/item/clothing/suit/roguetown/armor/barrelarmor
 	slot_flags = ITEM_SLOT_ARMOR
 	name = "Barrel Armor"
@@ -581,3 +601,48 @@
 	body_parts_covered = CHEST|VITALS|ARMS
 	boobed = FALSE
 	max_integrity = 300
+
+/obj/item/clothing/suit/roguetown/armor/plate/half/katefractoiichestplate
+	slot_flags = ITEM_SLOT_ARMOR
+	name = "katefractoii chestplate"
+	desc = "A basic iron cuirass worn by soldiers in Grenzelhoft."
+	icon_state = "katefractoiichestplate"
+	item_state = "katefractoiichestplate"
+	max_integrity = 100
+	smeltresult = /obj/item/ingot/iron
+	armor_class = ARMOR_CLASS_MEDIUM	
+
+/obj/item/clothing/suit/roguetown/armor/plate/dwarffull
+	name = "dwarven fullarmor"
+	desc = "Full plate. Leg protecting tassets, groin cup, armored vambraces."
+	icon_state = "dwarvenchestplate"
+	item_state = "dwarvenchestplate"
+	body_parts_covered = CHEST|GROIN|VITALS|LEGS|ARMS
+	equip_delay_self = 80
+
+/obj/item/clothing/suit/roguetown/armor/plate/darkelfchestplate
+	slot_flags = ITEM_SLOT_ARMOR
+	name = "raider chestplate"
+	desc = "A basic cuirass of steel. Lightweight and durable."
+	body_parts_covered = CHEST|VITALS
+	icon_state = "darkelfchestplate"
+	item_state = "darkelfchestplate"
+	armor = list("blunt" = 80, "slash" = 100, "stab" = 80, "bullet" = 100, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	allowed_race = CLOTHED_RACES_TYPES
+	nodismemsleeves = TRUE
+	do_sound = FALSE
+	blocking_behavior = null
+	max_integrity = 300
+	anvilrepair = /datum/skill/craft/armorsmithing
+	smeltresult = /obj/item/ingot/steel
+	armor_class = ARMOR_CLASS_MEDIUM
+
+/obj/item/clothing/suit/roguetown/armor/plate/half/foresterarmor
+	slot_flags = ITEM_SLOT_ARMOR
+	name = "forester chestplate"
+	desc = "A basic iron cuirass worn by soldiers in Grenzelhoft."
+	icon_state = "foresterchestplate"
+	item_state = "foresterchestplate"
+	max_integrity = 100
+	smeltresult = /obj/item/ash
+	armor_class = ARMOR_CLASS_MEDIUM

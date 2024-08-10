@@ -95,6 +95,38 @@
 	verbage = "makes"
 	skillcraft = /datum/skill/craft/carpentry
 
+/datum/crafting_recipe/roguetown/armor/foresterarmor
+	name = "forester armor"
+	result = /obj/item/clothing/suit/roguetown/armor/plate/half/foresterarmor
+	reqs = list(/obj/item/grown/log/tree/small = 1)
+	verbage_simple = "make"
+	verbage = "makes"
+	skillcraft = /datum/skill/craft/carpentry
+
+/datum/crafting_recipe/roguetown/armor/forestershoes
+	name = "forester shoes"
+	result = /obj/item/clothing/shoes/roguetown/boots/forestershoes
+	reqs = list(/obj/item/grown/log/tree/small = 1)
+	verbage_simple = "make"
+	verbage = "makes"
+	skillcraft = /datum/skill/craft/carpentry
+
+/datum/crafting_recipe/roguetown/armor/forestergauntlets
+	name = "forester gauntlets"
+	result = /obj/item/clothing/gloves/roguetown/forestergauntlets
+	reqs = list(/obj/item/grown/log/tree/small = 1)
+	verbage_simple = "make"
+	verbage = "makes"
+	skillcraft = /datum/skill/craft/carpentry	
+
+/datum/crafting_recipe/roguetown/armor/foresterhelmet
+	name = "forester helmet"
+	result = /obj/item/clothing/head/roguetown/helmet/foresterhelmet
+	reqs = list(/obj/item/grown/log/tree/small = 1)
+	verbage_simple = "make"
+	verbage = "makes"
+	skillcraft = /datum/skill/craft/carpentry		
+
 /datum/crafting_recipe/roguetown/roguebin
 	name = "wooden bin"
 	result = /obj/item/roguebin

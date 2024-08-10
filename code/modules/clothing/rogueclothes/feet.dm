@@ -149,6 +149,19 @@
 	anvilrepair = /datum/skill/craft/armorsmithing
 	smeltresult = /obj/item/ingot/steel
 
+/obj/item/clothing/shoes/roguetown/boots/dwarfboots
+	name = "dwarven boots"
+	desc = "A heavy pair of steel plated boots."
+	body_parts_covered = FEET
+	icon_state = "dwarvenboots"
+	item_state = "dwarvenboots"
+	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT, BCLASS_TWIST)
+	color = null
+	blocksound = PLATEHIT
+	armor = list("blunt" = 90, "slash" = 100, "stab" = 80, "bullet" = 100, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	anvilrepair = /datum/skill/craft/armorsmithing
+	smeltresult = /obj/item/ingot/steel	
+
 /obj/item/clothing/shoes/roguetown/boots/leather
 	name = "leather boots"
 	//dropshrink = 0.75
@@ -174,6 +187,27 @@
 	sleeved = 'icons/roguetown/clothing/onmob/helpers/stonekeep_merc.dmi'
 	armor = list("blunt" = 15, "slash" = 15, "stab" = 15, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
 
+/obj/item/clothing/shoes/roguetown/boots/footmangreaves
+	name = "footman greaves"
+	desc = "A pair of greaves worn by Grenzelhoftian soldiery."
+	icon_state = "footmanboots"
+	item_state = "footmanboots"
+	smeltresult = /obj/item/ingot/iron
+
+/obj/item/clothing/shoes/roguetown/boots/graggariteboots
+	name = "graggarite boots"
+	desc = "A pair of greaves worn by Grenzelhoftian soldiery."
+	icon_state = "graggariteboots"
+	item_state = "graggariteboots"
+	smeltresult = /obj/item/ingot/iron	
+
+/obj/item/clothing/shoes/roguetown/boots/katefractoiigreaves
+	name = "katefractoii greaves"
+	desc = "A pair of greaves worn by Grenzelhoftian soldiery."
+	icon_state = "katefractoiiboots"
+	item_state = "katefractoiiboots"
+	smeltresult = /obj/item/ingot/iron	
+
 /obj/item/clothing/shoes/roguetown/boots/furlinedboots
 	name = "fur lined boots"
 	desc = "Leather boots lined with fur."
@@ -192,3 +226,23 @@
 	sewrepair = TRUE
 	armor = list("blunt" = 30, "slash" = 10, "stab" = 20, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
 	isbarefoot = TRUE
+
+/obj/item/clothing/shoes/roguetown/boots/darkelfboots
+	name = "raider boots"
+	desc = "A heavy pair of steel plated boots."
+	body_parts_covered = FEET
+	icon_state = "darkelfboots"
+	item_state = "darkelfboots"
+	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT, BCLASS_TWIST)
+	color = null
+	blocksound = PLATEHIT
+	armor = list("blunt" = 90, "slash" = 100, "stab" = 80, "bullet" = 100, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	anvilrepair = /datum/skill/craft/armorsmithing
+	smeltresult = /obj/item/ingot/steel
+
+/obj/item/clothing/shoes/roguetown/boots/forestershoes
+	name = "forester shoes"
+	desc = "A pair of greaves worn by Grenzelhoftian soldiery."
+	icon_state = "forestershoes"
+	item_state = "forestershoes"
+	smeltresult = /obj/item/ash
