@@ -137,3 +137,15 @@
 	tastes = list("sweetness and light" = 1)
 	eat_effect = null
 	rotprocess = null
+
+/obj/item/reagent_containers/food/snacks/rogue/mashedpotatoes
+	name = "mashed potatoes"
+	desc = "A bowl of mashed potatoes."
+	icon = 'icons/roguetown/items/food.dmi'
+	icon_state = "mashedpotatoes"
+	bitesize = 3
+	list_reagents = list(/datum/reagent/consumable/nutriment = 10)
+	w_class = WEIGHT_CLASS_TINY
+	tastes = list("creamy and light" = 1)
+	eat_effect = null
+	rotprocess = null
