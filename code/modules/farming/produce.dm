@@ -238,8 +238,8 @@
 	tastes = list("starchy" = 1)
 	bitesize = 5
 	list_reagents = list(/datum/reagent/consumable/nutriment = 3)
-	//dropshrink = 0.75
+	dropshrink = 0.75
 	//var/color_index = "good"
-	//can_distill = TRUE
-	//distill_reagent = /datum/reagent/consumable/ethanol/beer/wine
-	//rotprocess = 15 MINUTES
+	can_distill = TRUE
+	distill_reagent = /datum/reagent/consumable/ethanol/beer/vodka
+	rotprocess = 15 MINUTES

@@ -96,6 +96,13 @@ All effects don't start immediately, but rather get worse over time; the rate is
 	glass_name = "glass of wine"
 	color = "#8a0b0b"
 
+/datum/reagent/consumable/ethanol/beer/vodka
+	name = "Vodka"
+	boozepwr = 60
+	taste_description = "vodka"
+	glass_name = "glass of vodka"
+	color = "#D9DFE0"
+
 /datum/reagent/consumable/ethanol/beer/light
 	name = "Light Beer"
 	description = "An alcoholic beverage brewed since ancient times on Old Earth. This variety has reduced calorie and alcohol content."
