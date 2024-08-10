@@ -2345,6 +2345,21 @@
 /obj/effect/landmark/start/vampirespawn,
 /turf/open/floor/rogue/blocks/paving,
 /area/rogue/indoors)
+"Tw" = (
+/obj/structure/table/wood{
+	dir = 1;
+	icon_state = "tablewood1"
+	},
+/obj/structure/table/wood{
+	dir = 1;
+	icon_state = "tablewood1"
+	},
+/obj/item/candle/skull/lit,
+/turf/open/floor/rogue/ruinedwood{
+	dir = 1;
+	icon_state = "vertw"
+	},
+/area/rogue/indoors)
 "TD" = (
 /obj/structure/table/wood{
 	dir = 1;
@@ -6097,7 +6112,7 @@ Wp
 Te
 Te
 Te
-Te
+OL
 Te
 Te
 vQ
@@ -6353,12 +6368,12 @@ Wp
 Wp
 Wp
 Wp
-Te
-Te
-Te
-bz
-Te
-Te
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
 Te
 vQ
 vQ
@@ -6486,11 +6501,11 @@ pg
 vT
 pg
 pg
-Te
-Te
-Te
-Te
-vQ
+bz
+pg
+vT
+pg
+pg
 vQ
 vQ
 Sn
@@ -6617,10 +6632,10 @@ pb
 pb
 pg
 Te
-vQ
-Te
-vQ
-vQ
+pg
+pb
+pb
+pg
 vQ
 vQ
 Sn
@@ -6747,10 +6762,10 @@ pb
 pb
 pg
 Te
-Te
-Te
-vQ
-vQ
+pg
+pb
+pb
+pg
 WE
 vQ
 Sn
@@ -6877,10 +6892,10 @@ ie
 mQ
 pg
 Te
-vQ
-vQ
-vQ
-vQ
+pg
+Tw
+mQ
+pg
 vQ
 vQ
 Sn
@@ -7006,11 +7021,11 @@ pg
 pg
 pg
 pg
-bz
-bz
-bz
-bz
-bz
+Te
+pg
+pg
+pg
+pg
 bz
 bz
 bz
