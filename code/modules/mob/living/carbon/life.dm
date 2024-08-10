@@ -43,6 +43,11 @@
 				cause = " \The [thing] bothers me..."
 				break
 
+		if(HAS_TRAIT(src, TRAIT_NUDE_SLEEPER))
+			if(length(get_equipped_items()))
+				cause = " I need to be nude to be comfortable..."
+				cant_fall_asleep = TRUE
+
 		//Healing while sleeping in a bed
 		if(IsSleeping())
 			var/sleepy_mod = buckled?.sleepy || 0.5
@@ -84,7 +89,7 @@
 					rogstam_add(buckled.sleepy * 10)
 			// Resting on the ground (not sleeping or with eyes closed and about to fall asleep)
 			else if(!(mobility_flags & MOBILITY_STAND))
-				if(eyesclosed && !cant_fall_asleep || (eyesclosed && !(fallingas >= 10 && cant_fall_asleep)))
+				if(eyesclosed && !HAS_TRAIT(src, TRAIT_NUDE_SLEEPER) && !cant_fall_asleep || (eyesclosed && !HAS_TRAIT(src, TRAIT_NUDE_SLEEPER) && !(fallingas >= 10 && cant_fall_asleep)))
 					if(!fallingas)
 						to_chat(src, span_warning("I'll fall asleep soon, although a bed would be more comfortable..."))
 					fallingas++
