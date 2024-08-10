@@ -159,7 +159,7 @@
 	if(isliving(targets[1]))
 		testing("curerot1")
 		var/mob/living/target = targets[1]
-		if(!HAS_TRAIT(target, TRAIT_FAITHLESS))
+		if(HAS_TRAIT(target, TRAIT_FAITHLESS))
 			to_chat(user, span_warning("Pestra's grace has no effect, they do not wish to aid a non-believer..."))
 			return FALSE
 		if(target == user)
