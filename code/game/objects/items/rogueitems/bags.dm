@@ -14,7 +14,7 @@
 /obj/item/storage/roguebag/examine(mob/user)
 	. = ..()
 	if(contents.len)
-		. += span_notice("[contents.len] things in the sack.")
+		. += span_notice("[contents.len] thing[contents.len > 1 ? "s" : ""] in the sack.")
 
 /obj/item/storage/roguebag/equipped(mob/living/carbon/human/user, slot)
 	. = ..()
@@ -73,6 +73,7 @@
 	STR.allow_quick_gather = TRUE
 	STR.allow_quick_empty = TRUE
 	STR.allow_look_inside = FALSE
+	STR.allow_dump_out = TRUE
 	STR.display_numerical_stacking = TRUE
 
 
