@@ -12791,12 +12791,11 @@
 /turf/open/floor/rogue/blocks/stonered,
 /area/rogue/indoors/town/bath)
 "oQJ" = (
-/obj/structure/mineral_door/wood{
-	lockid = "butcher";
-	locked = 1
+/obj/effect/landmark/start/hightemplar{
+	dir = 8
 	},
-/turf/open/floor/rogue/cobble,
-/area/rogue/indoors)
+/turf/open/floor/rogue/churchmarble,
+/area/rogue/indoors/town/church/chapel)
 "oQO" = (
 /obj/structure/closet/crate/chest{
 	lockid = "keep_armory"
@@ -269414,7 +269413,7 @@ wlD
 wlD
 wlD
 wlD
-oQJ
+ujy
 uaL
 qvR
 qvR
@@ -270216,7 +270215,7 @@ qvR
 ryI
 jsT
 wOD
-oQJ
+ujy
 wOD
 ryI
 uuq
@@ -417243,7 +417242,7 @@ swm
 swm
 swm
 swm
-swm
+oQJ
 swm
 swm
 swm

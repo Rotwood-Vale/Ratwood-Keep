@@ -241,7 +241,8 @@
 
 #define JDO_PRIEST 10
 #define JDO_PURITAN 11
-#define JDO_TEMPLAR 12
+#define JDO_HIGHTEMPLAR 12
+#define JDO_TEMPLAR 12.1
 #define JDO_MONK 13
 #define JDO_DRUID 13.1
 #define JDO_CHURCHLING 14
@@ -327,6 +328,7 @@
 	/datum/job/roguetown/undertaker,\
 	/datum/job/roguetown/priest,\
 	/datum/job/roguetown/puritan,\
+	/datum/job/roguetown/hightemplar, \
 	/datum/job/roguetown/templar
 
 #define PEASANT_ROLES \
