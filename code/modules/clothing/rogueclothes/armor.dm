@@ -26,19 +26,26 @@
 	nodismemsleeves = TRUE
 	flags_inv = HIDEBOOB|HIDECROTCH
 
-//Handles debuff from wearing armor you don't have skill for. Annoyingly also does this if holding it, but oh well. Just drop it.
+//Handles debuff from wearing armor. This is slop, it just makes it so you can't put it on.
+//Preferably - make a way to check when armor is on apply status effect of a debuff to stats, on remove, remove debuff. - Tried it a few ways, kept breaking.
 /obj/item/clothing/suit/roguetown/armor/mob_can_equip(mob/user, mob/equipper, slot)
 	var/mob/living/carbon/human/H = user
 	if(armor_class == ARMOR_CLASS_HEAVY)
 		if(!HAS_TRAIT(H,TRAIT_HEAVYARMOR))
 			to_chat(user, span_warning("You lack the training to wear this armor!"))
 			return FALSE
-	if(armor_class == ARMOR_CLASS_MEDIUM)
-		if(!HAS_TRAIT(H,TRAIT_HEAVYARMOR))
-			if(!HAS_TRAIT(H,TRAIT_MEDIUMARMOR))
-				to_chat(user, span_warning("You lack the training to wear this armor!"))
+		else
+			return TRUE
+	if(armor_class == ARMOR_CLASS_MEDIUM)	//Armor class medium
+		if(!HAS_TRAIT(H,TRAIT_HEAVYARMOR))	//First check if heavy armor training; if so, no need to check further. Heavy training = medium training
+			if(!HAS_TRAIT(H,TRAIT_MEDIUMARMOR))		//If no heavy training, check medium training
+				to_chat(user, span_warning("You lack the training to wear this armor!"))	//boo-womp
 				return FALSE
-	else
+			else
+				return TRUE
+		else
+			return TRUE
+	if(armor_class == ARMOR_CLASS_LIGHT)	//No perk check on this one; doing this to avoid future issues.
 		return TRUE
 
 /obj/item/clothing/suit/roguetown/armor/chainmail

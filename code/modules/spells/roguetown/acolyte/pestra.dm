@@ -112,7 +112,7 @@
 	. = ..()
 	if(ishuman(targets[1]))
 		var/mob/living/carbon/human/human_target = targets[1]
-		if(!HAS_TRAIT(human_target, TRAIT_FAITHLESS)) //go find a surgeon, non-believer
+		if(HAS_TRAIT(human_target, TRAIT_FAITHLESS)) //go find a surgeon, non-believer
 			to_chat(user, span_warning("Pestra's grace has no effect, they do not wish to aid a non-believer..."))
 			return FALSE
 		for(var/obj/item/bodypart/limb as anything in get_limbs(human_target, user))
