@@ -3750,9 +3750,6 @@
 /obj/structure/fluff/walldeco/customflag{
 	pixel_y = 32
 	},
-/obj/effect/landmark/start/dungeoneer{
-	dir = 8
-	},
 /turf/open/floor/rogue/tile/masonic{
 	dir = 8
 	},
@@ -5886,6 +5883,9 @@
 /area/rogue/outdoors/town/roofs)
 "gHu" = (
 /obj/structure/roguemachine/mail,
+/obj/effect/landmark/start/dungeoneer{
+	dir = 8
+	},
 /turf/open/floor/rogue/concrete,
 /area/rogue/under/town/basement)
 "gHQ" = (
