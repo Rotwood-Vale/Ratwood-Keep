@@ -62,6 +62,7 @@
 										span_danger("[user] ties me up with [src.name]."))
 					SSblackbox.record_feedback("tally", "handcuffs", 1, type)
 
+					user.mind?.adjust_experience(/datum/skill/craft/traps, C.STAINT, FALSE)
 					log_combat(user, C, "handcuffed")
 				else
 					to_chat(user, span_warning("I fail to tie up [C]!"))
@@ -81,6 +82,7 @@
 										span_danger("[user] ties my legs with [src.name]."))
 					SSblackbox.record_feedback("tally", "legcuffs", 1, type)
 
+					user.mind?.adjust_experience(/datum/skill/craft/traps, C.STAINT, FALSE)
 					log_combat(user, C, "legcuffed", TRUE)
 				else
 					to_chat(user, span_warning("I fail to tie up [C]!"))
@@ -132,6 +134,7 @@
 	icon = 'icons/roguetown/items/misc.dmi'
 	icon_state = "chain"
 	slot_flags = ITEM_SLOT_HIP|ITEM_SLOT_WRISTS
+	force = 10
 	throwforce = 5
 	w_class = WEIGHT_CLASS_SMALL
 	throw_speed = 1

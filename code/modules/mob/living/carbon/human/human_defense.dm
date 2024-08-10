@@ -33,10 +33,26 @@
 					if(C.obj_integrity <= 0)
 						continue
 				var/val = C.armor.getRating(d_type)
-				if(val > 0)
-					if(val > protection)
-						protection = val
-						used = C
+				// The code below finally fixes the targetting order of armor > shirt > flesh. - Foxtrot (#gundamtanaka) <- Fix from Stonekeep, Furries are too busy to fix.
+				var/armorworn = src.get_item_by_slot(SLOT_ARMOR) // The armor we're wearing
+				var/shirtworn = src.get_item_by_slot(SLOT_SHIRT) // The shirt we're wearing
+				if(bp == armorworn) // If the targeted bodypart has an armor...
+					if(val > 0) // ...and it's an actual armor with armor values...
+						if(val > protection)
+							protection = val
+							used = armorworn // ...force us to use it above all!
+				// If we don't have armor equipped or the one we have is broken...
+				else if(bp == shirtworn && wear_armor.obj_integrity <= 0 || armorworn == null)
+					if(val > 0) // ...and it's not just a linen shirt...
+						if(val > protection)
+							protection = val
+							used = shirtworn //  ...skip straight to the shirt slot, and target it!
+				// Otherwise, proceed with normal assignment of bodypart protected by armor that isn't armor or shirt
+				else if(!istype(bp, wear_armor) && !istype(bp, wear_shirt))
+					if(val > 0)
+						if(val > protection)
+							protection = val
+							used = C
 	if(used)
 		if(!blade_dulling)
 			blade_dulling = BCLASS_BLUNT

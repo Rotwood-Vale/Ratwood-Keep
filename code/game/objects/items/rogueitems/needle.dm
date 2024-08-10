@@ -94,6 +94,8 @@
 				if(I.obj_broken == TRUE)
 					I.obj_broken = FALSE
 				I.obj_integrity = I.max_integrity
+				user.mind?.adjust_experience(/datum/skill/misc/sewing, user.STAINT, TRUE)
+
 				//Vrell - Part of storage item repair fix
 				if(target_storage)
 					target_storage.being_repaired = FALSE
@@ -110,6 +112,7 @@
 		return FALSE
 	var/mob/living/doctor = user
 	var/mob/living/carbon/human/patient = target
+	var/boon = doctor?.mind?.get_learning_boon(/datum/skill/misc/medicine)
 	if(stringamt < 1)
 		to_chat(user, span_warning("The needle has no thread left!"))
 		return
@@ -149,7 +152,8 @@
 		if(target_wound.sew_progress < target_wound.sew_threshold)
 			continue
 		if(doctor.mind)
-			doctor.mind.adjust_experience(/datum/skill/misc/medicine, doctor.STAINT * 5)
+			var/amt2raise = doctor.STAINT *5
+			doctor.mind.adjust_experience(/datum/skill/misc/medicine, amt2raise * boon)
 		use(1)
 		target_wound.sew_wound()
 		if(patient == doctor)

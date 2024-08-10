@@ -255,13 +255,15 @@
 	throw_speed = 1
 	throw_range = 1
 	icon_state = "beartrap"
-	desc = ""
+	desc = "A crude and rusty spring trap, used to snare interlopers, or prey on a hunt. Looks almost like falling apart."
+	var/rusty = TRUE
 	var/armed = 0
 	var/trap_damage = 90
 	embedding = list("embedded_unsafe_removal_time" = 40, "embedded_pain_chance" = 10, "embedded_pain_multiplier" = 1, "embed_chance" = 0, "embedded_fall_chance" = 0)
 	max_integrity = 100
 
 /obj/item/restraints/legcuffs/beartrap/attack_hand(mob/user)
+	var/boon = user?.mind?.get_learning_boon(/datum/skill/craft/traps)
 	if(iscarbon(user) && armed && isturf(loc))
 		var/mob/living/carbon/C = user
 		var/def_zone = "[(C.active_hand_index == 2) ? "r" : "l" ]_arm"
@@ -292,6 +294,7 @@
 				alpha = 255
 				C.visible_message(span_notice("[C] disarms \the [src]."), \
 						span_notice("I disarm \the [src]."))
+				C.mind?.adjust_experience(/datum/skill/craft/traps, C.STAINT * boon, FALSE)
 				return FALSE
 			else
 				add_mob_blood(C)
@@ -342,15 +345,25 @@
 
 /obj/item/restraints/legcuffs/beartrap/attack_self(mob/user)
 	..()
+	var/boon = user?.mind?.get_learning_boon(/datum/skill/craft/traps)
 	if(ishuman(user) && !user.stat && !user.restrained())
 		var/mob/living/L = user
-		if(do_after(user, 50 - (L.STASTR*2), target = user))
+		if(prob(50 + (L.mind.get_skill_level(/datum/skill/craft/traps) * 10)))		//Used to be strength check, fuck off.
 			if(prob(50))
 				armed = !armed
 				update_icon()
 				to_chat(user, span_notice("[src] is now [armed ? "armed" : "disarmed"]"))
+				L.mind?.adjust_experience(/datum/skill/craft/traps, L.STAINT * boon, FALSE)
 			else
-				user.visible_message(span_warning("You couldn't get the shoddy [src.name] [armed ? "shut close!" : "to open up!"]"))
+				if(rusty)
+					user.visible_message("<span class='warning'>The rusty [src.name] breaks under stress!</span>")
+					playsound(src.loc, 'sound/foley/breaksound.ogg', 100, TRUE, -1)
+					qdel(src)
+				else
+					user.visible_message("<span class='warning'>Curses! I couldn't keep [src.name] open tight enough!</span>")
+					playsound(src.loc, 'sound/items/beartrap.ogg', 300, TRUE, -1)
+					return
+
 /obj/item/restraints/legcuffs/beartrap/proc/close_trap()
 	armed = FALSE
 	alpha = 255
@@ -399,6 +412,12 @@
 				L.Stun(80)
 				L.consider_ambush()
 	..()
+
+// For craftable beartraps
+/obj/item/restraints/legcuffs/beartrap/crafted
+	rusty = FALSE
+	desc = "Curious is the trapmaker's art. Their efficacy unwitnessed by their own eyes."
+	smeltresult = /obj/item/ingot/iron
 
 /obj/item/restraints/legcuffs/beartrap/energy
 	name = "energy snare"

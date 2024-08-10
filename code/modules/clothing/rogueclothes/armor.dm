@@ -26,6 +26,21 @@
 	nodismemsleeves = TRUE
 	flags_inv = HIDEBOOB|HIDECROTCH
 
+//Handles debuff from wearing armor you don't have skill for. Annoyingly also does this if holding it, but oh well. Just drop it.
+/obj/item/clothing/suit/roguetown/armor/mob_can_equip(mob/user, mob/equipper, slot)
+	var/mob/living/carbon/human/H = user
+	if(armor_class == ARMOR_CLASS_HEAVY)
+		if(!HAS_TRAIT(H,TRAIT_HEAVYARMOR))
+			to_chat(user, span_warning("You lack the training to wear this armor!"))
+			return FALSE
+	if(armor_class == ARMOR_CLASS_MEDIUM)
+		if(!HAS_TRAIT(H,TRAIT_HEAVYARMOR))
+			if(!HAS_TRAIT(H,TRAIT_MEDIUMARMOR))
+				to_chat(user, span_warning("You lack the training to wear this armor!"))
+				return FALSE
+	else
+		return TRUE
+
 /obj/item/clothing/suit/roguetown/armor/chainmail
 	slot_flags = ITEM_SLOT_ARMOR|ITEM_SLOT_SHIRT
 	name = "haubergeon"

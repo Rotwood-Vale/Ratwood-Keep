@@ -95,6 +95,7 @@
 			modifier = 0.9
 		if(BLACKSMITH_LEVEL_COMPETENT)
 			I.desc = "[I.desc] It is competently made."
+/*		- We disabled this due to 1.3 fucking modifier on all swords/armor is fucking broken. 130% durability or bonus damage atop strength - abysmal dogshit.
 		if(BLACKSMITH_LEVEL_FINE)
 			I.name = "fine [I.name]"
 			modifier = 1.1
@@ -104,7 +105,7 @@
 		if(BLACKSMITH_LEVEL_LEGENDARY to BLACKSMITH_LEVEL_MAX)
 			I.name = "legendary [I.name]"
 			modifier = 1.3
-	
+*/
 	if(!modifier)
 		return
 	I.obj_integrity *= modifier
