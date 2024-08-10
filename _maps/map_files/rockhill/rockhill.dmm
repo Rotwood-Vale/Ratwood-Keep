@@ -979,6 +979,17 @@
 /obj/item/roguebin/water,
 /turf/open/floor/rogue/blocks,
 /area/rogue/indoors/town/garrison)
+"bgK" = (
+/obj/structure/closet/crate/chest{
+	locked = 1;
+	lockid = "keep_dungeon"
+	},
+/obj/item/reagent_containers/food/snacks/rogue/crackerscooked,
+/obj/item/reagent_containers/food/snacks/rogue/crackerscooked,
+/obj/item/reagent_containers/food/snacks/rogue/crackerscooked,
+/obj/item/reagent_containers/food/snacks/rogue/crackerscooked,
+/turf/open/floor/rogue/concrete,
+/area/rogue/under/town/basement)
 "bhp" = (
 /obj/machinery/light/rogue/torchholder/r,
 /turf/open/floor/rogue/ruinedwood,
@@ -1106,7 +1117,8 @@
 /obj/structure/table/wood,
 /obj/item/candle/skull,
 /obj/structure/bars{
-	alpha = 150
+	alpha = 150;
+	max_integrity = 2000
 	},
 /turf/open/floor/rogue/concrete,
 /area/rogue/under/town/basement)
@@ -1459,11 +1471,9 @@
 /turf/closed/wall/mineral/rogue/decowood,
 /area/rogue/indoors/town/tavern)
 "bJd" = (
-/obj/structure/roguemachine/scomm/r,
-/turf/open/floor/rogue/blocks{
-	icon_state = "bluestone"
-	},
-/area/rogue/under/town/basement)
+/obj/structure/bed/rogue/shit,
+/turf/open/floor/rogue/concrete,
+/area/rogue/indoors/town/garrison)
 "bJu" = (
 /obj/effect/decal/cleanable/ash/large,
 /turf/closed/mineral/rogue,
@@ -2841,6 +2851,7 @@
 "doY" = (
 /obj/structure/table/wood,
 /obj/item/restraints/legcuffs/beartrap,
+/obj/structure/roguemachine/scomm/r,
 /turf/open/floor/rogue/concrete,
 /area/rogue/under/town/basement)
 "dpw" = (
@@ -5873,6 +5884,10 @@
 	},
 /turf/open/transparent/openspace,
 /area/rogue/outdoors/town/roofs)
+"gHu" = (
+/obj/structure/roguemachine/mail,
+/turf/open/floor/rogue/concrete,
+/area/rogue/under/town/basement)
 "gHQ" = (
 /obj/structure/bed/rogue/shit,
 /turf/open/floor/rogue/cobble,
@@ -9560,6 +9575,7 @@
 /obj/structure/table/wood,
 /obj/item/reagent_containers/glass/cup/skull,
 /obj/item/keyring,
+/obj/item/reagent_containers/glass/bottle/rogue/healthpot,
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/basement)
 "lcs" = (
@@ -10419,13 +10435,11 @@
 /turf/open/floor/rogue/tile,
 /area/rogue/indoors/town)
 "lZc" = (
-/obj/structure/mineral_door/wood/donjon{
-	dir = 1;
-	locked = 1;
-	lockid = "town_barracks"
+/obj/structure/bars{
+	max_integrity = 2000
 	},
-/turf/open/floor/rogue/cobble,
-/area/rogue/under/town/basement)
+/turf/open/floor/rogue/greenstone,
+/area/rogue/under/town/sewer)
 "lZo" = (
 /obj/structure/table/wood{
 	dir = 1;
@@ -14664,6 +14678,7 @@
 /obj/item/natural/cloth,
 /obj/item/needle/thorn,
 /obj/item/needle/thorn,
+/obj/item/reagent_containers/glass/bottle/rogue/healthpot,
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/town/basement)
 "rjU" = (
@@ -201355,10 +201370,10 @@ jMl
 jMl
 uiu
 cTA
-oQo
+lZc
 pNi
-oQo
-oQo
+lZc
+lZc
 txa
 iTw
 iTw
@@ -201761,7 +201776,7 @@ iTw
 iTw
 iTw
 iTw
-lZc
+cqB
 iTw
 iTw
 uSS
@@ -203353,7 +203368,7 @@ cTA
 hks
 iTw
 cTA
-yfk
+gHu
 yfk
 nYt
 cTA
@@ -203763,7 +203778,7 @@ jGw
 cBf
 trV
 cBf
-yfk
+bgK
 cTA
 cTA
 jyI
@@ -204162,7 +204177,7 @@ eEg
 azH
 cTA
 jGw
-bJd
+uOT
 oMQ
 cBf
 doY
@@ -304670,7 +304685,7 @@ hNW
 hpj
 hpj
 hpj
-hNW
+bJd
 tNj
 wbg
 wbg
@@ -305474,7 +305489,7 @@ hNW
 hNW
 axD
 hNW
-hNW
+bJd
 tNj
 wbg
 wbg
@@ -306274,7 +306289,7 @@ tNj
 hpj
 wNH
 tNj
-hNW
+bJd
 xpC
 dPp
 det
