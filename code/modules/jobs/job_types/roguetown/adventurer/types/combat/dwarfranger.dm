@@ -40,7 +40,7 @@
 	H.mind.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/medicine, 2, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/craft/cooking, 1, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/labor/butchering, 1, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/labor/butchering, 1, TRUE)
 	H.change_stat("perception", 3) // Copied some stats from Ranger
 	H.change_stat("constitution", 2)
 	H.change_stat("endurance", 1)
