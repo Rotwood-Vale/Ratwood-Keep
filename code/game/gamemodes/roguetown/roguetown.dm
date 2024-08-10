@@ -159,29 +159,32 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "E
 					log_game("Major Antagonist: Extended")
 		return TRUE
 
-	var/major_roll = rand(1,100)
-	switch(major_roll)
-		if(1 to 35)
-			pick_rebels()
-			log_game("Major Antagonist: Rebellion")
-		if(36 to 80)
-			//WWs and Vamps now normally roll together
-			pick_vampires()
-			pick_werewolves()
-			log_game("Major Antagonist: Vampires and Werewolves")
-		if(81 to 100)
-			log_game("Major Antagonist: Extended") //gotta put something here.
-	
-	if(prob(45))
-		pick_bandits()
-		log_game("Minor Antagonist: Bandit")
-	if(prob(45))
-		pick_aspirants()
-		log_game("Minor Antagonist: Aspirant")
-	if(prob(10))
-		pick_maniac()
-		log_game("Minor Antagonist: Maniac")
-	
+	if(num_players() >= 10) // Need at least a handful of people before we start throwing ne'er-do-wells into the mix.
+		var/major_roll = rand(1,100)
+		switch(major_roll)
+			if(1 to 35)
+				pick_rebels()
+				log_game("Major Antagonist: Rebellion")
+			if(36 to 80)
+				//WWs and Vamps now normally roll together
+				pick_vampires()
+				pick_werewolves()
+				log_game("Major Antagonist: Vampires and Werewolves")
+			if(81 to 100)
+				log_game("Major Antagonist: Extended") //gotta put something here.
+
+		if(prob(45))
+			pick_bandits()
+			log_game("Minor Antagonist: Bandit")
+		if(prob(45))
+			pick_aspirants()
+			log_game("Minor Antagonist: Aspirant")
+		/* Rest well, unoriginal LFWB reference. You will not be missed.
+		if(prob(10))
+			pick_maniac()
+			log_game("Minor Antagonist: Maniac")
+		*/
+
 	return TRUE
 
 /datum/game_mode/chaosmode/proc/pick_bandits()
