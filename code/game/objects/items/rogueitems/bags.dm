@@ -11,6 +11,11 @@
 	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR|HIDEFACIALHAIR
 	max_integrity = 300
 
+/obj/item/storage/roguebag/examine(mob/user)
+	. = ..()
+	if(contents.len)
+		. += span_notice("[contents.len] things in the sack.")
+
 /obj/item/storage/roguebag/equipped(mob/living/carbon/human/user, slot)
 	. = ..()
 	if(slot == SLOT_HEAD)
