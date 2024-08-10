@@ -17,14 +17,6 @@
 /obj/structure/fluff/statue/knight/r,
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/cave/spider)
-"aW" = (
-/obj/item/natural/bundle/fibers,
-/obj/structure/table/wood{
-	dir = 10;
-	icon_state = "tablewood2"
-	},
-/turf/open/floor/rogue/blocks,
-/area/rogue/under/cave/spider)
 "aX" = (
 /obj/structure/chair/wood/rogue{
 	dir = 8
@@ -35,24 +27,30 @@
 /obj/item/clothing/ring/active/nomag,
 /turf/open/floor/rogue/churchmarble,
 /area/rogue/under/cave/spider)
-"bS" = (
-/obj/effect/decal/cleanable/cobweb{
-	icon_state = "cobweb2"
-	},
-/turf/open/water/swamp/deep,
+"bR" = (
+/obj/item/chair/stool/bar/rogue/crafted,
+/turf/open/floor/rogue/blocks,
 /area/rogue/under/cave/spider)
-"dX" = (
-/obj/structure/table/wood/crafted,
-/obj/item/rogueweapon/stoneaxe/woodcut,
+"cl" = (
+/obj/effect/decal/cleanable/blood/old,
+/mob/living/carbon/human/species/skeleton/npc/ambush{
+	inertia_move_delay = 0;
+	STACON = 13;
+	STAEND = 13;
+	STASPD = 13;
+	STASTR = 13
+	},
+/turf/open/floor/rogue/blocks,
+/area/rogue/under/cave/spider)
+"du" = (
+/obj/structure/closet/crate/roguecloset/crafted,
+/obj/item/natural/bundle/fibers,
+/obj/effect/decal/cobbleedge,
+/obj/effect/spawner/lootdrop/roguetown/dungeon/materials,
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/cave/spider)
 "ef" = (
 /obj/machinery/light/rogue/wallfire/candle/blue,
-/turf/open/floor/rogue/blocks,
-/area/rogue/under/cave/spider)
-"eE" = (
-/obj/structure/closet/crate/roguecloset/inn/chest,
-/obj/effect/spawner/lootdrop/roguetown/dungeon/materials,
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/cave/spider)
 "eH" = (
@@ -65,6 +63,10 @@
 	},
 /turf/open/floor/rogue/blocks/paving,
 /area/rogue/under/cave/spider)
+"eN" = (
+/obj/effect/decal/cleanable/cobweb,
+/turf/open/water/swamp/deep,
+/area/rogue/under/cave/spider)
 "eZ" = (
 /turf/open/floor/rogue/blocks/paving,
 /area/rogue/under/cave/spider)
@@ -75,10 +77,6 @@
 /area/rogue/under/cave/spider)
 "fu" = (
 /obj/effect/spawner/lootdrop/roguetown/dungeon/weapons,
-/turf/open/floor/rogue/blocks,
-/area/rogue/under/cave/spider)
-"fA" = (
-/obj/structure/mirror,
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/cave/spider)
 "fD" = (
@@ -95,18 +93,19 @@
 	},
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/cave/spider)
-"ge" = (
-/mob/living/simple_animal/hostile/retaliate/rogue/spider/mutated{
-	faction = list("undead")
+"gr" = (
+/mob/living/simple_animal/hostile/retaliate/rogue/minotaur{
+	faction = list("undead");
+	STASTR = 20
 	},
-/turf/open/water/swamp/deep,
-/area/rogue/under/cave/spider)
-"gj" = (
-/obj/structure/chair/stool/rogue,
-/turf/open/floor/rogue/blocks,
+/turf/open/floor/rogue/blocks/paving,
 /area/rogue/under/cave/spider)
 "gF" = (
 /turf/closed/wall/mineral/rogue/stone,
+/area/rogue/under/cave/spider)
+"gU" = (
+/obj/item/roguecoin/copper/pile,
+/turf/open/floor/rogue/blocks,
 /area/rogue/under/cave/spider)
 "hL" = (
 /obj/machinery/light/rogue/torchholder{
@@ -126,9 +125,13 @@
 /obj/effect/spawner/lootdrop/roguetown/dungeon/misc,
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/cave/spider)
-"kd" = (
-/obj/item/clothing/ring/diamonds,
-/turf/open/floor/rogue/churchmarble,
+"jC" = (
+/obj/item/grown/log/tree/stick,
+/obj/item/grown/log/tree/stick,
+/obj/item/grown/log/tree/stick,
+/obj/structure/closet/crate/drawer,
+/obj/effect/spawner/lootdrop/roguetown/dungeon/materials,
+/turf/open/floor/rogue/blocks,
 /area/rogue/under/cave/spider)
 "kw" = (
 /obj/structure/table/wood{
@@ -136,6 +139,10 @@
 	icon_state = "tablewood2"
 	},
 /turf/open/floor/rogue/cobble,
+/area/rogue/under/cave/spider)
+"ky" = (
+/obj/item/roguebin/water/gross,
+/turf/open/floor/rogue/blocks,
 /area/rogue/under/cave/spider)
 "lr" = (
 /obj/machinery/light/rogue/torchholder{
@@ -147,36 +154,37 @@
 /obj/structure/fluff/walldeco/bigpainting,
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/cave/spider)
+"lQ" = (
+/obj/item/grown/log/tree/stick,
+/obj/structure/closet/crate/chest/crafted,
+/obj/effect/spawner/lootdrop/roguetown/dungeon/materials,
+/turf/open/floor/rogue/blocks,
+/area/rogue/under/cave/spider)
 "mm" = (
 /obj/effect/spawner/roguemap/hauntpile,
 /turf/open/floor/rogue/blocks/paving,
 /area/rogue/under/cave/spider)
-"mH" = (
-/obj/effect/decal/cleanable/cobweb,
+"mw" = (
+/obj/effect/decal/cleanable/cobweb{
+	icon_state = "cobweb2"
+	},
 /turf/open/water/swamp/deep,
+/area/rogue/under/cave/spider)
+"mL" = (
+/mob/living/simple_animal/hostile/retaliate/rogue/spider/mutated{
+	faction = list("undead")
+	},
+/turf/open/floor/rogue/naturalstone,
+/area/rogue/under/cave/spider)
+"oa" = (
+/obj/structure/table/wood/crafted,
+/obj/effect/spawner/lootdrop/roguetown/dungeon/tools,
+/turf/open/floor/rogue/blocks,
 /area/rogue/under/cave/spider)
 "oo" = (
 /obj/structure/closet/crate/roguecloset/dark,
 /obj/effect/spawner/lootdrop/roguetown/dungeon/misc,
 /turf/open/floor/rogue/cobble,
-/area/rogue/under/cave/spider)
-"oR" = (
-/obj/item/grown/log/tree,
-/obj/item/grown/log/tree,
-/obj/item/grown/log/tree,
-/obj/item/grown/log/tree,
-/obj/item/grown/log/tree/stick,
-/obj/item/grown/log/tree/stick,
-/obj/item/grown/log/tree/stick,
-/obj/item/grown/log/tree/stick,
-/obj/item/grown/log/tree/stick,
-/obj/item/grown/log/tree/stick,
-/obj/structure/closet/crate/roguecloset/crafted,
-/turf/open/floor/rogue/blocks,
-/area/rogue/under/cave/spider)
-"oW" = (
-/obj/item/dmusicbox,
-/turf/open/floor/rogue/churchmarble,
 /area/rogue/under/cave/spider)
 "pg" = (
 /obj/item/roguebin/water/gross,
@@ -185,11 +193,9 @@
 	},
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/cave/spider)
-"px" = (
-/obj/structure/chair/wood/rogue/fancy{
-	dir = 8
-	},
-/turf/open/floor/rogue/blocks,
+"pp" = (
+/obj/item/restraints/legcuffs/beartrap/armed,
+/turf/open/floor/rogue/cobble,
 /area/rogue/under/cave/spider)
 "pA" = (
 /obj/machinery/light/rogue/torchholder{
@@ -200,9 +206,11 @@
 "pX" = (
 /turf/closed/wall/mineral/rogue/stone/moss,
 /area/rogue/under/cave/spider)
-"qg" = (
-/obj/item/roguecoin/copper/pile,
-/turf/open/floor/rogue/blocks,
+"qn" = (
+/mob/living/simple_animal/hostile/retaliate/rogue/spider/mutated{
+	faction = list("undead")
+	},
+/turf/open/floor/rogue/cobble,
 /area/rogue/under/cave/spider)
 "qU" = (
 /obj/structure/mineral_door/wood{
@@ -215,27 +223,14 @@
 /obj/effect/spawner/lootdrop/roguetown/dungeon/armor,
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/cave/spider)
+"rw" = (
+/obj/structure/chair/wood/rogue/fancy{
+	dir = 8
+	},
+/turf/open/floor/rogue/blocks,
+/area/rogue/under/cave/spider)
 "sl" = (
 /obj/machinery/light/rogue/firebowl/standing/blue,
-/turf/open/floor/rogue/blocks,
-/area/rogue/under/cave/spider)
-"su" = (
-/obj/structure/closet/crate/roguecloset/crafted,
-/obj/item/natural/bundle/fibers,
-/obj/effect/decal/cobbleedge,
-/obj/effect/spawner/lootdrop/roguetown/dungeon/materials,
-/turf/open/floor/rogue/blocks,
-/area/rogue/under/cave/spider)
-"sA" = (
-/obj/item/roguebin/water/gross,
-/turf/open/floor/rogue/blocks,
-/area/rogue/under/cave/spider)
-"sE" = (
-/obj/effect/spawner/roguemap/hauntpile,
-/turf/open/water/swamp/deep,
-/area/rogue/under/cave/spider)
-"sU" = (
-/obj/item/chair/rogue/crafted,
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/cave/spider)
 "tC" = (
@@ -250,11 +245,6 @@
 /area/rogue/under/cave/spider)
 "um" = (
 /turf/open/lava/acid,
-/area/rogue/under/cave/spider)
-"uG" = (
-/obj/effect/decal/cleanable/cobweb/cobweb2,
-/obj/effect/decal/cleanable/cobweb,
-/turf/closed/wall/mineral/rogue/stone,
 /area/rogue/under/cave/spider)
 "uI" = (
 /obj/effect/spawner/lootdrop/roguetown/dungeon/armor,
@@ -282,14 +272,6 @@
 "vj" = (
 /obj/machinery/light/rogue/wallfire/candle/blue,
 /obj/machinery/light/rogue/wallfire/candle/blue,
-/turf/open/floor/rogue/blocks,
-/area/rogue/under/cave/spider)
-"vk" = (
-/obj/structure/closet/crate/roguecloset/crafted,
-/obj/item/grown/log/tree/small,
-/obj/effect/decal/cobbleedge,
-/obj/effect/spawner/lootdrop/roguetown/dungeon/materials,
-/obj/effect/decal/cleanable/cobweb,
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/cave/spider)
 "vr" = (
@@ -325,6 +307,10 @@
 /obj/item/roguecoin/copper/pile,
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/cave/spider)
+"xm" = (
+/obj/structure/chair/stool/rogue,
+/turf/open/floor/rogue/blocks,
+/area/rogue/under/cave/spider)
 "xu" = (
 /mob/living/carbon/human/species/skeleton/npc/ambush{
 	inertia_move_delay = 0;
@@ -335,10 +321,11 @@
 	},
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/cave/spider)
-"xx" = (
-/obj/structure/table/wood/crafted,
-/obj/effect/spawner/lootdrop/roguetown/dungeon/tools,
-/turf/open/floor/rogue/blocks,
+"xC" = (
+/mob/living/simple_animal/hostile/retaliate/rogue/spider/mutated{
+	faction = list("undead")
+	},
+/turf/open/water/swamp/deep,
 /area/rogue/under/cave/spider)
 "xT" = (
 /obj/item/storage/belt/rogue/pouch/coins/mid,
@@ -352,28 +339,8 @@
 /obj/effect/spawner/roguemap/hauntpile,
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/cave/spider)
-"yo" = (
-/mob/living/simple_animal/hostile/retaliate/rogue/spider/mutated{
-	faction = list("undead")
-	},
-/turf/open/floor/rogue/cobble,
-/area/rogue/under/cave/spider)
-"yN" = (
-/obj/item/grown/log/tree/stick,
-/obj/item/grown/log/tree/stick,
-/obj/item/grown/log/tree/stick,
-/obj/structure/closet/crate/drawer,
-/obj/effect/spawner/lootdrop/roguetown/dungeon/materials,
-/turf/open/floor/rogue/blocks,
-/area/rogue/under/cave/spider)
 "za" = (
 /turf/open/floor/rogue/naturalstone,
-/area/rogue/under/cave/spider)
-"zg" = (
-/obj/structure/rack/rogue/shelf/big,
-/obj/effect/spawner/lootdrop/roguetown/dungeon/armor,
-/obj/effect/spawner/lootdrop/roguetown/dungeon/armor,
-/turf/open/floor/rogue/blocks,
 /area/rogue/under/cave/spider)
 "zw" = (
 /turf/open/floor/rogue/tile/masonic/inverted,
@@ -391,18 +358,21 @@
 	},
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/cave/spider)
-"zV" = (
-/obj/effect/decal/cleanable/cobweb{
-	icon_state = "cobweb2"
-	},
-/turf/open/floor/rogue/dirt/road,
+"Ah" = (
+/obj/effect/decal/cleanable/cobweb/cobweb2,
+/obj/effect/decal/cleanable/cobweb,
+/turf/closed/wall/mineral/rogue/stone,
 /area/rogue/under/cave/spider)
-"AX" = (
-/obj/effect/decal/cleanable/cobweb{
-	icon_state = "cobweb2"
-	},
-/obj/item/candle/yellow/lit,
-/turf/open/floor/rogue/dirt/road,
+"AT" = (
+/obj/structure/closet/crate/roguecloset/inn/chest,
+/obj/effect/spawner/lootdrop/roguetown/dungeon/materials,
+/turf/open/floor/rogue/blocks,
+/area/rogue/under/cave/spider)
+"Bh" = (
+/obj/structure/closet/crate/roguecloset/crafted,
+/obj/effect/spawner/lootdrop/roguetown/dungeon/clothing,
+/obj/effect/spawner/lootdrop/roguetown/dungeon/clothing,
+/turf/open/floor/rogue/blocks,
 /area/rogue/under/cave/spider)
 "BG" = (
 /mob/living/carbon/human/species/skeleton/npc/ambush{
@@ -414,6 +384,20 @@
 	},
 /turf/open/floor/rogue/churchmarble,
 /area/rogue/under/cave/spider)
+"BN" = (
+/obj/item/grown/log/tree,
+/obj/item/grown/log/tree,
+/obj/item/grown/log/tree,
+/obj/item/grown/log/tree,
+/obj/item/grown/log/tree/stick,
+/obj/item/grown/log/tree/stick,
+/obj/item/grown/log/tree/stick,
+/obj/item/grown/log/tree/stick,
+/obj/item/grown/log/tree/stick,
+/obj/item/grown/log/tree/stick,
+/obj/structure/closet/crate/roguecloset/crafted,
+/turf/open/floor/rogue/blocks,
+/area/rogue/under/cave/spider)
 "Cu" = (
 /obj/structure/closet/crate/roguecloset/inn/chest,
 /turf/open/floor/rogue/blocks,
@@ -422,8 +406,23 @@
 /obj/effect/spawner/roguemap/hauntpile,
 /turf/open/floor/rogue/churchmarble,
 /area/rogue/under/cave/spider)
+"CO" = (
+/obj/item/grown/log/tree,
+/obj/item/grown/log/tree,
+/obj/item/grown/log/tree/stick,
+/obj/item/grown/log/tree/stick,
+/obj/item/grown/log/tree/stick,
+/obj/structure/table/wood/crafted,
+/obj/item/rogueweapon/stoneaxe/woodcut,
+/obj/effect/decal/cleanable/cobweb,
+/turf/open/floor/rogue/blocks,
+/area/rogue/under/cave/spider)
 "CQ" = (
 /turf/open/floor/rogue/cobble,
+/area/rogue/under/cave/spider)
+"CU" = (
+/obj/effect/spawner/lootdrop/roguetown/dungeon/tools,
+/turf/open/floor/rogue/blocks,
 /area/rogue/under/cave/spider)
 "Dh" = (
 /obj/item/roguestatue/gold/loot,
@@ -443,10 +442,6 @@
 	},
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/cave/spider)
-"Es" = (
-/obj/item/restraints/legcuffs/beartrap/armed,
-/turf/open/floor/rogue/cobble,
-/area/rogue/under/cave/spider)
 "EF" = (
 /obj/effect/decal/cleanable/cobweb{
 	icon_state = "cobweb2"
@@ -459,6 +454,14 @@
 	icon_state = "largetable"
 	},
 /obj/item/reagent_containers/glass/cup/steel,
+/turf/open/floor/rogue/blocks,
+/area/rogue/under/cave/spider)
+"Fy" = (
+/obj/structure/closet/crate/roguecloset/crafted,
+/obj/item/grown/log/tree/small,
+/obj/effect/decal/cobbleedge,
+/obj/effect/spawner/lootdrop/roguetown/dungeon/materials,
+/obj/effect/decal/cleanable/cobweb,
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/cave/spider)
 "FV" = (
@@ -489,15 +492,22 @@
 /obj/item/roguestatue/gold,
 /turf/open/floor/rogue/churchmarble,
 /area/rogue/under/cave/spider)
+"GK" = (
+/obj/item/roguecoin/copper/pile,
+/turf/open/floor/rogue/cobble,
+/area/rogue/under/cave/spider)
 "GU" = (
-/obj/structure/closet/crate/roguecloset/crafted,
+/obj/item/natural/fibers,
+/obj/structure/table/wood{
+	dir = 10;
+	icon_state = "tablewood2"
+	},
 /obj/effect/spawner/lootdrop/roguetown/dungeon/materials,
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/cave/spider)
-"Hh" = (
-/mob/living/simple_animal/hostile/retaliate/rogue/spider/mutated{
-	faction = list("undead")
-	},
+"GX" = (
+/obj/structure/closet/crate/roguecloset/crafted,
+/obj/effect/spawner/lootdrop/roguetown/dungeon/materials,
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/cave/spider)
 "Hx" = (
@@ -523,6 +533,10 @@
 "Ig" = (
 /turf/open/floor/rogue/ruinedwood/turned,
 /area/rogue/under/cave/spider)
+"Jb" = (
+/obj/effect/decal/cleanable/blood/tracks,
+/turf/open/floor/rogue/blocks,
+/area/rogue/under/cave/spider)
 "Jf" = (
 /mob/living/simple_animal/hostile/retaliate/rogue/minotaur{
 	faction = list("undead");
@@ -541,15 +555,6 @@
 "Jy" = (
 /obj/structure/table/wood/crafted,
 /obj/effect/spawner/lootdrop/roguetown/dungeon/misc,
-/turf/open/floor/rogue/blocks,
-/area/rogue/under/cave/spider)
-"JH" = (
-/obj/item/natural/fibers,
-/obj/structure/table/wood{
-	dir = 10;
-	icon_state = "tablewood2"
-	},
-/obj/effect/spawner/lootdrop/roguetown/dungeon/materials,
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/cave/spider)
 "Kb" = (
@@ -579,11 +584,9 @@
 /obj/structure/bars/tough,
 /turf/open/floor/rogue/blocks/paving,
 /area/rogue/under/cave/spider)
-"Md" = (
-/obj/structure/rack/rogue,
-/obj/item/natural/bundle/stick,
-/obj/effect/spawner/lootdrop/roguetown/dungeon/materials,
-/turf/open/floor/rogue/blocks,
+"Me" = (
+/obj/effect/spawner/roguemap/hauntpile,
+/turf/open/water/swamp/deep,
 /area/rogue/under/cave/spider)
 "Ml" = (
 /obj/structure/table/wood{
@@ -598,6 +601,10 @@
 /area/rogue/under/cave/spider)
 "Mu" = (
 /turf/open/floor/rogue/tile/masonic/single,
+/area/rogue/under/cave/spider)
+"MO" = (
+/obj/item/clothing/ring/diamonds,
+/turf/open/floor/rogue/churchmarble,
 /area/rogue/under/cave/spider)
 "MW" = (
 /mob/living/carbon/human/species/skeleton/npc/ambush{
@@ -632,49 +639,19 @@
 /obj/item/roguecoin/gold/pile,
 /turf/open/floor/rogue/churchmarble,
 /area/rogue/under/cave/spider)
-"NV" = (
-/obj/item/roguecoin/copper/pile,
-/turf/open/floor/rogue/cobble,
-/area/rogue/under/cave/spider)
-"PC" = (
-/obj/item/chair/stool/bar/rogue/crafted,
-/turf/open/floor/rogue/blocks,
-/area/rogue/under/cave/spider)
 "PJ" = (
 /obj/structure/rack/rogue/shelf/big,
 /obj/effect/spawner/lootdrop/roguetown/dungeon/misc,
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/cave/spider)
-"PL" = (
-/obj/item/grown/log/tree,
-/obj/item/grown/log/tree,
-/obj/item/grown/log/tree/stick,
-/obj/item/grown/log/tree/stick,
-/obj/item/grown/log/tree/stick,
-/obj/structure/table/wood/crafted,
-/obj/item/rogueweapon/stoneaxe/woodcut,
-/obj/effect/decal/cleanable/cobweb,
+"Qe" = (
+/mob/living/simple_animal/hostile/retaliate/rogue/spider/mutated{
+	faction = list("undead")
+	},
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/cave/spider)
 "Qu" = (
 /obj/effect/decal/cleanable/blood/old,
-/turf/open/floor/rogue/blocks,
-/area/rogue/under/cave/spider)
-"Qy" = (
-/mob/living/simple_animal/hostile/retaliate/rogue/spider/mutated{
-	faction = list("undead")
-	},
-/turf/open/floor/rogue/naturalstone,
-/area/rogue/under/cave/spider)
-"QE" = (
-/obj/effect/decal/cleanable/blood/old,
-/mob/living/carbon/human/species/skeleton/npc/ambush{
-	inertia_move_delay = 0;
-	STACON = 13;
-	STAEND = 13;
-	STASPD = 13;
-	STASTR = 13
-	},
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/cave/spider)
 "QG" = (
@@ -686,20 +663,14 @@
 /obj/item/candle/yellow/lit,
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/cave/spider)
+"QJ" = (
+/obj/structure/rack/rogue/shelf/big,
+/obj/effect/spawner/lootdrop/roguetown/dungeon/armor,
+/obj/effect/spawner/lootdrop/roguetown/dungeon/armor,
+/turf/open/floor/rogue/blocks,
+/area/rogue/under/cave/spider)
 "QW" = (
 /turf/open/floor/rogue/dirt/road,
-/area/rogue/under/cave/spider)
-"Rl" = (
-/obj/item/grown/log/tree/stick,
-/obj/structure/closet/crate/chest/crafted,
-/obj/effect/spawner/lootdrop/roguetown/dungeon/materials,
-/turf/open/floor/rogue/blocks,
-/area/rogue/under/cave/spider)
-"RC" = (
-/obj/structure/closet/crate/roguecloset/crafted,
-/obj/effect/spawner/lootdrop/roguetown/dungeon/clothing,
-/obj/effect/spawner/lootdrop/roguetown/dungeon/clothing,
-/turf/open/floor/rogue/blocks,
 /area/rogue/under/cave/spider)
 "RW" = (
 /obj/machinery/light/rogue/torchholder{
@@ -716,6 +687,12 @@
 	lockid = "dungeon"
 	},
 /turf/open/floor/rogue/tile/masonic/single,
+/area/rogue/under/cave/spider)
+"Sh" = (
+/obj/effect/decal/cleanable/cobweb{
+	icon_state = "cobweb2"
+	},
+/turf/open/floor/rogue/cobble,
 /area/rogue/under/cave/spider)
 "Sn" = (
 /obj/structure/table/wood{
@@ -738,13 +715,22 @@
 "Ta" = (
 /turf/open/water/swamp/deep,
 /area/rogue/under/cave/spider)
+"Tj" = (
+/obj/structure/mirror,
+/turf/open/floor/rogue/blocks,
+/area/rogue/under/cave/spider)
 "UE" = (
 /obj/machinery/light/rogue/wallfire/candle/l,
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/cave/spider)
-"Vg" = (
-/obj/structure/rack/rogue/shelf/big,
-/obj/effect/spawner/lootdrop/roguetown/dungeon/materials,
+"Vl" = (
+/obj/effect/decal/cleanable/cobweb{
+	icon_state = "cobweb2"
+	},
+/turf/open/floor/rogue/dirt/road,
+/area/rogue/under/cave/spider)
+"Vp" = (
+/obj/item/chair/rogue/crafted,
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/cave/spider)
 "VW" = (
@@ -766,30 +752,24 @@
 	},
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/cave/spider)
-"WP" = (
-/obj/effect/spawner/lootdrop/roguetown/dungeon/tools,
+"WN" = (
+/obj/item/natural/bundle/fibers,
+/obj/structure/table/wood{
+	dir = 10;
+	icon_state = "tablewood2"
+	},
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/cave/spider)
 "Xt" = (
 /obj/structure/closet/crate/roguecloset/dark,
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/cave/spider)
-"Xu" = (
-/mob/living/simple_animal/hostile/retaliate/rogue/minotaur{
-	faction = list("undead");
-	STASTR = 20
-	},
-/turf/open/floor/rogue/blocks/paving,
-/area/rogue/under/cave/spider)
 "XL" = (
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/cave/spider)
-"Yq" = (
-/obj/effect/decal/cleanable/vomit/old,
-/turf/open/floor/rogue/blocks,
-/area/rogue/under/cave/spider)
-"Yx" = (
-/obj/effect/decal/cleanable/blood/tracks,
+"Yd" = (
+/obj/structure/table/wood/crafted,
+/obj/item/rogueweapon/stoneaxe/woodcut,
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/cave/spider)
 "YP" = (
@@ -799,11 +779,27 @@
 /obj/item/ingot/gold,
 /turf/open/floor/rogue/churchmarble,
 /area/rogue/under/cave/spider)
-"ZL" = (
+"YU" = (
 /obj/effect/decal/cleanable/cobweb{
 	icon_state = "cobweb2"
 	},
-/turf/open/floor/rogue/cobble,
+/obj/item/candle/yellow/lit,
+/turf/open/floor/rogue/dirt/road,
+/area/rogue/under/cave/spider)
+"YY" = (
+/obj/structure/rack/rogue,
+/obj/item/natural/bundle/stick,
+/obj/effect/spawner/lootdrop/roguetown/dungeon/materials,
+/turf/open/floor/rogue/blocks,
+/area/rogue/under/cave/spider)
+"Zc" = (
+/obj/effect/decal/cleanable/vomit/old,
+/turf/open/floor/rogue/blocks,
+/area/rogue/under/cave/spider)
+"ZO" = (
+/obj/structure/rack/rogue/shelf/big,
+/obj/effect/spawner/lootdrop/roguetown/dungeon/materials,
+/turf/open/floor/rogue/blocks,
 /area/rogue/under/cave/spider)
 "ZX" = (
 /obj/effect/spawner/lootdrop/roguetown/dungeon/misc,
@@ -3476,7 +3472,7 @@ aX
 XL
 XL
 gF
-zV
+Vl
 QW
 QW
 QW
@@ -3572,7 +3568,7 @@ Dn
 gF
 XL
 XL
-Hh
+Qe
 XL
 XL
 XL
@@ -3684,7 +3680,7 @@ VW
 XL
 XL
 gF
-AX
+YU
 QW
 Dn
 Dn
@@ -3884,7 +3880,7 @@ hL
 XL
 XL
 gF
-fA
+Tj
 XL
 XL
 gF
@@ -4089,7 +4085,7 @@ XL
 XL
 gF
 XL
-qg
+gU
 XL
 gF
 Dn
@@ -4206,13 +4202,13 @@ gF
 gF
 gF
 gF
-PL
+CO
 XL
 XL
-xx
-dX
-yN
-oR
+oa
+Yd
+jC
+BN
 XL
 gF
 Dn
@@ -4312,7 +4308,7 @@ XL
 XL
 XL
 XL
-gj
+xm
 XL
 XL
 XL
@@ -4400,7 +4396,7 @@ XL
 gF
 Dn
 gF
-zg
+QJ
 XL
 XL
 gF
@@ -4410,13 +4406,13 @@ gF
 gF
 gF
 gF
-Rl
+lQ
 XL
-QE
-PC
+cl
+bR
 Qu
-WP
-sA
+CU
+ky
 XL
 gF
 Dn
@@ -4504,7 +4500,7 @@ Dn
 gF
 EF
 XL
-px
+rw
 gF
 Dn
 Dn
@@ -4514,11 +4510,11 @@ Dn
 gF
 Xt
 XL
-eE
-eE
+AT
+AT
 XL
-sU
-aW
+Vp
+WN
 XL
 gF
 Dn
@@ -4617,11 +4613,11 @@ gF
 gF
 XL
 gF
-uG
+Ah
 XL
 XL
-JH
 GU
+GX
 gF
 Dn
 Dn
@@ -4707,7 +4703,7 @@ Dn
 Dn
 gF
 sl
-qg
+gU
 xu
 gF
 Dn
@@ -4716,13 +4712,13 @@ Dn
 Dn
 Dn
 gF
-Md
+YY
 XL
-sU
+Vp
 gF
-Vg
+ZO
 XL
-qg
+gU
 XL
 gF
 Dn
@@ -4818,11 +4814,11 @@ Dn
 Dn
 Dn
 gF
-Md
+YY
 XL
 wX
 gF
-Vg
+ZO
 Qu
 XL
 XL
@@ -4921,7 +4917,7 @@ Dn
 Dn
 gF
 wX
-Hh
+Qe
 XL
 gF
 XL
@@ -5122,7 +5118,7 @@ Dn
 Dn
 Dn
 Dn
-sE
+Me
 Ta
 Ta
 Ta
@@ -5133,7 +5129,7 @@ eZ
 Ta
 Ta
 Ta
-sE
+Me
 Dn
 Dn
 Dn
@@ -5223,7 +5219,7 @@ gF
 Dn
 Dn
 Dn
-mH
+eN
 Ta
 Ta
 Ta
@@ -5238,7 +5234,7 @@ Ta
 Ta
 Ta
 Ta
-sE
+Me
 Dn
 Dn
 Dn
@@ -5409,7 +5405,7 @@ sl
 XL
 XL
 XL
-Yq
+Zc
 XL
 XL
 XL
@@ -5520,7 +5516,7 @@ sl
 gF
 wJ
 XL
-Hh
+Qe
 XL
 XL
 XL
@@ -5617,8 +5613,8 @@ XL
 XL
 XL
 XL
-Yx
-Yx
+Jb
+Jb
 Eq
 XL
 XL
@@ -5655,7 +5651,7 @@ CQ
 CQ
 CQ
 qU
-Es
+pp
 CQ
 CQ
 CQ
@@ -5841,7 +5837,7 @@ Ta
 eZ
 eZ
 eZ
-Xu
+gr
 eZ
 Ta
 Ta
@@ -5856,7 +5852,7 @@ Ta
 Dn
 gF
 uS
-Es
+pp
 CQ
 gF
 gF
@@ -6167,7 +6163,7 @@ CQ
 CQ
 CQ
 CQ
-NV
+GK
 CQ
 CQ
 CQ
@@ -6252,7 +6248,7 @@ Ta
 Ta
 Ta
 Ta
-ge
+xC
 Ta
 Ta
 Ta
@@ -6356,7 +6352,7 @@ Ta
 Ta
 Ta
 Ta
-sE
+Me
 Dn
 Dn
 Dn
@@ -6364,7 +6360,7 @@ Dn
 gF
 fj
 CQ
-yo
+qn
 CQ
 kw
 gF
@@ -6438,7 +6434,7 @@ Dn
 Dn
 Dn
 gF
-vk
+Fy
 XL
 Eq
 XL
@@ -6470,7 +6466,7 @@ gF
 gF
 gF
 gF
-ZL
+Sh
 CQ
 uS
 CQ
@@ -6540,7 +6536,7 @@ Dn
 Dn
 Dn
 gF
-su
+du
 XL
 gF
 gF
@@ -6557,8 +6553,8 @@ Ta
 Dn
 Dn
 Dn
-bS
-sE
+mw
+Me
 Dn
 Dn
 Dn
@@ -6652,10 +6648,10 @@ Dn
 Dn
 Dn
 Dn
-bS
+mw
 Ta
 Ta
-sE
+Me
 Dn
 Dn
 Dn
@@ -6745,7 +6741,7 @@ XL
 XL
 Eq
 XL
-RC
+Bh
 gF
 Dn
 Dn
@@ -6755,7 +6751,7 @@ Dn
 Dn
 Dn
 Dn
-sE
+Me
 Dn
 Dn
 Dn
@@ -6776,7 +6772,7 @@ Dn
 Dn
 gF
 XL
-Hh
+Qe
 XL
 XL
 XL
@@ -7797,7 +7793,7 @@ gF
 XL
 XL
 XL
-Hh
+Qe
 XL
 XL
 XL
@@ -8728,7 +8724,7 @@ Lw
 QW
 QW
 za
-Qy
+mL
 QW
 za
 No
@@ -9050,7 +9046,7 @@ Mr
 Mr
 YP
 Mr
-kd
+MO
 CL
 Mr
 Jv
@@ -9360,7 +9356,7 @@ Mr
 Mr
 Jv
 Mr
-oW
+Mr
 fI
 Dn
 Dn
