@@ -1498,7 +1498,7 @@
 	dir = 1;
 	icon_state = "vertw"
 	},
-/area/rogue/outdoors/woods)
+/area/rogue/indoors)
 "jd" = (
 /obj/structure/table/wood{
 	dir = 2;
@@ -1532,12 +1532,6 @@
 /obj/item/rogueweapon/huntingknife/idagger,
 /turf/open/floor/rogue/cobble,
 /area/rogue)
-"jU" = (
-/turf/open/floor/rogue/ruinedwood{
-	dir = 1;
-	icon_state = "vertw"
-	},
-/area/rogue/outdoors/woods)
 "jW" = (
 /obj/structure/mirror{
 	pixel_y = 32
@@ -1893,7 +1887,7 @@
 	dir = 1;
 	icon_state = "vertw"
 	},
-/area/rogue/outdoors/woods)
+/area/rogue/indoors)
 "wB" = (
 /obj/effect/landmark/start/new_player,
 /turf/open/floor/plating,
@@ -2328,9 +2322,6 @@
 /obj/structure/fluff/railing/fence,
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/outdoors/woods)
-"Sq" = (
-/turf/closed/wall/mineral/rogue/wood,
-/area/rogue/outdoors/woods)
 "SE" = (
 /obj/structure/closet/crate/chest{
 	lockid = "bandit"
@@ -2354,13 +2345,6 @@
 /obj/effect/landmark/start/vampirespawn,
 /turf/open/floor/rogue/blocks/paving,
 /area/rogue/indoors)
-"Tw" = (
-/obj/structure/bed/rogue/shit,
-/turf/open/floor/rogue/ruinedwood{
-	dir = 1;
-	icon_state = "vertw"
-	},
-/area/rogue/outdoors/woods)
 "TD" = (
 /obj/structure/table/wood{
 	dir = 1;
@@ -6498,10 +6482,10 @@ Wp
 Wp
 Wp
 Wp
-Sq
+pg
 vT
-Sq
-Sq
+pg
+pg
 Te
 Te
 Te
@@ -6628,10 +6612,10 @@ Wp
 Wp
 Wp
 Wp
-Sq
-jU
-jU
-Sq
+pg
+pb
+pb
+pg
 Te
 vQ
 Te
@@ -6758,10 +6742,10 @@ Te
 Te
 Te
 Te
-Sq
-jU
-jU
-Sq
+pg
+pb
+pb
+pg
 Te
 Te
 Te
@@ -6888,10 +6872,10 @@ OL
 Te
 Te
 Te
-Sq
+pg
 ie
-Tw
-Sq
+mQ
+pg
 Te
 vQ
 vQ
@@ -7018,10 +7002,10 @@ bz
 bz
 bz
 bz
-Sq
-Sq
-Sq
-Sq
+pg
+pg
+pg
+pg
 bz
 bz
 bz
