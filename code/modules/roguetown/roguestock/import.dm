@@ -158,6 +158,7 @@
 	new /obj/item/seeds/apple(src)
 	new /obj/item/seeds/wheat(src)
 	new /obj/item/seeds/berryrogue(src)
+	new /obj/item/seeds/potato(src)
 
 /datum/roguestock/import/blacksmith
 	name = "Smith Crate"

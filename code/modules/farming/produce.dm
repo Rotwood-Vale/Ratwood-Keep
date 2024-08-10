@@ -231,7 +231,7 @@
 	eat_effect = /datum/status_effect/debuff/badmeal
 
 /obj/item/reagent_containers/food/snacks/grown/rogue/potato
-	//seed = /obj/item/seeds/berryrogue
+	seed = /obj/item/seeds/potato
 	name = "potato"
 	desc = ""
 	icon_state = "potato"

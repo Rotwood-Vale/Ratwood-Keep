@@ -96,3 +96,16 @@
 	produce_type = /obj/item/reagent_containers/food/snacks/grown/berries/rogue/poison
 	uproot_loot = list(/obj/item/grown/log/tree/small)
 	perennial = TRUE
+
+/datum/plant_def/potato
+	name = "potato plant"
+	icon = 'icons/roguetown/misc/crops.dmi'
+	icon_state = "potato"
+	produce_amount = 3
+	maturation_nutrition = 60
+	produce_nutrition =  30
+	maturation_time = 6 MINUTES
+	produce_time = 3 MINUTES
+	produce_type = /obj/item/reagent_containers/food/snacks/grown/rogue/potato
+	//uproot_loot = list(/obj/item/grown/log/tree/small)
+	//perennial = TRUE
