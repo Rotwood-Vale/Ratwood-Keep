@@ -70,12 +70,12 @@
 
 	if(user.aimheight <= 4)
 		if(!C.legcuffed)
-			if(C.get_num_legs(TRUE) == 2)
+			if(C.get_num_legs(FALSE) == 2)
 				C.visible_message(span_warning("[user] is trying to tie [C]'s legs with [src.name]!"), \
 									span_userdanger("[user] is trying to tie my legs with [src.name]!"))
 
 				playsound(loc, cuffsound, 30, TRUE, -2)
-				if(do_mob(user, C, 60) && (C.get_num_legs(FALSE) < 2))
+				if(do_mob(user, C, 60) && (C.get_num_legs(FALSE) == 2))
 					apply_cuffs(C, user)
 					C.visible_message(span_warning("[user] ties [C]'s legs with [src.name]."), \
 										span_danger("[user] ties my legs with [src.name]."))
