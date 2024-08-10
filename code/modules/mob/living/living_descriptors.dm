@@ -69,7 +69,7 @@
 	var/list/lines = list()
 	var/list/desc_copy = descriptors.Copy()
 
-	var/first_line = build_coalesce_description(desc_copy, described, list(MOB_DESCRIPTOR_SLOT_BODY, MOB_DESCRIPTOR_SLOT_STATURE, MOB_DESCRIPTOR_SLOT_FACE_SHAPE, MOB_DESCRIPTOR_SLOT_FACE_EXPRESSION), "You see %DESC1% %DESC2% with %DESC3%, %DESC4%")
+	var/first_line = build_coalesce_description(desc_copy, described, list(MOB_DESCRIPTOR_SLOT_HEIGHT, MOB_DESCRIPTOR_SLOT_BODY, MOB_DESCRIPTOR_SLOT_STATURE, MOB_DESCRIPTOR_SLOT_FACE_SHAPE, MOB_DESCRIPTOR_SLOT_FACE_EXPRESSION), "You see %DESC1%, %DESC2% %DESC3% with %DESC4%, %DESC5%")
 	if(first_line)
 		lines += first_line
 
@@ -81,14 +81,17 @@
 	if(third_line)
 		lines += third_line
 
-
-	var/fourth_line = build_coalesce_description(desc_copy, described, list(MOB_DESCRIPTOR_SLOT_PENIS, MOB_DESCRIPTOR_SLOT_TESTICLES), "%THEY% %DESC1% and %DESC2%")
+	var/fourth_line = build_coalesce_description(desc_copy, described, list(MOB_DESCRIPTOR_SLOT_PROMINENT, MOB_DESCRIPTOR_SLOT_PROMINENT), "%THEY% %DESC1% and %DESC2%")
 	if(fourth_line)
 		lines += fourth_line
 
-	var/fifth_line = build_coalesce_description(desc_copy, described, list(MOB_DESCRIPTOR_SLOT_BREASTS, MOB_DESCRIPTOR_SLOT_VAGINA), "%THEY% %DESC1% and %DESC2%")
-	if(fifth_line)
-		lines += fifth_line
+	var/fifth = build_coalesce_description(desc_copy, described, list(MOB_DESCRIPTOR_SLOT_PENIS, MOB_DESCRIPTOR_SLOT_TESTICLES), "%THEY% %DESC1% and %DESC2%")
+	if(fifth)
+		lines += fifth
+
+	var/sixth = build_coalesce_description(desc_copy, described, list(MOB_DESCRIPTOR_SLOT_BREASTS, MOB_DESCRIPTOR_SLOT_VAGINA), "%THEY% %DESC1% and %DESC2%")
+	if(sixth)
+		lines += sixth
 
 	/// Print the remaining ones in seperate lines
 	for(var/descriptor_type in desc_copy)
@@ -107,8 +110,9 @@
 		var/desc_type = descs[i]
 		var/datum/mob_descriptor/descriptor = MOB_DESCRIPTOR(desc_type)
 		string = replacetext(string, "%DESC[i]%", descriptor.get_coalesce_text(described, used_verbage))
-		if(descriptor.verbage)
-			used_verbage |= descriptor.verbage
+		var/used_verb = descriptor.get_verbage(described)
+		if(used_verb)
+			used_verbage |= used_verb
 	string = treat_mob_descriptor_string(string, described)
 	return string
 

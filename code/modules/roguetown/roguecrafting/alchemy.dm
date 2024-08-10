@@ -11,6 +11,30 @@
 	reqs = list(/obj/item/reagent_containers/glass/bottle = 1, /obj/item/ash = 2, /obj/item/rogueore/coal = 1, /obj/item/natural/cloth = 1)
 	craftdiff = 2
 
+/datum/crafting_recipe/roguetown/alchemy/ozium
+	name = "Ozium"
+	result = list(/obj/item/reagent_containers/powder/ozium)
+	reqs = list(/obj/item/ash = 2, /datum/reagent/berrypoison = 2, /obj/item/reagent_containers/food/snacks/grown/rogue/sweetleafdry = 2)
+	craftdiff = 2
+
+/datum/crafting_recipe/roguetown/alchemy/moon
+	name = "Moondust"
+	result = list(/obj/item/reagent_containers/powder/moondust)
+	reqs = list(/obj/item/ash = 2, /obj/item/reagent_containers/food/snacks/grown/rogue/pipeweeddry = 2, /datum/reagent/berrypoison = 2)
+	craftdiff = 2
+
+/datum/crafting_recipe/roguetown/alchemy/salt
+	name = "Salt Pile"
+	result = list(/obj/item/reagent_containers/powder/salt)
+	reqs = list(/obj/item/ash = 1, /datum/reagent/water = 10, /obj/item/reagent_containers/food/snacks/fat = 1)
+	craftdiff = 0
+
+/datum/crafting_recipe/roguetown/alchemy/salt_2
+	name = "Salt Pile"
+	result = list(/obj/item/reagent_containers/powder/salt)
+	reqs = list(/obj/item/ash = 1, /datum/reagent/water = 10, /obj/item/reagent_containers/food/snacks/rogue/meat/mince = 1)
+	craftdiff = 0
+
 /datum/crafting_recipe/roguetown/alchemy/manna_pot
 	name = "Manna Potion"
 	result = list(/obj/item/reagent_containers/glass/bottle/rogue/manapot)
