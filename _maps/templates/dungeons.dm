@@ -1,5 +1,5 @@
 /obj/effect/landmark/map_load_mark/dungeon
-	name = "Sewers Top-Left Section"
+	name = "The area where the dungeons are spawned, currently 100x100 with 1 Z level"
 	templates = list("dungeon1", "dungeon2")
 
 /datum/map_template/dungeon1
