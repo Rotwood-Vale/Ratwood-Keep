@@ -28,6 +28,14 @@
 	reqs = list(/obj/item/natural/cloth = 1)
 	craftdiff = 0
 
+/datum/crafting_recipe/roguetown/sewing/tribalrags
+	name = "tribal rags"
+	result = /obj/item/clothing/suit/roguetown/shirt/tribalrag
+	reqs = list(/obj/item/natural/hide = 1,
+				/obj/item/natural/fibers = 1)
+	sellprice = 6
+	craftdiff = 0
+
 /* craftdif of 1 */
 
 /datum/crafting_recipe/roguetown/sewing/clothgloves
