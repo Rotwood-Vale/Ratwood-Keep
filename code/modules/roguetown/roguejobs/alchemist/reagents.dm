@@ -68,22 +68,14 @@
 		M.adjustToxLoss(3, 0)
 	return ..()
 
-/datum/reagent/erpjuice/malcum
-	name = "semen"
-	description = "A thick and sticky, cream like fluid, produced during a male orgasm."
+/datum/reagent/erpjuice/cum
+	name = "Erotic Fluid"
+	description = "A thick, sticky, cream like fluid. produced during an orgasm."
 	reagent_state = LIQUID
 	color = "#ebebeb"
-	taste_description = "salty and bitter"
-	metabolization_rate = 0.1
-
-/datum/reagent/erpjuice/femcum
-	name = "leukorrhea"
-	description = "A watery and sticky fluid, produced during a female orgasm."
-	reagent_state = LIQUID
-	color = "#ddddddd3"
 	taste_description = "salty and tangy"
 	metabolization_rate = 0.1
-	
+
 /datum/reagent/erpjuice/piss
 	name = "urine"
 	description = "A pale yellow, water like liquid."
