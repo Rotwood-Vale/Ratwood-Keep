@@ -3290,6 +3290,14 @@
 /obj/machinery/light/rogue/wallfire/candle,
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors)
+"dNE" = (
+/obj/structure/mineral_door/wood/donjon{
+	dir = 3;
+	locked = 1;
+	lockid = "keep_dungeon_torture"
+	},
+/turf/open/floor/rogue/blocks,
+/area/rogue/under/town/basement)
 "dOa" = (
 /obj/structure/closet/crate/chest{
 	lockid = "keep_armory"
@@ -8358,7 +8366,8 @@
 /area/rogue/indoors/town)
 "jBl" = (
 /obj/structure/mineral_door/wood{
-	lockid = "keep_dungeon"
+	lockid = "keep_dungeon";
+	locked = 1
 	},
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/town/basement)
@@ -12720,9 +12729,9 @@
 /area/rogue/indoors/town/manor)
 "oJs" = (
 /obj/structure/mineral_door/wood/donjon{
-	dir = 1;
 	locked = 1;
-	lockid = "keep_dungeon_torture"
+	lockid = "keep_dungeon_torture";
+	dir = 3
 	},
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/town/basement)
@@ -13581,7 +13590,8 @@
 /area/rogue/indoors/town/manor)
 "pNi" = (
 /obj/structure/mineral_door/bars{
-	lockid = "town_dungeon"
+	lockid = "town_dungeon";
+	locked = 1
 	},
 /turf/open/floor/rogue/greenstone,
 /area/rogue/under/town/sewer)
@@ -98477,7 +98487,7 @@ sYw
 rDV
 yjx
 iTw
-oJs
+dNE
 uOT
 neu
 cBf
