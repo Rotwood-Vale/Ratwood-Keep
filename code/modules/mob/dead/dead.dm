@@ -89,8 +89,10 @@ INITIALIZE_IMMEDIATE(/mob/dead)
 					readiedas++
 					if(!(player.client.ckey in GLOB.hiderole))
 						if(player.client.prefs.real_name)
-							var/thing = "[player.client.prefs.real_name]"
-							if(istype(job, /datum/job/roguetown/hand))
+							var/thing = player.client.ckey //anonymize shitcode can be fixed another day... var/thing = "[player.client.prefs.real_name]"
+							if(player.client.ckey in GLOB.anonymize)
+								thing = get_fake_key(player.client.ckey)
+							/*if(istype(job, /datum/job/roguetown/hand))
 								if(player != src)
 									if(client.prefs.job_preferences["King"] == JP_HIGH)
 										thing = "<a href='byond://?src=[REF(src)];sethand=[player.client.ckey]'>[player.client.prefs.real_name]</a>"
@@ -98,7 +100,7 @@ INITIALIZE_IMMEDIATE(/mob/dead)
 									if(Lord.client.prefs.job_preferences["King"] == JP_HIGH)
 										if(Lord.brohand == player.ckey)
 											thing = "*[thing]*"
-											break
+											break*/
 							PL += thing
 
 		var/list/PL2 = list()
