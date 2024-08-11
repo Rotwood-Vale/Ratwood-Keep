@@ -49,7 +49,7 @@
 		return
 	if(design == "Symbol")
 		design = null
-		design = input(user, "Select a symbol.","Tabard Design") as null|anything in list("chalice","psy","peace","z","imp","skull","widow","arrow")
+		design = input(user, "Select a symbol.","Tabard Design") as null|anything in list("chalice","psy","z","imp","skull","widow","arrow")
 		if(!design)
 			return
 		design = "_[design]"
