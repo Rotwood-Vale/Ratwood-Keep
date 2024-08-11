@@ -326,6 +326,51 @@
 	icon2step = 7
 	icon3 = "stickbundle3"
 
+/obj/item/natural/bundle/bone
+	name = "stack of bones"
+	icon_state = "bonestack1"
+	possible_item_intents = list(/datum/intent/use)
+	desc = "bones, stacked together."
+	force = 0
+	throwforce = 0
+	maxamount = 6
+	obj_flags = null
+	color = null
+	firefuel = null
+	resistance_flags = FLAMMABLE
+	slot_flags = ITEM_SLOT_MOUTH
+	max_integrity = 20
+	muteinmouth = TRUE
+	w_class = WEIGHT_CLASS_TINY
+	spitoutmouth = FALSE
+	stacktype = /obj/item/natural/bone
+	stackname = "bones"
+	icon1 = "bonestack1"
+	icon1step = 2
+	icon2 = "bonestack2"
+	icon2step = 4
+
+/obj/item/natural/bundle/bone/full
+	amount = 6
+
+/*/obj/item/natural/bone/attackby(obj/item/I, mob/living/user, params)
+	var/mob/living/carbon/human/H = user
+	user.changeNext_move(CLICK_CD_MELEE)
+	if(istype(I, /obj/item/natural/bone))
+		var/obj/item/natural/bundle/bone/F = new(src.loc)
+		H.put_in_hands(F)
+		H.visible_message("[user] ties the bones into a bundle.")
+		qdel(I)
+		qdel(src)
+	if(istype(I, /obj/item/natural/bundle/bone))
+		var/obj/item/natural/bundle/bone/B = I
+		if(B.amount < B.maxamount)
+			H.visible_message("[user] adds the [src] to the bundle.")
+			B.amount += 1
+			B.update_bundle()
+			qdel(src)
+	..()*/
+
 /obj/item/natural/bowstring
 	name = "fibre bowstring"
 	desc = "A simple cord of bowstring."
