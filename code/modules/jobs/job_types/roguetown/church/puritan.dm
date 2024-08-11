@@ -11,13 +11,13 @@
 		/datum/patron/old_god,
 		ALL_DIVINE_PATRONS,
 	) //gets set to old god.
-	tutorial = "As an Inquisitor, the Queen has emboldened your radical sect to root out cultists and the cursed night beasts, using your practice of extracting involuntary 'sin confessions' as a guise to spy on the local populace. Witch Hunters are hired for their extreme paranoia and religious fervor."
+	tutorial = "As an Inquisitor, the Priest(ess) has hired your radical sect to root out cultists and the cursed night beasts, using your practice of extracting involuntary 'sin confessions' as a guise to spy on the local populace. You may not follow their faith, but difficult times call for drastic measures."
 	whitelist_req = TRUE
 
 	outfit = /datum/outfit/job/roguetown/puritan
 	display_order = JDO_PURITAN
 	give_bank_account = 36
-	min_pq = 5
+	min_pq = 8
 	max_pq = null
 
 /datum/outfit/job/roguetown/puritan
