@@ -43,6 +43,7 @@
 			H.change_stat("perception", 1)
 			H.change_stat("constitution", 1)
 			H.change_stat("speed", 1)
+		ADD_TRAIT(H, TRAIT_SQUIRE_REPAIR, TRAIT_GENERIC)
 	if(H.gender == FEMALE)
 		pants = /obj/item/clothing/under/roguetown/tights
 		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/guard
@@ -67,3 +68,4 @@
 			H.change_stat("perception", 1)
 			H.change_stat("constitution", 1)
 			H.change_stat("speed", 1)
+		ADD_TRAIT(H, TRAIT_SQUIRE_REPAIR, TRAIT_GENERIC)
