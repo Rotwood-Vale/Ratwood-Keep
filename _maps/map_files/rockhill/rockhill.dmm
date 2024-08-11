@@ -3824,6 +3824,10 @@
 /obj/machinery/light/rogue/torchholder/c,
 /turf/open/floor/rogue/twig,
 /area/rogue/indoors)
+"erM" = (
+/obj/structure/roguemachine/mail,
+/turf/open/floor/rogue/concrete,
+/area/rogue/indoors/town/shop)
 "erX" = (
 /obj/structure/closet/dirthole/closed/loot,
 /obj/structure/gravemarker,
@@ -5807,6 +5811,10 @@
 /obj/item/reagent_containers/food/snacks/smallrat,
 /turf/open/floor/rogue/tile,
 /area/rogue/indoors/town/tavern)
+"gFo" = (
+/obj/structure/roguemachine/mail,
+/turf/open/floor/rogue/wood,
+/area/rogue/indoors/town/tavern)
 "gFE" = (
 /turf/closed/wall/mineral/rogue/decostone/cand,
 /area/rogue/indoors/town/church/chapel)
@@ -7207,6 +7215,13 @@
 /obj/structure/bars,
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/basement)
+"idm" = (
+/obj/structure/gate/bars{
+	gid = "forestgate1";
+	redstone_id = "forestgate1"
+	},
+/turf/closed/wall/mineral/rogue/stone/moss,
+/area/rogue/indoors)
 "idL" = (
 /obj/structure/closet/crate/chest{
 	lockid = "keep_armory"
@@ -15271,6 +15286,12 @@
 /obj/machinery/light/rogue/firebowl/standing,
 /turf/open/floor/rogue/cobble,
 /area/rogue/outdoors/bog)
+"sav" = (
+/obj/structure/bars/passage/steel{
+	redstone_id = "dungeonpit"
+	},
+/turf/open/water/sewer,
+/area/rogue/under/town/sewer)
 "saG" = (
 /obj/structure/closet/crate/chest{
 	lockid = "merc"
@@ -15404,6 +15425,10 @@
 	},
 /turf/open/floor/rogue/cobble,
 /area/rogue/outdoors/bog)
+"sgm" = (
+/obj/machinery/light/rogue/wallfire/candle/blue,
+/turf/open/floor/rogue/cobble,
+/area/rogue/outdoors/town)
 "sgx" = (
 /obj/machinery/light/rogue/torchholder{
 	dir = 4
@@ -17012,6 +17037,10 @@
 	},
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/under/town/basement)
+"udJ" = (
+/obj/machinery/light/rogue/wallfire/candle/blue,
+/turf/closed/wall/mineral/rogue/stonebrick,
+/area/rogue/indoors/town/shop)
 "udS" = (
 /obj/structure/stairs/stone{
 	dir = 4
@@ -19269,6 +19298,10 @@
 	},
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/under/cavewet/bogcaves)
+"wKA" = (
+/obj/structure/roguemachine/mail,
+/turf/open/floor/rogue/wood,
+/area/rogue/indoors/town/dwarfin)
 "wLx" = (
 /turf/open/water/swamp,
 /area/rogue/outdoors/bog)
@@ -198138,7 +198171,7 @@ jyI
 jyI
 vRu
 rSC
-rSC
+sav
 rRb
 rRb
 rRb
@@ -285012,7 +285045,7 @@ gsM
 gsM
 xJE
 sco
-mvp
+wKA
 cNk
 mvp
 mvp
@@ -287532,7 +287565,7 @@ hHF
 hHF
 hHF
 hHF
-hHI
+idm
 gxt
 gxt
 sYx
@@ -290643,7 +290676,7 @@ wbg
 wbg
 wbg
 wbg
-wbg
+sgm
 wbg
 wbg
 wbg
@@ -293450,11 +293483,11 @@ toW
 eWe
 toW
 toW
-sSW
+erM
 pKQ
 pKQ
 toW
-toW
+udJ
 eSt
 eSt
 yho
@@ -391119,7 +391152,7 @@ wNn
 wNn
 wNn
 wNn
-iHm
+gFo
 iHm
 aMk
 nMR
