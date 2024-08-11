@@ -17,7 +17,7 @@
 				playsound(user, pick('sound/misc/mat/mouthend (1).ogg','sound/misc/mat/mouthend (2).ogg'), 100, FALSE, ignore_walls = FALSE)
 				user.visible_message("<span class='love'>[user] cleaned [src] dilligently.</span>")
 				qdel(C)
-				(obj/reagents/erpjuice/cum).reagents.add_reagent, 6
+				user.reagents.add_reagent(obj/reagents/erpjuice/cum, 6)
 			return
 		return
 	..()
