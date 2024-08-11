@@ -11631,6 +11631,10 @@
 "nBW" = (
 /turf/open/floor/rogue/carpet,
 /area/rogue/indoors/town/manor)
+"nCg" = (
+/obj/structure/roguemachine/mail,
+/turf/open/floor/rogue/dirt,
+/area/rogue/outdoors/rtfield)
 "nCN" = (
 /obj/machinery/light/rogue/torchholder{
 	dir = 8
@@ -15425,10 +15429,6 @@
 	},
 /turf/open/floor/rogue/cobble,
 /area/rogue/outdoors/bog)
-"sgm" = (
-/obj/machinery/light/rogue/wallfire/candle/blue,
-/turf/open/floor/rogue/cobble,
-/area/rogue/outdoors/town)
 "sgx" = (
 /obj/machinery/light/rogue/torchholder{
 	dir = 4
@@ -256596,7 +256596,7 @@ qvR
 qvR
 spp
 wSn
-wSn
+nCg
 wSn
 wSn
 qbG
@@ -290676,7 +290676,7 @@ wbg
 wbg
 wbg
 wbg
-sgm
+wbg
 wbg
 wbg
 wbg
