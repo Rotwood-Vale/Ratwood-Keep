@@ -355,7 +355,7 @@
 	if(G.reagents.total_volume >= G.volume)
 		to_chat(user, span_warning("[O] is full."))
 		return
-	if(!do_after(user, 20, target = src))
+	if(do_after(user, 20, target = src))
 		var/transfered = reagents.trans_to(O, rand(5,10))
 		if(transfered)
 			user.visible_message(span_notice("[user] milks [src] using \the [O]."), span_notice("I milk [src] using \the [O]."))
