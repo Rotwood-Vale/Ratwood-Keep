@@ -3,7 +3,7 @@
 	description = "Gradually regenerates all types of damage."
 	reagent_state = LIQUID
 	color = "#ff0000"
-	taste_description = "red"
+	taste_description = "health"
 	overdose_threshold = 0
 	metabolization_rate = 0.5 * REAGENTS_METABOLISM
 	alpha = 173
@@ -66,4 +66,34 @@
 	if(!HAS_TRAIT(M, TRAIT_NASTY_EATER) && !HAS_TRAIT(M, TRAIT_ORGAN_EATER))
 		M.add_nausea(9)
 		M.adjustToxLoss(3, 0)
+	return ..()
+
+/datum/reagent/erpjuice/malcum
+	name = "semen"
+	description = "A thick and sticky, cream like fluid, produced during a male orgasm."
+	reagent_state = LIQUID
+	color = "#ebebeb"
+	taste_description = "salty and bitter"
+	metabolization_rate = 0.1
+
+/datum/reagent/erpjuice/femcum
+	name = "leukorrhea"
+	description = "A watery and sticky fluid, produced during a female orgasm."
+	reagent_state = LIQUID
+	color = "#ddddddd3"
+	taste_description = "salty and tangy"
+	metabolization_rate = 0.1
+	
+/datum/reagent/erpjuice/piss
+	name = "urine"
+	description = "A pale yellow, water like liquid."
+	reagent_state = LIQUID
+	color = "#f3db52d3"
+	taste_description = "piss"
+	metabolization_rate = 0.1
+
+/datum/reagent/erpjuice/piss/on_mob_life(mob/living/carbon/M)
+	if(!HAS_TRAIT(M, TRAIT_NASTY_EATER))
+		M.add_nausea(3)
+		M.adjustToxLoss(1, 0)
 	return ..()
