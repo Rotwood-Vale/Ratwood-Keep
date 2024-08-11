@@ -5891,9 +5891,7 @@
 /area/rogue/outdoors/town/roofs)
 "gHu" = (
 /obj/structure/roguemachine/mail,
-/obj/effect/landmark/start/dungeoneer{
-	dir = 8
-	},
+/obj/effect/landmark/start/dungeoneer,
 /turf/open/floor/rogue/concrete,
 /area/rogue/under/town/basement)
 "gHQ" = (
