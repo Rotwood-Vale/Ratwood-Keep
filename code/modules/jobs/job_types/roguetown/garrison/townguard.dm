@@ -118,6 +118,7 @@ Archer is basically a 'bounty-catcher' in function, less specialized at close-qu
 	H.mind.adjust_skillrank(/datum/skill/misc/medicine, 1, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/craft/crafting, 1, TRUE)	//For basic crafting; you'll need it due to relegated support role.
 	H.mind.adjust_skillrank(/datum/skill/craft/tanning, 1, TRUE)	//Likely hunter background; very crappy basic skill.
+	H.mind.adjust_skillrank(/datum/skill/misc/riding, 1, TRUE)
 	H.change_stat("strength", 1)
 	H.change_stat("perception", 2)
 	H.change_stat("constitution", 1)
