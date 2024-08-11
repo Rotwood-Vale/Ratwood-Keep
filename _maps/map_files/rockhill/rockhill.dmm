@@ -5397,6 +5397,10 @@
 	icon_state = "rockwd"
 	},
 /area/rogue/outdoors/vikingarea)
+"dGG" = (
+/obj/machinery/light/rogue/torchholder/l,
+/turf/open/floor/rogue/ruinedwood/spiral,
+/area/rogue/indoors/town/tavern)
 "dGU" = (
 /turf/closed/wall/mineral/rogue/wooddark/vertical,
 /area/rogue/under/town/basement)
@@ -15521,6 +15525,7 @@
 /area/rogue/outdoors/town/roofs)
 "lPR" = (
 /obj/machinery/light/rogue/torchholder/r,
+/obj/structure/stairs/stone,
 /turf/open/floor/rogue/herringbone,
 /area/rogue/indoors)
 "lQq" = (
@@ -18271,6 +18276,10 @@
 /obj/item/reagent_containers/glass/cup/wooden,
 /turf/open/floor/rogue/herringbone,
 /area/rogue/indoors/town/church)
+"ojy" = (
+/obj/machinery/light/rogue/torchholder/r,
+/turf/open/floor/rogue/ruinedwood/spiral,
+/area/rogue/indoors/town/tavern)
 "ojU" = (
 /obj/structure/table/wood{
 	icon_state = "tablewood1"
@@ -303309,8 +303318,8 @@ lVe
 pLa
 wlD
 wlD
-wlD
 rrJ
+wlD
 lVe
 lVe
 lVe
@@ -409438,7 +409447,7 @@ lVe
 jCh
 jCh
 lPR
-vNs
+wlD
 wlD
 lVe
 vIa
@@ -499461,7 +499470,7 @@ vZd
 vZd
 aHK
 rBO
-vZd
+dGG
 vZd
 aHK
 erZ
@@ -503477,12 +503486,12 @@ erZ
 erZ
 aHK
 gmz
-vZd
+ojy
 bpQ
 aHK
 rBO
 gfP
-vZd
+ojy
 aHK
 erZ
 erZ
