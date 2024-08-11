@@ -2628,7 +2628,7 @@
 "pIx" = (/turf/closed/wall/mineral/rogue/roofwall/outercorner{dir = 4},/area/rogue/indoors/town/manor)
 "pKb" = (/obj/structure/fluff/railing/wood,/turf/open/floor/rogue/wood,/area/rogue/indoors/town/manor)
 "pKQ" = (/turf/open/floor/rogue/concrete,/area/rogue/indoors/town/shop)
-"pKR" = (/obj/structure/bed/rogue/inn/wool,/obj/item/bedsheet/rogue/fabric,/obj/effect/landmark/start/magician,/turf/open/floor/rogue/ruinedwood,/area/rogue/indoors/town/magician)
+"pKR" = (/obj/structure/bed/rogue/inn/double,/obj/item/bedsheet/rogue/fabric_double,/obj/effect/landmark/start/magician,/turf/open/floor/rogue/ruinedwood,/area/rogue/indoors/town/magician)
 "pLa" = (/obj/structure/fluff/walldeco/wantedposter,/turf/open/floor/rogue/cobble,/area/rogue/indoors)
 "pLp" = (/obj/structure/stairs/stone{dir = 4},/turf/open/floor/rogue/wood,/area/rogue/indoors/town/church)
 "pLs" = (/obj/structure/table/wood,/obj/effect/decal/cleanable/cobweb{icon_state = "cobweb2"},/turf/open/floor/rogue/herringbone,/area/rogue/indoors/town/church)
