@@ -27,6 +27,7 @@
 	pants = /obj/item/clothing/under/roguetown/trou
 	shoes = /obj/item/clothing/shoes/roguetown/shortboots
 	wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
+	gloves = /obj/item/clothing/gloves/roguetown/angle
 	cloak = /obj/item/clothing/cloak/stabard/dungeon
 	shirt = /obj/item/clothing/suit/roguetown/armor/gambeson/councillor
 	belt = /obj/item/storage/belt/rogue/leather
