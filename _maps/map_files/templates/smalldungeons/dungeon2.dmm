@@ -17,6 +17,9 @@
 /obj/structure/fluff/statue/knight/r,
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/cave/spider)
+"aH" = (
+/turf/open/water/cleanshallow,
+/area/rogue/under/cave/spider)
 "aX" = (
 /obj/structure/chair/wood/rogue{
 	dir = 8
@@ -32,9 +35,6 @@
 	faction = list("undead")
 	},
 /turf/open/floor/rogue/blocks,
-/area/rogue/under/cave/spider)
-"dR" = (
-/turf/open/water/cleanshallow,
 /area/rogue/under/cave/spider)
 "dV" = (
 /obj/effect/decal/cleanable/cobweb,
@@ -53,6 +53,11 @@
 	STASTR = 13
 	},
 /turf/open/floor/rogue/blocks/paving,
+/area/rogue/under/cave/spider)
+"eS" = (
+/obj/effect/spawner/lootdrop/roguetown/dungeon/materials,
+/obj/structure/rack/rogue/shelf/big,
+/turf/open/floor/rogue/cobble,
 /area/rogue/under/cave/spider)
 "eZ" = (
 /turf/open/floor/rogue/blocks/paving,
@@ -155,10 +160,6 @@
 	},
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/cave/spider)
-"lt" = (
-/obj/structure/rack/rogue/shelf/big,
-/turf/open/floor/rogue/cobble,
-/area/rogue/under/cave/spider)
 "lx" = (
 /obj/structure/fluff/walldeco/bigpainting,
 /turf/open/floor/rogue/blocks,
@@ -206,7 +207,7 @@
 /obj/effect/spawner/lootdrop/roguetown/dungeon/misc,
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/cave/spider)
-"oX" = (
+"oD" = (
 /obj/effect/decal/cleanable/cobweb/cobweb2,
 /obj/effect/spawner/lootdrop/roguetown/dungeon/materials,
 /obj/structure/rack/rogue/shelf/big,
@@ -459,6 +460,10 @@
 /obj/item/storage/belt/rogue/pouch/coins/poor,
 /turf/open/floor/rogue/tile/masonic/single,
 /area/rogue/under/cave/spider)
+"DM" = (
+/obj/structure/rack/rogue/shelf/big,
+/turf/open/floor/rogue/cobble,
+/area/rogue/under/cave/spider)
 "DN" = (
 /obj/effect/decal/cleanable/blood/footprints,
 /turf/open/floor/rogue/blocks/paving,
@@ -499,6 +504,16 @@
 	},
 /obj/item/reagent_containers/glass/cup/steel,
 /turf/open/floor/rogue/blocks,
+/area/rogue/under/cave/spider)
+"FD" = (
+/mob/living/carbon/human/species/skeleton/npc/ambush{
+	inertia_move_delay = 0;
+	STACON = 13;
+	STAEND = 13;
+	STASPD = 13;
+	STASTR = 13
+	},
+/turf/open/floor/rogue/cobble,
 /area/rogue/under/cave/spider)
 "FV" = (
 /obj/structure/rack/rogue,
@@ -678,11 +693,6 @@
 /obj/item/roguebin/water/gross,
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/cave/spider)
-"Pv" = (
-/obj/effect/spawner/lootdrop/roguetown/dungeon/materials,
-/obj/structure/rack/rogue/shelf/big,
-/turf/open/floor/rogue/cobble,
-/area/rogue/under/cave/spider)
 "PJ" = (
 /obj/structure/rack/rogue/shelf/big,
 /obj/effect/spawner/lootdrop/roguetown/dungeon/misc,
@@ -710,11 +720,6 @@
 /area/rogue/under/cave/spider)
 "QW" = (
 /turf/open/floor/rogue/dirt/road,
-/area/rogue/under/cave/spider)
-"Ri" = (
-/obj/effect/spawner/lootdrop/roguetown/dungeon/misc,
-/obj/structure/rack/rogue/shelf/big,
-/turf/open/floor/rogue/cobble,
 /area/rogue/under/cave/spider)
 "Rt" = (
 /obj/structure/chair/wood/rogue/fancy{
@@ -796,6 +801,11 @@
 	dir = 4
 	},
 /turf/open/floor/rogue/blocks,
+/area/rogue/under/cave/spider)
+"Xn" = (
+/obj/effect/spawner/lootdrop/roguetown/dungeon/misc,
+/obj/structure/rack/rogue/shelf/big,
+/turf/open/floor/rogue/cobble,
 /area/rogue/under/cave/spider)
 "Xq" = (
 /obj/effect/decal/cleanable/cobweb{
@@ -4049,9 +4059,9 @@ Dn
 Dn
 Dn
 gF
-Ri
+Xn
 CQ
-Ri
+Xn
 gF
 Dn
 Dn
@@ -4151,9 +4161,9 @@ Dn
 Dn
 Dn
 gF
-Ri
+Xn
 CQ
-Ri
+Xn
 gF
 Dn
 Dn
@@ -4253,9 +4263,9 @@ gF
 gF
 gF
 gF
-Ri
+Xn
 CQ
-Ri
+Xn
 gF
 Dn
 Dn
@@ -4357,7 +4367,7 @@ CQ
 qU
 CQ
 CQ
-Ri
+Xn
 gF
 Dn
 Dn
@@ -4458,8 +4468,8 @@ gF
 gF
 gF
 CQ
-CQ
-Ri
+FD
+Xn
 gF
 Dn
 Dn
@@ -4559,9 +4569,9 @@ Dn
 Dn
 Dn
 gF
-Pv
+eS
 CQ
-Ri
+Xn
 gF
 Dn
 Dn
@@ -4661,9 +4671,9 @@ Dn
 Dn
 Dn
 gF
-Pv
+eS
 CQ
-Ri
+Xn
 gF
 Dn
 Dn
@@ -4763,9 +4773,9 @@ Dn
 Dn
 Dn
 gF
-oX
+oD
 CQ
-Ri
+Xn
 gF
 Dn
 Dn
@@ -5070,7 +5080,7 @@ Ta
 Ta
 gF
 CQ
-CQ
+FD
 CQ
 wR
 kw
@@ -5171,7 +5181,7 @@ Ta
 Ta
 Ta
 gF
-Ri
+Xn
 CQ
 CQ
 CQ
@@ -5273,7 +5283,7 @@ Ta
 Ta
 Ta
 gF
-lt
+DM
 wR
 CQ
 CQ
@@ -5375,7 +5385,7 @@ Ta
 Ta
 Ta
 gF
-lt
+DM
 CQ
 uS
 CQ
@@ -6457,8 +6467,8 @@ Dn
 Dn
 Dn
 Dn
-dR
-dR
+aH
+aH
 XL
 Dn
 gF
@@ -6559,8 +6569,8 @@ Dn
 Dn
 Dn
 Dn
-dR
-dR
+aH
+aH
 sl
 Dn
 gF
