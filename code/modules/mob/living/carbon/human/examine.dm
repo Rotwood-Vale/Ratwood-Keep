@@ -62,6 +62,10 @@
 			var/used_title =  "King or Queen of the Tribe"
 		// Use the possibly modified title in the output
 			. = list("<span class='info'>ø ------------ ø\nThis is <EM>[used_name]</EM>, the [used_title].")
+		else if(job == "Bandit")
+		// Easiest way to fix this goddamned bandit thing.
+			var/used_title = "bandit"
+			. = list("<span class='info'>ø ------------ ø\nThis is <EM>[used_name]</EM>, the [used_title].")
 		else
 			var/datum/job/J = SSjob.GetJob(job)
 			var/used_title = J.title

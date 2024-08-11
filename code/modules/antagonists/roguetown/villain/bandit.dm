@@ -74,7 +74,7 @@
 	H.cmode_music = 'sound/music/combat_bandit2.ogg'
 
 	addtimer(CALLBACK(H, TYPE_PROC_REF(/mob/living/carbon/human, choose_name_popup), "BANDIT"), 5 SECONDS)
-//	H.job = "Bandit"
+	H.job = "Bandit"
 //	H.advjob = pick("Cheesemaker", "Mercenary", "Barbarian", "Ranger", "Rogue")
 	H.equipOutfit(/datum/outfit/job/roguetown/bandit)
 
