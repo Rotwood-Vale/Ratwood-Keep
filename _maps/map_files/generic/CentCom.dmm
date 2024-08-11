@@ -1652,13 +1652,6 @@
 	icon_state = "chess"
 	},
 /area/rogue/indoors)
-"oV" = (
-/obj/structure/fluff/railing/fence{
-	dir = 1;
-	icon_state = "fence"
-	},
-/turf/open/floor/rogue/dirt/road,
-/area/rogue/outdoors/woods)
 "pb" = (
 /turf/open/floor/rogue/ruinedwood{
 	dir = 1;
@@ -1823,13 +1816,6 @@
 	},
 /turf/open/floor/rogue/hexstone,
 /area/rogue/indoors)
-"tn" = (
-/obj/structure/fluff/railing/fence{
-	dir = 1;
-	icon_state = "fence"
-	},
-/turf/open/floor/rogue/cobblerock,
-/area/rogue/outdoors/woods)
 "tN" = (
 /turf/closed,
 /area/rogue/under)
@@ -2098,13 +2084,6 @@
 /obj/structure/closet/crate/coffin/vampire,
 /turf/open/floor/rogue/blocks/paving,
 /area/rogue/indoors)
-"GX" = (
-/obj/structure/fluff/railing/fence{
-	dir = 1;
-	icon_state = "fence"
-	},
-/turf/open/floor/rogue/dirt,
-/area/rogue/outdoors/woods)
 "Hn" = (
 /obj/machinery/light/rogue/hearth,
 /turf/open/floor/rogue/dirt/road,
@@ -2870,7 +2849,7 @@ bz
 Te
 Te
 Te
-GX
+Sn
 Te
 bz
 bz
@@ -3000,7 +2979,7 @@ Te
 Te
 Te
 Te
-GX
+Sn
 Te
 bz
 bz
@@ -3130,7 +3109,7 @@ WB
 WB
 WB
 Te
-GX
+Sn
 Te
 Te
 Te
@@ -3260,7 +3239,7 @@ sR
 xy
 WB
 Te
-GX
+Sn
 bz
 bz
 Te
@@ -3390,7 +3369,7 @@ jZ
 jZ
 WB
 Te
-GX
+Sn
 bz
 bz
 Te
@@ -3520,7 +3499,7 @@ sR
 xy
 WB
 vQ
-oV
+Sn
 bz
 bz
 Te
@@ -3650,7 +3629,7 @@ jZ
 jZ
 WB
 vQ
-tn
+Sn
 Te
 bz
 Te
@@ -3780,7 +3759,7 @@ sR
 xy
 WB
 vQ
-tn
+Sn
 Te
 bz
 bz
@@ -3910,7 +3889,7 @@ WB
 WB
 WB
 vQ
-tn
+Sn
 Te
 Te
 bz
@@ -4040,7 +4019,7 @@ pc
 ft
 WB
 vQ
-tn
+Sn
 Te
 Te
 Te
@@ -4170,7 +4149,7 @@ Zl
 Zl
 WB
 vQ
-Jo
+Wp
 Jo
 Oc
 vQ
