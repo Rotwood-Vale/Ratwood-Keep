@@ -52,10 +52,6 @@
 /obj/effect/decal/cleanable/cobweb,
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/cave/spider)
-"dt" = (
-/obj/item/roguecoin/copper/pile,
-/turf/open/water/swamp/deep,
-/area/rogue/under/cave/spider)
 "dE" = (
 /obj/structure/table/wood{
 	dir = 6;
@@ -91,6 +87,10 @@
 /area/rogue/under/cave/spider)
 "hb" = (
 /obj/effect/spawner/roguemap/hauntpile,
+/turf/open/water/swamp/deep,
+/area/rogue/under/cave/spider)
+"hu" = (
+/obj/item/roguecoin/copper/pile,
 /turf/open/water/swamp/deep,
 /area/rogue/under/cave/spider)
 "ic" = (
@@ -244,6 +244,13 @@
 /obj/effect/spawner/lootdrop/roguetown/dungeon/materials,
 /obj/effect/decal/cleanable/cobweb,
 /turf/open/floor/rogue/blocks,
+/area/rogue/under/cave/spider)
+"oa" = (
+/mob/living/simple_animal/hostile/retaliate/rogue/minotaur{
+	faction = list("undead");
+	STASTR = 20
+	},
+/turf/open/floor/rogue/churchmarble,
 /area/rogue/under/cave/spider)
 "ox" = (
 /obj/machinery/light/rogue/firebowl/standing/blue,
@@ -596,6 +603,10 @@
 /obj/structure/bookcase/random,
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/cave/spider)
+"JL" = (
+/obj/item/roguegem/diamond,
+/turf/open/water/swamp/deep,
+/area/rogue/under/cave/spider)
 "JQ" = (
 /obj/structure/closet/crate/roguecloset/crafted,
 /obj/effect/spawner/lootdrop/roguetown/dungeon/clothing,
@@ -640,10 +651,6 @@
 	},
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/cave/spider)
-"Mt" = (
-/obj/item/roguegem/diamond,
-/turf/open/water/swamp/deep,
-/area/rogue/under/cave/spider)
 "Nd" = (
 /turf/open/water/swamp/deep,
 /area/rogue/under/cave/spider)
@@ -677,10 +684,6 @@
 "NS" = (
 /obj/structure/chair/wood/rogue,
 /turf/open/floor/rogue/blocks,
-/area/rogue/under/cave/spider)
-"NX" = (
-/obj/item/roguegem/violet,
-/turf/open/water/swamp/deep,
 /area/rogue/under/cave/spider)
 "NY" = (
 /obj/effect/decal/cobbleedge,
@@ -788,6 +791,10 @@
 /area/rogue/under/cave/spider)
 "ST" = (
 /turf/open/floor/rogue/tile/masonic/inverted,
+/area/rogue/under/cave/spider)
+"Tv" = (
+/obj/item/roguegem/violet,
+/turf/open/water/swamp/deep,
 /area/rogue/under/cave/spider)
 "Vd" = (
 /obj/structure/bars/tough,
@@ -8038,9 +8045,9 @@ Ih
 Ih
 Ih
 Ih
-NX
+Tv
 nm
-dt
+hu
 Nd
 Ih
 Ih
@@ -8242,9 +8249,9 @@ Ih
 Ih
 Ih
 Ih
-dt
+hu
 Nd
-Mt
+JL
 Nd
 Nd
 Ih
@@ -9208,7 +9215,7 @@ Fa
 ww
 eA
 Fa
-Fa
+oa
 Fa
 Fa
 fa
@@ -9304,7 +9311,7 @@ Km
 Km
 fa
 Fa
-Fa
+oa
 Fa
 Fa
 Fa
@@ -9921,7 +9928,7 @@ Fa
 aN
 Eg
 Fa
-Fa
+oa
 Fa
 Fa
 Fa

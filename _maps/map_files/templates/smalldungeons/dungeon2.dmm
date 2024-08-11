@@ -40,10 +40,6 @@
 /obj/effect/decal/cleanable/cobweb,
 /turf/open/water/swamp/deep,
 /area/rogue/under/cave/spider)
-"dZ" = (
-/obj/item/roguegem/diamond,
-/turf/open/water/swamp/deep,
-/area/rogue/under/cave/spider)
 "ef" = (
 /obj/machinery/light/rogue/wallfire/candle/blue,
 /turf/open/floor/rogue/blocks,
@@ -270,6 +266,10 @@
 "sl" = (
 /obj/machinery/light/rogue/firebowl/standing/blue,
 /turf/open/floor/rogue/blocks,
+/area/rogue/under/cave/spider)
+"sO" = (
+/obj/item/roguegem/diamond,
+/turf/open/water/swamp/deep,
 /area/rogue/under/cave/spider)
 "tC" = (
 /obj/effect/decal/cobbleedge,
@@ -588,16 +588,16 @@
 "Ig" = (
 /turf/open/floor/rogue/ruinedwood/turned,
 /area/rogue/under/cave/spider)
+"IE" = (
+/obj/item/roguecoin/copper/pile,
+/turf/open/water/swamp/deep,
+/area/rogue/under/cave/spider)
 "Jf" = (
 /mob/living/simple_animal/hostile/retaliate/rogue/minotaur{
 	faction = list("undead");
 	STASTR = 20
 	},
 /turf/open/floor/rogue/blocks,
-/area/rogue/under/cave/spider)
-"Jn" = (
-/obj/item/roguegem/violet,
-/turf/open/water/swamp/deep,
 /area/rogue/under/cave/spider)
 "Jr" = (
 /obj/item/roguestatue/silver,
@@ -611,6 +611,13 @@
 /obj/structure/table/wood/crafted,
 /obj/effect/spawner/lootdrop/roguetown/dungeon/misc,
 /turf/open/floor/rogue/blocks,
+/area/rogue/under/cave/spider)
+"JN" = (
+/mob/living/simple_animal/hostile/retaliate/rogue/minotaur{
+	faction = list("undead");
+	STASTR = 20
+	},
+/turf/open/floor/rogue/churchmarble,
 /area/rogue/under/cave/spider)
 "Kb" = (
 /obj/effect/spawner/roguemap/hauntpile,
@@ -735,10 +742,6 @@
 	},
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/cave/spider)
-"RL" = (
-/obj/item/roguecoin/copper/pile,
-/turf/open/water/swamp/deep,
-/area/rogue/under/cave/spider)
 "RW" = (
 /obj/machinery/light/rogue/torchholder{
 	dir = 4
@@ -828,6 +831,10 @@
 "Xt" = (
 /obj/structure/closet/crate/roguecloset/dark,
 /turf/open/floor/rogue/blocks,
+/area/rogue/under/cave/spider)
+"Xy" = (
+/obj/item/roguegem/violet,
+/turf/open/water/swamp/deep,
 /area/rogue/under/cave/spider)
 "XK" = (
 /obj/item/clothing/ring/diamonds,
@@ -8038,9 +8045,9 @@ Dn
 Dn
 Dn
 Dn
-Jn
+Xy
 vF
-RL
+IE
 Ta
 Dn
 Dn
@@ -8242,9 +8249,9 @@ Dn
 Dn
 Dn
 Dn
-RL
+IE
 Ta
-dZ
+sO
 Ta
 Ta
 Dn
@@ -9208,7 +9215,7 @@ Mr
 BG
 xU
 Mr
-Mr
+JN
 Mr
 Mr
 fI
@@ -9304,7 +9311,7 @@ za
 za
 fI
 Mr
-Mr
+JN
 Mr
 Mr
 Mr
@@ -9921,7 +9928,7 @@ Mr
 NR
 uI
 Mr
-Mr
+JN
 Mr
 Mr
 Mr
