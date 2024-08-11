@@ -52,6 +52,10 @@
 /obj/effect/decal/cleanable/cobweb,
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/cave/spider)
+"dt" = (
+/obj/item/roguecoin/copper/pile,
+/turf/open/water/swamp/deep,
+/area/rogue/under/cave/spider)
 "dE" = (
 /obj/structure/table/wood{
 	dir = 6;
@@ -636,6 +640,10 @@
 	},
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/cave/spider)
+"Mt" = (
+/obj/item/roguegem/diamond,
+/turf/open/water/swamp/deep,
+/area/rogue/under/cave/spider)
 "Nd" = (
 /turf/open/water/swamp/deep,
 /area/rogue/under/cave/spider)
@@ -669,6 +677,10 @@
 "NS" = (
 /obj/structure/chair/wood/rogue,
 /turf/open/floor/rogue/blocks,
+/area/rogue/under/cave/spider)
+"NX" = (
+/obj/item/roguegem/violet,
+/turf/open/water/swamp/deep,
 /area/rogue/under/cave/spider)
 "NY" = (
 /obj/effect/decal/cobbleedge,
@@ -6495,7 +6507,7 @@ Nd
 Nd
 Nd
 Nd
-Ih
+Nd
 Nd
 Nd
 Nd
@@ -6597,7 +6609,7 @@ Nd
 Nd
 Nd
 Ih
-Ih
+Nd
 Ih
 be
 hb
@@ -6699,8 +6711,8 @@ Nd
 Nd
 hb
 Ih
-Ih
-Ih
+Nd
+Nd
 Ih
 Ih
 Ih
@@ -6801,9 +6813,9 @@ hb
 Ih
 Ih
 Ih
-Ih
-Ih
-Ih
+Nd
+Nd
+Nd
 Ih
 Ih
 Ih
@@ -6904,9 +6916,9 @@ Ih
 Ih
 Ih
 Ih
-Ih
-Ih
-Ih
+Nd
+Nd
+Nd
 Ih
 Ih
 Ih
@@ -7007,7 +7019,7 @@ Ih
 Ih
 Ih
 Ih
-Ih
+Nd
 Ih
 Ih
 Ih
@@ -7108,8 +7120,8 @@ Ih
 Ih
 Ih
 Ih
-Ih
-Ih
+Nd
+Nd
 Ih
 Ih
 Ih
@@ -7209,9 +7221,9 @@ Ih
 Ih
 Ih
 Ih
-Ih
-Ih
-Ih
+Nd
+Nd
+Nd
 Ih
 Ih
 Ih
@@ -7311,8 +7323,8 @@ Ih
 Ih
 Ih
 Ih
-Ih
-Ih
+Nd
+Nd
 Ih
 Ih
 Ih
@@ -7413,8 +7425,8 @@ Ih
 Ih
 Ih
 Ih
-Ih
-Ih
+Nd
+Nd
 Ih
 Ih
 Ih
@@ -7515,9 +7527,9 @@ Ih
 Ih
 Ih
 Ih
-Ih
-Ih
-Ih
+Nd
+Nd
+Nd
 Ih
 Ih
 Ih
@@ -7617,8 +7629,8 @@ Ih
 Ih
 Ih
 Ih
-Ih
-Ih
+Nd
+Nd
 Ih
 Ih
 Ih
@@ -7718,9 +7730,9 @@ Ih
 Ih
 Ih
 Ih
-Ih
-Ih
-Ih
+Nd
+Nd
+Nd
 Ih
 Ih
 Ih
@@ -7820,12 +7832,12 @@ Ih
 Ih
 Ih
 Ih
-Ih
-Ih
-Ih
-Ih
-Ih
-Ih
+Nd
+Nd
+Nd
+Nd
+Nd
+Nd
 Ih
 Ih
 Ih
@@ -7924,9 +7936,9 @@ Ih
 Ih
 Ih
 Ih
-Ih
-Ih
-Ih
+Nd
+Nd
+Nd
 Ih
 Ih
 Ih
@@ -8026,10 +8038,10 @@ Ih
 Ih
 Ih
 Ih
-Ih
-Ih
-Ih
-Ih
+NX
+nm
+dt
+Nd
 Ih
 Ih
 Ih
@@ -8127,12 +8139,12 @@ Ih
 Ih
 Ih
 Ih
-Ih
-Ih
-Ih
-Ih
-Ih
-Ih
+Nd
+Nd
+Nd
+Nd
+nm
+Nd
 Ih
 Ih
 Ih
@@ -8230,11 +8242,11 @@ Ih
 Ih
 Ih
 Ih
-Ih
-Ih
-Ih
-Ih
-Ih
+dt
+Nd
+Mt
+Nd
+Nd
 Ih
 Ih
 Ih
@@ -8331,11 +8343,11 @@ Ih
 Ih
 Ih
 Ih
-Ih
-Ih
-Ih
-Ih
-Ih
+Nd
+Nd
+nm
+Nd
+Nd
 Ih
 Ih
 Ih
@@ -8435,7 +8447,7 @@ Ih
 Ih
 Ih
 Ih
-Ih
+Nd
 Ih
 Ih
 Ih

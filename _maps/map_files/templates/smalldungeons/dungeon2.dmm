@@ -40,6 +40,10 @@
 /obj/effect/decal/cleanable/cobweb,
 /turf/open/water/swamp/deep,
 /area/rogue/under/cave/spider)
+"dZ" = (
+/obj/item/roguegem/diamond,
+/turf/open/water/swamp/deep,
+/area/rogue/under/cave/spider)
 "ef" = (
 /obj/machinery/light/rogue/wallfire/candle/blue,
 /turf/open/floor/rogue/blocks,
@@ -591,6 +595,10 @@
 	},
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/cave/spider)
+"Jn" = (
+/obj/item/roguegem/violet,
+/turf/open/water/swamp/deep,
+/area/rogue/under/cave/spider)
 "Jr" = (
 /obj/item/roguestatue/silver,
 /turf/open/floor/rogue/churchmarble,
@@ -726,6 +734,10 @@
 	dir = 8
 	},
 /turf/open/floor/rogue/blocks,
+/area/rogue/under/cave/spider)
+"RL" = (
+/obj/item/roguecoin/copper/pile,
+/turf/open/water/swamp/deep,
 /area/rogue/under/cave/spider)
 "RW" = (
 /obj/machinery/light/rogue/torchholder{
@@ -6495,7 +6507,7 @@ Ta
 Ta
 Ta
 Ta
-Dn
+Ta
 Ta
 Ta
 Ta
@@ -6597,7 +6609,7 @@ Ta
 Ta
 Ta
 Dn
-Dn
+Ta
 Dn
 LO
 Ww
@@ -6699,8 +6711,8 @@ Ta
 Ta
 Ww
 Dn
-Dn
-Dn
+Ta
+Ta
 Dn
 Dn
 Dn
@@ -6801,9 +6813,9 @@ Ww
 Dn
 Dn
 Dn
-Dn
-Dn
-Dn
+Ta
+Ta
+Ta
 Dn
 Dn
 Dn
@@ -6904,9 +6916,9 @@ Dn
 Dn
 Dn
 Dn
-Dn
-Dn
-Dn
+Ta
+Ta
+Ta
 Dn
 Dn
 Dn
@@ -7007,7 +7019,7 @@ Dn
 Dn
 Dn
 Dn
-Dn
+Ta
 Dn
 Dn
 Dn
@@ -7108,8 +7120,8 @@ Dn
 Dn
 Dn
 Dn
-Dn
-Dn
+Ta
+Ta
 Dn
 Dn
 Dn
@@ -7209,9 +7221,9 @@ Dn
 Dn
 Dn
 Dn
-Dn
-Dn
-Dn
+Ta
+Ta
+Ta
 Dn
 Dn
 Dn
@@ -7311,8 +7323,8 @@ Dn
 Dn
 Dn
 Dn
-Dn
-Dn
+Ta
+Ta
 Dn
 Dn
 Dn
@@ -7413,8 +7425,8 @@ Dn
 Dn
 Dn
 Dn
-Dn
-Dn
+Ta
+Ta
 Dn
 Dn
 Dn
@@ -7515,9 +7527,9 @@ Dn
 Dn
 Dn
 Dn
-Dn
-Dn
-Dn
+Ta
+Ta
+Ta
 Dn
 Dn
 Dn
@@ -7617,8 +7629,8 @@ Dn
 Dn
 Dn
 Dn
-Dn
-Dn
+Ta
+Ta
 Dn
 Dn
 Dn
@@ -7718,9 +7730,9 @@ Dn
 Dn
 Dn
 Dn
-Dn
-Dn
-Dn
+Ta
+Ta
+Ta
 Dn
 Dn
 Dn
@@ -7820,12 +7832,12 @@ Dn
 Dn
 Dn
 Dn
-Dn
-Dn
-Dn
-Dn
-Dn
-Dn
+Ta
+Ta
+Ta
+Ta
+Ta
+Ta
 Dn
 Dn
 Dn
@@ -7924,9 +7936,9 @@ Dn
 Dn
 Dn
 Dn
-Dn
-Dn
-Dn
+Ta
+Ta
+Ta
 Dn
 Dn
 Dn
@@ -8026,10 +8038,10 @@ Dn
 Dn
 Dn
 Dn
-Dn
-Dn
-Dn
-Dn
+Jn
+vF
+RL
+Ta
 Dn
 Dn
 Dn
@@ -8127,12 +8139,12 @@ Dn
 Dn
 Dn
 Dn
-Dn
-Dn
-Dn
-Dn
-Dn
-Dn
+Ta
+Ta
+Ta
+Ta
+vF
+Ta
 Dn
 Dn
 Dn
@@ -8230,11 +8242,11 @@ Dn
 Dn
 Dn
 Dn
-Dn
-Dn
-Dn
-Dn
-Dn
+RL
+Ta
+dZ
+Ta
+Ta
 Dn
 Dn
 Dn
@@ -8331,11 +8343,11 @@ Dn
 Dn
 Dn
 Dn
-Dn
-Dn
-Dn
-Dn
-Dn
+Ta
+Ta
+vF
+Ta
+Ta
 Dn
 Dn
 Dn
@@ -8435,7 +8447,7 @@ Dn
 Dn
 Dn
 Dn
-Dn
+Ta
 Dn
 Dn
 Dn
