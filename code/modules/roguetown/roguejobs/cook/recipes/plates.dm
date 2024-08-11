@@ -1,4 +1,4 @@
-/obj/item/reagent_containers/food/snacks/rogue/peppersteak
+ /obj/item/reagent_containers/food/snacks/rogue/peppersteak
 	icon = 'icons/roguetown/items/food.dmi'
 	list_reagents = list(/datum/reagent/consumable/nutriment = 25)
 	tastes = list("steak" = 1, "pepper" = 1)
@@ -6,6 +6,7 @@
 	desc = ""
 	icon_state = "peppersteak"
 	foodtype = MEAT
+	trash = /obj/item/reagent_containers/glass/bowl
 	warming = 5 MINUTES
 	rotprocess = 30 MINUTES
 	eat_effect = /datum/status_effect/buff/foodbuff
@@ -14,6 +15,7 @@
 /datum/crafting_recipe/roguetown/cooking/peppersteak
 	name = "peppersteak"
 	reqs = list(
+		/obj/item/reagent_containers/glass/bowl = 1,
 		/obj/item/reagent_containers/food/snacks/rogue/meat/steak/fried = 1,
 		/datum/reagent/consumable/blackpepper = 1
 	)
@@ -23,11 +25,12 @@
 /obj/item/reagent_containers/food/snacks/rogue/spicedeggs
 	icon = 'icons/roguetown/items/food.dmi'
 	list_reagents = list(/datum/reagent/consumable/nutriment = 15)
-	tastes = list("steak" = 1, "pepper" = 1)
+	tastes = list("friedegg" = 2, "pepper" = 1, "bowl" = 1)
 	name = "spiced eggs"
 	desc = ""
 	icon_state = "spicedeggs"
 	foodtype = MEAT
+	trash = /obj/item/reagent_containers/glass/bowl
 	warming = 5 MINUTES
 	rotprocess = 30 MINUTES
 	eat_effect = /datum/status_effect/buff/foodbuff
@@ -36,6 +39,7 @@
 /datum/crafting_recipe/roguetown/cooking/spicedeggs
 	name = "spiced eggs"
 	reqs = list(
+		/obj/item/reagent_containers/glass/bowl = 1,
 		/obj/item/reagent_containers/food/snacks/rogue/friedegg = 2,
 		/datum/reagent/consumable/blackpepper = 1
 	)
@@ -128,5 +132,76 @@
 		/obj/item/reagent_containers/food/snacks/rogue/meat/salami/slice = 2
 	)
 	result = /obj/item/reagent_containers/food/snacks/rogue/sandwich
+	craftdiff = 0
+	subtype_reqs = TRUE
+
+/obj/item/reagent_containers/food/snacks/rogue/potatoschnitzel
+	icon = 'icons/roguetown/items/food.dmi'
+	list_reagents = list(/datum/reagent/consumable/nutriment = 25)
+	tastes = list("meat" = 1, "crispy bread" = 1, "potatoes" = 1)
+	name = "roasted potato and schnitzel"
+	desc = ""
+	icon_state = "potatoschniztel"
+	foodtype = MEAT
+	trash = /obj/item/reagent_containers/glass/bowl
+
+	warming = 5 MINUTES
+	rotprocess = 30 MINUTES
+	eat_effect = /datum/status_effect/buff/foodbuff
+	drop_sound = 'sound/foley/dropsound/gen_drop.ogg'
+
+/datum/crafting_recipe/roguetown/cooking/potatoschnitzel
+	name = "Potato and Schnitzel"
+	reqs = list(
+		/obj/item/reagent_containers/glass/bowl = 1,
+		/obj/item/reagent_containers/food/snacks/rogue/schnitzel = 1,
+		/obj/item/reagent_containers/food/snacks/potatofried = 1
+	)
+	result = /obj/item/reagent_containers/food/snacks/rogue/potatoschnitzel
+	skillcraft = null
+
+/obj/item/reagent_containers/food/snacks/rogue/boiledrice
+	icon = 'icons/roguetown/items/food.dmi'
+	list_reagents = list(/datum/reagent/consumable/nutriment = 15)
+	tastes = list("rice" = 1,"salt" = 1)
+	name = "boiled rice"
+	desc = "a plate of steaming boiled rice"
+	icon_state = "boiledrice"
+	trash = /obj/item/reagent_containers/glass/bowl
+	foodtype = GRAIN
+	warming = 5 MINUTES
+	rotprocess = 40 MINUTES
+
+/datum/crafting_recipe/roguetown/cooking/boiledrice
+	name = "boiled rice"
+	reqs = list(
+		/obj/item/reagent_containers/glass/bowl = 1,
+		/obj/item/reagent_containers/food/snacks/grown/rice = 1,
+		/obj/item/reagent_containers/powder/salt = 1,
+	)
+	result = /obj/item/reagent_containers/food/snacks/rogue/boiledrice
+	craftdiff = 0
+	subtype_reqs = TRUE
+
+/obj/item/reagent_containers/food/snacks/rogue/oatporridge
+	icon = 'icons/roguetown/items/food.dmi'
+	list_reagents = list(/datum/reagent/consumable/nutriment = 15)
+	tastes = list("rice" = 1,"salt" = 1)
+	name = "oat porridge"
+	desc = "a plate of steaming porridge made out of oats and apple slices"
+	icon_state = "appleporridge"
+	trash = /obj/item/reagent_containers/glass/bowl
+	foodtype = GRAIN
+	warming = 5 MINUTES
+	rotprocess = 40 MINUTES
+
+/datum/crafting_recipe/roguetown/cooking/porridge
+	name = "oat porridge"
+	reqs = list(
+		/obj/item/reagent_containers/glass/bowl = 1,
+		/obj/item/reagent_containers/food/snacks/grown/oat = 1,
+		/obj/item/reagent_containers/food/snacks/grown/apple = 1
+	)
+	result = /obj/item/reagent_containers/food/snacks/rogue/oatporridge
 	craftdiff = 0
 	subtype_reqs = TRUE
