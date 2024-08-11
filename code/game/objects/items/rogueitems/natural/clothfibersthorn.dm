@@ -186,9 +186,6 @@
 	var/obj/item/bodypart/affecting = H.get_bodypart(check_zone(user.zone_selected))
 	if(!affecting)
 		return
-	if(!get_location_accessible(H, check_zone(user.zone_selected)))
-		to_chat(user, span_warning("Something in the way."))
-		return
 	if(affecting.bandage)
 		to_chat(user, span_warning("There is already a bandage."))
 		return

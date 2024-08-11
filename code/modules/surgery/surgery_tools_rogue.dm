@@ -17,8 +17,7 @@
 	thrown_bclass = BCLASS_CUT
 	associated_skill = /datum/skill/combat/knives
 	anvilrepair = /datum/skill/craft/blacksmithing
-	smeltresult = /obj/item/ash
-
+	smeltresult = null
 /obj/item/rogueweapon/surgery/Initialize()
 	. = ..()
 	item_flags |= SURGICAL_TOOL //let's not stab patients for fun
@@ -33,7 +32,7 @@
 	swingsound = list('sound/combat/wooshes/bladed/wooshsmall (1).ogg','sound/combat/wooshes/bladed/wooshsmall (2).ogg','sound/combat/wooshes/bladed/wooshsmall (3).ogg')
 	pickup_sound = 'sound/foley/equip/swordsmall2.ogg'
 	tool_behaviour = TOOL_SCALPEL
-	smeltresult = /obj/item/ingot/steel
+	smeltresult = null
 
 /obj/item/rogueweapon/surgery/saw
 	name = "saw"
@@ -51,7 +50,7 @@
 	w_class = WEIGHT_CLASS_NORMAL
 	thrown_bclass = BCLASS_CHOP
 	tool_behaviour = TOOL_SAW
-	smeltresult = /obj/item/ingot/steel
+	smeltresult = null
 
 /obj/item/rogueweapon/surgery/hemostat
 	name = "forceps"
@@ -63,6 +62,7 @@
 	swingsound = list('sound/combat/wooshes/bladed/wooshsmall (1).ogg','sound/combat/wooshes/bladed/wooshsmall (2).ogg','sound/combat/wooshes/bladed/wooshsmall (3).ogg')
 	pickup_sound = 'sound/foley/equip/swordsmall2.ogg'
 	tool_behaviour = TOOL_HEMOSTAT
+	smeltresult = null
 
 /obj/item/rogueweapon/surgery/retractor
 	name = "speculum"
@@ -78,6 +78,7 @@
 	w_class = WEIGHT_CLASS_NORMAL
 	thrown_bclass = BCLASS_BLUNT
 	tool_behaviour = TOOL_RETRACTOR
+	smeltresult = null
 
 /obj/item/rogueweapon/surgery/bonesetter
 	name = "bone forceps"
@@ -89,6 +90,7 @@
 	swingsound = list('sound/combat/wooshes/bladed/wooshsmall (1).ogg','sound/combat/wooshes/bladed/wooshsmall (2).ogg','sound/combat/wooshes/bladed/wooshsmall (3).ogg')
 	pickup_sound = 'sound/foley/equip/swordsmall2.ogg'
 	tool_behaviour = TOOL_BONESETTER
+	smeltresult = null
 
 /obj/item/rogueweapon/surgery/cautery
 	name = "cautery iron"
@@ -110,8 +112,7 @@
 	var/cool_timer
 	/// Whether or not we are heated up
 	var/heated = FALSE
-	smeltresult = /obj/item/ingot/steel
-
+	smeltresult = list(/obj/item/ingot/iron, /obj/item/ingot/iron)
 /obj/item/rogueweapon/surgery/cautery/examine(mob/user)
 	. = ..()
 	if(heated)

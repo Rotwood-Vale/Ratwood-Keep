@@ -1,5 +1,12 @@
 
 // --------- IRON -----------
+/datum/anvil_recipe/tools/surgery/surgerytools
+	name = "Surgery Kit (+1 iron +1 hide)"
+	req_bar = /obj/item/ingot/iron
+	additional_items = list(/obj/item/ingot/iron, /obj/item/natural/hide)
+	created_item = /obj/item/storage/backpack/rogue/skit
+	i_type = "Tools"
+
 /datum/anvil_recipe/tools/torch
 	name = "Torches 5x (+1 Coal)"
 	req_bar = /obj/item/ingot/iron
@@ -141,13 +148,6 @@
 	req_bar = /obj/item/ingot/steel
 	additional_items = list(/obj/item/grown/log/tree/stick)
 	created_item = /obj/item/rogueweapon/pick/steel
-	i_type = "Tools"
-
-/datum/anvil_recipe/tools/surgery/surgerytools
-	name = "Surgery tools set (+1 Steel)"
-	req_bar = /obj/item/ingot/steel
-	additional_items = list(/obj/item/ingot/steel, /obj/item/ingot/steel)
-	created_item = list(/obj/item/rogueweapon/surgery/scalpel, /obj/item/rogueweapon/surgery/saw, /obj/item/rogueweapon/surgery/hemostat, /obj/item/rogueweapon/surgery/retractor, /obj/item/rogueweapon/surgery/bonesetter, /obj/item/rogueweapon/surgery/cautery)
 	i_type = "Tools"
 
 /*

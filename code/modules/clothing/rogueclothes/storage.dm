@@ -186,6 +186,42 @@
 	alternate_worn_layer = UNDER_CLOAK_LAYER
 	sewrepair = TRUE
 
+/obj/item/storage/backpack/rogue/skit
+	name = "doctor bag"
+	color = CLOTHING_BLACK
+	desc = "Emergency surgical bag."
+	icon_state = "satchel"
+	item_state = "satchel"
+	icon = 'icons/roguetown/clothing/storage.dmi'
+	lefthand_file = 'icons/mob/inhands/equipment/backpack_lefthand.dmi'
+	righthand_file = 'icons/mob/inhands/equipment/backpack_righthand.dmi'
+	w_class = WEIGHT_CLASS_BULKY
+	slot_flags = ITEM_SLOT_BACK
+	resistance_flags = NONE
+	max_integrity = 300
+	equip_sound = 'sound/blank.ogg'
+	bloody_icon_state = "bodyblood"
+	alternate_worn_layer = UNDER_CLOAK_LAYER
+	sewrepair = TRUE
+
+/obj/item/storage/backpack/rogue/skit/ComponentInitialize()
+	. = ..()
+	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
+	if(STR)
+		STR.max_combined_w_class = 42
+		STR.max_w_class = WEIGHT_CLASS_NORMAL
+		STR.max_items = 12
+
+/obj/item/storage/backpack/rogue/skit/PopulateContents()
+	new /obj/item/rogueweapon/surgery/scalpel(src)
+	new /obj/item/rogueweapon/surgery/saw(src)
+	new /obj/item/rogueweapon/surgery/hemostat(src)
+	new /obj/item/rogueweapon/surgery/hemostat(src)
+	new /obj/item/rogueweapon/surgery/retractor(src)
+	new /obj/item/rogueweapon/surgery/bonesetter(src)
+	new /obj/item/rogueweapon/surgery/cautery(src)
+	new /obj/item/needle/pestra(src)
+
 /obj/item/storage/backpack/rogue/satchel/heartfelt/PopulateContents()
 	new /obj/item/natural/feather(src)
 	new /obj/item/paper(src)
