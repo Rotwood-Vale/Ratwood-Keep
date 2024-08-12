@@ -1194,7 +1194,7 @@
 	if(log_seen)
 		log_seen_viewers(user, target, message, SEEN_LOG_ATTACK)
 
-	if(user != target)
+	if(target && user != target)
 		var/reverse_message = "has been [what_done] by [ssource][postfix]"
 		target.log_message(reverse_message, LOG_ATTACK, color="orange", log_globally=FALSE)
 
