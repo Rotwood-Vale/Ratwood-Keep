@@ -155,16 +155,28 @@
 //Groups of Accents for each race set by associated 'skin_tone', see 'get_skin_list' above
 // "full" group in JSON lists
 /datum/species/tieberian/get_accent(mob/living/carbon/human/H)
-		return strings("spanish_replacement.json", "full")
+		switch(H.skin_tone)
+				if(SKIN_COLOR_CASTILLIAN)
+						return strings("spanish_replacement.json", "full")
+		return null
 
 // "start" group in JSON lists
 /datum/species/tieberian/get_accent_start(mob/living/carbon/human/H)
-		return strings("spanish_replacement.json", "start")
+		switch(H.skin_tone)
+				if(SKIN_COLOR_CASTILLIAN)
+						return strings("spanish_replacement.json", "start")
+		return null
 
 // "end" group in JSON lists
 /datum/species/tieberian/get_accent_end(mob/living/carbon/human/H)
-		return strings("spanish_replacement.json", "end")
+		switch(H.skin_tone)
+				if(SKIN_COLOR_CASTILLIAN)
+						return strings("spanish_replacement.json", "end")
+		return null
 
 // "syllable" group in JSON lists
 /datum/species/tieberian/get_accent_any(mob/living/carbon/human/H)
-		return strings("spanish_replacement.json", "syllable")
+		switch(H.skin_tone)
+				if(SKIN_COLOR_CASTILLIAN)
+						return strings("spanish_replacement.json", "syllable")
+		return null
