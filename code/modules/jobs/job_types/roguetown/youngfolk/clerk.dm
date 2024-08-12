@@ -6,7 +6,7 @@
 	total_positions = 1
 	spawn_positions = 1
 
-	allowed_races = RACES_TOLERATED_UP
+	allowed_races = RACES_SHUNNED_UP
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_ages = list(AGE_ADULT)
 
@@ -36,11 +36,11 @@
 	if(H.gender == MALE)
 		armor = /obj/item/clothing/cloak/tabard/knight
 		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
-
+		pants = /obj/item/clothing/under/roguetown/tights
 	if(H.gender == FEMALE)
 		shirt = /obj/item/clothing/suit/roguetown/shirt/dress/silkdress/green
-
-	pants = /obj/item/clothing/under/roguetown/tights
+		pants = /obj/item/clothing/under/roguetown/tights/stockings/white
+	
 	shoes = /obj/item/clothing/shoes/roguetown/simpleshoes
 	belt = /obj/item/storage/belt/rogue/leather
 	beltr = /obj/item/storage/belt/rogue/pouch/coins/poor

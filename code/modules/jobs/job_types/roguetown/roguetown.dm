@@ -70,13 +70,14 @@
 			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), H, change_message), 5 SECONDS)
 	if(H.mind)
 		var/datum/species/pref_species = H.dna?.species
-		var/weak_gender = FEMALE
-		if(pref_species?.gender_swapping)
-			weak_gender = MALE
-		if(H.gender == weak_gender)
-			H.mind.adjust_skillrank(/datum/skill/craft/cooking, 1, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/misc/sewing, 1, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/misc/weaving, 1, TRUE)
+		for(var/skill_type in pref_species.specskills)
+			H.mind.adjust_skillrank(skill_type, H.dna.species.specskills[skill_type], TRUE)
+		if(H.gender == FEMALE)
+			for(var/skill_type in pref_species.specskills_f)
+				H.mind.adjust_skillrank(skill_type, H.dna.species.specskills_f[skill_type], TRUE)
+		else
+			for(var/skill_type in pref_species.specskills_m)
+				H.mind.adjust_skillrank(skill_type, H.dna.species.specskills_m[skill_type], TRUE)
 		if(H.dna)
 			if(H.dna.species)
 				if(H.dna.species.name in list("Elf", "Half-Elf"))

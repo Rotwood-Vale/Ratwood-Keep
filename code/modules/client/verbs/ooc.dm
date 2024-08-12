@@ -19,10 +19,6 @@ GLOBAL_VAR_INIT(normal_ooc_colour, "#002eb8")
 			to_chat(src, span_danger("I can't use that."))
 			return
 
-	if(blacklisted())
-		to_chat(src, span_danger("I can't use that."))
-		return
-
 	if(get_playerquality(ckey) <= -5)
 		to_chat(src, span_danger("I can't use that."))
 		return
@@ -37,7 +33,7 @@ GLOBAL_VAR_INIT(normal_ooc_colour, "#002eb8")
 		if(prefs.muted & MUTE_OOC)
 			to_chat(src, span_danger("I cannot use OOC (muted)."))
 			return
-	if(is_banned_from(ckey, "OOC"))
+	if(is_misc_banned(ckey, BAN_MISC_OOC))
 		to_chat(src, span_danger("I have been banned from OOC."))
 		return
 	if(QDELETED(src))
@@ -81,7 +77,7 @@ GLOBAL_VAR_INIT(normal_ooc_colour, "#002eb8")
 		color2use = "#[color2use]"
 	var/chat_color = "#c5c5c5"
 	var/msg_to_send = ""
-			
+
 	for(var/client/C in GLOB.clients)
 		var/real_key = C.holder ? "([key])" : ""
 		if(C.prefs.chat_toggles & CHAT_OOC)
@@ -125,10 +121,6 @@ GLOBAL_VAR_INIT(normal_ooc_colour, "#002eb8")
 			to_chat(src, span_danger("I can't use that."))
 			return
 
-	if(blacklisted())
-		to_chat(src, span_danger("I can't use that."))
-		return
-
 	if(get_playerquality(ckey) <= -5)
 		to_chat(src, span_danger("I can't use that."))
 		return
@@ -137,7 +129,7 @@ GLOBAL_VAR_INIT(normal_ooc_colour, "#002eb8")
 		if(prefs.muted & MUTE_OOC)
 			to_chat(src, span_danger("I cannot use OOC (muted)."))
 			return
-	if(is_banned_from(ckey, "OOC"))
+	if(is_misc_banned(ckey, BAN_MISC_OOC))
 		to_chat(src, span_danger("I have been banned from OOC."))
 		return
 	if(QDELETED(src))
@@ -181,17 +173,17 @@ GLOBAL_VAR_INIT(normal_ooc_colour, "#002eb8")
 		color2use = "#[color2use]"
 	var/chat_color = "#c5c5c5"
 	var/msg_to_send = ""
-	
+
 	for(var/client/C in GLOB.clients)
 		var/real_key = C.holder ? "([key])" : ""
 		if(C.prefs.chat_toggles & CHAT_OOC)
 			if(SSticker.current_state != GAME_STATE_FINISHED && !istype(C.mob, /mob/dead/new_player) && !C.holder)
 				continue
-			
+
 			msg_to_send = "<font color='[color2use]'><EM>[keyname][real_key]:</EM></font> <font color='[chat_color]'><span class='message linkify'>[msg]</span></font>"
 			if(holder)
 				msg_to_send = "<font color='[color2use]'><EM>[keyname][real_key]:</EM></font> <font color='#4972bc'><span class='message linkify'>[msg]</span></font>"
-				
+
 			to_chat(C, msg_to_send)
 
 

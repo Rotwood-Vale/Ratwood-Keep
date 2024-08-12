@@ -1,13 +1,13 @@
-/datum/advclass/peasant
+/datum/advclass/farmer
 	name = "Farmer"
-	tutorial = "As a Peasent, you are a skilled farmer, able to grow a variety of berrys and apples \
+	tutorial = "As a Peasent, you are a skilled farmer, able to grow a variety of berrys and apples. \
 	Join the local Soilsmen at their farm, or make your own little orchard."
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
-	outfit = /datum/outfit/job/roguetown/adventurer/peasant
+	outfit = /datum/outfit/job/roguetown/adventurer/farmer
 	category_tags = list(CTAG_PILGRIM, CTAG_TOWNER)
 
-/datum/outfit/job/roguetown/adventurer/peasant/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/job/roguetown/adventurer/farmer/pre_equip(mob/living/carbon/human/H)
 	..()
 	H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 1, TRUE)

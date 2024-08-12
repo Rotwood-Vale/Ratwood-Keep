@@ -27,12 +27,14 @@
 	playsound(target, list('sound/misc/mat/insert (1).ogg','sound/misc/mat/insert (2).ogg'), 20, TRUE, ignore_walls = FALSE)
 
 /datum/sex_action/throat_sex/on_perform(mob/living/carbon/human/user, mob/living/carbon/human/target)
-	user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] fucks [target]'s throat."))
+	if(user.sexcon.do_message_signature("[type]"))
+		user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] fucks [target]'s throat."))
 	playsound(target, 'sound/misc/mat/segso.ogg', 50, TRUE, -2, ignore_walls = FALSE)
+	do_thrust_animate(user, target)
 
 	user.sexcon.perform_sex_action(user, 2, 0, TRUE)
 	if(user.sexcon.check_active_ejaculation())
-		user.visible_message(span_love("[user] cums into [target]'s throat!"))
+		user.visible_message(span_lovebold("[user] cums into [target]'s throat!"))
 		user.sexcon.cum_into()
 		user.virginity = FALSE
 
@@ -40,7 +42,7 @@
 		user.sexcon.perform_sex_action(target, 0, 2, FALSE)
 	else
 		user.sexcon.perform_sex_action(target, 0, 7, FALSE)
-		user.sexcon.perform_deepthroat_oxyloss(target, 2.6)
+		user.sexcon.perform_deepthroat_oxyloss(target, 2)
 	target.sexcon.handle_passive_ejaculation()
 
 /datum/sex_action/throat_sex/on_finish(mob/living/carbon/human/user, mob/living/carbon/human/target)

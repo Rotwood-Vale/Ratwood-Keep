@@ -127,6 +127,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 
 	/// List of descriptor choices this species gets in preferences customization
 	var/list/descriptor_choices = list(
+		/datum/descriptor_choice/height,
 		/datum/descriptor_choice/body,
 		/datum/descriptor_choice/stature,
 		/datum/descriptor_choice/face,
@@ -135,8 +136,30 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 		/datum/descriptor_choice/voice,
 		/datum/descriptor_choice/prominent_one,
 		/datum/descriptor_choice/prominent_two,
+		/datum/descriptor_choice/prominent_three,
+		/datum/descriptor_choice/prominent_four,
 	)
 
+	var/list/specstats = list(
+		"strength" = 0, 
+		"perception" = 0, 
+		"intelligence" = 0, 
+		"constitution" = 0, 
+		"endurance" = 0, 
+		"speed" = 0, 
+		"fortune" = 0
+		)
+	var/list/specstats_m = list(
+		"constitution" = 1, 
+		"intelligence" = -1,
+	)
+	var/list/specstats_f = list(
+		"strength" = -1, 
+		"speed" = 1,
+	)
+	var/list/specskills
+	var/list/specskills_m
+	var/list/specskills_f
 	var/obj/item/mutanthands
 
 	/// List of organ customizers for preferences to customize organs.
@@ -219,6 +242,9 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 	return FALSE
 
 /datum/species/proc/random_name(gender,unique,lastname)
+	return random_human_name(gender,unique,lastname)
+
+/proc/random_human_name(gender,unique,lastname)
 	var/randname
 	if(unique)
 		if(gender == MALE)

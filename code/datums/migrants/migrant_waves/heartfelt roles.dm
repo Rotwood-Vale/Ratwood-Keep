@@ -134,6 +134,7 @@
 	
 	ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_SEEPRICES, TRAIT_GENERIC)
+	ADD_TRAIT(H, TRAIT_NOBLE, TRAIT_GENERIC)
 
 /datum/migrant_role/heartfelt/knight
 	name = "Knight of Heartfelt"
