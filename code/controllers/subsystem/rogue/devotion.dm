@@ -125,8 +125,23 @@
 		H.mind.AddSpell(newspell)
 		LAZYADD(granted_spells, newspell)
 	level = CLERIC_T0
-	max_devotion = CLERIC_REQ_1 //Max devotion limit - Paladins are stronger but cannot pray to gain all abilities beyond t1
+	max_devotion = CLERIC_REQ_1 //Max devotion limit - Paladin/Templars are stronger than others but cannot pray to gain all abilities beyond t1
 	max_progression = CLERIC_REQ_1
+
+/datum/devotion/proc/grant_spells_cleric(mob/living/carbon/human/H)
+	if(!H || !H.mind || !patron)
+		return
+
+	var/list/spelllist = list(/obj/effect/proc_holder/spell/targeted/churn, patron.t0)
+	for(var/spell_type in spelllist)
+		if(!spell_type || H.mind.has_spell(spell_type))
+			continue
+		var/newspell = new spell_type
+		H.mind.AddSpell(newspell)
+		LAZYADD(granted_spells, newspell)
+	level = CLERIC_T0
+	max_devotion = CLERIC_REQ_2 //Max devotion limit - Clerics are stronger than some others but cannot pray to gain all abilities beyond t2
+	max_progression = CLERIC_REQ_2
 
 /datum/devotion/proc/grant_spells_churchling(mob/living/carbon/human/H)
 	if(!H || !H.mind || !patron)

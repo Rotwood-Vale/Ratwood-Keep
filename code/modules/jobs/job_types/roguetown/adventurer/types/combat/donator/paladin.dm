@@ -8,6 +8,7 @@
 	outfit = /datum/outfit/job/roguetown/adventurer/paladin
 	traits_applied = list(TRAIT_HEAVYARMOR)
 	category_tags = list(CTAG_ADVENTURER)
+	maximum_possible_slots = 5		//Supposed to be a rare role, thus why it's in donator category. It's a Templar-equal role.
 
 /datum/outfit/job/roguetown/adventurer/paladin
 	allowed_patrons = ALL_CLERIC_PATRONS
@@ -54,7 +55,8 @@
 			H.change_stat("strength", 2)
 			H.change_stat("constitution", 2) // Classic paladin is faster then the battle master.
 			H.change_stat("endurance", 1)
-			armor = /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk
+			shirt = /obj/item/clothing/suit/roguetown/armor/chainmail
+			armor = /obj/item/clothing/suit/roguetown/armor/plate/half
 			pants = /obj/item/clothing/under/roguetown/chainlegs
 			shoes = /obj/item/clothing/shoes/roguetown/boots/leather
 			belt = /obj/item/storage/belt/rogue/leather/hand
@@ -90,7 +92,7 @@
 			H.mind.adjust_skillrank(/datum/skill/misc/reading, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/swords, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/misc/climbing, pick(2,3), TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/climbing, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/riding, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/magic/holy, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/whipsflails, 3, TRUE)
@@ -101,7 +103,8 @@
 			H.change_stat("constitution", 2)
 			H.change_stat("endurance", 1)
 			H.change_stat("speed", -1)
-			armor = /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk
+			shirt = /obj/item/clothing/suit/roguetown/armor/chainmail
+			armor = /obj/item/clothing/suit/roguetown/armor/plate/half
 			pants = /obj/item/clothing/under/roguetown/chainlegs
 			shoes = /obj/item/clothing/shoes/roguetown/boots/leather
 			belt = /obj/item/storage/belt/rogue/leather/hand
@@ -126,7 +129,7 @@
 			if(prob(50))
 				l_hand = /obj/item/rogueweapon/shield/wood
 			else
-				l_hand = /obj/item/rogueweapon/shield/tower/metal
+				l_hand = /obj/item/rogueweapon/shield/tower
 			backl = /obj/item/storage/backpack/rogue/satchel
 
 	ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
