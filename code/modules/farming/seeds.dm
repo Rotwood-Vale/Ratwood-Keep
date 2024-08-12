@@ -89,6 +89,10 @@
 	seed_identity = "berry seeds"
 	plant_def_type = /datum/plant_def/berry_poison
 
+/obj/item/seeds/potato
+	seed_identity = "potato seeds"
+	plant_def_type = /datum/plant_def/potato
+
 /obj/item/seeds/cabbage
 	seed_identity = "cabbage seeds"
 	plant_def_type = /datum/plant_def/cabbage
@@ -124,10 +128,6 @@
 /obj/item/seeds/carrot
 	seed_identity = "carrot seeds"
 	plant_def_type = /datum/plant_def/carrot
-
-/obj/item/seeds/potato
-	seed_identity = "potato eyes"
-	plant_def_type = /datum/plant_def/potato
 
 /obj/item/seeds/eggplant
 	seed_identity = "eggplant seeds"

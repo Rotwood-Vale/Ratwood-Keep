@@ -495,3 +495,19 @@
 	tastes = list("numb" = 1)
 	list_reagents = list(/datum/reagent/consumable/nutriment = 3, /datum/reagent/toxin/amanitin = 3)
 	grind_results = list(/datum/reagent/toxin/amanitin = 6)
+
+/obj/item/reagent_containers/food/snacks/grown/rogue/potato
+	seed = /obj/item/seeds/potato
+	name = "potato"
+	desc = ""
+	icon_state = "potato"
+	tastes = list("starchy" = 1)
+	bitesize = 5
+	list_reagents = list(/datum/reagent/consumable/nutriment = 3)
+	dropshrink = 0.75
+	//var/color_index = "good"
+	can_distill = TRUE
+	distill_reagent = /datum/reagent/consumable/ethanol/beer/vodka
+	rotprocess = 15 MINUTES
+
+	

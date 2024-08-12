@@ -48,6 +48,15 @@
 	result = /obj/item/soap
 	craftdiff = 5
 
+/datum/crafting_recipe/roguetown/cooking/mashedpotatoes
+	name = "mashed potatoes"
+	reqs = list(
+		/datum/reagent/consumable/milk = 15,
+		/obj/item/reagent_containers/food/snacks/grown/rogue/potato = 1,
+		/obj/item/reagent_containers/food/snacks/butterslice = 1)
+	result = /obj/item/reagent_containers/food/snacks/rogue/mashedpotatoes
+	subtype_reqs = FALSE
+
 /datum/crafting_recipe/roguetown/cooking/cucumberjar
 	name = "jar cucumbers"
 	reqs = list(
