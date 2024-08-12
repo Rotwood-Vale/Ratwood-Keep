@@ -98,47 +98,46 @@
 	created_item = /obj/item/clothing/ring/diamond
 	i_type = "Valuables"
 
-//Steel rings
-//BE AWARE THOSE RINGS SHOULD BE TURNED TO SILVER ONCE SILVER INGOTS ARE IN PLAY - Sarkness
+//Silver rings
 
 /datum/anvil_recipe/valuables/emerings
 	name = "Gemerald Ring (+1 Gemerald)"
-	req_bar = /obj/item/ingot/steel
+	req_bar = /obj/item/ingot/silver
 	additional_items = list(/obj/item/roguegem/green)	
 	created_item = /obj/item/clothing/ring/emeralds
 	i_type = "Valuables"
 
 /datum/anvil_recipe/valuables/rubys
 	name = "Rontz Ring (+1 Rontz)"
-	req_bar = /obj/item/ingot/steel
+	req_bar = /obj/item/ingot/silver
 	additional_items = list(/obj/item/roguegem)	
 	created_item = /obj/item/clothing/ring/rubys
 	i_type = "Valuables"
 
 /datum/anvil_recipe/valuables/topazs
 	name = "Toper Ring (+1 Toper)"
-	req_bar = /obj/item/ingot/steel
+	req_bar = /obj/item/ingot/silver
 	additional_items = list(/obj/item/roguegem/yellow)	
 	created_item = /obj/item/clothing/ring/topazs
 	i_type = "Valuables"
 
 /datum/anvil_recipe/valuables/quartzs
 	name = "Blortz Ring (+1 Blortz)"
-	req_bar = /obj/item/ingot/steel
+	req_bar = /obj/item/ingot/silver
 	additional_items = list(/obj/item/roguegem/blue)	
 	created_item = /obj/item/clothing/ring/quartzs
 	i_type = "Valuables"
 
 /datum/anvil_recipe/valuables/sapphires
 	name = "Saffira Ring (+1 Saffira)"
-	req_bar = /obj/item/ingot/steel
+	req_bar = /obj/item/ingot/silver
 	additional_items = list(/obj/item/roguegem/violet)	
 	created_item = /obj/item/clothing/ring/sapphires
 	i_type = "Valuables"
 
 /datum/anvil_recipe/valuables/diamonds
 	name = "Dorpel Ring (+1 Dorpel)"
-	req_bar = /obj/item/ingot/steel
+	req_bar = /obj/item/ingot/silver
 	additional_items = list(/obj/item/roguegem/diamond)	
 	created_item = /obj/item/clothing/ring/diamonds
 	i_type = "Valuables"
