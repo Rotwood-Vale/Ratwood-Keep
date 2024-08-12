@@ -61,16 +61,19 @@
 	name = "Fungal Illumination"
 	range = 1
 	overlay_state = "blesscrop"
-	releasedrain = 30
+	releasedrain = 120
 	charge_max = 30 SECONDS
+	chargetime = 20
+	no_early_release = TRUE
+	movement_interrupt = TRUE
 	req_items = list(/obj/item/clothing/neck/roguetown/psicross)
 	max_targets = 0
 	cast_without_targets = TRUE
 	sound = 'sound/items/dig_shovel.ogg'
 	associated_skill = /datum/skill/magic/holy
 	invocation = "Treefather light the way."
-	invocation_type = "whisper" //can be none, whisper, emote and shout
-	devotion_cost = 30
+	invocation_type = "shout" //can be none, whisper, emote and shout
+	devotion_cost = 60
 
 /obj/effect/proc_holder/spell/targeted/conjure_glowshroom/cast(list/targets, mob/user = usr)
 	. = ..()

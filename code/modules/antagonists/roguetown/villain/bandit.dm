@@ -112,7 +112,7 @@
 	backpack_contents = list(/obj/item/needle/thorn = 1, /obj/item/natural/cloth = 1)
 	mask = /obj/item/clothing/mask/rogue/facemask/steel
 	neck = /obj/item/clothing/neck/roguetown/coif
-	head = /obj/item/clothing/head/roguetown/helmet/leather/volfhelm
+	head = /obj/item/clothing/head/roguetown/menacing/bandit
 	if(prob(40))
 		neck = /obj/item/clothing/neck/roguetown/chaincoif
 	if(prob(23))

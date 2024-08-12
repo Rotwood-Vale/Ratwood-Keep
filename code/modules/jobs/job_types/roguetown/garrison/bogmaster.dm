@@ -9,7 +9,7 @@
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_TOLERATED_UP
 	allowed_ages = list(AGE_ADULT, AGE_MIDDLEAGED, AGE_OLD)
-	tutorial = "You are the most experienced idiot to volunteer to the Bog Guard... What a mistake that was. You report to the Bailiff, and your job is to keep the bogmen in line and to ensure the routes to the town are safe. May the nine have mercy on you..."
+	tutorial = "You are the most experienced idiot to volunteer to the Bog Guard... What a mistake that was. You report to the Bailiff, and your job is to keep the bogmen in line and to ensure the routes to the town are safe. May Gods have mercy on you..."
 	display_order = JDO_BOGMASTER
 	whitelist_req = TRUE
 

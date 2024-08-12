@@ -1069,18 +1069,16 @@
 	log_combat(src, null, "surrendered")
 	surrendering = 1
 	changeNext_move(CLICK_CD_EXHAUSTED)
-	var/image/flaggy = image('icons/effects/effects.dmi',src,"surrender_large",ABOVE_MOB_LAYER)
-	flaggy.appearance_flags = RESET_TRANSFORM|KEEP_APART
-	flaggy.transform = null
-	flaggy.pixel_y = 8
-	flick_overlay_view(flaggy, src, 150)
+	var/obj/effect/temp_visual/surrender/flaggy = new(src)
+	vis_contents += flaggy
 	Stun(150)
 	src.visible_message(span_notice("[src] yields!"))
-	playsound(src, 'sound/misc/surrender.ogg', 100, FALSE, -1)
-	sleep(150)
+	playsound(src, 'sound/misc/surrender.ogg', 100, FALSE, -1, ignore_walls=TRUE)
+	addtimer(CALLBACK(src, PROC_REF(end_submit)), 150)
+
+/mob/living/proc/end_submit()
 	surrendering = 0
 	log_combat(src, null, "surrender ended")
-
 
 /mob/proc/stop_attack(message = FALSE)
 	if(atkswinging)
@@ -1109,7 +1107,7 @@
 	. = TRUE
 
 	var/wrestling_diff = 0
-	var/resist_chance = 50
+	var/resist_chance = 60
 	var/mob/living/L = pulledby
 
 	if(mind)
@@ -1117,15 +1115,18 @@
 	if(L.mind)
 		wrestling_diff -= (L.mind.get_skill_level(/datum/skill/combat/wrestling))
 	
-	resist_chance += ((STASTR - L.STASTR) * 10)
+	resist_chance += ((STASTR - L.STASTR) * 7)
 	
 	if(!(mobility_flags & MOBILITY_STAND))
-		resist_chance += -20 + min((wrestling_diff * 5), -20) //Can improve resist chance at high skill difference     
+		resist_chance -= clamp(15 - (wrestling_diff * 4), 0, 15)
 	if(pulledby.grab_state >= GRAB_AGGRESSIVE)
-		resist_chance += -20 + max((wrestling_diff * 10), 0) 
-		resist_chance = max(resist_chance, 50 + min((wrestling_diff * 5), 0))
-	else
-		resist_chance = max(resist_chance, 70 + min((wrestling_diff * 5), 0))
+		resist_chance -= clamp(15 - (wrestling_diff * 4), 0, 15)
+
+	var/minimum_roll = 40
+	if(pulledby.grab_state >= GRAB_AGGRESSIVE || !(mobility_flags & MOBILITY_STAND))
+		minimum_roll = 25
+
+	resist_chance = max(resist_chance, minimum_roll)
 
 	if(moving_resist && client) //we resisted by trying to move
 		client.move_delay = world.time + 20
