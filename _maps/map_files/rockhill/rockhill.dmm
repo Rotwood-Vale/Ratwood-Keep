@@ -7353,12 +7353,6 @@
 /obj/item/storage/roguebag,
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/manor)
-"imV" = (
-/obj/effect/decal/cobbleedge{
-	dir = 1
-	},
-/turf/open/floor/plating/ashplanet/rocky,
-/area/rogue/outdoors/beach)
 "inZ" = (
 /obj/structure/closet/crate/roguecloset/inn/chest,
 /turf/open/floor/rogue/ruinedwood{
@@ -9163,12 +9157,6 @@
 /obj/item/rogueweapon/mace/woodclub,
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/under/town/basement)
-"kzx" = (
-/obj/effect/decal/cobbleedge{
-	dir = 5
-	},
-/turf/open/floor/plating/ashplanet/rocky,
-/area/rogue/outdoors/beach)
 "kzz" = (
 /obj/structure/fluff/railing/border,
 /obj/structure/fluff/railing/border{
@@ -11521,12 +11509,6 @@
 /obj/structure/closet/crate/roguecloset,
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue/indoors/town/shop)
-"nyb" = (
-/obj/effect/decal/cobbleedge{
-	dir = 6
-	},
-/turf/open/floor/plating/ashplanet/rocky,
-/area/rogue/outdoors/beach)
 "nyz" = (
 /obj/structure/stairs{
 	dir = 1
@@ -18826,10 +18808,6 @@
 	},
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/church)
-"wnc" = (
-/obj/effect/decal/cobbleedge,
-/turf/open/floor/plating/ashplanet/rocky,
-/area/rogue/outdoors/beach)
 "wnv" = (
 /obj/structure/bars,
 /turf/open/floor/rogue/herringbone,
@@ -202994,7 +202972,7 @@ aeQ
 qSU
 qcb
 qSU
-wnc
+qSU
 qvA
 lrs
 lrs
@@ -203396,7 +203374,7 @@ aeQ
 qSU
 qSU
 qSU
-wnc
+qSU
 qvA
 lrs
 tcf
@@ -203797,16 +203775,16 @@ uhC
 uum
 uum
 qvA
-imV
-wnc
+qSU
+qSU
 qvA
 vRu
 czk
 czk
 czk
 vRu
-vRu
-vRu
+rSC
+rSC
 vRu
 vRu
 vRu
@@ -204199,8 +204177,8 @@ rRb
 vRu
 qvA
 qvA
-imV
-wnc
+qSU
+qSU
 qvA
 qvA
 czk
@@ -204208,7 +204186,7 @@ czk
 czk
 czk
 czk
-vRu
+rSC
 vRu
 vRu
 vRu
@@ -204601,8 +204579,8 @@ rRb
 qvA
 qvA
 qvA
-imV
-wnc
+qSU
+qSU
 qvA
 rEg
 rEg
@@ -205003,8 +204981,8 @@ bIl
 lEn
 rEg
 cif
-kzx
-nyb
+qSU
+qSU
 orS
 dVw
 ewB
