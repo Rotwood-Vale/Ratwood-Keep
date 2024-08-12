@@ -36,6 +36,13 @@
 
 #define STATUS_EFFECT_ANTIMAGIC /datum/status_effect/antimagic //grants antimagic (and reapplies if lost) for the duration
 
+#define STATUS_EFFECT_FORTITUDE /datum/status_effect/fortitude //grants people 1 STR and 3 CON for the duration.
+
+#define STATUS_EFFECT_SWIFTNESS /datum/status_effect/swiftness //grants people 1 DEX and 3 SPD for the duration.
+
+#define STATUS_EFFECT_INTELLECT /datum/status_effect/intellect //grants people 5 INT and 5 PER for the duration.
+
+
 /////////////
 // DEBUFFS //
 /////////////
@@ -114,6 +121,8 @@
 #define STATUS_EFFECT_BUGGED /datum/status_effect/bugged //Lets other mobs listen in on what it hears
 
 #define STATUS_EFFECT_BOUNTY /datum/status_effect/bounty //rewards the person who added this to the target with refreshed spells and a fair heal
+
+#define STATUS_EFFECT_VIRILITY /datum/status_effect/virility //grants people the ability to have infinite orgasms for the duration. 
 
 /////////////
 //  SLIME  //
