@@ -185,13 +185,13 @@
 	keys = list(/obj/item/roguekey/tavern, /obj/item/roguekey/roomiv, /obj/item/roguekey/roomiii, /obj/item/roguekey/roomii, /obj/item/roguekey/roomi)
 
 /obj/item/keyring/priest
-	keys = list(/obj/item/roguekey/priest, /obj/item/roguekey/confession, /obj/item/roguekey/church)
+	keys = list(/obj/item/roguekey/priest, /obj/item/roguekey/confession, /obj/item/roguekey/church, /obj/item/roguekey/graveyard)
 
 /obj/item/keyring/puritan
 	keys = list(/obj/item/roguekey/puritan, /obj/item/roguekey/manor, /obj/item/roguekey/confession, /obj/item/roguekey/church)
 
-/obj/item/keyring/shepherd
-	keys = list(/obj/item/roguekey/confession, /obj/item/roguekey/church)
+/obj/item/keyring/confessor
+	keys = list(/obj/item/roguekey/puritan, /obj/item/roguekey/confession, /obj/item/roguekey/church)
 
 /obj/item/keyring/nightman
 	keys = list(/obj/item/roguekey/nightman, /obj/item/roguekey/nightmaiden)

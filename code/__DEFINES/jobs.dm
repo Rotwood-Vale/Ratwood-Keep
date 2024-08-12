@@ -241,12 +241,13 @@
 
 #define JDO_PRIEST 10
 #define JDO_PURITAN 11
-#define JDO_TEMPLAR 12
+#define JDO_CONFESSOR 11.1
+#define JDO_HIGHTEMPLAR 12
+#define JDO_TEMPLAR 12.1
 #define JDO_MONK 13
 #define JDO_DRUID 13.1
 #define JDO_CHURCHLING 14
 #define JDO_GRAVEMAN 15
-#define JDO_SHEPHERD 16
 
 #define JDO_MERCHANT 17
 #define JDO_SHOPHAND 17.1
@@ -321,12 +322,13 @@
 
 #define CHURCH_ROLES \
 	/datum/job/roguetown/churchling,\
-	/datum/job/roguetown/shepherd,\
+	/datum/job/roguetown/confessor,\
 	/datum/job/roguetown/druid,\
 	/datum/job/roguetown/monk,\
 	/datum/job/roguetown/undertaker,\
 	/datum/job/roguetown/priest,\
 	/datum/job/roguetown/puritan,\
+	/datum/job/roguetown/hightemplar, \
 	/datum/job/roguetown/templar
 
 #define PEASANT_ROLES \

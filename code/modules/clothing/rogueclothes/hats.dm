@@ -188,15 +188,6 @@
 
 /obj/item/clothing/head/roguetown/menacing/bandit
 	icon_state = "bandithood"
-	desc = "A hood worn by the freemen of the wood. It is lined with extra padding, offering modest protection."
-	body_parts_covered = HEAD|HAIR|EARS|NECK|EYES|NOSE|MOUTH
-	slot_flags = ITEM_SLOT_HEAD|ITEM_SLOT_NECK
-	armor = list("blunt" = 50, "slash" = 30, "stab" = 40, "bullet" = 20, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
-	prevent_crits = list(BCLASS_BLUNT, BCLASS_CUT)
-	anvilrepair = null
-	sewrepair = TRUE
-	max_integrity = 200
-	blocksound = SOFTHIT
 
 /obj/item/clothing/head/roguetown/jester
 	name = "jester's hat"
@@ -611,6 +602,12 @@
 	block2add = FOV_RIGHT|FOV_LEFT
 	smeltresult = /obj/item/ingot/steel
 
+/obj/item/clothing/head/roguetown/helmet/heavy/bucket/gold
+	name = "gilded bucket helmet"
+	desc = "A gilded helmet which covers the whole of the head. Offers excellent protection and shows your status."
+	icon_state = "topfhelm_gold"
+	item_state = "topfhelm_gold"
+
 /obj/item/clothing/head/roguetown/helmet/heavy/astratahelm
 	name = "astrata helmet"
 	desc = "Headwear commonly worn by Templars in service to Astrata. The firstborn child's light will forever shine on within its crest."
@@ -701,7 +698,7 @@
 	desc = "A helmet made of leather."
 	body_parts_covered = HEAD|HAIR|EARS|NOSE
 	icon_state = "leatherhelm"
-	armor = list("blunt" = 47, "slash" = 27, "stab" = 37, "bullet" = 20, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	armor = list("blunt" = 47, "slash" = 27, "stab" = 37, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
 	prevent_crits = list(BCLASS_BLUNT, BCLASS_TWIST)
 	anvilrepair = null
 	smeltresult = null
@@ -715,7 +712,7 @@
 	body_parts_covered = HEAD|HAIR|EARS
 	icon_state = "volfhead"
 	item_state = "volfhead"
-	armor = list("blunt" = 47, "slash" = 27, "stab" = 37, "bullet" = 20, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	armor = list("blunt" = 47, "slash" = 27, "stab" = 37, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
 	prevent_crits = list(BCLASS_BLUNT, BCLASS_TWIST)
 	anvilrepair = null
 	sewrepair = TRUE
