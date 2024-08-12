@@ -77,6 +77,7 @@
 	needs_update_stat = TRUE
 	var/mob/living/carbon/carbon_owner
 	var/mob/living/carbon/human/human_owner
+	var/sleptonground = FALSE
 
 /datum/status_effect/incapacitating/sleeping/on_creation(mob/living/new_owner, updating_canmove)
 	. = ..()
@@ -98,7 +99,7 @@
 		SSdroning.play_loop(get_area(src), human_owner.client)
 	. = ..()
 	if(sleptonground)
-		if(HAS_TRAIT(human_owner, RTRAIT_NOBLE))
+		if(HAS_TRAIT(human_owner, TRAIT_NOBLE))
 			human_owner.add_stress(/datum/stressevent/sleepfloornoble)
 		else
 			human_owner.add_stress(/datum/stressevent/sleepfloor)
