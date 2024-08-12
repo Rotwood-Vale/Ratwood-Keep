@@ -39,8 +39,6 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "E
 	var/check_for_lord = TRUE
 	var/next_check_lord = 0
 	var/missing_lord_time = FALSE
-	var/roundvoteend = FALSE
-	var/ttime
 
 	var/kingsubmit = FALSE
 	var/deathknightspawn = FALSE
@@ -73,7 +71,7 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "E
 				return TRUE
 		else
 			if(!SSvote.mode && SSticker.autovote)
-				SSvote.initiate_vote("endround", pick("Zlod", "Sun King", "Gaia", "Moon Queen", "Aeon", "Gemini", "Aries"))
+				SSvote.initiate_vote("endround", "the Gods")
 
 	if(headrebdecree)
 		if(reb_end_time == 0)
