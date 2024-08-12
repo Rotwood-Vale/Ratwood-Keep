@@ -2603,6 +2603,13 @@
 /obj/effect/decal/cleanable/blood/gibs/core,
 /turf/open/floor/rogue/cobble,
 /area/rogue/indoors)
+"bwg" = (
+/obj/structure/closet/crate/chest,
+/obj/item/seeds/potato,
+/obj/item/seeds/potato,
+/obj/item/seeds/potato,
+/turf/open/floor/rogue/twig,
+/area/rogue/indoors)
 "bwv" = (
 /obj/structure/table/wood{
 	dir = 10;
@@ -305302,7 +305309,7 @@ uaL
 fxx
 fxx
 wOD
-ktX
+bwg
 lJX
 ltT
 oRU

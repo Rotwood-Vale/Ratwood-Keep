@@ -230,3 +230,16 @@
 	grind_results = list(/datum/reagent/drug/space_drugs = 5)
 	eat_effect = /datum/status_effect/debuff/badmeal
 
+/obj/item/reagent_containers/food/snacks/grown/rogue/potato
+	seed = /obj/item/seeds/potato
+	name = "potato"
+	desc = ""
+	icon_state = "potato"
+	tastes = list("starchy" = 1)
+	bitesize = 5
+	list_reagents = list(/datum/reagent/consumable/nutriment = 3)
+	dropshrink = 0.75
+	//var/color_index = "good"
+	can_distill = TRUE
+	distill_reagent = /datum/reagent/consumable/ethanol/beer/vodka
+	rotprocess = 15 MINUTES
