@@ -269,7 +269,7 @@
 	if(M.pixel_y <= 16 && M.pixelshift_y <= 16 && M.wallpressed == FALSE)
 		M.pixelshifted = TRUE
 		M.pixelshift_y = M.pixelshift_y + 1
-		M.set_mob_offsets("pixel_shift", _x = M.pixelshift_x, _y = M.pixelshift_y)	
+		M.set_mob_offsets("pixel_shift", _x = M.pixelshift_x, _y = M.pixelshift_y)
 	return TRUE
 
 /datum/keybinding/living/pixel_shift_east
@@ -284,7 +284,7 @@
 	if(M.pixel_x <= 16 && M.pixelshift_x <= 16 && M.wallpressed == FALSE)
 		M.pixelshifted = TRUE
 		M.pixelshift_x = M.pixelshift_x + 1
-		M.set_mob_offsets("pixel_shift", _x = M.pixelshift_x, _y = M.pixelshift_y)	
+		M.set_mob_offsets("pixel_shift", _x = M.pixelshift_x, _y = M.pixelshift_y)
 	return TRUE
 
 /datum/keybinding/living/pixel_shift_south
@@ -299,7 +299,7 @@
 	if(M.pixel_y >= -16 && M.pixelshift_y >= -16 && M.wallpressed == FALSE)
 		M.pixelshifted = TRUE
 		M.pixelshift_y = M.pixelshift_y - 1
-		M.set_mob_offsets("pixel_shift", _x = M.pixelshift_x, _y = M.pixelshift_y)		
+		M.set_mob_offsets("pixel_shift", _x = M.pixelshift_x, _y = M.pixelshift_y)
 	return TRUE
 
 /datum/keybinding/living/pixel_shift_west
@@ -314,7 +314,38 @@
 	if(M.pixel_x >= -16 && M.pixelshift_x >= -16 && M.wallpressed == FALSE)
 		M.pixelshifted = TRUE
 		M.pixelshift_x = M.pixelshift_x - 1
-		M.set_mob_offsets("pixel_shift", _x = M.pixelshift_x, _y = M.pixelshift_y)	
+		M.set_mob_offsets("pixel_shift", _x = M.pixelshift_x, _y = M.pixelshift_y)
 	return TRUE
 
+//layer shifting
 
+
+/datum/keybinding/living/pixel_shift_layerup
+	hotkey_keys = list("CtrlShiftNortheast")
+	name = "pixel_shift_layerup"
+	full_name = "Pixel-Shift Layer Up"
+	description = ""
+	var/lastrest = 0
+
+/datum/keybinding/living/pixel_shift_layerup/down(client/user)
+	var/mob/living/M = user.mob
+	if(M.pixelshift_layer <= 0.04)
+		M.pixelshifted = TRUE
+		M.pixelshift_layer = M.pixelshift_layer + 0.01
+		M.layer = 4 + M.pixelshift_layer
+	return TRUE
+
+/datum/keybinding/living/pixel_shift_layerdown
+	hotkey_keys = list("CtrlShiftSoutheast")
+	name = "pixel_shift_layerdown"
+	full_name = "Pixel-Shift Layer Down"
+	description = ""
+	var/lastrest = 0
+
+/datum/keybinding/living/pixel_shift_layerdown/down(client/user)
+	var/mob/living/M = user.mob
+	if(M.pixelshift_layer >= -0.04)
+		M.pixelshifted = TRUE
+		M.pixelshift_layer = M.pixelshift_layer - 0.01
+		M.layer = 4 + M.pixelshift_layer
+	return TRUE
