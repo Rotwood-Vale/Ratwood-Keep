@@ -126,6 +126,10 @@
 				/obj/item/natural/fibers = 1)
 	craftdiff = 3
 
+/datum/crafting_recipe/roguetown/sewing/tabard/crusader
+	name = "crusader tabard"
+	result = list(/obj/item/clothing/cloak/tabard/crusader)
+
 /datum/crafting_recipe/roguetown/sewing/stabard
 	name = "surcoat"
 	result = list(/obj/item/clothing/cloak/stabard)
