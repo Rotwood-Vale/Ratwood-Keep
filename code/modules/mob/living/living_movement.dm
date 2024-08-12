@@ -22,7 +22,7 @@
 			var/mob/living/M = mover
 			if(M.wallpressed)
 				return !wallpressed
-	return (!density || wallpressed || !(mobility_flags & MOBILITY_STAND))
+	return (!density || wallpressed || (pixelshift_x >= 10 && pixel_x >= 10) || (pixelshift_x <= -10 && pixel_x <= -10) || (pixelshift_y >= 10 && pixel_y >= 10) || (pixelshift_y <= -8 && pixel_y <= -8) || !(mobility_flags & MOBILITY_STAND))
 
 /mob/living/toggle_move_intent()
 	. = ..()
