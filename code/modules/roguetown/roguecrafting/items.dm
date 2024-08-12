@@ -129,7 +129,6 @@
 	reqs = list(/obj/item/rogueweapon/sickle = 1,
 				/obj/item/rope = 1,
 				/obj/item/grown/log/tree/small = 1)
-	tools = list(/obj/item/rogueweapon/hammer)
 	craftdiff = 3
 
 /datum/crafting_recipe/roguetown/goedendag
@@ -138,7 +137,6 @@
 	reqs = list(/obj/item/grown/log/tree/small = 1,
 				/obj/item/rope = 1,
 				/obj/item/rogueweapon/hoe = 1)
-	tools = list(/obj/item/rogueweapon/hammer)
 	craftdiff = 3
 
 /datum/crafting_recipe/roguetown/peasantwarflail
@@ -147,7 +145,6 @@
 	reqs = list(/obj/item/grown/log/tree/small = 1,
 				/obj/item/rope = 1,
 				/obj/item/rogueweapon/thresher = 1)
-	tools = list(/obj/item/rogueweapon/hammer)
 	craftdiff = 3
 
 /datum/crafting_recipe/roguetown/lproesthetic
