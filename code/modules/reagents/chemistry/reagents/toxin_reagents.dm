@@ -493,7 +493,7 @@
 	return ..()
 
 /datum/reagent/toxin/killersice
-	name = "killersice"
+	name = "Killer's Ice"
 	description = "killersice"
 	reagent_state = LIQUID
 	color = "#FFFFFF"
