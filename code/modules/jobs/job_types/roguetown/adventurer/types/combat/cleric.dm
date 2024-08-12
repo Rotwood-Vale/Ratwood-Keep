@@ -39,7 +39,8 @@
 		if("Life Cleric")
 			H.set_blindness(0)
 			to_chat(H, span_warning("You are a cleric of the life domain. Well versed in the arts of healing and magic."))
-			armor = /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk
+			shirt = /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk
+			armor = /obj/item/clothing/suit/roguetown/shirt/robe/white
 			pants = /obj/item/clothing/under/roguetown/trou/leather
 			shoes = /obj/item/clothing/shoes/roguetown/boots/leather
 			belt = /obj/item/storage/belt/rogue/leather
