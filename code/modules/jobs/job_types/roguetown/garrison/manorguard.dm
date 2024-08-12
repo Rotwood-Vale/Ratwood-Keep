@@ -43,7 +43,7 @@
 	cloak = /obj/item/clothing/cloak/stabard/surcoat/guard
 	wrists = /obj/item/clothing/wrists/roguetown/bracers
 	gloves = /obj/item/clothing/gloves/roguetown/leather
-	neck = /obj/item/clothing/neck/roguetown/chaincoif
+	neck = /obj/item/clothing/neck/roguetown/gorget
 	shoes = /obj/item/clothing/shoes/roguetown/boots/leather
 	beltl = /obj/item/keyring/guardcastle
 	belt = /obj/item/storage/belt/rogue/leather/black
@@ -57,7 +57,7 @@
 
 	category_tags = list(CTAG_MENATARMS)
 
-/datum/outfit/job/roguetown/manorguard/boltman/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/job/roguetown/manorguard/footsman/pre_equip(mob/living/carbon/human/H)
 	..()
 	H.mind.adjust_skillrank(/datum/skill/combat/polearms, 2, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/combat/swords, 4, TRUE)		//Skilled swordsman.
