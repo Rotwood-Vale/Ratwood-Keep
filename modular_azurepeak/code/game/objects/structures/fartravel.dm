@@ -6,7 +6,7 @@
 	icon = 'icons/turf/roguefloor.dmi'
 	icon_state = "fartravel"
 	layer = ABOVE_MOB_LAYER
-	density = TRUE
+	density = FALSE
 	anchored = TRUE
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
 	var/in_use = FALSE
