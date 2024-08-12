@@ -103,6 +103,7 @@
 /obj/item/reagent_containers/food/snacks/rogue/cheddarslice
 	name = "slice of cheese"
 	desc = "A soft, creamy slice of cheddar cheese."
+	icon = 'icons/roguetown/items/food.dmi'
 	icon_state = "cheese_slice"
 	bitesize = 1
 	list_reagents = list(/datum/reagent/consumable/nutriment = 1)

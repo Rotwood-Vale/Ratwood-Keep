@@ -31,21 +31,10 @@
 	name = "minced meat"
 	desc = "With an irregular and coarse texture, makes you hungrier just by looking at it."
 	icon_state = "meatmince"
-	fried_type = /obj/item/reagent_containers/food/snacks/rogue/meat/mince/fried
-	cooked_type = /obj/item/reagent_containers/food/snacks/rogue/meat/mince/fried
 	ingredient_size = 2
 	slice_path = null
 	slices_num = 0
 	filling_color = "#8a0000"
-
-/obj/item/reagent_containers/food/snacks/rogue/meat/mince/fried
-	eat_effect = null
-	slices_num = 0
-	name = "fried mince"
-	desc = "A portion of fried mince, yum."
-	icon_state = "friedmince"
-	bonus_reagents = list(/datum/reagent/consumable/nutriment = 15)
-	desc = ""
 
 /obj/item/reagent_containers/food/snacks/rogue/meat/mince/beef
 	name = "mince"
@@ -238,29 +227,6 @@
 		icon_state = "[initial(M.icon_state)]dried"
 		qdel(M)
 
-<<<<<<< HEAD
-/obj/item/reagent_containers/food/snacks/rawschnitzel
-	eat_effect = /datum/status_effect/debuff/uncookedfood
-	name = "raw floured meat"
-	desc = "A piece of smashed meat covered in flour"
-	icon = 'icons/roguetown/items/food.dmi'
-	icon_state = "meatflour"
-	ingredient_size = 1
-	fried_type = /obj/item/reagent_containers/food/snacks/rogue/schnitzel
-	slices_num = 0
-	cooked_type = null
-
-/obj/item/reagent_containers/food/snacks/rogue/schnitzel
-	eat_effect = null
-	slices_num = 0
-	name = "schnitzel"
-	icon = 'icons/roguetown/items/food.dmi'
-	icon_state = "schnitzel"
-	desc = ""
-	bitesize = 3
-	fried_type = null
-	bonus_reagents = list(/datum/reagent/consumable/nutriment = 10)
-=======
 /obj/item/reagent_containers/food/snacks/rogue/meat/crabmeat
 	name = "crab meat"
 	desc = "A chunk of raw crab meat, absolutely wonderful."
@@ -279,4 +245,3 @@
 	icon_state = "crabmeat"
 	bonus_reagents = list(/datum/reagent/consumable/nutriment = 5)
 	desc = ""
->>>>>>> 0e927c6c7548fec167d5c29055386d66a70437ef
