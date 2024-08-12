@@ -13,7 +13,7 @@
 		sound_horn(user)
 
 /obj/item/signal_horn/proc/sound_horn(mob/living/user)
-	user.visible_message("<span class='warning'>[user] sounds the alarm!</span>")
+	user.visible_message("<span class='warning'>[user] blows the horn!</span>")
 	playsound(src, 'sound/items/signalhorn.ogg', 100, TRUE)
 	var/turf/origin_turf = get_turf(src)
 
