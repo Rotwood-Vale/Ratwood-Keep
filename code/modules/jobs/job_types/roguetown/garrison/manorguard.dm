@@ -53,7 +53,7 @@
 /datum/advclass/manorguard/footsman
 	name = "Men-at-Arms Footsman"
 	tutorial = "You are a professional soldier of the realm, specializing in shields, swords, bows, and crossbows. You sport a keen eye, looking for your enemies weaknesses."
-	outfit = /datum/outfit/job/roguetown/manorguard/boltman
+	outfit = /datum/outfit/job/roguetown/manorguard/footsman
 
 	category_tags = list(CTAG_MENATARMS)
 
