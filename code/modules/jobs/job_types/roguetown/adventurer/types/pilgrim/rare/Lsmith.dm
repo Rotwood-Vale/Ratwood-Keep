@@ -3,7 +3,7 @@
 /datum/advclass/masterblacksmith
 	name = "Master Blacksmith"
 	tutorial = "A master blacksmith, able to forge steel like dough, and gold like clay. \
-	create masterful weapons and armor, be a legend among those who interest in your mighty forge"
+	create masterful weapons and armor, be a legend among those who interest in your mighty forge."
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
 	outfit = /datum/outfit/job/roguetown/adventurer/masterblacksmith
