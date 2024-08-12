@@ -73,13 +73,3 @@
 	craftdiff = 0
 	subtype_reqs = TRUE
 	structurecraft = /obj/structure/fluff/dryingrack
-
-/datum/crafting_recipe/roguetown/cooking/rawschnitzel
-	name = "raw schnitzel"
-	reqs = list(
-		/obj/item/reagent_containers/food/snacks/rogue/meat/steak = 1,
-			/obj/item/reagent_containers/food/snacks/egg = 1,
-		/obj/item/reagent_containers/powder/flour= 1)
-	result = /obj/item/reagent_containers/food/snacks/rawschnitzel
-	req_table = TRUE
-	craftdiff = 0
