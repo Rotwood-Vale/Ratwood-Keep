@@ -7422,19 +7422,6 @@
 	dir = 8
 	},
 /area/rogue/outdoors/bog)
-"ipi" = (
-/obj/effect/decal/cobbleedge{
-	dir = 4;
-	icon_state = "borderfall"
-	},
-/obj/effect/landmark/start/churchling{
-	dir = 8
-	},
-/obj/effect/landmark/start/churchling{
-	dir = 8
-	},
-/turf/open/floor/rogue/churchmarble,
-/area/rogue/indoors/town/church/chapel)
 "iqf" = (
 /obj/structure/fluff/railing/border{
 	dir = 4
@@ -13523,7 +13510,7 @@
 /obj/structure/fluff/walldeco/church/line{
 	dir = 8
 	},
-/obj/effect/landmark/start/gravedigger{
+/obj/effect/landmark/start/shepherd{
 	dir = 1
 	},
 /turf/open/floor/rogue/churchmarble,
@@ -13552,7 +13539,7 @@
 	dir = 4;
 	icon_state = "borderfall"
 	},
-/obj/effect/landmark/start/gravedigger{
+/obj/effect/landmark/start/shepherd{
 	dir = 1
 	},
 /turf/open/floor/rogue/churchmarble,
@@ -415741,7 +415728,7 @@ kIq
 nSr
 nSr
 nSr
-ipi
+kIq
 wwe
 jjS
 jjS
