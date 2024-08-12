@@ -319,7 +319,6 @@
 
 //layer shifting
 
-
 /datum/keybinding/living/pixel_shift_layerup
 	hotkey_keys = list("CtrlShiftNortheast")
 	name = "pixel_shift_layerup"

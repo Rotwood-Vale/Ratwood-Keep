@@ -1629,8 +1629,8 @@
 		if(!lying_prev)
 			fall(!canstand_involuntary)
 		layer = LYING_MOB_LAYER //so mob lying always appear behind standing mobs
-	if (pixelshifted)
-		layer = 3.99 + pixelshift_layer //So mobs can pixelshift layers while lying down
+		if (pixelshifted)
+			layer = 3.99 + pixelshift_layer //So mobs can pixelshift layers while lying down
 	else
 		if(layer == LYING_MOB_LAYER)
 			layer = initial(layer)
