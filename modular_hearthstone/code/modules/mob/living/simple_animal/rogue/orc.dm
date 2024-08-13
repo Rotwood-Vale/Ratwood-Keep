@@ -7,6 +7,7 @@
 	icon_dead = "savageorc_dead"
 	gender = MALE
 	mob_biotypes = MOB_ORGANIC|MOB_HUMANOID|MOB_BEAST
+	environment_smash = ENVIRONMENT_SMASH_STRUCTURES
 	robust_searching = 1
 	speak_chance = 5
 	turns_per_move = 1
@@ -23,7 +24,6 @@
 	aggro_vision_range = 9
 	retreat_distance = 0
 	minimum_distance = 0
-	limb_destroyer = 1
 	base_intents = list(/datum/intent/simple/axe)
 	attack_verb_continuous = "hacks"
 	attack_verb_simple = "hack"
@@ -32,6 +32,7 @@
 	d_intent = INTENT_PARRY
 	defprob = 50
 	defdrain = 20
+	obj_damage = 1
 	speak_emote = list("grunts")
 	speak = list("WAAAGH!", "KRUSH AND KILL!", "Never should have come here!", "Slaughter them all!", "Kill everything!", "Hahaha! Die!")
 	loot = list(/obj/effect/mob_spawn/human/orc/corpse/savageorc,

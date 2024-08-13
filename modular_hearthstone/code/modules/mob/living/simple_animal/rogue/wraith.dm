@@ -19,7 +19,7 @@
 	response_help_continuous = "passes through"
 	response_help_simple = "pass through"
 	dodging = TRUE
-	dodge_prob = 60
+	dodge_prob = 90
 	maxHealth = 100
 	health = 100
 	layer = 16
@@ -39,7 +39,6 @@
 	parry_sound = "bladedmedium"
 	d_intent = INTENT_DODGE
 	speak_emote = list("laments", "cries", "whimpers")
-	limb_destroyer = 1
 	del_on_death = TRUE
 	STALUC = 20
 	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)

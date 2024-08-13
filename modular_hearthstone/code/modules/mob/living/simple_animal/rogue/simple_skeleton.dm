@@ -7,6 +7,7 @@
 	icon_dead = "skeleton_dead"
 	gender = MALE
 	mob_biotypes = MOB_ORGANIC|MOB_HUMANOID
+	environment_smash = ENVIRONMENT_SMASH_STRUCTURES
 	robust_searching = 1
 	turns_per_move = 1
 	move_to_delay = 3
@@ -22,7 +23,6 @@
 	aggro_vision_range = 9
 	retreat_distance = 0
 	minimum_distance = 0
-	limb_destroyer = 1
 	base_intents = list(/datum/intent/simple/claw/skeleton_unarmed)
 	attack_verb_continuous = "hacks"
 	attack_verb_simple = "hack"
@@ -33,7 +33,7 @@
 	defdrain = 20
 	speak_emote = list("grunts")
 	loot = list(/obj/item/natural/bone,	/obj/item/natural/bone, /obj/item/natural/bone,	/obj/item/skull)
-	faction = list("orcs")
+	faction = list("undead")
 	footstep_type = FOOTSTEP_MOB_BAREFOOT
 	del_on_death = TRUE
 
