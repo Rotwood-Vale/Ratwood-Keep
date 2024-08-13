@@ -342,22 +342,24 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	S["eye_color"]			>> eye_color
 	S["voice_color"]		>> voice_color
 	S["skin_tone"]			>> skin_tone
-	S["hairstyle_name"]	>> hairstyle
+	S["hairstyle_name"]		>> hairstyle
 	S["facial_style_name"]	>> facial_hairstyle
 	S["underwear"]			>> underwear
 	S["underwear_color"]	>> underwear_color
 	S["undershirt"]			>> undershirt
 	S["accessory"]			>> accessory
-	S["detail"]			>> detail
+	S["detail"]				>> detail
 	S["socks"]				>> socks
 	S["backpack"]			>> backpack
 	S["jumpsuit_style"]		>> jumpsuit_style
 	S["uplink_loc"]			>> uplink_spawn_loc
-	S["randomise"]	>>  randomise
-	S["feature_mcolor"]					>> features["mcolor"]
-	S["feature_mcolor2"]					>> features["mcolor2"]
-	S["feature_mcolor3"]					>> features["mcolor3"]
-	S["feature_ethcolor"]					>> features["ethcolor"]
+	S["randomise"]			>> randomise
+	S["feature_mcolor"]		>> features["mcolor"]
+	S["feature_mcolor2"]	>> features["mcolor2"]
+	S["feature_mcolor3"]	>> features["mcolor3"]
+	S["feature_ethcolor"]	>> features["ethcolor"]
+	S["pronouns"]			>> pronouns
+	S["voice_type"]			>> voice_type
 
 /datum/preferences/proc/load_character(slot)
 	if(!path)
@@ -428,6 +430,8 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	if(!valid_headshot_link(null, headshot_link, TRUE))
 		headshot_link = null
 
+	S["pronouns"] >> pronouns
+	S["voice_type"] >> voice_type
 	//try to fix any outdated data if necessary
 	if(needs_update >= 0)
 		update_character(needs_update, S)		//needs_update == savefile_version if we need an update (positive integer)
@@ -466,6 +470,8 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	backpack			= sanitize_inlist(backpack, GLOB.backpacklist, initial(backpack))
 	jumpsuit_style	= sanitize_inlist(jumpsuit_style, GLOB.jumpsuitlist, initial(jumpsuit_style))
 	uplink_spawn_loc = sanitize_inlist(uplink_spawn_loc, GLOB.uplink_spawn_loc_list, initial(uplink_spawn_loc))
+	pronouns = sanitize_text(pronouns, THEY_THEM)
+	voice_type = sanitize_text(voice_type, VOICE_TYPE_MASC)
 	features["mcolor"]	= sanitize_hexcolor(features["mcolor"], 6, 0)
 	features["mcolor2"]	= sanitize_hexcolor(features["mcolor2"], 6, 0)
 	features["mcolor3"]	= sanitize_hexcolor(features["mcolor3"], 6, 0)
@@ -569,6 +575,8 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	
 	WRITE_FILE(S["update_mutant_colors"] , update_mutant_colors)
 	WRITE_FILE(S["headshot_link"] , headshot_link)
+	WRITE_FILE(S["voice_type"] , voice_type)
+	WRITE_FILE(S["pronouns"] , pronouns)
 
 	WRITE_FILE(S["is_updated_for_genitalia"], TRUE)
 

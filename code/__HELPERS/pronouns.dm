@@ -116,7 +116,9 @@
 	if(temp_gender != PLURAL && temp_gender != NEUTER)
 		. = "es"
 
+// LETHALSTONE NOTE: hello! we always return early on PLURAL check here because it's always correct (human mob overrides set it for disguises) and respects disguises. causes some code duplication though
 //mobs(and atoms but atoms don't really matter write your own proc overrides) also have gender!
+
 /mob/p_they(capitalized, temp_gender)
 	if(!temp_gender)
 		temp_gender = gender
@@ -128,6 +130,22 @@
 			. = "he"
 		if(PLURAL)
 			. = "they"
+			if (capitalized)
+				. = capitalize(.)
+			return
+
+	// LETHALSTONE EDIT: if our mob has pronouns, use those instead
+	if (pronouns) 
+		switch (pronouns)
+			if (HE_HIM)
+				. = "he"
+			if (SHE_HER)
+				. = "she"
+			if (THEY_THEM)
+				. = "they"
+			if (IT_ITS)
+				. = "it"
+	// LETHALSTONE EDIT END
 	if(capitalized)
 		. = capitalize(.)
 
@@ -142,6 +160,22 @@
 			. = "his"
 		if(PLURAL)
 			. = "their"
+			if (capitalized)
+				. = capitalize(.)
+			return
+
+	// LETHALSTONE EDIT: if our mob has pronouns, use those instead
+	if (pronouns) 
+		switch (pronouns)
+			if (HE_HIM)
+				. = "his"
+			if (SHE_HER)
+				. = "her"
+			if (THEY_THEM)
+				. = "their"
+			if (IT_ITS)
+				. = "its"
+	// LETHALSTONE EDIT END
 	if(capitalized)
 		. = capitalize(.)
 
@@ -156,6 +190,21 @@
 			. = "him"
 		if(PLURAL)
 			. = "them"
+			if (capitalized)
+				. = capitalize(.)
+			return
+	// LETHALSTONE EDIT: if our mob has pronouns, use those instead
+	if (pronouns) 
+		switch (pronouns)
+			if (HE_HIM)
+				. = "him"
+			if (SHE_HER)
+				. = "her"
+			if (THEY_THEM)
+				. = "them"
+			if (IT_ITS)
+				. = "it"
+	// LETHALSTONE EDIT END
 	if(capitalized)
 		. = capitalize(.)
 
@@ -165,6 +214,12 @@
 	. = "has"
 	if(temp_gender == PLURAL)
 		. = "have"
+		return
+	// LETHALSTONE EDIT: use pronouns where possible
+	if (pronouns)
+		if (pronouns == THEY_THEM)
+			. = "have"
+	// LETHALSTONE EDIT END
 
 /mob/p_are(temp_gender)
 	if(!temp_gender)
@@ -172,6 +227,12 @@
 	. = "is"
 	if(temp_gender == PLURAL)
 		. = "are"
+		return
+	// LETHALSTONE EDIT: use pronouns where possible
+	if (pronouns)
+		if (pronouns == THEY_THEM)
+			. = "are"
+	// LETHALSTONE EDIT END
 
 /mob/p_were(temp_gender)
 	if(!temp_gender)
@@ -179,6 +240,12 @@
 	. = "was"
 	if(temp_gender == PLURAL)
 		. = "were"
+		return
+	// LETHALSTONE EDIT: use pronouns where possible
+	if (pronouns)
+		if (pronouns == THEY_THEM)
+			. = "were"
+	// LETHALSTONE EDIT END
 
 /mob/p_do(temp_gender)
 	if(!temp_gender)
@@ -186,18 +253,34 @@
 	. = "does"
 	if(temp_gender == PLURAL)
 		. = "do"
+		return
+	// LETHALSTONE EDIT: use pronouns where possible
+	if (pronouns)
+		if (pronouns == THEY_THEM)
+			. = "do"
+	// LETHALSTONE EDIT END
 
 /mob/p_s(temp_gender)
 	if(!temp_gender)
 		temp_gender = gender
 	if(temp_gender != PLURAL)
 		. = "s"
+	// LETHALSTONE EDIT: use pronouns where possible
+	if (pronouns)
+		if (pronouns != THEY_THEM)
+			. = "s"
+	// LETHALSTONE EDIT END
 
 /mob/p_es(temp_gender)
 	if(!temp_gender)
 		temp_gender = gender
 	if(temp_gender != PLURAL)
 		. = "es"
+	// LETHALSTONE EDIT: use pronouns where possible
+	if (pronouns)
+		if (pronouns != THEY_THEM)
+			. = "es"
+	// LETHALSTONE EDIT END
 
 //humans need special handling, because they can have their gender hidden
 /mob/living/carbon/human/p_they(capitalized, temp_gender)
