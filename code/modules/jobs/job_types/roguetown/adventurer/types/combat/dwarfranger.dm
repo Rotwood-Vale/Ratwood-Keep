@@ -30,6 +30,7 @@
 		shoes = /obj/item/clothing/shoes/roguetown/boots/leather
 	cloak = /obj/item/clothing/cloak/raincloak/brown
 	H.mind.adjust_skillrank(/datum/skill/combat/swords, 2, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
