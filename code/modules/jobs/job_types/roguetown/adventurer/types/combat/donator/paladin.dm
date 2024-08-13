@@ -64,8 +64,8 @@
 			shoes = /obj/item/clothing/shoes/roguetown/boots/leather
 			belt = /obj/item/storage/belt/rogue/leather/hand
 			beltl = /obj/item/storage/belt/rogue/pouch/coins/poor
-			beltr = /obj/item/rogueweapon/huntingknife
 			id = /obj/item/clothing/ring/silver
+			backpack_contents = list(/obj/item/rogueweapon/huntingknife)
 			cloak = /obj/item/clothing/cloak/tabard/crusader
 			switch(H.patron.name)	
 				if("Astrata")
@@ -83,8 +83,8 @@
 			else
 				backr = /obj/item/rogueweapon/sword/long
 			if(H.age == AGE_OLD)
-				head = /obj/item/clothing/head/roguetown/helmet/heavy/bucket/gold
-				neck = /obj/item/clothing/neck/roguetown/chaincoif
+				beltr = /obj/item/clothing/head/roguetown/helmet/heavy/bucket/gold
+				head = /obj/item/clothing/neck/roguetown/chaincoif
 			else if(prob(50))
 				head = /obj/item/clothing/neck/roguetown/chaincoif
 			else
@@ -122,8 +122,8 @@
 			shoes = /obj/item/clothing/shoes/roguetown/boots/leather
 			belt = /obj/item/storage/belt/rogue/leather/hand
 			beltl = /obj/item/storage/belt/rogue/pouch/coins/poor
-			beltr = /obj/item/rogueweapon/huntingknife
 			id = /obj/item/clothing/ring/silver
+			backpack_contents = list(/obj/item/rogueweapon/huntingknife)
 			cloak = /obj/item/clothing/cloak/tabard/crusader
 			switch(H.patron.name)	
 				if("Astrata")
@@ -142,8 +142,8 @@
 			else
 				l_hand = /obj/item/rogueweapon/shield/tower/metal
 			if(H.age == AGE_OLD)
-				head = /obj/item/clothing/head/roguetown/helmet/heavy/bucket/gold
-				neck = /obj/item/clothing/neck/roguetown/chaincoif
+				beltr = /obj/item/clothing/head/roguetown/helmet/heavy/bucket/gold
+				head = /obj/item/clothing/neck/roguetown/chaincoif
 			else if(prob(50))
 				head = /obj/item/clothing/neck/roguetown/chaincoif
 			else
