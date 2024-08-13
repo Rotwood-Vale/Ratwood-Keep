@@ -103,6 +103,23 @@
 	reqs = list(/obj/item/grown/log/tree/small = 1,
 				/obj/item/natural/stone = 1)
 
+/datum/crafting_recipe/roguetown/stonehammer
+	name = "stone hammer"
+	result = /obj/item/rogueweapon/hammer/stone
+	reqs = list(/obj/item/grown/log/tree/small = 1,
+				/obj/item/natural/stone = 3)
+
+/datum/crafting_recipe/roguetown/stonetongs
+	name = "stone tongs"
+	result = /obj/item/rogueweapon/tongs/stone
+	reqs = list(/obj/item/grown/log/tree/stick = 2,
+				/obj/item/natural/stone = 1)
+
+/datum/crafting_recipe/roguetown/stonepick
+	name = "stone pick"
+	result = /obj/item/rogueweapon/pick/stone
+	reqs = list(/obj/item/grown/log/tree/small = 1,
+				/obj/item/natural/stone = 2)
 
 /datum/crafting_recipe/roguetown/stoneknife
 	name = "stone knife"
@@ -225,7 +242,7 @@
 
 /datum/crafting_recipe/roguetown/pot
 	name = "stone pot"
-	result = /obj/item/reagent_containers/glass/pot
+	result = /obj/item/reagent_containers/glass/pot/stone
 	reqs = list(/obj/item/natural/stone = 2)
 
 /datum/crafting_recipe/roguetown/stonearrow
@@ -338,7 +355,6 @@
 				/obj/item/natural/cloth = 1)
 	tools = list(/obj/item/needle)
 	skillcraft = /datum/skill/misc/sewing
-	req_table = TRUE
 
 /obj/item/storage/roguebag/crafted
 	sellprice = 4
@@ -349,7 +365,6 @@
 	result = /obj/item/bait
 	reqs = list(/obj/item/storage/roguebag = 1,
 				/obj/item/reagent_containers/food/snacks/grown/wheat = 2)
-	req_table = TRUE
 	subtype_reqs = TRUE
 
 /datum/crafting_recipe/roguetown/sbaita
@@ -357,7 +372,6 @@
 	result = /obj/item/bait/sweet
 	reqs = list(/obj/item/storage/roguebag = 1,
 				/obj/item/reagent_containers/food/snacks/grown/apple = 2)
-	req_table = TRUE
 	subtype_reqs = TRUE
 
 /datum/crafting_recipe/roguetown/sbait
@@ -365,7 +379,6 @@
 	result = /obj/item/bait/sweet
 	reqs = list(/obj/item/storage/roguebag = 1,
 				/obj/item/reagent_containers/food/snacks/grown/berries/rogue = 2)
-	req_table = TRUE
 	subtype_reqs = TRUE
 
 /datum/crafting_recipe/roguetown/bloodbait
@@ -373,7 +386,6 @@
 	result = /obj/item/bait/bloody
 	reqs = list(/obj/item/storage/roguebag = 1,
 				/obj/item/reagent_containers/food/snacks/rogue/meat = 2)
-	req_table = TRUE
 	subtype_reqs = TRUE
 
 /datum/crafting_recipe/roguetown/pipe

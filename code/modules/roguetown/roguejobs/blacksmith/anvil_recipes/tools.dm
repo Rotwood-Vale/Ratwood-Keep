@@ -113,7 +113,7 @@
 /datum/anvil_recipe/tools/pot
 	name = "Pot"
 	req_bar = /obj/item/ingot/iron
-	created_item = /obj/item/reagent_containers/glass/pot //weird how it's a child of glass but whatevs
+	created_item = /obj/item/reagent_containers/glass/pot/iron //weird how it's a child of glass but whatevs
 	i_type = "Tools"
 
 // --------- Steel -----------
