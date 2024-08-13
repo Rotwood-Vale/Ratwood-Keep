@@ -90,10 +90,10 @@
 	if(istype(I, /obj/item/grown/log/tree/stick))
 		var/obj/item/natural/B = I
 		var/obj/item/natural/bundle/stick/N = new(src.loc)
-		user.put_in_hands(N)
 		to_chat(user, "You tie the sticks into a bundle.")
 		qdel(B)
 		qdel(src)
+		user.put_in_hands(N)
 	else if(istype(I, /obj/item/natural/bundle/stick))
 		var/obj/item/natural/bundle/B = I
 		if(istype(src, B.stacktype))

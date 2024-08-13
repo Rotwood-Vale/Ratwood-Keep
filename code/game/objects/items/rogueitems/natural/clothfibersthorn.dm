@@ -54,7 +54,7 @@
 
 /obj/item/natural/silk/attack_right(mob/user)
 	to_chat(user, span_warning("I start to collect [src]..."))
-	if(move_after(user, 5 SECONDS, target = src))
+	if(move_after(user, 1 SECONDS, target = src))
 		var/silkcount = 0
 		for(var/obj/item/natural/silk/F in get_turf(src))
 			silkcount++
