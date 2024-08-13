@@ -46,7 +46,7 @@
 			attacked_item.obj_integrity = min(attacked_item.obj_integrity + repair_percent, attacked_item.max_integrity)
 			if(repair_percent == 0.01) // If an inexperienced repair attempt has been successful
 				to_chat(user, span_warning("You fumble your way into slightly repairing [attacked_item]."))
-			else	
+			else
 				user.visible_message(span_info("[user] repairs [attacked_item]!"))
 			blacksmith_mind.add_sleep_experience(attacked_item.anvilrepair, exp_gained/2) //We gain as much exp as we fix divided by 2
 			return
@@ -71,6 +71,13 @@
 		return
 
 	. = ..()
+
+/obj/item/rogueweapon/hammer/stone
+	name = "stone hammer"
+	icon_state = "stonehammer"
+	force = 16
+	smeltresult = null
+	max_integrity = 15
 
 /obj/item/rogueweapon/hammer/claw
 	icon_state = "clawh"
@@ -214,3 +221,20 @@
 "eflip" = 0)
 			if("onbelt")
 				return list("shrink" = 0.3,"sx" = -2,"sy" = -5,"nx" = 4,"ny" = -5,"wx" = 0,"wy" = -5,"ex" = 2,"ey" = -5,"nturn" = 0,"sturn" = 0,"wturn" = 0,"eturn" = 0,"nflip" = 0,"sflip" = 0,"wflip" = 0,"eflip" = 0,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0)
+
+/obj/item/rogueweapon/tongs/stone
+	name = "stone tongs"
+	icon_state = "stonetongs"
+	force = 5
+	smeltresult = null
+	max_integrity = 15
+
+/obj/item/rogueweapon/tongs/stone/update_icon()
+	. = ..()
+	if(!hingot)
+		icon_state = "stonetongs"
+	else
+		if(hott)
+			icon_state = "stonetongsi1"
+		else
+			icon_state = "stonetongsi0"
