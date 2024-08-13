@@ -77,7 +77,7 @@
 	reqs = list(/obj/item/natural/cloth = 2,
 				/obj/item/natural/silk = 1)
 	craftdiff = 3
-	sellprice = 25	
+	sellprice = 25
 
 /datum/crafting_recipe/roguetown/weaving/dendorrobe
 	name = "dendor robes"
@@ -144,3 +144,27 @@
 				/obj/item/natural/silk = 1)
 	craftdiff = 3
 	sellprice = 20
+
+/datum/crafting_recipe/roguetown/weaving/exoticsilkbra
+	name = "Exotic Silk Bra"
+	result = list (/obj/item/clothing/suit/roguetown/shirt/exoticsilkbra)
+	reqs = list(/obj/item/natural/silk = 3,
+				/obj/item/clothing/ring/gold = 1)
+	craftdiff = 5
+	sellprice = 50
+
+/datum/crafting_recipe/roguetown/weaving/exoticsilkmask
+	name = "Exotic Silk Mask"
+	result = list (/obj/item/clothing/mask/rogue/exoticsilkmask)
+	reqs = list(/obj/item/natural/silk = 1,
+				/obj/item/clothing/ring/gold = 1)
+	craftdiff = 5
+	sellprice = 50
+
+/datum/crafting_recipe/roguetown/weaving/exoticsilkbelt
+	name = "Exotic Silk Belt"
+	result = list (/obj/item/storage/belt/rogue/leather/exoticsilkbelt)
+	reqs = list(/obj/item/natural/silk = 2,
+				/obj/item/clothing/ring/gold = 1)
+	craftdiff = 5
+	sellprice = 50

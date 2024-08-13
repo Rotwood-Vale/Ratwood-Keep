@@ -349,3 +349,12 @@
 		if(get_detail_color())
 			pic.color = get_detail_color()
 		add_overlay(pic)
+
+/obj/item/clothing/suit/roguetown/shirt/exoticsilkbra
+	name = "Exotic Silks"
+	desc = "Fanciful gold laced silks barely able to conceal what little it covers."
+	icon_state = "exoticsilkbra"
+	item_state = "exoticsilkbra"
+	gender = PLURAL
+	body_parts_covered = CHEST|ARMS|VITALS
+	sewrepair = TRUE

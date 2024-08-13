@@ -267,3 +267,10 @@
 		STR.max_w_class = WEIGHT_CLASS_NORMAL
 		STR.max_items = 14
 		STR.not_while_equipped = TRUE
+
+/obj/item/storage/belt/rogue/leather/exoticsilkbelt
+	name = "Exotic Silk Belt"
+	desc = "A gold adorned belt with the softest of silks barely concealing one's bits."
+	icon_state = "exoticsilkbelt"
+	heldz_items = 1
+	sewrepair = TRUE

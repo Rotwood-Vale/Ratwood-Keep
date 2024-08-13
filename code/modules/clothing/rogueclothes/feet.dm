@@ -160,7 +160,7 @@
 	blocksound = PLATEHIT
 	armor = list("blunt" = 90, "slash" = 100, "stab" = 80, "bullet" = 100, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
 	anvilrepair = /datum/skill/craft/armorsmithing
-	smeltresult = /obj/item/ingot/steel	
+	smeltresult = /obj/item/ingot/steel
 
 /obj/item/clothing/shoes/roguetown/boots/leather
 	name = "leather boots"
@@ -199,14 +199,14 @@
 	desc = "A pair of greaves worn by Grenzelhoftian soldiery."
 	icon_state = "graggariteboots"
 	item_state = "graggariteboots"
-	smeltresult = /obj/item/ingot/iron	
+	smeltresult = /obj/item/ingot/iron
 
 /obj/item/clothing/shoes/roguetown/boots/katefractoiigreaves
 	name = "katefractoii greaves"
 	desc = "A pair of greaves worn by Grenzelhoftian soldiery."
 	icon_state = "katefractoiiboots"
 	item_state = "katefractoiiboots"
-	smeltresult = /obj/item/ingot/iron	
+	smeltresult = /obj/item/ingot/iron
 
 /obj/item/clothing/shoes/roguetown/boots/furlinedboots
 	name = "fur lined boots"
@@ -246,3 +246,12 @@
 	icon_state = "forestershoes"
 	item_state = "forestershoes"
 	smeltresult = /obj/item/ash
+
+/obj/item/clothing/shoes/roguetown/anklets
+	name = "Gold Anklets"
+	desc = "Delicate golden hoops worn around the ankle."
+	gender = PLURAL
+	icon_state = "anklets"
+	item_state = "anklets"
+	isbarefoot = TRUE
+	anvilrepair = /datum/skill/craft/armorsmithing
