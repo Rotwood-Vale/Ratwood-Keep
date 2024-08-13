@@ -2405,7 +2405,7 @@
 "ofq" = (/obj/structure/fluff/statue/gargoyle,/turf/open/floor/rogue/churchrough,/area/rogue/indoors/town/church/chapel)
 "ofQ" = (/obj/structure/bed/rogue,/turf/open/floor/rogue/cobble,/area/rogue/indoors/town)
 "ogz" = (/obj/structure/closet/crate/roguecloset/dark,/turf/open/floor/rogue/blocks,/area/rogue/under/town/basement)
-"ogC" = (/obj/structure/rack/rogue/shelf/big,/obj/structure/rack/rogue/shelf,/obj/item/clothing/suit/roguetown/shirt/robe/noc{pixel_y = 12},/obj/item/clothing/head/roguetown/roguehood/nochood{pixel_y = 36},/turf/open/floor/rogue/hexstone,/area/rogue/indoors/town/church/chapel)
+"ogC" = (/obj/structure/rack/rogue/shelf/big,/obj/structure/rack/rogue/shelf,/obj/item/clothing/suit/roguetown/shirt/robe/noc{pixel_y = 12},/obj/item/clothing/head/roguetown/nochood{pixel_y = 36},/turf/open/floor/rogue/hexstone,/area/rogue/indoors/town/church/chapel)
 "ohf" = (/obj/effect/decal/cobbleedge{icon_state = "borderfall"; dir = 1},/turf/open/floor/rogue/blocks/stonered/tiny,/area/rogue/indoors/town/manor)
 "ohi" = (/obj/structure/chair/stool/rogue,/obj/effect/landmark/start/adventurer{dir = 1},/turf/open/floor/rogue/grass,/area/rogue/outdoors/woods)
 "ohm" = (/obj/structure/fluff/clock,/turf/open/floor/rogue/woodturned,/area/rogue/indoors/town/garrison)
