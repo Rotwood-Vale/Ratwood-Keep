@@ -2790,6 +2790,7 @@
 "dkh" = (
 /obj/structure/table/wood,
 /obj/structure/table/wood,
+/obj/item/clothing/neck/roguetown/psicross,
 /turf/open/floor/rogue/herringbone,
 /area/rogue/indoors/town/church)
 "dld" = (
@@ -4303,6 +4304,12 @@
 /obj/structure/chair/bench,
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/outdoors/town/roofs)
+"ePK" = (
+/obj/structure/stairs/stone{
+	dir = 1
+	},
+/turf/open/transparent/openspace,
+/area/rogue/outdoors/town)
 "eQa" = (
 /obj/machinery/light/rogue/firebowl/stump,
 /turf/open/floor/rogue/cobble,
@@ -6321,6 +6328,7 @@
 /obj/structure/stairs{
 	dir = 4
 	},
+/obj/machinery/light/rogue/wallfire/candle/blue,
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue/indoors/town/magician)
 "hgO" = (
@@ -10533,6 +10541,14 @@
 /obj/item/reagent_containers/food/snacks/crow,
 /turf/open/floor/rogue/rooftop,
 /area/rogue/outdoors/mountains)
+"mfa" = (
+/obj/machinery/light/rogue/wallfire/candle/l{
+	pixel_x = 32
+	},
+/turf/open/floor/rogue/tile/masonic{
+	dir = 1
+	},
+/area/rogue/indoors/town/manor)
 "mfg" = (
 /obj/machinery/light/rogue/wallfire/candle/l,
 /turf/open/floor/rogue/wood,
@@ -10628,7 +10644,6 @@
 /area/rogue/indoors/town/church/chapel)
 "mlB" = (
 /obj/structure/mineral_door/bars{
-	locked = 1;
 	lockid = "graveyard"
 	},
 /turf/open/floor/rogue/cobblerock,
@@ -10734,6 +10749,10 @@
 	},
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/dwarfin)
+"mrO" = (
+/obj/machinery/light/rogue/firebowl/stump,
+/turf/open/floor/rogue/grass,
+/area/rogue/indoors/town/manor)
 "mrP" = (
 /obj/structure/rack/rogue,
 /obj/item/gun/ballistic/revolver/grenadelauncher/bow,
@@ -11332,6 +11351,7 @@
 	},
 /obj/item/paper/scroll,
 /obj/item/paper/scroll,
+/obj/machinery/light/rogue/wallfire/candle/blue/r,
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue/indoors/town/magician)
 "niU" = (
@@ -14973,6 +14993,14 @@
 "rAz" = (
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/magician)
+"rBe" = (
+/obj/machinery/light/rogue/wallfire/candle/r{
+	pixel_x = -32
+	},
+/turf/open/floor/rogue/tile/masonic{
+	dir = 1
+	},
+/area/rogue/indoors/town/manor)
 "rBg" = (
 /turf/open/water/river{
 	dir = 1;
@@ -20089,6 +20117,7 @@
 /area/rogue/indoors/town/tavern)
 "xIv" = (
 /obj/structure/table/wood,
+/obj/item/clothing/neck/roguetown/psicross/noc,
 /turf/open/floor/rogue/herringbone,
 /area/rogue/indoors/town/church)
 "xIX" = (
@@ -205446,8 +205475,8 @@ vRu
 rSC
 rSC
 cTA
+cTA
 cBx
-iTw
 iTw
 iTw
 iTw
@@ -293060,7 +293089,7 @@ uYE
 pHI
 uOL
 iHC
-fdM
+mrO
 iHC
 iHC
 tOz
@@ -307957,7 +307986,7 @@ uaL
 wVI
 wVI
 wVI
-xAt
+ePK
 xAt
 xAt
 xAt
@@ -395563,12 +395592,12 @@ oRs
 bzD
 rTK
 bzD
-rTK
+xmo
 bzD
 rTK
 bzD
 rTK
-bzD
+rBe
 nBW
 nBW
 nBW
@@ -396379,7 +396408,7 @@ nBW
 nUi
 bzD
 rTK
-bzD
+mfa
 rTK
 kvB
 wtF
@@ -503325,7 +503354,7 @@ mfK
 hpY
 mfK
 mfK
-rDv
+uPg
 rDv
 mfK
 qJQ
@@ -503730,7 +503759,7 @@ xxt
 rDv
 iRR
 mfK
-qJQ
+lQG
 qJQ
 fkC
 xAt
@@ -504132,7 +504161,7 @@ mfK
 rDv
 mSU
 mfK
-lQG
+qJQ
 oRS
 rOb
 xAt
