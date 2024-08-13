@@ -180,3 +180,7 @@
 /obj/item/seeds/mycelium/amanita
 	seed_identity = "red mushroom spores"
 	plant_def_type = /datum/plant_def/amanita
+	
+/obj/item/seeds/sugarcane
+	seed_identity = "sugarcane seeds"
+	plant_def_type = /datum/plant_def/sugarcane
