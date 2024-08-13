@@ -459,3 +459,26 @@
 	bitesize = 2
 	eat_effect = /datum/status_effect/buff/foodbuff
 	rotprocess = 20 MINUTES
+
+
+/datum/crafting_recipe/roguetown/cooking/sweetroll
+	name = "sweetroll"
+	reqs = list(
+		/obj/item/reagent_containers/food/snacks/rogue/bun = 1,
+		/obj/item/reagent_containers/powder/sugar = 1)
+	result = /obj/item/reagent_containers/food/snacks/rogue/sweetroll
+	craftdiff = 1
+	subtype_reqs = FALSE
+
+/obj/item/reagent_containers/food/snacks/rogue/sweetroll
+	name = "sweetroll"
+	desc = ""
+	icon = 'icons/roguetown/items/food.dmi'
+	icon_state = "sweetroll"
+	dropshrink = 0.75
+	list_reagents = list(/datum/reagent/consumable/nutriment = 10)
+	w_class = WEIGHT_CLASS_NORMAL
+	tastes = list("sugar and crispy dough" = 1)
+	foodtype = SUGAR
+	eat_effect = /datum/status_effect/buff/foodbuff
+	rotprocess = 30 MINUTES

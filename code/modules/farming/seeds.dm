@@ -81,3 +81,6 @@
 	seed_identity = "potato seeds"
 	plant_def_type = /datum/plant_def/potato
 
+/obj/item/seeds/sugarcane
+	seed_identity = "sugarcane seeds"
+	plant_def_type = /datum/plant_def/sugarcane
