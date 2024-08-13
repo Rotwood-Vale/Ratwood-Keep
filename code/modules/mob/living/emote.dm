@@ -1240,6 +1240,24 @@
 		if(C.silent || !C.can_speak_vocal())
 			message = "makes a muffled yawn."
 
+/datum/emote/living/warcry
+	key = "warcry"
+	key_third_person = "warcrys"
+	message = "shouts an inspiring battle cry!"
+	emote_type = EMOTE_AUDIBLE
+
+/mob/living/carbon/human/verb/emote_warcry()
+	set name = "Warcry"
+	set category = "Noises"
+
+	emote("warcry", intentional = TRUE)
+
+/datum/emote/living/warcry/can_run_emote(mob/living/user, status_check = TRUE , intentional)
+	. = ..()
+	if(. && iscarbon(user))
+		var/mob/living/carbon/C = user
+		if(C.silent || !C.can_speak_vocal())
+			message = "makes a muffled shout!"
 
 /datum/emote/living/custom
 	key = "me"

@@ -116,5 +116,7 @@
 				used = list('sound/vo/cat_meow.ogg')
 			if("hiss")
 				used = list('sound/vo/hiss.ogg')
+			if ("warcry")
+				used = list('sound/vo/male/gen/warcry_male1.ogg','sound/vo/male/gen/warcry_male2.ogg','sound/vo/male/gen/warcry_male3.ogg')
 
 	return used
