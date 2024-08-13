@@ -386,6 +386,10 @@
 	return !density
 	..()
 
+/obj/structure/bars/shop
+	icon_state = "barsbent"
+	layer = BELOW_OBJ_LAYER
+
 /obj/structure/bars/chainlink
 	icon_state = "chainlink"
 
@@ -1285,7 +1289,7 @@
 	icon = 'icons/roguetown/items/natural.dmi'
 	icon_state = "headstake"
 	density = FALSE
-	anchored = TRUE	
+	anchored = TRUE
 	dir = SOUTH
 	var/obj/item/grown/log/tree/stake/stake
 	var/obj/item/bodypart/head/victim
@@ -1299,7 +1303,7 @@
 	stake = locate(/obj/item/grown/log/tree/stake) in parts_list
 
 ///obj/structure/fluff/headstake/Initialize()
-//	. = ..()	
+//	. = ..()
 
 /obj/structure/fluff/headstake/OnCrafted(dirin, user)
 	dir = SOUTH
