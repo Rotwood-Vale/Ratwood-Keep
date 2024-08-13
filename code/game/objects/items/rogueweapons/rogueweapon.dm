@@ -28,8 +28,8 @@
 	experimental_onhip = TRUE
 	experimental_onback = TRUE
 	embedding = list(
-		"embed_chance" = 20, 
-		"embedded_pain_multiplier" = 1, 
+		"embed_chance" = 20,
+		"embedded_pain_multiplier" = 1,
 		"embedded_fall_chance" = 0,
 	)
 	var/initial_sl
@@ -42,10 +42,13 @@
 		var/yea = pick("[src] is broken!", "[src] is useless!", "[src] is destroyed!")
 		destroy_message = span_warning("[yea]")
 
+/obj/item/rogueweapon/get_examine_string(mob/user, thats = FALSE)
+	return "[thats? "That's ":""]<b>[get_examine_name(user)]</b>"
+
 /obj/item/rogueweapon/get_dismemberment_chance(obj/item/bodypart/affecting, mob/user)
 	if(!get_sharpness() || !affecting.can_dismember(src))
 		return 0
-	
+
 	var/total_dam = affecting.get_damage()
 	var/nuforce = get_complex_damage(src, user)
 	var/pristine_blade = TRUE
@@ -73,7 +76,7 @@
 
 	if(nuforce < 10)
 		return 0
-	
+
 	var/probability = nuforce * (total_dam / affecting.max_damage)
 	var/hard_dismember = HAS_TRAIT(affecting, TRAIT_HARDDISMEMBER)
 	var/easy_dismember = affecting.rotted || affecting.skeletonized || HAS_TRAIT(affecting, TRAIT_EASYDISMEMBER)
