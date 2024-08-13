@@ -117,6 +117,9 @@
 		visible_message(span_notice("[G] can now fit a new pin, but the old one was destroyed in the process."), null, null, 3)
 		qdel(src)
 
+/obj/item/gun/get_examine_string(mob/user, thats = FALSE)
+	return "[thats? "That's ":""]<b>[get_examine_name(user)]</b>"
+
 /obj/item/gun/examine(mob/user)
 	. = ..()
 //	if(pin)
