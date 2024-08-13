@@ -71,6 +71,7 @@ GLOBAL_LIST_EMPTY(biggates)
 	if(attached_to)
 		var/obj/structure/winch/W = attached_to
 		W.attached_gate = null
+	GLOB.biggates -= src
 	..()
 
 /obj/structure/gate/update_icon()
@@ -147,7 +148,6 @@ GLOBAL_LIST_EMPTY(biggates)
 /obj/structure/winch/LateInitialize()
 	for(var/obj/structure/gate/G in GLOB.biggates)
 		if(G.gid == gid)
-			GLOB.biggates -= G
 			attached_gate = G
 			G.attached_to = src
 
