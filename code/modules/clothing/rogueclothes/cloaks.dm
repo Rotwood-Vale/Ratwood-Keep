@@ -564,6 +564,48 @@
 		for(var/obj/item/I in things)
 			STR.remove_from_storage(I, get_turf(src))
 
+/obj/item/clothing/cloak/darkcloak
+	name = "dark cloak"
+	desc = "It'll warm up your flesh, but not your cold, dead heart."
+	color = null
+	icon_state = "dark_cloak"
+	item_state = "dark_cloak"
+	alternate_worn_layer = CLOAK_BEHIND_LAYER
+	slot_flags = ITEM_SLOT_BACK_R|ITEM_SLOT_CLOAK
+	boobed = TRUE
+	sleeved = 'icons/roguetown/clothing/onmob/cloaks.dmi'
+	sleevetype = "shirt"
+	nodismemsleeves = TRUE
+	inhand_mod = TRUE
+	allowed_race = NON_DWARVEN_RACE_TYPES
+
+/obj/item/clothing/cloak/darkcloak/ComponentInitialize()
+	. = ..()
+	AddComponent(/datum/component/storage/concrete)
+	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
+	if(STR)
+		STR.max_combined_w_class = 3
+		STR.max_w_class = WEIGHT_CLASS_BULKY
+		STR.max_items = 1
+
+/obj/item/clothing/cloak/darkcloak/dropped(mob/living/carbon/human/user)
+	..()
+	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
+	if(STR)
+		var/list/things = STR.contents()
+		for(var/obj/item/I in things)
+			STR.remove_from_storage(I, get_turf(src))
+
+/obj/item/clothing/cloak/darkcloak/bear
+	name = "direbear cloak"
+	desc = "Made from the finest, warmest bear pelt. It might be worth more than your life."
+	icon_state = "bear_cloak"
+	item_state = "bear_cloak"
+
+/obj/item/clothing/cloak/darkcloak/bear/light
+	icon_state = "bbear_cloak"
+	item_state = "bbear_cloak"
+
 /obj/item/clothing/cloak/apron
 	name = "apron"
 	desc = "An apron used by many workshop workers."
