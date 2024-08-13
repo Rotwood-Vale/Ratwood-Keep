@@ -305,7 +305,7 @@
 
 /datum/crafting_recipe/roguetown/structure/headstake
 	name = "head stake"
-	result = /obj/structure/fluff/headstake	
+	result = /obj/structure/fluff/headstake
 	reqs = list(/obj/item/grown/log/tree/stake = 1,
 				/obj/item/bodypart/head = 1)
 	parts = list(/obj/item/bodypart/head = 1,
@@ -313,7 +313,7 @@
 	verbage_simple = "set up"
 	verbage = "sets up"
 	craftdiff = 0
-	
+
 
 /datum/crafting_recipe/roguetown/structure/fencealt
 	name = "palisade (small log)"
@@ -510,6 +510,22 @@
 	verbage = "constructs"
 	skillcraft = /datum/skill/craft/carpentry
 	craftdiff = 1
+
+/datum/crafting_recipe/roguetown/structure/bars
+	name = "metal bars"
+	result = /obj/structure/bars
+	reqs = list(/obj/item/ingot/iron = 1)
+	verbage_simple = "engineer"
+	verbage = "engineers"
+	skillcraft = /datum/skill/craft/engineering
+
+/datum/crafting_recipe/roguetown/structure/shopbars
+	name = "shop bars"
+	result = /obj/structure/bars/shop
+	reqs = list(/obj/item/ingot/iron = 1)
+	verbage_simple = "engineer"
+	verbage = "engineers"
+	skillcraft = /datum/skill/craft/engineering
 
 /datum/crafting_recipe/roguetown/structure/passage
 	name = "passage"
