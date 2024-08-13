@@ -114,7 +114,7 @@
 	switch(polished)
 		if(1)
 			. += span_info("It has some polishing compound on it.")
-		if(2 || 3)
+		if(2, 3)
 			. += span_info("It's been thoroughly brushed.")
 		if(4)
 			. += span_green("It's been nicely polished.")
@@ -138,14 +138,14 @@
 	var/obj/item/thing = O
 	if(!thing.anvilrepair)
 		return ..()
-	if((HAS_TRAIT(user, TRAIT_SQUIRE_REPAIR) || user.mind.get_skill_level(thing.anvilrepair)) && thing.polished == 0)
+	if((HAS_TRAIT(user, TRAIT_SQUIRE_REPAIR) || user.mind.get_skill_level(thing.anvilrepair)) && thing.polished == 0 && obj_integrity <= max_integrity)
 		to_chat(user, span_info("I start applying some compound to \the [thing]..."))
 		if(do_after(user, 50 - user.STASPD*2, target = O))
 			thing.polished = 1
 			uses--
 			thing.remove_atom_colour(FIXED_COLOUR_PRIORITY)
-			thing.add_atom_colour("#635e6571", FIXED_COLOUR_PRIORITY)
-			RegisterSignal(thing, COMSIG_COMPONENT_CLEAN_ACT, PROC_REF(remove_polish))
+			thing.add_atom_colour("#635e65", FIXED_COLOUR_PRIORITY)
+			thing.RegisterSignal(thing, COMSIG_COMPONENT_CLEAN_ACT, PROC_REF(remove_polish))
 			if(!uses)
 				icon_state = "empty_cream"
 
@@ -190,24 +190,27 @@
 /obj/item/take_damage(damage_amount, damage_type, damage_flag, sound_effect, attack_dir, armor_penetration)
 	. = ..()
 	if(src)
-		if(polished)
+		if(polished == 4)
 			polished = 0
 			force -= 2
 			force_wielded -= 3
 			remove_atom_colour(FIXED_COLOUR_PRIORITY)
+		else if(polished >= 1 && polished <= 4)
+			remove_atom_colour(FIXED_COLOUR_PRIORITY)
 			UnregisterSignal(src, COMSIG_COMPONENT_CLEAN_ACT)
 
-
 /obj/item/proc/remove_polish(datum/source, strength) // kill polska
-	if(polished == 3 && obj_integrity == max_integrity)
+	visible_message(span_notice("[src] has been cleaned with strength [strength]. [obj_integrity] / [max_integrity] ...... polish = [polished]"))
+	if(polished == 3 && obj_integrity >= max_integrity)
 		polished = 4
 		remove_atom_colour(FIXED_COLOUR_PRIORITY)
 		add_atom_colour("#98a4bd", FIXED_COLOUR_PRIORITY)
 		obj_integrity += 50
 		force += 2
 		force_wielded += 3
+		UnregisterSignal(src, COMSIG_COMPONENT_CLEAN_ACT)
 
 	else if(polished < 4)
 		polished = 0
 		remove_atom_colour(FIXED_COLOUR_PRIORITY)
-	UnregisterSignal(src, COMSIG_COMPONENT_CLEAN_ACT)
+		UnregisterSignal(src, COMSIG_COMPONENT_CLEAN_ACT)
