@@ -73,8 +73,7 @@
 	playsound(user,'sound/items/seedextract.ogg', 100, FALSE)
 	qdel(src)
 
-/obj/item/grown/log/tree/stick/attackby(obj/item/I, mob/living/user, params)
-	var/mob/living/carbon/human/H = user
+/obj/item/grown/log/tree/attackby(obj/item/I, mob/living/user)
 	user.changeNext_move(CLICK_CD_MELEE)
 	if(user.used_intent?.blade_class == BCLASS_CUT)
 		playsound(get_turf(src.loc), 'sound/items/wood_sharpen.ogg', 100)
@@ -89,19 +88,23 @@
 			user.visible_message(span_warning("[user] sharpens [src]."))
 		return
 	if(istype(I, /obj/item/grown/log/tree/stick))
-		var/obj/item/natural/bundle/stick/F = new(src.loc)
-		H.put_in_hands(F)
-		H.visible_message("[user] ties the sticks into a bundle.")
-		qdel(I)
+		var/obj/item/natural/B = I
+		var/obj/item/natural/bundle/stick/N = new(src.loc)
+		user.put_in_hands(N)
+		to_chat(user, "You tie the sticks into a bundle.")
+		qdel(B)
 		qdel(src)
-	if(istype(I, /obj/item/natural/bundle/stick))
-		var/obj/item/natural/bundle/stick/B = I
-		if(B.amount < B.maxamount)
-			H.visible_message("[user] adds the [src] to the bundle.")
-			B.amount += 1
-			B.update_bundle()
-			qdel(src)
-	..()
+	else if(istype(I, /obj/item/natural/bundle/stick))
+		var/obj/item/natural/bundle/B = I
+		if(istype(src, B.stacktype))
+			if(B.amount < B.maxamount)
+				B.amount++
+				B.update_bundle()
+				user.visible_message("[user] adds [src] to [I].")
+				qdel(src)
+			else
+				to_chat(user, "This bundle of sticks is falling apart, at this point.")
+			return
 
 /obj/item/grown/log/tree/stake
 	name = "stake"
