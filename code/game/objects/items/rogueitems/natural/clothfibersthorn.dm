@@ -18,7 +18,7 @@
 
 /obj/item/natural/fibers/attack_right(mob/user)
 	to_chat(user, span_warning("I start to collect [src]..."))
-	if(move_after(user, 5 SECONDS, target = src))
+	if(move_after(user, 1 SECONDS, target = src))
 		var/fibercount = 0
 		for(var/obj/item/natural/fibers/F in get_turf(src))
 			fibercount++
@@ -54,7 +54,7 @@
 
 /obj/item/natural/silk/attack_right(mob/user)
 	to_chat(user, span_warning("I start to collect [src]..."))
-	if(move_after(user, 5 SECONDS, target = src))
+	if(move_after(user, 1 SECONDS, target = src))
 		var/silkcount = 0
 		for(var/obj/item/natural/silk/F in get_turf(src))
 			silkcount++
@@ -404,7 +404,7 @@
 
 /obj/item/natural/worms/attack_right(mob/user)
 	to_chat(user, span_warning("I start to collect [src]..."))
-	if(move_after(user, 5 SECONDS, target = src))
+	if(move_after(user, 1 SECONDS, target = src))
 		var/wormcount = 0
 		for(var/obj/item/natural/worms/F in get_turf(src))
 			wormcount++
