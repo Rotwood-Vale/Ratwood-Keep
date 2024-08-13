@@ -169,3 +169,27 @@
 	name = "leather sea jacket"
 	result = /obj/item/clothing/suit/roguetown/armor/leather/vest/sailor
 	reqs = list(/obj/item/natural/hide = 2)
+
+/datum/crafting_recipe/roguetown/leather/darkcloak
+	name = "dark cloak"
+	result = list(/obj/item/clothing/cloak/darkcloak)
+	reqs = list(/obj/item/natural/fur = 2,
+				/obj/item/natural/hide = 4)
+	craftdiff = 5
+	sellprice = 80
+
+/datum/crafting_recipe/roguetown/leather/bearcloak
+	name = "direbear cloak"
+	result = list(/obj/item/clothing/cloak/darkcloak/bear)
+	reqs = list(/obj/item/natural/fur = 2,
+				/obj/item/natural/hide = 4)
+	craftdiff = 3
+	sellprice = 80
+
+/datum/crafting_recipe/roguetown/leather/bearcloak
+	name = "light direbear cloak"
+	result = list(/obj/item/clothing/cloak/darkcloak/bear/light)
+	reqs = list(/obj/item/natural/fur = 2,
+				/obj/item/natural/hide = 4)
+	craftdiff = 3
+	sellprice = 80

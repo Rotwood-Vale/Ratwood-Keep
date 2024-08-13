@@ -262,14 +262,6 @@
 	craftdiff = 3
 	sellprice = 12
 
-/datum/crafting_recipe/roguetown/sewing/lordcloak
-	name = "lordly cloak"
-	result = list(/obj/item/clothing/cloak/lordcloak)
-	reqs = list(/obj/item/natural/fur = 2,
-				/obj/item/natural/hide = 4)
-	craftdiff = 5
-	sellprice = 80
-
 /datum/crafting_recipe/roguetown/sewing/sexydress
 	name = "sexy dress of legendary sewists"
 	result = list(/obj/item/clothing/suit/roguetown/shirt/dress/gen/sexy)
