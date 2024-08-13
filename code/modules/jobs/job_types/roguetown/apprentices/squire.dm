@@ -26,7 +26,8 @@
 		armor = /obj/item/clothing/suit/roguetown/armor/chainmail
 		shoes = /obj/item/clothing/shoes/roguetown/boots
 		belt = /obj/item/storage/belt/rogue/leather
-		beltr = /obj/item/storage/belt/rogue/pouch
+		beltr = /obj/item/keyring/servant
+		beltl = /obj/item/rogueweapon/sword
 		backr = /obj/item/storage/backpack/rogue/satchel
 		if(H.mind)
 			H.mind.adjust_skillrank(/datum/skill/combat/maces, 1, TRUE)
@@ -51,7 +52,8 @@
 		armor = /obj/item/clothing/suit/roguetown/armor/chainmail
 		shoes = /obj/item/clothing/shoes/roguetown/boots
 		belt = /obj/item/storage/belt/rogue/leather
-		beltr = /obj/item/storage/belt/rogue/pouch
+		beltr = /obj/item/keyring/servant
+		beltl = /obj/item/rogueweapon/sword
 		backr = /obj/item/storage/backpack/rogue/satchel
 		if(H.mind)
 			H.mind.adjust_skillrank(/datum/skill/combat/maces, 1, TRUE)
