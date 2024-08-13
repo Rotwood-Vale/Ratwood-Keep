@@ -453,7 +453,7 @@
 	fishloot = list(/obj/item/reagent_containers/food/snacks/fish/shrimp = 10)
 
 /obj/item/reagent_containers/food/snacks/grown/tea
-	seed = /obj/item/seeds/beet
+	seed = /obj/item/seeds/tea
 	name = "tea"
 	icon_state = "tea"
 	filling_color = "#19300f"
