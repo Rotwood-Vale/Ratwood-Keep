@@ -28,7 +28,14 @@
 	pants = /obj/item/clothing/under/roguetown/tights/random
 	shoes = /obj/item/clothing/shoes/roguetown/shortboots
 	cloak = /obj/item/clothing/cloak/apron/waist
-	if(H.gender == MALE)
+	if(H.pronouns == SHE_HER)
+		armor = /obj/item/clothing/suit/roguetown/shirt/dress
+		neck = /obj/item/storage/belt/rogue/pouch/coins/mid
+		belt = /obj/item/storage/belt/rogue/leather/rope
+		beltl = /obj/item/keyring/innkeep
+		H.change_stat("endurance", 1)
+		H.change_stat("constitution", 1)
+	else
 		shirt = /obj/item/clothing/suit/roguetown/shirt/shortshirt/random
 		belt = /obj/item/storage/belt/rogue/leather
 		beltl = /obj/item/storage/belt/rogue/pouch/coins/mid
@@ -36,10 +43,3 @@
 		cloak = /obj/item/clothing/cloak/apron/waist
 		H.change_stat("strength", 1)
 		H.change_stat("endurance", 1)
-	else
-		armor = /obj/item/clothing/suit/roguetown/shirt/dress
-		neck = /obj/item/storage/belt/rogue/pouch/coins/mid
-		belt = /obj/item/storage/belt/rogue/leather/rope
-		beltl = /obj/item/keyring/innkeep
-		H.change_stat("endurance", 1)
-		H.change_stat("constitution", 1)

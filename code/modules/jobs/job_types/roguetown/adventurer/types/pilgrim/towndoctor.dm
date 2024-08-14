@@ -32,15 +32,15 @@
 		/obj/item/needle = 1,
 		/obj/item/natural/cloth = 2,
 	)
-	if(H.gender == MALE)
+	if(H.pronouns == SHE_HER)
+		armor = /obj/item/clothing/suit/roguetown/shirt/dress/silkdress
+		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
+		head = /obj/item/clothing/head/roguetown/armingcap
+	else
 		armor = /obj/item/clothing/suit/roguetown/armor/leather/vest
 		pants = /obj/item/clothing/under/roguetown/trou
 		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/puritan
 		head = /obj/item/clothing/head/roguetown/nightman
-	else
-		armor = /obj/item/clothing/suit/roguetown/shirt/dress/silkdress
-		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
-		head = /obj/item/clothing/head/roguetown/armingcap
 
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/combat/knives, 3, TRUE)

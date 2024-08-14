@@ -44,6 +44,12 @@
 		H.real_name = "Captain [prev_real_name]"
 		H.name = "Captain [prev_name]"
 
+		for(var/X in peopleknowme)
+			for(var/datum/mind/MF in get_minds(X))
+				if(MF.known_people)
+					MF.known_people -= prev_real_name
+					H.mind.person_knows_me(MF)
+
 /datum/outfit/job/roguetown/captain/pre_equip(mob/living/carbon/human/H)
 	..()
 	head = /obj/item/clothing/head/roguetown/helmet/bascinet/pigface
