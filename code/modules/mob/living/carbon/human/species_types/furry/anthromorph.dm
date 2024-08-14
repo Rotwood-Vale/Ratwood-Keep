@@ -4,10 +4,18 @@
 /datum/species/anthromorph
 	name = "Wild-Kin"
 	id = "anthromorph"
-	desc = "Wild-Kin; a name for a furred creacher that does not fall under any particular race. \
-	It is sometimes difficult to tell one of us from another race at a glance; one of Wild-Kin ancestry may look very similar to a Tabaxi or Vulpkanin. \
-	Due to the fact we are so numerous, we are welcome almost anywhere, along with our Half-Kin sister-race \
-	We are average of constitution, strength, and intellegence."
+	desc = "<b>Wild-Kin</b><br>\
+	The Wild Volk are the errant children of Dendor, to whom they all share an innate connection. \
+	Wild-Kin arise in all the lands of Grimoria and are nearly as widespread as Humens.<br>\
+	Wild-Kin are humanoid animals, sometimes limited to one specific species or a hybrid of multiple. \
+	Of all the races, Wild-Kin has the most variety in appearance.<br>\
+	Despite the Wild Volk’s connection to Dendor, he is not the most favored god of their kind. \
+	Many Wild-Kin believe that remaining civilized is of the utmost importance to keep their humanity and differentiate them from the beasts of the wilderness. \
+	They fear that they will be unable to resist Dendor’s Call when the time comes for him to gather his children.<br>\
+	<br>\
+	We are highly perceptive but slow to learn new skills and ideas."
+
+	skin_tone_wording = "Habitat"
 	default_color = "444"
 	species_traits = list(
 		MUTCOLORS,
@@ -17,6 +25,7 @@
 	)
 	inherent_traits = list(TRAIT_NOMOBSWAP)
 	inherent_biotypes = MOB_ORGANIC|MOB_HUMANOID
+	use_skintones = 1
 	attack_verb = "slash"
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
 	possible_ages = ALL_AGES_LIST
@@ -131,6 +140,19 @@
 
 /datum/species/anthromorph/qualifies_for_rank(rank, list/features)
 	return TRUE
+
+/datum/species/anthromorph/get_skin_list()
+	return list(
+		"the Grand Forests" = "271f1b",
+		"the Crimson Lands" = "271f1c",
+		"the Terrorbog" = "271f1d",
+		"the Highlands" = "271f1e",
+		"the Western Mountains" = "271f1f",
+		"the Frostlands" = "271f2a",
+		"the Unknown Lands" = "271f2b",
+		"the Valorian Deserts" = "271f2c",
+		"the Eastern Plains" = "271f2c",
+	)
 
 /datum/species/anthromorph/get_random_features()
 	var/list/returned = MANDATORY_FEATURE_LIST
