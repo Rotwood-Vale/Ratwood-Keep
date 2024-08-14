@@ -11,9 +11,7 @@
 /datum/sex_action/feather_feet/can_perform(mob/living/user, mob/living/target)
 	if(user == target)
 		return FALSE
-	if(!get_location_accessible(target, BODY_ZONE_PRECISE_L_FOOT))
-		return FALSE
-	if(!get_location_accessible(target, BODY_ZONE_PRECISE_R_FOOT))
+	if(!get_location_accessible(target, BODY_ZONE_PRECISE_L_FOOT) && !get_location_accessible(target, BODY_ZONE_PRECISE_R_FOOT))
 		return FALSE
 	if(!get_feather_in_either_hand(user))
 		return FALSE

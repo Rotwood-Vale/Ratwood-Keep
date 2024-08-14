@@ -1,6 +1,6 @@
 /datum/advclass/farmer
 	name = "Farmer"
-	tutorial = "As a Peasent, you are a skilled farmer, able to grow a variety of berrys and apples \
+	tutorial = "As a Peasent, you are a skilled farmer, able to grow a variety of berrys and apples. \
 	Join the local Soilsmen at their farm, or make your own little orchard."
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
@@ -33,15 +33,8 @@
 		armor = /obj/item/clothing/suit/roguetown/shirt/dress/gen/random
 		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
 		pants = null
-	backpack_contents = list(/obj/item/seeds/wheat=1,/obj/item/seeds/apple=1,/obj/item/ash=1)
-	if(prob(23))
-		beltl = /obj/item/rogueweapon/sickle
-	else if(prob(23))
-		backr = /obj/item/rogueweapon/thresher
-	else if(prob(23))
 		backr = /obj/item/rogueweapon/hoe
-	else
-		backr = /obj/item/rogueweapon/pitchfork
+	backpack_contents = list(/obj/item/seeds/wheat=1,/obj/item/seeds/apple=1,/obj/item/ash=1)
 	H.change_stat("strength", 1)
 	H.change_stat("intelligence", -2)
 	H.change_stat("speed", -1)
