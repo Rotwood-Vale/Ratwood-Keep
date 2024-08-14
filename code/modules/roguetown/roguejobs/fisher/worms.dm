@@ -11,8 +11,9 @@
 	color = "#b65f49"
 	w_class = WEIGHT_CLASS_TINY
 	fishloot = list(/obj/item/reagent_containers/food/snacks/fish/carp = 10,
-					/obj/item/reagent_containers/food/snacks/fish/eel = 5,
-					/obj/item/reagent_containers/food/snacks/fish/angler = 1)
+					/obj/item/reagent_containers/food/snacks/fish/eel = 2,
+					/obj/item/reagent_containers/food/snacks/fish/angler = 2,
+					/obj/item/reagent_containers/food/snacks/fish/clownfish = 2)
 	drop_sound = 'sound/foley/dropsound/food_drop.ogg'
 
 /obj/item/natural/worms/grubs
@@ -21,7 +22,6 @@
 	baitchance = 100
 	color = null
 	fishloot = list(
-		/obj/item/reagent_containers/food/snacks/fish/carp = 5,
-		/obj/item/reagent_containers/food/snacks/fish/angler = 1,
-		/obj/item/reagent_containers/food/snacks/fish/clownfish = 1,
+		/obj/item/reagent_containers/food/snacks/fish/eel = 1,
+		/obj/item/reagent_containers/food/snacks/fish/clownfish = 9,
 	)
