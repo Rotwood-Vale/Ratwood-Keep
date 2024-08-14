@@ -636,8 +636,8 @@ GLOBAL_LIST_INIT(roleplay_readme, world.file2list("strings/rt/rp_prompt.txt"))
 					cat_name = "Sidefolk"
 				if (MERCENARIES)
 					cat_name = "Mercenaries"
-				if (GOBLIN)
-					cat_name = "Goblins"
+			//	if (GOBLIN)
+			//		cat_name = "Goblins"
 
 			dat += "<fieldset style='width: 185px; border: 2px solid [cat_color]; display: inline'>"
 			dat += "<legend align='center' style='font-weight: bold; color: [cat_color]'>[cat_name]</legend>"
