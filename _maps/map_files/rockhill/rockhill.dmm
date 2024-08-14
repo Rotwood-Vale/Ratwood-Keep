@@ -215,12 +215,6 @@
 	icon_state = "weird1"
 	},
 /area/rogue/indoors/town/church)
-"alD" = (
-/obj/structure/fluff/railing/fence{
-	dir = 1
-	},
-/turf/open/floor/rogue/ruinedwood,
-/area/rogue/outdoors/rtfield)
 "alY" = (
 /obj/effect/decal/cleanable/blood/old,
 /turf/open/floor/rogue/cobblerock,
@@ -242,6 +236,12 @@
 /obj/item/reagent_containers/glass/cup/steel,
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/town/manor)
+"anL" = (
+/obj/machinery/light/rogue/torchholder{
+	dir = 4
+	},
+/turf/open/floor/rogue/blocks,
+/area/rogue/indoors)
 "aok" = (
 /obj/structure/roguemachine/scomm,
 /turf/open/floor/rogue/dirt/road,
@@ -1407,6 +1407,12 @@
 	},
 /obj/structure/fluff/dryingrack,
 /turf/open/floor/rogue/dirt/road,
+/area/rogue/outdoors/rtfield)
+"bBN" = (
+/obj/structure/fluff/railing/fence{
+	dir = 1
+	},
+/turf/open/floor/rogue/ruinedwood,
 /area/rogue/outdoors/rtfield)
 "bCb" = (
 /turf/closed/wall/mineral/rogue/wooddark/end,
@@ -12221,8 +12227,7 @@
 /turf/open/floor/rogue/tile/masonic/inverted,
 /area/rogue/indoors/town/manor)
 "nPw" = (
-/obj/structure/lever/wall{
-	dir = 4;
+/obj/structure/winch{
 	redstone_id = "villagenorth"
 	},
 /turf/open/floor/rogue/blocks,
@@ -260088,7 +260093,7 @@ qbG
 qbG
 qbG
 lVe
-ddv
+anL
 ddv
 ddv
 lVe
@@ -364206,7 +364211,7 @@ qbG
 qbG
 qbG
 qbG
-alD
+bBN
 qbG
 qbG
 qbG
@@ -364608,7 +364613,7 @@ qbG
 qbG
 qbG
 qbG
-alD
+bBN
 qbG
 qbG
 qbG
@@ -365010,7 +365015,7 @@ qbG
 qbG
 qbG
 qbG
-alD
+bBN
 qbG
 qbG
 qbG
