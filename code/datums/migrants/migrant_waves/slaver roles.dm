@@ -4,7 +4,8 @@
 	outfit = /datum/outfit/job/roguetown/slaver/master
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_TOLERATED_UP
-
+	show_wanderer_examine = FALSE
+	H.cmode_music = 'sound/music/combat_zybantine.ogg'
 /datum/outfit/job/roguetown/slaver/master/pre_equip(mob/living/carbon/human/H)
 	..()
 	head = /obj/item/clothing/head/roguetown/helmet/sallet/visored
@@ -41,7 +42,7 @@
 		H.change_stat("speed", 2)
 		H.change_stat("constitution", 1)
 		H.change_stat("endurance", 2)
-	
+
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_XENOPHOBIC, TRAIT_GENERIC)
 
@@ -51,6 +52,9 @@
 	outfit = /datum/outfit/job/roguetown/slaver/slavemercsword
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_SHUNNED_UP
+	grant_lit_torch = TRUE
+	show_wanderer_examine = FALSE
+	H.cmode_music = 'sound/music/combat_zybantine.ogg'
 
 /datum/outfit/job/roguetown/slaver/slavemercsword/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -87,7 +91,7 @@
 		H.change_stat("speed", 1)
 		H.change_stat("intelligence", 2)
 		H.change_stat("constitution", 1)
-	
+
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_XENOPHOBIC, TRAIT_GENERIC)
 
@@ -97,6 +101,10 @@
 	outfit = /datum/outfit/job/roguetown/slaver/slavemercsword
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_SHUNNED_UP
+	grant_lit_torch = TRUE
+	show_wanderer_examine = FALSE
+	show_wanderer_examine = FALSE
+	H.cmode_music = 'sound/music/combat_zybantine.ogg'
 
 /datum/outfit/job/roguetown/slaver/slavemercwhip/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -133,7 +141,7 @@
 		H.change_stat("speed", 1)
 		H.change_stat("intelligence", 2)
 		H.change_stat("constitution", 1)
-	
+
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_XENOPHOBIC, TRAIT_GENERIC)
 
@@ -143,6 +151,8 @@
 	outfit = /datum/outfit/job/roguetown/slaver/slavez
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
+	grant_lit_torch = TRUE
+	show_wanderer_examine = FALSE
 
 /datum/outfit/job/roguetown/slaver/slavez/pre_equip(mob/living/carbon/human/H)
 	..()
