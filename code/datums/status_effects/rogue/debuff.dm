@@ -46,7 +46,7 @@
 /atom/movable/screen/alert/status_effect/debuff/silver_curse
 	name = "Silver Curse"
 	desc = "My BANE!"
-	icon_state = "hunger3"	
+	icon_state = "hunger3"
 
 ////////////////////
 
@@ -197,3 +197,14 @@
 	name = "Insight"
 	desc = "With some sleep in a coffin I feel like I could become better."
 	icon_state = "sleepy"
+
+/datum/status_effect/debuff/chilled
+	id = "chilled"
+	alert_type = /atom/movable/screen/alert/status_effect/debuff/chilled
+	effectedstats = list("speed" = -5, "strength" = -2, "endurance" = -2)
+	duration = 15 SECONDS
+
+/atom/movable/screen/alert/status_effect/debuff/chilled
+	name = "Chilled"
+	desc = "I can barely feel my limbs!"
+	icon_state = "chilled"
