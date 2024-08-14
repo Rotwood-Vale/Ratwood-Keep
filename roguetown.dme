@@ -3437,6 +3437,9 @@
 #include "code\modules\surgery\surgeries\plastic_surgery.dm"
 #include "code\modules\surgery\surgeries\prosthetic_replacement.dm"
 #include "code\modules\surgery\surgeries\remove_embedded_object.dm"
+#include "code\modules\surgery\surgeries_hearth\cure_rot.dm"
+#include "code\modules\surgery\surgeries_hearth\extract_lux.dm"
+#include "code\modules\surgery\surgeries_hearth\revival.dm"
 #include "code\modules\tgs\includes.dm"
 #include "code\modules\tgui\external.dm"
 #include "code\modules\tgui\states.dm"
@@ -3539,5 +3542,6 @@
 #include "modular_hearthstone\code\game\objects\items\clothes\stockings.dm"
 #include "modular_hearthstone\code\game\objects\items\clothes\strapless_dress.dm"
 #include "modular_hearthstone\code\interface\LOOC.dm"
+#include "modular_hearthstone\code\modules\reagents\reagent_containers\lux.dm"
 #include "modular_hearthstone\code\modules\spells\roguetown\wizard.dm"
 // END_INCLUDE
