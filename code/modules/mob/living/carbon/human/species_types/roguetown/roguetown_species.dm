@@ -1,8 +1,30 @@
 /datum/species
 	var/amtfail = 0
 
-/datum/species/proc/get_accent(mob/living/carbon/human)
-	return
+/datum/species/proc/get_accent(mob/living/carbon/human/H)
+	switch(H.char_accent)
+		if("No accent")
+			return
+		if("Dwarf accent")
+			return strings("dwarfcleaner_replacement.json", "dwarf")
+		if("Dwarf Gibberish accent")
+			return strings("dwarf_replacement.json", "dwarf_gibberish")
+		if("Dark Elf accent")
+			return strings("french_replacement.json", "french")
+		if("Elf accent")
+			return strings("russian_replacement.json", "russian")
+		if("Grenzelhoft accent")
+			return strings("german_replacement.json", "german")
+		if("Hammerhold accent")
+			return strings("Anglish.json", "Anglish")
+		if("Assimar accent")
+			return strings("proper_replacement.json", "proper")
+		if("Lizard accent")
+			return strings("brazillian_replacement.json", "brazillian")
+		if("Tiefling accent")
+			return strings("spanish_replacement.json", "spanish")
+		if("Half Orc accent")
+			return strings("middlespeak.json", "middle")
 
 /datum/species/proc/get_accent_start(mob/living/carbon/human)
 	return
@@ -16,7 +38,7 @@
 
 /datum/species/proc/handle_speech(datum/source, mob/speech_args)
 	var/message = speech_args[SPEECH_MESSAGE]
-	
+
 	message = treat_message_accent(message, strings("accent_universal.json", "universal"), REGEX_FULLWORD)
 
 	message = treat_message_accent(message, get_accent(source), REGEX_FULLWORD)
