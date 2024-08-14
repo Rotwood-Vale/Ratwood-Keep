@@ -12,14 +12,14 @@
 	neck = /obj/item/clothing/neck/roguetown/chaincoif
 	shoes = /obj/item/clothing/shoes/roguetown/shalal
 	pants = /obj/item/clothing/under/roguetown/chainlegs
-	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/red
+	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/purple
 	belt = /obj/item/storage/belt/rogue/leather/shalalz
 	armor = /obj/item/clothing/suit/roguetown/armor/plate/scale
-	cloak = /obj/item/clothing/cloak/cape/red
+	cloak = /obj/item/clothing/cloak/cape/purple
 	backl = /obj/item/storage/backpack/rogue/satchel
 	beltl = /obj/item/flashlight/flare/torch/lantern
 	beltr = /obj/item/rogueweapon/whip/antique
-	backpack_contents = list(/obj/item/clothing/neck/roguetown/gorget/prisoner = 2, /obj/item/reagent_containers/glass/bottle/rogue/healthpot = 1)
+	backpack_contents = list(/obj/item/reagent_containers/glass/bottle/rogue/healthpot = 1, /obj/item/rope/chain = 1, /obj/item/flint = 1)
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/whipsflails, 5, TRUE)
