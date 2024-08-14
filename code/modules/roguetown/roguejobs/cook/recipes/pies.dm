@@ -262,7 +262,7 @@
 	desc = ""
 	list_reagents = list(/datum/reagent/consumable/nutriment = 30)
 	eat_effect = /datum/status_effect/buff/foodbuff
-	tastes = list("pears" = 1)
+	tastes = list("cherries" = 1)
 
 /obj/item/reagent_containers/food/snacks/rogue/pie/cherry
 	name = "cherry pie"
