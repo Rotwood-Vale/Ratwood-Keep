@@ -42,7 +42,6 @@
 		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/puritan
 		head = /obj/item/clothing/head/roguetown/nightman
 
-
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/combat/knives, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
