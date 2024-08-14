@@ -6,7 +6,6 @@
 	allowed_races = RACES_TOLERATED_UP
 
 /datum/outfit/job/roguetown/slaver/master/pre_equip(mob/living/carbon/human/H)
-	var/mob/living/carbon/human/H = owner.current
 	H.cmode_music = 'sound/music/combat_zybantine.ogg'
 	..()
 	head = /obj/item/clothing/head/roguetown/helmet/sallet/visored
@@ -55,7 +54,6 @@
 	allowed_races = RACES_SHUNNED_UP
 
 /datum/outfit/job/roguetown/slaver/slavemercsword/pre_equip(mob/living/carbon/human/H)
-	var/mob/living/carbon/human/H = owner.current
 	H.cmode_music = 'sound/music/combat_zybantine.ogg'
 	..()
 	head = /obj/item/clothing/head/roguetown/helmet/sallet
@@ -103,7 +101,6 @@
 	allowed_races = RACES_SHUNNED_UP
 
 /datum/outfit/job/roguetown/slaver/slavemercwhip/pre_equip(mob/living/carbon/human/H)
-	var/mob/living/carbon/human/H = owner.current
 	H.cmode_music = 'sound/music/combat_zybantine.ogg'
 	..()
 	head = /obj/item/clothing/head/roguetown/helmet/sallet
