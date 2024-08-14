@@ -56,6 +56,7 @@
 						var/mob/living/carbon/spirit/O = new /mob/living/carbon/spirit(A.loc)
 						O.livingname = G.name
 						O.ckey = G.ckey
+						O.set_patron(O.client.prefs.selected_patron)
 						SSdroning.area_entered(get_area(O), O.client)
 					G.client.verbs -= GLOB.ghost_verbs
 
@@ -65,12 +66,13 @@
 		var/datum/game_mode/chaosmode/C = SSticker.mode
 		if(istype(C))
 			if(C.skeletons)
-				G.returntolobby()			
+				G.returntolobby()
 		if(alert("Travel with the boatman?", "", "Yes", "No") == "Yes")
 			for(var/obj/effect/landmark/underworld/A in GLOB.landmarks_list)
 				var/mob/living/carbon/spirit/O = new /mob/living/carbon/spirit(A.loc)
 				O.livingname = G.name
 				O.ckey = G.ckey
+				O.set_patron(O.client.prefs.selected_patron)
 				SSdroning.area_entered(get_area(O), O.client)
 			G.client.verbs -= GLOB.ghost_verbs
 /*		if(world.time < G.ghostize_time + RESPAWNTIME)
