@@ -7,7 +7,7 @@
 GLOBAL_LIST_EMPTY(whitelist)
 GLOBAL_PROTECT(whitelist)
 
-/proc/load_whitelist()
+/proc/load_whitelist() //The whitelist updates every time of day transition. See nightshift.dm
 	GLOB.whitelist = list()
 	for(var/line in world.file2list(WHITELISTFILE))
 		if(!line)
