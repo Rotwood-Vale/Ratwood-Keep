@@ -3546,6 +3546,7 @@
 #include "modular\code\modules\maturity-prompt\code\config_entries.dm"
 #include "modular\code\modules\maturity-prompt\code\maturity_prompt.dm"
 #include "modular\code\modules\maturity-prompt\code\maturity_subsystem.dm"
+#include "modular_hearthstone\_statpacks.dm"
 #include "modular_hearthstone\code\datums\accents.dm"
 #include "modular_hearthstone\code\datums\sexcon\item_helpers.dm"
 #include "modular_hearthstone\code\datums\sexcon\sex_actions\candle\candle_body.dm"
@@ -3583,4 +3584,8 @@
 #include "modular_hearthstone\code\datums\status_effects\rogue\hearthbuff.dm"
 #include "modular_hearthstone\code\game\objects\items\rogueitems\natural\animals.dm"
 #include "modular_hearthstone\code\game\objects\items\rogueitems\hearthnatural.dm"
+#include "modular_hearthstone\statpacks\agile.dm"
+#include "modular_hearthstone\statpacks\mental.dm"
+#include "modular_hearthstone\statpacks\physical.dm"
+#include "modular_hearthstone\statpacks\wildcard.dm"
 // END_INCLUDE

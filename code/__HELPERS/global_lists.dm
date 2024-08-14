@@ -53,6 +53,12 @@
 		if(patron.preference_accessible)
 			GLOB.preference_patrons[path] = patron
 
+	// Statpacks - Ported fom Lethalstone
+	for (var/path in subtypesof(/datum/statpack))
+		var/datum/statpack/statpack = new path()
+		GLOB.statpacks[path] = statpack
+	sortList(GLOB.statpacks, GLOBAL_PROC_REF(cmp_text_dsc))
+
 //creates every subtype of prototype (excluding prototype) and adds it to list L.
 //if no list/L is provided, one is created.
 /proc/init_subtypes(prototype, list/L)

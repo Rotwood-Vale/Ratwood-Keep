@@ -1,3 +1,10 @@
+#define STAT_STRENGTH "strength"
+#define STAT_PERCEPTION "perception"
+#define STAT_INTELLIGENCE "intelligence"
+#define STAT_CONSTITUTION "constitution"
+#define STAT_ENDURANCE "endurance"
+#define STAT_SPEED "speed"
+#define STAT_FORTUNE "fortune"
 
 /mob/living
 	var/STASTR = 10
@@ -38,6 +45,8 @@
 /datum/species
 	var/list/specstats = list("strength" = 0, "perception" = 0, "intelligence" = 0, "constitution" = 0, "endurance" = 0, "speed" = 0, "fortune" = 0)
 	var/list/specstats_f = list("strength" = 0, "perception" = 0, "intelligence" = 0, "constitution" = 0, "endurance" = 0, "speed" = 0, "fortune" = 0)
+	// Associative list of stat (STAT_STRENGTH, etc) bonuses used to differentiate each race. They should ALWAYS be positive.
+	var/list/race_bonus = list()
 
 /mob/living/proc/roll_stats()
 	STASTR = 10
@@ -58,13 +67,24 @@
 				change_stat(S, 1)
 	if(ishuman(src))
 		var/mob/living/carbon/human/H = src
+		/* - Old way of handling race/gender stats, no longer used. See: Statpacks.
 		if(H.dna.species)
 			if(gender == FEMALE)
 				for(var/S in H.dna.species.specstats_f)
 					change_stat(S, H.dna.species.specstats_f[S])
 			else
 				for(var/S in H.dna.species.specstats)
-					change_stat(S, H.dna.species.specstats[S])
+					change_stat(S, H.dna.species.specstats[S])*/
+		
+		if (H.statpack)
+			H.statpack.apply_to_human(H)
+		if (H.dna?.species) // LETHALSTONE EDIT: apply our race bonus, if we have one
+			var/datum/species/species = H.dna.species
+			if (species.race_bonus)
+				for (var/stat in species.race_bonus)
+					var/amt = species.race_bonus[stat]
+					H.change_stat(stat, amt)
+
 		switch(H.age)
 			if(AGE_MIDDLEAGED)
 				change_stat("speed", -1)

@@ -45,6 +45,7 @@
 		)
 	specstats = list("strength" = 1, "perception" = -2, "intelligence" = 1, "constitution" = 0, "endurance" = 1, "speed" = -1, "fortune" = 0) //0 total
 	specstats_f = list("strength" = 1, "perception" = -2, "intelligence" = 1, "constitution" = 0, "endurance" = 0, "speed" = 0, "fortune" = 0) //0 total
+	race_bonus = list(STAT_INTELLIGENCE = 1)
 	enflamed_icon = "widefire"
 	organs = list(
 		ORGAN_SLOT_BRAIN = /obj/item/organ/brain,

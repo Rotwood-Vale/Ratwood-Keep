@@ -65,6 +65,7 @@ GLOBAL_LIST_EMPTY(chosen_names)
 	var/slot_randomized					//keeps track of round-to-round randomization of the character slot, prevents overwriting
 	var/real_name						//our character's name
 	var/gender = MALE					//gender of character (well duh) (LETHALSTONE EDIT: this no longer references anything but whether the masculine or feminine model is used)
+	var/datum/statpack/statpack	= new /datum/statpack/wildcard/fated // LETHALSTONE EDIT: the statpack we're giving our char instead of racial bonuses
 	var/pronouns = HE_HIM				// LETHALSTONE EDIT: character's pronouns (well duh)
 	var/voice_type = VOICE_TYPE_MASC	// LETHALSTONE EDIT: the type of soundpack the mob should use
 	var/age = AGE_ADULT						//age of character
@@ -336,6 +337,9 @@ GLOBAL_LIST_EMPTY(chosen_names)
 
 			dat += "<BR>"
 			dat += "<b>Race:</b> <a href='?_src_=prefs;preference=species;task=input'>[pref_species.name]</a>[spec_check(user) ? "" : " (!)"]<BR>"
+
+			// LETHALSTONE EDIT BEGIN: add statpack selection
+			dat += "<b>Statpack:</b> <a href='?_src_=prefs;preference=statpack;task=input'>[statpack.name]</a><BR>"
 //			dat += "<a href='?_src_=prefs;preference=species;task=random'>Random Species</A> "
 //			dat += "<a href='?_src_=prefs;preference=toggle_random;random_type=[RANDOM_SPECIES]'>Always Random Species: [(randomise[RANDOM_SPECIES]) ? "Yes" : "No"]</A><br>"
 
@@ -1489,8 +1493,34 @@ Slots: [job.spawn_positions]</span>
 							hairs = pref_species.get_hairc_list()
 						hair_color = hairs[pick(hairs)]
 						facial_hair_color = hair_color
+						// LETHALSTONE EDIT: let players know what this shit does stats-wise
+						switch (age)
+							if (AGE_ADULT)
+								to_chat(user, "You preside in your 'prime', whatever this may be, and gain no bonus nor endure any penalty for your time spent alive.")
+							if (AGE_MIDDLEAGED)
+								to_chat(user, "Muscles ache and joints begin to slow as Aeon's grasp begins to settle upon your shoulders. (-1 SPD, +1 END)")
+							if (AGE_OLD)
+								to_chat(user, "In a place as lethal as Engima, the elderly are all but marvels... or beneficiaries of the habitually privileged. (-1 STR, -2 SPE, -1 PER, -2 CON, +2 INT)")
+						// LETHALSTONE EDIT END
 						ResetJobs()
 						to_chat(user, "<font color='red'>Classes reset.</font>")
+					
+				// LETHALSTONE EDIT: add statpack selection
+				if ("statpack")
+					var/list/statpacks_available = list()
+					for (var/path as anything in GLOB.statpacks)
+						var/datum/statpack/statpack = GLOB.statpacks[path]
+						if (!statpack.name)
+							continue
+						statpacks_available[statpack.name] = statpack
+
+					var/statpack_input = input(user, "Choose your character's statpack", "Statpack") as null|anything in statpacks_available
+					if (statpack_input)
+						var/datum/statpack/statpack_chosen = statpacks_available[statpack_input]
+						statpack = statpack_chosen
+						to_chat(user, "<font color='purple'>[statpack.name]</font>")
+						to_chat(user, "<font color='purple'>[statpack.description_string()]</font>")
+					
 				// LETHALSTONE EDIT: add pronouns
 				if ("pronouns")
 					var pronouns_input = input(user, "Choose your character's pronouns", "Pronouns") as null|anything in GLOB.pronouns_list
@@ -2106,6 +2136,8 @@ Slots: [job.spawn_positions]</span>
 
 	character.headshot_link = headshot_link
 	// LETHALSTONE ADDITION BEGIN: additional customizations
+
+	character.statpack = statpack
 
 	character.pronouns = pronouns
 	character.voice_type = voice_type
