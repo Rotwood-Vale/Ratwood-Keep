@@ -56,7 +56,6 @@ SUBSYSTEM_DEF(nightshift)
 	if(current_tod != curtod)
 		testing("curtod [curtod] current_tod [current_tod] globtod [GLOB.tod]")
 		current_tod = GLOB.tod
-		load_whitelist() //Hacky. Updates the whitelist every time of day transition.
 		update_nightshift()
 
 /datum/controller/subsystem/nightshift/proc/update_nightshift()
