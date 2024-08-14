@@ -218,3 +218,27 @@
 
 /obj/structure/fluff/walldeco/rpainting/crown
 	icon_state = "painting_3"
+
+/obj/structure/fluff/walldeco/med
+	name = "diagram"
+	icon_state = "medposter"
+
+/obj/structure/fluff/walldeco/med2
+	name = "diagram"
+	icon_state = "medposter2"
+
+/obj/structure/fluff/walldeco/med3
+	name = "diagram"
+	icon_state = "medposter3"
+
+/obj/structure/fluff/walldeco/med4
+	name = "diagram"
+	icon_state = "medposter4"
+
+/obj/structure/fluff/walldeco/med5
+	name = "diagram"
+	icon_state = "medposter5"
+
+/obj/structure/fluff/walldeco/med6
+	name = "diagram"
+	icon_state = "medposter6"

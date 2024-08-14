@@ -662,6 +662,11 @@
 	climbable = FALSE
 	dir = SOUTH
 	pixel_y = 16
+
+/obj/structure/rack/rogue/shelf/biggest
+	icon_state = "shelf_biggest"
+	pixel_y = 0
+
 /*
  * Rack Parts
  */
