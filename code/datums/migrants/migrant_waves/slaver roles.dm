@@ -4,7 +4,8 @@
 	outfit = /datum/outfit/job/roguetown/slaver/master
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_TOLERATED_UP
-	H.cmode_music = 'sound/music/combat_zybantine.ogg'
+	show_wanderer_examine = FALSE
+	cmode_music = 'sound/music/combat_zybantine.ogg'
 
 /datum/outfit/job/roguetown/slaver/master/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -53,7 +54,8 @@
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_SHUNNED_UP
 	grant_lit_torch = TRUE
-	H.cmode_music = 'sound/music/combat_zybantine.ogg'
+	show_wanderer_examine = FALSE
+	cmode_music = 'sound/music/combat_zybantine.ogg'
 
 /datum/outfit/job/roguetown/slaver/slavemercsword/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -101,7 +103,9 @@
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_SHUNNED_UP
 	grant_lit_torch = TRUE
-	H.cmode_music = 'sound/music/combat_zybantine.ogg'
+	show_wanderer_examine = FALSE
+	show_wanderer_examine = FALSE
+	cmode_music = 'sound/music/combat_zybantine.ogg'
 
 /datum/outfit/job/roguetown/slaver/slavemercwhip/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -149,6 +153,7 @@
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
 	grant_lit_torch = TRUE
+	show_wanderer_examine = FALSE
 
 /datum/outfit/job/roguetown/slaver/slavez/pre_equip(mob/living/carbon/human/H)
 	..()
