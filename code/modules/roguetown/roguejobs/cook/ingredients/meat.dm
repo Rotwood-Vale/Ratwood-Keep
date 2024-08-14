@@ -128,7 +128,6 @@
 	fried_type = /obj/item/reagent_containers/food/snacks/rogue/meat/sausage/cooked
 	cooked_type = /obj/item/reagent_containers/food/snacks/rogue/meat/sausage/cooked
 	slices_num = 0
-	cooked_type = null
 
 /obj/item/reagent_containers/food/snacks/rogue/meat/sausage/cooked
 	eat_effect = null
