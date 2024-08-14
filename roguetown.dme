@@ -3535,6 +3535,7 @@
 #include "modular_azurepeak\statpacks\mental.dm"
 #include "modular_azurepeak\statpacks\physical.dm"
 #include "modular_azurepeak\statpacks\wildcard.dm"
+#include "modular_hearthstone\code\datums\accents.dm"
 #include "modular_hearthstone\code\game\objects\items\clothes\stockings.dm"
 #include "modular_hearthstone\code\game\objects\items\clothes\strapless_dress.dm"
 #include "modular_hearthstone\code\interface\LOOC.dm"
