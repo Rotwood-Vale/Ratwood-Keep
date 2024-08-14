@@ -215,6 +215,12 @@
 	icon_state = "weird1"
 	},
 /area/rogue/indoors/town/church)
+"alD" = (
+/obj/structure/fluff/railing/fence{
+	dir = 1
+	},
+/turf/open/floor/rogue/ruinedwood,
+/area/rogue/outdoors/rtfield)
 "alY" = (
 /obj/effect/decal/cleanable/blood/old,
 /turf/open/floor/rogue/cobblerock,
@@ -20979,10 +20985,6 @@
 	layer = 2.7;
 	pixel_x = 2;
 	pixel_y = 7
-	},
-/obj/structure/fluff/railing/wood{
-	dir = 8;
-	pixel_x = -8
 	},
 /obj/structure/chair/stool/rogue,
 /turf/open/floor/rogue/ruinedwood,
@@ -364204,7 +364206,7 @@ qbG
 qbG
 qbG
 qbG
-gAc
+alD
 qbG
 qbG
 qbG
@@ -364606,7 +364608,7 @@ qbG
 qbG
 qbG
 qbG
-gAc
+alD
 qbG
 qbG
 qbG
@@ -365008,7 +365010,7 @@ qbG
 qbG
 qbG
 qbG
-gAc
+alD
 qbG
 qbG
 qbG
@@ -461097,9 +461099,9 @@ gAc
 gAc
 gAc
 lpp
-qbG
-qbG
-qbG
+gAc
+gAc
+gAc
 nqU
 ltT
 ltT
