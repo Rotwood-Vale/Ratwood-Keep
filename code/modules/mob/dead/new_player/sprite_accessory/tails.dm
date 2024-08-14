@@ -169,6 +169,12 @@
 	color_key_names = list("Tail", "Stripes")
 	can_wag = TRUE
 
+/datum/sprite_accessory/tail/reverseredpanda
+	name = "Reverse Red Panda"
+	icon_state = "rwah"
+	color_keys = 2
+	color_key_names = list("Tail", "Stripes")
+
 /datum/sprite_accessory/tail/pede
 	name = "Scolipede"
 	icon_state = "pede"
