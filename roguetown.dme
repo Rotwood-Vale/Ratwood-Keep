@@ -688,7 +688,6 @@
 #include "code\datums\sexcon\sex_actions\force\force_footjob.dm"
 #include "code\datums\sexcon\sex_actions\force\force_nuzzle_armpit.dm"
 #include "code\datums\sexcon\sex_actions\force\force_rimming.dm"
-#include "code\datums\sexcon\sex_actions\force\force_suck_balls.dm"
 #include "code\datums\sexcon\sex_actions\force\force_suck_nipples.dm"
 #include "code\datums\sexcon\sex_actions\masturbate\masturbate_anus.dm"
 #include "code\datums\sexcon\sex_actions\masturbate\masturbate_breasts.dm"

@@ -62,11 +62,3 @@
 	breasts_organ.breast_size = breast_size
 	breasts_organ.lactating = lactating
 	breasts_organ.milk_max = max(75, breasts_organ.breast_size * 100)
-
-/datum/organ_dna/belly
-	var/belly_size = DEFAULT_BELLY_SIZE
-
-/datum/organ_dna/belly/imprint_organ(obj/item/organ/organ)
-	..()
-	var/obj/item/organ/belly/belly_organ = organ
-	belly_organ.belly_size = belly_size
