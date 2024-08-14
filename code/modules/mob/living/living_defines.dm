@@ -174,5 +174,5 @@
 	var/rogue_sneaking_light_threshhold = 0.15
 
 
-	/// Default pitch for emotes, on humans this is modified by stats
-	var/voice_pitch = 1
+	/// Voice pitch for audible emotes
+	var/voice_pitch

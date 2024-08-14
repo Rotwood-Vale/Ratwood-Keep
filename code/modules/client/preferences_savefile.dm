@@ -351,6 +351,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	S["facial_hair_color"]	>> facial_hair_color
 	S["eye_color"]			>> eye_color
 	S["voice_color"]		>> voice_color
+	S["voice_pitch"]		>> voice_pitch
 	S["skin_tone"]			>> skin_tone
 	S["hairstyle_name"]		>> hairstyle
 	S["facial_style_name"]	>> facial_hairstyle
@@ -479,6 +480,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	underwear_color			= sanitize_hexcolor(underwear_color, 3, 0)
 	eye_color		= sanitize_hexcolor(eye_color, 3, 0)
 	voice_color		= voice_color
+	voice_pitch		= voice_pitch
 	skin_tone		= skin_tone
 	backpack			= sanitize_inlist(backpack, GLOB.backpacklist, initial(backpack))
 	jumpsuit_style	= sanitize_inlist(jumpsuit_style, GLOB.jumpsuitlist, initial(jumpsuit_style))
@@ -540,6 +542,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	WRITE_FILE(S["facial_hair_color"]	, facial_hair_color)
 	WRITE_FILE(S["eye_color"]			, eye_color)
 	WRITE_FILE(S["voice_color"]			, voice_color)
+	WRITE_FILE(S["voice_pitch"]			, voice_pitch)
 	WRITE_FILE(S["skin_tone"]			, skin_tone)
 	WRITE_FILE(S["hairstyle_name"]		, hairstyle)
 	WRITE_FILE(S["facial_style_name"]	, facial_hairstyle)
