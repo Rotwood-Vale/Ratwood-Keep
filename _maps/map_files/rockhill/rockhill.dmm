@@ -1913,10 +1913,6 @@
 "cpf" = (
 /turf/closed/wall/mineral/rogue/wood,
 /area/rogue/indoors/town/manor)
-"cps" = (
-/obj/effect/landmark/start/knight,
-/turf/open/floor/rogue/wood,
-/area/rogue/indoors/town/manor)
 "cqm" = (
 /obj/structure/plasticflaps,
 /turf/open/floor/rogue/blocks,
@@ -5626,6 +5622,7 @@
 /area/rogue/indoors/town/shop)
 "grk" = (
 /obj/item/reagent_containers/food/snacks/smallrat,
+/obj/structure/fluff/walldeco/chains,
 /turf/open/floor/rogue/herringbone,
 /area/rogue/indoors/town/church)
 "grR" = (
@@ -5732,12 +5729,6 @@
 "gxl" = (
 /obj/machinery/light/rogue/wallfire/candle/blue/l,
 /turf/open/floor/rogue/hexstone,
-/area/rogue/indoors/town/manor)
-"gxm" = (
-/obj/effect/landmark/start/knight,
-/turf/open/floor/rogue/tile{
-	icon_state = "bfloorz"
-	},
 /area/rogue/indoors/town/manor)
 "gxt" = (
 /turf/closed/mineral/rogue,
@@ -7382,6 +7373,7 @@
 /obj/item/paper,
 /obj/item/paper,
 /obj/item/natural/feather,
+/obj/item/book/rogue/law,
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/manor)
 "imV" = (
@@ -11355,8 +11347,14 @@
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue/indoors/town/magician)
 "niU" = (
-/obj/structure/roguemachine/atm,
-/turf/open/floor/carpet/royalblack,
+/obj/effect/decal/cobbleedge{
+	dir = 1;
+	icon_state = "borderfall"
+	},
+/obj/effect/landmark/start/knight,
+/turf/open/floor/rogue/tile{
+	icon_state = "bfloorz"
+	},
 /area/rogue/indoors/town/manor)
 "niX" = (
 /turf/closed/wall/mineral/rogue/roofwall/outercorner{
@@ -14664,6 +14662,8 @@
 /obj/item/reagent_containers/glass/cup/wooden,
 /obj/item/reagent_containers/glass/cup/wooden,
 /obj/item/reagent_containers/glass/cup/wooden,
+/obj/item/reagent_containers/glass/cup/wooden,
+/obj/item/reagent_containers/glass/cup/silver,
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/town/manor)
 "rfu" = (
@@ -15080,7 +15080,11 @@
 /turf/open/floor/rogue/blocks,
 /area/rogue/outdoors/town)
 "rFK" = (
-/obj/item/book/rogue/law,
+/obj/effect/decal/cobbleedge{
+	dir = 1;
+	icon_state = "borderfall"
+	},
+/obj/effect/landmark/start/knight,
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/manor)
 "rFL" = (
@@ -15175,12 +15179,10 @@
 /turf/open/floor/rogue/blocks/stonered/tiny,
 /area/rogue/indoors/town/dwarfin)
 "rMW" = (
-/obj/structure/table/wood{
-	dir = 8;
-	icon_state = "largetable"
+/obj/structure/roguemachine/atm{
+	pixel_y = -32
 	},
-/obj/item/reagent_containers/glass/cup/wooden,
-/turf/open/floor/rogue/blocks/stonered,
+/turf/open/floor/carpet/royalblack,
 /area/rogue/indoors/town/manor)
 "rNm" = (
 /turf/open/floor/rogue/wood,
@@ -16534,10 +16536,6 @@
 /obj/structure/table/wood{
 	dir = 8;
 	icon_state = "largetable"
-	},
-/obj/item/reagent_containers/glass/cup/silver{
-	pixel_x = 10;
-	pixel_y = 10
 	},
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/town/manor)
@@ -19308,12 +19306,6 @@
 	icon_state = "weird1"
 	},
 /area/rogue/under/town/basement)
-"wJQ" = (
-/obj/structure/chair/wood/rogue{
-	dir = 1
-	},
-/turf/open/floor/rogue/woodturned,
-/area/rogue/indoors/town/manor)
 "wJU" = (
 /obj/effect/landmark/events/haunts,
 /turf/open/floor/rogue/cobblerock,
@@ -283833,7 +283825,7 @@ vDa
 cNY
 cNY
 cNY
-wPU
+eUJ
 uOL
 xvs
 eUJ
@@ -285040,8 +285032,8 @@ cNY
 pbw
 cNY
 eUJ
-wJQ
 eAu
+uOL
 coE
 coE
 sHm
@@ -285442,9 +285434,9 @@ cNY
 lAC
 cNY
 eUJ
-wJQ
 sHm
-niU
+wPU
+xlm
 xlm
 jxy
 cAg
@@ -285844,8 +285836,8 @@ cNY
 cNY
 cNY
 eUJ
-eAu
-cUy
+sHm
+uOL
 vCQ
 xlm
 sHm
@@ -286249,7 +286241,7 @@ eUJ
 sHm
 qpJ
 xlm
-xlm
+rMW
 sHm
 sPu
 sPu
@@ -286257,7 +286249,7 @@ sPu
 bfD
 qjD
 cNv
-rMW
+qyB
 qUK
 qUK
 eni
@@ -286647,8 +286639,8 @@ jDm
 jDm
 uOL
 wIX
-jDm
 uOL
+sHm
 axW
 xlm
 xlm
@@ -287050,8 +287042,8 @@ yhZ
 cUy
 yhZ
 yhZ
-uOL
-wtF
+sHm
+eAu
 vCQ
 xlm
 sHm
@@ -287452,8 +287444,8 @@ yhZ
 eZp
 yhZ
 hnK
-wtF
-wtF
+sHm
+sHm
 xlm
 xlm
 cUy
@@ -287854,8 +287846,8 @@ yhZ
 eAu
 wxp
 yhZ
-wtF
-wtF
+sHm
+sHm
 tZJ
 xlm
 oOs
@@ -288256,8 +288248,8 @@ hpN
 sHm
 crz
 crz
-wtF
-wtF
+cUy
+cUy
 xlm
 xlm
 eAu
@@ -288659,8 +288651,8 @@ jDm
 jDm
 jDm
 jDm
+jDm
 uhQ
-wtF
 bGF
 xDn
 wtF
@@ -289056,7 +289048,7 @@ hcW
 ltM
 sHm
 imj
-rFK
+oif
 iLM
 oif
 aKj
@@ -289458,7 +289450,7 @@ hcW
 ltM
 sHm
 aIx
-cps
+oif
 iLM
 los
 bzD
@@ -289861,7 +289853,7 @@ ltM
 sHm
 fRC
 oif
-iLM
+rFK
 eWa
 syY
 uOL
@@ -291469,7 +291461,7 @@ ltM
 uOL
 mjI
 uYE
-iPi
+niU
 los
 pKA
 uOL
@@ -291870,7 +291862,7 @@ hcW
 ltM
 jDm
 lTZ
-gxm
+uYE
 iPi
 rTK
 bFU
