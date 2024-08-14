@@ -33,7 +33,7 @@
 		/datum/migrant_role/slaver/master = 1,
 		/datum/migrant_role/slaver/slavemercsword = 1,
 		/datum/migrant_role/slaver/slavemercwhip = 2,
-		/datum/migrant_role/slaver/slavez = 2,
+		/datum/migrant_role/slaver/slavez = 1,
 	)
 	greet_text = "A group of slavers coming to the Isle of Enigma from the western deserts of Zybantine in the hopes of gathering wealth through the trade unfortunate laborers."
 
@@ -43,9 +43,10 @@
 	downgrade_wave = /datum/migrant_wave/slaver_down_four
 	can_roll = FALSE
 	roles = list(
+		/datum/migrant_role/slaver/master = 1,
 		/datum/migrant_role/slaver/slavemercsword = 1,
 		/datum/migrant_role/slaver/slavemercwhip = 1,
-		/datum/migrant_role/slaver/slavez = 2,
+		/datum/migrant_role/slaver/slavez = 1,
 	)
 	greet_text = "A group of slavers coming to the Isle of Enigma from the western deserts of Zybantine in the hopes of gathering wealth through the trade unfortunate laborers."
 
@@ -55,6 +56,7 @@
 	downgrade_wave = /datum/migrant_wave/slaver_down_five
 	can_roll = FALSE
 	roles = list(
+		/datum/migrant_role/slaver/master = 1,
 		/datum/migrant_role/slaver/slavemercwhip = 1,
 		/datum/migrant_role/slaver/slavez = 1,
 	)
@@ -65,7 +67,7 @@
 	shared_wave_type = /datum/migrant_wave/slaver
 	can_roll = FALSE
 	roles = list(
-		/datum/migrant_role/slaver/slavez = 1,
+		/datum/migrant_role/slaver/master = 1,
 	)
 	greet_text = "A group of slavers coming to the Isle of Enigma from the western deserts of Zybantine in the hopes of gathering wealth through the trade unfortunate laborers."
 
