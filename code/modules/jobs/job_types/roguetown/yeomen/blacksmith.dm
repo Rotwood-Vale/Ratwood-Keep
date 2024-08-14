@@ -33,17 +33,7 @@
 		if(H.age == AGE_OLD)
 			H.mind.adjust_skillrank(/datum/skill/craft/blacksmithing, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/craft/armorsmithing, 1, TRUE)
-	if(H.gender == MALE)
-		pants = /obj/item/clothing/under/roguetown/trou
-		shoes = /obj/item/clothing/shoes/roguetown/boots/leather
-		shirt = /obj/item/clothing/suit/roguetown/shirt/shortshirt
-		backr = /obj/item/storage/backpack/rogue/satchel
-		backpack_contents = list(/obj/item/rogueweapon/hammer = 1, /obj/item/rogueweapon/tongs = 1)
-		belt = /obj/item/storage/belt/rogue/leather
-		beltl = /obj/item/storage/belt/rogue/pouch/coins/poor
-		beltr = /obj/item/roguekey/blacksmith
-		cloak = /obj/item/clothing/cloak/apron/blacksmith
-	else
+	if(H.pronouns == SHE_HER)
 		pants = /obj/item/clothing/under/roguetown/trou
 		armor = /obj/item/clothing/suit/roguetown/shirt/dress/gen/random
 		backr = /obj/item/storage/backpack/rogue/satchel
@@ -53,6 +43,17 @@
 		cloak = /obj/item/clothing/cloak/apron/blacksmith
 		beltl = /obj/item/storage/belt/rogue/pouch/coins/poor
 		beltr = /obj/item/roguekey/blacksmith
+	else
+		pants = /obj/item/clothing/under/roguetown/trou
+		shoes = /obj/item/clothing/shoes/roguetown/boots/leather
+		shirt = /obj/item/clothing/suit/roguetown/shirt/shortshirt
+		backr = /obj/item/storage/backpack/rogue/satchel
+		backpack_contents = list(/obj/item/rogueweapon/hammer = 1, /obj/item/rogueweapon/tongs = 1)
+		belt = /obj/item/storage/belt/rogue/leather
+		beltl = /obj/item/storage/belt/rogue/pouch/coins/poor
+		beltr = /obj/item/roguekey/blacksmith
+		cloak = /obj/item/clothing/cloak/apron/blacksmith
+
 	H.change_stat("strength", 2)
 	H.change_stat("intelligence", 1)
 	H.change_stat("endurance", 2)
@@ -93,17 +94,7 @@
 		if(H.age == AGE_OLD)
 			H.mind.adjust_skillrank(/datum/skill/craft/blacksmithing, pick(1), TRUE)
 			H.mind.adjust_skillrank(/datum/skill/craft/weaponsmithing, pick(1), TRUE)
-	if(H.gender == MALE)
-		pants = /obj/item/clothing/under/roguetown/trou
-		shoes = /obj/item/clothing/shoes/roguetown/boots/leather
-		shirt = /obj/item/clothing/suit/roguetown/shirt/shortshirt
-		backr = /obj/item/storage/backpack/rogue/satchel
-		backpack_contents = list(/obj/item/rogueweapon/hammer = 1, /obj/item/rogueweapon/tongs = 1)
-		belt = /obj/item/storage/belt/rogue/leather
-		beltl = /obj/item/storage/belt/rogue/pouch/coins/poor
-		beltr = /obj/item/roguekey/blacksmith
-		cloak = /obj/item/clothing/cloak/apron/blacksmith
-	else
+	if(H.pronouns == SHE_HER)
 		pants = /obj/item/clothing/under/roguetown/trou
 		armor = /obj/item/clothing/suit/roguetown/shirt/dress/gen/random
 		backr = /obj/item/storage/backpack/rogue/satchel
@@ -113,6 +104,16 @@
 		cloak = /obj/item/clothing/cloak/apron/blacksmith
 		beltl = /obj/item/storage/belt/rogue/pouch/coins/poor
 		beltr = /obj/item/roguekey/blacksmith
+	else
+		pants = /obj/item/clothing/under/roguetown/trou
+		shoes = /obj/item/clothing/shoes/roguetown/boots/leather
+		shirt = /obj/item/clothing/suit/roguetown/shirt/shortshirt
+		backr = /obj/item/storage/backpack/rogue/satchel
+		backpack_contents = list(/obj/item/rogueweapon/hammer = 1, /obj/item/rogueweapon/tongs = 1)
+		belt = /obj/item/storage/belt/rogue/leather
+		beltl = /obj/item/storage/belt/rogue/pouch/coins/poor
+		beltr = /obj/item/roguekey/blacksmith
+		cloak = /obj/item/clothing/cloak/apron/blacksmith
 	H.change_stat("strength", 2)
 	H.change_stat("intelligence", 1)
 	H.change_stat("endurance", 2)

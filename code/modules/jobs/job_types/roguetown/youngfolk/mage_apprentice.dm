@@ -13,7 +13,7 @@
 
 	spells = list(/obj/effect/proc_holder/spell/invoked/projectile/fetch, /obj/effect/proc_holder/spell/invoked/projectile/spitfire, /obj/effect/proc_holder/spell/targeted/touch/prestidigitation)
 	outfit = /datum/outfit/job/roguetown/wapprentice
-	
+
 	display_order = JDO_MAGEAPPRENTICE
 	give_bank_account = TRUE
 
@@ -23,16 +23,16 @@
 /datum/outfit/job/roguetown/wapprentice/pre_equip(mob/living/carbon/human/H)
 	..()
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
-	pants = /obj/item/clothing/under/roguetown/tights/random	
+	pants = /obj/item/clothing/under/roguetown/tights/random
 	belt = /obj/item/storage/belt/rogue/leather/rope
 	beltr = /obj/item/keyring/mage
 	r_hand = /obj/item/rogueweapon/woodstaff
-	if(H.gender == MALE)
-		shoes = /obj/item/clothing/shoes/roguetown/simpleshoes
+	if(H.pronouns == SHE_HER)
+		shoes = /obj/item/clothing/shoes/roguetown/sandals
 		armor = /obj/item/clothing/suit/roguetown/armor/workervest
 		backr = /obj/item/storage/backpack/rogue/satchel
 	else
-		shoes = /obj/item/clothing/shoes/roguetown/sandals
+		shoes = /obj/item/clothing/shoes/roguetown/simpleshoes
 		armor = /obj/item/clothing/suit/roguetown/armor/workervest
 		backr = /obj/item/storage/backpack/rogue/satchel
 	if(H.mind)

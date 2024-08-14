@@ -21,8 +21,7 @@
 
 /datum/outfit/job/roguetown/steward/pre_equip(mob/living/carbon/human/H)
 	..()
-	if(H.gender == FEMALE)
-		H.virginity = TRUE
+	if(H.pronouns == SHE_HER)
 		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/sailor
 		armor = /obj/item/clothing/suit/roguetown/shirt/dress/silkdress/green
 		cloak = /obj/item/clothing/cloak/tabard/knight

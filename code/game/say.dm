@@ -90,9 +90,9 @@ GLOBAL_LIST_INIT(freqtospan, list(
 					arrowpart = " ⇙"
 				if(SOUTHEAST)
 					arrowpart = " ⇘"
-			if(istype(speaker, /mob/living))
-				var/mob/living/L = speaker
-				namepart = "Unknown [(L.gender == FEMALE) ? "Woman" : "Man"]"
+			if(istype(speaker, /mob/living/carbon/human))
+				var/mob/living/carbon/human/H = speaker
+				namepart = "Unknown [(H.voice_type == VOICE_TYPE_FEM) ? "Woman" : "Man"]"
 			else
 				namepart = "Unknown"
 			spanpart1 = "<span class='smallyell'>"

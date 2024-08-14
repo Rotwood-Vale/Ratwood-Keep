@@ -34,11 +34,6 @@
 		H.skin_tone = pick(canonical_heritage_check_list)
 		H.update_body()
 
-	if(H.gender == FEMALE)
-		var/acceptable = list("Tomboy", "Bob", "Curly Short")
-		if(!(H.hairstyle in acceptable))
-			H.hairstyle = pick(acceptable)
-			H.update_hair()
 	backpack_contents = list(/obj/item/roguekey/mercenary)
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/misc/swimming, 2, TRUE)
