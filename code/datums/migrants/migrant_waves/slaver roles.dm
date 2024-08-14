@@ -4,9 +4,9 @@
 	outfit = /datum/outfit/job/roguetown/slaver/master
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_TOLERATED_UP
+	H.cmode_music = 'sound/music/combat_zybantine.ogg'
 
 /datum/outfit/job/roguetown/slaver/master/pre_equip(mob/living/carbon/human/H)
-	H.cmode_music = 'sound/music/combat_zybantine.ogg'
 	..()
 	head = /obj/item/clothing/head/roguetown/helmet/sallet/visored
 	mask = /obj/item/clothing/head/roguetown/roguehood/shalalz
@@ -52,9 +52,10 @@
 	outfit = /datum/outfit/job/roguetown/slaver/slavemercsword
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_SHUNNED_UP
+	grant_lit_torch = TRUE
+	H.cmode_music = 'sound/music/combat_zybantine.ogg'
 
 /datum/outfit/job/roguetown/slaver/slavemercsword/pre_equip(mob/living/carbon/human/H)
-	H.cmode_music = 'sound/music/combat_zybantine.ogg'
 	..()
 	head = /obj/item/clothing/head/roguetown/helmet/sallet
 	mask = /obj/item/clothing/head/roguetown/roguehood/shalalzt
@@ -99,9 +100,10 @@
 	outfit = /datum/outfit/job/roguetown/slaver/slavemercsword
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_SHUNNED_UP
+	grant_lit_torch = TRUE
+	H.cmode_music = 'sound/music/combat_zybantine.ogg'
 
 /datum/outfit/job/roguetown/slaver/slavemercwhip/pre_equip(mob/living/carbon/human/H)
-	H.cmode_music = 'sound/music/combat_zybantine.ogg'
 	..()
 	head = /obj/item/clothing/head/roguetown/helmet/sallet
 	mask = /obj/item/clothing/head/roguetown/roguehood/shalalzt
@@ -146,6 +148,7 @@
 	outfit = /datum/outfit/job/roguetown/slaver/slavez
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
+	grant_lit_torch = TRUE
 
 /datum/outfit/job/roguetown/slaver/slavez/pre_equip(mob/living/carbon/human/H)
 	..()
