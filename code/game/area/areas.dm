@@ -627,8 +627,8 @@ GLOBAL_LIST_EMPTY(teleportlocs)
 //		L.client.ambience_playing = 1
 //		SEND_SOUND(L, sound('sound/blank.ogg', repeat = 1, wait = 0, volume = 35, channel = CHANNEL_BUZZ))
 
-	if(first_time_text)
-		L.intro_area(src)
+//	if(first_time_text)
+//		L.intro_area(src)
 
 	var/mob/living/living_arrived = M
 
