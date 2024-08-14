@@ -1,8 +1,8 @@
 /datum/migrant_wave/slaver
 	name = "The Zybantine Slavers"
-	max_spawns = 2
+	max_spawns = 1
 	weight = 60
-	downgrade_wave = /datum/migrant_wave/slaver/slaver_down_one
+	downgrade_wave = /datum/migrant_wave/slaver_down_one
 	roles = list(
 		/datum/migrant_role/slaver/master = 1,
 		/datum/migrant_role/slaver/slavemercsword = 3,
@@ -11,10 +11,10 @@
 	)
 	greet_text = "A group of slavers coming to the Isle of Enigma from the western deserts of Zybantine in the hopes of gathering wealth through the trade unfortunate laborers."
 
-/datum/migrant_wave/slaver/slaver_down_one
+/datum/migrant_wave/slaver_down_one
 	name = "The Zybantine Slavers"
 	shared_wave_type = /datum/migrant_wave/slaver
-	downgrade_wave = /datum/migrant_wave/slaver/slaver_down_two
+	downgrade_wave = /datum/migrant_wave/slaver_down_two
 	can_roll = FALSE
 	roles = list(
 		/datum/migrant_role/slaver/master = 1,
@@ -24,10 +24,10 @@
 	)
 	greet_text = "A group of slavers coming to the Isle of Enigma from the western deserts of Zybantine in the hopes of gathering wealth through the trade unfortunate laborers."
 
-/datum/migrant_wave/slaver/slaver_down_two
+/datum/migrant_wave/slaver_down_two
 	name = "The Zybantine Slavers"
 	shared_wave_type = /datum/migrant_wave/slaver
-	downgrade_wave = /datum/migrant_wave/slaver/slaver_down_three
+	downgrade_wave = /datum/migrant_wave/slaver_down_three
 	can_roll = FALSE
 	roles = list(
 		/datum/migrant_role/slaver/master = 1,
@@ -37,10 +37,10 @@
 	)
 	greet_text = "A group of slavers coming to the Isle of Enigma from the western deserts of Zybantine in the hopes of gathering wealth through the trade unfortunate laborers."
 
-/datum/migrant_wave/slaver/slaver_down_three
+/datum/migrant_wave/slaver_down_three
 	name = "The Zybantine Slavers"
 	shared_wave_type = /datum/migrant_wave/slaver
-	downgrade_wave = /datum/migrant_wave/slaver/slaver_down_four
+	downgrade_wave = /datum/migrant_wave/slaver_down_four
 	can_roll = FALSE
 	roles = list(
 		/datum/migrant_role/slaver/slavemercsword = 1,
@@ -49,7 +49,7 @@
 	)
 	greet_text = "A group of slavers coming to the Isle of Enigma from the western deserts of Zybantine in the hopes of gathering wealth through the trade unfortunate laborers."
 
-/datum/migrant_wave/slaver/slaver_down_four
+/datum/migrant_wave/slaver_down_four
 	name = "The Zybantine Slavers"
 	shared_wave_type = /datum/migrant_wave/slaver
 	can_roll = FALSE
