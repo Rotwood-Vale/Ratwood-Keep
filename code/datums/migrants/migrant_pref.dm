@@ -9,12 +9,7 @@
 /datum/migrant_pref/New(datum/preferences/passed_prefs)
 	. = ..()
 	prefs = passed_prefs
-
-/datum/migrant_pref/proc/post_equip(mob/living/carbon/human/H)
-	addtimer(CALLBACK(H,TYPE_PROC_REF(/mob/living/carbon/human, add_credit)), 20)
-	if(cmode_music)
-		H.cmode_music = cmode_music
-
+	
 /datum/migrant_pref/proc/set_active(new_state, silent = FALSE)
 	if(active == new_state)
 		return
