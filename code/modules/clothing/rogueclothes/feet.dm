@@ -149,9 +149,22 @@
 	anvilrepair = /datum/skill/craft/armorsmithing
 	smeltresult = /obj/item/ingot/steel
 
+/obj/item/clothing/shoes/roguetown/boots/graggaritebootsleader
+	name = "graggarite leader boots"
+	desc = "Boots worn by those who lead northmen warbands."
+	body_parts_covered = FEET
+	icon_state = "graggaritebootsleader"
+	item_state = "graggaritebootsleader"
+	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT, BCLASS_TWIST)
+	color = null
+	blocksound = PLATEHIT
+	armor = list("blunt" = 90, "slash" = 100, "stab" = 80, "bullet" = 100, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	anvilrepair = /datum/skill/craft/armorsmithing
+	smeltresult = /obj/item/ingot/steel	
+
 /obj/item/clothing/shoes/roguetown/boots/dwarfboots
 	name = "dwarven boots"
-	desc = "A heavy pair of steel plated boots."
+	desc = "Heavy boots in the Dwarven style."
 	body_parts_covered = FEET
 	icon_state = "dwarvenboots"
 	item_state = "dwarvenboots"
@@ -196,14 +209,14 @@
 
 /obj/item/clothing/shoes/roguetown/boots/graggariteboots
 	name = "graggarite boots"
-	desc = "A pair of greaves worn by Grenzelhoftian soldiery."
+	desc = "A pair of heavy boots worn by Graggarite fanatics."
 	icon_state = "graggariteboots"
 	item_state = "graggariteboots"
 	smeltresult = /obj/item/ingot/iron
 
 /obj/item/clothing/shoes/roguetown/boots/katefractoiigreaves
 	name = "katefractoii greaves"
-	desc = "A pair of greaves worn by Grenzelhoftian soldiery."
+	desc = "A pair of greaves worn by Katefractoii cavalrymen."
 	icon_state = "katefractoiiboots"
 	item_state = "katefractoiiboots"
 	smeltresult = /obj/item/ingot/iron
@@ -229,7 +242,7 @@
 
 /obj/item/clothing/shoes/roguetown/boots/darkelfboots
 	name = "raider boots"
-	desc = "A heavy pair of steel plated boots."
+	desc = "A heavy pair of raider boots."
 	body_parts_covered = FEET
 	icon_state = "darkelfboots"
 	item_state = "darkelfboots"
@@ -242,7 +255,7 @@
 
 /obj/item/clothing/shoes/roguetown/boots/forestershoes
 	name = "forester shoes"
-	desc = "A pair of greaves worn by Grenzelhoftian soldiery."
+	desc = "Footwear worn by those who live in forests."
 	icon_state = "forestershoes"
 	item_state = "forestershoes"
 	smeltresult = /obj/item/ash

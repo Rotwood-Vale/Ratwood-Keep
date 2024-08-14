@@ -9,8 +9,8 @@
 	spawn_positions = 3
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
-	spells = list(/obj/effect/proc_holder/spell/invoked/projectile/spitfire)
-	tutorial = "A hardened warrior. Lesser men will write ballads of your conquests."
+	allowed_patrons = list(/datum/patron/inhumen/graggar)
+	tutorial = "A hardened warrior from the Frost Lands. Follow the leader of your warband, and serve Graggar well. May the black sun darken the sky for all time!"
 	whitelist_req = FALSE
 	outfit = /datum/outfit/job/roguetown/vikinggrunt
 
@@ -21,19 +21,18 @@
 
 /datum/outfit/job/roguetown/vikinggrunt/pre_equip(mob/living/carbon/human/H)
 	..()
-	head = /obj/item/clothing/head/roguetown/helmet/leather/volfhelm
+	head = /obj/item/clothing/head/roguetown/helmet/graggaritehelmet
 	backr = /obj/item/storage/backpack/rogue/satchel
-	neck = /obj/item/storage/belt/rogue/pouch/coins/rich
-	wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
-	beltl = /obj/item/rogueweapon/sword/long
+	beltl = /obj/item/rogueweapon/huntingknife/idagger/steel
 	r_hand = /obj/item/rogueweapon/shield/wood/crafted
-	shirt = /obj/item/clothing/suit/roguetown/shirt/tribalrag
-	pants = /obj/item/clothing/under/roguetown/trou/leather
+	gloves = /obj/item/clothing/gloves/roguetown/graggaritegauntlets
+	shirt = /obj/item/clothing/suit/roguetown/armor/chainmail
+	neck = /obj/item/storage/belt/rogue/pouch/coins/rich
+	pants = /obj/item/clothing/under/roguetown/chainlegs/iron
 	belt = /obj/item/storage/belt/rogue/leather
 	beltr = /obj/item/rogueweapon/stoneaxe/battle
-	armor = /obj/item/clothing/suit/roguetown/armor/leather/hide
-	shoes = /obj/item/clothing/shoes/roguetown/boots/leather
-	cloak = /obj/item/clothing/cloak/raincloak/furcloak/brown
+	armor = /obj/item/clothing/suit/roguetown/armor/plate/half/graggaritearmor
+	shoes = /obj/item/clothing/shoes/roguetown/boots/graggariteboots
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
 	if(H.mind)

@@ -29,6 +29,28 @@
 	craftdiff = 2
 	i_type = "Armor"
 
+/datum/anvil_recipe/armor/ironarmor
+	name = "Iron Chestplate (+1 Iron)"
+	req_bar = /obj/item/ingot/iron
+	additional_items = list(/obj/item/ingot/iron)
+	created_item = /obj/item/clothing/suit/roguetown/armor/plate/ironarmor
+	craftdiff = 2
+	i_type = "Armor"
+
+/datum/anvil_recipe/armor/ironharness
+	name = "Iron Harness"
+	req_bar = /obj/item/ingot/iron
+	created_item = /obj/item/clothing/suit/roguetown/armor/plate/half/ironharness
+	craftdiff = 2
+	i_type = "Armor"		
+
+/datum/anvil_recipe/armor/shortbrigandine
+	name = "Short Brigandine"
+	req_bar = /obj/item/ingot/iron
+	created_item = /obj/item/clothing/suit/roguetown/armor/shortbrigandine
+	craftdiff = 2
+	i_type = "Armor"		
+
 /datum/anvil_recipe/armor/footmanchestplate
 	name = "Footman Cuirass (+1 Iron)"
 	req_bar = /obj/item/ingot/iron
@@ -49,6 +71,13 @@
 	created_item = /obj/item/clothing/gloves/roguetown/chain/iron
 	craftdiff = 2
 	i_type = "Armor"
+
+/datum/anvil_recipe/armor/brigandinegauntlets
+	name = "Brigandine Gauntlets"
+	req_bar = /obj/item/ingot/iron
+	created_item = /obj/item/clothing/gloves/roguetown/brigandinegauntlets
+	craftdiff = 2
+	i_type = "Armor"	
 
 /datum/anvil_recipe/armor/footmangauntlets
 	name = "Footman Gauntlets"
@@ -246,6 +275,13 @@
 	craftdiff = 2
 	i_type = "Armor"
 
+/datum/anvil_recipe/armor/grenzknighthelmet
+	name = "Grenzelhoft Knight's Helmet"
+	req_bar = /obj/item/ingot/steel
+	created_item = /obj/item/clothing/head/roguetown/helmet/grenzknighthelmet
+	craftdiff = 3
+	i_type = "Armor"			
+
 /datum/anvil_recipe/armor/plateglove
 	name = "Plate Gauntlets"
 	req_bar = /obj/item/ingot/steel
@@ -318,6 +354,22 @@
 	craftdiff = 2
 	i_type = "Armor"
 
+/datum/anvil_recipe/armor/fancycuirass
+	name = "Fancy Cuirass (+1 Steel)"
+	req_bar = /obj/item/ingot/steel
+	additional_items = list(/obj/item/ingot/steel)
+	created_item = /obj/item/clothing/suit/roguetown/armor/plate/fancycuirass
+	craftdiff = 2
+	i_type = "Armor"	
+
+/datum/anvil_recipe/armor/noblecuirass
+	name = "Noble Cuirass (+1 Steel)"
+	req_bar = /obj/item/ingot/steel
+	additional_items = list(/obj/item/ingot/steel)
+	created_item = /obj/item/clothing/suit/roguetown/armor/plate/noblecuirass
+	craftdiff = 2
+	i_type = "Armor"		
+
 /datum/anvil_recipe/armor/scalemail
 	name = "Scalemail"
 	req_bar = /obj/item/ingot/steel
@@ -331,6 +383,13 @@
 	created_item = /obj/item/clothing/wrists/roguetown/bracers
 	craftdiff = 4
 	i_type = "Armor"
+
+/datum/anvil_recipe/armor/vambraces
+	name = "Iron Bracers"
+	req_bar = /obj/item/ingot/iron
+	created_item = /obj/item/clothing/wrists/roguetown/vambraces
+	craftdiff = 1
+	i_type = "Armor"	
 
 /datum/anvil_recipe/armor/helmetnasal
 	name = "Nasal Helmet"
@@ -369,6 +428,21 @@
 	created_item = /obj/item/clothing/head/roguetown/helmet/heavy
 	craftdiff = 3	//Heavy helm
 	i_type = "Armor"
+
+/datum/anvil_recipe/armor/elvenbarbute
+	name = "Elven Barbute"
+	req_bar = /obj/item/ingot/steel
+	created_item = /obj/item/clothing/head/roguetown/helmet/elfbarbute
+	craftdiff = 3	//Heavy helm
+	i_type = "Armor"
+
+/datum/anvil_recipe/armor/wingedelvenbarbute
+	name = "Winged Elven Barbute (+1 Steel)"
+	req_bar = /obj/item/ingot/steel
+	additional_items = list(/obj/item/ingot/steel)
+	created_item = /obj/item/clothing/head/roguetown/helmet/elfbarbutewings
+	craftdiff = 3	//Heavy helm
+	i_type = "Armor"	
 
 /datum/anvil_recipe/armor/dwarfhelm
 	name = "Dwarven Helmet (+1 Steel)"

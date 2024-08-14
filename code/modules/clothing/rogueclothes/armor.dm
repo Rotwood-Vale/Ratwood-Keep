@@ -181,6 +181,39 @@
 	smeltresult = /obj/item/ingot/steel
 	armor_class = ARMOR_CLASS_MEDIUM
 
+/obj/item/clothing/suit/roguetown/armor/plate/graggaritearmorleader
+	slot_flags = ITEM_SLOT_ARMOR
+	name = "graggarite leader cuirass"
+	desc = "Armor worn by leaders of northmen warbands. A status symbol if ever there was one."
+	body_parts_covered = CHEST|VITALS
+	icon_state = "graggaritechestplateleader"
+	item_state = "graggaritechestplateleader"
+	armor = list("blunt" = 80, "slash" = 100, "stab" = 80, "bullet" = 100, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	allowed_race = CLOTHED_RACES_TYPES
+	nodismemsleeves = TRUE
+	do_sound = FALSE
+	blocking_behavior = null
+	max_integrity = 500
+	anvilrepair = /datum/skill/craft/armorsmithing
+	smeltresult = /obj/item/ingot/steel
+	armor_class = ARMOR_CLASS_MEDIUM	
+
+/obj/item/clothing/suit/roguetown/armor/plate/ironarmor
+	slot_flags = ITEM_SLOT_ARMOR
+	name = "iron chestplate"
+	desc = "A basic cuirass of steel. Lightweight and durable."
+	body_parts_covered = CHEST|VITALS
+	icon_state = "ironarmor"
+	item_state = "ironarmor"
+	armor = list("blunt" = 80, "slash" = 60, "stab" = 20, "bullet" = 50, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	allowed_race = CLOTHED_RACES_TYPES
+	do_sound = FALSE
+	blocking_behavior = null
+	max_integrity = 100
+	anvilrepair = /datum/skill/craft/armorsmithing
+	smeltresult = /obj/item/ingot/iron
+	armor_class = ARMOR_CLASS_MEDIUM	
+
 /obj/item/clothing/suit/roguetown/armor/plate/halfplateroyalguard
 	slot_flags = ITEM_SLOT_ARMOR
 	name = "royal halfplate"
@@ -229,6 +262,25 @@
 	max_integrity = 200
 	smeltresult = /obj/item/ingot/iron
 	armor_class = ARMOR_CLASS_MEDIUM
+
+/obj/item/clothing/suit/roguetown/armor/shortbrigandine
+	name = "fancy brigandine"
+	desc = "A coat with plates concealed inside an exterior fabric. This one is a bit nicer looking than most others and the fabric on the exterior of the armor better conceals the plate beneath."
+	icon_state = "oa_short"
+	item_state = "oa_short"
+	boobed = TRUE
+	max_integrity = 200
+	smeltresult = /obj/item/ingot/iron
+	armor_class = ARMOR_CLASS_MEDIUM
+
+/obj/item/clothing/suit/roguetown/armor/plate/half/ironharness
+	name = "iron harness"
+	desc = "A lightweight piece of protection centered around the belly."
+	icon_state = "metal_vest"
+	item_state = "metal_vest"
+	max_integrity = 100
+	smeltresult = /obj/item/ingot/iron
+	armor_class = ARMOR_CLASS_LIGHT
 
 /obj/item/clothing/suit/roguetown/armor/plate/scale
 	slot_flags = ITEM_SLOT_ARMOR
@@ -586,7 +638,7 @@
 /obj/item/clothing/suit/roguetown/armor/plate/half/graggaritearmor
 	slot_flags = ITEM_SLOT_ARMOR
 	name = "graggarite armor"
-	desc = "A basic iron cuirass worn by soldiers in Grenzelhoft."
+	desc = "Armor worn by Graggarite fanatics in battle."
 	icon_state = "graggaritechestplate"
 	item_state = "graggaritechestplate"
 	max_integrity = 100
@@ -613,7 +665,7 @@
 /obj/item/clothing/suit/roguetown/armor/plate/half/katefractoiichestplate
 	slot_flags = ITEM_SLOT_ARMOR
 	name = "katefractoii chestplate"
-	desc = "A basic iron cuirass worn by soldiers in Grenzelhoft."
+	desc = "Lamellar armor worn by the elite Katefractoii heavy cavalry."
 	icon_state = "katefractoiichestplate"
 	item_state = "katefractoiichestplate"
 	max_integrity = 100
@@ -622,7 +674,7 @@
 
 /obj/item/clothing/suit/roguetown/armor/plate/dwarffull
 	name = "dwarven fullarmor"
-	desc = "Full plate. Leg protecting tassets, groin cup, armored vambraces."
+	desc = "An extremely heavy set of armor in the Dwarven style, cumbersome to use but provides some of the best protection in the world."
 	icon_state = "dwarvenchestplate"
 	item_state = "dwarvenchestplate"
 	body_parts_covered = CHEST|GROIN|VITALS|LEGS|ARMS
@@ -631,7 +683,7 @@
 /obj/item/clothing/suit/roguetown/armor/plate/darkelfchestplate
 	slot_flags = ITEM_SLOT_ARMOR
 	name = "raider chestplate"
-	desc = "A basic cuirass of steel. Lightweight and durable."
+	desc = "Steel chestplate in the Dark Elf style, commmonly worn by surface raiders."
 	body_parts_covered = CHEST|VITALS
 	icon_state = "darkelfchestplate"
 	item_state = "darkelfchestplate"
@@ -648,9 +700,45 @@
 /obj/item/clothing/suit/roguetown/armor/plate/half/foresterarmor
 	slot_flags = ITEM_SLOT_ARMOR
 	name = "forester chestplate"
-	desc = "A basic iron cuirass worn by soldiers in Grenzelhoft."
+	desc = "Wooden armor worn by those who inhabit the forests."
 	icon_state = "foresterchestplate"
 	item_state = "foresterchestplate"
 	max_integrity = 100
 	smeltresult = /obj/item/ash
+	armor_class = ARMOR_CLASS_MEDIUM
+
+/obj/item/clothing/suit/roguetown/armor/plate/fancycuirass
+	slot_flags = ITEM_SLOT_ARMOR
+	name = "fancy cuirass"
+	desc = "A basic cuirass, padded with leather and decorated with a gold trim."
+	body_parts_covered = CHEST|VITALS
+	icon_state = "fancy_cuirass"
+	item_state = "fancy_cuirass"
+	armor = list("blunt" = 80, "slash" = 100, "stab" = 80, "bullet" = 100, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	allowed_race = CLOTHED_RACES_TYPES
+	nodismemsleeves = TRUE
+	boobed = TRUE
+	do_sound = FALSE
+	blocking_behavior = null
+	max_integrity = 300
+	anvilrepair = /datum/skill/craft/armorsmithing
+	smeltresult = /obj/item/ingot/steel
+	armor_class = ARMOR_CLASS_MEDIUM
+
+/obj/item/clothing/suit/roguetown/armor/plate/noblecuirass
+	slot_flags = ITEM_SLOT_ARMOR
+	name = "noble cuirass"
+	desc = "A decorated cuirass underneath a thin layer of cloth for decoration."
+	body_parts_covered = CHEST|VITALS
+	icon_state = "oa_fancy_long"
+	item_state = "oa_fancy_long"
+	armor = list("blunt" = 80, "slash" = 100, "stab" = 80, "bullet" = 100, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	allowed_race = CLOTHED_RACES_TYPES
+	nodismemsleeves = TRUE
+	boobed = TRUE
+	do_sound = FALSE
+	blocking_behavior = null
+	max_integrity = 300
+	anvilrepair = /datum/skill/craft/armorsmithing
+	smeltresult = /obj/item/ingot/steel
 	armor_class = ARMOR_CLASS_MEDIUM

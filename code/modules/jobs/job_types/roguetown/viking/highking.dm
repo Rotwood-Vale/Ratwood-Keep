@@ -9,8 +9,9 @@
 	spawn_positions = 1
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
-	spells = list(/obj/effect/proc_holder/spell/invoked/projectile/spitfire)
-	tutorial = "You are the leader of your people. You work to kidnap and ransom the people of the bog. Your camp lacks self-reliance, so you will fill the void as needed."
+	allowed_patrons = list(/datum/patron/inhumen/graggar)
+	spells = list(/obj/effect/proc_holder/spell/self/convertrole/viking)
+	tutorial = "Hailing from the freezing cold Frost Lands, you lead your warband to its newest prize, Rockhill. Graggar's bloodlust must be sated. Topple the statues of the southerner's weak gods, burn their churches, take their valuables and take them as slaves so that they might be sacrificed to Graggar. May the black sun darken the sky for all time!"
 	whitelist_req = FALSE
 	outfit = /datum/outfit/job/roguetown/highking
 
@@ -21,19 +22,18 @@
 
 /datum/outfit/job/roguetown/highking/pre_equip(mob/living/carbon/human/H)
 	..()
-	head = /obj/item/clothing/head/roguetown/helmet/leather/volfhelm
+	head = /obj/item/clothing/head/roguetown/helmet/heavy/blacksunhelm
 	backr = /obj/item/storage/backpack/rogue/satchel
-	neck = /obj/item/storage/belt/rogue/pouch/coins/rich
-	wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
-	beltl = /obj/item/rogueweapon/sword/long
-	r_hand = /obj/item/rogueweapon/shield/wood/crafted
-	shirt = /obj/item/clothing/suit/roguetown/shirt/tribalrag
-	pants = /obj/item/clothing/under/roguetown/trou/leather
+	beltl = /obj/item/rogueweapon/stoneaxe/battle
+	r_hand = /obj/item/rogueweapon/sword/cursedsword
+	shirt = /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk
+	pants = /obj/item/clothing/under/roguetown/platelegs
+	gloves = /obj/item/clothing/gloves/roguetown/graggaritegauntletsleader
 	belt = /obj/item/storage/belt/rogue/leather
-	beltr = /obj/item/rogueweapon/stoneaxe/battle
-	armor = /obj/item/clothing/suit/roguetown/armor/leather/hide
-	shoes = /obj/item/clothing/shoes/roguetown/boots/furlinedboots
-	cloak = /obj/item/clothing/cloak/raincloak/furcloak/brown
+	neck = /obj/item/storage/belt/rogue/pouch/coins/rich
+	armor = /obj/item/clothing/suit/roguetown/armor/plate/graggaritearmorleader
+	shoes = /obj/item/clothing/shoes/roguetown/boots/graggaritebootsleader
+	cloak = /obj/item/clothing/cloak/cape
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
 	if(H.mind)
@@ -65,4 +65,11 @@
 		H.change_stat("endurance", 3)
 		H.change_stat("speed", -2)
 
+/obj/effect/proc_holder/spell/self/convertrole/viking
+	name = "Recruit Thrall"
+	new_role = "Graggarite Thrall"
+	recruitment_faction = "Viking"
+	recruitment_message = "Serve Graggar, %RECRUIT!"
+	accept_message = "FOR THE BLACK SUN!"
+	refuse_message = "I refuse."
 
