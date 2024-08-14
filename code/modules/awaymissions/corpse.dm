@@ -165,6 +165,7 @@
 	return ..()
 
 /obj/effect/mob_spawn/human/equip(mob/living/carbon/human/H)
+	H.setDir(pick(GLOB.alldirs))
 	if(mob_species)
 		H.set_species(mob_species)
 	if(husk)
