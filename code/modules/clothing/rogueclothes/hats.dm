@@ -58,7 +58,7 @@
 /obj/item/clothing/head/roguetown/roguehood/shalal
 	name = "keffiyeh"
 	desc = ""
-	color = null
+	color = "#b8252c"
 	icon_state = "shalal"
 	item_state = "shalal"
 	flags_inv = HIDEEARS|HIDEHAIR|HIDEFACIALHAIR
