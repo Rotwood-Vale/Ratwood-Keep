@@ -22,6 +22,7 @@
 	return TRUE
 
 /datum/sex_action/toy_other_vagina/on_start(mob/living/carbon/human/user, mob/living/carbon/human/target)
+	..()
 	var/obj/item/dildo = get_dildo_in_either_hand(user)
 	user.visible_message(span_warning("[user] shoves \the [dildo] in [target]'s cunt..."))
 
@@ -34,6 +35,7 @@
 	target.sexcon.handle_passive_ejaculation()
 
 /datum/sex_action/toy_other_vagina/on_finish(mob/living/carbon/human/user, mob/living/carbon/human/target)
+	..()
 	var/obj/item/dildo = get_dildo_in_either_hand(user)
 	user.visible_message(span_warning("[user] pulls out \the [dildo] from [target]'s cunt."))
 

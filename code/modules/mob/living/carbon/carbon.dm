@@ -546,6 +546,7 @@
 
 /mob/living/carbon
 	var/nausea = 0
+	var/mouth_blocked = FALSE
 
 /mob/living/carbon/proc/add_nausea(amt)
 	nausea = clamp(nausea + amt, 0, 300)
@@ -1279,6 +1280,8 @@
 	if(!.)
 		return
 	if(mouth?.muteinmouth)
+		return FALSE
+	if(mouth_blocked)
 		return FALSE
 	for(var/obj/item/grabbing/grab in grabbedby)
 		if(grab.sublimb_grabbed == BODY_ZONE_PRECISE_MOUTH)

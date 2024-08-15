@@ -24,6 +24,7 @@
 	return TRUE
 
 /datum/sex_action/anal_sex/on_start(mob/living/carbon/human/user, mob/living/carbon/human/target)
+	..()
 	user.visible_message(span_warning("[user] slides his cock into [target]'s butt!"))
 	playsound(target, list('sound/misc/mat/insert (1).ogg','sound/misc/mat/insert (2).ogg'), 20, TRUE, ignore_walls = FALSE)
 
@@ -46,6 +47,7 @@
 	target.sexcon.handle_passive_ejaculation()
 
 /datum/sex_action/anal_sex/on_finish(mob/living/carbon/human/user, mob/living/carbon/human/target)
+	..()
 	user.visible_message(span_warning("[user] pulls his cock out of [target]'s butt."))
 
 /datum/sex_action/anal_sex/is_finished(mob/living/carbon/human/user, mob/living/carbon/human/target)

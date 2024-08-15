@@ -19,6 +19,7 @@
 	return TRUE
 
 /datum/sex_action/masturbate_penis_other/on_start(mob/living/carbon/human/user, mob/living/carbon/human/target)
+	..()
 	user.visible_message(span_warning("[user] starts jerking [target]'s off..."))
 
 /datum/sex_action/masturbate_penis_other/on_perform(mob/living/carbon/human/user, mob/living/carbon/human/target)
@@ -31,6 +32,7 @@
 	target.sexcon.handle_passive_ejaculation()
 
 /datum/sex_action/masturbate_penis_other/on_finish(mob/living/carbon/human/user, mob/living/carbon/human/target)
+	..()
 	user.visible_message(span_warning("[user] stops jerking [target]'s off."))
 
 /datum/sex_action/masturbate_penis_other/is_finished(mob/living/carbon/human/user, mob/living/carbon/human/target)

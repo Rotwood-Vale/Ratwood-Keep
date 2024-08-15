@@ -25,6 +25,7 @@
 	return TRUE
 
 /datum/sex_action/scissoring/on_start(mob/living/carbon/human/user, mob/living/carbon/human/target)
+	..()
 	user.visible_message(span_warning("[user] spreads her legs and aligns her cunt against [target]'s own!"))
 
 /datum/sex_action/scissoring/on_perform(mob/living/carbon/human/user, mob/living/carbon/human/target)
@@ -40,4 +41,5 @@
 	target.sexcon.handle_passive_ejaculation()
 
 /datum/sex_action/scissoring/on_finish(mob/living/carbon/human/user, mob/living/carbon/human/target)
+	..()
 	user.visible_message(span_warning("[user] stops scissoring with [target]."))

@@ -1,6 +1,7 @@
 /datum/sex_action/suck_balls
 	name = "Suck their balls"
 	check_incapacitated = FALSE
+	gags_user = TRUE
 
 /datum/sex_action/suck_balls/shows_on_menu(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(user == target)
@@ -21,6 +22,7 @@
 	return TRUE
 
 /datum/sex_action/suck_balls/on_start(mob/living/carbon/human/user, mob/living/carbon/human/target)
+	..()
 	user.visible_message(span_warning("[user] starts sucking [target]'s balls..."))
 
 /datum/sex_action/suck_balls/on_perform(mob/living/carbon/human/user, mob/living/carbon/human/target)
@@ -32,6 +34,7 @@
 	target.sexcon.handle_passive_ejaculation()
 
 /datum/sex_action/suck_balls/on_finish(mob/living/carbon/human/user, mob/living/carbon/human/target)
+	..()
 	user.visible_message(span_warning("[user] stops sucking [target]'s balls ..."))
 
 /datum/sex_action/suck_balls/is_finished(mob/living/carbon/human/user, mob/living/carbon/human/target)

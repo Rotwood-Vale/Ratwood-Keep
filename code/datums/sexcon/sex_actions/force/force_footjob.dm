@@ -25,6 +25,7 @@
 	return TRUE
 
 /datum/sex_action/force_footjob/on_start(mob/living/carbon/human/user, mob/living/carbon/human/target)
+	..()
 	user.visible_message(span_warning("[user] grabs [target]'s feet and clamps them around his cock!"))
 
 /datum/sex_action/force_footjob/on_perform(mob/living/carbon/human/user, mob/living/carbon/human/target)
@@ -36,4 +37,5 @@
 	user.sexcon.handle_passive_ejaculation()
 
 /datum/sex_action/force_footjob/on_finish(mob/living/carbon/human/user, mob/living/carbon/human/target)
+	..()
 	user.visible_message(span_warning("[user] pulls his cock out from inbetween [target]'s feet."))

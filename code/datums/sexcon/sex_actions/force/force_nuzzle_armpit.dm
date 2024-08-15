@@ -2,6 +2,7 @@
 	name = "Force them against armpit"
 	require_grab = TRUE
 	stamina_cost = 1.0
+	gags_target = TRUE
 
 /datum/sex_action/force_armpit_nuzzle/shows_on_menu(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(user == target)
@@ -18,6 +19,7 @@
 	return TRUE
 
 /datum/sex_action/force_armpit_nuzzle/on_start(mob/living/carbon/human/user, mob/living/carbon/human/target)
+	..()
 	user.visible_message(span_warning("[user] forces [target]'s head against their armpit!"))
 
 /datum/sex_action/force_armpit_nuzzle/on_perform(mob/living/carbon/human/user, mob/living/carbon/human/target)
@@ -29,6 +31,7 @@
 	target.sexcon.handle_passive_ejaculation()
 
 /datum/sex_action/force_armpit_nuzzle/on_finish(mob/living/carbon/human/user, mob/living/carbon/human/target)
+	..()
 	user.visible_message(span_warning("[user] pulls [target]'s head away from their armpit."))
 
 /datum/sex_action/force_armpit_nuzzle/is_finished(mob/living/carbon/human/user, mob/living/carbon/human/target)

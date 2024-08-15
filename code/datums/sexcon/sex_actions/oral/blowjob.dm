@@ -2,6 +2,7 @@
 	name = "Suck them off"
 	check_same_tile = FALSE
 	check_incapacitated = FALSE
+	gags_user = TRUE
 
 /datum/sex_action/blowjob/shows_on_menu(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(user == target)
@@ -22,6 +23,7 @@
 	return TRUE
 
 /datum/sex_action/blowjob/on_start(mob/living/carbon/human/user, mob/living/carbon/human/target)
+	..()
 	user.visible_message(span_warning("[user] starts sucking [target]'s cock..."))
 
 /datum/sex_action/blowjob/on_perform(mob/living/carbon/human/user, mob/living/carbon/human/target)
@@ -38,6 +40,7 @@
 		target.sexcon.cum_into()
 
 /datum/sex_action/blowjob/on_finish(mob/living/carbon/human/user, mob/living/carbon/human/target)
+	..()
 	user.visible_message(span_warning("[user] stops sucking [target]'s cock ..."))
 
 /datum/sex_action/blowjob/is_finished(mob/living/carbon/human/user, mob/living/carbon/human/target)

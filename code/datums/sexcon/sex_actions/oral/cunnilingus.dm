@@ -1,6 +1,7 @@
 /datum/sex_action/cunnilingus
 	name = "Suck their cunt off"
 	check_incapacitated = FALSE
+	gags_user = TRUE
 
 /datum/sex_action/cunnilingus/shows_on_menu(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(user == target)
@@ -21,6 +22,7 @@
 	return TRUE
 
 /datum/sex_action/cunnilingus/on_start(mob/living/carbon/human/user, mob/living/carbon/human/target)
+	..()
 	user.visible_message(span_warning("[user] starts sucking [target]'s clit..."))
 
 /datum/sex_action/cunnilingus/on_perform(mob/living/carbon/human/user, mob/living/carbon/human/target)
@@ -35,6 +37,7 @@
 		target.sexcon.cum_into()
 
 /datum/sex_action/cunnilingus/on_finish(mob/living/carbon/human/user, mob/living/carbon/human/target)
+	..()
 	user.visible_message(span_warning("[user] stops sucking [target]'s clit ..."))
 
 /datum/sex_action/cunnilingus/is_finished(mob/living/carbon/human/user, mob/living/carbon/human/target)
