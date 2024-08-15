@@ -738,7 +738,7 @@
 	slot_flags = ITEM_SLOT_BACK_R|ITEM_SLOT_CLOAK
 
 /obj/item/clothing/cloak/cape/purple
-	color = "#bb0092"
+	color = "#801380"
 
 /obj/item/clothing/cloak/cape/knight
 	color = CLOTHING_PURPLE
