@@ -44,7 +44,7 @@
 		if((coin_amt*mod) > amt)
 			playsound(src, 'sound/misc/machineno.ogg', 100, FALSE, -1)
 			return
-		if(!SStreasury.withdraw_money_account(coin_amt*mod, H))
+		if(!SStreasury.withdraw_money_account(coin_amt*mod, H.real_name))
 			playsound(src, 'sound/misc/machineno.ogg', 100, FALSE, -1)
 			return
 		budget2change(coin_amt*mod, user, selection)
