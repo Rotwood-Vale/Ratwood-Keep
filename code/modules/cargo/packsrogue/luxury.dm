@@ -5,11 +5,15 @@
 	crate_name = "merchant guild's crate"
 	crate_type = /obj/structure/closet/crate/chest/merchant
 
-
 /datum/supply_pack/rogue/luxury/sigs
 	name = "Pipe Weed Zig"
 	cost = 3
 	contains = list(/obj/item/clothing/mask/cigarette/rollie/nicotine)
+
+/datum/supply_pack/rogue/luxury/perfume
+	name = "Perfume"
+	cost = 15
+	contains = list(/obj/item/perfume/random)
 
 /datum/supply_pack/rogue/luxury/moondust
 	name = "Moon Dust"

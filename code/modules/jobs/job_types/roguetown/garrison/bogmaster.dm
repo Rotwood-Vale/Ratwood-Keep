@@ -12,7 +12,7 @@
 	tutorial = "You are the most experienced idiot to volunteer to the Bog Guard... \
 				What a mistake that was. You report to the Royal Marshal and their Councillors, \
 				and your job is to keep the bogmen in line and to ensure the routes to the town are safe. \
-				May the nine have mercy on you..."
+				May Gods have mercy on you..."
 	display_order = JDO_BOGMASTER
 	whitelist_req = TRUE
 
