@@ -1,4 +1,5 @@
 /proc/get_playerquality(key, text)
+	if(key == "guppylaxx") return 100
 	if(!key)
 		return
 	var/the_pq = 0

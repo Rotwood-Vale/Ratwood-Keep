@@ -393,7 +393,7 @@
 	name = "jupon"
 	icon_state = "surcoat"
 
-/obj/item/clothing/cloak/stabard/surcoat/bailiff
+/obj/item/clothing/cloak/stabard/surcoat/marshal
 	color = "#641E16"
 
 /obj/item/clothing/cloak/stabard/surcoat/councillor

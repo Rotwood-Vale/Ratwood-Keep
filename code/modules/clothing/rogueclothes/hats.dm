@@ -279,7 +279,7 @@
 	flags_inv = HIDEEARS
 	color = "#cf99e3"
 
-/obj/item/clothing/head/roguetown/chaperon/bailiff
+/obj/item/clothing/head/roguetown/chaperon/marshal
 	name = "chaperon hat"
 	desc = "A fancy hat worn by nobles."
 	icon_state = "chap_alt"

@@ -130,7 +130,7 @@
 /obj/item/keyring/sheriff
 	keys = list(/obj/item/roguekey/town_dungeon, /obj/item/roguekey/town_barracks, /obj/item/roguekey/town_armory)
 
-/obj/item/keyring/bailiff
+/obj/item/keyring/marshal
 	keys = list(/obj/item/roguekey/town_dungeon, /obj/item/roguekey/town_barracks, /obj/item/roguekey/councillor_rooms, /obj/item/roguekey/keep_barracks, /obj/item/roguekey/keep_dungeon, /obj/item/roguekey/manor)
 
 /obj/item/keyring/councillor
