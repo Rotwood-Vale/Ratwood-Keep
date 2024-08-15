@@ -44,4 +44,6 @@
 		H.change_stat("intelligence", 3)
 		H.change_stat("constitution", 1)
 		H.change_stat("fortune", 2)
+	
+	ADD_TRAIT(H, TRAIT_NOBLE, TRAIT_GENERIC)
 
