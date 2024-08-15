@@ -138,6 +138,13 @@
 	/datum/species/anthromorph,\
 	/datum/species/demihuman,\
 )
+
+#define HUMANS_AND_HALFS list(\
+	/datum/species/human/northern, \
+	/datum/species/human/halfelf, \
+	/datum/species/demihuman, \
+	)
+
 #define ALL_CLERIC_PATRONS list(/datum/patron/divine/astrata, /datum/patron/divine/noc, /datum/patron/divine/dendor, /datum/patron/divine/necra, /datum/patron/divine/pestra)
 
 #define ALL_ACOLYTE_PATRONS list(/datum/patron/divine/astrata, /datum/patron/divine/noc, /datum/patron/divine/dendor, /datum/patron/divine/pestra)
