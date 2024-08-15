@@ -578,8 +578,23 @@
 /obj/structure/fluff/clock/examine(mob/user)
 	. = ..()
 	if(!broke)
-		. += "Oh no, it's [station_time_timestamp("hh:mm")]."
-		. += span_info("(Round Time: [gameTimestamp("hh:mm:ss", REALTIMEOFDAY - SSticker.round_start_irl)].)")
+		var/day = "... actually, WHAT dae is it?"
+		switch(GLOB.dayspassed)
+			if(1)
+				day = "Moon's dae."
+			if(2)
+				day = "Tiw's dae."
+			if(3)
+				day = "Wedding's dae."
+			if(4)
+				day = "Thule's dae."
+			if(5)
+				day = "Freyja's dae."
+			if(6)
+				day = "Saturn's dae."
+			if(7)
+				day = "Sun's dae."
+		. += "Oh no, it's [station_time_timestamp("hh:mm")] on a [day]"
 //		if(SSshuttle.emergency.mode == SHUTTLE_DOCKED)
 //			if(SSshuttle.emergency.timeLeft() < 30 MINUTES)
 //				. += span_warning("The last boat will leave in [round(SSshuttle.emergency.timeLeft()/600)] minutes.")
@@ -620,8 +635,23 @@
 /obj/structure/fluff/wallclock/examine(mob/user)
 	. = ..()
 	if(!broke)
-		. += "Oh no, it's [station_time_timestamp("hh:mm")]."
-		. += "(Round Time: [gameTimestamp("hh:mm:ss", REALTIMEOFDAY - SSticker.round_start_irl)].)"
+		var/day = "... actually, WHAT dae is it?"
+		switch(GLOB.dayspassed)
+			if(1)
+				day = "Moon's dae."
+			if(2)
+				day = "Tiw's dae."
+			if(3)
+				day = "Wedding's dae."
+			if(4)
+				day = "Thule's dae."
+			if(5)
+				day = "Freyja's dae."
+			if(6)
+				day = "Saturn's dae."
+			if(7)
+				day = "Sun's dae."
+		. += "Oh no, it's [station_time_timestamp("hh:mm")] on a [day]"
 //		testing("mode is [SSshuttle.emergency.mode] should be [SHUTTLE_DOCKED]")
 //		if(SSshuttle.emergency.mode == SHUTTLE_DOCKED)
 //			if(SSshuttle.emergency.timeLeft() < 30 MINUTES)
@@ -687,7 +717,7 @@
 	if(!user.is_literate())
 		. += "I have no idea what it says."
 	else
-		. += "It says \"TOWN ON ROCKHILL\""
+		. += "It says \"AZURE PEAK\""
 
 /obj/structure/fluff/buysign
 	icon_state = "signwrote"
