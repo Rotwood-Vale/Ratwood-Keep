@@ -389,8 +389,6 @@
 	<head>
 		<title>Sticky Bans</title>
 	</head>
-	<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><style type=\"text/css\">
-	<body>
 		<h2>All Sticky Bans:</h2> <a href='?_src_=holder;[HrefToken()];stickyban=add'>\[+\]</a><br>
 		[banhtml.Join("")]
 	</body>
