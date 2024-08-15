@@ -1,6 +1,7 @@
 /datum/sex_action/anal_sex
 	name = "Sodomize them"
 	stamina_cost = 1.0
+	check_incapacitated = FALSE
 
 /datum/sex_action/anal_sex/shows_on_menu(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(user == target)

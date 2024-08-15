@@ -1,6 +1,7 @@
 /datum/sex_action/vaginal_sex
 	name = "Fuck their cunt"
 	stamina_cost = 1.0
+	check_incapacitated = FALSE
 
 /datum/sex_action/vaginal_sex/shows_on_menu(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(user == target)

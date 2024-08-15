@@ -394,7 +394,7 @@
 		return
 	if(iscarbon(usr))
 		var/mob/living/carbon/C = usr
-		if(C != grabbee || C.incapacitated() || C.stat == DEAD)
+		if(C != grabbee || C.incapacitated(ignore_restraints = TRUE) || C.stat == DEAD)
 			qdel(src)
 			return 1
 		if(modifiers["right"])

@@ -1,5 +1,6 @@
 /datum/sex_action/scissoring
 	name = "Scissor them"
+	check_incapacitated = FALSE
 
 /datum/sex_action/scissoring/shows_on_menu(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(user == target)

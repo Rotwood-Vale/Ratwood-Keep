@@ -1,5 +1,6 @@
 /datum/sex_action/facesitting
 	name = "Sit on their face"
+	check_incapacitated = FALSE
 
 /datum/sex_action/facesitting/shows_on_menu(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(user == target)

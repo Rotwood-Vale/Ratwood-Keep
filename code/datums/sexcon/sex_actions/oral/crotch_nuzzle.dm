@@ -1,5 +1,6 @@
 /datum/sex_action/crotch_nuzzle
 	name = "Nuzzle their crotch"
+	check_incapacitated = FALSE
 
 /datum/sex_action/crotch_nuzzle/shows_on_menu(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(user == target)

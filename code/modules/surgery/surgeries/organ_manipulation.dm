@@ -171,7 +171,7 @@
 	var/list/initial_organs = target.getorganszone(target_zone, subzones = FALSE)
 	var/list/organs = list()
 	for(var/obj/item/organ/cur_organ as anything in initial_organs)
-		if(cur_organ.visible_organ)
+		if(cur_organ.visible_organ || cur_organ.slot == ORGAN_SLOT_TONGUE)
 			organs += cur_organ
 	
 	if(!length(organs))
@@ -195,6 +195,12 @@
 		span_notice("[user] begins to sever something from [target]'s [parse_zone(target_zone)]."))
 
 	return TRUE
+
+/datum/surgery_step/remove_external_organs/try_op(mob/user, mob/living/target, target_zone, obj/item/tool, datum/intent/intent, try_to_fail)
+	// stupid workaround right now because eyes are a single organ in a single slot
+	if(target_zone == BODY_ZONE_PRECISE_L_EYE)
+		target_zone = BODY_ZONE_PRECISE_R_EYE
+	return ..()
 
 /datum/surgery_step/remove_external_organs/success(mob/user, mob/living/target, target_zone, obj/item/tool, datum/intent/intent)
 	var/obj/item/organ/selected_organ = target.getorganslot(user.organ_slot_selected)
