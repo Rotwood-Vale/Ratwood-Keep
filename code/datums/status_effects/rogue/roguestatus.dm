@@ -1,5 +1,8 @@
-/datum/status_effect/moodbad
-	id = "moodbad"
+/datum/status_effect/mood
+	id = "mood"
+
+/datum/status_effect/mood/bad
+	id = "mood"
 	effectedstats = list("fortune" = -1)
 	alert_type = /atom/movable/screen/alert/status_effect/moodbad
 
@@ -8,8 +11,8 @@
 	desc = ""
 	icon_state = "stressb"
 
-/datum/status_effect/moodvbad
-	id = "moodvbad"
+/datum/status_effect/mood/vbad
+	id = "mood"
 	effectedstats = list("fortune" = -2)
 	alert_type = /atom/movable/screen/alert/status_effect/moodvbad
 
@@ -18,8 +21,8 @@
 	desc = ""
 	icon_state = "stressvb"
 
-/datum/status_effect/moodgood
-	id = "moodgood"
+/datum/status_effect/mood/good
+	id = "mood"
 	effectedstats = list("fortune" = 1)
 	alert_type = /atom/movable/screen/alert/status_effect/moodgood
 
@@ -28,8 +31,8 @@
 	desc = ""
 	icon_state = "stressg"
 
-/datum/status_effect/moodvgood
-	id = "moodvgood"
+/datum/status_effect/mood/vgood
+	id = "mood"
 	effectedstats = list("fortune" = 2)
 	alert_type = /atom/movable/screen/alert/status_effect/moodvgood
 
