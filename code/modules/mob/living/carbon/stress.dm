@@ -82,9 +82,17 @@
 	var/old_threshold = get_stress_threshold(oldstress)
 	var/new_threshold = get_stress_threshold(new_stress)
 	if(old_threshold != new_threshold)
+		remove_status_effect(/datum/status_effect/mood)
 		switch(new_threshold)
 			if(STRESS_THRESHOLD_NICE)
-				to_chat(src, span_green("I feel good"))
+				to_chat(src, span_green("I feel great!"))
+				apply_status_effect(/datum/status_effect/mood/vgood)
+			if(STRESS_THRESHOLD_GOOD)
+				if(ascending)
+					to_chat(src, span_info("I no longer feel as good"))
+				else
+					to_chat(src, span_green("I feel good"))
+				apply_status_effect(/datum/status_effect/mood/good)
 			if(STRESS_THRESHOLD_NEUTRAL)
 				if(ascending)
 					to_chat(src, span_info("I no longer feel good"))
@@ -95,18 +103,16 @@
 					to_chat(src, span_red("I'm getting stressed..."))
 				else
 					to_chat(src, span_red("I'm stressed a little less, now"))
+				apply_status_effect(/datum/status_effect/mood/bad)
 			if(STRESS_THRESHOLD_STRESSED_BAD)
 				if(ascending)
 					to_chat(src, span_boldred("I'm getting at my limit.."))
 				else
 					to_chat(src, span_boldred("I'm not freaking out that badly anymore..."))
+				apply_status_effect(/datum/status_effect/mood/vbad)
 			if(STRESS_THRESHOLD_FREAKING_OUT)
 				to_chat(src, span_boldred("I'M FREAKING OUT!!!"))
-
-	if(new_stress >= 15)
-		change_stat("fortune", -1, "stress")
-	else
-		change_stat("fortune", 0, "stress")
+				apply_status_effect(/datum/status_effect/mood/vbad)
 
 	if(new_stress >= 20)
 		roll_streak_freakout()
@@ -230,7 +236,9 @@
 	switch(stress_amt)
 		if(-INFINITY to -4)
 			return STRESS_THRESHOLD_NICE
-		if(-4 to 4)
+		if(-4 to 0)
+			return STRESS_THRESHOLD_GOOD
+		if(0 to 4)
 			return STRESS_THRESHOLD_NEUTRAL
 		if(4 to 11)
 			return STRESS_THRESHOLD_STRESSED
