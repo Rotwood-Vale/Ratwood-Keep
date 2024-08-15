@@ -22,7 +22,7 @@
 	backl = /obj/item/storage/backpack/rogue/satchel
 	backr = /obj/item/rogue/instrument/guitar
 	beltl = /obj/item/rogueweapon/sword/rapier/dec
-	beltr = /obj/item/rogueweapon/huntingknife/elvish
+	beltr = /obj/item/rogueweapon/huntingknife/idagger/silver/elvish
 	backpack_contents = list(/obj/item/book/rogue/tales1, /obj/item/book/rogue/blackmountain, /obj/item/book/rogue/tales3)
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/misc/music, 6, TRUE)
@@ -42,7 +42,7 @@
 		H.change_stat("intelligence", 1)
 		H.change_stat("endurance", 1)
 	H.verbs |= /mob/living/carbon/human/proc/ventriloquate
-	
+
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_EMPATH, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
@@ -91,7 +91,7 @@
 		H.change_stat("speed", 1)
 		H.change_stat("intelligence", 1)
 		H.change_stat("endurance", 1)
-	
+
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_EMPATH, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)

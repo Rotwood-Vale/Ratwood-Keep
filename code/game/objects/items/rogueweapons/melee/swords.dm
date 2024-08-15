@@ -458,10 +458,12 @@
 
 /datum/intent/sword/cut/rapier
 	clickcd = 10
-	damfactor = 0.5
+	damfactor = 0.75
 
 /datum/intent/sword/thrust/rapier
 	clickcd = 8
+	damfactor = 1.1
+	penfactor = 30
 
 /obj/item/rogueweapon/sword/rapier/dec
 	icon_state = "decrapier"
