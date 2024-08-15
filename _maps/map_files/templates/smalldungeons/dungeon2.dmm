@@ -99,6 +99,16 @@
 "gF" = (
 /turf/closed/wall/mineral/rogue/stone,
 /area/rogue/under/cave/spider)
+"hI" = (
+/mob/living/carbon/human/species/skeleton/npc/ambush{
+	inertia_move_delay = 0;
+	STACON = 13;
+	STAEND = 13;
+	STASPD = 13;
+	STASTR = 13
+	},
+/turf/open/water/swamp/deep,
+/area/rogue/under/cave/spider)
 "hL" = (
 /obj/machinery/light/rogue/torchholder{
 	dir = 4
@@ -121,6 +131,16 @@
 	icon_state = "cobweb2"
 	},
 /turf/open/floor/rogue/dirt/road,
+/area/rogue/under/cave/spider)
+"iU" = (
+/mob/living/carbon/human/species/skeleton/npc/ambush{
+	inertia_move_delay = 0;
+	STACON = 13;
+	STAEND = 13;
+	STASPD = 13;
+	STASTR = 13
+	},
+/turf/open/floor/rogue/tile/masonic/inverted,
 /area/rogue/under/cave/spider)
 "iX" = (
 /obj/structure/fluff/grindwheel,
@@ -168,6 +188,17 @@
 	},
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/cave/spider)
+"kV" = (
+/obj/item/clothing/ring/dragon_ring,
+/turf/open/floor/rogue/churchmarble,
+/area/rogue/under/cave/spider)
+"ll" = (
+/obj/effect/decal/cleanable/blood/old,
+/mob/living/simple_animal/hostile/retaliate/rogue/spider/mutated{
+	faction = list("undead")
+	},
+/turf/open/floor/rogue/blocks,
+/area/rogue/under/cave/spider)
 "lr" = (
 /obj/machinery/light/rogue/torchholder{
 	dir = 8
@@ -186,6 +217,10 @@
 "ma" = (
 /obj/structure/mirror,
 /turf/open/floor/rogue/blocks,
+/area/rogue/under/cave/spider)
+"mj" = (
+/obj/item/riddleofsteel,
+/turf/open/floor/rogue/churchmarble,
 /area/rogue/under/cave/spider)
 "mm" = (
 /obj/effect/spawner/roguemap/hauntpile,
@@ -245,6 +280,12 @@
 	},
 /turf/open/floor/rogue/tile/masonic/single,
 /area/rogue/under/cave/spider)
+"pQ" = (
+/mob/living/simple_animal/hostile/retaliate/rogue/spider/mutated{
+	faction = list("undead")
+	},
+/turf/open/floor/rogue/blocks/paving,
+/area/rogue/under/cave/spider)
 "pV" = (
 /obj/item/chair/stool/bar/rogue/crafted,
 /turf/open/floor/rogue/blocks,
@@ -280,6 +321,12 @@
 /obj/structure/closet/crate/roguecloset/crafted,
 /obj/effect/spawner/lootdrop/roguetown/dungeon/materials,
 /turf/open/floor/rogue/blocks,
+/area/rogue/under/cave/spider)
+"rs" = (
+/mob/living/simple_animal/hostile/retaliate/rogue/spider/mutated{
+	faction = list("undead")
+	},
+/turf/open/floor/rogue/tile/masonic/single,
 /area/rogue/under/cave/spider)
 "rv" = (
 /obj/structure/rack/rogue/shelf/big,
@@ -524,6 +571,16 @@
 /obj/effect/decal/cleanable/blood/footprints,
 /turf/open/floor/rogue/blocks/paving,
 /area/rogue/under/cave/spider)
+"DO" = (
+/mob/living/carbon/human/species/skeleton/npc/ambush{
+	inertia_move_delay = 0;
+	STACON = 13;
+	STAEND = 13;
+	STASPD = 13;
+	STASTR = 13
+	},
+/turf/open/floor/rogue/naturalstone,
+/area/rogue/under/cave/spider)
 "DS" = (
 /obj/item/roguecoin/copper/pile,
 /turf/open/floor/rogue/blocks,
@@ -719,6 +776,13 @@
 "Mr" = (
 /turf/open/floor/rogue/churchmarble,
 /area/rogue/under/cave/spider)
+"Ms" = (
+/mob/living/simple_animal/hostile/retaliate/rogue/minotaur{
+	faction = list("undead");
+	STASTR = 20
+	},
+/turf/open/floor/rogue/tile/masonic/inverted,
+/area/rogue/under/cave/spider)
 "Mu" = (
 /turf/open/floor/rogue/tile/masonic/single,
 /area/rogue/under/cave/spider)
@@ -801,6 +865,13 @@
 "RW" = (
 /obj/machinery/light/rogue/torchholder{
 	dir = 4
+	},
+/mob/living/carbon/human/species/skeleton/npc/ambush{
+	inertia_move_delay = 0;
+	STACON = 13;
+	STAEND = 13;
+	STASPD = 13;
+	STASTR = 13
 	},
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/cave/spider)
@@ -933,6 +1004,10 @@
 /obj/effect/spawner/lootdrop/roguetown/dungeon/materials,
 /turf/open/floor/rogue/tile/masonic/inverted,
 /area/rogue/under/cave/spider)
+"YK" = (
+/obj/item/rogueweapon/greatsword,
+/turf/open/floor/rogue/blocks,
+/area/rogue/under/cave/spider)
 "YP" = (
 /obj/item/ingot/gold,
 /obj/item/ingot/gold,
@@ -947,6 +1022,12 @@
 "YY" = (
 /obj/effect/decal/cleanable/vomit/old,
 /turf/open/floor/rogue/blocks,
+/area/rogue/under/cave/spider)
+"ZM" = (
+/mob/living/simple_animal/hostile/retaliate/rogue/spider/mutated{
+	faction = list("undead")
+	},
+/turf/open/floor/rogue/churchmarble,
 /area/rogue/under/cave/spider)
 "ZX" = (
 /obj/effect/spawner/lootdrop/roguetown/dungeon/misc,
@@ -3509,7 +3590,7 @@ Dn
 Dn
 Dn
 gF
-XL
+xu
 WE
 Fw
 Ml
@@ -3616,12 +3697,12 @@ XL
 aX
 aX
 aX
-XL
+xu
 XL
 gF
 is
 QW
-QW
+Lw
 QW
 QW
 QW
@@ -3925,7 +4006,7 @@ gF
 Eq
 gF
 gF
-XL
+dj
 XL
 xY
 gF
@@ -4129,7 +4210,7 @@ XL
 XL
 wX
 gF
-XL
+xu
 XL
 sl
 gF
@@ -4227,7 +4308,7 @@ gF
 gF
 gF
 gF
-XL
+dj
 XL
 XL
 gF
@@ -4351,7 +4432,7 @@ gF
 gF
 Dq
 XL
-XL
+xu
 Hg
 Ex
 Ys
@@ -4365,7 +4446,7 @@ gF
 gF
 gF
 Xn
-CQ
+mt
 Xn
 gF
 Dn
@@ -4436,34 +4517,34 @@ XL
 XL
 gF
 XL
-XL
+dj
 xY
 gF
 Dn
 gF
 So
 XL
+xu
+Eq
+XL
+xu
+XL
+XL
 XL
 Eq
 XL
-XL
-XL
-XL
-XL
-Eq
-XL
-XL
+dj
 XL
 XL
 oc
 XL
 XL
-XL
+xu
 qU
 CQ
 CQ
-CQ
-CQ
+mt
+FD
 CQ
 qU
 CQ
@@ -4531,7 +4612,7 @@ Dn
 Dn
 gF
 HN
-XL
+dj
 gF
 Qu
 xu
@@ -4544,7 +4625,7 @@ gF
 Dn
 gF
 jP
-XL
+Jf
 XL
 gF
 gF
@@ -4860,7 +4941,7 @@ Dn
 Dn
 gF
 kk
-XL
+xu
 Hy
 gF
 fA
@@ -4941,7 +5022,7 @@ Dn
 Dn
 Dn
 gF
-XL
+xu
 XL
 XL
 gF
@@ -4968,7 +5049,7 @@ gF
 fA
 Qu
 XL
-XL
+dj
 gF
 Dn
 Dn
@@ -5055,7 +5136,7 @@ Dn
 gF
 Gd
 xu
-XL
+Jf
 gF
 Dn
 Dn
@@ -5080,7 +5161,7 @@ Ww
 gF
 wR
 CQ
-CQ
+mt
 CQ
 kw
 gF
@@ -5277,14 +5358,14 @@ Ta
 Ta
 Ta
 Ta
-Ta
-Ta
+hI
+vF
 Ta
 Ta
 gF
 Xn
-CQ
-CQ
+FD
+FD
 CQ
 CQ
 gF
@@ -5361,7 +5442,7 @@ Dn
 gF
 pg
 XL
-XL
+dj
 gF
 Dn
 Dn
@@ -5471,25 +5552,25 @@ Dn
 Ta
 Ta
 Ta
+vF
+Ta
+Ta
+Ta
+Ta
+eH
 Ta
 Ta
 Ta
 Ta
 Ta
-eZ
-Ta
-Ta
-Ta
-Ta
-Ta
-Ta
+hI
 Ta
 Ta
 gF
 DM
 CQ
 uS
-CQ
+mt
 CQ
 gF
 Dn
@@ -5666,10 +5747,10 @@ XL
 dj
 XL
 XL
+xu
 XL
 XL
-XL
-Qu
+ll
 XL
 gF
 eZ
@@ -5764,7 +5845,7 @@ mw
 mw
 Eq
 XL
-XL
+xu
 XL
 XL
 XL
@@ -5800,7 +5881,7 @@ CQ
 qU
 jj
 CQ
-CQ
+FD
 CQ
 gF
 Dn
@@ -5861,7 +5942,7 @@ XL
 XL
 XL
 XL
-XL
+xu
 XL
 XL
 gF
@@ -5873,13 +5954,13 @@ xu
 wX
 XL
 lr
-XL
+xu
 XL
 gF
 eZ
 Ta
 Ta
-eZ
+eH
 eZ
 eZ
 eZ
@@ -5897,13 +5978,13 @@ Ta
 Ta
 gF
 CQ
-CQ
+mt
 CQ
 gF
 QG
 CQ
 uS
-CQ
+FD
 gF
 Dn
 Dn
@@ -5992,7 +6073,7 @@ eZ
 eZ
 eZ
 Ta
-Ta
+vF
 Ta
 Ta
 Ta
@@ -6083,18 +6164,18 @@ Dn
 eZ
 eZ
 eZ
-eZ
-eZ
-Ta
-eZ
-eZ
+pQ
 eZ
 Ta
-Ta
-Ta
+eZ
+eZ
 eZ
 Ta
 Ta
+Ta
+eZ
+Ta
+hI
 Ta
 gF
 gF
@@ -6103,7 +6184,7 @@ gF
 gF
 qU
 gF
-CQ
+mt
 CQ
 CQ
 RW
@@ -6202,10 +6283,10 @@ gF
 UE
 CQ
 oo
-CQ
+FD
 CQ
 uZ
-CQ
+FD
 CQ
 HS
 CQ
@@ -6302,7 +6383,7 @@ DN
 eZ
 qU
 CQ
-CQ
+mt
 CQ
 CQ
 CQ
@@ -6405,16 +6486,16 @@ Dn
 gF
 CQ
 CQ
+FD
 CQ
 CQ
 CQ
 CQ
+FD
 CQ
 CQ
 CQ
-CQ
-CQ
-CQ
+mt
 CQ
 gF
 Dn
@@ -6494,9 +6575,9 @@ Ta
 Ta
 Ta
 Ta
-Ta
-Ta
-Ta
+vF
+hI
+hI
 Ta
 Ta
 Ww
@@ -6513,8 +6594,8 @@ kw
 gF
 NB
 CQ
-CQ
-CQ
+mt
+FD
 CQ
 HS
 CQ
@@ -6585,9 +6666,9 @@ En
 XL
 Eq
 XL
+Jf
 XL
-XL
-XL
+xu
 XL
 Eq
 eZ
@@ -6778,7 +6859,7 @@ Dn
 Dn
 gF
 XL
-XL
+Jf
 XL
 gF
 gF
@@ -6883,7 +6964,7 @@ XL
 XL
 XL
 gF
-XL
+xu
 XL
 XL
 Eq
@@ -6921,8 +7002,8 @@ gF
 XL
 dj
 XL
-XL
-XL
+dj
+xu
 gF
 Dn
 Dn
@@ -6982,7 +7063,7 @@ Dn
 Dn
 gF
 wX
-XL
+xu
 XL
 Eq
 XL
@@ -7189,7 +7270,7 @@ XL
 XL
 wX
 gF
-XL
+xu
 XL
 wX
 gF
@@ -7225,7 +7306,7 @@ Dn
 pX
 VW
 XL
-XL
+xu
 XL
 XL
 XL
@@ -7287,7 +7368,7 @@ Dn
 Dn
 Dn
 gF
-XL
+xu
 XL
 XL
 gF
@@ -7325,11 +7406,11 @@ Dn
 Dn
 Dn
 pX
+xu
 XL
+xu
 XL
-XL
-XL
-XL
+dj
 xu
 XL
 wX
@@ -7841,7 +7922,7 @@ eZ
 eZ
 eH
 eZ
-eZ
+eH
 mm
 Ly
 Dn
@@ -7938,8 +8019,8 @@ Dn
 Dn
 gF
 XL
-XL
-XL
+xu
+YK
 dj
 XL
 XL
@@ -8103,9 +8184,9 @@ Dn
 Dn
 gF
 ef
-zw
+Ms
 Mu
-zw
+dU
 XL
 gF
 Dn
@@ -8206,7 +8287,7 @@ Dn
 gF
 lx
 Mu
-zw
+iU
 Mu
 XL
 gF
@@ -8247,13 +8328,13 @@ XL
 XL
 ay
 XL
-XL
+dj
 ay
 XL
 XL
 Eq
 XL
-XL
+dj
 XL
 gF
 Dn
@@ -8351,7 +8432,7 @@ XL
 wX
 XL
 XL
-XL
+xu
 XL
 gF
 Cu
@@ -8450,7 +8531,7 @@ gF
 gF
 Qu
 XL
-XL
+dj
 So
 Qu
 wX
@@ -8615,7 +8696,7 @@ gF
 Mu
 Mu
 Mu
-Mu
+MW
 gF
 gF
 gF
@@ -8625,7 +8706,7 @@ Dn
 Dn
 gF
 od
-zw
+iU
 jo
 XM
 YD
@@ -8662,12 +8743,12 @@ gF
 gF
 gF
 XL
-XL
+dj
 QW
 za
 No
 QW
-za
+DO
 za
 Dn
 Dn
@@ -8717,7 +8798,7 @@ Mu
 Mu
 im
 Mu
-Mu
+rs
 zF
 Mu
 gF
@@ -8764,7 +8845,7 @@ Dn
 gF
 gF
 XL
-XL
+dj
 QW
 QW
 za
@@ -8829,7 +8910,7 @@ zw
 zw
 tC
 zw
-zw
+iU
 Vi
 zw
 zw
@@ -8870,7 +8951,7 @@ XL
 Lw
 QW
 QW
-za
+hS
 hS
 QW
 za
@@ -9034,7 +9115,7 @@ Dn
 gF
 zw
 qI
-zw
+Ms
 zw
 zw
 gF
@@ -9078,8 +9159,8 @@ za
 QW
 Lw
 za
-za
-za
+hS
+DO
 QW
 za
 Dn
@@ -9383,19 +9464,19 @@ Dn
 Dn
 Dn
 za
+DO
 za
-za
-za
+hS
 QW
 QW
-za
+hS
 za
 za
 fI
 Mr
 JN
 Mr
-Mr
+ZM
 Mr
 BG
 Mr
@@ -9491,8 +9572,8 @@ QW
 za
 Lw
 QW
-QW
-za
+Lw
+DO
 Mr
 Mr
 Mr
@@ -9596,11 +9677,11 @@ za
 QW
 QW
 Mr
-Mr
+ZM
 xU
 Mr
 Mr
-Mr
+mj
 Mr
 BG
 Mr
@@ -9698,7 +9779,7 @@ Dn
 za
 Lw
 Mr
-Mr
+ZM
 Mr
 uI
 CL
@@ -9803,7 +9884,7 @@ fI
 CL
 Jv
 Mr
-Mr
+ZM
 Dh
 xU
 Mr
@@ -10013,7 +10094,7 @@ Mr
 JN
 Mr
 Mr
-Mr
+kV
 fI
 Dn
 Dn
