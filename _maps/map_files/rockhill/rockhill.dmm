@@ -4849,6 +4849,12 @@
 /obj/item/chair/stool/bar/rogue,
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/town)
+"flB" = (
+/obj/machinery/light/rogue/torchholder{
+	dir = 4
+	},
+/turf/open/floor/rogue/blocks,
+/area/rogue/indoors)
 "flH" = (
 /obj/structure/table/wood{
 	icon_state = "longtable"
@@ -7699,6 +7705,12 @@
 	},
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/indoors)
+"iwp" = (
+/obj/structure/fluff/railing/fence{
+	dir = 1
+	},
+/turf/open/floor/rogue/ruinedwood,
+/area/rogue/outdoors/rtfield)
 "iwv" = (
 /obj/structure/table/wood{
 	dir = 10;
@@ -15661,12 +15673,6 @@
 	},
 /turf/open/transparent/openspace,
 /area/rogue/indoors/town/shop)
-"sej" = (
-/obj/structure/fluff/railing/fence{
-	dir = 1
-	},
-/turf/open/floor/rogue/ruinedwood,
-/area/rogue/outdoors/rtfield)
 "seA" = (
 /obj/structure/mineral_door/bars{
 	locked = 1;
@@ -19581,12 +19587,6 @@
 /obj/item/reagent_containers/glass/bowl,
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/town/manor)
-"wAV" = (
-/obj/machinery/light/rogue/torchholder{
-	dir = 4
-	},
-/turf/open/floor/rogue/blocks,
-/area/rogue/indoors)
 "wBf" = (
 /obj/structure/closet/crate/chest{
 	lockid = "keep_armory"
@@ -259947,7 +259947,7 @@ qbG
 qbG
 qbG
 lVe
-wAV
+flB
 ddv
 ddv
 lVe
@@ -364065,7 +364065,7 @@ qbG
 qbG
 qbG
 qbG
-sej
+iwp
 qbG
 qbG
 qbG
@@ -364467,7 +364467,7 @@ qbG
 qbG
 qbG
 qbG
-sej
+iwp
 qbG
 qbG
 qbG
@@ -364869,7 +364869,7 @@ qbG
 qbG
 qbG
 qbG
-sej
+iwp
 qbG
 qbG
 qbG
