@@ -6,7 +6,6 @@
 "f" = (/obj/structure/underworld/barrier,/turf/open/floor/rogue/churchrough,/area/rogue/underworld)
 "g" = (/obj/structure/underworld/barrier,/turf/open/floor/rogue/underworld/road,/area/rogue/underworld)
 "h" = (/obj/machinery/light/rogue/campfire/densefire{fueluse = 1800000},/turf/open/floor/rogue/underworld/road,/area/rogue/underworld)
-"i" = (/obj/effect/landmark/underworld,/turf/open/floor/rogue/underworld/road,/area/rogue/underworld)
 "j" = (/obj/structure/underworld/carriage{pixel_x = -100},/turf/open/floor/rogue/churchrough,/area/rogue/underworld)
 "k" = (/turf/open/floor/rogue/churchrough,/area/rogue/underworld)
 "l" = (/obj/effect/landmark/underworldsafe,/turf/open/floor/rogue/underworld/road,/area/rogue/underworld)
@@ -64,7 +63,7 @@ nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnneekkennnnnnnnnnnnnnnnn
 nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnneeeneeeeeeeeeenneeeeeeekkeeeeeenneeeeeeeeeeeeneeeeeeeennennnennennneeeeoennnnneeeeeenneeeen
 nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnneeeeeeeeeeeeeenneeeeeeekpgeeeeenneeeeoeeeeeeennneeeeennnnnnnennnnnneeennnnneeeeennnnnneeeen
 nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnneeeeeneeennneenneeeeeeekkeeeeeenneeeeennnnnneeeeeeeeennnneeeeeeeeeeeenneeeeeeeneennnnneeeen
-neeeeeeeeeeeeeennnnneeeeeeeeeeeeeeeeeeeeeeeeeeeeeeenneeeeeeheieheennnneennnneeeeeennnneeeeeeeeeeeeeeeeeeeenneeeeeeeeeeneeeeeeeen
+neeeeeeeeeeeeeennnnneeeeeeeeeeeeeeeeeeeeeeeeeeeeeeenneeeeeeheeeheennnneennnneeeeeennnneeeeeeeeeeeeeeeeeeeenneeeeeeeeeeneeeeeeeen
 neeeeeoeeeeneeeeeeeeeeeeeeeeeeeeeeeeeeenneeeeeeeeeennnneeeeeeeeeeenneeeennneeeeeeennnneeeeeeeeeeeeeeeeeeeeeeeeeeeeneeeeeeeneeeen
 neeeeeeeeneneeeeeeeeeeeeeeeeeneeeeeeeeeeeeeeeeeeeeeeeenneeeeeeeeeennenneeeeeeeeeeeeeeeeeeeeeenneeeeeeeeeeeeeeeeeeeeeeeeeeennnnen
 neeeeeeeeenneeeeeeeeeennneeennneeenneeneeeeeeeneeeeeennneeeeeeeeeeneenneeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeenneeeeeeeeeeeeeennneen
