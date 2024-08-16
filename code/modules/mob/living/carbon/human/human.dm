@@ -1204,3 +1204,9 @@
 
 /mob/living/carbon/human/has_breasts()
 	return getorganslot(ORGAN_SLOT_BREASTS)
+
+/mob/living/carbon/human/proc/is_fertile()
+	return getorganslot(ORGAN_SLOT_VAGINA).fertility
+
+/mob/living/carbon/human/proc/is_virile()
+	return getorganslot(ORGAN_SLOT_TESTICLES).virility

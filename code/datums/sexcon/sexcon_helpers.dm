@@ -50,8 +50,8 @@
 		to_chat(user, "<span class='warning'>I can't do this.</span>")
 		return
 	if(!target.client || !target.client.prefs || (target.client.prefs.sexable == FALSE)) // Don't bang someone that dosn't want it.
-		to_chat(user, "<span class='warning'>[target] dosn't wish to be touched. (Thier ERP prefrence under options)</span>")
-		to_chat(target, "<span class='warning'>[user] failed to touch you. (Your ERP prefrence under options)</span>")
+		to_chat(user, "<span class='warning'>[target] dosn't wish to be touched. (Their ERP preference under options)</span>")
+		to_chat(target, "<span class='warning'>[user] failed to touch you. (Your ERP preference under options)</span>")
 		return
 	user.sexcon.start(src)
 
@@ -71,7 +71,7 @@
 	var/obj/item/organ/vagina/vag = wife.getorganslot(ORGAN_SLOT_VAGINA)
 	if(!vag)
 		return
-	if(prob(25))
+	if(prob(25) && wife.is_fertile() && is_virile())
 		vag.be_impregnated(src)
 
 /mob/living/carbon/human/proc/get_highest_grab_state_on(mob/living/carbon/human/victim)

@@ -135,7 +135,7 @@
 			theirgroin = FALSE
 		if(!get_location_accessible(src, BODY_ZONE_CHEST))
 			theirchest = FALSE
-		
+
 		if(ourgroin)
 			if(ourpenis)
 				if(theirgroin)
@@ -196,7 +196,7 @@
 				if(G)
 					src.sexcon.begin_fingering(G, user)
 
-		
+
 /datum/sex_controller/proc/begin_fuck(mob/living/user)
 	testing("fuckstart")
 	if(!user)
@@ -1091,7 +1091,7 @@
 
 	if(owner.stat != CONSCIOUS)
 		cancel_our_actions()
-	
+
 	if(owner.hasTesticles())
 		if(horny > 30 && !blueballs)
 			blueballs = TRUE
@@ -1126,7 +1126,7 @@
 		cum(source)
 		owner.playsound_local(owner, 'sound/misc/mat/end.ogg', 100)
 		return TRUE
-	
+
 	if(owner.hasTesticles())
 		if(horny <= 0 && oldhorny > 0 && blueballs && !source)
 			owner.add_stress(/datum/stressevent/blueb)

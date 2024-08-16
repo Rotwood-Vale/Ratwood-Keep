@@ -78,6 +78,7 @@
 	penis_type = PENIS_TYPE_TENTACLE
 	sheath_type = SHEATH_TYPE_NONE
 
+	
 /obj/item/organ/vagina
 	name = "vagina"
 	icon_state = "severedtail" //placeholder
@@ -86,6 +87,7 @@
 	slot = ORGAN_SLOT_VAGINA
 	accessory_type = /datum/sprite_accessory/vagina/human
 	var/pregnant = FALSE
+	var/fertility = TRUE
 
 /obj/item/organ/vagina/proc/be_impregnated(mob/living/carbon/human/father)
 	if(pregnant)
@@ -123,6 +125,7 @@
 	organ_dna_type = /datum/organ_dna/testicles
 	accessory_type = /datum/sprite_accessory/testicles/pair
 	var/ball_size = DEFAULT_TESTICLES_SIZE
+	var/virility = TRUE
 
 /obj/item/organ/testicles/internal
 	name = "internal testicles"
