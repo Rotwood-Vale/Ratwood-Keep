@@ -15,32 +15,20 @@
 /datum/outfit/job/roguetown/adventurer/doctor/pre_equip(mob/living/carbon/human/H)
 	..()
 	mask = /obj/item/clothing/mask/rogue/spectacles
-	neck = /obj/item/clothing/neck/roguetown/psicross/wood
+	head = /obj/item/clothing/head/roguetown/nightman
+	neck = /obj/item/storage/belt/rogue/pouch/coins/mid /// they are a fine dressed doctor. no one else gonna pay em. psycross removed since it was a hold over for secular
+	armor = /obj/item/clothing/suit/roguetown/armor/leather/vest
+	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/puritan
 	belt = /obj/item/storage/belt/rogue/leather
-	beltl = /obj/item/storage/belt/rogue/pouch/coins/poor
-	beltr = /obj/item/rogueweapon/huntingknife/idagger
+	beltl = /obj/item/flashlight/flare/torch/lantern
+	beltr = /obj/item/rogueweapon/huntingknife/cleaver /// proper self defense an tree aquiring
+	pants = /obj/item/clothing/under/roguetown/trou
 	shoes = /obj/item/clothing/shoes/roguetown/simpleshoes
-	backl = /obj/item/storage/backpack/rogue/backpack
+	backl = /obj/item/storage/backpack/rogue/backpack/skit
 	backpack_contents = list(
-		/obj/item/rogueweapon/surgery/scalpel = 1,
-		/obj/item/rogueweapon/surgery/saw = 1,
-		/obj/item/rogueweapon/surgery/hemostat = 2,
-		/obj/item/rogueweapon/surgery/retractor = 1,
-		/obj/item/rogueweapon/surgery/bonesetter = 1,
-		/obj/item/rogueweapon/surgery/cautery = 1,
 		/obj/item/natural/worms/leech/cheele = 1,
-		/obj/item/needle = 1,
 		/obj/item/natural/cloth = 2,
 	)
-	if(H.pronouns == SHE_HER)
-		armor = /obj/item/clothing/suit/roguetown/shirt/dress/silkdress
-		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
-		head = /obj/item/clothing/head/roguetown/armingcap
-	else
-		armor = /obj/item/clothing/suit/roguetown/armor/leather/vest
-		pants = /obj/item/clothing/under/roguetown/trou
-		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/puritan
-		head = /obj/item/clothing/head/roguetown/nightman
 
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/combat/knives, 3, TRUE)
