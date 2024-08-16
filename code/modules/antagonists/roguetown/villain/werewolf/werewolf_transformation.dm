@@ -17,14 +17,14 @@
                     owner.current.playsound_local(get_turf(owner.current), 'sound/music/wolfintro.ogg', 80, FALSE, pressure_affected = FALSE)
                     H.flash_fullscreen("redflash3")
                     transforming = world.time // timer
-    
+
     // Begin transformation
     else if(transforming)
         if (world.time >= transforming + 35 SECONDS) // Stage 3
             H.werewolf_transform()
             transforming = FALSE
             transformed = TRUE // Mark as transformed
-            
+
         else if (world.time >= transforming + 25 SECONDS) // Stage 2
             H.flash_fullscreen("redflash3")
             H.emote("agony", forced = TRUE)
@@ -35,7 +35,7 @@
         else if (world.time >= transforming + 10 SECONDS) // Stage 1
             H.emote("")
             to_chat(H, span_warning("I can feel my muscles aching, it feels HORRIBLE..."))
-        
+
 
     // Werewolf reverts to human form during the day
     else if(transformed)
@@ -51,11 +51,11 @@
                 H.werewolf_untransform()
                 transformed = FALSE
                 untransforming = FALSE // Reset untransforming phase
-                
+
             else if (world.time >= untransforming + 10 SECONDS) // Alert player
                 H.flash_fullscreen("redflash1")
                 to_chat(H, span_warning("Daylight shines around me... the curse begins to fade."))
-			
+
 
 /mob/living/carbon/human/species/werewolf/death(gibbed)
 	werewolf_untransform(TRUE, gibbed)
@@ -117,6 +117,10 @@
 	W.mind.adjust_skillrank(/datum/skill/combat/wrestling, 6, TRUE)
 	W.mind.adjust_skillrank(/datum/skill/combat/unarmed, 6, TRUE)
 	W.mind.adjust_skillrank(/datum/skill/misc/climbing, 6, TRUE)
+
+	W.change_stat("strength", 5)
+	W.change_stat("constitution", 5)
+	W.change_stat("endurance", 3)
 
 	W.AddSpell(new /obj/effect/proc_holder/spell/self/howl)
 	W.AddSpell(new /obj/effect/proc_holder/spell/self/claws)
