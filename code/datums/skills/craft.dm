@@ -25,9 +25,6 @@
 /datum/skill/craft/masonry
 	name = "Masonry"
 
-/datum/skill/craft/traps
-	name = "Trapmaking"
-
 /datum/skill/craft/cooking
 	name = "Cooking"
 

@@ -30,7 +30,6 @@
 		H.mind.adjust_skillrank(/datum/skill/craft/masonry, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/craft/engineering, pick(2,2,3), TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/sewing, pick(1,1,2), TRUE)
-		H.mind.adjust_skillrank(/datum/skill/craft/traps, pick(1,1,2), TRUE)
 		H.mind.adjust_skillrank(/datum/skill/craft/blacksmithing, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/craft/armorsmithing, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/craft/weaponsmithing, 3, TRUE)
