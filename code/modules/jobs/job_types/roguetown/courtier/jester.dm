@@ -42,9 +42,9 @@
 		H.mind.adjust_skillrank(/datum/skill/misc/stealing, 5, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/climbing, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/music, 2, TRUE)
-		H.STASTR = clamp(roll(4d6-4), 1, 20)
-		H.STAINT = clamp(roll(4d6-4), 1, 20)
-		H.STALUC = clamp(roll(4d6-4), 1, 20)
+		H.STASTR = clamp(roll("4d6"-4), 1, 20)
+		H.STAINT = clamp(roll("4d6"-4), 1, 20)
+		H.STALUC = clamp(roll("4d6"-4), 1, 20)
 		H.cmode_music = 'sound/music/combat_jester.ogg'
 	H.verbs |= /mob/living/carbon/human/proc/ventriloquate
 	H.verbs |= /mob/living/carbon/human/proc/ear_trick
