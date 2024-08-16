@@ -39,7 +39,7 @@
 	if(world.time > next_decree)
 		next_decree = world.time + rand(3 MINUTES, 8 MINUTES)
 		if(GLOB.lord_decrees.len)
-			say("The King Decrees: [pick(GLOB.lord_decrees)]", spans = list("info"))
+			say("The Monarch Decrees: [pick(GLOB.lord_decrees)]", spans = list("info"))
 
 /obj/structure/roguemachine/scomm/attack_hand(mob/living/user)
 	. = ..()
