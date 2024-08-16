@@ -311,6 +311,68 @@
 	icon_state = "eyekey"
 	lockid = "porta"
 
+//Dun Manor house keys
+/obj/item/roguekey/houses
+	name = ""
+	icon_state = ""
+	lockid = ""
+
+/obj/item/roguekey/houses/house1
+	name = "house i key"
+	icon_state = "brownkey"
+	lockid = "house1"
+
+/obj/item/roguekey/houses/house2
+	name = "house ii key"
+	icon_state = "brownkey"
+	lockid = "house2"
+
+/obj/item/roguekey/houses/house3
+	name = "house iii key"
+	icon_state = "brownkey"
+	lockid = "house3"
+
+/obj/item/roguekey/houses/house4
+	name = "house iv key"
+	icon_state = "brownkey"
+	lockid = "house4"
+
+/obj/item/roguekey/houses/house5
+	name = "house v key"
+	icon_state = "brownkey"
+	lockid = "house5"
+
+/obj/item/roguekey/houses/house6
+	name = "house vi key"
+	icon_state = "brownkey"
+	lockid = "house6"
+
+//Apartment and shop keys
+/obj/item/roguekey/apartments
+	name = ""
+	icon_state = ""
+	lockid = ""
+
+/obj/item/roguekey/apartments/apartment1
+	name = "apartment i key"
+	icon_state = "brownkey"
+	lockid = "apartment1"
+
+/obj/item/roguekey/apartments/apartment2
+	name = "apartment ii key"
+	icon_state = "brownkey"
+	lockid = "apartment2"
+
+/obj/item/roguekey/apartments/apartment3
+	name = "apartment iii key"
+	icon_state = "brownkey"
+	lockid = "apartment3"
+
+/obj/item/roguekey/apartments/apartment4
+	name = "apartment iv key"
+	icon_state = "brownkey"
+	lockid = "apartment4"
+
 //custom key
 /obj/item/roguekey/custom
 	name = "custom key"
@@ -319,7 +381,7 @@
 
 /obj/item/roguekey/custom/attackby(obj/item/I, mob/user, params)
 	if(istype(I, /obj/item/rogueweapon/hammer))
-		var/input = (input(user, "What would you name this key?", "", "") as text) 
+		var/input = (input(user, "What would you name this key?", "", "") as text)
 		if(input)
 			name = input + " key"
 			to_chat(user, span_notice("You rename the key to [name]."))
@@ -355,7 +417,7 @@
 		F.lockhash = src.lockhash
 		to_chat(user, span_notice("You finish [F]."))
 		qdel(src)
-	
+
 
 //custom lock unfinished
 /obj/item/customlock
@@ -440,4 +502,4 @@
 				KE.name = src.holdname
 			to_chat(user, span_notice("You add [src] to [K]."))
 			qdel(src)
-			
+
