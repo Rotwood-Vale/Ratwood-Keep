@@ -142,6 +142,10 @@
 	},
 /turf/open/floor/rogue/tile/masonic/inverted,
 /area/rogue/under/cave/spider)
+"iV" = (
+/obj/item/rogueweapon/eaglebeak/lucerne,
+/turf/open/floor/rogue/dirt/road,
+/area/rogue/under/cave/spider)
 "iX" = (
 /obj/structure/fluff/grindwheel,
 /turf/open/floor/rogue/tile/masonic/inverted,
@@ -281,10 +285,8 @@
 /turf/open/floor/rogue/tile/masonic/single,
 /area/rogue/under/cave/spider)
 "pQ" = (
-/mob/living/simple_animal/hostile/retaliate/rogue/spider/mutated{
-	faction = list("undead")
-	},
-/turf/open/floor/rogue/blocks/paving,
+/obj/item/rogueweapon/shield/tower/metal,
+/turf/open/floor/rogue/churchmarble,
 /area/rogue/under/cave/spider)
 "pV" = (
 /obj/item/chair/stool/bar/rogue/crafted,
@@ -915,15 +917,8 @@
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/cave/spider)
 "UR" = (
-/obj/effect/decal/cleanable/blood/old,
-/mob/living/carbon/human/species/skeleton/npc/ambush{
-	inertia_move_delay = 0;
-	STACON = 13;
-	STAEND = 13;
-	STASPD = 13;
-	STASTR = 13
-	},
-/turf/open/floor/rogue/blocks,
+/obj/item/scomstone,
+/turf/open/floor/rogue/churchmarble,
 /area/rogue/under/cave/spider)
 "Vi" = (
 /obj/machinery/anvil,
@@ -3590,7 +3585,7 @@ Dn
 Dn
 Dn
 gF
-xu
+XL
 WE
 Fw
 Ml
@@ -3796,7 +3791,7 @@ Dn
 gF
 XL
 XL
-dj
+XL
 XL
 XL
 XL
@@ -4006,7 +4001,7 @@ gF
 Eq
 gF
 gF
-dj
+XL
 XL
 xY
 gF
@@ -4524,16 +4519,16 @@ Dn
 gF
 So
 XL
-xu
-Eq
-XL
-xu
-XL
-XL
 XL
 Eq
 XL
-dj
+xu
+XL
+XL
+XL
+Eq
+XL
+XL
 XL
 XL
 oc
@@ -4543,7 +4538,7 @@ xu
 qU
 CQ
 CQ
-mt
+CQ
 FD
 CQ
 qU
@@ -4615,7 +4610,7 @@ HN
 dj
 gF
 Qu
-xu
+XL
 XL
 gF
 XL
@@ -4625,7 +4620,7 @@ gF
 Dn
 gF
 jP
-Jf
+XL
 XL
 gF
 gF
@@ -4636,7 +4631,7 @@ gF
 gF
 AJ
 XL
-UR
+Qu
 pV
 Qu
 nv
@@ -4932,7 +4927,7 @@ Dn
 gF
 sl
 DS
-xu
+XL
 gF
 Dn
 Dn
@@ -5136,7 +5131,7 @@ Dn
 gF
 Gd
 xu
-Jf
+XL
 gF
 Dn
 Dn
@@ -5359,13 +5354,13 @@ Ta
 Ta
 Ta
 hI
-vF
+Ta
 Ta
 Ta
 gF
 Xn
-FD
-FD
+CQ
+CQ
 CQ
 CQ
 gF
@@ -5744,10 +5739,10 @@ sl
 gF
 wJ
 XL
-dj
 XL
 XL
-xu
+XL
+XL
 XL
 XL
 ll
@@ -5764,7 +5759,7 @@ eZ
 Ta
 Ta
 eZ
-eH
+eZ
 Ta
 eZ
 eZ
@@ -5881,7 +5876,7 @@ CQ
 qU
 jj
 CQ
-FD
+CQ
 CQ
 gF
 Dn
@@ -5942,7 +5937,7 @@ XL
 XL
 XL
 XL
-xu
+XL
 XL
 XL
 gF
@@ -5950,7 +5945,7 @@ wJ
 XL
 fR
 XL
-xu
+XL
 wX
 XL
 lr
@@ -5960,7 +5955,7 @@ gF
 eZ
 Ta
 Ta
-eH
+eZ
 eZ
 eZ
 eZ
@@ -5978,13 +5973,13 @@ Ta
 Ta
 gF
 CQ
-mt
+CQ
 CQ
 gF
 QG
 CQ
 uS
-FD
+CQ
 gF
 Dn
 Dn
@@ -6164,7 +6159,7 @@ Dn
 eZ
 eZ
 eZ
-pQ
+eZ
 eZ
 Ta
 eZ
@@ -6184,7 +6179,7 @@ gF
 gF
 qU
 gF
-mt
+CQ
 CQ
 CQ
 RW
@@ -6286,9 +6281,9 @@ oo
 FD
 CQ
 uZ
-FD
 CQ
-HS
+CQ
+CQ
 CQ
 CQ
 HS
@@ -6383,7 +6378,7 @@ DN
 eZ
 qU
 CQ
-mt
+CQ
 CQ
 CQ
 CQ
@@ -6476,7 +6471,7 @@ Ta
 Ta
 Ta
 Ta
-vF
+Ta
 Ta
 Ta
 Ta
@@ -6486,12 +6481,12 @@ Dn
 gF
 CQ
 CQ
-FD
 CQ
 CQ
 CQ
 CQ
-FD
+CQ
+CQ
 CQ
 CQ
 CQ
@@ -6576,7 +6571,7 @@ Ta
 Ta
 Ta
 vF
-hI
+Ta
 hI
 Ta
 Ta
@@ -6666,7 +6661,7 @@ En
 XL
 Eq
 XL
-Jf
+XL
 XL
 xu
 XL
@@ -6859,7 +6854,7 @@ Dn
 Dn
 gF
 XL
-Jf
+XL
 XL
 gF
 gF
@@ -7270,7 +7265,7 @@ XL
 XL
 wX
 gF
-xu
+XL
 XL
 wX
 gF
@@ -7408,9 +7403,9 @@ Dn
 pX
 xu
 XL
-xu
 XL
-dj
+XL
+XL
 xu
 XL
 wX
@@ -7510,7 +7505,7 @@ Dn
 Ly
 eZ
 xz
-eH
+eZ
 eZ
 eZ
 eZ
@@ -7917,7 +7912,7 @@ Dn
 Dn
 Ly
 mm
-eH
+eZ
 eZ
 eZ
 eH
@@ -8184,7 +8179,7 @@ Dn
 Dn
 gF
 ef
-Ms
+zw
 Mu
 dU
 XL
@@ -8328,13 +8323,13 @@ XL
 XL
 ay
 XL
-dj
+XL
 ay
 XL
 XL
 Eq
 XL
-dj
+XL
 XL
 gF
 Dn
@@ -8743,12 +8738,12 @@ gF
 gF
 gF
 XL
-dj
+XL
 QW
 za
 No
 QW
-DO
+za
 za
 Dn
 Dn
@@ -8951,7 +8946,7 @@ XL
 Lw
 QW
 QW
-hS
+za
 hS
 QW
 za
@@ -9160,7 +9155,7 @@ QW
 Lw
 za
 hS
-DO
+za
 QW
 za
 Dn
@@ -9363,7 +9358,7 @@ Dn
 No
 QW
 QW
-QW
+iV
 QW
 QW
 QW
@@ -9380,7 +9375,7 @@ xU
 Mr
 JN
 Mr
-Mr
+pQ
 fI
 Dn
 Dn
@@ -9469,7 +9464,7 @@ za
 hS
 QW
 QW
-hS
+za
 za
 za
 fI
@@ -9572,8 +9567,8 @@ QW
 za
 Lw
 QW
-Lw
-DO
+QW
+za
 Mr
 Mr
 Mr
@@ -9779,7 +9774,7 @@ Dn
 za
 Lw
 Mr
-ZM
+Mr
 Mr
 uI
 CL
@@ -9888,7 +9883,7 @@ ZM
 Dh
 xU
 Mr
-Mr
+UR
 Mr
 Jv
 fI
@@ -10092,7 +10087,7 @@ NR
 uI
 Mr
 JN
-Mr
+pQ
 Mr
 kV
 fI

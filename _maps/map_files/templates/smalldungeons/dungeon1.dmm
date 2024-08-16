@@ -1,9 +1,7 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "ae" = (
-/mob/living/simple_animal/hostile/retaliate/rogue/spider/mutated{
-	faction = list("undead")
-	},
-/turf/open/floor/rogue/blocks/paving,
+/obj/item/rogueweapon/shield/tower/metal,
+/turf/open/floor/rogue/churchmarble,
 /area/rogue/under/cave/spider)
 "ag" = (
 /obj/structure/fluff/walldeco/bigpainting/lake,
@@ -399,6 +397,10 @@
 "uk" = (
 /obj/effect/decal/cleanable/blood/old,
 /turf/open/floor/rogue/blocks,
+/area/rogue/under/cave/spider)
+"um" = (
+/obj/item/rogueweapon/eaglebeak/lucerne,
+/turf/open/floor/rogue/dirt/road,
 /area/rogue/under/cave/spider)
 "uq" = (
 /obj/structure/table/wood{
@@ -986,15 +988,8 @@
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/cave/spider)
 "XC" = (
-/obj/effect/decal/cleanable/blood/old,
-/mob/living/carbon/human/species/skeleton/npc/ambush{
-	inertia_move_delay = 0;
-	STACON = 13;
-	STAEND = 13;
-	STASPD = 13;
-	STASTR = 13
-	},
-/turf/open/floor/rogue/blocks,
+/obj/item/scomstone,
+/turf/open/floor/rogue/churchmarble,
 /area/rogue/under/cave/spider)
 "Yf" = (
 /obj/effect/decal/cleanable/cobweb{
@@ -3590,7 +3585,7 @@ Ih
 Ih
 Ih
 lR
-xq
+qH
 NS
 Am
 Qt
@@ -3796,7 +3791,7 @@ Ih
 lR
 qH
 qH
-Vl
+qH
 qH
 qH
 qH
@@ -4006,7 +4001,7 @@ lR
 KS
 lR
 lR
-Vl
+qH
 qH
 iZ
 lR
@@ -4524,16 +4519,16 @@ Ih
 lR
 Oq
 qH
-xq
-KS
-qH
-xq
-qH
-qH
 qH
 KS
 qH
-Vl
+xq
+qH
+qH
+qH
+KS
+qH
+qH
 qH
 qH
 cE
@@ -4543,7 +4538,7 @@ xq
 IV
 SM
 SM
-Vs
+SM
 CI
 SM
 IV
@@ -4615,7 +4610,7 @@ GN
 Vl
 lR
 uk
-xq
+qH
 qH
 lR
 qH
@@ -4625,7 +4620,7 @@ lR
 Ih
 lR
 Gq
-we
+qH
 qH
 lR
 lR
@@ -4636,7 +4631,7 @@ lR
 lR
 mt
 qH
-XC
+uk
 xM
 uk
 Rg
@@ -4932,7 +4927,7 @@ Ih
 lR
 ox
 Kt
-xq
+qH
 lR
 Ih
 Ih
@@ -5136,7 +5131,7 @@ Ih
 lR
 oF
 xq
-we
+qH
 lR
 Ih
 Ih
@@ -5359,13 +5354,13 @@ Nd
 Nd
 Nd
 Rd
-nm
+Nd
 Nd
 Nd
 lR
 kR
-CI
-CI
+SM
+SM
 SM
 SM
 lR
@@ -5744,10 +5739,10 @@ ox
 lR
 PG
 qH
-Vl
 qH
 qH
-xq
+qH
+qH
 qH
 qH
 Pd
@@ -5764,7 +5759,7 @@ Nz
 Nd
 Nd
 Nz
-ZL
+Nz
 Nd
 Nz
 Nz
@@ -5881,7 +5876,7 @@ SM
 IV
 nH
 SM
-CI
+SM
 SM
 lR
 Ih
@@ -5942,7 +5937,7 @@ qH
 qH
 qH
 qH
-xq
+qH
 qH
 qH
 lR
@@ -5950,7 +5945,7 @@ PG
 qH
 bc
 qH
-xq
+qH
 my
 qH
 oI
@@ -5960,7 +5955,7 @@ lR
 Nz
 Nd
 Nd
-ZL
+Nz
 Nz
 Nz
 Nz
@@ -5978,13 +5973,13 @@ Nd
 Nd
 lR
 SM
-Vs
+SM
 SM
 lR
 Jl
 SM
 kn
-CI
+SM
 lR
 Ih
 Ih
@@ -6164,7 +6159,7 @@ Ih
 Nz
 Nz
 Nz
-ae
+Nz
 Nz
 Nd
 Nz
@@ -6184,7 +6179,7 @@ lR
 lR
 IV
 lR
-Vs
+SM
 SM
 SM
 Os
@@ -6286,9 +6281,9 @@ qt
 CI
 SM
 Ew
-CI
 SM
-ip
+SM
+SM
 SM
 SM
 ip
@@ -6383,7 +6378,7 @@ YA
 Nz
 IV
 SM
-Vs
+SM
 SM
 SM
 SM
@@ -6476,7 +6471,7 @@ Nd
 Nd
 Nd
 Nd
-nm
+Nd
 Nd
 Nd
 Nd
@@ -6486,12 +6481,12 @@ Ih
 lR
 SM
 SM
-CI
 SM
 SM
 SM
 SM
-CI
+SM
+SM
 SM
 SM
 SM
@@ -6576,7 +6571,7 @@ Nd
 Nd
 Nd
 nm
-Rd
+Nd
 Rd
 Nd
 Nd
@@ -6666,7 +6661,7 @@ nX
 qH
 KS
 qH
-we
+qH
 qH
 xq
 qH
@@ -6859,7 +6854,7 @@ Ih
 Ih
 lR
 qH
-we
+qH
 qH
 lR
 lR
@@ -7270,7 +7265,7 @@ qH
 qH
 my
 lR
-xq
+qH
 qH
 my
 lR
@@ -7408,9 +7403,9 @@ Ih
 lk
 xq
 qH
-xq
 qH
-Vl
+qH
+qH
 xq
 qH
 my
@@ -7510,7 +7505,7 @@ Ih
 Vd
 Nz
 cg
-ZL
+Nz
 Nz
 Nz
 Nz
@@ -7917,7 +7912,7 @@ Ih
 Ih
 Vd
 OC
-ZL
+Nz
 Nz
 Nz
 ZL
@@ -8184,7 +8179,7 @@ Ih
 Ih
 lR
 Bn
-lc
+ST
 dQ
 Qc
 qH
@@ -8328,13 +8323,13 @@ qH
 qH
 ha
 qH
-Vl
+qH
 ha
 qH
 qH
 KS
 qH
-Vl
+qH
 qH
 lR
 Ih
@@ -8743,12 +8738,12 @@ lR
 lR
 lR
 qH
-Vl
+qH
 Do
 Km
 JB
 Do
-Ue
+Km
 Km
 Ih
 Ih
@@ -8951,7 +8946,7 @@ qH
 QZ
 Do
 Do
-Jh
+Km
 Jh
 Do
 Km
@@ -9160,7 +9155,7 @@ Do
 QZ
 Km
 Jh
-Ue
+Km
 Do
 Km
 Ih
@@ -9363,7 +9358,7 @@ Ih
 JB
 Do
 Do
-Do
+um
 Do
 Do
 Do
@@ -9380,7 +9375,7 @@ eA
 Fa
 oa
 Fa
-Fa
+ae
 fa
 Ih
 Ih
@@ -9469,7 +9464,7 @@ Km
 Jh
 Do
 Do
-Jh
+Km
 Km
 Km
 fa
@@ -9572,8 +9567,8 @@ Do
 Km
 QZ
 Do
-QZ
-Ue
+Do
+Km
 Fa
 Fa
 Fa
@@ -9779,7 +9774,7 @@ Ih
 Km
 QZ
 Fa
-mK
+Fa
 Fa
 Eg
 kt
@@ -9888,7 +9883,7 @@ mK
 YU
 eA
 Fa
-Fa
+XC
 Fa
 Np
 fa
@@ -10092,7 +10087,7 @@ aN
 Eg
 Fa
 oa
-Fa
+ae
 Fa
 Ln
 fa
