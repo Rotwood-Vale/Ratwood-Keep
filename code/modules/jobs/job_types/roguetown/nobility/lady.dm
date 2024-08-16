@@ -53,6 +53,7 @@
 
 	id = /obj/item/clothing/ring/silver
 	shoes = /obj/item/clothing/shoes/roguetown/shortboots
+	pants = /obj/item/clothing/under/roguetown/tights/stockings/silk/white
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/misc/stealing, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 3, TRUE)

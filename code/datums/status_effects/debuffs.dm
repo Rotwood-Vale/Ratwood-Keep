@@ -82,7 +82,7 @@
 	. = ..()
 	if(.)
 		if(owner.cmode)
-			owner.cmode = 0
+			owner.set_cmode(FALSE)
 		SSdroning.kill_droning(owner.client)
 		SSdroning.kill_loop(owner.client)
 		SSdroning.kill_rain(owner.client)

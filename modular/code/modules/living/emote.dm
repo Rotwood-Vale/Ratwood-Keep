@@ -4,7 +4,6 @@
 #ifdef MATURESERVER
 	message_param = "%t"
 #endif
-	restraint_check = TRUE
 
 /datum/emote/living/subtle/can_run_emote(mob/user, status_check, intentional)
 	. = ..() && intentional
