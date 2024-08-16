@@ -14,23 +14,23 @@
 	if(!text)
 		return the_pq
 	else
-		if(the_pq >= 100)
-			return "<span style='color: #00ff00;'>Legendary</span>"
-		if(the_pq >= 70)
-			return "<span style='color: #74cde0;'>Exceptional</span>"
 		if(the_pq >= 30)
+			return "<span style='color: #00ff00;'>Legendary</span>"
+		if(the_pq >= 25)
+			return "<span style='color: #74cde0;'>Exceptional</span>"
+		if(the_pq >= 15)
 			return "<span style='color: #47b899;'>Great</span>"
-		if(the_pq >= 5)
+		if(the_pq >= 10)
 			return "<span style='color: #58a762;'>Good</span>"
-		if(the_pq >= -4)
+		if(the_pq >= -5)
 			return "Normal"
-		if(the_pq >= -30)
+		if(the_pq >= -10)
 			return "<span style='color: #be6941;'>Poor</span>"
-		if(the_pq >= -70)
+		if(the_pq >= -15)
 			return "<span style='color: #cd4232;'>Terrible</span>"
-		if(the_pq >= -99)
+		if(the_pq >= -25)
 			return "<span style='color: #e2221d;'>Abysmal</span>"
-		if(the_pq <= -100)
+		if(the_pq <= -30)
 			return "<span style='color: #ff00ff;'>Shitter</span>"
 		return "Normal"
 
@@ -43,7 +43,7 @@
 	if(json[key])
 		curpq = json[key]
 	curpq += amt
-	curpq = CLAMP(curpq, -100, 100)
+	curpq = CLAMP(curpq, -30, 30)
 	json[key] = curpq
 	fdel(json_file)
 	WRITE_FILE(json_file, json_encode(json))
@@ -181,8 +181,6 @@
 		if(!selection)
 			return
 		theykey = selection
-	if(theykey == ckey)
-		to_chat(src, span_boldwarning("That's you!"))
 		return
 	if(!fexists("data/player_saves/[copytext(theykey,1,2)]/[theykey]/preferences.sav"))
 		to_chat(src, span_boldwarning("User does not exist."))
