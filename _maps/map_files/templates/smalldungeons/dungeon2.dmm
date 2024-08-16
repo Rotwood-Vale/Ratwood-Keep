@@ -868,13 +868,6 @@
 /obj/machinery/light/rogue/torchholder{
 	dir = 4
 	},
-/mob/living/carbon/human/species/skeleton/npc/ambush{
-	inertia_move_delay = 0;
-	STACON = 13;
-	STAEND = 13;
-	STASPD = 13;
-	STASTR = 13
-	},
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/cave/spider)
 "RX" = (
@@ -4645,7 +4638,7 @@ gF
 gF
 gF
 CQ
-FD
+CQ
 Xn
 gF
 Dn
@@ -5565,7 +5558,7 @@ gF
 DM
 CQ
 uS
-mt
+CQ
 CQ
 gF
 Dn
@@ -6490,7 +6483,7 @@ CQ
 CQ
 CQ
 CQ
-mt
+CQ
 CQ
 gF
 Dn
@@ -6583,14 +6576,14 @@ Dn
 gF
 fj
 CQ
-mt
+CQ
 CQ
 kw
 gF
 NB
 CQ
-mt
-FD
+CQ
+HS
 CQ
 HS
 CQ
@@ -6995,10 +6988,10 @@ Dn
 Dn
 gF
 XL
-dj
 XL
-dj
-xu
+XL
+XL
+XL
 gF
 Dn
 Dn
@@ -8016,7 +8009,7 @@ gF
 XL
 xu
 YK
-dj
+XL
 XL
 XL
 XL
@@ -8526,7 +8519,7 @@ gF
 gF
 Qu
 XL
-dj
+XL
 So
 Qu
 wX
@@ -8840,7 +8833,7 @@ Dn
 gF
 gF
 XL
-dj
+XL
 QW
 QW
 za
@@ -8905,7 +8898,7 @@ zw
 zw
 tC
 zw
-iU
+zw
 Vi
 zw
 zw
@@ -9009,7 +9002,7 @@ gF
 zw
 zw
 zw
-dU
+zw
 zw
 gF
 Dn
@@ -9573,7 +9566,7 @@ Mr
 Mr
 Mr
 BG
-BG
+Mr
 uI
 Mr
 Mr

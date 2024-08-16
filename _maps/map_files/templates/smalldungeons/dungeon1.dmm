@@ -811,13 +811,6 @@
 /obj/machinery/light/rogue/torchholder{
 	dir = 4
 	},
-/mob/living/carbon/human/species/skeleton/npc/ambush{
-	inertia_move_delay = 0;
-	STACON = 13;
-	STAEND = 13;
-	STASPD = 13;
-	STASTR = 13
-	},
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/cave/spider)
 "Ow" = (
@@ -4645,7 +4638,7 @@ lR
 lR
 lR
 SM
-CI
+SM
 kR
 lR
 Ih
@@ -5565,7 +5558,7 @@ lR
 jk
 SM
 kn
-Vs
+SM
 SM
 lR
 Ih
@@ -6490,7 +6483,7 @@ SM
 SM
 SM
 SM
-Vs
+SM
 SM
 lR
 Ih
@@ -6583,14 +6576,14 @@ Ih
 lR
 rL
 SM
-Vs
+SM
 SM
 uq
 lR
 xu
 SM
-Vs
-CI
+SM
+ip
 SM
 ip
 SM
@@ -6995,10 +6988,10 @@ Ih
 Ih
 lR
 qH
-Vl
 qH
-Vl
-xq
+qH
+qH
+qH
 lR
 Ih
 Ih
@@ -8016,7 +8009,7 @@ lR
 qH
 xq
 KT
-Vl
+qH
 qH
 qH
 qH
@@ -8526,7 +8519,7 @@ lR
 lR
 uk
 qH
-Vl
+qH
 Oq
 uk
 my
@@ -8840,7 +8833,7 @@ Ih
 lR
 lR
 qH
-Vl
+qH
 Do
 Do
 Km
@@ -8905,7 +8898,7 @@ ST
 ST
 wa
 ST
-gP
+ST
 lE
 ST
 ST
@@ -9009,7 +9002,7 @@ lR
 ST
 ST
 ST
-Qc
+ST
 ST
 lR
 Ih
@@ -9573,7 +9566,7 @@ Fa
 Fa
 Fa
 ww
-ww
+Fa
 Eg
 Fa
 Fa
