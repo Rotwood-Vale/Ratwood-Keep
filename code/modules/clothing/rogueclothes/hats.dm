@@ -776,6 +776,49 @@
 			pic.color = get_detail_color()
 		add_overlay(pic)
 
+/obj/item/clothing/head/roguetown/helmet/heavy/frogmouth
+	name = "froggemund helmet"
+	desc = "A tall and imposing frogmouth-style helm popular in the highest plateaus of the Azure Peak. Covers not just the head, but the neck as well. Add a cloth to show the colors of your family or allegiance."
+	icon_state = "frogmouth"
+	item_state = "frogmouth"
+	emote_environment = 3
+	body_parts_covered = FULL_HEAD|NECK
+	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR
+	block2add = FOV_RIGHT|FOV_LEFT
+	smeltresult = /obj/item/ingot/steel
+
+/obj/item/clothing/head/roguetown/helmet/heavy/frogmouth/attackby(obj/item/W, mob/living/user, params)
+	..()
+	if(istype(W, /obj/item/natural/cloth) && !detail_tag)
+		var/list/colors = list(
+		"Swan White"="#ffffff",
+		"Lavender"="#865c9c",
+		"Royal Purple"="#5E4687",
+		"Wine Rouge"="#752B55",
+		"Sow's skin"="#CE929F",
+		"Knight's Red"="#933030",
+		"Madroot Red"="#AD4545",
+		"Marigold Orange"="#E2A844",
+		"Politely, Yuck"="#685542",
+		"Astrata's Yellow"="#FFFD8D",
+		"Bog Green"="#375B48",
+		"Seafoam Green"="#49938B",
+		"Woad Blue"="#395480",
+		"Cornflower Blue"="#749EE8",
+		"Blacksteel Grey"="#404040",)
+		qdel(W)
+		user.visible_message(span_warning("[user] adds [W] to [src]."))
+
+		var/mob/living/carbon/human/L = loc
+		var/choice = input(L, "Choose a color.", "Frogmouth wreath") as anything in colors
+		var/playerchoice = colors[choice]
+		detail_color = playerchoice
+		detail_tag = "_detail"
+		update_icon()
+		if(loc == user && ishuman(user))
+			var/mob/living/carbon/H = user
+			H.update_inv_head()
+
 /obj/item/clothing/head/roguetown/helmet/bascinet
 	name = "bascinet"
 	desc = "A steel bascinet helmet without a visor protecting the the head and ears."

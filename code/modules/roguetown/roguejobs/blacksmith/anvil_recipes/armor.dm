@@ -280,3 +280,11 @@
 	created_item = /obj/item/clothing/head/roguetown/helmet/heavy/dendorhelm
 	craftdiff = 2
 	i_type = "Armor"
+
+/datum/anvil_recipe/armor/frogmouth
+	name = "Dendor Helmet (+2 Steel)"
+	req_bar = /obj/item/ingot/steel
+	additional_items = list(/obj/item/ingot/steel, /obj/item/ingot/steel)
+	created_item = /obj/item/clothing/head/roguetown/helmet/heavy/frogmouth
+	craftdiff = 2
+	i_type = "Armor"
