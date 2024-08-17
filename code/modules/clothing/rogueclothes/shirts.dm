@@ -200,6 +200,9 @@
 /obj/item/clothing/suit/roguetown/shirt/tunic/white
 	color = CLOTHING_WHITE
 
+/obj/item/clothing/suit/roguetown/shirt/tunic/black
+	color = CLOTHING_BLACK
+
 /obj/item/clothing/suit/roguetown/shirt/tunic/ucolored
 	color = COLOR_GRAY
 

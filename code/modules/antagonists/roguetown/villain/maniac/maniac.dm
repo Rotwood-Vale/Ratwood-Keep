@@ -40,7 +40,7 @@
 	)
 	/// Cached old stats in case we get removed
 	var/STASTR
-	var/STACON 
+	var/STACON
 	var/STAEND
 	/// Weapons we can give to the dreamer
 	var/static/list/possible_weapons = list(
@@ -50,12 +50,12 @@
 	)
 	/// Wonder recipes
 	var/static/list/recipe_progression = list(
-		/datum/crafting_recipe/roguetown/structure/wonder/first, 
-		/datum/crafting_recipe/roguetown/structure/wonder/second, 
-		/datum/crafting_recipe/roguetown/structure/wonder/third, 
+		/datum/crafting_recipe/roguetown/structure/wonder/first,
+		/datum/crafting_recipe/roguetown/structure/wonder/second,
+		/datum/crafting_recipe/roguetown/structure/wonder/third,
 		/datum/crafting_recipe/roguetown/structure/wonder/fourth,
 	)
-	/// Key number > Key text 
+	/// Key number > Key text
 	var/list/num_keys = list()
 	/// Key text > key number
 	var/list/key_nums = list()
@@ -87,7 +87,7 @@
 	. = ..()
 	owner.special_role = ROLE_MANIAC
 	owner.special_items["Maniac"] = pick(possible_weapons)
-	owner.special_items["Surgical Kit"] = /obj/item/storage/backpack/rogue/backpack/surgery
+	owner.special_items["Surgical Kit"] = /obj/item/storage/belt/rogue/surgery_bag/full
 	if(owner.current)
 		if(ishuman(owner.current))
 			var/mob/living/carbon/human/dreamer = owner.current
@@ -97,7 +97,7 @@
 			owner.adjust_skillrank(/datum/skill/combat/unarmed, 4, TRUE)
 			var/medicine_skill = dreamer.mind.get_skill_level(/datum/skill/misc/medicine)
 			if(medicine_skill < 3)// Bumps his skill up to 3 for surgery, not higher
-				owner.adjust_skillrank(/datum/skill/misc/medicine, 3 - medicine_skill, TRUE) 
+				owner.adjust_skillrank(/datum/skill/misc/medicine, 3 - medicine_skill, TRUE)
 			STASTR = dreamer.STASTR
 			STACON = dreamer.STACON
 			STAEND = dreamer.STAEND
@@ -155,7 +155,7 @@
 		//Stick then in the lists, continue the loop
 		num_keys[randumb] = rantelligent
 		key_nums[rantelligent] = randumb
-	
+
 	sum_keys = 0
 	for(var/i in num_keys)
 		sum_keys += text2num(i)

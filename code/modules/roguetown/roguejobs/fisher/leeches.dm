@@ -11,7 +11,7 @@
 					/obj/item/reagent_containers/food/snacks/fish/angler = 1)
 	embedding = list(
 		"embed_chance" = 100,
-		"embedded_unsafe_removal_time" = 0, 
+		"embedded_unsafe_removal_time" = 0,
 		"embedded_pain_chance" = 0,
 		"embedded_fall_chance" = 0,
 		"embedded_bloodloss"= 0,
@@ -70,7 +70,7 @@
 		if(!get_location_accessible(H, check_zone(user.zone_selected)))
 			to_chat(user, span_warning("Something in the way."))
 			return
-		var/used_time = (70 - (H.mind.get_skill_level(/datum/skill/misc/medicine) * 10))/2
+		var/used_time = (70 - (user.mind.get_skill_level(/datum/skill/misc/medicine) * 10))/2
 		if(!do_mob(user, H, used_time))
 			return
 		if(!H)

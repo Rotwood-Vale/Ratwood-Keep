@@ -17,11 +17,14 @@
 	thrown_bclass = BCLASS_CUT
 	associated_skill = /datum/skill/combat/knives
 	anvilrepair = /datum/skill/craft/blacksmithing
-	smeltresult = /obj/item/ingot/steel
+	smeltresult = null
 
 /obj/item/rogueweapon/surgery/Initialize()
 	. = ..()
 	item_flags |= SURGICAL_TOOL //let's not stab patients for fun
+
+/obj/item/rogueweapon/surgery/get_belt_overlay()
+	return mutable_appearance('icons/roguetown/items/surgery_bag.dmi', initial(icon_state))
 
 /obj/item/rogueweapon/surgery/scalpel
 	name = "scalpel"
@@ -33,6 +36,7 @@
 	swingsound = list('sound/combat/wooshes/bladed/wooshsmall (1).ogg','sound/combat/wooshes/bladed/wooshsmall (2).ogg','sound/combat/wooshes/bladed/wooshsmall (3).ogg')
 	pickup_sound = 'sound/foley/equip/swordsmall2.ogg'
 	tool_behaviour = TOOL_SCALPEL
+	smeltresult = null
 
 /obj/item/rogueweapon/surgery/saw
 	name = "saw"
@@ -50,6 +54,7 @@
 	w_class = WEIGHT_CLASS_NORMAL
 	thrown_bclass = BCLASS_CHOP
 	tool_behaviour = TOOL_SAW
+	smeltresult = null
 
 /obj/item/rogueweapon/surgery/hemostat
 	name = "forceps"
@@ -61,6 +66,19 @@
 	swingsound = list('sound/combat/wooshes/bladed/wooshsmall (1).ogg','sound/combat/wooshes/bladed/wooshsmall (2).ogg','sound/combat/wooshes/bladed/wooshsmall (3).ogg')
 	pickup_sound = 'sound/foley/equip/swordsmall2.ogg'
 	tool_behaviour = TOOL_HEMOSTAT
+	smeltresult = null
+
+/obj/item/rogueweapon/surgery/hemostat/first //Two different types for the purpose of having 2 slots for forceps in surgery bag.
+	name = "\improper Tarsis forceps"
+
+/obj/item/rogueweapon/surgery/hemostat/first/get_belt_overlay()
+	return mutable_appearance('icons/roguetown/items/surgery_bag.dmi', "forceps")
+
+/obj/item/rogueweapon/surgery/hemostat/second
+	name = "\improper Sisrat forceps"
+
+/obj/item/rogueweapon/surgery/hemostat/second/get_belt_overlay()
+	return mutable_appearance('icons/roguetown/items/surgery_bag.dmi', "forceps_2")
 
 /obj/item/rogueweapon/surgery/retractor
 	name = "speculum"
@@ -76,6 +94,7 @@
 	w_class = WEIGHT_CLASS_NORMAL
 	thrown_bclass = BCLASS_BLUNT
 	tool_behaviour = TOOL_RETRACTOR
+	smeltresult = null
 
 /obj/item/rogueweapon/surgery/bonesetter
 	name = "bone forceps"
@@ -87,6 +106,7 @@
 	swingsound = list('sound/combat/wooshes/bladed/wooshsmall (1).ogg','sound/combat/wooshes/bladed/wooshsmall (2).ogg','sound/combat/wooshes/bladed/wooshsmall (3).ogg')
 	pickup_sound = 'sound/foley/equip/swordsmall2.ogg'
 	tool_behaviour = TOOL_BONESETTER
+	smeltresult = null
 
 /obj/item/rogueweapon/surgery/cautery
 	name = "cautery iron"
@@ -108,6 +128,7 @@
 	var/cool_timer
 	/// Whether or not we are heated up
 	var/heated = FALSE
+	smeltresult = null
 
 /obj/item/rogueweapon/surgery/cautery/examine(mob/user)
 	. = ..()
@@ -155,12 +176,3 @@
 	else
 		damtype = BRUTE
 	update_icon()
-
-/obj/item/storage/backpack/rogue/backpack/surgery/PopulateContents()
-	new /obj/item/rogueweapon/surgery/scalpel(src)
-	new /obj/item/rogueweapon/surgery/saw(src)
-	new /obj/item/rogueweapon/surgery/hemostat(src)
-	new /obj/item/rogueweapon/surgery/hemostat(src) //2 forceps so you can clamp bleeders AND manipulate organs
-	new /obj/item/rogueweapon/surgery/retractor(src)
-	new /obj/item/rogueweapon/surgery/bonesetter(src)
-	new /obj/item/rogueweapon/surgery/cautery(src)

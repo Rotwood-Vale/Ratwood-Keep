@@ -1,5 +1,12 @@
 
 // --------- IRON -----------
+/datum/anvil_recipe/tools/surgery/surgerytools
+	name = "Surgeon's Bag (+1 iron +1 hide)"
+	req_bar = /obj/item/ingot/iron
+	additional_items = list(/obj/item/ingot/iron, /obj/item/natural/hide)
+	created_item = /obj/item/storage/belt/rogue/surgery_bag/full
+	i_type = "Tools"
+
 /datum/anvil_recipe/tools/torch
 	name = "Torches 5x (+1 Coal)"
 	req_bar = /obj/item/ingot/iron
@@ -125,6 +132,8 @@
 	created_item = /obj/item/rogueweapon/pick/steel
 	i_type = "Tools"
 
+/*
+//Disabled, surgery tools are crafted in a full kit now.
 /datum/anvil_recipe/tools/surgery/scalpel
 	name = "Scalpel"
 	req_bar = /obj/item/ingot/steel
@@ -160,6 +169,7 @@
 	req_bar = /obj/item/ingot/steel
 	created_item = /obj/item/rogueweapon/surgery/cautery
 	i_type = "Tools"
+*/
 
 /datum/anvil_recipe/tools/cupssteel
 	name = "Goblets 3x"
