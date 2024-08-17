@@ -10,7 +10,6 @@
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
 	show_in_credits = FALSE		//Stops Scom from announcing their arrival.
-	allowed_patrons = list(/datum/patron/inhumen/graggar)
 	spells = list(/obj/effect/proc_holder/spell/self/convertrole/viking)
 	tutorial = "Hailing from the freezing cold Frost Lands, you lead your warband to its newest prize, Rockhill. Graggar's bloodlust must be sated. Topple the statues of the southerner's weak gods, burn their churches, take their valuables and take them as slaves so that they might be sacrificed to Graggar. May the black sun darken the sky for all time!"
 	whitelist_req = FALSE
@@ -37,6 +36,7 @@
 	cloak = /obj/item/clothing/cloak/cape
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
+	ADD_TRAIT(H, TRAIT_VIKINGCAMP, TRAIT_GENERIC)
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/combat/maces, 3, TRUE) // Chieftess gets nearly same skills as guard.
 		H.mind.adjust_skillrank(/datum/skill/combat/bows, 2, TRUE)

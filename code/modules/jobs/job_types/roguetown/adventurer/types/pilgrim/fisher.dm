@@ -31,7 +31,7 @@
 		H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/craft/cooking, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/alchemy, 1, TRUE)
-
+		ADD_TRAIT(H, TRAIT_VIKINGCAMP, TRAIT_GENERIC)
 		H.change_stat("intelligence", 1)
 		H.change_stat("perception", 2)
 		H.change_stat("constitution", 1)

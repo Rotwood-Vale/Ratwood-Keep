@@ -390,6 +390,14 @@
 	icon_state = "stumpfire1"
 	base_state = "stumpfire"
 
+/obj/machinery/light/rogue/firebowl/stump/snow
+	icon_state = "stumpfire1"
+	base_state = "stumpfire"
+	bulb_colour = "#ffffff"
+	light_range = 8
+	light_power = 0.80
+
+
 /obj/machinery/light/rogue/firebowl/church
 	icon_state = "churchfire1"
 	base_state = "churchfire"

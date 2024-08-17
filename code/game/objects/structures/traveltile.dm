@@ -175,3 +175,17 @@
 	bound_width = 96
 	appearance_flags = NONE
 	opacity = FALSE
+
+/obj/structure/fluff/traveltile/viking/can_go(mob/user)
+	. = ..()
+	if(.)
+		var/mob/living/L = user
+		if(HAS_TRAIT(L, TRAIT_VIKINGCAMP))
+			for(var/mob/living/carbon/human/H in hearers(6,src))
+				if(!HAS_TRAIT(H, TRAIT_VIKINGCAMP))
+					to_chat(user, "<b>I discover the route to the North.</b>")
+					ADD_TRAIT(H, TRAIT_VIKINGCAMP, TRAIT_GENERIC)
+			return TRUE
+		else
+			to_chat(user, "<b>It's too dangerous to sail this way.</b>")
+			return FALSE

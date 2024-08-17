@@ -10,7 +10,6 @@
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
 	show_in_credits = FALSE		//Stops Scom from announcing their arrival.
-	allowed_patrons = list(/datum/patron/inhumen/graggar)
 	tutorial = "A hardened warrior from the Frost Lands. Follow the leader of your warband, and serve Graggar well. May the black sun darken the sky for all time!"
 	whitelist_req = FALSE
 	outfit = /datum/outfit/job/roguetown/vikinggrunt
@@ -36,6 +35,7 @@
 	shoes = /obj/item/clothing/shoes/roguetown/boots/graggariteboots
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
+	ADD_TRAIT(H, TRAIT_VIKINGCAMP, TRAIT_GENERIC)
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/combat/maces, 3, TRUE) // Chieftess gets nearly same skills as guard.
 		H.mind.adjust_skillrank(/datum/skill/combat/bows, 2, TRUE)

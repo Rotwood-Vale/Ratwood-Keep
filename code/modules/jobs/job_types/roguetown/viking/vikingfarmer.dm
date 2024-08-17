@@ -20,7 +20,7 @@
 	min_pq = -10
 	max_pq = null
 
-/datum/outfit/job/roguetown/farmer/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/job/roguetown/vikingfarmer/pre_equip(mob/living/carbon/human/H)
 	..()
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/combat/bows, 2, TRUE)

@@ -174,6 +174,21 @@
 	bloodiness = 20
 	dirt_amt = 3
 
+/turf/open/floor/rogue/dirt/snow
+	name = "dirt-s"
+	desc = "The dirt is pocked with the scars of countless wars."
+	icon_state = "dirt-s"
+	layer = MID_TURF_LAYER
+	footstep = FOOTSTEP_GRASS
+	barefootstep = FOOTSTEP_SOFT_BAREFOOT
+	heavyfootstep = FOOTSTEP_GENERIC_HEAVY
+	tiled_dirt = FALSE
+	landsound = 'sound/foley/jumpland/dirtland.wav'
+	slowdown = 2
+	smooth = SMOOTH_TRUE
+	canSmoothWith = list(/turf/open/floor/rogue/grass)
+	neighborlay = "dirtedge"
+
 /turf/open/floor/rogue/dirt
 	name = "dirt"
 	desc = "The dirt is pocked with the scars of countless wars."
