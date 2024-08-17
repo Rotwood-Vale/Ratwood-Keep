@@ -27,6 +27,38 @@
 	..()
 	. = 1
 
+/datum/reagent/medicine/shroomt
+	name = "Shroom Tea"
+	description = "Extremely slowly regenerates all types of damage. long lasting."
+	reagent_state = LIQUID
+	color = "#476e4d"
+	taste_description = "dirt"
+	overdose_threshold = 25 // cups hold 24 so even one sip more from tanakrd is OD
+	metabolization_rate = 0.2 * REAGENTS_METABOLISM
+	alpha = 173
+
+/datum/reagent/medicine/shroomt/on_mob_life(mob/living/carbon/M)
+	var/list/wCount = M.get_wounds()
+	if(M.blood_volume < BLOOD_VOLUME_NORMAL)
+		M.blood_volume = min(M.blood_volume+50, BLOOD_VOLUME_MAXIMUM)
+	else
+		M.blood_volume = min(M.blood_volume+2, BLOOD_VOLUME_MAXIMUM)
+	if(wCount.len > 0)
+		M.heal_wounds(1)
+		M.update_damage_overlays()
+	M.adjustBruteLoss(-0.2*REM, 0)
+	M.adjustToxLoss(-0.2*REM, 0)
+	M.adjustFireLoss(-0.2*REM, 0)
+	M.adjustOxyLoss(-1, 0)
+	M.rogstam_add(25)
+	M.adjustOrganLoss(ORGAN_SLOT_BRAIN, -1*REM)
+	M.adjustCloneLoss(-1*REM, 0)
+	..()
+	. = 1
+
+/datum/reagent/medicine/shroomt/overdose_process(mob/living/carbon/M)
+	M.add_nausea(15)
+
 /datum/reagent/medicine/manapot
 	name = "Mana Potion"
 	description = "Gradually regenerates stamina."

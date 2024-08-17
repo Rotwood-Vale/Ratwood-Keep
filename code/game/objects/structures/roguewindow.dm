@@ -13,6 +13,7 @@
 	var/base_state = "window-solid"
 	var/lockdir = 0
 	var/brokenstate = 0
+	var/wallpress = TRUE
 	blade_dulling = DULLING_BASHCHOP
 	pass_flags = LETPASSTHROW
 	climb_time = 20
@@ -30,6 +31,47 @@
 		icon_state = "[base_state]br"
 		return
 	icon_state = "[base_state]"
+
+/obj/structure/roguewindow/MouseDrop_T(atom/movable/O, mob/user)
+	. = ..()
+	if(!wallpress)
+		return
+	if(user == O && isliving(O))
+		var/mob/living/L = O
+		if(isanimal(L))
+			var/mob/living/simple_animal/A = L
+			if (!A.dextrous)
+				return
+		if(L.mobility_flags & MOBILITY_MOVE)
+			wallpress(L)
+			return
+
+/obj/structure/roguewindow/proc/wallpress(mob/living/user)
+	if(user.wallpressed)
+		return
+	if(user.pixelshifted)
+		return
+	if(!(user.mobility_flags & MOBILITY_STAND))
+		return
+	var/dir2wall = get_dir(user,src)
+	if(!(dir2wall in GLOB.cardinals))
+		return
+	user.wallpressed = dir2wall
+	user.update_wallpress_slowdown()
+	user.visible_message(span_info("[user] leans against [src]."))
+	switch(dir2wall)
+		if(NORTH)
+			user.setDir(SOUTH)
+			user.set_mob_offsets("wall_press", _x = 0, _y = 20)
+		if(SOUTH)
+			user.setDir(NORTH)
+			user.set_mob_offsets("wall_press", _x = 0, _y = -10)
+		if(EAST)
+			user.setDir(WEST)
+			user.set_mob_offsets("wall_press", _x = 12, _y = 0)
+		if(WEST)
+			user.setDir(EAST)
+			user.set_mob_offsets("wall_press", _x = -12, _y = 0)
 
 /obj/structure/roguewindow/stained
 	icon_state = null
@@ -109,6 +151,9 @@
 			open_up(user)
 	else
 		to_chat(user, span_warning("The window doesn't close from this side."))
+
+
+
 
 /obj/structure/roguewindow/proc/open_up(mob/user)
 	visible_message(span_info("[user] opens [src]."))

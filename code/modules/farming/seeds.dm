@@ -53,6 +53,10 @@
 	seed_identity = "wheat seeds"
 	plant_def_type = /datum/plant_def/wheat
 
+/obj/item/seeds/shroom
+	seed_identity = "elder shroom seeds"
+	plant_def_type = /datum/plant_def/shroom
+
 /obj/item/seeds/wheat/oat
 	seed_identity = "oat seeds"
 	plant_def_type = /datum/plant_def/oat
