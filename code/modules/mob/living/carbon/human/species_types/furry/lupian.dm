@@ -121,7 +121,11 @@
 		/datum/descriptor_choice/prominent_three,
 		/datum/descriptor_choice/prominent_four,
 	)
-	
+	languages = list(
+		/datum/language/common,
+		/datum/language/canilunzt
+	)
+
 /datum/species/lupian/check_roundstart_eligible()
 	return TRUE
 
@@ -178,3 +182,6 @@
 	returned["mcolor2"] = second_color
 	returned["mcolor3"] = "373330"
 	return returned
+
+/datum/species/lupian/get_accent_any(mob/living/carbon/human/H)
+	return strings("czech_replacement.json", "czech")
