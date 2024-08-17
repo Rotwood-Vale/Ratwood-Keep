@@ -1109,7 +1109,7 @@
 	. = TRUE
 
 	var/wrestling_diff = 0
-	var/resist_chance = 50
+	var/resist_chance = 60
 	var/mob/living/L = pulledby
 
 	if(mind)
@@ -1117,15 +1117,19 @@
 	if(L.mind)
 		wrestling_diff -= (L.mind.get_skill_level(/datum/skill/combat/wrestling))
 
-	resist_chance += ((STASTR - L.STASTR) * 10)
+	resist_chance += ((STASTR - L.STASTR) * 7)
 
 	if(!(mobility_flags & MOBILITY_STAND))
-		resist_chance += -20 + min((wrestling_diff * 5), -20) //Can improve resist chance at high skill difference
+		resist_chance -= clamp(15 - (wrestling_diff * 4), 0, 15)
+
 	if(pulledby.grab_state >= GRAB_AGGRESSIVE)
-		resist_chance += -20 + max((wrestling_diff * 10), 0)
-		resist_chance = max(resist_chance, 50 + min((wrestling_diff * 5), 0))
-	else
-		resist_chance = max(resist_chance, 70 + min((wrestling_diff * 5), 0))
+		resist_chance -= clamp(15 - (wrestling_diff * 4), 0, 15)
+
+	var/minimum_roll = 40
+	if(pulledby.grab_state >= GRAB_AGGRESSIVE || !(mobility_flags & MOBILITY_STAND))
+		minimum_roll = 25
+
+	resist_chance = max(resist_chance, minimum_roll)
 
 	if(moving_resist && client) //we resisted by trying to move
 		client.move_delay = world.time + 20
