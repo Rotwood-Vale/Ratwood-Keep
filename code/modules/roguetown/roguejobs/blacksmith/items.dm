@@ -126,7 +126,7 @@
 	icon_state = "cream"
 	w_class = WEIGHT_CLASS_SMALL
 	smeltresult = /obj/item/ingot/silver
-	var/uses = 5
+	var/uses = 12
 
 /obj/item/polishing_cream/examine(mob/user)
 	. = ..()
@@ -151,8 +151,8 @@
 
 /obj/item/armor_brush
 	icon = 'icons/roguetown/items/misc.dmi'
-	name = "armor brush"
-	desc = "A coarse brush for scrubbing armor thoroughly. Made of "
+	name = "coarse brush"
+	desc = "A coarse brush for scrubbing armor thoroughly. Made of the finest Lupin hair."
 	icon_state = "brush"
 	w_class = WEIGHT_CLASS_SMALL
 	smeltresult = null
@@ -176,7 +176,7 @@
 			if(do_after(user, 50 - user.STASTR*1.5, target = O))
 				thing.polished = 2
 				thing.remove_atom_colour(FIXED_COLOUR_PRIORITY)
-				thing.add_atom_colour("#6b6a6b", FIXED_COLOUR_PRIORITY)
+				thing.add_atom_colour("#9e9e9e", FIXED_COLOUR_PRIORITY)
 
 	else if(thing.polished == 2 && !roughness)
 		if((HAS_TRAIT(user, TRAIT_SQUIRE_REPAIR) || user.mind.get_skill_level(thing.anvilrepair)))
@@ -185,7 +185,7 @@
 			if(do_after(user, 50 - user.STASTR*1.5, target = O))
 				thing.polished = 3
 				thing.remove_atom_colour(FIXED_COLOUR_PRIORITY)
-				thing.add_atom_colour("#838283", FIXED_COLOUR_PRIORITY)
+				thing.add_atom_colour("#cccccc", FIXED_COLOUR_PRIORITY)
 
 /obj/item/take_damage(damage_amount, damage_type, damage_flag, sound_effect, attack_dir, armor_penetration)
 	. = ..()
@@ -194,23 +194,56 @@
 			polished = 0
 			force -= 2
 			force_wielded -= 3
+			var/datum/component/glint = GetComponent(/datum/component/metal_glint)
+			qdel(glint)
 			remove_atom_colour(FIXED_COLOUR_PRIORITY)
 		else if(polished >= 1 && polished <= 4)
 			remove_atom_colour(FIXED_COLOUR_PRIORITY)
 			UnregisterSignal(src, COMSIG_COMPONENT_CLEAN_ACT)
 
 /obj/item/proc/remove_polish(datum/source, strength) // kill polska
-	visible_message(span_notice("[src] has been cleaned with strength [strength]. [obj_integrity] / [max_integrity] ...... polish = [polished]"))
 	if(polished == 3 && obj_integrity >= max_integrity)
 		polished = 4
 		remove_atom_colour(FIXED_COLOUR_PRIORITY)
-		add_atom_colour("#98a4bd", FIXED_COLOUR_PRIORITY)
+		add_atom_colour("#ffffff", FIXED_COLOUR_PRIORITY)
 		obj_integrity += 50
 		force += 2
 		force_wielded += 3
+		AddComponent(/datum/component/metal_glint)
 		UnregisterSignal(src, COMSIG_COMPONENT_CLEAN_ACT)
 
 	else if(polished < 4)
 		polished = 0
 		remove_atom_colour(FIXED_COLOUR_PRIORITY)
 		UnregisterSignal(src, COMSIG_COMPONENT_CLEAN_ACT)
+
+/obj/effect/temp_visual/armor_glint
+	name = "glint"
+	icon = 'icons/roguetown/underworld/enigma_husks.dmi'
+	icon_state = "soultoken_glint"
+	duration = 13
+	plane = -1
+
+/obj/effect/temp_visual/armor_glint/Initialize(mapload, var/extra_rand = 1)
+	. = ..()
+	pixel_x = extra_rand * rand(-5,5)
+	pixel_y = extra_rand * rand(-5,5)
+	animate(src, alpha = 0, time = duration)
+
+/datum/component/metal_glint/Initialize()
+	if(!isitem(parent))
+		return COMPONENT_INCOMPATIBLE
+	RegisterSignal(parent, list(COMSIG_PARENT_QDELETING), PROC_REF(stop_process))
+	START_PROCESSING(SSobj, src)
+
+/datum/component/metal_glint/process()
+	if(istype(parent.loc,/turf) || istype(parent.loc, /mob/living))
+		if(prob(25))
+			new /obj/effect/temp_visual/armor_glint(get_turf(parent))
+		if(prob(15))
+			new /obj/effect/temp_visual/armor_glint(get_turf(parent), 2)
+		if(prob(5))
+			new /obj/effect/temp_visual/armor_glint(get_turf(parent), 3)
+
+/datum/component/metal_glint/proc/stop_process()
+	STOP_PROCESSING(SSobj, src)
