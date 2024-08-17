@@ -148,16 +148,16 @@
 			used_limb = affecting.body_zone
 	return used_limb
 
-/mob/proc/check_arm_grabbed()
+/mob/proc/check_arm_grabbed(index)
 	return
 
 /mob/living/carbon/check_arm_grabbed(index)
 	if(pulledby && pulledby != src)
 		var/obj/item/bodypart/BP
 		if(index == 1)
-			BP = get_bodypart(BODY_ZONE_R_ARM)
-		else if(index == 2)
 			BP = get_bodypart(BODY_ZONE_L_ARM)
+		else if(index == 2)
+			BP = get_bodypart(BODY_ZONE_R_ARM)
 		if(BP)
 			for(var/obj/item/grabbing/G in src.grabbedby)
 				if(G.limb_grabbed == BP)
@@ -252,7 +252,7 @@
 		var/datum/disease/D = thing
 		if(D.spread_flags & DISEASE_SPREAD_CONTACT_SKIN)
 			ContactContractDisease(D)
-	
+
 	if(!user.cmode)
 		var/try_to_fail = !istype(user.rmb_intent, /datum/rmb_intent/weak)
 		var/list/possible_steps = list()
@@ -414,7 +414,7 @@
 //		if(buckled)
 //			to_chat(M, span_warning("I need to unbuckle [src] first to do that!"))
 //			return
-//		M.visible_message(span_notice("[M] shakes [src] trying to get [p_them()] up!"), span_notice("I shake [src] trying to get [p_them()] up!"))					
+//		M.visible_message(span_notice("[M] shakes [src] trying to get [p_them()] up!"), span_notice("I shake [src] trying to get [p_them()] up!"))
 //	else
 	M.visible_message(span_notice("[M] shakes [src]."), \
 				span_notice("I shake [src] to get [p_their()] attention."))
