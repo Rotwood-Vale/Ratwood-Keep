@@ -304,3 +304,4 @@
 	reach = 2
 	swingdelay = 12
 	clickcd = 14
+

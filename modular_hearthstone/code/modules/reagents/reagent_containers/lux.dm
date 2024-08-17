@@ -9,6 +9,9 @@
 	list_reagents = list(/datum/reagent/vitae = 5)
 	grind_results = list(/datum/reagent/vitae = 5)
 	sellprice = 50
+	light_system = MOVABLE_LIGHT
+	light_power = 1
+	light_range = 1
 
 /datum/reagent/vitae
 	name = "Vitae"
@@ -28,3 +31,28 @@
 		M.sate_addiction()
 	M.apply_status_effect(/datum/status_effect/buff/vitae)
 	..()
+
+/obj/item/soul_fragment
+	force = 1
+	name = "soul fragment"
+	desc = "A fragment of a soul that never made it to the carriage, it is weightless and cold to the touch, you can hear the voice of the restless dead if you were to listen closely to it."
+	icon = 'modular_hearthstone/icons/obj/items/souls.dmi'
+	icon_state = "soul_floor"
+	light_system = MOVABLE_LIGHT
+	light_power = 1
+	light_range = 1
+
+/obj/item/soul_fragment/pickup(mob/user)
+	icon_state = "soul"
+
+/obj/item/soul_fragment/dropped(mob/user)
+	icon_state = "soul_floor"
+
+/datum/crafting_recipe/roguetown/soul_fragment_lux
+	name = "lux"
+	result = /obj/item/reagent_containers/lux
+	reqs = list(/obj/item/soul_fragment = 6)
+	verbage_simple = "bind souls into"
+	verbage = "bind souls into"
+	craftsound = 'sound/misc/carriage2.ogg'
+	time = 200

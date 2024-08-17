@@ -1,9 +1,9 @@
-/mob/living/simple_animal/hostile/rogue/ghost/wraith
-	name = "wraith"
+/mob/living/simple_animal/hostile/rogue/ghost/cursed
+	name = "cursed soul"
 	desc = ""
 	icon = 'modular_hearthstone/icons/mob/wraiths.dmi'
-	icon_state = "wraith"
-	icon_living = "wraith"
+	icon_state = "cursed"
+	icon_living = "cursed"
 	icon_dead = null
 	mob_biotypes = MOB_UNDEAD|MOB_SPIRIT
 	movement_type = FLYING
@@ -11,7 +11,7 @@
 	layer = GHOST_LAYER
 	environment_smash = ENVIRONMENT_SMASH_NONE
 	pass_flags = PASSTABLE|PASSGRILLE
-	base_intents = list(/datum/intent/simple/claw/wraith)
+	base_intents = list(/datum/intent/simple/claw/skeleton_unarmed)
 /*	emote_see = list("floats hauntingly","weeps mourningly", "laments vengefully")*/
 	gender = FEMALE
 	speak_chance = 100
@@ -52,20 +52,38 @@
 	canparry = TRUE
 	retreat_health = null
 
-/mob/living/simple_animal/hostile/rogue/ghost/wraith/wraith2
-	icon_state = "wraith2"
-	icon_living = "wraith2"
-	icon_dead = null
+/mob/living/simple_animal/hostile/rogue/ghost/cursed/cursed2
+	icon_state = "cursed2"
+	icon_living = "cursed2"
 
-/mob/living/simple_animal/hostile/rogue/ghost/wraith/wraith3
-	icon_state = "wraith3"
-	icon_living = "wraith3"
-	icon_dead = null
+/mob/living/simple_animal/hostile/rogue/ghost/cursed/get_sound(input)
+	switch(input)
+		if("laugh")
+			return pick('sound/vo/mobs/ghost/laugh (1).ogg','sound/vo/mobs/ghost/laugh (2).ogg','sound/vo/mobs/ghost/laugh (3).ogg','sound/vo/mobs/ghost/laugh (4).ogg','sound/vo/mobs/ghost/laugh (5).ogg','sound/vo/mobs/ghost/laugh (6).ogg')
+		if("moan")
+			return pick('sound/vo/mobs/ghost/moan (1).ogg','sound/vo/mobs/ghost/laugh (2).ogg','sound/vo/mobs/ghost/laugh (3).ogg')
+		if("death")
+			return 'sound/vo/mobs/ghost/death.ogg'
+		if("whisper")
+			return pick('sound/vo/mobs/ghost/whisper (1).ogg','sound/vo/mobs/ghost/whisper (2).ogg','sound/vo/mobs/ghost/whisper (3).ogg')
+		if("aggro")
+			return pick('sound/vo/mobs/ghost/aggro (1).ogg','sound/vo/mobs/ghost/aggro (2).ogg','sound/vo/mobs/ghost/aggro (3).ogg','sound/vo/mobs/ghost/aggro (4).ogg','sound/vo/mobs/ghost/aggro (5).ogg','sound/vo/mobs/ghost/aggro (6).ogg')
 
-/mob/living/simple_animal/hostile/rogue/ghost/wraith/electrocute_act(shock_damage, source, siemens_coeff = 1, flags = NONE)
+/mob/living/simple_animal/hostile/rogue/ghost/cursed/AttackingTarget()
+	. = ..()
+	emote("aggro")
+	if(. && prob(8) && iscarbon(target))
+		var/mob/living/carbon/C = target
+		C.Immobilize(50)
+		C.visible_message(span_danger("\The [src] paralyzes \the [C] in fear!"), \
+				span_danger("\The [src] paralyzes me!"))
+		emote("laugh")
+
+
+/mob/living/simple_animal/hostile/rogue/ghost/cursed/electrocute_act(shock_damage, source, siemens_coeff = 1, flags = NONE)
 	return FALSE
 
-/mob/living/simple_animal/hostile/rogue/ghost/wraith/simple_limb_hit(zone)
+/mob/living/simple_animal/hostile/rogue/ghost/cursed/simple_limb_hit(zone)
 	if(!zone)
 		return ""
 	switch(zone)
@@ -114,47 +132,19 @@
 
 	return ..()
 
-/mob/living/simple_animal/hostile/rogue/ghost/wraith/death(gibbed)
+/mob/living/simple_animal/hostile/rogue/ghost/cursed/death(gibbed)
 	emote("death")
 	..()
 
-/mob/living/simple_animal/hostile/rogue/ghost/wraith/Life()
+/mob/living/simple_animal/hostile/rogue/ghost/cursed/Life()
 	. = ..()
 	if(!target)
 		if(prob(90))
-			emote(pick("idle"), TRUE)
+			emote(pick("moan", "whisper"), TRUE)
 
 
-/mob/living/simple_animal/hostile/rogue/ghost/wraith/taunted(mob/user)
+/mob/living/simple_animal/hostile/rogue/ghost/cursed/taunted(mob/user)
 	emote("aggro")
 	GiveTarget(user)
 	return
 
-
-/mob/living/simple_animal/hostile/rogue/ghost/wraith/get_sound(input)
-	switch(input)
-		if("aggro")
-			return pick('sound/vo/mobs/wraith/wraith_scream.ogg','sound/vo/mobs/wraith/wraith_scream2.ogg','sound/vo/mobs/wraith/wraith_scream3.ogg','sound/vo/mobs/wraith/wraith_scream4.ogg','sound/vo/mobs/wraith/wraith_scream5.ogg')
-		if("idle")
-			return pick('sound/vo/mobs/wraith/wraith_cry.ogg','sound/vo/mobs/wraith/wraith_cry2.ogg','sound/vo/mobs/wraith/wraith_cry3.ogg','sound/vo/mobs/wraith/wraith_cry4.ogg','sound/vo/mobs/wraith/wraith_cry5.ogg')
-		if("death")
-			return pick('sound/vo/mobs/wraith/wraith_death.ogg', 'sound/vo/mobs/wraith/wraith_death2.ogg')
-
-/mob/living/simple_animal/hostile/rogue/ghost/wraith/AttackingTarget()
-	. = ..()
-	emote("aggro")
-	if(. && prob(60) && iscarbon(target))
-		var/mob/living/carbon/C = target
-		C.Immobilize(50)
-		C.visible_message(span_danger("\The [src] paralyzes \the [C] in fear!"), \
-				span_danger("\The [src] paralyzes me!"))
-		emote("aggro")
-
-/datum/intent/simple/claw/wraith
-	attack_verb = list("claws", "scratches", "lacerates")
-	blade_class = BCLASS_CHOP
-	animname = "cut"
-	hitsound = list('sound/combat/hits/bladed/genchop (1).ogg', 'sound/combat/hits/bladed/genchop (2).ogg', 'sound/combat/hits/bladed/genchop (3).ogg')
-	chargetime = 0
-	penfactor = 10
-	swingdelay = 8
