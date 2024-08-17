@@ -66,3 +66,12 @@
 		/obj/item/reagent_containers/glass/bottle = 1)
 	result = /obj/item/reagent_containers/food/snacks/grown/cucumberjar
 	craftdiff = 1
+
+/datum/crafting_recipe/roguetown/cooking/flatpie
+	name = "flat pie"
+	reqs = list(
+		/datum/reagent/consumable/milk = 15,
+		/obj/item/reagent_containers/food/snacks/rogue/cheddarwedge = 1,
+		/obj/item/reagent_containers/food/snacks/rogue/flatbread = 1)
+	result = /obj/item/reagent_containers/food/snacks/rogue/flatpie
+	subtype_reqs = FALSE
