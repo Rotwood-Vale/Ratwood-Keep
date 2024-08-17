@@ -3333,10 +3333,6 @@
 "dHZ" = (
 /turf/closed/wall/mineral/rogue/wooddark,
 /area/rogue/indoors/town)
-"dIB" = (
-/obj/structure/bars/cemetery,
-/turf/closed,
-/area/rogue/outdoors/rtfield)
 "dIK" = (
 /mob/living/simple_animal/hostile/retaliate/rogue/chicken,
 /turf/open/floor/rogue/dirt/road,
@@ -11047,7 +11043,7 @@
 /turf/open/floor/rogue/dirt,
 /area/rogue/outdoors/bog)
 "mzq" = (
-/obj/structure/mineral_door/wood/donjon,
+/obj/structure/mineral_door/wood/red,
 /turf/open/floor/rogue/blocks,
 /area/rogue/indoors)
 "mzE" = (
@@ -275713,7 +275709,7 @@ dfk
 qvR
 uaL
 uaL
-wib
+kaE
 uaL
 uaL
 qvR
@@ -276121,7 +276117,7 @@ wSn
 qvR
 umN
 fxx
-oUq
+uaL
 uaL
 dfk
 wSn
@@ -276515,7 +276511,7 @@ uaL
 qvR
 dfk
 uaL
-kaE
+uaL
 uaL
 qvR
 fPj
@@ -277317,13 +277313,13 @@ fxx
 fxx
 fxx
 uaL
-dIB
+dfk
 uaL
 uaL
 uaL
 vFU
 fxx
-wib
+uaL
 wSn
 uaL
 qvR
@@ -277719,18 +277715,18 @@ fxx
 uaL
 uaL
 uaL
-dIB
+dfk
 qvR
 qvR
 wSn
-kaE
+uaL
 fxx
 uaL
 qvR
 qvR
 uaL
-kaE
 uaL
+wib
 dfk
 wSn
 wSn
@@ -278525,15 +278521,15 @@ qvR
 uaL
 xqX
 qeY
-dIB
-dIB
-dIB
+dfk
+dfk
+dfk
 fxx
-dIB
-dIB
-dIB
-dIB
-dIB
+dfk
+dfk
+dfk
+dfk
+dfk
 snP
 xqX
 wSn
