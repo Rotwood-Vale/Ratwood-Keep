@@ -9,6 +9,7 @@
 	spawn_positions = 1
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
+	show_in_credits = FALSE		//Stops Scom from announcing their arrival.
 	allowed_patrons = list(/datum/patron/inhumen/graggar)
 	spells = list(/obj/effect/proc_holder/spell/self/convertrole/viking)
 	tutorial = "Hailing from the freezing cold Frost Lands, you lead your warband to its newest prize, Rockhill. Graggar's bloodlust must be sated. Topple the statues of the southerner's weak gods, burn their churches, take their valuables and take them as slaves so that they might be sacrificed to Graggar. May the black sun darken the sky for all time!"
@@ -59,12 +60,12 @@
 		H.mind.adjust_skillrank(/datum/skill/misc/riding, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/labor/butchering, 3, TRUE)
 
-		H.change_stat("strength", 4)
+		H.change_stat("strength", 4)		//Same as heavy royal guard; highest of normal roles in game.
 		H.change_stat("intelligence", -2)
-		H.change_stat("constitution", 4)
+		H.change_stat("constitution", 4)	//Fucking strong; maybe consider toning down if too much still.
 		H.change_stat("endurance", 3)
 		H.change_stat("speed", -2)
-
+	
 /obj/effect/proc_holder/spell/self/convertrole/viking
 	name = "Recruit Thrall"
 	new_role = "Graggarite Thrall"
