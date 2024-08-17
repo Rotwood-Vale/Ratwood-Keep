@@ -7,7 +7,7 @@
 	"smallforest.dmm",
 	"smallswamp.dmm"
 	],
-	"traits": [{"Name": "Dun Manor", "Up": 1}, {"Up": 1, "Down": -1}, {"Up": 1, "Down": -1}, {"Down": -1}, {"Name": "Magma Crater"}, {"Name": "Murderforest", "Up": 1}, {"Up": 1, "Down": -1}, {"Down": -1}, {"Name": "Terrorbog"}],
+	"traits": [{"Name": "Dun Manor", "Up": 1}, {"Up": 1, "Down": -1}, {"Up": 1, "Down": -1}, {"Down": -1}, {"Name": "Magma Crater"}, {"Name": "Murderforest", "Up": 1}, {"Down": -1}, {"Name": "Terrorbog"}],
 	"minetype": null,
 	"space_empty_levels": 0,
 	"space_ruin_levels": 0,
