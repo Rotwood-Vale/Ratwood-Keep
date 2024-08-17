@@ -44,6 +44,7 @@
 	w_class = WEIGHT_CLASS_BULKY
 	slot_flags = ITEM_SLOT_BACK
 	blade_dulling = DULLING_BASHCHOP
+	sharpness = IS_BLUNT
 	walking_stick = TRUE
 	pixel_y = -16
 	pixel_x = -16

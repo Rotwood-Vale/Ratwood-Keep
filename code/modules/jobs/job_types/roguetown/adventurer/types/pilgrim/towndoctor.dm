@@ -20,11 +20,11 @@
 	armor = /obj/item/clothing/suit/roguetown/armor/leather/vest
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/puritan
 	belt = /obj/item/storage/belt/rogue/leather
-	beltl = /obj/item/flashlight/flare/torch/lantern
+	beltl = /obj/item/storage/belt/rogue/surgery_bag/full
 	beltr = /obj/item/rogueweapon/huntingknife/cleaver /// proper self defense an tree aquiring
 	pants = /obj/item/clothing/under/roguetown/trou
 	shoes = /obj/item/clothing/shoes/roguetown/simpleshoes
-	backl = /obj/item/storage/backpack/rogue/backpack/skit
+	backl = /obj/item/storage/backpack/rogue/satchel
 	backpack_contents = list(
 		/obj/item/natural/worms/leech/cheele = 1,
 		/obj/item/natural/cloth = 2,

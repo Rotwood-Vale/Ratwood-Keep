@@ -1,10 +1,10 @@
 
 // --------- IRON -----------
 /datum/anvil_recipe/tools/surgery/surgerytools
-	name = "Surgery Kit (+1 iron +1 hide)"
+	name = "Surgeon's Bag (+1 iron +1 hide)"
 	req_bar = /obj/item/ingot/iron
 	additional_items = list(/obj/item/ingot/iron, /obj/item/natural/hide)
-	created_item = /obj/item/storage/backpack/rogue/backpack/skit
+	created_item = /obj/item/storage/belt/rogue/surgery_bag/full
 	i_type = "Tools"
 
 /datum/anvil_recipe/tools/torch

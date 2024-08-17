@@ -38,19 +38,20 @@
 	mask = /obj/item/clothing/mask/rogue/physician
 	neck = /obj/item/clothing/neck/roguetown/psicross/pestra
 	armor = /obj/item/clothing/suit/roguetown/shirt/robe/physician
-	shirt = /obj/item/clothing/suit/roguetown/shirt/tunic/red
+	shirt = /obj/item/clothing/suit/roguetown/shirt/tunic/black
 	gloves = /obj/item/clothing/gloves/roguetown/leather
 	pants = /obj/item/clothing/under/roguetown/trou/leather/mourning
 	shoes = /obj/item/clothing/shoes/roguetown/boots/leather
 	belt = /obj/item/storage/belt/rogue/leather/black
-	beltl = /obj/item/reagent_containers/glass/bottle/waterskin
+	beltl = /obj/item/storage/belt/rogue/surgery_bag/full/physician
 	beltr = /obj/item/keyring/physician
 	id = /obj/item/clothing/ring/quartzs
 	r_hand = /obj/item/rogueweapon/woodstaff
-	backl = /obj/item/storage/backpack/rogue/backpack/skit
+	backl = /obj/item/storage/backpack/rogue/satchel/black
 	backpack_contents = list(
 		/obj/item/reagent_containers/glass/bottle/rogue/healthpot = 2,
 		/obj/item/natural/worms/leech/cheele = 1, //little buddy
+		/obj/item/reagent_containers/glass/bottle/waterskin = 1
 	)
 	ADD_TRAIT(H, TRAIT_EMPATH, "[type]")
 	ADD_TRAIT(H, TRAIT_NOSTINK, "[type]")
