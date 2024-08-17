@@ -16,6 +16,15 @@
 	subtype_reqs = FALSE
 	craftdiff = 0
 
+/datum/crafting_recipe/roguetown/cooking/flatdough
+	name = "flatdough"
+	reqs = list(
+		/datum/reagent/water = 10,
+		/obj/item/reagent_containers/powder/flour= 1)
+	result = /obj/item/reagent_containers/food/snacks/rogue/flatdough
+	subtype_reqs = FALSE
+	craftdiff = 0
+
 /datum/crafting_recipe/roguetown/cooking/comdough
 	name = "combine dough"
 	reqs = list(
@@ -49,6 +58,19 @@
 	slice_batch = TRUE
 	slice_path = /obj/item/reagent_containers/food/snacks/rogue/doughslice
 	cooked_type = /obj/item/reagent_containers/food/snacks/rogue/bread
+	list_reagents = list(/datum/reagent/consumable/nutriment = 1)
+	w_class = WEIGHT_CLASS_NORMAL
+	tastes = list("dough" = 1)
+	foodtype = GRAIN
+	eat_effect = /datum/status_effect/debuff/uncookedfood
+	rotprocess = 30 MINUTES
+
+/obj/item/reagent_containers/food/snacks/rogue/flatdough
+	name = "flat dough"
+	desc = ""
+	icon = 'icons/roguetown/items/food.dmi'
+	icon_state = "flatdough"
+	cooked_type = /obj/item/reagent_containers/food/snacks/rogue/flatbread
 	list_reagents = list(/datum/reagent/consumable/nutriment = 1)
 	w_class = WEIGHT_CLASS_NORMAL
 	tastes = list("dough" = 1)
@@ -157,12 +179,26 @@
 	icon_state = "loaf6"
 	slices_num = 6
 	slice_path = /obj/item/reagent_containers/food/snacks/rogue/breadslice
-	list_reagents = list(/datum/reagent/consumable/nutriment = 30)
+	list_reagents = list(/datum/reagent/consumable/nutriment = 24)
 	w_class = WEIGHT_CLASS_NORMAL
 	tastes = list("spelt" = 1)
 	foodtype = GRAIN
 	slice_batch = FALSE
 	rotprocess = 30 MINUTES
+
+
+/obj/item/reagent_containers/food/snacks/rogue/flatbread
+	name = "flat bread"
+	desc = ""
+	icon = 'icons/roguetown/items/food.dmi'
+	icon_state = "flatbread"
+	list_reagents = list(/datum/reagent/consumable/nutriment = 10)
+	w_class = WEIGHT_CLASS_NORMAL
+	tastes = list("airy dough" = 1)
+	foodtype = GRAIN
+	slice_batch = FALSE
+	rotprocess = 30 MINUTES
+	dropshrink = 0.75
 
 /obj/item/reagent_containers/food/snacks/rogue/bread/update_icon()
 	if(slices_num)
@@ -481,4 +517,3 @@
 	tastes = list("sugar and crispy dough" = 1)
 	foodtype = SUGAR
 	eat_effect = /datum/status_effect/buff/foodbuff
-	rotprocess = 30 MINUTES

@@ -56,3 +56,12 @@
 		/obj/item/reagent_containers/food/snacks/butterslice = 1)
 	result = /obj/item/reagent_containers/food/snacks/rogue/mashedpotatoes
 	subtype_reqs = FALSE
+
+/datum/crafting_recipe/roguetown/cooking/flatpie
+	name = "flat pie"
+	reqs = list(
+		/datum/reagent/consumable/milk = 15,
+		/obj/item/reagent_containers/food/snacks/rogue/cheddarwedge = 1,
+		/obj/item/reagent_containers/food/snacks/rogue/flatbread = 1)
+	result = /obj/item/reagent_containers/food/snacks/rogue/flatpie
+	subtype_reqs = FALSE

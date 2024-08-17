@@ -43,7 +43,7 @@
 /obj/item/reagent_containers/food/snacks/grown/wheat
 	seed = /obj/item/seeds/wheat
 	name = "wheat grain"
-	desc = ""
+	desc = "Grain from a wheat plant."
 	icon = 'icons/roguetown/items/produce.dmi'
 	icon_state = "wheat"
 	gender = PLURAL
@@ -54,6 +54,7 @@
 	can_distill = TRUE
 	distill_reagent = /datum/reagent/consumable/ethanol/beer
 	distill_amt = 24
+	pot_reagent = /datum/reagent/consumable/wheat_grain
 	grind_results = list(/datum/reagent/floure = 10)
 
 /obj/item/reagent_containers/food/snacks/grown/oat

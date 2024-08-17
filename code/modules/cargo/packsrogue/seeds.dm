@@ -58,3 +58,24 @@
 					/obj/item/seeds/berryrogue,
 					/obj/item/seeds/berryrogue/poison,
 				)
+
+/datum/supply_pack/rogue/seeds/potatoes
+	name = "Potato"
+	cost = 12
+	contains = list(
+					/obj/item/seeds/potato,
+					/obj/item/seeds/potato,
+					/obj/item/seeds/potato,
+					/obj/item/seeds/potato,
+				)
+
+/datum/supply_pack/rogue/seeds/sugarcane
+	name = "Sugarcane"
+	cost = 12
+	contains = list(
+					/obj/item/seeds/sugarcane,
+					/obj/item/seeds/sugarcane,
+					/obj/item/seeds/sugarcane,
+					/obj/item/seeds/sugarcane,
+				)
+
