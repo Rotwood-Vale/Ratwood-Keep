@@ -158,7 +158,7 @@
 	created_item = /obj/item/clothing/ring/dragon_ring
 	i_type = "Valuables"
 
-/datum/anvil_recipe/valuables/ringg
+/datum/anvil_recipe/valuables/goldanklet
 	name = "Gold Anklets x 3"
 	req_bar = /obj/item/ingot/gold
 	created_item = list(/obj/item/clothing/shoes/roguetown/anklets, /obj/item/clothing/shoes/roguetown/anklets, /obj/item/clothing/shoes/roguetown/anklets)
