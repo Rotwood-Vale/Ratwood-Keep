@@ -7,16 +7,17 @@
 		"the ": "el ",
 		"s": "ss",
 		"r": "rr",
+		"l": "ll",
 		"ish": "eesh",
-		"hello": "hola",
 		"goodbye": "adios",
+		"friend": "amigo",
+		"friends": "amigos",
 		"my": "mi",
 		"it": "et",
-		"please": "por favor",
 		"is": "es",
 		"in": "en",
-        	"bye": "adios",
-        	"thanks": "gracias"
+		"do": "doh",
+        "thanks": "gracias"
 		}
 		
 }
