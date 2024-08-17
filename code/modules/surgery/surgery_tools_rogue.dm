@@ -18,6 +18,7 @@
 	associated_skill = /datum/skill/combat/knives
 	anvilrepair = /datum/skill/craft/blacksmithing
 	smeltresult = null
+
 /obj/item/rogueweapon/surgery/Initialize()
 	. = ..()
 	item_flags |= SURGICAL_TOOL //let's not stab patients for fun
@@ -127,7 +128,8 @@
 	var/cool_timer
 	/// Whether or not we are heated up
 	var/heated = FALSE
-	smeltresult = list(/obj/item/ingot/iron, /obj/item/ingot/iron)
+	smeltresult = null
+
 /obj/item/rogueweapon/surgery/cautery/examine(mob/user)
 	. = ..()
 	if(heated)
