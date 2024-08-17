@@ -71,7 +71,8 @@
 	var/obj/item/organ/vagina/vag = wife.getorganslot(ORGAN_SLOT_VAGINA)
 	if(!vag)
 		return
-	if(prob(25))
+	if(prob(25) && wife.is_fertile() && is_virile())
+	//This is the correct one used by the game. There's another sexcon that's not included in the DME. I'm stupid. - Kyo
 		vag.be_impregnated(src)
 
 /mob/living/carbon/human/proc/get_highest_grab_state_on(mob/living/carbon/human/victim)
