@@ -1994,6 +1994,13 @@
 	},
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/outdoors/rtfield)
+"cmX" = (
+/obj/structure/mineral_door/wood/fancywood{
+	lockid = "velder";
+	locked = 1
+	},
+/turf/open/floor/rogue/ruinedwood/spiral,
+/area/rogue/indoors)
 "cne" = (
 /obj/machinery/light/rogue/torchholder/c,
 /turf/open/floor/rogue/ruinedwood,
@@ -15918,6 +15925,13 @@
 /obj/item/grown/log/tree/small,
 /turf/open/floor/rogue/dirt,
 /area/rogue/indoors)
+"smH" = (
+/obj/structure/mineral_door/wood/towner{
+	lockid = "butcher";
+	name = "Beastmonger"
+	},
+/turf/open/floor/rogue/cobblerock,
+/area/rogue/indoors)
 "sna" = (
 /obj/structure/mineral_door/wood/deadbolt{
 	dir = 4;
@@ -16177,7 +16191,8 @@
 /area/rogue/outdoors/beach)
 "szM" = (
 /obj/structure/mineral_door/wood/towner{
-	lockid = "farm"
+	lockid = "farm";
+	name = "Farmhouse"
 	},
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors)
@@ -20180,7 +20195,6 @@
 "xjs" = (
 /obj/structure/mineral_door/wood/fancywood{
 	lockid = "velder";
-	name = "Elder's Home";
 	locked = 1
 	},
 /turf/open/floor/rogue/blocks,
@@ -264858,7 +264872,7 @@ mXU
 jQu
 ryI
 wOD
-teO
+smH
 wOD
 wOD
 wOD
@@ -360935,7 +360949,7 @@ jCh
 oZe
 xou
 xou
-ivY
+cmX
 gAc
 gAc
 jiT
@@ -362137,7 +362151,7 @@ qbG
 qbG
 lVe
 lVe
-ivY
+cmX
 lVe
 lVe
 qbG
