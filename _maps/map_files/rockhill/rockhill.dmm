@@ -2814,9 +2814,11 @@
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors/bog)
 "dec" = (
-/obj/structure/roguewindow,
-/turf/closed,
-/area/rogue/indoors)
+/obj/item/reagent_containers/food/snacks/crow{
+	dir = 1
+	},
+/turf/open/floor/rogue/ruinedwood,
+/area/rogue/outdoors/rtfield)
 "det" = (
 /obj/structure/roguemachine/scomm/r,
 /turf/open/floor/rogue/blocks,
@@ -5566,6 +5568,10 @@
 	},
 /turf/open/floor/rogue/dirt,
 /area/rogue/outdoors/rtfield)
+"fWE" = (
+/obj/structure/roguewindow,
+/turf/open/floor/rogue/blocks/stonered/tiny,
+/area/rogue/indoors)
 "fXu" = (
 /obj/structure/fluff/railing/border{
 	dir = 8
@@ -11290,9 +11296,9 @@
 /turf/open/floor/rogue/blocks,
 /area/rogue/indoors/town/manor)
 "mSI" = (
-/obj/structure/roguewindow,
-/turf/closed/wall/mineral/rogue/decowood,
-/area/rogue/indoors)
+/obj/item/reagent_containers/food/snacks/crow,
+/turf/open/floor/rogue/ruinedwood,
+/area/rogue/outdoors/rtfield)
 "mSU" = (
 /obj/structure/table/wood{
 	dir = 1;
@@ -256421,7 +256427,7 @@ qbG
 qbG
 qbG
 qbG
-xPC
+fWE
 hOt
 eiV
 oDx
@@ -256823,7 +256829,7 @@ qbG
 qbG
 qbG
 qbG
-xPC
+fWE
 hJa
 eiV
 oDx
@@ -258044,9 +258050,9 @@ ryI
 nqU
 szM
 nqU
-gxC
-gxC
-gxC
+mVh
+mVh
+mVh
 nqU
 nqU
 nqU
@@ -365770,7 +365776,7 @@ qbG
 qbG
 lpp
 lpp
-gAc
+mSI
 gAc
 gAc
 lpp
@@ -461052,7 +461058,7 @@ lpp
 gAc
 gAc
 gAc
-dec
+gxC
 ltT
 ltT
 ltT
@@ -463068,7 +463074,7 @@ nqU
 nqU
 nqU
 gxC
-mSI
+gxC
 nqU
 nqU
 nqU
@@ -465464,7 +465470,7 @@ qbG
 pLJ
 gAc
 gAc
-gAc
+mSI
 lpp
 qbG
 qbG
@@ -470700,7 +470706,7 @@ gAc
 gAc
 gAc
 gAc
-gAc
+dec
 gAc
 qbG
 qbG
