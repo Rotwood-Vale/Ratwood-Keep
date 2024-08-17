@@ -10596,10 +10596,7 @@
 /turf/open/floor/rogue/tile,
 /area/rogue/indoors)
 "lSQ" = (
-/obj/structure/roguewindow/openclose{
-	dir = 1
-	},
-/turf/closed,
+/turf/closed/wall/mineral/rogue/wood/window,
 /area/rogue/indoors)
 "lTg" = (
 /obj/structure/table/wood{
@@ -18902,7 +18899,7 @@
 /area/rogue/indoors/town/church)
 "vCB" = (
 /obj/machinery/light/rogue/firebowl,
-/turf/open/floor/rogue/cobble,
+/turf/open/floor/rogue/blocks,
 /area/rogue/outdoors/rtfield)
 "vCE" = (
 /turf/open/floor/rogue/rooftop/green/corner1{
@@ -255226,10 +255223,10 @@ uaL
 uaL
 uaL
 vCB
+jqj
 jXZ
-jXZ
-jXZ
-jXZ
+jqj
+jqj
 uaL
 wSn
 wSn
@@ -255628,9 +255625,9 @@ lVe
 lVe
 lVe
 lVe
+jqj
 jXZ
-jXZ
-jXZ
+jqj
 ryI
 nqU
 nqU
@@ -362957,7 +362954,7 @@ lVe
 xou
 xou
 xou
-lSQ
+dUk
 qbG
 qbG
 qbG
@@ -367386,7 +367383,7 @@ wOD
 wOD
 wOD
 wOD
-wOD
+lSQ
 wOD
 wOD
 ryI
@@ -368193,7 +368190,7 @@ jCh
 trb
 xbD
 ujs
-trG
+lSQ
 qbG
 qbG
 qbG
@@ -368595,7 +368592,7 @@ jCh
 ahP
 hDU
 xbD
-trG
+lSQ
 qbG
 qbG
 qbG
@@ -369396,7 +369393,7 @@ wOD
 wOD
 wOD
 wOD
-wOD
+lSQ
 wOD
 wOD
 ryI
