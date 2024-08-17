@@ -128,6 +128,11 @@
 	pixel_y = 16
 
 //Stonekeep port
+/obj/structure/closet/crate/chest/crate
+	name = "crate"
+	base_icon_state = "woodchest"
+	icon_state = "woodchest"
+
 /obj/structure/closet/crate/chest/wicker
 	name = "wicker basket"
 	desc = "Fibers interwoven to make a cheap storage bin."
