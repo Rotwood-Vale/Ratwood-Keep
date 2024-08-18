@@ -44,6 +44,9 @@
 			if(VD)
 				dust(just_ash=TRUE,drop_items=TRUE)
 				return
+		var/datum/antagonist/lich/L = mind.has_antag_datum(/datum/antagonist/lich)
+		if (L)
+			L.phylactery_bullshit()
 
 	if(!gibbed)
 		var/datum/antagonist/zombie/zomble = mind?.has_antag_datum(/datum/antagonist/zombie)
