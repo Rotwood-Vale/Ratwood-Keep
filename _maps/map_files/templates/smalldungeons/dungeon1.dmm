@@ -1,4 +1,8 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"ae" = (
+/obj/item/rogueweapon/shield/tower/metal,
+/turf/open/floor/rogue/churchmarble,
+/area/rogue/under/cave/spider)
 "ag" = (
 /obj/structure/fluff/walldeco/bigpainting/lake,
 /turf/open/floor/rogue/blocks,
@@ -84,6 +88,12 @@
 /obj/effect/spawner/lootdrop/roguetown/dungeon/weapons,
 /turf/open/floor/rogue/tile/masonic/inverted,
 /area/rogue/under/cave/spider)
+"fD" = (
+/mob/living/simple_animal/hostile/retaliate/rogue/spider/mutated{
+	faction = list("undead")
+	},
+/turf/open/floor/rogue/tile/masonic/single,
+/area/rogue/under/cave/spider)
 "gt" = (
 /obj/machinery/light/rogue/wallfire/candle/blue,
 /mob/living/carbon/human/species/skeleton/npc/ambush{
@@ -94,6 +104,16 @@
 	STASTR = 13
 	},
 /turf/open/floor/rogue/blocks,
+/area/rogue/under/cave/spider)
+"gP" = (
+/mob/living/carbon/human/species/skeleton/npc/ambush{
+	inertia_move_delay = 0;
+	STACON = 13;
+	STAEND = 13;
+	STASPD = 13;
+	STASTR = 13
+	},
+/turf/open/floor/rogue/tile/masonic/inverted,
 /area/rogue/under/cave/spider)
 "ha" = (
 /obj/structure/fluff/statue/knight/r,
@@ -145,6 +165,10 @@
 /obj/structure/rack/rogue/shelf/big,
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/cave/spider)
+"jn" = (
+/obj/item/riddleofsteel,
+/turf/open/floor/rogue/churchmarble,
+/area/rogue/under/cave/spider)
 "jA" = (
 /turf/open/lava/acid,
 /area/rogue/under/cave/spider)
@@ -180,6 +204,13 @@
 /obj/effect/spawner/lootdrop/roguetown/dungeon/misc,
 /obj/structure/rack/rogue/shelf/big,
 /turf/open/floor/rogue/cobble,
+/area/rogue/under/cave/spider)
+"lc" = (
+/mob/living/simple_animal/hostile/retaliate/rogue/minotaur{
+	faction = list("undead");
+	STASTR = 20
+	},
+/turf/open/floor/rogue/tile/masonic/inverted,
 /area/rogue/under/cave/spider)
 "lg" = (
 /obj/structure/closet/crate/roguecloset/crafted,
@@ -223,6 +254,12 @@
 "my" = (
 /obj/effect/spawner/lootdrop/roguetown/dungeon/misc,
 /turf/open/floor/rogue/blocks,
+/area/rogue/under/cave/spider)
+"mK" = (
+/mob/living/simple_animal/hostile/retaliate/rogue/spider/mutated{
+	faction = list("undead")
+	},
+/turf/open/floor/rogue/churchmarble,
 /area/rogue/under/cave/spider)
 "mT" = (
 /mob/living/carbon/human/species/skeleton/npc/ambush{
@@ -360,6 +397,10 @@
 "uk" = (
 /obj/effect/decal/cleanable/blood/old,
 /turf/open/floor/rogue/blocks,
+/area/rogue/under/cave/spider)
+"um" = (
+/obj/item/rogueweapon/eaglebeak/lucerne,
+/turf/open/floor/rogue/dirt/road,
 /area/rogue/under/cave/spider)
 "uq" = (
 /obj/structure/table/wood{
@@ -682,6 +723,10 @@
 	},
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/cave/spider)
+"KT" = (
+/obj/item/rogueweapon/greatsword,
+/turf/open/floor/rogue/blocks,
+/area/rogue/under/cave/spider)
 "Lf" = (
 /obj/item/grown/log/tree,
 /obj/item/grown/log/tree,
@@ -692,6 +737,10 @@
 /obj/item/rogueweapon/stoneaxe/woodcut,
 /obj/effect/decal/cleanable/cobweb,
 /turf/open/floor/rogue/blocks,
+/area/rogue/under/cave/spider)
+"Ln" = (
+/obj/item/clothing/ring/dragon_ring,
+/turf/open/floor/rogue/churchmarble,
 /area/rogue/under/cave/spider)
 "LA" = (
 /obj/effect/decal/cleanable/cobweb{
@@ -776,6 +825,13 @@
 /obj/effect/spawner/roguemap/hauntpile,
 /turf/open/floor/rogue/blocks/paving,
 /area/rogue/under/cave/spider)
+"Pd" = (
+/obj/effect/decal/cleanable/blood/old,
+/mob/living/simple_animal/hostile/retaliate/rogue/spider/mutated{
+	faction = list("undead")
+	},
+/turf/open/floor/rogue/blocks,
+/area/rogue/under/cave/spider)
 "PB" = (
 /obj/structure/table/vtable/v2,
 /obj/item/storage/belt/rogue/pouch/coins/poor,
@@ -822,6 +878,16 @@
 	},
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/under/cave/spider)
+"Rd" = (
+/mob/living/carbon/human/species/skeleton/npc/ambush{
+	inertia_move_delay = 0;
+	STACON = 13;
+	STAEND = 13;
+	STASPD = 13;
+	STASTR = 13
+	},
+/turf/open/water/swamp/deep,
+/area/rogue/under/cave/spider)
 "Rg" = (
 /obj/effect/spawner/lootdrop/roguetown/dungeon/tools,
 /turf/open/floor/rogue/blocks,
@@ -867,6 +933,16 @@
 /obj/item/roguegem/violet,
 /turf/open/water/swamp/deep,
 /area/rogue/under/cave/spider)
+"Ue" = (
+/mob/living/carbon/human/species/skeleton/npc/ambush{
+	inertia_move_delay = 0;
+	STACON = 13;
+	STAEND = 13;
+	STASPD = 13;
+	STASTR = 13
+	},
+/turf/open/floor/rogue/naturalstone,
+/area/rogue/under/cave/spider)
 "Vd" = (
 /obj/structure/bars/tough,
 /turf/open/floor/rogue/blocks/paving,
@@ -905,15 +981,8 @@
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/cave/spider)
 "XC" = (
-/obj/effect/decal/cleanable/blood/old,
-/mob/living/carbon/human/species/skeleton/npc/ambush{
-	inertia_move_delay = 0;
-	STACON = 13;
-	STAEND = 13;
-	STASPD = 13;
-	STASTR = 13
-	},
-/turf/open/floor/rogue/blocks,
+/obj/item/scomstone,
+/turf/open/floor/rogue/churchmarble,
 /area/rogue/under/cave/spider)
 "Yf" = (
 /obj/effect/decal/cleanable/cobweb{
@@ -3616,12 +3685,12 @@ qH
 Nv
 Nv
 Nv
-qH
+xq
 qH
 lR
 Yf
 Do
-Do
+QZ
 Do
 Do
 Do
@@ -3715,7 +3784,7 @@ Ih
 lR
 qH
 qH
-Vl
+qH
 qH
 qH
 qH
@@ -4129,7 +4198,7 @@ qH
 qH
 my
 lR
-qH
+xq
 qH
 ox
 lR
@@ -4227,7 +4296,7 @@ lR
 lR
 lR
 lR
-qH
+Vl
 qH
 qH
 lR
@@ -4351,7 +4420,7 @@ lR
 lR
 Lf
 qH
-qH
+xq
 pM
 Ni
 BY
@@ -4365,7 +4434,7 @@ lR
 lR
 lR
 kR
-SM
+Vs
 kR
 lR
 Ih
@@ -4436,7 +4505,7 @@ qH
 qH
 lR
 qH
-qH
+Vl
 iZ
 lR
 Ih
@@ -4446,7 +4515,7 @@ qH
 qH
 KS
 qH
-qH
+xq
 qH
 qH
 qH
@@ -4458,12 +4527,12 @@ qH
 cE
 qH
 qH
-qH
+xq
 IV
 SM
 SM
 SM
-SM
+CI
 SM
 IV
 SM
@@ -4531,10 +4600,10 @@ Ih
 Ih
 lR
 GN
-qH
+Vl
 lR
 uk
-xq
+qH
 qH
 lR
 qH
@@ -4555,7 +4624,7 @@ lR
 lR
 mt
 qH
-XC
+uk
 xM
 uk
 Rg
@@ -4569,7 +4638,7 @@ lR
 lR
 lR
 SM
-CI
+SM
 kR
 lR
 Ih
@@ -4851,7 +4920,7 @@ Ih
 lR
 ox
 Kt
-xq
+qH
 lR
 Ih
 Ih
@@ -4860,7 +4929,7 @@ Ih
 Ih
 lR
 lT
-qH
+xq
 RU
 lR
 mv
@@ -4941,7 +5010,7 @@ Ih
 Ih
 Ih
 lR
-qH
+xq
 qH
 qH
 lR
@@ -4968,7 +5037,7 @@ lR
 mv
 uk
 qH
-qH
+Vl
 lR
 Ih
 Ih
@@ -5080,7 +5149,7 @@ hb
 lR
 DM
 SM
-SM
+Vs
 SM
 uq
 lR
@@ -5277,7 +5346,7 @@ Nd
 Nd
 Nd
 Nd
-Nd
+Rd
 Nd
 Nd
 Nd
@@ -5361,7 +5430,7 @@ Ih
 lR
 xj
 qH
-qH
+Vl
 lR
 Ih
 Ih
@@ -5471,18 +5540,18 @@ Ih
 Nd
 Nd
 Nd
+nm
+Nd
+Nd
+Nd
+Nd
+ZL
 Nd
 Nd
 Nd
 Nd
 Nd
-Nz
-Nd
-Nd
-Nd
-Nd
-Nd
-Nd
+Rd
 Nd
 Nd
 lR
@@ -5663,13 +5732,13 @@ ox
 lR
 PG
 qH
-Vl
 qH
 qH
 qH
 qH
 qH
-uk
+qH
+Pd
 qH
 lR
 Nz
@@ -5683,7 +5752,7 @@ Nz
 Nd
 Nd
 Nz
-ZL
+Nz
 Nd
 Nz
 Nz
@@ -5764,7 +5833,7 @@ px
 px
 KS
 qH
-qH
+xq
 qH
 qH
 qH
@@ -5869,11 +5938,11 @@ PG
 qH
 bc
 qH
-xq
+qH
 my
 qH
 oI
-qH
+xq
 qH
 lR
 Nz
@@ -5992,7 +6061,7 @@ Nz
 Nz
 Nz
 Nd
-Nd
+nm
 Nd
 Nd
 Nd
@@ -6094,7 +6163,7 @@ Nd
 Nd
 Nz
 Nd
-Nd
+Rd
 Nd
 lR
 lR
@@ -6202,12 +6271,12 @@ lR
 RZ
 SM
 qt
-SM
+CI
 SM
 Ew
 SM
 SM
-ip
+SM
 SM
 SM
 ip
@@ -6395,7 +6464,7 @@ Nd
 Nd
 Nd
 Nd
-nm
+Nd
 Nd
 Nd
 Nd
@@ -6494,9 +6563,9 @@ Nd
 Nd
 Nd
 Nd
+nm
 Nd
-Nd
-Nd
+Rd
 Nd
 Nd
 hb
@@ -6507,14 +6576,14 @@ Ih
 lR
 rL
 SM
-Vs
+SM
 SM
 uq
 lR
 xu
 SM
 SM
-SM
+ip
 SM
 ip
 SM
@@ -6587,7 +6656,7 @@ KS
 qH
 qH
 qH
-qH
+xq
 qH
 KS
 Nz
@@ -6883,7 +6952,7 @@ qH
 qH
 qH
 lR
-qH
+xq
 qH
 qH
 KS
@@ -6919,7 +6988,7 @@ Ih
 Ih
 lR
 qH
-Vl
+qH
 qH
 qH
 qH
@@ -6982,7 +7051,7 @@ Ih
 Ih
 lR
 my
-qH
+xq
 qH
 KS
 qH
@@ -7225,7 +7294,7 @@ Ih
 lk
 Co
 qH
-qH
+xq
 qH
 qH
 qH
@@ -7287,7 +7356,7 @@ Ih
 Ih
 Ih
 lR
-qH
+xq
 qH
 qH
 lR
@@ -7325,7 +7394,7 @@ Ih
 Ih
 Ih
 lk
-qH
+xq
 qH
 qH
 qH
@@ -7429,7 +7498,7 @@ Ih
 Vd
 Nz
 cg
-ZL
+Nz
 Nz
 Nz
 Nz
@@ -7836,12 +7905,12 @@ Ih
 Ih
 Vd
 OC
+Nz
+Nz
+Nz
 ZL
 Nz
-Nz
 ZL
-Nz
-Nz
 OC
 Vd
 Ih
@@ -7938,9 +8007,9 @@ Ih
 Ih
 lR
 qH
+xq
+KT
 qH
-qH
-Vl
 qH
 qH
 qH
@@ -8105,7 +8174,7 @@ lR
 Bn
 ST
 dQ
-ST
+Qc
 qH
 lR
 Ih
@@ -8206,7 +8275,7 @@ Ih
 lR
 WY
 dQ
-ST
+gP
 dQ
 qH
 lR
@@ -8351,7 +8420,7 @@ qH
 my
 qH
 qH
-qH
+xq
 qH
 lR
 rD
@@ -8615,7 +8684,7 @@ lR
 dQ
 dQ
 dQ
-dQ
+mT
 lR
 lR
 lR
@@ -8625,7 +8694,7 @@ Ih
 Ih
 lR
 Iv
-ST
+gP
 Nh
 GR
 Hm
@@ -8717,7 +8786,7 @@ dQ
 dQ
 No
 dQ
-dQ
+fD
 qx
 dQ
 lR
@@ -8933,7 +9002,7 @@ lR
 ST
 ST
 ST
-Qc
+ST
 ST
 lR
 Ih
@@ -9034,7 +9103,7 @@ Ih
 lR
 ST
 oU
-ST
+lc
 ST
 ST
 lR
@@ -9078,7 +9147,7 @@ Km
 Do
 QZ
 Km
-Km
+Jh
 Km
 Do
 Km
@@ -9282,7 +9351,7 @@ Ih
 JB
 Do
 Do
-Do
+um
 Do
 Do
 Do
@@ -9299,7 +9368,7 @@ eA
 Fa
 oa
 Fa
-Fa
+ae
 fa
 Ih
 Ih
@@ -9383,9 +9452,9 @@ Ih
 Ih
 Ih
 Km
+Ue
 Km
-Km
-Km
+Jh
 Do
 Do
 Km
@@ -9395,7 +9464,7 @@ fa
 Fa
 oa
 Fa
-Fa
+mK
 Fa
 ww
 Fa
@@ -9497,7 +9566,7 @@ Fa
 Fa
 Fa
 ww
-ww
+Fa
 Eg
 Fa
 Fa
@@ -9596,11 +9665,11 @@ Km
 Do
 Do
 Fa
-Fa
+mK
 eA
 Fa
 Fa
-Fa
+jn
 Fa
 ww
 Fa
@@ -9803,11 +9872,11 @@ fa
 kt
 Np
 Fa
-Fa
+mK
 YU
 eA
 Fa
-Fa
+XC
 Fa
 Np
 fa
@@ -10011,9 +10080,9 @@ aN
 Eg
 Fa
 oa
+ae
 Fa
-Fa
-Fa
+Ln
 fa
 Ih
 Ih

@@ -99,6 +99,16 @@
 "gF" = (
 /turf/closed/wall/mineral/rogue/stone,
 /area/rogue/under/cave/spider)
+"hI" = (
+/mob/living/carbon/human/species/skeleton/npc/ambush{
+	inertia_move_delay = 0;
+	STACON = 13;
+	STAEND = 13;
+	STASPD = 13;
+	STASTR = 13
+	},
+/turf/open/water/swamp/deep,
+/area/rogue/under/cave/spider)
 "hL" = (
 /obj/machinery/light/rogue/torchholder{
 	dir = 4
@@ -120,6 +130,20 @@
 /obj/effect/decal/cleanable/cobweb{
 	icon_state = "cobweb2"
 	},
+/turf/open/floor/rogue/dirt/road,
+/area/rogue/under/cave/spider)
+"iU" = (
+/mob/living/carbon/human/species/skeleton/npc/ambush{
+	inertia_move_delay = 0;
+	STACON = 13;
+	STAEND = 13;
+	STASPD = 13;
+	STASTR = 13
+	},
+/turf/open/floor/rogue/tile/masonic/inverted,
+/area/rogue/under/cave/spider)
+"iV" = (
+/obj/item/rogueweapon/eaglebeak/lucerne,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/under/cave/spider)
 "iX" = (
@@ -168,6 +192,17 @@
 	},
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/cave/spider)
+"kV" = (
+/obj/item/clothing/ring/dragon_ring,
+/turf/open/floor/rogue/churchmarble,
+/area/rogue/under/cave/spider)
+"ll" = (
+/obj/effect/decal/cleanable/blood/old,
+/mob/living/simple_animal/hostile/retaliate/rogue/spider/mutated{
+	faction = list("undead")
+	},
+/turf/open/floor/rogue/blocks,
+/area/rogue/under/cave/spider)
 "lr" = (
 /obj/machinery/light/rogue/torchholder{
 	dir = 8
@@ -186,6 +221,10 @@
 "ma" = (
 /obj/structure/mirror,
 /turf/open/floor/rogue/blocks,
+/area/rogue/under/cave/spider)
+"mj" = (
+/obj/item/riddleofsteel,
+/turf/open/floor/rogue/churchmarble,
 /area/rogue/under/cave/spider)
 "mm" = (
 /obj/effect/spawner/roguemap/hauntpile,
@@ -245,6 +284,10 @@
 	},
 /turf/open/floor/rogue/tile/masonic/single,
 /area/rogue/under/cave/spider)
+"pQ" = (
+/obj/item/rogueweapon/shield/tower/metal,
+/turf/open/floor/rogue/churchmarble,
+/area/rogue/under/cave/spider)
 "pV" = (
 /obj/item/chair/stool/bar/rogue/crafted,
 /turf/open/floor/rogue/blocks,
@@ -280,6 +323,12 @@
 /obj/structure/closet/crate/roguecloset/crafted,
 /obj/effect/spawner/lootdrop/roguetown/dungeon/materials,
 /turf/open/floor/rogue/blocks,
+/area/rogue/under/cave/spider)
+"rs" = (
+/mob/living/simple_animal/hostile/retaliate/rogue/spider/mutated{
+	faction = list("undead")
+	},
+/turf/open/floor/rogue/tile/masonic/single,
 /area/rogue/under/cave/spider)
 "rv" = (
 /obj/structure/rack/rogue/shelf/big,
@@ -524,6 +573,16 @@
 /obj/effect/decal/cleanable/blood/footprints,
 /turf/open/floor/rogue/blocks/paving,
 /area/rogue/under/cave/spider)
+"DO" = (
+/mob/living/carbon/human/species/skeleton/npc/ambush{
+	inertia_move_delay = 0;
+	STACON = 13;
+	STAEND = 13;
+	STASPD = 13;
+	STASTR = 13
+	},
+/turf/open/floor/rogue/naturalstone,
+/area/rogue/under/cave/spider)
 "DS" = (
 /obj/item/roguecoin/copper/pile,
 /turf/open/floor/rogue/blocks,
@@ -719,6 +778,13 @@
 "Mr" = (
 /turf/open/floor/rogue/churchmarble,
 /area/rogue/under/cave/spider)
+"Ms" = (
+/mob/living/simple_animal/hostile/retaliate/rogue/minotaur{
+	faction = list("undead");
+	STASTR = 20
+	},
+/turf/open/floor/rogue/tile/masonic/inverted,
+/area/rogue/under/cave/spider)
 "Mu" = (
 /turf/open/floor/rogue/tile/masonic/single,
 /area/rogue/under/cave/spider)
@@ -844,15 +910,8 @@
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/cave/spider)
 "UR" = (
-/obj/effect/decal/cleanable/blood/old,
-/mob/living/carbon/human/species/skeleton/npc/ambush{
-	inertia_move_delay = 0;
-	STACON = 13;
-	STAEND = 13;
-	STASPD = 13;
-	STASTR = 13
-	},
-/turf/open/floor/rogue/blocks,
+/obj/item/scomstone,
+/turf/open/floor/rogue/churchmarble,
 /area/rogue/under/cave/spider)
 "Vi" = (
 /obj/machinery/anvil,
@@ -933,6 +992,10 @@
 /obj/effect/spawner/lootdrop/roguetown/dungeon/materials,
 /turf/open/floor/rogue/tile/masonic/inverted,
 /area/rogue/under/cave/spider)
+"YK" = (
+/obj/item/rogueweapon/greatsword,
+/turf/open/floor/rogue/blocks,
+/area/rogue/under/cave/spider)
 "YP" = (
 /obj/item/ingot/gold,
 /obj/item/ingot/gold,
@@ -947,6 +1010,12 @@
 "YY" = (
 /obj/effect/decal/cleanable/vomit/old,
 /turf/open/floor/rogue/blocks,
+/area/rogue/under/cave/spider)
+"ZM" = (
+/mob/living/simple_animal/hostile/retaliate/rogue/spider/mutated{
+	faction = list("undead")
+	},
+/turf/open/floor/rogue/churchmarble,
 /area/rogue/under/cave/spider)
 "ZX" = (
 /obj/effect/spawner/lootdrop/roguetown/dungeon/misc,
@@ -3616,12 +3685,12 @@ XL
 aX
 aX
 aX
-XL
+xu
 XL
 gF
 is
 QW
-QW
+Lw
 QW
 QW
 QW
@@ -3715,7 +3784,7 @@ Dn
 gF
 XL
 XL
-dj
+XL
 XL
 XL
 XL
@@ -4129,7 +4198,7 @@ XL
 XL
 wX
 gF
-XL
+xu
 XL
 sl
 gF
@@ -4227,7 +4296,7 @@ gF
 gF
 gF
 gF
-XL
+dj
 XL
 XL
 gF
@@ -4351,7 +4420,7 @@ gF
 gF
 Dq
 XL
-XL
+xu
 Hg
 Ex
 Ys
@@ -4365,7 +4434,7 @@ gF
 gF
 gF
 Xn
-CQ
+mt
 Xn
 gF
 Dn
@@ -4436,7 +4505,7 @@ XL
 XL
 gF
 XL
-XL
+dj
 xY
 gF
 Dn
@@ -4446,7 +4515,7 @@ XL
 XL
 Eq
 XL
-XL
+xu
 XL
 XL
 XL
@@ -4458,12 +4527,12 @@ XL
 oc
 XL
 XL
-XL
+xu
 qU
 CQ
 CQ
 CQ
-CQ
+FD
 CQ
 qU
 CQ
@@ -4531,10 +4600,10 @@ Dn
 Dn
 gF
 HN
-XL
+dj
 gF
 Qu
-xu
+XL
 XL
 gF
 XL
@@ -4555,7 +4624,7 @@ gF
 gF
 AJ
 XL
-UR
+Qu
 pV
 Qu
 nv
@@ -4569,7 +4638,7 @@ gF
 gF
 gF
 CQ
-FD
+CQ
 Xn
 gF
 Dn
@@ -4851,7 +4920,7 @@ Dn
 gF
 sl
 DS
-xu
+XL
 gF
 Dn
 Dn
@@ -4860,7 +4929,7 @@ Dn
 Dn
 gF
 kk
-XL
+xu
 Hy
 gF
 fA
@@ -4941,7 +5010,7 @@ Dn
 Dn
 Dn
 gF
-XL
+xu
 XL
 XL
 gF
@@ -4968,7 +5037,7 @@ gF
 fA
 Qu
 XL
-XL
+dj
 gF
 Dn
 Dn
@@ -5080,7 +5149,7 @@ Ww
 gF
 wR
 CQ
-CQ
+mt
 CQ
 kw
 gF
@@ -5277,7 +5346,7 @@ Ta
 Ta
 Ta
 Ta
-Ta
+hI
 Ta
 Ta
 Ta
@@ -5361,7 +5430,7 @@ Dn
 gF
 pg
 XL
-XL
+dj
 gF
 Dn
 Dn
@@ -5471,18 +5540,18 @@ Dn
 Ta
 Ta
 Ta
+vF
+Ta
+Ta
+Ta
+Ta
+eH
 Ta
 Ta
 Ta
 Ta
 Ta
-eZ
-Ta
-Ta
-Ta
-Ta
-Ta
-Ta
+hI
 Ta
 Ta
 gF
@@ -5663,13 +5732,13 @@ sl
 gF
 wJ
 XL
-dj
 XL
 XL
 XL
 XL
 XL
-Qu
+XL
+ll
 XL
 gF
 eZ
@@ -5683,7 +5752,7 @@ eZ
 Ta
 Ta
 eZ
-eH
+eZ
 Ta
 eZ
 eZ
@@ -5764,7 +5833,7 @@ mw
 mw
 Eq
 XL
-XL
+xu
 XL
 XL
 XL
@@ -5869,11 +5938,11 @@ wJ
 XL
 fR
 XL
-xu
+XL
 wX
 XL
 lr
-XL
+xu
 XL
 gF
 eZ
@@ -5992,7 +6061,7 @@ eZ
 eZ
 eZ
 Ta
-Ta
+vF
 Ta
 Ta
 Ta
@@ -6094,7 +6163,7 @@ Ta
 Ta
 eZ
 Ta
-Ta
+hI
 Ta
 gF
 gF
@@ -6202,12 +6271,12 @@ gF
 UE
 CQ
 oo
-CQ
+FD
 CQ
 uZ
 CQ
 CQ
-HS
+CQ
 CQ
 CQ
 HS
@@ -6395,7 +6464,7 @@ Ta
 Ta
 Ta
 Ta
-vF
+Ta
 Ta
 Ta
 Ta
@@ -6494,9 +6563,9 @@ Ta
 Ta
 Ta
 Ta
+vF
 Ta
-Ta
-Ta
+hI
 Ta
 Ta
 Ww
@@ -6507,14 +6576,14 @@ Dn
 gF
 fj
 CQ
-mt
+CQ
 CQ
 kw
 gF
 NB
 CQ
 CQ
-CQ
+HS
 CQ
 HS
 CQ
@@ -6587,7 +6656,7 @@ Eq
 XL
 XL
 XL
-XL
+xu
 XL
 Eq
 eZ
@@ -6883,7 +6952,7 @@ XL
 XL
 XL
 gF
-XL
+xu
 XL
 XL
 Eq
@@ -6919,7 +6988,7 @@ Dn
 Dn
 gF
 XL
-dj
+XL
 XL
 XL
 XL
@@ -6982,7 +7051,7 @@ Dn
 Dn
 gF
 wX
-XL
+xu
 XL
 Eq
 XL
@@ -7225,7 +7294,7 @@ Dn
 pX
 VW
 XL
-XL
+xu
 XL
 XL
 XL
@@ -7287,7 +7356,7 @@ Dn
 Dn
 Dn
 gF
-XL
+xu
 XL
 XL
 gF
@@ -7325,7 +7394,7 @@ Dn
 Dn
 Dn
 pX
-XL
+xu
 XL
 XL
 XL
@@ -7429,7 +7498,7 @@ Dn
 Ly
 eZ
 xz
-eH
+eZ
 eZ
 eZ
 eZ
@@ -7836,12 +7905,12 @@ Dn
 Dn
 Ly
 mm
+eZ
+eZ
+eZ
 eH
 eZ
-eZ
 eH
-eZ
-eZ
 mm
 Ly
 Dn
@@ -7938,9 +8007,9 @@ Dn
 Dn
 gF
 XL
+xu
+YK
 XL
-XL
-dj
 XL
 XL
 XL
@@ -8105,7 +8174,7 @@ gF
 ef
 zw
 Mu
-zw
+dU
 XL
 gF
 Dn
@@ -8206,7 +8275,7 @@ Dn
 gF
 lx
 Mu
-zw
+iU
 Mu
 XL
 gF
@@ -8351,7 +8420,7 @@ XL
 wX
 XL
 XL
-XL
+xu
 XL
 gF
 Cu
@@ -8615,7 +8684,7 @@ gF
 Mu
 Mu
 Mu
-Mu
+MW
 gF
 gF
 gF
@@ -8625,7 +8694,7 @@ Dn
 Dn
 gF
 od
-zw
+iU
 jo
 XM
 YD
@@ -8717,7 +8786,7 @@ Mu
 Mu
 im
 Mu
-Mu
+rs
 zF
 Mu
 gF
@@ -8933,7 +9002,7 @@ gF
 zw
 zw
 zw
-dU
+zw
 zw
 gF
 Dn
@@ -9034,7 +9103,7 @@ Dn
 gF
 zw
 qI
-zw
+Ms
 zw
 zw
 gF
@@ -9078,7 +9147,7 @@ za
 QW
 Lw
 za
-za
+hS
 za
 QW
 za
@@ -9282,7 +9351,7 @@ Dn
 No
 QW
 QW
-QW
+iV
 QW
 QW
 QW
@@ -9299,7 +9368,7 @@ xU
 Mr
 JN
 Mr
-Mr
+pQ
 fI
 Dn
 Dn
@@ -9383,9 +9452,9 @@ Dn
 Dn
 Dn
 za
+DO
 za
-za
-za
+hS
 QW
 QW
 za
@@ -9395,7 +9464,7 @@ fI
 Mr
 JN
 Mr
-Mr
+ZM
 Mr
 BG
 Mr
@@ -9497,7 +9566,7 @@ Mr
 Mr
 Mr
 BG
-BG
+Mr
 uI
 Mr
 Mr
@@ -9596,11 +9665,11 @@ za
 QW
 QW
 Mr
-Mr
+ZM
 xU
 Mr
 Mr
-Mr
+mj
 Mr
 BG
 Mr
@@ -9803,11 +9872,11 @@ fI
 CL
 Jv
 Mr
-Mr
+ZM
 Dh
 xU
 Mr
-Mr
+UR
 Mr
 Jv
 fI
@@ -10011,9 +10080,9 @@ NR
 uI
 Mr
 JN
+pQ
 Mr
-Mr
-Mr
+kV
 fI
 Dn
 Dn
