@@ -10232,7 +10232,7 @@
 "aIM" = (
 /obj/structure/bed/rogue/inn,
 /obj/item/bedsheet/rogue/fabric,
-/obj/effect/landmark/start/bailiff,
+/obj/effect/landmark/start/marshal,
 /turf/open/floor/rogue/tile/masonic/single,
 /area/rogue/outdoors/town)
 "aIN" = (
