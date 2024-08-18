@@ -79,3 +79,8 @@
 	name = "Riddle of Steel"
 	cost = 400
 	contains = list(/obj/item/riddleofsteel)
+
+/datum/supply_pack/rogue/luxury/polishing_kit
+	name = "Polishing Kit"
+	cost = 300
+	contains = list(/obj/item/polishing_cream, /obj/item/armor_brush)

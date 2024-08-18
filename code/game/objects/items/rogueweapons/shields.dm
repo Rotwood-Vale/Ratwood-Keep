@@ -76,6 +76,7 @@
 	dropshrink = 0.8
 	wdefense = 15
 	coverage = 40
+	anvilrepair = null
 
 /obj/item/rogueweapon/shield/wood/attack_hand(mob/user)
 	if(!overlays.len)

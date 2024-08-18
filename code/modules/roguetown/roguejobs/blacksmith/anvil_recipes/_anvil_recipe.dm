@@ -35,6 +35,9 @@
 			proab = 23
 	if(prob(proab))
 		moveup = 0
+	if(HAS_TRAIT(user, TRAIT_SQUIRE_REPAIR) && user.mind.get_skill_level(appro_skill) < SKILL_LEVEL_MASTER)
+		moveup = 0
+		proab = 10
 	progress = min(progress + moveup, 100)
 	if(progress == 100 && additional_items.len)
 		needed_item = pick(additional_items)

@@ -3921,6 +3921,15 @@
 /obj/structure/closet/crate/coffin,
 /turf/open/floor/rogue/cobble,
 /area/rogue/outdoors/town)
+"eun" = (
+/obj/structure/closet/crate/chest{
+	lockid = "keep_armory"
+	},
+/obj/item/polishing_cream,
+/obj/item/natural/cloth,
+/obj/item/natural/cloth,
+/turf/open/floor/rogue/cobble,
+/area/rogue/outdoors/town)
 "euo" = (
 /obj/structure/chair/wood/rogue{
 	dir = 4
@@ -4543,6 +4552,14 @@
 /obj/item/reagent_containers/glass/pot,
 /turf/open/floor/rogue/herringbone,
 /area/rogue/indoors/town/church)
+"fag" = (
+/obj/structure/table/wood{
+	icon_state = "tablewood1"
+	},
+/obj/item/polishing_cream,
+/obj/item/armor_brush,
+/turf/open/floor/rogue/cobble,
+/area/rogue/outdoors/town)
 "faj" = (
 /obj/structure/table/finer,
 /turf/open/floor/rogue/woodturned,
@@ -7912,6 +7929,10 @@
 /obj/item/natural/bundle/cloth,
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors)
+"iXd" = (
+/obj/structure/mineral_door/wood/deadbolt,
+/turf/open/floor/rogue/cobble,
+/area/rogue/outdoors/town)
 "iXC" = (
 /turf/open/floor/rogue/wood/nosmooth,
 /area/rogue/indoors/town/church)
@@ -11818,6 +11839,17 @@
 /obj/structure/roguemachine/mail,
 /turf/open/floor/rogue/hexstone,
 /area/rogue/indoors/town/manor)
+"nOD" = (
+/obj/structure/closet/crate/roguecloset,
+/obj/item/rogueweapon/hammer,
+/obj/item/rogueweapon/tongs,
+/obj/item/roguekey/blacksmith,
+/obj/item/polishing_cream,
+/obj/item/armor_brush,
+/turf/open/floor/rogue/ruinedwood{
+	icon_state = "weird1"
+	},
+/area/rogue/indoors/town/dwarfin)
 "nPt" = (
 /obj/machinery/light/rogue/wallfire/candle,
 /obj/structure/closet/crate/drawer,
@@ -17574,6 +17606,14 @@
 	dir = 1
 	},
 /area/rogue/under/town/basement)
+"uAC" = (
+/obj/machinery/light/rogue/torchholder{
+	pixel_y = 26
+	},
+/obj/structure/rack/rogue,
+/obj/item/rogueweapon/huntingknife/idagger/steel,
+/turf/open/floor/rogue/cobble,
+/area/rogue/outdoors/town)
 "uAD" = (
 /obj/effect/landmark/start/puritan{
 	dir = 8
@@ -17918,6 +17958,10 @@
 /obj/item/rogueweapon/whip/antique,
 /turf/open/floor/rogue/blocks,
 /area/rogue/indoors/town/church)
+"uYn" = (
+/obj/item/roguebin/water/gross,
+/turf/open/floor/rogue/cobble,
+/area/rogue/outdoors/town)
 "uYu" = (
 /obj/structure/closet/crate/roguecloset,
 /obj/item/storage/roguebag,
@@ -19133,6 +19177,11 @@
 /obj/structure/fluff/statue/gargoyle/moss,
 /turf/open/floor/rogue/rooftop,
 /area/rogue/outdoors/town)
+"wyP" = (
+/obj/machinery/anvil,
+/obj/item/rogueweapon/hammer,
+/turf/open/floor/rogue/cobble,
+/area/rogue/outdoors/town)
 "wyZ" = (
 /obj/structure/lever/wall{
 	dir = 8;
@@ -19290,6 +19339,10 @@
 "wGD" = (
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors/bog)
+"wGV" = (
+/obj/structure/bed/rogue,
+/turf/open/floor/rogue/cobble,
+/area/rogue/outdoors/town)
 "wHb" = (
 /obj/structure/stairs/stone{
 	dir = 1
@@ -294691,8 +294744,8 @@ lpa
 mwE
 wVI
 wVI
-wbg
-aOn
+mwE
+rfx
 rfx
 rfx
 rfx
@@ -295094,10 +295147,10 @@ mwE
 wbg
 wbg
 wbg
-mwE
-gmG
-wbg
-wbg
+iXd
+wVI
+wVI
+eun
 esR
 xAt
 xAt
@@ -295495,11 +295548,11 @@ esR
 mwE
 wbg
 wbg
-wbg
 aOn
 rfx
-njq
-wbg
+wGV
+wVI
+uYn
 esR
 xAt
 xAt
@@ -295897,11 +295950,11 @@ wbg
 wbg
 wbg
 wbg
-wbg
 mwE
 rfx
-wbg
-wbg
+uAC
+wVI
+wyP
 esR
 xAt
 xAt
@@ -296300,10 +296353,10 @@ wbg
 wbg
 wbg
 tbi
-mwE
 rfx
-wbg
-wbg
+wGV
+wVI
+fag
 esR
 xAt
 xAt
@@ -385588,7 +385641,7 @@ dMk
 dMk
 hhr
 sco
-uei
+nOD
 dMk
 dMk
 sco
@@ -387600,7 +387653,7 @@ sco
 sWw
 paz
 dMk
-uei
+nOD
 sco
 mvp
 eLe
@@ -397203,7 +397256,7 @@ fZJ
 fZJ
 fZJ
 fZJ
-fZJ
+squ
 rTC
 kWa
 kWa
@@ -397605,7 +397658,7 @@ fZJ
 fZJ
 fZJ
 fZJ
-fZJ
+squ
 rTC
 kWa
 kWa
@@ -398007,7 +398060,7 @@ fZJ
 fZJ
 fZJ
 fZJ
-fZJ
+squ
 rTC
 wFQ
 kWa
@@ -398409,7 +398462,7 @@ fZJ
 fZJ
 aXF
 fZJ
-fZJ
+squ
 rTC
 kWa
 kWa
@@ -398811,7 +398864,7 @@ fZJ
 fZJ
 kWa
 fZJ
-fZJ
+squ
 rTC
 kWa
 kWa
