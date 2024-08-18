@@ -863,26 +863,6 @@
 /mob/living/proc/update_damage_overlays()
 	return
 
-/mob/living/proc/update_wallpress(turf/T, atom/newloc, direct)
-	if(!wallpressed)
-		reset_offsets("wall_press")
-		return FALSE
-	if(buckled || lying)
-		wallpressed = FALSE
-		reset_offsets("wall_press")
-		return FALSE
-	var/turf/newwall = get_step(newloc, wallpressed)
-	if(!T.Adjacent(newwall))
-		return reset_offsets("wall_press")
-	if(isclosedturf(newwall) && fixedeye)
-		var/turf/closed/C = newwall
-		if(C.wallpress)
-			return TRUE
-	wallpressed = FALSE
-	reset_offsets("wall_press")
-	update_wallpress_slowdown()
-
-
 /mob/living/proc/update_pixelshift(turf/T, atom/newloc, direct)
 	if(!pixelshifted)
 		reset_offsets("pixel_shift")
@@ -890,6 +870,8 @@
 	pixelshifted = FALSE
 	pixelshift_x = 0
 	pixelshift_y = 0
+	pixelshift_layer = 0
+	layer = 4
 	reset_offsets("pixel_shift")
 
 /mob/living/Move(atom/newloc, direct, glide_size_override)
@@ -901,7 +883,7 @@
 		sprinted_tiles++
 
 	if(wallpressed)
-		update_wallpress(T, newloc, direct)
+		GetComponent(/datum/component/leaning).wallhug_check(T, newloc, direct)
 
 	if(pixelshifted)
 		update_pixelshift(T, newloc, direct)
@@ -1630,6 +1612,8 @@
 		if(!lying_prev)
 			fall(!canstand_involuntary)
 		layer = LYING_MOB_LAYER //so mob lying always appear behind standing mobs
+		if (pixelshifted)
+			layer = 3.99 + pixelshift_layer //So mobs can pixelshift layers while lying down
 	else
 		if(layer == LYING_MOB_LAYER)
 			layer = initial(layer)
@@ -1649,6 +1633,8 @@
 			add_movespeed_modifier(MOVESPEED_ID_LIVING_LIMBLESS, update=TRUE, priority=100, override=TRUE, multiplicative_slowdown=limbless_slowdown, movetypes=GROUND)
 		else
 			remove_movespeed_modifier(MOVESPEED_ID_LIVING_LIMBLESS, update=TRUE)
+
+	SEND_SIGNAL(src, COMSIG_LIVING_MOBILITY_UPDATED, src)
 
 /mob/living/proc/fall(forced)
 	if(!(mobility_flags & MOBILITY_USE))

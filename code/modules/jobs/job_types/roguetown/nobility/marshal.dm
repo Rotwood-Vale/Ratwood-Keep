@@ -1,6 +1,6 @@
-/datum/job/roguetown/bailiff
-	title = "Bailiff"
-	flag = BAILIFF
+/datum/job/roguetown/marshal
+	title = "Royal Marshal"
+	flag = MARSHAL
 	department_flag = NOBLEMEN
 	faction = "Station"
 	total_positions = 1
@@ -8,12 +8,18 @@
 	allowed_sexes = list(MALE)
 	allowed_races = RACES_TOLERATED_UP
 	allowed_ages = list(AGE_MIDDLEAGED, AGE_OLD)
-	display_order = JDO_BAILIFF
-	tutorial = "You judge the common folk and their wrongdoings if necessary. You help plan with the Councillors and maybe the King on any new issues, laws, judgings, and construction that are required to adapt to the world. You have two assistant Councillors that may serve as jurors to assist you in your job. You are required to enforce taxes for the King, judge people for breaking the law, make sure the town and manor are not in decay, and to help plan or construct new buildings. You are allowed some limited control over Guards, however it is not the focus of your job unless special circumstances are to change this."
+	display_order = JDO_MARSHAL
+	tutorial = "You and your Councillors are the judge and jury, only overruled by His Majesty. \
+				Plan with the Councillors on any issues, laws, judgements, and construction that are required to adapt to the new world. \
+				Your two assistant Councillors are there to fuel your wonderful ideas, lifting the weight of responsibility off your shoulders. \
+				Delegate tasks, enforce taxes and justice upon the unruly. Keep the town running, and enrich it with new architecture. \
+				After all, the King entrusted you with leading and maintaining his military might. \
+				It may be the King's land, but you pull the strings in this town. \
+				All in the name of fulfilling your duty to your Lord."
 	whitelist_req = FALSE
 
 	spells = list(/obj/effect/proc_holder/spell/self/convertrole/guard, /obj/effect/proc_holder/spell/self/convertrole/bog)
-	outfit = /datum/outfit/job/roguetown/bailiff
+	outfit = /datum/outfit/job/roguetown/marshal
 
 	give_bank_account = 40
 	min_pq = 4
@@ -21,19 +27,19 @@
 
 	cmode_music = 'sound/music/combat_guard.ogg'
 
-/datum/outfit/job/roguetown/bailiff/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/job/roguetown/marshal/pre_equip(mob/living/carbon/human/H)
 	..()
 	neck = /obj/item/storage/belt/rogue/pouch/coins/rich
 	armor = /obj/item/clothing/suit/roguetown/armor/gambeson/lord
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
 	pants = /obj/item/clothing/under/roguetown/tights/black
 	shoes = /obj/item/clothing/shoes/roguetown/nobleboot
-	head = /obj/item/clothing/head/roguetown/chaperon/bailiff
+	head = /obj/item/clothing/head/roguetown/chaperon/marshal
 	backl = /obj/item/storage/backpack/rogue/satchel
 	belt = /obj/item/storage/belt/rogue/leather/plaquegold
-	beltl = /obj/item/keyring/bailiff
+	beltl = /obj/item/keyring/marshal
 	beltr = /obj/item/rogueweapon/mace
-	cloak = /obj/item/clothing/cloak/stabard/surcoat/bailiff
+	cloak = /obj/item/clothing/cloak/stabard/surcoat/marshal
 	gloves = /obj/item/clothing/gloves/roguetown/angle
 	wrists = /obj/item/clothing/wrists/roguetown/bracers
 	backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger/steel/special = 1)
@@ -61,10 +67,10 @@
 
 /mob/living/carbon/human/proc/request_law()
 	set name = "Request Law"
-	set category = "Bailiff"
+	set category = "Martial Law"
 	if(stat)
 		return
-	var/inputty = input("Write a new law", "BAILIFF") as text|null
+	var/inputty = input("Write a new law", "MARTIAL LAW") as text|null
 	if(inputty)
 		if(hasomen(OMEN_NOLORD))
 			make_law(inputty)
@@ -77,10 +83,10 @@
 
 /mob/living/carbon/human/proc/request_law_removal()
 	set name = "Request Law Removal"
-	set category = "Bailiff"
+	set category = "Martial Law"
 	if(stat)
 		return
-	var/inputty = input("Remove a law", "BAILIFF") as text|null
+	var/inputty = input("Remove a law", "MARTIAL LAW") as text|null
 	var/law_index = text2num(inputty) || 0
 	if(law_index && GLOB.laws_of_the_land[law_index])
 		if(hasomen(OMEN_NOLORD))
@@ -94,7 +100,7 @@
 
 /mob/living/carbon/human/proc/request_purge()
 	set name = "Request Purge"
-	set category = "Bailiff"
+	set category = "Martial Law"
 	if(stat)
 		return
 	if(hasomen(OMEN_NOLORD))
@@ -108,10 +114,10 @@
 
 /mob/living/carbon/human/proc/request_outlaw()
 	set name = "Request Outlaw"
-	set category = "Bailiff"
+	set category = "Martial Law"
 	if(stat)
 		return
-	var/inputty = input("Outlaw a person", "BAILIFF") as text|null
+	var/inputty = input("Outlaw a person", "MARTIAL LAW") as text|null
 	if(inputty)
 		if(hasomen(OMEN_NOLORD))
 			make_outlaw(inputty)
@@ -131,36 +137,36 @@
 		break
 	return lord
 
-/proc/lord_law_requested(mob/living/bailiff, mob/living/carbon/human/lord, requested_law)
-	var/choice = alert(lord, "The bailiff requests a new law!\n[requested_law]", "BAILIFF LAW REQUEST", "Yes", "No")
+/proc/lord_law_requested(mob/living/marshal, mob/living/carbon/human/lord, requested_law)
+	var/choice = alert(lord, "The Royal Marshal requests a new law!\n[requested_law]", "MARTIAL LAW REQUEST", "Yes", "No")
 	if(choice != "Yes" || QDELETED(lord) || lord.stat > CONSCIOUS)
-		if(bailiff)
+		if(marshal)
 			to_chat(span_warning("The lord has denied the request for a new law!"))
 		return
 	make_law(requested_law)
 
-/proc/lord_law_removal_requested(mob/living/bailiff, mob/living/carbon/human/lord, requested_law)
+/proc/lord_law_removal_requested(mob/living/marshal, mob/living/carbon/human/lord, requested_law)
 	if(!requested_law || !GLOB.laws_of_the_land[requested_law])
 		return
-	var/choice = alert(lord, "The bailiff requests the removal of a law!\n[GLOB.laws_of_the_land[requested_law]]", "BAILIFF LAW REQUEST", "Yes", "No")
+	var/choice = alert(lord, "The Royal Marshal requests the removal of a law!\n[GLOB.laws_of_the_land[requested_law]]", "MARTIAL LAW REQUEST", "Yes", "No")
 	if(choice != "Yes" || QDELETED(lord) || lord.stat > CONSCIOUS)
-		if(bailiff)
+		if(marshal)
 			to_chat(span_warning("The lord has denied the request for a law removal!"))
 		return
 	remove_law(requested_law)
 
-/proc/lord_purge_requested(mob/living/bailiff, mob/living/carbon/human/lord)
-	var/choice = alert(lord, "The bailiff requests a purge of all laws!", "BAILIFF PURGE REQUEST", "Yes", "No")
+/proc/lord_purge_requested(mob/living/marshal, mob/living/carbon/human/lord)
+	var/choice = alert(lord, "The Royal Marshal requests a purge of all laws!", "MARSHAL PURGE REQUEST", "Yes", "No")
 	if(choice != "Yes" || QDELETED(lord) || lord.stat > CONSCIOUS)
-		if(bailiff)
+		if(marshal)
 			to_chat(span_warning("The lord has denied the request for a purge of all laws!"))
 		return
 	purge_laws()
 
-/proc/lord_outlaw_requested(mob/living/bailiff, mob/living/carbon/human/lord, requested_outlaw)
-	var/choice = alert(lord, "The bailiff requests to outlaw someone!\n[requested_outlaw]", "BAILIFF OUTLAW REQUEST", "Yes", "No")
+/proc/lord_outlaw_requested(mob/living/marshal, mob/living/carbon/human/lord, requested_outlaw)
+	var/choice = alert(lord, "The Royal Marshal requests to outlaw someone!\n[requested_outlaw]", "MARSHAL OUTLAW REQUEST", "Yes", "No")
 	if(choice != "Yes" || QDELETED(lord) || lord.stat > CONSCIOUS)
-		if(bailiff)
+		if(marshal)
 			to_chat(span_warning("The lord has denied the request for declaring an outlaw!"))
 		return
 	make_outlaw(requested_outlaw)
