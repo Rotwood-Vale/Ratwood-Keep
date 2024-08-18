@@ -36,6 +36,6 @@
 		pants = null
 	backpack_contents = list(/obj/item/seeds/wheat=1,/obj/item/seeds/apple=1,/obj/item/ash=1)
 	H.change_stat("strength", 1)
-	H.change_stat("endurance", 2) //what ploughing fields all dae does to a mf
+	H.change_stat("endurance", 1)
 	H.change_stat("intelligence", -2)
 	H.change_stat("speed", -1)
