@@ -136,3 +136,4 @@
 
 /obj/item/reagent_containers/food/snacks/rogue/fryfish/shrimp
 	icon_state = "shrimpcooked"
+	name = "cooked shrimp"
