@@ -33,6 +33,7 @@
 	else
 		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
 		armor = /obj/item/clothing/suit/roguetown/shirt/dress/gen/sexy
+		pants =	/obj/item/clothing/under/roguetown/tights/stockings/fishnet/random
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/stealing, 3, TRUE)
@@ -57,6 +58,7 @@
 	righthand_file = 'icons/mob/inhands/equipment/custodial_righthand.dmi'
 	w_class = WEIGHT_CLASS_TINY
 	item_flags = NOBLUDGEON
+	grind_results = list(/datum/reagent/lye = 15)
 	throwforce = 0
 	throw_speed = 1
 	throw_range = 7

@@ -8,7 +8,7 @@
 	allowed_sexes = list(MALE)
 	allowed_races = list()
 	allowed_patrons = list(/datum/patron/inhumen/graggar)
-	tutorial = "Goblin rensposible for fresh iron and steel"
+	tutorial = "Goblin rensposible for fresh iron and steel."
 	display_order = JDO_GOBLINSMITH
 	outfit = /datum/outfit/job/roguetown/goblinsmith
 	min_pq = 0

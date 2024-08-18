@@ -416,7 +416,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	S["joblessrole"] >> joblessrole
 	//Load prefs
 	S["job_preferences"] >> job_preferences
-
+	job_preferences = validate_job_prefs(job_preferences) //Make sure there are no redundant jobs
 	//Quirks
 	S["all_quirks"] >> all_quirks
 
@@ -480,6 +480,8 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 
 	S["descriptor_entries"] >> descriptor_entries
 	descriptor_entries = SANITIZE_LIST(descriptor_entries)
+	S["custom_descriptors"] >> custom_descriptors
+	custom_descriptors = SANITIZE_LIST(custom_descriptors)
 	validate_descriptors()
 
 	var/list/valid_skin_tones = pref_species.get_skin_list()
@@ -566,6 +568,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	WRITE_FILE(S["body_markings"] , body_markings)
 	// Descriptor entries
 	WRITE_FILE(S["descriptor_entries"] , descriptor_entries)
+	WRITE_FILE(S["custom_descriptors"] , custom_descriptors)
 	
 	WRITE_FILE(S["update_mutant_colors"] , update_mutant_colors)
 	WRITE_FILE(S["headshot_link"] , headshot_link)
@@ -592,3 +595,9 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	S.ImportText("/",file("[path].txt"))
 
 #endif
+
+/datum/preferences/proc/validate_job_prefs(var/list/job_prefs)
+	for(var/job in job_prefs)
+		if(!SSjob.GetJob(job))
+			job_prefs -= job
+	return job_prefs

@@ -156,6 +156,11 @@
 	stressadd = 1
 	desc = span_red("Better stay away.")
 
+/datum/stressevent/shunned_race_xenophobic
+	timer = 2 MINUTES
+	stressadd = 5
+	desc = span_red("Better stay away.")
+
 /datum/stressevent/paracrowd
 	timer = 15 SECONDS
 	stressadd = 2
@@ -175,6 +180,11 @@
 	timer = 2 MINUTES
 	stressadd = 2
 	desc = span_red("They are plotting against me in evil tongues..")
+
+/datum/stressevent/jesterphobia
+	timer = 4 MINUTES
+	stressadd = 5
+	desc = span_boldred("No! Get the Jester away from me!")
 
 /datum/stressevent/coldhead
 	timer = 60 SECONDS
@@ -231,3 +241,13 @@
 	stressadd = 6
 	desc = span_boldred("Bad omen! I've broken some kind of wall...")
 	timer = 5 MINUTES
+
+/datum/stressevent/sleepfloor
+	stressadd = 3
+	desc = "I slept on the floor. It was uncomfortable."
+	timer = 1 MINUTES
+
+/datum/stressevent/sleepfloornoble
+	stressadd = 6
+	desc = "I slept on the floor! What am I?! An animal?!"
+	timer = 3 MINUTES

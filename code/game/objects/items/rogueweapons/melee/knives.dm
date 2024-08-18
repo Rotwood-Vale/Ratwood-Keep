@@ -35,6 +35,7 @@
 
 /datum/intent/dagger/cut
 	name = "cut"
+	desc = "A simple iron dagger favored as a fallback weapon for archers and crossbowmen. Just as likely to be in the hands on an assassin or rogue too."
 	icon_state = "incut"
 	attack_verb = list("cuts", "slashes")
 	animname = "cut"
@@ -94,7 +95,7 @@
 /obj/item/rogueweapon/huntingknife/cleaver
 	force = 15
 	name = "cleaver"
-	desc = "Chop, chop, chop!"
+	desc = "A big, heavy knife designed to chop through meat with ease."
 	possible_item_intents = list(/datum/intent/dagger/cut, /datum/intent/dagger/chop/cleaver)
 	icon_state = "cleav"
 	icon = 'icons/roguetown/weapons/32.dmi'

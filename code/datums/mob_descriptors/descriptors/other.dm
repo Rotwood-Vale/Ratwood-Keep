@@ -49,6 +49,7 @@
 	name = "penis"
 	slot = MOB_DESCRIPTOR_SLOT_PENIS
 	verbage = "has"
+	show_obscured = TRUE
 
 /datum/mob_descriptor/penis/can_describe(mob/living/described)
 	if(!ishuman(described))
@@ -90,6 +91,7 @@
 	name = "balls"
 	slot = MOB_DESCRIPTOR_SLOT_TESTICLES
 	verbage = "has"
+	show_obscured = TRUE
 
 /datum/mob_descriptor/testicles/can_describe(mob/living/described)
 	if(!ishuman(described))
@@ -100,8 +102,7 @@
 		return FALSE
 	if(!get_location_accessible(human, BODY_ZONE_PRECISE_GROIN))
 		return FALSE
-	var/obj/item/organ/penis/penis = human.getorganslot(ORGAN_SLOT_PENIS)
-	if(penis && penis.sheath_type == SHEATH_TYPE_SLIT) //If our penis hides in a slit, dont describe testicles
+	if(!testes.visible_organ)
 		return FALSE
 	return TRUE
 
@@ -122,6 +123,7 @@
 	name = "vagina"
 	slot = MOB_DESCRIPTOR_SLOT_VAGINA
 	verbage = "has"
+	show_obscured = TRUE
 
 /datum/mob_descriptor/vagina/can_describe(mob/living/described)
 	if(!ishuman(described))
@@ -141,6 +143,7 @@
 	name = "breasts"
 	slot = MOB_DESCRIPTOR_SLOT_BREASTS
 	verbage = "has"
+	show_obscured = TRUE
 
 /datum/mob_descriptor/breasts/can_describe(mob/living/described)
 	if(!ishuman(described))

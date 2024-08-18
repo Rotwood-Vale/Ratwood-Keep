@@ -1112,7 +1112,7 @@
 #ifdef MATURESERVER
 	message_param = "%t"
 #endif
-	//mute_time = 1 - RATWOOD CHANGE, I don't want spammers.
+
 /datum/emote/living/custom/can_run_emote(mob/user, status_check, intentional)
 	. = ..() && intentional
 
@@ -1131,9 +1131,6 @@
 
 /datum/emote/living/custom/run_emote(mob/user, params, type_override = null, intentional = FALSE)
 	if(!can_run_emote(user, TRUE, intentional))
-		return FALSE
-	if(is_banned_from(user.ckey, "Emote"))
-		to_chat(user, span_boldwarning("I cannot send custom emotes (banned)."))
 		return FALSE
 	else if(QDELETED(user))
 		return FALSE

@@ -102,7 +102,7 @@
 #define STEWARD		(1<<3)
 #define KNIGHT		(1<<4)
 #define GUARD_CAPTAIN		(1<<5)
-#define BAILIFF		(1<<6)
+#define MARSHAL		(1<<6)
 #define HOSTAGE		(1<<7)
 
 #define GARRISON		(1<<1)
@@ -184,6 +184,7 @@
 #define DESERT_RIDER	(1<<0)
 #define GRENZELHOFT		(1<<1)
 #define VETERAN		(1<<2)
+#define SELLSWORD		(1<<3)
 
 #define GOBLIN		(1<<8)
 
@@ -216,7 +217,7 @@
 #define JDO_HAND 2
 #define JDO_STEWARD 3
 #define JDO_CLERK 3.1
-#define JDO_BAILIFF 4
+#define JDO_MARSHAL 4
 #define JDO_COUNCILLOR 4.1
 
 // Courtiers
@@ -277,6 +278,7 @@
 #define JDO_GRENZELHOFT 31
 #define JDO_DESERT_RIDER 31.1
 #define JDO_VET 31.2
+#define JDO_SELLSWORD 31.3
 
 #define JDO_VAGRANT 33
 #define JDO_ORPHAN 34
@@ -290,3 +292,79 @@
 #define JDO_GOBLINCOOK 37
 #define JDO_GOBLINGUARD 38
 #define JDO_GOBLINSMITH 39
+
+#define MANOR_ROLES \
+	/datum/job/roguetown/jester,\
+	/datum/job/roguetown/veteran,\
+	/datum/job/roguetown/clerk,\
+	/datum/job/roguetown/wapprentice,\
+	/datum/job/roguetown/servant,\
+	/datum/job/roguetown/squire,\
+	/datum/job/roguetown/butler,\
+	/datum/job/roguetown/magician
+
+#define NOBLE_ROLES \
+	/datum/job/roguetown/prince,\
+	/datum/job/roguetown/councillor,\
+	/datum/job/roguetown/physician,\
+	/datum/job/roguetown/masrhal,\
+	/datum/job/roguetown/captain,\
+	/datum/job/roguetown/hand,\
+	/datum/job/roguetown/knight,\
+	/datum/job/roguetown/lady,\
+	/datum/job/roguetown/lord,\
+	/datum/job/roguetown/steward
+
+#define KING_QUEEN_ROLES \
+	/datum/job/roguetown/lady,\
+	/datum/job/roguetown/lord
+
+#define CHURCH_ROLES \
+	/datum/job/roguetown/churchling,\
+	/datum/job/roguetown/shepherd,\
+	/datum/job/roguetown/druid,\
+	/datum/job/roguetown/monk,\
+	/datum/job/roguetown/undertaker,\
+	/datum/job/roguetown/priest,\
+	/datum/job/roguetown/puritan,\
+	/datum/job/roguetown/templar
+
+#define PEASANT_ROLES \
+	/datum/job/roguetown/villager,\
+	/datum/job/roguetown/nightmaiden,\
+	/datum/job/roguetown/beggar,\
+	/datum/job/roguetown/butcher,\
+	/datum/job/roguetown/cook,\
+	/datum/job/roguetown/lunatic,\
+	/datum/job/roguetown/nightman,\
+	/datum/job/roguetown/farmer,\
+	/datum/job/roguetown/orphan,\
+	/datum/job/roguetown/shophand,\
+	/datum/job/roguetown/bapprentice,\
+	/datum/job/roguetown/prisonerb,\
+	/datum/job/roguetown/hostage,\
+	/datum/job/roguetown/prisonerr
+
+#define YEOMEN_ROLES \
+	/datum/job/roguetown/woodsman,\
+	/datum/job/roguetown/archivist,\
+	/datum/job/roguetown/barkeep,\
+	/datum/job/roguetown/armorsmith,\
+	/datum/job/roguetown/mason,\
+	/datum/job/roguetown/merchant,\
+	/datum/job/roguetown/scribe
+
+#define WANDERER_ROLES \
+	/datum/job/roguetown/pilgrim,\
+	/datum/job/roguetown/adventurer,\
+	/datum/job/roguetown/mercenary/desert_rider,\
+	/datum/job/roguetown/mercenary/grenzelhoft
+
+#define GARRISON_ROLES \
+	/datum/job/roguetown/bogguardsman,\
+	/datum/job/roguetown/bogmaster,\
+	/datum/job/roguetown/dungeoneer,\
+	/datum/job/roguetown/gatemaster,\
+	/datum/job/roguetown/manorguard,\
+	/datum/job/roguetown/sheriff,\
+	/datum/job/roguetown/guardsman
