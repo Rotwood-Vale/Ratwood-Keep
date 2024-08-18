@@ -46,13 +46,13 @@
             if(!untransforming)
                 untransforming = world.time // Start untransformation phase
 
-            if (world.time >= untransforming + 25 SECONDS) // Untransform
+            if (world.time >= untransforming + 30 SECONDS) // Untransform
                 H.emote("rage", forced = TRUE)
                 H.werewolf_untransform()
                 transformed = FALSE
                 untransforming = FALSE // Reset untransforming phase
 
-            else if (world.time >= untransforming + 10 SECONDS) // Alert player
+            else if (world.time >= untransforming) // Alert player
                 H.flash_fullscreen("redflash1")
                 to_chat(H, span_warning("Daylight shines around me... the curse begins to fade."))
 
