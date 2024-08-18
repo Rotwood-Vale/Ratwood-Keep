@@ -8,7 +8,9 @@
 /datum/crafting_recipe/roguetown/trapping/mantrap
 	name = "mantrap"
 	result = /obj/item/restraints/legcuffs/beartrap
-	reqs = list(/obj/item/natural/fibers = 1,/obj/item/natural/thorn = 2,/obj/item/ingot/iron = 1)
+	reqs = list(/obj/item/grown/log/tree/small = 1,
+				/obj/item/natural/fibers = 2,
+				/obj/item/ingot/iron = 1)
 	verbage_simple = "puts together"
 	verbage = "puts together"
 	craftdiff = 1
