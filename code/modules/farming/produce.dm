@@ -54,7 +54,6 @@
 	can_distill = TRUE
 	distill_reagent = /datum/reagent/consumable/ethanol/beer
 	distill_amt = 24
-	pot_reagent = /datum/reagent/consumable/wheat_grain
 	grind_results = list(/datum/reagent/floure = 10)
 
 /obj/item/reagent_containers/food/snacks/grown/oat
