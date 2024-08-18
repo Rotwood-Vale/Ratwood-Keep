@@ -343,6 +343,7 @@
 	sellprice = 200
 	resistance_flags = FIRE_PROOF | ACID_PROOF
 	anvilrepair = /datum/skill/craft/armorsmithing
+	clothing_flags = CANT_SLEEP_IN
 
 /obj/item/clothing/head/roguetown/crown/serpcrown/Initialize()
 	. = ..()
@@ -452,6 +453,7 @@
 	smeltresult = /obj/item/ingot/steel
 	blocksound = PLATEHIT
 	max_integrity = 200
+	clothing_flags = CANT_SLEEP_IN
 
 /obj/item/clothing/head/roguetown/helmet/skullcap
 	name = "skull cap"
@@ -697,6 +699,7 @@
 	smeltresult = null
 	sewrepair = TRUE
 	blocksound = SOFTHIT
+	clothing_flags = null
 
 /obj/item/clothing/head/roguetown/helmet/leather/volfhelm
 	slot_flags = ITEM_SLOT_HEAD|ITEM_SLOT_HIP
@@ -710,6 +713,7 @@
 	anvilrepair = null
 	sewrepair = TRUE
 	blocksound = SOFTHIT
+	clothing_flags = null
 
 /obj/item/clothing/head/roguetown/wizhat
 	name = "wizard hat"
@@ -808,6 +812,7 @@
 	smeltresult = null
 	sewrepair = TRUE
 	blocksound = SOFTHIT
+	clothing_flags = null
 
 /obj/item/clothing/head/roguetown/helmet/tricorn/skull
 	icon_state = "tricorn_skull"
@@ -830,3 +835,4 @@
 	smeltresult = null
 	sewrepair = TRUE
 	blocksound = SOFTHIT
+	clothing_flags = null
