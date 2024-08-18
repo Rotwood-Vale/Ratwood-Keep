@@ -193,13 +193,13 @@ GLOBAL_LIST_INIT(roguetown_areas_typecache, typecacheof(/area/rogue/indoors/town
 				/turf/open/floor/rogue/grass,
 				/turf/open/water)
 	//Minotaurs too strong for the lazy amount of places this area covers
-	ambush_mobs = list(
-				/mob/living/carbon/human/species/skeleton/npc/dungeon/ambush = 30,
+	ambush_mobs = list(/mob/living/carbon/human/species/skeleton/npc/dungeon/ambush = 30,
 				/mob/living/carbon/human/species/skeleton/npc/ambush = 50,
 				/mob/living/simple_animal/hostile/retaliate/rogue/wolf = 60,
 				/mob/living/simple_animal/hostile/retaliate/rogue/bigrat = 60,
 				/mob/living/simple_animal/hostile/retaliate/rogue/spider = 40,
-				/mob/living/carbon/human/species/goblin/npc/ambush/cave = 40)
+				/mob/living/carbon/human/species/goblin/npc/ambush/cave = 40,
+				/mob/living/simple_animal/hostile/retaliate/rogue/wendigo = 40)
 	first_time_text = "THE TERRORBOG"
 	converted_type = /area/rogue/indoors/shelter/bog
 
