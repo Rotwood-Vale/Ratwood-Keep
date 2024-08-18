@@ -109,17 +109,19 @@
 	if(obj_broken)
 		..()
 		return
+	if(TIMER_COOLDOWN_RUNNING(user, "resist"))
+		return
 	if(isliving(user))
+		TIMER_COOLDOWN_START(user, "resist", 0.5 SECONDS)
 		var/mob/living/L = user
-		var/time2mount = CLAMP((L.STASTR * 2), 1, 99)
-		user.changeNext_move(CLICK_CD_RAPID)
+		var/resist_chance = CLAMP((L.STASTR * 5), 1, 99)
 		if(user != M)
-			if(prob(time2mount))
+			if(prob(resist_chance))
 				..()
 			else
 				user.visible_message(span_warning("[user] tries to pull [M] free of [src]!"))
 			return
-		if(prob(time2mount))
+		if(prob(resist_chance / 2))
 			..()
 		else
 			user.visible_message(span_warning("[user] tries to break free of [src]!"))
