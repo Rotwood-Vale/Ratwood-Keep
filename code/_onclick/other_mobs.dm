@@ -75,7 +75,7 @@
 		to_chat(src, span_warning("I can't move this hand."))
 		return
 
-	if(check_arm_grabbed())
+	if(check_arm_grabbed(used_hand))
 		to_chat(src, span_warning("[pulledby] is restraining my arm!"))
 		return
 
@@ -250,8 +250,7 @@
 				if(A == src)
 					return
 				if(isliving(A))
-					var/mob/living/L = A
-					if(!(L.mobility_flags & MOBILITY_STAND) && L.pulling != src)
+					if(!(mobility_flags & MOBILITY_STAND) && pulledby)
 						return
 				if(IsOffBalanced())
 					to_chat(src, span_warning("I haven't regained my balance yet."))
@@ -413,18 +412,17 @@
 									if (V.get_item_by_slot(SLOT_BELT_R))
 										stealpos.Add(V.get_item_by_slot(SLOT_BELT_R))
 									if (V.get_item_by_slot(SLOT_BELT_L))
-										stealpos.Add(V.get_item_by_slot(SLOT_BELT_L))	
+										stealpos.Add(V.get_item_by_slot(SLOT_BELT_L))
 								if("r_hand" || "l_hand")
 									if (V.get_item_by_slot(SLOT_RING))
 										stealpos.Add(V.get_item_by_slot(SLOT_RING))
 							if (length(stealpos) > 0)
 								var/obj/item/picked = pick(stealpos)
 								V.dropItemToGround(picked)
-								put_in_active_hand(picked)						
+								put_in_active_hand(picked)
 								to_chat(src, span_green("I stole [picked]!"))
 								V.log_message("has had \the [picked] stolen by [key_name(U)]", LOG_ATTACK, color="black")
 								U.log_message("has stolen \the [picked] from [key_name(V)]", LOG_ATTACK, color="black")
-								exp_to_gain *= src.mind.get_learning_boon(thiefskill)
 							else
 								exp_to_gain /= 2 // these can be removed or changed on reviewer's discretion
 								to_chat(src, span_warning("I didn't find anything there. Perhaps I should look elsewhere."))
@@ -439,7 +437,9 @@
 						U.log_message("has attempted to pickpocket [key_name(V)]", LOG_ATTACK, color="black")
 						to_chat(src, span_danger("I failed to pick the pocket!"))
 						exp_to_gain /= 5 // these can be removed or changed on reviewer's discretion
-					src.mind.adjust_experience(/datum/skill/misc/stealing, exp_to_gain, FALSE)
+					// If we're pickpocketing someone else, and that person is conscious, grant XP
+					if(src != V && V.stat == CONSCIOUS)
+						mind.add_sleep_experience(/datum/skill/misc/stealing, exp_to_gain, FALSE)
 					changeNext_move(mmb_intent.clickcd)
 				return
 			if(INTENT_SPELL)

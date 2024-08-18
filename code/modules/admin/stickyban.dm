@@ -389,7 +389,6 @@
 	<head>
 		<title>Sticky Bans</title>
 	</head>
-	<body>
 		<h2>All Sticky Bans:</h2> <a href='?_src_=holder;[HrefToken()];stickyban=add'>\[+\]</a><br>
 		[banhtml.Join("")]
 	</body>

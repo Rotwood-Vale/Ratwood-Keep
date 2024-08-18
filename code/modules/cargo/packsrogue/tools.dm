@@ -25,7 +25,7 @@
 */
 /datum/supply_pack/rogue/tools/chains
 	name = "Chains"
-	cost = 15
+	cost = 55
 	contains = list(
 					/obj/item/rope/chain,
 					/obj/item/rope/chain,

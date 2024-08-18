@@ -3,6 +3,7 @@
 	flag = MIGRANT
 	department_flag = PEASANTS
 	faction = "Station"
+	job_greet_text = FALSE // Migration gives them their own greetings
 
 	allowed_races = RACES_ALL_KINDS
 

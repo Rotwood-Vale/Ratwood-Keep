@@ -5,7 +5,7 @@
 	relevant_layers = list(BODY_ADJ_LAYER, BODY_FRONT_LAYER)
 
 /datum/sprite_accessory/ears/is_visible(obj/item/organ/organ, obj/item/bodypart/bodypart, mob/living/carbon/owner)
-	return is_human_part_visible(owner, HIDEEARS|HIDEHAIR)
+	return is_human_part_visible(owner, HIDEEARS)
 
 /datum/sprite_accessory/ears/adjust_appearance_list(list/appearance_list, obj/item/organ/organ, obj/item/bodypart/bodypart, mob/living/carbon/owner)
 	generic_gender_feature_adjust(appearance_list, organ, bodypart, owner, OFFSET_FACE, OFFSET_FACE_F)
@@ -110,6 +110,12 @@
 	color_keys = 2
 	color_key_names = list("Ears", "Inner")
 
+/datum/sprite_accessory/ears/vulp
+	name = "Vulp"
+	icon_state = "vulp"
+	color_keys = 2
+	color_key_names = list("Ears", "Inner")
+
 /datum/sprite_accessory/ears/husky
 	name = "Husky"
 	icon_state = "wolf"
@@ -157,6 +163,12 @@
 /datum/sprite_accessory/ears/sergal
 	name = "Sergal"
 	icon_state = "sergal"
+	color_keys = 2
+	color_key_names = list("Ears", "Inner")
+
+/datum/sprite_accessory/ears/shark
+	name = "Shark"
+	icon_state = "shark"
 	color_keys = 2
 	color_key_names = list("Ears", "Inner")
 

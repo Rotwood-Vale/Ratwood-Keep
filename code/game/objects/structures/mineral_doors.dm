@@ -46,7 +46,69 @@
 	var/kickthresh = 15
 	var/swing_closed = TRUE
 
+	/// Whether to grant a resident_key
+	var/grant_resident_key = FALSE
+	var/resident_key_amount = 1
+	/// The type of a key the resident will get
+	var/resident_key_type
+	/// The required role of the resident
+	var/resident_role
+	/// The requied advclass of the resident
+	var/resident_advclass
+
 	damage_deflection = 10
+	leanable = TRUE
+
+/obj/structure/mineral_door/proc/try_award_resident_key(mob/user)
+	if(!grant_resident_key)
+		return FALSE
+	if(!lockid)
+		return FALSE
+	if(!ishuman(user))
+		return FALSE
+	var/mob/living/carbon/human/human = user
+	if(human.received_resident_key)
+		return FALSE
+	if(resident_role)
+		var/datum/job/job = SSjob.name_occupations[human.job]
+		if(job.type != resident_role)
+			return FALSE
+	if(resident_advclass)
+		if(!human.advjob)
+			return FALSE
+		var/datum/advclass/advclass = SSrole_class_handler.get_advclass_by_name(human.advjob)
+		if(!advclass)
+			return FALSE
+		if(advclass.type != resident_advclass)
+			return FALSE
+	var/alert = alert(user, "Is this my home?", "Home", "Yes", "No")
+	if(alert != "Yes")
+		return
+	if(!grant_resident_key)
+		return
+	var/spare_key = alert(user, "Have I got an extra spare key?", "Home", "Yes", "No")
+	if(!grant_resident_key)
+		return
+	if(spare_key == "Yes")
+		resident_key_amount = 2
+	else
+		resident_key_amount = 1
+	for(var/i in 1 to resident_key_amount)
+		var/obj/item/roguekey/key
+		if(resident_key_type)
+			key = new resident_key_type(get_turf(human))
+		else
+			key = new /obj/item/roguekey(get_turf(human))
+		key.lockid = lockid
+		key.lockhash = lockhash
+		human.put_in_hands(key)
+	human.received_resident_key = TRUE
+	grant_resident_key = FALSE
+	if(resident_key_amount > 1)
+		to_chat(human, span_notice("They're just where I left them..."))
+	else
+		to_chat(human, span_notice("It's just where I left it..."))
+	return TRUE
 
 /obj/structure/mineral_door/onkick(mob/user)
 	if(isSwitchingStates)
@@ -92,6 +154,7 @@
 
 	if(close_delay != -1)
 		addtimer(CALLBACK(src, PROC_REF(Close)), close_delay)
+	SEND_SIGNAL(src, COMSIG_DOOR_OPEN, src)
 
 /obj/structure/mineral_door/proc/force_closed()
 	isSwitchingStates = TRUE
@@ -103,12 +166,15 @@
 	air_update_turf(1)
 	update_icon()
 	isSwitchingStates = FALSE
+	SEND_SIGNAL(src, COMSIG_DOOR_CLOSED, src)
 
 /obj/structure/mineral_door/Initialize()
 	. = ..()
 	if(!base_state)
 		base_state = icon_state
 	air_update_turf(TRUE)
+	if(grant_resident_key && !lockid)
+		lockid = "random_lock_id_[rand(1,9999999)]" // I know, not foolproof
 	if(lockhash)
 		GLOB.lockhashes += lockhash
 	else if(keylock)
@@ -184,6 +250,8 @@
 		return
 	if(isSwitchingStates)
 		return
+	if(try_award_resident_key(user))
+		return
 	if(locked)
 		if(isliving(user))
 			var/mob/living/L = user
@@ -247,6 +315,7 @@
 
 	if(close_delay != -1)
 		addtimer(CALLBACK(src, PROC_REF(Close)), close_delay)
+	SEND_SIGNAL(src, COMSIG_DOOR_OPEN, src)
 
 /obj/structure/mineral_door/proc/Close(silent = FALSE)
 	if(isSwitchingStates || !door_opened)
@@ -267,6 +336,7 @@
 	air_update_turf(1)
 	update_icon()
 	isSwitchingStates = FALSE
+	SEND_SIGNAL(src, COMSIG_DOOR_CLOSED, src)
 
 /obj/structure/mineral_door/update_icon()
 	icon_state = "[base_state][door_opened ? "open":""]"
@@ -771,3 +841,56 @@
 /obj/structure/mineral_door/bars/onkick(mob/user)
 	user.visible_message(span_warning("[user] kicks [src]!"))
 	return
+
+/obj/structure/mineral_door/wood/towner
+	locked = TRUE
+	keylock = TRUE
+	grant_resident_key = TRUE
+	resident_key_type = /obj/item/roguekey/townie
+	resident_role = /datum/job/roguetown/villager
+	lockid = null //Will be randomized
+
+/obj/structure/mineral_door/wood/towner/generic
+
+/obj/structure/mineral_door/wood/towner/generic/two_keys
+	resident_key_amount = 2
+
+/obj/structure/mineral_door/wood/towner/blacksmith
+	resident_advclass = /datum/advclass/blacksmith
+	lockid = "towner_blacksmith"
+
+/obj/structure/mineral_door/wood/towner/carpenter
+	resident_advclass = /datum/advclass/carpenter
+	lockid = "towner_carpenter"
+
+/obj/structure/mineral_door/wood/towner/cheesemaker
+	resident_advclass = /datum/advclass/cheesemaker
+	lockid = "towner_cheesemaker"
+
+/obj/structure/mineral_door/wood/towner/hunter
+	resident_advclass = /datum/advclass/hunter
+	lockid = "towner_hunter"
+
+/obj/structure/mineral_door/wood/towner/miner
+	resident_advclass = /datum/advclass/miner
+	lockid = "towner_miner"
+
+/obj/structure/mineral_door/wood/towner/farmer
+	resident_advclass = /datum/advclass/farmer
+	lockid = "towner_farmer"
+
+/obj/structure/mineral_door/wood/towner/seamstress
+	resident_advclass = /datum/advclass/seamstress
+	lockid = "towner_seamstress"
+
+/obj/structure/mineral_door/wood/towner/towndoctor
+	resident_advclass = /datum/advclass/towndoctor
+	lockid = "towner_towndoctor"
+
+/obj/structure/mineral_door/wood/towner/woodcutter
+	resident_advclass = /datum/advclass/woodcutter
+	lockid = "towner_woodcutter"
+
+/obj/structure/mineral_door/wood/towner/fisher
+	resident_advclass = /datum/advclass/fisher
+	lockid = "towner_fisher"

@@ -81,7 +81,7 @@ SUBSYSTEM_DEF(job)
 		var/datum/job/job = GetJob(rank)
 		if(!job)
 			return FALSE
-		if(is_banned_from(player.ckey, rank) || QDELETED(player))
+		if(is_role_banned(player.ckey, job.title) || QDELETED(player))
 			return FALSE
 		if(!job.player_old_enough(player.client))
 			return FALSE
@@ -105,6 +105,9 @@ SUBSYSTEM_DEF(job)
 			if(player.client)
 				player.client.prefs.lastclass = null
 				player.client.prefs.save_preferences()
+		if(player.client && player.client.prefs)
+			player.client.prefs.has_spawned = TRUE
+		job.greet(player)
 		return TRUE
 	JobDebug("AR has failed, Player: [player], Rank: [rank]")
 	return FALSE
@@ -114,7 +117,7 @@ SUBSYSTEM_DEF(job)
 	JobDebug("Running FOC, Job: [job], Level: [level], Flag: [flag]")
 	var/list/candidates = list()
 	for(var/mob/dead/new_player/player in unassigned)
-		if(is_banned_from(player.ckey, job.title) || QDELETED(player))
+		if(is_role_banned(player.ckey, job.title) || QDELETED(player))
 			JobDebug("FOC isbanned failed, Player: [player]")
 			continue
 		if(!job.player_old_enough(player.client))
@@ -140,7 +143,7 @@ SUBSYSTEM_DEF(job)
 			continue
 		if(!isnull(job.min_pq) && (get_playerquality(player.ckey) < job.min_pq))
 			continue
-		if(!isnull(job.max_pq) && (get_playerquality(player.ckey) > job.max_pq))
+		if(!isnull(job.max_pq) && (get_playerquality(player.ckey) > job.max_pq) && !is_misc_banned(player.ckey, BAN_MISC_LUNATIC))
 			continue
 		if(!(player.client.prefs.gender in job.allowed_sexes))
 			JobDebug("FOC incompatible with sex, Player: [player], Job: [job.title]")
@@ -148,8 +151,11 @@ SUBSYSTEM_DEF(job)
 		if(length(job.allowed_ages) && !(player.client.prefs.age in job.allowed_ages))
 			JobDebug("FOC incompatible with age, Player: [player], Job: [job.title], Age: [player.client.prefs.age]")
 			continue
-		if(check_blacklist(player.client.ckey) && !job.bypass_jobban)
-			JobDebug("FOC incompatible with blacklist, Player: [player], Job: [job.title]")
+		if(job.banned_leprosy && is_misc_banned(player.client.ckey, BAN_MISC_LEPROSY))
+			JobDebug("FOC incompatible with leprosy, Player: [player], Job: [job.title]")
+			continue
+		if(job.banned_lunatic && is_misc_banned(player.client.ckey, BAN_MISC_LUNATIC))
+			JobDebug("FOC incompatible with lunatic, Player: [player], Job: [job.title]")
 			continue
 		if((player.client.prefs.lastclass == job.title) && !job.bypass_lastclass)
 			JobDebug("FOC incompatible with lastclass, Player: [player], Job: [job.title]")
@@ -178,7 +184,7 @@ SUBSYSTEM_DEF(job)
 		if(job.title in GLOB.noble_positions) //If you want a command position, select it!
 			continue
 
-		if(is_banned_from(player.ckey, job.title) || QDELETED(player))
+		if(is_role_banned(player.ckey, job.title) || QDELETED(player))
 			if(QDELETED(player))
 				JobDebug("GRJ isbanned failed, Player deleted")
 				break
@@ -225,12 +231,16 @@ SUBSYSTEM_DEF(job)
 			JobDebug("GRJ incompatible with minPQ, Player: [player], Job: [job.title]")
 			continue
 
-		if(!isnull(job.max_pq) && (get_playerquality(player.ckey) > job.max_pq))
+		if(!isnull(job.max_pq) && (get_playerquality(player.ckey) > job.max_pq) && !is_misc_banned(player.ckey, BAN_MISC_LUNATIC))
 			JobDebug("GRJ incompatible with maxPQ, Player: [player], Job: [job.title]")
 			continue
+		
+		if(job.banned_leprosy && is_misc_banned(player.client.ckey, BAN_MISC_LEPROSY))
+			JobDebug("GRJ incompatible with leprosy, Player: [player], Job: [job.title]")
+			continue
 
-		if(check_blacklist(player.client.ckey) && !job.bypass_jobban)
-			JobDebug("GRJ incompatible with blacklist, Player: [player], Job: [job.title]")
+		if(job.banned_lunatic && is_misc_banned(player.client.ckey, BAN_MISC_LUNATIC))
+			JobDebug("GRJ incompatible with lunatic, Player: [player], Job: [job.title]")
 			continue
 
 		if(!job.special_job_check(player))
@@ -421,7 +431,7 @@ SUBSYSTEM_DEF(job)
 				if(!job)
 					continue
 
-				if(is_banned_from(player.ckey, job.title))
+				if(is_role_banned(player.ckey, job.title))
 					JobDebug("DO isbanned failed, Player: [player], Job:[job.title]")
 					continue
 
@@ -456,14 +466,18 @@ SUBSYSTEM_DEF(job)
 				if(!isnull(job.min_pq) && (get_playerquality(player.ckey) < job.min_pq))
 					continue
 
-				if(!isnull(job.max_pq) && (get_playerquality(player.ckey) > job.max_pq))
+				if(!isnull(job.max_pq) && (get_playerquality(player.ckey) > job.max_pq) && !is_misc_banned(player.ckey, BAN_MISC_LUNATIC))
 					continue
 
 				if((player.client.prefs.lastclass == job.title) && (!job.bypass_lastclass))
 					continue
+				
+				if(job.banned_leprosy && is_misc_banned(player.client.ckey, BAN_MISC_LEPROSY))
+					JobDebug("DO incompatible with leprosy, Player: [player], Job: [job.title]")
+					continue
 
-				if(check_blacklist(player.client.ckey) && !job.bypass_jobban)
-					JobDebug("DO incompatible with blacklist, Player: [player], Job: [job.title]")
+				if(job.banned_lunatic && is_misc_banned(player.client.ckey, BAN_MISC_LUNATIC))
+					JobDebug("DO incompatible with lunatic, Player: [player], Job: [job.title]")
 					continue
 
 				if(CONFIG_GET(flag/usewhitelist))
@@ -521,7 +535,7 @@ SUBSYSTEM_DEF(job)
 				if(player.client.prefs.job_preferences[job.title] != level)
 					continue
 
-				if(is_banned_from(player.ckey, job.title))
+				if(is_role_banned(player.ckey, job.title))
 					continue
 
 				if(QDELETED(player))
@@ -550,8 +564,11 @@ SUBSYSTEM_DEF(job)
 
 				if((player.client.prefs.lastclass == job.title) && (!job.bypass_lastclass))
 					continue
+				
+				if(job.banned_leprosy && is_misc_banned(player.client.ckey, BAN_MISC_LEPROSY))
+					continue
 
-				if(check_blacklist(player.client.ckey) && !job.bypass_jobban)
+				if(job.banned_lunatic && is_misc_banned(player.client.ckey, BAN_MISC_LUNATIC))
 					continue
 
 				if(CONFIG_GET(flag/usewhitelist))
@@ -598,8 +615,7 @@ SUBSYSTEM_DEF(job)
 		RejectPlayer(player)
 	else
 		if(player.client.prefs.joblessrole == BEOVERFLOW)
-			var/allowed_to_be_a_loser = !is_banned_from(player.ckey, SSjob.overflow_role)
-			if(QDELETED(player) || !allowed_to_be_a_loser)
+			if(QDELETED(player))
 				RejectPlayer(player)
 			else
 				if(!AssignRole(player, SSjob.overflow_role))
@@ -765,7 +781,7 @@ SUBSYSTEM_DEF(job)
 			var/mob/dead/new_player/player = i
 			if(!(player.ready == PLAYER_READY_TO_PLAY && player.mind && !player.mind.assigned_role))
 				continue //This player is not ready
-			if(is_banned_from(player.ckey, job.title) || QDELETED(player))
+			if(is_role_banned(player.ckey, job.title) || QDELETED(player))
 				banned++
 				continue
 			if(!job.player_old_enough(player.client))

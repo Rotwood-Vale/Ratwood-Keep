@@ -14,7 +14,25 @@
 /datum/customizer_choice/organ/ears/vulpkanin
 	name = "Vulpkian Ears"
 	organ_type = /obj/item/organ/ears/vulpkanin
-	sprite_accessories = list(/datum/sprite_accessory/ears/fox)
+	sprite_accessories = list(
+		/datum/sprite_accessory/ears/fox,
+		/datum/sprite_accessory/ears/vulp
+		)
+
+/datum/customizer/organ/ears/lupian
+	customizer_choices = list(/datum/customizer_choice/organ/ears/lupian)
+
+/datum/customizer_choice/organ/ears/lupian
+	name = "Lupian Ears"
+	organ_type = /obj/item/organ/ears/lupian
+	sprite_accessories = list(
+		/datum/sprite_accessory/ears/bigwolf,
+		/datum/sprite_accessory/ears/bigwolf_inner,
+		/datum/sprite_accessory/ears/fox,
+		/datum/sprite_accessory/ears/husky,
+		/datum/sprite_accessory/ears/otie,
+		/datum/sprite_accessory/ears/wolf
+	)
 
 /datum/customizer/organ/ears/tajaran
 	customizer_choices = list(/datum/customizer_choice/organ/ears/tajaran)
@@ -25,6 +43,17 @@
 	sprite_accessories = list(
 		/datum/sprite_accessory/ears/cat_big,
 		/datum/sprite_accessory/ears/cat_normal,
+		)
+
+/datum/customizer/organ/ears/axian
+	customizer_choices = list(/datum/customizer_choice/organ/ears/axian)
+
+/datum/customizer_choice/organ/ears/axian
+	name = "Axian Ears"
+	organ_type = /obj/item/organ/ears/akula
+	sprite_accessories = list(
+		/datum/sprite_accessory/ears/shark,
+		/datum/sprite_accessory/ears/sergal,
 		)
 
 /datum/customizer/organ/ears/cat
@@ -64,6 +93,7 @@
 		/datum/sprite_accessory/ears/fennec,
 		/datum/sprite_accessory/ears/fish,
 		/datum/sprite_accessory/ears/fox,
+		/datum/sprite_accessory/ears/vulp,
 		/datum/sprite_accessory/ears/husky,
 		/datum/sprite_accessory/ears/jellyfish,
 		/datum/sprite_accessory/ears/kangaroo,
@@ -72,6 +102,7 @@
 		/datum/sprite_accessory/ears/otie,
 		/datum/sprite_accessory/ears/pede,
 		/datum/sprite_accessory/ears/sergal,
+		/datum/sprite_accessory/ears/shark,
 		/datum/sprite_accessory/ears/skunk,
 		/datum/sprite_accessory/ears/squirrel,
 		/datum/sprite_accessory/ears/wolf,
@@ -114,6 +145,7 @@
 		/datum/sprite_accessory/ears/fennec,
 		/datum/sprite_accessory/ears/fish,
 		/datum/sprite_accessory/ears/fox,
+		/datum/sprite_accessory/ears/vulp,
 		/datum/sprite_accessory/ears/husky,
 		/datum/sprite_accessory/ears/jellyfish,
 		/datum/sprite_accessory/ears/kangaroo,
@@ -122,6 +154,7 @@
 		/datum/sprite_accessory/ears/otie,
 		/datum/sprite_accessory/ears/pede,
 		/datum/sprite_accessory/ears/sergal,
+		/datum/sprite_accessory/ears/shark,
 		/datum/sprite_accessory/ears/skunk,
 		/datum/sprite_accessory/ears/squirrel,
 		/datum/sprite_accessory/ears/wolf,

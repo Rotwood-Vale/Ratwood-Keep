@@ -35,10 +35,6 @@
 	new_patron.on_gain(src)
 	return TRUE
 
-/datum/species
-	var/list/specstats = list("strength" = 0, "perception" = 0, "intelligence" = 0, "constitution" = 0, "endurance" = 0, "speed" = 0, "fortune" = 0)
-	var/list/specstats_f = list("strength" = 0, "perception" = 0, "intelligence" = 0, "constitution" = 0, "endurance" = 0, "speed" = 0, "fortune" = 0)
-
 /mob/living/proc/roll_stats()
 	STASTR = 10
 	STAPER = 10
@@ -59,12 +55,17 @@
 	if(ishuman(src))
 		var/mob/living/carbon/human/H = src
 		if(H.dna.species)
+			// Species stats
+			for(var/S in H.dna.species.specstats)
+				change_stat(S, H.dna.species.specstats[S])
 			if(gender == FEMALE)
+				// Female species stats
 				for(var/S in H.dna.species.specstats_f)
 					change_stat(S, H.dna.species.specstats_f[S])
 			else
-				for(var/S in H.dna.species.specstats)
-					change_stat(S, H.dna.species.specstats[S])
+				// Male species stats
+				for(var/S in H.dna.species.specstats_m)
+					change_stat(S, H.dna.species.specstats_m[S])
 		switch(H.age)
 			if(AGE_MIDDLEAGED)
 				change_stat("speed", -1)
@@ -75,18 +76,22 @@
 				change_stat("perception", -1)
 				change_stat("constitution", -2)
 				change_stat("intelligence", 2)
-		if(key)
-			if(check_blacklist(ckey(key)))
-				change_stat("strength", -5)
-				change_stat("speed", -20)
-				change_stat("endurance", -2)
-				change_stat("constitution", -2)
-				change_stat("intelligence", -20)
-				change_stat("fortune", -20)
-			if(check_psychokiller(ckey(key)))
-				testing("foundpsych")
-				H.eye_color = "ff0000"
-				H.voice_color = "ff0000"
+		if(HAS_TRAIT(src, TRAIT_LEPROSY))
+			change_stat("strength", -5)
+			change_stat("speed", -5)
+			change_stat("endurance", -2)
+			change_stat("constitution", -2)
+			change_stat("intelligence", -5)
+			change_stat("fortune", -5)
+		if(HAS_TRAIT(src, TRAIT_PUNISHMENT_CURSE))
+			change_stat("strength", -3)
+			change_stat("speed", -3)
+			change_stat("endurance", -3)
+			change_stat("constitution", -3)
+			change_stat("intelligence", -3)
+			change_stat("fortune", -3)
+			H.voice_color = "c71d76"
+			set_eye_color(H, "#c71d76", "#c71d76")
 
 /mob/living/proc/change_stat(stat, amt, index)
 	if(!stat)

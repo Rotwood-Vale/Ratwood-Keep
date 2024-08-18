@@ -179,7 +179,7 @@
 	var/used
 	var/total_dam = get_damage()
 	var/damage_dividend = (total_dam / max_damage)
-	if(user && dam)
+	if (user && dam)
 		if(user.goodluck(2))
 			dam += 10
 	if(bclass in GLOB.dislocation_bclasses)
@@ -228,6 +228,9 @@
 	if(user && dam)
 		if(user.goodluck(2))
 			dam += 10
+	if ((bclass = BCLASS_PUNCH) && (user && dam))
+		if(user && HAS_TRAIT(user, TRAIT_CIVILIZEDBARBARIAN))
+			dam += 15
 	if((bclass in GLOB.cbt_classes) && (zone_precise == BODY_ZONE_PRECISE_GROIN))
 		var/cbt_multiplier = 1
 		if(user && HAS_TRAIT(user, TRAIT_NUTCRACKER))

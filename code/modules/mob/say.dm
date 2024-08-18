@@ -79,7 +79,7 @@
 		to_chat(usr, span_danger("Speech is currently admin-disabled."))
 		return
 
-	var/jb = is_banned_from(ckey, "Deadchat")
+	var/jb = is_misc_banned(ckey, BAN_MISC_DEADCHAT)
 	if(QDELETED(src))
 		return
 
@@ -119,13 +119,13 @@
 ///Check if this message is an emote
 /mob/proc/check_emote(message, forced)
 	if(copytext_char(message, 1, 2) == "*")
-		emote(copytext_char(message, 2), intentional = !forced)
-		return 1
+		emote(copytext_char(message, 2), intentional = !forced, custom_me = TRUE)
+		return TRUE
 
 /mob/proc/check_whisper(message, forced)
 	if(copytext_char(message, 1, 2) == "+")
 		whisper(copytext_char(message, 2),sanitize = FALSE)//already sani'd
-		return 1
+		return TRUE
 
 ///Check if the mob has a hivemind channel
 /mob/proc/hivecheck()

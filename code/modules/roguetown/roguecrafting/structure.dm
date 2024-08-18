@@ -186,6 +186,16 @@
 	verbage_simple = "construct"
 	verbage = "constructs"
 	craftdiff = 2
+
+/datum/crafting_recipe/roguetown/structure/dye_bin
+	name = "dye bin"
+	result = /obj/structure/dye_bin
+	reqs = list(
+		/obj/item/grown/log/tree/small = 1,
+	)
+	verbage_simple = "make"
+	verbage = "makes"
+	craftdiff = 0
 /*
 /datum/crafting_recipe/roguetown/structure/stairs
 	name = "stairs (up)"

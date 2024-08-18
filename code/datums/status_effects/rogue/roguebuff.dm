@@ -90,10 +90,6 @@
 	. = ..()
 	owner.add_stress(/datum/stressevent/moondust)
 
-/datum/status_effect/buff/moondust/on_remove()
-	owner.remove_stress(/datum/stressevent/moondust)
-	. = ..()
-
 /datum/status_effect/buff/moondust_purest
 	id = "purest moondust"
 	alert_type = /atom/movable/screen/alert/status_effect/buff/druqks
@@ -106,10 +102,6 @@
 /datum/status_effect/buff/moondust_purest/on_apply()
 	. = ..()
 	owner.add_stress(/datum/stressevent/moondust_purest)
-
-/datum/status_effect/buff/moondust_purest/on_remove()
-	owner.remove_stress(/datum/stressevent/moondust_purest)
-	. = ..()
 
 /datum/status_effect/buff/weed
 	id = "weed"
@@ -130,7 +122,6 @@
 			PM.backdrop(owner)
 
 /datum/status_effect/buff/weed/on_remove()
-//	owner.remove_stress(/datum/stressevent/weed)
 	if(owner?.client)
 		if(owner.client.screen && owner.client.screen.len)
 			var/atom/movable/screen/plane_master/game_world/PM = locate(/atom/movable/screen/plane_master/game_world) in owner.client.screen

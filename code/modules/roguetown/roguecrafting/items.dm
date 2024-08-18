@@ -129,7 +129,6 @@
 	reqs = list(/obj/item/rogueweapon/sickle = 1,
 				/obj/item/rope = 1,
 				/obj/item/grown/log/tree/small = 1)
-	tools = list(/obj/item/rogueweapon/hammer)
 	craftdiff = 3
 
 /datum/crafting_recipe/roguetown/goedendag
@@ -138,7 +137,6 @@
 	reqs = list(/obj/item/grown/log/tree/small = 1,
 				/obj/item/rope = 1,
 				/obj/item/rogueweapon/hoe = 1)
-	tools = list(/obj/item/rogueweapon/hammer)
 	craftdiff = 3
 
 /datum/crafting_recipe/roguetown/peasantwarflail
@@ -147,7 +145,6 @@
 	reqs = list(/obj/item/grown/log/tree/small = 1,
 				/obj/item/rope = 1,
 				/obj/item/rogueweapon/thresher = 1)
-	tools = list(/obj/item/rogueweapon/hammer)
 	craftdiff = 3
 
 /datum/crafting_recipe/roguetown/larmprosthetic_w
@@ -266,7 +263,7 @@
 	name = "poisoned arrow"
 	result = /obj/item/ammo_casing/caseless/rogue/arrow/poison
 	reqs = list(
-				/obj/item/ammo_casing/caseless/rogue/arrow = 1,
+				/obj/item/ammo_casing/caseless/rogue/arrow/iron = 1,
 				/datum/reagent/berrypoison = 5
 				)
 	req_table = TRUE
@@ -299,7 +296,7 @@
 				/obj/item/ammo_casing/caseless/rogue/arrow/poison
 				)
 	reqs = list(
-				/obj/item/ammo_casing/caseless/rogue/arrow = 5,
+				/obj/item/ammo_casing/caseless/rogue/arrow/iron = 5,
 				/datum/reagent/berrypoison = 25
 				)
 

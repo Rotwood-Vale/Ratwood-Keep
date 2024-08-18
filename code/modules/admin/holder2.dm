@@ -27,6 +27,7 @@ GLOBAL_PROTECT(href_token)
 	var/href_token
 
 	var/deadmined
+	var/datum/role_ban_panel/role_ban_panel
 
 /datum/admins/New(datum/admin_rank/R, ckey, force_active = FALSE, protected)
 	if(IsAdminAdvancedProcCall())
@@ -50,6 +51,7 @@ GLOBAL_PROTECT(href_token)
 	rank = R
 	admin_signature = "Nanotrasen Officer #[rand(0,9)][rand(0,9)][rand(0,9)]"
 	href_token = GenerateToken()
+	role_ban_panel = new /datum/role_ban_panel(src)
 	//only admins with +ADMIN start admined
 	if(protected)
 		GLOB.protected_admins[target] = src
