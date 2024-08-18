@@ -284,7 +284,9 @@
 	item_state = "chap_alt"
 	color = "#cf99e3"
 
-/obj/item/clothing/head/roguetown/chaperon/bailiff
+/obj/item/clothing/head/roguetown/chaperon/marshal
+	name = "chaperon hat"
+	desc = "A fancy hat worn by nobles."
 	icon_state = "chap_alt"
 	item_state = "chap_alt"
 	color = "#C0392B"
