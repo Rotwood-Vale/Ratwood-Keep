@@ -77,6 +77,7 @@
 	needs_update_stat = TRUE
 	var/mob/living/carbon/carbon_owner
 	var/mob/living/carbon/human/human_owner
+	var/sleptonground = FALSE
 
 /datum/status_effect/incapacitating/sleeping/on_creation(mob/living/new_owner, updating_canmove)
 	. = ..()
@@ -97,6 +98,11 @@
 		SSdroning.play_area_sound(get_area(src), human_owner.client)
 		SSdroning.play_loop(get_area(src), human_owner.client)
 	. = ..()
+	if(sleptonground)
+		if(HAS_TRAIT(human_owner, TRAIT_NOBLE))
+			human_owner.add_stress(/datum/stressevent/sleepfloornoble)
+		else
+			human_owner.add_stress(/datum/stressevent/sleepfloor)
 
 /datum/status_effect/incapacitating/sleeping/Destroy()
 	carbon_owner = null
@@ -111,6 +117,8 @@
 			healing -= 0.3
 		else if((locate(/obj/structure/table) in owner.loc))
 			healing -= 0.1
+		if(locate(/obj/structure/bed/rogue/sleepingbag) in owner.loc)
+			sleptonground = TRUE
 		for(var/obj/item/bedsheet/bedsheet in range(owner.loc,0))
 			if(bedsheet.loc != owner.loc) //bedsheets in my backpack/neck don't give you comfort
 				continue

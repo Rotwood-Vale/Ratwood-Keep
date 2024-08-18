@@ -126,7 +126,8 @@
 	icon_state = "cream"
 	w_class = WEIGHT_CLASS_SMALL
 	smeltresult = /obj/item/ingot/silver
-	var/uses = 12
+	dropshrink = 0.8
+	var/uses = 16
 
 /obj/item/polishing_cream/examine(mob/user)
 	. = ..()
@@ -146,6 +147,8 @@
 			thing.remove_atom_colour(FIXED_COLOUR_PRIORITY)
 			thing.add_atom_colour("#635e65", FIXED_COLOUR_PRIORITY)
 			thing.RegisterSignal(thing, COMSIG_COMPONENT_CLEAN_ACT, PROC_REF(remove_polish))
+			if(uses <= 8)
+				smeltresult = null
 			if(!uses)
 				icon_state = "empty_cream"
 
@@ -156,6 +159,7 @@
 	icon_state = "brush"
 	w_class = WEIGHT_CLASS_SMALL
 	smeltresult = null
+	dropshrink = 0.8
 	var/roughness = 0 // 0  for a fine brush, 1 for a coarse brush
 
 /obj/item/armor_brush/attack_self(mob/user)
@@ -237,7 +241,8 @@
 	START_PROCESSING(SSobj, src)
 
 /datum/component/metal_glint/process()
-	if(istype(parent.loc,/turf) || istype(parent.loc, /mob/living))
+	var/atom/current_parent = parent
+	if(istype(current_parent.loc,/turf) || istype(current_parent.loc, /mob/living))
 		if(prob(25))
 			new /obj/effect/temp_visual/armor_glint(get_turf(parent))
 		if(prob(15))
