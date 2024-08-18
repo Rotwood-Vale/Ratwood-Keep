@@ -109,10 +109,10 @@
 	if(obj_broken)
 		..()
 		return
-	if(TIMER_COOLDOWN_RUNNING(user, "resist"))
+	if(TIMER_COOLDOWN_RUNNING(user, "maneater_resist"))
 		return
 	if(isliving(user))
-		TIMER_COOLDOWN_START(user, "resist", 0.5 SECONDS)
+		TIMER_COOLDOWN_START(user, "maneater_resist", 0.5 SECONDS)
 		var/mob/living/L = user
 		var/resist_chance = CLAMP((L.STASTR * 5), 1, 99)
 		if(user != M)
