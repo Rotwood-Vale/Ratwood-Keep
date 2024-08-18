@@ -5,11 +5,18 @@
 		user.mind.i_know_person(src)
 	var/datum/species/self_species = dna.species
 	var/datum/species/examiner_species = user.dna.species
-	if(self_species.stress_examine && self_species.type != examiner_species.type && !(HAS_TRAIT(user, TRAIT_DONT_CARE_ABOUT_RACES)))
-		var/datum/stressevent/shunned_race/event = user.add_stress(/datum/stressevent/shunned_race)
+	if(self_species.stress_examine && self_species.type != examiner_species.type && !HAS_TRAIT(user, TRAIT_TOLERANT))
+		var/event_type = /datum/stressevent/shunned_race
+		if(HAS_TRAIT(user, TRAIT_XENOPHOBIC))
+			event_type = /datum/stressevent/shunned_race_xenophobic
+		var/datum/stressevent/event = user.add_stress(event_type)
 		event.desc = self_species.stress_desc
 	if(user.has_flaw(/datum/charflaw/paranoid) && (STASTR - user.STASTR) > 1)
 		user.add_stress(/datum/stressevent/parastr)
+	if(HAS_TRAIT(user, TRAIT_JESTERPHOBIA) && job == "Jester")
+		user.add_stress(/datum/stressevent/jesterphobia)
+	if(HAS_TRAIT(src, TRAIT_BEAUTIFUL))
+		user.add_stress(/datum/stressevent/beautiful)
 
 /mob/living/carbon/human/examine(mob/user)
 	var/observer_privilege = isobserver(user)
@@ -125,6 +132,8 @@
 				. += span_userdanger("A MONSTER!")
 			if(mind.assigned_role == "Lunatic")
 				. += span_userdanger("LUNATIC!")
+			if(HAS_TRAIT(src, TRAIT_PUNISHMENT_CURSE))
+				. += span_userdanger("CURSED!")
 
 		if(HAS_TRAIT(src, TRAIT_MANIAC_AWOKEN))
 			. += span_userdanger("MANIAC!")
@@ -134,7 +143,7 @@
 		else if(HAS_TRAIT(src, TRAIT_COMMIE) && HAS_TRAIT(user, TRAIT_COMMIE))
 			. += span_notice("Comrade!")
 
-	if(leprosy == 1)
+	if(HAS_TRAIT(src, TRAIT_LEPROSY))
 		. += span_necrosis("A LEPER...")
 
 	if(user != src)

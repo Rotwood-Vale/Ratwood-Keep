@@ -70,7 +70,7 @@
 	icon = null
 	var/oldinv = invisibility
 	invisibility = INVISIBILITY_MAXIMUM
-	cmode = FALSE
+	set_cmode(FALSE)
 	if(client)
 		SSdroning.play_area_sound(get_area(src), client)
 //	stop_cmusic()

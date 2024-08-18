@@ -37,7 +37,6 @@ GLOBAL_LIST_EMPTY(respawncounts)
 
 /client
 	var/whitelisted = 2
-	var/blacklisted = 2
 
 /client/Topic(href, href_list, hsrc)
 	if(!usr || usr != mob)	//stops us calling Topic for somebody else's client. Also helps prevent usr=null
@@ -1107,16 +1106,6 @@ GLOBAL_LIST_EMPTY(external_rsc_urls)
 		else
 			whitelisted = 0
 		return whitelisted
-
-/client/proc/blacklisted()
-	if(blacklisted != 2)
-		return blacklisted
-	else
-		if(check_blacklist(ckey))
-			blacklisted = 1
-		else
-			blacklisted = 0
-		return blacklisted
 
 /client/proc/can_commend(silent = FALSE)
 	if(!prefs)

@@ -98,6 +98,16 @@
 	desc = span_blue("Relaxing.")
 	timer = 1 MINUTES
 
+/datum/stressevent/beautiful
+	stressadd = -2
+	desc = span_green("Their face is a work of art")
+	timer = 2 MINUTES
+
+/datum/stressevent/night_owl
+	stressadd = -3
+	desc = span_green("The night is so relaxing and peaceful")
+	timer = 20 MINUTES
+
 /datum/stressevent/ozium
 	stressadd = -99
 	desc = span_blue("I've taken a hit and entered a painless world.")
@@ -112,3 +122,8 @@
 	stressadd = -8
 	desc = span_boldgreen("PUREST moondust surges through me!")
 	timer = 4 MINUTES
+
+/datum/stressevent/perfume
+	stressadd = -1
+	desc = span_green("A soothing fragrance envelops me.")
+	timer = 10 MINUTES

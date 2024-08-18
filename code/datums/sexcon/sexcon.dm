@@ -23,6 +23,8 @@
 	var/last_ejaculation_time = 0
 	var/last_moan = 0
 	var/last_pain = 0
+	var/msg_signature = ""
+	var/last_msg_signature = 0
 
 /datum/sex_controller/New(mob/living/carbon/human/owner)
 	user = owner
@@ -31,6 +33,35 @@
 	user = null
 	target = null
 	. = ..()
+
+/proc/do_thrust_animate(atom/movable/user, atom/movable/target, pixels = 4, time = 2.7)
+	var/oldx = user.pixel_x
+	var/oldy = user.pixel_y
+	var/target_x = oldx
+	var/target_y = oldy
+	var/dir = get_dir(user, target)
+	if(user.loc == target.loc)
+		dir = user.dir
+	switch(dir)
+		if(NORTH)
+			target_y += pixels
+		if(SOUTH)
+			target_y -= pixels
+		if(WEST)
+			target_x -= pixels
+		if(EAST)
+			target_x += pixels
+
+	animate(user, pixel_x = target_x, pixel_y = target_y, time = time)
+	animate(pixel_x = oldx, pixel_y = oldy, time = time)
+
+/datum/sex_controller/proc/do_message_signature(sigkey)
+	var/properkey = "[speed][force][sigkey]"
+	if(properkey == msg_signature && last_msg_signature + 4.0 SECONDS >= world.time)
+		return FALSE
+	msg_signature = properkey
+	last_msg_signature = world.time
+	return TRUE
 
 /datum/sex_controller/proc/is_spent()
 	if(charge < CHARGE_FOR_CLIMAX)
@@ -164,7 +195,7 @@
 
 /datum/sex_controller/proc/ejaculate()
 	log_combat(user, user, "Ejaculated")
-	user.visible_message(span_love("[user] makes a mess!"))
+	user.visible_message(span_lovebold("[user] makes a mess!"))
 	playsound(user, 'sound/misc/mat/endout.ogg', 50, TRUE, ignore_walls = FALSE)
 	add_cum_floor(get_turf(user))
 	after_ejaculation()
@@ -245,6 +276,9 @@
 	if(oxyloss_amt <= 0)
 		return
 	action_target.adjustOxyLoss(oxyloss_amt)
+	// Indicate someone is choking through sex
+	if(action_target.oxyloss >= 50 && prob(33))
+		action_target.emote(pick(list("gag", "choke", "gasp")), forced = TRUE)
 
 /datum/sex_controller/proc/perform_sex_action(mob/living/carbon/human/action_target, arousal_amt, pain_amt, giving)
 	action_target.sexcon.receive_sex_action(arousal_amt, pain_amt, giving, force, speed)

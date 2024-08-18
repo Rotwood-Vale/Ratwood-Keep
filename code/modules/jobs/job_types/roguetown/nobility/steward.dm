@@ -22,6 +22,7 @@
 		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/sailor
 		armor = /obj/item/clothing/suit/roguetown/shirt/dress/silkdress/green
 		cloak = /obj/item/clothing/cloak/tabard/knight
+		pants = /obj/item/clothing/under/roguetown/tights/stockings/silk/random
 	else
 		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/sailor
 		pants = /obj/item/clothing/under/roguetown/tights/random

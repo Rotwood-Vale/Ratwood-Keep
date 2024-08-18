@@ -53,6 +53,13 @@ SUBSYSTEM_DEF(role_class_handler)
 
 	return ..()
 
+/datum/controller/subsystem/role_class_handler/proc/get_all_advclass_names()
+	var/list/compiled = list()
+	for(var/cat_name in sorted_class_categories)
+		for(var/datum/advclass/class in sorted_class_categories[cat_name])
+			compiled += class.name
+	return compiled
+
 
 // This covers both adventurer classes
 /datum/controller/subsystem/role_class_handler/proc/build_dumbass_category_lists()
@@ -151,9 +158,6 @@ SUBSYSTEM_DEF(role_class_handler)
 	qdel(related_handler)
 
 	adjust_class_amount(picked_class, 1) // adjust the amount here, we are handling one guy right now.
-
-	// After the end of adv class handling, apply a SPECIAL trait if able
-	apply_character_post_equipment(H)
 
 // A dum helper to adjust the class amount, we could do it elsewhere but this will also inform any relevant class handlers open.
 /datum/controller/subsystem/role_class_handler/proc/adjust_class_amount(datum/advclass/target_datum, amount)

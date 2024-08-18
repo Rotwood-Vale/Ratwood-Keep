@@ -157,6 +157,7 @@
 	..()
 
 /datum/reagent/water/gross
+	name = "Gross Water"
 	taste_description = "lead"
 
 /datum/reagent/water/gross/on_mob_life(mob/living/carbon/M)

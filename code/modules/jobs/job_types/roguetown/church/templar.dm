@@ -28,22 +28,22 @@
 	switch(H.patron.name)
 		if("Astrata")
 			wrists = /obj/item/clothing/neck/roguetown/psicross/astrata
-			head = /obj/item/clothing/head/roguetown/helmet/heavy/astratahelm
+			head = /obj/item/clothing/head/roguetown/helmet/astratahelm
 			cloak = /obj/item/clothing/cloak/tabard/crusader/astrata
 		if("Dendor")
 			wrists = /obj/item/clothing/neck/roguetown/psicross/dendor
-			head = /obj/item/clothing/head/roguetown/helmet/heavy/dendorhelm
+			head = /obj/item/clothing/head/roguetown/helmet/dendorhelm
 			cloak = /obj/item/clothing/cloak/tabard/crusader/dendor
 		if("Necra")
 			wrists = /obj/item/clothing/neck/roguetown/psicross/necra
-			head = /obj/item/clothing/head/roguetown/helmet/heavy/necrahelm
+			head = /obj/item/clothing/head/roguetown/helmet/necrahelm
 			cloak = /obj/item/clothing/cloak/tabard/crusader/necra
 		if("Pestra")
 			wrists = /obj/item/clothing/neck/roguetown/psicross/pestra
 			cloak = /obj/item/clothing/cloak/tabard/crusader/pestra
 		if("Noc")
 			wrists = /obj/item/clothing/neck/roguetown/psicross/noc
-			head = /obj/item/clothing/head/roguetown/helmet/heavy/nochelm
+			head = /obj/item/clothing/head/roguetown/helmet/nochelm
 			cloak = /obj/item/clothing/cloak/tabard/crusader/noc
 	armor = /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk
 	shirt = /obj/item/clothing/suit/roguetown/armor/gambeson

@@ -8,7 +8,10 @@
 	allowed_sexes = list(MALE)
 	allowed_races = RACES_TOLERATED_UP
 	allowed_patrons = ALL_DIVINE_PATRONS
-	tutorial = "Tales speak of the Gatemaster's legendary ability to stand still at a gate and ask people questions."
+	tutorial = "Tales speak of the Gatemaster's legendary ability to stand still at a gate and ask people questions. \
+	Rivaled only by a tree's ability to stay in place, Gatemasters are known to stock up for the long weeks. \
+	Using subordinates and helpers to bring them supplies, just as Dendor feeds nature's roots so it may last. \
+	Unfortunately, the thundering voice of the Marshal or their Councillors tends to snap you out of the trance."
 	display_order = JDO_GATEMASTER
 
 	outfit = /datum/outfit/job/roguetown/gatemaster
