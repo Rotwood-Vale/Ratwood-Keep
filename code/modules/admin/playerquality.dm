@@ -181,8 +181,6 @@
 		if(!selection)
 			return
 		theykey = selection
-	if(theykey == ckey)
-		to_chat(src, span_boldwarning("That's you!"))
 		return
 	if(!fexists("data/player_saves/[copytext(theykey,1,2)]/[theykey]/preferences.sav"))
 		to_chat(src, span_boldwarning("User does not exist."))
