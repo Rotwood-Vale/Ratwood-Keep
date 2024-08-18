@@ -3244,7 +3244,7 @@
 "tkB" = (/obj/structure/rogue/trophy/deer,/obj/structure/chair/bench/ultimacouch,/turf/open/floor/rogue/woodturned,/area/rogue/indoors/town/tavern)
 "tkQ" = (/obj/structure/fermenting_barrel/random/water,/turf/open/floor/rogue/wood,/area/rogue/indoors/town/dwarfin)
 "tkS" = (/obj/structure/closet/crate/roguecloset/dark,/obj/item/paper/scroll,/obj/item/paper/scroll,/obj/item/paper/scroll,/obj/item/paper/scroll,/obj/item/paper/scroll,/obj/item/paper/scroll,/obj/item/paper/scroll,/obj/item/paper/scroll,/obj/item/paper/scroll,/obj/item/paper/scroll,/obj/item/paper/scroll,/obj/item/paper/scroll,/obj/item/paper/scroll,/obj/item/paper/scroll,/obj/item/paper/scroll,/obj/item/paper/scroll,/turf/open/floor/rogue/tile/masonic/single,/area/rogue/indoors/town/manor)
-"tkZ" = (/obj/structure/rack/rogue,/obj/item/storage/backpack/rogue/backpack/surgery,/turf/open/floor/rogue/ruinedwood{icon_state = "horzw"},/area/rogue/indoors/town/church/chapel)
+"tkZ" = (/obj/structure/rack/rogue,/obj/item/storage/belt/rogue/surgery_bag/full,/turf/open/floor/rogue/ruinedwood{icon_state = "horzw"},/area/rogue/indoors/town/church/chapel)
 "tlQ" = (/obj/structure/roguewindow,/turf/open/floor/rogue/herringbone,/area/rogue/indoors/town/church/chapel)
 "tmE" = (/obj/structure/roguewindow/openclose{dir = 1},/turf/open/floor/rogue/woodturned,/area/rogue/indoors/town/manor)
 "tmH" = (/turf/closed/mineral/random/rogue,/area/rogue/indoors/shelter/mountains)
