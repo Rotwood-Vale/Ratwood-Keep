@@ -3928,6 +3928,8 @@
 /obj/item/polishing_cream,
 /obj/item/natural/cloth,
 /obj/item/natural/cloth,
+/obj/item/natural/stone,
+/obj/item/natural/stone,
 /turf/open/floor/rogue/cobble,
 /area/rogue/outdoors/town)
 "euo" = (
@@ -4294,6 +4296,11 @@
 	},
 /turf/open/floor/rogue/ruinedwood/turned,
 /area/rogue/indoors/shelter/mountains)
+"eOb" = (
+/obj/structure/bed/rogue,
+/obj/effect/decal/cleanable/coom,
+/turf/open/floor/rogue/cobble,
+/area/rogue/outdoors/town)
 "eOg" = (
 /obj/structure/chair/bench/church/smallbench,
 /turf/open/floor/rogue/church,
@@ -4558,6 +4565,7 @@
 	},
 /obj/item/polishing_cream,
 /obj/item/armor_brush,
+/obj/item/natural/stone,
 /turf/open/floor/rogue/cobble,
 /area/rogue/outdoors/town)
 "faj" = (
@@ -17612,6 +17620,7 @@
 	},
 /obj/structure/rack/rogue,
 /obj/item/rogueweapon/huntingknife/idagger/steel,
+/obj/item/natural/stone,
 /turf/open/floor/rogue/cobble,
 /area/rogue/outdoors/town)
 "uAD" = (
@@ -296354,7 +296363,7 @@ wbg
 wbg
 tbi
 rfx
-wGV
+eOb
 wVI
 fag
 esR

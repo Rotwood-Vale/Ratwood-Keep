@@ -149,6 +149,7 @@
 			thing.RegisterSignal(thing, COMSIG_COMPONENT_CLEAN_ACT, PROC_REF(remove_polish))
 			if(uses <= 8)
 				smeltresult = null
+				icon_state = "low_cream"
 			if(!uses)
 				icon_state = "empty_cream"
 
@@ -156,7 +157,7 @@
 	icon = 'icons/roguetown/items/misc.dmi'
 	name = "coarse brush"
 	desc = "A coarse brush for scrubbing armor thoroughly. Made of the finest Lupin hair."
-	icon_state = "brush"
+	icon_state = "brush_0"
 	w_class = WEIGHT_CLASS_SMALL
 	smeltresult = null
 	dropshrink = 0.8
@@ -168,6 +169,7 @@
 		to_chat(user, span_info("I flip the brush to the coarse side."))
 	else
 		to_chat(user, span_info("I flip the brush to the fine side."))
+	icon_state = "brush_[roughness]"
 
 /obj/item/armor_brush/attack_obj(obj/O, mob/living/user)
 	if(!isitem(O))
