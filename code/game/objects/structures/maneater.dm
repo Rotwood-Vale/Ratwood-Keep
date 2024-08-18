@@ -109,19 +109,18 @@
 	if(obj_broken)
 		..()
 		return
-	if(TIMER_COOLDOWN_RUNNING(user, "maneater_resist"))
-		return
 	if(isliving(user))
-		TIMER_COOLDOWN_START(user, "maneater_resist", 0.5 SECONDS)
 		var/mob/living/L = user
-		var/resist_chance = CLAMP((L.STASTR * 5), 1, 99)
+		var/resist_chance = CLAMP((L.STASTR * 2), 1, 99)
 		if(user != M)
+			user.changeNext_move(0.2 SECONDS)
 			if(prob(resist_chance))
 				..()
 			else
 				user.visible_message(span_warning("[user] tries to pull [M] free of [src]!"))
 			return
-		if(prob(resist_chance / 2))
+		user.changeNext_move(0.25 SECONDS)
+		if(prob(resist_chance))
 			..()
 		else
 			user.visible_message(span_warning("[user] tries to break free of [src]!"))
