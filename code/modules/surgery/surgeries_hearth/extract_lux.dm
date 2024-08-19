@@ -45,6 +45,6 @@
 		display_results(user, target, span_notice("You extract a single dose of lux from [target]'s heart."),
 			"[user] extracts lux from [target]'s innards.",
 			"[user] extracts lux from [target]'s innards.")
-		var/obj/item/reagent_containers/lux/L = new /obj/item/reagent_containers/lux(target.loc)
+		new /obj/item/reagent_containers/lux(target.loc)
 		target.apply_status_effect(/datum/status_effect/debuff/devitalised)
 	return TRUE
