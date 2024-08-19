@@ -424,7 +424,7 @@
 				ContactContractDisease(D)
 
 		// Makes it so people who recently broke out of grabs cannot be grabbed again
-		if(TIMER_COOLDOWN_RUNNING(src, "broke_free") && M.stat == CONSCIOUS)
+		if(TIMER_COOLDOWN_RUNNING(M, "broke_free") && M.stat == CONSCIOUS)
 			M.visible_message(span_warning("[M] slips from [src]'s grip."), \
 					span_warning("I slip from [src]'s grab."))
 			log_combat(src, M, "tried grabbing", addition="passive grab")
