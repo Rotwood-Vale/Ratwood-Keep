@@ -2,7 +2,7 @@
 
 /obj/structure/long_sleep //Shamelessly jury-rigged from the way Fallout13 handles this.
 	name = "longsleep mushshroom"
-	desc = "A magical mushroom capable of transporting people elsewhere.\n(Drag your sprite onto this to exit the round!)"
+	desc = "A magical mushroom capable of teleporting people to other locations.\n(Drag your sprite onto this to exit the round!)"
 	icon = 'icons/roguetown/misc/longsleep.dmi'
 	icon_state = "longsleep"
 	layer = ABOVE_MOB_LAYER
@@ -10,6 +10,9 @@
 	anchored = TRUE
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
 	var/in_use = FALSE
+	light_range = 2
+	light_power = 0.80
+	light_color = "#ebff33"
 
 /obj/structure/long_sleep/MouseDrop_T(atom/dropping, mob/user)
 	. = ..()
@@ -51,8 +54,8 @@
 	message_admins(dat)
 	log_admin(dat)
 	if(departing_mob.stat == DEAD)
-		departing_mob.visible_message("<span class='notice'>[user] pushes the body of [departing_mob] down the stairs. They're someone else's problem now.</span>")
+		departing_mob.visible_message("<span class='notice'>[user] teleports the body of [departing_mob] using the longsleep mushroom. They're someone else's problem now.</span>")
 	else
-		departing_mob.visible_message("<span class='notice'>[departing_mob == user ? "Out of their own volition, " : "Ushered by [user], "][departing_mob] heads downstairs to the ship's cabins.</span>")
+		departing_mob.visible_message("<span class='notice'>[departing_mob == user ? "Out of their own volition, " : "Ushered by [user], "][departing_mob] teleports away using the longsleep mushroom.</span>")
 	qdel(departing_mob)
 
