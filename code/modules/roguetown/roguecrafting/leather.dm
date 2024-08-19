@@ -186,7 +186,7 @@
 	craftdiff = 3
 	sellprice = 80
 
-/datum/crafting_recipe/roguetown/leather/bearcloak
+/datum/crafting_recipe/roguetown/leather/lightbearcloak
 	name = "light direbear cloak"
 	result = list(/obj/item/clothing/cloak/darkcloak/bear/light)
 	reqs = list(/obj/item/natural/fur = 2,
