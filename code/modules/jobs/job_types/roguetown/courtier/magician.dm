@@ -20,9 +20,6 @@
 	min_pq = 5
 	max_pq = null
 
-/datum/outfit/job/roguetown/magician
-	allowed_patrons = list(/datum/patron/divine/noc)
-
 /datum/outfit/job/roguetown/magician/pre_equip(mob/living/carbon/human/H)
 	..()
 	neck = /obj/item/clothing/neck/roguetown/talkstone
@@ -30,6 +27,7 @@
 	armor = /obj/item/clothing/suit/roguetown/shirt/robe/black
 	pants = /obj/item/clothing/under/roguetown/tights/random
 	shoes = /obj/item/clothing/shoes/roguetown/shortboots
+	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/black
 	belt = /obj/item/storage/belt/rogue/leather/plaquesilver
 	beltr = /obj/item/keyring/mage
 	id = /obj/item/clothing/ring/gold
@@ -40,7 +38,7 @@
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 6, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/alchemy, 3, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/magic/arcane, pick(6,5), TRUE)
+		H.mind.adjust_skillrank(/datum/skill/magic/arcane, 5, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/riding, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/polearms, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, pick(1,2), TRUE)
@@ -66,3 +64,14 @@
 				head = /obj/item/clothing/head/roguetown/wizhat
 				armor = /obj/item/clothing/suit/roguetown/shirt/robe/wizard
 				H.dna.species.soundpack_m = new /datum/voicepack/male/wizard()
+	switch(H.patron?.type)
+		if(/datum/patron/divine/pestra)
+			if(H.mind)
+				H.mind.adjust_skillrank(/datum/skill/misc/medicine, 1, TRUE)
+		else if(/datum/patron/divine/ravox || /datum/patron/inhumen/graggar) //raises the pick(1,2) weapon skills to 2 if they weren't there already
+			if(H.mind)
+				H.mind.adjust_skillrank(/datum/skill/combat/knives, max((2 - H.mind.get_skill_level(/datum/skill/combat/knives)), 0), TRUE) //basically, (2 - current skill) is added to the total skill value.   
+				H.mind.adjust_skillrank(/datum/skill/combat/swords, max((2 - H.mind.get_skill_level(/datum/skill/combat/swords)), 0), TRUE)
+		else
+			if(H.mind)
+				H.mind.adjust_skillrank(/datum/skill/magic/arcane, 1, TRUE)
