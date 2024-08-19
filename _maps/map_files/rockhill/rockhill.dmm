@@ -4448,9 +4448,13 @@
 "eXl" = (
 /obj/machinery/light/rogue/torchholder/r,
 /obj/structure/closet/crate/chest{
-	lockid = "keep_armory"
+	lockid = chest4
 	},
 /obj/item/clothing/shoes/roguetown/boots/leather,
+/obj/item/roguekey/custom{
+	lockid = chest4;
+	name = "chest key"
+	},
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/town/manor)
 "eXD" = (
@@ -6860,6 +6864,17 @@
 	},
 /turf/open/floor/rogue/cobble,
 /area/rogue/outdoors/town)
+"hLe" = (
+/obj/structure/closet/crate/chest{
+	lockid = chest2
+	},
+/obj/item/rope/chain,
+/obj/item/roguekey/custom{
+	lockid = chest2;
+	name = "chest key"
+	},
+/turf/open/floor/rogue/blocks,
+/area/rogue/indoors/town/garrison)
 "hLl" = (
 /obj/machinery/light/rogue/wallfire/candle{
 	pixel_x = 32;
@@ -7726,6 +7741,18 @@
 /obj/structure/fluff/railing/border,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors/rtfield)
+"iLl" = (
+/obj/structure/closet/crate/drawer{
+	lockid = drawer1;
+	keylock = 1
+	},
+/obj/item/reagent_containers/glass/bottle/rogue/healthpot,
+/obj/item/roguekey/custom{
+	lockid = drawer1;
+	name = "drawer key"
+	},
+/turf/open/floor/rogue/ruinedwood/spiral,
+/area/rogue/indoors)
 "iLw" = (
 /obj/structure/table/wood{
 	icon_state = "longtable"
@@ -8160,6 +8187,18 @@
 /obj/item/reagent_containers/glass/cup,
 /turf/open/floor/rogue/church,
 /area/rogue/indoors/town/church)
+"jov" = (
+/obj/structure/closet/crate/drawer{
+	lockid = drawer6;
+	keylock = 1
+	},
+/obj/item/reagent_containers/glass/bottle/rogue/healthpot,
+/obj/item/roguekey/custom{
+	lockid = drawer6;
+	name = "drawer key"
+	},
+/turf/open/floor/rogue/ruinedwood/spiral,
+/area/rogue/indoors)
 "joE" = (
 /obj/structure/table/wood{
 	dir = 1;
@@ -8818,10 +8857,14 @@
 /area/rogue/under/town/basement)
 "kff" = (
 /obj/structure/closet/crate/chest{
-	lockid = "keep_armory"
+	lockid = chest6
 	},
 /obj/item/clothing/neck/roguetown/gorget,
 /obj/item/clothing/shoes/roguetown/boots,
+/obj/item/roguekey/custom{
+	lockid = chest6;
+	name = "chest key"
+	},
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/manor)
 "kfr" = (
@@ -9441,11 +9484,18 @@
 	},
 /area/rogue/indoors/town/manor)
 "kTT" = (
-/obj/structure/closet/crate/drawer,
+/obj/structure/closet/crate/drawer{
+	lockid = drawer3;
+	keylock = 1
+	},
 /obj/item/reagent_containers/glass/bottle/rogue/healthpot,
 /obj/machinery/light/rogue/torchholder{
 	dir = 1;
 	pixel_y = -6
+	},
+/obj/item/roguekey/custom{
+	lockid = drawer3;
+	name = "drawer key"
 	},
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors)
@@ -9530,6 +9580,17 @@
 /obj/item/quiver/arrows,
 /obj/item/quiver/arrows,
 /turf/open/floor/rogue/woodturned,
+/area/rogue/indoors/town/garrison)
+"lby" = (
+/obj/structure/closet/crate/chest{
+	lockid = chest3
+	},
+/obj/item/rope/chain,
+/obj/item/roguekey/custom{
+	lockid = chest3;
+	name = "chest key"
+	},
+/turf/open/floor/rogue/blocks,
 /area/rogue/indoors/town/garrison)
 "lbB" = (
 /obj/structure/closet/crate/roguecloset/lord,
@@ -14838,6 +14899,18 @@
 /obj/effect/landmark/map_load_mark/sewers_bottomleft,
 /turf/closed/mineral/rogue,
 /area/rogue/under/town/sewer)
+"rvp" = (
+/obj/structure/closet/crate/drawer{
+	lockid = drawer2;
+	keylock = 1
+	},
+/obj/item/reagent_containers/glass/bottle/rogue/healthpot,
+/obj/item/roguekey/custom{
+	lockid = drawer2;
+	name = "drawer key"
+	},
+/turf/open/floor/rogue/ruinedwood/spiral,
+/area/rogue/indoors)
 "rvs" = (
 /obj/structure/rack/rogue,
 /turf/open/floor/rogue/ruinedwood{
@@ -17902,9 +17975,13 @@
 /area/rogue/outdoors/town)
 "vdN" = (
 /obj/structure/closet/crate/chest{
-	lockid = "town_barracks"
+	lockid = chest1
 	},
 /obj/item/rope/chain,
+/obj/item/roguekey/custom{
+	lockid = chest1;
+	name = "chest key"
+	},
 /turf/open/floor/rogue/blocks,
 /area/rogue/indoors/town/garrison)
 "vdS" = (
@@ -18544,6 +18621,18 @@
 	icon_state = "rockwd"
 	},
 /area/rogue/under/cave)
+"vUs" = (
+/obj/structure/closet/crate/drawer{
+	lockid = drawer5;
+	keylock = 1
+	},
+/obj/item/reagent_containers/glass/bottle/rogue/healthpot,
+/obj/item/roguekey/custom{
+	lockid = drawer5;
+	name = "drawer key"
+	},
+/turf/open/floor/rogue/ruinedwood/spiral,
+/area/rogue/indoors)
 "vUX" = (
 /obj/structure/mineral_door/wood{
 	icon_state = "wcv";
@@ -18716,10 +18805,17 @@
 /turf/open/floor/rogue/cobble,
 /area/rogue/outdoors/bog)
 "wgn" = (
-/obj/structure/closet/crate/drawer,
+/obj/structure/closet/crate/drawer{
+	lockid = drawer4;
+	keylock = 1
+	},
 /obj/item/reagent_containers/glass/bottle/rogue/healthpot,
 /obj/machinery/light/rogue/torchholder{
 	pixel_y = 26
+	},
+/obj/item/roguekey/custom{
+	lockid = drawer4;
+	name = "drawer key"
 	},
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors)
@@ -306261,9 +306357,9 @@ uaL
 xAt
 xAt
 tNj
-vdN
+lby
 uvY
-vdN
+hLe
 xPg
 vdN
 xPg
@@ -385574,10 +385670,10 @@ qbG
 qbG
 pBo
 lVe
-iBJ
+vUs
 vPJ
 pty
-iBJ
+rvp
 lVe
 tNm
 qbG
@@ -386378,10 +386474,10 @@ qbG
 qbG
 pBo
 lVe
-iBJ
+jov
 vPJ
 pty
-iBJ
+iLl
 lVe
 tNm
 qbG
