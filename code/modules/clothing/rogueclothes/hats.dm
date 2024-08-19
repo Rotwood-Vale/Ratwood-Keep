@@ -529,6 +529,7 @@
 	emote_environment = 3
 	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR
 	flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH
+	body_parts_covered = HEAD|EARS|HAIR|NOSE|EYES|MOUTH
 	block2add = FOV_BEHIND
 	smeltresult = /obj/item/ingot/steel
 
@@ -540,6 +541,7 @@
 	emote_environment = 3
 	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR
 	flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH
+	body_parts_covered = HEAD|EARS|HAIR|NOSE|EYES|MOUTH
 	block2add = FOV_BEHIND
 	smeltresult = /obj/item/ingot/steel
 
@@ -551,6 +553,7 @@
 	emote_environment = 3
 	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR
 	flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH
+	body_parts_covered = HEAD|EARS|HAIR|NOSE|EYES|MOUTH
 	block2add = FOV_BEHIND
 	smeltresult = /obj/item/ingot/steel
 
@@ -562,6 +565,7 @@
 	emote_environment = 3
 	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR
 	flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH
+	body_parts_covered = HEAD|EARS|HAIR|NOSE|EYES|MOUTH
 	block2add = FOV_BEHIND
 	smeltresult = /obj/item/ingot/steel
 
