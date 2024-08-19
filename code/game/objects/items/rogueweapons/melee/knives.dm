@@ -290,7 +290,7 @@
 	max_blade_int = 50
 	wdefense = 1
 
-/obj/item/rogueweapon/huntingknife/elvish
+/obj/item/rogueweapon/huntingknife/idagger/silver/elvish
 	possible_item_intents = list(/datum/intent/dagger/thrust,/datum/intent/dagger/cut)
 	name = "elvish dagger"
 	desc = "This beautiful dagger is of intricate, elvish design. Sharper, too."

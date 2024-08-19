@@ -2,7 +2,7 @@
 
 /datum/advclass/sentinel
 	name = "Sentinel"
-	tutorial = "Elvish Sentinels are a specialized group of Rangers known for their mastery of bow and blade alike; their arrows are said to contain poisons from the native trees."
+	tutorial = "Elvish Sentinels are a specialized group of Rangers known for their mastery of bow and blade alike."
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = list(
 		/datum/species/elf/dark,
@@ -21,15 +21,21 @@
 	H.mind.adjust_skillrank(/datum/skill/combat/knives, 3, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/combat/swords, 3, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 3, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/combat/bows, 5, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/craft/tanning, 3, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 1, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/craft/crafting, 1, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/misc/swimming, 2, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/misc/climbing, 2, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 3, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/misc/swimming, 4, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/misc/climbing, 4, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/riding, 3, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/sewing, 3, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/labor/butchering, 2, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/craft/tanning, 1, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/medicine, 4, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/craft/cooking, 1, TRUE)
 	if(H.gender == MALE)
 		pants = /obj/item/clothing/under/roguetown/trou/leather
 		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
@@ -44,7 +50,7 @@
 	backr = /obj/item/gun/ballistic/revolver/grenadelauncher/bow
 	backl = /obj/item/storage/backpack/rogue/satchel
 	beltr = /obj/item/rogueweapon/sword/sabre/elf
-	backpack_contents = list(/obj/item/bait = 1, /obj/item/rogueweapon/huntingknife/elvish = 1, /obj/item/flashlight/flare/torch/lantern = 1)
+	backpack_contents = list(/obj/item/bait = 1, /obj/item/rogueweapon/huntingknife/idagger/silver/elvish = 1, /obj/item/flashlight/flare/torch/lantern = 1)
 	beltl = /obj/item/quiver/arrows
 	H.change_stat("perception", 5)
 	H.change_stat("endurance", 2)
