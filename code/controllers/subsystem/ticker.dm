@@ -40,7 +40,7 @@ SUBSYSTEM_DEF(ticker)
 	//376000 day
 	var/gametime_offset = 288001		//Deciseconds to add to world.time for station time.
 	var/station_time_rate_multiplier = 50		//factor of station time progressal vs real time.
-	var/time_until_vote = 150 MINUTES
+	var/time_until_vote = 180 MINUTES
 	var/last_vote_time = null
 	var/autovote = TRUE
 	var/firstvote = TRUE
