@@ -319,6 +319,24 @@
 		/datum/sprite_accessory/hair/head/fatherless2,
 		/datum/sprite_accessory/hair/head/kepthair,
 		/datum/sprite_accessory/hair/head/singlebraid,
+		/datum/sprite_accessory/hair/head/gloomy,
+		/datum/sprite_accessory/hair/head/gloomylong,
+		/datum/sprite_accessory/hair/head/shortmessy,
+		/datum/sprite_accessory/hair/head/mediumessy,
+		/datum/sprite_accessory/hair/head/zone,
+		/datum/sprite_accessory/hair/head/inari,
+		/datum/sprite_accessory/hair/head/ziegler,
+		/datum/sprite_accessory/hair/head/gronnbraid,
+		/datum/sprite_accessory/hair/head/grenzelcut,
+		/datum/sprite_accessory/hair/head/fluffy,
+		/datum/sprite_accessory/hair/head/fluffyshort,
+		/datum/sprite_accessory/hair/head/fluffylong,
+		/datum/sprite_accessory/hair/head/jay,
+		/datum/sprite_accessory/hair/head/hairfre,
+		/datum/sprite_accessory/hair/head/dawn,
+		/datum/sprite_accessory/hair/head/morning,
+		/datum/sprite_accessory/hair/head/kobeni_1,
+		/datum/sprite_accessory/hair/head/kobeni_2
 		)
 
 /datum/customizer_choice/bodypart_feature/hair/head/humanoid/get_random_accessory(datum/customizer_entry/entry, datum/preferences/prefs)
@@ -616,6 +634,24 @@
 		/datum/sprite_accessory/hair/head/vulpkian/keid,
 		/datum/sprite_accessory/hair/head/vulpkian/mizar,
 		/datum/sprite_accessory/hair/head/vulpkian/raine,
+		/datum/sprite_accessory/hair/head/gloomy,
+		/datum/sprite_accessory/hair/head/gloomylong,
+		/datum/sprite_accessory/hair/head/shortmessy,
+		/datum/sprite_accessory/hair/head/mediumessy,
+		/datum/sprite_accessory/hair/head/zone,
+		/datum/sprite_accessory/hair/head/inari,
+		/datum/sprite_accessory/hair/head/ziegler,
+		/datum/sprite_accessory/hair/head/gronnbraid,
+		/datum/sprite_accessory/hair/head/grenzelcut,
+		/datum/sprite_accessory/hair/head/fluffy,
+		/datum/sprite_accessory/hair/head/fluffyshort,
+		/datum/sprite_accessory/hair/head/fluffylong,
+		/datum/sprite_accessory/hair/head/jay,
+		/datum/sprite_accessory/hair/head/hairfre,
+		/datum/sprite_accessory/hair/head/dawn,
+		/datum/sprite_accessory/hair/head/morning,
+		/datum/sprite_accessory/hair/head/kobeni_1,
+		/datum/sprite_accessory/hair/head/kobeni_2
 		)
 
 

@@ -834,6 +834,78 @@
 	name = "Single Braid"
 	icon_state = "singlebraid"
 
+/datum/sprite_accessory/hair/head/gloomy
+	name = "Gloomy"
+	icon_state = "gloomy"
+
+/datum/sprite_accessory/hair/head/gloomylong
+	name = "Gloomy (Long)"
+	icon_state = "gloomylong"
+
+/datum/sprite_accessory/hair/head/shortmessy
+	name = "Messy (Short)"
+	icon_state = "shortmessy"
+
+/datum/sprite_accessory/hair/head/mediumessy
+	name = "Messy (Medium)"
+	icon_state = "mediummessy"
+
+/datum/sprite_accessory/hair/head/zone
+	name = "Zone"
+	icon_state = "zone"
+
+/datum/sprite_accessory/hair/head/inari
+	name = "Inari"
+	icon_state = "inari"
+
+/datum/sprite_accessory/hair/head/ziegler
+	name = "Ziegler"
+	icon_state = "ziegler"
+
+/datum/sprite_accessory/hair/head/gronnbraid
+	name = "Gronn Braid"
+	icon_state = "Zone"
+
+/datum/sprite_accessory/hair/head/grenzelcut
+	name = "Grenzel Cut"
+	icon_state = "grenzelcut"
+
+/datum/sprite_accessory/hair/head/fluffy
+	name = "Fluffy"
+	icon_state = "fluffy"
+
+/datum/sprite_accessory/hair/head/fluffyshort
+	name = "Fluffy (Short)"
+	icon_state = "fluffyshort"
+
+/datum/sprite_accessory/hair/head/fluffylong
+	name = "Fluffy (Long)"
+	icon_state = "fluffylong"
+
+/datum/sprite_accessory/hair/head/jay
+	name = "Jay"
+	icon_state = "jay"
+
+/datum/sprite_accessory/hair/head/hairfre
+	name = "Hairfre"
+	icon_state = "hairfre"
+
+/datum/sprite_accessory/hair/head/dawn
+	name = "Dawn"
+	icon_state = "dawn"
+
+/datum/sprite_accessory/hair/head/morning
+	name = "Morning"
+	icon_state = "morning"
+
+/datum/sprite_accessory/hair/head/kobeni_1
+	name = "Kobeni"
+	icon_state = "kobeni_1"
+
+/datum/sprite_accessory/hair/head/kobeni_2
+	name = "Kobeni (Alt)"
+	icon_state = "kobeni_2"
+
 /datum/sprite_accessory/hair/head/vulpkian
 	abstract_type = /datum/sprite_accessory/hair/head/vulpkian
 	icon = 'icons/mob/sprite_accessory/hair/vulpkian_hair.dmi'
