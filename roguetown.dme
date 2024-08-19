@@ -3575,6 +3575,7 @@
 #include "modular_hearthstone\code\game\objects\structures\standard.dm"
 #include "modular_hearthstone\code\interface\LOOC.dm"
 #include "modular_hearthstone\code\modules\clothing\rogueclothes\hats.dm"
+#include "modular_hearthstone\code\modules\clothing\rogueclothes\neck.dm"
 #include "modular_hearthstone\code\modules\food_and_drinks\food\snacks_other.dm"
 #include "modular_hearthstone\code\modules\mob\living\simple_animal\rogue\cursed.dm"
 #include "modular_hearthstone\code\modules\mob\living\simple_animal\rogue\gravelord.dm"

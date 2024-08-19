@@ -30,7 +30,7 @@
 
 	// CLASS ARCHETYPES
 	H.adjust_blindness(-3)
-	var/classes = list("Life Cleric","War Cleric","Nature Cleric")
+	var/classes = list("Life Cleric","War Cleric","Nature Cleric", "Cloistered Devout")
 	var/classchoice = input("Choose your archetypes", "Available archetypes") as anything in classes
 
 	switch(classchoice)
@@ -96,6 +96,23 @@
 			H.change_stat("endurance", 2)
 			H.change_stat("speed", 1)
 			ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
+		// HEARTHSTONE ADD: cloistered cleric subclass (lighter armored and equipped)
+		if("Cloistered Devout")
+			// Devout start without the typical cleric medium/heavy armor shtick and without much in the way of weapons or skills to use them.
+			// They're better with miracles and regenerate devotion passively like the Priest does, however.
+			H.set_blindness(0)
+			to_chat(H, span_warning("You are a cloistered cleric, eschewing arms and armor for the weapon of word and greater connection to your chosen patron."))
+			H.mind.adjust_skillrank(/datum/skill/magic/holy, 5, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/reading, 4, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/alchemy, 3, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/sewing, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/medicine, 4, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/polearms, 2, TRUE)
+			H.change_stat("intelligence", 4)
+			H.change_stat("strength", -2)
+			H.change_stat("perception", 2)
+			H.change_stat("speed", 1)
+		// HEARTHSTONE ADDITION END
 
 	armor = /obj/item/clothing/suit/roguetown/armor/plate/half/iron
 	shirt = /obj/item/clothing/suit/roguetown/armor/gambeson
@@ -108,12 +125,63 @@
 	backl = /obj/item/storage/backpack/rogue/satchel
 	backr = /obj/item/rogueweapon/shield/wood
 	backpack_contents = list(/obj/item/rogueweapon/huntingknife)
+	// everything about this sucks - we should really make a subclass datum or something
 	if(classchoice == "Nature Cleric")
 		beltr = /obj/item/rogueweapon/sword
 		armor = /obj/item/clothing/suit/roguetown/armor/leather
 		pants = /obj/item/clothing/under/roguetown/trou
 		cloak = /obj/item/clothing/cloak/raincloak/furcloak
 		shoes = /obj/item/clothing/shoes/roguetown/boots
+	// HEARTHSTONE ADD: cloistered devout custom outfits
+	else if (classchoice == "Cloistered Devout")
+		// do the generic stuff first then replace it w/ patron specific things... if it exists
+		// for reference, cloistered devouts are lightly armored/unarmored but get patron-specific stuff (if applicable) and a devo regen
+		head = /obj/item/clothing/head/roguetown/roguehood/black
+		armor = /obj/item/clothing/suit/roguetown/shirt/robe
+		shirt = /obj/item/clothing/suit/roguetown/armor/gambeson
+		wrists = null
+		beltr = null
+		backr = /obj/item/rogueweapon/woodstaff
+		pants = /obj/item/clothing/under/roguetown/tights
+		shoes = /obj/item/clothing/shoes/roguetown/boots
+		// apply patron-specific outfit alterations
+		switch(H.patron?.type)
+			if(/datum/patron/divine/astrata)
+				head = /obj/item/clothing/head/roguetown/roguehood/astrata
+				armor = /obj/item/clothing/suit/roguetown/shirt/robe/astrata
+				beltr = /obj/item/flashlight/flare/torch/lantern // you are the lightbringer
+			if(/datum/patron/divine/noc)
+				head =  /obj/item/clothing/head/roguetown/roguehood/nochood
+				armor = /obj/item/clothing/suit/roguetown/shirt/robe/noc
+				pants = /obj/item/clothing/under/roguetown/tights/black
+				belt = /obj/item/storage/belt/rogue/leather/black
+			if(/datum/patron/divine/necra)
+				head = /obj/item/clothing/head/roguetown/necrahood
+				armor = /obj/item/clothing/suit/roguetown/shirt/robe/necra
+				pants = /obj/item/clothing/under/roguetown/trou/leather/mourning
+			if(/datum/patron/divine/dendor)
+				head = /obj/item/clothing/head/roguetown/dendormask
+				armor = /obj/item/clothing/suit/roguetown/shirt/robe/dendor
+				pants = /obj/item/clothing/under/roguetown/loincloth
+				belt = /obj/item/storage/belt/rogue/leather/rope
+				shoes = /obj/item/clothing/shoes/roguetown/sandals
+			if(/datum/patron/divine/xylix)
+				head = /obj/item/clothing/head/roguetown/roguehood/tricksterhood
+			if(/datum/patron/old_god)
+				head = /obj/item/clothing/head/roguetown/psydonhood
+				armor = /obj/item/clothing/suit/roguetown/shirt/robe/psydonrobe
+			if(/datum/patron/divine/eora)
+				armor = /obj/item/clothing/suit/roguetown/shirt/robe/eora
+	// HEARTHSTONE ADDITION END
 	var/datum/devotion/C = new /datum/devotion(H, H.patron)
-	C.grant_spells_cleric(H)
+	// HEARTHSTONE ADDITION: cloistered devout devo regen & tier buff
+	if (classchoice == "Cloistered Devout")
+		// start with passive devo gain and ability to gain up to T3 spells
+		C.passive_devotion_gain += 0.5
+		C.max_progression = CLERIC_REQ_3
+		C.max_devotion = CLERIC_REQ_3
+		C.grant_spells(H) // don't give churn as an extra spell to cloistered since they get their patron's full spell list (up to t3)
+	else
+		C.grant_spells_cleric(H)
+	// HEARTHSTONE ADDITION END
 	H.verbs += list(/mob/living/carbon/human/proc/devotionreport, /mob/living/carbon/human/proc/clericpray)
