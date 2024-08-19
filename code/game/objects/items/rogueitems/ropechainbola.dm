@@ -65,11 +65,19 @@
 		to_chat(user, span_warning("[C] has no arms to tie up."))
 		return
 
+	if(C.cmode && C.mobility_flags & MOBILITY_STAND)
+		to_chat(user, span_warning("I can't tie them, they are too tense!"))
+		return
+
+	var/surrender_mod = 1
+	if(C.surrendering)
+		surrender_mod = 0.5
+
 	C.visible_message(span_warning("[user] is trying to tie [C]'s arms with [src.name]!"), \
 						span_userdanger("[user] is trying to tie my arms with [src.name]!"))
 	playsound(loc, cuffsound, 100, TRUE, -2)
 
-	if(!(do_mob(user, C, 60) && C.get_num_arms(FALSE)))
+	if(!(do_mob(user, C, 60 * surrender_mod) && C.get_num_arms(FALSE)))
 		to_chat(user, span_warning("I fail to tie up [C]!"))
 		return
 
@@ -87,12 +95,20 @@
 		to_chat(user, span_warning("[C] is missing two or one legs."))
 		return
 
+	if(C.cmode && C.mobility_flags & MOBILITY_STAND)
+		to_chat(user, span_warning("I can't tie them, they are too tense!"))
+		return
+
+	var/surrender_mod = 1
+	if(C.surrendering)
+		surrender_mod = 0.5
+
 	C.visible_message(span_warning("[user] is trying to tie [C]'s legs with [src.name]!"), \
 						span_userdanger("[user] is trying to tie my legs with [src.name]!"))
 
 	playsound(loc, cuffsound, 30, TRUE, -2)
 
-	if(!do_mob(user, C, 60) || C.get_num_legs(FALSE) < 2)
+	if(!do_mob(user, C, 60 * surrender_mod) || C.get_num_legs(FALSE) < 2)
 		to_chat(user, span_warning("I fail to tie up [C]!"))
 		return
 
