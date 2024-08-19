@@ -37,7 +37,15 @@
 
 		//Healing while sleeping in a bed
 		if(IsSleeping())
-			var/sleepy_mod = buckled?.sleepy || 0.5
+			//Hearthstone change - beds need no buckle.
+			var/sleepy_mod = 0.5
+			if(buckled?.sleepy)
+				sleepy_mod = buckled.sleepy
+			else if(isturf(loc)) //No illegal tech.
+				var/obj/structure/bed/rogue/bed = locate() in loc
+				if(bed)
+					sleepy_mod = bed.sleepy
+			//Hearthstone end.
 			var/yess = HAS_TRAIT(src, TRAIT_NOHUNGER)
 			if(nutrition > 0 || yess)
 				rogstam_add(sleepy_mod * 15)
@@ -59,7 +67,16 @@
 					Sleeping(300)
 		else if(!IsSleeping() && !HAS_TRAIT(src, TRAIT_NOSLEEP))
 			// Resting on a bed or something
+			//Hearthstone change - beds don't need buckles.
+			var/sleepy_mod = 0
 			if(buckled?.sleepy)
+				sleepy_mod = buckled.sleepy
+			else if(isturf(loc) && !(mobility_flags & MOBILITY_STAND))
+				var/obj/structure/bed/rogue/bed = locate() in loc
+				if(bed)
+					sleepy_mod = bed.sleepy
+			if(sleepy_mod > 0)
+			//Hearthstone end.
 				if(eyesclosed)
 					if(!fallingas)
 						to_chat(src, span_warning("I'll fall asleep soon..."))
@@ -67,7 +84,7 @@
 					if(fallingas > 15)
 						Sleeping(300)
 				else
-					rogstam_add(buckled.sleepy * 10)
+					rogstam_add(sleepy_mod * 10)
 			// Resting on the ground (not sleeping or with eyes closed and about to fall asleep)
 			else if(!(mobility_flags & MOBILITY_STAND))
 				if(eyesclosed)
