@@ -204,6 +204,7 @@ GLOBAL_LIST_EMPTY(job_respawn_delays)
 
 #define CTAG_WATCH			"CAT_WATCH"			// Town-Watch classes; sloppy class selection system.
 #define CTAG_ROYALGUARD		"CAT_ROYALGUARD"	// Royal Guard classes; sloppy class selection system.
+#define CTAG_HEIR			"CAT_HEIR"			// Royal heir classes, as above.
 
 /*
 	Defines for the triumph buy datum categories
