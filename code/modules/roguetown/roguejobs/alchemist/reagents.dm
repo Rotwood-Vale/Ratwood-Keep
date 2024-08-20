@@ -4,7 +4,7 @@
 	reagent_state = LIQUID
 	color = "#ff0000"
 	taste_description = "red"
-	overdose_threshold = 0
+	overdose_threshold = 30
 	metabolization_rate = 0.5 * REAGENTS_METABOLISM
 	alpha = 173
 
@@ -15,8 +15,8 @@
 	else
 		//can overfill you with blood, but at a slower rate
 		M.blood_volume = min(M.blood_volume+10, BLOOD_VOLUME_MAXIMUM)
-	if(wCount.len > 0)	
-		//some peeps dislike the church, this allows an alternative thats not a doctor or sleep. 
+	if(wCount.len > 0)
+		//some peeps dislike the church, this allows an alternative thats not a doctor or sleep.
 		M.heal_wounds(2) //at a motabalism of .5 U a tick this translates to 80WHP healing with 20 U Most wounds are unsewn 15-100. This is powerful on single wounds but rapidly weakens at multi wounds.
 		M.update_damage_overlays()
 	M.adjustBruteLoss(-0.5*REM, 0)
@@ -27,18 +27,38 @@
 	..()
 	. = 1
 
+/datum/reagent/medicine/healthpot/overdose_start(mob/living/M)
+	M.playsound_local(M, 'sound/misc/heroin_rush.ogg', 100, FALSE)
+	M.visible_message(span_warning("Blood runs from [M]'s nose."))
+	. = 1
+
+/datum/reagent/medicine/healthpot/overdose_process(mob/living/M)
+	M.adjustToxLoss(2, 0)
+	..()
+	. = 1
+
 /datum/reagent/medicine/manapot
 	name = "Mana Potion"
 	description = "Gradually regenerates stamina."
 	reagent_state = LIQUID
 	color = "#0000ff"
 	taste_description = "manna"
-	overdose_threshold = 0
-	metabolization_rate = 20 * REAGENTS_METABOLISM
+	overdose_threshold = 30
+	metabolization_rate = 1 * REAGENTS_METABOLISM
 	alpha = 173
 
 /datum/reagent/medicine/manapot/on_mob_life(mob/living/carbon/M)
-	M.rogstam_add(100)
+	M.rogstam_add(10)
+	..()
+	. = 1
+
+/datum/reagent/medicine/manapot/overdose_start(mob/living/M)
+	M.playsound_local(M, 'sound/misc/heroin_rush.ogg', 100, FALSE)
+	M.visible_message(span_warning("Blood runs from [M]'s nose."))
+	. = 1
+
+/datum/reagent/medicine/manapot/overdose_process(mob/living/M)
+	M.adjustToxLoss(3, 0)
 	..()
 	. = 1
 

@@ -28,8 +28,8 @@
 	metabolization_rate = 0.2
 
 /datum/reagent/druqks/overdose_process(mob/living/M)
-	M.adjustOrganLoss(ORGAN_SLOT_BRAIN, 0.25*REM)
-	M.adjustToxLoss(0.25*REM, 0)
+	M.adjustOrganLoss(ORGAN_SLOT_BRAIN, 2)
+	M.adjustToxLoss(3, 0)
 	..()
 	. = 1
 
@@ -54,9 +54,6 @@
 
 /datum/reagent/druqks/overdose_start(mob/living/M)
 	M.visible_message(span_warning("Blood runs from [M]'s nose."))
-
-/datum/reagent/druqks/overdose_process(mob/living/M)
-	M.adjustToxLoss(10, 0)
 
 /datum/reagent/druqks/on_mob_metabolize(mob/living/M)
 	M.overlay_fullscreen("druqk", /atom/movable/screen/fullscreen/druqks)
@@ -210,7 +207,7 @@
 	metabolization_rate = 0.2
 
 /datum/reagent/ozium/overdose_process(mob/living/M)
-	M.adjustToxLoss(0.25*REM, 0)
+	M.adjustToxLoss(3, 0)
 	..()
 	. = 1
 
@@ -224,9 +221,6 @@
 	M.playsound_local(M, 'sound/misc/heroin_rush.ogg', 100, FALSE)
 	M.visible_message(span_warning("Blood runs from [M]'s nose."))
 
-/datum/reagent/ozium/overdose_process(mob/living/M)
-	M.adjustToxLoss(10, 0)
-
 /obj/item/reagent_containers/powder/moondust
 	name = "moondust"
 	desc = ""
@@ -239,7 +233,7 @@
 	sellprice = 5
 
 /datum/reagent/moondust/overdose_process(mob/living/M)
-	M.adjustToxLoss(0.25*REM, 0)
+	M.adjustToxLoss(3, 0)
 	..()
 	. = 1
 
@@ -266,9 +260,6 @@
 	M.playsound_local(M, 'sound/misc/heroin_rush.ogg', 100, FALSE)
 	M.visible_message(span_warning("Blood runs from [M]'s nose."))
 
-/datum/reagent/moondust/overdose_process(mob/living/M)
-	M.adjustToxLoss(10, 0)
-
 /obj/item/reagent_containers/powder/moondust_purest
 	name = "moondust"
 	desc = ""
@@ -284,11 +275,11 @@
 	name = "Purest Moondust"
 	description = ""
 	color = "#bfc3b5"
-	overdose_threshold = 50
+	overdose_threshold = 20
 	metabolization_rate = 0.2
 
 /datum/reagent/moondust_purest/overdose_process(mob/living/M)
-	M.adjustToxLoss(0.25*REM, 0)
+	M.adjustToxLoss(3, 0)
 	..()
 	. = 1
 
@@ -317,6 +308,3 @@
 /datum/reagent/moondust_purest/overdose_start(mob/living/M)
 	M.playsound_local(M, 'sound/misc/heroin_rush.ogg', 100, FALSE)
 	M.visible_message(span_warning("Blood runs from [M]'s nose."))
-
-/datum/reagent/moondust_purest/overdose_process(mob/living/M)
-	M.adjustToxLoss(10, 0)
