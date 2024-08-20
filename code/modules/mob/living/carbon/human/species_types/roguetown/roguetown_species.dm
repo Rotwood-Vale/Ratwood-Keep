@@ -29,8 +29,10 @@
 /datum/species/proc/get_accent_start(mob/living/carbon/human)
 	return
 
-/datum/species/proc/get_accent_any(mob/living/carbon/human)
-	return get_accent(human)
+/datum/species/proc/get_accent_any(mob/living/carbon/human/H)
+	switch(H.char_accent)
+		if("Elf accent")
+			return strings("russian_replacement.json", "russian")
 
 #define REGEX_STARTWORD 1
 #define REGEX_FULLWORD 2
