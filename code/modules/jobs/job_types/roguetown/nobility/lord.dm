@@ -124,7 +124,7 @@ GLOBAL_LIST_EMPTY(lord_titles)
 			H.change_stat("perception", 2)
 			H.change_stat("fortune", 5)
 	
-	H.faction = list("pit_wolf_friend")
+	H.faction += "pit_wolf_friend"
 	ADD_TRAIT(H, TRAIT_NOBLE, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_NOSEGRAB, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)

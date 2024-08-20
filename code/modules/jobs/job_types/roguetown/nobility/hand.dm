@@ -52,7 +52,7 @@
 		H.change_stat("intelligence", 3)
 
 	if(prob(50))
-		H.faction = list("pit_wolf_friend")
+		H.faction += "pit_wolf_friend"
 
 	ADD_TRAIT(H, TRAIT_NOBLE, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
