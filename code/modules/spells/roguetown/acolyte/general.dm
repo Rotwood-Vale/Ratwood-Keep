@@ -4,17 +4,16 @@
 	overlay_state = "lesserheal"
 	releasedrain = 30
 	chargedrain = 0
-	chargetime = 0
+	chargetime = 20
 	range = 7
 	warnie = "sydwarning"
 	movement_interrupt = FALSE
 	sound = 'sound/magic/heal.ogg'
-	invocation_type = "none"
+	chargedloop = /datum/looping_sound/holyshield/lesser
 	associated_skill = /datum/skill/magic/holy
-	antimagic_allowed = TRUE
 	charge_max = 10 SECONDS
 	miracle = TRUE
-	devotion_cost = 10
+	devotion_cost = 20
 
 /obj/effect/proc_holder/spell/invoked/lesser_heal/cast(list/targets, mob/living/user)
 	. = ..()
@@ -83,22 +82,19 @@
 /obj/effect/proc_holder/spell/invoked/heal
 	name = "Miracle"
 	overlay_state = "astrata"
-	releasedrain = 30
-	chargedrain = 0
-	chargetime = 0
+	releasedrain = 40
+	chargedrain = 1
+	chargetime = 40
 	range = 7
 	warnie = "sydwarning"
-	movement_interrupt = FALSE
-//	chargedloop = /datum/looping_sound/invokeholy
-	chargedloop = null
+	movement_interrupt = TRUE
+	chargedloop = /datum/looping_sound/holyshield
 	req_items = list(/obj/item/clothing/neck/roguetown/psicross)
 	sound = 'sound/magic/heal.ogg'
-	invocation_type = "none"
 	associated_skill = /datum/skill/magic/holy
-	antimagic_allowed = TRUE
-	charge_max = 20 SECONDS
+	charge_max = 10 SECONDS
 	miracle = TRUE
-	devotion_cost = 20
+	devotion_cost = 40
 
 /obj/effect/proc_holder/spell/invoked/heal/cast(list/targets, mob/living/user)
 	. = ..()
