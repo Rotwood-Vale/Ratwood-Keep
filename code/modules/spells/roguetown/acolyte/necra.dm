@@ -34,17 +34,20 @@
 	name = "Churn Undead"
 	range = 8
 	overlay_state = "necra"
-	releasedrain = 30
-	charge_max = 30 SECONDS
+	releasedrain = 60
+	charge_max = 2 MINUTES
+	chargedrain = 5
+	chargetime = 50
 	max_targets = 0
 	cast_without_targets = TRUE
+	chargedloop = /datum/looping_sound/invokeholy
 	req_items = list(/obj/item/clothing/neck/roguetown/psicross)
 	sound = 'sound/magic/churn.ogg'
 	associated_skill = /datum/skill/magic/holy
 	invocation = "The Undermaiden rebukes!"
 	invocation_type = "shout" //can be none, whisper, emote and shout
 	miracle = TRUE
-	devotion_cost = 20
+	devotion_cost = 150 //literally the strongest spell against undead
 
 /obj/effect/proc_holder/spell/targeted/churn/cast(list/targets,mob/living/user = usr)
 	var/prob2explode = 100
