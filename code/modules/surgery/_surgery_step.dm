@@ -55,24 +55,24 @@
 	/// Necessary skill MINIMUM to perform this surgery step, of skill_used
 	var/skill_min = SKILL_LEVEL_NOVICE
 	/// Skill median used to apply success and speed bonuses
-	var/skill_median = SKILL_LEVEL_NOVICE
+	var/skill_median = SKILL_LEVEL_NONE
 	/// Modifiers to success chance when you're above the median
 	var/list/skill_bonuses = list(
-		1 = 0.4,
-		2 = 0.8,
-		3 = 1,
-		4 = 1.2,
-		5 = 1.5,
-		6 = 2,
+		1 = 1.5,
+		2 = 2,
+		3 = 2.5,
+		4 = 3,
+		5 = 3.5,
+		6 = 4,
 	)
 	/// Modifiers to success chance when you're below the median
 	var/list/skill_maluses = list(
-		1 = -0.2,
-		2 = -0.4,
-		3 = -0.6,
-		4 = -0.8,
-		5 = -1,
-		6 = -2,
+		1 = 0,
+		2 = -0.2,
+		3 = -0.4,
+		4 = -0.6,
+		5 = -0.8,
+		6 = -1,
 	)
 
 	/// Handles techweb-oriented surgeries
