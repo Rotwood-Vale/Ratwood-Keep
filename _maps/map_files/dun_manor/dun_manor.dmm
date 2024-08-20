@@ -2039,7 +2039,7 @@
 "qLu" = (/obj/structure/table/wood{icon_state = "tablewood1"},/turf/open/floor/rogue/cobble,/area/rogue/indoors/town/magician)
 "qLS" = (/obj/machinery/light/rogue/wallfire/candle/l,/obj/structure/fermenting_barrel/random/water,/turf/open/floor/rogue/ruinedwood{icon_state = "weird1"},/area/rogue/indoors/town/magician)
 "qMb" = (/obj/structure/table/wood{dir = 1; icon_state = "longtable"},/turf/open/floor/rogue/twig,/area/rogue/indoors)
-"qMG" = (/obj/structure/roguemachine/vendor{keycontrol = "doctor"},/turf/closed/wall/mineral/rogue/wooddark/horizontal,/area/rogue/indoors/town/physician)
+"qMG" = (/obj/structure/roguemachine/vendor{keycontrol = "physician"},/turf/closed/wall/mineral/rogue/wooddark/horizontal,/area/rogue/indoors/town/physician)
 "qOg" = (/obj/structure/table/wood{dir = 9; icon_state = "largetable"},/obj/item/reagent_containers/glass/bottle/rogue/manapot,/obj/item/reagent_containers/glass/bottle/rogue/manapot,/turf/open/floor/rogue/twig,/area/rogue/under/town/basement)
 "qOK" = (/obj/structure/chair/bench/ultimacouch,/turf/open/floor/carpet/red,/area/rogue/indoors/town/tavern)
 "qOY" = (/turf/open/floor/rogue/naturalstone,/area/rogue/under/town/sewer)
