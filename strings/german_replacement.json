@@ -64,6 +64,7 @@
 		"vampire": "vampir",
 		"black": "schwarz",
 		"church": "kirche",
+		//"no":  "nein",
 		//"is": "ist", 
 		//"queen": "königin", (for consistency. king wont be changed during this time, queen shouldn't either.)
 		"town": "stadt",
