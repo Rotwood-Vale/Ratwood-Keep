@@ -30,7 +30,7 @@
 	return
 
 /datum/species/proc/get_accent_any(mob/living/carbon/human)
-	return get_accent(human)
+	return
 
 #define REGEX_STARTWORD 1
 #define REGEX_FULLWORD 2
