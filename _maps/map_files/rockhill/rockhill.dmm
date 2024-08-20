@@ -1862,12 +1862,6 @@
 	},
 /turf/open/floor/rogue/blocks,
 /area/rogue/outdoors/town)
-"ckG" = (
-/obj/machinery/light/rogue/firebowl/standing/blue,
-/turf/open/floor/rogue/blocks{
-	icon_state = "paving"
-	},
-/area/rogue/outdoors/bog)
 "ckR" = (
 /obj/structure/fluff/railing/border{
 	dir = 5
@@ -2249,6 +2243,15 @@
 	},
 /turf/open/floor/carpet/royalblack,
 /area/rogue/indoors/town/bath)
+"cGN" = (
+/obj/structure/fluff/traveltile/dungeon{
+	aportalgoesto = "Dungeon";
+	aportalid = "DungeonRockhill"
+	},
+/turf/open/floor/rogue/blocks{
+	icon_state = "paving"
+	},
+/area/rogue/outdoors/bog)
 "cHf" = (
 /turf/open/floor/rogue/churchbrick,
 /area/rogue/indoors/town/church)
@@ -5063,14 +5066,6 @@
 /obj/effect/decal/cleanable/blood/gibs/up,
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/under/cavewet/bogcaves)
-"fGF" = (
-/obj/effect/landmark/start/bogmaster{
-	dir = 4
-	},
-/turf/open/floor/rogue/blocks{
-	icon_state = "paving"
-	},
-/area/rogue/outdoors/bog)
 "fHh" = (
 /obj/structure/bed/rogue/shit,
 /obj/effect/landmark/start/servant{
@@ -10187,15 +10182,6 @@
 	},
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/town/garrison)
-"lCA" = (
-/obj/structure/fluff/traveltile/dungeon{
-	aportalgoesto = "Dungeon";
-	aportalid = "DungeonRockhill"
-	},
-/turf/open/floor/rogue/blocks{
-	icon_state = "paving"
-	},
-/area/rogue/outdoors/bog)
 "lCO" = (
 /obj/structure/fluff/railing/border{
 	dir = 1
@@ -12222,6 +12208,9 @@
 /area/rogue/indoors/town)
 "oaY" = (
 /obj/structure/chair/wood{
+	dir = 4
+	},
+/obj/effect/landmark/start/bogmaster{
 	dir = 4
 	},
 /turf/open/floor/rogue/ruinedwood/spiral,
@@ -20572,6 +20561,12 @@
 /obj/machinery/light/rogue/firebowl/standing,
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/manor)
+"xTW" = (
+/obj/machinery/light/rogue/firebowl/standing/blue,
+/turf/open/floor/rogue/blocks{
+	icon_state = "paving"
+	},
+/area/rogue/outdoors/bog)
 "xUC" = (
 /obj/structure/bed/rogue/inn/hay,
 /obj/machinery/light/rogue/torchholder/c,
@@ -253125,7 +253120,7 @@ wLx
 wLx
 sYx
 sYx
-muz
+sYx
 odi
 sYx
 sYx
@@ -255532,11 +255527,11 @@ kDc
 wLx
 wLx
 wLx
-ckG
+xTW
 ebk
 ebk
 ebk
-ckG
+xTW
 odi
 odi
 odi
@@ -256336,7 +256331,7 @@ wLx
 wLx
 wLx
 wLx
-lCA
+cGN
 ebk
 ebk
 ebk
@@ -256741,7 +256736,7 @@ sYx
 ebk
 ebk
 ebk
-fGF
+ebk
 ebk
 odi
 sYx
@@ -258346,11 +258341,11 @@ wLx
 wLx
 wLx
 odi
-ckG
+xTW
 ebk
 ebk
 ebk
-ckG
+xTW
 ebk
 odi
 wLx
@@ -259558,7 +259553,7 @@ odi
 odi
 wLx
 odi
-muz
+sYx
 odi
 sYx
 sYx
