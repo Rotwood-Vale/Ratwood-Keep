@@ -4,8 +4,8 @@
     overlay_state = "blindness"
     req_items = list(/obj/item/clothing/neck/roguetown/psicross)
     releasedrain = 30
-    chargedrain = 0
-    chargetime = 0
+    chargedrain = 1
+    chargetime = 20
     range = 7
     warnie = "sydwarning"
     movement_interrupt = FALSE
@@ -13,9 +13,8 @@
     invocation = "Noc blinds thee of thy sins!"
     invocation_type = "shout" //can be none, whisper, emote and shout
     associated_skill = /datum/skill/magic/holy
-    antimagic_allowed = TRUE
     charge_max = 15 SECONDS
-    devotion_cost = 15
+    devotion_cost = 25
 
 /obj/effect/proc_holder/spell/invoked/blindness/cast(list/targets, mob/user = usr)
 	if(isliving(targets[1]))
@@ -30,19 +29,19 @@
 	name = "Invisibility"
 	overlay_state = "invisibility"
 	releasedrain = 30
-	chargedrain = 0
-	chargetime = 0
+	chargedrain = 2
+	chargetime = 40
 	req_items = list(/obj/item/clothing/neck/roguetown/psicross)
 	charge_max = 30 SECONDS
 	range = 3
 	warnie = "sydwarning"
-	movement_interrupt = FALSE
-	invocation_type = "none"
+	movement_interrupt = TRUE
+	invocation_type = "whisper"
+	invocation = "Noc will hide me in shadows."
 	sound = 'sound/misc/area.ogg' //This sound doesnt play for some reason. Fix me.
 	associated_skill = /datum/skill/magic/holy
-	antimagic_allowed = TRUE
 	miracle = TRUE
-	devotion_cost = 25
+	devotion_cost = 50
 
 /obj/effect/proc_holder/spell/invoked/invisibility/cast(list/targets, mob/living/user)
 	if(isliving(targets[1]))
