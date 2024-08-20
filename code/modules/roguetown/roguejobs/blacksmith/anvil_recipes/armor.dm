@@ -522,7 +522,7 @@
 	name = "Beak Helmet"
 	req_bar = /obj/item/ingot/steel
 	created_item = /obj/item/clothing/head/roguetown/helmet/heavy/beakhelmet
-	craftdiff = 4	//One of the best helms in the game.
+	craftdiff = 4	//One of the best helms in the game. //It looks so fucking good
 	i_type = "Armor"	
 
 /datum/anvil_recipe/armor/helmetknight
@@ -605,3 +605,122 @@
 	created_item = /obj/item/clothing/head/roguetown/helmet/heavy/dendorhelm
 	craftdiff = 4	//Heavy helm
 	i_type = "Armor"
+
+/datum/anvil_recipe/armor/spellslingerhelm
+	name = "Spellslinger Helmet (+1 Steel)"
+	req_bar = /obj/item/ingot/steel
+	additional_items = list(/obj/item/ingot/steel)
+	created_item = /obj/item/clothing/head/roguetown/helmet/heavy/spellslingerhelm
+	craftdiff = 4	//Heavy helm
+	i_type = "Armor"
+
+/datum/anvil_recipe/armor/zealothelm
+	name = "Zealot Helmet"
+	req_bar = /obj/item/ingot/steel
+	created_item = /obj/item/clothing/head/roguetown/helmet/heavy/zealothelm
+	craftdiff = 2
+	i_type = "Armor"
+
+/datum/anvil_recipe/armor/cagehelm
+	name = "Iron Cage"
+	req_bar = /obj/item/ingot/iron
+	created_item = /obj/item/clothing/head/roguetown/helmet/cage
+	craftdiff = 2
+	i_type = "Armor"	
+
+/datum/anvil_recipe/armor/zybantinehelm
+	name = "Zybantine Helmet (+1 Steel)"
+	req_bar = /obj/item/ingot/steel
+	additional_items = list(/obj/item/ingot/steel)
+	created_item = /obj/item/clothing/head/roguetown/helmet/heavy/zybantinehelm
+	craftdiff = 4	//Heavy helm
+	i_type = "Armor"	
+
+/datum/anvil_recipe/armor/spellslingergauntlets
+	name = "Spellslinger Gauntlets"
+	req_bar = /obj/item/ingot/steel
+	created_item = /obj/item/clothing/gloves/roguetown/plate/spellslingergauntlets
+	craftdiff = 4	//It's plate
+	i_type = "Armor"
+
+/datum/anvil_recipe/armor/zybantinegauntlets
+	name = "Zybantine Gauntlets"
+	req_bar = /obj/item/ingot/steel
+	created_item = /obj/item/clothing/gloves/roguetown/plate/zybantinegauntlets
+	craftdiff = 4	//It's plate
+	i_type = "Armor"	
+
+/datum/anvil_recipe/armor/spellslingerboots
+	name = "Spellslinger Boots"
+	req_bar = /obj/item/ingot/steel
+	created_item = /obj/item/clothing/shoes/roguetown/boots/spellslingerboots
+	craftdiff = 4
+	i_type = "Armor"
+
+/datum/anvil_recipe/armor/zybantineboots
+	name = "Zybantine Boots"
+	req_bar = /obj/item/ingot/steel
+	created_item = /obj/item/clothing/shoes/roguetown/boots/zybantineboots
+	craftdiff = 4
+	i_type = "Armor"	
+
+/datum/anvil_recipe/armor/plate/spellslingerarmor
+	name = "Spellslinger Armour (+2 Steel)"
+	req_bar = /obj/item/ingot/steel
+	additional_items = list(/obj/item/ingot/steel,/obj/item/ingot/steel)
+	created_item = /obj/item/clothing/suit/roguetown/armor/plate/spellslingerarmor
+	craftdiff = 3
+	i_type = "Armor"
+
+/datum/anvil_recipe/armor/plate/zybantinearmor
+	name = "Zybantine Armour (+2 Steel)"
+	req_bar = /obj/item/ingot/steel
+	additional_items = list(/obj/item/ingot/steel,/obj/item/ingot/steel)
+	created_item = /obj/item/clothing/suit/roguetown/armor/plate/zybantinearmor
+	craftdiff = 3
+	i_type = "Armor"	
+
+/datum/anvil_recipe/armor/volfhelm
+	name = "Volf Helmet (+1 Fur)"
+	req_bar = /obj/item/ingot/iron
+	additional_items = list(/obj/item/natural/fur)
+	created_item = /obj/item/clothing/head/roguetown/helmet/leather/volfhelm
+	craftdiff = 1
+	i_type = "Armor"
+
+/datum/anvil_recipe/armor/bearhelm
+	name = "Bear Helmet (+1 Fur)"
+	req_bar = /obj/item/ingot/iron
+	additional_items = list(/obj/item/natural/fur)
+	created_item = /obj/item/clothing/head/roguetown/helmet/leather/bearhelm
+	craftdiff = 1
+
+/datum/anvil_recipe/armor/roguetown/spiderhelmet
+	name = "Spider Helmet (+1 Steel)"
+	req_bar = /obj/item/ingot/steel
+	additional_items = list(/obj/item/ingot/steel)
+	created_item = /obj/item/clothing/head/roguetown/helmet/spiderhelmet
+	craftdiff = 2
+	i_type = "Armor"	
+
+/datum/anvil_recipe/armor/brigandhelmet
+	name = "Iron Helmet"
+	req_bar = /obj/item/ingot/iron
+	created_item = /obj/item/clothing/head/roguetown/helmet/brigandhelmet
+	i_type = "Armor"	
+
+/datum/anvil_recipe/armor/spiderarmor
+	name = "Spider Armor (+1 Steel)"
+	req_bar = /obj/item/ingot/steel
+	additional_items = list(/obj/item/ingot/steel)
+	created_item = /obj/item/clothing/suit/roguetown/armor/plate/spiderarmor
+	craftdiff = 2
+	i_type = "Armor"
+
+/datum/anvil_recipe/armor/brigandarmor
+	name = "Iron Breastplate (+1 Iron)"
+	req_bar = /obj/item/ingot/iron
+	additional_items = list(/obj/item/ingot/iron)
+	created_item = /obj/item/clothing/suit/roguetown/armor/plate/brigandarmor
+	craftdiff = 2
+	i_type = "Armor"	

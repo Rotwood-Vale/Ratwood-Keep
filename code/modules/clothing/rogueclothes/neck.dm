@@ -9,7 +9,7 @@
 	name = "coif"
 	icon_state = "coif"
 	item_state = "coif"
-	flags_inv = HIDEHAIR
+	flags_inv = HIDEEARS|HIDEHAIR
 	slot_flags = ITEM_SLOT_NECK|ITEM_SLOT_HEAD
 	blocksound = SOFTHIT
 	body_parts_covered = NECK|HAIR|EARS|HEAD
@@ -33,20 +33,54 @@
 				H.update_inv_head()
 		else if(adjustable == CADJUSTED)
 			ResetAdjust(user)
-			flags_inv = HIDEHAIR
+			flags_inv = HIDEEARS|HIDEHAIR
 			if(user)
 				if(ishuman(user))
 					var/mob/living/carbon/H = user
 					H.update_inv_neck()
 					H.update_inv_head()
 
+/obj/item/clothing/neck/roguetown/shawl
+	name = "shawl"
+	desc = "A shawl worn by those who inhabit the deserts to help keep the sun off their heads."
+	icon_state = "shawl"
+	item_state = "shawl"
+	flags_inv = HIDEEARS|HIDEHAIR
+	slot_flags = ITEM_SLOT_NECK
+	blocksound = SOFTHIT
+	body_parts_covered = NECK|HAIR|EARS|HEAD
+	armor = list("blunt" = 33, "slash" = 12, "stab" = 22, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	prevent_crits = list(BCLASS_CUT, BCLASS_BLUNT)
+	adjustable = CAN_CADJUST
+	toggle_icon_state = TRUE
+	sewrepair = TRUE
 
+/obj/item/clothing/neck/roguetown/shawl/AdjustClothes(mob/user)
+	if(loc == user)
+		if(adjustable == CAN_CADJUST)
+			adjustable = CADJUSTED
+			if(toggle_icon_state)
+				icon_state = "[initial(icon_state)]_t"
+			flags_inv = null
+			body_parts_covered = NECK
+			if(ishuman(user))
+				var/mob/living/carbon/H = user
+				H.update_inv_neck()
+				H.update_inv_head()
+		else if(adjustable == CADJUSTED)
+			ResetAdjust(user)
+			flags_inv = HIDEEARS|HIDEHAIR
+			if(user)
+				if(ishuman(user))
+					var/mob/living/carbon/H = user
+					H.update_inv_neck()
+					H.update_inv_head()
 
 /obj/item/clothing/neck/roguetown/chaincoif
 	name = "steel chain coif"
 	icon_state = "chaincoif"
 	item_state = "chaincoif"
-	flags_inv = HIDEHAIR
+	flags_inv = HIDEEARS|HIDEHAIR
 	armor = list("blunt" = 30, "slash" = 60, "stab" = 45, "bullet" = 10, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
 
 	max_integrity = 200
@@ -74,7 +108,7 @@
 				H.update_inv_head()
 		else if(adjustable == CADJUSTED)
 			ResetAdjust(user)
-			flags_inv = HIDEHAIR
+			flags_inv = HIDEEARS|HIDEHAIR
 			if(user)
 				if(ishuman(user))
 					var/mob/living/carbon/H = user
@@ -185,6 +219,11 @@
 	icon_state = "psicrossiron"
 	sellprice = 50
 
+/obj/item/clothing/neck/roguetown/psicross/talisman
+	name = "talisman"
+	icon_state = "talisman"
+	sellprice = 0
+
 /obj/item/clothing/neck/roguetown/psicross/silver/pickup(mob/user)
 	. = ..()
 	var/mob/living/carbon/human/H = user
@@ -256,6 +295,7 @@
 	name = "eye of horuz"
 	desc = ""
 	icon_state = "horus"
+	slot_flags = ITEM_SLOT_NECK|ITEM_SLOT_HIP|ITEM_SLOT_WRISTS
 	//dropshrink = 0.75
 	resistance_flags = FIRE_PROOF
 	sellprice = 30
@@ -265,6 +305,7 @@
 	name = "desert rider medal"
 	desc = ""
 	icon_state = "shalal"
+	slot_flags = ITEM_SLOT_NECK|ITEM_SLOT_HIP|ITEM_SLOT_WRISTS
 	//dropshrink = 0.75
 	resistance_flags = FIRE_PROOF
 	sellprice = 15

@@ -126,6 +126,12 @@
 	icon_state = "stripedpants"	
 	item_state = "stripedpants"
 
+/obj/item/clothing/under/roguetown/trou/skullcrotchplate
+	name = "skull crotchplate"
+	desc = "Worn by barbarians, tribals and madmen. Not in that particular order."
+	icon_state = "skullcrotch"
+	item_state = "skullcrotch"	
+
 /obj/item/clothing/under/roguetown/trou/leather/mourning
 	name = "mourning trousers"
 	desc = "Dark trousers worn by morticians while performing burial rites."
