@@ -1506,9 +1506,9 @@
 /area/rogue/under/town/sewer)
 "bKD" = (
 /obj/structure/lever{
-	redstone_id = "cell3"
+	redstone_id = "cell4"
 	},
-/turf/closed/wall/mineral/rogue/stone/moss,
+/turf/open/floor/rogue/cobble,
 /area/rogue/under/town/basement)
 "bLf" = (
 /obj/structure/stairs{
@@ -10072,9 +10072,9 @@
 /area/rogue/outdoors/rtfield)
 "lyj" = (
 /obj/structure/lever{
-	redstone_id = "cell5"
+	redstone_id = "cell2"
 	},
-/turf/closed/wall/mineral/rogue/stone/moss,
+/turf/open/floor/rogue/cobble,
 /area/rogue/under/town/basement)
 "lyK" = (
 /turf/open/floor/rogue/rooftop{
@@ -18677,9 +18677,9 @@
 /area/rogue/indoors/town)
 "vEc" = (
 /obj/structure/lever{
-	redstone_id = "cell4"
+	redstone_id = "cell3"
 	},
-/turf/closed/wall/mineral/rogue/stone/moss,
+/turf/open/floor/rogue/cobble,
 /area/rogue/under/town/basement)
 "vEh" = (
 /turf/closed/wall/mineral/rogue/roofwall/outercorner,
@@ -19951,9 +19951,9 @@
 /area/rogue/outdoors/town)
 "xke" = (
 /obj/structure/lever{
-	redstone_id = "cell1"
+	redstone_id = "cell5"
 	},
-/turf/closed/wall/mineral/rogue/stone/moss,
+/turf/open/floor/rogue/cobble,
 /area/rogue/under/town/basement)
 "xkm" = (
 /turf/open/lava,
@@ -20509,9 +20509,9 @@
 /area/rogue/indoors/town/dwarfin)
 "xRJ" = (
 /obj/structure/lever{
-	redstone_id = "cell2"
+	redstone_id = "cell1"
 	},
-/turf/closed/wall/mineral/rogue/stone/moss,
+/turf/open/floor/rogue/cobble,
 /area/rogue/under/town/basement)
 "xRS" = (
 /turf/open/floor/rogue/blocks/paving,
@@ -71067,8 +71067,8 @@ jyI
 iTw
 iTw
 iTw
-lyj
-iTw
+jyI
+xke
 iTw
 vQt
 jyI
@@ -72675,8 +72675,8 @@ jyI
 iTw
 iTw
 iTw
-vEc
-iTw
+jyI
+bKD
 iTw
 oZS
 jyI
@@ -74283,8 +74283,8 @@ jyI
 iTw
 iTw
 iTw
-bKD
-iTw
+jyI
+vEc
 iTw
 pGQ
 jyI
@@ -75891,8 +75891,8 @@ jyI
 iTw
 iTw
 iTw
-xRJ
-iTw
+jyI
+lyj
 iTw
 ihv
 jyI
@@ -77499,8 +77499,8 @@ jyI
 iTw
 iTw
 iTw
-xke
-iTw
+jyI
+xRJ
 iTw
 mLX
 jyI
