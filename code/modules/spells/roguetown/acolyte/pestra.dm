@@ -147,7 +147,7 @@
 	antimagic_allowed = TRUE
 	charge_max = 2 MINUTES
 	miracle = TRUE
-	devotion_cost = 30
+	devotion_cost = 80
 	/// Amount of PQ gained for curing zombos
 	var/unzombification_pq = PQ_GAIN_UNZOMBIFY
 
