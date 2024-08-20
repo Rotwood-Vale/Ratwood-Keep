@@ -2,18 +2,17 @@
 	name = "Sacred Flame"
 	overlay_state = "sacredflame"
 	releasedrain = 30
-	chargedrain = 0
-	chargetime = 0
+	chargedrain = 1
+	chargetime = 15
 	range = 15
 	warnie = "sydwarning"
 	movement_interrupt = FALSE
-	chargedloop = null
+	chargedloop = /datum/looping_sound/holyshield/lesser
 	req_items = list(/obj/item/clothing/neck/roguetown/psicross)
 	sound = 'sound/magic/heal.ogg'
 	invocation = "Cleansing flames, kindle!"
 	invocation_type = "shout"
 	associated_skill = /datum/skill/magic/holy
-	antimagic_allowed = TRUE
 	charge_max = 5 SECONDS
 	miracle = TRUE
 	devotion_cost = 30
@@ -58,7 +57,7 @@
 	antimagic_allowed = TRUE
 	charge_max = 2 MINUTES
 	miracle = TRUE
-	devotion_cost = 80
+	devotion_cost = 150
 	/// Amount of PQ gained for reviving people
 	var/revive_pq = PQ_GAIN_REVIVE
 
