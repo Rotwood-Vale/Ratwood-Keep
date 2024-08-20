@@ -51,8 +51,8 @@
 		"young": "jung",
 		"soldier": "soldat",
 		"knight": "ritter",
-		"kingdom": "keengdum",
-		"king": "keeng",
+		"kingdom": "königreich",
+		//"king": "könig", (pending new system, grenz accent changes that might bleed into other words will be commented out. when new system is implemented, the accent will be overhauled.)
 		"princess": "prinzess",
 		"prince": "prinz",
 		"dwarf": "zwarf",
@@ -64,10 +64,10 @@
 		"vampire": "vampir",
 		"black": "schwarz",
 		"church": "kirche",
-		"is": "ist",
-		"queen": "kween",
+		//"is": "ist", 
+		//"queen": "königin", (for consistency. king wont be changed during this time, queen shouldn't either.)
 		"town": "stadt",
-		"an": "eine",
+		//"an": "eine",
 		"colleague": "kollege"
 	}
 }
