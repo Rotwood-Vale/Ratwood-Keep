@@ -41,6 +41,12 @@
 	if(istype(I,/obj/item/reagent_containers/food/snacks/grown))
 		if(try_ferment(I, user))
 			return TRUE
+	if(istype(I,/obj/item/reagent_containers/powder))
+		var/obj/item/reagent_containers/powder/P = I
+		P.reagents.trans_to(src, P.reagents.total_volume)
+		qdel(P)
+		playsound(src, "bubbles", 100, TRUE)
+		return TRUE
 	if(istype(I,/obj/item/storage/roguebag) && I.contents.len)
 		var/success
 		for(var/obj/item/reagent_containers/food/snacks/grown/bagged_fruit in I.contents)

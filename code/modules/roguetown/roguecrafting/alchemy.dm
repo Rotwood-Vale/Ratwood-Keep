@@ -35,34 +35,34 @@
 	reqs = list(/obj/item/ash = 1, /datum/reagent/water = 10, /obj/item/reagent_containers/food/snacks/rogue/meat/mince = 1)
 	craftdiff = 0
 
-/datum/crafting_recipe/roguetown/alchemy/manna_pot
-	name = "Manna Potion"
-	result = list(/obj/item/reagent_containers/glass/bottle/rogue/manapot)
-	reqs = list(/obj/item/reagent_containers/glass/bottle = 1, /obj/item/ash = 1, /obj/item/reagent_containers/food/snacks/fish/eel = 1)
+/datum/crafting_recipe/roguetown/alchemy/manna_powder
+	name = "Manna Powder"
+	result = list(/obj/item/reagent_containers/powder/mana)
+	reqs = list(/obj/item/ash = 1, /obj/item/reagent_containers/food/snacks/fish/eel = 1)
 	craftdiff = 4
 
-/datum/crafting_recipe/roguetown/alchemy/manna_pot_3x
-	name = "3x Manna Potion"
+/datum/crafting_recipe/roguetown/alchemy/manna_powder_3x
+	name = "3x Manna Powder"
 	result = list(
-				/obj/item/reagent_containers/glass/bottle/rogue/manapot,
-				/obj/item/reagent_containers/glass/bottle/rogue/manapot,
-				/obj/item/reagent_containers/glass/bottle/rogue/manapot,
+				/obj/item/reagent_containers/powder/mana,
+				/obj/item/reagent_containers/powder/mana,
+				/obj/item/reagent_containers/powder/mana,
 				)
-	reqs = list(/obj/item/reagent_containers/glass/bottle = 3, /obj/item/ash = 3, /obj/item/reagent_containers/food/snacks/fish/eel = 2)
+	reqs = list(/obj/item/ash = 3, /obj/item/reagent_containers/food/snacks/fish/eel = 2)
 	craftdiff = 4
 
-/datum/crafting_recipe/roguetown/alchemy/health_pot
-	name = "Health Potion"
-	result = list(/obj/item/reagent_containers/glass/bottle/rogue/healthpot)
-	reqs = list(/obj/item/reagent_containers/glass/bottle = 1, /obj/item/ash = 1, /obj/item/reagent_containers/food/snacks/grown/berries/rogue = 1, /obj/item/reagent_containers/food/snacks/rogue/meat/mince = 1, /obj/item/natural/worms/leech = 1)
+/datum/crafting_recipe/roguetown/alchemy/health_powder
+	name = "Health Powder"
+	result = list(/obj/item/reagent_containers/powder/health)
+	reqs = list(/obj/item/ash = 1, /obj/item/reagent_containers/food/snacks/grown/berries/rogue = 1, /obj/item/reagent_containers/food/snacks/rogue/meat/mince = 1, /obj/item/natural/worms/leech = 1)
 	craftdiff = 5
 
-/datum/crafting_recipe/roguetown/alchemy/health_pot_3x
-	name = "3x Health Potion"
+/datum/crafting_recipe/roguetown/alchemy/health_powder_3x
+	name = "3x Health Powder"
 	result = list(
-				/obj/item/reagent_containers/glass/bottle/rogue/healthpot,
-				/obj/item/reagent_containers/glass/bottle/rogue/healthpot,
-				/obj/item/reagent_containers/glass/bottle/rogue/healthpot,
+				/obj/item/reagent_containers/powder/health,
+				/obj/item/reagent_containers/powder/health,
+				/obj/item/reagent_containers/powder/health,
 				)
-	reqs = list(/obj/item/reagent_containers/glass/bottle = 3, /obj/item/ash = 3, /obj/item/reagent_containers/food/snacks/grown/berries/rogue = 1, /obj/item/reagent_containers/food/snacks/rogue/meat/mince = 3, /obj/item/natural/worms/leech = 2)
+	reqs = list(/obj/item/ash = 3, /obj/item/reagent_containers/food/snacks/grown/berries/rogue = 1, /obj/item/reagent_containers/food/snacks/rogue/meat/mince = 3, /obj/item/natural/worms/leech = 2)
 	craftdiff = 5
