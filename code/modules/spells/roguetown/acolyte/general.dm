@@ -5,7 +5,7 @@
 	releasedrain = 30
 	chargedrain = 0
 	chargetime = 0
-	range = 1
+	range = 7
 	warnie = "sydwarning"
 	movement_interrupt = FALSE
 	sound = 'sound/magic/heal.ogg'
@@ -86,7 +86,7 @@
 	releasedrain = 30
 	chargedrain = 0
 	chargetime = 0
-	range = 1
+	range = 7
 	warnie = "sydwarning"
 	movement_interrupt = FALSE
 //	chargedloop = /datum/looping_sound/invokeholy
