@@ -252,6 +252,15 @@
 	volume = 100
 	extra_range = 3
 
+/datum/looping_sound/holyshield
+	mid_sounds = list('sound/magic/holyshield.ogg')
+	mid_length = 30
+	volume = 100
+	extra_range = 3
+
+/datum/looping_sound/holyshield/lesser
+	volume = 70
+
 /datum/looping_sound/flailswing
 	mid_sounds = list('sound/combat/wooshes/flail_swing.ogg')
 	mid_length = 7
