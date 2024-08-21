@@ -13,14 +13,15 @@
 	clusterCheckFlags = CLUSTER_CHECK_DIFFERENT_ATOMS
 	allowed_turfs = list(/turf/open/floor/rogue/dirt)
 	excluded_turfs = list(/turf/open/floor/rogue/dirt/road)
-	spawnableAtoms = list(/obj/structure/flora/newtree = 5,
+	spawnableAtoms = list(/obj/structure/flora/newtree = 15,
 							/obj/structure/flora/roguegrass/bush = 13,
 							/obj/structure/flora/roguegrass = 40,
 							/obj/structure/flora/roguegrass/maneater = 16,
 							/obj/item/natural/stone = 18,
 							/obj/item/natural/rock = 2,
 							/obj/item/grown/log/tree/stick = 3,
-							/obj/structure/closet/dirthole/closed/loot=3)
+							/obj/structure/closet/dirthole/closed/loot=3,
+							/obj/structure/flora/roguetree/burnt = 3)
 	spawnableTurfs = list(/turf/open/floor/rogue/dirt/road=5)
 	allowed_areas = list(/area/rogue/outdoors/beach/forest)
 
