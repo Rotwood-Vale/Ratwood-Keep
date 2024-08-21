@@ -111,7 +111,7 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "E
 			missing_lord_time = world.time
 		if(world.time > missing_lord_time + 10 MINUTES)
 			missing_lord_time = world.time
-			addomen(OMEN_NOLORD)
+			//addomen(OMEN_NOLORD) not really fun or roleplay tbh
 		return FALSE
 	else
 		return TRUE
@@ -157,7 +157,7 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "E
 					log_game("Major Antagonist: Extended")
 		return TRUE
 
-	if(num_players() >= 20) // Need at least a handful of people before we start throwing ne'er-do-wells into the mix.
+	if(num_players() >= 10) // Need at least a handful of people before we start throwing ne'er-do-wells into the mix.
 		var/major_roll = rand(1,100)
 		switch(major_roll)
 			/* rebels depend a little too much on the main players being exceedingly good roleplayers and lends itself to bad conduct too much to be spawning automatically
