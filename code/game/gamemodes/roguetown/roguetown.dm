@@ -1,5 +1,5 @@
 // This mode will become the main basis for the typical roguetown round. Based off of chaos mode.
-var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "Extended", "Aspirants", "Bandits", "Maniac", "CANCEL") // This is mainly used for forcemgamemodes
+var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "Extended", "Aspirants", "Bandits", "Maniac", "Lich", "CANCEL") // This is mainly used for forcemgamemodes
 
 /datum/game_mode/chaosmode
 	name = "roguemode"
@@ -356,6 +356,26 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "E
 		GLOB.pre_setup_antags |= antag
 	restricted_jobs = list()
 
+/datum/game_mode/chaosmode/proc/pick_lich()
+	restricted_jobs = list("Monarch", "Consort", "Royal Guard", "Guard Captain")
+	antag_candidates = get_players_for_role(ROLE_LICH)
+	var/datum/mind/lichman = pick_n_take(antag_candidates)
+	if(lichman)
+		var/blockme = FALSE
+		if(!(lichman in allantags))
+			blockme = TRUE
+		if(blockme)
+			return
+		allantags -= lichman
+		pre_liches += lichman
+		lichman.special_role = ROLE_LICH
+		lichman.restricted_roles = restricted_jobs.Copy()
+		testing("[key_name(lichman)] has been selected as the [lichman.special_role]")
+		log_game("[key_name(lichman)] has been selected as the [lichman.special_role]")
+	for(var/antag in pre_liches)
+		GLOB.pre_setup_antags |= antag
+	restricted_jobs = list()
+
 /datum/game_mode/chaosmode/proc/pick_vampires()
 	var/vampsremaining = 3
 	restricted_jobs = list(
@@ -465,6 +485,13 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "E
 		addtimer(CALLBACK(traitor, TYPE_PROC_REF(/datum/mind, add_antag_datum), new_antag), rand(10,100))
 		GLOB.pre_setup_antags -= traitor
 		villains += traitor
+
+///////////////// LICH
+	for(var/datum/mind/lichman in pre_liches)
+		var/datum/antagonist/new_antag = new /datum/antagonist/lich()
+		addtimer(CALLBACK(lichman, TYPE_PROC_REF(/datum/mind, add_antag_datum), new_antag), rand(10,100))
+		GLOB.pre_setup_antags -= lichman
+		liches += lichman
 
 ///////////////// WWOLF
 	for(var/datum/mind/werewolf in pre_werewolves)
