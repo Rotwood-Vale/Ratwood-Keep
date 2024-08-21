@@ -152,7 +152,7 @@ GLOBAL_LIST_INIT(roguetown_areas_typecache, typecacheof(/area/rogue/indoors/town
 				/mob/living/simple_animal/hostile/retaliate/rogue/wolf = 40,
 				/mob/living/carbon/human/species/skeleton/npc/ambush = 10,
 				/mob/living/carbon/human/species/goblin/npc/ambush = 30)
-	first_time_text = "THE MURDERWOOD"
+	first_time_text = "THE AZURE GROVE"
 	converted_type = /area/rogue/indoors/shelter/woods
 /area/rogue/indoors/shelter/woods
 	icon_state = "woods"
@@ -208,7 +208,7 @@ GLOBAL_LIST_INIT(roguetown_areas_typecache, typecacheof(/area/rogue/indoors/town
 	name = "dense bog"
 
 /area/rogue/outdoors/beach
-	name = "sophia's cry"
+	name = "coast"
 	icon_state = "beach"
 	ambientsounds = AMB_BEACH
 	ambientnight = AMB_BEACH
@@ -216,6 +216,28 @@ GLOBAL_LIST_INIT(roguetown_areas_typecache, typecacheof(/area/rogue/indoors/town
 	droning_sound_dusk = 'sound/music/area/septimus.ogg'
 	droning_sound_night = 'sound/music/area/sleeping.ogg'
 
+/area/rogue/outdoors/beach/forest
+	name = "coastforest"
+	icon_state = "beach"
+	icon_state = "woods"
+	ambientsounds = AMB_FORESTDAY
+	ambientnight = AMB_FORESTNIGHT
+	spookysounds = SPOOKY_CROWS
+	spookynight = SPOOKY_FOREST
+	droning_sound = 'sound/music/area/forest.ogg'
+	droning_sound_dusk = 'sound/music/area/septimus.ogg'
+	droning_sound_night = 'sound/music/area/sleeping.ogg'
+	soundenv = 15
+	ambush_times = list("night","dusk")
+	ambush_types = list(
+				/turf/open/floor/rogue/dirt,
+				/turf/open/floor/rogue/grass)
+	ambush_mobs = list(
+				/mob/living/simple_animal/hostile/retaliate/rogue/wolf = 30,
+				/mob/living/carbon/human/species/human/northern/searaider/ambush = 10,
+				/mob/living/carbon/human/species/goblin/npc/ambush/sea = 40)
+	first_time_text = "THE AZURE COAST"
+	converted_type = /area/rogue/indoors/shelter/woods
 
 //// UNDER AREAS (no indoor rain sound usually)
 
