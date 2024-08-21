@@ -13,7 +13,7 @@
     invocation = "Noc blinds thee of thy sins!"
     invocation_type = "shout" //can be none, whisper, emote and shout
     associated_skill = /datum/skill/magic/holy
-    charge_max = 15 SECONDS
+    charge_max = 20 SECONDS
     devotion_cost = 25
 
 /obj/effect/proc_holder/spell/invoked/blindness/cast(list/targets, mob/user = usr)
@@ -32,7 +32,7 @@
 	chargedrain = 2
 	chargetime = 40
 	req_items = list(/obj/item/clothing/neck/roguetown/psicross)
-	charge_max = 30 SECONDS
+	charge_max = 1 MINUTE
 	range = 3
 	warnie = "sydwarning"
 	movement_interrupt = TRUE
