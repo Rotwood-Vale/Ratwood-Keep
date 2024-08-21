@@ -18,6 +18,7 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 		"I AM THE LAND", 
 		"CHILD OF KAIN!",
 	)
+	rogue_enabled = TRUE
 	var/isspawn = FALSE
 	var/disguised = FALSE
 	var/ascended = FALSE

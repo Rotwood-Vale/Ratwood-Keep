@@ -110,6 +110,8 @@ GLOBAL_VAR(antag_prototypes)
 		GLOB.antag_prototypes = list()
 		for(var/antag_type in subtypesof(/datum/antagonist))
 			var/datum/antagonist/A = new antag_type
+			if(!A.rogue_enabled)
+				continue
 			var/cat_id = A.antagpanel_category
 			if(!GLOB.antag_prototypes[cat_id])
 				GLOB.antag_prototypes[cat_id] = list(A)
