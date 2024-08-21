@@ -11,7 +11,7 @@
 	sound = 'sound/magic/heal.ogg'
 	chargedloop = /datum/looping_sound/holyshield/lesser
 	associated_skill = /datum/skill/magic/holy
-	charge_max = 10 SECONDS
+	charge_max = 15 SECONDS
 	miracle = TRUE
 	devotion_cost = 20
 
@@ -92,7 +92,7 @@
 	req_items = list(/obj/item/clothing/neck/roguetown/psicross)
 	sound = 'sound/magic/heal.ogg'
 	associated_skill = /datum/skill/magic/holy
-	charge_max = 10 SECONDS
+	charge_max = 25 SECONDS
 	miracle = TRUE
 	devotion_cost = 40
 
