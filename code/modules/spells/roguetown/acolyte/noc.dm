@@ -37,7 +37,7 @@
 	warnie = "sydwarning"
 	movement_interrupt = TRUE
 	invocation_type = "whisper"
-	invocation = "Noc will hide me in shadows."
+	invocation = "Hide me in shadows, Great Noc."
 	sound = 'sound/misc/area.ogg' //This sound doesnt play for some reason. Fix me.
 	associated_skill = /datum/skill/magic/holy
 	miracle = TRUE
