@@ -34,7 +34,7 @@ GLOBAL_LIST_INIT(badomens, list())
 	var/used
 	switch(eventreason)
 		if(OMEN_ROUNDSTART)
-			used = "Zizo."
+			used = "Tenebris dies venit."
 		if(OMEN_NOLORD)
 			used = "The Monarch is dead! We need a new ruler."
 		if(OMEN_NOPRIEST)
