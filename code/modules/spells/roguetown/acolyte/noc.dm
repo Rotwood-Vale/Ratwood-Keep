@@ -32,7 +32,7 @@
 	chargedrain = 2
 	chargetime = 40
 	req_items = list(/obj/item/clothing/neck/roguetown/psicross)
-	charge_max = 1 MINUTE
+	charge_max = 60 SECONDS
 	range = 3
 	warnie = "sydwarning"
 	movement_interrupt = TRUE
