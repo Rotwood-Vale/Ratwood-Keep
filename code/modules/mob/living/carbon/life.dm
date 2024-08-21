@@ -63,15 +63,16 @@
 				if(eyesclosed)
 					var/armor_blocked
 					if(ishuman(src))
-						var/mob/living/carbon/human/H = src
-						var/list/gear_to_check = list(H.wear_shirt, H.wear_armor, H.head)
-						for(var/obj/item/clothing/gear in gear_to_check)
-							if(gear.armor["blunt"] > 70)
-								armor_blocked = TRUE
-								if(!fallingas)
-									to_chat(src, span_warning("I can't sleep like this. My armor is burdening me."))
-								fallingas = TRUE
-								break
+						if(stat == CONSCIOUS)
+							var/mob/living/carbon/human/H = src
+							var/list/gear_to_check = list(H.wear_shirt, H.wear_armor, H.head)
+							for(var/obj/item/clothing/gear in gear_to_check)
+								if(gear.armor.blunt > 70)
+									armor_blocked = TRUE
+									if(!fallingas)
+										to_chat(src, span_warning("I can't sleep like this. My armor is burdening me."))
+									fallingas = TRUE
+									break
 					if(!armor_blocked)
 						if(!fallingas)
 							to_chat(src, span_warning("I'll fall asleep soon..."))
@@ -87,15 +88,16 @@
 				if(eyesclosed)
 					var/armor_blocked
 					if(ishuman(src))
-						var/mob/living/carbon/human/H = src
-						var/list/gear_to_check = list(H.wear_shirt, H.wear_armor, H.head)
-						for(var/obj/item/clothing/gear in gear_to_check)
-							if(gear.armor["blunt"] > 70)
-								armor_blocked = TRUE
-								if(!fallingas)
-									to_chat(src, span_warning("I can't sleep like this. My armor is burdening me."))
-								fallingas = TRUE
-								break
+						if(stat == CONSCIOUS)
+							var/mob/living/carbon/human/H = src
+							var/list/gear_to_check = list(H.wear_shirt, H.wear_armor, H.head)
+							for(var/obj/item/clothing/gear in gear_to_check)
+								if(gear.armor.blunt > 70)
+									armor_blocked = TRUE
+									if(!fallingas)
+										to_chat(src, span_warning("I can't sleep like this. My armor is burdening me."))
+									fallingas = TRUE
+									break
 					if(!armor_blocked)
 						if(!fallingas)
 							to_chat(src, span_warning("I'll fall asleep soon, although a bed would be more comfortable..."))

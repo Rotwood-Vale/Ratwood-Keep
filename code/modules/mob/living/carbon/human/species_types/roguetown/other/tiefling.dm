@@ -110,7 +110,7 @@
 		"Sarvyra" = SKIN_COLOR_SARVYRA,
 		"Vheslyn" = SKIN_COLOR_VHESLYN,
 		"Arlenneth" = SKIN_COLOR_ARLENNETH,
-		"Izrail" = SKIN_COLOR_IZRAIL,
+		"Nessyss" = SKIN_COLOR_NESSYSS,
 		"Helixia" = SKIN_COLOR_HELIXIA,
 		"Nymsea" = SKIN_COLOR_NYMSEA,
 		"Calvus" = SKIN_COLOR_CALVUS

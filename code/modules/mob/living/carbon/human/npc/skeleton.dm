@@ -1,6 +1,6 @@
 /mob/living/carbon/human/species/skeleton
 	name = "skeleton"
-	
+
 	race = /datum/species/human/northern
 	gender = MALE
 	bodyparts = list(/obj/item/bodypart/chest, /obj/item/bodypart/head, /obj/item/bodypart/l_arm,
@@ -48,8 +48,8 @@
 		QDEL_NULL(src.charflaw)
 	mob_biotypes |= MOB_UNDEAD
 	faction = list("undead")
-	name = "skelelon"
-	real_name = "skelelon"
+	name = "Skeleton"
+	real_name = "Skeleton"
 	ADD_TRAIT(src, TRAIT_NOMOOD, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_NOROGSTAM, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_NOHUNGER, TRAIT_GENERIC)

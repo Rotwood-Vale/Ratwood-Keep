@@ -55,11 +55,13 @@
 	var/ttime
 
 	var/list/datum/mind/villains = list() //Murders Runtimes via shoving this into parent
+	var/list/datum/mind/liches = list()
 	var/list/datum/mind/vampires = list()
 	var/list/datum/mind/werewolves = list()
 	var/list/datum/mind/bandits = list()
 
 	var/list/datum/mind/pre_villains = list()
+	var/list/datum/mind/pre_liches = list()
 	var/list/datum/mind/pre_werewolves = list()
 	var/list/datum/mind/pre_vampires = list()
 	var/list/datum/mind/pre_bandits = list()
