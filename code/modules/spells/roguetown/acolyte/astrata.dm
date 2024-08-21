@@ -13,7 +13,7 @@
 	invocation = "Cleansing flames, kindle!"
 	invocation_type = "shout"
 	associated_skill = /datum/skill/magic/holy
-	charge_max = 5 SECONDS
+	charge_max = 10 SECONDS
 	miracle = TRUE
 	devotion_cost = 30
 
