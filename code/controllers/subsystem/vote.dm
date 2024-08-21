@@ -146,7 +146,7 @@ SUBSYSTEM_DEF(vote)
 			if("endround")
 				if(. == "Continue Playing")
 					log_game("LOG VOTE: CONTINUE PLAYING AT [REALTIMEOFDAY]")
-					addomen(OMEN_ROUNDSTART)
+					//addomen(OMEN_ROUNDSTART) not fun or roleplay having random goblins spawn every time round gets extended
 					GLOB.round_timer = GLOB.round_timer + ROUND_EXTENSION_TIME
 				else
 					log_game("LOG VOTE: ELSE  [REALTIMEOFDAY]")
