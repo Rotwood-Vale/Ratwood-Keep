@@ -26,8 +26,11 @@
 	var/mob/living/carbon/C = owner
 	if(!dismemberable)
 		return FALSE
-	if(user && (body_zone == BODY_ZONE_HEAD) && (zone_precise != BODY_ZONE_PRECISE_NECK))
-		return FALSE
+	if(user && (body_zone == BODY_ZONE_HEAD))
+		if(zone_precise != BODY_ZONE_PRECISE_NECK)
+			return FALSE
+		if(C.mind && (C.mobility_flags & MOBILITY_STAND) && !C.buckled) //Only allows upright decapitations if it's not a player. Unless they're buckled.
+			return FALSE
 	if(C.status_flags & GODMODE)
 		return FALSE
 	if(HAS_TRAIT(C, TRAIT_NODISMEMBER))
