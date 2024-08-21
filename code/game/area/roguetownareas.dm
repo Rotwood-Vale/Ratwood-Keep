@@ -215,6 +215,7 @@ GLOBAL_LIST_INIT(roguetown_areas_typecache, typecacheof(/area/rogue/indoors/town
 	droning_sound = 'sound/music/area/townstreets.ogg'
 	droning_sound_dusk = 'sound/music/area/septimus.ogg'
 	droning_sound_night = 'sound/music/area/sleeping.ogg'
+	converted_type = /area/rogue/under/lake
 
 /area/rogue/outdoors/beach/forest
 	name = "coastforest"
