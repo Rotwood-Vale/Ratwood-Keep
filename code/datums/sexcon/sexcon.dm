@@ -297,11 +297,7 @@
 				chosen_emote = "groan"
 		else
 			if(prob(60))
-				// Because males have atrocious whimper noise
-				if(user.gender == FEMALE && prob(50))
-					chosen_emote = "whimper"
-				else
-					chosen_emote = "cry"
+				chosen_emote = "painmoan"
 
 	last_moan = world.time
 	user.emote(chosen_emote, forced = TRUE)
