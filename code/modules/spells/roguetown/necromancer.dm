@@ -79,6 +79,10 @@
 
 /obj/effect/proc_holder/spell/invoked/raise_undead/cast(list/targets, mob/living/user)
 	. = ..()
+	if(istype(targets[1], /mob/living/carbon/human/species/skeleton/npc))
+		var/mob/living/carbon/target = targets[1]
+		offer_control(target)
+		return TRUE
 	var/turf/T = get_turf(targets[1])
 	if(isopenturf(T))
 		new /mob/living/carbon/human/species/skeleton/npc/no_equipment(T)
