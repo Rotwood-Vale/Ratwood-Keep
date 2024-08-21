@@ -46,7 +46,13 @@
 				return
 		var/datum/antagonist/lich/L = mind.has_antag_datum(/datum/antagonist/lich)
 		if (L)
-			L.phylactery_bullshit()
+			if(L.consume_phylactery())
+				visible_message(span_warning("[src]'s body begins to shake violently, as eldritch forces begin to whisk them away!"))
+				to_chat(src, span_userdanger("Death is not the end for me. I begin to rise again."))
+				playsound(src, 'sound/magic/antimagic.ogg', 100, FALSE)
+			else
+				to_chat(src, span_userdanger("No, NO! This cannot be!"))
+				gib()
 
 	if(!gibbed)
 		var/datum/antagonist/zombie/zomble = mind?.has_antag_datum(/datum/antagonist/zombie)
