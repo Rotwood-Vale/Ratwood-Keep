@@ -33,6 +33,7 @@
 	var/static/list/selectable_colors = list(
   		"White" = "#ffffff",
 		"Black" = "#414143",
+		"Dark Grey" = "#505050",
 		"Light Grey" = "#999999",
 		"Mage Grey" = "#6c6c6c",
 		"Mage Red" = "#b8252c",
