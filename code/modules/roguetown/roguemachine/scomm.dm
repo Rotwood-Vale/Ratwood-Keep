@@ -162,9 +162,9 @@
 //SCOMSTONE                 SCOMSTONE
 
 /obj/item/scomstone
-	name = "emerald ring"
+	name = "gemerald ring"
 	icon_state = "ring_emerald"
-	desc = "A golden ring with an emerald gem."
+	desc = "A golden ring with an gemerald gem."
 	gripped_intents = null
 	dropshrink = 0.75
 	possible_item_intents = list(INTENT_GENERIC)
@@ -268,9 +268,9 @@
 	return
 //LISTENSTONE		LISTENSTONE
 /obj/item/listenstone
-	name = "emerald choker"
+	name = "gemerald choker"
 	icon_state = "listenstone"
-	desc = "A iron and gold choker with an emerald gem."
+	desc = "A iron and gold choker with an gemerald gem."
 	gripped_intents = null
 	//dropshrink = 0.75
 	possible_item_intents = list(INTENT_GENERIC)
