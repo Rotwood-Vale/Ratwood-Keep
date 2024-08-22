@@ -203,6 +203,11 @@
 /obj/item/clothing/shoes/roguetown/boots/footmangreaves
 	name = "footman greaves"
 	desc = "A pair of greaves worn by Grenzelhoftian soldiery."
+	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT, BCLASS_TWIST)
+	body_parts_covered = FEET
+	armor = list("blunt" = 80, "slash" = 100, "stab" = 70, "bullet" = 100, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	blocksound = PLATEHIT
+	anvilrepair = /datum/skill/craft/armorsmithing
 	icon_state = "footmanboots"
 	item_state = "footmanboots"
 	smeltresult = /obj/item/ingot/iron
@@ -210,6 +215,11 @@
 /obj/item/clothing/shoes/roguetown/boots/graggariteboots
 	name = "graggarite boots"
 	desc = "A pair of heavy boots worn by Graggarite fanatics."
+	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT, BCLASS_TWIST)
+	body_parts_covered = FEET
+	armor = list("blunt" = 80, "slash" = 100, "stab" = 70, "bullet" = 100, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	blocksound = PLATEHIT
+	anvilrepair = /datum/skill/craft/armorsmithing
 	icon_state = "graggariteboots"
 	item_state = "graggariteboots"
 	smeltresult = /obj/item/ingot/iron
@@ -217,6 +227,11 @@
 /obj/item/clothing/shoes/roguetown/boots/katefractoiigreaves
 	name = "katefractoii greaves"
 	desc = "A pair of greaves worn by Katefractoii cavalrymen."
+	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT, BCLASS_TWIST)
+	body_parts_covered = FEET
+	armor = list("blunt" = 80, "slash" = 100, "stab" = 70, "bullet" = 100, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	blocksound = PLATEHIT
+	anvilrepair = /datum/skill/craft/armorsmithing
 	icon_state = "katefractoiiboots"
 	item_state = "katefractoiiboots"
 	smeltresult = /obj/item/ingot/iron

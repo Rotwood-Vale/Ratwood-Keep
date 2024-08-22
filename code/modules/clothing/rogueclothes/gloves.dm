@@ -71,7 +71,7 @@
 
 /obj/item/clothing/gloves/roguetown/chain
 	name = "chain gauntlets"
-	desc = "Gauntlets made with interlinking rings, provides adequate protection against slashing attacks."
+	desc = "Gauntlets made with steel interlinking rings, provides adequate protection against slashing attacks."
 	icon_state = "cgloves"
 	armor = list("blunt" = 60, "slash" = 100, "stab" = 80, "bullet" = 20, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
 	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_BLUNT)
@@ -86,6 +86,8 @@
 
 /obj/item/clothing/gloves/roguetown/chain/iron
 	icon_state = "icgloves"
+	desc = "Gauntlets made with interlinking rings, provides adequate protection against slashing attacks. Iron is cheaper - but mildly weaker."
+	max_integrity = 125
 	anvilrepair = /datum/skill/craft/armorsmithing
 	smeltresult = /obj/item/ingot/iron
 
@@ -114,7 +116,6 @@
 	prevent_crits = list(BCLASS_CHOP, BCLASS_CUT, BCLASS_BLUNT, BCLASS_TWIST)
 	resistance_flags = null
 	blocksound = PLATEHIT
-
 	max_integrity = 300
 	blade_dulling = DULLING_BASH
 	break_sound = 'sound/foley/breaksound.ogg'
@@ -141,6 +142,15 @@
 /obj/item/clothing/gloves/roguetown/footmangauntlets
 	name = "footman gauntlets"
 	desc = "Gauntlets worn by Grenzelhoft footmen."
+	armor = list("blunt" = 60, "slash" = 100, "stab" = 80, "bullet" = 20, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_BLUNT)
+	resistance_flags = null
+	blocksound = PLATEHIT
+	max_integrity = 125
+	blade_dulling = DULLING_BASHCHOP
+	break_sound = 'sound/foley/breaksound.ogg'
+	drop_sound = 'sound/foley/dropsound/chain_drop.ogg'
+	anvilrepair = /datum/skill/craft/armorsmithing
 	icon_state = "footmangauntlets"
 	item_state = "footmangauntlets"
 	smeltresult = /obj/item/ingot/iron
@@ -148,6 +158,15 @@
 /obj/item/clothing/gloves/roguetown/graggaritegauntlets
 	name = "graggarite gauntlets"
 	desc = "Gauntlets worn by Graggarite fanatics."
+	armor = list("blunt" = 60, "slash" = 100, "stab" = 80, "bullet" = 20, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_BLUNT)
+	resistance_flags = null
+	blocksound = PLATEHIT
+	max_integrity = 125
+	blade_dulling = DULLING_BASHCHOP
+	break_sound = 'sound/foley/breaksound.ogg'
+	drop_sound = 'sound/foley/dropsound/chain_drop.ogg'
+	anvilrepair = /datum/skill/craft/armorsmithing
 	icon_state = "graggaritegauntlets"
 	item_state = "graggaritegauntlets"
 	smeltresult = /obj/item/ingot/iron	
@@ -155,6 +174,15 @@
 /obj/item/clothing/gloves/roguetown/katefractoiigauntlets
 	name = "katefractoii gauntlets"
 	desc = "Gauntlets worn by Katefractoii heavy cavalry."
+	armor = list("blunt" = 60, "slash" = 100, "stab" = 80, "bullet" = 20, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_BLUNT)
+	resistance_flags = null
+	blocksound = PLATEHIT
+	max_integrity = 125
+	blade_dulling = DULLING_BASHCHOP
+	break_sound = 'sound/foley/breaksound.ogg'
+	drop_sound = 'sound/foley/dropsound/chain_drop.ogg'
+	anvilrepair = /datum/skill/craft/armorsmithing
 	icon_state = "katefractoiigauntlets"
 	item_state = "katefractoiigauntlets"
 	smeltresult = /obj/item/ingot/iron	
@@ -172,6 +200,15 @@
 /obj/item/clothing/gloves/roguetown/darkelfbracers
 	name = "raider bracers"
 	desc = "Bracers which cover the wrists, provides adequate protection while still allowing ease of movement."
+	armor = list("blunt" = 60, "slash" = 100, "stab" = 80, "bullet" = 20, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_BLUNT)
+	resistance_flags = null
+	blocksound = PLATEHIT
+	max_integrity = 200
+	blade_dulling = DULLING_BASHCHOP
+	break_sound = 'sound/foley/breaksound.ogg'
+	drop_sound = 'sound/foley/dropsound/chain_drop.ogg'
+	anvilrepair = /datum/skill/craft/armorsmithing
 	icon_state = "darkelfgauntlets"
 	item_state = "darkelfgauntlets"
 	smeltresult = /obj/item/ingot/steel
