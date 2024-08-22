@@ -7,6 +7,13 @@
 //	var/force_reupdate_inhand = FALSE
 //#endif
 
+// Initalize addon for the var for custom inhands 32x32.
+/obj/item/Initialize()
+	. = ..()
+	if(!experimental_inhand)
+		inhand_x_dimension = 32
+		inhand_y_dimension = 32
+
 /obj/item/inhand_tester
 	icon = 'icons/roguetown/items/misc.dmi'
 	icon_state = "inhand_test"

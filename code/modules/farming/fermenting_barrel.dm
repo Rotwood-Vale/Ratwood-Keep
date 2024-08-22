@@ -94,6 +94,10 @@
 	if(broken)
 		icon_state = "barrel_destroyed"
 
+/obj/structure/fermenting_barrel/random/water
+	name = "water barrel"
+	icon_state = "pbarrel1"
+
 /obj/structure/fermenting_barrel/random/water/Initialize()
 	. = ..()
 	reagents.add_reagent(/datum/reagent/water, rand(0,300))
@@ -101,6 +105,10 @@
 /obj/structure/fermenting_barrel/random/beer/Initialize()
 	. = ..()
 	reagents.add_reagent(/datum/reagent/consumable/ethanol/beer, rand(0,300))
+
+/obj/structure/fermenting_barrel/water
+	name = "water barrel"
+	icon_state = "pbarrel1"
 
 /obj/structure/fermenting_barrel/water/Initialize()
 	. = ..()

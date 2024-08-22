@@ -73,11 +73,15 @@ All foods are distributed among various categories. Use common sense.
 	var/rotprocess = FALSE
 	var/become_rot_type = null
 
+	var/mill_result = null
+
 	var/fertamount = 50
 
 	drop_sound = 'sound/foley/dropsound/food_drop.ogg'
 	smeltresult = /obj/item/ash
 	//Placeholder for effect that trigger on eating that aren't tied to reagents.
+
+
 
 /datum/intent/food
 	name = "feed"
@@ -339,6 +343,7 @@ All foods are distributed among various categories. Use common sense.
 			else
 				. += "[src] was bitten multiple times!"
 
+
 /obj/item/reagent_containers/food/snacks/attackby(obj/item/W, mob/user, params)
 	if(istype(W, /obj/item/storage))
 		..() // -> item/attackby()
@@ -357,19 +362,19 @@ All foods are distributed among various categories. Use common sense.
 				return 0
 			var/obj/item/reagent_containers/food/snacks/customizable/C = new custom_food_type(get_turf(src))
 			C.initialize_custom_food(src, S, user)
-			return 0*/
+			return 0
 	if(user.used_intent.blade_class == slice_bclass && W.wlength == WLENGTH_SHORT)
 		if(slice_bclass == BCLASS_CHOP)
-			//	RTD meat chopping noise
+			//	RTD meat chopping noise  The 66% random bit is just annoying
 			if(prob(66))
 				user.visible_message(span_warning("[user] chops [src]!"))
 				return 0
 			else
 				user.visible_message(span_notice("[user] chops [src]!"))
 				slice(W, user)
-				return 1
-		else if(slice(W, user))
 			return 1
+		else if(slice(W, user))
+			return 1*/
 	..()
 //Called when you finish tablecrafting a snack.
 /obj/item/reagent_containers/food/snacks/CheckParts(list/parts_list, datum/crafting_recipe/food/R)
@@ -407,6 +412,10 @@ All foods are distributed among various categories. Use common sense.
 		to_chat(user, span_warning("I need to use a table."))
 		return FALSE
 
+	if(slice_sound)
+		playsound(get_turf(user), 'modular/Neu_Food/sound/slicing.ogg', 60, TRUE, -1) // added some choppy sound
+	if(chopping_sound)
+		playsound(get_turf(user), 'modular/Neu_Food/sound/chopping_block.ogg', 60, TRUE, -1) // added some choppy sound
 	if(slice_batch)
 		if(!do_after(user, 30, target = src))
 			return FALSE

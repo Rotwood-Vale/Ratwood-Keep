@@ -2120,3 +2120,21 @@ All effects don't start immediately, but rather get worse over time; the rate is
 		M.adjust_fire_stacks(1)
 		M.IgniteMob()
 	..()
+
+/datum/reagent/consumable/ethanol/beer/onion
+	name = "Ratkept Onin Cognac"
+	boozepwr = 45
+	taste_description = "spicy sweet malty overtones"
+	color = "#f1b5ff"
+
+/datum/reagent/consumable/ethanol/beer/fireleaf // cabbbage
+	name = "Fireleaf"
+	boozepwr = 20
+	taste_description = "bland liquor"
+	color = "#475e45"
+
+/datum/reagent/consumable/ethanol/beer/voddena // Not vodka. Trust me.
+	name = "Voddena"
+	boozepwr = 55  // holy shit
+	taste_description = "burning starchy wet dirt"
+	color = "#4b443c"

@@ -101,12 +101,11 @@
 	name = "Salt"
 	desc = "Rock salt useful for curing and cooking."
 	item_type = /obj/item/reagent_containers/powder/salt
-	held_items = list(2, 0)
-	payout_price = 3
-	withdraw_price = 5
-	transport_fee = 2
-	export_price = 5
-	importexport_amt = 5
+	held_items = 2
+	payout_price = 4
+	withdraw_price = 6
+	export_price = 8
+	importexport_amt = 15
 
 /datum/roguestock/stockpile/grain
 	name = "Grain"

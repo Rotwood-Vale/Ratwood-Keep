@@ -55,6 +55,7 @@
 	distill_reagent = /datum/reagent/consumable/ethanol/beer
 	distill_amt = 24
 	grind_results = list(/datum/reagent/floure = 10)
+	mill_result = /obj/item/reagent_containers/powder/flour
 
 /obj/item/reagent_containers/food/snacks/grown/oat
 	seed = /obj/item/seeds/wheat/oat
@@ -71,6 +72,7 @@
 	distill_reagent = /datum/reagent/consumable/ethanol/ale
 	distill_amt = 12
 	grind_results = list(/datum/reagent/floure = 10)
+	mill_result = /obj/item/reagent_containers/powder/flour
 
 /obj/item/reagent_containers/food/snacks/grown/apple
 	seed = /obj/item/seeds/apple
@@ -185,7 +187,7 @@
 	seed = /obj/item/seeds/sweetleaf
 	name = "swampweed"
 	desc = "A 'foggy' pipe weed."
-	icon_state = "sweetleaf"
+	icon_state = "swampweed"
 	filling_color = "#008000"
 	bitesize_mod = 1
 	foodtype = VEGETABLES
@@ -198,7 +200,7 @@
 	seed = /obj/item/seeds/pipeweed
 	name = "westleach leaf"
 	desc = "A generic kind of pipe weed."
-	icon_state = "pipeweed"
+	icon_state = "westleach"
 	filling_color = "#008000"
 	bitesize_mod = 1
 	foodtype = VEGETABLES
@@ -212,7 +214,7 @@
 	seed = null
 	name = "westleach leaf"
 	desc = "A dried leaf."
-	icon_state = "pipeweedd"
+	icon_state = "westleachd"
 	dry = TRUE
 	pipe_reagents = list(/datum/reagent/drug/nicotine = 30)
 	eat_effect = /datum/status_effect/debuff/badmeal
@@ -222,11 +224,48 @@
 /obj/item/reagent_containers/food/snacks/grown/rogue/sweetleafdry
 	seed = null
 	name = "swampweed"
-	desc = ""
-	icon_state = "sweetleafd"
+	desc = "It's dried."
+	icon_state = "swampweedd"
 	dry = TRUE
 	pipe_reagents = list(/datum/reagent/drug/space_drugs = 30)
 	list_reagents = list(/datum/reagent/drug/space_drugs = 2,/datum/reagent/consumable/nutriment = 1)
 	grind_results = list(/datum/reagent/drug/space_drugs = 5)
 	eat_effect = /datum/status_effect/debuff/badmeal
 
+/obj/item/reagent_containers/food/snacks/grown/onion/rogue
+	name = "onion"
+	desc = ""
+	icon_state = "onion"
+	slices_num = 1
+	tastes = list("spicy sweetness" = 1)
+	bitesize = 2
+	list_reagents = list(/datum/reagent/consumable/nutriment = 2)
+	can_distill = TRUE
+	distill_reagent = /datum/reagent/consumable/ethanol/beer/onion
+	rotprocess = null
+	seed = /obj/item/seeds/onion
+
+/obj/item/reagent_containers/food/snacks/grown/cabbage/rogue
+	name = "cabbage"
+	desc = ""
+	icon_state = "cabbage"
+	tastes = list("blandness" = 1)
+	bitesize = 10
+	list_reagents = list(/datum/reagent/consumable/nutriment = 5)
+	can_distill = TRUE
+	distill_reagent = /datum/reagent/consumable/ethanol/beer/fireleaf
+	rotprocess = SHELFLIFE_LONG
+	seed = /obj/item/seeds/cabbage
+
+/obj/item/reagent_containers/food/snacks/grown/potato/rogue
+	name = "potato"
+	desc = ""
+	icon_state = "potato"
+	eat_effect = /datum/status_effect/debuff/uncookedfood
+	tastes = list("starchy dirt" = 1)
+	bitesize = 2
+	list_reagents = list(/datum/reagent/consumable/nutriment = 1)
+	can_distill = TRUE
+	distill_reagent = /datum/reagent/consumable/ethanol/beer/voddena
+	rotprocess = null
+	seed = /obj/item/seeds/potato
