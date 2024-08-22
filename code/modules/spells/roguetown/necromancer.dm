@@ -81,7 +81,13 @@
 	. = ..()
 	if(istype(targets[1], /mob/living/carbon/human/species/skeleton/npc))
 		var/mob/living/carbon/target = targets[1]
-		offer_control(target)
+		var/list/candidates = pollCandidatesForMob("Do you want to play as a Necromancer's skeleton?", null, null, null, 200, target, POLL_IGNORE_NECROMANCER_SKELETON)
+		if(LAZYLEN(candidates))
+			var/mob/C = pick(candidates)
+			target.key = C.key
+			to_chat(user, span_warning("[target]'s eyes shine with an eerie glow!"))
+		else
+			to_chat(user, span_warning("[target]'s eyes remain dully devoid of life."))
 		return TRUE
 	var/turf/T = get_turf(targets[1])
 	if(isopenturf(T))
