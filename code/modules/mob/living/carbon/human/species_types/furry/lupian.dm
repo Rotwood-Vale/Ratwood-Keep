@@ -98,6 +98,8 @@
 		/datum/body_marking/backspots,
 		/datum/body_marking/front,
 		/datum/body_marking/tonage,
+		/datum/body_marking/splotches,
+		/datum/body_marking/splotcheswap,
 	)
 	descriptor_choices = list(
 		/datum/descriptor_choice/body,

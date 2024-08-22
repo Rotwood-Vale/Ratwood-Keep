@@ -76,6 +76,8 @@
 		/datum/body_marking/bellyslim,
 		/datum/body_marking/butt,
 		/datum/body_marking/tonage,
+		/datum/body_marking/splotches,
+		/datum/body_marking/splotcheswap,
 		/datum/body_marking/tiger/dark,
 	)
 	descriptor_choices = list(

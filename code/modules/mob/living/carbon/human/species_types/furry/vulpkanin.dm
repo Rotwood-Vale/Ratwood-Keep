@@ -81,6 +81,8 @@
 		/datum/body_marking/bellyslim,
 		/datum/body_marking/butt,
 		/datum/body_marking/tonage,
+		/datum/body_marking/splotches,
+		/datum/body_marking/splotcheswap,
 	)
 	descriptor_choices = list(
 		/datum/descriptor_choice/body,
@@ -92,7 +94,7 @@
 		/datum/descriptor_choice/prominent_one,
 		/datum/descriptor_choice/prominent_two,
 	)
-	
+
 /datum/species/vulpkanin/check_roundstart_eligible()
 	return TRUE
 

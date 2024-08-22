@@ -208,6 +208,18 @@
 	affected_bodyparts = HEAD
 	default_color = "FF0000"
 
+/datum/body_marking/splotches
+	icon = 'icons/mob/splotch_markings.dmi'
+	name = "Splotches"
+	icon_state = "splotches"
+	affected_bodyparts = HEAD | CHEST | ARM_LEFT | ARM_RIGHT | HAND_LEFT | HAND_RIGHT | LEG_RIGHT | LEG_LEFT
+
+/datum/body_marking/splotcheswap
+	icon = 'icons/mob/splotch_markings.dmi'
+	name = "Splotches Swapped"
+	icon_state = "splotcheswap"
+	affected_bodyparts = HEAD
+
 /datum/body_marking/small/plain
 	icon = 'icons/mob/body_markings/small_plain_markings.dmi'
 	name = "Plain (Volk)"

@@ -19,7 +19,11 @@
 	body_marking_list = list(
 		/datum/body_marking/belly
 		)
-
+/datum/body_marking_set/splotches
+	name = "Splotches"
+	body_marking_list = list(
+		/datum/body_marking/splotches
+		)
 /datum/body_marking_set/bellysocks
 	name = "Belly & Socks"
 	body_marking_list = list(
