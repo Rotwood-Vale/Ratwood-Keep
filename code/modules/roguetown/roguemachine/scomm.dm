@@ -178,7 +178,7 @@
 	muteinmouth = TRUE
 	var/listening = TRUE
 	var/speaking = TRUE
-	sellprice = 250
+	sellprice = 200
 //wip
 /obj/item/scomstone/attack_right(mob/user)
     user.changeNext_move(CLICK_CD_MELEE)
