@@ -37,12 +37,12 @@
 		H.become_blind("advsetup")
 
 /datum/advclass/longsword
-	name = "Longswordsman"
+	name = "Swordsman"
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_VERY_SHUNNED_UP
 	outfit = /datum/outfit/job/roguetown/mercenary/sellsword/longsword
 	tutorial = "You are well versed in the ways of the longsword.\
-	You have a longsword and a leather helmet."
+	You have a steel sword and a leather helmet."
 	category_tags = list(CTAG_MERCENARY)
 
 /datum/advclass/rapier
@@ -67,7 +67,7 @@
 	..()
 	head = /obj/item/clothing/head/roguetown/helmet/leather
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/random
-	beltr = /obj/item/rogueweapon/sword/long
+	beltr = /obj/item/rogueweapon/sword
 	shoes = /obj/item/clothing/shoes/roguetown/boots/leather
 	neck = /obj/item/storage/belt/rogue/pouch/coins/poor
 	pants = /obj/item/clothing/under/roguetown/trou/leather
