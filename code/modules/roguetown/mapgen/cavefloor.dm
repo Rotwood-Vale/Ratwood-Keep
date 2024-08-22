@@ -1,13 +1,13 @@
 
 /obj/effect/landmark/mapGenerator/rogue/cave
 	mapGeneratorType = /datum/mapGenerator/cave
-	endTurfX = 255
-	endTurfY = 255
+	endTurfX = 128
+	endTurfY = 128
 	startTurfX = 1
 	startTurfY = 1
 
 /datum/mapGenerator/cave
-	modules = list(/datum/mapGeneratorModule/cave,/datum/mapGeneratorModule/cavedirt)
+	modules = list(/datum/mapGeneratorModule/cave,/datum/mapGeneratorModule/cavedirt,/datum/mapGeneratorModule/cavebeach)
 
 /datum/mapGeneratorModule/cave
 	clusterCheckFlags = CLUSTER_CHECK_DIFFERENT_ATOMS
@@ -20,6 +20,12 @@
 	allowed_turfs = list(/turf/open/floor/rogue/dirt)
 	spawnableAtoms = list(/obj/structure/flora/rogueshroom=20,/obj/structure/roguerock=20,/obj/structure/flora/roguegrass = 14,/obj/structure/closet/dirthole/closed/loot=6,/obj/item/natural/stone = 24,/obj/item/natural/rock = 8, /obj/structure/glowshroom = 3)
 	allowed_areas = list(/area/rogue/under/cave/spider,/area/rogue/indoors/cave,/area/rogue/under/cavewet,/area/rogue/under/cave,/area/rogue/under/cavelava)
+
+/datum/mapGeneratorModule/cavebeach
+	clusterCheckFlags = CLUSTER_CHECK_DIFFERENT_ATOMS
+	allowed_turfs = list(/turf/open/water/ocean)
+	spawnableAtoms = list(/obj/structure/roguerock=20, /obj/structure/glowshroom = 3)
+	allowed_areas = list(/area/rogue/outdoors/beach)
 
 /obj/effect/landmark/mapGenerator/rogue/cave/lava
 	mapGeneratorType = /datum/mapGenerator/cave/lava

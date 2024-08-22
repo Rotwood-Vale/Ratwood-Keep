@@ -1,7 +1,7 @@
 /obj/effect/landmark/mapGenerator/rogue/roguetownfield
 	mapGeneratorType = /datum/mapGenerator/roguetownfield
-	endTurfX = 255
-	endTurfY = 255
+	endTurfX = 155
+	endTurfY = 155
 	startTurfX = 1
 	startTurfY = 1
 
