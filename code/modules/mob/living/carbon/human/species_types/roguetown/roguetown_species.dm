@@ -29,10 +29,18 @@
 /datum/species/proc/get_accent_start(mob/living/carbon/human)
 	return
 
-/datum/species/proc/get_accent_any(mob/living/carbon/human/H)
+/datum/species/proc/get_accent_any(mob/living/carbon/human/H) //determines if accent replaces in-word text
 	switch(H.char_accent)
+		if("Dark Elf accent")
+			return strings("french_replacement.json", "french")
 		if("Elf accent")
 			return strings("russian_replacement.json", "russian")
+		if("Lizard accent")
+			return strings("brazillian_replacement.json", "brazillian")
+		if("Tiefling accent")
+			return strings("spanish_replacement.json", "spanish")
+		if("Dwarf Gibberish accent")
+			return strings("dwarf_replacement.json", "dwarf_gibberish")
 
 #define REGEX_STARTWORD 1
 #define REGEX_FULLWORD 2
