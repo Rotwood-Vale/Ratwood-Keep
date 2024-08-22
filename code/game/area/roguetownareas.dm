@@ -197,7 +197,7 @@ GLOBAL_LIST_INIT(roguetown_areas_typecache, typecacheof(/area/rogue/indoors/town
 				/mob/living/carbon/human/species/skeleton/npc/dungeon/ambush = 30,
 				/mob/living/carbon/human/species/skeleton/npc/ambush = 50,
 				/mob/living/simple_animal/hostile/retaliate/rogue/wolf = 60,
-				/mob/living/simple_animal/hostile/retaliate/rogue/bigrat = 60,
+				/mob/living/simple_animal/hostile/retaliate/rogue/bogtroll = 50,
 				/mob/living/simple_animal/hostile/retaliate/rogue/spider = 40,
 				/mob/living/carbon/human/species/goblin/npc/ambush/cave = 40,
 				/mob/living/simple_animal/hostile/retaliate/rogue/wendigo = 40)
@@ -343,7 +343,8 @@ GLOBAL_LIST_INIT(roguetown_areas_typecache, typecacheof(/area/rogue/indoors/town
 				/mob/living/carbon/human/species/skeleton/npc = 10,
 				/mob/living/carbon/human/species/skeleton/npc/dungeon = 5,
 				/mob/living/simple_animal/hostile/retaliate/rogue/bigrat = 30,
-				/mob/living/carbon/human/species/goblin/npc/sea = 20)
+				/mob/living/carbon/human/species/goblin/npc/sea = 20,
+				/mob/living/simple_animal/hostile/retaliate/rogue/cavetroll = 15)
 	converted_type = /area/rogue/outdoors/caves
 
 /area/rogue/under/cavewet/bogcaves/chapel

@@ -1,72 +1,68 @@
-/mob/living/simple_animal/hostile/retaliate/rogue/wendigo
-	icon = 'icons/roguetown/mob/monster/giantmobs.dmi'
-	name = "Wendigo"
-	icon_state = "wendigo_noblood"
-	icon_living = "wendigo_noblood"
-	icon_dead = "wendigo_dead"
-	speak_emote = list("speaks")
-	emote_hear = list("speaks.")
-	emote_see = list("speaks.")
+/mob/living/simple_animal/hostile/retaliate/rogue/mossback
+	icon = 'icons/roguetown/mob/monster/boglobster.dmi'
+	name = "mossback"
+	icon_state = "mossback"
+	icon_living = "mossback"
+	icon_dead = "mossback_dead"
+	speak_emote = list("clicks")
+	emote_hear = list("clicks.")
+	emote_see = list("clacks.")
 	gender = MALE
 	emote_hear = null
 	emote_see = null
 	turns_per_move = 3
 	see_in_dark = 10
 	move_to_delay = 3
-	base_intents = list(/datum/intent/simple/bite)
-	butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat/steak = 13,
-						/obj/item/natural/hide = 15, /obj/item/natural/bundle/bone/full = 3)
+	base_intents = list(/datum/intent/simple/claw)
+	butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat/crabmeat = 8, /obj/item/natural/carapace = 5)
+	faction = list("crabs")
 	mob_biotypes = MOB_ORGANIC|MOB_BEAST
-	health = 400
-	maxHealth = 500
-	melee_damage_lower = 45
-	melee_damage_upper = 70
-	vision_range = 6
-	aggro_vision_range = 5
+	health = 150
+	maxHealth = 200
+	melee_damage_lower = 35
+	melee_damage_upper = 50
+	vision_range = 4
+	aggro_vision_range = 3
 	retreat_distance = 0
 	minimum_distance = 0
 	milkies = FALSE
 	food_type = list(/obj/item/reagent_containers/food/snacks/rogue/meat, /obj/item/bodypart, /obj/item/organ)
-	footstep_type = FOOTSTEP_MOB_HEAVY
 	pooptype = null
-	STACON = 19
-	STASTR = 16
-	STASPD = 5
 	deaggroprob = 0
 	defprob = 40
 	defdrain = 10
 	del_on_deaggro = 10 SECONDS
 	retreat_health = 0
 	food = 0
-	attack_sound = list('sound/vo/mobs/wendigo/wendigoattack1.ogg','sound/vo/mobs/wendigo/wendigoattack2.ogg')
+	attack_sound = list('sound/combat/wooshes/blunt/wooshhuge (1).ogg','sound/combat/wooshes/blunt/wooshhuge (2).ogg','sound/combat/wooshes/blunt/wooshhuge (3).ogg')
 	dodgetime = 0
 	aggressive = 1
 //	stat_attack = UNCONSCIOUS
 
-/mob/living/simple_animal/hostile/retaliate/rogue/wendigo/get_sound(input)
+/mob/living/simple_animal/hostile/retaliate/rogue/mossback/get_sound(input)
 	switch(input)
 		if("idle")
-			return pick('sound/vo/mobs/wendigo/wendigoidle1.ogg','sound/vo/mobs/wendigo/wendigoidle2.ogg','sound/vo/mobs/wendigo/wendigoidle3.ogg')
-		if("aggro")
-			return pick('sound/vo/mobs/wendigo/wendigoaggro1.ogg','sound/vo/mobs/wendigo/wendigoaggro2.ogg')
+			return pick('sound/vo/mobs/crab/crab noise (1).ogg','sound/vo/mobs/crab/crab noise (2).ogg','sound/vo/mobs/crab/crab noise (3).ogg')
+		if("death")
+			return pick('sound/vo/mobs/crab/crab death.ogg')
 
-/mob/living/simple_animal/hostile/retaliate/rogue/wendigo/death(gibbed)
+/mob/living/simple_animal/hostile/retaliate/rogue/mossback/death(gibbed)
 	..()
 	update_icon()
 
-/mob/living/simple_animal/hostile/retaliate/rogue/wendigo/taunted(mob/user)
+/mob/living/simple_animal/hostile/retaliate/rogue/mossback/taunted(mob/user)
 	emote("aggro")
 	Retaliate()
 	GiveTarget(user)
 	return
 
-/mob/living/simple_animal/hostile/retaliate/rogue/wendigo/Life()
+/mob/living/simple_animal/hostile/retaliate/rogue/mossback/Life()
 	..()
 	if(pulledby)
 		Retaliate()
 		GiveTarget(pulledby)
 
-/mob/living/simple_animal/hostile/retaliate/rogue/wendigo/simple_limb_hit(zone)
+/mob/living/simple_animal/hostile/retaliate/rogue/mossback/simple_limb_hit(zone)
 	if(!zone)
 		return ""
 	switch(zone)
