@@ -14,7 +14,16 @@
 
 /obj/item/signal_horn/proc/sound_horn(mob/living/user)
 	user.visible_message(span_warning("[user] sounds the alarm!"))
-	playsound(src, 'modular_hearthstone/sound/items/signalhorn.ogg', 100, TRUE)
+	switch(user.job)
+		if("Bog Guard", "Bog Master")
+			playsound(src, 'modular_hearthstone/sound/items/bogguardhorn.ogg', 100, TRUE)
+		if("Town Sheriff", "Watchman")
+			playsound(src, 'modular_hearthstone/sound/items/watchhorn.ogg', 100, TRUE)
+		if("Royal Guard", "Guard Captain")
+			playsound(src, 'modular_hearthstone/sound/items/rghorn.ogg', 100, TRUE)
+		else
+			playsound(src, 'modular_hearthstone/sound/items/signalhorn.ogg', 100, TRUE)
+
 	var/turf/origin_turf = get_turf(src)
 
 	for(var/mob/living/player in GLOB.player_list)
@@ -60,6 +69,16 @@
 			else
 				disttext = " very far"
 		//sound played for other players
-		player.playsound_local(get_turf(player), 'modular_hearthstone/sound/items/signalhorn.ogg', 35, FALSE, pressure_affected = FALSE)
-		to_chat(player, span_warning("I hear the horn alarm somewhere[disttext][dirtext]!"))
-
+		switch(user.job)
+			if("Bog Guard", "Bog Master")
+				player.playsound_local(get_turf(player), 'modular_hearthstone/sound/items/bogguardhorn.ogg', 35, FALSE, pressure_affected = FALSE)
+				to_chat(player, span_warning("I hear the horn of the Bog Garrison somewhere[disttext][dirtext]!"))
+			if("Town Sheriff", "Watchman")
+				player.playsound_local(get_turf(player), 'modular_hearthstone/sound/items/watchhorn.ogg', 35, FALSE, pressure_affected = FALSE)
+				to_chat(player, span_warning("I hear the horn of the Watch somewhere[disttext][dirtext]!"))
+			if("Royal Guard", "Guard Captain")
+				player.playsound_local(get_turf(player), 'modular_hearthstone/sound/items/rghorn.ogg', 35, FALSE, pressure_affected = FALSE)
+				to_chat(player, span_warning("I hear the horn of the Royal Guard somewhere[disttext][dirtext]!"))
+			else
+				player.playsound_local(get_turf(player), 'modular_hearthstone/sound/items/signalhorn.ogg', 35, FALSE, pressure_affected = FALSE)
+				to_chat(player, span_warning("I hear the signal horn somewhere[disttext][dirtext]!"))
