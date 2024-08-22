@@ -103,9 +103,9 @@
 	. = ..()
 
 /datum/reagent/consumable/cooking_oil
-	name = "Cooking Oil"
-	description = "A variety of cooking oil derived from fat or plants. Used in food preparation and frying."
-	color = "#EADD6B" //RGB: 234, 221, 107 (based off of canola oil)
+	name = "Olive Oil"
+	description = "A variety of cooking oil derived from olives. Used in food preparation and frying."
+	color = "#b9ea6b" //RGB: 234, 221, 107 (based off of olive oil)
 	taste_mult = 0.8
 	taste_description = "oil"
 	nutriment_factor = 7 * REAGENTS_METABOLISM //Not very healthy on its own
@@ -114,7 +114,7 @@
 
 /datum/reagent/consumable/cooking_oil/reaction_obj(obj/O, reac_volume)
 	if(holder && holder.chem_temp >= fry_temperature)
-		if(isitem(O) && !istype(O, /obj/item/reagent_containers/food/snacks/deepfryholder))
+		if(isorgan(O) || istype(O, /obj/item/reagent_containers/food/snacks) && !istype(O, /obj/item/reagent_containers/food/snacks/deepfryholder))
 			O.loc.visible_message(span_warning("[O] rapidly fries as it's splashed with hot oil! Somehow."))
 			var/obj/item/reagent_containers/food/snacks/deepfryholder/F = new(O.drop_location(), O)
 			F.fry(volume)
@@ -198,13 +198,15 @@
 
 
 /datum/reagent/consumable/capsaicin
-	name = "Capsaicin Oil"
-	description = "This is what makes chilis hot."
+	name = "Tiefling Blood"
+	description = "Not actually the blood of tieflings."
 	color = "#B31008" // rgb: 179, 16, 8
-	taste_description = "hot peppers"
+	taste_description = "hellfire"
 	taste_mult = 1.5
 
 /datum/reagent/consumable/capsaicin/on_mob_life(mob/living/carbon/M)
+	if(M.dna.species == /datum/species/tieberian)
+		return
 	var/heating = 0
 	switch(current_cycle)
 		if(1 to 15)
@@ -273,13 +275,13 @@
 			OT.air.temperature -= MOLES_CELLSTANDARD*100*reac_volume/OT.air.heat_capacity() // reduces environment temperature by 5K per unit.
 
 /datum/reagent/consumable/condensedcapsaicin
-	name = "Condensed Capsaicin"
-	description = "A chemical agent used for self-defense and in police work."
+	name = "Demon's Blood"
+	description = "Might actually be demon's blood."
 	color = "#B31008" // rgb: 179, 16, 8
 	taste_description = "scorching agony"
 
-/datum/reagent/consumable/condensedcapsaicin/reaction_mob(mob/living/M, method=TOUCH, reac_volume)
-	if(!ishuman(M) && !ismonkey(M))
+/datum/reagent/consumable/condensedcapsaicin/reaction_mob(mob/living/carbon/M, method=TOUCH, reac_volume)
+	if(!ishuman(M) && !ismonkey(M) || M.dna.species == /datum/species/tieberian)
 		return
 
 	var/mob/living/carbon/victim = M
@@ -300,6 +302,8 @@
 		victim.update_damage_hud()
 
 /datum/reagent/consumable/condensedcapsaicin/on_mob_life(mob/living/carbon/M)
+	if(M.dna.species == /datum/species/tieberian)
+		return
 	if(prob(5))
 		M.visible_message(span_warning("[M] [pick("dry heaves!","coughs!","splutters!")]"))
 	..()

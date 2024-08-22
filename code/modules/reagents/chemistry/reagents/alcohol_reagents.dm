@@ -14,6 +14,7 @@
 	taste_description = "alcohol"
 	metabolization_rate = 0.5 * REAGENTS_METABOLISM
 	var/boozepwr = 65 //Higher numbers equal higher hardness, higher hardness equals more intense alcohol poisoning
+	hydration_factor = 5
 
 /*
 Boozepwr Chart
@@ -95,6 +96,13 @@ All effects don't start immediately, but rather get worse over time; the rate is
 	taste_description = "wine"
 	glass_name = "glass of wine"
 	color = "#8a0b0b"
+
+/datum/reagent/consumable/ethanol/beer/mushroomwine
+	name = "Plump Helmet Wine"
+	boozepwr = 30
+	taste_description = "mushroom wine"
+	glass_name = "glass of mushroom wine"
+	color = "#5b182c"
 
 /datum/reagent/consumable/ethanol/beer/light
 	name = "Light Beer"
@@ -385,6 +393,7 @@ All effects don't start immediately, but rather get worse over time; the rate is
 	glass_icon_state = "aleglass"
 	glass_name = "glass of ale"
 	glass_desc = ""
+	hydration_factor = 10
 
 /datum/reagent/consumable/ethanol/goldschlager
 	name = "Goldschlager"
@@ -1587,7 +1596,7 @@ All effects don't start immediately, but rather get worse over time; the rate is
 	L.adjustBruteLoss(3 * min(5,volume)) //minimum 3 brute damage on ingestion to limit non-drink means of injury - a full 5 unit gulp of the drink trucks you for the full 15
 
 /datum/reagent/consumable/ethanol/sake
-	name = "Sake"
+	name = "Meejoo"
 	description = "A sweet rice wine of questionable legality and extreme potency."
 	color = "#DDDDDD"
 	boozepwr = 70
@@ -1595,6 +1604,7 @@ All effects don't start immediately, but rather get worse over time; the rate is
 	glass_icon_state = "sakecup"
 	glass_name = "cup of sake"
 	glass_desc = ""
+	hydration_factor = 10
 
 /datum/reagent/consumable/ethanol/peppermint_patty
 	name = "Peppermint Patty"

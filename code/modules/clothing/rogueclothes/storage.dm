@@ -190,6 +190,18 @@
 	new /obj/item/natural/feather(src)
 	new /obj/item/paper(src)
 
+/obj/item/storage/backpack/rogue/satchel/mule/PopulateContents()
+	for(var/i in 1 to 3)
+		switch(rand(1,4))
+			if(1)	
+				new /obj/item/reagent_containers/powder/moondust_purest(src)
+			if(2)
+				new /obj/item/reagent_containers/powder/moondust_purest(src)
+			if(3)
+				new /obj/item/reagent_containers/powder/ozium(src)
+			if(4)
+				new /obj/item/reagent_containers/powder/spice(src)
+
 
 /obj/item/storage/backpack/rogue/satchel/black
 	color = CLOTHING_BLACK
@@ -231,3 +243,29 @@
 		STR.max_w_class = WEIGHT_CLASS_NORMAL
 		STR.max_items = 14
 		STR.not_while_equipped = TRUE
+
+/obj/item/storage/belt/rogue/pickles
+	name = "jar of pickles"
+	desc = "Briney goodness!"
+	icon = 'icons/roguetown/clothing/storage.dmi'
+	icon_state = "pickles"
+	slot_flags = null
+	w_class = WEIGHT_CLASS_NORMAL
+	max_integrity = 100
+	content_overlays = FALSE
+	heldz_items = 4
+
+/obj/item/storage/belt/rogue/pickles/ComponentInitialize()
+	. = ..()
+	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
+	if(STR)
+		STR.max_combined_w_class = 8
+		STR.max_w_class = WEIGHT_CLASS_SMALL
+		STR.max_items = 4
+		STR.not_while_equipped = FALSE
+
+/obj/item/storage/belt/rogue/pickles/PopulateContents()
+	new /obj/item/reagent_containers/food/snacks/grown/pickle(src)
+	new /obj/item/reagent_containers/food/snacks/grown/pickle(src)
+	new /obj/item/reagent_containers/food/snacks/grown/pickle(src)
+	new /obj/item/reagent_containers/food/snacks/grown/pickle(src)

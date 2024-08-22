@@ -111,7 +111,7 @@ GLOBAL_LIST_INIT(special_traits, build_special_traits())
 		return FALSE
 	if(!isnull(special.allowed_ages) && !(character.age in special.allowed_ages))
 		return FALSE
-	if(!isnull(special.allowed_patrons) && !(character.patron in special.allowed_patrons))
+	if(!isnull(special.allowed_patrons) && !(character.patron.type in special.allowed_patrons))
 		return FALSE
 	if(!isnull(special.restricted_traits))
 		var/has_trait
