@@ -10,6 +10,7 @@
 	)
 	rogue_enabled = TRUE
 	var/list/phylacteries = list()
+	var/out_of_lives = FALSE
 
 /datum/antagonist/lich/on_gain()
 	var/datum/game_mode/C = SSticker.mode

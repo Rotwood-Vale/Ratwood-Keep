@@ -58,6 +58,12 @@
 	ADD_TRAIT(src, TRAIT_NOPAIN, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_TOXIMMUNE, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_LIMBATTACHMENT, TRAIT_GENERIC)
+	var/obj/item/organ/eyes/eyes = src.getorganslot(ORGAN_SLOT_EYES)
+	if(eyes)
+		eyes.Remove(src,1)
+		QDEL_NULL(eyes)
+	eyes = new /obj/item/organ/eyes/night_vision/zombie
+	eyes.Insert(src)
 	for(var/obj/item/bodypart/B in src.bodyparts)
 		B.skeletonize(FALSE)
 	update_body()
