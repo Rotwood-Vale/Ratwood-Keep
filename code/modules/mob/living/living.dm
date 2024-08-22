@@ -913,6 +913,11 @@
 	if(!(mobility_flags & MOBILITY_STAND) && !buckled && prob(getBruteLoss()*200/maxHealth))
 		makeTrail(newloc, T, old_direction)
 
+	//Hearthstone change - track creation hook.
+	if(. && isturf(newloc))
+		check_track_creation(newloc)
+	//Hearthstone end.
+
 /mob/living/setDir(newdir)
 	var/olddir = dir
 	..()
@@ -1854,6 +1859,15 @@
 					found_ping(get_turf(M), client, "trap")
 			if(istype(O, /obj/structure/flora/roguegrass/maneater/real))
 				found_ping(get_turf(O), client, "trap")
+		//Hearthstone change - Tracking
+		for(var/obj/effect/track/potential_track in orange(7, src)) //Can't use view because they're invisible by default.
+			if(!can_see(src, potential_track, 10))
+				continue
+			if(!potential_track.check_reveal(src))
+				continue
+			found_ping(get_turf(potential_track), client, "hidden")
+			potential_track.handle_revealing(src)
+		//Hearthstone end.
 
 /proc/found_ping(atom/A, client/C, state)
 	if(!A || !C || !state)

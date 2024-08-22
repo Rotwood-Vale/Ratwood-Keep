@@ -34,6 +34,7 @@
 			H.mind.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/athletics, 4, TRUE)		//Trust me, they'll need it due to stamina drain on their base-sword.
+			H.mind.adjust_skillrank(/datum/skill/misc/tracking, 1, TRUE) //Hearthstone change.
 			H.change_stat("strength", 3)	//Should give minimum required stats to use Zweihander
 			H.change_stat("endurance", 2)
 			H.change_stat("constitution", 2)
@@ -56,6 +57,7 @@
 			H.mind.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/tracking, 1, TRUE) //Hearthstone change.
 			H.change_stat("strength", 2)	//Less strength then sword-role but more speed; trade-off.
 			H.change_stat("endurance", 2)
 			H.change_stat("constitution", 2)
