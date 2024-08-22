@@ -683,7 +683,36 @@
 	parrysound = "bladedmedium"
 	swingsound = BLADEWOOSH_LARGE
 	pickup_sound = 'sound/foley/equip/swordlarge2.ogg'
-	bigboy = 1
+	bigboy = TRUE
+	gripsprite = TRUE
+	wlength = WLENGTH_LONG
+	minstr = 8
+	pixel_y = -16
+	pixel_x = -16
+	inhand_x_dimension = 64
+	inhand_y_dimension = 64
+	associated_skill = /datum/skill/combat/swords
+	throwforce = 15
+	thrown_bclass = BCLASS_CUT
+	dropshrink = 0.75
+	smeltresult = /obj/item/ash
+
+/obj/item/rogueweapon/sword/energy_katana
+	force = 25
+	force_wielded = 30
+	possible_item_intents = list(/datum/intent/sword/cut/god, /datum/intent/sword/thrust/god, /datum/intent/sword/strike)
+	gripped_intents = list(/datum/intent/sword/cut, /datum/intent/sword/thrust, /datum/intent/sword/strike, /datum/intent/sword/chop)
+	icon_state = "graggarsword"
+	icon = 'icons/roguetown/weapons/64.dmi'
+	item_state = "graggarsword"
+	lefthand_file = 'icons/mob/inhands/weapons/roguebig_lefthand.dmi'
+	righthand_file = 'icons/mob/inhands/weapons/roguebig_righthand.dmi'
+	name = "god sword"
+	desc = "A twisted blade imbued with strange magicks."
+	parrysound = "bladedmedium"
+	swingsound = BLADEWOOSH_LARGE
+	pickup_sound = 'sound/foley/equip/swordlarge2.ogg'
+	bigboy = TRUE
 	wlength = WLENGTH_LONG
 	gripsprite = TRUE
 	pixel_y = -16
@@ -695,4 +724,99 @@
 	thrown_bclass = BCLASS_CUT
 	dropshrink = 0.75
 	smeltresult = /obj/item/ash
+	minstr = 6
+	wdefense = 10
+	wbalance = 1
+	var/datum/effect_system/spark_spread/spark_system
+	var/datum/action/innate/dash/ninja/jaunt
+	var/dash_toggled = TRUE
 
+/datum/intent/sword/cut/god
+	reach = 7
+
+/datum/intent/sword/thrust/god
+	reach = 7
+
+/obj/item/rogueweapon/sword/energy_katana/Initialize()
+	. = ..()
+	jaunt = new(src)
+	spark_system = new /datum/effect_system/spark_spread()
+	spark_system.set_up(5, 0, src)
+	spark_system.attach(src)
+
+/obj/item/rogueweapon/sword/energy_katana/attack_self(mob/user)
+	dash_toggled = !dash_toggled
+	to_chat(user, span_notice("I [dash_toggled ? "enable" : "disable"] the dash function on [src]."))
+
+/obj/item/rogueweapon/sword/energy_katana/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
+	. = ..()
+	if(dash_toggled)
+		jaunt.Teleport(user, target)
+	if(proximity_flag && (isobj(target) || issilicon(target)))
+		spark_system.start()
+		playsound(user, "sparks", 50, TRUE)
+		playsound(user, 'sound/blank.ogg', 50, TRUE)
+		target.emag_act(user)
+
+/obj/item/rogueweapon/sword/energy_katana/pickup(mob/living/user)
+	. = ..()
+	jaunt.Grant(user, src)
+	user.update_icons()
+	playsound(src, 'sound/blank.ogg', 25, TRUE)
+
+/obj/item/rogueweapon/sword/energy_katana/dropped(mob/user)
+	. = ..()
+	jaunt.Remove(user)
+	user.update_icons()
+
+//If we hit the Ninja who owns this Katana, they catch it.
+//Works for if the Ninja throws it or it throws itself or someone tries
+//To throw it at the ninja
+/obj/item/rogueweapon/sword/energy_katana/throw_impact(atom/hit_atom, datum/thrownthing/throwingdatum)
+	if(ishuman(hit_atom))
+		var/mob/living/carbon/human/H = hit_atom
+		if(istype(H.wear_armor, /obj/item/clothing/suit/space/space_ninja))
+			var/obj/item/clothing/suit/space/space_ninja/SN = H.wear_armor
+			if(SN.energyKatana == src)
+				returnToOwner(H, 0, 1)
+				return
+
+	..()
+
+/obj/item/rogueweapon/sword/energy_katana/proc/returnToOwner(mob/living/carbon/human/user, doSpark = 1, caught = 0)
+	if(!istype(user))
+		return
+	forceMove(get_turf(user))
+
+	if(doSpark)
+		spark_system.start()
+		playsound(get_turf(src), "sparks", 50, TRUE)
+
+	var/msg = ""
+
+	if(user.put_in_hands(src))
+		msg = "Your Energy Katana teleports into your hand!"
+	else if(user.equip_to_slot_if_possible(src, SLOT_BELT, 0, 1, 1))
+		msg = "Your Energy Katana teleports back to you, sheathing itself as it does so!</span>"
+	else
+		msg = "Your Energy Katana teleports to your location!"
+
+	if(caught)
+		if(loc == user)
+			msg = "You catch your Energy Katana!"
+		else
+			msg = "Your Energy Katana lands at your feet!"
+
+	if(msg)
+		to_chat(user, span_notice("[msg]"))
+
+
+/obj/item/rogueweapon/sword/energy_katana/Destroy()
+	QDEL_NULL(spark_system)
+	return ..()
+
+/datum/action/innate/dash/ninja
+	current_charges = 5
+	max_charges = 5
+	charge_rate = 1
+	recharge_sound = null

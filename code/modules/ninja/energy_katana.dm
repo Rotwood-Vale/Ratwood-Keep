@@ -99,7 +99,7 @@
 	return ..()
 
 /datum/action/innate/dash/ninja
-	current_charges = 3
-	max_charges = 3
-	charge_rate = 30
+	current_charges = 6
+	max_charges = 6
+	charge_rate = 150
 	recharge_sound = null

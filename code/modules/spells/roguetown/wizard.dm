@@ -47,6 +47,54 @@
 			var/mob/living/L = target
 			L.electrocute_act(1, src)
 	qdel(src)
+/obj/effect/proc_holder/spell/invoked/projectile/lightningbolt/god
+	name = "Bolt of Lightning"
+	desc = ""
+	clothes_req = FALSE
+	overlay_state = "lightning"
+	sound = 'sound/magic/lightning.ogg'
+	range = 8
+	projectile_type = /obj/projectile/magic/lightning/god
+	releasedrain = 0
+	chargedrain = 0
+	chargetime = 0
+	charge_max = 0 SECONDS
+	warnie = "spellwarning"
+	no_early_release = TRUE
+	movement_interrupt = FALSE
+	charging_slowdown = 0
+	chargedloop = /datum/looping_sound/invokegen
+	associated_skill = /datum/skill/magic/arcane
+
+/obj/projectile/magic/lightning/god
+	name = "bolt of lightning"
+	tracer_type = /obj/effect/projectile/tracer/stun
+	muzzle_type = null
+	impact_type = null
+	hitscan = TRUE
+	movement_type = UNSTOPPABLE
+	light_color = LIGHT_COLOR_WHITE
+	damage = 10
+	damage_type = BURN
+	nodamage = FALSE
+	speed = 0.3
+	flag = "magic"
+	light_color = "#ffffff"
+	light_range = 7
+
+/obj/projectile/magic/lightning/god/on_hit(target)
+	. = ..()
+	if(ismob(target))
+		var/mob/M = target
+		if(M.anti_magic_check())
+			visible_message(span_warning("[src] fizzles on contact with [target]!"))
+			playsound(get_turf(target), 'sound/magic/magic_nulled.ogg', 100)
+			qdel(src)
+			return BULLET_ACT_BLOCK
+		if(isliving(target))
+			var/mob/living/L = target
+			L.electrocute_act(1, src)
+	qdel(src)
 
 /obj/effect/proc_holder/spell/invoked/projectile/bloodlightning
 	name = "Blood Bolt"
@@ -250,7 +298,40 @@
 	exp_heavy = 0
 	exp_light = 0
 	exp_flash = 1
-	exp_fire = 0
+	exp_fire = -1
+	damage = 20
+	damage_type = BURN
+	nodamage = FALSE
+	flag = "magic"
+	hitsound = 'sound/blank.ogg'
+	aoe_range = 0
+
+/obj/effect/proc_holder/spell/invoked/projectile/godfire //event only, admin only
+	name = "godfire"
+	desc = ""
+	clothes_req = FALSE
+	range = 8
+	projectile_type = /obj/projectile/magic/aoe/fireball/rogue3
+	overlay_state = "fireball"
+	sound = list('sound/magic/whiteflame.ogg')
+	active = FALSE
+	releasedrain = 0
+	chargedrain = 0
+	chargetime = 0
+	charge_max = 0 SECONDS
+	warnie = "spellwarning"
+	no_early_release = TRUE
+	movement_interrupt = FALSE
+	charging_slowdown = 0
+	chargedloop = /datum/looping_sound/invokegen
+	associated_skill = /datum/skill/magic/arcane
+
+/obj/projectile/magic/aoe/fireball/rogue3
+	name = "fireball"
+	exp_heavy = 0
+	exp_light = 1
+	exp_flash = 1
+	exp_fire = -1
 	damage = 20
 	damage_type = BURN
 	nodamage = FALSE
@@ -284,3 +365,48 @@
 			playsound(get_turf(target), 'sound/magic/magic_nulled.ogg', 100)
 			qdel(src)
 			return BULLET_ACT_BLOCK
+
+/obj/effect/proc_holder/spell/targeted/conjure_item/summon_sword
+	name = "Summon Sword"
+	desc = ""
+	invocation_type = "none"
+	include_user = TRUE
+	range = -1
+	clothes_req = FALSE
+	item_type = /obj/item/rogueweapon/sword/energy_katana
+
+	school = "conjuration"
+	charge_max = 0
+	cooldown_min = 0
+	action_icon = 'icons/mob/actions/actions_minor_antag.dmi'
+	action_icon_state = "graggarsword"
+	action_background_icon_state = "bg_demon"
+	invocation = "Let's finish this."
+	invocation_type = "shout"
+
+
+/obj/effect/proc_holder/spell/invoked/Disappear
+	name = "Disappear"
+	overlay_state = "Smoke Bomb"
+	releasedrain = 0
+	chargedrain = 0
+	chargetime = 0
+	charge_max = 0 SECONDS
+	range = 0
+	warnie = "sydwarning"
+	movement_interrupt = FALSE
+	invocation = "You won't be missed."
+	invocation_type = "shout"
+	sound = 'sound/misc/area.ogg'
+	associated_skill = /datum/skill/magic/arcane
+/obj/effect/proc_holder/spell/invoked/Disappear/cast(list/targets, mob/living/user)
+	if(isliving(targets[1]))
+		var/mob/living/target = targets[1]
+		if(target.anti_magic_check(TRUE, TRUE))
+			return FALSE
+		target.visible_message(span_warning("[target] loses shape, almost becoming non-existent!"), span_notice("You feel your very existence being ripped from this world!"))
+		animate(target, alpha = 60, time = 1 SECONDS, easing = EASE_IN)
+		target.mob_timers[MT_INVISIBILITY] = world.time + 20 SECONDS
+		addtimer(CALLBACK(target, TYPE_PROC_REF(/mob/living, update_sneak_invis), TRUE), 20 SECONDS)
+		addtimer(CALLBACK(target, TYPE_PROC_REF(/atom/movable, visible_message), span_warning("[target] fades back into view."), span_notice("You regain your bearings once more.")), 20 SECONDS)
+	return FALSE

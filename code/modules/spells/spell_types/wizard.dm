@@ -4,8 +4,8 @@
 
 	school = "evocation"
 	charge_max = 200
-	clothes_req = TRUE
-	invocation = "FORTI GY AMA"
+	clothes_req = FALSE
+	invocation = "FORTI GY AMA!"
 	invocation_type = "shout"
 	range = 7
 	cooldown_min = 60 //35 deciseconds reduction per rank
@@ -43,7 +43,7 @@
 
 	school = "transmutation"
 	charge_max = 400
-	clothes_req = TRUE
+	clothes_req = FALSE
 	invocation = "BIRUZ BENNAR"
 	invocation_type = "shout"
 	range = -1
@@ -97,7 +97,7 @@
 	name = "Disable Tech"
 	desc = ""
 	charge_max = 400
-	clothes_req = TRUE
+	clothes_req = FALSE
 	invocation = "NEC CANTIO"
 	invocation_type = "shout"
 	range = -1
@@ -114,7 +114,7 @@
 
 	school = "abjuration"
 	charge_max = 20
-	clothes_req = TRUE
+	clothes_req = FALSE
 	invocation = "none"
 	invocation_type = "none"
 	range = -1
@@ -136,15 +136,15 @@
 	name = "quickstep"
 
 	charge_max = 100
-	clothes_req = TRUE
+	clothes_req = FALSE
 
 /obj/effect/proc_holder/spell/targeted/area_teleport/teleport
-	name = "Teleport"
+	name = "Teleport (DANGEROUS)"
 	desc = ""
 
 	school = "abjuration"
 	charge_max = 600
-	clothes_req = TRUE
+	clothes_req = FALSE
 	invocation = "SCYAR NILA"
 	invocation_type = "shout"
 	range = -1
@@ -167,12 +167,12 @@
 /obj/effect/proc_holder/spell/aoe_turf/timestop
 	name = "Stop Time"
 	desc = ""
-	charge_max = 500
-	clothes_req = TRUE
-	invocation = "TOKI YO TOMARE"
+	charge_max = 50
+	clothes_req = FALSE
+	invocation = "Stay Right there."
 	invocation_type = "shout"
 	range = 0
-	cooldown_min = 100
+	cooldown_min = 50
 	action_icon_state = "time"
 	var/timestop_range = 2
 	var/timestop_duration = 100
@@ -180,18 +180,34 @@
 /obj/effect/proc_holder/spell/aoe_turf/timestop/cast(list/targets, mob/user = usr)
 	new /obj/effect/timestop/magic(get_turf(user), timestop_range, timestop_duration, list(user))
 
-/obj/effect/proc_holder/spell/aoe_turf/conjure/carp
-	name = "Summon Carp"
+/obj/effect/proc_holder/spell/aoe_turf/timestop_greater
+	name = "Stop Time Greater"
+	desc = ""
+	charge_max = 50
+	clothes_req = FALSE
+	invocation = "The final hour!"
+	invocation_type = "shout"
+	range = 0
+	cooldown_min = 50
+	action_icon_state = "time"
+	var/timestop_range = 5
+	var/timestop_duration = 100
+
+/obj/effect/proc_holder/spell/aoe_turf/timestop_greater/cast(list/targets, mob/user = usr)
+	new /obj/effect/timestop/magic(get_turf(user), timestop_range, timestop_duration, list(user))
+
+/obj/effect/proc_holder/spell/aoe_turf/conjure/Wolf
+	name = "Summon Wolf"
 	desc = ""
 
 	school = "conjuration"
 	charge_max = 1200
-	clothes_req = TRUE
+	clothes_req = FALSE
 	invocation = "NOUK FHUNMM SACP RISSKA"
 	invocation_type = "shout"
 	range = 1
 
-	summon_type = list(/mob/living/simple_animal/hostile/carp)
+	summon_type = list(/mob/living/simple_animal/hostile/retaliate/rogue/wolf )
 	cast_sound = 'sound/blank.ogg'
 
 
@@ -212,19 +228,19 @@
 	cast_sound = 'sound/blank.ogg'
 
 
-/obj/effect/proc_holder/spell/aoe_turf/conjure/creature
-	name = "Summon Creature Swarm"
+/obj/effect/proc_holder/spell/aoe_turf/conjure/Necromancer
+	name = "Summon Skeleton Swarm"
 	desc = ""
 
 	school = "conjuration"
 	charge_max = 1200
 	clothes_req = FALSE
-	invocation = "IA IA"
+	invocation = "Rise from the grave!"
 	invocation_type = "shout"
 	summon_amt = 10
-	range = 3
+	range = 6
 
-	summon_type = list(/mob/living/simple_animal/hostile/netherworld)
+	summon_type = list(/mob/living/simple_animal/hostile/rogue/skeleton/guard/crypt_guard)
 	cast_sound = 'sound/blank.ogg'
 
 /obj/effect/proc_holder/spell/targeted/trigger/blind
@@ -235,7 +251,7 @@
 	charge_max = 300
 	clothes_req = FALSE
 	invocation = "STI KALY"
-	invocation_type = "whisper"
+	invocation_type = "shout"
 	message = span_notice("My eyes cry out in pain!")
 	cooldown_min = 50 //12 deciseconds reduction per rank
 
@@ -243,11 +259,14 @@
 
 	action_icon_state = "blind"
 
-/obj/effect/proc_holder/spell/aoe_turf/conjure/creature/cult
-	name = "Summon Creatures (DANGEROUS)"
-	clothes_req = TRUE
-	charge_max = 5000
-	summon_amt = 2
+/obj/effect/proc_holder/spell/aoe_turf/conjure/creature/Wendigo
+	name = "Summon Wendigo (DANGEROUS)"
+	clothes_req = FALSE
+	charge_max = 300
+	invocation = "Serve me, creatures of the night."
+	invocation_type = "shout"
+	summon_type = list(/mob/living/simple_animal/hostile/retaliate/rogue/wendigo)
+	summon_amt = 1
 
 
 
@@ -258,19 +277,19 @@
 
 /obj/effect/proc_holder/spell/targeted/genetic/blind
 	mutations = list(BLINDMUT)
-	duration = 300
-	charge_max = 400 // needs to be higher than the duration or it'll be permanent
+	duration = 100
+	charge_max = 200 // needs to be higher than the duration or it'll be permanent
 	sound = 'sound/blank.ogg'
 
 /obj/effect/proc_holder/spell/aoe_turf/repulse
 	name = "Repulse"
 	desc = ""
-	charge_max = 400
-	clothes_req = TRUE
-	invocation = "GITTAH WEIGH"
+	charge_max = 200
+	clothes_req = FALSE
+	invocation = "Begone."
 	invocation_type = "shout"
 	range = 5
-	cooldown_min = 150
+	cooldown_min = 100
 	selection_type = "view"
 	sound = 'sound/blank.ogg'
 	var/maxthrow = 5
@@ -365,7 +384,7 @@
 /obj/effect/proc_holder/spell/targeted/conjure_item/spellpacket
 	name = "Thrown Lightning"
 	desc = ""
-	clothes_req = TRUE
+	clothes_req = FALSE
 	item_type = /obj/item/spellpacket/lightningbolt
 	charge_max = 10
 	action_icon_state = "thrownlightning"
