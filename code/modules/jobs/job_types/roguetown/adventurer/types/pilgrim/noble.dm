@@ -7,7 +7,7 @@
 	allowed_races = RACES_TOLERATED_UP
 	outfit = /datum/outfit/job/roguetown/adventurer/noble
 	traits_applied = list(TRAIT_NOBLE)
-	category_tags = list(CTAG_PILGRIM)
+	category_tags = list(CTAG_DISABLED)		//We invalidated this entire role by adding 'Noble Guest' Noble role. Bloat, basically.
 
 /datum/outfit/job/roguetown/adventurer/noble/pre_equip(mob/living/carbon/human/H)
 	..()

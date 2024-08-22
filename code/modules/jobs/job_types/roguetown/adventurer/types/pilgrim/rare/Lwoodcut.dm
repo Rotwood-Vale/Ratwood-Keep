@@ -10,8 +10,8 @@
 	outfit = /datum/outfit/job/roguetown/adventurer/masterwoodcutter
 	maxchosen = 1
 	pickprob = 5
-	isvillager = FALSE
-	ispilgrim = TRUE
+
+	category_tags = list(CTAG_PILGRIM, CTAG_TOWNER)
 	
 	
 /datum/outfit/job/roguetown/adventurer/masterwoodcutter/pre_equip(mob/living/carbon/human/H)
@@ -42,8 +42,9 @@
 	beltr = /obj/item/rogueweapon/stoneaxe/woodcut
 	beltl = /obj/item/rogueweapon/huntingknife
 	backpack_contents = list(/obj/item/flint = 1)
-	H.change_stat("strength", 4)
+	H.change_stat("strength", 3)
 	H.change_stat("constitution", 1)
 	H.change_stat("perception", 1)
 	H.change_stat("intelligence", 2)
+	H.change_stat("endurance", 1)
 

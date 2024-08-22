@@ -3,8 +3,8 @@
 	flag = PILGRIM
 	department_flag = PEASANTS
 	faction = "Station"
-	total_positions = -1
-	spawn_positions = -1
+	total_positions = 0
+	spawn_positions = 0		//Disables round-start spawn of pilgrims but allows migrant waves via total positions. Pilgrim = Towners now.
 	allowed_races = RACES_ALL_KINDS
 	tutorial = "Pilgrims begin far outside of the town and must reach it in order to ply their various trades. Sometimes, they build their own settlements and enjoy the terrible nature."
 
@@ -13,7 +13,7 @@
 	bypass_lastclass = TRUE
 	bypass_jobban = FALSE
 
-	advclass_cat_rolls = list(CTAG_PILGRIM = 20, CTAG_ADVENTURER = 3)	//Get some adventurer options sometimes. 
+	advclass_cat_rolls = list(CTAG_PILGRIM = 20)
 	PQ_boost_divider = 10
 
 	display_order = JDO_PILGRIM
@@ -21,7 +21,7 @@
 	max_pq = null
 	wanderer_examine = TRUE
 	advjob_examine = TRUE
-	always_show_on_latechoices = TRUE
+	always_show_on_latechoices = FALSE		//Migrant only now; Towner handles regular-joining pilgrims. Same exact roles, really.
 	same_job_respawn_delay = 0
 
 /datum/job/roguetown/pilgrim/after_spawn(mob/living/L, mob/M, latejoin = TRUE)
