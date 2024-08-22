@@ -12958,6 +12958,7 @@
 /area/rogue/indoors/town/shop)
 "oOi" = (
 /obj/structure/roguemachine/mail/l,
+/obj/structure/closet/crate/roguecloset,
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/shop)
 "oOl" = (
@@ -17093,7 +17094,11 @@
 	},
 /area/rogue/indoors/town)
 "tNH" = (
-/obj/structure/closet/crate/roguecloset,
+/obj/structure/mineral_door/wood{
+	icon_state = "wcv";
+	lockid = "shop";
+	masterkey = 0
+	},
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/shop)
 "tOz" = (
@@ -293429,11 +293434,11 @@ sFi
 sFi
 fNB
 hUt
-hUt
 cWH
 nTT
 svu
 nRo
+toW
 toW
 yke
 adK
@@ -293831,11 +293836,11 @@ pPW
 pPW
 aMR
 hUt
-hUt
 toW
 toW
 toW
 eWe
+tNH
 tJB
 toW
 sSW
@@ -294232,12 +294237,12 @@ evo
 evo
 evo
 evo
-vlK
+hUt
 hUt
 oOi
 hUt
-hUt
 nRo
+toW
 toW
 dcz
 adK
@@ -294634,7 +294639,7 @@ nDD
 pYa
 uNX
 evo
-tNH
+vlK
 hUt
 fRN
 fRN
