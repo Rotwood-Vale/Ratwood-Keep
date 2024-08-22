@@ -51,7 +51,7 @@
 	name = "swampweed zig"
 	result = /obj/item/clothing/mask/cigarette/rollie/cannabis
 	reqs = list(/obj/item/reagent_containers/food/snacks/grown/rogue/sweetleafdry = 1,
-				/obj/item/paper/scroll = 1)
+				/obj/item/paper = 1)
 	req_table = TRUE
 	time = 10 SECONDS
 	verbage_simple = "roll"
@@ -73,7 +73,7 @@
 	name = "westleach zig"
 	result = /obj/item/clothing/mask/cigarette/rollie/nicotine
 	reqs = list(/obj/item/reagent_containers/food/snacks/grown/rogue/pipeweeddry = 1,
-				/obj/item/paper/scroll = 1)
+				/obj/item/paper = 1)
 	req_table = TRUE
 	time = 10 SECONDS
 	verbage_simple = "roll"
