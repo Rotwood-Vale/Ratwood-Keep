@@ -179,7 +179,7 @@
 	sleeved = 'icons/roguetown/clothing/onmob/helpers/sleeves_armor.dmi'
 	boobed = TRUE
 	color = null
-	flags_inv = HIDEBOOB
+	flags_inv = HIDEBOOB|HIDECROTCH
 	r_sleeve_status = SLEEVE_NORMAL
 	l_sleeve_status = SLEEVE_NORMAL
 	var/fanatic_wear = FALSE
@@ -189,6 +189,7 @@
 	desc = "Used by more radical followers of the Eoran Church"
 	body_parts_covered = null
 	icon_state = "eorastraps"
+	flags_inv = HIDEBOOB
 	fanatic_wear = TRUE
 
 /obj/item/clothing/suit/roguetown/shirt/robe/eora/attack_right(mob/user)
@@ -199,6 +200,7 @@
 			body_parts_covered = null
 			icon_state = "eorastraps"
 			fanatic_wear = TRUE
+			flags_inv = HIDEBOOB
 			to_chat(usr, span_warning("Now wearing radically!"))
 		if(TRUE)
 			name = "eoran robe"
@@ -206,6 +208,7 @@
 			body_parts_covered = CHEST|GROIN|ARMS|LEGS|VITALS
 			icon_state = "eorarobes"
 			fanatic_wear = FALSE
+			flags_inv = HIDEBOOB|HIDECROTCH
 			to_chat(usr, span_warning("Now wearing normally!"))
 	update_icon()
 	if(ismob(loc))
