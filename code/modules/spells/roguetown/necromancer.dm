@@ -85,9 +85,9 @@
 		if(LAZYLEN(candidates))
 			var/mob/C = pick(candidates)
 			target.key = C.key
-			to_chat(user, span_warning("[target]'s eyes shine with an eerie glow!"))
+			target.visible_message(span_warning("[target]'s eyes shine with an eerie glow!"))
 		else
-			to_chat(user, span_warning("[target]'s eyes remain dully devoid of life."))
+			target.visible_message(span_warning("[target]'s eyes remain dully devoid of life."))
 		return TRUE
 	var/turf/T = get_turf(targets[1])
 	if(isopenturf(T))
