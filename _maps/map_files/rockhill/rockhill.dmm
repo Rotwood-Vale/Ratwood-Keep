@@ -1389,6 +1389,13 @@
 /obj/item/clothing/mask/cigarette/pipe,
 /turf/open/floor/carpet/royalblack,
 /area/rogue/indoors/town/garrison)
+"bFc" = (
+/obj/machinery/light/rogue/torchholder/r,
+/obj/structure/stairs,
+/turf/open/floor/rogue/ruinedwood{
+	icon_state = "weird1"
+	},
+/area/rogue/indoors/town/shop)
 "bFl" = (
 /obj/structure/bed/rogue,
 /turf/open/floor/rogue/wood,
@@ -10393,6 +10400,14 @@
 /obj/structure/mineral_door/wood,
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors)
+"lOE" = (
+/obj/structure/fluff/railing/wood{
+	dir = 4
+	},
+/turf/open/floor/rogue/ruinedwood{
+	icon_state = "weird1"
+	},
+/area/rogue/indoors/town/shop)
 "lOV" = (
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/outdoors/bog)
@@ -17015,6 +17030,10 @@
 /obj/structure/fluff/walldeco/customflag,
 /turf/closed/wall/mineral/rogue/stone/moss,
 /area/rogue/indoors)
+"tJB" = (
+/obj/structure/stairs,
+/turf/open/floor/rogue/wood,
+/area/rogue/indoors/town/shop)
 "tJJ" = (
 /obj/structure/fluff/railing/wood,
 /turf/open/floor/rogue/woodturned,
@@ -293817,7 +293836,7 @@ toW
 toW
 toW
 eWe
-toW
+tJB
 toW
 sSW
 pKQ
@@ -395926,8 +395945,8 @@ pFW
 swZ
 swZ
 wCU
-swZ
-swZ
+lOE
+lOE
 swZ
 swZ
 swZ
@@ -396328,8 +396347,8 @@ nDX
 wCU
 nDX
 nDX
-swZ
-pFW
+gWn
+bFc
 swZ
 swZ
 swZ
