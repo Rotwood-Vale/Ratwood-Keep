@@ -76,7 +76,7 @@
 	var/contact_poison_volume = 0
 	dropshrink = 0.5
 	var/textper = 100
-	var/maxlen = 2000
+	var/maxlen = 2500
 
 	var/cached_mailer
 	var/cached_mailedto

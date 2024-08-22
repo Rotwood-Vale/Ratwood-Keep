@@ -7,7 +7,7 @@
 	firefuel = 30 SECONDS
 	sellprice = 2
 	textper = 108
-	maxlen = 2000
+	maxlen = 5000
 	throw_range = 3
 
 
@@ -16,6 +16,12 @@
 		if(!open)
 			to_chat(user, span_warning("Open me."))
 			return
+	if(P.get_sharpness())
+		to_chat(user, span_warning("[user] tears [src]."))
+		new /obj/item/paper(get_turf(src))
+		new /obj/item/paper(get_turf(src))
+		qdel(src)
+		return
 	..()
 
 /obj/item/paper/scroll/getonmobprop(tag)
