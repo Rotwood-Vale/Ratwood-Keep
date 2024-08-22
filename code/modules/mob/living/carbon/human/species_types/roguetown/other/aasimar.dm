@@ -45,7 +45,7 @@
 		)
 	specstats = list("strength" = 0, "perception" = 1, "intelligence" = 2, "constitution" = -1, "endurance" = -1, "speed" = 1, "fortune" = 1)
 	specstats_f = list("strength" = 0, "perception" = 1, "intelligence" = 2, "constitution" = -1, "endurance" = -1, "speed" = 1, "fortune" = 1)
-	race_bonus = list(STAT_STRENGTH = 1, STAT_PERCEPTION = -1)
+	race_bonus = list(STAT_ENDURANCE = 1)
 	enflamed_icon = "widefire"
 	customizers = list(
 		/datum/customizer/organ/eyes/humanoid,
