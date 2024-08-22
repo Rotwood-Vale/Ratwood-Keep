@@ -47,7 +47,7 @@
 	invocation = "The Undermaiden rebukes!"
 	invocation_type = "shout" //can be none, whisper, emote and shout
 	miracle = TRUE
-	devotion_cost = 150 //literally the strongest spell against undead
+	devotion_cost = 100 //literally the strongest spell against undead
 
 /obj/effect/proc_holder/spell/targeted/churn/cast(list/targets,mob/living/user = usr)
 	var/prob2explode = 100
