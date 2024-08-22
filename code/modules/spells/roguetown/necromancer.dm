@@ -85,7 +85,7 @@
 		return TRUE
 	var/turf/T = get_turf(targets[1])
 	if(isopenturf(T))
-		new /mob/living/carbon/human/species/skeleton/npc/no_equipment(T)
+		new /mob/living/carbon/human/species/skeleton/npc(T)
 		return TRUE
 	to_chat(user, span_warning("The targeted location is blocked. My summon fails to come forth."))
 	return FALSE
