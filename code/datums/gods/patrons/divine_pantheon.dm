@@ -88,6 +88,9 @@
 	domain = "God of Trickery, Freedom and Inspiration"
 	desc = "The Mad-God, gifted man wanderlust and a thousand tricks."
 	worshippers = "Cheats, Frauds, Silver-Tongued devils and Roguish Types"
+	t1 = /obj/effect/proc_holder/spell/invoked/Joy_takes_flight
+	t2 = /obj/effect/proc_holder/spell/invoked/Laughing_god
+	t3 = /obj/effect/proc_holder/spell/invoked/Smokebomb
 	confess_lines = list(
 		"ASTRATA IS MY LIGHT!",
 		"NOC IS NIGHT!",
