@@ -3964,7 +3964,7 @@
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/basement)
 "cxW" = (
-/mob/living/simple_animal/hostile/rogue/wraith/wraith3,
+/mob/living/simple_animal/hostile/rogue/ghost/wraith/wraith3,
 /turf/open/floor/rogue/grass,
 /area/rogue/outdoors/vikingarea)
 "cyr" = (
@@ -5350,7 +5350,7 @@
 /turf/open/floor/carpet/red,
 /area/rogue/indoors/town/bath)
 "dzx" = (
-/mob/living/simple_animal/hostile/rogue/wraith/wraith2,
+/mob/living/simple_animal/hostile/rogue/ghost/wraith/wraith2,
 /turf/open/floor/rogue/grass,
 /area/rogue/outdoors/vikingarea)
 "dzz" = (
@@ -6574,7 +6574,7 @@
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors/vikingarea)
 "etS" = (
-/mob/living/simple_animal/hostile/rogue/wraith,
+/mob/living/simple_animal/hostile/rogue/ghost/wraith,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/indoors)
 "eug" = (
@@ -6831,7 +6831,7 @@
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue/indoors/town/magician)
 "eFg" = (
-/mob/living/simple_animal/hostile/rogue/wraith/wraith2,
+/mob/living/simple_animal/hostile/rogue/ghost/wraith/wraith2,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors/vikingarea)
 "eFl" = (
@@ -8266,7 +8266,7 @@
 /turf/open/floor/rogue/cobble,
 /area/rogue/indoors)
 "fNw" = (
-/mob/living/simple_animal/hostile/rogue/wraith,
+/mob/living/simple_animal/hostile/rogue/ghost/wraith,
 /turf/open/floor/rogue/grass,
 /area/rogue/outdoors/vikingarea)
 "fNz" = (
@@ -9491,7 +9491,7 @@
 /turf/open/floor/rogue/concrete,
 /area/rogue/under/cavewet/bogcaves/sunkencity)
 "gNc" = (
-/mob/living/simple_animal/hostile/rogue/wraith/wraith3,
+/mob/living/simple_animal/hostile/rogue/ghost/wraith/wraith3,
 /turf/open/floor/rogue/cobble,
 /area/rogue/indoors)
 "gNg" = (
@@ -10376,7 +10376,7 @@
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/dwarfin)
 "hpO" = (
-/mob/living/simple_animal/hostile/rogue/wraith,
+/mob/living/simple_animal/hostile/rogue/ghost/wraith,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors/vikingarea)
 "hpT" = (
@@ -12189,6 +12189,12 @@
 	},
 /turf/open/transparent/openspace,
 /area/rogue/outdoors/town/roofs)
+"iNk" = (
+/obj/structure/bed/rogue/inn/hay,
+/obj/effect/landmark/start/vampthrall,
+/obj/effect/landmark/start/vampthralllate,
+/turf/open/floor/rogue/ruinedwood/spiral,
+/area/rogue/indoors)
 "iNu" = (
 /obj/structure/bars/passage/shutter/open,
 /obj/structure/bars/pipe,
@@ -13801,7 +13807,7 @@
 	},
 /area/rogue/indoors/town/tavern)
 "kaD" = (
-/mob/living/simple_animal/hostile/rogue/wraith,
+/mob/living/simple_animal/hostile/rogue/ghost/wraith,
 /turf/open/floor/rogue/cobble,
 /area/rogue/indoors)
 "kaG" = (
@@ -17455,7 +17461,7 @@
 	},
 /area/rogue/indoors/town/manor)
 "neg" = (
-/mob/living/simple_animal/hostile/rogue/wraith/wraith3,
+/mob/living/simple_animal/hostile/rogue/ghost/wraith/wraith3,
 /turf/open/floor/rogue/cobble,
 /area/rogue/outdoors/bog)
 "ner" = (
@@ -20575,7 +20581,7 @@
 /turf/open/floor/rogue/cobble,
 /area/rogue/indoors)
 "puq" = (
-/mob/living/simple_animal/hostile/rogue/wraith,
+/mob/living/simple_animal/hostile/rogue/ghost/wraith,
 /turf/open/floor/rogue/cobble,
 /area/rogue/outdoors/bog)
 "pur" = (
@@ -25265,6 +25271,8 @@
 "sYM" = (
 /obj/structure/bed/rogue/inn/hay,
 /obj/item/natural/bundle/stick,
+/obj/effect/landmark/start/vampthrall,
+/obj/effect/landmark/start/vampthralllate,
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors)
 "sYY" = (
@@ -31696,7 +31704,7 @@
 /turf/open/water/cleanshallow,
 /area/rogue/outdoors/rtfield)
 "xXd" = (
-/mob/living/simple_animal/hostile/rogue/wraith/wraith3,
+/mob/living/simple_animal/hostile/rogue/ghost/wraith/wraith3,
 /turf/open/floor/rogue/twig,
 /area/rogue/outdoors/vikingarea)
 "xXq" = (
@@ -325395,9 +325403,9 @@ sYx
 cyr
 xou
 xou
-pbJ
+iNk
 iBJ
-pbJ
+iNk
 iXc
 xkI
 xou
@@ -326603,7 +326611,7 @@ vqq
 tWR
 sYM
 fAB
-pbJ
+iNk
 aFY
 pbJ
 fel

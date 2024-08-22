@@ -2303,6 +2303,8 @@
 #include "code\modules\jobs\job_types\roguetown\viking\highking.dm"
 #include "code\modules\jobs\job_types\roguetown\viking\vikingfarmer.dm"
 #include "code\modules\jobs\job_types\roguetown\viking\vikinggrunt.dm"
+#include "code\modules\jobs\job_types\roguetown\vampire\vampthrall.dm"
+#include "code\modules\jobs\job_types\roguetown\vampire\vampsmith.dm"
 #include "code\modules\jobs\job_types\roguetown\yeomen\alchemist.dm"
 #include "code\modules\jobs\job_types\roguetown\yeomen\apothecary.dm"
 #include "code\modules\jobs\job_types\roguetown\yeomen\archivist.dm"

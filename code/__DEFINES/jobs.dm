@@ -201,7 +201,11 @@
 #define VIKINGFARMER	(1<<1)
 #define VIKINGGRUNT	(1<<1)
 
-#define SLOP		(1<<10)
+#define VAMPIRE		(1<<10)
+#define VAMPTHRALL	(1<<0)
+#define VAMPSMITH	(1<<1)
+
+#define SLOP		(1<<11)
 
 #define TESTER		(1<<0)
 #define DEATHKNIGHT (1<<1)
@@ -308,3 +312,6 @@
 #define JDO_HIGHKING 42
 #define JDO_VIKINGFARMER 43
 #define JDO_VIKINGGRUNT 44
+
+#define JDO_VAMPTHRALL 45
+#define JDO_VAMPSMITH 46

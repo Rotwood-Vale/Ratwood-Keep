@@ -139,7 +139,7 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 
 /mob/living/carbon/human/proc/spawn_pick_class()
 	var/list/classoptions = list("Bard", "Fisher", "Hunter", "Miner", "Peasant", "Woodcutter", "Cheesemaker", "Blacksmith", "Carpenter", "Rogue", "Treasure Hunter", "Mage")
-	var/list/visoptions = list()
+	var/list/visoptions = list("Bard", "Fisher", "Hunter", "Miner", "Peasant", "Woodcutter", "Cheesemaker", "Blacksmith", "Carpenter", "Rogue", "Treasure Hunter", "Mage") //enables all choices for vampire spawn
 
 	for(var/T in 1 to 5)
 		var/picked = pick(classoptions)

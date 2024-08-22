@@ -175,6 +175,11 @@ GLOBAL_LIST_INIT(viking_positions, list(
 	"Northmen Berserkir"
 ))
 
+GLOBAL_LIST_INIT(vampire_positions, list(
+	"Vampire Thrall",
+	"Vampire Smith"
+))
+
 
 GLOBAL_LIST_INIT(roguefight_positions, list(
 	"Red Captain",

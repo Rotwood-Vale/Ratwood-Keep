@@ -484,7 +484,28 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	icon_state = "arrow"
 	jobspawn_override = list("Northmen Berserkir")
 	delete_after_roundstart = FALSE
-	
+
+//Vampire Additions
+
+/obj/effect/landmark/start/vampthrall
+	name = "Vampire Thrall"
+	icon_state = "arrow"
+
+/obj/effect/landmark/start/vampthralllate
+	name = "Vampirethralllate"
+	icon_state = "arrow"
+	jobspawn_override = list("Vampire Thrall")
+	delete_after_roundstart = FALSE
+
+/obj/effect/landmark/start/vampsmith
+	name = "Vampire Smith"
+	icon_state = "arrow"
+
+/obj/effect/landmark/start/vampsmithlate
+	name = "vampsmitelate"
+	icon_state = "arrow"
+	jobspawn_override = list("Vampire Smith")
+	delete_after_roundstart = FALSE
 
 // START LANDMARKS FOLLOW. Don't change the names unless
 // you are refactoring shitty landmark code.
