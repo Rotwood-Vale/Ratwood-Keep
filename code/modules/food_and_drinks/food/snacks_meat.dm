@@ -109,7 +109,7 @@
 	filling_color = "#800000"
 	tastes = list("meat" = 1)
 	foodtype = MEAT
-
+/*
 /obj/item/reagent_containers/food/snacks/sausage
 	name = "sausage"
 	desc = ""
@@ -124,7 +124,7 @@
 /obj/item/reagent_containers/food/snacks/sausage/Initialize()
 	. = ..()
 	eatverb = pick("bite","chew","nibble","deep throat","gobble","chomp")
-
+*/
 /obj/item/reagent_containers/food/snacks/kebab
 	trash = /obj/item/stack/rods
 	icon_state = "kebab"

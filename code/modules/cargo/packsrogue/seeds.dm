@@ -58,3 +58,36 @@
 					/obj/item/seeds/berryrogue,
 					/obj/item/seeds/berryrogue/poison,
 				)
+
+/datum/supply_pack/rogue/seeds/onion
+	name = "Onion"
+	cost = 15
+	contains = list(
+					/obj/item/seeds/onion,
+					/obj/item/seeds/onion,
+					/obj/item/seeds/onion,
+					/obj/item/seeds/onion,
+					/obj/item/seeds/onion,
+				)
+
+/datum/supply_pack/rogue/seeds/cabbage
+	name = "Cabbage"
+	cost = 15
+	contains = list(
+					/obj/item/seeds/cabbage,
+					/obj/item/seeds/cabbage,
+					/obj/item/seeds/cabbage,
+					/obj/item/seeds/cabbage,
+					/obj/item/seeds/cabbage,
+				)
+
+/datum/supply_pack/rogue/seeds/potato
+	name = "Potato"
+	cost = 15
+	contains = list(
+					/obj/item/seeds/potato,
+					/obj/item/seeds/potato,
+					/obj/item/seeds/potato,
+					/obj/item/seeds/potato,
+					/obj/item/seeds/potato,
+				)

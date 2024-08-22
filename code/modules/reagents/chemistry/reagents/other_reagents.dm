@@ -133,6 +133,7 @@
 	shot_glass_icon_state = "shotglassclear"
 	var/hydration = 12
 	alpha = 100
+	taste_mult = 0.1
 
 /datum/chemical_reaction/grosswaterify
 	name = "grosswater"

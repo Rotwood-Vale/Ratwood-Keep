@@ -83,3 +83,15 @@
 	seed_identity = "berry seeds"
 	plant_def_type = /datum/plant_def/berry_poison
 
+/obj/item/seeds/onion
+	seed_identity = "onion seeds"
+	plant_def_type = /datum/plant_def/onion
+
+/obj/item/seeds/cabbage
+	seed_identity = "cabbage seeds"
+	plant_def_type = /datum/plant_def/cabbage
+
+/obj/item/seeds/potato
+	seed_identity = "potato seeds"
+	plant_def_type = /datum/plant_def/potato
+

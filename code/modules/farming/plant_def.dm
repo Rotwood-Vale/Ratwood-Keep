@@ -79,15 +79,15 @@
 	produce_time = 3 MINUTES
 
 /datum/plant_def/pipeweed
-	name = "westleach leaf"
+	name = "westleach plant"
 	icon = 'icons/roguetown/misc/crops.dmi'
-	icon_state = "tobacco"
+	icon_state = "westleach"
 	produce_type = /obj/item/reagent_containers/food/snacks/grown/rogue/pipeweed
 
 /datum/plant_def/sweetleaf
-	name = "swampweed"
+	name = "swampweed plant"
 	icon = 'icons/roguetown/misc/crops.dmi'
-	icon_state = "weed"
+	icon_state = "swampweed"
 	produce_type = /obj/item/reagent_containers/food/snacks/grown/rogue/sweetleaf
 
 /datum/plant_def/berry
@@ -111,3 +111,27 @@
 	produce_type = /obj/item/reagent_containers/food/snacks/grown/berries/rogue/poison
 	uproot_loot = list(/obj/item/grown/log/tree/small)
 	perennial = TRUE
+
+/datum/plant_def/onion
+	name = "onion sprouts"
+	icon = 'icons/roguetown/misc/crops.dmi'
+	icon_state = "onion"
+	produce_type = /obj/item/reagent_containers/food/snacks/grown/onion/rogue
+	produce_amount_min = 3
+	produce_amount_max = 4
+
+/datum/plant_def/cabbage
+	name = "cabbages"
+	icon = 'icons/roguetown/misc/crops.dmi'
+	icon_state = "cabbage"
+	produce_type = /obj/item/reagent_containers/food/snacks/grown/cabbage/rogue
+	produce_amount_min = 3
+	produce_amount_max = 4
+
+/datum/plant_def/potato
+	name = "potato plants"
+	icon = 'icons/roguetown/misc/crops.dmi'
+	icon_state = "potato"
+	produce_type = /obj/item/reagent_containers/food/snacks/grown/potato/rogue
+	produce_amount_min = 3
+	produce_amount_max = 4
