@@ -11,7 +11,7 @@
 	allowed_races = RACES_ALL_KINDS
 	show_in_credits = FALSE		//Stops Scom from announcing their arrival.
 
-	tutorial = "You have likely seen the brutality of the Northmen firsthand. Put aside any notion of rescue, and serve the warband well. You know they sacrifice slaves to their twisted god, Graggar, so try and at least appear somewhat useful for the cruel pillagers, tend the farm, and try not to draw too much attention."
+	tutorial = "You have likely seen the brutality of the Northmen firsthand. Put aside any notion of rescue, and serve the warband well. Taken so far away from home, it is better to keep your head down and do your part, for you will likely never see your loved ones ever again."
 	whitelist_req = FALSE
 
 	
@@ -32,7 +32,7 @@
 		H.mind.adjust_skillrank(/datum/skill/craft/crafting, pick(1,2), TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/alchemy, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/labor/farming, pick(4,5), TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/medicine, 1, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/medicine, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/sewing, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/craft/cooking, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
@@ -49,6 +49,7 @@
 		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/random
 		shoes = /obj/item/clothing/shoes/roguetown/simpleshoes
 		belt = /obj/item/storage/belt/rogue/leather/rope
+		backl = /obj/item/storage/backpack/rogue/backpack/surgery
 	else
 		head = /obj/item/clothing/head/roguetown/armingcap
 //		pants = /obj/item/clothing/under/roguetown/trou
@@ -56,5 +57,6 @@
 		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
 		shoes = /obj/item/clothing/shoes/roguetown/simpleshoes
 		belt = /obj/item/storage/belt/rogue/leather/rope
+		backl = /obj/item/storage/backpack/rogue/backpack/surgery
 
 
