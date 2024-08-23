@@ -758,6 +758,7 @@
 /mob/living/carbon/human/vv_get_dropdown()
 	. = ..()
 	VV_DROPDOWN_OPTION("", "---------")
+	VV_DROPDOWN_OPTION(VV_HK_APPLY_SPECIAL, "Apply Special Trait")
 	VV_DROPDOWN_OPTION(VV_HK_REAPPLY_PREFS, "Reapply Preferences")
 	VV_DROPDOWN_OPTION(VV_HK_COPY_OUTFIT, "Copy Outfit")
 	VV_DROPDOWN_OPTION(VV_HK_MOD_MUTATIONS, "Add/Remove Mutation")
@@ -777,6 +778,32 @@
 		if(!client || !client.prefs)
 			return
 		client.prefs.copy_to(src, TRUE, FALSE)
+	if(href_list[VV_HK_APPLY_SPECIAL])
+		if(!check_rights(R_SPAWN))
+			return
+		var/mob/admin_user = usr
+		message_admins("Admin [key_name_admin(admin_user)] is applying a special trait to [key_name(src)].")
+		var/first_result = input(admin_user, "Chosen or random?","Apply Special") as null|anything in list("Choose", "Random")
+		if(!first_result)
+			return
+		var/trait_type
+		if(first_result == "Choose")
+			var/trait_result = input(admin_user, "Choose special to apply","Apply Special") as null|anything in GLOB.special_traits
+			if(!trait_result)
+				return
+			trait_type = trait_result
+		else
+			trait_type = get_random_special_for_char(src, src.client)
+		if(!trait_type)
+			return
+		var/silent_result = input(admin_user, "Trait: [trait_type]\nGive player the trait greet text?","Apply Special") as null|anything in list("Yes", "No", "Cancel")
+		var/silent = FALSE
+		if(!silent_result || silent_result == "Cancel")
+			return
+		if(silent_result == "No")
+			silent = TRUE
+		message_admins("Admin [key_name_admin(admin_user)] applied special [trait_type] to [key_name(src)]. [first_result == "Chosen" ? "(Chosen)" : "(Random)"][silent_result == "No" ? "(Silent)" : ""]")
+		apply_special_trait(src, trait_type, silent)
 	if(href_list[VV_HK_COPY_OUTFIT])
 		if(!check_rights(R_SPAWN))
 			return

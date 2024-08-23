@@ -25,6 +25,9 @@ GLOBAL_LIST_INIT(character_flaws, list(
 /datum/charflaw/proc/on_mob_creation(mob/user)
 	return
 
+/datum/charflaw/proc/apply_post_equipment(mob/user)
+	return
+
 /datum/charflaw/proc/flaw_on_life(mob/user)
 	return
 
