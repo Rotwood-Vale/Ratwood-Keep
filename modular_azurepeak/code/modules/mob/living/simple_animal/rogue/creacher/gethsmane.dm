@@ -7,6 +7,7 @@
 	retreat_health = 0
 	defprob = 20
 	color = "#485775"
+	attack_same = 0
 
 /mob/living/simple_animal/hostile/retaliate/rogue/bigrat/gethsmane/AttackingTarget()
 	. = ..()
