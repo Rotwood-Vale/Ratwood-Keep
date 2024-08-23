@@ -20,7 +20,7 @@
 	var/meaty
 	var/potpie
 	var/berrypie
-	var/poisoning	
+	var/poisoning
 
 /obj/item/reagent_containers/food/snacks/rogue/foodbase/piebottom/update_icon()
 	. = ..()
@@ -88,7 +88,7 @@
 /obj/item/reagent_containers/food/snacks/rogue/foodbase/piebottom/attackby(obj/item/I, mob/user, params)
 	if(user.mind)
 		short_cooktime = (60 - ((user.mind.get_skill_level(/datum/skill/craft/cooking))*5))
-		long_cooktime = (100 - ((user.mind.get_skill_level(/datum/skill/craft/cooking))*10))	
+		long_cooktime = (100 - ((user.mind.get_skill_level(/datum/skill/craft/cooking))*10))
 	if(istype(I, /obj/item/reagent_containers/food/snacks/rogue/meat/mince/fish))
 		if (process_step > 4)
 			return
@@ -264,25 +264,25 @@
 			name = "unfinished berrypie"
 			process_step += 1
 			berrypie = TRUE
-			poisoning = TRUE	
+			poisoning = TRUE
 			update_icon()
 			qdel(I)
 			return
 		if(berrypie && process_step == 2 && do_after(user,short_cooktime, target = src))
 			to_chat(user, "<span class='notice'>Adding filling to the applepie. Needs more.</span>")
 			process_step += 1
-			poisoning = TRUE	
+			poisoning = TRUE
 			update_icon()
 			qdel(I)
 			return
 		if(berrypie && process_step == 3 && do_after(user,short_cooktime, target = src))
 			to_chat(user, "<span class='notice'>Filling the applepie to the brim. Still lacks a pie roof.</span>")
 			process_step += 1
-			poisoning = TRUE	
+			poisoning = TRUE
 			update_icon()
 			qdel(I)
-			return	
-	
+			return
+
 	else if(istype(I, /obj/item/reagent_containers/food/snacks/grown/berries/rogue))
 		if (process_step > 4)
 			return
@@ -296,17 +296,17 @@
 			qdel(I)
 			return
 		if(berrypie && process_step == 2 && do_after(user,short_cooktime, target = src))
-			to_chat(user, "<span class='notice'>Adding filling to the applepie. Needs more.</span>")
+			to_chat(user, "<span class='notice'>Adding filling to the berrypie. Needs more.</span>")
 			process_step += 1
 			update_icon()
 			qdel(I)
 			return
 		if(berrypie && process_step == 3 && do_after(user,short_cooktime, target = src))
-			to_chat(user, "<span class='notice'>Filling the applepie to the brim. Still lacks a pie roof.</span>")
+			to_chat(user, "<span class='notice'>Filling the berrypie to the brim. Still lacks a pie roof.</span>")
 			process_step += 1
 			update_icon()
 			qdel(I)
-			return	
+			return
 
 	if(istype(I, /obj/item/reagent_containers/food/snacks/rogue/piedough))
 		playsound(get_turf(user), 'sound/foley/dropsound/gen_drop.ogg', 30, TRUE, -1)
@@ -362,7 +362,7 @@
 /obj/item/reagent_containers/food/snacks/rogue/pie
 	name = "pie"
 	desc = ""
-	color = "#e7e2df"	
+	color = "#e7e2df"
 	dropshrink = 0.8
 	var/stunning = FALSE
 
@@ -529,4 +529,4 @@
 	icon_state = "handpie[bitecount]"
 	if(bitecount == 1)
 		rotprocess = SHELFLIFE_DECENT
-		addtimer(CALLBACK(src, PROC_REF(begin_rotting)), 20, TIMER_CLIENT_TIME) // 
+		addtimer(CALLBACK(src, PROC_REF(begin_rotting)), 20, TIMER_CLIENT_TIME) //
