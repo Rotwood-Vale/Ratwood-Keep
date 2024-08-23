@@ -330,8 +330,7 @@ GLOBAL_VAR(restart_counter)
 		new_status += "<br>GAME STATUS: <b>PLAYING</b><br>"
 
 	if (SSticker.HasRoundStarted())
-		var/round_time = world.time - SSticker.round_start_time
-		new_status += "Round Time: <b>[round_time > MIDNIGHT_ROLLOVER ? "[round(round_time/MIDNIGHT_ROLLOVER)]:[gameTimestamp(format = "hh:mm")]" : gameTimestamp(format = "hh:mm")]<br>"
+		new_status += "Round Time: <b>[time2text(STATION_TIME_PASSED(), "hh:mm", 0)]</b>"
 	else
 		new_status += "Round Time: <b>NEW ROUND STARTING</b>"
 	new_status += "<br>Player[players == 1 ? "": "s"]: <b>[players]</b>"
