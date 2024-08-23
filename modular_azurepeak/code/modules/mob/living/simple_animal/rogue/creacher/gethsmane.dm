@@ -3,8 +3,9 @@
 	health = 100
 	maxHealth = 100
 	STASTR = 8
+	STASPD = 13
 	retreat_health = 0
-	defprob = 90
+	defprob = 20
 	color = "#485775"
 
 /mob/living/simple_animal/hostile/retaliate/rogue/bigrat/gethsmane/AttackingTarget()

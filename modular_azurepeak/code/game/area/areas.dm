@@ -13,3 +13,4 @@
 	icon_state = "spider"
 	first_time_text = ""
 	droning_sound = 'sound/music/area/original_sin.ogg'
+
