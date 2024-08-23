@@ -17,7 +17,7 @@
 	var/found_table = locate(/obj/structure/table) in (loc)
 	if(user.mind)
 		short_cooktime = (60 - ((user.mind.get_skill_level(/datum/skill/craft/cooking))*5))
-		long_cooktime = (100 - ((user.mind.get_skill_level(/datum/skill/craft/cooking))*10))	
+		long_cooktime = (100 - ((user.mind.get_skill_level(/datum/skill/craft/cooking))*10))
 	if(istype(I, /obj/item/reagent_containers/powder/flour))
 		if(isturf(loc)&& (found_table))
 			playsound(get_turf(user), 'modular/Neu_Food/sound/kneading.ogg', 100, TRUE, -1)
@@ -29,7 +29,7 @@
 		else
 			to_chat(user, "<span class='warning'>You need to put [src] on a table to work it.</span>")
 	else
-		return ..()	
+		return ..()
 
 /obj/item/reagent_containers/food/snacks/rogue/dough
 	name = "dough"
@@ -40,12 +40,12 @@
 	slice_path = /obj/item/reagent_containers/food/snacks/rogue/doughslice
 	cooked_type = /obj/item/reagent_containers/food/snacks/rogue/bread
 	w_class = WEIGHT_CLASS_NORMAL
-	slice_sound = TRUE 
+	slice_sound = TRUE
 /obj/item/reagent_containers/food/snacks/rogue/dough/attackby(obj/item/I, mob/user, params)
 	var/found_table = locate(/obj/structure/table) in (loc)
 	if(user.mind)
 		short_cooktime = (60 - ((user.mind.get_skill_level(/datum/skill/craft/cooking))*5))
-		long_cooktime = (100 - ((user.mind.get_skill_level(/datum/skill/craft/cooking))*10))	
+		long_cooktime = (100 - ((user.mind.get_skill_level(/datum/skill/craft/cooking))*10))
 	if(istype(I, /obj/item/reagent_containers/food/snacks/butterslice))
 		if(isturf(loc)&& (found_table))
 			playsound(get_turf(user), 'modular/Neu_Food/sound/kneading_alt.ogg', 90, TRUE, -1)
@@ -76,7 +76,7 @@
 		else
 			to_chat(user, "<span class='warning'>You need to put [src] on a table to roll it out!</span>")
 	else
-		return ..()	
+		return ..()
 
 /*	.................   Smalldough   ................... */
 /obj/item/reagent_containers/food/snacks/rogue/doughslice
@@ -90,7 +90,7 @@
 	var/found_table = locate(/obj/structure/table) in (loc)
 	if(user.mind)
 		short_cooktime = (60 - ((user.mind.get_skill_level(/datum/skill/craft/cooking))*5))
-		long_cooktime = (100 - ((user.mind.get_skill_level(/datum/skill/craft/cooking))*10))	
+		long_cooktime = (100 - ((user.mind.get_skill_level(/datum/skill/craft/cooking))*10))
 	if(istype(I, /obj/item/reagent_containers/food/snacks/rogue/cheese))
 		if(isturf(loc)&& (found_table))
 			playsound(get_turf(user), 'modular/Neu_Food/sound/kneading_alt.ogg', 90, TRUE, -1)
@@ -124,12 +124,12 @@
 	slice_batch = TRUE
 	slice_path = /obj/item/reagent_containers/food/snacks/rogue/butterdoughslice
 	w_class = WEIGHT_CLASS_NORMAL
-	slice_sound = TRUE 
+	slice_sound = TRUE
 /obj/item/reagent_containers/food/snacks/rogue/butterdough/attackby(obj/item/I, mob/user, params)
 	var/found_table = locate(/obj/structure/table) in (loc)
 	if(user.mind)
 		short_cooktime = (60 - ((user.mind.get_skill_level(/datum/skill/craft/cooking))*5))
-		long_cooktime = (100 - ((user.mind.get_skill_level(/datum/skill/craft/cooking))*10))	
+		long_cooktime = (100 - ((user.mind.get_skill_level(/datum/skill/craft/cooking))*10))
 	if(istype(I, /obj/item/reagent_containers/food/snacks/egg))
 		if(isturf(loc)&& (found_table))
 			playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 40, TRUE, -1)
@@ -159,10 +159,10 @@
 	var/found_table = locate(/obj/structure/table) in (loc)
 	if(user.mind)
 		short_cooktime = (60 - ((user.mind.get_skill_level(/datum/skill/craft/cooking))*5))
-		long_cooktime = (100 - ((user.mind.get_skill_level(/datum/skill/craft/cooking))*10))	
+		long_cooktime = (100 - ((user.mind.get_skill_level(/datum/skill/craft/cooking))*10))
 	if(istype(I, /obj/item/kitchen/rollingpin))
 		if(isturf(loc)&& (found_table))
-			playsound(get_turf(user), 'modular/Neu_Food/sound/rollingpin.ogg', 100, TRUE, -1)	
+			playsound(get_turf(user), 'modular/Neu_Food/sound/rollingpin.ogg', 100, TRUE, -1)
 			to_chat(user, "<span class='notice'>Flattening [src]...</span>")
 			if(do_after(user,short_cooktime, target = src))
 				new /obj/item/reagent_containers/food/snacks/rogue/piedough(loc)
@@ -205,7 +205,7 @@
 /obj/item/reagent_containers/food/snacks/rogue/piedough/attackby(obj/item/I, mob/user, params)
 	if(user.mind)
 		short_cooktime = (60 - ((user.mind.get_skill_level(/datum/skill/craft/cooking))*5))
-		long_cooktime = (100 - ((user.mind.get_skill_level(/datum/skill/craft/cooking))*10))	
+		long_cooktime = (100 - ((user.mind.get_skill_level(/datum/skill/craft/cooking))*10))
 	if(istype(I, /obj/item/reagent_containers/food/snacks/rogue/truffles))
 		playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 50, TRUE, -1)
 		to_chat(user, "<span class='notice'>Making a handpie...</span>")
@@ -251,17 +251,6 @@
 	w_class = WEIGHT_CLASS_NORMAL
 	eat_effect = null
 
-/obj/item/reagent_containers/food/snacks/rogue/crackers /// temporary for conflicts phase out
-	name = "crackers"
-	desc = "A delicious crunch in every bite."
-	icon_state = "cracker6"
-	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_NUTRITIOUS)
-	w_class = WEIGHT_CLASS_NORMAL
-	tastes = list("spelt" = 1)
-	bitesize = 6
-	rotprocess = null
-
-
 /obj/item/reagent_containers/food/snacks/rogue/crackerscooked
 	name = "hardtack"
 	desc = "Very, very hard and dry."
@@ -297,7 +286,7 @@
 	w_class = WEIGHT_CLASS_NORMAL
 	tastes = list("bread" = 1)
 	slice_batch = FALSE
-	slice_sound = TRUE 
+	slice_sound = TRUE
 	rotprocess = SHELFLIFE_EXTREME
 
 /obj/item/reagent_containers/food/snacks/rogue/bread/update_icon()
@@ -333,7 +322,7 @@
 /obj/item/reagent_containers/food/snacks/rogue/breadslice/attackby(obj/item/I, mob/user, params)
 	if(user.mind)
 		short_cooktime = (60 - ((user.mind.get_skill_level(/datum/skill/craft/cooking))*5))
-		long_cooktime = (100 - ((user.mind.get_skill_level(/datum/skill/craft/cooking))*10))	
+		long_cooktime = (100 - ((user.mind.get_skill_level(/datum/skill/craft/cooking))*10))
 	if(istype(I, /obj/item/reagent_containers/food/snacks/rogue/meat/salami/slice))
 		playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 50, TRUE, -1)
 		if(do_after(user,short_cooktime, target = src))
@@ -376,7 +365,7 @@
 /obj/item/reagent_containers/food/snacks/rogue/breadslice/toast/attackby(obj/item/I, mob/user, params)
 	if(user.mind)
 		short_cooktime = (60 - ((user.mind.get_skill_level(/datum/skill/craft/cooking))*5))
-		long_cooktime = (100 - ((user.mind.get_skill_level(/datum/skill/craft/cooking))*10))	
+		long_cooktime = (100 - ((user.mind.get_skill_level(/datum/skill/craft/cooking))*10))
 	if(istype(I, /obj/item/reagent_containers/food/snacks/butterslice))
 		playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 50, TRUE, -1)
 		if(do_after(user,short_cooktime, target = src))
@@ -435,7 +424,7 @@
 /obj/item/reagent_containers/food/snacks/rogue/bun/attackby(obj/item/I, mob/user, params)
 	if(user.mind)
 		short_cooktime = (60 - ((user.mind.get_skill_level(/datum/skill/craft/cooking))*5))
-		long_cooktime = (100 - ((user.mind.get_skill_level(/datum/skill/craft/cooking))*10))	
+		long_cooktime = (100 - ((user.mind.get_skill_level(/datum/skill/craft/cooking))*10))
 	if(istype(I, /obj/item/reagent_containers/food/snacks/rogue/meat/sausage/cooked))
 		playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 50, TRUE, -1)
 		to_chat(user, "<span class='notice'>Pushing the wiener through the bun...</span>")
@@ -544,7 +533,7 @@
 	var/found_table = locate(/obj/structure/table) in (loc)
 	if(user.mind)
 		short_cooktime = (60 - ((user.mind.get_skill_level(/datum/skill/craft/cooking))*5))
-		long_cooktime = (100 - ((user.mind.get_skill_level(/datum/skill/craft/cooking))*10))	
+		long_cooktime = (100 - ((user.mind.get_skill_level(/datum/skill/craft/cooking))*10))
 	if(istype(I, /obj/item/reagent_containers/food/snacks/rogue/raisins))
 		if(isturf(loc)&& (found_table))
 			playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 40, TRUE, -1)
@@ -556,7 +545,7 @@
 		else
 			to_chat(user, "<span class='warning'>You need to put [src] on a table to work it.</span>")
 	else
-		return ..()	
+		return ..()
 
 /obj/item/reagent_containers/food/snacks/rogue/rbreaduncooked
 	name = "loaf of raisins"
@@ -577,7 +566,7 @@
 	w_class = WEIGHT_CLASS_NORMAL
 	tastes = list("bread" = 1,"dried fruit" = 1)
 	slice_batch = FALSE
-	slice_sound = TRUE 
+	slice_sound = TRUE
 	rotprocess = SHELFLIFE_EXTREME
 	eat_effect = /datum/status_effect/buff/foodbuff
 
@@ -626,7 +615,7 @@
 	var/found_table = locate(/obj/structure/table) in (loc)
 	if(user.mind)
 		short_cooktime = (60 - ((user.mind.get_skill_level(/datum/skill/craft/cooking))*5))
-		long_cooktime = (100 - ((user.mind.get_skill_level(/datum/skill/craft/cooking))*10))	
+		long_cooktime = (100 - ((user.mind.get_skill_level(/datum/skill/craft/cooking))*10))
 	if(istype(I, /obj/item/reagent_containers/food/snacks/rogue/cheese))
 		if(isturf(loc)&& (found_table))
 			playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 40, TRUE, -1)
@@ -648,7 +637,7 @@
 		else
 			to_chat(user, "<span class='warning'>You need to put [src] on a table to work it.</span>")
 	else
-		return ..()	
+		return ..()
 
 // -------------- SPIDER-HONEY CAKE (Zybantu) -----------------
 /obj/item/reagent_containers/food/snacks/rogue/hcakeuncooked
@@ -672,7 +661,7 @@
 	tastes = list("cake"=1, "delicious honeyfrosting"=1)
 	foodtype = GRAIN | DAIRY | SUGAR
 	slice_batch = TRUE
-	slice_sound = TRUE 
+	slice_sound = TRUE
 	rotprocess = SHELFLIFE_LONG
 	eat_effect = /datum/status_effect/buff/foodbuff
 	bitesize = 16
@@ -717,7 +706,7 @@
 	tastes = list("cake"=1, "creamy cheese"=1)
 	foodtype = GRAIN | DAIRY | SUGAR
 	slice_batch = TRUE
-	slice_sound = TRUE 
+	slice_sound = TRUE
 	rotprocess = SHELFLIFE_LONG
 	eat_effect = /datum/status_effect/buff/foodbuff
 	bitesize = 16

@@ -5,7 +5,7 @@
 "j" = (/obj/structure/mineral_door/bars,/turf/open/floor/rogue/cobble,/area/rogue/under/town/sewer)
 "s" = (/obj/structure/closet/crate/chest,/obj/effect/spawner/lootdrop/roguetown/sewers,/turf/open/floor/rogue/cobble,/area/rogue/under/town/sewer)
 "t" = (/turf/closed/mineral/rogue,/area/rogue/under/town/sewer)
-"w" = (/obj/structure/bonfire/prelit,/turf/open/floor/rogue/cobble,/area/rogue/under/town/sewer)
+"w" = (/obj/machinery/light/rogue/campfire,/turf/open/floor/rogue/cobble,/area/rogue/under/town/sewer)
 "B" = (/turf/closed/wall/mineral/rogue/stonebrick,/area/rogue/under/town/sewer)
 "L" = (/obj/effect/decal/cleanable/dirt/dust,/turf/open/floor/rogue/cobble,/area/rogue/under/town/sewer)
 "U" = (/obj/structure/bars/tough,/turf/open/floor/rogue/cobble,/area/rogue/under/town/sewer)
