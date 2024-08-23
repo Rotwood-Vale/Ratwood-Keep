@@ -90,6 +90,7 @@
 			H.change_stat("endurance", 1)
 			H.change_stat("speed", pick(3,4))
 			H.change_stat("intelligence", 2)
+			H.cmode_music = 'sound/music/combat_duelist.ogg'
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_STEELHEARTED, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
