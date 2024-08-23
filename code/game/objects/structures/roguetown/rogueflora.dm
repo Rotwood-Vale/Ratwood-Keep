@@ -18,6 +18,7 @@
 	debris = list(/obj/item/grown/log/tree/stick = 2)
 	static_debris = list(/obj/item/grown/log/tree = 1)
 	alpha = 200
+	leanable = TRUE
 	var/stump_type = /obj/structure/flora/roguetree/stump
 
 /obj/structure/flora/roguetree/attack_right(mob/user)
@@ -359,6 +360,7 @@
 	max_integrity = 150
 	debris = list(/obj/item/natural/fibers = 1, /obj/item/grown/log/tree/stick = 1, /obj/item/natural/thorn = 1)
 	attacked_sound = 'sound/misc/woodhit.ogg'
+	leanable = TRUE
 
 /obj/structure/flora/roguegrass/bush/wall/Initialize()
 	..()

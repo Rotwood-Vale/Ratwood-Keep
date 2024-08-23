@@ -416,7 +416,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	S["joblessrole"] >> joblessrole
 	//Load prefs
 	S["job_preferences"] >> job_preferences
-
+	job_preferences = validate_job_prefs(job_preferences) //Make sure there are no redundant jobs
 	//Quirks
 	S["all_quirks"] >> all_quirks
 
@@ -595,3 +595,9 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	S.ImportText("/",file("[path].txt"))
 
 #endif
+
+/datum/preferences/proc/validate_job_prefs(var/list/job_prefs)
+	for(var/job in job_prefs)
+		if(!SSjob.GetJob(job))
+			job_prefs -= job
+	return job_prefs
