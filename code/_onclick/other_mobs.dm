@@ -384,7 +384,8 @@
 					var/list/stealpos = list()
 					var/list/mobsbehind = list()
 					var/exp_to_gain = STAINT
-					if(do_after(src, 5, target = V))
+					to_chat(src, span_notice("I try to steal from [V]..."))
+					if(do_after(src, 5, target = V, progress = 0))
 						if(stealroll > targetperception)
 						//TODO add exp here
 							// RATWOOD MODULAR START
