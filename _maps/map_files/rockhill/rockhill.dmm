@@ -13813,6 +13813,14 @@
 	},
 /turf/open/floor/rogue/tile,
 /area/rogue/outdoors/town)
+"pIQ" = (
+/obj/structure/fluff/railing/wood{
+	dir = 4;
+	layer = 2.8;
+	pixel_x = 8
+	},
+/turf/open/floor/rogue/wood,
+/area/rogue/indoors/town/manor)
 "pKb" = (
 /obj/structure/fluff/railing/wood,
 /turf/open/floor/rogue/wood,
@@ -15576,6 +15584,12 @@
 "rVr" = (
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/outdoors/beach)
+"rWb" = (
+/obj/structure/fluff/railing/wood{
+	dir = 8
+	},
+/turf/open/floor/carpet/royalblack,
+/area/rogue/indoors/town/manor)
 "rWK" = (
 /turf/open/floor/rogue/rooftop/green/corner1{
 	dir = 4
@@ -387227,7 +387241,7 @@ fZJ
 aCU
 oif
 xJr
-oif
+pIQ
 moX
 aCU
 nbz
@@ -490799,7 +490813,7 @@ xAt
 gLq
 lzW
 oif
-oif
+pKb
 iur
 xMp
 xAt
@@ -491203,7 +491217,7 @@ gLq
 oif
 oif
 xlm
-xlm
+rWb
 xMp
 xAt
 uKX
