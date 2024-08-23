@@ -167,6 +167,18 @@
 	verbage = "builds"
 	craftsound = null
 
+/datum/crafting_recipe/roguetown/structure/treatingfurnace
+	name = "heat treatment furnace"
+	result = /obj/structure/treating_furnace
+	reqs = list(/obj/item/natural/stone = 4,
+				/obj/item/ingot/steel = 2,
+				/obj/item/rogueore/coal = 1)
+	verbage_simple = "build"
+	verbage = "builds"
+	craftsound = null
+	skillcraft = /datum/skill/craft/blacksmithing
+	craftdiff = 2
+
 /datum/crafting_recipe/roguetown/structure/sharpwheel
 	name = "sharpening wheel"
 	result = /obj/structure/fluff/grindwheel

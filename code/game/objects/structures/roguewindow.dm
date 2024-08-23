@@ -26,6 +26,7 @@
 	var/currently_opened = FALSE
 	var/stained = FALSE
 	var/night_variants = FALSE
+	leanable = TRUE
 
 /obj/structure/roguewindow/Initialize()
 	lockdir = dir
@@ -64,7 +65,7 @@
 	try_toggle_opened(user)
 
 /obj/structure/roguewindow/proc/try_toggle_opened(mob/user)
-	if(!curtains)
+	if(!openable)
 		return
 	if(get_dir(src,user) != lockdir)
 		to_chat(user, span_warning("The window doesn't close from this side."))
@@ -139,12 +140,12 @@
 		opacity = FALSE
 		return
 	if(stained)
-		opacity = FALSE
+		opacity = TRUE
 		return
-	if(curtains)
-		opacity = currently_curtained
+	if(curtains && currently_curtained)
+		opacity = TRUE
 		return
-	opacity = TRUE
+	opacity = FALSE
 
 /obj/structure/roguewindow/proc/open_up(mob/user)
 	visible_message(span_info("[user] opens [src]."))
