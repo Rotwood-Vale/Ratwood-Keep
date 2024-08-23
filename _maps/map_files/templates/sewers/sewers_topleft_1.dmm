@@ -11,7 +11,7 @@
 "n" = (/obj/structure/mineral_door/bars,/turf/open/floor/rogue/cobble,/area/rogue/under/town/sewer)
 "o" = (/obj/structure/table/wood{icon_state = "largetable"},/obj/item/reagent_containers/glass/bowl,/turf/open/floor/rogue/cobble,/area/rogue/under/town/sewer)
 "p" = (/obj/structure/table/wood{icon_state = "largetable"; dir = 5},/obj/item/reagent_containers/glass/cup/wooden,/turf/open/floor/rogue/cobble,/area/rogue/under/town/sewer)
-"q" = (/obj/item/reagent_containers/glass/bowl/mushroom_bowl,/obj/effect/decal/cleanable/blood/splatter,/turf/open/floor/rogue/cobble,/area/rogue/under/town/sewer)
+"q" = (/obj/item/reagent_containers/glass/bowl,/obj/effect/decal/cleanable/blood/splatter,/turf/open/floor/rogue/cobble,/area/rogue/under/town/sewer)
 "r" = (/obj/structure/table/wood{icon_state = "largetable"},/obj/item/rope/chain,/turf/open/floor/rogue/cobble,/area/rogue/under/town/sewer)
 "s" = (/obj/structure/fluff/walldeco/chains,/turf/open/floor/rogue/cobble,/area/rogue/under/town/sewer)
 "t" = (/obj/structure/table/wood{icon_state = "largetable"; dir = 9},/turf/open/floor/rogue/cobble,/area/rogue/under/town/sewer)
