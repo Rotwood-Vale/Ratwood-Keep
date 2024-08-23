@@ -68,6 +68,8 @@
 	head = /obj/item/clothing/head/roguetown/helmet/leather
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/random
 	beltr = /obj/item/rogueweapon/sword
+	if(prob(40))
+		beltr = /obj/item/rogueweapon/sword/long
 	shoes = /obj/item/clothing/shoes/roguetown/boots/leather
 	neck = /obj/item/storage/belt/rogue/pouch/coins/poor
 	pants = /obj/item/clothing/under/roguetown/trou/leather
