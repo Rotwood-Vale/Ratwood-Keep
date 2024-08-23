@@ -11,7 +11,7 @@
 /datum/sex_action/toy_other_anal/can_perform(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(user == target)
 		return FALSE
-	if(!get_location_accessible(target, BODY_ZONE_PRECISE_GROIN))
+	if(!get_location_accessible(target, BODY_ZONE_PRECISE_GROIN, TRUE))
 		return FALSE
 	if(!get_dildo_in_either_hand(user))
 		return FALSE

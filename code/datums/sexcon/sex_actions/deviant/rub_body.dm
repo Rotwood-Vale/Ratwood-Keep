@@ -10,14 +10,12 @@
 /datum/sex_action/rub_body/can_perform(mob/living/user, mob/living/target)
 	if(user == target)
 		return FALSE
-	if(!get_location_accessible(target, BODY_ZONE_CHEST))
-		return FALSE
-	if(!get_location_accessible(user, BODY_ZONE_PRECISE_MOUTH))
+	if(!get_location_accessible(target, BODY_ZONE_CHEST, TRUE))
 		return FALSE
 	return TRUE
 
 /datum/sex_action/rub_body/on_start(mob/living/carbon/human/user, mob/living/carbon/human/target)
-	user.visible_message(span_warning("[user] places their hands onto [target]..."))
+	user.visible_message(span_warning("[user] places [user.p_their()] hands onto [target]..."))
 
 /datum/sex_action/rub_body/on_perform(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] rubs [target]'s body..."))
