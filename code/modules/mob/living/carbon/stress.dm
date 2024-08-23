@@ -207,6 +207,8 @@
 	for(var/stressor_type in stressors)
 		var/datum/stressevent/event = stressors[stressor_type]
 		var/stress_amt = event.get_stress(src)
+		if(stress_amt > 0 && HAS_TRAIT(src, TRAIT_BAD_MOOD))
+			stress_amt *= 2
 		total_stress += stress_amt
 	return total_stress
 
