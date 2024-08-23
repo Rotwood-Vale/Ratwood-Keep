@@ -34,6 +34,7 @@
 	deathmessage = "collapses into a pile of bones!"
 	del_on_death = 1
 	loot = list(/obj/effect/decal/remains/human)
+	patron = /datum/patron/inhumen/zizo		//So they can be hurt by holy fire/healing
 
 	footstep_type = FOOTSTEP_MOB_SHOE
 

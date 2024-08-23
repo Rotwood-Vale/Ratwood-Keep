@@ -213,5 +213,3 @@
 /obj/structure/pillory/tribal/reinforced
 	icon_state = "pillory_reinforced"
 	base_icon = "pillory_reinforced"
-
-#undef PILLORY_HEAD_OFFSET
