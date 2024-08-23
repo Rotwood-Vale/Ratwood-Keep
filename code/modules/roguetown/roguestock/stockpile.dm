@@ -101,7 +101,7 @@
 	name = "Salt"
 	desc = "Rock salt useful for curing and cooking."
 	item_type = /obj/item/reagent_containers/powder/salt
-	held_items = 2
+	held_items = list(2,4)
 	payout_price = 4
 	withdraw_price = 6
 	export_price = 8
