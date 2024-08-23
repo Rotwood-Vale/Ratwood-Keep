@@ -10,9 +10,7 @@
 /datum/sex_action/rub_body/can_perform(mob/living/user, mob/living/target)
 	if(user == target)
 		return FALSE
-	if(!get_location_accessible(target, BODY_ZONE_CHEST))
-		return FALSE
-	if(!get_location_accessible(user, BODY_ZONE_PRECISE_MOUTH))
+	if(!get_location_accessible(target, BODY_ZONE_CHEST, TRUE))
 		return FALSE
 	return TRUE
 
