@@ -531,6 +531,8 @@
 	item_state = "astratahelm"
 	emote_environment = 3
 	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR
+	flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH
+	body_parts_covered = HEAD|EARS|HAIR|NOSE|EYES|MOUTH
 	block2add = FOV_BEHIND
 	smeltresult = /obj/item/ingot/steel
 
@@ -541,6 +543,8 @@
 	item_state = "nochelm"
 	emote_environment = 3
 	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR
+	flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH
+	body_parts_covered = HEAD|EARS|HAIR|NOSE|EYES|MOUTH
 	block2add = FOV_BEHIND
 	smeltresult = /obj/item/ingot/steel
 
@@ -551,6 +555,8 @@
 	item_state = "necrahelm"
 	emote_environment = 3
 	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR
+	flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH
+	body_parts_covered = HEAD|EARS|HAIR|NOSE|EYES|MOUTH
 	block2add = FOV_BEHIND
 	smeltresult = /obj/item/ingot/steel
 
@@ -561,6 +567,8 @@
 	item_state = "dendorhelm"
 	emote_environment = 3
 	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR
+	flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH
+	body_parts_covered = HEAD|EARS|HAIR|NOSE|EYES|MOUTH
 	block2add = FOV_BEHIND
 	smeltresult = /obj/item/ingot/steel
 
