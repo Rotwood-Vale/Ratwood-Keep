@@ -86,29 +86,28 @@
 						var/fishchance = 100 // Total fishing chance, deductions applied below
 						if(user.mind)
 							if(!sl) // If we have zero fishing skill...
-								fishchance -= 60 // 40% chance to fish base
-								fishchance -= bp // On top of it, deduct penalties from bait quality, if any
+								fishchance -= 50 // 50% chance to fish base
 							else
 								fishchance -= bp // Deduct penalties from bait quality, if any
 								fishchance -= fpp // Deduct a penalty the lower our fishing level is (-0 at legendary)
+						var/mob/living/fisherman = user
 						if(prob(fishchance)) // Finally, roll the dice to see if we fish.
 							var/A = pickweight(baited.fishloot)
 							var/ow = 30 + (sl * 10) // Opportunity window, in ticks. Longer means you get more time to cancel your bait
 							to_chat(user, "<span class='notice'>Something tugs the line!</span>")
 							playsound(src.loc, 'sound/items/fishing_plouf.ogg', 100, TRUE)
 							if(!do_after(user,ow, target = target))
-								var/mob/living/fisherman = user
 								if(ismob(A)) // TODO: Baits with mobs on their fishloot lists OR water tiles with their own fish loot pools
 									var/mob/M = A
 									if(M.type in subtypesof(/mob/living/simple_animal/hostile))
 										new M(target)
 									else
 										new M(user.loc)
-									user.mind.adjust_experience(/datum/skill/labor/fishing, fisherman.STAINT * 2, FALSE) // High risk high reward
+									user.mind.add_sleep_experience(/datum/skill/labor/fishing, fisherman.STAINT*2) // High risk high reward
 								else
 									new A(user.loc)
 									to_chat(user, "<span class='warning'>Reel 'em in!</span>")
-									user.mind.adjust_experience(/datum/skill/labor/fishing, round(fisherman.STAINT, 2), FALSE) // Level up!
+									user.mind.add_sleep_experience(/datum/skill/labor/fishing, round(fisherman.STAINT, 2), FALSE) // Level up!
 								playsound(src.loc, 'sound/items/Fish_out.ogg', 100, TRUE)
 								if(prob(80 - (sl * 10))) // Higher skill levels make you less likely to lose your bait
 									to_chat(user, "<span class='warning'>Damn, it ate my bait.</span>")
@@ -122,6 +121,7 @@
 									baited = null
 						else
 							to_chat(user, "<span class='warning'>Not even a nibble...</span>")
+							user.mind.add_sleep_experience(/datum/skill/labor/fishing, fisherman.STAINT/2) // Pity XP.
 					else
 						to_chat(user, "<span class='warning'>This seems pointless without a bait.</span>")
 				else
