@@ -30,6 +30,8 @@
 	var/blood_storage = 0
 	/// Maximum amount of blood we can store
 	var/blood_maximum = BLOOD_VOLUME_SURVIVE
+	// Who are we latching onto?
+	var/mob/living/host
 
 /obj/item/natural/worms/leech/Initialize()
 	. = ..()
@@ -39,9 +41,40 @@
 		START_PROCESSING(SSobj, src)
 
 /obj/item/natural/worms/leech/process()
-	if(!drainage)
+	if(!drainage && !is_embedded)
+		host = null
 		return PROCESS_KILL
 	blood_storage = max(blood_storage - drainage, 0)
+	if(!host)
+		return FALSE
+	host.adjustToxLoss(-toxin_healing)
+	var/obj/item/bodypart/bp = loc
+	if(giving)
+		var/blood_given = min(BLOOD_VOLUME_MAXIMUM - host.blood_volume, blood_storage, blood_sucking)
+		host.blood_volume += blood_given
+		blood_storage = max(blood_storage - blood_given, 0)
+		if((blood_storage <= 0) || (host.blood_volume >= BLOOD_VOLUME_MAXIMUM))
+			if(bp)
+				bp.remove_embedded_object(src)
+			else
+				host.simple_remove_embedded_object(src)
+			return TRUE
+	else
+		var/blood_extracted = min(blood_maximum - blood_storage, host.blood_volume, blood_sucking)
+		host.blood_volume = max(host.blood_volume - blood_extracted, 0)
+		blood_storage += blood_extracted
+		if((blood_storage >= blood_maximum) || (host.blood_volume <= 0))
+			if(bp)
+				bp.remove_embedded_object(src)
+			else
+				host.simple_remove_embedded_object(src)
+			return TRUE
+	return FALSE
+
+/obj/item/natural/worms/leech/on_embed(obj/item/bodypart/bp)
+	if(bp.owner)
+		host = bp.owner
+		START_PROCESSING(SSobj, src)
 
 /obj/item/natural/worms/leech/examine(mob/user)
 	. = ..()
@@ -84,32 +117,6 @@
 			user.visible_message(span_notice("[user] places [src] on [M]'s [affecting]."), span_notice("I place a leech on [M]'s [affecting]."))
 		return
 	return ..()
-
-/obj/item/natural/worms/leech/on_embed_life(mob/living/user, obj/item/bodypart/bodypart)
-	if(!user)
-		return
-	user.adjustToxLoss(-toxin_healing)
-	if(giving)
-		var/blood_given = min(BLOOD_VOLUME_MAXIMUM - user.blood_volume, blood_storage, blood_sucking)
-		user.blood_volume += blood_given
-		blood_storage = max(blood_storage - blood_given, 0)
-		if((blood_storage <= 0) || (user.blood_volume >= BLOOD_VOLUME_MAXIMUM))
-			if(bodypart)
-				bodypart.remove_embedded_object(src)
-			else
-				user.simple_remove_embedded_object(src)
-			return TRUE
-	else
-		var/blood_extracted = min(blood_maximum - blood_storage, user.blood_volume, blood_sucking)
-		user.blood_volume = max(user.blood_volume - blood_extracted, 0)
-		blood_storage += blood_extracted
-		if((blood_storage >= blood_maximum) || (user.blood_volume <= 0))
-			if(bodypart)
-				bodypart.remove_embedded_object(src)
-			else
-				user.simple_remove_embedded_object(src)
-			return TRUE
-	return FALSE
 
 /// LEECH LORE... Collect em all!
 /obj/item/natural/worms/leech/proc/leech_lore()

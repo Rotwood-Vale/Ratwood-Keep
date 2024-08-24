@@ -345,7 +345,7 @@
 					var/obj/item/organ/ears/my_ears = owner.getorganslot(ORGAN_SLOT_EARS)
 					if(!my_ears || has_wound(/datum/wound/facial/ears))
 						attempted_wounds += /datum/wound/fracture/head/ears
-					else 
+					else
 						attempted_wounds += /datum/wound/facial/ears
 				else if(zone_precise in eyestab_zones)
 					var/obj/item/organ/my_eyes = owner.getorganslot(ORGAN_SLOT_EYES)
@@ -381,10 +381,11 @@
 	if(!embedder || !can_embed(embedder))
 		return FALSE
 	if(owner && ((owner.status_flags & GODMODE) || HAS_TRAIT(owner, TRAIT_PIERCEIMMUNE)))
-		return FALSE 
+		return FALSE
 	LAZYADD(embedded_objects, embedder)
 	embedder.is_embedded = TRUE
 	embedder.forceMove(src)
+	embedder.on_embed(src)
 	if(owner)
 		embedder.add_mob_blood(owner)
 		if(!silent)
