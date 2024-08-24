@@ -1479,8 +1479,8 @@
 	dir = 8
 	},
 /obj/structure/fluff/walldeco/painting/seraphina{
-	pixel_y = 0;
-	pixel_x = 32
+	pixel_x = 32;
+	pixel_y = 0
 	},
 /turf/open/floor/rogue/churchmarble,
 /area/rogue/indoors/town/church/chapel)
@@ -1907,7 +1907,7 @@
 "cnh" = (
 /obj/structure/closet/crate/coffin,
 /turf/open/floor/rogue/blocks,
-/area/rogue/outdoors/town)
+/area/rogue/indoors/town/church)
 "cod" = (
 /obj/machinery/light/rogue/wallfire/candle{
 	pixel_y = -32
@@ -3944,7 +3944,7 @@
 "eum" = (
 /obj/structure/closet/crate/coffin,
 /turf/open/floor/rogue/cobble,
-/area/rogue/outdoors/town)
+/area/rogue/indoors/town/church)
 "euo" = (
 /obj/structure/chair/wood/rogue{
 	dir = 4
@@ -5846,7 +5846,7 @@
 	pixel_y = 0
 	},
 /turf/open/floor/rogue/blocks,
-/area/rogue/outdoors/town)
+/area/rogue/indoors/town/church)
 "gBU" = (
 /obj/structure/glowshroom,
 /turf/open/floor/rogue/naturalstone,
@@ -12898,13 +12898,6 @@
 /obj/structure/fermenting_barrel/random/water,
 /turf/open/floor/rogue/blocks/stonered,
 /area/rogue/indoors/town/bath)
-"oQJ" = (
-/obj/structure/mineral_door/wood{
-	lockid = "butcher";
-	locked = 1
-	},
-/turf/open/floor/rogue/cobble,
-/area/rogue/indoors)
 "oQO" = (
 /obj/structure/closet/crate/chest{
 	lockid = "keep_armory"
@@ -13812,8 +13805,8 @@
 "pUR" = (
 /obj/structure/bed/rogue,
 /obj/structure/fluff/walldeco/painting/seraphina{
-	pixel_y = 0;
-	pixel_x = 32
+	pixel_x = 32;
+	pixel_y = 0
 	},
 /turf/open/floor/carpet/royalblack,
 /area/rogue/indoors/town/church)
@@ -15402,8 +15395,8 @@
 /area/rogue/indoors/town/manor)
 "rYx" = (
 /obj/structure/fluff/statue/astrata/gold{
-	pixel_y = 0;
-	pixel_x = -8
+	pixel_x = -8;
+	pixel_y = 0
 	},
 /turf/open/floor/rogue/church,
 /area/rogue/indoors/town/church/chapel)
@@ -18750,7 +18743,6 @@
 	dir = 1;
 	icon_state = "longtable"
 	},
-/obj/machinery/light/rogue/wallfire/candle/blue,
 /obj/item/clothing/neck/roguetown/psicross/noc,
 /turf/closed/wall/mineral/rogue/stone,
 /area/rogue/outdoors/town)
@@ -20327,13 +20319,6 @@
 /obj/item/candle/yellow/lit,
 /turf/open/floor/rogue/twig,
 /area/rogue/indoors)
-"xTk" = (
-/obj/structure/mineral_door/wood/donjon/stone{
-	locked = 1;
-	lockid = "church"
-	},
-/turf/closed/wall/mineral/rogue/stone,
-/area/rogue/outdoors/town)
 "xTv" = (
 /obj/structure/closet/crate/coffin,
 /obj/machinery/light/rogue/wallfire/candle/r,
@@ -269600,7 +269585,7 @@ wlD
 wlD
 wlD
 wlD
-oQJ
+ujy
 uaL
 qvR
 qvR
@@ -270402,7 +270387,7 @@ qvR
 ryI
 jsT
 wOD
-oQJ
+ujy
 wOD
 ryI
 uuq
@@ -316496,12 +316481,12 @@ wSn
 uaL
 xAt
 xAt
-rfx
-rfx
-rfx
-rfx
-rfx
-xTk
+qPA
+qPA
+qPA
+qPA
+qPA
+sUu
 vTq
 vOS
 vOS
@@ -316898,13 +316883,13 @@ wSn
 uaL
 xAt
 xAt
-rfx
+qPA
 cnh
 cnh
 gBM
-wVI
-wVI
-rfx
+iuo
+iuo
+qPA
 rfx
 rfx
 rfx
@@ -317300,13 +317285,13 @@ wSn
 wSn
 xAt
 xAt
-rfx
+qPA
 cnh
-wbg
-wbg
-wbg
-wVI
-rfx
+nGW
+nGW
+nGW
+iuo
+qPA
 pQd
 pQd
 pQd
@@ -317702,13 +317687,13 @@ uaL
 uaL
 xAt
 xAt
-rfx
+qPA
 cnh
-wbg
-wbg
-wbg
-wVI
-rfx
+nGW
+nGW
+nGW
+iuo
+qPA
 pQd
 pQd
 pQd
@@ -318104,13 +318089,13 @@ hcW
 hcW
 xAt
 xAt
-rfx
+qPA
 cnh
 eum
 eum
 eum
 cnh
-rfx
+qPA
 pQd
 pQd
 pQd
@@ -318506,13 +318491,13 @@ hcW
 hcW
 xAt
 xAt
-rfx
-rfx
-rfx
-rfx
-rfx
-rfx
-rfx
+qPA
+qPA
+qPA
+qPA
+qPA
+qPA
+qPA
 pQd
 pQd
 pQd
