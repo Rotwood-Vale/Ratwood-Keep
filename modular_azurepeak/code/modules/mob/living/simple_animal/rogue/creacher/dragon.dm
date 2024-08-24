@@ -10,6 +10,7 @@
 	emote_see = null
 	speak_chance = 1
 	turns_per_move = 3
+	speak_emote = list("growls")
 	see_in_dark = 6
 	move_to_delay = 3
 	base_intents = list(/datum/intent/simple/bite)
@@ -17,8 +18,8 @@
 						/obj/item/natural/hide = 2,
 						/obj/item/natural/fur = 1, /obj/item/natural/bone = 4)
 	mob_biotypes = MOB_ORGANIC|MOB_BEAST
-	health = 1000
-	maxHealth = 1000
+	health = 2000
+	maxHealth = 2000
 	melee_damage_lower = 19
 	melee_damage_upper = 29
 	vision_range = 7
@@ -50,6 +51,12 @@
 	if(prob(33))
 		gender = FEMALE
 	update_icon()
+	ADD_TRAIT(src, TRAIT_NOMOOD, TRAIT_GENERIC)
+	ADD_TRAIT(src, TRAIT_NOROGSTAM, TRAIT_GENERIC)
+	ADD_TRAIT(src, TRAIT_NOHUNGER, TRAIT_GENERIC)
+	ADD_TRAIT(src, TRAIT_NOBREATH, TRAIT_GENERIC)
+	ADD_TRAIT(src, TRAIT_NOPAIN, TRAIT_GENERIC)
+	ADD_TRAIT(src, TRAIT_TOXIMMUNE, TRAIT_GENERIC)
 
 /mob/living/simple_animal/hostile/retaliate/rogue/dragon/death(gibbed)
 	..()
@@ -89,7 +96,6 @@
 	if(pulledby)
 		Retaliate()
 		GiveTarget(pulledby)
-
 
 /mob/living/simple_animal/hostile/retaliate/rogue/dragon/simple_limb_hit(zone)
 	if(!zone)
