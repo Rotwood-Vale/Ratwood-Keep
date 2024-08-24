@@ -127,7 +127,7 @@
 	if(!length(sewable))
 		to_chat(doctor, span_warning("There aren't any wounds to be sewn."))
 		return FALSE
-	var/datum/wound/target_wound = input(doctor, "Which wound?", "[src]") as null|anything in sewable
+	var/datum/wound/target_wound = sewable.len > 1 ? input(doctor, "Which wound?", "[src]") as null|anything in sewable : sewable[1]
 	if(!target_wound)
 		return FALSE
 

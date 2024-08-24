@@ -21,7 +21,7 @@ GLOBAL_LIST_INIT(moldable_organs, list(BODY_ZONE_PRECISE_GROIN=list(ORGAN_SLOT_P
 		BODY_ZONE_PRECISE_MOUTH,
 		BODY_ZONE_PRECISE_STOMACH,
 		BODY_ZONE_PRECISE_GROIN,
-		BODY_ZONE_L_ARM, 
+		BODY_ZONE_L_ARM,
 		BODY_ZONE_R_ARM,
 	)
 	steps = list(
@@ -38,7 +38,7 @@ GLOBAL_LIST_INIT(moldable_organs, list(BODY_ZONE_PRECISE_GROIN=list(ORGAN_SLOT_P
 	time = 6.4 SECONDS
 	accept_hand = TRUE
 	implements = list(
-		/obj/item/organ = 80, 
+		/obj/item/organ = 80,
 		/obj/item/organ_storage = 80,
 		/obj/item/reagent_containers/food/snacks/organ = 0,
 	)
@@ -46,6 +46,8 @@ GLOBAL_LIST_INIT(moldable_organs, list(BODY_ZONE_PRECISE_GROIN=list(ORGAN_SLOT_P
 	surgery_flags = SURGERY_INCISED | SURGERY_RETRACTED
 	skill_min = SKILL_LEVEL_JOURNEYMAN
 	skill_median = SKILL_LEVEL_EXPERT
+	preop_sound = 'sound/surgery/organ2.ogg'
+	success_sound = 'sound/surgery/organ1.ogg'
 	/// Implements used to extract an organ - This really should be split into two different steps...
 	var/list/implements_extract = list(
 		TOOL_HEMOSTAT = 80,
@@ -78,7 +80,7 @@ GLOBAL_LIST_INIT(moldable_organs, list(BODY_ZONE_PRECISE_GROIN=list(ORGAN_SLOT_P
 	if(istype(tool, /obj/item/reagent_containers/food/snacks/organ))
 		to_chat(user, span_warning("[tool] was bitten by someone! It's too damaged to use!"))
 		return FALSE
-	
+
 	if(istype(tool, /obj/item/organ_storage))
 		if(!length(tool.contents))
 			to_chat(user, span_warning("There is nothing inside [tool]!"))
@@ -117,7 +119,7 @@ GLOBAL_LIST_INIT(moldable_organs, list(BODY_ZONE_PRECISE_GROIN=list(ORGAN_SLOT_P
 		var/obj/item/organ/final_organ = organs[selected]
 		if(QDELETED(final_organ))
 			return FALSE
-		
+
 		user.select_organ_slot(final_organ.slot)
 		display_results(user, target, span_notice("I begin to extract [final_organ] from [target]'s [parse_zone(target_zone)]..."),
 			span_notice("[user] begins to extract [final_organ] from [target]'s [parse_zone(target_zone)]."),
