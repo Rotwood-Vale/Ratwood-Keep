@@ -208,3 +208,11 @@
 	name = "Insight"
 	desc = "With some sleep in a coffin I feel like I could become better."
 	icon_state = "sleepy"
+
+//Death debuff
+
+/datum/status_effect/debuff/death_weaken
+	id = "death_weaken"
+	alert_type = null
+	examine_text = span_notice("They appear not entirely whole, as if some part of them was left behind.")
+	effectedstats = list("strength" = -2, "perception" = -2, "intelligence" = -2, "constitution" = -2, "endurance" = -2, "speed" = -2)
