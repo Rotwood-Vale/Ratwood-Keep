@@ -3542,6 +3542,7 @@
 #include "modular_azurepeak\code\game\area\areas.dm"
 #include "modular_azurepeak\code\game\objects\items\surgery_bag.dm"
 #include "modular_azurepeak\code\game\objects\structures\fartravel.dm"
+#include "modular_azurepeak\code\modules\mob\living\simple_animal\rogue\creacher\dragon.dm"
 #include "modular_azurepeak\code\modules\mob\living\simple_animal\rogue\creacher\gethsmane.dm"
 #include "modular_azurepeak\statpacks\agile.dm"
 #include "modular_azurepeak\statpacks\mental.dm"
