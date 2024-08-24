@@ -25,8 +25,8 @@
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/combat/bows, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/whipsflails, 1, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 5, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 5, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/knives, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/polearms, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/craft/crafting, 2, TRUE)
@@ -38,9 +38,11 @@
 		H.mind.adjust_skillrank(/datum/skill/craft/carpentry, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/craft/masonry, 1, TRUE)
 		H.change_stat("strength", 4)
-		H.change_stat("constitution", 5)
-		H.change_stat("endurance", 3)
+		H.change_stat("constitution", 6)
+		H.change_stat("endurance", 4)
 		H.change_stat("speed", 1)
+
+	ADD_TRAIT(H, TRAIT_CIVILIZEDBARBARIAN, TRAIT_GENERIC)
 
 	if(H.gender == MALE)
 		head = /obj/item/clothing/head/roguetown/roguehood/random
