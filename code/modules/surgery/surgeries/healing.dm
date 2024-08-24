@@ -24,12 +24,14 @@
 	surgery_flags = SURGERY_BLOODY | SURGERY_INCISED | SURGERY_CLAMPED
 	skill_min = SKILL_LEVEL_APPRENTICE
 	skill_median = SKILL_LEVEL_APPRENTICE
+	success_sound = 'sound/surgery/retractor2.ogg'
+	failure_sound = 'sound/surgery/organ2.ogg'
 	/// How much brute damage we heal per completion
 	var/brutehealing = 0
 	/// How much burn damage we heal per completion
 	var/burnhealing = 0
-	/** 
-	 * Heals an extra point of damager per X missing damage of type (burn damage for burn healing, brute for brute) 
+	/**
+	 * Heals an extra point of damager per X missing damage of type (burn damage for burn healing, brute for brute)
 	 * Smaller Number = More Healing!
 	 */
 	var/missinghpbonus = 0
@@ -68,9 +70,6 @@
 		if(target.stat != DEAD)
 			urhealedamt_brute += round((target.getBruteLoss()/ missinghpbonus),0.1)
 			urhealedamt_burn += round((target.getFireLoss()/ missinghpbonus),0.1)
-		else //less healing bonus for the dead since they're expected to have lots of damage to begin with (to make TW into defib not TOO simple)
-			urhealedamt_brute += round((target.getBruteLoss()/ (missinghpbonus*5)),0.1)
-			urhealedamt_burn += round((target.getFireLoss()/ (missinghpbonus*5)),0.1)
 	if(!get_location_accessible(target, target_zone))
 		urhealedamt_brute *= 0.55
 		urhealedamt_burn *= 0.55
