@@ -11,7 +11,7 @@
 	possible_locs = list(BODY_ZONE_CHEST)
 
 /datum/surgery_step/extract_lux
-	name = "extract lux"
+	name = "Extract Lux"
 	implements = list(
 		TOOL_SCALPEL = 80,
 	)

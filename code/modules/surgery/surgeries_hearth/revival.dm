@@ -11,7 +11,7 @@
 	possible_locs = list(BODY_ZONE_CHEST)
 
 /datum/surgery_step/infuse_lux
-	name = "infuse lux"
+	name = "Infuse Lux"
 	implements = list(
 		/obj/item/reagent_containers/lux = 80,
 	)
