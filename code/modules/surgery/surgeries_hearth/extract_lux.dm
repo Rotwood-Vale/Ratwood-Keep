@@ -14,8 +14,6 @@
 	name = "extract lux"
 	implements = list(
 		TOOL_SCALPEL = 80,
-		TOOL_SHARP = 60,
-		/obj/item/kitchen/spoon/plastic = 80
 	)
 	target_mobtypes = list(/mob/living/carbon/human, /mob/living/carbon/monkey)
 	time = 8 SECONDS
