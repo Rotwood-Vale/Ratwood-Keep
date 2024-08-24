@@ -24,7 +24,7 @@
 		return
 	if(href_list["navigate"])
 		return attack_hand(usr, href_list["navigate"])
-	
+
 	if(withdraw_tab.perform_action(href, href_list))
 		if(href_list["remote"])
 			playsound(loc, 'sound/misc/disposalflush.ogg', 100, FALSE, -1)
@@ -32,7 +32,7 @@
 
 	// If we don't get a valid option, default to returning to the directory
 	return attack_hand(usr, "directory")
-	
+
 
 /obj/structure/roguemachine/stockpile/proc/get_directory_contents()
 	var/contents = "<center>TOWN STOCKPILE<BR>"
@@ -40,7 +40,7 @@
 
 	contents += "<a href='?src=[REF(src)];navigate=withdraw'>EXTRACT</a><BR>"
 	contents += "<a href='?src=[REF(src)];navigate=deposit'>FEED</a></center><BR><BR>"
-	
+
 	return contents
 
 /obj/structure/roguemachine/stockpile/proc/get_withdraw_contents()
@@ -78,7 +78,7 @@
 		contents = get_deposit_contents()
 	else
 		contents = get_directory_contents()
-	
+
 	var/datum/browser/popup = new(user, "VENDORTHING", "", 370, 800)
 	popup.set_content(contents)
 	popup.open()
@@ -96,7 +96,7 @@
 					playsound(loc, 'sound/misc/hiss.ogg', 100, FALSE, -1)
 				var/amt = R.payout_price * B.amount
 				if(!SStreasury.give_money_account(amt, H, "+[amt] from [R.name] bounty") && message == TRUE)
-					say("No account found. Submit your fingers to a shylock for inspection.")
+					say("No account found. Submit your fingers to a Meister for inspection.")
 			continue
 		else if(istype(I,R.item_type))
 			if(!R.check_item(I))
@@ -125,7 +125,7 @@
 					playsound(loc, 'sound/misc/disposalflush.ogg', 100, FALSE, -1)
 			if(amt)
 				if(!SStreasury.give_money_account(amt, H, "+[amt] from [R.name] bounty") && message == TRUE)
-					say("No account found. Submit your fingers to a shylock for inspection.")
+					say("No account found. Submit your fingers to a Meister for inspection.")
 			return
 
 /obj/structure/roguemachine/stockpile/attackby(obj/item/P, mob/user, params)
@@ -144,4 +144,4 @@
 		playsound(loc, 'sound/misc/hiss.ogg', 100, FALSE, -1)
 		playsound(loc, 'sound/misc/disposalflush.ogg', 100, FALSE, -1)
 
-	
+
