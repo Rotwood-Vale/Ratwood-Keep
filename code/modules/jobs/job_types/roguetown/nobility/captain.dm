@@ -3,7 +3,6 @@
 	flag = GUARD_CAPTAIN
 	department_flag = NOBLEMEN
 	faction = "Station"
-	allowed_patrons = ALL_DIVINE_PATRONS
 	total_positions = 1
 	spawn_positions = 1
 
