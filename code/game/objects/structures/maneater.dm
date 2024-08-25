@@ -111,16 +111,15 @@
 		return
 	if(isliving(user))
 		var/mob/living/L = user
-		var/resist_chance = CLAMP((L.STASTR * 2), 1, 99)
+		var/time2mount = CLAMP((L.STASTR * 2), 1, 99)
+		user.changeNext_move(CLICK_CD_RAPID)
 		if(user != M)
-			user.changeNext_move(0.2 SECONDS)
-			if(prob(resist_chance))
+			if(prob(time2mount))
 				..()
 			else
 				user.visible_message(span_warning("[user] tries to pull [M] free of [src]!"))
 			return
-		user.changeNext_move(0.25 SECONDS)
-		if(prob(resist_chance))
+		if(prob(time2mount))
 			..()
 		else
 			user.visible_message(span_warning("[user] tries to break free of [src]!"))
