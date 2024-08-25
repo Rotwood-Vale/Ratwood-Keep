@@ -216,3 +216,6 @@
 
 /obj/item/keyring/royal
 	keys = list(/obj/item/roguekey/councillor_rooms, /obj/item/roguekey/prince_rooms, /obj/item/roguekey/manor, /obj/item/roguekey/royal)
+
+/obj/item/keyring/gravedigger
+	keys = list(/obj/item/roguekey/graveyard, /obj/item/roguekey/church)
