@@ -124,7 +124,6 @@
 "abO" = (
 /obj/structure/well,
 /turf/open/floor/rogue/cobblerock,
-/turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors/rtfield)
 "abV" = (
 /obj/structure/closet/crate/chest/gold,
@@ -1972,7 +1971,6 @@
 	pixel_y = -4
 	},
 /turf/open/floor/rogue/cobblerock,
-/turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors/rtfield)
 "clr" = (
 /obj/item/chair/rogue,
@@ -3562,10 +3560,6 @@
 	},
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors)
-"dUX" = (
-/turf/open/transparent/openspace,
-/turf/open/transparent/openspace,
-/area/rogue/outdoors/rtfield)
 "dUY" = (
 /obj/structure/stairs,
 /turf/open/floor/rogue/ruinedwood{
@@ -4830,13 +4824,6 @@
 /obj/effect/decal/cleanable/blood/splatter,
 /turf/closed/mineral/rogue,
 /area/rogue/outdoors/town)
-"ffp" = (
-/obj/machinery/light/rogue/torchholder{
-	dir = 4
-	},
-/turf/open/floor/rogue/cobblerock,
-/turf/open/floor/rogue/dirt/road,
-/area/rogue/outdoors/rtfield)
 "ffv" = (
 /turf/open/transparent/openspace,
 /area/rogue/indoors/town/church)
@@ -6479,10 +6466,6 @@
 	},
 /turf/open/floor/rogue/ruinedwood/turned,
 /area/rogue/indoors/shelter/mountains)
-"hca" = (
-/turf/open/floor/rogue/grass,
-/turf/open/floor/rogue/dirt/road,
-/area/rogue/outdoors/rtfield)
 "hcg" = (
 /turf/closed/wall/mineral/rogue/wooddark,
 /area/rogue/outdoors/mountains)
@@ -15090,10 +15073,6 @@
 /obj/structure/stairs,
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue/outdoors/bog)
-"qYc" = (
-/turf/open/floor/rogue/dirt/road,
-/turf/open/floor/rogue/dirt/road,
-/area/rogue/outdoors/rtfield)
 "qYk" = (
 /obj/structure/roguewindow/curtain{
 	dir = 4
@@ -15751,10 +15730,6 @@
 /obj/structure/roguemachine/atm,
 /turf/open/floor/rogue/blocks,
 /area/rogue/outdoors/town)
-"rJK" = (
-/turf/open/floor/rogue/cobblerock,
-/turf/open/floor/rogue/dirt/road,
-/area/rogue/outdoors/rtfield)
 "rKW" = (
 /obj/structure/table/wood{
 	dir = 1;
@@ -261914,7 +261889,7 @@ qwz
 qwz
 fxx
 qvR
-rJK
+fxx
 wSn
 wSn
 qvR
@@ -262316,7 +262291,7 @@ jXZ
 jXZ
 fxx
 qvR
-rJK
+fxx
 wSn
 wSn
 gex
@@ -262717,7 +262692,7 @@ jXZ
 oVk
 jXZ
 fxx
-rJK
+fxx
 qvR
 qvR
 wSn
@@ -267542,15 +267517,15 @@ qvR
 wSn
 wSn
 qvR
-ffp
+dpZ
 xUK
 clg
 qvR
 qvR
 qvR
-rJK
+fxx
 wSn
-rJK
+fxx
 qvR
 uaL
 qvR
@@ -275569,7 +275544,7 @@ tKs
 wAm
 wAm
 czd
-hca
+qvR
 wSn
 qvR
 wSn
@@ -275971,7 +275946,7 @@ fxx
 uaL
 wSn
 dfk
-qYc
+uaL
 qvR
 qvR
 wSn
@@ -277177,9 +277152,9 @@ fxx
 fxx
 fxx
 dfk
-qYc
+uaL
 wSn
-qYc
+uaL
 wSn
 qQZ
 wSn
@@ -278384,7 +278359,7 @@ uaL
 uaL
 xKK
 wSn
-qYc
+uaL
 qvR
 aev
 vIa
@@ -279179,10 +279154,10 @@ uaL
 uaL
 uaL
 uaL
-qYc
-rJK
-rJK
-hca
+uaL
+fxx
+fxx
+qvR
 wSn
 wSn
 qvR
@@ -280385,9 +280360,9 @@ uaL
 uaL
 spp
 qvR
-hca
-rJK
-rJK
+qvR
+fxx
+fxx
 qQZ
 qvR
 wSn
@@ -280785,11 +280760,11 @@ qvR
 qvR
 wSn
 qvR
-rJK
+fxx
 qvR
 qvR
 qvR
-rJK
+fxx
 qvR
 wSn
 qvR
@@ -281187,11 +281162,11 @@ vLS
 qvR
 wSn
 wSn
-rJK
-rJK
-rJK
+fxx
+fxx
+fxx
 uaL
-rJK
+fxx
 qQZ
 qvR
 qvR
@@ -376859,8 +376834,8 @@ qbG
 qbG
 qbG
 qbG
-dUX
-dUX
+qbG
+qbG
 teW
 sAR
 ffv
@@ -377261,8 +377236,8 @@ qbG
 qbG
 qbG
 qbG
-dUX
-dUX
+qbG
+qbG
 teW
 sAR
 ffv
@@ -377663,8 +377638,8 @@ qbG
 qbG
 qbG
 qbG
-dUX
-dUX
+qbG
+qbG
 teW
 iIM
 tPq
@@ -378065,8 +378040,8 @@ qbG
 qbG
 qbG
 qbG
-dUX
-dUX
+qbG
+qbG
 czd
 wAm
 wAm
@@ -378467,13 +378442,13 @@ qbG
 qbG
 qbG
 qbG
-dUX
-dUX
-dUX
-dUX
-dUX
-dUX
-dUX
+qbG
+qbG
+qbG
+qbG
+qbG
+qbG
+qbG
 qbG
 qbG
 qbG
@@ -378869,13 +378844,13 @@ qbG
 qbG
 qbG
 qbG
-dUX
-dUX
-dUX
-dUX
-dUX
-dUX
-dUX
+qbG
+qbG
+qbG
+qbG
+qbG
+qbG
+qbG
 qbG
 qbG
 qbG
@@ -379271,13 +379246,13 @@ qbG
 qbG
 qbG
 qbG
-dUX
-dUX
-dUX
-dUX
-dUX
-dUX
-dUX
+qbG
+qbG
+qbG
+qbG
+qbG
+qbG
+qbG
 qbG
 qbG
 qbG
@@ -379673,13 +379648,13 @@ qbG
 qbG
 qbG
 qbG
-dUX
-dUX
-dUX
-dUX
-dUX
-dUX
-dUX
+qbG
+qbG
+qbG
+qbG
+qbG
+qbG
+qbG
 qbG
 qbG
 qbG
@@ -380075,13 +380050,13 @@ qbG
 qbG
 qbG
 qbG
-dUX
-dUX
-dUX
-dUX
-dUX
-dUX
-dUX
+qbG
+qbG
+qbG
+qbG
+qbG
+qbG
+qbG
 qbG
 qbG
 qbG
@@ -380477,13 +380452,13 @@ qbG
 qbG
 qbG
 qbG
-dUX
-dUX
-dUX
-dUX
-dUX
-dUX
-dUX
+qbG
+qbG
+qbG
+qbG
+qbG
+qbG
+qbG
 qbG
 qbG
 qbG
@@ -380879,13 +380854,13 @@ qbG
 qbG
 qbG
 qbG
-dUX
-dUX
-dUX
-dUX
-dUX
-dUX
-dUX
+qbG
+qbG
+qbG
+qbG
+qbG
+qbG
+qbG
 qbG
 qbG
 qbG
@@ -381281,13 +381256,13 @@ qbG
 qbG
 qbG
 qbG
-dUX
-dUX
-dUX
-dUX
-dUX
-dUX
-dUX
+qbG
+qbG
+qbG
+qbG
+qbG
+qbG
+qbG
 qbG
 qbG
 qbG
@@ -381683,13 +381658,13 @@ qbG
 qbG
 qbG
 qbG
-dUX
-dUX
-dUX
-dUX
-dUX
-dUX
-dUX
+qbG
+qbG
+qbG
+qbG
+qbG
+qbG
+qbG
 qbG
 qbG
 qbG
@@ -382085,13 +382060,13 @@ qbG
 qbG
 qbG
 qbG
-dUX
-dUX
-dUX
-dUX
-dUX
-dUX
-dUX
+qbG
+qbG
+qbG
+qbG
+qbG
+qbG
+qbG
 qbG
 qbG
 qbG
@@ -382487,13 +382462,13 @@ qbG
 qbG
 qbG
 qbG
-dUX
-dUX
-dUX
-dUX
-dUX
-dUX
-dUX
+qbG
+qbG
+qbG
+qbG
+qbG
+qbG
+qbG
 qbG
 qbG
 qbG
@@ -382889,13 +382864,13 @@ qbG
 qbG
 qbG
 qbG
-dUX
-dUX
-dUX
-dUX
-dUX
-dUX
-dUX
+qbG
+qbG
+qbG
+qbG
+qbG
+qbG
+qbG
 qbG
 qbG
 qbG
