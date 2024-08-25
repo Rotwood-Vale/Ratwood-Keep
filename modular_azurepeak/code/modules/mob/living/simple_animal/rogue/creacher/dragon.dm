@@ -18,8 +18,8 @@
 						/obj/item/natural/hide = 2,
 						/obj/item/natural/fur = 1, /obj/item/natural/bone = 4)
 	mob_biotypes = MOB_ORGANIC|MOB_BEAST
-	health = 2000
-	maxHealth = 2000
+	health = 2500
+	maxHealth = 2500
 	melee_damage_lower = 19
 	melee_damage_upper = 29
 	vision_range = 7
@@ -40,7 +40,7 @@
 	del_on_deaggro = 9999 SECONDS
 	retreat_health = 0.3
 	food = 0
-	attack_sound = list('sound/vo/mobs/vw/attack (1).ogg','sound/vo/mobs/vw/attack (2).ogg','sound/vo/mobs/vw/attack (3).ogg','sound/vo/mobs/vw/attack (4).ogg')
+	attack_sound = list('sound/combat/hits/blunt/genblunt (1).ogg','sound/combat/hits/blunt/genblunt (2).ogg','sound/combat/hits/blunt/genblunt (3).ogg','sound/combat/hits/blunt/flailhit.ogg')
 	dodgetime = 30
 	aggressive = 1
 //	stat_attack = UNCONSCIOUS
@@ -57,6 +57,17 @@
 	ADD_TRAIT(src, TRAIT_NOBREATH, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_NOPAIN, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_TOXIMMUNE, TRAIT_GENERIC)
+	ADD_TRAIT(src, TRAIT_BLOODLOSS_IMMUNE, TRAIT_GENERIC)
+	ADD_TRAIT(src, TRAIT_NOFIRE, TRAIT_GENERIC)
+	ADD_TRAIT(src, TRAIT_NIGHT_VISION, TRAIT_GENERIC)
+	ADD_TRAIT(src, TRAIT_BASHDOORS, TRAIT_GENERIC)
+	ADD_TRAIT(src, TRAIT_ORGAN_EATER, TRAIT_GENERIC)
+	ADD_TRAIT(src, TRAIT_NASTY_EATER, TRAIT_GENERIC)
+	ADD_TRAIT(src, TRAIT_NOSTINK, TRAIT_GENERIC)
+	ADD_TRAIT(src, TRAIT_CRITICAL_RESISTANCE, TRAIT_GENERIC)
+	ADD_TRAIT(src, TRAIT_STRONGBITE, TRAIT_GENERIC)
+	ADD_TRAIT(src, TRAIT_NOFALLDAMAGE1, TRAIT_GENERIC)
+	ADD_TRAIT(src, TRAIT_BREADY, TRAIT_GENERIC)
 
 /mob/living/simple_animal/hostile/retaliate/rogue/dragon/death(gibbed)
 	..()
@@ -77,13 +88,13 @@
 		if("aggro")
 			return pick('sound/vo/mobs/vw/aggro (1).ogg','sound/vo/mobs/vw/aggro (2).ogg')
 		if("pain")
-			return pick('sound/vo/mobs/vw/pain (1).ogg','sound/vo/mobs/vw/pain (2).ogg','sound/vo/mobs/vw/pain (3).ogg')
+			return pick('sound/vo/mobs/wwolf/painscream.ogg','sound/vo/mobs/wwolf/pain (1).ogg','sound/vo/mobs/wwolf/pain (3).ogg','sound/vo/mobs/wwolf/pain (2).ogg')
 		if("death")
-			return pick('sound/vo/mobs/vw/death (1).ogg','sound/vo/mobs/vw/death (2).ogg','sound/vo/mobs/vw/death (3).ogg','sound/vo/mobs/vw/death (4).ogg','sound/vo/mobs/vw/death (5).ogg')
+			return pick('sound/vo/mobs/wwolf/death.ogg')
 		if("idle")
-			return pick('sound/vo/mobs/vw/idle (1).ogg','sound/vo/mobs/vw/idle (2).ogg','sound/vo/mobs/vw/idle (3).ogg','sound/vo/mobs/vw/idle (4).ogg')
+			return pick('sound/vo/mobs/wwolf/idle (1).ogg',)
 		if("cidle")
-			return pick('sound/vo/mobs/vw/bark (1).ogg','sound/vo/mobs/vw/bark (2).ogg','sound/vo/mobs/vw/bark (3).ogg','sound/vo/mobs/vw/bark (4).ogg','sound/vo/mobs/vw/bark (5).ogg','sound/vo/mobs/vw/bark (6).ogg','sound/vo/mobs/vw/bark (7).ogg')
+			return pick('sound/vo/mobs/wwolf/idle (2).ogg')
 
 /mob/living/simple_animal/hostile/retaliate/rogue/dragon/taunted(mob/user)
 	emote("aggro")
