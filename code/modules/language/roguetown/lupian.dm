@@ -16,7 +16,7 @@
 		"unt","kech","gech","flei","deint","weim","kan","neiz","mende","lak","jen","gor","bor",
 		"kol","hau","au","vau","amh","av","vogh","guau","hev","haf","auh","bhao","jau","yar","owff",
 		"ghav","buh","rur","ya","cen","bar","kuk","tek","qat","uk","wu","vuh","tah","tch","schz",
-		"auch","ist","ein","entch","zwichs","tut","mir","wo","bis","es","vor","nic","gro","lll",
+		"auch","ist","ein","entch","zwichs","tut","mir","wo","bis","es","vor","nic","gro","ill",
 		"enem","zandt","tzch","noch","hel","ischt","far","wa","baram","iereng","tech","lach","sam",
 		"mak","lich","gen","or","ag","eck","gec","stag","onn","bin","ket","einech","cresthz","azunein","ghzth"
 	)
