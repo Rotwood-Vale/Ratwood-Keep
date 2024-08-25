@@ -343,6 +343,7 @@
 	sellprice = 200
 	resistance_flags = FIRE_PROOF | ACID_PROOF
 	anvilrepair = /datum/skill/craft/armorsmithing
+	clothing_flags = CANT_SLEEP_IN
 
 /obj/item/clothing/head/roguetown/crown/serpcrown/Initialize()
 	. = ..()
@@ -452,6 +453,7 @@
 	smeltresult = /obj/item/ingot/steel
 	blocksound = PLATEHIT
 	max_integrity = 200
+	clothing_flags = CANT_SLEEP_IN
 
 /obj/item/clothing/head/roguetown/helmet/skullcap
 	name = "skull cap"
@@ -482,7 +484,6 @@
 	desc = "A steel helmet which protects the whole of the head."
 	icon_state = "kettle"
 	body_parts_covered = HEAD|HAIR|EARS
-	armor = list("blunt" = 80, "slash" = 90, "stab" = 70, "bullet" = 100, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
 
 /obj/item/clothing/head/roguetown/helmet/sallet
 	name = "sallet"
@@ -530,6 +531,8 @@
 	item_state = "astratahelm"
 	emote_environment = 3
 	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR
+	flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH
+	body_parts_covered = HEAD|EARS|HAIR|NOSE|EYES|MOUTH
 	block2add = FOV_BEHIND
 	smeltresult = /obj/item/ingot/steel
 
@@ -540,6 +543,8 @@
 	item_state = "nochelm"
 	emote_environment = 3
 	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR
+	flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH
+	body_parts_covered = HEAD|EARS|HAIR|NOSE|EYES|MOUTH
 	block2add = FOV_BEHIND
 	smeltresult = /obj/item/ingot/steel
 
@@ -550,6 +555,8 @@
 	item_state = "necrahelm"
 	emote_environment = 3
 	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR
+	flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH
+	body_parts_covered = HEAD|EARS|HAIR|NOSE|EYES|MOUTH
 	block2add = FOV_BEHIND
 	smeltresult = /obj/item/ingot/steel
 
@@ -560,6 +567,8 @@
 	item_state = "dendorhelm"
 	emote_environment = 3
 	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR
+	flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH
+	body_parts_covered = HEAD|EARS|HAIR|NOSE|EYES|MOUTH
 	block2add = FOV_BEHIND
 	smeltresult = /obj/item/ingot/steel
 
@@ -697,6 +706,7 @@
 	smeltresult = null
 	sewrepair = TRUE
 	blocksound = SOFTHIT
+	clothing_flags = null
 
 /obj/item/clothing/head/roguetown/helmet/leather/volfhelm
 	slot_flags = ITEM_SLOT_HEAD|ITEM_SLOT_HIP
@@ -710,6 +720,7 @@
 	anvilrepair = null
 	sewrepair = TRUE
 	blocksound = SOFTHIT
+	clothing_flags = null
 
 /obj/item/clothing/head/roguetown/wizhat
 	name = "wizard hat"
@@ -808,6 +819,7 @@
 	smeltresult = null
 	sewrepair = TRUE
 	blocksound = SOFTHIT
+	clothing_flags = null
 
 /obj/item/clothing/head/roguetown/helmet/tricorn/skull
 	icon_state = "tricorn_skull"
@@ -830,3 +842,4 @@
 	smeltresult = null
 	sewrepair = TRUE
 	blocksound = SOFTHIT
+	clothing_flags = null

@@ -249,8 +249,8 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "E
 
 
 /datum/game_mode/chaosmode/proc/pick_aspirants()
-	var/list/possible_jobs_aspirants = list("Prince", "Princess", "Guard Captain", "Steward", "Hand", "Knight")
-	var/list/possible_jobs_helpers = list("Guard Captain", "Prince", "Princess", "Hand",  "Steward", "Knight")
+	var/list/possible_jobs_aspirants = list("Prince", "Princess", "Guard Lieutenant", "Steward", "Hand", "Knight")
+	var/list/possible_jobs_helpers = list("Guard Lieutenant", "Prince", "Princess", "Hand",  "Steward", "Knight")
 	var/list/rolesneeded = list("Aspirant","Loyalist","Supporter")
 
 	antag_candidates = get_players_for_role(ROLE_ASPIRANT)
@@ -355,7 +355,7 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "E
 	"Priest",
 	"Acolyte",
 	"Cleric",
-	"Guard Captain",
+	"Guard Lieutenant",
 	"Court Magician",
 	"Templar",
 	"Bog Guard",
@@ -402,7 +402,7 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "E
 	"Priest",
 	"Acolyte",
 	"Cleric",
-	"Guard Captain",
+	"Guard Lieutenant",
 	"Court Magician",
 	"Templar",
 	"Bog Guard",
