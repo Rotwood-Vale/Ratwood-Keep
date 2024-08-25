@@ -73,6 +73,15 @@
 					/obj/item/reagent_containers/glass/bottle/rogue,
 				)
 
+/datum/supply_pack/rogue/tools/jar
+	name = "Glass Jars"
+	cost = 15
+	contains = list(
+					/obj/item/reagent_containers/glass/beaker/jar,
+					/obj/item/reagent_containers/glass/beaker/jar,
+					/obj/item/reagent_containers/glass/beaker/jar,
+				)
+
 /datum/supply_pack/rogue/tools/matches
 	name = "Box of Matches"
 	cost = 15

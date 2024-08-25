@@ -3272,6 +3272,7 @@
 #include "code\modules\roguetown\roguejobs\cook\recipes\breads.dm"
 #include "code\modules\roguetown\roguejobs\cook\recipes\meat.dm"
 #include "code\modules\roguetown\roguejobs\cook\recipes\misc.dm"
+#include "code\modules\roguetown\roguejobs\cook\recipes\pastries.dm"
 #include "code\modules\roguetown\roguejobs\cook\recipes\pies.dm"
 #include "code\modules\roguetown\roguejobs\cook\recipes\plates.dm"
 #include "code\modules\roguetown\roguejobs\cook\recipes\soups.dm"

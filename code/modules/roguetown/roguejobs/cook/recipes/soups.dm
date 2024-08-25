@@ -142,7 +142,8 @@
 	name = "gruel"
 	reqs = list(
 		/datum/reagent/water = 30,
-		/obj/item/reagent_containers/food/snacks/grown/wheat= 1)
+		/obj/item/reagent_containers/food/snacks/grown/wheat= 1,
+		/obj/item/reagent_containers/glass/bowl = 3)
 	result = list(	/obj/item/reagent_containers/food/snacks/rogue/soup/gruel,
 					/obj/item/reagent_containers/food/snacks/rogue/soup/gruel,
 					/obj/item/reagent_containers/food/snacks/rogue/soup/gruel)
@@ -154,7 +155,8 @@
 	reqs = list(
 		/datum/reagent/water = 30,
 		/obj/item/reagent_containers/food/snacks/rogue/meat/steak= 1,
-		/obj/item/reagent_containers/food/snacks/grown/rogue/potato= 1)
+		/obj/item/reagent_containers/food/snacks/grown/rogue/potato= 1,
+		/obj/item/reagent_containers/glass/bowl = 3)
 	result = list(	/obj/item/reagent_containers/food/snacks/rogue/soup/simplestew,
 					/obj/item/reagent_containers/food/snacks/rogue/soup/simplestew,
 					/obj/item/reagent_containers/food/snacks/rogue/soup/simplestew)
@@ -165,7 +167,8 @@
 	reqs = list(
 		/datum/reagent/water = 30,
 		/obj/item/reagent_containers/food/snacks/fish/carp = 1,
-		/obj/item/reagent_containers/food/snacks/grown/rogue/potato= 1)
+		/obj/item/reagent_containers/food/snacks/grown/rogue/potato= 1,
+		/obj/item/reagent_containers/glass/bowl = 3)
 	result = list(/obj/item/reagent_containers/food/snacks/rogue/soup/fishchowder,
 					/obj/item/reagent_containers/food/snacks/rogue/soup/fishchowder,
 					/obj/item/reagent_containers/food/snacks/rogue/soup/fishchowder)
@@ -180,6 +183,7 @@
 	w_class = WEIGHT_CLASS_NORMAL
 	tastes = list("creamy, grainy soup" = 1)
 	foodtype = GRAIN
+	trash = /obj/item/reagent_containers/glass/bowl
 
 /obj/item/reagent_containers/food/snacks/rogue/soup/simplestew
 	name = "simple stew"
@@ -190,6 +194,7 @@
 	w_class = WEIGHT_CLASS_NORMAL
 	tastes = list("hearty, beefy soup" = 1)
 	foodtype = MEAT
+	trash = /obj/item/reagent_containers/glass/bowl
 	
 /obj/item/reagent_containers/food/snacks/rogue/soup/fishchowder
 	name = "fish chowder"
@@ -200,3 +205,4 @@
 	w_class = WEIGHT_CLASS_NORMAL
 	tastes = list("creamy, fishy soup" = 1)
 	foodtype = MEAT
+	trash = /obj/item/reagent_containers/glass/bowl
