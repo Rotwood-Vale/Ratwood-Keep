@@ -67,10 +67,7 @@
 	if(isdwarf(H))
 		armor = /obj/item/clothing/suit/roguetown/shirt/dress
 	else
-		if(prob(66))
-			armor = /obj/item/clothing/suit/roguetown/armor/armordress/alt
-		else
-			armor = /obj/item/clothing/suit/roguetown/armor/armordress
+		armor = /obj/item/clothing/suit/roguetown/armor/armordress
 	belt = /obj/item/storage/belt/rogue/leather/cloth/lady
 	beltl = /obj/item/flashlight/flare/torch/lantern
 	beltr = /obj/item/rogueweapon/huntingknife/elvish

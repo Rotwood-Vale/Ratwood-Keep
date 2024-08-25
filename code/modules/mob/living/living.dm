@@ -407,7 +407,6 @@
 
 	if(isliving(AM))
 		var/mob/living/M = AM
-		log_combat(src, M, "grabbed", addition="passive grab")
 		if(!iscarbon(src))
 			M.LAssailant = null
 		else
@@ -423,6 +422,15 @@
 			var/datum/disease/D = thing
 			if(D.spread_flags & DISEASE_SPREAD_CONTACT_SKIN)
 				ContactContractDisease(D)
+
+		// Makes it so people who recently broke out of grabs cannot be grabbed again
+		if(TIMER_COOLDOWN_RUNNING(M, "broke_free") && M.stat == CONSCIOUS)
+			M.visible_message(span_warning("[M] slips from [src]'s grip."), \
+					span_warning("I slip from [src]'s grab."))
+			log_combat(src, M, "tried grabbing", addition="passive grab")
+			return
+
+		log_combat(src, M, "grabbed", addition="passive grab")
 		playsound(src.loc, 'sound/combat/shove.ogg', 50, TRUE, -1)
 		if(iscarbon(M))
 			var/mob/living/carbon/C = M
@@ -863,26 +871,6 @@
 /mob/living/proc/update_damage_overlays()
 	return
 
-/mob/living/proc/update_wallpress(turf/T, atom/newloc, direct)
-	if(!wallpressed)
-		reset_offsets("wall_press")
-		return FALSE
-	if(buckled || lying)
-		wallpressed = FALSE
-		reset_offsets("wall_press")
-		return FALSE
-	var/turf/newwall = get_step(newloc, wallpressed)
-	if(!T.Adjacent(newwall))
-		return reset_offsets("wall_press")
-	if(isclosedturf(newwall) && fixedeye)
-		var/turf/closed/C = newwall
-		if(C.wallpress)
-			return TRUE
-	wallpressed = FALSE
-	reset_offsets("wall_press")
-	update_wallpress_slowdown()
-
-
 /mob/living/proc/update_pixelshift(turf/T, atom/newloc, direct)
 	if(!pixelshifted)
 		reset_offsets("pixel_shift")
@@ -903,7 +891,7 @@
 		sprinted_tiles++
 
 	if(wallpressed)
-		update_wallpress(T, newloc, direct)
+		GetComponent(/datum/component/leaning).wallhug_check(T, newloc, direct)
 
 	if(pixelshifted)
 		update_pixelshift(T, newloc, direct)
@@ -1140,6 +1128,12 @@
 		log_combat(pulledby, src, "broke grab")
 		pulledby.changeNext_move(CLICK_CD_GRABBING)
 		pulledby.stop_pulling()
+
+		var/wrestling_cooldown_reduction = 0
+		if(pulledby?.mind?.get_skill_level("wrestling"))
+			wrestling_cooldown_reduction = 0.2 SECONDS * pulledby.mind.get_skill_level("wrestling")
+		TIMER_COOLDOWN_START(src, "broke_free", max(0, 1.6 SECONDS - wrestling_cooldown_reduction))
+
 		return FALSE
 	else
 		rogfat_add(rand(5,15))
@@ -1653,6 +1647,8 @@
 			add_movespeed_modifier(MOVESPEED_ID_LIVING_LIMBLESS, update=TRUE, priority=100, override=TRUE, multiplicative_slowdown=limbless_slowdown, movetypes=GROUND)
 		else
 			remove_movespeed_modifier(MOVESPEED_ID_LIVING_LIMBLESS, update=TRUE)
+
+	SEND_SIGNAL(src, COMSIG_LIVING_MOBILITY_UPDATED, src)
 
 /mob/living/proc/fall(forced)
 	if(!(mobility_flags & MOBILITY_USE))
