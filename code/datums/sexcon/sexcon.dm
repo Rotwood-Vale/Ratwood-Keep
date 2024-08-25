@@ -17,6 +17,8 @@
 	var/charge = SEX_MAX_CHARGE
 	/// Whether we want to screw until finished, or non stop
 	var/do_until_finished = TRUE
+	/// Arousal won't change if active.
+	var/arousal_frozen = FALSE
 	var/last_arousal_increase_time = 0
 	var/last_ejaculation_time = 0
 	var/last_moan = 0
@@ -167,6 +169,9 @@
 /datum/sex_controller/proc/after_ejaculation()
 	set_arousal(40)
 	adjust_charge(-CHARGE_FOR_CLIMAX)
+	if(user.has_flaw(/datum/charflaw/addiction/lovefiend))
+		user.sate_addiction()
+	user.add_stress(/datum/stressevent/cumok)
 	user.emote("sexmoanhvy", forced = TRUE)
 	user.playsound_local(user, 'sound/misc/mat/end.ogg', 100)
 	last_ejaculation_time = world.time
@@ -253,7 +258,8 @@
 		arousal_amt = 0
 		pain_amt = 0
 
-	adjust_arousal(arousal_amt)
+	if(!arousal_frozen)
+		adjust_arousal(arousal_amt)
 
 	damage_from_pain(pain_amt)
 	try_do_moan(arousal_amt, pain_amt, applied_force, giving)
@@ -373,6 +379,8 @@
 	handle_passive_ejaculation()
 
 /datum/sex_controller/proc/handle_arousal_unhorny(dt)
+	if(arousal_frozen)
+		return
 	if(!can_ejaculate())
 		adjust_arousal(-dt * IMPOTENT_AROUSAL_LOSS_RATE)
 	if(last_arousal_increase_time + AROUSAL_TIME_TO_UNHORNY >= world.time)
@@ -393,6 +401,7 @@
 	var/speed_name = get_speed_string()
 	dat += "<center><a href='?src=[REF(src)];task=speed_down'>\<</a> [speed_name] <a href='?src=[REF(src)];task=speed_up'>\></a> ~|~ <a href='?src=[REF(src)];task=force_down'>\<</a> [force_name] <a href='?src=[REF(src)];task=force_up'>\></a></center>"
 	dat += "<center>| <a href='?src=[REF(src)];task=toggle_finished'>[do_until_finished ? "UNTIL IM FINISHED" : "UNTIL I STOP"]</a> |</center>"
+	dat += "<center><a href='?src=[REF(src)];task=set_arousal'>SET AROUSAL</a> | <a href='?src=[REF(src)];task=freeze_arousal'>[arousal_frozen ? "UNFREEZE AROUSAL" : "FREEZE AROUSAL"]</a></center>"
 	if(target == user)
 		dat += "<center>Doing unto yourself</center>"
 	else
@@ -448,6 +457,11 @@
 			adjust_force(-1)
 		if("toggle_finished")
 			do_until_finished = !do_until_finished
+		if("set_arousal")
+			var/amount = input(user, "Value above 120 will immediately cause orgasm!", "Set Arousal", arousal) as num|null
+			set_arousal(amount)
+		if("freeze_arousal")
+			arousal_frozen = !arousal_frozen
 	show_ui()
 
 /datum/sex_controller/proc/try_stop_current_action()

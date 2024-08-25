@@ -2,7 +2,7 @@
 	icon = 'icons/mob/sprite_accessory/genitals/penis.dmi'
 	color_keys = 2
 	color_key_names = list("Member", "Skin")
-	relevant_layers = list(BODY_BEHIND_LAYER, BODY_FRONT_FRONT_LAYER) //Vrell - Yes I know this is hacky but it works for now
+	relevant_layers = list(BODY_BEHIND_LAYER, BODY_FRONT_LAYER) //Vrell - Yes I know this is hacky but it works for now
 
 /datum/sprite_accessory/penis/adjust_appearance_list(list/appearance_list, obj/item/organ/organ, obj/item/bodypart/bodypart, mob/living/carbon/owner)
 	generic_gender_feature_adjust(appearance_list, organ, bodypart, owner, OFFSET_BELT, OFFSET_BELT_F)
@@ -22,9 +22,9 @@
 				else
 					return "slit_2"
 	if(pp.erect_state == ERECT_STATE_HARD)
-		return "[icon_state]_2"
+		return "[icon_state]_[min(3,pp.penis_size+1)]"
 	else
-		return "[icon_state]_1"
+		return "[icon_state]_[pp.penis_size]"
 
 /datum/sprite_accessory/penis/is_visible(obj/item/organ/organ, obj/item/bodypart/bodypart, mob/living/carbon/owner)
 	return is_human_part_visible(owner, HIDEJUMPSUIT|HIDECROTCH)

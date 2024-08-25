@@ -10,6 +10,9 @@
 /datum/sprite_accessory/ears/adjust_appearance_list(list/appearance_list, obj/item/organ/organ, obj/item/bodypart/bodypart, mob/living/carbon/owner)
 	generic_gender_feature_adjust(appearance_list, organ, bodypart, owner, OFFSET_FACE, OFFSET_FACE_F)
 
+/datum/sprite_accessory/ears/big
+	icon = 'icons/mob/sprite_accessory/ears/ears_big.dmi'
+
 /datum/sprite_accessory/ears/cat
 	name = "Cat"
 	icon_state = "cat"
@@ -153,6 +156,13 @@
 	icon_state = "rabbitlop"
 	color_keys = 2
 	color_key_names = list("Ears", "Inner")
+
+/datum/sprite_accessory/ears/big/rabbit_large
+	name = "Rabbit Ears (Large)"
+	icon_state = "rabbit_large"
+	color_keys = 3
+	color_key_names = list("Ears", "Inner", "Tips")
+	relevant_layers = list(BODY_ADJ_LAYER)
 
 /datum/sprite_accessory/ears/pede
 	name = "Scolipede"

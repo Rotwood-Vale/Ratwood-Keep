@@ -82,7 +82,7 @@
 	var/list/notes = list() //RTD add notes button
 
 	var/lastrecipe
-	
+
 	var/datum/sleep_adv/sleep_adv = null
 
 /datum/mind/New(key)
@@ -129,7 +129,15 @@
 		if(!used_title)
 			used_title = "unknown"
 		known_people[H.real_name]["FJOB"] = used_title
-		known_people[H.real_name]["FGENDER"] = H.gender
+		var/referred_gender
+		switch(H.pronouns)
+			if(HE_HIM)
+				referred_gender = "Male"
+			if(SHE_HER)
+				referred_gender = "Female"
+			else
+				referred_gender = "Androgynous"
+		known_people[H.real_name]["FGENDER"] = referred_gender
 		known_people[H.real_name]["FAGE"] = H.age
 
 /datum/mind/proc/person_knows_me(person) //we are added to their lists
@@ -148,16 +156,19 @@
 				if(!M.known_people[H.real_name])
 					M.known_people[H.real_name] = list()
 				M.known_people[H.real_name]["VCOLOR"] = H.voice_color
-				var/used_title
-				if(H.job)
-					var/datum/job/J = SSjob.GetJob(H.job)
-					used_title = J.title
-					if(H.pronouns == SHE_HER && J.f_title)
-						used_title = J.f_title
+				var/used_title = H.get_role_title()
 				if(!used_title)
 					used_title = "unknown"
 				M.known_people[H.real_name]["FJOB"] = used_title
-				M.known_people[H.real_name]["FGENDER"] = H.gender
+				var/referred_gender
+				switch(H.pronouns)
+					if(HE_HIM)
+						referred_gender = "Male"
+					if(SHE_HER)
+						referred_gender = "Female"
+					else
+						referred_gender = "Androgynous"
+				M.known_people[H.real_name]["FGENDER"] = referred_gender
 				M.known_people[H.real_name]["FAGE"] = H.age
 
 /datum/mind/proc/do_i_know(datum/mind/person, name)
@@ -270,25 +281,25 @@
 	switch(skill_experience[S])
 		if(SKILL_EXP_LEGENDARY to INFINITY)
 			known_skills[S] = SKILL_LEVEL_LEGENDARY
-			
+
 		if(SKILL_EXP_MASTER to SKILL_EXP_LEGENDARY)
 			known_skills[S] = SKILL_LEVEL_MASTER
-			
+
 		if(SKILL_EXP_EXPERT to SKILL_EXP_MASTER)
 			known_skills[S] = SKILL_LEVEL_EXPERT
-			
+
 		if(SKILL_EXP_JOURNEYMAN to SKILL_EXP_EXPERT)
 			known_skills[S] = SKILL_LEVEL_JOURNEYMAN
-			
+
 		if(SKILL_EXP_APPRENTICE to SKILL_EXP_JOURNEYMAN)
 			known_skills[S] = SKILL_LEVEL_APPRENTICE
-			
+
 		if(SKILL_EXP_NOVICE to SKILL_EXP_APPRENTICE)
 			known_skills[S] = SKILL_LEVEL_NOVICE
-			
+
 		if(0 to SKILL_EXP_NOVICE)
 			known_skills[S] = SKILL_LEVEL_NONE
-			
+
 	if(isnull(old_level) || known_skills[S] == old_level)
 		return //same level or we just started earning xp towards the first level.
 	if(silent)

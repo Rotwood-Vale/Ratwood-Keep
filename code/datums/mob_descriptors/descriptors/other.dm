@@ -49,6 +49,7 @@
 	name = "penis"
 	slot = MOB_DESCRIPTOR_SLOT_PENIS
 	verbage = "has"
+	show_obscured = TRUE
 
 /datum/mob_descriptor/penis/can_describe(mob/living/described)
 	if(!ishuman(described))
@@ -65,6 +66,7 @@
 	var/mob/living/carbon/human/human = described
 	var/obj/item/organ/penis/penis = human.getorganslot(ORGAN_SLOT_PENIS)
 	var/adjective
+	var/arousal_modifier
 	switch(penis.penis_size)
 		if(1)
 			adjective = "a small"
@@ -72,6 +74,15 @@
 			adjective = "an average"
 		if(3)
 			adjective = "a large"
+	switch(human.sexcon.arousal)
+		if(80 to INFINITY)
+			arousal_modifier = ", throbbing violently"
+		if(50 to 80)
+			arousal_modifier = ", turgid and leaky"
+		if(20 to 50)
+			arousal_modifier = ", stiffened and twitching"
+		else
+			arousal_modifier = ", soft and flaccid"
 	var/used_name
 	if(penis.erect_state != ERECT_STATE_HARD && penis.sheath_type != SHEATH_TYPE_NONE)
 		switch(penis.sheath_type)
@@ -83,13 +94,14 @@
 			if(SHEATH_TYPE_SLIT)
 				used_name = "a genital slit"
 	else
-		used_name = "[adjective] [penis.name]"
+		used_name = "[adjective] [penis.name][arousal_modifier]"
 	return "[used_name]"
 
 /datum/mob_descriptor/testicles
 	name = "balls"
 	slot = MOB_DESCRIPTOR_SLOT_TESTICLES
 	verbage = "has"
+	show_obscured = TRUE
 
 /datum/mob_descriptor/testicles/can_describe(mob/living/described)
 	if(!ishuman(described))
@@ -122,6 +134,7 @@
 	name = "vagina"
 	slot = MOB_DESCRIPTOR_SLOT_VAGINA
 	verbage = "has"
+	show_obscured = TRUE
 
 /datum/mob_descriptor/vagina/can_describe(mob/living/described)
 	if(!ishuman(described))
@@ -135,12 +148,37 @@
 	return TRUE
 
 /datum/mob_descriptor/vagina/get_description(mob/living/described)
-	return "a vagina"
+	var/mob/living/carbon/human/human = described
+	var/obj/item/organ/vagina/vagina = human.getorganslot(ORGAN_SLOT_VAGINA)
+	var/vagina_type
+	var/arousal_modifier
+	switch(vagina.accessory_type)
+		if(/datum/sprite_accessory/vagina/human)
+			vagina_type = "plain vagina"
+		if(/datum/sprite_accessory/vagina/hairy)
+			vagina_type = "hairy vagina"
+		if(/datum/sprite_accessory/vagina/spade)
+			vagina_type = "spade vagina"
+		if(/datum/sprite_accessory/vagina/furred)
+			vagina_type = "furred vagina"
+		if(/datum/sprite_accessory/vagina/gaping)
+			vagina_type = "gaping vagina"
+		if(/datum/sprite_accessory/vagina/cloaca)
+			vagina_type = "cloaca"
+	switch(human.sexcon.arousal)
+		if(80 to INFINITY)
+			arousal_modifier = ", gushing with arousal"
+		if(50 to 80)
+			arousal_modifier = ", slickened with arousal"
+		if(20 to 50)
+			arousal_modifier = ", wet with arousal"
+	return "a [vagina_type][arousal_modifier]"
 
 /datum/mob_descriptor/breasts
 	name = "breasts"
 	slot = MOB_DESCRIPTOR_SLOT_BREASTS
 	verbage = "has"
+	show_obscured = TRUE
 
 /datum/mob_descriptor/breasts/can_describe(mob/living/described)
 	if(!ishuman(described))

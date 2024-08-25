@@ -7,6 +7,7 @@ GLOBAL_LIST_INIT(character_flaws, list(
 	"Junkie"=/datum/charflaw/addiction/junkie,
 	"Greedy"=/datum/charflaw/greedy,
 	"Narcoleptic"=/datum/charflaw/narcoleptic,
+	"Nymphomaniac"=/datum/charflaw/addiction/lovefiend,
 	"Masochist"=/datum/charflaw/masochist,
 	"Paranoid"=/datum/charflaw/paranoid,
 	"Cyclops (R)"=/datum/charflaw/noeyer,
@@ -348,7 +349,7 @@ GLOBAL_LIST_INIT(character_flaws, list(
 			user.emote("yawn", forced = TRUE)
 			next_sleep = world.time + rand(7 SECONDS, 11 SECONDS)
 			do_sleep = TRUE
-	
+
 /proc/narcolepsy_drug_up(mob/living/living)
 	var/datum/charflaw/narcoleptic/narco = living.get_flaw(/datum/charflaw/narcoleptic)
 	if(!narco)
