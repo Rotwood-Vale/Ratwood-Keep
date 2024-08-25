@@ -90,11 +90,13 @@
 	experimental_onhip = TRUE
 	anvilrepair = /datum/skill/craft/armorsmithing
 	smeltresult = /obj/item/ingot/iron
+	clothing_flags = CANT_SLEEP_IN
 
 /obj/item/clothing/mask/rogue/facemask/prisoner/Initialize()
 	. = ..()
 	name = "cursed mask"
 	ADD_TRAIT(src, TRAIT_NODROP, CURSED_ITEM_TRAIT)
+	clothing_flags = null
 
 /obj/item/clothing/mask/rogue/facemask/prisoner/dropped(mob/living/carbon/human/user)
 	. = ..()
