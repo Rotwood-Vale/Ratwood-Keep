@@ -114,7 +114,7 @@
 									qdel(baited)
 									baited = null
 							else
-								to_chat(user, "<span class='warning'>Damn, it got away...</span>")
+								to_chat(user, "<span class='warning'>Damn, it got away... I should <b>pull away</b> next time.</span>")
 								if(prob(100 - (sl * 10))) // Higher chance for it to flee with your bait.
 									to_chat(user, "<span class='warning'>...And took my bait, too.</span>")
 									qdel(baited)
@@ -123,7 +123,7 @@
 							to_chat(user, "<span class='warning'>Not even a nibble...</span>")
 							user.mind.add_sleep_experience(/datum/skill/labor/fishing, fisherman.STAINT/2) // Pity XP.
 					else
-						to_chat(user, "<span class='warning'>This seems pointless without a bait.</span>")
+						to_chat(user, "<span class='warning'>This seems pointless without bait.</span>")
 				else
 					to_chat(user, "<span class='warning'>I must stand still to fish.</span>")
 			update_icon()

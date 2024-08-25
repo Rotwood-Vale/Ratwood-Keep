@@ -5,7 +5,7 @@
 	desc = "A disgusting, blood-sucking parasite."
 	icon = 'icons/roguetown/items/surgery.dmi'
 	icon_state = "leech"
-	baitpenalty = 5
+	baitpenalty = 0
 	fishloot = list(/obj/item/reagent_containers/food/snacks/fish/carp = 5,
 					/obj/item/reagent_containers/food/snacks/fish/eel = 5,
 					/obj/item/reagent_containers/food/snacks/fish/angler = 1)
@@ -42,9 +42,11 @@
 
 /obj/item/natural/worms/leech/process()
 	if(!drainage && !is_embedded)
-		host = null
 		return PROCESS_KILL
 	blood_storage = max(blood_storage - drainage, 0)
+	if(!is_embedded)
+		host = null
+		return FALSE
 	if(!host)
 		return FALSE
 	host.adjustToxLoss(-toxin_healing)
