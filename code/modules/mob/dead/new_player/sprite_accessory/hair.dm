@@ -860,7 +860,7 @@
 
 /datum/sprite_accessory/hair/head/gronnbraid
 	name = "Gronn Braid"
-	icon_state = "Zone"
+	icon_state = "gronnbraid"
 
 /datum/sprite_accessory/hair/head/grenzelcut
 	name = "Grenzel Cut"
