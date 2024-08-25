@@ -167,6 +167,9 @@
 /datum/sex_controller/proc/after_ejaculation()
 	set_arousal(40)
 	adjust_charge(-CHARGE_FOR_CLIMAX)
+	if(user.has_flaw(/datum/charflaw/addiction/lovefiend))
+		user.sate_addiction()
+	user.add_stress(/datum/stressevent/cumok)
 	user.emote("sexmoanhvy", forced = TRUE)
 	user.playsound_local(user, 'sound/misc/mat/end.ogg', 100)
 	last_ejaculation_time = world.time
