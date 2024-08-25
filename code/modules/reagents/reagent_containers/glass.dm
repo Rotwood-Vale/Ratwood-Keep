@@ -222,10 +222,13 @@
 	return reagents.maximum_volume
 
 /obj/item/reagent_containers/glass/beaker/jar
-	name = "honey jar"
+	name = "Jar"
 	desc = ""
-	icon = 'icons/obj/chemical.dmi'
-	icon_state = "vapour"
+	icon = 'icons/roguetown/items/cooking.dmi'
+	icon_state = "jar"
+	dropshrink = 0.50
+	//icon = 'icons/obj/chemical.dmi' Changing the icon to a cooking icon, blame Antarion if this causes problems in the future.
+	//icon_state = "vapour"
 
 /obj/item/reagent_containers/glass/beaker/large
 	name = "large beaker"
