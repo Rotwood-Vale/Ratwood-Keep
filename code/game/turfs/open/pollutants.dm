@@ -109,3 +109,25 @@
 
 /datum/pollutant/steam
 	color = "#ffffff"
+
+/datum/pollutant/pixie/happy
+	color = "#000000"
+
+/datum/pollutant/pixie/sad
+	color = "#ffffff"
+
+/datum/pollutant/proc/on_life(parent)
+	return
+
+/datum/pollutant/pixie/on_life(parent)
+	. = ..()
+	for(var/mob/living/carbon/human/H in view(1, parent))
+		if(!H)
+			continue
+		if(!considered_alive(H.mind))
+			continue
+		//if(H.has_stress_event(/datum/stressevent/pixie))
+			continue
+
+		//H.add_stress(/datum/stressevent/pixie)
+		H.visible_message(span_green("I feel a good omen upon me."))

@@ -104,6 +104,18 @@
 			else if(fallingas)
 				fallingas = 0
 
+		else if(ishuman(src))
+			var/turf/open/T = src.loc
+			if(istype(T))
+				var/mob/living/carbon/human/H = src
+				var/stress_amt = H.get_stress_amount()
+				if(stress_amt > 0)
+					T.add_pollutants(/datum/pollutant/pixie/sad, 10)
+					src.visible_message("works")
+				if(stress_amt < 1)
+					T.add_pollutants(/datum/pollutant/pixie/happy, 10)
+					src.visible_message("works")
+		
 		handle_brain_damage()
 
 	else
