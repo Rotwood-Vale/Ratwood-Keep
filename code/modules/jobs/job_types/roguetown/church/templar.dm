@@ -49,6 +49,8 @@
 			head = /obj/item/clothing/head/roguetown/helmet/heavy/eorahelm
 			wrists = /obj/item/clothing/neck/roguetown/psicross/eora
 			cloak = /obj/item/clothing/cloak/tabard/crusader/eora
+		if("Xylix") //Needs armor sprites and cross sprite - Tzula
+			wrists = /obj/item/clothing/neck/roguetown/psicross
 	armor = /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk
 	shirt = /obj/item/clothing/suit/roguetown/armor/gambeson
 	pants = /obj/item/clothing/under/roguetown/chainlegs
