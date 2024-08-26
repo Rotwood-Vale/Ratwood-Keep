@@ -276,6 +276,45 @@
 	icon_state = "shitbed"
 	sleepy = 1
 
+/obj/structure/bed/rogue/sleepingbag
+	name = "sleepcloth"
+	desc = "So you can sleep on the ground in relative peace."
+	icon_state = "sleepingcloth"
+	attacked_sound = 'sound/foley/cloth_rip.ogg'
+	break_sound = 'sound/foley/cloth_rip.ogg'
+	sleepy = 0.5
+
+/obj/structure/bed/rogue/sleepingbag/MiddleClick(mob/user, params)
+	..()
+	user.visible_message("<span class='notice'>[user] begins rolling up \the [src].</span>")
+	if(do_after(user, 2 SECONDS, TRUE, src))
+		new /obj/item/sleepingbag(get_turf(src))
+		qdel(src)
+
+/obj/item/sleepingbag
+	name = "roll of sleepcloth"
+	icon = 'icons/roguetown/misc/structure.dmi'
+	icon_state = "sleepingcloth_rolled"
+	w_class = WEIGHT_CLASS_NORMAL
+
+/obj/item/sleepingbag/MiddleClick(mob/user, params)
+	..()
+	var/turf/T = get_turf(loc)
+	if(!isfloorturf(T))
+		to_chat(user, "<span class='warning'>I need ground to plant this on!</span>")
+		return
+	for(var/obj/A in T)
+		if(istype(A, /obj/structure))
+			to_chat(user, "<span class='warning'>I need some free space to deploy a [src] here!</span>")
+			return
+		if(A.density && !(A.flags_1 & ON_BORDER_1))
+			to_chat(user, "<span class='warning'>There is already something here!</span>")
+			return
+	user.visible_message("<span class='notice'>[user] begins placing \the [src] down on the ground.</span>")
+	if(do_after(user, 2 SECONDS, TRUE, src))
+		new /obj/structure/bed/rogue/sleepingbag(get_turf(src))
+		qdel(src)
+
 /obj/structure/bed/rogue/post_buckle_mob(mob/living/M)
 	..()
 	M.set_mob_offsets("bed_buckle", _x = 0, _y = 5)

@@ -74,6 +74,10 @@ All foods are distributed among various categories. Use common sense.
 	var/become_rot_type = null
 
 	var/fertamount = 50
+	
+	var/can_distill = FALSE //If FALSE, this object cannot be distilled into an alcohol.
+	var/distill_reagent //If NULL and this object can be distilled, it uses a generic fruit_wine reagent and adjusts its variables.
+	var/distill_amt = 12
 
 	drop_sound = 'sound/foley/dropsound/food_drop.ogg'
 	smeltresult = /obj/item/ash
@@ -343,21 +347,6 @@ All foods are distributed among various categories. Use common sense.
 	if(istype(W, /obj/item/storage))
 		..() // -> item/attackby()
 		return 0
-/*	if(istype(W, /obj/item/reagent_containers/food/snacks))
-		var/obj/item/reagent_containers/food/snacks/S = W
-		if(custom_food_type && ispath(custom_food_type))
-			if(S.w_class > WEIGHT_CLASS_SMALL)
-				to_chat(user, span_warning("[S] is too big for [src]!"))
-				return 0
-			if(!S.customfoodfilling || istype(W, /obj/item/reagent_containers/food/snacks/customizable) || istype(W, /obj/item/reagent_containers/food/snacks/pizzaslice/custom) || istype(W, /obj/item/reagent_containers/food/snacks/cakeslice/custom))
-				to_chat(user, span_warning("[src] can't be filled with [S]!"))
-				return 0
-			if(contents.len >= 20)
-				to_chat(user, span_warning("I can't add more ingredients to [src]!"))
-				return 0
-			var/obj/item/reagent_containers/food/snacks/customizable/C = new custom_food_type(get_turf(src))
-			C.initialize_custom_food(src, S, user)
-			return 0*/
 	if(user.used_intent.blade_class == slice_bclass && W.wlength == WLENGTH_SHORT)
 		if(slice_bclass == BCLASS_CHOP)
 			//	RTD meat chopping noise
@@ -370,7 +359,9 @@ All foods are distributed among various categories. Use common sense.
 				return 1
 		else if(slice(W, user))
 			return 1
-	..()
+		else
+			return ..()
+	return ..()
 //Called when you finish tablecrafting a snack.
 /obj/item/reagent_containers/food/snacks/CheckParts(list/parts_list, datum/crafting_recipe/food/R)
 	..()
@@ -559,7 +550,9 @@ All foods are distributed among various categories. Use common sense.
 		add_fingerprint(user)
 		contents += W
 		stored_item = 1
-		return 1 // no afterattack here
+	else
+		return ..()
+	return ..()
 
 /obj/item/reagent_containers/food/snacks/MouseDrop(atom/over)
 	var/turf/T = get_turf(src)

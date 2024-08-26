@@ -241,3 +241,13 @@
 	stressadd = 6
 	desc = span_boldred("Bad omen! I've broken some kind of wall...")
 	timer = 5 MINUTES
+
+/datum/stressevent/sleepfloor
+	stressadd = 3
+	desc = "I slept on the floor. It was uncomfortable."
+	timer = 1 MINUTES
+
+/datum/stressevent/sleepfloornoble
+	stressadd = 6
+	desc = "I slept on the floor! What am I?! An animal?!"
+	timer = 3 MINUTES
