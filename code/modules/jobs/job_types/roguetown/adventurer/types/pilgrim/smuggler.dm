@@ -3,7 +3,7 @@
 	tutorial = "Your past as a smuggler gave you experience in moving goods discreetly, avoiding other ships and authorities alike, \
 	now, land-bound, you continue to trade in goods that others can't get their hands on, using your extensive knowledge to do so."
 	allowed_sexes = list(MALE, FEMALE)
-	allowed_races = list(/datum/species/akula)
+	allowed_races = RACES_ALL_KINDS
 	outfit = /datum/outfit/job/roguetown/adventurer/smuggler
 	category_tags = list(CTAG_PILGRIM)
 	pickprob = 75
