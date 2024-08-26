@@ -9711,13 +9711,6 @@
 /obj/structure/mineral_door/wood/towner/generic/two_keys,
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue/indoors/town)
-"kWJ" = (
-/obj/structure/gate/bars{
-	gid = "forestgate1";
-	redstone_id = "forestgate1"
-	},
-/turf/closed/wall/mineral/rogue/stone/moss,
-/area/rogue/indoors)
 "kWT" = (
 /obj/structure/flora/newtree,
 /turf/open/floor/rogue/dirt,
@@ -288418,7 +288411,7 @@ hHF
 hHF
 hHF
 hHF
-kWJ
+hHI
 gxt
 gxt
 sYx
