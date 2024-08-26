@@ -11,15 +11,12 @@
 	category_tags = list(CTAG_ADVENTURER)
 	allow_custom_genitals = TRUE
 
-/datum/outfit/job/roguetown/adventurer/nudist
+/datum/outfit/job/roguetown/adventurer/nudist/pre_equip(mob/living/carbon/human/H)
+	..()
 	shoes = /obj/item/clothing/shoes/roguetown/sandals
 	belt = /obj/item/storage/belt/rogue/leather/rope
 	beltl = /obj/item/rogueweapon/huntingknife/stoneknife
 	neck = /obj/item/clothing/neck/roguetown/psicross/dendor
-
-
-/datum/outfit/job/roguetown/adventurer/nudist/pre_equip(mob/living/carbon/human/H)
-	..()
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
@@ -30,10 +27,9 @@
 		H.mind.adjust_skillrank(/datum/skill/misc/climbing, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/swimming, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/medicine, 2, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/sewing, 1, TRUE
+		H.mind.adjust_skillrank(/datum/skill/misc/sewing, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/labor/farming, 3, TRUE)
-
-	H.change_stat("speed", 2)
-	H.change_stat("endurance", 1)
-	H.change_stat("constitution", 2)
-	H.change_stat("intelligence", -2)
+		H.change_stat("speed", 2)
+		H.change_stat("endurance", 1)
+		H.change_stat("constitution", 2)
+		H.change_stat("intelligence", -2)
