@@ -18,9 +18,9 @@
 	if(STR)
 		STR.max_combined_w_class = 30
 		STR.max_w_class = WEIGHT_CLASS_NORMAL
-		STR.max_items = 8
+		STR.max_items = 9
 		STR.not_while_equipped = TRUE
-		STR.set_holdable(list(/obj/item/rogueweapon/surgery, /obj/item/needle))
+		STR.set_holdable(list(/obj/item/rogueweapon/surgery, /obj/item/needle, /obj/item/natural/worms/leech, /obj/item/reagent_containers/lux))
 
 /obj/item/storage/belt/rogue/surgery_bag/pickup(mob/user)
 	..()

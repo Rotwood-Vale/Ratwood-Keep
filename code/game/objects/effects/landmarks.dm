@@ -287,6 +287,10 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	name = "Armorer"
 	icon_state = "arrow"
 
+/obj/effect/landmark/start/blacksmith
+	name = "Blacksmith"
+	icon_state = "arrow"
+
 /obj/effect/landmark/start/tailor
 	name = "Tailor"
 	icon_state = "arrow"
@@ -387,6 +391,10 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 
 /obj/effect/landmark/start/wapprentice
 	name = "Magicians Apprentice"
+	icon_state = "arrow"
+
+/obj/effect/landmark/start/apothecary
+	name = "Apothecary"
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/servant
