@@ -256,9 +256,12 @@
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/town)
 "akM" = (
-/obj/structure/table/fine,
-/turf/open/floor/rogue/woodturned,
-/area/rogue/indoors/town/tavern)
+/obj/effect/decal/cobbleedge{
+	icon_state = "borderfall";
+	dir = 4
+	},
+/turf/open/floor/rogue/blocks/stonered,
+/area/rogue/indoors/town/manor)
 "ali" = (
 /obj/structure/mineral_door/wood/donjon/stone{
 	locked = 1;
@@ -3603,11 +3606,11 @@
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/basement)
 "dXo" = (
+/obj/effect/landmark/start/gravedigger,
 /obj/effect/decal/cobbleedge{
 	icon_state = "borderfall";
-	dir = 1
+	dir = 4
 	},
-/obj/effect/landmark/start/gravedigger,
 /turf/open/floor/rogue/churchmarble,
 /area/rogue/indoors/town/church/chapel)
 "dXs" = (
@@ -4503,7 +4506,7 @@
 "eRn" = (
 /obj/effect/decal/cobbleedge{
 	icon_state = "borderfall";
-	dir = 3
+	dir = 1
 	},
 /turf/open/floor/rogue/blocks/stonered/tiny,
 /area/rogue/indoors/town/manor)
@@ -4560,12 +4563,12 @@
 /turf/open/floor/rogue/church,
 /area/rogue/indoors/town/church/chapel)
 "eSU" = (
-/obj/effect/decal/cobbleedge{
-	icon_state = "borderfall";
-	dir = 1
-	},
 /obj/effect/landmark/start/gravedigger{
 	dir = 1
+	},
+/obj/effect/decal/cobbleedge{
+	icon_state = "borderfall";
+	dir = 4
 	},
 /turf/open/floor/rogue/churchmarble,
 /area/rogue/indoors/town/church/chapel)
@@ -4752,7 +4755,7 @@
 /turf/open/floor/rogue/herringbone,
 /area/rogue/indoors/town/church)
 "faj" = (
-/obj/structure/table/finer,
+/obj/structure/table/wood,
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/town/tavern)
 "faB" = (
@@ -5097,7 +5100,7 @@
 	},
 /obj/effect/decal/cobbleedge{
 	icon_state = "borderfall";
-	dir = 3
+	dir = 1
 	},
 /turf/open/floor/rogue/blocks/stonered,
 /area/rogue/indoors/town/manor)
@@ -5972,15 +5975,15 @@
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/dwarfin)
 "gvL" = (
+/obj/effect/landmark/start/churchling{
+	dir = 8
+	},
+/obj/effect/landmark/start/churchling{
+	dir = 8
+	},
 /obj/effect/decal/cobbleedge{
 	icon_state = "borderfall";
-	dir = 1
-	},
-/obj/effect/landmark/start/churchling{
-	dir = 8
-	},
-/obj/effect/landmark/start/churchling{
-	dir = 8
+	dir = 4
 	},
 /turf/open/floor/rogue/churchmarble,
 /area/rogue/indoors/town/church/chapel)
@@ -7762,11 +7765,11 @@
 	},
 /area/rogue/outdoors/bog)
 "iAi" = (
+/obj/effect/landmark/start/knight,
 /obj/effect/decal/cobbleedge{
 	icon_state = "borderfall";
-	dir = 3
+	dir = 1
 	},
-/obj/effect/landmark/start/knight,
 /turf/open/floor/rogue/tile{
 	icon_state = "bfloorz"
 	},
@@ -8414,10 +8417,13 @@
 "jqm" = (
 /obj/effect/decal/cobbleedge{
 	icon_state = "borderfall";
-	dir = 3
+	dir = 4
 	},
-/turf/open/floor/rogue/blocks/stonered,
-/area/rogue/indoors/town/manor)
+/obj/effect/landmark/start/churchling{
+	dir = 8
+	},
+/turf/open/floor/rogue/churchmarble,
+/area/rogue/indoors/town/church/chapel)
 "jqq" = (
 /obj/effect/landmark/events/haunts,
 /turf/open/floor/rogue/cobblerock,
@@ -11287,7 +11293,8 @@
 	dir = 1
 	},
 /obj/structure/gate/bars/preopen{
-	redstone_id = "villagenorth"
+	redstone_id = "villagenorth";
+	gid = "villagenorth"
 	},
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/outdoors/rtfield)
@@ -12112,7 +12119,7 @@
 "nMk" = (
 /obj/effect/decal/cobbleedge{
 	icon_state = "borderfall";
-	dir = 3
+	dir = 1
 	},
 /turf/open/floor/rogue/tile{
 	icon_state = "bfloorz"
@@ -13043,7 +13050,7 @@
 "oIE" = (
 /obj/effect/decal/cobbleedge{
 	icon_state = "borderfall";
-	dir = 3
+	dir = 1
 	},
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/manor)
@@ -13653,12 +13660,12 @@
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors)
 "pnR" = (
-/obj/effect/decal/cobbleedge{
-	icon_state = "borderfall";
-	dir = 1
-	},
 /obj/effect/landmark/start/churchling{
 	dir = 8
+	},
+/obj/effect/decal/cobbleedge{
+	icon_state = "borderfall";
+	dir = 4
 	},
 /turf/open/floor/rogue/churchmarble,
 /area/rogue/indoors/town/church/chapel)
@@ -15194,16 +15201,16 @@
 /turf/open/floor/rogue/blocks,
 /area/rogue/indoors/town/shop)
 "req" = (
-/obj/effect/decal/cobbleedge{
-	icon_state = "borderfall";
-	dir = 3
-	},
 /obj/structure/roguemachine/musicbox{
 	pixel_y = 16
 	},
 /obj/structure/table/wood{
 	dir = 1;
 	icon_state = "tablewood1"
+	},
+/obj/effect/decal/cobbleedge{
+	icon_state = "borderfall";
+	dir = 1
 	},
 /turf/open/floor/rogue/blocks/stonered,
 /area/rogue/indoors/town/manor)
@@ -15654,13 +15661,13 @@
 /turf/open/floor/rogue/blocks,
 /area/rogue/outdoors/town)
 "rFx" = (
-/obj/effect/decal/cobbleedge{
-	icon_state = "borderfall";
-	dir = 3
-	},
 /obj/structure/roguemachine/atm{
 	pixel_x = 32;
 	pixel_y = 0
+	},
+/obj/effect/decal/cobbleedge{
+	icon_state = "borderfall";
+	dir = 1
 	},
 /turf/open/floor/rogue/tile{
 	icon_state = "bfloorz"
@@ -16874,11 +16881,11 @@
 /turf/open/floor/rogue/blocks,
 /area/rogue/indoors)
 "tgx" = (
+/obj/structure/fluff/psycross,
 /obj/effect/decal/cobbleedge{
 	icon_state = "borderfall";
-	dir = 3
+	dir = 1
 	},
-/obj/structure/fluff/psycross,
 /turf/open/floor/rogue/blocks/stonered,
 /area/rogue/indoors/town/manor)
 "tgZ" = (
@@ -19644,11 +19651,11 @@
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/manor)
 "wjr" = (
+/obj/effect/landmark/start/knight,
 /obj/effect/decal/cobbleedge{
 	icon_state = "borderfall";
-	dir = 3
+	dir = 1
 	},
-/obj/effect/landmark/start/knight,
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/manor)
 "wjS" = (
@@ -20629,7 +20636,8 @@
 /area/rogue/indoors/town)
 "xsg" = (
 /obj/structure/winch{
-	redstone_id = "villagenorth"
+	redstone_id = "villagenorth";
+	gid = "villagenorth"
 	},
 /turf/open/floor/rogue/blocks,
 /area/rogue/indoors)
@@ -21012,7 +21020,7 @@
 "xQv" = (
 /obj/effect/decal/cobbleedge{
 	icon_state = "borderfall";
-	dir = 1
+	dir = 4
 	},
 /turf/open/floor/rogue/churchmarble,
 /area/rogue/indoors/town/church/chapel)
@@ -284618,7 +284626,7 @@ vUX
 xlm
 xlm
 eUJ
-jqm
+obe
 qjD
 cKi
 cKi
@@ -285422,7 +285430,7 @@ sHm
 sPu
 sPu
 sPu
-jqm
+obe
 qjD
 fUX
 bec
@@ -285824,7 +285832,7 @@ sHm
 vPY
 odT
 nZU
-jqm
+obe
 qjD
 qvt
 qvt
@@ -286628,7 +286636,7 @@ sHm
 vPY
 odT
 mPd
-jqm
+obe
 qjD
 cKi
 cKi
@@ -288237,12 +288245,12 @@ xlm
 xlm
 eUJ
 mtF
-qjD
-obe
-obe
-obe
-obe
-obe
+akM
+akM
+akM
+akM
+akM
+akM
 qjD
 kIS
 jLG
@@ -288645,7 +288653,7 @@ kNa
 kNa
 kNa
 eUJ
-jqm
+obe
 kIS
 wtF
 wbg
@@ -416528,7 +416536,7 @@ jjS
 xQv
 pnR
 pnR
-pnR
+jqm
 pnR
 gvL
 xQv
@@ -489268,7 +489276,7 @@ xAt
 xAt
 xAt
 wNn
-akM
+faj
 wRK
 wRK
 wRK
