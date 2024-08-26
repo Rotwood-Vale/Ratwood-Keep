@@ -51,7 +51,7 @@ Also given some non-combat skills that a peasent would have, just to support the
 	backr = /obj/item/storage/backpack/rogue/satchel
 	backl = /obj/item/rogueweapon/spear
 	wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
-	backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger/steel = 1)
+	backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger/steel = 1, /obj/item/signal_horn = 1)
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/combat/bows, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 2, TRUE)

@@ -29,7 +29,7 @@
 	beltl = /obj/item/rogueweapon/sword/sabre
 	beltr = /obj/item/rogueweapon/mace/cudgel
 	cloak = /obj/item/clothing/cloak/cape/guard
-	backpack_contents = list(/obj/item/keyring/sheriff = 1)
+	backpack_contents = list(/obj/item/keyring/sheriff = 1, /obj/item/signal_horn = 1)
 	if(H.mind)
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/self/convertrole/guard)
 		H.mind.adjust_skillrank(/datum/skill/combat/maces, 3, TRUE)
