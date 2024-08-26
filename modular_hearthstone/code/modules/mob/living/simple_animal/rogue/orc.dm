@@ -140,41 +140,41 @@
 		return ""
 	switch(zone)
 		if(BODY_ZONE_PRECISE_R_EYE)
-			return "head"
+			return "right eye"
 		if(BODY_ZONE_PRECISE_L_EYE)
-			return "head"
+			return "left eye"
 		if(BODY_ZONE_PRECISE_NOSE)
 			return "nose"
 		if(BODY_ZONE_PRECISE_MOUTH)
 			return "mouth"
 		if(BODY_ZONE_PRECISE_SKULL)
-			return "head"
+			return "skull"
 		if(BODY_ZONE_PRECISE_EARS)
-			return "head"
+			return "ears"
 		if(BODY_ZONE_PRECISE_NECK)
 			return "neck"
 		if(BODY_ZONE_PRECISE_L_HAND)
-			return "foreleg"
+			return "left hand"
 		if(BODY_ZONE_PRECISE_R_HAND)
-			return "foreleg"
+			return "right hand"
 		if(BODY_ZONE_PRECISE_L_FOOT)
-			return "leg"
+			return "left foot"
 		if(BODY_ZONE_PRECISE_R_FOOT)
-			return "leg"
+			return "right foot"
 		if(BODY_ZONE_PRECISE_STOMACH)
 			return "stomach"
 		if(BODY_ZONE_PRECISE_GROIN)
-			return "tail"
+			return "groin"
 		if(BODY_ZONE_HEAD)
 			return "head"
 		if(BODY_ZONE_R_LEG)
-			return "leg"
+			return "right leg"
 		if(BODY_ZONE_L_LEG)
-			return "leg"
+			return "left leg"
 		if(BODY_ZONE_R_ARM)
-			return "foreleg"
+			return "right arm"
 		if(BODY_ZONE_L_ARM)
-			return "foreleg"
+			return "left arm"
 	return ..()
 
 /obj/projectile/bullet/reusable/arrow/orc

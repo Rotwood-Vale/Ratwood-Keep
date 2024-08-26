@@ -3553,6 +3553,8 @@
 #include "modular_hearthstone\code\game\objects\items\clothes\stockings.dm"
 #include "modular_hearthstone\code\game\objects\items\clothes\strapless_dress.dm"
 #include "modular_hearthstone\code\interface\LOOC.dm"
+#include "modular_hearthstone\code\modules\mob\living\simple_animal\rogue\orc.dm"
+#include "modular_hearthstone\code\modules\mob\living\simple_animal\rogue\rogue_corpse.dm"
 #include "modular_hearthstone\code\modules\reagents\reagent_containers\lux.dm"
 #include "modular_hearthstone\code\modules\spells\roguetown\wizard.dm"
 // END_INCLUDE
