@@ -18,9 +18,9 @@
 */
 /obj/projectile/bullet/reusable/bolt
 	name = "bolt"
-	damage = 35
+	damage = 70
 	damage_type = BRUTE
-	armor_penetration = 35
+	armor_penetration = 50
 	icon = 'icons/roguetown/weapons/ammo.dmi'
 	icon_state = "bolt_proj"
 	ammo_type = /obj/item/ammo_casing/caseless/rogue/bolt
@@ -29,7 +29,7 @@
 	embedchance = 100
 	woundclass = BCLASS_STAB
 	flag = "bullet"
-	speed = 0.3
+	speed = 0.5
 /*
 /obj/projectile/bullet/reusable/bolt/poison
 	name = "poisoned bolt"
@@ -69,9 +69,9 @@
 
 /obj/projectile/bullet/reusable/arrow
 	name = "arrow"
-	damage = 35
+	damage = 50
 	damage_type = BRUTE
-	armor_penetration = 10
+	armor_penetration = 40
 	icon = 'icons/roguetown/weapons/ammo.dmi'
 	icon_state = "arrow_proj"
 	ammo_type = /obj/item/ammo_casing/caseless/rogue/arrow
@@ -112,7 +112,7 @@
 
 /obj/projectile/bullet/reusable/arrow/poison
 	name = "poison arrow"
-	damage = 35
+	damage = 50
 	damage_type = BRUTE
 	icon = 'icons/roguetown/weapons/ammo.dmi'
 	icon_state = "arrow_proj"
