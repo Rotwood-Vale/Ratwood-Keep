@@ -100,8 +100,9 @@
 
 	var/used_sound
 	var/list/used_footsteps
+	var/obj/item/clothing/shoes/humshoes = H.shoes
 
-	if(H.shoes || feetCover) //are we wearing shoes
+	if((humshoes && !humshoes?.is_barefoot) || feetCover) //are we wearing shoes, and do they actually cover the sole
 		//SANITY CHECK, WILL NOT PLAY A SOUND IF THE LIST IS INVALID
 		if(!GLOB.footstep[T.footstep] || (LAZYLEN(GLOB.footstep[T.footstep]) < 3))
 			testing("SOME RETARD GAVE AN INVALID FOOTSTEP VALUE ([T.footstep]) TO [T.type]!!! FIX THIS SHIT!!!")

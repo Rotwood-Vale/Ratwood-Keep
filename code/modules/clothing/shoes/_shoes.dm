@@ -16,6 +16,7 @@
 	var/offset = 0
 	var/equipped_before_drop = FALSE
 	var/can_be_bloody = TRUE
+	var/is_barefoot = FALSE
 	bloody_icon_state = "shoeblood"
 
 /obj/item/clothing/shoes/ComponentInitialize()
