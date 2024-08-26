@@ -116,9 +116,6 @@
 /datum/pollutant/pixie/sad
 	color = "#ffffff"
 
-/datum/pollutant/proc/on_life(parent)
-	return
-
 /datum/pollutant/pixie/on_life(parent)
 	. = ..()
 	for(var/mob/living/carbon/human/H in view(1, parent))
