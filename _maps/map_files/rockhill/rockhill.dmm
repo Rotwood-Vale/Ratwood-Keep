@@ -1867,7 +1867,7 @@
 	},
 /obj/effect/decal/cobbleedge{
 	icon_state = "borderfall";
-	dir = 3
+	dir = 1
 	},
 /turf/open/floor/rogue/blocks/stonered,
 /area/rogue/indoors/town/manor)
@@ -4308,13 +4308,13 @@
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue/outdoors/rtfield)
 "eIq" = (
-/obj/effect/decal/cobbleedge{
-	icon_state = "borderfall";
-	dir = 3
-	},
 /obj/structure/roguemachine/atm{
 	pixel_x = 32;
 	pixel_y = 0
+	},
+/obj/effect/decal/cobbleedge{
+	icon_state = "borderfall";
+	dir = 1
 	},
 /turf/open/floor/rogue/tile{
 	icon_state = "bfloorz"
@@ -7639,15 +7639,15 @@
 	},
 /area/rogue/outdoors/bog)
 "ipi" = (
+/obj/effect/landmark/start/churchling{
+	dir = 8
+	},
+/obj/effect/landmark/start/churchling{
+	dir = 8
+	},
 /obj/effect/decal/cobbleedge{
 	icon_state = "borderfall";
-	dir = 1
-	},
-/obj/effect/landmark/start/churchling{
-	dir = 8
-	},
-/obj/effect/landmark/start/churchling{
-	dir = 8
+	dir = 4
 	},
 /turf/open/floor/rogue/churchmarble,
 /area/rogue/indoors/town/church/chapel)
@@ -7951,7 +7951,7 @@
 "iLM" = (
 /obj/effect/decal/cobbleedge{
 	icon_state = "borderfall";
-	dir = 3
+	dir = 1
 	},
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/manor)
@@ -8010,7 +8010,7 @@
 "iPi" = (
 /obj/effect/decal/cobbleedge{
 	icon_state = "borderfall";
-	dir = 3
+	dir = 1
 	},
 /turf/open/floor/rogue/tile{
 	icon_state = "bfloorz"
@@ -9558,12 +9558,12 @@
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/town/garrison)
 "kIq" = (
-/obj/effect/decal/cobbleedge{
-	icon_state = "borderfall";
-	dir = 1
-	},
 /obj/effect/landmark/start/churchling{
 	dir = 8
+	},
+/obj/effect/decal/cobbleedge{
+	icon_state = "borderfall";
+	dir = 4
 	},
 /turf/open/floor/rogue/churchmarble,
 /area/rogue/indoors/town/church/chapel)
@@ -11065,6 +11065,13 @@
 /obj/machinery/light/rogue/torchholder,
 /turf/closed/wall/mineral/rogue/decowood,
 /area/rogue/indoors/town/tavern)
+"mCG" = (
+/obj/effect/decal/cobbleedge{
+	icon_state = "borderfall";
+	dir = 4
+	},
+/turf/open/floor/rogue/blocks/stonered,
+/area/rogue/indoors/town/manor)
 "mDs" = (
 /obj/structure/stairs/stone{
 	dir = 4
@@ -12169,7 +12176,8 @@
 /area/rogue/indoors/town/manor)
 "nPw" = (
 /obj/structure/winch{
-	redstone_id = "villagenorth"
+	redstone_id = "villagenorth";
+	gid = "villagenorth"
 	},
 /turf/open/floor/rogue/blocks,
 /area/rogue/indoors)
@@ -14368,11 +14376,11 @@
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town)
 "qqY" = (
+/obj/effect/landmark/start/gravedigger,
 /obj/effect/decal/cobbleedge{
 	icon_state = "borderfall";
-	dir = 1
+	dir = 4
 	},
-/obj/effect/landmark/start/gravedigger,
 /turf/open/floor/rogue/churchmarble,
 /area/rogue/indoors/town/church/chapel)
 "qrc" = (
@@ -17778,12 +17786,12 @@
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town)
 "upq" = (
-/obj/effect/decal/cobbleedge{
-	icon_state = "borderfall";
-	dir = 1
-	},
 /obj/effect/landmark/start/gravedigger{
 	dir = 1
+	},
+/obj/effect/decal/cobbleedge{
+	icon_state = "borderfall";
+	dir = 4
 	},
 /turf/open/floor/rogue/churchmarble,
 /area/rogue/indoors/town/church/chapel)
@@ -18226,7 +18234,8 @@
 	dir = 1
 	},
 /obj/structure/gate/bars/preopen{
-	redstone_id = "villagenorth"
+	redstone_id = "villagenorth";
+	gid = "villagenorth"
 	},
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/outdoors/rtfield)
@@ -19627,7 +19636,7 @@
 "wwe" = (
 /obj/effect/decal/cobbleedge{
 	icon_state = "borderfall";
-	dir = 1
+	dir = 4
 	},
 /turf/open/floor/rogue/churchmarble,
 /area/rogue/indoors/town/church/chapel)
@@ -288009,12 +288018,12 @@ xlm
 xlm
 eUJ
 mtF
-qjD
-suD
-suD
-suD
-suD
-suD
+mCG
+mCG
+mCG
+mCG
+mCG
+mCG
 qjD
 kIS
 jLG
@@ -288417,7 +288426,7 @@ kNa
 kNa
 kNa
 eUJ
-ohE
+suD
 kIS
 wtF
 wbg
