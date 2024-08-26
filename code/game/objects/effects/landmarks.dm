@@ -309,10 +309,6 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	name = "Butcher"
 	icon_state = "arrow"
 
-/obj/effect/landmark/start/cook
-	name = "Cook"
-	icon_state = "arrow"
-
 /obj/effect/landmark/start/gravedigger
 	name = "Mortician"
 	icon_state = "arrow"
@@ -544,10 +540,6 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 /obj/effect/landmark/start/atmospheric_technician
 	name = "Atmospheric Technician"
 	icon_state = "Atmospheric Technician"
-
-/obj/effect/landmark/start/cook
-	name = "Cook"
-	icon_state = "Cook"
 
 /obj/effect/landmark/start/shaft_miner
 	name = "Shaft Miner"

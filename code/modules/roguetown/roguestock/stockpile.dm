@@ -124,10 +124,10 @@
 	desc = "Harvested produce."
 	item_type = /obj/item/reagent_containers/food/snacks/grown/apple
 	held_items = list(0, 0)
-	payout_price = 3
-	withdraw_price = 5
+	payout_price = 2
+	withdraw_price = 4
 	transport_fee = 1
-	export_price = 5
+	export_price = 3
 	importexport_amt = 5
 
 /datum/roguestock/stockpile/meat
@@ -179,8 +179,8 @@
 	desc = "The product of milk and salt."
 	item_type = /obj/item/reagent_containers/food/snacks/rogue/cheese
 	held_items = list(0, 0)
-	payout_price = 3
-	withdraw_price = 5
+	payout_price = 6
+	withdraw_price = 10
 	transport_fee = 3
 	export_price = 5
 	importexport_amt = 5
