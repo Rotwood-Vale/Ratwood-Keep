@@ -264,6 +264,7 @@
 	if(HAS_TRAIT(user, TRAIT_PACIFISM))
 		add_log = " (pacifist)"
 	send_grabbed_message(user)
+	user.rogfat_add(10)
 	if(user != src)
 		stop_pulling()
 		user.set_pull_offsets(src, user.grab_state)

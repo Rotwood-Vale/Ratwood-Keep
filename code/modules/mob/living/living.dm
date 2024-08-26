@@ -1121,6 +1121,7 @@
 	if(moving_resist && client) //we resisted by trying to move
 		client.move_delay = world.time + 20
 	if(prob(resist_chance))
+		pulledby.rogfat_add(rand(5,15))
 		rogfat_add(rand(5,15))
 		visible_message(span_warning("[src] breaks free of [pulledby]'s grip!"), \
 						span_notice("I break free of [pulledby]'s grip!"), null, null, pulledby)
@@ -1136,6 +1137,7 @@
 
 		return FALSE
 	else
+		pulledby.rogfat_add(rand(5,15))
 		rogfat_add(rand(5,15))
 		var/shitte = ""
 //		if(client?.prefs.showrolls)
