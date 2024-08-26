@@ -4717,6 +4717,7 @@
 /obj/structure/closet/crate/roguecloset,
 /obj/item/flint,
 /obj/machinery/light/rogue/wallfire/candle/r,
+/obj/item/clothing/under/roguetown/tights/stockings/silk/random,
 /turf/open/floor/carpet/royalblack,
 /area/rogue/indoors/town/manor)
 "fgs" = (
@@ -13451,7 +13452,6 @@
 /obj/structure/closet/crate/roguecloset,
 /obj/item/clothing/under/roguetown/tights/stockings/silk/black,
 /obj/item/clothing/suit/roguetown/armor/leather/vest/hand,
-/obj/structure/closet/crate/roguecloset,
 /obj/item/rogueweapon/sword/rapier,
 /obj/item/perfume/random,
 /turf/open/floor/rogue/wood,
@@ -20149,10 +20149,6 @@
 /obj/machinery/light/rogue/torchholder/r,
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue/outdoors/town/roofs)
-"xpr" = (
-/obj/structure/fluff/drake_statue/falling,
-/turf/open/floor/rogue/churchrough,
-/area/rogue/under/town/basement)
 "xpC" = (
 /obj/structure/fluff/wallclock/r,
 /turf/open/floor/rogue/blocks,
@@ -180486,7 +180482,7 @@ uAu
 dFu
 fBR
 sID
-xpr
+dVr
 sID
 dVr
 sID
