@@ -5,7 +5,6 @@
 	The ocean was your home, and adventure was your constant companion. But now, the tides have turned, \
 	As you find yourself on dry land, far from the sea."
 	allowed_sexes = list(MALE, FEMALE)
-	allowed_races = list(/datum/species/akula)
 	outfit = /datum/outfit/job/roguetown/adventurer/pirate
 	category_tags = list(CTAG_ADVENTURER)
 	pickprob = 75
