@@ -203,7 +203,7 @@
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/town)
 "akM" = (
-/obj/structure/table/fine,
+/obj/structure/table/wood,
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/town/tavern)
 "ali" = (
@@ -4694,7 +4694,9 @@
 /turf/open/floor/rogue/herringbone,
 /area/rogue/indoors/town/church)
 "faj" = (
-/obj/structure/table/finer,
+/obj/structure/table/wood{
+	icon_state = "tablewood1"
+	},
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/town/tavern)
 "faB" = (
@@ -8053,6 +8055,13 @@
 	},
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/manor)
+"iUn" = (
+/obj/effect/decal/cobbleedge{
+	icon_state = "borderfall";
+	dir = 4
+	},
+/turf/open/floor/rogue/blocks/stonered,
+/area/rogue/indoors/town/manor)
 "iUB" = (
 /obj/structure/closet/dirthole/closed,
 /obj/structure/gravemarker,
@@ -11065,13 +11074,6 @@
 /obj/machinery/light/rogue/torchholder,
 /turf/closed/wall/mineral/rogue/decowood,
 /area/rogue/indoors/town/tavern)
-"mCG" = (
-/obj/effect/decal/cobbleedge{
-	icon_state = "borderfall";
-	dir = 4
-	},
-/turf/open/floor/rogue/blocks/stonered,
-/area/rogue/indoors/town/manor)
 "mDs" = (
 /obj/structure/stairs/stone{
 	dir = 4
@@ -288018,12 +288020,12 @@ xlm
 xlm
 eUJ
 mtF
-mCG
-mCG
-mCG
-mCG
-mCG
-mCG
+iUn
+iUn
+iUn
+iUn
+iUn
+iUn
 qjD
 kIS
 jLG
