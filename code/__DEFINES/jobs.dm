@@ -138,13 +138,14 @@
 #define ARCHIVIST	(1<<1)
 #define ARMORSMITH	(1<<2)
 #define WEAPONSMITH (1<<3)
-#define ALCHEMIST	(1<<4)
-#define MASON		(1<<5)
-#define TAILOR		(1<<6)
-#define MERCHANT	(1<<7)
-#define SCRIBE		(1<<8)
-#define ELDER		(1<<9)
-#define APOTHECARY	(1<<10)
+#define BLACKSMITH  (1<<4)
+#define ALCHEMIST	(1<<5)
+#define MASON		(1<<6)
+#define TAILOR		(1<<7)
+#define MERCHANT	(1<<8)
+#define SCRIBE		(1<<9)
+#define ELDER		(1<<10)
+#define APOTHECARY	(1<<11)
 
 #define PEASANTS	(1<<5)
 
@@ -256,8 +257,9 @@
 #define JDO_ARCHIVIST 18
 
 #define JDO_CHIEF 18.1
-#define JDO_ARMORER 19
-#define JDO_WEAPONSMITH 20
+#define JDO_ARMORER 19.1
+#define JDO_WEAPONSMITH 19.2
+#define JDO_BLACKSMITH 20
 #define JDO_APPRENTICE 21
 
 #define JDO_MASON 22
@@ -351,6 +353,8 @@
 	/datum/job/roguetown/archivist,\
 	/datum/job/roguetown/barkeep,\
 	/datum/job/roguetown/armorsmith,\
+	/datum/job/roguetown/weaponsmith,\
+	/datum/job/roguetown/blacksmith,\
 	/datum/job/roguetown/mason,\
 	/datum/job/roguetown/merchant,\
 	/datum/job/roguetown/scribe

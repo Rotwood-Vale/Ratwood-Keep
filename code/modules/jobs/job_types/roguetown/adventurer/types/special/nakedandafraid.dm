@@ -8,7 +8,7 @@
 	allowed_races = RACES_ALL_KINDS
 	outfit = /datum/outfit/job/roguetown/adventurer/nudist
 	traits_applied = list(TRAIT_NUDIST)
-	category_tags = list(CTAG_PILGRIM)
+	category_tags = list(CTAG_CHALLENGE)
 	allow_custom_genitals = TRUE
 
 /datum/outfit/job/roguetown/adventurer/nudist
