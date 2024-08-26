@@ -130,6 +130,28 @@
 	export_price = 5
 	importexport_amt = 5
 
+/datum/roguestock/stockpile/potato
+	name = "Potato"
+	desc = "A starchy tuber."
+	item_type = /obj/item/reagent_containers/food/snacks/grown/rogue/potato
+	held_items = list(0, 0)
+	payout_price = 3
+	withdraw_price = 5
+	transport_fee = 1
+	export_price = 5
+	importexport_amt = 5
+
+/datum/roguestock/stockpile/sugarcane
+	name = "Sugarcane"
+	desc = "A sweet stalk."
+	item_type = /obj/item/reagent_containers/food/snacks/grown/sugarcane
+	held_items = list(0, 0)
+	payout_price = 3
+	withdraw_price = 5
+	transport_fee = 1
+	export_price = 5
+	importexport_amt = 5
+
 /datum/roguestock/stockpile/meat
 	name = "Meat"
 	desc = "Edible flesh harvested from animals."
