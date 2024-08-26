@@ -17591,7 +17591,6 @@
 "ukI" = (
 /obj/machinery/light/rogue/chand,
 /obj/structure/fluff/walldeco/customflag,
-/obj/item/clothing/suit/roguetown/shirt/dress/silkdress/random,
 /turf/open/transparent/openspace,
 /area/rogue/indoors/town/manor)
 "ukS" = (
