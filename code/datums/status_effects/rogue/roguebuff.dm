@@ -80,11 +80,11 @@
 /datum/status_effect/buff/moondust
 	id = "moondust"
 	alert_type = /atom/movable/screen/alert/status_effect/buff/druqks
-	effectedstats = list("speed" = 5, "endurance" = 5)
+	effectedstats = list("speed" = 2, "endurance" = 2, "intelligence" = -2)
 	duration = 30 SECONDS
 
 /datum/status_effect/buff/moondust/nextmove_modifier()
-	return 0.5
+	return 0.8
 
 /datum/status_effect/buff/moondust/on_apply()
 	. = ..()
@@ -93,11 +93,11 @@
 /datum/status_effect/buff/moondust_purest
 	id = "purest moondust"
 	alert_type = /atom/movable/screen/alert/status_effect/buff/druqks
-	effectedstats = list("speed" = 6, "endurance" = 6)
+	effectedstats = list("speed" = 3, "endurance" = 3, "intelligence" = -2)
 	duration = 40 SECONDS
 
 /datum/status_effect/buff/moondust_purest/nextmove_modifier()
-	return 0.5
+	return 0.8
 
 /datum/status_effect/buff/moondust_purest/on_apply()
 	. = ..()

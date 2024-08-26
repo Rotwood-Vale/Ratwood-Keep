@@ -4,7 +4,7 @@
 	reagent_state = LIQUID
 	color = "#ff0000"
 	taste_description = "red"
-	overdose_threshold = 30
+	overdose_threshold = 45
 	metabolization_rate = 0.5 * REAGENTS_METABOLISM
 	alpha = 173
 
@@ -43,7 +43,7 @@
 	reagent_state = LIQUID
 	color = "#0000ff"
 	taste_description = "manna"
-	overdose_threshold = 30
+	overdose_threshold = 45
 	metabolization_rate = 1 * REAGENTS_METABOLISM
 	alpha = 173
 

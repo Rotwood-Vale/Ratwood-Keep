@@ -60,10 +60,9 @@
 	update_icon()
 	update_desc()
 
-/obj/item/keyring/proc/removefromring(mob/user)
+/obj/item/keyring/proc/removefromring(mob/user, obj/item/roguekey/K)
 	if(!keys.len)
 		return
-	var/obj/item/roguekey/K = keys[keys.len]
 	keys -= K
 	K.loc = user.loc
 	update_icon()
@@ -97,9 +96,11 @@
 
 /obj/item/keyring/attack_right(mob/user)
 	if(keys.len)
-		to_chat(user, span_notice("I steal a key off the ring."))
-		var/obj/item/roguekey/K = removefromring(user)
-		user.put_in_active_hand(K)
+		var/obj/item/roguekey/K = keys.len > 1 ? input(user, "Which key?", "Keyring") as null|anything in keys : keys[1]
+		if(K && user.canUseTopic(src, BE_CLOSE))
+			to_chat(user, span_notice("I pull [K] off the ring."))
+			removefromring(user, K)
+			user.put_in_active_hand(K)
 
 /obj/item/keyring/update_icon()
 	..()

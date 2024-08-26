@@ -27,6 +27,7 @@
 		H.mind.adjust_skillrank(/datum/skill/misc/medicine, 1, TRUE)
 	pants = /obj/item/clothing/under/roguetown/tights/random
 	shoes = /obj/item/clothing/shoes/roguetown/shortboots
+	backr = /obj/item/storage/backpack/rogue/satchel
 	cloak = /obj/item/clothing/cloak/apron/waist
 	if(H.pronouns == SHE_HER)
 		armor = /obj/item/clothing/suit/roguetown/shirt/dress

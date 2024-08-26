@@ -40,6 +40,7 @@
 	if(istype(W, /obj/item/rogueore/coal) && fueluse <= 0)
 		return ..()
 	if((ore.len < maxore) && W.smeltresult)
+		user.dropItemToGround(W)
 		W.forceMove(src)
 		ore += W
 		user.visible_message("<span class='warning'>[user] puts something in the smelter.</span>")
