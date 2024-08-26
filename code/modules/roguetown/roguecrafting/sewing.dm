@@ -100,6 +100,13 @@
 
 /* craftdif of 2+ */
 
+/datum/crafting_recipe/roguetown/sewing/sleepingbag
+	name = "sleepcloth"
+	result = list(/obj/item/sleepingbag)
+	reqs =  list(/obj/item/natural/cloth = 2,
+                /obj/item/natural/fibers = 1)
+	craftdiff = 2
+
 /datum/crafting_recipe/roguetown/sewing/wrappings
 	name = "solar wrappings"
 	result = list(/obj/item/clothing/wrists/roguetown/wrappings)
@@ -111,6 +118,20 @@
 	result = list(/obj/item/clothing/wrists/roguetown/nocwrappings)
 	reqs = list(/obj/item/natural/cloth = 2)
 	craftdiff = 2
+
+/datum/crafting_recipe/roguetown/sewing/bedsheet
+	name = "bedsheet"
+	result = list(/obj/item/bedsheet/rogue/cloth)
+	reqs = list(/obj/item/natural/cloth = 2,
+				/obj/item/natural/fibers = 1)
+	craftdiff = 3
+
+/datum/crafting_recipe/roguetown/sewing/bedsheetpelt
+	name = "leather bedsheet"
+	result = list(/obj/item/bedsheet/rogue/pelt)
+	reqs = list(/obj/item/natural/hide = 2,
+            	/obj/item/natural/fibers = 1)
+	craftdiff = 3
 
 /datum/crafting_recipe/roguetown/sewing/coif
 	name = "coif"
