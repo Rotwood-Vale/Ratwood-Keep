@@ -6026,9 +6026,6 @@
 	},
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue/indoors/town/shop)
-"eas" = (
-/turf/closed,
-/area/rogue/outdoors/bog)
 "eaA" = (
 /obj/structure/table/wood,
 /obj/structure/table/wood,
@@ -7268,7 +7265,7 @@
 /obj/structure/roguemachine/vendor{
 	keycontrol = "farm"
 	},
-/turf/open/floor/rogue/twig,
+/turf/closed/wall/mineral/rogue/wooddark/horizontal,
 /area/rogue/indoors)
 "eVS" = (
 /obj/structure/fluff/wallclock/vampire,
@@ -8442,7 +8439,7 @@
 /area/rogue/outdoors/tribalfort)
 "fRt" = (
 /obj/structure/roguewindow/stained/zizo,
-/turf/closed,
+/turf/open/floor/rogue/herringbone,
 /area/rogue/indoors)
 "fRC" = (
 /obj/structure/chair/wood/rogue/throne,
@@ -13681,14 +13678,6 @@
 	},
 /turf/open/transparent/openspace,
 /area/rogue/indoors/town/garrison)
-"jPH" = (
-/obj/structure/table/wood,
-/obj/structure/bars{
-	icon_state = "barsbent";
-	layer = 2.81
-	},
-/turf/closed,
-/area/rogue/indoors)
 "jQc" = (
 /obj/machinery/light/rogue/smelter,
 /turf/open/floor/rogue/blocks,
@@ -18930,11 +18919,6 @@
 /obj/item/grown/log/tree,
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue/indoors)
-"odP" = (
-/obj/structure/bars,
-/obj/structure/bars,
-/turf/closed,
-/area/rogue/outdoors/vikingarea)
 "odT" = (
 /obj/structure/chair/wood/rogue,
 /turf/open/floor/rogue/tile,
@@ -19747,12 +19731,6 @@
 	},
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/basement)
-"oHn" = (
-/obj/structure/table/wood{
-	icon_state = "tablewood1"
-	},
-/turf/closed,
-/area/rogue/indoors/town/tavern)
 "oHA" = (
 /turf/open/floor/rogue/rooftop/green/corner1{
 	dir = 10
@@ -20926,7 +20904,7 @@
 /obj/structure/roguemachine/vendor{
 	keycontrol = "butcher"
 	},
-/turf/open/floor/rogue/cobblerock,
+/turf/closed/wall/mineral/rogue/wooddark/horizontal,
 /area/rogue/indoors)
 "pxR" = (
 /turf/open/floor/rogue/grass,
@@ -22679,12 +22657,6 @@
 	},
 /turf/open/floor/rogue/woodturned/nosmooth,
 /area/rogue/indoors)
-"qJu" = (
-/obj/machinery/light/rogue/torchholder{
-	dir = 8
-	},
-/turf/open/floor/rogue/grass,
-/area/rogue/outdoors/rtfield)
 "qJQ" = (
 /turf/open/floor/carpet/stellar,
 /area/rogue/indoors/town/magician)
@@ -30442,7 +30414,7 @@
 /area/rogue/indoors/town/manor)
 "wQP" = (
 /obj/structure/roguemachine/vendor,
-/turf/open/floor/rogue/woodturned,
+/turf/closed/wall/mineral/rogue/stonebrick,
 /area/rogue/indoors/town/shop)
 "wQY" = (
 /obj/structure/closet/crate/roguecloset,
@@ -30456,7 +30428,7 @@
 	layer = 2.81
 	},
 /obj/structure/table/wood,
-/turf/closed,
+/turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/shop)
 "wSc" = (
 /obj/structure/table/wood,
@@ -162728,7 +162700,7 @@ aaX
 aMy
 aMy
 vSq
-odP
+nJb
 plX
 pBf
 nGB
@@ -292665,12 +292637,12 @@ qvR
 qvR
 qvR
 qvR
-qJu
 qvR
 qvR
 qvR
 qvR
-qJu
+qvR
+qvR
 qvR
 qvR
 qvR
@@ -318410,7 +318382,7 @@ sjP
 fxx
 fxx
 sjP
-jPH
+pHg
 dUZ
 ltT
 oLb
@@ -387188,7 +387160,7 @@ sao
 sao
 sao
 mUQ
-eas
+sao
 sao
 eFy
 rOF
@@ -411195,7 +411167,7 @@ wan
 vka
 ozJ
 ilO
-oHn
+gAG
 ygF
 ygF
 rdI
