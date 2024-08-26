@@ -6193,13 +6193,13 @@
 /area/rogue/indoors)
 "eeD" = (
 /obj/structure/closet/crate/chest,
-/obj/item/reagent_containers/food/snacks/egg/loaded,
-/obj/item/reagent_containers/food/snacks/egg/loaded,
-/obj/item/reagent_containers/food/snacks/egg/loaded,
 /obj/item/reagent_containers/powder/flour/salt,
 /obj/item/reagent_containers/powder/flour/salt,
 /obj/item/reagent_containers/powder/flour/salt,
 /obj/item/reagent_containers/powder/flour/salt,
+/obj/item/reagent_containers/food/snacks/egg,
+/obj/item/reagent_containers/food/snacks/egg,
+/obj/item/reagent_containers/food/snacks/egg,
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/manor)
 "eeK" = (
@@ -9332,6 +9332,12 @@
 /area/rogue/indoors/town)
 "gEj" = (
 /obj/structure/closet/crate/chest,
+/obj/item/reagent_containers/food/snacks/grown/sugarcane,
+/obj/item/reagent_containers/food/snacks/grown/sugarcane,
+/obj/item/reagent_containers/food/snacks/grown/sugarcane,
+/obj/item/reagent_containers/food/snacks/grown/sugarcane,
+/obj/item/reagent_containers/food/snacks/grown/sugarcane,
+/obj/item/reagent_containers/food/snacks/grown/sugarcane,
 /turf/open/floor/rogue/blocks/paving,
 /area/rogue/under/town/basement)
 "gEE" = (
@@ -10411,6 +10417,7 @@
 /obj/item/reagent_containers/glass/cup/wooden,
 /obj/item/reagent_containers/glass/cup/wooden,
 /obj/item/reagent_containers/glass/cup/wooden,
+/obj/item/reagent_containers/glass/cup/silver,
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/manor)
 "hnN" = (
@@ -11669,13 +11676,20 @@
 "iqB" = (
 /obj/structure/closet/crate/chest,
 /obj/machinery/light/rogue/wallfire/candle/r,
-/obj/item/reagent_containers/food/snacks/egg/loaded,
-/obj/item/reagent_containers/food/snacks/egg/loaded,
-/obj/item/reagent_containers/food/snacks/egg/loaded,
 /obj/item/reagent_containers/powder/flour/salt,
 /obj/item/reagent_containers/powder/flour/salt,
 /obj/item/reagent_containers/powder/flour/salt,
 /obj/item/reagent_containers/powder/flour/salt,
+/obj/item/reagent_containers/food/snacks/egg,
+/obj/item/reagent_containers/food/snacks/egg,
+/obj/item/reagent_containers/food/snacks/egg,
+/obj/item/reagent_containers/food/snacks/egg,
+/obj/item/reagent_containers/food/snacks/egg,
+/obj/item/reagent_containers/food/snacks/egg,
+/obj/item/reagent_containers/powder/sugar,
+/obj/item/reagent_containers/powder/sugar,
+/obj/item/reagent_containers/powder/sugar,
+/obj/item/reagent_containers/powder/sugar,
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/manor)
 "iqD" = (
@@ -23455,6 +23469,10 @@
 /obj/item/reagent_containers/food/snacks/grown/wheat,
 /obj/item/reagent_containers/food/snacks/grown/wheat,
 /obj/item/reagent_containers/food/snacks/grown/wheat,
+/obj/item/reagent_containers/food/snacks/grown/rogue/potato,
+/obj/item/reagent_containers/food/snacks/grown/rogue/potato,
+/obj/item/reagent_containers/food/snacks/grown/rogue/potato,
+/obj/item/reagent_containers/food/snacks/grown/rogue/potato,
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/manor)
 "rqZ" = (
@@ -23958,6 +23976,7 @@
 /obj/item/reagent_containers/food/condiment/saltshaker{
 	pixel_y = 10
 	},
+/obj/structure/fermenting_barrel/random/beer,
 /turf/open/floor/rogue/tile/checker,
 /area/rogue/indoors/town/manor)
 "rNH" = (
@@ -26206,6 +26225,10 @@
 /obj/item/reagent_containers/powder/flour,
 /obj/item/reagent_containers/food/snacks/rogue/meat/steak,
 /obj/item/reagent_containers/food/snacks/rogue/meat/steak,
+/obj/item/reagent_containers/powder/sugar,
+/obj/item/reagent_containers/powder/sugar,
+/obj/item/reagent_containers/food/snacks/grown/rogue/potato,
+/obj/item/reagent_containers/food/snacks/grown/rogue/potato,
 /turf/open/floor/rogue/tile,
 /area/rogue/indoors/town/tavern)
 "tyy" = (
