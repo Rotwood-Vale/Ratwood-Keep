@@ -2586,6 +2586,7 @@
 #include "code\modules\mob\living\carbon\human\species_types\furry\akula.dm"
 #include "code\modules\mob\living\carbon\human\species_types\furry\anthromorph.dm"
 #include "code\modules\mob\living\carbon\human\species_types\furry\anthromorphsmall.dm"
+#include "code\modules\mob\living\carbon\human\species_types\furry\anthromorphbig.dm"
 #include "code\modules\mob\living\carbon\human\species_types\furry\demihuman.dm"
 #include "code\modules\mob\living\carbon\human\species_types\furry\dracon.dm"
 #include "code\modules\mob\living\carbon\human\species_types\furry\kobold.dm"
