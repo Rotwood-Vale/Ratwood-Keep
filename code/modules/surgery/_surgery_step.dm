@@ -58,12 +58,12 @@
 	var/skill_median = SKILL_LEVEL_JOURNEYMAN
 	/// Modifiers to success chance when you're above the median
 	var/list/skill_bonuses = list(
-		1 = 0.4,
-		2 = 0.8,
-		3 = 1,
-		4 = 1.2,
-		5 = 1.5,
-		6 = 2,
+		1 = 0.5,
+		2 = 1,
+		3 = 1.5,
+		4 = 2,
+		5 = 2.,
+		6 = 3,
 	)
 	/// Modifiers to success chance when you're below the median
 	var/list/skill_maluses = list(
@@ -317,6 +317,9 @@
 	LAZYREMOVE(target.surgeries, target_zone)
 	var/success = !try_to_fail && ((iscyborg(user) && !silicons_obey_prob) || prob(success_prob)) && chem_check(target)
 	if(success && success(user, target, target_zone, tool, intent))
+		if(ishuman(user))
+			var/mob/living/carbon/human/doctor = user
+			user.mind.add_sleep_experience(/datum/skill/misc/medicine, doctor.STAINT * (skill_min/2))
 		play_success_sound(user, target, target_zone, tool)
 		if(repeating && can_do_step(user, target, target_zone, tool, intent, try_to_fail))
 			initiate(user, target, target_zone, tool, intent, try_to_fail)

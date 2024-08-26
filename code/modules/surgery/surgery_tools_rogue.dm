@@ -173,6 +173,8 @@
 	heated = new_heated
 	if(heated)
 		damtype = BURN
+		tool_behaviour = TOOL_CAUTERY
 	else
 		damtype = BRUTE
+		tool_behaviour = null
 	update_icon()
