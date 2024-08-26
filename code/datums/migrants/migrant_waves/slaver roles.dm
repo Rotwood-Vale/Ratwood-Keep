@@ -1,6 +1,6 @@
 /datum/migrant_role/slaver/master
 	name = "Zybantynian Master"
-	greet_text = "The leader of the Zybantynian slave troup. You have came to the Isle of Enigma from the western deserts of Zybantine in the hopes of gathering wealth through the trade unfortunate laborers. The practice can be called despicable by some, but it is without a doubt efficient in filling you're pockets before you return to Zybantine"
+	greet_text = "The leader of the Zybantynian slave troup. You have came to the Isle of Enigma from the western deserts of Zybantine in the hopes of gathering wealth through the trade unfortunate laborers. The practice can be called despicable by some, but it is without a doubt efficient in filling your pockets before you return to Zybantine"
 	outfit = /datum/outfit/job/roguetown/slaver/master
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_TOLERATED_UP
@@ -13,6 +13,7 @@
 	neck = /obj/item/clothing/neck/roguetown/chaincoif
 	shoes = /obj/item/clothing/shoes/roguetown/shalal
 	pants = /obj/item/clothing/under/roguetown/chainlegs
+	gloves = /obj/item/clothing/gloves/roguetown/angle
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/purple
 	belt = /obj/item/storage/belt/rogue/leather/shalalz
 	armor = /obj/item/clothing/suit/roguetown/armor/plate/scale
@@ -48,10 +49,10 @@
 
 /datum/migrant_role/slaver/slavemercsword
 	name = "Zybantynian Blade Mercenary"
-	greet_text = "A hired arm for the Zybantine Slave troup. You have come from the western deserts of Zybantine, and are hired for the week you are spending on this bog covered island."
+	greet_text = "A hired arm for the Zybantine Slave troup. You have come from the western deserts of Zybantine, and are hired for the week you are spending on this island."
 	outfit = /datum/outfit/job/roguetown/slaver/slavemercsword
 	allowed_sexes = list(MALE, FEMALE)
-	allowed_races = RACES_SHUNNED_UP
+	allowed_races = RACES_TOLERATED_UP
 	grant_lit_torch = TRUE
 	show_wanderer_examine = FALSE
 
@@ -62,6 +63,7 @@
 	neck = /obj/item/storage/belt/rogue/pouch/coins/poor
 	shoes = /obj/item/clothing/shoes/roguetown/shalal
 	pants = /obj/item/clothing/under/roguetown/trou/leather
+	gloves = /obj/item/clothing/gloves/roguetown/angle
 	belt = /obj/item/storage/belt/rogue/leather/shalalz
 	armor = /obj/item/clothing/suit/roguetown/armor/plate/scale
 	backl = /obj/item/storage/backpack/rogue/satchel
@@ -96,10 +98,10 @@
 
 /datum/migrant_role/slaver/slavemercwhip
 	name = "Zybantynian Whip Mercenary"
-	greet_text = "A hired arm for the Zybantine Slave troup. You have come from the western deserts of Zybantine, and are hired for the week you are spending on this bog covered island."
+	greet_text = "A hired arm for the Zybantine Slave troup. You have come from the western deserts of Zybantine, and are hired for the week you are spending on this island."
 	outfit = /datum/outfit/job/roguetown/slaver/slavemercsword
 	allowed_sexes = list(MALE, FEMALE)
-	allowed_races = RACES_SHUNNED_UP
+	allowed_races = RACES_TOLERATED_UP
 	grant_lit_torch = TRUE
 	show_wanderer_examine = FALSE
 	show_wanderer_examine = FALSE
@@ -111,6 +113,7 @@
 	neck = /obj/item/storage/belt/rogue/pouch/coins/poor
 	shoes = /obj/item/clothing/shoes/roguetown/shalal
 	pants = /obj/item/clothing/under/roguetown/trou/leather
+	gloves = /obj/item/clothing/gloves/roguetown/angle
 	belt = /obj/item/storage/belt/rogue/leather/shalalz
 	armor = /obj/item/clothing/suit/roguetown/armor/plate/scale
 	backl = /obj/item/storage/backpack/rogue/satchel
@@ -144,8 +147,8 @@
 	ADD_TRAIT(H, TRAIT_XENOPHOBIC, TRAIT_GENERIC)
 
 /datum/migrant_role/slaver/slavez
-	name = "Zybantynian Slave"
-	greet_text = "An unlucky slave who has been transported from the western deserts of the Zybantines to the marsh filled Isle of Enigma."
+	name = "Slave"
+	greet_text = "An unlucky slave, captured and trained for labor, now being transported from the western deserts of the Zybantines to the marsh filled Isle of Enigma."
 	outfit = /datum/outfit/job/roguetown/slaver/slavez
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
@@ -166,7 +169,7 @@
 		H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/polearms, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/knives, 1, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/craft/crafting, 1, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/craft/crafting, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/stealing, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/music, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/sewing, 2, TRUE)
@@ -177,9 +180,8 @@
 		H.mind.adjust_skillrank(/datum/skill/misc/medicine, 1, TRUE)
 		H.change_stat("strength", -3)
 		H.change_stat("constitution", -2)
-		H.change_stat("endurance", -2)
-		H.change_stat("intelligence", 2)
+		H.change_stat("intelligence", 3)
 		H.change_stat("speed", 1)
-		H.change_stat("fortune", 2)
+		H.change_stat("fortune", -1)
 
 	ADD_TRAIT(H, TRAIT_GOODLOVER, TRAIT_GENERIC)
