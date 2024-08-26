@@ -252,3 +252,24 @@
 	if(!istype(T, /turf/open/floor/rogue))
 		return
 	return ..()
+
+
+/// DURT
+/datum/crafting_recipe/roguetown/turfs/nrich
+	name = "soil plot"
+	result = /turf/open/floor/rogue/dirt/nrich
+	reqs = list(/obj/item/ash = 1,
+				/obj/item/natural/fibers = 1,
+				/obj/item/natural/dirtclod = 2)
+	skillcraft = /datum/skill/labor/farming
+	verbage_simple = "set up"
+	verbage = "sets up"
+	craftdiff = 2
+
+/datum/crafting_recipe/roguetown/turfs/nrich/TurfCheck(mob/user, turf/T)
+	if(isclosedturf(T))
+		return
+	if(!istype(T, /turf/open/floor/rogue))
+		return
+	return TRUE
+

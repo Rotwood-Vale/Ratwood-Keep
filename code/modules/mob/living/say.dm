@@ -142,10 +142,10 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 
 	if(check_whisper(original_message, forced) || !can_speak_basic(original_message, ignore_spam, forced))
 		return
-	//RATWOOD SUBTLER START
+
 	if(check_subtler(original_message, forced) || !can_speak_basic(original_message, ignore_spam, forced))
 		return
-	//RATWOOD SUBTLER END
+		
 	if(in_critical)
 		if(!(crit_allowed_modes[message_mode]))
 			return
@@ -320,7 +320,7 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 					continue
 				if(!(M.client.prefs.chat_toggles & CHAT_GHOSTEARS)) //they're talking normally and we have hearing at any range off
 					continue
-		if(!is_in_zweb(src.z,M.z))
+		if(!is_in_zweb(src, M))
 			continue
 		listening |= M
 		the_dead[M] = TRUE
@@ -334,10 +334,13 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 		eavesrendered = compose_message(src, message_language, eavesdropping, , spans, message_mode)
 
 	var/rendered = compose_message(src, message_language, message, , spans, message_mode)
+	var/turf/self_turf = get_turf(src)
+	var/self_z = self_turf.z
 	for(var/_AM in listening)
 		var/atom/movable/AM = _AM
+		var/turf/movable_turf = get_turf(AM)
 		if(!Zs_too && !isobserver(AM))
-			if(AM.z != src.z)
+			if(movable_turf.z != self_z)
 				continue
 		if(eavesdrop_range && get_dist(source, AM) > message_range && !(the_dead[AM]))
 			AM.Hear(eavesrendered, src, message_language, eavesdropping, , spans, message_mode, original_message)

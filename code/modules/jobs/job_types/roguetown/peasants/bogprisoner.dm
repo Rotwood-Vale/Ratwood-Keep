@@ -11,7 +11,7 @@
 	tutorial = "How does it feel to be the rat in the cage? You're alone and at the mercy of your captors, kept around as a hostage. You spend your days waiting for the oft chance someone comes to pay your ransom. Might as well start praying to whatever god you find solace in."
 
 	outfit = /datum/outfit/job/roguetown/prisonerb
-	bypass_jobban = TRUE
+	banned_leprosy = FALSE
 	display_order = JDO_PRISONERB
 	give_bank_account = 10
 	min_pq = -14

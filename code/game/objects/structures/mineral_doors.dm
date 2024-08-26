@@ -57,6 +57,7 @@
 	var/resident_advclass
 
 	damage_deflection = 10
+	leanable = TRUE
 
 /obj/structure/mineral_door/proc/try_award_resident_key(mob/user)
 	if(!grant_resident_key)
@@ -153,6 +154,7 @@
 
 	if(close_delay != -1)
 		addtimer(CALLBACK(src, PROC_REF(Close)), close_delay)
+	SEND_SIGNAL(src, COMSIG_DOOR_OPEN, src)
 
 /obj/structure/mineral_door/proc/force_closed()
 	isSwitchingStates = TRUE
@@ -164,6 +166,7 @@
 	air_update_turf(1)
 	update_icon()
 	isSwitchingStates = FALSE
+	SEND_SIGNAL(src, COMSIG_DOOR_CLOSED, src)
 
 /obj/structure/mineral_door/Initialize()
 	. = ..()
@@ -312,6 +315,7 @@
 
 	if(close_delay != -1)
 		addtimer(CALLBACK(src, PROC_REF(Close)), close_delay)
+	SEND_SIGNAL(src, COMSIG_DOOR_OPEN, src)
 
 /obj/structure/mineral_door/proc/Close(silent = FALSE)
 	if(isSwitchingStates || !door_opened)
@@ -332,6 +336,7 @@
 	air_update_turf(1)
 	update_icon()
 	isSwitchingStates = FALSE
+	SEND_SIGNAL(src, COMSIG_DOOR_CLOSED, src)
 
 /obj/structure/mineral_door/update_icon()
 	icon_state = "[base_state][door_opened ? "open":""]"
