@@ -84,6 +84,7 @@
 	pants = /obj/item/clothing/under/roguetown/chainlegs
 	shirt = /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk
 	shoes = /obj/item/clothing/shoes/roguetown/boots/armor
+	cloak = /obj/item/clothing/cloak/tabard/barontabard
 	backr = /obj/item/storage/backpack/rogue/satchel
 	backpack_contents = list(/obj/item/needle/thorn = 1, /obj/item/natural/cloth = 1)
 	neck = /obj/item/clothing/neck/roguetown/coif
@@ -131,7 +132,7 @@
 			armor = /obj/item/clothing/suit/roguetown/armor/plate/full
 			gloves = /obj/item/clothing/gloves/roguetown/plate
 			head = /obj/item/clothing/head/roguetown/helmet/heavy/pigface
-			cloak = /obj/item/clothing/cloak/lordcloak
+			cloak = /obj/item/clothing/cloak/baron_cloak
 			H.mind.adjust_skillrank(/datum/skill/combat/swords, rand(5,6), TRUE)
 			H.change_stat("strength", 3)
 			H.change_stat("constitution", 3)
