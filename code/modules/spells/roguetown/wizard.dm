@@ -228,7 +228,7 @@
 	name = "fireball"
 	exp_heavy = 0
 	exp_light = 0
-	exp_flash = 0
+	exp_flash = 1
 	exp_fire = 1
 	damage = 10
 	damage_type = BURN
@@ -280,7 +280,7 @@
 
 
 /obj/effect/proc_holder/spell/invoked/projectile/spitfire
-	name = "Fire Bolt"
+	name = "spitfire"
 	desc = ""
 	clothes_req = FALSE
 	range = 8
@@ -298,7 +298,7 @@
 	charging_slowdown = 3
 	chargedloop = /datum/looping_sound/invokegen
 	associated_skill = /datum/skill/magic/arcane
-	cost = 2
+	cost = 1
 	xp_gain = TRUE
 
 /obj/projectile/magic/aoe/fireball/rogue2
@@ -342,6 +342,39 @@
 	exp_fire = -1
 	damage = 20
 	damage_type = BURN
+	nodamage = FALSE
+	flag = "magic"
+	hitsound = 'sound/blank.ogg'
+	aoe_range = 0
+
+/obj/effect/proc_holder/spell/invoked/projectile/godslash //event only, admin only
+	name = "godslash"
+	desc = ""
+	clothes_req = FALSE
+	range = 8
+	projectile_type = /obj/projectile/magic/aoe/slash/rogue3
+	overlay_state = "fireball"
+	sound = list('sound/magic/slash.ogg')
+	active = FALSE
+	releasedrain = 0
+	chargedrain = 0
+	chargetime = 0
+	charge_max = 0 SECONDS
+	warnie = "spellwarning"
+	no_early_release = TRUE
+	movement_interrupt = FALSE
+	charging_slowdown = 0
+	chargedloop = /datum/looping_sound/invokegen
+	associated_skill = /datum/skill/magic/arcane
+
+/obj/projectile/magic/aoe/slash/rogue3
+	name = "fireball"
+	exp_heavy = 0
+	exp_light = 1
+	exp_flash = 0
+	exp_fire = -1
+	damage = 20
+	damage_type = BRUTE
 	nodamage = FALSE
 	flag = "magic"
 	hitsound = 'sound/blank.ogg'

@@ -1,10 +1,10 @@
 /datum/job/roguetown/vampire/vampthrall
-	title = "Vampire Thrall"
+	title = "Antediluvian Peasant"
 	flag = VAMPTHRALL
 	department_flag = VAMPIRE
 	faction = "Station"
-	total_positions = 0
-	spawn_positions = 0
+	total_positions = 4
+	spawn_positions = 4
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
 	show_in_credits = FALSE		//Stops Scom from announcing their arrival.
@@ -27,25 +27,24 @@
 	H.mind.adjust_skillrank(/datum/skill/combat/knives, 4, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 1, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/combat/polearms, 1, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/craft/crafting, 3, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/sewing, 1, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/labor/farming, 4, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/craft/cooking, 1, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/medicine, 4, TRUE)
-	belt = /obj/item/storage/belt/rogue/leather/rope
+	belt = /obj/item/storage/belt/rogue/leather
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/random
+	cloak = /obj/item/clothing/cloak/raincloak/brown
 	pants = /obj/item/clothing/under/roguetown/trou
-	head = /obj/item/clothing/head/roguetown/armingcap
-	shoes = /obj/item/clothing/shoes/roguetown/simpleshoes
+	shoes = /obj/item/clothing/shoes/roguetown/boots/leather
 	backr = /obj/item/storage/backpack/rogue/satchel
 	backl = /obj/item/storage/backpack/rogue/backpack/surgery
 	wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
-	backl = /obj/item/storage/backpack/rogue/satchel
 	neck = /obj/item/storage/belt/rogue/pouch/coins/poor
 	armor = /obj/item/clothing/suit/roguetown/armor/workervest
-	mouth = /obj/item/rogueweapon/huntingknife
 	beltr = /obj/item/flint
+	beltl = /obj/item/rogueweapon/huntingknife
 	ADD_TRAIT(H, TRAIT_FAITHLESS, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_STRONGBITE, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_NOROGSTAM, TRAIT_GENERIC)
@@ -58,6 +57,27 @@
 	H.change_stat("strength", 1)
 	H.change_stat("speed", 2)
 	H.change_stat("intelligence", 2)
+	var/obj/item/organ/eyes/eyes = H.getorganslot(ORGAN_SLOT_EYES)
+	if(eyes)
+		eyes.Remove(H,1)
+		QDEL_NULL(eyes)
+	eyes = new /obj/item/organ/eyes/night_vision/zombie
+	eyes.Insert(H)
+//	H.verbs |= /mob/living/carbon/human/proc/vampire_telepathy (APPLE EDIT:I think this just enables you to hear vampires, though doesnt let you use it yourself)  */
+/*	if(world.time % 5)
+		if(GLOB.tod != "night")
+			if(isturf(H.loc))
+				var/turf/T = H.loc
+				if(T.can_see_sky())
+					if(T.get_lumcount() > 0.15)	
+						to_chat(H, span_warning("Astrata spurns me! I must get out of her rays!")) // VLord is more punished for daylight excursions.
+						var/turf/N = H.loc
+						if(N.can_see_sky())
+							if(N.get_lumcount() > 0.15)
+								H.fire_act(1)
+						to_chat(H, span_warning("That was too close. I must avoid the sun."))
+					else
+						H.fire_act(1) (APPLE EDIT:I think something along the lines of this is whats used for burning in daylight)*/
 	/*if(H.mind)
 		var/datum/antagonist/vampire/new_antag = new /datum/antagonist/vampirelord/lesser()
 		H.mind.add_antag_datum(new_antag) */ //Functional Vampirism
@@ -70,3 +90,4 @@
 	recruitment_message = "Aid our cause, %RECRUIT!"
 	accept_message = "For what is right."
 	refuse_message = "I refuse."
+k

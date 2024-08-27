@@ -484,13 +484,13 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 //Vampire Additions
 
 /obj/effect/landmark/start/vampthrall
-	name = "Vampire Thrall"
+	name = "Antediluvian Peasant"
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/vampthralllate
 	name = "Vampirethralllate"
 	icon_state = "arrow"
-	jobspawn_override = list("Vampire Thrall")
+	jobspawn_override = list("Antediluvian Peasant")
 	delete_after_roundstart = FALSE
 
 /obj/effect/landmark/start/vampsmith

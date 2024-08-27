@@ -34,7 +34,7 @@
 	var/no_glasses
 	var/damaged	= FALSE	//damaged indicates that our eyes are undergoing some level of negative effect
 
-	var/eye_color = "#FFFFFF"
+	var/eye_color = "#ffffff00"
 	var/heterochromia = FALSE
 	var/second_color = "#FFFFFF"
 

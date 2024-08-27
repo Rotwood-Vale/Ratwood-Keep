@@ -706,6 +706,37 @@
 		T = get_turf(target)
 	explosion(T, -1, exp_heavy, exp_light, exp_flash, 0, flame_range = exp_fire, soundin = explode_sound)
 
+/obj/projectile/magic/aoe/slash
+	name = "bolt of fireball"
+	icon_state = "slash"
+	damage = 10
+	damage_type = BRUTE
+	nodamage = FALSE
+	light_color = "#f8af07"
+	light_range = 2
+
+	//explosion values
+	var/exp_heavy = 0
+	var/exp_light = 2
+	var/exp_flash = 3
+	var/exp_fire = 2
+
+/obj/projectile/magic/aoe/slash/on_hit(target)
+	. = ..()
+	if(ismob(target))
+		var/mob/living/M = target
+		if(M.anti_magic_check())
+			visible_message(span_warning("[src] vanishes into smoke on contact with [target]!"))
+			return BULLET_ACT_BLOCK
+		M.adjust_fire_stacks(6)
+//		M.take_overall_damage(0,10) //between this 10 burn, the 10 brute, the explosion brute, and the onfire burn, my at about 65 damage if you stop drop and roll immediately
+	var/turf/T
+	if(isturf(target))
+		T = target
+	else
+		T = get_turf(target)
+	explosion(T, -1, exp_heavy, exp_light, exp_flash, 0, flame_range = exp_fire, soundin = explode_sound)
+
 /obj/projectile/magic/aoe/fireball/infernal
 	name = "infernal fireball"
 	exp_heavy = -1

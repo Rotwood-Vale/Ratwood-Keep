@@ -488,8 +488,8 @@
 	xp_gain = TRUE
 	releasedrain = 30
 	chargedrain = 1
-	chargetime = 20
-	charge_max = 10 SECONDS
+	chargetime = 0
+	charge_max = 15 SECONDS
 	warnie = "spellwarning"
 	no_early_release = TRUE
 	movement_interrupt = FALSE
