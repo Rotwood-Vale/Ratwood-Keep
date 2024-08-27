@@ -264,7 +264,7 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "E
 	"Priest",
 	"Knight")
 	var/num_siege = 0
-	if(num_players() >= 50)
+	if(num_players() >= 70)
 		num_siege = CLAMP(round(num_players() / 2), 30, 35)
 		siegegoal += (num_siege * rand(200, 400))
 
