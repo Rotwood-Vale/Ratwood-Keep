@@ -9,7 +9,6 @@
 	allowed_races = RACES_ALL_KINDS
 	outfit = /datum/outfit/job/roguetown/adventurer/masterchef
 
-	maximum_possible_slots = 1
 	pickprob = 5
 	category_tags = list(CTAG_PILGRIM)
 
