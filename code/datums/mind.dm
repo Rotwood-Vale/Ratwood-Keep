@@ -45,6 +45,9 @@
 
 	var/list/spell_list = list() // Wizard mode & "Give Spell" badmin button.
 
+	var/spell_points
+	var/used_spell_points
+
 	var/linglink
 	var/datum/martial_art/martial_art
 	var/static/default_martial_art = new/datum/martial_art
@@ -300,12 +303,16 @@
 	if(known_skills[S] >= old_level)
 		if(known_skills[S] > old_level)
 			to_chat(current, span_nicegreen("My [S.name] grows to [SSskills.level_names[known_skills[S]]]!"))
+		if(skill == /datum/skill/magic/arcane)
+			adjust_spellpoints(1)
 	else
 		to_chat(current, span_warning("My [S.name] has weakened to [SSskills.level_names[known_skills[S]]]!"))
 
 /datum/mind/proc/adjust_skillrank(skill, amt, silent = FALSE)
 	var/datum/skill/S = GetSkillRef(skill)
 	var/amt2gain = 0
+	if(skill == /datum/skill/magic/arcane)
+		adjust_spellpoints(amt)
 	for(var/i in 1 to amt)
 		switch(skill_experience[S])
 			if(SKILL_EXP_MASTER to SKILL_EXP_LEGENDARY)
@@ -348,6 +355,9 @@
 	else
 		to_chat(current, span_warning("I feel like I've become worse at [S.name]!"))
 
+// adjusts the amount of available spellpoints
+/datum/mind/proc/adjust_spellpoints(points)
+	spell_points += points
 
 ///Gets the skill's singleton and returns the result of its get_skill_speed_modifier
 /datum/mind/proc/get_skill_speed_modifier(skill)

@@ -314,14 +314,18 @@
 						return
 				changeNext_move(mmb_intent.clickcd)
 				face_atom(A)
-				if(m_intent == MOVE_INTENT_RUN)
+				if(m_intent == MOVE_INTENT_RUN || HAS_TRAIT_FROM(src, TRAIT_LEAPER, MAGIC_TRAIT))
 					emote("leap", forced = TRUE)
 				else
 					emote("jump", forced = TRUE)
 				var/jadded
 				var/jrange
 				var/jextra = FALSE
-				if(m_intent == MOVE_INTENT_RUN)
+				if(HAS_TRAIT_FROM(src, TRAIT_LEAPER, MAGIC_TRAIT))
+					OffBalance(10)
+					jadded = 15
+					jrange = 4
+				else if(m_intent == MOVE_INTENT_RUN)
 					OffBalance(30)
 					jadded = 15
 					jrange = 3

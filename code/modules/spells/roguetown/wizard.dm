@@ -17,6 +17,8 @@
 	charging_slowdown = 3
 	chargedloop = /datum/looping_sound/invokegen
 	associated_skill = /datum/skill/magic/arcane
+	cost = 1
+	xp_gain = TRUE
 
 /obj/projectile/magic/lightning
 	name = "bolt of lightning"
@@ -219,6 +221,8 @@
 	charging_slowdown = 3
 	chargedloop = /datum/looping_sound/invokegen
 	associated_skill = /datum/skill/magic/arcane
+	cost = 2
+	xp_gain = TRUE
 
 /obj/projectile/magic/aoe/fireball/rogue
 	name = "fireball"
@@ -252,7 +256,7 @@
 	clothes_req = FALSE
 	range = 8
 	projectile_type = /obj/projectile/magic/aoe/fireball/rogue/great
-	overlay_state = "fireball"
+	overlay_state = "fireball_wide"
 	sound = list('sound/magic/fireball.ogg')
 	active = FALSE
 	releasedrain = 50
@@ -263,6 +267,8 @@
 	no_early_release = TRUE
 	movement_interrupt = TRUE
 	chargedloop = /datum/looping_sound/invokegen
+	cost = 5
+	xp_gain = TRUE
 
 /obj/projectile/magic/aoe/fireball/rogue/great
 	name = "fireball"
@@ -274,12 +280,12 @@
 
 
 /obj/effect/proc_holder/spell/invoked/projectile/spitfire
-	name = "spitfire"
+	name = "Fire Bolt"
 	desc = ""
 	clothes_req = FALSE
 	range = 8
 	projectile_type = /obj/projectile/magic/aoe/fireball/rogue2
-	overlay_state = "fireball"
+	overlay_state = "fireball_multi"
 	sound = list('sound/magic/whiteflame.ogg')
 	active = FALSE
 	releasedrain = 30
@@ -292,6 +298,8 @@
 	charging_slowdown = 3
 	chargedloop = /datum/looping_sound/invokegen
 	associated_skill = /datum/skill/magic/arcane
+	cost = 2
+	xp_gain = TRUE
 
 /obj/projectile/magic/aoe/fireball/rogue2
 	name = "fireball"
@@ -352,10 +360,14 @@
 	chargedrain = 0
 	chargetime = 0
 	warnie = "spellwarning"
+	overlay_state = "fetch"
 	no_early_release = TRUE
 	charging_slowdown = 1
 	chargedloop = /datum/looping_sound/invokegen
 	associated_skill = /datum/skill/magic/arcane
+	cost = 1
+	xp_gain = TRUE
+
 /obj/projectile/magic/fetch/on_hit(target)
 	. = ..()
 	if(ismob(target))

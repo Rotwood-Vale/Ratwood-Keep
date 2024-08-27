@@ -28,6 +28,7 @@
 
 /obj/effect/forcefield/wizard/Initialize(mapload, mob/summoner)
 	. = ..()
+	message_admins("[summoner]")
 	wizard = summoner
 
 /obj/effect/forcefield/wizard/CanPass(atom/movable/mover, turf/target)

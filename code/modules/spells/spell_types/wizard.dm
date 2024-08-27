@@ -197,15 +197,17 @@
 	new /obj/effect/timestop/magic(get_turf(user), timestop_range, timestop_duration, list(user))
 
 /obj/effect/proc_holder/spell/aoe_turf/conjure/Wolf
-	name = "Summon Wolf"
+	name = "Summon Volf"
 	desc = ""
-
 	school = "conjuration"
 	charge_max = 1200
 	clothes_req = FALSE
 	invocation = "NOUK FHUNMM SACP RISSKA"
 	invocation_type = "shout"
+	overlay_state = "wolf_head"
 	range = 1
+	cost = 1
+	xp_gain = TRUE
 
 	summon_type = list(/mob/living/simple_animal/hostile/retaliate/rogue/wolf )
 	cast_sound = 'sound/blank.ogg'

@@ -36,6 +36,7 @@
 		return
 	for(var/mob/living/carbon/human/HL in GLOB.human_list)
 		if(HL.real_name == input)
+			message_admins("[HL.real_name]")
 			var/turf/T = get_turf(HL)
 			if(!T)
 				continue
