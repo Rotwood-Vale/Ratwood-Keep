@@ -146,6 +146,11 @@
 	H.change_stat("intelligence", -1)
 
 	H.ambushable = FALSE
+	
+/datum/objective/siege
+	name = "Siege"
+	explanation_text = "Put the baron on the throne and rule rockhill."
+	team_explanation_text = "Put the baron on the throne and rule rockhill."
 
 /datum/antagonist/siege/roundend_report()
 	if(owner?.current)
