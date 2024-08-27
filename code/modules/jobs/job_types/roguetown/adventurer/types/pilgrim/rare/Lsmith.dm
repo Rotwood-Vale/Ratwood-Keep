@@ -9,7 +9,7 @@
 	outfit = /datum/outfit/job/roguetown/adventurer/masterblacksmith
 
 	maximum_possible_slots = 1
-	pickprob = 5
+	pickprob = 10
 
 	category_tags = list(CTAG_PILGRIM)
 
