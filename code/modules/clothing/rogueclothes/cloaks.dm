@@ -1059,9 +1059,8 @@
 	sleeved = 'icons/roguetown/clothing/onmob/cloaks.dmi'
 	body_parts_covered = CHEST|GROIN|VITALS|ARMS
 	sleevetype = "shirt"
-	allowed_sex = list(MALE)
 	slot_flags = ITEM_SLOT_CLOAK
-	allowed_sex = list(MALE, FEMALE)
+	allowed_sex = list(MALE)
 	allowed_race = NON_DWARVEN_RACE_TYPES
 	sellprice = 200
 	nodismemsleeves = TRUE
