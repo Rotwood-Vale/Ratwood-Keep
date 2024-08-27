@@ -1,5 +1,5 @@
 // This mode will become the main basis for the typical roguetown round. Based off of chaos mode.
-var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "Extended", "Aspirants", "Bandits", "Maniac", "CANCEL") // This is mainly used for forcemgamemodes
+var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "Extended", "Aspirants", "Bandits", "Maniac", "Siege", "CANCEL") // This is mainly used for forcemgamemodes
 
 /datum/game_mode/chaosmode
 	name = "roguemode"
@@ -30,6 +30,9 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "E
 	var/banditgoal = 1
 	var/delfcontrib = 0
 	var/delfgoal = 1
+	
+	var/siegegoal = 0
+	var/list/pre_siege = list()
 
 	var/skeletons = FALSE
 
@@ -142,6 +145,9 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "E
 				if("Rebellion")
 					pick_rebels()
 					log_game("Major Antagonist: Rebellion")
+				if("Siege")
+					pick_siege()
+					log_game("Major Antagonist: Siege")
 				if("Vampires and Werewolves")
 					pick_vampires()
 					pick_werewolves()
@@ -164,14 +170,17 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "E
 		if(1 to 35)
 			pick_rebels()
 			log_game("Major Antagonist: Rebellion")
-		if(36 to 80)
+		if(35 to 70)
 			//WWs and Vamps now normally roll together
 			pick_vampires()
 			pick_werewolves()
 			log_game("Major Antagonist: Vampires and Werewolves")
-		if(81 to 100)
+		if(70 to 85)
+			pick_siege()
+			log_game("Major Antagonist: Siege")
+		if(85 to 100)
 			log_game("Major Antagonist: Extended") //gotta put something here.
-	
+
 	if(prob(80))
 		pick_bandits()
 		log_game("Minor Antagonist: Bandit")
@@ -181,7 +190,7 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "E
 	// if(prob(10))
 	// 	pick_maniac()
 	// 	log_game("Minor Antagonist: Maniac")
-	
+
 	return TRUE
 
 /datum/game_mode/chaosmode/proc/pick_bandits()
@@ -246,6 +255,47 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "E
 			for(var/antag in pre_bandits)
 				GLOB.pre_setup_antags |= antag
 			restricted_jobs = list() // We empty it here, but its also getting a new list on every relevant other pick proc rn so lol
+
+/datum/game_mode/chaosmode/proc/pick_siege()
+	siegegoal = rand(200, 400)
+	restricted_jobs = list("King",
+	"Queen Consort",
+	"Merchant",
+	"Priest",
+	"Knight")
+	var/num_siege = 0
+	if(num_players() >= 10)
+		num_siege = CLAMP(round(num_players() / 2), 25, 30)
+		siegegoal += (num_siege * rand(200, 400))
+
+	if(num_siege)
+		antag_candidates = get_players_for_role(ROLE_SIEGE)
+		if(antag_candidates.len)
+			for(var/i = 0, i < num_siege, ++i)
+				var/datum/mind/siegeaids = pick_n_take(antag_candidates)
+				if(!siegeaids)
+					break
+				if(!(siegeaids in allantags))
+					continue
+				if(siegeaids.assigned_role in GLOB.noble_positions)
+					continue
+				if(siegeaids.assigned_role in GLOB.church_positions)
+					continue
+				if(siegeaids.assigned_role in GLOB.yeoman_positions)
+					continue
+
+				allantags -= siegeaids
+				pre_siege += siegeaids
+
+				siegeaids.assigned_role = "Sieger"
+				siegeaids.special_role = ROLE_SIEGE
+
+				siegeaids.restricted_roles = restricted_jobs.Copy()
+				testing("[key_name(siegeaids)] has been selected as a Sieger")
+				log_game("[key_name(siegeaids)] has been selected as a Sieger")
+			for(var/antag in pre_siege)
+				GLOB.pre_setup_antags |= antag
+			restricted_jobs = list()
 
 
 /datum/game_mode/chaosmode/proc/pick_aspirants()
