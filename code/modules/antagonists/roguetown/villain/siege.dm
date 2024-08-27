@@ -88,7 +88,7 @@
 	backr = /obj/item/storage/backpack/rogue/satchel
 	backpack_contents = list(/obj/item/needle/thorn = 1, /obj/item/natural/cloth = 1)
 	neck = /obj/item/clothing/neck/roguetown/coif
-	head = /obj/item/clothing/head/roguetown/armingcap
+	head = /obj/item/clothing/head/helmet
 	if(prob(40))
 		neck = /obj/item/clothing/neck/roguetown/chaincoif
 	if(prob(23))
@@ -97,13 +97,17 @@
 	else
 		wrists = /obj/item/clothing/wrists/roguetown/bracers
 	var/static/baron_picked = FALSE
+	var/static/baronhand_picked = FALSE
 	var/loadoutm
 
 	if(!baron_picked)
 		loadoutm = 16
-			baron_picked = TRUE
+		baron_picked = TRUE
+	else if(!baronhand_picked)
+		loadoutm = 15
+		baronhand_picked = TRUE
 	else
-		loadoutm = rand(1, 15)
+		loadoutm = rand(1, 14)
 
 	switch(loadoutm)
 		if(1 to 7) // sword soldier
@@ -116,11 +120,27 @@
 			beltl = /obj/item/quiver/arrows
 			beltr = /obj/item/rogueweapon/huntingknife/idagger
 			H.change_stat("perception", 3)
-		if(10 to 15) // spear soldier
+		if(10 to 14) // spear soldier
 			r_hand = /obj/item/rogueweapon/spear
 			if(prob(40))
 				backl = /obj/item/rogueweapon/shield/wood
 			H.change_stat("endurance", 1)
+		if(15) // barons hand
+			beltr = /obj/item/rogueweapon/sword
+			beltl = /obj/item/flashlight/flare/torch/lantern
+			pants = /obj/item/clothing/under/roguetown/tights/black
+			neck = /obj/item/storage/belt/rogue/pouch/coins/rich
+			shoes = /obj/item/clothing/shoes/roguetown/nobleboot
+			shirt = /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk
+			armor = /obj/item/clothing/suit/roguetown/armor/plate/full
+			gloves =/obj/item/clothing/gloves/roguetown/angle
+			mask = /obj/item/clothing/mask/rogue/spectacles/golden
+			H.mind.adjust_skillrank(/datum/skill/combat/swords, rand(5,6), TRUE)
+			H.change_stat("intelligence", 3)
+			H.change_stat("endurance", 3)
+			H.change_stat("speed", 1)
+			ADD_TRAIT(H, TRAIT_SEEPRICES, TRAIT_GENERIC)
+			ADD_TRAIT(H, TRAIT_NOBLE, TRAIT_GENERIC)
 		if(16) // baron
 			r_hand = /obj/item/rogueweapon/greatsword/zwei
 			beltr = /obj/item/rogueweapon/sword
@@ -136,7 +156,7 @@
 			H.mind.adjust_skillrank(/datum/skill/combat/swords, rand(5,6), TRUE)
 			H.change_stat("strength", 3)
 			H.change_stat("constitution", 3)
-			H.change_stat("intelligence", 3)
+			H.change_stat("intelligence", 2)
 			H.change_stat("endurance", 3)
 			H.change_stat("speed", -1)
 			ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
