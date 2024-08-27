@@ -95,7 +95,6 @@
 		armor = /obj/item/clothing/suit/roguetown/armor/gambeson
 	else
 		wrists = /obj/item/clothing/wrists/roguetown/bracers
-		armor = /obj/item/clothing/suit/roguetown/armor/leather
 	var/static/hedge_knight_picked = FALSE
 	var/loadoutm
 
