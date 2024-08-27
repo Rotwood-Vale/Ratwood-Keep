@@ -1045,3 +1045,22 @@
 /obj/item/clothing/cloak/stabard/guardhood/Destroy()
 	GLOB.lordcolor -= src
 	return ..()
+	
+/obj/item/clothing/cloak/tabard/barontabard
+	name = "Baron's soldier tabard"
+	desc = "A tabard with the colors of the baron."
+	icon_state = "barontabard"
+	body_parts_covered = CHEST
+
+/obj/item/clothing/cloak/baron_cloak
+	name = "barons cloak"
+	desc = "The barons cloak"
+	icon_state = "baron_cloak"
+	body_parts_covered = CHEST|GROIN|VITALS|ARMS
+	sleeved = 'icons/roguetown/clothing/onmob/cloaks.dmi'
+	sleevetype = "shirt"
+	slot_flags = ITEM_SLOT_CLOAK
+	allowed_sex = list(MALE, FEMALE)
+	allowed_race = NON_DWARVEN_RACE_TYPES
+	sellprice = 200
+	nodismemsleeves = TRUE
