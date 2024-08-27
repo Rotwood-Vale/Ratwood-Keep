@@ -94,7 +94,7 @@
 		gloves = /obj/item/clothing/gloves/roguetown/leather
 		armor = /obj/item/clothing/suit/roguetown/armor/gambeson
 	else
-		wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
+		wrists = /obj/item/clothing/wrists/roguetown/bracers
 		armor = /obj/item/clothing/suit/roguetown/armor/leather
 	var/static/hedge_knight_picked = FALSE
 	var/loadoutm
@@ -114,7 +114,7 @@
 		if(7 to 10) // ranged soldier
 			backl = /obj/item/gun/ballistic/revolver/grenadelauncher/bow
 			beltl = /obj/item/quiver/arrows
-			beltr = /obj/item/rogueweapon/stoneaxe/woodcut/steel
+			beltr = /obj/item/rogueweapon/huntingknife/idagger
 			H.change_stat("perception", 3)
 		if(10 to 15) // spear soldier
 			r_hand = /obj/item/rogueweapon/spear
@@ -135,10 +135,11 @@
 			H.mind.adjust_skillrank(/datum/skill/combat/swords, rand(5,6), TRUE)
 			H.change_stat("strength", 3)
 			H.change_stat("constitution", 3)
-			H.change_stat("intelligence", 1)
+			H.change_stat("intelligence", 3)
 			H.change_stat("endurance", 3)
 			H.change_stat("speed", -1)
 			ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
+			ADD_TRAIT(H, TRAIT_NOBLE, TRAIT_GENERIC)
 	H.change_stat("strength", 1)
 	H.change_stat("endurance", 1)
 	H.change_stat("constitution", 1)
