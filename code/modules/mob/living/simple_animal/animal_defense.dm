@@ -198,7 +198,7 @@
 		if(user.mind && istype(user, /mob/living/carbon/human/species/werewolf))
 			visible_message(span_danger("The werewolf ravenously consumes the [src]!"))
 			to_chat(src, span_warning("I feed on succulent flesh. I feel reinvigorated."))
-			user.reagents.add_reagent(/datum/reagent/medicine/healthpot, 3)
+			user.reagents.add_reagent(/datum/reagent/medicine/healthpot, 30)
 			gib()
 		return
 	if(src.apply_damage(damage, BRUTE))

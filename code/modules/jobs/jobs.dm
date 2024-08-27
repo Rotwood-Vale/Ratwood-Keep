@@ -101,6 +101,7 @@ GLOBAL_LIST_INIT(yeoman_positions, list(
 	"Merchant",
 	"Barkeep",
 	"Archivist",
+	"Blacksmith",
 	"Armorer",
 	"Weaponsmith",
 	"Tailor",
@@ -140,6 +141,7 @@ GLOBAL_LIST_INIT(mercenary_positions, list(
 GLOBAL_LIST_INIT(youngfolk_positions, list(
 	"Squire",
 	"Clerk",
+	"Apothecary",
 	"Smithy Apprentice",
 	"Magicians Apprentice",
 	"Churchling",

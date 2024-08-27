@@ -204,7 +204,7 @@
 			if(user.mind.has_antag_datum(/datum/antagonist/werewolf))
 				caused_wound?.werewolf_infect_attempt()
 				if(prob(30))
-					user.werewolf_feed(src)
+					user.werewolf_feed(src, 10)
 			if(user.mind.has_antag_datum(/datum/antagonist/zombie))
 				var/datum/antagonist/zombie/existing_zomble = mind?.has_antag_datum(/datum/antagonist/zombie)
 				if(caused_wound?.zombie_infect_attempt() && !existing_zomble)

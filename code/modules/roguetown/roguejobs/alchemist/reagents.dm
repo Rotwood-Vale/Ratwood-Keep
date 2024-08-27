@@ -9,6 +9,8 @@
 	alpha = 173
 
 /datum/reagent/medicine/healthpot/on_mob_life(mob/living/carbon/M)
+	if(volume >= 60)
+		M.reagents.remove_reagent(/datum/reagent/medicine/healthpot, 2) //No overhealing.
 	var/list/wCount = M.get_wounds()
 	if(M.blood_volume < BLOOD_VOLUME_NORMAL)
 		M.blood_volume = min(M.blood_volume+50, BLOOD_VOLUME_MAXIMUM)
@@ -28,12 +30,18 @@
 	. = 1
 
 /datum/reagent/medicine/healthpot/overdose_start(mob/living/M)
-	M.playsound_local(M, 'sound/misc/heroin_rush.ogg', 100, FALSE)
-	M.visible_message(span_warning("Blood runs from [M]'s nose."))
+	if(ishuman(M))
+		var/mob/living/carbon/human/H = M
+		if(!istype(H.dna.species, /datum/species/werewolf))
+			H.playsound_local(H, 'sound/misc/heroin_rush.ogg', 100, FALSE)
+			H.visible_message(span_warning("Blood runs from [H]'s nose."))
 	. = 1
 
 /datum/reagent/medicine/healthpot/overdose_process(mob/living/M)
-	M.adjustToxLoss(2, 0)
+	if(ishuman(M))
+		var/mob/living/carbon/human/H = M
+		if(!istype(H.dna.species, /datum/species/werewolf))
+			M.adjustToxLoss(2, 0)
 	..()
 	. = 1
 
