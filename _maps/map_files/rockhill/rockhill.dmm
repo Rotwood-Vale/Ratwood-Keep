@@ -1718,6 +1718,8 @@
 /area/rogue/outdoors/town/roofs)
 "cdD" = (
 /obj/structure/table/vtable/v2,
+/obj/item/reagent_containers/glass/mortar,
+/obj/item/pestle,
 /turf/open/floor/rogue/church,
 /area/rogue/indoors/town/manor)
 "cep" = (
@@ -4850,9 +4852,7 @@
 /turf/closed/wall/mineral/rogue/stone,
 /area/rogue/indoors/town/bath)
 "ftw" = (
-/obj/structure/chair/wood/rogue{
-	dir = 8
-	},
+/obj/structure/composter/halffull,
 /turf/open/floor/rogue/ruinedwood{
 	icon_state = "weird1"
 	},
@@ -5131,6 +5131,7 @@
 	lockid = "keep_armory"
 	},
 /obj/item/reagent_containers/glass/bottle/mercury,
+/obj/item/reagent_containers/food/snacks/grown/berries/rogue/poison,
 /turf/open/floor/rogue/churchbrick,
 /area/rogue/indoors/town/manor)
 "fMc" = (
@@ -6580,6 +6581,10 @@
 /obj/structure/flora/roguegrass/bush,
 /turf/open/floor/rogue/grass,
 /area/rogue/outdoors/town)
+"hqY" = (
+/obj/structure/bed/rogue/inn/wool,
+/turf/open/floor/rogue/churchbrick,
+/area/rogue/indoors/town/manor)
 "hrF" = (
 /obj/structure/table/wood{
 	dir = 1;
@@ -7897,6 +7902,16 @@
 /obj/item/candle/yellow/lit,
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue/indoors/town/magician)
+"iSU" = (
+/obj/structure/closet/crate/chest{
+	lockid = "keep_armory"
+	},
+/obj/item/rogueweapon/shovel,
+/obj/item/rogueweapon/sickle,
+/obj/item/rogueweapon/hoe,
+/obj/item/rogueweapon/thresher,
+/turf/open/floor/rogue/churchbrick,
+/area/rogue/indoors/town/manor)
 "iTk" = (
 /obj/structure/fluff/railing/border{
 	dir = 8
@@ -14854,8 +14869,13 @@
 /turf/open/floor/carpet/royalblack,
 /area/rogue/indoors/town/manor)
 "rmA" = (
-/obj/machinery/light/rogue/hearth,
-/obj/item/reagent_containers/glass/pot,
+/obj/structure/table/church/m,
+/obj/machinery/light/rogue/hearth{
+	pixel_y = 10
+	},
+/obj/item/reagent_containers/glass/pot{
+	pixel_y = 10
+	},
 /turf/open/floor/rogue/church,
 /area/rogue/indoors/town/manor)
 "rok" = (
@@ -15277,7 +15297,7 @@
 /turf/open/floor/rogue/rooftop,
 /area/rogue/outdoors/town)
 "rOy" = (
-/obj/structure/fermenting_barrel/random/water,
+/obj/structure/fermenting_barrel/water,
 /turf/open/floor/rogue/churchbrick,
 /area/rogue/indoors/town/manor)
 "rOF" = (
@@ -19845,6 +19865,10 @@
 /obj/item/natural/bundle/cloth,
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors)
+"xle" = (
+/obj/structure/bed/rogue/inn,
+/turf/open/transparent/openspace,
+/area/rogue/outdoors/town/roofs)
 "xlm" = (
 /turf/open/floor/carpet/royalblack,
 /area/rogue/indoors/town/manor)
@@ -398916,7 +398940,7 @@ aFk
 vTK
 vvz
 dnf
-aFk
+hqY
 kUR
 rpP
 cdD
@@ -400123,7 +400147,7 @@ dCP
 oqi
 sHm
 xYr
-aFk
+iSU
 kUR
 aFk
 cNr
@@ -403740,7 +403764,7 @@ fZJ
 fZJ
 fZJ
 fZJ
-fZJ
+xle
 fZJ
 fZJ
 fZJ
