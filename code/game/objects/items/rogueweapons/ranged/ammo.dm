@@ -121,18 +121,18 @@
 
 /obj/projectile/bullet/reusable/bullet
 	name = "lead ball"
-	damage = 50
+	damage = 50		//Arrow-tier damage, so less than crossbow.
 	damage_type = BRUTE
 	icon = 'icons/roguetown/weapons/ammo.dmi'
 	icon_state = "musketball_proj"
 	ammo_type = /obj/item/ammo_casing/caseless/rogue/bullet
-	range = 30
+	range = 20		//Higher than arrow, but not halfway through the entire town.
 	hitsound = 'sound/combat/hits/hi_arrow2.ogg'
 	embedchance = 100
 	woundclass = BCLASS_STAB
 	flag = "bullet"
-	armor_penetration = 200
-	speed = 0.1
+	armor_penetration = 75	//Crossbow-on-crack AP. Armor only goes up to 100 protection normally; so this ignores most of it but not all. Wear good armor!
+	speed = 0.1		//ZOOM!!!!!
 
 /obj/item/ammo_casing/caseless/rogue/bullet
 	name = "lead sphere"

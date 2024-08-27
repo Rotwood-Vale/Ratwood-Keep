@@ -1,20 +1,24 @@
 /datum/crafting_recipe/roguetown/weaving
 	structurecraft = /obj/machinery/loom
 	skillcraft = /datum/skill/misc/sewing
+	//Silk goods sell for an extra 50% over cost to make. If high craft difficulty, make sell for ~75% more.
+	//Why? Well, simple. Because no one ever wears this shit otherwise besides RP and requires engaging hostile mobs.
+	//Silk = ~3 mammon per sinlge thread.
+	//Cloth = ~1 mammon per piece. It's just fiber with utility, really.
 
 /datum/crafting_recipe/roguetown/weaving/rags
 	name = "webbed shirt"
 	result = list(/obj/item/clothing/suit/roguetown/shirt/undershirt/webs)
 	reqs = list(/obj/item/natural/silk = 1)
 	craftdiff = 1
-	sellprice = 6
+	sellprice = 6	//Double resale
 
 /datum/crafting_recipe/roguetown/weaving/webbing
 	name = "webbed leggings"
 	result = list(/obj/item/clothing/under/roguetown/webs)
 	reqs = list(/obj/item/natural/silk = 2)
 	craftdiff = 1
-	sellprice = 9
+	sellprice = 9	//Good resale
 
 /datum/crafting_recipe/roguetown/weaving/cloak
 	name = "silk half cloak"
@@ -22,14 +26,14 @@
 	reqs = list(/obj/item/natural/cloth = 1,
 				/obj/item/natural/silk = 1)
 	craftdiff = 3
-	sellprice = 19
+	sellprice = 20	//Difficult, so VERY good resale.
 
 /datum/crafting_recipe/roguetown/weaving/shirt
 	name = "formal silks"
 	result = list(/obj/item/clothing/suit/roguetown/shirt/undershirt/puritan)
 	reqs = list(/obj/item/natural/silk = 5)
 	craftdiff = 3
-	sellprice = 35
+	sellprice = 32	//Valued at 15 cost, so over double resale due to difficulty.
 
 /datum/crafting_recipe/roguetown/weaving/shepardmask
 	name = "half-mask"
@@ -37,21 +41,21 @@
 	reqs = list(/obj/item/natural/cloth = 1,
 				/obj/item/natural/silk = 1)
 	craftdiff = 1
-	sellprice = 30
+	sellprice = 9	//Good resale
 
 /datum/crafting_recipe/roguetown/weaving/shawl
 	name = "shawl"
 	result = list(/obj/item/clothing/neck/roguetown/shawl)
 	reqs = list(/obj/item/natural/cloth = 2)
 	craftdiff = 1
-	sellprice = 10
+	sellprice = 5	//Cheap, lucky getting a bit over double worth.
 
 /datum/crafting_recipe/roguetown/weaving/monkrobes
 	name = "monk robes"
 	result = list(/obj/item/clothing/suit/roguetown/shirt/robe/monk)
 	reqs = list(/obj/item/natural/cloth = 3)
 	craftdiff = 4
-	sellprice = 25	
+	sellprice = 16	//Good resale, but cheap.
 
 /datum/crafting_recipe/roguetown/weaving/astratarobe
 	name = "astrata robes"
@@ -59,7 +63,7 @@
 	reqs = list(/obj/item/natural/cloth = 3,
 				/obj/item/natural/silk = 1)
 	craftdiff = 4
-	sellprice = 25
+	sellprice = 25	//Good resale, very high difficulty.
 
 /datum/crafting_recipe/roguetown/weaving/astratahood
 	name = "solar hood"
@@ -67,7 +71,7 @@
 	reqs = list(/obj/item/natural/cloth = 2,
 				/obj/item/natural/silk = 1)
 	craftdiff = 3
-	sellprice = 25
+	sellprice = 25	//Good resale, very high difficulty.
 
 /datum/crafting_recipe/roguetown/weaving/nocrobe
 	name = "noc robes"
@@ -75,7 +79,7 @@
 	reqs = list(/obj/item/natural/cloth = 3,
 				/obj/item/natural/silk = 1)
 	craftdiff = 4
-	sellprice = 25
+	sellprice = 25	//Good resale, very high difficulty.
 
 /datum/crafting_recipe/roguetown/weaving/nochood
 	name = "moon hood"
@@ -83,7 +87,7 @@
 	reqs = list(/obj/item/natural/cloth = 2,
 				/obj/item/natural/silk = 1)
 	craftdiff = 3
-	sellprice = 25
+	sellprice = 20	//Good resale, high difficulty.
 
 /datum/crafting_recipe/roguetown/weaving/tricksterhood
 	name = "trickster hood"
@@ -91,7 +95,7 @@
 	reqs = list(/obj/item/natural/cloth = 2,
 				/obj/item/natural/silk = 1)
 	craftdiff = 3
-	sellprice = 25
+	sellprice = 20	//Good resale, high difficulty.
 
 /datum/crafting_recipe/roguetown/weaving/dendorrobe
 	name = "dendor robes"
@@ -99,7 +103,7 @@
 	reqs = list(/obj/item/natural/cloth = 3,
 				/obj/item/natural/silk = 1)
 	craftdiff = 4
-	sellprice = 25
+	sellprice = 25	//Good resale, very high difficulty.
 
 /datum/crafting_recipe/roguetown/weaving/necrarobe
 	name = "necra robes"
@@ -107,7 +111,7 @@
 	reqs = list(/obj/item/natural/cloth = 3,
 				/obj/item/natural/silk = 1)
 	craftdiff = 4
-	sellprice = 25
+	sellprice = 25	//Good resale, very high difficulty.
 
 /datum/crafting_recipe/roguetown/weaving/necrahood
 	name = "necra hood"
@@ -115,7 +119,7 @@
 	reqs = list(/obj/item/natural/cloth = 2,
 				/obj/item/natural/silk = 1)
 	craftdiff = 3
-	sellprice = 20
+	sellprice = 20	//Good resale, high difficulty.
 
 /datum/crafting_recipe/roguetown/weaving/barkeep
 	name = "bar dress"
@@ -123,7 +127,7 @@
 	reqs = list(/obj/item/natural/cloth = 2,
 				/obj/item/natural/silk = 2)
 	craftdiff = 5
-	sellprice = 27
+	sellprice = 30	//Very high difficulty, so very good resale.
 
 /datum/crafting_recipe/roguetown/weaving/silkdress
 	name = "chemise"
@@ -131,7 +135,7 @@
 	reqs = list(/obj/item/natural/fibers = 2,
 				/obj/item/natural/silk = 3)
 	craftdiff = 5
-	sellprice = 30
+	sellprice = 30	//Very high difficulty, so very good resale.
 
 /datum/crafting_recipe/roguetown/weaving/silkcoat
 	name = "silk coat"
@@ -140,7 +144,7 @@
 				/obj/item/natural/silk = 3,
 				/obj/item/natural/fur = 2)
 	craftdiff = 5
-	sellprice = 60
+	sellprice = 60	//Very high difficulty and ~27 mammon in raw material put in.
 
 //Eora content from Stonekeep
 /datum/crafting_recipe/roguetown/weaving/eoramask
@@ -149,7 +153,7 @@
 	reqs = list(/obj/item/ingot/silver,
 				/obj/item/natural/silk = 4)
 	craftdiff = 3
-	sellprice = 20
+	sellprice = 20	//Good resell, high difficulty.
 
 /datum/crafting_recipe/roguetown/weaving/eorarobes
 	name = "eora robes"
@@ -157,7 +161,7 @@
 	reqs = list(/obj/item/natural/cloth = 2,
 				/obj/item/natural/silk = 1)
 	craftdiff = 3
-	sellprice = 20
+	sellprice = 20	//Good resell, high difficulty.
 
 /datum/crafting_recipe/roguetown/weaving/exoticsilkbra
 	name = "Exotic Silk Bra"
@@ -165,7 +169,7 @@
 	reqs = list(/obj/item/natural/silk = 3,
 				/obj/item/clothing/ring/gold = 1)
 	craftdiff = 5
-	sellprice = 50
+	sellprice = 50	//Very good resell, high difficulty. (Whore)
 
 /datum/crafting_recipe/roguetown/weaving/exoticsilkmask
 	name = "Exotic Silk Mask"
@@ -173,7 +177,7 @@
 	reqs = list(/obj/item/natural/silk = 1,
 				/obj/item/clothing/ring/gold = 1)
 	craftdiff = 5
-	sellprice = 50
+	sellprice = 50	//Very good resell, high difficulty. (Whore)
 
 /datum/crafting_recipe/roguetown/weaving/exoticsilkbelt
 	name = "Exotic Silk Belt"
@@ -181,4 +185,4 @@
 	reqs = list(/obj/item/natural/silk = 2,
 				/obj/item/clothing/ring/gold = 1)
 	craftdiff = 5
-	sellprice = 50
+	sellprice = 50	//Very good resell, high difficulty. (Whore)

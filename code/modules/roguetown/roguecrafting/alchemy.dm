@@ -46,3 +46,11 @@
 	result = list(/obj/item/reagent_containers/glass/bottle/rogue/antipoisonpot,/obj/item/reagent_containers/glass/bottle/rogue/antipoisonpot,/obj/item/reagent_containers/glass/bottle/rogue/antipoisonpot)
 	reqs = list(/obj/item/reagent_containers/glass/bottle = 3, /obj/item/ash = 3, /obj/item/reagent_containers/food/snacks/rogue/honey = 2)
 	craftdiff = 0
+
+//..This sounds fucking stupid but we don't have sand. Works for now.
+/datum/crafting_recipe/roguetown/alchemy/glassbottles
+	name = "2x glass bottles"
+	result = list(/obj/item/reagent_containers/glass/bottle, /obj/item/reagent_containers/glass/bottle)
+	reqs = list(/obj/item/natural/stone = 2, /obj/item/rogueore/coal = 1)
+	craftdiff = 1	//It hard break rock.... (Stops large amount of easy glass crafting by nobodies)
+	structurecraft = /obj/machinery/light/rogue/hearth

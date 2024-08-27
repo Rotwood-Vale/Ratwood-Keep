@@ -10,7 +10,7 @@
 	w_class = WEIGHT_CLASS_SMALL
 	resistance_flags = FLAMMABLE
 	drop_sound = 'sound/foley/dropsound/cloth_drop.ogg'
-	sellprice = 20
+	sellprice = 6
 
 /obj/item/natural/fur
 	name = "fur"
@@ -22,7 +22,7 @@
 	resistance_flags = FLAMMABLE
 	drop_sound = 'sound/foley/dropsound/cloth_drop.ogg'
 	color = "#5c5243"
-	sellprice = 40
+	sellprice = 10
 
 /obj/item/natural/carapace
 	name = "carapace"
@@ -33,7 +33,7 @@
 	w_class = WEIGHT_CLASS_SMALL
 	resistance_flags = FLAMMABLE
 	drop_sound = 'sound/foley/dropsound/food_drop.ogg'
-	sellprice = 20
+	sellprice = 14
 
 //RTD make this a storage item and make clickign on animals with things put it in storage
 /obj/item/natural/saddle
@@ -45,7 +45,7 @@
 	gripped_intents = list(/datum/intent/use)
 	force = 0
 	throwforce = 0
-	sellprice = 10
+	sellprice = 22
 	twohands_required = TRUE
 
 /obj/item/natural/saddle/attack(mob/living/target, mob/living/carbon/human/user)

@@ -75,3 +75,45 @@
 	name = "Riddle of Steel"
 	cost = 400
 	contains = list(/obj/item/riddleofsteel)
+
+// Flavor Packages - For region specific gear; mostly for flavor, also to buy and LARP I guess.
+// Yeah, it's weapons and armor and clothes but sue me. It's overpriced for the LARP.
+
+//Desert Rider / Desert Warrior pack; very good helm, decent medium armor, unique sword from rider.
+/datum/supply_pack/rogue/luxury/zybantine
+	name = "Zybantine Arms & Armor Import"
+	cost = 500
+	contains = list(/obj/item/rogueweapon/sword/long/rider,
+					/obj/item/clothing/head/roguetown/roguehood/shalal,
+					/obj/item/clothing/head/roguetown/helmet/heavy/zybantinehelm,
+					/obj/item/clothing/suit/roguetown/armor/plate/zybantinearmor,
+					/obj/item/clothing/under/roguetown/chainlegs
+					)
+
+//Grenzel pack; decent medium armor, no helmet, but whole clothing loadout and the two meme weapons.
+/datum/supply_pack/rogue/luxury/grenzelhoft
+	name = "Grenzelhoft Landsknecht Arms & Armor Import"
+	cost = 600
+	contains = list(/obj/item/clothing/suit/roguetown/armor/plate/half/grenzelhoft,
+					/obj/item/clothing/shoes/roguetown/grenzelhoft,
+					/obj/item/clothing/gloves/roguetown/grenzelgloves,
+					/obj/item/clothing/head/roguetown/grenzelhofthat,
+					/obj/item/clothing/under/roguetown/grenzelpants,
+					/obj/item/clothing/suit/roguetown/shirt/grenzelhoft,
+					/obj/item/rogueweapon/greatsword/zwei,
+					/obj/item/rogueweapon/halberd
+					)
+
+//Grenzel musketeer pack; EXPENSIVE as shit but hey funni Grenzelhoft musketeer. Pike n' shot.
+/datum/supply_pack/rogue/luxury/grenzelhoftmusket
+	name = "Grenzelhoft Musketeer Arms & Armor Import"
+	cost = 1200		//Lol, lmao. Not worth it, remotely.
+	contains = list(/obj/item/clothing/suit/roguetown/armor/plate/half/footmanchestplate,	//Cheaper armor because moosket.
+					/obj/item/clothing/shoes/roguetown/grenzelhoft,
+					/obj/item/clothing/gloves/roguetown/grenzelgloves,
+					/obj/item/clothing/head/roguetown/grenzelhofthat,
+					/obj/item/clothing/under/roguetown/grenzelpants,
+					/obj/item/clothing/suit/roguetown/shirt/grenzelhoft,
+					/obj/item/gun/ballistic/revolver/grenadelauncher/matchlock,
+					/obj/item/ammopouch/bullets
+					)

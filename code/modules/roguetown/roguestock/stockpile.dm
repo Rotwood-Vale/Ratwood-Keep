@@ -75,15 +75,26 @@
 	export_price = 3
 	importexport_amt = 10
 
+/datum/roguestock/stockpile/silk
+	name = "Silk"
+	desc = "Strands of high-quality silk to make luxury clothing."
+	item_type = /obj/item/natural/silk
+	held_items = list(0, 2)
+	payout_price = 2
+	withdraw_price = 4
+	transport_fee = 1
+	export_price = 4
+	importexport_amt = 10
+
 /datum/roguestock/stockpile/hide
 	name = "Hide"
 	desc = "Stripped hide from animals."
 	item_type = /obj/item/natural/hide
 	held_items = list(0, 0)
-	payout_price = 10
-	withdraw_price = 15
+	payout_price = 6
+	withdraw_price = 12
 	transport_fee = 3
-	export_price = 15
+	export_price = 12
 	importexport_amt = 5
 
 /datum/roguestock/stockpile/fur
@@ -91,10 +102,10 @@
 	desc = "Hide with a long winter coat from animals."
 	item_type = /obj/item/natural/fur
 	held_items = list(0, 0)
-	payout_price = 15
-	withdraw_price = 23
+	payout_price = 10
+	withdraw_price = 20
 	transport_fee = 5
-	export_price = 23
+	export_price = 20
 	importexport_amt = 5
 
 /datum/roguestock/stockpile/salt
@@ -119,6 +130,17 @@
 	export_price = 3
 	importexport_amt = 10
 
+/datum/roguestock/stockpile/oats
+	name = "Oats"
+	desc = "Oat grain."
+	item_type = /obj/item/reagent_containers/food/snacks/grown/oat
+	held_items = list(0, 4)
+	payout_price = 2
+	withdraw_price = 3
+	transport_fee = 1
+	export_price = 3
+	importexport_amt = 10
+
 /datum/roguestock/stockpile/apple
 	name = "Apple"
 	desc = "Harvested produce."
@@ -136,7 +158,7 @@
 	item_type = /obj/item/reagent_containers/food/snacks/grown/rogue/potato
 	held_items = list(0, 0)
 	payout_price = 3
-	withdraw_price = 5
+	withdraw_price = 6
 	transport_fee = 1
 	export_price = 5
 	importexport_amt = 5
@@ -157,7 +179,7 @@
 	desc = "Edible flesh harvested from animals."
 	item_type = /obj/item/reagent_containers/food/snacks/rogue/meat/steak
 	held_items = list(0, 0)
-	payout_price = 5
+	payout_price = 4
 	withdraw_price = 8
 	transport_fee = 2
 	export_price = 8
@@ -168,7 +190,7 @@
 	desc = "Edible flesh harvested from birds."
 	item_type = /obj/item/reagent_containers/food/snacks/rogue/meat/poultry
 	held_items = list(0, 0)
-	payout_price = 5
+	payout_price = 4
 	withdraw_price = 8
 	transport_fee = 2
 	export_price = 8
@@ -204,7 +226,7 @@
 	payout_price = 6
 	withdraw_price = 10
 	transport_fee = 3
-	export_price = 5
+	export_price = 10
 	importexport_amt = 5
 
 /datum/roguestock/stockpile/carp

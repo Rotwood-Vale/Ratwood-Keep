@@ -66,7 +66,7 @@
 					/obj/item/rogueweapon/huntingknife/idagger/steel,
 					/obj/item/rogueweapon/huntingknife/idagger/steel,
 				)
-
+/*	- No, no more instant-stun weaponry.
 /datum/supply_pack/rogue/weapons/stunmace
 	name = "Stunmaces"
 	cost = 300
@@ -75,15 +75,24 @@
 					/obj/item/rogueweapon/mace/stunmace,
 					/obj/item/rogueweapon/mace/stunmace,
 				)
-
+*/
 /datum/supply_pack/rogue/weapons/shield
 	name = "Wooden Shields"
-	cost = 45
+	cost = 35
 	contains = list(
 					/obj/item/rogueweapon/shield/wood,
 					/obj/item/rogueweapon/shield/wood,
 					/obj/item/rogueweapon/shield/wood,
 				)
+
+/datum/supply_pack/rogue/weapons/towershield
+	name = "Tower Shields"
+	cost = 60
+	contains = list(
+		/obj/item/rogueweapon/shield/tower,
+		/obj/item/rogueweapon/shield/tower,
+		/obj/item/rogueweapon/shield/tower,
+	)
 
 /datum/supply_pack/rogue/weapons/crossbow
 	name = "Crossbows"
@@ -105,7 +114,7 @@
 
 /datum/supply_pack/rogue/weapons/quiver
 	name = "Quiver"
-	cost = 15
+	cost = 20
 	contains = list(
 					/obj/item/quiver,
 					/obj/item/quiver,
@@ -216,3 +225,33 @@
 					/obj/item/ammo_casing/caseless/rogue/bolt/poison)
 */
 
+/datum/supply_pack/rogue/weapons/matchlock
+	name = "Matchlock Musket"
+	cost = 750	//Pricey as shit, money-sink due to ammo cost along with musket cost. (Probably too much money, maybe reduce if too hard to get.)
+	contains = list(/obj/item/gun/ballistic/revolver/grenadelauncher/matchlock,
+					/obj/item/ammo_casing/caseless/rogue/bullet,
+					/obj/item/ammo_casing/caseless/rogue/bullet,
+					/obj/item/ammo_casing/caseless/rogue/bullet,
+					/obj/item/ammo_casing/caseless/rogue/bullet,
+					/obj/item/ammo_casing/caseless/rogue/bullet,
+					)
+
+/datum/supply_pack/rogue/weapons/bullets
+	name = "Bullets"
+	cost = 150
+	contains = list(
+					/obj/item/ammo_casing/caseless/rogue/bullet,
+					/obj/item/ammo_casing/caseless/rogue/bullet,
+					/obj/item/ammo_casing/caseless/rogue/bullet,
+					/obj/item/ammo_casing/caseless/rogue/bullet,
+					/obj/item/ammo_casing/caseless/rogue/bullet,
+					)
+
+/datum/supply_pack/rogue/weapons/ammopouch/bullets
+	name = "Ammo Pouch"
+	cost = 300
+	contains = list(
+					/obj/item/ammopouch/bullets,
+					/obj/item/ammopouch/bullets,
+					/obj/item/ammopouch/bullets,
+				)
