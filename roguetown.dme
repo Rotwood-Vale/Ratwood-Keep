@@ -2211,6 +2211,7 @@
 #include "code\modules\jobs\job_types\roguetown\adventurer\types\combat\donator\dwarfwarrior.dm"
 #include "code\modules\jobs\job_types\roguetown\adventurer\types\combat\donator\paladin.dm"
 #include "code\modules\jobs\job_types\roguetown\adventurer\types\combat\donator\vaquero.dm"
+#include "code\modules\jobs\job_types\roguetown\adventurer\types\combat\rare\cavalry.dm"
 #include "code\modules\jobs\job_types\roguetown\adventurer\types\combat\rare\heartfelt.dm"
 #include "code\modules\jobs\job_types\roguetown\adventurer\types\combat\rare\heartfelthand.dm"
 #include "code\modules\jobs\job_types\roguetown\adventurer\types\combat\rare\knighterrant.dm"

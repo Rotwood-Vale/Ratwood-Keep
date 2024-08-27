@@ -211,6 +211,27 @@
 		STR.max_combined_w_class = 42
 		STR.max_w_class = WEIGHT_CLASS_NORMAL
 		STR.max_items = 12
+		STR.set_holdable(list(
+			/obj/item/rogueweapon/surgery/scalpel,
+			/obj/item/rogueweapon/surgery/saw,
+			/obj/item/rogueweapon/surgery/hemostat,
+			/obj/item/rogueweapon/surgery/hemostat,
+			/obj/item/rogueweapon/surgery/retractor,
+			/obj/item/rogueweapon/surgery/bonesetter,
+			/obj/item/rogueweapon/surgery/cautery,
+			/obj/item/needle,
+			/obj/item/needle/thorn,
+			/obj/item/needle/pestra,
+			/obj/item/reagent_containers/glass/bottle/waterskin,
+			/obj/item/reagent_containers/glass/bottle,
+			/obj/item/natural/fibers,
+			/obj/item/natural/cloth,
+			/obj/item/natural/bundle/fibers,
+			/obj/item/natural/bundle/cloth,
+			/obj/item/natural/worms/leech,
+			/obj/item/natural/worms/leech/cheele,
+			/obj/item/reagent_containers/lux
+		))
 
 /obj/item/storage/backpack/rogue/skit/PopulateContents()
 	new /obj/item/rogueweapon/surgery/scalpel(src)
