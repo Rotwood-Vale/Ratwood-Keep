@@ -30,7 +30,7 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "E
 	var/banditgoal = 1
 	var/delfcontrib = 0
 	var/delfgoal = 1
-	
+
 	var/siegegoal = 0
 	var/list/pre_siege = list()
 
@@ -533,6 +533,12 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "E
 		GLOB.pre_setup_antags -= bandito
 		bandits += bandito
 		SSrole_class_handler.bandits_in_round = TRUE
+///////////////// SIEGE
+	for(var/datum/mind/siege in pre_siege)
+		var/datum/antagonist/new_antag = new /datum/antagonist/siege()
+		siege.add_antag_datum(new_antag)
+		GLOB.pre_setup_antags -= siege
+		siege += siege
 ///////////////// ASPIRANTS
 	for(var/datum/mind/rogue in pre_aspirants) // Do the aspirant first, so the suppporter works right.
 		if(rogue.special_role == ROLE_ASPIRANT)
