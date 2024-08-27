@@ -4,8 +4,8 @@
 	tutorial = "A shady guardian of the Black Oaks, a mercenary band in all but offical name. Commonly taking caravan contracts through the thickest of forests."
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = list(
-		"Half-Elf",
-        "Elf",
+		/datum/species/human/halfelf,
+		/datum/species/elf/wood,
 	)
 	outfit = /datum/outfit/job/roguetown/mercenary/blackoak
 	category_tags = list(CTAG_MERCENARY)
