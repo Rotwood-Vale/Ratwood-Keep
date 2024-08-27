@@ -52,6 +52,7 @@ SUBSYSTEM_DEF(mapping)
 /datum/controller/subsystem/mapping/proc/spawn_random_travel_tiles()
 	spawn_random_travel_transition("vampexit", "vampin", TRAIT_VAMPMANSION)
 	spawn_random_travel_transition("banditexit", "banditin", TRAIT_BANDITCAMP)
+	spawn_random_travel_transition("siegeexit", "siegein", TRAIT_SIEGECAMP)
 
 /datum/controller/subsystem/mapping/proc/spawn_random_travel_transition(travel_id, travel_goes_to_id, required_trait)
 	var/atom/location = get_free_travel_spawn_point()
