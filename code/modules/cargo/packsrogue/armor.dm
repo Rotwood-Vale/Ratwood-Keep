@@ -11,7 +11,7 @@
 					/obj/item/clothing/head/roguetown/helmet,
 					/obj/item/clothing/head/roguetown/helmet,
 				)
-	
+
 /datum/supply_pack/rogue/armor/coif
 	name = "Cloth Coif"
 	cost = 20
@@ -19,7 +19,7 @@
 					/obj/item/clothing/neck/roguetown/coif,
 					/obj/item/clothing/neck/roguetown/coif,
 				)
-	
+
 /datum/supply_pack/rogue/armor/coif/steel
 	name = "Steel Coif"
 	cost = 50
@@ -27,7 +27,7 @@
 					/obj/item/clothing/neck/roguetown/chaincoif,
 					/obj/item/clothing/neck/roguetown/chaincoif,
 				)
-	
+
 /datum/supply_pack/rogue/armor/mask/steel
 	name = "Steel Mask"
 	cost = 50
@@ -51,7 +51,7 @@
 					/obj/item/clothing/gloves/roguetown/chain,
 					/obj/item/clothing/gloves/roguetown/chain,
 				)
-	
+
 /datum/supply_pack/rogue/armor/boots
 	name = "Steel Boots"
 	cost = 50
@@ -83,7 +83,7 @@
 					/obj/item/clothing/suit/roguetown/armor/leather/studded,
 					/obj/item/clothing/suit/roguetown/armor/leather/studded,
 				)
-	
+
 /datum/supply_pack/rogue/armor/chainmaille
 	name = "Chainmaille"
 	cost = 50
@@ -99,7 +99,7 @@
 					/obj/item/clothing/suit/roguetown/armor/chainmail,
 					/obj/item/clothing/suit/roguetown/armor/chainmail,
 				)
-	
+
 /datum/supply_pack/rogue/armor/hauberk
 	name = "Hauberk"
 	cost = 80
@@ -112,8 +112,8 @@
 	name = "Half-Plate Armor"
 	cost = 200
 	contains = list(
-					/obj/item/clothing/suit/roguetown/armor/plate/half,
-					/obj/item/clothing/suit/roguetown/armor/plate/half,
+					/obj/item/clothing/suit/roguetown/armor/plate,
+					/obj/item/clothing/suit/roguetown/armor/plate,
 				)
 
 /datum/supply_pack/rogue/armor/plate/full

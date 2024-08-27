@@ -1,14 +1,14 @@
 // Code related to zomble and verewolf infections is stored here
 /datum/wound
 	/// Zombie infection probability for bites on this wound
-	var/zombie_infection_probability = 6
+	var/zombie_infection_probability = 15
 	/// Time taken until zombie infection comes in
 	var/zombie_infection_time = 3 MINUTES
 	/// Actual infection timer
 	var/zombie_infection_timer
 
 	/// Werewolf infection probability for bites on this wound
-	var/werewolf_infection_probability = 8
+	var/werewolf_infection_probability = 15
 	/// Time taken until werewolf infection comes in
 	var/werewolf_infection_time = 2 MINUTES
 	/// Actual infection timer
@@ -24,7 +24,7 @@
 	if(!zombie_antag)
 		return
 	if(human_owner.stat >= DEAD) //do shit the natural way i guess
-		return 
+		return
 	to_chat(human_owner, span_danger("I feel horrible... REALLY horrible..."))
 	human_owner.mob_timers["puke"] = world.time
 	human_owner.vomit(1, blood = TRUE, stun = FALSE)
@@ -59,7 +59,7 @@
 	if(!human_owner.can_werewolf())
 		return
 	if(human_owner.stat >= DEAD) //forget it
-		return 
+		return
 	to_chat(human_owner, span_danger("I feel horrible... REALLY horrible..."))
 	human_owner.mob_timers["puke"] = world.time
 	human_owner.vomit(1, blood = TRUE, stun = FALSE)

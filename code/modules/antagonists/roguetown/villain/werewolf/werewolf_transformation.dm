@@ -118,9 +118,9 @@
 	W.mind.adjust_skillrank(/datum/skill/combat/unarmed, 6, TRUE)
 	W.mind.adjust_skillrank(/datum/skill/misc/climbing, 6, TRUE)
 
-	W.change_stat("strength", 5)
-	W.change_stat("constitution", 5)
-	W.change_stat("endurance", 3)
+	W.STASTR = 20
+	W.STACON = 20
+	W.STAEND = 20
 
 	W.AddSpell(new /obj/effect/proc_holder/spell/self/howl)
 	W.AddSpell(new /obj/effect/proc_holder/spell/self/claws)
