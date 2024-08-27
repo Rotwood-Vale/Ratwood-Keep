@@ -335,3 +335,17 @@
 				/obj/item/natural/fibers = 1)
 	craftdiff = 3
 	sellprice = 12
+
+/datum/crafting_recipe/roguetown/sewing/clothblindfold
+	name = "cloth blindfold"
+	result = list(/obj/item/clothing/mask/rogue/clothblindfold)
+	reqs = list(/obj/item/natural/cloth = 1)
+	craftdiff = 1
+	sellprice = 2
+
+/datum/crafting_recipe/roguetown/sewing/fakeclothblindfold
+	name = "fake cloth blindfold"
+	result = list(/obj/item/clothing/mask/rogue/fakeclothblindfold)
+	reqs = list(/obj/item/natural/cloth = 1)
+	craftdiff = 1
+	sellprice = 2
