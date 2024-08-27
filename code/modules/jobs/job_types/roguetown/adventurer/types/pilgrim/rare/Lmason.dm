@@ -9,7 +9,7 @@
 	outfit = /datum/outfit/job/roguetown/adventurer/grandmastermason
 	category_tags = list(CTAG_PILGRIM)
 	maximum_possible_slots = 1
-	pickprob = 5
+	pickprob = 15
 	
 /datum/outfit/job/roguetown/adventurer/grandmastermason/pre_equip(mob/living/carbon/human/H)
 	..()
