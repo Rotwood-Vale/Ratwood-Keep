@@ -132,6 +132,7 @@
 			armor = /obj/item/clothing/suit/roguetown/armor/plate/full
 			gloves = /obj/item/clothing/gloves/roguetown/plate
 			head = /obj/item/clothing/head/roguetown/helmet/heavy/pigface
+			cloak = /obj/item/clothing/cloak/lordcloak
 			H.mind.adjust_skillrank(/datum/skill/combat/swords, rand(5,6), TRUE)
 			H.change_stat("strength", 3)
 			H.change_stat("constitution", 3)
