@@ -105,6 +105,11 @@
 			H.mind.adjust_skillrank(/datum/skill/craft/cooking, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/craft/carpentry, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/labor/fishing, 6, TRUE)
+			H.change_stat("strength", 2) // The biggest catches...
+			H.change_stat("intelligence", 3)
+			H.change_stat("perception", 5) // In the murkiest water...
+			H.change_stat("constitution", 2)
+			H.change_stat("speed", 3) // With the fastest fins..!
 			if(H.age == AGE_OLD)
 				H.mind.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE)
 				H.mind.adjust_skillrank(/datum/skill/combat/axes, 1, TRUE)
