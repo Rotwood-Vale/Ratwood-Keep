@@ -130,6 +130,8 @@
 					commie_text = span_userdanger("BANDIT!")
 			if(mind.special_role == "Vampire Lord")
 				. += span_userdanger("A MONSTER!")
+			if(mind.special_role == "Siege")
+				. += span_userdanger("BARONS RETINUE!")
 			if(mind.assigned_role == "Lunatic")
 				. += span_userdanger("LUNATIC!")
 			if(HAS_TRAIT(src, TRAIT_PUNISHMENT_CURSE))
