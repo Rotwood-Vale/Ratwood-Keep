@@ -96,12 +96,12 @@
 		armor = /obj/item/clothing/suit/roguetown/armor/gambeson
 	else
 		wrists = /obj/item/clothing/wrists/roguetown/bracers
-	var/static/hedge_knight_picked = FALSE
+	var/static/baron_picked = FALSE
 	var/loadoutm
 
-	if(!hedge_knight_picked)
+	if(!baron_picked)
 		loadoutm = 16
-			hedge_knight_picked = TRUE
+			baron_picked = TRUE
 	else
 		loadoutm = rand(1, 15)
 
