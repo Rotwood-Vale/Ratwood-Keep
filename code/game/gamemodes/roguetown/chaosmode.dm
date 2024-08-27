@@ -18,6 +18,8 @@
 	var/roguefight = FALSE
 	var/redscore = 0
 	var/greenscore = 0
+	var/siegegoal = 0
+	var/list/pre_siege = list()
 
 	var/list/allantags = list()
 
@@ -196,6 +198,47 @@
 	for(var/antag in pre_bandits)
 		GLOB.pre_setup_antags |= antag
 	restricted_jobs = list()
+	
+/datum/game_mode/chaosmode/proc/pick_siege()
+	siegegoal = rand(200, 400)
+	restricted_jobs = list("King",
+	"Queen Consort",
+	"Merchant",
+	"Priest",
+	"Knight")
+	var/num_siege = 0
+	if(num_players() >= 10)
+		num_siege = CLAMP(round(num_players() / 2), 25, 30)
+		siegegoal += (num_siege * rand(200, 400))
+
+	if(num_siege)
+		antag_candidates = get_players_for_role(ROLE_SIEGE)
+		if(antag_candidates.len)
+			for(var/i = 0, i < num_siege, ++i)
+				var/datum/mind/siegeaids = pick_n_take(antag_candidates)
+				if(!siegeaids)
+					break
+				if(!(siegeaids in allantags))
+					continue
+				if(siegeaids.assigned_role in GLOB.noble_positions)
+					continue
+				if(siegeaids.assigned_role in GLOB.church_positions)
+					continue
+				if(siegeaids.assigned_role in GLOB.yeoman_positions)
+					continue
+
+				allantags -= siegeaids
+				pre_siege += siegeaids
+
+				siegeaids.assigned_role = "Sieger"
+				siegeaids.special_role = ROLE_SIEGE
+
+				siegeaids.restricted_roles = restricted_jobs.Copy()
+				testing("[key_name(siegeaids)] has been selected as a Sieger")
+				log_game("[key_name(siegeaids)] has been selected as a Sieger")
+			for(var/antag in pre_siege)
+				GLOB.pre_setup_antags |= antag
+			restricted_jobs = list()
 
 /datum/game_mode/chaosmode/proc/pick_rebels()
 	restricted_jobs = list() //handled after picking
