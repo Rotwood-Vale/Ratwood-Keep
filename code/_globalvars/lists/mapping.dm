@@ -21,6 +21,7 @@ GLOBAL_LIST_EMPTY(jobspawn_overrides)			//These will take precedence over normal
 GLOBAL_LIST_EMPTY(wizardstart)
 GLOBAL_LIST_EMPTY(nukeop_start)
 GLOBAL_LIST_EMPTY(bandit_starts)
+GLOBAL_LIST_EMPTY(siege_starts)
 GLOBAL_LIST_EMPTY(vlord_starts)
 GLOBAL_LIST_EMPTY(vspawn_starts)
 GLOBAL_LIST_EMPTY(dknight_starts)
