@@ -81,14 +81,13 @@
 	H.mind.adjust_skillrank(/datum/skill/misc/athletics, 2, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/swimming, 2, TRUE)
 	belt = /obj/item/storage/belt/rogue/leather
-	pants = /obj/item/clothing/under/roguetown/trou/leather
-	shirt = /obj/item/clothing/suit/roguetown/shirt/shortshirt/random
-	shoes = /obj/item/clothing/shoes/roguetown/boots
+	pants = /obj/item/clothing/under/roguetown/chainlegs
+	shirt = /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk
+	shoes = /obj/item/clothing/shoes/roguetown/boots/armor
 	backr = /obj/item/storage/backpack/rogue/satchel
 	backpack_contents = list(/obj/item/needle/thorn = 1, /obj/item/natural/cloth = 1)
-	mask = /obj/item/clothing/mask/rogue/facemask/steel
 	neck = /obj/item/clothing/neck/roguetown/coif
-	head = /obj/item/clothing/head/roguetown/menacing/bandit
+	head = /obj/item/clothing/head/roguetown/armingcap
 	if(prob(40))
 		neck = /obj/item/clothing/neck/roguetown/chaincoif
 	if(prob(23))
@@ -107,28 +106,17 @@
 		loadoutm = rand(1, 15)
 
 	switch(loadoutm)
-		if(1 to 3) // sword bandit
+		if(1 to 7) // sword soldier
 			beltr = /obj/item/rogueweapon/sword/iron
 			if(prob(40))
 				backl = /obj/item/rogueweapon/shield/wood
 			H.change_stat("endurance", 1)
-		if(4 to 6) // knife bandit - dodge maxing
-			beltr = /obj/item/rogueweapon/huntingknife/cleaver
-			H.change_stat("speed", 3)
-			H.change_stat("strength", -2)
-		if(7 to 9) // flail bandit small chance to two handed flail
-			if(prob(80))
-				beltr = /obj/item/rogueweapon/flail
-				backl = /obj/item/rogueweapon/shield/wood
-			else
-				r_hand = /obj/item/rogueweapon/flail/peasantwarflail
-			H.change_stat("strength", 1)
-		if(10 to 12) // ranged bandit
+		if(7 to 10) // ranged soldier
 			backl = /obj/item/gun/ballistic/revolver/grenadelauncher/bow
 			beltl = /obj/item/quiver/arrows
 			beltr = /obj/item/rogueweapon/stoneaxe/woodcut/steel
 			H.change_stat("perception", 3)
-		if(13 to 15) // spear bandit
+		if(10 to 15) // spear soldier
 			r_hand = /obj/item/rogueweapon/spear
 			if(prob(40))
 				backl = /obj/item/rogueweapon/shield/wood
