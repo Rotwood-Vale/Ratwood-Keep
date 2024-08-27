@@ -25,7 +25,7 @@
 		beltr = /obj/item/cooking/pan
 		mouth = /obj/item/rogueweapon/huntingknife
 		beltl = /obj/item/flint
-		backpack_contents = list(/obj/item/natural/worms/grub = 12,/obj/item/rogueweapon/shovel/small=1)
+		backpack_contents = list(/obj/item/natural/worms/grubs = 12,/obj/item/rogueweapon/shovel/small=1)
 		if(H.mind)
 			H.mind.adjust_skillrank(/datum/skill/combat/swords, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/axes, 2, TRUE)
@@ -85,7 +85,7 @@
 		belt = /obj/item/storage/belt/rogue/leather/rope
 		beltr = /obj/item/fishingrod
 		beltl = /obj/item/rogueweapon/huntingknife
-		backpack_contents = list(/obj/item/natural/worms/grub = 12,/obj/item/rogueweapon/shovel/small=1)
+		backpack_contents = list(/obj/item/natural/worms/grubs = 12,/obj/item/rogueweapon/shovel/small=1)
 		if(H.mind)
 			H.mind.adjust_skillrank(/datum/skill/combat/swords, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/axes, 2, TRUE)
