@@ -147,7 +147,7 @@
 	H.change_stat("intelligence", -1)
 
 	H.ambushable = FALSE
-	
+
 /datum/objective/siege
 	name = "Siege"
 	explanation_text = "Put the baron on the throne and rule rockhill."
