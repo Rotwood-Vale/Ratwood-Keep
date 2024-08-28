@@ -122,3 +122,8 @@
 	stressadd = -8
 	desc = span_boldgreen("PUREST moondust surges through me!")
 	timer = 4 MINUTES
+
+/datum/stressevent/perfume
+	stressadd = -1
+	desc = span_green("A soothing fragrance envelops me.")
+	timer = 10 MINUTES
