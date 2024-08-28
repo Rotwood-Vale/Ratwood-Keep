@@ -668,6 +668,20 @@ GLOBAL_LIST_INIT(roguetown_areas_typecache, typecacheof(/area/rogue/indoors/town
 	droning_sound_dusk = null
 	droning_sound_night = null
 
+/area/rogue/under/town/inquisition
+	first_time_text = "The Pit"
+	name = "inquisition"
+	icon_state = "inquis"
+	ambientnight = AMB_BASEMENT
+	ambientsounds = AMB_BASEMENT
+	ambientnight = AMB_BASEMENT
+	spookysounds = SPOOKY_DUNGEON
+	spookynight = SPOOKY_DUNGEON
+	droning_sound = 'sound/music/area/inquisition.ogg'
+	droning_sound_dusk = null
+	droning_sound_night = null
+	soundenv = 10
+
 // underworld
 /area/rogue/underworld
 	name = "underworld"
