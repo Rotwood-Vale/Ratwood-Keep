@@ -11,7 +11,7 @@
 		/datum/patron/old_god,
 		ALL_DIVINE_PATRONS,
 	) //gets set to old god.
-	tutorial = "As an Inquisitor, the Queen has emboldened your radical sect to root out cultists and the cursed night beasts, using your practice of extracting involuntary 'sin confessions' as a guise to spy on the local populace. Witch Hunters are hired for their extreme paranoia and religious fervor."
+	tutorial = "You're an Inquisitor and you've been sent from Kingsfield to Rockhill with reports of cultist activit. Get confessions with help of your subordinate and root the evil. May the one guide us. "
 	whitelist_req = TRUE
 
 	outfit = /datum/outfit/job/roguetown/puritan
