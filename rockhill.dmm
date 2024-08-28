@@ -553,6 +553,13 @@
 /obj/item/reagent_containers/glass/cup/silver,
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/town/manor)
+"aCa" = (
+/obj/structure/mineral_door/wood/donjon{
+	lockid = "confession";
+	locked = 1
+	},
+/turf/open/floor/rogue/hexstone,
+/area/rogue/indoors/town/church)
 "aCz" = (
 /obj/machinery/light/rogue/torchholder{
 	dir = 1
@@ -2152,6 +2159,10 @@
 	icon_state = "greenstone"
 	},
 /area/rogue/indoors/town/magician)
+"crb" = (
+/obj/structure/fluff/railing/border,
+/turf/closed/wall/mineral/rogue/stone,
+/area/rogue/outdoors/town)
 "crk" = (
 /obj/machinery/light/rogue/wallfire/candle/blue/r,
 /turf/open/water/bath,
@@ -3746,10 +3757,7 @@
 	dir = 8;
 	icon_state = "stairs"
 	},
-/obj/structure/fluff/railing/border{
-	dir = 1
-	},
-/turf/open/floor/rogue/herringbone,
+/turf/open/floor/rogue/metal,
 /area/rogue/under/town/inquisition)
 "eah" = (
 /turf/open/floor/rogue/blocks/stonered,
@@ -5462,6 +5470,10 @@
 	},
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue/outdoors/town)
+"fNw" = (
+/obj/structure/fluff/railing/border,
+/turf/open/transparent/openspace,
+/area/rogue/under/town/inquisition)
 "fNB" = (
 /obj/structure/mineral_door/wood/donjon{
 	locked = 1;
@@ -12024,6 +12036,7 @@
 /obj/structure/stairs{
 	dir = 4
 	},
+/obj/structure/fluff/railing/border,
 /turf/open/transparent/openspace,
 /area/rogue/under/town/inquisition)
 "nud" = (
@@ -15521,9 +15534,6 @@
 "rab" = (
 /obj/structure/stairs{
 	dir = 8
-	},
-/obj/structure/fluff/railing/border{
-	dir = 1
 	},
 /turf/open/floor/rogue/blocks{
 	icon_state = "paving"
@@ -21228,6 +21238,9 @@
 /area/rogue/under/town/basement)
 "xuf" = (
 /obj/structure/fluff/walldeco/chains,
+/obj/structure/fluff/railing/border{
+	dir = 4
+	},
 /turf/open/transparent/openspace,
 /area/rogue/under/town/inquisition)
 "xur" = (
@@ -218545,7 +218558,7 @@ byQ
 stO
 jLx
 kqf
-xRO
+fNw
 rab
 oPx
 tzD
@@ -218948,7 +218961,7 @@ kqf
 qPO
 kqf
 ntL
-kqL
+oPx
 oPx
 tzD
 kqf
@@ -318247,7 +318260,7 @@ ekM
 lQh
 ekM
 lQh
-sKd
+aCa
 sKd
 sKd
 sKd
@@ -320654,7 +320667,7 @@ hTQ
 kue
 pQd
 pQd
-rfx
+crb
 ead
 rfx
 pQd
@@ -321056,7 +321069,7 @@ pQd
 pQd
 pQd
 pQd
-rfx
+crb
 xRO
 rfx
 pQd
