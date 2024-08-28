@@ -243,7 +243,7 @@
 
 
 /obj/item/rogueweapon/huntingknife/idagger/silver/funny_attack_effects(mob/living/target, mob/living/user = usr, nodmg)
-	if(world.time < src.last_used + 100)
+	if(world.time < src.last_used + 120)
 		to_chat(user, span_notice("The silver effect is on cooldown."))
 		return
 
@@ -261,7 +261,7 @@
 				H.visible_message("<font color='white'>The silver weapon manifests the [H] curse!</font>")
 				to_chat(H, span_userdanger("I'm hit by my BANE!"))
 				H.adjustFireLoss(25)
-				H.fire_act(1,4)
+				H.fire_act(1,5)
 				H.apply_status_effect(/datum/status_effect/debuff/silver_curse)
 				src.last_used = world.time
 			else
@@ -269,7 +269,7 @@
 				H.Knockdown(5)
 				H.Paralyze(5)
 				H.adjustFireLoss(25)
-				H.fire_act(1,4)
+				H.fire_act(1,5)
 				H.apply_status_effect(/datum/status_effect/debuff/silver_curse)
 				src.last_used = world.time
 		if(V_lord)
@@ -278,13 +278,13 @@
 				H.Paralyze(5)
 				to_chat(H, span_userdanger("I'm hit by my BANE!"))
 				H.adjustFireLoss(25)
-				H.fire_act(1,4)
+				H.fire_act(1,5)
 				src.last_used = world.time
 			if(V_lord.vamplevel == 4 && !V)
 				s_user.Stun(5)
 				s_user.Paralyze(5)
 				s_user.adjustFireLoss(25)
-				s_user.fire_act(1,4)
+				s_user.fire_act(1,5)
 				to_chat(s_user, "<font color='red'> The silver weapon fails!</font>")
 				H.visible_message(H, span_userdanger("This feeble metal can't hurt me, I AM THE ANCIENT!"))
 		if(W && W.transformed == TRUE)
@@ -292,7 +292,7 @@
 			H.Paralyze(5)
 			H.Stun(5)
 			H.adjustFireLoss(25)
-			H.fire_act(1,4)
+			H.fire_act(1,5)
 			to_chat(H, span_userdanger("I'm hit by my BANE!"))
 			src.last_used = world.time
 
