@@ -23,7 +23,7 @@
 		if(user.patron?.undead_hater && (target.mob_biotypes & MOB_UNDEAD)) //positive energy harms the undead
 			target.visible_message(span_danger("[target] is burned by holy light!"), span_userdanger("I'm burned by holy light!"))
 			target.adjustFireLoss(10)
-			target.fire_act(1,5)
+			target.fire_act(1,10)
 			return TRUE
 		//this if chain is stupid, replace with variables on /datum/patron when possible?
 		switch(user.patron.type)
@@ -106,7 +106,7 @@
 		if(user.patron?.undead_hater && (target.mob_biotypes & MOB_UNDEAD)) //positive energy harms the undead
 			target.visible_message(span_danger("[target] is burned by holy light!"), span_userdanger("I'm burned by holy light!"))
 			target.adjustFireLoss(25)
-			target.fire_act(1,5)
+			target.fire_act(1,10)
 			return TRUE
 		target.visible_message(span_info("A wreath of gentle light passes over [target]!"), span_notice("I'm bathed in holy light!"))
 		if(iscarbon(target))
