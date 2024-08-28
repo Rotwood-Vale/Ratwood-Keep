@@ -604,8 +604,9 @@
 	color = null
 	icon_state = "aproncook"
 	item_state = "aproncook"
-	body_parts_covered = CHEST|GROIN
+	body_parts_covered = CHEST
 	boobed = FALSE
+	flags_inv = HIDECROTCH|HIDEBOOB
 
 /*
 /obj/item/clothing/cloak/apron/waist/ComponentInitialize()
