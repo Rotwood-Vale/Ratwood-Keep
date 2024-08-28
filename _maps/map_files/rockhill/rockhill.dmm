@@ -18844,7 +18844,7 @@
 /obj/structure/stairs/stone{
 	dir = 1
 	},
-/turf/closed,
+/turf/open/floor/rogue/grass,
 /area/rogue/outdoors/bog)
 "vqB" = (
 /obj/machinery/light/rogue/torchholder{
