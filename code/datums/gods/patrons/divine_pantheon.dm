@@ -50,6 +50,7 @@
 	domain = "God of the Ocean, Storms and the Tide"
 	desc = "The Beloved Son, gifted primordial men food and water."
 	worshippers = "Men of the Sea, Primitive Aquatics"
+	mob_traits = list(TRAIT_ABYSSOR_SWIM)
 	confess_lines = list(
 		"ABYSSOR COMMANDS THE WAVES!",
 		"THE OCEAN'S FURY IS ABYSSOR'S WILL!",
