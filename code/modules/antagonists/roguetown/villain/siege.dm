@@ -18,8 +18,8 @@
 		return span_boldnotice("Another of the barons men. My ally.")
 
 /datum/antagonist/siege/on_gain()
-	owner.special_role = "Sieger"
-	owner.assigned_role = "Sieger"
+	owner.special_role = "Siege"
+	owner.assigned_role = "Siege"
 	owner.current.job = null
 	forge_objectives()
 	. = ..()
