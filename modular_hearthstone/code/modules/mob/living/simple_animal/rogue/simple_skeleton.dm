@@ -13,8 +13,8 @@
 	STACON = 9
 	STASTR = 9
 	STASPD = 8
-	maxHealth = 65
-	health = 65
+	maxHealth = 100
+	health = 100
 	harm_intent_damage = 10
 	melee_damage_lower = 10
 	melee_damage_upper = 25
@@ -33,7 +33,7 @@
 	defdrain = 20
 	speak_emote = list("grunts")
 	loot = list(/obj/item/natural/bone,	/obj/item/natural/bone, /obj/item/natural/bone,	/obj/item/skull)
-	faction = list("orcs")
+	faction = list("undead")
 	footstep_type = FOOTSTEP_MOB_BAREFOOT
 	del_on_death = TRUE
 
@@ -68,7 +68,8 @@
 	icon_living = "skeleton_guard"
 	icon_dead = ""
 	loot = list(/obj/item/natural/bone,	/obj/item/natural/bone, /obj/item/natural/bone,	/obj/item/rogueweapon/sword/iron, /obj/item/skull)
-
+	maxHealth = 200
+	health = 200
 
 /mob/living/simple_animal/hostile/rogue/skeleton/bow
 	name = "Skeleton"
@@ -86,8 +87,6 @@
 	check_friendly_fire = 1
 	loot = list(/obj/item/natural/bone,	/obj/item/natural/bone, /obj/item/natural/bone, /obj/item/skull, /obj/item/gun/ballistic/revolver/grenadelauncher/bow,
 			 /obj/item/ammo_casing/caseless/rogue/arrow,  /obj/item/ammo_casing/caseless/rogue/arrow,  /obj/item/ammo_casing/caseless/rogue/arrow)
-	maxHealth = 50
-	health = 50
 
 /mob/living/simple_animal/hostile/rogue/skeleton/get_sound(input)
 	switch(input)
