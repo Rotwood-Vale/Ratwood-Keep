@@ -105,13 +105,13 @@
 
 /datum/species/elf/dark/get_skin_list()
 	return list(
-		"Skin Color 1" = SKIN_COLOR_COMMORAH,
-		"Skin Color 2" = SKIN_COLOR_GLOOMHAVEN,
-		"Skin Color 3" = SKIN_COLOR_DARKPILA,
-		"Skin Color 4" = SKIN_COLOR_SSHANNTYNLAN,
-		"Skin Color 5" = SKIN_COLOR_LLURTH_DREIR,
-		"Skin Color 6" = SKIN_COLOR_TAFRAVMA,
-		"Skin Color 7" = SKIN_COLOR_YUETHINDRYNN,
+		"Commorah" = SKIN_COLOR_COMMORAH,
+		"Gloomhaven" = SKIN_COLOR_GLOOMHAVEN,
+		"Darkpila" = SKIN_COLOR_DARKPILA,
+		"Sshanntynlan" = SKIN_COLOR_SSHANNTYNLAN,
+		"Llurth Dreir" = SKIN_COLOR_LLURTH_DREIR,
+		"Tafravma" = SKIN_COLOR_TAFRAVMA,
+		"Yuethindrynn" = SKIN_COLOR_YUETHINDRYNN,
 	)
 
 /datum/species/elf/dark/get_hairc_list()
