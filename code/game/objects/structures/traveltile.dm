@@ -42,6 +42,9 @@
 	var/aportalgoesto = "REPLACETHIS"
 	var/aallmig
 	var/required_trait = null
+	var/can_gain_with_sight = FALSE
+	var/can_gain_by_walking = FALSE
+	var/check_other_side = FALSE
 
 /obj/structure/fluff/traveltile/Initialize()
 	GLOB.traveltiles += src
@@ -51,7 +54,7 @@
 	GLOB.traveltiles -= src
 	. = ..()
 
-/obj/structure/fluff/traveltile/proc/get_other_end_turf()
+/obj/structure/fluff/traveltile/proc/get_other_end_turf(var/return_travel = FALSE)
 	if(!aportalgoesto)
 		return null
 	for(var/obj/structure/fluff/traveltile/travel in shuffle(GLOB.traveltiles))
@@ -59,6 +62,8 @@
 			continue
 		if(travel.aportalid != aportalgoesto)
 			continue
+		if(return_travel)
+			return travel
 		return get_turf(travel)
 	return null
 
@@ -108,19 +113,30 @@
 
 /obj/structure/fluff/traveltile/proc/user_try_travel(mob/living/user)
 	var/turf/target_loc = get_other_end_turf()
+	var/obj/structure/fluff/traveltile/the_tile = get_other_end_turf(TRUE)
 	if(!target_loc)
 		to_chat(user, "<b>It is a dead end.</b>")
 		return
 	if(!can_go(user))
 		return
-	if(!do_after(user, 5 SECONDS, FALSE, target = src))
+	var/time2go = 5 SECONDS
+	if(check_other_side)
+		for(var/mob/living/M in range(12, target_loc))
+			if(!HAS_TRAIT(M, the_tile.required_trait))
+				to_chat(user, span_warning("I sense something off at the end of the trail."))
+				time2go = 7 SECONDS
+				break
+	if(!do_after(user, time2go, FALSE, target = src))
 		return
 	if(!can_go(user))
 		return
 	if(user.pulling)
 		user.pulling.recent_travel = world.time
 	user.recent_travel = world.time
-	reveal_travel_trait_to_others(user)
+	if(can_learn_trait)
+		reveal_travel_trait_to_others(user)
+	if(can_gain_by_walking && the_tile.required_trait && !HAS_TRAIT(user, the_tile.required_trait))
+		ADD_TRAIT(user, the_tile.required_trait, TRAIT_GENERIC)
 	mob_move_travel_z_level(user, target_loc)
 
 /obj/structure/fluff/traveltile/proc/reveal_travel_trait_to_others(mob/living/user)
@@ -134,8 +150,10 @@
 			ADD_TRAIT(H, required_trait, TRAIT_GENERIC)
 
 /obj/structure/fluff/traveltile/bandit
+	check_other_side = TRUE
 
 /obj/structure/fluff/traveltile/vampire
+	check_other_side = TRUE
 
 /obj/structure/fluff/traveltile/dungeon
 	name = "gate"
