@@ -13598,12 +13598,6 @@
 /mob/living/simple_animal/hostile/retaliate/rogue/chicken,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors/rtfield)
-"pil" = (
-/obj/structure/stairs/stone{
-	dir = 1
-	},
-/turf/closed/mineral/random/rogue/med,
-/area/rogue/under/cavewet/bogcaves)
 "pit" = (
 /obj/machinery/light/rogue/hearth,
 /turf/open/floor/rogue/ruinedwood{
@@ -16601,12 +16595,6 @@
 	},
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/town/bath)
-"sUW" = (
-/obj/structure/stairs/stone{
-	dir = 1
-	},
-/turf/closed,
-/area/rogue/under/cavewet/bogcaves)
 "sVa" = (
 /obj/structure/chair/wood/rogue{
 	dir = 4
@@ -132235,7 +132223,7 @@ xaf
 xaf
 xaf
 xaf
-sUW
+ilt
 dVO
 mSy
 mMQ
@@ -132637,7 +132625,7 @@ huj
 xaf
 xaf
 xaf
-pil
+ilt
 mSy
 mSy
 dVO
