@@ -121,6 +121,7 @@
 	foodtype = MEAT
 	warming = 5 MINUTES
 	dropshrink = 0.6
+	rotprocess = 40 MINUTES
 
 /obj/item/reagent_containers/food/snacks/rogue/fryfish/carp
 	icon_state = "carpcooked"
