@@ -57,15 +57,13 @@
 						remove_stress(/datum/stressevent/sleepytime)
 						if(mind)
 							mind.sleep_adv.advance_cycle()
-						var/datum/game_mode/chaosmode/C = SSticker.mode
-						if(istype(C))
-							if(mind)
-								if(!mind.antag_datums || !mind.antag_datums.len)
-									allmig_reward++
-									to_chat(src, span_danger("Nights Survived: \Roman[allmig_reward]"))
-									if(C.allmig)
-										if(allmig_reward > 3)
-											adjust_triumphs(1)
+							if(!mind.antag_datums || !mind.antag_datums.len)
+								allmig_reward++
+								to_chat(src, span_danger("Nights Survived: \Roman[allmig_reward]"))
+								var/datum/game_mode/chaosmode/C = SSticker.mode
+								if(istype(C) && C.allmig)
+									if(allmig_reward > 3)
+										adjust_triumphs(1)
 			if(leprosy == 1)
 				adjustToxLoss(2)
 			else if(leprosy == 2)
