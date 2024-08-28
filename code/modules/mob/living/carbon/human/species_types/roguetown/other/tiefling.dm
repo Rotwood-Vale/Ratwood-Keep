@@ -151,7 +151,7 @@
 
 /datum/species/tieberian/random_surname()
 	return " [pick(world.file2list("strings/rt/names/other/tieflast.txt"))]"
-
+/* Commenting out Spanish Tieflings for now.
 //Groups of Accents for each race set by associated 'skin_tone', see 'get_skin_list' above
 // "full" group in JSON lists
 /datum/species/tieberian/get_accent(mob/living/carbon/human/H)
@@ -180,3 +180,4 @@
 				if(SKIN_COLOR_CASTILLIAN)
 						return strings("spanish_replacement.json", "syllable")
 		return null
+*/
