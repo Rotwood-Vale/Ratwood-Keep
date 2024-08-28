@@ -84,15 +84,15 @@
 
 /datum/species/dwarf/mountain/get_skin_list()
 	return list(
-		"Skin Color 1" = SKIN_COLOR_PLATINUM,
-		"Skin Color 2" = SKIN_COLOR_AURUM,
-		"Skin Color 3" = SKIN_COLOR_QUICKSILVER,
-		"Skin Color 4" = SKIN_COLOR_BRASS,
-		"Skin Color 5" = SKIN_COLOR_IRON,
-		"Skin Color 6" = SKIN_COLOR_MALACHITE,
-		"Skin Color 7" = SKIN_COLOR_OBSIDIAN,
-		"Skin Color 8" = SKIN_COLOR_BRIMSTONE,
-		"Skin Color 9" = SKIN_COLOR_JADE
+		"Platinum" = SKIN_COLOR_PLATINUM,
+		"Aurum" = SKIN_COLOR_AURUM,
+		"Quicksilver" = SKIN_COLOR_QUICKSILVER,
+		"Brass" = SKIN_COLOR_BRASS,
+		"Iron" = SKIN_COLOR_IRON,
+		"Malachite" = SKIN_COLOR_MALACHITE,
+		"Obsidian" = SKIN_COLOR_OBSIDIAN,
+		"Brimstone" = SKIN_COLOR_BRIMSTONE,
+		"Jade" = SKIN_COLOR_JADE
 	)
 
 /datum/species/dwarf/mountain/get_hairc_list()

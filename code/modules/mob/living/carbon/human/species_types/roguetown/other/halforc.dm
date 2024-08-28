@@ -98,15 +98,15 @@
 
 /datum/species/halforc/get_skin_list()
 	return list(
-		"Skin Color 1" = SKIN_COLOR_SHELLCREST,
-		"Skin Color 2" = SKIN_COLOR_BLOOD_AXE,
-		"Skin Color 3" = SKIN_COLOR_GROONN,
-		"Skin Color 4" = SKIN_COLOR_BLACK_HAMMER,
-		"Skin Color 5" = SKIN_COLOR_SKULL_SEEKER,
-		"Skin Color 6" = SKIN_COLOR_CRESCENT_FANG,
-		"Skin Color 7" = SKIN_COLOR_MURKWALKER,
-		"Skin Color 8" = SKIN_COLOR_SHATTERHORN,
-		"Skin Color 9" = SKIN_COLOR_SPIRITCRUSHER
+		"Shellcrest" = SKIN_COLOR_SHELLCREST,
+		"Bloodaxe" = SKIN_COLOR_BLOOD_AXE,
+		"Splitjaw" = SKIN_COLOR_GROONN, //Changed name from Gronn, which no longer aligned with lore here or elsewhere.
+		"Blackhammer" = SKIN_COLOR_BLACK_HAMMER,
+		"Skullseeker" = SKIN_COLOR_SKULL_SEEKER,
+		"Crescent Fang" = SKIN_COLOR_CRESCENT_FANG,
+		"Murkwalker" = SKIN_COLOR_MURKWALKER,
+		"Shatterhorn" = SKIN_COLOR_SHATTERHORN,
+		"Spirit Crusher" = SKIN_COLOR_SPIRITCRUSHER
 	)
 
 /datum/species/halforc/get_hairc_list()
