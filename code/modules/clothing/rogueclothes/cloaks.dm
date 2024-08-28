@@ -587,7 +587,7 @@
 	color = null
 	icon_state = "waistpron"
 	item_state = "waistpron"
-	body_parts_covered = GROIN
+	body_parts_covered = null
 	boobed = FALSE
 	flags_inv = HIDECROTCH
 
