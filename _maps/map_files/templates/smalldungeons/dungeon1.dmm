@@ -711,6 +711,10 @@
 /obj/item/roguecoin/copper/pile,
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/cave/spider)
+"KF" = (
+/obj/item/roguecoin/gold/pile,
+/turf/open/floor/rogue/naturalstone,
+/area/rogue/under/cave/spider)
 "KS" = (
 /obj/structure/mineral_door/wood{
 	lockid = "dungeon"
@@ -6584,9 +6588,9 @@ SM
 lR
 Ih
 Ih
-Ih
-Ih
-Ih
+Km
+Km
+KF
 Ih
 Ih
 Ih
@@ -6683,11 +6687,11 @@ SM
 SM
 SM
 SM
-lR
-Ih
-Ih
-Ih
-Ih
+Km
+Km
+Km
+Km
+Km
 Ih
 Ih
 Ih
@@ -6787,10 +6791,10 @@ lR
 lR
 lR
 Ih
-Ih
-Ih
-Ih
-Ih
+Km
+Km
+Km
+Km
 Ih
 Ih
 Ih
@@ -6889,12 +6893,12 @@ Ih
 Ih
 Ih
 Ih
+Km
+Km
 Ih
-Ih
-Ih
-Ih
-Ih
-Ih
+Km
+Km
+Km
 Ih
 Ih
 Ih
@@ -6995,8 +6999,8 @@ Ih
 Ih
 Ih
 Ih
-Ih
-Ih
+Km
+KF
 Ih
 Ih
 Ih

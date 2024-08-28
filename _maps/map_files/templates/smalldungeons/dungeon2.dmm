@@ -788,6 +788,10 @@
 "Mu" = (
 /turf/open/floor/rogue/tile/masonic/single,
 /area/rogue/under/cave/spider)
+"My" = (
+/obj/item/roguecoin/gold/pile,
+/turf/open/floor/rogue/naturalstone,
+/area/rogue/under/cave/spider)
 "MW" = (
 /mob/living/carbon/human/species/skeleton/npc/ambush{
 	inertia_move_delay = 0;
@@ -6584,9 +6588,9 @@ CQ
 gF
 Dn
 Dn
-Dn
-Dn
-Dn
+za
+za
+My
 Dn
 Dn
 Dn
@@ -6683,11 +6687,11 @@ CQ
 CQ
 CQ
 CQ
-gF
-Dn
-Dn
-Dn
-Dn
+za
+za
+za
+za
+za
 Dn
 Dn
 Dn
@@ -6787,10 +6791,10 @@ gF
 gF
 gF
 Dn
-Dn
-Dn
-Dn
-Dn
+za
+za
+za
+za
 Dn
 Dn
 Dn
@@ -6889,12 +6893,12 @@ Dn
 Dn
 Dn
 Dn
+za
+za
 Dn
-Dn
-Dn
-Dn
-Dn
-Dn
+za
+za
+za
 Dn
 Dn
 Dn
@@ -6995,8 +6999,8 @@ Dn
 Dn
 Dn
 Dn
-Dn
-Dn
+za
+My
 Dn
 Dn
 Dn
