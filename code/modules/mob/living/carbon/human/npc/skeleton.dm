@@ -76,10 +76,8 @@
 		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/vagrant
 		if(prob(50))
 			shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/vagrant/l
-	if(prob(30))
-		pants = /obj/item/clothing/under/roguetown/tights/vagrant
-		if(prob(50))
-			pants = /obj/item/clothing/under/roguetown/tights/vagrant/l
+	if(prob(100))
+		pants = /obj/item/clothing/under/roguetown/chainlegs/iron
 	if(prob(10))
 		head = /obj/item/clothing/head/roguetown/helmet/leather
 	if(prob(10))
@@ -95,7 +93,7 @@
 	if(prob(50))
 		r_hand = /obj/item/rogueweapon/sword
 	else
-		r_hand = /obj/item/rogueweapon/stoneaxe/woodcut
+		r_hand = /obj/item/rogueweapon/mace
 
 /mob/living/carbon/human/species/skeleton/npc/no_equipment
     skel_outfit = null
