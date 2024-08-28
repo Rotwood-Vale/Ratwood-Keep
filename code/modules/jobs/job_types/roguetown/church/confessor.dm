@@ -3,27 +3,26 @@
 	flag = CONFESSOR
 	department_flag = CHURCHMEN
 	faction = "Station"
-	total_positions = 2
-	spawn_positions = 2
-
-	allowed_sexes = list(MALE, FEMALE)
+	total_positions = 1
+	spawn_positions = 1
 	allowed_races = RACES_TOLERATED_UP
+	allowed_sexes = list(MALE)
 	allowed_patrons = list(
 		/datum/patron/old_god,
 		ALL_DIVINE_PATRONS,
 	)
-	tutorial = "Confessors are shady agents of the church hired to spy on the populace and keep them moral. As the most fanatical members of the clergy, their main concern is assisting the local Puritan with their work in extracting confessions of sin as well as hunting night beasts and cultists that hide in plain sight."
-
-	outfit = /datum/outfit/job/roguetown/shepherd
+	tutorial = "You're the Inquisitor's muscle and you've been sent along him to this decrepit settlement. Obey the Inquisitor as always. It's also been a while since you last saw your comrade... May the one guide us."
 	whitelist_req = TRUE
+	outfit = /datum/outfit/job/roguetown/shepherd
 	display_order = JDO_SHEPHERD
 	give_bank_account = 3
-	min_pq = 0
+	min_pq = 1
 	max_pq = null
 
 /datum/outfit/job/roguetown/shepherd
 	name = "Confessor"
 	jobtype = /datum/job/roguetown/shepherd
+	allowed_patrons = list(/datum/patron/old_god)
 
 /datum/outfit/job/roguetown/shepherd/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -32,6 +31,8 @@
 	pants = /obj/item/clothing/under/roguetown/tights/black
 	beltr = /obj/item/storage/belt/rogue/pouch/coins/poor
 	mask = /obj/item/clothing/mask/rogue/shepherd
+	backl = /obj/item/storage/backpack/rogue/satchel
+	shirt = /obj/item/clothing/suit/roguetown/armor/gambeson
 	armor = /obj/item/clothing/suit/roguetown/armor/leather/vest/black
 	beltl = /obj/item/rogueweapon/mace/cudgel
 	wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
@@ -52,7 +53,8 @@
 		H.mind.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
 		H.change_stat("intelligence", -1)
 		H.change_stat("endurance", 1)
-		H.change_stat("strength", 2)
+		H.change_stat("strength", 3)
 		H.change_stat("speed", 2)
 		H.change_stat("perception", 1)
-	
+	ADD_TRAIT(H, TRAIT_STEELHEARTED, TRAIT_GENERIC)
+	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
