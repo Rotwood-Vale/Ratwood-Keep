@@ -6570,7 +6570,7 @@
 /obj/structure/stairs/stone{
 	dir = 1
 	},
-/turf/closed,
+/turf/open/floor/rogue/grass,
 /area/rogue/outdoors/bog)
 "hhr" = (
 /obj/machinery/light/rogue/torchholder{
@@ -9586,12 +9586,6 @@
 /obj/structure/bars,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/under/town/basement)
-"kNw" = (
-/obj/structure/stairs/stone{
-	dir = 1
-	},
-/turf/closed,
-/area/rogue/under/cavewet/bogcaves)
 "kNG" = (
 /obj/structure/table/wood{
 	dir = 5;
@@ -11204,12 +11198,6 @@
 	icon_state = "vertw"
 	},
 /area/rogue/indoors/town)
-"mOh" = (
-/obj/structure/stairs/stone{
-	dir = 1
-	},
-/turf/closed/mineral/random/rogue/med,
-/area/rogue/under/cavewet/bogcaves)
 "mOs" = (
 /obj/structure/closet/crate/roguecloset,
 /obj/item/clothing/suit/roguetown/shirt/dress/gen/blue,
@@ -132219,7 +132207,7 @@ xaf
 xaf
 xaf
 xaf
-kNw
+ilt
 dVO
 hPT
 jTX
@@ -132621,7 +132609,7 @@ huj
 xaf
 xaf
 xaf
-mOh
+ilt
 hPT
 hPT
 dVO
