@@ -69,3 +69,15 @@
 	desc = "It's holy priest Seraphina, first of her name, blessed be her name."
 	icon_state = "seraphinapainting_deployed"
 	stolen_painting = /obj/item/rogue/painting/seraphina
+
+/obj/structure/fluff/walldeco/painting/inquisitor
+	desc = "Lord Sulivan, the actual Inquisitor General at Kingsfield."
+	icon_state = "johninquisition_deployed"
+	stolen_painting = /obj/item/rogue/painting/inquisitor
+
+/obj/item/rogue/painting/inquisitor
+	icon_state = "johninquisition"
+	desc = "Lord Sulivan, the actual Inquisitor General at Kingsfield"
+	dropshrink = 0.5
+	sellprice = 65
+	deployed_structure = /obj/structure/fluff/walldeco/painting/inquisitor
