@@ -13,6 +13,7 @@
 	bitesize = 5
 	var/stunning = FALSE
 	eat_effect = /datum/status_effect/debuff/uncookedfood
+	rotprocess = 60 MINUTES
 
 /obj/item/reagent_containers/food/snacks/rogue/pie/cooked
 	icon_state = "pie"
@@ -71,6 +72,7 @@
 	warming = 10 MINUTES
 	bitesize = 3
 	eat_effect = /datum/status_effect/buff/foodbuff
+	rotprocess = 40 MINUTES
 
 /obj/item/reagent_containers/food/snacks/rogue/piedough
 	name = "pie dough"
