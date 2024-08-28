@@ -70,17 +70,17 @@
 	..()
 	if(prob(50))
 		wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
-	if(prob(50))
+	if(prob(70))
 		shoes = /obj/item/clothing/shoes/roguetown/boots/leather
-	if(prob(10))
+	if(prob(30))
 		armor = /obj/item/clothing/suit/roguetown/armor/chainmail/iron
 	if(prob(30))
 		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/vagrant
 		if(prob(50))
 			shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/vagrant/l
-	if(prob(100))
+	if(prob(80))
 		pants = /obj/item/clothing/under/roguetown/chainlegs/iron
-	if(prob(10))
+	if(prob(20))
 		head = /obj/item/clothing/head/roguetown/helmet/leather
 	if(prob(10))
 		head = /obj/item/clothing/head/roguetown/roguehood
