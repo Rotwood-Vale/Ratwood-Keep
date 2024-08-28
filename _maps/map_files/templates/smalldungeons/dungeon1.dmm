@@ -520,12 +520,6 @@
 /obj/item/roguestatue/silver,
 /turf/open/floor/rogue/churchmarble,
 /area/rogue/under/cave/spider)
-"BF" = (
-/obj/structure/mineral_door/wood{
-	lockid = "dungeon"
-	},
-/turf/open/floor/rogue/tile/masonic/single,
-/area/rogue/under/cave/spider)
 "BR" = (
 /obj/structure/rack/rogue/shelf/big,
 /obj/effect/decal/cleanable/cobweb,
@@ -4513,7 +4507,7 @@ lR
 Oq
 qH
 qH
-KS
+qH
 qH
 xq
 qH
@@ -4534,7 +4528,7 @@ SM
 SM
 CI
 SM
-IV
+SM
 SM
 SM
 kR
@@ -4817,7 +4811,7 @@ Ih
 Ih
 lR
 lR
-KS
+qH
 lR
 lR
 Ih
@@ -5046,7 +5040,7 @@ Ih
 Ih
 lR
 lR
-IV
+SM
 lR
 lR
 lR
@@ -5225,7 +5219,7 @@ Ih
 Ih
 lR
 lR
-KS
+qH
 lR
 lR
 Ih
@@ -5866,7 +5860,7 @@ lR
 SM
 SM
 SM
-IV
+SM
 nH
 SM
 SM
@@ -6652,7 +6646,7 @@ Ih
 lR
 nX
 qH
-KS
+qH
 qH
 qH
 qH
@@ -6955,7 +6949,7 @@ lR
 xq
 qH
 qH
-KS
+qH
 qH
 JQ
 lR
@@ -8320,7 +8314,7 @@ qH
 ha
 qH
 qH
-KS
+qH
 qH
 qH
 qH
@@ -8479,7 +8473,7 @@ Ih
 lR
 lR
 lR
-BF
+dQ
 lR
 lR
 lR
@@ -8526,7 +8520,7 @@ my
 lR
 lR
 lR
-KS
+qH
 lR
 lR
 lR

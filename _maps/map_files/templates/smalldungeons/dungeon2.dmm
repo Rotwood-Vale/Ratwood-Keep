@@ -874,12 +874,6 @@
 /obj/structure/fluff/walldeco/bigpainting/lake,
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/cave/spider)
-"Sa" = (
-/obj/structure/mineral_door/wood{
-	lockid = "dungeon"
-	},
-/turf/open/floor/rogue/tile/masonic/single,
-/area/rogue/under/cave/spider)
 "Sn" = (
 /obj/structure/table/wood{
 	dir = 10;
@@ -4513,7 +4507,7 @@ gF
 So
 XL
 XL
-Eq
+XL
 XL
 xu
 XL
@@ -4534,7 +4528,7 @@ CQ
 CQ
 FD
 CQ
-qU
+CQ
 CQ
 CQ
 Xn
@@ -4817,7 +4811,7 @@ Dn
 Dn
 gF
 gF
-Eq
+XL
 gF
 gF
 Dn
@@ -5046,7 +5040,7 @@ Dn
 Dn
 gF
 gF
-qU
+CQ
 gF
 gF
 gF
@@ -5225,7 +5219,7 @@ Dn
 Dn
 gF
 gF
-Eq
+XL
 gF
 gF
 Dn
@@ -5866,7 +5860,7 @@ gF
 CQ
 CQ
 CQ
-qU
+CQ
 jj
 CQ
 CQ
@@ -6652,7 +6646,7 @@ Dn
 gF
 En
 XL
-Eq
+XL
 XL
 XL
 XL
@@ -6955,7 +6949,7 @@ gF
 xu
 XL
 XL
-Eq
+XL
 XL
 BC
 gF
@@ -8320,7 +8314,7 @@ XL
 ay
 XL
 XL
-Eq
+XL
 XL
 XL
 XL
@@ -8479,7 +8473,7 @@ Dn
 gF
 gF
 gF
-Sa
+Mu
 gF
 gF
 gF
@@ -8526,7 +8520,7 @@ wX
 gF
 gF
 gF
-Eq
+XL
 gF
 gF
 gF
