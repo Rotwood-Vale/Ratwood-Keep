@@ -70,6 +70,8 @@
 	..()
 	if(prob(50))
 		wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
+	if(prob(50))
+		shoes = /obj/item/clothing/shoes/roguetown/boots/leather
 	if(prob(10))
 		armor = /obj/item/clothing/suit/roguetown/armor/chainmail/iron
 	if(prob(30))
