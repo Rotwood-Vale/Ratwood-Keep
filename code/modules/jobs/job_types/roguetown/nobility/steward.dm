@@ -30,11 +30,11 @@
 		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/sailor
 		pants = /obj/item/clothing/under/roguetown/tights/random
 		armor = /obj/item/clothing/cloak/tabard/knight
-	ADD_TRAIT(H, TRAIT_SEEPRICES, type)
 	shoes = /obj/item/clothing/shoes/roguetown/shortboots
 	head = /obj/item/clothing/head/roguetown/chaperon/greyscale
 	belt = /obj/item/storage/belt/rogue/leather/plaquesilver
 	beltr = /obj/item/keyring/steward
+	backr = /obj/item/storage/backpack/rogue/satchel
 
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 6, TRUE)
@@ -54,21 +54,5 @@
 		H.change_stat("perception", 2)
 		H.change_stat("speed", -1)
 	ADD_TRAIT(H, TRAIT_NOBLE, TRAIT_GENERIC)
-	ADD_TRAIT(H, TRAIT_SEEPRICES, TRAIT_GENERIC)
+	ADD_TRAIT(H, TRAIT_SEEPRICES, type)
 
-	if(H.charflaw)
-		if(H.charflaw.type != /datum/charflaw/badsight)
-			var/obj/item/bodypart/O = H.get_bodypart(BODY_ZONE_R_ARM)
-			if(O)
-				O.drop_limb()
-				qdel(O)
-			O = H.get_bodypart(BODY_ZONE_L_ARM)
-			if(O)
-				O.drop_limb()
-				qdel(O)
-			H.regenerate_limb(BODY_ZONE_R_ARM)
-			H.regenerate_limb(BODY_ZONE_L_ARM)
-			H.charflaw = new /datum/charflaw/badsight()
-			if(!istype(H.wear_mask, /obj/item/clothing/mask/rogue/spectacles))
-				qdel(H.wear_mask)
-				mask = /obj/item/clothing/mask/rogue/spectacles

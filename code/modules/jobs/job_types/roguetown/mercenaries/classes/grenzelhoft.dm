@@ -74,6 +74,7 @@
 	pants = /obj/item/clothing/under/roguetown/grenzelpants
 	shoes = /obj/item/clothing/shoes/roguetown/grenzelhoft
 	gloves = /obj/item/clothing/gloves/roguetown/grenzelgloves
+	backr = /obj/item/storage/backpack/rogue/satchel/black
 
 	backpack_contents = list(/obj/item/roguekey/mercenary)
 

@@ -15,7 +15,7 @@
 	..()
 
 /datum/objective/purishep
-	explanation_text = "Send 5 confessions of sin to the Inquisition at Kingsfield."
+	explanation_text = "Send 5 confessions of sin to the Inquisition Headquarters."
 
 /datum/objective/purishep/check_completion()
 	if(GLOB.confessors)

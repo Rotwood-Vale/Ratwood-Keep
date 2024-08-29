@@ -3,8 +3,8 @@
 	flag = CONFESSOR
 	department_flag = CHURCHMEN
 	faction = "Station"
-	total_positions = 0
-	spawn_positions = 0
+	total_positions = 1
+	spawn_positions = 1
 
 	allowed_races = RACES_ALL_KINDS
 	allowed_sexes = list(MALE, FEMALE)
@@ -32,21 +32,23 @@
 	armor = /obj/item/clothing/suit/roguetown/armor/leather/vest/black
 	beltl = /obj/item/rogueweapon/mace/cudgel
 	wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
+	backr = /obj/item/storage/backpack/rogue/satchel/black
 	backpack_contents = list(/obj/item/keyring/shepherd = 1)
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/misc/sewing, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/medicine, 1, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 3, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 4, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/stealing, 2, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/swords, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/maces, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/bows, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/whipsflails, 3, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/knives, 3, TRUE)
 		H.change_stat("intelligence", -1)
 		H.change_stat("endurance", 1)
 		H.change_stat("strength", 2)

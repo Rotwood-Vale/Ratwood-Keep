@@ -26,15 +26,12 @@
 	pants = /obj/item/clothing/under/roguetown/tights/random
 	belt = /obj/item/storage/belt/rogue/leather/rope
 	beltr = /obj/item/keyring/mage
+	backr = /obj/item/storage/backpack/rogue/satchel
 	r_hand = /obj/item/rogueweapon/woodstaff
 	if(H.pronouns == SHE_HER)
 		shoes = /obj/item/clothing/shoes/roguetown/sandals
-		armor = /obj/item/clothing/suit/roguetown/armor/workervest
-		backr = /obj/item/storage/backpack/rogue/satchel
 	else
 		shoes = /obj/item/clothing/shoes/roguetown/simpleshoes
-		armor = /obj/item/clothing/suit/roguetown/armor/workervest
-		backr = /obj/item/storage/backpack/rogue/satchel
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/magic/arcane, 2, TRUE)
