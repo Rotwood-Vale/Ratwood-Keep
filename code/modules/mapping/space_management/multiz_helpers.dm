@@ -7,7 +7,11 @@
 		return get_step(SSmapping.get_turf_below(get_turf(ref)), dir)
 	return get_step(ref, dir)
 
-/proc/is_in_zweb(my_z, compare_z)
+/proc/is_in_zweb(atom/my_atom, atom/compare_atom)
+	var/turf/my_turf = get_turf(my_atom)
+	var/turf/compare_turf = get_turf(compare_atom)
+	var/my_z = my_turf.z
+	var/compare_z = compare_turf.z
 	if(!my_z || !compare_z)
 		return
 	if(my_z == compare_z)

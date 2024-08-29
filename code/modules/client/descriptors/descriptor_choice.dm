@@ -1,10 +1,12 @@
 /datum/descriptor_choice
 	abstract_type = /datum/descriptor_choice
 	var/name = "Descriptor"
+	var/default_descriptor
 	var/list/descriptors = list()
 
 /datum/descriptor_choice/face
 	name = "Face"
+	default_descriptor = /datum/mob_descriptor/face/unremarkable
 	descriptors = list(
 		/datum/mob_descriptor/face/unremarkable,
 		/datum/mob_descriptor/face/smooth,
@@ -59,10 +61,12 @@
 		/datum/mob_descriptor/face_exp/suave,
 		/datum/mob_descriptor/face_exp/humble,
 		/datum/mob_descriptor/face_exp/smug,
+		/datum/mob_descriptor/face_exp/curious,
 	)
 
 /datum/descriptor_choice/body
 	name = "Body"
+	default_descriptor = /datum/mob_descriptor/body/average
 	descriptors = list(
 		/datum/mob_descriptor/body/average,
 		/datum/mob_descriptor/body/athletic,
@@ -81,8 +85,6 @@
 		/datum/mob_descriptor/body/decrepit,
 		/datum/mob_descriptor/body/thin,
 		/datum/mob_descriptor/body/bulky,
-		/datum/mob_descriptor/body/tall,
-		/datum/mob_descriptor/body/short,
 		/datum/mob_descriptor/body/slender,
 		/datum/mob_descriptor/body/lissome,
 		/datum/mob_descriptor/body/lanky,
@@ -99,6 +101,7 @@
 
 /datum/descriptor_choice/stature
 	name = "Stature"
+	default_descriptor = /datum/mob_descriptor/stature/man
 	descriptors = list(
 		/datum/mob_descriptor/stature/man,
 		/datum/mob_descriptor/stature/gentleman,
@@ -116,6 +119,7 @@
 
 /datum/descriptor_choice/voice
 	name = "Voice"
+	default_descriptor = /datum/mob_descriptor/voice/ordinary
 	descriptors = list(
 		/datum/mob_descriptor/voice/ordinary,
 		/datum/mob_descriptor/voice/monotone,
@@ -149,6 +153,7 @@
 
 /datum/descriptor_choice/skin
 	name = "Skin"
+	default_descriptor = /datum/mob_descriptor/skin/normal
 	descriptors = list(
 		/datum/mob_descriptor/skin/normal,
 		/datum/mob_descriptor/skin/hairy,
@@ -168,6 +173,7 @@
 
 /datum/descriptor_choice/scales
 	name = "Scales"
+	default_descriptor = /datum/mob_descriptor/scales/plain
 	descriptors = list(
 		/datum/mob_descriptor/scales/plain,
 		/datum/mob_descriptor/scales/rough,
@@ -178,6 +184,7 @@
 
 /datum/descriptor_choice/fur
 	name = "Fur"
+	default_descriptor = /datum/mob_descriptor/fur/plain
 	descriptors = list(
 		/datum/mob_descriptor/fur/plain,
 		/datum/mob_descriptor/fur/short,
@@ -211,8 +218,20 @@
 		/datum/mob_descriptor/chitin/fine,
 	)
 
+/datum/descriptor_choice/height
+	name = "Height"
+	default_descriptor = /datum/mob_descriptor/height/moderate
+	descriptors = list(
+		/datum/mob_descriptor/height/moderate,
+		/datum/mob_descriptor/height/tall,
+		/datum/mob_descriptor/height/short,
+		/datum/mob_descriptor/height/towering,
+		/datum/mob_descriptor/height/tiny,
+	)
+
 /datum/descriptor_choice/skin_all
 	name = "Skin/Fur/Scales"
+	default_descriptor = /datum/mob_descriptor/fur/plain
 	descriptors = list(
 		/datum/mob_descriptor/skin/normal,
 		/datum/mob_descriptor/skin/hairy,
@@ -252,61 +271,113 @@
 		/datum/mob_descriptor/feathers/soft,
 	)
 
-#define PROMINENT_DESCRIPTORS list(\
-		/datum/mob_descriptor/prominent/hunched_over,\
-		/datum/mob_descriptor/prominent/drooling,\
-		/datum/mob_descriptor/prominent/lazy_eye,\
-		/datum/mob_descriptor/prominent/bloodshot_eye,\
-		/datum/mob_descriptor/prominent/baggy_eye,\
-		/datum/mob_descriptor/prominent/twitchy,\
-		/datum/mob_descriptor/prominent/clumsy,\
-		/datum/mob_descriptor/prominent/unkempt,\
-		/datum/mob_descriptor/prominent/tidy,\
-		/datum/mob_descriptor/prominent/eloquent,\
-		/datum/mob_descriptor/prominent/thick_tail,\
-		/datum/mob_descriptor/prominent/cleft_lip,\
-		/datum/mob_descriptor/prominent/physically_deformed,\
-		/datum/mob_descriptor/prominent/extensive_scars,\
-		/datum/mob_descriptor/prominent/move_strange,\
-		/datum/mob_descriptor/prominent/ghoulish_appearance,\
-		/datum/mob_descriptor/prominent/prominent_chest,\
-		/datum/mob_descriptor/prominent/prominent_thighs,\
-		/datum/mob_descriptor/prominent/prominent_shoulders,\
-		/datum/mob_descriptor/prominent/prominent_jawline,\
-		/datum/mob_descriptor/prominent/prominent_bottom,\
-		/datum/mob_descriptor/prominent/prominent_potbelly,\
-		/datum/mob_descriptor/prominent/cold_gaze,\
-		/datum/mob_descriptor/prominent/piercing_gaze,\
-		/datum/mob_descriptor/prominent/innocent_gaze,\
-		/datum/mob_descriptor/prominent/promiscuous_mannerisms,\
-		/datum/mob_descriptor/prominent/intimidating_presence,\
-		/datum/mob_descriptor/prominent/meek_presence,\
-		/datum/mob_descriptor/prominent/adorable_presence,\
-		/datum/mob_descriptor/prominent/lordly_presence,\
-		/datum/mob_descriptor/prominent/doting_presence,\
-		/datum/mob_descriptor/prominent/aristocratic_haughtiness,\
-		/datum/mob_descriptor/prominent/ghastly_pale,\
-		/datum/mob_descriptor/prominent/elaborate_tattoos,\
-		/datum/mob_descriptor/prominent/ritual_tattoos,\
-		/datum/mob_descriptor/prominent/tribal_tattoos,\
-		/datum/mob_descriptor/prominent/slave_tattoos,\
-		/datum/mob_descriptor/prominent/enigmatic_tattoos,\
-		/datum/mob_descriptor/prominent/mean_look,\
-		/datum/mob_descriptor/prominent/haughty_atmosphere,\
-		/datum/mob_descriptor/prominent/untrustworthy,\
-		/datum/mob_descriptor/prominent/ratty_hair,\
-		/datum/mob_descriptor/prominent/predatory_look,\
-		/datum/mob_descriptor/prominent/chaste_mannerism,\
-		/datum/mob_descriptor/prominent/whimsy,\
-		/datum/mob_descriptor/prominent/dim_look,\
-	)
+#define PROMINENT_DESCRIPTORS \
+	/datum/mob_descriptor/prominent/hunched_over,\
+	/datum/mob_descriptor/prominent/drooling,\
+	/datum/mob_descriptor/prominent/lazy_eye,\
+	/datum/mob_descriptor/prominent/bloodshot_eye,\
+	/datum/mob_descriptor/prominent/baggy_eye,\
+	/datum/mob_descriptor/prominent/twitchy,\
+	/datum/mob_descriptor/prominent/clumsy,\
+	/datum/mob_descriptor/prominent/unkempt,\
+	/datum/mob_descriptor/prominent/tidy,\
+	/datum/mob_descriptor/prominent/eloquent,\
+	/datum/mob_descriptor/prominent/thick_tail,\
+	/datum/mob_descriptor/prominent/cleft_lip,\
+	/datum/mob_descriptor/prominent/physically_deformed,\
+	/datum/mob_descriptor/prominent/extensive_scars,\
+	/datum/mob_descriptor/prominent/move_strange,\
+	/datum/mob_descriptor/prominent/ghoulish_appearance,\
+	/datum/mob_descriptor/prominent/prominent_chest,\
+	/datum/mob_descriptor/prominent/prominent_thighs,\
+	/datum/mob_descriptor/prominent/prominent_shoulders,\
+	/datum/mob_descriptor/prominent/prominent_jawline,\
+	/datum/mob_descriptor/prominent/prominent_bottom,\
+	/datum/mob_descriptor/prominent/prominent_potbelly,\
+	/datum/mob_descriptor/prominent/cold_gaze,\
+	/datum/mob_descriptor/prominent/piercing_gaze,\
+	/datum/mob_descriptor/prominent/innocent_gaze,\
+	/datum/mob_descriptor/prominent/promiscuous_mannerisms,\
+	/datum/mob_descriptor/prominent/intimidating_presence,\
+	/datum/mob_descriptor/prominent/meek_presence,\
+	/datum/mob_descriptor/prominent/adorable_presence,\
+	/datum/mob_descriptor/prominent/lordly_presence,\
+	/datum/mob_descriptor/prominent/doting_presence,\
+	/datum/mob_descriptor/prominent/aristocratic_haughtiness,\
+	/datum/mob_descriptor/prominent/ghastly_pale,\
+	/datum/mob_descriptor/prominent/elaborate_tattoos,\
+	/datum/mob_descriptor/prominent/ritual_tattoos,\
+	/datum/mob_descriptor/prominent/tribal_tattoos,\
+	/datum/mob_descriptor/prominent/slave_tattoos,\
+	/datum/mob_descriptor/prominent/enigmatic_tattoos,\
+	/datum/mob_descriptor/prominent/mean_look,\
+	/datum/mob_descriptor/prominent/haughty_atmosphere,\
+	/datum/mob_descriptor/prominent/untrustworthy,\
+	/datum/mob_descriptor/prominent/ratty_hair,\
+	/datum/mob_descriptor/prominent/predatory_look,\
+	/datum/mob_descriptor/prominent/chaste_mannerism,\
+	/datum/mob_descriptor/prominent/whimsy,\
+	/datum/mob_descriptor/prominent/dim_look,\
+	/datum/mob_descriptor/prominent/custom/one,\
+	/datum/mob_descriptor/prominent/custom/two
+
+#define PROMINENT_WILDKIN \
+	/datum/mob_descriptor/prominent/canine_features,\
+	/datum/mob_descriptor/prominent/feline_features,\
+	/datum/mob_descriptor/prominent/hyaenidae_features,\
+	/datum/mob_descriptor/prominent/equine_features,\
+	/datum/mob_descriptor/prominent/bovine_features,\
+	/datum/mob_descriptor/prominent/cervine_features,\
+	/datum/mob_descriptor/prominent/lapine_features,\
+	/datum/mob_descriptor/prominent/rodent_features,\
+	/datum/mob_descriptor/prominent/primate_features,\
+	/datum/mob_descriptor/prominent/marsupial_features,\
+	/datum/mob_descriptor/prominent/lizard_features,\
+	/datum/mob_descriptor/prominent/avian_features,\
+	/datum/mob_descriptor/prominent/amphibian_features,\
+	/datum/mob_descriptor/prominent/insectoid_features,\
+	/datum/mob_descriptor/prominent/marine_features,\
+	/datum/mob_descriptor/prominent/vulpine_features
 
 /datum/descriptor_choice/prominent_one
 	name = "Prominent #1"
-	descriptors = PROMINENT_DESCRIPTORS
+	default_descriptor = /datum/mob_descriptor/prominent/unkempt
+	descriptors = list(PROMINENT_DESCRIPTORS)
 
 /datum/descriptor_choice/prominent_two
 	name = "Prominent #2"
-	descriptors = PROMINENT_DESCRIPTORS
+	default_descriptor = /datum/mob_descriptor/prominent/dim_look
+	descriptors = list(PROMINENT_DESCRIPTORS)
+
+/datum/descriptor_choice/prominent_three
+	name = "Prominent #3"
+	default_descriptor = /datum/mob_descriptor/prominent/none
+	descriptors = list(/datum/mob_descriptor/prominent/none, PROMINENT_DESCRIPTORS)
+
+/datum/descriptor_choice/prominent_four
+	name = "Prominent #4"
+	default_descriptor = /datum/mob_descriptor/prominent/none
+	descriptors = list(/datum/mob_descriptor/prominent/none, PROMINENT_DESCRIPTORS)
+
+/datum/descriptor_choice/prominent_one_wild
+	name = "Prominent #1"
+	default_descriptor = /datum/mob_descriptor/prominent/unkempt
+	descriptors = list(PROMINENT_WILDKIN, PROMINENT_DESCRIPTORS)
+
+/datum/descriptor_choice/prominent_two_wild
+	name = "Prominent #2"
+	default_descriptor = /datum/mob_descriptor/prominent/dim_look
+	descriptors = list(PROMINENT_WILDKIN, PROMINENT_DESCRIPTORS)
+
+/datum/descriptor_choice/prominent_three_wild
+	name = "Prominent #3"
+	default_descriptor = /datum/mob_descriptor/prominent/none
+	descriptors = list(/datum/mob_descriptor/prominent/none, PROMINENT_WILDKIN, PROMINENT_DESCRIPTORS)
+
+/datum/descriptor_choice/prominent_four_wild
+	name = "Prominent #4"
+	default_descriptor = /datum/mob_descriptor/prominent/none
+	descriptors = list(/datum/mob_descriptor/prominent/none, PROMINENT_WILDKIN, PROMINENT_DESCRIPTORS)
 
 #undef PROMINENT_DESCRIPTORS
+#undef PROMINENT_WILDKIN

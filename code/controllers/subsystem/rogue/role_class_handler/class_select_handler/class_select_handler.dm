@@ -63,9 +63,13 @@
 
 	//classes we rolled, basically you get a datum followed by a number in here on how many times you rerolled it.
 	var/list/rolled_classes = list()
+	// The register id we use
+	var/register_id = null
 
 // The normal route for first use of this list.
 /datum/class_select_handler/proc/initial_setup()
+	if(register_id)
+		SSrole_class_handler.add_class_register_listener(register_id, linked_client.mob)
 	assemble_the_CLASSES()
 	second_step()
 
@@ -77,6 +81,8 @@
 	browser_slop()
 
 /datum/class_select_handler/Destroy()
+	if(register_id)
+		SSrole_class_handler.remove_class_register_listener(register_id, linked_client.mob)
 	ForceCloseMenus() // force menus closed
 	// Cleanup anything holding references, aka these lists holding refs to class datums and the other two
 	linked_client = null 
@@ -99,11 +105,15 @@
 				for(var/datum/advclass/CUR_AZZ in subsystem_ctag_list)
 					if(rolled_classes[CUR_AZZ])
 						continue
+					if(is_advclass_banned(H.ckey, CUR_AZZ.name))
+						continue
 					local_insert_sortlist += CUR_AZZ
 
 			else // If we are not bypassing reqs, time to do a req check
 				for(var/datum/advclass/CUR_AZZ in subsystem_ctag_list)
 					if(rolled_classes[CUR_AZZ])
+						continue
+					if(is_advclass_banned(H.ckey, CUR_AZZ.name))
 						continue
 					if(CUR_AZZ.check_requirements(H))
 						local_insert_sortlist += CUR_AZZ

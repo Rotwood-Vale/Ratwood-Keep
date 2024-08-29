@@ -2,15 +2,23 @@
 	title = "Desert Rider Mercenary"
 	flag = DESERT_RIDER
 	allowed_sexes = list(MALE, FEMALE)
-	allowed_races = RACES_ALL_KINDS
+	allowed_races = list(
+		/datum/species/tieberian,
+		/datum/species/lizardfolk,
+		/datum/species/tabaxi,
+		/datum/species/human/northern,
+		/datum/species/demihuman,
+		/datum/species/anthromorph,
+		/datum/species/elf/dark,
+	)
 	department_flag = MERCENARIES
 	tutorial = "Blood, like the desert sand, stains your hands, a crimson testament to the gold you covet. A desert rider, renowned mercenary of the far east, your scimitar whispers tales of centuries-old tradition. Your loyalty, a fleeting mirage in the shifting sands, will yield to the allure of fortune."
 	outfit = /datum/outfit/job/roguetown/mercenary/desert_rider
 	display_order = JDO_DESERT_RIDER
 	selection_color = JCOLOR_MERCENARY
 	faction = "Station"
-	total_positions = 5
-	spawn_positions = 5
+	total_positions = 4
+	spawn_positions = 4
 	give_bank_account = 3
 	min_pq = 2 //good fragger role
 	max_pq = null
@@ -30,22 +38,6 @@
 	pants = /obj/item/clothing/under/roguetown/chainlegs/iron
 	neck = /obj/item/clothing/neck/roguetown/shalal
 
-	// A quick check to make sure the desert rider is canonical
-	var/static/list/canonical_heritage_check_list = list(
-	SKIN_COLOR_GIZA,
-	SKIN_COLOR_LALVESTINE,
-	SKIN_COLOR_SHALVISTINE,
-	SKIN_COLOR_EBON
-	)
-	if(ishumannorthern(H) && !(H.skin_tone in canonical_heritage_check_list))
-		H.skin_tone = pick(canonical_heritage_check_list)
-		H.update_body()
-
-	if(H.gender == FEMALE)
-		var/acceptable = list("Tomboy", "Bob", "Curly Short")
-		if(!(H.hairstyle in acceptable))
-			H.hairstyle = pick(acceptable)
-			H.update_hair()
 	backpack_contents = list(/obj/item/roguekey/mercenary)
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/misc/swimming, 2, TRUE)

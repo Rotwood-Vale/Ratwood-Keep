@@ -5,19 +5,10 @@
 	var/list/testmerge = list()
 
 /datum/getrev/New()
-	testmerge = world.TgsTestMerges()
-	var/datum/tgs_revision_information/revinfo = world.TgsRevision()
-	if(revinfo)
-		commit = revinfo.commit
-		originmastercommit = revinfo.origin_commit
-	else
-		commit = rustg_git_revparse("HEAD")
-		if(commit)
-			date = rustg_git_commit_date(commit)
-		originmastercommit = rustg_git_revparse("origin/master")
-
-	// goes to DD log and config_error.txt
-	log_world(get_log_message())
+	commit = rustg_git_revparse("HEAD")
+	if(commit)
+		date = rustg_git_commit_date(commit)
+	originmastercommit = rustg_git_revparse("origin/main")
 
 /datum/getrev/proc/load_tgs_info()
 	testmerge = world.TgsTestMerges()
@@ -38,8 +29,8 @@
 
 	for(var/line in testmerge)
 		var/datum/tgs_revision_information/test_merge/tm = line
-		msg += "Test merge active of PR #[tm.number] commit [tm.commit]"
-		SSblackbox.record_feedback("associative", "testmerged_prs", 1, list("number" = "[tm.number]", "commit" = "[tm.commit]", "title" = "[tm.title]", "author" = "[tm.author]"))
+		msg += "Test merge active of PR #[tm.number] commit [tm.head_commit]"
+		SSblackbox.record_feedback("associative", "testmerged_prs", 1, list("number" = "[tm.number]", "commit" = "[tm.head_commit]", "title" = "[tm.title]", "author" = "[tm.author]"))
 
 	if(commit && commit != originmastercommit)
 		msg += "HEAD: [commit]"
