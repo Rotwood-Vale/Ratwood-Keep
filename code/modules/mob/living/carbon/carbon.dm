@@ -141,8 +141,10 @@
 				hurt = FALSE
 	if(hit_atom.density && isturf(hit_atom))
 		if(hurt)
-			Paralyze(20)
+			if(IsOffBalanced())
+				Paralyze(20)
 			take_bodypart_damage(10,check_armor = TRUE)
+			playsound(src,"genblunt",100,TRUE)
 	if(iscarbon(hit_atom) && hit_atom != src)
 		var/mob/living/carbon/victim = hit_atom
 		if(victim.movement_type & FLYING)
@@ -210,10 +212,7 @@
 					if(!throwable_mob.buckled)
 						thrown_thing = throwable_mob
 						thrown_speed = 1
-						if(STASTR > throwable_mob.STACON)
-							thrown_range = 4
-						else
-							thrown_range = 1
+						thrown_range = max(round((STASTR/throwable_mob.STACON)*2), 1)
 						stop_pulling()
 						if(G.grab_state < GRAB_AGGRESSIVE)
 							return
@@ -222,6 +221,8 @@
 							return
 						var/turf/start_T = get_turf(loc) //Get the start and target tile for the descriptors
 						var/turf/end_T = get_turf(target)
+						if(start_T.z != end_T.z && throwable_mob.mobility_flags & MOBILITY_STAND)
+							return
 						if(start_T && end_T)
 							log_combat(src, throwable_mob, "thrown", addition="grab from tile in [AREACOORD(start_T)] towards tile at [AREACOORD(end_T)]")
 				else

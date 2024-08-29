@@ -128,7 +128,13 @@
 		return FALSE
 	if(!valid_check())
 		return FALSE
-	user.changeNext_move(CLICK_CD_MELEE)
+	user.changeNext_move(CLICK_CD_MELEE * 2 - user.STASPD) // 24 - the user's speed
+	var/skill_diff = 0
+	if(user.mind)
+		skill_diff += (user.mind.get_skill_level(/datum/skill/combat/wrestling))
+	if(M.mind)
+		skill_diff -= (M.mind.get_skill_level(/datum/skill/combat/wrestling))
+
 	switch(user.used_intent.type)
 		if(/datum/intent/grab/upgrade)
 			if(!(M.status_flags & CANPUSH) || HAS_TRAIT(M, TRAIT_PUSHIMMUNE))
@@ -140,7 +146,7 @@
 				if(iscarbon(M) && M != user)
 					var/mob/living/carbon/C = M
 					if(get_location_accessible(C, BODY_ZONE_PRECISE_NECK))
-						if(prob(23))
+						if(prob(25))
 							C.emote("choke")
 						C.adjustOxyLoss(user.STASTR)
 					C.visible_message(span_danger("[user] [pick("chokes", "strangles")] [C]!"), \
@@ -167,43 +173,19 @@
 				if(user.loc != M.loc)
 					to_chat(user, span_warning("I must be above them."))
 					return
-				if(src == user.r_grab)
-					if(!user.l_grab || user.l_grab.grabbed != M)
-						to_chat(user, span_warning("I must grab them with both hands."))
-						return
-				if(src == user.l_grab)
-					if(!user.r_grab || user.r_grab.grabbed != M)
-						to_chat(user, span_warning("I must grab them with both hands."))
-						return
-				if(user.STASTR > M.STASTR)
-					M.visible_message(span_danger("[user] pins [M] to the ground!"), \
-									span_userdanger("[user] pins me to the ground!"), span_hear("I hear a sickening sound of pugilism!"), COMBAT_MESSAGE_RANGE)
-					M.Knockdown(300)
-					M.Immobilize(300)
-					user.Immobilize(30)
-				else
-					if(prob(23))
-						M.visible_message(span_danger("[user] pins [M] to the ground briefly!"), \
-										span_userdanger("[user] pins me to the ground briefly!"), span_hear("I hear a sickening sound of pugilism!"), COMBAT_MESSAGE_RANGE)
-						M.Knockdown(100)
-						M.Immobilize(100)
-						user.Immobilize(50)
-					else
-						M.visible_message(span_warning("[user] tries to pin [M]!"), \
-										span_danger("[user] tries to pin me down!"), span_hear("I hear a sickening sound of pugilism!"), COMBAT_MESSAGE_RANGE)
+				M.visible_message(span_danger("[user] pins [M] to the ground!"), \
+								span_userdanger("[user] pins me to the ground!"), span_hear("I hear a sickening sound of pugilism!"), COMBAT_MESSAGE_RANGE)
+				M.Knockdown(120 + (skill_diff * 10) + (user.STASTR * 2) - (M.STASTR * 2))
+				M.Immobilize(120 + (skill_diff * 10) + (user.STASTR * 2) - (M.STASTR * 2))
+				user.Immobilize(20 - skill_diff)
 			else
-				if(user.STASTR > M.STASTR)
+				if(prob(clamp(((4 + (((user.STASTR - M.STASTR)/2) + skill_diff)) * 10), 5, 95)))
 					M.visible_message(span_danger("[user] shoves [M] to the ground!"), \
 									span_userdanger("[user] shoves me to the ground!"), span_hear("I hear a sickening sound of pugilism!"), COMBAT_MESSAGE_RANGE)
-					M.Knockdown(10)
+					M.Knockdown(max(10 + skill_diff * 2, 1))
 				else
-					if(prob(23))
-						M.visible_message(span_danger("[user] shoves [M] to the ground!"), \
-										span_userdanger("[user] shoves me to the ground!"), span_hear("I hear a sickening sound of pugilism!"), COMBAT_MESSAGE_RANGE)
-						M.Knockdown(1)
-					else
-						M.visible_message(span_warning("[user] tries to shove [M]!"), \
-										span_danger("[user] tries to shove me!"), span_hear("I hear a sickening sound of pugilism!"), COMBAT_MESSAGE_RANGE)
+					M.visible_message(span_warning("[user] tries to shove [M]!"), \
+									span_danger("[user] tries to shove me!"), span_hear("I hear a sickening sound of pugilism!"), COMBAT_MESSAGE_RANGE)
 
 /obj/item/grabbing/proc/twistlimb(mob/living/user) //implies limb_grabbed and sublimb are things
 	var/mob/living/carbon/C = grabbed
@@ -342,9 +324,8 @@
 	unarmed = TRUE
 	chargetime = 0
 	noaa = TRUE
-	candodge = FALSE
-	canparry = FALSE
 	no_attack = TRUE
+	misscost = 5
 
 /datum/intent/grab/move
 	name = "grab move"
