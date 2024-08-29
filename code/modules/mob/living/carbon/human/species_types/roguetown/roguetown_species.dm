@@ -56,7 +56,7 @@
 	speech_args[SPEECH_MESSAGE] = trim(message)
 
 
-/proc/treat_message_accent(message, list/accent_list, chosen_regex(1, 2, 3, 4))
+/proc/treat_message_accent(message, list/accent_list, chosen_regex)
 	if(!message)
 		return
 	if(!accent_list)
