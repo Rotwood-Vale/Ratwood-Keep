@@ -26,7 +26,14 @@
 	var/downgrade_wave
 	/// If defined, this will be the wave type to increment for purposes of checking `max_spawns`
 	var/shared_wave_type = null
+	/// Whether we want to spawn people on the rolled location, this may not be desired for bandits or other things that set the location
+	var/spawn_on_location = TRUE
 
+/datum/migrant_wave/proc/get_roles_amount()
+	var/amount = 0
+	for(var/role_type in roles)
+		amount += roles[role_type]
+	return amount
 
 /datum/migrant_wave/pilgrim
 	name = "Pilgrimage"
@@ -100,7 +107,8 @@
 /datum/migrant_wave/bandit
 	name = "Bandit Raid"
 	downgrade_wave = /datum/migrant_wave/bandit_down_one
-	weight = 5
+	weight = 8
+	spawn_landmark = "Bandit"
 	roles = list(
 		/datum/migrant_role/bandit = 4,
 	)
@@ -109,6 +117,7 @@
 	name = "Bandit Raid"
 	downgrade_wave = /datum/migrant_wave/bandit_down_two
 	can_roll = FALSE
+	spawn_landmark = "Bandit"
 	roles = list(
 		/datum/migrant_role/bandit = 3,
 	)
@@ -117,6 +126,7 @@
 	name = "Bandit Raid"
 	downgrade_wave = /datum/migrant_wave/bandit_down_three
 	can_roll = FALSE
+	spawn_landmark = "Bandit"
 	roles = list(
 		/datum/migrant_role/bandit = 2,
 	)
@@ -124,6 +134,7 @@
 /datum/migrant_wave/bandit_down_three
 	name = "Bandit Raid"
 	can_roll = FALSE
+	spawn_landmark = "Bandit"
 	roles = list(
 		/datum/migrant_role/bandit = 1,
 	)

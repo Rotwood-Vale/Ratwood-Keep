@@ -23,6 +23,7 @@
 		TRAIT_BASHDOORS,
 		TRAIT_SHOCKIMMUNE,
 		TRAIT_STEELHEARTED,
+		TRAIT_TOLERANT,
 		TRAIT_BREADY,
 		TRAIT_TOXIMMUNE,
 		TRAIT_ORGAN_EATER,
@@ -42,8 +43,15 @@
 	offset_features = list(OFFSET_HANDS = list(0,2), OFFSET_HANDS_F = list(0,2))
 	soundpack_m = /datum/voicepack/werewolf
 	soundpack_f = /datum/voicepack/werewolf
-	specstats = list("strength" = 8, "perception" = 7, "intelligence" = -6, "constitution" = 8, "endurance" = 8, "speed" = 3, "fortune" = 0)
-	specstats_f = list("strength" = 8, "perception" = 7, "intelligence" = -6, "constitution" = 8, "endurance" = 8, "speed" = 3, "fortune" = 0)
+	specstats = list(
+		"strength" = 8, 
+		"perception" = 7, 
+		"intelligence" = -6, 
+		"constitution" = 8, 
+		"endurance" = 8, 
+		"speed" = 3, 
+		"fortune" = 0
+		)
 	enflamed_icon = "widefire"
 	organs = list(
 		ORGAN_SLOT_BRAIN = /obj/item/organ/brain,
@@ -56,7 +64,7 @@
 		ORGAN_SLOT_STOMACH = /obj/item/organ/stomach,
 		ORGAN_SLOT_APPENDIX = /obj/item/organ/appendix,
 		ORGAN_SLOT_TESTICLES = /obj/item/organ/testicles,
-		ORGAN_SLOT_PENIS = /obj/item/organ/penis,
+		ORGAN_SLOT_PENIS = /obj/item/organ/penis/knotted/big,
 		ORGAN_SLOT_BREASTS = /obj/item/organ/breasts,
 		ORGAN_SLOT_VAGINA = /obj/item/organ/vagina,
 		)

@@ -5,6 +5,7 @@
 	allowed_sexes = list(MALE)
 	allowed_races = RACES_TOLERATED_UP
 	grant_lit_torch = TRUE
+	show_wanderer_examine = FALSE
 
 /datum/outfit/job/roguetown/heartfelt/lord/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -56,6 +57,7 @@
 	allowed_sexes = list(FEMALE)
 	allowed_races = RACES_TOLERATED_UP
 	grant_lit_torch = TRUE
+	show_wanderer_examine = FALSE
 
 /datum/outfit/job/roguetown/heartfelt/lady/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -65,10 +67,7 @@
 	if(isdwarf(H))
 		armor = /obj/item/clothing/suit/roguetown/shirt/dress
 	else
-		if(prob(66))
-			armor = /obj/item/clothing/suit/roguetown/armor/armordress/alt
-		else
-			armor = /obj/item/clothing/suit/roguetown/armor/armordress
+		armor = /obj/item/clothing/suit/roguetown/armor/armordress
 	belt = /obj/item/storage/belt/rogue/leather/cloth/lady
 	beltl = /obj/item/flashlight/flare/torch/lantern
 	beltr = /obj/item/rogueweapon/huntingknife/elvish
@@ -98,6 +97,7 @@
 	outfit = /datum/outfit/job/roguetown/heartfelt/hand
 	allowed_races = RACES_TOLERATED_UP
 	grant_lit_torch = TRUE
+	show_wanderer_examine = FALSE
 
 /datum/outfit/job/roguetown/heartfelt/hand/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -131,6 +131,7 @@
 	
 	ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_SEEPRICES, TRAIT_GENERIC)
+	ADD_TRAIT(H, TRAIT_NOBLE, TRAIT_GENERIC)
 
 /datum/migrant_role/heartfelt/knight
 	name = "Knight of Heartfelt"
@@ -138,6 +139,7 @@
 	outfit = /datum/outfit/job/roguetown/heartfelt/knight
 	allowed_races = RACES_TOLERATED_UP
 	grant_lit_torch = TRUE
+	show_wanderer_examine = FALSE
 
 /datum/outfit/job/roguetown/heartfelt/knight/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -210,6 +212,7 @@
 	outfit = /datum/outfit/job/roguetown/heartfelt/magos
 	allowed_races = RACES_TOLERATED_UP
 	grant_lit_torch = TRUE
+	show_wanderer_examine = FALSE
 
 /datum/outfit/job/roguetown/heartfelt/magos
 	allowed_patrons = list(/datum/patron/divine/noc)
@@ -267,6 +270,7 @@
 	outfit = /datum/outfit/job/roguetown/heartfelt/prior
 	allowed_races = RACES_TOLERATED_UP
 	grant_lit_torch = TRUE
+	show_wanderer_examine = FALSE
 
 
 /datum/outfit/job/roguetown/heartfelt/prior
@@ -276,6 +280,7 @@
 	..()
 	H.virginity = TRUE
 	neck = /obj/item/clothing/neck/roguetown/psicross/astrata
+	head = /obj/item/clothing/head/roguetown/priestmask
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/priest
 	pants = /obj/item/clothing/under/roguetown/tights/black
 	shoes = /obj/item/clothing/shoes/roguetown/shortboots

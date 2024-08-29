@@ -138,6 +138,11 @@
 			zombie_part.update_disabled()
 			zombie_part.update_limb()
 		zombie.update_body()
+	// Bandaid to fix the zombie ghostizing not allowing you to re-enter
+	if(zombie)
+		var/mob/dead/observer/ghost = zombie.get_ghost(TRUE)
+		if(ghost)
+			ghost.can_reenter_corpse = TRUE
 	return ..()
 
 /datum/antagonist/zombie/proc/transform_zombie()

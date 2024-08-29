@@ -188,10 +188,7 @@
 		else
 			say("Not enough!")
 			return
-		var/shoplength = PA.contains.len
-		var/l
-		for(l=1,l<=shoplength,l++)
-			var/pathi = pick(PA.contains)
+		for(var/pathi in PA.contains)
 			var/obj/item/I = new pathi(get_turf(src))
 			M.put_in_hands(I)
 		qdel(PA)
@@ -321,7 +318,7 @@
 			var/costy = PA.cost
 			if(!(upgrade_flags & UPGRADE_NOTAX))
 				costy=round(costy+(SStreasury.tax_value * costy))
-			contents += "[PA.name] - ([costy])<a href='?src=[REF(src)];buy=[PA.type]'>BUY</a><BR>"
+			contents += "[PA.name] [PA.contains.len > 1?"x[PA.contains.len]":""] - ([costy])<a href='?src=[REF(src)];buy=[PA.type]'>BUY</a><BR>"
 
 	if(!canread)
 		contents = stars(contents)

@@ -1,5 +1,5 @@
 /datum/job/roguetown/captain
-	title = "Guard Captain"
+	title = "Guard Lieutenant"
 	flag = GUARD_CAPTAIN
 	department_flag = NOBLEMEN
 	faction = "Station"
@@ -10,7 +10,10 @@
 	allowed_races = RACES_TOLERATED_UP
 	allowed_sexes = list(MALE)
 	allowed_ages = list(AGE_MIDDLEAGED, AGE_OLD)
-	tutorial = "Your lineage is noble, and generations of strong, loyal knights have come before you. You served your time gracefully as a knight of his royal majesty, and now you've grown into a role which many men dream to become. Lead your men to victory and keep them in line and you will see this kingdom prosper under a thousand suns."
+	tutorial = "You served your time gracefully as a warrior of His Royal Majesty, and now you've grown into a role which many men dream to become. \
+				You are the Marshal's chosen, elevated to command His Majesty's personal retinue. \
+				Keep your men in line, as for this kingdom to prosper, the crown must be safe. \
+				The Men at Arms and the Gatemaster are under your direct supervision."
 	display_order = JDO_GUARD_CAPTAIN
 	whitelist_req = FALSE
 
@@ -34,11 +37,11 @@
 				index = copytext(H.real_name, 1,index)
 			if(!index)
 				index = H.real_name
-			S.name = "captain cape ([index])"
+			S.name = "lieutenant cape ([index])"
 		var/prev_real_name = H.real_name
 		var/prev_name = H.name
-		H.real_name = "Captain [prev_real_name]"
-		H.name = "Captain [prev_name]"
+		H.real_name = "Lt. [prev_real_name]"
+		H.name = "Lt. [prev_name]"
 
 /datum/outfit/job/roguetown/captain/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -56,7 +59,7 @@
 	cloak = /obj/item/clothing/cloak/stabard/guardhood
 	backl = /obj/item/rogueweapon/shield/tower
 	backr = /obj/item/storage/backpack/rogue/satchel/black
-	backpack_contents = list(/obj/item/keyring/sheriff = 1, /obj/item/rogueweapon/huntingknife/idagger/steel/special = 1)
+	backpack_contents = list(/obj/item/keyring/captain = 1, /obj/item/rogueweapon/huntingknife/idagger/steel/special = 1, , /obj/item/signal_horn = 1)
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/combat/swords, 5, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/polearms, 5, TRUE)

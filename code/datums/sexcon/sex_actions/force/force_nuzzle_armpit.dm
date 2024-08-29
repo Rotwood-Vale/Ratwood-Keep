@@ -21,7 +21,9 @@
 	user.visible_message(span_warning("[user] forces [target]'s head against their armpit!"))
 
 /datum/sex_action/force_armpit_nuzzle/on_perform(mob/living/carbon/human/user, mob/living/carbon/human/target)
-	user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] forces [target] to nuzzle their armpit."))
+	if(user.sexcon.do_message_signature("[type]"))
+		user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] forces [target] to nuzzle their armpit."))
+	do_thrust_animate(target, user)
 
 	user.sexcon.perform_sex_action(user, 0.5, 0, TRUE)
 	target.sexcon.handle_passive_ejaculation()

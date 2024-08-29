@@ -71,7 +71,6 @@
 //		H.underwear_color = CLOTHING_BLACK
 //		H.update_body()
 
-
 /mob/living/carbon/human/proc/coronate_lord()
 	set name = "Coronate"
 	set category = "Priest"
@@ -89,7 +88,7 @@
 			continue
 		if(!istype(HU.head, /obj/item/clothing/head/roguetown/crown/serpcrown))
 			continue
-		
+
 		//Abdicate previous King
 		for(var/mob/living/carbon/human/HL in GLOB.human_list)
 			if(HL.mind)
@@ -100,10 +99,13 @@
 				HL.job = "King Emeritus"
 			if(HL.job == "Queen Consort")
 				HL.job = "Queen Dowager"
+			SSjob.type_occupations[/datum/job/roguetown/lord].remove_spells(HL)
 
 		//Coronate new King (or Queen)
 		HU.mind.assigned_role = "King"
 		HU.job = "King"
+		SSjob.type_occupations[/datum/job/roguetown/lord].add_spells(HU)
+
 		switch(HU.gender)
 			if("male")
 				SSticker.rulertype = "King"
@@ -144,17 +146,30 @@
 		GLOB.excommunicated_players += inputty
 		priority_announce("[real_name] has put Xylix's curse of woe on [inputty] for offending the church!", title = "SHAME", sound = 'sound/misc/excomm.ogg')
 
+/mob/living/carbon/human
+	COOLDOWN_DECLARE(church_announcement)
+
 /mob/living/carbon/human/proc/churchannouncement()
 	set name = "Announcement"
 	set category = "Priest"
-	if(stat)
+
+	if(!COOLDOWN_FINISHED(src, church_announcement))
+		to_chat(src, span_warning("I should wait..."))
 		return
+
+	if(stat)
+		return FALSE
+
 	var/inputty = input("Make an announcement", "ROGUETOWN") as text|null
-	if(inputty)
-		if(!istype(get_area(src), /area/rogue/indoors/town/church/chapel))
-			to_chat(src, span_warning("I need to do this from the chapel."))
-			return FALSE
-		priority_announce("[inputty]", title = "The Priest Speaks", sound = 'sound/misc/bell.ogg')
+	if(!inputty)
+		return FALSE
+
+	if(!istype(get_area(src), /area/rogue/indoors/town/church/chapel))
+		to_chat(src, span_warning("I need to do this from the chapel."))
+		return FALSE
+
+	priority_announce("[inputty]", title = "The Priest Speaks", sound = 'sound/misc/bell.ogg')
+	COOLDOWN_START(src, church_announcement, 30 SECONDS)
 
 /obj/effect/proc_holder/spell/self/convertrole/templar
 	name = "Recruit Templar"

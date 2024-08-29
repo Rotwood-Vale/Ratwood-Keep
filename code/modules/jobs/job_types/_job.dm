@@ -63,10 +63,6 @@
 
 	var/display_order = JOB_DISPLAY_ORDER_DEFAULT
 
-
-	///Levels unlocked at roundstart in physiology
-	var/list/roundstart_experience
-
 	//allowed sex/race for picking
 	var/list/allowed_sexes = list(MALE, FEMALE)
 	var/list/allowed_races = RACES_ALL_KINDS
@@ -86,8 +82,10 @@
 
 	var/whitelist_req = FALSE
 
-	var/bypass_jobban = FALSE
 	var/bypass_lastclass = TRUE
+
+	var/banned_leprosy = TRUE
+	var/banned_lunatic = TRUE
 
 	var/list/peopleiknow = list()
 	var/list/peopleknowme = list()
@@ -157,21 +155,11 @@
 	if(mind_traits)
 		for(var/t in mind_traits)
 			ADD_TRAIT(H.mind, t, JOB_TRAIT)
-	var/list/roundstart_experience
 
 	if(!ishuman(H))
 		return
 
-	roundstart_experience = skills
-
-	if(roundstart_experience)
-		var/mob/living/carbon/human/experiencer = H
-		for(var/i in roundstart_experience)
-			experiencer.mind.adjust_experience(i, roundstart_experience[i], TRUE)
-
-	if(spells && H.mind)	
-		for(var/S in spells)
-			H.mind.AddSpell(new S)
+	add_spells(H)
 
 	if(H.gender == FEMALE)
 		if(jobstats_f)
@@ -208,6 +196,20 @@
 	
 	if(cmode_music)
 		H.cmode_music = cmode_music
+
+/datum/job/proc/add_spells(mob/living/H)
+	if(spells && H.mind)	
+		for(var/S in spells)
+			if(H.mind.has_spell(S))
+				continue
+			H.mind.AddSpell(new S)
+
+/datum/job/proc/remove_spells(mob/living/H)
+	if(spells && H.mind)	
+		for(var/S in spells)
+			if(!H.mind.has_spell(S))
+				continue
+			H.mind.RemoveSpell(S)
 
 /mob/living/carbon/human/proc/add_credit()
 	if(!mind || !client)

@@ -25,7 +25,7 @@
 */
 /datum/supply_pack/rogue/tools/chains
 	name = "Chains"
-	cost = 15
+	cost = 55
 	contains = list(
 					/obj/item/rope/chain,
 					/obj/item/rope/chain,
@@ -103,14 +103,14 @@
 				)
 
 /datum/supply_pack/rogue/tools/prarml
-	name = "Proesthetic Arm (L)"
+	name = "Prosthetic Arm (L)"
 	cost = 40
-	contains = list(/obj/item/bodypart/l_arm/rproesthetic)
+	contains = list(/obj/item/bodypart/l_arm/rprosthetic)
 
 /datum/supply_pack/rogue/tools/prarmr
-	name = "Proesthetic Arm (R)"
+	name = "Prosthetic Arm (R)"
 	cost = 40
-	contains = list(/obj/item/bodypart/r_arm/rproesthetic)
+	contains = list(/obj/item/bodypart/r_arm/rprosthetic)
 
 /datum/supply_pack/rogue/tools/waterskin
 	name = "Waterskin"

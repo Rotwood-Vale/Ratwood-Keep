@@ -41,6 +41,7 @@
 	anvilrepair = /datum/skill/craft/armorsmithing
 	smeltresult = /obj/item/ingot/steel
 	armor_class = ARMOR_CLASS_LIGHT
+	clothing_flags = CANT_SLEEP_IN
 
 /obj/item/clothing/suit/roguetown/armor/chainmail/Initialize()
 	. = ..()
@@ -52,7 +53,7 @@
 /obj/item/clothing/suit/roguetown/armor/chainmail/iron
 	icon_state = "ichainmail"
 	name = "chainmaille"
-	desc = "A chain vest made of heavy iron rings. Better than nothing."
+	desc = "A chain vest made of heavy iron rings."
 	body_parts_covered = CHEST|GROIN|VITALS
 	anvilrepair = /datum/skill/craft/armorsmithing
 	smeltresult = /obj/item/ingot/iron
@@ -73,8 +74,8 @@
 	w_class = WEIGHT_CLASS_BULKY
 
 /obj/item/clothing/suit/roguetown/armor/chainmail/chainkini
-	name = "amazon mail"
-	desc = ""
+	name = "chainmail bikini"
+	desc = "Not very comfortable against the skin."
 	icon_state = "chainkini"
 	item_state = "chainkini"
 	allowed_sex = list(FEMALE)
@@ -87,7 +88,7 @@
 /obj/item/clothing/suit/roguetown/armor/plate
 	slot_flags = ITEM_SLOT_ARMOR
 	name = "steel half-plate"
-	desc = "\'Adventurer-fit\' plate armor with polldrons."
+	desc = "\'Adventurer-fit\' plate armor with pauldrons."
 	body_parts_covered = CHEST|GROIN|VITALS
 	icon_state = "halfplate"
 	item_state = "halfplate"
@@ -102,6 +103,7 @@
 	equip_delay_self = 40
 	armor_class = ARMOR_CLASS_HEAVY
 	w_class = WEIGHT_CLASS_BULKY
+	clothing_flags = CANT_SLEEP_IN
 
 /obj/item/clothing/suit/roguetown/armor/plate/Initialize()
 	. = ..()
@@ -136,6 +138,7 @@
 
 /obj/item/clothing/suit/roguetown/armor/plate/half/iron
 	name = "iron breastplate"
+	desc = "Solid iron to protect the torso."
 	icon_state = "ibreastplate"
 	max_integrity = 200
 	smeltresult = /obj/item/ingot/iron
@@ -171,6 +174,7 @@
 	smeltresult = /obj/item/ingot/steel
 	armor_class = ARMOR_CLASS_HEAVY
 	w_class = WEIGHT_CLASS_BULKY
+	clothing_flags = CANT_SLEEP_IN
 
 /obj/item/clothing/suit/roguetown/armor/heartfelt/hand
 	slot_flags = ITEM_SLOT_ARMOR
@@ -189,6 +193,7 @@
 	smeltresult = /obj/item/ingot/steel
 	armor_class = ARMOR_CLASS_HEAVY
 	w_class = WEIGHT_CLASS_BULKY
+	clothing_flags = CANT_SLEEP_IN
 
 /obj/item/clothing/suit/roguetown/armor/brigandine
 	slot_flags = ITEM_SLOT_ARMOR
@@ -207,6 +212,7 @@
 	equip_delay_self = 40
 	armor_class = ARMOR_CLASS_HEAVY
 	w_class = WEIGHT_CLASS_BULKY
+	clothing_flags = CANT_SLEEP_IN
 
 /obj/item/clothing/suit/roguetown/armor/brigandine/Initialize()
 	. = ..()
@@ -272,6 +278,7 @@
 	r_sleeve_status = SLEEVE_NORMAL
 	l_sleeve_status = SLEEVE_NORMAL
 	armor_class = ARMOR_CLASS_LIGHT
+	color = CLOTHING_DARK_GREEN
 
 /obj/item/clothing/suit/roguetown/armor/armordress/alt
 	icon_state = "armordressalt"
@@ -279,7 +286,7 @@
 /obj/item/clothing/suit/roguetown/armor/gambeson
 	slot_flags = ITEM_SLOT_ARMOR|ITEM_SLOT_SHIRT
 	name = "gambeson"
-	desc = "A large shirt meant to be used below armor."
+	desc = "A large shirt meant to be worn below armor."
 	icon_state = "gambeson"
 	body_parts_covered = CHEST|GROIN|LEGS|ARMS|VITALS
 	armor = list("blunt" = 60, "slash" = 40, "stab" = 50, "bullet" = 25, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
@@ -298,6 +305,7 @@
 
 /obj/item/clothing/suit/roguetown/armor/gambeson/lord
 	name = "arming jacket"
+	desc = "Similar to a gambeson, it is meant to be used under heavier armor."
 	icon_state = "dgamb"
 	allowed_sex = list(MALE, FEMALE)
 	allowed_race = NON_DWARVEN_RACE_TYPES

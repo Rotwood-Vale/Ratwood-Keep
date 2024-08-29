@@ -112,7 +112,7 @@
 
 /obj/item/clothing/suit/roguetown/shirt/shortshirt
 	name = "shirt"
-	desc = ""
+	desc = "A simple shirt."
 	icon_state = "shortshirt"
 	item_state = "shortshirt"
 	r_sleeve_status = SLEEVE_NORMAL
@@ -137,7 +137,7 @@
 /obj/item/clothing/suit/roguetown/shirt/rags
 	slot_flags = ITEM_SLOT_ARMOR
 	name = "rags"
-	desc = ""
+	desc = "Better than going naked? You be the judge."
 	body_parts_covered = CHEST|GROIN|VITALS
 	color = "#b0b0b0"
 	icon_state = "rags"

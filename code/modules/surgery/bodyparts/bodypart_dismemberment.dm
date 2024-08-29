@@ -69,7 +69,7 @@
 	if(dam_type == BURN)
 		burn()
 		return TRUE
-	
+
 	var/turf/location = C.loc
 	if(istype(location))
 		C.add_splatter_floor(location)
@@ -98,7 +98,7 @@
 		return FALSE
 	add_wound(/datum/wound/slash/disembowel)
 	return TRUE
-	
+
 //limb removal. The "special" argument is used for swapping a limb with a new one without the effects of losing a limb kicking in.
 /obj/item/bodypart/proc/drop_limb(special)
 	if(!owner)
@@ -148,6 +148,10 @@
 	if(held_index)
 		was_owner.dropItemToGround(owner.get_item_for_held_index(held_index), force = TRUE)
 		was_owner.hand_bodyparts[held_index] = null
+
+	if(organ_slowdown)
+		was_owner.remove_movespeed_modifier("[src.type]_slow", update = TRUE)
+
 	was_owner.bodyparts -= src
 	owner = null
 
@@ -356,12 +360,14 @@
 	for(var/datum/wound/wound as anything in wounds)
 		wounds -= wound
 		wound.apply_to_bodypart(src, silent = TRUE, crit_message = FALSE)
-	
+
 	var/obj/item/bodypart/affecting = C.get_bodypart(BODY_ZONE_CHEST)
 	if(affecting && dismember_wound)
 		affecting.remove_wound(dismember_wound)
 
 	update_bodypart_damage_state()
+	if(organ_slowdown)
+		C.add_movespeed_modifier("[src.type]_slow", update=TRUE, priority=100, flags=NONE, override=FALSE, multiplicative_slowdown=organ_slowdown, movetypes=GROUND, blacklisted_movetypes=NONE, conflict=FALSE)
 
 	C.updatehealth()
 	C.update_body()

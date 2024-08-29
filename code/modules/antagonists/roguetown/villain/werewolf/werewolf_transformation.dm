@@ -70,7 +70,7 @@
 	icon = null
 	var/oldinv = invisibility
 	invisibility = INVISIBILITY_MAXIMUM
-	cmode = FALSE
+	set_cmode(FALSE)
 	if(client)
 		SSdroning.play_area_sound(get_area(src), client)
 //	stop_cmusic()
@@ -115,8 +115,6 @@
 	to_chat(W, span_userdanger("I transform into a horrible beast!"))
 	W.emote("rage")
 
-	W.stress = stress
-
 	W.mind.adjust_skillrank(/datum/skill/combat/wrestling, 6, TRUE)
 	W.mind.adjust_skillrank(/datum/skill/combat/unarmed, 6, TRUE)
 	W.mind.adjust_skillrank(/datum/skill/misc/climbing, 6, TRUE)
@@ -133,6 +131,7 @@
 	ADD_TRAIT(W, TRAIT_BASHDOORS, TRAIT_GENERIC)
 	ADD_TRAIT(W, TRAIT_SHOCKIMMUNE, TRAIT_GENERIC)
 	ADD_TRAIT(W, TRAIT_STEELHEARTED, TRAIT_GENERIC)
+	ADD_TRAIT(W, TRAIT_TOLERANT, TRAIT_GENERIC)
 	ADD_TRAIT(W, TRAIT_BREADY, TRAIT_GENERIC)
 	ADD_TRAIT(W, TRAIT_TOXIMMUNE, TRAIT_GENERIC)
 	ADD_TRAIT(W, TRAIT_ORGAN_EATER, TRAIT_GENERIC)
@@ -168,7 +167,6 @@
 	W.remove_status_effect(STATUS_EFFECT_STASIS)
 
 	REMOVE_TRAIT(W, TRAIT_NOMOOD, TRAIT_GENERIC)
-	stress = W.stress
 
 	mind.transfer_to(W)
 

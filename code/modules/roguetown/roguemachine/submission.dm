@@ -17,33 +17,7 @@ var/global/feeding_hole_reset_timer
 
 		return*/
 	if(ishuman(user))
-//		return
-		if(istype(P, /obj/item/natural/bundle))
-			say("Single item entries only. Please unstack.")
-			return
-		else
-			for(var/datum/roguestock/R in SStreasury.stockpile_datums)
-				if(istype(P,R.item_type))
-					if(!R.check_item(P))
-						continue
-					if(!R.transport_item)
-						R.held_items[1] += 1 //stacked logs need to check for multiple
-						qdel(P)
-						stock_announce("[R.name] has been stockpiled.")
-					else
-						var/area/A = GLOB.areas_by_type[R.transport_item]
-						if(!A)
-							say("Couldn't find where to send the submission.")
-							return
-						P.submitted_to_stockpile = TRUE
-						var/list/turfs = list()
-						for(var/turf/T in A)
-							turfs += T
-						var/turf/T = pick(turfs)
-						P.forceMove(T)
-						playsound(T, 'sound/misc/hiss.ogg', 100, FALSE, -1)
-					playsound(loc, 'sound/misc/disposalflush.ogg', 100, FALSE, -1)
-					return
+		attemptstockpile(P)
 	return ..()
 
 /obj/structure/feedinghole/attack_hand(mob/living/user)
@@ -63,3 +37,46 @@ var/global/feeding_hole_reset_timer
 	var/datum/browser/popup = new(user, "FEEDINGHOLE", "", 370, 400)
 	popup.set_content(contents)
 	popup.open()
+
+/obj/structure/feedinghole/attack_right(mob/user)
+	if(ishuman(user))
+		for(var/obj/I in get_turf(src))
+			attemptstockpile(I, user, FALSE, FALSE)
+		say("Bulk stockpiling in progress...")
+		playsound(loc, 'sound/misc/hiss.ogg', 100, FALSE, -1)
+		playsound(loc, 'sound/misc/disposalflush.ogg', 100, FALSE, -1)
+
+// ripped out of stockpile machine, this deserves a future refactor
+/obj/structure/feedinghole/proc/attemptstockpile(obj/item/I, mob/H, sound = TRUE)
+	for(var/datum/roguestock/R in SStreasury.stockpile_datums)
+		if(istype(I, /obj/item/natural/bundle))
+			var/obj/item/natural/bundle/B = I
+			if(B.stacktype == R.item_type)
+				R.held_items[1] += B.amount
+				qdel(B)
+				if(sound == TRUE)
+					playsound(loc, 'sound/misc/hiss.ogg', 100, FALSE, -1)
+			continue
+		else if(istype(I,R.item_type))
+			if(!R.check_item(I))
+				continue
+			if(!R.transport_item)
+				R.held_items[1] += 1 //stacked logs need to check for multiple
+				qdel(I)
+				if(sound == TRUE)
+					playsound(loc, 'sound/misc/hiss.ogg', 100, FALSE, -1)
+			else
+				var/area/A = GLOB.areas_by_type[R.transport_item]
+				if(!A)
+					say("Couldn't find where to send the submission.")
+					return
+				I.submitted_to_stockpile = TRUE
+				var/list/turfs = list()
+				for(var/turf/T in A)
+					turfs += T
+				var/turf/T = pick(turfs)
+				I.forceMove(T)
+				if(sound == TRUE)
+					playsound(loc, 'sound/misc/hiss.ogg', 100, FALSE, -1)
+					playsound(loc, 'sound/misc/disposalflush.ogg', 100, FALSE, -1)
+			return
