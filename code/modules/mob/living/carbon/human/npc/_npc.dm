@@ -44,7 +44,7 @@
 //	if(world.time < next_ai_tick)
 //		return
 //	next_ai_tick = world.time + rand(10,20)
-	cmode = 1
+	set_cmode(TRUE)
 	update_cone_show()
 	if(stat == CONSCIOUS)
 		if(on_fire || buckled || restrained() || pulledby)
@@ -232,7 +232,7 @@
 	if(L == src)
 		return FALSE
 
-	if(!is_in_zweb(src.z,L.z))
+	if(!is_in_zweb(src, L))
 		return FALSE
 
 	if(L.stat == DEAD)
