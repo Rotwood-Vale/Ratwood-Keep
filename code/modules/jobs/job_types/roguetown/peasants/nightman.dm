@@ -28,6 +28,7 @@
 	beltr = /obj/item/keyring/nightman
 	belt = /obj/item/storage/belt/rogue/leather
 	beltl = /obj/item/storage/belt/rogue/pouch/coins/poor
+	backr = /obj/item/storage/backpack/rogue/satchel/black
 	backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger = 1)
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 4, TRUE)

@@ -14,6 +14,7 @@
 			/obj/item/clothing/suit/roguetown/shirt/dress,
 			/obj/item/clothing/suit/roguetown/shirt/undershirt,
 			/obj/item/clothing/suit/roguetown/shirt/shortshirt,
+			/obj/item/clothing/suit/roguetown/shirt/tunic,
 			/obj/item/clothing/under/roguetown/tights,
 			/obj/item/clothing/cloak/raincloak,
 			/obj/item/clothing/cloak/cape,
@@ -28,7 +29,7 @@
 			/obj/item/clothing/suit/roguetown/armor/gambeson
 			)
 	var/static/list/selectable_colors = list(
-  		"White" = "#ffffff", 
+  		"White" = "#ffffff",
 		"Black" = "#414143",
 		"Light Grey" = "#999999",
 		"Mage Grey" = "#6c6c6c",

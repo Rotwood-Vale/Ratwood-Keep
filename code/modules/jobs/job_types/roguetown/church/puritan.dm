@@ -20,14 +20,14 @@
 	min_pq = 0
 	max_pq = null
 
-/*/datum/job/roguetown/puritan/after_spawn(mob/living/L, mob/M, latejoin = TRUE)
+/datum/job/roguetown/puritan/after_spawn(mob/living/L, mob/M, latejoin = TRUE)
 	..()
 	if(!L.mind)
 		return
 	if(L.mind.has_antag_datum(/datum/antagonist))
 		return
 	var/datum/antagonist/new_antag = new /datum/antagonist/purishep()
-	L.mind.add_antag_datum(new_antag)*/
+	L.mind.add_antag_datum(new_antag)
 
 /datum/outfit/job/roguetown/puritan
 	name = "Inquisitor"
@@ -42,6 +42,7 @@
 	shoes = /obj/item/clothing/shoes/roguetown/boots
 	pants = /obj/item/clothing/under/roguetown/tights/black
 	cloak = /obj/item/clothing/cloak/cape/puritan
+	backr = /obj/item/storage/backpack/rogue/satchel/black
 	beltr = /obj/item/storage/belt/rogue/pouch/coins/rich
 	head = /obj/item/clothing/head/roguetown/puritan
 	gloves = /obj/item/clothing/gloves/roguetown/leather
@@ -56,6 +57,7 @@
 		H.mind.adjust_skillrank(/datum/skill/combat/bows, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/maces, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/sewing, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/medicine, 2, TRUE)
