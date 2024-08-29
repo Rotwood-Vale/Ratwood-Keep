@@ -53,7 +53,7 @@
 		H.mind.adjust_skillrank(/datum/skill/combat/polearms, 6, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/knives, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/maces, 4, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/combat/axes, 6, TRUE) // Inverse Veteran combat skills
+		H.mind.adjust_skillrank(/datum/skill/combat/axes, 4, TRUE) // Inverse Veteran combat skills
 		H.mind.adjust_skillrank(/datum/skill/combat/swords, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 4, TRUE)
@@ -68,7 +68,7 @@
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 5, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/swimming, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/medicine, 5, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/riding, 6, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/riding, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/craft/cooking, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/labor/farming, 1, TRUE) // He knows the basic peasant skills from living in town, watching and helping.
 		H.mind.adjust_skillrank(/datum/skill/misc/sewing, 1, TRUE)
