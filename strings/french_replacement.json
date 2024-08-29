@@ -1,12 +1,8 @@
 {
-
-    "french": {
-		"shi": "shee",
-		"thi": "thee",
+    "full": {
 		"yes": "oui",
 		"no": "non",
 		"do": "du",
-		"ga": "ge"
 		"don't": "dun't",
 		"not": "nut",
        	"I'm": "j'", 
@@ -29,6 +25,16 @@
         "who's": "vho's",
 		"wine": "vin",
 		"eggcheese": "omelette du fromage"
+    },
+    "start": {
+		"ga": "ge"
+
+    },
+    "end": {
+
+    },
+    "syllable": {
+        "shi": "shee",
+        "thi": "thee"
     }
-		
 }
