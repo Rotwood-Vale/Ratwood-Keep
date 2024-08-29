@@ -60,7 +60,7 @@
 				H.Stun(10)
 				H.adjustFireLoss(10)
 				H.fire_act(1,10)
-				to_chat(H, span_userdanger("I'm bonked by my BANE!"))
+				to_chat(H, span_userdanger("I'm hit with my BANE!"))
 				src.last_used = world.time
 	if(target.mind && target.mind.has_antag_datum(/datum/antagonist/vampirelord))
 		var/datum/antagonist/vampirelord/VD = target.mind.has_antag_datum(/datum/antagonist/vampirelord)
@@ -69,7 +69,7 @@
 			H.Stun(10)
 			H.adjustFireLoss(10)
 			H.fire_act(1,10)
-			to_chat(H, span_userdanger("I'm bonked by my BANE!"))
+			to_chat(H, span_userdanger("I'm hit with my BANE!"))
 			src.last_used = world.time
 
 /obj/item/reagent_containers/glass/cup/silver/pickup(mob/user)
