@@ -24,10 +24,12 @@
         "thank you": "merci",   
         "who's": "vho's",
 		"wine": "vin",
-		"eggcheese": "omelette du fromage"
+		"eggcheese": "omelette du fromage",
+		"cheese omelette": "omelette du fromage"
     },
     "start": {
-		"ga": "ge"
+		"ga": "ge",
+		"cheese": "fromage"
 
     },
     "end": {

@@ -1,11 +1,18 @@
 {
-    "brazillian": {//what once was is no longer//
+	"full": {
+		"hiss": "hhissssssssssssss"
+	},
+	"start": {
+
+	},
+	"end": {
+		"ish": "ishh"
+	},
+	"syllable": {
 		"th": "thh",
 		"sh": "shh",
-		"ish": "ishh",
 		"h": "hh",
-		"s": "ss",
-		"y": "yh",
-		"hiss": "hhissssssssssssss" 
-    }
+		"s": "sss",
+		"y": "yhh"
+	}
 }
