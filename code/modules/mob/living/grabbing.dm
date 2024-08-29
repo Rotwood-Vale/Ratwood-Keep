@@ -431,7 +431,7 @@
 		var/datum/wound/caused_wound = limb_grabbed.bodypart_attacked_by(BCLASS_BITE, damage, user, sublimb_grabbed, crit_message = TRUE)
 		if(user.mind)
 			if(user.mind.has_antag_datum(/datum/antagonist/werewolf))
-				caused_wound?.werewolf_infect_attempt()
+				caused_wound?.werewolf_infect_attempt(user)
 				if(prob(30))
 					user.werewolf_feed(C)
 			var/datum/antagonist/zombie/zombie_antag = user.mind.has_antag_datum(/datum/antagonist/zombie)

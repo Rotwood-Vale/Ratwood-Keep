@@ -202,7 +202,7 @@
 		playsound(src, "smallslash", 100, TRUE, -1)
 		if(ishuman(src) && user.mind)
 			if(user.mind.has_antag_datum(/datum/antagonist/werewolf))
-				caused_wound?.werewolf_infect_attempt()
+				caused_wound?.werewolf_infect_attempt(user)
 				if(prob(30))
 					user.werewolf_feed(src)
 			if(user.mind.has_antag_datum(/datum/antagonist/zombie))
