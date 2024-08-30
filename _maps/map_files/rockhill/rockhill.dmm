@@ -7465,12 +7465,6 @@
 "ieu" = (
 /turf/open/floor/rogue/tile,
 /area/rogue/indoors/town/garrison)
-"ieL" = (
-/obj/structure/bars/passage/steel{
-	redstone_id = "dungeonpit"
-	},
-/turf/open/water/sewer,
-/area/rogue/under/town/sewer)
 "ieU" = (
 /obj/structure/table/wood{
 	icon_state = "map4"
@@ -16954,14 +16948,6 @@
 	},
 /turf/open/floor/rogue/cobble,
 /area/rogue/outdoors/town)
-"teS" = (
-/obj/structure/closet/crate/roguecloset,
-/obj/item/clothing/suit/roguetown/armor/leather/vest/hand,
-/obj/item/rogueweapon/sword/rapier,
-/obj/item/perfume/random,
-/obj/item/clothing/under/roguetown/tights/stockings/silk/random,
-/turf/open/floor/rogue/wood,
-/area/rogue/indoors/town/manor)
 "teW" = (
 /turf/closed/wall/mineral/rogue/decostone/long{
 	dir = 1
@@ -199131,7 +199117,7 @@ jyI
 jyI
 vRu
 rSC
-ieL
+rSC
 rRb
 rRb
 rRb
@@ -298403,7 +298389,7 @@ iur
 iur
 sHm
 iHC
-eSX
+aZU
 iHC
 iHC
 fdM
