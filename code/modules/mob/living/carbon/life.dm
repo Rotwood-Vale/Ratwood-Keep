@@ -136,7 +136,7 @@
 		if (QDELETED(src))
 			return
 		handle_wounds()
-		handle_embedded_objects()
+		//handle_embedded_objects()
 		handle_blood()
 
 	check_cremation()
