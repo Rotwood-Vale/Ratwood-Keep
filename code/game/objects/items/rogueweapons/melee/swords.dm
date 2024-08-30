@@ -507,7 +507,7 @@
 
 /datum/intent/sword/thrust/estoc // Around 12 or so dmg gets through armor, making it weaker than spears, but more portable
 	clickcd = 10
-	penfactor = 40
+	penfactor = 60
 
 /obj/item/rogueweapon/sword/cutlass
 	name = "cutlass"
