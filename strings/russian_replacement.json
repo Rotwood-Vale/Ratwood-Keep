@@ -2,19 +2,15 @@
     "full": {
         "who": "whom",
         "yes": "da",
-        "hello": "privyet",
-        "bitch": "suka",
-        "slut": "suka"
+        "hello": "privyet"
     },
     "start": {
-
+        "c": "k"
     },
     "end": {
 
     },
     "syllable": {
-        "c": "k",
-        "kh": "ch",
-        "r": "rr"
+
     }
 }
