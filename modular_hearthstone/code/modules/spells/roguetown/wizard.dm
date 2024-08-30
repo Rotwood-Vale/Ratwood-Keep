@@ -309,7 +309,8 @@
 	range = 6
 	overlay_state = "ensnare"
 	var/area_of_effect = 1
-	var/duration = 5 SECONDS
+	var/duration = 2.5 SECONDS
+	var/delay = 0.8 SECONDS
 
 /obj/effect/proc_holder/spell/invoked/slowdown_spell_aoe/cast(list/targets, mob/user = usr)
 	var/turf/T = get_turf(targets[1])
@@ -319,9 +320,10 @@
 			continue
 		new /obj/effect/temp_visual/slowdown_spell_aoe(affected_turf)
 
-	addtimer(CALLBACK(src, PROC_REF(apply_slowdown), T, area_of_effect, 6 SECONDS, user), 0.6 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(apply_slowdown), T, area_of_effect, duration, user), delay)
 	playsound(T,'sound/magic/webspin.ogg', 50, TRUE)
 	return TRUE
+
 /obj/effect/proc_holder/spell/invoked/slowdown_spell_aoe/proc/apply_slowdown(turf/T, area_of_effect, duration)
 	for(var/mob/living/simple_animal/hostile/animal in range(area_of_effect, T))
 		animal.Paralyze(duration, updating = TRUE, ignore_canstun = TRUE)	//i think animal movement is coded weird, i cant seem to stun them
@@ -340,7 +342,7 @@
 	duration = 1 SECONDS
 
 /obj/effect/temp_visual/slowdown_spell_aoe/long
-	duration = 3 SECONDS
+	duration = 2.5 SECONDS
 
 /obj/effect/proc_holder/spell/invoked/message
 	name = "Message"
@@ -375,7 +377,10 @@
 	for(var/mob/living/carbon/human/HL in GLOB.human_list)
 		if(HL.real_name == input)
 			var/message = stripped_input(user, "You make a connection. What are you trying to say?")
+			if(!message)
+				return
 			to_chat(HL, "Arcyne whispers fill the back of my head, resolving into a clear, if distant, voice: </span><font color=#7246ff>\"[message]\"</font>")
+			log_game("[key_name(user)] sent a message to [key_name(HL)] with contents [message]")
 			// maybe an option to return a message, here?
 			return TRUE
 	to_chat(user, span_warning("I seek a mental connection, but can't find [input]."))
@@ -544,8 +549,8 @@
 	chargedloop = /datum/looping_sound/invokegen
 	associated_skill = /datum/skill/magic/arcane
 	overlay_state = "hierophant"
-	range = 3
-	var/damage = 8
+	range = 2
+	var/damage = 10
 
 /obj/effect/proc_holder/spell/invoked/arcyne_storm/cast(list/targets, mob/user = usr)
 	var/turf/T = get_turf(targets[1])
@@ -554,7 +559,7 @@
 		if(turfs_in_range.density)
 			continue
 		affected_turfs.Add(turfs_in_range)
-	for(var/i = 1, i < 21, i++)
+	for(var/i = 1, i < 16, i++)
 		addtimer(CALLBACK(src, PROC_REF(apply_damage), affected_turfs), wait = i * 1 SECONDS)
 	return TRUE
 
