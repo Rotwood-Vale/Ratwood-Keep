@@ -284,6 +284,10 @@
 	},
 /turf/open/floor/rogue/tile/masonic/single,
 /area/rogue/under/cave/spider)
+"pI" = (
+/obj/item/candle/yellow/lit,
+/turf/open/floor/rogue/dirt/road,
+/area/rogue/under/cave/spider)
 "pQ" = (
 /obj/item/rogueweapon/shield/tower/metal,
 /turf/open/floor/rogue/churchmarble,
@@ -408,6 +412,10 @@
 	faction = list("undead")
 	},
 /turf/open/water/swamp/deep,
+/area/rogue/under/cave/spider)
+"vL" = (
+/obj/effect/spawner/lootdrop/roguetown/dungeon/misc,
+/turf/open/floor/rogue/dirt/road,
 /area/rogue/under/cave/spider)
 "vV" = (
 /obj/structure/rack/rogue/shelf/big,
@@ -738,6 +746,10 @@
 /obj/effect/spawner/roguemap/hauntpile,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/under/cave/spider)
+"Lj" = (
+/obj/item/roguecoin/gold/pile,
+/turf/open/floor/rogue/dirt/road,
+/area/rogue/under/cave/spider)
 "Ll" = (
 /obj/structure/bookcase/random,
 /turf/open/floor/rogue/blocks,
@@ -833,6 +845,10 @@
 "OZ" = (
 /obj/item/roguebin/water/gross,
 /turf/open/floor/rogue/blocks,
+/area/rogue/under/cave/spider)
+"Pw" = (
+/obj/effect/decal/cleanable/cobweb,
+/turf/open/floor/rogue/dirt/road,
 /area/rogue/under/cave/spider)
 "PJ" = (
 /obj/structure/rack/rogue/shelf/big,
@@ -3088,10 +3104,10 @@ Dn
 Dn
 Dn
 Dn
-Dn
-Dn
-Dn
-Dn
+Pw
+QW
+vL
+QW
 Dn
 Dn
 Dn
@@ -3190,10 +3206,10 @@ Dn
 Dn
 Dn
 Dn
-Dn
-Dn
-Dn
-Dn
+QW
+QW
+vL
+QW
 Dn
 Dn
 Dn
@@ -3292,10 +3308,10 @@ Dn
 Dn
 Dn
 Dn
-Dn
-Dn
-Dn
-Dn
+QW
+Lj
+vL
+vL
 Dn
 Dn
 Dn
@@ -3394,10 +3410,10 @@ Dn
 Dn
 Dn
 Dn
-Dn
-Dn
-Dn
-Dn
+QW
+QW
+QW
+vL
 Dn
 Dn
 Dn
@@ -3493,13 +3509,13 @@ Dn
 Dn
 Dn
 Dn
-Dn
-Dn
-Dn
-Dn
-Dn
-Dn
-Dn
+Pw
+QW
+QW
+vL
+QW
+QW
+QW
 Dn
 Dn
 Dn
@@ -3595,8 +3611,8 @@ Dn
 Dn
 Dn
 Dn
-Dn
-Dn
+QW
+vL
 Dn
 Dn
 Dn
@@ -3697,7 +3713,7 @@ Dn
 Dn
 Dn
 Dn
-Dn
+QW
 Dn
 Dn
 Dn
@@ -3799,7 +3815,7 @@ Dn
 Dn
 Dn
 Dn
-Dn
+QW
 Dn
 Dn
 Dn
@@ -3900,8 +3916,8 @@ Dn
 Dn
 Dn
 Dn
-Dn
-Dn
+QW
+pI
 Dn
 Dn
 Dn
@@ -3997,12 +4013,12 @@ XL
 xY
 gF
 Dn
-Dn
-Dn
-Dn
-Dn
-Dn
-Dn
+QW
+QW
+QW
+QW
+vL
+QW
 Dn
 Dn
 Dn
