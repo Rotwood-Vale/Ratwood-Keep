@@ -41,6 +41,7 @@
 		"[user] works the lux into [target]'s innards.",
 		"[user] works the lux into [target]'s innards.")
 		return FALSE
+	target.adjustOxyLoss(-target.getOxyLoss()) //Ye Olde CPR
 	if(!target.revive(full_heal = FALSE))
 		display_results(user, target, span_notice("The lux refuses to meld with [target]'s heart. Their damage must be too severe still."),
 			"[user] works the lux into [target]'s innards, but nothing happens.",
