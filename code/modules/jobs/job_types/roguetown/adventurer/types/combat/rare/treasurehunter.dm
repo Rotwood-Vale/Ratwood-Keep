@@ -5,7 +5,6 @@
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
 	outfit = /datum/outfit/job/roguetown/adventurer/gravedigger
-	pickprob = 11
 	traits_applied = list(TRAIT_MEDIUMARMOR, TRAIT_SEEPRICES)
 	category_tags = list(CTAG_ADVENTURER)
 
@@ -40,5 +39,5 @@
 		H.change_stat("strength", 1)
 		H.change_stat("perception", 1)
 		H.change_stat("intelligence", 1)
-		H.change_stat("speed", 2) 
+		H.change_stat("speed", 2)
 		H.change_stat("endurance", 2)
