@@ -1,7 +1,7 @@
 //dagger and huntknife
 /datum/advclass/gravedigger
 	name = "Treasure Hunter"
-	tutorial = "A treasure hunter trained in the art of the Giza, discern what is treasure or not, your fortune could be hidden anywhere."
+	tutorial = "A treasure hunter trained for years in artifact finding and crawling through the darkest of dungeons, your fortune could be hidden anywhere."
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
 	outfit = /datum/outfit/job/roguetown/adventurer/gravedigger
