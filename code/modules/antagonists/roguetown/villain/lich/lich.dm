@@ -54,6 +54,7 @@
 	ADD_TRAIT(L, TRAIT_SHOCKIMMUNE, "[type]")
 	ADD_TRAIT(L, TRAIT_LIMBATTACHMENT, "[type]")
 	ADD_TRAIT(L, TRAIT_SEEPRICES, "[type]")
+	ADD_TRAIT(L, TRAIT_HEAVYARMOR, "[type]")
 	L.cmode_music = 'sound/music/combat_cult.ogg'
 	L.faction = list("undead")
 	if(L.charflaw)
@@ -109,7 +110,7 @@
 
 	H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/bonechill)
 	H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/raise_undead)
-	H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/projectile/sickness)
+	H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/raise_lesser_undead)
 	H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/projectile/fireball)
 	H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/projectile/bloodlightning)
 	H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/projectile/fetch)
