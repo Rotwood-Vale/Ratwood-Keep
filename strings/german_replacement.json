@@ -39,8 +39,7 @@
         "sword": "schwert",
         "thanks": "danke",
         "thank you": "danke",
-        "the": "das",
-        "thi": "tii",
+        "the": "die",
         "ugly": "hässlich",
         "very": "sehr",
         "water": "wasser",
@@ -81,6 +80,6 @@
 
     },
     "syllable": {
-
+        "thi": "tii"
     }
 }
