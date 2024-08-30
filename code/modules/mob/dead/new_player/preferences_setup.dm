@@ -6,6 +6,8 @@
 	real_name = pref_species.random_name(gender,1)
 	if(gender_override)
 		gender = gender_override
+	else if(pref_species.name == "Seelie")
+		gender = FEMALE
 	else
 		gender = pick(MALE,FEMALE)
 	age = AGE_ADULT

@@ -194,6 +194,11 @@
 	var/dirt_amt = 3
 
 /turf/open/floor/rogue/dirt/get_slowdown(mob/user)
+	//No tile slowdown for fairies
+	var/mob/living/carbon/human/FM = user
+	if(isseelie(FM) && !(FM.resting))	//Add wingcheck
+		return 0
+
 	var/returned = slowdown
 	for(var/obj/item/I in user.held_items)
 		if(I.walking_stick)

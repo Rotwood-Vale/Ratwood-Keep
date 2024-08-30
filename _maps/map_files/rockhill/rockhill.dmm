@@ -6310,6 +6310,10 @@
 	},
 /turf/open/floor/rogue/hexstone,
 /area/rogue/indoors)
+"gSj" = (
+/obj/effect/landmark/start/seelielate,
+/turf/open/floor/rogue/dirt/road,
+/area/rogue/outdoors/rtfield)
 "gSu" = (
 /obj/structure/mineral_door/bars{
 	lockid = "manor"
@@ -13536,6 +13540,10 @@
 	},
 /turf/open/floor/carpet/royalblack,
 /area/rogue/indoors/town/manor)
+"peL" = (
+/obj/effect/landmark/start/seelielate,
+/turf/open/floor/rogue/grass,
+/area/rogue/outdoors/rtfield)
 "peN" = (
 /obj/structure/rack/rogue,
 /obj/item/rogueweapon/spear,
@@ -266176,7 +266184,7 @@ hcW
 uaL
 uaL
 uaL
-uaL
+gSj
 uaL
 qvR
 uaL
@@ -269861,7 +269869,7 @@ uaL
 wSn
 wSn
 qvR
-qvR
+peL
 qvR
 spp
 spp
@@ -285959,7 +285967,7 @@ qvR
 spp
 qvR
 wSn
-qvR
+peL
 qvR
 qvR
 qvR
@@ -296810,7 +296818,7 @@ qvR
 qvR
 qvR
 qvR
-uaL
+gSj
 wSn
 qvR
 qvR
@@ -299200,7 +299208,7 @@ wSn
 wSn
 qvR
 qvR
-qvR
+peL
 wSn
 wSn
 wSn
@@ -306865,7 +306873,7 @@ uaL
 uaL
 qvR
 qvR
-qvR
+peL
 qvR
 qvR
 uaL

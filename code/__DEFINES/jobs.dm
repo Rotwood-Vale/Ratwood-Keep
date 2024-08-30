@@ -185,6 +185,7 @@
 #define GRENZELHOFT		(1<<1)
 #define VETERAN		(1<<2)
 #define SELLSWORD		(1<<3)
+#define SEELIE		(1<<4)
 
 #define GOBLIN		(1<<8)
 
@@ -279,6 +280,7 @@
 #define JDO_DESERT_RIDER 31.1
 #define JDO_VET 31.2
 #define JDO_SELLSWORD 31.3
+#define JDO_SEELIE 31.4
 
 #define JDO_VAGRANT 33
 #define JDO_ORPHAN 34
@@ -358,7 +360,8 @@
 	/datum/job/roguetown/pilgrim,\
 	/datum/job/roguetown/adventurer,\
 	/datum/job/roguetown/mercenary/desert_rider,\
-	/datum/job/roguetown/mercenary/grenzelhoft
+	/datum/job/roguetown/mercenary/grenzelhoft,\
+	/datum/job/roguetown/mercenary/seelie
 
 #define GARRISON_ROLES \
 	/datum/job/roguetown/bogguardsman,\

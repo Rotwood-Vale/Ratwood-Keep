@@ -23,7 +23,16 @@
 	return TRUE
 
 /datum/sex_action/anal_sex/on_start(mob/living/carbon/human/user, mob/living/carbon/human/target)
-	user.visible_message(span_warning("[user] slides his cock into [target]'s butt!"))
+	if(HAS_TRAIT(target, TRAIT_TINY) && !(HAS_TRAIT(user, TRAIT_TINY)))
+		//Scream and rib break
+		user.visible_message(span_warning("[user] forces his cock into [target]'s tiny butt!"))
+		var/obj/item/bodypart/BPC = target.get_bodypart(BODY_ZONE_CHEST)
+		var/obj/item/bodypart/BPG = target.get_bodypart(BODY_ZONE_PRECISE_GROIN)
+		BPC.add_wound(/datum/wound/fracture/chest)
+		BPG.add_wound(/datum/wound/fracture/groin)
+		target.apply_damage(30, BRUTE, BPC)
+	else
+		user.visible_message(span_warning("[user] slides his cock into [target]'s butt!"))
 	playsound(target, list('sound/misc/mat/insert (1).ogg','sound/misc/mat/insert (2).ogg'), 20, TRUE, ignore_walls = FALSE)
 
 /datum/sex_action/anal_sex/on_perform(mob/living/carbon/human/user, mob/living/carbon/human/target)
@@ -31,6 +40,11 @@
 		user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] fucks [target]'s ass."))
 	playsound(target, 'sound/misc/mat/segso.ogg', 50, TRUE, -2, ignore_walls = FALSE)
 	do_thrust_animate(user, target)
+
+	if(HAS_TRAIT(target, TRAIT_TINY) && !(HAS_TRAIT(user, TRAIT_TINY)))
+		//Body damage
+		target.apply_damage(10, BRUTE, target.get_bodypart(BODY_ZONE_CHEST))
+		target.apply_damage(3, BRUTE, target.get_bodypart(BODY_ZONE_PRECISE_GROIN))
 
 	user.sexcon.perform_sex_action(user, 2, 0, TRUE)
 	if(user.sexcon.check_active_ejaculation())

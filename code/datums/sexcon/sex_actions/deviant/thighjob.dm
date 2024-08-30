@@ -5,7 +5,9 @@
 	if(user == target)
 		return FALSE
 	if(!user.getorganslot(ORGAN_SLOT_PENIS))
-		return
+		return FALSE
+	if(HAS_TRAIT(user, TRAIT_TINY))
+		return FALSE
 	return TRUE
 
 /datum/sex_action/thighjob/can_perform(mob/living/carbon/human/user, mob/living/carbon/human/target)
@@ -18,7 +20,10 @@
 	return TRUE
 
 /datum/sex_action/thighjob/on_start(mob/living/carbon/human/user, mob/living/carbon/human/target)
-	user.visible_message(span_warning("[user] grabs [target]'s thighs and shoves his cock inbetween!"))
+	if(HAS_TRAIT(target, TRAIT_TINY))
+		user.visible_message(span_warning("[user] spreads [target]'s legs apart and shoves his cock inbetween!"))
+	else
+		user.visible_message(span_warning("[user] grabs [target]'s thighs and shoves his cock inbetween!"))
 
 /datum/sex_action/thighjob/on_perform(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(user.sexcon.do_message_signature("[type]"))

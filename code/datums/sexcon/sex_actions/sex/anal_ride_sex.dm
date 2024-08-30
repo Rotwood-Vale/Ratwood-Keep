@@ -8,6 +8,8 @@
 		return FALSE
 	if(!target.getorganslot(ORGAN_SLOT_PENIS))
 		return FALSE
+	if(HAS_TRAIT(user, TRAIT_TINY)) //Dissabled for fairies, shouldnt be able to break their own ribs willingly
+		return FALSE
 	return TRUE
 
 /datum/sex_action/anal_ride_sex/can_perform(mob/living/carbon/human/user, mob/living/carbon/human/target)

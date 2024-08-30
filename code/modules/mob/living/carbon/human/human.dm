@@ -931,6 +931,10 @@
 /mob/living/carbon/human/proc/fireman_carry(mob/living/carbon/target)
 	var/carrydelay = 50 //if you have latex you are faster at grabbing
 
+	if(HAS_TRAIT(src, TRAIT_TINY))
+		to_chat(src, span_warning("I'm too small to carry [target]."))
+		return
+
 	var/backnotshoulder = FALSE
 	if(r_grab && l_grab)
 		if(r_grab.grabbed == target)
