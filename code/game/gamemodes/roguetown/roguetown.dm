@@ -155,6 +155,9 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "E
 				if("Maniac")
 					pick_maniac()
 					log_game("Minor Antagonist: Maniac)")
+				if("Lich")
+					pick_maniac()
+					log_game("Minor Antagonist: Lich)")	
 				if("Extended")
 					log_game("Major Antagonist: Extended")
 		return TRUE
@@ -178,6 +181,9 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "E
 	if(prob(45))
 		pick_aspirants()
 		log_game("Minor Antagonist: Aspirant")
+	if(prob(20))
+		pick_lich()
+		log_game("Minor Antagonist: Lich")
 	// if(prob(10))
 	// 	pick_maniac()
 	// 	log_game("Minor Antagonist: Maniac")
@@ -323,7 +329,7 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "E
 	restricted_jobs = list()
 
 /datum/game_mode/chaosmode/proc/pick_maniac()
-	restricted_jobs = list("King", "Queen Consort")
+	restricted_jobs = list("King", "Queen Consort", "Guard Lieutenant", )
 	antag_candidates = get_players_for_role(ROLE_MANIAC)
 	var/datum/mind/villain = pick_n_take(antag_candidates)
 	if(villain)
@@ -343,7 +349,29 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "E
 	restricted_jobs = list()
 
 /datum/game_mode/chaosmode/proc/pick_lich()
-	restricted_jobs = list("Monarch", "Consort", "Royal Guard", "Guard Captain")
+	restricted_jobs = list(
+	"King",
+	"Queen Consort",
+	"Dungeoneer",
+	"Inquisitor",
+	"Confessor",
+	"Watchman",
+	"Man at Arms",
+	"Priest",
+	"Acolyte",
+	"Cleric",
+	"Guard Lieutenant",
+	"Court Magician",
+	"Templar",
+	"Bog Guard",
+	"Bog Master",
+	"Knight",
+	"Mortician",
+	"Desert Rider",
+	"Desert Rider Mercenary",
+	"Grenzelhoft Mercenary",
+	"Sellsword"
+	)
 	antag_candidates = get_players_for_role(ROLE_LICH)
 	var/datum/mind/lichman = pick_n_take(antag_candidates)
 	if(lichman)
