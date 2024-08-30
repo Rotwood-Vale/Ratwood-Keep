@@ -212,6 +212,16 @@
 	item_state = "footmanboots"
 	smeltresult = /obj/item/ingot/iron
 
+/obj/item/clothing/shoes/roguetown/boots/bonegreaves
+	name = "bone greaves"
+	desc = "A pair of greaves made of bone."
+	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT, BCLASS_TWIST)
+	body_parts_covered = FEET
+	armor = list("blunt" = 50, "slash" = 25, "stab" = 20, "bullet" = 15, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	icon_state = "bone_greaves"
+	item_state = "bone_greaves"
+	smeltresult = /obj/item/ash
+
 /obj/item/clothing/shoes/roguetown/boots/graggariteboots
 	name = "graggarite boots"
 	desc = "A pair of heavy boots worn by Graggarite fanatics."
@@ -322,3 +332,28 @@
 	armor = list("blunt" = 90, "slash" = 100, "stab" = 80, "bullet" = 100, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
 	anvilrepair = /datum/skill/craft/armorsmithing
 	smeltresult = /obj/item/ingot/steel	
+
+/obj/item/clothing/shoes/roguetown/nephilimsandals
+	name = "nephilim sandals"
+	desc = "Sandals once worn by the descendents of giants."
+	gender = PLURAL
+	icon_state = "nephilimfeet"
+	item_state = "nephilimfeet"
+	sewrepair = TRUE
+	smeltresult = /obj/item/ash
+
+/obj/item/clothing/shoes/roguetown/bodyguardshoes
+	name = "bodyguard shoes"
+	desc = "Shoes worn by bodyguards in service to the royals."
+	gender = PLURAL
+	icon_state = "bodyguardshoes"
+	item_state = "bodyguardshoes"
+	sewrepair = TRUE
+
+/obj/item/clothing/shoes/roguetown/spellcasterboots
+	name = "spellcaster boots"
+	desc = "Boots worn by journeyman wizards."
+	gender = PLURAL
+	icon_state = "spellcaster_boots"
+	item_state = "spellcaster_boots"
+	sewrepair = TRUE

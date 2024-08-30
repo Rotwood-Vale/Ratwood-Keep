@@ -1799,7 +1799,7 @@
 "aIJ" = (/obj/structure/flora/roguetree,/turf/open/water/swamp/deep,/area/rogue/outdoors/bog)
 "aIK" = (/obj/structure/stairs/stone{dir = 1},/turf/open/floor/rogue/naturalstone,/area/rogue/outdoors/mountains)
 "aIL" = (/obj/structure/bars/grille,/turf/open/transparent/openspace,/area/rogue/indoors/town)
-"aIM" = (/obj/structure/bed/rogue/inn,/obj/item/bedsheet/rogue/fabric,/obj/effect/landmark/start/bailiff,/turf/open/floor/rogue/tile/masonic/single,/area/rogue/outdoors/town)
+"aIM" = (/obj/structure/bed/rogue/inn,/obj/item/bedsheet/rogue/fabric,/obj/effect/landmark/start/judge,/turf/open/floor/rogue/tile/masonic/single,/area/rogue/outdoors/town)
 "aIN" = (/turf/open/floor/rogue/rooftop/green{dir = 8},/area/rogue/outdoors/bog)
 "aIO" = (/obj/structure/chair/wood/rogue{dir = 8},/turf/open/floor/rogue/blocks/stonered,/area/rogue/outdoors/town)
 "aIP" = (/turf/open/floor/rogue/rooftop/green/corner1{dir = 6},/area/rogue/outdoors/bog)

@@ -21,7 +21,7 @@
 
 /datum/outfit/job/roguetown/vikinggrunt/pre_equip(mob/living/carbon/human/H)
 	..()
-	head = /obj/item/clothing/head/roguetown/helmet/winged
+	head = /obj/item/clothing/head/roguetown/helmet/leather/bearhead
 	backr = /obj/item/storage/backpack/rogue/satchel
 	beltl = /obj/item/rogueweapon/huntingknife/idagger/steel
 	r_hand = /obj/item/rogueweapon/shield/wood/crafted
@@ -32,8 +32,7 @@
 	belt = /obj/item/storage/belt/rogue/leather
 	beltr = /obj/item/rogueweapon/stoneaxe/battle
 	armor = /obj/item/clothing/suit/roguetown/armor/plate/half/ironharness
-	shoes = /obj/item/clothing/shoes/roguetown/boots/graggariteboots
-	cloak = /obj/item/clothing/cloak/cape
+	shoes = /obj/item/clothing/shoes/roguetown/boots/leather
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_VIKINGCAMP, TRAIT_GENERIC)

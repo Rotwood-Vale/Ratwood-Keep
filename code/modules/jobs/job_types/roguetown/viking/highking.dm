@@ -22,18 +22,18 @@
 
 /datum/outfit/job/roguetown/highking/pre_equip(mob/living/carbon/human/H)
 	..()
-	head = /obj/item/clothing/head/roguetown/helmet/winged
+	head = /obj/item/clothing/head/roguetown/helmet/vikinghelmet
 	backr = /obj/item/storage/backpack/rogue/satchel
-	beltl = /obj/item/rogueweapon/stoneaxe/battle
-	r_hand = /obj/item/rogueweapon/sword/cursedsword
+	beltl = /obj/item/rogueweapon/huntingknife/idagger/steel
+	r_hand = /obj/item/rogueweapon/stoneaxe/battle
 	shirt = /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk
 	pants = /obj/item/clothing/under/roguetown/platelegs
 	gloves = /obj/item/clothing/gloves/roguetown/plate
 	belt = /obj/item/storage/belt/rogue/leather
 	neck = /obj/item/storage/belt/rogue/pouch/coins/rich
 	armor = /obj/item/clothing/suit/roguetown/armor/plate
-	shoes = /obj/item/clothing/shoes/roguetown/boots/graggaritebootsleader
-	cloak = /obj/item/clothing/cloak/cape
+	shoes = /obj/item/storage/belt/rogue/leather
+	cloak = /obj/item/clothing/cloak/raincloak/furcloak
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_VIKINGCAMP, TRAIT_GENERIC)

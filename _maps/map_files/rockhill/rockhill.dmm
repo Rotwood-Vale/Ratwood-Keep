@@ -18801,7 +18801,7 @@
 "nSS" = (
 /obj/structure/bed/rogue/inn,
 /obj/item/bedsheet/rogue/fabric,
-/obj/effect/landmark/start/bailiff,
+/obj/effect/landmark/start/judge,
 /turf/open/floor/rogue/tile/masonic/single,
 /area/rogue/indoors/town/manor)
 "nSZ" = (

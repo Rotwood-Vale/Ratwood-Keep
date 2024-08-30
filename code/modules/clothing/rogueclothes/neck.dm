@@ -194,35 +194,50 @@
 	desc = ""
 	icon_state = "necra"
 
-/obj/item/clothing/neck/roguetown/psicross/ravox
-	name = "amulet of Ravox"
-	desc = ""
-	icon_state = "ravox"
-
 /obj/item/clothing/neck/roguetown/psicross/eora
 	name = "amulet of Eora"
 	desc = ""
 	icon_state = "eora"
 
-
 /obj/item/clothing/neck/roguetown/psicross/pestra
 	name = "amulet of Pestra"
 	desc = ""
+	icon_state = "pestra"
+
+/obj/item/clothing/neck/roguetown/psicross/xylix
+	name = "amulet of Xylix"
+	desc = ""
+	icon_state = "xylix"
+
+/obj/item/clothing/neck/roguetown/psicross/malum
+	name = "amulet of Malum"
+	desc = ""
+	icon_state = "malum"
+
+/obj/item/clothing/neck/roguetown/psicross/ravox
+	name = "amulet of Ravox"
+	desc = ""
+	icon_state = "ravox"
+
+/obj/item/clothing/neck/roguetown/psicross/abyssor
+	name = "amulet of Abyssor"
+	desc = ""
+	icon_state = "abyssor"
 
 /obj/item/clothing/neck/roguetown/psicross/wood
 	name = "wooden psycross"
 	icon_state = "psicrossw"
 	sellprice = 0
 
+/obj/item/clothing/neck/roguetown/psicross/talisman
+	name = "talisman"
+	icon_state = "talisman"
+	sellprice = 0	
+
 /obj/item/clothing/neck/roguetown/psicross/silver
 	name = "silver psycross"
 	icon_state = "psicrossiron"
 	sellprice = 50
-
-/obj/item/clothing/neck/roguetown/psicross/talisman
-	name = "talisman"
-	icon_state = "talisman"
-	sellprice = 0
 
 /obj/item/clothing/neck/roguetown/psicross/silver/pickup(mob/user)
 	. = ..()
@@ -310,3 +325,60 @@
 	resistance_flags = FIRE_PROOF
 	sellprice = 15
 	anvilrepair = /datum/skill/craft/armorsmithing
+
+/obj/item/clothing/neck/roguetown/collar/feldcollar
+	name = "high collar"
+	desc = "A high collar which covers half the face up to the nose."
+	icon_state = "feldcollar"
+	flags_inv = HIDEFACE|HIDEFACIALHAIR
+
+/obj/item/clothing/neck/roguetown/collar/surgcollar
+	name = "high collar"
+	desc = "A high collar which covers half the face up to the nose."
+	icon_state = "surgcollar"
+	flags_inv = HIDEFACE|HIDEFACIALHAIR
+
+/obj/item/clothing/neck/roguetown/mantle/wizardmantle
+	name = "wizard mantle"
+	desc = "A short cloak worn around the neck of wizards, typically those who specialize in water magics."
+	icon_state = "wizardmantle"
+
+/obj/item/clothing/neck/roguetown/nephilbervor
+	name = "nephilim neckguard"
+	desc = "An neckguard once worn by the descendents of giants."
+	icon_state = "nephilimneckguard"
+	armor = list("blunt" = 90, "slash" = 100, "stab" = 80, "bullet" = 100, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	anvilrepair = /datum/skill/craft/armorsmithing
+	smeltresult = /obj/item/ash
+	max_integrity = 350
+	resistance_flags = FIRE_PROOF
+	slot_flags = ITEM_SLOT_NECK
+	body_parts_covered = NECK|MOUTH
+	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT, BCLASS_TWIST)
+	blocksound = PLATEHIT
+
+/obj/item/clothing/neck/roguetown/psicross/ornate
+	name = "ornate amulet"
+	desc = ""
+	icon_state = "ornate"
+	item_state = "ornate"
+	//dropshrink = 0.75
+	resistance_flags = FIRE_PROOF
+	sellprice = 150
+
+/obj/item/clothing/neck/roguetown/psicross/skull
+	name = "skull necklace"
+	desc = ""
+	icon_state = "skullnecklace"
+	item_state = "skullnecklace"
+	//dropshrink = 0.75
+	sellprice = 1
+
+/obj/item/clothing/neck/roguetown/psicross/gskull
+	name = "golden skull necklace"
+	desc = ""
+	icon_state = "skullamulet"
+	item_state = "skullamulet"
+	//dropshrink = 0.75
+	resistance_flags = FIRE_PROOF
+	sellprice = 100		

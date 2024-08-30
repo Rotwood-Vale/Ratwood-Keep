@@ -13,15 +13,16 @@
 
 /datum/outfit/job/roguetown/adventurer/doctor/pre_equip(mob/living/carbon/human/H)
 	..()
-	mask = /obj/item/clothing/mask/rogue/spectacles
-	head = /obj/item/clothing/head/roguetown/nightman
+	mask = /obj/item/clothing/mask/rogue/feldmask
+	head = /obj/item/clothing/head/roguetown/roguehood/feldhood
 	neck = /obj/item/storage/belt/rogue/pouch/coins/mid /// they are a fine dressed doctor. no one else gonna pay em. psycross removed since it was a hold over for secular
-	armor = /obj/item/clothing/suit/roguetown/armor/leather/vest
-	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/puritan
+	armor = /obj/item/clothing/suit/roguetown/shirt/robe/surgrobe
+	shirt = /obj/item/clothing/suit/roguetown/shirt/vest
+	gloves = /obj/item/clothing/gloves/roguetown/feldgloves
 	belt = /obj/item/storage/belt/rogue/leather
 	beltl = /obj/item/flashlight/flare/torch/lantern
 	beltr = /obj/item/rogueweapon/huntingknife/cleaver /// proper self defense an tree aquiring
-	pants = /obj/item/clothing/under/roguetown/trou
+	pants = /obj/item/clothing/under/roguetown/tights/black
 	shoes = /obj/item/clothing/shoes/roguetown/simpleshoes
 	backl = /obj/item/storage/backpack/rogue/skit
 	backpack_contents = list(

@@ -180,6 +180,81 @@
 	slot_flags = ITEM_SLOT_MASK|ITEM_SLOT_HIP
 	sewrepair = TRUE
 
+/obj/item/clothing/mask/rogue/ragmask
+	name = "rag mask"
+	icon_state = "ragmask"
+	flags_inv = HIDEFACE|HIDEFACIALHAIR
+	body_parts_covered = NECK|MOUTH
+	slot_flags = ITEM_SLOT_MASK|ITEM_SLOT_HIP
+	adjustable = CAN_CADJUST
+	toggle_icon_state = TRUE
+	experimental_onhip = TRUE
+	sewrepair = TRUE
+
+/obj/item/clothing/mask/rogue/ragmask/AdjustClothes(mob/user)
+	if(loc == user)
+		if(adjustable == CAN_CADJUST)
+			adjustable = CADJUSTED
+			if(toggle_icon_state)
+				icon_state = "[initial(icon_state)]_t"
+			flags_inv = null
+			body_parts_covered = NECK
+			if(ishuman(user))
+				var/mob/living/carbon/H = user
+				H.update_inv_wear_mask()
+		else if(adjustable == CADJUSTED)
+			ResetAdjust(user)
+			flags_inv = HIDEFACE|HIDEFACIALHAIR
+			body_parts_covered = NECK|MOUTH
+			if(user)
+				if(ishuman(user))
+					var/mob/living/carbon/H = user
+					H.update_inv_wear_mask()
+
+/obj/item/clothing/mask/rogue/feldmask
+	name = "plague mask"
+	desc = "Do no harm."
+	icon_state = "feldmask"
+	flags_inv = HIDEFACE|HIDEHAIR|HIDEFACIALHAIR
+	body_parts_covered = FACE|EARS|EYES|MOUTH|NECK
+	slot_flags = ITEM_SLOT_MASK|ITEM_SLOT_HIP
+	sewrepair = TRUE
+
+/obj/item/clothing/mask/rogue/surgmask
+	name = "pestra mask"
+	desc = "Masks often worn by Pestran acolytes. It is similar in design to the mask worn by plague doctors, only modified in such a way to feature three bird's heads instead of one. One for the cure. One for the disease. And one for the compassion towards those who suffer with illness as Pestra does."
+	icon_state = "pestramask"
+	flags_inv = HIDEFACE|HIDEHAIR|HIDEFACIALHAIR
+	body_parts_covered = FACE|EARS|EYES|MOUTH|NECK
+	slot_flags = ITEM_SLOT_MASK|ITEM_SLOT_HIP
+	sewrepair = TRUE
+
+/obj/item/clothing/mask/rogue/goldmask
+	name = "gold mask"
+	desc = "A golden mask commonly found in the Zybantine Empire, worn by nobles."
+	icon_state = "goldmask"
+	flags_inv = HIDEFACE|HIDEFACIALHAIR
+	body_parts_covered = FACE|EARS|EYES|MOUTH|NECK
+	slot_flags = ITEM_SLOT_MASK|ITEM_SLOT_HIP
+	sewrepair = TRUE
+
+/obj/item/clothing/mask/rogue/xylixmask
+	name = "xylix mask"
+	desc = "Life is a stage and we all play our part."
+	icon_state = "xylixmask"
+	flags_inv = HIDEFACE|HIDEFACIALHAIR
+	body_parts_covered = FACE|EARS|EYES|MOUTH|NECK
+	slot_flags = ITEM_SLOT_MASK|ITEM_SLOT_HIP
+	sewrepair = TRUE
+
+/obj/item/clothing/mask/rogue/jaw
+	name = "jaw"
+	desc = "The jaw of some fierce animal, repurposed into armor."
+	icon_state = "jaw"
+	body_parts_covered = MOUTH|NECK
+	slot_flags = ITEM_SLOT_MASK|ITEM_SLOT_NECK|ITEM_SLOT_HIP
+	sewrepair = TRUE
+
 /obj/item/clothing/mask/rogue/clothblindfold
 	name = "cloth blindfold"
 	desc = "A blindfold made of cloth."

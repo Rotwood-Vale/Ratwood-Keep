@@ -192,8 +192,8 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	name = "Bog Guard"
 	icon_state = "arrow"
 
-/obj/effect/landmark/start/bailiff
-	name = "Bailiff"
+/obj/effect/landmark/start/judge
+	name = "Judge"
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/councillor

@@ -4,7 +4,7 @@
 	possible_item_intents = list(/datum/intent/mace/strike)
 	gripped_intents = list(/datum/intent/mace/strike, /datum/intent/mace/smash)
 	name = "mace"
-	desc = "Helps anyone fall asleep."
+	desc = "A heavy mace capable of breaking bones."
 	icon_state = "mace"
 	icon = 'icons/roguetown/weapons/32.dmi'
 	item_state = "mace_greyscale"

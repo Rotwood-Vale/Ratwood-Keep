@@ -115,6 +115,11 @@
     icon_state = "g_ring_diamond"
     sellprice = 270
 
+/obj/item/clothing/ring/psydon
+    name = "psydon ring"
+    icon_state = "g_ring_psydon"
+    sellprice = 250
+
 //steel rings
 /obj/item/clothing/ring/emeralds
     name = "gemerald ring"

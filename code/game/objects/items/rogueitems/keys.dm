@@ -79,9 +79,9 @@
 	icon_state = "cheesekey"
 	lockid = "sheriff"
 
-/obj/item/roguekey/bailiff
-	name = "bailiff's key"
-	desc = "This key belongs to the bailiff."
+/obj/item/roguekey/judge
+	name = "judge's key"
+	desc = "This key belongs to the judge."
 	icon_state = "cheesekey"
 	lockid = "sheriff"
 

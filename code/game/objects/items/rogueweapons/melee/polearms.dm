@@ -305,3 +305,27 @@
 	swingdelay = 12
 	clickcd = 14
 
+/obj/item/rogueweapon/spear/banner
+	name = "banner"
+	desc = "Wood fastened together to hold up a banner, choose from different heraldry to show your loyalties."
+	icon_state = "banner"
+	possible_item_intents = list(/datum/intent/unarmed/shove)
+	gripped_intents = list(/datum/intent/unarmed/shove)
+	bigboy = FALSE
+	gripsprite = FALSE
+	wlength = WLENGTH_GREAT
+	w_class = WEIGHT_CLASS_BULKY
+	smeltresult = /obj/item/ingot/iron
+
+/obj/item/rogueweapon/spear/banner/attack_hand(mob/user)
+	if(!overlays.len)
+		var/icon/J = new('icons/roguetown/weapons/banner_heraldry.dmi')
+		var/list/istates = J.IconStates()
+		var/picked_name = input(user, "Choose a Heraldry", "ROGUETOWN", name) as null|anything in sortList(istates)
+		if(!picked_name)
+			picked_name = "none"
+		var/mutable_appearance/M = mutable_appearance('icons/roguetown/weapons/banner_heraldry.dmi', picked_name)
+		M.alpha = 190
+		add_overlay(M)
+	else
+		..()

@@ -28,7 +28,7 @@
 	belt = /obj/item/storage/belt/rogue/leather/plaquesilver
 	beltl = /obj/item/rogueweapon/sword/sabre
 	beltr = /obj/item/rogueweapon/mace/cudgel
-	cloak = /obj/item/clothing/cloak/cape/guard
+	cloak = /obj/item/clothing/cloak/stabard/guardhood
 	backpack_contents = list(/obj/item/keyring/sheriff = 1)
 	if(H.mind)
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/self/convertrole/guard)

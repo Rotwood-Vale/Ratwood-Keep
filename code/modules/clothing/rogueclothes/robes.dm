@@ -153,11 +153,10 @@
 /obj/item/clothing/suit/roguetown/shirt/robe/mageyellow
 	color = "#c1b144"
 
-/obj/item/clothing/suit/roguetown/shirt/robe/merchant
-	name = "guilder jacket"
+/obj/item/clothing/suit/roguetown/shirt/robe/abyssoracorobe
+	name = "abyssor robe"
 	desc = "A fancy jacket common with merchants."
-	icon_state = "merrobe"
-	sellprice = 30
+	icon_state = "abyssorrobe"
 	color = null
 
 /obj/item/clothing/suit/roguetown/shirt/robe/nun
@@ -240,3 +239,71 @@
 	if(ismob(loc))
 		var/mob/L = loc
 		L.update_inv_armor()
+
+/obj/item/clothing/suit/roguetown/shirt/robe/spellcasterrobe
+	slot_flags = ITEM_SLOT_ARMOR
+	name = "spellcaster robes"
+	desc = "Robes worn by journeyman wizards"
+	body_parts_covered = CHEST|GROIN|ARMS|LEGS|VITALS
+	icon_state = "spellcasterrobe"
+	icon = 'icons/roguetown/clothing/armor.dmi'
+	mob_overlay_icon = 'icons/roguetown/clothing/onmob/armor.dmi'
+	sleeved = null
+	color = null
+	r_sleeve_status = SLEEVE_NORMAL
+	l_sleeve_status = SLEEVE_NORMAL
+
+/obj/item/clothing/suit/roguetown/shirt/robe/vamprobe
+	slot_flags = ITEM_SLOT_ARMOR
+	name = "dark robes"
+	desc = "Dark robes usually worn by those with bad intentions."
+	body_parts_covered = CHEST|GROIN|ARMS|LEGS|VITALS
+	icon_state = "vamp"
+	icon = 'icons/roguetown/clothing/armor.dmi'
+	mob_overlay_icon = 'icons/roguetown/clothing/onmob/armor.dmi'
+	sleeved = null
+	color = null
+	r_sleeve_status = SLEEVE_NORMAL
+	l_sleeve_status = SLEEVE_NORMAL
+
+/obj/item/clothing/suit/roguetown/shirt/robe/feldrobe
+	name = "feldrobe"
+	desc = "Long robes which cover the body, but lack sleeves."
+	icon = 'icons/roguetown/clothing/armor.dmi'
+	mob_overlay_icon = 'icons/roguetown/clothing/onmob/armor.dmi'
+	icon_state = "feldrobe"
+	slot_flags = ITEM_SLOT_ARMOR
+	sleeved = null
+	boobed = TRUE
+	color = null
+	flags_inv = HIDEBOOB|HIDETAIL|HIDECROTCH
+	r_sleeve_status = SLEEVE_NORMAL
+	l_sleeve_status = SLEEVE_NORMAL
+
+/obj/item/clothing/suit/roguetown/shirt/robe/surgrobe
+	name = "surgrobe"
+	desc = "Long robes which cover the body, but lack sleeves."
+	icon = 'icons/roguetown/clothing/armor.dmi'
+	mob_overlay_icon = 'icons/roguetown/clothing/onmob/armor.dmi'
+	icon_state = "surgrobe"
+	slot_flags = ITEM_SLOT_ARMOR
+	sleeved = null
+	boobed = TRUE
+	color = null
+	flags_inv = HIDEBOOB|HIDETAIL|HIDECROTCH
+	r_sleeve_status = SLEEVE_NORMAL
+	l_sleeve_status = SLEEVE_NORMAL
+
+/obj/item/clothing/suit/roguetown/shirt/robe/judge
+	name = "judge coat"
+	desc = "A thick coat, somewhat comfortable."
+	icon = 'icons/roguetown/clothing/armor.dmi'
+	mob_overlay_icon = 'icons/roguetown/clothing/onmob/armor.dmi'
+	icon_state = "judgecoat"
+	slot_flags = ITEM_SLOT_ARMOR
+	sleeved = null
+	boobed = TRUE
+	color = null
+	flags_inv = HIDEBOOB|HIDETAIL
+	r_sleeve_status = SLEEVE_NORMAL
+	l_sleeve_status = SLEEVE_NORMAL

@@ -37,7 +37,7 @@
 	neck = /obj/item/clothing/neck/roguetown/psicross/dendor
 	armor = /obj/item/clothing/suit/roguetown/shirt/robe/dendor
 	shoes = /obj/item/clothing/shoes/roguetown/boots/furlinedboots
-	head = /obj/item/clothing/head/roguetown/antlerhood
+	head = /obj/item/clothing/head/roguetown/tribalskull
 	pants = /obj/item/clothing/under/roguetown/loincloth/brown
 	r_hand = /obj/item/rogueweapon/woodstaff
 

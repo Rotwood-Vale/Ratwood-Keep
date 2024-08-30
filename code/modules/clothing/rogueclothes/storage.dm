@@ -295,3 +295,24 @@
 	icon_state = "exoticsilkbelt"
 	heldz_items = 1
 	sewrepair = TRUE
+
+/obj/item/storage/belt/rogue/bone/skullbelt
+	name = "skull belt"
+	desc = "Worn by barbarians, tribals and madmen. Not in that particular order."
+	icon_state = "skullcrotch"
+	item_state = "skullcrotch"
+	heldz_items = 3
+
+/obj/item/storage/belt/rogue/leather/ornate
+	name = "ornate belt"
+	desc = "An ornate belt decorated with gold."
+	icon_state = "ornate_belt"
+	sellprice = 50
+	sewrepair = FALSE
+	anvilrepair = /datum/skill/craft/armorsmithing	
+
+/obj/item/storage/belt/rogue/leather/blackleather
+	name = "black leather belt"
+	icon_state = "blackleatherbelt"
+	sewrepair = TRUE
+	sellprice = 10	

@@ -12234,7 +12234,7 @@
 /area/rogue/outdoors/beach)
 "WR" = (
 /obj/structure/chair/wood/rogue,
-/obj/effect/landmark/start/bailiff,
+/obj/effect/landmark/start/judge,
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/basement)
 "WS" = (

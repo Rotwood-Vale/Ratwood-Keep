@@ -75,3 +75,16 @@
 	icon_state = "nocwrappings"
 	item_state = "nocwrappings"
 	sewrepair = TRUE
+
+/obj/item/clothing/wrists/roguetown/nephilbracers
+	name = "nephilim bracers"
+	desc = "Bracers once worn by the descendents of giants."
+	body_parts_covered = ARMS
+	icon_state = "nephilimwrist"
+	item_state = "nephilimwrist"
+	armor = list("blunt" = 90, "slash" = 100, "stab" = 80, "bullet" = 100, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT, BCLASS_TWIST)
+	blocksound = PLATEHIT
+	max_integrity = 150
+	anvilrepair = /datum/skill/craft/armorsmithing
+	smeltresult = /obj/item/ash

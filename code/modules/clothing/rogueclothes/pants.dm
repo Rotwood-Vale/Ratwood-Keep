@@ -126,11 +126,23 @@
 	icon_state = "stripedpants"	
 	item_state = "stripedpants"
 
-/obj/item/clothing/under/roguetown/trou/skullcrotchplate
-	name = "skull crotchplate"
-	desc = "Worn by barbarians, tribals and madmen. Not in that particular order."
-	icon_state = "skullcrotch"
-	item_state = "skullcrotch"	
+/obj/item/clothing/under/roguetown/trou/narvalipantsred
+	name = "highland pants"
+	desc = "Pants worn by clanmen in the Narvali Highlands."
+	icon_state = "narvali_red"
+	item_state = "narvali_red"
+
+/obj/item/clothing/under/roguetown/trou/narvalipantsblue
+	name = "highland pants"
+	desc = "Pants worn by clanmen in the Narvali Highlands."
+	icon_state = "narvali_blue"
+	item_state = "narvali_blue"
+
+/obj/item/clothing/under/roguetown/trou/narvalipantsgreen
+	name = "highland pants"
+	desc = "Pants worn by clanmen in the Narvali Highlands."
+	icon_state = "narvali_green"
+	item_state = "narvali_green"		
 
 /obj/item/clothing/under/roguetown/trou/leather/mourning
 	name = "mourning trousers"
@@ -187,6 +199,23 @@
 	gender = PLURAL
 	icon_state = "plate_legs"
 	item_state = "plate_legs"
+//	adjustable = CAN_CADJUST
+	sewrepair = FALSE
+	armor = list("blunt" = 90, "slash" = 100, "stab" = 80, "bullet" = 50, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT)
+	blocksound = PLATEHIT
+	var/do_sound = FALSE
+	drop_sound = 'sound/foley/dropsound/armor_drop.ogg'
+	anvilrepair = /datum/skill/craft/armorsmithing
+	r_sleeve_status = SLEEVE_NOMOD
+	l_sleeve_status = SLEEVE_NOMOD
+
+/obj/item/clothing/under/roguetown/heavyroyalplatelegs
+	name = "royal heavyplated chausses"
+	desc = "Plated armor to protect the legs."
+	gender = PLURAL
+	icon_state = "royalplate_pants"
+	item_state = "royalplate_pants"
 //	adjustable = CAN_CADJUST
 	sewrepair = FALSE
 	armor = list("blunt" = 90, "slash" = 100, "stab" = 80, "bullet" = 50, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
@@ -287,6 +316,57 @@
 			H.update_inv_pants()
 
 /obj/item/clothing/under/roguetown/grenzelpants/update_icon()
+	cut_overlays()
+	if(get_detail_tag())
+		var/mutable_appearance/pic = mutable_appearance(icon(icon, "[icon_state][detail_tag]"))
+		pic.appearance_flags = RESET_COLOR
+		if(get_detail_color())
+			pic.color = get_detail_color()
+		add_overlay(pic)
+
+/obj/item/clothing/under/roguetown/grenzknightpants
+	name = "grenzelhoft knight bottoms"
+	desc = "Padded pants worn by Grenzelhoftian knights."
+	icon_state = "grenzknight_pants"
+	item_state = "grenzknight_pants"
+	sleeved = 'icons/roguetown/clothing/onmob/helpers/stonekeep_merc.dmi'
+	detail_tag = "_detail"
+	flags_inv = HIDECROTCH
+	armor = list("blunt" = 15, "slash" = 15, "stab" = 15, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	prevent_crits = list(BCLASS_BLUNT)
+	var/picked = FALSE
+
+/obj/item/clothing/under/roguetown/grenzknightpants/attack_right(mob/user)
+	..()
+	if(!picked)
+		var/list/colors = list(
+		"Swan White"="#ffffff",
+		"Lavender"="#865c9c",
+		"Royal Purple"="#5E4687",
+		"Wine Rouge"="#752B55",
+		"Sow's skin"="#CE929F",
+		"Knight's Red"="#933030",
+		"Madroot Red"="#AD4545",
+		"Marigold Orange"="#E2A844",
+		"Politely, Yuck"="#685542",
+		"Astrata's Yellow"="#FFFD8D",
+		"Bog Green"="#375B48",
+		"Seafoam Green"="#49938B",
+		"Woad Blue"="#395480",
+		"Cornflower Blue"="#749EE8",
+		"Blacksteel Grey"="#404040",)
+
+		var/choice = input(user, "Choose a color.", "Grenzelhoft colors") as anything in colors
+		var/playerchoice = colors[choice]
+		picked = TRUE
+		detail_color = playerchoice
+		detail_tag = "_detail"
+		update_icon()
+		if(loc == user && ishuman(user))
+			var/mob/living/carbon/H = user
+			H.update_inv_pants()
+
+/obj/item/clothing/under/roguetown/grenzknightpants/update_icon()
 	cut_overlays()
 	if(get_detail_tag())
 		var/mutable_appearance/pic = mutable_appearance(icon(icon, "[icon_state][detail_tag]"))

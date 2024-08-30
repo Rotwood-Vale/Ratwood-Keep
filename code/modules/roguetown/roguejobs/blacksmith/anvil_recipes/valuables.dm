@@ -163,3 +163,21 @@
 	req_bar = /obj/item/ingot/gold
 	created_item = list(/obj/item/clothing/shoes/roguetown/anklets, /obj/item/clothing/shoes/roguetown/anklets, /obj/item/clothing/shoes/roguetown/anklets)
 	i_type = "Valuables"
+
+/datum/anvil_recipe/valuables/psydonring
+	name = "Psydon Ring"
+	req_bar = /obj/item/ingot/gold
+	created_item = /obj/item/clothing/ring/psydon
+	i_type = "Valuables"
+
+/datum/anvil_recipe/valuables/ornate
+	name = "Ornate Necklace"
+	req_bar = /obj/item/ingot/gold
+	created_item = /obj/item/clothing/neck/roguetown/psicross/ornate
+	i_type = "Valuables"
+
+/datum/anvil_recipe/valuables/gskull
+	name = "Golden Skull Necklace"
+	req_bar = /obj/item/ingot/gold
+	created_item = /obj/item/clothing/neck/roguetown/psicross/gskull
+	i_type = "Valuables"		

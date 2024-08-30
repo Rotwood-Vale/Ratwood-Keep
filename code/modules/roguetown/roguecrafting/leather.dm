@@ -131,6 +131,12 @@
 	sellprice = 18	//Costs about ~12 to make.
 	craftdiff = 1	//Slightly harder craft.
 
+/datum/crafting_recipe/roguetown/leather/leathervest
+	name = "leather vest"
+	result = /obj/item/clothing/suit/roguetown/armor/leathervest
+	reqs = list(/obj/item/natural/hide = 2)
+	sellprice = 26
+
 /datum/crafting_recipe/roguetown/leather/bikini
 	name = "leather bikini armor"
 	result = /obj/item/clothing/suit/roguetown/armor/leather/bikini
@@ -144,6 +150,13 @@
 				/obj/item/natural/fur = 1)
 	sellprice = 28	//Costs about ~16 to make. So, HIGH resale.
 	craftdiff = 2	//Harder craft.
+
+/datum/crafting_recipe/roguetown/leather/bearfur
+	name = "bear fur"
+	result = /obj/item/clothing/suit/roguetown/armor/hide/bearfur
+	reqs = list(/obj/item/natural/hide = 1,
+				/obj/item/natural/fur = 2)
+	sellprice = 26
 
 /datum/crafting_recipe/roguetown/leather/hidebikini
 	name = "hide bikini armor"
@@ -184,6 +197,11 @@
 	reqs = list(/obj/item/natural/fur = 1, /obj/item/natural/fibers = 2)
 	sellprice = 16	//Costs about ~12 to make.
 
+/datum/crafting_recipe/roguetown/leather/tribalcloak
+	name = "heavy fur cloak"
+	result = /obj/item/clothing/cloak/cape/tribalcloak
+	reqs = list(/obj/item/natural/hide = 2,/obj/item/natural/fur = 1)
+
 /datum/crafting_recipe/roguetown/leather/saddle
 	name = "saddle"
 	result = /obj/item/natural/saddle
@@ -206,11 +224,17 @@
 	craftdiff = 1	//Slightly harder craft.
 
 /datum/crafting_recipe/roguetown/leather/volfhelm
-	name = "wolf helmet"
+	name = "volf helmet"
 	result = /obj/item/clothing/head/roguetown/helmet/leather/volfhelm
 	reqs = list(/obj/item/natural/volf_head = 1, /obj/item/natural/hide = 2)
 	sellprice = 34	//Costs about ~27 to make. Not great resale.
 	craftdiff = 1
+
+/datum/crafting_recipe/roguetown/leather/volfhead
+	name = "volf head"
+	result = /obj/item/clothing/head/roguetown/helmet/leather/volfhead
+	reqs = list(/obj/item/natural/volf_head = 1, /obj/item/natural/hide = 1)
+	craftdiff = 1	
 
 /datum/crafting_recipe/roguetown/leather/furlinedboots
 	name = "fur-lined boots"
@@ -302,3 +326,13 @@
 	name = "leather sea jacket"
 	result = /obj/item/clothing/suit/roguetown/armor/leather/vest/sailor
 	reqs = list(/obj/item/natural/hide = 2)
+
+/datum/crafting_recipe/roguetown/leather/hidecloak
+	name = "hide cloak"
+	result = /obj/item/clothing/cloak/hidecloak
+	reqs = list(/obj/item/natural/hide = 3)
+
+/datum/crafting_recipe/roguetown/leather/blackleatherbelt
+	name = "black leather belt"
+	result = /obj/item/storage/belt/rogue/leather/blackleather
+	reqs = list(/obj/item/natural/hide = 1)

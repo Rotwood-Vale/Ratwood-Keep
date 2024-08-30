@@ -24,33 +24,48 @@
 	H.virginity = TRUE
 	head = /obj/item/clothing/head/roguetown/helmet/heavy/bucket
 	neck = /obj/item/clothing/neck/roguetown/psicross/astrata
-	cloak = /obj/item/clothing/cloak/tabard/crusader/tief
+	cloak = /obj/item/clothing/cloak/templar/psydon
 	switch(H.patron.name)
 		if("Astrata")
 			wrists = /obj/item/clothing/neck/roguetown/psicross/astrata
 			head = /obj/item/clothing/head/roguetown/helmet/heavy/astratahelm
-			cloak = /obj/item/clothing/cloak/tabard/crusader/astrata
+			cloak = /obj/item/clothing/cloak/templar/astrata
 		if("Dendor")
 			wrists = /obj/item/clothing/neck/roguetown/psicross/dendor
 			head = /obj/item/clothing/head/roguetown/helmet/heavy/dendorhelm
-			cloak = /obj/item/clothing/cloak/tabard/crusader/dendor
+			cloak = /obj/item/clothing/cloak/templar/dendor
 		if("Necra")
 			wrists = /obj/item/clothing/neck/roguetown/psicross/necra
 			head = /obj/item/clothing/head/roguetown/helmet/heavy/necrahelm
-			cloak = /obj/item/clothing/cloak/tabard/crusader/necra
+			cloak = /obj/item/clothing/cloak/templar/necra
 		if("Pestra")
 			wrists = /obj/item/clothing/neck/roguetown/psicross/pestra
-			cloak = /obj/item/clothing/cloak/tabard/crusader/pestra
+			head = /obj/item/clothing/head/roguetown/helmet/heavy/pestrahelm
+			cloak = /obj/item/clothing/cloak/templar/pestra
 		if("Noc")
 			wrists = /obj/item/clothing/neck/roguetown/psicross/noc
 			head = /obj/item/clothing/head/roguetown/helmet/heavy/nochelm
-			cloak = /obj/item/clothing/cloak/tabard/crusader/noc
+			cloak = /obj/item/clothing/cloak/templar/noc
 		if("Eora") //Eora content from Stonekeep
 			head = /obj/item/clothing/head/roguetown/helmet/heavy/eorahelm
 			wrists = /obj/item/clothing/neck/roguetown/psicross/eora
-			cloak = /obj/item/clothing/cloak/tabard/crusader/eora
-		if("Xylix") //Needs armor sprites and cross sprite - Tzula
-			wrists = /obj/item/clothing/neck/roguetown/psicross
+			cloak = /obj/item/clothing/cloak/templar/eora
+		if("Ravox")
+			head = /obj/item/clothing/head/roguetown/helmet/heavy/ravoxhelm
+			wrists = /obj/item/clothing/neck/roguetown/psicross/ravox
+			cloak = /obj/item/clothing/cloak/templar/ravox
+		if("Xylix")
+			head = /obj/item/clothing/head/roguetown/helmet/heavy/xylixhelm
+			wrists = /obj/item/clothing/neck/roguetown/psicross/xylix
+			cloak = /obj/item/clothing/cloak/templar/xylix
+		if("Malum")
+			head = /obj/item/clothing/head/roguetown/helmet/malumhelmet
+			wrists = /obj/item/clothing/neck/roguetown/psicross/malum
+			cloak = /obj/item/clothing/cloak/templar/malum
+		if("Abyssor")
+			head = /obj/item/clothing/head/roguetown/helmet/heavy/abyssorhelm
+			wrists = /obj/item/clothing/neck/roguetown/psicross/abyssor
+			cloak = /obj/item/clothing/cloak/templar/abyssor					
 	armor = /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk
 	shirt = /obj/item/clothing/suit/roguetown/armor/gambeson
 	pants = /obj/item/clothing/under/roguetown/chainlegs
