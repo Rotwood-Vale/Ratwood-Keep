@@ -66,6 +66,10 @@
 			var/turf/T = get_turf(HL)
 			if(!T)
 				continue
+			if(HAS_TRAIT(HL, TRAIT_ANTISCRYING))
+				to_chat(user, span_warning("I peer into the ball, but an impenetrable fog shrouds [input]."))
+				to_chat(HL, span_warning("My magical shrouding reacted to something."))
+				return
 			message_admins("SCRYING: [user.real_name] ([user.ckey]) has used the scrying orb to leer at [HL.real_name] ([HL.ckey])")
 			log_game("SCRYING: [user.real_name] ([user.ckey]) has used the scrying orb to leer at [HL.real_name] ([HL.ckey])")
 			var/mob/dead/observer/screye/S = user.scry_ghost()

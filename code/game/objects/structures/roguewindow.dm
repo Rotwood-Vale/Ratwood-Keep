@@ -110,6 +110,12 @@
 	opacity = FALSE
 	update_icon()
 
+/obj/structure/roguewindow/proc/force_open()
+	playsound(src, 'sound/foley/doors/windowup.ogg', 100, FALSE)
+	climbable = TRUE
+	opacity = FALSE
+	update_icon()
+
 /obj/structure/roguewindow/proc/close_up(mob/user)
 	visible_message(span_info("[user] closes [src]."))
 	playsound(src, 'sound/foley/doors/windowdown.ogg', 100, FALSE)
