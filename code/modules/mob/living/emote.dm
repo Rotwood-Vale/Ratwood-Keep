@@ -592,8 +592,6 @@
 			H.cursed_freak_out()
 			return
 
-		H.add_stress(/datum/stressevent/hug)
-
 /datum/emote/living/holdbreath
 	key = "hold"
 	key_third_person = "holds"

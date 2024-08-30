@@ -256,7 +256,7 @@
 	flash_fullscreen("stressflash")
 	changeNext_move(CLICK_CD_EXHAUSTED)
 	emote("fatigue", forced = TRUE)
-	if(stress > 15)
+	if(get_stress_amount() > 15)
 		addtimer(CALLBACK(src, TYPE_PROC_REF(/mob, do_freakout_scream)), rand(30,50))
 
 	if(hud_used)
