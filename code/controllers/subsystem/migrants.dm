@@ -141,9 +141,11 @@ SUBSYSTEM_DEF(migrants)
 	for(var/client/client as anything in picked_migrants)
 		client.prefs.migrant.post_spawn()
 
+	var/migrant_wave_id = "migrant[wave_number]"
+
 	/// Spawn the migrants, hooray
 	for(var/datum/migrant_assignment/assignment as anything in assignments)
-		spawn_migrant(wave, assignment)
+		spawn_migrant(wave, assignment, wave.spawn_on_location, migrant_wave_id)
 
 	// Increment wave spawn counter
 	var/used_wave_type = wave.type
@@ -153,7 +155,26 @@ SUBSYSTEM_DEF(migrants)
 		spawned_waves[used_wave_type] = 0
 	spawned_waves[used_wave_type] += 1
 
+	message_admins("MIGRANTS: Spawned wave: [wave.name] (players: [assignments.len]) at [ADMIN_VERBOSEJMP(spawn_location)]")
+
+	unset_all_active_migrants()
+
 	return TRUE
+
+/datum/controller/subsystem/migrants/proc/get_status_line()
+	var/string = ""
+	if(current_wave)
+		var/datum/migrant_wave/wave = MIGRANT_WAVE(current_wave)
+		string = "[wave.name] ([get_active_migrant_amount()]/[wave.get_roles_amount()]) - [wave_timer / (1 SECONDS)]s"
+	else
+		string = "Mist - [time_until_next_wave / (1 SECONDS)]s"
+	return "Migrants: [string]"
+
+/datum/controller/subsystem/migrants/proc/unset_all_active_migrants()
+	var/list/active_migrants = get_active_migrants()
+	if(active_migrants)
+		for(var/client/client as anything in active_migrants)
+			client.prefs.migrant.set_active(FALSE)
 
 /datum/controller/subsystem/migrants/proc/get_safe_turfs_around_location(atom/location)
 	var/list/turfs = list()
@@ -169,7 +190,7 @@ SUBSYSTEM_DEF(migrants)
 	turfs = shuffle(turfs)
 	return turfs
 
-/datum/controller/subsystem/migrants/proc/spawn_migrant(datum/migrant_wave/wave, datum/migrant_assignment/assignment)
+/datum/controller/subsystem/migrants/proc/spawn_migrant(datum/migrant_wave/wave, datum/migrant_assignment/assignment, spawn_on_location, migrant_wave_id)
 	var/rank = "Migrant"
 	var/mob/dead/new_player/newplayer = assignment.client.mob
 	var/ckey = assignment.client.ckey
@@ -182,6 +203,7 @@ SUBSYSTEM_DEF(migrants)
 	SSjob.EquipRank(character, rank, TRUE)
 
 	var/datum/migrant_role/role = MIGRANT_ROLE(assignment.role_type)
+	character.migrant_type = assignment.role_type
 
 
 	/// copy pasta from AttemptLateSpawn(rank) further on TODO put it in a proc and use in both places
@@ -213,7 +235,8 @@ SUBSYSTEM_DEF(migrants)
 		GLOB.respawncounts[character.ckey] = 1
 
 	/// And back to non copy pasta code
-	character.forceMove(assignment.spawn_location)
+	if(spawn_on_location)
+		character.forceMove(assignment.spawn_location)
 
 	to_chat(character, span_alertsyndie("I am a [role.name]!"))
 	to_chat(character, span_notice(wave.greet_text))
@@ -227,7 +250,8 @@ SUBSYSTEM_DEF(migrants)
 		character.mind.add_antag_datum(role.antag_datum)
 
 	// Adding antag datums can move your character to places, so here's a bandaid
-	character.forceMove(assignment.spawn_location)
+	if(spawn_on_location)
+		character.forceMove(assignment.spawn_location)
 
 	if(role.grant_lit_torch)
 		grant_lit_torch(character)
@@ -235,8 +259,11 @@ SUBSYSTEM_DEF(migrants)
 	role.after_spawn(character)
 
 	if(role.advclass_cat_rolls)
-		SSrole_class_handler.setup_class_handler(character, role.advclass_cat_rolls)
+		SSrole_class_handler.setup_class_handler(character, role.advclass_cat_rolls, migrant_wave_id)
 		hugboxify_for_class_selection(character)
+	else
+		// Apply post equipment stuff
+		apply_character_post_equipment(character)
 
 /datum/controller/subsystem/migrants/proc/get_priority_players(list/players, role_type)
 	var/list/priority = list()
@@ -253,6 +280,14 @@ SUBSYSTEM_DEF(migrants)
 	if(!player.prefs)
 		return FALSE
 	var/datum/preferences/prefs = player.prefs
+	if(role.banned_leprosy && is_misc_banned(player.ckey, BAN_MISC_LEPROSY))
+		return FALSE
+	if(role.banned_lunatic && is_misc_banned(player.ckey, BAN_MISC_LUNATIC))
+		return FALSE
+	if(!player.prefs.allowed_respawn())
+		return FALSE
+	if(is_migrant_banned(player.ckey, role.name))
+		return FALSE
 	if(role.allowed_races && !(prefs.pref_species.type in role.allowed_races))
 		return FALSE
 	if(role.allowed_sexes && !(prefs.gender in role.allowed_sexes))
@@ -269,7 +304,7 @@ SUBSYSTEM_DEF(migrants)
 	if(wave_type)
 		log_game("Migrants: Rolled wave: [wave_type]")
 		set_current_wave(wave_type, wave_wait_time)
-	
+
 	time_until_next_wave = time_between_fail_wave
 
 /datum/controller/subsystem/migrants/proc/roll_wave()

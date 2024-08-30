@@ -86,6 +86,22 @@
 		to_chat(src, span_danger("The Github URL is not set in the server configuration."))
 	return
 
+/client/verb/check_role_bans()
+	set name = "Check Role Bans"
+	set desc = ""
+	set category = "OOC"
+	
+	var/datum/role_bans/bans = get_role_bans_for_ckey(ckey)
+	var/list/dat = list()
+	for(var/datum/role_ban_instance/instance as anything in bans.bans)
+		if(!instance.permanent && world.realtime >= instance.apply_date + instance.duration)
+			dat += "<b>EXPIRED</b><BR>"
+		dat += instance.get_ban_string_list().Join("<BR>")
+		dat += "<HR>"
+	var/datum/browser/popup = new(usr, "check_role_bans", "Role Bans", 550, 500)
+	popup.set_content(dat.Join())
+	popup.open()
+
 /client/verb/changelog()
 	set name = "Changelog"
 	set category = "OOC"

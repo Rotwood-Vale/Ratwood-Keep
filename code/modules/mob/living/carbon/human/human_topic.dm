@@ -7,8 +7,20 @@
 		if(!valid_headshot_link(null, headshot_link, TRUE))
 			return
 		var/mob/user = usr
-		var/list/dat = list("<img src='[headshot_link]' width='250px' height='250px'>")
-		var/datum/browser/popup = new(user, "headshot", "<div align='center'>[src]'s Headshot</div>", 310, 320)
+		var/list/dat = list("<table width='100%' height='100%'><td align='center' valign='middle'><img src='[headshot_link]' width='250px' height='250px'></td></table>")
+		var/datum/browser/popup = new(user, "headshot", "<div align='center'>[src]</div>", 310, 330)
+		popup.set_content(dat.Join())
+		popup.open(FALSE)
+		return
+	
+	if(href_list["task"] == "view_nudeshot")
+		if(!ismob(usr))
+			return
+		if(!valid_headshot_link(null, nudeshot_link, TRUE))
+			return
+		var/mob/user = usr
+		var/list/dat = list("<table width='100%' height='100%'><td align='center' valign='middle'><img src='[nudeshot_link]' width='360px' height='480px'></td></table>")
+		var/datum/browser/popup = new(user, "nudeshot", "<div align='center'>[src]</div>", 400, 525)
 		popup.set_content(dat.Join())
 		popup.open(FALSE)
 		return

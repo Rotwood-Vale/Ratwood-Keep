@@ -64,7 +64,6 @@
 	recovery = 30
 	damfactor = 1.5
 	reach = 2
-	swingdelay = 8
 	chargedloop = /datum/looping_sound/flailswing
 	keep_looping = TRUE
 	icon_state = "insmash"
@@ -84,7 +83,7 @@
 
 
 /obj/item/rogueweapon/flail/sflail
-	force = 30
+	force = 20
 	icon_state = "flail"
 	desc = "This is a swift, steel flail. Strikes hard and far."
 	smeltresult = /obj/item/ingot/steel
@@ -131,7 +130,7 @@
 	force = 21
 	possible_item_intents = list(/datum/intent/whip/crack, /datum/intent/whip/lash, /datum/intent/whip/punish)
 	name = "whip"
-	desc = "A leather whip, built to last with an sharp stone for a tip"
+	desc = "A leather whip, built to last with an sharp stone for a tip."
 	icon_state = "whip"
 	icon = 'icons/roguetown/weapons/32.dmi'
 	sharpness = IS_BLUNT
@@ -160,14 +159,14 @@
 /obj/item/rogueweapon/whip/antique
 	force = 29
 	name = "Repenta En"
-	desc = "An extremely well maintained whip, with a polished steel tip and gilded handle"
+	desc = "An extremely well maintained whip, with a polished steel tip and gilded handle. It clearly needs to see more use."
 	minstr = 11
 	icon_state = "gwhip"
 
 
 /obj/item/rogueweapon/flail/peasantwarflail
 	force = 10
-	force_wielded = 35
+	force_wielded = 25
 	possible_item_intents = list(/datum/intent/flail/strike)
 	gripped_intents = list(/datum/intent/flail/strikerange, /datum/intent/flail/strike/smashrange)
 	name = "peasant war flail"

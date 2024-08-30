@@ -43,7 +43,8 @@
 		armor = /obj/item/clothing/suit/roguetown/armor/leather/vest/black
 		head = /obj/item/clothing/head/roguetown/fancyhat
 	else
-		armor = /obj/item/clothing/suit/roguetown/shirt/dress/gen
+		pants = /obj/item/clothing/under/roguetown/tights/stockings/silk/white
+		armor = /obj/item/clothing/suit/roguetown/shirt/dress/gen/black
 		shoes = /obj/item/clothing/shoes/roguetown/simpleshoes
 		cloak = /obj/item/clothing/cloak/apron/waist
 		belt = /obj/item/storage/belt/rogue/leather

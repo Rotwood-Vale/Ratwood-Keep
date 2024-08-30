@@ -8,7 +8,6 @@
 	equip_delay_self = 10
 	bloody_icon_state = "bodyblood"
 	sewrepair = TRUE //Vrell - AFAIK, all cloaks are cloth ATM. Technically semi-less future-proof, but it removes a line of code from every subtype, which is worth it IMO.
-	flags_inv = HIDETAIL
 
 
 //////////////////////////
@@ -356,7 +355,7 @@
 
 /obj/item/clothing/cloak/stabard/bog
 	name = "bogman tabard"
-	desc = "A tabard colored in a glorius green of the mighty protectors of the BOG." // THE BOG DESERVES A BETTER DESCRIPTION!
+	desc = "A tabard worn by those that protect the citizenry from the horrors of the Terrorbog" // THE BOG DESERVES A BETTER DESCRIPTION!
 	color = CLOTHING_GREEN
 	detail_color = CLOTHING_DARK_GREEN
 
@@ -394,7 +393,7 @@
 	name = "jupon"
 	icon_state = "surcoat"
 
-/obj/item/clothing/cloak/stabard/surcoat/bailiff
+/obj/item/clothing/cloak/stabard/surcoat/marshal
 	color = "#641E16"
 
 /obj/item/clothing/cloak/stabard/surcoat/councillor
@@ -605,7 +604,7 @@
 	color = null
 	icon_state = "aproncook"
 	item_state = "aproncook"
-	body_parts_covered = GROIN
+	body_parts_covered = CHEST|GROIN
 	boobed = FALSE
 
 /*
@@ -667,12 +666,11 @@
 
 /obj/item/clothing/cloak/raincloak/mortus
 	name = "funeral cloak"
-	desc = "You're always shrouded by death."
+	desc = "A cloak worn by morticians on their solemn task of putting the dead to rest."
 	color = CLOTHING_BLACK
 
 /obj/item/clothing/cloak/raincloak/brown
 	color = CLOTHING_BROWN
-	sellprice = 25
 
 /obj/item/clothing/cloak/raincloak/green
 	color = CLOTHING_GREEN
@@ -685,14 +683,14 @@
 
 /obj/item/clothing/head/hooded/rainhood
 	name = "hood"
-	desc = "This one will shelter me from the weather and my identity too."
+	desc = "This one will shelter you from the weather and hide your identity too."
 	icon_state = "rain_hood"
 	item_state = "rain_hood"
 	slot_flags = ITEM_SLOT_HEAD
 	dynamic_hair_suffix = ""
 	edelay_type = 1
 	body_parts_covered = HEAD
-	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR|HIDEFACIALHAIR
+	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR|HIDEFACIALHAIR|HIDETAIL
 	block2add = FOV_BEHIND
 
 /obj/item/clothing/head/hooded/equipped(mob/user, slot)
@@ -802,7 +800,7 @@
 
 /obj/item/clothing/cloak/stole
 	name = "stole"
-	desc = ""
+	desc = "Garments of a priest, usually worn when giving mass to the people."
 	icon_state = "stole_gold"
 	sleeved = null
 	sleevetype = null
@@ -843,7 +841,7 @@
 
 /obj/item/clothing/cloak/half
 	name = "halfcloak"
-	desc = ""
+	desc = "A cloak designed to cover one half of the body predominantly over the other."
 	color = null
 	icon_state = "halfcloak"
 	alternate_worn_layer = CLOAK_BEHIND_LAYER

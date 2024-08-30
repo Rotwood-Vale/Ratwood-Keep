@@ -27,26 +27,25 @@
 	. = ..()
 //	. += span_notice("It is currently [open?"open, letting you pour liquids in.":"closed, letting you draw liquids."]")
 
-/obj/structure/fermenting_barrel/proc/makeWine(obj/item/reagent_containers/food/snacks/grown/fruit)
-	if(fruit.reagents)
-		fruit.reagents.remove_reagent(/datum/reagent/consumable/nutriment, fruit.reagents.total_volume)
-		fruit.reagents.trans_to(src, fruit.reagents.total_volume)
-	if(fruit.distill_reagent)
-		reagents.add_reagent(fruit.distill_reagent, fruit.distill_amt)
-	qdel(fruit)
+/obj/structure/fermenting_barrel/proc/makeWine(obj/item/reagent_containers/food/snacks/I)
+	if(I.reagents)
+		I.reagents.remove_reagent(/datum/reagent/consumable/nutriment, I.reagents.total_volume)
+		I.reagents.trans_to(src, I.reagents.total_volume)
+	if(I.distill_reagent)
+		reagents.add_reagent(I.distill_reagent, I.distill_amt)
+	qdel(I)
 	playsound(src, "bubbles", 100, TRUE)
 
-/obj/structure/fermenting_barrel/attackby(obj/item/I, mob/user, params)
-	var/obj/item/reagent_containers/food/snacks/grown/fruit = I
-	if(istype(fruit))
-		if(!fruit.can_distill)
+/obj/structure/fermenting_barrel/attackby(obj/item/reagent_containers/food/snacks/I, mob/user, params)
+	if(istype(I))
+		if(!I.can_distill)
 			to_chat(user, span_warning("I can't ferment this into anything."))
 			return TRUE
 		else if(!user.transferItemToLoc(I,src))
 			to_chat(user, span_warning("[I] is stuck to my hand!"))
 			return TRUE
 		to_chat(user, span_info("I place [I] into [src]."))
-		addtimer(CALLBACK(src, PROC_REF(makeWine), fruit), rand(1 MINUTES, 3 MINUTES))
+		addtimer(CALLBACK(src, PROC_REF(makeWine), I), rand(1 MINUTES, 3 MINUTES))
 		return TRUE
 	..()
 
@@ -69,13 +68,6 @@
 		icon_state = "barrel"
 	if(broken)
 		icon_state = "barrel_destroyed"
-
-/datum/crafting_recipe/fermenting_barrel
-	name = "Wooden Barrel"
-	result = /obj/structure/fermenting_barrel
-	reqs = list(/obj/item/stack/sheet/mineral/wood = 30)
-	time = 50
-	category = CAT_NONE
 
 /obj/structure/fermenting_barrel/random/water/Initialize()
 	. = ..()

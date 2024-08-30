@@ -37,7 +37,7 @@
 /obj/structure/closet/crate/chest/steward/bogguard/Initialize()
 	. = ..()
 	new /obj/item/clothing/cloak/stabard/bog(src)
-	new /obj/item/keyring/guard(src)
+	new /obj/item/keyring/bog_guard(src)
 	new /obj/item/clothing/suit/roguetown/armor/gambeson(src)
 	new /obj/item/rogueweapon/mace/cudgel(src)
 	new /obj/item/rope/chain(src)
@@ -52,7 +52,7 @@
 /obj/structure/closet/crate/chest/steward/townguard/Initialize()
 	. = ..()
 	new /obj/item/clothing/cloak/stabard/guard(src)
-	new /obj/item/keyring/guard(src)
+	new /obj/item/keyring/town_watch(src)
 	new /obj/item/clothing/suit/roguetown/armor/gambeson(src)
 	new /obj/item/rogueweapon/mace/cudgel(src)
 	new /obj/item/rope/chain(src)
@@ -72,6 +72,21 @@
 	new /obj/item/reagent_containers/glass/bottle/rogue/healthpot(src)
 	new /obj/item/reagent_containers/glass/bottle/rogue/healthpot(src)
 
+/datum/roguestock/import/perfume
+	name = "Crate of perfumes"
+	desc = "To keep the stench away."
+	item_type = /obj/structure/closet/crate/chest/steward/perfume
+	export_price = 60
+	importexport_amt = 1
+
+/obj/structure/closet/crate/chest/steward/perfume/Initialize()
+	. = ..()
+	new /obj/item/perfume/random(src)
+	new /obj/item/perfume/random(src)
+	new /obj/item/perfume/random(src)
+	new /obj/item/perfume/random(src)
+	new /obj/item/perfume/random(src)
+
 /datum/roguestock/import/knight
 	name = "Knight Equipment Crate"
 	desc = "Kit for a Knight."
@@ -89,7 +104,7 @@
 	new /obj/item/clothing/suit/roguetown/armor/chainmail(src)
 	new /obj/item/clothing/suit/roguetown/armor/plate/full(src)
 	new /obj/item/clothing/shoes/roguetown/boots/armor(src)
-	new /obj/item/keyring/guardcastle(src)
+	new /obj/item/keyring/knight(src)
 	new /obj/item/storage/belt/rogue/leather/hand(src)
 	new /obj/item/rogueweapon/sword/long(src)
 
@@ -111,7 +126,7 @@
 	new /obj/item/clothing/suit/roguetown/armor/chainmail(src)
 	new /obj/item/clothing/suit/roguetown/armor/plate/half(src)
 	new /obj/item/clothing/shoes/roguetown/boots/armor(src)
-	new /obj/item/keyring/guardcastle(src)
+	new /obj/item/keyring/man_at_arms(src)
 	new /obj/item/storage/belt/rogue/leather/hand(src)
 	new /obj/item/rogueweapon/spear(src)
 

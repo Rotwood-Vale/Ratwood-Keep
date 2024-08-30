@@ -74,7 +74,7 @@
   * This proc is dangerously laggy, avoid it or die
   */
 /proc/stars(n, pr)
-	n = html_encode(n)
+	n = strip_html_simple(n)
 	if (pr == null)
 		pr = 25
 	if (pr <= 0)
@@ -93,12 +93,12 @@
 			t = text("[]*", t)
 	if(n > MAX_BROADCAST_LEN)
 		t += "..." //signals missing text
-	return sanitize(t)
+	return t
 /**
   * Makes you speak like you're drunk
   */
 /proc/slur(n)
-	var/phrase = html_decode(n)
+	var/phrase = strip_html_simple(n)
 	var/leng = length_char(phrase)
 	var/counter=length_char(phrase)
 	var/newphrase=""
@@ -133,7 +133,7 @@
 
 /// Makes you talk like you got cult stunned, which is slurring but with some dark messages
 /proc/cultslur(n) // Inflicted on victims of a stun talisman
-	var/phrase = html_decode(n)
+	var/phrase = strip_html_simple(n)
 	var/leng = length_char(phrase)
 	var/counter=length_char(phrase)
 	var/newphrase=""
@@ -175,7 +175,7 @@
 
 ///Adds stuttering to the message passed in
 /proc/stutter(n)
-	var/te = html_decode(n)
+	var/te = strip_html_simple(n)
 	var/t = ""//placed before the message. Not really sure what it's for.
 	n = length_char(n)//length_char of the entire word
 	var/p = null
@@ -195,7 +195,7 @@
 						n_letter = text("[n_letter]-[n_letter]")
 		t = text("[t][n_letter]")//since the above is ran through for each letter, the text just adds up back to the original word.
 		p++//for each letter p is increased to find where the next letter will be.
-	return copytext_char(sanitize(t),1,MAX_MESSAGE_LEN)
+	return copytext_char(t,1,MAX_MESSAGE_LEN)
 
 ///Convert a message to derpy speak
 /proc/derpspeech(message, stuttering)
@@ -560,7 +560,7 @@
 		if(cmode)
 			playsound_local(src, 'sound/misc/comboff.ogg', 100)
 			SSdroning.play_area_sound(get_area(src), client)
-			cmode = FALSE
+			set_cmode(FALSE)
 		if(hud_used)
 			if(hud_used.cmode_button)
 				hud_used.cmode_button.update_icon()
@@ -568,11 +568,11 @@
 	if(cmode)
 		playsound_local(src, 'sound/misc/comboff.ogg', 100)
 		SSdroning.play_area_sound(get_area(src), client)
-		cmode = FALSE
+		set_cmode(FALSE)
 		if(client && HAS_TRAIT(src, TRAIT_SCREENSHAKE))
 			animate(client, pixel_y)
 	else
-		cmode = TRUE
+		set_cmode(TRUE)
 		playsound_local(src, 'sound/misc/combon.ogg', 100)
 		if(L.cmode_music)
 			SSdroning.play_combat_music(L.cmode_music, client)
@@ -582,6 +582,15 @@
 	if(hud_used)
 		if(hud_used.cmode_button)
 			hud_used.cmode_button.update_icon()
+
+/mob/proc/set_cmode(var/new_cmode)
+	if(cmode == new_cmode)
+		return
+	cmode = new_cmode
+	if(new_cmode)
+		SEND_SIGNAL(src, COMSIG_MOB_CMODE_ENABLED, src)
+	else
+		SEND_SIGNAL(src, COMSIG_MOB_CMODE_DISABLED, src)
 
 /mob
 	var/last_aimhchange = 0
@@ -964,3 +973,19 @@
 ///Can the mob see reagents inside of containers?
 /mob/proc/can_see_reagents()
 	return stat == DEAD || has_unlimited_silicon_privilege //Dead guys and silicons can always see reagents
+
+/mob/proc/get_role_title()
+	var/used_title
+	if(migrant_type)
+		var/datum/migrant_role/migrant = MIGRANT_ROLE(migrant_type)
+		used_title = migrant.name
+		if(migrant.advjob_examine && advjob)
+			used_title = advjob
+	else if(job)
+		var/datum/job/J = SSjob.GetJob(job)
+		used_title = J.title
+		if(J.f_title && (gender == FEMALE))
+			used_title = J.f_title
+		if(J.advjob_examine)
+			used_title = advjob
+	return used_title

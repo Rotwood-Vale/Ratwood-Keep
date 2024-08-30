@@ -32,6 +32,7 @@
 	var/pixelshifted = FALSE
 	var/pixelshift_x = 0
 	var/pixelshift_y = 0
+	var/pixelshift_layer = 0
 
 	var/lying = 0			//number of degrees. DO NOT USE THIS IN CHECKS. CHECK FOR MOBILITY FLAGS INSTEAD!!
 	var/lying_prev = 0		//last value of lying on update_mobility
@@ -166,6 +167,9 @@
 	var/list/death_trackers = list()
 
 	var/rot_type = /datum/component/rot/simple
+
+	var/list/mob_descriptors
+	var/list/custom_descriptors
 
 	/**This variable updated in mob_movement.dm primarily. Mainly a shitcode measure for existing shitcode because this is SHITCODE!
 	 * All it does is track when a mob is sneaking so we don't have to constantly reset alpha values as this fucks with how things are intended to be.

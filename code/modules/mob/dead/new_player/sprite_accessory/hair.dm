@@ -405,6 +405,11 @@
 	name = "Modern"
 	icon_state = "modern"
 
+/datum/sprite_accessory/hair/head/modern2
+	name = "Modern (New)"
+	icon_state = "modern2"
+
+
 /datum/sprite_accessory/hair/head/mohawk
 	name = "Mohawk"
 	icon_state = "mohawk"
@@ -824,6 +829,38 @@
 /datum/sprite_accessory/hair/head/singlebraid
 	name = "Single Braid"
 	icon_state = "singlebraid"
+
+/datum/sprite_accessory/hair/head/vulpkian
+	abstract_type = /datum/sprite_accessory/hair/head/vulpkian
+	icon = 'icons/mob/sprite_accessory/hair/vulpkian_hair.dmi'
+
+/datum/sprite_accessory/hair/head/vulpkian/anita
+	name = "Vulpkian Anita"
+	icon_state = "anita"
+
+/datum/sprite_accessory/hair/head/vulpkian/jagged
+	name = "Vulpkian Jagged"
+	icon_state = "jagged"
+
+/datum/sprite_accessory/hair/head/vulpkian/kajam1
+	name = "Vulpkian Kajam 1"
+	icon_state = "kajam1"
+
+/datum/sprite_accessory/hair/head/vulpkian/kajam2
+	name = "Vulpkian Kajam 2"
+	icon_state = "kajam2"
+
+/datum/sprite_accessory/hair/head/vulpkian/keid
+	name = "Vulpkian Keid"
+	icon_state = "keid"
+
+/datum/sprite_accessory/hair/head/vulpkian/mizar
+	name = "Vulpkian Mizar"
+	icon_state = "mizar"
+
+/datum/sprite_accessory/hair/head/vulpkian/raine
+	name = "Vulpkian Raine"
+	icon_state = "raine"
 
 /datum/sprite_accessory/hair/facial
 	abstract_type = /datum/sprite_accessory/hair/facial

@@ -50,6 +50,7 @@
 	var/species_icon = ""
 
 	var/animal_origin = null //for nonhuman bodypart (e.g. monkey)
+	var/prosthetic_prefix = "pr" // for unique prosthetic icons on mob
 	var/dismemberable = 1 //whether it can be dismembered with a weapon.
 	var/disableable = 1
 
@@ -84,6 +85,7 @@
 	var/skeletonized = FALSE
 
 	var/fingers = TRUE
+	var/organ_slowdown = 0 // Its here because this is first shared definition between two leg organ paths
 
 	/// Visaul markings to be rendered alongside the bodypart
 	var/list/markings
@@ -576,7 +578,7 @@
 		limb.icon_state = "pr_[body_zone]"
 		if(aux_zone)
 			if(!hideaux)
-				aux = image(limb.icon, "pr_[aux_zone]", -aux_layer, image_dir)
+				aux = image(limb.icon, "[prosthetic_prefix]_[aux_zone]", -aux_layer, image_dir)
 				. += aux
 
 
@@ -592,6 +594,15 @@
 			if(aux_zone && !hideaux)
 				aux.color = "#[draw_color]"
 	
+	var/draw_organ_features = TRUE
+	var/draw_bodypart_features = TRUE
+	if(owner && owner.dna)
+		var/datum/species/owner_species = owner.dna.species
+		if(NO_ORGAN_FEATURES in owner_species.species_traits)
+			draw_organ_features = FALSE
+		if(NO_BODYPART_FEATURES in owner_species.species_traits)
+			draw_bodypart_features = FALSE
+	
 	// Markings overlays
 	if(!skeletonized)
 		var/list/marking_overlays = get_markings_overlays(override_color)
@@ -599,7 +610,7 @@
 			. += marking_overlays
 	
 	// Organ overlays
-	if(!rotted && !skeletonized)
+	if(!rotted && !skeletonized && draw_organ_features)
 		for(var/obj/item/organ/organ as anything in get_organs())
 			if(!organ.is_visible())
 				continue
@@ -608,7 +619,7 @@
 				. += organ_appearance
 	
 	// Feature overlays
-	if(!skeletonized)
+	if(!skeletonized && draw_bodypart_features)
 		for(var/datum/bodypart_feature/feature as anything in bodypart_features)
 			var/overlays = feature.get_bodypart_overlay(src)
 			if(!overlays)
