@@ -46,7 +46,6 @@
 	/// Type of organ DNA that this organ will create.
 	var/organ_dna_type = /datum/organ_dna
 
-
 /obj/item/organ/proc/Insert(mob/living/carbon/M, special = 0, drop_if_replaced = TRUE)
 	if(!iscarbon(M) || owner == M)
 		return
@@ -132,6 +131,7 @@
 	icon_state = "appendix"
 	icon = 'icons/obj/surgery.dmi'
 	list_reagents = list(/datum/reagent/consumable/nutriment = 5, /datum/reagent/organpoison = 1)
+	grind_results = list(/datum/reagent/organpoison = 3)
 	foodtype = RAW | MEAT | GROSS
 	eat_effect = /datum/status_effect/debuff/uncookedfood
 

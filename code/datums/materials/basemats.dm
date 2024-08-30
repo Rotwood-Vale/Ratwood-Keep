@@ -134,7 +134,7 @@ Unless you know what you're doing, only use the first three numbers. They're in 
 /datum/material/bananium/on_applied(atom/source, amount, material_flags)
 	. = ..()
 	source.AddComponent(/datum/component/squeak, list('sound/blank.ogg'=1), 50)
-	source.AddComponent(/datum/component/slippery, min(amount / 10, 80))
+	source.AddComponent(/datum/component/slippery, min(amount / 10, 80), 100)
 
 
 /datum/material/bananium/on_removed(atom/source, amount, material_flags)

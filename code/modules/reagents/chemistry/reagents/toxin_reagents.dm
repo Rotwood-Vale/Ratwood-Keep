@@ -455,21 +455,26 @@
 	..()
 
 /datum/reagent/toxin/fentanyl
-	name = "Fentanyl"
-	description = "Fentanyl will inhibit brain function and cause toxin damage before eventually knocking out its victim."
+	name = "Goblin"
+	description = "Goblin will inhibit brain function and cause toxin damage before eventually knocking out its victim."
 	reagent_state = LIQUID
 	color = "#64916E"
 	metabolization_rate = 0.5 * REAGENTS_METABOLISM
 	toxpwr = 0
 
+/datum/reagent/toxin/fentanyl/on_mob_metabolize(mob/living/M)
+	M.add_stress(/datum/stressevent/high)
+	..()
+
 /datum/reagent/toxin/fentanyl/on_mob_life(mob/living/carbon/M)
 	M.adjustOrganLoss(ORGAN_SLOT_BRAIN, 3*REM, 150)
 	if(M.toxloss <= 60)
 		M.adjustToxLoss(1*REM, 0)
-	if(current_cycle >= 4)
-		SEND_SIGNAL(M, COMSIG_ADD_MOOD_EVENT, "smacked out", /datum/mood_event/narcotic_heavy, name)
 	if(current_cycle >= 18)
 		M.Sleeping(40, 0)
+	M.apply_status_effect(/datum/status_effect/debuff/goblingas)
+	if(M.has_flaw(/datum/charflaw/addiction/junkie))
+		M.sate_addiction()
 	..()
 	return TRUE
 
@@ -488,7 +493,7 @@
 	return ..()
 
 /datum/reagent/toxin/killersice
-	name = "killersice"
+	name = "Killer's Ice"
 	description = "killersice"
 	reagent_state = LIQUID
 	color = "#FFFFFF"
@@ -620,11 +625,11 @@
 	return ..()
 
 /datum/reagent/toxin/amanitin
-	name = "Amanitin"
+	name = "Mushroom Toxin"
 	description = "A very powerful delayed toxin. Upon full metabolization, a massive amount of toxin damage will be dealt depending on how long it has been in the victim's bloodstream."
 	silent_toxin = TRUE
 	reagent_state = LIQUID
-	color = "#FFFFFF"
+	color = "#daabab"
 	toxpwr = 0
 	metabolization_rate = 0.5 * REAGENTS_METABOLISM
 

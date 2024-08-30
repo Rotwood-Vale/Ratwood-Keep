@@ -60,7 +60,7 @@
 #define SPAN_ELF "elf"
 #define SPAN_SAND "celestial"
 #define SPAN_DELF "delf"
-#define SPAN_HELL "infernal"
+#define SPAN_HELL "hellspeak"
 #define SPAN_BEAST "beast"
 #define SPAN_ORC "orc"
 #define SPAN_DRACONIC "reptile"

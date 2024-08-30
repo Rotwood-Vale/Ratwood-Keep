@@ -731,12 +731,7 @@
 	if(SM.sentience_type != animal_type)
 		to_chat(user, span_warning("I cannot transfer my consciousness to [SM].") )
 		return ..()
-	var/jb = is_banned_from(user.ckey, ROLE_MIND_TRANSFER)
 	if(QDELETED(src) || QDELETED(M) || QDELETED(user))
-		return
-
-	if(jb)
-		to_chat(user, span_warning("My mind goes blank as you attempt to use the potion."))
 		return
 
 	prompted = 1

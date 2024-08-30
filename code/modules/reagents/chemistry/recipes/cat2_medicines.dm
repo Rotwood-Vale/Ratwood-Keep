@@ -55,7 +55,7 @@
 	required_reagents = list(/datum/reagent/nitrogen = 1, /datum/reagent/potassium = 1, /datum/reagent/aluminium = 1)
 
 /datum/chemical_reaction/multiver
-	name = "Multiver"
+	name = "Charcoal"
 	id = /datum/reagent/medicine/C2/multiver
 	results = list(/datum/reagent/medicine/C2/multiver = 2)
 	required_reagents = list(/datum/reagent/ash = 1, /datum/reagent/consumable/sodiumchloride = 1)

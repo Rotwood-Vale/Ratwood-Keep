@@ -398,6 +398,21 @@
 //	queue_smooth(src)
 	. = ..()
 
+/turf/open/floor/rogue/dirt/nrich
+	name = "enriched soil"
+	desc = "transplanted dirt, made into a pile and smoothed over to grow crops."
+	icon_state = "dirt"
+	layer = MID_TURF_LAYER
+	footstep = FOOTSTEP_MUD
+	barefootstep = FOOTSTEP_MUD
+	heavyfootstep = FOOTSTEP_MUD
+	tiled_dirt = FALSE
+	landsound = 'sound/foley/jumpland/dirtland.wav'
+	smooth = SMOOTH_FALSE
+	neighborlay = "dirtedge"
+	slowdown = 0
+	muddy = FALSE
+
 /turf/open/floor/rogue/underworld/road
 	name = "ash"
 	desc = "Smells like burnt wood."

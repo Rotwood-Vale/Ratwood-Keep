@@ -342,5 +342,8 @@ GLOBAL_LIST_INIT(stone_personality_descs, list(
 /obj/item/natural/rock/salt
 	mineralType = /obj/item/reagent_containers/powder/salt
 
+/obj/item/natural/rock/cinnabar
+	mineralType = /obj/item/rogueore/cinnabar
+
 /obj/item/natural/rock/gem
 	mineralType = /obj/item/roguegem/random
