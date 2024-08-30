@@ -1048,12 +1048,6 @@
 /obj/item/natural/cloth,
 /obj/item/natural/cloth,
 /obj/item/natural/cloth,
-/obj/structure/closet/crate/roguecloset,
-/obj/item/reagent_containers/food/snacks/butter,
-/obj/item/flashlight/flare/torch/metal,
-/obj/item/natural/cloth,
-/obj/item/natural/cloth,
-/obj/item/natural/cloth,
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/basement)
 "bmL" = (
@@ -7036,7 +7030,7 @@
 	lockid = "manor";
 	name = "Feast Hall"
 	},
-/turf/closed/wall/mineral/rogue/decostone/long,
+/turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/town/manor)
 "hNJ" = (
 /obj/structure/bed/rogue/inn,
@@ -10783,7 +10777,6 @@
 	icon_state = "longtable_mid"
 	},
 /obj/item/book/rogue/cooking,
-/obj/structure/fermenting_barrel/water,
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/town/manor)
 "mrl" = (
@@ -11008,12 +11001,14 @@
 /turf/open/floor/rogue/churchmarble,
 /area/rogue/indoors/town/shop)
 "mLd" = (
-/obj/structure/mineral_door/wood{
-	locked = 1;
-	lockid = "walls"
-	},
-/turf/closed/wall/mineral/rogue/stone,
-/area/rogue/outdoors/town)
+/obj/structure/closet/crate/roguecloset,
+/obj/item/reagent_containers/food/snacks/butter,
+/obj/item/flashlight/flare/torch/metal,
+/obj/item/natural/cloth,
+/obj/item/natural/cloth,
+/obj/item/natural/cloth,
+/turf/open/floor/rogue/blocks,
+/area/rogue/under/town/basement)
 "mLk" = (
 /obj/structure/closet/crate/chest{
 	lockid = "keep_armory"
@@ -13075,6 +13070,10 @@
 "oXL" = (
 /turf/closed/mineral/rogue/salt,
 /area/rogue/outdoors/bog)
+"oXN" = (
+/obj/structure/flora/roguegrass/bush/wall/tall,
+/turf/open/floor/rogue/dirt/road,
+/area/rogue/outdoors/town)
 "oXU" = (
 /turf/open/floor/rogue/blocks,
 /area/rogue/indoors/town/bath)
@@ -13161,7 +13160,6 @@
 	icon_state = "longtable_mid"
 	},
 /obj/item/rogueweapon/huntingknife/cleaver,
-/obj/structure/fermenting_barrel/water,
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/town/manor)
 "pbJ" = (
@@ -187950,7 +187948,7 @@ iTw
 iTw
 tHV
 cBf
-cBf
+mLd
 txa
 cBf
 iTw
@@ -282409,7 +282407,7 @@ sHm
 wVI
 rfx
 rfx
-mLd
+gmG
 rfx
 rfx
 rfx
@@ -282422,7 +282420,7 @@ rfx
 rfx
 rfx
 rfx
-mLd
+gmG
 esR
 esR
 esR
@@ -282826,16 +282824,16 @@ wbg
 wbg
 wbg
 wbg
-aOn
-mwE
-mwE
-mwE
-mwE
-mwE
-mwE
-mwE
-mwE
-mLd
+wbg
+wbg
+wbg
+wbg
+wbg
+wbg
+wbg
+wbg
+wbg
+gmG
 wbg
 wbg
 rfx
@@ -287256,7 +287254,7 @@ wbg
 wbg
 wbg
 wbg
-mwE
+hOh
 esR
 wbg
 wbg
@@ -287658,7 +287656,7 @@ wbg
 wbg
 wbg
 wbg
-mwE
+hOh
 esR
 wbg
 wbg
@@ -288060,7 +288058,7 @@ wbg
 wbg
 wVI
 wbg
-mwE
+hOh
 rfx
 wbg
 wbg
@@ -288462,7 +288460,7 @@ wbg
 wbg
 wbg
 wbg
-mwE
+wbg
 gmG
 wbg
 wbg
@@ -295698,7 +295696,7 @@ mwE
 wbg
 wbg
 wbg
-aOn
+oXN
 rfx
 njq
 wbg
@@ -296100,7 +296098,7 @@ wbg
 wbg
 wbg
 wbg
-mwE
+hOh
 rfx
 wbg
 wbg
@@ -296502,7 +296500,7 @@ wbg
 wbg
 wbg
 tbi
-mwE
+hOh
 rfx
 wbg
 wbg
@@ -299688,7 +299686,7 @@ rfx
 rfx
 rfx
 rfx
-mLd
+gmG
 rfx
 rfx
 rfx
