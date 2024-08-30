@@ -10,7 +10,6 @@
 	)
 	outfit = /datum/outfit/job/roguetown/adventurer/sentinal
 	maximum_possible_slots = 5
-	pickprob = 50
 	traits_applied = list(TRAIT_MEDIUMARMOR, TRAIT_DODGEEXPERT)
 	category_tags = list(CTAG_ADVENTURER)
 
@@ -30,12 +29,8 @@
 	H.mind.adjust_skillrank(/datum/skill/misc/riding, 3, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/sewing, 3, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/medicine, 4, TRUE)
-	if(H.gender == MALE)
-		pants = /obj/item/clothing/under/roguetown/trou/leather
-		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
-	else
-		pants = /obj/item/clothing/under/roguetown/tights/black
-		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
+	pants = /obj/item/clothing/under/roguetown/trou/leather
+	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
 	gloves = /obj/item/clothing/gloves/roguetown/leather
 	wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
 	belt = /obj/item/storage/belt/rogue/leather

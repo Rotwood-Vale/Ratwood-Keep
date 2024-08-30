@@ -8,7 +8,6 @@
 	allowed_races = RACES_ALL_KINDS
 	outfit = /datum/outfit/job/roguetown/adventurer/puritan
 	maximum_possible_slots = 2
-	pickprob = 11
 	traits_applied = list(TRAIT_MEDIUMARMOR)
 	category_tags = list(CTAG_ADVENTURER)
 
@@ -27,11 +26,11 @@
 	head = /obj/item/clothing/head/roguetown/puritan
 	gloves = /obj/item/clothing/gloves/roguetown/leather
 	beltl = /obj/item/rogueweapon/sword/rapier
-	backl = /obj/item/storage/backpack/rogue/satchel
+	backl = /obj/item/storage/backpack/rogue/satchel/black
 	backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger/silver = 1)
 
 	if(H.mind)
-		H.mind.adjust_skillrank(/datum/skill/combat/swords, rand(4,5), TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/swords, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/maces, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/bows, 2, TRUE)
@@ -48,8 +47,8 @@
 		H.mind.adjust_skillrank(/datum/skill/craft/traps, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/medicine, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 2, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/combat/whipsflails, rand(4,5), TRUE)
-		H.change_stat("intelligence", 1)
+		H.mind.adjust_skillrank(/datum/skill/combat/whipsflails, 4, TRUE)
+		H.change_stat("intelligence", 2)
 		H.change_stat("strength", 1)
 		H.change_stat("endurance", 1)
 		H.change_stat("speed", 1)
