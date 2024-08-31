@@ -689,6 +689,11 @@
 		to_chat(src, span_warning("I'm grabbed!"))
 		return
 	if(resting)
+		if(isseelie(src))
+			var/obj/item/organ/wings/Wing = src.getorganslot(ORGAN_SLOT_WINGS)
+			if(Wing == null)
+				to_chat(src, span_warning("I can't stand without my wings!"))
+				return
 		if(!IsKnockdown() && !IsStun() && !IsParalyzed())
 			src.visible_message(span_notice("[src] stands up."))
 			if(move_after(src, 20, target = src))
@@ -707,6 +712,11 @@
 		to_chat(src, span_warning("I'm grabbed!"))
 		return
 	if(resting)
+		if(isseelie(src))
+			var/obj/item/organ/wings/Wing = src.getorganslot(ORGAN_SLOT_WINGS)
+			if(Wing == null)
+				to_chat(src, span_warning("I can't stand without my wings!"))
+				return
 		if(!IsKnockdown() && !IsStun() && !IsParalyzed())
 			src.visible_message(span_info("[src] begins to stand up."))
 			if(move_after(src, 20, target = src))
