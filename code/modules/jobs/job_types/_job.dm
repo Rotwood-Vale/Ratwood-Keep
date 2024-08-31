@@ -123,7 +123,7 @@
 	var/immune_to_genderswap = FALSE
 
 /*
-	How this works, its CTAG_DEFINE = amount_to_attempt_to_role 
+	How this works, its CTAG_DEFINE = amount_to_attempt_to_role
 	EX: advclass_cat_rolls = list(CTAG_PILGRIM = 5, CTAG_ADVENTURER = 5)
 	You will still need to contact the subsystem though
 */
@@ -199,29 +199,9 @@
 
 	if(cmode_music)
 		H.cmode_music = cmode_music
-/* This is stupid as hell. I am going to wring Vrell's neck.
-	//Vrell - Removing people's bits if their role doesn't allow it.
-	if(!allow_custom_genitals)
-		var/obj/item/organ/organ_to_remove = null
-		if(H.gender == MALE)
-			organ_to_remove = H.getorganslot(ORGAN_SLOT_BREASTS)
-			if(organ_to_remove)
-				organ_to_remove.Remove(H)
-				qdel(organ_to_remove)
-			organ_to_remove = H.getorganslot(ORGAN_SLOT_VAGINA)
-			if(organ_to_remove)
-				organ_to_remove.Remove(H)
-				qdel(organ_to_remove)
-		else
-			organ_to_remove = H.getorganslot(ORGAN_SLOT_PENIS)
-			if(organ_to_remove)
-				organ_to_remove.Remove(H)
-				qdel(organ_to_remove)
-			organ_to_remove = H.getorganslot(ORGAN_SLOT_TESTICLES)
-			if(organ_to_remove)
-				organ_to_remove.Remove(H)
-				qdel(organ_to_remove)
-*/
+
+	if(!H.mind.special_role)
+		GLOB.actors_list[H.mobid] = "[H.real_name] as [H.mind.assigned_role]<BR>"
 
 /mob/living/carbon/human/proc/add_credit()
 	if(!mind || !client)
