@@ -102,3 +102,11 @@
 	desc = "I need to pray to my Patron, their blessings are stronger."
 	time = 40 MINUTES
 	needsate_text = "Time to pray to my Patron."
+
+/// SADIST
+
+/datum/charflaw/addiction/sadist
+	name = "Sadist"
+	desc = "There is no greater pleasure than the suffering of another."
+	time = 40 MINUTES
+	needsate_text = "I need to hear someone whimper."
