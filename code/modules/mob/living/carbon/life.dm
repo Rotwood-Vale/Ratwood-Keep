@@ -122,8 +122,10 @@
 				continue
 			if(stress_amt > 0 && !H.has_status_effect(/datum/status_effect/buff/seelie/sad))
 				H.apply_status_effect(/datum/status_effect/buff/seelie/sad)
+				H.remove_status_effect(/datum/status_effect/buff/seelie/happy)
 			if(stress_amt < 1 && !H.has_status_effect(/datum/status_effect/buff/seelie/happy))
 				H.apply_status_effect(/datum/status_effect/buff/seelie/happy)
+				H.remove_status_effect(/datum/status_effect/buff/seelie/sad)
 	//Updates the number of stored chemicals for powers
 //	handle_changeling()
 
