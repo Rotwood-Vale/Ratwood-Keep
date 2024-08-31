@@ -105,7 +105,7 @@ obj/effect/proc_holder/spell/targeted/static_room/cast(list/targets, mob/user = 
 /obj/effect/proc_holder/spell/invoked/strip/cast(list/targets, mob/user)
 	. = ..()
 	user.emote("giggle")
-	var/pick = rand(1,3)
+	var/pick = rand(1,3)//Now it randomly strips shoes, hats or gloves!
 	var/mob/living/target = targets[1]
 	if(iscarbon(target))
 		switch(pick)
