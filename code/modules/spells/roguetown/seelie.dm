@@ -93,7 +93,7 @@ obj/effect/proc_holder/spell/targeted/static_room/cast(list/targets, mob/user = 
 */
 
 /obj/effect/proc_holder/spell/invoked/strip
-	name = "Strip Shirt"
+	name = "Strip Clothes"
 	overlay_state = "bcry"
 	releasedrain = 80
 	charge_max = 6 MINUTES
@@ -105,14 +105,20 @@ obj/effect/proc_holder/spell/targeted/static_room/cast(list/targets, mob/user = 
 /obj/effect/proc_holder/spell/invoked/strip/cast(list/targets, mob/user)
 	. = ..()
 	user.emote("giggle")
-	if(iscarbon(targets[1]))
-		var/mob/living/target = targets[1]
-		var/obj/item/object = target.get_item_by_slot(SLOT_ARMOR)
-		if(istype(object, /obj/item/clothing/suit/roguetown/shirt))
-			target.dropItemToGround(object)
-		object = target.get_item_by_slot(SLOT_SHIRT)
-		if(istype(object, /obj/item/clothing/suit/roguetown/shirt))
-			target.dropItemToGround(object)
+	var/pick = rand(1,3)
+	var/mob/living/target = targets[1]
+	if(iscarbon(target))
+		switch(pick)
+			if (1)
+				var/obj/item/object = target.get_item_by_slot(SLOT_GLOVES)
+				target.dropItemToGround(object)
+			if(2)
+				var/obj/item/object = target.get_item_by_slot(SLOT_SHOES)
+				target.dropItemToGround(object)
+			if(3)
+				var/obj/item/object = target.get_item_by_slot(SLOT_HEAD)
+				if(!istype(object, /obj/item/clothing/head/roguetown/helmet))//Can't take helmets!
+					target.dropItemToGround(object)
 	return TRUE
 
 /obj/effect/proc_holder/spell/invoked/drain_stam
