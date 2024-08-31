@@ -1855,6 +1855,7 @@
 #include "code\modules\cargo\packsrogue\armor.dm"
 #include "code\modules\cargo\packsrogue\food.dm"
 #include "code\modules\cargo\packsrogue\luxury.dm"
+#include "code\modules\cargo\packsrogue\rawmat.dm"
 #include "code\modules\cargo\packsrogue\seeds.dm"
 #include "code\modules\cargo\packsrogue\tools.dm"
 #include "code\modules\cargo\packsrogue\wardrobe.dm"
