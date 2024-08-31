@@ -189,23 +189,3 @@
 /datum/mood_event/area/add_effects(_mood_change, _description)
 	mood_change = _mood_change
 	description = _description
-
-/datum/mood_event/puzzle_weak
-	description = "<span class='nicegreen'>That puzzle was a nice distraction from this drudgery.</span>\n"
-	mood_change = 1
-	timeout = 5 MINUTES
-
-/datum/mood_event/puzzle_medium
-	description = "<span class='nicegreen'>I solved a slightly difficult puzzle. If only my actual problems were so easy.</span>\n"
-	mood_change = 1
-	timeout = 10 MINUTES
-
-/datum/mood_event/puzzle_hard
-	description = "<span class='nicegreen'>I solved a rather challenging puzzle.</span>\n"
-	mood_change = 3
-	timeout = 5 MINUTES
-
-/datum/mood_event/puzzle_impossible
-	description = "<span class='nicegreen'>I solved an extremely difficult puzzle. Xylix is smiling at me, and surely even Noc must find it impressive.</span>\n"
-	mood_change = 2
-	timeout = 30 MINUTES

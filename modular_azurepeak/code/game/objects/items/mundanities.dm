@@ -4,7 +4,7 @@
 
 
 obj/item/mundane/puzzlebox/easy
-	name = "wooden puzzle-box"
+	name = "\improper wooden puzzle-box"
 	desc = "A puzzle box."
 	icon = 'modular_azurepeak/icons/obj/items/mundanities.dmi'
 	icon_state = "wood_box"
@@ -21,18 +21,18 @@ obj/item/mundane/puzzlebox/easy/Initialize()
 
 
 obj/item/mundane/puzzlebox/easy/attack_self(mob/living/user)
-	playsound(src.loc, 'sound/items/wood_sharpen.ogg', 75, TRUE)
-	playsound(src.loc, 'sound/items/visor.ogg', 75, TRUE)
 	var/ckey = user.ckey
 	if(ckey in finished_ckeys)
 		to_chat(user, span_warning("I've already tried my hand at [src]."))
 		return
+	playsound(src.loc, 'sound/items/wood_sharpen.ogg', 75, TRUE)
+	playsound(src.loc, 'sound/items/visor.ogg', 75, TRUE)
 	if (alert(user, "My fingers trace the outside of this box. It looks of average difficulty. Do I try to solve it?", "ROGUETOWN", "Yes", "No") != "Yes")
 		return
 	if(do_after(user,70, target = src))
 		if((dice_roll) <= user.STAINT)
 			to_chat(user, span_notice("I solve [src] fairly easily. I feel rather satisfied."))
-			SEND_SIGNAL(user, COMSIG_ADD_MOOD_EVENT, "medium_puzzle", /datum/mood_event/puzzle_medium)
+			user.add_stress(/datum/mood_event/puzzle_easy)
 			finished_ckeys += ckey
 			playsound(src.loc, 'sound/foley/doors/lock.ogg', 75, TRUE)
 		else
@@ -44,7 +44,7 @@ obj/item/mundane/puzzlebox/easy/attack_self(mob/living/user)
 //medium
 
 obj/item/mundane/puzzlebox/medium
-	name = "ebony puzzle-box"
+	name = "\improper ebony puzzle-box"
 	icon = 'modular_azurepeak/icons/obj/items/mundanities.dmi'
 	icon_state = "ebon_box"
 	var/fluff_desc = null
@@ -59,22 +59,22 @@ obj/item/mundane/puzzlebox/medium/Initialize()
 	desc += " [fluff_desc]"
 
 obj/item/mundane/puzzlebox/medium/attack_self(mob/living/user)
-	playsound(src.loc, 'sound/items/wood_sharpen.ogg', 75, TRUE)
-	playsound(src.loc, 'sound/items/visor.ogg', 75, TRUE)
 	var/ckey = user.ckey
 	if(ckey in finished_ckeys)
 		to_chat(user, span_warning("I've already tried my hand at [src]."))
 		return
+	playsound(src.loc, 'sound/items/wood_sharpen.ogg', 75, TRUE)
+	playsound(src.loc, 'sound/items/visor.ogg', 75, TRUE)
 	if (alert(user, "My fingers trace the outside of this box. It looks of average difficulty. Do I try to solve it?", "ROGUETOWN", "Yes", "No") != "Yes")
 		return
 	if(do_after(user,70, target = src))
 		if((dice_roll) <= user.STAINT)
-			to_chat(user, span_notice("I solve \the [src] fairly easily. I feel rather satisfied."))
-			SEND_SIGNAL(user, COMSIG_ADD_MOOD_EVENT, "medium_puzzle", /datum/mood_event/puzzle_medium)
+			to_chat(user, span_notice("I solve [src] fairly easily. I feel rather satisfied."))
+			user.add_stress(/datum/mood_event/puzzle_medium)
 			finished_ckeys += ckey
 			playsound(src.loc, 'sound/foley/doors/lock.ogg', 75, TRUE)
 		else
-			to_chat(user, span_warning("I can't solve \the [src]. Cack! Frustrated, I leave it alone."))
+			to_chat(user, span_warning("I can't solve [src]. Cack! Frustrated, I leave it alone."))
 			finished_ckeys += ckey
 			playsound(src.loc, 'sound/foley/doors/lockrattle.ogg', 75, TRUE)
 
@@ -84,7 +84,7 @@ obj/item/mundane/puzzlebox/medium/attack_self(mob/living/user)
 
 
 obj/item/mundane/puzzlebox/impossible //literally nearly impossible to solve - if you do, you get a fairly lengthy buff or a stat boost.
-	name = "royal puzzle-box"
+	name = "\improper royal puzzle-box"
 	icon = 'modular_azurepeak/icons/obj/items/mundanities.dmi'
 	icon_state = "grimace_box"
 	var/fluff_desc = null
@@ -98,19 +98,19 @@ obj/item/mundane/puzzlebox/impossible/Initialize()
 	desc += " [fluff_desc]"
 
 obj/item/mundane/puzzlebox/impossible/attack_self(mob/living/user)
-	playsound(src.loc, 'sound/items/wood_sharpen.ogg', 75, TRUE)
-	playsound(src.loc, 'sound/items/visor.ogg', 75, TRUE)
 	var/ckey = user.ckey
 	if(ckey in finished_ckeys)
 		to_chat(user, span_warning("I've already tried my hand at [src]."))
 		return
+	playsound(src.loc, 'sound/items/wood_sharpen.ogg', 75, TRUE)
+	playsound(src.loc, 'sound/items/visor.ogg', 75, TRUE)
 	if (alert(user, "My fingers trace the outside of this box. It looks nearly impossible. Do I try to solve it?", "ROGUETOWN", "Yes", "No") != "Yes")
 		return
 	if(do_after(user,100, target = src))
 		if((dice_roll) + 5 <= user.STAINT)
 			if(prob(66))
 				to_chat(user, span_notice("After much deliberation, I solve \the [src]!"))
-				SEND_SIGNAL(user, COMSIG_ADD_MOOD_EVENT, "medium_puzzle", /datum/mood_event/puzzle_impossible)
+				user.add_stress(/datum/mood_event/puzzle_impossible)
 				finished_ckeys += ckey
 				playsound(src.loc, 'sound/foley/doors/lockrattle.ogg', 75, TRUE)
 			else
@@ -124,7 +124,7 @@ obj/item/mundane/puzzlebox/impossible/attack_self(mob/living/user)
 				playsound(src.loc, 'sound/foley/doors/lock.ogg', 75, TRUE)
 				playsound(src.loc, 'sound/items/visor.ogg', 75, TRUE)
 		else
-			to_chat(user, span_warning("I can't solve \the [src]. Cack! Frustrated, I leave it alone."))
+			to_chat(user, span_warning("I can't solve [src]. Cack! Frustrated, I leave it alone."))
 			finished_ckeys += ckey
 			playsound(src.loc, 'sound/foley/doors/lockrattle.ogg', 75, TRUE)
 
