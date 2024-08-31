@@ -2,7 +2,7 @@
 
 //easy
 
-/*
+
 obj/item/mundane/puzzlebox/easy
 	name = "wooden puzzle-box"
 	desc = "A puzzle box."
@@ -15,27 +15,26 @@ obj/item/mundane/puzzlebox/easy
 
 obj/item/mundane/puzzlebox/easy/Initialize()
 	. = ..()
-	dice_roll = rand(6,20)
+	dice_roll = rand(6,15)
 	fluff_desc = pick("It, frankly, looks rather depressing.","I can see an engraving of Psydon sending the Comet Syon on the side.","It doesn't look so difficult.","It's dusty and boring.","Why do I want to play with this for hours?","I could probably get a vagrant to solve this.","It looks like it was made for fools.")
 	desc += " [fluff_desc]"
 
 
-obj/item/mundane/puzzlebox/easy/attack_self(mob/user)
+obj/item/mundane/puzzlebox/easy/attack_self(mob/living/user)
 	var/ckey = user.ckey
 	if(ckey in finished_ckeys)
 		to_chat(user, span_warning("I've already tried my hand at \the [src]."))
-	if(alert("My fingers trace the outside of this box. It looks of average difficulty. Do I try to solve it? \n", "", "Yes", "No"))
-		if(alert != "Yes")
-			return
-		else if(do_after(user,50, target = src))
-			if((dice_roll) - 5 <= user.STAINT)
-				to_chat(user, span_notice("I solve \the [src] fairly easily."))
-				SEND_SIGNAL(user, COMSIG_ADD_MOOD_EVENT, "weak_puzzle", /datum/mood_event/puzzle_weak)
-				finished_ckeys += ckey
-			else
-				to_chat(user, span_warning("I can't solve \the [src]. Cack! Frustrated, I leave it alone."))
-				finished_ckeys += ckey
-*/
+	if (alert(user, "My fingers trace the outside of this box. It looks of average difficulty. Do I try to solve it?", "ROGUETOWN", "Yes", "No") != "Yes")
+		return
+	if(do_after(user,70, target = src))
+		if((dice_roll) <= user.STAINT)
+			to_chat(user, span_notice("I solve \the [src] fairly easily. I feel rather satisfied."))
+			SEND_SIGNAL(user, COMSIG_ADD_MOOD_EVENT, "medium_puzzle", /datum/mood_event/puzzle_medium)
+			finished_ckeys += ckey
+		else
+			to_chat(user, span_warning("I can't solve \the [src]. Cack! Frustrated, I leave it alone."))
+			finished_ckeys += ckey
+
 
 //medium
 
@@ -54,7 +53,7 @@ obj/item/mundane/puzzlebox/medium/Initialize()
 	fluff_desc = pick("Its surface shines with polished ebony.","I can see an engraving of a Snow-Elf on the side.","It looks like it could challenge an average man.","I wish my personality was like this box's.","Why do I want to play with this for hours?","I could probably sell this to a wizard's apprentice.","It looks...sufficient.")
 	desc += " [fluff_desc]"
 
-obj/item/mundane/puzzlebox/medium/attack_self(mob/user)
+obj/item/mundane/puzzlebox/medium/attack_self(mob/living/user)
 	var/ckey = user.ckey
 	if(ckey in finished_ckeys)
 		to_chat(user, span_warning("I've already tried my hand at \the [src]."))
@@ -88,7 +87,7 @@ obj/item/mundane/puzzlebox/impossible/Initialize()
 	fluff_desc = pick("It, frankly, looks nearly impossible.","Its centerpiece is that of Astrata banishing a heretic from this world.","Without doubt, this is rather befuddling.","It looks arcane and nearly-impossible.","Why do I feel like I could try for hours and not succeed at this?","Even a bored archivist would probably have trouble with this one.","It looks nearly impossible.")
 	desc += " [fluff_desc]"
 
-obj/item/mundane/puzzlebox/impossible/attack_self(mob/user)
+obj/item/mundane/puzzlebox/impossible/attack_self(mob/living/user)
 	var/ckey = user.ckey
 	if(ckey in finished_ckeys)
 		to_chat(user, span_warning("I've already tried my hand at \the [src]."))
@@ -96,7 +95,7 @@ obj/item/mundane/puzzlebox/impossible/attack_self(mob/user)
 		return
 	if(do_after(user,100, target = src))
 		if((dice_roll) + 5 <= user.STAINT)
-			if prob(66)
+			if(prob(66))
 				to_chat(user, span_notice("After much deliberation, I solve \the [src]!"))
 				SEND_SIGNAL(user, COMSIG_ADD_MOOD_EVENT, "medium_puzzle", /datum/mood_event/puzzle_impossible)
 				finished_ckeys += ckey
@@ -107,7 +106,6 @@ obj/item/mundane/puzzlebox/impossible/attack_self(mob/user)
 				user.STASPD += rand(0,4)
 				user.STACON += rand(0,4)
 				user.STAEND += rand(0,4)
-				user.STALCK -= rand(1,2) //you used up all the luck you had dude
 				finished_ckeys += ckey
 		else
 			to_chat(user, span_warning("I can't solve \the [src]. Cack! Frustrated, I leave it alone."))
