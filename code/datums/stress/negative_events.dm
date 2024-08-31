@@ -236,3 +236,8 @@
 	stressadd = 10
 	desc = span_blue("I need another hit.")
 	timer = 1 MINUTES
+
+/datum/stressevent/puzzle_fail
+	stressadd = 1
+	desc = list(span_red("I wasted my time on that foolish box."),span_red("Damned jester-box."))
+	timer = 5 MINUTES
