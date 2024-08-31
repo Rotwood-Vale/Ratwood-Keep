@@ -3,7 +3,7 @@
 //easy
 
 
-obj/item/mundane/puzzlebox/easy
+/obj/item/mundane/puzzlebox/easy
 	name = "\improper wooden puzzle-box"
 	desc = "A puzzle box."
 	icon = 'modular_azurepeak/icons/obj/items/mundanities.dmi'
@@ -14,14 +14,14 @@ obj/item/mundane/puzzlebox/easy
 	var/alert = null
 	sellprice = 5
 
-obj/item/mundane/puzzlebox/easy/Initialize()
+/obj/item/mundane/puzzlebox/easy/Initialize()
 	. = ..()
 	dice_roll = rand(6,15)
 	fluff_desc = pick("It, frankly, looks rather depressing.","I can see an engraving of Psydon sending the Comet Syon on the side.","It doesn't look so difficult.","It's dusty and boring.","Why do I want to play with this for hours?","I could probably get a vagrant to solve this.","It looks like it was made for fools.")
 	desc += " [fluff_desc]"
 
 
-obj/item/mundane/puzzlebox/easy/attack_self(mob/living/user)
+/obj/item/mundane/puzzlebox/easy/attack_self(mob/living/user)
 	var/ckey = user.ckey
 	if(ckey in finished_ckeys)
 		to_chat(user, span_warning("I've already tried my hand at [src]."))
@@ -55,13 +55,13 @@ obj/item/mundane/puzzlebox/medium
 	var/alert = null
 	sellprice = 10
 
-obj/item/mundane/puzzlebox/medium/Initialize()
+/obj/item/mundane/puzzlebox/medium/Initialize()
 	. = ..()
 	dice_roll = rand(6,20)
 	fluff_desc = pick("Its surface shines with polished ebony.","I can see an engraving of a Snow-Elf on the side.","It looks like it could challenge an average man.","I wish my personality was like this box's.","Why do I want to play with this for hours?","I could probably sell this to a wizard's apprentice.","It looks...sufficient.")
 	desc += " [fluff_desc]"
 
-obj/item/mundane/puzzlebox/medium/attack_self(mob/living/user)
+/obj/item/mundane/puzzlebox/medium/attack_self(mob/living/user)
 	var/ckey = user.ckey
 	if(ckey in finished_ckeys)
 		to_chat(user, span_warning("I've already tried my hand at [src]."))
@@ -87,7 +87,7 @@ obj/item/mundane/puzzlebox/medium/attack_self(mob/living/user)
 //the only job that can 'consistently' crack this is archivist, who starts with a 30% chance, assuming worst roll from this. but then ur stuck playing archivist so ??? stat-packs help, but you'll still end up worse off tbh
 
 
-obj/item/mundane/puzzlebox/impossible //literally nearly impossible to solve - if you do, you get a fairly lengthy buff or a stat boost.
+/obj/item/mundane/puzzlebox/impossible //literally nearly impossible to solve - if you do, you get a fairly lengthy buff or a stat boost.
 	name = "\improper royal puzzle-box"
 	icon = 'modular_azurepeak/icons/obj/items/mundanities.dmi'
 	icon_state = "grimace_box"
@@ -96,13 +96,13 @@ obj/item/mundane/puzzlebox/impossible //literally nearly impossible to solve - i
 	var/dice_roll = null
 	sellprice = 150
 
-obj/item/mundane/puzzlebox/impossible/Initialize()
+/obj/item/mundane/puzzlebox/impossible/Initialize()
 	. = ..()
 	dice_roll = rand(11,20)
 	fluff_desc = pick("It, frankly, looks nearly impossible.","Its centerpiece is that of Astrata banishing a heretic from this world.","Without doubt, this is rather befuddling.","It looks arcane and nearly-impossible.","Why do I feel like I could try for hours and not succeed at this?","Even a bored archivist would probably have trouble with this one.","It looks nearly impossible.")
 	desc += " [fluff_desc]"
 
-obj/item/mundane/puzzlebox/impossible/attack_self(mob/living/user)
+/obj/item/mundane/puzzlebox/impossible/attack_self(mob/living/user)
 	var/ckey = user.ckey
 	if(ckey in finished_ckeys)
 		to_chat(user, span_warning("I've already tried my hand at [src]."))
