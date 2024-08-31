@@ -177,7 +177,7 @@
 	light_color = "#3FBAFD"
 
 //A spell to choose new spells, upon spawning or gaining levels
-/obj/effect/proc_holder/spell/invoked/learnspell
+/obj/effect/proc_holder/spell/self/learnspell
 	name = "Attempt to learn a new spell"
 	desc = "Weave a new spell"
 	school = "transmutation"
@@ -185,7 +185,7 @@
 	chargedrain = 0
 	chargetime = 0
 
-/obj/effect/proc_holder/spell/invoked/learnspell/cast(list/targets, mob/user = usr)
+/obj/effect/proc_holder/spell/self/learnspell/cast(list/targets, mob/user = usr)
 	. = ..()
 	//list of spells you can learn, it may be good to move this somewhere else eventually
 	//TODO: make GLOB list of spells, give them a true/false tag for learning, run through that list to generate choices
@@ -222,6 +222,8 @@
 	else
 		user.mind.used_spell_points += item.cost
 		user.mind.AddSpell(new item)
+		addtimer(CALLBACK(user.mind, TYPE_PROC_REF(/datum/mind, check_learnspell), src), 2 SECONDS) //self remove if no points
+		return TRUE
 
 //forcewall
 /obj/effect/proc_holder/spell/invoked/forcewall_weak
@@ -688,6 +690,7 @@
 /obj/effect/proc_holder/spell/invoked/knock/proc/open_door(obj/structure/mineral_door/door)
 	if(istype(door))
 		door.force_open()
+		door.locked = FALSE
 
 /obj/effect/proc_holder/spell/invoked/knock/proc/open_closet(obj/structure/closet/C)
 	C.locked = FALSE
