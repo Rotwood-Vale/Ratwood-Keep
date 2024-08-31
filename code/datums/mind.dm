@@ -380,6 +380,7 @@
 // adjusts the amount of available spellpoints
 /datum/mind/proc/adjust_spellpoints(points)
 	spell_points += points
+	check_learnspell() //check if we need to add or remove the learning spell
 
 ///Gets the skill's singleton and returns the result of its get_skill_speed_modifier
 /datum/mind/proc/get_skill_speed_modifier(skill)
@@ -905,11 +906,26 @@
 	add_antag_datum(head)
 	special_role = ROLE_REV_HEAD
 
-/datum/mind/proc/AddSpell(obj/effect/proc_holder/spell/S)
+/datum/mind/proc/AddSpell(obj/effect/proc_holder/spell/S, var/duplicate_override = FALSE)
 	if(!S)
 		return
+	if(!duplicate_override) 
+		if(has_spell(S, TRUE)) //if we have the spell already stop
+			return
+
 	spell_list += S
 	S.action.Grant(current)
+
+/datum/mind/proc/check_learnspell(obj/effect/proc_holder/spell/S)
+	if(!has_spell(/obj/effect/proc_holder/spell/self/learnspell)) //are we missing the learning spell?
+		if((spell_points - used_spell_points) > 0) //do we have points?
+			AddSpell(new /obj/effect/proc_holder/spell/self/learnspell(null)) //put it in
+			return
+
+	if((spell_points - used_spell_points) <= 0) //are we out of points?
+		RemoveSpell(S) //bye bye spell
+		return
+	return
 
 /datum/mind/proc/has_spell(spell_type, specific = FALSE)
 	if(istype(spell_type, /obj/effect/proc_holder))
