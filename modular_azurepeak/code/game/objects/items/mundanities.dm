@@ -12,6 +12,7 @@ obj/item/mundane/puzzlebox/easy
 	var/list/finished_ckeys = list()
 	var/dice_roll = null
 	var/alert = null
+	sellprice = 5
 
 obj/item/mundane/puzzlebox/easy/Initialize()
 	. = ..()
@@ -37,6 +38,7 @@ obj/item/mundane/puzzlebox/easy/attack_self(mob/living/user)
 			playsound(src.loc, 'sound/foley/doors/lock.ogg', 75, TRUE)
 		else
 			to_chat(user, span_warning("I can't solve \the [src]. Cack! Frustrated, I leave it alone."))
+			user.add_stress(/datum/stressevent/puzzle_fail)
 			finished_ckeys += ckey
 			playsound(src.loc, 'sound/foley/doors/lockrattle.ogg', 75, TRUE)
 
@@ -51,6 +53,7 @@ obj/item/mundane/puzzlebox/medium
 	var/list/finished_ckeys = list()
 	var/dice_roll = null
 	var/alert = null
+	sellprice = 10
 
 obj/item/mundane/puzzlebox/medium/Initialize()
 	. = ..()
@@ -74,12 +77,13 @@ obj/item/mundane/puzzlebox/medium/attack_self(mob/living/user)
 			finished_ckeys += ckey
 			playsound(src.loc, 'sound/foley/doors/lock.ogg', 75, TRUE)
 		else
-			to_chat(user, span_warning("I can't solve [src]. Cack! Frustrated, I leave it alone."))
+			to_chat(user, span_warning("I can't solve [src]. Frustrated, I leave it alone."))
+			user.add_stress(/datum/stressevent/puzzle_fail)
 			finished_ckeys += ckey
 			playsound(src.loc, 'sound/foley/doors/lockrattle.ogg', 75, TRUE)
 
 
-//impossible. before you look at this and screech, let's talk about the math. even the highest int bonus jobs in the game start with a 0% chance assuming worst roll from this, and uproll from them, to beat this thing
+//impossible. before you look at this and screech - even the highest int bonus jobs in the game start with a 0% chance assuming worst roll from this to beat this thing
 //the only job that can 'consistently' crack this is archivist, who starts with a 30% chance, assuming worst roll from this. but then ur stuck playing archivist so ??? stat-packs help, but you'll still end up worse off tbh
 
 
@@ -90,10 +94,11 @@ obj/item/mundane/puzzlebox/impossible //literally nearly impossible to solve - i
 	var/fluff_desc = null
 	var/list/finished_ckeys = list()
 	var/dice_roll = null
+	sellprice = 150
 
 obj/item/mundane/puzzlebox/impossible/Initialize()
 	. = ..()
-	dice_roll = rand(10,20)
+	dice_roll = rand(11,20)
 	fluff_desc = pick("It, frankly, looks nearly impossible.","Its centerpiece is that of Astrata banishing a heretic from this world.","Without doubt, this is rather befuddling.","It looks arcane and nearly-impossible.","Why do I feel like I could try for hours and not succeed at this?","Even a bored archivist would probably have trouble with this one.","It looks nearly impossible.")
 	desc += " [fluff_desc]"
 
@@ -124,7 +129,8 @@ obj/item/mundane/puzzlebox/impossible/attack_self(mob/living/user)
 				playsound(src.loc, 'sound/foley/doors/lock.ogg', 75, TRUE)
 				playsound(src.loc, 'sound/items/visor.ogg', 75, TRUE)
 		else
-			to_chat(user, span_warning("I can't solve [src]. Cack! Frustrated, I leave it alone."))
+			to_chat(user, span_warning("I can't even start to solve [src]. Feeling like an absolute fool, I put it aside."))
+			user.add_stress(/datum/stressevent/puzzle_fail)
 			finished_ckeys += ckey
 			playsound(src.loc, 'sound/foley/doors/lockrattle.ogg', 75, TRUE)
 
