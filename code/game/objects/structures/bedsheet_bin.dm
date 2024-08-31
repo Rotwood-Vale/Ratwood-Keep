@@ -30,15 +30,17 @@ LINEN BINS
 		return
 	if(layer == initial(layer))
 		layer = ABOVE_MOB_LAYER
+		plane = GAME_PLANE_UPPER
 		to_chat(user, span_notice("I cover myself with [src]."))
 		pixel_x = 0
 		pixel_y = 0
 	else
 		layer = initial(layer)
-		to_chat(user, span_notice("I smooth [src] out beneath you."))
+		plane = initial(plane)
+		to_chat(user, span_notice("You smooth [src] out beneath you."))
 	add_fingerprint(user)
 	return
-
+/*
 /obj/item/bedsheet/attackby(obj/item/I, mob/user, params)
 	if(I.tool_behaviour == TOOL_WIRECUTTER || I.get_sharpness())
 		var/obj/item/stack/sheet/cloth/C = new (get_turf(src), 3)
@@ -48,7 +50,7 @@ LINEN BINS
 		to_chat(user, span_notice("I tear [src] up."))
 	else
 		return ..()
-
+*/
 /obj/item/bedsheet/blue
 	icon_state = "sheetblue"
 	item_state = "sheetblue"
