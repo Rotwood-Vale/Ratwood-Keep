@@ -469,6 +469,7 @@
 		D.w_class = size
 		size = min(size, 5)
 		D.icon_state = "deliverypackage[size]"
+		qdel(src)
 
 /*	else if(istype(P, /obj/item/stamp))
 

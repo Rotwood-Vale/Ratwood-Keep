@@ -93,7 +93,7 @@
 
 /datum/supply_pack/rogue/tools/bait
 	name = "Premium Fishing Bait"
-	cost = 25
+	cost = 15
 	contains = list(
 					/obj/item/natural/worms/grubs,
 					/obj/item/natural/worms/grubs,

@@ -122,8 +122,6 @@
 				playsound(loc, 'sound/misc/disposalflush.ogg', 100, FALSE, -1)
 		return
 	if(istype(P, /obj/item/paper) || istype(P, /obj/item/smallDelivery))
-		if(P.w_class >= WEIGHT_CLASS_BULKY)
-			return
 		if(alert(user, "Send Mail?",,"YES","NO") == "YES")
 			var/send2place = input(user, "Where to? (Person or #number)", "ROGUETOWN", null)
 			var/sentfrom = input(user, "Who is this from?", "ROGUETOWN", null)

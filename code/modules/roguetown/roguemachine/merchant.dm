@@ -192,8 +192,9 @@
 		var/l
 		for(l=1,l<=shoplength,l++)
 			var/pathi = pick(PA.contains)
-			var/obj/item/I = new pathi(get_turf(src))
-			M.put_in_hands(I)
+			var/obj/item/I = new pathi(get_turf(M))
+			if(shoplength == 1)
+				M.put_in_hands(I)
 		qdel(PA)
 	if(href_list["change"])
 		if(budget > 0)
@@ -286,7 +287,7 @@
 	contents += "<a href='?src=[REF(src)];change=1'>MAMMON LOADED:</a> [budget]<BR>"
 
 	var/mob/living/carbon/human/H = user
-	if(H.job == "Merchant")
+	if(H.job in list("Merchant","Shophand"))
 		if(canread)
 			contents += "<a href='?src=[REF(src)];secrets=1'>Secrets</a>"
 		else
@@ -294,7 +295,7 @@
 
 	contents += "</center><BR>"
 
-	var/list/unlocked_cats = list("Apparel","Tools","Seeds","Luxury")
+	var/list/unlocked_cats = list("Apparel","Tools","Seeds","Luxury","Raw Materials")
 	if(upgrade_flags & UPGRADE_ARMOR)
 		unlocked_cats+="Armor"
 	if(upgrade_flags & UPGRADE_WEAPONS)

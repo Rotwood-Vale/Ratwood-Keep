@@ -76,13 +76,6 @@
 					/obj/item/clothing/head/roguetown/bardhat,
 				)
 
-/datum/supply_pack/rogue/wardrobe/spectacles
-	name = "Spectacles"
-	cost = 25
-	contains = list(
-					/obj/item/clothing/mask/rogue/spectacles,
-				)
-
 /datum/supply_pack/rogue/wardrobe/shoes/shalal
 	name = "Shalal Shoes"
 	cost = 10
@@ -155,4 +148,18 @@
 	contains = list(
 					/obj/item/clothing/shoes/roguetown/nobleboot,
 					/obj/item/clothing/shoes/roguetown/nobleboot,
+				)
+
+/datum/supply_pack/rogue/wardrobe/masks/specs
+	name = "Spectacles"
+	cost = 25
+	contains = list(
+					/obj/item/clothing/mask/rogue/spectacles,
+				)
+
+/datum/supply_pack/rogue/wardrobe/masks/goldspecs
+	name = "Golden Spectacles"
+	cost = 60
+	contains = list(
+					/obj/item/clothing/mask/rogue/spectacles/golden,
 				)
