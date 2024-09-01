@@ -13832,6 +13832,10 @@
 	},
 /turf/open/floor/rogue/ruinedwood/turned,
 /area/rogue/outdoors/mountains)
+"pDi" = (
+/obj/effect/landmark/start/shophand,
+/turf/open/floor/rogue/churchmarble,
+/area/rogue/indoors/town/shop)
 "pDt" = (
 /obj/structure/fermenting_barrel,
 /turf/open/floor/rogue/blocks,
@@ -15931,6 +15935,10 @@
 	pixel_y = 7
 	},
 /turf/open/transparent/openspace,
+/area/rogue/indoors/town/shop)
+"sdN" = (
+/obj/effect/landmark/start/merchant,
+/turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/shop)
 "seA" = (
 /obj/structure/mineral_door/bars{
@@ -294375,7 +294383,7 @@ hUt
 ewx
 fIo
 svu
-hUt
+sdN
 hUt
 xut
 ueq
@@ -295185,7 +295193,7 @@ hUt
 toW
 sSW
 adK
-adK
+pDi
 adK
 adK
 adK
