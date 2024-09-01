@@ -160,6 +160,7 @@
 /obj/item/clothing/neck/roguetown/psicross/pestra
 	name = "amulet of Pestra"
 	desc = ""
+	icon_state = "pestra"
 
 /obj/item/clothing/neck/roguetown/psicross/eora
 	name = "amulet of Eora"
@@ -173,7 +174,7 @@
 
 /obj/item/clothing/neck/roguetown/psicross/silver
 	name = "silver psycross"
-	icon_state = "psicrossiron"
+	icon_state = "psicrosssteel"
 	sellprice = 50
 
 /obj/item/clothing/neck/roguetown/psicross/silver/pickup(mob/user)
