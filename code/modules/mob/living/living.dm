@@ -1040,14 +1040,15 @@
 		else if(last_special <= world.time)
 			resist_restraints() //trying to remove cuffs.
 
-/mob/living/verb/submit()
+/mob/living/proc/submit(var/instant = FALSE)
 	set name = "Yield"
 	set category = "IC"
 	set hidden = 1
 	if(surrendering || stat)
 		return
-	if(alert(src, "Do you yield?", "SURRENDER", "Yes", "No") == "No")
-		return
+	if(!instant)
+		if(alert(src, "Do you yield?", "SURRENDER", "Yes", "No") == "No")
+			return
 	log_combat(src, null, "surrendered")
 	surrendering = 1
 	toggle_cmode()
@@ -1642,7 +1643,7 @@
 	else
 		if(layer == LYING_MOB_LAYER)
 			layer = initial(layer)
-
+	update_cone_show()
 	update_transform()
 	lying_prev = lying
 
