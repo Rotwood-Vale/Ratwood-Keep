@@ -139,6 +139,9 @@
 	tastes = list("sweetness and light" = 1)
 	eat_effect = null
 	rotprocess = null
+	can_distill = TRUE
+	distill_reagent = /datum/reagent/consumable/ethanol/mead
+	distill_amt = 20
 
 /obj/item/reagent_containers/food/snacks/rogue/onionslice
 	name = "slice of onion"

@@ -282,6 +282,7 @@
 
 /datum/special_trait/swift/on_apply(mob/living/carbon/human/character, silent)
 	ADD_TRAIT(character, TRAIT_DODGEEXPERT, "[type]")
+	ADD_TRAIT(character, TRAIT_GOODRUNNER, "[type]")
 	character.mind.adjust_skillrank(/datum/skill/misc/athletics, 6, TRUE)
 	character.change_stat("speed", 3)
 
@@ -338,21 +339,6 @@
 /datum/special_trait/nimrod/on_apply(mob/living/carbon/human/character, silent)
 	character.change_stat("speed", -2)
 	character.change_stat("intelligence", -4)	
-
-/datum/special_trait/nopouch
-	name = "No Pouch"
-	greet_text = span_boldwarning("I lost my pouch recently, I'm without a zenny..")
-	weight = 200
-
-/datum/special_trait/nopouch/on_apply(mob/living/carbon/human/character, silent)
-	var/obj/item/pouch = locate(/obj/item/storage/belt/rogue/pouch) in character
-	if(character.wear_neck == pouch)
-		character.wear_neck = null
-	if(character.beltl == pouch)
-		character.beltl = null
-	if(character.beltr == pouch)
-		character.beltr = null
-	qdel(pouch)
 
 /datum/special_trait/hussite
 	name = "Known Heretic"

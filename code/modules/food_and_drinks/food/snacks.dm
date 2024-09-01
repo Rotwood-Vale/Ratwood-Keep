@@ -74,6 +74,10 @@ All foods are distributed among various categories. Use common sense.
 	var/become_rot_type = null
 
 	var/fertamount = 50
+	
+	var/can_distill = FALSE //If FALSE, this object cannot be distilled into an alcohol.
+	var/distill_reagent //If NULL and this object can be distilled, it uses a generic fruit_wine reagent and adjusts its variables.
+	var/distill_amt = 12
 
 	drop_sound = 'sound/foley/dropsound/food_drop.ogg'
 	smeltresult = /obj/item/ash

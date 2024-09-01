@@ -98,11 +98,13 @@
 		if(4)
 			affecting = get_bodypart(BODY_ZONE_HEAD)
 			chat_message = span_danger("I fall on my head!")
-	if(affecting && apply_damage(dam, BRUTE, affecting, run_armor_check(affecting, "blunt", damage = dam)))
+	if(affecting)
+		apply_damage(dam/2, BRUTE, affecting)
+		if(apply_damage(dam/2, BRUTE, affecting, run_armor_check(affecting, "blunt", damage = dam)))
+			if(levels >= 1)
+				//absurd damage to guarantee a crit
+				affecting.try_crit(BCLASS_TWIST, 300)
 		update_damage_overlays()
-		if(levels >= 1)
-			//absurd damage to guarantee a crit
-			affecting.try_crit(BCLASS_TWIST, 300)
 
 	if(chat_message)
 		to_chat(src, chat_message)

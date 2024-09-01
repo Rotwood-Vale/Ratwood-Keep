@@ -38,6 +38,9 @@
 				H.mind.adjust_skillrank(/datum/skill/labor/fishing, 1, TRUE)
 				H.mind.adjust_skillrank(/datum/skill/combat/knives, 1, TRUE)
 			H.change_stat("constitution", 2)
+			H.change_stat("intelligence", 1)
+			H.change_stat("perception", 3)
+			H.change_stat("speed", 2)
 	else
 		pants = /obj/item/clothing/under/roguetown/trou
 		shoes = /obj/item/clothing/shoes/roguetown/boots/leather
@@ -51,7 +54,7 @@
 		beltl = /obj/item/rogueweapon/huntingknife
 		backpack_contents = list(/obj/item/natural/worms = 2,/obj/item/rogueweapon/shovel/small=1)
 		if(H.mind)
-			H.mind.adjust_skillrank(/datum/skill/combat/knives, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/swimming, 5, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/craft/cooking, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/craft/crafting, 2, TRUE)
@@ -59,4 +62,7 @@
 			if(H.age == AGE_OLD)
 				H.mind.adjust_skillrank(/datum/skill/labor/fishing, 2, TRUE)
 				H.mind.adjust_skillrank(/datum/skill/combat/knives, 1, TRUE)
-			H.change_stat("constitution", 1)
+			H.change_stat("constitution", 2)
+			H.change_stat("intelligence", 1)
+			H.change_stat("perception", 3)
+			H.change_stat("speed", 2)
