@@ -43,7 +43,7 @@
 	color = null
 	icon_state = "shalal"
 	item_state = "shalal"
-	flags_inv = HIDEHAIR|HIDEFACIALHAIR
+	flags_inv = HIDEEARS|HIDEHAIR|HIDEFACIALHAIR
 	sleevetype = null
 	sleeved = null
 	icon = 'icons/roguetown/clothing/head.dmi'
@@ -51,7 +51,7 @@
 	alternate_worn_layer  = 8.9 //On top of helmet
 	body_parts_covered = HEAD|HAIR|EARS|NECK
 	slot_flags = ITEM_SLOT_HEAD|ITEM_SLOT_MASK
-	armor = list("blunt" = 15, "slash" = 20, "stab" = 15, "bullet" = 1, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	armor = list("blunt" = 20, "slash" = 20, "stab" = 15, "bullet" = 1, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
 	dynamic_hair_suffix = ""
 	edelay_type = 1
 	adjustable = CAN_CADJUST
@@ -59,6 +59,21 @@
 	blocksound = SOFTHIT
 	max_integrity = 100
 	sewrepair = TRUE
+
+/obj/item/clothing/head/roguetown/roguehood/shalal/AdjustClothes(mob/user)
+	if(loc == user)
+		if(adjustable == CAN_CADJUST)
+			adjustable = CADJUSTED
+			icon_state = "shalal_t"
+			body_parts_covered = HEAD|EARS|HAIR|NECK|NOSE
+			flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR|HIDEFACIALHAIR
+			flags_cover = null
+			if(ishuman(user))
+				var/mob/living/carbon/H = user
+				H.update_inv_head()
+			block2add = null
+		else if(adjustable == CADJUSTED)
+			ResetAdjust(user)
 
 /obj/item/clothing/head/roguetown/roguehood/shalalz
 	name = "zybantine keffiyeh"
@@ -74,30 +89,6 @@
 	alternate_worn_layer  = 8.9 //On top of helmet
 	body_parts_covered = HEAD|HAIR|EARS|NECK
 	slot_flags = ITEM_SLOT_HEAD|ITEM_SLOT_MASK
-	armor = list("blunt" = 15, "slash" = 20, "stab" = 15, "bullet" = 1, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
-	dynamic_hair_suffix = ""
-	edelay_type = 1
-	adjustable = CAN_CADJUST
-	toggle_icon_state = TRUE
-	blocksound = SOFTHIT
-	max_integrity = 100
-	sewrepair = TRUE
-
-
-/obj/item/clothing/head/roguetown/roguehood/shalalt
-	name = "closed keffiyeh"
-	desc = "A protective covering worn by those native to the deserts. This one is adjusted to hide the face."
-	color = null
-	icon_state = "shalal_t"
-	item_state = "shalal_t"
-	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR|HIDEFACIALHAIR
-	sleevetype = null
-	sleeved = null
-	icon = 'icons/roguetown/clothing/head.dmi'
-	mob_overlay_icon = 'icons/roguetown/clothing/onmob/head.dmi' //Overrides slot icon behavior
-	alternate_worn_layer  = 8.9 //On top of helmet
-	body_parts_covered = HEAD|HAIR|EARS|NECK
-	slot_flags = ITEM_SLOT_HEAD|ITEM_SLOT_MASK
 	armor = list("blunt" = 20, "slash" = 20, "stab" = 15, "bullet" = 1, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
 	dynamic_hair_suffix = ""
 	edelay_type = 1
@@ -107,28 +98,20 @@
 	max_integrity = 100
 	sewrepair = TRUE
 
-/obj/item/clothing/head/roguetown/roguehood/shalalzt
-	name = "closed zybantine keffiyeh"
-	desc = "A protective covering worn by those native to the deserts of Zybantine. This one is adjusted to hide the face."
-	color = null
-	icon_state = "shalal_zt"
-	item_state = "shalal_zt"
-	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR|HIDEFACIALHAIR
-	sleevetype = null
-	sleeved = null
-	icon = 'icons/roguetown/clothing/head.dmi'
-	mob_overlay_icon = 'icons/roguetown/clothing/onmob/head.dmi' //Overrides slot icon behavior
-	alternate_worn_layer  = 8.9 //On top of helmet
-	body_parts_covered = HEAD|HAIR|EARS|NECK
-	slot_flags = ITEM_SLOT_HEAD|ITEM_SLOT_MASK
-	armor = list("blunt" = 20, "slash" = 20, "stab" = 15, "bullet" = 1, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
-	dynamic_hair_suffix = ""
-	edelay_type = 1
-	adjustable = CAN_CADJUST
-	toggle_icon_state = TRUE
-	blocksound = SOFTHIT
-	max_integrity = 100
-	sewrepair = TRUE
+/obj/item/clothing/head/roguetown/roguehood/shalalz/AdjustClothes(mob/user)
+	if(loc == user)
+		if(adjustable == CAN_CADJUST)
+			adjustable = CADJUSTED
+			icon_state = "shalal_zt"
+			body_parts_covered = HEAD|EARS|HAIR|NECK|NOSE
+			flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR|HIDEFACIALHAIR
+			flags_cover = null
+			if(ishuman(user))
+				var/mob/living/carbon/H = user
+				H.update_inv_head()
+			block2add = null
+		else if(adjustable == CADJUSTED)
+			ResetAdjust(user)
 
 /obj/item/clothing/head/roguetown/roguehood/astrata
 	name = "sun hood"
