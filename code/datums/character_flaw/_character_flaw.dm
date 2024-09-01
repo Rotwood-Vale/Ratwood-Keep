@@ -11,6 +11,7 @@ GLOBAL_LIST_INIT(character_flaws, list(
 	"Sadist"=/datum/charflaw/addiction/sadist,
 	"Masochist"=/datum/charflaw/masochist,
 	"Paranoid"=/datum/charflaw/paranoid,
+	"Bad Sight"=/datum/charflaw/badsight,
 	"Cyclops (R)"=/datum/charflaw/noeyer,
 	"Cyclops (L)"=/datum/charflaw/noeyel,
 	"Wood Arm (R)"=/datum/charflaw/limbloss/arm_r,
@@ -140,7 +141,7 @@ GLOBAL_LIST_INIT(character_flaws, list(
 	id = "badvision"
 	alert_type = null
 	effectedstats = list("perception" = -20, "speed" = -5)
-	duration = 100
+	duration = 10 SECONDS
 
 /datum/charflaw/badsight/on_mob_creation(mob/user)
 	..()
