@@ -397,6 +397,9 @@
 	sleeved = 'icons/roguetown/clothing/onmob/helpers/sleeves_armor.dmi'
 	sleevetype = "shirt"
 
+/obj/item/clothing/suit/roguetown/armor/leather/vest/white
+	color = CLOTHING_WHITE
+
 /obj/item/clothing/suit/roguetown/armor/leather/vest/sailor/ComponentInitialize()
 	. = ..()
 	AddComponent(/datum/component/storage/concrete)
