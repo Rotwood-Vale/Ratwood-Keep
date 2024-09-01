@@ -343,6 +343,10 @@
 /obj/structure/mineral_door/bars,
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/cave/spider)
+"qs" = (
+/obj/effect/decal/cleanable/cobweb,
+/turf/open/floor/rogue/dirt/road,
+/area/rogue/under/cave/spider)
 "qt" = (
 /obj/structure/closet/crate/roguecloset/dark,
 /obj/effect/spawner/lootdrop/roguetown/dungeon/misc,
@@ -492,6 +496,10 @@
 /obj/effect/spawner/lootdrop/roguetown/dungeon/tools,
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/cave/spider)
+"yv" = (
+/obj/item/candle/yellow/lit,
+/turf/open/floor/rogue/dirt/road,
+/area/rogue/under/cave/spider)
 "zs" = (
 /turf/open/floor/rogue/ruinedwood/turned,
 /area/rogue/under/cave/spider)
@@ -519,12 +527,6 @@
 "Bs" = (
 /obj/item/roguestatue/silver,
 /turf/open/floor/rogue/churchmarble,
-/area/rogue/under/cave/spider)
-"BF" = (
-/obj/structure/mineral_door/wood{
-	lockid = "dungeon"
-	},
-/turf/open/floor/rogue/tile/masonic/single,
 /area/rogue/under/cave/spider)
 "BR" = (
 /obj/structure/rack/rogue/shelf/big,
@@ -655,6 +657,10 @@
 	},
 /turf/open/floor/rogue/tile/masonic/single,
 /area/rogue/under/cave/spider)
+"HX" = (
+/obj/item/roguecoin/gold/pile,
+/turf/open/floor/rogue/dirt/road,
+/area/rogue/under/cave/spider)
 "Ih" = (
 /turf/closed/mineral/rogue/bedrock,
 /area/rogue/under/cave/spider)
@@ -716,6 +722,10 @@
 "Kt" = (
 /obj/item/roguecoin/copper/pile,
 /turf/open/floor/rogue/blocks,
+/area/rogue/under/cave/spider)
+"KF" = (
+/obj/item/roguecoin/gold/pile,
+/turf/open/floor/rogue/naturalstone,
 /area/rogue/under/cave/spider)
 "KS" = (
 /obj/structure/mineral_door/wood{
@@ -932,6 +942,10 @@
 "Tv" = (
 /obj/item/roguegem/violet,
 /turf/open/water/swamp/deep,
+/area/rogue/under/cave/spider)
+"TD" = (
+/obj/effect/spawner/lootdrop/roguetown/dungeon/misc,
+/turf/open/floor/rogue/dirt/road,
 /area/rogue/under/cave/spider)
 "Ue" = (
 /mob/living/carbon/human/species/skeleton/npc/ambush{
@@ -3090,10 +3104,10 @@ Ih
 Ih
 Ih
 Ih
-Ih
-Ih
-Ih
-Ih
+qs
+Do
+TD
+Do
 Ih
 Ih
 Ih
@@ -3192,10 +3206,10 @@ Ih
 Ih
 Ih
 Ih
-Ih
-Ih
-Ih
-Ih
+Do
+Do
+TD
+Do
 Ih
 Ih
 Ih
@@ -3294,10 +3308,10 @@ Ih
 Ih
 Ih
 Ih
-Ih
-Ih
-Ih
-Ih
+Do
+HX
+TD
+TD
 Ih
 Ih
 Ih
@@ -3396,10 +3410,10 @@ Ih
 Ih
 Ih
 Ih
-Ih
-Ih
-Ih
-Ih
+Do
+Do
+Do
+TD
 Ih
 Ih
 Ih
@@ -3495,13 +3509,13 @@ Ih
 Ih
 Ih
 Ih
-Ih
-Ih
-Ih
-Ih
-Ih
-Ih
-Ih
+qs
+Do
+Do
+TD
+Do
+Do
+Do
 Ih
 Ih
 Ih
@@ -3597,8 +3611,8 @@ Ih
 Ih
 Ih
 Ih
-Ih
-Ih
+Do
+TD
 Ih
 Ih
 Ih
@@ -3699,7 +3713,7 @@ Ih
 Ih
 Ih
 Ih
-Ih
+Do
 Ih
 Ih
 Ih
@@ -3801,7 +3815,7 @@ Ih
 Ih
 Ih
 Ih
-Ih
+Do
 Ih
 Ih
 Ih
@@ -3902,8 +3916,8 @@ Ih
 Ih
 Ih
 Ih
-Ih
-Ih
+Do
+yv
 Ih
 Ih
 Ih
@@ -3999,12 +4013,12 @@ qH
 iZ
 lR
 Ih
-Ih
-Ih
-Ih
-Ih
-Ih
-Ih
+Do
+Do
+Do
+Do
+TD
+Do
 Ih
 Ih
 Ih
@@ -4513,7 +4527,7 @@ lR
 Oq
 qH
 qH
-KS
+qH
 qH
 xq
 qH
@@ -4534,7 +4548,7 @@ SM
 SM
 CI
 SM
-IV
+SM
 SM
 SM
 kR
@@ -4817,7 +4831,7 @@ Ih
 Ih
 lR
 lR
-KS
+qH
 lR
 lR
 Ih
@@ -5046,7 +5060,7 @@ Ih
 Ih
 lR
 lR
-IV
+SM
 lR
 lR
 lR
@@ -5225,7 +5239,7 @@ Ih
 Ih
 lR
 lR
-KS
+qH
 lR
 lR
 Ih
@@ -5866,7 +5880,7 @@ lR
 SM
 SM
 SM
-IV
+SM
 nH
 SM
 SM
@@ -6590,9 +6604,9 @@ SM
 lR
 Ih
 Ih
-Ih
-Ih
-Ih
+Km
+Km
+KF
 Ih
 Ih
 Ih
@@ -6652,7 +6666,7 @@ Ih
 lR
 nX
 qH
-KS
+qH
 qH
 qH
 qH
@@ -6689,11 +6703,11 @@ SM
 SM
 SM
 SM
-lR
-Ih
-Ih
-Ih
-Ih
+Km
+Km
+Km
+Km
+Km
 Ih
 Ih
 Ih
@@ -6793,10 +6807,10 @@ lR
 lR
 lR
 Ih
-Ih
-Ih
-Ih
-Ih
+Km
+Km
+Km
+Km
 Ih
 Ih
 Ih
@@ -6895,12 +6909,12 @@ Ih
 Ih
 Ih
 Ih
+Km
+Km
 Ih
-Ih
-Ih
-Ih
-Ih
-Ih
+Km
+Km
+Km
 Ih
 Ih
 Ih
@@ -6955,7 +6969,7 @@ lR
 xq
 qH
 qH
-KS
+qH
 qH
 JQ
 lR
@@ -7001,8 +7015,8 @@ Ih
 Ih
 Ih
 Ih
-Ih
-Ih
+Km
+KF
 Ih
 Ih
 Ih
@@ -8320,7 +8334,7 @@ qH
 ha
 qH
 qH
-KS
+qH
 qH
 qH
 qH
@@ -8479,7 +8493,7 @@ Ih
 lR
 lR
 lR
-BF
+dQ
 lR
 lR
 lR
@@ -8526,7 +8540,7 @@ my
 lR
 lR
 lR
-KS
+qH
 lR
 lR
 lR
