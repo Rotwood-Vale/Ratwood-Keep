@@ -17,7 +17,7 @@
 
 	show_in_credits = FALSE
 	give_bank_account = FALSE
-	
+
 	cmode_music = 'sound/music/combat_weird.ogg'
 
 /datum/job/roguetown/deathknight/after_spawn(mob/living/L, mob/M, latejoin = TRUE)
@@ -57,7 +57,6 @@
 		eyes = new /obj/item/organ/eyes/night_vision/zombie
 		eyes.Insert(H)
 		H.ambushable = FALSE
-		H.underwear = "Nude"
 		if(H.charflaw)
 			QDEL_NULL(H.charflaw)
 		H.mob_biotypes = MOB_UNDEAD

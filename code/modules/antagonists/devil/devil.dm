@@ -240,9 +240,6 @@ GLOBAL_LIST_INIT(devil_suffix, list(" the Red", " the Soulless", " the Master", 
 	if(ishuman(owner.current))
 		var/mob/living/carbon/human/H = owner.current
 		H.set_species(/datum/species/lizard, 1)
-		H.underwear = "Nude"
-		H.undershirt = "Nude"
-		H.socks = "Nude"
 		H.dna.features["mcolor"] = "511" //A deep red
 		H.regenerate_icons()
 	else //Did the devil get hit by a staff of transmutation?
@@ -462,9 +459,6 @@ GLOBAL_LIST_INIT(devil_suffix, list(" the Red", " the Soulless", " the Master", 
 		H.equip_to_slot_or_del(new /obj/item/pen(H), SLOT_L_STORE)
 		if(SOULVALUE >= BLOOD_THRESHOLD)
 			H.set_species(/datum/species/lizard, 1)
-			H.underwear = "Nude"
-			H.undershirt = "Nude"
-			H.socks = "Nude"
 			H.dna.features["mcolor"] = "511"
 			H.regenerate_icons()
 			if(SOULVALUE >= TRUE_THRESHOLD) //Yes, BOTH this and the above if statement are to run if soulpower is high enough.

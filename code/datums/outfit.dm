@@ -217,8 +217,6 @@
 		H.equip_to_slot_or_del(new backl(H),SLOT_BACK_L, TRUE)
 	if(mouth)
 		H.equip_to_slot_or_del(new mouth(H),SLOT_MOUTH, TRUE)
-	if(undershirt)
-		H.undershirt = initial(undershirt.name)
 	if(pants)
 		H.equip_to_slot_or_del(new pants(H),SLOT_PANTS, TRUE)
 	if(armor)
