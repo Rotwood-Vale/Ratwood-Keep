@@ -5,7 +5,7 @@
 	school = "transmutation"
 	charge_max = 300
 	clothes_req = FALSE
-	invocation = "VANISHIKA"
+	invocation = "AMBULO"
 	invocation_type = "shout"
 	range = -1
 	cooldown_min = 550 //50 deciseconds reduction per rank
