@@ -1,24 +1,24 @@
 /obj/effect/proc_holder/spell/targeted/ethereal_jaunt
 	name = "Ethereal Jaunt"
 	desc = ""
-
+	overlay_state = "jaunt"
 	school = "transmutation"
 	charge_max = 300
-	clothes_req = TRUE
-	invocation = "none"
-	invocation_type = "none"
+	clothes_req = FALSE
+	invocation = "VANISHIKA"
+	invocation_type = "shout"
 	range = -1
-	cooldown_min = 100 //50 deciseconds reduction per rank
+	cooldown_min = 550 //50 deciseconds reduction per rank
 	include_user = TRUE
 	nonabstract_req = TRUE
-	var/jaunt_duration = 50 //in deciseconds
+	var/jaunt_duration = 25 //in deciseconds
 	var/jaunt_in_time = 5
 	var/jaunt_in_type = /obj/effect/temp_visual/wizard
 	var/jaunt_out_type = /obj/effect/temp_visual/wizard/out
-	action_icon_state = "jaunt"
+	associated_skill = /datum/skill/magic/arcane
 
 /obj/effect/proc_holder/spell/targeted/ethereal_jaunt/cast(list/targets,mob/user = usr) //magnets, so mostly hardcoded
-	playsound(get_turf(user), 'sound/blank.ogg', 50, TRUE, -1)
+	playsound(get_turf(user), 'sound/magic/magic_nulled.ogg', 50, TRUE, -1)
 	for(var/mob/living/target in targets)
 		INVOKE_ASYNC(src, PROC_REF(do_jaunt), target)
 
@@ -42,7 +42,7 @@
 	jaunt_steam(mobloc)
 	target.mobility_flags &= ~MOBILITY_MOVE
 	holder.reappearing = 1
-	playsound(get_turf(target), 'sound/blank.ogg', 50, TRUE, -1)
+	playsound(get_turf(target), 'sound/magic/magic_nulled.ogg', 50, TRUE, -1)
 	sleep(25 - jaunt_in_time)
 	new jaunt_in_type(mobloc, holder.dir)
 	target.setDir(holder.dir)
@@ -89,10 +89,10 @@
 	movedelay = world.time + movespeed
 
 	if(newLoc.flags_1 & NOJAUNT_1)
-		to_chat(user, span_warning("Some strange aura is blocking the way."))
+		to_chat(user, "<span class='warning'>Some strange aura is blocking the way.</span>")
 		return
 	if (locate(/obj/effect/blessing, newLoc))
-		to_chat(user, span_warning("Holy energies block your path!"))
+		to_chat(user, "<span class='warning'>Holy energies block your path!</span>")
 		return
 
 	forceMove(newLoc)
