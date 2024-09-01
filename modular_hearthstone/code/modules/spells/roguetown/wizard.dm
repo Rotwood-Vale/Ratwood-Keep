@@ -277,6 +277,7 @@
 	else
 		new wall_type(get_step(front, NORTH), user)
 		new wall_type(get_step(front, SOUTH), user)
+	user.visible_message("[user] mutters an incantation and a wall of arcyne force manifests out of thin air!")
 	return TRUE
 
 /obj/structure/forcefield_weak
@@ -712,7 +713,30 @@
 	if(istype(W))
 		W.force_open()
 
+/obj/effect/proc_holder/spell/invoked/longstrider
+	name = "Longstrider"
+	desc = "Grant yourself and any creatures adjacent to you free movement through rough terrain."
+	cost = 1
+	xp_gain = TRUE
+	school = "transmutation"
+	releasedrain = 50
+	chargedrain = 0
+	chargetime = 4 SECONDS
+	charge_max = 2 MINUTES
+	warnie = "spellwarning"
+	no_early_release = TRUE
+	charging_slowdown = 1
+	chargedloop = /datum/looping_sound/invokegen
+	associated_skill = /datum/skill/magic/arcane
 
+/obj/effect/proc_holder/spell/invoked/longstrider/cast(list/targets, mob/user = usr)
+
+	user.visible_message("[user] mutters an incantation and a dim pulse of light radiates out from them.")
+
+	for(var/mob/living/L in range(1, usr))
+		L.apply_status_effect(/datum/status_effect/buff/longstrider)
+
+	return TRUE
 
 #undef PRESTI_CLEAN
 #undef PRESTI_SPARK
