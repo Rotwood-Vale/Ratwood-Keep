@@ -203,6 +203,7 @@ GLOBAL_LIST_EMPTY(job_respawn_delays)
 #define CTAG_ANTAG 			"CAT_ANTAG"  		// Antag class - results in an antag
 #define CTAG_BANDIT			"CAT_BANDIT"		// Bandit class - Tied to the bandit antag really
 #define CTAG_CHALLENGE 		"CAT_CHALLENGE"  	// Challenge class - Meant to be free for everyone
+#define CTAG_MERCENARY 		"CAT_MERCENARY" 	// Mercs
 
 /*
 	Defines for the triumph buy datum categories

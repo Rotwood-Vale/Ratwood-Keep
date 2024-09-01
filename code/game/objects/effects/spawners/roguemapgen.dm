@@ -61,7 +61,7 @@
 /obj/effect/spawner/roguemap/hauntpile
 	icon_state = "hauntpile"
 	name = "hauntpile"
-	probby = 23
+	probby = 70
 	spawned = list(/obj/structure/bonepile)
 
 /obj/effect/spawner/roguemap/beartrap
