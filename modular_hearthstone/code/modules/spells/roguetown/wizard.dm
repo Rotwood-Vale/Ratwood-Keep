@@ -390,10 +390,10 @@
 				if(HL.mind)
 					if(HL.mind.do_i_know(name=user.real_name)) //do we know who this person is?
 						identified = TRUE // we do
-						to_chat(HL, "Arcyne whispers fill the back of my head, resolving into [user]'s voice: </span><font color=#7246ff>\"[message]\"</font>")
+						to_chat(HL, "Arcyne whispers fill the back of my head, resolving into [user]'s voice:<font color=#7246ff>[message]</font>")
 
 			if(!identified) //we failed the check OR we just dont know who that is
-				to_chat(HL, "Arcyne whispers fill the back of my head, resolving into an unknown [user.gender == FEMALE ? "woman" : "man"]'s voice: </span><font color=#7246ff>\"[message]\"</font>")
+				to_chat(HL, "Arcyne whispers fill the back of my head, resolving into an unknown [user.gender == FEMALE ? "woman" : "man"]'s voice:<font color=#7246ff>[message]</font>")
 
 			user.whisper(message)
 			log_game("[key_name(user)] sent a message to [key_name(HL)] with contents [message]")
