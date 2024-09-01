@@ -270,7 +270,7 @@
 		QDEL_IN(src, timeleft) //delete after it runs out
 
 /obj/effect/proc_holder/spell/invoked/forcewall_weak/cast(list/targets,mob/user = usr)
-	var/turf/front = get_step(user, user.dir)
+	var/turf/front = get_turf(targets[1])
 	new wall_type(front, user)
 	if(user.dir == SOUTH || user.dir == NORTH)
 		new wall_type(get_step(front, WEST), user)
@@ -406,7 +406,7 @@
 /obj/effect/proc_holder/spell/invoked/push_spell
 	name = "Repulse"
 	desc = "Conjure forth a wave of energy, repelling anyone around you."
-	cost = 2
+	cost = 1
 	xp_gain = TRUE
 	releasedrain = 50
 	chargedrain = 1
@@ -589,7 +589,7 @@
 
 /obj/item/melee/touch_attack/darkvision
 	name = "\improper arcyne focus"
-	desc = "Touch a creature to grant them Darkvision for 10 minutes."
+	desc = "Touch a creature to grant them Darkvision for an hour."
 	catchphrase = null
 	possible_item_intents = list(INTENT_HELP)
 	icon = 'icons/mob/roguehudgrabs.dmi'
@@ -646,7 +646,7 @@
 	desc = "Cause a target to be magically hastened."
 	cost = 2
 	xp_gain = TRUE
-	releasedrain = 25
+	releasedrain = 60
 	chargedrain = 1
 	chargetime = 4 SECONDS
 	charge_max = 5 MINUTES
