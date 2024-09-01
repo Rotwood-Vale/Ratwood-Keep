@@ -1416,6 +1416,7 @@
 #include "code\game\objects\structures\roguetown\gate.dm"
 #include "code\game\objects\structures\roguetown\handcart.dm"
 #include "code\game\objects\structures\roguetown\loot.dm"
+#include "code\game\objects\structures\roguetown\mobspawner.dm"
 #include "code\game\objects\structures\roguetown\musicbox.dm"
 #include "code\game\objects\structures\roguetown\newtree.dm"
 #include "code\game\objects\structures\roguetown\portal.dm"
