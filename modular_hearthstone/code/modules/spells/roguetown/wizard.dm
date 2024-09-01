@@ -196,7 +196,7 @@
 		/obj/effect/proc_holder/spell/invoked/projectile/spitfire,
 		/obj/effect/proc_holder/spell/invoked/forcewall_weak,
 		/obj/effect/proc_holder/spell/invoked/slowdown_spell_aoe,
-		/obj/effect/proc_holder/spell/invoked/message,
+		/obj/effect/proc_holder/spell/self/message,
 		/obj/effect/proc_holder/spell/invoked/push_spell,
 		/obj/effect/proc_holder/spell/invoked/blade_burst,
 		/obj/effect/proc_holder/spell/targeted/touch/nondetection,
@@ -269,13 +269,14 @@
 		QDEL_IN(src, timeleft) //delete after it runs out
 
 /obj/effect/proc_holder/spell/invoked/forcewall_weak/cast(list/targets,mob/user = usr)
-	new wall_type(get_turf(user),user)
+	var/turf/front = get_step(user, user.dir)
+	new wall_type(front, user)
 	if(user.dir == SOUTH || user.dir == NORTH)
-		new wall_type(get_step(user, EAST),user)
-		new wall_type(get_step(user, WEST),user)
+		new wall_type(get_step(front, WEST), user)
+		new wall_type(get_step(front, EAST), user)
 	else
-		new wall_type(get_step(user, NORTH),user)
-		new wall_type(get_step(user, SOUTH),user)
+		new wall_type(get_step(front, NORTH), user)
+		new wall_type(get_step(front, SOUTH), user)
 	return TRUE
 
 /obj/structure/forcefield_weak
@@ -347,27 +348,23 @@
 /obj/effect/temp_visual/slowdown_spell_aoe/long
 	duration = 3 SECONDS
 
-/obj/effect/proc_holder/spell/invoked/message
+/obj/effect/proc_holder/spell/self/message
 	name = "Message"
 	desc = "Latch onto the mind of one who is familiar to you, whispering a message into their head."
 	cost = 2
 	xp_gain = TRUE
 	releasedrain = 30
-	chargedrain = 1
-	chargetime = 5 SECONDS
 	charge_max = 60 SECONDS
 	warnie = "spellwarning"
-	no_early_release = TRUE
-	movement_interrupt = TRUE
-	charging_slowdown = 3
-	chargedloop = /datum/looping_sound/invokegen
 	associated_skill = /datum/skill/magic/arcane
 	overlay_state = "message"
+	var/identify_difficulty = 15 //the stat threshold needed to pass the identify check
 
-/obj/effect/proc_holder/spell/invoked/message/cast(list/targets, mob/user)
+/obj/effect/proc_holder/spell/self/message/cast(list/targets, mob/user)
 	. = ..()
 	var/input = stripped_input(user, "Who are you trying to contact?")
 	if(!input)
+		revert_cast()
 		return
 	if(!user.key)
 		to_chat(user, span_warning("I sense a body, but the mind does not seem to be there."))
@@ -381,13 +378,28 @@
 		if(HL.real_name == input)
 			var/message = stripped_input(user, "You make a connection. What are you trying to say?")
 			if(!message)
+				revert_cast()
 				return
-			to_chat(HL, "Arcyne whispers fill the back of my head, resolving into a clear, if distant, voice: </span><font color=#7246ff>\"[message]\"</font>")
+			if(alert(user, "Send anonymously?", "", "Yes", "No") == "No") //yes or no popup, if you say No run this code
+				identify_difficulty = 0 //anyone can clear this
+
+			var/identified = FALSE
+			if(HL.STAPER >= identify_difficulty) //quick stat check
+				if(HL.mind)
+					if(HL.mind.do_i_know(name=user.real_name)) //do we know who this person is?
+						identified = TRUE // we do
+						to_chat(HL, "Arcyne whispers fill the back of my head, resolving into [user]'s voice: </span><font color=#7246ff>\"[message]\"</font>")
+
+			if(!identified) //we failed the check OR we just dont know who that is
+				to_chat(HL, "Arcyne whispers fill the back of my head, resolving into an unknown [user.gender == FEMALE ? "woman" : "man"]'s voice: </span><font color=#7246ff>\"[message]\"</font>")
+
+			user.whisper(message)
 			log_game("[key_name(user)] sent a message to [key_name(HL)] with contents [message]")
 			// maybe an option to return a message, here?
 			return TRUE
 	to_chat(user, span_warning("I seek a mental connection, but can't find [input]."))
 	revert_cast()
+	return
 
 /obj/effect/proc_holder/spell/invoked/push_spell
 	name = "Repulse"

@@ -152,7 +152,7 @@
 			take_bodypart_damage(10,check_armor = TRUE)
 			if(victim.IsOffBalanced())
 				victim.Knockdown(30)
-			visible_message("<span class='danger'>[src] crashes into [victim]!",\
+			visible_message(span_danger("[src] crashes into [victim]!"),\
 				span_danger("I violently crash into [victim]!"))
 		playsound(src,"genblunt",100,TRUE)
 
