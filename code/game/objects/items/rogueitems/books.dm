@@ -380,11 +380,11 @@
 	var/list/book_icons = list(
 	"Sickly green with embossed bronze" = "book8",
 	"White with embossed obsidian" = "book7",
-	"Black with embossed quartz" = "book6",
-	"Blue with embossed ruby" = "book5",
+	"Black with embossed blortz" = "book6",
+	"Blue with embossed rontz" = "book5",
 	"Green with embossed amethyst" = "book4",
-	"Purple with embossed emerald" = "book3",
-	"Red with embossed sapphire" = "book2",
+	"Purple with embossed gemerald" = "book3",
+	"Red with embossed saffira" = "book2",
 	"Brown with embossed gold" = "book1",
 	"Brown without embossed material" = "basic_book")
 	name = "unknown title"
