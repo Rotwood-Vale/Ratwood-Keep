@@ -49,6 +49,8 @@
 				//this FUCKING SUCKS, replaced by below
 				//used = 'sound/vo/female/gen/hmm.ogg'
 				used = list('sound/vo/female/elf/hmm (1).ogg','sound/vo/female/elf/hmm (2).ogg')
+			if("conqrah")
+				used = 'sound/vo/female/gen/femconqrah.ogg'
 			if("huh")
 				used = list('sound/vo/female/gen/huh (1).ogg','sound/vo/female/gen/huh (2).ogg','sound/vo/female/gen/huh (3).ogg')
 			if("hum")

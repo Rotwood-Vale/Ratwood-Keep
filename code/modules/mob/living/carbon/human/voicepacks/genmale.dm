@@ -52,6 +52,8 @@
 					used = 'sound/vo/male/gen/HEY.ogg'
 			if("hmm")
 				used = 'sound/vo/male/gen/hmm.ogg'
+			if("conqrah")
+				used = 'sound/vo/male/gen/maleconqrah.ogg'
 			if("huh")
 				used = list('sound/vo/male/gen/huh (1).ogg','sound/vo/male/gen/huh (2).ogg','sound/vo/male/gen/huh (3).ogg')
 			if("hum")

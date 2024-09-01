@@ -895,6 +895,12 @@
 	emote_type = EMOTE_AUDIBLE
 	only_forced_audio = TRUE
 
+/datum/emote/living/conqrah
+	key = "conqrah"
+	message = "shouts triumphally!"
+	emote_type = EMOTE_AUDIBLE
+	only_forced_audio = TRUE 
+
 /datum/emote/living/rage
 	key = "rage"
 	message = "screams in rage!"
