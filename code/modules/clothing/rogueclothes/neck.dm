@@ -160,6 +160,7 @@
 /obj/item/clothing/neck/roguetown/psicross/pestra
 	name = "amulet of Pestra"
 	desc = ""
+	icon_state = "pestra"
 
 /obj/item/clothing/neck/roguetown/psicross/eora
 	name = "amulet of Eora"
