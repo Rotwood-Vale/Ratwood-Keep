@@ -273,3 +273,36 @@
 	foodtype = SUGAR
 	tastes = list("sugar" = 1)
 	grind_results = list(/datum/reagent/sugar = 10)
+
+/obj/item/reagent_containers/food/snacks/grown/pumpkin
+	seed = /obj/item/seeds/pumpkin
+	name = "pumpkin"
+	desc = ""
+	icon = 'icons/roguetown/items/produce.dmi'
+	icon_state = "pumpkin"
+	list_reagents = list(/datum/reagent/consumable/nutriment = 3)
+	tastes = list("pumpkin" = 1)
+	dropshrink = 0.75
+	bitesize_mod = 3
+
+/obj/item/reagent_containers/food/snacks/grown/carrot
+	seed = /obj/item/seeds/carrot
+	name = "carrot"
+	desc = ""
+	icon = 'icons/roguetown/items/produce.dmi'
+	icon_state = "carrot"
+	list_reagents = list(/datum/reagent/consumable/nutriment = 2)
+	tastes = list("carrot" = 1)
+	dropshrink = 0.75
+	bitesize_mod = 2
+
+/obj/item/reagent_containers/food/snacks/grown/garlic
+	seed = /obj/item/seeds/garlic
+	name = "garlic"
+	desc = ""
+	icon = 'icons/roguetown/items/produce.dmi'
+	icon_state = "garlic"
+	list_reagents = list(/datum/reagent/consumable/nutriment = 1)
+	tastes = list("garlic" = 1)
+	dropshrink = 0.75
+	bitesize_mod = 1

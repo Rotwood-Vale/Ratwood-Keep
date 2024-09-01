@@ -65,3 +65,12 @@
 		/obj/item/reagent_containers/food/snacks/rogue/flatbread = 1)
 	result = /obj/item/reagent_containers/food/snacks/rogue/flatpie
 	subtype_reqs = FALSE
+
+/datum/crafting_recipe/roguetown/cooking/pumpkinspice
+	name = "pumpkin spice"
+	reqs = list(/obj/item/reagent_containers/food/snacks/grown/pumpkin = 1)
+	result = /obj/item/reagent_containers/food/snacks/rogue/pumpkinspice
+	structurecraft = /obj/structure/fluff/dryingrack
+	req_table = FALSE
+	craftdiff = 0
+	subtype_reqs = TRUE

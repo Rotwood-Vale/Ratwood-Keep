@@ -517,3 +517,32 @@
 	tastes = list("sugar and crispy dough" = 1)
 	foodtype = SUGAR
 	eat_effect = /datum/status_effect/buff/foodbuff
+
+/datum/crafting_recipe/roguetown/cooking/garlictoastslice
+	name = "garlic toast"
+	reqs = list(
+		/obj/item/reagent_containers/food/snacks/rogue/breadslice/toast = 1,
+		/obj/item/reagent_containers/food/snacks/grown/garlic = 1,
+		/obj/item/reagent_containers/food/snacks/butterslice = 1)
+	result = /obj/item/reagent_containers/food/snacks/rogue/garlictoast
+	craftdiff = 1
+	subtype_reqs = FALSE
+
+/datum/crafting_recipe/roguetown/cooking/garlictoastslice
+	name = "garlic toast"
+	reqs = list(
+		/obj/item/reagent_containers/food/snacks/rogue/breadslice/toastbuttered = 1,
+		/obj/item/reagent_containers/food/snacks/grown/garlic = 1)
+	result = /obj/item/reagent_containers/food/snacks/rogue/garlictoast
+	craftdiff = 1
+	subtype_reqs = FALSE
+
+/obj/item/reagent_containers/food/snacks/rogue/garlictoast
+	name = "garlic toast"
+	desc = ""
+	icon = 'icons/roguetown/items/food.dmi'
+	icon_state = "garlictoastslice"
+	list_reagents = list(/datum/reagent/consumable/nutriment = 8)
+	w_class = WEIGHT_CLASS_NORMAL
+	tastes = list("spelt" = 1,"garlic" = 1)
+	foodtype = GRAIN

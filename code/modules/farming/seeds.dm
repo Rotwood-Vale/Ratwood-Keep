@@ -88,3 +88,15 @@
 /obj/item/seeds/sugarcane
 	seed_identity = "sugarcane seeds"
 	plant_def_type = /datum/plant_def/sugarcane
+
+/obj/item/seeds/pumpkin
+	seed_identity = "pumpkin seeds"
+	plant_def_type = /datum/plant_def/pumpkin
+
+/obj/item/seeds/carrot
+	seed_identity = "carrot seeds"
+	plant_def_type = /datum/plant_def/carrot
+
+/obj/item/seeds/garlic
+	seed_identity = "garlic seeds"
+	plant_def_type = /datum/plant_def/garlic

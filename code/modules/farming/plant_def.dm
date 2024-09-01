@@ -120,8 +120,6 @@
 	maturation_time = 6 MINUTES
 	produce_time = 3 MINUTES
 	produce_type = /obj/item/reagent_containers/food/snacks/grown/rogue/potato
-	//uproot_loot = list(/obj/item/grown/log/tree/small)
-	//perennial = TRUE
 	
 /datum/plant_def/sugarcane
 	name = "sugarcane"
@@ -133,3 +131,39 @@
 	produce_nutrition = 20
 	maturation_time = 5 MINUTES
 	produce_time = 2 MINUTES
+
+/datum/plant_def/pumpkin
+	name = "pumpkin"
+	icon = 'icons/roguetown/misc/crops.dmi'
+	icon_state = "pumpkin"
+	produce_type = /obj/item/reagent_containers/food/snacks/grown/pumpkin
+	produce_amount = 3
+	maturation_nutrition = 30
+	produce_nutrition = 20
+	maturation_time = 6 MINUTES
+	produce_time = 2 MINUTES
+	weed_immune = FALSE
+
+/datum/plant_def/carrot
+	name = "carrot"
+	icon = 'icons/roguetown/misc/crops.dmi'
+	icon_state = "carrot"
+	produce_type = /obj/item/reagent_containers/food/snacks/grown/carrot
+	produce_amount = 4
+	maturation_nutrition = 30
+	produce_nutrition = 20
+	maturation_time = 4 MINUTES
+	produce_time = 2 MINUTES
+	weed_immune = FALSE
+
+/datum/plant_def/garlic
+	name = "garlic"
+	icon = 'icons/roguetown/misc/crops.dmi'
+	icon_state = "garlic"
+	produce_type = /obj/item/reagent_containers/food/snacks/grown/garlic
+	produce_amount = 4
+	maturation_nutrition = 30
+	produce_nutrition = 20
+	maturation_time = 5 MINUTES
+	produce_time = 2 MINUTES
+	weed_immune = FALSE

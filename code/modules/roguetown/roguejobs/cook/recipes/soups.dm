@@ -43,6 +43,19 @@
 					/obj/item/reagent_containers/food/snacks/rogue/soup/fishchowder)
 	craftdiff = 1
 
+/datum/crafting_recipe/roguetown/cooking/soup/chickensoup
+	name = "chicken soup"
+	reqs = list(
+		/datum/reagent/water = 30,
+		/obj/item/reagent_containers/food/snacks/rogue/meat/poultry= 1,
+		/obj/item/reagent_containers/food/snacks/grown/carrot= 1,
+		/obj/item/reagent_containers/food/snacks/grown/garlic= 1,
+		/obj/item/reagent_containers/glass/bowl = 3)
+	result = list(	/obj/item/reagent_containers/food/snacks/rogue/soup/chickensoup,
+					/obj/item/reagent_containers/food/snacks/rogue/soup/chickensoup,
+					/obj/item/reagent_containers/food/snacks/rogue/soup/chickensoup)
+	craftdiff = 1
+
 /obj/item/reagent_containers/food/snacks/rogue/soup/gruel
 	name = "gruel"
 	desc = ""
@@ -73,5 +86,17 @@
 	list_reagents = list(/datum/reagent/consumable/nutriment = 15)
 	w_class = WEIGHT_CLASS_NORMAL
 	tastes = list("creamy, fishy soup" = 1)
+	foodtype = MEAT
+	trash = /obj/item/reagent_containers/glass/bowl
+
+/obj/item/reagent_containers/food/snacks/rogue/soup/chickensoup
+	name = "chicken soup"
+	desc = ""
+	icon = 'icons/roguetown/items/food.dmi'
+	icon_state = "chickensoup"
+	list_reagents = list(	/datum/reagent/consumable/nutriment = 15,
+							/datum/reagent/medicine/healthpot = 15)
+	w_class = WEIGHT_CLASS_NORMAL
+	tastes = list("savory, chickeny soup" = 1)
 	foodtype = MEAT
 	trash = /obj/item/reagent_containers/glass/bowl

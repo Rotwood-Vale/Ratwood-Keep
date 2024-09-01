@@ -122,6 +122,11 @@
 		fertilize_amount = 150
 	else if (istype(attacking_item, /obj/item/compost))
 		fertilize_amount = 150
+	else if (istype(attacking_item, /obj/item/fertilizer))
+		to_chat(user, span_notice("Something about this mixture..."))
+		fertilize_soil()
+		qdel(attacking_item)
+		return TRUE
 	if(fertilize_amount > 0)
 		if(nutrition >= MAX_PLANT_NUTRITION * 0.8)
 			to_chat(user, span_warning("The soil is already fertilized!"))
@@ -239,6 +244,8 @@
 	update_icon()
 
 /obj/structure/soil/proc/bless_soil()
+	if(blessed_time > 15 MINUTES)
+		return
 	blessed_time = 15 MINUTES
 	// It's a miracle! Plant comes back to life when blessed by Dendor
 	if(plant && plant_dead)
@@ -253,6 +260,17 @@
 	// And it grows a little!
 	if(plant)
 		add_growth(2 MINUTES)
+
+/obj/structure/soil/proc/fertilize_soil()
+	blessed_time = 60 MINUTES //Meant to outlast the effects of dendor's blessing
+
+	// Similar effects on nutrition
+	if(nutrition < 100)
+		adjust_nutrition(max(100 - nutrition, 0))
+	// Similar effects on water
+	if(water < 100)
+		adjust_water(max(100 - water, 0))
+	//No growth bonus nor plant revival.
 
 /obj/structure/soil/proc/adjust_water(adjust_amount)
 	water = clamp(water + adjust_amount, 0, MAX_PLANT_WATER)
@@ -442,6 +460,10 @@
 	// Lots of weeds harm the plant
 	if(weeds >= MAX_PLANT_WEEDS * 0.6)
 		adjust_plant_health(-dt * PLANT_WEEDS_HARM_RATE)
+
+	// Blessed plants don't drain water
+	if(blessed_time > 0)
+		drain_rate = 0
 	// Regenerate plant health if we dont drain water, or we have the water
 	if(drain_rate <= 0 || water > 0)
 		adjust_plant_health(dt * PLANT_REGENERATION_RATE)
@@ -524,7 +546,9 @@
 
 	adjust_water(-dt * SOIL_WATER_DECAY_RATE)
 	adjust_nutrition(-dt * SOIL_NUTRIMENT_DECAY_RATE)
-
+	if(blessed_time > 0)
+		nutrition = 100
+		water = 100
 	tilled_time = max(tilled_time - dt, 0)
 	blessed_time = max(blessed_time - dt, 0)
 

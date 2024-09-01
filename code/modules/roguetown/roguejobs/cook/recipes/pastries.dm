@@ -221,7 +221,7 @@
 	name = "uncooked berry jam"
 	reqs = list(
 		/obj/item/reagent_containers/glass/beaker/jar = 1,
-		/obj/item/reagent_containers/food/snacks/grown/berries = 3,
+		/obj/item/reagent_containers/food/snacks/grown/berries/rogue = 3,
 		/obj/item/reagent_containers/powder/sugar = 1)
 	result = /obj/item/reagent_containers/food/snacks/rogue/uncookedberryjam
 	craftdiff = 2
@@ -344,3 +344,280 @@
 	eat_effect = /datum/status_effect/buff/foodbuff
 	bitesize = 3
 	rotprocess = null
+
+/datum/crafting_recipe/roguetown/cooking/pumpkindough
+	name = "pumpkin dough"
+	reqs = list(
+		/obj/item/reagent_containers/food/snacks/rogue/sweetdough= 1,
+		/obj/item/reagent_containers/food/snacks/rogue/pumpkinspice= 1)
+	result = list(	/obj/item/reagent_containers/food/snacks/rogue/pumpkindough = 1)
+	craftdiff = 1
+	subtype_reqs = FALSE
+
+/obj/item/reagent_containers/food/snacks/rogue/pumpkindough
+	name = "pumpkin dough"
+	desc = ""
+	icon = 'icons/roguetown/items/food.dmi'
+	icon_state = "pumpkindough"
+	cooked_type = /obj/item/reagent_containers/food/snacks/rogue/pumpkinbread
+	list_reagents = list(/datum/reagent/consumable/nutriment = 1)
+	w_class = WEIGHT_CLASS_NORMAL
+	tastes = list("gummy, sweet, herbed dough" = 1)
+	foodtype = SUGAR
+	eat_effect = /datum/status_effect/debuff/uncookedfood
+	rotprocess = 30 MINUTES
+
+/obj/item/reagent_containers/food/snacks/rogue/pumpkinbread
+	name = "pumpkin bread"
+	desc = ""
+	icon = 'icons/roguetown/items/food.dmi'
+	icon_state = "pumpkinbread"
+	list_reagents = list(/datum/reagent/consumable/nutriment = 48)
+	slices_num = 6
+	slice_path = /obj/item/reagent_containers/food/snacks/rogue/pumpkinbreadslice
+	dropshrink = 0.80
+	w_class = WEIGHT_CLASS_NORMAL
+	tastes = list("sweet, spiced bread" = 1)
+	foodtype = SUGAR
+	bitesize = 3
+	rotprocess = null
+
+/obj/item/reagent_containers/food/snacks/rogue/pumpkinbreadslice
+	name = "pumpkin bread slice"
+	desc = ""
+	icon = 'icons/roguetown/items/food.dmi'
+	icon_state = "pumpkinbreadslice"
+	list_reagents = list(/datum/reagent/consumable/nutriment = 8)
+	w_class = WEIGHT_CLASS_NORMAL
+	tastes = list("sweet, spiced bread" = 1)
+	foodtype = SUGAR
+	bitesize = 3
+	rotprocess = null
+	dropshrink = 0.60
+
+/datum/crafting_recipe/roguetown/cooking/rawpumpkinpie
+	name = "raw pumpkin pie"
+	reqs = list(
+		/obj/item/reagent_containers/food/snacks/rogue/sweetdough= 1,
+		/obj/item/reagent_containers/food/snacks/grown/pumpkin = 1,
+		/obj/item/reagent_containers/food/snacks/rogue/pumpkinspice= 1)
+	result = list(	/obj/item/reagent_containers/food/snacks/rogue/rawpumpkinpie = 1)
+	craftdiff = 1
+	subtype_reqs = FALSE
+
+/obj/item/reagent_containers/food/snacks/rogue/rawpumpkinpie
+	name = "raw pumpkin pie"
+	desc = ""
+	icon = 'icons/roguetown/items/food.dmi'
+	icon_state = "rawpumpkinpie"
+	list_reagents = list(/datum/reagent/consumable/nutriment = 10)
+	cooked_type = /obj/item/reagent_containers/food/snacks/rogue/pumpkinpie
+	w_class = WEIGHT_CLASS_NORMAL
+	tastes = list("sweet, spiced pumpkin filling in a doughy crust" = 1)
+	foodtype = SUGAR
+	eat_effect = /datum/status_effect/debuff/uncookedfood
+	rotprocess = 30 MINUTES
+
+/obj/item/reagent_containers/food/snacks/rogue/pumpkinpie
+	name = "pumpkin pie"
+	desc = ""
+	icon = 'icons/roguetown/items/food.dmi'
+	icon_state = "pumpkinpie"
+	list_reagents = list(/datum/reagent/consumable/nutriment = 48)
+	slices_num = 6
+	slice_path = /obj/item/reagent_containers/food/snacks/rogue/pumpkinpieslice
+	dropshrink = 0.80
+	w_class = WEIGHT_CLASS_NORMAL
+	tastes = list("sweet, spiced pumpkin filling in a flaky crust" = 1)
+	foodtype = SUGAR
+	bitesize = 3
+	rotprocess = null
+
+/obj/item/reagent_containers/food/snacks/rogue/pumpkinpieslice
+	name = "pumpkin pie slice"
+	desc = ""
+	icon = 'icons/roguetown/items/food.dmi'
+	icon_state = "pumpkinpieslice"
+	list_reagents = list(/datum/reagent/consumable/nutriment = 8)
+	w_class = WEIGHT_CLASS_NORMAL
+	tastes = list("sweet, spiced pumpkin filling in a flaky crust" = 1)
+	foodtype = SUGAR
+	bitesize = 3
+	rotprocess = null
+	dropshrink = 0.60
+
+/datum/crafting_recipe/roguetown/cooking/candybase
+	name = "candy base"
+	reqs = list(
+		/datum/reagent/water = 10,
+		/obj/item/reagent_containers/powder/sugar = 1)
+	result = /obj/item/reagent_containers/food/snacks/rogue/candybase
+	craftdiff = 1
+	subtype_reqs = FALSE
+	tools = list(/obj/item/reagent_containers/glass/pot)
+
+/obj/item/reagent_containers/food/snacks/rogue/candybase
+	name = "candy base"
+	desc = ""
+	icon = 'icons/roguetown/items/food.dmi'
+	icon_state = "candybase"
+	list_reagents = list(/datum/reagent/consumable/nutriment = 1)
+	w_class = WEIGHT_CLASS_NORMAL
+	tastes = list("sweet, sticky, and malleable" = 1)
+	foodtype = SUGAR
+	eat_effect = /datum/status_effect/debuff/uncookedfood
+
+/datum/crafting_recipe/roguetown/cooking/pumpkincandy
+	name = "pumpkin candy"
+	reqs = list(
+		/obj/item/reagent_containers/food/snacks/rogue/candybase = 1,
+		/obj/item/reagent_containers/food/snacks/rogue/pumpkinspice = 1)
+	result = /obj/item/reagent_containers/food/snacks/rogue/pumpkincandy
+	craftdiff = 1
+	subtype_reqs = FALSE
+	tools = list(/obj/item/reagent_containers/glass/pot)
+
+/obj/item/reagent_containers/food/snacks/rogue/pumpkincandy
+	name = "pumpkin candy"
+	desc = ""
+	icon = 'icons/roguetown/items/food.dmi'
+	icon_state = "pumpkincandy6"
+	list_reagents = list(/datum/reagent/consumable/nutriment = 12)
+	w_class = WEIGHT_CLASS_NORMAL
+	tastes = list("sweet, spiced pumpkin candy" = 1)
+	foodtype = SUGAR
+	bitesize = 6
+	rotprocess = null
+
+/obj/item/reagent_containers/food/snacks/rogue/pumpkincandy/On_Consume(mob/living/eater)
+	..()
+	if(bitecount == 1)
+		icon_state = "pumpkincandy5"
+	if(bitecount == 2)
+		icon_state = "pumpkincandy4"
+	if(bitecount == 3)
+		icon_state = "pumpkincandy3"
+	if(bitecount == 4)
+		icon_state = "pumpkincandy2"
+	if(bitecount == 5)
+		icon_state = "pumpkincandy1"
+
+/datum/crafting_recipe/roguetown/cooking/applecandy
+	name = "apple candy"
+	reqs = list(
+		/obj/item/reagent_containers/food/snacks/rogue/candybase = 1,
+		/obj/item/reagent_containers/food/snacks/grown/apple = 1)
+	result = /obj/item/reagent_containers/food/snacks/rogue/applecandy
+	craftdiff = 1
+	subtype_reqs = FALSE
+	tools = list(/obj/item/reagent_containers/glass/pot)
+
+/obj/item/reagent_containers/food/snacks/rogue/applecandy
+	name = "apple candy"
+	desc = ""
+	icon = 'icons/roguetown/items/food.dmi'
+	icon_state = "applecandy6"
+	list_reagents = list(/datum/reagent/consumable/nutriment = 12)
+	w_class = WEIGHT_CLASS_NORMAL
+	tastes = list("sweet, tart apple candy" = 1)
+	foodtype = SUGAR
+	bitesize = 6
+	rotprocess = null
+
+/obj/item/reagent_containers/food/snacks/rogue/applecandy/On_Consume(mob/living/eater)
+	..()
+	if(bitecount == 1)
+		icon_state = "applecandy5"
+	if(bitecount == 2)
+		icon_state = "applecandy4"
+	if(bitecount == 3)
+		icon_state = "applecandy3"
+	if(bitecount == 4)
+		icon_state = "applecandy2"
+	if(bitecount == 5)
+		icon_state = "applecandy1"
+
+/datum/crafting_recipe/roguetown/cooking/berrycandy
+	name = "berry candy"
+	reqs = list(
+		/obj/item/reagent_containers/food/snacks/rogue/candybase = 1,
+		/obj/item/reagent_containers/food/snacks/grown/berries/rogue = 1)
+	result = /obj/item/reagent_containers/food/snacks/rogue/berrycandy
+	craftdiff = 1
+	subtype_reqs = FALSE
+	tools = list(/obj/item/reagent_containers/glass/pot)
+
+/obj/item/reagent_containers/food/snacks/rogue/berrycandy
+	name = "berry candy"
+	desc = ""
+	icon = 'icons/roguetown/items/food.dmi'
+	icon_state = "berrycandy6"
+	list_reagents = list(/datum/reagent/consumable/nutriment = 12)
+	w_class = WEIGHT_CLASS_NORMAL
+	tastes = list("sweet, tart berry candy" = 1)
+	foodtype = SUGAR
+	bitesize = 6
+	rotprocess = null
+
+/obj/item/reagent_containers/food/snacks/rogue/berrycandy/On_Consume(mob/living/eater)
+	..()
+	if(bitecount == 1)
+		icon_state = "berrycandy5"
+	if(bitecount == 2)
+		icon_state = "berrycandy4"
+	if(bitecount == 3)
+		icon_state = "berrycandy3"
+	if(bitecount == 4)
+		icon_state = "berrycandy2"
+	if(bitecount == 5)
+		icon_state = "berrycandy1"
+
+/datum/crafting_recipe/roguetown/cooking/rawcarrotcake
+	name = "raw carrot cake"
+	reqs = list(
+		/obj/item/reagent_containers/food/snacks/rogue/sweetdough= 1,
+		/obj/item/reagent_containers/food/snacks/grown/carrot = 3)
+	result = list(	/obj/item/reagent_containers/food/snacks/rogue/rawcarrotcake = 1)
+	craftdiff = 1
+	subtype_reqs = FALSE
+
+/obj/item/reagent_containers/food/snacks/rogue/rawcarrotcake
+	name = "raw carrot cake"
+	desc = ""
+	icon = 'icons/roguetown/items/food.dmi'
+	icon_state = "rawcarrotcake"
+	list_reagents = list(/datum/reagent/consumable/nutriment = 10)
+	cooked_type = /obj/item/reagent_containers/food/snacks/rogue/carrotcake
+	w_class = WEIGHT_CLASS_NORMAL
+	tastes = list("sweet, spiced carrot cake" = 1)
+	foodtype = SUGAR
+	eat_effect = /datum/status_effect/debuff/uncookedfood
+	rotprocess = 30 MINUTES
+
+/obj/item/reagent_containers/food/snacks/rogue/carrotcake
+	name = "carrot cake"
+	desc = ""
+	icon = 'icons/roguetown/items/food.dmi'
+	icon_state = "carrotcake"
+	list_reagents = list(/datum/reagent/consumable/nutriment = 48)
+	slices_num = 6
+	slice_path = /obj/item/reagent_containers/food/snacks/rogue/carrotcakeslice
+	dropshrink = 0.80
+	w_class = WEIGHT_CLASS_NORMAL
+	tastes = list("sweet, spiced carrot cake" = 1)
+	foodtype = SUGAR
+	bitesize = 3
+	rotprocess = null
+
+/obj/item/reagent_containers/food/snacks/rogue/carrotcakeslice
+	name = "carrot cake slice"
+	desc = ""
+	icon = 'icons/roguetown/items/food.dmi'
+	icon_state = "carrotcakeslice"
+	list_reagents = list(/datum/reagent/consumable/nutriment = 8)
+	w_class = WEIGHT_CLASS_NORMAL
+	tastes = list("sweet, spiced carrot cake" = 1)
+	foodtype = SUGAR
+	bitesize = 3
+	rotprocess = null
+	dropshrink = 0.60

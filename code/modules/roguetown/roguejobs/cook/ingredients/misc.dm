@@ -162,3 +162,15 @@
 	tastes = list("Savory, cheesy, with hints of herb" = 1)
 	eat_effect = /datum/status_effect/buff/foodbuff
 	rotprocess = null
+
+/obj/item/reagent_containers/food/snacks/rogue/pumpkinspice
+	name = "pumpkin spice"
+	desc = "A warm, spicy blend of cinnamon, nutmeg, and cloves."
+	icon = 'icons/roguetown/items/food.dmi'
+	icon_state = "pumpkinspice"
+	bitesize = 1
+	list_reagents = list(/datum/reagent/consumable/nutriment = 2)
+	w_class = WEIGHT_CLASS_TINY
+	tastes = list("an overwhelming flavor of pumpkin and other herbs." = 1)
+	eat_effect = /datum/status_effect/debuff/badmeal
+	rotprocess = null
