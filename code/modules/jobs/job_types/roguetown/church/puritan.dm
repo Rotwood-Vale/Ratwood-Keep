@@ -11,7 +11,7 @@
 		/datum/patron/old_god,
 		ALL_DIVINE_PATRONS,
 	) //gets set to old god.
-	tutorial = "As an Inquisitor, the Queen has emboldened your radical sect to root out cultists and the cursed night beasts, using your practice of extracting involuntary 'sin confessions' as a guise to spy on the local populace. Witch Hunters are hired for their extreme paranoia and religious fervor."
+	tutorial = "“Still clinging to the fading cult of Psydon, The Inquisition has sent you to Rotwood on a quest to root out the blasphemous and the cursed of these lands. Guided by religious fervor and extreme paranoia, you’re determined to extract confessions from the sinful, hoping that your uneasy alliance with the Church of the Ten holds.”"
 	whitelist_req = TRUE
 
 	outfit = /datum/outfit/job/roguetown/puritan
