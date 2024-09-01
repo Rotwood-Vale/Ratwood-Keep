@@ -368,7 +368,7 @@
 	slices_num = 0
 	name = "corned beef and grenzelkraut"
 	desc = "A slice of salt-cured brisket served with grenzelkraut."
-	icon_state = "corned beef"
+	icon_state = "cornedbeef"
 	bitesize = 3
 	warming = 5 MINUTES
 	rotprocess = 20 MINUTES
