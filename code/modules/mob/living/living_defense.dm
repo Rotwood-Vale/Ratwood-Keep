@@ -215,6 +215,7 @@
 /mob/living/proc/grippedby(mob/living/carbon/user, instant = FALSE)
 	user.changeNext_move(CLICK_CD_MELEE * 2 - user.STASPD)
 	var/skill_diff = 0
+	var/combat_modifier = 1
 	if(user.mind)
 		skill_diff += (user.mind.get_skill_level(/datum/skill/combat/wrestling)) //NPCs don't use this
 	if(mind)
@@ -223,19 +224,14 @@
 	if(user == src)
 		instant = TRUE
 
-//	if(user.pulling != src)
-//		return
+	if(!cmode && user.cmode)
+		combat_modifier = 1.25
+	else if(cmode && !user.cmode)
+		combat_modifier = 0.75
 
-	var/probby =  clamp(((4 + (((user.STASTR - STASTR)/2) + skill_diff)) * 10), 5, 95)
-	/*if(src.pulling == user && !instant)
-		probby += 30
+	var/probby =  clamp((((4 + (((user.STASTR - STASTR)/2) + skill_diff)) * 10 + rand(-5, 5)) * combat_modifier), 5, 95)
 
-	if(src.dir == turn(get_dir(src,user), 180))
-		probby = (probby - 30)
-
-	probby = clamp(probby, 5, 95)*/
-
-	if(prob(probby) && !instant && !stat && cmode)
+	if(prob(probby) && !instant && !stat)
 		visible_message(span_warning("[user] struggles with [src]!"),
 						span_warning("[user] struggles to restrain me!"), span_hear("I hear aggressive shuffling!"), null, user)
 		if(src.client?.prefs.showrolls)
@@ -245,7 +241,6 @@
 		playsound(src.loc, 'sound/foley/struggle.ogg', 100, FALSE, -1)
 		user.Immobilize(2 SECONDS)
 		user.changeNext_move(2 SECONDS)
-		user.rogfat_add(5)
 		src.Immobilize(1 SECONDS)
 		src.changeNext_move(1 SECONDS)
 		return
