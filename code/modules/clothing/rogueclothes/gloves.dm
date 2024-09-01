@@ -24,7 +24,7 @@
 	sewrepair = TRUE
 
 /obj/item/clothing/gloves/roguetown/leather/black
-	color = CLOTHING_BLACK
+	icon_state = "gloves_black"
 
 /obj/item/clothing/gloves/roguetown/fingerless
 	name = "fingerless gloves"
