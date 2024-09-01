@@ -29,6 +29,7 @@
 #define TRAIT_NASTY_EATER "Inhumen Digestion" //can eat rotten food, organs, poison berries, and drink murky water
 #define TRAIT_WILD_EATER "Beastly Digestion" //can eat raw and rotten food and drink murky water
 #define TRAIT_NOFALLDAMAGE1 "Minor fall damage immunity"
+#define TRAIT_NOFALLDAMAGE2 "Total fall damage immunity"
 #define TRAIT_MISSING_NOSE "Missing Nose" //halved stamina regeneration
 #define TRAIT_DISFIGURED "Disfigured"
 #define TRAIT_SPELLCOCKBLOCK "Bewitched" //prevents spellcasting
@@ -112,6 +113,7 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_NASTY_EATER = span_dead("I can eat bad food, and water that would be toxic to humen will not affect me."),
 	TRAIT_WILD_EATER = span_info("I can eat raw food and drink from dirty water."),
 	TRAIT_NOFALLDAMAGE1 = span_warning("I can easily handle minor falls."),
+	TRAIT_NOFALLDAMAGE2 = span_warning("I can handle a fall from any height."),
 	TRAIT_DISFIGURED = span_warning("No one can recognize me..."),
 	TRAIT_MISSING_NOSE = span_warning("I struggle to breathe."),
 	TRAIT_SPELLCOCKBLOCK = span_warning("I cannot cast any spells."),
@@ -362,6 +364,7 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define INNATE_TRAIT "innate"
 
 // unique trait sources, still defines
+#define TRAIT_LONGSTRIDER "longstrider"
 #define TRAIT_DARKVISION "darkvision"
 #define CLONING_POD_TRAIT "cloning-pod"
 #define STATUE_MUTE "statue"
