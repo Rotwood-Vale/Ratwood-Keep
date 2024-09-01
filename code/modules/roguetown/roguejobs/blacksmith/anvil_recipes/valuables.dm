@@ -60,7 +60,7 @@
 	name = "Gemerald Ring (+1 Gemerald)"
 	req_bar = /obj/item/ingot/gold
 	additional_items = list(/obj/item/roguegem/green)	
-	created_item = /obj/item/scomstone
+	created_item = /obj/item/clothing/ring/emerald
 	i_type = "Valuables"
 
 /datum/anvil_recipe/valuables/rubyg
