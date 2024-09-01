@@ -202,6 +202,8 @@
 	name = "Greater Fireball"
 	desc = ""
 	clothes_req = FALSE
+	invocation = "CRUICO"
+	invocation_type = "shout"
 	range = 8
 	projectile_type = /obj/projectile/magic/aoe/fireball/rogue/great
 	overlay_state = "fireball"
