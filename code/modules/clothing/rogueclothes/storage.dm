@@ -186,25 +186,25 @@
 	alternate_worn_layer = UNDER_CLOAK_LAYER
 	sewrepair = TRUE
 
-/obj/item/storage/backpack/rogue/skit
-	name = "doctor bag"
+/obj/item/storage/belt/rogue/skit
+	name = "surgical pouch"
 	color = CLOTHING_BLACK
-	desc = "Emergency surgical bag."
-	icon_state = "satchel"
-	item_state = "satchel"
+	desc = "Emergency surgical pouch."
+	icon_state = "pouch"
+	item_state = "pouch"
 	icon = 'icons/roguetown/clothing/storage.dmi'
-	lefthand_file = 'icons/mob/inhands/equipment/backpack_lefthand.dmi'
-	righthand_file = 'icons/mob/inhands/equipment/backpack_righthand.dmi'
-	w_class = WEIGHT_CLASS_BULKY
-	slot_flags = ITEM_SLOT_BACK
-	resistance_flags = NONE
+	lefthand_file = 'icons/mob/inhands/equipment/belt_lefthand.dmi'
+	righthand_file = 'icons/mob/inhands/equipment/belt_righthand.dmi'
+	slot_flags = ITEM_SLOT_HIP|ITEM_SLOT_NECK
+	w_class = WEIGHT_CLASS_NORMAL
+	attack_verb = list("whips", "lashes")
 	max_integrity = 300
 	equip_sound = 'sound/blank.ogg'
+	content_overlays = FALSE
 	bloody_icon_state = "bodyblood"
-	alternate_worn_layer = UNDER_CLOAK_LAYER
 	sewrepair = TRUE
 
-/obj/item/storage/backpack/rogue/skit/ComponentInitialize()
+/obj/item/storage/belt/rogue/skit/ComponentInitialize()
 	. = ..()
 	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
 	if(STR)

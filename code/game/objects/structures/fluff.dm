@@ -750,6 +750,18 @@
 	destroy_sound = 'sound/combat/hits/onwood/destroyfurniture.ogg'
 	attacked_sound = list('sound/combat/hits/onwood/woodimpact (1).ogg','sound/combat/hits/onwood/woodimpact (2).ogg')
 
+/obj/structure/fluff/alch
+	name = "alchemical lab"
+	desc = ""
+	icon = 'icons/roguetown/misc/structure.dmi'
+	icon_state = "alch"
+	density = TRUE
+	anchored = TRUE
+	layer = BELOW_OBJ_LAYER
+	blade_dulling = DULLING_BASHCHOP
+	max_integrity = 450
+	destroy_sound = 'sound/combat/hits/onwood/destroyfurniture.ogg'
+	attacked_sound = list("sound/combat/hits/onmetal/metalimpact (1).ogg", "sound/combat/hits/onmetal/metalimpact (2).ogg")
 
 /obj/structure/fluff/statue
 	name = "statue"
