@@ -32,7 +32,7 @@
 		/obj/item/clothing/mask/rogue/physician = 1,
 		/obj/item/storage/box/matches = 1, /// for carterizer and lantern.
 		/obj/item/natural/cloth = 2,
-		/obj/item/storage/belt/rogue/skit
+		/obj/item/storage/belt/rogue/pouch/skit
 	)
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/combat/knives, 3, TRUE)
