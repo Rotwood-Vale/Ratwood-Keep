@@ -22,9 +22,6 @@
 	icon_state = "tabard"
 	item_state = "tabard"
 	mob_overlay_icon = 'icons/roguetown/clothing/onmob/detailed/tabards.dmi'
-	sleeved = 'icons/roguetown/clothing/onmob/detailed/tabards.dmi'
-	nodismemsleeves = TRUE
-	sleevetype = "shirt"
 	alternate_worn_layer = TABARD_LAYER
 	body_parts_covered = CHEST|GROIN
 	boobed = TRUE
