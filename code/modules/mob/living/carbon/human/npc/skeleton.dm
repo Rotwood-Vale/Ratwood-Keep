@@ -83,6 +83,8 @@
 	if(prob(40))
 		head = /obj/item/clothing/head/roguetown/helmet/leather
 	if(prob(70))
+		gloves = /obj/item/clothing/gloves/roguetown/chain
+	if(prob(70))
 		neck = /obj/item/clothing/neck/roguetown/chaincoif
 	if(H.gender == FEMALE)
 		H.STASTR = rand(9,12)
