@@ -202,6 +202,7 @@
 	color = null
 	consistent = TRUE
 	drainage = 0
+	blood_sucking = 5
 	toxin_healing = 2
 	blood_storage = BLOOD_VOLUME_SURVIVE
 	blood_maximum = BLOOD_VOLUME_BAD
