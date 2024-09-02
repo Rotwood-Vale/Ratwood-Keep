@@ -2605,9 +2605,7 @@
 /area/rogue/outdoors/town)
 "cWH" = (
 /obj/machinery/light/rogue/torchholder/r,
-/turf/open/floor/rogue/rooftop{
-	dir = 8
-	},
+/turf/open/floor/rogue/ruinedwood/turned,
 /area/rogue/outdoors/town/roofs)
 "cWI" = (
 /obj/structure/table/wood,
@@ -3412,9 +3410,7 @@
 /area/rogue/indoors)
 "dOa" = (
 /obj/structure/fermenting_barrel,
-/turf/open/floor/rogue/rooftop{
-	dir = 8
-	},
+/turf/open/floor/rogue/ruinedwood/turned,
 /area/rogue/outdoors/town/roofs)
 "dOk" = (
 /obj/structure/closet/crate/roguecloset,
@@ -7335,9 +7331,7 @@
 	icon_state = "tablewood1"
 	},
 /obj/item/toy/cards/deck/syndicate,
-/turf/open/floor/rogue/rooftop{
-	dir = 8
-	},
+/turf/open/floor/rogue/ruinedwood/turned,
 /area/rogue/outdoors/town/roofs)
 "ieu" = (
 /turf/open/floor/rogue/tile,
@@ -10064,9 +10058,7 @@
 /turf/open/water/sewer,
 /area/rogue/outdoors/rtfield)
 "lyK" = (
-/turf/open/floor/rogue/rooftop{
-	dir = 8
-	},
+/turf/open/floor/rogue/ruinedwood/turned,
 /area/rogue/outdoors/town/roofs)
 "lyO" = (
 /turf/open/floor/rogue/cobble,
@@ -12619,6 +12611,9 @@
 	},
 /turf/open/floor/rogue/woodturned,
 /area/rogue/outdoors/beach)
+"orT" = (
+/turf/open/floor/rogue/ruinedwood/turned,
+/area/rogue/indoors/town/tavern)
 "orU" = (
 /obj/structure/fluff/walldeco/wantedposter,
 /turf/open/floor/rogue/blocks,
@@ -12974,9 +12969,7 @@
 /area/rogue/indoors/town/manor)
 "oIX" = (
 /obj/structure/chair/stool/rogue,
-/turf/open/floor/rogue/rooftop{
-	dir = 8
-	},
+/turf/open/floor/rogue/ruinedwood/turned,
 /area/rogue/outdoors/town/roofs)
 "oJn" = (
 /obj/structure/chair/wood/rogue{
@@ -295991,9 +295984,9 @@ fKf
 hUt
 fRN
 uMc
-gri
-gri
 hUt
+gri
+gri
 toW
 rbz
 yke
@@ -388037,7 +388030,7 @@ bFt
 ghb
 wNn
 iHm
-iHm
+orT
 iHm
 dTL
 dTL
