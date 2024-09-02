@@ -2121,20 +2121,111 @@ All effects don't start immediately, but rather get worse over time; the rate is
 		M.IgniteMob()
 	..()
 
+///////////////////
+/// ROGUE BOOZE ///
+///////////////////
+
+// BEERS - Imported for now, later the styles will be 'mockable', if and when I get to brewing.
+
+// Humen Production - Underwhelming, but cheap.
+
+/datum/reagent/consumable/ethanol/beer/zagul
+	name = "Zagul Brew"
+	boozepwr = 15
+	taste_description = "cheap pisswater"
+	color = "#DBD77F"
+
+/datum/reagent/consumable/ethanol/beer/hagwoodbitter
+	name = "Hagwood Bitter"
+	boozepwr = 25
+	taste_description = "dull crispness"
+	color = "#BBB525"
+
+/datum/reagent/consumable/ethanol/beer/blackgoat
+	name = "Black Goat Kriek"
+	boozepwr = 25
+	taste_description = "overwhelming sourness"
+	color = "#401806"
+
 /datum/reagent/consumable/ethanol/beer/onion
 	name = "Ratkept Onin Cognac"
-	boozepwr = 45
+	boozepwr = 10
 	taste_description = "spicy sweet malty overtones"
 	color = "#f1b5ff"
 
+// Elf Production - LEAF-LOVERS MOTHERFUCKER
+
+/datum/reagent/consumable/ethanol/beer/aurorian
+	name = "Aurorian"
+	boozepwr = 5
+	taste_description = "subtle herbacious undertones"
+	color = "#5D8A8A"
+
 /datum/reagent/consumable/ethanol/beer/fireleaf // cabbbage
 	name = "Fireleaf"
-	boozepwr = 20
+	boozepwr = 2
 	taste_description = "bland liquor"
 	color = "#475e45"
+
+// Dwarven Production - Best in the Realms
+
+/datum/reagent/consumable/ethanol/beer/butterhairs
+	name = "Butterhairs"
+	boozepwr = 30
+	taste_description = "buttery richness"
+	color = "#5D8A8A"
+
+/datum/reagent/consumable/ethanol/beer/stonebeards
+	name = "Stonebeard Reserve"
+	boozepwr = 40
+	taste_description = "potent oatlike liquor"
+	color = "#5D8A8A"
 
 /datum/reagent/consumable/ethanol/beer/voddena // Not vodka. Trust me.
 	name = "Voddena"
 	boozepwr = 55  // holy shit
 	taste_description = "burning starchy wet dirt"
 	color = "#4b443c"
+
+// WINE - Fancy.. And yes: all drinks are beer, technically. Cope. Seethe. I didnt code it like this.
+
+// Humen Production - Grape Based
+
+/datum/reagent/consumable/ethanol/beer/sourwine // Peasant grade shit.
+	name = "Sour Wine"
+	boozepwr = 20
+	taste_description = "sour wine"
+	color = "#583650"
+
+/datum/reagent/consumable/ethanol/beer/whitewine
+	name = "White Wine"
+	boozepwr = 30
+	taste_description = "sweet white wine"
+	color = "#F3ED91"
+
+/datum/reagent/consumable/ethanol/beer/redwine
+	name = "Red Wine"
+	boozepwr = 30
+	taste_description = "tannin-stricken wine"
+	color = "#4A1111"
+
+/datum/reagent/consumable/ethanol/beer/jackberrywine
+	name = "Jackberry Wine"
+	boozepwr = 15
+	taste_description = "sickly sweet young wine"
+	color = "#3F2D45"
+
+
+// Elf Production - Berries & Herbal
+
+/datum/reagent/consumable/ethanol/beer/elfred
+	name = "Elven Red"
+	boozepwr = 15
+	taste_description = "delectable fruity notes"
+	color = "#6C0000"
+
+/datum/reagent/consumable/ethanol/beer/elfblue
+	name = "Valmora Blue"
+	boozepwr = 50
+	taste_description = "saintly sweetness"
+	color = "#2C9DAF"
