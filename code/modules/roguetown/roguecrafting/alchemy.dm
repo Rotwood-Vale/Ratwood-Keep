@@ -147,21 +147,15 @@
 	reqs = list(/obj/item/roguegem/violet = 1, /obj/item/rogueore/gold = 2)
 	craftdiff = 4
 
-/datum/crafting_recipe/roguetown/alchemy/b2ron
-	name = "transmute blortz to rontz"
-	result = list(/obj/item/roguegem = 1)
-	reqs = list(/obj/item/roguegem/blue = 1, /obj/item/rogueore/gold = 2)
-	craftdiff = 5
-
 /datum/crafting_recipe/roguetown/alchemy/r2dia
-	name = "transmute rontz to diamond"
+	name = "transmute blortz to diamond"
 	result = list(/obj/item/roguegem/diamond = 1)
-	reqs = list(/obj/item/roguegem = 1, /obj/item/rogueore/gold = 2)
+	reqs = list(/obj/item/roguegem/blue = 2, /obj/item/rogueore/gold = 2)
 	craftdiff = 5
 
 /datum/crafting_recipe/roguetown/alchemy/d2ros
 	name = "transmute diamond to riddle of steel" /// holy grail requires legendary. (sell price on average is 350. rontz and diamond worth 100 each. you get to legndary you deserve 150-200 profit)
 	result = list(/obj/item/riddleofsteel = 1)
-	reqs = list(/obj/item/roguegem/diamond = 1, /obj/item/roguegem = 1, /obj/item/rogueore/iron = 1, /obj/item/rogueore/coal)
+	reqs = list(/obj/item/roguegem/diamond = 2, /obj/item/rogueore/iron = 1, /obj/item/rogueore/coal = 1)
 	craftdiff = 6
 

@@ -186,9 +186,8 @@
 	alternate_worn_layer = UNDER_CLOAK_LAYER
 	sewrepair = TRUE
 
-/obj/item/storage/belt/rogue/skit
+/obj/item/storage/belt/rogue/pouch/skit
 	name = "surgical pouch"
-	color = CLOTHING_BLACK
 	desc = "Emergency surgical pouch."
 	icon_state = "pouch"
 	item_state = "pouch"
@@ -204,7 +203,7 @@
 	bloody_icon_state = "bodyblood"
 	sewrepair = TRUE
 
-/obj/item/storage/belt/rogue/skit/ComponentInitialize()
+/obj/item/storage/belt/rogue/pouch/skit/ComponentInitialize()
 	. = ..()
 	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
 	if(STR)
@@ -233,7 +232,7 @@
 			/obj/item/reagent_containers/lux
 		))
 
-/obj/item/storage/backpack/rogue/skit/PopulateContents()
+/obj/item/storage/belt/rogue/pouch/skit/PopulateContents()
 	new /obj/item/rogueweapon/surgery/scalpel(src)
 	new /obj/item/rogueweapon/surgery/saw(src)
 	new /obj/item/rogueweapon/surgery/hemostat(src)
