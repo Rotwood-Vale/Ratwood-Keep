@@ -17,6 +17,7 @@
 	var/import_only = FALSE //for importing crackers, etc
 	var/stable_price = FALSE
 	var/percent_bounty = FALSE
+	var/passive_generation = 0 //How much to generate in the remote section each firing of the treasury system.
 
 /datum/roguestock/New()
 	..()
