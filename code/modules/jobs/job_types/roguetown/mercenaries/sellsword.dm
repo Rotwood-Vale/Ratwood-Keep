@@ -12,7 +12,7 @@
 	total_positions = 5
 	spawn_positions = 5
 	min_pq = 0
-	max_pq = null	
+	max_pq = null
 	advclass_cat_rolls = list(CTAG_MERCENARY = 20)
 	advjob_examine = TRUE
 	always_show_on_latechoices = TRUE
@@ -27,6 +27,8 @@
 	armor = /obj/item/clothing/suit/roguetown/armor/leather
 	backl = /obj/item/storage/backpack/rogue/satchel
 	beltl = /obj/item/rogueweapon/mace
+
+	backpack_contents = list(/obj/item/roguekey/mercenary)
 
 /datum/job/roguetown/mercenary/sellsword/after_spawn(mob/living/L, mob/M, latejoin = TRUE)
 	..()
