@@ -21,10 +21,6 @@
 
 /datum/job/roguetown/prince/after_spawn(mob/living/H, mob/M, latejoin)
 	. = ..()
-	if(GLOB.lordsurname && H)
-		if(input("Take the surname of the current ruler and be a Prince/Princess?"))
-			give_lord_surname(H)
-	..()
 	if(ishuman(H))
 		var/mob/living/carbon/human/Q = H
 		Q.advsetup = 1
