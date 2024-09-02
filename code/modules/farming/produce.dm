@@ -140,7 +140,7 @@
 	dropshrink = 0.75
 	var/color_index = "good"
 	can_distill = TRUE
-	distill_reagent = /datum/reagent/consumable/ethanol/beer/wine
+	distill_reagent = /datum/reagent/consumable/ethanol/beer/jackberrywine
 	rotprocess = 15 MINUTES
 
 /obj/item/reagent_containers/food/snacks/grown/berries/rogue/Initialize()

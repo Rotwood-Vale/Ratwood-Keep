@@ -114,6 +114,9 @@
 	. = ..()
 	reagents.add_reagent(/datum/reagent/water,300)
 
+/obj/structure/fermenting_barrel/beer
+	desc = "A barrel containing a generic housebrewed small-beer."
+
 /obj/structure/fermenting_barrel/beer/Initialize()
 	. = ..()
 	reagents.add_reagent(/datum/reagent/consumable/ethanol/beer,300)
@@ -127,3 +130,24 @@
 	. = ..()
 	reagents.add_reagent(/datum/reagent/water/gross,500)
 	update_icon()
+
+/obj/structure/fermenting_barrel/zagul
+	desc = "A barrel marked with a coastal zagul. An extremely cheap lager hailing from a local brewery."
+
+/obj/structure/fermenting_barrel/zagul/Initialize()
+	. = ..()
+	reagents.add_reagent(/datum/reagent/consumable/ethanol/beer/zagul,300)
+
+/obj/structure/fermenting_barrel/blackgoat
+	desc = "A barrel marked with the Black Goat Kriek emblem. A fruit-sour beer brewed with jackberries for a tangy taste."
+
+/obj/structure/fermenting_barrel/blackgoat/Initialize()
+	. = ..()
+	reagents.add_reagent(/datum/reagent/consumable/ethanol/beer/blackgoat,300)
+
+/obj/structure/fermenting_barrel/hagwoodbitter
+	desc = "A barrel marked with the Hagwood Bitters emblem. The least bitter thing to be exported from the Grenzelhoft occupied state of Zorn."
+
+/obj/structure/fermenting_barrel/hagwoodbitter/Initialize()
+	. = ..()
+	reagents.add_reagent(/datum/reagent/consumable/ethanol/beer/hagwoodbitter,300)
