@@ -705,6 +705,10 @@
 	else
 		T = get_turf(target)
 	explosion(T, -1, exp_heavy, exp_light, exp_flash, 0, flame_range = exp_fire, soundin = explode_sound)
+	if(ismob(target))
+		var/mob/living/M = target
+		var/atom/throw_target = get_edge_target_turf(M, angle2dir(Angle))
+		M.throw_at(throw_target, exp_light, EXPLOSION_THROW_SPEED)
 
 /obj/projectile/magic/aoe/fireball/infernal
 	name = "infernal fireball"
