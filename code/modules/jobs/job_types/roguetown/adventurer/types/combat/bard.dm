@@ -58,6 +58,7 @@
 			H.change_stat("perception", 2)
 			H.change_stat("endurance", 1)
 			H.change_stat("speed", 2)
+			ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 		if("Skald")
 			H.set_blindness(0)
 			to_chat(H, span_warning("Skalds are wandering storytellers, and for many villages they are local historians keeping the tales of great legends and heroes alive."))
@@ -97,6 +98,7 @@
 			H.change_stat("constitution", 2)
 			H.change_stat("strength", 1)
 			H.change_stat("speed", 1)
+			ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 		if("Arcanist") //Magic and some utility skills, less combat prowess
 			H.set_blindness(0)
 			to_chat(H, span_warning("Many bards are well-versed in esoteric lore, and indeed, some take up their art for love of the study itself. You're well-read, but you don't tend to come out on the winning side of a barfight."))
@@ -113,23 +115,21 @@
 			H.mind.adjust_skillrank(/datum/skill/misc/music, rand(3,5), TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/sewing, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/craft/cooking, 1, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/craft/crafting, 2, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/craft/crafting, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/alchemy, 1, TRUE)
 			H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/touch/prestidigitation)
 			H.mind.adjust_spellpoints(1)
-			head = /obj/item/clothing/head/roguetown/bardhat
+			head = /obj/item/clothing/head/roguetown/physician
 			shoes = /obj/item/clothing/shoes/roguetown/boots
 			pants = /obj/item/clothing/under/roguetown/tights/black
-			shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/black
+			shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/puritan
 			gloves = /obj/item/clothing/gloves/roguetown/fingerless
 			belt = /obj/item/storage/belt/rogue/leather
 			armor = /obj/item/clothing/suit/roguetown/armor/leather/vest/white
 			cloak = /obj/item/clothing/cloak/raincloak/purple
-			if(prob(50))
-				cloak = /obj/item/clothing/cloak/raincloak/green
 			backl = /obj/item/storage/backpack/rogue/satchel
 			beltl = /obj/item/storage/belt/rogue/pouch/coins/poor
 			beltr = /obj/item/rogueweapon/huntingknife/idagger/steel
-			H.change_stat("strength", -1)
 			H.change_stat("intelligence", 2)
 			H.change_stat("perception", 2)
 			H.change_stat("speed", 2)
@@ -146,7 +146,6 @@
 		else
 			backr = /obj/item/rogue/instrument/lute
 
-	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_EMPATH, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_GOODLOVER, TRAIT_GENERIC)
