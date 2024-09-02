@@ -1896,7 +1896,10 @@
 	},
 /area/rogue/indoors)
 "AQ" = (
-/obj/structure/roguemachine/mail/r,
+/obj/structure/roguemachine/mail/r{
+	mailtag = "Freemen";
+	obfuscated = 1
+	},
 /turf/open/floor/rogue/herringbone,
 /area/rogue/indoors)
 "AU" = (
