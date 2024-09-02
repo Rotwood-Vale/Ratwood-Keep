@@ -185,7 +185,7 @@
 /datum/status_effect/buff/darkvision
 	id = "darkvision"
 	alert_type = /atom/movable/screen/alert/status_effect/buff/darkvision
-	duration = 10 MINUTES
+	duration = 1 HOURS
 
 /datum/status_effect/buff/darkvision/on_apply()
 	. = ..()
@@ -205,8 +205,11 @@
 /datum/status_effect/buff/haste
 	id = "haste"
 	alert_type = /atom/movable/screen/alert/status_effect/buff/haste
-	effectedstats = list("speed" = 3)
+	effectedstats = list("speed" = 5)
 	duration = 1 MINUTES
+
+/datum/status_effect/buff/haste/nextmove_modifier()
+	return 0.85
 
 /atom/movable/screen/alert/status_effect/buff/longstrider
 	name = "Longstrider"

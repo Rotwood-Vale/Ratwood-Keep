@@ -906,13 +906,9 @@
 	add_antag_datum(head)
 	special_role = ROLE_REV_HEAD
 
-/datum/mind/proc/AddSpell(obj/effect/proc_holder/spell/S, var/duplicate_override = FALSE)
+/datum/mind/proc/AddSpell(obj/effect/proc_holder/spell/S)
 	if(!S)
 		return
-	if(!duplicate_override) 
-		if(has_spell(S, TRUE)) //if we have the spell already stop
-			return
-
 	spell_list += S
 	S.action.Grant(current)
 

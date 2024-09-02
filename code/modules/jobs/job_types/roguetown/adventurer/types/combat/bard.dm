@@ -114,7 +114,6 @@
 			H.mind.adjust_skillrank(/datum/skill/misc/sewing, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/craft/cooking, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/craft/crafting, 2, TRUE)
-			H.mind.AddSpell(new /obj/effect/proc_holder/spell/self/learnspell)
 			H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/touch/prestidigitation)
 			H.mind.adjust_spellpoints(1)
 			head = /obj/item/clothing/head/roguetown/bardhat
