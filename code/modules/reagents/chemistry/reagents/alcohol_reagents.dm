@@ -225,9 +225,9 @@ All effects don't start immediately, but rather get worse over time; the rate is
 /datum/reagent/consumable/ethanol/vodka
 	name = "Vodka"
 	description = "Number one drink AND fueling choice for Russians worldwide."
-	color = "#0064C8" // rgb: 0, 100, 200
+	color = "#AAAAAA77" // rgb: 170, 170, 170, 77 (alpha) (clear like water)
 	boozepwr = 65
-	taste_description = "grain alcohol"
+	taste_description = "vodka"
 	glass_icon_state = "ginvodkaglass"
 	glass_name = "glass of vodka"
 	glass_desc = ""
