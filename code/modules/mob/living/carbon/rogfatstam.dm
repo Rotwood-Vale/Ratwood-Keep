@@ -30,6 +30,8 @@
 /mob/living/rogstam_add(added as num)
 	if(HAS_TRAIT(src, TRAIT_NOROGSTAM))
 		return TRUE
+	if(HAS_TRAIT(src, TRAIT_NOSLEEP))
+		return TRUE
 	if(m_intent == MOVE_INTENT_RUN)
 		mind.add_sleep_experience(/datum/skill/misc/athletics, (STAINT*0.02))
 	rogstam += added
@@ -50,8 +52,6 @@
 
 /mob/living/rogfat_add(added as num, emote_override, force_emote = TRUE) //call update_rogfat here and set last_fatigued, return false when not enough fatigue left
 	if(HAS_TRAIT(src, TRAIT_NOROGSTAM))
-		return TRUE
-	if(HAS_TRAIT(src, TRAIT_NOSLEEP))
 		return TRUE
 	rogfat = CLAMP(rogfat+added, 0, maxrogfat)
 	if(added > 0)
