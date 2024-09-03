@@ -121,24 +121,28 @@
 	req_bar = /obj/item/ingot/iron
 	created_item = /obj/item/bodypart/l_arm/rprosthetic/iron
 	additional_items = list(/obj/item/roguegear)
+	i_type = "General"
 
 /datum/anvil_recipe/tools/iron_arm_right
 	name = "Iron arm (R)"
 	req_bar = /obj/item/ingot/iron
 	created_item = /obj/item/bodypart/r_arm/rprosthetic/iron
 	additional_items = list(/obj/item/roguegear)
+	i_type = "General"
 
 /datum/anvil_recipe/tools/iron_leg_left
 	name = "Iron leg (L)"
 	req_bar = /obj/item/ingot/iron
 	created_item = /obj/item/bodypart/l_leg/rprosthetic/iron
 	additional_items = list(/obj/item/roguegear)
+	i_type = "General"
 
 /datum/anvil_recipe/tools/iron_leg_right
 	name = "Iron leg (R)"
 	req_bar = /obj/item/ingot/iron
 	created_item = /obj/item/bodypart/r_leg/rprosthetic/iron
 	additional_items = list(/obj/item/roguegear)
+	i_type = "General"
 
 // --------- Steel -----------
 
