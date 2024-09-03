@@ -12,8 +12,9 @@
 	pickup_sound =  'sound/blank.ogg'
 	sleeved = 'icons/roguetown/clothing/onmob/helpers/sleeves_armor.dmi'
 	sleevetype = "shirt"
-	edelay_type = 1
-	equip_delay_self = 25
+	edelay_type = 0
+	equip_delay_self = 2.5 SECONDS
+	unequip_delay_self = 2.5 SECONDS
 	bloody_icon_state = "bodyblood"
 	boobed = TRUE
 	resistance_flags = FIRE_PROOF
@@ -80,6 +81,7 @@
 	body_parts_covered = CHEST|GROIN
 	anvilrepair = /datum/skill/craft/armorsmithing
 	armor_class = ARMOR_CLASS_LIGHT
+	edelay_type = 1
 
 /obj/item/clothing/suit/roguetown/armor/plate
 	slot_flags = ITEM_SLOT_ARMOR
@@ -96,7 +98,8 @@
 	var/do_sound = TRUE
 	anvilrepair = /datum/skill/craft/armorsmithing
 	smeltresult = /obj/item/ingot/steel
-	equip_delay_self = 40
+	equip_delay_self = 4 SECONDS
+	unequip_delay_self = 4 SECONDS
 	armor_class = ARMOR_CLASS_HEAVY
 
 /obj/item/clothing/suit/roguetown/armor/plate/Initialize()
@@ -128,7 +131,10 @@
 	desc = "Full plate. Leg protecting tassets, groin cup, armored vambraces."
 	icon_state = "plate"
 	body_parts_covered = CHEST|GROIN|VITALS|LEGS|ARMS
-	equip_delay_self = 80
+	equip_delay_self = 12 SECONDS
+	unequip_delay_self = 12 SECONDS
+	equip_delay_other = 3 SECONDS
+	strip_delay = 6 SECONDS
 
 /obj/item/clothing/suit/roguetown/armor/plate/half/iron
 	name = "iron breastplate"
@@ -152,7 +158,7 @@
 	max_integrity = 200
 	anvilrepair = /datum/skill/craft/armorsmithing
 	smeltresult = /obj/item/ingot/steel
-	equip_delay_self = 40
+	equip_delay_self = 4 SECONDS
 	armor_class = ARMOR_CLASS_MEDIUM
 
 /obj/item/clothing/suit/roguetown/armor/heartfelt/lord
@@ -203,7 +209,7 @@
 	max_integrity = 350
 	anvilrepair = /datum/skill/craft/armorsmithing
 	smeltresult = /obj/item/ingot/steel
-	equip_delay_self = 40
+	equip_delay_self = 4 SECONDS
 	armor_class = ARMOR_CLASS_HEAVY
 
 /obj/item/clothing/suit/roguetown/armor/brigandine/Initialize()
