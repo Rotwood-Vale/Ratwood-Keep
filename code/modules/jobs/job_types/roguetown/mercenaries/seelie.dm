@@ -11,7 +11,7 @@
 	tutorial = "You are a fae sprite that came into existance around this town, either recently or long ago. Perhaps you support people in their trade and craft, or you may be a disruptive nuisance that plagues the town. Either way, your miriad of mysterious spells and abilites will support you in your endeavours."
 	outfit = /datum/outfit/job/roguetown/mercenary/seelie
 	display_order = JDO_SEELIE
-	min_pq = 6
+	min_pq = 30
 	max_pq = null
 	give_bank_account = FALSE
 

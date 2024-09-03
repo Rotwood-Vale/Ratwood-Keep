@@ -467,7 +467,7 @@
 	return
 
 /obj/item/flashlight/flare/torch/lantern/attack_self(mob/user)
-	if(on && occupants.len == null)
+	if(on && !(occupants.len))
 		turn_off()
 
 /obj/item/flashlight/flare/torch/lantern/getonmobprop(tag)
