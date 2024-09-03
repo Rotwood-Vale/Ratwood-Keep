@@ -64,21 +64,21 @@
 	contains = list(/obj/item/reagent_containers/glass/bottle/rogue/wine/sourwine)
 
 /datum/supply_pack/rogue/alcohol/winevalorred
-	name = "Valorian Red Wine"
+	name = "Otavan Red Wine"
 	cost = 30
 	contains = list(/obj/item/reagent_containers/glass/bottle/rogue/redwine)
 
 /datum/supply_pack/rogue/alcohol/winevalorwhite
-	name = "Valorian White Wine"
+	name = "Otavan White Wine"
 	cost = 35
 	contains = list(/obj/item/reagent_containers/glass/bottle/rogue/whitewine)
 
 /datum/supply_pack/rogue/alcohol/elfred
 	name = "Elvish Red Wine"
-	cost = 75
+	cost = 150
 	contains = list(/obj/item/reagent_containers/glass/bottle/rogue/elfred)
 
 /datum/supply_pack/rogue/alcohol/elfblue
 	name = "Valmora Blue Wine"
-	cost = 100
+	cost = 400
 	contains = list(/obj/item/reagent_containers/glass/bottle/rogue/elfblue)
