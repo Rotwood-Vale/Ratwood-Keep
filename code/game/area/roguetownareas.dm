@@ -788,6 +788,7 @@ GLOBAL_LIST_INIT(roguetown_areas_typecache, typecacheof(/area/rogue/indoors/town
     var/list/spawnables = list(
     // Not rare objects
     list(/obj/structure/spider/stickyweb, 0.45),
+    list(/obj/structure/flora/rogueshroom, 0.30),
     list(/obj/structure/glowshroom, 0.20),
     list(/obj/effect/spawner/lootdrop/roguetown/dungeon/misc, 0.085),
     
