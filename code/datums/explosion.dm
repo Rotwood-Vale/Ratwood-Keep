@@ -218,14 +218,14 @@ GLOBAL_LIST_EMPTY(explosions)
 			T.ex_act(dist)
 			exploded_this_tick += T
 
-		//--- THROW ITEMS AROUND ---
+		//--- THROW STUFF AROUND ---
 
 		var/throw_dir = get_dir(epicenter,T)
-		for(var/obj/item/I in T)
-			if(!I.anchored)
+		for(var/atom/movable/A in T)
+			if(!A.anchored)
 				var/throw_range = rand(throw_dist, max_range)
-				var/turf/throw_at = get_ranged_target_turf(I, throw_dir, throw_range)
-				I.throw_at(throw_at, throw_range, EXPLOSION_THROW_SPEED)
+				var/turf/throw_at = get_ranged_target_turf(A, throw_dir, throw_range)
+				A.throw_at(throw_at, throw_range, EXPLOSION_THROW_SPEED)
 
 		//wait for the lists to repop
 		var/break_condition
