@@ -50,7 +50,7 @@
 		"constitution" = -6,
 		"endurance" = -1,
 		"speed" = 7,
-		"fortune" = 5
+		"fortune" = 2
 		)
 	enflamed_icon = "widefire"
 	organs = list(
