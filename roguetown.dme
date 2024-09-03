@@ -1851,6 +1851,7 @@
 #include "code\modules\cargo\exports\tools.dm"
 #include "code\modules\cargo\exports\weapons.dm"
 #include "code\modules\cargo\packsrogue\_rogue.dm"
+#include "code\modules\cargo\packsrogue\alcohols.dm"
 #include "code\modules\cargo\packsrogue\apparel.dm"
 #include "code\modules\cargo\packsrogue\armor.dm"
 #include "code\modules\cargo\packsrogue\food.dm"
