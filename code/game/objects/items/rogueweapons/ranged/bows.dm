@@ -70,7 +70,7 @@
 			BB.embedchance = 100
 		BB.damage = BB.damage * (user.STAPER / 10) * damfactor
 		if(HAS_TRAIT(user, TRAIT_TINY))
-			BB.damage = (BB.damage * 0.5)
+			BB.damage = (BB.damage * 0.3)
 	. = ..()
 
 /obj/item/gun/ballistic/revolver/grenadelauncher/bow/update_icon()
