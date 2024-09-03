@@ -308,7 +308,7 @@
 	wdefense = 1
 
 /obj/item/rogueweapon/huntingknife/idagger/silver/elvish
-	possible_item_intents = list(/datum/intent/dagger/thrust,/datum/intent/dagger/cut)
+	possible_item_intents = list(/datum/intent/dagger/thrust,/datum/intent/dagger/cut,  /datum/intent/dagger/thrust/pick)
 	name = "elvish dagger"
 	desc = "This beautiful dagger is of intricate, elvish design. Sharper, too."
 	force = 19
