@@ -59,7 +59,7 @@
 // WINES - Expensive, Nobleblooded
 /obj/item/reagent_containers/glass/bottle/rogue/wine
 	list_reagents = list(/datum/reagent/consumable/ethanol/beer/wine = 45)
-	desc = "A bottle that contains a generic red-wine, likely from Zybantu. It has a red-clay cork-seal."
+	desc = "A bottle that contains a generic red-wine, likely from Zybantia. It has a red-clay cork-seal."
 
 /obj/item/reagent_containers/glass/bottle/rogue/wine/sourwine
 	list_reagents = list(/datum/reagent/consumable/ethanol/beer/sourwine = 45)
@@ -67,15 +67,15 @@
 
 /obj/item/reagent_containers/glass/bottle/rogue/redwine
 	list_reagents = list(/datum/reagent/consumable/ethanol/beer/redwine = 45)
-	desc = "A bottle with the Valorian Merchant Guild cork-seal. This one appears to be labelled as a relatively young red-wine from the coinlord state."
+	desc = "A bottle with the Otavan Merchant Guild cork-seal. This one appears to be labelled as a relatively young red-wine from the coinlord state."
 
 /obj/item/reagent_containers/glass/bottle/rogue/whitewine
 	list_reagents = list(/datum/reagent/consumable/ethanol/beer/whitewine = 45)
-	desc = "A bottle with the Valorian Merchant Guild cork-seal. This one appears to be labelled as a sweet wine from the colder northern regions."
+	desc = "A bottle with the Otavan Merchant Guild cork-seal. This one appears to be labelled as a sweet wine from the colder northern regions."
 
 /obj/item/reagent_containers/glass/bottle/rogue/elfred
 	list_reagents = list(/datum/reagent/consumable/ethanol/beer/elfred = 45)
-	desc = "A bottle gilded with a silver cork-seal. It appears to be labelled as a elvish red wine from Valoria. Likely worth more than what an entire village makes!"
+	desc = "A bottle gilded with a silver cork-seal. It appears to be labelled as a elvish red wine from Otava. Likely worth more than what an entire village makes!"
 
 /obj/item/reagent_containers/glass/bottle/rogue/elfblue
 	list_reagents = list(/datum/reagent/consumable/ethanol/beer/elfblue = 45)
