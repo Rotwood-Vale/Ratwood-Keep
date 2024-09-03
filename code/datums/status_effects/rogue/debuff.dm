@@ -213,7 +213,7 @@
 	id = "Seelie Curse"
 	alert_type = /atom/movable/screen/alert/status_effect/buff/seelie/sad
 	effectedstats = list("fortune" = -2)
-	duration = 10 MINUTES
+	duration = 60 SECONDS
 
 /atom/movable/screen/alert/status_effect/buff/seelie/sad
 	name = "Seelie Curse"
