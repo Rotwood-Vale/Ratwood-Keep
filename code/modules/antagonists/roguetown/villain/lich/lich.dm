@@ -54,6 +54,7 @@
 	ADD_TRAIT(L, TRAIT_SHOCKIMMUNE, "[type]")
 	ADD_TRAIT(L, TRAIT_LIMBATTACHMENT, "[type]")
 	ADD_TRAIT(L, TRAIT_SEEPRICES, "[type]")
+	ADD_TRAIT(L, TRAIT_CRITICAL_RESISTANCE, "[type]")
 	ADD_TRAIT(L, TRAIT_HEAVYARMOR, "[type]")
 	L.cmode_music = 'sound/music/combat_cult.ogg'
 	L.faction = list("undead")
@@ -115,6 +116,7 @@
 	H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/projectile/bloodlightning)
 	H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/projectile/fetch)
 	H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/diagnose/secular)
+	H.mind.AddSpell(new /obj/effect/proc_holder/spell/self/suicidebomb)
 	H.ambushable = FALSE
 
 	addtimer(CALLBACK(H, TYPE_PROC_REF(/mob/living/carbon/human, choose_name_popup), "LICH"), 5 SECONDS)
@@ -128,9 +130,9 @@
 		new_phylactery.possessor = lichman
 		H.equip_to_slot_or_del(new_phylactery,SLOT_IN_BACKPACK, TRUE)
 
-/datum/antagonist/lich/proc/consume_phylactery()
+/datum/antagonist/lich/proc/consume_phylactery(timer = 10 SECONDS)
 	for(var/obj/item/phylactery/phyl in phylacteries)
-		phyl.be_consumed()
+		phyl.be_consumed(timer)
 		phylacteries -= phyl
 		return TRUE
 

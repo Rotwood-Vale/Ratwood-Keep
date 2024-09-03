@@ -292,7 +292,7 @@
 		if(prob(used))
 			if(HAS_TRAIT(src, TRAIT_BRITTLE))
 				attempted_wounds += /datum/wound/fracture/neck
-			else
+			else if (!resistance)
 				attempted_wounds += /datum/wound/dislocation/neck
 	if(bclass in GLOB.fracture_bclasses)
 		used = round(damage_dividend * 20 + (dam / 3) - 10 * resistance, 1)
@@ -301,7 +301,7 @@
 		if(user)
 			if(istype(user.rmb_intent, /datum/rmb_intent/strong))
 				used += 10
-		if(!owner.stat && (zone_precise in knockout_zones) && (bclass != BCLASS_CHOP) && prob(used))
+		if(!owner.stat && !resistance && (zone_precise in knockout_zones) && (bclass != BCLASS_CHOP) && prob(used))
 			owner.next_attack_msg += " <span class='crit'><b>Critical hit!</b> [owner] is knocked out[from_behind ? " FROM BEHIND" : ""]!</span>"
 			owner.flash_fullscreen("whiteflash3")
 			owner.Unconscious(5 SECONDS + (from_behind * 10 SECONDS))
