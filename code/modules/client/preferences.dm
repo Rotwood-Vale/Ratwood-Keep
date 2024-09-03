@@ -70,12 +70,8 @@ GLOBAL_LIST_EMPTY(chosen_names)
 	var/datum/statpack/statpack	= new /datum/statpack/wildcard/fated // LETHALSTONE EDIT: the statpack we're giving our char instead of racial bonuses
 	var/age = AGE_ADULT						//age of character
 	var/origin = "Default"
-	var/underwear = "Nude"				//underwear type
-	var/underwear_color = null			//underwear color
-	var/undershirt = "Nude"				//undershirt type
 	var/accessory = "Nothing"
 	var/detail = "Nothing"
-	var/socks = "Nude"					//socks type
 	var/backpack = DBACKPACK				//backpack type
 	var/jumpsuit_style = PREF_SUIT		//suit/skirt
 	var/hairstyle = "Bald"				//Hair type
@@ -2174,12 +2170,7 @@ Slots: [job.spawn_positions]</span>
 	character.skin_tone = skin_tone
 	character.hairstyle = hairstyle
 	character.facial_hairstyle = facial_hairstyle
-	//character.underwear = underwear
-//	character.underwear_color = underwear_color
-	character.undershirt = undershirt
-//	character.accessory = accessory
 	character.detail = detail
-	character.socks = socks
 	character.set_patron(selected_patron)
 	character.backpack = backpack
 	character.defiant = defiant

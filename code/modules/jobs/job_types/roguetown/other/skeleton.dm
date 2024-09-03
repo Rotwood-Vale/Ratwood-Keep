@@ -43,7 +43,6 @@
 		H.base_intents = list(INTENT_HELP, INTENT_DISARM, INTENT_GRAB, /datum/intent/simple/claw)
 		H.update_a_intents()
 		H.ambushable = FALSE
-		H.underwear = "Nude"
 		if(H.charflaw)
 			QDEL_NULL(H.charflaw)
 		H.mob_biotypes = MOB_UNDEAD

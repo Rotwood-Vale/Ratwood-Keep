@@ -121,7 +121,7 @@
 		if(ishuman(carbon_victim))
 			var/mob/living/carbon/human/human_victim = carbon_victim
 			if(!skipundies)
-				if(human_victim.underwear != "Nude")
+				if(human_victim.underwear)
 					covered_locations |= GROIN
 			if(zone2covered(location, covered_locations))
 				return FALSE

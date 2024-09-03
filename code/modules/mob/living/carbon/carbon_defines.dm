@@ -42,6 +42,8 @@
 	///only used by humans.
 	var/obj/item/clothing/ears = null
 
+	var/obj/item/undies/underwear = null	//Underwear item
+
 
 	var/datum/dna/dna = null //Carbon
 	///last mind to control this mob, for blood-based cloning

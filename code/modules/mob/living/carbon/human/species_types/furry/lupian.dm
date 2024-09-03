@@ -74,6 +74,7 @@
 		/datum/customizer/bodypart_feature/hair/facial/humanoid,
 		/datum/customizer/bodypart_feature/accessory,
 		/datum/customizer/bodypart_feature/face_detail,
+		/datum/customizer/bodypart_feature/underwear,
 		/datum/customizer/organ/tail/lupian,
 		/datum/customizer/organ/snout/lupian,
 		/datum/customizer/organ/ears/lupian,
@@ -115,7 +116,7 @@
 		/datum/descriptor_choice/prominent_three,
 		/datum/descriptor_choice/prominent_four,
 	)
-	
+
 /datum/species/lupian/check_roundstart_eligible()
 	return TRUE
 
@@ -130,7 +131,7 @@
 	. = ..()
 	UnregisterSignal(C, COMSIG_MOB_SAY)
 
-/datum/species/lupian/get_skin_list() 
+/datum/species/lupian/get_skin_list()
 	return list(
 		"Vakran" = "271f1b",
 		"Lanarain" = "271f1c",
