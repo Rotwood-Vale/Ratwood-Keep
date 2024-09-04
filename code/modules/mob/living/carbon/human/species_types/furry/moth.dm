@@ -52,6 +52,8 @@
 		)
 	customizers = list(
 		/datum/customizer/organ/eyes/moth,
+		/datum/customizer/bodypart_feature/hair/head/humanoid,
+		/datum/customizer/bodypart_feature/hair/facial/humanoid,
 		/datum/customizer/bodypart_feature/accessory,
 		/datum/customizer/bodypart_feature/face_detail,
 		/datum/customizer/organ/wings/moth,
