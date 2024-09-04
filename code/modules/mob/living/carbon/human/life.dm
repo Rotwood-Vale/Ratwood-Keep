@@ -52,15 +52,14 @@
 					if(has_status_effect(/datum/status_effect/debuff/sleepytime))
 						tiredness = 0
 						remove_status_effect(/datum/status_effect/debuff/sleepytime)
-						var/datum/game_mode/chaosmode/C = SSticker.mode
-						if(istype(C))
-							if(mind)
-								if(!mind.antag_datums || !mind.antag_datums.len)
-									allmig_reward++
-									to_chat(src, span_danger("Nights Survived: \Roman[allmig_reward]"))
-									if(C.allmig)
-										if(allmig_reward > 3)
-											adjust_triumphs(1)
+						if(mind)
+							if(!mind.antag_datums || !mind.antag_datums.len)
+								allmig_reward++
+								to_chat(src, span_danger("Nights Survived: \Roman[allmig_reward]"))
+								var/datum/game_mode/chaosmode/C = SSticker.mode
+								if(istype(C) && C.allmig)
+									if(allmig_reward > 3)
+										adjust_triumphs(1)
 					if(has_status_effect(/datum/status_effect/debuff/trainsleep))
 						remove_status_effect(/datum/status_effect/debuff/trainsleep)
 			if(HAS_TRAIT(src, TRAIT_LEPROSY))

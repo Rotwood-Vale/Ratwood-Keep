@@ -110,7 +110,7 @@
 	vomit(1, blood = TRUE, stun = FALSE)
 	return wolfy
 
-/mob/living/carbon/human/proc/werewolf_feed(mob/living/carbon/human/target)
+/mob/living/carbon/human/proc/werewolf_feed(mob/living/carbon/human/target, healing_amount = 10)
 	if(!istype(target)) 
 		return
 	if(target.mind)
@@ -125,7 +125,7 @@
 			return
 
 	to_chat(src, span_warning("I feed on succulent flesh. I feel reinvigorated."))
-	return src.reagents.add_reagent(/datum/reagent/medicine/healthpot, 3)
+	return src.reagents.add_reagent(/datum/reagent/medicine/healthpot, healing_amount)
 
 /obj/item/clothing/suit/roguetown/armor/skin_armor/werewolf_skin
 	slot_flags = null

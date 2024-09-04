@@ -197,13 +197,14 @@
 		mob.stop_attack(FALSE)
 		mob.changeNext_move(CLICK_CD_MELEE)
 
-	for(var/X in open_popups)
-//		var/datum/browser/popup = new(mob, X, "", 5, 5)
-//		popup.set_content()
-//		popup.open()
-//		popup.close()
-		mob << browse(null, "window=[X]")
-		open_popups -= X
+	for(var/datum/browser/X in open_popups)
+		if(!X.no_close_movement)
+	//		var/datum/browser/popup = new(mob, X, "", 5, 5)
+	//		popup.set_content()
+	//		popup.open()
+	//		popup.close()
+			mob << browse(null, "window=[X]")
+			open_popups -= X
 /**
   * Checks to see if you're being grabbed and if so attempts to break it
   *

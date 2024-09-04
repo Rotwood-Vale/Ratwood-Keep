@@ -297,10 +297,6 @@ GLOBAL_VAR_INIT(normal_ooc_colour, "#002eb8")
 	set category = "Options"
 	testing("[CheckJoinDate(ckey)]")
 */
-/mob/dead/new_player/verb/togglobb()
-	set name = "SilenceLobbyMusic"
-	set category = "Options"
-	stop_sound_channel(CHANNEL_LOBBYMUSIC)
 
 /proc/CheckJoinDate(ckey)
 	var/list/http = world.Export("http://byond.com/members/[ckey]?format=text")

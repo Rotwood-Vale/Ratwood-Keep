@@ -79,3 +79,19 @@
 	load_admins()
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Reload All Admins") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 	message_admins("[key_name_admin(usr)] manually reloaded admins")
+
+
+/client/proc/reload_whitelist()
+	set name = "Reload Whitelist"
+	set category = "Admin"
+
+	if(!src.holder)
+		return
+
+	var/confirm = alert(src, "Are you sure you want to reload the whitelist?", "Confirm", "Yes", "No")
+	if(confirm !="Yes")
+		return
+
+	load_whitelist()
+	SSblackbox.record_feedback("tally", "admin_verb", 1, "Reload Whitelist") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+	message_admins("[key_name_admin(usr)] manually reloaded whitelist")

@@ -39,8 +39,8 @@
 
 /datum/objective/werewolf
 	name = "conquer"
-	explanation_text = "Put an end to the vampire scourge in Rockhill, or unite with them against the forces of the Nine."
-	team_explanation_text = "The feud between werewolves and vampires reaches back to the dawn of time. Will the two factions destroy each other, or find a way to coexist and face the mortals of Rockhill together?"
+	explanation_text = "You are touched by the Mad God of the Wilds, Dendor - be it through a bite... Or a terrible blessing. And you are SO, SO VERY HUNGRY. The form Dendor promises will be fearsome, but the transition will be agonizing. Fear not the full moon - and let the feast begin. Zizo sends his creations upon you, and you are a threat to others by drawing their attention."
+	team_explanation_text = "Lycanthropy is a terrible disease that's been recorded in scattered accounts going back hundreds of years. Whatever madness drove Dendor to create such an aberration is beyond mortal minds - and whatever the reason, he has been unwilling or unable to undo it. Nightly transformations and prodigious increses in mass drive the body into an active state of insatiable starvation, driving animalistic, rabid behavior. The curse draws the attention of Zizo's monsters."
 	triumph_count = 5
 
 /datum/objective/werewolf/check_completion()

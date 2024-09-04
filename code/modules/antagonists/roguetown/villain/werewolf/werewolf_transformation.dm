@@ -49,13 +49,13 @@
                     untransforming = world.time // Start untransformation phase
 
         if(untransforming)
-            if (world.time >= untransforming + 25 SECONDS) // Untransform
+            if (world.time >= untransforming + 30 SECONDS) // Untransform
                 H.emote("rage", forced = TRUE)
                 H.werewolf_untransform()
                 transformed = FALSE
                 untransforming = FALSE // Reset untransforming phase
 
-            else if (world.time >= untransforming + 10 SECONDS) // Alert player
+            else if (world.time >= untransforming) // Alert player
                 H.flash_fullscreen("redflash1")
                 to_chat(H, span_warning("Daylight shines around me... the curse begins to fade."))
 
@@ -116,6 +116,10 @@
 	W.mind.adjust_skillrank(/datum/skill/combat/wrestling, 6, TRUE)
 	W.mind.adjust_skillrank(/datum/skill/combat/unarmed, 6, TRUE)
 	W.mind.adjust_skillrank(/datum/skill/misc/climbing, 6, TRUE)
+
+	W.STASTR = 20
+	W.STACON = 20
+	W.STAEND = 20
 
 	W.AddSpell(new /obj/effect/proc_holder/spell/self/howl)
 	W.AddSpell(new /obj/effect/proc_holder/spell/self/claws)

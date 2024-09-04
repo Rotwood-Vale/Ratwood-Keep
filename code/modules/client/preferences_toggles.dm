@@ -21,12 +21,21 @@
 	usr.client.prefs.ShowChoices(usr)
 #endif
 
+/client/verb/setup_character()
+	set name = "Game Preferences"
+	set category = "Options"
+	set desc = ""
+	if(prefs)
+		usr.client.prefs.current_tab = 1
+		usr.client.prefs.ShowChoices(usr, 4)
+
 /client/verb/toggle_fullscreen()
 	set name = "ToggleFullscreen"
 	set category = "Options"
 	set desc = ""
 	if(prefs)
 		prefs.toggles ^= TOGGLE_FULLSCREEN
+		prefs.save_preferences()
 		toggle_fullscreeny(prefs.toggles & TOGGLE_FULLSCREEN)
 
 /client/verb/toggle_screenshake()
@@ -34,16 +43,37 @@
 	set name = "Toggle Screen Shake"
 	if(prefs)
 		prefs.shake = !prefs.shake
-		to_chat(src, "Screen shake toggled")
+		prefs.save_preferences()
+		if(prefs.shake)
+			to_chat(src, "Screen shake enabled.")
+		else
+			to_chat(src, "Screen shake disabled.")
 
 /client/verb/toggle_ERP() // Alters if other people can use the ERP panel ON you.
 	set category = "Options"
 	set name = "Toggle ERP Panel"
 	if(prefs)
 		prefs.sexable = !prefs.sexable
+		prefs.save_preferences()
 		if(prefs.sexable)
 			to_chat(src, "Others can play with you.")
-		else to_chat(src, "Others can't touch you.")
+		else
+			to_chat(src, "Others can't touch you.")
+
+/client/verb/toggle_lobby_music()
+	set name = "Toggle Lobby Music"
+	set category = "Options"
+	set desc = ""
+	if(prefs)
+		prefs.toggles ^= SOUND_LOBBY
+		prefs.save_preferences()
+	if(prefs.toggles & SOUND_LOBBY)
+		to_chat(src, "You will now hear music in the lobby.")
+		if(isnewplayer(usr))
+			playtitlemusic()
+	else
+		to_chat(src, "You will no longer hear music in the lobby.")
+		mob.stop_sound_channel(CHANNEL_LOBBYMUSIC)
 
 /client/verb/stop_sounds_rogue()
 	set name = "StopSounds"

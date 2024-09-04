@@ -1238,4 +1238,5 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 		if(altgripped || wielded)
 			ungrip(M, FALSE)
 
-
+/obj/item/proc/on_embed(obj/item/bodypart/bp)
+	return

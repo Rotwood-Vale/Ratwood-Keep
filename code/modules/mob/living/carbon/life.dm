@@ -19,7 +19,7 @@
 			return
 		
 		handle_wounds()
-		handle_embedded_objects()
+		//handle_embedded_objects()
 		handle_blood()
 		handle_roguebreath()
 		var/bprv = handle_bodyparts()
@@ -192,7 +192,7 @@
 /mob/living/carbon/handle_inwater()
 	..()
 	if(!(mobility_flags & MOBILITY_STAND))
-				if(HAS_TRAIT(src, TRAIT_NOBREATH) || HAS_TRAIT(src, TRAIT_WATERBREATHING))
+		if(HAS_TRAIT(src, TRAIT_NOBREATH) || HAS_TRAIT(src, TRAIT_WATERBREATHING))
 			return TRUE
 		adjustOxyLoss(5)
 		emote("drown")
