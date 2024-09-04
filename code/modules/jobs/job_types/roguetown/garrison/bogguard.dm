@@ -13,7 +13,7 @@
 	You have a roof over your head, coin in your pocket, and a thankless job protecting the outskirts of town against bandits and volfs."
 	display_order = JDO_TOWNGUARD
 	whitelist_req = TRUE
-	outfit = /datum/outfit/job/roguetown/bogguardsman
+	outfit = /datum/outfit/job/roguetown/bog
 	give_bank_account = 16
 	min_pq = 1
 	max_pq = null
@@ -45,15 +45,16 @@
 			S.name = "bogman tabard ([index])"
 /datum/outfit/job/roguetown/bogguardsman
 	name = "Bog Guard"
-	/// Whether or not we are a ranger
-	var/is_ranger = FALSE
+
+/datum/outfit/job/roguetown/ranger
+	name = "Bog Ranger"
 
 /datum/advclass/bogguard
 	name = "bog guard"
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_VERY_SHUNNED_UP
 	outfit = /datum/outfit/job/roguetown/bogguardsman
-	tutorial = "You are well versed in the ways of handling a sword.\
+	tutorial = "You are well versed in the ways of handling a sword. \
 	You will stand in the front, and protect."
 	category_tags = list(CTAG_BOG)
 
@@ -61,14 +62,13 @@
 	name = "bog ranger"
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_VERY_SHUNNED_UP
-	outfit = /datum/outfit/job/roguetown/bogguardsman/ranger
-	tutorial = "You are well versed in the ways of handling a bow.\
+	outfit = /datum/outfit/job/roguetown/ranger
+	tutorial = "You are well versed in the ways of handling a bow. \
 	You will stand in the back, and protect the front with arrows."
 	category_tags = list(CTAG_BOG)
 	maximum_possible_slots = 3
 
-/datum/outfit/job/roguetown/bogguardsman/pre_equip(mob/living/carbon/human/H)
-	. = ..()
+/datum/outfit/job/roguetown/bog/pre_equip(mob/living/carbon/human/H)
 	head = /obj/item/clothing/head/roguetown/helmet/skullcap
 	armor = /obj/item/clothing/suit/roguetown/armor/gambeson
 	cloak = /obj/item/clothing/cloak/stabard/bog
@@ -80,22 +80,24 @@
 	shoes = /obj/item/clothing/shoes/roguetown/boots/leather
 	beltl = /obj/item/keyring/bog_guard
 	belt = /obj/item/storage/belt/rogue/leather
+
+/datum/outfit/job/roguetown/ranger/pre_equip(mob/living/carbon/human/H)
+	. = ..()
+	backr = /obj/item/storage/backpack/rogue/satchel
+	backl = /obj/item/gun/ballistic/revolver/grenadelauncher/bow
+	beltr = /obj/item/quiver/arrows //replaces sword
+	wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
+	backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger/steel = 1, /obj/item/clothing/cloak/raincloak/brown = 1 )
+	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
+
+/datum/outfit/job/roguetown/bogguardsman/pre_equip(mob/living/carbon/human/H)
+	. = ..()
 	beltr = /obj/item/rogueweapon/sword
 	backr = /obj/item/storage/backpack/rogue/satchel
-	if(is_ranger)
-		backl = /obj/item/gun/ballistic/revolver/grenadelauncher/bow
-		beltr = /obj/item/quiver/arrows //replaces sword
-	else
-		backl = null
 	wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
 	backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger/steel = 1)
 	if(H.mind)
 		assign_skills(H)
-	if(H.gender == FEMALE)
-		var/acceptable = list("Tomboy", "Bob", "Curly Short")
-		if(!(H.hairstyle in acceptable))
-			H.hairstyle = pick(acceptable)
-			H.update_hair()
 	H.verbs |= /mob/proc/haltyell
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 
@@ -121,11 +123,10 @@
 	bogger.change_stat("endurance", 2)
 	bogger.change_stat("speed", 1)
 
-/datum/outfit/job/roguetown/bogguardsman/ranger
+/datum/outfit/job/roguetown/ranger
 	name = "Bog Ranger"
-	is_ranger = TRUE
 
-/datum/outfit/job/roguetown/bogguardsman/ranger/assign_skills(mob/living/carbon/human/bogger)
+/datum/outfit/job/roguetown/ranger/proc/assign_skills(mob/living/carbon/human/bogger)
 	bogger.mind.adjust_skillrank(/datum/skill/combat/crossbows, 5, TRUE)
 	bogger.mind.adjust_skillrank(/datum/skill/combat/bows, 4, TRUE)
 	bogger.mind.adjust_skillrank(/datum/skill/combat/knives, 3, TRUE)
