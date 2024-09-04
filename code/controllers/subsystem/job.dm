@@ -107,7 +107,6 @@ SUBSYSTEM_DEF(job)
 				player.client.prefs.save_preferences()
 		if(player.client && player.client.prefs)
 			player.client.prefs.has_spawned = TRUE
-		job.greet(player)
 		return TRUE
 	JobDebug("AR has failed, Player: [player], Rank: [rank]")
 	return FALSE
