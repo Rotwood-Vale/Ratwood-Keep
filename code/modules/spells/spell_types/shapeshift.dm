@@ -59,6 +59,13 @@
 		to_chat(caster, span_warning("You're already shapeshifted!"))
 		return
 
+	if(vitaedrain)
+		var/datum/antagonist/vampirelord/VD = caster.mind.has_antag_datum(/datum/antagonist/vampirelord)
+		if(VD.vitae < vitaedrain)
+			to_chat(caster, span_warning("Not enough vitae. Need [vitaedrain]."))
+			return FALSE
+		VD.handle_vitae(-vitaedrain)
+
 	var/mob/living/shape = new shapeshift_type(caster.loc)
 	H = new(shape,src,caster)
 
