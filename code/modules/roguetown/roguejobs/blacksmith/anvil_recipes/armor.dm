@@ -534,7 +534,7 @@
 /datum/anvil_recipe/armor/helmetbars
 	name = "Barred Bascinet"
 	req_bar = /obj/item/ingot/steel
-	created_item = /obj/item/clothing/head/roguetown/helmet/helmetbars
+	created_item = /obj/item/clothing/head/roguetown/helmet/bascinet/helmetbars
 	craftdiff = 3	//Almost as good as heavy helm
 	i_type = "Armor"
 

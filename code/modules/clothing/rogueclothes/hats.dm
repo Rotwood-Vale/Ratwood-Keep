@@ -976,12 +976,11 @@
 	block2add = FOV_BEHIND
 	smeltresult = /obj/item/ingot/steel
 
-/obj/item/clothing/head/roguetown/helmet/helmetbars
+/obj/item/clothing/head/roguetown/helmet/bascinet/helmetbars
 	name = "helmetbars"
 	desc = "A steel bascinet helmet with metal bars protecting the face"
 	icon_state = "helmetbars"
 	item_state = "helmetbars"
-	emote_environment = 3
 	body_parts_covered = HEAD|HAIR|EARS|NOSE
 	flags_inv = HIDEEARS|HIDEHAIR
 	block2add = FOV_BEHIND
@@ -1067,17 +1066,12 @@
 			pic.color = get_detail_color()
 		add_overlay(pic)
 
-
-/obj/item/clothing/head/roguetown/helmet/bascinet
-	name = "bascinet"
-	desc = "A steel bascinet helmet without a visor protecting the the head and ears."
-	icon_state = "bascinet_novisor"
-	item_state = "bascinet_novisor"
-	emote_environment = 3
-	body_parts_covered = HEAD|HAIR|EARS
-	flags_inv = HIDEEARS|HIDEHAIR
-	block2add = FOV_BEHIND
-	smeltresult = /obj/item/ingot/steel
+// Snowflake helmet for the royal guard; guess we're making them stand out now. Same stats as normal bascinet.
+/obj/item/clothing/head/roguetown/helmet/bascinet/royalguard
+	name = "royal guard bascinet"
+	desc = "A steel bascinet helmet, without a visor, protecting the the head and ears. This helmet has a royal ploom atop of it!"
+	icon_state = "bascinet_royalguard"
+	item_state = "bascinet_royalguard"
 
 /obj/item/clothing/head/roguetown/helmet/heavy/beakhelmet
 	name = "beak helmet"

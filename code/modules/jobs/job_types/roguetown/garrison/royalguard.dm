@@ -45,7 +45,14 @@
 		H.real_name = "[honorary] [prev_real_name]"
 		H.name = "[honorary] [prev_name]"
 
-/datum/outfit/job/roguetown/royalguard/heavy
+/datum/outfit/job/roguetown/royalguard			//For shared gear by the class. Royal archer gets different-looking armor.
+	pants = /obj/item/clothing/under/roguetown/chainlegs
+	neck = /obj/item/clothing/neck/roguetown/gorget
+	shirt = /obj/item/clothing/suit/roguetown/armor/chainmail
+	beltl = /obj/item/keyring/guardcastle
+	belt = /obj/item/storage/belt/rogue/leather/black
+	backr = /obj/item/storage/backpack/rogue/satchel/black
+	wrists = /obj/item/clothing/wrists/roguetown/bracers
 
 /datum/advclass/royalguard/heavy
 	name = "Heavy Knight"
@@ -80,7 +87,6 @@
 	H.dna.species.soundpack_m = new /datum/voicepack/male/knight()		//For knightly voices; even though I despise them.
 	H.verbs |= /mob/proc/haltyell
 
-
 	H.change_stat("strength", 4)
 	H.change_stat("constitution", 3)
 	H.change_stat("endurance", 3)
@@ -95,18 +101,13 @@
 	else
 		beltr = /obj/item/rogueweapon/mace
 		backl = /obj/item/rogueweapon/shield/buckler
-	
+	// Armor section
 	head = /obj/item/clothing/head/roguetown/helmet/heavy/royalknight
-	pants = /obj/item/clothing/under/roguetown/heavyroyalplatelegs
+	armor = /obj/item/clothing/suit/roguetown/armor/plate/heavyplateroyalguard
+	pants = /obj/item/clothing/under/roguetown/heavyroyalplatelegs	//Gets better pants than chain ones.
 	cloak = /obj/item/clothing/cloak/cape/guard
 	gloves = /obj/item/clothing/gloves/roguetown/plate
-	neck = /obj/item/clothing/neck/roguetown/gorget
-	shirt = /obj/item/clothing/suit/roguetown/armor/chainmail
-	armor = /obj/item/clothing/suit/roguetown/armor/plate/heavyplateroyalguard
 	shoes = /obj/item/clothing/shoes/plate
-	beltl = /obj/item/keyring/guardcastle
-	belt = /obj/item/storage/belt/rogue/leather/black
-	backr = /obj/item/storage/backpack/rogue/satchel/black
 	backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger/steel/special = 1, /obj/item/rope/chain = 1, /obj/item/signal_horn = 1)
 
 /datum/advclass/royalguard/knight
@@ -159,15 +160,59 @@
 	else
 		backl = /obj/item/rogueweapon/sword/long
 
+	// Armor section
 	head = /obj/item/clothing/head/roguetown/helmet/heavy/royalknight
-	pants = /obj/item/clothing/under/roguetown/chainlegs
+	armor = /obj/item/clothing/suit/roguetown/armor/plate/halfplateroyalguard
 	cloak = /obj/item/clothing/cloak/cape/guard
 	gloves = /obj/item/clothing/gloves/roguetown/chain
-	neck = /obj/item/clothing/neck/roguetown/gorget
-	shirt = /obj/item/clothing/suit/roguetown/armor/chainmail
-	armor = /obj/item/clothing/suit/roguetown/armor/plate/halfplateroyalguard
 	shoes = /obj/item/clothing/shoes/roguetown/boots/armoriron
-	beltl = /obj/item/keyring/guardcastle
-	belt = /obj/item/storage/belt/rogue/leather/black
-	backr = /obj/item/storage/backpack/rogue/satchel/black
+	backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger/steel/special = 1, /obj/item/rope/chain = 1, /obj/item/signal_horn = 1)
+
+/datum/advclass/royalguard/archer
+	name = "Royal Archer"
+	tutorial = "While you may be knighted, you are not what one expects for a 'knight'. You lack the heavy armor but all those royal hunts have homed your skills in not only archer but swords as well!"
+	outfit = /datum/outfit/job/roguetown/royalguard/archer
+
+	category_tags = list(CTAG_ROYALGUARD)
+
+/datum/outfit/job/roguetown/royalguard/archer/pre_equip(mob/living/carbon/human/H)
+	..()
+	//This class doesn't use the normal shared skill section; totally different!! 
+	H.mind.adjust_skillrank(/datum/skill/combat/bows, 5, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 4, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/combat/knives, 4, TRUE)	//Good as hell knife skill; makes them standout more compared to other guards.
+	H.mind.adjust_skillrank(/datum/skill/combat/swords, 3, TRUE)	//Decent sword skill, mostly for short-swords n' all.
+	H.mind.adjust_skillrank(/datum/skill/combat/maces, 2, TRUE)		//Not good training; gave some because non-lethals.
+	H.mind.adjust_skillrank(/datum/skill/combat/shields, 1, TRUE)	//Some training, not great at all though. Equal to an adventurer, L.
+	H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 4, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 3, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/misc/climbing, 4, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 3, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/misc/reading, 2, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/misc/riding, 1, TRUE)
+	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
+	ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)	//Archer, so dodge expert. Lower speed than Watch crossbowman though, so not as strong.
+	ADD_TRAIT(H, TRAIT_NOBLE, TRAIT_GENERIC)		//Royal Longbowman; kinda rare realistically, though they did exist irl. But hey - royal guard + fantasy.
+	H.dna.species.soundpack_m = new /datum/voicepack/male/knight()
+	H.verbs |= /mob/proc/haltyell
+
+	//Stats are just slightly better than Watchman crossbowman basically. Still gets same amount of stats total as base royal guard.
+	H.change_stat("strength", 2)
+	H.change_stat("intelligence", 1)
+	H.change_stat("perception", 2)
+	H.change_stat("constitution", 1)
+	H.change_stat("endurance", 2)
+	H.change_stat("speed", 1)		//Gets less speed than Watch crossbowman, but gets some other stat bonuses over them.
+
+	//Weapon section
+	beltr = /obj/item/quiver/arrows
+	backl = /obj/item/gun/ballistic/revolver/grenadelauncher/bow/longbow
+
+	//Armor section	- We give them kinda meh medium armor to either choose to upgrade to scale, or go for light armors.
+	head = /obj/item/clothing/head/roguetown/helmet/bascinet/royalguard
+	armor = /obj/item/clothing/suit/roguetown/armor/plate/half
+	cloak = /obj/item/clothing/cloak/stabard/guardhood
+	gloves = /obj/item/clothing/gloves/roguetown/angle
+	shoes = /obj/item/clothing/shoes/roguetown/nobleboot
 	backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger/steel/special = 1, /obj/item/rope/chain = 1, /obj/item/signal_horn = 1)

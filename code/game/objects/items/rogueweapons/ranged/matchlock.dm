@@ -34,14 +34,24 @@
 /datum/intent/shoot/matchlock
 	chargedrain = 0 //no drain to aim a crossbow
 
+//Makes you require both hands to fire & use.
+/datum/intent/shoot/matchlock/can_charge()
+	if(mastermob)
+		if(mastermob.get_num_arms(FALSE) < 2)
+			return FALSE
+		if(mastermob.get_inactive_held_item())
+			return FALSE
+	return TRUE
+
 /datum/intent/shoot/matchlock/get_chargetime()
 	if(mastermob && chargetime)
 		var/newtime = chargetime
 		//skill block
-		newtime = newtime + 18
+		newtime = newtime + 80
+		newtime = newtime - (mastermob.mind.get_skill_level(/datum/skill/combat/crossbows) * 20)
 		//per block
 		newtime = newtime + 20
-		newtime = newtime - (mastermob.STAPER)
+		newtime = newtime - ((mastermob.STAPER)*1.5)
 		if(newtime > 0)
 			return newtime
 		else
@@ -52,15 +62,24 @@
 	chargetime = 1
 	chargedrain = 0 //no drain to aim a crossbow
 
+//Makes you require both hands to fire & use.
+/datum/intent/arc/matchlock/can_charge()
+	if(mastermob)
+		if(mastermob.get_num_arms(FALSE) < 2)
+			return FALSE
+		if(mastermob.get_inactive_held_item())
+			return FALSE
+	return TRUE
+
 /datum/intent/arc/matchlock/get_chargetime()
 	if(mastermob && chargetime)
 		var/newtime = chargetime
 		//skill block
-		newtime = newtime + 18
-		newtime = newtime - (mastermob.mind.get_skill_level(/datum/skill/combat/crossbows) * 3)
+		newtime = newtime + 80
+		newtime = newtime - (mastermob.mind.get_skill_level(/datum/skill/combat/crossbows) * 20)
 		//per block
 		newtime = newtime + 20
-		newtime = newtime - (mastermob.STAPER)
+		newtime = newtime - ((mastermob.STAPER)*1.5)
 		if(newtime > 0)
 			return newtime
 		else
