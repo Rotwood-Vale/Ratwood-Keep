@@ -302,6 +302,18 @@
 	else
 		to_chat(current, span_warning("My [S.name] has weakened to [SSskills.level_names[known_skills[S]]]!"))
 
+/datum/mind/proc/adjust_skillrank_up_to(skill, amt, silent = FALSE)
+	var/proper_amt = amt - get_skill_level(skill)
+	if(proper_amt <= 0)
+		return
+	adjust_skillrank(skill, proper_amt, silent)
+
+/datum/mind/proc/adjust_skillrank_down_to(skill, amt, silent = FALSE)
+	var/proper_amt = get_skill_level(skill) - amt
+	if(proper_amt <= 0)
+		return
+	adjust_skillrank(skill, -proper_amt, silent)
+
 /datum/mind/proc/adjust_skillrank(skill, amt, silent = FALSE)
 	var/datum/skill/S = GetSkillRef(skill)
 	var/amt2gain = 0

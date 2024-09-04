@@ -164,23 +164,23 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "E
 		if(1 to 35)
 			pick_rebels()
 			log_game("Major Antagonist: Rebellion")
-		if(36 to 80)
+		if(36 to 60)
 			//WWs and Vamps now normally roll together
-			pick_vampires()
+			// pick_vampires()
 			pick_werewolves()
-			log_game("Major Antagonist: Vampires and Werewolves")
-		if(81 to 100)
+			log_game("Major Antagonist: Werewolves")
+		if(61 to 100)
 			log_game("Major Antagonist: Extended") //gotta put something here.
 	
-	if(prob(45))
+	if(prob(80))
 		pick_bandits()
 		log_game("Minor Antagonist: Bandit")
 	if(prob(45))
 		pick_aspirants()
 		log_game("Minor Antagonist: Aspirant")
-	if(prob(10))
-		pick_maniac()
-		log_game("Minor Antagonist: Maniac")
+	// if(prob(10))
+	// 	pick_maniac()
+	// 	log_game("Minor Antagonist: Maniac")
 	
 	return TRUE
 
@@ -249,8 +249,8 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "E
 
 
 /datum/game_mode/chaosmode/proc/pick_aspirants()
-	var/list/possible_jobs_aspirants = list("Prince", "Princess", "Guard Captain", "Steward", "Hand", "Knight")
-	var/list/possible_jobs_helpers = list("Guard Captain", "Prince", "Princess", "Hand",  "Steward", "Knight")
+	var/list/possible_jobs_aspirants = list("Prince", "Princess", "Guard Lieutenant", "Steward", "Hand", "Knight")
+	var/list/possible_jobs_helpers = list("Guard Lieutenant", "Prince", "Princess", "Hand",  "Steward", "Knight")
 	var/list/rolesneeded = list("Aspirant","Loyalist","Supporter")
 
 	antag_candidates = get_players_for_role(ROLE_ASPIRANT)
@@ -355,7 +355,7 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "E
 	"Priest",
 	"Acolyte",
 	"Cleric",
-	"Guard Captain",
+	"Guard Lieutenant",
 	"Court Magician",
 	"Templar",
 	"Bog Guard",
@@ -402,7 +402,7 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "E
 	"Priest",
 	"Acolyte",
 	"Cleric",
-	"Guard Captain",
+	"Guard Lieutenant",
 	"Court Magician",
 	"Templar",
 	"Bog Guard",
@@ -411,7 +411,8 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "E
 	"Mortician",
 	"Desert Rider",
 	"Desert Rider Mercenary",
-	"Grenzelhoft Mercenary"
+	"Grenzelhoft Mercenary",
+	"Sellsword"
 	)
 
 	var/num_werewolves = rand(1,2)
@@ -525,7 +526,7 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "E
 	if((villains.len + pre_villains.len) >= num_villains) //Upper cap for number of latejoin antagonists
 		return
 	if(ROLE_MANIAC in character.client.prefs.be_special)
-		if(!is_banned_from(character.ckey, list(ROLE_MANIAC)) && !QDELETED(character))
+		if(!is_antag_banned(character.ckey, ROLE_MANIAC) && !QDELETED(character))
 			if(age_check(character.client))
 				if(!(character.job in restricted_jobs))
 					if(prob(66))

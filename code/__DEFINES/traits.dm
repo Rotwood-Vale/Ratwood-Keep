@@ -2,11 +2,14 @@
 #define TRAIT_WEBWALK "Webwalker"
 #define TRAIT_NOSTINK "Dead Nose"
 #define TRAIT_ZJUMP "High Jumping"
+#define TRAIT_JESTERPHOBIA "Jesterphobic"
+#define TRAIT_XENOPHOBIC "Xenophobic"
+#define TRAIT_TOLERANT "Tolerant"
 #define TRAIT_LEAPER "Leaper"
 #define TRAIT_NOSEGRAB "Nosey"
 #define TRAIT_NUTCRACKER "Nutcracker"
 #define TRAIT_SEEPRICES "Skilled Appraiser"
-#define TRAIT_SEEPRICES_SHITTY "Merchant-in-training"
+#define TRAIT_SEEPRICES_SHITTY "Appraiser"
 #define TRAIT_STRONGBITE "Strong Bite"
 #define TRAIT_NOBLE "Noble Blooded"
 #define TRAIT_EMPATH "Empath"
@@ -35,6 +38,10 @@
 #define TRAIT_FASTSLEEP "Fast Sleeper"
 #define TRAIT_GOODLOVER "Fabled Lover"
 #define TRAIT_SEEDKNOW "Seed Knower"
+#define TRAIT_GOODRUNNER "Good Runner"
+// ROGUEspecialTRAITS (description when rmb skills button)
+#define TRAIT_CIVILIZEDBARBARIAN "Tavern Brawler"
+#define TRAIT_COMICSANS "Annoying Face"
 #define TRAIT_WATERBREATHING "Water Breathing"
 
 // PATRON GOD TRAITS
@@ -48,6 +55,9 @@
 
 #define TRAIT_BASHDOORS "bashdoors"
 #define TRAIT_NOMOOD "no_mood"
+#define TRAIT_BAD_MOOD "Bad Mood"
+#define TRAIT_NIGHT_OWL "Night Owl"
+#define TRAIT_BEAUTIFUL "Beautiful"
 #define TRAIT_SIMPLE_WOUNDS "simple_wounds"
 #define TRAIT_BANDITCAMP "banditcamp"
 #define TRAIT_VAMPMANSION "vampiremansion"
@@ -61,12 +71,22 @@
 #define TRAIT_SCHIZO_AMBIENCE "schizo_ambience" //replaces all ambience with creepy shit
 #define TRAIT_SCREENSHAKE "screenshake" //screen will always be shaking, you cannot stop it
 #define TRAIT_NORUN "Decayed Flesh"
+#define TRAIT_PUNISHMENT_CURSE "PunishmentCurse"
+#define TRAIT_LEPROSY "Leprosy"
+#define TRAIT_NUDE_SLEEPER "Nude Sleeper"
 
 GLOBAL_LIST_INIT(roguetraits, list(
+	TRAIT_LEPROSY = span_necrosis("I'm a disgusting leper..."),
 	TRAIT_CHOSEN = "Astrata choose you to represent her glory.",
 	TRAIT_WEBWALK = "I can move freely between webs.",
 	TRAIT_NOSTINK = span_dead("My nose is numb to the smell of decay."),
 	TRAIT_ZJUMP = "Time to reach a new high.",
+	TRAIT_JESTERPHOBIA = span_warning("I have a severe irrational fear of Jesters"),
+	TRAIT_XENOPHOBIC = span_warning("Lesser races pollute our land"),
+	TRAIT_TOLERANT = span_info("I dream of an ideal future, one with peace between all races"),
+	TRAIT_NIGHT_OWL = span_info("I enjoy spending my time in the night"),
+	TRAIT_BEAUTIFUL = span_info("People love looking at my face"),
+	TRAIT_BAD_MOOD = span_warning("Everything just seems to piss me off"),
 	TRAIT_LEAPER = "I can leap like a frog.",
 	TRAIT_NOSEGRAB = "I love to grab idiots by their noses!",
 	TRAIT_NUTCRACKER = "I love kicking idiots on the nuts!",
@@ -106,7 +126,12 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_NORUN = span_warning("My body has atrophied in my state of decay; my leg joints just don't have the strength or durability for running anymore"),
 	TRAIT_GOODLOVER = span_love("It's a lucky thing to share my bed."),
 	TRAIT_SEEDKNOW = span_info("I know which seeds grow which crops."),
+	TRAIT_CIVILIZEDBARBARIAN = span_info("Your fists are heavier."),
+	TRAIT_COMICSANS = span_sans("I am cursed with a odd voice."),
 	TRAIT_WATERBREATHING = span_info("I do not drown in bodies of water."),
+	TRAIT_GOODRUNNER = span_info("I can run without breaking a sweat!"),
+	TRAIT_NUDE_SLEEPER = span_warning("I can't fall asleep unless I'm nude and in bed."),
+
 ))
 
 // trait accessor defines

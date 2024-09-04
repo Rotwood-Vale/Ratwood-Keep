@@ -244,6 +244,7 @@
 	. = 1
 
 /datum/reagent/moondust/on_mob_metabolize(mob/living/M)
+	narcolepsy_drug_up(M)
 	M.flash_fullscreen("can_you_see")
 	animate(M.client, pixel_y = 1, time = 1, loop = -1, flags = ANIMATION_RELATIVE)
 	animate(pixel_y = -1, time = 1, flags = ANIMATION_RELATIVE)
@@ -255,6 +256,8 @@
 	narcolepsy_drug_up(M)
 	if(M.reagents.has_reagent(/datum/reagent/moondust_purest))
 		M.Sleeping(40, 0)
+	else
+		M.Sleeping(-40)
 	if(M.has_flaw(/datum/charflaw/addiction/junkie))
 		M.sate_addiction()
 	M.apply_status_effect(/datum/status_effect/buff/moondust)
@@ -293,6 +296,7 @@
 	. = 1
 
 /datum/reagent/moondust_purest/on_mob_metabolize(mob/living/M)
+	narcolepsy_drug_up(M)
 	M.playsound_local(M, 'sound/ravein/small/hello_my_friend.ogg', 100, FALSE)
 	M.flash_fullscreen("can_you_see")
 	M.overlay_fullscreen("purest_kaif", /atom/movable/screen/fullscreen/purest)
@@ -307,6 +311,8 @@
 	narcolepsy_drug_up(M)
 	if(M.reagents.has_reagent(/datum/reagent/moondust))
 		M.Sleeping(40, 0)
+	else
+		M.Sleeping(-40)
 	if(M.has_flaw(/datum/charflaw/addiction/junkie))
 		M.sate_addiction()
 	M.apply_status_effect(/datum/status_effect/buff/moondust_purest)

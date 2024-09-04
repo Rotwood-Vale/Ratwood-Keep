@@ -39,6 +39,7 @@
 			H.mind.adjust_skillrank(/datum/skill/combat/maces, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/bows, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 2, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/swords, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/swords, 3, TRUE)
@@ -56,6 +57,7 @@
 			H.change_stat("intelligence", 2)
 
 	else
+		pants = /obj/item/clothing/under/roguetown/tights/stockings/silk/white
 		beltl = /obj/item/keyring/royal
 		head = /obj/item/clothing/head/roguetown/hennin
 		neck = /obj/item/storage/belt/rogue/pouch/coins/rich

@@ -261,6 +261,9 @@ SUBSYSTEM_DEF(migrants)
 	if(role.advclass_cat_rolls)
 		SSrole_class_handler.setup_class_handler(character, role.advclass_cat_rolls, migrant_wave_id)
 		hugboxify_for_class_selection(character)
+	else
+		// Apply post equipment stuff
+		apply_character_post_equipment(character)
 
 /datum/controller/subsystem/migrants/proc/get_priority_players(list/players, role_type)
 	var/list/priority = list()
@@ -277,6 +280,14 @@ SUBSYSTEM_DEF(migrants)
 	if(!player.prefs)
 		return FALSE
 	var/datum/preferences/prefs = player.prefs
+	if(role.banned_leprosy && is_misc_banned(player.ckey, BAN_MISC_LEPROSY))
+		return FALSE
+	if(role.banned_lunatic && is_misc_banned(player.ckey, BAN_MISC_LUNATIC))
+		return FALSE
+	if(!player.prefs.allowed_respawn())
+		return FALSE
+	if(is_migrant_banned(player.ckey, role.name))
+		return FALSE
 	if(role.allowed_races && !(prefs.pref_species.type in role.allowed_races))
 		return FALSE
 	if(role.allowed_sexes && !(prefs.gender in role.allowed_sexes))

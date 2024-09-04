@@ -8,7 +8,6 @@
 	equip_delay_self = 10
 	bloody_icon_state = "bodyblood"
 	sewrepair = TRUE //Vrell - AFAIK, all cloaks are cloth ATM. Technically semi-less future-proof, but it removes a line of code from every subtype, which is worth it IMO.
-	flags_inv = HIDETAIL
 
 
 //////////////////////////
@@ -394,7 +393,7 @@
 	name = "jupon"
 	icon_state = "surcoat"
 
-/obj/item/clothing/cloak/stabard/surcoat/bailiff
+/obj/item/clothing/cloak/stabard/surcoat/marshal
 	color = "#641E16"
 
 /obj/item/clothing/cloak/stabard/surcoat/councillor
@@ -588,7 +587,7 @@
 	color = null
 	icon_state = "waistpron"
 	item_state = "waistpron"
-	body_parts_covered = GROIN
+	body_parts_covered = null
 	boobed = FALSE
 	flags_inv = HIDECROTCH
 
@@ -605,8 +604,9 @@
 	color = null
 	icon_state = "aproncook"
 	item_state = "aproncook"
-	body_parts_covered = CHEST|GROIN
+	body_parts_covered = CHEST
 	boobed = FALSE
+	flags_inv = HIDECROTCH|HIDEBOOB
 
 /*
 /obj/item/clothing/cloak/apron/waist/ComponentInitialize()
@@ -672,7 +672,6 @@
 
 /obj/item/clothing/cloak/raincloak/brown
 	color = CLOTHING_BROWN
-	sellprice = 25
 
 /obj/item/clothing/cloak/raincloak/green
 	color = CLOTHING_GREEN
@@ -692,7 +691,7 @@
 	dynamic_hair_suffix = ""
 	edelay_type = 1
 	body_parts_covered = HEAD
-	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR|HIDEFACIALHAIR
+	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR|HIDEFACIALHAIR|HIDETAIL
 	block2add = FOV_BEHIND
 
 /obj/item/clothing/head/hooded/equipped(mob/user, slot)
@@ -744,6 +743,9 @@
 
 /obj/item/clothing/cloak/cape/guard
 	color = CLOTHING_RED
+
+/obj/item/clothing/cloak/cape/black
+	color = CLOTHING_BLACK
 
 /obj/item/clothing/cloak/cape/guard/Initialize()
 	. = ..()
