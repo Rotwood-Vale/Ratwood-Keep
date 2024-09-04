@@ -9,11 +9,11 @@
 		"Tiefling",
 		"Tabaxi"
 	)
-	outfit = /datum/outfit/job/roguetown/mercenary/blackoak
+	outfit = /datum/outfit/job/roguetown/mercenary/condottiero
 	category_tags = list(CTAG_MERCENARY)
 	maximum_possible_slots = 5
 
-/datum/outfit/job/roguetown/mercenary/blackoak/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/job/roguetown/mercenary/condottiero/pre_equip(mob/living/carbon/human/H)
 	..()
 	shoes = /obj/item/clothing/shoes/roguetown/boots/leather
 	cloak = /obj/item/clothing/cloak/half/red

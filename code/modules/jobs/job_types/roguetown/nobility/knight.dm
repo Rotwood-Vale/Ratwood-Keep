@@ -86,9 +86,9 @@
 	H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 1, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/reading, 2, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/combat/crossbows, pick(1,2,2), TRUE)
-	H.mind.adjust_skillrank(/datum/skill/combat/bows, pick(2,3,3), TRUE)
-	H.mind.adjust_skillrank(/datum/skill/combat/knives, pick(2,2,3), TRUE)
+	H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 2, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/combat/bows, 3, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/combat/knives, 3, TRUE)
 	ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_STEELHEARTED, TRAIT_GENERIC)	//Knights should be used to the horrors of war if they're tride-and-true.
 	ADD_TRAIT(H, TRAIT_NOBLE, TRAIT_GENERIC)		//Knights are /technically/ nobles? But they are of the lower-tiers; mainly that a non-blue-blood could become a knight
@@ -100,15 +100,19 @@
 	H.change_stat("constitution", 3)
 	H.change_stat("endurance", 3)
 	H.change_stat("speed", -2)		//Lower speed for more strength and con of other knight, and to off-set endurance. (They need the end-stam for 2 handed.)
-	// A two-handed sword, but not the strongest one
-	if(prob(33))
-		r_hand = /obj/item/rogueweapon/greatsword/zwei
-	// Great-mace, 2-handed (worse than normal steel but better than iron)
-	else if(prob(33))
-		r_hand = /obj/item/rogueweapon/mace/goden/steel
-	// Why did heavy knights get a mace+shield combo if they're supposed to be the two-hander guys? Gives them a greataxe instead.
-	else
-		r_hand = /obj/item/rogueweapon/stoneaxe/battle
+
+	H.adjust_blindness(-3)
+	var/weapons = list("Zweihander","Great Mace","Battle Axe")
+	var/weapon_choice = input("Choose your weapon.", "TAKE UP ARMS") as anything in weapons
+	H.set_blindness(0)
+	switch(weapon_choice)
+		if("Zweihander") 	// A two-handed sword, but not the strongest one
+			r_hand = /obj/item/rogueweapon/greatsword/zwei
+		if("Great Mace")	// Great-mace, 2-handed (worse than normal steel but better than iron)
+			r_hand = /obj/item/rogueweapon/mace/goden/steel
+		if("Battle Axe")	// Why did heavy knights get a mace+shield combo if they're supposed to be the two-hander guys? Gives them a greataxe instead.
+			r_hand = /obj/item/rogueweapon/stoneaxe/battle
+
 	neck = /obj/item/clothing/neck/roguetown/bervor
 	armor = /obj/item/clothing/suit/roguetown/armor/plate		//this is actually steel half-plate, full plate is plate/full. given because they are SLOW.
 
@@ -138,9 +142,9 @@
 	H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 1, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/reading, 2, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/combat/crossbows, pick(1,2,2), TRUE)
-	H.mind.adjust_skillrank(/datum/skill/combat/bows, pick(2,3,3), TRUE)
-	H.mind.adjust_skillrank(/datum/skill/combat/knives, pick(2,2,3), TRUE)
+	H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 2, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/combat/bows, 3, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/combat/knives, 3, TRUE)
 	ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_STEELHEARTED, TRAIT_GENERIC)	//Knights should be used to the horrors of war if they're tride-and-true.
 	ADD_TRAIT(H, TRAIT_NOBLE, TRAIT_GENERIC)		//Knights are /technically/ nobles? But they are of the lower-tiers; mainly that a non-blue-blood could become a knight.
@@ -151,14 +155,19 @@
 	H.change_stat("constitution", 2)
 	H.change_stat("endurance", 2)
 	H.change_stat("speed", -1)			//Bit faster than a heavy knight, not as fast as a mounted knight.
-	// Flail + fancy shield
-	if(prob (50))
-		beltr = /obj/item/rogueweapon/flail/sflail		//these steel flails spawn in the armory anyways
-		backl = /obj/item/rogueweapon/shield/tower/metal
-	// Sword + fancy shield
-	else
-		beltr = /obj/item/rogueweapon/sword/long		//very usable one-handed, has a force of 25
-		backl = /obj/item/rogueweapon/shield/tower/metal
+
+	H.adjust_blindness(-3)
+	var/weapons = list("Bastard Sword","Flail")
+	var/weapon_choice = input("Choose your weapon.", "TAKE UP ARMS") as anything in weapons
+	H.set_blindness(0)
+	switch(weapon_choice)
+		if("Bastard Sword")
+			beltr = /obj/item/rogueweapon/sword/long	//very usable one-handed, has a force of 25
+			backl = /obj/item/rogueweapon/shield/tower/metal
+		if("Flail")
+			beltr = /obj/item/rogueweapon/flail/sflail		//these steel flails spawn in the armory anyways
+			backl = /obj/item/rogueweapon/shield/tower/metal
+
 	neck = /obj/item/clothing/neck/roguetown/chaincoif
 	armor = /obj/item/clothing/suit/roguetown/armor/brigandine/coatplates		//given because it's less durability than the steel cuirass but is actually heavy, making use of their heavy skill, unlike cuirass
 
@@ -188,9 +197,9 @@
 	H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 1, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/reading, 2, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/combat/crossbows, pick(1,2,2), TRUE)
+	H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 2, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/combat/bows, 3, TRUE)			//Gets gaurenteed skill due to experience mounted. Maybe buff to 4; only effects aiming time.
-	H.mind.adjust_skillrank(/datum/skill/combat/knives, pick(2,2,3), TRUE)
+	H.mind.adjust_skillrank(/datum/skill/combat/knives, 3, TRUE)
 	ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_STEELHEARTED, TRAIT_GENERIC)	//Knights should be used to the horrors of war if they're tride-and-true.
 	ADD_TRAIT(H, TRAIT_NOBLE, TRAIT_GENERIC)		//Knights are /technically/ nobles? But they are of the lower-tiers; mainly that a non-blue-blood could become a knight.
@@ -201,14 +210,19 @@
 	H.change_stat("intelligence", 2)		//Bonus intel for feinting; swords-moment.
 	H.change_stat("constitution", 2)
 	H.change_stat("endurance", 2)
-	// Sword + buckler shield
-	if(prob (50))
-		beltr = /obj/item/rogueweapon/sword/long
-		backl = /obj/item/rogueweapon/shield/tower/metal
-	// Bastard sword (traditional knight loadout; can be 1-handed but far better 2-handed. Higher stam drain.)
-	else
-		r_hand = /obj/item/rogueweapon/spear
-		backl = /obj/item/rogueweapon/shield/tower/metal
+
+	H.adjust_blindness(-3)
+	var/weapons = list("Bastard Sword","Spear")
+	var/weapon_choice = input("Choose your weapon.", "TAKE UP ARMS") as anything in weapons
+	H.set_blindness(0)
+	switch(weapon_choice)
+		if("Bastard Sword")
+			beltr = /obj/item/rogueweapon/sword/long
+			backl = /obj/item/rogueweapon/shield/tower/metal
+		if("Spear")
+			r_hand = /obj/item/rogueweapon/spear
+			backl = /obj/item/rogueweapon/shield/tower/metal
+
 	neck = /obj/item/clothing/neck/roguetown/chaincoif
 	armor = /obj/item/clothing/suit/roguetown/armor/brigandine/coatplates		//given because it's less durability than the steel cuirass but is actually heavy, making use of their heavy skill, unlike cuirass
 

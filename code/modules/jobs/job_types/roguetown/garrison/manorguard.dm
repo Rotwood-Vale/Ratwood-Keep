@@ -53,22 +53,22 @@
 // Maces + Axes + Shield	-	Better armor, typical Man-at-Arms loadout
 /datum/advclass/manorguard/footsman
 	name = "Men-at-Arms Footsman"
-	tutorial = "You are a professional soldier of the realm, specializing in shields, swords, bows, and crossbows. You sport a keen eye, looking for your enemies weaknesses."
+	tutorial = "You are a professional soldier of the realm, specializing in melee warfare. Stalwart and hardy, your body can both withstand and dish out powerful strikes.."
 	outfit = /datum/outfit/job/roguetown/manorguard/footsman
 
 	category_tags = list(CTAG_MENATARMS)
 
 /datum/outfit/job/roguetown/manorguard/footsman/pre_equip(mob/living/carbon/human/H)
 	..()
-	H.mind.adjust_skillrank(/datum/skill/combat/polearms, 2, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/combat/polearms, 4, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/combat/swords, 4, TRUE)		//Skilled swordsman.
 	H.mind.adjust_skillrank(/datum/skill/combat/knives, 3, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/combat/axes, 2, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/combat/whipsflails, 2, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/combat/maces, 3, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/combat/shields, 2, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 5, TRUE)		//Only effects draw and reload time.
-	H.mind.adjust_skillrank(/datum/skill/combat/bows, 5, TRUE)			//Only effects draw times.
+	H.mind.adjust_skillrank(/datum/skill/combat/axes, 3, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/combat/whipsflails, 3, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/combat/maces, 4, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/combat/shields, 3, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 3, TRUE)		//Only effects draw and reload time.
+	H.mind.adjust_skillrank(/datum/skill/combat/bows, 3, TRUE)			//Only effects draw times.
 
 	//Normal shared skill section.
 	H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 4, TRUE)
@@ -89,12 +89,18 @@
 	shirt = /obj/item/clothing/suit/roguetown/armor/gambeson/heavy		//Bit worse shirt protection than the archer
 	armor = /obj/item/clothing/suit/roguetown/armor/plate/scale			//Makes up for worse shirt protection with kinda better armor protection
 	head = /obj/item/clothing/head/roguetown/helmet/sallet				//Better protection than kettle archer has
-	if(prob(50))
-		beltr = /obj/item/rogueweapon/stoneaxe/woodcut		//If too weak, consider giving steel axe.
-		backl = /obj/item/rogueweapon/shield/wood
-	else
-		beltr = /obj/item/rogueweapon/mace/cudgel
-		backl = /obj/item/rogueweapon/spear/billhook
+
+	H.adjust_blindness(-3)
+	var/weapons = list("Axe & Shield","Billhook & Cudgel")
+	var/weapon_choice = input("Choose your weapon.", "TAKE UP ARMS") as anything in weapons
+	H.set_blindness(0)
+	switch(weapon_choice)
+		if("Axe & Shield")
+			beltr = /obj/item/rogueweapon/stoneaxe/woodcut/steel		//If too weak, consider giving steel axe.
+			backl = /obj/item/rogueweapon/shield/wood
+		if("Billhook & Cudgel")
+			beltr = /obj/item/rogueweapon/mace/cudgel
+			backl = /obj/item/rogueweapon/spear/billhook
 
 	backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger/steel/special = 1, /obj/item/rope/chain = 1)
 	H.verbs |= /mob/proc/haltyell
@@ -102,7 +108,7 @@
 // Shield + Swords + Crossbow/Bow	-	Lighter armor, but ranged + sword skill in exchange for it.
 /datum/advclass/manorguard/boltman
 	name = "Men-at-Arms Boltman"
-	tutorial = "You are a professional soldier of the realm, specializing in shields, swords, bows, and crossbows. You sport a keen eye, looking for your enemies weaknesses."
+	tutorial = "You are a professional soldier of the realm, specializing in ranged implements. You sport a keen eye, looking for your enemies weaknesses."
 	outfit = /datum/outfit/job/roguetown/manorguard/boltman
 
 	category_tags = list(CTAG_MENATARMS)
@@ -110,7 +116,7 @@
 /datum/outfit/job/roguetown/manorguard/boltman/pre_equip(mob/living/carbon/human/H)
 	..()
 	H.mind.adjust_skillrank(/datum/skill/combat/polearms, 2, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/combat/swords, 4, TRUE)		//Skilled swordsman.
+	H.mind.adjust_skillrank(/datum/skill/combat/swords, 3, TRUE)		//Not as good as the boltman
 	H.mind.adjust_skillrank(/datum/skill/combat/knives, 3, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/combat/axes, 2, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/combat/whipsflails, 2, TRUE)
@@ -134,6 +140,7 @@
 	H.change_stat("intelligence", 1)
 	H.change_stat("constitution", 1)
 	H.change_stat("endurance", 1)
+	H.change_stat("perception", 1)
 	H.change_stat("speed", 1)
 
 	shirt = /obj/item/clothing/suit/roguetown/armor/chainmail			//Helps against other attack types
