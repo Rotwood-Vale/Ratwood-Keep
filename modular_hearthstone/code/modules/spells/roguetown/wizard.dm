@@ -364,7 +364,7 @@
 
 /obj/effect/proc_holder/spell/self/message/cast(list/targets, mob/user)
 	. = ..()
-	var/input = stripped_input(user, "Who are you trying to contact?")
+	var/input = input(user, "Who are you trying to contact?")
 	if(!input)
 		revert_cast()
 		return
@@ -378,7 +378,7 @@
 		return
 	for(var/mob/living/carbon/human/HL in GLOB.human_list)
 		if(HL.real_name == input)
-			var/message = stripped_input(user, "You make a connection. What are you trying to say?")
+			var/message = input(user, "You make a connection. What are you trying to say?")
 			if(!message)
 				revert_cast()
 				return
@@ -390,10 +390,10 @@
 				if(HL.mind)
 					if(HL.mind.do_i_know(name=user.real_name)) //do we know who this person is?
 						identified = TRUE // we do
-						to_chat(HL, "Arcyne whispers fill the back of my head, resolving into [user]'s voice:<font color=#7246ff>[message]</font>")
+						to_chat(HL, "Arcyne whispers fill the back of my head, resolving into [user]'s voice: <font color=#7246ff>[message]</font>")
 
 			if(!identified) //we failed the check OR we just dont know who that is
-				to_chat(HL, "Arcyne whispers fill the back of my head, resolving into an unknown [user.gender == FEMALE ? "woman" : "man"]'s voice:<font color=#7246ff>[message]</font>")
+				to_chat(HL, "Arcyne whispers fill the back of my head, resolving into an unknown [user.gender == FEMALE ? "woman" : "man"]'s voice: <font color=#7246ff>[message]</font>")
 
 			user.whisper(message)
 			log_game("[key_name(user)] sent a message to [key_name(HL)] with contents [message]")

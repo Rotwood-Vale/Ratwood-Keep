@@ -25,7 +25,7 @@
 	if(world.time < last_scry + 30 SECONDS)
 		to_chat(user, span_warning("I look into the ball but only see inky smoke. Maybe I should wait."))
 		return
-	var/input = stripped_input(user, "Who are you looking for?", "Scrying Orb")
+	var/input = input(user, "Who are you looking for?", "Scrying Orb")
 	if(!input)
 		return
 	if(!user.key)
