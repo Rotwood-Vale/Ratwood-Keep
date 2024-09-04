@@ -45,6 +45,14 @@
 	ADD_TRAIT(character, TRAIT_NOMOOD, "[type]")
 	ADD_TRAIT(character, TRAIT_CRITICAL_RESISTANCE, "[type]")
 
+/datum/special_trait/latentmagic
+	name = "Latent Magic"
+	greet_text = span_notice("I have innate magical potential.")
+	weight = 25
+
+/datum/special_trait/latentmagic/on_apply(mob/living/carbon/human/character, silent)
+	character.mind.adjust_skillrank(/datum/skill/magic/arcane, 1, TRUE)
+
 /datum/special_trait/value
 	name = "Coin Counter"
 	greet_text = span_notice("I know how to estimate an item's value.")
