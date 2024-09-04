@@ -29,6 +29,7 @@
 	H.mind.adjust_skillrank(/datum/skill/combat/bows, 2, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/sewing, 1, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/craft/cooking, 1, TRUE)
+		pants = /obj/item/clothing/under/roguetown/tights/stockings/silk/white
 		armor = /obj/item/clothing/suit/roguetown/shirt/dress/gen/purple
 		head = /obj/item/clothing/head/roguetown/hatblu
 		cloak = /obj/item/clothing/cloak/raincloak/purple
