@@ -2049,7 +2049,6 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 	if(do_after(Ripper, 80))
 		//if(length(Target.grabbedby) != 0)
 		if(Target.pulledby == Ripper)	//Check for being grabbed by ripper again
-			playsound(Target, 'sound/vo/female/gen/scream (2).ogg', 140)
 			Wing.Remove(Target)
 			Wing.forceMove(Target.drop_location())
 			Ripper.put_in_hands(Wing)
@@ -2064,7 +2063,8 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 			Target.visible_message(span_danger("[Target] clutches at [Target.p_their()] chest as if [Target.p_their()] heart stopped!"))
 
 			//CURSE OF THE SEELIE
-			if(Target.can_speak_vocal())
+			if(!isdead(Target))
+				playsound(Target, 'sound/vo/female/gen/scream (2).ogg', 140)
 				for(var/mob/living/M in get_hearers_in_view(4, Target))
 					if(iscarbon(M) && (M != Target))
 						var/mob/living/carbon/C = M
