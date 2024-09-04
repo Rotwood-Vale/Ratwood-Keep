@@ -58,17 +58,18 @@
 		H.change_stat("constitution", -1)
 		H.change_stat("intelligence", 4)
 		H.mind.adjust_spellpoints(3)
-		if(H.age == AGE_OLD)
+	if(H.age == AGE_OLD)
+		if(H.mind)
 			H.change_stat("speed", -1)
 			H.change_stat("intelligence", 1)
 			H.change_stat("perception", 1)
 			H.mind.adjust_spellpoints(1)
-			if(ishumannorthern(H))
-				belt = /obj/item/storage/belt/rogue/leather/plaquegold
-				cloak = null
-				head = /obj/item/clothing/head/roguetown/wizhat
-				armor = /obj/item/clothing/suit/roguetown/shirt/robe/wizard
-				H.dna.species.soundpack_m = new /datum/voicepack/male/wizard()
+		belt = /obj/item/storage/belt/rogue/leather/plaquegold
+		cloak = null
+		head = /obj/item/clothing/head/roguetown/wizhat
+		armor = /obj/item/clothing/suit/roguetown/shirt/robe/wizard
+		if(ishumannorthern(H))
+			H.dna.species.soundpack_m = new /datum/voicepack/male/wizard()
 	switch(H.patron?.type)
 		if(/datum/patron/divine/pestra)
 			if(H.mind)
