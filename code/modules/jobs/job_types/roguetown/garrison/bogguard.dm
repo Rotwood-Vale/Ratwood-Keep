@@ -17,23 +17,19 @@
 	give_bank_account = 16
 	min_pq = 1
 	max_pq = null
-	
+	advclass_cat_rolls = list(CTAG_BOG = 20)
+	advjob_examine = TRUE
+	always_show_on_latechoices = TRUE
+
 	cmode_music = 'sound/music/combat_bog.ogg'
 
-	/// Chance to be spawned as a crossbowman instead
-	var/crossbowman_chance = 35
-	/// Amount of crossbowmen spawned so far
-	var/crossbowman_amount = 0
-	/// Maximum amount of crossbowmen that can be spawned
-	var/crossbowman_max = 3
-	/// Crossbowman outfit
-	var/crossbowman_outfit = /datum/outfit/job/roguetown/bogguardsman/crossbowman
-
-/datum/job/roguetown/bogguardsman/get_outfit(mob/living/carbon/human/wearer, visualsOnly = FALSE, announce = TRUE, latejoin = FALSE, preference_source = null)
-	if((crossbowman_amount < crossbowman_max) && prob(crossbowman_chance))
-		crossbowman_amount++
-		return crossbowman_outfit
-	return ..()
+/datum/job/roguetown/bogguardsman/after_spawn(mob/living/L, mob/M, latejoin = TRUE)
+	..()
+	if(L)
+		var/mob/living/carbon/human/H = L
+		H.advsetup = 1
+		H.invisibility = INVISIBILITY_MAXIMUM
+		H.become_blind("advsetup")
 
 /datum/job/roguetown/bogguardsman/after_spawn(mob/living/L, mob/M, latejoin = TRUE)
 	. = ..()
@@ -51,6 +47,25 @@
 	name = "Bog Guard"
 	/// Whether or not we are a crossbowman
 	var/is_crossbowman = FALSE
+
+/datum/advclass/bogguard
+	name = "bog guard"
+	allowed_sexes = list(MALE, FEMALE)
+	allowed_races = RACES_VERY_SHUNNED_UP
+	outfit = /datum/outfit/job/roguetown/bogguardsman
+	tutorial = "You are well versed in the ways of handling a sword.\
+	You will stand in the front, and protect."
+	category_tags = list(CTAG_BOG)
+
+/datum/advclass/bogranger
+	name = "bog ranger"
+	allowed_sexes = list(MALE, FEMALE)
+	allowed_races = RACES_VERY_SHUNNED_UP
+	outfit = /datum/outfit/job/roguetown/bogguardsman/crossbowman
+	tutorial = "You are well versed in the ways of handling a bow.\
+	You will stand in the back, and protect the front with arrows."
+	category_tags = list(CTAG_BOG)
+	maximum_possible_slots = 3
 
 /datum/outfit/job/roguetown/bogguardsman/pre_equip(mob/living/carbon/human/H)
 	. = ..()
@@ -107,7 +122,7 @@
 	bogger.change_stat("speed", 1)
 
 /datum/outfit/job/roguetown/bogguardsman/crossbowman
-	name = "Bog Crossbow Guard"
+	name = "Bog ranger"
 	is_crossbowman = TRUE
 
 /datum/outfit/job/roguetown/bogguardsman/crossbowman/assign_skills(mob/living/carbon/human/bogger)
