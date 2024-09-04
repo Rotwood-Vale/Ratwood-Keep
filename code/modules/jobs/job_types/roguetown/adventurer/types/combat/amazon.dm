@@ -36,7 +36,7 @@
 	if(prob(23))
 		armor = /obj/item/clothing/suit/roguetown/armor/leather/hide
 	if(prob(50))
-		armor = /obj/item/clothing/suit/roguetown/armor/chainmail/chainkini
+		armor = /obj/item/clothing/suit/roguetown/armor/chainmail/bikini
 	wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
 	if(prob(50))
 		shoes = /obj/item/clothing/shoes/roguetown/boots

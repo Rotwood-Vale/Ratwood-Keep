@@ -19,7 +19,6 @@
 	gloves = /obj/item/clothing/gloves/roguetown/angle
 	belt = /obj/item/storage/belt/rogue/leather/black
 	armor = /obj/item/clothing/suit/roguetown/armor/plate/half/elven
-	backr = /obj/item/rogueweapon/spear
 	backl = /obj/item/storage/backpack/rogue/satchel
 	beltl = /obj/item/rogueweapon/huntingknife/idagger/steel/special
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/black
