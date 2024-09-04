@@ -4,7 +4,6 @@
 	allowed_sexes = list(FEMALE)
 	allowed_races = RACES_ALL_KINDS
 	outfit = /datum/outfit/job/roguetown/adventurer/amazon
-	pickprob = 13
 	maximum_possible_slots = 2
 	category_tags = list(CTAG_ADVENTURER)
 
