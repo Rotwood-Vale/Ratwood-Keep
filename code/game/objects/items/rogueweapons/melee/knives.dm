@@ -107,11 +107,26 @@
 	w_class = WEIGHT_CLASS_NORMAL
 	smeltresult = null
 
+/obj/item/rogueweapon/huntingknife/chefknife
+	force = 15
+	name = "chef's knife"
+	desc = "Keep it in the kitchen!"
+	possible_item_intents = list(/datum/intent/dagger/cut, /datum/intent/dagger/chop/cleaver, /datum/intent/dagger/thrust)
+	icon_state = "chefsknife"
+	icon = 'icons/roguetown/weapons/32.dmi'
+	parrysound = list('sound/combat/parry/bladed/bladedmedium (1).ogg','sound/combat/parry/bladed/bladedmedium (2).ogg','sound/combat/parry/bladed/bladedmedium (3).ogg')
+	swingsound = list('sound/combat/wooshes/bladed/wooshmed (1).ogg','sound/combat/wooshes/bladed/wooshmed (2).ogg','sound/combat/wooshes/bladed/wooshmed (3).ogg')
+	throwforce = 15
+	slot_flags = ITEM_SLOT_HIP
+	thrown_bclass = BCLASS_CUT
+	w_class = WEIGHT_CLASS_SMALL
+	smeltresult = null
+
 /obj/item/rogueweapon/huntingknife/cleaver/combat
 	force = 16
 	name = "knife"
 	desc = "A combat knife. Swift and deadly if you hit."
-	possible_item_intents = list(/datum/intent/dagger/cut, /datum/intent/dagger/chop/cleaver)
+	possible_item_intents = list(/datum/intent/dagger/cut, /datum/intent/dagger/chop/cleaver, )
 	icon_state = "combatknife"
 	icon = 'icons/roguetown/weapons/32.dmi'
 	parrysound = list('sound/combat/parry/bladed/bladedmedium (1).ogg','sound/combat/parry/bladed/bladedmedium (2).ogg','sound/combat/parry/bladed/bladedmedium (3).ogg')
