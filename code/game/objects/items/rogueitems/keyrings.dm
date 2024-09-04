@@ -176,7 +176,7 @@
 	keys = list(/obj/item/roguekey/shop, /obj/item/roguekey/merchant)
 
 /obj/item/keyring/shophand
-	keys = list(/obj/item/roguekey/shop)
+	keys = list(/obj/item/roguekey/shop, /obj/item/roguekey/merchant)
 
 /obj/item/keyring/mage
 	keys = list(/obj/item/roguekey/manor, /obj/item/roguekey/tower, /obj/item/roguekey/mage)
