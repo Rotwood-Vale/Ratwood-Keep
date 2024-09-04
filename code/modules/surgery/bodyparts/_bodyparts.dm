@@ -577,7 +577,8 @@
 		limb.icon_state = "[prosthetic_prefix]_[body_zone]"
 		if(aux_zone)
 			if(!hideaux)
-				aux = image(limb.icon, "[prosthetic_prefix]_[aux_zone]", -aux_layer, image_dir)
+				//Prosthetic arms do not have additional hand icons on them, because of this they do not render above clothing, this is why aux image uses body_zone var instead of aux_zone//
+				aux = image(limb.icon, "[prosthetic_prefix]_[body_zone]", -aux_layer, image_dir)
 				. += aux
 
 	var/override_color = null
