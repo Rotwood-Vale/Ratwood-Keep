@@ -1,5 +1,5 @@
 {
-    "brazillian": {
+    "full": {
 		"hello": "olá",
 		"goodbye": [
 			"adeus",
@@ -76,5 +76,14 @@
 		"thi": "thee",
 		"sh": "ch",
 		"ish": "eesh"
-	}
+	},
+    "start": {
+
+    },
+    "end": {
+
+    },
+    "syllable": {
+
+    }
 }

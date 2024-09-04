@@ -1,22 +1,36 @@
 {
-
-    "spanish": {
-		"shi": "chee",
-		"thi": "thee",
-		"sh": "ch",
-		"the ": "el ",
-		"s": "ss",
-		"r": "rr",
-		"ish": "eesh",
-		"hello": "hola",
-		"goodbye": "adios",
+    "full": {
+		"goodbye": "adiós",
+		"bye": "adiós",
 		"my": "mi",
 		"it": "et",
-		"please": "por favor",
 		"is": "es",
 		"in": "en",
-        	"bye": "adios",
-        	"thanks": "gracias"
-		}
-		
+		"of": "de",
+		"the": "el",
+		"yes": "sí",
+		"thanks": "gracias",
+		"form of": "forma de",
+		"shape of": "forma de",
+		"bean": "frijol",
+		"beans": "frijoles",
+		"cat": "gato"
+	},
+	"start": {
+		"friend": "amigo",
+		"tomato": "tomate",
+		"whore": "puta",
+		"cheese": "queso"
+	},
+    "end": {
+
+    },
+    "syllable": {
+        "shi": "chee",
+        "thi": "thee",
+        "sh": "ch",
+        "s": "ss",
+        "r": "rr",
+		"ish": "eesh"
+    }
 }

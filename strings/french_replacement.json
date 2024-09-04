@@ -1,42 +1,40 @@
 {
-
-    "french": {
-		"shi": "shee",
-		"thi": "thee",
-		" yes ": " oui ",
+    "full": {
+		"yes": "oui",
 		"no": "non",
-       		 "I'm ": "j' ", 
-   	     	" am ": " suis ", 
-		" a ": " un ",
-        	" and ": " et ", 
-		"the ": "l' ",
-		"I ": "j' ",
+		"do": "du",
+		"don't": "dun't",
+		"not": "nut",
+       	"I'm": "j'", 
+   	    "am": "ahm", 
+		"a": "un",
+        "and": "eend", 
+		"the ": "l'",
+		"I": "j'",
 		"with": "weeth",
-		"of ": "de ",
-       		 "bad": "mal", 
-        	"bye": [
-           		 "adieu",
-			"au revoir"
-       		 ], 
-		"cake": "gateau",
-      		  "captain": "capitaine", 
-      		  "cook": "cuisinier", 
-     		   "dad": "papa", 
-     		   "good": "bon", 
-        "hello": [
-            "'allo", 
-            "bonjour",
-			"salut"
-        ], 
-        "mom ": "mama ", 
-        "my ": "mon ", 
-	"shit": "merde",
-        "spaghetti": "macaroni", 
+		"of": "de",
+      	"captain": "capitaine", 
+      	"cook": "cuisinier", 
+     	"dad": "papa", 
+        "hello": "'allo",
+        "mom": "mama", 
+        "my": "mon", 
+		"shit": "merde",
         "thanks": "merci",  
         "thank you": "merci",   
-        "what's": "quel est",
-        "who's": "qui est",
-        "wine": "vin"
-		}
-		
+        "who's": "vho's",
+		"wine": "vin",
+		"eggcheese": "omelette du fromage"
+    },
+    "start": {
+		"ga": "ge"
+
+    },
+    "end": {
+
+    },
+    "syllable": {
+        "shi": "shee",
+        "thi": "thee"
+    }
 }

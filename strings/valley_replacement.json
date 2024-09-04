@@ -1,6 +1,6 @@
 {
 
-    "valley": {
+    "full": {
         "does": "doth",
         "i think": "methinks",
         "was": "was, like",
@@ -86,5 +86,14 @@
 		"hate": "like, loathe",
 		"love": "like, adore",
 		"danger": "like, major risk"
-		}
-	}
+	},
+    "start": {
+
+    },
+    "end": {
+
+    },
+    "syllable": {
+
+    }
+}

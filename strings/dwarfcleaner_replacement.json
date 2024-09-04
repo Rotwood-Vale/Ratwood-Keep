@@ -1,7 +1,7 @@
 {
 
 
-    "dwarf": {
+    "full": {
  		"about": "aboot",
  		"admit": "admeet",
  		"admits": "admeets",
@@ -307,7 +307,7 @@
  		"ourselves": "oorsels",
  		"out": "oot",
  		"outside": "ootside",
-		"pants": "breeches"
+		"pants": "breeches",
  		"parcel": "paircel",
  		"park": "pairk",
  		"part": "pairt",
@@ -568,5 +568,14 @@
 		"yeah": "aye",
  		"yourself": "yersel",
  		"yourselves": "yersels"
- 		}
+	},
+    "start": {
+
+    },
+    "end": {
+
+    },
+    "syllable": {
+
+    }
 }

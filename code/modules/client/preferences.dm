@@ -160,7 +160,7 @@ GLOBAL_LIST_EMPTY(chosen_names)
 	/// Tracker to whether the person has ever spawned into the round, for purposes of applying the respawn ban
 	var/has_spawned = FALSE
 
-	var/datum/char_accent = new /datum/char_accent/none()
+	var/char_accent = "No accent"
 
 
 /datum/preferences/New(client/C)
@@ -1635,15 +1635,6 @@ Slots: [job.spawn_positions]</span>
 						if(charflaw.desc)
 							to_chat(user, "<span class='info'>[charflaw.desc]</span>")
 
-
-				if("char_accent")
-					var/list/accent = GLOB.character_accents.Copy()
-					var/result = input(user, "Select an accent", "Roguetown") as null|anything in accent
-					if(result)
-						result = accent[result]
-						var/datum/char_accent/C = new result()
-						char_accent = C
-
 				if("mutant_color")
 					var/new_mutantcolor = color_pick_sanitized_lumi(user, "Choose your character's mutant #1 color:", "Character Preference","#"+features["mcolor"])
 					if(new_mutantcolor)
@@ -1692,11 +1683,9 @@ Slots: [job.spawn_positions]</span>
 							to_chat(user, span_info("[charflaw.desc]"))
 
 				if("char_accent")
-					var/selectedaccent
-					selectedaccent = input(user, "Choose your character's accent:", "Character Preference") as null|anything in GLOB.character_accents
+					var/selectedaccent = input(user, "Choose your character's accent:", "Character Preference") as null|anything in GLOB.character_accents
 					if(selectedaccent)
-						char_accent = GLOB.character_accents[selectedaccent]
-						char_accent = new char_accent()
+						char_accent = selectedaccent
 
 				if("ooccolor")
 					var/new_ooccolor = input(user, "Choose your OOC colour:", "Game Preference",ooccolor) as color|null

@@ -150,7 +150,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 	var/list/body_markings
 	var/list/languages = list(/datum/language/common)
 	/// Some species have less than standard gender locks
-	var/gender_swapping = FALSE 
+	var/gender_swapping = FALSE
 
 ///////////
 // PROCS //
@@ -449,7 +449,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 	if(pref_load)
 		pref_load.apply_customizers_to_character(C)
 		pref_load.apply_descriptors(C)
-	
+
 	for(var/language_type in languages)
 		C.grant_language(language_type)
 
@@ -486,7 +486,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 
 	for(var/language_type in languages)
 		C.remove_language(language_type)
-	
+
 	// Clear organ DNA since it wont match as we're changing the species
 	C.dna.organ_dna = list()
 
@@ -943,7 +943,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 				var/milk_to_make = min(hunger_rate, H.getorganslot(ORGAN_SLOT_BREASTS).milk_max - H.getorganslot(ORGAN_SLOT_BREASTS).milk_stored)
 				H.getorganslot(ORGAN_SLOT_BREASTS).milk_stored += milk_to_make
 				H.adjust_nutrition(-milk_to_make)
-			
+
 			else if(H.nutrition < NUTRITION_LEVEL_STARVING && H.getorganslot(ORGAN_SLOT_BREASTS).lactating) //Vrell - If starving, your milk drains automatically to slow your starvation.
 				var/milk_to_take = min(hunger_rate, H.getorganslot(ORGAN_SLOT_BREASTS).milk_stored)
 				H.getorganslot(ORGAN_SLOT_BREASTS).milk_stored -= milk_to_take
