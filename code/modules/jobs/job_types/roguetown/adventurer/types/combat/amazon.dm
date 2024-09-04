@@ -1,6 +1,6 @@
 /datum/advclass/amazon
 	name = "Amazon"
-	tutorial = "Amazons are tough warrior women trained in agility and skirmishing compared to their male counterpart."
+	tutorial = "Amazons are tough warrior-women trained in agility and skirmishing compared to their male counterpart."
 	allowed_sexes = list(FEMALE)
 	allowed_races = RACES_ALL_KINDS
 	outfit = /datum/outfit/job/roguetown/adventurer/amazon
