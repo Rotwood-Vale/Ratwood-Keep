@@ -43,7 +43,7 @@
 	color = null
 	icon_state = "shalal"
 	item_state = "shalal"
-	flags_inv = HIDEEARS|HIDEHAIR|HIDEFACIALHAIR
+	flags_inv = HIDEHAIR
 	sleevetype = null
 	sleeved = null
 	icon = 'icons/roguetown/clothing/head.dmi'
@@ -65,7 +65,7 @@
 		if(adjustable == CAN_CADJUST)
 			adjustable = CADJUSTED
 			icon_state = "shalal_t"
-			body_parts_covered = HEAD|EARS|HAIR|NECK|NOSE
+			body_parts_covered = HEAD|EARS|HAIR|NECK|NOSE|MOUTH
 			flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR|HIDEFACIALHAIR
 			flags_cover = null
 			if(ishuman(user))
@@ -81,7 +81,7 @@
 	color = null
 	icon_state = "shalal_z"
 	item_state = "shalal_z"
-	flags_inv = HIDEEARS|HIDEHAIR|HIDEFACIALHAIR
+	flags_inv = HIDEHAIR
 	sleevetype = null
 	sleeved = null
 	icon = 'icons/roguetown/clothing/head.dmi'
@@ -103,7 +103,7 @@
 		if(adjustable == CAN_CADJUST)
 			adjustable = CADJUSTED
 			icon_state = "shalal_zt"
-			body_parts_covered = HEAD|EARS|HAIR|NECK|NOSE
+			body_parts_covered = HEAD|EARS|HAIR|NECK|NOSE|MOUTH
 			flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR|HIDEFACIALHAIR
 			flags_cover = null
 			if(ishuman(user))
