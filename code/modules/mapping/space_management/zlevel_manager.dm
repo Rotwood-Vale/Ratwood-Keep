@@ -8,7 +8,6 @@
 
     // Ensure the number of traits matches the number of Z-levels
     if (default_map_traits.len != world.maxz)
-        WARNING("Mismatch between the number of map traits ([default_map_traits.len]) and the number of Z-levels ([world.maxz]). Adjusting.")
         if (default_map_traits.len > world.maxz)
             default_map_traits.Cut(world.maxz + 1)  // Remove excess traits
         else
