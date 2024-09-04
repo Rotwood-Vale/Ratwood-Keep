@@ -62,8 +62,8 @@
 		2 = 2,
 		3 = 2.5,
 		4 = 3,
-		5 = 3.5,
-		6 = 4,
+		5 = 3,
+		6 = 3,
 	)
 	/// Modifiers to success chance when you're below the median
 	var/list/skill_maluses = list(
