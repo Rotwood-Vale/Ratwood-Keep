@@ -58,7 +58,7 @@
 		/datum/customizer/organ/horns/demihuman,
 		/datum/customizer/organ/tail/demihuman,
 		/datum/customizer/organ/testicles/human,
-		/datum/customizer/organ/penis/canine,
+		/datum/customizer/organ/penis/anthro,
 		/datum/customizer/organ/breasts/animal,
 		/datum/customizer/organ/vagina/animal,
 		)
