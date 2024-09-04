@@ -13,11 +13,8 @@
 	..()
 	H.mind.adjust_skillrank(/datum/skill/misc/reading, 3, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/combat/bows, 2, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/combat/swords, 2, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/music, 2, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/riding, 4, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/combat/polearms, 2, TRUE) 
 	H.change_stat("intelligence", 1)
 	H.change_stat("strength", -1)
 	shoes = /obj/item/clothing/shoes/roguetown/boots
@@ -28,17 +25,20 @@
 	neck = /obj/item/storage/belt/rogue/pouch/coins/rich
 	id = /obj/item/clothing/ring/silver
 	if(H.gender == FEMALE)
+	H.mind.adjust_skillrank(/datum/skill/combat/bows, 2, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/craft/cooking, 1, TRUE)
 		armor = /obj/item/clothing/suit/roguetown/shirt/dress/gen/purple
 		head = /obj/item/clothing/head/roguetown/hatblu
 		cloak = /obj/item/clothing/cloak/raincloak/purple
 		beltl = /obj/item/storage/belt/rogue/pouch/food
 	if(H.gender == MALE)
+	H.mind.adjust_skillrank(/datum/skill/combat/swords, 2, TRUE)
 		pants = /obj/item/clothing/under/roguetown/tights/purple
 		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/purple
 		cloak = /obj/item/clothing/cloak/half
 		head = /obj/item/clothing/head/roguetown/fancyhat
 	if(H.age == AGE_OLD)
-		H.mind.adjust_skillrank(/datum/skill/combat/polearms, 1, TRUE) 
+		H.mind.adjust_skillrank(/datum/skill/combat/polearms, 3, TRUE) 
 		r_hand = /obj/item/rogueweapon/woodstaff
 
 
