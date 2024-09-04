@@ -50,19 +50,16 @@ GLOBAL_LIST_EMPTY(biggates)
 /obj/structure/gate/Initialize()
 	. = ..()
 	update_icon()
+	var/turf/T = loc
+	turfsy += T
+	T = get_step(T, EAST)
+	turfsy += T
+	T = get_step(T, EAST)
+	turfsy += T
 	if(initial(opacity))
-		var/turf/T = loc
-		var/G = new /obj/gblock(T)
-		turfsy += T
-		blockers += G
-		T = get_step(T, EAST)
-		G = new /obj/gblock(T)
-		turfsy += T
-		blockers += G
-		T = get_step(T, EAST)
-		G = new /obj/gblock(T)
-		turfsy += T
-		blockers += G
+		for(var/turf/blocker_tile in turfsy)
+			var/G = new /obj/gblock(blocker_tile)
+			blockers += G
 	GLOB.biggates += src
 
 /obj/structure/gate/Destroy()
@@ -113,8 +110,23 @@ GLOBAL_LIST_EMPTY(biggates)
 	flick("[base_state]_closing",src)
 	sleep(10)
 	for(var/turf/T in turfsy)
-		for(var/mob/living/M in T)
-			M.gib()
+		for(var/mob/living/L in T)
+			var/def_zone = BODY_ZONE_CHEST
+			if(iscarbon(L))
+				var/mob/living/carbon/C = L
+				if(C.mobility_flags & MOBILITY_STAND)
+					def_zone = pick(BODY_ZONE_CHEST, BODY_ZONE_CHEST, BODY_ZONE_R_ARM, BODY_ZONE_L_ARM)
+				else
+					def_zone = BODY_ZONE_HEAD
+			var/obj/item/bodypart/BP = L.get_bodypart(def_zone)
+			if(BP)
+				L.visible_message(span_boldwarning("[src] comes crashing down on [L]'s [BP]!"), \
+						span_userdanger("[src] crushes my [BP]!"))
+				L.emote("agony")
+				BP.add_wound(/datum/wound/fracture)
+				BP.update_disabled()
+				L.apply_damage(90, BRUTE, def_zone)
+				L.Paralyze(80)
 	density = initial(density)
 	opacity = initial(opacity)
 	layer = initial(layer)
