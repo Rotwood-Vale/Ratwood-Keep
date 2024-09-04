@@ -54,7 +54,7 @@
 			H.mind.adjust_skillrank(/datum/skill/misc/riding, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/shields, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
-			ADD_TRAIT(H, TTRAIT_SCHIZO_AMBIENCE, TRAIT_GENERIC)
+			ADD_TRAIT(H, TRAIT_SCHIZO_AMBIENCE, TRAIT_GENERIC)
 			H.change_stat("strength", 2)
 			H.change_stat("endurance", 1)
 			H.change_stat("constitution", 2)

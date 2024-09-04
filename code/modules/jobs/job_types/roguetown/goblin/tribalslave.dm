@@ -12,7 +12,6 @@
 	tutorial = "You are a slave in the tribe, likely for your crimes against it... Or something else, either way you live, mine and likely do other things as the tribals tell you to do."
 
 	outfit = /datum/outfit/job/roguetown/prisonerc
-	bypass_jobban = TRUE
 	display_order = JDO_PRISONERC
 	give_bank_account = 10
 	min_pq = -14
