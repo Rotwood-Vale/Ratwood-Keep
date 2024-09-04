@@ -29,8 +29,6 @@
 	var/resting = FALSE
 	var/wallpressed = FALSE
 	var/pixelshifted = FALSE
-
-	var/pixelshifted = FALSE
 	var/pixelshift_x = 0
 	var/pixelshift_y = 0
 	var/pixelshift_layer = 0
