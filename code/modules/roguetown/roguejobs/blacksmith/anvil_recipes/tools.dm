@@ -121,24 +121,28 @@
 	req_bar = /obj/item/ingot/iron
 	created_item = /obj/item/bodypart/l_arm/rprosthetic/iron
 	additional_items = list(/obj/item/roguegear)
+	i_type = "General"
 
 /datum/anvil_recipe/tools/iron_arm_right
 	name = "Iron arm (R)"
 	req_bar = /obj/item/ingot/iron
 	created_item = /obj/item/bodypart/r_arm/rprosthetic/iron
 	additional_items = list(/obj/item/roguegear)
+	i_type = "General"
 
 /datum/anvil_recipe/tools/iron_leg_left
 	name = "Iron leg (L)"
 	req_bar = /obj/item/ingot/iron
 	created_item = /obj/item/bodypart/l_leg/rprosthetic/iron
 	additional_items = list(/obj/item/roguegear)
+	i_type = "General"
 
 /datum/anvil_recipe/tools/iron_leg_right
 	name = "Iron leg (R)"
 	req_bar = /obj/item/ingot/iron
 	created_item = /obj/item/bodypart/r_leg/rprosthetic/iron
 	additional_items = list(/obj/item/roguegear)
+	i_type = "General"
 
 // --------- Steel -----------
 
@@ -202,25 +206,28 @@
 	req_bar = /obj/item/ingot/steel
 	created_item = /obj/item/bodypart/l_arm/rprosthetic/steel
 	additional_items = list(/obj/item/roguegear)
+	i_type = "General"
 
 /datum/anvil_recipe/tools/steel_arm_right
 	name = "Steel arm (R)"
 	req_bar = /obj/item/ingot/steel
 	created_item = /obj/item/bodypart/r_arm/rprosthetic/steel
 	additional_items = list(/obj/item/roguegear)
+	i_type = "General"
 
 /datum/anvil_recipe/tools/steel_leg_left
 	name = "Steel leg (L)"
 	req_bar = /obj/item/ingot/steel
 	created_item = /obj/item/bodypart/l_leg/rprosthetic/steel
 	additional_items = list(/obj/item/roguegear)
+	i_type = "General"
 
 /datum/anvil_recipe/tools/steel_leg_right
 	name = "Steel leg (R)"
 	req_bar = /obj/item/ingot/steel
 	created_item = /obj/item/bodypart/r_leg/rprosthetic/steel
 	additional_items = list(/obj/item/roguegear)
-
+	i_type = "General"
 
 // --------- SILVER -----------
 
@@ -243,21 +250,25 @@
 	req_bar = /obj/item/ingot/gold
 	created_item = /obj/item/bodypart/l_arm/rprosthetic/clock
 	additional_items = list(/obj/item/roguegear,/obj/item/roguegear,/obj/item/roguegear)
+	i_type = "General"
 
 /datum/anvil_recipe/tools/clock_arm_right
 	name = "Clockwork arm (R)"
 	req_bar = /obj/item/ingot/gold
 	created_item = /obj/item/bodypart/r_arm/rprosthetic/clock
 	additional_items = list(/obj/item/roguegear,/obj/item/roguegear,/obj/item/roguegear)
+	i_type = "General"
 
 /datum/anvil_recipe/tools/clock_leg_left
 	name = "Clockwork leg (L)"
 	req_bar = /obj/item/ingot/gold
 	created_item = /obj/item/bodypart/l_leg/rprosthetic/clock
 	additional_items = list(/obj/item/roguegear,/obj/item/roguegear,/obj/item/roguegear)
+	i_type = "General"
 
 /datum/anvil_recipe/tools/clock_leg_right
 	name = "Clockwork leg (R)"
 	req_bar = /obj/item/ingot/gold
 	created_item = /obj/item/bodypart/r_leg/rprosthetic/clock
 	additional_items = list(/obj/item/roguegear,/obj/item/roguegear,/obj/item/roguegear)
+	i_type = "General"

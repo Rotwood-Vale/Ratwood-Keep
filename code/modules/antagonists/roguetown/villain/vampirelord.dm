@@ -1278,7 +1278,7 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 	releasedrain = 100
 	chargedrain = 0
 	chargetime = 0
-	range = 10
+	range = 7
 	warnie = "sydwarning"
 	movement_interrupt = FALSE
 	chargedloop = null
@@ -1290,11 +1290,16 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 	max_targets = 1
 
 /obj/effect/proc_holder/spell/targeted/transfix/cast(list/targets, mob/user = usr)
+	var/msg = input("Soothe them. Dominate them. Speak and they will succumb.", "Transfix") as text|null
+	if(length(msg) < 10)
+		to_chat(user, span_userdanger("This is not enough!"))
+		return FALSE
 	var/bloodskill = user.mind.get_skill_level(/datum/skill/magic/blood)
 	var/bloodroll = roll("[bloodskill]d8")
+	user.say(msg)
 	for(var/mob/living/carbon/human/L in targets)
 		var/datum/antagonist/vampirelord/VD = L.mind.has_antag_datum(/datum/antagonist/vampirelord)
-		var/willpower = round(L.STAINT / 3)
+		var/willpower = round(L.STAINT / 4)
 		var/willroll = roll("[willpower]d6")
 		if(VD)
 			return
@@ -1310,11 +1315,31 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 				to_chat(L, "<font color='white'>The silver psycross shines and protect me from the unholy magic.</font>")
 				to_chat(user, span_userdanger("[L] has my BANE!It causes me to fail to ensnare their mind!"))
 			else
-				to_chat(L, "You feel like a curtain is coming over your mind.")
-				to_chat(user, "Their mind gives way, they will soon be asleep.")
-				sleep(50)
-				L.Sleeping(300)
-				
+				L.drowsyness += min(L.drowsyness + 50, 150)
+				switch(L.drowsyness)
+					if(0 to 50)
+						to_chat(L, "You feel like a curtain is coming over your mind.")
+						to_chat(user, "Their mind gives way slightly.")
+						L.Slowdown(20)
+					if(50 to 100)
+						to_chat(L, "Your eyelids force themselves shut as you feel intense lethargy.")
+						L.Slowdown(50)
+						L.eyesclosed = TRUE
+						for(var/atom/movable/screen/eye_intent/eyet in L.hud_used.static_inventory)
+							eyet.update_icon(L)
+						L.become_blind("eyelids")
+						to_chat(user, "They will not be able to resist much more.")
+					if(100 to INFINITY)
+						to_chat(L, span_userdanger("You can't take it anymore. Your legs give out as you fall into the dreamworld."))
+						to_chat(user, "They're mine now.")
+						L.Slowdown(50)
+						L.eyesclosed = TRUE
+						for(var/atom/movable/screen/eye_intent/eyet in L.hud_used.static_inventory)
+							eyet.update_icon(L)
+						L.become_blind("eyelids")
+						sleep(50)
+						L.Sleeping(600)
+
 		if(willroll >= bloodroll)
 			if(found_psycross == TRUE)
 				to_chat(L, "<font color='white'>The silver psycross shines and protect me from the unholy magic.</font>")
@@ -1338,31 +1363,54 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 	releasedrain = 1000
 	chargedrain = 0
 	chargetime = 0
-	range = 10
+	range = 7
 	warnie = "sydwarning"
 	movement_interrupt = FALSE
 	chargedloop = null
 	invocation_type = "shout"
 	associated_skill = /datum/skill/magic/blood
 	antimagic_allowed = TRUE
-	charge_max = 30 SECONDS
+	charge_max = 10 SECONDS
 	include_user = 0
 	max_targets = 0
 
 /obj/effect/proc_holder/spell/targeted/transfix/master/cast(list/targets, mob/user = usr)
+	var/msg = input("Soothe them. Dominate them. Speak and they will succumb.", "Transfix") as text|null
+	if(length(msg) < 10)
+		to_chat(user, span_userdanger("This is not enough!"))
+		return FALSE
 	var/bloodskill = user.mind.get_skill_level(/datum/skill/magic/blood)
 	var/bloodroll = roll("[bloodskill]d10")
+	user.say(msg)
 	user.visible_message("<font color='red'>[user]'s eyes glow a ghastly red as they project their will outwards!</font>")
 	for(var/mob/living/carbon/human/L in targets)
 		var/datum/antagonist/vampirelord/VD = L.mind.has_antag_datum(/datum/antagonist/vampirelord)
-		var/willpower = round(L.STAINT / 3)
+		var/willpower = round(L.STAINT / 4)
 		var/willroll = roll("[willpower]d6")
 		if(VD)
 			return
 		if(L.cmode)
 			willroll += 15
 		if(bloodroll >= willroll)
-			to_chat(L, "<font color='purple'>You feel like a curtain is coming over your mind.</font>")
-			sleep(50)
-			L.Sleeping(300)
+			L.drowsyness += min(L.drowsyness + 50, 150)
+			switch(L.drowsyness)
+				if(0 to 50)
+					to_chat(L, "You feel like a curtain is coming over your mind.")
+					L.Slowdown(20)
+				if(50 to 100)
+					to_chat(L, "Your eyelids force themselves shut as you feel intense lethargy.")
+					L.Slowdown(50)
+					L.eyesclosed = TRUE
+					for(var/atom/movable/screen/eye_intent/eyet in L.hud_used.static_inventory)
+						eyet.update_icon(L)
+					L.become_blind("eyelids")
+				if(100 to INFINITY)
+					to_chat(L, span_userdanger("You can't take it anymore. Your legs give out as you fall into the dreamworld."))
+					L.eyesclosed = TRUE
+					for(var/atom/movable/screen/eye_intent/eyet in L.hud_used.static_inventory)
+						eyet.update_icon(L)
+					L.become_blind("eyelids")
+					L.Slowdown(50)
+					sleep(50)
+					L.Sleeping(300)
 
