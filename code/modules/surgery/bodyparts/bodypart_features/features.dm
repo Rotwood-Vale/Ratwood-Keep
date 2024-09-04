@@ -56,6 +56,8 @@
 		accessory_colors = accessory.get_default_colors(color_key_source_list_from_carbon(owner))
 	accessory_colors = accessory.validate_color_keys_for_owner(owner, colors)
 	underwear_item = new accessory.underwear_type(owner)
+	if(owner.underwear)
+		qdel(owner.underwear)
 	owner.underwear = underwear_item
 	underwear_item.undies_feature = src
 	underwear_item.color = accessory_colors
