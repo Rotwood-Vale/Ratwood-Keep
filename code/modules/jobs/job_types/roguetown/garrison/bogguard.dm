@@ -45,8 +45,8 @@
 			S.name = "bogman tabard ([index])"
 /datum/outfit/job/roguetown/bogguardsman
 	name = "Bog Guard"
-	/// Whether or not we are a crossbowman
-	var/is_crossbowman = FALSE
+	/// Whether or not we are a ranger
+	var/is_ranger = FALSE
 
 /datum/advclass/bogguard
 	name = "bog guard"
@@ -61,7 +61,7 @@
 	name = "bog ranger"
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_VERY_SHUNNED_UP
-	outfit = /datum/outfit/job/roguetown/bogguardsman/crossbowman
+	outfit = /datum/outfit/job/roguetown/bogguardsman/ranger
 	tutorial = "You are well versed in the ways of handling a bow.\
 	You will stand in the back, and protect the front with arrows."
 	category_tags = list(CTAG_BOG)
@@ -82,7 +82,7 @@
 	belt = /obj/item/storage/belt/rogue/leather
 	beltr = /obj/item/rogueweapon/sword
 	backr = /obj/item/storage/backpack/rogue/satchel
-	if(is_crossbowman)
+	if(is_ranger)
 		backl = /obj/item/gun/ballistic/revolver/grenadelauncher/bow
 		beltr = /obj/item/quiver/arrows //replaces sword
 	else
@@ -121,11 +121,11 @@
 	bogger.change_stat("endurance", 2)
 	bogger.change_stat("speed", 1)
 
-/datum/outfit/job/roguetown/bogguardsman/crossbowman
-	name = "Bog ranger"
-	is_crossbowman = TRUE
+/datum/outfit/job/roguetown/bogguardsman/ranger
+	name = "Bog Ranger"
+	is_ranger = TRUE
 
-/datum/outfit/job/roguetown/bogguardsman/crossbowman/assign_skills(mob/living/carbon/human/bogger)
+/datum/outfit/job/roguetown/bogguardsman/ranger/assign_skills(mob/living/carbon/human/bogger)
 	bogger.mind.adjust_skillrank(/datum/skill/combat/crossbows, 5, TRUE)
 	bogger.mind.adjust_skillrank(/datum/skill/combat/bows, 4, TRUE)
 	bogger.mind.adjust_skillrank(/datum/skill/combat/knives, 3, TRUE)
