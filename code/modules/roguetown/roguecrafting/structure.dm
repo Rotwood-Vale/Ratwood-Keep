@@ -187,6 +187,17 @@
 	verbage = "constructs"
 	craftdiff = 2
 
+/datum/crafting_recipe/roguetown/structure/alch
+	name = "alchemy station"
+	result = /obj/structure/fluff/alch
+	reqs = list(/obj/item/natural/cloth = 2,
+				/obj/item/natural/stone = 4,
+				/obj/item/grown/log/tree/small = 1)
+	skillcraft = /datum/skill/misc/alchemy
+	craftdiff = 0
+	verbage_simple = "assemble"
+	verbage = "assembles"
+
 /datum/crafting_recipe/roguetown/structure/dyestation
 	name = "dye station"
 	result = /obj/machinery/gear_painter
