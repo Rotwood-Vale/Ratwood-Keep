@@ -192,6 +192,7 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "E
 	"Merchant",
 	"Priest",
 	"Knight")
+	restricted_races = list(/datum/species/seelie,)
 	var/num_bandits = 0
 	if(num_players() >= 10)
 		num_bandits = CLAMP(round(num_players() / 2), 25, 30)

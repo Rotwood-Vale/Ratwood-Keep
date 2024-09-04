@@ -24,6 +24,7 @@
 	var/round_ends_with_antag_death = 0 //flags the "one verse the station" antags as such
 	var/list/datum/mind/antag_candidates = list()	// List of possible starting antags goes here
 	var/list/restricted_jobs = list()	// Jobs it doesn't make sense to be.  I.E chaplain or AI cultist
+	var/list/restricted_races = list()
 	var/list/protected_jobs = list()	// Jobs that can't be traitors because
 	var/list/required_jobs = list()		// alternative required job groups eg list(list(cap=1),list(hos=1,sec=2)) translates to one captain OR one hos and two secmans
 	var/required_players = 0
@@ -420,6 +421,11 @@
 					if(player.current.client.prefs.job_preferences[job] == JP_HIGH)
 						candidates -= player
 
+	if(restricted_races)
+		for(var/datum/mind/player in candidates)
+			for(var/race in restricted_races)					// Remove people who want to be antagonist but have a job already that precludes it
+				if(is_species(player, race))
+					candidates -= player
 /*
 	if(candidates.len < recommended_enemies)
 		for(var/mob/dead/new_player/player in players)
