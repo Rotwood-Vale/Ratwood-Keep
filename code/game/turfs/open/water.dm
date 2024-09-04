@@ -83,6 +83,8 @@
 //				drained += (user.checkwornweight()*2)
 				if(!user.check_armor_skill())
 					drained += 40
+				if(HAS_TRAIT(user, TRAIT_ABYSSOR_SWIM))
+					drained -=5
 				if(!user.rogfat_add(drained))
 					user.Immobilize(30)
 					addtimer(CALLBACK(user, TYPE_PROC_REF(/mob/living, Knockdown), 30), 10)
