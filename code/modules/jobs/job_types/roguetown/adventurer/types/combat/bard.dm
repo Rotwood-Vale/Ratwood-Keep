@@ -20,7 +20,6 @@
 	switch(classchoice)
 
 		if("Bard")
-			H.set_blindness(0)
 			to_chat(H, span_warning("Bards make their fortunes in brothels, flop houses and taverns -- gaining fame for their songs and legends. If there is any truth to them, that is."))
 			H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/polearms, 1, TRUE)
@@ -37,10 +36,10 @@
 			H.mind.adjust_skillrank(/datum/skill/misc/sewing, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/stealing, 2, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/misc/medicine, pick(0,1), TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/medicine, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/craft/cooking, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/riding, 1, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/misc/music, pick(4,5), TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/music, 5, TRUE)
 			head = /obj/item/clothing/head/roguetown/bardhat
 			shoes = /obj/item/clothing/shoes/roguetown/boots
 			pants = /obj/item/clothing/under/roguetown/tights/random
@@ -60,7 +59,6 @@
 			H.change_stat("speed", 2)
 			ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 		if("Skald")
-			H.set_blindness(0)
 			to_chat(H, span_warning("Skalds are wandering storytellers, and for many villages they are local historians keeping the tales of great legends and heroes alive."))
 			H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/polearms, 2, TRUE)
@@ -77,10 +75,10 @@
 			H.mind.adjust_skillrank(/datum/skill/misc/sewing, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/stealing, 2, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/misc/medicine, pick(0,1), TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/medicine, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/craft/cooking, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/riding, 1, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/misc/music, rand(3,5), TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/music, 4, TRUE)
 			head = /obj/item/clothing/head/roguetown/bardhat
 			shoes = /obj/item/clothing/shoes/roguetown/boots
 			pants = /obj/item/clothing/under/roguetown/tights/random
@@ -100,7 +98,6 @@
 			H.change_stat("speed", 1)
 			ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 		if("Arcanist") //Magic and some utility skills, less combat prowess
-			H.set_blindness(0)
 			to_chat(H, span_warning("Many bards are well-versed in esoteric lore, and indeed, some take up their art for love of the study itself. You're well-read, but you don't tend to come out on the winning side of a barfight."))
 			H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
@@ -112,7 +109,7 @@
 			H.mind.adjust_skillrank(/datum/skill/misc/stealing, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/magic/arcane, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/medicine, 2, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/misc/music, rand(3,5), TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/music, 4, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/sewing, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/craft/cooking, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/craft/crafting, 1, TRUE)
@@ -134,17 +131,18 @@
 			H.change_stat("perception", 2)
 			H.change_stat("speed", 2)
 
-	if(H.dna?.species)
-		if(iself(H) || ishalfelf(H))
+	var/weapons = list("Harp","Lute","Accordion","Guitar")
+	var/weapon_choice = input("Choose your weapon.", "TAKE UP ARMS") as anything in weapons
+	H.set_blindness(0)
+	switch(weapon_choice)
+		if("Harp")
 			backr = /obj/item/rogue/instrument/harp
-		else if(ishumannorthern(H))
+		if("Lute")
 			backr = /obj/item/rogue/instrument/lute
-		else if(isdwarf(H))
+		if("Accordion")
 			backr = /obj/item/rogue/instrument/accord
-		else if(istiefling(H) /*|| isargonian(H)*/)
+		if("Guitar")
 			backr = /obj/item/rogue/instrument/guitar
-		else
-			backr = /obj/item/rogue/instrument/lute
 
 	ADD_TRAIT(H, TRAIT_EMPATH, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)

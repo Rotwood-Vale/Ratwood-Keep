@@ -14,7 +14,7 @@
 	var/classchoice = input("Choose your archetypes", "Available archetypes") as anything in classes
 
 	switch(classchoice)
-	
+
 		if("Ranger")
 			H.set_blindness(0)
 			to_chat(H, span_warning("Rangers are masters of nature, often hired as pathfinders, bodyguards and mercenaries in areas of wilderness untraversable to common soldiery."))
@@ -38,7 +38,7 @@
 			H.mind.adjust_skillrank(/datum/skill/combat/axes, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/combat/bows, pick(4,5,5,6), TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/bows, 5, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
@@ -96,16 +96,13 @@
 			H.change_stat("perception", 2)
 			H.change_stat("endurance", 1)
 			H.change_stat("speed", 3)
-		
+
 	if(H.gender == MALE)
 		pants = /obj/item/clothing/under/roguetown/trou/leather
 		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
 	else
-		pants = /obj/item/clothing/under/roguetown/tights
-		if(prob(50))
-			pants = /obj/item/clothing/under/roguetown/tights/black
-			gloves = /obj/item/clothing/gloves/roguetown/fingerless
-	
+		pants = /obj/item/clothing/under/roguetown/tights/black
+
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
 	if(prob(23))

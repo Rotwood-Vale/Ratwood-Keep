@@ -92,8 +92,8 @@
 		H.mind.adjust_skillrank(/datum/skill/craft/weaponsmithing, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 2, TRUE)
 		if(H.age == AGE_OLD)
-			H.mind.adjust_skillrank(/datum/skill/craft/blacksmithing, pick(1), TRUE)
-			H.mind.adjust_skillrank(/datum/skill/craft/weaponsmithing, pick(1), TRUE)
+			H.mind.adjust_skillrank(/datum/skill/craft/blacksmithing, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/craft/weaponsmithing, 1, TRUE)
 	if(H.pronouns == SHE_HER)
 		pants = /obj/item/clothing/under/roguetown/trou
 		armor = /obj/item/clothing/suit/roguetown/shirt/dress/gen/random
