@@ -306,6 +306,7 @@
 	force = 19
 	icon_state = "elfdagger"
 	item_state = "elfdag"
+	smeltresult = /obj/item/ingot/silver
 
 /obj/item/rogueweapon/huntingknife/elvish/drow
 	name = "nite elf dagger"
