@@ -35,6 +35,8 @@
 	STACON = 6
 	STASTR = 9
 	STASPD = 10
+	can_buckle = TRUE
+	//tame = TRUE  //REMOVE THIS!!!
 	deaggroprob = 0
 	defprob = 40
 	defdrain = 10
@@ -62,6 +64,18 @@
 		icon_living = "Frat"
 		icon_dead = "Frat1"
 	update_icon()
+
+/mob/living/simple_animal/hostile/retaliate/rogue/bigrat/tamed(mob/user)
+	..()
+	deaggroprob = 20
+	if(isseelie(user))
+		var/datum/component/riding/D = LoadComponent(/datum/component/riding)
+		D.set_riding_offsets(RIDING_OFFSET_ALL, list(TEXT_NORTH = list(0, 2), TEXT_SOUTH = list(0, 2), TEXT_EAST = list(-2, 2), TEXT_WEST = list(2, 2)))
+		D.set_vehicle_dir_layer(SOUTH, OBJ_LAYER)
+		D.set_vehicle_dir_layer(NORTH, OBJ_LAYER)
+		D.set_vehicle_dir_layer(EAST, OBJ_LAYER)
+		D.set_vehicle_dir_layer(WEST, OBJ_LAYER)
+
 
 /mob/living/simple_animal/hostile/retaliate/rogue/bigrat/find_food()
 	. = ..()
@@ -102,6 +116,8 @@
 
 /mob/living/simple_animal/hostile/retaliate/rogue/bigrat/Life()
 	..()
+	if(aggressive == 0)
+		return
 	if(pulledby)
 		Retaliate()
 		GiveTarget(pulledby)

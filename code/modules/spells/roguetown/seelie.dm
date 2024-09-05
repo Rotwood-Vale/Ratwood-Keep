@@ -199,3 +199,27 @@ obj/effect/proc_holder/spell/targeted/static_room/cast(list/targets, mob/user = 
 	charging_slowdown = 3
 	chargedloop = /datum/looping_sound/invokegen
 	associated_skill = /datum/skill/magic/arcane
+
+/obj/effect/proc_holder/spell/targeted/beastsooze
+	name = "Tame Beast"
+	range = 5
+	overlay_state = "tamebeast"
+	releasedrain = 30
+	charge_max = 2 SECONDS
+	max_targets = 0
+	cast_without_targets = TRUE
+	sound = 'sound/magic/churn.ogg'
+	invocation = "Be still and calm, brotherbeast."
+	invocation_type = "whisper" //can be none, whisper, emote and shout
+
+/obj/effect/proc_holder/spell/targeted/beastsooze/cast(list/targets,mob/user = usr)
+	. = ..()
+	visible_message(span_green("[usr] soothes the beastblood with Dendor's whisper."))
+	var/tamed = FALSE
+	for(var/mob/living/simple_animal/hostile/retaliate/rogue/bigrat/B in oview(2))
+		if(B.aggressive)
+			B.faction = list("Neutral")
+			B.ssaddle = /obj/item/natural/saddle
+			B.tame = TRUE
+		B.aggressive = 0
+	return tamed
