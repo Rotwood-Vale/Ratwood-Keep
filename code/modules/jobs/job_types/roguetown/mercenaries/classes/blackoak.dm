@@ -21,6 +21,7 @@
 	armor = /obj/item/clothing/suit/roguetown/armor/plate/half/elven
 	backr = /obj/item/rogueweapon/spear
 	backl = /obj/item/storage/backpack/rogue/satchel
+	r_hand = /obj/item/rogueweapon/halberd/bardiche
 	beltl = /obj/item/rogueweapon/huntingknife/idagger/steel/special
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/black
 	pants = /obj/item/clothing/under/roguetown/trou/leather

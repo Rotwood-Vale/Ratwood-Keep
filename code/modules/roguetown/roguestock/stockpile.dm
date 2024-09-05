@@ -248,7 +248,7 @@
 	importexport_amt = 10
 	passive_generation = 2
 
-/datum/roguestock/stockpile/cabbage
+/datum/roguestock/stockpile/potato
 	name = "Potato"
 	desc = "An interesting tuber."
 	item_type = /obj/item/reagent_containers/food/snacks/grown/potato/rogue

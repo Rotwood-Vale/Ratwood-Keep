@@ -9,11 +9,9 @@
 
 /datum/outfit/job/roguetown/adventurer/dbomb/pre_equip(mob/living/carbon/human/H)
 	..()
-	head = /obj/item/clothing/head/roguetown/armingcap/dwarf
-	if(prob(30))
-		head = /obj/item/clothing/head/roguetown/helmet/horned
+	head = /obj/item/clothing/head/roguetown/helmet/horned
 	pants = /obj/item/clothing/under/roguetown/trou
-	shoes = /obj/item/clothing/shoes/roguetown/simpleshoes
+	shoes = /obj/item/clothing/shoes/roguetown/boots/leather
 	belt = /obj/item/storage/belt/rogue/leather
 	neck = /obj/item/storage/belt/rogue/pouch/coins/poor
 	beltl = /obj/item/rogueweapon/huntingknife
@@ -25,8 +23,6 @@
 		beltr = /obj/item/rogueweapon/pick
 	else
 		beltr = /obj/item/rogueweapon/hammer
-	if(prob(50))
-		shoes = /obj/item/clothing/shoes/roguetown/boots/leather
 	H.mind.adjust_skillrank(/datum/skill/combat/maces, 3, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)

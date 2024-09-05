@@ -51,7 +51,7 @@
 			H.mind.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/swimming, 1, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/misc/climbing, pick(2,3), TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/climbing, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/riding, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/magic/holy, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/shields, 2, TRUE)
@@ -80,10 +80,7 @@
 					cloak = /obj/item/clothing/cloak/tabard/crusader/noc
 				if("Eora") //Eora content from Stonekeep
 					cloak = /obj/item/clothing/cloak/tabard/crusader/eora
-			if(prob(70))
-				backr = /obj/item/rogueweapon/sword
-			else
-				backr = /obj/item/rogueweapon/sword/long
+			backr = /obj/item/rogueweapon/sword
 			backl = /obj/item/storage/backpack/rogue/satchel
 		if("Battle Master")
 			H.set_blindness(0)
@@ -100,7 +97,7 @@
 			H.mind.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/swimming, 1, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/misc/climbing, pick(2,3), TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/climbing, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/riding, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/magic/holy, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/whipsflails, 3, TRUE)
@@ -131,14 +128,10 @@
 				if("Eora") //Eora content from Stonekeep
 					cloak = /obj/item/clothing/cloak/tabard/crusader/eora
 			backr = /obj/item/rogueweapon/flail
-			if(prob(50))
-				l_hand = /obj/item/rogueweapon/shield/wood
-			else
-				l_hand = /obj/item/rogueweapon/shield/tower/metal
+			l_hand = /obj/item/rogueweapon/shield/tower/metal
 			backl = /obj/item/storage/backpack/rogue/satchel
 
 	ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
-	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 	H.dna.species.soundpack_m = new /datum/voicepack/male/knight()
 	if(H.dna.species.type == /datum/species/tieberian)
 		cloak = /obj/item/clothing/cloak/tabard/crusader/tief

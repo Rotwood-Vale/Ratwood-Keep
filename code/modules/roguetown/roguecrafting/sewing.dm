@@ -133,6 +133,18 @@
 	reqs = list(/obj/item/natural/cloth = 2)
 	craftdiff = 2
 
+/datum/crafting_recipe/roguetown/sewing/nunveil
+	name = "nun veil"
+	result = list(/obj/item/clothing/head/roguetown/nun)
+	reqs = list(/obj/item/natural/cloth = 1)
+	craftdiff = 2
+
+/datum/crafting_recipe/roguetown/sewing/nunhabit
+	name = "nun habit"
+	result = list(/obj/item/clothing/suit/roguetown/shirt/robe/nun)
+	reqs = list(/obj/item/natural/cloth = 2)
+	craftdiff = 2
+
 /datum/crafting_recipe/roguetown/sewing/coif
 	name = "coif"
 	result = list(/obj/item/clothing/neck/roguetown/coif)

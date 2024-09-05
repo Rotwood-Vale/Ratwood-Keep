@@ -21,12 +21,8 @@
 	wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
 	backr = /obj/item/rogueweapon/shield/wood
 	backl = /obj/item/storage/backpack/rogue/satchel
-	if(prob(25))
-		mask = /obj/item/clothing/mask/rogue/facemask
-	if(prob(25))
-		gloves = /obj/item/clothing/gloves/roguetown/chain
-	else
-		gloves = /obj/item/clothing/gloves/roguetown/angle
+	mask = /obj/item/clothing/mask/rogue/facemask
+	gloves = /obj/item/clothing/gloves/roguetown/chain
 	if(prob(50))
 		beltl = /obj/item/rogueweapon/mace/steel
 	else if(prob(50))
@@ -34,7 +30,7 @@
 	else
 		r_hand = /obj/item/rogueweapon/halberd
 		beltl = /obj/item/rogueweapon/huntingknife
-		
+
 
 	H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 2, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/combat/maces, 3, TRUE)

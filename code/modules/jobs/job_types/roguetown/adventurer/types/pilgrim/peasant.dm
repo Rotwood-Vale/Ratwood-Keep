@@ -1,6 +1,6 @@
 /datum/advclass/peasant
 	name = "Farmer"
-	tutorial = "As a Peasent, you are a skilled farmer, able to grow a variety of berrys and apples \
+	tutorial = "As a Peasant, you are a skilled farmer, able to grow a variety of crops \
 	Join the local Soilsmen at their farm, or make your own little orchard."
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
@@ -11,8 +11,8 @@
 	..()
 	H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 1, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/combat/polearms, 1, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/craft/crafting, rand(2,3), TRUE)
+	H.mind.adjust_skillrank(/datum/skill/combat/polearms, 2, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/craft/crafting, 3, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/sewing, 1, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/labor/farming, 4, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/craft/cooking, 1, TRUE)
@@ -22,26 +22,18 @@
 	pants = /obj/item/clothing/under/roguetown/trou
 	head = /obj/item/clothing/head/roguetown/armingcap
 	shoes = /obj/item/clothing/shoes/roguetown/simpleshoes
-	backr = /obj/item/storage/backpack/rogue/satchel
 	wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
 	backl = /obj/item/storage/backpack/rogue/satchel
 	neck = /obj/item/storage/belt/rogue/pouch/coins/poor
 	armor = /obj/item/clothing/suit/roguetown/armor/workervest
 	mouth = /obj/item/rogueweapon/huntingknife
 	beltr = /obj/item/flint
-	if(H.gender == FEMALE)
+	if(H.pronouns == SHE_HER)
 		armor = /obj/item/clothing/suit/roguetown/shirt/dress/gen/random
 		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
 		pants = null
 	backpack_contents = list(/obj/item/seeds/wheat=1,/obj/item/seeds/apple=1,/obj/item/ash=1)
-	if(prob(23))
-		beltl = /obj/item/rogueweapon/sickle
-	else if(prob(23))
-		backr = /obj/item/rogueweapon/thresher
-	else if(prob(23))
-		backr = /obj/item/rogueweapon/hoe
-	else
-		backr = /obj/item/rogueweapon/pitchfork
+	beltl = /obj/item/rogueweapon/sickle
+	backr = /obj/item/rogueweapon/hoe
 	H.change_stat("strength", 1)
-	H.change_stat("intelligence", -2)
-	H.change_stat("speed", -1)
+	H.change_stat("intelligence", -1)
