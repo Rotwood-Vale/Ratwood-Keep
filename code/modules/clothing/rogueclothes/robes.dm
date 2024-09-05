@@ -133,6 +133,7 @@
 	color = null
 
 /obj/item/clothing/suit/roguetown/shirt/robe/nun
+	name = "nun's habit"
 	color = null
 	icon_state = "nun"
 	item_state = "nun"

@@ -191,8 +191,8 @@ GLOBAL_LIST_INIT(roguetown_areas_typecache, typecacheof(/area/rogue/indoors/town
 	//Minotaurs too strong for the lazy amount of places this area covers
 	ambush_mobs = list(
 				/mob/living/carbon/human/species/skeleton/npc/ambush = 20,
-				/mob/living/simple_animal/hostile/retaliate/rogue/wolf = 40,
-				/mob/living/simple_animal/hostile/retaliate/rogue/bigrat = 60,
+				/mob/living/simple_animal/hostile/retaliate/rogue/wolf = 60,
+				/mob/living/simple_animal/hostile/retaliate/rogue/bogtroll = 20,
 				/mob/living/simple_animal/hostile/retaliate/rogue/spider = 40,
 				/mob/living/carbon/human/species/goblin/npc/ambush/cave = 30)
 	first_time_text = "THE TERRORBOG"
@@ -300,7 +300,8 @@ GLOBAL_LIST_INIT(roguetown_areas_typecache, typecacheof(/area/rogue/indoors/town
 	ambush_mobs = list(
 				/mob/living/carbon/human/species/skeleton/npc = 10,
 				/mob/living/simple_animal/hostile/retaliate/rogue/bigrat = 30,
-				/mob/living/carbon/human/species/goblin/npc/sea = 20)
+				/mob/living/carbon/human/species/goblin/npc/sea = 20,
+				/mob/living/simple_animal/hostile/retaliate/rogue/cavetroll = 15)
 	converted_type = /area/rogue/outdoors/caves
 
 /area/rogue/under/cavewet/bogcaves
