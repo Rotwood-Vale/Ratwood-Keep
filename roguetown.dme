@@ -3558,6 +3558,8 @@
 #include "modular_azurepeak\statpacks\physical.dm"
 #include "modular_azurepeak\statpacks\wildcard.dm"
 #include "modular_hearthstone\code\datums\accents.dm"
+#include "modular_hearthstone\code\datums\skills\misc.dm"
+#include "modular_hearthstone\code\game\objects\effects\track.dm"
 #include "modular_hearthstone\code\game\objects\items\signal_horn.dm"
 #include "modular_hearthstone\code\game\objects\items\clothes\stockings.dm"
 #include "modular_hearthstone\code\game\objects\items\clothes\strapless_dress.dm"
