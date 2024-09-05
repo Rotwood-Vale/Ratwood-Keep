@@ -409,7 +409,7 @@
 	sewrepair = TRUE
 
 /obj/item/clothing/head/roguetown/nun
-	name = "nun's habit"
+	name = "nun's veil"
 	icon_state = "nun"
 	sellprice = 5
 	sewrepair = TRUE
