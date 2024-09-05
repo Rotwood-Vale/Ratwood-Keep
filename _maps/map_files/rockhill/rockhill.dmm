@@ -5346,6 +5346,10 @@
 /obj/machinery/light/rogue/torchholder{
 	pixel_y = 26
 	},
+/obj/structure/mineral_door/wood{
+	locked = 1;
+	lockid = "walls"
+	},
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue/outdoors/town)
 "fNc" = (
@@ -13814,6 +13818,10 @@
 /obj/structure/chair/bench,
 /turf/open/floor/rogue/grass,
 /area/rogue/outdoors/rtfield)
+"pdO" = (
+/obj/machinery/light/rogue/firebowl,
+/turf/open/floor/rogue/cobble,
+/area/rogue/outdoors/town)
 "pel" = (
 /obj/structure/fluff/railing/border{
 	dir = 6
@@ -18573,10 +18581,6 @@
 /obj/item/storage/roguebag,
 /turf/open/floor/rogue/tile,
 /area/rogue/indoors/town/tavern)
-"uuP" = (
-/obj/machinery/light/rogue/firebowl,
-/turf/open/floor/rogue/cobble,
-/area/rogue/outdoors/town)
 "uvu" = (
 /turf/closed/wall/mineral/rogue/wooddark/end{
 	dir = 8
@@ -488270,7 +488274,7 @@ wbg
 mRr
 wbg
 wbg
-uuP
+pdO
 wbg
 wbg
 wbg
@@ -488278,7 +488282,7 @@ wbg
 wbg
 wbg
 wbg
-uuP
+pdO
 wbg
 wbg
 wbg
@@ -488286,7 +488290,7 @@ wbg
 wbg
 wbg
 wbg
-uuP
+pdO
 wbg
 wbg
 wbg
@@ -488696,7 +488700,7 @@ rfx
 rfx
 rfx
 rfx
-uuP
+pdO
 wbg
 wbg
 rfx
@@ -495932,7 +495936,7 @@ xAt
 xAt
 xAt
 rfx
-uuP
+pdO
 wbg
 wbg
 wbg
@@ -498344,7 +498348,7 @@ xAt
 xAt
 xAt
 rfx
-uuP
+pdO
 wbg
 wbg
 wbg
@@ -501964,7 +501968,7 @@ onh
 fkC
 fkC
 fkC
-uuP
+pdO
 rfx
 xAt
 xAt
@@ -506353,7 +506357,7 @@ uFE
 mRr
 wbg
 wbg
-uuP
+pdO
 wbg
 wbg
 wbg
@@ -506364,7 +506368,7 @@ wbg
 wbg
 wbg
 wbg
-uuP
+pdO
 wbg
 wbg
 wbg
@@ -506375,7 +506379,7 @@ wbg
 wbg
 wbg
 wbg
-uuP
+pdO
 fkC
 fkC
 mbK
