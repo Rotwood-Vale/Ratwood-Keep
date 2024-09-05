@@ -43,3 +43,8 @@
 	icon_state = "female_leotard"
 	underwear_type = /obj/item/undies/leotard
 	hides_breasts = TRUE
+
+/datum/sprite_accessory/underwear/leotard/get_icon_state(obj/item/organ/organ, obj/item/bodypart/bodypart, mob/living/carbon/owner)
+	if(owner.gender == MALE)
+		return "male_leotard"
+	return "female_leotard"
