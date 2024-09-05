@@ -39,7 +39,7 @@
 
 /datum/crafting_recipe/roguetown/saltpowder
 	name = "ground salt"
-	result = /obj/item/reagent_containers/powder/flour/salt
+	result = /obj/item/reagent_containers/powder/salt
 	reqs = list(/obj/item/natural/stone = 1)
 	structurecraft = /obj/structure/fluff/millstone
 	verbage_simple = "mill"
