@@ -187,7 +187,7 @@
 		/obj/item/reagent_containers/food/snacks/rogue/meat/poultry = 1,
 		/obj/item/reagent_containers/food/snacks/grown/radish = 2,
 		/obj/item/reagent_containers/food/snacks/grown/peas = 2,
-		/obj/item/reagent_containers/food/snacks/grown/potato = 2,
+		/obj/item/reagent_containers/food/snacks/grown/rogue/potato = 2,
 		/obj/item/reagent_containers/food/snacks/grown/cabbage = 1,
 		/obj/item/reagent_containers/food/snacks/grown/westspice = 1,
 		/datum/reagent/consumable/blackpepper = 5,

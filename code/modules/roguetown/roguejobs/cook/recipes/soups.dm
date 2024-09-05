@@ -17,7 +17,7 @@
 		/obj/item/reagent_containers/food/snacks/grown/bean = 1,
 		/obj/item/reagent_containers/food/snacks/grown/radish = 1,
 		/obj/item/reagent_containers/food/snacks/grown/carrot = 1,
-		/obj/item/reagent_containers/food/snacks/grown/potato = 1,
+		/obj/item/reagent_containers/food/snacks/grown/rogue/potato = 1,
 		/obj/item/reagent_containers/glass/bowl = 1,
 		/datum/reagent/water = 15
 	)
@@ -44,7 +44,7 @@
 		/obj/item/reagent_containers/food/snacks/grown/oat = 1,
 		/obj/item/reagent_containers/food/snacks/grown/radish = 1,
 		/obj/item/reagent_containers/food/snacks/grown/carrot = 1,
-		/obj/item/reagent_containers/food/snacks/grown/potato = 1,
+		/obj/item/reagent_containers/food/snacks/grown/rogue/potato = 1,
 		/obj/item/reagent_containers/glass/bowl = 1,
 		/datum/reagent/water = 15
 	)

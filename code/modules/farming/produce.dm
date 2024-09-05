@@ -357,17 +357,6 @@
 	list_reagents = list(/datum/reagent/consumable/nutriment = 2, /datum/reagent/medicine/oculine = 1)
 	grind_results = list(/datum/reagent/medicine/oculine = 3)
 
-/obj/item/reagent_containers/food/snacks/grown/potato
-	name = "potato"
-	seed = /obj/item/seeds/potato
-	icon_state = "potato"
-	tastes = list("potato" = 1)
-	filling_color = "#d8d8b6"
-	bitesize = 3
-	foodtype = VEGETABLES
-	rotprocess = 50 MINUTES
-	list_reagents = list(/datum/reagent/consumable/nutriment = 3)
-
 /obj/item/reagent_containers/food/snacks/grown/eggplant
 	name = "aubergine"
 	seed = /obj/item/seeds/eggplant
