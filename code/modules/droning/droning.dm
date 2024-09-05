@@ -63,7 +63,7 @@ SUBSYSTEM_DEF(droning)
 	if(HAS_TRAIT(listener.mob, TRAIT_SCHIZO_AMBIENCE))
 		used_gay = list('sound/music/dreamer_is_still_asleep.ogg')
 	else if(HAS_TRAIT(listener.mob, TRAIT_DRUQK))
-		used_gay = list('sound/music/spice.ogg')
+		used_gay = list('sound/music/hishmaliin.ogg')
 	//our music for real
 	area_player.droning_sound_current = used_gay
 	//last phase!
