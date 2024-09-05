@@ -131,32 +131,6 @@
 			if("wielded")
 				return list("shrink" = 0.6,"sx" = 5,"sy" = -3,"nx" = -5,"ny" = -2,"wx" = -5,"wy" = -1,"ex" = 3,"ey" = -2,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0,"nturn" = 7,"sturn" = -7,"wturn" = 16,"eturn" = -22,"nflip" = 8,"sflip" = 0,"wflip" = 8,"eflip" = 0)
 
-
-
-/obj/item/rogueweapon/spear/bonespear
-	force = 18
-	force_wielded = 22
-	name = "bone spear"
-	desc = "A spear made of bones..."
-	icon_state = "bonespear"
-	pixel_y = -16
-	pixel_x = -16
-	inhand_x_dimension = 64
-	inhand_y_dimension = 64
-	bigboy = TRUE
-	gripsprite = TRUE
-	wlength = WLENGTH_GREAT
-	w_class = WEIGHT_CLASS_BULKY
-	minstr = 6
-	max_blade_int = 70
-	smeltresult = null
-	associated_skill = /datum/skill/combat/polearms
-	blade_dulling = DULLING_BASHCHOP
-	walking_stick = TRUE
-	wdefense = 4
-	max_integrity = 60
-	throwforce = 20
-
 /obj/item/rogueweapon/spear/billhook
 	name = "billhook"
 	desc = "A neat hook."
