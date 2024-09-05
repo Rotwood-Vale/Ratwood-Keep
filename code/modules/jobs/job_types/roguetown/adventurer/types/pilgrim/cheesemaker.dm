@@ -11,7 +11,8 @@
 
 /datum/outfit/job/roguetown/adventurer/cheesemaker/pre_equip(mob/living/carbon/human/H)
 	..()
-	H.mind.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE) 
+	H.mind.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/combat/polearms, 2, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/combat/maces, pick(0,1,2), TRUE)
 	H.mind.adjust_skillrank(/datum/skill/combat/axes, pick(0,1,2), TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/athletics, 2, TRUE) 
