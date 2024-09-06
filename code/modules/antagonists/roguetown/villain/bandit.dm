@@ -1,32 +1,38 @@
-
 /datum/antagonist/bandit
-	name = "Bandit"
-	roundend_category = "bandits"
-	antagpanel_category = "Bandit"
-	job_rank = ROLE_BANDIT
-	antag_hud_type = ANTAG_HUD_TRAITOR
-	antag_hud_name = "bandit"
-	confess_lines = list(
-		"FREEDOM!!!", 
-		"I WILL NOT LIVE IN YOUR WALLS!",
-		"I WILL NOT FOLLOW YOUR RULES!",
-	)
-	var/tri_amt
-	var/contrib
+    name = "Bandit"
+    roundend_category = "bandits"
+    antagpanel_category = "Bandit"
+    job_rank = ROLE_BANDIT
+    antag_hud_type = ANTAG_HUD_TRAITOR
+    antag_hud_name = "bandit"
+    confess_lines = list(
+        "FREEDOM!!!", 
+        "I WILL NOT LIVE IN YOUR WALLS!",
+        "I WILL NOT FOLLOW YOUR RULES!"
+    )
+    var/tri_amt
+    var/contrib
+    var/dungeon_locked = TRUE // Custom variable for dungeon lock
 
-/datum/antagonist/bandit/examine_friendorfoe(datum/antagonist/examined_datum,mob/examiner,mob/examined)
-	if(istype(examined_datum, /datum/antagonist/bandit))
-		return span_boldnotice("Another free man. My ally.")
+    /datum/antagonist/bandit/on_gain()
+        . = ..()
+        owner.special_role = "Bandit"
+        owner.assigned_role = "Bandit"
+        owner.current.job = null
+        forge_objectives()
+        equip_bandit()
+        move_to_spawnpoint()
+        finalize_bandit()
 
-/datum/antagonist/bandit/on_gain()
-	owner.special_role = "Bandit"
-	owner.assigned_role = "Bandit"
-	owner.current.job = null
-	forge_objectives()
-	. = ..()
-	equip_bandit()
-	move_to_spawnpoint()
-	finalize_bandit()
+        dungeon_locked = TRUE
+        owner.current.add_dungeon_death_timer()
+        addtimer(CALLBACK(src, .proc/unlock_dungeon), 30 MINUTES)
+
+    /datum/antagonist/bandit/proc/unlock_dungeon()
+        dungeon_locked = FALSE
+        if(owner && owner.current)
+            owner.current.remove_dungeon_death_timer()
+            to_chat(owner.current, "<span class='notice'>You feel a sudden urge to explore the dungeon. The dark horrors no longer seem to threaten your mind.</span>")
 
 /datum/antagonist/bandit/proc/finalize_bandit()
 	owner.current.playsound_local(get_turf(owner.current), 'sound/music/traitor.ogg', 80, FALSE, pressure_affected = FALSE)
