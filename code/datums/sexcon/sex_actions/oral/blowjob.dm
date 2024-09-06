@@ -7,6 +7,8 @@
 		return FALSE
 	if(!target.getorganslot(ORGAN_SLOT_PENIS))
 		return FALSE
+	if(HAS_TRAIT(target, TRAIT_TINY))	//Someone else can figure out how a full sized humen gives a male seelie a blowjob...
+		return FALSE
 	return TRUE
 
 /datum/sex_action/blowjob/can_perform(mob/living/user, mob/living/target)

@@ -203,8 +203,8 @@ GLOBAL_LIST_EMPTY(chosen_names)
 		if(pref_species.desc)
 			to_chat(user, "[pref_species.desc]")
 		to_chat(user, "<font color='red'>Classes reset.</font>")
-	if(pref_species.name == "Seelie")
-		gender = FEMALE
+	//if(pref_species.name == "Seelie")	//Male seelie allowed for now, leaving this for future reference
+	//	gender = FEMALE
 	random_character(gender)
 	accessory = "Nothing"
 
@@ -324,9 +324,9 @@ GLOBAL_LIST_EMPTY(chosen_names)
 
 			if(!(AGENDER in pref_species.species_traits))
 				var/dispGender
-				if(pref_species.name == "Seelie")
-					dispGender = "Woman"
-				else if(gender == MALE)
+				//if(pref_species.name == "Seelie")	//Male seelie allowed for now, leaving this for future reference
+				//	dispGender = "Woman"
+				if(gender == MALE)
 					dispGender = "Man"
 				else if(gender == FEMALE)
 					dispGender = "Woman"
@@ -1405,8 +1405,8 @@ Slots: [job.spawn_positions]</span>
 				if("suit")
 					jumpsuit_style = PREF_SUIT
 				if("all")
-					if(pref_species.name == "Seelie")
-						gender = FEMALE
+					//if(pref_species.name == "Seelie")	//Male seelie allowed for now, leaving this for future reference
+					//	gender = FEMALE
 					random_character(gender)
 
 		if("input")
@@ -1743,14 +1743,14 @@ Slots: [job.spawn_positions]</span>
 					if(gender == "male")
 						pickedGender = "female"
 					if(pickedGender && pickedGender != gender)
-						if(pref_species.name == "Seelie")
-							gender = "female"
-						else
-							gender = pickedGender
+						//if(pref_species.name == "Seelie")	//Male seelie allowed for now, leaving this for future reference
+						//	gender = "female"
+						//else
+						gender = pickedGender
 						ResetJobs()
 						to_chat(user, "<font color='red'>Classes reset.</font>")
 						random_character(gender)
-				//else if(pref_species.name == "Seelie")
+				//else if(pref_species.name == "Seelie")	//Male seelie allowed for now, leaving this for future reference
 				//	gender = "female"
 				if("domhand")
 					if(domhand == 1)
