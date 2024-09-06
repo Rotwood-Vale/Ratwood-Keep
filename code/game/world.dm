@@ -2,6 +2,15 @@
 
 GLOBAL_VAR(restart_counter)
 
+//This runs before most anything else, for more info see:
+//https://github.com/Cyberboss/tgstation/blob/1afa69d66adfc810ab68c45a4fa5985c780ba6ff/code/game/world.dm#L10
+//But note that not all of this necessarily applies to us(particularly proccalls)
+
+/*/world/proc/Genesis()
+	//init_debugger()
+	world << "TEXT HERE TEST TEST TEST"*/
+
+
 /**
   * World creation
   *
@@ -20,7 +29,8 @@ GLOBAL_VAR(restart_counter)
   */
 
 /world/New()
-
+	init_debugger()
+	
 	log_world("World loaded at [time_stamp()]!")
 
 	SetupExternalRSC()
@@ -446,3 +456,16 @@ GLOBAL_VAR(restart_counter)
 
 /world/proc/on_tickrate_change()
 	SStimer?.reset_buckets()
+
+/world/proc/init_debugger()
+	var/dll = GetConfig("env", "AUXTOOLS_DEBUG_DLL")
+	if (dll)
+		call_ext(dll, "auxtools_init")()
+		enable_debugging()
+
+/world/Del()
+	var/dll = GetConfig("env", "AUXTOOLS_DEBUG_DLL")
+	if (dll)
+		call_ext(dll, "auxtools_shutdown")()
+	
+	. = ..()

@@ -138,6 +138,7 @@
 #include "code\__DEFINES\dcs\signals_atom_lighting.dm"
 #include "code\__DEFINES\roguetown\rebel.dm"
 #include "code\__DEFINES\roguetown\werewolf.dm"
+#include "code\__HELPERS\_auxtools_api.dm"
 #include "code\__HELPERS\_lists.dm"
 #include "code\__HELPERS\_logging.dm"
 #include "code\__HELPERS\_string_lists.dm"
@@ -3562,4 +3563,5 @@
 #include "modular\code\modules\maturity-prompt\code\config_entries.dm"
 #include "modular\code\modules\maturity-prompt\code\maturity_prompt.dm"
 #include "modular\code\modules\maturity-prompt\code\maturity_subsystem.dm"
+#include "modular\ze_genesis_call\genesis_call.dm"
 // END_INCLUDE
