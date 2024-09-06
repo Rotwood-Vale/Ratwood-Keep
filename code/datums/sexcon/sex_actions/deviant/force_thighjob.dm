@@ -20,7 +20,7 @@
 	return TRUE
 
 /datum/sex_action/force_thighjob/on_start(mob/living/carbon/human/user, mob/living/carbon/human/target)
-	if(HAS_TRAIT(user, TRAIT_TINY) && !(HAS_TRIAT(target, TRAIT_TINY))) //thighjob giver is Seelie, recipient is normal
+	if(HAS_TRAIT(user, TRAIT_TINY) && !(HAS_TRAIT(target, TRAIT_TINY))) //thighjob giver is Seelie, recipient is normal
 		user.visible_message(span_warning("[user] straddles [target]'s cock and begins gyrating..."))
 	else if(!(HAS_TRAIT(user, TRAIT_TINY)) && HAS_TRAIT(target, TRAIT_TINY))	//recipient is Seelie, thighjob giver is normal
 		user.visible_message(span_warning("[user] holds [target] against their thigh, pressing their cock against it..."))
@@ -29,7 +29,7 @@
 
 /datum/sex_action/force_thighjob/on_perform(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(user.sexcon.do_message_signature("[type]"))
-		if(HAS_TRAIT(user, TRAIT_TINY) && !(HAS_TRIAT(target, TRAIT_TINY))) //thighjob giver is Seelie, recipient is normal
+		if(HAS_TRAIT(user, TRAIT_TINY) && !(HAS_TRAIT(target, TRAIT_TINY))) //thighjob giver is Seelie, recipient is normal
 			user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] rubs their legs and groin along [target]'s cock..."))
 		else if(!(HAS_TRAIT(user, TRAIT_TINY)) && HAS_TRAIT(target, TRAIT_TINY))	//recipient is Seelie, thighjob giver is normal
 			user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] moves [target] up and down their thigh, rubbing their cock..."))

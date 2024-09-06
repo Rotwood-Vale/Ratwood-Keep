@@ -31,7 +31,7 @@
 		BPC.add_wound(/datum/wound/fracture/chest)
 		BPG.add_wound(/datum/wound/fracture/groin)
 		target.apply_damage(30, BRUTE, BPC)
-	else if(!(HAS_TRAIT(target)) && HAS_TRAIT(user, TRAIT_TINY))	//Seelie on Humen
+	else if(!(HAS_TRAIT(target, TRAIT_TINY)) && HAS_TRAIT(user, TRAIT_TINY))	//Seelie on Humen
 		user.visible_message(span_warning("[user] tries and fails to insert his tiny cock into [target]'s butt!"))
 	else
 		user.visible_message(span_warning("[user] slides his cock into [target]'s butt!"))
@@ -39,7 +39,7 @@
 
 /datum/sex_action/anal_sex/on_perform(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(user.sexcon.do_message_signature("[type]"))
-		if(!(HAS_TRAIT(target)) && HAS_TRAIT(user, TRAIT_TINY))	//Seelie on Humen
+		if(!(HAS_TRAIT(target, TRAIT_TINY)) && HAS_TRAIT(user, TRAIT_TINY))	//Seelie on Humen
 			user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] tries to fuck [target]'s ass, unsuccessfully."))
 			do_thrust_animate(user, target)
 			return //Return because male seelie cannot succesfully penetrate a large humen target
