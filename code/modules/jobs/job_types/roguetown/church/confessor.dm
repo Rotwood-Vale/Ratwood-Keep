@@ -32,7 +32,6 @@
 	shirt = /obj/item/clothing/suit/roguetown/armor/gambeson
 	pants = /obj/item/clothing/under/roguetown/tights/black
 	beltr = /obj/item/storage/belt/rogue/pouch/coins/poor
-	cloak = /obj/item/clothing/cloak/raincloak/mortus
 	head = /obj/item/clothing/head/roguetown/menacing/bandit
 	armor = /obj/item/clothing/suit/roguetown/armor/leather/vest/black
 	beltl = /obj/item/rogueweapon/mace/cudgel
