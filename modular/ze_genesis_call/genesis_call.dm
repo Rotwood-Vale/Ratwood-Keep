@@ -13,5 +13,5 @@
  */
 
 //I've put this in (repo_root)/modular rather than somewhere in code/ so that it's at the very end of the dme- if you remove modular/ just make sure this stays at the bottom of the DME
-/*/world/proc/_()
-	var/static/_ = world.Genesis()*/
+/world/proc/_()
+	var/static/_ = world.Genesis()
