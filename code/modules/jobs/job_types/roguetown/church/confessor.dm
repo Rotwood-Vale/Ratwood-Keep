@@ -59,8 +59,4 @@
 		H.change_stat("strength", 1)
 		H.change_stat("speed", 3)
 		H.change_stat("perception", 2)
-		if(H.mind.has_antag_datum(/datum/antagonist))
-			return
-		var/datum/antagonist/new_antag = new /datum/antagonist/purishep()
-		H.mind.add_antag_datum(new_antag)
 	H.verbs |= /mob/living/carbon/human/proc/faith_test
