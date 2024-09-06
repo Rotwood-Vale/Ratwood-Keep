@@ -7161,6 +7161,13 @@
 	},
 /turf/open/floor/rogue/cobble,
 /area/rogue/outdoors/town)
+"hLh" = (
+/obj/structure/stairs/stone{
+	dir = 4
+	},
+/obj/effect/landmark/start/shepherd,
+/turf/open/floor/rogue/churchmarble,
+/area/rogue/indoors/town/church/chapel)
 "hLl" = (
 /obj/machinery/light/rogue/wallfire/candle{
 	pixel_x = 32;
@@ -17118,6 +17125,10 @@
 	},
 /turf/open/floor/rogue/cobble,
 /area/rogue/indoors)
+"sVs" = (
+/obj/effect/landmark/start/shepherd,
+/turf/open/floor/rogue/churchmarble,
+/area/rogue/indoors/town/church/chapel)
 "sVC" = (
 /obj/structure/mineral_door/wood/deadbolt{
 	dir = 4
@@ -417193,7 +417204,7 @@ fZJ
 oPJ
 lKp
 jjS
-jjS
+hLh
 jjS
 okc
 vfL
@@ -417595,7 +417606,7 @@ fZJ
 gFE
 klS
 swm
-swm
+sVs
 swm
 cYb
 nGV
@@ -417997,7 +418008,7 @@ fZJ
 dDJ
 swm
 swm
-swm
+sVs
 swm
 swm
 bav
