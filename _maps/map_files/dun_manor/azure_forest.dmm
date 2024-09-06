@@ -149,7 +149,7 @@
 "lc" = (/obj/structure/spider/stickyweb,/mob/living/simple_animal/hostile/retaliate/rogue/spider/mutated,/turf/open/floor/rogue/metal/barograte/open,/area/rogue/under/cave/dungeon1/gethsmane)
 "lf" = (/obj/item/natural/rock,/turf/open/floor/rogue/greenstone,/area/rogue/under/cave/dungeon1/gethsmane/inner)
 "lg" = (/turf/open/floor/rogue/naturalstone,/area/rogue/under/cave)
-"lh" = (/mob/living/simple_animal/hostile/retaliate/rogue/wolf,/turf/open/floor/rogue/cobble/mossy,/area/rogue/under/cave)
+"lh" = (/mob/living/simple_animal/hostile/rogue/skeleton/guard,/turf/open/floor/rogue/dirt,/area/rogue/under/cave)
 "li" = (/obj/structure/flora/roguegrass/water,/turf/open/water/swamp/deep,/area/rogue/outdoors/woods)
 "lj" = (/obj/machinery/conveyor/auto{dir = 9; color = "#755f48"},/turf/open/water/swamp/deep,/area/rogue/under/cave)
 "lm" = (/turf/open/water/swamp/deep,/area/rogue/outdoors/woods)
@@ -360,7 +360,7 @@
 "Cg" = (/obj/structure/mineral_door/wood/donjon,/turf/open/floor/rogue/church,/area/rogue/under/cave)
 "Ci" = (/obj/effect/decal/cobbleedge{dir = 5},/obj/structure/rack/rogue/shelf,/obj/structure/table/wood/crafted,/turf/open/floor/rogue/dirt/road,/area/rogue/indoors)
 "Cn" = (/mob/living/carbon/human/species/skeleton/npc,/turf/open/floor/rogue/twig,/area/rogue/outdoors/mountains)
-"Co" = (/obj/item/chair/rogue,/mob/living/simple_animal/hostile/rogue/skeleton/guard,/turf/open/floor/rogue/cobble/mossy,/area/rogue/under/cave)
+"Co" = (/obj/item/chair/rogue,/turf/open/floor/rogue/cobble/mossy,/area/rogue/under/cave)
 "Cy" = (/obj/structure/lever/wall{redstone_id = "puzzle2"},/turf/closed/wall/mineral/rogue/stone,/area/rogue/under/cave)
 "CB" = (/mob/living/simple_animal/hostile/retaliate/rogue/mudcrab,/turf/open/water/swamp,/area/rogue/outdoors/woods)
 "CC" = (/obj/structure/closet/crate/chest,/obj/effect/spawner/lootdrop/roguetown/dungeon/weapons,/turf/open/floor/rogue/ruinedwood{icon_state = "wooden_floort"},/area/rogue/outdoors/beach)
@@ -567,7 +567,7 @@
 "RI" = (/turf/open/floor/rogue/dirt/road,/area/rogue/outdoors/beach)
 "RO" = (/obj/machinery/light/rogue/campfire/densefire,/turf/open/floor/rogue/dirt/road,/area/rogue/outdoors/beach)
 "RQ" = (/obj/structure/bars/pipe/left,/turf/open/water/sewer,/area/rogue/under/cave/dungeon1/gethsmane/inner)
-"RX" = (/obj/structure/mineral_door/wood/donjon{dir = 4; locked = 1},/turf/open/floor/rogue/cobble/mossy,/area/rogue/under/cave)
+"RX" = (/obj/structure/mineral_door/wood/donjon{dir = 4; pixel_x = 0; pixel_y = 0},/turf/open/floor/rogue/cobble/mossy,/area/rogue/under/cave)
 "Se" = (/turf/closed/mineral/rogue/bedrock,/area/rogue/outdoors/mountains)
 "Sh" = (/obj/structure/fluff/railing/border{dir = 4; icon_state = "border"},/turf/open/transparent/openspace,/area/rogue/outdoors/mountains)
 "Si" = (/obj/structure/flora/roguegrass/water,/turf/open/water/sewer,/area/rogue/under/cave)
@@ -624,7 +624,6 @@
 "VA" = (/obj/structure/rack/rogue/shelf/biggest,/obj/item/natural/feather,/turf/open/floor/rogue/ruinedwood,/area/rogue/indoors)
 "VE" = (/obj/machinery/conveyor/auto{color = "#755f48"},/obj/item/natural/rock,/turf/open/water/swamp/deep,/area/rogue/under/cave)
 "VF" = (/turf/open/water/swamp/deep,/area/rogue/under/cave/dungeon1/gethsmane)
-"VG" = (/mob/living/simple_animal/hostile/retaliate/rogue/wolf,/turf/open/floor/rogue/naturalstone,/area/rogue/under/cave)
 "VP" = (/obj/effect/decal/cobbleedge{dir = 10},/turf/open/floor/rogue/dirt/road,/area/rogue/outdoors/woods)
 "VT" = (/obj/machinery/conveyor/auto{dir = 10; color = "#755f48"},/obj/item/restraints/legcuffs/beartrap/armed/camouflage,/turf/open/water/swamp/deep,/area/rogue/under/cave)
 "VV" = (/obj/structure/mineral_door/wood,/turf/open/floor/rogue/ruinedwood/turned,/area/rogue/indoors)
@@ -651,7 +650,7 @@
 "XP" = (/obj/structure/closet/crate/drawer,/obj/item/clothing/shoes/roguetown/boots/furlinedboots,/turf/open/floor/rogue/dirt,/area/rogue/indoors/shelter/woods)
 "XQ" = (/mob/living/simple_animal/hostile/retaliate/rogue/mossback,/turf/open/water/swamp/deep,/area/rogue/under/cave)
 "XT" = (/obj/effect/spawner/lootdrop/roguetown/sewers,/obj/effect/decal/remains/human,/turf/open/floor/rogue/naturalstone,/area/rogue/outdoors/woods)
-"Yh" = (/obj/structure/lever/wall{name = "puzzle1"},/turf/closed/wall/mineral/rogue/stone,/area/rogue/under/cave)
+"Yh" = (/obj/structure/lever/wall{name = null; redstone_id = "puzzle1"},/turf/closed/wall/mineral/rogue/stone,/area/rogue/under/cave)
 "Yi" = (/turf/open/floor/rogue/cobblerock,/area/rogue/outdoors/woods)
 "Yj" = (/obj/item/natural/rock,/obj/item/natural/rock,/turf/open/floor/rogue/dirt,/area/rogue/under/cave/dungeon1/gethsmane)
 "Yk" = (/obj/structure/bars/pipe,/turf/open/floor/rogue/greenstone,/area/rogue/under/cave/dungeon1/gethsmane)
@@ -791,17 +790,17 @@ gUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUIKIKIKIKIKIKgU
 gUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUIKIKIKIKgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUlglgrRrRrRIKIKaAIKIKgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgURxRxTpTpTpTpTpTpTpTpTpTpTpTpTpTpTpTpTp
 gUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUIKIKaAadadadadgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUlgxkrRrRIKIKIKIKIKgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgURxRxTpTpTpTpTpTpTpTpTpTpTpTpTpTpTpTpTp
 gUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUIKIKIKadOmOmvpadgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUlgxkrRrRIKIKaAaAIKIKgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgURxRxTpTpTpTpTpTpTpTpTpTpTpTpTpTpTpTpTp
-gUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUaAIKIKRXOmOmOmvpadYhCyMladgUgUgUgUgUlggUgUgUgUgUlgrRTCIKIKIKaAIKIKgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgURxRxTpTpTpTpTpTpTpTpTpTpTpTpTpTpTpTpTp
+gUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUaAlhIKRXOmOmOmvpadYhCyMladgUgUgUgUgUlggUgUgUgUgUlgrRTCIKIKIKaAIKIKgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgURxRxTpTpTpTpTpTpTpTpTpTpTpTpTpTpTpTpTp
 gUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUaAIKgUadadadOmOmvpOmOmOmadadadadlglgvbgUgUgUgUgUxkrRrRIKIKIKIKIKgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgURxRxTpTpTpTpTpTpTpTpTpTpTpTpTpTpTpTpTp
 gUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUIKaAIKgUgUgUadadOmvpOmCorTadadmGmGmGlggUgUgUgUgUgUrRrRrRIKaAIKIKgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgURxRxTpTpTpTpTpTpTpTpTpTpTpTpTpTpTpTpTp
 gUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUIKIKIKgUgUgUgUJHOmOmOmOmOmOmmJmGKWlglggUgUgUgUgUgUrRrRIKaAaAIKIKgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgURxRxTpTpTpTpTpTpTpTpTpTpTpTpTpTpTpTpTp
 gUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUIKIKIKgUgUgUgUHEyLHEHEHEjIHEHEmGmGmGadgUgUgUgUgUgUrRrRIKaAIKIKgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgURxRxTpTpTpTpTpTpTpTpTpTpTpTpTpTpTpTpTp
 gUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUaAIKIKgUgUgUadmGOmmGHEmGmGgqadadkTadadgUgUgUgUgUgUrRrRIKIKIKgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgURxRxRxTpTpTpTpTpTpTpTpTpTpTpTpTpTpTpTp
 gUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUIKIKIKgUgUgUgUadmGOmOmHYmGmGmGtTadmGgUgUgUgUgUgUgUlgrRrRIKIKIKgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgURxRxTpTpTpTpTpTpTpTpTpTpTpTpTpTpTpTp
-gUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUIKIKaAaAgUgUgUadHEdVHEHEHEmJHEHEHEmGlhOmgUgUgUgUgUlgrRrRlgIKIKgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgURxRxRxTpTpTpTpTpTpTpTpTpTpTpTpTpTpTp
-gUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUIKaAaAgUgUgUvpOmOmOmHEwiOmOmOmzGlglglgVGgUgUgUgUlgTCrRlgaAIKIKgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgURxRxTpTpTpTpTpTpTpTpTpTpTpTpTpTpTp
+gUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUIKIKaAaAgUgUgUadHEdVHEHEHEmJHEHEHEmGOmOmgUgUgUgUgUlgrRrRlgIKIKgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgURxRxRxTpTpTpTpTpTpTpTpTpTpTpTpTpTpTp
+gUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUIKaAaAgUgUgUvpOmOmOmHEwiOmOmOmzGlglglglggUgUgUgUlgTCrRlgaAIKIKgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgURxRxTpTpTpTpTpTpTpTpTpTpTpTpTpTpTp
 gUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUaAaAaAaAgUgUvpOmwBOmcvOmwiTylgkkgUlgvblggUgUgUgUlgrRrRlgaAIKIKgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgURxRxRxTpTpTpTpTpTpTpTpTpTpTpTpTpTp
-gUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUaAaAaAaAgUgUvpuCJuOmHEOmwiOmwigUgUVGlglggUgUgUgUgUrRrRlglgaAIKgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgURxRxTpTpTpTpTpTpTpTpTpTpTpTpTpTp
+gUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUaAaAaAaAgUgUvpuCJuOmHEOmwiOmwigUgUlglglggUgUgUgUgUrRrRlglgaAIKgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgURxRxTpTpTpTpTpTpTpTpTpTpTpTpTpTp
 gUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUaAaAaAaAgUgUvpvpvpvpgUgUgUgUgUgUgUlggUgUgUgUgUgUgUrRrRoplgaAIKgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgURxRxTpTpTpTpTpTpTpTpTpTpTpTpTpTp
 gUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUlgaAaAaAgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUrRrRrRlgIKIKIKgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgURxRxRxTpTpTpTpTpTpTpTpTpTpTpTpTp
 gUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUlglglggUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUrRrRrRlgaAaAIKgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgURxRxTpTpTpTpTpTpTpTpTpTpTpTpTp
