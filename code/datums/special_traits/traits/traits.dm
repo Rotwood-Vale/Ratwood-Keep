@@ -3,7 +3,7 @@
 /datum/special_trait/nothing
 	name = "Nothing"
 	greet_text = span_notice("You're not special")
-	weight = 7 //As rare as Vengant Bum, just to remind you it could have been it
+	weight = 0 //No thanks, we press SPECIAL to actually get SOMETHING
 
 /datum/special_trait/nightvision
 	name = "Night Vision"
@@ -57,7 +57,7 @@
 /datum/special_trait/lightstep
 	name = "Light Step"
 	greet_text = span_notice("I am quiet, nobody can hear my steps.")
-	weight = 100
+	weight = 0 //This shit doesn't even work, fix it before letting it roll
 
 /datum/special_trait/lightstep/on_apply(mob/living/carbon/human/character, silent)
 	ADD_TRAIT(character, TRAIT_LIGHT_STEP, "[type]")
@@ -200,7 +200,7 @@
 /datum/special_trait/tolerant
 	name = "Tolerant"
 	greet_text = span_notice("I dream of an ideal future, one with peace between all races")
-	weight = 100
+	weight = 0 //I genuinely think this as xenophobic doesn't affect you at all it's another dumbass trait that just makes you sad when you get it because oh no my +1/-1 mood near a drow, nobody even roleplays accordingly to getting these 2
 
 /datum/special_trait/tolerant/on_apply(mob/living/carbon/human/character, silent)
 	ADD_TRAIT(character, TRAIT_TOLERANT, "[type]")
@@ -242,19 +242,19 @@
 	greet_text = "In my youth, I've decided I'd get a grasp on every trade, and pursued the 10 arts of the craft."
 	req_text = "Middle-aged or Old"
 	allowed_ages = list(AGE_MIDDLEAGED, AGE_OLD)
-	weight = 100
+	weight = 75
 
 /datum/special_trait/mastercraftsmen/on_apply(mob/living/carbon/human/character)
-	character.mind.adjust_skillrank_up_to(/datum/skill/craft/crafting, 2, TRUE)
-	character.mind.adjust_skillrank_up_to(/datum/skill/craft/weaponsmithing, 2, TRUE)
-	character.mind.adjust_skillrank_up_to(/datum/skill/craft/armorsmithing, 2, TRUE)
-	character.mind.adjust_skillrank_up_to(/datum/skill/craft/blacksmithing, 2, TRUE)
-	character.mind.adjust_skillrank_up_to(/datum/skill/craft/carpentry, 2, TRUE)
-	character.mind.adjust_skillrank_up_to(/datum/skill/craft/masonry, 2, TRUE)
-	character.mind.adjust_skillrank_up_to(/datum/skill/craft/traps, 2, TRUE)
-	character.mind.adjust_skillrank_up_to(/datum/skill/craft/cooking, 2, TRUE)
-	character.mind.adjust_skillrank_up_to(/datum/skill/craft/engineering, 2, TRUE)
-	character.mind.adjust_skillrank_up_to(/datum/skill/craft/tanning, 2, TRUE)
+	character.mind.adjust_skillrank_up_to(/datum/skill/craft/crafting, 3, TRUE)
+	character.mind.adjust_skillrank_up_to(/datum/skill/craft/weaponsmithing, 3, TRUE)
+	character.mind.adjust_skillrank_up_to(/datum/skill/craft/armorsmithing, 3, TRUE)
+	character.mind.adjust_skillrank_up_to(/datum/skill/craft/blacksmithing, 3, TRUE)
+	character.mind.adjust_skillrank_up_to(/datum/skill/craft/carpentry, 3, TRUE)
+	character.mind.adjust_skillrank_up_to(/datum/skill/craft/masonry, 3, TRUE)
+	character.mind.adjust_skillrank_up_to(/datum/skill/craft/traps, 3, TRUE)
+	character.mind.adjust_skillrank_up_to(/datum/skill/craft/cooking, 3, TRUE)
+	character.mind.adjust_skillrank_up_to(/datum/skill/craft/engineering, 3, TRUE)
+	character.mind.adjust_skillrank_up_to(/datum/skill/craft/tanning, 3, TRUE) // if it's requiring middle-aged at least make him a fucking journeyman bruh.
 
 /datum/special_trait/bleublood
 	name = "Noble Lineage"
@@ -299,7 +299,7 @@
 	greet_text = span_notice("Xylix favor me, I am extremely lucky.")
 	req_text = "Have Xylix as your Patron"
 	allowed_patrons = list(/datum/patron/divine/xylix)
-	weight = 7
+	weight = 25 //make this actually appear in the game, maybe..?
 
 /datum/special_trait/lucky/on_apply(mob/living/carbon/human/character, silent)
 	character.STALUC = rand(15, 20) //In other words, In the next round following the special, you are effectively lucky.
@@ -408,7 +408,7 @@
 /datum/special_trait/unlucky
 	name = "Unlucky"
 	greet_text = span_boldwarning("Ever since you knocked over that glass vase, you just feel... off")
-	weight = 100
+	weight = 50 //this is EXTREMELY hindering, do you even know how much it SUCKS to have 1-5 luck?
 
 /datum/special_trait/unlucky/on_apply(mob/living/carbon/human/character, silent)
 	character.STALUC = rand(1, 10)
@@ -425,7 +425,7 @@
 /datum/special_trait/xenophobic
 	name = "Xenophobic"
 	greet_text = span_boldwarning("Lesser races pollute our land")
-	weight = 200
+	weight = 0 //boring, boring, boring, fucking boring, -1 mood when a drow is near is absolutely pointless, nobody roleplays xenophobic or tolerant anyway, their characters don't need a special to decide this.
 
 /datum/special_trait/xenophobic/on_apply(mob/living/carbon/human/character, silent)
 	ADD_TRAIT(character, TRAIT_XENOPHOBIC, "[type]")
@@ -443,7 +443,7 @@
 /datum/special_trait/atrophy
 	name = "Atrophy"
 	greet_text = span_boldwarning("When growing up I could barely feed myself... this left me weak and fragile")
-	weight = 200
+	weight = 100 //why are we going over 100 at all?
 
 /datum/special_trait/atrophy/on_apply(mob/living/carbon/human/character)
 	character.change_stat("strength", -2)
@@ -453,7 +453,7 @@
 /datum/special_trait/lazy
 	name = "Lazy"
 	greet_text = span_boldwarning("I don't care, never did")
-	weight = 200
+	weight = 100 //same as above, it's supposed to be rng not "you're more likely to get atrophy than something half decent"
 
 /datum/special_trait/lazy/on_apply(mob/living/carbon/human/character)
 	character.change_stat("strength", -1)
@@ -473,7 +473,7 @@
 /datum/special_trait/nude_sleeper
 	name = "Picky Sleeper"
 	greet_text = span_boldwarning("I just can't seem to fall asleep unless I'm <i>truly</i> comfortable...")
-	weight = 25
+	weight = 75 //stripping yourself to sleep isn't hindering enough to be this unlikely
 
 /datum/special_trait/nude_sleeper/on_apply(mob/living/carbon/human/character, silent)
 	ADD_TRAIT(character, TRAIT_NUDE_SLEEPER, "[type]")
@@ -520,7 +520,7 @@
 	greet_text = span_notice("I was once a nobleman, high on life until my father was murdered right in front of me. Thankfully, my mentor took me to safety and taught me all I needed to survive in these disgusting lands. They think I am a lowlife, but that's just an advantage.")
 	req_text = "Be a beggar"
 	allowed_jobs = list(/datum/job/roguetown/beggar)
-	weight = 7
+	weight = 15 //make this actually appear in the game, maybe..?
 
 /datum/special_trait/vengantbum/on_apply(mob/living/carbon/human/character, silent)
 	ADD_TRAIT(character, TRAIT_DECEIVING_MEEKNESS, "[type]")
