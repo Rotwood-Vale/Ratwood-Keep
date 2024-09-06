@@ -138,13 +138,64 @@
 /obj/structure/fluff/traveltile/vampire
 
 /obj/structure/fluff/traveltile/dungeon
-	name = "gate"
-	desc = "This gate's enveloping darkness is so opressive you dread to step through it."
-	icon = 'icons/roguetown/misc/portal.dmi'
-	icon_state = "portal"
-	density = FALSE
-	anchored = TRUE
-	max_integrity = 0
-	bound_width = 96
-	appearance_flags = NONE
-	opacity = FALSE
+    name = "gate"
+    desc = "This gate's enveloping darkness is so oppressive you dread to step through it."
+    icon = 'icons/roguetown/misc/portal.dmi'
+    icon_state = "portal"
+    density = FALSE
+    anchored = TRUE
+    max_integrity = 0
+    bound_width = 96
+    appearance_flags = NONE
+    opacity = FALSE
+    var/turf/target_location
+
+    /obj/structure/fluff/traveltile/dungeon/Initialize()
+        . = ..()
+        target_location = get_other_end_turf()
+
+    /obj/structure/fluff/traveltile/dungeon/Crossed(atom/movable/AM)
+        . = ..()
+        if(!isliving(AM))
+            return
+        var/mob/living/L = AM
+        if(L.stat != CONSCIOUS || L.incapacitated())
+            return
+        addtimer(CALLBACK(src, .proc/try_teleport, L), 1)
+
+    /obj/structure/fluff/traveltile/dungeon/Uncross(atom/movable/AM, atom/newloc)
+        . = ..()
+        if(!isliving(AM))
+            return TRUE
+        var/mob/living/L = AM
+        if(is_bandit_locked(L) && newloc == target_location)
+            to_chat(L, "<span class='warning'>You are locked out of the dungeon for the first 30 minutes.</span>")
+            return FALSE
+        return TRUE
+
+    /obj/structure/fluff/traveltile/dungeon/proc/try_teleport(mob/living/user)
+        if(!can_go(user))
+            return
+        if(is_bandit_locked(user))
+            to_chat(user, "<span class='warning'>You are locked out of the dungeon for the first 30 minutes.</span>")
+            return
+        if(!target_location)
+            to_chat(user, "<span class='warning'>It is a dead end.</span>")
+            return
+        if(!do_after(user, 5 SECONDS, FALSE, target = src))
+            return
+        if(!can_go(user))
+            return
+        if(user.pulling)
+            user.pulling.recent_travel = world.time
+        user.recent_travel = world.time
+        reveal_travel_trait_to_others(user)
+        mob_move_travel_z_level(user, target_location)
+
+    /obj/structure/fluff/traveltile/dungeon/proc/is_bandit_locked(mob/living/user)
+        if(istype(user, /mob/living/carbon/human))
+            var/mob/living/carbon/human/H = user
+            if(H.mind && H.mind.has_antag_datum(/datum/antagonist/bandit))
+                var/datum/antagonist/bandit/B = H.mind.has_antag_datum(/datum/antagonist/bandit)
+                return B.dungeon_locked
+        return FALSE
