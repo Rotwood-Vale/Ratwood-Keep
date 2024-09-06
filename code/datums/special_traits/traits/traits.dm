@@ -443,7 +443,7 @@
 /datum/special_trait/atrophy
 	name = "Atrophy"
 	greet_text = span_boldwarning("When growing up I could barely feed myself... this left me weak and fragile")
-	weight = 100 //why are we going over 100 at all?
+	weight = 175
 
 /datum/special_trait/atrophy/on_apply(mob/living/carbon/human/character)
 	character.change_stat("strength", -2)
@@ -453,7 +453,7 @@
 /datum/special_trait/lazy
 	name = "Lazy"
 	greet_text = span_boldwarning("I don't care, never did")
-	weight = 100 //same as above, it's supposed to be rng not "you're more likely to get atrophy than something half decent"
+	weight = 175
 
 /datum/special_trait/lazy/on_apply(mob/living/carbon/human/character)
 	character.change_stat("strength", -1)
@@ -465,7 +465,7 @@
 /datum/special_trait/bad_week
 	name = "Bad Week"
 	greet_text = span_boldwarning("Everything just seems to piss me off")
-	weight = 100
+	weight = 150
 
 /datum/special_trait/bad_week/on_apply(mob/living/carbon/human/character, silent)
 	ADD_TRAIT(character, TRAIT_BAD_MOOD, "[type]")
