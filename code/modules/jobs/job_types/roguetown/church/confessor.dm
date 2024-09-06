@@ -44,7 +44,7 @@
 	beltl = /obj/item/rogueweapon/mace/cudgel
 	neck = /obj/item/clothing/neck/roguetown/psicross/silver
 	backr = /obj/item/storage/backpack/rogue/satchel/black 
-	backpack_contents = list(/obj/item/keyring/puritan = 1, /obj/item/rogueweapon/huntingknife/idagger/steel = 1)
+	backpack_contents = list(/obj/item/keyring/shepherd = 1, /obj/item/rogueweapon/huntingknife/idagger/steel = 1)
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 5, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/knives, 4, TRUE)
