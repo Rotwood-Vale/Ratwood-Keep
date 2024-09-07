@@ -342,7 +342,7 @@
 /obj/item/udder
 	name = "udder"
 
-/obj/item/udder/Initialize()
+/obj/item/udder/Initialize() 
 	create_reagents(100)
 	reagents.add_reagent(/datum/reagent/consumable/milk, rand(0,20))
 	. = ..()
@@ -355,8 +355,8 @@
 	if(G.reagents.total_volume >= G.volume)
 		to_chat(user, span_warning("[O] is full."))
 		return
-	if(!do_after(user, 20, target = src))
-		var/transfered = reagents.trans_to(O, rand(5,10))
+	if(do_after(user, 20, target = src))
+		var/transfered = reagents.trans_to(O, ((G.volume) - (G.reagents.total_volume)))
 		if(transfered)
 			user.visible_message(span_notice("[user] milks [src] using \the [O]."), span_notice("I milk [src] using \the [O]."))
 		else

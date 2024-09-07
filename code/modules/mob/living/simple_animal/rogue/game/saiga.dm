@@ -58,6 +58,7 @@
 	health = 156
 	maxHealth = 156
 	food_type = list(/obj/item/reagent_containers/food/snacks/grown/wheat,/obj/item/reagent_containers/food/snacks/grown/oat,/obj/item/reagent_containers/food/snacks/grown/apple)
+	tame = TRUE
 	tame_chance = 25
 	bonus_tame_chance = 15
 	footstep_type = FOOTSTEP_MOB_SHOE
@@ -209,6 +210,7 @@
 	can_buckle = TRUE
 	buckle_lying = 0
 	can_saddle = TRUE
+	tame = TRUE
 	tame_chance = 25
 	bonus_tame_chance = 15
 	aggressive = 1
