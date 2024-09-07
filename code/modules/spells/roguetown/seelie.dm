@@ -218,7 +218,12 @@ obj/effect/proc_holder/spell/targeted/static_room/cast(list/targets, mob/user = 
 	var/tamed = FALSE
 	for(var/mob/living/simple_animal/hostile/retaliate/rogue/bigrat/B in oview(2))
 		if(!B.tame)
-			B.faction = list("Station")
 			B.tame = TRUE
-			B.aggressive = 0
+			B.friends = (user)
+		user.visible_message(span_info("[B] calms down."))
+		B.enemies = list()
+		B.friends = list(user) //Makes the Rous not target the Seelie when on aggro
+		B.aggressive = 0
+		B.LoseTarget()
+		tamed  = B.tame
 	return tamed
