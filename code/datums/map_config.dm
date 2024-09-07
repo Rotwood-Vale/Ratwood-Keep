@@ -5,7 +5,7 @@
 
 /datum/map_config
 	// Metadata
-	var/config_filename = "_maps/rockhill.json"
+	var/config_filename = "_maps/rockhill2.json"
 	var/defaulted = TRUE  // set to FALSE by LoadConfig() succeeding
 	// Config from maps.txt
 	var/config_max_users = 0
@@ -14,9 +14,9 @@
 	var/votable = FALSE
 
 	// Config actually from the JSON - should default to Box
-	var/map_name = "Rockhill"
-	var/map_path = "map_files/rockhill"
-	var/map_file = "rockhill.dmm"
+	var/map_name = "Rockhill2"
+	var/map_path = "map_files/rockhill2"
+	var/map_file = "rockhill2.dmm"
 
 	var/traits = null
 	var/space_ruin_levels = 0

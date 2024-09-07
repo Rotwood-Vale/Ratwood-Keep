@@ -13,6 +13,7 @@
 #include "_maps\templates\dungeons.dm"
 #include "_maps\templates\sewers.dm"
 #include "_maps\templates\smalldungeons.dm"
+#include "_maps\rockhill2.dm"
 #include "code\__byond_version_compat.dm"
 #include "code\_compile_options.dm"
 #include "code\rt.dm"
