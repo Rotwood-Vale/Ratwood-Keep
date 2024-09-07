@@ -122,7 +122,8 @@
 	var/budget = 0
 	var/upgrade_flags
 	var/current_cat = "1"
-	var/hidden_key = TRUE
+	//Whether or not the hidden key is still present- Shophands can take it.
+	var/hidden_key_present = TRUE
 
 /obj/structure/roguemachine/merchantvend/Initialize()
 	. = ..()
@@ -138,7 +139,7 @@
 
 /obj/structure/roguemachine/merchantvend/attack_right(mob/user)
 	if(user.mind.assigned_role == "Shophand")
-		if(hidden_key)		
+		if(hidden_key_present)		
 			for(var/mob/living/carbon/human/boss in GLOB.human_list)		
 				if(boss.mind)
 					if(boss.mind.assigned_role == "Merchant")
@@ -155,7 +156,7 @@
 				var/obj/item/roguekey/key
 				key = new /obj/item/roguekey/merchant(get_turf(user))
 				user.put_in_hands(key)
-				hidden_key = FALSE
+				hidden_key_present = FALSE
 		else
 			to_chat(user, span_warning("The hidden compartment lies empty."))
 
