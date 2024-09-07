@@ -274,7 +274,6 @@
 	associated_skill = /datum/skill/combat/polearms
 	max_blade_int = 300
 	max_integrity = 500
-	dropshrink = 0.6
 	blade_dulling = DULLING_BASHCHOP
 	walking_stick = TRUE
 	wdefense = 5
@@ -295,7 +294,7 @@
 
 /obj/item/rogueweapon/eaglebeak/lucerne
 	name = "lucerne"
-	desc = "A polehammer of simple iron, fracture bone and dissent with simple brute force."
+	desc = "A polehammer of simple iron. Fracture bone and dissent with simple brute force."
 	force = 12
 	force_wielded = 25
 	icon_state = "polehammer"
