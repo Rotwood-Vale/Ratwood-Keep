@@ -58,6 +58,13 @@
 	created_item = /obj/item/clothing/suit/roguetown/armor/leather/studded
 	i_type = "Armor"
 
+/datum/anvil_recipe/armor/studdedbikini
+	name = "Studded Leather Bikini (+Leather Bikini)"
+	req_bar = /obj/item/ingot/iron
+	additional_items = list(/obj/item/clothing/suit/roguetown/armor/leather)
+	created_item = /obj/item/clothing/suit/roguetown/armor/leather/studded/bikini
+	i_type = "Armor"
+
 /datum/anvil_recipe/armor/helmetgoblin
 	name = "Goblin Helmet (+1 Iron)"
 	req_bar = /obj/item/ingot/iron
@@ -65,7 +72,7 @@
 	created_item = /obj/item/clothing/head/roguetown/helmet/goblin
 	craftdiff = 2
 	i_type = "Armor"
-	
+
 /datum/anvil_recipe/armor/plategoblin
 	name = "Goblin Mail (+1 Iron)"
 	req_bar = /obj/item/ingot/iron
@@ -80,6 +87,13 @@
 	name = "Haubergeon"
 	req_bar = /obj/item/ingot/steel
 	created_item = /obj/item/clothing/suit/roguetown/armor/chainmail
+	i_type = "Armor"
+
+/datum/anvil_recipe/armor/chainkini
+	name = "Chainmail Bikini (+1 Cloth)"
+	req_bar = /obj/item/ingot/steel
+	additional_items = list(/obj/item/natural/cloth)
+	created_item = /obj/item/clothing/suit/roguetown/armor/chainmail/bikini
 	i_type = "Armor"
 
 /datum/anvil_recipe/armor/hauberk
@@ -103,6 +117,22 @@
 	req_bar = /obj/item/ingot/steel
 	additional_items = list(/obj/item/ingot/steel, /obj/item/ingot/steel, /obj/item/ingot/steel)
 	created_item = /obj/item/clothing/suit/roguetown/armor/plate/full
+	craftdiff = 4
+	i_type = "Armor"
+
+/datum/anvil_recipe/armor/platebikini
+	name = "Half-Plate Bikini (+1 Steel +1 Cloth)"
+	req_bar = /obj/item/ingot/steel
+	additional_items = list(/obj/item/ingot/steel, /obj/item/natural/cloth)
+	created_item = /obj/item/clothing/suit/roguetown/armor/plate/bikini
+	craftdiff = 3
+	i_type = "Armor"
+
+/datum/anvil_recipe/armor/platefullbikini
+	name = "Full-Plate Bikini (+2 Steel +1 Cloth)"
+	req_bar = /obj/item/ingot/steel
+	additional_items = list(/obj/item/ingot/steel, /obj/item/ingot/steel, /obj/item/natural/cloth)
+	created_item = /obj/item/clothing/suit/roguetown/armor/plate/full/bikini
 	craftdiff = 4
 	i_type = "Armor"
 
@@ -152,9 +182,23 @@
 	created_item = /obj/item/clothing/under/roguetown/brayette
 	i_type = "Armor"
 
+/datum/anvil_recipe/armor/chainskirt
+	name = "Chain Skirt"
+	req_bar = /obj/item/ingot/steel
+	created_item = /obj/item/clothing/under/roguetown/chainlegs/skirt
+	i_type = "Armor"
+
+/datum/anvil_recipe/armor/plateskirt
+	name = "Plated Skirt (+1 Steel)"
+	req_bar = /obj/item/ingot/steel
+	additional_items = list(/obj/item/ingot/steel)
+	created_item = /obj/item/clothing/under/roguetown/platelegs/skirt
+	craftdiff = 2
+	i_type = "Armor"
+
 /datum/anvil_recipe/armor/platelegs
 	name = "Plated Chausses (+1 Steel)"
-	req_bar = /obj/item/ingot/steel 
+	req_bar = /obj/item/ingot/steel
 	additional_items = list(/obj/item/ingot/steel)
 	created_item = /obj/item/clothing/under/roguetown/platelegs
 	craftdiff = 2
