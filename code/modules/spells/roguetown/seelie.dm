@@ -217,9 +217,8 @@ obj/effect/proc_holder/spell/targeted/static_room/cast(list/targets, mob/user = 
 	visible_message(span_green("[usr] soothes the beastblood with Dendor's whisper."))
 	var/tamed = FALSE
 	for(var/mob/living/simple_animal/hostile/retaliate/rogue/bigrat/B in oview(2))
-		if(B.aggressive)
-			B.faction = list("Neutral")
-			B.ssaddle = /obj/item/natural/saddle
+		if(!B.tame)
+			B.faction = list("Station")
 			B.tame = TRUE
-		B.aggressive = 0
+			B.aggressive = 0
 	return tamed

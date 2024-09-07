@@ -232,7 +232,7 @@
 
 /mob/living/simple_animal/hostile/retaliate/rogue/attackby(obj/item/O, mob/user, params)
 	if(!stat && istype(O, /obj/item/reagent_containers/glass))
-		if(udder)
+		if(udder && tame)
 			udder.milkAnimal(O, user)
 			return 1
 	else

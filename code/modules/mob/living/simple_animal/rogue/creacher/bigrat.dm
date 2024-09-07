@@ -36,7 +36,6 @@
 	STASTR = 9
 	STASPD = 10
 	can_buckle = TRUE
-	//tame = TRUE  //REMOVE THIS!!!
 	deaggroprob = 0
 	defprob = 40
 	defdrain = 10
@@ -63,6 +62,8 @@
 		icon_state = "Frat"
 		icon_living = "Frat"
 		icon_dead = "Frat1"
+		milkies = TRUE
+		udder = new()
 	update_icon()
 
 /mob/living/simple_animal/hostile/retaliate/rogue/bigrat/tamed(mob/user)
@@ -116,9 +117,7 @@
 
 /mob/living/simple_animal/hostile/retaliate/rogue/bigrat/Life()
 	..()
-	if(aggressive == 0)
-		return
-	if(pulledby)
+	if(pulledby && !tame)
 		Retaliate()
 		GiveTarget(pulledby)
 

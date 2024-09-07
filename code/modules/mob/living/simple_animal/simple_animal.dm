@@ -826,7 +826,7 @@ mob/living/simple_animal/handle_fire()
 			if(loc != oldloc)
 				var/obj/structure/mineral_door/MD = locate() in loc
 				if(MD && !MD.ridethrough)
-					if(isliving(user))
+					if(isliving(user) && !isseelie(user))
 						var/mob/living/L = user
 						unbuckle_mob(L)
 						L.Paralyze(50)
