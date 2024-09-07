@@ -171,7 +171,7 @@
 	detail_color = "#9AB0B0"
 
 /obj/item/clothing/cloak/tabard/crusader/psydon
-	color = CLOTHING_RED
+	color = CLOTHING_BLACK
 	detail_color = CLOTHING_WHITE
 
 //Eora content from Stonekeep
