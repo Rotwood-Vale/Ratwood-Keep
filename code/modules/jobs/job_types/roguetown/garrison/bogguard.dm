@@ -57,6 +57,7 @@ Also given some non-combat skills that a peasent would have, just to support the
 		H.mind.adjust_skillrank(/datum/skill/misc/medicine, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/riding, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/tracking, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/craft/crafting, 2, TRUE)	//Peasent levy, so some skill
 		H.mind.adjust_skillrank(/datum/skill/labor/farming, 2, TRUE)		//Peasent levy, so some skill
 		H.change_stat("strength", 2)
