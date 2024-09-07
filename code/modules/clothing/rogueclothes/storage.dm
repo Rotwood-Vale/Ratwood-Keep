@@ -59,6 +59,11 @@
 	icon_state = "shalal"
 	sellprice = 5
 
+/obj/item/storage/belt/rogue/leather/shalalz
+	name = "zybantine shalal belt"
+	icon_state = "shalal_z"
+	sellprice = 5
+
 /obj/item/storage/belt/rogue/leather/black
 	name = "black belt"
 	icon_state = "blackbelt"
