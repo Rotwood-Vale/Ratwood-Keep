@@ -12582,13 +12582,6 @@
 /obj/item/reagent_containers/glass/cup/golden,
 /turf/open/floor/carpet/red,
 /area/rogue/indoors/town/church/chapel)
-"mlJ" = (
-/obj/structure/stairs{
-	dir = 1;
-	icon_state = "stairs"
-	},
-/turf/closed,
-/area/rogue/indoors/town/tavern)
 "mlK" = (
 /obj/structure/fluff/walldeco/bigpainting/lake{
 	pixel_x = 0
@@ -22205,7 +22198,7 @@
 	dir = 1;
 	icon_state = "stairs"
 	},
-/turf/open/transparent/openspace,
+/turf/open/floor/rogue/ruinedwood,
 /area/rogue/indoors/town/tavern)
 "vvV" = (
 /obj/structure/stairs{
@@ -396228,7 +396221,7 @@ dnd
 iJC
 iJC
 iJC
-mlJ
+vvI
 dAQ
 fZJ
 fZJ
