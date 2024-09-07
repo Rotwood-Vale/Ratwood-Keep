@@ -8,6 +8,7 @@
 
 	allowed_races = RACES_ALL_KINDS
 	allowed_sexes = list(MALE, FEMALE)
+	allowed_patrons = ALL_PALADIN_PATRONS
 	tutorial = "Confessors are shady agents of the church hired to spy on the populace and keep them moral. As the most fanatical members of the clergy, their main concern is assisting the local Puritan with their work in extracting confessions of sin as well as hunting night beasts and cultists that hide in plain sight."
 
 	outfit = /datum/outfit/job/roguetown/shepherd
@@ -21,6 +22,7 @@
 /datum/outfit/job/roguetown/shepherd
 	name = "Confessor"
 	jobtype = /datum/job/roguetown/shepherd
+	allowed_patrons = ALL_PALADIN_PATRONS
 
 /datum/outfit/job/roguetown/shepherd/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -49,6 +51,7 @@
 		H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/whipsflails, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/knives, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/tracking, 1, TRUE)
 		H.change_stat("intelligence", -1)
 		H.change_stat("endurance", 1)
 		H.change_stat("strength", 2)

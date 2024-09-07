@@ -19,7 +19,6 @@
 	gloves = /obj/item/clothing/gloves/roguetown/angle
 	belt = /obj/item/storage/belt/rogue/leather/black
 	armor = /obj/item/clothing/suit/roguetown/armor/plate/half/elven
-	backr = /obj/item/rogueweapon/spear
 	backl = /obj/item/storage/backpack/rogue/satchel
 	r_hand = /obj/item/rogueweapon/halberd/bardiche
 	beltl = /obj/item/rogueweapon/huntingknife/idagger/steel/special
@@ -37,6 +36,7 @@
 		H.mind.adjust_skillrank(/datum/skill/misc/swimming, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/climbing, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/tracking, 2, TRUE)
 		H.change_stat("endurance", 2)
 		H.change_stat("constitution", 2)
 		H.change_stat("strength", 1)
