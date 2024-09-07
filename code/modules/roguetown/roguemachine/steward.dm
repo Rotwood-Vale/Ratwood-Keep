@@ -16,7 +16,7 @@
 	anchored = TRUE
 	layer = BELOW_OBJ_LAYER
 	var/locked = FALSE
-	var/keycontrol = "steward", "lord"
+	var/keycontrol = "steward"
 	var/current_tab = TAB_MAIN
 
 
