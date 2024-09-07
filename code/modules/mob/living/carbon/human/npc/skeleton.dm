@@ -95,7 +95,7 @@
 	H.STAEND = 15
 	H.STAINT = 1
 	if(prob(50))
-		r_hand = /obj/item/rogueweapon/sword
+		r_hand = /obj/item/rogueweapon/sword/iron
 	else
 		r_hand = /obj/item/rogueweapon/mace
 
