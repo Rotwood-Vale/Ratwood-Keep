@@ -41,7 +41,7 @@
 			neck = /obj/item/clothing/neck/roguetown/psicross/eora
 			cloak = /obj/item/clothing/cloak/tabard/crusader/eora
 		if(/datum/patron/old_god)
-			neck = /obj/item/clothing/neck/roguetown/psicross
+			neck = /obj/item/clothing/neck/roguetown/psicross/silver
 			cloak = /obj/item/clothing/cloak/tabard/crusader/psydon
 
 	H.adjust_blindness(-3)
