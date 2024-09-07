@@ -50,7 +50,7 @@
 	name = "Bog Ranger"
 
 /datum/advclass/bogguard
-	name = "bog guard"
+	name = "Bog Guard"
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_VERY_SHUNNED_UP
 	outfit = /datum/outfit/job/roguetown/bogguardsman
@@ -59,7 +59,7 @@
 	category_tags = list(CTAG_BOG)
 
 /datum/advclass/bogranger
-	name = "bog ranger"
+	name = "Bog Ranger"
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_VERY_SHUNNED_UP
 	outfit = /datum/outfit/job/roguetown/ranger
