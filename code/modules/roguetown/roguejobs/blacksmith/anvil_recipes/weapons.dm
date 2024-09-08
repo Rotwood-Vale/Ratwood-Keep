@@ -40,12 +40,12 @@
 	created_item = /obj/item/rogueweapon/huntingknife/idagger/steel
 	i_type = "Weapons"
 
-/datum/anvil_recipe/weapons/sidagger
+/*/datum/anvil_recipe/weapons/sidagger
 	name = "Dagger"
 	req_bar = /obj/item/ingot/silver
 	created_item = /obj/item/rogueweapon/huntingknife/idagger/silver
 	i_type = "Weapons"
-
+*/
 /datum/anvil_recipe/weapons/iflail
 	name = "Flail"
 	req_bar = /obj/item/ingot/iron
