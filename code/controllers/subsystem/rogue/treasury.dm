@@ -188,14 +188,18 @@ SUBSYSTEM_DEF(treasury)
 	return TRUE
 
 
-/datum/controller/subsystem/treasury/proc/withdraw_money_account(amt, name)
+/datum/controller/subsystem/treasury/proc/withdraw_money_account(amt, target)
 	if(!amt)
 		return
+	var/target_name = target
+	if(istype(target,/mob/living/carbon/human))
+		var/mob/living/carbon/human/H = target
+		target_name = H.real_name
 	var/found_account
 	for(var/X in bank_accounts)
-		if(X == name)
+		if(X == target)
 			if(bank_accounts[X] < amt)  // Check if the withdrawal amount exceeds the player's account balance
-				send_ooc_note("<b>The Bank:</b> Error: Insufficient funds in the account to complete the withdrawal.", name = name)
+				send_ooc_note("<b>The Bank:</b> Error: Insufficient funds in the account to complete the withdrawal.", name = target_name)
 				return  // Return without processing the transaction
 			bank_accounts[X] -= amt //The account accounts accountingly. Shame on you if you copy this, apple.
 			found_account = TRUE
