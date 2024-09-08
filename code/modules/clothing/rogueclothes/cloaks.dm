@@ -66,6 +66,7 @@
 	picked = TRUE
 	if(design != "None")
 		detail_tag = design
+		boobed_detail = FALSE
 	switch(design)
 		if("Split")
 			detail_tag = "_spl"
