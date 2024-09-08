@@ -91,6 +91,12 @@
 			target.key = C.key
 			target.visible_message(span_warning("[target]'s eyes light up with an eerie glow!"))
 			target.mind.AddSpell(new /obj/effect/proc_holder/spell/self/suicidebomb/lesser)
+			target.mind.adjust_skillrank(/datum/skill/combat/maces, 2, TRUE)
+			target.mind.adjust_skillrank(/datum/skill/combat/axes, 2, TRUE)
+			target.mind.adjust_skillrank(/datum/skill/combat/crossbows, 2, TRUE)
+			target.mind.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE)
+			target.mind.adjust_skillrank(/datum/skill/combat/unarmed, 3, TRUE)
+			target.mind.adjust_skillrank(/datum/skill/combat/swords, 2, TRUE)
 		else
 			target.visible_message(span_warning("[target]'s eyes remain dully devoid of life. The spell failed to capture a soul from the ether."))
 		return TRUE
