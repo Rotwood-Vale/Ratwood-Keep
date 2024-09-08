@@ -75,7 +75,7 @@
 	charging_slowdown = 1
 	chargedloop = /datum/looping_sound/invokegen
 	associated_skill = /datum/skill/magic/arcane
-	charge_max = 60 SECONDS
+	charge_max = 30 SECONDS
 
 /obj/effect/proc_holder/spell/invoked/raise_undead/cast(list/targets, mob/living/user)
 	. = ..()
