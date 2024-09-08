@@ -66,7 +66,6 @@
 	picked = TRUE
 	if(design != "None")
 		detail_tag = design
-		boobed_detail = FALSE
 	switch(design)
 		if("Split")
 			detail_tag = "_spl"
@@ -76,6 +75,8 @@
 			detail_tag = "_box"
 		if("Diamonds")
 			detail_tag = "_dim"
+		else
+			boobed_detail = FALSE
 	color = clothing_color2hex(colorone)
 	if(colortwo)
 		detail_color = clothing_color2hex(colortwo)
