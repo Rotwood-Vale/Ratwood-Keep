@@ -103,33 +103,6 @@
 	to_chat(user, span_warning("The targeted location is blocked. My summon fails to come forth."))
 	return FALSE
 
-/obj/effect/proc_holder/spell/invoked/raise_lesser_undead
-	name = "Raise Lesser Undead"
-	desc = ""
-	clothes_req = FALSE
-	range = 7
-	overlay_state = "raiseskele"
-	sound = list('sound/magic/magnet.ogg')
-	releasedrain = 40
-	chargetime = 60
-	warnie = "spellwarning"
-	no_early_release = TRUE
-	charging_slowdown = 1
-	chargedloop = /datum/looping_sound/invokegen
-	associated_skill = /datum/skill/magic/arcane
-	charge_max = 60 SECONDS
-
-/obj/effect/proc_holder/spell/invoked/raise_lesser_undead/cast(list/targets, mob/living/user)
-	. = ..()
-	var/turf/T = get_turf(targets[1])
-	var/skeleton_roll = rand(1,100)
-	if(isopenturf(T))
-		new /mob/living/carbon/human/species/skeleton/npc(T)
-		return TRUE
-	else
-		to_chat(user, span_warning("The targeted location is blocked. My summon fails to come forth."))
-		return FALSE
-
 /obj/effect/proc_holder/spell/invoked/projectile/sickness
 	name = "Ray of Sickness"
 	desc = ""
