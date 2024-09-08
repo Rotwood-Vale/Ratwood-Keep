@@ -60,6 +60,11 @@
 	ADD_TRAIT(src, TRAIT_LIMBATTACHMENT, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
+
+	var/obj/item/organ/tongue/tongue = src.getorganslot(ORGAN_SLOT_TONGUE)
+	if(tongue)
+		tongue.Remove(src,1)
+		QDEL_NULL(tongue)
 	var/obj/item/organ/eyes/eyes = src.getorganslot(ORGAN_SLOT_EYES)
 	if(eyes)
 		eyes.Remove(src,1)
