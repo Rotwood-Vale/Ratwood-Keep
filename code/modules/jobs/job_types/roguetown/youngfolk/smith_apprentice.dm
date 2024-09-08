@@ -26,7 +26,6 @@
 		H.mind.adjust_skillrank(/datum/skill/craft/blacksmithing, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/craft/armorsmithing, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/craft/weaponsmithing, 2, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/craft/smelting, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/craft/crafting, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
 	if(H.pronouns == SHE_HER)

@@ -12,10 +12,10 @@
 	..()
 	pants = /obj/item/clothing/under/roguetown/tights/black
 	armor = /obj/item/clothing/suit/roguetown/armor/leather/vest/black
-	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/black
-	backl = /obj/item/storage/backpack/rogue/satchel
+	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/random
+	backr = /obj/item/storage/backpack/rogue/satchel
 	belt = /obj/item/storage/belt/rogue/leather
-	backpack_contents = list(/obj/item/rogueweapon/pick = 1, /obj/item/rogueweapon/huntingknife = 1, /obj/item/lockpick)
+	backpack_contents = list(/obj/item/bait = 1)
 	gloves = /obj/item/clothing/gloves/roguetown/fingerless
 	cloak = /obj/item/clothing/cloak/raincloak/mortus
 	armor = /obj/item/clothing/suit/roguetown/armor/chainmail
@@ -27,7 +27,6 @@
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/combat/maces, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/axes, 1, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/lockpicking, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/athletics, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)

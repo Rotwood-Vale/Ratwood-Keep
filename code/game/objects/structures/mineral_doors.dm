@@ -45,7 +45,6 @@
 	var/masterkey = TRUE //if masterkey can open this regardless
 	var/kickthresh = 15
 	var/swing_closed = TRUE
-	var/lock_strength = 100
 
 	damage_deflection = 10
 
@@ -283,8 +282,6 @@
 			door_rattle()
 			return
 		trykeylock(I, user)
-	if(istype(I, /obj/item/lockpick))
-		trypicklock(I, user)
 	else
 		return ..()
 
@@ -333,63 +330,6 @@
 			door_rattle()
 		return
 
-/obj/structure/mineral_door/proc/trypicklock(obj/item/I, mob/user)
-	if(door_opened || isSwitchingStates)
-		to_chat(user, "<span class='warning'>This cannot be picked while it is open.</span>")
-		return
-	if(!keylock)
-		return
-	if(lockbroken)
-		to_chat(user, "<span class='warning'>The lock to this door is broken.</span>")
-		user.changeNext_move(CLICK_CD_MELEE)
-	else
-		var/lockprogress = 0
-		var/locktreshold = lock_strength
-
-		var/obj/item/lockpick/P = I
-		var/mob/living/L = user
-
-		var/pickskill = user.mind.get_skill_level(/datum/skill/misc/lockpicking)
-		var/perbonus = L.STAPER/5
-		var/picktime = 70
-		var/pickchance = 35
-		var/moveup = 10
-
-		picktime -= (pickskill * 10)
-		picktime = clamp(picktime, 10, 70)
-
-		moveup += (pickskill * 3)
-		moveup = clamp(moveup, 10, 30)
-
-		pickchance += pickskill * 10
-		pickchance += perbonus
-		pickchance *= P.picklvl
-		pickchance = clamp(pickchance, 1, 95)
-
-
-
-		while(!QDELETED(I) &&(lockprogress < locktreshold))
-			if(!do_after(user, picktime, target = src))
-				break
-			if(prob(pickchance))
-				lockprogress += moveup
-				playsound(src.loc, pick('sound/items/pickgood1.ogg','sound/items/pickgood2.ogg'), 5, TRUE)
-				to_chat(user, "<span class='warning'>Click...</span>")
-				if(L.mind)
-					add_sleep_experience(L, /datum/skill/misc/lockpicking, L.STAINT/2)
-				if(lockprogress >= locktreshold)
-					to_chat(user, "<span class='deadsay'>The locking mechanism gives.</span>")
-					lock_toggle(user)
-					break
-				else
-					continue
-			else
-				playsound(loc, 'sound/items/pickbad.ogg', 40, TRUE)
-				I.take_damage(1, BRUTE, "blunt")
-				to_chat(user, "<span class='warning'>Clack.</span>")
-				add_sleep_experience(L, /datum/skill/misc/lockpicking, L.STAINT/4)
-				continue
-		return
 
 /obj/structure/mineral_door/proc/lock_toggle(mob/user)
 	if(isSwitchingStates || door_opened)
@@ -759,7 +699,6 @@
 	unlocksound = 'sound/foley/doors/lockmetal.ogg'
 	rattlesound = 'sound/foley/doors/lockrattlemetal.ogg'
 	attacked_sound = list("sound/combat/hits/onmetal/metalimpact (1).ogg", "sound/combat/hits/onmetal/metalimpact (2).ogg")
-	lock_strength = 200
 
 /obj/structure/mineral_door/wood/donjon/stone
 	desc = "stone door"
@@ -832,7 +771,6 @@
 	attacked_sound = list("sound/combat/hits/onmetal/metalimpact (1).ogg", "sound/combat/hits/onmetal/metalimpact (2).ogg")
 	ridethrough = TRUE
 	swing_closed = FALSE
-	lock_strength = 150
 
 /obj/structure/mineral_door/barsold
 	name = "iron door"

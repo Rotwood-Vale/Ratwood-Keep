@@ -52,9 +52,6 @@
 		"...The pale volf gets on it's hindlegs, and howls unto the moon. It seeks prey, and you happen to be unfortunate enough to be in it's forest. This is the third time it circled you, as you press yourself tighter into the hollow tree, completely still..."
 	)
 
-/datum/skill/misc/lockpicking
-	name = "Lockpicking"
-
 /datum/skill/misc/riding
 	name = "Riding"
 	dreams = list(

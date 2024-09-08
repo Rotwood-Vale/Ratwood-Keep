@@ -34,10 +34,6 @@
 		"...the furnaces are lit and the forges are roaring. Today is a good day, and the lord of flame has blessed your smithy, the greatest in all the lands..."
 	)
 
-/datum/skill/craft/smelting
-	name = "Smelting"
-	dream_cost_base = 1
-
 /datum/skill/craft/carpentry
 	name = "Carpentry"
 	dreams = list(

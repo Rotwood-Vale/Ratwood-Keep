@@ -10,39 +10,24 @@
 	category_tags = list(CTAG_ADVENTURER)
 
 /datum/outfit/job/roguetown/adventurer/paladin
-	allowed_patrons = ALL_PALADIN_PATRONS
+	allowed_patrons = ALL_CLERIC_PATRONS
 
 /datum/outfit/job/roguetown/adventurer/paladin/pre_equip(mob/living/carbon/human/H)
 	..()
-	cloak = /obj/item/clothing/cloak/tabard/crusader
-	switch(H.patron?.type)
-		if(/datum/patron/divine/astrata)
+	switch(H.patron.name)
+		if("Astrata")
 			neck = /obj/item/clothing/neck/roguetown/psicross/astrata
-			cloak = /obj/item/clothing/cloak/tabard/crusader/astrata
-		if(/datum/patron/divine/dendor)
+		if("Dendor")
 			neck = /obj/item/clothing/neck/roguetown/psicross/dendor
-			cloak = /obj/item/clothing/cloak/tabard/crusader/dendor
-		if(/datum/patron/divine/necra)
+		if("Necra")
 			neck = /obj/item/clothing/neck/roguetown/psicross/necra
-			cloak = /obj/item/clothing/cloak/tabard/crusader/necra
-		if(/datum/patron/divine/pestra)
+		if("Pestra")
 			neck = /obj/item/clothing/neck/roguetown/psicross/pestra
-			cloak = /obj/item/clothing/cloak/tabard/crusader/pestra
-		if(/datum/patron/divine/noc)
+		if("Noc")
 			neck = /obj/item/clothing/neck/roguetown/psicross/noc
-			cloak = /obj/item/clothing/cloak/tabard/crusader/noc
-		if(/datum/patron/divine/ravox)
-			neck = /obj/item/clothing/neck/roguetown/psicross/ravox
-			cloak = /obj/item/clothing/cloak/tabard/crusader/ravox
-		if(/datum/patron/divine/malum)
-			neck = /obj/item/clothing/neck/roguetown/psicross/malum
-			cloak = /obj/item/clothing/cloak/tabard/crusader/malum
-		if(/datum/patron/divine/eora) //Eora content from Stonekeep
+		if("Eora") //Eora content from Stonekeep
 			neck = /obj/item/clothing/neck/roguetown/psicross/eora
-			cloak = /obj/item/clothing/cloak/tabard/crusader/eora
-		if(/datum/patron/old_god)
-			neck = /obj/item/clothing/neck/roguetown/psicross/silver
-			cloak = /obj/item/clothing/cloak/tabard/crusader/psydon
+
 
 	H.adjust_blindness(-3)
 	var/classes = list("Paladin","Battle Master",)
@@ -81,6 +66,20 @@
 			beltl = /obj/item/storage/belt/rogue/pouch/coins/poor
 			beltr = /obj/item/rogueweapon/huntingknife
 			id = /obj/item/clothing/ring/silver
+			cloak = /obj/item/clothing/cloak/tabard/crusader
+			switch(H.patron.name)
+				if("Astrata")
+					cloak = /obj/item/clothing/cloak/tabard/crusader/astrata
+				if("Dendor")
+					cloak = /obj/item/clothing/cloak/tabard/crusader/dendor
+				if("Necra")
+					cloak = /obj/item/clothing/cloak/tabard/crusader/necra
+				if("Pestra")
+					cloak = /obj/item/clothing/cloak/tabard/crusader/pestra
+				if("Noc")
+					cloak = /obj/item/clothing/cloak/tabard/crusader/noc
+				if("Eora") //Eora content from Stonekeep
+					cloak = /obj/item/clothing/cloak/tabard/crusader/eora
 			backr = /obj/item/rogueweapon/sword
 			backl = /obj/item/storage/backpack/rogue/satchel
 		if("Battle Master")
@@ -114,12 +113,28 @@
 			beltl = /obj/item/storage/belt/rogue/pouch/coins/poor
 			beltr = /obj/item/rogueweapon/huntingknife
 			id = /obj/item/clothing/ring/silver
+			cloak = /obj/item/clothing/cloak/tabard/crusader
+			switch(H.patron.name)
+				if("Astrata")
+					cloak = /obj/item/clothing/cloak/tabard/crusader/astrata
+				if("Dendor")
+					cloak = /obj/item/clothing/cloak/tabard/crusader/dendor
+				if("Necra")
+					cloak = /obj/item/clothing/cloak/tabard/crusader/necra
+				if("Pestra")
+					cloak = /obj/item/clothing/cloak/tabard/crusader/pestra
+				if("Noc")
+					cloak = /obj/item/clothing/cloak/tabard/crusader/noc
+				if("Eora") //Eora content from Stonekeep
+					cloak = /obj/item/clothing/cloak/tabard/crusader/eora
 			backr = /obj/item/rogueweapon/flail
 			l_hand = /obj/item/rogueweapon/shield/tower/metal
 			backl = /obj/item/storage/backpack/rogue/satchel
 
 	ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
 	H.dna.species.soundpack_m = new /datum/voicepack/male/knight()
+	if(H.dna.species.type == /datum/species/tieberian)
+		cloak = /obj/item/clothing/cloak/tabard/crusader/tief
 	var/datum/devotion/C = new /datum/devotion(H, H.patron)
 	//Max devotion limit - Paladins are stronger but cannot pray to gain all abilities beyond t1
 	C.grant_spells_templar(H)

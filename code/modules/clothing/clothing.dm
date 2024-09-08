@@ -66,7 +66,6 @@
 	var/block2add
 	var/detail_tag
 	var/detail_color
-	var/boobed_detail = TRUE
 
 /obj/item/clothing/New()
 	..()

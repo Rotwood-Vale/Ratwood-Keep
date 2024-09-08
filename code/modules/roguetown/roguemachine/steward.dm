@@ -145,7 +145,7 @@
 					return
 				if(newtax < 1)
 					return
-				SStreasury.give_money_account(newtax, A, "NERVE MASTER")
+				SStreasury.give_money_account(newtax, A)
 				break
 	if(href_list["fineaccount"])
 		var/X = locate(href_list["fineaccount"])
@@ -162,7 +162,7 @@
 					return
 				if(newtax < 1)
 					return
-				SStreasury.give_money_account(-newtax, A, "NERVE MASTER")
+				SStreasury.give_money_account(-newtax, A)
 				break
 	if(href_list["payroll"])
 		var/list/L = list(GLOB.noble_positions) + list(GLOB.garrison_positions) + list(GLOB.courtier_positions) + list(GLOB.church_positions) + list(GLOB.yeoman_positions) + list(GLOB.peasant_positions) + list(GLOB.youngfolk_positions)
@@ -186,7 +186,7 @@
 			return
 		for(var/mob/living/carbon/human/H in GLOB.human_list)
 			if(H.job == job_to_pay)
-				SStreasury.give_money_account(amount_to_pay, H, "NERVE MASTER")
+				SStreasury.give_money_account(amount_to_pay, H)
 	return attack_hand(usr)
 
 /obj/structure/roguemachine/steward/proc/do_import(datum/roguestock/D,number)
