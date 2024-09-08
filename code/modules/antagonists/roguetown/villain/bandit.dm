@@ -172,6 +172,7 @@
 	H.change_stat("speed", 1)
 	H.change_stat("intelligence", -3)
 
+	H.verbs |= /mob/proc/haltyell
 	H.ambushable = FALSE
 
 /datum/antagonist/bandit/roundend_report()

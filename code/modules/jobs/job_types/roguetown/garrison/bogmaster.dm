@@ -7,7 +7,7 @@
 	spawn_positions = 1
 	allowed_patrons = ALL_DIVINE_PATRONS
 	allowed_sexes = list(MALE, FEMALE)
-	allowed_races = RACES_TOLERATED_UP
+	allowed_races = RACES_VERY_SHUNNED_UP
 	allowed_ages = list(AGE_ADULT, AGE_MIDDLEAGED, AGE_OLD)
 	tutorial = "You are the most experienced idiot to volunteer to the Bog Guard... \
 				What a mistake that was. You report to the Royal Marshal and their Councillors, \
