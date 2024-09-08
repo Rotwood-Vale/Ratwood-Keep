@@ -103,6 +103,7 @@
 /obj/item/clothing/cloak/tabard/crusader
 	detail_tag = "_psy"
 	detail_color = CLOTHING_RED
+	boobed_detail = FALSE
 
 /obj/item/clothing/cloak/tabard/crusader/Initialize()
 	..()
@@ -145,6 +146,14 @@
 	color = "#9B7538"
 	detail_color = CLOTHING_WHITE
 
+/obj/item/clothing/cloak/tabard/crusader/ravox
+	color = CLOTHING_RED
+	detail_color = CLOTHING_BLACK
+
+/obj/item/clothing/cloak/tabard/crusader/malum
+	color = CLOTHING_RED
+	detail_color = CLOTHING_YELLOW
+
 /obj/item/clothing/cloak/tabard/crusader/dendor
 	color = "#4B5637"
 	detail_color = "#3D1D1C"
@@ -160,6 +169,10 @@
 /obj/item/clothing/cloak/tabard/crusader/noc
 	color = "#2C2231"
 	detail_color = "#9AB0B0"
+
+/obj/item/clothing/cloak/tabard/crusader/psydon
+	color = CLOTHING_BLACK
+	detail_color = CLOTHING_WHITE
 
 //Eora content from Stonekeep
 

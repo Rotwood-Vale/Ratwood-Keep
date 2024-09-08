@@ -2,10 +2,11 @@
 	name = "Psydon"
 	domain = "God of Ontological Reality"
 	desc = "The true God of everything, Psydon is maximally good - He created humen in his image to live in Psydonia."
-	worshippers = "Heretics and the Enlightened"
+	worshippers = "Fanatics and Nostalgists"
 	associated_faith = /datum/faith/old_god
+	t0 = /obj/effect/proc_holder/spell/invoked/lesser_heal
 	confess_lines = list(
 		"THERE IS ONLY ONE GOD!",
-		"THE TEN ARE FALSE GODS!",
+		"PSYDON YET LIVES!",
 		"PSYDON IS MY SHEPHERD!",
 	)

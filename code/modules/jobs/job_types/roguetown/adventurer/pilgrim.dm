@@ -23,7 +23,7 @@
 	advjob_examine = TRUE
 	always_show_on_latechoices = TRUE
 	same_job_respawn_delay = 0
-	
+
 	allow_custom_genitals = TRUE //Vrell - This prevents the job itself from culling the parts since advanced classes determine if they are allowed
 
 /datum/job/roguetown/pilgrim/after_spawn(mob/living/L, mob/M, latejoin = TRUE)
@@ -35,5 +35,5 @@
 		H.become_blind("advsetup")
 
 		if(GLOB.adventurer_hugbox_duration)
-			///FOR SOME RETARDED FUCKING REASON THIS REFUSED TO WORK WITHOUT A FUCKING TIMER IT JUST FUCKED SHIT UP
+			///FOR SOME SILLY FUCKING REASON THIS REFUSED TO WORK WITHOUT A FUCKING TIMER IT JUST FUCKED SHIT UP
 			addtimer(CALLBACK(H, TYPE_PROC_REF(/mob/living/carbon/human, adv_hugboxing_start)), 1)
