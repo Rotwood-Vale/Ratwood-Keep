@@ -79,19 +79,19 @@
 	if(prob(80))
 		shoes = /obj/item/clothing/shoes/roguetown/boots/leather
 	if(prob(30))
-		armor = /obj/item/clothing/suit/roguetown/armor/chainmail/iron
+		armor = /obj/item/clothing/suit/roguetown/armor/chainmail/iron/rusted
 	if(prob(30))
 		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/vagrant
 		if(prob(50))
 			shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/vagrant/l
 	if(prob(90))
-		pants = /obj/item/clothing/under/roguetown/chainlegs/iron
+		pants = /obj/item/clothing/under/roguetown/chainlegs/iron/rusted
 	if(prob(40))
 		head = /obj/item/clothing/head/roguetown/helmet/leather
 	if(prob(70))
-		gloves = /obj/item/clothing/gloves/roguetown/chain
+		gloves = /obj/item/clothing/gloves/roguetown/chain/rusted
 	if(prob(70))
-		neck = /obj/item/clothing/neck/roguetown/chaincoif
+		neck = /obj/item/clothing/neck/roguetown/chaincoif/rusted
 	if(H.gender == FEMALE)
 		H.STASTR = rand(9,12)
 	else
@@ -101,12 +101,58 @@
 	H.STAEND = 15
 	H.STAINT = 1
 	if(prob(50))
-		r_hand = /obj/item/rogueweapon/sword
+		r_hand = /obj/item/rogueweapon/sword/rusted
 	else
-		r_hand = /obj/item/rogueweapon/mace
+		r_hand = /obj/item/rogueweapon/mace/rusted
 
 /mob/living/carbon/human/species/skeleton/npc/no_equipment
     skel_outfit = null
 
 /mob/living/carbon/human/species/skeleton/no_equipment
     skel_outfit = null
+
+/*
+*  Bandaid half assed fix for people smelting summoned skeleton gear.
+*  Rusted(or whatever you want to rename it to) gear should eventually get its own sprites and moved to its respective ".dm".
+*  Poke Neon about it.
+*/
+
+/obj/item/clothing/suit/roguetown/armor/chainmail/iron/rusted
+	name = "rusted chainmaille"
+	desc = "A piece of gear that looks damaged beyond repair."
+	anvilrepair = null
+	smeltresult = null
+
+/obj/item/clothing/under/roguetown/chainlegs/iron/rusted
+	name = "rusted chain chausses"
+	desc = "A piece of gear that looks damaged beyond repair."
+	anvilrepair = null
+	smeltresult = null
+
+
+/obj/item/clothing/gloves/roguetown/chain/rusted
+	name = "rusted chain gloves"
+	desc = "A piece of gear that looks damaged beyond repair."
+	anvilrepair = null
+	smeltresult = null
+
+
+/obj/item/clothing/neck/roguetown/chaincoif/rusted
+	name = "rusted chain coif"
+	desc = "A piece of gear that looks damaged beyond repair."
+	anvilrepair = null
+	smeltresult = null
+
+
+/obj/item/rogueweapon/sword/rusted
+	name = "rusted sword"
+	desc = "A piece of gear that looks damaged beyond repair."
+	anvilrepair = null
+	smeltresult = null
+
+
+/obj/item/rogueweapon/mace/rusted
+	name = "rusted mace"
+	desc = "A piece of gear that looks damaged beyond repair."
+	anvilrepair = null
+	smeltresult = null
