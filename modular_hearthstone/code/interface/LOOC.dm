@@ -22,7 +22,7 @@
 	do_looc(msg)
 
 /client/proc/do_looc(msg as text)
-
+	
 	if(GLOB.say_disabled)	//This is here to try to identify lag problems
 		to_chat(usr, "<span class='danger'> Speech is currently admin-disabled.</span>")
 		return
@@ -44,6 +44,9 @@
 			log_admin("[key_name(src)] has attempted to advertise in LOOC: [msg]")
 			return
 
+	if(is_misc_banned(key_name(src), BAN_MISC_LOOC)) //Prevent from opening the panel entirely
+		to_chat(src.mob, span_danger("I have been banned from LOOC.")) //Type is client, so do src.mob to ensure it prints to client.
+		return //Forcibly return.
 
 	msg = emoji_parse(msg)
 

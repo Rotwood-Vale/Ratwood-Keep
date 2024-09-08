@@ -1,3 +1,13 @@
+//HOW TO ADD NEW BANS:
+//DEFINE ban type - E.G "#define BAN_MISC_OOC 'OOC'"
+//Add to relevant list (in this case, ALL_MISC_BANS)
+//Implement code to prevent usage of function; use relevant ban proc to grab from the list.
+/*
+	if(is_misc_banned(ckey, BAN_MISC_LOOC)) //Prevent from opening the panel entirely
+		to_chat(src, span_danger("I have been banned from LOOC."))
+		return //Forcibly return.
+*/ 
+
 
 #define TRAIT_BAN_PUNISHMENT "banpunish"
 
@@ -6,6 +16,7 @@
 #define BAN_MISC_LUNATIC "Lunatic"
 #define BAN_MISC_LEPROSY "Leprosy"
 #define BAN_MISC_OOC "OOC"
+#define BAN_MISC_LOOC "LOOC"
 #define BAN_MISC_DEADCHAT "Deadchat"
 
 #define ALL_MISC_BANS list(,\
@@ -14,6 +25,7 @@
 	BAN_MISC_LEPROSY,\
 	BAN_MISC_LUNATIC,\
 	BAN_MISC_OOC,\
+	BAN_MISC_LOOC,\
 	BAN_MISC_DEADCHAT,\
 )
 
