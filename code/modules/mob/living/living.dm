@@ -1747,12 +1747,85 @@
 /mob/living/MouseDrop(mob/over)
 	. = ..()
 	var/mob/living/user = usr
+//	var/mob/living/carbon/human/target = over
+//	if(isseelie(src) && !(HAS_TRAIT(target, TRAIT_TINY)))
+//		//if(can_piggyback(target))
+//		shoulder_ride_new(target)
+//		return
 	if(!istype(over) || !istype(user))
 		return
 	if(!over.Adjacent(src) || (user != src) || !canUseTopic(over))
 		return
 	if(can_be_held)
 		mob_try_pickup(over)
+
+/mob/living/proc/shoulder_ride_new(mob/living/carbon/target)
+	buckle_mob_shoulder(src, target, TRUE, TRUE)
+	visible_message(span_notice("[src] gently sits on [target]'s shoulder."))
+	src.set_mob_offsets("shoulder_ride", _x = 5, _y = 10)
+
+//procs that handle the actual buckling and unbuckling
+/mob/living/proc/buckle_mob_shoulder(mob/living/M, mob/living/carbon/target, force = FALSE, check_loc = TRUE)
+	var/datum/component/riding/riding_datum = LoadComponent(/datum/component/riding/cyborg)
+	if(!buckled_mobs)
+		buckled_mobs = list()
+
+	//if(!istype(M))
+	//	return FALSE
+
+	//if(check_loc && M.loc != loc)
+	//	return FALSE
+
+	//if((!can_buckle && !force) || M.buckled || (buckled_mobs.len >= max_buckled_mobs) || (buckle_requires_restraints && !M.restrained()) || M == src)
+	//	return FALSE
+	M.buckling = target
+	if(!M.can_buckle() && !force)
+		if(M == usr)
+			to_chat(M, span_warning("I am unable to [buckleverb] on [src]."))
+		else
+			to_chat(usr, span_warning("I am unable to [buckleverb] [M] on [src]."))
+		M.buckling = null
+		return FALSE
+
+	//if(M.pulledby)
+	//	if(buckle_prevents_pull)
+	//		M.pulledby.stop_pulling()
+	//	else if(isliving(M.pulledby))
+	//		M.reset_offsets("pulledby")
+
+	if(!check_loc && M.loc != loc)
+		M.forceMove(target.loc)
+
+	M.buckling = null
+	M.buckled = src
+	M.setDir(dir)
+	buckled_mobs |= M
+	M.update_mobility()
+	M.throw_alert("buckled", /atom/movable/screen/alert/restrained/buckled)
+	M.set_glide_size(glide_size)
+	post_buckle_mob(M)
+
+	SEND_SIGNAL(src, COMSIG_MOVABLE_BUCKLE, M, force)
+	return TRUE
+
+/*
+/mob/living/proc/unbuckle_mob_new(mob/user, force=FALSE)
+	if(iscarbon(user))
+		var/datum/component/riding/riding_datum = GetComponent(/datum/component/riding)
+		if(istype(riding_datum))
+			riding_datum.unequip_buckle_inhands(user)
+			riding_datum.restore_position(user)
+
+	if(istype(buckled_mob) && buckled_mob.buckled == src && (buckled_mob.can_unbuckle() || force))
+		. = buckled_mob
+		buckled_mob.buckled = null
+		buckled_mob.anchored = initial(buckled_mob.anchored)
+		buckled_mob.update_mobility()
+		buckled_mob.clear_alert("buckled")
+		buckled_mob.set_glide_size(DELAY_TO_GLIDE_SIZE(buckled_mob.total_multiplicative_slowdown()))
+		buckled_mobs -= buckled_mob
+		SEND_SIGNAL(src, COMSIG_MOVABLE_UNBUCKLE, buckled_mob, force)
+*/
 
 /mob/living/proc/mob_pickup(mob/living/L)
 	return

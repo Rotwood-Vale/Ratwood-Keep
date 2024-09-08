@@ -41,4 +41,4 @@
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/drain_stam)
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/replenish)
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/projectile/animate_object)
-		H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/beastsooze)
+		H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/roustame)

@@ -200,8 +200,8 @@ obj/effect/proc_holder/spell/targeted/static_room/cast(list/targets, mob/user = 
 	chargedloop = /datum/looping_sound/invokegen
 	associated_skill = /datum/skill/magic/arcane
 
-/obj/effect/proc_holder/spell/targeted/beastsooze
-	name = "Tame Beast"
+/obj/effect/proc_holder/spell/targeted/roustame
+	name = "Tame Rous"
 	range = 5
 	overlay_state = "tamebeast"
 	releasedrain = 30
@@ -209,21 +209,21 @@ obj/effect/proc_holder/spell/targeted/static_room/cast(list/targets, mob/user = 
 	max_targets = 0
 	cast_without_targets = TRUE
 	sound = 'sound/magic/churn.ogg'
-	invocation = "Be still and calm, brotherbeast."
+	invocation = "Feel my presence, and be calmed."
 	invocation_type = "whisper" //can be none, whisper, emote and shout
 
-/obj/effect/proc_holder/spell/targeted/beastsooze/cast(list/targets,mob/user = usr)
+/obj/effect/proc_holder/spell/targeted/roustame/cast(list/targets,mob/user = usr)
 	. = ..()
 	visible_message(span_green("[usr] soothes the beastblood with Dendor's whisper."))
 	var/tamed = FALSE
 	for(var/mob/living/simple_animal/hostile/retaliate/rogue/bigrat/B in oview(2))
 		if(!B.tame)
 			B.tame = TRUE
-			B.friends = (user)
-		user.visible_message(span_info("[B] calms down."))
+			B.tamed()
+		//user.visible_message(span_info("[B] calms down."))
 		B.enemies = list()
 		B.friends = list(user) //Makes the Rous not target the Seelie when on aggro
 		B.aggressive = 0
 		B.LoseTarget()
-		tamed  = B.tame
+		tamed = B.tame
 	return tamed

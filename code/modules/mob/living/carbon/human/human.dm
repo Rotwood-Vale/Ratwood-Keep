@@ -905,6 +905,11 @@
 			admin_ticket_log(src, msg)
 
 /mob/living/carbon/human/MouseDrop_T(mob/living/target, mob/living/user)
+	if(isseelie(target) && !(HAS_TRAIT(src, TRAIT_TINY)) && target.pulledby == src)
+		if(can_piggyback(target))
+			shoulder_ride(target)
+			return TRUE
+
 	if(user == target)
 		return FALSE
 	if(pulling == target && stat == CONSCIOUS)
@@ -920,6 +925,11 @@
 					fireman_carry(target)
 					return TRUE
 	. = ..()
+
+/mob/living/carbon/human/proc/shoulder_ride(mob/living/carbon/target)
+	buckle_mob(target, TRUE, TRUE, FALSE, 0, 0)
+	visible_message(span_notice("[src] gently sits on [target]'s shoulder."))
+	target.set_mob_offsets("shoulder_ride", _x = 5, _y = 10)
 
 //src is the user that will be carrying, target is the mob to be carried
 /mob/living/carbon/human/proc/can_piggyback(mob/living/carbon/target)

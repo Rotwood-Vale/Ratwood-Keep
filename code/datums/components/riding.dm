@@ -45,7 +45,7 @@
 /datum/component/riding/proc/handle_vehicle_layer()
 	var/atom/movable/AM = parent
 	var/static/list/defaults = list(TEXT_NORTH = OBJ_LAYER, TEXT_SOUTH = ABOVE_MOB_LAYER, TEXT_EAST = ABOVE_MOB_LAYER, TEXT_WEST = ABOVE_MOB_LAYER)
-	. = defaults["[AM.dir]"]
+	. = defaults["[AM.dir]"]	//I think this is force overwriting with defaults no matter what
 	if(directional_vehicle_layers["[AM.dir]"])
 		. = directional_vehicle_layers["[AM.dir]"]
 	if(isnull(.))	//you can set it to null to not change it.
