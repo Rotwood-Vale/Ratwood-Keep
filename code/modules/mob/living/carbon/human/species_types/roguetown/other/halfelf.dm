@@ -72,6 +72,7 @@
 		/datum/customizer/organ/vagina/human,
 		)
 	body_markings = list(
+		/datum/body_marking/flushed_cheeks,
 		/datum/body_marking/tonage,
 	)
 
