@@ -14098,6 +14098,10 @@
 	},
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/town/tavern)
+"nNB" = (
+/obj/structure/roguemachine/merchantvend,
+/turf/closed/wall/mineral/rogue/wooddark,
+/area/rogue/indoors/town/shop)
 "nNJ" = (
 /turf/open/floor/carpet/royalblack,
 /area/rogue/indoors/town)
@@ -14798,7 +14802,7 @@
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/basement)
 "osQ" = (
-/obj/structure/roguemachine/merchantvend,
+/obj/structure/roguemachine/drugmachine,
 /turf/closed/wall/mineral/rogue/stonebrick,
 /area/rogue/indoors/town/shop)
 "oth" = (
@@ -404286,7 +404290,7 @@ bER
 nDX
 jHZ
 sFi
-sFi
+nNB
 sFi
 osQ
 mHa
@@ -404688,7 +404692,7 @@ bER
 oet
 sFi
 sFi
-sYD
+sFi
 sFi
 tTb
 tTb
