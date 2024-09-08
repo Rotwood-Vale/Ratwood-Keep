@@ -38,6 +38,7 @@
 
 //Hearthstone change (Tracking)
 #define TRAIT_PERFECT_TRACKER "Perfect Tracker" //! Will always find any tracks and analyzes them perfectly.
+#define TRAIT_NOCSIGHT "Blessing of Noc" // I can see just a bit more clearly in darkness.
 //Hearthstone end.
 
 // PATRON GOD TRAITS
@@ -118,6 +119,7 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_WATERBREATHING = span_info("I do not drown in bodies of water."),
 	TRAIT_FAITHLESS = span_warning("I don't hold them in my thoughts or prayers - the Gods won't care for me, if they ever did in the first place."),
 	TRAIT_PERFECT_TRACKER = span_info("I am the perfect tracker. No tracks will deceive my eyes, nor will they hide their secrets from me."),//Hearthstone change.
+	TRAIT_NOCSIGHT = "Noc blesses my eyes to be unburdened by the night." //Hearthstone change.
 ))
 
 // trait accessor defines
