@@ -213,14 +213,12 @@
 	var/obj/effect/proc_holder/spell/item = choices[choice]
 	if(!item) 
 		return     // user canceled; 
-	if(alert(user, "[item.desc]", "[item.name]", "Learn", "Cancel") == "Cancel") //gives a preview of the spell's description to let people know what a spell does
-		return
 	for(var/obj/effect/proc_holder/spell/knownspell in user.mind.spell_list)
 		if(knownspell.type == item.type)
 			to_chat(user,span_warning("You already know this one!"))
 			return	//already know the spell
 	if(item.cost > user.mind.spell_points - user.mind.used_spell_points)
-		to_chat(user,span_warning("You do not have enough experience to create a new spell."))
+		to_chat(user,span_warning("You do not have enough experience to create a new spell"))
 		return		// not enough spell points
 	else
 		user.mind.used_spell_points += item.cost
@@ -302,7 +300,7 @@
 // no slowdown status effect defined, so this just immobilizes for now
 /obj/effect/proc_holder/spell/invoked/slowdown_spell_aoe
 	name = "Ensnare"
-	desc = "Tendrils of arcyne force hold anyone in a small area in place for a short while."
+	desc = "Tendrils of arcyne force hold anyone in a small area in place"
 	cost = 1
 	xp_gain = TRUE
 	releasedrain = 20
@@ -464,7 +462,7 @@
 
 /obj/effect/proc_holder/spell/invoked/blade_burst
 	name = "Blade Burst"
-	desc = "Summon a storm of arcyne force in an area, wounding anything in that location after a delay."
+	desc = "summon a storm of arcyne force in an area, wounding anything in that location"
 	cost = 1
 	xp_gain = TRUE
 	releasedrain = 30
@@ -511,7 +509,7 @@
 
 /obj/effect/proc_holder/spell/targeted/touch/nondetection
 	name = "Nondetection"
-	desc = "Consume a handful of ash and shroud a target that you touch from divination magic for 1 hour."
+	desc = "Shroud a target that you touch from divination magic for 1 hour."
 	clothes_req = FALSE
 	drawmessage = "I prepare to form a magical shroud."
 	dropmessage = "I release my arcyne focus."
@@ -577,7 +575,7 @@
 
 /obj/effect/proc_holder/spell/targeted/touch/darkvision
 	name = "Darkvision"
-	desc = "Enhance the night vision of a target you touch for an hour."
+	desc = "Enhance the night vision of a target you touch."
 	clothes_req = FALSE
 	drawmessage = "I prepare to grant Darkvision."
 	dropmessage = "I release my arcyne focus."

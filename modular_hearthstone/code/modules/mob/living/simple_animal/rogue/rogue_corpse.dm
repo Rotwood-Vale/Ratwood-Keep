@@ -57,7 +57,7 @@
 /datum/outfit/orcravager
 	armor = /obj/item/clothing/suit/roguetown/armor/chainmail
 	pants =	/obj/item/clothing/under/roguetown/chainlegs
-	shoes = /obj/item/clothing/shoes/roguetown/boots/armor/iron
+	shoes = /obj/item/clothing/shoes/roguetown/boots/armoriron
 	head = /obj/item/clothing/head/roguetown/helmet/skullcap
 	gloves = /obj/item/clothing/gloves/roguetown/chain
 	neck = /obj/item/clothing/neck/roguetown/chaincoif

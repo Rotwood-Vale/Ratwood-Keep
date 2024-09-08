@@ -113,7 +113,7 @@
 	payout_price = 4
 	withdraw_price = 6
 	export_price = 8
-	importexport_amt = 5
+	importexport_amt = 15
 	passive_generation = 3
 
 /datum/roguestock/stockpile/grain

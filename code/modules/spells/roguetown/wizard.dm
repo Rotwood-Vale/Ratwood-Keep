@@ -1,7 +1,7 @@
 
 /obj/effect/proc_holder/spell/invoked/projectile/lightningbolt
 	name = "Bolt of Lightning"
-	desc = "Emit a bolt of lightning that burns and stuns a target."
+	desc = ""
 	clothes_req = FALSE
 	overlay_state = "lightning"
 	sound = 'sound/magic/lightning.ogg'
@@ -156,7 +156,7 @@
 
 /obj/effect/proc_holder/spell/invoked/projectile/fireball
 	name = "Fireball"
-	desc = "Shoot out a ball of fire that emits a light explosion on impact, setting the target alight."
+	desc = ""
 	clothes_req = FALSE
 	range = 8
 	projectile_type = /obj/projectile/magic/aoe/fireball/rogue
@@ -204,7 +204,7 @@
 
 /obj/effect/proc_holder/spell/invoked/projectile/fireball/greater
 	name = "Greater Fireball"
-	desc = "Shoot out an immense ball of fire that explodes on impact."
+	desc = ""
 	clothes_req = FALSE
 	range = 8
 	projectile_type = /obj/projectile/magic/aoe/fireball/rogue/great
@@ -232,7 +232,7 @@
 
 /obj/effect/proc_holder/spell/invoked/projectile/spitfire
 	name = "Spitfire"
-	desc = "Shoot out a low-powered ball of fire that shines brightly on impact, potentially blinding a target."
+	desc = ""
 	clothes_req = FALSE
 	range = 8
 	projectile_type = /obj/projectile/magic/aoe/fireball/rogue2
@@ -267,7 +267,7 @@
 
 /obj/effect/proc_holder/spell/invoked/projectile/fetch
 	name = "Fetch"
-	desc = "Shoot out a magical bolt that draws in the target struck towards the caster."
+	desc = ""
 	clothes_req = FALSE
 	range = 15
 	projectile_type = /obj/projectile/magic/fetch
