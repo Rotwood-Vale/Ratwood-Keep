@@ -62,7 +62,7 @@
 	return FALSE
 
 /obj/effect/proc_holder/spell/invoked/raise_undead
-	name = "Raise Greater Undead"
+	name = "Raise Undead"
 	desc = ""
 	clothes_req = FALSE
 	range = 7
@@ -77,11 +77,12 @@
 	associated_skill = /datum/skill/magic/arcane
 	charge_max = 30 SECONDS
 
-/obj/effect/proc_holder/spell/invoked/raise_undead/cast(list/targets, mob/living/user)
+/obj/effect/proc_holder/spell/invoked/raise_undead/cast(list/targets, mob/living/carbon/human/user)
 	. = ..()
 	var/turf/T = get_turf(targets[1])
 	if(isopenturf(T))
 		var/mob/living/carbon/target = new /mob/living/carbon/human/species/skeleton/npc(T)
+		user.minions += target
 		var/list/candidates = pollCandidatesForMob("Do you want to play as a Necromancer's skeleton?", null, null, null, 100, target, POLL_IGNORE_NECROMANCER_SKELETON)
 		if(LAZYLEN(candidates))
 			var/mob/C = pick(candidates)
@@ -168,3 +169,25 @@
 	exp_light = 1
 	exp_flash = 2
 	exp_fire = 0
+
+/obj/effect/proc_holder/spell/self/command_undead
+	name = "Command the Dead"
+	desc = "!"
+	overlay_state = "raiseskele"
+	sound = list('sound/magic/magnet.ogg')
+	invocation = "Zuth'gorash vel'thar dral'oth!"
+	invocation_type = "shout"
+	antimagic_allowed = TRUE
+	charge_max = 15 SECONDS
+
+/obj/effect/proc_holder/spell/self/command_undead/cast(mob/user = usr)
+	..()
+	var/message = input("Speak to your minions!", "LICH") as text|null
+	if(!message) return
+
+	var/mob/living/carbon/human/lich_player = user
+	
+	for(var/mob/player in lich_player.minions)
+		if(player.mind)
+			to_chat(player, span_boldannounce("Lich [lich_player.real_name] commands: [message]"))
+

@@ -12,6 +12,10 @@
 	var/list/phylacteries = list()
 	var/out_of_lives = FALSE
 
+/mob/living/carbon/human
+	/// List of minions that this mob has control over. Used for things like the Lich's "Command the Dead" spell.
+	var/list/mob/minions = list()
+
 /datum/antagonist/lich/on_gain()
 	var/datum/game_mode/C = SSticker.mode
 	C.liches |= owner
@@ -109,6 +113,7 @@
 	H.change_stat("endurance", -1)
 	H.change_stat("speed", -1)
 
+	H.mind.AddSpell(new /obj/effect/proc_holder/spell/self/command_undead)
 	H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/bonechill)
 	H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/raise_undead)
 	H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/projectile/fireball)
