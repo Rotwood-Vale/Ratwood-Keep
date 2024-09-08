@@ -746,19 +746,51 @@
 /obj/item/clothing/suit/roguetown/armor/plate/spellslingerarmor
 	slot_flags = ITEM_SLOT_ARMOR
 	name = "spellslinger cuirass"
-	desc = "Armor of a spellslinger, provides adequate protection while still looking very nice."
-	body_parts_covered = CHEST|VITALS
+	desc = "Armor of a spellslinger. Studded with a variety of sapphiras and other prized gizaels; this is truly the armor of a magician. Known to cause a heavy toll on the user..."
+	body_parts_covered = CHEST|VITALS|GROIN|NECK
 	icon_state = "spellslingerarmor"
 	item_state = "spellslingerarmor"
-	armor = list("blunt" = 80, "slash" = 100, "stab" = 80, "bullet" = 100, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	armor = list("blunt" = 30, "slash" = 50, "stab" = 45, "bullet" = 50, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
 	allowed_race = CLOTHED_RACES_TYPES
 	nodismemsleeves = TRUE
 	do_sound = FALSE
 	blocking_behavior = null
-	max_integrity = 300
+	max_integrity = 150 //Studded with gems means 'lots of weak points'.
 	anvilrepair = /datum/skill/craft/armorsmithing
 	smeltresult = /obj/item/ingot/steel
-	armor_class = ARMOR_CLASS_MEDIUM
+	armor_class = ARMOR_CLASS_LIGHT //Designed for the infirm.
+	var/active_item = FALSE //Prevents issues like dragon ring giving negative str instead
+	var/saved_spells //Needs to be used to stop infinite spells
+	var/saved_points //Ditto. All spells acquired with this armor will vanish after being dropped.
+
+/obj/item/clothing/suit/roguetown/armor/plate/spellslingerarmor/equipped(mob/living/user) //copypasta from dragon ring. I'm lazy.
+	. = ..()
+	if(active_item)
+		return
+	else
+		if(user.mind.get_skill_level(/datum/skill/magic/arcane))
+			active_item = TRUE
+			user.mind.adjust_skillrank(/datum/skill/magic/arcane, 1, TRUE)
+			to_chat(user, span_notice("Magicks flow throughout your body."))
+			user.change_stat("intelligence", 3) //Additional cooldown (scales with int)
+			saved_spells = user.mind.spell_list
+			saved_points = user.mind.spell_points
+			return
+		else
+			to_chat(user, span_warning("The curiass feels cold and dead."))
+
+/obj/item/clothing/suit/roguetown/armor/plate/spellslingerarmor/dropped(mob/living/user)
+	if(active_item)
+		if(user.mind.get_skill_level(/datum/skill/magic/arcane))
+			to_chat(user, span_notice("Gone is the arcane magicks enhancing thine abilities..."))
+			user.change_stat("intelligence", -3) //Ensure to not give inf intelligence.
+			user.mind.adjust_skillrank(/datum/skill/magic/arcane, -1, TRUE)
+			user.mind.spell_list = saved_spells
+			user.mind.spell_points = saved_points //So we don't softlock people with negative spellpoints.
+			active_item = FALSE
+			return
+		else
+			to_chat(user, span_warning("The feeling of death and decay departs the moment you leave the curiass be."))
 
 /obj/item/clothing/suit/roguetown/armor/plate/psydonianknightarmor
 	slot_flags = ITEM_SLOT_ARMOR
