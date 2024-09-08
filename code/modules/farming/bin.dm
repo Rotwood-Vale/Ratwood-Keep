@@ -160,7 +160,7 @@
 			if(!T.hingot.currecipe)
 				to_chat(user, span_warning("Huh?"))
 				return
-			if(T.hingot.currecipe.progress != 100)
+			if(T.hingot.currecipe.progress < T.hingot.currecipe.max_progress)
 				to_chat(user, span_warning("It's not finished yet."))
 				return
 			if(!T.hott)
@@ -170,12 +170,53 @@
 			if(!isturf(used_turf))
 				used_turf = get_turf(src)
 			var/datum/anvil_recipe/R = T.hingot.currecipe
-			if(islist(R.created_item))
-				var/list/L = R.created_item
-				for(var/IT in L)
-					new IT(used_turf)
-			else
-				new R.created_item(used_turf)
+			var/obj/item/crafteditem = R.created_item
+			if(R.createditem_num > 1)
+				R.createditem_num--
+				var/obj/item/IT = new crafteditem(used_turf)
+				R.handle_creation(IT)
+				var/newname = IT.name
+				var/newmaxinteg = IT.max_integrity
+				var/newinteg = IT.obj_integrity
+				var/newprice = IT.sellprice
+				var/obj/item/lockpick/L = IT
+				var/newpicklvl = L.picklvl
+				var/obj/item/rogueweapon/W = IT
+				var/newforce = W.force
+				var/newthrow = W.throwforce
+				var/newblade = W.blade_int
+				var/newmaxblade = W.max_blade_int
+				var/newap = W.armor_penetration
+				var/newdef = W.wdefense
+				var/obj/item/clothing/C = IT
+				var/newdamdef = C.damage_deflection
+				var/newintegfail = C.integrity_failure
+				var/newarmor = C.armor
+				var/newdelay = C.equip_delay_self
+				while(R.createditem_num)
+					R.createditem_num--
+					var/obj/item/editme = new crafteditem(used_turf)
+					editme.name = newname
+					editme.max_integrity = newmaxinteg
+					editme.obj_integrity = newinteg
+					editme.sellprice = newprice
+					if(istype(editme, /obj/item/lockpick))
+						editme.picklvl = newpicklvl
+					if(istype(editme, /obj/item/rogueweapon))
+						editme.force = newforce
+						editme.throwforce = newthrow
+						editme.blade_int = newblade
+						editme.max_blade_int = newmaxblade
+						editme.armor_penetration = newap
+						editme.wdefense = newdef
+					if(istype(IT, /obj/item/clothing))
+						editme.damage_deflection = newdamdef
+						editme.integrity_failure = newintegfail
+						editme.armor = newarmor
+						editme.equip_delay_self = newdelay
+			else // Just make one buddy
+				var/obj/item/IT = new crafteditem(used_turf)
+				R.handle_creation(IT)
 			playsound(src,pick('sound/items/quench_barrel1.ogg','sound/items/quench_barrel2.ogg'), 100, FALSE)
 			QDEL_NULL(T.hingot)
 			T.update_icon()
