@@ -81,6 +81,7 @@
 		/datum/body_marking_set/moth/lovers,
 	)
 	body_markings = list(
+		/datum/body_marking/flushed_cheeks,
 		/datum/body_marking/moth/grayscale/reddish,
 		/datum/body_marking/moth/grayscale/royal,
 		/datum/body_marking/moth/grayscale/gothic,
