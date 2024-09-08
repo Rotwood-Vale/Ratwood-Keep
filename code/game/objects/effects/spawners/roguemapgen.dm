@@ -34,6 +34,12 @@
 	probby = 80
 	spawned = list(/obj/structure/flora/roguetree)
 
+/obj/effect/spawner/roguemap/mobspawner
+	icon_state = "mobspawner"
+	name = "mob spawner"
+	probby = 50
+	spawned = list(/obj/structure/flora/roguetree)
+
 /obj/effect/spawner/roguemap/treeorbush
 	icon_state = "Treeorbush"
 	name = "Tree or bush spawner"
@@ -61,7 +67,7 @@
 /obj/effect/spawner/roguemap/hauntpile
 	icon_state = "hauntpile"
 	name = "hauntpile"
-	probby = 23
+	probby = 70
 	spawned = list(/obj/structure/bonepile)
 
 /obj/effect/spawner/roguemap/beartrap

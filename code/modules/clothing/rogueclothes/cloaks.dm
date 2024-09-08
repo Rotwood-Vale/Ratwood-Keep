@@ -587,7 +587,7 @@
 	color = null
 	icon_state = "waistpron"
 	item_state = "waistpron"
-	body_parts_covered = GROIN
+	body_parts_covered = null
 	boobed = FALSE
 	flags_inv = HIDECROTCH
 
@@ -604,8 +604,9 @@
 	color = null
 	icon_state = "aproncook"
 	item_state = "aproncook"
-	body_parts_covered = CHEST|GROIN
+	body_parts_covered = CHEST
 	boobed = FALSE
+	flags_inv = HIDECROTCH|HIDEBOOB
 
 /*
 /obj/item/clothing/cloak/apron/waist/ComponentInitialize()
@@ -737,11 +738,17 @@
 	inhand_mod = FALSE
 	slot_flags = ITEM_SLOT_BACK_R|ITEM_SLOT_CLOAK
 
+/obj/item/clothing/cloak/cape/purple
+	color = "#801380"
+
 /obj/item/clothing/cloak/cape/knight
 	color = CLOTHING_PURPLE
 
 /obj/item/clothing/cloak/cape/guard
 	color = CLOTHING_RED
+
+/obj/item/clothing/cloak/cape/black
+	color = CLOTHING_BLACK
 
 /obj/item/clothing/cloak/cape/guard/Initialize()
 	. = ..()
