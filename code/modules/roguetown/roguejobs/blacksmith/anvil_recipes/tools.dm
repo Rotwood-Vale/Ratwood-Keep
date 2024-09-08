@@ -1,3 +1,6 @@
+/datum/anvil_recipe/tools
+	i_type = "Utilities"
+	craftdiff = 1
 
 // --------- IRON -----------
 /datum/anvil_recipe/tools/surgery/surgerytools
@@ -5,32 +8,63 @@
 	req_bar = /obj/item/ingot/iron
 	additional_items = list(/obj/item/ingot/iron, /obj/item/natural/hide)
 	created_item = /obj/item/storage/belt/rogue/surgery_bag/full
-	i_type = "Tools"
 
 /datum/anvil_recipe/tools/torch
 	name = "Torches 5x (+1 Coal)"
 	req_bar = /obj/item/ingot/iron
 	additional_items = list(/obj/item/rogueore/coal)
-	created_item = list(/obj/item/flashlight/flare/torch/metal, /obj/item/flashlight/flare/torch/metal, /obj/item/flashlight/flare/torch/metal, /obj/item/flashlight/flare/torch/metal, /obj/item/flashlight/flare/torch/metal)
-	i_type = "General"
+	created_item = /obj/item/flashlight/flare/torch/metal
+	createditem_num = 5
+	craftdiff = 0
 
 /datum/anvil_recipe/tools/pan
 	name = "Frypan"
 	req_bar = /obj/item/ingot/iron
 	created_item = /obj/item/cooking/pan
-	i_type = "Tools"
+	craftdiff = 0
 
 /datum/anvil_recipe/tools/keyring
-	name = "Keyrings 3x"
+	name = "Keyrings x3"
 	req_bar = /obj/item/ingot/iron
-	created_item = list(/obj/item/keyring, /obj/item/keyring, /obj/item/keyring)
-	i_type = "General"
+	created_item = /obj/item/keyring
+	createditem_num = 3
+	craftdiff = 0
 
-/datum/anvil_recipe/tools/needle
-	name = "Sewing Needles 5x"
+/datum/anvil_recipe/tools/sewingneedle
+	name = "Sewing Needles x3"
 	req_bar = /obj/item/ingot/iron
-	created_item = list(/obj/item/needle, /obj/item/needle, /obj/item/needle, /obj/item/needle, /obj/item/needle)
-	i_type = "General"
+	created_item = /obj/item/needle
+	createditem_num = 3 // They can be refilled with fiber now
+	craftdiff = 0
+
+/datum/anvil_recipe/tools/locks
+	name = "Lock x5"
+	req_bar = /obj/item/ingot/iron
+	appro_skill = /datum/skill/craft/engineering // To train engineering
+	created_item = /obj/item/customlock
+	createditem_num = 5
+	craftdiff = 0
+
+/datum/anvil_recipe/tools/keys
+	name = "Keys 5x"
+	req_bar = /obj/item/ingot/iron
+	created_item = /obj/item/customblank
+	createditem_num = 5
+	craftdiff = 0
+
+/datum/anvil_recipe/tools/lockpicks
+	name = "Lockpicks x3"
+	req_bar = /obj/item/ingot/iron
+	created_item = /obj/item/lockpick
+	createditem_num = 3
+	craftdiff = 2
+
+/datum/anvil_recipe/tools/lockpickring
+	name = "Lockpickrings x3"
+	req_bar = /obj/item/ingot/iron
+	created_item = /obj/item/lockpickring
+	createditem_num = 3
+	craftdiff = 0
 
 /datum/anvil_recipe/tools/shovel
 	name = "Shovel (+2 Sticks)"
@@ -84,31 +118,20 @@
 	name = "Lamptern"
 	req_bar = /obj/item/ingot/iron
 	created_item = /obj/item/flashlight/flare/torch/lantern
-	i_type = "General"
 
 /datum/anvil_recipe/tools/cups
 	name = "Cups 3x"
 	req_bar = /obj/item/ingot/iron
-	created_item = list(/obj/item/reagent_containers/glass/cup,/obj/item/reagent_containers/glass/cup,/obj/item/reagent_containers/glass/cup)
-	i_type = "General"
+	created_item = /obj/item/reagent_containers/glass/cup
+	createditem_num = 3
+	craftdiff = 0
 
 /datum/anvil_recipe/tools/cogiron
 	name = "Cogs 3x"
 	req_bar = /obj/item/ingot/iron
-	created_item = list(/obj/item/roguegear, /obj/item/roguegear, /obj/item/roguegear)
-	i_type = "General"
-
-/datum/anvil_recipe/tools/locks
-	name = "Locks 5x"
-	req_bar = /obj/item/ingot/iron
-	created_item = list(/obj/item/customlock, /obj/item/customlock, /obj/item/customlock, /obj/item/customlock, /obj/item/customlock)
-	i_type = "General"
-
-/datum/anvil_recipe/tools/keys
-	name = "Keys 5x"
-	req_bar = /obj/item/ingot/iron
-	created_item = list(/obj/item/customblank, /obj/item/customblank, /obj/item/customblank, /obj/item/customblank, /obj/item/customblank)
-	i_type = "General"
+	created_item = /obj/item/roguegear
+	createditem_num = 3
+	craftdiff = 0
 
 /datum/anvil_recipe/tools/thresher
 	name = "Thresher (+1 Stick)"
@@ -131,69 +154,32 @@
 	created_item = /obj/item/rogueweapon/pick/steel
 	i_type = "Tools"
 
-/*
-//Disabled, surgery tools are crafted in a full kit now.
-/datum/anvil_recipe/tools/surgery/scalpel
-	name = "Scalpel"
-	req_bar = /obj/item/ingot/steel
-	created_item = /obj/item/rogueweapon/surgery/scalpel
-	i_type = "Tools"
-
-/datum/anvil_recipe/tools/surgery/saw
-	name = "Surgical Saw"
-	req_bar = /obj/item/ingot/steel
-	created_item = /obj/item/rogueweapon/surgery/saw
-	i_type = "Tools"
-
-/datum/anvil_recipe/tools/surgery/hemostat
-	name = "Forceps"
-	req_bar = /obj/item/ingot/steel
-	created_item = /obj/item/rogueweapon/surgery/hemostat
-	i_type = "Tools"
-
-/datum/anvil_recipe/tools/surgery/retractor
-	name = "Speculum"
-	req_bar = /obj/item/ingot/steel
-	created_item = /obj/item/rogueweapon/surgery/retractor
-	i_type = "Tools"
-
-/datum/anvil_recipe/tools/surgery/bonesetter
-	name = "Bone Forceps"
-	req_bar = /obj/item/ingot/steel
-	created_item = /obj/item/rogueweapon/surgery/bonesetter
-	i_type = "Tools"
-
-/datum/anvil_recipe/tools/surgery/cautery
-	name = "Cautery Iron"
-	req_bar = /obj/item/ingot/steel
-	created_item = /obj/item/rogueweapon/surgery/cautery
-	i_type = "Tools"
-*/
-
 /datum/anvil_recipe/tools/cupssteel
 	name = "Goblets 3x"
 	req_bar = /obj/item/ingot/steel
-	created_item = list(/obj/item/reagent_containers/glass/cup/steel, /obj/item/reagent_containers/glass/cup/steel, /obj/item/reagent_containers/glass/cup/steel)
-	i_type = "General"
+	created_item = /obj/item/reagent_containers/glass/cup/steel
+	createditem_num = 3
 
 /datum/anvil_recipe/tools/cogsteel
 	name = "Cogs 3x"
 	req_bar = /obj/item/ingot/steel
-	created_item = list(/obj/item/roguegear, /obj/item/roguegear, /obj/item/roguegear)
-	i_type = "General"
+	created_item = /obj/item/roguegear
+	createditem_num = 3
 
 // --------- SILVER -----------
 
 /datum/anvil_recipe/tools/cupssil
 	name = "Goblets 3x"
 	req_bar = /obj/item/ingot/silver
-	created_item = list(/obj/item/reagent_containers/glass/cup/silver, /obj/item/reagent_containers/glass/cup/silver, /obj/item/reagent_containers/glass/cup/silver)
-	i_type = "General"
+	created_item = /obj/item/reagent_containers/glass/cup/silver
+	createditem_num = 3
+	craftdiff = 2
 
 // --------- GOLD -----------
 
 /datum/anvil_recipe/tools/cupsgold
 	name = "Goblets 3x"
 	req_bar = /obj/item/ingot/gold
-	created_item = list(/obj/item/reagent_containers/glass/cup/golden, /obj/item/reagent_containers/glass/cup/golden, /obj/item/reagent_containers/glass/cup/golden)
-	i_type = "General"
+	created_item = /obj/item/reagent_containers/glass/cup/golden
+	createditem_num = 3
+	craftdiff = 2

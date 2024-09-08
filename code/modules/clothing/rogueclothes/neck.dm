@@ -162,6 +162,16 @@
 	desc = ""
 	icon_state = "pestra"
 
+/obj/item/clothing/neck/roguetown/psicross/ravox
+	name = "amulet of Ravox"
+	desc = ""
+	icon_state = "ravox"
+
+/obj/item/clothing/neck/roguetown/psicross/malum
+	name = "amulet of Malum"
+	desc = ""
+	icon_state = "malum"
+
 /obj/item/clothing/neck/roguetown/psicross/eora
 	name = "amulet of Eora"
 	desc = ""

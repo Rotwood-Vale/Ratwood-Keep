@@ -26,6 +26,7 @@
 		shoes = /obj/item/clothing/shoes/roguetown/boots
 		belt = /obj/item/storage/belt/rogue/leather
 		beltr = /obj/item/storage/belt/rogue/pouch
+		beltl = /obj/item/keyring/guardcastle
 		backr = /obj/item/storage/backpack/rogue/satchel
 		if(H.mind)
 			H.mind.adjust_skillrank(/datum/skill/combat/maces, 1, TRUE)
@@ -50,6 +51,7 @@
 		shoes = /obj/item/clothing/shoes/roguetown/boots
 		belt = /obj/item/storage/belt/rogue/leather
 		beltr = /obj/item/storage/belt/rogue/pouch
+		beltl = /obj/item/keyring/guardcastle
 		backr = /obj/item/storage/backpack/rogue/satchel
 		if(H.mind)
 			H.mind.adjust_skillrank(/datum/skill/combat/maces, 1, TRUE)

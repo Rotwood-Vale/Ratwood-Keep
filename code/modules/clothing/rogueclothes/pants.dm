@@ -42,7 +42,7 @@
 
 /obj/item/clothing/under/roguetown/tights
 	name = "tights"
-	desc = ""
+	desc = "A pair of form fitting tights."
 	gender = PLURAL
 	icon_state = "tights"
 	item_state = "tights"
@@ -96,7 +96,7 @@
 
 /obj/item/clothing/under/roguetown/trou
 	name = "work trousers"
-	desc = ""
+	desc = "Good quality trousers worn by laborers."
 	gender = PLURAL
 	icon_state = "trou"
 	item_state = "trou"
@@ -119,8 +119,8 @@
 	color = "#151615"
 
 /obj/item/clothing/under/roguetown/chainlegs
-	name = "chain chausses"
-	desc = ""
+	name = "steel chain chausses"
+	desc = "Chain leggings composed of interlinked metal rings."
 	gender = PLURAL
 	icon_state = "chain_legs"
 	item_state = "chain_legs"
@@ -154,16 +154,17 @@
 	l_sleeve_status = SLEEVE_NOMOD
 
 /obj/item/clothing/under/roguetown/chainlegs/iron
+	name = "iron chain chausses"
 	icon_state = "ichain_legs"
 	anvilrepair = /datum/skill/craft/armorsmithing
 	smeltresult = /obj/item/ingot/iron
 
 /obj/item/clothing/under/roguetown/platelegs
-	name = "plated chausses"
-	desc = ""
+	name = "steel plate chausses"
+	desc = "Reinforced armor to protect the legs."
 	gender = PLURAL
-	icon_state = "chain_legs"
-	item_state = "chain_legs"
+	icon_state = "plate_legs"
+	item_state = "plate_legs"
 //	adjustable = CAN_CADJUST
 	sewrepair = FALSE
 	armor = list("blunt" = 90, "slash" = 100, "stab" = 80, "bullet" = 50, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
@@ -174,6 +175,21 @@
 	anvilrepair = /datum/skill/craft/armorsmithing
 	r_sleeve_status = SLEEVE_NOMOD
 	l_sleeve_status = SLEEVE_NOMOD
+
+
+/obj/item/clothing/under/roguetown/chainlegs/skirt
+	name = "steel chain skirt"
+	desc = "Interlinked metal rings that drape down to the crotch and no farther."
+	icon_state = "chain_skirt"
+	item_state = "chain_skirt"
+	body_parts_covered = GROIN
+
+/obj/item/clothing/under/roguetown/platelegs/skirt
+	name = "steel plate skirt"
+	desc = "Reinforced armor that doesn't even protect the legs."
+	icon_state = "plate_skirt"
+	item_state = "plate_skirt"
+	body_parts_covered = GROIN
 
 /obj/item/clothing/under/roguetown/loincloth
 	name = "loincloth"

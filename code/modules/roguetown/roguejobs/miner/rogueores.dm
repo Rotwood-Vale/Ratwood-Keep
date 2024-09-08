@@ -69,7 +69,41 @@
 	icon_state = "ingot"
 	w_class = WEIGHT_CLASS_NORMAL
 	smeltresult = null
+	smelted = TRUE
 	var/datum/anvil_recipe/currecipe
+	var/quality = SMELTERY_LEVEL_NORMAL
+
+/obj/item/ingot/examine()
+	. += ..()
+	if(currecipe)
+		. += "<span class='warning'>It is currently being worked on to become [currecipe.name].</span>"
+
+/obj/item/ingot/Initialize(mapload, smelt_quality)
+	. = ..()
+	if(!smelt_quality)
+		return
+	quality = smelt_quality
+	switch(quality)
+		if(SMELTERY_LEVEL_SPOIL)
+			name = "spoilt [name]"
+			desc += " It is practically scrap."
+			sellprice *= 0.5
+		if(SMELTERY_LEVEL_POOR)
+			name = "poor-quality [name]"
+			desc += " It is of dubious quality." // EA NASSIR, WHEN I GET YOU...
+			sellprice *= 0.8
+		if(SMELTERY_LEVEL_GOOD)
+			name = "good-quality [name]"
+			desc += " It is of notable quality."
+			sellprice *= 1.1
+		if(SMELTERY_LEVEL_GREAT)
+			name = "great-quality [name]"
+			desc += " It is of remarkable quality. Fit for ambitious endeavours."
+			sellprice *= 1.2
+		if(SMELTERY_LEVEL_EXCELLENT)
+			name = "excellent-quality [name]"
+			desc += " It is of exquisite quality. It [pick("yearns","begs","demands")] to be turned into a masterwork."
+			sellprice *= 1.3
 
 /obj/item/ingot/attackby(obj/item/I, mob/user, params)
 	if(istype(I, /obj/item/rogueweapon/tongs))
