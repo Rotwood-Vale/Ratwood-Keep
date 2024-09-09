@@ -1684,14 +1684,6 @@
 	icon_state = "weird1"
 	},
 /area/rogue/indoors/town/tavern)
-"bVQ" = (
-/obj/structure/table/wood{
-	dir = 10;
-	icon_state = "tablewood2"
-	},
-/obj/item/flint,
-/turf/closed/mineral/rogue,
-/area/rogue/outdoors/town)
 "bVW" = (
 /obj/item/reagent_containers/glass/bucket/wooden,
 /turf/open/floor/rogue/cobblerock,
@@ -321890,7 +321882,7 @@ pQd
 pQd
 kue
 pQd
-bVQ
+pQd
 pQd
 pQd
 pQd
