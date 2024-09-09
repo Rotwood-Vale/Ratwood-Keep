@@ -41,8 +41,7 @@
 		H.mind.adjust_skillrank(/datum/skill/craft/crafting, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/alchemy, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/polearms, 1, TRUE)
-		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/projectile/lightningbolt)
-		H.mind.adjust_spellpoints(4)
+		H.mind.adjust_spellpoints(6)
 	H.change_stat("intelligence", 2)
 	H.change_stat("speed", -1)
 

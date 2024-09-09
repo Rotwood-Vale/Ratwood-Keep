@@ -546,7 +546,7 @@
 	associated_skill = /datum/skill/magic/arcane
 	var/wall_type = /obj/structure/forcefield_weak/caster
 	xp_gain = TRUE
-	cost = 2
+	cost = 3
 
 //adapted from forcefields.dm, this needs to be destructible
 /obj/structure/forcefield_weak
