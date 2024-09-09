@@ -605,3 +605,15 @@
 	verbage = "builds"
 	skillcraft = /datum/skill/craft/masonry
 	craftdiff = 3
+
+/datum/crafting_recipe/roguetown/structure/scom
+	name = "SCOM"
+	result = /obj/structure/roguemachine/scomm
+	reqs = list(/obj/item/ingot/iron = 1,
+					/obj/item/reagent_containers/food/snacks/smallrat = 1)
+	verbage_simple = "assemble"
+	verbage = "assembles"
+	skillcraft = /datum/skill/magic/arcane
+	craftdiff = 3
+	wallcraft = TRUE
+	ontile = TRUE

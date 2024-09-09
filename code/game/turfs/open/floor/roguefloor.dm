@@ -206,10 +206,10 @@
 
 	if(HAS_TRAIT(user, TRAIT_LONGSTRIDER))
 		negate_slowdown = TRUE
-	
+
 	if(negate_slowdown)
 		returned = max(returned-2, 0)
-	
+
 	return returned
 
 

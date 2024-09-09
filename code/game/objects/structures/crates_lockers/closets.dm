@@ -267,6 +267,12 @@
 	if(istype(W, /obj/item/lockpick))
 		trypicklock(W, user)
 		return
+	if(istype(W,/obj/item/lockpickring))
+		var/obj/item/lockpickring/pickring = W
+		if(pickring.picks.len)
+			pickring.removefromring(user)
+			to_chat(user, span_warning("You clumsily drop a lockpick off the ring as you try to pick the lock with it."))
+		return
 	if(src.tool_interact(W,user))
 		return 1 // No afterattack
 	else

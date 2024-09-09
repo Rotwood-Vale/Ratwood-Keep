@@ -22,7 +22,7 @@
 		var/mob/living/target = targets[1]
 		if(target.anti_magic_check(TRUE, TRUE))
 			return FALSE
-		target.visible_message(span_warning("[user] points at [target]'s eyes!"),span_warning("My eyes are covered in darkness!"))		
+		target.visible_message(span_warning("[user] points at [target]'s eyes!"),span_warning("My eyes are covered in darkness!"))
 		target.blind_eyes(2)
 	return TRUE
 
@@ -54,4 +54,4 @@
 		target.mob_timers[MT_INVISIBILITY] = world.time + 15 SECONDS
 		addtimer(CALLBACK(target, TYPE_PROC_REF(/mob/living, update_sneak_invis), TRUE), 15 SECONDS)
 		addtimer(CALLBACK(target, TYPE_PROC_REF(/atom/movable, visible_message), span_warning("[target] fades back into view."), span_notice("You become visible again.")), 15 SECONDS)
-	return FALSE
+	return TRUE

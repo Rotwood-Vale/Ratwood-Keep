@@ -129,6 +129,10 @@ All foods are distributed among various categories. Use common sense.
 	return ..()
 
 /obj/item/reagent_containers/food/snacks/proc/become_rotten()
+	if(isturf(loc) && istype(get_area(src),/area/rogue/under/town/sewer))
+		if(!istype(src,/obj/item/reagent_containers/food/snacks/smallrat))
+			new /obj/item/reagent_containers/food/snacks/smallrat(loc)
+			qdel(src)
 	if(become_rot_type)
 		if(ismob(loc))
 			return FALSE
