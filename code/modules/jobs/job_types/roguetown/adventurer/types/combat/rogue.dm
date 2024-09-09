@@ -50,8 +50,8 @@
 			armor = /obj/item/clothing/suit/roguetown/armor/leather
 			cloak = /obj/item/clothing/cloak/raincloak/mortus
 			backl = /obj/item/storage/backpack/rogue/satchel
-			beltr = /obj/item/rogueweapon/huntingknife/idagger/steel
-			beltl = /obj/item/rogueweapon/huntingknife/idagger/steel
+			beltr = /obj/item/rogueweapon/huntingknife/idagger
+			beltl = /obj/item/rogueweapon/huntingknife/idagger
 			H.change_stat("strength", -1)
 			H.change_stat("perception", 2)
 			H.change_stat("speed", pick(3,4))
@@ -86,7 +86,7 @@
 			armor = /obj/item/clothing/suit/roguetown/armor/leather
 			cloak = /obj/item/clothing/cloak/cape/black
 			backl = /obj/item/storage/backpack/rogue/satchel
-			beltr = /obj/item/rogueweapon/sword/rapier
+			beltr = /obj/item/rogueweapon/sword/iron
 			beltl = /obj/item/storage/belt/rogue/pouch/coins/poor	
 			H.change_stat("endurance", 1)
 			H.change_stat("speed", 3)
