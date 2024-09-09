@@ -232,7 +232,7 @@
 
 
 
-#define AB_MAX_COLUMNS 10
+#define AB_MAX_COLUMNS 12
 
 /datum/hud/proc/ButtonNumberToScreenCoords(number) // TODO : Make this zero-indexed for readabilty
 	var/row = round((number - 1)/AB_MAX_COLUMNS)

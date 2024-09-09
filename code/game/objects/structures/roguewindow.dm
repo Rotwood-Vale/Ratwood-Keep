@@ -116,6 +116,12 @@
 			return !density
 	return ..()
 
+/obj/structure/roguewindow/proc/force_open()
+	playsound(src, 'sound/foley/doors/windowup.ogg', 100, FALSE)
+	climbable = TRUE
+	opacity = FALSE
+	update_icon()
+
 /obj/structure/roguewindow/attackby(obj/item/W, mob/user, params)
 	return ..()
 
@@ -183,7 +189,7 @@
 	icon_state = null
 	base_state = null
 	stained = TRUE
-	max_integrity = 100 
+	max_integrity = 100
 	integrity_failure = 0.75
 
 /obj/structure/roguewindow/stained/silver
@@ -193,7 +199,7 @@
 /obj/structure/roguewindow/stained/yellow
 	icon_state = "stained-yellow"
 	base_state = "stained-yellow"
-	
+
 /obj/structure/roguewindow/stained/zizo
 	icon_state = "stained-zizo"
 	base_state = "stained-zizo"
