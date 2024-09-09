@@ -92,6 +92,7 @@
 		/datum/body_marking_set/tiger_dark,
 	)
 	body_markings = list(
+		/datum/body_marking/flushed_cheeks,
 		/datum/body_marking/plain,
 		/datum/body_marking/belly,
 		/datum/body_marking/bellyslim,

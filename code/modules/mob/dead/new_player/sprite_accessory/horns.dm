@@ -35,6 +35,33 @@
 	name = "Guilmon"
 	icon_state = "guilmon"
 
+/datum/sprite_accessory/horns/uni
+	name = "Uni"
+	icon_state = "uni"
+	relevant_layers = list(BODY_FRONT_LAYER, BODY_ADJ_LAYER, BODY_BEHIND_LAYER)
+
+/datum/sprite_accessory/horns/oni
+	name = "Oni"
+	icon_state = "oni"
+	relevant_layers = list(BODY_FRONT_LAYER, BODY_BEHIND_LAYER)
+
+/datum/sprite_accessory/horns/oni_large
+	name = "Oni (Large)"
+	icon_state = "oni_large"
+	relevant_layers = list(BODY_FRONT_LAYER, BODY_ADJ_LAYER, BODY_BEHIND_LAYER)
+
+/datum/sprite_accessory/horns/broken
+	name = "Broken"
+	icon_state = "broken"
+
+/datum/sprite_accessory/horns/rbroken
+	name = "Broken (Right)"
+	icon_state = "rbroken"
+
+/datum/sprite_accessory/horns/lbroken
+	name = "Broken (Left)"
+	icon_state = "lbroken"
+
 /datum/sprite_accessory/horns/drake
 	name = "Drake"
 	icon_state = "drake"

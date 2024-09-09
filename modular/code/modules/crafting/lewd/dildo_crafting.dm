@@ -6,23 +6,27 @@
 /datum/anvil_recipe/iron_dildo
 	name = "Iron dildo 3x"
 	req_bar = /obj/item/ingot/iron
-	created_item = list(/obj/item/dildo/iron, /obj/item/dildo/iron, /obj/item/dildo/iron)
-	i_type = "General"
+	created_item = /obj/item/dildo/iron
+	createditem_num = 3
+	i_type = "Utilities"
 
 /datum/anvil_recipe/steel_dildo
 	name = "Steel dildo 3x"
 	req_bar = /obj/item/ingot/steel
-	created_item = list(/obj/item/dildo/steel, /obj/item/dildo/steel, /obj/item/dildo/steel)
-	i_type = "General"
+	created_item = /obj/item/dildo/steel
+	createditem_num = 3
+	i_type = "Utilities"
 
 /datum/anvil_recipe/silver_dildo
 	name = "Silver dildo 3x"
 	req_bar = /obj/item/ingot/silver
-	created_item = list(/obj/item/dildo/silver, /obj/item/dildo/silver, /obj/item/dildo/silver)
-	i_type = "General"
+	created_item = /obj/item/dildo/silver
+	createditem_num = 3
+	i_type = "Utilities"
 
 /datum/anvil_recipe/gold_dildo
 	name = "Golden dildo 3x"
 	req_bar = /obj/item/ingot/gold
-	created_item = list(/obj/item/dildo/gold, /obj/item/dildo/gold, /obj/item/dildo/gold)
-	i_type = "General"
+	created_item = /obj/item/dildo/gold
+	createditem_num = 3
+	i_type = "Utilities"

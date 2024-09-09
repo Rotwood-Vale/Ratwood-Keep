@@ -6,6 +6,7 @@
 	desc = ""
 	w_class = WEIGHT_CLASS_TINY
 	var/bundletype = null
+	var/quality = SMELTERY_LEVEL_NORMAL // To not ruin blacksmith recipes
 
 /obj/item/natural/attackby(obj/item/W, mob/living/user)
 	if(istype(W, /obj/item/natural/bundle))
