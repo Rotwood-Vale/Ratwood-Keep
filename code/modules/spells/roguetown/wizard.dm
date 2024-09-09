@@ -17,7 +17,7 @@
 	charging_slowdown = 3
 	chargedloop = /datum/looping_sound/invokegen
 	associated_skill = /datum/skill/magic/arcane
-	cost = 4
+	cost = 3
 	xp_gain = TRUE
 
 /obj/projectile/magic/lightning
@@ -173,7 +173,7 @@
 	charging_slowdown = 3
 	chargedloop = /datum/looping_sound/invokegen
 	associated_skill = /datum/skill/magic/arcane
-	cost = 5
+	cost = 4
 	xp_gain = TRUE
 
 /obj/projectile/magic/aoe/fireball/rogue
@@ -546,7 +546,7 @@
 	associated_skill = /datum/skill/magic/arcane
 	var/wall_type = /obj/structure/forcefield_weak/caster
 	xp_gain = TRUE
-	cost = 3
+	cost = 2
 
 //adapted from forcefields.dm, this needs to be destructible
 /obj/structure/forcefield_weak
@@ -597,7 +597,7 @@
 /obj/effect/proc_holder/spell/invoked/slowdown_spell_aoe
 	name = "Ensnare"
 	desc = "Tendrils of arcyne force hold anyone in a small area in place for a short while."
-	cost = 2
+	cost = 3
 	xp_gain = TRUE
 	releasedrain = 20
 	chargedrain = 1
@@ -691,7 +691,7 @@
 /obj/effect/proc_holder/spell/invoked/push_spell
 	name = "Repulse"
 	desc = "Conjure forth a wave of energy, repelling anyone around you."
-	cost = 4
+	cost = 3
 	xp_gain = TRUE
 	releasedrain = 50
 	chargedrain = 1
@@ -870,7 +870,7 @@
 	associated_skill = /datum/skill/magic/arcane
 	hand_path = /obj/item/melee/touch_attack/darkvision
 	xp_gain = TRUE
-	cost = 3
+	cost = 2
 
 /obj/item/melee/touch_attack/darkvision
 	name = "\improper arcyne focus"
@@ -902,7 +902,7 @@
 /obj/effect/proc_holder/spell/invoked/featherfall
 	name = "Featherfall"
 	desc = "Grant yourself and any creatures adjacent to you some defense against falls."
-	cost = 2
+	cost = 1
 	xp_gain = TRUE
 	school = "transmutation"
 	releasedrain = 50
@@ -929,7 +929,7 @@
 /obj/effect/proc_holder/spell/invoked/haste
 	name = "Haste"
 	desc = "Cause a target to be magically hastened."
-	cost = 4
+	cost = 3
 	xp_gain = TRUE
 	releasedrain = 25
 	chargedrain = 1
