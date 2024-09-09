@@ -169,7 +169,7 @@
 		return
 	make_outlaw(requested_outlaw)
 
- /mob/proc/haltyell()
+/mob/proc/haltyell()
 	set name = "HALT!"
 	set category = "Noises"
 	emote("haltyell")

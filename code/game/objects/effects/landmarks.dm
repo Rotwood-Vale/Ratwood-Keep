@@ -319,6 +319,10 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	name = "Cook"
 	icon_state = "arrow"
 
+/obj/effect/landmark/start/knavewench
+	name = "Tavern Knave"
+	icon_state = "arrow"
+
 /obj/effect/landmark/start/gravedigger
 	name = "Mortician"
 	icon_state = "arrow"

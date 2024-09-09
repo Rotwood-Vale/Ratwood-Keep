@@ -113,7 +113,6 @@ GLOBAL_LIST_INIT(yeoman_positions, list(
 
 GLOBAL_LIST_INIT(peasant_positions, list(
 	"Soilson",
-	"Butcher",
 	"Cook",
 	"Lunatic",
 	"Miner",
@@ -123,6 +122,7 @@ GLOBAL_LIST_INIT(peasant_positions, list(
 	"Towner",
 	"Grabber",
 	"Nightmaster",
+	"Tavern Knave",
 	"Bath Swain",
 	"Docker",
 	"Prisoner",

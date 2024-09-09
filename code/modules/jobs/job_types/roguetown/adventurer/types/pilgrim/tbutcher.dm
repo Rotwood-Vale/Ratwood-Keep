@@ -6,7 +6,7 @@
 	outfit = /datum/outfit/job/roguetown/adventurer/butcher
 	category_tags = list(CTAG_PILGRIM, CTAG_TOWNER)
 
-/datum/outfit/job/roguetown/butcher/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/job/roguetown/adventurer/butcher/pre_equip(mob/living/carbon/human/H)
 	..()
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)

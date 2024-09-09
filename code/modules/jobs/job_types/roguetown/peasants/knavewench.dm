@@ -1,14 +1,14 @@
 /datum/job/roguetown/knavewench // The most aggressively rude name yet.
 	title = "Tavern Knave"
 	f_title = "Tavern Wench"
-	flag = KNAVE
+	flag = KNAVEWENCH
 	department_flag = PEASANTS
 	faction = "Station"
 	total_positions = 4
 	spawn_positions = 4
 
 	allowed_races = RACES_ALL_KINDS
-	tutorial = "You have a simple role at the NAME OF INN; please. You wait tables and help guests, clean the rooms, and assist in the kitchens as need be. Bring a smile and the cheapsake townsfolk and adventures might give you extra coin, too - assuming you don't get sticky fingers while they're half-dead from beer."
+	tutorial = "You have a simple role at the Azurian Pint; please. You wait tables and help guests, clean the rooms, and assist in the kitchens as need be. Bring a smile and the cheapsake townsfolk and adventures might give you extra coin, too - assuming you don't get sticky fingers while they're half-dead from beer."
 
 	outfit = /datum/outfit/job/roguetown/knavewench
 	display_order = JDO_KNAVEWENCH
@@ -16,7 +16,7 @@
 	min_pq = -10
 	max_pq = null
 
-/datum/outfit/job/roguetown/cook/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/job/roguetown/knavewench/pre_equip(mob/living/carbon/human/H)
 	..()
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)

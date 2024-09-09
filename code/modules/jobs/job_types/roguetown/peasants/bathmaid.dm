@@ -11,7 +11,7 @@
 	allowed_races = RACES_ALL_KINDS
 	allowed_ages = list(AGE_ADULT, AGE_MIDDLEAGED)
 
-	tutorial = "Most would decry the humble bath attendant as a desperate fool tempting others into bedsheets for money - only sometimes, you say! You work under the Innkeeper in the communal bathhouse, keeping it and the guests in turn as tidy as they please. Laudry, mild wounds, and your tender touch with a bar of soap is your craft. Occassionally you help upstairs, but put a shirt on!"
+	tutorial = "Most would decry the humble bath attendant as a desperate fool tempting others into bedsheets for money - only sometimes, you say! You work under the Innkeeper in the communal bathhouse, keeping it and the guests in turn as tidy as they please. Laudry, mild wounds, and your tender touch with a bar of soap is your craft. Occassionally you help upstairs; put a shirt on!"
 
 	outfit = /datum/outfit/job/roguetown/nightmaiden
 	display_order = JDO_WENCH
