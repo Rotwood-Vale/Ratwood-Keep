@@ -771,7 +771,7 @@
 "fTX" = (/obj/structure/chair/bench/coucha,/obj/effect/landmark/start/nightmaiden,/turf/open/floor/rogue/tile{icon_state = "chess"},/area/rogue/indoors/town/bath)
 "fTZ" = (/obj/structure/roguewindow,/turf/open/floor/rogue/ruinedwood{icon_state = "weird1"},/area/rogue/indoors/town)
 "fUi" = (/obj/machinery/light/rogue/wallfire/candle/l,/turf/open/floor/rogue/cobble,/area/rogue/indoors/town/manor)
-"fUx" = (/obj/structure/mineral_door/wood{locked = 1; lockid = "vault"},/turf/open/floor/rogue/tile{icon_state = "chess"},/area/rogue/under/town/basement)
+"fUx" = (/obj/structure/mineral_door/wood/donjon{dir = 1; locked = 1; lockid = "vault"; name = "Vault Door"},/turf/open/floor/rogue/tile{icon_state = "chess"},/area/rogue/under/town/basement)
 "fUG" = (/obj/structure/table/wood{dir = 1; icon_state = "tablewood1"},/obj/machinery/light/rogue/torchholder/l,/turf/open/floor/rogue/blocks/stonered/tiny,/area/rogue/indoors/town/dwarfin)
 "fVF" = (/obj/structure/table/wood{dir = 1; icon_state = "longtable"},/obj/item/rogueweapon/shovel,/obj/item/rogueweapon/stoneaxe/woodcut,/turf/open/floor/rogue/cobble,/area/rogue/indoors)
 "fVT" = (/obj/machinery/light/rogue/wallfire/candle/blue/r,/turf/open/floor/rogue/herringbone,/area/rogue/indoors/town/bath)
