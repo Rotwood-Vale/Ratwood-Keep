@@ -8289,9 +8289,11 @@
 	},
 /area/rogue/outdoors/bog)
 "hTf" = (
-/obj/structure/mineral_door/wood/deadbolt{
-	dir = 8;
-	locked = 1
+/obj/structure/mineral_door/wood/donjon{
+	locked = 1;
+	lockid = "shop";
+	masterkey = 0;
+	dir = 8
 	},
 /turf/open/floor/rogue/twig,
 /area/rogue/indoors/town)
@@ -10804,7 +10806,7 @@
 "kvT" = (
 /obj/structure/lever/wall{
 	dir = 4;
-	redstone_id = "merchshutt"
+	redstone_id = "merchroofshutt"
 	},
 /turf/open/floor/rogue/ruinedwood{
 	icon_state = "weird1"
@@ -11727,7 +11729,7 @@
 "ltv" = (
 /obj/structure/mineral_door/wood/donjon{
 	locked = 1;
-	lockid = "steward"
+	lockid = "shop"
 	},
 /turf/open/floor/rogue/ruinedwood{
 	icon_state = "weird1"
