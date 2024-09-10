@@ -66,5 +66,5 @@ Also given some non-combat skills that a peasent would have, just to support the
 		H.change_stat("endurance", 2)
 		H.change_stat("speed", 1)
 		H.verbs |= /mob/proc/haltyell
-	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
+	ADD_TRAIT(H, TRAIT_GENERIC, TRAIT_PERFECT_TRACKER, TRAIT_DODGEEXPERT, TRAIT_LONGSTRIDER)
 
