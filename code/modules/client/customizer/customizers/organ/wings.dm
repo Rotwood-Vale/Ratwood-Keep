@@ -20,7 +20,6 @@
 		/datum/sprite_accessory/wings/bat,
 		/datum/sprite_accessory/wings/feathery,
 		/datum/sprite_accessory/wings/wide/succubus,
-		/datum/sprite_accessory/wings/seelie,
 		/datum/sprite_accessory/wings/bee,
 		/datum/sprite_accessory/wings/wide/dragon_alt1,
 		/datum/sprite_accessory/wings/wide/dragon_alt2,

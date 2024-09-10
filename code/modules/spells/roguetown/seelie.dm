@@ -220,9 +220,9 @@ obj/effect/proc_holder/spell/targeted/static_room/cast(list/targets, mob/user = 
 		if(!B.tame)
 			B.tame = TRUE
 			B.tamed()
+			B.friends = list(user) //Makes the Rous not target the Seelie when on aggro
 		//user.visible_message(span_info("[B] calms down."))
 		B.enemies = list()
-		B.friends = list(user) //Makes the Rous not target the Seelie when on aggro
 		B.aggressive = 0
 		B.LoseTarget()
 		tamed = B.tame
