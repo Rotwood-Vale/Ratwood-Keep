@@ -223,7 +223,7 @@
 
 /turf/open/water/bath
 	name = "water"
-	desc = "Faintly yellow colored.. Suspicious."
+	desc = "Soothing water, although don't drink the soap."
 	icon = 'icons/turf/roguefloor.dmi'
 	icon_state = "bathtileW"
 	water_level = 2

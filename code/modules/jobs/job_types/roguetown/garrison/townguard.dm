@@ -3,8 +3,8 @@
 	flag = GUARDSMAN
 	department_flag = GARRISON
 	faction = "Station"
-	total_positions = 12
-	spawn_positions = 12
+	total_positions = 0
+	spawn_positions = 0
 	selection_color = JCOLOR_SOLDIER
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS // same as town guard
@@ -141,7 +141,8 @@ Archer is basically a 'bounty-catcher' in function, less specialized at close-qu
 	backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger/steel = 1, /obj/item/rope/chain = 1)
 	H.verbs |= /mob/proc/haltyell
 
-/mob/proc/haltyell()
-	set name = "HALT!"
-	set category = "Noises"
-	emote("haltyell")
+// Added to baliff under assumption townguard.dm will not be enabled.
+// /mob/proc/haltyell()
+//	set name = "HALT!"
+//	set category = "Noises"
+//	emote("haltyell")

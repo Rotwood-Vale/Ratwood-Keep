@@ -155,17 +155,18 @@
 #define LUMBERJACK	(1<<4)
 #define MINER		(1<<5)
 #define COOK		(1<<6)
-#define GRABBER		(1<<7)
-#define NIGHTMASTER	(1<<8)
-#define BEGGAR		(1<<9)
+#define KNAVEWENCH (1<<7)
+#define GRABBER		(1<<8)
+#define NIGHTMASTER	(1<<9)
 #define WENCH		(1<<10)
-#define ADVENTURER	(1<<11)
-#define PILGRIM		(1<<12)
-#define VILLAGER	(1<<13)
-#define PRISONERR	(1<<14)
-#define PRISONERB	(1<<15)
-#define LUNATIC		(1<<16)
-#define MIGRANT		(1<<17)
+#define BEGGAR		(1<<11)
+#define ADVENTURER	(1<<12)
+#define PILGRIM		(1<<13)
+#define VILLAGER	(1<<14)
+#define PRISONERR	(1<<15)
+#define PRISONERB	(1<<16)
+#define LUNATIC		(1<<17)
+#define MIGRANT		(1<<18)
 
 #define YOUNGFOLK	(1<<6)
 
@@ -267,12 +268,10 @@
 
 #define JDO_BARKEEP 26
 #define JDO_COOK 27
+#define JDO_KNAVEWENCH 27.1
+#define JDO_WENCH 27.2
 
-#define JDO_BUTCHER 27.1
-#define JDO_SOILSON 27.2
-
-#define JDO_NIGHTMASTER 28
-#define JDO_WENCH 28.1
+#define JDO_SOILSON 28
 
 #define JDO_VILLAGER 30
 #define JDO_ADVENTURER 30.1
@@ -326,10 +325,8 @@
 
 #define CHURCH_ROLES \
 	/datum/job/roguetown/churchling,\
-	/datum/job/roguetown/shepherd,\
 	/datum/job/roguetown/druid,\
 	/datum/job/roguetown/monk,\
-	/datum/job/roguetown/undertaker,\
 	/datum/job/roguetown/priest,\
 	/datum/job/roguetown/puritan,\
 	/datum/job/roguetown/templar
@@ -340,6 +337,7 @@
 	/datum/job/roguetown/beggar,\
 	/datum/job/roguetown/butcher,\
 	/datum/job/roguetown/cook,\
+	/datum/job/roguetown/knavewench,\
 	/datum/job/roguetown/lunatic,\
 	/datum/job/roguetown/nightman,\
 	/datum/job/roguetown/farmer,\

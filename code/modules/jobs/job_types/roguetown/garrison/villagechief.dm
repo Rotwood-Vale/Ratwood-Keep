@@ -1,5 +1,5 @@
 /datum/job/roguetown/woodsman
-	title = "Village Elder"
+	title = "Town Elder"
 	flag = ELDER
 	department_flag = YEOMEN
 	faction = "Station"
@@ -9,7 +9,7 @@
 	allowed_sexes = list(MALE, FEMALE) //same as bog guard
 	allowed_races = RACES_ALL_KINDS
 	allowed_ages = list(AGE_OLD)
-	tutorial = "You are as venerable and ancient as the trees themselves, wise even for your years spent in the bog guard. The King may lead officially, but people look to you as Ealdorman to solve lesser issues. Remember the old ways of the law, not everything must end in bloodshed: no matter how much the Bog Guards wish it were the case."
+	tutorial = "You are as venerable and ancient as the trees themselves, wise even for your years spent in the bog guard. The King may lead officially, but people look to you as Ealdorman to solve lesser issues. Remember the old ways of the law, not everything must end in bloodshed: no matter how much the retinue wish it were the case."
 	whitelist_req = TRUE
 	outfit = /datum/outfit/job/roguetown/woodsman
 	display_order = JDO_CHIEF
@@ -30,10 +30,10 @@
 				index = copytext(H.real_name, 1,index)
 			if(!index)
 				index = H.real_name
-			S.name = "Village Elder cloak ([index])"
+			S.name = "Town Elder cloak ([index])"
 
 /datum/outfit/job/roguetown/woodsman
-	name = "Village Elder"
+	name = "Town Elder"
 	jobtype = /datum/job/roguetown/woodsman
 
 /datum/outfit/job/roguetown/woodsman/pre_equip(mob/living/carbon/human/H)

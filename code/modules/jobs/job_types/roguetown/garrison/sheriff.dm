@@ -1,4 +1,4 @@
-/datum/job/roguetown/sheriff
+/datum/job/roguetown/sheriff // Bailiff.dm is currently used for the sheriff role.
 	title = "Town Sheriff"
 	flag = SHERIFF
 	department_flag = GARRISON

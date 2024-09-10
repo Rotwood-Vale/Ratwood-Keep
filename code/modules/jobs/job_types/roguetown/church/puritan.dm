@@ -11,7 +11,7 @@
 		/datum/patron/old_god,
 		ALL_DIVINE_PATRONS,
 	) //gets set to old god.
-	tutorial = "As an Inquisitor, the crown has emboldened your radical sect to root out cultists and the cursed night beasts, using your practice of extracting involuntary 'sin confessions' as a guise to spy on the local populace. Witch Hunters are hired for their extreme paranoia and religious fervor."
+	tutorial = "You worship and pay credence to the old god, Psydon, in heretical contrast to the church of the Ten. However, both the crown and church have emboldened your radical sect, as your fervor allows you to root out cultists, the cursed night beasts, and other agents of the darkness using your practice of extracting involuntary 'sin confessions.' Remember, though; they tolerate you so long as you have a common enemy..."
 	whitelist_req = TRUE
 
 	outfit = /datum/outfit/job/roguetown/puritan
@@ -61,6 +61,7 @@
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/sewing, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/medicine, 2, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/tracking, 1, TRUE)
 		H.change_stat("strength", 2)
 		H.change_stat("endurance", 2)
 		H.change_stat("constitution", 3)

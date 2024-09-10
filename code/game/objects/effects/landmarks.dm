@@ -219,7 +219,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/woodsman
-	name = "Village Elder"
+	name = "Town Elder"
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/priest
@@ -317,6 +317,10 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 
 /obj/effect/landmark/start/cook
 	name = "Cook"
+	icon_state = "arrow"
+
+/obj/effect/landmark/start/knavewench
+	name = "Tavern Knave"
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/gravedigger
