@@ -616,6 +616,7 @@
 	desc = "This finely crafted saber is of elven smithcraft."
 	icon_state = "esaber"
 	item_state = "esaber"
+	smeltresult = /obj/item/ingot/silver
 	lefthand_file = 'icons/mob/inhands/weapons/swords_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/weapons/swords_righthand.dmi'
 
