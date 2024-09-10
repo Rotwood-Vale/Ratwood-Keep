@@ -2,6 +2,7 @@
 "as" = (/obj/structure/stairs/stone,/obj/structure/fluff/railing/border{dir = 4},/turf/open/floor/rogue/dirt,/area/rogue/outdoors/woods)
 "at" = (/turf/closed/wall/mineral/rogue/stone/moss,/area/rogue/under/town/basement)
 "au" = (/obj/item/wallframe/intercom{pixel_y = 30; color = "#755f48"},/turf/open/floor/rogue/greenstone,/area/rogue/under/cave/dungeon1/gethsmane/inner)
+"aw" = (/obj/machinery/light/rogue/torchholder/r,/obj/machinery/light/rogue/torchholder/r,/turf/open/floor/rogue/ruinedwood{dir = 1; icon_state = "vertw"},/area/rogue/indoors)
 "ay" = (/obj/machinery/conveyor/auto{dir = 1; color = "#755f48"},/obj/structure/spacevine,/obj/structure/spacevine,/turf/open/water/sewer,/area/rogue/under/cave/dungeon1/gethsmane/inner)
 "aA" = (/turf/open/floor/rogue/dirt/road,/area/rogue/under/cave)
 "aF" = (/obj/item/natural/stone{pixel_x = 6; pixel_y = 9},/turf/open/floor/rogue/dirt,/area/rogue/under/cave/dungeon1/gethsmane)
@@ -248,7 +249,7 @@
 "qH" = (/obj/machinery/light/rogue/campfire/densefire,/turf/open/floor/rogue/naturalstone,/area/rogue/outdoors/beach)
 "qJ" = (/turf/open/floor/rogue/ruinedwood,/area/rogue/indoors)
 "qQ" = (/obj/structure/fluff/railing/border{dir = 5; icon_state = "border"},/turf/open/transparent/openspace,/area/rogue/outdoors/mountains)
-"qV" = (/obj/machinery/light/rogue/torchholder/r,/obj/structure/closet/crate/roguecloset/dark,/obj/item/rogueweapon/shovel,/obj/item/rogueweapon/shovel,/obj/item/flashlight/flare/torch,/obj/item/flashlight/flare/torch,/turf/open/floor/rogue/ruinedwood{dir = 1; icon_state = "vertw"},/area/rogue/indoors)
+"qV" = (/obj/structure/closet/crate/roguecloset/dark,/obj/item/rogueweapon/shovel,/obj/item/rogueweapon/shovel,/obj/item/flashlight/flare/torch,/obj/item/flashlight/flare/torch,/turf/open/floor/rogue/ruinedwood{dir = 1; icon_state = "vertw"},/area/rogue/indoors)
 "rc" = (/obj/effect/decal/cobbleedge{dir = 5},/turf/open/floor/rogue/cobble/mossy,/area/rogue/outdoors/woods)
 "rf" = (/obj/effect/landmark/mapGenerator/rogue/mountain{endTurfX = 155; endTurfY = 155},/turf/closed/mineral/rogue/bedrock,/area/rogue/outdoors/mountains)
 "rg" = (/obj/item/restraints/legcuffs/beartrap/armed/camouflage,/turf/open/water/swamp,/area/rogue/under/cave)
@@ -1150,7 +1151,7 @@ SeSeSeSeSeSeSeSeSeSeSeSeSeSerjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrj
 SeSeSeSeSeSeSeSeSeSeSeSeSeSerjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjUgUgUgUgUgUgUgUgUgrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjleFbsVqaUGUGjauxpcuWFbJorjrjrjFbrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrj
 SeSeSeSeSeSeSeSeSeSeSeSeSeSeSerjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjleFbsVUIqJzkNxMHoYJzNxTUrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrj
 SeSeSeSeSeSeSeSeSeSeSeSeSeSeSerjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjhhhhhhhhhhhhrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjleFbsVUGUGUGVOUGqJUGfDrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrj
-SeSeSeSeSeSeSeSeSeSeSeSeSeSeSerjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjhhhhhhhhhhhhrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjleFbsVUGoxfcfDqVqJUGsVrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrj
+SeSeSeSeSeSeSeSeSeSeSeSeSeSeSerjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjhhhhhhhhhhhhrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjleFbsVUGoxfcfDqVqJawsVrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrj
 SeSeSeSeSeSeSeSeSeSeSedPdPdPdPrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjhhhhhhhhhhhhrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjleFbERoPoxrrERupqJUGERMmJErjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrj
 SeSeSeSeSeSeSeSedPdPdPdPdPdPdPrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjhhhhhhhhhhhhrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjleinNxMHsVMHNxMHWaJzNxFbJErjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrj
 SeSeSeSeSeSeSeZzdPdPdPdPdPdPdPdPrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjhhhhhhhhhhhhhhhhhhhhhhrjrjrjrjrjrjrjrjrjhhhhhhhhhhhhrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjleFbFbFbFbFbFbBOFbFbFbFbJErjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrjrj
