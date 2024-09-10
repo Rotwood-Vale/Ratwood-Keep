@@ -53,29 +53,31 @@
 	backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger/steel/special = 1, /obj/item/signal_horn = 1)
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/combat/axes, 4, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/combat/swords, 4, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/combat/maces, 4, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/swords, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/maces, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 5, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 4, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/combat/polearms, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 5, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/polearms, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 3, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/combat/bows, 2, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/bows, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/whipsflails, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/swimming, 2, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/climbing, 2, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/swimming, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/climbing, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/athletics, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/medicine, 1, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/riding, 1, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/tracking, 2, TRUE) //Hearthstone change.
+		H.mind.adjust_skillrank(/datum/skill/misc/riding, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/tracking, 3, TRUE) //Hearthstone change.
+		H.mind.adjust_skillrank(/datum/skill/combat/shields, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/craft/crafting, pick(1,1,2), TRUE)	//Peasent levy, so some skill
+		H.mind.adjust_skillrank(/datum/skill/labor/farming, pick(1,2,2), TRUE)		//Peasent levy, so some skill
 		H.change_stat("strength", 3)
 		H.change_stat("constitution", 2)
 		H.change_stat("perception", 2)
 		H.change_stat("endurance", 2)
 	H.dna.species.soundpack_m = new /datum/voicepack/male/knight()
 	H.verbs |= /mob/proc/haltyell
-	ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 
 /obj/effect/proc_holder/spell/self/convertrole/bog

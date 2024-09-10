@@ -7,7 +7,7 @@
 	spawn_positions = 1
 	allowed_races = RACES_ALL_KINDS
 	allowed_sexes = list(MALE, FEMALE)
-	allowed_ages = list(AGE_MIDDLEAGED, AGE_OLD)
+	allowed_ages = list(AGE_ADULT, AGE_MIDDLEAGED, AGE_OLD)
 	display_order = JDO_SHERIFF
 	tutorial = "Crime has always been a constant of your life, and you always chose the side of justice. You rose up through the ranks as a watchman, and now rule over them - Ensure that they enforce the laws of this land properly."
 	whitelist_req = FALSE
@@ -29,12 +29,12 @@
 	beltl = /obj/item/rogueweapon/sword/sabre
 	beltr = /obj/item/rogueweapon/mace/cudgel
 	cloak = /obj/item/clothing/cloak/stabard/guardhood
-	backpack_contents = list(/obj/item/keyring/sheriff = 1)
+	backpack_contents = list(/obj/item/keyring/sheriff = 1, /obj/item/signal_horn = 1)
 	if(H.mind)
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/self/convertrole/guard)
-		H.mind.adjust_skillrank(/datum/skill/combat/maces, 3, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/combat/axes, 3, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 2, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/maces, 4, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/axes, 4, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 5, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/swords, 4, TRUE)
