@@ -224,12 +224,21 @@
 	if(user == src)
 		instant = TRUE
 
-	if(!cmode && user.cmode)
-		combat_modifier = 1.25
-	else if(cmode && !user.cmode)
-		combat_modifier = 0.75
+	if(surrendering)
+		combat_modifier = 2
 
-	var/probby =  clamp((((3.5 + (((user.STASTR - STASTR)/2) + skill_diff)) * 10 + rand(-5, 5)) * combat_modifier), 5, 95)
+	if(handcuffed)
+		combat_modifier += 0.25
+
+	if(!(mobility_flags & MOBILITY_STAND) && user.mobility_flags & MOBILITY_STAND)
+		combat_modifier += 0.05
+
+	if(user.cmode && !cmode)
+		combat_modifier += 0.3
+	else if(!user.cmode && cmode)
+		combat_modifier -= 0.3
+
+	var/probby =  clamp((((4 + (((user.STASTR - STASTR)/2) + skill_diff)) * 10 + rand(-5, 5)) * combat_modifier), 5, 95)
 
 	if(!prob(probby) && !instant && !stat)
 		visible_message(span_warning("[user] struggles with [src]!"),

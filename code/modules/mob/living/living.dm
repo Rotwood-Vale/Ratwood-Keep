@@ -1106,10 +1106,16 @@
 	if(L.mind)
 		wrestling_diff -= (L.mind.get_skill_level(/datum/skill/combat/wrestling))
 
+	if(handcuffed)
+		combat_modifier -= 0.25
+
+	if(!(L.mobility_flags & MOBILITY_STAND) && mobility_flags & MOBILITY_STAND)
+		combat_modifier += 0.2
+
 	if(cmode && !L.cmode)
-		combat_modifier = 1.25
+		combat_modifier += 0.3
 	else if(!cmode && L.cmode)
-		combat_modifier = 0.75
+		combat_modifier -= 0.3
 
 	resist_chance = clamp((((4 + (((STASTR - L.STASTR)/2) + wrestling_diff)) * 10 + rand(-5, 10)) * combat_modifier), 5, 95)
 

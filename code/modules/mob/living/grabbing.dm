@@ -136,10 +136,19 @@
 	if(M.mind)
 		skill_diff -= (M.mind.get_skill_level(/datum/skill/combat/wrestling))
 
+	if(M.surrendering)
+		combat_modifier = 2
+
+	if(M.handcuffed)
+		combat_modifier += 0.25
+
+	if(!(M.mobility_flags & MOBILITY_STAND) && user.mobility_flags & MOBILITY_STAND)
+		combat_modifier += 0.05
+
 	if(user.cmode && !M.cmode)
-		combat_modifier = 1.25
+		combat_modifier += 0.3
 	else if(!user.cmode && M.cmode)
-		combat_modifier = 0.75
+		combat_modifier -= 0.3
 
 	switch(user.used_intent.type)
 		if(/datum/intent/grab/upgrade)
@@ -151,7 +160,7 @@
 		if(/datum/intent/grab/choke)
 			if(limb_grabbed && grab_state > 0) //this implies a carbon victim
 				if(iscarbon(M) && M != user)
-					user.rogfat_add(rand(7,15))
+					user.rogfat_add(rand(1,3))
 					var/mob/living/carbon/C = M
 					if(get_location_accessible(C, BODY_ZONE_PRECISE_NECK))
 						if(prob(25))
@@ -163,15 +172,15 @@
 		if(/datum/intent/grab/twist)
 			if(limb_grabbed && grab_state > 0) //this implies a carbon victim
 				if(iscarbon(M))
-					user.rogfat_add(rand(7,15))
+					user.rogfat_add(rand(3,13))
 					twistlimb(user)
 		if(/datum/intent/grab/twistitem)
 			if(limb_grabbed && grab_state > 0) //this implies a carbon victim
 				if(ismob(M))
-					user.rogfat_add(rand(7,15))
+					user.rogfat_add(rand(3,13))
 					twistitemlimb(user)
 		if(/datum/intent/grab/remove)
-			user.rogfat_add(rand(5,15))
+			user.rogfat_add(rand(3,13))
 			if(isitem(sublimb_grabbed))
 				removeembeddeditem(user)
 			else
@@ -187,12 +196,12 @@
 				user.rogfat_add(rand(1,3))
 				M.visible_message(span_danger("[user] pins [M] to the ground!"), \
 								span_userdanger("[user] pins me to the ground!"), span_hear("I hear a sickening sound of pugilism!"), COMBAT_MESSAGE_RANGE)
-				M.Knockdown(max((50 + (skill_diff * 10) + (user.STASTR * 5) - (M.STASTR * 5)), 20))
-				M.Immobilize(max((50 + (skill_diff * 10) + (user.STASTR * 5) - (M.STASTR * 5)), 20))
+				M.Knockdown(max((65 + (skill_diff * 10) + (user.STASTR * 5) - (M.STASTR * 5)), 20))
+				M.Immobilize(max((65 + (skill_diff * 10) + (user.STASTR * 5) - (M.STASTR * 5)), 20))
 				user.Immobilize(20 - skill_diff)
 			else
-				user.rogfat_add(rand(7,15))
-				if(prob(clamp((((3.5 + (((user.STASTR - M.STASTR)/2) + skill_diff)) * 10 + rand(-5, 5)) * combat_modifier), 5, 95)))
+				user.rogfat_add(rand(5,15))
+				if(prob(clamp((((4 + (((user.STASTR - M.STASTR)/2) + skill_diff)) * 10 + rand(-5, 5)) * combat_modifier), 5, 95)))
 					M.visible_message(span_danger("[user] shoves [M] to the ground!"), \
 									span_userdanger("[user] shoves me to the ground!"), span_hear("I hear a sickening sound of pugilism!"), COMBAT_MESSAGE_RANGE)
 					M.Knockdown(max(10 + skill_diff * 2, 1))
@@ -337,8 +346,11 @@
 	unarmed = TRUE
 	chargetime = 0
 	noaa = TRUE
+	candodge = FALSE
+	canparry = FALSE
 	no_attack = TRUE
-	misscost = 5
+	misscost = 2
+	releasedrain = 2
 
 /datum/intent/grab/move
 	name = "grab move"
