@@ -1253,3 +1253,23 @@
 	allowed_sex = list(MALE, FEMALE)
 	allowed_race = NON_DWARVEN_RACE_TYPES
 	nodismemsleeves = TRUE
+
+	/obj/item/clothing/cloak/combattantecloak
+	name = "combattantecloak"
+	desc = "A cloak designed for members of the Combattante Association"
+	color = null
+	icon_state = "combattantecloak"
+	alternate_worn_layer = CLOAK_BEHIND_LAYER
+	slot_flags = ITEM_SLOT_BACK_R|ITEM_SLOT_CLOAK
+//	body_parts_covered = ARMS|CHEST
+	boobed = TRUE
+	sleeved = 'icons/roguetown/clothing/onmob/cloaks.dmi'
+	sleevetype = "shirt"
+	nodismemsleeves = TRUE
+	inhand_mod = TRUE
+	hoodtype = null
+	toggle_icon_state = FALSE
+	color = CLOTHING_BLACK
+	allowed_sex = list(MALE, FEMALE)
+	allowed_race = NON_DWARVEN_RACE_TYPES
+	flags_inv = null
