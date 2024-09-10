@@ -123,7 +123,7 @@
 /obj/item/keyring/proc/update_desc()
 	if(keys.len)
 		desc = initial(desc)
-		desc += span_info("Holds \Roman[keys.len] key\s, including:")
+		desc += span_info("\nHolds \Roman[keys.len] key\s, including:")
 		for(var/obj/item/roguekey/KE in keys)
 			desc += span_info("\n- [KE.name ? "A [KE.name]." : "An unknown key."]")
 	else
@@ -233,7 +233,7 @@
 /obj/item/lockpickring/proc/update_desc()
 	if(picks.len)
 		desc = initial(desc)
-		desc += "<span class='info'>\Roman [picks.len] lockpicks.</span>"
+		desc += "<span class='info'>\n\Roman [picks.len] lockpicks.</span>"
 	else
 		desc = initial(desc)
 
