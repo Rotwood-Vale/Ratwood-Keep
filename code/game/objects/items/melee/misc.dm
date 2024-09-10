@@ -534,7 +534,7 @@
 	item_flags = NONE
 	force = 0
 	attack_verb = list("hit", "poked")
-	var/obj/item/reagent_containers/food/snacks/sausage/held_sausage
+	var/obj/item/reagent_containers/food/snacks/rogue/meat/sausage/held_sausage
 	var/static/list/ovens
 	var/on = FALSE
 	var/datum/beam/beam
@@ -559,7 +559,7 @@
 
 /obj/item/melee/roastingstick/attackby(atom/target, mob/user)
 	..()
-	if (istype(target, /obj/item/reagent_containers/food/snacks/sausage))
+	if (istype(target, /obj/item/reagent_containers/food/snacks/rogue/meat/sausage))
 		if (!on)
 			to_chat(user, span_warning("I must extend [src] to attach anything to it!"))
 			return
@@ -608,9 +608,9 @@
 	if (!on)
 		return
 	if (is_type_in_typecache(target, ovens))
-		if (held_sausage && held_sausage.roasted)
-			to_chat(span_warning("My [held_sausage] has already been cooked!"))
-			return
+		// if (held_sausage && held_sausage.roasted)
+		// 	to_chat(span_warning("My [held_sausage] has already been cooked!"))
+		// 	return
 		if (istype(target, /obj/singularity) && get_dist(user, target) < 10)
 			to_chat(user, span_notice("I send [held_sausage] towards [target]."))
 			playsound(src, 'sound/blank.ogg', 50, TRUE)

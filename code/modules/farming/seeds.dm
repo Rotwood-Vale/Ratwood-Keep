@@ -100,3 +100,11 @@
 /obj/item/seeds/garlic
 	seed_identity = "garlic seeds"
 	plant_def_type = /datum/plant_def/garlic
+
+/obj/item/seeds/onion
+	seed_identity = "onion seeds"
+	plant_def_type = /datum/plant_def/onion
+
+/obj/item/seeds/cabbage
+	seed_identity = "cabbage seeds"
+	plant_def_type = /datum/plant_def/cabbage

@@ -2,7 +2,7 @@
 	name = "metal cup"
 	desc = "A sturdy cup, often used by warriors, bogwatch and other sturdy men."
 	icon_state = "iron"
-	icon = 'icons/roguetown/items/cooking.dmi'
+	//icon = 'icons/roguetown/items/cooking.dmi'
 	force = 5
 	throwforce = 10
 	reagent_flags = OPENCONTAINER
@@ -23,7 +23,7 @@
 	cut_overlays()
 
 	if(reagents.total_volume)
-		var/mutable_appearance/filling = mutable_appearance('icons/roguetown/items/cooking.dmi', "[icon_state]filling")
+		var/mutable_appearance/filling = mutable_appearance('modular/Neu_Food/icons/cooking.dmi', "[icon_state]filling")
 
 		filling.color = mix_color_from_reagents(reagents.reagent_list)
 		filling.alpha = mix_alpha_from_reagents(reagents.reagent_list)

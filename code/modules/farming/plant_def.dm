@@ -167,3 +167,27 @@
 	maturation_time = 5 MINUTES
 	produce_time = 2 MINUTES
 	weed_immune = FALSE
+
+/datum/plant_def/onion
+	name = "onion"
+	icon = 'icons/roguetown/misc/crops.dmi'
+	icon_state = "onion"
+	produce_type = /obj/item/reagent_containers/food/snacks/grown/onion/rogue
+	produce_amount = 4
+	maturation_nutrition = 30
+	produce_nutrition = 20
+	maturation_time = 5 MINUTES
+	produce_time = 2 MINUTES
+	weed_immune = FALSE
+
+/datum/plant_def/cabbage
+	name = "cabbage"
+	icon = 'icons/roguetown/misc/crops.dmi'
+	icon_state = "cabbage"
+	produce_type = /obj/item/reagent_containers/food/snacks/grown/cabbage/rogue
+	produce_amount = 4
+	maturation_nutrition = 30
+	produce_nutrition = 20
+	maturation_time = 5 MINUTES
+	produce_time = 2 MINUTES
+	weed_immune = FALSE

@@ -5,9 +5,9 @@
 	name = "steel pan"
 	desc = "Two in one: Cook and smash heads."
 	icon_state = "pan"
-	icon = 'icons/roguetown/items/cooking.dmi'
-	lefthand_file = 'icons/mob/inhands/items_lefthand.dmi'
-	righthand_file = 'icons/mob/inhands/items_righthand.dmi'
+	// icon = 'icons/roguetown/items/cooking.dmi'
+	// lefthand_file = 'icons/mob/inhands/items_lefthand.dmi'
+	// righthand_file = 'icons/mob/inhands/items_righthand.dmi'
 	wlength = WLENGTH_SHORT
 	sharpness = IS_BLUNT
 	//dropshrink = 0.8

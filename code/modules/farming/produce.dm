@@ -5,7 +5,7 @@
 	w_class = WEIGHT_CLASS_SMALL
 	var/can_distill = FALSE //If FALSE, this object cannot be distilled into an alcohol.
 	var/distill_reagent //If NULL and this object can be distilled, it uses a generic fruit_wine reagent and adjusts its variables.
-	var/distill_amt = 12
+	var/distill_amt = 24
 	var/list/pipe_reagents = list()
 	var/seed
 	var/bitesize_mod = 0
@@ -53,8 +53,9 @@
 	tastes = list("wheat" = 1)
 	can_distill = TRUE
 	distill_reagent = /datum/reagent/consumable/ethanol/beer
-	distill_amt = 24
+	distill_amt = 48
 	grind_results = list(/datum/reagent/floure = 10)
+	mill_result = /obj/item/reagent_containers/powder/flour
 
 /obj/item/reagent_containers/food/snacks/grown/oat
 	seed = /obj/item/seeds/wheat/oat
@@ -69,8 +70,9 @@
 	tastes = list("oat" = 1)
 	can_distill = TRUE
 	distill_reagent = /datum/reagent/consumable/ethanol/ale
-	distill_amt = 12
+	distill_amt = 24
 	grind_results = list(/datum/reagent/floure = 10)
+	mill_result = /obj/item/reagent_containers/powder/flour
 
 /obj/item/reagent_containers/food/snacks/grown/apple
 	seed = /obj/item/seeds/apple
@@ -306,3 +308,28 @@
 	tastes = list("garlic" = 1)
 	dropshrink = 0.75
 	bitesize_mod = 1
+
+/obj/item/reagent_containers/food/snacks/grown/onion/rogue
+	name = "onion"
+	desc = ""
+	icon_state = "onion"
+	slices_num = 1
+	tastes = list("spicy sweetness" = 1)
+	bitesize = 2
+	list_reagents = list(/datum/reagent/consumable/nutriment = 2)
+	//can_distill = TRUE
+	//distill_reagent = /datum/reagent/consumable/ethanol/beer/onion
+	rotprocess = null
+	seed = /obj/item/seeds/onion
+
+/obj/item/reagent_containers/food/snacks/grown/cabbage/rogue
+	name = "cabbage"
+	desc = ""
+	icon_state = "cabbage"
+	tastes = list("blandness" = 1)
+	bitesize = 10
+	list_reagents = list(/datum/reagent/consumable/nutriment = 5)
+	//can_distill = TRUE
+	//distill_reagent = /datum/reagent/consumable/ethanol/beer/fireleaf
+	rotprocess = SHELFLIFE_LONG
+	seed = /obj/item/seeds/cabbage

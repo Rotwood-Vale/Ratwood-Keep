@@ -208,6 +208,16 @@
 				/obj/item/natural/hide = 1)
 	skillcraft = /datum/skill/craft/carpentry
 
+/datum/crafting_recipe/roguetown/spoon
+	name = "spoon"
+	result = list(/obj/item/kitchen/spoon,
+				/obj/item/kitchen/spoon)
+	reqs = list(/obj/item/grown/log/tree/small = 1)
+
+/datum/crafting_recipe/roguetown/rollingpin
+	name = "rollingpin"
+	result = /obj/item/kitchen/rollingpin
+	reqs = list(/obj/item/grown/log/tree/small = 1)
 
 /obj/item/rogueweapon/shield/wood/crafted
 	sellprice = 10
@@ -240,10 +250,10 @@
 				/obj/item/reagent_containers/glass/bowl)
 	reqs = list(/obj/item/grown/log/tree/small = 1)
 
-/datum/crafting_recipe/roguetown/pot
-	name = "stone pot"
-	result = /obj/item/reagent_containers/glass/pot/stone
-	reqs = list(/obj/item/natural/stone = 2)
+// /datum/crafting_recipe/roguetown/pot
+// 	name = "stone pot"
+// 	result = /obj/item/reagent_containers/glass/pot/stone
+// 	reqs = list(/obj/item/natural/stone = 2)
 
 /datum/crafting_recipe/roguetown/stonearrow
 	name = "stone arrow"
