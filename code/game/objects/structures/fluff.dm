@@ -299,6 +299,9 @@
 	icon_state = "border"
 	passcrawl = FALSE
 
+/obj/structure/fluff/railing/border/inverted
+	icon_state = "borderinv"
+
 /obj/structure/fluff/railing/fence
 	name = "palisade"
 	desc = ""
@@ -1159,7 +1162,7 @@
 							*/
 							if(findtext(thegroom.real_name, " of ") || findtext(thegroom.real_name, " the "))
 								surname2use = thegroom.dna.species.random_surname()
-								thegroom.change_name(copytext(thegroom.real_name, 1,index))	
+								thegroom.change_name(copytext(thegroom.real_name, 1,index))
 							else
 								surname2use = copytext(thegroom.real_name, index)
 								thegroom.change_name(copytext(thegroom.real_name, 1,index))
@@ -1327,7 +1330,7 @@
 	icon = 'icons/roguetown/items/natural.dmi'
 	icon_state = "headstake"
 	density = FALSE
-	anchored = TRUE	
+	anchored = TRUE
 	dir = SOUTH
 	var/obj/item/grown/log/tree/stake/stake
 	var/obj/item/bodypart/head/victim
@@ -1341,7 +1344,7 @@
 	stake = locate(/obj/item/grown/log/tree/stake) in parts_list
 
 ///obj/structure/fluff/headstake/Initialize()
-//	. = ..()	
+//	. = ..()
 
 /obj/structure/fluff/headstake/OnCrafted(dirin, user)
 	dir = SOUTH
