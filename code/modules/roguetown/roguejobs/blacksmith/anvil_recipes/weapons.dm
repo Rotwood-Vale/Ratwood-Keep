@@ -103,6 +103,12 @@
 	req_bar = /obj/item/ingot/steel
 	created_item = /obj/item/rogueweapon/huntingknife/cleaver
 
+/datum/anvil_recipe/weapons/pulaski
+	name = "Pulaski axe (+1 Stick)"
+	req_bar = /obj/item/ingot/iron
+	additional_items = list(/obj/item/grown/log/tree/stick)
+	created_item = /obj/item/rogueweapon/stoneaxe/woodcut/pick
+
 /// ADVANCED WEAPONS
 
 /datum/anvil_recipe/weapons/tsword
