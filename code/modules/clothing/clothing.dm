@@ -66,6 +66,7 @@
 	var/block2add
 	var/detail_tag
 	var/detail_color
+	var/boobed_detail = TRUE //Whether details have their own boobed sprite
 
 /obj/item/clothing/New()
 	..()
