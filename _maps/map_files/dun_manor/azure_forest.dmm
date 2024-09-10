@@ -660,7 +660,7 @@
 "Sh" = (/obj/structure/fluff/railing/border{dir = 4; icon_state = "border"},/turf/open/transparent/openspace,/area/rogue/outdoors/mountains)
 "Si" = (/obj/structure/flora/roguegrass/water,/turf/open/water/sewer,/area/rogue/under/cave)
 "Sq" = (/obj/structure/rack/rogue,/obj/effect/spawner/lootdrop/roguetown/sewers,/turf/open/floor/rogue/church,/area/rogue/under/cave)
-"Ss" = (/obj/structure/table/wood{icon_state = "tablewood1"; dir = 1},/obj/item/rogueweapon/stoneaxe/woodcut/pick,/obj/item/rogueweapon/stoneaxe/woodcut/pick,/obj/item/rogueweapon/stoneaxe/woodcut/pick,/turf/open/floor/rogue/ruinedwood{dir = 1; icon_state = "vertw"},/area/rogue/indoors)
+"Ss" = (/obj/structure/table/wood{icon_state = "tablewood1"; dir = 1},/obj/item/rogueweapon/stoneaxe/woodcut/wardenpick,/obj/item/rogueweapon/stoneaxe/woodcut/wardenpick,/obj/item/rogueweapon/stoneaxe/woodcut/wardenpick,/turf/open/floor/rogue/ruinedwood{dir = 1; icon_state = "vertw"},/area/rogue/indoors)
 "Sy" = (/obj/effect/landmark/mapGenerator/rogue/cave{endTurfX = 155; endTurfY = 155},/turf/closed/mineral/rogue/bedrock,/area/rogue/under/cave)
 "Sz" = (/turf/open/floor/rogue/cobble/mossy,/area/rogue/outdoors/woods)
 "SF" = (/obj/structure/spacevine,/turf/closed/wall/mineral/rogue/pipe{dir = 4; icon_state = "iron_line"},/area/rogue/under/cave/dungeon1/gethsmane/inner)
