@@ -7220,13 +7220,11 @@
 /turf/open/floor/rogue/church,
 /area/rogue/indoors/town/church/chapel)
 "hOP" = (
-/obj/machinery/light/rogue/torchholder/c{
+/obj/machinery/light/rogue/torchholder{
 	dir = 1
 	},
-/turf/closed/wall/mineral/rogue/decostone/long{
-	dir = 1
-	},
-/area/rogue/indoors/town/church/chapel)
+/turf/open/floor/rogue/dirt/road,
+/area/rogue/outdoors/rtfield)
 "hPT" = (
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/rogue/naturalstone,
@@ -9427,6 +9425,12 @@
 	},
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/under/town/basement)
+"kqX" = (
+/obj/machinery/light/rogue/torchholder{
+	dir = 1
+	},
+/turf/open/floor/rogue/cobble,
+/area/rogue/outdoors/town)
 "ksG" = (
 /obj/structure/table/wood{
 	dir = 1;
@@ -10376,6 +10380,9 @@
 /area/rogue/indoors/town/manor)
 "lAj" = (
 /obj/effect/landmark/start/templar{
+	dir = 1
+	},
+/obj/machinery/light/rogue/torchholder{
 	dir = 1
 	},
 /turf/open/floor/rogue/churchmarble,
@@ -11364,6 +11371,9 @@
 /area/rogue/indoors/town/shop)
 "mDV" = (
 /obj/structure/chair/bench/couchablack,
+/obj/machinery/light/rogue/torchholder{
+	pixel_y = 26
+	},
 /turf/open/floor/carpet/inn,
 /area/rogue/indoors/town/bath)
 "mDY" = (
@@ -14465,12 +14475,11 @@
 /turf/open/floor/rogue/metal,
 /area/rogue/indoors)
 "pRW" = (
-/obj/machinery/light/rogue/torchholder{
-	dir = 1;
-	pixel_y = 26
+/obj/machinery/light/rogue/torchholder/c{
+	dir = 1
 	},
-/turf/closed/wall/mineral/rogue/craftstone,
-/area/rogue/indoors/town/bath)
+/turf/open/floor/rogue/dirt/road,
+/area/rogue/outdoors/rtfield)
 "pSg" = (
 /turf/closed/wall/mineral/rogue/decostone/center,
 /area/rogue/indoors/shelter/rtfield)
@@ -18917,13 +18926,11 @@
 /turf/open/floor/rogue/cobble,
 /area/rogue/indoors/town/shop)
 "uQo" = (
-/obj/machinery/light/rogue/torchholder/c{
+/obj/machinery/light/rogue/torchholder{
 	dir = 1
 	},
-/turf/closed/wall/mineral/rogue/decostone/long{
-	dir = 1
-	},
-/area/rogue/indoors/town/church)
+/turf/open/floor/rogue/blocks,
+/area/rogue/under/town/basement)
 "uQp" = (
 /obj/structure/fermenting_barrel/beer,
 /turf/open/floor/rogue/ruinedwood{
@@ -274144,8 +274151,8 @@ fxx
 fxx
 wSn
 uaL
-uaL
-uQo
+hOP
+teW
 emH
 fXJ
 emH
@@ -275350,8 +275357,8 @@ fxx
 fxx
 qvR
 uaL
-uaL
-uQo
+hOP
+teW
 emH
 fXJ
 emH
@@ -275750,7 +275757,7 @@ fxx
 fxx
 fxx
 qvR
-uaL
+pRW
 qvR
 uaL
 teW
@@ -281652,8 +281659,8 @@ xAt
 xAt
 eoy
 wbg
-wbg
-pRW
+kqX
+vNh
 vNh
 vNh
 vNh
@@ -282859,7 +282866,7 @@ xAt
 eoy
 wbg
 wbg
-aKu
+vNh
 mDV
 nAd
 oXU
@@ -283662,8 +283669,8 @@ xAt
 xAt
 eoy
 wbg
-wbg
-pRW
+kqX
+vNh
 vGa
 eKY
 oXU
@@ -288104,7 +288111,7 @@ cBf
 cEK
 spR
 cEK
-cBf
+uQo
 txa
 xAt
 dpw
@@ -417562,7 +417569,7 @@ swm
 swm
 swm
 lAj
-hOP
+hcx
 cHf
 cHf
 cHf
