@@ -41,3 +41,21 @@
 	feature_slot = BODYPART_FEATURE_ACCESSORY
 	body_zone = BODY_ZONE_HEAD
 
+/datum/bodypart_feature/underwear
+	name = "Underwear"
+	feature_slot = BODYPART_FEATURE_UNDERWEAR
+	body_zone = BODY_ZONE_CHEST
+	var/obj/item/undies/underwear_item
+
+/datum/bodypart_feature/underwear/set_accessory_type(new_accessory_type, colors, mob/living/carbon/owner)
+	accessory_type = new_accessory_type
+	var/datum/sprite_accessory/underwear/accessory = SPRITE_ACCESSORY(accessory_type)
+	if(!isnull(colors))
+		accessory_colors = colors
+	else
+		accessory_colors = accessory.get_default_colors(color_key_source_list_from_carbon(owner))
+	accessory_colors = accessory.validate_color_keys_for_owner(owner, colors)
+	underwear_item = new accessory.underwear_type(owner)
+	owner.underwear = underwear_item
+	underwear_item.undies_feature = src
+	underwear_item.color = accessory_colors

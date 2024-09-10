@@ -9,7 +9,7 @@
 	var/list/head_status = list()
 	if(!brain)
 		head_status += span_dead("The brain is missing.")
-	/*		
+	/*
 	else if(brain.suicided || brainmob?.suiciding)
 		. += span_info("There's a pretty dumb expression on [real_name]'s face; they must have really hated life. There is no hope of recovery.")
 	else if(brain.brain_death || brainmob?.health <= HEALTH_THRESHOLD_DEAD)
@@ -33,7 +33,7 @@
 
 	if(!tongue)
 		head_status += span_warning("The tongue appears to be missing.")
-	
+
 	if(length(head_status))
 		. += "<B>Organs:</B>"
 		. += head_status
@@ -57,7 +57,7 @@
 		bodypart_status += "[src] is dislocated."
 	var/location_accessible = TRUE
 	if(owner)
-		location_accessible = get_location_accessible(owner, body_zone)
+		location_accessible = get_location_accessible(owner, body_zone, skip_undies = TRUE)
 		if(!observer_privilege && !location_accessible)
 			bodypart_status += "Obscured by clothing."
 	var/owner_ref = owner ? REF(owner) : REF(src)
@@ -66,7 +66,7 @@
 			bodypart_status += "[src] is skeletonized."
 		else if(rotted)
 			bodypart_status += "[src] is necrotic."
-		
+
 		var/brute = brute_dam
 		var/burn = burn_dam
 		if(user?.hallucinating())
@@ -105,7 +105,7 @@
 			if(!bandage || observer_privilege)
 				for(var/datum/wound/wound as anything in wounds)
 					bodypart_status += wound.get_visible_name(user)
-		
+
 	if(length(bodypart_status) <= 1)
 		bodypart_status += "[src] is healthy."
 
@@ -113,9 +113,10 @@
 		bodypart_status += "<B>Embedded objects:</B>"
 		for(var/obj/item/embedded as anything in embedded_objects)
 			bodypart_status += "<a href='?src=[owner_ref];embedded_object=[REF(embedded)];embedded_limb=[REF(src)]'>[embedded.name]</a>"
-	
+
 	if(owner)
-		if(body_zone == BODY_ZONE_CHEST || body_zone == BODY_ZONE_PRECISE_GROIN) //Vrell - Makes genitals visible when inspecting the chest.
+		location_accessible = get_location_accessible(owner, body_zone) //Hidden by underwear
+		if((body_zone == BODY_ZONE_CHEST || body_zone == BODY_ZONE_PRECISE_GROIN) && location_accessible) //Vrell - Makes genitals visible when inspecting the chest.
 			bodypart_status += "<B>Genitalia:</B>"
 			if(owner.has_penis())
 				var/obj/item/organ/penis/ownerpenis = owner.getorgan(/obj/item/organ/penis)
@@ -150,7 +151,7 @@
 
 /obj/item/bodypart/proc/get_injury_status(mob/user, advanced = FALSE)
 	var/list/status = list()
-	
+
 	var/brute = brute_dam
 	var/burn = burn_dam
 	if(user?.hallucinating())
@@ -175,7 +176,7 @@
 					status += span_danger("[medium_brute_msg]")
 				else
 					status += span_warning("[light_brute_msg]")
-		
+
 		if(burn >= DAMAGE_PRECISION)
 			switch(burn/max_damage)
 				if(0.75 to INFINITY)
@@ -186,14 +187,14 @@
 					status += span_danger("[medium_burn_msg]")
 				else
 					status += span_warning("[light_burn_msg]")
-	
+
 	var/bleed_rate = get_bleed_rate()
 	if(bleed_rate)
 		if(bleed_rate > 1) //Totally arbitrary value
 			status += span_bloody("<B>BLEEDING</B>")
 		else
 			status += span_bloody("BLEEDING")
-	
+
 	var/crazy_infection = FALSE
 	var/list/wound_strings = list()
 	for(var/datum/wound/wound as anything in wounds)

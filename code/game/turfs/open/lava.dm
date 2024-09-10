@@ -258,7 +258,7 @@
 				if(shouldupdate)
 					if(ishuman(C))
 						var/mob/living/carbon/human/H = C
-						H.underwear = "Nude"
+						qdel(H.underwear)
 					C.unequip_everything()
 					C.update_body()
 //				C.dust(drop_items = TRUE)

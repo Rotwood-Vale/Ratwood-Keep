@@ -35,19 +35,15 @@
 			return
 		if(user.zone_selected == BODY_ZONE_PRECISE_GROIN)
 			if(get_location_accessible(src, BODY_ZONE_PRECISE_GROIN, skipundies = TRUE))
-				if(underwear == "Nude")
+				if(!underwear)
 					return
+				visible_message(span_notice("[src] begins to take off [underwear]..."))
 				if(do_after(user, 30, needhand = 1, target = src))
-					cached_underwear = underwear
-					underwear = "Nude"
-					update_body()
-					var/obj/item/undies/U
-					if(gender == MALE)
-						U = new/obj/item/undies(get_turf(src))
-					else
-						U = new/obj/item/undies/f(get_turf(src))
-					U.color = underwear_color
-					user.put_in_hands(U)
+					var/obj/item/bodypart/chest = get_bodypart(BODY_ZONE_CHEST)
+					chest.remove_bodypart_feature(underwear.undies_feature)
+					underwear.forceMove(get_turf(src))
+					src.put_in_hands(underwear)
+					underwear = null
 #endif
 
 /mob/living/carbon/human/Initialize()
@@ -329,7 +325,7 @@
 
 #ifdef MATURESERVER
 	if(get_location_accessible(src, BODY_ZONE_PRECISE_GROIN, skipundies = TRUE))
-		dat += "<tr><td><BR><B>Underwear:</B> <A href='?src=[REF(src)];undiesthing=1'>[underwear == "Nude" ? "Nothing" : "Remove"]</A></td></tr>"
+		dat += "<tr><td><BR><B>Underwear:</B> <A href='?src=[REF(src)];undiesthing=1'>[!underwear ? "Nothing" : "Remove"]</A></td></tr>"
 #endif
 
 	dat += {"</table>"}
@@ -453,7 +449,6 @@
 	else
 		facial_hairstyle = "Shaved"
 	hairstyle = pick("Bedhead", "Bedhead 2", "Bedhead 3")
-	underwear = "Nude"
 	update_body()
 	update_hair()
 

@@ -440,6 +440,10 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 
 	C.add_movespeed_modifier(MOVESPEED_ID_SPECIES, TRUE, 100, override=TRUE, multiplicative_slowdown=speedmod, movetypes=(~FLYING))
 
+	if(C.underwear)
+		qdel(C.underwear)
+		C.underwear = null
+
 	C.remove_all_bodypart_features()
 	for(var/bodypart_feature_type in bodypart_features)
 		var/datum/bodypart_feature/feature = new bodypart_feature_type()

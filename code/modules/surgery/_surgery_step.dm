@@ -35,7 +35,7 @@
 	/// Some surgeries require specific organs to be present in the patient
 	var/list/required_organs
 	/**
-	 * list of chems needed to complete the step. 
+	 * list of chems needed to complete the step.
 	 * Even on success, the step will have no effect if there aren't the chems required in the mob.
 	 */
 	var/list/chems_needed
@@ -78,7 +78,7 @@
 	/// Handles techweb-oriented surgeries
 	var/requires_tech = FALSE
 	/**
-	 * type; doesn't show up if this type exists. 
+	 * type; doesn't show up if this type exists.
 	 * Set to /datum/surgery_step if you want to hide a "base" surgery  (useful for typing parents IE healing.dm just make sure to null it out again)
 	 */
 	var/replaced_by
@@ -109,7 +109,7 @@
 	// Always return false in this case
 	if(replaced_by == /datum/surgery_step)
 		return FALSE
-	
+
 	// True surgeons (like abductor scientists) need no instructions
 	if(HAS_TRAIT(user, TRAIT_SURGEON) || (user.mind && HAS_TRAIT(user.mind, TRAIT_SURGEON)))
 		// only show top-level surgeries
@@ -172,7 +172,7 @@
 	SHOULD_CALL_PARENT(TRUE)
 	if(!self_operable && (user == target))
 		return FALSE
-	
+
 	if(target_mobtypes)
 		var/valid_mobtype = FALSE
 		for(var/mobtype in target_mobtypes)
@@ -181,10 +181,10 @@
 				break
 		if(!valid_mobtype)
 			return FALSE
-	
+
 	if(lying_required && (target.mobility_flags & MOBILITY_STAND))
 		return FALSE
-	
+
 	if(iscarbon(target))
 		var/mob/living/carbon/carbon_target = target
 		var/obj/item/bodypart/bodypart = carbon_target.get_bodypart(check_zone(target_zone))
@@ -194,7 +194,7 @@
 			var/obj/item/organ/organ = carbon_target.getorganslot(required_organ)
 			if(!organ)
 				return FALSE
-	
+
 	//no surgeries in the same body zone
 	if(target_zone && LAZYACCESS(target.surgeries, target_zone))
 		return FALSE
@@ -209,10 +209,10 @@
 		if(requires_missing_bodypart && bodypart)
 			return FALSE
 		return TRUE
-	
+
 	if(requires_bodypart_type && (bodypart.status != requires_bodypart_type))
 		return FALSE
-	
+
 	var/bodypart_flags = bodypart.get_surgery_flags()
 	if((surgery_flags & bodypart_flags) != surgery_flags)
 		return FALSE
@@ -231,9 +231,9 @@
 				return FALSE
 	*/
 
-	if(!ignore_clothes && !get_location_accessible(target, target_zone || bodypart.body_zone))
+	if(!ignore_clothes && !get_location_accessible(target, target_zone || bodypart.body_zone, skip_undies = TRUE))
 		return FALSE
-	
+
 	return TRUE
 
 /datum/surgery_step/proc/tool_check(mob/user, obj/item/tool)
@@ -256,7 +256,7 @@
 			if((key == TOOL_HOT) && (tool.get_temperature() >= FIRE_MINIMUM_TEMPERATURE_TO_EXIST))
 				implement_type = key
 				break
-		
+
 		if(!implement_type && accept_any_item)
 			implement_type = TOOL_NONE
 
@@ -275,7 +275,7 @@
 	for(var/reagent_needed in chems_needed)
 		if(target.reagents.has_reagent(reagent_needed))
 			return TRUE
-	
+
 	return FALSE
 
 /// Returns a string of the chemicals needed for this surgery step
@@ -305,7 +305,7 @@
 		return FALSE
 
 	play_preop_sound(user, target, target_zone, tool) // Here because most steps overwrite preop
-	
+
 	var/speed_mod = get_speed_modifier(user, target, target_zone, tool, intent)
 	var/success_prob = max(get_success_probability(user, target, target_zone, tool, intent), 0)
 
@@ -329,7 +329,7 @@
 			else
 				to_chat(user, span_warning("Surgery fail... [success_prob]%"))
 		return FALSE
-		
+
 	return FALSE
 
 /datum/surgery_step/proc/preop(mob/user, mob/living/target, target_zone, obj/item/tool, datum/intent/intent)

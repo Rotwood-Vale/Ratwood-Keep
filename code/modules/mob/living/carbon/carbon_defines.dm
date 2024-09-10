@@ -38,17 +38,18 @@
 	///only used by humans.
 	var/obj/item/clothing/shoes = null
 	///only used by humans.
-	var/obj/item/clothing/glasses/glasses = null 
+	var/obj/item/clothing/glasses/glasses = null
 	///only used by humans.
 	var/obj/item/clothing/ears = null
 
+	var/obj/item/undies/underwear = null	//Underwear item
 
 	var/datum/dna/dna = null //Carbon
 	///last mind to control this mob, for blood-based cloning
-	var/datum/mind/last_mind = null 
+	var/datum/mind/last_mind = null
 
 	///This is used to determine if the mob failed a breath. If they did fail a brath, they will attempt to breathe each tick, otherwise just once per 4 ticks.
-	var/failed_last_breath = 0 
+	var/failed_last_breath = 0
 
 	var/co2overloadtime = null
 	var/temperature_resistance = T0C+75

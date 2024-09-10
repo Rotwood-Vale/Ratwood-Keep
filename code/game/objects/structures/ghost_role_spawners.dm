@@ -22,7 +22,6 @@
 	new_spawn.fully_replace_character_name(null,plant_name)
 	if(ishuman(new_spawn))
 		var/mob/living/carbon/human/H = new_spawn
-		H.underwear = "Nude" //You're a plant, partner
 		H.update_body()
 
 /obj/effect/mob_spawn/human/seed_vault/Destroy()
@@ -61,7 +60,6 @@
 
 	if(ishuman(new_spawn))
 		var/mob/living/carbon/human/H = new_spawn
-		H.underwear = "Nude"
 		H.update_body()
 
 /obj/effect/mob_spawn/human/ash_walker/Initialize(mapload, datum/team/ashwalkers/ashteam)

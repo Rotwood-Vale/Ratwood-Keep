@@ -284,10 +284,6 @@
 	prof.name = H.real_name
 	prof.protected = protect
 
-	prof.underwear = H.underwear
-	prof.undershirt = H.undershirt
-	prof.socks = H.socks
-
 	var/list/slots = list("head", "wear_mask", "back", "wear_armor", "wear_pants", "shoes", "belt", "gloves", "glasses", "ears", "wear_ring", "s_store")
 	for(var/slot in slots)
 		if(slot in H.vars)

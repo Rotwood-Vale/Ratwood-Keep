@@ -2451,6 +2451,7 @@
 #include "code\modules\mob\dead\new_player\sprite_accessory\snouts.dm"
 #include "code\modules\mob\dead\new_player\sprite_accessory\tail_features.dm"
 #include "code\modules\mob\dead\new_player\sprite_accessory\tails.dm"
+#include "code\modules\mob\dead\new_player\sprite_accessory\underwear.dm"
 #include "code\modules\mob\dead\new_player\sprite_accessory\wings.dm"
 #include "code\modules\mob\dead\observer\login.dm"
 #include "code\modules\mob\dead\observer\logout.dm"
