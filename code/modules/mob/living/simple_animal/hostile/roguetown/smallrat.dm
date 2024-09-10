@@ -123,7 +123,7 @@
 						new /mob/living/simple_animal/hostile/retaliate/rogue/bigrat(T)
 						dead = TRUE
 						qdel(src)
-						break
+				break
 
 /obj/item/reagent_containers/food/snacks/smallrat/obj_destruction(damage_flag)
 	//..()

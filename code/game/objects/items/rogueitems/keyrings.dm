@@ -122,11 +122,12 @@
 
 /obj/item/keyring/proc/update_desc()
 	if(keys.len)
-		desc = span_info("Holds \Roman[keys.len] key\s, including:")
+		desc = initial(desc)
+		desc += span_info("\nHolds \Roman[keys.len] key\s, including:")
 		for(var/obj/item/roguekey/KE in keys)
 			desc += span_info("\n- [KE.name ? "A [KE.name]." : "An unknown key."]")
 	else
-		desc = ""
+		desc = initial(desc)
 
 /obj/item/lockpickring
 	name = "lockpickring"
@@ -231,9 +232,10 @@
 
 /obj/item/lockpickring/proc/update_desc()
 	if(picks.len)
-		desc = "<span class='info'>\Roman [picks.len] lockpicks.</span>"
+		desc = initial(desc)
+		desc += "<span class='info'>\n\Roman [picks.len] lockpicks.</span>"
 	else
-		desc = ""
+		desc = initial(desc)
 
 /obj/item/lockpickring/mundane
 	picks = list(/obj/item/lockpick, /obj/item/lockpick, /obj/item/lockpick)

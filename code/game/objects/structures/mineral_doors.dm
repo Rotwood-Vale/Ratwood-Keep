@@ -285,6 +285,12 @@
 		trykeylock(I, user)
 	if(istype(I, /obj/item/lockpick))
 		trypicklock(I, user)
+	if(istype(I,/obj/item/lockpickring))
+		var/obj/item/lockpickring/pickring = I
+		if(pickring.picks.len)
+			pickring.removefromring(user)
+			to_chat(user, span_warning("You clumsily drop a lockpick off the ring as you try to pick the lock with it."))
+		return
 	else
 		return ..()
 
