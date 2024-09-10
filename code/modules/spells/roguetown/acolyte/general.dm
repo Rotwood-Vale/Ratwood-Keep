@@ -43,7 +43,7 @@
 			if(/datum/patron/divine/noc)
 				target.visible_message(span_info("A shroud of soft moonlight falls upon [target]!"), span_notice("I'm shrouded in gentle moonlight!"))
 				// during the night, heal 10 more (i wish this was more interesting but they're twins so whatever)
-				if (GLOB.tod == "day")
+				if (GLOB.tod == "night") // lol lmao
 					conditional_buff = TRUE
 			if(/datum/patron/divine/dendor)
 				target.visible_message(span_info("A rush of primal energy spirals about [target]!"), span_notice("I'm infused with primal energies!"))

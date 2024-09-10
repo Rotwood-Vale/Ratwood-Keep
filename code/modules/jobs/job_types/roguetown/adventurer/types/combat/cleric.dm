@@ -101,13 +101,14 @@
 			// Devout start without the typical cleric medium/heavy armor shtick and without much in the way of weapons or skills to use them.
 			// They're better with miracles and regenerate devotion passively like the Priest does, however.
 			H.set_blindness(0)
-			to_chat(H, span_warning("You are a cloistered cleric, eschewing arms and armor for the weapon of word and greater connection to your chosen patron."))
+			to_chat(H, span_warning("You are a cloistered cleric, a devout traveller whom has engressed into distant lands to spread the word of your chosen Patron. Having secluded yourself for many years, your body has suffered... But you have gained great insight as a result!"))
 			H.mind.adjust_skillrank(/datum/skill/magic/holy, 5, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/craft/cooking, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/reading, 4, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/misc/alchemy, 3, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/misc/sewing, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/alchemy, 4, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/sewing, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/medicine, 4, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/combat/polearms, 2, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/polearms, 1, TRUE)
 			H.change_stat("intelligence", 4)
 			H.change_stat("strength", -2)
 			H.change_stat("perception", 2)
@@ -177,9 +178,10 @@
 	// HEARTHSTONE ADDITION: cloistered devout devo regen & tier buff
 	if (classchoice == "Cloistered Devout")
 		// start with passive devo gain and ability to gain up to T3 spells
-		C.passive_devotion_gain += 0.5
+		C.passive_devotion_gain += 0.5 //REQUIRES passive_progression_gain to function.
+		C.passive_progression_gain += 0.5 //People need to check how this works in future.
 		C.max_progression = CLERIC_REQ_3
-		C.max_devotion = CLERIC_REQ_3
+		C.max_devotion = CLERIC_REQ_4 //They have the same CAPACITY as priest, but will never be able to reach cure rot/T4 spells
 		C.grant_spells(H) // don't give churn as an extra spell to cloistered since they get their patron's full spell list (up to t3)
 	else
 		C.grant_spells_cleric(H)
