@@ -32,24 +32,41 @@
 		fruit.reagents.remove_reagent(/datum/reagent/consumable/nutriment, fruit.reagents.total_volume)
 		fruit.reagents.trans_to(src, fruit.reagents.total_volume)
 	if(fruit.distill_reagent)
-		var/unwateredamt = fruit.distill_amt + 3
-		reagents.add_reagent(fruit.distill_reagent, unwateredamt)
+		reagents.add_reagent(fruit.distill_reagent, fruit.distill_amt)
 	qdel(fruit)
 	playsound(src, "bubbles", 100, TRUE)
+	return TRUE
 
 /obj/structure/fermenting_barrel/attackby(obj/item/I, mob/user, params)
-	var/obj/item/reagent_containers/food/snacks/grown/fruit = I
-	if(istype(fruit))
-		if(!fruit.can_distill)
-			to_chat(user, span_warning("I can't ferment this into anything."))
+	if(istype(I,/obj/item/reagent_containers/food/snacks/grown))
+		if(try_ferment(I, user))
 			return TRUE
-		else if(!user.transferItemToLoc(I,src))
-			to_chat(user, span_warning("[I] is stuck to my hand!"))
-			return TRUE
-		to_chat(user, span_info("I place [I] into [src]."))
-		addtimer(CALLBACK(src, PROC_REF(makeWine), fruit), rand(1 MINUTES, 3 MINUTES))
+	if(istype(I,/obj/item/storage/roguebag) && I.contents.len)
+		var/success
+		for(var/obj/item/reagent_containers/food/snacks/grown/bagged_fruit in I.contents)
+			if(try_ferment(bagged_fruit, user, TRUE))
+				success = TRUE
+		if(success)
+			to_chat(user, span_info("I dump the contents of [I] into [src]."))
+			I.update_icon()
+		else
+			to_chat(user, span_warning("There's nothing in [I] that I can ferment."))
 		return TRUE
 	..()
+
+/obj/structure/fermenting_barrel/proc/try_ferment(obj/item/reagent_containers/food/snacks/grown/fruit, mob/user, batch_process)
+	if(!fruit.can_distill)
+		if(!batch_process)
+			to_chat(user, span_warning("I can't ferment this into anything."))
+		return FALSE
+	else if(!user.transferItemToLoc(fruit,src))
+		if(!batch_process)
+			to_chat(user, span_warning("[fruit] is stuck to my hand!"))
+		return FALSE
+	if(!batch_process)
+		to_chat(user, span_info("I place [fruit] into [src]."))
+	addtimer(CALLBACK(src, PROC_REF(makeWine), fruit), rand(1 MINUTES, 3 MINUTES))
+	return TRUE
 
 //obj/structure/fermenting_barrel/attack_hand(mob/user)
 //	open = !open
@@ -70,13 +87,6 @@
 		icon_state = "barrel"
 	if(broken)
 		icon_state = "barrel_destroyed"
-
-/datum/crafting_recipe/fermenting_barrel
-	name = "Wooden Barrel"
-	result = /obj/structure/fermenting_barrel
-	reqs = list(/obj/item/stack/sheet/mineral/wood = 30)
-	time = 50
-	category = CAT_NONE
 
 /obj/structure/fermenting_barrel/random/water/Initialize()
 	. = ..()
