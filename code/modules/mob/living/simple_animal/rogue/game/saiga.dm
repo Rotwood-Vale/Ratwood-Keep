@@ -336,6 +336,7 @@
 	tame = TRUE
 	can_buckle = FALSE
 	aggressive = 1
+	
 /mob/living/simple_animal/hostile/retaliate/rogue/saiga/tame
 	tame = TRUE
 
