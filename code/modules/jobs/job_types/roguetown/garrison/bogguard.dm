@@ -34,11 +34,11 @@ Also given some non-combat skills that a peasent would have, just to support the
 	shoes = /obj/item/clothing/shoes/roguetown/boots/leather
 	beltl = /obj/item/keyring/guard
 	belt = /obj/item/storage/belt/rogue/leather
-	beltr = /obj/item/rogueweapon/stoneaxe/woodcut/pick
+	beltr = /obj/item/rogueweapon/stoneaxe/woodcut/wardenpick
 	backr = /obj/item/storage/backpack/rogue/satchel
 	backl = /obj/item/rogueweapon/spear
 	wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
-	backpack_contents = list(/obj/item/rogueweapon/huntingknife/cleaver/combat = 1, /obj/item/signal_horn = 1)
+	backpack_contents = list(/obj/item/rogueweapon/huntingknife = 1, /obj/item/signal_horn = 1)
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/combat/bows, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 2, TRUE)
