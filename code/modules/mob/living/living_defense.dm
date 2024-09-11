@@ -227,7 +227,7 @@
 	if(surrendering)
 		combat_modifier = 2
 
-	if(handcuffed)
+	if(restrained())
 		combat_modifier += 0.25
 
 	if(!(mobility_flags & MOBILITY_STAND) && user.mobility_flags & MOBILITY_STAND)

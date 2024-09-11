@@ -1106,7 +1106,7 @@
 	if(L.mind)
 		wrestling_diff -= (L.mind.get_skill_level(/datum/skill/combat/wrestling))
 
-	if(handcuffed)
+	if(restrained())
 		combat_modifier -= 0.25
 
 	if(!(L.mobility_flags & MOBILITY_STAND) && mobility_flags & MOBILITY_STAND)

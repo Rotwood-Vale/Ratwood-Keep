@@ -323,7 +323,7 @@
 		return FALSE
 
 /obj/structure
-	var/breakoutextra = 30 SECONDS
+	var/breakoutextra = 10 SECONDS
 
 /mob/living/carbon/resist_buckle()
 	if(restrained())
@@ -385,7 +385,7 @@
 
 /mob/living/carbon/proc/cuff_resist(obj/item/I, breakouttime = 600, cuff_break = 0)
 	if(I.item_flags & BEING_REMOVED)
-		to_chat(src, span_warning("You're already attempting to remove [I]!"))
+		to_chat(src, span_warning("I'm already trying to get out of \the [I]\s!"))
 		return
 	I.item_flags |= BEING_REMOVED
 	breakouttime = I.slipouttime
@@ -395,18 +395,18 @@
 	if(STASTR > 15 || (mind && mind.has_antag_datum(/datum/antagonist/zombie)) )
 		cuff_break = INSTANT_CUFFBREAK
 	if(!cuff_break)
-		to_chat(src, span_notice("I attempt to remove [I]..."))
-		if(do_after(src, breakouttime, 0, target = src))
+		to_chat(src, span_notice("I try to get out of \the [I]\s..."))
+		if(move_after(src, breakouttime, 0, target = src))
 			clear_cuffs(I, cuff_break)
 		else
-			to_chat(src, span_danger("I fail to remove [I]!"))
+			to_chat(src, span_danger("I fail to get out of \the [I]\s!"))
 
 	else if(cuff_break == FAST_CUFFBREAK)
-		to_chat(src, span_notice("I attempt to break [I]..."))
-		if(do_after(src, breakouttime, 0, target = src))
+		to_chat(src, span_notice("I attempt to break \the [I]\s..."))
+		if(move_after(src, breakouttime, 0, target = src))
 			clear_cuffs(I, cuff_break)
 		else
-			to_chat(src, span_danger("I fail to break [I]!"))
+			to_chat(src, span_danger("I fail to break \the [I]\s!"))
 
 	else if(cuff_break == INSTANT_CUFFBREAK)
 		clear_cuffs(I, cuff_break)
