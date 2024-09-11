@@ -743,5 +743,11 @@
 /obj/projectile/magic/water/on_hit(target)
 	. = ..()
 	var/obj/item/reagent_containers/K = new /obj/item/reagent_containers/glass/bucket/wooden/SW(get_turf(target))
-	K.reagents.reaction(target, TOUCH)
+	if(ismob(target))
+		var/mob/living/mob_target = target
+		K.reagents.reaction(mob_target, TOUCH)
+		mob_target.Slowdown(10)
+	else if(istype(target, /obj/structure/soil))
+		var/obj/structure/soil/target_soil = target
+		target_soil.adjust_water(150)
 	qdel(K)

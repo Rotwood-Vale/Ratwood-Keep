@@ -266,4 +266,4 @@ obj/effect/proc_holder/spell/targeted/static_room/cast(list/targets, mob/user = 
 	list_reagents = list(/datum/reagent/seelie_drugs = 10)
 
 /obj/item/reagent_containers/glass/bucket/wooden/SW
-	list_reagents = list(/datum/reagent/water = 10)
+	list_reagents = list(/datum/reagent/water = 40)
