@@ -42,3 +42,6 @@
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/replenish)
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/projectile/animate_object)
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/roustame)
+
+	H.verbs |= (/mob/living/carbon/human/proc/Turnlight)
+	H.verbs |= (/mob/living/carbon/proc/switchaura)
