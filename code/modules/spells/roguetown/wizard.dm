@@ -15,7 +15,7 @@
 	no_early_release = TRUE
 	movement_interrupt = FALSE
 	charging_slowdown = 3
-	chargedloop = /datum/looping_sound/invokegen
+	chargedloop = /datum/looping_sound/invokelightning
 	associated_skill = /datum/skill/magic/arcane
 	cost = 2
 	xp_gain = TRUE
@@ -171,7 +171,7 @@
 	no_early_release = TRUE
 	movement_interrupt = FALSE
 	charging_slowdown = 3
-	chargedloop = /datum/looping_sound/invokegen
+	chargedloop = /datum/looping_sound/invokefire
 	associated_skill = /datum/skill/magic/arcane
 	cost = 2
 	xp_gain = TRUE
@@ -218,7 +218,7 @@
 	warnie = "spellwarning"
 	no_early_release = TRUE
 	movement_interrupt = TRUE
-	chargedloop = /datum/looping_sound/invokegen
+	chargedloop = /datum/looping_sound/invokefire
 	cost = 5
 	xp_gain = TRUE
 
@@ -247,7 +247,7 @@
 	no_early_release = TRUE
 	movement_interrupt = FALSE
 	charging_slowdown = 3
-	chargedloop = /datum/looping_sound/invokegen
+	chargedloop = /datum/looping_sound/invokefire
 	associated_skill = /datum/skill/magic/arcane
 	cost = 2
 	xp_gain = TRUE
