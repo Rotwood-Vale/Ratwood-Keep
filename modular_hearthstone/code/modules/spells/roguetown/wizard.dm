@@ -499,14 +499,18 @@
 
 /obj/effect/proc_holder/spell/invoked/blade_burst/cast(list/targets, mob/user)
 	var/turf/T = get_turf(targets[1])
+	var/play_cleave = FALSE
 	new /obj/effect/temp_visual/trap(T)
+	playsound(T, 'sound/magic/blade_burst.ogg', 80, TRUE, soundping = TRUE)
 	sleep(delay)
 	new /obj/effect/temp_visual/blade_burst(T)
-	playsound(T,'sound/magic/charged.ogg', 80, TRUE)
 	for(var/mob/living/L in T.contents)
+		play_cleave = TRUE
 		L.adjustBruteLoss(damage)
 		playsound(T, "genslash", 80, TRUE)
 		to_chat(L, "<span class='userdanger'>I'm cut by arcyne force!</span>")
+	if(play_cleave)
+		playsound(T,'sound/combat/newstuck.ogg', 80, TRUE, soundping = TRUE)
 	return TRUE
 
 /obj/effect/proc_holder/spell/targeted/touch/nondetection
