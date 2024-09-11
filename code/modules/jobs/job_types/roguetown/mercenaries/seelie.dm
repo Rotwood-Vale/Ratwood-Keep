@@ -5,7 +5,6 @@
 	faction = "Station"
 	total_positions = 6
 	spawn_positions = 6
-	allowed_sexes = list(FEMALE)
 	allowed_races = list(/datum/species/seelie,)
 	allowed_ages = ALL_AGES_LIST
 	tutorial = "You are a fae sprite that came into existance around this town, either recently or long ago. Perhaps you support people in their trade and craft, or you may be a disruptive nuisance that plagues the town. Either way, your miriad of mysterious spells and abilites will support you in your endeavours."
@@ -38,6 +37,7 @@
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/seelie_kiss)
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/projectile/splash)
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/roustame)
+		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/projectile/animate_object)
 
 	H.verbs |= (/mob/living/carbon/human/proc/Turnlight)
 	H.verbs |= (/mob/living/carbon/proc/switchaura)
