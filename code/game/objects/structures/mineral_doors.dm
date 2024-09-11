@@ -366,7 +366,7 @@
 	animate(pixel_x = oldx, time = 0.5)
 
 /obj/structure/mineral_door/attackby(obj/item/I, mob/user)
-	//user.changeNext_move(CLICK_CD_FAST)
+	user.changeNext_move(CLICK_CD_FAST)
 	if(istype(I, /obj/item/roguekey) || istype(I, /obj/item/keyring))
 		if(!locked)
 			to_chat(user, span_warning("It won't turn this way. Try turning to the right."))
@@ -427,7 +427,7 @@
 				user.visible_message(span_notice("[user] repaired [src]."), \
 				span_notice("I repaired [src]."))		
 /obj/structure/mineral_door/attack_right(mob/user)
-	//user.changeNext_move(CLICK_CD_FAST)
+	user.changeNext_move(CLICK_CD_FAST)
 	var/obj/item = user.get_active_held_item()
 	if(istype(item, /obj/item/roguekey) || istype(item, /obj/item/keyring))
 		if(locked)
