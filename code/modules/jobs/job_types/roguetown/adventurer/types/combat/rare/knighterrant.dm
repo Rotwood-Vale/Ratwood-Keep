@@ -19,12 +19,13 @@
 
 		if("Normal Knight")
 			head = /obj/item/clothing/head/roguetown/helmet/heavy/knight
-			gloves = /obj/item/clothing/gloves/roguetown/plate
-			pants = /obj/item/clothing/under/roguetown/platelegs
+			gloves = /obj/item/clothing/gloves/roguetown/chain
+			pants = /obj/item/clothing/under/roguetown/chainlegs
 			cloak = /obj/item/clothing/cloak/tabard
 			neck = /obj/item/clothing/neck/roguetown/bervor
 			shirt = /obj/item/clothing/suit/roguetown/armor/chainmail
 			armor = /obj/item/clothing/suit/roguetown/armor/plate
+			wrists = /obj/item/clothing/wrists/roguetown/bracers
 			shoes = /obj/item/clothing/shoes/roguetown/boots/armor
 			belt = /obj/item/storage/belt/rogue/leather
 			beltr = /obj/item/rogueweapon/sword/long
@@ -53,12 +54,13 @@
 
 		if("Black Knight")
 			head = /obj/item/clothing/head/roguetown/helmet/heavy/knight/black
-			gloves = /obj/item/clothing/gloves/roguetown/plate/blk/death
-			pants = /obj/item/clothing/under/roguetown/platelegs/blk
+			gloves = /obj/item/clothing/gloves/roguetown/chain/blk
+			pants = /obj/item/clothing/under/roguetown/chainlegs/blk
 			cloak = /obj/item/clothing/cloak/tabard/blkknight
 			neck = /obj/item/clothing/neck/roguetown/bervor
 			shirt = /obj/item/clothing/suit/roguetown/armor/chainmail
 			armor = /obj/item/clothing/suit/roguetown/armor/plate/blkknight
+			wrists = /obj/item/clothing/wrists/roguetown/bracers
 			shoes = /obj/item/clothing/shoes/roguetown/boots/armor/blkknight
 			belt = /obj/item/storage/belt/rogue/leather
 			beltr = /obj/item/rogueweapon/sword/long/death // ow the edge. it's just spraypainted.
@@ -84,3 +86,9 @@
 			H.change_stat("intelligence", 1)
 			H.change_stat("speed", 1)
 			H.dna.species.soundpack_m = new /datum/voicepack/male/knight()
+
+/obj/item/clothing/gloves/roguetown/chain/blk
+		color = CLOTHING_BLACK
+
+/obj/item/clothing/under/roguetown/chainlegs/blk
+		color = CLOTHING_BLACK
