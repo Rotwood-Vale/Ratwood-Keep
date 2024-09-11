@@ -12,9 +12,10 @@
 	. = ..()
 	user.emote("giggle")
 	var/target = targets[1]
-	var/turf/T = get_turf(target)
 	if(isliving(target))
-		T.add_pollutants(/datum/pollutant/seelie_dust, 1)
+		var/obj/item/reagent_containers/powder/K = new /obj/item/reagent_containers/powder/SD(get_turf(target))
+		K.reagents.trans_to(target, K.reagents.total_volume, transfered_by = user, method = "swallow")
+		qdel(K)
 	return TRUE
 //Later:tm:
 /*
@@ -90,7 +91,7 @@ obj/effect/proc_holder/spell/targeted/static_room/cast(list/targets, mob/user = 
 	target.set_light(2, 1, "#d4fcac")
 	sleep(100)
 	target.set_light(0, 0, null)
-*/
+
 
 /obj/effect/proc_holder/spell/invoked/strip
 	name = "Strip Clothes"
@@ -198,14 +199,14 @@ obj/effect/proc_holder/spell/targeted/static_room/cast(list/targets, mob/user = 
 	movement_interrupt = FALSE
 	charging_slowdown = 3
 	chargedloop = /datum/looping_sound/invokegen
-	associated_skill = /datum/skill/magic/arcane
+	associated_skill = /datum/skill/magic/arcane*/
 
 /obj/effect/proc_holder/spell/targeted/roustame
 	name = "Tame Rous"
 	range = 5
 	overlay_state = "tamebeast"
 	releasedrain = 30
-	charge_max = 2 SECONDS
+	charge_max = 5 MINUTES
 	max_targets = 0
 	cast_without_targets = TRUE
 	sound = 'sound/magic/churn.ogg'
@@ -214,7 +215,7 @@ obj/effect/proc_holder/spell/targeted/static_room/cast(list/targets, mob/user = 
 
 /obj/effect/proc_holder/spell/targeted/roustame/cast(list/targets,mob/user = usr)
 	. = ..()
-	visible_message(span_green("[usr] soothes the beastblood with Dendor's whisper."))
+	visible_message(span_green("[usr] soothes the beast with Seelie dust."))
 	var/tamed = FALSE
 	for(var/mob/living/simple_animal/hostile/retaliate/rogue/bigrat/B in oview(2))
 		if(!B.tame)
@@ -227,3 +228,48 @@ obj/effect/proc_holder/spell/targeted/static_room/cast(list/targets, mob/user = 
 		B.LoseTarget()
 		tamed = B.tame
 	return tamed
+
+/obj/effect/proc_holder/spell/targeted/seelie_kiss
+	name = "Kiss"
+	overlay_state = "bloodsteal"
+	releasedrain = 0
+	charge_max = 10 MINUTES
+	range = 1
+	invocation_type = "none" //can be none, whisper, emote and shout
+	//random_target = TRUE
+	//random_target_priority = TARGET_RANDOM
+
+/obj/effect/proc_holder/spell/targeted/seelie_kiss/cast(mob/living/carbon/target, mob/user)
+	. = ..()
+	var/obj/item/reagent_containers/powder/K = new /obj/item/reagent_containers/powder/SK(target.loc)
+	K.reagents.trans_to(target, K.reagents.total_volume, transfered_by = user, method = "swallow")
+	user.emote("kiss")
+	target.add_nausea(9)
+	qdel(K)
+		
+	return TRUE
+	
+/obj/effect/proc_holder/spell/invoked/projectile/splash
+	name = "Water splash"
+	overlay_state = "bigpsy"
+	//user.emote("laugh")
+	range = 8
+	projectile_type = /obj/projectile/magic/water
+	releasedrain = 50
+	chargedrain = 1
+	chargetime = 5
+	charge_max = 5 MINUTES
+	warnie = "spellwarning"
+	no_early_release = TRUE
+	movement_interrupt = FALSE
+	charging_slowdown = 3
+	chargedloop = /datum/looping_sound/invokegen
+
+/obj/item/reagent_containers/powder/SK
+	list_reagents = list(/datum/reagent/medicine/healthpot = 1, /datum/reagent/medicine/manapot = 1)
+
+/obj/item/reagent_containers/powder/SD
+	list_reagents = list(/datum/reagent/seelie_drugs = 10)
+
+/obj/item/reagent_containers/glass/bucket/wooden/SW
+	list_reagents = list(/datum/reagent/water = 10)

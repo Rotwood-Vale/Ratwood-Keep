@@ -48,11 +48,10 @@
 			H.STALUC = clamp(roll("4d6-4"), 1, 20)
 		else if(isseelie(H))
 			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/seelie_dust)
-			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/summon_rat)
-			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/strip)
-			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/drain_stam)
-			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/replenish)
-			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/projectile/animate_object)
+		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/summon_rat)
+		H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/seelie_kiss)
+		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/projectile/splash)
+		H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/roustame)
 		H.cmode_music = 'sound/music/combat_jester.ogg'
 	H.verbs |= /mob/living/carbon/human/proc/ventriloquate
 	H.verbs |= /mob/living/carbon/human/proc/ear_trick

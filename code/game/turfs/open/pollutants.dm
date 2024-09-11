@@ -110,6 +110,3 @@
 /datum/pollutant/steam
 	color = "#ffffff"
 
-/datum/pollutant/seelie_dust
-	color = "#ffffff"
-	reagents_on_breathe = list(/datum/reagent/seelie_drugs = 10)

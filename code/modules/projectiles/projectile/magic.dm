@@ -734,3 +734,14 @@
 	armor_penetration = 100
 	temperature = 50
 	flag = "magic"
+
+/obj/projectile/magic/water
+	name = "bolt of water"
+	icon_state = "ice_2"
+	flag = "magic"
+
+/obj/projectile/magic/water/on_hit(target)
+	. = ..()
+	var/obj/item/reagent_containers/K = new /obj/item/reagent_containers/glass/bucket/wooden/SW(get_turf(target))
+	K.reagents.reaction(target, TOUCH)
+	qdel(K)
