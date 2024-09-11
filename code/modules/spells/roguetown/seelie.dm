@@ -18,7 +18,7 @@
 		qdel(K)
 	return TRUE
 //Later:tm:
-/*
+#if 0
 /obj/effect/proc_holder/spell/targeted/static_room
 	name = "Static"
 	range = 12
@@ -44,31 +44,11 @@ obj/effect/proc_holder/spell/targeted/static_room/cast(list/targets, mob/user = 
 				if(isliving(CA))
 					CA.electrocute_act(1, src)
 				return TRUE
-	return TRUE*/
-
-/obj/effect/proc_holder/spell/invoked/summon_rat
-	name = "Call Beast"
-	overlay_state = "dendor"
-	releasedrain = 30
-	charge_max = 2 MINUTES
-	range = 7
-	cast_without_targets = TRUE
-	sound = 'sound/magic/churn.ogg'
-	invocation_type = "none" //can be none, whisper, emote and shout
-
-/obj/effect/proc_holder/spell/invoked/summon_rat/cast(list/targets, mob/user)
-	. = ..()
-	var/turf/T = get_turf(targets[1])
-	user.emote("giggle")
-	var/chance = rand(1,100)
-	if(chance == 100)
-		new /mob/living/simple_animal/hostile/retaliate/rogue/bigrat (T)
-	else
-		new /obj/item/reagent_containers/food/snacks/smallrat (T)
 	return TRUE
 
+
 //Because seelie glows constantly, this seemed unnecessary. May revisit if we can find a better execution
-/*	
+	
 /obj/effect/proc_holder/spell/invoked/brighten
 	name = "Light"
 	overlay_state = "tamebeast"
@@ -91,7 +71,28 @@ obj/effect/proc_holder/spell/targeted/static_room/cast(list/targets, mob/user = 
 	target.set_light(2, 1, "#d4fcac")
 	sleep(100)
 	target.set_light(0, 0, null)
+#endif
 
+/obj/effect/proc_holder/spell/invoked/summon_rat
+	name = "Call Beast"
+	overlay_state = "dendor"
+	releasedrain = 30
+	charge_max = 2 MINUTES
+	range = 7
+	cast_without_targets = TRUE
+	sound = 'sound/magic/churn.ogg'
+	invocation_type = "none" //can be none, whisper, emote and shout
+
+/obj/effect/proc_holder/spell/invoked/summon_rat/cast(list/targets, mob/user)
+	. = ..()
+	var/turf/T = get_turf(targets[1])
+	user.emote("giggle")
+	var/chance = rand(1,100)
+	if(chance == 100)
+		new /mob/living/simple_animal/hostile/retaliate/rogue/bigrat (T)
+	else
+		new /obj/item/reagent_containers/food/snacks/smallrat (T)
+	return TRUE
 
 /obj/effect/proc_holder/spell/invoked/strip
 	name = "Strip Clothes"
@@ -106,20 +107,11 @@ obj/effect/proc_holder/spell/targeted/static_room/cast(list/targets, mob/user = 
 /obj/effect/proc_holder/spell/invoked/strip/cast(list/targets, mob/user)
 	. = ..()
 	user.emote("giggle")
-	var/pick = rand(1,3)//Now it randomly strips shoes, hats or gloves!
 	var/mob/living/target = targets[1]
 	if(iscarbon(target))
-		switch(pick)
-			if (1)
-				var/obj/item/object = target.get_item_by_slot(SLOT_GLOVES)
-				target.dropItemToGround(object)
-			if(2)
-				var/obj/item/object = target.get_item_by_slot(SLOT_SHOES)
-				target.dropItemToGround(object)
-			if(3)
-				var/obj/item/object = target.get_item_by_slot(SLOT_HEAD)
-				if(!istype(object, /obj/item/clothing/head/roguetown/helmet))//Can't take helmets!
-					target.dropItemToGround(object)
+		var/obj/item/object = target.get_item_by_slot(pick(SLOT_GLOVES,SLOT_SHOES,SLOT_HEAD))
+		if(!istype(object, /obj/item/clothing/head/roguetown/helmet))//Can't take helmets!	
+			target.dropItemToGround(object)
 	return TRUE
 
 /obj/effect/proc_holder/spell/invoked/drain_stam
@@ -199,7 +191,7 @@ obj/effect/proc_holder/spell/targeted/static_room/cast(list/targets, mob/user = 
 	movement_interrupt = FALSE
 	charging_slowdown = 3
 	chargedloop = /datum/looping_sound/invokegen
-	associated_skill = /datum/skill/magic/arcane*/
+	associated_skill = /datum/skill/magic/arcane
 
 /obj/effect/proc_holder/spell/targeted/roustame
 	name = "Tame Rous"
@@ -239,16 +231,18 @@ obj/effect/proc_holder/spell/targeted/static_room/cast(list/targets, mob/user = 
 	//random_target = TRUE
 	//random_target_priority = TARGET_RANDOM
 
-/obj/effect/proc_holder/spell/targeted/seelie_kiss/cast(mob/living/carbon/target, mob/user)
+/obj/effect/proc_holder/spell/targeted/seelie_kiss/cast(list/targets, mob/user)
 	. = ..()
-	var/obj/item/reagent_containers/powder/K = new /obj/item/reagent_containers/powder/SK(target.loc)
-	K.reagents.trans_to(target, K.reagents.total_volume, transfered_by = user, method = "swallow")
-	user.emote("kiss")
-	target.add_nausea(9)
-	qdel(K)
-		
-	return TRUE
-	
+	if(iscarbon(targets[1]))
+		var/mob/living/carbon/target = targets[1]
+		var/obj/item/reagent_containers/powder/K = new /obj/item/reagent_containers/powder/SK(target.loc)
+		K.reagents.trans_to(target, K.reagents.total_volume, transfered_by = user, method = "swallow")
+		target.add_nausea(9)
+		user.emote("kiss")
+		qdel(K)
+		return TRUE
+	return FALSE
+
 /obj/effect/proc_holder/spell/invoked/projectile/splash
 	name = "Water splash"
 	overlay_state = "bigpsy"
