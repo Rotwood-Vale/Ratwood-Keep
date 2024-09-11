@@ -14,7 +14,6 @@
 
 /datum/outfit/job/roguetown/adventurer/cleric/pre_equip(mob/living/carbon/human/H)
 	..()
-	H.virginity = TRUE
 	switch(H.patron?.type)
 		if(/datum/patron/divine/astrata)
 			neck = /obj/item/clothing/neck/roguetown/psicross/astrata

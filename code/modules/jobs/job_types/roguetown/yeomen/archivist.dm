@@ -29,7 +29,6 @@
 		armor = /obj/item/clothing/suit/roguetown/armor/leather/vest/sailor/nightman
 		pants = /obj/item/clothing/under/roguetown/tights/black
 		head = /obj/item/clothing/head/roguetown/nightman
-	H.virginity = TRUE
 	shoes = /obj/item/clothing/shoes/roguetown/shortboots
 	belt = /obj/item/storage/belt/rogue/leather/plaquesilver
 	beltl = /obj/item/keyring/archivist
