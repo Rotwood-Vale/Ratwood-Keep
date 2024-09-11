@@ -1548,14 +1548,6 @@
 	},
 /turf/open/floor/rogue/blocks,
 /area/rogue/indoors/town/dwarfin)
-"bLG" = (
-/obj/structure/chair/wood/rogue/fancy{
-	dir = 1
-	},
-/turf/open/floor/rogue/ruinedwood{
-	icon_state = "horzw"
-	},
-/area/rogue/indoors/town/tavern)
 "bMj" = (
 /turf/closed/wall/mineral/rogue/stone,
 /area/rogue/under/cave)
@@ -12140,6 +12132,13 @@
 /obj/structure/rack/rogue,
 /turf/open/floor/rogue/ruinedwood/turned,
 /area/rogue/indoors)
+"nzm" = (
+/obj/machinery/light/rogue/firebowl/standing/blue{
+	pixel_y = 20;
+	density = 0
+	},
+/turf/open/floor/rogue/blocks/stonered,
+/area/rogue/indoors/town/bath)
 "nzo" = (
 /obj/structure/flora/roguegrass,
 /turf/open/floor/rogue/dirt/road,
@@ -12709,6 +12708,14 @@
 /obj/item/grown/log/tree,
 /turf/open/floor/rogue/dirt,
 /area/rogue/outdoors/bog)
+"ocm" = (
+/obj/structure/chair/wood/rogue/fancy{
+	dir = 1
+	},
+/turf/open/floor/rogue/ruinedwood{
+	icon_state = "horzw"
+	},
+/area/rogue/indoors/town/tavern)
 "ocI" = (
 /turf/closed/wall/mineral/rogue/stone/window,
 /area/rogue/outdoors/town)
@@ -15402,6 +15409,13 @@
 	icon_state = "wooden_floort"
 	},
 /area/rogue/outdoors/town)
+"qVe" = (
+/obj/machinery/light/rogue/firebowl/standing/blue{
+	density = 0;
+	pixel_x = -10
+	},
+/turf/open/floor/rogue/blocks/stonered/tiny,
+/area/rogue/indoors/town/bath)
 "qVN" = (
 /obj/structure/roguewindow/openclose/reinforced{
 	dir = 8
@@ -286498,15 +286512,15 @@ eoy
 wbg
 wbg
 vNh
-fyK
+nzm
 tZD
 mMB
 mMC
 mMC
 mMC
 mMC
-fyK
-hjD
+mMC
+qVe
 oXU
 kHR
 oXU
@@ -287302,7 +287316,7 @@ eoy
 wbg
 wbg
 vNh
-fyK
+nzm
 mMC
 mMC
 mMC
@@ -491134,7 +491148,7 @@ iHm
 fHB
 iIg
 iHm
-bLG
+ocm
 muD
 xvv
 wNn
