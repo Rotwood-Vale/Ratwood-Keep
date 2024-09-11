@@ -66,8 +66,6 @@
 		milkies = TRUE
 		udder = new()
 	update_icon()
-	if(tame)
-		tamed()
 
 /mob/living/simple_animal/hostile/retaliate/rogue/bigrat/tamed()
 	..()
