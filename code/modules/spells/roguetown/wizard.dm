@@ -188,6 +188,7 @@
 	flag = "magic"
 	hitsound = 'sound/blank.ogg'
 	aoe_range = 0
+	speed = 3
 
 
 /obj/projectile/magic/aoe/fireball/rogue/on_hit(target)
@@ -229,6 +230,7 @@
 	exp_flash = 2
 	exp_fire = 2
 	flag = "magic"
+	speed = 4
 
 /obj/effect/proc_holder/spell/invoked/projectile/spitfire
 	name = "Spitfire"
@@ -241,8 +243,8 @@
 	active = FALSE
 	releasedrain = 30
 	chargedrain = 1
-	chargetime = 3
-	charge_max = 3 SECONDS
+	chargetime = 10
+	charge_max = 8 SECONDS
 	warnie = "spellwarning"
 	no_early_release = TRUE
 	movement_interrupt = FALSE
@@ -264,6 +266,60 @@
 	flag = "magic"
 	hitsound = 'sound/blank.ogg'
 	aoe_range = 0
+	speed = 2.5
+
+/obj/projectile/magic/aoe/fireball/rogue2/on_hit(target)
+	. = ..()
+	if(ismob(target))
+		var/mob/M = target
+		if(M.anti_magic_check())
+			visible_message(span_warning("[src] fizzles on contact with [target]!"))
+			playsound(get_turf(target), 'sound/magic/magic_nulled.ogg', 100)
+			qdel(src)
+			return BULLET_ACT_BLOCK
+
+/obj/effect/proc_holder/spell/invoked/projectile/arcanebolt
+	name = "Arcane Bolt"
+	desc = "Shoot out rapid bolts of arcane magic, that firmly hits on impact."
+	clothes_req = FALSE
+	range = 12
+	projectile_type = /obj/projectile/energy/rogue3
+	overlay_state = "force_dart"
+	sound = list('sound/magic/vlightning.ogg')
+	active = FALSE
+	releasedrain = 20
+	chargedrain = 1
+	chargetime = 7
+	charge_max = 5 SECONDS
+	warnie = "spellwarning"
+	no_early_release = TRUE
+	movement_interrupt = FALSE
+	charging_slowdown = 3
+	chargedloop = /datum/looping_sound/invokegen
+	associated_skill = /datum/skill/magic/arcane
+	cost = 2
+	xp_gain = TRUE
+
+/obj/projectile/energy/rogue3
+	name = "Arcane Bolt"
+	icon_state = "arcane_barrage"
+	damage = 30
+	damage_type = BRUTE
+	armor_penetration = 10
+	nodamage = FALSE
+	flag = "bullet"
+	hitsound = 'sound/blank.ogg'
+	speed = 2
+
+/obj/projectile/energy/rogue3/on_hit(target)
+	. = ..()
+	if(ismob(target))
+		var/mob/M = target
+		if(M.anti_magic_check())
+			visible_message(span_warning("[src] fizzles on contact with [target]!"))
+			playsound(get_turf(target), 'sound/magic/magic_nulled.ogg', 100)
+			qdel(src)
+			return BULLET_ACT_BLOCK
 
 /obj/effect/proc_holder/spell/invoked/projectile/fetch
 	name = "Fetch"
@@ -490,20 +546,21 @@
 	//list of spells you can learn, it may be good to move this somewhere else eventually
 	//TODO: make GLOB list of spells, give them a true/false tag for learning, run through that list to generate choices
 	var/list/choices = list()
-	var/list/spell_choices = list(/obj/effect/proc_holder/spell/invoked/projectile/fireball,
-		/obj/effect/proc_holder/spell/invoked/projectile/lightningbolt,
-		/obj/effect/proc_holder/spell/invoked/projectile/fetch,
+	var/list/spell_choices = list(/obj/effect/proc_holder/spell/invoked/projectile/fireball,// 4 cost
+		/obj/effect/proc_holder/spell/invoked/projectile/lightningbolt,// 3 cost
 		/obj/effect/proc_holder/spell/invoked/projectile/spitfire,
 		/obj/effect/proc_holder/spell/invoked/forcewall_weak,
 		/obj/effect/proc_holder/spell/invoked/slowdown_spell_aoe,
-		/obj/effect/proc_holder/spell/invoked/message,
-		/obj/effect/proc_holder/spell/invoked/push_spell,
-		/obj/effect/proc_holder/spell/invoked/blade_burst,
-		/obj/effect/proc_holder/spell/targeted/touch/nondetection,
-		/obj/effect/proc_holder/spell/targeted/touch/prestidigitation,
 		/obj/effect/proc_holder/spell/invoked/haste,
+		/obj/effect/proc_holder/spell/invoked/push_spell,
+		/obj/effect/proc_holder/spell/targeted/touch/darkvision,// 2 cost
+		/obj/effect/proc_holder/spell/invoked/message,
+		/obj/effect/proc_holder/spell/invoked/blade_burst,
+		/obj/effect/proc_holder/spell/invoked/projectile/fetch,
+		/obj/effect/proc_holder/spell/invoked/projectile/arcanebolt,
+		/obj/effect/proc_holder/spell/targeted/touch/nondetection, // 1 cost
+		/obj/effect/proc_holder/spell/targeted/touch/prestidigitation,
 		/obj/effect/proc_holder/spell/invoked/featherfall,
-		/obj/effect/proc_holder/spell/targeted/touch/darkvision,
 	)
 	for(var/i = 1, i <= spell_choices.len, i++)
 		choices["[spell_choices[i].name]: [spell_choices[i].cost]"] = spell_choices[i]
@@ -755,7 +812,7 @@
 
 /obj/effect/proc_holder/spell/invoked/blade_burst
 	name = "Blade Burst"
-	desc = "Summon a storm of arcyne force in an area, wounding anything in that location after a delay."
+	desc = "Summon a storm of arcyne force in an area that damages through armor, wounding anything in that location after a delay."
 	cost = 2
 	xp_gain = TRUE
 	releasedrain = 30
@@ -770,7 +827,7 @@
 	associated_skill = /datum/skill/magic/arcane
 	overlay_state = "blade_burst"
 	var/delay = 7
-	var/damage = 80
+	var/damage = 45
 
 /obj/effect/temp_visual/trap
 	icon = 'icons/effects/effects.dmi'
