@@ -111,6 +111,8 @@
 	if(stat)
 		return
 	for(var/mob/living/eattarg in around)
+		if(!(eattarg in enemies)) //Makes a tamed rous not eat people on the floor unless instigated.
+			return
 		if(eattarg.stat != CONSCIOUS)
 			foundfood += eattarg
 			L = eattarg
