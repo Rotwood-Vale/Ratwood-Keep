@@ -5,7 +5,7 @@
 	name = "Fluvian"
 	id = "moth"
 	desc = "In time you will learn the history of this race"
-	species_traits = list(EYECOLOR,LIPS,STUBBLE,MUTCOLORS)
+	species_traits = list(EYECOLOR,LIPS,STUBBLE,MUTCOLORS,HAIR)
 	inherent_traits = list(TRAIT_NOMOBSWAP)
 	possible_ages = ALL_AGES_LIST
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
@@ -52,8 +52,14 @@
 		//ORGAN_SLOT_BREASTS = /obj/item/organ/breasts,
 		//ORGAN_SLOT_VAGINA = /obj/item/organ/vagina,
 		)
+	bodypart_features = list(
+		/datum/bodypart_feature/hair/head,
+		/datum/bodypart_feature/hair/facial,
+	)
 	customizers = list(
 		/datum/customizer/organ/eyes/moth,
+		/datum/customizer/bodypart_feature/hair/head/humanoid,
+		/datum/customizer/bodypart_feature/hair/facial/humanoid,
 		/datum/customizer/bodypart_feature/accessory,
 		/datum/customizer/bodypart_feature/face_detail,
 		/datum/customizer/bodypart_feature/underwear,

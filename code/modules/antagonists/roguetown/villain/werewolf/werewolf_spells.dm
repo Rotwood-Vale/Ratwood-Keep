@@ -4,6 +4,7 @@
 	overlay_state = "howl"
 	antimagic_allowed = TRUE
 	charge_max = 600 //1 minute
+	ignore_cockblock = TRUE
 
 /obj/effect/proc_holder/spell/self/howl/cast(mob/user = usr)
 	..()
@@ -14,7 +15,7 @@
 
 	// sound played for owner
 	playsound(src, pick('sound/vo/mobs/wwolf/howl (1).ogg','sound/vo/mobs/wwolf/howl (2).ogg'), 100, TRUE)
-	
+
 	for(var/mob/player in GLOB.player_list)
 
 		if(!player.mind) continue
@@ -38,6 +39,7 @@
 	overlay_state = "claws"
 	antimagic_allowed = TRUE
 	charge_max = 20 //2 seconds
+	ignore_cockblock = TRUE
 	var/extended = FALSE
 
 /obj/effect/proc_holder/spell/self/claws/cast(mob/user = usr)
@@ -62,4 +64,4 @@
 		user.put_in_hands(r, TRUE, FALSE, TRUE)
 		//user.visible_message("Your claws extend.", "You feel your claws extending.", "You hear a sound of claws extending.")
 		extended = TRUE
-	
+

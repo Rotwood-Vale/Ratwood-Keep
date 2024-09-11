@@ -205,9 +205,11 @@
 			if(weapon_parry == TRUE)
 				if(do_parry(used_weapon, drained, user)) //show message
 
-					if((mobility_flags & MOBILITY_STAND) && can_train_combat_skill(src, used_weapon.associated_skill, attacker_skill - SKILL_LEVEL_NOVICE))
-						mind.add_sleep_experience(used_weapon.associated_skill, max(round(STAINT/2), 0), FALSE)
-
+					if((mobility_flags & MOBILITY_STAND) && can_train_combat_skill(src, used_weapon.associated_skill, SKILL_LEVEL_EXPERT))
+						if(istype(user.rmb_intent, /datum/rmb_intent/weak))
+							mind.add_sleep_experience(used_weapon.associated_skill, max(round(STAINT/2), 0), FALSE)
+						else
+							mind.add_sleep_experience(used_weapon.associated_skill, STAINT, FALSE)
 					var/obj/item/AB = intenty.masteritem
 
 					//attacker skill gain
@@ -218,8 +220,11 @@
 							attacker_skill_type = AB.associated_skill
 						else
 							attacker_skill_type = /datum/skill/combat/unarmed
-						if((U.mobility_flags & MOBILITY_STAND) && can_train_combat_skill(U, attacker_skill_type, defender_skill - SKILL_LEVEL_NOVICE))
-							U.mind.add_sleep_experience(attacker_skill_type, max(round(STAINT/2), 0), FALSE)
+						if((U.mobility_flags & MOBILITY_STAND) && can_train_combat_skill(U, attacker_skill_type, SKILL_LEVEL_EXPERT))
+							if(istype(user.rmb_intent, /datum/rmb_intent/weak))
+								U.mind.add_sleep_experience(attacker_skill_type, max(round(U.STAINT/2), 0), FALSE)
+							else
+								U.mind.add_sleep_experience(attacker_skill_type, U.STAINT, FALSE)
 
 					if(prob(66) && AB)
 						if((used_weapon.flags_1 & CONDUCT_1) && (AB.flags_1 & CONDUCT_1))
@@ -243,8 +248,11 @@
 
 			if(weapon_parry == FALSE)
 				if(do_unarmed_parry(drained, user))
-					if((mobility_flags & MOBILITY_STAND) && can_train_combat_skill(H, /datum/skill/combat/unarmed, attacker_skill - SKILL_LEVEL_NOVICE))
-						H.mind?.add_sleep_experience(/datum/skill/combat/unarmed, max(round(STAINT/2), 0), FALSE)
+					if((mobility_flags & MOBILITY_STAND) && can_train_combat_skill(H, /datum/skill/combat/unarmed, SKILL_LEVEL_EXPERT))
+						if(istype(user.rmb_intent, /datum/rmb_intent/weak))
+							H.mind?.add_sleep_experience(/datum/skill/combat/unarmed, max(round(STAINT/2), 0), FALSE)
+						else
+							H.mind?.add_sleep_experience(/datum/skill/combat/unarmed, STAINT, FALSE)
 					flash_fullscreen("blackflash2")
 					return TRUE
 				else

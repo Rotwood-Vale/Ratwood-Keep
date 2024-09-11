@@ -13,16 +13,17 @@
 					/obj/item/rope,
 				)
 
-/*
+
 /datum/supply_pack/rogue/tools/scomst
-	name = "Scomstones"
-	cost = 70
-	contains = list(/obj/item/scomstone,
-					/obj/item/scomstone,
-					/obj/item/scomstone/bad,
-					/obj/item/scomstone/bad,
-					/obj/item/scomstone/bad)
-*/
+	name = "Scomstone"
+	cost = 120
+	contains = list(/obj/item/scomstone)
+
+/datum/supply_pack/rogue/tools/serfst
+	name = "Serfstone"
+	cost = 40
+	contains = list(/obj/item/scomstone/bad)
+
 /datum/supply_pack/rogue/tools/chains
 	name = "Chains"
 	cost = 15
