@@ -5,7 +5,7 @@
 	allowed_races = RACES_ALL_KINDS
 	outfit = /datum/outfit/job/roguetown/adventurer/mage
 	category_tags = list(CTAG_ADVENTURER)
-	maximum_possible_slots = 8
+	maximum_possible_slots = 6
 
 /datum/outfit/job/roguetown/adventurer/mage
 	allowed_patrons = list(/datum/patron/divine/noc, /datum/patron/inhumen/zizo)
