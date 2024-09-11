@@ -156,8 +156,8 @@
 	name = "vulpkian ears"
 	accessory_type = /datum/sprite_accessory/ears/fox
 
-/obj/item/organ/ears/tajaran
-	name = "tajaran ears"
+/obj/item/organ/ears/tabaxi
+	name = "tabaxi ears"
 
 /obj/item/organ/ears/elf
 	name = "elf ears"
