@@ -990,7 +990,8 @@
 							I += /obj/item/reagent_containers/powder/moondust
 							I += /obj/item/reagent_containers/powder/moondust
 							I += /obj/item/reagent_containers/powder/moondust
-							I += /obj/item/slimepotion/lovepotion
+							I += /obj/item/bomb
+							I += /obj/item/bomb
 						if(3)
 							I += /obj/item/clothing/suit/roguetown/armor/plate/scale
 						if(4)
