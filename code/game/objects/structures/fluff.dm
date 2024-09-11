@@ -991,7 +991,6 @@
 							I += /obj/item/reagent_containers/powder/moondust
 							I += /obj/item/reagent_containers/powder/moondust
 							I += /obj/item/bomb
-							I += /obj/item/bomb
 						if(3)
 							I += /obj/item/clothing/suit/roguetown/armor/plate/scale
 						if(4)
@@ -1002,6 +1001,7 @@
 							I += /obj/item/reagent_containers/glass/bottle/rogue/healthpot
 							I += /obj/item/reagent_containers/powder/moondust
 							I += /obj/item/reagent_containers/powder/moondust
+							I += /obj/item/bomb
 						if(7)
 							I += /obj/item/clothing/shoes/roguetown/boots/armor
 						if(8)
