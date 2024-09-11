@@ -51,19 +51,18 @@
 	. = ..()
 
 /obj/structure/fluff/traveltile/attack_ghost(mob/dead/observer/user)
-	if(user.Adjacent(src))
-		if(!aportalgoesto)
-			return
-		var/fou
-		for(var/obj/structure/fluff/traveltile/T in shuffle(GLOB.traveltiles))
-			if(T.aportalid == aportalgoesto)
-				if(T == src)
-					continue
-				user.forceMove(T.loc)
-				fou = TRUE
-				break
-		if(!fou)
-			to_chat(user, "<b>It is a dead end.</b>")
+	if(!aportalgoesto)
+		return
+	var/fou
+	for(var/obj/structure/fluff/traveltile/T in shuffle(GLOB.traveltiles))
+		if(T.aportalid == aportalgoesto)
+			if(T == src)
+				continue
+			user.forceMove(T.loc)
+			fou = TRUE
+			break
+	if(!fou)
+		to_chat(user, "<b>It is a dead end.</b>")
 
 
 /obj/structure/fluff/traveltile/attack_hand(mob/user)

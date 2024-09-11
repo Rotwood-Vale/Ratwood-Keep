@@ -31,6 +31,7 @@
 	sleeved = null
 	allowed_sex = list(MALE, FEMALE)
 	allowed_race = NON_DWARVEN_RACE_TYPES
+	body_parts_covered = CHEST|GROIN|ARMS|VITALS
 
 /obj/item/clothing/suit/roguetown/shirt/undershirt/black
 	color = CLOTHING_BLACK

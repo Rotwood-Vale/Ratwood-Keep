@@ -249,7 +249,7 @@
 	charging_slowdown = 3
 	chargedloop = /datum/looping_sound/invokegen
 	associated_skill = /datum/skill/magic/arcane
-	cost = 2
+	cost = 1
 	xp_gain = TRUE
 
 /obj/projectile/magic/aoe/fireball/rogue2

@@ -697,8 +697,8 @@
 		if(M.anti_magic_check())
 			visible_message(span_warning("[src] vanishes into smoke on contact with [target]!"))
 			return BULLET_ACT_BLOCK
-		M.adjust_fire_stacks(6)
-//		M.take_overall_damage(0,10) //between this 10 burn, the 10 brute, the explosion brute, and the onfire burn, my at about 65 damage if you stop drop and roll immediately
+		if(exp_fire)
+			M.adjust_fire_stacks(exp_fire*3)
 	var/turf/T
 	if(isturf(target))
 		T = target

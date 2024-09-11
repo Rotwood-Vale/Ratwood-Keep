@@ -298,7 +298,7 @@
 	muteinmouth = TRUE
 	var/listening = TRUE
 	var/speaking = TRUE
-	sellprice = 250
+	sellprice = 100
 //wip
 /obj/item/scomstone/attack_right(mob/user)
 	user.changeNext_move(CLICK_CD_MELEE)
@@ -380,9 +380,10 @@
 
 /obj/item/scomstone/bad
 	name = "serfstone"
-	icon_state = "ring_emerald"
+	desc = "A steel ring with a dull gem shoddily sticking out of it."
+	icon_state = "ring_lamerald"
 	listening = FALSE
-	sellprice = 2
+	sellprice = 20
 
 /obj/item/scomstone/bad/Hear(message, atom/movable/speaker, message_language, raw_message, radio_freq, list/spans, message_mode, original_message)
 	return
