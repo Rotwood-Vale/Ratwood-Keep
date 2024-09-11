@@ -223,7 +223,7 @@
 				user.visible_message(span_warning("[user] smashes through [src]!"))
 			return
 		if(locked)
-			door_rattle()
+			rattle()
 			return
 		if(TryToSwitchState(AM))
 			if(swing_closed)
@@ -358,7 +358,7 @@
 	
 
 
-/obj/structure/mineral_door/proc/door_rattle()
+/obj/structure/mineral_door/proc/rattle()
 	playsound(src, rattlesound, 100)
 	var/oldx = pixel_x
 	animate(src, pixel_x = oldx+1, time = 0.5)
@@ -366,11 +366,11 @@
 	animate(pixel_x = oldx, time = 0.5)
 
 /obj/structure/mineral_door/attackby(obj/item/I, mob/user)
-	user.changeNext_move(CLICK_CD_FAST)
+	//user.changeNext_move(CLICK_CD_FAST)
 	if(istype(I, /obj/item/roguekey) || istype(I, /obj/item/keyring))
 		if(!locked)
 			to_chat(user, span_warning("It won't turn this way. Try turning to the right."))
-			door_rattle()
+			rattle()
 			return
 		trykeylock(I, user)
 //	else if(user.used_intent.type != INTENT_HARM)
@@ -427,12 +427,12 @@
 				user.visible_message(span_notice("[user] repaired [src]."), \
 				span_notice("I repaired [src]."))		
 /obj/structure/mineral_door/attack_right(mob/user)
-	user.changeNext_move(CLICK_CD_FAST)
+	//user.changeNext_move(CLICK_CD_FAST)
 	var/obj/item = user.get_active_held_item()
 	if(istype(item, /obj/item/roguekey) || istype(item, /obj/item/keyring))
 		if(locked)
 			to_chat(user, span_warning("It won't turn this way. Try turning to the left."))
-			door_rattle()
+			rattle()
 			return
 		trykeylock(item, user)
 	else
@@ -460,7 +460,7 @@
 				break
 			else
 				if(user.cmode)
-					door_rattle()
+					rattle()
 		return
 	else
 		var/obj/item/roguekey/K = I
@@ -468,7 +468,7 @@
 			lock_toggle(user)
 			return
 		else
-			door_rattle()
+			rattle()
 		return
 
 
@@ -862,10 +862,6 @@
 	repair_cost_first = /obj/item/natural/stone
 	repair_cost_second = /obj/item/natural/stone
 	repair_skill = /datum/skill/craft/masonry
-
-/obj/structure/mineral_door/wood/donjon/stone/attack_right(mob/user)
-	if(user.get_active_held_item())
-		..()
 
 /obj/structure/mineral_door/wood/donjon/stone/view_toggle(mob/user)
 	return
