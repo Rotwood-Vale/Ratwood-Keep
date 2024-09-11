@@ -466,11 +466,11 @@
 	},
 /area/rogue/indoors/town/shop)
 "azG" = (
-/obj/structure/table/wood,
-/obj/item/candle/yellow/lit,
-/obj/item/natural/feather,
-/turf/open/floor/rogue/wood,
-/area/rogue/indoors/town/tavern)
+/obj/structure/roguemachine/atm{
+	pixel_y = -32
+	},
+/turf/open/floor/rogue/blocks,
+/area/rogue/outdoors/town)
 "azH" = (
 /obj/structure/bed/rogue/inn/pileofshit,
 /turf/open/floor/rogue/cobble,
@@ -1548,6 +1548,14 @@
 	},
 /turf/open/floor/rogue/blocks,
 /area/rogue/indoors/town/dwarfin)
+"bLG" = (
+/obj/structure/chair/wood/rogue/fancy{
+	dir = 1
+	},
+/turf/open/floor/rogue/ruinedwood{
+	icon_state = "horzw"
+	},
+/area/rogue/indoors/town/tavern)
 "bMj" = (
 /turf/closed/wall/mineral/rogue/stone,
 /area/rogue/under/cave)
@@ -2766,7 +2774,10 @@
 /turf/open/floor/rogue/cobble,
 /area/rogue/indoors/town/dwarfin)
 "dcz" = (
-/obj/structure/roguemachine/merchantvend,
+/obj/structure/roguemachine/merchantvend{
+	pixel_y = 20;
+	density = 0
+	},
 /turf/open/floor/rogue/concrete,
 /area/rogue/indoors/town/shop)
 "dcN" = (
@@ -11249,7 +11260,9 @@
 /turf/open/floor/rogue/dirt,
 /area/rogue/outdoors/bog)
 "muD" = (
-/obj/structure/closet/crate/drawer/inn,
+/obj/structure/table/wood,
+/obj/item/natural/feather,
+/obj/item/candle/yellow/lit,
 /turf/open/floor/rogue/ruinedwood{
 	icon_state = "horzw"
 	},
@@ -269081,7 +269094,7 @@ sYx
 sYx
 odi
 odi
-sYx
+kWT
 sYx
 sYx
 odi
@@ -269888,8 +269901,8 @@ odi
 sYx
 sYx
 sYx
-uRH
-uRH
+odi
+odi
 oXL
 odi
 odi
@@ -270301,7 +270314,7 @@ sYx
 sYx
 odi
 sYx
-sYx
+kWT
 sYx
 sYx
 sYx
@@ -270689,7 +270702,7 @@ sYx
 odi
 odi
 sYx
-odi
+uRH
 sYx
 sYx
 sYx
@@ -271088,19 +271101,19 @@ sYx
 sYx
 sYx
 sYx
-odi
-odi
-sYx
-sYx
-sYx
-sYx
+uRH
 odi
 sYx
 sYx
+sYx
+sYx
+odi
+sYx
+kWT
 odi
 wLx
 sYx
-sYx
+kWT
 sYx
 sYx
 odi
@@ -271495,7 +271508,7 @@ sYx
 odi
 sYx
 kWT
-khC
+wLx
 uRH
 odi
 wLx
@@ -271903,7 +271916,7 @@ odi
 wLx
 sYx
 sYx
-sYx
+kWT
 sYx
 sYx
 sYx
@@ -272710,7 +272723,7 @@ sYx
 sYx
 odi
 uRH
-khC
+wLx
 oXL
 oXL
 sYx
@@ -273920,7 +273933,7 @@ sYx
 sYx
 oXL
 kWT
-khC
+wLx
 oXL
 sYx
 sYx
@@ -274317,7 +274330,7 @@ odi
 odi
 odi
 sYx
-sYx
+kWT
 sYx
 sYx
 sYx
@@ -275526,7 +275539,7 @@ wLx
 sYx
 sYx
 sYx
-odi
+uRH
 sYx
 odi
 odi
@@ -279529,7 +279542,7 @@ wLx
 wLx
 sYx
 odi
-odi
+uRH
 wLx
 odi
 sYx
@@ -281135,7 +281148,7 @@ wLx
 wLx
 odi
 odi
-uRH
+odi
 odi
 odi
 odi
@@ -281537,7 +281550,7 @@ wLx
 wLx
 odi
 sYx
-uRH
+odi
 uRH
 odi
 sYx
@@ -283289,7 +283302,7 @@ mlK
 iTw
 lEy
 txa
-rJC
+wVI
 wbg
 wbg
 wbg
@@ -283546,7 +283559,7 @@ wLx
 odi
 wLx
 wLx
-odi
+uRH
 wLx
 sYx
 sYx
@@ -284149,7 +284162,7 @@ fxx
 fTe
 qvR
 qvR
-spp
+qvR
 spp
 qvR
 uaL
@@ -284754,7 +284767,7 @@ wLx
 sYx
 wLx
 kWT
-kWT
+sYx
 kWT
 sYx
 uRH
@@ -284903,7 +284916,7 @@ wbg
 wbg
 qPK
 wVI
-wVI
+azG
 sco
 rCt
 gnI
@@ -284955,7 +284968,7 @@ qvR
 qvR
 qvR
 qvR
-uaL
+lgA
 wSn
 lgA
 qvR
@@ -285558,7 +285571,7 @@ odi
 odi
 sYx
 sYx
-sYx
+kWT
 sYx
 sYx
 sYx
@@ -291475,8 +291488,8 @@ odi
 odi
 odi
 wLx
-khC
-khC
+wLx
+wLx
 uRH
 sYx
 sYx
@@ -291874,7 +291887,7 @@ uuE
 uuE
 sYx
 odi
-sYx
+kWT
 odi
 odi
 kWT
@@ -292285,7 +292298,7 @@ odi
 sYx
 sYx
 sYx
-sYx
+kWT
 rfl
 mzM
 sao
@@ -294007,7 +294020,7 @@ wLx
 odi
 odi
 sYx
-odi
+uRH
 odi
 odi
 odi
@@ -294794,7 +294807,7 @@ odi
 odi
 odi
 uRH
-kWT
+sYx
 uRH
 sYx
 sYx
@@ -294805,7 +294818,7 @@ sYx
 wLx
 wLx
 wLx
-odi
+uRH
 sYx
 odi
 odi
@@ -295184,11 +295197,11 @@ sYx
 odi
 sYx
 wLx
-odi
+uRH
 sYx
 wLx
-uRH
-kWT
+odi
+sYx
 sYx
 odi
 odi
@@ -295596,7 +295609,7 @@ sYx
 odi
 sYx
 sYx
-odi
+uRH
 sYx
 odi
 odi
@@ -295616,7 +295629,7 @@ sYx
 odi
 odi
 wLx
-kWT
+sYx
 khC
 sYx
 odi
@@ -295991,7 +296004,7 @@ sYx
 muz
 sYx
 sYx
-odi
+uRH
 odi
 odi
 odi
@@ -296018,7 +296031,7 @@ odi
 sYx
 odi
 uRH
-kWT
+sYx
 odi
 odi
 odi
@@ -296420,8 +296433,8 @@ sYx
 sYx
 odi
 odi
-kWT
-kWT
+sYx
+sYx
 sYx
 sYx
 odi
@@ -296822,7 +296835,7 @@ odi
 sYx
 sYx
 wLx
-odi
+uRH
 odi
 sYx
 sYx
@@ -297218,7 +297231,7 @@ sYx
 sYx
 odi
 odi
-odi
+uRH
 sYx
 odi
 sYx
@@ -299588,10 +299601,10 @@ sYx
 odi
 sYx
 odi
-sYx
+kWT
 sYx
 odi
-kWT
+sYx
 sYx
 sYx
 sYx
@@ -307632,7 +307645,7 @@ odi
 sYx
 sYx
 wLx
-sYx
+kWT
 sYx
 odi
 sYx
@@ -308840,7 +308853,7 @@ odi
 odi
 odi
 sYx
-sYx
+kWT
 sYx
 sYx
 odi
@@ -310040,11 +310053,11 @@ kWT
 uRH
 sYx
 sYx
-kWT
-kWT
+sYx
+sYx
 sYx
 odi
-kWT
+sYx
 kWT
 sYx
 sYx
@@ -311245,7 +311258,7 @@ sYx
 sYx
 odi
 sYx
-sYx
+kWT
 sYx
 sYx
 sYx
@@ -318917,7 +318930,7 @@ odi
 odi
 sYx
 odi
-sYx
+kWT
 sYx
 sYx
 sYx
@@ -320548,7 +320561,7 @@ odi
 odi
 sYx
 sYx
-odi
+uRH
 odi
 odi
 sYx
@@ -321324,18 +321337,18 @@ sYx
 sYx
 sYx
 sYx
-sYx
-sYx
-odi
-odi
-kWT
-uRH
-odi
-odi
-sYx
-kWT
 kWT
 sYx
+odi
+odi
+sYx
+odi
+odi
+odi
+sYx
+kWT
+kWT
+sYx
 sYx
 sYx
 sYx
@@ -321344,7 +321357,7 @@ sYx
 sYx
 sYx
 odi
-khC
+wLx
 uRH
 odi
 odi
@@ -321730,27 +321743,27 @@ odi
 sYx
 sYx
 kWT
+sYx
+sYx
+sYx
+sYx
+odi
+odi
+odi
+sYx
+wLx
+wLx
+sYx
+odi
+odi
+odi
+odi
+odi
+sYx
+sYx
+sYx
+odi
 kWT
-sYx
-sYx
-sYx
-odi
-odi
-odi
-sYx
-wLx
-wLx
-sYx
-odi
-odi
-odi
-odi
-odi
-sYx
-sYx
-sYx
-odi
-sYx
 sYx
 sYx
 wLx
@@ -322127,7 +322140,7 @@ sYx
 sYx
 odi
 odi
-sYx
+kWT
 wLx
 odi
 odi
@@ -322148,12 +322161,12 @@ odi
 odi
 odi
 sYx
-sYx
+kWT
 sYx
 sYx
 sYx
 odi
-khC
+wLx
 khC
 wLx
 wLx
@@ -322526,7 +322539,7 @@ sYx
 odi
 sYx
 wLx
-uRH
+odi
 kWT
 sYx
 sYx
@@ -322553,14 +322566,14 @@ sYx
 sYx
 sYx
 sYx
-odi
-odi
-khC
-sYx
-odi
-sYx
-sYx
 uRH
+odi
+wLx
+sYx
+odi
+sYx
+sYx
+odi
 sYx
 sYx
 odi
@@ -322931,7 +322944,7 @@ sYx
 sYx
 odi
 sYx
-khC
+wLx
 uRH
 sYx
 sYx
@@ -323328,7 +323341,7 @@ wLx
 sYx
 sYx
 uRH
-uRH
+odi
 odi
 odi
 sYx
@@ -323722,7 +323735,7 @@ sYx
 sYx
 sYx
 kWT
-khC
+wLx
 wLx
 sYx
 sYx
@@ -323732,12 +323745,12 @@ sYx
 sYx
 odi
 sYx
-odi
+uRH
 sYx
 sYx
 wLx
 sYx
-sYx
+kWT
 odi
 odi
 sYx
@@ -324117,7 +324130,7 @@ kWT
 odi
 sYx
 kWT
-kWT
+sYx
 odi
 sYx
 odi
@@ -324141,7 +324154,7 @@ odi
 sYx
 sYx
 sYx
-sYx
+kWT
 odi
 sYx
 odi
@@ -324527,14 +324540,14 @@ sYx
 odi
 sYx
 odi
-odi
+uRH
 odi
 wLx
 odi
 odi
 odi
 sYx
-kWT
+sYx
 kWT
 sYx
 sYx
@@ -324923,7 +324936,7 @@ odi
 sYx
 odi
 odi
-sYx
+kWT
 odi
 odi
 sYx
@@ -325341,7 +325354,7 @@ sYx
 odi
 sYx
 sYx
-odi
+uRH
 sYx
 odi
 sYx
@@ -325762,7 +325775,7 @@ odi
 odi
 odi
 sYx
-sYx
+kWT
 odi
 sYx
 sYx
@@ -326160,8 +326173,8 @@ odi
 odi
 odi
 uRH
-uRH
-uRH
+odi
+odi
 uRH
 sYx
 sYx
@@ -326962,7 +326975,7 @@ odi
 odi
 sYx
 odi
-sYx
+kWT
 sYx
 odi
 sYx
@@ -491121,7 +491134,7 @@ iHm
 fHB
 iIg
 iHm
-aqM
+bLG
 muD
 xvv
 wNn
@@ -491923,7 +491936,7 @@ iHm
 iHm
 iHm
 fHB
-azG
+iHm
 iHm
 sla
 qnw
@@ -492325,7 +492338,7 @@ iHm
 iHm
 iHm
 xvv
-fPQ
+pcY
 iHm
 sla
 sla
