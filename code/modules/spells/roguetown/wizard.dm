@@ -315,6 +315,7 @@
 	associated_skill = /datum/skill/magic/arcane
 	hand_path = /obj/item/melee/touch_attack/prestidigitation
 	cost = 1
+	xp_gain = TRUE
 
 /obj/item/melee/touch_attack/prestidigitation
 	name = "\improper prestidigitating touch"
@@ -385,7 +386,7 @@
 
 	return fatigue_used
 
-/obj/item/melee/touch_attack/prestidigitation/proc/handle_xp(mob/living/carbon/human/user, fatigue, ignore_cooldown = FALSE)
+/obj/item/melee/touch_attack/prestidigitation/proc/handle_xp(mob/living/carbon/human/user, fatigue, ignore_cooldown = TRUE)
 	if (!ignore_cooldown)
 		if (world.time < xp_cooldown + xp_interval)
 			return
@@ -769,7 +770,7 @@
 	associated_skill = /datum/skill/magic/arcane
 	overlay_state = "blade_burst"
 	var/delay = 7
-	var/damage = 40
+	var/damage = 80
 
 /obj/effect/temp_visual/trap
 	icon = 'icons/effects/effects.dmi'
