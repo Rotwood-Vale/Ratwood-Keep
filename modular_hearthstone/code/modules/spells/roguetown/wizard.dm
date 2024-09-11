@@ -430,9 +430,10 @@
 	var/list/thrownatoms = list()
 	var/atom/throwtarget
 	var/distfromcaster
-	playMagSound()
+	playsound(user, 'sound/magic/repulse.ogg', 80, TRUE)
 	user.visible_message("[user] mutters an incantation and a wave of force radiates outward!")
 	for(var/turf/T in view(push_range, user))
+		new /obj/effect/temp_visual/kinetic_blast(T)
 		for(var/atom/movable/AM in T)
 			thrownatoms += AM
 
@@ -672,6 +673,7 @@
 
 	var/mob/living/spelltarget = A
 	spelltarget.apply_status_effect(/datum/status_effect/buff/haste)
+	playsound(get_turf(spelltarget), 'sound/magic/haste.ogg', 80, TRUE, soundping = TRUE)
 	
 	if(spelltarget != user)
 		user.visible_message("[user] mutters an incantation and [spelltarget] briefly shines yellow.")
