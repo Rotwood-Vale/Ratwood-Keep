@@ -190,7 +190,6 @@
 	//TODO: make GLOB list of spells, give them a true/false tag for learning, run through that list to generate choices
 	var/list/choices = list()
 	var/list/spell_choices = list(/obj/effect/proc_holder/spell/invoked/projectile/fireball,
-		/obj/effect/proc_holder/spell/invoked/projectile/fireball/greater,
 		/obj/effect/proc_holder/spell/invoked/projectile/lightningbolt,
 		/obj/effect/proc_holder/spell/invoked/projectile/fetch,
 		/obj/effect/proc_holder/spell/invoked/projectile/spitfire,
