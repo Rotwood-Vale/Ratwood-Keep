@@ -443,7 +443,14 @@
 	if(target == user)
 		dat += "<center>Doing unto yourself</center>"
 	else
-		dat += "<center>Doing unto [target]'s</center>"
+		if(target.erpform == 0)
+			dat += "<center>Doing unto [target]'s ~|~ Partner seems to be reluctant for intercourse</center>"
+		else if(target.erpform == 1)
+			dat += "<center>Doing unto [target]'s ~|~ Partner seems to seek short, quick intercourse</center>"
+		else if(target.erpform == 3)
+			dat += "<center>Doing unto [target]'s ~|~ Partner seems to seek long, emotive intercourse</center>"
+		else
+			dat += "<center>Doing unto [target]'s</center>"
 	if(current_action)
 		dat += "<center><a href='?src=[REF(src)];task=stop'>Stop</a></center>"
 	else

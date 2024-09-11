@@ -155,6 +155,7 @@ GLOBAL_LIST_EMPTY(chosen_names)
 	var/list/descriptor_entries = list()
 	var/list/custom_descriptors = list()
 	var/defiant = TRUE
+	var/erpform = 2
 	/// Tracker to whether the person has ever spawned into the round, for purposes of applying the respawn ban
 	var/has_spawned = FALSE
 
@@ -345,7 +346,7 @@ GLOBAL_LIST_EMPTY(chosen_names)
 			var/datum/faith/selected_faith = GLOB.faithlist[selected_patron?.associated_faith]
 			dat += "<b>Faith:</b> <a href='?_src_=prefs;preference=faith;task=input'>[selected_faith?.name || "FUCK!"]</a><BR>"
 			dat += "<b>Patron:</b> <a href='?_src_=prefs;preference=patron;task=input'>[selected_patron?.name || "FUCK!"]</a><BR>"
-//			dat += "<b>Family:</b> <a href='?_src_=prefs;preference=family'>Unknown</a><BR>" // Disabling until its working
+//			dat += "<b>Family:</b> <a href='?_src_=prefs;preference=family'>Unknown</a><BR>" // Disabling until its workingf
 			dat += "<b>Dominance:</b> <a href='?_src_=prefs;preference=domhand'>[domhand == 1 ? "Left-handed" : "Right-handed"]</a><BR>"
 
 /*
@@ -677,6 +678,14 @@ GLOBAL_LIST_EMPTY(chosen_names)
 	dat += "</td>"
 	dat += "<td width='33%' align='right'>"
 	dat += "<b>Be defiant:</b> <a href='?_src_=prefs;preference=be_defiant'>[(defiant) ? "Yes":"No"]</a><br>"
+	if (erpform == 0)
+		dat += "<b>Sensual desires:</b> <a href='?_src_=prefs;preference=erp_form'>Rare and infrequent</a><br>"
+	else if (erpform == 1)
+		dat += "<b>Sensual desires:</b> <a href='?_src_=prefs;preference=erp_form'>Short and simple</a><br>"
+	else if (erpform == 3)
+		dat += "<b>Sensual desires:</b> <a href='?_src_=prefs;preference=erp_form'>Long and emotive</a><br>"
+	else
+		dat += "<b>Sensual desires:</b> <a href='?_src_=prefs;preference=erp_form'>Indifferent</a><br>"
 	dat += "<b>Be voice:</b> <a href='?_src_=prefs;preference=schizo_voice'>[(toggles & SCHIZO_VOICE) ? "Enabled":"Disabled"]</a>"
 	dat += "</td>"
 	dat += "</tr>"
@@ -1962,6 +1971,23 @@ Slots: [job.spawn_positions]</span>
 						to_chat(user, span_notice("You will now have resistance from people violating you, but be punished for trying to violate others. This is not full protection."))
 					else
 						to_chat(user, span_boldwarning("You fully immerse yourself in the grim experience, waiving your resistance from people violating you, but letting you do the same unto other non-defiants"))
+				
+				
+				if("erp_form")
+					if(erpform == 0)
+						erpform = 1
+						to_chat(user, span_notice("You prefer your sexual encounters to be quick and simple."))
+					else if(erpform == 2)
+						erpform = 3
+						to_chat(user, span_notice("You prefer your sexual encounters to be longer and expressive."))
+					else if(erpform == 3)
+						erpform = 0
+						to_chat(user, span_notice("You prefer to avoid superflous sexual encounters."))
+					else
+						erpform = 2
+						to_chat(user, span_notice("You do not mind how your sexual encounters unfold."))
+						
+
 
 				if("schizo_voice")
 					toggles ^= SCHIZO_VOICE
