@@ -59,6 +59,12 @@
 	damage_deflection = 10
 	leanable = TRUE
 
+	var/repairable = FALSE
+	var/repair_state = 0
+	var/obj/item/repair_cost_first = null
+	var/obj/item/repair_cost_second = null	
+	var/repair_skill = null
+
 /obj/structure/mineral_door/proc/try_award_resident_key(mob/user)
 	if(!grant_resident_key)
 		return FALSE
@@ -341,14 +347,77 @@
 /obj/structure/mineral_door/update_icon()
 	icon_state = "[base_state][door_opened ? "open":""]"
 
+
+/obj/structure/mineral_door/examine(mob/user)	
+	. = ..()
+	if(repairable)
+		var/obj/cast_repair_cost_first = repair_cost_first
+		var/obj/cast_repair_cost_second = repair_cost_second
+		if((repair_state == 0) && (obj_integrity < max_integrity))
+			. += span_notice("A [initial(cast_repair_cost_first.name)] can be used to repair it.")
+			if(brokenstate)
+				. += span_notice("An additional [initial(cast_repair_cost_second.name)] is needed to finish repairs.")
+		if(repair_state == 1)
+			. += span_notice("An additional [initial(cast_repair_cost_second.name)] is needed to finish repairs.")
+	
+
+
 /obj/structure/mineral_door/attackby(obj/item/I, mob/user)
 	if(istype(I, /obj/item/roguekey) || istype(I, /obj/item/keyring))
 		trykeylock(I, user)
 //	else if(user.used_intent.type != INTENT_HARM)
 //		return attack_hand(user)
 	else
-		return ..()
+		if(repairable && (user.mind.get_skill_level(repair_skill) > 0) && ((istype(I, repair_cost_first)) || (istype(I, repair_cost_second)))) // At least 1 skill level needed
+			repairdoor(I,user)
+		else
+			return ..()
 
+/obj/structure/mineral_door/proc/repairdoor(obj/item/I, mob/user)
+	if(brokenstate)				
+		switch(repair_state)
+			if(0)					
+				if(istype(I, repair_cost_first))
+					user.visible_message(span_notice("[user] starts repairing [src]."), \
+					span_notice("I start repairing [src]."))
+					playsound(user, 'sound/misc/wood_saw.ogg', 100, TRUE)
+					if(do_after(user, (300 / user.mind.get_skill_level(repair_skill)), target = src)) // 1 skill = 30 secs, 2 skill = 15 secs etc.
+						qdel(I)
+						playsound(user, 'sound/misc/wood_saw.ogg', 100, TRUE)
+						repair_state = 1
+						var/obj/cast_repair_cost_second = repair_cost_second
+						to_chat(user, span_notice("An additional [initial(cast_repair_cost_second.name)] is needed to finish the job."))				
+			if(1)
+				if(istype(I, repair_cost_second))
+					user.visible_message(span_notice("[user] starts repairing [src]."), \
+					span_notice("I start repairing [src]."))
+					playsound(user, 'sound/misc/wood_saw.ogg', 100, TRUE)
+					if(do_after(user, (300 / user.mind.get_skill_level(repair_skill)), target = src)) // 1 skill = 30 secs, 2 skill = 15 secs etc.	
+						qdel(I)	
+						playsound(user, 'sound/misc/wood_saw.ogg', 100, TRUE)	
+						icon_state = "[base_state]"
+						density = TRUE
+						opacity = TRUE
+						brokenstate = FALSE
+						obj_broken = FALSE
+						obj_integrity = max_integrity
+						repair_state = 0								
+						user.visible_message(span_notice("[user] repaired [src]."), \
+						span_notice("I repaired [src]."))												
+	else
+		if(obj_integrity < max_integrity && istype(I, repair_cost_first))
+			to_chat(user, span_warning("[obj_integrity]"))	
+			user.visible_message(span_notice("[user] starts repairing [src]."), \
+			span_notice("I start repairing [src]."))
+			playsound(user, 'sound/misc/wood_saw.ogg', 100, TRUE)
+			if(do_after(user, (300 / user.mind.get_skill_level(repair_skill)), target = src)) // 1 skill = 30 secs, 2 skill = 15 secs etc.
+				qdel(I)
+				playsound(user, 'sound/misc/wood_saw.ogg', 100, TRUE)
+				obj_integrity = obj_integrity + (max_integrity/2)					
+				if(obj_integrity > max_integrity)
+					obj_integrity = max_integrity
+				user.visible_message(span_notice("[user] repaired [src]."), \
+				span_notice("I repaired [src]."))		
 
 /obj/structure/mineral_door/proc/trykeylock(obj/item/I, mob/user)
 	if(door_opened || isSwitchingStates)
@@ -639,6 +708,10 @@
 	break_sound = 'sound/combat/hits/onwood/destroywalldoor.ogg'
 	attacked_sound = list('sound/combat/hits/onwood/woodimpact (1).ogg','sound/combat/hits/onwood/woodimpact (2).ogg')
 	var/over_state = "woodover"
+	repairable = TRUE
+	repair_cost_first = /obj/item/grown/log/tree/small
+	repair_cost_second = /obj/item/grown/log/tree/small	
+	repair_skill = /datum/skill/craft/carpentry
 
 /obj/structure/mineral_door/wood/Initialize()
 	if(icon_state =="woodhandle")
@@ -698,6 +771,10 @@
 	blade_dulling = DULLING_BASHCHOP
 	break_sound = 'sound/combat/hits/onwood/destroywalldoor.ogg'
 	attacked_sound = list('sound/combat/hits/onwood/woodimpact (1).ogg','sound/combat/hits/onwood/woodimpact (2).ogg')
+	repairable = TRUE
+	repair_cost_first = /obj/item/grown/log/tree/small
+	repair_cost_second = /obj/item/grown/log/tree/small	
+	repair_skill = /datum/skill/craft/carpentry
 
 /obj/structure/mineral_door/wood/window
 	opacity = FALSE
@@ -758,7 +835,9 @@
 	locksound = 'sound/foley/doors/lockmetal.ogg'
 	unlocksound = 'sound/foley/doors/lockmetal.ogg'
 	rattlesound = 'sound/foley/doors/lockrattlemetal.ogg'
-	attacked_sound = list("sound/combat/hits/onmetal/metalimpact (1).ogg", "sound/combat/hits/onmetal/metalimpact (2).ogg")
+	attacked_sound = list("sound/combat/hits/onmetal/metalimpact (1).ogg", "sound/combat/hits/onmetal/metalimpact (2).ogg")		
+	repair_cost_second = /obj/item/ingot/iron
+	repair_skill = /datum/skill/craft/carpentry
 
 /obj/structure/mineral_door/wood/donjon/stone
 	desc = "stone door"
@@ -767,7 +846,10 @@
 	keylock = TRUE
 	max_integrity = 1500
 	over_state = "stoneopen"
-	attacked_sound = list('sound/combat/hits/onwood/woodimpact (1).ogg','sound/combat/hits/onwood/woodimpact (2).ogg')
+	attacked_sound = list('sound/combat/hits/onwood/woodimpact (1).ogg','sound/combat/hits/onwood/woodimpact (2).ogg')	
+	repair_cost_first = /obj/item/natural/stone
+	repair_cost_second = /obj/item/natural/stone
+	repair_skill = /datum/skill/craft/masonry
 
 /obj/structure/mineral_door/wood/donjon/stone/attack_right(mob/user)
 	return
@@ -827,6 +909,10 @@
 	attacked_sound = list("sound/combat/hits/onmetal/metalimpact (1).ogg", "sound/combat/hits/onmetal/metalimpact (2).ogg")
 	ridethrough = TRUE
 	swing_closed = FALSE
+	repairable = TRUE
+	repair_cost_first = /obj/item/ingot/iron
+	repair_cost_second = /obj/item/ingot/iron
+	repair_skill = /datum/skill/craft/blacksmithing
 
 /obj/structure/mineral_door/barsold
 	name = "iron door"

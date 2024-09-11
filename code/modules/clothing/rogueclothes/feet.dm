@@ -107,6 +107,7 @@
 	icon_state = "shalal"
 	item_state = "shalal"
 	sewrepair = TRUE
+	armor = list("blunt" = 25, "slash" = 20, "stab" = 25, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
 
 /obj/item/clothing/shoes/roguetown/boots/armor
 	name = "steel plated boots"
