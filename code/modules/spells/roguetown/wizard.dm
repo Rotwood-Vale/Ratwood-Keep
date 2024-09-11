@@ -553,13 +553,15 @@
 	desc = "A wall of pure arcyne force."
 	name = "Arcyne Wall"
 	icon = 'icons/effects/effects.dmi'
-	icon_state = "m_shield"
+	icon_state = "forcefield"
 	break_sound = 'sound/combat/hits/onstone/stonedeath.ogg'
 	attacked_sound = list('sound/combat/hits/onstone/wallhit.ogg', 'sound/combat/hits/onstone/wallhit2.ogg', 'sound/combat/hits/onstone/wallhit3.ogg')
 	opacity = 0
 	density = TRUE
 	max_integrity = 80
 	CanAtmosPass = ATMOS_PASS_DENSITY
+	climbable = TRUE
+	climb_time = 0
 	var/timeleft = 20 SECONDS
 
 /obj/structure/forcefield_weak/Initialize()
@@ -568,16 +570,18 @@
 		QDEL_IN(src, timeleft) //delete after it runs out
 
 /obj/effect/proc_holder/spell/invoked/forcewall_weak/cast(list/targets,mob/user = usr)
-	new wall_type(get_turf(user),user)
-	if(user.dir == SOUTH || user.dir == NORTH)
-		new wall_type(get_step(user, EAST),user)
-		new wall_type(get_step(user, WEST),user)
-	else
-		new wall_type(get_step(user, NORTH),user)
-		new wall_type(get_step(user, SOUTH),user)
+	var/turf/target_turf = get_step(user, user.dir)
+	var/turf/target_turf_two = get_step(target_turf, turn(user.dir, 90))
+	var/turf/target_turf_three = get_step(target_turf, turn(user.dir, -90))
+	if(!locate(/obj/structure/forcefield_weak/caster) in target_turf)
+		new /obj/structure/forcefield_weak/caster(target_turf, user)
+	if(!locate(/obj/structure/forcefield_weak/caster) in target_turf_two)
+		new /obj/structure/forcefield_weak/caster(target_turf_two, user)
+	if(!locate(/obj/structure/forcefield_weak/caster) in target_turf_three)
+		new /obj/structure/forcefield_weak/caster(target_turf_three, user)
 	return TRUE
 
-/obj/structure/forcefield_weak
+/obj/structure/forcefield_weak/caster
 	var/mob/caster
 
 /obj/structure/forcefield_weak/caster/Initialize(mapload, mob/summoner)
@@ -585,13 +589,16 @@
 	caster = summoner
 
 /obj/structure/forcefield_weak/caster/CanPass(atom/movable/mover, turf/target)	//only the caster can move through this freely
-	if(mover == caster)
-		return TRUE
 	if(ismob(mover))
 		var/mob/M = mover
-		if(M.anti_magic_check(chargecost = 0))
+		if(M.anti_magic_check(chargecost = 0) || structureclimber == M)
 			return TRUE
 	return FALSE
+
+/obj/structure/forcefield_weak/caster/do_climb(atom/movable/A)
+	if(A != caster)
+		return FALSE
+	. = ..()
 
 // no slowdown status effect defined, so this just immobilizes for now
 /obj/effect/proc_holder/spell/invoked/slowdown_spell_aoe
