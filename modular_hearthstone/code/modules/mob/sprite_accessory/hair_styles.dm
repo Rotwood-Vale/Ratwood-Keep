@@ -174,7 +174,7 @@
 	icon = 'modular_hearthstone/icons/mob/sprite_accessory/hair/hair_styles.dmi'
 
 /datum/sprite_accessory/hair/head/cottonalt
-	name = "Cotton Alt"
+	name = "Cotton (Alt)"
 	icon_state = "cottonalt"
 	icon = 'modular_hearthstone/icons/mob/sprite_accessory/hair/hair_styles.dmi'
 
@@ -184,7 +184,7 @@
 	icon = 'modular_hearthstone/icons/mob/sprite_accessory/hair/hair_styles.dmi'
 
 /datum/sprite_accessory/hair/head/long_over_eye_alt
-	name = "Long Over Eye Alt"
+	name = "Long Over Eye (Alt)"
 	icon_state = "long_over_eye_alt"
 	icon = 'modular_hearthstone/icons/mob/sprite_accessory/hair/hair_styles.dmi'
 
@@ -194,7 +194,7 @@
 	icon = 'modular_hearthstone/icons/mob/sprite_accessory/hair/hair_styles.dmi'
 
 /datum/sprite_accessory/hair/head/bushy_alt
-	name = "Bushy Alt"
+	name = "Bushy (Alt)"
 	icon_state = "bushy_alt"
 	icon = 'modular_hearthstone/icons/mob/sprite_accessory/hair/hair_styles.dmi'
 
@@ -227,3 +227,29 @@
 	name = "Row Bun"
 	icon_state = "rowbun"
 	icon = 'modular_hearthstone/icons/mob/sprite_accessory/hair/hair_styles.dmi'
+
+/datum/sprite_accessory/hair/head/fluffyshort
+	name = "Fluffy (Short)"
+	icon_state = "fluffyshort"
+	icon = 'modular_hearthstone/icons/mob/sprite_accessory/hair/hair_styles.dmi'
+
+/datum/sprite_accessory/hair/head/fluffy
+	name = "Fluffy"
+	icon_state = "fluffy"
+	icon = 'modular_hearthstone/icons/mob/sprite_accessory/hair/hair_styles.dmi'
+
+/datum/sprite_accessory/hair/head/fluffylong
+	name = "Fluffy (Long)"
+	icon_state = "fluffylong"
+	icon = 'modular_hearthstone/icons/mob/sprite_accessory/hair/hair_styles.dmi'
+
+/datum/sprite_accessory/hair/head/kobeni_1
+	name = "Kobeni"
+	icon_state = "kobeni_1"
+	icon = 'modular_hearthstone/icons/mob/sprite_accessory/hair/hair_styles.dmi'
+
+/datum/sprite_accessory/hair/head/kobeni_2
+	name = "Kobeni (Alt)"
+	icon_state = "kobeni_2"
+	icon = 'modular_hearthstone/icons/mob/sprite_accessory/hair/hair_styles.dmi'
+	

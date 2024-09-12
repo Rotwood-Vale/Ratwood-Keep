@@ -365,6 +365,11 @@
 		/datum/sprite_accessory/hair/head/rowbraid,
 		/datum/sprite_accessory/hair/head/rowdualtail,
 		/datum/sprite_accessory/hair/head/rowbun,
+		/datum/sprite_accessory/hair/head/fluffyshort,
+		/datum/sprite_accessory/hair/head/fluffy,
+		/datum/sprite_accessory/hair/head/fluffylong,
+		/datum/sprite_accessory/hair/head/kobeni_1,
+		/datum/sprite_accessory/hair/head/kobeni_2,
 		)
 
 /datum/customizer_choice/bodypart_feature/hair/head/humanoid/get_random_accessory(datum/customizer_entry/entry, datum/preferences/prefs)
