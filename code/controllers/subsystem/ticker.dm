@@ -460,6 +460,7 @@ SUBSYSTEM_DEF(ticker)
 	for(var/client/C in GLOB.clients)
 		if(C.mob)
 			C.mob.playsound_local(C.mob, 'sound/misc/roundstart.ogg', 100, FALSE)
+			C.mob.playsound_local(C.mob, 'sound/misc/area.ogg', 1) // this is the dumbest, most slop code "fix" that there is in existence
 
 //	SEND_SOUND(world, sound('sound/misc/roundstart.ogg'))
 	current_state = GAME_STATE_PLAYING
