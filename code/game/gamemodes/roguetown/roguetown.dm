@@ -234,7 +234,8 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "E
 					continue
 				if(bandaids.assigned_role in GLOB.yeoman_positions) // Many of these guys vanishing would suck
 					continue
-
+				if(usr.client.prefs.pref_species.type in restricted_races) //handles Seelie being restricted from bandits
+					continue
 				allantags -= bandaids
 				pre_bandits += bandaids
 
