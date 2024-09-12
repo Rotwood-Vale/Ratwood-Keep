@@ -215,3 +215,16 @@ tools/MapAtmosFixer/MapAtmosFixer/bin/*
 
 # ezdb
 /db/
+
+# Ignore everything in the config folder, but NOT the example or music jukeboxes.
+# Also ignore custom music and title screens (amend as appropriate)
+/config/*
+!/config/example/
+
+/config/jukebox_music/sounds/*
+!/config/jukebox_music/sounds/exclude
+/config/title_music/sounds/*
+!/config/title_music/sounds/exclude
+!/config/title_music/sounds/title1.ogg
+/config/title_screens/images/*
+!/config/title_screens/images/exclude
