@@ -16,7 +16,7 @@
 
 /obj/item/clothing/cloak/tabard
 	name = "tabard"
-	desc = "A hooded vest meant for knights."
+	desc = "A long vest meant for knights."
 	color = null
 	icon_state = "tabard"
 	item_state = "tabard"
@@ -46,12 +46,14 @@
 		return
 	if(world.time > (the_time + 30 SECONDS))
 		return
+	var/symbol_chosen = FALSE
 	if(design == "Symbol")
 		design = null
 		design = input(user, "Select a symbol.","Tabard Design") as null|anything in list("chalice","psy","peace","z","imp","skull","widow","arrow")
 		if(!design)
 			return
 		design = "_[design]"
+		symbol_chosen = TRUE
 	var/colorone = input(user, "Select a primary color.","Tabard Design") as null|anything in CLOTHING_COLOR_NAMES
 	if(!colorone)
 		return
@@ -74,6 +76,7 @@
 			detail_tag = "_box"
 		if("Diamonds")
 			detail_tag = "_dim"
+	boobed_detail = symbol_chosen
 	color = clothing_color2hex(colorone)
 	if(colortwo)
 		detail_color = clothing_color2hex(colortwo)
@@ -102,6 +105,7 @@
 /obj/item/clothing/cloak/tabard/crusader
 	detail_tag = "_psy"
 	detail_color = CLOTHING_RED
+	boobed_detail = FALSE
 
 /obj/item/clothing/cloak/tabard/crusader/Initialize()
 	..()
