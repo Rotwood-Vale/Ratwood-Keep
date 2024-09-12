@@ -25,6 +25,7 @@
 	experimental_onhip = TRUE
 	nodismemsleeves = TRUE
 	flags_inv = HIDEBOOB|HIDECROTCH
+	w_class = WEIGHT_CLASS_NORMAL //death to all pouch abusers
 
 /obj/item/clothing/suit/roguetown/armor/chainmail
 	slot_flags = ITEM_SLOT_ARMOR|ITEM_SLOT_SHIRT
@@ -70,6 +71,7 @@
 	smeltresult = /obj/item/ingot/steel
 	do_sound = TRUE
 	armor_class = ARMOR_CLASS_MEDIUM
+	w_class = WEIGHT_CLASS_BULKY
 
 /obj/item/clothing/suit/roguetown/armor/chainmail/chainkini
 	name = "chainmail bikini"
@@ -81,6 +83,7 @@
 	body_parts_covered = CHEST|GROIN
 	anvilrepair = /datum/skill/craft/armorsmithing
 	armor_class = ARMOR_CLASS_LIGHT
+	w_class = WEIGHT_CLASS_SMALL
 
 /obj/item/clothing/suit/roguetown/armor/plate
 	slot_flags = ITEM_SLOT_ARMOR
@@ -99,6 +102,7 @@
 	smeltresult = /obj/item/ingot/steel
 	equip_delay_self = 40
 	armor_class = ARMOR_CLASS_HEAVY
+	w_class = WEIGHT_CLASS_BULKY
 	clothing_flags = CANT_SLEEP_IN
 
 /obj/item/clothing/suit/roguetown/armor/plate/Initialize()
@@ -169,6 +173,7 @@
 	anvilrepair = /datum/skill/craft/armorsmithing
 	smeltresult = /obj/item/ingot/steel
 	armor_class = ARMOR_CLASS_HEAVY
+	w_class = WEIGHT_CLASS_BULKY
 	clothing_flags = CANT_SLEEP_IN
 
 /obj/item/clothing/suit/roguetown/armor/heartfelt/hand
@@ -187,6 +192,7 @@
 	anvilrepair = /datum/skill/craft/armorsmithing
 	smeltresult = /obj/item/ingot/steel
 	armor_class = ARMOR_CLASS_HEAVY
+	w_class = WEIGHT_CLASS_BULKY
 	clothing_flags = CANT_SLEEP_IN
 
 /obj/item/clothing/suit/roguetown/armor/brigandine
@@ -205,6 +211,7 @@
 	smeltresult = /obj/item/ingot/steel
 	equip_delay_self = 40
 	armor_class = ARMOR_CLASS_HEAVY
+	w_class = WEIGHT_CLASS_BULKY
 	clothing_flags = CANT_SLEEP_IN
 
 /obj/item/clothing/suit/roguetown/armor/brigandine/Initialize()

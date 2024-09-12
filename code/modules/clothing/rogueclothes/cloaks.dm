@@ -8,6 +8,7 @@
 	equip_delay_self = 10
 	bloody_icon_state = "bodyblood"
 	sewrepair = TRUE //Vrell - AFAIK, all cloaks are cloth ATM. Technically semi-less future-proof, but it removes a line of code from every subtype, which is worth it IMO.
+	w_class = WEIGHT_CLASS_NORMAL
 
 
 //////////////////////////
@@ -548,7 +549,7 @@
 	AddComponent(/datum/component/storage/concrete)
 	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
 	if(STR)
-		STR.max_combined_w_class = 3
+		STR.max_combined_w_class = 4
 		STR.max_w_class = WEIGHT_CLASS_BULKY
 		STR.max_items = 1
 
@@ -571,6 +572,7 @@
 	boobed = TRUE
 	allowed_race = CLOTHED_RACES_TYPES
 	flags_inv = HIDECROTCH|HIDEBOOB
+	w_class = WEIGHT_CLASS_SMALL
 
 /obj/item/clothing/cloak/apron/blacksmith
 	name = "leather apron"
@@ -869,6 +871,7 @@
 	allowed_sex = list(MALE, FEMALE)
 	allowed_race = NON_DWARVEN_RACE_TYPES
 	flags_inv = null
+	w_class = WEIGHT_CLASS_SMALL
 
 /obj/item/clothing/cloak/half/brown
 	color = CLOTHING_BROWN
@@ -911,12 +914,14 @@
 	icon_state = "bkhelm"
 	icon = 'icons/roguetown/clothing/special/blkknight.dmi'
 	mob_overlay_icon = 'icons/roguetown/clothing/special/onmob/blkknight.dmi'
+	w_class = WEIGHT_CLASS_NORMAL
 
 /obj/item/clothing/cloak/tabard/blkknight
 	name = "blood sash"
 	icon_state = "bksash"
 	icon = 'icons/roguetown/clothing/special/blkknight.dmi'
 	mob_overlay_icon = 'icons/roguetown/clothing/special/onmob/blkknight.dmi'
+	w_class = WEIGHT_CLASS_NORMAL
 
 /obj/item/clothing/under/roguetown/platelegs/blk
 	name = "blacksteel legs"
@@ -924,6 +929,7 @@
 	icon = 'icons/roguetown/clothing/special/blkknight.dmi'
 	mob_overlay_icon = 'icons/roguetown/clothing/special/onmob/blkknight.dmi'
 	sleeved = 'icons/roguetown/clothing/special/onmob/blkknight.dmi'
+	w_class = WEIGHT_CLASS_BULKY
 
 /obj/item/clothing/gloves/roguetown/plate/blk
 	name = "blacksteel gaunties"
@@ -931,6 +937,7 @@
 	icon = 'icons/roguetown/clothing/special/blkknight.dmi'
 	mob_overlay_icon = 'icons/roguetown/clothing/special/onmob/blkknight.dmi'
 	sleeved = 'icons/roguetown/clothing/special/onmob/blkknight.dmi'
+	w_class = WEIGHT_CLASS_SMALL
 
 /obj/item/clothing/neck/roguetown/blkknight
 	name = "dragonscale necklace"
@@ -947,6 +954,7 @@
 	sellprice = 666
 	static_price = TRUE
 	var/active_item = FALSE
+	w_class = WEIGHT_CLASS_SMALL
 
 /obj/item/clothing/neck/roguetown/blkknight/equipped(mob/living/user)
 	. = ..()
@@ -992,6 +1000,7 @@
 	icon = 'icons/roguetown/clothing/special/blkknight.dmi'
 	mob_overlay_icon = 'icons/roguetown/clothing/special/onmob/blkknight.dmi'
 	sleeved = 'icons/roguetown/clothing/special/onmob/blkknight.dmi'
+	w_class = WEIGHT_CLASS_BULKY
 
 /obj/item/clothing/shoes/roguetown/boots/armor/blkknight
 	name = "blacksteel boots"
@@ -999,6 +1008,7 @@
 	icon = 'icons/roguetown/clothing/special/blkknight.dmi'
 	mob_overlay_icon = 'icons/roguetown/clothing/special/onmob/blkknight.dmi'
 	sleeved = 'icons/roguetown/clothing/special/onmob/blkknight.dmi'
+	w_class = WEIGHT_CLASS_SMALL
 
 //Short hoods for guards
 
