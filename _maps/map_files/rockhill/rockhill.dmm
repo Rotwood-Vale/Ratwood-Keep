@@ -12185,7 +12185,13 @@
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue/outdoors/rtfield)
 "nzQ" = (
-/obj/machinery/light/rogue/forge,
+/obj/structure/closet/crate/chest{
+	lockid = "keep_armory"
+	},
+/obj/item/reagent_containers/food/snacks/rogue/raisinbreadslice,
+/obj/item/reagent_containers/food/snacks/rogue/raisinbreadslice,
+/obj/item/reagent_containers/food/snacks/rogue/raisinbreadslice,
+/obj/item/reagent_containers/food/snacks/rogue/raisinbreadslice,
 /turf/open/floor/rogue/churchbrick,
 /area/rogue/indoors/town/manor)
 "nzW" = (
@@ -14852,6 +14858,7 @@
 /area/rogue/outdoors/town)
 "qlt" = (
 /obj/structure/rack/rogue/shelf/big,
+/obj/item/reagent_containers/glass/bottle/rogue/healthpot,
 /obj/item/reagent_containers/glass/bottle/rogue/healthpot,
 /obj/item/reagent_containers/glass/bottle/rogue/healthpot,
 /turf/open/floor/rogue/churchbrick,
