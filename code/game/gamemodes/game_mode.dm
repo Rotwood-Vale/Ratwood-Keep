@@ -416,7 +416,7 @@
 	if(restricted_jobs)
 		for(var/datum/mind/player in candidates)
 			for(var/job in restricted_jobs)					// Remove people who want to be antagonist but have a job already that precludes it
-				if(player.assigned_role == job && isseelie(player))
+				if(player.assigned_role == job)
 					candidates -= player
 				if(pre_do)
 					if(player.current.client.prefs.job_preferences[job] == JP_HIGH)

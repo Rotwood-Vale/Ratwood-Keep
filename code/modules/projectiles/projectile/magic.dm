@@ -309,6 +309,8 @@
 	nodamage = TRUE
 
 /obj/projectile/magic/animate/on_hit(atom/target, blocked = FALSE)
+	var/mob/living/carbon/human/caster = firer
+	caster.rogstam_add(-120)	//Remove even more stam for this cast, couldnt be handled by releasedrain due to fatigue crit
 	target.animate_atom_living(firer)
 	..()
 
@@ -743,6 +745,7 @@
 /obj/projectile/magic/water/on_hit(target)
 	. = ..()
 	var/obj/item/reagent_containers/K = new /obj/item/reagent_containers/glass/bucket/wooden/SW(get_turf(target))
+	playsound(target, 'sound/foley/waterenter.ogg', 100, FALSE)
 	if(ismob(target))
 		var/mob/living/mob_target = target
 		K.reagents.reaction(mob_target, TOUCH)

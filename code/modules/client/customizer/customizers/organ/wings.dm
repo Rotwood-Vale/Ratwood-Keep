@@ -78,4 +78,5 @@
 	organ_type = /obj/item/organ/wings/seelie
 	sprite_accessories = list(
 		/datum/sprite_accessory/wings/seelie,
+		/datum/sprite_accessory/wings/bee,
 	)

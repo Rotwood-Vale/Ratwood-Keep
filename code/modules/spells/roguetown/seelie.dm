@@ -173,6 +173,9 @@ obj/effect/proc_holder/spell/targeted/static_room/cast(list/targets, mob/user = 
 		bushes.looty.Insert(1, pickweight(list(/obj/item/reagent_containers/food/snacks/grown/berries/rogue=5,
 						/obj/item/reagent_containers/food/snacks/grown/berries/rogue/poison=3,
 						/obj/item/reagent_containers/food/snacks/grown/rogue/pipeweed=1)), /obj/item/natural/thorn, /obj/item/natural/fibers)
+		to_chat(user, span_notice("The bush has been replenished"))
+	else
+		to_chat(user, span_notice("I can only replenish emptied bushes..."))
 	return TRUE
 
 /obj/effect/proc_holder/spell/invoked/projectile/animate_object
@@ -182,7 +185,7 @@ obj/effect/proc_holder/spell/targeted/static_room/cast(list/targets, mob/user = 
 	sound = 'sound/magic/lightning.ogg'
 	range = 8
 	projectile_type = /obj/projectile/magic/animate
-	releasedrain = 220
+	releasedrain = 95
 	chargedrain = 1
 	chargetime = 15
 	charge_max = 8 MINUTES
@@ -198,14 +201,14 @@ obj/effect/proc_holder/spell/targeted/static_room/cast(list/targets, mob/user = 
 	range = 5
 	overlay_state = "tamebeast"
 	releasedrain = 30
-	charge_max = 5 MINUTES
+	charge_max = 3 MINUTES
 	max_targets = 0
 	cast_without_targets = TRUE
 	sound = 'sound/magic/churn.ogg'
 	invocation = "Feel my presence, and be calmed."
 	invocation_type = "whisper" //can be none, whisper, emote and shout
 
-/obj/effect/proc_holder/spell/targeted/roustame/cast(list/targets,mob/user = usr)
+/obj/effect/proc_holder/spell/targeted/roustame/cast(list/targets, mob/user = usr)
 	. = ..()
 	visible_message(span_green("[usr] soothes the beast with Seelie dust."))
 	var/tamed = FALSE
@@ -222,10 +225,10 @@ obj/effect/proc_holder/spell/targeted/static_room/cast(list/targets, mob/user = 
 	return tamed
 
 /obj/effect/proc_holder/spell/targeted/seelie_kiss
-	name = "Kiss"
-	overlay_state = "bloodsteal"
+	name = "Regenerative Kiss"
+	overlay_state = "heal"
 	releasedrain = 0
-	charge_max = 10 MINUTES
+	charge_max = 4 MINUTES
 	range = 1
 	invocation_type = "none" //can be none, whisper, emote and shout
 	//random_target = TRUE
@@ -245,14 +248,13 @@ obj/effect/proc_holder/spell/targeted/static_room/cast(list/targets, mob/user = 
 
 /obj/effect/proc_holder/spell/invoked/projectile/splash
 	name = "Water splash"
-	overlay_state = "bigpsy"
-	//user.emote("laugh")
+	overlay_state = "bloodlightning"
 	range = 8
 	projectile_type = /obj/projectile/magic/water
 	releasedrain = 50
 	chargedrain = 1
 	chargetime = 5
-	charge_max = 5 MINUTES
+	charge_max = 3 MINUTES
 	warnie = "spellwarning"
 	no_early_release = TRUE
 	movement_interrupt = FALSE

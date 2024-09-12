@@ -7,8 +7,10 @@
 
 	switch(src.light_power)
 		if(!0)
+			to_chat(src, span_notice("I stop glowing"))
 			src.set_light(0, 0, null)
 		if(0)
+			to_chat(src, span_notice("I begin to glow once more"))
 			src.set_light(3, 1, "#d4fcac")
 
 /mob/living/carbon/proc/switchaura()
@@ -19,6 +21,8 @@
 	var/mob/living/carbon/User = src
 	switch(User.aura)
 		if(TRUE)
+			to_chat(src, span_warning("My aura is now one of misery"))
 			User.aura = FALSE
 		if(FALSE)
+			to_chat(src, span_warning("My aura is now one of blessing"))
 			User.aura = TRUE

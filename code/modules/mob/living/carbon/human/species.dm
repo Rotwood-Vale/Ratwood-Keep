@@ -2071,6 +2071,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 						C.adjustEarDamage(0, 30)
 						C.confused += 25
 						C.Jitter(50)
+						C.apply_status_effect(/datum/status_effect/debuff/seelie_wing_curse)
 						C.visible_message( null , span_notice("[Target] screams in agony, inflicting a curse for this vild deed!"))
 		else
 			Ripper.visible_message( null , span_notice("I must grab [Target] first."))
