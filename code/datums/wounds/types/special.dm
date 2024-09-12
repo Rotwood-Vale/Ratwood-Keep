@@ -94,6 +94,11 @@
 /datum/wound/facial/eyes/right/permanent
 	whp = null
 	woundpain = 0
+	sound_effect = null
+
+/datum/wound/facial/eyes/right/permanent/on_mob_gain(mob/living/affected)
+	if(mob_overlay)
+		affected.update_damage_overlays()
 
 /datum/wound/facial/eyes/left
 	name = "left eye evisceration"
@@ -127,6 +132,11 @@
 /datum/wound/facial/eyes/left/permanent
 	whp = null
 	woundpain = 0
+	sound_effect = null
+
+/datum/wound/facial/eyes/left/permanent/on_mob_gain(mob/living/affected)
+	if(mob_overlay)
+		affected.update_damage_overlays()
 
 /datum/wound/facial/tongue
 	name = "glossectomy"
