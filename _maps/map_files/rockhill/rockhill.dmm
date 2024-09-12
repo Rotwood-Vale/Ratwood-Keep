@@ -4067,6 +4067,10 @@
 /obj/item/organ/eyes,
 /obj/item/organ/tongue,
 /obj/item/organ/tongue,
+/obj/item/bodypart/r_leg/rprosthetic,
+/obj/item/bodypart/l_leg/rprosthetic,
+/obj/item/bodypart/l_arm/rprosthetic,
+/obj/item/bodypart/r_arm/rprosthetic,
 /turf/open/floor/rogue/churchbrick,
 /area/rogue/indoors/town/manor)
 "erA" = (
