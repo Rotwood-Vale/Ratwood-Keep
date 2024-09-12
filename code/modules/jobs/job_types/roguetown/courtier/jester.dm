@@ -53,8 +53,6 @@
 			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/projectile/splash)
 			H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/roustame)
 			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/projectile/animate_object)
-			H.verbs |= (/mob/living/carbon/human/proc/Turnlight)
-			H.verbs |= (/mob/living/carbon/proc/switchaura)
 		H.cmode_music = 'sound/music/combat_jester.ogg'
 	H.verbs |= /mob/living/carbon/human/proc/ventriloquate
 	H.verbs |= /mob/living/carbon/human/proc/ear_trick
