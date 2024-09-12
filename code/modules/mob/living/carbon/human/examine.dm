@@ -56,27 +56,27 @@
 	else
 		on_examine_face(user)
 		var/used_name = name
+		var/used_title = get_role_title()
+		var/display_as_wanderer = FALSE
+		var/is_returning = FALSE
 		if(observer_privilege)
-			used_name = name
-		if(job == "Goblin King")
-			var/used_title =  "King or Queen of the Tribe"
-		// Use the possibly modified title in the output
-			. = list("<span class='info'>ø ------------ ø\nThis is <EM>[used_name]</EM>, the [used_title].")
-		else if(job == "Bandit")
-		// Easiest way to fix this goddamned bandit thing.
-			var/used_title = "bandit"
-			. = list("<span class='info'>ø ------------ ø\nThis is <EM>[used_name]</EM>, the [used_title].")
-		else
+			used_name = real_name
+		if(migrant_type)
+			var/datum/migrant_role/migrant = MIGRANT_ROLE(migrant_type)
+			if(migrant.show_wanderer_examine)
+				display_as_wanderer = TRUE
+		else if(job)
 			var/datum/job/J = SSjob.GetJob(job)
-			var/used_title = J.title
-			if(J.f_title && (t_He == "She"))
-				used_title = J.f_title
 			if(J.wanderer_examine)
-				. = list("<span class='info'>ø ------------ ø\nThis is <EM>[used_name]</EM>, the wandering [race_name].")
-			else
-				if(J.advjob_examine)
-					used_title = advjob
-				. = list("<span class='info'>ø ------------ ø\nThis is <EM>[used_name]</EM>, the [islatejoin ? "returning " : ""][race_name] [used_title].")
+				display_as_wanderer = TRUE
+			if(islatejoin)
+				is_returning = TRUE
+		if(display_as_wanderer)
+			. = list("<span class='info'>ø ------------ ø\nThis is <EM>[used_name]</EM>, the wandering [race_name].")
+		else if(used_title)
+			. = list("<span class='info'>ø ------------ ø\nThis is <EM>[used_name]</EM>, the [is_returning ? "returning " : ""][race_name] [used_title].")
+		else
+			. = list("<span class='info'>ø ------------ ø\nThis is the <EM>[used_name]</EM>, the [race_name].")
 		if(dna.species.use_skintones)
 			var/skin_tone_wording = dna.species.skin_tone_wording ? lowertext(dna.species.skin_tone_wording) : "skin tone"
 			var/list/skin_tones = dna.species.get_skin_list()

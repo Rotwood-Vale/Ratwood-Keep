@@ -182,6 +182,7 @@ SUBSYSTEM_DEF(migrants)
 	SSjob.EquipRank(character, rank, TRUE)
 
 	var/datum/migrant_role/role = MIGRANT_ROLE(assignment.role_type)
+	character.migrant_type = assignment.role_type
 
 
 	/// copy pasta from AttemptLateSpawn(rank) further on TODO put it in a proc and use in both places
@@ -277,7 +278,7 @@ SUBSYSTEM_DEF(migrants)
 	if(wave_type)
 		log_game("Migrants: Rolled wave: [wave_type]")
 		set_current_wave(wave_type, wave_wait_time)
-	
+
 	time_until_next_wave = time_between_fail_wave
 
 /datum/controller/subsystem/migrants/proc/roll_wave()

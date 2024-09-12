@@ -968,3 +968,19 @@
 ///Can the mob see reagents inside of containers?
 /mob/proc/can_see_reagents()
 	return stat == DEAD || has_unlimited_silicon_privilege //Dead guys and silicons can always see reagents
+
+/mob/proc/get_role_title()
+	var/used_title
+	if(migrant_type)
+		var/datum/migrant_role/migrant = MIGRANT_ROLE(migrant_type)
+		used_title = migrant.name
+		if(migrant.advjob_examine && advjob)
+			used_title = advjob
+	else if(job)
+		var/datum/job/J = SSjob.GetJob(job)
+		used_title = J.title
+		if(J.f_title && (gender == FEMALE))
+			used_title = J.f_title
+		if(J.advjob_examine)
+			used_title = advjob
+	return used_title

@@ -15,6 +15,9 @@
 	sellprice = 0
 	rotprocess = null
 
+/obj/item/reagent_containers/food/snacks/smallrat/Destroy()
+	LAZYREMOVE(SSmobs.cubemonkeys, src)
+	..()
 
 /obj/item/reagent_containers/food/snacks/smallrat/onbite(mob/living/carbon/human/user)
 	if(loc == user)
@@ -53,6 +56,7 @@
 	if(!dead)
 		if(burning >= burntime)
 			dead = TRUE
+			LAZYREMOVE(SSmobs.cubemonkeys, src)
 			playsound(src, 'sound/vo/mobs/rat/rat_death.ogg', 100, FALSE, -1)
 			icon_state = "srat1"
 			rotprocess = 15 MINUTES
@@ -122,13 +126,15 @@
 					if(T)
 						new /mob/living/simple_animal/hostile/retaliate/rogue/bigrat(T)
 						dead = TRUE
+						LAZYREMOVE(SSmobs.cubemonkeys, src)
 						qdel(src)
-						break
+				break
 
 /obj/item/reagent_containers/food/snacks/smallrat/obj_destruction(damage_flag)
 	//..()
 	if(!dead)
 		dead = TRUE
+		LAZYREMOVE(SSmobs.cubemonkeys, src)
 		rotprocess = 15 MINUTES
 		playsound(src, 'sound/vo/mobs/rat/rat_death.ogg', 100, FALSE, -1)
 		icon_state = "[icon_state]1"
