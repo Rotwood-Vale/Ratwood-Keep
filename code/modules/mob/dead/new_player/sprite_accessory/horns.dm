@@ -135,6 +135,10 @@
 	name = "Double Horns"
 	icon_state = "doublehorns"
 
+/datum/sprite_accessory/horns/tiefhorns
+	name = "Tiefling Classic"
+	icon_state = "tiefhorns"
+
 /datum/sprite_accessory/horns/large
 	abstract_type = /datum/sprite_accessory/horns/large
 	icon = 'icons/mob/sprite_accessory/horns/horns_large.dmi'

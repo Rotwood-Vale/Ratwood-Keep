@@ -48,6 +48,7 @@
 		/datum/sprite_accessory/horns/faceguard,
 		/datum/sprite_accessory/horns/sheephorns,
 		/datum/sprite_accessory/horns/doublehorns,
+		/datum/sprite_accessory/horns/tiefhorns,
 		)
 
 /datum/customizer/organ/horns/demihuman
