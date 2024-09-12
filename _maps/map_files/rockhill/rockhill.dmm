@@ -2619,8 +2619,22 @@
 /area/rogue/under/town/basement)
 "cTG" = (
 /obj/structure/closet/crate/roguecloset,
-/obj/item/clothing/suit/roguetown/shirt/dress/silkdress,
-/obj/item/clothing/suit/roguetown/armor/silkcoat,
+/obj/item/paper,
+/obj/item/paper,
+/obj/item/paper,
+/obj/item/paper,
+/obj/item/paper,
+/obj/item/paper,
+/obj/item/paper,
+/obj/item/paper,
+/obj/item/paper,
+/obj/item/paper,
+/obj/item/paper,
+/obj/item/paper,
+/obj/item/paper,
+/obj/item/paper,
+/obj/item/paper,
+/obj/item/natural/feather,
 /turf/open/floor/rogue/churchbrick,
 /area/rogue/indoors/town/manor)
 "cTQ" = (
@@ -6261,16 +6275,16 @@
 /turf/open/water/cleanshallow,
 /area/rogue/under/town/sewer)
 "gMQ" = (
-/obj/structure/closet/crate/roguecloset,
-/obj/item/natural/feather,
-/obj/item/paper,
-/obj/item/paper,
-/obj/item/paper,
-/obj/item/paper,
-/obj/item/paper,
-/obj/item/paper,
-/obj/item/paper,
-/obj/item/paper,
+/obj/structure/closet/crate/chest{
+	lockid = "keep_armory"
+	},
+/obj/item/organ/tongue,
+/obj/item/organ/heart,
+/obj/item/organ/liver,
+/obj/item/organ/eyes,
+/obj/item/organ/lungs,
+/obj/item/organ/stomach,
+/obj/item/organ/appendix,
 /turf/open/floor/rogue/churchbrick,
 /area/rogue/indoors/town/manor)
 "gNb" = (
@@ -12156,9 +12170,9 @@
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue/outdoors/rtfield)
 "nzQ" = (
-/obj/structure/fluff/railing/border,
-/turf/open/floor/rogue/dirt/road,
-/area/rogue/outdoors/town/roofs)
+/obj/machinery/light/rogue/forge,
+/turf/open/floor/rogue/churchbrick,
+/area/rogue/indoors/town/manor)
 "nzW" = (
 /obj/structure/bars,
 /turf/open/water/cleanshallow,
@@ -12695,11 +12709,11 @@
 /turf/open/floor/rogue/cobble,
 /area/rogue/indoors/town/dwarfin)
 "obB" = (
-/obj/structure/fluff/railing/border{
-	dir = 1
+/obj/machinery/light/rogue/torchholder{
+	dir = 4
 	},
-/turf/open/floor/rogue/dirt/road,
-/area/rogue/outdoors/town/roofs)
+/turf/open/floor/rogue/churchbrick,
+/area/rogue/indoors/town/manor)
 "obT" = (
 /turf/closed/wall/mineral/rogue/stone/moss,
 /area/rogue/outdoors/town/roofs)
@@ -399047,7 +399061,7 @@ uOL
 sma
 kUR
 kUR
-iUd
+nzQ
 rxG
 wtF
 vNi
@@ -399445,7 +399459,7 @@ vIa
 wtF
 sHm
 cTG
-aFk
+obB
 aFk
 kUR
 kUR
@@ -401457,7 +401471,7 @@ sHm
 xYr
 aiV
 kUR
-aFk
+iUd
 cNr
 ajH
 sHm
@@ -402257,13 +402271,13 @@ aUc
 vIa
 vIa
 rTC
-fZJ
 hQJ
-nzQ
+pWB
+pWB
 pDT
-obB
+pWB
+pWB
 nIk
-fZJ
 fZJ
 fZJ
 fZJ
@@ -402659,13 +402673,13 @@ aUc
 vIa
 vIa
 rTC
-fZJ
 hQJ
-nzQ
+pWB
+pWB
 wLr
-obB
+pWB
+pWB
 lCO
-fZJ
 fZJ
 fZJ
 fZJ
@@ -403061,13 +403075,13 @@ aUc
 vIa
 vIa
 rTC
-fZJ
 jKW
 hFc
 hFc
 hFc
+hFc
+hFc
 gHt
-fZJ
 fZJ
 fZJ
 fZJ
