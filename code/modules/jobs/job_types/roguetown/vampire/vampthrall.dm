@@ -10,7 +10,7 @@
 	show_in_credits = FALSE		//Stops Scom from announcing their arrival.
 	spells = list(/obj/effect/proc_holder/spell/self/convertrole/vampire,
 	/obj/effect/proc_holder/spell/targeted/shapeshift/bat)
-	tutorial = "Outcasted from society and under rule of the Vampire Lord, either as a worshipping fanatic or a victim of circumstance, you are caught in the middle of two Lords. You are a lowly peasant who will choose their path in this world. Do you serve your Lord, or will you try to win over your abusors?"
+	tutorial = "You've existed long before the gods existed, you know the truth and have no reason to worship them. You are faithless. After attaining power, Zizo has cursed your people, bringing bad omens where ever you go. For this reason, the people of Rockhill have shunned you and discriminated against you, there is no possible way an antediluvian will ever hold a position of power in Rockhill, let alone be welcomed. Zizo has only shown favor to one antediluvian, rewarding them with the title of Vampire Lord, and gifting them powers far beyond that of a regular nitecreacher. Your pale skin, fangs, and eerie eyes are EASILY identifable features, so it is best to stay covered at all times in public areas."
 	whitelist_req = FALSE
 	outfit = /datum/outfit/job/roguetown/vampthrall
 	/* advclass_cat_rolls = list(CTAG_ADVENTURER = 20)
@@ -78,9 +78,9 @@
 						to_chat(H, span_warning("That was too close. I must avoid the sun."))
 					else
 						H.fire_act(1) (APPLE EDIT:I think something along the lines of this is whats used for burning in daylight)*/
-	/*if(H.mind)
+	if(H.mind)
 		var/datum/antagonist/vampire/new_antag = new /datum/antagonist/vampirelord/lesser()
-		H.mind.add_antag_datum(new_antag) */ //Functional Vampirism
+		H.mind.add_antag_datum(new_antag)
 
 	
 /obj/effect/proc_holder/spell/self/convertrole/vampire

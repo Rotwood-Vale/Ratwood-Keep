@@ -74,7 +74,6 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 		QDEL_NULL(eyes)
 	eyes = new /obj/item/organ/eyes/night_vision/zombie
 	eyes.Insert(owner.current)
-	owner.current.AddSpell(new /obj/effect/proc_holder/spell/targeted/transfix)
 	owner.current.verbs |= /mob/living/carbon/human/proc/vamp_regenerate
 	owner.current.verbs |= /mob/living/carbon/human/proc/vampire_telepathy
 	vamp_look()
@@ -305,7 +304,7 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 	..()
 
 /datum/antagonist/vampirelord/lesser/greet()
-	to_chat(owner.current, span_userdanger("We are awakened from our slumber, Spawn of the feared Vampire Lord."))
+	to_chat(owner.current, span_userdanger("My hunger awakens."))
 	owner.announce_objectives()
 
 /datum/antagonist/vampirelord/proc/finalize_vampire()
@@ -314,8 +313,6 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 	
 
 /datum/antagonist/vampirelord/proc/finalize_vampire_lesser()
-	if(!sired)
-		owner.current.forceMove(pick(GLOB.vspawn_starts))
 	owner.current.playsound_local(get_turf(owner.current), 'sound/music/vampintro.ogg', 80, FALSE, pressure_affected = FALSE)
 	
 

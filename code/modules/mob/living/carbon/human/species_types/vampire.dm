@@ -135,9 +135,9 @@
 	name = "Bat Form"
 	desc = ""
 	invocation = ""
-	charge_max = 50
-	cooldown_min = 50
-	die_with_shapeshifted_form =  FALSE
+	charge_max = 1000
+	cooldown_min = 1000
+	die_with_shapeshifted_form =  TRUE
 	shapeshift_type = /mob/living/simple_animal/hostile/retaliate/bat
 
 /obj/effect/proc_holder/spell/targeted/shapeshift/gaseousform

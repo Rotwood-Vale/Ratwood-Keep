@@ -47,7 +47,7 @@
 	if(GLOB.say_disabled)	//This is here to try to identify lag problems
 		to_chat(usr, span_danger("Speech is currently admin-disabled."))
 		return
-	message = trim(copytext_char(message, 1, MAX_MESSAGE_LEN))
+	message = trim(copytext_char(sanitize(message), 1, MAX_MESSAGE_LEN))
 	usr.emote("me",1,message,TRUE, custom_me = TRUE)
 
 ///The me emote verb
@@ -65,7 +65,7 @@
 	if(GLOB.say_disabled)	//This is here to try to identify lag problems
 		to_chat(usr, span_danger("Speech is currently admin-disabled."))
 		return
-	message = trim(copytext_char(sanitize(message), 1, MAX_MESSAGE_LEN))
+	message = trim(copytext_char(message, 1, MAX_MESSAGE_LEN))
 	usr.emote("me",1,message,TRUE, custom_me = TRUE)
 
 ///Speak as a dead person (ghost etc)
