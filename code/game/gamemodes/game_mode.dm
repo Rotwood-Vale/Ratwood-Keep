@@ -378,7 +378,7 @@
 /datum/game_mode/proc/get_players_for_role(role, pre_do, check_pq = TRUE)
 	var/list/players = list()
 	var/list/candidates = list()
-	var/pass = TRUE
+//	var/pass = TRUE
 //	var/list/drafted = list()
 //	var/datum/mind/applicant = null
 
@@ -425,9 +425,9 @@
 	if(restricted_races)
 		for(var/datum/mind/player in candidates)
 			for(var/race in restricted_races)
-				if(pass && isseelie(player)) //allows 1 Seelie to roll bandit
-					pass = FALSE
-					continue
+				//if(pass && isseelie(player)) //allows 1 Seelie to roll bandit
+				//	pass = FALSE
+				//	continue
 				if(is_species(player, race))
 					candidates -= player // Remove people who have a restricted race for the antag type
 /*
