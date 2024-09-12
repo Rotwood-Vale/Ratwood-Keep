@@ -956,7 +956,8 @@
 		/obj/item/clothing/neck/roguetown/horus,
 		/obj/item/rogue/painting,
 		/obj/item/clothing/head/roguetown/crown/serpcrown,
-		/obj/item/clothing/head/roguetown/vampire
+		/obj/item/clothing/head/roguetown/vampire,
+		/obj/item/scomstone
 	)
 
 /obj/structure/fluff/statue/evil/attackby(obj/item/W, mob/user, params)
@@ -989,6 +990,7 @@
 							I += /obj/item/reagent_containers/powder/moondust
 							I += /obj/item/reagent_containers/powder/moondust
 							I += /obj/item/reagent_containers/powder/moondust
+							I += /obj/item/slimepotion/lovepotion
 						if(3)
 							I += /obj/item/clothing/suit/roguetown/armor/plate/scale
 						if(4)

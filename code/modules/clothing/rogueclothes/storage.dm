@@ -59,6 +59,11 @@
 	icon_state = "shalal"
 	sellprice = 5
 
+/obj/item/storage/belt/rogue/leather/shalalz
+	name = "zybantine shalal belt"
+	icon_state = "shalal_z"
+	sellprice = 5
+
 /obj/item/storage/belt/rogue/leather/black
 	name = "black belt"
 	icon_state = "blackbelt"
@@ -243,3 +248,29 @@
 		STR.max_w_class = WEIGHT_CLASS_NORMAL
 		STR.max_items = 14
 		STR.not_while_equipped = TRUE
+
+/obj/item/storage/belt/rogue/pickles
+	name = "jar of pickles"
+	desc = "Briney goodness!"
+	icon = 'icons/roguetown/clothing/storage.dmi'
+	icon_state = "pickles"
+	slot_flags = null
+	w_class = WEIGHT_CLASS_NORMAL
+	max_integrity = 100
+	content_overlays = FALSE
+	heldz_items = 4
+
+/obj/item/storage/belt/rogue/pickles/ComponentInitialize()
+	. = ..()
+	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
+	if(STR)
+		STR.max_combined_w_class = 8
+		STR.max_w_class = WEIGHT_CLASS_SMALL
+		STR.max_items = 4
+		STR.not_while_equipped = FALSE
+
+/obj/item/storage/belt/rogue/pickles/PopulateContents()
+	new /obj/item/reagent_containers/food/snacks/grown/pickle(src)
+	new /obj/item/reagent_containers/food/snacks/grown/pickle(src)
+	new /obj/item/reagent_containers/food/snacks/grown/pickle(src)
+	new /obj/item/reagent_containers/food/snacks/grown/pickle(src)

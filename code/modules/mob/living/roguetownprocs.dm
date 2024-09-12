@@ -19,26 +19,23 @@
 		chance2hit += 10
 
 	if(user.mind)
-		chance2hit += (user.mind.get_skill_level(associated_skill) * 8)
+		chance2hit += (user.mind.get_skill_level(associated_skill) * 7)
 
 	if(used_intent)
 		if(used_intent.blade_class == BCLASS_STAB)
-			chance2hit += 10
+			chance2hit += user.STAPER
 		if(used_intent.blade_class == BCLASS_CUT)
-			chance2hit += 6
+			chance2hit += round(user.STAPER/2)
 
 	if(I)
 		if(I.wlength == WLENGTH_SHORT)
 			chance2hit += 10
 
-	if(user.STAPER > 10)
-		chance2hit += ((user.STAPER-10)*3)
+		chance2hit += ((user.STAPER-10)*5)
 
-	if(user.STAPER < 10)
-		chance2hit -= ((10-user.STAPER)*3)
 
 	if(istype(user.rmb_intent, /datum/rmb_intent/aimed))
-		chance2hit += 20
+		chance2hit += (user.STAPER)*2
 	if(istype(user.rmb_intent, /datum/rmb_intent/swift))
 		chance2hit -= 20
 

@@ -7,9 +7,12 @@
 	spawn_positions = 1
 	allowed_patrons = ALL_DIVINE_PATRONS
 	allowed_sexes = list(MALE, FEMALE)
-	allowed_races = RACES_TOLERATED_UP
+	allowed_races = RACES_VERY_SHUNNED_UP
 	allowed_ages = list(AGE_ADULT, AGE_MIDDLEAGED, AGE_OLD)
-	tutorial = "You are the most experienced idiot to volunteer to the Bog Guard... What a mistake that was. You report to the Bailiff, and your job is to keep the bogmen in line and to ensure the routes to the town are safe. May Gods have mercy on you..."
+	tutorial = "You are the most experienced idiot to volunteer to the Bog Guard... \
+				What a mistake that was. You report to the Royal Marshal and their Councillors, \
+				and your job is to keep the bogmen in line and to ensure the routes to the town are safe. \
+				May Gods have mercy on you..."
 	display_order = JDO_BOGMASTER
 	whitelist_req = TRUE
 
@@ -50,7 +53,7 @@
 	belt = /obj/item/storage/belt/rogue/leather
 	backr = /obj/item/storage/backpack/rogue/satchel
 	backl = /obj/item/rogueweapon/shield/tower
-	backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger/steel/special = 1)
+	backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger/steel/special = 1, , /obj/item/signal_horn = 1)
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/combat/axes, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/swords, 4, TRUE)

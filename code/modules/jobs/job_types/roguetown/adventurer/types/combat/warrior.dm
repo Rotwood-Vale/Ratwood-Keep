@@ -66,7 +66,7 @@
 			if(prob(50))
 				beltr = /obj/item/rogueweapon/sword/iron
 			else
-				beltr = /obj/item/rogueweapon/sword/sabre
+				beltr = /obj/item/rogueweapon/sword/iron/messer
 		if("Monster Hunter")
 			H.set_blindness(0)
 			to_chat(H, span_warning("Monsters Hunters are typically contracted champions of the common folk dedicated to the slaying of both lesser vermin and greater beasts of the wilds."))
@@ -96,19 +96,19 @@
 				H.mind.adjust_skillrank(/datum/skill/combat/swords, 3, TRUE)
 				H.mind.adjust_skillrank(/datum/skill/combat/polearms, 2, TRUE)
 				H.mind.adjust_skillrank(/datum/skill/combat/maces, 2, TRUE)
-				backr = /obj/item/rogueweapon/sword/long
+				backr = /obj/item/rogueweapon/sword/iron
 			else if(prob(60))
 				armor = /obj/item/clothing/suit/roguetown/armor/plate/half/iron
 				H.mind.adjust_skillrank(/datum/skill/combat/swords, 2, TRUE)
 				H.mind.adjust_skillrank(/datum/skill/combat/polearms, 3, TRUE)
 				H.mind.adjust_skillrank(/datum/skill/combat/maces, 2, TRUE)
-				r_hand = /obj/item/rogueweapon/spear/billhook
+				r_hand = /obj/item/rogueweapon/spear
 			else
 				armor = /obj/item/clothing/suit/roguetown/armor/plate/scale // No helms for monster hunters.
 				H.mind.adjust_skillrank(/datum/skill/combat/swords, 2, TRUE)
 				H.mind.adjust_skillrank(/datum/skill/combat/polearms, 2, TRUE)
 				H.mind.adjust_skillrank(/datum/skill/combat/axes, 3, TRUE)
-				backr = /obj/item/rogueweapon/stoneaxe/battle
+				backr = /obj/item/rogueweapon/stoneaxe/woodcut
 			backl = /obj/item/storage/backpack/rogue/satchel
 			beltl = /obj/item/rogueweapon/huntingknife
 	if(H.gender == MALE)
