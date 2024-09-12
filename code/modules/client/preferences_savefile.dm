@@ -236,7 +236,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	pda_color		= sanitize_hexcolor(pda_color, 6, 1, initial(pda_color))
 	key_bindings 	= sanitize_islist(key_bindings, list())
 	defiant	= sanitize_integer(defiant, FALSE, TRUE, TRUE)
-	erpform = sanitize_integer(erpform, 0, 1, 2, 3, initial(erpform))
+	erpform = sanitize_integer(erpform, 0, 3, initial(erpform))
 
 	//ROGUETOWN
 	parallax = PARALLAX_INSANE
