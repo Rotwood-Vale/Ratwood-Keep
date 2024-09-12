@@ -248,7 +248,7 @@
 	grind_results = list(/datum/reagent/drug/space_drugs = 5)
 	eat_effect = /datum/status_effect/debuff/badmeal
 
-/obj/item/reagent_containers/food/snacks/grown/rogue/potato
+/obj/item/reagent_containers/food/snacks/grown/potato/rogue
 	seed = /obj/item/seeds/potato
 	name = "potato"
 	desc = ""

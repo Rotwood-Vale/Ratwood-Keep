@@ -119,7 +119,7 @@
 	produce_nutrition =  30
 	maturation_time = 6 MINUTES
 	produce_time = 3 MINUTES
-	produce_type = /obj/item/reagent_containers/food/snacks/grown/rogue/potato
+	produce_type = /obj/item/reagent_containers/food/snacks/grown/potato/rogue
 	
 /datum/plant_def/sugarcane
 	name = "sugarcane"

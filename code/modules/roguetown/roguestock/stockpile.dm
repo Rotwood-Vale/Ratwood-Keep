@@ -155,7 +155,7 @@
 /datum/roguestock/stockpile/potato
 	name = "Potato"
 	desc = "A starchy tuber."
-	item_type = /obj/item/reagent_containers/food/snacks/grown/rogue/potato
+	item_type = /obj/item/reagent_containers/food/snacks/grown/potato/rogue
 	held_items = list(0, 0)
 	payout_price = 3
 	withdraw_price = 5
@@ -163,49 +163,49 @@
 	export_price = 5
 	importexport_amt = 5
 
-/datum/roguestock/stockpile/sugarcane
-	name = "Sugarcane"
-	desc = "A sweet stalk."
-	item_type = /obj/item/reagent_containers/food/snacks/grown/sugarcane
-	held_items = list(0, 0)
-	payout_price = 3
-	withdraw_price = 5
-	transport_fee = 1
-	export_price = 5
-	importexport_amt = 5
+// /datum/roguestock/stockpile/sugarcane
+// 	name = "Sugarcane"
+// 	desc = "A sweet stalk."
+// 	item_type = /obj/item/reagent_containers/food/snacks/grown/sugarcane
+// 	held_items = list(0, 0)
+// 	payout_price = 3
+// 	withdraw_price = 5
+// 	transport_fee = 1
+// 	export_price = 5
+// 	importexport_amt = 5
 
-/datum/roguestock/stockpile/pumpkin
-	name = "Pumpkin"
-	desc = "A large gourd."
-	item_type = /obj/item/reagent_containers/food/snacks/grown/pumpkin
-	held_items = list(0, 0)
-	payout_price = 3
-	withdraw_price = 5
-	transport_fee = 1
-	export_price = 5
-	importexport_amt = 5
+// /datum/roguestock/stockpile/pumpkin
+// 	name = "Pumpkin"
+// 	desc = "A large gourd."
+// 	item_type = /obj/item/reagent_containers/food/snacks/grown/pumpkin
+// 	held_items = list(0, 0)
+// 	payout_price = 3
+// 	withdraw_price = 5
+// 	transport_fee = 1
+// 	export_price = 5
+// 	importexport_amt = 5
 
-/datum/roguestock/stockpile/carrot
-	name = "Carrot"
-	desc = "A root vegetable."
-	item_type = /obj/item/reagent_containers/food/snacks/grown/carrot
-	held_items = list(0, 0)
-	payout_price = 3
-	withdraw_price = 5
-	transport_fee = 1
-	export_price = 5
-	importexport_amt = 5
+// /datum/roguestock/stockpile/carrot
+// 	name = "Carrot"
+// 	desc = "A root vegetable."
+// 	item_type = /obj/item/reagent_containers/food/snacks/grown/carrot
+// 	held_items = list(0, 0)
+// 	payout_price = 3
+// 	withdraw_price = 5
+// 	transport_fee = 1
+// 	export_price = 5
+// 	importexport_amt = 5
 
-/datum/roguestock/stockpile/garlic
-	name = "Garlic"
-	desc = "A pungent bulb."
-	item_type = /obj/item/reagent_containers/food/snacks/grown/garlic
-	held_items = list(0, 0)
-	payout_price = 3
-	withdraw_price = 5
-	transport_fee = 1
-	export_price = 5
-	importexport_amt = 5
+// /datum/roguestock/stockpile/garlic
+// 	name = "Garlic"
+// 	desc = "A pungent bulb."
+// 	item_type = /obj/item/reagent_containers/food/snacks/grown/garlic
+// 	held_items = list(0, 0)
+// 	payout_price = 3
+// 	withdraw_price = 5
+// 	transport_fee = 1
+// 	export_price = 5
+// 	importexport_amt = 5
 
 /datum/roguestock/stockpile/meat
 	name = "Meat"
