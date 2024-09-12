@@ -50,6 +50,7 @@
 	can_sew = FALSE
 	can_cauterize = FALSE
 	critical = TRUE
+	var/do_blinding = TRUE
 
 /datum/wound/facial/eyes/can_apply_to_mob(mob/living/affected)
 	. = ..()
@@ -59,8 +60,9 @@
 
 /datum/wound/facial/eyes/on_mob_gain(mob/living/affected)
 	. = ..()
-	affected.Stun(10)
-	affected.blind_eyes(5)
+	if(do_blinding)
+		affected.Stun(10)
+		affected.blind_eyes(5)
 
 /datum/wound/facial/eyes/right
 	name = "right eye evisceration"
@@ -95,10 +97,7 @@
 	whp = null
 	woundpain = 0
 	sound_effect = null
-
-/datum/wound/facial/eyes/right/permanent/on_mob_gain(mob/living/affected)
-	if(mob_overlay)
-		affected.update_damage_overlays()
+	do_blinding = FALSE
 
 /datum/wound/facial/eyes/left
 	name = "left eye evisceration"
@@ -133,10 +132,7 @@
 	whp = null
 	woundpain = 0
 	sound_effect = null
-
-/datum/wound/facial/eyes/left/permanent/on_mob_gain(mob/living/affected)
-	if(mob_overlay)
-		affected.update_damage_overlays()
+	do_blinding = FALSE
 
 /datum/wound/facial/tongue
 	name = "glossectomy"
