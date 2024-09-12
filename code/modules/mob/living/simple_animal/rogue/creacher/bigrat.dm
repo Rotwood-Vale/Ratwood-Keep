@@ -77,7 +77,8 @@
 		D.set_vehicle_dir_layer(NORTH, OBJ_LAYER)
 		D.set_vehicle_dir_layer(EAST, OBJ_LAYER)
 		D.set_vehicle_dir_layer(WEST, OBJ_LAYER)
-		D.vehicle_move_delay = 5	//Slowdown the rous, its too fast
+		D.vehicle_move_delay = 6	//Slowdown the rous, its too fast
+		move_to_delay = 6
 
 
 /mob/living/simple_animal/hostile/retaliate/rogue/bigrat/find_food()
