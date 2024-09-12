@@ -215,13 +215,3 @@ tools/MapAtmosFixer/MapAtmosFixer/bin/*
 
 # ezdb
 /db/
-
-# Ignore certain files in the config, such as the admins file and the jukebox custom music or title screens.
-/config/admins.txt
-/config/jukebox_music/sounds/*
-!/config/jukebox_music/sounds/exclude
-/config/title_music/sounds/*
-!/config/title_music/sounds/exclude
-!/config/title_music/sounds/title1.ogg
-/config/title_screens/images/*
-!/config/title_screens/images/exclude
