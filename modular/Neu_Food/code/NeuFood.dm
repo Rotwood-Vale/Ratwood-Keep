@@ -5,27 +5,8 @@
  *						*
  * * * * * * * * * * * **/
 
-
-/*	........   Nutrition defines   ................ */
-#define MEAL_FILLING 30
-#define MEAL_GOOD 24
-#define MEAL_AVERAGE 18
-#define MEAL_MEAGRE 15
-#define SNACK_NUTRITIOUS 9
-#define SNACK_DECENT 6
-#define SNACK_POOR 3
-
-/*	........   Rotting defines   ................ */
-#define SHELFLIFE_EXTREME 90 MINUTES
-#define SHELFLIFE_LONG 45 MINUTES
-#define SHELFLIFE_DECENT 25 MINUTES
-#define SHELFLIFE_SHORT 15 MINUTES
-#define SHELFLIFE_TINY 10 MINUTES
-
-
 // CONTAINMENT ZONE - marked for death
 /obj/item/reagent_containers/powder/flour/salt // salt being subtype of flour is terrible for so many reasons repath to  /obj/item/reagent_containers/powder/salt
-
 
 
 /*	........   Templates / Base items   ................ */

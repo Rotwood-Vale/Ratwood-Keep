@@ -212,7 +212,12 @@ tools/MapAtmosFixer/MapAtmosFixer/bin/*
 
 #dmdoc default folder
 /dmdoc
-# Ignore custom music and title screens (amend as appropriate)
+
+# ezdb
+/db/
+
+# Ignore certain files in the config, such as the admins file and the jukebox custom music or title screens.
+/config/admins.txt
 /config/jukebox_music/sounds/*
 !/config/jukebox_music/sounds/exclude
 /config/title_music/sounds/*
@@ -220,11 +225,3 @@ tools/MapAtmosFixer/MapAtmosFixer/bin/*
 !/config/title_music/sounds/title1.ogg
 /config/title_screens/images/*
 !/config/title_screens/images/exclude
-/data/triumphs.sav
-config/admins.txt
-cfg/admin.txt
-config/admins.txt
-
-# ezdb
-/db/
-/config/ezdb.txt
