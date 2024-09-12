@@ -2780,7 +2780,6 @@
 /area/rogue/under/town/basement)
 "ddo" = (
 /obj/structure/table/wood/crafted,
-/obj/structure/table/wood/crafted,
 /obj/item/grown/log/tree/stick,
 /obj/item/natural/bundle/cloth,
 /obj/item/natural/feather,
