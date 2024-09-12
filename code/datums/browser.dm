@@ -13,7 +13,7 @@
 	var/body_elements
 	var/head_content = ""
 	var/content = ""
-	var/no_close_movement = FALSE
+	var/no_close_movement = TRUE
 
 /datum/browser/noclose
 	no_close_movement = TRUE

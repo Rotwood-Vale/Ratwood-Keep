@@ -505,15 +505,39 @@
 			if(!(mobility_flags & MOBILITY_STAND) && user != src && (user.zone_selected == BODY_ZONE_CHEST))
 				. += "<a href='?src=[REF(src)];check_hb=1'>Listen to Heartbeat</a>"
 
+	var/list/lines = build_cool_description(get_mob_descriptors(obscure_name, user), src) //vardefine for descriptors
+
 	if(!obscure_name && headshot_link)
-		. += "<a href='?src=[REF(src)];task=view_headshot;'>View headshot</a>"
-
-	var/list/lines = build_cool_description(get_mob_descriptors(obscure_name, user), src)
-	for(var/line in lines)
-		. += span_info(line)
-
-	. += "<a href='?src=[REF(src)];task=view_erp_preferences;'>View ERP Preferences</a>"
-
+		. += "<a href='?src=[REF(src)];task=view_headshot;'>View Infocard</a>"
+		. += "<a href='?src=[REF(src)];task=view_erp_preferences;'>View ERP Preferences</a>"
+		for(var/line in lines)        //this line
+			. += span_info(line)	// and this line are responsible for placing descriptor position
+	if(!obscure_name && flavor_text)
+		if(!obscure_name && headshot_link)
+	 	return
+		. += "<a href='?src=[REF(src)];task=view_flavor;'>View Description</a>"
+		. += "<a href='?src=[REF(src)];task=view_erp_preferences;'>View ERP Preferences</a>"
+		for(var/line in lines)        //this line
+			. += span_info(line)	// and this line are responsible for placing descriptor position
+	if(!obscure_name && ooc_notes)
+		if(!obscure_name && headshot_link)
+			return
+		if(!obscure_name && flavor_text)
+			return
+		. += "<a href='?src=[REF(src)];task=view_ooc_notes;'>View OOC Notes</a>"
+		. += "<a href='?src=[REF(src)];task=view_erp_preferences;'>View ERP Preferences</a>"
+		for(var/line in lines)        //this line
+			. += span_info(line)	// and this line are responsible for placing descriptor position
+	if(!obscure_name)
+		if(!obscure_name && headshot_link)
+			return
+		if(!obscure_name && flavor_text)
+			return
+		if(!obscure_name && ooc_notes)
+			return
+		. += "<a href='?src=[REF(src)];task=view_erp_preferences;'>View ERP Preferences</a>"
+		for(var/line in lines)        //this line
+			. += span_info(line)	// and this line are responsible for placing descriptor position
 	var/trait_exam = common_trait_examine()
 	if(!isnull(trait_exam))
 		. += trait_exam

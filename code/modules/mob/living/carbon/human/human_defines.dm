@@ -105,6 +105,10 @@
 	var/datum/devotion/devotion = null // Used for cleric_holder for priests
 
 	var/headshot_link = null
+	
+	var/flavor_text = null
+
+	var/ooc_notes = null
 
 	possible_rmb_intents = list(/datum/rmb_intent/feint,\
 	/datum/rmb_intent/aimed,\

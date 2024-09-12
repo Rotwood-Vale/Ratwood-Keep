@@ -150,6 +150,11 @@ GLOBAL_LIST_EMPTY(chosen_names)
 	var/update_mutant_colors = TRUE
 
 	var/headshot_link
+	
+	var/flavor_text
+
+	var/ooc_notes
+
 	var/list/violated = list()
 	var/list/descriptor_entries = list()
 	var/defiant = TRUE
@@ -427,7 +432,9 @@ GLOBAL_LIST_EMPTY(chosen_names)
 
 			dat += "<br><b>Headshot:</b> <a href='?_src_=prefs;preference=headshot;task=input'>Change</a>"
 			if(headshot_link != null)
-				dat += "<br><img src='[headshot_link]' width='100px' height='100px'>"
+				dat += "<br><img src='[headshot_link]' width='250px' height='250px'>"
+			dat += "<br><b>Flavor Text:</b> <a href='?_src_=prefs;preference=flavor;task=input'>Change</a>"
+			dat += "<br><b>OOC Notes:</b> <a href='?_src_=prefs;preference=oocnotes;task=input'>Change</a>"
 			dat += "</td>"
 
 			dat += "</tr></table>"
@@ -1499,7 +1506,7 @@ Slots: [job.spawn_positions]</span>
 						// LETHALSTONE EDIT END
 						ResetJobs()
 						to_chat(user, "<font color='red'>Classes reset.</font>")
-
+					
 				// LETHALSTONE EDIT: add statpack selection
 				if ("statpack")
 					var/list/statpacks_available = list()
@@ -1515,7 +1522,7 @@ Slots: [job.spawn_positions]</span>
 						statpack = statpack_chosen
 						to_chat(user, "<font color='purple'>[statpack.name]</font>")
 						to_chat(user, "<font color='purple'>[statpack.description_string()]</font>")
-
+					
 				// LETHALSTONE EDIT: add pronouns
 				if ("pronouns")
 					var pronouns_input = input(user, "Choose your character's pronouns", "Pronouns") as null|anything in GLOB.pronouns_list
@@ -1600,6 +1607,39 @@ Slots: [job.spawn_positions]</span>
 					headshot_link = new_headshot_link
 					to_chat(user, "<span class='notice'>Successfully updated headshot picture</span>")
 					log_game("[user] has set their Headshot image to '[headshot_link]'.")
+				if("flavor")
+					to_chat(user, "<span class='notice'>Please use this to give a description of your characters physical appearance.</span>")
+					var/new_flavor_text = input(user, "Type your description here:", "Flavor Text", flavor_text) as message|null
+					if(new_flavor_text == null)
+						return
+					if(new_flavor_text == "")
+						flavor_text = null
+						ShowChoices(user)
+						return
+					if(!valid_flavor_text(user, new_flavor_text))
+						flavor_text = null
+						ShowChoices(user)
+						return
+					flavor_text = new_flavor_text
+					to_chat(user, "<span class='notice'>Successfully updated Flavor Text</span>")
+					log_game("[user] has set their description to '[flavor_text]'.")
+
+				if("oocnotes")
+					to_chat(user, "<span class='notice'>Please use this for Out of Character information that you wish to share, such as sexual preferences and consent information.</span>")
+					var/new_ooc_notes = input(user, "Type your OOC Notes here:", "OOC Notes", ooc_notes) as message|null
+					if(new_ooc_notes == null)
+						return
+					if(new_ooc_notes == "")
+						ooc_notes = null
+						ShowChoices(user)
+						return
+					if(!valid_ooc_notes(user, new_ooc_notes))
+						ooc_notes = null
+						ShowChoices(user)
+						return
+					ooc_notes = new_ooc_notes
+					to_chat(user, "<span class='notice'>Successfully updated OOC Notes</span>")
+					log_game("[user] has set their description to '[ooc_notes]'.")
 
 				if("species")
 
@@ -2140,6 +2180,10 @@ Slots: [job.spawn_positions]</span>
 	character.dna.real_name = character.real_name
 
 	character.headshot_link = headshot_link
+
+	character.flavor_text = flavor_text
+
+	character.ooc_notes = ooc_notes
 	// LETHALSTONE ADDITION BEGIN: additional customizations
 
 	character.statpack = statpack
@@ -2241,6 +2285,16 @@ Slots: [job.spawn_positions]</span>
 	if(find_index != 9)
 		if(!silent)
 			to_chat(usr, "<span class='warning'>The image must be hosted on one of the following sites: 'Gyazo, Lensdump, Imgbox, Catbox'</span>")
+		return FALSE
+	return TRUE
+/proc/valid_flavor_text(mob/user, value, silent = FALSE)
+
+	if(!length(value))
+		return FALSE
+	return TRUE
+/proc/valid_ooc_notes(mob/user, value, silent = FALSE)
+
+	if(!length(value))
 		return FALSE
 	return TRUE
 

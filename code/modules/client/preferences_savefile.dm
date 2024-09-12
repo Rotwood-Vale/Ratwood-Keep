@@ -450,6 +450,14 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 
 	S["pronouns"] >> pronouns
 	S["voice_type"] >> voice_type
+	S["flavor_text"]			>> flavor_text
+	if(!valid_flavor_text(null, flavor_text, TRUE))
+		flavor_text = null
+		
+	S["ooc_notes"]			>> ooc_notes
+	if(!valid_ooc_notes(null, ooc_notes, TRUE))
+		ooc_notes = null
+
 	//try to fix any outdated data if necessary
 	if(needs_update >= 0)
 		update_character(needs_update, S)		//needs_update == savefile_version if we need an update (positive integer)
@@ -593,6 +601,10 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	WRITE_FILE(S["statpack"] , statpack.type)
 	WRITE_FILE(S["voice_type"] , voice_type)
 	WRITE_FILE(S["pronouns"] , pronouns)
+
+	WRITE_FILE(S["flavor_text"] , flavor_text)
+
+	WRITE_FILE(S["ooc_notes"] , ooc_notes)
 
 	WRITE_FILE(S["is_updated_for_genitalia"], TRUE)
 

@@ -7,8 +7,30 @@
 		if(!valid_headshot_link(null, headshot_link, TRUE))
 			return
 		var/mob/user = usr
-		var/list/dat = list("<img src='[headshot_link]' width='250px' height='250px'>")
-		var/datum/browser/popup = new(user, "headshot", "<div align='center'>[src]'s Headshot</div>", 310, 320)
+		var/list/dat = list("<div align='center'><img src='[headshot_link]' width='500px' height='500px'></div><br><font size=3><u>Description:</u><br>[replacetext(flavor_text, "\n", "<BR>")]<br><br><u><b>OOC NOTES:<br><b></u>[replacetext(ooc_notes, "\n", "<BR>")]</font>")
+		var/datum/browser/popup = new(user, "headshot", "<div align='center'>[src]</div>", 560, 570)
+		popup.set_content(dat.Join())
+		popup.open(FALSE)
+		return
+	if(href_list["task"] == "view_flavor")
+		if(!ismob(usr))
+			return
+		if(!valid_flavor_text(null, flavor_text, TRUE))
+			return
+		var/mob/user = usr
+		var/list/dat = list("<font size=3><u>Description:</u><br>[replacetext(flavor_text, "\n", "<BR>")]<br><br><u><b>OOC NOTES:<br><b></u>[replacetext(ooc_notes, "\n", "<BR>")]</font>")
+		var/datum/browser/popup = new(user, "flavor", 200, 240)
+		popup.set_content(dat.Join())
+		popup.open(FALSE)
+		return
+	if(href_list["task"] == "view_ooc_notes")
+		if(!ismob(usr))
+			return
+		if(!valid_ooc_notes(null, ooc_notes, TRUE))
+			return
+		var/mob/user = usr
+		var/list/dat = list("<font size=3><u><b>OOC NOTES:<br><b></u>[replacetext(ooc_notes, "\n", "<BR>")]</font>")
+		var/datum/browser/popup = new(user, "oocnotes", 400, 100)
 		popup.set_content(dat.Join())
 		popup.open(FALSE)
 		return
