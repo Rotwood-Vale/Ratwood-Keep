@@ -18,7 +18,6 @@
 	verbage = "nock"
 	cartridge_wording = "arrow"
 	load_sound = 'sound/foley/nockarrow.ogg'
-	associated_skill = /datum/skill/combat/bows
 	var/damfactor = 1
 
 /obj/item/gun/ballistic/revolver/grenadelauncher/bow/getonmobprop(tag)
@@ -56,6 +55,7 @@
 	if(user.client)
 		if(user.client.chargedprog >= 100)
 			spread = 0
+			//adjust_experience(user, /datum/skill/combat/bows, user.STAINT * 4)
 		else
 			spread = 150 - (150 * (user.client.chargedprog / 100))
 	else

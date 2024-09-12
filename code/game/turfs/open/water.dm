@@ -80,6 +80,7 @@
 					return
 			if(user.mind && !user.buckled)
 				var/drained = max(15 - (user.mind.get_skill_level(/datum/skill/misc/swimming) * 5), 1)
+				user.mind.adjust_experience(/datum/skill/misc/swimming, user.STAINT * 1.5)
 //				drained += (user.checkwornweight()*2)
 				if(!user.check_armor_skill())
 					drained += 40

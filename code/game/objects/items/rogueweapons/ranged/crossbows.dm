@@ -18,7 +18,6 @@
 	cartridge_wording = "bolt"
 	load_sound = 'sound/foley/nockarrow.ogg'
 	fire_sound = 'sound/combat/Ranged/crossbow-small-shot-02.ogg'
-	associated_skill = /datum/skill/combat/crossbows
 	anvilrepair = /datum/skill/craft/weaponsmithing
 	smeltresult = /obj/item/ingot/steel
 	var/damfactor = 2
@@ -125,6 +124,7 @@
 	if(user.client)
 		if(user.client.chargedprog >= 100)
 			spread = 0
+			//adjust_experience(user, /datum/skill/combat/crossbows, user.STAINT * 4)
 		else
 			spread = 150 - (150 * (user.client.chargedprog / 100))
 	else
