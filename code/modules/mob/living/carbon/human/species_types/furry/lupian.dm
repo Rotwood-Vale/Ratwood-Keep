@@ -182,6 +182,3 @@
 	returned["mcolor2"] = second_color
 	returned["mcolor3"] = "373330"
 	return returned
-
-/datum/species/lupian/get_accent_any(mob/living/carbon/human/H)
-	return strings("czech_replacement.json", "czech")
