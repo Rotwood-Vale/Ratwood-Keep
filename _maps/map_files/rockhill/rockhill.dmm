@@ -4055,6 +4055,20 @@
 /obj/structure/mineral_door/swing_door,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/indoors)
+"eqT" = (
+/obj/structure/closet/crate/chest{
+	lockid = "keep_armory"
+	},
+/obj/item/organ/heart,
+/obj/item/organ/liver,
+/obj/item/organ/lungs,
+/obj/item/organ/stomach,
+/obj/item/organ/eyes,
+/obj/item/organ/eyes,
+/obj/item/organ/tongue,
+/obj/item/organ/tongue,
+/turf/open/floor/rogue/churchbrick,
+/area/rogue/indoors/town/manor)
 "erA" = (
 /obj/structure/fluff/railing/border,
 /turf/open/transparent/openspace,
@@ -6278,13 +6292,9 @@
 /obj/structure/closet/crate/chest{
 	lockid = "keep_armory"
 	},
-/obj/item/organ/tongue,
-/obj/item/organ/heart,
-/obj/item/organ/liver,
-/obj/item/organ/eyes,
-/obj/item/organ/lungs,
-/obj/item/organ/stomach,
-/obj/item/organ/appendix,
+/obj/item/rogueweapon/surgery/hemostat,
+/obj/item/rogueweapon/surgery/hemostat,
+/obj/item/rogueweapon/surgery/retractor,
 /turf/open/floor/rogue/churchbrick,
 /area/rogue/indoors/town/manor)
 "gNb" = (
@@ -6625,6 +6635,7 @@
 "hgb" = (
 /obj/structure/chair/bench/couch/r,
 /obj/machinery/light/rogue/wallfire/candle,
+/obj/item/paper,
 /turf/open/floor/rogue/tile/masonic{
 	dir = 4
 	},
@@ -400267,7 +400278,7 @@ kUR
 rpP
 hBA
 kUR
-aFk
+oqi
 vXH
 wtF
 lxe
@@ -400669,7 +400680,7 @@ kUR
 kUR
 xLw
 kUR
-brS
+eqT
 sHm
 dGl
 bzD
