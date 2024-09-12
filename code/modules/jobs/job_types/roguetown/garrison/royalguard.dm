@@ -107,7 +107,7 @@
 	pants = /obj/item/clothing/under/roguetown/heavyroyalplatelegs	//Gets better pants than chain ones.
 	cloak = /obj/item/clothing/cloak/cape/guard
 	gloves = /obj/item/clothing/gloves/roguetown/plate
-	shoes = /obj/item/clothing/shoes/plate
+	shoes = /obj/item/clothing/shoes/roguetown/boots/armor
 	backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger/steel/special = 1, /obj/item/rope/chain = 1, /obj/item/signal_horn = 1)
 
 /datum/advclass/royalguard/knight
@@ -177,7 +177,7 @@
 
 /datum/outfit/job/roguetown/royalguard/archer/pre_equip(mob/living/carbon/human/H)
 	..()
-	//This class doesn't use the normal shared skill section; totally different!! 
+	//This class doesn't use the normal shared skill section; totally different!!
 	H.mind.adjust_skillrank(/datum/skill/combat/bows, 5, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 4, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/combat/knives, 4, TRUE)	//Good as hell knife skill; makes them standout more compared to other guards.
