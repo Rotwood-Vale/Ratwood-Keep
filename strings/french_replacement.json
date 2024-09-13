@@ -1,42 +1,36 @@
 {
-
-    "french": {
-		"shi": "shee",
-		"thi": "thee",
-		"yes": "oui",
-		"no": "non",
-       	"I'm": "j'", 
-   	    "am": "suis", 
-		"a": "un",
-        "and": "et", 
-		"the ": "l'",
-		"I": "j'",
-		"with": "weeth",
-		"of": "de",
-       	"bad": "mal", 
-        "bye": [
-           		 "adieu",
-			"au revoir"
-       		 ], 
-		"cake": "gateau",
-      		  "captain": "capitaine", 
-      		  "cook": "cuisinier", 
-     		   "dad": "papa", 
-     		   "good": "bon", 
-        "hello": [
-            "'allo", 
-            "bonjour",
-			"salut"
-        ], 
-        "mom": "mama", 
-        "my": "mon", 
-		"shit": "merde",
-        "spaghetti": "macaroni", 
-        "thanks": "merci",  
-        "thank you": "merci",   
+    "full": {
+        "no": "non",
+        "yes": "oui",
+        "I'm": "j'",
+        "a": "un",
+        "and": "et",
+        "the": "l'",
+        "I": "j'",
+        "with": "weeth",
+        "of": "de",
+        "bye": ["adieu", "au revoir"],
+        "mom": "mama",
+        "dad": "papa",
+        "good": "bon",
+        "bad": "mal",
+        "shit": "merde",
+        "my": "mon",
+        "thanks": "merci",
+        "thank you": "merci",
+        "hello": ["'allo", "bonjour", "salut"],
+        "wine": "vin",
         "what's": "quel est",
-        "who's": "qui est",
-        "wine": "vin"
-		}
-		
+        "who's": "qui est"
+    },
+    "start": {
+
+    },
+    "end": {
+
+    },
+    "syllable": {
+        "shi": "shee",
+        "thi": "thee"
+    }
 }
