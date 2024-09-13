@@ -136,6 +136,7 @@
 #include "code\__DEFINES\dcs\signals_atom_lighting.dm"
 #include "code\__DEFINES\roguetown\rebel.dm"
 #include "code\__DEFINES\roguetown\werewolf.dm"
+#include "code\__HELPERS\_auxtools_api.dm"
 #include "code\__HELPERS\_lists.dm"
 #include "code\__HELPERS\_logging.dm"
 #include "code\__HELPERS\_string_lists.dm"
@@ -3565,4 +3566,5 @@
 #include "modular_hearthstone\code\modules\mob\living\simple_animal\rogue\simple_skeleton.dm"
 #include "modular_hearthstone\code\modules\reagents\reagent_containers\lux.dm"
 #include "modular_hearthstone\code\modules\spells\roguetown\wizard.dm"
+#include "modular\ze_genesis_call\genesis_call.dm"
 // END_INCLUDE
