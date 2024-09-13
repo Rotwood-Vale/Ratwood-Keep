@@ -1,3 +1,5 @@
+//Shamelessly stolen from https://github.com/tgstation/tgstation/pull/74808 by Dominion
+
 /*
  * BYOND loves to tell you about its loving spouse /global
  * But it's actually having a sexy an affair with /static
