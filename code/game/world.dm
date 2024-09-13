@@ -476,6 +476,7 @@ GLOBAL_VAR(restart_counter)
 
 	var/init_result = call_ext(library, "init")("block")
 	if (init_result != "0")
+		//para_tracy returns the filename on succesful init so this always runtimes, lol
 		CRASH("Error initializing byond-tracy: [init_result]")
 
 /world/proc/init_debugger()
