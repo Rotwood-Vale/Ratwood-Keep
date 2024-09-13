@@ -52,7 +52,7 @@
 
 /obj/structure/treating_furnace/attackby(obj/item/I, mob/living/user)
 	if(istype(I, /obj/item/rogueore/coal))
-		to_chat(user, span_notice("I toss \the coal into the furnace"))
+		to_chat(user, span_notice("I toss the coal into the furnace"))
 		coal_charges += 1
 		update_icon()
 		qdel(I)

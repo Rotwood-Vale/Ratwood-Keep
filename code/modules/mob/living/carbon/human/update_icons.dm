@@ -1577,7 +1577,7 @@ generate/load female uniform sprites matching all previously decided variables
 		if(get_detail_color())
 			pic.color = get_detail_color()
 		standing.overlays.Add(pic)
-		if(!isinhands && boobed_overlay && boobed)
+		if(!isinhands && boobed_overlay && boobed_detail && boobed)
 			pic = mutable_appearance(icon(file2use, "[t_state]_boob[get_detail_tag()]"), -layer2use)
 			pic.appearance_flags = RESET_COLOR
 			if(get_detail_color())
