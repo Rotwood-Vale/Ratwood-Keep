@@ -29,7 +29,7 @@
 	shirt = /obj/item/clothing/suit/roguetown/armor/gambeson
 	pants = /obj/item/clothing/under/roguetown/trou/leather
 	neck = /obj/item/clothing/neck/roguetown/chaincoif
-	backpack_contents = list(/obj/item/roguekey/mercenary, /obj/item/storage/belt/rogue/pouch/coins/poor)
+	backpack_contents = list(/obj/item/roguekey/mercenary, /obj/item/storage/belt/rogue/pouch/coins/poor, /obj/item/rogueweapon/huntingknife/idagger/navaja)
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 5, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/shields, 2, TRUE)
