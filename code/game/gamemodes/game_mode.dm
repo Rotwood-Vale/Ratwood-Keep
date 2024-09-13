@@ -422,14 +422,6 @@
 					if(player.current.client.prefs.job_preferences[job] == JP_HIGH)
 						candidates -= player
 
-	if(restricted_races)
-		for(var/datum/mind/player in candidates)
-			for(var/race in restricted_races)
-				//if(pass && isseelie(player)) //allows 1 Seelie to roll bandit
-				//	pass = FALSE
-				//	continue
-				if(is_species(player, race))
-					candidates -= player // Remove people who have a restricted race for the antag type
 /*
 	if(candidates.len < recommended_enemies)
 		for(var/mob/dead/new_player/player in players)
