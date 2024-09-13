@@ -2352,6 +2352,7 @@
 #include "code\modules\language\roguetown\elf.dm"
 #include "code\modules\language\roguetown\fae.dm"
 #include "code\modules\language\roguetown\hellspeak.dm"
+#include "code\modules\language\roguetown\lupian.dm"
 #include "code\modules\language\roguetown\orc.dm"
 #include "code\modules\language\roguetown\sandspeak.dm"
 #include "code\modules\language\roguetown\undead.dm"
