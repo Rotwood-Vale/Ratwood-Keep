@@ -639,8 +639,10 @@
 /turf/open/floor/rogue/tile,
 /area/rogue/indoors/town/dwarfin)
 "aKu" = (
-/obj/machinery/light/rogue/torchholder,
-/turf/closed/wall/mineral/rogue/craftstone,
+/obj/machinery/light/rogue/torchholder{
+	pixel_y = 26
+	},
+/turf/open/floor/rogue/blocks/stonered,
 /area/rogue/indoors/town/bath)
 "aKB" = (
 /obj/structure/table/wood{
@@ -287716,8 +287718,8 @@ xAt
 eoy
 wbg
 wbg
+vNh
 aKu
-mMC
 tYY
 oXU
 oXU
