@@ -80,7 +80,7 @@
 		/datum/customizer/bodypart_feature/hair/facial/humanoid,
 		/datum/customizer/bodypart_feature/accessory,
 		/datum/customizer/bodypart_feature/face_detail,
-		/datum/customizer/organ/horns/tiefling,
+		/datum/customizer/organ/horns/humanoid/tiefling,
 		/datum/customizer/organ/tail/tiefling,
 		/datum/customizer/organ/testicles/human,
 		/datum/customizer/organ/penis/human,
