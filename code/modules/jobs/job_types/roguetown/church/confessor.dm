@@ -12,7 +12,6 @@
 		/datum/patron/old_god,
 		ALL_DIVINE_PATRONS,
 	) //gets set to old god.
-	traits_applied = list(TRAIT_DECEIVING_MEEKNESS)
 	tutorial = "'Break his leg', 'Knock out a tooth', 'shave her head'... \
 				All things you've been ordered to do by the Inquisitor countless times, \
 				and you listen to his every word like the good little idiot you are. \
@@ -69,4 +68,5 @@
 		H.change_stat("strength", 1)
 		H.change_stat("speed", 1)
 		H.change_stat("intelligence", -2)
+	ADD_TRAIT(H, TRAIT_DECEIVING_MEEKNESS, TRAIT_GENERIC)
 	H.verbs |= /mob/living/carbon/human/proc/faith_test
