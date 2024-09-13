@@ -1079,7 +1079,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 			if(ishuman(target))
 				var/mob/living/carbon/human/H = target
 				H.electrocution_animation(40)
-			to_chat(target, span_danger("The gods have punished you for your sins!"))
+			to_chat(target, span_danger("The ten have punished you for your sins!"))
 		if(ADMIN_PUNISHMENT_BRAINDAMAGE)
 			target.adjustOrganLoss(ORGAN_SLOT_BRAIN, 199, 199)
 		if(ADMIN_PUNISHMENT_GIB)
