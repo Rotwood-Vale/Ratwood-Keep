@@ -334,3 +334,34 @@
 	name = "nite elf dagger"
 	desc = "This ominous, dark handled dagger was crafted by the assassin race of nite elves."
 	force = 25
+
+/obj/item/rogueweapon/huntingknife/idagger/navaja
+	possible_item_intents = list(/datum/intent/dagger/thrust,/datum/intent/dagger/cut,  /datum/intent/dagger/thrust/pick)
+	name = "navaja"
+	desc = "A folding Zybantian knife used by merchants, mercenaries, peasants, nobles...the long hilt allows for a sizeable blade with good reach."
+	force = 5
+	icon_state = "navajo_c"
+	item_state = "elfdag"
+	var/extended = 0
+	wdefense = 2
+
+/obj/item/rogueweapon/huntingknife/idagger/navaja/attack_self(mob/user)
+	extended = !extended
+	playsound(src.loc, 'sound/blank.ogg', 50, TRUE)
+	if(extended)
+		force = 20
+		wdefense = 6
+		w_class = WEIGHT_CLASS_NORMAL
+		throwforce = 23
+		icon_state = "navajo_o"
+		attack_verb = list("slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
+		sharpness = IS_SHARP
+		playsound(user, 'sound/items/knife_open.ogg', 100, TRUE)
+	else
+		force = 5
+		w_class = WEIGHT_CLASS_SMALL
+		throwforce = 5
+		icon_state = "navajo_c"
+		attack_verb = list("stubbed", "poked")
+		sharpness = IS_BLUNT
+		wdefense = 2
