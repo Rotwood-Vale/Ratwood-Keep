@@ -18,7 +18,7 @@
 	var/greet_text
 	/// Whether to grant a lit torch upon spawn
 	var/grant_lit_torch = FALSE
-	/// Whether to show wanderer examine like adventurers or pilgrims
+	//Whether to display "wandering Human" rather than their job title
 	var/show_wanderer_examine = TRUE
 	var/advjob_examine = TRUE
 	var/banned_leprosy = TRUE
