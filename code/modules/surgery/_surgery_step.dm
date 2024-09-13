@@ -231,7 +231,7 @@
 				return FALSE
 	*/
 
-	if(!ignore_clothes && !get_location_accessible(target, target_zone || bodypart.body_zone, skip_undies = TRUE))
+	if(!ignore_clothes && !get_location_accessible(target, target_zone || bodypart.body_zone, skipundies = TRUE))
 		return FALSE
 
 	return TRUE

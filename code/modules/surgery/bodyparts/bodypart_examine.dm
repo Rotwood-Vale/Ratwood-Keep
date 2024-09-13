@@ -57,7 +57,7 @@
 		bodypart_status += "[src] is dislocated."
 	var/location_accessible = TRUE
 	if(owner)
-		location_accessible = get_location_accessible(owner, body_zone, skip_undies = TRUE)
+		location_accessible = get_location_accessible(owner, body_zone, skipundies = TRUE)
 		if(!observer_privilege && !location_accessible)
 			bodypart_status += "Obscured by clothing."
 	var/owner_ref = owner ? REF(owner) : REF(src)
