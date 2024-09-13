@@ -12,6 +12,8 @@
 	var/datum/looping_sound/dmusloop/soundloop
 	var/list/song_list = list()
 	var/playing = FALSE
+	w_class = WEIGHT_CLASS_NORMAL
+
 
 /obj/item/rogue/instrument/equipped(mob/living/user, slot)
 	. = ..()

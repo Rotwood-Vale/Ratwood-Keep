@@ -1,5 +1,5 @@
 /datum/job/roguetown/captain
-	title = "Guard Lieutenant"
+	title = "Retinue Captain"
 	flag = GUARD_CAPTAIN
 	department_flag = NOBLEMEN
 	faction = "Station"
@@ -37,11 +37,11 @@
 				index = copytext(H.real_name, 1,index)
 			if(!index)
 				index = H.real_name
-			S.name = "lieutenant cape ([index])"
+			S.name = "captain's cape ([index])"
 		var/prev_real_name = H.real_name
 		var/prev_name = H.name
-		H.real_name = "Lt. [prev_real_name]"
-		H.name = "Lt. [prev_name]"
+		H.real_name = "Captain [prev_real_name]"
+		H.name = "Captain [prev_name]"
 
 /datum/outfit/job/roguetown/captain/pre_equip(mob/living/carbon/human/H)
 	..()
