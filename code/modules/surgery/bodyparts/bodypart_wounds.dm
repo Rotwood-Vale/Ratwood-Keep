@@ -179,7 +179,7 @@
 	var/used
 	var/total_dam = get_damage()
 	var/damage_dividend = (total_dam / max_damage)
-	if(user && dam)
+	if (user && dam)
 		if(user.goodluck(2))
 			dam += 10
 	if(bclass in GLOB.dislocation_bclasses)
@@ -207,7 +207,7 @@
 			if((bclass in GLOB.artery_strong_bclasses) && istype(user.rmb_intent, /datum/rmb_intent/strong))
 				used += 10
 			else if(istype(user.rmb_intent, /datum/rmb_intent/aimed))
-				used += 10
+				used += user.STAPER
 		if(prob(used))
 			attempted_wounds += /datum/wound/artery
 
@@ -228,6 +228,9 @@
 	if(user && dam)
 		if(user.goodluck(2))
 			dam += 10
+	if ((bclass = BCLASS_PUNCH) && (user && dam))
+		if(user && HAS_TRAIT(user, TRAIT_CIVILIZEDBARBARIAN))
+			dam += 15
 	if((bclass in GLOB.cbt_classes) && (zone_precise == BODY_ZONE_PRECISE_GROIN))
 		var/cbt_multiplier = 1
 		if(user && HAS_TRAIT(user, TRAIT_NUTCRACKER))
@@ -254,7 +257,7 @@
 			if((bclass in GLOB.artery_strong_bclasses) && istype(user.rmb_intent, /datum/rmb_intent/strong))
 				used += 10
 			else if(istype(user.rmb_intent, /datum/rmb_intent/aimed))
-				used += 10
+				used += user.STAPER
 		if(prob(used))
 			if((zone_precise == BODY_ZONE_PRECISE_STOMACH) && !resistance)
 				attempted_wounds += /datum/wound/slash/disembowel
@@ -331,7 +334,7 @@
 					used += 10
 			else
 				if(istype(user.rmb_intent, /datum/rmb_intent/aimed))
-					used += 10
+					used += user.STAPER
 		var/artery_type = /datum/wound/artery
 		if(zone_precise == BODY_ZONE_PRECISE_NECK)
 			artery_type = /datum/wound/artery/neck

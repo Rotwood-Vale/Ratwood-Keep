@@ -71,7 +71,7 @@
 
 /obj/item/melee/transforming/energy/sword/bananium/ComponentInitialize()
 	. = ..()
-	AddComponent(/datum/component/slippery, 60, GALOSHES_DONT_HELP)
+	AddComponent(/datum/component/slippery, 60, 100, GALOSHES_DONT_HELP)
 	var/datum/component/slippery/slipper = GetComponent(/datum/component/slippery)
 	slipper.signal_enabled = active
 
@@ -128,7 +128,7 @@
 
 /obj/item/shield/energy/bananium/ComponentInitialize()
 	. = ..()
-	AddComponent(/datum/component/slippery, 60, GALOSHES_DONT_HELP)
+	AddComponent(/datum/component/slippery, 60, 100, GALOSHES_DONT_HELP)
 	var/datum/component/slippery/slipper = GetComponent(/datum/component/slippery)
 	slipper.signal_enabled = active
 
@@ -183,7 +183,7 @@
 
 /obj/item/grown/bananapeel/bombanana/ComponentInitialize()
 	. = ..()
-	AddComponent(/datum/component/slippery, det_time)
+	AddComponent(/datum/component/slippery, det_time, 100)
 
 /obj/item/grown/bananapeel/bombanana/Destroy()
 	. = ..()

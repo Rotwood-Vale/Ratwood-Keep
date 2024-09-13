@@ -4,12 +4,13 @@
 	icon = 'icons/roguetown/clothing/neck.dmi'
 	mob_overlay_icon = 'icons/roguetown/clothing/onmob/neck.dmi'
 	bloody_icon_state = "bodyblood"
+	w_class = WEIGHT_CLASS_SMALL
 
 /obj/item/clothing/neck/roguetown/coif
 	name = "coif"
 	icon_state = "coif"
 	item_state = "coif"
-	flags_inv = HIDEEARS|HIDEHAIR
+	flags_inv = HIDEHAIR
 	slot_flags = ITEM_SLOT_NECK|ITEM_SLOT_HEAD
 	blocksound = SOFTHIT
 	body_parts_covered = NECK|HAIR|EARS|HEAD
@@ -33,7 +34,7 @@
 				H.update_inv_head()
 		else if(adjustable == CADJUSTED)
 			ResetAdjust(user)
-			flags_inv = HIDEEARS|HIDEHAIR
+			flags_inv = HIDEHAIR
 			if(user)
 				if(ishuman(user))
 					var/mob/living/carbon/H = user
@@ -46,7 +47,7 @@
 	name = "chain coif"
 	icon_state = "chaincoif"
 	item_state = "chaincoif"
-	flags_inv = HIDEEARS|HIDEHAIR
+	flags_inv = HIDEHAIR
 	armor = list("blunt" = 30, "slash" = 60, "stab" = 45, "bullet" = 10, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
 
 	max_integrity = 200
@@ -59,6 +60,7 @@
 	blocksound = CHAINHIT
 	anvilrepair = /datum/skill/craft/armorsmithing
 	smeltresult = /obj/item/ingot/steel
+	clothing_flags = CANT_SLEEP_IN
 
 /obj/item/clothing/neck/roguetown/chaincoif/AdjustClothes(mob/user)
 	if(loc == user)
@@ -74,7 +76,7 @@
 				H.update_inv_head()
 		else if(adjustable == CADJUSTED)
 			ResetAdjust(user)
-			flags_inv = HIDEEARS|HIDEHAIR
+			flags_inv = HIDEHAIR
 			if(user)
 				if(ishuman(user))
 					var/mob/living/carbon/H = user
@@ -90,6 +92,7 @@
 
 /obj/item/clothing/neck/roguetown/bervor
 	name = "bervor"
+	desc = "A steel bervor designed to protect the neck."
 	icon_state = "bervor"
 	armor = list("blunt" = 90, "slash" = 100, "stab" = 80, "bullet" = 100, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
 	anvilrepair = /datum/skill/craft/armorsmithing
@@ -104,6 +107,7 @@
 
 /obj/item/clothing/neck/roguetown/gorget
 	name = "gorget"
+	desc = "An iron gorget to protect the neck."
 	icon_state = "gorget"
 	armor = list("blunt" = 90, "slash" = 100, "stab" = 80, "bullet" = 100, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
 	smeltresult = /obj/item/ingot/iron
@@ -114,11 +118,13 @@
 	body_parts_covered = NECK
 	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT, BCLASS_TWIST)
 	blocksound = PLATEHIT
+	clothing_flags = CANT_SLEEP_IN
 
 /obj/item/clothing/neck/roguetown/gorget/prisoner/Initialize()
 	. = ..()
 	name = "cursed collar"
 	ADD_TRAIT(src, TRAIT_NODROP, CURSED_ITEM_TRAIT)
+	clothing_flags = null
 
 /obj/item/clothing/neck/roguetown/gorget/prisoner/dropped(mob/living/carbon/human/user)
 	. = ..()
@@ -193,7 +199,7 @@
 		if(W && W.transformed == TRUE)
 			to_chat(H, span_userdanger("I can't equip the silver, it is my BANE!"))
 			H.Knockdown(20)
-			H.Paralyze(20)	
+			H.Paralyze(20)
 
 /obj/item/clothing/neck/roguetown/psicross/silver/mob_can_equip(mob/living/M, mob/living/equipper, slot, disable_warning = FALSE, bypass_equip_delay_self = FALSE)
 	. = ..()

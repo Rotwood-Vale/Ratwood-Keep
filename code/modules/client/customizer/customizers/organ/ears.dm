@@ -45,6 +45,17 @@
 		/datum/sprite_accessory/ears/cat_normal,
 		)
 
+/datum/customizer/organ/ears/axian
+	customizer_choices = list(/datum/customizer_choice/organ/ears/axian)
+
+/datum/customizer_choice/organ/ears/axian
+	name = "Axian Ears"
+	organ_type = /obj/item/organ/ears/akula
+	sprite_accessories = list(
+		/datum/sprite_accessory/ears/shark,
+		/datum/sprite_accessory/ears/sergal,
+		)
+
 /datum/customizer/organ/ears/cat
 	customizer_choices = list(/datum/customizer_choice/organ/ears/cat)
 
@@ -91,6 +102,7 @@
 		/datum/sprite_accessory/ears/otie,
 		/datum/sprite_accessory/ears/pede,
 		/datum/sprite_accessory/ears/sergal,
+		/datum/sprite_accessory/ears/shark,
 		/datum/sprite_accessory/ears/skunk,
 		/datum/sprite_accessory/ears/squirrel,
 		/datum/sprite_accessory/ears/wolf,
@@ -142,6 +154,7 @@
 		/datum/sprite_accessory/ears/otie,
 		/datum/sprite_accessory/ears/pede,
 		/datum/sprite_accessory/ears/sergal,
+		/datum/sprite_accessory/ears/shark,
 		/datum/sprite_accessory/ears/skunk,
 		/datum/sprite_accessory/ears/squirrel,
 		/datum/sprite_accessory/ears/wolf,

@@ -35,6 +35,7 @@
 
 /datum/intent/dagger/cut
 	name = "cut"
+	desc = "A simple iron dagger favored as a fallback weapon for archers and crossbowmen. Just as likely to be in the hands on an assassin or rogue too."
 	icon_state = "incut"
 	attack_verb = list("cuts", "slashes")
 	animname = "cut"
@@ -94,7 +95,7 @@
 /obj/item/rogueweapon/huntingknife/cleaver
 	force = 15
 	name = "cleaver"
-	desc = "Chop, chop, chop!"
+	desc = "A big, heavy knife designed to chop through meat with ease."
 	possible_item_intents = list(/datum/intent/dagger/cut, /datum/intent/dagger/chop/cleaver)
 	icon_state = "cleav"
 	icon = 'icons/roguetown/weapons/32.dmi'
@@ -104,7 +105,7 @@
 	slot_flags = ITEM_SLOT_HIP
 	thrown_bclass = BCLASS_CHOP
 	w_class = WEIGHT_CLASS_NORMAL
-	smeltresult = null
+	smeltresult = /obj/item/ingot/steel
 
 /obj/item/rogueweapon/huntingknife/cleaver/combat
 	force = 16
@@ -119,7 +120,7 @@
 	slot_flags = ITEM_SLOT_HIP
 	thrown_bclass = BCLASS_CHOP
 	w_class = WEIGHT_CLASS_NORMAL
-	smeltresult = null
+	smeltresult = /obj/item/ingot/steel
 
 /obj/item/rogueweapon/huntingknife/cleaver/getonmobprop(tag)
 	. = ..()
@@ -178,7 +179,6 @@
 	name = "silver dagger"
 	desc = "This silver dagger can be the banishment of vampires and werewolves."
 	icon_state = "sildagger"
-	smeltresult = null
 	sellprice = 50
 	smeltresult = /obj/item/ingot/silver
 	var/last_used = 0
@@ -191,10 +191,10 @@
 	if(ishuman(H))
 		if(H.mind.has_antag_datum(/datum/antagonist/vampirelord/lesser))
 			to_chat(H, span_userdanger("I can't pick up the silver, it is my BANE!"))
-			H.Knockdown(20)
-			H.adjustFireLoss(60)
-			H.Paralyze(20)
-			H.fire_act(1,5)
+			H.Knockdown(10)
+			H.Paralyze(10)
+			H.adjustFireLoss(25)
+			H.fire_act(1,10)
 		if(V_lord)
 			if(V_lord.vamplevel < 4 && !H.mind.has_antag_datum(/datum/antagonist/vampirelord/lesser))
 				to_chat(H, span_userdanger("I can't pick up the silver, it is my BANE!"))
@@ -202,9 +202,11 @@
 				H.Paralyze(10)
 		if(W && W.transformed == TRUE)
 			to_chat(H, span_userdanger("I can't pick up the silver, it is my BANE!"))
-			H.Knockdown(20)
-			H.Paralyze(20)
-			
+			H.Knockdown(10)
+			H.Paralyze(10)
+			H.adjustFireLoss(25)
+			H.fire_act(1,10)
+
 
 /obj/item/rogueweapon/huntingknife/idagger/silver/mob_can_equip(mob/living/M, mob/living/equipper, slot, disable_warning = FALSE, bypass_equip_delay_self = FALSE)
 	. = ..()
@@ -214,10 +216,10 @@
 		var/datum/antagonist/werewolf/W = H.mind.has_antag_datum(/datum/antagonist/werewolf/)
 		if(H.mind.has_antag_datum(/datum/antagonist/vampirelord/lesser))
 			to_chat(H, span_userdanger("I can't equip the silver, it is my BANE!"))
-			H.Knockdown(20)
-			H.adjustFireLoss(60)
-			H.Paralyze(20)
-			H.fire_act(1,5)
+			H.Knockdown(10)
+			H.Paralyze(10)
+			H.adjustFireLoss(25)
+			H.fire_act(1,10)
 		if(V_lord)
 			if(V_lord.vamplevel < 4 && !H.mind.has_antag_datum(/datum/antagonist/vampirelord/lesser))
 				to_chat(H, span_userdanger("I can't equip the silver, it is my BANE!"))
@@ -225,8 +227,10 @@
 				H.Paralyze(10)
 		if(W && W.transformed == TRUE)
 			to_chat(H, span_userdanger("I can't equip the silver, it is my BANE!"))
-			H.Knockdown(20)
-			H.Paralyze(20)
+			H.Knockdown(10)
+			H.Paralyze(10)
+			H.adjustFireLoss(25)
+			H.fire_act(1,10)
 
 
 /obj/item/rogueweapon/huntingknife/idagger/silver/funny_attack_effects(mob/living/target, mob/living/user = usr, nodmg)
@@ -243,38 +247,44 @@
 		var/datum/antagonist/vampirelord/V_lord = H.mind.has_antag_datum(/datum/antagonist/vampirelord/)
 		if(V)
 			if(V.disguised)
-				H.Stun(20)
+				H.Knockdown(10)
+				H.Paralyze(10)
 				H.visible_message("<font color='white'>The silver weapon manifests the [H] curse!</font>")
 				to_chat(H, span_userdanger("I'm hit by my BANE!"))
-				H.adjustFireLoss(30)
-				H.Paralyze(20)
-				H.fire_act(1,4)
+				H.adjustFireLoss(25)
+				H.fire_act(1,10)
 				H.apply_status_effect(/datum/status_effect/debuff/silver_curse)
 				src.last_used = world.time
 			else
 				H.Stun(20)
 				to_chat(H, span_userdanger("I'm hit by my BANE!"))
-				H.adjustFireLoss(30)
-				H.Paralyze(20)
-				H.fire_act(1,4)
+				H.Knockdown(10)
+				H.Paralyze(10)
+				H.adjustFireLoss(25)
+				H.fire_act(1,10)
 				H.apply_status_effect(/datum/status_effect/debuff/silver_curse)
 				src.last_used = world.time
 		if(V_lord)
 			if(V_lord.vamplevel < 4 && !V)
-				H.Stun(10)
+				H.Knockdown(10)
+				H.Paralyze(10)
 				to_chat(H, span_userdanger("I'm hit by my BANE!"))
 				H.adjustFireLoss(25)
-				H.Paralyze(10)
-				H.fire_act(1,4)
+				H.fire_act(1,10)
 				src.last_used = world.time
 			if(V_lord.vamplevel == 4 && !V)
 				s_user.Stun(10)
 				s_user.Paralyze(10)
+				s_user.adjustFireLoss(25)
+				s_user.fire_act(1,10)
 				to_chat(s_user, "<font color='red'> The silver weapon fails!</font>")
 				H.visible_message(H, span_userdanger("This feeble metal can't hurt me, I AM THE ANCIENT!"))
 		if(W && W.transformed == TRUE)
-			H.Stun(40)
-			H.Paralyze(40)
+			H.adjustFireLoss(25)
+			H.Paralyze(10)
+			H.Stun(10)
+			H.adjustFireLoss(25)
+			H.fire_act(1,10)
 			to_chat(H, span_userdanger("I'm hit by my BANE!"))
 			src.last_used = world.time
 

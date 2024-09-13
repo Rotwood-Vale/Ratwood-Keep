@@ -35,6 +35,19 @@
 				if(getOxyLoss() < 20)
 					heart_attacking = FALSE
 
+		var/cant_fall_asleep = FALSE
+		var/cause = " I just can't..."
+		for(var/obj/item/clothing/thing in get_equipped_items(FALSE))
+			if(thing.clothing_flags & CANT_SLEEP_IN)
+				cant_fall_asleep = TRUE
+				cause = " \The [thing] bothers me..."
+				break
+
+		if(HAS_TRAIT(src, TRAIT_NUDE_SLEEPER))
+			if(length(get_equipped_items()))
+				cause = " I need to be nude to be comfortable..."
+				cant_fall_asleep = TRUE
+
 		//Healing while sleeping in a bed
 		if(IsSleeping())
 			var/sleepy_mod = buckled?.sleepy || 0.5
@@ -60,27 +73,36 @@
 		else if(!IsSleeping() && !HAS_TRAIT(src, TRAIT_NOSLEEP))
 			// Resting on a bed or something
 			if(buckled?.sleepy)
-				if(eyesclosed)
+				if(eyesclosed && !cant_fall_asleep || (eyesclosed && !(fallingas >= 14 && cant_fall_asleep))) // its a little slop but im not sure on how to else
 					if(!fallingas)
 						to_chat(src, span_warning("I'll fall asleep soon..."))
 					fallingas++
+					if(HAS_TRAIT(src, TRAIT_FASTSLEEP))
+						fallingas++
 					if(fallingas > 15)
 						Sleeping(300)
+				else if(eyesclosed && fallingas >= 14 && cant_fall_asleep)
+					to_chat(src, span_boldwarning("I can't sleep...[cause]"))
+					fallingas = 1
 				else
 					rogstam_add(buckled.sleepy * 10)
 			// Resting on the ground (not sleeping or with eyes closed and about to fall asleep)
 			else if(!(mobility_flags & MOBILITY_STAND))
-				if(eyesclosed)
+				if(eyesclosed && !HAS_TRAIT(src, TRAIT_NUDE_SLEEPER) && !cant_fall_asleep || (eyesclosed && !HAS_TRAIT(src, TRAIT_NUDE_SLEEPER) && !(fallingas >= 14 && cant_fall_asleep)))
 					if(!fallingas)
 						to_chat(src, span_warning("I'll fall asleep soon, although a bed would be more comfortable..."))
 					fallingas++
+					if(HAS_TRAIT(src, TRAIT_FASTSLEEP))
+						fallingas++
 					if(fallingas > 25)
 						Sleeping(300)
+				else if(eyesclosed && fallingas >= 14 && cant_fall_asleep)
+					to_chat(src, span_boldwarning("I can't sleep...[cause]"))
+					fallingas = 1
 				else
 					rogstam_add(10)
 			else if(fallingas)
 				fallingas = 0
-			tiredness = min(tiredness + 1, 100)
 
 		handle_brain_damage()
 
@@ -116,7 +138,10 @@
 	if(HAS_TRAIT(src, TRAIT_NOPAIN))
 		return
 	if(!stat)
-		var/painpercent = get_complex_pain() / (STAEND * 10)
+		var/pain_threshold = STAEND * 10
+		if(has_flaw(/datum/charflaw/masochist)) // Masochists handle pain better by about 1 endurance point
+			pain_threshold += 10
+		var/painpercent = get_complex_pain() / pain_threshold
 		painpercent = painpercent * 100
 
 		if(world.time > mob_timers["painstun"])
@@ -175,7 +200,7 @@
 /mob/living/carbon/handle_inwater()
 	..()
 	if(!(mobility_flags & MOBILITY_STAND))
-		if(HAS_TRAIT(src, TRAIT_NOBREATH))
+		if(HAS_TRAIT(src, TRAIT_NOBREATH) || HAS_TRAIT(src, TRAIT_WATERBREATHING))
 			return TRUE
 		adjustOxyLoss(5)
 		emote("drown")
@@ -638,8 +663,8 @@ GLOBAL_LIST_INIT(ballmer_windows_me_msg, list("Yo man, what if, we like, uh, put
 	if(drowsyness)
 		drowsyness = max(drowsyness - restingpwr, 0)
 		blur_eyes(2)
-		if(prob(5))
-			AdjustSleeping(100)
+		if(drowsyness >= 100)
+			Sleeping(300)
 
 	//Jitteriness
 	if(jitteriness)
@@ -669,9 +694,6 @@ GLOBAL_LIST_INIT(ballmer_windows_me_msg, list("Yo man, what if, we like, uh, put
 
 	if(drunkenness)
 		drunkenness = max(drunkenness - (drunkenness * 0.04) - 0.01, 0)
-		if(drunkenness >= 1)
-			if(has_flaw(/datum/charflaw/addiction/alcoholic))
-				sate_addiction()
 		if(drunkenness >= 3)
 //			SEND_SIGNAL(src, COMSIG_ADD_MOOD_EVENT, "drunk", /datum/mood_event/drunk)
 			if(prob(3))
@@ -681,26 +703,12 @@ GLOBAL_LIST_INIT(ballmer_windows_me_msg, list("Yo man, what if, we like, uh, put
 			add_stress(/datum/stressevent/drunk)
 		else
 			remove_stress(/datum/stressevent/drunk)
+		if(drunkenness >= 8.5) // Roughly 2 cups
+			if(has_flaw(/datum/charflaw/addiction/alcoholic))
+				sate_addiction()
 		if(drunkenness >= 11 && slurring < 5)
 			slurring += 1.2
-/*
-		if(mind && (mind.assigned_role == "Scientist" || mind.assigned_role == "Research Director"))
-			if(SSresearch.science_tech)
-				if(drunkenness >= 12.9 && drunkenness <= 13.8)
-					drunkenness = round(drunkenness, 0.01)
-					var/ballmer_percent = 0
-					if(drunkenness == 13.35) // why run math if I dont have to
-						ballmer_percent = 1
-					else
-						ballmer_percent = (-abs(drunkenness - 13.35) / 0.9) + 1
-					if(prob(5))
-						say(pick(GLOB.ballmer_good_msg), forced = "ballmer")
-					SSresearch.science_tech.add_point_list(list(TECHWEB_POINT_TYPE_GENERIC = BALLMER_POINTS * ballmer_percent))
-				if(drunkenness > 26) // by this point you're into windows ME territory
-					if(prob(5))
-						SSresearch.science_tech.remove_point_list(list(TECHWEB_POINT_TYPE_GENERIC = BALLMER_POINTS))
-						say(pick(GLOB.ballmer_windows_me_msg), forced = "ballmer")
-*/
+
 		if(drunkenness >= 41)
 			if(prob(25))
 				confused += 2

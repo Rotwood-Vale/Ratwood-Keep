@@ -5,9 +5,11 @@
 	possible_transfer_amounts = list(5, 10, 15, 20, 25, 30, 50)
 	volume = 50
 	reagent_flags = OPENCONTAINER|REFILLABLE
+	obj_flags = CAN_BE_HIT
 	spillable = TRUE
 	possible_item_intents = list(INTENT_GENERIC, /datum/intent/fill, INTENT_POUR, INTENT_SPLASH)
 	resistance_flags = ACID_PROOF
+	w_class = WEIGHT_CLASS_SMALL
 
 /datum/intent/fill
 	name = "fill"
@@ -57,7 +59,6 @@
 
 				if(isturf(target) && reagents.reagent_list.len && thrownby)
 					log_combat(thrownby, target, "splashed (thrown) [english_list(reagents.reagent_list)]")
-					message_admins("[ADMIN_LOOKUPFLW(thrownby)] splashed (thrown) [english_list(reagents.reagent_list)] on [target] at [ADMIN_VERBOSEJMP(target)].")
 				reagents.reaction(M, TOUCH)
 				log_combat(user, M, "splashed", R)
 				reagents.clear_reagents()
@@ -171,8 +172,8 @@
 /obj/item/reagent_containers/glass/attackby(obj/item/I, mob/user, params)
 	var/hotness = I.get_temperature()
 	if(hotness && reagents)
-		reagents.expose_temperature(hotness)
-		to_chat(user, span_notice("I heat [name] with [I]!"))
+		src.reagents.expose_temperature(hotness)
+		to_chat(user, span_notice("I heat [src] with [I]!"))
 
 	if(istype(I, /obj/item/reagent_containers/food/snacks/egg)) //breaking eggs
 		var/obj/item/reagent_containers/food/snacks/egg/E = I
@@ -533,6 +534,7 @@
 	icon_state = "pestle"
 	dropshrink = 0.65
 	force = 7
+	w_class = WEIGHT_CLASS_SMALL
 
 /obj/item/reagent_containers/glass/mortar
 	name = "mortar"
@@ -588,7 +590,7 @@
 				to_chat(user, span_warning("[src] is full."))
 				return
 			user.visible_message(span_notice("[user] pours [I] into [src]."), \
-							span_notice("I pour I] into [src]."))
+							span_notice("I pour [I] into [src]."))
 			if(user.m_intent != MOVE_INTENT_SNEAK)
 				if(poursounds)
 					playsound(user.loc,pick(poursounds), 100, TRUE)

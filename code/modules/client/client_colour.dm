@@ -24,11 +24,16 @@
 /mob/proc/add_client_colour(colour_type)
 	if(!ispath(colour_type, /datum/client_colour))
 		return
+	
+	var/datum/client_colour/CC = get_client_color(colour_type)
+	if(CC)
+		return CC
 
-	var/datum/client_colour/CC = new colour_type()
-	client_colours |= CC
+	CC = new colour_type()
+	client_colours += CC
 	sortTim(client_colours, GLOBAL_PROC_REF(cmp_clientcolour_priority))
 	update_client_colour()
+	return CC
 
 
 /*
@@ -61,6 +66,15 @@
 	var/datum/client_colour/CC = client_colours[1]
 	if(CC)
 		client.color = CC.colour
+
+/mob/proc/get_client_color(client_color_type)
+	if(!client)
+		return null
+	for(var/datum/client_colour/cc as anything in client_colours)
+		if(cc.type != client_color_type)
+			continue
+		return cc
+	return null
 
 /datum/client_colour/glass_colour
 	priority = 0
@@ -105,22 +119,26 @@
 
 /datum/client_colour/test1
 	colour = list(1,1,1,0.5, 1,1,1,0.5, 1,1,1,0.5)
-	priority = 1
+	priority = 2
 
 /datum/client_colour/test2
 	colour = list(0.8,0.2,0.2, 0.2,0.8,0.3, 0.2,0.3,0.8)
-	priority = 1
+	priority = 2
 
 /datum/client_colour/test3
 	colour = list(1,1,1, 1,1,1, 1,1,1)
-	priority = 1
+	priority = 2
 
 /datum/client_colour/maniac_marked
 	colour = list(1,0,0, 0,1,0, 0,0,1.5)
-	priority = 0
+	priority = 1
 
 /datum/client_colour/monochrome/trance
-	priority = 1
+	priority = 2
 
 /datum/client_colour/monochrome/blind
-	priority = 1
+	priority = 2
+
+/datum/client_colour/stress_fade
+	colour = list(1,0,0,0, 0,1,0,0, 0,0,1,0, 0,0,0,1, 0,0,0,0)
+	priority = 0

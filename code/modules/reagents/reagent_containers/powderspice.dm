@@ -148,10 +148,11 @@
 	gender = PLURAL
 	icon_state = "flour"
 	list_reagents = list(/datum/reagent/floure = 1)
+	grind_results = list(/datum/reagent/floure = 10)
 	volume = 1
 	sellprice = 0
 /datum/reagent/floure
-	name = "flower"
+	name = "flour"
 	description = ""
 	color = "#FFFFFF" // rgb: 96, 165, 132
 
@@ -165,6 +166,16 @@
 	new /obj/effect/decal/cleanable/food/flour(get_turf(src))
 	..()
 	qdel(src)
+
+/datum/chemical_reaction/graintopowder
+	name = "Powder Piling"
+	id = "powderpiling"
+	required_reagents = list(/datum/reagent/floure = 10)
+
+/datum/chemical_reaction/graintopowder/on_reaction(datum/reagents/holder, created_volume)
+	var/location = get_turf(holder.my_atom)
+	for(var/i = 1, i <= created_volume, i++)
+		new /obj/item/reagent_containers/powder/flour(location)
 
 /obj/item/reagent_containers/powder/salt
 	name = "salt"
@@ -233,6 +244,7 @@
 	. = 1
 
 /datum/reagent/moondust/on_mob_metabolize(mob/living/M)
+	narcolepsy_drug_up(M)
 	M.flash_fullscreen("can_you_see")
 	animate(M.client, pixel_y = 1, time = 1, loop = -1, flags = ANIMATION_RELATIVE)
 	animate(pixel_y = -1, time = 1, flags = ANIMATION_RELATIVE)
@@ -241,8 +253,11 @@
 	animate(M.client)
 
 /datum/reagent/moondust/on_mob_life(mob/living/carbon/M)
+	narcolepsy_drug_up(M)
 	if(M.reagents.has_reagent(/datum/reagent/moondust_purest))
 		M.Sleeping(40, 0)
+	else
+		M.Sleeping(-40)
 	if(M.has_flaw(/datum/charflaw/addiction/junkie))
 		M.sate_addiction()
 	M.apply_status_effect(/datum/status_effect/buff/moondust)
@@ -281,6 +296,7 @@
 	. = 1
 
 /datum/reagent/moondust_purest/on_mob_metabolize(mob/living/M)
+	narcolepsy_drug_up(M)
 	M.playsound_local(M, 'sound/ravein/small/hello_my_friend.ogg', 100, FALSE)
 	M.flash_fullscreen("can_you_see")
 	M.overlay_fullscreen("purest_kaif", /atom/movable/screen/fullscreen/purest)
@@ -292,8 +308,11 @@
 	M.clear_fullscreen("purest_kaif")
 
 /datum/reagent/moondust_purest/on_mob_life(mob/living/carbon/M)
+	narcolepsy_drug_up(M)
 	if(M.reagents.has_reagent(/datum/reagent/moondust))
 		M.Sleeping(40, 0)
+	else
+		M.Sleeping(-40)
 	if(M.has_flaw(/datum/charflaw/addiction/junkie))
 		M.sate_addiction()
 	M.apply_status_effect(/datum/status_effect/buff/moondust_purest)

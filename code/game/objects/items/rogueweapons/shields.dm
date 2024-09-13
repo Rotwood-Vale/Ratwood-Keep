@@ -28,6 +28,7 @@
 	blade_dulling = DULLING_BASHCHOP
 	anvilrepair = /datum/skill/craft/armorsmithing
 	COOLDOWN_DECLARE(shield_bang)
+	w_class = WEIGHT_CLASS_BULKY
 
 
 /obj/item/rogueweapon/shield/attackby(obj/item/attackby_item, mob/user, params)

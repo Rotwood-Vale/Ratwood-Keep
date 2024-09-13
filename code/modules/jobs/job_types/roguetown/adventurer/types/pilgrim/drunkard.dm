@@ -1,15 +1,15 @@
-/datum/advclass/drunkard
+/datum/advclass/gambler
 	name = "Gambler"
 	tutorial = "You are a gambler. Everyone in your life has given up on you, and the stress of losing it all over and over has taken its toll on your body. All you have left to your name are some cards, dice and whatever is in this bottle. At least you're still in Baotha's good graces, whether you reciprocate such feelings or not..."
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
-	outfit = /datum/outfit/job/roguetown/adventurer/drunkard
+	outfit = /datum/outfit/job/roguetown/adventurer/gambler
 	category_tags = list(CTAG_TOWNER)
 
-/datum/outfit/job/roguetown/adventurer/drunkard
+/datum/outfit/job/roguetown/adventurer/gambler
 	allowed_patrons = list(/datum/patron/inhumen/baotha, /datum/patron/divine/xylix)
 
-/datum/outfit/job/roguetown/adventurer/drunkard/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/job/roguetown/adventurer/gambler/pre_equip(mob/living/carbon/human/H)
 	..()
 	if(H.mind)
 		pants = /obj/item/clothing/under/roguetown/tights/vagrant
@@ -29,7 +29,6 @@
 		H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/climbing, 2, TRUE) //Climbing into windows to steal drugs or booze.
-		H.mind.adjust_skillrank(/datum/skill/misc/lockpicking, 1, TRUE) //Breaking into the houses of anyone who ever loved them.
 		H.change_stat("intelligence", -2)
 		H.change_stat("constitution", 1)
 		H.change_stat("strength", 1)

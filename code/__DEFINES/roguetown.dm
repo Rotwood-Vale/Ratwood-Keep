@@ -34,8 +34,6 @@
 	/datum/species/dracon,
 
 #define RACES_TOLERATED \
-	/datum/species/elf/dark,\
-	/datum/species/tieberian,\
 	/datum/species/lizardfolk,\
 	/datum/species/tabaxi,\
 	/datum/species/akula,\
@@ -43,14 +41,20 @@
 	/datum/species/demihuman
 
 #define RACES_SHUNNED \
-	/datum/species/halforc,\
+	/datum/species/elf/dark,\
+	/datum/species/tieberian,\
 	/datum/species/anthromorphsmall,\
 	/datum/species/kobold
+
+#define RACES_VERY_SHUNNED \
+	/datum/species/halforc
 
 #define RACES_DESPISED \
 	/datum/species/goblinp,\
 
-#define RACES_ALL_KINDS list(RACES_DESPISED, RACES_SHUNNED, RACES_TOLERATED, RACES_RESPECTED)
+#define RACES_ALL_KINDS list(RACES_DESPISED, RACES_SHUNNED, RACES_TOLERATED, RACES_VERY_SHUNNED, RACES_RESPECTED)
+
+#define RACES_VERY_SHUNNED_UP list(RACES_SHUNNED, RACES_TOLERATED, RACES_VERY_SHUNNED, RACES_RESPECTED)
 
 #define RACES_SHUNNED_UP list(RACES_SHUNNED, RACES_TOLERATED, RACES_RESPECTED)
 
@@ -199,6 +203,7 @@ GLOBAL_LIST_EMPTY(job_respawn_delays)
 #define CTAG_ANTAG 			"CAT_ANTAG"  		// Antag class - results in an antag
 #define CTAG_BANDIT			"CAT_BANDIT"		// Bandit class - Tied to the bandit antag really
 #define CTAG_CHALLENGE 		"CAT_CHALLENGE"  	// Challenge class - Meant to be free for everyone
+#define CTAG_MERCENARY 		"CAT_MERCENARY" 	// Mercs
 
 /*
 	Defines for the triumph buy datum categories

@@ -25,6 +25,21 @@
 /turf
 	var/list/grabbedby = list()
 
+/obj/item/grabbing/Initialize()
+	. = ..()
+	START_PROCESSING(SSfastprocess, src)
+
+/obj/item/grabbing/process()
+	valid_check()
+
+/obj/item/grabbing/proc/valid_check()
+	// We require adjacency to count the grab as valid
+	if(grabbee.Adjacent(grabbed))
+		return TRUE
+	grabbee.stop_pulling(FALSE)
+	qdel(src)
+	return FALSE
+
 /obj/item/grabbing/Click(location, control, params)
 	var/list/modifiers = params2list(params)
 	if(iscarbon(usr))
@@ -65,6 +80,7 @@
 		handaction = null
 
 /obj/item/grabbing/Destroy()
+	STOP_PROCESSING(SSfastprocess, src)
 	if(isobj(grabbed))
 		var/obj/I = grabbed
 		I.grabbedby -= src
@@ -87,6 +103,15 @@
 
 /obj/item/grabbing/dropped(mob/living/user, show_message = TRUE)
 	SHOULD_CALL_PARENT(FALSE)
+	// Dont stop the pull if another hand grabs the person
+	if(user.r_grab == src)
+		if(user.l_grab && user.l_grab.grabbed == user.r_grab.grabbed)
+			qdel(src)
+			return
+	if(user.l_grab == src)
+		if(user.r_grab && user.r_grab.grabbed == user.l_grab.grabbed)
+			qdel(src)
+			return
 	if(grabbed == user.pulling)
 		user.stop_pulling(FALSE)
 	if(!user.pulling)
@@ -100,6 +125,8 @@
 
 /obj/item/grabbing/attack(mob/living/M, mob/living/user)
 	if(M != grabbed)
+		return FALSE
+	if(!valid_check())
 		return FALSE
 	user.changeNext_move(CLICK_CD_MELEE)
 	switch(user.used_intent.type)
@@ -182,6 +209,12 @@
 	var/mob/living/carbon/C = grabbed
 	var/armor_block = C.run_armor_check(limb_grabbed, "slash")
 	var/damage = user.get_punch_dmg()
+
+	if(limb_grabbed.status == BODYPART_ROBOTIC)
+		C.visible_message(span_notice("[user] twists [limb_grabbed] of [C], popping it out of the socket!"), span_notice("I pop [limb_grabbed] from [src]."))
+		limb_grabbed.drop_limb()
+		return
+
 	playsound(C.loc, "genblunt", 100, FALSE, -1)
 	C.next_attack_msg.Cut()
 	C.apply_damage(damage, BRUTE, limb_grabbed, armor_block)
@@ -240,6 +273,8 @@
 	return TRUE
 
 /obj/item/grabbing/attack_turf(turf/T, mob/living/user)
+	if(!valid_check())
+		return
 	user.changeNext_move(CLICK_CD_MELEE)
 	switch(user.used_intent.type)
 		if(/datum/intent/grab/move)
@@ -270,6 +305,8 @@
 						smashlimb(T, user)
 
 /obj/item/grabbing/attack_obj(obj/O, mob/living/user)
+	if(!valid_check())
+		return
 	user.changeNext_move(CLICK_CD_MELEE)
 	if(user.used_intent.type == /datum/intent/grab/smash)
 		if(isstructure(O) && O.blade_dulling != DULLING_CUT)
@@ -359,6 +396,8 @@
 
 /obj/item/grabbing/bite/Click(location, control, params)
 	var/list/modifiers = params2list(params)
+	if(!valid_check())
+		return
 	if(iscarbon(usr))
 		var/mob/living/carbon/C = usr
 		if(C != grabbee || C.incapacitated() || C.stat == DEAD)
@@ -373,12 +412,6 @@
 		else
 			drinklimb(C)
 	return 1
-
-/obj/item/grabbing/bite/process()
-	..()
-	if(!grabbee.Adjacent(grabbed))
-		qdel(src)
-		return
 
 /obj/item/grabbing/bite/proc/bitelimb(mob/living/carbon/human/user) //implies limb_grabbed and sublimb are things
 	if(!user.Adjacent(grabbed))
@@ -456,8 +489,9 @@
 			else
 				if(VVictim)
 					to_chat(user, span_warning("It's vitae, just like mine."))
-				else
+				else if (C.vitae_bank > 500)
 					C.blood_volume = max(C.blood_volume-45, 0)
+					C.vitae_bank -= 500
 					if(ishuman(C))
 						var/mob/living/carbon/human/H = C
 						if(H.virginity)
@@ -465,11 +499,13 @@
 							if(VDrinker.isspawn)
 								VDrinker.handle_vitae(750, 750)
 							else
-								VDrinker.handle_vitae(1000)
+								VDrinker.handle_vitae(750)
 					if(VDrinker.isspawn)
 						VDrinker.handle_vitae(500, 500)
 					else
 						VDrinker.handle_vitae(500)
+				else
+					to_chat(user, span_warning("No more vitae from this blood..."))
 		else
 /*			if(VVictim)
 				to_chat(user, "<span class='notice'>A strange, sweet taste tickles my throat.</span>")

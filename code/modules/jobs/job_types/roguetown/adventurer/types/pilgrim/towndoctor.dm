@@ -2,7 +2,7 @@
 	name = "Barber Surgeon"
 	tutorial = "You are the closest thing to a doctor that the townsfolk here will ever meet. Wielding crude tools and accumulated knowledge, you have probably cut into as many people as the average Knight."
 	allowed_sexes = list(MALE, FEMALE)
-	allowed_races = RACES_TOLERATED_UP
+	allowed_races = RACES_ALL_KINDS
 	outfit = /datum/outfit/job/roguetown/adventurer/doctor
 	category_tags = list(CTAG_PILGRIM, CTAG_TOWNER)
 	traits_applied = list(TRAIT_EMPATH, TRAIT_NOSTINK)
@@ -41,6 +41,7 @@
 		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
 		head = /obj/item/clothing/head/roguetown/armingcap
 
+	ADD_TRAIT(H, TRAIT_STEELHEARTED, "[type]")
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/combat/knives, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)

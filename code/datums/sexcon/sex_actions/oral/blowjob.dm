@@ -1,5 +1,6 @@
 /datum/sex_action/blowjob
 	name = "Suck them off"
+	check_same_tile = FALSE
 
 /datum/sex_action/blowjob/shows_on_menu(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(user == target)
@@ -23,14 +24,16 @@
 	user.visible_message(span_warning("[user] starts sucking [target]'s cock..."))
 
 /datum/sex_action/blowjob/on_perform(mob/living/carbon/human/user, mob/living/carbon/human/target)
-	user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] sucks [target]'s cock..."))
+	if(user.sexcon.do_message_signature("[type]"))
+		user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] sucks [target]'s cock..."))
 	user.make_sucking_noise()
+	do_thrust_animate(user, target)
 
 	user.sexcon.perform_sex_action(target, 2, 0, TRUE)
 	if(!target.sexcon.considered_limp())
 		user.sexcon.perform_deepthroat_oxyloss(user, 1.3)
 	if(target.sexcon.check_active_ejaculation())
-		target.visible_message(span_love("[target] cums into [user]'s mouth!"))
+		target.visible_message(span_lovebold("[target] cums into [user]'s mouth!"))
 		target.sexcon.cum_into()
 
 /datum/sex_action/blowjob/on_finish(mob/living/carbon/human/user, mob/living/carbon/human/target)

@@ -184,7 +184,7 @@ GLOBAL_LIST_INIT(roleplay_readme, world.file2list("strings/rt/rp_prompt.txt"))
 		if(!SSticker?.IsRoundInProgress())
 			to_chat(usr, span_boldwarning("The game is starting. You cannot join yet."))
 			return
-		
+
 		if(client && client.prefs.is_active_migrant())
 			to_chat(usr, span_boldwarning("You are in the migrant queue."))
 			return
@@ -392,11 +392,12 @@ GLOBAL_LIST_INIT(roleplay_readme, world.file2list("strings/rt/rp_prompt.txt"))
 	if(CONFIG_GET(flag/usewhitelist))
 		if(job.whitelist_req && !client.whitelisted())
 			return JOB_UNAVAILABLE_GENERIC
-	if(!job.bypass_jobban)
-		if(is_banned_from(ckey, rank))
-			return JOB_UNAVAILABLE_BANNED
-		if(client.blacklisted())
-			return JOB_UNAVAILABLE_BANNED
+	if(is_role_banned(client.ckey, job.title))
+		return JOB_UNAVAILABLE_BANNED
+	if(job.banned_leprosy && is_misc_banned(client.ckey, BAN_MISC_LEPROSY))
+		return JOB_UNAVAILABLE_BANNED
+	if(job.banned_lunatic && is_misc_banned(client.ckey, BAN_MISC_LUNATIC))
+		return JOB_UNAVAILABLE_BANNED
 	if(!job.player_old_enough(client))
 		return JOB_UNAVAILABLE_ACCOUNTAGE
 	if(job.required_playtime_remaining(client))
@@ -407,7 +408,7 @@ GLOBAL_LIST_INIT(roleplay_readme, world.file2list("strings/rt/rp_prompt.txt"))
 	if(!job.required || latejoin)
 		if(!isnull(job.min_pq) && (get_playerquality(ckey) < job.min_pq))
 			return JOB_UNAVAILABLE_GENERIC
-		if(!isnull(job.max_pq) && (get_playerquality(ckey) > job.max_pq))
+		if(!isnull(job.max_pq) && (get_playerquality(ckey) > job.max_pq) && !is_misc_banned(ckey, BAN_MISC_LUNATIC))
 			return JOB_UNAVAILABLE_GENERIC
 	var/datum/species/pref_species = client.prefs.pref_species
 	if(length(job.allowed_races) && !(pref_species.type in job.allowed_races))
@@ -464,6 +465,10 @@ GLOBAL_LIST_INIT(roleplay_readme, world.file2list("strings/rt/rp_prompt.txt"))
 
 	if(SSticker.late_join_disabled)
 		alert(src, "Something went bad.")
+		return FALSE
+
+	if(!client.prefs.allowed_respawn())
+		to_chat(src, span_boldwarning("You cannot respawn."))
 		return FALSE
 /*
 	var/arrivals_docked = TRUE
@@ -560,6 +565,8 @@ GLOBAL_LIST_INIT(roleplay_readme, world.file2list("strings/rt/rp_prompt.txt"))
 	else
 		GLOB.respawncounts[character.ckey] = 1
 //	add_roundplayed(character.ckey)
+	if(humanc)
+		try_apply_character_post_equipment(humanc)
 	log_manifest(character.mind.key,character.mind,character,latejoin = TRUE)
 
 /mob/dead/new_player/proc/AddEmploymentContract(mob/living/carbon/human/employee)
@@ -689,14 +696,6 @@ GLOBAL_LIST_INIT(roleplay_readme, world.file2list("strings/rt/rp_prompt.txt"))
 
 	var/mob/living/carbon/human/H = new(loc)
 
-	var/frn = CONFIG_GET(flag/force_random_names)
-	if(!frn)
-		frn = is_banned_from(ckey, "Appearance")
-		if(QDELETED(src))
-			return
-	if(frn)
-		client.prefs.random_character()
-
 	var/is_antag
 	if(mind in GLOB.pre_setup_antags)
 		is_antag = TRUE
@@ -737,6 +736,7 @@ GLOBAL_LIST_INIT(roleplay_readme, world.file2list("strings/rt/rp_prompt.txt"))
 		var/area/joined_area = get_area(new_character.loc)
 		if(joined_area)
 			joined_area.on_joining_game(new_character)
+		new_character.update_fov_angles()
 		new_character = null
 		qdel(src)
 

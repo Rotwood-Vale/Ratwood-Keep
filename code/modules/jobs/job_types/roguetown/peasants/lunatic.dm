@@ -11,7 +11,8 @@
 	allowed_ages = list(AGE_ADULT, AGE_MIDDLEAGED, AGE_OLD)
 	outfit = /datum/outfit/job/roguetown/lunatic
 	bypass_lastclass = TRUE
-	bypass_jobban = FALSE
+	banned_leprosy = FALSE
+	banned_lunatic = FALSE
 	min_pq = null //This role is meant to be locked to only those with less than -15 PQ, then be unrollable once they hit -14 so they can roll Prisoner, don't fuck with this.
 	max_pq = -15
 	tutorial = "The Lunatic, shunned by society and a magnet for misfortune. Your task is simple yet perilous: survive by any means, though your very existence invites danger from every corner. Seek redemption through kindness and camaraderie; it's your quickest escape from this cursed plight. Tread carefully, for trust is hard-won and easily lost."

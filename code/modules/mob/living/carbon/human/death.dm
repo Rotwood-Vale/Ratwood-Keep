@@ -101,18 +101,13 @@
 				addomen(OMEN_NOPRIEST)
 //		if(yeae)
 //			if(mind)
-//				if((mind.assigned_role == "Lord") || (mind.assigned_role == "Priest") || (mind.assigned_role == "Guard Captain") || (mind.assigned_role == "Merchant"))
+//				if((mind.assigned_role == "Lord") || (mind.assigned_role == "Priest") || (mind.assigned_role == "Retinue Captain") || (mind.assigned_role == "Merchant"))
 //					addomen(OMEN_NOBLEDEATH)
 
 		if(!gibbed && yeae)
 			for(var/mob/living/carbon/human/HU in viewers(7, src))
 				if(HU.marriedto == src)
 					HU.adjust_triumphs(-1)
-//				if(HU != src && !HAS_TRAIT(HU, TRAIT_BLIND))
-//					if(!HAS_TRAIT(HU, TRAIT_ANTAG))
-//						if(HU.dna?.species && dna?.species)
-//							if(HU.dna.species.id == dna.species.id)
-//								HU.add_stress(/datum/stressevent/viewdeath)
 
 	. = ..()
 
