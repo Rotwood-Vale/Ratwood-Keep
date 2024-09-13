@@ -27,7 +27,8 @@
 	/datum/species/elf/wood,\
 	/datum/species/human/halfelf,\
 	/datum/species/dwarf/mountain,\
-	/datum/species/aasimar
+	/datum/species/aasimar,\
+	/datum/species/demihuman
 
 #define RACES_TOLERATED \
 	/datum/species/lupian,\
@@ -37,8 +38,7 @@
 	/datum/species/lizardfolk,\
 	/datum/species/tabaxi,\
 	/datum/species/akula,\
-	/datum/species/anthromorph,\
-	/datum/species/demihuman
+	/datum/species/anthromorph
 
 #define RACES_SHUNNED \
 	/datum/species/elf/dark,\
