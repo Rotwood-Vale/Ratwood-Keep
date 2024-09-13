@@ -77,6 +77,7 @@
 #include "code\__DEFINES\musicsystem.dm"
 #include "code\__DEFINES\nanites.dm"
 #include "code\__DEFINES\networks.dm"
+#include "code\__DEFINES\nutrition.dm"
 #include "code\__DEFINES\obj_flags.dm"
 #include "code\__DEFINES\omens.dm"
 #include "code\__DEFINES\pinpointers.dm"
