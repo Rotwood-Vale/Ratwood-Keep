@@ -340,10 +340,11 @@
 	name = "navaja"
 	desc = "A folding Zybantian knife used by merchants, mercenaries, peasants, nobles...the long hilt allows for a sizeable blade with good reach."
 	force = 5
-	icon_state = "navajo_c"
+	icon_state = "navaja_c"
 	item_state = "elfdag"
 	var/extended = 0
 	wdefense = 2
+	sellprice = 30 //shiny :o
 
 /obj/item/rogueweapon/huntingknife/idagger/navaja/attack_self(mob/user)
 	extended = !extended
@@ -353,7 +354,7 @@
 		wdefense = 6
 		w_class = WEIGHT_CLASS_NORMAL
 		throwforce = 23
-		icon_state = "navajo_o"
+		icon_state = "navaja_o"
 		attack_verb = list("slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
 		sharpness = IS_SHARP
 		playsound(user, 'sound/items/knife_open.ogg', 100, TRUE)
@@ -361,7 +362,7 @@
 		force = 5
 		w_class = WEIGHT_CLASS_SMALL
 		throwforce = 5
-		icon_state = "navajo_c"
+		icon_state = "navaja_c"
 		attack_verb = list("stubbed", "poked")
 		sharpness = IS_BLUNT
 		wdefense = 2
