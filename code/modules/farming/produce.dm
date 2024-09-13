@@ -157,7 +157,7 @@
 	var/color_index = "good"
 	can_distill = TRUE
 	distill_reagent = /datum/reagent/consumable/ethanol/beer/wine
-	rotprocess = 15 MINUTES
+	rotprocess = 10 MINUTES
 
 /obj/item/reagent_containers/food/snacks/grown/berries/rogue/Initialize()
 	if(GLOB.berrycolors[color_index])
@@ -272,6 +272,7 @@
 	dropshrink = 0.75
 	filling_color = "#f5f2d9"
 	bitesize_mod = 2
+	mill_result = /obj/item/reagent_containers/powder/sugar
 	foodtype = SUGAR
 	tastes = list("sugar" = 1)
 	grind_results = list(/datum/reagent/sugar = 10)

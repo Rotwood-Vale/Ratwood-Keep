@@ -14,7 +14,7 @@
 // 	name = "butter"
 // 	reqs = list(
 // 		/datum/reagent/consumable/milk = 15,
-// 		/obj/item/reagent_containers/powder/flour/salt = 1)
+// 		/obj/item/reagent_containers/powder/salt = 1)
 // 	result = /obj/item/reagent_containers/food/snacks/butter
 // 	tools = list(/obj/item/reagent_containers/glass/bucket/wooden)
 
@@ -24,7 +24,7 @@
 // 	name = "fresh cheese"
 // 	reqs = list(
 // 		/datum/reagent/consumable/milk = 5,
-// 		/obj/item/reagent_containers/powder/flour/salt = 1)
+// 		/obj/item/reagent_containers/powder/salt = 1)
 // 	result = list(/obj/item/reagent_containers/food/snacks/rogue/cheese,
 // 				/obj/item/reagent_containers/food/snacks/rogue/cheese,
 // 				/obj/item/reagent_containers/food/snacks/rogue/cheese)

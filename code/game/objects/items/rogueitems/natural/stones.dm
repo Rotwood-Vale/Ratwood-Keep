@@ -131,6 +131,7 @@ GLOBAL_LIST_INIT(stone_personality_descs, list(
 	desc = "A piece of rough ground stone."
 	gripped_intents = null
 	dropshrink = 0.75
+	mill_result = /obj/item/reagent_containers/powder/salt
 	possible_item_intents = list(INTENT_GENERIC)
 	force = 10
 	throwforce = 15
@@ -341,7 +342,7 @@ GLOBAL_LIST_INIT(stone_personality_descs, list(
 	mineralType = /obj/item/rogueore/coal
 
 /obj/item/natural/rock/salt
-	mineralType = /obj/item/reagent_containers/powder/flour/salt
+	mineralType = /obj/item/reagent_containers/powder/salt
 
 /obj/item/natural/rock/gem
 	mineralType = /obj/item/roguegem/random

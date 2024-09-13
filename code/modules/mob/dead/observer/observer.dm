@@ -103,7 +103,7 @@ GLOBAL_VAR_INIT(observer_default_invisibility, INVISIBILITY_OBSERVER)
 			if(O.density && !O.climbable)
 				if(!misting)
 					return
-		for(var/obj/item/reagent_containers/powder/flour/salt/S in T)
+		for(var/obj/item/reagent_containers/powder/salt/S in T)
 //			go2hell()
 //			next_gmove = world.time + 30
 			return

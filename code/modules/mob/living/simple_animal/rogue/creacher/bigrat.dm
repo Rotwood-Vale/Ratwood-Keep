@@ -38,7 +38,7 @@
 	deaggroprob = 0
 	defprob = 40
 	defdrain = 10
-	attack_same = 1
+	attack_same = FALSE
 	retreat_health = 0.3
 	aggressive = 1
 	stat_attack = UNCONSCIOUS

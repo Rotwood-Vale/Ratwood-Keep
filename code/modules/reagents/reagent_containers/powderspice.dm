@@ -193,9 +193,9 @@
 /datum/chemical_reaction/salttopowder/on_reaction(datum/reagents/holder, created_volume)
 	var/location = get_turf(holder.my_atom)
 	for(var/i = 1, i <= created_volume, i++)
-		new /obj/item/reagent_containers/powder/flour/salt(location)
+		new /obj/item/reagent_containers/powder/salt(location)
 
-/obj/item/reagent_containers/powder/flour/salt
+/obj/item/reagent_containers/powder/salt
 	name = "salt"
 	desc = ""
 	gender = PLURAL

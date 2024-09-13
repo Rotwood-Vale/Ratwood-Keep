@@ -3,6 +3,7 @@
 	var/d_type = "blunt"
 //#ifdef TESTSERVER
 	var/force_reupdate_inhand = TRUE
+	var/mill_result = null
 //#else
 //	var/force_reupdate_inhand = FALSE
 //#endif

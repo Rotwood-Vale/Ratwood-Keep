@@ -27,7 +27,7 @@
 	craftdiff = -2
 	time = 3
 
-/datum/crafting_recipe/roguetown/sugar
+/*/datum/crafting_recipe/roguetown/sugar
 	name = "sugar"
 	result = /obj/item/reagent_containers/powder/sugar
 	reqs = list(/obj/item/reagent_containers/food/snacks/grown/sugarcane = 1)
@@ -37,15 +37,15 @@
 	craftdiff = -2
 	time = 3
 
-/datum/crafting_recipe/roguetown/saltpowder
+ /datum/crafting_recipe/roguetown/saltpowder
 	name = "ground salt"
-	result = /obj/item/reagent_containers/powder/flour/salt
+	result = /obj/item/reagent_containers/powder/salt
 	reqs = list(/obj/item/natural/stone = 1)
 	structurecraft = /obj/structure/fluff/millstone
 	verbage_simple = "mill"
 	verbage = "mills"
 	craftdiff = -2
-	time = 4
+	time = 4 */
 
 /datum/crafting_recipe/roguetown/structure/plough
 	name = "plough"

@@ -111,7 +111,7 @@
 /datum/roguestock/stockpile/salt
 	name = "Salt"
 	desc = "Rock salt useful for curing and cooking."
-	item_type = /obj/item/reagent_containers/powder/flour/salt
+	item_type = /obj/item/reagent_containers/powder/salt
 	held_items = list(2, 0)
 	payout_price = 3
 	withdraw_price = 5
