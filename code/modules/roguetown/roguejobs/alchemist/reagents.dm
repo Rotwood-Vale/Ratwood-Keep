@@ -75,17 +75,3 @@
 	color = "#ebebeb"
 	taste_description = "salty and tangy"
 	metabolization_rate = 0.1
-
-/datum/reagent/erpjuice/piss
-	name = "urine"
-	description = "A pale yellow, water like liquid."
-	reagent_state = LIQUID
-	color = "#f3db52d3"
-	taste_description = "piss"
-	metabolization_rate = 0.1
-
-/datum/reagent/erpjuice/piss/on_mob_life(mob/living/carbon/M)
-	if(!HAS_TRAIT(M, TRAIT_NASTY_EATER) || !HAS_TRAIT(M, TRAIT_CRACKHEAD))
-		M.add_nausea(3)
-		M.adjustToxLoss(1, 0)
-	return ..()
