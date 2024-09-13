@@ -1071,6 +1071,8 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	switch(punishment)
 		if(ADMIN_PUNISHMENT_LIGHTNING)
 			if(prob(75))
+				to_chat(target, span_danger("You hear the voice of Ravox in your head."))
+				
 				playsound(target, 'sound/misc/NOW.ogg', 75, FALSE)
 				sleep(4 SECONDS)
 			var/turf/T = get_step(get_step(target, NORTH), NORTH)
@@ -1079,7 +1081,8 @@ Traitors and the like can also be revived with the previous role mostly intact.
 			if(ishuman(target))
 				var/mob/living/carbon/human/H = target
 				H.electrocution_animation(40)
-			to_chat(target, span_danger("The ten have punished you for your sins!"))
+			to_chat(target, span_danger("The Ten have punished you for your sins!"))
+			target.visible_message(span_danger("[target] gets punished for their sins!"))
 		if(ADMIN_PUNISHMENT_BRAINDAMAGE)
 			target.adjustOrganLoss(ORGAN_SLOT_BRAIN, 199, 199)
 		if(ADMIN_PUNISHMENT_GIB)
