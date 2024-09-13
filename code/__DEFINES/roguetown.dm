@@ -27,7 +27,7 @@
 	/datum/species/elf/wood,\
 	/datum/species/human/halfelf,\
 	/datum/species/dwarf/mountain,\
-	/datum/species/aasimar\
+	/datum/species/aasimar
 
 #define RACES_TOLERATED \
 	/datum/species/lupian,\
@@ -42,12 +42,12 @@
 
 #define RACES_SHUNNED \
 	/datum/species/elf/dark,\
-	/datum/species/tieberian,\
-	/datum/species/anthromorphsmall,\
-	/datum/species/kobold
+	/datum/species/tieberian
 
 #define RACES_VERY_SHUNNED \
-	/datum/species/halforc
+	/datum/species/halforc,\
+	/datum/species/anthromorphsmall,\
+	/datum/species/kobold
 
 #define RACES_DESPISED \
 	/datum/species/goblinp,\
