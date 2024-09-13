@@ -462,6 +462,9 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 		return
 
 	if(twohands_required)
+		if(HAS_TRAIT(user, TRAIT_TINY))
+			to_chat(user, span_warning("[src] is too big for me to carry."))
+			return
 		if(user.get_num_arms() < 2)
 			to_chat(user, span_warning("[src] is too bulky to carry in one hand!"))
 			return
