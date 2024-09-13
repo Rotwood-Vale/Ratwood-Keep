@@ -199,7 +199,6 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	S["key_bindings"]		>> key_bindings
 	
 	S["defiant"]			>> defiant
-	S["erpform"]			>> erpform
 
 	//try to fix any outdated data if necessary
 	if(needs_update >= 0)
@@ -236,7 +235,6 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	pda_color		= sanitize_hexcolor(pda_color, 6, 1, initial(pda_color))
 	key_bindings 	= sanitize_islist(key_bindings, list())
 	defiant	= sanitize_integer(defiant, FALSE, TRUE, TRUE)
-	erpform = sanitize_integer(erpform, 0, 3, initial(erpform))
 
 	//ROGUETOWN
 	parallax = PARALLAX_INSANE
@@ -300,7 +298,6 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	WRITE_FILE(S["pda_color"], pda_color)
 	WRITE_FILE(S["key_bindings"], key_bindings)
 	WRITE_FILE(S["defiant"], defiant)
-	WRITE_FILE(S["erpform"], erpform)
 	return TRUE
 
 
@@ -420,6 +417,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	//Load prefs
 	S["job_preferences"] >> job_preferences
 	job_preferences = validate_job_prefs(job_preferences) //Make sure there are no redundant jobs
+	S["erpform"] >> erpform
 	//Quirks
 	S["all_quirks"] >> all_quirks
 
@@ -479,6 +477,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	features["feature_lizard_legs"]	= sanitize_inlist(features["legs"], GLOB.legs_list, "Normal Legs")
 	S["body_markings"] >> body_markings
 	body_markings = SANITIZE_LIST(body_markings)
+	erpform = sanitize_integer(erpform, 0, 3, initial(erpform))
 	validate_body_markings()
 
 	S["descriptor_entries"] >> descriptor_entries
@@ -545,7 +544,6 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	WRITE_FILE(S["feature_mcolor2"]					, features["mcolor2"])
 	WRITE_FILE(S["feature_mcolor3"]					, features["mcolor3"])
 	WRITE_FILE(S["feature_ethcolor"]					, features["ethcolor"])
-
 	//Custom names
 	for(var/custom_name_id in GLOB.preferences_custom_names)
 		var/savefile_slot_name = custom_name_id + "_name" //TODO remove this
@@ -558,6 +556,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	WRITE_FILE(S["joblessrole"]		, joblessrole)
 	//Write prefs
 	WRITE_FILE(S["job_preferences"] , job_preferences)
+	WRITE_FILE(S["erpform"], erpform)
 
 	//Quirks
 	WRITE_FILE(S["all_quirks"]			, all_quirks)

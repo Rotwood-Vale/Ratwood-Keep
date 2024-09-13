@@ -91,6 +91,7 @@ GLOBAL_LIST_EMPTY(chosen_names)
 	var/list/randomise = list(RANDOM_UNDERWEAR = TRUE, RANDOM_UNDERWEAR_COLOR = TRUE, RANDOM_UNDERSHIRT = TRUE, RANDOM_SOCKS = TRUE, RANDOM_BACKPACK = TRUE, RANDOM_JUMPSUIT_STYLE = FALSE, RANDOM_SKIN_TONE = TRUE, RANDOM_EYE_COLOR = TRUE)
 	var/list/friendlyGenders = list("Male" = "male", "Female" = "female")
 	var/phobia = "spiders"
+	var/erpform = 2
 
 	var/list/custom_names = list()
 	var/preferred_ai_core_display = "Blue"
@@ -155,7 +156,6 @@ GLOBAL_LIST_EMPTY(chosen_names)
 	var/list/descriptor_entries = list()
 	var/list/custom_descriptors = list()
 	var/defiant = TRUE
-	var/erpform = 2
 	/// Tracker to whether the person has ever spawned into the round, for purposes of applying the respawn ban
 	var/has_spawned = FALSE
 
@@ -685,7 +685,7 @@ GLOBAL_LIST_EMPTY(chosen_names)
 	else if (erpform == 3)
 		dat += "<b>Sensual desires:</b> <a href='?_src_=prefs;preference=erp_form'>Long and emotive</a><br>"
 	else
-		dat += "<b>Sensual desires:</b> <a href='?_src_=prefs;preference=erp_form'>Indifferent</a><br>"
+		dat += "<b>Sensual desires:</b> <a href='?_src_=prefs;preference=erp_form'>Both short and emotive</a><br>"
 	dat += "<b>Be voice:</b> <a href='?_src_=prefs;preference=schizo_voice'>[(toggles & SCHIZO_VOICE) ? "Enabled":"Disabled"]</a>"
 	dat += "</td>"
 	dat += "</tr>"
@@ -1985,7 +1985,7 @@ Slots: [job.spawn_positions]</span>
 						to_chat(user, span_notice("You prefer to avoid superflous sexual encounters."))
 					else
 						erpform = 2
-						to_chat(user, span_notice("You do not mind how your sexual encounters unfold."))
+						to_chat(user, span_notice("You prefer your sexual encounters to be a mix between short and expressive."))
 						
 
 

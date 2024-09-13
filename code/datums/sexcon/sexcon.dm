@@ -450,7 +450,7 @@
 		else if(target.erpform == 3)
 			dat += "<center>Doing unto [target]'s ~|~ Partner seems to seek long, emotive intercourse</center>"
 		else
-			dat += "<center>Doing unto [target]'s</center>"
+			dat += "<center>Doing unto [target]'s ~|~ Partner seems to seek emotiveness and speed</center>"
 	if(current_action)
 		dat += "<center><a href='?src=[REF(src)];task=stop'>Stop</a></center>"
 	else
@@ -475,6 +475,15 @@
 			dat += "</tr><tr>"
 
 	dat += "</tr></table>"
+	if (user.erpform == 0)
+		dat += "<center>Sensual desires: <a href='?src=[REF(src)];task=erp_form_toggle'>Rare and infrequent</a></center>"
+	else if (user.erpform == 1)
+		dat += "<center>Sensual desires: <a href='?src=[REF(src)];task=erp_form_toggle'>Short and simple</a></center>"
+	else if (user.erpform == 3)
+		dat += "<center>Sensual desires: <a href='?src=[REF(src)];task=erp_form_toggle'>Long and emotive</a></center>"
+	else
+		dat += "<center>Sensual desires: <a href='?src=[REF(src)];task=erp_form_toggle'>Both short and emotive</a></center>"
+	
 	var/datum/browser/popup = new(user, "sexcon", "<center>Sate Desire</center>", 490, 550)
 	popup.set_content(dat.Join())
 	popup.open()
@@ -506,6 +515,15 @@
 			adjust_arousal_manual(-1)
 		if("toggle_finished")
 			do_until_finished = !do_until_finished
+		if("erp_form_toggle")
+			if(user.erpform == 0)
+				user.erpform = 1
+			else if(user.erpform == 2)
+				user.erpform = 3
+			else if(user.erpform == 3)
+				user.erpform = 0
+			else
+				user.erpform = 2
 	show_ui()
 
 /datum/sex_controller/proc/try_stop_current_action()
