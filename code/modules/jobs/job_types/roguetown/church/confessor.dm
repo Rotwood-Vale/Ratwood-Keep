@@ -11,7 +11,7 @@
 	allowed_patrons = list(
 		/datum/patron/old_god,
 		ALL_DIVINE_PATRONS,
-	)
+	) //gets set to old god.
 	traits_applied = list(TRAIT_DECEIVING_MEEKNESS)
 	tutorial = "'Break his leg', 'Knock out a tooth', 'shave her head'... \
 				All things you've been ordered to do by the Inquisitor countless times, \
