@@ -750,6 +750,7 @@
 		var/mob/living/mob_target = target
 		K.reagents.reaction(mob_target, TOUCH)
 		mob_target.Slowdown(10)
+		mob_target.log_message("has been hit by a water bolt from [key_name(src)]", LOG_ATTACK)
 	else if(istype(target, /obj/structure/soil))
 		var/obj/structure/soil/target_soil = target
 		target_soil.adjust_water(150)
