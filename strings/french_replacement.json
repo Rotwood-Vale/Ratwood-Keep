@@ -1,7 +1,8 @@
 {
     "full": {
         "no": "non",
-        "I'm ": "j'",
+        "yes": "oui",
+        "I'm": "j'",
         "a": "un",
         "and": "et",
         "the": "l'",
@@ -10,8 +11,17 @@
         "of": "de",
         "bye": ["adieu", "au revoir"],
         "mom": "mama",
+        "dad": "papa",
+        "good": "bon",
+        "bad": "mal",
+        "shit": "merde",
         "my": "mon",
-        "thanks": "merci"
+        "thanks": "merci",
+        "thank you": "merci",
+        "hello": ["'allo", "bonjour", "salut"],
+        "wine": "vin",
+        "what's": "quel est",
+        "who's": "qui est"
     },
     "start": {
 

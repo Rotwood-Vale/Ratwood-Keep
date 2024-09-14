@@ -8,20 +8,15 @@
         "is": "es",
         "in": "en",
         "the": "el",
-        "jerk": "weón",
-        "fool": "weón",
-        "idiot": "weón",
-        "mate": "weón",
-        "bro": "weón",
-        "dude": "weón",
-        "nimrod": "weón",
-        "gnerd": "weón",
-        "thing": "wea",
         "form of": "forma de",
         "shape of": "forma de"
     },
     "start": {
-        "friend": "weón"
+		"jerk": "weón",
+        "fool": "weón",
+        "idiot": "weón",
+		"nimrod": "weón",
+        "gnerd": "weón"
     },
     "end": {
 

@@ -2,9 +2,9 @@
 /obj/item/bomb
 	name = "bottle bomb"
 	desc = "Dangerous explosion, in a bottle."
-	icon_state = "bbomb"
-	icon = 'icons/roguetown/items/misc.dmi'
-	w_class = WEIGHT_CLASS_NORMAL
+	icon_state = "clear_bomb"
+	icon = 'icons/roguetown/items/cooking.dmi'
+	w_class = WEIGHT_CLASS_SMALL
 	//dropshrink = 0
 	throwforce = 0
 	slot_flags = ITEM_SLOT_HIP
@@ -28,7 +28,7 @@
 /obj/item/bomb/proc/light()
 	if(!lit)
 		START_PROCESSING(SSfastprocess, src)
-		icon_state = "bbomb-lit"
+		icon_state = "clear_bomb_lit"
 		lit = TRUE
 		playsound(src.loc, 'sound/items/firelight.ogg', 100)
 		if(ismob(loc))
