@@ -9,7 +9,7 @@
 /datum/migrant_pref/New(datum/preferences/passed_prefs)
 	. = ..()
 	prefs = passed_prefs
-
+	
 /datum/migrant_pref/proc/set_active(new_state, silent = FALSE)
 	if(active == new_state)
 		return

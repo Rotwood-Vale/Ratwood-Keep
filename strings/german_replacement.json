@@ -40,7 +40,6 @@
         "thanks": "danke",
         "thank you": "danke",
         "the": "die",
-        "thi": "tii",
         "ugly": "hässlich",
         "very": "sehr",
         "water": "wasser",
@@ -81,6 +80,6 @@
 
     },
     "syllable": {
-
+        "thi": "tii"
     }
 }
