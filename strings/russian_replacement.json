@@ -1,20 +1,5 @@
 {
     "full": {
-<<<<<<< HEAD
-
-    },
-    "start": {
-        "who": "whom"
-    },
-    "end": {
-
-    },
-    "syllable": {
-        "g": "'",
-        "h": "kh",
-        "i": "ee",
-        "r": "rr"
-=======
         "who": "whom",
         "yes": "da",
         "hello": "privyet"
@@ -27,6 +12,5 @@
     },
     "syllable": {
 
->>>>>>> origin/main
     }
 }

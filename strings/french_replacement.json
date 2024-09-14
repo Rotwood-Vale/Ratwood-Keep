@@ -1,12 +1,8 @@
 {
     "full": {
         "no": "non",
-<<<<<<< HEAD
-        "I'm ": "j'",
-=======
         "yes": "oui",
         "I'm": "j'",
->>>>>>> origin/main
         "a": "un",
         "and": "et",
         "the": "l'",
@@ -15,10 +11,6 @@
         "of": "de",
         "bye": ["adieu", "au revoir"],
         "mom": "mama",
-<<<<<<< HEAD
-        "my": "mon",
-        "thanks": "merci"
-=======
         "dad": "papa",
         "good": "bon",
         "bad": "mal",
@@ -30,7 +22,6 @@
         "wine": "vin",
         "what's": "quel est",
         "who's": "qui est"
->>>>>>> origin/main
     },
     "start": {
 
