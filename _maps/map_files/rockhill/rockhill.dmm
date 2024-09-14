@@ -1209,7 +1209,7 @@
 	name = "Cell Door";
 	lockid = "nightmaiden"
 	},
-/turf/open/floor/rogue/cobble,
+/turf/open/floor/rogue/cobble/mossy,
 /area/rogue/indoors/town/bath)
 "bjx" = (
 /obj/structure/bed/rogue/inn/wool,
@@ -5541,7 +5541,7 @@
 	lockid = "nightmaiden";
 	locked = 0
 	},
-/turf/open/floor/rogue/cobble,
+/turf/open/floor/rogue/cobble/mossy,
 /area/rogue/indoors/town/bath)
 "fkC" = (
 /turf/closed/wall/mineral/rogue/stone,
@@ -9192,8 +9192,8 @@
 /turf/open/floor/rogue/cobble,
 /area/rogue/indoors/town/dwarfin)
 "iYA" = (
-/obj/machinery/light/rogue/wallfire/candle/r,
-/turf/open/floor/rogue/blocks,
+/obj/structure/fluff/walldeco/chains,
+/turf/open/floor/rogue/dirt/road,
 /area/rogue/indoors/town/bath)
 "iZs" = (
 /obj/structure/table/wood{
@@ -67486,7 +67486,7 @@ kXQ
 kXQ
 bpD
 fsU
-gBt
+lgh
 aja
 mlJ
 cSU
@@ -67888,10 +67888,10 @@ kXQ
 kXQ
 bpD
 fsU
-gBt
+lgh
 bju
-mlJ
-mlJ
+lgh
+iYA
 fsU
 bpD
 bpD
@@ -70704,7 +70704,7 @@ bpD
 fsU
 otn
 oXU
-iYA
+oXU
 oXU
 kzS
 fsU
