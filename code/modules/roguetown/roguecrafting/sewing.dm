@@ -52,9 +52,9 @@
 	reqs = list(/obj/item/natural/cloth = 1)
 	craftdiff = 0
 
-/datum/crafting_recipe/roguetown/sewing/combattantecloak
-	name = "combattantecloak"
-	result = list(/obj/item/clothing/cloak/combattantecloak)
+/datum/crafting_recipe/roguetown/sewing/combattante
+	name = "combattante cloak"
+	result = list(/obj/item/clothing/cloak/combattante)
 	reqs = list(/obj/item/natural/cloth = 1)
 	craftdiff = 0
 
