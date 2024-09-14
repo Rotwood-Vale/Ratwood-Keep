@@ -58,3 +58,59 @@
 					/obj/item/seeds/berryrogue,
 					/obj/item/seeds/berryrogue/poison,
 				)
+
+/datum/supply_pack/rogue/seeds/vegetable
+	name = "Vegetable Garden"
+	cost = 30
+	contains = list(
+					/obj/item/seeds/cabbage,
+					/obj/item/seeds/onion,
+					/obj/item/seeds/garlic,
+					/obj/item/seeds/carrot,
+					/obj/item/seeds/potato,
+					/obj/item/seeds/radish,
+				)
+
+/datum/supply_pack/rogue/seeds/orchard
+	name = "Orchard Pack"
+	cost = 30
+	contains = list(
+					/obj/item/seeds/apple,
+					/obj/item/seeds/pear,
+					/obj/item/seeds/cherry,
+					/obj/item/seeds/nut,
+					/obj/item/seeds/olive,
+				)
+
+/datum/supply_pack/rogue/seeds/cashcrops
+	name = "Cash Crops"
+	cost = 30
+	contains = list(
+					/obj/item/seeds/rice,
+					/obj/item/seeds/bean,
+					/obj/item/seeds/peas,
+					/obj/item/seeds/tea,
+					/obj/item/seeds/beet,
+				)
+
+/datum/supply_pack/rogue/seeds/savoryfruits
+	name = "Savory Fruits"
+	cost = 30
+	contains = list(
+					/obj/item/seeds/eggplant,
+					/obj/item/seeds/tomato,
+					/obj/item/seeds/bellpepper,
+					/obj/item/seeds/cucumber,
+				)
+
+/datum/supply_pack/rogue/seeds/mushrooms
+	name = "Mushroom Spores"
+	cost = 20
+	contains = list(
+					/obj/item/seeds/mycelium/plumphelmet,
+					/obj/item/seeds/mycelium/plumphelmet,
+					/obj/item/seeds/mycelium/plumphelmet,
+					/obj/item/seeds/mycelium/plumphelmet,
+					/obj/item/seeds/mycelium/trippy,
+
+				)

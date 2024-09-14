@@ -17,12 +17,14 @@ GLOBAL_LIST_EMPTY(antagonists)
 	var/can_hijack = HIJACK_NEUTRAL //If these antags are alone on shuttle hijack happens.
 	var/antag_hud_type
 	var/antag_hud_name
-	var/list/confess_lines
+	var/list/confess_lines //RT: Lines said when tortured by an inquisitor.
 
 	//Antag panel properties
 	var/show_in_antagpanel = TRUE	//This will hide adding this antag type in antag panel, use only for internal subtypes that shouldn't be added directly but still show if possessed by mind
 	var/antagpanel_category = "Uncategorized"	//Antagpanel will display these together, REQUIRED
 	var/show_name_in_check_antagonists = FALSE //Will append antagonist name in admin listings - use for categories that share more than one antag type
+	
+	//RT: Whether or not this antag increases your votepwr in the end vote
 	var/increase_votepwr = TRUE
 
 /datum/antagonist/New()
