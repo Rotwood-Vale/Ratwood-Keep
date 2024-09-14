@@ -1,22 +1,17 @@
 {
     "full": {
+        "who": "whom",
         "myself": "Tabaxi"
     },
     "start": {
-        "who": "whom",
-        "a": "aa",
-        "e": "ee",
-        "o": "oo",
-        "u": "uu"
+
     },
     "end": {
 
     },
     "syllable": {
-        "f": "fv",
-        "m": "mm",
-        "v": "vv",
-        "x": "xx",
-        "r": "rr"
+        "m": "m̃",
+        "v": "ṽ",
+        "r": "r̃"
     }
 }
