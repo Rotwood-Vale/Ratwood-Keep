@@ -132,9 +132,9 @@
 	if(user.client.prefs.violated[victim.mind.key] && user.client.prefs.violated[victim.mind.key] + VIOLATED_ALLOWED_TIME >= world.time)
 		return
 	// ZAPED
-	to_chat(user, span_boldwarning(pick(list("I feel tainted...", "I feel less human..."))))
+	//to_chat(user, span_boldwarning(pick(list("I feel tainted...", "I feel less human...")))) ZAPE
 	log_combat(user, victim, "Initiated rape against")
-	adjust_playerquality(-4, user.ckey, reason = "Initiated rape on an AFK/resisting person.")
+	//adjust_playerquality(-4, user.ckey, reason = "Initiated rape on an AFK/resisting person.") ZAPE
 	user.client.prefs.violated[victim.mind.key] = world.time
 
 /datum/sex_controller/proc/adjust_speed(amt)
