@@ -1982,7 +1982,7 @@ Slots: [job.spawn_positions]</span>
 						to_chat(user, span_notice("You prefer your sexual encounters to be longer and expressive."))
 					else if(erpform == 3)
 						erpform = 0
-						to_chat(user, span_notice("You prefer to avoid superflous sexual encounters."))
+						to_chat(user, span_notice("You prefer to avoid superfluous sexual encounters."))
 					else
 						erpform = 2
 						to_chat(user, span_notice("You prefer your sexual encounters to be a mix between short and expressive."))
