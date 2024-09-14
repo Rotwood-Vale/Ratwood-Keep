@@ -9,6 +9,7 @@
 	spillable = TRUE
 	possible_item_intents = list(INTENT_GENERIC, /datum/intent/fill, INTENT_POUR, INTENT_SPLASH)
 	resistance_flags = ACID_PROOF
+	w_class = WEIGHT_CLASS_SMALL
 
 /datum/intent/fill
 	name = "fill"
@@ -533,6 +534,7 @@
 	icon_state = "pestle"
 	dropshrink = 0.65
 	force = 7
+	w_class = WEIGHT_CLASS_SMALL
 
 /obj/item/reagent_containers/glass/mortar
 	name = "mortar"

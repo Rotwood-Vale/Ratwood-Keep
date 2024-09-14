@@ -50,42 +50,58 @@
 		return
 
 	if(user.aimheight > 4)
-		if(!C.handcuffed)
-			if(C.get_num_arms(FALSE) || C.get_arm_ignore())
-				C.visible_message(span_warning("[user] is trying to tie [C]'s arms with [src.name]!"), \
-									span_userdanger("[user] is trying to tie my arms with [src.name]!"))
-
-				playsound(loc, cuffsound, 100, TRUE, -2)
-				if(do_mob(user, C, 60) && C.get_num_arms(FALSE))
-					apply_cuffs(C, user)
-					C.visible_message(span_warning("[user] ties [C] with [src.name]."), \
-										span_danger("[user] ties me up with [src.name]."))
-					SSblackbox.record_feedback("tally", "handcuffs", 1, type)
-
-					log_combat(user, C, "handcuffed")
-				else
-					to_chat(user, span_warning("I fail to tie up [C]!"))
-			else
-				to_chat(user, span_warning("[C] has no arms to tie up."))
+		try_cuff_arms(C, user)
+		return
 
 	if(user.aimheight <= 4)
-		if(!C.legcuffed)
-			if(C.get_num_legs(TRUE) == 2)
-				C.visible_message(span_warning("[user] is trying to tie [C]'s legs with [src.name]!"), \
-									span_userdanger("[user] is trying to tie my legs with [src.name]!"))
+		try_cuff_legs(C, user)
+		return
 
-				playsound(loc, cuffsound, 30, TRUE, -2)
-				if(do_mob(user, C, 60) && (C.get_num_legs(FALSE) < 2))
-					apply_cuffs(C, user)
-					C.visible_message(span_warning("[user] ties [C]'s legs with [src.name]."), \
-										span_danger("[user] ties my legs with [src.name]."))
-					SSblackbox.record_feedback("tally", "legcuffs", 1, type)
+/obj/item/rope/proc/try_cuff_arms(mob/living/carbon/C, mob/living/user)
+	if(C.handcuffed)
+		return
 
-					log_combat(user, C, "legcuffed", TRUE)
-				else
-					to_chat(user, span_warning("I fail to tie up [C]!"))
-			else
-				to_chat(user, span_warning("[C] is missing two or one legs."))
+	if(!(C.get_num_arms(FALSE) || C.get_arm_ignore()))
+		to_chat(user, span_warning("[C] has no arms to tie up."))
+		return
+
+	C.visible_message(span_warning("[user] is trying to tie [C]'s arms with [src.name]!"), \
+						span_userdanger("[user] is trying to tie my arms with [src.name]!"))
+	playsound(loc, cuffsound, 100, TRUE, -2)
+
+	if(!(do_mob(user, C, 60) && C.get_num_arms(FALSE)))
+		to_chat(user, span_warning("I fail to tie up [C]!"))
+		return
+
+	apply_cuffs(C, user)
+	C.visible_message(span_warning("[user] ties [C] with [src.name]."), \
+						span_danger("[user] ties me up with [src.name]."))
+	SSblackbox.record_feedback("tally", "handcuffs", 1, type)
+	log_combat(user, C, "handcuffed")
+
+/obj/item/rope/proc/try_cuff_legs(mob/living/carbon/C, mob/living/user)
+	if(C.legcuffed)
+		return
+
+	if(C.get_num_legs(FALSE) < 2)
+		to_chat(user, span_warning("[C] is missing two or one legs."))
+		return
+
+	C.visible_message(span_warning("[user] is trying to tie [C]'s legs with [src.name]!"), \
+						span_userdanger("[user] is trying to tie my legs with [src.name]!"))
+
+	playsound(loc, cuffsound, 30, TRUE, -2)
+
+	if(!do_mob(user, C, 60) || C.get_num_legs(FALSE) < 2)
+		to_chat(user, span_warning("I fail to tie up [C]!"))
+		return
+
+	apply_cuffs(C, user, TRUE)
+	C.visible_message(span_warning("[user] ties [C]'s legs with [src.name]."), \
+						span_danger("[user] ties my legs with [src.name]."))
+	SSblackbox.record_feedback("tally", "legcuffs", 1, type)
+
+	log_combat(user, C, "legcuffed", TRUE)
 
 /obj/item/rope/proc/apply_cuffs(mob/living/carbon/target, mob/user, leg = FALSE)
 	if(!leg)
