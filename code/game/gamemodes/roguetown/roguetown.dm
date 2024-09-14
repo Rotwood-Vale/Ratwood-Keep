@@ -192,7 +192,6 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "E
 	"Merchant",
 	"Priest",
 	"Knight")
-	restricted_races = list(/datum/species/seelie,)
 	var/num_bandits = 0
 	if(num_players() >= 10)
 		num_bandits = CLAMP(round(num_players() / 2), 25, 30)
@@ -223,28 +222,29 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "E
 		antag_candidates = get_players_for_role(ROLE_BANDIT)
 		if(antag_candidates.len)
 			for(var/i = 0, i < num_bandits, ++i)
-				var/datum/mind/bandaids = pick_n_take(antag_candidates)
-				if(!bandaids) // no candidates left as it cuts the list and sends something back
+				var/datum/mind/candidate = pick_n_take(antag_candidates)
+				if(!candidate) // no candidates left as it cuts the list and sends something back
 					break
-				if(!(bandaids in allantags)) // We don't want to double dip... I guess? Two birds one stone tho, A already bandit check would check pre_bandits
+				if(!(candidate in allantags)) // We don't want to double dip... I guess? Two birds one stone tho, A already bandit check would check pre_bandits
 					continue
-				if(bandaids.assigned_role in GLOB.noble_positions) // Job cat string stoppers
+				if(candidate.assigned_role in GLOB.noble_positions) // Job cat string stoppers
 					continue
-				if(bandaids.assigned_role in GLOB.church_positions) // Many of these guys vanishing would suck
+				if(candidate.assigned_role in GLOB.church_positions) // Many of these guys vanishing would suck
 					continue
-				if(bandaids.assigned_role in GLOB.yeoman_positions) // Many of these guys vanishing would suck
+				if(candidate.assigned_role in GLOB.yeoman_positions) // Many of these guys vanishing would suck
 					continue
-				if(usr.client.prefs.pref_species.type in restricted_races) //handles Seelie being restricted from bandits
+				if(candidate.current && isseelie(candidate.current))
 					continue
-				allantags -= bandaids
-				pre_bandits += bandaids
 
-				bandaids.assigned_role = "Bandit"
-				bandaids.special_role = ROLE_BANDIT
+				allantags -= candidate
+				pre_bandits += candidate
 
-				bandaids.restricted_roles = restricted_jobs.Copy() // For posterities sake
-				testing("[key_name(bandaids)] has been selected as a bandit")
-				log_game("[key_name(bandaids)] has been selected as a bandit")
+				candidate.assigned_role = "Bandit"
+				candidate.special_role = ROLE_BANDIT
+
+				candidate.restricted_roles = restricted_jobs.Copy() // For posterities sake
+				testing("[key_name(candidate)] has been selected as a bandit")
+				log_game("[key_name(candidate)] has been selected as a bandit")
 			for(var/antag in pre_bandits)
 				GLOB.pre_setup_antags |= antag
 			restricted_jobs = list() // We empty it here, but its also getting a new list on every relevant other pick proc rn so lol
