@@ -31,7 +31,7 @@
 	invocation = "*laugh"
 	invocation_type = "none" //can be none, whisper, emote and shout
 
-obj/effect/proc_holder/spell/targeted/static_room/cast(list/targets, mob/user = usr)
+/obj/effect/proc_holder/spell/targeted/static_room/cast(list/targets, mob/user = usr)
 	. = ..()
 	for(var/mob/living/carbon/CA in targets)
 		if(CA.has_status_effect(STATUS_EFFECT_STUN))
