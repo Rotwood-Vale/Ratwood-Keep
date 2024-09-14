@@ -18,6 +18,7 @@
 	r_sleeve_status = SLEEVE_NORMAL
 	l_sleeve_status = SLEEVE_NORMAL
 	flags_inv = HIDECROTCH
+	w_class = WEIGHT_CLASS_SMALL
 
 /obj/item/clothing/under/roguetown/AdjustClothes(mob/user)
 #ifdef MATURESERVER
@@ -134,6 +135,8 @@
 	smeltresult = /obj/item/ingot/steel
 	r_sleeve_status = SLEEVE_NOMOD
 	l_sleeve_status = SLEEVE_NOMOD
+	w_class = WEIGHT_CLASS_NORMAL
+	clothing_flags = CANT_SLEEP_IN
 
 /obj/item/clothing/under/roguetown/brayette
 	name = "brayette"
@@ -151,6 +154,8 @@
 	smeltresult = /obj/item/ingot/steel
 	r_sleeve_status = SLEEVE_NOMOD
 	l_sleeve_status = SLEEVE_NOMOD
+	w_class = WEIGHT_CLASS_SMALL
+	clothing_flags = CANT_SLEEP_IN
 
 /obj/item/clothing/under/roguetown/chainlegs/iron
 	icon_state = "ichain_legs"
@@ -173,6 +178,8 @@
 	anvilrepair = /datum/skill/craft/armorsmithing
 	r_sleeve_status = SLEEVE_NOMOD
 	l_sleeve_status = SLEEVE_NOMOD
+	w_class = WEIGHT_CLASS_BULKY
+	clothing_flags = CANT_SLEEP_IN
 
 /obj/item/clothing/under/roguetown/loincloth
 	name = "loincloth"

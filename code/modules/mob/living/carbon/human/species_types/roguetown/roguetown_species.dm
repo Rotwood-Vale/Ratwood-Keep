@@ -18,7 +18,7 @@
 #define REGEX_ENDWORD 3
 #define REGEX_ANY 4
 
-/datum/species/proc/handle_speech(datum/source, mob/speech_args)
+/datum/species/proc/handle_speech(datum/source, list/speech_args)
 	var/message = speech_args[SPEECH_MESSAGE]
 
 	message = treat_message_accent(message, strings("accent_universal.json", "universal"), REGEX_FULLWORD)
@@ -31,7 +31,7 @@
 	speech_args[SPEECH_MESSAGE] = trim(message)
 
 
-/proc/treat_message_accent(message, list/accent_list, chosen_regex(1, 2, 3, 4))
+/proc/treat_message_accent(message, list/accent_list, chosen_regex)
 	if(!message)
 		return
 	if(!accent_list)

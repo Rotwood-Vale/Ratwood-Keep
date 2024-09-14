@@ -1,5 +1,6 @@
 {
     "full": {
+<<<<<<< HEAD
 
     },
     "start": {
@@ -13,5 +14,19 @@
         "h": "kh",
         "i": "ee",
         "r": "rr"
+=======
+        "who": "whom",
+        "yes": "da",
+        "hello": "privyet"
+    },
+    "start": {
+        "c": "k"
+    },
+    "end": {
+
+    },
+    "syllable": {
+
+>>>>>>> origin/main
     }
 }

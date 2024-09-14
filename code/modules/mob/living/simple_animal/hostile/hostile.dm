@@ -58,7 +58,7 @@
 
 	var/next_seek
 
-	cmode = 1
+	cmode = TRUE
 	setparrytime = 30
 	dodgetime = 30
 

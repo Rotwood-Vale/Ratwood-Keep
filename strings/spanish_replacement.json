@@ -8,6 +8,7 @@
         "is": "es",
         "in": "en",
         "the": "el",
+<<<<<<< HEAD
         "jerk": "weón",
         "fool": "weón",
         "idiot": "weón",
@@ -17,11 +18,21 @@
         "nimrod": "weón",
         "gnerd": "weón",
         "thing": "wea",
+=======
+>>>>>>> origin/main
         "form of": "forma de",
         "shape of": "forma de"
     },
     "start": {
+<<<<<<< HEAD
         "friend": "weón"
+=======
+		"jerk": "weón",
+        "fool": "weón",
+        "idiot": "weón",
+		"nimrod": "weón",
+        "gnerd": "weón"
+>>>>>>> origin/main
     },
     "end": {
 

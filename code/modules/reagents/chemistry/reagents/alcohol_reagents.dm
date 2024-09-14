@@ -97,6 +97,13 @@ All effects don't start immediately, but rather get worse over time; the rate is
 	glass_name = "glass of wine"
 	color = "#8a0b0b"
 
+/datum/reagent/consumable/ethanol/beer/mushroomwine
+	name = "Plump Helmet Wine"
+	boozepwr = 30
+	taste_description = "mushroom wine"
+	glass_name = "glass of mushroom wine"
+	color = "#5b182c"
+
 /datum/reagent/consumable/ethanol/beer/light
 	name = "Light Beer"
 	description = "An alcoholic beverage brewed since ancient times on Old Earth. This variety has reduced calorie and alcohol content."
@@ -218,9 +225,9 @@ All effects don't start immediately, but rather get worse over time; the rate is
 /datum/reagent/consumable/ethanol/vodka
 	name = "Vodka"
 	description = "Number one drink AND fueling choice for Russians worldwide."
-	color = "#0064C8" // rgb: 0, 100, 200
+	color = "#AAAAAA77" // rgb: 170, 170, 170, 77 (alpha) (clear like water)
 	boozepwr = 65
-	taste_description = "grain alcohol"
+	taste_description = "vodka"
 	glass_icon_state = "ginvodkaglass"
 	glass_name = "glass of vodka"
 	glass_desc = ""
@@ -1589,7 +1596,7 @@ All effects don't start immediately, but rather get worse over time; the rate is
 	L.adjustBruteLoss(3 * min(5,volume)) //minimum 3 brute damage on ingestion to limit non-drink means of injury - a full 5 unit gulp of the drink trucks you for the full 15
 
 /datum/reagent/consumable/ethanol/sake
-	name = "Sake"
+	name = "Meejoo"
 	description = "A sweet rice wine of questionable legality and extreme potency."
 	color = "#DDDDDD"
 	boozepwr = 70
@@ -1597,6 +1604,7 @@ All effects don't start immediately, but rather get worse over time; the rate is
 	glass_icon_state = "sakecup"
 	glass_name = "cup of sake"
 	glass_desc = ""
+	hydration_factor = 10
 
 /datum/reagent/consumable/ethanol/peppermint_patty
 	name = "Peppermint Patty"
