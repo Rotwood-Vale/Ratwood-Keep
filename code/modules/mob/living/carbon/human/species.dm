@@ -2068,8 +2068,8 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 				for(var/mob/living/M in get_hearers_in_view(4, Target))
 					if(iscarbon(M) && (M != Target))
 						var/mob/living/carbon/C = M
-						C.adjustEarDamage(0, 30)
-						C.confused += 25
+						C.adjustEarDamage(0, 35)
+						C.confused += 40
 						C.Jitter(50)
 						C.apply_status_effect(/datum/status_effect/debuff/seelie_wing_curse)
 						C.visible_message( null , span_notice("[Target] screams in agony, inflicting a curse for this vild deed!"))
