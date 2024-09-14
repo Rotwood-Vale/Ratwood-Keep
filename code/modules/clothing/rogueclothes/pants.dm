@@ -136,14 +136,14 @@
 	r_sleeve_status = SLEEVE_NOMOD
 	l_sleeve_status = SLEEVE_NOMOD
 	w_class = WEIGHT_CLASS_NORMAL
-	clothing_flags = CANT_SLEEP_IN
 
 /obj/item/clothing/under/roguetown/brayette
 	name = "brayette"
-	desc = ""
+	desc = "Chain underwear which protect the family jewels."
 	gender = PLURAL
 	icon_state = "chain_bootyshorts"
 	item_state = "chain_bootyshorts"
+	max_integrity = 325 //I want to give it 325 INTEGRITY hope this doesn't break it.
 	sewrepair = FALSE
 	armor = list("blunt" = 70, "slash" = 100, "stab" = 80, "bullet" = 50, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
 	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT)
