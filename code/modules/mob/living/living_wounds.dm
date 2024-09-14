@@ -174,7 +174,7 @@
 			if((bclass in GLOB.artery_strong_bclasses) && istype(user.rmb_intent, /datum/rmb_intent/strong))
 				dam += 30
 			else if(istype(user.rmb_intent, /datum/rmb_intent/aimed))
-				dam += 30
+				dam += user.STAPER*3
 		used = round(max(dam / 3, 1), 1)
 		if(prob(used))
 			attempted_wounds += /datum/wound/artery/chest

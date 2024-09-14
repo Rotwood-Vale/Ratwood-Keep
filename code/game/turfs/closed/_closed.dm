@@ -8,80 +8,9 @@
 	rad_insulation = RAD_MEDIUM_INSULATION
 	baseturfs = list(/turf/open/floor/rogue/naturalstone, /turf/open/transparent/openspace)
 	var/above_floor
-	var/wallpress = TRUE
+	var/leanable = TRUE
 	var/wallclimb = FALSE
 	var/climbdiff = 0
-
-/turf/closed/MouseDrop_T(atom/movable/O, mob/user)
-	. = ..()
-	if(!wallpress)
-		return
-	if(user == O && isliving(O))
-		var/mob/living/L = O
-		if(isanimal(L))
-			var/mob/living/simple_animal/A = L
-			if (!A.dextrous)
-				return
-		if(L.mobility_flags & MOBILITY_MOVE)
-			wallpress(L)
-			return
-
-/turf/closed/proc/wallpress(mob/living/user)
-	if(user.wallpressed)
-		return
-	if(user.pixelshifted)
-		return
-	if(!(user.mobility_flags & MOBILITY_STAND))
-		return
-	var/dir2wall = get_dir(user,src)
-	if(!(dir2wall in GLOB.cardinals))
-		return
-	user.wallpressed = dir2wall
-	user.update_wallpress_slowdown()
-	user.visible_message(span_info("[user] leans against [src]."))
-	switch(dir2wall)
-		if(NORTH)
-			user.setDir(SOUTH)
-			user.set_mob_offsets("wall_press", _x = 0, _y = 20)
-		if(SOUTH)
-			user.setDir(NORTH)
-			user.set_mob_offsets("wall_press", _x = 0, _y = -10)
-		if(EAST)
-			user.setDir(WEST)
-			user.set_mob_offsets("wall_press", _x = 12, _y = 0)
-		if(WEST)
-			user.setDir(EAST)
-			user.set_mob_offsets("wall_press", _x = -12, _y = 0)
-
-/turf/closed/proc/wallshove(mob/living/user)
-	if(user.wallpressed)
-		return
-	if(!(user.mobility_flags & MOBILITY_STAND))
-		return
-	var/dir2wall = get_dir(user,src)
-	if(!(dir2wall in GLOB.cardinals))
-		return
-	user.wallpressed = dir2wall
-	user.update_wallpress_slowdown()
-	switch(dir2wall)
-		if(NORTH)
-			user.setDir(NORTH)
-			user.set_mob_offsets("wall_press", _x = 0, _y = 20)
-		if(SOUTH)
-			user.setDir(SOUTH)
-			user.set_mob_offsets("wall_press", _x = 0, _y = -10)
-		if(EAST)
-			user.setDir(EAST)
-			user.set_mob_offsets("wall_press", _x = 12, _y = 0)
-		if(WEST)
-			user.setDir(WEST)
-			user.set_mob_offsets("wall_press", _x = -12, _y = 0)
-
-/mob/living/proc/update_wallpress_slowdown()
-	if(wallpressed)
-		add_movespeed_modifier("wallpress", TRUE, 100, override = TRUE, multiplicative_slowdown = 3)
-	else
-		remove_movespeed_modifier("wallpress")
 
 /turf/closed/Bumped(atom/movable/AM)
 	..()
@@ -102,6 +31,8 @@
 		var/turf/open/transparent/openspace/target = get_step_multiz(src, UP)
 		if(istype(target))
 			target.ChangeTurf(above_floor)
+	if(leanable)
+		AddComponent(/datum/component/leanable)
 
 /turf/closed/Destroy()
 	if(above_floor)

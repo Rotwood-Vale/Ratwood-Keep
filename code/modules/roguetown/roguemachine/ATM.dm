@@ -74,8 +74,7 @@
 				SStreasury.generate_money_account(P.get_real_price(), H)
 				if(!(H.job in GLOB.noble_positions) && !HAS_TRAIT(H, TRAIT_NOBLE))
 					var/T = round(P.get_real_price() * SStreasury.tax_value)
-					if(T != 0)
-						say("Your deposit was taxed [T] mammon.")
+					say("Your deposit was taxed [T] mammon.")
 				qdel(P)
 				playsound(src, 'sound/misc/coininsert.ogg', 100, FALSE, -1)
 				return

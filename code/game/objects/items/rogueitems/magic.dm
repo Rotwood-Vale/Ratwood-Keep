@@ -16,6 +16,7 @@
 
 	var/mob/current_owner
 	var/last_scry
+	w_class = WEIGHT_CLASS_SMALL
 
 
 /obj/item/scrying/attack_self(mob/living/user)

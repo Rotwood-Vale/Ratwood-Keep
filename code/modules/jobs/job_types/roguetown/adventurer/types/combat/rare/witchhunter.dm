@@ -4,7 +4,7 @@
 	tutorial = "Witch Hunters belong to a special sect of the One-God Church that believe all magyk \
 	use is inherently sinful. They are extremely devoted to hunting necromancers and often preach \
 	to magyk users to end their sinful ways."
-	allowed_sexes = list(MALE)
+	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_TOLERATED_UP
 	outfit = /datum/outfit/job/roguetown/adventurer/puritan
 	maximum_possible_slots = 2

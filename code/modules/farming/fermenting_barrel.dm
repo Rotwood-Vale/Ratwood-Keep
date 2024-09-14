@@ -27,26 +27,25 @@
 	. = ..()
 //	. += span_notice("It is currently [open?"open, letting you pour liquids in.":"closed, letting you draw liquids."]")
 
-/obj/structure/fermenting_barrel/proc/makeWine(obj/item/reagent_containers/food/snacks/grown/fruit)
-	if(fruit.reagents)
-		fruit.reagents.remove_reagent(/datum/reagent/consumable/nutriment, fruit.reagents.total_volume)
-		fruit.reagents.trans_to(src, fruit.reagents.total_volume)
-	if(fruit.distill_reagent)
-		reagents.add_reagent(fruit.distill_reagent, fruit.distill_amt)
-	qdel(fruit)
+/obj/structure/fermenting_barrel/proc/makeWine(obj/item/reagent_containers/food/snacks/I)
+	if(I.reagents)
+		I.reagents.remove_reagent(/datum/reagent/consumable/nutriment, I.reagents.total_volume)
+		I.reagents.trans_to(src, I.reagents.total_volume)
+	if(I.distill_reagent)
+		reagents.add_reagent(I.distill_reagent, I.distill_amt)
+	qdel(I)
 	playsound(src, "bubbles", 100, TRUE)
 
-/obj/structure/fermenting_barrel/attackby(obj/item/I, mob/user, params)
-	var/obj/item/reagent_containers/food/snacks/grown/fruit = I
-	if(istype(fruit))
-		if(!fruit.can_distill)
+/obj/structure/fermenting_barrel/attackby(obj/item/reagent_containers/food/snacks/I, mob/user, params)
+	if(istype(I))
+		if(!I.can_distill)
 			to_chat(user, span_warning("I can't ferment this into anything."))
 			return TRUE
 		else if(!user.transferItemToLoc(I,src))
 			to_chat(user, span_warning("[I] is stuck to my hand!"))
 			return TRUE
 		to_chat(user, span_info("I place [I] into [src]."))
-		addtimer(CALLBACK(src, PROC_REF(makeWine), fruit), rand(1 MINUTES, 3 MINUTES))
+		addtimer(CALLBACK(src, PROC_REF(makeWine), I), rand(1 MINUTES, 3 MINUTES))
 		return TRUE
 	..()
 
@@ -72,19 +71,33 @@
 
 /obj/structure/fermenting_barrel/random/water/Initialize()
 	. = ..()
-	reagents.add_reagent(/datum/reagent/water, rand(0,300))
+	icon_state = "barrel3"
+	reagents.add_reagent(/datum/reagent/water, rand(0,900))
 
 /obj/structure/fermenting_barrel/random/beer/Initialize()
 	. = ..()
-	reagents.add_reagent(/datum/reagent/consumable/ethanol/beer, rand(0,300))
+	icon_state = "barrel2"
+	reagents.add_reagent(/datum/reagent/consumable/ethanol/beer, rand(0,900))
+
+/obj/structure/fermenting_barrel/random/wine/Initialize()
+	. = ..()
+	icon_state = "barrel1"
+	reagents.add_reagent(/datum/reagent/consumable/ethanol/wine, rand(0,900))
 
 /obj/structure/fermenting_barrel/water/Initialize()
 	. = ..()
-	reagents.add_reagent(/datum/reagent/water,300)
+	icon_state = "barrel3"
+	reagents.add_reagent(/datum/reagent/water,900)
 
 /obj/structure/fermenting_barrel/beer/Initialize()
 	. = ..()
-	reagents.add_reagent(/datum/reagent/consumable/ethanol/beer,300)
+	icon_state = "barrel2"
+	reagents.add_reagent(/datum/reagent/consumable/ethanol/beer,900)
+
+/obj/structure/fermenting_barrel/wine/Initialize()
+	. = ..()
+	icon_state = "barrel1"
+	reagents.add_reagent(/datum/reagent/consumable/ethanol/wine,900)	
 
 /obj/item/roguebin/water/Initialize()
 	. = ..()

@@ -1112,7 +1112,7 @@
 #ifdef MATURESERVER
 	message_param = "%t"
 #endif
-	//mute_time = 1 - RATWOOD CHANGE, I don't want spammers.
+
 /datum/emote/living/custom/can_run_emote(mob/user, status_check, intentional)
 	. = ..() && intentional
 
