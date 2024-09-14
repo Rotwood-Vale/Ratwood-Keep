@@ -560,8 +560,8 @@
 	if(!HAS_TRAIT(target, TRAIT_TINY))
 		to_chat(user, span_warning("How could they possibly fit?"))
 		return
-	if(user == target)	//Seelie trying to load self
-		to_chat(user, span_warning("Why would you ever do that?"))
+	if(target.buckled)	//Seelie is buckled
+		to_chat(user, span_warning("Unbuckle them first."))
 		return
 	if((isseelie(user)) && HAS_TRAIT(target, TRAIT_TINY))	//Left this one as a seelie check since they shrink items
 		to_chat(user, span_warning("You shrink the [src] by holding it, they cant fit!"))
@@ -594,6 +594,17 @@
 		remove_occupant(user)
 	else
 		to_chat(user, span_notice("I fail to break out of [src]..."))
+
+//Handle something (O) drag dropped onto lamp by (user)
+/obj/item/flashlight/flare/torch/lantern/MouseDrop_T(atom/movable/O, mob/living/user)
+	if(isliving(O))
+		var/mob/living/l_object = O
+		if(HAS_TRAIT(l_object, TRAIT_TINY) && l_object == user)
+			loc.visible_message(span_notice("[user] starts climbing into [src]!"), \
+			span_warning("[user] starts climbing into [src]!"))
+			if(do_after(user, 120, target = src))
+				add_occupant(l_object)
+
 
 //Unloads via click-dragging onto an empty tile
 /obj/item/flashlight/flare/torch/lantern/MouseDrop(atom/over_atom)
