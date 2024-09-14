@@ -11,7 +11,7 @@
 					/obj/item/reagent_containers/food/snacks/fish/angler = 1)
 	embedding = list(
 		"embed_chance" = 100,
-		"embedded_unsafe_removal_time" = 0, 
+		"embedded_unsafe_removal_time" = 0,
 		"embedded_pain_chance" = 0,
 		"embedded_fall_chance" = 0,
 		"embedded_bloodloss"= 0,
@@ -30,6 +30,7 @@
 	var/blood_storage = 0
 	/// Maximum amount of blood we can store
 	var/blood_maximum = BLOOD_VOLUME_SURVIVE
+	w_class = WEIGHT_CLASS_SMALL
 
 /obj/item/natural/worms/leech/Initialize()
 	. = ..()

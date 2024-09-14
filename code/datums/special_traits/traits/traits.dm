@@ -238,7 +238,7 @@
 	ADD_TRAIT(character, TRAIT_CIVILIZEDBARBARIAN, TRAIT_GENERIC) //Need to make trait improve hitting people with chairs, mugs, goblets.
 
 /datum/special_trait/mastercraftsmen
-	name = "Master Crasftman"
+	name = "Master Craftsman"
 	greet_text = "In my youth, I've decided I'd get a grasp on every trade, and pursued the 10 arts of the craft."
 	req_text = "Middle-aged or Old"
 	allowed_ages = list(AGE_MIDDLEAGED, AGE_OLD)
@@ -282,6 +282,7 @@
 
 /datum/special_trait/swift/on_apply(mob/living/carbon/human/character, silent)
 	ADD_TRAIT(character, TRAIT_DODGEEXPERT, "[type]")
+	ADD_TRAIT(character, TRAIT_GOODRUNNER, "[type]")
 	character.mind.adjust_skillrank(/datum/skill/misc/athletics, 6, TRUE)
 	character.change_stat("speed", 3)
 
@@ -338,21 +339,6 @@
 /datum/special_trait/nimrod/on_apply(mob/living/carbon/human/character, silent)
 	character.change_stat("speed", -2)
 	character.change_stat("intelligence", -4)	
-
-/datum/special_trait/nopouch
-	name = "No Pouch"
-	greet_text = span_boldwarning("I lost my pouch recently, I'm without a zenny..")
-	weight = 200
-
-/datum/special_trait/nopouch/on_apply(mob/living/carbon/human/character, silent)
-	var/obj/item/pouch = locate(/obj/item/storage/belt/rogue/pouch) in character
-	if(character.wear_neck == pouch)
-		character.wear_neck = null
-	if(character.beltl == pouch)
-		character.beltl = null
-	if(character.beltr == pouch)
-		character.beltr = null
-	qdel(pouch)
 
 /datum/special_trait/hussite
 	name = "Known Heretic"
@@ -483,6 +469,14 @@
 
 /datum/special_trait/bad_week/on_apply(mob/living/carbon/human/character, silent)
 	ADD_TRAIT(character, TRAIT_BAD_MOOD, "[type]")
+
+/datum/special_trait/nude_sleeper
+	name = "Picky Sleeper"
+	greet_text = span_boldwarning("I just can't seem to fall asleep unless I'm <i>truly</i> comfortable...")
+	weight = 25
+
+/datum/special_trait/nude_sleeper/on_apply(mob/living/carbon/human/character, silent)
+	ADD_TRAIT(character, TRAIT_NUDE_SLEEPER, "[type]")
 
 //job specials
 /datum/special_trait/punkprincess //I think everyone will like the Rebellous Prince-Like Princess. I'd love to do one for the prince as well that gives him princess loadout, but, up to you!
