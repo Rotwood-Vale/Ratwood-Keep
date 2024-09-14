@@ -148,11 +148,6 @@
 	icon_state = "big_antlers"
 	relevant_layers = list(BODY_ADJ_LAYER, BODY_BEHIND_LAYER, BODY_FRONT_LAYER)
 
-/datum/sprite_accessory/horns/tiefling
-	name = "Tiefling"
-	icon = 'icons/mob/sprite_accessory/tiefling.dmi'
-	icon_state = "tiebhorns"
-
 /datum/sprite_accessory/horns/halforc
 	name = "Half Orc"
 	icon = 'icons/mob/sprite_accessory/halforc.dmi'
