@@ -67,10 +67,7 @@
 	if(isdwarf(H))
 		armor = /obj/item/clothing/suit/roguetown/shirt/dress
 	else
-		if(prob(66))
-			armor = /obj/item/clothing/suit/roguetown/armor/armordress/alt
-		else
-			armor = /obj/item/clothing/suit/roguetown/armor/armordress
+		armor = /obj/item/clothing/suit/roguetown/armor/armordress
 	belt = /obj/item/storage/belt/rogue/leather/cloth/lady
 	beltl = /obj/item/flashlight/flare/torch/lantern
 	beltr = /obj/item/rogueweapon/huntingknife/elvish
@@ -93,6 +90,7 @@
 	ADD_TRAIT(H, TRAIT_SEEPRICES, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_NOBLE, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_NUTCRACKER, TRAIT_GENERIC)
+	ADD_TRAIT(H, TRAIT_GOODLOVER, TRAIT_GENERIC)
 
 /datum/migrant_role/heartfelt/hand
 	name = "Hand of Heartfelt"

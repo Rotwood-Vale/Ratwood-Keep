@@ -28,7 +28,8 @@
 			/obj/item/storage/belt/rogue/leather/rope,
 			/obj/item/storage/belt/rogue/leather/cloth,
 			/obj/item/clothing/shoes/roguetown/simpleshoes,
-			/obj/item/clothing/suit/roguetown/armor/gambeson
+			/obj/item/clothing/suit/roguetown/armor/gambeson,
+			/obj/item/clothing/suit/roguetown/armor/armordress
 			)
 	var/static/list/selectable_colors = list(
   		"White" = "#ffffff",
@@ -86,7 +87,7 @@
 
 /obj/structure/dye_bin/attackby(obj/item/I, mob/living/user)
 	if(istype(I, /obj/item/reagent_containers/food/snacks/grown/berries/rogue))
-		to_chat(user, span_notice("I squeeze \the berries into some colorful dye"))
+		to_chat(user, span_notice("I squeeze the berries into some colorful dye"))
 		berry_charges += 3
 		update_icon()
 		qdel(I)

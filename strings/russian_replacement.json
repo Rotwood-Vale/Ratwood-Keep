@@ -1,17 +1,16 @@
 {
     "full": {
-
+        "who": "whom",
+        "yes": "da",
+        "hello": "privyet"
     },
     "start": {
-        "who": "whom"
+        "c": "k"
     },
     "end": {
 
     },
     "syllable": {
-        "g": "'",
-        "h": "kh",
-        "i": "ee",
-        "r": "rr"
+
     }
 }
