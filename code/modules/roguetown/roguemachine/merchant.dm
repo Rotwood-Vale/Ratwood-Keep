@@ -122,6 +122,8 @@
 	var/budget = 0
 	var/upgrade_flags
 	var/current_cat = "1"
+	//Whether or not the hidden key is still present- Shophands can take it.
+	var/hidden_key_present = TRUE
 
 /obj/structure/roguemachine/merchantvend/Initialize()
 	. = ..()
@@ -135,6 +137,28 @@
 	set_light(1, 1, "#1b7bf1")
 	add_overlay(mutable_appearance(icon, "vendor-merch"))
 
+/obj/structure/roguemachine/merchantvend/attack_right(mob/user)
+	if(user.mind.assigned_role == "Shophand")
+		if(hidden_key_present)		
+			for(var/mob/living/carbon/human/boss in GLOB.human_list)		
+				if(boss.mind)
+					if(boss.mind.assigned_role == "Merchant")
+						if(boss in GLOB.alive_mob_list)
+							if(!boss.client)
+								//to_chat(user, span_warning("MERCHANT FOUND ALIVE BUT DISCONNECTED"))
+							else
+								//to_chat(user, span_warning("The hidden compartment is sealed tightly."))
+								return		
+			var/alert = alert(user, "Thankfully, the hidden compartment with the spare key is still untouched.", "Spare key", "Take it", "Leave it")
+			if(alert != "Take it")
+				return
+			else		
+				var/obj/item/roguekey/key
+				key = new /obj/item/roguekey/merchant(get_turf(user))
+				user.put_in_hands(key)
+				hidden_key_present = FALSE
+		else
+			to_chat(user, span_warning("The hidden compartment lies empty."))
 
 /obj/structure/roguemachine/merchantvend/attackby(obj/item/P, mob/user, params)
 	if(istype(P, /obj/item/roguekey))
@@ -162,6 +186,7 @@
 		playsound(loc, 'sound/misc/machinevomit.ogg', 100, TRUE, -1)
 		return attack_hand(user)
 	..()
+
 
 /obj/structure/roguemachine/merchantvend/Topic(href, href_list)
 	. = ..()
