@@ -59,8 +59,7 @@
 				attack_obj(attacked_object, user)
 			return
 		else
-			user.visible_message(span_warning("[user] damages [attacked_item]!"))
-			attacked_item.take_damage(5, BRUTE, "blunt")
+			user.visible_message(span_warning("[user] fumbles trying to repair [attacked_item]!"))
 			return
 
 	if(isstructure(attacked_object) && !user.cmode)
