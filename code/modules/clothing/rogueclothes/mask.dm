@@ -70,6 +70,24 @@
 /obj/item/clothing/mask/rogue/lordmask/l
 	icon_state = "lmask_l"
 
+
+/obj/item/clothing/mask/rogue/wildguard
+	name = "wild guard"
+	desc = "A mask shaped after the beasts of dendor."
+	icon_state = "wildguard"
+	blocksound = PLATEHIT
+	break_sound = 'sound/foley/breaksound.ogg'
+	drop_sound = 'sound/foley/dropsound/armor_drop.ogg'
+	max_integrity = 100
+	resistance_flags = FIRE_PROOF
+	armor = list("blunt" = 90, "slash" = 100, "stab" = 80, "bullet" = 20, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT)
+	flags_inv = HIDEFACE|
+	body_parts_covered = FACE|EARS|EYES|MOUTH|NECK
+	slot_flags = ITEM_SLOT_MASK|ITEM_SLOT_HIP
+	anvilrepair = /datum/skill/craft/armorsmithing
+	smeltresult = /obj/item/ingot/iron
+
 /obj/item/clothing/mask/rogue/facemask
 	name = "iron mask"
 	icon_state = "imask"
@@ -144,6 +162,7 @@
 	body_parts_covered = FACE|EARS|EYES|MOUTH|NECK
 	slot_flags = ITEM_SLOT_MASK|ITEM_SLOT_HIP
 	sewrepair = TRUE
+
 
 /obj/item/clothing/mask/rogue/skullmask
 	name = "skull mask"
