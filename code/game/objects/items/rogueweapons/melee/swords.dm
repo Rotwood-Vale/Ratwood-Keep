@@ -475,7 +475,7 @@
 
 /datum/intent/sword/cut/rapier
 	clickcd = 10
-	damfactor = 0.5
+	damfactor = 0.8
 
 /datum/intent/sword/thrust/rapier
 	clickcd = 8
