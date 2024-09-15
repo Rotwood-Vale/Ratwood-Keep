@@ -2,7 +2,7 @@
 	force = 20
 	throwforce = 15
 	possible_item_intents = list(/datum/intent/mace/strike/shovel)
-	name = "steel pan"
+	name = "frypan"
 	desc = "Two in one: Cook and smash heads."
 	icon_state = "pan"
 	wlength = WLENGTH_SHORT

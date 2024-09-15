@@ -84,7 +84,7 @@ GLOBAL_LIST_INIT(laws_of_the_land, initialize_laws_of_the_land())
 				say("The crown is summoned!")
 				playsound(src, 'sound/misc/machinetalk.ogg', 100, FALSE, -1)
 				playsound(src, 'sound/misc/hiss.ogg', 100, FALSE, -1)
-				return 
+				return
 			if(ishuman(I.loc))
 				var/mob/living/carbon/human/HC = I.loc
 				if(HC.stat != DEAD)
@@ -102,10 +102,43 @@ GLOBAL_LIST_INIT(laws_of_the_land, initialize_laws_of_the_land())
 			say("The crown is summoned!")
 			playsound(src, 'sound/misc/machinetalk.ogg', 100, FALSE, -1)
 			playsound(src, 'sound/misc/hiss.ogg', 100, FALSE, -1)
+	if(findtext(message2recognize, "summon key"))
+		if(nocrown)
+			say("You need the crown.")
+			playsound(src, 'sound/misc/machineno.ogg', 100, FALSE, -1)
+			return
+		if(!SSroguemachine.key)
+			new /obj/item/roguekey/lord(src.loc)
+			say("The key is summoned!")
+			playsound(src, 'sound/misc/machinetalk.ogg', 100, FALSE, -1)
+			playsound(src, 'sound/misc/hiss.ogg', 100, FALSE, -1)
+		if(SSroguemachine.key)
+			var/obj/item/roguekey/lord/I = SSroguemachine.key
+			if(!I)
+				I = new /obj/item/roguekey/lord(src.loc)
+			if(I && !ismob(I.loc))
+				I.anti_stall()
+				I = new /obj/item/roguekey/lord(src.loc)
+				say("The key is summoned!")
+				playsound(src, 'sound/misc/machinetalk.ogg', 100, FALSE, -1)
+				playsound(src, 'sound/misc/hiss.ogg', 100, FALSE, -1)
+				return
+			if(ishuman(I.loc))
+				var/mob/living/carbon/human/HC = I.loc
+				if(HC.stat != DEAD)
+					say("[HC.real_name] holds the key!")
+					playsound(src, 'sound/misc/machinetalk.ogg', 100, FALSE, -1)
+					return
+				else
+					HC.dropItemToGround(I, TRUE) //If you're dead, forcedrop it, then move it.
+			I.forceMove(src.loc)
+			say("The key is summoned!")
+			playsound(src, 'sound/misc/machinetalk.ogg', 100, FALSE, -1)
+			playsound(src, 'sound/misc/hiss.ogg', 100, FALSE, -1)
 	switch(mode)
 		if(0)
 			if(findtext(message2recognize, "help"))
-				say("My commands are: Make Decree, Make Announcement, Set Taxes, Declare Outlaw, Summon Crown, Make Law, Remove Law, Purge Laws, Nevermind")
+				say("My commands are: Make Decree, Make Announcement, Set Taxes, Declare Outlaw, Summon Crown, Summon Key, Make Law, Remove Law, Purge Laws, Nevermind")
 				playsound(src, 'sound/misc/machinelong.ogg', 100, FALSE, -1)
 			if(findtext(message2recognize, "make announcement"))
 				if(nocrown)
