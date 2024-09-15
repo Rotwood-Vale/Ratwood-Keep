@@ -132,14 +132,14 @@
 			add_blood_DNA(O.return_blood_DNA())
 		if(prob(33 + (wet*10)) && cleanme)
 			wet = max(wet-1, 0)
-			user.visible_message(span_notice("[user] wipes \the [O.name] with [src]."), span_notice("I wipe \the [O.name] with [src]."))
+			user.visible_message(span_info("[user] wipes \the [O.name] with [src]."), span_info("I wipe \the [O.name] with [src]."))
 			qdel(O)
 		else
 			user.visible_message(span_warning("[user] wipes \the [O.name] with [src]."), span_warning("I wipe \the [O.name] with [src]."))
 		playsound(user, "clothwipe", 100, TRUE)
 	else
 		if(prob(30 + (wet*10)))
-			user.visible_message(span_notice("[user] wipes \the [O.name] with [src]."), span_notice("I wipe \the [O.name] with [src]."))
+			user.visible_message(span_info("[user] wipes \the [O.name] with [src]."), span_info("I wipe \the [O.name] with [src]."))
 
 			if(O.return_blood_DNA())
 				add_blood_DNA(O.return_blood_DNA())
@@ -150,8 +150,6 @@
 			else
 				SEND_SIGNAL(O, COMSIG_COMPONENT_CLEAN_ACT, CLEAN_STRONG)
 			wet = max(wet-1, 0)
-		else
-			user.visible_message(span_warning("[user] wipes \the [O.name] with [src]."), span_warning("I wipe \the [O.name] with [src]."))
 		playsound(user, "clothwipe", 100, TRUE)
 
 /obj/item/natural/cloth/attack_turf(turf/T, mob/living/user)
@@ -163,8 +161,6 @@
 			for(var/obj/effect/decal/cleanable/C in T)
 				qdel(C)
 			wet = max(wet-1, 0)
-	else
-		user.visible_message(span_warning("[user] wipes \the [T.name] with [src]."), span_warning("I wipe \the [T.name] with [src]."))
 	playsound(user, "clothwipe", 100, TRUE)
 
 
@@ -175,7 +171,7 @@
 
 /obj/item/natural/cloth/wash_act()
 	. = ..()
-	wet = 5
+	wet = 10
 
 /obj/item/natural/cloth/proc/bandage(mob/living/M, mob/user)
 	if(!M.can_inject(user, TRUE))

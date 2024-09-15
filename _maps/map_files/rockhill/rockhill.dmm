@@ -3247,11 +3247,6 @@
 /obj/item/roguekey/roomhunt,
 /turf/open/floor/rogue/tile/checkeralt,
 /area/rogue/indoors/town/tavern)
-"bKp" = (
-/obj/effect/landmark/start/clerk,
-/obj/structure/chair/stool/rogue,
-/turf/open/floor/rogue/hexstone,
-/area/rogue/indoors/town/manor)
 "bLf" = (
 /obj/structure/mineral_door/wood/donjon{
 	dir = 1;
@@ -9718,6 +9713,7 @@
 	dir = 1
 	},
 /obj/machinery/light/rogue/wallfire/candle/blue/l,
+/obj/effect/landmark/start/clerk,
 /turf/open/floor/carpet/royalblack,
 /area/rogue/indoors/town/manor)
 "gxt" = (
@@ -12131,12 +12127,6 @@
 /obj/structure/flora/roguegrass/thorn_bush,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors/vikingarea)
-"ieh" = (
-/obj/structure/bed/rogue/inn/wool,
-/obj/item/bedsheet/rogue/pelt,
-/obj/effect/landmark/start/weaponsmith,
-/turf/open/floor/rogue/ruinedwood/spiral,
-/area/rogue/indoors/town)
 "iek" = (
 /obj/structure/stairs{
 	dir = 8
@@ -23188,7 +23178,7 @@
 "qad" = (
 /obj/structure/bed/rogue/inn/wool,
 /obj/item/bedsheet/rogue/pelt,
-/obj/effect/landmark/start/armorsmith,
+/obj/effect/landmark/start/blacksmith,
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors/town)
 "qas" = (
@@ -301384,7 +301374,7 @@ wbg
 mwE
 gPy
 xXF
-bKp
+xmu
 lbV
 gPy
 xAt
@@ -415173,7 +415163,7 @@ vka
 fZJ
 fZJ
 xMr
-ieh
+qad
 ous
 ous
 dHZ

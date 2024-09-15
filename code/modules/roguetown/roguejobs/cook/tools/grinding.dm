@@ -49,10 +49,10 @@
 // 		to_chat(user, span_warning("Nothing to grind!"))
 // 		return TRUE
 // 	if(do_after(user, 8, target = src))
-// 		user.visible_message(span_notice("[user] begins to grind the millstone"), \
+// 		user.visible_message(span_notice("[user] begins to grind the millstone"),
 // 						span_notice("I begin to grind the millstone."))
 // 		grindUp(to_grind, usr)
-// 		user.visible_message(span_notice("[user] finishes grinding the millstone"), \
+// 		user.visible_message(span_notice("[user] finishes grinding the millstone"),
 // 						span_notice("I finish grinding the millstone."))
 // 		return TRUE
 // 	..()
@@ -68,7 +68,7 @@
 // 			if(reagents.holder_full())
 // 				to_chat(user, span_warning("[src] is full."))
 // 				return
-// 			user.visible_message(span_notice("[user] pours [I] into [src]."), \
+// 			user.visible_message(span_notice("[user] pours [I] into [src]."),
 // 							span_notice("I pour [I] into [src]."))
 // 			for(var/i in 1 to 10)
 // 				if(do_after(user, 8, target = src))
@@ -89,7 +89,7 @@
 // 			if(I.reagents.holder_full())
 // 				to_chat(user, span_warning("[I] is full."))
 // 				return
-// 			user.visible_message(span_notice("[user] fills [I] with [src]."), \
+// 			user.visible_message(span_notice("[user] fills [I] with [src]."),
 // 								span_notice("I fill [I] with [src]."))
 // 			for(var/i in 1 to 10)
 // 				if(do_after(user, 8, target = src))

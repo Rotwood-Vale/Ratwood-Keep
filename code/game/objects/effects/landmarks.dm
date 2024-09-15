@@ -285,6 +285,10 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	name = "Armorer"
 	icon_state = "arrow"
 
+/obj/effect/landmark/start/blacksmith
+	name = "Blacksmith"
+	icon_state = "arrow"
+
 /obj/effect/landmark/start/tailor
 	name = "Tailor"
 	icon_state = "arrow"

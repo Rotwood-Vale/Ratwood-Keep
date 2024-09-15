@@ -167,8 +167,12 @@ GLOBAL_VAR_INIT(mobids, 1)
 	// voice muffling
 	if(stat == UNCONSCIOUS)
 		if(type & MSG_AUDIBLE) //audio
-			to_chat(src, "<I>... You can almost hear something ...</I>")
-		return
+			if(findtext(msg, "snores.")) //No spamming people with their own snoring.
+				return
+			if(prob(20))
+				msg = "<span class='smallyell'>[msg]</span>"
+			else
+				return
 	to_chat(src, msg)
 
 /**

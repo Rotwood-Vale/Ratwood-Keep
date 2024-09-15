@@ -123,7 +123,7 @@
 	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
 	if(STR)
 		STR.max_combined_w_class = 6
-		STR.max_w_class = WEIGHT_CLASS_NORMAL
+		STR.max_w_class = WEIGHT_CLASS_SMALL
 		STR.max_items = 3
 		STR.not_while_equipped = FALSE
 

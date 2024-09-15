@@ -1255,6 +1255,8 @@
 
 /obj/item/clothing/cloak/combattante
 	name = "\improper Combattante cloak"
+/obj/item/clothing/cloak/combattante
+	name = "\improper Combattante cloak"
 	desc = "A cloak designed for members of the Combattante Association"
 	icon_state = "combattante"
 	sleeved = 'icons/roguetown/clothing/onmob/cloaks.dmi'

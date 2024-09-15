@@ -104,6 +104,7 @@ GLOBAL_LIST_INIT(yeoman_positions, list(
 	"Archivist",
 	"Armorer",
 	"Weaponsmith",
+	"Blacksmith",
 	"Tailor",
 	"Alchemist",
 	"Mason",
