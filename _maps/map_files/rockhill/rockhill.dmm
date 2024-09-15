@@ -5297,6 +5297,11 @@
 /area/rogue/under/cavewet/bogcaves)
 "dhq" = (
 /obj/structure/closet/crate/chest,
+/obj/item/natural/saddle,
+/obj/item/natural/saddle,
+/obj/item/natural/saddle,
+/obj/item/natural/saddle,
+/obj/item/natural/saddle,
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/basement)
 "dhH" = (
@@ -16346,7 +16351,7 @@
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors/rtfield)
 "lgC" = (
-/mob/living/simple_animal/hostile/retaliate/rogue/saigabuck/tame/saddled,
+/mob/living/simple_animal/hostile/retaliate/rogue/saigabuck/tame,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/indoors/shelter)
 "lgN" = (
@@ -33629,7 +33634,7 @@
 /turf/open/floor/rogue/ruinedwood/turned,
 /area/rogue/indoors)
 "xzN" = (
-/mob/living/simple_animal/hostile/retaliate/rogue/saiga/tame/saddled,
+/mob/living/simple_animal/hostile/retaliate/rogue/saiga/tame,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/indoors/shelter)
 "xzP" = (
@@ -299035,7 +299040,7 @@ qvR
 jJx
 sTr
 eOg
-lgC
+rNg
 lOo
 nuD
 rNg
@@ -299839,7 +299844,7 @@ qvR
 jJx
 sTr
 rNg
-rNg
+lgC
 sTr
 nuD
 nuD
