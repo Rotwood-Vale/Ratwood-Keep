@@ -29,7 +29,8 @@
 	/datum/species/lizardfolk,\
 	/datum/species/tabaxi,\
 	/datum/species/akula,\
-	/datum/species/anthromorph
+	/datum/species/anthromorph,\
+	/datum/species/moth
 
 #define RACES_TOLERATED \
 	/datum/species/human/northern,\
@@ -37,7 +38,6 @@
 	/datum/species/human/halfelf,\
 	/datum/species/dwarf/mountain,\
 	/datum/species/aasimar,\
-	/datum/species/moth,\
 	/datum/species/demihuman
 
 #define RACES_SHUNNED \
@@ -59,8 +59,6 @@
 #define RACES_SHUNNED_UP list(RACES_SHUNNED, RACES_TOLERATED, RACES_RESPECTED)
 
 #define RACES_TOLERATED_UP list(RACES_TOLERATED, RACES_RESPECTED)
-
-#define RACES_RESPECTED_ONLY list(RACES_RESPECTED)
 
 #define NOBLE_RACES_TYPES list(\
 	/datum/species/human/northern,\
