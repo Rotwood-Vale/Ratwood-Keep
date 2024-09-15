@@ -17,7 +17,7 @@
 	// Ghosts can see
 	if(!isliving(user))
 		return TRUE
-	var/mob/living/living_user = user
+	//var/mob/living/living_user = user
 	// Other defiants can not see - Commented out for now so people don't ZAPE
 	/*if(living_user.defiant)
 		return FALSE
