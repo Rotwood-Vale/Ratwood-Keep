@@ -15822,12 +15822,6 @@
 /obj/structure/closet/crate/roguecloset/crafted,
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors)
-"rrn" = (
-/obj/structure/roguewindow/openclose{
-	dir = 1
-	},
-/turf/open/floor/rogue/metal,
-/area/rogue/indoors)
 "rrA" = (
 /obj/effect/decal/cleanable/cobweb,
 /turf/closed/wall/mineral/rogue/decowood,
@@ -20593,8 +20587,7 @@
 /turf/open/floor/rogue/cobble,
 /area/rogue/outdoors/town/roofs)
 "wGl" = (
-/obj/structure/roguewindow/openclose,
-/turf/open/floor/rogue/metal,
+/turf/closed/wall/mineral/rogue/stone/window/moss,
 /area/rogue/indoors)
 "wGD" = (
 /turf/open/floor/rogue/dirt/road,
@@ -285054,9 +285047,9 @@ sIG
 hHI
 hHI
 pAV
-bwS
+wGl
 wpm
-bwS
+wGl
 hHI
 hHI
 hHI
@@ -385953,7 +385946,7 @@ qbG
 qbG
 qbG
 qbG
-fcJ
+rDt
 xou
 xou
 xou
@@ -386757,7 +386750,7 @@ qbG
 qbG
 qbG
 qbG
-fcJ
+wGl
 xou
 xou
 xou
@@ -388373,7 +388366,7 @@ uLB
 uLB
 uLB
 qrn
-rrn
+rDt
 eFy
 uuE
 uuE
@@ -388769,13 +388762,13 @@ qbG
 qbG
 qbG
 pLJ
-wGl
+rDt
 qrn
 uLB
 uLB
 uLB
 qrn
-rrn
+rDt
 eFy
 uuE
 uuE
@@ -389573,13 +389566,13 @@ qbG
 qbG
 qbG
 pLJ
+rDt
+qrn
+uLB
+uLB
+uLB
+qrn
 wGl
-qrn
-uLB
-uLB
-uLB
-qrn
-rrn
 eFy
 uuE
 uuE
@@ -389981,7 +389974,7 @@ uLB
 uLB
 uLB
 qrn
-rrn
+rDt
 eFy
 uuE
 uuE
@@ -391581,7 +391574,7 @@ gkv
 gkv
 gkv
 gkv
-fcJ
+wGl
 xou
 xou
 xou
@@ -392385,7 +392378,7 @@ gkv
 gkv
 gkv
 gkv
-fcJ
+rDt
 xou
 xou
 xou
