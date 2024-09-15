@@ -44,6 +44,7 @@
 /datum/intent/flail/strike/smash
 	name = "smash"
 	chargetime = 5
+	chargedrain = 1
 	no_early_release = TRUE
 	penfactor = 80
 	recovery = 10
@@ -59,6 +60,7 @@
 /datum/intent/flail/strike/smashrange
 	name = "ranged smash"
 	chargetime = 25
+	chargedrain = 1
 	no_early_release = TRUE
 	penfactor = 50
 	recovery = 30
