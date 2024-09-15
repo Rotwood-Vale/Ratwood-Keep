@@ -202,18 +202,6 @@
 	zombie.STAINT = 1
 	last_bite = world.time
 	has_turned = TRUE
-	// Drop your helm and gorgies boy you won't need it anymore!!!
-	var/static/list/removed_slots = list(
-		SLOT_HEAD,
-		SLOT_WEAR_MASK,
-		SLOT_MOUTH,
-		SLOT_NECK,
-	)
-	for(var/slot in removed_slots)
-		zombie.dropItemToGround(zombie.get_item_by_slot(slot), TRUE)
-
-	// Ghosts you because this shit was just not working whatsoever, let the AI handle the rest
-	zombie.ghostize(FALSE)
 
 /datum/antagonist/zombie/greet()
 	to_chat(owner.current, span_userdanger("Death is not the end..."))
