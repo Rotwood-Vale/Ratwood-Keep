@@ -120,10 +120,23 @@
 	icon_state = "arrow_poison"
 	max_integrity = 20 // same as normal arrow; usually breaks on impact with a mob anyway
 
+/obj/item/ammo_casing/caseless/rogue/arrow/sopor
+	name = "soporific arrow"
+	desc = "A wooden shaft with a pointy iron end. This one is stained green with spider toxins."
+	projectile_type = /obj/projectile/bullet/reusable/arrow/sopor
+	icon_state = "arrow_poison"
+	max_integrity = 20 // same as normal arrow; usually breaks on impact with a mob anyway
+
 /obj/item/ammo_casing/caseless/rogue/arrow/stone/poison
 	name = "poisoned stone arrow"
 	desc = "A wooden shaft with a jagged rock on the end. This one is stained green with floral toxins."
 	projectile_type = /obj/projectile/bullet/reusable/arrow/poison/stone
+	icon_state = "stonearrow_poison"
+
+/obj/item/ammo_casing/caseless/rogue/arrow/stone/sopor
+	name = "soporific stone arrow"
+	desc = "A wooden shaft with a jagged rock on the end. This one is stained green with spider toxins."
+	projectile_type = /obj/projectile/bullet/reusable/arrow/sopor/stone
 	icon_state = "stonearrow_poison"
 
 /obj/projectile/bullet/reusable/arrow/poison
@@ -139,7 +152,24 @@
 	poisonfeel = "burning" //Ditto
 	poisonamount = 5 //Support and balance for bodkins, which will hold less poison due to how
 
+/obj/projectile/bullet/reusable/arrow/sopor
+	name = "arrow"
+	damage = 10 // Support arrow, effects outweigh the need for damage here
+	damage_type = BRUTE
+	icon = 'icons/roguetown/weapons/ammo.dmi'
+	icon_state = "arrow_proj"
+	ammo_type = /obj/item/ammo_casing/caseless/rogue/arrow
+	range = 15
+	hitsound = 'sound/combat/hits/hi_arrow2.ogg'
+	poisontype = /datum/reagent/medicine/soporpot
+	poisonfeel = "stiffness" 
+	poisonamount = 10
+
 /obj/projectile/bullet/reusable/arrow/poison/stone
+	name = "stone arrow"
+	ammo_type = /obj/item/ammo_casing/caseless/rogue/arrow/stone
+
+/obj/projectile/bullet/reusable/arrow/sopor/stone
 	name = "stone arrow"
 	ammo_type = /obj/item/ammo_casing/caseless/rogue/arrow/stone
 

@@ -210,3 +210,14 @@
 /atom/movable/screen/alert/status_effect/debuff/devitalised
 	name = "Devitalised"
 	desc = "Something has been taken from me, and it will take time to recover."
+
+/datum/status_effect/debuff/soporific
+	id = "drowsy"
+	alert_type = /atom/movable/screen/alert/status_effect/debuff/soporific
+	effectedstats = list("speed" = -10)
+	duration = 5 MINUTES
+
+/atom/movable/screen/alert/status_effect/debuff/soporific
+	name = "Drowsy"
+	desc = "Something is making me weak and sluggish..."
+	icon_state = "sleepy"
