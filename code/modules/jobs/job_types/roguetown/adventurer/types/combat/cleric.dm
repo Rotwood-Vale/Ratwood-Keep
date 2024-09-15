@@ -181,12 +181,7 @@
 	var/datum/devotion/C = new /datum/devotion(H, H.patron)
 	// HEARTHSTONE ADDITION: cloistered devout devo regen & tier buff
 	if (classchoice == "Cloistered Devout")
-		// start with passive devo gain and ability to gain up to T3 spells
-		C.passive_devotion_gain += 0.5 //REQUIRES passive_progression_gain to function.
-		C.passive_progression_gain += 0.5 //People need to check how this works in future.
-		C.max_progression = CLERIC_REQ_3
-		C.max_devotion = CLERIC_REQ_4 //They have the same CAPACITY as priest, but will never be able to reach cure rot/T4 spells
-		C.grant_spells(H) // don't give churn as an extra spell to cloistered since they get their patron's full spell list (up to t3)
+		C.grant_spells_devout(H)
 	else
 		C.grant_spells_cleric(H)
 	// HEARTHSTONE ADDITION END
