@@ -387,20 +387,13 @@
 					to_chat(src, span_notice("I try to steal from [V]..."))
 					if(do_after(src, 5, target = V, progress = 0))
 						if(stealroll > targetperception)
-						//TODO add exp here
-							// RATWOOD MODULAR START
-							if(V.cmode)
-								to_chat(src, "<span class='warning'>[V] is alert. I can't pickpocket them like this.</span>")
-								return
-							// RATWOOD MODULAR END
 							if(U.get_active_held_item())
 								to_chat(src, span_warning("I can't pickpocket while my hand is full!"))
 								return
 							if(!(zone_selected in stealablezones))
 								to_chat(src, span_warning("What am I going to steal from there?"))
 								return
-							mobsbehind |= cone(V, list(turn(V.dir, 180)), list(src))
-							if(mobsbehind.Find(src))
+							if(mobsbehind.Find(src) || V.eyesclosed)
 								switch(U.zone_selected)
 									if("chest")
 										if (V.get_item_by_slot(SLOT_BACK_L))
@@ -420,32 +413,59 @@
 											stealpos.Add(V.get_item_by_slot(SLOT_RING))
 								if (length(stealpos) > 0)
 									var/obj/item/picked = pick(stealpos)
-									V.dropItemToGround(picked)
-									put_in_active_hand(picked)
-									to_chat(src, span_green("I stole [picked]!"))
-									V.log_message("has had \the [picked] stolen by [key_name(U)]", LOG_ATTACK, color="black")
-									U.log_message("has stolen \the [picked] from [key_name(V)]", LOG_ATTACK, color="black")
+								if(picked.w_class >= 3)
+									if(stealroll > (targetperception + (picked.w_class * 2)))//Law of averages puts 6d6 at between 17 and 25. Assuming a Perception of 10, the DC to steal bulky items is now 18.
+										V.dropItemToGround(picked)
+										put_in_active_hand(picked)
+										to_chat(src, span_green("I stole [picked]!"))
+										V.log_message("has had \the [picked] stolen by [key_name(U)]", LOG_ATTACK, color="black")
+										U.log_message("has stolen \the [picked] from [key_name(V)]", LOG_ATTACK, color="black")
+										exp_to_gain /= 5 // these can be removed or changed on reviewer's discretion
+										// If we're pickpocketing someone else, and that person is conscious, grant XP
+										if(src != V && V.stat == CONSCIOUS)
+											mind.add_sleep_experience(/datum/skill/misc/stealing, exp_to_gain, FALSE)
+										changeNext_move(mmb_intent.clickcd)
+										return
+									else
+										V.log_message("[key_name(U)] tried to steal my [picked.name]!", LOG_ATTACK, color="red")
+										U.log_message("has attempted to pickpocket [key_name(V)]!", LOG_ATTACK, color="red")
+										to_chat(src, span_danger("[picked.name] was too large to remove unnoticed!"))
 								else
-									exp_to_gain /= 2 // these can be removed or changed on reviewer's discretion
-									to_chat(src, span_warning("I didn't find anything there. Perhaps I should look elsewhere."))
+									if(stealroll > targetperception)//Small and Tiny items do not have a weight penalty
+										V.dropItemToGround(picked)
+										put_in_active_hand(picked)
+										to_chat(src, span_green("I stole [picked]!"))
+										V.log_message("has had \the [picked] stolen by [key_name(U)]", LOG_ATTACK, color="black")
+										U.log_message("has stolen \the [picked] from [key_name(V)]", LOG_ATTACK, color="black")
+										exp_to_gain /= 5 // these can be removed or changed on reviewer's discretion
+										// If we're pickpocketing someone else, and that person is conscious, grant XP
+										if(src != V && V.stat == CONSCIOUS)
+											mind.add_sleep_experience(/datum/skill/misc/stealing, exp_to_gain, FALSE)
+										changeNext_move(mmb_intent.clickcd)
+										return
+									else
+										V.log_message("[key_name(U)] tried to steal my [picked.name]!", LOG_ATTACK, color="red")
+										U.log_message("has attempted to pickpocket [key_name(V)]!", LOG_ATTACK, color="red")
+										to_chat(src, span_danger("[picked.name] was too large to remove unnoticed!"))
 							else
-								to_chat(src, "<span class='warning'>They can see me!")
-						if(stealroll <= 5)
-							V.log_message("has had an attempted pickpocket by [key_name(U)]", LOG_ATTACK, color="black")
-							U.log_message("has attempted to pickpocket [key_name(V)]", LOG_ATTACK, color="black")
-							U.visible_message(span_danger("[U] failed to pickpocket [V]!"))
-							to_chat(V, span_danger("[U] tried pickpocketing me!"))
-						if(stealroll < targetperception)
-							V.log_message("has had an attempted pickpocket by [key_name(U)]", LOG_ATTACK, color="black")
-							U.log_message("has attempted to pickpocket [key_name(V)]", LOG_ATTACK, color="black")
-							to_chat(src, span_danger("I failed to pick the pocket!"))
-							to_chat(V, span_danger("Someone tried pickpocketing me!"))
-							exp_to_gain /= 5 // these can be removed or changed on reviewer's discretion
-						// If we're pickpocketing someone else, and that person is conscious, grant XP
-						if(src != V && V.stat == CONSCIOUS)
-							mind.add_sleep_experience(/datum/skill/misc/stealing, exp_to_gain, FALSE)
-						changeNext_move(mmb_intent.clickcd)
-				return
+								exp_to_gain /= 2 // these can be removed or changed on reviewer's discretion
+								to_chat(src, span_warning("I didn't find anything there. Perhaps I should look elsewhere."))
+						else
+							to_chat(src, "<span class='warning'>They can see me!")
+					if(stealroll <= 4)
+						V.log_message("has had an attempted pickpocket by [key_name(U)]", LOG_ATTACK, color="black")
+						U.log_message("has attempted to pickpocket [key_name(V)]", LOG_ATTACK, color="black")
+						to_chat(V, span_danger("Someone tried pickpocketing me!"))
+					if(stealroll < targetperception)
+						V.log_message("has had an attempted pickpocket by [key_name(U)]", LOG_ATTACK, color="black")
+						U.log_message("has attempted to pickpocket [key_name(V)]", LOG_ATTACK, color="black")
+						to_chat(src, span_danger("I failed to pick the pocket!"))
+						exp_to_gain /= 5 // these can be removed or changed on reviewer's discretion
+					// If we're pickpocketing someone else, and that person is conscious, grant XP
+					if(src != V && V.stat == CONSCIOUS)
+						mind.add_sleep_experience(/datum/skill/misc/stealing, exp_to_gain, FALSE)
+					src.mind.adjust_experience(/datum/skill/misc/stealing, exp_to_gain, FALSE)
+					changeNext_move(mmb_intent.clickcd)
 			if(INTENT_SPELL)
 				if(ranged_ability?.InterceptClickOn(src, params, A))
 					changeNext_move(mmb_intent.clickcd)
