@@ -60,7 +60,7 @@
 
 /datum/rmb_intent/strong
 	name = "strong"
-	desc = "Your attacks have +1 strength but use more stamina. Higher critrate with brutal attacks."
+	desc = "Your attacks have +1 strength but use more stamina. Higher critrate with brutal attacks. Intentionally fails surgery steps."
 	icon_state = "rmbstrong"
 
 /datum/rmb_intent/swift
@@ -102,5 +102,5 @@
 
 /datum/rmb_intent/weak
 	name = "weak"
-	desc = "Your attacks have -1 strength and will never critically-hit. Surgery steps can only be done with this intent. Useful for longer punishments, play-fighting, and bloodletting."
+	desc = "Your attacks have -1 strength and will never critically-hit. Useful for longer punishments, play-fighting, and bloodletting."
 	icon_state = "rmbweak"

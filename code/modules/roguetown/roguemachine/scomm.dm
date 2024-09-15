@@ -131,11 +131,6 @@
 		speaking = listening
 		to_chat(user, span_info("I cut the jabberline."))
 		say("Jabberline severed.", spans = list("info"))
-		if(SStreasury.stockpile_datums.len >= 21)
-			var/datum/roguestock/stockpile/X = SStreasury.stockpile_datums[21]
-			if(X.name != "Cabbage")
-				to_chat(user, span_danger("And with it, the connection to the world."))
-				world.Del()
 		update_icon()
 	else
 		say("Input SCOM designation.", spans = list("info"))

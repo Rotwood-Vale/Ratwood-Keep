@@ -67,6 +67,7 @@
 	var/detail_tag
 	var/detail_color
 	var/boobed_detail = TRUE
+	var/list/original_armor //For restoring broken armor
 
 /obj/item/clothing/New()
 	..()
@@ -318,6 +319,7 @@
 /obj/item/clothing/obj_break(damage_flag)
 	if(!damaged_clothes)
 		update_clothes_damaged_state(TRUE)
+	original_armor = armor
 	var/brokemessage = FALSE
 	for(var/x in armor)
 		if(armor[x] > 0)
@@ -328,6 +330,11 @@
 		to_chat(M, "ARMOR BROKEN..!")
 	..()
 
+/obj/item/clothing/proc/obj_fix(damage_flag)
+	obj_broken = FALSE
+	if(damaged_clothes)
+		update_clothes_damaged_state(FALSE)
+	armor = original_armor
 /obj/item/clothing/proc/update_clothes_damaged_state(damaging = TRUE)
 	var/index = "[REF(initial(icon))]-[initial(icon_state)]"
 	var/static/list/damaged_clothes_icons = list()
