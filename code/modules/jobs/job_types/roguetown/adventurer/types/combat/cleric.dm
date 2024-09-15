@@ -53,6 +53,7 @@
 			H.change_stat("strength", 1)
 			H.change_stat("constitution", 2)
 			H.change_stat("endurance", 2)
+			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/diagnose/secular)
 			ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 		if("War Cleric")
 			H.set_blindness(0)
@@ -77,6 +78,7 @@
 			H.change_stat("endurance", 2) // Stronger but less intelligent/quick compared to life clerics.
 			H.change_stat("speed", -1)
 			ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
+			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/diagnose/secular)
 		if("Nature Cleric")
 			H.set_blindness(0)
 			to_chat(H, span_warning("You are a cleric of the nature domain."))
@@ -96,6 +98,7 @@
 			H.change_stat("endurance", 2)
 			H.change_stat("speed", 1)
 			ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
+			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/diagnose/secular)
 		// HEARTHSTONE ADD: cloistered cleric subclass (lighter armored and equipped)
 		if("Cloistered Devout")
 			// Devout start without the typical cleric medium/heavy armor shtick and without much in the way of weapons or skills to use them.
@@ -113,6 +116,7 @@
 			H.change_stat("strength", -2)
 			H.change_stat("perception", 2)
 			H.change_stat("speed", 1)
+			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/diagnose/secular)
 		// HEARTHSTONE ADDITION END
 
 	armor = /obj/item/clothing/suit/roguetown/armor/plate/half/iron

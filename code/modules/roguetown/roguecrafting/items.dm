@@ -266,10 +266,10 @@
 				/obj/item/reagent_containers/glass/bowl)
 	reqs = list(/obj/item/grown/log/tree/small = 1)
 
-// /datum/crafting_recipe/roguetown/pot
-// 	name = "stone pot"
-// 	result = /obj/item/reagent_containers/glass/pot/stone
-// 	reqs = list(/obj/item/natural/stone = 2)
+/datum/crafting_recipe/roguetown/pot
+	name = "stone pot"
+	result = /obj/item/reagent_containers/glass/bucket/pot
+	reqs = list(/obj/item/natural/stone = 2)
 
 /datum/crafting_recipe/roguetown/stonearrow
 	name = "stone arrow"

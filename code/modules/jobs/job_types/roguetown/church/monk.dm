@@ -101,6 +101,7 @@
 		H.change_stat("endurance", 1)
 		H.change_stat("perception", -1)
 		H.cmode_music = 'sound/music/combat_clergy.ogg'
+		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/diagnose/secular)
 
 	var/datum/devotion/C = new /datum/devotion(H, H.patron)
 	C.grant_spells(H)

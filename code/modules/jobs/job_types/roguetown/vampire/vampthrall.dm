@@ -8,7 +8,7 @@
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
 	show_in_credits = FALSE		//Stops Scom from announcing their arrival.
-	spells = list(/obj/effect/proc_holder/spell/self/convertrole/vampire,
+	spells = list(/obj/effect/proc_holder/spell/invoked/diagnose/secular, /obj/effect/proc_holder/spell/self/convertrole/vampire,
 	/obj/effect/proc_holder/spell/targeted/shapeshift/bat)
 	tutorial = "You've existed long before the gods existed, you know the truth and have no reason to worship them. You are faithless. After attaining power, Zizo has cursed your people, bringing bad omens where ever you go. For this reason, the people of Rockhill have shunned you and discriminated against you, there is no possible way an antediluvian will ever hold a position of power in Rockhill, let alone be welcomed. Zizo has only shown favor to one antediluvian, rewarding them with the title of Vampire Lord, and gifting them powers far beyond that of a regular nitecreacher. Your pale skin, fangs, and eerie eyes are EASILY identifable features, so it is best to stay covered at all times in public areas."
 	whitelist_req = FALSE

@@ -912,12 +912,13 @@
 	name = "scarecrow"
 	icon_state = "td"
 
-/obj/structure/fluff/statue/tdummy
-	name = "practice dummy"
+/obj/structure/fluff/statue/tdummy2
+	name = "Sentient Sparring Dummy"
 	icon_state = "p_dummy"
+	color = COLOR_LUX
 	icon = 'icons/roguetown/misc/structure.dmi'
 
-/obj/structure/fluff/statue/tdummy/attackby(obj/item/W, mob/user, params)
+/obj/structure/fluff/statue/tdummy2/attackby(obj/item/W, mob/user, params)
 	if(!user.cmode)
 		if(W.associated_skill)
 			if(user.mind)
@@ -943,6 +944,51 @@
 						var/boon = user.mind.get_learning_boon(W.associated_skill)
 						var/amt2raise = L.STAINT/2
 						if(user.mind.get_skill_level(W.associated_skill) >= SKILL_LEVEL_JOURNEYMAN)
+							to_chat(user, span_warning("I've learned all I can from doing this, it's time for the real thing."))
+							amt2raise = 0
+						if(amt2raise > 0)
+							user.mind.adjust_experience(W.associated_skill, amt2raise * boon, FALSE)
+						playsound(loc,pick('sound/combat/hits/onwood/education1.ogg','sound/combat/hits/onwood/education2.ogg','sound/combat/hits/onwood/education3.ogg'), rand(50,100), FALSE)
+					else
+						user.visible_message(span_danger("[user] trains on [src], but [src] ripostes!"))
+						L.AdjustKnockdown(1)
+						L.throw_at(get_step(L, get_dir(src,L)), 2, 2, L, spin = FALSE)
+						playsound(loc, 'sound/combat/hits/kick/stomp.ogg', 100, TRUE, -1)
+					flick(pick("p_dummy_smashed","p_dummy_smashedalt"),src)
+					return
+	..()
+
+/obj/structure/fluff/statue/tdummy
+	name = "practice dummy"
+	icon_state = "p_dummy"
+	icon = 'icons/roguetown/misc/structure.dmi'
+
+/obj/structure/fluff/statue/tdummy/attackby(obj/item/W, mob/user, params)
+	if(!user.cmode)
+		if(W.associated_skill)
+			if(user.mind)
+				if(isliving(user))
+					var/mob/living/L = user
+					var/probby = (L.STALUC / 10) * 100
+					probby = min(probby, 99)
+					user.changeNext_move(CLICK_CD_MELEE)
+					if(W.max_blade_int)
+						W.remove_bintegrity(5)
+					if(!L.rogfat_add(rand(4,6)))
+						if(ishuman(L))
+							var/mob/living/carbon/human/H = L
+							if(H.tiredness >= 50)
+								H.apply_status_effect(/datum/status_effect/debuff/trainsleep)
+						probby = 0
+					if(!(L.mobility_flags & MOBILITY_STAND))
+						probby = 0
+					if(L.STAINT < 3)
+						probby = 0
+					if(prob(probby) && !L.has_status_effect(/datum/status_effect/debuff/trainsleep) && !user.buckled)
+						user.visible_message(span_info("[user] trains on [src]!"))
+						var/boon = user.mind.get_learning_boon(W.associated_skill)
+						var/amt2raise = L.STAINT/2
+						if(user.mind.get_skill_level(W.associated_skill) >= SKILL_LEVEL_APPRENTICE)
 							to_chat(user, span_warning("I've learned all I can from doing this, it's time for the real thing."))
 							amt2raise = 0
 						if(amt2raise > 0)

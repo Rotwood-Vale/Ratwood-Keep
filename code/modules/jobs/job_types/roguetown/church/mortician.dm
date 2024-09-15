@@ -51,6 +51,7 @@
 		H.change_stat("intelligence", -2)
 		H.change_stat("endurance", 1)
 		H.change_stat("speed", 1)
+		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/diagnose/secular)
 	ADD_TRAIT(H, TRAIT_NOSTINK, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_SOUL_EXAMINE, TRAIT_GENERIC)
 	H.cmode_music = 'sound/music/combat_clergy.ogg'

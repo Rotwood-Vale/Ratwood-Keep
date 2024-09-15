@@ -2067,3 +2067,43 @@
 	color = "#E6E6DA"
 	taste_mult = 0
 
+
+
+// future food stuff and things
+
+/datum/chemical_reaction/simpleb   /// this will be the recipe 
+	name = "Simple Broth"
+	results = list(/datum/reagent/consumable/simpleb = 1)  /// the result. see below for reagent you are making
+	required_reagents = list(/datum/reagent/water = 1, /datum/reagent/consumable/milk = 1) /// what it takes to make, trust me make life easier on people keep it 1/1 this example is just water and standard milk
+	required_temp = 374 // hearth heats pot to this level, where reaction happens
+
+/datum/reagent/consumable/simpleb  /// the reagent itself
+	name = "Simple Broth"
+	description = "Soothing, simple, bland broth."
+	color = "#203625" // rgb: 32, 54, 37         this is the color you want the liquid to be, goes off hex coloring.
+	taste_description = "earthy water"
+	hydration_factor = 10 /// does it hydrate too? 12 is water level of hydrate, less is less. otherwise leave out or write null
+	nutriment_factor = 10 //EVERY 1 NUTRIMENT RESTORES 35 NUTRITION             I belive if you use reagent/consumable path it will default to one if left out. 10 is same as sugar. so thats a singular meal. 
+	metabolization_rate = 0.5 * REAGENTS_METABOLISM /// how fast it runs thru the body, standard is 0.5. extremely slow is 0.2 or 0.1. instant is solid number 20
+	overdose_threshold = null /// you wont use this but I added it incase, if you set one for whatever reason you will have to make a overdose_process datum
+
+
+/datum/reagent/consumable/simpleb/on_mob_life(mob/living/carbon/M)  /// what it does if need be in this case it has a low chance per tick to heal some brute and burn, high chance to heal tox and oxy per tick
+	if(M.getBruteLoss() && prob(20))   /// example of all damage types. this is a 20% chance per tick to heal brute damage by 1
+		M.heal_bodypart_damage(1,0, 0)
+		. = 1
+	if(M.getFireLoss() && prob(20))  /// example of all damage types. this is a 20% chance per tick to heal burn damage by 1
+		M.heal_bodypart_damage(0,1, 0)
+		. = 1
+	if(M.getOxyLoss() && prob(80)) /// example of all damage types. this is a 80% chance per tick to heal oxy damage by 1
+		M.adjustOxyLoss(-1, 0)
+		. = 1
+	if(M.getToxLoss() && prob(80))   /// example of all damage types. this is a 80% chance per tick to heal tox damage by 1
+		M.adjustToxLoss(-1*REM, 0)
+		. = 1
+	..()
+
+/*
+/datum/reagent/simpleb/overdose_process(mob/living/carbon/M)   example of an overdose and what it does. striked out but so you can see. simply nausea in this case
+	M.add_nausea(15)
+*/
