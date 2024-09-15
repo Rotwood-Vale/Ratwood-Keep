@@ -60,6 +60,8 @@
 
 #define RACES_TOLERATED_UP list(RACES_TOLERATED, RACES_RESPECTED)
 
+#define RACES_RESPECTED_ONLY list(RACES_RESPECTED)
+
 #define NOBLE_RACES_TYPES list(\
 	/datum/species/human/northern,\
 	/datum/species/human/halfelf,\

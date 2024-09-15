@@ -7,7 +7,7 @@
 	total_positions = 2
 	spawn_positions = 2
 	f_title = "Princess"
-	allowed_races = RACES_RESPECTED
+	allowed_races = RACES_RESPECTED_ONLY
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_ages = list(AGE_ADULT)
 
