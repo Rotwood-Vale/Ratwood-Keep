@@ -15823,7 +15823,7 @@
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors)
 "rrn" = (
-/turf/closed/wall/mineral/rogue/stone/window/blue_moss,
+/turf/closed/wall/mineral/rogue/stone/window/moss,
 /area/rogue/indoors)
 "rrA" = (
 /obj/effect/decal/cleanable/cobweb,
@@ -388370,7 +388370,7 @@ uLB
 uLB
 uLB
 qrn
-rrn
+rDt
 eFy
 uuE
 uuE
@@ -389174,7 +389174,7 @@ uLB
 uLB
 uLB
 pRP
-hHI
+pAV
 eFy
 uuE
 uuE
@@ -389576,7 +389576,7 @@ uLB
 uLB
 uLB
 qrn
-rrn
+rDt
 eFy
 uuE
 uuE
@@ -389978,7 +389978,7 @@ uLB
 uLB
 uLB
 qrn
-rrn
+rDt
 eFy
 uuE
 uuE
