@@ -490,13 +490,13 @@ GLOBAL_LIST_INIT(roguetown_areas_typecache, typecacheof(/area/rogue/indoors/town
 	icon_state = "tavern"
 	ambientsounds = AMB_INGEN
 	ambientnight = AMB_INGEN
-	droning_sound = 'sound/music/jukeboxes/tav3.ogg'
+	droning_sound = 'sound/music/jukeboxes/tav_tune.ogg'
 	droning_sound_dusk = null
 	droning_sound_night = null
 	converted_type = /area/rogue/outdoors/exposed/tavern
 /area/rogue/outdoors/exposed/tavern
 	icon_state = "tavern"
-	droning_sound = 'sound/music/jukeboxes/tav3.ogg'
+	droning_sound = 'sound/music/jukeboxes/tav_tune.ogg'
 	droning_sound_dusk = null
 	droning_sound_night = null
 
