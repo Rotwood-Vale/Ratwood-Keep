@@ -15823,7 +15823,7 @@
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors)
 "rrn" = (
-/obj/structure/roguewindow/openclose{
+/obj/structure/roguewindow/openclose/reinforced{
 	dir = 1
 	},
 /turf/open/floor/rogue/metal,
