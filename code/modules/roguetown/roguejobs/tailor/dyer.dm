@@ -9,6 +9,7 @@
 	var/activecolor = "#FFFFFF"
 	/// Allow holder'd mobs
 	var/allow_mobs = TRUE
+/*
 	var/list/allowed_types = list(
 			/obj/item/clothing/suit/roguetown/shirt/robe,
 			/obj/item/clothing/suit/roguetown/shirt/dress,
@@ -28,8 +29,15 @@
 			/obj/item/clothing/shoes/roguetown/simpleshoes,
 			/obj/item/clothing/suit/roguetown/armor/gambeson
 			)
+*/
+	//EVIL CODE !!
+	var/list/allowed_types = list(
+			/obj/item/clothing,
+			/obj/item/storage
+			)
+
 	var/static/list/selectable_colors = list(
-  		"White" = "#ffffff",
+		"White" = "#ffffff",
 		"Black" = "#414143",
 		"Light Grey" = "#999999",
 		"Mage Grey" = "#6c6c6c",
@@ -93,7 +101,7 @@
 	if(!is_operational())
 		return
 	user.set_machine(src)
-	var/list/dat = list("<TITLE>Dye Station Control Panel</TITLE><BR>")
+	var/list/dat = list("<TITLE>Dye Bin</TITLE><BR>")
 	if(!inserted)
 		dat += "No item inserted."
 	else

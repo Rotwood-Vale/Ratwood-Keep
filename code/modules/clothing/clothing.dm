@@ -67,6 +67,7 @@
 	var/detail_tag
 	var/detail_color
 	var/boobed_detail = TRUE
+	var/sleeved_detail = TRUE
 	var/list/original_armor //For restoring broken armor
 
 /obj/item/clothing/New()
