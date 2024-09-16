@@ -33,6 +33,8 @@
 	beltl = /obj/item/keyring/gravedigger
 	beltr = /obj/item/storage/belt/rogue/pouch/coins/poor
 	backr = /obj/item/rogueweapon/shovel
+	backl = /obj/item/storage/backpack/rogue/satchel
+	backpack_contents = list(/obj/item/flashlight/flare/torch/lantern = 1, /obj/item/natural/bundle/stick = 1)
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 5, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 5, TRUE)
@@ -47,9 +49,9 @@
 		if(H.age == AGE_OLD)
 			H.mind.adjust_skillrank(/datum/skill/magic/holy, 1, TRUE)
 		H.change_stat("strength", 1)
-		H.change_stat("constitution", 2)
+		H.change_stat("constitution", 1)
 		H.change_stat("intelligence", -2)
-		H.change_stat("endurance", 1)
+		H.change_stat("endurance", 2)
 		H.change_stat("speed", 1)
 	ADD_TRAIT(H, TRAIT_NOSTINK, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_SOUL_EXAMINE, TRAIT_GENERIC)
