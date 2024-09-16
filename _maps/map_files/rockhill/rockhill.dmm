@@ -15823,10 +15823,7 @@
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors)
 "rrn" = (
-/obj/structure/roguewindow/openclose/reinforced{
-	dir = 1
-	},
-/turf/open/floor/rogue/metal,
+/turf/closed/wall/mineral/rogue/stone/window/blue_moss,
 /area/rogue/indoors)
 "rrA" = (
 /obj/effect/decal/cleanable/cobweb,
