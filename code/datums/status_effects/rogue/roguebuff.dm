@@ -90,6 +90,11 @@
 	. = ..()
 	owner.add_stress(/datum/stressevent/moondust)
 
+/datum/status_effect/buff/moondust/on_remove()
+	. = ..()
+	owner.apply_status_effect(/datum/status_effect/debuff/moondust_crash)
+
+
 /datum/status_effect/buff/moondust_purest
 	id = "purest moondust"
 	alert_type = /atom/movable/screen/alert/status_effect/buff/druqks
@@ -102,6 +107,10 @@
 /datum/status_effect/buff/moondust_purest/on_apply()
 	. = ..()
 	owner.add_stress(/datum/stressevent/moondust_purest)
+
+/datum/status_effect/buff/moondust_purest/on_remove()
+	. = ..()
+	owner.apply_status_effect(/datum/status_effect/debuff/moondust_crash)
 
 /datum/status_effect/buff/weed
 	id = "weed"
