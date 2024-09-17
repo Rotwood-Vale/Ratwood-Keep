@@ -204,6 +204,7 @@ GLOBAL_LIST_EMPTY(job_respawn_delays)
 #define CTAG_BANDIT			"CAT_BANDIT"		// Bandit class - Tied to the bandit antag really
 #define CTAG_CHALLENGE 		"CAT_CHALLENGE"  	// Challenge class - Meant to be free for everyone
 #define CTAG_MERCENARY 		"CAT_MERCENARY" 	// Mercs
+#define CTAG_BOG 		"CAT_BOG" 	// Bog guards
 
 /*
 	Defines for the triumph buy datum categories

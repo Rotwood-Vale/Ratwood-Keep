@@ -522,14 +522,14 @@
 	name = "horned cap"
 	desc = "A helmet with two horns poking out of the sides."
 	icon_state = "hornedcap"
-	max_integrity = 200
+	max_integrity = 225
 	body_parts_covered = HEAD|HAIR
 
 /obj/item/clothing/head/roguetown/helmet/winged
 	name = "winged cap"
 	desc = "A helmet with two wings on its sides."
 	icon_state = "wingedcap"
-	max_integrity = 200
+	max_integrity = 225
 	mob_overlay_icon = 'icons/roguetown/clothing/onmob/64x64/head.dmi'
 	worn_x_dimension = 64
 	worn_y_dimension = 64
@@ -549,8 +549,9 @@
 
 /obj/item/clothing/head/roguetown/helmet/sallet/visored
 	name = "visored sallet"
-	desc = "A steel helmet which protects the ears, nose, and eyes."
+	desc = "A steel helmet which protects the ears, eyes and nose."
 	icon_state = "sallet_visor"
+	max_integrity = 275
 	adjustable = CAN_CADJUST
 	flags_inv = HIDEFACE
 	flags_cover = HEADCOVERSEYES
@@ -700,6 +701,7 @@
 	desc = "A helmet which covers the whole of the head. Offers excellent protection."
 	icon_state = "topfhelm"
 	item_state = "topfhelm"
+	max_integrity = 435
 	emote_environment = 3
 	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR
 	block2add = FOV_RIGHT|FOV_LEFT
@@ -707,7 +709,7 @@
 
 /obj/item/clothing/head/roguetown/helmet/heavy/pigface
 	name = "pigface bascinet"
-	desc = "A steel bascinet helmet with a pigface visor protecting the head, ears, nose, mouth, and eyes."
+	desc = "A steel bascinet helmet with a pigface visor protecting the head, ears, eyes, nose and mouth."
 	icon_state = "hounskull"
 	item_state = "hounskull"
 	adjustable = CAN_CADJUST
@@ -743,6 +745,7 @@
 	desc = "A steel bascinet helmet without a visor protecting the the head and ears."
 	icon_state = "bascinet_novisor"
 	item_state = "bascinet_novisor"
+	max_integrity = 235
 	emote_environment = 3
 	body_parts_covered = HEAD|HAIR|EARS
 	flags_inv = HIDEHAIR
