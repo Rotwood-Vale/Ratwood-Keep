@@ -1,6 +1,5 @@
 
 
-//Processing procs related to dreamer, so he hallucinates and shit
 /datum/antagonist/maniac/process()
 	if(!owner.current || triumphed)
 		STOP_PROCESSING(SSobj, src)
@@ -8,17 +7,12 @@
 	handle_visions(owner.current)
 	if(waking_up)
 		handle_waking_up(owner.current)
-	else
-		handle_hallucinations(owner.current)
 	handle_floors(owner.current)
 	handle_walls(owner.current)
 
 /datum/antagonist/maniac/proc/handle_visions(mob/living/dreamer)
-	//Jumpscare funny
-	if(prob(2))
-		hallucinations.jumpscare(dreamer)
 	//Random laughter
-	else if(prob(1))
+	if(prob(1))
 		var/static/list/funnies = list(
 			'sound/villain/comic1.ogg',
 			'sound/villain/comic2.ogg',

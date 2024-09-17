@@ -20,7 +20,7 @@
 	outfit = /datum/outfit/job/roguetown/jester
 	display_order = JDO_JESTER
 	give_bank_account = TRUE
-	min_pq = -4 //retard jesters are funny so low PQ requirement
+	min_pq = -4 //silly jesters are funny so low PQ requirement
 	max_pq = null
 
 	allow_custom_genitals = TRUE
