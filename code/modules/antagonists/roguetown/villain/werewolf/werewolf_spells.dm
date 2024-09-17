@@ -20,9 +20,9 @@
 				if(isbrain(player)) continue
 
 				if(player == user) continue
-				if(get_dist(player, user) < 21)
+				if(get_dist(player, user) < 26)
 					player.apply_status_effect(/datum/status_effect/wolf/wolf_hunt)
-				if(get_dist(player, user) > 7 && get_dist(player, user) < 21)
+				if(get_dist(player, user) > 7 && get_dist(player, user) < 26)
 					player.playsound_local(get_step_towards(player, user),'sound/vo/mobs/wwolf/ragehowl.ogg', 100, FALSE, pressure_affected = FALSE)
 		return
 
