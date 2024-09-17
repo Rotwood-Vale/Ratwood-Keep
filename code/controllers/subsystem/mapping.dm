@@ -50,15 +50,15 @@ SUBSYSTEM_DEF(mapping)
 #endif
 
 /datum/controller/subsystem/mapping/proc/spawn_random_travel_tiles()
-	spawn_random_travel_transition("vampexit", "vampin", TRAIT_VAMPMANSION)
-	spawn_random_travel_transition("banditexit", "banditin", TRAIT_BANDITCAMP)
+	spawn_random_travel_transition("vampexit", "vampin", TRAIT_VAMPMANSION, /obj/structure/fluff/traveltile/vampire)
+	spawn_random_travel_transition("banditexit", "banditin", TRAIT_BANDITCAMP, /obj/structure/fluff/traveltile/bandit)
 
-/datum/controller/subsystem/mapping/proc/spawn_random_travel_transition(travel_id, travel_goes_to_id, required_trait)
+/datum/controller/subsystem/mapping/proc/spawn_random_travel_transition(travel_id, travel_goes_to_id, required_trait, path)
 	var/atom/location = get_free_travel_spawn_point()
 	if(!location)
 		log_world("Unable to find spot for random travel transition: [travel_id] [travel_goes_to_id]")
 		return
-	create_travel_tiles(location, travel_id, travel_goes_to_id, required_trait)
+	create_travel_tiles(location, travel_id, travel_goes_to_id, required_trait, path)
 
 /datum/controller/subsystem/mapping/Initialize(timeofday)
 	HACK_LoadMapConfig()

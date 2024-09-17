@@ -50,7 +50,7 @@
 		OFFSET_ID = list(0,0), OFFSET_GLOVES = list(0,1), OFFSET_WRISTS = list(0,1), OFFSET_HANDS = list(0,0), \
 		OFFSET_CLOAK = list(0,1), OFFSET_FACEMASK = list(0,0), OFFSET_HEAD = list(0,0), \
 		OFFSET_FACE = list(0,0), OFFSET_BELT_F = list(0,0), OFFSET_BACK = list(0,0), \
-		OFFSET_NECK = list(0,0), OFFSET_MOUTH = list(0,0), OFFSET_PANTS = list(0,1), \
+		OFFSET_NECK = list(0,0), OFFSET_MOUTH = list(0,0), OFFSET_PANTS = list(0,0), \
 		OFFSET_SHIRT = list(0,1), OFFSET_ARMOR = list(0,1), OFFSET_UNDIES = list(0,1),\
 		OFFSET_ID_F = list(0,-1), OFFSET_GLOVES_F = list(0,0), OFFSET_WRISTS_F = list(0,0), OFFSET_HANDS_F = list(0,0), \
 		OFFSET_CLOAK_F = list(0,0), OFFSET_FACEMASK_F = list(0,-1), OFFSET_HEAD_F = list(0,-1), \
@@ -59,20 +59,20 @@
 		OFFSET_SHIRT_F = list(0,0), OFFSET_ARMOR_F = list(0,0), OFFSET_UNDIES_F = list(0,0), \
 		)
 	specstats = list(
-		"strength" = 0, 
-		"perception" = -1, 
-		"intelligence" = 0, 
-		"constitution" = 0, 
-		"endurance" = 1, 
-		"speed" = 1, 
+		"strength" = 0,
+		"perception" = -1,
+		"intelligence" = 0,
+		"constitution" = 0,
+		"endurance" = 1,
+		"speed" = 1,
 		"fortune" = 0
 		)
 	specstats_m = list(
-		"strength" = -1, 
+		"strength" = -1,
 		"speed" = 1,
 	)
 	specstats_f = list(
-		"constitution" = 1, 
+		"constitution" = 1,
 		"intelligence" = -1,
 	)
 	enflamed_icon = "widefire"
@@ -163,5 +163,19 @@
 /datum/species/elf/dark/random_surname()
 	return " [pick(world.file2list("strings/rt/names/elf/elfsnf.txt"))]"
 
+//Groups of Accents for each race set by associated 'skin_tone', see 'get_skin_list' above
+// "full" group in JSON lists
 /datum/species/elf/dark/get_accent(mob/living/carbon/human/H)
-	return strings("french_replacement.json", "french")
+		return strings("french_replacement.json", "full")
+
+// "start" group in JSON lists
+/datum/species/elf/dark/get_accent_start(mob/living/carbon/human/H)
+		return strings("french_replacement.json", "start")
+
+// "end" group in JSON lists
+/datum/species/elf/dark/get_accent_end(mob/living/carbon/human/H)
+		return strings("french_replacement.json", "end")
+
+// "syllable" group in JSON lists
+/datum/species/elf/dark/get_accent_any(mob/living/carbon/human/H)
+		return strings("french_replacement.json", "syllable")

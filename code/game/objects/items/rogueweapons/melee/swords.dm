@@ -81,13 +81,14 @@
 	item_d_type = "stab"
 
 /obj/item/rogueweapon/sword/short
-	name = "short sword"
-	desc = "An archaic steel sword made for stabbing."
-	force = 19
-	possible_item_intents = list(/datum/intent/sword/cut/short, /datum/intent/sword/thrust/short)
+	slot_flags = ITEM_SLOT_HIP
+	name = "arming sword"
+	desc = "A short arming sword, designed as a knightly sidearm. Best used with a shield or out of desperation."
 	icon_state = "swordshort"
+	possible_item_intents = list(/datum/intent/sword/cut, /datum/intent/sword/thrust, /datum/intent/sword/strike)
 	gripped_intents = null
-	minstr = 4
+	swingsound = BLADEWOOSH_SMALL
+	minstr = 6
 	wdefense = 4
 
 /obj/item/rogueweapon/sword/long
@@ -115,7 +116,6 @@
 	associated_skill = /datum/skill/combat/swords
 	throwforce = 15
 	thrown_bclass = BCLASS_CUT
-	dropshrink = 0.75
 	smeltresult = /obj/item/ingot/steel
 
 /obj/item/rogueweapon/sword/long/death
@@ -156,7 +156,6 @@
 	associated_skill = /datum/skill/combat/swords
 	throwforce = 15
 	thrown_bclass = BCLASS_CUT
-	dropshrink = 0.75
 	smeltresult = /obj/item/ingot/steel
 
 /obj/item/rogueweapon/sword/long/getonmobprop(tag)
@@ -194,7 +193,6 @@
 	associated_skill = /datum/skill/combat/swords
 	throwforce = 15
 	thrown_bclass = BCLASS_CUT
-	dropshrink = 0.75
 	smeltresult = /obj/item/ingot/steel
 	sellprice = 363
 	static_price = TRUE
@@ -234,7 +232,6 @@
 	max_integrity = 9999
 	throwforce = 15
 	thrown_bclass = BCLASS_CUT
-	dropshrink = 0.75
 	smeltresult = /obj/item/ingot/steel
 	sellprice = 363
 	static_price = TRUE
@@ -273,7 +270,6 @@
 	associated_skill = /datum/skill/combat/swords
 	throwforce = 15
 	thrown_bclass = BCLASS_CUT
-	dropshrink = 0.75
 	smeltresult = /obj/item/ingot/steel
 
 /obj/item/rogueweapon/sword/long/rider/getonmobprop(tag)
@@ -286,6 +282,16 @@
 				return list("shrink" = 0.6,"sx" = 3,"sy" = 4,"nx" = -1,"ny" = 4,"wx" = -8,"wy" = 3,"ex" = 7,"ey" = 0,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0,"nturn" = 0,"sturn" = 0,"wturn" = 0,"eturn" = 15,"nflip" = 8,"sflip" = 0,"wflip" = 8,"eflip" = 0)
 			if("onbelt")
 				return list("shrink" = 0.5,"sx" = -4,"sy" = -6,"nx" = 5,"ny" = -6,"wx" = 0,"wy" = -6,"ex" = -1,"ey" = -6,"nturn" = 100,"sturn" = 156,"wturn" = 90,"eturn" = 180,"nflip" = 0,"sflip" = 0,"wflip" = 0,"eflip" = 0,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0)
+
+/obj/item/rogueweapon/sword/long/rider/messer
+	force = 20
+	force_wielded = 30
+	possible_item_intents = list(/datum/intent/sword/cut, /datum/intent/axe/chop, /datum/intent/sword/strike)
+	gripped_intents = list(/datum/intent/sword/cut, /datum/intent/axe/chop, /datum/intent/sword/thrust, /datum/intent/sword/strike)
+	icon_state = "Kmesser"
+	item_state = "Kmesser"
+	name = "langesmesser"
+	desc = "A lengthened messer, inspired by those from grenzelhoft. It chops and cuts with terrifying efficiency."
 
 /obj/item/rogueweapon/sword/long/marlin
 	force = 26
@@ -312,7 +318,6 @@
 	associated_skill = /datum/skill/combat/swords
 	throwforce = 15
 	thrown_bclass = BCLASS_CUT
-	dropshrink = 0.75
 	minstr = 6
 	sellprice = 42
 	wdefense = 5
@@ -425,6 +430,12 @@
 	minstr = 4
 	wdefense = 2
 
+/obj/item/rogueweapon/sword/iron/messer/steel
+	name = "steel messer" //People often ask for messers when the smithy only has steel, now they can make it.
+	desc = "A single edged blade to slice and chop with. This one is made of sturdy steel."
+	icon_state = "smesser"
+	max_integrity = 175 //A stout blade that will last a long time before breakage
+
 /obj/item/rogueweapon/sword/sabre
 	name = "sabre"
 	desc = "A swift saber. Parries realiantly and strikes swiftly"
@@ -476,6 +487,21 @@
 	max_integrity = 300
 	max_blade_int = 300
 	wdefense = 7
+
+/obj/item/rogueweapon/sword/estoc
+	name = "estoc"
+	desc = "An specialised steel longsword, tailor made for stabbing through armor."
+	force = 18
+	force_wielded = 30
+	possible_item_intents = list(/datum/intent/sword/cut/rapier, /datum/intent/sword/thrust) //Better at stabbing than the longsword, worse at evrything else. It fits the time period because of our use of bervors and visored sallets.
+	icon_state = "estoc"
+	gripped_intents = list(/datum/intent/sword/cut/rapier, /datum/intent/sword/thrust/estoc, /datum/intent/sword/strike)
+	minstr = 6
+	wdefense = 4
+
+/datum/intent/sword/thrust/estoc // Around 12 or so dmg gets through armor, making it weaker than spears, but more portable
+	clickcd = 10
+	penfactor = 60
 
 /obj/item/rogueweapon/sword/cutlass
 	name = "cutlass"

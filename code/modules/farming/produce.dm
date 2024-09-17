@@ -3,9 +3,6 @@
 	dried_type = null
 	resistance_flags = FLAMMABLE
 	w_class = WEIGHT_CLASS_SMALL
-	var/can_distill = FALSE //If FALSE, this object cannot be distilled into an alcohol.
-	var/distill_reagent //If NULL and this object can be distilled, it uses a generic fruit_wine reagent and adjusts its variables.
-	var/distill_amt = 12
 	var/list/pipe_reagents = list()
 	var/seed
 	var/bitesize_mod = 0
@@ -37,8 +34,9 @@
 				new seed(location)
 			qdel(src)
 			return
+		else
+			return ..()
 	return ..()
-
 
 /obj/item/reagent_containers/food/snacks/grown/wheat
 	seed = /obj/item/seeds/wheat
@@ -69,6 +67,22 @@
 	tastes = list("oat" = 1)
 	can_distill = TRUE
 	distill_reagent = /datum/reagent/consumable/ethanol/ale
+	distill_amt = 12
+	grind_results = list(/datum/reagent/floure = 10)
+
+/obj/item/reagent_containers/food/snacks/grown/rice
+	seed = /obj/item/seeds/rice
+	name = "rice grain"
+	desc = ""
+	icon = 'icons/roguetown/items/produce.dmi'
+	icon_state = "rice"
+	gender = PLURAL
+	filling_color = "#f0f0f0"
+	bitesize_mod = 2
+	foodtype = GRAIN
+	tastes = list("rice" = 1)
+	can_distill = TRUE
+	distill_reagent = /datum/reagent/consumable/ethanol/sake
 	distill_amt = 12
 	grind_results = list(/datum/reagent/floure = 10)
 
@@ -230,3 +244,257 @@
 	grind_results = list(/datum/reagent/drug/space_drugs = 5)
 	eat_effect = /datum/status_effect/debuff/badmeal
 
+/obj/item/reagent_containers/food/snacks/grown/cabbage
+	name = "cabbage"
+	seed = /obj/item/seeds/cabbage
+	icon_state = "cabbage"
+	tastes = list("cabbage" = 1)
+	filling_color = "#88c8a0"
+	bitesize = 3
+	foodtype = VEGETABLES
+	rotprocess = 15 MINUTES
+	become_rot_type = /obj/item/reagent_containers/food/snacks/grown/sauerkraut
+	list_reagents = list(/datum/reagent/consumable/nutriment = 2)
+
+/obj/item/reagent_containers/food/snacks/grown/pear
+	name = "pear"
+	seed = /obj/item/seeds/pear
+	icon_state = "pear"
+	tastes = list("pear" = 1)
+	filling_color = "#9ff35f"
+	bitesize = 3
+	foodtype = FRUIT
+	rotprocess = 20 MINUTES
+	list_reagents = list(/datum/reagent/consumable/nutriment = 3)
+	trash = /obj/item/trash/pearcore
+	can_distill = TRUE
+	distill_reagent = /datum/reagent/consumable/ethanol/beer/cider
+
+/obj/item/reagent_containers/food/snacks/grown/cherry
+	name = "cherries"
+	seed = /obj/item/seeds/cherry
+	icon_state = "cherry"
+	tastes = list("cherry" = 1)
+	filling_color = "#b90019"
+	bitesize = 3
+	foodtype = FRUIT
+	rotprocess = 20 MINUTES
+	list_reagents = list(/datum/reagent/consumable/nutriment = 3)
+	grind_results = list(/datum/reagent/consumable/cherryjelly = 3)
+
+/obj/item/reagent_containers/food/snacks/grown/olive
+	name = "olive"
+	seed = /obj/item/seeds/olive
+	icon_state = "olive"
+	tastes = list("olive" = 1)
+	filling_color = "#a4c74b"
+	bitesize = 3
+	foodtype = FRUIT
+	rotprocess = 20 MINUTES
+	list_reagents = list(/datum/reagent/consumable/nutriment = 2)
+	grind_results = list(/datum/reagent/consumable/cooking_oil = 3)
+
+/obj/item/reagent_containers/food/snacks/grown/nut
+	name = "rocknut"
+	seed = /obj/item/seeds/nut
+	icon_state = "nut"
+	tastes = list("nutty" = 1)
+	filling_color = "#6b4d18"
+	bitesize = 3
+	foodtype = FRUIT
+	list_reagents = list(/datum/reagent/consumable/nutriment = 4)
+
+/obj/item/reagent_containers/food/snacks/grown/tomato
+	name = "tomato"
+	seed = /obj/item/seeds/tomato
+	icon_state = "tomato"
+	tastes = list("tomato" = 1)
+	filling_color = "#e4532b"
+	bitesize = 3
+	foodtype = FRUIT
+	rotprocess = 20 MINUTES
+	list_reagents = list(/datum/reagent/consumable/nutriment = 2, /datum/reagent/consumable/tomatojuice = 3)
+	grind_results = list(/datum/reagent/consumable/tomatojuice = 6)
+	slices_num = 5
+	slice_batch = TRUE
+	slice_path = /obj/item/reagent_containers/food/snacks/rogue/tomatoslice
+
+/obj/item/reagent_containers/food/snacks/grown/onion
+	name = "onion"
+	seed = /obj/item/seeds/onion
+	icon_state = "onion"
+	tastes = list("onion" = 1)
+	filling_color = "#fdfaca"
+	bitesize = 3
+	foodtype = VEGETABLES
+	list_reagents = list(/datum/reagent/consumable/nutriment = 2, /datum/reagent/consumable/tearjuice = 3)
+	grind_results = list(/datum/reagent/consumable/tearjuice = 6)
+	slices_num = 5
+	slice_batch = TRUE
+	slice_path = /obj/item/reagent_containers/food/snacks/rogue/onionslice
+
+/obj/item/reagent_containers/food/snacks/grown/garlic
+	name = "garlic"
+	desc = "Your last line of defense against the vampiric horde."
+	seed = /obj/item/seeds/garlic
+	icon_state = "garlic"
+	tastes = list("garlic" = 1)
+	filling_color = "#fff2c6"
+	bitesize = 3
+	foodtype = VEGETABLES
+	list_reagents = list(/datum/reagent/consumable/nutriment = 2, /datum/reagent/consumable/garlic = 3)
+	grind_results = list(/datum/reagent/consumable/garlic = 6)
+
+/obj/item/reagent_containers/food/snacks/grown/carrot
+	name = "carrot"
+	seed = /obj/item/seeds/carrot
+	icon_state = "carrot"
+	tastes = list("carrot" = 1)
+	filling_color = "#d57916"
+	bitesize = 3
+	foodtype = VEGETABLES
+	rotprocess = 40 MINUTES
+	list_reagents = list(/datum/reagent/consumable/nutriment = 2, /datum/reagent/medicine/oculine = 1)
+	grind_results = list(/datum/reagent/medicine/oculine = 3)
+
+/obj/item/reagent_containers/food/snacks/grown/potato
+	name = "potato"
+	seed = /obj/item/seeds/potato
+	icon_state = "potato"
+	tastes = list("potato" = 1)
+	filling_color = "#d8d8b6"
+	bitesize = 3
+	foodtype = VEGETABLES
+	rotprocess = 50 MINUTES
+	list_reagents = list(/datum/reagent/consumable/nutriment = 3)
+	can_distill = TRUE
+	distill_reagent = /datum/reagent/consumable/ethanol/vodka
+	distill_amt = 12
+
+/obj/item/reagent_containers/food/snacks/grown/eggplant
+	name = "aubergine"
+	seed = /obj/item/seeds/eggplant
+	icon_state = "eggplant"
+	tastes = list("aubergine" = 1)
+	filling_color = "#b6ab70"
+	bitesize = 3
+	foodtype = FRUIT
+	rotprocess = 20 MINUTES
+	list_reagents = list(/datum/reagent/consumable/nutriment = 3)
+
+/obj/item/reagent_containers/food/snacks/grown/bean
+	name = "beans"
+	seed = /obj/item/seeds/bean
+	icon_state = "bean"
+	tastes = list("bean" = 1)
+	filling_color = "#4b360e"
+	bitesize = 3
+	foodtype = FRUIT
+	rotprocess = 50 MINUTES
+	list_reagents = list(/datum/reagent/consumable/nutriment = 3)
+
+/obj/item/reagent_containers/food/snacks/grown/radish
+	seed = /obj/item/seeds/radish
+	name = "radish"
+	icon_state = "radish"
+	filling_color = "#d4689e"
+	bitesize = 3
+	foodtype = VEGETABLES
+	tastes = list("radish" = 1)
+	list_reagents = list(/datum/reagent/consumable/nutriment = 2)
+	rotprocess = 15 MINUTES
+
+/obj/item/reagent_containers/food/snacks/grown/beet
+	seed = /obj/item/seeds/beet
+	name = "sugarbeet"
+	icon_state = "beet"
+	filling_color = "#ededed"
+	bitesize = 3
+	foodtype = VEGETABLES|SUGAR
+	tastes = list("sugar" = 1)
+	list_reagents = list(/datum/reagent/consumable/nutriment = 2, /datum/reagent/consumable/sugar = 3)
+	grind_results = list(/datum/reagent/consumable/sugar = 6)
+	rotprocess = 15 MINUTES
+
+/obj/item/reagent_containers/food/snacks/grown/bellpepper
+	seed = /obj/item/seeds/bellpepper
+	name = "tiefling's egg"
+	desc = "Ay ay ay!! Muy caliente!!"
+	icon_state = "bellpepper"
+	filling_color = "#d13f05"
+	bitesize = 3
+	foodtype = FRUIT
+	tastes = list("heat" = 1)
+	list_reagents = list(/datum/reagent/consumable/nutriment = 2, /datum/reagent/consumable/capsaicin = 3)
+	grind_results = list(/datum/reagent/consumable/capsaicin = 6)
+	rotprocess = 25 MINUTES
+
+/obj/item/reagent_containers/food/snacks/grown/peas
+	seed = /obj/item/seeds/peas
+	name = "peas"
+	icon_state = "peas"
+	filling_color = "#6ba432"
+	bitesize = 3
+	foodtype = FRUIT
+	tastes = list("mushy" = 1)
+	list_reagents = list(/datum/reagent/consumable/nutriment = 2)
+	rotprocess = 25 MINUTES
+
+/obj/item/reagent_containers/food/snacks/grown/cucumber
+	seed = /obj/item/seeds/cucumber
+	name = "cucumber"
+	icon_state = "cucumber"
+	filling_color = "#c2daab"
+	bitesize = 3
+	foodtype = FRUIT
+	tastes = list("cucumber" = 1)
+	list_reagents = list(/datum/reagent/consumable/nutriment = 3)
+	rotprocess = 20 MINUTES
+	fishloot = list(/obj/item/reagent_containers/food/snacks/fish/shrimp = 10)
+
+/obj/item/reagent_containers/food/snacks/grown/tea
+	seed = /obj/item/seeds/tea
+	name = "tea"
+	icon_state = "tea"
+	filling_color = "#19300f"
+	bitesize = 5
+	foodtype = null
+	tastes = list("sugar" = 1)
+	list_reagents = list(/datum/reagent/consumable/nutriment = 2, /datum/reagent/toxin/teapowder = 3)
+	grind_results = list(/datum/reagent/toxin/teapowder = 6)
+	rotprocess = 20 MINUTES
+
+/obj/item/reagent_containers/food/snacks/grown/plumphelmet
+	seed = /obj/item/seeds/mycelium/plumphelmet
+	name = "plump helmet mushroom"
+	icon_state = "plumphelmet"
+	filling_color = "#d0abda"
+	bitesize = 3
+	foodtype = VEGETABLES
+	tastes = list("the mountainhome" = 1)
+	list_reagents = list(/datum/reagent/consumable/nutriment = 3)
+	can_distill = TRUE
+	distill_reagent = /datum/reagent/consumable/ethanol/beer/mushroomwine
+	rotprocess = 60 MINUTES
+
+/obj/item/reagent_containers/food/snacks/grown/trippy
+	seed = /obj/item/seeds/mycelium/trippy
+	name = "strange blue mushroom"
+	icon_state = "trippy"
+	filling_color = "#abd4da"
+	bitesize = 3
+	foodtype = GROSS
+	tastes = list("colors" = 1)
+	list_reagents = list(/datum/reagent/consumable/nutriment = 3, /datum/reagent/drug/space_drugs = 3)
+	grind_results = list(/datum/reagent/drug/space_drugs = 6)
+
+/obj/item/reagent_containers/food/snacks/grown/amanita
+	seed = /obj/item/seeds/mycelium/amanita
+	name = "strange red mushroom"
+	icon_state = "amanita"
+	filling_color = "#daabab"
+	bitesize = 3
+	foodtype = GROSS
+	tastes = list("numb" = 1)
+	list_reagents = list(/datum/reagent/consumable/nutriment = 3, /datum/reagent/toxin/amanitin = 3)
+	grind_results = list(/datum/reagent/toxin/amanitin = 6)

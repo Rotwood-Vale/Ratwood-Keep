@@ -9,7 +9,7 @@
 	warnie = "sydwarning"
 	movement_interrupt = FALSE
 	sound = 'sound/magic/heal.ogg'
-	invocation_type = "none"
+	invocation_type = "whisper"
 	associated_skill = /datum/skill/magic/holy
 	antimagic_allowed = TRUE
 	charge_max = 10 SECONDS
@@ -22,9 +22,8 @@
 		var/mob/living/target = targets[1]
 		if(user.patron?.undead_hater && (target.mob_biotypes & MOB_UNDEAD)) //positive energy harms the undead
 			target.visible_message(span_danger("[target] is burned by holy light!"), span_userdanger("I'm burned by holy light!"))
-			target.adjustFireLoss(50)
-			target.Paralyze(30)
-			target.fire_act(1,5)
+			target.adjustFireLoss(10)
+			target.fire_act(1,10)
 			return TRUE
 		//this if chain is stupid, replace with variables on /datum/patron when possible?
 		switch(user.patron.type)
@@ -93,7 +92,7 @@
 	chargedloop = null
 	req_items = list(/obj/item/clothing/neck/roguetown/psicross)
 	sound = 'sound/magic/heal.ogg'
-	invocation_type = "none"
+	invocation_type = "whisper"
 	associated_skill = /datum/skill/magic/holy
 	antimagic_allowed = TRUE
 	charge_max = 20 SECONDS
@@ -106,9 +105,8 @@
 		var/mob/living/target = targets[1]
 		if(user.patron?.undead_hater && (target.mob_biotypes & MOB_UNDEAD)) //positive energy harms the undead
 			target.visible_message(span_danger("[target] is burned by holy light!"), span_userdanger("I'm burned by holy light!"))
-			target.adjustFireLoss(100)
-			target.Paralyze(50)
-			target.fire_act(1,5)
+			target.adjustFireLoss(25)
+			target.fire_act(1,10)
 			return TRUE
 		target.visible_message(span_info("A wreath of gentle light passes over [target]!"), span_notice("I'm bathed in holy light!"))
 		if(iscarbon(target))
