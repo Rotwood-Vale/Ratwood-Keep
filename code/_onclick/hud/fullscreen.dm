@@ -225,7 +225,7 @@
 	icon = 'icons/mob/screen_gen.dmi'
 	screen_loc = "WEST,SOUTH to EAST,NORTH"
 	icon_state = "flash"
-	alpha = 80
+	alpha = 60
 
 /atom/movable/screen/fullscreen/color_vision/green
 	color = "#00ff00"

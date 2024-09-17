@@ -24,7 +24,7 @@
 		if("scream")
 			used = pick('sound/vo/mobs/wwolf/howl (1).ogg','sound/vo/mobs/wwolf/howl (2).ogg')
 		if("idle")
-			used = pick('sound/vo/mobs/wwolf/idle (1).ogg','sound/vo/mobs/wwolf/idle (2).ogg','sound/vo/mobs/wwolf/sniff.ogg')
+			used = pick('sound/vo/mobs/wwolf/idle (1).ogg','sound/vo/mobs/wwolf/idle (2).ogg','sound/vo/mobs/wwolf/idle (3).ogg','sound/vo/mobs/wwolf/idle (4).ogg','sound/vo/mobs/wwolf/sniff.ogg')
 
 
 	return used
