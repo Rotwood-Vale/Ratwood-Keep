@@ -69,15 +69,15 @@
 					/obj/item/seeds/potato,
 				)
 
-// /datum/supply_pack/rogue/seeds/sugarcane
-// 	name = "Sugarcane"
-// 	cost = 12
-// 	contains = list(
-// 					/obj/item/seeds/sugarcane,
-// 					/obj/item/seeds/sugarcane,
-// 					/obj/item/seeds/sugarcane,
-// 					/obj/item/seeds/sugarcane,
-// 				)
+/datum/supply_pack/rogue/seeds/sugarcane
+	name = "Sugarcane"
+	cost = 12
+	contains = list(
+					/obj/item/seeds/sugarcane,
+					/obj/item/seeds/sugarcane,
+					/obj/item/seeds/sugarcane,
+					/obj/item/seeds/sugarcane,
+				)
 
 /datum/supply_pack/rogue/seeds/onion
 	name = "Onion"

@@ -89,7 +89,7 @@
 	warming = 3 MINUTES
 	rotprocess = SHELFLIFE_LONG
 	eat_effect = /datum/status_effect/buff/foodbuff
-/obj/item/reagent_containers/food/snacks/rogue/wienerpotato/attackby(obj/item/I, mob/user, params)
+/obj/item/reagent_containers/food/snacks/rogue/wienerpotato/attackby(obj/item/I, mob/living/user, params)
 	var/found_table = locate(/obj/structure/table) in (loc)
 	if(!experimental_inhand)
 		return
@@ -97,6 +97,7 @@
 		if(isturf(loc)&& (found_table))
 			playsound(get_turf(user), 'sound/foley/dropsound/gen_drop.ogg', 30, TRUE, -1)
 			if(do_after(user,3 SECONDS, target = src))
+				user.mind.adjust_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
 				new /obj/item/reagent_containers/food/snacks/rogue/wienerpotatonions(loc)
 				qdel(I)
 				qdel(src)
@@ -112,7 +113,7 @@
 	bonus_reagents = list(/datum/reagent/consumable/nutriment = 2)
 	trash = /obj/item/cooking/platter
 	rotprocess = SHELFLIFE_EXTREME
-/obj/item/reagent_containers/food/snacks/rogue/wienerpotato/plated/attackby(obj/item/I, mob/user, params)
+/obj/item/reagent_containers/food/snacks/rogue/wienerpotato/plated/attackby(obj/item/I, mob/living/user, params)
 	var/found_table = locate(/obj/structure/table) in (loc)
 	if(!experimental_inhand)
 		return
@@ -120,6 +121,7 @@
 		if(isturf(loc)&& (found_table))
 			playsound(get_turf(user), 'sound/foley/dropsound/gen_drop.ogg', 30, TRUE, -1)
 			if(do_after(user,3 SECONDS, target = src))
+				user.mind.adjust_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
 				new /obj/item/reagent_containers/food/snacks/rogue/wienerpotatonions/plated(loc)
 				qdel(I)
 				qdel(src)
@@ -137,7 +139,7 @@
 	warming = 3 MINUTES
 	rotprocess = SHELFLIFE_LONG
 	eat_effect = /datum/status_effect/buff/foodbuff
-/obj/item/reagent_containers/food/snacks/rogue/wieneronions/attackby(obj/item/I, mob/user, params)
+/obj/item/reagent_containers/food/snacks/rogue/wieneronions/attackby(obj/item/I, mob/living/user, params)
 	var/found_table = locate(/obj/structure/table) in (loc)
 	if(!experimental_inhand)
 		return
@@ -145,6 +147,7 @@
 		if(isturf(loc)&& (found_table))
 			playsound(get_turf(user), 'sound/foley/dropsound/gen_drop.ogg', 30, TRUE, -1)
 			if(do_after(user,3 SECONDS, target = src))
+				user.mind.adjust_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
 				new /obj/item/reagent_containers/food/snacks/rogue/wienerpotatonions(loc)
 				qdel(I)
 				qdel(src)
@@ -160,7 +163,7 @@
 	bonus_reagents = list(/datum/reagent/consumable/nutriment = 2)
 	trash = /obj/item/cooking/platter
 	rotprocess = SHELFLIFE_EXTREME
-/obj/item/reagent_containers/food/snacks/rogue/wieneronions/plated/attackby(obj/item/I, mob/user, params)
+/obj/item/reagent_containers/food/snacks/rogue/wieneronions/plated/attackby(obj/item/I, mob/living/user, params)
 	var/found_table = locate(/obj/structure/table) in (loc)
 	if(!experimental_inhand)
 		return
@@ -168,6 +171,7 @@
 		if(isturf(loc)&& (found_table))
 			playsound(get_turf(user), 'sound/foley/dropsound/gen_drop.ogg', 30, TRUE, -1)
 			if(do_after(user,3 SECONDS, target = src))
+				user.mind.adjust_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
 				new /obj/item/reagent_containers/food/snacks/rogue/wienerpotatonions/plated(loc)
 				qdel(I)
 				qdel(src)
@@ -301,7 +305,7 @@
 	cooked_type = null
 	bonus_reagents = list(/datum/reagent/consumable/nutriment = MEAL_MEAGRE)
 	rotprocess = SHELFLIFE_DECENT
-/obj/item/reagent_containers/food/snacks/rogue/meat/poultry/baked/attackby(obj/item/I, mob/user, params)
+/obj/item/reagent_containers/food/snacks/rogue/meat/poultry/baked/attackby(obj/item/I, mob/living/user, params)
 	var/obj/item/reagent_containers/peppermill/mill = I
 	if (!isturf(src.loc) || \
 		!(locate(/obj/structure/table) in src.loc) && \
@@ -321,6 +325,7 @@
 				to_chat(user, "There's not enough black pepper to make anything with.")
 				return TRUE
 			mill.reagents.remove_reagent(/datum/reagent/consumable/blackpepper, 1)
+			user.mind.adjust_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
 			new /obj/item/reagent_containers/food/snacks/rogue/meat/poultry/baked/spiced(loc)
 			qdel(src)
 

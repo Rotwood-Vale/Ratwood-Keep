@@ -24,6 +24,13 @@
 				/obj/item/natural/fibers = 1)
 	sellprice = 5	//Gives 2 at 5 mammon each (12 total mammon worth), takes ~7 mammon to make
 
+/datum/crafting_recipe/roguetown/leather/foodbag
+	name = "food bag"
+	result = list(/obj/item/storage/foodbag)
+	reqs = list(/obj/item/natural/hide = 1,
+				/obj/item/natural/fibers = 2)
+	craftdiff = 0
+
 /datum/crafting_recipe/roguetown/leather/satchel
 	name = "leather satchel"
 	result = /obj/item/storage/backpack/rogue/satchel

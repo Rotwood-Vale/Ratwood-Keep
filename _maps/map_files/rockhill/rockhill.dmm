@@ -23676,6 +23676,10 @@
 /obj/machinery/light/rogue/torchholder{
 	dir = 4
 	},
+/obj/item/seeds/sugarcane,
+/obj/item/seeds/sugarcane,
+/obj/item/seeds/sugarcane,
+/obj/item/seeds/sugarcane,
 /turf/open/floor/rogue/twig,
 /area/rogue/indoors)
 "qpt" = (
