@@ -4,9 +4,11 @@
 	allowed_races = RACES_ALL_KINDS
 	allowed_sexes = list(MALE, FEMALE)
 	outfit = /datum/outfit/job/roguetown/adventurer/knighterrant
-	maximum_possible_slots = 4		
+	maximum_possible_slots = 4
 	traits_applied = list(TRAIT_HEAVYARMOR, TRAIT_NOBLE)
 	category_tags = list(CTAG_ADVENTURER)
+
+	cmode_music = 'sound/music/combat_knight.ogg'
 
 
 /datum/outfit/job/roguetown/adventurer/knighterrant/pre_equip(mob/living/carbon/human/H)
