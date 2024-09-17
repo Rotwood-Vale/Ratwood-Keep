@@ -63,6 +63,7 @@ GLOBAL_LIST_INIT(noble_positions, list(
 	"Monarch",
 	"Consort",
 	"Prince",
+	"Hand",
 	"Guard Captain",
 	"Sheriff",
 	"Councillor",
