@@ -162,26 +162,12 @@
 	flags_inv = HIDECROTCH|HIDEBOOB
 
 /obj/item/clothing/suit/roguetown/shirt/tunic
-	slot_flags = ITEM_SLOT_ARMOR|ITEM_SLOT_SHIRT
+	slot_flags = ITEM_SLOT_SHIRT|ITEM_SLOT_ARMOR
 	name = "tunic"
 	desc = ""
-	body_parts_covered = CHEST|GROIN|VITALS
-	boobed = FALSE
+	body_parts_covered = CHEST|GROIN|ARMS|VITALS
 	icon_state = "tunic"
-	item_state = "undershirt"
-	sleevetype = "tunic"
-	r_sleeve_status = SLEEVE_NORMAL
-	l_sleeve_status = SLEEVE_NORMAL
-	flags_inv = HIDECROTCH|HIDEBOOB
-
-/obj/item/clothing/suit/roguetown/shirt/tribalrag
-	slot_flags = ITEM_SLOT_ARMOR|ITEM_SLOT_SHIRT
-	name = "tribalrag"
-	desc = ""
-	body_parts_covered = CHEST|VITALS
-	boobed = TRUE
-	icon_state = "tribalrag"
-	item_state = "tribalrag"
+	boobed = FALSE
 	r_sleeve_status = SLEEVE_NORMAL
 	l_sleeve_status = SLEEVE_NORMAL
 	flags_inv = HIDECROTCH|HIDEBOOB

@@ -65,7 +65,6 @@
 			return
 	if(world.time > (the_time + 30 SECONDS))
 		return
-	picked = TRUE
 	if(design != "None")
 		detail_tag = design
 	switch(design)
@@ -77,7 +76,7 @@
 			detail_tag = "_box"
 		if("Diamonds")
 			detail_tag = "_dim"
-	boobed_detail = symbol_chosen
+	boobed_detail = !symbol_chosen
 	color = clothing_color2hex(colorone)
 	if(colortwo)
 		detail_color = clothing_color2hex(colortwo)
@@ -85,6 +84,17 @@
 	if(ismob(loc))
 		var/mob/L = loc
 		L.update_inv_cloak()
+	if(alert("Are you pleased with your heraldry?", "Heraldry", "Yes", "No") != "Yes")
+		detail_color = initial(detail_color)
+		color = initial(color)
+		boobed_detail = initial(boobed_detail)
+		detail_tag = initial(detail_tag)
+		update_icon()
+		if(ismob(loc))
+			var/mob/L = loc
+			L.update_inv_cloak()
+		return
+	picked = TRUE
 
 /obj/item/clothing/cloak/tabard/knight
 	color = CLOTHING_PURPLE
@@ -136,10 +146,15 @@
 	if(ismob(loc))
 		var/mob/L = loc
 		L.update_inv_cloak()
+	if(alert("Are you pleased with your heraldry?", "Heraldry", "Yes", "No") != "Yes")
+		detail_color = initial(detail_color)
+		color = initial(color)
+		update_icon()
+		if(ismob(loc))
+			var/mob/L = loc
+			L.update_inv_cloak()
+		return
 	picked = TRUE
-
-/obj/item/clothing/cloak/tabard/crusader
-	detail_tag = "_psy"
 
 /obj/item/clothing/cloak/tabard/crusader/tief
 	color = CLOTHING_RED
@@ -203,6 +218,14 @@
 	if(ismob(loc))
 		var/mob/L = loc
 		L.update_inv_cloak()
+	if(alert("Are you pleased with your heraldry?", "Heraldry", "Yes", "No") != "Yes")
+		detail_color = initial(detail_color)
+		color = initial(color)
+		update_icon()
+		if(ismob(loc))
+			var/mob/L = loc
+			L.update_inv_cloak()
+		return
 	picked = TRUE
 
 /obj/item/clothing/cloak/tabard/knight/guard
@@ -220,7 +243,6 @@
 		return
 	if(!chosen)
 		return
-	picked = TRUE
 	switch(chosen)
 		if("Split")
 			detail_tag = "_spl"
@@ -234,6 +256,14 @@
 	if(ismob(loc))
 		var/mob/L = loc
 		L.update_inv_cloak()
+	if(alert("Are you pleased with your heraldry?", "Heraldry", "Yes", "No") != "Yes")
+		detail_tag = initial(detail_tag)
+		update_icon()
+		if(ismob(loc))
+			var/mob/L = loc
+			L.update_inv_cloak()
+		return
+	picked = TRUE
 
 /obj/item/clothing/cloak/tabard/knight/guard/Initialize()
 	..()
@@ -300,7 +330,6 @@
 			return
 	if(world.time > (the_time + 30 SECONDS))
 		return
-	picked = TRUE
 	switch(design)
 		if("Split")
 			detail_tag = "_spl"
@@ -317,6 +346,17 @@
 	if(ismob(loc))
 		var/mob/L = loc
 		L.update_inv_cloak()
+	if(alert("Are you pleased with your heraldry?", "Heraldry", "Yes", "No") != "Yes")
+		detail_color = initial(detail_color)
+		color = initial(color)
+		boobed_detail = initial(boobed_detail)
+		detail_tag = initial(detail_tag)
+		update_icon()
+		if(ismob(loc))
+			var/mob/L = loc
+			L.update_inv_cloak()
+		return
+	picked = TRUE
 
 /obj/item/clothing/cloak/stabard/guard
 	name = "guard tabard"
@@ -334,7 +374,6 @@
 		return
 	if(!chosen)
 		return
-	picked = TRUE
 	switch(chosen)
 		if("Split")
 			detail_tag = "_spl"
@@ -348,6 +387,14 @@
 	if(ismob(loc))
 		var/mob/L = loc
 		L.update_inv_cloak()
+	if(alert("Are you pleased with your heraldry?", "Heraldry", "Yes", "No") != "Yes")
+		detail_tag = initial(detail_tag)
+		update_icon()
+		if(ismob(loc))
+			var/mob/L = loc
+			L.update_inv_cloak()
+		return
+	picked = TRUE
 
 /obj/item/clothing/cloak/stabard/guard/Initialize()
 	..()
@@ -440,7 +487,6 @@
 			return
 	if(world.time > (the_time + 30 SECONDS))
 		return
-	picked = TRUE
 	switch(design)
 		if("Split")
 			detail_tag = "_spl"
@@ -457,6 +503,16 @@
 	if(ismob(loc))
 		var/mob/L = loc
 		L.update_inv_cloak()
+	if(alert("Are you pleased with your heraldry?", "Heraldry", "Yes", "No") != "Yes")
+		detail_color = initial(detail_color)
+		color = initial(color)
+		detail_tag = initial(detail_tag)
+		update_icon()
+		if(ismob(loc))
+			var/mob/L = loc
+			L.update_inv_cloak()
+		return
+	picked = TRUE
 
 /obj/item/clothing/cloak/stabard/surcoat/update_icon()
 	cut_overlays()
@@ -482,7 +538,6 @@
 		return
 	if(!chosen)
 		return
-	picked = TRUE
 	switch(chosen)
 		if("Split")
 			detail_tag = "_spl"
@@ -496,7 +551,14 @@
 	if(ismob(loc))
 		var/mob/L = loc
 		L.update_inv_cloak()
-
+	if(alert("Are you pleased with your heraldry?", "Heraldry", "Yes", "No") != "Yes")
+		detail_tag = initial(detail_tag)
+		update_icon()
+		if(ismob(loc))
+			var/mob/L = loc
+			L.update_inv_cloak()
+		return
+	picked = TRUE
 
 /obj/item/clothing/cloak/stabard/surcoat/guard/Initialize()
 	..()
@@ -1081,7 +1143,6 @@
 		return
 	if(!chosen)
 		return
-	picked = TRUE
 	switch(chosen)
 		if("Split")
 			detail_tag = "_spl"
@@ -1089,6 +1150,14 @@
 	if(ismob(loc))
 		var/mob/L = loc
 		L.update_inv_cloak()
+	if(alert("Are you pleased with your heraldry?", "Heraldry", "Yes", "No") != "Yes")
+		detail_tag = initial(detail_tag)
+		update_icon()
+		if(ismob(loc))
+			var/mob/L = loc
+			L.update_inv_cloak()
+		return
+	picked = TRUE
 
 /obj/item/clothing/cloak/stabard/guardhood/Initialize()
 	..()

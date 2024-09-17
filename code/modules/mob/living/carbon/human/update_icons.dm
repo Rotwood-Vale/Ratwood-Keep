@@ -1658,7 +1658,7 @@ generate/load female uniform sprites matching all previously decided variables
 		r_sleeve.alpha = I.alpha
 		sleeves += r_sleeve
 
-		if(I.get_detail_tag())
+		if(I.get_detail_tag() && I.sleeved_detail)
 			var/mutable_appearance/pic = mutable_appearance(icon(I.sleeved, "[used][I.get_detail_tag()]"), layer=-layer2use)
 //			pic.appearance_flags = RESET_COLOR
 			if(I.get_detail_color())
@@ -1685,7 +1685,7 @@ generate/load female uniform sprites matching all previously decided variables
 		l_sleeve.alpha = I.alpha
 		sleeves += l_sleeve
 
-		if(I.get_detail_tag())
+		if(I.get_detail_tag() && I.sleeved_detail)
 			var/mutable_appearance/pic = mutable_appearance(icon(I.sleeved, "[used][I.get_detail_tag()]"), layer=-layer2use)
 //			pic.appearance_flags = RESET_COLOR
 			if(I.get_detail_color())

@@ -123,22 +123,22 @@
 	desc = span_boldgreen("PUREST moondust surges through me!")
 	timer = 4 MINUTES
 
-/datum/mood_event/puzzle_easy
-	description = "<span class='nicegreen'>That puzzle was a nice distraction from this drudgery.</span>\n"
-	mood_change = 1
-	timeout = 5 MINUTES
+/datum/stressevent/puzzle_easy
+	stressadd = -1
+	desc = span_green("That puzzle was a nice distraction from this drudgery.")
+	timer = 10 MINUTES
 
-/datum/mood_event/puzzle_medium
-	description = "<span class='nicegreen'>I solved a slightly difficult puzzle. If only my actual problems were so easy.</span>\n"
-	mood_change = 1
-	timeout = 10 MINUTES
+/datum/stressevent/puzzle_medium
+	stressadd = -2
+	desc = span_green("I solved a slightly difficult puzzle. If only my actual problems were so easy.")
+	timer = 10 MINUTES
 
-/datum/mood_event/puzzle_hard
-	description = "<span class='nicegreen'>I solved a rather challenging puzzle.</span>\n"
-	mood_change = 3
-	timeout = 5 MINUTES
+/datum/stressevent/puzzle_hard
+	stressadd = -3
+	desc = span_green("I solved a rather challenging puzzle.")
+	timer = 10 MINUTES
 
-/datum/mood_event/puzzle_impossible
-	description = "<span class='nicegreen'>I solved an extremely difficult puzzle. Xylix is smiling at me, and surely even Noc must find it impressive.</span>\n"
-	mood_change = 2
-	timeout = 30 MINUTES
+/datum/stressevent/puzzle_impossible
+	stressadd = -4
+	desc = span_boldgreen("I solved an extremely difficult puzzle. Xylix is smiling at me, and surely even Noc must find it impressive.")
+	timer = 15 MINUTES

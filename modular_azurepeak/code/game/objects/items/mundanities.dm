@@ -33,7 +33,7 @@
 	if(do_after(user,70, target = src))
 		if((dice_roll) <= user.STAINT)
 			to_chat(user, span_notice("I solve [src] fairly easily. I feel rather satisfied."))
-			user.add_stress(/datum/mood_event/puzzle_easy)
+			user.add_stress(/datum/stressevent/puzzle_easy)
 			finished_ckeys += ckey
 			playsound(src.loc, 'sound/foley/doors/lock.ogg', 75, TRUE)
 		else
@@ -73,7 +73,7 @@ obj/item/mundane/puzzlebox/medium
 	if(do_after(user,70, target = src))
 		if((dice_roll) <= user.STAINT)
 			to_chat(user, span_notice("I solve [src] fairly easily. I feel rather satisfied."))
-			user.add_stress(/datum/mood_event/puzzle_medium)
+			user.add_stress(/datum/stressevent/puzzle_medium)
 			finished_ckeys += ckey
 			playsound(src.loc, 'sound/foley/doors/lock.ogg', 75, TRUE)
 		else
@@ -115,7 +115,7 @@ obj/item/mundane/puzzlebox/medium
 		if((dice_roll) + 5 <= user.STAINT)
 			if(prob(66))
 				to_chat(user, span_notice("After much deliberation, I solve \the [src]!"))
-				user.add_stress(/datum/mood_event/puzzle_impossible)
+				user.add_stress(/datum/stressevent/puzzle_impossible)
 				finished_ckeys += ckey
 				playsound(src.loc, 'sound/foley/doors/lockrattle.ogg', 75, TRUE)
 			else
