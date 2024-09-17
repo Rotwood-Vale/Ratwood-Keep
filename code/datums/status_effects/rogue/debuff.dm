@@ -50,7 +50,6 @@
 
 ////////////////////
 
-//Attempting a moondust crash effect
 /datum/status_effect/debuff/moondust_crash
 	id = "moondust_crash"
 	alert_type = /atom/movable/screen/alert/status_effect/debuff/moondust_crash
