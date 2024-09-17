@@ -35,6 +35,7 @@
 	requires_bodypart_type = NONE
 	skill_min = SKILL_LEVEL_EXPERT
 	skill_median = SKILL_LEVEL_MASTER
+	experience_multiplier = 3
 
 /datum/surgery_step/add_prosthetic/preop(mob/user, mob/living/target, target_zone, obj/item/tool, datum/intent/intent)
 	if(istype(tool, /obj/item/organ_storage))

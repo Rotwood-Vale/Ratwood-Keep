@@ -20,6 +20,7 @@
 	time = 8 SECONDS
 	surgery_flags = SURGERY_INCISED
 	skill_min = SKILL_LEVEL_APPRENTICE
+	experience_multiplier = 5
 	preop_sound = 'sound/surgery/cautery1.ogg'
 	success_sound = 'sound/surgery/cautery2.ogg'
 

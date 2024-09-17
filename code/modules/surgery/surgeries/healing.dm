@@ -24,6 +24,7 @@
 	surgery_flags = SURGERY_BLOODY | SURGERY_INCISED | SURGERY_CLAMPED
 	skill_min = SKILL_LEVEL_APPRENTICE
 	skill_median = SKILL_LEVEL_APPRENTICE
+	experience_multiplier = 1
 	/// How much brute damage we heal per completion
 	var/brutehealing = 0
 	/// How much burn damage we heal per completion

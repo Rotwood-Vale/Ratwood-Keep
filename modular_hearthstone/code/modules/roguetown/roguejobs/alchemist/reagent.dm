@@ -35,10 +35,11 @@
 	. = 1
 
 /datum/reagent/medicine/soporpot/overdose_process(mob/living/carbon/M)
-	M.drowsiness += 2
+	M.drowsyness += 2
 	M.confused += 2
 	..()
 	. = 1 
+
 /datum/reagent/medicine/fortitudepot
 	name = "Strength Potion"
 	description = "Increases one's Strength."

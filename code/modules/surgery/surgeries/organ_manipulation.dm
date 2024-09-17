@@ -46,6 +46,7 @@ GLOBAL_LIST_INIT(moldable_organs, list(BODY_ZONE_PRECISE_GROIN=list(ORGAN_SLOT_P
 	surgery_flags = SURGERY_INCISED | SURGERY_RETRACTED
 	skill_min = SKILL_LEVEL_JOURNEYMAN
 	skill_median = SKILL_LEVEL_EXPERT
+	experience_multiplier = 3
 	preop_sound = 'sound/surgery/organ2.ogg'
 	success_sound = 'sound/surgery/organ1.ogg'
 	/// Implements used to extract an organ - This really should be split into two different steps...

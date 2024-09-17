@@ -17,6 +17,7 @@
 	surgery_flags = SURGERY_INCISED
 	skill_min = SKILL_LEVEL_NOVICE
 	skill_median = SKILL_LEVEL_NOVICE
+	experience_multiplier = 3
 	preop_sound = 'sound/surgery/organ2.ogg'
 	success_sound = 'sound/surgery/organ1.ogg'
 
