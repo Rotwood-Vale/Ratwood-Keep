@@ -15,3 +15,4 @@ combat_knight.ogg: Dragon's Dogma OST: Tense Combat
 title1.ogg: Aphex Twin - Stone In Focus
 bath.ogg: Mabisyo - No Baby (Cropped to 1:00)
 tav_tune.ogg: Divinity Original Sin 2 - Black Bull Tavern
+combat_steppe.ogg: Tatar Theme (Hellish Quart OST)
