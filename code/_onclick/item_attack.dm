@@ -288,7 +288,10 @@
 				return 0
 			var/mob/living/miner = user
 			var/mineskill = miner.mind.get_skill_level(/datum/skill/labor/mining)
-			newforce = newforce * (8+(mineskill*1.5))
+			if(miner.has_status_effect(/datum/status_effect/buff/mfire)) // Malum's fire buff.
+				newforce = newforce * (8+(mineskill*1.5)*2)
+			else
+				newforce = newforce * (8+(mineskill*1.5))
 			shake_camera(user, 1, 1)
 			miner.mind.adjust_experience(/datum/skill/labor/mining, (miner.STAINT*0.2))
 	

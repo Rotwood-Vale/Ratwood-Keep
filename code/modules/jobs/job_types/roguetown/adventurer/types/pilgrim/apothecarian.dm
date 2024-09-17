@@ -25,6 +25,16 @@
 		beltl = /obj/item/storage/belt/rogue/pouch/coins/poor
 		cloak = /obj/item/clothing/cloak/apron/brown
 		backl = /obj/item/storage/backpack/rogue/backpack
+		backpack_contents = list(
+			/obj/item/roguegem/yellow, 
+			/obj/item/roguegem/yellow, 
+			/obj/item/roguegem/yellow, 
+			/obj/item/natural/stone, 
+			/obj/item/natural/stone, 
+			/obj/item/natural/stone,
+			/obj/item/seeds/pipeweed,
+			/obj/item/fertilizer) // Starting supplies for making a millstone and potions. No starting money, though. 
+
 	else
 		switch(H.patron?.type)
 			if(/datum/patron/divine/eora)
@@ -34,9 +44,18 @@
 		pants = /obj/item/clothing/under/roguetown/tights/stockings/black
 		shoes = /obj/item/clothing/shoes/roguetown/boots
 		belt = /obj/item/storage/belt/rogue/leather
-		beltl = /obj/item/storage/belt/rogue/pouch/coins/poor
+		beltl = /obj/item/storage/belt/rogue/pouch
 		cloak = /obj/item/clothing/cloak/apron/brown
 		backl = /obj/item/storage/backpack/rogue/backpack
+		backpack_contents = list(
+			/obj/item/roguegem/yellow, 
+			/obj/item/roguegem/yellow, 
+			/obj/item/roguegem/yellow, 
+			/obj/item/natural/stone, 
+			/obj/item/natural/stone, 
+			/obj/item/natural/stone,
+			/obj/item/seeds/pipeweed,
+			/obj/item/fertilizer) // Starting supplies for making a millstone and potions. No starting money, though. 
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)

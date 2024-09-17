@@ -40,12 +40,12 @@
 	..()
 	. = 1 
 /datum/reagent/medicine/fortitudepot
-	name = "Fortitude Potion"
-	description = "Increases one's Strength and Constitution."
+	name = "Strength Potion"
+	description = "Increases one's Strength."
 	reagent_state = LIQUID
 	color = "#d46000"
 	taste_description = "raw fortitude"
-	overdose_threshold = 19
+	overdose_threshold = 16
 	metabolization_rate = 0.2 * REAGENTS_METABOLISM
 	alpha = 200
 
@@ -58,11 +58,11 @@
 
 /datum/reagent/medicine/swiftnesspot
 	name = "Swiftness Potion"
-	description = "Increases one's Speed and Dexterity."
+	description = "Increases one's Speed."
 	reagent_state = LIQUID
 	color = "#7efff9"
 	taste_description = "fleeting swirls"
-	overdose_threshold = 19
+	overdose_threshold = 16
 	metabolization_rate = 0.2 * REAGENTS_METABOLISM 
 	alpha = 225
 
@@ -70,6 +70,108 @@
 	M.apply_status_effect(/datum/status_effect/buff/swiftnessbuff)
 	if(holder.has_reagent(/datum/reagent/medicine/swiftnesspot))
 		holder.remove_reagent(/datum/reagent/medicine/swiftnesspot, 20)
+	..()
+	. = 1 
+
+/datum/reagent/medicine/alacritypot
+	name = "Alacrity Potion"
+	description = "Increases one's Perception."
+	reagent_state = LIQUID
+	color = "#93c420"
+	taste_description = "carrots..?"
+	overdose_threshold = 16
+	metabolization_rate = 0.2 * REAGENTS_METABOLISM 
+	alpha = 225
+
+/datum/reagent/medicine/alacritypot/overdose_process(mob/living/carbon/M)
+	M.apply_status_effect(/datum/status_effect/buff/alacritybuff)
+	if(holder.has_reagent(/datum/reagent/medicine/alacritypot))
+		holder.remove_reagent(/datum/reagent/medicine/alacritypot, 20)
+	..()
+	. = 1 
+
+/datum/reagent/medicine/luckpot
+	name = "Luck Potion"
+	description = "Increases one's Luck."
+	reagent_state = LIQUID
+	color = "#ceb328"
+	taste_description = "gold"
+	overdose_threshold = 16
+	metabolization_rate = 0.2 * REAGENTS_METABOLISM 
+	alpha = 225
+
+/datum/reagent/medicine/luckpot/overdose_process(mob/living/carbon/M)
+	M.apply_status_effect(/datum/status_effect/buff/luckbuff)
+	if(holder.has_reagent(/datum/reagent/medicine/luckpot))
+		holder.remove_reagent(/datum/reagent/medicine/luckpot, 20)
+	..()
+	. = 1 
+
+/datum/reagent/medicine/endurancepot
+	name = "Endurance Potion"
+	description = "Increases one's Endurance."
+	reagent_state = LIQUID
+	color = "#2ab182"
+	taste_description = "strangely savory cider"
+	overdose_threshold = 16
+	metabolization_rate = 0.2 * REAGENTS_METABOLISM 
+	alpha = 225
+
+/datum/reagent/medicine/endurancepot/overdose_process(mob/living/carbon/M)
+	M.apply_status_effect(/datum/status_effect/buff/endurancebuff)
+	if(holder.has_reagent(/datum/reagent/medicine/endurancepot))
+		holder.remove_reagent(/datum/reagent/medicine/endurancepot, 20)
+	..()
+	. = 1 
+
+/datum/reagent/medicine/constitutionpot
+	name = "Ironskin Potion"
+	description = "Increases one's Constitution."
+	reagent_state = LIQUID
+	color = "#775c55"
+	taste_description = "iron and blood"
+	overdose_threshold = 16
+	metabolization_rate = 0.2 * REAGENTS_METABOLISM 
+	alpha = 225
+
+/datum/reagent/medicine/constitutionpot/overdose_process(mob/living/carbon/M)
+	M.apply_status_effect(/datum/status_effect/buff/constitutionbuff)
+	if(holder.has_reagent(/datum/reagent/medicine/constitutionpot))
+		holder.remove_reagent(/datum/reagent/medicine/constitutionpot, 20)
+	..()
+	. = 1 
+
+/datum/reagent/medicine/invispot
+	name = "Invisibility Potion"
+	description = "Makes one invisible."
+	reagent_state = LIQUID
+	color = "#775c55"
+	taste_description = "my skin burning"
+	overdose_threshold = 16
+	metabolization_rate = 0.2 * REAGENTS_METABOLISM 
+	alpha = 225
+
+/datum/reagent/medicine/invispot/overdose_process(mob/living/carbon/M)
+	M.apply_status_effect(/datum/status_effect/buff/invisbuff)
+	if(holder.has_reagent(/datum/reagent/medicine/invispot))
+		holder.remove_reagent(/datum/reagent/medicine/invispot, 20)
+	..()
+	. = 1 
+
+/datum/reagent/medicine/nullmagicpot
+	name = "Null Magic Potion"
+	description = "Makes one immune to magic."
+	reagent_state = LIQUID
+	color = "#cea4f6"
+	taste_description = "fizzing oil"
+	overdose_threshold = 16
+	metabolization_rate = 0.2 * REAGENTS_METABOLISM 
+	alpha = 225
+
+/datum/reagent/medicine/nullmagicpot/overdose_process(mob/living/carbon/M)
+	M.apply_status_effect(/datum/status_effect/buff/nullmagicbuff)
+	if(holder.has_reagent(/datum/reagent/medicine/nullmagicpot))
+		holder.remove_reagent(/datum/reagent/medicine/nullmagicpot, 20)
 	..()
 	. = 1 
 
