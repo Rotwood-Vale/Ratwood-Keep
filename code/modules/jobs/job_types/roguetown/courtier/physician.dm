@@ -40,7 +40,7 @@
 	shoes = /obj/item/clothing/shoes/roguetown/boots/leather
 	belt = /obj/item/storage/belt/rogue/leather/black
 	beltl = /obj/item/reagent_containers/glass/bottle/waterskin
-	beltr = /obj/item/keyring/physician
+	beltr = /obj/item/storage/keyring/physician
 	id = /obj/item/clothing/ring/quartzs
 	r_hand = /obj/item/rogueweapon/woodstaff
 	backl = /obj/item/storage/backpack/rogue/backpack

@@ -29,7 +29,7 @@
 	cloak = /obj/item/clothing/cloak/stabard/dungeon
 	belt = /obj/item/storage/belt/rogue/leather
 	beltr = /obj/item/rogueweapon/whip/antique
-	beltl = /obj/item/keyring/dungeoneer
+	beltl = /obj/item/storage/keyring/dungeoneer
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/combat/whipsflails, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 4, TRUE)

@@ -88,7 +88,7 @@ Archer is basically a 'bounty-catcher' in function, less specialized at close-qu
 	beltr = /obj/item/rogueweapon/mace/cudgel
 	backr = /obj/item/rogueweapon/shield/wood		//Maybe give a buckler? Gave wood because 40 coverage is better than 10 but dunno.
 	backr = /obj/item/storage/backpack/rogue/satchel/black
-	beltl = /obj/item/keyring/guard
+	beltl = /obj/item/storage/keyring/guard
 	belt = /obj/item/storage/belt/rogue/leather/black
 	gloves = /obj/item/clothing/gloves/roguetown/leather
 	backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger/steel = 1, /obj/item/rope/chain = 1, /obj/item/signal_horn = 1)
@@ -133,7 +133,7 @@ Archer is basically a 'bounty-catcher' in function, less specialized at close-qu
 	beltr = /obj/item/quiver/bolts
 	backl = /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow
 	backr = /obj/item/storage/backpack/rogue/satchel/black
-	beltl = /obj/item/keyring/guard
+	beltl = /obj/item/storage/keyring/guard
 	belt = /obj/item/storage/belt/rogue/leather/black
 	gloves = /obj/item/clothing/gloves/roguetown/leather
 	backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger/steel = 1, /obj/item/rope/chain = 1, /obj/item/signal_horn = 1)

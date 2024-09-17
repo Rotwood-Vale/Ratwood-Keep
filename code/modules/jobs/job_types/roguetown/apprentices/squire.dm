@@ -26,7 +26,7 @@
 		armor = /obj/item/clothing/suit/roguetown/armor/chainmail
 		shoes = /obj/item/clothing/shoes/roguetown/boots
 		belt = /obj/item/storage/belt/rogue/leather
-		beltr = /obj/item/keyring/servant
+		beltr = /obj/item/storage/keyring/servant
 		beltl = /obj/item/rogueweapon/sword
 		backr = /obj/item/storage/backpack/rogue/satchel
 		if(H.mind)
@@ -52,7 +52,7 @@
 		armor = /obj/item/clothing/suit/roguetown/armor/chainmail
 		shoes = /obj/item/clothing/shoes/roguetown/boots
 		belt = /obj/item/storage/belt/rogue/leather
-		beltr = /obj/item/keyring/servant
+		beltr = /obj/item/storage/keyring/servant
 		beltl = /obj/item/rogueweapon/sword
 		backr = /obj/item/storage/backpack/rogue/satchel
 		if(H.mind)

@@ -46,7 +46,7 @@
 	shirt = /obj/item/clothing/suit/roguetown/shirt/shortshirt/bog
 	pants = /obj/item/clothing/under/roguetown/trou/leather
 	shoes = /obj/item/clothing/shoes/roguetown/boots/leather
-	beltl = /obj/item/keyring/guard
+	beltl = /obj/item/storage/keyring/guard
 	belt = /obj/item/storage/belt/rogue/leather
 	beltr = /obj/item/rogueweapon/stoneaxe/woodcut
 	backr = /obj/item/storage/backpack/rogue/satchel

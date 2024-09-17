@@ -32,7 +32,7 @@
 		shoes = /obj/item/clothing/shoes/roguetown/simpleshoes
 		belt = /obj/item/storage/belt/rogue/leather/rope
 		neck = /obj/item/storage/belt/rogue/pouch
-		beltr = /obj/item/keyring/servant
+		beltr = /obj/item/storage/keyring/servant
 		armor = /obj/item/clothing/suit/roguetown/armor/leather/vest/black
 		H.change_stat("perception", 1)
 	else
@@ -41,5 +41,5 @@
 		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
 		neck = /obj/item/storage/belt/rogue/pouch
 		belt = /obj/item/storage/belt/rogue/leather/rope
-		beltr = /obj/item/keyring/servant
+		beltr = /obj/item/storage/keyring/servant
 		H.change_stat("perception", 1)

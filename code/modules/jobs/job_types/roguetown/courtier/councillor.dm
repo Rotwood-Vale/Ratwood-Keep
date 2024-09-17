@@ -30,10 +30,10 @@
 	head = /obj/item/clothing/head/roguetown/chaperon/councillor
 	backl = /obj/item/storage/backpack/rogue/satchel
 	belt = /obj/item/storage/belt/rogue/leather/plaquesilver
-	beltl = /obj/item/keyring/guardcastle
+	beltl = /obj/item/storage/keyring/guardcastle
 	beltr = /obj/item/rogueweapon/huntingknife/idagger/steel
 	cloak = /obj/item/clothing/cloak/stabard/surcoat/councillor
-	backpack_contents = list(/obj/item/keyring/councillor = 1)
+	backpack_contents = list(/obj/item/storage/keyring/councillor = 1)
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 3, TRUE)

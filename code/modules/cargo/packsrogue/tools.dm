@@ -134,9 +134,9 @@
 /datum/supply_pack/rogue/tools/keyrings
 	name = "Keyrings"
 	cost = 8
-	contains = list(/obj/item/keyring,
-					/obj/item/keyring,
-					/obj/item/keyring)
+	contains = list(/obj/item/storage/keyring,
+					/obj/item/storage/keyring,
+					/obj/item/storage/keyring)
 
 /datum/supply_pack/rogue/tools/needles
 	name = "Needles"

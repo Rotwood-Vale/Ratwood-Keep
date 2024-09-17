@@ -28,7 +28,7 @@
 	head = /obj/item/clothing/head/roguetown/judgehat
 	backl = /obj/item/storage/backpack/rogue/satchel
 	belt = /obj/item/storage/belt/rogue/leather/black
-	beltl = /obj/item/keyring/judge
+	beltl = /obj/item/storage/keyring/judge
 	beltr = /obj/item/rogueweapon/mace
 	neck = /obj/item/storage/belt/rogue/pouch/coins/rich
 	gloves = /obj/item/clothing/gloves/roguetown/angle

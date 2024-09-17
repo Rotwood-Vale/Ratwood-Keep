@@ -50,7 +50,7 @@
 	armor = /obj/item/clothing/suit/roguetown/armor/plate/full
 	shoes = /obj/item/clothing/shoes/roguetown/boots/armor
 	beltr = /obj/item/rogueweapon/sword/long
-	beltl = /obj/item/keyring/guardcastle
+	beltl = /obj/item/storage/keyring/guardcastle
 	belt = /obj/item/storage/belt/rogue/leather/hand
 	backr = /obj/item/storage/backpack/rogue/satchel/black
 	if(prob(50))

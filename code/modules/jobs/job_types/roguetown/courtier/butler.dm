@@ -36,7 +36,7 @@
 		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
 		shoes = /obj/item/clothing/shoes/roguetown/shortboots
 		belt = /obj/item/storage/belt/rogue/leather
-		beltr = /obj/item/keyring/servant
+		beltr = /obj/item/storage/keyring/servant
 		neck = /obj/item/storage/belt/rogue/pouch/coins/poor
 		armor = /obj/item/clothing/suit/roguetown/armor/leather/vest/black
 		H.change_stat("strength", -1)
@@ -56,7 +56,7 @@
 		cloak = /obj/item/clothing/cloak/apron/waist
 		neck = /obj/item/storage/belt/rogue/pouch/coins/poor
 		belt = /obj/item/storage/belt/rogue/leather
-		beltr = /obj/item/keyring/servant
+		beltr = /obj/item/storage/keyring/servant
 		H.change_stat("strength", -1)
 		H.change_stat("intelligence", 1)
 		H.change_stat("perception", 1)

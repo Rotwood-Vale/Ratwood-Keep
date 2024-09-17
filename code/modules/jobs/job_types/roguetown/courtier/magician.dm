@@ -32,7 +32,7 @@
 	shoes = /obj/item/clothing/shoes/roguetown/shortboots
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/black
 	belt = /obj/item/storage/belt/rogue/leather/plaquesilver
-	beltr = /obj/item/keyring/mage
+	beltr = /obj/item/storage/keyring/mage
 	id = /obj/item/clothing/ring/gold
 	r_hand = /obj/item/rogueweapon/woodstaff
 	backl = /obj/item/storage/backpack/rogue/satchel

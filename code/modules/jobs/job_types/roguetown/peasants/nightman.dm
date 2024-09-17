@@ -23,7 +23,7 @@
 
 /datum/outfit/job/roguetown/nightman/pre_equip(mob/living/carbon/human/H)
 	..()
-	beltr = /obj/item/keyring/nightman
+	beltr = /obj/item/storage/keyring/nightman
 	belt = /obj/item/storage/belt/rogue/leather
 	beltl = /obj/item/storage/belt/rogue/pouch/coins/poor
 	ADD_TRAIT(H, TRAIT_GOODLOVER, TRAIT_GENERIC)

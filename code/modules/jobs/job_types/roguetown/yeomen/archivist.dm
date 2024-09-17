@@ -37,7 +37,7 @@
 		shoes = /obj/item/clothing/shoes/roguetown/shortboots
 	H.virginity = TRUE
 	belt = /obj/item/storage/belt/rogue/leather/plaquesilver
-	beltl = /obj/item/keyring/archivist
+	beltl = /obj/item/storage/keyring/archivist
 	beltr = /obj/item/storage/belt/rogue/pouch/coins/mid
 	mask = /obj/item/clothing/mask/rogue/spectacles
 
