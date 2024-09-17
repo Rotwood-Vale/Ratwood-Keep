@@ -20,7 +20,7 @@
 	min_pq = 0
 	max_pq = null
 
-	cmode_music = 'sound/music/combat_guard2.ogg'
+	cmode_music = 'sound/music/combat_knight.ogg'
 
 	allow_custom_genitals = TRUE
 
