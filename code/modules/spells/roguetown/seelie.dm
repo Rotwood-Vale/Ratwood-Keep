@@ -279,5 +279,5 @@
 /obj/item/reagent_containers/powder/SD
 	list_reagents = list(/datum/reagent/seelie_drugs = 10)
 
-/obj/item/reagent_containers/glass/bucket/wooden/SW
+/obj/item/reagent_containers/glass/bucket/wooden/spell_water
 	list_reagents = list(/datum/reagent/water = 40)

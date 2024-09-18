@@ -744,7 +744,7 @@
 
 /obj/projectile/magic/water/on_hit(target)
 	. = ..()
-	var/obj/item/reagent_containers/K = new /obj/item/reagent_containers/glass/bucket/wooden/SW(get_turf(target))
+	var/obj/item/reagent_containers/K = new /obj/item/reagent_containers/glass/bucket/wooden/spell_water(get_turf(target))
 	playsound(target, 'sound/foley/waterenter.ogg', 100, FALSE)
 	if(ismob(target))
 		var/mob/living/mob_target = target
