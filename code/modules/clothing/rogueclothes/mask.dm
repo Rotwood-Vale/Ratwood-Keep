@@ -4,6 +4,7 @@
 	mob_overlay_icon = 'icons/roguetown/clothing/onmob/masks.dmi'
 	body_parts_covered = FACE
 	slot_flags = ITEM_SLOT_MASK
+	w_class = WEIGHT_CLASS_SMALL
 
 /obj/item/clothing/mask/rogue/spectacles
 	name = "spectacles"
@@ -74,7 +75,7 @@
 
 /obj/item/clothing/mask/rogue/facemask
 	name = "iron mask"
-	desc = "An iron mask which protects the fact and obscures it."
+	desc = "An iron mask which protects the eyes, nose and mouth while also obscuring the face it."
 	icon_state = "imask"
 	max_integrity = 100
 	blocksound = PLATEHIT
@@ -106,10 +107,15 @@
 
 /obj/item/clothing/mask/rogue/facemask/steel
 	name = "steel mask"
-	desc = "A mask of steel to both protect and hide the face."
+	desc = "A mask of steel which protects the eyes, nose and mouth while also obscuring the face."
 	icon_state = "smask"
 	max_integrity = 200
 	smeltresult = /obj/item/ingot/steel
+
+/obj/item/clothing/mask/rogue/facemask/steel/hound
+	name = "hound mask"
+	desc = "A steel mask, this one looks more comfortable for Lupians."
+	icon_state = "smask_hound"
 
 /obj/item/clothing/mask/rogue/shepherd
 	name = "halfmask"

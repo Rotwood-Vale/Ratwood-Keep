@@ -367,6 +367,9 @@
 	foodtype = VEGETABLES
 	rotprocess = 50 MINUTES
 	list_reagents = list(/datum/reagent/consumable/nutriment = 3)
+	can_distill = TRUE
+	distill_reagent = /datum/reagent/consumable/ethanol/vodka
+	distill_amt = 12
 
 /obj/item/reagent_containers/food/snacks/grown/eggplant
 	name = "aubergine"

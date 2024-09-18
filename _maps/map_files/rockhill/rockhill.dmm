@@ -889,7 +889,14 @@
 /area/rogue/under/town/basement)
 "aZj" = (
 /obj/structure/table/vtable,
-/obj/item/clothing/mask/cigarette/pipe/westman,
+/obj/item/reagent_containers/glass/bottle/rogue,
+/obj/item/reagent_containers/glass/bottle/rogue{
+	pixel_x = 5
+	},
+/obj/item/reagent_containers/glass/bottle/rogue,
+/obj/item/reagent_containers/glass/bottle/rogue{
+	pixel_x = -5
+	},
 /turf/open/floor/rogue/church,
 /area/rogue/indoors/town/manor)
 "aZG" = (
@@ -1206,8 +1213,13 @@
 /turf/open/floor/rogue/dirt,
 /area/rogue/outdoors/bog)
 "brS" = (
-/obj/machinery/light/rogue/wallfire/candle{
-	pixel_y = -32
+/obj/item/reagent_containers/food/snacks/rogue/raisinbreadslice,
+/obj/item/reagent_containers/food/snacks/rogue/raisinbreadslice,
+/obj/item/reagent_containers/food/snacks/rogue/raisinbreadslice,
+/obj/item/reagent_containers/food/snacks/rogue/raisinbreadslice,
+/obj/structure/closet/crate/chest{
+	lockid = "physician";
+	name = "leech chest"
 	},
 /turf/open/floor/rogue/churchbrick,
 /area/rogue/indoors/town/manor)
@@ -1271,6 +1283,9 @@
 /area/rogue/indoors/town/dwarfin)
 "buu" = (
 /obj/machinery/light/rogue/wallfire/candle,
+/obj/structure/rack/rogue/shelf/big,
+/obj/item/natural/bundle/cloth,
+/obj/item/natural/bundle/cloth,
 /turf/open/floor/rogue/churchbrick,
 /area/rogue/indoors/town/manor)
 "bvx" = (
@@ -1328,6 +1343,10 @@
 	},
 /turf/open/floor/rogue/church,
 /area/rogue/indoors/town/church)
+"bxr" = (
+/obj/item/roguebin/water,
+/turf/open/floor/rogue/churchbrick,
+/area/rogue/indoors/town/manor)
 "bxD" = (
 /obj/structure/closet/crate/chest/crafted,
 /turf/open/floor/rogue/tile/masonic/single,
@@ -2484,8 +2503,9 @@
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/dwarfin)
 "cNr" = (
-/obj/item/roguebin/water,
-/obj/machinery/light/rogue/wallfire/candle/r,
+/obj/structure/chair/wood/rogue/fancy{
+	dir = 8
+	},
 /turf/open/floor/rogue/churchbrick,
 /area/rogue/indoors/town/manor)
 "cNv" = (
@@ -2618,9 +2638,21 @@
 /turf/closed/wall/mineral/rogue/stone,
 /area/rogue/under/town/basement)
 "cTG" = (
-/obj/structure/closet/crate/roguecloset,
-/obj/item/clothing/suit/roguetown/shirt/dress/silkdress,
-/obj/item/clothing/suit/roguetown/armor/silkcoat,
+/obj/item/organ/heart,
+/obj/item/organ/liver,
+/obj/item/organ/lungs,
+/obj/item/organ/stomach,
+/obj/item/organ/eyes,
+/obj/item/organ/eyes,
+/obj/item/organ/tongue,
+/obj/item/organ/tongue,
+/obj/item/bodypart/r_leg/rprosthetic,
+/obj/item/bodypart/l_leg/rprosthetic,
+/obj/item/bodypart/l_arm/rprosthetic,
+/obj/item/bodypart/r_arm/rprosthetic,
+/obj/structure/closet/crate/chest{
+	lockid = "physician"
+	},
 /turf/open/floor/rogue/churchbrick,
 /area/rogue/indoors/town/manor)
 "cTQ" = (
@@ -4041,6 +4073,27 @@
 /obj/structure/mineral_door/swing_door,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/indoors)
+"eqT" = (
+/obj/structure/closet/crate/roguecloset,
+/obj/item/paper,
+/obj/item/paper,
+/obj/item/paper,
+/obj/item/paper,
+/obj/item/paper,
+/obj/item/paper,
+/obj/item/paper,
+/obj/item/paper,
+/obj/item/paper,
+/obj/item/paper,
+/obj/item/paper,
+/obj/item/paper,
+/obj/item/paper,
+/obj/item/paper,
+/obj/item/paper,
+/obj/item/natural/feather,
+/obj/item/clothing/mask/cigarette/pipe/westman,
+/turf/open/floor/rogue/churchbrick,
+/area/rogue/indoors/town/manor)
 "erA" = (
 /obj/structure/fluff/railing/border,
 /turf/open/transparent/openspace,
@@ -6261,16 +6314,15 @@
 /turf/open/water/cleanshallow,
 /area/rogue/under/town/sewer)
 "gMQ" = (
-/obj/structure/closet/crate/roguecloset,
-/obj/item/natural/feather,
-/obj/item/paper,
-/obj/item/paper,
-/obj/item/paper,
-/obj/item/paper,
-/obj/item/paper,
-/obj/item/paper,
-/obj/item/paper,
-/obj/item/paper,
+/obj/item/rogueweapon/surgery/hemostat,
+/obj/item/rogueweapon/surgery/hemostat,
+/obj/item/rogueweapon/surgery/retractor,
+/obj/structure/table/wood{
+	icon_state = "tablewood3"
+	},
+/obj/structure/roguemachine/mail{
+	ournum = 12
+	},
 /turf/open/floor/rogue/churchbrick,
 /area/rogue/indoors/town/manor)
 "gNb" = (
@@ -6373,6 +6425,10 @@
 	},
 /turf/open/floor/rogue/hexstone,
 /area/rogue/indoors)
+"gSj" = (
+/obj/effect/landmark/start/seelielate,
+/turf/open/floor/rogue/dirt/road,
+/area/rogue/outdoors/rtfield)
 "gSu" = (
 /obj/structure/mineral_door/bars{
 	lockid = "manor"
@@ -6611,6 +6667,7 @@
 "hgb" = (
 /obj/structure/chair/bench/couch/r,
 /obj/machinery/light/rogue/wallfire/candle,
+/obj/item/paper,
 /turf/open/floor/rogue/tile/masonic{
 	dir = 4
 	},
@@ -8143,11 +8200,11 @@
 "iUd" = (
 /obj/item/reagent_containers/food/snacks/grown/rogue/sweetleaf,
 /obj/item/reagent_containers/food/snacks/grown/rogue/pipeweed,
-/obj/structure/closet/crate/chest{
-	lockid = "keep_armory"
-	},
 /obj/item/reagent_containers/glass/bottle/mercury,
 /obj/item/reagent_containers/food/snacks/grown/berries/rogue/poison,
+/obj/structure/closet/crate/chest{
+	lockid = "physician"
+	},
 /turf/open/floor/rogue/churchbrick,
 /area/rogue/indoors/town/manor)
 "iUe" = (
@@ -10825,7 +10882,9 @@
 /turf/open/floor/rogue/blocks/stonered,
 /area/rogue/indoors/town/bath)
 "lTZ" = (
-/obj/structure/roguemachine/mail,
+/obj/structure/roguemachine/mail{
+	ournum = 12
+	},
 /turf/open/floor/rogue/tile{
 	icon_state = "bfloorz"
 	},
@@ -12156,9 +12215,22 @@
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue/outdoors/rtfield)
 "nzQ" = (
-/obj/structure/fluff/railing/border,
-/turf/open/floor/rogue/dirt/road,
-/area/rogue/outdoors/town/roofs)
+/obj/structure/closet/crate/chest{
+	lockid = "physician";
+	name = "leech chest"
+	},
+/obj/item/natural/worms/leech,
+/obj/item/natural/worms/leech,
+/obj/item/natural/worms/leech,
+/obj/item/natural/worms/leech,
+/obj/item/natural/worms/leech,
+/obj/item/natural/worms/leech,
+/obj/item/natural/worms/leech,
+/obj/item/natural/worms/leech,
+/obj/item/natural/worms/leech,
+/obj/item/natural/worms/leech,
+/turf/open/floor/rogue/churchbrick,
+/area/rogue/indoors/town/manor)
 "nzW" = (
 /obj/structure/bars,
 /turf/open/water/cleanshallow,
@@ -12695,11 +12767,11 @@
 /turf/open/floor/rogue/cobble,
 /area/rogue/indoors/town/dwarfin)
 "obB" = (
-/obj/structure/fluff/railing/border{
-	dir = 1
+/obj/machinery/light/rogue/torchholder{
+	dir = 4
 	},
-/turf/open/floor/rogue/dirt/road,
-/area/rogue/outdoors/town/roofs)
+/turf/open/floor/rogue/churchbrick,
+/area/rogue/indoors/town/manor)
 "obT" = (
 /turf/closed/wall/mineral/rogue/stone/moss,
 /area/rogue/outdoors/town/roofs)
@@ -13846,6 +13918,10 @@
 	},
 /turf/open/floor/carpet/royalblack,
 /area/rogue/indoors/town/manor)
+"peL" = (
+/obj/effect/landmark/start/seelielate,
+/turf/open/floor/rogue/grass,
+/area/rogue/outdoors/rtfield)
 "peN" = (
 /obj/structure/rack/rogue,
 /obj/item/rogueweapon/spear,
@@ -14823,6 +14899,7 @@
 /area/rogue/outdoors/town)
 "qlt" = (
 /obj/structure/rack/rogue/shelf/big,
+/obj/item/reagent_containers/glass/bottle/rogue/healthpot,
 /obj/item/reagent_containers/glass/bottle/rogue/healthpot,
 /obj/item/reagent_containers/glass/bottle/rogue/healthpot,
 /turf/open/floor/rogue/churchbrick,
@@ -16581,10 +16658,10 @@
 /turf/open/floor/rogue/dirt,
 /area/rogue/outdoors/rtfield)
 "sma" = (
-/obj/structure/rack/rogue/shelf/big,
-/obj/item/natural/bundle/cloth,
-/obj/item/natural/bundle/cloth,
-/turf/open/floor/rogue/churchbrick,
+/obj/structure/closet/crate/chest{
+	lockid = "physician"
+	},
+/turf/closed/wall/mineral/rogue/wood,
 /area/rogue/indoors/town/manor)
 "smt" = (
 /obj/item/grown/log/tree/small,
@@ -21754,7 +21831,8 @@
 /turf/open/floor/rogue/cobble,
 /area/rogue/outdoors/town)
 "xYr" = (
-/obj/structure/bookcase/random,
+/obj/structure/roguemachine/withdraw,
+/obj/structure/roguemachine/scomm/r,
 /turf/open/floor/rogue/churchbrick,
 /area/rogue/indoors/town/manor)
 "xYA" = (
@@ -266821,7 +266899,7 @@ hcW
 uaL
 uaL
 uaL
-uaL
+gSj
 uaL
 qvR
 uaL
@@ -270506,7 +270584,7 @@ uaL
 wSn
 wSn
 qvR
-qvR
+peL
 qvR
 spp
 spp
@@ -286604,7 +286682,7 @@ qvR
 spp
 qvR
 wSn
-qvR
+peL
 qvR
 qvR
 qvR
@@ -297455,7 +297533,7 @@ qvR
 qvR
 qvR
 qvR
-uaL
+gSj
 wSn
 qvR
 qvR
@@ -299845,7 +299923,7 @@ wSn
 wSn
 qvR
 qvR
-qvR
+peL
 wSn
 wSn
 wSn
@@ -307510,7 +307588,7 @@ uaL
 uaL
 qvR
 qvR
-qvR
+peL
 qvR
 qvR
 uaL
@@ -396633,7 +396711,7 @@ hLW
 wtF
 cpf
 cpf
-cpf
+sma
 cBj
 cpf
 cpf
@@ -398639,13 +398717,13 @@ aUc
 vIa
 vIa
 wtF
-hLW
-hLW
-sHm
+uOL
+jDm
+uOL
 qlt
 vTK
 kUR
-lTk
+nzQ
 sHm
 wtF
 bFU
@@ -399041,13 +399119,13 @@ aUc
 vIa
 vIa
 wtF
-uOL
-jDm
-uOL
-sma
+sHm
+bxr
+obB
+aFk
 kUR
 kUR
-iUd
+lTk
 rxG
 wtF
 vNi
@@ -399445,8 +399523,8 @@ vIa
 wtF
 sHm
 cTG
-aFk
-aFk
+kUR
+kUR
 kUR
 kUR
 brS
@@ -400248,12 +400326,12 @@ aFk
 vTK
 vvz
 dnf
-ydi
+oqi
 kUR
 rpP
 hBA
 kUR
-aFk
+ydi
 vXH
 wtF
 lxe
@@ -400655,7 +400733,7 @@ kUR
 kUR
 xLw
 kUR
-brS
+eqT
 sHm
 dGl
 bzD
@@ -401455,10 +401533,10 @@ dCP
 oqi
 sHm
 xYr
-aiV
-kUR
-aFk
 cNr
+kUR
+iUd
+aiV
 ajH
 sHm
 wtF
@@ -402257,13 +402335,13 @@ aUc
 vIa
 vIa
 rTC
-fZJ
 hQJ
-nzQ
+pWB
+pWB
 pDT
-obB
+pWB
+pWB
 nIk
-fZJ
 fZJ
 fZJ
 fZJ
@@ -402659,13 +402737,13 @@ aUc
 vIa
 vIa
 rTC
-fZJ
 hQJ
-nzQ
+pWB
+pWB
 wLr
-obB
+pWB
+pWB
 lCO
-fZJ
 fZJ
 fZJ
 fZJ
@@ -403061,13 +403139,13 @@ aUc
 vIa
 vIa
 rTC
-fZJ
 jKW
 hFc
 hFc
 hFc
+hFc
+hFc
 gHt
-fZJ
 fZJ
 fZJ
 fZJ
