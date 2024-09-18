@@ -208,9 +208,6 @@
 	after_ejaculation()
 
 /datum/sex_controller/proc/milk_container(obj/item/reagent_containers/glass/C)
-	log_combat(user, user, "Was milked into a container")
-	user.visible_message(span_lovebold("[user] lactates into [C]!"))
-	playsound(user, 'sound/misc/mat/endout.ogg', 50, TRUE, ignore_walls = FALSE)
 
 	var/obj/item/organ/breasts/breasts = user.getorganslot(ORGAN_SLOT_BREASTS)
 	var milk_amount
@@ -233,8 +230,19 @@
 	{
 		milk_amount = milk_amount + 10
 	}
-	C.reagents.add_reagent(/datum/reagent/consumable/milk, milk_amount)
-	after_ejaculation()
+	if(breasts.last_milked < world.time - 10 MINUTES)
+	{
+		log_combat(user, user, "Was milked into a container")
+		user.visible_message(span_lovebold("[user] lactates into [C]!"))
+		playsound(user, 'sound/misc/mat/endout.ogg', 50, TRUE, ignore_walls = FALSE)
+		C.reagents.add_reagent(/datum/reagent/consumable/milk, milk_amount)
+		breasts.last_milked = world.time
+		after_ejaculation()
+	}
+	else
+	{
+		user.visible_message(span_bad("Nothing comes out, perhaps its too early!"))
+	}
 
 /datum/sex_controller/proc/after_ejaculation()
 	set_arousal(40)
