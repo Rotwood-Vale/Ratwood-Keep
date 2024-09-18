@@ -50,6 +50,17 @@
 
 ////////////////////
 
+/datum/status_effect/debuff/moondust_crash
+	id = "moondust_crash"
+	alert_type = /atom/movable/screen/alert/status_effect/debuff/moondust_crash
+	effectedstats = list("speed" = -3, "endurance" = -3)
+	duration = 20 SECONDS
+
+/atom/movable/screen/alert/status_effect/debuff/moondust_crash
+	name = "Moondust Crash"
+	desc = "My body feels sluggish and strained."
+	icon_state = "muscles"
+
 
 /datum/status_effect/debuff/thirstyt1
 	id = "thirsty1"
