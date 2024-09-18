@@ -1,6 +1,7 @@
 /datum/sex_action/vaginal_sex
 	name = "Fuck their cunt"
 	stamina_cost = 1.0
+	check_incapacitated = FALSE
 
 /datum/sex_action/vaginal_sex/shows_on_menu(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(user == target)
@@ -27,9 +28,10 @@
 	return TRUE
 
 /datum/sex_action/vaginal_sex/on_start(mob/living/carbon/human/user, mob/living/carbon/human/target)
+	..()
 	if(HAS_TRAIT(target, TRAIT_TINY) && !(HAS_TRAIT(user, TRAIT_TINY)))	//Non-Seelie on Seelie
 		//Scream and rib break
-		user.visible_message(span_warning("[user] forces his cock into [target]'s tiny cunt!"))
+		user.visible_message(span_warning("[user] forces their cock into [target]'s tiny cunt!"))
 		var/obj/item/bodypart/BPC = target.get_bodypart(BODY_ZONE_CHEST)
 		var/obj/item/bodypart/BPG = target.get_bodypart(BODY_ZONE_PRECISE_GROIN)
 		BPC.add_wound(/datum/wound/fracture/chest)
@@ -37,9 +39,9 @@
 		target.apply_damage(30, BRUTE, BPC)
 		playsound(target, list('sound/misc/mat/insert (1).ogg','sound/misc/mat/insert (2).ogg'), 20, TRUE, ignore_walls = FALSE)
 	else if(!(HAS_TRAIT(target, TRAIT_TINY)) && HAS_TRAIT(user, TRAIT_TINY)) //Seelie on Non-Seelie action
-		user.visible_message(span_warning("[user] tries and fails to insert his tiny cock into [target]'s cunt."))
+		user.visible_message(span_warning("[user] tries and fails to insert their tiny cock into [target]'s cunt."))
 	else //Normal humen sized creatures or Seelie on Seelie (which would be normal)
-		user.visible_message(span_warning("[user] slides his cock into [target]'s cunt!"))
+		user.visible_message(span_warning("[user] slides their cock into [target]'s cunt!"))
 		playsound(target, list('sound/misc/mat/insert (1).ogg','sound/misc/mat/insert (2).ogg'), 20, TRUE, ignore_walls = FALSE)
 
 /datum/sex_action/vaginal_sex/on_perform(mob/living/carbon/human/user, mob/living/carbon/human/target)
@@ -75,10 +77,12 @@
 	target.sexcon.handle_passive_ejaculation()
 
 /datum/sex_action/vaginal_sex/on_finish(mob/living/carbon/human/user, mob/living/carbon/human/target)
+	..()
 	if(!(HAS_TRAIT(target, TRAIT_TINY)) && HAS_TRAIT(user, TRAIT_TINY)) //Male seelie trying to fuck normal size humen
-		user.visible_message(span_warning("[user] stops trying to insert hit tiny cock into [target]'s cunt."))
+		user.visible_message(span_warning("[user] stops trying to insert their tiny cock into [target]'s cunt."))
 	else
-		user.visible_message(span_warning("[user] pulls his cock out of [target]'s cunt."))
+		user.visible_message(span_warning("[user] pulls their cock out of [target]'s cunt."))
+
 
 /datum/sex_action/vaginal_sex/is_finished(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(user.sexcon.finished_check())

@@ -28,7 +28,7 @@
 /datum/status_effect/buff/druqks
 	id = "druqks"
 	alert_type = /atom/movable/screen/alert/status_effect/buff/druqks
-	effectedstats = list("endurance" = 3,"speed" = 3,"fortune" = -5)
+	effectedstats = list("intelligence" = 5,"speed" = 3,"fortune" = -5)
 	duration = 10 SECONDS
 
 /datum/status_effect/buff/druqks/on_apply()
@@ -64,7 +64,7 @@
 /datum/status_effect/buff/ozium
 	id = "ozium"
 	alert_type = /atom/movable/screen/alert/status_effect/buff/druqks
-	effectedstats = list("speed" = -99)
+	effectedstats = list("speed" = -5, "perception" = 2)
 	duration = 30 SECONDS
 
 /datum/status_effect/buff/ozium/on_apply()
@@ -80,7 +80,7 @@
 /datum/status_effect/buff/moondust
 	id = "moondust"
 	alert_type = /atom/movable/screen/alert/status_effect/buff/druqks
-	effectedstats = list("speed" = 5, "endurance" = 5)
+	effectedstats = list("speed" = 4, "endurance" = 4, "perception" = -3)
 	duration = 30 SECONDS
 
 /datum/status_effect/buff/moondust/nextmove_modifier()
@@ -90,10 +90,15 @@
 	. = ..()
 	owner.add_stress(/datum/stressevent/moondust)
 
+/datum/status_effect/buff/moondust/on_remove()
+	. = ..()
+	owner.apply_status_effect(/datum/status_effect/debuff/moondust_crash)
+
+
 /datum/status_effect/buff/moondust_purest
 	id = "purest moondust"
 	alert_type = /atom/movable/screen/alert/status_effect/buff/druqks
-	effectedstats = list("speed" = 6, "endurance" = 6)
+	effectedstats = list("speed" = 5, "endurance" = 5, "perception" = -2)
 	duration = 40 SECONDS
 
 /datum/status_effect/buff/moondust_purest/nextmove_modifier()
@@ -102,6 +107,10 @@
 /datum/status_effect/buff/moondust_purest/on_apply()
 	. = ..()
 	owner.add_stress(/datum/stressevent/moondust_purest)
+
+/datum/status_effect/buff/moondust_purest/on_remove()
+	. = ..()
+	owner.apply_status_effect(/datum/status_effect/debuff/moondust_crash)
 
 /datum/status_effect/buff/weed
 	id = "weed"

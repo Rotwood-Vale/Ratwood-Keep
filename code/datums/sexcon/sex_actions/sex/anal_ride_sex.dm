@@ -2,6 +2,7 @@
 	name = "Ride them anally"
 	stamina_cost = 1.0
 	aggro_grab_instead_same_tile = FALSE
+	check_incapacitated = FALSE
 
 /datum/sex_action/anal_ride_sex/shows_on_menu(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(user == target)
@@ -24,6 +25,7 @@
 	return TRUE
 
 /datum/sex_action/anal_ride_sex/on_start(mob/living/carbon/human/user, mob/living/carbon/human/target)
+	..()
 	if(HAS_TRAIT(target, TRAIT_TINY) && !(HAS_TRAIT(user, TRAIT_TINY)))
 		user.visible_message(span_warning("[user] gets on top of [target] trying and failing to ride the tiny cock with their butt!"))
 	else
@@ -52,6 +54,7 @@
 		target.virginity = FALSE
 
 /datum/sex_action/anal_ride_sex/on_finish(mob/living/carbon/human/user, mob/living/carbon/human/target)
+	..()
 	user.visible_message(span_warning("[user] gets off [target]."))
 
 /datum/sex_action/anal_ride_sex/is_finished(mob/living/carbon/human/user, mob/living/carbon/human/target)
