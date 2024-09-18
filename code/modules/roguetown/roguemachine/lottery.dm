@@ -12,44 +12,54 @@
 	var/stopgambling = 0
 
 
-//attack_hand
+/obj/structure/roguemachine/lottery_roguetown/attack_hand(mob/living/user) //empty hand
 
-/obj/structure/roguemachine/lottery_roguetown/attackby(mob/living/user, obj/item/P)
+	src.say("Your current tithe is [src.gamblingprice]. Care to spin?")
+	playsound(src, 'sound/misc/machinetalk.ogg', 100, FALSE, -1)
+	return
+
+/obj/structure/roguemachine/lottery_roguetown/attackby(obj/item/roguecoin/P, mob/living/user)
 
 	. = ..()
 
 	if(istype(P, /obj/item/roguecoin))
-		if(src.gamblingprice + P.sellprice > src.maxtithing)
-			say("This puts the bounty over 100 mammons. I am meant for poorer fools, not kings. Start with a smaller amount.")
+		if(src.gamblingprice + (P.sellprice * P.quantity) > src.maxtithing)
+			say("This puts the starting tithe over [src.maxtithing] mammons.")
+			playsound(src, 'sound/misc/machineno.ogg', 100, FALSE, -1)
 			return
 
 		else
-			src.gamblingprice += P.sellprice
+			src.gamblingprice += (P.sellprice * P.quantity)
 			qdel(P)
 			src.say("Your current tithe is now [src.gamblingprice]. Care to spin?")
 			playsound(src, 'sound/misc/machinetalk.ogg', 100, FALSE, -1)
 			playsound(src, 'sound/misc/machineno.ogg', 100, FALSE, -1)
 			return
 
-	else //empty hand or other trash click
-		src.say("Your current tithe is [src.gamblingprice]. Care to spin?")
-		playsound(src, 'sound/misc/machineno.ogg', 100, FALSE, -1)
-		playsound(src, 'sound/misc/machinetalk.ogg', 100, FALSE, -1)
-		return
 
 /obj/structure/roguemachine/lottery_roguetown/MiddleClick(mob/living/user, params) //LET'S GO GAMBLING
 
-	src.diceroll = rand(1,100)
-	src.say(pick("Around and around I go, where I stop, only I know.", "Xylix smiles upon your idiocy, child.", "The wheel of fate spins, and spins.", "Oh, you poor fool.", "This is going to hurt for one of us.", "I laugh, you cry; I weep, you yell.", "I will be your fool; I'll perform for you...", "Let's go gambling!",))
-	user.STALUC += src.gamblingprob
-	sleep(50)
-	if(src.gamblingprob < src.diceroll)
-		src.gamblingprice = 0
-		src.say(pick("TEN, WHEEL OF FORTUNE - inversed.", "The Castle. O, Omen!", "Your current tithe is zero. ...Oh, you've lost, by the way.", "Look into my eyes and whisper your woes.", "Aw, dangit.", "Fool. Poor fool. Your eyes leak out of your skull, drool falling from your lips."))
+	if(src.stopgambling = 1)
 		return
-	if(src.gamblingprob >= src.diceroll)
-		src.gamblingprice *= 2
-		src.say("Your peasant's tithe is now [src.gamblingprice]. Play again?")
+
+	else
+		src.diceroll = rand(1,100)
+		src.say(pick("Around and around I go, where I stop, only I know.", "Xylix smiles upon your idiocy, child.", "The wheel of fate spins, and spins.", "Oh, you poor fool.", "This is going to hurt for one of us.", "I laugh, you cry; I weep, you yell.", "I will be your fool; I'll perform for you...", "Let's go gambling!",))
+		playsound(src, 'sound/misc/machinetalk.ogg', 100, FALSE, -1)
+		user.STALUC += src.gamblingprob
+		src.stopgambling = 1
+		sleep(50)
+		if(src.gamblingprob >= src.diceroll)
+			src.gamblingprice *= 2
+			src.say("Your peasant's tithe is now [src.gamblingprice]. Play again?")
+			src.stopgambling = 0
+		else
+			src.gamblingprice = 0
+			src.say(pick("TEN, WHEEL OF FORTUNE - inversed.", "The Castle. O, Omen!", "Your current tithe is zero. You've lost, by the way.", "Look into my eyes and whisper your woes.", "Aw, dangit.", "Fool. Poor fool. Your eyes leak out of your skull, drool falling from your lips."))
+
+		src.stopgambling = 0
+			return
+
 
 
 /obj/structure/roguemachine/lottery_roguetown/attack_right(mob/living/user) //how the fuck do i
@@ -77,7 +87,7 @@
 			mod = 10
 		if(selection == "SILVER")
 			mod = 5
-		var/coin_amt = input(user, "Moloch, you have [src.gamblingprice] mammon in tithes. You may withdraw [floor(gamblingprice/mod)] [selection] COINS from your account.", src) as null|num
+		var/coin_amt = input(user, "Moloch, you have [src.gamblingprice] mammon in tithes. You may withdraw [floor(gamblingprice/mod)] [selection] COINS.", src) as null|num
 		coin_amt = round(coin_amt)
 		if(coin_amt < 1)
 			return
