@@ -20,7 +20,6 @@
 		/datum/sprite_accessory/wings/bat,
 		/datum/sprite_accessory/wings/feathery,
 		/datum/sprite_accessory/wings/wide/succubus,
-		/datum/sprite_accessory/wings/fairy,
 		/datum/sprite_accessory/wings/bee,
 		/datum/sprite_accessory/wings/wide/dragon_alt1,
 		/datum/sprite_accessory/wings/wide/dragon_alt2,
@@ -68,3 +67,16 @@
 		/datum/sprite_accessory/wings/moth/brown,
 		/datum/sprite_accessory/wings/moth/plasmafire,
 		)
+
+/datum/customizer/organ/wings/seelie
+	var/accessory_colors = "000000"
+	var/allows_accessory_color_customization = FALSE
+	customizer_choices = list(/datum/customizer_choice/organ/wings/seelie)
+
+/datum/customizer_choice/organ/wings/seelie
+	name = "Seelie Wings"
+	organ_type = /obj/item/organ/wings/seelie
+	sprite_accessories = list(
+		/datum/sprite_accessory/wings/seelie,
+		/datum/sprite_accessory/wings/bee,
+	)

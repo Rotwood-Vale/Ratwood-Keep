@@ -8,6 +8,8 @@
 		return
 	if(!target.getorganslot(ORGAN_SLOT_VAGINA))
 		return
+	if((HAS_TRAIT(target, TRAIT_TINY) && !(HAS_TRAIT(user, TRAIT_TINY))) || (HAS_TRAIT(user, TRAIT_TINY) && !(HAS_TRAIT(target, TRAIT_TINY)))) //Big check to make sure only seelie<->seelie can do this, not seelie<->humen
+		return FALSE
 	return TRUE
 
 /datum/sex_action/scissoring/can_perform(mob/living/carbon/human/user, mob/living/carbon/human/target)
