@@ -87,7 +87,7 @@
 
 /obj/structure/dye_bin/attackby(obj/item/I, mob/living/user)
 	if(istype(I, /obj/item/reagent_containers/food/snacks/grown/berries/rogue))
-		to_chat(user, span_notice("I squeeze \the berries into some colorful dye"))
+		to_chat(user, span_notice("I squeeze the berries into some colorful dye"))
 		berry_charges += 3
 		update_icon()
 		qdel(I)

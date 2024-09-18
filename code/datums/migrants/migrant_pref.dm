@@ -9,7 +9,7 @@
 /datum/migrant_pref/New(datum/preferences/passed_prefs)
 	. = ..()
 	prefs = passed_prefs
-
+	
 /datum/migrant_pref/proc/set_active(new_state, silent = FALSE)
 	if(active == new_state)
 		return
@@ -18,6 +18,8 @@
 	if(!silent && prefs.parent)
 		if(new_state)
 			to_chat(prefs.parent, span_notice("You are now in the migrant queue, and will join the game with them when they arrive"))
+			if(prefs.defiant)
+				to_chat(src, span_userdanger("Remember : Defiant ERP protection is only enabled while COMBAT mode is active. AHELP if necessary."))
 		else
 			to_chat(prefs.parent, span_boldwarning("You are no longer in the migrant queue"))
 

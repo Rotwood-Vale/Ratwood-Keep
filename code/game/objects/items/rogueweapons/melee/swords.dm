@@ -116,7 +116,6 @@
 	associated_skill = /datum/skill/combat/swords
 	throwforce = 15
 	thrown_bclass = BCLASS_CUT
-	dropshrink = 0.75
 	smeltresult = /obj/item/ingot/steel
 
 /obj/item/rogueweapon/sword/long/death
@@ -157,7 +156,6 @@
 	associated_skill = /datum/skill/combat/swords
 	throwforce = 15
 	thrown_bclass = BCLASS_CUT
-	dropshrink = 0.75
 	smeltresult = /obj/item/ingot/steel
 
 /obj/item/rogueweapon/sword/long/getonmobprop(tag)
@@ -195,7 +193,6 @@
 	associated_skill = /datum/skill/combat/swords
 	throwforce = 15
 	thrown_bclass = BCLASS_CUT
-	dropshrink = 0.75
 	smeltresult = /obj/item/ingot/steel
 	sellprice = 363
 	static_price = TRUE
@@ -235,7 +232,6 @@
 	max_integrity = 9999
 	throwforce = 15
 	thrown_bclass = BCLASS_CUT
-	dropshrink = 0.75
 	smeltresult = /obj/item/ingot/steel
 	sellprice = 363
 	static_price = TRUE
@@ -274,7 +270,6 @@
 	associated_skill = /datum/skill/combat/swords
 	throwforce = 15
 	thrown_bclass = BCLASS_CUT
-	dropshrink = 0.75
 	smeltresult = /obj/item/ingot/steel
 
 /obj/item/rogueweapon/sword/long/rider/getonmobprop(tag)
@@ -323,7 +318,6 @@
 	associated_skill = /datum/skill/combat/swords
 	throwforce = 15
 	thrown_bclass = BCLASS_CUT
-	dropshrink = 0.75
 	minstr = 6
 	sellprice = 42
 	wdefense = 5
@@ -507,7 +501,7 @@
 
 /datum/intent/sword/thrust/estoc // Around 12 or so dmg gets through armor, making it weaker than spears, but more portable
 	clickcd = 10
-	penfactor = 40
+	penfactor = 60
 
 /obj/item/rogueweapon/sword/cutlass
 	name = "cutlass"

@@ -59,6 +59,11 @@
 	icon_state = "shalal"
 	sellprice = 5
 
+/obj/item/storage/belt/rogue/leather/shalalz
+	name = "zybantine shalal belt"
+	icon_state = "shalal_z"
+	sellprice = 5
+
 /obj/item/storage/belt/rogue/leather/black
 	name = "black belt"
 	icon_state = "blackbelt"
@@ -123,7 +128,7 @@
 	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
 	if(STR)
 		STR.max_combined_w_class = 6
-		STR.max_w_class = WEIGHT_CLASS_NORMAL
+		STR.max_w_class = WEIGHT_CLASS_SMALL
 		STR.max_items = 3
 		STR.not_while_equipped = FALSE
 

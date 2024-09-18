@@ -3,9 +3,6 @@
 	dried_type = null
 	resistance_flags = FLAMMABLE
 	w_class = WEIGHT_CLASS_SMALL
-	var/can_distill = FALSE //If FALSE, this object cannot be distilled into an alcohol.
-	var/distill_reagent //If NULL and this object can be distilled, it uses a generic fruit_wine reagent and adjusts its variables.
-	var/distill_amt = 12
 	var/list/pipe_reagents = list()
 	var/seed
 	var/bitesize_mod = 0
@@ -370,6 +367,9 @@
 	foodtype = VEGETABLES
 	rotprocess = 50 MINUTES
 	list_reagents = list(/datum/reagent/consumable/nutriment = 3)
+	can_distill = TRUE
+	distill_reagent = /datum/reagent/consumable/ethanol/vodka
+	distill_amt = 12
 
 /obj/item/reagent_containers/food/snacks/grown/eggplant
 	name = "aubergine"

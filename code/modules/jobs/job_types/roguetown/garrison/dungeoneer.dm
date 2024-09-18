@@ -18,7 +18,7 @@
 	Only three things command you on this wretched plane, Necra, Mammon, and the Marshal. "
 
 	outfit = /datum/outfit/job/roguetown/dungeoneer
-	give_bank_account = 5
+	give_bank_account = 98
 	min_pq = 2
 	max_pq = null
 
@@ -27,10 +27,13 @@
 /datum/outfit/job/roguetown/dungeoneer/pre_equip(mob/living/carbon/human/H)
 	..()
 	head = /obj/item/clothing/head/roguetown/menacing
+	neck = /obj/item/clothing/neck/roguetown/coif
 	pants = /obj/item/clothing/under/roguetown/trou
-	shoes = /obj/item/clothing/shoes/roguetown/simpleshoes
+	shoes = /obj/item/clothing/shoes/roguetown/shortboots
 	wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
+	gloves = /obj/item/clothing/gloves/roguetown/angle
 	cloak = /obj/item/clothing/cloak/stabard/dungeon
+	shirt = /obj/item/clothing/suit/roguetown/armor/gambeson/councillor
 	belt = /obj/item/storage/belt/rogue/leather
 	beltr = /obj/item/rogueweapon/whip/antique
 	beltl = /obj/item/keyring/dungeoneer
@@ -45,11 +48,11 @@
 		H.mind.adjust_skillrank(/datum/skill/craft/cooking, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/sewing, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/craft/traps, 3, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/medicine, 1, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/medicine, 2, TRUE)
 	H.change_stat("strength", 3)
 	H.change_stat("intelligence", -2)
 	H.change_stat("endurance", 2)
-	H.change_stat("constituion", 2)
+	H.change_stat("constitution", 2)
 	H.dna.species.soundpack_m = new /datum/voicepack/male/warrior()
 	H.verbs |= /mob/living/carbon/human/proc/torture_victim
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)

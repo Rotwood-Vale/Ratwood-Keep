@@ -2,6 +2,22 @@
 
 GLOBAL_VAR(restart_counter)
 
+//This runs before most anything else, for more info see:
+//https://github.com/Cyberboss/tgstation/blob/1afa69d66adfc810ab68c45a4fa5985c780ba6ff/code/game/world.dm#L10
+//But note that not all of this necessarily applies to us(particularly proccalls)
+
+/world/proc/Genesis(tracy_initialized = FALSE)
+	#ifdef USE_BYOND_TRACY
+	#warn USE_BYOND_TRACY is enabled
+	if(!tracy_initialized)
+		init_byond_tracy()
+		Genesis(tracy_initialized = TRUE)
+		return
+	#endif
+
+	init_debugger()
+	//Zirok was here
+
 /**
   * World creation
   *
@@ -446,3 +462,32 @@ GLOBAL_VAR(restart_counter)
 
 /world/proc/on_tickrate_change()
 	SStimer?.reset_buckets()
+
+/world/proc/init_byond_tracy()
+	var/library
+
+	switch (system_type)
+		if (MS_WINDOWS)
+			library = "prof.dll"
+		if (UNIX)
+			library = "libprof.so"
+		else
+			CRASH("Unsupported platform: [system_type]")
+
+	var/init_result = call_ext(library, "init")("block")
+	if (init_result != "0")
+		//para_tracy returns the filename on succesful init so this always runtimes, lol
+		CRASH("Error initializing byond-tracy: [init_result]")
+
+/world/proc/init_debugger()
+	var/dll = GetConfig("env", "AUXTOOLS_DEBUG_DLL")
+	if (dll)
+		call_ext(dll, "auxtools_init")()
+		enable_debugging()
+
+/world/Del()
+	var/dll = GetConfig("env", "AUXTOOLS_DEBUG_DLL")
+	if (dll)
+		call_ext(dll, "auxtools_shutdown")()
+	
+	. = ..()
