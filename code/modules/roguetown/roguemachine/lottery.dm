@@ -1,4 +1,4 @@
-/obj/structure/lottery_roguetown
+/obj/structure/roguemachine/lottery_roguetown
 	name = "XYLIX'S FORTUNE"
 	desc = "An infinite, yawning hole that makes or breaks men."
 	icon = 'icons/roguetown/misc/machines.dmi'
@@ -11,7 +11,7 @@
 	var/maxtithing = 100
 
 
-/obj/structure/lottery_roguetown/attack_hand(mob/living/user, obj/item/P)
+/obj/structure/roguemachine/lottery_roguetown/attack_hand(mob/living/user, obj/item/P)
 
 	. = ..()
 
@@ -34,7 +34,7 @@
 		playsound(src, 'sound/misc/machinetalk.ogg', 100, FALSE, -1)
 		return
 
-/obj/structure/lottery_roguetown/MiddleClick(mob/living/user, params) //LET'S GO GAMBLING
+/obj/structure/roguemachine/lottery_roguetown/MiddleClick(mob/living/user, params) //LET'S GO GAMBLING
 
 	src.diceroll = rand(1,100)
 	src.say(pick("Around and around I go, where I stop, only I know.", "Xylix smiles upon your idiocy, child.", "The wheel of fate spins, and spins.", "Oh, you poor fool.", "This is going to hurt for one of us.", "I laugh, you cry; I weep, you yell.", "I will be your fool; I'll perform for you...", "Let's go gambling!",))
@@ -49,7 +49,7 @@
 		src.say("Your peasant's tithe is now [src.gamblingprice]. Play again?")
 
 
-/obj/structure/lottery_roguetown/attack_right(mob/living/user) //how the fuck do i
+/obj/structure/roguemachine/lottery_roguetown/attack_right(mob/living/user) //how the fuck do i
 	. = ..()
 	if(!ishuman(user))
 		return
@@ -82,9 +82,7 @@
 		if((coin_amt*mod) > gamblingprice)
 			playsound(src, 'sound/misc/machineno.ogg', 100, FALSE, -1)
 			return
-		if(!SStreasury.withdraw_money_account(coin_amt*mod, H))
-			playsound(src, 'sound/misc/machineno.ogg', 100, FALSE, -1)
-			return
-		budget2change(coin_amt*mod, user, selection)
+		else
+			budget2change(coin_amt*mod, user, selection)
 
 
