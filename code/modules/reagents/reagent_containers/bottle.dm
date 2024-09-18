@@ -52,7 +52,8 @@
 	if(closed)
 		reagent_flags = TRANSPARENT
 		reagents.flags = reagent_flags
-		desc = "A bottle with a cork."
+		desc = initial(desc)
+		playsound(user.loc,'sound/items/uncork.ogg', 50, TRUE)
 		spillable = FALSE
 	else
 		reagent_flags = OPENCONTAINER
