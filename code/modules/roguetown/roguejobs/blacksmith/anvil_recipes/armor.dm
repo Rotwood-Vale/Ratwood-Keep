@@ -267,11 +267,17 @@
 	created_item = /obj/item/clothing/mask/rogue/facemask/steel
 	i_type = "Armor"
 
+/datum/anvil_recipe/armor/platemask/steel/hound
+	name = "Mask (Hound)"
+	req_bar = /obj/item/ingot/steel
+	created_item = /obj/item/clothing/mask/rogue/facemask/steel/hound
+	i_type = "Armor"
+
 /datum/anvil_recipe/armor/astratahelm
 	name = "Astrata Helmet (+1 Steel)"
 	req_bar = /obj/item/ingot/steel
 	additional_items = list(/obj/item/ingot/steel)
-	created_item = /obj/item/clothing/head/roguetown/helmet/heavy/astratahelm
+	created_item = /obj/item/clothing/head/roguetown/helmet/astratahelm
 	craftdiff = 2
 	i_type = "Armor"
 
@@ -279,7 +285,7 @@
 	name = "Necra Helmet (+1 Steel)"
 	req_bar = /obj/item/ingot/steel
 	additional_items = list(/obj/item/ingot/steel)
-	created_item = /obj/item/clothing/head/roguetown/helmet/heavy/necrahelm
+	created_item = /obj/item/clothing/head/roguetown/helmet/necrahelm
 	craftdiff = 2
 	i_type = "Armor"
 
@@ -287,7 +293,7 @@
 	name = "Noc Helmet (+1 Steel)"
 	req_bar = /obj/item/ingot/steel
 	additional_items = list(/obj/item/ingot/steel)
-	created_item = /obj/item/clothing/head/roguetown/helmet/heavy/nochelm
+	created_item = /obj/item/clothing/head/roguetown/helmet/nochelm
 	craftdiff = 2
 	i_type = "Armor"
 
@@ -295,6 +301,6 @@
 	name = "Dendor Helmet (+1 Steel)"
 	req_bar = /obj/item/ingot/steel
 	additional_items = list(/obj/item/ingot/steel)
-	created_item = /obj/item/clothing/head/roguetown/helmet/heavy/dendorhelm
+	created_item = /obj/item/clothing/head/roguetown/helmet/dendorhelm
 	craftdiff = 2
 	i_type = "Armor"

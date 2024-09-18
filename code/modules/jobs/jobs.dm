@@ -63,8 +63,8 @@ GLOBAL_LIST_INIT(noble_positions, list(
 	"King",
 	"Queen Consort",
 	"Prince",
-	"Guard Captain",
-	"Bailiff",
+	"Retinue Captain",
+	"Royal Marshal",
 	"Councillor",
 	"Steward",
 	"Knight",
@@ -126,6 +126,7 @@ GLOBAL_LIST_INIT(peasant_positions, list(
 	"Docker",
 	"Prisoner",
 	"Beggar",
+	"Town Seelie",
 	"Adventurer",
 	"Pilgrim",
 ))

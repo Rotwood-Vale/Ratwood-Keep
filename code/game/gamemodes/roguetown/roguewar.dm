@@ -120,7 +120,7 @@
 	"Knight",
 	"Merchant",
 	"Gatemaster",
-	"Guard Captain",
+	"Retinue Captain",
 	"Inquisitor",
 	"Village Elder",
 	"Watchman")
@@ -237,7 +237,7 @@
 	"Shepherd",
 	"Monk",
 	"Cleric",
-	"Guard Captain")
+	"Retinue Captain")
 	var/proab
 #ifdef TESTSERVER
 	proab = 100

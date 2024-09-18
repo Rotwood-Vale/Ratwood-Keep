@@ -25,7 +25,7 @@
 	ADD_TRAIT(H, TRAIT_SEEPRICES_SHITTY, "[type]")
 	if(H.gender == MALE)
 		pants = /obj/item/clothing/under/roguetown/tights
-		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
+		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/sailor
 		shoes = /obj/item/clothing/shoes/roguetown/simpleshoes
 		belt = /obj/item/storage/belt/rogue/leather
 		beltr = /obj/item/storage/belt/rogue/pouch/coins/poor

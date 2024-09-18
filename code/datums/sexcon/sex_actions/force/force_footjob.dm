@@ -7,6 +7,8 @@
 /datum/sex_action/force_footjob/shows_on_menu(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(user == target)
 		return FALSE
+	if(HAS_TRAIT(user, TRAIT_TINY)) //Fairy is too small and weak to force this
+		return FALSE
 	if(!user.getorganslot(ORGAN_SLOT_PENIS))
 		return
 	return TRUE

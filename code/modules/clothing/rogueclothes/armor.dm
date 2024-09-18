@@ -25,6 +25,7 @@
 	experimental_onhip = TRUE
 	nodismemsleeves = TRUE
 	flags_inv = HIDEBOOB|HIDECROTCH
+	w_class = WEIGHT_CLASS_NORMAL //death to all pouch abusers
 
 /obj/item/clothing/suit/roguetown/armor/chainmail
 	slot_flags = ITEM_SLOT_ARMOR|ITEM_SLOT_SHIRT
@@ -64,11 +65,13 @@
 	body_parts_covered = CHEST|GROIN|ARMS|LEGS|VITALS
 	icon_state = "hauberk"
 	item_state = "hauberk"
+	max_integrity = 220
 	armor = list("blunt" = 60, "slash" = 100, "stab" = 80, "bullet" = 20, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
 	anvilrepair = /datum/skill/craft/armorsmithing
 	smeltresult = /obj/item/ingot/steel
 	do_sound = TRUE
 	armor_class = ARMOR_CLASS_MEDIUM
+	w_class = WEIGHT_CLASS_BULKY
 
 /obj/item/clothing/suit/roguetown/armor/chainmail/chainkini
 	name = "chainmail bikini"
@@ -80,6 +83,7 @@
 	body_parts_covered = CHEST|GROIN
 	anvilrepair = /datum/skill/craft/armorsmithing
 	armor_class = ARMOR_CLASS_LIGHT
+	w_class = WEIGHT_CLASS_SMALL
 
 /obj/item/clothing/suit/roguetown/armor/plate
 	slot_flags = ITEM_SLOT_ARMOR
@@ -98,6 +102,8 @@
 	smeltresult = /obj/item/ingot/steel
 	equip_delay_self = 40
 	armor_class = ARMOR_CLASS_HEAVY
+	w_class = WEIGHT_CLASS_BULKY
+	clothing_flags = CANT_SLEEP_IN
 
 /obj/item/clothing/suit/roguetown/armor/plate/Initialize()
 	. = ..()
@@ -127,14 +133,15 @@
 	name = "plate armor"
 	desc = "Full plate. Leg protecting tassets, groin cup, armored vambraces."
 	icon_state = "plate"
+	max_integrity = 520
 	body_parts_covered = CHEST|GROIN|VITALS|LEGS|ARMS
 	equip_delay_self = 80
 
 /obj/item/clothing/suit/roguetown/armor/plate/half/iron
 	name = "iron breastplate"
-	desc = "Solid iron to protect the torso."
+	desc = "Solid iron to protect the chest."
 	icon_state = "ibreastplate"
-	max_integrity = 200
+	max_integrity = 235
 	smeltresult = /obj/item/ingot/iron
 	armor_class = ARMOR_CLASS_MEDIUM
 
@@ -167,6 +174,8 @@
 	anvilrepair = /datum/skill/craft/armorsmithing
 	smeltresult = /obj/item/ingot/steel
 	armor_class = ARMOR_CLASS_HEAVY
+	w_class = WEIGHT_CLASS_BULKY
+	clothing_flags = CANT_SLEEP_IN
 
 /obj/item/clothing/suit/roguetown/armor/heartfelt/hand
 	slot_flags = ITEM_SLOT_ARMOR
@@ -184,6 +193,8 @@
 	anvilrepair = /datum/skill/craft/armorsmithing
 	smeltresult = /obj/item/ingot/steel
 	armor_class = ARMOR_CLASS_HEAVY
+	w_class = WEIGHT_CLASS_BULKY
+	clothing_flags = CANT_SLEEP_IN
 
 /obj/item/clothing/suit/roguetown/armor/brigandine
 	slot_flags = ITEM_SLOT_ARMOR
@@ -201,6 +212,8 @@
 	smeltresult = /obj/item/ingot/steel
 	equip_delay_self = 40
 	armor_class = ARMOR_CLASS_HEAVY
+	w_class = WEIGHT_CLASS_BULKY
+	clothing_flags = CANT_SLEEP_IN
 
 /obj/item/clothing/suit/roguetown/armor/brigandine/Initialize()
 	. = ..()
@@ -266,6 +279,7 @@
 	r_sleeve_status = SLEEVE_NORMAL
 	l_sleeve_status = SLEEVE_NORMAL
 	armor_class = ARMOR_CLASS_LIGHT
+	color = CLOTHING_DARK_GREEN
 
 /obj/item/clothing/suit/roguetown/armor/armordress/alt
 	icon_state = "armordressalt"

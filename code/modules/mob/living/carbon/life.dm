@@ -35,6 +35,19 @@
 				if(getOxyLoss() < 20)
 					heart_attacking = FALSE
 
+		var/cant_fall_asleep = FALSE
+		var/cause = " I just can't..."
+		for(var/obj/item/clothing/thing in get_equipped_items(FALSE))
+			if(thing.clothing_flags & CANT_SLEEP_IN)
+				cant_fall_asleep = TRUE
+				cause = " \The [thing] bothers me..."
+				break
+
+		if(HAS_TRAIT(src, TRAIT_NUDE_SLEEPER))
+			if(length(get_equipped_items()))
+				cause = " I need to be nude to be comfortable..."
+				cant_fall_asleep = TRUE
+
 		//Healing while sleeping in a bed
 		if(IsSleeping())
 			var/sleepy_mod = buckled?.sleepy || 0.5
@@ -60,7 +73,7 @@
 		else if(!IsSleeping() && !HAS_TRAIT(src, TRAIT_NOSLEEP))
 			// Resting on a bed or something
 			if(buckled?.sleepy)
-				if(eyesclosed)
+				if(eyesclosed && !cant_fall_asleep || (eyesclosed && !(fallingas >= 14 && cant_fall_asleep))) // its a little slop but im not sure on how to else
 					if(!fallingas)
 						to_chat(src, span_warning("I'll fall asleep soon..."))
 					fallingas++
@@ -68,11 +81,14 @@
 						fallingas++
 					if(fallingas > 15)
 						Sleeping(300)
+				else if(eyesclosed && fallingas >= 14 && cant_fall_asleep)
+					to_chat(src, span_boldwarning("I can't sleep...[cause]"))
+					fallingas = 1
 				else
 					rogstam_add(buckled.sleepy * 10)
 			// Resting on the ground (not sleeping or with eyes closed and about to fall asleep)
 			else if(!(mobility_flags & MOBILITY_STAND))
-				if(eyesclosed)
+				if(eyesclosed && !HAS_TRAIT(src, TRAIT_NUDE_SLEEPER) && !cant_fall_asleep || (eyesclosed && !HAS_TRAIT(src, TRAIT_NUDE_SLEEPER) && !(fallingas >= 14 && cant_fall_asleep)))
 					if(!fallingas)
 						to_chat(src, span_warning("I'll fall asleep soon, although a bed would be more comfortable..."))
 					fallingas++
@@ -80,10 +96,16 @@
 						fallingas++
 					if(fallingas > 25)
 						Sleeping(300)
+				else if(eyesclosed && fallingas >= 14 && cant_fall_asleep)
+					to_chat(src, span_boldwarning("I can't sleep...[cause]"))
+					fallingas = 1
 				else
 					rogstam_add(10)
 			else if(fallingas)
 				fallingas = 0
+				
+		if(!IsSleeping() && (mobility_flags & MOBILITY_STAND) && isseelie(src) && (haswings(src) == TRUE) && !(buckled)) //Very slop but dont know of another way
+			fairy_hover()
 
 		handle_brain_damage()
 
@@ -92,7 +114,18 @@
 
 
 	check_cremation()
-
+	//Seelie luck aura
+	if(isseelie(src) && !IsSleeping())
+		for(var/mob/living/carbon/human/H in view(1, src))
+			if(!H || isseelie(H))
+				continue
+			switch(src.aura)
+				if(FALSE)
+					H.apply_status_effect(/datum/status_effect/buff/seelie/sad)
+					H.remove_status_effect(/datum/status_effect/buff/seelie/happy)
+				if(TRUE)
+					H.apply_status_effect(/datum/status_effect/buff/seelie/happy)
+					H.remove_status_effect(/datum/status_effect/buff/seelie/sad)
 	//Updates the number of stored chemicals for powers
 //	handle_changeling()
 
@@ -644,8 +677,8 @@ GLOBAL_LIST_INIT(ballmer_windows_me_msg, list("Yo man, what if, we like, uh, put
 	if(drowsyness)
 		drowsyness = max(drowsyness - restingpwr, 0)
 		blur_eyes(2)
-		if(prob(5))
-			AdjustSleeping(100)
+		if(drowsyness >= 100)
+			Sleeping(300)
 
 	//Jitteriness
 	if(jitteriness)
@@ -897,3 +930,26 @@ GLOBAL_LIST_INIT(ballmer_windows_me_msg, list("Yo man, what if, we like, uh, put
 		return
 
 	heart.beating = !status
+
+/mob/living/carbon/proc/fairy_hover()
+	//Fairy hovering animation
+	/*
+	anim_counter += 1
+	if(anim_counter >= 50)
+		animate(src, pixel_y = pixel_y + 2, time = 10, loop = -1)
+
+	else if(amin_counter >= 70)
+		animate(src, pixel_y = pixel_y - 2, time = 10, loop = -1)
+
+	else if(anim_counter >= 100)
+		anim_counter = 0
+		*/
+
+	//TODO: Check is animate stopping is causing weird visual glitch (it was, checking for sleep before calling fairy_hover fixed this)
+	if(!resting && !wallpressed)
+		animate(src, pixel_y = pixel_y + 2, time = 5, loop = -1)
+	sleep(5)
+	if(!resting && !wallpressed)
+		animate(src, pixel_y = pixel_y - 2, time = 5, loop = -1)
+
+	//animate(src, pixel_x = rand(-2, 2), pixel_y = rand(-2, 2), time = 20)

@@ -102,7 +102,7 @@
 #define STEWARD		(1<<3)
 #define KNIGHT		(1<<4)
 #define GUARD_CAPTAIN		(1<<5)
-#define BAILIFF		(1<<6)
+#define MARSHAL		(1<<6)
 #define HOSTAGE		(1<<7)
 
 #define GARRISON		(1<<1)
@@ -185,6 +185,7 @@
 #define GRENZELHOFT		(1<<1)
 #define VETERAN		(1<<2)
 #define SELLSWORD		(1<<3)
+#define SEELIE		(1<<4)
 
 #define GOBLIN		(1<<8)
 
@@ -217,7 +218,7 @@
 #define JDO_HAND 2
 #define JDO_STEWARD 3
 #define JDO_CLERK 3.1
-#define JDO_BAILIFF 4
+#define JDO_MARSHAL 4
 #define JDO_COUNCILLOR 4.1
 
 // Courtiers
@@ -279,6 +280,7 @@
 #define JDO_DESERT_RIDER 31.1
 #define JDO_VET 31.2
 #define JDO_SELLSWORD 31.3
+#define JDO_SEELIE 31.4
 
 #define JDO_VAGRANT 33
 #define JDO_ORPHAN 34
@@ -307,7 +309,7 @@
 	/datum/job/roguetown/prince,\
 	/datum/job/roguetown/councillor,\
 	/datum/job/roguetown/physician,\
-	/datum/job/roguetown/bailiff,\
+	/datum/job/roguetown/marshal,\
 	/datum/job/roguetown/captain,\
 	/datum/job/roguetown/hand,\
 	/datum/job/roguetown/knight,\
@@ -358,7 +360,8 @@
 	/datum/job/roguetown/pilgrim,\
 	/datum/job/roguetown/adventurer,\
 	/datum/job/roguetown/mercenary/desert_rider,\
-	/datum/job/roguetown/mercenary/grenzelhoft
+	/datum/job/roguetown/mercenary/grenzelhoft,\
+	/datum/job/roguetown/mercenary/seelie
 
 #define GARRISON_ROLES \
 	/datum/job/roguetown/bogguardsman,\

@@ -70,7 +70,7 @@
 	icon = null
 	var/oldinv = invisibility
 	invisibility = INVISIBILITY_MAXIMUM
-	cmode = FALSE
+	set_cmode(FALSE)
 	if(client)
 		SSdroning.play_area_sound(get_area(src), client)
 //	stop_cmusic()
@@ -119,6 +119,9 @@
 	W.mind.adjust_skillrank(/datum/skill/combat/unarmed, 6, TRUE)
 	W.mind.adjust_skillrank(/datum/skill/misc/climbing, 6, TRUE)
 
+	if(isseelie(W.stored_mob))
+		W.change_stat("speed", -3)
+
 	W.AddSpell(new /obj/effect/proc_holder/spell/self/howl)
 	W.AddSpell(new /obj/effect/proc_holder/spell/self/claws)
 
@@ -131,6 +134,7 @@
 	ADD_TRAIT(W, TRAIT_BASHDOORS, TRAIT_GENERIC)
 	ADD_TRAIT(W, TRAIT_SHOCKIMMUNE, TRAIT_GENERIC)
 	ADD_TRAIT(W, TRAIT_STEELHEARTED, TRAIT_GENERIC)
+	ADD_TRAIT(W, TRAIT_TOLERANT, TRAIT_GENERIC)
 	ADD_TRAIT(W, TRAIT_BREADY, TRAIT_GENERIC)
 	ADD_TRAIT(W, TRAIT_TOXIMMUNE, TRAIT_GENERIC)
 	ADD_TRAIT(W, TRAIT_ORGAN_EATER, TRAIT_GENERIC)
@@ -175,6 +179,8 @@
 	W.mind.known_skills = WA.stored_skills.Copy()
 	W.mind.skill_experience = WA.stored_experience.Copy()
 
+	if(isseelie(W.stored_mob))
+		W.change_stat("speed", 3)
 	W.RemoveSpell(new /obj/effect/proc_holder/spell/self/howl)
 	W.RemoveSpell(new /obj/effect/proc_holder/spell/self/claws)
 
