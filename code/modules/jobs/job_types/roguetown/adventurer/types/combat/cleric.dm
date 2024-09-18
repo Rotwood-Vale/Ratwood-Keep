@@ -75,7 +75,7 @@
 			pants = /obj/item/clothing/under/roguetown/trou/leather
 			shoes = /obj/item/clothing/shoes/roguetown/boots/leather
 			belt = /obj/item/storage/belt/rogue/leather
-			beltr = /obj/item/rogueweapon/mace/steel
+			beltr = /obj/item/rogueweapon/mace
 			beltl = /obj/item/storage/belt/rogue/pouch/coins/poor
 			backl = /obj/item/storage/backpack/rogue/satchel
 			backr = /obj/item/rogueweapon/shield/wood

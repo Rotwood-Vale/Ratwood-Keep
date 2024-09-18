@@ -66,8 +66,9 @@
 		ORGAN_SLOT_LIVER = /obj/item/organ/liver,
 		ORGAN_SLOT_STOMACH = /obj/item/organ/stomach,
 		ORGAN_SLOT_APPENDIX = /obj/item/organ/appendix,
-		ORGAN_SLOT_TAIL = /obj/item/organ/tail/tiefling,
-		ORGAN_SLOT_HORNS = /obj/item/organ/horns/tiefling,
+//		ORGAN_SLOT_TAIL = /obj/item/organ/tail/tiefling,  //Commenting out due to use of customizer organs.
+//		ORGAN_SLOT_HORNS = /obj/item/organ/horns/tiefling,
+
 		)
 	bodypart_features = list(
 		/datum/bodypart_feature/hair/head,
@@ -79,6 +80,8 @@
 		/datum/customizer/bodypart_feature/hair/facial/humanoid,
 		/datum/customizer/bodypart_feature/accessory,
 		/datum/customizer/bodypart_feature/face_detail,
+		/datum/customizer/organ/horns/humanoid/tiefling,
+		/datum/customizer/organ/tail/tiefling,
 		/datum/customizer/organ/testicles/human,
 		/datum/customizer/organ/penis/human,
 		/datum/customizer/organ/breasts/human,
