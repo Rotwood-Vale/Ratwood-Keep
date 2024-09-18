@@ -230,21 +230,14 @@
 	{
 		milk_amount = milk_amount + 10
 	}
-	if(breasts.last_milked <= world.time)
-	{
-		log_combat(user, user, "Was milked into a container")
-		user.visible_message(span_lovebold("[user] lactates into [C]!"))
-		playsound(user, 'sound/misc/mat/endout.ogg', 50, TRUE, ignore_walls = FALSE)
-		C.reagents.add_reagent(/datum/reagent/consumable/milk, milk_amount)
-		breasts.last_milked = world.time
-		after_milking()
-	}
-	else
-	{
-		milk_amount *= round((breasts.last_milked - world.time)/10 MINUTES, 1)
-		breasts.last_milked = world.time
-		after_milking()
-	}
+
+	log_combat(user, user, "Was milked into a container")
+	user.visible_message(span_lovebold("[user] lactates into [C]!"))
+	playsound(user, 'sound/misc/mat/endout.ogg', 50, TRUE, ignore_walls = FALSE)
+	milk_amount = round((milk_amount * min((breasts.last_milked - world.time)/10 MINUTES, 1)), 1)
+	C.reagents.add_reagent(/datum/reagent/consumable/milk, milk_amount)
+	breasts.last_milked = world.time
+	after_milking()
 
 /datum/sex_controller/proc/after_ejaculation()
 	set_arousal(40)
