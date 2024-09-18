@@ -231,6 +231,11 @@
 	icon_state = "bardhat"
 	sewrepair = TRUE
 
+/obj/item/clothing/head/roguetown/smokingcap
+	name = "smoking cap"
+	icon_state = "smokingc"
+	sewrepair = TRUE
+
 /obj/item/clothing/head/roguetown/fancyhat
 	name = "fancy hat"
 	desc = "A fancy looking hat with colorful feathers sticking out of it."
@@ -974,6 +979,12 @@
 	if(wise.get_item_by_slot(SLOT_HEAD) == src)
 		wise.change_stat("intelligence", -2, "wisehat")
 		to_chat(wise, span_red("I lose wisdom."))
+
+/obj/item/clothing/head/roguetown/witchhat
+	name = "witch hat"
+	desc = ""
+	icon_state = "witch"
+	sewrepair = TRUE
 
 /obj/item/clothing/head/roguetown/physician
 	name = "doctor's hat"

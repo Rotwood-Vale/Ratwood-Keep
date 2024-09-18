@@ -158,6 +158,8 @@ GLOBAL_LIST_EMPTY(chosen_names)
 
 	var/char_accent = "No accent"
 
+	var/datum/loadout_item/loadout
+
 	var/flavortext
 
 	var/ooc_notes
@@ -422,6 +424,8 @@ GLOBAL_LIST_EMPTY(chosen_names)
 			dat += "<br><b>Flavortext:</b> <a href='?_src_=prefs;preference=flavortext;task=input'>Change</a>"
 
 			dat += "<br><b>OOC Notes:</b> <a href='?_src_=prefs;preference=ooc_notes;task=input'>Change</a>"
+
+			dat += "<br><b>Loadout Item:</b> <a href='?_src_=prefs;preference=loadout_item;task=input'>[loadout ? loadout.name : "None"]</a>"
 			dat += "</td>"
 
 
@@ -1626,6 +1630,24 @@ Slots: [job.spawn_positions]</span>
 					ooc_notes = new_ooc_notes
 					to_chat(user, "<span class='notice'>Successfully updated OOC notes.</span>")
 					log_game("[user] has set their OOC notes'.")
+				if("loadout_item")
+					var/list/loadouts_available = list("None")
+					for (var/path as anything in GLOB.loadout_items)
+						var/datum/loadout_item/loadout = GLOB.loadout_items[path]
+						if (!loadout.name)
+							continue
+						loadouts_available[loadout.name] = loadout
+
+					var/loadout_input = input(user, "Choose your character's loadout item.", "Loadout") as null|anything in loadouts_available
+					if(loadout_input)
+						if(loadout_input == "None")
+							loadout = null
+							to_chat(user, "Who needs stuff anyway?")
+						else
+							loadout = loadouts_available[loadout_input]
+							to_chat(user, "<font color='yellow'><b>[loadout.name]</b></font>")
+							if(loadout.desc)
+								to_chat(user, "[loadout.desc]")
 				if("species")
 
 					var/list/crap = list()

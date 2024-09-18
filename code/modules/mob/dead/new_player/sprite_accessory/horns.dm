@@ -110,6 +110,10 @@
 	name = "Lifted Horns"
 	icon_state = "lifted"
 
+/datum/sprite_accessory/horns/sideswept
+	name = "Side Swept Horns"
+	icon_state = "sideswept"
+
 /datum/sprite_accessory/horns/bigcurlyhorns
 	name = "Big Curly Horns"
 	icon_state = "bigcurly"

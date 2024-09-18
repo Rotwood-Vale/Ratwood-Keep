@@ -17,7 +17,7 @@
 
 /obj/item/clothing/cloak/tabard
 	name = "tabard"
-	desc = "A hooded vest meant for knights."
+	desc = "A long vest meant for knights."
 	color = null
 	icon_state = "tabard"
 	item_state = "tabard"
@@ -867,7 +867,7 @@
 	slot_flags = ITEM_SLOT_BACK_R|ITEM_SLOT_CLOAK
 
 /obj/item/clothing/cloak/cape/knight
-	color = CLOTHING_PURPLE
+	color = CLOTHING_WHITE
 
 /obj/item/clothing/cloak/cape/guard
 	color = CLOTHING_AZURE
@@ -997,10 +997,18 @@
 /obj/item/clothing/cloak/half/orange
 	color = CLOTHING_ORANGE
 
+/obj/item/clothing/cloak/half/rider
+	name = "rider cloak"
+	icon_state = "guardcloak"
+	color = CLOTHING_AZURE
+	allowed_sex = list(MALE, FEMALE)
+	allowed_race = NON_DWARVEN_RACE_TYPES
+	inhand_mod = FALSE
+
 /obj/item/clothing/cloak/half/vet
 	name = "town watch cloak"
 	icon_state = "guardcloak"
-	color = CLOTHING_RED
+	color = CLOTHING_AZURE
 	allowed_sex = list(MALE, FEMALE)
 	allowed_race = NON_DWARVEN_RACE_TYPES
 	inhand_mod = FALSE
