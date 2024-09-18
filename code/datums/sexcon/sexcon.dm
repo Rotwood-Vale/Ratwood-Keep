@@ -230,18 +230,20 @@
 	{
 		milk_amount = milk_amount + 10
 	}
-	if(breasts.last_milked < world.time - 10 MINUTES)
+	if(breasts.last_milked <= world.time)
 	{
 		log_combat(user, user, "Was milked into a container")
 		user.visible_message(span_lovebold("[user] lactates into [C]!"))
 		playsound(user, 'sound/misc/mat/endout.ogg', 50, TRUE, ignore_walls = FALSE)
 		C.reagents.add_reagent(/datum/reagent/consumable/milk, milk_amount)
 		breasts.last_milked = world.time
-		after_ejaculation()
+		after_milking()
 	}
 	else
 	{
-		user.visible_message(span_bad("Nothing comes out, perhaps its too early!"))
+		milk_amount *= (last_milked - world.time)/10 MINUTES
+		breasts.last_milked = world.time
+		after_milking()
 	}
 
 /datum/sex_controller/proc/after_ejaculation()
@@ -251,6 +253,11 @@
 	user.playsound_local(user, 'sound/misc/mat/end.ogg', 100)
 	last_ejaculation_time = world.time
 	SSticker.cums++
+
+/datum/sex_controller/proc/after_milking()
+	set_arousal(40)
+	user.emote("sexmoanhvy", forced = TRUE)
+	user.playsound_local(user, 'sound/misc/mat/end.ogg', 100)
 
 /datum/sex_controller/proc/after_intimate_climax()
 	if(user == target)
