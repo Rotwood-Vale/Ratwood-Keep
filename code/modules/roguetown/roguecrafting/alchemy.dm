@@ -83,13 +83,13 @@
 /datum/crafting_recipe/roguetown/alchemy/distill
 	name = "distill water"
 	result = list(/obj/item/reagent_containers/glass/bottle/rogue/water = 1)
-	reqs = list(/obj/item/reagent_containers/glass/bottle = 1, /datum/reagent/water/gross = 45)
+	reqs = list(/obj/item/reagent_containers/glass/bottle = 1, /datum/reagent/water/gross = 48)
 	craftdiff = 1
 
 /datum/crafting_recipe/roguetown/alchemy/w2w
 	name = "transmute water to wine"
 	result = list(/obj/item/reagent_containers/glass/bottle/rogue/wine = 1)
-	reqs = list(/obj/item/reagent_containers/glass/bottle = 1, /datum/reagent/water = 45)
+	reqs = list(/obj/item/reagent_containers/glass/bottle = 1, /datum/reagent/water = 48)
 	craftdiff = 3 //WHO THE FUCK THOUGHT SETTING THIS AT 2 WAS A GOOD IDEA? MAKE IT MAKE SENSE.
 
 /datum/crafting_recipe/roguetown/alchemy/g2wes

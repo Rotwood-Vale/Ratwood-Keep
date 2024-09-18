@@ -7,7 +7,7 @@
 	icon_state = "clear_bottle1"
 	amount_per_transfer_from_this = 6
 	possible_transfer_amounts = list(6)
-	volume = 45
+	volume = 48
 	fill_icon_thresholds = list(0, 25, 50, 75, 100)
 	dropshrink = 0.5
 	slot_flags = ITEM_SLOT_HIP|ITEM_SLOT_MOUTH
