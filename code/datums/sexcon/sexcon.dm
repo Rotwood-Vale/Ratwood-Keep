@@ -207,6 +207,8 @@
 	set_charge(charge + amount)
 
 /datum/sex_controller/proc/handle_charge(dt)
+	if(user.has_flaw(/datum/charflaw/addiction/lovefiend))
+		dt *= 2
 	adjust_charge(dt * CHARGE_RECHARGE_RATE)
 	if(is_spent())
 		if(arousal > 60)

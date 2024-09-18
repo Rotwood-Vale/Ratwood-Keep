@@ -79,7 +79,8 @@
 				user.visible_message("<span class='warning'>[user] casts a line!</span>", \
 									"<span class='notice'>I cast a line.</span>")
 				playsound(src.loc, 'sound/items/fishing_plouf.ogg', 100, TRUE)
-				ft -= (sl * 20) //Instant at legendary, every skill lvl is -2 seconds
+				ft -= (sl * 20) //every skill lvl is -2 seconds
+				ft = max(20,ft) //min of 2 seconds
 				if(do_after(user,ft, target = target))
 					if(baited)
 						var/bp = baited.baitpenalty // Penalty to fishing chance based on how good bait is. Lower is better.

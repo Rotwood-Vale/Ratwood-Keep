@@ -10,7 +10,7 @@
 */
 	var/PQ_boost_divider = 0
 
-/* 
+/*
 	This list is organized like so
 	class_cat_alloc_attempts = list(CTAG_PILGRIM = 5, CTAG_ADVENTURER = 3, etc)
 	Wherein you will have this datum attempt to roll you up 5 pilgrim category classes, and 3 adventurer class categories
@@ -20,7 +20,7 @@
 	// Whether we bypass reqs on class cat alloc attempts
 	var/class_cat_alloc_bypass_reqs = FALSE
 
-/* 
+/*
 	This list is organized exactly like the class_cat_alloc_attempts the numbers dictate how many plusboosts we give to the category
 	class_cat_alloc_attempts = list(CTAG_PILGRIM = 3, CTAG_ADVENTURER = 2, etc)
 	If you put a number in, it will attempt to allocate it to the cat
@@ -79,7 +79,7 @@
 /datum/class_select_handler/Destroy()
 	ForceCloseMenus() // force menus closed
 	// Cleanup anything holding references, aka these lists holding refs to class datums and the other two
-	linked_client = null 
+	linked_client = null
 	cur_picked_class = null
 	class_cat_alloc_attempts = null
 	forced_class_additions = null
@@ -124,7 +124,7 @@
 				if(attempts > local_insert_sortlist.len)
 					attempts = local_insert_sortlist.len
 
-				local_insert_sortlist = shuffle(local_insert_sortlist)
+				local_insert_sortlist = sortList(local_insert_sortlist)
 				for(var/i in 1 to attempts)
 					rolled_classes[local_insert_sortlist[i]] = 0
 
@@ -197,7 +197,7 @@
 
 	if(possible_list.len)
 		rolled_classes[pick(possible_list)] = 0
-	
+
 	if(cur_picked_class == filled_class)
 		if(special_session_queue && cur_picked_class in special_session_queue)
 			special_selected = FALSE
@@ -251,7 +251,7 @@
 
 	//Buttondiv Segment
 	data += "<div class='footer'>"
-	data += {"	
+	data += {"
 		<a class='mo_bottom_buttons' href='?src=\ref[src];show_challenge_class=1'>[showing_challenge_classes ? "Hide Challenge Classes" : "Show Challenge Classes"]</a>
 	</div>
 	"}
@@ -309,7 +309,7 @@
 
 		// Safety check. Make sure the thing that got rammed into the href is actually in the rolled list
 		// Unless its a challenge class then everyone can jus see it via a click of the button anyways
-		if(locvar_check in rolled_classes) 
+		if(locvar_check in rolled_classes)
 			plus_power = rolled_classes[locvar_check]	// Get the plus power too
 			cur_picked_class = locvar_check
 			class_select_slop()

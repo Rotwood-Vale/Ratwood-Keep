@@ -24,8 +24,6 @@ GLOBAL_LIST_INIT(ghost_verbs, list(
 	switch(alert("Descend to the Underworld?",,"Yes","No"))
 		if("Yes")
 			if(istype(mob, /mob/living/carbon/spirit))
-				//HONEYPOT CODE, REMOVE LATER
-				message_admins("RETARDED MOTHERFUCKER [key] IS TRYING TO CRASH THE SERVER BY SPAWNING 3 GORILLION SPIRITS!")
 				return
 
 			if(istype(mob, /mob/living/carbon/human))

@@ -13,7 +13,7 @@
 		"They deserve to be put at my blade.",
 		"Do what thou wilt shall be the whole of the law.",
 	)
-	rogue_enabled = TRUE
+	rogue_enabled = FALSE
 	/// Traits we apply to the owner
 	var/static/list/applied_traits = list(
 		TRAIT_CRITICAL_RESISTANCE,
@@ -72,8 +72,6 @@
 	var/triumphed = FALSE
 	/// Wonders we have made
 	var/list/wonders_made = list()
-	/// Hallucinations screen object
-	var/atom/movable/screen/fullscreen/maniac/hallucinations
 
 /datum/antagonist/maniac/New()
 	set_keys()
@@ -107,7 +105,6 @@
 			dreamer.STAEND = 20
 		for(var/trait in applied_traits)
 			ADD_TRAIT(owner.current, trait, "[type]")
-		hallucinations = owner.current.overlay_fullscreen("maniac", /atom/movable/screen/fullscreen/maniac)
 	LAZYINITLIST(owner.learned_recipes)
 	owner.learned_recipes |= recipe_progression[1]
 	forge_villain_objectives()
@@ -136,7 +133,6 @@
 	wonders_made = null
 	owner.learned_recipes -= recipe_progression
 	owner.special_role = null
-	hallucinations = null
 	return ..()
 
 /datum/antagonist/maniac/proc/set_keys()

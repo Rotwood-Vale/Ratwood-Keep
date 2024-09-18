@@ -17,7 +17,7 @@
 
 /obj/item/clothing/cloak/tabard
 	name = "tabard"
-	desc = "A hooded vest meant for knights."
+	desc = "A long vest meant for knights."
 	color = null
 	icon_state = "tabard"
 	item_state = "tabard"
@@ -106,8 +106,7 @@
 	..()
 	if(GLOB.lordprimary)
 		lordcolor(GLOB.lordprimary,GLOB.lordsecondary)
-	else
-		GLOB.lordcolor += src
+	GLOB.lordcolor += src
 
 /obj/item/clothing/cloak/tabard/knight/Destroy()
 	GLOB.lordcolor -= src
@@ -230,9 +229,9 @@
 
 /obj/item/clothing/cloak/tabard/knight/guard
 	desc = "A tabard with the lord's heraldic colors."
-	color = CLOTHING_RED
+	color = CLOTHING_AZURE
 	detail_tag = "_spl"
-	detail_color = CLOTHING_PURPLE
+	detail_color = CLOTHING_WHITE
 
 /obj/item/clothing/cloak/tabard/knight/guard/attack_right(mob/user)
 	if(picked)
@@ -269,8 +268,7 @@
 	..()
 	if(GLOB.lordprimary)
 		lordcolor(GLOB.lordprimary,GLOB.lordsecondary)
-	else
-		GLOB.lordcolor += src
+	GLOB.lordcolor += src
 
 /obj/item/clothing/cloak/tabard/knight/guard/update_icon()
 	cut_overlays()
@@ -361,9 +359,9 @@
 /obj/item/clothing/cloak/stabard/guard
 	name = "guard tabard"
 	desc = "A tabard with the lord's heraldic colors."
-	color = CLOTHING_RED
+	color = CLOTHING_AZURE
 	detail_tag = "_spl"
-	detail_color = CLOTHING_PURPLE
+	detail_color = CLOTHING_WHITE
 
 /obj/item/clothing/cloak/stabard/guard/attack_right(mob/user)
 	if(picked)
@@ -400,8 +398,7 @@
 	..()
 	if(GLOB.lordprimary)
 		lordcolor(GLOB.lordprimary,GLOB.lordsecondary)
-	else
-		GLOB.lordcolor += src
+	GLOB.lordcolor += src
 
 /obj/item/clothing/cloak/stabard/guard/update_icon()
 	cut_overlays()
@@ -525,9 +522,9 @@
 
 /obj/item/clothing/cloak/stabard/surcoat/guard
 	desc = "A surcoat with the lord's heraldic colors."
-	color = CLOTHING_RED
+	color = CLOTHING_AZURE
 	detail_tag = "_quad"
-	detail_color = CLOTHING_PURPLE
+	detail_color = CLOTHING_WHITE
 
 /obj/item/clothing/cloak/stabard/surcoat/guard/attack_right(mob/user)
 	if(picked)
@@ -564,8 +561,7 @@
 	..()
 	if(GLOB.lordprimary)
 		lordcolor(GLOB.lordprimary,GLOB.lordsecondary)
-	else
-		GLOB.lordcolor += src
+	GLOB.lordcolor += src
 
 /obj/item/clothing/cloak/stabard/surcoat/guard/lordcolor(primary,secondary)
 	color = primary
@@ -595,7 +591,7 @@
 //	allowed_sex = list(MALE)
 	allowed_race = NON_DWARVEN_RACE_TYPES
 	detail_tag = "_det"
-	detail_color = CLOTHING_PURPLE
+	detail_color = CLOTHING_AZURE
 
 /obj/item/clothing/cloak/lordcloak/update_icon()
 	cut_overlays()
@@ -617,8 +613,7 @@
 	..()
 	if(GLOB.lordprimary)
 		lordcolor(GLOB.lordprimary,GLOB.lordsecondary)
-	else
-		GLOB.lordcolor += src
+	GLOB.lordcolor += src
 
 /obj/item/clothing/cloak/lordcloak/Destroy()
 	GLOB.lordcolor -= src
@@ -872,17 +867,17 @@
 	slot_flags = ITEM_SLOT_BACK_R|ITEM_SLOT_CLOAK
 
 /obj/item/clothing/cloak/cape/knight
-	color = CLOTHING_PURPLE
+	color = CLOTHING_WHITE
 
 /obj/item/clothing/cloak/cape/guard
-	color = CLOTHING_RED
+	color = CLOTHING_AZURE
 
 /obj/item/clothing/cloak/cape/guard/Initialize()
 	. = ..()
 	if(GLOB.lordprimary)
 		lordcolor(GLOB.lordprimary,GLOB.lordsecondary)
-	else
-		GLOB.lordcolor += src
+	GLOB.lordcolor += src
+
 /obj/item/clothing/cloak/cape/guard/lordcolor(primary,secondary)
 	color = secondary
 	update_icon()
@@ -1002,10 +997,18 @@
 /obj/item/clothing/cloak/half/orange
 	color = CLOTHING_ORANGE
 
+/obj/item/clothing/cloak/half/rider
+	name = "rider cloak"
+	icon_state = "guardcloak"
+	color = CLOTHING_AZURE
+	allowed_sex = list(MALE, FEMALE)
+	allowed_race = NON_DWARVEN_RACE_TYPES
+	inhand_mod = FALSE
+
 /obj/item/clothing/cloak/half/vet
 	name = "town watch cloak"
 	icon_state = "guardcloak"
-	color = CLOTHING_RED
+	color = CLOTHING_AZURE
 	allowed_sex = list(MALE, FEMALE)
 	allowed_race = NON_DWARVEN_RACE_TYPES
 	inhand_mod = FALSE
@@ -1014,8 +1017,7 @@
 	..()
 	if(GLOB.lordprimary)
 		lordcolor(GLOB.lordprimary,GLOB.lordsecondary)
-	else
-		GLOB.lordcolor += src
+	GLOB.lordcolor += src
 
 /obj/item/clothing/cloak/half/vet/Destroy()
 	GLOB.lordcolor -= src
@@ -1128,9 +1130,9 @@
 /obj/item/clothing/cloak/stabard/guardhood
 	name = "guard hood"
 	desc = "A hood with the lord's heraldic colors."
-	color = CLOTHING_RED
+	color = CLOTHING_AZURE
 	detail_tag = "_spl"
-	detail_color = CLOTHING_PURPLE
+	detail_color = CLOTHING_WHITE
 	icon_state = "guard_hood"
 	body_parts_covered = CHEST
 
@@ -1163,8 +1165,7 @@
 	..()
 	if(GLOB.lordprimary)
 		lordcolor(GLOB.lordprimary,GLOB.lordsecondary)
-	else
-		GLOB.lordcolor += src
+	GLOB.lordcolor += src
 
 /obj/item/clothing/cloak/stabard/guardhood/update_icon()
 	cut_overlays()

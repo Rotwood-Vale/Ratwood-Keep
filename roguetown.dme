@@ -3538,6 +3538,7 @@
 #include "modular\Neu_Food\code\raw\NeuFood_processed.dm"
 #include "modular\Neu_Food\code\raw\NeuFood_veggies.dm"
 #include "modular_azurepeak\_statpacks.dm"
+#include "modular_azurepeak\code\datums\loadout.dm"
 #include "modular_azurepeak\code\game\area\areas.dm"
 #include "modular_azurepeak\code\game\objects\items\mundanities.dm"
 #include "modular_azurepeak\code\game\objects\items\surgery_bag.dm"
