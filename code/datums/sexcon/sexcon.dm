@@ -241,7 +241,7 @@
 	}
 	else
 	{
-		milk_amount *= (last_milked - world.time)/10 MINUTES
+		milk_amount *= round((breasts.last_milked - world.time)/10 MINUTES, 1)
 		breasts.last_milked = world.time
 		after_milking()
 	}
