@@ -1,5 +1,7 @@
 /datum/sex_action/rimming
 	name = "Rim them"
+	check_incapacitated = FALSE
+	gags_user = TRUE
 
 /datum/sex_action/rimming/shows_on_menu(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(user == target)
@@ -16,6 +18,7 @@
 	return TRUE
 
 /datum/sex_action/rimming/on_start(mob/living/carbon/human/user, mob/living/carbon/human/target)
+	..()
 	if(HAS_TRAIT(target, TRAIT_TINY) && !(HAS_TRAIT(user, TRAIT_TINY))) //Size difference check, non-fairy on fairy will say this
 		user.visible_message(span_warning("[user] starts licking [target]'s entire butt..."))
 	else
@@ -34,6 +37,7 @@
 	target.sexcon.handle_passive_ejaculation()
 
 /datum/sex_action/rimming/on_finish(mob/living/carbon/human/user, mob/living/carbon/human/target)
+	..()
 	if(HAS_TRAIT(target, TRAIT_TINY) && !(HAS_TRAIT(user, TRAIT_TINY))) //Size difference check, non-fairy on fairy will say this
 		user.visible_message(span_warning("[user] stops licking [target]'s butt ..."))
 	else

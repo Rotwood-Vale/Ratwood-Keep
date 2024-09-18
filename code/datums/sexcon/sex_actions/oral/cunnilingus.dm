@@ -1,5 +1,7 @@
 /datum/sex_action/cunnilingus
 	name = "Suck their cunt off"
+	check_incapacitated = FALSE
+	gags_user = TRUE
 
 /datum/sex_action/cunnilingus/shows_on_menu(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(user == target)
@@ -20,6 +22,7 @@
 	return TRUE
 
 /datum/sex_action/cunnilingus/on_start(mob/living/carbon/human/user, mob/living/carbon/human/target)
+	..()
 	if(HAS_TRAIT(target, TRAIT_TINY) && !(HAS_TRAIT(user, TRAIT_TINY))) //Size difference check, non-fairy on fairy will say this
 		//Entire groin area being covered due to size
 		user.visible_message(span_warning("[user] starts licking [target]'s entire groin..."))
@@ -42,6 +45,7 @@
 		target.sexcon.cum_into()
 
 /datum/sex_action/cunnilingus/on_finish(mob/living/carbon/human/user, mob/living/carbon/human/target)
+	..()
 	if(HAS_TRAIT(target, TRAIT_TINY) && !(HAS_TRAIT(user, TRAIT_TINY))) //Size difference check, non-fairy on fairy will say this
 		//Entire groin area being covered due to size
 		user.visible_message(span_warning("[user] stops licking [target]'s groin..."))

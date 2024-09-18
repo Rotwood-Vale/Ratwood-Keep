@@ -50,6 +50,17 @@
 
 ////////////////////
 
+/datum/status_effect/debuff/moondust_crash
+	id = "moondust_crash"
+	alert_type = /atom/movable/screen/alert/status_effect/debuff/moondust_crash
+	effectedstats = list("speed" = -3, "endurance" = -3)
+	duration = 20 SECONDS
+
+/atom/movable/screen/alert/status_effect/debuff/moondust_crash
+	name = "Moondust Crash"
+	desc = "My body feels sluggish and strained."
+	icon_state = "muscles"
+
 
 /datum/status_effect/debuff/thirstyt1
 	id = "thirsty1"
@@ -208,6 +219,50 @@
 	name = "Insight"
 	desc = "With some sleep in a coffin I feel like I could become better."
 	icon_state = "sleepy"
+
+//Death debuff
+
+/datum/status_effect/debuff/death_weaken
+	id = "death_weaken"
+	alert_type = null
+	examine_text = span_notice("They appear not entirely whole, as if some part of them was left behind.")
+	effectedstats = list("strength" = -2, "perception" = -2, "intelligence" = -2, "constitution" = -2, "endurance" = -2, "speed" = -2)
+
+/// SURRENDERING DEBUFFS
+
+/datum/status_effect/debuff/breedable
+	id = "breedable"
+	alert_type = /atom/movable/screen/alert/status_effect/debuff/breedable
+	duration = 30 SECONDS
+
+/datum/status_effect/debuff/breedable/on_apply()
+	. = ..()
+	ADD_TRAIT(owner, TRAIT_CRITICAL_RESISTANCE, id)
+
+/datum/status_effect/debuff/breedable/on_remove()
+	. = ..()
+	REMOVE_TRAIT(owner, TRAIT_CRITICAL_RESISTANCE, id)
+
+/atom/movable/screen/alert/status_effect/debuff/breedable
+	name = "Breedable"
+
+/datum/status_effect/debuff/submissive
+	id = "submissive"
+	alert_type = /atom/movable/screen/alert/status_effect/debuff/submissive
+	duration = 60 SECONDS
+
+/datum/status_effect/debuff/submissive/on_apply()
+	. = ..()
+	owner.add_movespeed_modifier("SUBMISSIVE", multiplicative_slowdown = 4)
+
+/datum/status_effect/debuff/submissive/on_remove()
+	. = ..()
+	owner.remove_movespeed_modifier("SUBMISSIVE")
+
+/atom/movable/screen/alert/status_effect/debuff/submissive
+	name = "Submissive"
+
+/// SEELIE DEBUFFS
 
 /datum/status_effect/buff/seelie/sad
 	id = "Seelie Curse"

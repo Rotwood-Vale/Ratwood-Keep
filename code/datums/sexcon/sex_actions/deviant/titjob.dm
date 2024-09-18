@@ -24,6 +24,7 @@
 	return TRUE
 
 /datum/sex_action/titjob/on_start(mob/living/carbon/human/user, mob/living/carbon/human/target)
+	..()
 	if(HAS_TRAIT(target, TRAIT_TINY) && !(HAS_TRAIT(user, TRAIT_TINY)))
 		user.visible_message(span_warning("[user] grabs [target] and starts rubbing their body against his cock!"))
 	else
@@ -41,6 +42,7 @@
 	user.sexcon.handle_passive_ejaculation()
 
 /datum/sex_action/titjob/on_finish(mob/living/carbon/human/user, mob/living/carbon/human/target)
+	..()
 	if(HAS_TRAIT(target, TRAIT_TINY) && !(HAS_TRAIT(user, TRAIT_TINY)))
 		user.visible_message(span_warning("[user] pulls his cock away from [target]'s body."))
 	else

@@ -795,6 +795,7 @@
 	SEND_SIGNAL(src, COMSIG_LIVING_REVIVE, full_heal, admin_revive)
 	if(full_heal)
 		fully_heal(admin_revive = admin_revive)
+		remove_status_effect(/datum/status_effect/debuff/death_weaken)
 	if(stat == DEAD && (admin_revive || can_be_revived())) //in some cases you can't revive (e.g. no brain)
 		GLOB.dead_mob_list -= src
 		GLOB.alive_mob_list += src
@@ -1069,23 +1070,29 @@
 		else if(last_special <= world.time)
 			resist_restraints() //trying to remove cuffs.
 
-/mob/living/verb/submit()
+/mob/living/proc/submit(var/instant = FALSE)
 	set name = "Yield"
 	set category = "IC"
 	set hidden = 1
-	if(surrendering)
+	if(surrendering || stat)
 		return
-	if(stat)
-		return
+	if(!instant)
+		if(alert(src, "Do you yield?", "SURRENDER", "Yes", "No") == "No")
+			return
 	log_combat(src, null, "surrendered")
 	surrendering = 1
+	toggle_cmode()
 	changeNext_move(CLICK_CD_EXHAUSTED)
 	var/obj/effect/temp_visual/surrender/flaggy = new(src)
 	vis_contents += flaggy
-	Stun(150)
+	Stun(300)
+	Knockdown(300)
+	apply_status_effect(/datum/status_effect/debuff/breedable)
+	apply_status_effect(/datum/status_effect/debuff/submissive)
 	src.visible_message(span_notice("[src] yields!"))
 	playsound(src, 'sound/misc/surrender.ogg', 100, FALSE, -1, ignore_walls=TRUE)
-	addtimer(CALLBACK(src, PROC_REF(end_submit)), 150)
+	update_vision_cone()
+	addtimer(CALLBACK(src, PROC_REF(end_submit)), 600)
 
 /mob/living/proc/end_submit()
 	surrendering = 0
@@ -1118,26 +1125,27 @@
 	. = TRUE
 
 	var/wrestling_diff = 0
-	var/resist_chance = 60
+	var/resist_chance = 40
 	var/mob/living/L = pulledby
+	var/combat_modifier = 1
 
 	if(mind)
 		wrestling_diff += (mind.get_skill_level(/datum/skill/combat/wrestling)) //NPCs don't use this
 	if(L.mind)
 		wrestling_diff -= (L.mind.get_skill_level(/datum/skill/combat/wrestling))
-	
-	resist_chance += ((STASTR - L.STASTR) * 7)
-	
-	if(!(mobility_flags & MOBILITY_STAND))
-		resist_chance -= clamp(15 - (wrestling_diff * 4), 0, 15)
-	if(pulledby.grab_state >= GRAB_AGGRESSIVE)
-		resist_chance -= clamp(15 - (wrestling_diff * 4), 0, 15)
 
-	var/minimum_roll = 40
-	if(pulledby.grab_state >= GRAB_AGGRESSIVE || !(mobility_flags & MOBILITY_STAND))
-		minimum_roll = 25
+	if(restrained())
+		combat_modifier -= 0.25
 
-	resist_chance = max(resist_chance, minimum_roll)
+	if(!(L.mobility_flags & MOBILITY_STAND) && mobility_flags & MOBILITY_STAND)
+		combat_modifier += 0.2
+
+	if(cmode && !L.cmode)
+		combat_modifier += 0.3
+	else if(!cmode && L.cmode)
+		combat_modifier -= 0.3
+
+	resist_chance = clamp((((4 + (((STASTR - L.STASTR)/2) + wrestling_diff)) * 10 + rand(-5, 10)) * combat_modifier), 5, 95)
 
 	if(moving_resist && client) //we resisted by trying to move
 		client.move_delay = world.time + 20
@@ -1251,11 +1259,21 @@
 		to_chat(src, span_warning("Your hands pass right through \the [what]!"))
 		return
 
+	var/surrender_mod = 1
+
+	if(isliving(who))
+		var/mob/living/L = who
+		if(L.cmode && L.mobility_flags & MOBILITY_STAND)
+			to_chat(src, span_warning("I can't take \the [what] off, they are too tense!"))
+			return
+		if(L.surrendering)
+			surrender_mod = 0.5
+
 	who.visible_message(span_warning("[src] tries to remove [who]'s [what.name]."), \
 					span_danger("[src] tries to remove my [what.name]."), null, null, src)
 	to_chat(src, span_danger("I try to remove [who]'s [what.name]..."))
 	what.add_fingerprint(src)
-	if(do_mob(src, who, what.strip_delay))
+	if(do_mob(src, who, what.strip_delay * surrender_mod))
 		if(what && Adjacent(who))
 			if(islist(where))
 				var/list/L = where
@@ -1292,10 +1310,20 @@
 			to_chat(src, span_warning("\The [what.name] doesn't fit in that place!"))
 			return
 
+		var/surrender_mod = 1
+
+		if(isliving(who))
+			var/mob/living/L = who
+			if(L.cmode && L.mobility_flags & MOBILITY_STAND)
+				to_chat(src, span_warning("I can't put \the [what] on them, they are too tense!"))
+				return
+			if(L.surrendering)
+				surrender_mod = 0.5
+
 		who.visible_message(span_notice("[src] tries to put [what] on [who]."), \
 						span_notice("[src] tries to put [what] on you."), null, null, src)
 		to_chat(src, span_notice("I try to put [what] on [who]..."))
-		if(do_mob(src, who, what.equip_delay_other))
+		if(do_mob(src, who, what.equip_delay_other * surrender_mod))
 			if(what && Adjacent(who) && what.mob_can_equip(who, src, final_where, TRUE, TRUE))
 				if(temporarilyRemoveItemFromInventory(what))
 					if(where_list)
@@ -1638,7 +1666,7 @@
 	else
 		mobility_flags |= MOBILITY_PULL
 
-	var/canitem = !paralyzed && !stun && conscious && !chokehold && !restrained && has_arms
+	var/canitem = !paralyzed && !stun && conscious && !chokehold && !restrained && has_arms && !surrendering
 	if(canitem)
 		mobility_flags |= (MOBILITY_USE | MOBILITY_PICKUP | MOBILITY_STORAGE)
 	else
@@ -1660,7 +1688,7 @@
 	else
 		if(layer == LYING_MOB_LAYER)
 			layer = initial(layer)
-
+	update_cone_show()
 	update_transform()
 	lying_prev = lying
 
