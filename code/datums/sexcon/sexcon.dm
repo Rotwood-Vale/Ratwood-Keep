@@ -234,7 +234,7 @@
 	log_combat(user, user, "Was milked into a container")
 	user.visible_message(span_lovebold("[user] lactates into [C]!"))
 	playsound(user, 'sound/misc/mat/endout.ogg', 50, TRUE, ignore_walls = FALSE)
-	milk_amount = round((milk_amount * min((breasts.last_milked - world.time)/10 MINUTES, 1)), 1)
+	milk_amount = round((milk_amount * min((world.time - breasts.last_milked)/10 MINUTES, 1)), 1)
 	C.reagents.add_reagent(/datum/reagent/consumable/milk, milk_amount)
 	breasts.last_milked = world.time
 	after_milking()
