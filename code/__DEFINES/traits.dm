@@ -76,6 +76,22 @@
 #define TRAIT_LEPROSY "Leprosy"
 #define TRAIT_NUDE_SLEEPER "Nude Sleeper"
 
+// PATRON CURSE TRAITS
+#define TRAIT_CURSE "Curse" //source
+#define TRAIT_ATHEISM_CURSE "Curse of Atheism"
+#define TRAIT_PSYDON_CURSE "Psydon's Curse"
+#define TRAIT_ASTRATA_CURSE "Astrata's Curse"
+#define TRAIT_NOC_CURSE "Noc's Curse"
+#define TRAIT_RAVOX_CURSE "Ravox's Curse"
+#define TRAIT_NECRA_CURSE "Necra's Curse"
+#define TRAIT_XYLIX_CURSE "Xylix's Curse"
+#define TRAIT_PESTRA_CURSE "Pestra's Curse"
+#define TRAIT_EORA_CURSE "Eora's Curse"
+#define TRAIT_ZIZO_CURSE "Zizo's Curse"
+#define TRAIT_GRAGGAR_CURSE "Graggar's Curse"
+#define TRAIT_MATTHIOS_CURSE "Matthios' Curse"
+#define TRAIT_BAOTHA_CURSE "Baotha's Curse"
+
 GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_LEPROSY = span_necrosis("I'm a disgusting leper..."),
 	TRAIT_CHOSEN = "Astrata choose you to represent her glory.",

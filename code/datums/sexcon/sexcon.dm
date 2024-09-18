@@ -174,6 +174,12 @@
 /datum/sex_controller/proc/start(mob/living/carbon/human/new_target)
 	if(!ishuman(new_target))
 		return
+
+	if(HAS_TRAIT(user, TRAIT_EORA_CURSE))
+		to_chat(user, "<span class='warning'>The idea repulses me!</span>")
+		user.cursed_freak_out()
+		return FALSE
+
 	set_target(new_target)
 	show_ui()
 
