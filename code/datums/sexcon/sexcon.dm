@@ -211,7 +211,22 @@
 	log_combat(user, user, "Was milked into a container")
 	user.visible_message(span_lovebold("[user] lactates into [C]!"))
 	playsound(user, 'sound/misc/mat/endout.ogg', 50, TRUE, ignore_walls = FALSE)
-	C.reagents.add_reagent(/datum/reagent/consumable/milk, 15)
+
+	var/obj/item/organ/breasts/breasts = user.getorganslot(ORGAN_SLOT_BREASTS)
+	switch(breasts.breast_size)
+		if(0)
+			C.reagents.add_reagent(/datum/reagent/consumable/milk, 10)
+		if(1)
+			C.reagents.add_reagent(/datum/reagent/consumable/milk, 20)
+		if(2)
+			C.reagents.add_reagent(/datum/reagent/consumable/milk, 30)
+		if(3)
+			C.reagents.add_reagent(/datum/reagent/consumable/milk, 40)
+		if(4)
+			C.reagents.add_reagent(/datum/reagent/consumable/milk, 50)
+		if(5)
+			C.reagents.add_reagent(/datum/reagent/consumable/milk, 60)
+
 	after_ejaculation()
 
 /datum/sex_controller/proc/after_ejaculation()
