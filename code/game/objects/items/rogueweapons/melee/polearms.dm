@@ -231,6 +231,7 @@
 	name = "glaive"
 	desc = "A suprisingly effective amaganation of shortsword and spear. Best used with both hands on the pole."
 	icon_state = "glaive"
+	minstr = 8
 
 /datum/intent/spear/cut/halberd
 	damfactor = 0.9
