@@ -4636,6 +4636,10 @@
 /obj/structure/chair/bench,
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/outdoors/town/roofs)
+"ePM" = (
+/obj/structure/flora/ausbushes/ppflowers,
+/turf/open/floor/rogue/dirt/road,
+/area/rogue/outdoors/rtfield)
 "eQh" = (
 /obj/effect/decal/cobbleedge{
 	dir = 1;
@@ -8293,9 +8297,8 @@
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue/outdoors/town)
 "iVX" = (
-/obj/structure/mineral_door/wood/towner{
-	lockid = "farm";
-	name = "Farmhouse"
+/obj/structure/mineral_door/wood/deadbolt{
+	dir = 4
 	},
 /turf/open/floor/rogue/ruinedwood{
 	icon_state = "horzw"
@@ -10013,6 +10016,10 @@
 	icon_state = "horzw"
 	},
 /area/rogue/indoors/town/tavern)
+"kSP" = (
+/obj/structure/flora/ausbushes/ywflowers,
+/turf/open/floor/rogue/dirt/road,
+/area/rogue/outdoors/rtfield)
 "kTt" = (
 /obj/structure/closet/crate/chest{
 	lockid = "keep_armory"
@@ -11366,6 +11373,18 @@
 "mtn" = (
 /turf/open/floor/rogue/cobble,
 /area/rogue/indoors/town/shop)
+"mtt" = (
+/obj/structure/table/wood{
+	dir = 1;
+	icon_state = "tablewood1"
+	},
+/obj/item/candle/yellow/lit,
+/obj/item/natural/worms,
+/obj/item/natural/worms,
+/obj/item/fishingrod,
+/obj/item/rogueweapon/shovel/small,
+/turf/open/floor/rogue/ruinedwood/spiral,
+/area/rogue/indoors)
 "mtF" = (
 /obj/structure/stairs{
 	dir = 1
@@ -19788,6 +19807,10 @@
 	},
 /turf/closed/mineral/rogue,
 /area/rogue/indoors/shelter/mountains)
+"vYz" = (
+/obj/structure/flora/ausbushes/brflowers,
+/turf/open/floor/rogue/dirt/road,
+/area/rogue/outdoors/rtfield)
 "vYT" = (
 /turf/open/floor/rogue/rooftop{
 	icon_state = "roofg"
@@ -256942,7 +256965,7 @@ til
 ooJ
 ooJ
 lVe
-aIN
+mtt
 xou
 xou
 xou
@@ -264226,15 +264249,15 @@ qvR
 dfk
 uaL
 uaL
+ePM
 uaL
+ePM
+vYz
 uaL
-uaL
-uaL
-uaL
-uaL
+vYz
 fxx
-uaL
-uaL
+kSP
+kSP
 dfk
 vIa
 vIa
@@ -264626,17 +264649,17 @@ fxx
 qQZ
 qvR
 dfk
-uaL
-uaL
-uaL
-uaL
-uaL
-uaL
+vYz
+ePM
+vYz
+vYz
+ePM
+vYz
 uaL
 uaL
 fxx
-uaL
-uaL
+ePM
+kSP
 dfk
 vIa
 vIa
@@ -265028,12 +265051,12 @@ fxx
 uaL
 qvR
 dfk
+ePM
 uaL
 uaL
-uaL
-uaL
-uaL
-uaL
+ePM
+dWG
+ePM
 uaL
 vFU
 fxx
@@ -265833,16 +265856,16 @@ qvR
 qvR
 idt
 uaL
-uaL
-uaL
+vYz
+kSP
 vFU
 fxx
 uaL
 uaL
-uaL
-uaL
-uaL
-uaL
+ePM
+ePM
+kSP
+vYz
 dfk
 vIa
 vIa
@@ -266234,16 +266257,16 @@ fxx
 uaL
 wSn
 idt
+vYz
 uaL
-uaL
-uaL
-uaL
+ePM
+vYz
 fxx
 uaL
-uaL
-uaL
-uaL
-uaL
+vYz
+ePM
+vYz
+ePM
 uaL
 dfk
 vIa
@@ -266637,15 +266660,15 @@ uaL
 uaL
 iiB
 uaL
-uaL
-uaL
+ePM
+vYz
 uaL
 fxx
+ePM
+ePM
+vYz
 uaL
-uaL
-uaL
-uaL
-uaL
+vYz
 uaL
 iiB
 vIa
