@@ -1,3 +1,5 @@
+/obj/item/reagent_containers/glass/bottle/rogue
+	w_class = WEIGHT_CLASS_SMALL
 
 /obj/item/reagent_containers/glass/bottle/rogue/healthpot
 	list_reagents = list(/datum/reagent/medicine/healthpot = 45)

@@ -78,10 +78,6 @@
 					cloak = /obj/item/clothing/cloak/tabard/crusader/pestra
 				if("Noc")
 					cloak = /obj/item/clothing/cloak/tabard/crusader/noc
-			if(prob(30))
-				backr = /obj/item/rogueweapon/sword
-			else
-				backr = /obj/item/rogueweapon/sword/long
 			if(H.age == AGE_OLD)
 				beltr = /obj/item/clothing/head/roguetown/helmet/heavy/bucket/gold
 				head = /obj/item/clothing/neck/roguetown/chaincoif
@@ -89,6 +85,7 @@
 				head = /obj/item/clothing/neck/roguetown/chaincoif
 			else
 				head = /obj/item/clothing/head/roguetown/helmet
+			backr = /obj/item/rogueweapon/sword/iron
 			backl = /obj/item/storage/backpack/rogue/satchel
 		if("Battle Master")
 			H.set_blindness(0)

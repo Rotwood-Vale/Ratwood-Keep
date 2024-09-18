@@ -130,8 +130,7 @@
 		/obj/item/reagent_containers/food/snacks/rogue/onionslice = 2,
 		/obj/item/reagent_containers/food/snacks/rogue/meat/mince = 1
 		)
-	tools = list(/obj/item/rogueweapon/huntingknife)
-	result = /obj/item/reagent_containers/food/snacks/rogue/meat/koboldtail
+	result = /obj/item/reagent_containers/food/snacks/rogue/meat/pate
 	craftdiff = 2
 	subtype_reqs = TRUE
 	req_table = TRUE
