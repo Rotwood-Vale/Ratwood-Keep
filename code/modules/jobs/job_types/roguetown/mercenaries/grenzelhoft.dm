@@ -38,15 +38,21 @@
 	pants = /obj/item/clothing/under/roguetown/grenzelpants
 	shoes = /obj/item/clothing/shoes/roguetown/grenzelhoft
 	gloves = /obj/item/clothing/gloves/roguetown/grenzelgloves
+	backl = /obj/item/storage/backpack/rogue/satchel
 
 	backpack_contents = list(/obj/item/roguekey/mercenary)
 
 	//quick and gay way to do random loadouts
-	var/equipment = rand(1, 2)
+	var/equipment = rand(1, 3)
 	if(equipment == 1)
 		r_hand = /obj/item/rogueweapon/spear/billhook
+		H.mind.adjust_skillrank(/datum/skill/combat/polearms, 1, TRUE)
 	else if (equipment == 2)
 		r_hand = /obj/item/rogueweapon/halberd
+		H.mind.adjust_skillrank(/datum/skill/combat/polearms, 1, TRUE)
+	else if (equipment == 3)
+		r_hand = /obj/item/rogueweapon/greatsword/zwei
+		H.mind.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE)
 
 	//Humie grenzelhofts are always set to be, well, grenzelhoft
 	if(ishumannorthern(H))
@@ -63,7 +69,7 @@
 		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/swords, 3, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/combat/polearms, 4, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/polearms, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/whipsflails, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)

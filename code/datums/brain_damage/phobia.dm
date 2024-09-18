@@ -207,3 +207,7 @@
 /datum/brain_trauma/mild/phobia/conspiracies
 	phobia_type = "conspiracies"
 	random_gain = FALSE
+
+/datum/brain_trauma/mild/phobia/religion
+	phobia_type = "religion"
+	random_gain = FALSE

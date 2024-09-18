@@ -209,6 +209,8 @@
 	desc = "With some sleep in a coffin I feel like I could become better."
 	icon_state = "sleepy"
 
+/// SURRENDERING DEBUFFS
+
 /datum/status_effect/debuff/breedable
 	id = "breedable"
 	alert_type = /atom/movable/screen/alert/status_effect/debuff/breedable
@@ -240,3 +242,27 @@
 
 /atom/movable/screen/alert/status_effect/debuff/submissive
 	name = "Submissive"
+
+/// SEELIE DEBUFFS
+
+/datum/status_effect/buff/seelie/sad
+	id = "Seelie Curse"
+	alert_type = /atom/movable/screen/alert/status_effect/buff/seelie/sad
+	effectedstats = list("fortune" = -2)
+	duration = 60 SECONDS
+
+/atom/movable/screen/alert/status_effect/buff/seelie/sad
+	name = "Seelie Curse"
+	desc = "A nearby Seelie has spread their poor mood unto me."
+	icon_state = "stressb"
+
+/datum/status_effect/debuff/seelie_wing_curse
+	id = "seelie_wing_curse"
+	alert_type = /atom/movable/screen/alert/status_effect/debuff/seelie_wing_curse
+	effectedstats = list("fortune" = -2)
+	duration = 4 MINUTES
+
+/atom/movable/screen/alert/status_effect/debuff/seelie_wing_curse
+	name = "Curse of the Seelie"
+	desc = "I've been cursed for my horrific deed..."
+	icon_state = "stressb"

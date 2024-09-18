@@ -1,5 +1,7 @@
 /datum/sex_action/facesitting
 	name = "Sit on their face"
+	check_incapacitated = FALSE
+	gags_target = TRUE
 
 /datum/sex_action/facesitting/shows_on_menu(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(user == target)
@@ -22,6 +24,7 @@
 	return TRUE
 
 /datum/sex_action/facesitting/on_start(mob/living/carbon/human/user, mob/living/carbon/human/target)
+	..()
 	user.visible_message(span_warning("[user] sits their butt on [target]'s face!"))
 
 /datum/sex_action/facesitting/on_perform(mob/living/carbon/human/user, mob/living/carbon/human/target)
@@ -39,6 +42,7 @@
 	target.sexcon.handle_passive_ejaculation()
 
 /datum/sex_action/facesitting/on_finish(mob/living/carbon/human/user, mob/living/carbon/human/target)
+	..()
 	user.visible_message(span_warning("[user] gets off [target]'s face."))
 
 /datum/sex_action/facesitting/is_finished(mob/living/carbon/human/user, mob/living/carbon/human/target)

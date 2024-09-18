@@ -50,6 +50,7 @@
 	var/species_icon = ""
 
 	var/animal_origin = null //for nonhuman bodypart (e.g. monkey)
+	var/prosthetic_prefix = "pr" // for unique prosthetic icons on mob
 	var/dismemberable = 1 //whether it can be dismembered with a weapon.
 	var/disableable = 1
 
@@ -84,6 +85,7 @@
 	var/skeletonized = FALSE
 
 	var/fingers = TRUE
+	var/organ_slowdown = 0 // Its here because this is first shared definition between two leg organ paths
 
 	/// Visaul markings to be rendered alongside the bodypart
 	var/list/markings
@@ -570,15 +572,14 @@
 			if(!hideaux)
 				aux = image(limb.icon, "[aux_zone][skel]", -aux_layer, image_dir)
 				. += aux
-
 	else
 		limb.icon = species_icon
-		limb.icon_state = "pr_[body_zone]"
+		limb.icon_state = "[prosthetic_prefix]_[body_zone]"
 		if(aux_zone)
 			if(!hideaux)
-				aux = image(limb.icon, "pr_[aux_zone]", -aux_layer, image_dir)
+				//Prosthetic arms do not have additional hand icons on them, because of this they do not render above clothing, this is why aux image uses body_zone var instead of aux_zone//
+				aux = image(limb.icon, "[prosthetic_prefix]_[body_zone]", -aux_layer, image_dir)
 				. += aux
-
 
 	var/override_color = null
 	if(rotted)
@@ -591,7 +592,7 @@
 			limb.color = "#[draw_color]"
 			if(aux_zone && !hideaux)
 				aux.color = "#[draw_color]"
-	
+
 	var/draw_organ_features = TRUE
 	var/draw_bodypart_features = TRUE
 	if(owner && owner.dna)
@@ -600,13 +601,13 @@
 			draw_organ_features = FALSE
 		if(NO_BODYPART_FEATURES in owner_species.species_traits)
 			draw_bodypart_features = FALSE
-	
+
 	// Markings overlays
 	if(!skeletonized)
 		var/list/marking_overlays = get_markings_overlays(override_color)
 		if(marking_overlays)
 			. += marking_overlays
-	
+
 	// Organ overlays
 	if(!rotted && !skeletonized && draw_organ_features)
 		for(var/obj/item/organ/organ as anything in get_organs())
@@ -615,7 +616,7 @@
 			var/mutable_appearance/organ_appearance = organ.get_bodypart_overlay(src)
 			if(organ_appearance)
 				. += organ_appearance
-	
+
 	// Feature overlays
 	if(!skeletonized && draw_bodypart_features)
 		for(var/datum/bodypart_feature/feature as anything in bodypart_features)
