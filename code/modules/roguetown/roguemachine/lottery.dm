@@ -9,9 +9,12 @@
 	var/gamblingprob = 0
 	var/diceroll = 100
 	var/maxtithing = 100
+	var/stopgambling = 0
 
 
-/obj/structure/roguemachine/lottery_roguetown/attack_hand(mob/living/user, obj/item/P)
+//attack_hand
+
+/obj/structure/roguemachine/lottery_roguetown/attackby(mob/living/user, obj/item/P)
 
 	. = ..()
 
@@ -53,6 +56,7 @@
 	. = ..()
 	if(!ishuman(user))
 		return
+	else
 		if(gamblingprice <= 0)
 			say("Poor thing, you are coinless.")
 			return
