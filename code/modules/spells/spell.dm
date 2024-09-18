@@ -18,6 +18,7 @@
 	var/releasedrain = 0
 	var/chargedrain = 0
 	var/chargetime = 0
+	var/vitaedrain = 0 //for vamp spells
 	var/warnie = "mobwarning"
 	var/list/charge_invocation
 	var/no_early_release = FALSE //we can't shoot off early
@@ -252,11 +253,11 @@ GLOBAL_LIST_INIT(spells, typesof(/obj/effect/proc_holder/spell)) //needed for th
 	if(!ignore_cockblock && HAS_TRAIT(user, TRAIT_SPELLCOCKBLOCK))
 		to_chat(user, span_warning("I can't cast spells!"))
 		return FALSE
-	
+
 	if(HAS_TRAIT(user, TRAIT_NOC_CURSE))
 		to_chat(user, span_warning("My magicka has left me..."))
 		return FALSE
-	
+
 	if(!antimagic_allowed)
 		var/antimagic = user.anti_magic_check(TRUE, FALSE, FALSE, 0, TRUE)
 		if(antimagic)
@@ -640,7 +641,7 @@ GLOBAL_LIST_INIT(spells, typesof(/obj/effect/proc_holder/spell)) //needed for th
 
 	if(user.stat && !stat_allowed)
 		return FALSE
-	
+
 	if(!ignore_cockblock && HAS_TRAIT(user, TRAIT_SPELLCOCKBLOCK))
 		return FALSE
 

@@ -186,7 +186,6 @@
 	wbalance = -2
 	smeltresult = /obj/item/ingot/iron
 	associated_skill = /datum/skill/combat/polearms
-	dropshrink = 0.6
 	blade_dulling = DULLING_BASHCHOP
 	wdefense = 1
 
