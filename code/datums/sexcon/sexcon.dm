@@ -213,20 +213,27 @@
 	playsound(user, 'sound/misc/mat/endout.ogg', 50, TRUE, ignore_walls = FALSE)
 
 	var/obj/item/organ/breasts/breasts = user.getorganslot(ORGAN_SLOT_BREASTS)
+	var milk_amount
 	switch(breasts.breast_size)
 		if(0)
-			C.reagents.add_reagent(/datum/reagent/consumable/milk, 5)
+			milk_amount = 5
 		if(1)
-			C.reagents.add_reagent(/datum/reagent/consumable/milk, 10)
+			milk_amount = 10
 		if(2)
-			C.reagents.add_reagent(/datum/reagent/consumable/milk, 15)
+			milk_amount = 15
 		if(3)
-			C.reagents.add_reagent(/datum/reagent/consumable/milk, 30)
+			milk_amount = 30
 		if(4)
-			C.reagents.add_reagent(/datum/reagent/consumable/milk, 35)
+			milk_amount = 35
 		if(5)
-			C.reagents.add_reagent(/datum/reagent/consumable/milk, 40)
-
+			milk_amount = 40
+			
+	var/obj/item/organ/vagina/vagina = user.getorganslot(ORGAN_SLOT_VAGINA)
+	if(vagina.pregnant)
+	{
+		milk_amount = milk_amount + 10
+	}
+	C.reagents.add_reagent(/datum/reagent/consumable/milk, milk_amount)
 	after_ejaculation()
 
 /datum/sex_controller/proc/after_ejaculation()
