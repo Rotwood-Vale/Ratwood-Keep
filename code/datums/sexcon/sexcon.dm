@@ -99,8 +99,8 @@
 	// Need to violate combat mode people - Include user to remove ZAPE
 	if(victim.cmode || user.cmode)
 		return TRUE
-	// Need to violate unconscious people to remove ZAPE
-	if(victim.stat)
+	// Need to violate unconscious people, or those surrendering to remove ZAPE
+	if(victim.stat || victim.surrendering)
 		return TRUE
 	return FALSE
 
