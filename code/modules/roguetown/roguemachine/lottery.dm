@@ -6,7 +6,7 @@
 	density = FALSE
 	pixel_y = 32
 	var/gamblingprice = 0
-	var/gamblingprob = 0
+	var/gamblingprob = 2
 	var/diceroll = 100
 	var/maxtithing = 100
 	var/stopgambling = 0
@@ -32,32 +32,34 @@
 			src.gamblingprice += (P.sellprice * P.quantity)
 			qdel(P)
 			src.say("Your current tithe is now [src.gamblingprice]. Care to spin?")
-			playsound(src, 'sound/misc/machinetalk.ogg', 100, FALSE, -1)
-			playsound(src, 'sound/misc/machineno.ogg', 100, FALSE, -1)
+			playsound(src, 'sound/misc/machinequestion.ogg', 100, FALSE, -1)
 			return
 
 
 /obj/structure/roguemachine/lottery_roguetown/MiddleClick(mob/living/user, params) //LET'S GO GAMBLING
 
-	if(src.stopgambling = 1)
+	if(src.stopgambling == 1)
 		return
 
 	else
 		src.diceroll = rand(1,100)
 		src.say(pick("Around and around I go, where I stop, only I know.", "Xylix smiles upon your idiocy, child.", "The wheel of fate spins, and spins.", "Oh, you poor fool.", "This is going to hurt for one of us.", "I laugh, you cry; I weep, you yell.", "I will be your fool; I'll perform for you...", "Let's go gambling!",))
 		playsound(src, 'sound/misc/machinetalk.ogg', 100, FALSE, -1)
+		playsound(src, 'sound/misc/letsgogambling.ogg', 100, FALSE, -1)
 		user.STALUC += src.gamblingprob
 		src.stopgambling = 1
 		sleep(50)
 		if(src.gamblingprob >= src.diceroll)
 			src.gamblingprice *= 2
 			src.say("Your peasant's tithe is now [src.gamblingprice]. Play again?")
+			playsound(src, 'sound/misc/machinetalk.ogg', 100, FALSE, -1)
 			src.stopgambling = 0
+			return
 		else
 			src.gamblingprice = 0
-			src.say(pick("TEN, WHEEL OF FORTUNE - inversed.", "The Castle. O, Omen!", "Your current tithe is zero. You've lost, by the way.", "Look into my eyes and whisper your woes.", "Aw, dangit.", "Fool. Poor fool. Your eyes leak out of your skull, drool falling from your lips."))
-
-		src.stopgambling = 0
+			src.say(pick("TEN, WHEEL OF FORTUNE - inversed.", "The Castle. O, Omen!", "Your current tithe is zero. You've lost, by the way.", "Look into my eyes and whisper your woes.", "Aw, dangit.", "Fool. Poor fool.", "Your eyes leak out of your skull, drool falling from your lips."))
+			playsound(src, 'sound/misc/bug.ogg', 100, FALSE, -1)
+			src.stopgambling = 0
 			return
 
 
@@ -87,7 +89,7 @@
 			mod = 10
 		if(selection == "SILVER")
 			mod = 5
-		var/coin_amt = input(user, "Moloch, you have [src.gamblingprice] mammon in tithes. You may withdraw [floor(gamblingprice/mod)] [selection] COINS.", src) as null|num
+		var/coin_amt = input(user, "Sayyid, you have [src.gamblingprice] mammon in tithes. You may withdraw [floor(gamblingprice/mod)] [selection] COINS.", src) as null|num
 		coin_amt = round(coin_amt)
 		if(coin_amt < 1)
 			return
