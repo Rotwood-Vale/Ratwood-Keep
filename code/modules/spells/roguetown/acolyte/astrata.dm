@@ -69,7 +69,7 @@
 		var/mob/living/target = targets[1]
 		if(target == user)
 			return FALSE
-		if(target.stat < DEAD)
+		if(target.stat < DEAD || target.has_status_effect(/datum/status_effect/debuff/death_weaken))
 			to_chat(user, span_warning("Nothing happens."))
 			return FALSE
 		if(HAS_TRAIT(target, TRAIT_NECRA_CURSE))
