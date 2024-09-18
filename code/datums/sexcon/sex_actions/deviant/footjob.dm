@@ -1,6 +1,7 @@
 /datum/sex_action/footjob
 	name = "Jerk them off with feet"
 	check_same_tile = FALSE
+	check_incapacitated = FALSE
 
 /datum/sex_action/footjob/shows_on_menu(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(user == target)
@@ -25,6 +26,7 @@
 	return TRUE
 
 /datum/sex_action/footjob/on_start(mob/living/carbon/human/user, mob/living/carbon/human/target)
+	..()
 	if(HAS_TRAIT(user, TRAIT_TINY) && !HAS_TRAIT(target, TRAIT_TINY))
 		user.visible_message(span_warning("[user] plants their tiny feet against [target]'s cock..."))
 	else
@@ -43,6 +45,7 @@
 	target.sexcon.handle_passive_ejaculation()
 
 /datum/sex_action/footjob/on_finish(mob/living/carbon/human/user, mob/living/carbon/human/target)
+	..()
 	if(HAS_TRAIT(user, TRAIT_TINY) && !HAS_TRAIT(target, TRAIT_TINY))
 		user.visible_message(span_warning("[user] stops rubbing their feet along [target]'s cock."))
 	else

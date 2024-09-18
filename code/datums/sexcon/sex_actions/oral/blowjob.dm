@@ -1,6 +1,8 @@
 /datum/sex_action/blowjob
 	name = "Suck them off"
 	check_same_tile = FALSE
+	check_incapacitated = FALSE
+	gags_user = TRUE
 
 /datum/sex_action/blowjob/shows_on_menu(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(user == target)
@@ -23,6 +25,7 @@
 	return TRUE
 
 /datum/sex_action/blowjob/on_start(mob/living/carbon/human/user, mob/living/carbon/human/target)
+	..()
 	if(HAS_TRAIT(user, TRAIT_TINY) && !(HAS_TRAIT(target, TRAIT_TINY)))
 		user.visible_message(span_warning("[user] starts licking [target]'s cock..."))	//Changed to licking due to fairy size
 	else
@@ -49,6 +52,7 @@
 			target.sexcon.cum_into()
 
 /datum/sex_action/blowjob/on_finish(mob/living/carbon/human/user, mob/living/carbon/human/target)
+	..()
 	if(HAS_TRAIT(user, TRAIT_TINY) && !(HAS_TRAIT(target, TRAIT_TINY)))
 		user.visible_message(span_warning("[user] stops licking [target]'s cock ..."))
 	else

@@ -1,5 +1,6 @@
 /datum/sex_action/toy_other_oral
 	name = "Use toy on their mouth"
+	gags_target = TRUE
 
 /datum/sex_action/toy_other_oral/shows_on_menu(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(user == target)
@@ -20,6 +21,7 @@
 	return TRUE
 
 /datum/sex_action/toy_other_oral/on_start(mob/living/carbon/human/user, mob/living/carbon/human/target)
+	..()
 	var/obj/item/dildo = get_dildo_in_either_hand(user)
 	user.visible_message(span_warning("[user] forces [target]'s to gobble on \the [dildo]..."))
 
@@ -29,6 +31,7 @@
 	target.make_sucking_noise()
 
 /datum/sex_action/toy_other_oral/on_finish(mob/living/carbon/human/user, mob/living/carbon/human/target)
+	..()
 	var/obj/item/dildo = get_dildo_in_either_hand(user)
 	user.visible_message(span_warning("[user] pulls \the [dildo] from [target]'s mouth."))
 
