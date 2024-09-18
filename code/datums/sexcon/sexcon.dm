@@ -222,11 +222,11 @@
 		if(2)
 			milk_amount = 15
 		if(3)
-			milk_amount = 30
+			milk_amount = 20
 		if(4)
-			milk_amount = 35
+			milk_amount = 25
 		if(5)
-			milk_amount = 40
+			milk_amount = 35
 			
 	var/obj/item/organ/vagina/vagina = user.getorganslot(ORGAN_SLOT_VAGINA)
 	if(vagina.pregnant)
