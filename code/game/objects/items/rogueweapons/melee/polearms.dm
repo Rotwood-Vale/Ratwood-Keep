@@ -65,7 +65,7 @@
 			if("onbelt")
 				return list("shrink" = 0.3,"sx" = -2,"sy" = -5,"nx" = 4,"ny" = -5,"wx" = 0,"wy" = -5,"ex" = 2,"ey" = -5,"nturn" = 0,"sturn" = 0,"wturn" = 0,"eturn" = 0,"nflip" = 0,"sflip" = 0,"wflip" = 0,"eflip" = 0,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0)
 
-/obj/item/rogueweapon/woodstaff/wise 
+/obj/item/rogueweapon/woodstaff/wise
 	name = "wise staff"
 	desc = "A staff for keeping the volfs at bay..."
 
@@ -222,6 +222,15 @@
 	anvilrepair = /datum/skill/craft/weaponsmithing
 	smeltresult = /obj/item/ingot/iron
 	max_blade_int = 200
+
+/obj/item/rogueweapon/halberd/glaive
+	force = 15
+	force_wielded = 26
+	possible_item_intents = list(/datum/intent/sword/thrust, SPEAR_BASH) //bash is for nonlethal takedowns, only targets limbs
+	gripped_intents = list(/datum/intent/sword/thrust/zwei, /datum/intent/sword/cut/zwei, /datum/intent/sword/chop, SPEAR_BASH)
+	name = "glaive"
+	desc = "A suprisingly effective amaganation of shortsword and spear. Best used with both hands on the pole."
+	icon_state = "glaive"
 
 /datum/intent/spear/cut/halberd
 	damfactor = 0.9

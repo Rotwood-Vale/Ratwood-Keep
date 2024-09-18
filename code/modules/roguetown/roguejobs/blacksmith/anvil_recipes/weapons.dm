@@ -278,6 +278,13 @@
 	created_item = /obj/item/rogueweapon/spear/billhook
 	i_type = "Weapons"
 
+/datum/anvil_recipe/weapons/billhook
+	name = "Glaive (+1 Small Log)"
+	req_bar = /obj/item/ingot/steel
+	additional_items = list(/obj/item/grown/log/tree/small)
+	created_item = /obj/item/rogueweapon/halberd/glaive
+	i_type = "Weapons"
+
 /datum/anvil_recipe/weapons/spear
 	name = "Spear (+1 Small Log)"
 	req_bar = /obj/item/ingot/iron
