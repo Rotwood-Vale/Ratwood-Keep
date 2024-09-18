@@ -267,6 +267,12 @@
 	created_item = /obj/item/clothing/mask/rogue/facemask/steel
 	i_type = "Armor"
 
+/datum/anvil_recipe/armor/platemask/steel/hound
+	name = "Mask (Hound)"
+	req_bar = /obj/item/ingot/steel
+	created_item = /obj/item/clothing/mask/rogue/facemask/steel/hound
+	i_type = "Armor"
+
 /datum/anvil_recipe/armor/astratahelm
 	name = "Astrata Helmet (+1 Steel)"
 	req_bar = /obj/item/ingot/steel
