@@ -600,13 +600,9 @@
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors)
 "aGs" = (
-/obj/structure/mineral_door/wood/donjon{
-	locked = 1;
-	lockid = "keep_dungeon_torture";
-	dir = 3
-	},
-/turf/open/floor/rogue/blocks,
-/area/rogue/under/town/basement)
+/obj/structure/roguemachine/bounty,
+/turf/open/floor/rogue/cobblerock,
+/area/rogue/outdoors/rtfield)
 "aGP" = (
 /obj/structure/table/wood{
 	icon_state = "longtable"
@@ -1563,8 +1559,8 @@
 "bLb" = (
 /obj/structure/bars/pipe{
 	dir = 1;
-	pixel_y = -17;
-	pixel_x = -14
+	pixel_x = -14;
+	pixel_y = -17
 	},
 /turf/open/transparent/openspace,
 /area/rogue/outdoors/town)
@@ -1808,8 +1804,8 @@
 /area/rogue/indoors)
 "cci" = (
 /obj/structure/mineral_door/bars{
-	lockid = "graveyard";
-	locked = 1
+	locked = 1;
+	lockid = "graveyard"
 	},
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/outdoors/town)
@@ -1861,8 +1857,8 @@
 	dir = 8
 	},
 /obj/effect/decal/cobbleedge{
-	icon_state = "borderfall";
-	dir = 4
+	dir = 4;
+	icon_state = "borderfall"
 	},
 /turf/open/floor/rogue/churchmarble,
 /area/rogue/indoors/town/church/chapel)
@@ -2070,8 +2066,8 @@
 /area/rogue/indoors)
 "cqU" = (
 /obj/effect/decal/cobbleedge{
-	icon_state = "borderfall";
-	dir = 1
+	dir = 1;
+	icon_state = "borderfall"
 	},
 /turf/open/floor/rogue/tile{
 	icon_state = "bfloorz"
@@ -2131,8 +2127,8 @@
 /area/rogue/indoors/town/manor)
 "cuL" = (
 /obj/structure/winch{
-	redstone_id = "villagenorth";
-	gid = "villagenorth"
+	gid = "villagenorth";
+	redstone_id = "villagenorth"
 	},
 /turf/open/floor/rogue/blocks,
 /area/rogue/indoors)
@@ -4561,8 +4557,8 @@
 /area/rogue/outdoors/town/roofs)
 "eQh" = (
 /obj/effect/decal/cobbleedge{
-	icon_state = "borderfall";
-	dir = 1
+	dir = 1;
+	icon_state = "borderfall"
 	},
 /turf/open/floor/rogue/blocks/stonered/tiny,
 /area/rogue/indoors/town/manor)
@@ -4879,8 +4875,8 @@
 /area/rogue/outdoors/beach)
 "fgP" = (
 /obj/structure/mineral_door/wood/window{
-	lockid = "velder";
-	locked = 1
+	locked = 1;
+	lockid = "velder"
 	},
 /turf/open/floor/rogue/tile,
 /area/rogue/indoors)
@@ -5407,8 +5403,8 @@
 /area/rogue/outdoors/rtfield)
 "fNh" = (
 /obj/structure/mineral_door/bars{
-	lockid = "graveyard";
-	locked = 1
+	locked = 1;
+	lockid = "graveyard"
 	},
 /turf/open/floor/rogue/blocks,
 /area/rogue/outdoors/town)
@@ -5920,8 +5916,8 @@
 /area/rogue/outdoors/rtfield)
 "goY" = (
 /obj/structure/mineral_door/wood/window{
-	lockid = "velder";
-	locked = 1
+	locked = 1;
+	lockid = "velder"
 	},
 /turf/open/floor/rogue/blocks/stonered/tiny,
 /area/rogue/indoors)
@@ -7123,8 +7119,8 @@
 	dir = 1
 	},
 /obj/effect/decal/cobbleedge{
-	icon_state = "borderfall";
-	dir = 4
+	dir = 4;
+	icon_state = "borderfall"
 	},
 /turf/open/floor/rogue/churchmarble,
 /area/rogue/indoors/town/church/chapel)
@@ -7201,8 +7197,8 @@
 /area/rogue/outdoors/rtfield)
 "hKv" = (
 /obj/structure/chair/wood/rogue{
-	icon_state = "chair2";
-	dir = 1
+	dir = 1;
+	icon_state = "chair2"
 	},
 /turf/open/floor/rogue/blocks/stonered/tiny,
 /area/rogue/indoors)
@@ -8374,8 +8370,8 @@
 	pixel_y = 0
 	},
 /obj/effect/decal/cobbleedge{
-	icon_state = "borderfall";
-	dir = 1
+	dir = 1;
+	icon_state = "borderfall"
 	},
 /turf/open/floor/rogue/tile{
 	icon_state = "bfloorz"
@@ -9846,8 +9842,8 @@
 /area/rogue/indoors/town/church)
 "kLY" = (
 /obj/effect/decal/cobbleedge{
-	icon_state = "borderfall";
-	dir = 1
+	dir = 1;
+	icon_state = "borderfall"
 	},
 /turf/open/floor/rogue/blocks,
 /area/rogue/outdoors/town)
@@ -10685,8 +10681,8 @@
 "lKp" = (
 /obj/effect/landmark/start/gravedigger,
 /obj/effect/decal/cobbleedge{
-	icon_state = "borderfall";
-	dir = 4
+	dir = 4;
+	icon_state = "borderfall"
 	},
 /turf/open/floor/rogue/churchmarble,
 /area/rogue/indoors/town/church/chapel)
@@ -10819,10 +10815,11 @@
 /area/rogue/indoors)
 "lRU" = (
 /obj/effect/decal/cobbleedge{
-	icon_state = "borderfall";
-	dir = 1
+	dir = 1;
+	icon_state = "borderfall"
 	},
 /obj/effect/decal/cleanable/blood/old,
+/obj/structure/roguemachine/bounty,
 /turf/open/floor/rogue/blocks,
 /area/rogue/outdoors/town)
 "lSf" = (
@@ -11456,8 +11453,8 @@
 /area/rogue/under/town/basement)
 "mFe" = (
 /obj/effect/decal/cobbleedge{
-	icon_state = "borderfall";
-	dir = 1
+	dir = 1;
+	icon_state = "borderfall"
 	},
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/manor)
@@ -12967,8 +12964,8 @@
 /area/rogue/indoors/town/church)
 "okc" = (
 /obj/effect/decal/cobbleedge{
-	icon_state = "borderfall";
-	dir = 4
+	dir = 4;
+	icon_state = "borderfall"
 	},
 /turf/open/floor/rogue/churchmarble,
 /area/rogue/indoors/town/church/chapel)
@@ -13793,8 +13790,8 @@
 "pac" = (
 /obj/effect/landmark/start/knight,
 /obj/effect/decal/cobbleedge{
-	icon_state = "borderfall";
-	dir = 1
+	dir = 1;
+	icon_state = "borderfall"
 	},
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/manor)
@@ -14340,8 +14337,8 @@
 "pDx" = (
 /obj/structure/fluff/psycross,
 /obj/effect/decal/cobbleedge{
-	icon_state = "borderfall";
-	dir = 1
+	dir = 1;
+	icon_state = "borderfall"
 	},
 /turf/open/floor/rogue/blocks/stonered,
 /area/rogue/indoors/town/manor)
@@ -14436,8 +14433,8 @@
 /area/rogue/outdoors/town)
 "pKa" = (
 /obj/structure/mineral_door/wood{
-	lockid = "keep_dungeon";
-	locked = 1
+	locked = 1;
+	lockid = "keep_dungeon"
 	},
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/town/basement)
@@ -14625,8 +14622,8 @@
 	dir = 1
 	},
 /obj/structure/gate/bars/preopen{
-	redstone_id = "villagenorth";
-	gid = "villagenorth"
+	gid = "villagenorth";
+	redstone_id = "villagenorth"
 	},
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/outdoors/rtfield)
@@ -14703,8 +14700,8 @@
 /area/rogue/under/town/basement)
 "pZq" = (
 /obj/structure/mineral_door/bars{
-	lockid = "graveyard";
-	locked = 1
+	locked = 1;
+	lockid = "graveyard"
 	},
 /turf/open/floor/rogue/cobble/mossy,
 /area/rogue/outdoors/rtfield)
@@ -15286,9 +15283,9 @@
 /area/rogue/indoors/town/church)
 "qJx" = (
 /obj/structure/mineral_door/wood/fancywood{
+	locked = 1;
 	lockid = "velder";
-	name = "Elder's Home";
-	locked = 1
+	name = "Elder's Home"
 	},
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors)
@@ -16043,8 +16040,8 @@
 /area/rogue/outdoors/rtfield)
 "rxT" = (
 /obj/structure/mineral_door/wood/window{
-	lockid = "velder";
-	locked = 1
+	locked = 1;
+	lockid = "velder"
 	},
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors)
@@ -16460,8 +16457,8 @@
 "scd" = (
 /obj/structure/bars/pipe{
 	dir = 1;
-	pixel_y = -17;
-	pixel_x = -15
+	pixel_x = -15;
+	pixel_y = -17
 	},
 /turf/open/transparent/openspace,
 /area/rogue/outdoors/town)
@@ -16856,8 +16853,8 @@
 /area/rogue/indoors/town/garrison)
 "szo" = (
 /obj/effect/decal/cobbleedge{
-	icon_state = "borderfall";
-	dir = 1
+	dir = 1;
+	icon_state = "borderfall"
 	},
 /turf/open/floor/rogue/blocks/stonered,
 /area/rogue/indoors/town/manor)
@@ -16875,8 +16872,8 @@
 	icon_state = "tablewood1"
 	},
 /obj/effect/decal/cobbleedge{
-	icon_state = "borderfall";
-	dir = 1
+	dir = 1;
+	icon_state = "borderfall"
 	},
 /turf/open/floor/rogue/blocks/stonered,
 /area/rogue/indoors/town/manor)
@@ -16963,8 +16960,8 @@
 /area/rogue/indoors/town/manor)
 "sIb" = (
 /obj/effect/decal/cobbleedge{
-	icon_state = "borderfall";
-	dir = 4
+	dir = 4;
+	icon_state = "borderfall"
 	},
 /turf/open/floor/rogue/blocks/stonered,
 /area/rogue/indoors/town/manor)
@@ -18089,8 +18086,8 @@
 /area/rogue/indoors/town/shop)
 "tTd" = (
 /obj/effect/decal/cobbleedge{
-	icon_state = "borderfall";
-	dir = 4
+	dir = 4;
+	icon_state = "borderfall"
 	},
 /obj/effect/landmark/start/churchling{
 	dir = 8
@@ -19311,8 +19308,8 @@
 "vei" = (
 /obj/effect/landmark/start/knight,
 /obj/effect/decal/cobbleedge{
-	icon_state = "borderfall";
-	dir = 1
+	dir = 1;
+	icon_state = "borderfall"
 	},
 /turf/open/floor/rogue/tile{
 	icon_state = "bfloorz"
@@ -19341,8 +19338,8 @@
 	dir = 8
 	},
 /obj/effect/decal/cobbleedge{
-	icon_state = "borderfall";
-	dir = 4
+	dir = 4;
+	icon_state = "borderfall"
 	},
 /turf/open/floor/rogue/churchmarble,
 /area/rogue/indoors/town/church/chapel)
@@ -20243,8 +20240,8 @@
 /area/rogue/indoors/town)
 "wij" = (
 /obj/structure/mineral_door/bars{
-	lockid = "town_dungeon";
-	locked = 1
+	locked = 1;
+	lockid = "town_dungeon"
 	},
 /turf/open/floor/rogue/greenstone,
 /area/rogue/under/town/sewer)
@@ -20430,8 +20427,8 @@
 /area/rogue/indoors)
 "wtn" = (
 /obj/structure/fluff/statue/gargoyle/moss{
-	pixel_y = 12;
-	dir = 3
+	dir = 3;
+	pixel_y = 12
 	},
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/basement)
@@ -21354,8 +21351,8 @@
 	pixel_x = 32
 	},
 /obj/effect/decal/cobbleedge{
-	icon_state = "borderfall";
-	dir = 1
+	dir = 1;
+	icon_state = "borderfall"
 	},
 /turf/open/floor/rogue/blocks/stonered,
 /area/rogue/indoors/town/manor)
@@ -21740,8 +21737,8 @@
 /area/rogue/under/town/basement)
 "xSN" = (
 /obj/structure/mineral_door/wood/fancywood{
-	lockid = "velder";
-	locked = 1
+	locked = 1;
+	lockid = "velder"
 	},
 /turf/open/floor/rogue/blocks,
 /area/rogue/indoors)
@@ -21965,8 +21962,8 @@
 /area/rogue/indoors/town)
 "yhS" = (
 /obj/structure/mineral_door/wood/fancywood{
-	lockid = "velder";
-	locked = 1
+	locked = 1;
+	lockid = "velder"
 	},
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors)
@@ -185673,7 +185670,7 @@ mVa
 txa
 cBf
 iTw
-aGs
+yfD
 cBf
 iTw
 wIj
@@ -285107,7 +285104,7 @@ wQY
 wSn
 uaL
 wSn
-fxx
+aGs
 fxx
 fxx
 fxx
