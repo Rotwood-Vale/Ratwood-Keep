@@ -121,7 +121,7 @@
 	swingdelay = 10
 	icon_state = "insmash"
 	item_d_type = "blunt"
-	
+
 /datum/intent/mace/rangedthrust
 	name = "thrust"
 	blade_class = BCLASS_STAB
@@ -145,11 +145,11 @@
 	icon_state = "club1"
 	//dropshrink = 0.75
 	wbalance = 0
-	wdefense = 1
+	wdefense = 1s
 	possible_item_intents = list(/datum/intent/mace/strike/wood)
 	gripped_intents = list(/datum/intent/mace/strike/wood, /datum/intent/mace/smash/wood)
 	smeltresult = /obj/item/ash
-	minstr = 0
+	minstr = 7
 
 /obj/item/rogueweapon/mace/woodclub/New()
 	..()
@@ -175,7 +175,7 @@
 	wlength = WLENGTH_SHORT
 	w_class = WEIGHT_CLASS_NORMAL
 	wbalance = 0
-	minstr = 0
+	minstr = 7
 	wdefense = 3
 
 /obj/item/rogueweapon/mace/cudgel/getonmobprop(tag)
@@ -197,7 +197,7 @@
 	possible_item_intents = list(/datum/intent/mace/strike/wood)
 	gripped_intents = list(/datum/intent/mace/strike/wood, /datum/intent/mace/smash/wood)
 	smeltresult = /obj/item/ash
-	minstr = 0
+	minstr = 7
 	wdefense = 5
 	wbalance = 0
 	associated_skill = /datum/skill/combat/swords

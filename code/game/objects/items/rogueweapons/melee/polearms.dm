@@ -360,3 +360,7 @@
 
 /datum/intent/sword/thrust/zwei
 	reach = 2
+
+/obj/item/rogueweapon/greatsword/grenz
+	name = "steel zweihander"
+	icon_state = "steelzwei"
