@@ -21,3 +21,4 @@ combat_squire.ogg: Exanima - Term'd
 combat_weird.ogg: Filmmaker - Counterspell
 bog.ogg: Kenshi - Bog
 manorgarri.ogg: Exanima - Arena Hub
+combat_steppe: Tatar Theme(Hellish Quart OST)
