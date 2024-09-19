@@ -37,29 +37,46 @@
 
 
 /obj/structure/roguemachine/lottery_roguetown/MiddleClick(mob/living/user, params) //LET'S GO GAMBLING
-
+//checks - is it time to go gambling??
 	if(src.stopgambling == 1)
 		return
+	if(src.gamblingprice == 0)
+		src.say(pick("Eager fool; you need mammons to gamble your life away.", "You are missing your tithe.", "A lord without land is no lord at all."))
+		return
+
 
 	else
 		src.diceroll = rand(1,100)
-		src.say(pick("Around and around I go, where I stop, only I know.", "Xylix smiles upon your idiocy, child.", "The wheel of fate spins, and spins.", "Oh, you poor fool.", "This is going to hurt for one of us.", "I laugh, you cry; I weep, you yell.", "I will be your fool; I'll perform for you...", "Let's go gambling!",))
+		src.say(pick("Around and around I go, where I stop, only I know.", "Xylix smiles upon your idiocy, child.", "The wheel of fate spins, and spins.", "Oh, you poor fool.", "This is going to hurt for one of us.", "I laugh, you cry; I weep, you cheer..", "I will be your fool; I'll perform for you...", "Let's go gambling!",))
 		playsound(src, 'sound/misc/machinetalk.ogg', 100, FALSE, -1)
 		playsound(src, 'sound/misc/letsgogambling.ogg', 100, FALSE, -1)
-		user.STALUC += src.gamblingprob
+		src.gamblingprob += (user.STALUC - 8)
 		src.stopgambling = 1
+
+//thug shaker
+		var/oldx = pixel_x
+		animate(src, pixel_x = oldx+1, time = 1)
+		animate(pixel_x = oldx-1, time = 1)
+		animate(pixel_x = oldx, time = .5)
+
 		sleep(50)
-		if(src.gamblingprob >= src.diceroll)
+
+		if(src.gamblingprob > src.diceroll)
 			src.gamblingprice *= 2
-			src.say("Your peasant's tithe is now [src.gamblingprice]. Play again?")
+			src.say("Well-maneuvered, aristocrat. Your peasant's tithe is now [src.gamblingprice]. Play again?")
 			playsound(src, 'sound/misc/machinetalk.ogg', 100, FALSE, -1)
 			src.stopgambling = 0
+			src.gamblingprob = 0
 			return
 		else
 			src.gamblingprice = 0
-			src.say(pick("TEN, WHEEL OF FORTUNE - inversed.", "The Castle. O, Omen!", "Your current tithe is zero. You've lost, by the way.", "Look into my eyes and whisper your woes.", "Aw, dangit.", "Fool. Poor fool.", "Your eyes leak out of your skull, drool falling from your lips."))
+			src.say(pick("TEN, WHEEL OF FORTUNE - inversed.", "The Castle. O, Omen!", "A harvest of locusts...!.", "Look into my eyes and whisper your woes.", "Aw, dangit.", "Fool. Poor fool.", "Your eyes leak out of your skull, drool falling from your lips.", "Divine idiocy."))
 			playsound(src, 'sound/misc/bug.ogg', 100, FALSE, -1)
+			sleep(20)
 			src.stopgambling = 0
+			src.say("King of fools, your land is barren. Play again?")
+			playsound(src, 'sound/misc/bug.ogg', 100, FALSE, -1)
+			src.gamblingprob = 0
 			return
 
 
@@ -73,7 +90,7 @@
 			say("Poor thing, you are coinless.")
 			return
 		if(gamblingprice < 0)
-			say("Your balance is NEGATIVE.")
+			say("Your peasant's tithe is NEGATIVE.")
 			return
 		var/list/choicez = list()
 		if(gamblingprice > 10)
