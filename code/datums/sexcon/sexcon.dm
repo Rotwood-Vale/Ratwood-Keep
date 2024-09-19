@@ -207,8 +207,7 @@
 	C.reagents.add_reagent(/datum/reagent/erpjuice/cum, 3)
 	after_ejaculation()
 
-/datum/sex_controller/proc/milk_container(obj/item/reagent_containers/glass/C)
-
+/datum/sex_controller/proc/calculate_milk()
 	var/obj/item/organ/breasts/breasts = user.getorganslot(ORGAN_SLOT_BREASTS)
 	var milk_amount
 	switch(breasts.breast_size)
@@ -231,10 +230,27 @@
 		milk_amount = milk_amount + 20
 	}
 
+	return milk_amount = round((milk_amount * min((world.time - breasts.last_milked)/2 MINUTES, 1)), 1)
+
+/datum/sex_controller/proc/suck_milk()
+	var milk_amount
+	var/obj/item/organ/breasts/breasts = user.getorganslot(ORGAN_SLOT_BREASTS)
+	log_combat(user, user, "Had their milk sucked")
+	user.visible_message(span_lovebold("[user] lactates into [target]'s mouth!"))
+	playsound(user, 'sound/misc/mat/endout.ogg', 50, TRUE, ignore_walls = FALSE)
+	milk_amount = calculate_milk()
+	target.reagents.add_reagent(/datum/reagent/consumable/breastmilk, milk_amount)
+	to_chat(target, span_notice("Tastes like breast milk."))
+	breasts.last_milked = world.time
+	after_milking()
+
+/datum/sex_controller/proc/milk_container(obj/item/reagent_containers/glass/C)
+	var/obj/item/organ/breasts/breasts = user.getorganslot(ORGAN_SLOT_BREASTS)
+	var milk_amount
 	log_combat(user, user, "Was milked into a container")
 	user.visible_message(span_lovebold("[user] lactates into [C]!"))
 	playsound(user, 'sound/misc/mat/endout.ogg', 50, TRUE, ignore_walls = FALSE)
-	milk_amount = round((milk_amount * min((world.time - breasts.last_milked)/2 MINUTES, 1)), 1)
+	milk_amount = calculate_milk()
 	C.reagents.add_reagent(/datum/reagent/consumable/breastmilk, milk_amount)
 	breasts.last_milked = world.time
 	after_milking()
@@ -472,9 +488,12 @@
 /datum/sex_controller/proc/handle_breast_milking(mob/living/carbon/human/milker)
 	if(arousal < ACTIVE_EJAC_THRESHOLD)
 		return
-	if(is_spent())
-		return
 	milk_container(milker.get_active_held_item())
+
+/datum/sex_controller/proc/handle_nipple_sucking(mob/living/carbon/human/milker)
+	if(arousal < ACTIVE_EJAC_THRESHOLD)
+		return
+	suck_milk()
 
 /datum/sex_controller/proc/can_use_penis()
 	if(HAS_TRAIT(user, TRAIT_LIMPDICK))
