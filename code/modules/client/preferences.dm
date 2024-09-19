@@ -135,6 +135,7 @@ GLOBAL_LIST_EMPTY(chosen_names)
 	var/list/menuoptions
 
 	var/datum/migrant_pref/migrant
+	var/next_special_trait = null
 
 	var/action_buttons_screen_locs = list()
 
@@ -687,6 +688,7 @@ GLOBAL_LIST_EMPTY(chosen_names)
 	dat += "<tr>"
 	dat += "<td width='33%' align='left'></td>"
 	dat += "<td width='33%' align='center'>"
+	dat += "<a href='?_src_=prefs;preference=bespecial'><b>[next_special_trait ? "<font color='red'>SPECIAL</font>" : "Be Special"]</b></a><BR>"
 	var/mob/dead/new_player/N = user
 	if(istype(N))
 		if(SSticker.current_state <= GAME_STATE_PREGAME)
@@ -1833,6 +1835,24 @@ Slots: [job.spawn_positions]</span>
 						sexable = TRUE
 					else
 						sexable = FALSE
+				if("bespecial")
+					if(next_special_trait)
+						print_special_text(user, next_special_trait)
+						return
+					to_chat(user, span_boldwarning("You will become special for one round, this could be something negative, positive or neutral and could have a high impact on your character and your experience."))
+					var/result = alert(user, "You'll receive a unique trait for one round\nDo I really want become special?", "Be Special", "Yes", "No")
+					if(result != "Yes")
+						return
+					if(next_special_trait)
+						return
+					next_special_trait = roll_random_special(user.client)
+					if(next_special_trait)
+						log_game("SPECIALS: Rolled [next_special_trait] for ckey: [user.ckey]")
+						print_special_text(user, next_special_trait)
+						user.playsound_local(user, 'sound/misc/alert.ogg', 100)
+						to_chat(user, span_warning("This will be applied on your next game join. You cannot reroll this, and it will not carry over to other rounds"))
+						to_chat(user, span_warning("You may switch your character and choose any role, if you don't meet the requirements (if any are specified) it won't be applied"))
+
 				if("family")
 					var/list/loly = list("Not yet.","Work in progress.","Don't click me.","Stop clicking this.","Nope.","Be patient.","Sooner or later.")
 					to_chat(user, "<font color='red'>[pick(loly)]</font>")

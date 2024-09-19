@@ -193,3 +193,4 @@
 		if(T)
 			T.flash_lighting_fx(30)
 #endif
+//Discluded changes from 21 traits, likely from sleep adv

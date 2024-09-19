@@ -50,10 +50,8 @@
 	for(var/trait in traits_applied)
 		ADD_TRAIT(H, trait, ADVENTURER_TRAIT)
 
-	if(CTAG_TOWNER in category_tags)
-		for(var/mob/M in GLOB.billagerspawns)
-			to_chat(M, span_info("[H.real_name] is the [name]."))
-		GLOB.billagerspawns -= H
+	// After the end of adv class equipping, apply a SPECIAL trait if able
+	apply_character_post_equipment(H)
 
 /datum/advclass/proc/post_equip(mob/living/carbon/human/H)
 	addtimer(CALLBACK(H,TYPE_PROC_REF(/mob/living/carbon/human, add_credit)), 20)

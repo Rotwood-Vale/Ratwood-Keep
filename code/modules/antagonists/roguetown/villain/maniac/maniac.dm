@@ -93,9 +93,7 @@
 			owner.adjust_skillrank(/datum/skill/combat/knives, 6, TRUE)
 			owner.adjust_skillrank(/datum/skill/combat/wrestling, 5, TRUE)
 			owner.adjust_skillrank(/datum/skill/combat/unarmed, 4, TRUE)
-			var/medicine_skill = dreamer.mind.get_skill_level(/datum/skill/misc/medicine)
-			if(medicine_skill < 3)// Bumps his skill up to 3 for surgery, not higher
-				owner.adjust_skillrank(/datum/skill/misc/medicine, 3 - medicine_skill, TRUE)
+			owner.adjust_skillrank_up_to(/datum/skill/misc/medicine, 3, TRUE) 
 			STASTR = dreamer.STASTR
 			STACON = dreamer.STACON
 			STAEND = dreamer.STAEND

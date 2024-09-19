@@ -3,16 +3,20 @@
 		return
 	if(user.mind)
 		user.mind.i_know_person(src)
-	if(!isdarkelf(user) && isdarkelf(src))
-		user.add_stress(/datum/stressevent/delf)
-	if(!istiefling(user) && istiefling(src))
-		user.add_stress(/datum/stressevent/tieb)
-	/*
-	if(!isargonian(user) && isargonian(src))
-		user.add_stress(/datum/stressevent/brazillian)
-	*/
+/*	var/datum/species/self_species = dna.species
+	var/datum/species/examiner_species = user.dna.species
+	if(self_species.stress_examine && self_species.type != examiner_species.type && !HAS_TRAIT(user, TRAIT_TOLERANT))
+		var/event_type = /datum/stressevent/shunned_race
+		if(HAS_TRAIT(user, TRAIT_XENOPHOBIC))
+			event_type = /datum/stressevent/shunned_race_xenophobic
+		var/datum/stressevent/event = user.add_stress(event_type)
+		event.desc = self_species.stress_desc /Editted out of 21 traits port, likely from sleep adv pr*/
 	if(user.has_flaw(/datum/charflaw/paranoid) && (STASTR - user.STASTR) > 1)
 		user.add_stress(/datum/stressevent/parastr)
+	if(HAS_TRAIT(user, TRAIT_JESTERPHOBIA) && job == "Jester")
+		user.add_stress(/datum/stressevent/jesterphobia)
+	if(HAS_TRAIT(src, TRAIT_BEAUTIFUL))
+		user.add_stress(/datum/stressevent/beautiful)
 
 /mob/living/carbon/human/examine(mob/user)
 	var/observer_privilege = isobserver(user)

@@ -599,6 +599,8 @@ SUBSYSTEM_DEF(ticker)
 				var/atom/movable/screen/splash/S = new(living.client, TRUE)
 				S.Fade(TRUE)
 			livings += living
+			if(ishuman(living))
+				try_apply_character_post_equipment(living)
 	if(livings.len)
 		addtimer(CALLBACK(src, PROC_REF(release_characters), livings), 30, TIMER_CLIENT_TIME)
 

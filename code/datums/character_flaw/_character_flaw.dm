@@ -27,6 +27,9 @@ GLOBAL_LIST_INIT(character_flaws, list("Alcoholic"=/datum/charflaw/addiction/alc
 /datum/charflaw/proc/on_mob_creation(mob/user)
 	return
 
+/datum/charflaw/proc/apply_post_equipment(mob/user)
+	return
+
 /datum/charflaw/proc/flaw_on_life(mob/user)
 	return
 
@@ -129,15 +132,13 @@ GLOBAL_LIST_INIT(character_flaws, list("Alcoholic"=/datum/charflaw/addiction/alc
 	effectedstats = list("perception" = -20, "speed" = -5)
 	duration = 100
 
-/datum/charflaw/badsight/on_mob_creation(mob/user)
-	..()
+/datum/charflaw/badsight/apply_post_equipment(mob/user)
 	if(!ishuman(user))
 		return
 	var/mob/living/carbon/human/H = user
-	if(!H.wear_mask)
-		H.equip_to_slot_or_del(new /obj/item/clothing/mask/rogue/spectacles(H), SLOT_WEAR_MASK)
-	else
-		new /obj/item/clothing/mask/rogue/spectacles(get_turf(H))
+	var/obj/item/glasses = new /obj/item/clothing/mask/rogue/spectacles(get_turf(H))
+	H.put_in_hands(glasses, forced = TRUE)
+	H.equip_to_slot_if_possible(glasses, SLOT_WEAR_MASK, FALSE, TRUE, FALSE, TRUE, TRUE)
 
 /datum/charflaw/paranoid
 	name = "Paranoid"
@@ -234,11 +235,19 @@ GLOBAL_LIST_INIT(character_flaws, list("Alcoholic"=/datum/charflaw/addiction/alc
 	if(!ishuman(user))
 		return
 	var/mob/living/carbon/human/H = user
-	if(!H.wear_mask)
-		H.equip_to_slot_or_del(new /obj/item/clothing/mask/rogue/eyepatch(H), SLOT_WEAR_MASK)
 	var/obj/item/bodypart/head/head = H.get_bodypart(BODY_ZONE_HEAD)
 	head?.add_wound(/datum/wound/facial/eyes/right/permanent)
 	H.update_fov_angles()
+
+
+/datum/charflaw/noeyer/apply_post_equipment(mob/user)
+	..()
+	if(!ishuman(user))
+		return
+	var/mob/living/carbon/human/H = user
+	var/obj/item/eyepatch = new /obj/item/clothing/mask/rogue/eyepatch(get_turf(H))
+	H.put_in_hands(eyepatch, forced = TRUE)
+	H.equip_to_slot_if_possible(eyepatch, SLOT_WEAR_MASK, FALSE, TRUE, FALSE, TRUE, TRUE)
 
 /datum/charflaw/noeyel
 	name = "Cyclops (L)"
@@ -249,8 +258,6 @@ GLOBAL_LIST_INIT(character_flaws, list("Alcoholic"=/datum/charflaw/addiction/alc
 	if(!ishuman(user))
 		return
 	var/mob/living/carbon/human/H = user
-	if(!H.wear_mask)
-		H.equip_to_slot_or_del(new /obj/item/clothing/mask/rogue/eyepatch/left(H), SLOT_WEAR_MASK)
 	var/obj/item/bodypart/head/head = H.get_bodypart(BODY_ZONE_HEAD)
 	head?.add_wound(/datum/wound/facial/eyes/left/permanent)
 	H.update_fov_angles()
@@ -267,3 +274,11 @@ GLOBAL_LIST_INIT(character_flaws, list("Alcoholic"=/datum/charflaw/addiction/alc
 		H.equip_to_slot_or_del(new /obj/item/clothing/mask/rogue/lepermask(H), SLOT_WEAR_MASK)
  H.apply_status_effect(STATUS_EFFECT_SPASMS)
  H.apply_status_effect(STATUS_EFFECT_FAKE_VIRUS)
+/datum/charflaw/noeyel/apply_post_equipment(mob/user)
+	..()
+	if(!ishuman(user))
+		return
+	var/mob/living/carbon/human/H = user
+	var/obj/item/eyepatch = new /obj/item/clothing/mask/rogue/eyepatch/left(get_turf(H))
+	H.put_in_hands(eyepatch, forced = TRUE)
+	H.equip_to_slot_if_possible(eyepatch, SLOT_WEAR_MASK, FALSE, TRUE, FALSE, TRUE, TRUE)

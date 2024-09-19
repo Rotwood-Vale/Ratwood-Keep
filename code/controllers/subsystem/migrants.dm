@@ -238,6 +238,9 @@ SUBSYSTEM_DEF(migrants)
 	if(role.advclass_cat_rolls)
 		SSrole_class_handler.setup_class_handler(character, role.advclass_cat_rolls)
 		hugboxify_for_class_selection(character)
+	else
+		// Apply post equipment stuff
+		apply_character_post_equipment(character)
 
 /datum/controller/subsystem/migrants/proc/get_priority_players(list/players, role_type)
 	var/list/priority = list()
