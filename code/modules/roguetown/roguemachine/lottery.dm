@@ -57,7 +57,7 @@
 		var/oldx = pixel_x
 		animate(src, pixel_x = oldx+1, time = 1)
 		animate(pixel_x = oldx-1, time = 1)
-		animate(pixel_x = oldx, time = .5)
+		animate(pixel_x = oldx, time = 1)
 
 		sleep(50)
 
