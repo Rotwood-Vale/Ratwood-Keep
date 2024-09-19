@@ -32,6 +32,11 @@
 		return
 	icon_state = "[base_state]"
 
+/obj/structure/roguewindow/openclose/OnCrafted(dirin)
+	dirin = turn(dirin, 180)
+	lockdir = dirin
+	. = ..(dirin)
+
 /obj/structure/roguewindow/MouseDrop_T(atom/movable/O, mob/user)
 	. = ..()
 	if(!wallpress)
