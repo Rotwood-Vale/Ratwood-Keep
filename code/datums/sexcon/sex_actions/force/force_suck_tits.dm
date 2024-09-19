@@ -30,7 +30,7 @@
 
 	user.sexcon.perform_sex_action(target, 2, 4, TRUE)
 
-	target.sexcon.handle_breast_sucking(user)
+	target.sexcon.handle_nipple_sucking(user)
 
 /datum/sex_action/force_suck_nipples/on_finish(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	user.visible_message(span_warning("[user] stops sucking [target]'s nipples."))
