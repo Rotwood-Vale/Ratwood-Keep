@@ -9,7 +9,7 @@
 
 //ensure these two are the same, or else first roll will be fucky
 	var/gamblingprob = 35
-	var/gamblingbaseprob = 35
+	var/gamblingbaseprob = 50
 
 	var/diceroll = 100
 	var/maxtithing = 100
