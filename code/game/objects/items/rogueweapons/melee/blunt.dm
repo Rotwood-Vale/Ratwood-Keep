@@ -145,7 +145,7 @@
 	icon_state = "club1"
 	//dropshrink = 0.75
 	wbalance = 0
-	wdefense = 1s
+	wdefense = 1
 	possible_item_intents = list(/datum/intent/mace/strike/wood)
 	gripped_intents = list(/datum/intent/mace/strike/wood, /datum/intent/mace/smash/wood)
 	smeltresult = /obj/item/ash
