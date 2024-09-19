@@ -225,8 +225,10 @@
 /datum/status_effect/debuff/death_weaken
 	id = "death_weaken"
 	alert_type = null
+	status_type = STATUS_EFFECT_UNIQUE
 	examine_text = span_notice("They appear not entirely whole, as if some part of them was left behind.")
 	effectedstats = list("strength" = -2, "perception" = -2, "intelligence" = -2, "constitution" = -2, "endurance" = -2, "speed" = -2)
+	var/extralives = 1
 
 /// SURRENDERING DEBUFFS
 
