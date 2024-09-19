@@ -1,12 +1,12 @@
 /obj/structure/roguemachine/lottery_roguetown
 	name = "XYLIX'S FORTUNE"
-	desc = "An infinite, yawning hole that makes or breaks men."
+	desc = "An infinite, yawning hole that makes or breaks men. The current payout is four times your tithe."
 	icon = 'icons/roguetown/misc/machines.dmi'
 	icon_state = "lottery"
 	density = FALSE
 	pixel_y = 32
 	var/gamblingprice = 0
-	var/gamblingprob = 2
+	var/gamblingprob = 35
 	var/diceroll = 100
 	var/maxtithing = 100
 	var/stopgambling = 0
@@ -66,7 +66,7 @@
 		sleep(50)
 
 		if(src.gamblingprob > src.diceroll)
-			src.gamblingprice *= 2
+			src.gamblingprice *= pick(1.1, 1.1, 1.1, 1.1, 1.2, 1.2, 1.2, 1.4, 1.4, 2)
 			src.say("Well-maneuvered, aristocrat! Your peasant's tithe is now [src.gamblingprice]. Play again?")
 			playsound(src, 'sound/misc/machinetalk.ogg', 100, FALSE, -1)
 			src.stopgambling = 0
