@@ -6,7 +6,7 @@
 	id = "elfd"
 	desc = "<b>Dark Elf</b><br>\
 		Dark Elves, the product of Zizo's forceful obtaining of Godhood which cursed the Snow Elves to embody the aspects of Zizo. \
-		They live deep underground, deeper than even many Dwarves within the city-states of their Shadowcities. \ 
+		They live deep underground, deeper than even many Dwarves within the city-states of their Shadowcities. \
 		Even though without sunlight, Dark Elves' often have dark hued skin made up of dark blues, purples and shades of black, usually with black or white hair. \
 		Mistrusted by most other races, the Dark Elves had, for centuries, enslaved other races, ascending from their deep cities to capture and enslave whomever they find before dragging them back down. \
 		Some Dark Elves, either disagreeing with the act of slavery, or simply wanting a change of scenery, leave the Shadowcities behind, hoping to find something better on the surface. \

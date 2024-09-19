@@ -45,8 +45,8 @@
 /datum/patron/inhumen/matthios		// Removing 'class warfare' language in favor of 'uncivilized v civilized' language.
 	name = "Matthios"
 	domain = "God of Fire, Sacrifice and those who prey upon Civilization"
-	desc = "The followers of Matthios take from others and give onto themselves. Matthios comes to you in a crowd just like any other man, his hood hiding his face, its with a single whisper that he inspires in you the confidence to take that which you want. \ 
-		Matthios is the God of Thievery, Burglary, and Ransoming. He is worshipped by bandits, highwaymen and thieves. Unlike Graggar, to whom killing is the true prize and stealing an afterthought, Matthios is wholly dedicated to stealing. \ 
+	desc = "The followers of Matthios take from others and give onto themselves. Matthios comes to you in a crowd just like any other man, his hood hiding his face, its with a single whisper that he inspires in you the confidence to take that which you want. \
+		Matthios is the God of Thievery, Burglary, and Ransoming. He is worshipped by bandits, highwaymen and thieves. Unlike Graggar, to whom killing is the true prize and stealing an afterthought, Matthios is wholly dedicated to stealing. \
 		If it is something which you can take, through strength, trickery or deception, then it should by rights belong to you. He is depicted as a man with a hood hiding his face, the rest of his body in simple dark clothing."
 	worshippers = "Free-Men, Outlaws and Frontiersmen"
 	mob_traits = list(TRAIT_COMMIE)

@@ -8,7 +8,7 @@
 	domain = "Goddess of the Sun, Day, and Order"
 	desc = "Astrata, the Firstborn of Psydon. She is the goddess of the Sun, the Day and of Order. She is Twin to Noc, Goddess of the Moon. \
 		She is worshipped by noble hearted men, as well as zealous fanatics and farmers. She is said to have gifted man the sun, the source of all life, without it crops would wither and man would freeze to death. \
-		Astrata is depicted as a women with golden skin, two large wings on her back, one hand holding up the sun itself, the other holding up a sword." \
+		Astrata is depicted as a women with golden skin, two large wings on her back, one hand holding up the sun itself, the other holding up a sword." 
 	worshippers = "The Noble Hearted, Zealots and Farmers"
 	t1 = /obj/effect/proc_holder/spell/invoked/sacred_flame_rogue
 	t2 = /obj/effect/proc_holder/spell/invoked/heal
@@ -40,7 +40,7 @@
 	name = "Dendor"
 	domain = "God of the Earth and Nature"
 	desc = "Dendor, the Primordial Son of Psydon. He is the God of the Earth and Nature. The patron of beasts, and of the woods, those that follow him are druids, beasts, and madmen. \
-		Dendor was once a proud son of Psydon, but millenia in the forest drove him mad. Less man than beast, as they are depicted with the body of a centaur, long, wiry hair hides his face, two antlers protruding from either side of his head. /
+		Dendor was once a proud son of Psydon, but millenia in the forest drove him mad. Less man than beast, as they are depicted with the body of a centaur, long, wiry hair hides his face, two antlers protruding from either side of his head. \
 		It is believed by some Dendorites that when Dendor blows his horn, the Wild Hunt will finally begin, and Dendor himself will lead them to the stars to hunt the watchers that bother him so. \
 		For Man, Dendor represents nature and its generosity. For Wild-Kin, Dendor represents their greatest fear, that perhaps one day they will awake and realize that they truly are just animals on two feet."
 	worshippers = "Druids, Beasts, Madmen"
