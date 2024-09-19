@@ -233,8 +233,6 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "E
 					continue
 				if(candidate.assigned_role in GLOB.yeoman_positions) // Many of these guys vanishing would suck
 					continue
-				if(candidate.current && isseelie(candidate.current))
-					continue
 
 				allantags -= candidate
 				pre_bandits += candidate
