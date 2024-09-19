@@ -101,7 +101,7 @@
 				addomen(OMEN_NOPRIEST)
 //		if(yeae)
 //			if(mind)
-//				if((mind.assigned_role == "Lord") || (mind.assigned_role == "Priest") || (mind.assigned_role == "Guard Lieutenant") || (mind.assigned_role == "Merchant"))
+//				if((mind.assigned_role == "Lord") || (mind.assigned_role == "Priest") || (mind.assigned_role == "Retinue Captain") || (mind.assigned_role == "Merchant"))
 //					addomen(OMEN_NOBLEDEATH)
 
 		if(!gibbed && yeae)

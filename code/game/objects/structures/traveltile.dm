@@ -42,6 +42,11 @@
 	var/aportalgoesto = "REPLACETHIS"
 	var/aallmig
 	var/required_trait = null
+	var/can_gain_with_sight = FALSE
+	var/can_gain_by_walking = FALSE
+	var/check_other_side = FALSE
+	var/invis_without_trait = FALSE
+	var/list/revealed_to = list()
 
 /obj/structure/fluff/traveltile/Initialize()
 	GLOB.traveltiles += src
@@ -51,7 +56,13 @@
 	GLOB.traveltiles -= src
 	. = ..()
 
-/obj/structure/fluff/traveltile/proc/get_other_end_turf()
+/obj/structure/fluff/traveltile/proc/hide_if_needed()
+	if(invis_without_trait && required_trait)
+		invisibility = INVISIBILITY_OBSERVER
+		var/image/I = image(icon = 'icons/turf/roguefloor.dmi', icon_state = "travel", layer = ABOVE_OPEN_TURF_LAYER, loc = src)
+		add_alt_appearance(/datum/atom_hud/alternate_appearance/basic, required_trait, I)
+
+/obj/structure/fluff/traveltile/proc/get_other_end_turf(var/return_travel = FALSE)
 	if(!aportalgoesto)
 		return null
 	for(var/obj/structure/fluff/traveltile/travel in shuffle(GLOB.traveltiles))
@@ -59,6 +70,8 @@
 			continue
 		if(travel.aportalid != aportalgoesto)
 			continue
+		if(return_travel)
+			return travel
 		return get_turf(travel)
 	return null
 
@@ -88,7 +101,7 @@
 		if(HAS_TRAIT(L, required_trait))
 			return TRUE
 		else
-			to_chat(L, "<b>It is a dead end.</b>")
+			//to_chat(L, "<b>It is a dead end.</b>")
 			return FALSE
 
 /atom/movable
@@ -107,35 +120,76 @@
 	addtimer(CALLBACK(src, PROC_REF(user_try_travel), living), 1)
 
 /obj/structure/fluff/traveltile/proc/user_try_travel(mob/living/user)
-	var/turf/target_loc = get_other_end_turf()
-	if(!target_loc)
-		to_chat(user, "<b>It is a dead end.</b>")
+	var/obj/structure/fluff/traveltile/the_tile = get_other_end_turf(TRUE)
+	if(!get_turf(the_tile))
+		to_chat(user, "<b>I can't find the other side.</b>")
 		return
 	if(!can_go(user))
 		return
-	if(!do_after(user, 5 SECONDS, FALSE, target = src))
+	var/time2go = 5 SECONDS
+	if(check_other_side && the_tile.required_trait)
+		for(var/mob/living/M in hearers(7, get_turf(the_tile)))
+			if(!HAS_TRAIT(M, the_tile.required_trait))
+				to_chat(user, span_warning("I sense something off at the end of the trail."))
+				time2go = 7 SECONDS
+				break
+	if(!do_after(user, time2go, FALSE, target = src))
 		return
 	if(!can_go(user))
 		return
 	if(user.pulling)
 		user.pulling.recent_travel = world.time
 	user.recent_travel = world.time
-	reveal_travel_trait_to_others(user)
-	mob_move_travel_z_level(user, target_loc)
+	if(can_gain_with_sight)
+		reveal_travel_trait_to_others(user)
+	if(can_gain_by_walking && the_tile.required_trait && !HAS_TRAIT(user, the_tile.required_trait))
+		ADD_TRAIT(user, the_tile.required_trait, TRAIT_GENERIC)
+	if(invis_without_trait && !revealed_to.Find(user))
+		show_travel_tile(user)
+		the_tile.show_travel_tile(user)
+	mob_move_travel_z_level(user, get_turf(the_tile))
 
 /obj/structure/fluff/traveltile/proc/reveal_travel_trait_to_others(mob/living/user)
 	if(!required_trait)
 		return
 	if(!HAS_TRAIT(user, required_trait))
 		return
-	for(var/mob/living/carbon/human/H in hearers(6,src))
+	for(var/mob/living/carbon/human/H in view(6,src))
 		if(!HAS_TRAIT(H, required_trait))
 			to_chat(H, "<b>I discover a well hidden entrance</b>")
 			ADD_TRAIT(H, required_trait, TRAIT_GENERIC)
 
+/obj/structure/fluff/traveltile/proc/show_travel_tile(mob/living/user)
+	if(!alternate_appearances)
+		return
+	for(var/K in alternate_appearances)
+		var/datum/atom_hud/alternate_appearance/AA = alternate_appearances[K]
+		if(AA.appearance_key == required_trait)
+			AA.add_hud_to(user)
+			revealed_to += user
+			break
+
+/obj/structure/fluff/traveltile/proc/remove_travel_tile(mob/living/user)
+	if(!alternate_appearances)
+		return
+	for(var/K in alternate_appearances)
+		var/datum/atom_hud/alternate_appearance/AA = alternate_appearances[K]
+		if(AA.appearance_key == required_trait)
+			AA.remove_from_hud(user)
+			revealed_to -= user
+			break
+
 /obj/structure/fluff/traveltile/bandit
+	can_gain_with_sight = TRUE
+	can_gain_by_walking = TRUE
+	check_other_side = TRUE
+	invis_without_trait = TRUE
 
 /obj/structure/fluff/traveltile/vampire
+	can_gain_with_sight = TRUE
+	can_gain_by_walking = TRUE
+	check_other_side = TRUE
+	invis_without_trait = TRUE
 
 /obj/structure/fluff/traveltile/dungeon
 	name = "gate"

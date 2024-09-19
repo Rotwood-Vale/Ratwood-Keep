@@ -30,7 +30,8 @@
 
 /obj/item/soap/ComponentInitialize()
 	. = ..()
-	AddComponent(/datum/component/slippery, 80)
+	// 20% chance to slip, no more reliable soap combat
+	AddComponent(/datum/component/slippery, 80, 20)
 
 /obj/item/soap/examine(mob/user)
 	. = ..()
@@ -39,13 +40,13 @@
 	if(uses != max_uses)
 		var/percentage_left = uses / max_uses
 		switch(percentage_left)
-			if(0 to 0.15)
+			if(0 to 0.2)
 				msg = "There's just a tiny bit left of what it used to be, you're not sure it'll last much longer."
-			if(0.15 to 0.30)
+			if(0.21 to 0.4)
 				msg = "It's dissolved quite a bit, but there's still some life to it."
-			if(0.30 to 0.50)
+			if(0.41 to 0.6)
 				msg = "It's past its prime, but it's definitely still good."
-			if(0.50 to 0.75)
+			if(0.61 to 0.85)
 				msg = "It's started to get a little smaller than it used to be, but it'll definitely still last for a while."
 			else
 				msg = "It's seen some light use, but it's still pretty fresh."

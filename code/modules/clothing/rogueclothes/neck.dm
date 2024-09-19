@@ -4,6 +4,7 @@
 	icon = 'icons/roguetown/clothing/neck.dmi'
 	mob_overlay_icon = 'icons/roguetown/clothing/onmob/neck.dmi'
 	bloody_icon_state = "bodyblood"
+	w_class = WEIGHT_CLASS_SMALL
 
 /obj/item/clothing/neck/roguetown/coif
 	name = "coif"
@@ -198,7 +199,7 @@
 		if(W && W.transformed == TRUE)
 			to_chat(H, span_userdanger("I can't equip the silver, it is my BANE!"))
 			H.Knockdown(20)
-			H.Paralyze(20)	
+			H.Paralyze(20)
 
 /obj/item/clothing/neck/roguetown/psicross/silver/mob_can_equip(mob/living/M, mob/living/equipper, slot, disable_warning = FALSE, bypass_equip_delay_self = FALSE)
 	. = ..()

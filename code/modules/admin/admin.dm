@@ -216,6 +216,45 @@
 	message_admins(span_danger("Admin [key_name_admin(usr)] revived [key_name_admin(M)]!"))
 	log_admin("[key_name(usr)] Revived [key_name(M)].")
 
+/datum/admins/proc/admin_curse(mob/living/carbon/human/M in GLOB.mob_list)
+	set name = "Curse"
+	set desc = "Curse or lift a curse from a character"
+	set category = "GameMaster"
+
+	if(!check_rights())
+		return FALSE
+	
+	var/category = input("Category") as null|anything in list("Ten", "Inhuman", "Special")
+	if(!category)
+		return FALSE
+	
+	var/curse
+	switch(category)
+		if("Ten")
+			curse = input("Curse") as null|anything in TEN_CURSES
+		if("Inhuman")
+			curse = input("Curse") as null|anything in INHUMEN_CURSES
+		if("Special")
+			curse = input("Curse") as null|anything in SPECIAL_CURSES
+		
+	if(!curse)
+		return FALSE
+
+	var/datum/curse/C = curse
+
+	if(M.add_curse(C))
+		message_admins(span_danger("Admin [key_name_admin(usr)] cursed [key_name_admin(M)] with [C.name]!"))
+		log_admin("[key_name(usr)] cursed [key_name(M)] with [C.name].")
+		return TRUE
+
+	else if(M.remove_curse(C))
+		message_admins(span_danger("Admin [key_name_admin(usr)] lifted [C.name] from [key_name_admin(M)]!"))
+		log_admin("[key_name(usr)] lifted [C.name] from [key_name(M)].")
+		return TRUE
+
+	else
+		return FALSE
+
 /datum/admins/proc/checkpq(mob/living/M in GLOB.mob_list)
 	set name = "Check PQ"
 	set desc = "Check a mob's PQ"

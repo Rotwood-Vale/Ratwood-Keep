@@ -35,7 +35,7 @@
 		OFFSET_ID = list(0,1), OFFSET_GLOVES = list(0,1), OFFSET_WRISTS = list(0,1),\
 		OFFSET_CLOAK = list(0,1), OFFSET_FACEMASK = list(0,1), OFFSET_HEAD = list(0,1), \
 		OFFSET_FACE = list(0,1), OFFSET_BELT = list(0,1), OFFSET_BACK = list(0,1), \
-		OFFSET_NECK = list(0,1), OFFSET_MOUTH = list(0,1), OFFSET_PANTS = list(0,1), \
+		OFFSET_NECK = list(0,1), OFFSET_MOUTH = list(0,1), OFFSET_PANTS = list(0,0), \
 		OFFSET_SHIRT = list(0,1), OFFSET_ARMOR = list(0,1), OFFSET_HANDS = list(0,1), OFFSET_UNDIES = list(0,1), \
 		OFFSET_ID_F = list(0,-1), OFFSET_GLOVES_F = list(0,0), OFFSET_WRISTS_F = list(0,0), OFFSET_HANDS_F = list(0,0), \
 		OFFSET_CLOAK_F = list(0,0), OFFSET_FACEMASK_F = list(0,-1), OFFSET_HEAD_F = list(0,-1), \
@@ -44,18 +44,18 @@
 		OFFSET_SHIRT_F = list(0,0), OFFSET_ARMOR_F = list(0,0), OFFSET_UNDIES_F = list(0,0), \
 		)
 	specstats = list(
-		"strength" = 0, 
-		"perception" = 0, 
-		"intelligence" = 1, 
-		"constitution" = 0, 
-		"endurance" = 0, 
-		"speed" = 0, 
+		"strength" = 0,
+		"perception" = 0,
+		"intelligence" = 1,
+		"constitution" = 0,
+		"endurance" = 0,
+		"speed" = 0,
 		"fortune" = 0
 		)
 	specstats_f = list(
 		"intelligence" = 1,
-		"constitution" = -1, 
-		"strength" = -1, 
+		"constitution" = -1,
+		"strength" = -1,
 		"speed" = 1,
 	)
 	enflamed_icon = "widefire"
@@ -116,10 +116,39 @@
 
 	))
 
+//Groups of Accents for each race set by associated 'skin_tone', see 'get_skin_list' above
+// "full" group in JSON lists
 /datum/species/human/northern/get_accent(mob/living/carbon/human/H)
-    switch(H.skin_tone)
-        if(SKIN_COLOR_GRENZELHOFT) //Grenzelhoft
-            return strings("german_replacement.json", "german")
-        if(SKIN_COLOR_HAMMERHOLD) //Hammerhold
-            return strings("Anglish.json", "Anglish")
-    return null
+		switch(H.skin_tone)
+				if(SKIN_COLOR_GRENZELHOFT) //Grenzelhoft
+						return strings("german_replacement.json", "full")
+				if(SKIN_COLOR_HAMMERHOLD) //Hammerhold
+						return strings("Anglish.json", "full")
+		return null
+
+// "start" group in JSON lists
+/datum/species/human/northern/get_accent_start(mob/living/carbon/human/H)
+		switch(H.skin_tone)
+				if(SKIN_COLOR_GRENZELHOFT) //Grenzelhoft
+						return strings("german_replacement.json", "start")
+				if(SKIN_COLOR_HAMMERHOLD) //Hammerhold
+						return strings("Anglish.json", "start")
+		return null
+
+// "end" group in JSON lists
+/datum/species/human/northern/get_accent_end(mob/living/carbon/human/H)
+		switch(H.skin_tone)
+				if(SKIN_COLOR_GRENZELHOFT) //Grenzelhoft
+						return strings("german_replacement.json", "end")
+				if(SKIN_COLOR_HAMMERHOLD) //Hammerhold
+						return strings("Anglish.json", "end")
+		return null
+
+// "syllable" group in JSON lists
+/datum/species/human/northern/get_accent_any(mob/living/carbon/human/H)
+		switch(H.skin_tone)
+				if(SKIN_COLOR_GRENZELHOFT) //Grenzelhoft
+						return strings("german_replacement.json", "syllable")
+				if(SKIN_COLOR_HAMMERHOLD) //Hammerhold
+						return strings("Anglish.json", "syllable")
+		return null

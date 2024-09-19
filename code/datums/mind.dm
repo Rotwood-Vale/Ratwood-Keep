@@ -887,6 +887,8 @@
 /datum/mind/proc/AddSpell(obj/effect/proc_holder/spell/S)
 	if(!S)
 		return
+	if(has_spell(S))
+		return
 	spell_list += S
 	S.action.Grant(current)
 
