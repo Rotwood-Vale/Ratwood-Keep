@@ -12,6 +12,7 @@
 	var/lockhash = 0
 	var/lockid = null
 	slot_flags = ITEM_SLOT_HIP|ITEM_SLOT_MOUTH|ITEM_SLOT_NECK
+	drop_sound = 'sound/items/gems (1).ogg'
 	anvilrepair = /datum/skill/craft/blacksmithing
 
 /obj/item/roguekey/Initialize()

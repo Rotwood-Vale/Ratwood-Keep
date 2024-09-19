@@ -32,6 +32,7 @@
 		STR.max_combined_w_class = 20
 		STR.max_w_class = WEIGHT_CLASS_SMALL
 		STR.max_items = 9
+		STR.attack_hand_interact = FALSE
 		STR.click_gather = TRUE
 		STR.allow_dump_out = TRUE
 		STR.rustle_sound = FALSE
