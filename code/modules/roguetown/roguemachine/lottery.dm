@@ -8,8 +8,8 @@
 	var/gamblingprice = 0
 
 //ensure these two are the same, or else first roll will be fucky
-	var/gamblingprob = 35
-	var/gamblingbaseprob = 50
+	var/gamblingprob = 60
+	var/gamblingbaseprob = 60
 
 	var/diceroll = 100
 	var/maxtithing = 100
