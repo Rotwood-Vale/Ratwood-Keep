@@ -128,6 +128,7 @@
 			playsound(src, 'sound/misc/machineno.ogg', 100, FALSE, -1)
 			return
 		else
+			gamblingprice -= coin_amt*mod
 			budget2change(coin_amt*mod, user, selection)
 
 
