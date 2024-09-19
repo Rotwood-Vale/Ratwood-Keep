@@ -79,7 +79,7 @@ GLOBAL_LIST_INIT(searaider_aggro, world.file2list("strings/rt/searaideraggroline
 	. = ..()
 
 /datum/outfit/job/roguetown/human/species/human/northern/searaider/pre_equip(mob/living/carbon/human/H)
-	wrists = /obj/item/clothing/wrists/roguetown/bracers
+	wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
 	if(prob(50))
 		wrists = /obj/item/clothing/wrists/roguetown/bracers
 	armor = /obj/item/clothing/suit/roguetown/armor/chainmail/iron
@@ -87,12 +87,19 @@ GLOBAL_LIST_INIT(searaider_aggro, world.file2list("strings/rt/searaideraggroline
 	if(prob(50))
 		shirt = /obj/item/clothing/suit/roguetown/shirt/tunic
 	pants = /obj/item/clothing/under/roguetown/tights
+	if(prob(50))
+		pants = /obj/item/clothing/under/roguetown/chainlegs/iron
 	head = /obj/item/clothing/head/roguetown/helmet/leather
 	if(prob(50))
 		head = /obj/item/clothing/head/roguetown/helmet/horned
-	H.STASPD = 8
-	H.STACON = 4
+	if(prob(50))
+		neck = /obj/item/clothing/neck/roguetown/gorget
+	if(prob(50))
+		gloves = /obj/item/clothing/gloves/roguetown/leather
+	H.STASPD = 9
+	H.STACON = rand(10,12) //so their limbs no longer pop off like a skeleton
 	H.STAEND = 15
+	H.STAPER = 10
 	H.STAINT = 1
 	if(prob(50))
 		r_hand = /obj/item/rogueweapon/sword
@@ -106,7 +113,7 @@ GLOBAL_LIST_INIT(searaider_aggro, world.file2list("strings/rt/searaideraggroline
 	H.hair_color = pick ("4f4f4f", "61310f", "faf6b9")
 	H.facial_hair_color = H.hair_color
 	if(H.gender == FEMALE)
-		H.STASTR = rand(9,12)
+		H.STASTR = rand(14,16) //GENDER EQUALITY!!
 		H.hairstyle = pick("Ponytail (Country)","Braid (Low)", "Braid (Short)", "Messy (Rogue)")
 	else
 		H.STASTR = rand(14,16)
