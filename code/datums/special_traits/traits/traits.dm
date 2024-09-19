@@ -357,7 +357,7 @@
 	name = "Known Heretic"
 	greet_text = span_boldwarning("I've been denounced by the church for either reasons legitimate or not!")
 	req_text = "Non-church role"
-	weight = 100
+	weight = 20
 	restricted_jobs = list(CHURCH_ROLES)
 
 /datum/special_trait/hussite/on_apply(mob/living/carbon/human/character, silent)
@@ -366,7 +366,7 @@
 /datum/special_trait/bounty
 	name = "Hunted Man"
 	greet_text = span_boldwarning("Someone put a bounty on my head!")
-	weight = 100
+	weight = 20
 
 /datum/special_trait/bounty/on_apply(mob/living/carbon/human/character, silent)
 	var/reason = ""
@@ -404,7 +404,7 @@
 /datum/special_trait/outlaw
 	name = "Known Outlaw"
 	greet_text = span_boldwarning("Whether for crimes I did or was accused of, I have been declared an outlaw!")
-	weight = 100
+	weight = 20
 
 /datum/special_trait/outlaw/on_apply(mob/living/carbon/human/character, silent)
 	make_outlaw(character.real_name, TRUE)

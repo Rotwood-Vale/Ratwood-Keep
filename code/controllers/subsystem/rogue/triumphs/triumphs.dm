@@ -4,13 +4,13 @@
 
 	As to how it currently saves, loads, and decides what decides to get wiped. Here is the following information:
 
-	When client joins - 
+	When client joins -
 		We get their triumphs from their saved file
 		If the version number is below the current wipe season we put them back to 0
 		It is then cached into a global list attached to their ckey
 
 	Was running into issues saving this all at server reboot
-	Thusly triumphs all jus save into individual files everytime its ran into 
+	Thusly triumphs all jus save into individual files everytime its ran into
 	triumph_adjust()
 
 	Simple enough
@@ -32,7 +32,7 @@ GLOBAL_VAR_INIT(triumph_wipe_season, get_triumph_wipe_season())
 	current_wipe_season = json["current_wipe_season"]
 
 	return current_wipe_season
-	
+
 // I need some shit early v early, so uhhh enjoy having lists on the define
 SUBSYSTEM_DEF(triumphs)
 	name = "Triumphs"
@@ -105,7 +105,7 @@ SUBSYSTEM_DEF(triumphs)
 		var/page_count = ceil(central_state_data[catty_key]/page_display_limit) // Get the page count total
 		central_state_data[catty_key] = list() // Now we swap the numbers out for lists on each cat as it will contain lists representing one page
 
-		// Now fill in the lists starting at index "1" 
+		// Now fill in the lists starting at index "1"
 		for(var/page_numba in 1 to page_count)
 			central_state_data[catty_key]["[page_numba]"] = list()
 			for(var/ii = copy_list.len, ii > 0, ii--)
@@ -204,7 +204,7 @@ SUBSYSTEM_DEF(triumphs)
 
 		current_view.show_menu()
 
-			
+
 // We cleanup the datum thats just holding the stuff for displaying the menu.
 /datum/controller/subsystem/triumphs/proc/remove_triumph_buy_menu(client/C)
 	if(C && active_triumph_menus[C.ckey])
@@ -222,16 +222,16 @@ SUBSYSTEM_DEF(triumphs)
 */
 /datum/controller/subsystem/triumphs/proc/end_triumph_saving_time()
 	to_chat(world, span_boldannounce(" Recording VICTORIES to the WORLD END MACHINE. "))
-	//for(var/target_ckey in triumph_amount_cache) 
+	//for(var/target_ckey in triumph_amount_cache)
 	//	var/list/saving_data = list()
 	//	// this will be for example "data/player_saves/a/ass/triumphs.json" if their ckey was ass
-	//	var/target_file = file("data/player_saves/[target_ckey[1]]/[target_ckey]/triumphs.json") 
+	//	var/target_file = file("data/player_saves/[target_ckey[1]]/[target_ckey]/triumphs.json")
 	//	if(fexists(target_file))
 	//		fdel(target_file)
 //
 //		saving_data["triumph_wipe_season"] = GLOB.triumph_wipe_season
 //		saving_data["triumph_count"] = triumph_amount_cache[target_ckey]
-//		
+//
 //		WRITE_FILE(target_file, json_encode(saving_data))
 
 	// handle the leaderboard here too i guess
@@ -247,7 +247,7 @@ SUBSYSTEM_DEF(triumphs)
 	if(target_ckey in triumph_amount_cache)
 		triumph_amount_cache[target_ckey] += amt
 		var/list/saving_data = list()
-		var/target_file = file("data/player_saves/[target_ckey[1]]/[target_ckey]/triumphs.json") 
+		var/target_file = file("data/player_saves/[target_ckey[1]]/[target_ckey]/triumphs.json")
 		if(fexists(target_file))
 			fdel(target_file)
 
@@ -263,7 +263,7 @@ SUBSYSTEM_DEF(triumphs)
 	if(target_ckey)
 		if(!(target_ckey in triumph_amount_cache))
 			return
-		else 
+		else
 			triumph_amount_cache[target_ckey] = 0
 
 // Wipe the entire list
@@ -281,7 +281,7 @@ SUBSYSTEM_DEF(triumphs)
 
 	// Wipe the leaderboard list, time for a fresh season.
 	// But leave the old leaderboard file in, we mite do somethin w it later
-	triumph_leaderboard = list() 
+	triumph_leaderboard = list()
 
 /// Gets the legacy triumph value to inherit the old triumphs for the first season, assuming legacy data was converted to ckeys
 /datum/controller/subsystem/triumphs/proc/get_legacy_triumph_value(target_ckey)
@@ -301,7 +301,7 @@ SUBSYSTEM_DEF(triumphs)
 // Return a value of the triumphs they got
 /datum/controller/subsystem/triumphs/proc/get_triumphs(target_ckey)
 	if(!(target_ckey in triumph_amount_cache))
-		var/target_file = file("data/player_saves/[target_ckey[1]]/[target_ckey]/triumphs.json") 
+		var/target_file = file("data/player_saves/[target_ckey[1]]/[target_ckey]/triumphs.json")
 		if(!fexists(target_file)) // no file or new player, write them in something
 			var/triumph_amount = 0
 			// If it is the first triumph wipe season, inherit previous triumphs
@@ -321,7 +321,7 @@ SUBSYSTEM_DEF(triumphs)
 			return 0
 
 		var/cur_client_triumph_count = not_new_guy["triumph_count"]
-		triumph_amount_cache[target_ckey] = cur_client_triumph_count		
+		triumph_amount_cache[target_ckey] = cur_client_triumph_count
 		return cur_client_triumph_count
 
 	return triumph_amount_cache[target_ckey]
@@ -333,7 +333,7 @@ SUBSYSTEM_DEF(triumphs)
 // Display leaderboard browser popup
 /datum/controller/subsystem/triumphs/proc/show_triumph_leaderboard(client/C)
 
-	var/webpagu = "<B>CHAMPIONS OF PSYDONIA</B><br>"
+	var/webpagu = "<B>CHAMPIONS OF AZURE</B><br>"
 	webpagu += "Current Season: [GLOB.triumph_wipe_season]"
 	webpagu += "<hr><br>"
 
@@ -357,7 +357,7 @@ SUBSYSTEM_DEF(triumphs)
 
 	triumph_leaderboard = json_decode(file2text(json_file))
 
-	sort_leaderboard() 
+	sort_leaderboard()
 
 // Adjust leaderboard
 // I want a key here so it looks pretty
@@ -372,12 +372,13 @@ SUBSYSTEM_DEF(triumphs)
 	if(triumph_leaderboard_positions_tracked > triumph_leaderboard.len)
 		triumph_leaderboard[user_key] = triumph_total
 
-	// Guy in last place is still greater than this guy
-	if(triumph_leaderboard[triumph_leaderboard[triumph_leaderboard.len]] > triumph_total) 
-		return
+	else
+		// Guy in last place is still greater than this guy
+		if(triumph_leaderboard[triumph_leaderboard[triumph_leaderboard.len]] > triumph_total)
+			return
 
-	triumph_leaderboard.Cut(triumph_leaderboard.len) // Cut the end
-	triumph_leaderboard[user_key] = triumph_total // Add our guy to the end
+		triumph_leaderboard.Cut(triumph_leaderboard.len) // Cut the end
+		triumph_leaderboard[user_key] = triumph_total // Add our guy to the end
 
 	sort_leaderboard() // Now sort it, sort it NOW!
 

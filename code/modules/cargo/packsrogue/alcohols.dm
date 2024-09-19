@@ -82,3 +82,59 @@
 	name = "Valmora Blue Wine"
 	cost = 400
 	contains = list(/obj/item/reagent_containers/glass/bottle/rogue/elfblue)
+
+//AZURE DRINKS
+/datum/supply_pack/rogue/alcohol/jagdtrunk
+	name = "Jagdtrunk"
+	cost = 80
+	contains = list(/obj/item/reagent_containers/glass/bottle/rogue/beer/jagdtrunk)
+
+/datum/supply_pack/rogue/alcohol/apfelweinheim
+	name = "Apfelweinheim Cider"
+	cost = 30
+	contains = list(/obj/item/reagent_containers/glass/bottle/rogue/beer/apfelweinheim)
+
+/datum/supply_pack/rogue/alcohol/rtoper
+	name = "Rockhill Toper"
+	cost = 20
+	contains = list(/obj/item/reagent_containers/glass/bottle/rogue/beer/rtoper)
+
+/datum/supply_pack/rogue/alcohol/nred
+	name = "Norwandine Red"
+	cost = 20
+	contains = list(/obj/item/reagent_containers/glass/bottle/rogue/beer/nred)
+
+/datum/supply_pack/rogue/alcohol/gronnmead
+	name = "Ragnars Brew"
+	cost = 25
+	contains = list(/obj/item/reagent_containers/glass/bottle/rogue/beer/gronnmead)
+
+/datum/supply_pack/rogue/alcohol/avarmead
+	name = "Zögiin Bal"
+	cost = 20
+	contains = list(/obj/item/reagent_containers/glass/bottle/rogue/beer/avarmead)
+
+/datum/supply_pack/rogue/alcohol/avarrice
+	name = "Makkolir"
+	cost = 30
+	contains = list(/obj/item/reagent_containers/glass/bottle/rogue/beer/avarrice)
+
+/datum/supply_pack/rogue/alcohol/saigamilk
+	name = "Bökhiin Arkhi"
+	cost = 100
+	contains = list(/obj/item/reagent_containers/glass/bottle/rogue/beer/saigamilk)
+
+/datum/supply_pack/rogue/alcohol/kgunlager
+	name = "Yamaguchi Pale"
+	cost = 50
+	contains = list(/obj/item/reagent_containers/glass/bottle/rogue/beer/kgunlager)
+
+/datum/supply_pack/rogue/alcohol/kgunsake
+	name = "Junmai-ginjo"
+	cost = 250
+	contains = list(/obj/item/reagent_containers/glass/bottle/rogue/beer/kgunsake)
+
+/datum/supply_pack/rogue/alcohol/kgunplum
+	name = "Umeshu"
+	cost = 30
+	contains = list(/obj/item/reagent_containers/glass/bottle/rogue/beer/kgunplum)

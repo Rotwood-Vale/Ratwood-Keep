@@ -272,6 +272,13 @@
 	craftdiff = 3
 	sellprice = 30
 
+/datum/crafting_recipe/roguetown/sewing/ragmask
+	name = "rag mask"
+	result = list(/obj/item/clothing/mask/rogue/ragmask)
+	reqs = list(/obj/item/natural/cloth = 1)
+	craftdiff = 0
+	sellprice = 3
+
 /datum/crafting_recipe/roguetown/sewing/cape
 	name = "cape"
 	result = list(/obj/item/clothing/cloak/cape)

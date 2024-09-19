@@ -169,6 +169,9 @@
 			ring_ring()
 			sleep(30)
 		say("This jabberline's rats are exhausted.", spans = list("info"))
+		calling.called_by = null
+		calling = null
+		update_icon()
 
 /obj/structure/roguemachine/scomm/obj_break(damage_flag)
 	..()
