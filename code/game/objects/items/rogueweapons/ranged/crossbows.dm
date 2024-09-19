@@ -110,6 +110,8 @@
 	for(var/obj/item/ammo_casing/CB in get_ammo_list(FALSE, TRUE))
 		var/obj/projectile/BB = CB.BB
 		BB.damage = BB.damage * damfactor
+		if(HAS_TRAIT(user, TRAIT_TINY))
+			BB.damage = (BB.damage * 0.3)
 	cocked = FALSE
 	..()
 

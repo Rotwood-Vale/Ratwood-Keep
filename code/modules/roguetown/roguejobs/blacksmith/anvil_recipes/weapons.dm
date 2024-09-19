@@ -106,6 +106,13 @@
 	created_item = /obj/item/rogueweapon/huntingknife/cleaver
 	i_type = "Weapons"
 
+/datum/anvil_recipe/weapons/ccleaver
+	name = "Combat Knife"
+	req_bar = /obj/item/ingot/steel
+	created_item = /obj/item/rogueweapon/huntingknife/cleaver/combat
+	craftdiff = 2
+	i_type = "Weapons"
+
 /// ADVANCED WEAPONS
 
 /datum/anvil_recipe/weapons/tsword
@@ -121,14 +128,6 @@
 	req_bar = /obj/item/ingot/steel
 	additional_items = list(/obj/item/ingot/steel)
 	created_item = /obj/item/rogueweapon/stoneaxe/battle
-	craftdiff = 2
-	i_type = "Weapons"
-
-/datum/anvil_recipe/weapons/ccleaver
-	name = "Hunting Knife (+1 Steel)"
-	req_bar = /obj/item/ingot/steel
-	additional_items = list(/obj/item/ingot/steel)
-	created_item = /obj/item/rogueweapon/huntingknife/cleaver/combat
 	craftdiff = 2
 	i_type = "Weapons"
 
@@ -170,14 +169,6 @@
 	additional_items = list(/obj/item/ingot/steel, /obj/item/ingot/steel)
 	created_item = /obj/item/rogueweapon/greatsword
 	craftdiff = 3
-	i_type = "Weapons"
-
-/datum/anvil_recipe/weapons/buckler
-	name = "Buckler (+1 Steel)"
-	req_bar = /obj/item/ingot/steel
-	additional_items = list(/obj/item/ingot/steel)
-	created_item = /obj/item/rogueweapon/shield/buckler
-	craftdiff = 2
 	i_type = "Weapons"
 
 /// UPGRADED WEAPONS
@@ -347,6 +338,14 @@
 	req_bar = /obj/item/ingot/iron
 	additional_items = list(/obj/item/grown/log/tree/small)
 	created_item = /obj/item/rogueweapon/shield/tower
+	i_type = "Weapons"
+
+/datum/anvil_recipe/weapons/buckler
+	name = "Buckler Shield"
+	appro_skill = /datum/skill/craft/armorsmithing
+	req_bar = /obj/item/ingot/steel
+	created_item = /obj/item/rogueweapon/shield/buckler
+	craftdiff = 3
 	i_type = "Weapons"
 
 /// CROSSBOWS
