@@ -4,9 +4,13 @@
 /datum/species/moth
 	name = "Fluvian"
 	id = "moth"
-	desc = "A race that hails from the far-away land of Deine-Coad, a grassy, forested land. We are an astute, proud people, albeit slightly weak of constitution. \
-	The creation myth of the Fluvian is that Eora, to emulate even a shred of her grace, plucked a palmful of moon-dust from Noc's mane and salted it upon Humens and other Creachers to create something which mimicked a fraction of her beauty. \
-	We are delicate of constiution and strength, but intelligent and agile. Due to our unique biology, the males and females of our race are equal in strength."
+	desc = "<b>Fluvian</b><br>\
+		Natives to the Great Forests of Dendor, the Fluvians are a mothlike race, astute and proud, though not very strong. \
+		It is said that Eora, somewhat jealous of Noc's own accomplishment with the Aasimar, plucked a palmful of moon-dust from Noc's mane, and salted it upon Humens and other creatures to create something which mimicks a fraction of her beauty. \
+		Intelligent and agile, Fluvians are usually found in managerial positions such as archivists and stewards. \
+		The strength of Fluvian males and females are equal, a unique trait for this strange race. \
+		The Fluvians venerate Eora, though a few of them worship other gods such as Noc, Dendor, Xylix and Pestra."
+
 	species_traits = list(EYECOLOR,LIPS,STUBBLE,MUTCOLORS,HAIR)
 	inherent_traits = list(TRAIT_NOMOBSWAP)
 	possible_ages = ALL_AGES_LIST

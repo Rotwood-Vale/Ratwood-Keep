@@ -5,14 +5,11 @@
 	name = "Elf"
 	id = "elfw"
 	desc = "<b>Elf</b><br>\
-	The Elves are marked apart from other races by their ethereal grace and long lives. \
-	Like Humens, they live throughout the lands of Grimoria. \
-	Yet, unlike other races, they prefer to dwell in lands untouched by civilization.<br>\
-	Elves can be difficult to distinguish from Humens at a glance until one is better acquainted with them. \
-	They are lighter and often more slender than men and bear fairy-like features upon their faces and ears.<br>\
-	The Elves commonly worship the Divine Pantheon in much the same way that Humens do, though they tend towards older practices and beliefs about the Ten.<br>\
-	<br>\
-	Magic comes easily to us, and we are swifter than other races. However, our bodies are weak and fragile."
+		Elves are a lithe, graceful race, many of them spread out across the world not unlike Humens. \
+		They largely prefer to live in nature, and make for some of the best rangers in all of Grimoria. \
+		The most obvious feature of an elf is their sharp ears, and generally slim form. \
+		Like Humens and Dwarves, Elf skin tones are determined by the place of their birth. \
+		The elves worship the divine pantheon, though their preferred god is largely dictated by where they're born."
 
 	skin_tone_wording = "Tribal Identity"
 

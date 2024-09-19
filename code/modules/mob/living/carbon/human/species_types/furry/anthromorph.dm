@@ -5,15 +5,12 @@
 	name = "Wild-Kin"
 	id = "anthromorph"
 	desc = "<b>Wild-Kin</b><br>\
-	The Wild Volk are the errant children of Dendor, to whom they all share an innate connection. \
-	Wild-Kin arise in all the lands of Grimoria and are nearly as widespread as Humens.<br>\
-	Wild-Kin are humanoid animals, sometimes limited to one specific species or a hybrid of multiple. \
-	Of all the races, Wild-Kin has the most variety in appearance.<br>\
-	Despite the Wild Volk’s connection to Dendor, he is not the most favored god of their kind. \
-	Many Wild-Kin believe that remaining civilized is of the utmost importance to keep their humanity and differentiate them from the beasts of the wilderness. \
-	They fear that they will be unable to resist Dendor’s Call when the time comes for him to gather his children.<br>\
-	<br>\
-	We are highly perceptive but slow to learn new skills and ideas."
+		The Wild-Kin, children of Dendor, they live in dense forests and prefer nature to the cities. \
+		But there are those Wild-Kin who have adapted to city life, living there as woodsmen and rangers. \
+		Where there is nature, there are Wild-Kin, and they largely live in peace wherever they are. \
+		The Wild-Kin can appear in many different forms, catlike Wild-Kin which inhabit the deserts of Valoria to the more foxlike Wild-Kin who live in the Great Forests of Dendor itself. \
+		Wild-Kin as a species are so vast and numerous that to catalogue every specific type of Wild-Kin would take ten lifetimes. \
+		Due to their relationship with nature, they favor Dendor of the divine pantheon, but that isn't to say that some Wild-Kin do not worship other gods, such as Abyssor, Malum or even Ravox."
 
 	skin_tone_wording = "Habitat"
 	default_color = "444"

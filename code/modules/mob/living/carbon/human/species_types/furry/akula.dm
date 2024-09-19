@@ -4,10 +4,12 @@
 /datum/species/akula
 	name = "Axian"
 	id = "akula"
-	desc = "An empre, now a diaspora. \
-	In old times, the empire of Ei'doan was a mighty mercantile and colonial force that ruled the seas. A century of steady decline saw them cede, lose. or abandon most of our overseas colonies. \
-	Many Akula who had come to these colonies during the empire's height simply stayed, due to marrying into certain families, or to keep their livelihoods. It is not rare to find one of my kind in nobility, or townhood, or as a wanderer. \
-	Though a strong naval tradition has left us sharp-witted and strong, we are poorly-adapted to see well in such a boggy, rocky locale."
+	desc = "<b>Axian</b><br>\
+		A race of sharklike people, Axian settlements are dotted along the coastline of the continents. \
+		A society mainly consisting of fishermen, the Axians ply their trade, and are some of the best sailors in all of Grimoria. \
+		Some Axians go so far as to put down the rod and take up the cutlass, roaming the seas as pirates. \
+		Clever and strong, the Axians can make the most of bad situations, and rarely give up. Abyssor, Malum and Ravox are their preferred gods of worship."
+
 	species_traits = list(EYECOLOR,LIPS,STUBBLE,MUTCOLORS)
 	inherent_traits = list(TRAIT_NOMOBSWAP, TRAIT_WATERBREATHING)
 	possible_ages = ALL_AGES_LIST

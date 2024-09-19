@@ -5,7 +5,12 @@
 	name = "Kobold"
 	id = "kobold"
 	desc = "<b>Kobold</b><br>\
-	In time you will learn the history of this race."
+		Thought by some scholars to be cousins to the Verminvolk, Kobolds are a small, lizardlike race which prefers to live underground. \
+		Like Dwarves their primary occupation is as miners, but some of them also dabble in smithing and crafting, a few still even entering into military service. \
+		The color of a Kobold's scales is largely determined by their parents, if a blue Kobold and a red Kobold were to have offspring then the resulting children would be purple for instance. \
+		Kobold mother's lay eggs, and guard them with their lives, although with few natural predators in their underground homes there isnt the fear of losing ones children as there once was. \
+		Kobold's worship the Divine Pantheon, mainly focused on Malum, but some Kobolds who feel an attraction to the sea prefer the worship of Abyssor instead."
+
 	species_traits = list(EYECOLOR,LIPS,STUBBLE,MUTCOLORS)
 	inherent_traits = list(TRAIT_NOMOBSWAP)
 	possible_ages = ALL_AGES_LIST

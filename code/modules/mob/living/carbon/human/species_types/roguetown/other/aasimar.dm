@@ -5,14 +5,11 @@
 	name = "Aasimar"
 	id = "aasimar"
 	desc = "<b>Aasimar</b><br>\
-	Aasimar are born of a rare union between Humans and Angels. \
-	They bear the mark of their celestial touch through many varying physical features. \
-	Their looks resemble the traditional characteristics of whichever of the Gods the Angel parent was associated with. \
-	Most commonly, Aasimar are similar to Humans, albeit taller, and possess uncanny beauty. \
-	They have strangely colored skin and are more physically frail than the average Human. \
-	Because of their upbringing, they make for natural conduits for godly powers. \
-	Rockhills populace holds them with a mixture of uneasy fear or, and respect. \
-	It is also widely believed that an Aasimars death is a bad omen..."
+		Children of Noc, it is said that once, when the night was long and her twin slept, Noc created the Aasimar, using the stars themselves in their creation. \
+		When Astrata woke and saw what Noc had done she was outraged, slapping her creations out of her hand, causing them to come crashing down to Grimoria. \
+		Some Aasimar were dormant for decades, centuries before finally waking up, a burning desire in their chest to make the most of this life crafted for them by Noc. \
+		Aasimar can appear all over the world, but they have no set group, no set city to call their own. Aasimars rarely gather together in groups of more than ten, such is how uncommon they truly are. \
+		Aasimar perform well in both scholarly and martial roles, with Noc being their preferred god of worship above all others, but there are those Aasimar who neglect Noc in favor of other gods, such as Ravox or even Astrata."
 
 	skin_tone_wording = "Craft"
 

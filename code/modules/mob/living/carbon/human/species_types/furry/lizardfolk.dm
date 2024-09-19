@@ -5,10 +5,12 @@
 	name = "Sissean"
 	id = "lizardfolk"
 	desc = "<b>Sissean</b><br>\
-	Sisseans are semi-aquatic reptilian humanoids that have lived in the low bogs surrounding Rockhill for centuries. \
-	Though not as inclined to industry as the dwarves, and not as crafty as the other Humen and Wild-Kin natives, our strength is enormous, eclipsed only perhaps by the Draken.\
-	Though we are less perceptive and slower than other races, our constitution and strength are impressive. \
-	We also have sharp claws and teeth."
+		Similar to both the Drakians and Kobolds, Sisseans are a lizardlike people, with sharp claws and teeth. \
+		They prefer bogland to reside in, and many Sisseans live on the Island of Enigma, in some of its many bogs, a brave few even settling in the Terrorbog. \
+		Not as crafty or artistic as Humens, Elves or Dwarves, the Sisseans, like their Drakian cousins, much prefer martial roles to those of artisans or smiths. \
+		The Drakians look down on the Sisseans as being lesser, bog dwelling simpletons, but the Sisseans are largely content with their lot in life, and are a generally friendly people. \
+		They prefer to worship Abyssor in the Divine Pantheon, but others are known to worship Astrata, Ravox and Dendor."
+
 	skin_tone_wording = "Skin Colors"
 	species_traits = list(EYECOLOR,LIPS,STUBBLE,MUTCOLORS)
 	inherent_traits = list(TRAIT_NOMOBSWAP)

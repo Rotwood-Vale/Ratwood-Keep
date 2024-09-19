@@ -5,14 +5,10 @@
 	name = "Half Orc"
 	id = "halforc"
 	desc = "<b>Half Orcs</b><br>\
-	With the Ironmask clan on a centuries-long warpath to consolidate all orcs within their banner, \
-	crushed orc tribes have lost their menfolk and war-widows have been scattered to the hinterlands. \
-	Between human civilization and orc savagery, orc-women opting for exile over dishonor have become \
-	more common visitors to fur trading posts and prospecting camps, eventually leading to half-orcs \
-	being born in these rough places otherwise devoid of a fairer sex. Your mother-clan is in thrall \
-	to the Ironmask, true orcs would kill you as a mongrel dog and your father’s people cannot decide \
-	between mere distrust and disgust. Yet somehow your wandering feet came to Rockhill, where \
-	half-orcs ply muscle and their hardiness in the rough underbelly or outer reaches of society."
+		The result of communion between an Orc and a Humen, these outcasts of Orcish society find themselves struggling to find purpose in the lands of other races. \
+		Looked down upon by most for their birth, Half-Orcs are not as strong as pure Orcs, but sadly still retain much of their ignorance and stupidity. \
+		Some Half-Orcs find a way to rise above their Orcish heritage, usually through martial prowess. \
+		It is for this reason that Half-Orcs predominantly worship Ravox over other gods in the divine pantheon." 
 
 	skin_tone_wording = "Clan"
 

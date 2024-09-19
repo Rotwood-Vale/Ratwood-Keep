@@ -7,9 +7,12 @@
 
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_PRIDE | MIRROR_MAGIC | RACE_SWAP | ERT_SPAWN | SLIME_EXTRACT
 	desc = "<b>Tabaxi</b><br>\
-		Tabaxi are lithe felenid humanoids that hail from the far-western Desert-Lands. Our bodies are slender, covered in a layer of fur with many possible patterns. \
-		The desert-lands, though unconquered, also lack a central strong government; as such, our people are adept at fighting our enemies, whoever they may be. \
-		Though we are rather quick, we lack strength and constitution."
+		Hailing from the south and southwest, the Tabaxi are most at home in the deserts of Valoria and Zybantine. \
+		Their bodies tending to be slender, with a layer of fur of many different patterns. \
+		Quick as a whip, the Tabaxi make up in speed what they lack in pure strength. \
+		Tabaxi are considered smooth talkers, and many of them take up positions as gamblers and minstrels. \
+		Astrata, the Firstborn of Psydon and Sun Goddess is their preferred god of worship."
+
 	skin_tone_wording = "Fur Colors"
 	species_traits = list(EYECOLOR,HAIR,FACEHAIR,LIPS,STUBBLE, MUTCOLORS)
 	inherent_traits = list(TRAIT_NOMOBSWAP)

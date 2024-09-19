@@ -5,15 +5,9 @@
 	name = "Half-Elf"
 	id = "helf"
 	desc = "<b>Half Elf</b><br>\
-	Any Humen with a portion of elven blood is considered a Half-Elf. \
-	They inherit the grace and fairy features of elven-kind yet often bear a taller and thicker body more akin to a Humen.<br>\
-	Whether a Half-Elf resides with Humens or Elves affects how they age. \
-	Half-Elves living in the home of the Elves are said to be nearly indistinguishable from their Elven kin and enjoy the eternal youth of a full-blooded Elf. \
-	Yet most Half-Elves reside in Humen cities and age as Men do.<br>\
-	Half-Elves follow the Divine Pantheon by either Humen or Elven tradition.<br>\
-	<br>\
-	Our bodies bear the flaws and benefits of both Humens and Elves, to a lesser degree. \
-	We quickly learn new skills and run for long distances, but our bodies are frail."
+		Half-Elves are the offspring of both Humens and Elves. Half-Elves take on aspects of both their parents, the gracefulness of the Elves with the ambition of Humens. \
+		Half-Elves have much to prove to the world, looked down upon by many Elves, although Humans seem to get on fine with them. \
+		Half-Elves appear all over the world where both Humens and Elves intermingle, and predominantly worship the divine pantheon."
 
 	skin_tone_wording = "Identity"
 	default_color = "FFFFFF"

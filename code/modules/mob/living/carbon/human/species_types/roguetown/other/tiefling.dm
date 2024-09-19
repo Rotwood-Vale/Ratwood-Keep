@@ -5,17 +5,13 @@
 	name = "Tiefling"
 	id = "tiefling"
 	desc = "<b>Tiefling</b><br>\
-	Tieflings, also known as Infernal-Spawn by the Dwarves, are a relatively new species in Grimmoria\
-	Having shown up sometime within the past two centuries, very little is known about their culture \
-	as many seem to simply intergrate within whatever society they find themselves in. \
-	Tieflings usually cause strong disturbances with their presence, as their fiendish looks \
-	Many have claimed that they are the spawn of a succubus (Or incubus) laying with a mortal. \
-	In this, their species has suffered vast tragedy throughout their short history, \
-	Facing scrutiny, judgement and even genocide in the past. Wounding many tiefling psyche \
-	and leading to most seeking a solitary life outside the watchful eyes of others. \
-	Tiefling cannot reproduce with mortals, and so no half-breed exists. \
-	Tiefling tend to be extremely perceptive and paranoid, as luck is rarely on their side \
-	and their unique biology makes them extremely susceptible to injury."
+		The offspring of demons with mortal Humens, a millenia ago, demons walked up from the steps of hell, spilling out onto Grimoria. \
+		Thousands of years later they were driven back, but in that time they had spawned a number of offspring with their Humen slaves. \
+		These came to be known as 'Tieflings', largely despised by most people for centuries, it was only recently that they became more tolerated, even if the Church still watches them with a weary eye. \
+		When a Tiefling had offspring, no matter the race of their partner, the child would always be a pureblooded Tiefling. \
+		The taint of their very being going back generations and generations, and no amount of cleansing can be rid of it. Some Tieflings embrace their demonic origin, while other shun it. \
+		Those that embrace it worship the Inhumen Pantheon and those which shun it worship the Divine Pantheon. \
+		The former taking up positions in crime, and spreading heresy, while the latter become soldiers, craftsmen, and do anything they can to distance themselves from their cruel brothers and sisters who would consider the curse a blessing."
 
 	skin_tone_wording = "Progenitor"
 

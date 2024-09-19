@@ -6,19 +6,12 @@
 	id = "dwarfm"
 	clothes_id = "dwarf"
 	desc = "<b>Dwarf</b><br>\
-	A proud and robust race of short mountain folk, \
-	the dwarves are known for their pride in martial strength \
-	and their tenacity towards their ancient traditions.\
-	A Dwarf, much like the rock that they carve their fortress out of \
-	is stubborn and ancient, with their race being the longest lived of all \
-	of the weeping gods creation. They, like stone: also rarely change \
-	and tend to shun the modernization of the world around them. \
-	Instead, a Dwarf looks to his ancestorial heritage for guidance on \
-	the various challenges they face. Even if, in some irony: this behaviour \
-	leads the race towards technological advacement as they continue \
-	to improve their craft through powerful mechanization and forging \
-	Dwarves are hearty, but are not known for their speed or eyesight... \
-	Each dwarf hails from a ancient fortress named after the most plentiful mineral."
+		Dwarves are a stout, short people, they are strong, and favor mining and smithing above any other occupation. \
+		A generally friendly people, they get along well with most races save Elves, who they at worst inflict with their stinging banter. \
+		The dwraves prefer to live in mountains and caves, the comfort of stone walls far more appealing than that of wood. \
+		The skin of dwarves is usually dictated by the city in which they're born, and named after a valuable ore. \
+		Dwarven males are defined by their large beards, wheras female dwarves usually lack such facial hair. \
+		Dwarves worship the divine pantheon much like the Humens, but prefer the God of smiths and miners, Malum."
 
 	skin_tone_wording = "Dwarf Fortress"
 

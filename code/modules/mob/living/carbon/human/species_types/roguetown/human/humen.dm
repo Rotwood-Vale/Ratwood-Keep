@@ -5,12 +5,11 @@
 	name = "Humen"
 	id = "humen"
 	desc = "<b>Humen</b><br>\
-	The most widespread race in Grimoria, Humens are found in nearly every civilized place on land. \
-	This extensive distribution of their kind has led to variations between Humens in custom and appearance. \
-	However, despite differences in appearance and geographical origin, all Humens have the same capabilities.<br>\
-	Humens hold dear the belief that they are the firstborn children of Psydon, \
-	Knowledge of good and evil is his divine gift bestowed upon them. \
-	The Divine Pantheon is the predominant religion of their kind."
+		Humens are one of the most predominant races in Grimoria, every continent, every island, and every city has at least some humens. \
+		It is largely recognized that they are the children of Psydon, formed in his image. Humens appear in all shapes and sizes, and no two humen is the same, so it is said. \
+		Those humens from Grenzelhoft are light in skintone, and predominantly have blue eyes, while a humen born in Zybantine may have a darker complexion. \
+		Despite any geographical difference between these humens, they are largely the same, the only difference being any potential accent they may have developed as they were raised in different cultures. \
+		Humens predominantly worship the divine pantheon, and some fanatical humens even go so far as to worship Psydon himself."
 
 	skin_tone_wording = "Ancestry"
 

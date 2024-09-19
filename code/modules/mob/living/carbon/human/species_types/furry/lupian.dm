@@ -5,12 +5,11 @@
 	name = "Lupian"
 	id = "lupian"
 	desc = "<b>Lupian</b><br>\
-	Lupians are the sons and daughters of Noc. They are a volf-like people hailing from the Northern Regions of the world. \
-	They are resilient, cunning and fight ready creachures capable of surviving the north thanks to their rugged pelts, \
-	sharp teeth and deep-rooted spirit of community. They are very dutiful individuals and make fantastic and fearsome \
-	warriors to those who earn their loyalty. Thanks to their pack minded nature they are slow to trust the other races \
-	but form deep connections with those they do. In recent years they have been driven from the forests by unrest and pressed \
-	into cohabitation with races they'd deem lesser."
+		Originating from the north, the Lupians are a race of wolflike peoples, living in tight knight packs. \
+		With thick pelts and sharp teeth, for centuries they have managed to survive in places other races would not. \
+		Due to their packlike mentality, they are slow to trust outsiders, but when they do a deep connection is formed which will last until death. \
+		The sons and daughters of Noc, they prefer her over the other gods in the Divine Pantheon, and howl at the moon whenever they see it as a form of prayer."
+
 	skin_tone_wording = "Pack"
 	species_traits = list(
 		MUTCOLORS,

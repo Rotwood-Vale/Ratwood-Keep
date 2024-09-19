@@ -5,15 +5,10 @@
 	name = "Half-Kin"
 	id = "demihuman"
 	desc = "<b>Half-Kin</b><br>\
-	A half-breed that arises in Humens with Wild-Kin in their lineage. \
-	They are children of Dendor by blood, but their Humen heritage makes this connection impotent. \
-	Half-Kin are said to be the only ones of Dendor’s progeny who can resist his Call of the Wild.<br>\
-	They bear animalistic features, most commonly bestial ears and tails modifying their base Humen form. \
-	These features that mark Half-Kin apart can skip generations, and many half-breeds are born to Humen parents with only a distant Wild-Kin ancestor.<br>\
-	As they are typically born to Humens, most Half-Kin worship the Divine Pantheon.<br>\
-	<br>\
-	Our bodies bear the flaws and benefits of both Humens and Wild-Kin, to a lesser degree. \
-	We are skilled with bows and have great endurance. However, we adapt slowly to new ideas."
+		Half-Kin are the resulting offspring of a relation between Wild-Kin and Humens or Elves. \
+		The Half-Kin take on some features of both parents, a Half-Kin with an Elven parent may have sharp ears, as well as whatever features their Wild-Kin parent possessed. \
+		Half-Kin take to the cities much more easily than their purebred counterparts, and integrate rather easily into whatever society they find themselves in. \
+		Their relationship to Dendor, diluted somewhat, is not as strong as pure Wild-Kin, as such they worship any god of the divine pantheon, with many favoring no particular god among them."
 
 	skin_tone_wording = "Ancestry"
 	default_color = "FFFFFF"

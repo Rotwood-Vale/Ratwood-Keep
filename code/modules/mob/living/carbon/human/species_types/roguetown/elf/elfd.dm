@@ -5,13 +5,12 @@
 	name = "Dark Elf"
 	id = "elfd"
 	desc = "<b>Dark Elf</b><br>\
-	Elves, are a generic term for tall, pointy-eared humanoids\
-    Of whom trace their original heritage to the ancient mysterious Snow Elves. \
-	These ones are of a dark complexion and originate mostly from the underdark. \
-    Their culture and entire lives normally involve serving the evil gods of the inhumen pantheon. \
-    Previously rare but in recent times, more and more dark elfs can be seen on the surface. \
-    The ones who aren't overtly cruel and bloodthirsty, tend to flee to the surface lest they get culled by their own society, \
-    while some more sinister ones abandon their cities in search of new and greater power."
+		Dark Elves, the product of Zizo's forceful obtaining of Godhood which cursed the Snow Elves to embody the aspects of Zizo. \
+		They live deep underground, deeper than even many Dwarves within the city-states of their Shadowcities. \ 
+		Even though without sunlight, Dark Elves' often have dark hued skin made up of dark blues, purples and shades of black, usually with black or white hair. \
+		Mistrusted by most other races, the Dark Elves had, for centuries, enslaved other races, ascending from their deep cities to capture and enslave whomever they find before dragging them back down. \
+		Some Dark Elves, either disagreeing with the act of slavery, or simply wanting a change of scenery, leave the Shadowcities behind, hoping to find something better on the surface. \
+		Largely hedonistic and cruel, the Dark Elves worship the Inhumen Pantheon, their main worship going towards Baotha, The Spider With Many Legs, Desire Made Form, Pleasure Unending."
 
 /*
 	Former RT Desc: These guys were undead which doesn't really fit considering now you have a ton of them walking around.
