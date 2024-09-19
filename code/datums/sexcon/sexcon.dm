@@ -213,29 +213,29 @@
 	var milk_amount
 	switch(breasts.breast_size)
 		if(0)
-			milk_amount = 5
-		if(1)
-			milk_amount = 10
-		if(2)
 			milk_amount = 15
-		if(3)
+		if(1)
 			milk_amount = 20
-		if(4)
+		if(2)
 			milk_amount = 25
-		if(5)
+		if(3)
 			milk_amount = 35
+		if(4)
+			milk_amount = 45
+		if(5)
+			milk_amount = 55
 			
 	var/obj/item/organ/vagina/vagina = user.getorganslot(ORGAN_SLOT_VAGINA)
 	if(vagina.pregnant)
 	{
-		milk_amount = milk_amount + 10
+		milk_amount = milk_amount + 20
 	}
 
 	log_combat(user, user, "Was milked into a container")
 	user.visible_message(span_lovebold("[user] lactates into [C]!"))
 	playsound(user, 'sound/misc/mat/endout.ogg', 50, TRUE, ignore_walls = FALSE)
-	milk_amount = round((milk_amount * min((world.time - breasts.last_milked)/10 MINUTES, 1)), 1)
-	C.reagents.add_reagent(/datum/reagent/consumable/milk, milk_amount)
+	milk_amount = round((milk_amount * min((world.time - breasts.last_milked)/2 MINUTES, 1)), 1)
+	C.reagents.add_reagent(/datum/reagent/consumable/breastmilk, milk_amount)
 	breasts.last_milked = world.time
 	after_milking()
 
