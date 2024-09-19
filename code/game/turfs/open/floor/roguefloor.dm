@@ -149,12 +149,16 @@
 	tiled_dirt = FALSE
 	landsound = 'sound/foley/jumpland/grassland.wav'
 	slowdown = 0
+	smooth = SMOOTH_TRUE
 	neighborlay = "grassedge"
 
 /turf/open/floor/rogue/grass/Initialize()
 	dir = pick(GLOB.cardinals)
 //	GLOB.dirt_list += src
 	. = ..()
+
+/turf/open/floor/rogue/grass/cardinal_smooth(adjacencies)
+	roguesmooth(adjacencies)
 
 /turf/open/floor/rogue/dirt/ambush
 	name = "dirt"
@@ -316,8 +320,8 @@
 	tiled_dirt = FALSE
 	landsound = 'sound/foley/jumpland/dirtland.wav'
 	smooth = SMOOTH_TRUE
-	canSmoothWith = list(/turf/open/floor/rogue, /turf/closed/mineral, /turf/closed/wall/mineral)
-	neighborlay = "dirtedge"
+	canSmoothWith = list(/turf/open/floor/rogue/dirt,/turf/open/floor/rogue/grass)
+	neighborlay = "roadedge"
 	slowdown = 0
 
 /turf/open/floor/rogue/dirt/road/attack_right(mob/user)
@@ -388,35 +392,6 @@
 		add_overlay(New)
 	return New
 
-
-/turf/open/floor/rogue/dirt/road/Initialize()
-	dir = pick(GLOB.cardinals)
-	for(var/P in subtypesof(/turf/closed/wall/mineral))
-		canSmoothWith += P
-	for(var/P in subtypesof(/turf/closed/mineral))
-		canSmoothWith += P
-	for(var/P in subtypesof(/turf/open/floor/rogue))
-//		if(prob(90))
-		if(P == /turf/open/floor/rogue/dirt/road)
-			continue
-		canSmoothWith += P
-//	queue_smooth(src)
-	. = ..()
-
-/turf/open/floor/rogue/dirt/nrich
-	name = "enriched soil"
-	desc = "transplanted dirt, made into a pile and smoothed over to grow crops."
-	icon_state = "dirt"
-	layer = MID_TURF_LAYER
-	footstep = FOOTSTEP_MUD
-	barefootstep = FOOTSTEP_MUD
-	heavyfootstep = FOOTSTEP_MUD
-	tiled_dirt = FALSE
-	landsound = 'sound/foley/jumpland/dirtland.wav'
-	smooth = SMOOTH_FALSE
-	neighborlay = "dirtedge"
-	slowdown = 0
-	muddy = FALSE
 
 /turf/open/floor/rogue/underworld/road
 	name = "ash"
@@ -657,9 +632,9 @@
 	clawfootstep = FOOTSTEP_HARD_CLAW
 	heavyfootstep = FOOTSTEP_GENERIC_HEAVY
 	landsound = 'sound/foley/jumpland/stoneland.wav'
-	neighborlay = "cobblerock"
-	smooth = SMOOTH_TRUE
-	canSmoothWith = list(/turf/open/floor/rogue/dirt, /turf/open/floor/rogue/grass)
+//	neighborlay = "cobblerock"
+	smooth = SMOOTH_MORE
+	canSmoothWith = list(/turf/open/floor/rogue, /turf/closed/mineral, /turf/closed/wall/mineral)
 
 /turf/open/floor/rogue/cobblerock/cardinal_smooth(adjacencies)
 	roguesmooth(adjacencies)
