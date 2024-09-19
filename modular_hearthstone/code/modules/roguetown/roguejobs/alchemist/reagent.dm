@@ -9,7 +9,7 @@
 	alpha = 225
 
 /datum/reagent/medicine/paralysispot/overdose_process(mob/living/L)
-	L.Paralyze(200)
+	L.Paralyze(500)
 	..()
 	. = 1 
 
@@ -19,26 +19,41 @@
 	reagent_state = LIQUID
 	color = "#fcefa8"
 	taste_description = "drowsyness"
-	overdose_threshold = 31
+	overdose_threshold = 0
 	metabolization_rate = 1 * REAGENTS_METABOLISM
 	alpha = 225
 
 /datum/reagent/medicine/soporpot/on_mob_life(mob/living/carbon/M)
 	M.confused += 1
 	M.dizziness += 1
-	M.rogstam_add(-5)
-	if(M.rogfat > 80)
-		M.apply_status_effect(/datum/status_effect/debuff/soporific)
+	M.rogstam_add(-25)
+	if(M.rogfat > 75)
+		M.drowsyness += 2
 	else
 		M.rogfat_add(15)
 	..()
 	. = 1
 
-/datum/reagent/medicine/soporpot/overdose_process(mob/living/carbon/M)
-	M.drowsyness += 2
+/datum/reagent/medicine/tranquilizer // Unique to bolt soporific application. More intense effect for 5x cost.
+	name = "Tranquilizer"
+	description = "Weakens those it enters."
+	reagent_state = LIQUID
+	color = "#fcefa8"
+	taste_description = "drowsyness"
+	overdose_threshold = 0
+	metabolization_rate = 0.5 * REAGENTS_METABOLISM
+	alpha = 225
+
+/datum/reagent/medicine/tranquilizer/on_mob_life(mob/living/carbon/M)
 	M.confused += 2
+	M.dizziness += 2
+	M.rogstam_add(-50)
+	if(M.rogfat > 75)
+		M.drowsyness += 4
+	else
+		M.rogfat_add(20)
 	..()
-	. = 1 
+	. = 1
 
 /datum/reagent/medicine/fortitudepot
 	name = "Strength Potion"

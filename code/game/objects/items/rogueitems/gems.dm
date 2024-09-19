@@ -221,6 +221,10 @@
 	gender = PLURAL
 	icon = 'icons/roguetown/items/gems.dmi'
 	icon_state = "sublimate"
-	list_reagents = null // Maybe give this mana restorative properties?
-	grind_results = null
-	volume = null
+	volume = 30
+	list_reagents = list(
+		/datum/reagent/gemdust = 5,
+		/datum/reagent/medicine/manapot = 25) // Enough manna pot to give 20% fatigue bar, but gemdust to make it obnoxious compared to manna potion.
+	grind_results = list(
+		/datum/reagent/gemdust = 5,
+		/datum/reagent/medicine/manapot = 25)

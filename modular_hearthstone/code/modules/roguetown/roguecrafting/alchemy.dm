@@ -3,17 +3,28 @@
 	result = list(/obj/item/reagent_containers/glass/bottle/rogue/paralysispot)
 	reqs = list(
 		/obj/item/reagent_containers/glass/bottle = 1, 
-		/obj/item/reagent_containers/powder/sublimate = 2, 
+		/obj/item/reagent_containers/powder/sublimate = 3, 
 		/obj/item/hearthnatural/beespider_fang = 1 )
-	craftdiff = 4
+	craftdiff = 5
 
 /datum/crafting_recipe/roguetown/alchemy/soporpot
-	name = "Soporific Potion"
+	name = "Soporific Poison"
 	result = list(/obj/item/reagent_containers/glass/bottle/rogue/soporpot)
 	reqs = list(
 		/obj/item/reagent_containers/glass/bottle = 1, 
-		/obj/item/ash = 2, 
-		/obj/item/reagent_containers/food/snacks/grown/berries/rogue/poison = 2 )
+		/obj/item/ash = 1, 
+		/obj/item/natural/worms/leech = 1,
+		/obj/item/reagent_containers/food/snacks/grown/berries/rogue/poison = 5 )
+	craftdiff = 2
+
+/datum/crafting_recipe/roguetown/alchemy/soporpotx3
+	name = "Soporific Poison (x3)"
+	result = list(/obj/item/reagent_containers/glass/bottle/rogue/soporpot, /obj/item/reagent_containers/glass/bottle/rogue/soporpot, /obj/item/reagent_containers/glass/bottle/rogue/soporpot)
+	reqs = list(
+		/obj/item/reagent_containers/glass/bottle = 3, 
+		/obj/item/ash = 3, 
+		/obj/item/natural/worms/leech = 3,
+		/obj/item/reagent_containers/food/snacks/grown/berries/rogue/poison = 15 )
 	craftdiff = 2
 
 /datum/crafting_recipe/roguetown/alchemy/fortitudepot

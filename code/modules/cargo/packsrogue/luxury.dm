@@ -16,6 +16,18 @@
 	cost = 5
 	contains = list(/obj/item/reagent_containers/powder/moondust)
 
+/datum/supply_pack/rogue/luxury/sublimate // Far cheaper to make your own.
+	name = "Arcyne Sublimate"
+	cost = 80
+	contains = list(
+		/obj/item/reagent_containers/powder/sublimate,
+		/obj/item/reagent_containers/powder/sublimate,
+		/obj/item/reagent_containers/powder/sublimate,
+		/obj/item/reagent_containers/powder/sublimate,
+		/obj/item/reagent_containers/powder/sublimate,
+		/obj/item/reagent_containers/powder/sublimate,
+	)
+
 /datum/supply_pack/rogue/luxury/spice
 	name = "Spice"
 	cost = 50
