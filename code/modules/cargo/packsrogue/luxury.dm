@@ -15,14 +15,19 @@
 	cost = 15
 	contains = list(/obj/item/perfume/random)
 
+/datum/supply_pack/rogue/luxury/ozium
+	name = "Ozium"
+	cost = 5
+	contains = list(/obj/item/reagent_containers/powder/ozium)
+
 /datum/supply_pack/rogue/luxury/moondust
 	name = "Moon Dust"
-	cost = 5
+	cost = 30
 	contains = list(/obj/item/reagent_containers/powder/moondust)
 
 /datum/supply_pack/rogue/luxury/spice
 	name = "Spice"
-	cost = 50
+	cost = 20
 	contains = list(/obj/item/reagent_containers/powder/spice)
 
 /datum/supply_pack/rogue/luxury/westspice

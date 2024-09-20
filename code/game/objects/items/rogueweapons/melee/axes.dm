@@ -156,7 +156,6 @@
 	desc = "An iron hand axe."
 	icon_state = "hatchet"
 	minstr = 1
-	dropshrink = 0.75
 	max_blade_int = 400
 	smeltresult = /obj/item/ingot/iron
 	gripped_intents = null

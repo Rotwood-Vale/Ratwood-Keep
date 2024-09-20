@@ -1374,3 +1374,11 @@ GLOBAL_VAR_INIT(mobids, 1)
 		input = capitalize(copytext_char(input, customsayverb+1))
 	return "[message_spans_start(spans)][input]</span>"
 
+/mob/proc/haswings(mob/living/carbon/human/Target)
+	if(!ishuman(Target))
+		return FALSE
+	var/obj/item/organ/wings/Wing = Target.getorganslot(ORGAN_SLOT_WINGS)
+	if(Wing == null)
+		return FALSE
+	else
+		return TRUE

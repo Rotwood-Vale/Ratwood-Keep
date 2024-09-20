@@ -12,8 +12,9 @@
 	pickup_sound =  'sound/blank.ogg'
 	sleeved = 'icons/roguetown/clothing/onmob/helpers/sleeves_armor.dmi'
 	sleevetype = "shirt"
-	edelay_type = 1
+	edelay_type = 0
 	equip_delay_self = 25
+	unequip_delay_self = 25
 	bloody_icon_state = "bodyblood"
 	boobed = TRUE
 	resistance_flags = FIRE_PROOF
@@ -83,6 +84,7 @@
 	body_parts_covered = CHEST|GROIN
 	anvilrepair = /datum/skill/craft/armorsmithing
 	armor_class = ARMOR_CLASS_LIGHT
+	edelay_type = 1
 	w_class = WEIGHT_CLASS_SMALL
 
 /obj/item/clothing/suit/roguetown/armor/plate
@@ -101,6 +103,7 @@
 	anvilrepair = /datum/skill/craft/armorsmithing
 	smeltresult = /obj/item/ingot/steel
 	equip_delay_self = 40
+	unequip_delay_self = 40
 	armor_class = ARMOR_CLASS_HEAVY
 	w_class = WEIGHT_CLASS_BULKY
 	clothing_flags = CANT_SLEEP_IN
@@ -135,7 +138,10 @@
 	icon_state = "plate"
 	max_integrity = 520
 	body_parts_covered = CHEST|GROIN|VITALS|LEGS|ARMS
-	equip_delay_self = 80
+	equip_delay_self = 1200
+	unequip_delay_self = 1200
+	equip_delay_other = 60
+	strip_delay = 60
 
 /obj/item/clothing/suit/roguetown/armor/plate/half/iron
 	name = "iron breastplate"
