@@ -167,6 +167,7 @@
 #define PRISONERB	(1<<16)
 #define LUNATIC		(1<<17)
 #define MIGRANT		(1<<18)
+#define BANDIT		(1<<19)
 
 #define YOUNGFOLK	(1<<6)
 
@@ -277,11 +278,12 @@
 #define JDO_ADVENTURER 30.1
 #define JDO_PILGRIM 30.2
 #define JDO_MIGRANT 32.3
+#define JDO_BANDIT 31.3
 
 #define JDO_MERCENARY 31
 #define JDO_GRENZELHOFT 31.1
 #define JDO_DESERT_RIDER 31.2
-#define JDO_VET 31.3
+#define JDO_VET 31.4
 
 #define JDO_VAGRANT 33
 #define JDO_ORPHAN 34
@@ -363,7 +365,8 @@
 	/datum/job/roguetown/pilgrim,\
 	/datum/job/roguetown/adventurer,\
 	/datum/job/roguetown/mercenary/desert_rider,\
-	/datum/job/roguetown/mercenary/grenzelhoft
+	/datum/job/roguetown/mercenary/grenzelhoft,\
+	/datum/job/roguetown/bandit
 
 #define GARRISON_ROLES \
 	/datum/job/roguetown/bogguardsman,\
