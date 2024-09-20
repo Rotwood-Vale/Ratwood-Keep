@@ -218,7 +218,9 @@
 
 /datum/sex_controller/proc/calculate_milk()
 	var/obj/item/organ/breasts/breasts = user.getorganslot(ORGAN_SLOT_BREASTS)
+	var/obj/item/organ/vagina/vagina = user.getorganslot(ORGAN_SLOT_VAGINA)
 	var milk_amount
+
 	if(isseelie(user))
 	{
 		switch(breasts.breast_size)
@@ -234,7 +236,11 @@
 				milk_amount = 9
 			if(5)
 				milk_amount = 10
-		return milk_amount = round((milk_amount * min((world.time - breasts.last_milked)/2 MINUTES, 1)), 1)
+		
+		if(vagina.pregnant)
+		{
+			milk_amount = milk_amount + 5
+		}
 	}
 	else
 	{
@@ -252,14 +258,12 @@
 			if(5)
 				milk_amount = 55
 				
-		var/obj/item/organ/vagina/vagina = user.getorganslot(ORGAN_SLOT_VAGINA)
 		if(vagina.pregnant)
 		{
 			milk_amount = milk_amount + 20
 		}
-
-		return milk_amount = round((milk_amount * min((world.time - breasts.last_milked)/2 MINUTES, 1)), 1)
 	}
+	return milk_amount = round((milk_amount * min(((world.time - breasts.last_milked)/(2 MINUTES)), 1)), 1)
 
 /datum/sex_controller/proc/suck_milk()
 	var milk_amount
@@ -296,6 +300,7 @@
 	set_arousal(40)
 	user.emote("sexmoanhvy", forced = TRUE)
 	user.playsound_local(user, 'sound/misc/mat/end.ogg', 100)
+	last_ejaculation_time = world.time
 
 /datum/sex_controller/proc/after_intimate_climax()
 	if(user == target)
