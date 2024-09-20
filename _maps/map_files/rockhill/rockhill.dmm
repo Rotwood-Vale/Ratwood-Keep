@@ -7049,6 +7049,10 @@
 	},
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/manor)
+"gOi" = (
+/obj/structure/roguemachine/scomm/r,
+/turf/open/floor/rogue/ruinedwood/chevron,
+/area/rogue/indoors/town/tavern)
 "gOl" = (
 /obj/structure/table/wood,
 /turf/open/floor/rogue/wood,
@@ -9349,6 +9353,10 @@
 /area/rogue/indoors/town/garrison)
 "jfC" = (
 /turf/open/floor/rogue/dirt/road,
+/area/rogue/indoors/town/tavern)
+"jfK" = (
+/obj/structure/roguemachine/scomm/r,
+/turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/tavern)
 "jgd" = (
 /obj/structure/table/wood{
@@ -13042,6 +13050,10 @@
 	},
 /turf/open/floor/rogue/carpet,
 /area/rogue/indoors/town/manor)
+"mZp" = (
+/obj/structure/roguemachine/scomm/l,
+/turf/open/floor/carpet/red,
+/area/rogue/indoors/town/tavern)
 "naj" = (
 /obj/machinery/light/rogue/torchholder{
 	dir = 4
@@ -18903,9 +18915,9 @@
 /turf/open/floor/rogue/tile,
 /area/rogue/indoors/town/tavern)
 "sPb" = (
-/obj/structure/roguemachine/scomm,
-/turf/open/transparent/openspace,
-/area/rogue/outdoors/town)
+/obj/structure/roguemachine/scomm/l,
+/turf/open/floor/rogue/woodturned,
+/area/rogue/indoors/town/tavern)
 "sPr" = (
 /obj/structure/closet/crate/chest{
 	lockid = "keep_armory"
@@ -390286,7 +390298,7 @@ bDY
 bDY
 nGw
 wRK
-wRK
+sPb
 wNn
 hMG
 mkO
@@ -393094,7 +393106,7 @@ eLT
 hwx
 wNn
 baS
-iHm
+jfK
 iHm
 iHm
 iHm
@@ -490387,7 +490399,7 @@ xjl
 wNn
 xzl
 nMR
-nMR
+mZp
 eZh
 mCz
 xAt
@@ -491998,7 +492010,7 @@ apR
 apR
 apR
 ctm
-sPb
+xAt
 xAt
 xAt
 xAt
@@ -492790,7 +492802,7 @@ xAt
 xvv
 jam
 ajC
-apR
+gOi
 sMA
 xvv
 djE
