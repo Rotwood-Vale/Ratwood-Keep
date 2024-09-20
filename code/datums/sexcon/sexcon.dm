@@ -265,18 +265,6 @@
 	}
 	return milk_amount = round((milk_amount * min(((world.time - breasts.last_milked)/(5 MINUTES)), 1)), 1)
 
-/datum/sex_controller/proc/suck_milk()
-	var milk_amount
-	var/obj/item/organ/breasts/breasts = user.getorganslot(ORGAN_SLOT_BREASTS)
-	log_combat(user, user, "Had their milk sucked")
-	user.visible_message(span_lovebold("[user] lactates into [target]'s mouth!"))
-	playsound(user, 'sound/misc/mat/endout.ogg', 50, TRUE, ignore_walls = FALSE)
-	milk_amount = calculate_milk()
-	target.reagents.add_reagent(/datum/reagent/consumable/breastmilk, milk_amount)
-	to_chat(target, span_notice("Tastes like breast milk."))
-	breasts.last_milked = world.time
-	after_milking()
-
 /datum/sex_controller/proc/milk_container(obj/item/reagent_containers/glass/C)
 	var/obj/item/organ/breasts/breasts = user.getorganslot(ORGAN_SLOT_BREASTS)
 	var milk_amount
