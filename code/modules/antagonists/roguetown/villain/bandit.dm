@@ -20,7 +20,7 @@
         return
     if(L.mind.has_antag_datum(/datum/antagonist))
         return
-    var/datum/antagonist/new_antag = new /datum/antagonist/purishep()
+    var/datum/antagonist/new_antag = new /datum/antagonist/bandit()
     L.mind.add_antag_datum(new_antag)		
 
 /datum/antagonist/bandit/examine_friendorfoe(datum/antagonist/examined_datum,mob/examiner,mob/examined)
