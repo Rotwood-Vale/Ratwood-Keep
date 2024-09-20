@@ -512,11 +512,6 @@
 		return
 	milk_container(milker.get_active_held_item())
 
-/datum/sex_controller/proc/handle_nipple_sucking(mob/living/carbon/human/milker)
-	if(arousal < ACTIVE_EJAC_THRESHOLD)
-		return
-	suck_milk()
-
 /datum/sex_controller/proc/can_use_penis()
 	if(HAS_TRAIT(user, TRAIT_LIMPDICK))
 		return FALSE
