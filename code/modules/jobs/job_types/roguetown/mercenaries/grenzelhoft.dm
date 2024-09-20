@@ -15,7 +15,7 @@
 	total_positions = 4
 	spawn_positions = 4
 	advclass_cat_rolls = list(CTAG_GRENZEL = 20)
-	//min_pq = 2 //good fragger role
+	min_pq = 2 //good fragger role
 	max_pq = null
 	cmode_music = 'sound/music/combat_grenzelhoft.ogg'
 	advjob_examine = TRUE
