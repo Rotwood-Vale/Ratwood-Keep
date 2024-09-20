@@ -57,12 +57,12 @@
 		B.aggressive = 0
 	return tamed
 
-/obj/effect/proc_holder/spell/targeted/conjure_glowshroom
-	name = "Fungal Illumination"
+/obj/effect/proc_holder/spell/targeted/conjure_vines
+	name = "Vine Sprout"
 	range = 1
 	overlay_state = "blesscrop"
-	releasedrain = 120
-	charge_max = 30 SECONDS
+	releasedrain = 80
+	charge_max = 25 SECONDS
 	chargetime = 20
 	no_early_release = TRUE
 	movement_interrupt = TRUE
@@ -71,15 +71,20 @@
 	cast_without_targets = TRUE
 	sound = 'sound/items/dig_shovel.ogg'
 	associated_skill = /datum/skill/magic/holy
-	invocation = "Treefather light the way."
+	invocation = "Treefather, bring forth vines."
 	invocation_type = "shout" //can be none, whisper, emote and shout
-	devotion_cost = 60
+	devotion_cost = 40
 
-/obj/effect/proc_holder/spell/targeted/conjure_glowshroom/cast(list/targets, mob/user = usr)
+/obj/effect/proc_holder/spell/targeted/conjure_vines/cast(list/targets, mob/user = usr)
 	. = ..()
-	var/turf/T = user.loc
-	for(var/X in GLOB.cardinals)
-		var/turf/TT = get_step(T, X)
-		if(!isclosedturf(TT) && !locate(/obj/structure/glowshroom) in TT)
-			new /obj/structure/glowshroom(TT)
+	var/turf/target_turf = get_step(user, user.dir)
+	var/turf/target_turf_two = get_step(target_turf, turn(user.dir, 90))
+	var/turf/target_turf_three = get_step(target_turf, turn(user.dir, -90))
+	if(!locate(/obj/structure/spacevine) in target_turf)
+		new /obj/structure/spacevine/dendor(target_turf)
+	if(!locate(/obj/structure/spacevine) in target_turf_two)
+		new /obj/structure/spacevine/dendor(target_turf_two)
+	if(!locate(/obj/structure/spacevine) in target_turf_three)
+		new /obj/structure/spacevine/dendor(target_turf_three)
+	
 	return TRUE
