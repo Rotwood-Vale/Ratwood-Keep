@@ -212,6 +212,7 @@ Hotkey-Mode: (hotkey-mode must be on)
 		if(msg)
 			GLOB.roleplay_ads[mob.mobid] = "<b>[C.real_name]</b> - [msg]<BR>"
 			to_chat(C, span_info("Roleplay ad set."))
+			log_game("[C] has set their Roleplay Ad to '[msg]'.")
 
 /client/verb/changefps()
 	set category = "Options"
