@@ -177,13 +177,13 @@ SUBSYSTEM_DEF(vote)
 			if(vote && 1<=vote && vote<=choices.len)
 				voted += usr.ckey
 				var/vote_power = 1
-				if(usr.client.holder)
-					vote_power += 5
+				/*if(usr.client.holder)
+					vote_power += 5*/
 				if(ishuman(usr))
 					var/mob/living/carbon/H = usr
 					if(H.stat != DEAD)
 						vote_power += 3
-					if(H.job)
+					/*if(H.job)
 						var/list/list_of_powerful = list("Monarch", "Consort", "Priest", "Steward", "Hand")
 						if(H.job in list_of_powerful)
 							vote_power += 5
@@ -191,7 +191,7 @@ SUBSYSTEM_DEF(vote)
 							if(H.mind)
 								for(var/datum/antagonist/D in H.mind.antag_datums)
 									if(D.increase_votepwr)
-										vote_power += 3
+										vote_power += 3*/
 				choices[choices[vote]] += vote_power //check this
 				return vote
 	return 0
