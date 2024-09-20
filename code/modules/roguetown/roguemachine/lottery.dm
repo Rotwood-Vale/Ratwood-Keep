@@ -1,12 +1,16 @@
 /obj/structure/roguemachine/lottery_roguetown
 	name = "XYLIX'S FORTUNE"
-	desc = "An infinite, yawning hole that makes or breaks men. The current payout is four times your tithe."
+	desc = "An infinite, yawning hole that makes or breaks men. Come and play!"
 	icon = 'icons/roguetown/misc/machines.dmi'
 	icon_state = "lottery"
 	density = FALSE
 	pixel_y = 32
 	var/gamblingprice = 0
-	var/gamblingprob = 35
+
+//ensure these two are the same, or else first roll will be fucky
+	var/gamblingprob = 60
+	var/gamblingbaseprob = 60
+
 	var/diceroll = 100
 	var/maxtithing = 100
 	var/stopgambling = 0
@@ -70,7 +74,7 @@
 			src.say("Well-maneuvered, aristocrat! Your peasant's tithe is now [src.gamblingprice]. Play again?")
 			playsound(src, 'sound/misc/machinetalk.ogg', 100, FALSE, -1)
 			src.stopgambling = 0
-			src.gamblingprob = 0
+			src.gamblingprob = src.gamblingbaseprob
 			return
 		else
 			src.say(pick("TEN, WHEEL OF FORTUNE - inversed.", "The Castle. O, Omen!", "A harvest of locusts...!", "Look into my eyes and whisper your woes.", "Aw, dangit.", "Fool. Poor fool.", "Your eyes leak out of your skull, drool falling from your lips.", "Divine idiocy."))
@@ -79,7 +83,7 @@
 			src.stopgambling = 0
 			src.say(pick("King of fools, your land is barren. Play again?", "Divine comedy. Play again?", "Next time, surely. Play again?", "Haha-...ah-ha-ha! Again! Play again, jester!", "Poor beggar! Spin me again?"))
 			playsound(src, 'sound/misc/bug.ogg', 100, FALSE, -1)
-			src.gamblingprob = 0
+			src.gamblingprob = src.gamblingbaseprob
 			src.gamblingprice = 0
 			return
 
@@ -125,5 +129,5 @@
 			return
 		else
 			budget2change(coin_amt*mod, user, selection)
-
+			gamblingprice -= coin_amt*mod
 
