@@ -246,24 +246,24 @@
 	{
 		switch(breasts.breast_size)
 			if(0)
-				milk_amount = 15
+				milk_amount = 10
 			if(1)
-				milk_amount = 20
+				milk_amount = 15
 			if(2)
-				milk_amount = 25
+				milk_amount = 20
 			if(3)
-				milk_amount = 35
+				milk_amount = 25
 			if(4)
-				milk_amount = 45
+				milk_amount = 30
 			if(5)
-				milk_amount = 55
+				milk_amount = 35
 				
 		if(vagina.pregnant)
 		{
 			milk_amount = milk_amount + 20
 		}
 	}
-	return milk_amount = round((milk_amount * min(((world.time - breasts.last_milked)/(2 MINUTES)), 1)), 1)
+	return milk_amount = round((milk_amount * min(((world.time - breasts.last_milked)/(5 MINUTES)), 1)), 1)
 
 /datum/sex_controller/proc/suck_milk()
 	var milk_amount
