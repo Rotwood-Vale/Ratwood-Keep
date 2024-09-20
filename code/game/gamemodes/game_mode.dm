@@ -391,6 +391,8 @@
 			continue
 		if(is_total_antag_banned(player.ckey))
 			continue
+		if(role == ROLE_BANDIT && isseelie(player.client?.prefs?.pref_species?.type))
+			continue
 		if(player.ready == PLAYER_READY_TO_PLAY && player.check_preferences())
 //			if(player.client && player.client.whitelisted() && !player.client.blacklisted())
 			players += player

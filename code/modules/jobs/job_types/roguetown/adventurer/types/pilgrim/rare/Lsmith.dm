@@ -8,9 +8,7 @@
 	allowed_races = RACES_ALL_KINDS
 	outfit = /datum/outfit/job/roguetown/adventurer/masterblacksmith
 
-	maximum_possible_slots = 1
-	pickprob = 5
-
+	pickprob = 10
 	category_tags = list(CTAG_PILGRIM)
 
 /datum/outfit/job/roguetown/adventurer/masterblacksmith/pre_equip(mob/living/carbon/human/H)
@@ -18,7 +16,7 @@
 	belt = /obj/item/storage/belt/rogue/leather
 	beltr = /obj/item/rogueweapon/hammer
 	beltl = /obj/item/rogueweapon/tongs
-	neck = /obj/item/storage/belt/rogue/pouch/coins/mid
+	// neck = /obj/item/storage/belt/rogue/pouch/coins/rich NO POUCH - gets gems
 	mouth = /obj/item/rogueweapon/huntingknife
 
 	gloves = /obj/item/clothing/gloves/roguetown/leather
@@ -27,7 +25,7 @@
 	cloak = /obj/item/clothing/cloak/apron/blacksmith
 
 	backl = /obj/item/storage/backpack/rogue/backpack
-	backpack_contents = list(/obj/item/flint = 1, /obj/item/rogueore/coal=2, /obj/item/rogueore/iron=2, /obj/item/rogueore/silver=1)
+	backpack_contents = list(/obj/item/flint = 1, /obj/item/rogueore/coal=2, /obj/item/rogueore/iron=3, /obj/item/rogueore/silver=2, /obj/item/riddleofsteel = 1, /obj/item/roguegem/yellow = 1, /obj/item/roguegem/violet = 1, /obj/item/roguegem/diamond = 1, /obj/item/roguegem/blue = 1, /obj/item/roguegem/green = 1)
 
 	if(H.gender == MALE)
 		
@@ -35,23 +33,26 @@
 		shirt = /obj/item/clothing/suit/roguetown/shirt/shortshirt
 
 		if(H.mind)
-			H.mind.adjust_skillrank(/datum/skill/combat/maces, 2, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/combat/axes, 2, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 3, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/craft/crafting, 2, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/craft/masonry, 2, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/craft/carpentry, 2, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/craft/blacksmithing, 6, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/craft/armorsmithing, 6, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/craft/weaponsmithing, 6, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/maces, 5) // Hammer.
+			H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 5)
+			H.mind.adjust_skillrank(/datum/skill/craft/crafting, 3)
+			H.mind.adjust_skillrank(/datum/skill/craft/masonry, 5)
+			H.mind.adjust_skillrank(/datum/skill/craft/carpentry, 2)
+			H.mind.adjust_skillrank(/datum/skill/craft/blacksmithing, 6)
+			H.mind.adjust_skillrank(/datum/skill/craft/armorsmithing, 6)
+			H.mind.adjust_skillrank(/datum/skill/craft/weaponsmithing, 6)
+			H.mind.adjust_skillrank(/datum/skill/misc/reading, 1)
 			if(H.age == AGE_OLD)
-				H.mind.adjust_skillrank(/datum/skill/craft/blacksmithing, 1, TRUE)
-				H.mind.adjust_skillrank(/datum/skill/craft/armorsmithing, 1, TRUE)
-				H.mind.adjust_skillrank(/datum/skill/craft/weaponsmithing, 1, TRUE)
-			H.change_stat("strength", 2)
-			H.change_stat("speed", -1)
-			H.change_stat("fortune", 2)
+				H.mind.adjust_skillrank(/datum/skill/craft/masonry, 1)
+				H.mind.adjust_skillrank(/datum/skill/craft/crafting, 2)
+				H.mind.adjust_skillrank(/datum/skill/combat/maces, 1)
+				H.mind.adjust_skillrank(/datum/skill/craft/carpentry, 2)
+				H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 1)
+			H.change_stat("strength", 4)
+			H.change_stat("endurance", 4)
+			H.change_stat("constitution", 6)
+			H.change_stat("speed", 1)
+			H.change_stat("fortune", 4)
 
 
 	else
@@ -60,20 +61,23 @@
 		shoes = /obj/item/clothing/shoes/roguetown/shortboots
 		
 		if(H.mind)
-			H.mind.adjust_skillrank(/datum/skill/combat/maces, 2, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/combat/axes, 2, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 3, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/craft/crafting, 2, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/craft/masonry, 2, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/craft/carpentry, 2, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/craft/blacksmithing, 6, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/craft/armorsmithing, 6, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/craft/weaponsmithing, 6, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/maces, 5) // Hammer.
+			H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 5)
+			H.mind.adjust_skillrank(/datum/skill/craft/crafting, 3)
+			H.mind.adjust_skillrank(/datum/skill/craft/masonry, 5)
+			H.mind.adjust_skillrank(/datum/skill/craft/carpentry, 2)
+			H.mind.adjust_skillrank(/datum/skill/craft/blacksmithing, 6)
+			H.mind.adjust_skillrank(/datum/skill/craft/armorsmithing, 6)
+			H.mind.adjust_skillrank(/datum/skill/craft/weaponsmithing, 6)
+			H.mind.adjust_skillrank(/datum/skill/misc/reading, 1)
 			if(H.age == AGE_OLD)
-				H.mind.adjust_skillrank(/datum/skill/craft/blacksmithing, 1, TRUE)
-				H.mind.adjust_skillrank(/datum/skill/craft/armorsmithing, 1, TRUE)
-				H.mind.adjust_skillrank(/datum/skill/craft/weaponsmithing, 1, TRUE)
-			H.change_stat("strength", 2)
-			H.change_stat("speed", -1)
-			H.change_stat("fortune", 3)
+				H.mind.adjust_skillrank(/datum/skill/craft/masonry, 1)
+				H.mind.adjust_skillrank(/datum/skill/craft/crafting, 2)
+				H.mind.adjust_skillrank(/datum/skill/combat/maces, 1)
+				H.mind.adjust_skillrank(/datum/skill/craft/carpentry, 2)
+				H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 1)
+			H.change_stat("strength", 4)
+			H.change_stat("endurance", 4)
+			H.change_stat("constitution", 6)
+			H.change_stat("speed", 1)
+			H.change_stat("fortune", 4)

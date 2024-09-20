@@ -174,7 +174,6 @@
 				H.add_stress(/datum/stressevent/psycurse)
 		if(!found)
 			return FALSE
-
 		GLOB.heretical_players += inputty
 		priority_announce("[real_name] has placed a Heretic's Brand upon [inputty]!", title = "SHAME", sound = 'sound/misc/excomm.ogg')
 

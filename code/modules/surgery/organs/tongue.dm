@@ -18,6 +18,7 @@
 		/datum/language/beast,
 		/datum/language/orcish,
 		/datum/language/draconic,
+		/datum/language/faexin,
 		/datum/language/canilunzt
 	))
 

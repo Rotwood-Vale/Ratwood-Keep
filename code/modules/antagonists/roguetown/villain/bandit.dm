@@ -83,10 +83,6 @@
 
 	return TRUE
 
-/datum/antagonist/bandit/after_name_change()
-	if(owner && owner.current)
-		add_bounty(owner.current.real_name, 80, TRUE, "bandit activity", "The King")
-
 /datum/outfit/job/roguetown/bandit/pre_equip(mob/living/carbon/human/H)
 	..()
 	H.mind.adjust_skillrank(/datum/skill/combat/polearms, 3, TRUE)
