@@ -218,6 +218,14 @@
 	craftdiff = 3
 	sellprice = 20
 
+/datum/crafting_recipe/roguetown/sewing/armingjacket
+	name = "arming jacket"
+	result = /obj/item/clothing/suit/roguetown/armor/gambeson/lord
+	reqs = list(/obj/item/natural/cloth = 4,
+				/obj/item/natural/fibers = 1)
+	tools = list(/obj/item/needle)
+	craftdiff = 3
+
 /datum/crafting_recipe/roguetown/sewing/armordress
 	name = "padded dress"
 	result = /obj/item/clothing/suit/roguetown/armor/armordress
