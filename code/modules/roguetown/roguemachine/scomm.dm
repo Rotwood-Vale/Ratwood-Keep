@@ -280,7 +280,7 @@
 //SCOMSTONE                 SCOMSTONE
 
 /obj/item/scomstone
-	name = "emerald ring"
+	name = "scomstone"
 	icon_state = "ring_emerald"
 	desc = "A golden ring with an emerald gem."
 	gripped_intents = null
