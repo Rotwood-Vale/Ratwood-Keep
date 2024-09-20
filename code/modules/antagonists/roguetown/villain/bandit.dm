@@ -1,4 +1,3 @@
-
 /datum/antagonist/bandit
 	name = "Bandit"
 	roundend_category = "bandits"
@@ -15,6 +14,10 @@
 	var/tri_amt
 	var/contrib
 
+/datum/job/roguetown/bandit // need to define bandit job for advance class selection to work
+	advclass_cat_rolls = list(CTAG_BANDIT = 20) //thats all we're doing hearers(Depth, Center)
+
+		
 /datum/antagonist/bandit/examine_friendorfoe(datum/antagonist/examined_datum,mob/examiner,mob/examined)
 	if(istype(examined_datum, /datum/antagonist/bandit))
 		return span_boldnotice("Another free man. My ally.")
@@ -35,7 +38,6 @@
 	ADD_TRAIT(H, TRAIT_BANDITCAMP, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_SEEPRICES, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_STEELHEARTED, TRAIT_GENERIC)
-	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_COMMIE, TRAIT_GENERIC)
 	H.set_patron(/datum/patron/inhumen/matthios)
 	to_chat(H, span_alertsyndie("I am a BANDIT!"))
@@ -73,11 +75,10 @@
 
 	var/mob/living/carbon/human/H = owner.current
 	H.cmode_music = 'sound/music/combat_bandit2.ogg'
-
-	addtimer(CALLBACK(H, TYPE_PROC_REF(/mob/living/carbon/human, choose_name_popup), "BANDIT"), 5 SECONDS)
+	H.equipOutfit(/datum/outfit/job/roguetown/bandit)
 //	H.job = "Bandit"
 //	H.advjob = pick("Cheesemaker", "Mercenary", "Barbarian", "Ranger", "Rogue")
-	H.equipOutfit(/datum/outfit/job/roguetown/bandit)
+
 
 	return TRUE
 
@@ -85,24 +86,54 @@
 	if(owner && owner.current)
 		add_bounty(owner.current.real_name, 80, TRUE, "bandit activity", "The King")
 
-/datum/outfit/job/roguetown/bandit/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/job/roguetown/bandit/pre_equip(mob/living/carbon/human/H) //unfortunately we can't do advclass here so we do archetypes, because its an antag
 	..()
+	H.ambushable = FALSE
+	var/classchoice
+	H.adjust_blindness(-3)
+	addtimer(CALLBACK(H, TYPE_PROC_REF(/mob/living/carbon/human, choose_name_popup), "BANDIT"), 5 SECONDS)
+	H.visible_message(span_info("I contributed into this world, I have been around..."))
+	var/classes = list("Brigand","Sellsword","Knave","Hedge Knight","Rogue Mage","Sawbones")
+	classchoice = input("Choose your archetypes", "Available archetypes") as anything in classes
+	switch(classchoice)
+		if("Brigand")
+			H.set_blindness(0)
+			brigandarch(H)
+		if("Sellsword")
+			H.set_blindness(0)
+			sellswordarch(H)
+		if("Knave")
+			H.set_blindness(0)
+			knavearch(H)
+		if("Hedge Knight")
+			H.set_blindness(0)
+			hedgeknightarch(H)
+		if("Rogue Mage")
+			H.set_blindness(0)
+			roguemagearch(H)
+		if("Sawbones")
+			H.set_blindness(0)
+			sawbonesarch(H)	
+
+
+
+/datum/outfit/job/roguetown/bandit/proc/brigandarch(mob/living/carbon/human/H) //Strength class, starts with axe or flails
 	H.mind.adjust_skillrank(/datum/skill/combat/polearms, 3, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/combat/axes, 3, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/combat/maces, 3, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/combat/axes, 4, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/combat/maces, 4, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 4, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 3, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/combat/swords, 3, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/combat/whipsflails, 3, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/combat/knives, 3, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/combat/bows, 3, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/combat/swords, 2, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/combat/whipsflails, 4, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/combat/bows, 2, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 2, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/craft/crafting, 2, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/craft/carpentry, 1, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/climbing, 3, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/misc/sewing, 2, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/misc/medicine, 2, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/misc/sewing, 1, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/misc/medicine, 1, TRUE)
 	belt = /obj/item/storage/belt/rogue/leather
 	pants = /obj/item/clothing/under/roguetown/trou/leather
 	shirt = /obj/item/clothing/suit/roguetown/shirt/shortshirt/random
@@ -112,65 +143,241 @@
 	mask = /obj/item/clothing/mask/rogue/facemask/steel
 	neck = /obj/item/clothing/neck/roguetown/coif
 	head = /obj/item/clothing/head/roguetown/helmet/leather/volfhelm
-	if(prob(40))
-		neck = /obj/item/clothing/neck/roguetown/chaincoif
-	if(prob(23))
-		gloves = /obj/item/clothing/gloves/roguetown/leather
-		armor = /obj/item/clothing/suit/roguetown/armor/gambeson
-	else
-		wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
-		armor = /obj/item/clothing/suit/roguetown/armor/leather
-	var/loadoutm = rand(1,16)
-	switch(loadoutm)
-		if(1 to 3) // sword bandit
-			beltr = /obj/item/rogueweapon/sword/iron
-			if(prob(40))
-				backl = /obj/item/rogueweapon/shield/wood
-			H.change_stat("endurance", 1)
-		if(4 to 6) // knife bandit - dodge maxing
-			beltr = /obj/item/rogueweapon/huntingknife/cleaver
-			H.change_stat("speed", 3)
-			H.change_stat("strength", -2)
-		if(7 to 9) // flail bandit small chance to two handed flail
-			if(prob(80))
-				beltr = /obj/item/rogueweapon/flail
-				backl = /obj/item/rogueweapon/shield/wood
-			else
-				r_hand = /obj/item/rogueweapon/flail/peasantwarflail
-			H.change_stat("strength", 1)
-		if(10 to 12) // ranged bandit
-			backl = /obj/item/gun/ballistic/revolver/grenadelauncher/bow
-			beltl = /obj/item/quiver/arrows
-			beltr = /obj/item/rogueweapon/stoneaxe/woodcut/steel
-			H.change_stat("perception", 3)
-		if(13 to 15) // spear bandit
-			r_hand = /obj/item/rogueweapon/spear
-			if(prob(40))
-				backl = /obj/item/rogueweapon/shield/wood
-			H.change_stat("endurance", 1)
-		if(16) // hedge knight - give challenge to knights/templars ~6% chance 15-20 bandits roundstart average 1 hedge knight - lacks protection to hands or feet
-			r_hand = /obj/item/rogueweapon/greatsword/zwei
-			beltr = /obj/item/rogueweapon/sword
-			beltl = /obj/item/flashlight/flare/torch/lantern
-			armor = /obj/item/clothing/suit/roguetown/armor/plate/full
-			gloves = /obj/item/clothing/gloves/roguetown/leather
-			head = /obj/item/clothing/head/roguetown/helmet/bascinet
-			if(prob(30))
-				neck = /obj/item/clothing/neck/roguetown/bervor
-			else
-				neck = /obj/item/clothing/neck/roguetown/gorget
-			H.mind.adjust_skillrank(/datum/skill/combat/swords, rand(1,2), TRUE) // either expert or master skill - knights start with master and templars expert sword skill
-			H.change_stat("strength", 1)
-			H.change_stat("constitution", 1)
-			H.change_stat("speed", -2)
-			ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
+	armor = /obj/item/clothing/suit/roguetown/armor/leather/hide
 	H.change_stat("strength", 3)
+	H.change_stat("endurance", 2)
+	H.change_stat("constitution", 2)
+	H.change_stat("intelligence", -3)
+	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
+	H.visible_message(span_info("Cast from society, you use your powerful physical might and endurance to take from those who are weaker from you."))
+	H.adjust_blindness(-3)
+	var/weapons = list("Battleaxe & Cudgel","Flail & Shield")
+	var/weapon_choice = input("Choose your weapon.", "TAKE UP ARMS") as anything in weapons
+	H.set_blindness(0)
+	switch(weapon_choice)
+		if("Battleaxe & Cudgel") //one weapon to hurt people one weapon to kill people
+			backl= /obj/item/rogueweapon/stoneaxe/battle		
+			beltr = /obj/item/rogueweapon/mace/cudgel
+		if("Flail & Shield") //plate users beware, you're in for a scare!
+			backl= /obj/item/rogueweapon/shield/wood	
+			beltr = /obj/item/rogueweapon/flail	
+
+/datum/outfit/job/roguetown/bandit/proc/sellswordarch(mob/living/carbon/human/H) //sword class, less strong but better int/gear
+	H.mind.adjust_skillrank(/datum/skill/combat/polearms, 4, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/combat/axes, 3, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/combat/maces, 3, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 4, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 3, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/combat/swords, 4, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/combat/whipsflails, 4, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/combat/bows, 2, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 3, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/craft/crafting, 2, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/craft/carpentry, 1, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/misc/climbing, 3, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/misc/sewing, 1, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/misc/medicine, 1, TRUE)
+	belt = /obj/item/storage/belt/rogue/leather
+	pants = /obj/item/clothing/under/roguetown/trou/leather
+	shirt = /obj/item/clothing/suit/roguetown/armor/gambeson
+	shoes = /obj/item/clothing/shoes/roguetown/boots
+	backr = /obj/item/storage/backpack/rogue/satchel
+	backpack_contents = list(/obj/item/needle/thorn = 1, /obj/item/natural/cloth = 1)
+	mask = /obj/item/clothing/mask/rogue/facemask/steel
+	neck = /obj/item/clothing/neck/roguetown/gorget
+	armor = /obj/item/clothing/suit/roguetown/armor/chainmail	
+	H.change_stat("strength", 2) //less buffs than brigand but no int debuff 
 	H.change_stat("endurance", 2)
 	H.change_stat("constitution", 1)
 	H.change_stat("speed", 1)
-	H.change_stat("intelligence", -3)
+	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
+	H.visible_message(span_info("Perhaps a mercenary, perhaps a deserter - at one time, you killed for a master in return for gold. Now you live with no such master of your head - and take what you please."))
+	H.adjust_blindness(-3)
+	var/weapons = list("Spear & Crossbow","Sword & Buckler")
+	var/weapon_choice = input("Choose your weapon.", "TAKE UP ARMS") as anything in weapons
+	H.set_blindness(0)
+	switch(weapon_choice)
+		if("Spear & Crossbow") //Deserter watchman
+			backl= /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow //we really need to make this not a grenade launcher subtype
+			beltr = /obj/item/quiver/bolts
+			r_hand = /obj/item/rogueweapon/spear/billhook
+			head = /obj/item/clothing/head/roguetown/helmet/kettle
+		if("Sword & Buckler") //Mercenary on the wrong side of the law
+			backl= /obj/item/rogueweapon/shield/buckler
+			beltr = /obj/item/rogueweapon/sword //steel sword like literally every adventurer gets
+			head = /obj/item/clothing/head/roguetown/helmet/sallet
 
-	H.ambushable = FALSE
+/datum/outfit/job/roguetown/bandit/proc/knavearch(mob/living/carbon/human/H) //sneaky bastards
+	H.mind.adjust_skillrank(/datum/skill/combat/polearms, 3, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/combat/axes, 3, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/combat/maces, 3, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 4, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 3, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/combat/swords, 3, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/combat/whipsflails, 3, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/combat/knives, 4, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/combat/bows, 4, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 3, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/craft/crafting, 2, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/craft/carpentry, 1, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/misc/climbing, 4, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/misc/sewing, 1, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/misc/medicine, 1, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 4, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/misc/stealing, 4, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/misc/lockpicking, 4, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/craft/traps, 2, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/misc/tracking, 3, TRUE)
+	belt = /obj/item/storage/belt/rogue/leather
+	pants = /obj/item/clothing/under/roguetown/trou/leather
+	shirt = /obj/item/clothing/suit/roguetown/shirt/shortshirt/random
+	shoes = /obj/item/clothing/shoes/roguetown/boots
+	mask = /obj/item/clothing/mask/rogue/facemask/steel
+	neck = /obj/item/clothing/neck/roguetown/coif
+	armor = /obj/item/clothing/suit/roguetown/armor/leather
+	H.change_stat("endurance", 1) 
+	H.change_stat("perception", 2)
+	H.change_stat("speed", 3) //It's all about speed and perception
+	ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC) //gets dodge expert but no medium armor training - gotta stay light
+	H.visible_message(span_info("Not all followers of Matthios take by force. Thieves, poachers, and ne'er-do-wells of all forms steal from others from the shadows, long gone before their marks realize their misfortune."))
+	H.adjust_blindness(-3)
+	var/weapons = list("Crossbow & Dagger", "Bow & Sword")
+	var/weapon_choice = input("Choose your weapon.", "TAKE UP ARMS") as anything in weapons
+	H.set_blindness(0)
+	switch(weapon_choice)
+		if("Crossbow & Dagger") //Rogue
+			backl= /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow //we really need to make this not a grenade launcher subtype
+			beltr = /obj/item/quiver/bolts
+			cloak = /obj/item/clothing/cloak/raincloak/mortus //cool cloak
+			beltl = /obj/item/rogueweapon/huntingknife/idagger/steel
+			backr = /obj/item/storage/backpack/rogue/satchel
+			backpack_contents = list(/obj/item/needle/thorn = 1, /obj/item/natural/cloth = 1, /obj/item/lockpickring = 1) //rogue gets lockpicks
+		if("Bow & Sword") //Poacher
+			backl= /obj/item/rogueweapon/shield/buckler
+			beltr = /obj/item/rogueweapon/sword/short //steel sword like literally every adventurer gets
+			head = /obj/item/clothing/head/roguetown/helmet/leather/volfhelm //cool hat
+			backr = /obj/item/storage/backpack/rogue/satchel
+			backpack_contents = list(/obj/item/needle/thorn = 1, /obj/item/natural/cloth = 1, /obj/item/restraints/legcuffs/beartrap = 2) //poacher gets mantraps
+
+/datum/outfit/job/roguetown/bandit/proc/hedgeknightarch(mob/living/carbon/human/H) 
+	head = /obj/item/clothing/head/roguetown/helmet/heavy/knight/black
+	gloves = /obj/item/clothing/gloves/roguetown/chain/blk
+	pants = /obj/item/clothing/under/roguetown/chainlegs/blk
+	cloak = /obj/item/clothing/cloak/tabard/blkknight
+	neck = /obj/item/clothing/neck/roguetown/bervor
+	shirt = /obj/item/clothing/suit/roguetown/armor/chainmail
+	armor = /obj/item/clothing/suit/roguetown/armor/plate/blkknight
+	wrists = /obj/item/clothing/wrists/roguetown/bracers
+	shoes = /obj/item/clothing/shoes/roguetown/boots/armor/blkknight
+	belt = /obj/item/storage/belt/rogue/leather
+	beltr = /obj/item/rogueweapon/sword/long/death // ow the edge. it's just spraypainted. no weapon choice you MUST use a sword
+	backr = /obj/item/storage/backpack/rogue/satchel/black
+	backl = /obj/item/rogueweapon/shield/tower/metal
+	backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger = 1)
+	H.mind.adjust_skillrank(/datum/skill/combat/polearms, 3, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/combat/swords, 3, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/combat/shields, 3, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/combat/maces, 3, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 3, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/misc/swimming, 1, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/misc/climbing, 3, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/misc/reading, 3, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/misc/riding, 4, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/craft/cooking, 1, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/labor/butchering, 1, TRUE)
+	H.change_stat("strength", 2)
+	H.change_stat("endurance", 1)
+	H.change_stat("constitution", 2)
+	H.change_stat("intelligence", 1)
+	H.change_stat("speed", 1)
+	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
+	ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
+	ADD_TRAIT(H, TRAIT_NOBLE, TRAIT_GENERIC) //hey buddy you hear about roleplaying
+	H.visible_message(span_info("A noble fallen from grace, your tarnished armor sits upon your shoulders as a heavy reminder of the life you've lost. Take back what is rightfully yours."))
+
+
+/datum/outfit/job/roguetown/bandit/proc/roguemagearch(mob/living/carbon/human/H) 
+	shoes = /obj/item/clothing/shoes/roguetown/simpleshoes
+	pants = /obj/item/clothing/under/roguetown/trou/leather
+	shirt = /obj/item/clothing/suit/roguetown/shirt/shortshirt
+	armor = /obj/item/clothing/suit/roguetown/shirt/robe/black
+	belt = /obj/item/storage/belt/rogue/leather/rope
+	beltr = /obj/item/reagent_containers/glass/bottle/rogue/manapot
+	backr = /obj/item/storage/backpack/rogue/satchel
+	backpack_contents = list(/obj/item/needle/thorn = 1, /obj/item/natural/cloth = 1)
+	mask = /obj/item/clothing/mask/rogue/facemask/steel
+	neck = /obj/item/clothing/neck/roguetown/coif
+	head = /obj/item/clothing/head/roguetown/helmet/leather/volfhelm
+
+	r_hand = /obj/item/rogueweapon/woodstaff
+	if(H.mind)
+		H.mind.adjust_skillrank(/datum/skill/combat/polearms, 2, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/bows, 1, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 1, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 1, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/swimming, 1, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/climbing, 3, TRUE) //needs climbing to get into hideout
+		H.mind.adjust_skillrank(/datum/skill/misc/athletics, 1, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/knives, 1, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/craft/crafting, 1, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/medicine, 1, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/riding, 1, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/reading, 4, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/alchemy, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/magic/arcane, 3, TRUE)
+		if(H.age == AGE_OLD)
+			head = /obj/item/clothing/head/roguetown/wizhat/gen
+			armor = /obj/item/clothing/suit/roguetown/shirt/robe
+			H.mind.adjust_skillrank(/datum/skill/magic/arcane, 1, TRUE)
+			H.change_stat("speed", -1)
+			H.change_stat("intelligence", 1)
+			H.change_stat("perception", 1)
+			H.mind.adjust_spellpoints(1)
+		H.change_stat("strength", -1)
+		H.change_stat("intelligence", 3)
+		H.change_stat("constitution", 1)
+		H.change_stat("endurance", -1)
+		H.mind.adjust_spellpoints(1)
+		H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/touch/prestidigitation)
+		
+/datum/outfit/job/roguetown/bandit/proc/sawbonesarch(mob/living/carbon/human/H) //doctor class
+	mask = /obj/item/clothing/mask/rogue/facemask/steel
+	head = /obj/item/clothing/head/roguetown/nightman
+	armor = /obj/item/clothing/suit/roguetown/armor/leather/vest
+	shirt = /obj/item/clothing/suit/roguetown/shirt/shortshirt
+	belt = /obj/item/storage/belt/rogue/leather
+	beltl = /obj/item/storage/belt/rogue/surgery_bag/full
+	beltr = /obj/item/rogueweapon/huntingknife/cleaver /// proper self defense an tree aquiring
+	pants = /obj/item/clothing/under/roguetown/trou
+	shoes = /obj/item/clothing/shoes/roguetown/simpleshoes
+	backr = /obj/item/storage/backpack/rogue/satchel
+	backpack_contents = list(		/obj/item/natural/worms/leech/cheele = 1, /obj/item/natural/cloth = 2,)
+	H.mind.adjust_skillrank(/datum/skill/combat/knives, 3, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/craft/crafting, 2, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/craft/carpentry, 2, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/labor/lumberjacking, 1, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/misc/athletics, 2, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/misc/reading, 3, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/misc/climbing, 3, TRUE) //needed for getting into hideout
+	H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 1, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/misc/medicine, 5, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/misc/sewing, 3, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/misc/alchemy, 2, TRUE)
+	H.change_stat("intelligence", 3)
+	H.change_stat("fortune", 1)
+		if(H.age == AGE_OLD)
+			H.change_stat("speed", -1)
+			H.change_stat("intelligence", 1)
+			H.change_stat("perception", 1)
+	H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/diagnose/secular)
+	H.visible_message(span_info("It was an accident! Your patient wasn't using his second kidney, anyway. After an unfortunate 'misunderstanding' with the town and your medical practice, you know practice medicine on the run with your new associates. Business has never been better!"))
 
 /datum/antagonist/bandit/roundend_report()
 	if(owner?.current)
