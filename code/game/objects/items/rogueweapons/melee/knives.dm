@@ -184,7 +184,7 @@
 	name = "steel dagger"
 	desc = "This is a dagger made of solid steel, more durable."
 	icon_state = "sdagger"
-	Force = 20
+	force = 20
 	max_integrity = 150
 	smeltresult = /obj/item/ingot/steel
 

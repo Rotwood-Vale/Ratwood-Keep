@@ -89,7 +89,7 @@
 /datum/outfit/job/roguetown/hand/spymaster/pre_equip(mob/living/carbon/human/H)
 	cloak = /obj/item/clothing/cloak/raincloak/mortus //cool spymaster cloak
 	backr = /obj/item/storage/backpack/rogue/satchel/black
-	backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger/detace = 1, /obj/item/keyring/hand = 1, /obj/item/lockpickring/mundane)
+	backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger/dtace = 1, /obj/item/keyring/hand = 1, /obj/item/lockpickring/mundane)
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/combat/maces, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 4, TRUE)
