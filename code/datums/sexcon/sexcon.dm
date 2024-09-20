@@ -252,11 +252,11 @@
 			if(2)
 				milk_amount = 20
 			if(3)
-				milk_amount = 25
-			if(4)
 				milk_amount = 30
-			if(5)
+			if(4)
 				milk_amount = 35
+			if(5)
+				milk_amount = 40
 				
 		if(vagina.pregnant)
 		{
