@@ -219,27 +219,47 @@
 /datum/sex_controller/proc/calculate_milk()
 	var/obj/item/organ/breasts/breasts = user.getorganslot(ORGAN_SLOT_BREASTS)
 	var milk_amount
-	switch(breasts.breast_size)
-		if(0)
-			milk_amount = 15
-		if(1)
-			milk_amount = 20
-		if(2)
-			milk_amount = 25
-		if(3)
-			milk_amount = 35
-		if(4)
-			milk_amount = 45
-		if(5)
-			milk_amount = 55
-			
-	var/obj/item/organ/vagina/vagina = user.getorganslot(ORGAN_SLOT_VAGINA)
-	if(vagina.pregnant)
+	if(isseelie(user))
 	{
-		milk_amount = milk_amount + 20
+		switch(breasts.breast_size)
+			if(0)
+				milk_amount = 5
+			if(1)
+				milk_amount = 6
+			if(2)
+				milk_amount = 7
+			if(3)
+				milk_amount = 8
+			if(4)
+				milk_amount = 9
+			if(5)
+				milk_amount = 10
+		return milk_amount = round((milk_amount * min((world.time - breasts.last_milked)/2 MINUTES, 1)), 1)
 	}
+	else
+	{
+		switch(breasts.breast_size)
+			if(0)
+				milk_amount = 15
+			if(1)
+				milk_amount = 20
+			if(2)
+				milk_amount = 25
+			if(3)
+				milk_amount = 35
+			if(4)
+				milk_amount = 45
+			if(5)
+				milk_amount = 55
+				
+		var/obj/item/organ/vagina/vagina = user.getorganslot(ORGAN_SLOT_VAGINA)
+		if(vagina.pregnant)
+		{
+			milk_amount = milk_amount + 20
+		}
 
-	return milk_amount = round((milk_amount * min((world.time - breasts.last_milked)/2 MINUTES, 1)), 1)
+		return milk_amount = round((milk_amount * min((world.time - breasts.last_milked)/2 MINUTES, 1)), 1)
+	}
 
 /datum/sex_controller/proc/suck_milk()
 	var milk_amount
