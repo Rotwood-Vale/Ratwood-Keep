@@ -8019,7 +8019,6 @@
 "imW" = (
 /obj/structure/rack/rogue,
 /obj/item/roguestatue/silver,
-/obj/item/riddleofsteel,
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/indoors/shelter/mountains)
 "inz" = (
@@ -18520,7 +18519,6 @@
 "tyO" = (
 /obj/structure/table/wood/fancy/red,
 /obj/item/rogueweapon/huntingknife/elvish/drow,
-/obj/item/riddleofsteel,
 /turf/open/floor/rogue/ruinedwood{
 	icon_state = "horzw"
 	},
