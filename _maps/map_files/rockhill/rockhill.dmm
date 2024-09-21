@@ -13829,6 +13829,12 @@
 "nLX" = (
 /turf/closed/mineral/random/rogue,
 /area/rogue/outdoors/rtfield)
+"nMk" = (
+/obj/structure/closet/crate/roguecloset/inn/south{
+	pixel_y = 12
+	},
+/turf/open/floor/carpet/royalblack,
+/area/rogue/indoors/town/tavern)
 "nMR" = (
 /turf/open/floor/carpet/red,
 /area/rogue/indoors/town/tavern)
@@ -387132,7 +387138,7 @@ xvv
 jyo
 wRK
 wRK
-wRK
+sPb
 uRR
 fZJ
 fZJ
@@ -491248,10 +491254,10 @@ xAt
 xAt
 xAt
 wNn
+nMk
+mdo
+mdo
 lBP
-mdo
-mdo
-mdo
 wNn
 erd
 djE
