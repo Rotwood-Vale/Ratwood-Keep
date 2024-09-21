@@ -97,7 +97,6 @@
 		H.change_stat("perception", 2)
 		H.change_stat("speed", 1)
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
-	ADD_TRAIT(H, TRAIT_BREADY, TRAIT_GENERIC)
 	
 
 /datum/outfit/job/roguetown/mercenary/grenzelhoft/pikeman/pre_equip(mob/living/carbon/human/H)
@@ -124,7 +123,6 @@
 		H.change_stat("perception", 2)
 		H.change_stat("speed", 1)
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
-	ADD_TRAIT(H, TRAIT_BREADY, TRAIT_GENERIC)
 	//quick and gay way to do random loadouts
 	var/equipment = rand(1, 2)
 	if(equipment == 1)
