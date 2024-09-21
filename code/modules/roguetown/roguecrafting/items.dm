@@ -352,7 +352,7 @@
 
 	req_table = FALSE
 
-/datum/crafting_recipe/roguetown/soporarrow_three // Your symmetry is irrelevant here.
+/datum/crafting_recipe/roguetown/soporarrow_five
 	name = "soporific arrow (x5)"
 	result = list(
 				/obj/item/ammo_casing/caseless/rogue/arrow/sopor,
@@ -368,7 +368,7 @@
 
 	req_table = FALSE
 
-/datum/crafting_recipe/roguetown/tranq //Coded, but commented out pending balance discussion.
+/datum/crafting_recipe/roguetown/tranq
 	name = "tranquilizer bolt"
 	result = /obj/item/ammo_casing/caseless/rogue/bolt/tranq
 	reqs = list(
@@ -378,7 +378,7 @@
 
 	req_table = FALSE
 
-/datum/crafting_recipe/roguetown/tranq //Coded, but commented out pending balance discussion.
+/datum/crafting_recipe/roguetown/tranqfive
 	name = "tranquilizer bolt (x5)"
 	result = list(
 				/obj/item/ammo_casing/caseless/rogue/bolt/tranq,
@@ -388,7 +388,7 @@
 				/obj/item/ammo_casing/caseless/rogue/bolt/tranq
 				)
 	reqs = list(
-		/obj/item/ammo_casing/caseless/rogue/bolt = 3,
+		/obj/item/ammo_casing/caseless/rogue/bolt = 5,
 		/datum/reagent/medicine/soporpot = 150
 		)
 
@@ -419,9 +419,11 @@
 
 	req_table = FALSE
 
-/datum/crafting_recipe/roguetown/soporarrow_3_stone
-	name = "soporific stone arrow (x3)"
+/datum/crafting_recipe/roguetown/soporarrow_5_stone
+	name = "soporific stone arrow (x5)"
 	result = list(
+				/obj/item/ammo_casing/caseless/rogue/arrow/stone/sopor,
+				/obj/item/ammo_casing/caseless/rogue/arrow/stone/sopor,
 				/obj/item/ammo_casing/caseless/rogue/arrow/stone/sopor,
 				/obj/item/ammo_casing/caseless/rogue/arrow/stone/sopor,
 				/obj/item/ammo_casing/caseless/rogue/arrow/stone/sopor

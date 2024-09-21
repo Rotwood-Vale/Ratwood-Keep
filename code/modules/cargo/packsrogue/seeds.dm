@@ -79,6 +79,16 @@
 					/obj/item/seeds/sugarcane,
 				)
 
+/datum/supply_pack/rogue/seeds/pumpkin
+	name = "Pumpkin"
+	cost = 12
+	contains = list(
+					/obj/item/seeds/pumpkin,
+					/obj/item/seeds/pumpkin,
+					/obj/item/seeds/pumpkin,
+					/obj/item/seeds/pumpkin,
+				)
+
 /datum/supply_pack/rogue/seeds/onion
 	name = "Onion"
 	cost = 12

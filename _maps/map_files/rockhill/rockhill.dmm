@@ -1805,6 +1805,10 @@
 /obj/machinery/light/rogue/torchholder/l,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors/town)
+"aIH" = (
+/obj/structure/spider/stickyweb,
+/turf/open/floor/rogue/dirt/road,
+/area/rogue/outdoors/rtfield)
 "aII" = (
 /obj/structure/closet/crate/chest,
 /obj/item/reagent_containers/food/snacks/grown/apple,
@@ -8788,8 +8792,9 @@
 /turf/closed/mineral/rogue,
 /area/rogue/under/town/sewer)
 "fKf" = (
-/turf/open/floor/rogue/greenstone,
-/area/rogue/under/town/basement)
+/obj/structure/spider/stickyweb,
+/turf/open/floor/rogue/grass,
+/area/rogue/outdoors/rtfield)
 "fKC" = (
 /turf/open/water/river{
 	dir = 1;
@@ -10199,6 +10204,7 @@
 /obj/item/reagent_containers/powder/flour,
 /obj/item/reagent_containers/powder/flour,
 /obj/item/reagent_containers/food/snacks/butter,
+/obj/item/reagent_containers/powder/flour,
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/town/garrison)
 "gPy" = (
@@ -12668,6 +12674,13 @@
 /obj/item/reagent_containers/glass/cup/wooden,
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/town/basement)
+"iyV" = (
+/mob/living/simple_animal/hostile/retaliate/rogue/spider{
+	tame = 1
+	},
+/obj/structure/spider/stickyweb,
+/turf/open/floor/rogue/dirt,
+/area/rogue/under/cavewet/bogcaves)
 "ize" = (
 /obj/structure/fluff/railing/border{
 	dir = 6;
@@ -14281,9 +14294,8 @@
 /obj/machinery/light/rogue/torchholder{
 	pixel_y = 26
 	},
-/obj/item/natural/feather,
-/turf/open/floor/rogue/dirt,
-/area/rogue/indoors)
+/turf/open/floor/rogue/grass,
+/area/rogue/indoors/town/church/chapel)
 "jHc" = (
 /turf/open/floor/rogue/dirt,
 /area/rogue/outdoors/town)
@@ -14338,6 +14350,13 @@
 "jJx" = (
 /turf/closed/wall/mineral/rogue/craftstone,
 /area/rogue/indoors/shelter)
+"jJC" = (
+/obj/item/gun/ballistic/revolver/grenadelauncher/crossbow,
+/obj/item/quiver/bolts,
+/obj/structure/closet/crate/roguecloset/inn/chest,
+/obj/item/storage/foodbag/hardtack,
+/turf/open/floor/rogue/ruinedwood/spiral,
+/area/rogue/indoors/town/garrison)
 "jKw" = (
 /obj/machinery/light/rogue/firebowl/standing/blue,
 /turf/open/floor/rogue/tile,
@@ -18306,6 +18325,9 @@
 /obj/machinery/light/rogue/torchholder{
 	dir = 8
 	},
+/obj/item/seeds/pumpkin,
+/obj/item/seeds/pumpkin,
+/obj/item/seeds/pumpkin,
 /turf/open/floor/rogue/twig,
 /area/rogue/indoors)
 "mMJ" = (
@@ -18770,6 +18792,9 @@
 /obj/item/storage/keyring,
 /obj/item/storage/keyring,
 /obj/item/storage/keyring,
+/obj/item/storage/foodbag/hardtack,
+/obj/item/storage/foodbag/hardtack,
+/obj/item/storage/foodbag/hardtack,
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/basement)
 "ndj" = (
@@ -20382,6 +20407,12 @@
 /obj/item/rogueweapon/thresher,
 /turf/open/floor/grass/snow,
 /area/rogue/outdoors/vikingarea)
+"ojc" = (
+/obj/structure/fluff/railing/wood,
+/obj/structure/flora/ausbushes/ywflowers,
+/obj/machinery/light/rogue/torchholder/r,
+/turf/open/floor/rogue/grass,
+/area/rogue/indoors/town/church/chapel)
 "ojp" = (
 /obj/structure/closet/dirthole/grave,
 /turf/closed/wall/mineral/rogue/stone,
@@ -24196,6 +24227,10 @@
 /obj/item/clothing/head/roguetown/helmet/horned,
 /turf/open/floor/rogue/blocks,
 /area/rogue/indoors)
+"qGD" = (
+/obj/structure/spider/stickyweb,
+/turf/open/floor/rogue/dirt,
+/area/rogue/under/cavewet/bogcaves)
 "qGP" = (
 /obj/item/natural/stone,
 /turf/open/floor/rogue/dirt,
@@ -26768,6 +26803,7 @@
 /area/rogue/indoors/town/dwarfin)
 "sxW" = (
 /obj/structure/closet/crate/roguecloset,
+/obj/item/storage/foodbag/hardtack,
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/town/garrison)
 "syh" = (
@@ -29035,6 +29071,7 @@
 /area/rogue/outdoors/vikingarea)
 "ukv" = (
 /obj/item/roguebin/crackers,
+/obj/item/storage/foodbag/hardtack,
 /turf/open/floor/rogue/herringbone,
 /area/rogue/indoors)
 "ukD" = (
@@ -32613,6 +32650,7 @@
 /obj/item/roguekey/walls,
 /obj/item/roguekey/manor,
 /obj/item/storage/backpack/rogue/satchel,
+/obj/item/storage/foodbag/hardtack,
 /turf/open/floor/carpet/royalblack,
 /area/rogue/indoors/town/garrison)
 "wPt" = (
@@ -209378,14 +209416,14 @@ txa
 txa
 txa
 txa
-fKf
 txa
 txa
 txa
 txa
 txa
 txa
-spR
+iTw
+iTw
 spR
 aKH
 spR
@@ -209781,13 +209819,13 @@ fPR
 fAs
 txa
 txa
-txa
 gwd
 gEj
 gQl
 hff
 txa
-cEK
+iTw
+iTw
 cEK
 cEK
 cEK
@@ -210187,8 +210225,8 @@ gch
 gch
 gch
 gch
-gch
 txa
+iTw
 iTw
 spR
 cEK
@@ -210585,12 +210623,12 @@ iTw
 cBf
 txa
 fPQ
-gch
 gxc
 gch
 gch
 gch
 txa
+iTw
 iTw
 spR
 cEK
@@ -210989,10 +211027,10 @@ txa
 txa
 txa
 txa
-txa
 gSG
 txa
 txa
+iTw
 iTw
 spR
 cEK
@@ -211393,8 +211431,8 @@ iTw
 rSG
 iTw
 iTw
-iTw
 hCL
+iTw
 iTw
 cEK
 cEK
@@ -211794,9 +211832,9 @@ txa
 txa
 txa
 ppi
-cBf
 hiz
 txa
+iTw
 icI
 ivV
 aoF
@@ -231164,8 +231202,8 @@ gxt
 gxt
 gxt
 gxt
-gxt
-gxt
+qGD
+qtE
 gxt
 gxt
 gxt
@@ -231566,10 +231604,10 @@ gxt
 gxt
 gxt
 gxt
-gxt
-gxt
-gxt
-gxt
+qGD
+iyV
+qtE
+qGD
 gxt
 gxt
 gxt
@@ -231968,11 +232006,11 @@ gxt
 gxt
 gxt
 gxt
-gxt
-gxt
-gxt
-gxt
-gxt
+qtE
+qtE
+qGD
+qtE
+qGD
 gxt
 gxt
 gxt
@@ -232371,10 +232409,10 @@ gxt
 gxt
 gxt
 gxt
-gxt
-gxt
-gxt
-gxt
+qGD
+qtE
+iyV
+qtE
 gxt
 gxt
 gxt
@@ -232773,9 +232811,9 @@ gxt
 gxt
 gxt
 gxt
-gxt
-gxt
-gxt
+qGD
+qtE
+qGD
 gxt
 gxt
 gxt
@@ -332462,7 +332500,7 @@ wlD
 wlD
 wlD
 oQJ
-jGT
+ooq
 cyr
 cyr
 hHF
@@ -332864,7 +332902,7 @@ wlD
 wlD
 wlD
 wOD
-hHF
+shd
 cyr
 hHF
 cyr
@@ -334078,9 +334116,9 @@ kVc
 wSn
 uaL
 qvR
+uaL
+uaL
 qvR
-uaL
-uaL
 wSn
 pwu
 wSn
@@ -334481,8 +334519,8 @@ wSn
 qvR
 uaL
 qvR
-uaL
-wSn
+aIH
+qvR
 qvR
 wSn
 kVc
@@ -334882,9 +334920,9 @@ kVc
 kVc
 qvR
 wSn
-wSn
+qvR
+fKf
 uaL
-wSn
 qvR
 hcW
 hcW
@@ -335284,9 +335322,9 @@ kVc
 kVc
 kVc
 kVc
+fKf
 qvR
-wSn
-qvR
+fKf
 hcW
 hcW
 hcW
@@ -426468,10 +426506,10 @@ nKu
 nSr
 sIE
 teW
-teW
-teW
-teW
-ffv
+hqI
+fUr
+wte
+enq
 ffv
 ffv
 ffv
@@ -426870,10 +426908,10 @@ bEL
 jiv
 jjS
 teW
-teW
-teW
-teW
-ffv
+hqI
+hqI
+uGf
+enq
 ffv
 ffv
 ffv
@@ -427272,10 +427310,10 @@ nKu
 nSr
 vIX
 teW
-teW
-teW
-teW
-ffv
+fUr
+hqI
+wUw
+enq
 ffv
 ffv
 ffv
@@ -427674,10 +427712,10 @@ tML
 wAm
 wAm
 wAm
-wAm
-wAm
-tML
-ffv
+jGT
+hqI
+bPz
+enq
 ffv
 ffv
 ffv
@@ -428078,7 +428116,7 @@ cLL
 iRN
 fUr
 hqI
-wte
+uGf
 enq
 ffv
 ffv
@@ -429284,7 +429322,7 @@ hqI
 hqI
 hqI
 hqI
-bPz
+ojc
 enq
 ffv
 ffv
@@ -495619,7 +495657,7 @@ erZ
 nEd
 fVQ
 lgN
-jMW
+jJC
 lgN
 fVQ
 nEd

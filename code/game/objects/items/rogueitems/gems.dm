@@ -215,7 +215,7 @@
 	..()
 	set_light(2, 1, "#ec6510")
 
-/obj/item/reagent_containers/powder/sublimate
+/obj/item/reagent_containers/powder/sublimate // Gotten through alchemy, combine milled gemstone with moondust. Higher value dust, more sublimate.
 	name = "arcyne sublimate"
 	desc = "The stuff of gizaels and magic."
 	gender = PLURAL

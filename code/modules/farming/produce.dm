@@ -283,6 +283,7 @@
 	desc = ""
 	icon = 'icons/roguetown/items/produce.dmi'
 	icon_state = "pumpkin"
+	mill_result = /obj/item/reagent_containers/food/snacks/rogue/pumpkinspice
 	list_reagents = list(/datum/reagent/consumable/nutriment = 3)
 	tastes = list("pumpkin" = 1)
 	dropshrink = 0.75

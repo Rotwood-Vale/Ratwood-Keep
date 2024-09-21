@@ -14,7 +14,7 @@
 	. = 1 
 
 /datum/reagent/medicine/soporpot
-	name = "Soporific Potion"
+	name = "Soporific Poison"
 	description = "Weakens those it enters."
 	reagent_state = LIQUID
 	color = "#fcefa8"

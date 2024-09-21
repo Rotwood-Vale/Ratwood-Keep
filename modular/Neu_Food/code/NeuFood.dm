@@ -255,11 +255,11 @@
 	bookfile = "Neu_cooking.json"
 
 /obj/item/storage/foodbag
-	name = "food pouch"
+	name = "snack pouch"
 	desc = "A small pouch for carrying handfuls of food items."
-	icon_state = "sack_rope"
-	item_state = "sack_rope"
-	icon = 'icons/roguetown/items/misc.dmi'
+	icon_state = "pouch_e"
+	item_state = "pouch_e"
+	icon = 'icons/roguetown/clothing/storage.dmi'
 	w_class = WEIGHT_CLASS_NORMAL
 	slot_flags = ITEM_SLOT_HIP
 	resistance_flags = NONE
@@ -288,10 +288,10 @@
 	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
 	var/list/things = STR.contents()
 	if(things.len)
-		icon_state = "sack_rope"
+		icon_state = "pouch"
 		w_class = WEIGHT_CLASS_NORMAL
 	else
-		icon_state = "sack_rope"
+		icon_state = "pouch_e"
 		w_class = WEIGHT_CLASS_NORMAL
 
 /obj/item/storage/foodbag/ComponentInitialize()
@@ -303,8 +303,12 @@
 	STR.set_holdable(list(
 		/obj/item/reagent_containers/food/snacks/rogue/berrycandy,
 		/obj/item/reagent_containers/food/snacks/rogue/applecandy,
+		/obj/item/reagent_containers/food/snacks/rogue/pumpkincandy,
 		/obj/item/reagent_containers/food/snacks/rogue/raisins,
-		/obj/item/reagent_containers/food/snacks/rogue/crackerscooked
+		/obj/item/reagent_containers/food/snacks/rogue/crackerscooked,
+		/obj/item/reagent_containers/food/snacks/rogue/meat/coppiette,
+		/obj/item/reagent_containers/food/snacks/fat/salo,
+		/obj/item/reagent_containers/food/snacks/fat/salo/slice
 		))
 	STR.click_gather = TRUE
 	STR.attack_hand_interact = FALSE
@@ -316,6 +320,16 @@
 	STR.allow_dump_out = TRUE
 	STR.display_numerical_stacking = TRUE
 
+/obj/item/storage/foodbag/hardtack
+	name = "rations pouch"
+	desc = "A small pouch for carrying handfuls of food items."
+	icon_state = "pouch"
+	item_state = "pouch"
+
+/obj/item/storage/foodbag/hardtack/PopulateContents()
+	new /obj/item/reagent_containers/food/snacks/rogue/crackerscooked(src)
+	new /obj/item/reagent_containers/food/snacks/rogue/crackerscooked(src)
+	new /obj/item/reagent_containers/food/snacks/rogue/crackerscooked(src)
 
 /* * * * * * * * * * * * * * *	*
  *								*

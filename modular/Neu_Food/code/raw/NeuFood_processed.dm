@@ -111,6 +111,18 @@
 			qdel(src)
 	else ..()
 
+/obj/item/reagent_containers/food/snacks/rogue/pumpkinspice
+	name = "pumpkin spice"
+	desc = "A warm, spicy blend of cinnamon, nutmeg, and cloves."
+	icon = 'icons/roguetown/items/food.dmi'
+	icon_state = "pumpkinspice"
+	bitesize = 1
+	list_reagents = list(/datum/reagent/consumable/nutriment = 2)
+	w_class = WEIGHT_CLASS_TINY
+	tastes = list("an overwhelming flavor of pumpkin and other herbs." = 1)
+	eat_effect = /datum/status_effect/debuff/badmeal
+	rotprocess = null
+
 /obj/item/reagent_containers/food/snacks/rogue/candybase
 	name = "candy base"
 	desc = ""
@@ -143,6 +155,15 @@
 			if(do_after(user,short_cooktime, target = src))
 				user.mind.adjust_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
 				new /obj/item/reagent_containers/food/snacks/rogue/berrycandy(loc)
+				qdel(I)
+				qdel(src)
+	if(istype(I, /obj/item/reagent_containers/food/snacks/rogue/pumpkinspice))
+		if(isturf(loc)&& (found_table))
+			playsound(get_turf(user), 'modular/Neu_Food/sound/kneading.ogg', 100, TRUE, -1)
+			to_chat(user, "<span class='notice'>Mixing the pumpkin spice into the base...</span>")
+			if(do_after(user,short_cooktime, target = src))
+				user.mind.adjust_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
+				new /obj/item/reagent_containers/food/snacks/rogue/pumpkincandy(loc)
 				qdel(I)
 				qdel(src)
 	else
@@ -198,6 +219,31 @@
 		icon_state = "berrycandy2"
 	if(bitecount == 5)
 		icon_state = "berrycandy1"
+
+/obj/item/reagent_containers/food/snacks/rogue/pumpkincandy
+	name = "pumpkin candy"
+	desc = ""
+	icon = 'icons/roguetown/items/food.dmi'
+	icon_state = "pumpkincandy6"
+	list_reagents = list(/datum/reagent/consumable/nutriment = 12)
+	w_class = WEIGHT_CLASS_NORMAL
+	tastes = list("sweet, spiced pumpkin candy" = 1)
+	foodtype = SUGAR
+	bitesize = 6
+	rotprocess = null
+
+/obj/item/reagent_containers/food/snacks/rogue/pumpkincandy/On_Consume(mob/living/eater)
+	..()
+	if(bitecount == 1)
+		icon_state = "pumpkincandy5"
+	if(bitecount == 2)
+		icon_state = "pumpkincandy4"
+	if(bitecount == 3)
+		icon_state = "pumpkincandy3"
+	if(bitecount == 4)
+		icon_state = "pumpkincandy2"
+	if(bitecount == 5)
+		icon_state = "pumpkincandy1"
 
 // -------------- SPIDER HONEY -----------------
 /obj/item/reagent_containers/food/snacks/rogue/honey

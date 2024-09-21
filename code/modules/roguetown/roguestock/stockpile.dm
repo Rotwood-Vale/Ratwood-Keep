@@ -174,16 +174,16 @@
 	export_price = 5
 	importexport_amt = 5
 
-// /datum/roguestock/stockpile/pumpkin
-// 	name = "Pumpkin"
-// 	desc = "A large gourd."
-// 	item_type = /obj/item/reagent_containers/food/snacks/grown/pumpkin
-// 	held_items = list(0, 0)
-// 	payout_price = 3
-// 	withdraw_price = 5
-// 	transport_fee = 1
-// 	export_price = 5
-// 	importexport_amt = 5
+/datum/roguestock/stockpile/pumpkin
+	name = "Pumpkin"
+	desc = "A large gourd."
+	item_type = /obj/item/reagent_containers/food/snacks/grown/pumpkin
+	held_items = list(0, 0)
+	payout_price = 3
+	withdraw_price = 5
+	transport_fee = 1
+	export_price = 5
+	importexport_amt = 5
 
 // /datum/roguestock/stockpile/carrot
 // 	name = "Carrot"
@@ -229,7 +229,7 @@
 	export_price = 8
 	importexport_amt = 5
 
-/datum/roguestock/stockpile/poultry
+/datum/roguestock/stockpile/egg
 	name = "Egg"
 	desc = "Egg laid by a hen."
 	item_type = /obj/item/reagent_containers/food/snacks/egg

@@ -415,7 +415,7 @@
 	greet_text = span_sans("People really hate my voice for some reason.")
 	weight = 100
 
-/datum/special_trait/sillyvoice/on_apply((mob/living/carbon/human/character))
+/datum/special_trait/sillyvoice/on_apply(mob/living/carbon/human/character)
 	ADD_TRAIT(character, TRAIT_COMICSANS, "[type]")
 	character.dna.add_mutation(WACKY)
 
