@@ -93,7 +93,7 @@
 	var/max_pq = 0
 
 	var/show_in_credits = TRUE
-
+	var/announce_latejoin = TRUE //sigma told me to throw this here. For bandits not being announced when they latejoin.
 	var/give_bank_account = FALSE
 
 	var/can_random = TRUE

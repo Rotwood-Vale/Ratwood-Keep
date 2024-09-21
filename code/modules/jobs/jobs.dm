@@ -257,4 +257,4 @@ GLOBAL_PROTECT(exp_specialmap)
 	job = borg_expand.Replace(job, "cyborg")
 	return job
 
-var/announce_latejoin = TRUE //sigma told me to throw this here. For bandits not being announced when they latejoin.
+
