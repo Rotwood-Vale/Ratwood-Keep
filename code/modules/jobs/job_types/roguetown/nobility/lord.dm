@@ -104,7 +104,7 @@ GLOBAL_LIST_EMPTY(lord_titles)
 			if(istype(H.wear_mask, /obj/item/clothing/mask/rogue/eyepatch/left))
 				qdel(H.wear_mask)
 				mask = /obj/item/clothing/mask/rogue/lordmask/l
-	else //Queen, doesn't do anything at the moment as Lord is male-only
+	else //Lady
 		armor = /obj/item/clothing/suit/roguetown/armor/armordress
 		belt = /obj/item/storage/belt/rogue/leather/plaquegold
 		shoes = /obj/item/clothing/shoes/roguetown/shortboots

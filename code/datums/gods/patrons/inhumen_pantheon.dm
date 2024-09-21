@@ -3,51 +3,51 @@
 	associated_faith = /datum/faith/inhumen
 	undead_hater = FALSE
 	confess_lines = list(
-		"PSYDON IS THE DEMIURGE!",
+		"PSYDON FAILED US!",
 		"THE TEN ARE WORTHLESS COWARDS!",
 		"THE TEN ARE DECEIVERS!",
 	)
 
 /datum/patron/inhumen/zizo
 	name = "Zizo"
-	domain = "God of Necromancy and Left Hand Magicks"
-	desc = "Snow Elf turned God, Zizo taught dark elves to bend the natural world to their will."
-	worshippers = "Necromancers, Warlocks, and the Undead"
+	domain = "All that is Evil."
+	desc = "A long time ago, a single man achieved the impossible: he challenged God, and won."
+	worshippers = "Necromancers, The Power-hungry,  Cultists and Heretics of all kinds"
 	confess_lines = list(
 		"PRAISE ZIZO!",
 		"LONG LIVE ZIZO!",
-		"ZIZO IS KING!",
+		"ZIZO HAS PREVAILED!",
 	)
 
 /datum/patron/inhumen/graggar
 	name = "Graggar"
-	domain = "God of Conquest, Murder and Pillaging"
-	desc = "The Heartless One, Graggar taught dark elves that might makes right and created goblins in his image."
+	domain = "Patron of Conquest, Murder and Pillaging"
+	desc = "The Heartless One, Graggar showed the people that might makes right."
 	worshippers = "Prisoners, Murderers and the Cruel"
 	mob_traits = list(TRAIT_ORGAN_EATER)
 	confess_lines = list(
 		"GRAGGAR IS THE BEAST I WORSHIP!",
-		"GRAGGAR BRINGS UNHOLY DESTRUCTION!",
-		"THE BLACK SUN DEMANDS BLOOD!",
+		"GRAGGGGAAAAAAAAAAAAAAARRRRRR!!!",
+		"THE BLACK SUN DEMANDS SLAUGHTER!",
 	)
 
 /datum/patron/inhumen/matthios 
 	name = "Matthios"
-	domain = "God of Robbery, Mugging and Redistribution of Wealth"
-	desc = "Man turned God, Matthios taught man that only through theft and popular revolts can social woes be alleviated."
+	domain = "Patron of Robbery, Mugging and Redistribution of Wealth"
+	desc = "Matthios showed the people that only through theft and popular revolts can social woes be alleviated."
 	worshippers = "Highwaymen, Robbers and Downtrodden Peasants"
 	mob_traits = list(TRAIT_COMMIE)
 	confess_lines = list(
 		"MATTHIOS STEALS FROM THE WORTHLESS!",
 		"MATTHIOS IS JUSTICE!",
-		"MATTHIOS IS MY LORD!",
+		"MATTHIOS GUIDES MY HAND!",
 	)
 
 /datum/patron/inhumen/baotha
     name = "Baotha"
-    domain = "Goddess of Degeneracy, Debauchery and Addiction"
-    desc = "Woman turned God, Baotha taught man that life is too short to care for the consequences of their pleasures and leads them to peculiar vices and perversions. "
-    worshippers = "Perverts, Gamblers, Drunkards, and Bards"
+    domain = "Patron of Degeneracy, Obsession and Addiction"
+    desc = "Baotha showed the people that life is too short to care for etiquette, morality and moderation. "
+    worshippers = "Perverts, Gamblers and Drunkards"
     mob_traits = list(TRAIT_CRACKHEAD)
     confess_lines = list(
         "BAOTHA DEMANDS PLEASURE!",

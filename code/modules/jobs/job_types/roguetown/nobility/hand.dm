@@ -22,7 +22,7 @@
 	if(!player.ckey)
 		return
 	for(var/mob/dead/new_player/Lord in GLOB.player_list)
-		if(Lord.mind.assigned_role == "King")
+		if(Lord.mind.assigned_role == "Lord")
 			if(Lord.brohand == player.ckey)
 				return TRUE
 */
