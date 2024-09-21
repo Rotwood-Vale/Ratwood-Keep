@@ -184,7 +184,16 @@
 	name = "steel dagger"
 	desc = "This is a dagger made of solid steel, more durable."
 	icon_state = "sdagger"
+	force = 20
 	max_integrity = 150
+	smeltresult = /obj/item/ingot/steel
+
+/obj/item/rogueweapon/huntingknife/idagger/dtace
+	name = "'De Tace'"
+	desc = "The right hand of the right hand, this narrow length of steel serves as a quick solution to petty greviences."
+	icon_state = "stiletto"
+	force = 25
+	max_integrity = 200
 	smeltresult = /obj/item/ingot/steel
 
 /obj/item/rogueweapon/huntingknife/idagger/steel/parrying
