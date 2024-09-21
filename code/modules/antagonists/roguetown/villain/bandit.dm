@@ -14,15 +14,6 @@
 	var/tri_amt
 	var/contrib
 
-/datum/job/roguetown/bandit/after_spawn(mob/living/L, mob/M, latejoin = TRUE)
-    ..()
-    if(!L.mind)
-        return
-    if(L.mind.has_antag_datum(/datum/antagonist))
-        return
-    var/datum/antagonist/new_antag = new /datum/antagonist/bandit()
-    L.mind.add_antag_datum(new_antag)		
-
 /datum/antagonist/bandit/examine_friendorfoe(datum/antagonist/examined_datum,mob/examiner,mob/examined)
 	if(istype(examined_datum, /datum/antagonist/bandit))
 		return span_boldnotice("Another free man. My ally.")
@@ -30,11 +21,9 @@
 /datum/antagonist/bandit/on_gain()
 	owner.special_role = "Bandit"
 	owner.assigned_role = "Bandit"
-	owner.current.job = null
 	forge_objectives()
 	. = ..()
 	equip_bandit()
-	move_to_spawnpoint()
 	finalize_bandit()
 
 /datum/antagonist/bandit/proc/finalize_bandit()
@@ -78,20 +67,11 @@
 		owner.i_know_person(MF)
 		owner.person_knows_me(MF)
 
-	var/mob/living/carbon/human/H = owner.current
-	H.cmode_music = 'sound/music/combat_bandit2.ogg'
-	H.equipOutfit(/datum/outfit/job/roguetown/bandit)
-
 	return TRUE
 
 /datum/antagonist/bandit/after_name_change()
 	if(owner && owner.current)
 		add_bounty(owner.current.real_name, 80, TRUE, "bandit activity", "The King")
-
-/datum/outfit/job/roguetown/bandit/pre_equip(mob/living/carbon/human/H) //pick name and get not-ambushable
-	..()
-	H.ambushable = FALSE
-	addtimer(CALLBACK(H, TYPE_PROC_REF(/mob/living/carbon/human, choose_name_popup), "BANDIT"), 5 SECONDS)
 
 /datum/antagonist/bandit/roundend_report()
 	if(owner?.current)
