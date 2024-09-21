@@ -206,22 +206,10 @@ SUBSYSTEM_DEF(ticker)
 				tipped = TRUE
 
 			if(timeLeft <= 0)
-				if(!checkreqroles())
-/*					if(failedstarts >= 13)
-						current_state = GAME_STATE_SETTING_UP
-						Master.SetRunLevel(RUNLEVEL_SETUP)
-						if(start_immediately)
-							fire()
-					else*/
-					current_state = GAME_STATE_STARTUP
-					start_at = world.time + 600
-					timeLeft = null
-					Master.SetRunLevel(RUNLEVEL_LOBBY)
-				else
-					current_state = GAME_STATE_SETTING_UP
-					Master.SetRunLevel(RUNLEVEL_SETUP)
-					if(start_immediately)
-						fire()
+				current_state = GAME_STATE_SETTING_UP
+				Master.SetRunLevel(RUNLEVEL_SETUP)
+				if(start_immediately)
+					fire()
 
 		if(GAME_STATE_SETTING_UP)
 			if(!setup())
