@@ -15,6 +15,7 @@
 	
 	display_order = JDO_BANDIT
 	show_in_credits = FALSE
+	announce_latejoin = FALSE
 	min_pq = 0
 	max_pq = null
 
@@ -41,7 +42,7 @@
 		H.invisibility = INVISIBILITY_MAXIMUM
 		H.become_blind("advsetup")
 		H.ambushable = FALSE
-		
+
 /datum/outfit/job/roguetown/bandit/post_equip(mob/living/carbon/human/H)
 	..()
 	var/datum/antagonist/new_antag = new /datum/antagonist/bandit()
