@@ -119,7 +119,7 @@
 /datum/intent/whip/punish
 	name = "punish"
 	blade_class = BCLASS_BLUNT
-	attack_verb = list("strikes")
+	attack_verb = list("punish-strikes")
 	hitsound = list('sound/combat/hits/blunt/flailhit.ogg')
 	chargetime = 0
 	recovery = 10
