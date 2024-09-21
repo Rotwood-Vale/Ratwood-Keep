@@ -8,10 +8,10 @@
 	lefthand_file = 'icons/mob/inhands/equipment/security_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/equipment/security_righthand.dmi'
 	slot_flags = ITEM_SLOT_HIP|ITEM_SLOT_WRISTS
-	throwforce = 5
+	throwforce = 3
 	w_class = WEIGHT_CLASS_SMALL
 	throw_speed = 1
-	throw_range = 3
+	throw_range = 5
 	breakouttime = 5 SECONDS
 	slipouttime = 1 MINUTES
 	var/cuffsound = 'sound/blank.ogg'
@@ -149,15 +149,6 @@
 		target.update_inv_legcuffed()
 		return
 
-
-/datum/intent/whips
-	name = "strike"
-	blade_class = BCLASS_BLUNT
-	attack_verb = list("whips", "strikes", "smacks")
-	penfactor = 0 //40
-	chargetime = 5
-	item_d_type = "slash"
-
 /obj/item/rope/chain
 	name = "chain"
 	desc = "A heavy steel chain."
@@ -171,7 +162,7 @@
 	breakouttime = 10 SECONDS
 	slipouttime = 2 MINUTES
 	cuffsound = 'sound/blank.ogg'
-	possible_item_intents = list(/datum/intent/tie, /datum/intent/whips)
+	possible_item_intents = list(/datum/intent/tie)
 	firefuel = null
 	smeltresult = /obj/item/ingot/iron
 	drop_sound = 'sound/foley/dropsound/chain_drop.ogg'
