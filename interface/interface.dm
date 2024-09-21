@@ -194,6 +194,26 @@ Hotkey-Mode: (hotkey-mode must be on)
 	set name = "Commend Someone"
 	commendsomeone()
 
+/client/verb/roleplay_ad_view()
+	set category = "OOC"
+	set name = "Roleplay Ad (View)"
+	view_roleplay_ads()
+
+/client/verb/roleplay_ad_set()
+	set category = "OOC"
+	set name = "Roleplay Ad (Set)"
+	if(mob)
+		if(!ishuman(mob))
+			return
+		var/mob/living/carbon/human/C = mob
+		if(GLOB.roleplay_ads[C.mobid])
+			to_chat(C, span_info(GLOB.roleplay_ads[C.mobid]))
+		var/msg = input("Set an advertisement for what kind of roleplay you are looking to engage in. Others will be able to see it with the Roleplay Ad (View) command. Do not abuse this.", "I LOVE TO ROLEPLAY") as message|null
+		if(msg)
+			GLOB.roleplay_ads[mob.mobid] = "<b>[C.real_name]</b> - [msg]<BR>"
+			to_chat(C, span_info("Roleplay ad set."))
+			log_game("[C] has set their Roleplay Ad to '[msg]'.")
+
 /client/verb/changefps()
 	set category = "Options"
 	set name = "ChangeFPS"
