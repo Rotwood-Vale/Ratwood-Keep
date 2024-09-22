@@ -48,7 +48,6 @@
 			H.change_stat("perception", 2)
 			H.change_stat("endurance", 1)
 			H.change_stat("speed", 2)
-			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/mockery)
 		if("Skald")
 			H.set_blindness(0)
 			to_chat(H, span_warning("Skalds are wandering storytellers, and for many villages they are local historians keeping the tales of great legends and heroes alive."))
