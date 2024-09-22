@@ -2199,7 +2199,7 @@
 "qPJ" = (/obj/structure/roguewindow/openclose{dir = 8; icon_state = "woodwindowdir"},/turf/open/floor/rogue/twig,/area/rogue/indoors/town)
 "qPQ" = (/obj/structure/table/wood{icon_state = "tablewood1"},/obj/item/candle/yellow,/turf/open/floor/rogue/cobble/mossy,/area/rogue/under/town/basement)
 "qPR" = (/obj/structure/chair/wood/rogue,/turf/open/floor/rogue/ruinedwood{icon_state = "weird1"},/area/rogue/indoors/town/church/chapel)
-"qPX" = (/obj/structure/table/wood/fancy/royalblack,/obj/item/roguekey/priest,/obj/item/roguekey/graveyard,/turf/open/floor/carpet/royalblack,/area/rogue/indoors/town/church/chapel)
+"qPX" = (/obj/structure/table/wood/fancy/royalblack,/obj/item/roguekey/priest,/obj/item/storage/keyring/priest,/obj/item/roguekey/graveyard,/turf/open/floor/carpet/royalblack,/area/rogue/indoors/town/church/chapel)
 "qPZ" = (/obj/machinery/light/rogue/wallfire/candle/blue,/turf/open/floor/rogue/tile{icon_state = "chess"},/area/rogue/indoors/town/bath)
 "qQX" = (/obj/structure/fluff/railing/border,/turf/open/transparent/openspace,/area/rogue/indoors/town)
 "qRc" = (/obj/structure/chair/stool/rogue,/turf/open/floor/rogue/cobble/mossy,/area/rogue/under/town/basement)
