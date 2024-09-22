@@ -58,6 +58,7 @@
 						if(mind)
 							mind.sleep_adv.advance_cycle()
 							if(!mind.antag_datums || !mind.antag_datums.len)
+								allmig_reward++
 								adjust_triumphs(1)
 								to_chat(src, span_danger("Nights Survived: \Roman[allmig_reward]"))
 			if(leprosy == 1)

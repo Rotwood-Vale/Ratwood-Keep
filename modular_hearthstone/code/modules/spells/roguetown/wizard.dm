@@ -77,7 +77,7 @@
 			extra_fatigue = 5 // just a bit of extra fatigue on this one
 		if (PRESTI_MOTE)
 			extra_fatigue = 15 // same deal here
-		
+
 	user.rogfat_add(fatigue_used + extra_fatigue)
 
 	var/skill_level = user.mind?.get_skill_level(attached_spell.associated_skill)
@@ -119,7 +119,7 @@
 		return TRUE
 
 /obj/item/melee/touch_attack/prestidigitation/proc/create_spark(mob/living/carbon/human/user)
-	// adjusted from /obj/item/flint 
+	// adjusted from /obj/item/flint
 	if (world.time < spark_cd + sparkspeed)
 		return
 	spark_cd = world.time
@@ -211,8 +211,8 @@
 
 	var/choice = input("Choose a spell, points left: [user.mind.spell_points - user.mind.used_spell_points]") as null|anything in choices
 	var/obj/effect/proc_holder/spell/item = choices[choice]
-	if(!item) 
-		return     // user canceled; 
+	if(!item)
+		return     // user canceled;
 	if(alert(user, "[item.desc]", "[item.name]", "Learn", "Cancel") == "Cancel") //gives a preview of the spell's description to let people know what a spell does
 		return
 	for(var/obj/effect/proc_holder/spell/knownspell in user.mind.spell_list)
@@ -262,9 +262,9 @@
 	attacked_sound = list('sound/combat/hits/onstone/wallhit.ogg', 'sound/combat/hits/onstone/wallhit2.ogg', 'sound/combat/hits/onstone/wallhit3.ogg')
 	opacity = 0
 	density = TRUE
-	max_integrity = 80	
+	max_integrity = 80
 	CanAtmosPass = ATMOS_PASS_DENSITY
-	var/timeleft = 20 SECONDS  
+	var/timeleft = 20 SECONDS
 
 /obj/structure/forcefield_weak/Initialize()
 	. = ..()
@@ -291,7 +291,7 @@
 	caster = summoner
 
 /obj/structure/forcefield_weak/caster/CanPass(atom/movable/mover, turf/target)	//only the caster can move through this freely
-	if(mover == caster)		
+	if(mover == caster)
 		return TRUE
 	if(ismob(mover))
 		var/mob/M = mover
@@ -568,21 +568,21 @@
 
 		if(!do_after(user, 5 SECONDS, target = spelltarget))
 			return
-		
+
 		qdel(sacrifice)
 		ADD_TRAIT(spelltarget, TRAIT_ANTISCRYING, MAGIC_TRAIT)
 		if(spelltarget != user)
 			user.visible_message("[user] draws a glyph in the air and blows some ash onto [spelltarget].")
 		else
 			user.visible_message("[user] draws a glyph in the air and covers themselves in ash.")
-		
+
 		base_spell.add_buff_timer(spelltarget)
 		attached_spell.remove_hand()
 	return
 
 /obj/effect/proc_holder/spell/targeted/touch/darkvision
 	name = "Darkvision"
-	desc = "Enhance the night vision of a target you touch for an hour."
+	desc = "Enhance the night vision of a target you touch for 15 minutes."
 	clothes_req = FALSE
 	drawmessage = "I prepare to grant Darkvision."
 	dropmessage = "I release my arcyne focus."
@@ -596,7 +596,7 @@
 
 /obj/item/melee/touch_attack/darkvision
 	name = "\improper arcyne focus"
-	desc = "Touch a creature to grant them Darkvision for an hour."
+	desc = "Touch a creature to grant them Darkvision for 15 minutes."
 	catchphrase = null
 	possible_item_intents = list(INTENT_HELP)
 	icon = 'icons/mob/roguehudgrabs.dmi'
@@ -674,7 +674,7 @@
 	var/mob/living/spelltarget = A
 	spelltarget.apply_status_effect(/datum/status_effect/buff/haste)
 	playsound(get_turf(spelltarget), 'sound/magic/haste.ogg', 80, TRUE, soundping = TRUE)
-	
+
 	if(spelltarget != user)
 		user.visible_message("[user] mutters an incantation and [spelltarget] briefly shines yellow.")
 	else

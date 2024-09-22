@@ -93,9 +93,6 @@
 	if(!canconsume(M, user))
 		return FALSE
 
-	if(user.zone_selected != BODY_ZONE_PRECISE_NOSE)
-		return FALSE
-
 	if(M == user)
 		M.visible_message(span_notice("[user] sniffs [src]."))
 	else
