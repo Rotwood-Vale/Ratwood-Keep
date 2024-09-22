@@ -12,7 +12,6 @@
 	throwforce = 0
 	var/list/keys = list()
 	slot_flags = ITEM_SLOT_HIP|ITEM_SLOT_NECK|ITEM_SLOT_MOUTH|ITEM_SLOT_WRISTS
-	equip_sound = 'sound/foley/footsteps/armor/chain (2).ogg'
 	drop_sound = 'sound/foley/dropsound/chain_drop.ogg'
 	anvilrepair = /datum/skill/craft/blacksmithing
 
