@@ -366,10 +366,14 @@
 	sellprice = 200
 	resistance_flags = FIRE_PROOF | ACID_PROOF
 	anvilrepair = /datum/skill/craft/armorsmithing
+	visual_replacement = /obj/item/clothing/head/roguetown/crown/fakecrown
 
 /obj/item/clothing/head/roguetown/crown/serpcrown/Initialize()
 	. = ..()
-	SSroguemachine.crown = src
+	if(SSroguemachine.crown)
+		qdel(src)
+	else
+		SSroguemachine.crown = src
 
 /obj/item/clothing/head/roguetown/crown/serpcrown/proc/anti_stall()
 	src.visible_message(span_warning("The Crown of Azure Peak crumbles to dust, the ashes spiriting away in the direction of the Keep."))

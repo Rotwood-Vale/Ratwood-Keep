@@ -1038,7 +1038,11 @@ GLOBAL_LIST_EMPTY(friendly_animal_types)
 			prefs.copy_to(body,TRUE,FALSE)
 		if(human_gear_override)
 			for(var/obj/item/W in human_gear_override) //EVIL CODE!!
-				var/obj/item/new_item = new W.type(body)
+				var/obj/item/new_item
+				if(W.visual_replacement)
+					new_item = new W.visual_replacement(body)
+				else
+					new_item = new W.type(body)
 				new_item.icon_state = W.icon_state
 				new_item.flags_inv = W.flags_inv
 				new_item.body_parts_covered = W.body_parts_covered
