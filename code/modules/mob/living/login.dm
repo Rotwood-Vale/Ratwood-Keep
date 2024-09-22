@@ -34,6 +34,8 @@
 	if(changeling)
 		changeling.regain_powers()
 
+	set_ssd_indicator(FALSE) //Hearthstone apple change - ssd indicator
+
 /mob/living/proc/login_fade()
 	set waitfor = FALSE
 	if(!client)

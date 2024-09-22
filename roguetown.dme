@@ -3568,6 +3568,7 @@
 #include "modular_hearthstone\_statpacks.dm"
 #include "modular_hearthstone\code\datums\accents.dm"
 #include "modular_hearthstone\code\datums\loadout.dm"
+#include "modular_hearthstone\code\modules\mob\living\ssd_indicator.dm"
 #include "modular_hearthstone\code\datums\sexcon\item_helpers.dm"
 #include "modular_hearthstone\code\datums\sexcon\sex_actions\candle\candle_body.dm"
 #include "modular_hearthstone\code\datums\sexcon\sex_actions\candle\candle_breasts.dm"
