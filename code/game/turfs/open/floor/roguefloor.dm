@@ -595,6 +595,45 @@
 	. = ..()
 	dir = pick(GLOB.cardinals)
 
+/obj/effect/decal/herringbone
+	name = ""
+	desc = ""
+	icon = 'icons/turf/roguefloor.dmi'
+	icon_state = "herringedge"
+	mouse_opacity = 0
+
+/obj/effect/decal/wood/herringbone
+	name = ""
+	desc = ""
+	icon = 'icons/turf/roguefloor.dmi'
+	icon_state = "herringbonewoodedge"
+	mouse_opacity = 0
+
+/obj/effect/decal/wood/herringbone2
+	name = ""
+	desc = ""
+	icon = 'icons/turf/roguefloor.dmi'
+	icon_state = "herringbonewood2edge"
+	mouse_opacity = 0
+
+/turf/open/floor/rogue/ruinedwood/herringbone
+	footstep = FOOTSTEP_WOOD
+	barefootstep = FOOTSTEP_HARD_BAREFOOT
+	clawfootstep = FOOTSTEP_WOOD_CLAW
+	heavyfootstep = FOOTSTEP_GENERIC_HEAVY
+	tiled_dirt = FALSE
+	landsound = 'sound/foley/jumpland/woodland.wav'
+	icon_state = "herringbonewood"
+
+/turf/open/floor/rogue/wood/herringbone
+	footstep = FOOTSTEP_WOOD
+	barefootstep = FOOTSTEP_HARD_BAREFOOT
+	clawfootstep = FOOTSTEP_WOOD_CLAW
+	heavyfootstep = FOOTSTEP_GENERIC_HEAVY
+	tiled_dirt = FALSE
+	landsound = 'sound/foley/jumpland/woodland.wav'
+	icon_state = "herringbonewood2"
+
 /turf/open/floor/rogue/cobble
 	icon_state = "cobblestone1"
 	footstep = FOOTSTEP_STONE
@@ -674,6 +713,8 @@
 
 /turf/open/floor/rogue/tile/bath
 	icon_state = "bathtile"
+/turf/open/floor/rogue/tile/brick
+	icon_state = "bricktile"
 /turf/open/floor/rogue/tile/bfloorz
 	icon_state = "bfloorz"
 /turf/open/floor/rogue/tile/tilerg
