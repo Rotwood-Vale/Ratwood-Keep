@@ -61,7 +61,7 @@
 	color = "#b8252c"
 	icon_state = "shalal"
 	item_state = "shalal"
-	flags_inv = HIDEEARS|HIDEHAIR|HIDEFACIALHAIR
+	flags_inv = HIDEHAIR|HIDEFACIALHAIR
 	sleevetype = null
 	sleeved = null
 	icon = 'icons/roguetown/clothing/head.dmi'
@@ -208,6 +208,7 @@
 	item_state = "jester"
 	dynamic_hair_suffix = "+generic"
 	sewrepair = TRUE
+	flags_inv = HIDEEARS
 
 /obj/item/clothing/head/roguetown/strawhat
 	name = "straw hat"
@@ -285,7 +286,6 @@
 	desc = "A fancy hat worn by nobles."
 	icon_state = "chaperon"
 	item_state = "chaperon"
-	flags_inv = HIDEEARS
 	sewrepair = TRUE
 	//dropshrink = 0.75
 
@@ -294,28 +294,27 @@
 	desc = "A hat which designates one as well-versed in the arts of cooking."
 	icon_state = "chef"
 	item_state = "chef"
-	flags_inv = HIDEEARS
 	sewrepair = TRUE
 
 /obj/item/clothing/head/roguetown/chaperon/greyscale
 	name = "chaperon hat"
+	desc = "A fancy hat worn by nobles."
 	icon_state = "chap_alt"
 	item_state = "chap_alt"
-	flags_inv = HIDEEARS
 	color = "#cf99e3"
 
 /obj/item/clothing/head/roguetown/chaperon/bailiff
 	name = "chaperon hat"
+	desc = "A fancy hat worn by nobles."
 	icon_state = "chap_alt"
 	item_state = "chap_alt"
-	flags_inv = HIDEEARS
 	color = "#C0392B"
 
 /obj/item/clothing/head/roguetown/chaperon/councillor
 	name = "chaperon hat"
+	desc = "A fancy hat worn by nobles."
 	icon_state = "chap_alt"
 	item_state = "chap_alt"
-	flags_inv = HIDEEARS
 	color = "#7dcea0"
 
 /obj/item/clothing/head/roguetown/chef
@@ -412,7 +411,6 @@
 	name = "serpent crown"
 	desc = ""
 	icon_state = "reqhat"
-	flags_inv = HIDEEARS
 	sellprice = 100
 	anvilrepair = /datum/skill/craft/armorsmithing
 
@@ -504,7 +502,6 @@
 	icon_state = "kettle"
 	body_parts_covered = HEAD|HAIR|EARS
 	armor = list("blunt" = 80, "slash" = 90, "stab" = 70, "bullet" = 100, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
-	flags_inv = HIDEEARS
 
 /obj/item/clothing/head/roguetown/helmet/sallet
 	name = "sallet"
@@ -512,14 +509,13 @@
 	desc = "A steel helmet which protects the ears."
 	smeltresult = /obj/item/ingot/steel
 	body_parts_covered = HEAD|HAIR|EARS
-	flags_inv = HIDEEARS
 
 /obj/item/clothing/head/roguetown/helmet/sallet/visored
 	name = "visored sallet"
 	desc = "A steel helmet which protects the ears, nose, and eyes."
 	icon_state = "sallet_visor"
 	adjustable = CAN_CADJUST
-	flags_inv = HIDEEARS|HIDEFACE
+	flags_inv = HIDEFACE
 	flags_cover = HEADCOVERSEYES
 	body_parts_covered = HEAD|EARS|HAIR|NOSE|EYES
 	block2add = FOV_BEHIND
@@ -531,14 +527,15 @@
 			adjustable = CADJUSTED
 			icon_state = "[initial(icon_state)]_raised"
 			body_parts_covered = HEAD|EARS|HAIR
-			flags_inv = HIDEEARS
 			flags_cover = null
+			flags_inv = null
 			if(ishuman(user))
 				var/mob/living/carbon/H = user
 				H.update_inv_head()
 			block2add = null
 		else if(adjustable == CADJUSTED)
 			ResetAdjust(user)
+			flags_inv = HIDEFACE
 			if(user)
 				if(ishuman(user))
 					var/mob/living/carbon/H = user
@@ -853,7 +850,7 @@
 	item_state = "bascinet_novisor"
 	emote_environment = 3
 	body_parts_covered = HEAD|HAIR|EARS
-	flags_inv = HIDEEARS|HIDEHAIR
+	flags_inv = HIDEHAIR
 	block2add = FOV_BEHIND
 	smeltresult = /obj/item/ingot/steel
 
