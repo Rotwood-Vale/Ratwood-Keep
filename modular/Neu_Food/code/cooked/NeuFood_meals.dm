@@ -301,37 +301,45 @@
 	cooked_type = null
 	bonus_reagents = list(/datum/reagent/consumable/nutriment = MEAL_MEAGRE)
 	rotprocess = SHELFLIFE_DECENT
+
 /obj/item/reagent_containers/food/snacks/rogue/meat/poultry/baked/attackby(obj/item/I, mob/user, params)
 	var/obj/item/reagent_containers/peppermill/mill = I
-	if (!isturf(src.loc) || \
-		!(locate(/obj/structure/table) in src.loc) && \
-		!(locate(/obj/structure/table/optable) in src.loc) && \
-		!(locate(/obj/item/storage/bag/tray) in src.loc))
-		to_chat(user, "<span class='warning'>I need to use a table.</span>")
-		return FALSE
 	if(istype(mill))
+		if (!isturf(src.loc) || \
+			!(locate(/obj/structure/table) in src.loc) && \
+			!(locate(/obj/structure/table/optable) in src.loc) && \
+			!(locate(/obj/item/storage/bag/tray) in src.loc))
+			to_chat(user, "<span class='warning'>I need to use a table.</span>")
+			return FALSE
+
 		if(!mill.reagents.has_reagent(/datum/reagent/consumable/blackpepper, 1))
 			to_chat(user, "There's not enough black pepper to make anything with.")
-			return TRUE
+			return FALSE
+
 		mill.icon_state = "peppermill_grind"
 		to_chat(user, "You start rubbing the bird roast with black pepper.")
 		playsound(get_turf(user), 'modular/Neu_Food/sound/peppermill.ogg', 100, TRUE, -1)
 		if(do_after(user,3 SECONDS, target = src))
+			mill.icon_state = "peppermill"
 			if(!mill.reagents.has_reagent(/datum/reagent/consumable/blackpepper, 1))
 				to_chat(user, "There's not enough black pepper to make anything with.")
-				return TRUE
+				return FALSE
+
 			mill.reagents.remove_reagent(/datum/reagent/consumable/blackpepper, 1)
 			new /obj/item/reagent_containers/food/snacks/rogue/meat/poultry/baked/spiced(loc)
 			qdel(src)
-
+		else
+			mill.icon_state = "peppermill"
 	else
-		to_chat(user, "<span class='warning'>You need to put [src] on a table to knead in the spice.</span>")
+		return ..()
+
 /obj/item/reagent_containers/food/snacks/rogue/meat/poultry/baked/spiced
 	desc = "A plump bird, roasted perfection, spiced to taste divine."
 	eat_effect = /datum/status_effect/buff/foodbuff
 	name = "spiced bird-roast"
 	color = "#ffc0c0"
 	tastes = list("spicy birdmeat" = 1)
+
 /obj/item/reagent_containers/food/snacks/rogue/meat/poultry/baked/plated
 	icon_state = "roastchicken_plated"
 	item_state = "plate_food"
