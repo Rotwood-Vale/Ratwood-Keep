@@ -138,6 +138,7 @@ GLOBAL_LIST_INIT(stone_personality_descs, list(
 	slot_flags = ITEM_SLOT_MOUTH
 	obj_flags = null
 	w_class = WEIGHT_CLASS_TINY
+	destroy_sound = 'sound/foley/hit_rock.ogg'
 	grind_results = list(/datum/reagent/consumable/sodiumchloride = 15)
 
 /obj/item/natural/stone/Initialize()
@@ -254,6 +255,23 @@ GLOBAL_LIST_INIT(stone_personality_descs, list(
 			S.start()
 	else
 		..()
+
+/obj/item/reagent_containers/food/snacks/stone
+	name = "temporary kobold snack item for stone"
+	desc = ""
+	list_reagents = list(/datum/reagent/consumable/nutriment = 1)
+	tastes = list("salt" = 1)
+	foodtype = CLOTH
+
+/obj/item/natural/stone/attack(mob/living/M, mob/living/user, def_zone)
+	if(user.used_intent.type != INTENT_HARM && iskobold(M))
+		var/obj/item/reagent_containers/food/snacks/stone/R = new
+		var/obj/item/natural/stone/I = user.get_active_held_item()
+		if(istype(I, /obj/item/natural/stone))
+			R.name = name
+			if(R.attack(M, user, def_zone))
+				take_damage(100, sound_effect=FALSE)
+			qdel(R)
 
 /obj/item/natural/rock
 	name = "rock"

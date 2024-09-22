@@ -362,7 +362,7 @@
 				/obj/item/ammo_casing/caseless/rogue/arrow/sopor
 				)
 	reqs = list(
-				/obj/item/ammo_casing/caseless/rogue/arrow = 3,
+				/obj/item/ammo_casing/caseless/rogue/arrow = 5,
 				/datum/reagent/medicine/soporpot = 30
 				)
 

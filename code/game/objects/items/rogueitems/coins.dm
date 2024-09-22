@@ -23,6 +23,7 @@
 	var/base_type //used for compares
 	var/quantity = 1
 	var/plural_name
+	destroy_sound = 'sound/foley/coinphy (1).ogg'
 
 /obj/item/roguecoin/Initialize(mapload, coin_amount)
 	. = ..()
@@ -168,6 +169,49 @@
 		G.merge(src, user)
 		return
 	return ..()
+
+/obj/item/reagent_containers/food/snacks/gold
+	name = "temporary kobold coin snack item for gold"
+	desc = ""
+	list_reagents = list(/datum/reagent/consumable/nutriment = 3)
+	tastes = list("gold" = 1, "commerce" = 1)
+	foodtype = CLOTH
+
+/obj/item/reagent_containers/food/snacks/silver
+	name = "temporary kobold coin snack item for silver"
+	desc = ""
+	list_reagents = list(/datum/reagent/consumable/nutriment = 2)
+	tastes = list("silver" = 1, "commerce" = 1)
+	foodtype = CLOTH
+
+/obj/item/reagent_containers/food/snacks/copper
+	name = "temporary kobold coin snack item for copper"
+	desc = ""
+	list_reagents = list(/datum/reagent/consumable/nutriment = 1)
+	tastes = list("copper" = 1, "commerce" = 1)
+	foodtype = CLOTH
+
+/obj/item/roguecoin/attack(mob/living/M, mob/living/user, def_zone)
+	if(user.used_intent.type != INTENT_HARM && iskobold(M))
+		var/obj/item/reagent_containers/food/snacks/gold/g = new
+		var/obj/item/reagent_containers/food/snacks/silver/s = new
+		var/obj/item/reagent_containers/food/snacks/copper/c = new
+		var/obj/item/roguecoin/I = user.get_active_held_item()
+		if(istype(I, /obj/item/roguecoin/gold))
+			g.name = name
+			if(g.attack(M, user, def_zone))
+				take_damage(75, sound_effect=FALSE)
+			qdel(g)
+		if(istype(I, /obj/item/roguecoin/silver))
+			s.name = name
+			if(s.attack(M, user, def_zone))
+				take_damage(75, sound_effect=FALSE)
+			qdel(s)
+		if(istype(I, /obj/item/roguecoin/copper))
+			c.name = name
+			if(c.attack(M, user, def_zone))
+				take_damage(75, sound_effect=FALSE)
+			qdel(c)
 
 //GOLD
 /obj/item/roguecoin/gold
