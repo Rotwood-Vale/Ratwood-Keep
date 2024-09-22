@@ -958,10 +958,6 @@
 	name = "Long Over Eye (Alt)"
 	icon_state = "long_over_eye_alt"
 
-/datum/sprite_accessory/hair/head/diagonal_bangs
-	name = "Diagonal Bangs"
-	icon_state = "diagonal_bangs"
-
 /datum/sprite_accessory/hair/head/sabitsuki
 	name = "Sabitsuki"
 	icon_state = "sabitsuki"

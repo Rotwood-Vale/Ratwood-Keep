@@ -349,7 +349,6 @@
 		/datum/sprite_accessory/hair/head/rowdualtail,
 		/datum/sprite_accessory/hair/head/rowbun,
 		/datum/sprite_accessory/hair/head/long_over_eye_alt,
-		/datum/sprite_accessory/hair/head/diagonal_bangs,
 		/datum/sprite_accessory/hair/head/sabitsuki,
 		/datum/sprite_accessory/hair/head/cotton,
 		/datum/sprite_accessory/hair/head/cottonalt,
