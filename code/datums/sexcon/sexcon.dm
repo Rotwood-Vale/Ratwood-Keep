@@ -267,7 +267,7 @@
 
 /datum/sex_controller/proc/milk_container(obj/item/reagent_containers/glass/C)
 	var/obj/item/organ/breasts/breasts = user.getorganslot(ORGAN_SLOT_BREASTS)
-	var milk_amount
+	var/milk_amount
 	log_combat(user, user, "Was milked into a container")
 	user.visible_message(span_lovebold("[user] lactates into [C]!"))
 	playsound(user, 'sound/misc/mat/endout.ogg', 50, TRUE, ignore_walls = FALSE)
