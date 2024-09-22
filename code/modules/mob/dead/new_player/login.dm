@@ -26,7 +26,7 @@
 		else
 			var/shown_patreon_level = client.patreonlevel()
 			if(!shown_patreon_level)
-				shown_patreon_level = "None"
+				shown_patreon_level = "Azurean Chad"
 			switch(shown_patreon_level)
 				if(1)
 					shown_patreon_level = "Silver"
@@ -39,6 +39,7 @@
 				if(5)
 					shown_patreon_level = "Lord"
 			to_chat(src, span_info("Donator Level: [shown_patreon_level]"))
+		client.recent_changelog()
 
 	if(CONFIG_GET(flag/usewhitelist))
 		if(!client.whitelisted())

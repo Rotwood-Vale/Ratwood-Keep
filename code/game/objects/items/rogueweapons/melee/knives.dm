@@ -241,7 +241,7 @@
 
 /obj/item/rogueweapon/huntingknife/idagger/silver/mob_can_equip(mob/living/M, mob/living/equipper, slot, disable_warning = FALSE, bypass_equip_delay_self = FALSE)
 	. = ..()
-	if(ishuman(M))
+	if(ishuman(M) && M.mind)
 		var/mob/living/carbon/human/H = M
 		var/datum/antagonist/vampirelord/V_lord = H.mind.has_antag_datum(/datum/antagonist/vampirelord/)
 		var/datum/antagonist/werewolf/W = H.mind.has_antag_datum(/datum/antagonist/werewolf/)
@@ -272,7 +272,7 @@
 		return
 
 	. = ..()
-	if(ishuman(target))
+	if(ishuman(target) && target.mind)
 		var/mob/living/carbon/human/s_user = user
 		var/mob/living/carbon/human/H = target
 		var/datum/antagonist/werewolf/W = H.mind.has_antag_datum(/datum/antagonist/werewolf/)

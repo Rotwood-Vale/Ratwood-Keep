@@ -44,10 +44,14 @@
 	desc = "The Lord's key."
 	icon_state = "bosskey"
 	lockid = "lord"
+	visual_replacement = /obj/item/roguekey/royal
 
 /obj/item/roguekey/lord/Initialize()
 	. = ..()
-	SSroguemachine.key = src
+	if(SSroguemachine.key)
+		qdel(src)
+	else
+		SSroguemachine.key = src
 
 /obj/item/roguekey/lord/proc/anti_stall()
 	src.visible_message(span_warning("The Key of Azure Peak crumbles to dust, the ashes spiriting away in the direction of the Keep."))
