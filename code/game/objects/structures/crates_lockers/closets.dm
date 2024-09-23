@@ -41,6 +41,7 @@
 	var/lockhash
 	var/lockid = null
 	var/masterkey = FALSE
+	var/lock_strength = 100
 	throw_speed = 1
 	throw_range = 1
 	anchored = FALSE
@@ -263,6 +264,9 @@
 	if(istype(W, /obj/item/roguekey) || istype(W, /obj/item/storage/keyring))
 		trykeylock(W, user)
 		return
+	if(istype(W, /obj/item/lockpick))
+		trypicklock(W, user)
+		return
 	if(src.tool_interact(W,user))
 		return 1 // No afterattack
 	else
@@ -301,13 +305,70 @@
 		else
 			playsound(src, 'sound/foley/doors/lockrattle.ogg', 100)
 
+obj/structure/closet/proc/trypicklock(obj/item/I, mob/user)
+	if(opened)
+		to_chat(user, "<span class='warning'>This cannot be picked while it is open.</span>")
+		return
+	if(!keylock)
+		to_chat(user, "<span class='warning'>There's no lock on this.</span>")
+		return
+	if(broken)
+		to_chat(user, "<span class='warning'>The lock is broken.</span>")
+		return
+	else
+		var/lockprogress = 0
+		var/locktreshold = 100
+
+		var/obj/item/lockpick/P = I
+		var/mob/living/L = user
+
+		var/pickskill = user.mind.get_skill_level(/datum/skill/misc/lockpicking)
+		var/perbonus = L.STAPER/5
+		var/picktime = 70
+		var/pickchance = 35
+		var/moveup = 10
+
+		picktime -= (pickskill * 10)
+		picktime = clamp(picktime, 10, 70)
+
+		moveup += (pickskill * 3)
+		moveup = clamp(moveup, 10, 30)
+
+		pickchance += pickskill * 10
+		pickchance += perbonus
+		pickchance *= P.picklvl
+		pickchance = clamp(pickchance, 1, 95)
+
+
+
+		while(!QDELETED(I) &&(lockprogress < locktreshold))
+			if(!do_after(user, picktime, target = src))
+				break
+			if(prob(pickchance))
+				lockprogress += moveup
+				playsound(src.loc, pick('sound/items/pickgood1.ogg','sound/items/pickgood2.ogg'), 5, TRUE)
+				to_chat(user, "<span class='warning'>Click...</span>")
+				if(L.mind)
+					L.mind.adjust_experience(/datum/skill/misc/lockpicking, L.STAINT * 2)
+				if(lockprogress >= locktreshold)
+					to_chat(user, "<span class='deadsay'>The locking mechanism gives.</span>")
+					togglelock(user)
+					break
+				else
+					continue
+			else
+				playsound(loc, 'sound/items/pickbad.ogg', 40, TRUE)
+				I.take_damage(1, BRUTE, "blunt")
+				to_chat(user, "<span class='warning'>Clack.</span>")
+				L.mind.adjust_experience(/datum/skill/misc/lockpicking, L.STAINT * 0.5)
+				continue
+		return
+
 /obj/structure/closet/proc/tool_interact(obj/item/W, mob/user)//returns TRUE if attackBy call shouldnt be continued (because tool was used/closet was of wrong type), FALSE if otherwise
 	. = FALSE
 	if(opened)
 		if(user.transferItemToLoc(W, drop_location())) // so we put in unlit welder too
 			return TRUE
-
-
 
 /obj/structure/closet/proc/after_weld(weld_state)
 	return

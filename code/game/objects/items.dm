@@ -195,6 +195,8 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 	var/mailer = null
 	var/mailedto = null
 
+	var/picklvl = 0 //lockpicking
+
 	var/list/examine_effects = list()
 
 	///played when an item that is equipped blocks a hit

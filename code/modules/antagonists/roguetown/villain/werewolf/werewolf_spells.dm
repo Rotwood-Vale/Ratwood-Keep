@@ -51,8 +51,8 @@
 		if(istype(user.get_active_held_item(), /obj/item/rogueweapon/werewolf_claw))
 			user.dropItemToGround(l, TRUE)
 			user.dropItemToGround(r, TRUE)
-			qdel(l)
-			qdel(r)
+			//qdel(l) //dont delete the fucking items
+			//qdel(r) //dont delete the fucking items
 			//user.visible_message("Your claws retract.", "You feel your claws retracting.", "You hear a sound of claws retracting.")
 			extended = FALSE
 	else

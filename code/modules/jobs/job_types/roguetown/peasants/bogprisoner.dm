@@ -33,6 +33,7 @@
 		H.mind.adjust_skillrank(/datum/skill/misc/music, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/riding, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/lockpicking, 2, TRUE)
 		H.change_stat("intelligence", 1)
 		H.change_stat("fortune", 2)
 		var/datum/antagonist/new_antag = new /datum/antagonist/prisoner()

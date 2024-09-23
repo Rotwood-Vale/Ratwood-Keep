@@ -126,6 +126,7 @@
 		else
 			backr = /obj/item/rogue/instrument/lute
 
+	H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/mockery)
 	ADD_TRAIT(H, TRAIT_EMPATH, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)	//You have speed, use it. What musucian plays with cumbersome armor anyway?
 	ADD_TRAIT(H, TRAIT_GOODLOVER, TRAIT_GENERIC)

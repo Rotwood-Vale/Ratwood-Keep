@@ -42,6 +42,7 @@
 	H.change_stat("perception", 2)
 	H.change_stat("endurance", 2)
 	H.change_stat("speed", 1)
+	ADD_TRAIT(H, TRAIT_DEATHBYSNOOSNOO, TRAIT_GENERIC) //doubles sex damage
 	if(H.wear_mask) //for stupid idiots with bad eyes
 		var/obj/I = H.wear_mask
 		H.dropItemToGround(H.wear_mask, TRUE)

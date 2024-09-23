@@ -20,6 +20,7 @@
 	H.mind.adjust_skillrank(/datum/skill/misc/stealing, 1, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 2, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/climbing, 2, TRUE) 
+	H.mind.adjust_skillrank(/datum/skill/misc/lockpicking, 3, TRUE)
 	belt = /obj/item/storage/belt/rogue/leather/rope
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/random
 	pants = /obj/item/clothing/under/roguetown/trou
@@ -30,6 +31,7 @@
 	neck = /obj/item/storage/belt/rogue/pouch/coins/poor
 	armor = /obj/item/clothing/suit/roguetown/armor/workervest
 	beltr = /obj/item/rogueweapon/mace/cudgel // It claims to be a weapon for brigands but bandits don't actually use them...
+	backpack_contents = list(/obj/item/lockpickring/mundane)
 	H.change_stat("strength", 2)
 	H.change_stat("intelligence", -2)
 	H.change_stat("speed", -1)
