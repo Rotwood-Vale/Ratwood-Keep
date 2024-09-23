@@ -110,7 +110,7 @@
 	if (mote.loc == src)
 		user.visible_message(span_notice("[user] holds open the palm of [user.p_their()] hand and concentrates..."), span_notice("I hold open the palm of my hand and concentrate on my arcyne power..."))
 		if (do_after(user, src.motespeed, target = user))
-			mote.orbit(user, 18, pick(list(TRUE, FALSE)), 2000, 48, TRUE)
+			mote.orbit(user, 1, TRUE, 0, 48, TRUE)
 			return TRUE
 		return FALSE
 	else
