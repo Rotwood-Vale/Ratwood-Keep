@@ -39,9 +39,10 @@
 			say("This puts the starting tithe over [src.maxtithing] mammons.")
 			playsound(src, 'sound/misc/machineno.ogg', 100, FALSE, -1)
 			return
-		if(src.gamblingprice + (P.sellprice * P.quantity) < 10)
+		if(src.gamblingprice + (P.sellprice * P.quantity) < src.mintithing)
 			say("This is is below [src.mintithing] mammons.")
 			playsound(src, 'sound/misc/machineno.ogg', 100, FALSE, -1)
+			return
 
 		else
 			src.gamblingprice += (P.sellprice * P.quantity)
@@ -162,16 +163,16 @@
 
 	if(src.checkchatter == 1)
 		return
-	if(src.gamblingprice < 2000)
+	if(src.gamblingprice < 1000)
 		return
 
-	chatterbox = rand(1,2)
+	chatterbox = rand(1,4)
 
 	switch(chatterbox)
 		if(1)
 			src.say("I still remember the rain on my skin.")
 			playsound(src, 'sound/misc/machinetalk.ogg', 100, FALSE, -1)
-			sleep(20)
+			sleep(30)
 			src.say("The wind in my fur...or was it hair?")
 			playsound(src, 'sound/misc/machinequestion.ogg', 100, FALSE, -1)
 		if(2)
@@ -180,6 +181,12 @@
 			sleep(20)
 			src.say("But this is not so bad.")
 			playsound(src, 'sound/misc/machinetalk.ogg', 100, FALSE, -1)
+		if(3)
+			src.say("There are fates worse than death....")
+			playsound(src, 'sound/misc/machinetalk.ogg', 100, FALSE, -1)
+			sleep(30)
+			src.say("...especially for a lowly fool who thinks himself a king.")
+			playsound(src, 'sound/misc/bug.ogg', 100, FALSE, -1)
 		else
 			src.say("Me? Oh, no.")
 			playsound(src, 'sound/misc/machineyes.ogg', 100, FALSE, -1)
@@ -187,5 +194,5 @@
 			src.say("I am nothing but a lowly jester, just like you! Ha-ha-ha!")
 			playsound(src, 'sound/misc/bug.ogg', 100, FALSE, -1)
 
-	sleep(20)
+	sleep(40)
 	src.checkchatter = 1
