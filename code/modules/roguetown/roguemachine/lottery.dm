@@ -15,11 +15,12 @@
 	var/maxtithing = 100
 	var/stopgambling = 0
 	var/probpenalty = 2
+	var/oldtithe = 0
 
 
 /obj/structure/roguemachine/lottery_roguetown/attack_hand(mob/living/user) //empty hand
 
-	src.say("Your current tithe is [src.gamblingprice]. Care to spin?")
+	src.say("Your current tithe is [src.gamblingprice] mammons. Care to spin?")
 	playsound(src, 'sound/misc/machinetalk.ogg', 100, FALSE, -1)
 	return
 
@@ -39,7 +40,7 @@
 		else
 			src.gamblingprice += (P.sellprice * P.quantity)
 			qdel(P)
-			src.say("Your current tithe is now [src.gamblingprice]. Care to spin?")
+			src.say("Your current tithe is now [src.gamblingprice] mammons. Care to spin?")
 			playsound(src, 'sound/misc/machinequestion.ogg', 100, FALSE, -1)
 			return
 
@@ -50,6 +51,9 @@
 		return
 	if(src.gamblingprice == 0)
 		src.say(pick("Eager fool; you need mammons to gamble your life away.", "You are missing your tithe.", "A lord without land is no lord at all."))
+		src.stopgambling = 1
+		sleep(30)
+		src.stopgambling = 0
 		return
 
 
@@ -66,25 +70,32 @@
 		animate(src, pixel_x = oldx+1, time = 1)
 		animate(pixel_x = oldx-1, time = 1)
 		animate(pixel_x = oldx, time = 1)
-
 		sleep(50)
 
+//let's actually go gambling
 		if(src.gamblingprob > src.diceroll)
+			src.oldtithe = src.gamblingprice
 			src.gamblingprice *= pick(1.1, 1.1, 1.1, 1.1, 1.2, 1.2, 1.2, 1.4, 1.4, 2)
-			src.say("Well-maneuvered, aristocrat! Your peasant's tithe is now [src.gamblingprice]. Play again?")
+			src.gamblingprice = round(src.gamblingprice)
+			peasant_betting()
+			src.say(pick("Well-maneuvered, aristocrat! Your peasant's tithe is now [src.gamblingprice] mammons. Play again?", "A bountiful harvest, this year- the peasant's tithe rises to [src.gamblingprice] mammons. Spin me again?",))
+
 			playsound(src, 'sound/misc/machinetalk.ogg', 100, FALSE, -1)
 			src.stopgambling = 0
 			src.gamblingprob = src.gamblingbaseprob
+			src.oldtithe = src.gamblingprice //this is redundant but i feel like bad things will happen if i don't do this :T
 			return
+
 		else
-			src.say(pick("TEN, WHEEL OF FORTUNE - inversed.", "The Castle. O, Omen!", "A harvest of locusts...!", "Look into my eyes and whisper your woes.", "Aw, dangit.", "Fool. Poor fool.", "Your eyes leak out of your skull, drool falling from your lips.", "Divine idiocy."))
+			src.say(pick("TEN, WHEEL OF FORTUNE - inversed.", "The Castle. O, Omen!", "A harvest of locusts...!", "Look into my eyes and whisper your woes.", "Aw, dangit.", "Fool. Poor fool.", "Your eyes leak out of your skull, drool falling from your lips.", "Divine idiocy.", "You stand just as I did; loser and a freek."))
 			playsound(src, 'sound/misc/bug.ogg', 100, FALSE, -1)
-			sleep(20)
+			sleep(20) //really make them THINK about their life choices up to this point
 			src.stopgambling = 0
 			src.say(pick("King of fools, your land is barren. Play again?", "Divine comedy. Play again?", "Next time, surely. Play again?", "Haha-...ah-ha-ha! Again! Play again, jester!", "Poor beggar! Spin me again?"))
 			playsound(src, 'sound/misc/bug.ogg', 100, FALSE, -1)
 			src.gamblingprob = src.gamblingbaseprob
 			src.gamblingprice = 0
+			src.oldtithe = 0
 			return
 
 
@@ -131,3 +142,9 @@
 			budget2change(coin_amt*mod, user, selection)
 			gamblingprice -= coin_amt*mod
 
+
+
+/obj/structure/roguemachine/lottery_roguetown/proc/peasant_betting()
+
+	if(src.gamblingprice == oldtithe)
+		src.gamblingprice += 1
