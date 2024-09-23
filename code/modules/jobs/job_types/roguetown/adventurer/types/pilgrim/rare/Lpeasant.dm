@@ -15,7 +15,7 @@
 	H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 6, TRUE) // GIT OEUH ME FAHM
 	H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 3, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/combat/polearms, 4, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/misc/athletics, 4, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/misc/athletics, 5, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/craft/crafting, 6, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/sewing, 6, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/climbing, 2, TRUE)
