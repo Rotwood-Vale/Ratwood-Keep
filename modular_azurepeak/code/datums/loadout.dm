@@ -115,6 +115,10 @@ GLOBAL_LIST_EMPTY(loadout_items)
 	name = "Strapless Dress"
 	path = /obj/item/clothing/suit/roguetown/shirt/dress/gen/strapless
 
+/datum/loadout_item/leathervest
+	name = "Leather Vest"
+	path = /obj/item/clothing/suit/roguetown/armor/leather/vest
+
 //ACCESSORIES
 /datum/loadout_item/stockings
 	name = "Stockings"
