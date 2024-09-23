@@ -35,6 +35,7 @@
 		if(H.mind)
 			H.mind.adjust_skillrank(/datum/skill/combat/maces, 5) // Hammer.
 			H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 5)
+			H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 4)
 			H.mind.adjust_skillrank(/datum/skill/craft/crafting, 3)
 			H.mind.adjust_skillrank(/datum/skill/craft/masonry, 5)
 			H.mind.adjust_skillrank(/datum/skill/craft/carpentry, 2)
@@ -43,6 +44,7 @@
 			H.mind.adjust_skillrank(/datum/skill/craft/weaponsmithing, 6)
 			H.mind.adjust_skillrank(/datum/skill/misc/reading, 1)
 			if(H.age == AGE_OLD)
+				H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 1)
 				H.mind.adjust_skillrank(/datum/skill/craft/masonry, 1)
 				H.mind.adjust_skillrank(/datum/skill/craft/crafting, 2)
 				H.mind.adjust_skillrank(/datum/skill/combat/maces, 1)
