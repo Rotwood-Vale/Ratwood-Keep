@@ -906,6 +906,178 @@
 	name = "Kobeni (Alt)"
 	icon_state = "kobeni_2"
 
+/datum/sprite_accessory/hair/head/gloomy_short
+	name = "Gloomy (Short)"
+	icon_state = "gloomy_short"
+
+/datum/sprite_accessory/hair/head/gloomy_medium
+	name = "Gloomy (Medium)"
+	icon_state = "gloomy_medium"
+
+/datum/sprite_accessory/hair/head/gloomy_long
+	name = "Gloomy (Long)"
+	icon_state = "gloomy_long"
+
+/datum/sprite_accessory/hair/head/emo_long
+	name = "Emo Long (New)"
+	icon_state = "emo_long"
+
+/datum/sprite_accessory/hair/head/twintail_floor
+	name = "Twintail Floor"
+	icon_state = "twintail_floor"
+
+/datum/sprite_accessory/hair/head/sideways_ponytail
+	name = "Sideways Ponytail"
+	icon_state = "sideways_ponytail"
+
+/datum/sprite_accessory/hair/head/ponytail8
+	name = "Ponytail 8"
+	icon_state = "ponytail8"
+
+/datum/sprite_accessory/hair/head/dreadlocks_long
+	name = "Dreadlocks Long"
+	icon_state = "dreadlocks_long"
+
+/datum/sprite_accessory/hair/head/rows1
+	name = "Row 1"
+	icon_state = "rows1"
+
+/datum/sprite_accessory/hair/head/rows2
+	name = "Row 2"
+	icon_state = "rows2"
+
+/datum/sprite_accessory/hair/head/rowbraid
+	name = "Row Braid"
+	icon_state = "rowbraid"
+
+/datum/sprite_accessory/hair/head/rowdualtail
+	name = "Row Dual Tail"
+	icon_state = "rowdualtail"
+
+/datum/sprite_accessory/hair/head/rowbun
+	name = "Row Bun"
+	icon_state = "rowbun"
+
+/datum/sprite_accessory/hair/head/long_over_eye_alt
+	name = "Long Over Eye (Alt)"
+	icon_state = "long_over_eye_alt"
+
+/datum/sprite_accessory/hair/head/sabitsuki
+	name = "Sabitsuki"
+	icon_state = "sabitsuki"
+
+/datum/sprite_accessory/hair/head/cotton
+	name = "Cotton"
+	icon_state = "cotton"
+
+/datum/sprite_accessory/hair/head/cottonalt
+	name = "Cotton (Alt)"
+	icon_state = "cottonalt"
+
+/datum/sprite_accessory/hair/head/bushy
+	name = "Bushy"
+	icon_state = "bushy"
+
+/datum/sprite_accessory/hair/head/bushy_alt
+	name = "Bushy (Alt)"
+	icon_state = "bushy_alt"
+
+/datum/sprite_accessory/hair/head/curtains
+	name = "Curtains"
+	icon_state = "curtains"
+
+/datum/sprite_accessory/hair/head/glamourh
+	name = "Glamourh"
+	icon_state = "glamourh"
+
+/datum/sprite_accessory/hair/head/emma
+	name = "Emma"
+	icon_state = "emma"
+
+/datum/sprite_accessory/hair/head/damsel
+	name = "Damsel"
+	icon_state = "damsel"
+
+/datum/sprite_accessory/hair/head/wavylong
+	name = "Wavy Long"
+	icon_state = "wavylong"
+
+/datum/sprite_accessory/hair/head/wavyovereye
+	name = "Wavy Over Eye"
+	icon_state = "wavyovereye"
+
+/datum/sprite_accessory/hair/head/straightovereye
+	name = "Straight Over Eye"
+	icon_state = "straightovereye"
+
+/datum/sprite_accessory/hair/head/straightside
+	name = "Straight Side"
+	icon_state = "straightside"
+
+/datum/sprite_accessory/hair/head/straightshort
+	name = "Straight Short"
+	icon_state = "straightshort"
+
+/datum/sprite_accessory/hair/head/straightlong
+	name = "Straight Long"
+	icon_state = "straightlong"
+
+/datum/sprite_accessory/hair/head/fluffball
+	name = "Fluffball"
+	icon_state = "fluffball"
+
+/datum/sprite_accessory/hair/head/halfshave_long
+	name = "Halfshave Long"
+	icon_state = "halfshave_long"
+
+/datum/sprite_accessory/hair/head/halfshave_long_alt
+	name = "Halfshave Long (Alt)"
+	icon_state = "halfshave_long_alt"
+
+/datum/sprite_accessory/hair/head/halfshave_messy
+	name = "Halfshave Messy"
+	icon_state = "halfshave_messy"
+
+/datum/sprite_accessory/hair/head/halfshave_messylong
+	name = "Halfshave Messy Long"
+	icon_state = "halfshave_messylong"
+
+/datum/sprite_accessory/hair/head/halfshave_messy_alt
+	name = "Halfshave Messy (Alt)"
+	icon_state = "halfshave_messy_alt"
+
+/datum/sprite_accessory/hair/head/halfshave_messylong_alt
+	name = "Halfshave Messy Long (Alt)"
+	icon_state = "halfshave_messylong_alt"
+
+/datum/sprite_accessory/hair/head/halfshave_glamorous
+	name = "Halfshave Glamorous"
+	icon_state = "halfshave_glamorous"
+
+/datum/sprite_accessory/hair/head/halfshave_glamorous_alt
+	name = "Halfshave Glamorous (Alt)"
+	icon_state = "halfshave_glamorous_alt"
+
+/datum/sprite_accessory/hair/head/thicklong
+	name = "Thick Long"
+	icon_state = "thicklong"
+
+/datum/sprite_accessory/hair/head/thickshort
+	name = "Thick Short"
+	icon_state = "thickshort"
+
+/datum/sprite_accessory/hair/head/thickcurly
+	name = "Thick Curly"
+	icon_state = "thickcurly"
+
+/datum/sprite_accessory/hair/head/thicklong_alt
+	name = "Thick Long (Alt)"
+	icon_state = "thicklong_alt"
+
+/datum/sprite_accessory/hair/head/baum
+	name = "Baum"
+	icon_state = "baum"
+
 /datum/sprite_accessory/hair/head/vulpkian
 	abstract_type = /datum/sprite_accessory/hair/head/vulpkian
 	icon = 'icons/mob/sprite_accessory/hair/vulpkian_hair.dmi'
