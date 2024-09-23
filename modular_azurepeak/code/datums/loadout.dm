@@ -144,6 +144,14 @@ GLOBAL_LIST_EMPTY(loadout_items)
 	name = "Halfmask"
 	path = /obj/item/clothing/mask/rogue/shepherd
 
+/datum/loadout_item/pipe
+	name = "Pipe"
+	path = /obj/item/clothing/mask/cigarette/pipe
+
+/datum/loadout_item/pipewestman
+	name = "Westman Pipe"
+	path = /obj/item/clothing/mask/cigarette/pipe/westman
+
 /datum/loadout_item/feather
 	name = "Feather"
 	path = /obj/item/natural/feather
