@@ -363,7 +363,7 @@
 	character.set_patron(/datum/patron/godless)
 	ADD_TRAIT(character, TRAIT_SPELLCOCKBLOCK, "[type]")
 	ADD_TRAIT(character, TRAIT_ANTIMAGIC, "[type]") // Magic isn't real, idiot
-	ADD_TRAIT(character, TRAIT_ATHEISM_CURSE, "[type]")
+	ADD_TRAIT(character, TRAIT_ASTRATA_CURSE, "[type]")
 
 //negative
 /datum/special_trait/nimrod
