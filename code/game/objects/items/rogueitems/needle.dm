@@ -56,16 +56,18 @@
 
 /obj/item/needle/attackby(obj/item/I, mob/user, params)
 	if(istype(I, /obj/item/natural/fibers))
-		if(maxstring - stringamt < 5)
-			to_chat(user, span_warning("Not enough room for more thread!"))
+		if(infinite || maxstring - stringamt <= 0) //is the needle infinite OR does it have all of its uses left
+			to_chat(user, span_warning("The needle has no need to be refilled."))
 			return
-		else
-			to_chat(user, "I begin threading the needle with additional fibers...")
-			if(do_after(user, 6 SECONDS - user.mind.get_skill_level(/datum/skill/misc/sewing), target = I))
-				stringamt += 5
-				to_chat(user, "I replenish the needle's thread!")
-				qdel(I)
-			return
+
+		to_chat(user, "I begin threading the needle with additional fibers...")
+		if(do_after(user, 6 SECONDS - user.mind.get_skill_level(/datum/skill/misc/sewing), target = I))
+			var/refill_amount
+			refill_amount = min(5, (maxstring - stringamt))
+			stringamt += refill_amount
+			to_chat(user, "I replenish the needle's thread by [refill_amount] uses!")
+			qdel(I)
+		return
 	return ..()
 
 
@@ -76,7 +78,7 @@
 		if(stringamt < 1)
 			to_chat(user, span_warning("The needle has no thread left!"))
 			return
-		if(I.sewrepair && I.max_integrity && !I.obj_broken)
+		if(I.sewrepair && I.max_integrity)
 			if(I.obj_integrity == I.max_integrity)
 				to_chat(user, span_warning("This is not broken."))
 				return
@@ -95,6 +97,9 @@
 				playsound(loc, 'sound/foley/sewflesh.ogg', 100, TRUE, -2)
 				user.visible_message(span_info("[user] repairs [I]!"))
 				I.obj_integrity = I.max_integrity
+				if(I.obj_broken && istype(I, /obj/item/clothing))
+					var/obj/item/clothing/cloth = I
+					cloth.obj_fix()
 				//Vrell - Part of storage item repair fix
 				if(target_storage)
 					target_storage.being_repaired = FALSE

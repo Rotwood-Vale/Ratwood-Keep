@@ -504,6 +504,9 @@ SUBSYSTEM_DEF(ticker)
 		for(var/obj/structure/gate/obstacle in GLOB.biggates)
 			obstacle.open()
 
+	if(!rulermob)
+		lord_color_default()
+
 
 //These callbacks will fire after roundstart key transfer
 /datum/controller/subsystem/ticker/proc/OnRoundstart(datum/callback/cb)

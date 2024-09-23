@@ -30,6 +30,7 @@ GLOBAL_LIST_INIT(adjectives, world.file2list("strings/names/adjectives.txt"))
 GLOBAL_LIST_INIT(dream_strings, world.file2list("strings/dreamstrings.txt"))
 
 GLOBAL_LIST_INIT(ooctitle, world.file2list("strings/names/roguetown/ooctitle.txt"))
+GLOBAL_LIST_INIT(changelog, world.file2list("strings/changelog.txt"))
 //loaded on startup because of "
 //would include in rsc if ' was used
 

@@ -100,6 +100,10 @@
 		/datum/descriptor_choice/prominent_three,
 		/datum/descriptor_choice/prominent_four,
 	)
+	languages = list(
+		/datum/language/common,
+		/datum/language/canilunzt
+	)
 
 /datum/species/vulpkanin/check_roundstart_eligible()
 	return TRUE

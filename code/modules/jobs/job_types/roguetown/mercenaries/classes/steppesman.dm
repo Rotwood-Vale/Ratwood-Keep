@@ -6,7 +6,7 @@
 	outfit = /datum/outfit/job/roguetown/mercenary/steppesman
 	category_tags = list(CTAG_MERCENARY)
 	maximum_possible_slots = 6
-	cmode_music = 'sound/music/combat_desertrider.ogg'	//Placeholder; maybe something Slavic/Tatar/Turkmen sounding?
+	cmode_music = 'sound/music/combat_steppe.ogg'
 
 /datum/outfit/job/roguetown/mercenary/steppesman/pre_equip(mob/living/carbon/human/H)
 	..()

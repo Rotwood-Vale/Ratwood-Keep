@@ -214,6 +214,12 @@
 				/obj/item/kitchen/spoon)
 	reqs = list(/obj/item/grown/log/tree/small = 1)
 
+/datum/crafting_recipe/roguetown/platter
+	name = "platter"
+	result = list(/obj/item/cooking/platter,
+				/obj/item/cooking/platter)
+	reqs = list(/obj/item/grown/log/tree/small = 1)
+
 /datum/crafting_recipe/roguetown/rollingpin
 	name = "rollingpin"
 	result = /obj/item/kitchen/rollingpin
@@ -346,17 +352,13 @@
 	name = "stone mortar"
 	result = /obj/item/reagent_containers/glass/mortar
 	reqs = list(/obj/item/natural/stone = 1)
-	tools = list(/obj/item/rogueweapon/huntingknife) // Intended to be either stone knife or steel hunting knife
 	craftdiff = 1
-	subtype_reqs = TRUE //Unsure if needed for stone knife to work, feel free to remove this if not.
 
 /datum/crafting_recipe/roguetown/pestle
 	name = "stone pestle"
 	result = /obj/item/pestle
 	reqs = list(/obj/item/natural/stone = 1)
-	tools = list(/obj/item/rogueweapon/huntingknife) // Intended to be either stone knife or steel hunting knife
 	craftdiff = 1
-	subtype_reqs = TRUE //Unsure if needed for stone knife to work, feel free to remove this if not.
 
 /datum/crafting_recipe/roguetown/bag
 	name = "bag"

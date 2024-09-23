@@ -24,8 +24,6 @@ GLOBAL_LIST_INIT(ghost_verbs, list(
 	switch(alert("Descend to the Underworld?",,"Yes","No"))
 		if("Yes")
 			if(istype(mob, /mob/living/carbon/spirit))
-				//HONEYPOT CODE, REMOVE LATER
-				message_admins("RETARDED MOTHERFUCKER [key] IS TRYING TO CRASH THE SERVER BY SPAWNING 3 GORILLION SPIRITS!")
 				return
 
 			if(istype(mob, /mob/living/carbon/human))
@@ -34,7 +32,6 @@ GLOBAL_LIST_INIT(ghost_verbs, list(
 					D.returntolobby()
 					return
 
-				// Check if the player's job is hiv+
 				var/datum/job/target_job = SSjob.GetJob(D.mind.assigned_role)
 				if(target_job)
 					if(target_job.job_reopens_slots_on_death)

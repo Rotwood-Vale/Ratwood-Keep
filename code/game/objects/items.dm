@@ -202,6 +202,10 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 	///played when an item that is equipped blocks a hit
 	var/list/blocksound
 
+	var/sheathe_sound // played when item is placed on hip_r or hip_l, the belt side slots
+
+	var/visual_replacement //Path. For use in generating dummies for one-off items that would break the game like the crown.
+
 /obj/item/Initialize()
 	. = ..()
 	if(!pixel_x && !pixel_y && !bigboy)
@@ -644,6 +648,7 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 // user is mob that equipped it
 // slot uses the slot_X defines found in setup.dm
 // for items that can be placed in multiple slots
+// The slot == refers to the new location of the item
 // Initial is used to indicate whether or not this is the initial equipment (job datums etc) or just a player doing it
 /obj/item/proc/equipped(mob/user, slot, initial = FALSE)
 	SHOULD_CALL_PARENT(TRUE)
@@ -654,10 +659,13 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 			A.Grant(user)
 	item_flags |= IN_INVENTORY
 	if(!initial)
-		if(equip_sound &&(slot_flags & slotdefine2slotbit(slot)))
-			playsound(src, equip_sound, EQUIP_SOUND_VOLUME, TRUE, ignore_walls = FALSE)
-		else if(slot == SLOT_HANDS)
+		var/slotbit = slotdefine2slotbit(slot)
+		if(slot == ITEM_SLOT_HANDS)
 			playsound(src, pickup_sound, PICKUP_SOUND_VOLUME, ignore_walls = FALSE)
+		if(slotbit == ITEM_SLOT_HIP)
+			playsound(src, sheathe_sound, SHEATHE_SOUND_VOLUME, ignore_walls = FALSE)
+		else if(equip_sound &&(slot_flags & slotbit))
+			playsound(src, equip_sound, EQUIP_SOUND_VOLUME, TRUE, ignore_walls = FALSE)
 	user.update_equipment_speed_mods()
 
 	if(!user.is_holding(src))
@@ -671,7 +679,7 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 				return
 			qdel(O)
 			return
-		if(slot == SLOT_HANDS)
+		if(slotbit == ITEM_SLOT_HANDS)
 			wield(user)
 		else
 			ungrip(user)

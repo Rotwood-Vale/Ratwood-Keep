@@ -11,5 +11,8 @@ combat_guard.ogg: Deus Ex - Desolation Combat
 combat_guard2.ogg: Deus Ex - NYC Streets Combat
 combat_physician.ogg: Pathologic (Classic) - Utroba Aggression
 combat_bum.ogg: Pathologic (Classic) - Most Combat Theme
+combat_knight.ogg: Dragon's Dogma OST: Tense Combat
 title1.ogg: Aphex Twin - Stone In Focus
 bath.ogg: Mabisyo - No Baby (Cropped to 1:00)
+tav_tune.ogg: Divinity Original Sin 2 - Black Bull Tavern
+combat_steppe.ogg: Tatar Theme (Hellish Quart OST)

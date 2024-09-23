@@ -1,11 +1,11 @@
 /obj/item/clothing/suit/roguetown/shirt/dress/gen/strapless
 	slot_flags = ITEM_SLOT_ARMOR|ITEM_SLOT_SHIRT
-	body_parts_covered = null
+	body_parts_covered = CHEST|GROIN
 	icon = 'modular_hearthstone/icons/obj/items/clothes/dress.dmi'
 	mob_overlay_icon = 'modular_hearthstone/icons/obj/items/clothes/on_mob/dress.dmi'
 	name = "strapless dress"
 	desc = "It barely covers anything at all!"
-	body_parts_covered = null
+	flags_inv = HIDEBOOB|HIDECROTCH
 	icon_state = "strapless"
 	sleevetype = null
 	sleeved = null

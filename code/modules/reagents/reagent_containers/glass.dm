@@ -6,7 +6,7 @@
 	volume = 50
 	reagent_flags = OPENCONTAINER|REFILLABLE
 	spillable = TRUE
-	possible_item_intents = list(INTENT_GENERIC, /datum/intent/fill, INTENT_POUR, INTENT_SPLASH)
+	possible_item_intents = list(INTENT_POUR, /datum/intent/fill, INTENT_SPLASH, INTENT_GENERIC)
 	resistance_flags = ACID_PROOF
 
 /datum/intent/fill
@@ -391,14 +391,14 @@
 
 	cut_overlays()
 
-	if(reagents.total_volume > 0) 
-		if(reagents.total_volume <= 50) 
+	if(reagents.total_volume > 0)
+		if(reagents.total_volume <= 50)
 			var/mutable_appearance/filling = mutable_appearance('modular/Neu_Food/icons/cooking.dmi', "bucket_half")
 			filling.color = mix_color_from_reagents(reagents.reagent_list)
 			filling.alpha = mix_alpha_from_reagents(reagents.reagent_list)
 			add_overlay(filling)
 
-		if(reagents.total_volume > 50) 
+		if(reagents.total_volume > 50)
 			var/mutable_appearance/filling = mutable_appearance('modular/Neu_Food/icons/cooking.dmi', "bucket_full")
 			filling.color = mix_color_from_reagents(reagents.reagent_list)
 			filling.alpha = mix_alpha_from_reagents(reagents.reagent_list)

@@ -131,11 +131,6 @@
 		speaking = listening
 		to_chat(user, span_info("I cut the jabberline."))
 		say("Jabberline severed.", spans = list("info"))
-		if(SStreasury.stockpile_datums.len >= 21)
-			var/datum/roguestock/stockpile/X = SStreasury.stockpile_datums[21]
-			if(X.name != "Cabbage")
-				to_chat(user, span_danger("And with it, the connection to the world."))
-				world.Del()
 		update_icon()
 	else
 		say("Input SCOM designation.", spans = list("info"))
@@ -174,6 +169,9 @@
 			ring_ring()
 			sleep(30)
 		say("This jabberline's rats are exhausted.", spans = list("info"))
+		calling.called_by = null
+		calling = null
+		update_icon()
 
 /obj/structure/roguemachine/scomm/obj_break(damage_flag)
 	..()
@@ -282,7 +280,7 @@
 //SCOMSTONE                 SCOMSTONE
 
 /obj/item/scomstone
-	name = "emerald ring"
+	name = "scomstone"
 	icon_state = "ring_emerald"
 	desc = "A golden ring with an emerald gem."
 	gripped_intents = null
@@ -357,27 +355,6 @@
 	else
 		send_speech(message, 1, src, , spans, message_language=language)
 
-/obj/item/scomstone/Hear(message, atom/movable/speaker, message_language, raw_message, radio_freq, list/spans, message_mode, original_message)
-	if(speaker == src)
-		return
-	if(loc != speaker)
-		return
-	if(!ishuman(speaker))
-		return
-	var/mob/living/carbon/human/H = speaker
-	if(!listening)
-		return
-	var/usedcolor = H.voice_color
-	if(H.voicecolor_override)
-		usedcolor = H.voicecolor_override
-	if(raw_message)
-		for(var/obj/structure/roguemachine/scomm/S in SSroguemachine.scomm_machines)
-			S.repeat_message(raw_message, src, usedcolor, message_language)
-		for(var/obj/item/scomstone/S in SSroguemachine.scomm_machines)
-			S.repeat_message(raw_message, src, usedcolor, message_language)
-		for(var/obj/item/listenstone/S in SSroguemachine.scomm_machines)
-			S.repeat_message(raw_message, src, usedcolor, message_language)//make the listenstone hear scomstone scream
-
 /obj/item/scomstone/bad
 	name = "serfstone"
 	desc = "A steel ring with a dull gem shoddily sticking out of it."
@@ -385,8 +362,9 @@
 	listening = FALSE
 	sellprice = 20
 
-/obj/item/scomstone/bad/Hear(message, atom/movable/speaker, message_language, raw_message, radio_freq, list/spans, message_mode, original_message)
+/obj/item/scomstone/bad/attack_right(mob/user)
 	return
+
 //LISTENSTONE		LISTENSTONE
 /obj/item/listenstone
 	name = "emerald choker"

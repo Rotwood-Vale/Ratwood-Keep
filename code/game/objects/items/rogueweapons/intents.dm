@@ -245,6 +245,17 @@
 	volume = 100
 	extra_range = 3
 
+/datum/looping_sound/invokefire
+	mid_sounds = list('sound/magic/charging_fire.ogg')
+	mid_length = 130
+	volume = 100
+	extra_range = 3
+
+/datum/looping_sound/invokelightning
+	mid_sounds = list('sound/magic/charging_lightning.ogg')
+	mid_length = 130
+	volume = 100
+	extra_range = 3
 
 /datum/looping_sound/invokeholy
 	mid_sounds = list('sound/magic/holycharging.ogg')
@@ -394,10 +405,10 @@
 	chargetime = 0
 	noaa = TRUE
 	rmb_ranged = TRUE
-	releasedrain = 0
-	misscost = 5
+	releasedrain = 10
+	misscost = 8
 	candodge = TRUE
-	canparry = FALSE
+	canparry = TRUE
 	item_d_type = "blunt"
 
 /datum/intent/unarmed/grab/rmb_ranged(atom/target, mob/user)

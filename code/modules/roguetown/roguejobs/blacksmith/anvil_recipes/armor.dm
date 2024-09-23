@@ -45,6 +45,12 @@
 	created_item = /obj/item/clothing/mask/rogue/facemask
 	craftdiff = 0
 
+/datum/anvil_recipe/armor/wildguard
+	name = "Wildguard Mask"
+	req_bar = /obj/item/ingot/iron
+	created_item = /obj/item/clothing/mask/rogue/wildguard
+	craftdiff = 0
+
 /datum/anvil_recipe/armor/ironboot
 	name = "Plated Boots"
 	req_bar = /obj/item/ingot/iron
