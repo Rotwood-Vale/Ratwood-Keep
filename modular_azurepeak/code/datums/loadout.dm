@@ -60,6 +60,10 @@ GLOBAL_LIST_EMPTY(loadout_items)
 	name = "Rider Cloak"
 	path = /obj/item/clothing/cloak/half/rider
 
+/datum/loadout_item/raincloak
+	name = "Rain Cloak"
+	path = /obj/item/clothing/cloak/raincloak
+
 
 //SHOES
 /datum/loadout_item/darkboots
@@ -123,3 +127,7 @@ GLOBAL_LIST_EMPTY(loadout_items)
 /datum/loadout_item/fishnet
 	name = "Fishnet Stockings"
 	path = /obj/item/clothing/under/roguetown/tights/stockings/fishnet
+
+/datum/loadout_item/feather
+	name = "Feather"
+	path = /obj/item/natural/feather

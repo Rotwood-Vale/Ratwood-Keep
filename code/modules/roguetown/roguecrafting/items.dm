@@ -214,6 +214,12 @@
 				/obj/item/kitchen/spoon)
 	reqs = list(/obj/item/grown/log/tree/small = 1)
 
+/datum/crafting_recipe/roguetown/platter
+	name = "platter"
+	result = list(/obj/item/cooking/platter,
+				/obj/item/cooking/platter)
+	reqs = list(/obj/item/grown/log/tree/small = 1)
+
 /datum/crafting_recipe/roguetown/rollingpin
 	name = "rollingpin"
 	result = /obj/item/kitchen/rollingpin

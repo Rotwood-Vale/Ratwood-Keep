@@ -24,9 +24,9 @@
 			gloves = /obj/item/clothing/gloves/roguetown/chain
 			pants = /obj/item/clothing/under/roguetown/chainlegs
 			cloak = /obj/item/clothing/cloak/tabard
-			neck = /obj/item/clothing/neck/roguetown/bervor
+			neck = /obj/item/clothing/neck/roguetown/gorget
 			shirt = /obj/item/clothing/suit/roguetown/armor/chainmail
-			armor = /obj/item/clothing/suit/roguetown/armor/plate
+			armor = /obj/item/clothing/suit/roguetown/armor/plate/half
 			wrists = /obj/item/clothing/wrists/roguetown/bracers
 			shoes = /obj/item/clothing/shoes/roguetown/boots/armor
 			belt = /obj/item/storage/belt/rogue/leather
@@ -59,13 +59,13 @@
 			gloves = /obj/item/clothing/gloves/roguetown/chain/blk
 			pants = /obj/item/clothing/under/roguetown/chainlegs/blk
 			cloak = /obj/item/clothing/cloak/tabard/blkknight
-			neck = /obj/item/clothing/neck/roguetown/bervor
+			neck = /obj/item/clothing/neck/roguetown/gorget
 			shirt = /obj/item/clothing/suit/roguetown/armor/chainmail
-			armor = /obj/item/clothing/suit/roguetown/armor/plate/blkknight
+			armor = /obj/item/clothing/suit/roguetown/armor/plate/half/blk
 			wrists = /obj/item/clothing/wrists/roguetown/bracers
-			shoes = /obj/item/clothing/shoes/roguetown/boots/armor/blkknight
+			shoes = /obj/item/clothing/shoes/roguetown/boots/armor/blk
 			belt = /obj/item/storage/belt/rogue/leather
-			beltr = /obj/item/rogueweapon/sword/long/death // ow the edge. it's just spraypainted.
+			beltr = /obj/item/rogueweapon/sword/long
 			backr = /obj/item/storage/backpack/rogue/satchel/black
 			backl = /obj/item/rogueweapon/shield/tower/metal
 			backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger = 1)
@@ -93,4 +93,10 @@
 		color = CLOTHING_BLACK
 
 /obj/item/clothing/under/roguetown/chainlegs/blk
+		color = CLOTHING_BLACK
+
+/obj/item/clothing/suit/roguetown/armor/plate/half/blk
+		color = CLOTHING_BLACK
+
+/obj/item/clothing/shoes/roguetown/boots/armor/blk
 		color = CLOTHING_BLACK

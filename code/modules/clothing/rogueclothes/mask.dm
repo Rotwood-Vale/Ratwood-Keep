@@ -159,7 +159,7 @@
 	name = "plague mask"
 	desc = "What better laboratory than the blood-soaked battlefield?"
 	icon_state = "physmask"
-	flags_inv = HIDEFACE|HIDEHAIR|HIDEFACIALHAIR
+	flags_inv = HIDEFACE|HIDEHAIR|HIDEFACIALHAIR|HIDEEARS
 	body_parts_covered = FACE|EARS|EYES|MOUTH|NECK
 	slot_flags = ITEM_SLOT_MASK|ITEM_SLOT_HIP
 	sewrepair = TRUE
@@ -167,6 +167,7 @@
 
 /obj/item/clothing/mask/rogue/skullmask
 	name = "skull mask"
+	desc = "A mask in the shape of a skull, designed to terrify."
 	icon_state = "skullmask"
 	max_integrity = 100
 	blocksound = PLATEHIT
@@ -181,3 +182,34 @@
 	slot_flags = ITEM_SLOT_MASK|ITEM_SLOT_HIP
 	experimental_onhip = TRUE
 	smeltresult = /obj/item/natural/bone
+
+/obj/item/clothing/mask/rogue/ragmask
+	name = "rag mask"
+	icon_state = "ragmask"
+	flags_inv = HIDEFACE|HIDEFACIALHAIR
+	body_parts_covered = NECK|MOUTH
+	slot_flags = ITEM_SLOT_MASK|ITEM_SLOT_HIP
+	adjustable = CAN_CADJUST
+	toggle_icon_state = TRUE
+	experimental_onhip = TRUE
+	sewrepair = TRUE
+
+/obj/item/clothing/mask/rogue/ragmask/AdjustClothes(mob/user)
+	if(loc == user)
+		if(adjustable == CAN_CADJUST)
+			adjustable = CADJUSTED
+			if(toggle_icon_state)
+				icon_state = "[initial(icon_state)]_t"
+			flags_inv = null
+			body_parts_covered = NECK
+			if(ishuman(user))
+				var/mob/living/carbon/H = user
+				H.update_inv_wear_mask()
+		else if(adjustable == CADJUSTED)
+			ResetAdjust(user)
+			flags_inv = HIDEFACE|HIDEFACIALHAIR
+			body_parts_covered = NECK|MOUTH
+			if(user)
+				if(ishuman(user))
+					var/mob/living/carbon/H = user
+					H.update_inv_wear_mask()

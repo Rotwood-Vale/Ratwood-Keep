@@ -106,3 +106,6 @@
 	drop_sound = 'sound/foley/dropsound/cloth_drop.ogg'
 	anvilrepair = null
 	sewrepair = TRUE
+
+/obj/item/clothing/gloves/roguetown/grenzelgloves/blacksmith
+	name = "forge gauntlets"

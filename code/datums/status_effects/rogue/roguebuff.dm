@@ -65,7 +65,7 @@
 	id = "ozium"
 	alert_type = /atom/movable/screen/alert/status_effect/buff/druqks
 	effectedstats = list("speed" = -99)
-	duration = 30 SECONDS
+	duration = 10 SECONDS
 
 /datum/status_effect/buff/ozium/on_apply()
 	. = ..()
@@ -185,7 +185,7 @@
 /datum/status_effect/buff/darkvision
 	id = "darkvision"
 	alert_type = /atom/movable/screen/alert/status_effect/buff/darkvision
-	duration = 1 HOURS
+	duration = 15 MINUTES
 
 /datum/status_effect/buff/darkvision/on_apply()
 	. = ..()

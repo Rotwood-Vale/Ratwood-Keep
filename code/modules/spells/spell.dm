@@ -220,8 +220,7 @@ GLOBAL_LIST_INIT(spells, typesof(/obj/effect/proc_holder/spell)) //needed for th
 			newdrain = newdrain + (releasedrain * (diffy * 0.02))
 //		newdrain = newdrain + (ranged_ability_user.checkwornweight() * 10)
 		if(!ranged_ability_user.check_armor_skill())
-			newdrain += 40
-		testing("[releasedrain] newdrain [newdrain]")
+			newdrain += 80
 		if(newdrain > 0)
 			return newdrain
 		else

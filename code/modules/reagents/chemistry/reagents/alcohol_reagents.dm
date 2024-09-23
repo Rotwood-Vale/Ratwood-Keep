@@ -2229,3 +2229,74 @@ All effects don't start immediately, but rather get worse over time; the rate is
 	boozepwr = 50
 	taste_description = "saintly sweetness"
 	color = "#2C9DAF"
+
+//AZURE DRINKS
+/datum/reagent/consumable/ethanol/beer/jagdtrunk // JÄGERMEISTER!!!!
+	name = "Jagdtrunk"
+	boozepwr = 55  // gotta be stronk
+	taste_description = "spicy herbal remedy"
+	color = "#331f18"
+
+/datum/reagent/consumable/ethanol/beer/apfelweinheim
+	name = "Appelheimer"
+	boozepwr = 45
+	taste_description = "tart crispness and mellow sweetness"
+	color = "#e0cb55"
+
+/datum/reagent/consumable/ethanol/beer/rtoper
+	name = "Rockhill Toper"
+	boozepwr = 40
+	taste_description = "overwhelming tartness"
+	color = "#e0a400"
+
+/datum/reagent/consumable/ethanol/beer/nred
+	name = "Norwardine Red"
+	boozepwr = 30
+	taste_description = "heavy caramel note and slight bitterness"
+	color = "#543633"
+
+/datum/reagent/consumable/ethanol/beer/gronnmead
+	name = "Ragnars brew"
+	boozepwr = 35
+	taste_description = "notes of honey and red berries" //I love red mead ok...
+	color = "#772C48"
+
+//Avar boozes
+
+/datum/reagent/consumable/ethanol/beer/avarmead
+	name = "Zögiin bal"
+	boozepwr = 30
+	taste_description = "spicy honey"
+	color = "#e0a400"
+
+/datum/reagent/consumable/ethanol/beer/avarrice
+	name = "Makkolir"
+	boozepwr = 30
+	taste_description = "tangy sweetness"
+	color = "#ddcbc9"
+
+/datum/reagent/consumable/ethanol/beer/saigamilk //No way, kumys from avar!!!
+	name = "Bökhiin arkhi"
+	boozepwr = 15
+	taste_description = "bubbly, sour salt"
+	color = "#dddddd"
+
+//Kazengun boozes
+
+/datum/reagent/consumable/ethanol/beer/kgunlager
+	name = "Yamaguchi Pale"
+	boozepwr = 10 //A PALE imitation actual beer...
+	taste_description = "mellow bitterness and a hint of green tea"
+	color = "#d7dbbc"
+
+/datum/reagent/consumable/ethanol/beer/kgunsake
+	name = "Junmai-ginjo"
+	boozepwr = 50
+	taste_description = "dry sweetness"
+	color = "#ccd7e0"
+
+/datum/reagent/consumable/ethanol/beer/kgunplum
+	name = "Umeshu"
+	boozepwr = 30
+	taste_description = "a mix of sweet and sour"
+	color = "#ddb99b"

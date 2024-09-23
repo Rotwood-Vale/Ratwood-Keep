@@ -413,7 +413,7 @@ GLOBAL_PROTECT(admin_verbs_hideable)
 		log_admin("[key_name(usr)] admin ghosted.")
 		message_admins("[key_name_admin(usr)] admin ghosted.")
 		var/mob/body = mob
-		body.invisibility = INVISIBILITY_MAXIMUM
+//		body.invisibility = INVISIBILITY_MAXIMUM
 		body.density = 0
 		body.ghostize(TRUE, admin = TRUE)
 		if(body && !body.key)

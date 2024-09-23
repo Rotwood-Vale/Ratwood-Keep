@@ -24,7 +24,6 @@
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/random
 	pants = /obj/item/clothing/under/roguetown/tights/random
 	shoes = /obj/item/clothing/shoes/roguetown/boots
-	head = /obj/item/clothing/head/roguetown/chaperon/councillor
 	backl = /obj/item/storage/backpack/rogue/satchel
 	belt = /obj/item/storage/belt/rogue/leather/plaquesilver
 	beltl = /obj/item/keyring/steward // If this turns out to be overbearing re:stewardry bump down to the clerk keyring instead.

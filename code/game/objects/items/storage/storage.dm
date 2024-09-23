@@ -45,3 +45,8 @@
 	var/datum/component/storage/ST = GetComponent(/datum/component/storage)
 	if(ST)
 		ST.do_quick_empty()
+
+/obj/item/storage/can_craft_with()
+	if(contents.len)
+		return FALSE
+	return ..()
