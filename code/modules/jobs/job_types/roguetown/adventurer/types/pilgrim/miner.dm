@@ -41,7 +41,7 @@
 		H.mind.adjust_skillrank(/datum/skill/craft/masonry, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/medicine, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/labor/mining, 4, TRUE)
-		H.change_stat("strength", 2)
+		H.change_stat("strength", 3)
 		H.change_stat("endurance", 2)
 		H.change_stat("constitution", 2)
 		H.change_stat("fortune", 2)
