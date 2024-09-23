@@ -13,7 +13,8 @@
 	and it is widely considered that Half-Elf culture is simply a melting pot of \
 	various other cultures condensing into one vibrant entity. \
 	Due to their heritage, Half-Elves tend to gain racial traits depending on how strong their fathers, or mothers, genes were. \
-	Half-Elves also typically try to find identity in one of two regions they have similarities towards."
+	Half-Elves also typically try to find identity in one of two regions they have similarities towards. \
+	+1 Perception." 
 
 	skin_tone_wording = "Identity"
 	default_color = "FFFFFF"
