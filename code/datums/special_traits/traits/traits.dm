@@ -205,7 +205,7 @@
 /datum/special_trait/packed_lunch/on_apply(mob/living/carbon/human/character, silent)
 	var/obj/item/bag = new /obj/item/storage/roguebag/lunch(get_turf(character))
 	character.put_in_hands(bag, forced = TRUE)
-	character.change_stat("constitution", 2) // healthy boy
+	character.change_stat("endurance", 2) // healthy boy
 
 /datum/special_trait/spring_in_my_step
 	name = "Spring in my Step"
@@ -321,7 +321,7 @@
 
 /datum/special_trait/gourmand/on_apply(mob/living/carbon/human/character, silent)
 	ADD_TRAIT(character, TRAIT_NASTY_EATER, "[type]")
-	character.change_stat("endurance", 4) // If you can endure drinking sewage...
+	character.change_stat("constitution", 4) // If you can endure drinking sewage...
 
 /datum/special_trait/lucky
 	name = "Fortune's Grace"
