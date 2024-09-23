@@ -17,10 +17,10 @@
 	shoes = /obj/item/clothing/shoes/roguetown/boots/leather
 	neck = /obj/item/storage/belt/rogue/pouch/coins/rich
 	head = /obj/item/clothing/head/roguetown/fisherhat
-	backr = /obj/item/storage/backpack/rogue/backpack
+	backl = /obj/item/storage/backpack/rogue/backpack
 	armor = /obj/item/clothing/suit/roguetown/armor/leather/vest/sailor
 	belt = /obj/item/storage/belt/rogue/leather/rope
-	backl = /obj/item/fishingrod
+	backr = /obj/item/fishingrod
 	beltr = /obj/item/cooking/pan
 	mouth = /obj/item/rogueweapon/huntingknife
 	beltl = /obj/item/flint
