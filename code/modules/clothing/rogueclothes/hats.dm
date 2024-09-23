@@ -77,7 +77,7 @@
 	icon = 'icons/roguetown/clothing/head.dmi'
 	mob_overlay_icon = 'icons/roguetown/clothing/onmob/head.dmi' //Overrides slot icon behavior
 	body_parts_covered = NECK
-	slot_flags = ITEM_SLOT_HEAD|ITEM_SLOT_CLOAK
+	slot_flags = ITEM_SLOT_HEAD|ITEM_SLOT_MASK
 	sleevetype = null
 	sleeved = null
 	dynamic_hair_suffix = ""
