@@ -18,4 +18,16 @@
 				new S.mill_result(get_turf(loc))
 				qdel(S)
 			return
+	if(istype(W, /obj/item/natural/stone))
+		playsound(get_turf(user), 'modular/Neu_Food/sound/milling.ogg', 100, TRUE, -1)
+		if(do_after(user, 10, target = src))
+			new /obj/item/reagent_containers/powder/mineral(get_turf(loc))
+			qdel(W)
+		return
+	if(istype(W, /obj/item/reagent_containers/powder/coarse_salt))
+		playsound(get_turf(user), 'modular/Neu_Food/sound/milling.ogg', 100, TRUE, -1)
+		if(do_after(user, 10, target = src))
+			new /obj/item/reagent_containers/powder/salt(get_turf(loc))
+			qdel(W)
+		return
 	..()

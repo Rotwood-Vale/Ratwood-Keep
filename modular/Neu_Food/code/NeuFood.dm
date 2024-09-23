@@ -359,6 +359,60 @@
 	new /obj/effect/decal/cleanable/food/flour(get_turf(src))
 	..()
 	qdel(src)
+/obj/item/reagent_containers/powder/mineral
+	name = "coarse minerals"
+	desc = "ground up rock, could be made into mineral salts with more work."
+	gender = PLURAL
+	icon_state = "salt"
+	list_reagents = list(/datum/reagent/floure = 1)
+	volume = 1
+	sellprice = 0
+	var/water_added
+/obj/item/reagent_containers/powder/coarse_salt
+	name = "coarse salt"
+	desc = "somewhat gritty, coarse salt. Could be ground down into finer salt."
+	gender = PLURAL
+	icon_state = "salt"
+	list_reagents = list(/datum/reagent/floure = 1)
+	volume = 1
+	sellprice = 0
+	color = "#999797"
+/obj/item/reagent_containers/powder/mineral/throw_impact(atom/hit_atom, datum/thrownthing/thrownthing)
+	new /obj/effect/decal/cleanable/food/flour(get_turf(src))
+	..()
+	qdel(src)
+/obj/item/reagent_containers/powder/mineral/attackby(obj/item/I, mob/user, params)
+	var/found_table = locate(/obj/structure/table) in (loc)
+	var/obj/item/reagent_containers/R = I
+	if(user.mind)
+		short_cooktime = (60 - ((user.mind.get_skill_level(/datum/skill/craft/cooking))*5))
+		long_cooktime = (100 - ((user.mind.get_skill_level(/datum/skill/craft/cooking))*10))
+	if(!istype(R) || (water_added))
+		return ..()
+	if(isturf(loc)&& (!found_table))
+		to_chat(user, "<span class='notice'>Need a table...</span>")
+		return ..()
+	if(!R.reagents.has_reagent(/datum/reagent/water, 10))
+		to_chat(user, "<span class='notice'>Needs more water to work it.</span>")
+		return TRUE
+	to_chat(user, "<span class='notice'>Adding water, now its time to sift it...</span>")
+	playsound(get_turf(user), 'modular/Neu_Food/sound/splishy.ogg', 100, TRUE, -1)
+	if(do_after(user,2 SECONDS, target = src))
+		name = "prepared minerals"
+		desc = "Still quite coarse, needs some sifting."
+		R.reagents.remove_reagent(/datum/reagent/water, 10)
+		water_added = TRUE
+		color = "#666262"
+	return TRUE
+/obj/item/reagent_containers/powder/mineral/attackby(obj/item/I, mob/user, params)
+	if(water_added)
+		if(istype(I, /obj/item/natural/cloth))
+			user.visible_message("<span class='info'>[user] sifts the minerals...</span>")
+			playsound(get_turf(user), 'modular/Neu_Food/sound/peppermill.ogg', 90, TRUE, -1)
+			if(do_after(user,3 SECONDS, target = src))
+				new /obj/item/reagent_containers/powder/coarse_salt(loc)
+				qdel(src)
+	else ..()
 
 
 /*	..................   Food platter   ................... */
