@@ -265,16 +265,23 @@
 	weight = 100
 
 /datum/special_trait/mastercraftsmen/on_apply(mob/living/carbon/human/character)
-	character.mind.adjust_skillrank_up_to(/datum/skill/craft/crafting, 2, TRUE)
-	character.mind.adjust_skillrank_up_to(/datum/skill/craft/weaponsmithing, 2, TRUE)
-	character.mind.adjust_skillrank_up_to(/datum/skill/craft/armorsmithing, 2, TRUE)
-	character.mind.adjust_skillrank_up_to(/datum/skill/craft/blacksmithing, 2, TRUE)
-	character.mind.adjust_skillrank_up_to(/datum/skill/craft/carpentry, 2, TRUE)
-	character.mind.adjust_skillrank_up_to(/datum/skill/craft/masonry, 2, TRUE)
-	character.mind.adjust_skillrank_up_to(/datum/skill/craft/traps, 2, TRUE)
-	character.mind.adjust_skillrank_up_to(/datum/skill/craft/cooking, 2, TRUE)
-	character.mind.adjust_skillrank_up_to(/datum/skill/craft/engineering, 2, TRUE)
-	character.mind.adjust_skillrank_up_to(/datum/skill/craft/tanning, 2, TRUE)
+	character.mind.adjust_skillrank(/datum/skill/craft/crafting, 2, TRUE)
+	character.mind.adjust_skillrank(/datum/skill/craft/weaponsmithing, 2, TRUE)
+	character.mind.adjust_skillrank(/datum/skill/craft/armorsmithing, 2, TRUE)
+	character.mind.adjust_skillrank(/datum/skill/craft/blacksmithing, 2, TRUE)
+	character.mind.adjust_skillrank(/datum/skill/craft/carpentry, 2, TRUE)
+	character.mind.adjust_skillrank(/datum/skill/craft/masonry, 2, TRUE)
+	character.mind.adjust_skillrank(/datum/skill/craft/traps, 2, TRUE)
+	character.mind.adjust_skillrank(/datum/skill/craft/cooking, 2, TRUE)
+	character.mind.adjust_skillrank(/datum/skill/craft/engineering, 2, TRUE)
+	character.mind.adjust_skillrank(/datum/skill/craft/tanning, 2, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/combat/swords, -1, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/combat/maces, -1, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/combat/axes, -1, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/combat/polearms, -1, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/combat/bows, -1, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/combat/crossbows, -1, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/combat/whipsflails, -1, TRUE)
 
 /datum/special_trait/bleublood
 	name = "Noble Lineage"
