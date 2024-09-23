@@ -205,7 +205,7 @@
 	volume = 1
 
 /obj/item/reagent_containers/powder/ozium
-	name = "powder"
+	name = "ozium"
 	desc = ""
 	icon = 'icons/roguetown/items/produce.dmi'
 	icon_state = "ozium"
@@ -213,6 +213,17 @@
 	volume = 15
 	list_reagents = list(/datum/reagent/ozium = 15)
 	grind_results = list(/datum/reagent/ozium = 15)
+	sellprice = 5
+
+/obj/item/reagent_containers/powder/heal
+	name = "healing powder"
+	desc = ""
+	icon = 'icons/roguetown/items/produce.dmi'
+	icon_state = "ozium"
+	possible_transfer_amounts = list()
+	volume = 30
+	list_reagents = list(/datum/reagent/medicine/minorhealthpot = 15, /datum/reagent/medicine/shroomt = 15)
+	grind_results = list(/datum/reagent/medicine/minorhealthpot = 15)
 	sellprice = 5
 
 /datum/reagent/ozium
