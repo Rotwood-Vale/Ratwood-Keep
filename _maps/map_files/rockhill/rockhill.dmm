@@ -3424,12 +3424,6 @@
 /obj/machinery/light/rogue/torchholder/c,
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/town/basement)
-"dJa" = (
-/obj/machinery/light/rogue/wallfire/candle/r,
-/turf/closed/wall/mineral/rogue/decostone/long{
-	dir = 1
-	},
-/area/rogue/indoors/town/church)
 "dJr" = (
 /obj/machinery/light/rogue/wallfire/candle{
 	pixel_x = -32;
@@ -14495,12 +14489,6 @@
 /obj/machinery/light/rogue/firebowl,
 /turf/open/floor/rogue/metal,
 /area/rogue/indoors)
-"pRW" = (
-/obj/machinery/light/rogue/torchholder/c{
-	dir = 1
-	},
-/turf/open/floor/rogue/dirt/road,
-/area/rogue/outdoors/rtfield)
 "pSg" = (
 /turf/closed/wall/mineral/rogue/decostone/center,
 /area/rogue/indoors/shelter/rtfield)
@@ -207317,16 +207305,16 @@ iTw
 iTw
 iTw
 iTw
+nCN
+iTw
+iTw
+nCN
 iTw
 iTw
 iTw
 iTw
 iTw
-iTw
-iTw
-iTw
-iTw
-iTw
+nCN
 iTw
 iTw
 aJk
@@ -271378,7 +271366,7 @@ brc
 eBN
 eBN
 cVN
-dJa
+teW
 qvR
 wSn
 uaL
@@ -271779,7 +271767,7 @@ teW
 iPt
 eBN
 eBN
-eBN
+wSd
 teW
 wSn
 wSn
@@ -272182,7 +272170,7 @@ eBN
 eBN
 eBN
 cVN
-dJa
+teW
 wSn
 uaL
 uaL
@@ -272583,7 +272571,7 @@ teW
 iPt
 eBN
 eBN
-eBN
+wSd
 teW
 wSn
 qvR
@@ -275785,7 +275773,7 @@ fxx
 fxx
 fxx
 qvR
-pRW
+uaL
 qvR
 uaL
 teW
@@ -286511,7 +286499,7 @@ xAt
 xAt
 eoy
 wbg
-wbg
+kqX
 vNh
 nzm
 tZD
@@ -287341,7 +287329,7 @@ wVI
 wbg
 wbg
 wbg
-wVI
+riG
 sco
 sco
 sco
@@ -288924,7 +288912,7 @@ xAt
 bQV
 rtB
 wbg
-wbg
+kqX
 vNh
 jRL
 oXU
@@ -290557,7 +290545,7 @@ wVI
 wbg
 wbg
 wbg
-wVI
+riG
 evo
 evo
 evo
@@ -295397,7 +295385,7 @@ pKQ
 pKQ
 wCp
 toW
-aOn
+uXY
 wVI
 wbg
 wbg
@@ -300581,7 +300569,7 @@ xAt
 xAt
 eoy
 wbg
-wbg
+kqX
 evo
 wvq
 rNm
@@ -300594,7 +300582,7 @@ edM
 xqE
 evo
 evo
-wVI
+jTj
 wbg
 wbg
 wbg
@@ -301403,7 +301391,7 @@ dpw
 wbg
 wbg
 wVI
-wVI
+oOl
 wVI
 wVI
 wVI
@@ -302602,7 +302590,7 @@ rNm
 sFL
 sFL
 evo
-wVI
+jTj
 wbg
 wbg
 wbg
@@ -311451,7 +311439,7 @@ mwE
 xGW
 wVI
 wbg
-wVI
+riG
 rfx
 ihO
 jvj
@@ -314667,7 +314655,7 @@ aOv
 rfx
 tBp
 wbg
-wVI
+riG
 rfx
 qPA
 jvj
@@ -413943,11 +413931,11 @@ fZJ
 fZJ
 fZJ
 fZJ
-ntH
-ntH
-ntH
-ntH
-ntH
+squ
+squ
+squ
+squ
+squ
 fZJ
 fZJ
 fZJ
@@ -414345,11 +414333,11 @@ fZJ
 fZJ
 fZJ
 fZJ
-ntH
-ntH
-ntH
-ntH
-ntH
+squ
+squ
+squ
+squ
+squ
 fZJ
 fZJ
 fZJ
@@ -414747,11 +414735,11 @@ fZJ
 fZJ
 fZJ
 fZJ
-ntH
-ntH
-ntH
-ntH
-ntH
+squ
+squ
+squ
+squ
+squ
 fZJ
 fZJ
 fZJ
@@ -415149,11 +415137,11 @@ fZJ
 fZJ
 fZJ
 fZJ
-ntH
-ntH
-ntH
-ntH
-ntH
+squ
+squ
+squ
+squ
+squ
 fZJ
 fZJ
 fZJ
@@ -415551,11 +415539,11 @@ fZJ
 fZJ
 fZJ
 fZJ
-ntH
-ntH
-ntH
-ntH
-ntH
+squ
+squ
+squ
+squ
+squ
 fZJ
 fZJ
 fZJ
@@ -415953,11 +415941,11 @@ fZJ
 fZJ
 fZJ
 fZJ
-ntH
-ntH
-ntH
-ntH
-ntH
+squ
+squ
+squ
+squ
+squ
 fZJ
 fZJ
 fZJ
@@ -417963,14 +417951,14 @@ fZJ
 fZJ
 fZJ
 fZJ
-ntH
 fZJ
 fZJ
 fZJ
 fZJ
-ntH
-ntH
-ntH
+fZJ
+squ
+squ
+squ
 fZJ
 fZJ
 fZJ
@@ -418365,21 +418353,21 @@ fZJ
 fZJ
 fZJ
 fZJ
-ntH
-ntH
-fZJ
-fZJ
-fZJ
-ntH
-ntH
-ntH
 fZJ
 fZJ
 fZJ
 fZJ
 fZJ
+squ
+squ
+squ
 fZJ
-ntH
+fZJ
+fZJ
+fZJ
+fZJ
+fZJ
+fZJ
 fZJ
 fZJ
 fZJ
@@ -418772,16 +418760,16 @@ fZJ
 fZJ
 fZJ
 fZJ
-ntH
-ntH
-ntH
+squ
+squ
+squ
 fZJ
 fZJ
 fZJ
 fZJ
 fZJ
 fZJ
-ntH
+fZJ
 fZJ
 fZJ
 fZJ
@@ -419174,9 +419162,9 @@ fZJ
 fZJ
 fZJ
 fZJ
-ntH
-ntH
-ntH
+squ
+squ
+squ
 fZJ
 fZJ
 fZJ
