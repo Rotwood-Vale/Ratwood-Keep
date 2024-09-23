@@ -100,7 +100,7 @@
 			backl = /obj/item/rogueweapon/shield/wood
 		if("Billhook & Cudgel")
 			beltr = /obj/item/rogueweapon/mace/cudgel
-			backl = /obj/item/rogueweapon/spear/billhook
+			r_hand = /obj/item/rogueweapon/spear/billhook
 
 	backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger/steel/special = 1, /obj/item/rope/chain = 1)
 	H.verbs |= /mob/proc/haltyell

@@ -39,6 +39,7 @@
 		shirt = /obj/item/clothing/suit/roguetown/shirt/dress/silkdress/princess
 		shoes = /obj/item/clothing/shoes/roguetown/shortboots
 		pants = /obj/item/clothing/under/roguetown/tights/stockings/silk/random	//Added Silk Stockings for the female nobles
+		backr = /obj/item/storage/backpack/rogue/satchel
 	else
 		pants = /obj/item/clothing/under/roguetown/tights
 		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/guard

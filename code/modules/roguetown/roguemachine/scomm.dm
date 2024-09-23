@@ -17,6 +17,7 @@
 	var/scom_number
 	var/obj/structure/roguemachine/scomm/calling = null
 	var/obj/structure/roguemachine/scomm/called_by = null
+	var/spawned_rat = FALSE
 
 /obj/structure/roguemachine/scomm/OnCrafted(dirin, mob/user)
 	. = ..()
@@ -244,6 +245,14 @@
 			if(calling.calling == src)
 				calling.repeat_message(raw_message, src, usedcolor, message_language)
 			return
+		if(length(raw_message) > 100) //When these people talk too much, put that shit in slow motion, yeah
+			if(length(raw_message) > 200)
+				if(!spawned_rat)
+					visible_message(span_warning("An angered rous emerges from the SCOMlines!"))
+					new /mob/living/simple_animal/hostile/retaliate/rogue/bigrat(get_turf(src))
+					spawned_rat = TRUE
+				return
+			raw_message = "<small>[raw_message]</small>"
 		for(var/obj/structure/roguemachine/scomm/S in SSroguemachine.scomm_machines)
 			if(!S.calling)
 				S.repeat_message(raw_message, src, usedcolor, message_language)
@@ -298,16 +307,22 @@
 	var/speaking = TRUE
 	sellprice = 100
 //wip
-/obj/item/scomstone/attack_right(mob/user)
+/obj/item/scomstone/attack_right(mob/living/carbon/human/user)
 	user.changeNext_move(CLICK_CD_MELEE)
 	var/input_text = input(user, "Enter your message:", "Message")
 	if(input_text)
+		var/usedcolor = user.voice_color
+		if(user.voicecolor_override)
+			usedcolor = user.voicecolor_override
+		user.whisper(input_text)
+		if(length(input_text) > 100) //When these people talk too much, put that shit in slow motion, yeah
+			input_text = "<small>[input_text]</small>"
 		for(var/obj/structure/roguemachine/scomm/S in SSroguemachine.scomm_machines)
-			S.repeat_message(input_text)
+			S.repeat_message(input_text, src, usedcolor)
 		for(var/obj/item/scomstone/S in SSroguemachine.scomm_machines)
-			S.repeat_message(input_text)
+			S.repeat_message(input_text, src, usedcolor)
 		for(var/obj/item/listenstone/S in SSroguemachine.scomm_machines)//make the listenstone hear scomstone
-			S.repeat_message(input_text)
+			S.repeat_message(input_text, src, usedcolor)
 
 /obj/item/scomstone/MiddleClick(mob/user)
 	if(.)

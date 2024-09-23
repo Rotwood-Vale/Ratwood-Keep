@@ -55,7 +55,7 @@
 	name = "coal"
 	desc = "Dark lumps that become smoldering embers later in life."
 	icon_state = "orecoal1"
-	firefuel = 60 MINUTES
+	firefuel = 30 MINUTES
 	smeltresult = /obj/item/rogueore/coal
 	sellprice = 1
 
