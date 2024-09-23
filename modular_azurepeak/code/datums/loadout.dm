@@ -115,6 +115,10 @@ GLOBAL_LIST_EMPTY(loadout_items)
 	name = "Strapless Dress"
 	path = /obj/item/clothing/suit/roguetown/shirt/dress/gen/strapless
 
+/datum/loadout_item/leathervest
+	name = "Leather Vest"
+	path = /obj/item/clothing/suit/roguetown/armor/leather/vest
+
 //ACCESSORIES
 /datum/loadout_item/stockings
 	name = "Stockings"
@@ -139,6 +143,14 @@ GLOBAL_LIST_EMPTY(loadout_items)
 /datum/loadout_item/halfmask
 	name = "Halfmask"
 	path = /obj/item/clothing/mask/rogue/shepherd
+
+/datum/loadout_item/pipe
+	name = "Pipe"
+	path = /obj/item/clothing/mask/cigarette/pipe
+
+/datum/loadout_item/pipewestman
+	name = "Westman Pipe"
+	path = /obj/item/clothing/mask/cigarette/pipe/westman
 
 /datum/loadout_item/feather
 	name = "Feather"

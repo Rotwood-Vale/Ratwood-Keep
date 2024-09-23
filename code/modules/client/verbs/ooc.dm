@@ -67,7 +67,7 @@ GLOBAL_VAR_INIT(normal_ooc_colour, "#002eb8")
 
 	mob.log_talk(raw_msg, LOG_OOC)
 
-	var/keyname = ckey
+	var/keyname = key
 	/*if(ckey in GLOB.anonymize)
 		keyname = get_fake_key(ckey)*/
 //	if(prefs.unlock_content)

@@ -8,7 +8,7 @@
 /datum/statpack/wildcard/fated
 	name = "Fated"
 	desc = "The first or the last - let destiny's fickle loom decree what your fate shall be."
-	stat_array = list(STAT_STRENGTH = list(-1, 1), STAT_PERCEPTION = list(-1, 1), STAT_INTELLIGENCE = list(-1, 1), STAT_CONSTITUTION = list(-1, 1), STAT_ENDURANCE = list(-1, 1), STAT_SPEED = list(-1, 1), STAT_FORTUNE = list(-1, 1))
+	stat_array = list(STAT_STRENGTH = list(-2, 2), STAT_PERCEPTION = list(-2, 2), STAT_INTELLIGENCE = list(-2, 2), STAT_CONSTITUTION = list(-2, 2), STAT_ENDURANCE = list(-2, 2), STAT_SPEED = list(-2, 2), STAT_FORTUNE = list(-2, 2))
 
 /datum/statpack/wildcard/frail
 	name = "Frail"
