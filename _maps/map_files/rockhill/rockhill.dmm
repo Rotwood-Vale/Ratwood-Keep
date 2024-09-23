@@ -142,7 +142,6 @@
 /obj/effect/landmark/start/butler,
 /turf/open/floor/rogue/cobble,
 /area/rogue/indoors/town/manor)
-<<<<<<< HEAD
 "acI" = (
 /obj/structure/mineral_door/wood/donjon/stone{
 	lockid = "church"
@@ -156,8 +155,6 @@
 	},
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/outdoors/town)
-=======
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 "adp" = (
 /turf/open/water/sewer,
 /area/rogue/outdoors/rtfield)
@@ -238,15 +235,6 @@
 /obj/structure/chair/bench/ultimacouch,
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/manor)
-<<<<<<< HEAD
-=======
-"aic" = (
-/obj/structure/mineral_door/bars{
-	lockid = "graveyard"
-	},
-/turf/open/floor/rogue/cobblerock,
-/area/rogue/outdoors/town)
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 "ait" = (
 /obj/effect/decal/cleanable/blood/drip,
 /turf/open/floor/rogue/blocks{
@@ -350,23 +338,12 @@
 	},
 /turf/open/floor/rogue/greenstone,
 /area/rogue/under/town/sewer)
-<<<<<<< HEAD
 "aoU" = (
 /obj/structure/chair/bench{
 	dir = 1
 	},
 /turf/open/floor/rogue/grass,
 /area/rogue/outdoors/rtfield)
-=======
-"aoJ" = (
-/obj/structure/table/wood{
-	dir = 1;
-	icon_state = "tablewood1"
-	},
-/obj/item/cooking/pan,
-/turf/open/floor/rogue/tile,
-/area/rogue/indoors)
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 "aoY" = (
 /obj/structure/bed/rogue/inn/hay,
 /turf/open/floor/rogue/ruinedwood{
@@ -380,25 +357,10 @@
 	icon_state = "weird1"
 	},
 /area/rogue/outdoors/town)
-<<<<<<< HEAD
 "apB" = (
 /obj/structure/chair/wood/rogue/chair3,
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue/outdoors/rtfield)
-=======
-"apM" = (
-/obj/structure/table/wood{
-	dir = 1;
-	icon_state = "tablewood1"
-	},
-/obj/item/reagent_containers/powder/salt{
-	pixel_x = -11;
-	pixel_y = 13
-	},
-/obj/item/reagent_containers/glass/pot,
-/turf/open/floor/rogue/tile,
-/area/rogue/indoors)
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 "apR" = (
 /obj/structure/table/wood{
 	dir = 9;
@@ -419,7 +381,6 @@
 	icon_state = "horzw"
 	},
 /area/rogue/indoors/town/tavern)
-<<<<<<< HEAD
 "arn" = (
 /obj/structure/fluff/railing/wood{
 	dir = 4;
@@ -427,19 +388,6 @@
 	pixel_x = 8
 	},
 /turf/open/floor/rogue/ruinedwood,
-=======
-"arR" = (
-/obj/structure/fluff/railing/wood{
-	dir = 8;
-	pixel_x = -8
-	},
-/mob/living/simple_animal/hostile/retaliate/rogue/saigabuck/tame,
-/turf/open/floor/rogue/grass,
-/area/rogue/outdoors/rtfield)
-"arW" = (
-/obj/structure/bookcase/random/fiction,
-/turf/open/floor/rogue/ruinedwood/spiral,
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 /area/rogue/indoors)
 "arZ" = (
 /obj/structure/winch{
@@ -487,13 +435,10 @@
 	},
 /turf/open/transparent/openspace,
 /area/rogue/outdoors/town)
-<<<<<<< HEAD
 "aum" = (
 /obj/machinery/light/rogue/firebowl/stump,
 /turf/open/floor/rogue/grass,
 /area/rogue/outdoors/town)
-=======
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 "auL" = (
 /obj/structure/lever/wall{
 	pixel_x = 32;
@@ -537,17 +482,6 @@
 	icon_state = "weird1"
 	},
 /area/rogue/indoors/town/garrison)
-<<<<<<< HEAD
-=======
-"axr" = (
-/obj/structure/closet/dirthole/grave,
-/obj/machinery/light/rogue/wallfire/candle{
-	pixel_x = -32;
-	pixel_y = 0
-	},
-/turf/open/floor/rogue/dirt/road,
-/area/rogue/outdoors/town)
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 "axD" = (
 /obj/structure/pillory/reinforced/town_dungeon,
 /turf/open/floor/rogue/concrete,
@@ -1070,7 +1004,6 @@
 	},
 /turf/open/floor/rogue/tile,
 /area/rogue/outdoors/town)
-<<<<<<< HEAD
 "bao" = (
 /obj/machinery/light/rogue/wallfire/candle{
 	pixel_x = 32;
@@ -1078,8 +1011,6 @@
 	},
 /turf/closed/wall/mineral/rogue/stone/moss,
 /area/rogue/outdoors/town)
-=======
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 "bav" = (
 /turf/open/floor/carpet/red,
 /area/rogue/indoors/town/church/chapel)
@@ -1612,18 +1543,10 @@
 	dir = 8
 	},
 /area/rogue/indoors/town/manor)
-<<<<<<< HEAD
 "bCX" = (
 /obj/machinery/light/rogue/wallfire/candle/blue/l,
 /turf/closed/wall/mineral/rogue/stone,
 /area/rogue/indoors/town/church)
-=======
-"bDl" = (
-/obj/machinery/light/rogue/wallfire/candle/blue,
-/obj/structure/chair/bench/couch,
-/turf/open/floor/rogue/concrete,
-/area/rogue/indoors/town/shop)
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 "bDX" = (
 /mob/living/simple_animal/hostile/retaliate/rogue/wolf,
 /obj/effect/decal/cleanable/blood,
@@ -1636,12 +1559,6 @@
 /obj/structure/roguemachine/scomm/r,
 /turf/open/floor/rogue/herringbone,
 /area/rogue/indoors/town/church)
-<<<<<<< HEAD
-=======
-"bEu" = (
-/turf/closed/wall/mineral/rogue/wood/window,
-/area/rogue/outdoors/rtfield)
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 "bER" = (
 /obj/structure/closet/crate/roguecloset,
 /obj/item/clothing/suit/roguetown/shirt/shortshirt,
@@ -1753,19 +1670,6 @@
 /obj/structure/roguemachine/vendor/inn,
 /turf/closed/wall/mineral/rogue/decowood,
 /area/rogue/indoors/town/tavern)
-<<<<<<< HEAD
-=======
-"bJb" = (
-/obj/effect/landmark/start/monk{
-	dir = 8
-	},
-/obj/structure/fluff/walldeco/painting/seraphina{
-	pixel_x = 32;
-	pixel_y = 0
-	},
-/turf/open/floor/rogue/churchmarble,
-/area/rogue/indoors/town/church/chapel)
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 "bJu" = (
 /obj/effect/decal/cleanable/ash/large,
 /turf/closed/mineral/rogue,
@@ -1812,7 +1716,6 @@
 	},
 /turf/closed/wall/mineral/rogue/wooddark,
 /area/rogue/indoors/town)
-<<<<<<< HEAD
 "bNM" = (
 /obj/structure/fluff/railing/wood{
 	dir = 8;
@@ -1821,16 +1724,6 @@
 /mob/living/simple_animal/hostile/retaliate/rogue/chicken,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors/rtfield)
-=======
-"bNt" = (
-/obj/structure/fluff/railing/wood{
-	dir = 4;
-	layer = 2.8;
-	pixel_x = 8
-	},
-/turf/open/floor/rogue/ruinedwood,
-/area/rogue/indoors)
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 "bNX" = (
 /obj/structure/stairs,
 /turf/open/floor/rogue/ruinedwood{
@@ -1895,19 +1788,9 @@
 /obj/effect/decal/cleanable/blood/old,
 /turf/open/floor/rogue/tile,
 /area/rogue/indoors/town/garrison)
-<<<<<<< HEAD
 "bRT" = (
 /turf/closed/wall/mineral/rogue/decostone/cand,
 /area/rogue/outdoors/rtfield)
-=======
-"bRN" = (
-/obj/machinery/light/rogue/firebowl/standing{
-	pixel_x = 2;
-	pixel_y = 0
-	},
-/turf/open/floor/rogue/ruinedwood,
-/area/rogue/indoors)
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 "bSu" = (
 /turf/closed/wall/mineral/rogue/decostone/end{
 	dir = 8
@@ -2004,7 +1887,6 @@
 /obj/item/gun/ballistic/revolver/grenadelauncher/bow,
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/town/garrison)
-<<<<<<< HEAD
 "bZT" = (
 /obj/structure/fluff/wallclock,
 /turf/open/floor/rogue/wood,
@@ -2016,8 +1898,6 @@
 	},
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue/outdoors/rtfield)
-=======
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 "caC" = (
 /obj/machinery/light/rogue/wallfire/candle,
 /turf/open/floor/rogue/cobble,
@@ -2031,7 +1911,6 @@
 	},
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/manor)
-<<<<<<< HEAD
 "cbU" = (
 /obj/structure/mineral_door/wood/deadbolt{
 	dir = 4;
@@ -2039,13 +1918,6 @@
 	},
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors)
-=======
-"cbi" = (
-/obj/structure/chair/bench/church/smallbench,
-/obj/machinery/light/rogue/wallfire/candle/l,
-/turf/open/floor/rogue/church,
-/area/rogue/indoors/town/church)
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 "cca" = (
 /obj/structure/fluff/railing/border{
 	dir = 8
@@ -2079,21 +1951,12 @@
 /turf/closed/wall/mineral/rogue/decostone,
 /area/rogue/outdoors/town/roofs)
 "cdX" = (
-<<<<<<< HEAD
 /turf/open/floor/rogue/dirt,
 /area/rogue/under/cave)
 "cdY" = (
 /obj/machinery/light/rogue/wallfire/candle,
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors)
-=======
-/obj/structure/table/wood{
-	dir = 1;
-	icon_state = "longtable"
-	},
-/turf/open/floor/rogue/churchmarble,
-/area/rogue/indoors/town/church)
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 "cep" = (
 /obj/structure/closet/crate/chest{
 	lockid = "keep_armory"
@@ -2205,20 +2068,6 @@
 /obj/structure/chair/stool/rogue,
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/town/manor)
-<<<<<<< HEAD
-=======
-"cja" = (
-/obj/structure/closet/crate/chest{
-	locked = 1;
-	lockid = "keep_dungeon"
-	},
-/obj/item/reagent_containers/food/snacks/rogue/crackerscooked,
-/obj/item/reagent_containers/food/snacks/rogue/crackerscooked,
-/obj/item/reagent_containers/food/snacks/rogue/crackerscooked,
-/obj/item/reagent_containers/food/snacks/rogue/crackerscooked,
-/turf/open/floor/rogue/concrete,
-/area/rogue/under/town/basement)
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 "cjc" = (
 /obj/machinery/light/rogue/forge,
 /turf/open/floor/rogue/hexstone,
@@ -2294,7 +2143,6 @@
 /obj/machinery/light/rogue/torchholder/c,
 /turf/open/floor/rogue/herringbone,
 /area/rogue/indoors/town/church)
-<<<<<<< HEAD
 "clw" = (
 /obj/effect/landmark/start/merchant,
 /turf/open/floor/rogue/wood,
@@ -2302,8 +2150,6 @@
 "clE" = (
 /turf/open/floor/rogue/grass,
 /area/rogue/indoors/shelter/mountains)
-=======
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 "cmC" = (
 /obj/structure/rack/rogue,
 /turf/open/floor/rogue/ruinedwood{
@@ -2347,17 +2193,6 @@
 	},
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/manor)
-<<<<<<< HEAD
-=======
-"cop" = (
-/obj/structure/fluff/railing/border{
-	dir = 8
-	},
-/turf/open/floor/rogue/blocks{
-	icon_state = "paving"
-	},
-/area/rogue/under/town/basement)
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 "coD" = (
 /obj/structure/chair/wood/rogue,
 /turf/open/floor/rogue/woodturned,
@@ -2522,15 +2357,6 @@
 /obj/structure/rack/rogue,
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue/indoors)
-<<<<<<< HEAD
-=======
-"cxH" = (
-/obj/machinery/light/rogue/torchholder/c{
-	dir = 4
-	},
-/turf/open/floor/rogue/cobble,
-/area/rogue/under/town/basement)
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 "cxX" = (
 /obj/structure/table/wood{
 	icon_state = "tablewood1"
@@ -2541,19 +2367,11 @@
 "cyr" = (
 /turf/open/floor/rogue/dirt,
 /area/rogue/indoors)
-<<<<<<< HEAD
 "cyz" = (
 /obj/structure/chair/bench/church/smallbench,
 /obj/machinery/light/rogue/wallfire/candle/r,
 /turf/open/floor/rogue/church,
 /area/rogue/indoors/town/church)
-=======
-"cyT" = (
-/obj/structure/rack/rogue,
-/obj/item/fishingrod,
-/turf/open/floor/rogue/ruinedwood/spiral,
-/area/rogue/indoors)
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 "czb" = (
 /obj/structure/rack/rogue,
 /obj/item/quiver/arrows,
@@ -2690,16 +2508,6 @@
 /obj/item/flashlight/flare/torch/lantern,
 /turf/open/floor/carpet/royalblack,
 /area/rogue/indoors/town/garrison)
-<<<<<<< HEAD
-=======
-"cEo" = (
-/obj/structure/mineral_door/wood/fancywood{
-	lockid = "velder";
-	locked = 1
-	},
-/turf/open/floor/rogue/blocks,
-/area/rogue/indoors)
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 "cEK" = (
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/under/town/basement)
@@ -2993,21 +2801,10 @@
 /obj/structure/bed/rogue,
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/manor)
-<<<<<<< HEAD
 "cTj" = (
 /mob/living/simple_animal/hostile/retaliate/rogue/chicken,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors/rtfield)
-=======
-"cSS" = (
-/obj/structure/table/wood{
-	dir = 9;
-	icon_state = "largetable"
-	},
-/obj/item/storage/roguebag,
-/turf/open/floor/rogue/wood,
-/area/rogue/indoors)
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 "cTr" = (
 /obj/structure/fluff/walldeco/customflag{
 	pixel_x = -32
@@ -3095,17 +2892,6 @@
 /obj/structure/floordoor/gatehatch/outer,
 /turf/open/floor/rogue/blocks,
 /area/rogue/outdoors/town)
-<<<<<<< HEAD
-=======
-"cWH" = (
-/obj/item/reagent_containers/glass/cup/silver,
-/obj/structure/table/wood{
-	dir = 9;
-	icon_state = "largetable"
-	},
-/turf/open/floor/rogue/wood,
-/area/rogue/indoors/town/shop)
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 "cWI" = (
 /obj/structure/table/wood,
 /obj/item/natural/bundle/stick,
@@ -3429,7 +3215,6 @@
 	},
 /turf/open/floor/rogue/cobble,
 /area/rogue/outdoors/town)
-<<<<<<< HEAD
 "dpH" = (
 /obj/structure/bars/pipe{
 	dir = 1
@@ -3481,8 +3266,6 @@
 /obj/item/roguekey/church,
 /turf/open/floor/rogue/tile/tilerg,
 /area/rogue/indoors/town/manor)
-=======
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 "dpJ" = (
 /obj/structure/chair/wood/rogue{
 	dir = 4
@@ -3682,19 +3465,6 @@
 /obj/structure/chair/wood/rogue,
 /turf/open/floor/rogue/hexstone,
 /area/rogue/indoors)
-<<<<<<< HEAD
-=======
-"dxp" = (
-/obj/structure/closet/crate/chest,
-/obj/item/seeds/pipeweed,
-/obj/item/seeds/pipeweed,
-/obj/item/seeds/pipeweed,
-/obj/item/seeds/pipeweed,
-/obj/item/seeds/pipeweed,
-/obj/item/seeds/pipeweed,
-/turf/open/floor/rogue/blocks,
-/area/rogue/outdoors/rtfield)
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 "dxv" = (
 /turf/open/floor/rogue/ruinedwood/turned,
 /area/rogue/indoors/town/manor)
@@ -3890,24 +3660,6 @@
 /obj/item/roguegem/violet,
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/under/cavewet/bogcaves)
-<<<<<<< HEAD
-=======
-"dGv" = (
-/obj/structure/table/wood{
-	dir = 1;
-	icon_state = "longtable"
-	},
-/obj/item/reagent_containers/glass/cup{
-	pixel_x = 6;
-	pixel_y = 9
-	},
-/obj/item/reagent_containers/glass/cup/wooden{
-	pixel_x = -19;
-	pixel_y = 0
-	},
-/turf/open/floor/rogue/blocks/stonered/tiny,
-/area/rogue/indoors)
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 "dHa" = (
 /obj/structure/stairs{
 	dir = 4
@@ -4035,7 +3787,6 @@
 	},
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/under/cavewet/bogcaves)
-<<<<<<< HEAD
 "dQJ" = (
 /obj/structure/fluff/railing/wood{
 	dir = 8;
@@ -4046,14 +3797,6 @@
 	pixel_y = -4
 	},
 /turf/open/floor/rogue/dirt/road,
-=======
-"dRa" = (
-/obj/structure/fluff/railing/wood{
-	pixel_x = 0;
-	pixel_y = -4
-	},
-/turf/open/floor/rogue/ruinedwood,
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 /area/rogue/outdoors/rtfield)
 "dRQ" = (
 /obj/structure/table/wood{
@@ -4062,7 +3805,6 @@
 	},
 /turf/open/floor/rogue/tile,
 /area/rogue/indoors/town/church)
-<<<<<<< HEAD
 "dSm" = (
 /obj/structure/table/wood,
 /obj/item/candle/skull,
@@ -4072,8 +3814,6 @@
 	},
 /turf/open/floor/rogue/concrete,
 /area/rogue/under/town/basement)
-=======
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 "dTL" = (
 /obj/structure/fluff/railing/wood{
 	dir = 4
@@ -4394,14 +4134,6 @@
 	},
 /turf/closed/mineral/rogue,
 /area/rogue/outdoors/town)
-<<<<<<< HEAD
-=======
-"ehN" = (
-/obj/structure/bed/rogue,
-/obj/effect/landmark/start/farmer,
-/turf/open/floor/rogue/wood,
-/area/rogue/indoors)
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 "eiF" = (
 /obj/structure/table/wood{
 	icon_state = "largetable"
@@ -4443,7 +4175,6 @@
 /obj/item/natural/feather,
 /turf/open/floor/rogue/churchmarble,
 /area/rogue/indoors/town/shop)
-<<<<<<< HEAD
 "ejL" = (
 /obj/structure/flora/roguegrass/bush/wall/tall,
 /turf/open/floor/rogue/grass,
@@ -4452,32 +4183,6 @@
 /obj/structure/fermenting_barrel/water,
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/town/manor)
-=======
-"eku" = (
-/obj/structure/fluff/railing/wood{
-	dir = 1;
-	layer = 2.7;
-	pixel_x = 2;
-	pixel_y = 7
-	},
-/obj/structure/fluff/railing/wood{
-	dir = 4;
-	layer = 2.8;
-	pixel_x = 8
-	},
-/turf/open/floor/rogue/dirt/road,
-/area/rogue/outdoors/rtfield)
-"ekJ" = (
-/obj/structure/rack/rogue,
-/obj/item/rogueweapon/thresher,
-/obj/item/rogueweapon/thresher,
-/obj/item/rogueweapon/thresher,
-/obj/item/reagent_containers/glass/bucket/wooden,
-/obj/item/reagent_containers/glass/bucket/wooden,
-/obj/item/reagent_containers/glass/bucket/wooden,
-/turf/open/floor/rogue/wood,
-/area/rogue/indoors)
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 "ekQ" = (
 /obj/structure/flora/roguegrass/bush,
 /turf/open/floor/rogue/grass,
@@ -4731,13 +4436,6 @@
 /mob/living/simple_animal/pet/cat,
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/tavern)
-<<<<<<< HEAD
-=======
-"eum" = (
-/obj/structure/closet/crate/coffin,
-/turf/open/floor/rogue/cobble,
-/area/rogue/indoors/town/church)
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 "euo" = (
 /obj/structure/chair/wood/rogue{
 	dir = 4
@@ -4965,7 +4663,6 @@
 /obj/structure/fluff/grindwheel,
 /turf/open/floor/rogue/blocks/stonered,
 /area/rogue/indoors/town)
-<<<<<<< HEAD
 "eFN" = (
 /obj/structure/fluff/railing/wood{
 	dir = 8;
@@ -4976,8 +4673,6 @@
 	},
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors)
-=======
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 "eGw" = (
 /obj/machinery/light/rogue/wallfire/candle/blue,
 /turf/open/floor/rogue/wood,
@@ -5109,7 +4804,6 @@
 	},
 /turf/open/floor/rogue/ruinedwood/turned,
 /area/rogue/indoors/shelter/mountains)
-<<<<<<< HEAD
 "eOA" = (
 /obj/machinery/light/rogue/wallfire/candle/blue/l,
 /turf/closed/wall/mineral/rogue/stone/red_moss,
@@ -5121,8 +4815,6 @@
 	},
 /turf/open/floor/rogue/blocks,
 /area/rogue/outdoors/rtfield)
-=======
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 "ePf" = (
 /obj/structure/stairs{
 	dir = 1
@@ -5136,7 +4828,6 @@
 /obj/structure/chair/bench,
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/outdoors/town/roofs)
-<<<<<<< HEAD
 "eQh" = (
 /obj/effect/decal/cobbleedge{
 	dir = 1;
@@ -5144,16 +4835,6 @@
 	},
 /turf/open/floor/rogue/blocks/stonered/tiny,
 /area/rogue/indoors/town/manor)
-=======
-"eQa" = (
-/obj/machinery/light/rogue/firebowl/stump,
-/turf/open/floor/rogue/cobble,
-/area/rogue/outdoors/town/roofs)
-"eRq" = (
-/obj/structure/stairs/d,
-/turf/open/transparent/openspace,
-/area/rogue/indoors)
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 "eSc" = (
 /obj/item/roguebin/water,
 /turf/open/floor/rogue/tile{
@@ -5480,7 +5161,6 @@
 	icon_state = "wooden_floort"
 	},
 /area/rogue/outdoors/beach)
-<<<<<<< HEAD
 "fgP" = (
 /obj/structure/mineral_door/wood/window{
 	locked = 1;
@@ -5488,14 +5168,6 @@
 	},
 /turf/open/floor/rogue/tile,
 /area/rogue/indoors)
-=======
-"fhf" = (
-/obj/structure/stairs{
-	dir = 8
-	},
-/turf/open/floor/rogue/woodturned,
-/area/rogue/indoors/town/church)
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 "fhH" = (
 /obj/structure/roguewindow/openclose{
 	dir = 8
@@ -5634,14 +5306,11 @@
 	icon_state = "weird1"
 	},
 /area/rogue/indoors/town/church)
-<<<<<<< HEAD
 "fol" = (
 /obj/machinery/light/rogue/wallfire/candle,
 /obj/structure/flora/roguegrass,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors/town)
-=======
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 "foz" = (
 /obj/structure/table/wood{
 	dir = 6;
@@ -5713,15 +5382,6 @@
 "fsU" = (
 /turf/closed/wall/mineral/rogue/stone,
 /area/rogue/indoors/town/bath)
-<<<<<<< HEAD
-=======
-"fsX" = (
-/obj/structure/chair/wood/rogue/chair3{
-	dir = 4
-	},
-/turf/open/floor/rogue/wood,
-/area/rogue/indoors)
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 "ftG" = (
 /obj/structure/fluff/railing/fence{
 	dir = 8
@@ -5734,20 +5394,6 @@
 	},
 /turf/open/floor/rogue/tile,
 /area/rogue/indoors/town)
-<<<<<<< HEAD
-=======
-"fup" = (
-/obj/structure/fluff/railing/wood{
-	dir = 8;
-	pixel_x = -8
-	},
-/obj/item/trash/applecore{
-	pixel_x = 10;
-	pixel_y = -7
-	},
-/turf/open/floor/rogue/grass,
-/area/rogue/outdoors/rtfield)
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 "fuA" = (
 /turf/closed/wall/mineral/rogue/stone/moss,
 /area/rogue/outdoors/rtfield)
@@ -5803,7 +5449,6 @@
 /obj/machinery/light/rogue/firebowl/standing/blue,
 /turf/open/floor/rogue/blocks/stonered,
 /area/rogue/indoors/town/bath)
-<<<<<<< HEAD
 "fyN" = (
 /obj/structure/table/wood,
 /obj/item/reagent_containers/glass/cup/skull,
@@ -5811,8 +5456,6 @@
 /obj/item/reagent_containers/glass/bottle/rogue/healthpot,
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/basement)
-=======
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 "fzQ" = (
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/indoors)
@@ -5902,7 +5545,6 @@
 /obj/effect/decal/cleanable/blood/gibs/up,
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/under/cavewet/bogcaves)
-<<<<<<< HEAD
 "fGK" = (
 /obj/structure/fluff/railing/wood{
 	dir = 8;
@@ -5925,8 +5567,6 @@
 	},
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/manor)
-=======
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 "fHh" = (
 /obj/structure/bed/rogue/shit,
 /obj/effect/landmark/start/servant{
@@ -6228,17 +5868,9 @@
 /obj/structure/fluff/grindwheel,
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors)
-<<<<<<< HEAD
 "fUg" = (
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/outdoors/town)
-=======
-"fTS" = (
-/obj/structure/roguemachine/mail,
-/obj/effect/landmark/start/dungeoneer,
-/turf/open/floor/rogue/concrete,
-/area/rogue/under/town/basement)
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 "fUS" = (
 /obj/item/grown/log/tree,
 /turf/open/floor/rogue/ruinedwood/spiral,
@@ -6341,13 +5973,10 @@
 	},
 /turf/open/floor/rogue/cobble,
 /area/rogue/outdoors/town/roofs)
-<<<<<<< HEAD
 "gcF" = (
 /obj/machinery/light/rogue/oven/east,
 /turf/open/floor/rogue/ruinedwood/chevron,
 /area/rogue/indoors)
-=======
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 "gdc" = (
 /obj/structure/roguemachine/mail,
 /turf/open/floor/rogue/cobble,
@@ -6459,13 +6088,6 @@
 	},
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/tavern)
-<<<<<<< HEAD
-=======
-"gjT" = (
-/obj/structure/chair/bench/church/smallbench,
-/turf/open/floor/rogue/dirt/road,
-/area/rogue/outdoors/rtfield)
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 "gko" = (
 /obj/structure/bed/rogue,
 /turf/open/floor/carpet/red,
@@ -6529,7 +6151,6 @@
 /obj/item/rope/chain,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/under/town/basement)
-<<<<<<< HEAD
 "gmm" = (
 /obj/structure/fluff/railing/wood{
 	dir = 1;
@@ -6540,8 +6161,6 @@
 /obj/structure/chair/stool/rogue,
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue/outdoors/rtfield)
-=======
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 "gmv" = (
 /obj/structure/mineral_door/wood{
 	lockid = "roomii";
@@ -6616,7 +6235,6 @@
 /obj/structure/glowshroom,
 /turf/open/floor/rogue/dirt,
 /area/rogue/outdoors/rtfield)
-<<<<<<< HEAD
 "goW" = (
 /obj/structure/fluff/railing/wood{
 	pixel_x = 0;
@@ -6631,8 +6249,6 @@
 	},
 /turf/open/floor/rogue/blocks/stonered/tiny,
 /area/rogue/indoors)
-=======
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 "gpl" = (
 /obj/structure/flora/roguegrass/water,
 /turf/open/water/cleanshallow,
@@ -6871,16 +6487,6 @@
 	},
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/town/tavern)
-<<<<<<< HEAD
-=======
-"gBM" = (
-/obj/machinery/light/rogue/wallfire/candle{
-	pixel_x = -32;
-	pixel_y = 0
-	},
-/turf/open/floor/rogue/blocks,
-/area/rogue/indoors/town/church)
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 "gBU" = (
 /obj/structure/glowshroom,
 /turf/open/floor/rogue/naturalstone,
@@ -7035,15 +6641,6 @@
 	},
 /turf/open/floor/rogue/herringbone,
 /area/rogue/indoors/town/church)
-<<<<<<< HEAD
-=======
-"gLR" = (
-/obj/structure/table/wood,
-/obj/item/restraints/legcuffs/beartrap,
-/obj/structure/roguemachine/scomm/r,
-/turf/open/floor/rogue/concrete,
-/area/rogue/under/town/basement)
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 "gLS" = (
 /obj/machinery/light/rogue/wallfire/candle/r{
 	pixel_x = -32
@@ -7453,7 +7050,6 @@
 	},
 /turf/open/floor/rogue/church,
 /area/rogue/indoors/town/church)
-<<<<<<< HEAD
 "hhi" = (
 /obj/structure/bed/rogue{
 	pixel_x = 0;
@@ -7465,14 +7061,6 @@
 /obj/machinery/light/rogue/wallfire/candle/r,
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors)
-=======
-"hhm" = (
-/obj/structure/stairs/stone{
-	dir = 1
-	},
-/turf/closed,
-/area/rogue/outdoors/bog)
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 "hhr" = (
 /obj/machinery/light/rogue/torchholder{
 	dir = 1
@@ -7791,13 +7379,6 @@
 	},
 /turf/open/floor/rogue/cobble,
 /area/rogue/indoors/town/dwarfin)
-<<<<<<< HEAD
-=======
-"hyz" = (
-/obj/structure/fluff/millstone,
-/turf/open/floor/rogue/blocks,
-/area/rogue/outdoors/rtfield)
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 "hyQ" = (
 /obj/structure/stairs{
 	dir = 4
@@ -7906,7 +7487,6 @@
 	dir = 4
 	},
 /area/rogue/outdoors/town)
-<<<<<<< HEAD
 "hHw" = (
 /obj/effect/landmark/start/gravedigger{
 	dir = 1
@@ -7917,8 +7497,6 @@
 	},
 /turf/open/floor/rogue/churchmarble,
 /area/rogue/indoors/town/church/chapel)
-=======
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 "hHF" = (
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/indoors)
@@ -8492,14 +8070,8 @@
 	},
 /turf/open/floor/rogue/cobble,
 /area/rogue/indoors)
-<<<<<<< HEAD
 "iiB" = (
 /turf/open/floor/carpet/inn,
-=======
-"iiw" = (
-/obj/machinery/light/rogue/wallfire/candle,
-/turf/open/floor/rogue/wood,
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 /area/rogue/indoors)
 "ijH" = (
 /obj/structure/fluff/walldeco/church/line,
@@ -8622,16 +8194,6 @@
 /obj/machinery/anvil/crafted,
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors)
-<<<<<<< HEAD
-=======
-"irF" = (
-/obj/machinery/light/rogue/wallfire/candle{
-	pixel_x = 32;
-	pixel_y = 0
-	},
-/turf/open/floor/rogue/dirt/road,
-/area/rogue/outdoors/town)
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 "isH" = (
 /obj/machinery/light/rogue/wallfire/candle,
 /turf/open/floor/rogue/carpet/lord/center,
@@ -8950,20 +8512,10 @@
 	icon_state = "bfloorz"
 	},
 /area/rogue/indoors/town/manor)
-<<<<<<< HEAD
 "iIY" = (
 /obj/structure/roguemachine/mail,
 /turf/open/floor/rogue/blocks,
 /area/rogue/outdoors/rtfield)
-=======
-"iIM" = (
-/obj/structure/ladder,
-/obj/structure/fluff/railing/border{
-	dir = 10
-	},
-/turf/open/floor/rogue/woodturned,
-/area/rogue/indoors/town/church)
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 "iJC" = (
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue/indoors/town/tavern)
@@ -9134,13 +8686,6 @@
 	icon_state = "weird1"
 	},
 /area/rogue/indoors/town/manor)
-<<<<<<< HEAD
-=======
-"iWP" = (
-/obj/structure/closet/crate/roguecloset/dark,
-/turf/open/floor/rogue/wood,
-/area/rogue/indoors)
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 "iWT" = (
 /obj/structure/closet/crate/chest{
 	lockid = "keep_armory"
@@ -9332,38 +8877,10 @@
 	icon_state = "horzw"
 	},
 /area/rogue/indoors/town/garrison)
-<<<<<<< HEAD
 "jfC" = (
 /obj/structure/roguemachine/mail,
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/tavern)
-=======
-"jfu" = (
-/obj/structure/table/wood{
-	dir = 1;
-	icon_state = "tablewood1"
-	},
-/obj/item/natural/feather,
-/obj/item/natural/feather{
-	pixel_x = 4;
-	pixel_y = 0
-	},
-/obj/item/book/rogue/law{
-	pixel_x = -8;
-	pixel_y = 10
-	},
-/turf/open/floor/rogue/ruinedwood/spiral,
-/area/rogue/indoors)
-"jfE" = (
-/obj/structure/closet/crate/chest,
-/obj/effect/decal/cleanable/cobweb/cobweb2,
-/turf/open/floor/rogue/blocks/paving,
-/area/rogue/indoors)
-"jfU" = (
-/obj/machinery/light/rogue/firebowl,
-/turf/open/floor/rogue/blocks,
-/area/rogue/outdoors/rtfield)
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 "jgd" = (
 /obj/structure/table/wood{
 	icon_state = "tablewood1"
@@ -9592,7 +9109,6 @@
 /obj/item/rogueweapon/surgery/retractor,
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/town/basement)
-<<<<<<< HEAD
 "juj" = (
 /obj/item/storage/roguebag,
 /obj/structure/table/wood{
@@ -9601,38 +9117,17 @@
 /obj/machinery/light/rogue/wallfire/candle/blue/r,
 /turf/open/floor/rogue/churchmarble,
 /area/rogue/indoors/town/shop)
-=======
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 "jvj" = (
 /turf/open/water/bath,
 /area/rogue/indoors/town/church)
 "jvl" = (
-<<<<<<< HEAD
 /obj/structure/flora/roguegrass,
 /turf/open/floor/rogue/dirt,
 /area/rogue/outdoors/town)
-=======
-/obj/structure/fluff/railing/wood{
-	dir = 8;
-	pixel_x = -8
-	},
-/obj/item/natural/poo/horse,
-/turf/open/floor/rogue/grass,
-/area/rogue/outdoors/rtfield)
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 "jvt" = (
 /obj/machinery/light/rogue/hearth,
 /turf/open/floor/rogue/cobble,
 /area/rogue/indoors)
-<<<<<<< HEAD
-=======
-"jvC" = (
-/obj/machinery/light/rogue/torchholder/c{
-	dir = 1
-	},
-/turf/closed/wall/mineral/rogue/craftstone,
-/area/rogue/under/town/basement)
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 "jvW" = (
 /turf/open/floor/rogue/rooftop/green/corner1{
 	dir = 5
@@ -9882,7 +9377,6 @@
 	},
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue/indoors/town)
-<<<<<<< HEAD
 "jJW" = (
 /obj/structure/well,
 /turf/open/floor/rogue/cobblerock,
@@ -9899,18 +9393,6 @@
 	},
 /turf/open/floor/rogue/dirt,
 /area/rogue/indoors)
-=======
-"jKj" = (
-/obj/structure/mineral_door/wood/window{
-	lockid = "velder";
-	locked = 1
-	},
-/turf/open/floor/rogue/blocks/stonered/tiny,
-/area/rogue/indoors)
-"jKw" = (
-/turf/closed/mineral/rogue,
-/area/rogue/indoors/town)
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 "jKT" = (
 /obj/structure/closet/crate/chest{
 	lockid = "town_armory"
@@ -10055,13 +9537,10 @@
 "jSp" = (
 /turf/closed/wall/mineral/rogue/roofwall/outercorner,
 /area/rogue/outdoors/town)
-<<<<<<< HEAD
 "jTf" = (
 /obj/structure/table/wood,
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/town/tavern)
-=======
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 "jTj" = (
 /obj/machinery/light/rogue/torchholder{
 	pixel_y = 26
@@ -10130,7 +9609,6 @@
 	},
 /turf/open/floor/rogue/cobble,
 /area/rogue/outdoors/rtfield)
-<<<<<<< HEAD
 "jWi" = (
 /obj/structure/fluff/railing/border{
 	dir = 1
@@ -10143,17 +9621,6 @@
 "jWC" = (
 /obj/structure/bars/cemetery,
 /turf/open/floor/rogue/dirt,
-=======
-"jWs" = (
-/obj/structure/chair/wood/rogue{
-	dir = 8
-	},
-/turf/open/floor/carpet/inn,
-/area/rogue/indoors)
-"jWA" = (
-/mob/living/simple_animal/hostile/retaliate/rogue/goatmale,
-/turf/open/floor/rogue/grass,
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 /area/rogue/outdoors/rtfield)
 "jWR" = (
 /obj/structure/chair/wood/rogue{
@@ -10218,21 +9685,10 @@
 /obj/item/grown/log/tree,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/indoors)
-<<<<<<< HEAD
 "kbD" = (
 /obj/structure/fluff/walldeco/customflag,
 /turf/closed/wall/mineral/rogue/decostone,
 /area/rogue/indoors/town/church)
-=======
-"kaR" = (
-/obj/machinery/light/rogue/torchholder,
-/turf/closed/wall/mineral/rogue/craftstone,
-/area/rogue/under/town/basement)
-"kbq" = (
-/obj/item/reagent_containers/glass/bucket/wooden,
-/turf/open/floor/rogue/blocks,
-/area/rogue/indoors)
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 "kcj" = (
 /obj/structure/fluff/statue/gargoyle/moss,
 /obj/machinery/light/rogue/torchholder,
@@ -10448,19 +9904,10 @@
 	dir = 1
 	},
 /area/rogue/indoors/town/shop)
-<<<<<<< HEAD
 "klv" = (
 /obj/structure/fluff/statue/gargoyle,
 /turf/open/floor/rogue/dirt,
 /area/rogue/outdoors/rtfield)
-=======
-"klu" = (
-/obj/structure/fluff/railing/border{
-	dir = 9
-	},
-/turf/open/floor/rogue/woodturned,
-/area/rogue/indoors/town/church)
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 "klS" = (
 /obj/machinery/light/rogue/wallfire/candle,
 /obj/effect/landmark/start/templar,
@@ -10524,13 +9971,10 @@
 /obj/item/rogueweapon/pick,
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors)
-<<<<<<< HEAD
 "kor" = (
 /obj/effect/decal/cleanable/blood/old,
 /turf/open/floor/rogue/blocks,
 /area/rogue/indoors)
-=======
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 "kov" = (
 /obj/structure/bookcase/random,
 /turf/open/floor/rogue/tile/masonic,
@@ -10764,7 +10208,6 @@
 	},
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/manor)
-<<<<<<< HEAD
 "kBN" = (
 /obj/structure/rack/rogue,
 /obj/item/rogueweapon/thresher,
@@ -10775,8 +10218,6 @@
 /obj/item/reagent_containers/glass/bucket/wooden,
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors)
-=======
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 "kCh" = (
 /obj/effect/decal/cleanable/blood/old,
 /turf/open/floor/rogue/blocks,
@@ -10841,13 +10282,6 @@
 /obj/item/chair/rogue/fancy,
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/town/basement)
-<<<<<<< HEAD
-=======
-"kGv" = (
-/obj/structure/roguemachine/mail,
-/turf/open/floor/rogue/concrete,
-/area/rogue/indoors/town/shop)
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 "kGY" = (
 /turf/open/floor/rogue/tile{
 	icon_state = "greenstone"
@@ -10863,13 +10297,10 @@
 "kHR" = (
 /turf/open/water/bath,
 /area/rogue/indoors/town/bath)
-<<<<<<< HEAD
 "kHZ" = (
 /obj/item/roguebin/water,
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue/indoors)
-=======
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 "kIf" = (
 /obj/structure/stairs,
 /turf/open/floor/rogue/ruinedwood,
@@ -10933,7 +10364,6 @@
 /obj/machinery/light/rogue/wallfire/candle/blue/r,
 /turf/closed/wall/mineral/rogue/decostone/center,
 /area/rogue/indoors/town/church)
-<<<<<<< HEAD
 "kLY" = (
 /obj/effect/decal/cobbleedge{
 	dir = 1;
@@ -10944,15 +10374,6 @@
 "kMU" = (
 /turf/open/floor/rogue/ruinedwood/turned,
 /area/rogue/outdoors/town/roofs)
-=======
-"kMb" = (
-/obj/machinery/light/rogue/torchholder/l,
-/obj/machinery/light/rogue/torchholder/l,
-/obj/machinery/light/rogue/torchholder/l,
-/obj/machinery/light/rogue/torchholder/l,
-/turf/open/floor/rogue/woodturned,
-/area/rogue/indoors/town/manor)
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 "kNa" = (
 /obj/structure/chair/wood/rogue{
 	dir = 4
@@ -11007,7 +10428,6 @@
 	},
 /turf/open/floor/carpet/royalblack,
 /area/rogue/indoors/town/church)
-<<<<<<< HEAD
 "kQt" = (
 /obj/structure/fluff/railing/wood{
 	dir = 8;
@@ -11019,15 +10439,6 @@
 	},
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/outdoors/rtfield)
-=======
-"kQz" = (
-/obj/effect/decal/cobbleedge{
-	icon_state = "borderfall";
-	dir = 4
-	},
-/turf/open/floor/rogue/blocks/stonered,
-/area/rogue/indoors/town/manor)
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 "kQN" = (
 /obj/item/grown/log/tree,
 /obj/item/grown/log/tree,
@@ -11098,12 +10509,9 @@
 /obj/structure/flora/newtree,
 /turf/open/floor/rogue/dirt,
 /area/rogue/outdoors/bog)
-<<<<<<< HEAD
 "kXQ" = (
 /turf/closed/mineral/random/rogue,
 /area/rogue/under/deep_caverns)
-=======
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 "kXX" = (
 /obj/structure/closet/dirthole/closed,
 /obj/structure/gravemarker,
@@ -11334,21 +10742,10 @@
 	},
 /turf/open/floor/rogue/herringbone,
 /area/rogue/indoors/town/church/chapel)
-<<<<<<< HEAD
 "ljx" = (
 /obj/structure/closet/dirthole/grave,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors/rtfield)
-=======
-"ljE" = (
-/obj/structure/closet/crate/drawer{
-	pixel_x = 6;
-	pixel_y = 0
-	},
-/obj/item/roguekey/farm,
-/turf/open/floor/rogue/wood,
-/area/rogue/indoors)
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 "ljM" = (
 /obj/structure/chair/wood/rogue,
 /turf/open/floor/rogue/ruinedwood{
@@ -11525,13 +10922,6 @@
 "ltT" = (
 /turf/open/floor/rogue/twig,
 /area/rogue/indoors)
-<<<<<<< HEAD
-=======
-"lua" = (
-/obj/structure/roguewindow,
-/turf/open/floor/rogue/ruinedwood/chevron,
-/area/rogue/indoors)
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 "lug" = (
 /turf/closed/wall/mineral/rogue/decostone/end,
 /area/rogue/indoors/town/church)
@@ -11657,7 +11047,6 @@
 	},
 /turf/open/floor/rogue/tile/checker,
 /area/rogue/indoors/town/manor)
-<<<<<<< HEAD
 "lBt" = (
 /obj/structure/table/wood{
 	dir = 9;
@@ -11666,8 +11055,6 @@
 /obj/item/reagent_containers/glass/cup/silver,
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/shop)
-=======
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 "lBP" = (
 /obj/structure/roguemachine/atm,
 /turf/open/floor/rogue/wood,
@@ -11831,7 +11218,6 @@
 "lIK" = (
 /turf/open/floor/rogue/rooftop/green/corner1,
 /area/rogue/indoors)
-<<<<<<< HEAD
 "lIV" = (
 /obj/structure/closet/crate/drawer{
 	pixel_x = 6;
@@ -11840,8 +11226,6 @@
 /obj/item/roguekey/farm,
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors)
-=======
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 "lJd" = (
 /obj/structure/mineral_door/wood,
 /turf/open/floor/rogue/dirt,
@@ -11865,7 +11249,6 @@
 	},
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/town/garrison)
-<<<<<<< HEAD
 "lKp" = (
 /obj/effect/landmark/start/gravedigger,
 /obj/effect/decal/cobbleedge{
@@ -11874,8 +11257,6 @@
 	},
 /turf/open/floor/rogue/churchmarble,
 /area/rogue/indoors/town/church/chapel)
-=======
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 "lKA" = (
 /obj/structure/bars/cemetery,
 /turf/open/floor/rogue/cobblerock,
@@ -11929,22 +11310,10 @@
 	icon_state = "vertw"
 	},
 /area/rogue/indoors/town)
-<<<<<<< HEAD
-=======
-"lOf" = (
-/obj/structure/fluff/railing/wood{
-	dir = 4;
-	layer = 2.8;
-	pixel_x = 8
-	},
-/turf/open/floor/rogue/dirt/road,
-/area/rogue/indoors)
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 "lOl" = (
 /obj/structure/mineral_door/wood,
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors)
-<<<<<<< HEAD
 "lOL" = (
 /obj/machinery/light/rogue/firebowl{
 	pixel_x = 0;
@@ -11952,8 +11321,6 @@
 	},
 /turf/open/floor/rogue/dirt,
 /area/rogue/outdoors/rtfield)
-=======
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 "lOV" = (
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/outdoors/bog)
@@ -12017,7 +11384,6 @@
 /obj/item/natural/feather,
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors)
-<<<<<<< HEAD
 "lRU" = (
 /obj/effect/decal/cobbleedge{
 	dir = 1;
@@ -12027,8 +11393,6 @@
 /obj/structure/roguemachine/bounty,
 /turf/open/floor/rogue/blocks,
 /area/rogue/outdoors/town)
-=======
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 "lSf" = (
 /obj/structure/table/wood{
 	icon_state = "longtable"
@@ -12089,18 +11453,9 @@
 	},
 /area/rogue/indoors/town/manor)
 "lUg" = (
-<<<<<<< HEAD
 /obj/structure/closet/dirthole/grave,
 /turf/open/floor/rogue/grass,
 /area/rogue/outdoors/rtfield)
-=======
-/obj/structure/winch{
-	redstone_id = "villagenorth";
-	gid = "villagenorth"
-	},
-/turf/open/floor/rogue/blocks,
-/area/rogue/indoors)
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 "lVe" = (
 /turf/closed/wall/mineral/rogue/craftstone,
 /area/rogue/indoors)
@@ -12506,7 +11861,6 @@
 	},
 /turf/open/floor/rogue/church,
 /area/rogue/indoors/town/church/chapel)
-<<<<<<< HEAD
 "msj" = (
 /obj/structure/rack/rogue,
 /obj/item/rogueweapon/pitchfork,
@@ -12520,8 +11874,6 @@
 "mtn" = (
 /turf/open/floor/rogue/cobble,
 /area/rogue/indoors/town/shop)
-=======
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 "mtF" = (
 /obj/structure/stairs{
 	dir = 1
@@ -12578,7 +11930,6 @@
 "mwE" = (
 /turf/open/floor/rogue/grass,
 /area/rogue/outdoors/town)
-<<<<<<< HEAD
 "mwP" = (
 /obj/structure/closet/crate/roguecloset/dark,
 /turf/open/floor/rogue/wood,
@@ -12589,14 +11940,6 @@
 	icon_state = "stairs"
 	},
 /turf/open/floor/rogue/wood,
-=======
-"mwW" = (
-/obj/structure/mineral_door/wood/window{
-	lockid = "velder";
-	locked = 1
-	},
-/turf/open/floor/rogue/ruinedwood/spiral,
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 /area/rogue/indoors)
 "mxx" = (
 /obj/effect/landmark/start/adventurerlate{
@@ -12708,7 +12051,6 @@
 /obj/effect/landmark/start/bogguardsman,
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/town/basement)
-<<<<<<< HEAD
 "mFe" = (
 /obj/effect/decal/cobbleedge{
 	dir = 1;
@@ -12716,12 +12058,6 @@
 	},
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/manor)
-=======
-"mFf" = (
-/obj/item/roguebin/water,
-/turf/open/floor/rogue/wood,
-/area/rogue/indoors)
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 "mFs" = (
 /obj/effect/decal/remains/human,
 /obj/effect/decal/cleanable/cobweb,
@@ -12742,7 +12078,6 @@
 	icon_state = "greenstone"
 	},
 /area/rogue/under/town/basement)
-<<<<<<< HEAD
 "mFL" = (
 /obj/structure/stairs{
 	dir = 8
@@ -12752,8 +12087,6 @@
 	},
 /turf/open/floor/rogue/blocks,
 /area/rogue/indoors/town/church)
-=======
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 "mGA" = (
 /obj/structure/fluff/walldeco/rpainting/forest{
 	pixel_x = -32
@@ -12764,17 +12097,10 @@
 /obj/machinery/light/rogue/firebowl/stump,
 /turf/open/floor/rogue/dirt,
 /area/rogue/outdoors/rtfield)
-<<<<<<< HEAD
 "mIv" = (
 /obj/structure/ladder,
 /turf/open/floor/rogue/church,
 /area/rogue/indoors/town/church)
-=======
-"mHw" = (
-/obj/structure/ladder,
-/turf/open/floor/rogue/twig,
-/area/rogue/indoors)
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 "mJh" = (
 /obj/structure/table/wood{
 	icon_state = "tablewood1"
@@ -12925,17 +12251,10 @@
 /obj/item/clothing/neck/roguetown/psicross,
 /turf/open/floor/rogue/herringbone,
 /area/rogue/indoors/town/church)
-<<<<<<< HEAD
 "mSe" = (
 /obj/structure/closet/crate/roguecloset,
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/shop)
-=======
-"mSo" = (
-/obj/structure/flora/ausbushes/ywflowers,
-/turf/open/floor/rogue/dirt/road,
-/area/rogue/outdoors/rtfield)
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 "mSD" = (
 /obj/structure/roguemachine/scomm,
 /turf/open/floor/rogue/blocks,
@@ -13079,20 +12398,16 @@
 	},
 /turf/open/floor/rogue/blocks,
 /area/rogue/outdoors/town)
-<<<<<<< HEAD
 "mXC" = (
 /obj/structure/mineral_door/wood,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors/town)
-=======
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 "mXG" = (
 /obj/structure/fluff/railing/border{
 	dir = 6
 	},
 /turf/closed/wall/mineral/rogue/stonebrick,
 /area/rogue/under/town/sewer)
-<<<<<<< HEAD
 "mYi" = (
 /obj/item/rope,
 /obj/structure/table/wood{
@@ -13106,8 +12421,6 @@
 /obj/machinery/light/rogue/torchholder/c,
 /turf/open/floor/rogue/blocks,
 /area/rogue/outdoors/rtfield)
-=======
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 "mZo" = (
 /obj/structure/chair/bench/couch{
 	icon_state = "redcouch2"
@@ -13220,16 +12533,6 @@
 /obj/structure/roguerock,
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/under/cavewet/bogcaves)
-<<<<<<< HEAD
-=======
-"nga" = (
-/obj/structure/composter/full,
-/obj/machinery/light/rogue/torchholder{
-	dir = 4
-	},
-/turf/open/floor/rogue/blocks,
-/area/rogue/outdoors/rtfield)
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 "ngi" = (
 /obj/structure/mineral_door/wood{
 	locked = 1;
@@ -13237,7 +12540,6 @@
 	},
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/town/basement)
-<<<<<<< HEAD
 "ngH" = (
 /obj/structure/bars/pipe{
 	dir = 4;
@@ -13246,12 +12548,6 @@
 	},
 /turf/open/transparent/openspace,
 /area/rogue/outdoors/town)
-=======
-"ngj" = (
-/obj/structure/fermenting_barrel/water,
-/turf/open/floor/rogue/churchbrick,
-/area/rogue/indoors/town/manor)
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 "ngN" = (
 /obj/structure/table/wood{
 	dir = 1;
@@ -13318,25 +12614,8 @@
 	},
 /turf/open/floor/rogue/cobble,
 /area/rogue/outdoors/town)
-<<<<<<< HEAD
 "njN" = (
 /obj/item/rogueweapon/shovel,
-=======
-"njI" = (
-/obj/effect/landmark/events/haunts,
-/obj/structure/chair/stool/rogue,
-/turf/open/floor/rogue/cobble,
-/area/rogue/outdoors/rtfield)
-"njZ" = (
-/obj/structure/fluff/railing/wood{
-	dir = 8;
-	pixel_x = -8
-	},
-/obj/structure/fluff/railing/wood{
-	pixel_x = 0;
-	pixel_y = -4
-	},
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors/rtfield)
 "nkB" = (
@@ -13389,7 +12668,6 @@
 "noB" = (
 /turf/closed/wall/mineral/rogue/decostone/cand,
 /area/rogue/indoors/town/church)
-<<<<<<< HEAD
 "nps" = (
 /obj/structure/rack/rogue,
 /obj/item/reagent_containers/glass/bottle/rogue/wine{
@@ -13411,20 +12689,6 @@
 /obj/item/natural/cloth,
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/basement)
-=======
-"noN" = (
-/obj/item/natural/poo/cow,
-/turf/open/floor/rogue/grass,
-/area/rogue/indoors)
-"nqd" = (
-/obj/machinery/light/rogue/torchholder/c{
-	dir = 1
-	},
-/turf/closed/wall/mineral/rogue/decostone/long{
-	dir = 1
-	},
-/area/rogue/indoors/town/church)
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 "nqh" = (
 /obj/structure/bed/rogue,
 /turf/open/floor/carpet/purple,
@@ -13608,7 +12872,6 @@
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue/outdoors/rtfield)
 "nzQ" = (
-<<<<<<< HEAD
 /obj/structure/closet/crate/chest{
 	lockid = "physician";
 	name = "leech chest"
@@ -13625,11 +12888,6 @@
 /obj/item/natural/worms/leech,
 /turf/open/floor/rogue/churchbrick,
 /area/rogue/indoors/town/manor)
-=======
-/obj/structure/fluff/railing/border,
-/turf/open/floor/rogue/dirt/road,
-/area/rogue/outdoors/town/roofs)
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 "nzW" = (
 /obj/structure/bars,
 /turf/open/water/cleanshallow,
@@ -13933,7 +13191,6 @@
 	},
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/town/tavern)
-<<<<<<< HEAD
 "nMZ" = (
 /obj/structure/fluff/railing/wood{
 	dir = 8;
@@ -13941,8 +13198,6 @@
 	},
 /turf/open/floor/rogue/grass,
 /area/rogue/outdoors/rtfield)
-=======
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 "nNJ" = (
 /turf/open/floor/carpet/royalblack,
 /area/rogue/indoors/town)
@@ -14023,7 +13278,6 @@
 /obj/structure/bookcase/random,
 /turf/open/floor/rogue/carpet/lord/left,
 /area/rogue/indoors/town/manor)
-<<<<<<< HEAD
 "nRQ" = (
 /obj/structure/mineral_door/wood/donjon/stone{
 	locked = 1;
@@ -14038,14 +13292,6 @@
 	},
 /turf/open/transparent/openspace,
 /area/rogue/indoors)
-=======
-"nRH" = (
-/obj/structure/bars/passage{
-	redstone_id = "villagewest"
-	},
-/turf/open/floor/rogue/cobble,
-/area/rogue/outdoors/rtfield)
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 "nSr" = (
 /turf/open/floor/rogue/blocks{
 	icon_state = "newstone2"
@@ -14210,20 +13456,9 @@
 /turf/open/floor/rogue/tile,
 /area/rogue/indoors/town/manor)
 "oaF" = (
-<<<<<<< HEAD
 /obj/machinery/light/rogue/wallfire/candle/l,
 /turf/open/floor/rogue/grass,
 /area/rogue/outdoors/rtfield)
-=======
-/obj/effect/decal/cobbleedge{
-	icon_state = "borderfall";
-	dir = 1
-	},
-/turf/open/floor/rogue/tile{
-	icon_state = "bfloorz"
-	},
-/area/rogue/indoors/town/manor)
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 "oaH" = (
 /obj/structure/closet/crate/chest{
 	lockid = "keep_armory"
@@ -14275,12 +13510,9 @@
 /obj/item/grown/log/tree,
 /turf/open/floor/rogue/dirt,
 /area/rogue/outdoors/bog)
-<<<<<<< HEAD
 "ocI" = (
 /turf/closed/wall/mineral/rogue/stone/window,
 /area/rogue/outdoors/town)
-=======
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 "odc" = (
 /obj/structure/lever{
 	redstone_id = "dungeonpit"
@@ -14369,7 +13601,6 @@
 "ofl" = (
 /turf/closed/wall/mineral/rogue/decowood,
 /area/rogue/outdoors/town/roofs)
-<<<<<<< HEAD
 "ofp" = (
 /obj/structure/rack/rogue,
 /obj/item/rogueweapon/huntingknife,
@@ -14377,8 +13608,6 @@
 	icon_state = "vertw"
 	},
 /area/rogue/indoors/town/shop)
-=======
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 "ofY" = (
 /obj/structure/roguemachine/mail,
 /turf/open/floor/rogue/church,
@@ -14561,19 +13790,10 @@
 /obj/machinery/light/rogue/torchholder/r,
 /turf/open/floor/rogue/carpet/lord/right,
 /area/rogue/indoors/town/manor)
-<<<<<<< HEAD
 "opQ" = (
 /obj/structure/fluff/psycross,
 /turf/open/floor/rogue/blocks,
 /area/rogue/outdoors/town)
-=======
-"oqg" = (
-/obj/item/reagent_containers/food/snacks/crow{
-	dir = 1
-	},
-/turf/open/floor/rogue/ruinedwood,
-/area/rogue/outdoors/rtfield)
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 "oqi" = (
 /obj/structure/bed/rogue/inn,
 /turf/open/floor/rogue/churchbrick,
@@ -14594,7 +13814,6 @@
 /obj/item/rogueweapon/stoneaxe/woodcut,
 /turf/open/floor/rogue/blocks/stonered/tiny,
 /area/rogue/indoors/town/dwarfin)
-<<<<<<< HEAD
 "oqZ" = (
 /obj/structure/table/wood{
 	dir = 8;
@@ -14603,8 +13822,6 @@
 /obj/item/roguekey/farm,
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors)
-=======
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 "orr" = (
 /obj/structure/table/wood{
 	dir = 10;
@@ -14632,7 +13849,6 @@
 	},
 /turf/open/transparent/openspace,
 /area/rogue/outdoors/town/roofs)
-<<<<<<< HEAD
 "oth" = (
 /obj/structure/closet/crate/roguecloset/inn/south,
 /obj/item/natural/cloth,
@@ -14642,17 +13858,6 @@
 /obj/item/reagent_containers/glass/bottle/rogue/healthpot,
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/town/basement)
-=======
-"otm" = (
-/obj/effect/decal/cobbleedge{
-	icon_state = "borderfall";
-	dir = 1
-	},
-/obj/effect/decal/cleanable/blood/old,
-/obj/structure/roguemachine/bounty,
-/turf/open/floor/rogue/blocks,
-/area/rogue/outdoors/town)
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 "ots" = (
 /obj/structure/stairs,
 /turf/open/transparent/openspace,
@@ -14775,15 +13980,6 @@
 	},
 /turf/open/floor/carpet/royalblack,
 /area/rogue/indoors/town/tavern)
-<<<<<<< HEAD
-=======
-"ozz" = (
-/obj/structure/mineral_door/wood/donjon/stone{
-	lockid = "church"
-	},
-/turf/open/floor/rogue/churchmarble,
-/area/rogue/indoors/town/church)
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 "oAk" = (
 /obj/effect/landmark/start/adventurerlate{
 	dir = 1
@@ -14928,36 +14124,6 @@
 /obj/structure/ladder,
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue/outdoors/rtfield)
-<<<<<<< HEAD
-=======
-"oGu" = (
-/obj/structure/closet/crate/chest,
-/obj/item/seeds/wheat,
-/obj/item/seeds/wheat,
-/obj/item/seeds/wheat,
-/obj/item/seeds/wheat,
-/obj/item/seeds/wheat,
-/obj/item/seeds/wheat,
-/obj/item/seeds/wheat,
-/obj/item/seeds/wheat,
-/obj/item/seeds/wheat,
-/obj/item/seeds/wheat,
-/obj/item/seeds/wheat,
-/obj/item/seeds/wheat,
-/obj/item/seeds/wheat/oat,
-/obj/item/seeds/wheat/oat,
-/obj/item/seeds/wheat/oat,
-/obj/item/seeds/wheat/oat,
-/obj/item/seeds/wheat/oat,
-/obj/item/seeds/wheat/oat,
-/obj/item/seeds/wheat/oat,
-/obj/item/seeds/wheat/oat,
-/obj/machinery/light/rogue/torchholder{
-	dir = 4
-	},
-/turf/open/floor/rogue/blocks,
-/area/rogue/outdoors/rtfield)
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 "oGI" = (
 /obj/structure/closet/crate/roguecloset,
 /obj/item/reagent_containers/food/snacks/grown/apple,
@@ -15514,13 +14680,10 @@
 	},
 /turf/open/floor/carpet/royalblack,
 /area/rogue/indoors/town/manor)
-<<<<<<< HEAD
 "peL" = (
 /obj/effect/landmark/start/seelielate,
 /turf/open/floor/rogue/grass,
 /area/rogue/outdoors/rtfield)
-=======
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 "peN" = (
 /obj/structure/rack/rogue,
 /obj/item/rogueweapon/spear,
@@ -15571,13 +14734,6 @@
 	},
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/town)
-<<<<<<< HEAD
-=======
-"pjw" = (
-/obj/structure/chair/bench/church/smallbench,
-/turf/open/floor/rogue/church,
-/area/rogue/indoors/town/church)
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 "pjx" = (
 /obj/structure/table/wood,
 /turf/open/floor/rogue/churchmarble,
@@ -15610,7 +14766,6 @@
 /obj/item/grown/log/tree/stick,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors/bog)
-<<<<<<< HEAD
 "plu" = (
 /obj/structure/ladder,
 /obj/structure/fluff/railing/border{
@@ -15618,8 +14773,6 @@
 	},
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/town/church)
-=======
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 "pmb" = (
 /obj/structure/table/wood{
 	dir = 10;
@@ -15640,16 +14793,6 @@
 /obj/item/perfume/random,
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/manor)
-<<<<<<< HEAD
-=======
-"pmm" = (
-/obj/structure/table/wood{
-	dir = 10;
-	icon_state = "largetable"
-	},
-/turf/open/floor/carpet/inn,
-/area/rogue/indoors)
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 "pmt" = (
 /obj/structure/stairs{
 	dir = 1
@@ -15658,29 +14801,12 @@
 	icon_state = "weird1"
 	},
 /area/rogue/indoors/town)
-<<<<<<< HEAD
 "pnf" = (
 /obj/structure/mineral_door/wood/towner{
 	lockid = "farm"
 	},
 /turf/open/floor/rogue/blocks/paving,
 /area/rogue/indoors)
-=======
-"pmZ" = (
-/obj/structure/roguemachine/musicbox{
-	pixel_y = 16
-	},
-/obj/structure/table/wood{
-	dir = 1;
-	icon_state = "tablewood1"
-	},
-/obj/effect/decal/cobbleedge{
-	icon_state = "borderfall";
-	dir = 1
-	},
-/turf/open/floor/rogue/blocks/stonered,
-/area/rogue/indoors/town/manor)
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 "pnl" = (
 /obj/structure/fluff/railing/border{
 	dir = 9
@@ -16038,7 +15164,6 @@
 /obj/item/rogueore/iron,
 /turf/open/floor/rogue/cobble,
 /area/rogue/indoors/town/dwarfin)
-<<<<<<< HEAD
 "pGp" = (
 /obj/structure/fluff/dryingrack,
 /turf/open/floor/rogue/blocks,
@@ -16051,8 +15176,6 @@
 	},
 /turf/open/floor/rogue/grass,
 /area/rogue/outdoors/rtfield)
-=======
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 "pGT" = (
 /obj/structure/closet/crate/chest{
 	lockid = "priest"
@@ -16097,7 +15220,6 @@
 	},
 /turf/open/floor/rogue/tile,
 /area/rogue/outdoors/town)
-<<<<<<< HEAD
 "pKa" = (
 /obj/structure/mineral_door/wood{
 	locked = 1;
@@ -16105,8 +15227,6 @@
 	},
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/town/basement)
-=======
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 "pKb" = (
 /obj/structure/fluff/railing/wood,
 /turf/open/floor/rogue/wood,
@@ -16253,18 +15373,6 @@
 /obj/machinery/light/rogue/firebowl,
 /turf/open/floor/rogue/concrete,
 /area/rogue/under/town/basement)
-<<<<<<< HEAD
-=======
-"pSO" = (
-/obj/structure/fluff/railing/wood{
-	dir = 1;
-	layer = 2.7;
-	pixel_x = 2;
-	pixel_y = 7
-	},
-/turf/open/floor/rogue/dirt,
-/area/rogue/indoors)
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 "pTG" = (
 /obj/machinery/light/rogue/torchholder{
 	dir = 8
@@ -16299,7 +15407,6 @@
 /obj/item/quiver,
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/basement)
-<<<<<<< HEAD
 "pUX" = (
 /obj/structure/fluff/railing/border{
 	dir = 9
@@ -16317,16 +15424,6 @@
 /obj/machinery/light/rogue/torchholder,
 /turf/closed/wall/mineral/rogue/stone,
 /area/rogue/under/cave)
-=======
-"pUR" = (
-/obj/structure/bed/rogue,
-/obj/structure/fluff/walldeco/painting/seraphina{
-	pixel_x = 32;
-	pixel_y = 0
-	},
-/turf/open/floor/carpet/royalblack,
-/area/rogue/indoors/town/church)
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 "pWm" = (
 /obj/structure/closet/crate/chest{
 	lockid = "keep_armory"
@@ -16339,15 +15436,6 @@
 "pWB" = (
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors/town/roofs)
-<<<<<<< HEAD
-=======
-"pWK" = (
-/obj/machinery/light/rogue/torchholder{
-	dir = 4
-	},
-/turf/open/floor/rogue/dirt/road,
-/area/rogue/under/cave)
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 "pWL" = (
 /obj/machinery/light/rogue/chand,
 /turf/open/floor/rogue/wood/nosmooth,
@@ -16393,16 +15481,8 @@
 	},
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors)
-<<<<<<< HEAD
 "pYY" = (
 /turf/closed/wall/mineral/rogue/decostone/mossy/cand,
-=======
-"pYZ" = (
-/obj/structure/fluff/railing/border{
-	dir = 1
-	},
-/turf/open/floor/rogue/woodturned,
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 /area/rogue/indoors/town/church)
 "pZl" = (
 /obj/structure/closet/crate/chest{
@@ -16411,7 +15491,6 @@
 /obj/item/reagent_containers/food/snacks/rogue/crackerscooked,
 /turf/open/floor/rogue/wood,
 /area/rogue/under/town/basement)
-<<<<<<< HEAD
 "pZq" = (
 /obj/structure/mineral_door/bars{
 	locked = 1;
@@ -16419,8 +15498,6 @@
 	},
 /turf/open/floor/rogue/cobble/mossy,
 /area/rogue/outdoors/rtfield)
-=======
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 "pZz" = (
 /obj/machinery/light/rogue/torchholder{
 	pixel_y = 32
@@ -16464,12 +15541,9 @@
 	},
 /turf/open/floor/rogue/cobble,
 /area/rogue/outdoors/beach)
-<<<<<<< HEAD
 "qcG" = (
 /turf/closed/wall/mineral/rogue/decostone/fluffstone,
 /area/rogue/indoors/town/church)
-=======
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 "qcO" = (
 /obj/item/natural/feather,
 /turf/open/floor/rogue/dirt,
@@ -16519,7 +15593,6 @@
 /obj/structure/bed/rogue/shit,
 /turf/open/floor/rogue/grass,
 /area/rogue/indoors/town/manor)
-<<<<<<< HEAD
 "qgc" = (
 /obj/structure/closet/crate/chest,
 /obj/item/seeds/pipeweed,
@@ -16530,15 +15603,6 @@
 /obj/item/seeds/pipeweed,
 /turf/open/floor/rogue/blocks,
 /area/rogue/outdoors/rtfield)
-=======
-"qgD" = (
-/obj/structure/stairs{
-	dir = 8;
-	icon_state = "stairs"
-	},
-/turf/open/floor/rogue/ruinedwood/spiral,
-/area/rogue/indoors)
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 "qhg" = (
 /obj/structure/fluff/walldeco/customflag{
 	pixel_x = 32
@@ -16869,7 +15933,6 @@
 	},
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors/rtfield)
-<<<<<<< HEAD
 "qxe" = (
 /obj/structure/table/wood{
 	dir = 9;
@@ -16878,12 +15941,6 @@
 /obj/item/storage/roguebag,
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors)
-=======
-"qwz" = (
-/obj/structure/chair/stool/rogue,
-/turf/open/floor/rogue/cobble,
-/area/rogue/outdoors/rtfield)
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 "qxm" = (
 /obj/structure/table/wood{
 	dir = 1;
@@ -17016,23 +16073,12 @@
 	},
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/outdoors/town/roofs)
-<<<<<<< HEAD
 "qGZ" = (
-=======
-"qGO" = (
-/obj/structure/fluff/railing/wood{
-	dir = 1;
-	layer = 2.7;
-	pixel_x = 2;
-	pixel_y = 7
-	},
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 /obj/structure/fluff/railing/wood{
 	dir = 4;
 	layer = 2.8;
 	pixel_x = 8
 	},
-<<<<<<< HEAD
 /obj/structure/fluff/railing/wood{
 	pixel_x = 0;
 	pixel_y = -4
@@ -17043,21 +16089,6 @@
 	},
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue/outdoors/rtfield)
-=======
-/obj/machinery/light/rogue/firebowl/standing{
-	pixel_x = 2;
-	pixel_y = 0
-	},
-/turf/open/floor/rogue/ruinedwood,
-/area/rogue/outdoors/rtfield)
-"qHq" = (
-/obj/effect/decal/cobbleedge{
-	icon_state = "borderfall";
-	dir = 1
-	},
-/turf/open/floor/rogue/blocks/stonered/tiny,
-/area/rogue/indoors/town/manor)
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 "qHs" = (
 /obj/structure/roguemachine/scomm/r,
 /turf/open/floor/rogue/tile,
@@ -17359,16 +16390,6 @@
 	icon_state = "wooden_floort"
 	},
 /area/rogue/outdoors/beach)
-<<<<<<< HEAD
-=======
-"qXI" = (
-/obj/structure/flora/roguetree/stump{
-	pixel_x = -9;
-	pixel_y = -1
-	},
-/turf/open/floor/rogue/cobble,
-/area/rogue/outdoors/rtfield)
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 "qYb" = (
 /obj/structure/stairs,
 /turf/open/floor/rogue/ruinedwood,
@@ -17703,7 +16724,6 @@
 "rok" = (
 /turf/open/floor/rogue/blocks/stonered/tiny,
 /area/rogue/indoors/town/dwarfin)
-<<<<<<< HEAD
 "roP" = (
 /obj/structure/closet/crate/roguecloset,
 /obj/item/reagent_containers/food/snacks/butter,
@@ -17713,8 +16733,6 @@
 /obj/item/natural/cloth,
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/town/basement)
-=======
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 "rpo" = (
 /turf/open/floor/rogue/tile,
 /area/rogue/indoors/town/vault)
@@ -18114,18 +17132,6 @@
 	},
 /turf/open/transparent/openspace,
 /area/rogue/outdoors/town)
-<<<<<<< HEAD
-=======
-"rHY" = (
-/obj/structure/closet/crate/roguecloset/inn/south,
-/obj/item/natural/cloth,
-/obj/item/natural/cloth,
-/obj/item/needle/thorn,
-/obj/item/needle/thorn,
-/obj/item/reagent_containers/glass/bottle/rogue/healthpot,
-/turf/open/floor/rogue/blocks,
-/area/rogue/under/town/basement)
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 "rIj" = (
 /obj/structure/table/wood{
 	dir = 6;
@@ -18197,19 +17203,6 @@
 "rNm" = (
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town)
-<<<<<<< HEAD
-=======
-"rNu" = (
-/obj/structure/table/vtable/v2,
-/obj/item/reagent_containers/glass/mortar,
-/obj/item/pestle,
-/turf/open/floor/rogue/church,
-/area/rogue/indoors/town/manor)
-"rNE" = (
-/obj/structure/fermenting_barrel/random/water,
-/turf/open/floor/rogue/herringbone,
-/area/rogue/indoors/town/church)
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 "rOb" = (
 /obj/structure/roguewindow/openclose{
 	dir = 1
@@ -18364,20 +17357,9 @@
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/outdoors/rtfield)
 "rZM" = (
-<<<<<<< HEAD
 /obj/structure/fluff/statue/gargoyle,
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/outdoors/town)
-=======
-/obj/structure/fluff/railing/wood{
-	dir = 4;
-	layer = 2.8;
-	pixel_x = 8
-	},
-/obj/item/natural/poo/cow,
-/turf/open/floor/rogue/dirt,
-/area/rogue/indoors)
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 "saf" = (
 /obj/machinery/light/rogue/torchholder{
 	pixel_y = 26
@@ -18563,16 +17545,6 @@
 /obj/structure/chair/wood,
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/tavern)
-<<<<<<< HEAD
-=======
-"sig" = (
-/obj/effect/decal/cobbleedge{
-	icon_state = "borderfall";
-	dir = 4
-	},
-/turf/open/floor/rogue/churchmarble,
-/area/rogue/indoors/town/church/chapel)
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 "siS" = (
 /obj/structure/mineral_door/wood/towner/generic,
 /turf/open/floor/rogue/ruinedwood{
@@ -18600,7 +17572,6 @@
 	},
 /turf/open/floor/rogue/hexstone,
 /area/rogue/indoors/town/church/chapel)
-<<<<<<< HEAD
 "skB" = (
 /obj/structure/fluff/statue/astrata/gold{
 	pixel_x = -8;
@@ -18608,8 +17579,6 @@
 	},
 /turf/open/floor/rogue/church,
 /area/rogue/indoors/town/church/chapel)
-=======
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 "skP" = (
 /turf/closed/wall/mineral/rogue/wooddark/end{
 	dir = 1
@@ -18769,13 +17738,10 @@
 	},
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/basement)
-<<<<<<< HEAD
 "stZ" = (
 /obj/structure/flora/roguegrass/bush/wall/tall,
 /turf/open/floor/rogue/dirt,
 /area/rogue/outdoors/rtfield)
-=======
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 "suI" = (
 /obj/structure/guillotine,
 /turf/open/floor/rogue/wood,
@@ -18876,7 +17842,6 @@
 /obj/item/storage/roguebag,
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/shop)
-<<<<<<< HEAD
 "sAr" = (
 /obj/structure/roguemachine/musicbox{
 	pixel_y = 16
@@ -18891,8 +17856,6 @@
 	},
 /turf/open/floor/rogue/blocks/stonered,
 /area/rogue/indoors/town/manor)
-=======
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 "sAy" = (
 /obj/structure/bars/cemetery,
 /obj/structure/bars/cemetery,
@@ -18902,7 +17865,6 @@
 /obj/machinery/light/rogue/wallfire/candle/blue/r,
 /turf/open/floor/rogue/wood/nosmooth,
 /area/rogue/indoors/town/church)
-<<<<<<< HEAD
 "sBp" = (
 /obj/structure/flora/roguegrass/bush/wall/tall,
 /obj/structure/flora/roguegrass/bush/wall/tall,
@@ -18912,12 +17874,6 @@
 /obj/structure/fluff/statue/gargoyle/candles,
 /turf/open/floor/rogue/dirt,
 /area/rogue/outdoors/rtfield)
-=======
-"sAR" = (
-/obj/structure/fluff/railing/border,
-/turf/open/floor/rogue/woodturned,
-/area/rogue/indoors/town/church)
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 "sDT" = (
 /obj/machinery/light/rogue/wallfire/candle,
 /turf/closed/wall/mineral/rogue/craftstone,
@@ -18981,7 +17937,6 @@
 	dir = 1
 	},
 /area/rogue/indoors/town/manor)
-<<<<<<< HEAD
 "sIb" = (
 /obj/effect/decal/cobbleedge{
 	dir = 4;
@@ -18989,8 +17944,6 @@
 	},
 /turf/open/floor/rogue/blocks/stonered,
 /area/rogue/indoors/town/manor)
-=======
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 "sIe" = (
 /obj/machinery/light/rogue/wallfire/candle,
 /obj/structure/fluff/psycross,
@@ -19092,24 +18045,6 @@
 	},
 /turf/open/floor/carpet/royalblack,
 /area/rogue/indoors/town/bath)
-<<<<<<< HEAD
-=======
-"sPj" = (
-/obj/structure/fluff/railing/wood{
-	dir = 4;
-	layer = 2.8;
-	pixel_x = 8
-	},
-/obj/structure/fluff/railing/wood{
-	dir = 1;
-	layer = 2.7;
-	pixel_x = 2;
-	pixel_y = 7
-	},
-/obj/structure/closet/crate/roguecloset/crafted,
-/turf/open/floor/rogue/ruinedwood,
-/area/rogue/indoors)
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 "sPr" = (
 /obj/structure/closet/crate/chest{
 	lockid = "keep_armory"
@@ -19337,7 +18272,6 @@
 /obj/item/natural/bundle/stick,
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors)
-<<<<<<< HEAD
 "sZd" = (
 /obj/structure/mineral_door/wood/donjon/stone{
 	locked = 1;
@@ -19352,8 +18286,6 @@
 	},
 /turf/open/floor/rogue/blocks,
 /area/rogue/outdoors/rtfield)
-=======
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 "sZE" = (
 /obj/structure/closet/crate/roguecloset,
 /obj/item/paper,
@@ -19455,18 +18387,10 @@
 	dir = 1
 	},
 /area/rogue/indoors/town/church)
-<<<<<<< HEAD
 "tfa" = (
 /obj/structure/fluff/psycross,
 /turf/open/floor/rogue/church,
 /area/rogue/indoors/town/church)
-=======
-"tgb" = (
-/obj/structure/bed/rogue/shit,
-/obj/effect/decal/cleanable/cobweb,
-/turf/open/floor/rogue/blocks,
-/area/rogue/indoors)
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 "tgZ" = (
 /turf/open/floor/rogue/tile/masonic/single,
 /area/rogue/indoors/town/manor)
@@ -19541,25 +18465,6 @@
 	},
 /turf/open/floor/rogue/hexstone,
 /area/rogue/indoors/town/manor)
-<<<<<<< HEAD
-=======
-"tjz" = (
-/obj/structure/fluff/railing/border{
-	dir = 1
-	},
-/obj/structure/fluff/railing/border{
-	dir = 1
-	},
-/turf/open/floor/rogue/woodturned,
-/area/rogue/indoors/town/church)
-"tjU" = (
-/obj/structure/rack/rogue,
-/obj/item/rogueweapon/flail/sflail,
-/obj/item/rogueweapon/flail/sflail,
-/obj/item/rogueweapon/flail/sflail,
-/turf/open/floor/rogue/cobble,
-/area/rogue/under/town/basement)
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 "tkp" = (
 /obj/structure/table/wood{
 	icon_state = "tablewood1"
@@ -19610,15 +18515,12 @@
 	},
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/town/manor)
-<<<<<<< HEAD
 "tmc" = (
 /obj/machinery/light/rogue/firebowl/standing/blue,
 /turf/open/floor/rogue/blocks{
 	icon_state = "paving"
 	},
 /area/rogue/outdoors/bog)
-=======
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 "tmE" = (
 /obj/structure/roguewindow/openclose{
 	dir = 1
@@ -19779,22 +18681,6 @@
 	},
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/town/basement)
-<<<<<<< HEAD
-=======
-"ttU" = (
-/obj/machinery/light/rogue/wallfire/candle/r,
-/obj/structure/rack/rogue,
-/obj/item/storage/roguebag,
-/obj/item/natural/worms,
-/obj/item/natural/worms,
-/obj/item/natural/worms,
-/turf/open/floor/rogue/ruinedwood/spiral,
-/area/rogue/indoors)
-"tuc" = (
-/obj/structure/chair/wood/rogue/fancy,
-/turf/open/floor/rogue/ruinedwood/spiral,
-/area/rogue/indoors)
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 "tuP" = (
 /obj/machinery/light/rogue/firebowl/standing/blue,
 /turf/open/floor/rogue/wood,
@@ -19850,15 +18736,6 @@
 	},
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue/indoors/town/magician)
-<<<<<<< HEAD
-=======
-"txg" = (
-/obj/structure/mineral_door/wood/towner{
-	lockid = "butcher"
-	},
-/turf/open/floor/rogue/dirt/road,
-/area/rogue/indoors)
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 "tyA" = (
 /obj/structure/closet/crate/chest{
 	lockid = "keep_armory"
@@ -19970,7 +18847,6 @@
 	},
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue/indoors/town/magician)
-<<<<<<< HEAD
 "tFB" = (
 /obj/structure/closet/crate/chest,
 /obj/item/reagent_containers/food/snacks/grown/wheat,
@@ -19985,12 +18861,6 @@
 /obj/item/reagent_containers/food/snacks/grown/apple,
 /turf/open/floor/rogue/cobble,
 /area/rogue/indoors)
-=======
-"tFM" = (
-/obj/structure/chair/wood/rogue/chair3,
-/turf/open/floor/rogue/ruinedwood,
-/area/rogue/outdoors/rtfield)
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 "tGd" = (
 /obj/structure/table/wood{
 	icon_state = "tablewood1"
@@ -20106,20 +18976,6 @@
 	},
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/town/manor)
-<<<<<<< HEAD
-=======
-"tLr" = (
-/obj/machinery/light/rogue/wallfire/candle,
-/turf/open/floor/rogue/dirt/road,
-/area/rogue/outdoors/town)
-"tMc" = (
-/obj/structure/fluff/railing/wood{
-	pixel_x = 0;
-	pixel_y = -4
-	},
-/turf/open/floor/rogue/grass,
-/area/rogue/outdoors/rtfield)
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 "tMo" = (
 /obj/structure/chair/wood/rogue,
 /turf/open/floor/rogue/ruinedwood{
@@ -20150,13 +19006,6 @@
 	icon_state = "wooden_floort"
 	},
 /area/rogue/indoors/town)
-<<<<<<< HEAD
-=======
-"tNH" = (
-/obj/structure/closet/crate/roguecloset,
-/turf/open/floor/rogue/wood,
-/area/rogue/indoors/town/shop)
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 "tOz" = (
 /turf/open/floor/rogue/cobble/mossy,
 /area/rogue/indoors/town/manor)
@@ -20185,20 +19034,11 @@
 /obj/effect/landmark/start/adventurer,
 /turf/open/floor/rogue/dirt,
 /area/rogue/outdoors/rtfield)
-<<<<<<< HEAD
 "tPH" = (
 /obj/structure/rack/rogue,
 /obj/item/fishingrod,
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors)
-=======
-"tPq" = (
-/obj/structure/fluff/railing/border{
-	dir = 8
-	},
-/turf/open/floor/rogue/woodturned,
-/area/rogue/indoors/town/church)
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 "tPW" = (
 /turf/closed/wall/mineral/rogue/decostone/end{
 	dir = 4
@@ -20444,21 +19284,12 @@
 	},
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/town/tavern)
-<<<<<<< HEAD
 "ubh" = (
 /obj/structure/stairs{
 	dir = 8;
 	icon_state = "stairs"
 	},
 /turf/open/floor/rogue/ruinedwood/spiral,
-=======
-"ubq" = (
-/obj/structure/mineral_door/wood/deadbolt{
-	dir = 4;
-	icon_state = "wooddir"
-	},
-/turf/open/floor/rogue/wood,
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 /area/rogue/indoors)
 "ubs" = (
 /obj/structure/fluff/walldeco/psybanner/red,
@@ -20466,7 +19297,6 @@
 	dir = 1
 	},
 /area/rogue/indoors/town/church)
-<<<<<<< HEAD
 "ubM" = (
 /obj/structure/fluff/statue/knight/r,
 /turf/open/floor/rogue/hexstone,
@@ -20485,8 +19315,6 @@
 /mob/living/simple_animal/hostile/retaliate/rogue/saigabuck/tame,
 /turf/open/floor/rogue/grass,
 /area/rogue/outdoors/rtfield)
-=======
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 "ucC" = (
 /obj/structure/table/wood{
 	dir = 1;
@@ -20529,32 +19357,10 @@
 	icon_state = "weird1"
 	},
 /area/rogue/indoors/town/dwarfin)
-<<<<<<< HEAD
 "ueq" = (
 /obj/structure/stairs,
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/shop)
-=======
-"uep" = (
-/obj/structure/table/wood{
-	dir = 1;
-	icon_state = "tablewood1"
-	},
-/obj/item/reagent_containers/powder/salt{
-	pixel_x = 1;
-	pixel_y = 0
-	},
-/obj/item/reagent_containers/powder/salt{
-	pixel_x = 7;
-	pixel_y = 9
-	},
-/obj/item/reagent_containers/powder/salt{
-	pixel_x = -7;
-	pixel_y = 9
-	},
-/turf/open/floor/rogue/cobble,
-/area/rogue/indoors)
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 "ueC" = (
 /obj/structure/mineral_door/wood{
 	icon_state = "wcr";
@@ -20591,16 +19397,6 @@
 	icon_state = "weird1"
 	},
 /area/rogue/indoors/town/shop)
-<<<<<<< HEAD
-=======
-"ufF" = (
-/obj/structure/table/wood,
-/obj/item/reagent_containers/glass/cup/skull,
-/obj/item/keyring,
-/obj/item/reagent_containers/glass/bottle/rogue/healthpot,
-/turf/open/floor/rogue/cobble,
-/area/rogue/under/town/basement)
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 "ugy" = (
 /obj/structure/fluff/railing/border,
 /turf/closed/wall/mineral/rogue/stonebrick,
@@ -20734,7 +19530,6 @@
 /obj/structure/roguewindow,
 /turf/open/floor/rogue/blocks,
 /area/rogue/indoors/town/church)
-<<<<<<< HEAD
 "ulR" = (
 /obj/structure/fluff/railing/wood{
 	dir = 8;
@@ -20746,8 +19541,6 @@
 	},
 /turf/open/floor/rogue/grass,
 /area/rogue/outdoors/rtfield)
-=======
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 "umc" = (
 /obj/structure/mineral_door/wood/donjon{
 	dir = 8;
@@ -20901,22 +19694,9 @@
 	icon_state = "weird1"
 	},
 /area/rogue/indoors/town/church)
-<<<<<<< HEAD
 "utm" = (
 /turf/open/floor/rogue/blocks/stonered/tiny,
 /area/rogue/indoors)
-=======
-"utR" = (
-/obj/machinery/light/rogue/wallfire{
-	pixel_x = 32
-	},
-/obj/effect/decal/cobbleedge{
-	icon_state = "borderfall";
-	dir = 1
-	},
-/turf/open/floor/rogue/blocks/stonered,
-/area/rogue/indoors/town/manor)
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 "uum" = (
 /obj/structure/fluff/railing/border{
 	dir = 8
@@ -21023,15 +19803,6 @@
 /obj/machinery/light/rogue/wallfire/candle/r,
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors)
-<<<<<<< HEAD
-=======
-"uyg" = (
-/obj/structure/stairs{
-	dir = 1
-	},
-/turf/open/floor/rogue/blocks,
-/area/rogue/outdoors/rtfield)
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 "uyE" = (
 /obj/machinery/light/rogue/firebowl,
 /turf/open/floor/rogue/dirt,
@@ -21138,20 +19909,6 @@
 	},
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/tavern)
-<<<<<<< HEAD
-=======
-"uEG" = (
-/obj/structure/closet/crate/drawer{
-	pixel_x = 6;
-	pixel_y = 0
-	},
-/turf/open/floor/rogue/ruinedwood/spiral,
-/area/rogue/indoors)
-"uFp" = (
-/obj/effect/landmark/start/merchant,
-/turf/open/floor/carpet/stellar,
-/area/rogue/indoors/town/shop)
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 "uFE" = (
 /turf/closed/wall/mineral/rogue/stonebrick,
 /area/rogue/indoors/shelter/mountains)
@@ -21392,7 +20149,6 @@
 	},
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/town/tavern)
-<<<<<<< HEAD
 "uSe" = (
 /obj/structure/fluff/statue/knight{
 	dir = 3;
@@ -21400,8 +20156,6 @@
 	},
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/manor)
-=======
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 "uSx" = (
 /turf/closed/wall/mineral/rogue/decostone,
 /area/rogue/indoors/town/church/chapel)
@@ -21459,15 +20213,12 @@
 /obj/item/flashlight/flare/torch/metal,
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/town/garrison)
-<<<<<<< HEAD
 "uVS" = (
 /obj/item/reagent_containers/food/snacks/crow{
 	dir = 1
 	},
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue/outdoors/rtfield)
-=======
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 "uWQ" = (
 /obj/effect/landmark/start/cook,
 /turf/open/floor/rogue/tile{
@@ -21533,7 +20284,6 @@
 	icon_state = "bfloorz"
 	},
 /area/rogue/indoors/town/manor)
-<<<<<<< HEAD
 "uYU" = (
 /obj/structure/fluff/railing/wood{
 	dir = 4;
@@ -21542,8 +20292,6 @@
 	},
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/manor)
-=======
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 "uZy" = (
 /turf/closed/wall/mineral/rogue/decostone/end{
 	dir = 8
@@ -21668,7 +20416,6 @@
 /obj/effect/landmark/map_load_mark/sewers_bottomright,
 /turf/closed/mineral/rogue,
 /area/rogue/under/town/sewer)
-<<<<<<< HEAD
 "vfL" = (
 /obj/effect/landmark/start/churchling{
 	dir = 8
@@ -21679,18 +20426,6 @@
 	},
 /turf/open/floor/rogue/churchmarble,
 /area/rogue/indoors/town/church/chapel)
-=======
-"vfV" = (
-/obj/effect/landmark/start/knight,
-/obj/effect/decal/cobbleedge{
-	icon_state = "borderfall";
-	dir = 1
-	},
-/turf/open/floor/rogue/tile{
-	icon_state = "bfloorz"
-	},
-/area/rogue/indoors/town/manor)
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 "vgy" = (
 /obj/structure/rack/rogue,
 /obj/machinery/light/rogue/wallfire/candle/blue/l,
@@ -21708,14 +20443,9 @@
 /obj/structure/roguemachine/scomm/r,
 /turf/open/floor/rogue/carpet,
 /area/rogue/indoors/town/manor)
-<<<<<<< HEAD
 "vjf" = (
 /obj/structure/roguewindow,
 /turf/open/floor/rogue/tile,
-=======
-"viN" = (
-/turf/open/floor/rogue/wood,
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 /area/rogue/indoors)
 "vjn" = (
 /obj/structure/fluff/walldeco/psybanner,
@@ -21741,13 +20471,6 @@
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/under/cavewet/bogcaves)
-<<<<<<< HEAD
-=======
-"vlK" = (
-/obj/machinery/light/rogue/firebowl/standing/blue,
-/turf/open/floor/rogue/wood,
-/area/rogue/indoors/town/shop)
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 "vms" = (
 /obj/structure/closet/crate/roguecloset,
 /obj/item/clothing/suit/roguetown/shirt/shortshirt,
@@ -22383,18 +21106,10 @@
 	pixel_x = 2;
 	pixel_y = 7
 	},
-<<<<<<< HEAD
 /obj/structure/bed/rogue,
 /obj/effect/landmark/start/beastmonger,
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue/indoors)
-=======
-/turf/open/floor/rogue/dirt,
-/area/rogue/outdoors/town)
-"vSN" = (
-/turf/closed/wall/mineral/rogue/wood,
-/area/rogue/outdoors/rtfield)
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 "vSQ" = (
 /obj/structure/stairs/stone{
 	dir = 1
@@ -22404,20 +21119,9 @@
 	},
 /turf/open/floor/rogue/cobble,
 /area/rogue/outdoors/bog)
-<<<<<<< HEAD
 "vST" = (
 /turf/closed/wall/mineral/rogue/decostone/mossy,
 /area/rogue/indoors/town/church)
-=======
-"vTq" = (
-/obj/structure/table/wood{
-	dir = 1;
-	icon_state = "longtable"
-	},
-/obj/item/clothing/neck/roguetown/psicross/noc,
-/turf/closed/wall/mineral/rogue/stone,
-/area/rogue/outdoors/town)
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 "vTv" = (
 /obj/machinery/light/rogue/firebowl,
 /turf/open/floor/rogue/naturalstone,
@@ -22449,7 +21153,6 @@
 	icon_state = "rockwd"
 	},
 /area/rogue/under/cave)
-<<<<<<< HEAD
 "vUJ" = (
 /obj/structure/closet/crate/chest,
 /obj/item/paper,
@@ -22461,11 +21164,6 @@
 /obj/item/paper/scroll,
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors)
-=======
-"vUs" = (
-/turf/closed/wall/mineral/rogue/wooddark/window,
-/area/rogue/outdoors/rtfield)
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 "vUX" = (
 /obj/structure/mineral_door/wood{
 	icon_state = "wcv";
@@ -22680,7 +21378,6 @@
 "whb" = (
 /turf/closed/mineral/random/rogue,
 /area/rogue/under/cavewet/bogcaves)
-<<<<<<< HEAD
 "whr" = (
 /obj/structure/closet/crate/chest,
 /obj/item/reagent_containers/powder/flour,
@@ -22692,12 +21389,6 @@
 /obj/item/reagent_containers/glass/bucket/wooden,
 /turf/open/floor/rogue/tile,
 /area/rogue/indoors)
-=======
-"whL" = (
-/obj/structure/roguemachine/mail,
-/turf/open/floor/rogue/wood,
-/area/rogue/indoors/town/tavern)
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 "whU" = (
 /obj/effect/decal/remains/human,
 /turf/open/floor/rogue/ruinedwood/turned,
@@ -22706,7 +21397,6 @@
 /obj/structure/closet/crate/drawer,
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue/indoors/town)
-<<<<<<< HEAD
 "wij" = (
 /obj/structure/mineral_door/bars{
 	locked = 1;
@@ -22714,21 +21404,6 @@
 	},
 /turf/open/floor/rogue/greenstone,
 /area/rogue/under/town/sewer)
-=======
-"wio" = (
-/obj/structure/roguemachine/atm{
-	pixel_x = 32;
-	pixel_y = 0
-	},
-/obj/effect/decal/cobbleedge{
-	icon_state = "borderfall";
-	dir = 1
-	},
-/turf/open/floor/rogue/tile{
-	icon_state = "bfloorz"
-	},
-/area/rogue/indoors/town/manor)
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 "wiy" = (
 /obj/structure/closet/crate/chest{
 	lockid = "keep_armory"
@@ -22815,17 +21490,6 @@
 	},
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/church)
-<<<<<<< HEAD
-=======
-"wlW" = (
-/obj/structure/flora/ausbushes/brflowers,
-/turf/open/floor/rogue/dirt/road,
-/area/rogue/outdoors/rtfield)
-"wnl" = (
-/obj/machinery/light/rogue/torchholder/c,
-/turf/open/floor/rogue/blocks,
-/area/rogue/outdoors/rtfield)
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 "wnv" = (
 /obj/structure/bars,
 /turf/open/floor/rogue/herringbone,
@@ -22980,16 +21644,10 @@
 /obj/structure/closet/crate/roguecloset,
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/town/garrison)
-<<<<<<< HEAD
 "wvV" = (
 /mob/living/simple_animal/hostile/retaliate/rogue/bull,
 /turf/open/floor/rogue/grass,
 /area/rogue/indoors)
-=======
-"wxj" = (
-/turf/open/floor/rogue/blocks,
-/area/rogue/outdoors/rtfield)
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 "wxs" = (
 /obj/effect/decal/cleanable/cobweb,
 /obj/structure/bed/rogue/shit,
@@ -23000,15 +21658,12 @@
 "wxB" = (
 /turf/open/floor/rogue/carpet/lord/center,
 /area/rogue/indoors/town/manor)
-<<<<<<< HEAD
 "wxC" = (
 /obj/structure/fluff/railing/border{
 	dir = 1
 	},
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/town/church)
-=======
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 "wyk" = (
 /obj/structure/closet/crate/chest{
 	lockid = "keep_armory"
@@ -23047,13 +21702,10 @@
 /obj/structure/fluff/railing/wood,
 /turf/open/floor/rogue/woodturned,
 /area/rogue/outdoors/town)
-<<<<<<< HEAD
 "wzD" = (
 /obj/structure/stairs,
 /turf/open/floor/rogue/grass,
 /area/rogue/indoors)
-=======
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 "wAm" = (
 /turf/closed/wall/mineral/rogue/decostone/long,
 /area/rogue/indoors/town/church)
@@ -23253,15 +21905,12 @@
 	},
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/under/cavewet/bogcaves)
-<<<<<<< HEAD
 "wLr" = (
 /obj/structure/composter/halffull,
 /turf/open/floor/rogue/ruinedwood{
 	icon_state = "weird1"
 	},
 /area/rogue/outdoors/town/roofs)
-=======
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 "wLx" = (
 /turf/open/water/swamp,
 /area/rogue/outdoors/bog)
@@ -23314,21 +21963,6 @@
 	},
 /turf/open/floor/rogue/blocks,
 /area/rogue/outdoors/town)
-<<<<<<< HEAD
-=======
-"wPM" = (
-/obj/effect/landmark/start/knight,
-/obj/effect/decal/cobbleedge{
-	icon_state = "borderfall";
-	dir = 1
-	},
-/turf/open/floor/rogue/wood,
-/area/rogue/indoors/town/manor)
-"wPU" = (
-/obj/structure/fermenting_barrel,
-/turf/open/floor/rogue/woodturned,
-/area/rogue/indoors/town/manor)
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 "wPV" = (
 /obj/structure/closet/crate/roguecloset,
 /obj/item/flashlight/flare/torch/metal,
@@ -23338,7 +21972,6 @@
 /obj/structure/chair/wood/rogue/chair3,
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors)
-<<<<<<< HEAD
 "wQB" = (
 /obj/structure/table/wood{
 	icon_state = "longtable"
@@ -23348,12 +21981,6 @@
 /obj/item/keyring,
 /turf/open/floor/rogue/tile/tilerg,
 /area/rogue/indoors/town/manor)
-=======
-"wQg" = (
-/obj/item/natural/poo/horse,
-/turf/open/floor/rogue/dirt,
-/area/rogue/outdoors/rtfield)
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 "wQD" = (
 /obj/structure/fluff/railing/border,
 /turf/open/floor/rogue/ruinedwood/turned,
@@ -23465,19 +22092,10 @@
 /obj/structure/flora/newtree,
 /turf/open/water/swamp,
 /area/rogue/outdoors/bog)
-<<<<<<< HEAD
 "wVA" = (
 /obj/structure/mineral_door/wood,
 /turf/open/floor/rogue/blocks,
 /area/rogue/outdoors/town)
-=======
-"wVz" = (
-/obj/structure/roguemachine/vendor{
-	keycontrol = "butcher"
-	},
-/turf/closed/wall/mineral/rogue/wooddark,
-/area/rogue/outdoors/rtfield)
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 "wVI" = (
 /turf/open/floor/rogue/blocks,
 /area/rogue/outdoors/town)
@@ -23485,25 +22103,10 @@
 /obj/structure/fluff/statue/gargoyle,
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/under/cave)
-<<<<<<< HEAD
 "wXe" = (
 /obj/machinery/light/rogue/chand,
 /turf/open/transparent/openspace,
 /area/rogue/indoors/town/church)
-=======
-"wWT" = (
-/obj/structure/fluff/railing/wood{
-	dir = 4;
-	layer = 2.8;
-	pixel_x = 8
-	},
-/obj/structure/fluff/railing/wood{
-	pixel_x = 0;
-	pixel_y = -4
-	},
-/turf/open/floor/rogue/grass,
-/area/rogue/outdoors/rtfield)
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 "wXL" = (
 /mob/living/simple_animal/hostile/retaliate/rogue/wolf{
 	del_on_deaggro = 0;
@@ -24297,7 +22900,6 @@
 /obj/effect/landmark/mapGenerator/rogue/bog,
 /turf/closed/mineral/rogue/bedrock,
 /area/rogue/under/cavewet/bogcaves)
-<<<<<<< HEAD
 "xOx" = (
 /obj/structure/fluff/railing/wood{
 	dir = 8;
@@ -24309,8 +22911,6 @@
 	},
 /turf/open/floor/rogue/grass,
 /area/rogue/outdoors/rtfield)
-=======
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 "xPg" = (
 /obj/structure/bed/rogue,
 /turf/open/floor/rogue/blocks,
@@ -24339,7 +22939,6 @@
 	},
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/town/church/chapel)
-<<<<<<< HEAD
 "xQX" = (
 /obj/structure/closet/crate/roguecloset/dark,
 /obj/machinery/light/rogue/torchholder{
@@ -24347,8 +22946,6 @@
 	},
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors)
-=======
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 "xRx" = (
 /obj/structure/closet/crate/roguecloset,
 /obj/item/flashlight/flare/torch/lantern,
@@ -24369,7 +22966,6 @@
 "xRS" = (
 /turf/open/floor/rogue/blocks/paving,
 /area/rogue/under/town/basement)
-<<<<<<< HEAD
 "xSN" = (
 /obj/structure/mineral_door/wood/fancywood{
 	locked = 1;
@@ -24377,12 +22973,6 @@
 	},
 /turf/open/floor/rogue/blocks,
 /area/rogue/indoors)
-=======
-"xSW" = (
-/obj/structure/roguemachine/mail,
-/turf/open/floor/rogue/blocks,
-/area/rogue/outdoors/rtfield)
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 "xTv" = (
 /obj/structure/closet/crate/coffin,
 /obj/machinery/light/rogue/wallfire/candle/r,
@@ -24407,24 +22997,6 @@
 /obj/machinery/light/rogue/torchholder/c,
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue/indoors/town)
-<<<<<<< HEAD
-=======
-"xUG" = (
-/obj/structure/stairs{
-	dir = 4
-	},
-/obj/machinery/light/rogue/wallfire/candle/blue,
-/turf/open/floor/rogue/wood,
-/area/rogue/indoors/town/shop)
-"xUK" = (
-/obj/structure/fluff/railing/wood{
-	dir = 8;
-	pixel_x = -8
-	},
-/obj/item/natural/poo/horse,
-/turf/open/floor/rogue/dirt/road,
-/area/rogue/outdoors/rtfield)
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 "xVI" = (
 /obj/structure/bed/rogue/inn/hay,
 /turf/open/floor/rogue/ruinedwood,
@@ -24466,24 +23038,18 @@
 "xXq" = (
 /turf/open/floor/rogue/metal,
 /area/rogue/indoors/town/manor)
-<<<<<<< HEAD
 "xXH" = (
 /turf/open/floor/rogue/blocks,
 /area/rogue/outdoors/rtfield)
-=======
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 "xXN" = (
 /obj/effect/decal/cleanable/blood/old,
 /obj/item/rogueweapon/thresher,
 /turf/open/floor/rogue/herringbone,
 /area/rogue/indoors/town/church)
-<<<<<<< HEAD
 "xYj" = (
 /obj/structure/closet/crate/coffin,
 /turf/open/floor/rogue/cobble,
 /area/rogue/outdoors/town)
-=======
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 "xYr" = (
 /obj/structure/roguemachine/withdraw,
 /obj/structure/roguemachine/scomm/r,
@@ -24543,13 +23109,10 @@
 	dir = 8
 	},
 /area/rogue/outdoors/town)
-<<<<<<< HEAD
 "ydi" = (
 /obj/structure/bed/rogue/inn/wool,
 /turf/open/floor/rogue/churchbrick,
 /area/rogue/indoors/town/manor)
-=======
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 "yei" = (
 /turf/closed/wall/mineral/rogue/roofwall/middle{
 	dir = 8
@@ -102735,15 +101298,9 @@ sYw
 rDV
 yjx
 iTw
-<<<<<<< HEAD
 yfD
 uOT
 lMv
-=======
-ekS
-uOT
-xDj
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 cBf
 jyI
 sYw
@@ -136017,11 +134574,7 @@ huj
 xaf
 xaf
 xaf
-<<<<<<< HEAD
 ilt
-=======
-mOh
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 hPT
 hPT
 dVO
@@ -187957,11 +186510,7 @@ txa
 cBf
 cBf
 jyI
-<<<<<<< HEAD
 oth
-=======
-rHY
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 iTw
 iTw
 iTw
@@ -188362,11 +186911,7 @@ mVa
 txa
 cBf
 iTw
-<<<<<<< HEAD
 yfD
-=======
-tBf
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 cBf
 iTw
 wIj
@@ -191578,11 +190123,7 @@ iTw
 iTw
 iTw
 iTw
-<<<<<<< HEAD
 npT
-=======
-bmI
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 txa
 cBf
 iTw
@@ -202453,11 +200994,7 @@ jyI
 jyI
 vRu
 rSC
-<<<<<<< HEAD
 rSC
-=======
-ieL
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 rRb
 rRb
 rRb
@@ -205689,17 +204226,10 @@ jMl
 jMl
 uiu
 cTA
-<<<<<<< HEAD
 hoW
 wij
 hoW
 hoW
-=======
-qXi
-iwu
-qXi
-qXi
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 txa
 iTw
 iTw
@@ -206890,15 +205420,9 @@ cTA
 cBf
 cBf
 cTA
-<<<<<<< HEAD
 pKa
 cTA
 dSm
-=======
-ukx
-cTA
-jhB
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 jyI
 cTA
 jMl
@@ -207700,11 +206224,7 @@ cTA
 hks
 iTw
 cTA
-<<<<<<< HEAD
 bCn
-=======
-fTS
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 yfk
 nYt
 cTA
@@ -208114,11 +206634,7 @@ jGw
 cBf
 trV
 cBf
-<<<<<<< HEAD
 ref
-=======
-cja
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 cTA
 cTA
 jyI
@@ -208512,11 +207028,7 @@ cTA
 fPR
 aaa
 cTA
-<<<<<<< HEAD
 fyN
-=======
-ufF
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 eEg
 azH
 cTA
@@ -208524,11 +207036,7 @@ jGw
 uOT
 oMQ
 cBf
-<<<<<<< HEAD
 aSn
-=======
-gLR
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 cTA
 cTA
 cTA
@@ -238174,11 +236682,7 @@ odi
 odi
 odi
 odi
-<<<<<<< HEAD
 lRD
-=======
-hhm
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 uuE
 sYx
 odi
@@ -238580,11 +237084,7 @@ wLx
 sYx
 odi
 odi
-<<<<<<< HEAD
 lRD
-=======
-hhm
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 uuE
 sYx
 sYx
@@ -258930,19 +257430,11 @@ uaL
 uaL
 uaL
 uaL
-<<<<<<< HEAD
 vND
 xXH
 jXZ
 xXH
 xXH
-=======
-jfU
-wxj
-jXZ
-wxj
-wxj
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 uaL
 wSn
 wSn
@@ -259107,11 +257599,8 @@ odi
 odi
 odi
 sYx
-<<<<<<< HEAD
 igD
 igD
-=======
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 sYx
 odi
 odi
@@ -259346,15 +257835,9 @@ lVe
 lVe
 lVe
 lVe
-<<<<<<< HEAD
 xXH
 jXZ
 xXH
-=======
-wxj
-jXZ
-wxj
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 ryI
 nqU
 nqU
@@ -259517,19 +258000,11 @@ kDc
 wLx
 wLx
 wLx
-<<<<<<< HEAD
 tmc
 igD
 igD
 igD
 tmc
-=======
-sYx
-sYx
-sYx
-sYx
-odi
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 odi
 odi
 odi
@@ -259755,7 +258230,6 @@ qbG
 qbG
 qbG
 lVe
-<<<<<<< HEAD
 iyZ
 utm
 utm
@@ -259779,31 +258253,6 @@ nqU
 mtO
 oBQ
 bej
-=======
-vny
-fda
-fda
-lVe
-jyE
-hZf
-lVe
-vSN
-nRH
-vSN
-nqU
-nqU
-nqU
-aPH
-xfV
-ekJ
-iWP
-fPg
-iWP
-nqU
-jhO
-ltw
-cMA
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 nqU
 vIa
 vIa
@@ -259953,19 +258402,11 @@ kDc
 wLx
 wLx
 wLx
-<<<<<<< HEAD
 igD
 igD
 igD
 igD
 igD
-=======
-odi
-sYx
-sYx
-odi
-odi
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 odi
 wLx
 wLx
@@ -260190,7 +258631,6 @@ qbG
 qbG
 qbG
 qbG
-<<<<<<< HEAD
 iKN
 hQH
 hKv
@@ -260215,32 +258655,6 @@ nqU
 aIN
 dBi
 jCA
-=======
-aeJ
-hNy
-llV
-fda
-lVe
-til
-ooJ
-uki
-lpM
-jXZ
-vSN
-nqU
-nqU
-nqU
-viN
-viN
-viN
-viN
-viN
-viN
-nqU
-jfE
-qzn
-uHw
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 nqU
 vIa
 vIa
@@ -260393,16 +258807,11 @@ wLx
 sYx
 odi
 odi
-<<<<<<< HEAD
 miq
 igD
 igD
 igD
 igD
-=======
-odi
-sYx
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 odi
 sYx
 wLx
@@ -260627,7 +259036,6 @@ qbG
 qbG
 qbG
 qbG
-<<<<<<< HEAD
 iKN
 mWT
 hKv
@@ -260651,31 +259059,6 @@ bzm
 nqU
 nqU
 pnf
-=======
-aeJ
-dGv
-llV
-fda
-pFG
-ooJ
-ooJ
-uki
-wxj
-jXZ
-ckL
-nqU
-jVQ
-jVQ
-viN
-viN
-viN
-viN
-viN
-viN
-nqU
-nqU
-aFw
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 nqU
 nqU
 vIa
@@ -260824,7 +259207,6 @@ kDc
 kDc
 wLx
 wLx
-<<<<<<< HEAD
 odi
 odi
 igD
@@ -260833,9 +259215,6 @@ igD
 igD
 igD
 odi
-=======
-wLx
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 sYx
 uRH
 uRH
@@ -261067,7 +259446,6 @@ qbG
 qbG
 lVe
 lVe
-<<<<<<< HEAD
 wgs
 utm
 utm
@@ -261091,31 +259469,6 @@ cqP
 gcF
 xgR
 flT
-=======
-pfH
-fda
-fda
-lVe
-aoJ
-apM
-lVe
-wnl
-jXZ
-wxj
-nqU
-viN
-viN
-viN
-ikJ
-fsX
-ikJ
-viN
-viN
-qsd
-xDc
-ctu
-idZ
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 nqU
 vIa
 vIa
@@ -261263,7 +259616,6 @@ kDc
 kDc
 wLx
 wLx
-<<<<<<< HEAD
 odi
 odi
 igD
@@ -261274,17 +259626,6 @@ igD
 sYx
 odi
 sYx
-=======
-wLx
-uRH
-kWT
-uRH
-kWT
-khC
-khC
-uRH
-uRH
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 sYx
 sYx
 kWT
@@ -261509,17 +259850,12 @@ qbG
 lVe
 lVe
 lVe
-<<<<<<< HEAD
 goY
-=======
-jKj
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 lVe
 lVe
 lVe
 lVe
 lVe
-<<<<<<< HEAD
 xXH
 jXZ
 xXH
@@ -261536,24 +259872,6 @@ nqU
 gwI
 xgR
 xgR
-=======
-wxj
-jXZ
-wxj
-nqU
-mFf
-viN
-viN
-cSS
-qPW
-dAN
-imF
-jvt
-nqU
-pBQ
-ctu
-ctu
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 nqU
 vIa
 vIa
@@ -261704,16 +260022,11 @@ wLx
 wLx
 odi
 odi
-<<<<<<< HEAD
 igD
 igD
 igD
 igD
 igD
-=======
-uRH
-uRH
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 odi
 kWT
 kWT
@@ -261943,7 +260256,6 @@ lVe
 lVe
 uQt
 xou
-<<<<<<< HEAD
 grY
 lVe
 oSM
@@ -261959,32 +260271,11 @@ nqU
 pwg
 pwg
 pwg
-=======
-wGP
-lVe
-tgb
-ddv
-rRh
-wxj
-jXZ
-wxj
-ryI
-nqU
-qXs
-nqU
-jiB
-jiB
-jiB
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 nqU
 nqU
 nqU
 nqU
-<<<<<<< HEAD
 rsI
-=======
-lua
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 nqU
 ryI
 vIa
@@ -262135,14 +260426,11 @@ wLx
 wLx
 wLx
 odi
-<<<<<<< HEAD
 igD
 igD
 igD
 igD
 igD
-=======
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 odi
 odi
 uRH
@@ -262372,7 +260660,6 @@ qbG
 qbG
 qbG
 lVe
-<<<<<<< HEAD
 ubh
 xou
 xou
@@ -262398,33 +260685,6 @@ rxQ
 qtX
 eOE
 hfu
-=======
-qgD
-xou
-xou
-xou
-cEo
-ddv
-iHl
-rRh
-wxj
-jXZ
-wxj
-wxj
-wxj
-wxj
-oGu
-lpn
-dxp
-vDx
-wdh
-hyz
-hyz
-cgF
-vDx
-nga
-urm
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 vIa
 vIa
 vIa
@@ -262573,21 +260833,12 @@ wLx
 wLx
 wLx
 odi
-<<<<<<< HEAD
 tmc
 igD
 igD
 igD
 tmc
 igD
-=======
-sYx
-sYx
-uRH
-sYx
-odi
-odi
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 odi
 wLx
 wLx
@@ -262816,17 +261067,10 @@ xou
 uxW
 xou
 lVe
-<<<<<<< HEAD
 rGe
 ddv
 jjZ
 xXH
-=======
-kbq
-ddv
-rRh
-wxj
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 jXZ
 jXZ
 jXZ
@@ -263221,7 +261465,6 @@ qbG
 qbG
 lVe
 xou
-<<<<<<< HEAD
 uGb
 lVe
 qJx
@@ -263230,16 +261473,6 @@ jjZ
 jjZ
 lVe
 mYH
-=======
-qPZ
-lVe
-aYJ
-lVe
-rRh
-rRh
-lVe
-wnl
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 jXZ
 jXZ
 fxx
@@ -263633,7 +261866,6 @@ qbG
 qbG
 lVe
 lVe
-<<<<<<< HEAD
 xSN
 lVe
 lVe
@@ -263643,17 +261875,6 @@ xXH
 xXH
 xXH
 xXH
-=======
-cEo
-lVe
-lVe
-wxj
-wxj
-wxj
-wxj
-wxj
-wxj
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 jXZ
 jXZ
 fxx
@@ -264046,19 +262267,11 @@ qbG
 qbG
 qbG
 lVe
-<<<<<<< HEAD
 vTL
 ddv
 ddv
 lVe
 orU
-=======
-qhP
-ddv
-ddv
-lVe
-tju
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 jXZ
 jXZ
 jXZ
@@ -264459,13 +262672,8 @@ lVe
 ddv
 ddv
 ddv
-<<<<<<< HEAD
 fCT
 xXH
-=======
-qNz
-wxj
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 jXZ
 jXZ
 jXZ
@@ -264862,7 +263070,6 @@ qbG
 qbG
 qbG
 qbG
-<<<<<<< HEAD
 rDt
 htF
 cuL
@@ -264875,20 +263082,6 @@ wOO
 jXZ
 vcA
 vcA
-=======
-vtE
-slO
-lUg
-ddv
-lVe
-xSW
-jXZ
-jXZ
-lZL
-jXZ
-qwz
-qwz
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 fxx
 fxx
 qvR
@@ -265268,11 +263461,7 @@ qvR
 fTe
 fxx
 fxx
-<<<<<<< HEAD
 rsy
-=======
-wjT
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 fxx
 qbG
 qbG
@@ -265283,7 +263472,6 @@ qbG
 qbG
 qbG
 qbG
-<<<<<<< HEAD
 rDt
 rDt
 lVe
@@ -265296,20 +263484,6 @@ hKm
 jXZ
 cBK
 vcA
-=======
-vtE
-vtE
-lVe
-lVe
-lVe
-wnl
-jXZ
-jXZ
-qXI
-jXZ
-njI
-qwz
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 fxx
 uaL
 uaL
@@ -265700,7 +263874,6 @@ cca
 cca
 cca
 cca
-<<<<<<< HEAD
 pUX
 ubN
 xXH
@@ -265713,20 +263886,6 @@ uzc
 jXZ
 vcA
 vcA
-=======
-hLV
-wMN
-wxj
-wxj
-wxj
-wxj
-jXZ
-jXZ
-uCd
-jXZ
-qwz
-qwz
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 fxx
 qvR
 fxx
@@ -265735,11 +263894,7 @@ wSn
 qvR
 wSn
 wSn
-<<<<<<< HEAD
 nue
-=======
-gaR
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 wSn
 wSn
 qvR
@@ -266116,11 +264271,7 @@ nwW
 nwW
 nwW
 nwW
-<<<<<<< HEAD
 cJx
-=======
-rfn
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 nwW
 nwW
 nwW
@@ -266528,13 +264679,8 @@ fyi
 fyi
 fyi
 lEJ
-<<<<<<< HEAD
 ito
 xXH
-=======
-xfB
-wxj
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 jXZ
 jXZ
 jXZ
@@ -266542,11 +264688,7 @@ jXZ
 jXZ
 jXZ
 jXZ
-<<<<<<< HEAD
 lrF
-=======
-oVk
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 jXZ
 fxx
 fxx
@@ -266927,11 +265069,7 @@ wSn
 qvR
 fxx
 fxx
-<<<<<<< HEAD
 tJT
-=======
-wVz
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 fxx
 qbG
 qbG
@@ -266942,7 +265080,6 @@ qbG
 qbG
 qbG
 qbG
-<<<<<<< HEAD
 cFe
 cFe
 sZw
@@ -266958,23 +265095,6 @@ xMw
 fxx
 fxx
 jJW
-=======
-vSN
-vSN
-uyg
-jXZ
-bdN
-nFi
-uJU
-jvl
-arR
-fup
-bdN
-xjP
-fxx
-fxx
-abO
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 wSn
 wSn
 wSn
@@ -267362,7 +265482,6 @@ qbG
 qbG
 qbG
 qbG
-<<<<<<< HEAD
 cFe
 cFe
 xXH
@@ -267374,19 +265493,6 @@ qvR
 izN
 wSn
 nHK
-=======
-vSN
-vSN
-wxj
-jXZ
-gnq
-qvR
-wSn
-qvR
-jGo
-wSn
-vUs
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 jXZ
 jXZ
 fxx
@@ -267779,21 +265885,12 @@ qbG
 qbG
 qbG
 nQP
-<<<<<<< HEAD
 efm
 fGK
 jXZ
 bdN
 lcg
 fhJ
-=======
-kCH
-vTD
-jXZ
-bdN
-lcg
-duK
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 daO
 wSn
 lcg
@@ -267807,11 +265904,7 @@ qvR
 qvR
 qvR
 qvR
-<<<<<<< HEAD
 rqD
-=======
-dmp
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 uaL
 uaL
 wSn
@@ -268194,7 +266287,6 @@ qbG
 qbG
 qbG
 vKb
-<<<<<<< HEAD
 ptl
 goW
 jXZ
@@ -268203,16 +266295,6 @@ hLK
 hLK
 hLK
 udE
-=======
-sxq
-tMc
-jXZ
-hru
-hLK
-hLK
-hLK
-gnq
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 hLK
 jXZ
 jXZ
@@ -268606,7 +266688,6 @@ qbG
 qbG
 qbG
 qbG
-<<<<<<< HEAD
 gOt
 izN
 wSn
@@ -268623,24 +266704,6 @@ pGp
 uvD
 xXH
 xXH
-=======
-eku
-jGo
-wSn
-njZ
-jXZ
-wxj
-wxj
-wxj
-wxj
-wxj
-wxj
-xfB
-eMg
-bpa
-wxj
-wxj
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 fxx
 wSn
 qvR
@@ -269029,7 +267092,6 @@ qbG
 qbG
 qbG
 tWz
-<<<<<<< HEAD
 ptl
 wSn
 bNM
@@ -269037,26 +267099,13 @@ fOT
 ryI
 wOD
 idt
-=======
-sxq
-wSn
-gSz
-jTz
-ryI
-wOD
-jSn
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 wOD
 wOD
 wOD
 wOD
 wOD
 ryI
-<<<<<<< HEAD
 mYH
-=======
-wnl
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 fxx
 wSn
 qvR
@@ -269447,7 +267496,6 @@ qbG
 dhf
 wSn
 qvR
-<<<<<<< HEAD
 izN
 wSn
 trG
@@ -269468,28 +267516,6 @@ dZC
 stZ
 dZC
 bRj
-=======
-jGo
-wSn
-trG
-vZa
-wlD
-pSO
-pUu
-hHF
-rBr
-noN
-trG
-wxj
-fxx
-qvR
-qvR
-edU
-edU
-ayH
-edU
-xle
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 qvR
 qvR
 uaL
@@ -269870,7 +267896,6 @@ qbG
 qbG
 qbG
 qbG
-<<<<<<< HEAD
 tst
 ptl
 cTj
@@ -269885,22 +267910,6 @@ hHF
 hHF
 trG
 xXH
-=======
-epc
-sxq
-qIA
-wSn
-rrq
-wlD
-wlD
-txg
-noN
-brG
-hHF
-hHF
-trG
-wxj
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 fxx
 qvR
 qvR
@@ -270290,7 +268299,6 @@ qbG
 qbG
 qbG
 qbG
-<<<<<<< HEAD
 rrT
 efm
 wSn
@@ -270312,29 +268320,6 @@ bRj
 bRj
 bRj
 bRj
-=======
-rgW
-kCH
-wSn
-trG
-oUi
-wlD
-paq
-lOf
-rZM
-cyr
-hHF
-trG
-wxj
-fxx
-uaL
-qvR
-xle
-xle
-xle
-xle
-xle
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 wSn
 wSn
 uaL
@@ -270717,7 +268702,6 @@ qbG
 qbG
 qbG
 qbG
-<<<<<<< HEAD
 rrT
 rqr
 trG
@@ -270730,20 +268714,6 @@ ryI
 ryI
 trG
 xXH
-=======
-rgW
-mVi
-trG
-uep
-wlD
-wlD
-wlD
-ujQ
-ryI
-ryI
-trG
-wxj
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 fxx
 wSn
 wSn
@@ -271140,20 +269110,12 @@ ryI
 wOD
 wOD
 wOD
-<<<<<<< HEAD
 wsY
-=======
-bpc
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 wOD
 wOD
 wOD
 ryI
-<<<<<<< HEAD
 xXH
-=======
-wxj
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 fxx
 qvR
 qvR
@@ -271548,24 +269510,15 @@ qbG
 qbG
 qbG
 qbG
-<<<<<<< HEAD
 lOL
-=======
-nGZ
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 vKb
 qvR
 wSn
 wSn
 qvR
 dpZ
-<<<<<<< HEAD
 vIF
 kQt
-=======
-xUK
-clg
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 qvR
 qvR
 qvR
@@ -271961,21 +269914,13 @@ qbG
 qbG
 qbG
 dhf
-<<<<<<< HEAD
 pAy
-=======
-wQg
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 uaL
 uaL
 qvR
 uaL
 wSn
-<<<<<<< HEAD
 goW
-=======
-tMc
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 uaL
 qvR
 qvR
@@ -272256,11 +270201,7 @@ qvR
 lVe
 lLp
 ooJ
-<<<<<<< HEAD
 ktz
-=======
-guK
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 lVe
 kwN
 dAf
@@ -272375,7 +270316,6 @@ qbG
 qbG
 qbG
 qbG
-<<<<<<< HEAD
 gOt
 wSn
 izN
@@ -272383,15 +270323,6 @@ qvR
 qvR
 wSn
 goW
-=======
-eku
-wSn
-jGo
-qvR
-qvR
-wSn
-tMc
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 qvR
 qvR
 qvR
@@ -272791,15 +270722,9 @@ qbG
 tWz
 wSn
 uaL
-<<<<<<< HEAD
 giP
 qvR
 uqh
-=======
-jWA
-qvR
-nqT
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 qvR
 qvR
 wSn
@@ -273163,11 +271088,7 @@ uaL
 uaL
 qvR
 qvR
-<<<<<<< HEAD
 pfA
-=======
-kzX
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 fxx
 fxx
 fxx
@@ -273200,21 +271121,12 @@ qbG
 qbG
 qbG
 qbG
-<<<<<<< HEAD
 rrT
 uaL
 gWU
 qvR
 izN
 goW
-=======
-rgW
-uaL
-rJr
-qvR
-jGo
-tMc
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 wSn
 wSn
 wSn
@@ -273616,11 +271528,7 @@ dhf
 rHq
 rHq
 rHq
-<<<<<<< HEAD
 iDd
-=======
-wWT
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 uaL
 wSn
 uaL
@@ -276817,11 +274725,7 @@ wAm
 wAm
 wAm
 wAm
-<<<<<<< HEAD
 acI
-=======
-tKs
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 wAm
 wAm
 czd
@@ -277216,7 +275120,6 @@ uaL
 uaL
 teW
 emH
-<<<<<<< HEAD
 uKr
 emH
 uKr
@@ -277227,18 +275130,6 @@ tfa
 emH
 emH
 mIv
-=======
-cbi
-emH
-cbi
-emH
-cbi
-emH
-qkf
-emH
-emH
-beP
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 teW
 wSn
 qvR
@@ -277629,7 +275520,6 @@ fxx
 wSn
 uaL
 uaL
-<<<<<<< HEAD
 uQo
 emH
 fXJ
@@ -277637,15 +275527,6 @@ emH
 fXJ
 emH
 fXJ
-=======
-nqd
-emH
-pjw
-emH
-pjw
-emH
-pjw
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 emH
 emH
 emH
@@ -278041,7 +275922,6 @@ fxx
 fxx
 fxx
 fxx
-<<<<<<< HEAD
 xOf
 waz
 waz
@@ -278054,20 +275934,6 @@ twa
 waz
 waz
 waz
-=======
-ozz
-mbu
-mbu
-mbu
-mbu
-mbu
-mbu
-mbu
-rTU
-mbu
-mbu
-mbu
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 teW
 qvR
 wSn
@@ -278458,7 +276324,6 @@ fxx
 fxx
 fxx
 fxx
-<<<<<<< HEAD
 xOf
 waz
 waz
@@ -278471,20 +276336,6 @@ oQk
 waz
 waz
 waz
-=======
-ozz
-mbu
-mbu
-mbu
-mbu
-mbu
-mbu
-mbu
-cdX
-mbu
-mbu
-mbu
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 teW
 qvR
 wSn
@@ -278875,7 +276726,6 @@ fxx
 qvR
 uaL
 uaL
-<<<<<<< HEAD
 uQo
 emH
 fXJ
@@ -278883,24 +276733,11 @@ emH
 fXJ
 emH
 fXJ
-=======
-nqd
-emH
-pjw
-emH
-pjw
-emH
-pjw
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 emH
 emH
 emH
 emH
-<<<<<<< HEAD
 mdA
-=======
-fhf
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 teW
 qvR
 wSn
@@ -279293,7 +277130,6 @@ qvR
 uaL
 teW
 emH
-<<<<<<< HEAD
 cyz
 emH
 cyz
@@ -279301,15 +277137,6 @@ emH
 cyz
 emH
 tfa
-=======
-pcG
-emH
-pcG
-emH
-pcG
-emH
-qkf
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 emH
 emH
 ffv
@@ -279712,11 +277539,7 @@ wAm
 wAm
 wAm
 wAm
-<<<<<<< HEAD
 acI
-=======
-tKs
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 wAm
 wAm
 czd
@@ -280113,11 +277936,7 @@ dfk
 qvR
 uaL
 uaL
-<<<<<<< HEAD
 knc
-=======
-wlW
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 uaL
 uaL
 qvR
@@ -280523,11 +278342,7 @@ uaL
 wSn
 wSn
 qvR
-<<<<<<< HEAD
 pNI
-=======
-gjT
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 fxx
 uaL
 uaL
@@ -280926,11 +278741,7 @@ uaL
 uaL
 uaL
 qvR
-<<<<<<< HEAD
 fcG
-=======
-snv
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 dWG
 uaL
 vFU
@@ -282142,11 +279953,7 @@ qvR
 qvR
 uaL
 uaL
-<<<<<<< HEAD
 oPM
-=======
-nZa
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 dfk
 wSn
 wSn
@@ -282538,17 +280345,10 @@ uaL
 qvR
 qvR
 xKK
-<<<<<<< HEAD
 pWU
 qvR
 qvR
 pNI
-=======
-mSo
-qvR
-qvR
-gjT
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 fxx
 uaL
 uaL
@@ -288415,11 +286215,7 @@ sHm
 xlm
 xlm
 eUJ
-<<<<<<< HEAD
 eQh
-=======
-qHq
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 kIS
 mGA
 kIS
@@ -288821,11 +286617,7 @@ vUX
 xlm
 xlm
 eUJ
-<<<<<<< HEAD
 szo
-=======
-obe
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 qjD
 cKi
 cKi
@@ -289629,11 +287421,7 @@ sHm
 sPu
 sPu
 sPu
-<<<<<<< HEAD
 szo
-=======
-obe
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 qjD
 fUX
 bec
@@ -290035,11 +287823,7 @@ sHm
 vPY
 odT
 nZU
-<<<<<<< HEAD
 szo
-=======
-obe
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 qjD
 qvt
 qvt
@@ -290105,11 +287889,7 @@ gsM
 gsM
 xJE
 sco
-<<<<<<< HEAD
 qNi
-=======
-fsh
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 cNk
 mvp
 mvp
@@ -290445,11 +288225,7 @@ jxy
 cAg
 nlX
 bms
-<<<<<<< HEAD
 pDx
-=======
-mbk
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 qAk
 kIS
 kIS
@@ -290851,11 +288627,7 @@ sHm
 vPY
 odT
 mPd
-<<<<<<< HEAD
 szo
-=======
-obe
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 qjD
 cKi
 cKi
@@ -291257,11 +289029,7 @@ sHm
 sPu
 sPu
 sPu
-<<<<<<< HEAD
 sAr
-=======
-pmZ
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 qjD
 cNv
 qyB
@@ -292468,21 +290236,12 @@ xlm
 xlm
 eUJ
 mtF
-<<<<<<< HEAD
 sIb
 sIb
 sIb
 sIb
 sIb
 sIb
-=======
-kQz
-kQz
-kQz
-kQz
-kQz
-kQz
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 qjD
 kIS
 jLG
@@ -292885,11 +290644,7 @@ kNa
 kNa
 kNa
 eUJ
-<<<<<<< HEAD
 szo
-=======
-obe
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 kIS
 wtF
 wbg
@@ -293291,11 +291046,7 @@ tlB
 tLj
 cAX
 eUJ
-<<<<<<< HEAD
 xxM
-=======
-utR
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 kIS
 wtF
 uXY
@@ -294081,11 +291832,7 @@ ltM
 sHm
 sZE
 oif
-<<<<<<< HEAD
 mFe
-=======
-abl
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 oif
 uSe
 sWL
@@ -294487,11 +292234,7 @@ ltM
 sHm
 wjk
 oif
-<<<<<<< HEAD
 mFe
-=======
-abl
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 los
 bzD
 rTK
@@ -294893,11 +292636,7 @@ ltM
 sHm
 kBu
 oif
-<<<<<<< HEAD
 pac
-=======
-wPM
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 eWa
 syY
 uOL
@@ -296505,19 +294244,11 @@ ltM
 uOL
 mjI
 uYE
-<<<<<<< HEAD
 vei
 los
 pKA
 uOL
 egd
-=======
-vfV
-los
-pKA
-uOL
-oMN
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 eTo
 uOL
 aas
@@ -296915,11 +294646,7 @@ ltM
 jDm
 lTZ
 uYE
-<<<<<<< HEAD
 cqU
-=======
-oaF
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 rTK
 bFU
 los
@@ -297321,11 +295048,7 @@ ltM
 jDm
 xWm
 sXa
-<<<<<<< HEAD
 jcK
-=======
-wio
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 amn
 vqv
 uYE
@@ -297772,11 +295495,7 @@ wVI
 cXf
 cXf
 gGL
-<<<<<<< HEAD
 kLY
-=======
-vDj
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 wbg
 rET
 rET
@@ -298178,11 +295897,7 @@ wVI
 cXf
 suI
 eGO
-<<<<<<< HEAD
 lRU
-=======
-otm
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 wVI
 wVI
 wVI
@@ -298584,11 +296299,7 @@ wVI
 cXf
 cXf
 gGL
-<<<<<<< HEAD
 kLY
-=======
-vDj
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 wbg
 cka
 cka
@@ -298617,7 +296328,6 @@ hUt
 xut
 ueq
 toW
-<<<<<<< HEAD
 dcz
 adK
 pKQ
@@ -298625,21 +296335,6 @@ toW
 pHR
 toW
 toW
-=======
-toW
-toW
-eWe
-toW
-toW
-kGv
-pKQ
-pKQ
-toW
-tdN
-eSt
-eSt
-yho
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 yho
 wVI
 wbg
@@ -309867,11 +307562,7 @@ hNW
 hpj
 hpj
 hpj
-<<<<<<< HEAD
 lxk
-=======
-fjN
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 tNj
 wbg
 wbg
@@ -310675,11 +308366,7 @@ hNW
 hNW
 axD
 hNW
-<<<<<<< HEAD
 lxk
-=======
-fjN
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 tNj
 wbg
 wbg
@@ -311479,11 +309166,7 @@ tNj
 hpj
 wNH
 tNj
-<<<<<<< HEAD
 lxk
-=======
-fjN
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 xpC
 dPp
 det
@@ -313079,10 +310762,6 @@ wVI
 wVI
 wVI
 jDN
-<<<<<<< HEAD
-=======
-xAt
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 xAt
 xAt
 xAt
@@ -317520,12 +315199,8 @@ aOv
 aOv
 aOv
 aOv
-<<<<<<< HEAD
 aOv
 cci
-=======
-aic
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 wVI
 wbg
 wVI
@@ -317927,11 +315602,7 @@ aOv
 aOv
 aOv
 aOv
-<<<<<<< HEAD
 cci
-=======
-aic
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 wVI
 wbg
 wVI
@@ -321531,7 +319202,6 @@ wSn
 dfk
 xAt
 xAt
-<<<<<<< HEAD
 vHK
 vHK
 vHK
@@ -321539,15 +319209,6 @@ rfx
 rfx
 nRQ
 rfx
-=======
-qPA
-qPA
-qPA
-qPA
-qPA
-sUu
-vTq
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 vOS
 vOS
 vOS
@@ -321943,7 +319604,6 @@ qvR
 dfk
 xAt
 xAt
-<<<<<<< HEAD
 vHK
 myC
 myC
@@ -321957,12 +319617,6 @@ rfx
 noB
 jvj
 jvj
-=======
-qPA
-cnh
-cnh
-gBM
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 iuo
 jvj
 jvj
@@ -322332,7 +319986,6 @@ hcW
 hcW
 hcW
 qPA
-<<<<<<< HEAD
 iNx
 sKd
 qcG
@@ -322366,12 +320019,6 @@ pQd
 bCX
 rIG
 jvj
-=======
-cnh
-nGW
-nGW
-nGW
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 iuo
 jvj
 rIG
@@ -322741,7 +320388,6 @@ hcW
 hcW
 hcW
 qPA
-<<<<<<< HEAD
 sze
 sKd
 nRp
@@ -322775,12 +320421,6 @@ pQd
 qPA
 svK
 jvj
-=======
-cnh
-nGW
-nGW
-nGW
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 iuo
 jvj
 svK
@@ -323181,19 +320821,11 @@ pQd
 pQd
 pQd
 qPA
-<<<<<<< HEAD
 nNN
 jvj
 iuo
 jvj
 nNN
-=======
-cnh
-eum
-eum
-eum
-cnh
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 qPA
 pQd
 pQd
@@ -363128,7 +360760,6 @@ qbG
 qbG
 qbG
 lVe
-<<<<<<< HEAD
 uVt
 bnq
 onr
@@ -363152,31 +360783,6 @@ bzm
 hSz
 bzm
 uPp
-=======
-pmm
-eWs
-qrR
-lVe
-dae
-jfu
-lVe
-bEu
-bEu
-bEu
-nqU
-viN
-viN
-viN
-dzU
-viN
-viN
-viN
-viN
-viN
-dzU
-viN
-llp
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 nqU
 vIa
 vIa
@@ -363556,7 +361162,6 @@ qbG
 qbG
 qbG
 lVe
-<<<<<<< HEAD
 xRO
 oCi
 iiB
@@ -363580,31 +361185,6 @@ bzm
 bzm
 bzm
 bzm
-=======
-nCS
-jWs
-inq
-lVe
-tuc
-mxV
-lzA
-gAc
-gAc
-nPS
-nqU
-vJQ
-vJQ
-ryB
-viN
-viN
-viN
-viN
-viN
-viN
-viN
-viN
-viN
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 nqU
 vIa
 vIa
@@ -363984,7 +361564,6 @@ qbG
 qbG
 qbG
 xPC
-<<<<<<< HEAD
 fAY
 xou
 xou
@@ -363992,22 +361571,12 @@ rxT
 xou
 xou
 xAw
-=======
-mOs
-xou
-xou
-mwW
-xou
-xou
-lzA
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 qbG
 qbG
 qbG
 nqU
 jCh
 jCh
-<<<<<<< HEAD
 grW
 nqU
 cbU
@@ -364017,17 +361586,6 @@ cbU
 nqU
 nqU
 cbU
-=======
-ryB
-nqU
-ubq
-nqU
-nqU
-ubq
-nqU
-nqU
-ubq
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 nqU
 nqU
 vIa
@@ -364410,22 +361968,14 @@ lVe
 lVe
 dMN
 xou
-<<<<<<< HEAD
 nps
 lVe
 hhi
 rXL
-=======
-nVc
-lVe
-kcz
-uEG
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 lVe
 qbG
 qbG
 qbG
-<<<<<<< HEAD
 pwg
 eFN
 rhH
@@ -364439,21 +361989,6 @@ bzm
 nqU
 cdY
 bzm
-=======
-jiB
-aVX
-abC
-viN
-nqU
-iiw
-viN
-nqU
-iiw
-viN
-nqU
-iiw
-viN
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 nqU
 vIa
 vIa
@@ -364835,11 +362370,7 @@ lVe
 xou
 xou
 xou
-<<<<<<< HEAD
 qjz
-=======
-arW
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 lVe
 lVe
 lVe
@@ -364847,7 +362378,6 @@ lVe
 qbG
 qbG
 qbG
-<<<<<<< HEAD
 pwg
 bzm
 oyG
@@ -364861,21 +362391,6 @@ lIV
 nqU
 pAH
 lIV
-=======
-jiB
-viN
-fsX
-viN
-nqU
-ehN
-ljE
-nqU
-ehN
-ljE
-nqU
-ehN
-ljE
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 nqU
 vIa
 vIa
@@ -365254,7 +362769,6 @@ qbG
 qbG
 qbG
 xPC
-<<<<<<< HEAD
 nRR
 rLq
 xou
@@ -365263,21 +362777,10 @@ lVe
 apB
 gAc
 bZV
-=======
-gqY
-qts
-xou
-nwj
-lVe
-tFM
-gAc
-dRa
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 qbG
 qbG
 qbG
 ryI
-<<<<<<< HEAD
 pwg
 pwg
 nqU
@@ -365289,19 +362792,6 @@ adD
 nqU
 nqU
 adD
-=======
-jiB
-jiB
-nqU
-nqU
-rtN
-nqU
-nqU
-rtN
-nqU
-nqU
-rtN
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 nqU
 ryI
 vIa
@@ -365682,7 +363172,6 @@ qbG
 qbG
 xPC
 jCh
-<<<<<<< HEAD
 rLq
 xou
 xou
@@ -365690,15 +363179,6 @@ yhS
 gAc
 gAc
 bZV
-=======
-qts
-xou
-xou
-gou
-gAc
-gAc
-dRa
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 qbG
 qbG
 qbG
@@ -366093,7 +363573,6 @@ qbG
 qbG
 qbG
 lVe
-<<<<<<< HEAD
 lih
 xou
 gtc
@@ -366102,16 +363581,6 @@ lVe
 apB
 gAc
 bZV
-=======
-epE
-xou
-ttU
-cyT
-lVe
-tFM
-gAc
-dRa
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 qbG
 qbG
 qbG
@@ -366511,15 +363980,9 @@ xou
 lVe
 lVe
 lVe
-<<<<<<< HEAD
 nzJ
 nzJ
 qGZ
-=======
-hxP
-hxP
-srg
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 qbG
 qbG
 qbG
@@ -366914,11 +364377,7 @@ qbG
 qbG
 lVe
 lVe
-<<<<<<< HEAD
 yhS
-=======
-gou
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 lVe
 lVe
 qbG
@@ -367319,15 +364778,9 @@ qbG
 qbG
 qbG
 lVe
-<<<<<<< HEAD
 guZ
 xou
 vqc
-=======
-tWu
-xou
-uOs
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 lVe
 qbG
 qbG
@@ -368129,11 +365582,7 @@ qbG
 qbG
 qbG
 lVe
-<<<<<<< HEAD
 bkT
-=======
-vPz
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 peN
 fIB
 lVe
@@ -368936,11 +366385,7 @@ qbG
 qbG
 qbG
 qbG
-<<<<<<< HEAD
 icO
-=======
-nDi
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 qbG
 qbG
 qbG
@@ -369342,11 +366787,7 @@ qbG
 qbG
 qbG
 qbG
-<<<<<<< HEAD
 icO
-=======
-nDi
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 qbG
 qbG
 qbG
@@ -369748,11 +367189,7 @@ qbG
 qbG
 qbG
 qbG
-<<<<<<< HEAD
 icO
-=======
-nDi
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 qbG
 qbG
 qbG
@@ -370154,13 +367591,8 @@ qbG
 qbG
 qbG
 qbG
-<<<<<<< HEAD
 gmm
 hYr
-=======
-aaD
-yiQ
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 qbG
 qbG
 lpp
@@ -370561,22 +367993,13 @@ qbG
 qbG
 qbG
 qbG
-<<<<<<< HEAD
 vMz
 owc
-=======
-qGO
-xdM
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 qbG
 qbG
 lpp
 lpp
-<<<<<<< HEAD
 amT
-=======
-fIX
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 gAc
 gAc
 lpp
@@ -372189,11 +369612,7 @@ wOD
 wOD
 wOD
 wOD
-<<<<<<< HEAD
 vAE
-=======
-rqU
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 wOD
 wOD
 ryI
@@ -372595,15 +370014,9 @@ jCh
 jCh
 jCh
 jCh
-<<<<<<< HEAD
 jkN
 fQR
 cYl
-=======
-sQd
-faW
-bRN
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 trG
 qbG
 qbG
@@ -373003,17 +370416,10 @@ jCh
 jCh
 jCh
 jCh
-<<<<<<< HEAD
 vSK
 xbD
 kHZ
 vAE
-=======
-qlV
-xbD
-fjS
-rqU
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 qbG
 qbG
 qbG
@@ -373412,17 +370818,10 @@ jCh
 jCh
 jCh
 jCh
-<<<<<<< HEAD
 gdB
 arn
 xbD
 vAE
-=======
-sPj
-bNt
-xbD
-rqU
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 qbG
 qbG
 qbG
@@ -373817,20 +371216,12 @@ qbG
 qbG
 qbG
 trG
-<<<<<<< HEAD
 iLZ
-=======
-jie
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 jCh
 jCh
 jCh
 jCh
-<<<<<<< HEAD
 exa
-=======
-eRq
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 xbD
 trG
 qbG
@@ -374231,11 +371622,7 @@ wOD
 wOD
 wOD
 wOD
-<<<<<<< HEAD
 vAE
-=======
-rqU
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 wOD
 wOD
 ryI
@@ -379849,11 +377236,7 @@ wAm
 wAm
 wAm
 wAm
-<<<<<<< HEAD
 cdm
-=======
-dqM
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 wAm
 wAm
 czd
@@ -380247,7 +377630,6 @@ qbG
 qbG
 qbG
 teW
-<<<<<<< HEAD
 pBt
 dMD
 dMD
@@ -380259,19 +377641,6 @@ dMD
 dMD
 dMD
 dEV
-=======
-vyx
-ukn
-ukn
-ukn
-ukn
-ukn
-ukn
-ukn
-ukn
-ukn
-wtA
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 teW
 qbG
 qbG
@@ -380663,29 +378032,17 @@ qbG
 qbG
 qbG
 teW
-<<<<<<< HEAD
 qJr
 ffv
 wXe
-=======
-sAR
-ffv
-uYz
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 ffv
 ffv
 ffv
 ffv
 ffv
-<<<<<<< HEAD
 wXe
 ffv
 jWi
-=======
-uYz
-ffv
-tjz
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 teW
 qbG
 qbG
@@ -381077,11 +378434,7 @@ qbG
 qbG
 qbG
 teW
-<<<<<<< HEAD
 qJr
-=======
-sAR
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 ffv
 ffv
 ffv
@@ -381091,11 +378444,7 @@ ffv
 ffv
 ffv
 ffv
-<<<<<<< HEAD
 wxC
-=======
-pYZ
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 teW
 qbG
 qbG
@@ -381487,11 +378836,7 @@ qbG
 qbG
 qbG
 teW
-<<<<<<< HEAD
 qJr
-=======
-sAR
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 ffv
 ffv
 ffv
@@ -381501,11 +378846,7 @@ ffv
 ffv
 ffv
 ffv
-<<<<<<< HEAD
 wxC
-=======
-pYZ
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 teW
 qbG
 qbG
@@ -381897,29 +379238,17 @@ qbG
 qbG
 qbG
 teW
-<<<<<<< HEAD
 qJr
 ffv
 wXe
-=======
-sAR
-ffv
-uYz
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 ffv
 ffv
 ffv
 ffv
 ffv
-<<<<<<< HEAD
 wXe
 ffv
 wxC
-=======
-uYz
-ffv
-pYZ
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 teW
 qbG
 qbG
@@ -382311,7 +379640,6 @@ qbG
 qbG
 qbG
 teW
-<<<<<<< HEAD
 plu
 bFY
 bFY
@@ -382323,19 +379651,6 @@ bFY
 bFY
 bFY
 xpd
-=======
-iIM
-tPq
-tPq
-tPq
-tPq
-tPq
-tPq
-tPq
-tPq
-tPq
-klu
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 teW
 qbG
 qbG
@@ -396681,11 +393996,7 @@ wNn
 wNn
 wNn
 wNn
-<<<<<<< HEAD
 jfC
-=======
-whL
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 iHm
 aMk
 nMR
@@ -402663,11 +399974,7 @@ uOL
 qlt
 vTK
 kUR
-<<<<<<< HEAD
 nzQ
-=======
-ngj
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 sHm
 wtF
 bFU
@@ -402735,12 +400042,7 @@ nDX
 nDX
 nDX
 nDX
-<<<<<<< HEAD
 xGL
-=======
-gto
-igh
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 qAB
 xkk
 nDX
@@ -403074,11 +400376,7 @@ obB
 aFk
 kUR
 kUR
-<<<<<<< HEAD
 lTk
-=======
-mTp
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 rxG
 wtF
 vNi
@@ -404279,17 +401577,10 @@ aFk
 vTK
 vvz
 dnf
-<<<<<<< HEAD
 oqi
 kUR
 rpP
 hBA
-=======
-nIC
-kUR
-rpP
-rNu
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 kUR
 ydi
 vXH
@@ -404691,11 +401982,7 @@ fiL
 kUR
 kUR
 kUR
-<<<<<<< HEAD
 xLw
-=======
-jIq
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 kUR
 eqT
 sHm
@@ -405497,12 +402784,6 @@ dCP
 oqi
 sHm
 xYr
-<<<<<<< HEAD
-=======
-exA
-kUR
-aFk
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 cNr
 kUR
 iUd
@@ -406708,17 +403989,11 @@ vIa
 vIa
 rTC
 hQJ
-<<<<<<< HEAD
 pWB
 pWB
 wLr
 pWB
 pWB
-=======
-nzQ
-cgX
-obB
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 lCO
 fZJ
 fZJ
@@ -419235,11 +416510,7 @@ fZJ
 fZJ
 fZJ
 hcx
-<<<<<<< HEAD
 skB
-=======
-rYx
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 ntK
 ntK
 ntK
@@ -421249,7 +418520,6 @@ fZJ
 fZJ
 fZJ
 oPJ
-<<<<<<< HEAD
 lKp
 jjS
 jjS
@@ -421265,23 +418535,6 @@ jjS
 jjS
 jjS
 hHw
-=======
-ncb
-jjS
-jjS
-jjS
-sig
-raq
-raq
-bpr
-raq
-nck
-sig
-jjS
-jjS
-jjS
-cno
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 oPJ
 hdN
 hdN
@@ -423285,11 +420538,7 @@ grR
 uwq
 pdd
 swm
-<<<<<<< HEAD
 tZB
-=======
-bJb
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 uwq
 grR
 pjx
@@ -466044,11 +463293,7 @@ ltT
 ltT
 ltT
 ltT
-<<<<<<< HEAD
 qmK
-=======
-mHw
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 nqU
 vIa
 vIa
@@ -470448,11 +467693,7 @@ qbG
 pLJ
 gAc
 gAc
-<<<<<<< HEAD
 amT
-=======
-fIX
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 lpp
 qbG
 qbG
@@ -475688,11 +472929,7 @@ gAc
 gAc
 gAc
 gAc
-<<<<<<< HEAD
 uVS
-=======
-oqg
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 gAc
 qbG
 qbG
@@ -494030,11 +491267,7 @@ xAt
 xAt
 xAt
 wNn
-<<<<<<< HEAD
 jTf
-=======
-gWe
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 wRK
 wRK
 wRK
@@ -494052,11 +491285,7 @@ wRK
 wRK
 wRK
 wRK
-<<<<<<< HEAD
 jTf
-=======
-gWe
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 kRo
 xAt
 xAt
@@ -528238,11 +525467,7 @@ vIa
 vIa
 uZy
 mVY
-<<<<<<< HEAD
 bjs
-=======
-pUR
->>>>>>> parent of ce81ce533 (Dungeons (#760))
 rwC
 uZy
 vIa
