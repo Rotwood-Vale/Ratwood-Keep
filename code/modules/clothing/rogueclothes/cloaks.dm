@@ -985,7 +985,6 @@
 	toggle_icon_state = FALSE
 	color = CLOTHING_BLACK
 	allowed_sex = list(MALE, FEMALE)
-	allowed_race = NON_DWARVEN_RACE_TYPES
 	flags_inv = null
 
 /obj/item/clothing/cloak/half/brown
