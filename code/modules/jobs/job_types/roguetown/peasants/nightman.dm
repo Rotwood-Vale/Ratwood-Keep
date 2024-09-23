@@ -43,6 +43,7 @@
 		pants = /obj/item/clothing/under/roguetown/trou/leather
 		armor = /obj/item/clothing/suit/roguetown/armor/leather/vest/sailor/nightman
 		shoes = /obj/item/clothing/shoes/roguetown/shortboots
+		backl = /obj/item/storage/backpack/rogue/satchel
 		if(H.dna?.species)
 			if(iself(H) || ishalfelf(H))
 				armor = /obj/item/clothing/suit/roguetown/armor/leather/vest/sailor

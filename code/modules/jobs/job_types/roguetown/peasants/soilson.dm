@@ -50,6 +50,7 @@
 		shoes = /obj/item/clothing/shoes/roguetown/simpleshoes
 		belt = /obj/item/storage/belt/rogue/leather/rope
 		beltl = /obj/item/roguekey/farm
+		backl = /obj/item/storage/backpack/rogue/satchel
 	else
 		head = /obj/item/clothing/head/roguetown/armingcap
 //		pants = /obj/item/clothing/under/roguetown/trou

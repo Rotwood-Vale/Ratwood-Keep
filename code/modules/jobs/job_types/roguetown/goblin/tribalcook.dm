@@ -23,6 +23,9 @@
 	belt = /obj/item/storage/belt/rogue/leather/rope
 	cloak = /obj/item/clothing/cloak/apron/cook
 	neck = /obj/item/clothing/neck/roguetown/psicross/talisman
+	backl = /obj/item/storage/backpack/rogue/satchel
+	ADD_TRAIT(H, TRAIT_BOG_TREKKING, TRAIT_GENERIC)
+	ADD_TRAIT(H, TRAIT_NASTY_EATER, TRAIT_GENERIC)
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/combat/knives, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/craft/cooking, 4, TRUE)

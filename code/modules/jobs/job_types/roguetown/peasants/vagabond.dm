@@ -44,6 +44,7 @@
 		H.mind.adjust_skillrank(/datum/skill/misc/stealing, round(rand(2,5)), TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/climbing, round(rand(1,3)), TRUE)
 		H.STALUC = rand(1, 20)
+		backl = /obj/item/storage/backpack/rogue/satchel
 	if(prob(10))
 		r_hand = /obj/item/rogue/instrument/flute
 	H.change_stat("intelligence", round(rand(-4,4)))

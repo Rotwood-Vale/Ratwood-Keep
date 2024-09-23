@@ -66,7 +66,7 @@
 			head = /obj/item/clothing/head/roguetown/helmet/heavy/abyssorhelm
 			wrists = /obj/item/clothing/neck/roguetown/psicross/abyssor
 			cloak = /obj/item/clothing/cloak/templar/abyssor					
-	armor = /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk
+	armor = /obj/item/clothing/suit/roguetown/armor/plate/half
 	shirt = /obj/item/clothing/suit/roguetown/armor/gambeson
 	pants = /obj/item/clothing/under/roguetown/chainlegs
 	shoes = /obj/item/clothing/shoes/roguetown/boots

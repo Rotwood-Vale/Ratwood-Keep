@@ -33,8 +33,11 @@
 	shoes = /obj/item/clothing/shoes/roguetown/boots/bonegreaves
 	cloak = /obj/item/clothing/cloak/hidecloak
 	neck = /obj/item/clothing/neck/roguetown/psicross/talisman
+	backl = /obj/item/storage/backpack/rogue/satchel
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
+	ADD_TRAIT(H, TRAIT_BOG_TREKKING, TRAIT_GENERIC)
+	ADD_TRAIT(H, TRAIT_NASTY_EATER, TRAIT_GENERIC)
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/combat/maces, 3, TRUE) // Chieftess gets nearly same skills as guard.
 		H.mind.adjust_skillrank(/datum/skill/combat/bows, 2, TRUE)

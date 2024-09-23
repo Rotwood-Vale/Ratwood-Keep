@@ -57,6 +57,8 @@
 		assign_skills(H)
 	H.verbs |= /mob/proc/haltyell
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
+	ADD_TRAIT(H, TRAIT_BOG_TREKKING, TRAIT_GENERIC)
+	ADD_TRAIT(H, TRAIT_WILD_EATER, TRAIT_GENERIC)
 
 /*Design philosophy: "Jack of all tades, master of.. few" - Peasent, so bow, axe, and polearm skill. Knows most combat skills, but other than those not great with them.
 Also given some non-combat skills that a peasent would have, just to support themselves, but not anything to replace soilsons with.*/
@@ -76,7 +78,7 @@ Also given some non-combat skills that a peasent would have, just to support the
 	H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 2, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/swimming, 2, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/medicine, 1, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/misc/riding, 2, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/misc/riding, 3, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/craft/crafting, pick(1,1,2), TRUE)	//Peasent levy, so some skill
 	H.mind.adjust_skillrank(/datum/skill/labor/farming, pick(1,2,2), TRUE)		//Peasent levy, so some skill

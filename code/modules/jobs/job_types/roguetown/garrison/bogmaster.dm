@@ -79,6 +79,8 @@
 	H.dna.species.soundpack_m = new /datum/voicepack/male/knight()
 	H.verbs |= /mob/proc/haltyell
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
+	ADD_TRAIT(H, TRAIT_BOG_TREKKING, TRAIT_GENERIC)
+	ADD_TRAIT(H, TRAIT_WILD_EATER, TRAIT_GENERIC)
 
 /obj/effect/proc_holder/spell/self/convertrole/bog
 	name = "Recruit Bogmen"

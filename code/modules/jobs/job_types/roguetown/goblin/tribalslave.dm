@@ -38,3 +38,5 @@
 		H.change_stat("fortune", 2)
 		H.change_stat("strength", 1)
 		H.change_stat("constitution", -1)
+		ADD_TRAIT(H, TRAIT_BOG_TREKKING, TRAIT_GENERIC)
+		ADD_TRAIT(H, TRAIT_NASTY_EATER, TRAIT_GENERIC)

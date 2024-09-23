@@ -39,6 +39,7 @@
 		beltr = /obj/item/storage/keyring/servant
 		neck = /obj/item/storage/belt/rogue/pouch/coins/poor
 		armor = /obj/item/clothing/suit/roguetown/armor/leather/vest/black
+		backl = /obj/item/storage/backpack/rogue/satchel
 		H.change_stat("strength", -1)
 		H.change_stat("intelligence", 1)
 		H.change_stat("perception", 1)

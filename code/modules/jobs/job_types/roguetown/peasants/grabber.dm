@@ -37,6 +37,7 @@
 		beltl = /obj/item/roguekey/shop
 		belt = /obj/item/storage/belt/rogue/leather/rope
 		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/sailor
+		backl = /obj/item/storage/backpack/rogue/satchel
 		if(prob(30))
 			shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/sailor/red
 		if(prob(23))
