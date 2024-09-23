@@ -26,7 +26,7 @@
 	armor = /obj/item/clothing/suit/roguetown/shirt/robe/black
 	belt = /obj/item/storage/belt/rogue/leather/rope
 	beltl = /obj/item/storage/belt/rogue/surgery_bag/full
-	beltr = /obj/item/keyring/physician
+	beltr = /obj/item/storage/keyring/physician
 	shoes = /obj/item/clothing/shoes/roguetown/simpleshoes
 	backr = /obj/item/storage/backpack/rogue/satchel
 	backpack_contents = list(

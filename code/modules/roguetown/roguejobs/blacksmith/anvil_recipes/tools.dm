@@ -26,7 +26,7 @@
 /datum/anvil_recipe/tools/keyring
 	name = "Keyrings x3"
 	req_bar = /obj/item/ingot/iron
-	created_item = /obj/item/keyring
+	created_item = /obj/item/storage/keyring
 	createditem_num = 3
 	craftdiff = 0
 
