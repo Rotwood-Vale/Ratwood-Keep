@@ -26,10 +26,10 @@ GLOBAL_LIST_EMPTY(ritualslist)
 	return istype(M) && M.mind && M.mind.has_antag_datum(/datum/antagonist/zizocultist/leader)
 
 /datum/antagonist/zizocultist/examine_friendorfoe(datum/antagonist/examined_datum, mob/examiner, mob/examined)
-	if(istype(examined_datum, /datum/antagonist/zizocultist))
-		return "<span class='boldnotice'>A lackey for the future.</span>"
 	if(istype(examined_datum, /datum/antagonist/zizocultist/leader))
 		return "<span class='boldnotice'>OUR LEADER!</span>"
+	if(istype(examined_datum, /datum/antagonist/zizocultist))
+		return "<span class='boldnotice'>A lackey for the future.</span>"
 
 /datum/antagonist/zizocultist/on_gain()
 	. = ..()
@@ -175,12 +175,12 @@ GLOBAL_LIST_EMPTY(ritualslist)
 	var/speak = input("What do you speak of?", "ROGUETOWN") as text|null
 	if(!speak)
 		return
-	playsound_local(src, 'sound/vo/cult/skvor.ogg', 100)
 	whisper("O schlet'a ty'schkotot ty'skvoro...")
 	whisper("[speak]")
 
 	for(var/datum/mind/V in C.cultists)
 		to_chat(V, "<span class='boldnotice'>A message from [src.real_name]: \"[speak]\"</span>")
+		playsound_local(V.current, 'sound/vo/cult/skvor.ogg', 100)
 
 /obj/effect/decal/cleanable/sigil
 	name = "sigils"
@@ -426,7 +426,7 @@ GLOBAL_LIST_EMPTY(ritualslist)
 			visible_message("<span class='danger'>[src] reaches out, ripping up [choice]'s soul!</span>")
 			to_chat(choice, "<span class='userdanger'>I HAVE FAILED MY LEADER! I HAVE FAILED ZIZO! NOTHING ELSE BUT DEATH REMAINS FOR ME NOW!</span>")
 			sleep(20)
-			gib(choice) // Cooler than dusting.
+			choice.gib() // Cooler than dusting.
 			C.cultists -= choice.mind
 
 // RITUAL DATUMS
