@@ -33,7 +33,7 @@
 	pants = /obj/item/clothing/under/roguetown/trou
 	head = /obj/item/clothing/head/roguetown/hatfur
 	shoes = /obj/item/clothing/shoes/roguetown/boots/leather
-	backr = /obj/item/storage/backpack/rogue/backpack
+	backl = /obj/item/storage/backpack/rogue/backpack
 	neck = /obj/item/storage/belt/rogue/pouch/coins/rich
 	wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
 	armor = /obj/item/clothing/suit/roguetown/armor/leather/vest/black 
