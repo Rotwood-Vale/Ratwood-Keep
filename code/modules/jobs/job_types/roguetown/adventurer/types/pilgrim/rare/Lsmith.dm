@@ -36,7 +36,7 @@
 			H.mind.adjust_skillrank(/datum/skill/combat/maces, 5) // Hammer.
 			H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 5)
 			H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 4)
-			H.mind.adjust_skillrank(/datum/skill/misc/athletics, 4) 
+			H.mind.adjust_skillrank(/datum/skill/misc/athletics, 5) 
 			H.mind.adjust_skillrank(/datum/skill/craft/crafting, 3)
 			H.mind.adjust_skillrank(/datum/skill/craft/masonry, 5)
 			H.mind.adjust_skillrank(/datum/skill/craft/carpentry, 2)
