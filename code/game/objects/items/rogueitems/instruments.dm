@@ -110,7 +110,7 @@
 
 /obj/item/rogue/instrument/guitar
 	name = "guitar"
-	desc = "This is a guitar." // i do not like this instrument, i refuse to describe it any better.
+	desc = "This is a guitar, chosen instrument of wanderers and the heartbroken." // YIPPEE I LOVE GUITAR
 	icon_state = "guitar"
 	song_list = list("Song 1" = 'sound/music/instruments/guitar (1).ogg',
 	"Song 2" = 'sound/music/instruments/guitar (2).ogg',
@@ -136,7 +136,8 @@
 	"Song 3" = 'sound/music/instruments/flute (3).ogg',
 	"Song 4" = 'sound/music/instruments/flute (4).ogg',
 	"Song 5" = 'sound/music/instruments/flute (5).ogg',
-	"Song 6" = 'sound/music/instruments/flute (6).ogg')
+	"Song 6" = 'sound/music/instruments/flute (6).ogg',
+	"Song 7" = 'sound/music/instruments/flute (7).ogg')
 
 /obj/item/rogue/instrument/drum
 	name = "drum"
