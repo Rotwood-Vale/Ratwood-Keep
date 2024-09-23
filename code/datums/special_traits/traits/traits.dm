@@ -495,7 +495,7 @@
 /datum/special_trait/bad_week/on_apply(mob/living/carbon/human/character, silent)
 	ADD_TRAIT(character, TRAIT_BAD_MOOD, "[type]")
 	ADD_TRAIT(character, TRAIT_STEELHEARTED, "[type]")
-	ADD_TRAIT(character, TRAIT_MISSINGNOSE, "[type]")
+	ADD_TRAIT(character, TRAIT_MISSING_NOSE, "[type]")
 
 /datum/special_trait/nude_sleeper
 	name = "Picky Sleeper"
