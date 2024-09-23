@@ -83,8 +83,8 @@
 				var/atom/movable/pullingg = L.pulling
 				L.recent_travel = world.time
 				if(pullingg)
-					pullingg.forceMove(T.loc)
 					pullingg.recent_travel = world.time
+					pullingg.forceMove(T.loc)
 				L.forceMove(T.loc)
 				if(pullingg)
 					L.start_pulling(pullingg, supress_message = TRUE)
@@ -137,8 +137,8 @@
 				var/atom/movable/pullingg = L.pulling
 				L.recent_travel = world.time
 				if(pullingg)
-					pullingg.forceMove(T.loc)
 					pullingg.recent_travel = world.time
+					pullingg.forceMove(T.loc)
 				L.forceMove(T.loc)
 				if(pullingg)
 					L.start_pulling(pullingg, supress_message = TRUE)

@@ -20,8 +20,8 @@
 				entry += " <i>(as [C.holder.fakekey])</i>"
 			if (isnewplayer(C.mob))
 				entry += " - <font color='darkgray'><b>In Lobby</b></font>"
-				if(C.ckey in GLOB.anonymize)
-					entry += " (as [get_fake_key(C.ckey)])"
+				/*if(C.ckey in GLOB.anonymize)
+					entry += " (as [get_fake_key(C.ckey)])"*/
 			else
 				if(ishuman(C.mob))
 					var/mob/living/carbon/human/H = C.mob
@@ -76,9 +76,9 @@
 //				WL = TRUE
 //			if(C.holder)
 //				continue
-			var/usedkey = C.ckey
-			if(C.ckey in GLOB.anonymize)
-				usedkey = get_fake_key(C.ckey)
+			var/usedkey = C.key
+			/*if(C.ckey in GLOB.anonymize)
+				usedkey = get_fake_key(C.ckey)*/
 /*			if(WL)
 				Lines += span_biginfo("[usedkey]")
 			else
@@ -99,7 +99,7 @@
 	set category = "Admin"
 	set name = "Adminwho"
 	set desc = "Lists all admins currently online."
-	
+
 	var/datum/admins/A = GLOB.deadmins[ckey]
 	if(!A)
 		if(!check_rights(R_ADMIN))

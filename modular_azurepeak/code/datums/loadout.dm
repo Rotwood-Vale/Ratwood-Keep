@@ -128,6 +128,18 @@ GLOBAL_LIST_EMPTY(loadout_items)
 	name = "Fishnet Stockings"
 	path = /obj/item/clothing/under/roguetown/tights/stockings/fishnet
 
+/datum/loadout_item/spectacles
+	name = "Spectacles"
+	path = /obj/item/clothing/mask/rogue/spectacles
+
+/datum/loadout_item/ragmask
+	name = "Rag Mask"
+	path = /obj/item/clothing/mask/rogue/ragmask
+
+/datum/loadout_item/halfmask
+	name = "Halfmask"
+	path = /obj/item/clothing/mask/rogue/shepherd
+
 /datum/loadout_item/feather
 	name = "Feather"
 	path = /obj/item/natural/feather

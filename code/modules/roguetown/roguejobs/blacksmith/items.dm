@@ -248,11 +248,11 @@
 	var/atom/current_parent = parent
 	if(istype(current_parent.loc,/turf) || istype(current_parent.loc, /mob/living))
 		if(prob(25))
-			new /obj/effect/temp_visual/armor_glint(parent)
+			new /obj/effect/temp_visual/armor_glint(current_parent.loc)
 		if(prob(15))
-			new /obj/effect/temp_visual/armor_glint(parent, 2)
+			new /obj/effect/temp_visual/armor_glint(current_parent.loc, 2)
 		if(prob(5))
-			new /obj/effect/temp_visual/armor_glint(parent, 3)
+			new /obj/effect/temp_visual/armor_glint(current_parent.loc, 3)
 
 /datum/component/metal_glint/proc/stop_process()
 	STOP_PROCESSING(SSobj, src)

@@ -10,7 +10,7 @@
 	max_integrity = 250
 	integrity_failure = 0.1
 	custom_materials = list(/datum/material/iron = 2000)
-	var/buildstacktype
+	var/buildstacktype = /obj/item/grown/log/tree/small
 	var/buildstackamount = 1
 	var/item_chair = /obj/item/chair // if null it can't be picked up
 	layer = OBJ_LAYER

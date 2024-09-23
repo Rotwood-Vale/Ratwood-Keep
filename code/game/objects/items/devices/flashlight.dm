@@ -331,7 +331,7 @@
 	light_color = "#da8c45"
 	on_damage = 10
 	flags_1 = null
-	possible_item_intents = list(/datum/intent/hit, /datum/intent/use)
+	possible_item_intents = list(/datum/intent/use, /datum/intent/hit)
 	slot_flags = ITEM_SLOT_HIP
 	var/datum/looping_sound/torchloop/soundloop
 	max_integrity = 200

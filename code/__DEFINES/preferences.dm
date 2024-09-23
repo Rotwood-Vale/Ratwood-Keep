@@ -1,3 +1,5 @@
+#define MINIMUM_FLAVOR_TEXT		200
+
 
 //Preference toggles
 #define SOUND_ADMINHELP			(1<<0)
