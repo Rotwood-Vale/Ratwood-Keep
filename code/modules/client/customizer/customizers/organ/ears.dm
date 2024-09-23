@@ -31,6 +31,9 @@
 		/datum/sprite_accessory/ears/fox,
 		/datum/sprite_accessory/ears/husky,
 		/datum/sprite_accessory/ears/otie,
+		/datum/sprite_accessory/ears/lab,
+		/datum/sprite_accessory/ears/vulp,
+		/datum/sprite_accessory/ears/perky,
 		/datum/sprite_accessory/ears/wolf
 	)
 
