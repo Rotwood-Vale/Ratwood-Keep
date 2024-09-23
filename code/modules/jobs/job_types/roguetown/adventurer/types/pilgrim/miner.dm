@@ -16,7 +16,7 @@
 	neck = /obj/item/storage/belt/rogue/pouch/coins/poor
 	beltl = /obj/item/flashlight/flare/torch/lantern
 	beltr = /obj/item/rogueweapon/pick
-	beltr = /obj/item/rogueweapon/huntingknife
+	mouth = /obj/item/rogueweapon/huntingknife
 	backl = /obj/item/storage/backpack/rogue/backpack
 	backpack_contents = list(/obj/item/flint = 1)
 	if(H.gender == FEMALE)
