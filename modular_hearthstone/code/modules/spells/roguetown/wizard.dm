@@ -77,7 +77,7 @@
 			extra_fatigue = 5 // just a bit of extra fatigue on this one
 		if (PRESTI_MOTE)
 			extra_fatigue = 15 // same deal here
-		
+
 	user.rogfat_add(fatigue_used + extra_fatigue)
 
 	var/skill_level = user.mind?.get_skill_level(attached_spell.associated_skill)
@@ -110,7 +110,7 @@
 	if (mote.loc == src)
 		user.visible_message(span_notice("[user] holds open the palm of [user.p_their()] hand and concentrates..."), span_notice("I hold open the palm of my hand and concentrate on my arcyne power..."))
 		if (do_after(user, src.motespeed, target = user))
-			mote.orbit(user, 18, pick(list(TRUE, FALSE)), 2000, 48, TRUE)
+			mote.orbit(user, 1, TRUE, 0, 48, TRUE)
 			return TRUE
 		return FALSE
 	else
@@ -119,7 +119,7 @@
 		return TRUE
 
 /obj/item/melee/touch_attack/prestidigitation/proc/create_spark(mob/living/carbon/human/user)
-	// adjusted from /obj/item/flint 
+	// adjusted from /obj/item/flint
 	if (world.time < spark_cd + sparkspeed)
 		return
 	spark_cd = world.time
@@ -211,8 +211,8 @@
 
 	var/choice = input("Choose a spell, points left: [user.mind.spell_points - user.mind.used_spell_points]") as null|anything in choices
 	var/obj/effect/proc_holder/spell/item = choices[choice]
-	if(!item) 
-		return     // user canceled; 
+	if(!item)
+		return     // user canceled;
 	if(alert(user, "[item.desc]", "[item.name]", "Learn", "Cancel") == "Cancel") //gives a preview of the spell's description to let people know what a spell does
 		return
 	for(var/obj/effect/proc_holder/spell/knownspell in user.mind.spell_list)
@@ -262,9 +262,9 @@
 	attacked_sound = list('sound/combat/hits/onstone/wallhit.ogg', 'sound/combat/hits/onstone/wallhit2.ogg', 'sound/combat/hits/onstone/wallhit3.ogg')
 	opacity = 0
 	density = TRUE
-	max_integrity = 80	
+	max_integrity = 80
 	CanAtmosPass = ATMOS_PASS_DENSITY
-	var/timeleft = 20 SECONDS  
+	var/timeleft = 20 SECONDS
 
 /obj/structure/forcefield_weak/Initialize()
 	. = ..()
@@ -291,7 +291,7 @@
 	caster = summoner
 
 /obj/structure/forcefield_weak/caster/CanPass(atom/movable/mover, turf/target)	//only the caster can move through this freely
-	if(mover == caster)		
+	if(mover == caster)
 		return TRUE
 	if(ismob(mover))
 		var/mob/M = mover
@@ -563,14 +563,14 @@
 
 		if(!do_after(user, 5 SECONDS, target = spelltarget))
 			return
-		
+
 		qdel(sacrifice)
 		ADD_TRAIT(spelltarget, TRAIT_ANTISCRYING, MAGIC_TRAIT)
 		if(spelltarget != user)
 			user.visible_message("[user] draws a glyph in the air and blows some ash onto [spelltarget].")
 		else
 			user.visible_message("[user] draws a glyph in the air and covers themselves in ash.")
-		
+
 		base_spell.add_buff_timer(spelltarget)
 		attached_spell.remove_hand()
 	return
@@ -668,7 +668,7 @@
 
 	var/mob/living/spelltarget = A
 	spelltarget.apply_status_effect(/datum/status_effect/buff/haste)
-	
+
 	if(spelltarget != user)
 		user.visible_message("[user] mutters an incantation and [spelltarget] briefly shines yellow.")
 	else
