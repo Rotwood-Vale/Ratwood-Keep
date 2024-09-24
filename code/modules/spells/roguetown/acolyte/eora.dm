@@ -71,18 +71,17 @@
 	miracle = TRUE
 	devotion_cost = 30
 
-//Sex-pest spell; if you have ERP verbs on it lets you treat it as sexual stuff if opt in, otherwise spell of serenity/peace. 
 /obj/effect/proc_holder/spell/invoked/enrapture/cast(list/targets, mob/living/user)
 	if(isliving(targets[1]))
 		var/mob/living/target = targets[1]
-		var/enrapture_to_public = pick("[target] muscle's visibly slacken!", "[target] appears weak!", "[target] freezes in place!", "[target]' eyes glaze over!")
-		var/enrapture_to_target = pick("You feel a wave of serenity gloss over you!", "You feel.. at ease, why fight?", "You feel relaxed, your muscles soothed.. you can't move!")
+		var/enrapture_to_public = pick("[target] shivers uncontrollably!", "[target] struggles to stay standing!", "[target] clutches their chest!", "[target]' eyes glaze over!")
+		var/enrapture_to_target = pick("A thrill runs down your spine!", "Your knees go weak!", "Your heart thrills in euphoria!", "Your imagination runs wild!")
 		target.visible_message(span_warning("[enrapture_to_public]"), span_warning("[enrapture_to_target]"))
 		target.Stun(rand(20))
 		target.Jitter(20)
 		target.add_stress(/datum/stressevent/enrapture)
 		if(prob(33))
-			target.emote(pick("twitch","shiver"))
+			target.emote(pick("twitch","drool","moan"))
 		//LEWD PART WORKS ON NYMPOMANIACS ONLY
 		if(user.has_flaw(/datum/charflaw/addiction/lovefiend))
 			target.sate_addiction()
@@ -106,4 +105,4 @@
 /datum/stressevent/enrapture
 	timer = 5 MINUTES
 	stressadd = -5
-	desc = "<span class='green'>I felt Eora's serentity.</span>"
+	desc = "<span class='green'>I felt Eora's love.</span>"
