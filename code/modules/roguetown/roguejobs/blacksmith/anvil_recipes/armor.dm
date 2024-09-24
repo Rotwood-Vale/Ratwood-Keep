@@ -258,8 +258,8 @@
 	created_item = /obj/item/clothing/head/roguetown/helmet/kettle
 	craftdiff = 2
 
-/datum/anvil_recipe/armor/bervor
-	name = "Bervor"
+/datum/anvil_recipe/armor/bevor
+	name = "Bevor"
 	req_bar = /obj/item/ingot/steel
 	created_item = /obj/item/clothing/neck/roguetown/bevor
 	craftdiff = 2

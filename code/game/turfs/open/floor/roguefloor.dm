@@ -312,7 +312,7 @@
 		footstep = FOOTSTEP_MUD
 		barefootstep = FOOTSTEP_MUD
 		heavyfootstep = FOOTSTEP_MUD
-		track_prob = 13 //Hearthstone port.
+		track_prob = 20 //Hearthstone port.
 		bloodiness = 20
 
 /turf/open/floor/rogue/dirt/road

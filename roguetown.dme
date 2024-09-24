@@ -3541,6 +3541,7 @@
 #include "modular\Neu_Food\code\raw\NeuFood_meat.dm"
 #include "modular\Neu_Food\code\raw\NeuFood_processed.dm"
 #include "modular\Neu_Food\code\raw\NeuFood_veggies.dm"
+#include "modular\ze_genesis_call\genesis_call.dm"
 #include "modular_azurepeak\_statpacks.dm"
 #include "modular_azurepeak\code\datums\loadout.dm"
 #include "modular_azurepeak\code\game\area\areas.dm"
@@ -3568,5 +3569,4 @@
 #include "modular_hearthstone\code\modules\mob\living\simple_animal\rogue\simple_skeleton.dm"
 #include "modular_hearthstone\code\modules\reagents\reagent_containers\lux.dm"
 #include "modular_hearthstone\code\modules\spells\roguetown\wizard.dm"
-#include "modular\ze_genesis_call\genesis_call.dm"
 // END_INCLUDE
