@@ -19,7 +19,7 @@
 	outfit = /datum/outfit/job/roguetown/physician
 	whitelist_req = TRUE
 
-	give_bank_account = 25
+	give_bank_account = 30
 	min_pq = 0
 	max_pq = null
 
@@ -51,7 +51,8 @@
 	backpack_contents = list(
 		/obj/item/reagent_containers/glass/bottle/rogue/healthpot = 2,
 		/obj/item/natural/worms/leech/cheele = 1, //little buddy
-		/obj/item/reagent_containers/glass/bottle/waterskin = 1
+		/obj/item/reagent_containers/glass/bottle/waterskin = 1,
+		/obj/item/storage/belt/rogue/pouch/coins/poor = 1
 	)
 	ADD_TRAIT(H, TRAIT_EMPATH, "[type]")
 	ADD_TRAIT(H, TRAIT_NOSTINK, "[type]")
