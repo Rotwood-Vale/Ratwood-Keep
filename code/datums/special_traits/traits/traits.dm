@@ -92,7 +92,7 @@
 
 //positive
 /datum/special_trait/duelist
-	name = "Swordmaster Apprentice"
+	name = "Weaponsmaster's Tutelage"
 	greet_text = span_notice("I was the student of a legendary weaponsmaster, my skill is rivalled by few! I've also hidden a rapier.")
 	weight = 50
 
