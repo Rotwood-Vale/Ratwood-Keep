@@ -24,11 +24,17 @@
 	if(!inspiration_available)
 		return
 	if(morale_time > world.time)
-		to_chat(user, span_warning("I aren't feeling inspired enough to flourish [src] again yet."))
+		to_chat(user, span_warning("I am not feeling inspired enough to flourish [src] again yet."))
 		return
-	user.visible_message(span_bignotice("[user] flourishes [src]!"), \
+	user.visible_message(span_bignotice("[user] raise [src] skywards, inspiring their allies!"), \
 	span_notice("I raise [src] skywards, inspiring my allies!"))
-	playsound(src, "rustle", 100, FALSE)
+	playsound(src, "sound/foley/flag_flutter.ogg", 100, FALSE)
+	var/delay_offset = 0
+	for(var/mob/M in viewers(src, 7))
+		var/mob/living/carbon/human/C = M
+		if (ishuman(M))
+			addtimer(CALLBACK(C, TYPE_PROC_REF(/mob, emote), "clap"), delay_offset * 0.3)
+			delay_offset++
 	if(warcry)
 		user.say("[warcry]", forced="banner")
 	var/old_transform = user.transform
