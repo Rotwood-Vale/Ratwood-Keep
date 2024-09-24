@@ -156,7 +156,7 @@
 			gloves = /obj/item/clothing/gloves/roguetown/leather
 			head = /obj/item/clothing/head/roguetown/helmet/bascinet
 			if(prob(30))
-				neck = /obj/item/clothing/neck/roguetown/bervor
+				neck = /obj/item/clothing/neck/roguetown/bevor
 			else
 				neck = /obj/item/clothing/neck/roguetown/gorget
 			H.mind.adjust_skillrank(/datum/skill/combat/swords, rand(1,2), TRUE) // either expert or master skill - knights start with master and templars expert sword skill

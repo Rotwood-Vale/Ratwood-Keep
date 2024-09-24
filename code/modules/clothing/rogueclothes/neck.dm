@@ -81,16 +81,54 @@
 					H.update_inv_neck()
 					H.update_inv_head()
 
-
 /obj/item/clothing/neck/roguetown/chaincoif/iron
+	name = "iron chain coif"
 	icon_state = "ichaincoif"
 	anvilrepair = /datum/skill/craft/armorsmithing
 	smeltresult = /obj/item/ingot/iron
 	max_integrity = 150
 
-/obj/item/clothing/neck/roguetown/bervor
-	name = "bervor"
-	icon_state = "bervor"
+/obj/item/clothing/neck/roguetown/chaincoif/full
+	name = "full chain coif"
+	icon_state = "fchaincoif"
+	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR|HIDEFACIALHAIR
+	resistance_flags = FIRE_PROOF
+	body_parts_covered = NECK|MOUTH|NOSE|HAIR|EARS|HEAD
+	adjustable = CAN_CADJUST
+
+/obj/item/clothing/neck/roguetown/chaincoif/full/AdjustClothes(mob/user)
+	if(loc == user)
+		if(adjustable == CAN_CADJUST)
+			adjustable = CADJUSTED
+			if(toggle_icon_state)
+				icon_state = "chaincoif"
+			flags_inv = HIDEHAIR
+			body_parts_covered = NECK|HAIR|EARS|HEAD
+			if(ishuman(user))
+				var/mob/living/carbon/H = user
+				H.update_inv_neck()
+				H.update_inv_head()
+		else if(adjustable == CADJUSTED)
+			adjustable = CADJUSTED_MORE
+			if(toggle_icon_state)
+				icon_state = "chaincoif_t"
+			flags_inv = null
+			body_parts_covered = NECK
+			if(ishuman(user))
+				var/mob/living/carbon/H = user
+				H.update_inv_neck()
+				H.update_inv_head()
+		else if(adjustable == CADJUSTED_MORE)
+			ResetAdjust(user)
+		if(ishuman(user))
+			var/mob/living/carbon/H = user
+			H.update_inv_neck()
+			H.update_inv_head()
+
+
+/obj/item/clothing/neck/roguetown/bevor
+	name = "bevor"
+	icon_state = "bevor"
 	armor = list("blunt" = 90, "slash" = 100, "stab" = 80, "bullet" = 100, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
 	anvilrepair = /datum/skill/craft/armorsmithing
 	smeltresult = /obj/item/ingot/steel
@@ -98,7 +136,7 @@
 	max_integrity = 300
 	resistance_flags = FIRE_PROOF
 	slot_flags = ITEM_SLOT_NECK
-	body_parts_covered = NECK|EARS|MOUTH|NOSE
+	body_parts_covered = NECK|MOUTH|NOSE
 	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT, BCLASS_TWIST)
 	blocksound = PLATEHIT
 

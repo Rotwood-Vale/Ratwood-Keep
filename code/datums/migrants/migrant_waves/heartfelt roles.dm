@@ -148,7 +148,7 @@
 	gloves = /obj/item/clothing/gloves/roguetown/plate
 	pants = /obj/item/clothing/under/roguetown/platelegs
 	cloak = /obj/item/clothing/cloak/tabard/knight/guard
-	neck = /obj/item/clothing/neck/roguetown/bervor
+	neck = /obj/item/clothing/neck/roguetown/bevor
 	shirt = /obj/item/clothing/suit/roguetown/armor/chainmail
 	armor = /obj/item/clothing/suit/roguetown/armor/plate/full
 	shoes = /obj/item/clothing/shoes/roguetown/boots/armor
