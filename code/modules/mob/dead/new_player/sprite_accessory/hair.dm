@@ -57,6 +57,10 @@
 	name = "Bedhead (Long)"
 	icon_state = "bedhead-long"
 
+/datum/sprite_accessory/hair/head/badlycut
+	name = "Shorter Long Bedhead"
+	icon_state = "hair_verybadlycut"
+
 /datum/sprite_accessory/hair/head/beehive
 	name = "Beehive"
 	icon_state = "beehive"
