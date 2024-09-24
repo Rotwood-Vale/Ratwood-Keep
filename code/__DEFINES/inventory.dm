@@ -249,6 +249,7 @@
 #define CANT_CADJUST 0
 #define CAN_CADJUST 1
 #define CADJUSTED 2
+#define CADJUSTED_MORE 3
 
 //Allowed equipment lists for security vests and hardsuits.
 

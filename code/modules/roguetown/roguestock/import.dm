@@ -85,7 +85,7 @@
 	new /obj/item/clothing/gloves/roguetown/plate(src)
 	new /obj/item/clothing/under/roguetown/platelegs(src)
 	new /obj/item/clothing/cloak/tabard/knight/guard(src)
-	new /obj/item/clothing/neck/roguetown/bervor(src)
+	new /obj/item/clothing/neck/roguetown/bevor(src)
 	new /obj/item/clothing/suit/roguetown/armor/chainmail(src)
 	new /obj/item/clothing/suit/roguetown/armor/plate/full(src)
 	new /obj/item/clothing/shoes/roguetown/boots/armor(src)
