@@ -3,8 +3,8 @@
 	flag = BANDIT
 	department_flag = PEASANTS
 	faction = "Station"
-	total_positions = 4 //four roundstart bandits shouldn't be that much of an issue, if we start getting regular 4 man lowpop bandit killteams we can limit them to pop.
-	spawn_positions = 4
+	total_positions = 0 
+	spawn_positions = 0
 	allowed_races = RACES_ALL_KINDS
 	tutorial = "Long ago you did a crime worthy of your bounty being hung on the wall outside of the local inn. You now live with your fellow freemen in the bog, and generally get up to no good."
 
@@ -16,7 +16,7 @@
 	display_order = JDO_BANDIT
 	show_in_credits = FALSE
 	announce_latejoin = FALSE
-	min_pq = 1
+	min_pq = 0
 	max_pq = null
 
 	advclass_cat_rolls = list(CTAG_BANDIT = 20)

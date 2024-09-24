@@ -156,8 +156,7 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "E
 				if("Extended")
 					log_game("Major Antagonist: Extended")
 		return TRUE
-
-	if(num_players() >= 10) // Need at least a handful of people before we start throwing ne'er-do-wells into the mix.
+	if(num_players() >= 1) // Need at least a handful of people before we start throwing ne'er-do-wells into the mix.
 		var/major_roll = rand(1,100)
 		switch(major_roll)
 			/* rebels depend a little too much on the main players being exceedingly good roleplayers and lends itself to bad conduct too much to be spawning automatically
@@ -209,6 +208,8 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "E
 	var/num_bandits = 0
 	if(num_players() >= 10)
 		num_bandits = CLAMP(round(num_players() / 2), 25, 30)
+		var/datum/job/bandit_job = SSjob.GetJob("Bandit")
+		bandit_job.total_positions = num_bandits
 		banditgoal += (num_bandits * rand(200,400))
 
 	if(num_bandits)
@@ -518,8 +519,7 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "E
 			vampires += vampire
 ///////////////// BANDIT
 	for(var/datum/mind/bandito in pre_bandits)
-		var/datum/antagonist/new_antag = new /datum/antagonist/bandit()
-		bandito.add_antag_datum(new_antag)
+		SSjob.AssignRole(bandito.current, "Bandit")
 		GLOB.pre_setup_antags -= bandito
 		bandits += bandito
 		SSrole_class_handler.bandits_in_round = TRUE
