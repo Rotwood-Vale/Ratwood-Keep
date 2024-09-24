@@ -230,7 +230,7 @@
 	update_icon()
 	held_items[/obj/item/reagent_containers/powder/spice] = list("PRICE" = rand(20,35),"NAME" = "spice")
 	held_items[/obj/item/reagent_containers/powder/ozium] = list("PRICE" = rand(6,15),"NAME" = "ozium")
-	held_items[/obj/item/reagent_containers/powder/moondust] = list("PRICE" = rand(35,55),"NAME" = "moondust")
+	held_items[/obj/item/reagent_containers/powder/moondust] = list("PRICE" = rand(13,26),"NAME" = "moondust")
 	held_items[/obj/item/clothing/mask/cigarette/rollie/cannabis] = list("PRICE" = rand(12,18),"NAME" = "swampweed zig")
 	held_items[/obj/item/clothing/mask/cigarette/rollie/nicotine] = list("PRICE" = rand(5,10),"NAME" = "zig")
 /*	held_items[/obj/item/reagent_containers/glass/bottle/rogue/wine] = list("PRICE" = rand(35,77),"NAME" = "vino")
