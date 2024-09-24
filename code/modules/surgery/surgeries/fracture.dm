@@ -49,7 +49,7 @@
 	return TRUE
 
 /datum/surgery_step/set_bone/success(mob/user, mob/living/target, target_zone, obj/item/tool, datum/intent/intent)
-	display_results(user, target, span_notice("I successfully set the bone in [target]'s [parse_zone(target_zone)]."),
+	display_results(user, target, span_notice("I successfully set the bone in [target]'s [parse_zone(target_zone)], they'll need to rest to fully heal now."),
 		span_notice("[user] successfully sets the bone in [target]'s [parse_zone(target_zone)]!"),
 		span_notice("[user] successfully sets the bone in [target]'s [parse_zone(target_zone)]!"))
 	var/obj/item/bodypart/bodypart = target.get_bodypart(check_zone(target_zone))
