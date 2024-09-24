@@ -15,7 +15,8 @@
 	many humans and elves from forming relationships, which are capable of producing child.\
 	Elves are known for their intelligence and sharp eyes, but their graceful nature does \
 	not lend itself to the concepts of strength or durability... \
-	There are elves from a small smattering of tribes in these parts."
+	There are elves from a small smattering of tribes in these parts.\
+	+1 Speed, -1 Constitution."
 
 	skin_tone_wording = "Tribal Identity"
 

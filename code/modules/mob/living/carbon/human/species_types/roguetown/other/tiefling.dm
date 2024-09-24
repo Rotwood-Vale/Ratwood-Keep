@@ -15,7 +15,8 @@
 	and leading to most seeking a solitary life outside the watchful eyes of others. \
 	Tiefling cannot reproduce with mortals, and so no half-breed exists. \
 	Tiefling tend to be extremely perceptive and paranoid, as luck is rarely on their side \
-	and their unique biology makes them extremely susceptible to injury."
+	and their unique biology makes them extremely susceptible to injury. \
+	+1 Intelligence."
 
 	skin_tone_wording = "Progenitor"
 
