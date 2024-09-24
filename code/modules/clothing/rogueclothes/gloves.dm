@@ -8,6 +8,7 @@
 	bloody_icon_state = "bloodyhands"
 	sleevetype = "shirt"
 	max_heat_protection_temperature = 361
+	w_class = WEIGHT_CLASS_SMALL
 
 /obj/item/clothing/gloves/roguetown/leather
 	name = "leather gloves"
@@ -68,7 +69,6 @@
 	drop_sound = 'sound/foley/dropsound/chain_drop.ogg'
 	anvilrepair = /datum/skill/craft/armorsmithing
 	smeltresult = /obj/item/ingot/steel
-	clothing_flags = CANT_SLEEP_IN
 
 /obj/item/clothing/gloves/roguetown/chain/iron
 	icon_state = "icgloves"

@@ -75,6 +75,7 @@
 							part.add_wound(/datum/wound/slash)
 				adjustToxLoss(0.3)
 			//heart attack stuff
+			handle_curses()
 			handle_heart()
 			handle_liver()
 			update_rogfat()

@@ -135,6 +135,10 @@
 	name = "Double Horns"
 	icon_state = "doublehorns"
 
+/datum/sprite_accessory/horns/tiefhorns
+	name = "Tiefling Classic"
+	icon_state = "tiefhorns"
+
 /datum/sprite_accessory/horns/large
 	abstract_type = /datum/sprite_accessory/horns/large
 	icon = 'icons/mob/sprite_accessory/horns/horns_large.dmi'
@@ -143,11 +147,6 @@
 	name = "Big Antlers"
 	icon_state = "big_antlers"
 	relevant_layers = list(BODY_ADJ_LAYER, BODY_BEHIND_LAYER, BODY_FRONT_LAYER)
-
-/datum/sprite_accessory/horns/tiefling
-	name = "Tiefling"
-	icon = 'icons/mob/sprite_accessory/tiefling.dmi'
-	icon_state = "tiebhorns"
 
 /datum/sprite_accessory/horns/halforc
 	name = "Half Orc"

@@ -48,7 +48,20 @@
 	var/obj/item/bodypart/head/stored_head = P
 	var/correct_head = FALSE
 
-	qdel(P)
+	var/reward_amount = 0
+	for(var/datum/bounty/b in GLOB.head_bounties)
+		if(b.target == stored_head.real_name)
+			correct_head = TRUE
+			say("A bounty has been sated.")
+			reward_amount += b.amount
+			GLOB.head_bounties -= b
+		
+	if(correct_head)
+		qdel(P)
+	else // No valid bounty for this head?
+		say("This skull carries no reward.")
+		playsound(src, 'sound/misc/machineno.ogg', 100, FALSE, -1)
+		return
 
 	say(pick(list("Performing intra-cranial inspection...", "Analyzing skull structure...", "Commencing cephalic dissection...")))
 
@@ -61,20 +74,8 @@
 
 	sleep(2 SECONDS)
 
-	//give reward for every bounty that matches
-	var/reward_amount = 0
-	for(var/datum/bounty/b in GLOB.head_bounties)
-		if(b.target == stored_head.real_name)
-			correct_head = TRUE
-			say("A bounty has been sated.")
-			reward_amount += b.amount
-			GLOB.head_bounties -= b
-
 	if(correct_head)
 		budget2change(reward_amount, user)
-	else // No valid bounty for this head?
-		say("This skull carried no reward.")
-		playsound(src, 'sound/misc/machineno.ogg', 100, FALSE, -1)
 
 	// Head has been "analyzed". Return it.
 	sleep(2 SECONDS)
@@ -89,13 +90,7 @@
 	var/consult_menu
 	consult_menu += "<center>BOUNTIES<BR>"
 	consult_menu += "--------------<BR>"
-	if(SSrole_class_handler.bandits_in_round)
-		consult_menu += "The head of each Bandit is wanted by The Crown for 80 mammons.<BR>"
-		consult_menu += "--------------<BR>"
-		bounty_found = TRUE
 	for(var/datum/bounty/saved_bounty in GLOB.head_bounties)
-		if(saved_bounty.bandit)
-			continue
 		consult_menu += saved_bounty.banner
 		bounty_found = TRUE
 

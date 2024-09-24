@@ -164,17 +164,17 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "E
 		if(1 to 35)
 			pick_rebels()
 			log_game("Major Antagonist: Rebellion")
-		if(36 to 60)
+		if(36 to 70)
 			//WWs and Vamps now normally roll together
 			// pick_vampires()
 			pick_werewolves()
 			log_game("Major Antagonist: Werewolves")
-		if(61 to 100)
+		if(71 to 100)
 			log_game("Major Antagonist: Extended") //gotta put something here.
 	
-	if(prob(80))
-		pick_bandits()
-		log_game("Minor Antagonist: Bandit")
+	// if(prob(80))
+	pick_bandits()
+	log_game("Minor Antagonist: Bandit")
 	if(prob(45))
 		pick_aspirants()
 		log_game("Minor Antagonist: Aspirant")
@@ -222,35 +222,35 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "E
 		antag_candidates = get_players_for_role(ROLE_BANDIT)
 		if(antag_candidates.len)
 			for(var/i = 0, i < num_bandits, ++i)
-				var/datum/mind/bandaids = pick_n_take(antag_candidates)
-				if(!bandaids) // no candidates left as it cuts the list and sends something back
+				var/datum/mind/candidate = pick_n_take(antag_candidates)
+				if(!candidate) // no candidates left as it cuts the list and sends something back
 					break
-				if(!(bandaids in allantags)) // We don't want to double dip... I guess? Two birds one stone tho, A already bandit check would check pre_bandits
+				if(!(candidate in allantags)) // We don't want to double dip... I guess? Two birds one stone tho, A already bandit check would check pre_bandits
 					continue
-				if(bandaids.assigned_role in GLOB.noble_positions) // Job cat string stoppers
+				if(candidate.assigned_role in GLOB.noble_positions) // Job cat string stoppers
 					continue
-				if(bandaids.assigned_role in GLOB.church_positions) // Many of these guys vanishing would suck
+				if(candidate.assigned_role in GLOB.church_positions) // Many of these guys vanishing would suck
 					continue
-				if(bandaids.assigned_role in GLOB.yeoman_positions) // Many of these guys vanishing would suck
+				if(candidate.assigned_role in GLOB.yeoman_positions) // Many of these guys vanishing would suck
 					continue
 
-				allantags -= bandaids
-				pre_bandits += bandaids
+				allantags -= candidate
+				pre_bandits += candidate
 
-				bandaids.assigned_role = "Bandit"
-				bandaids.special_role = ROLE_BANDIT
+				candidate.assigned_role = "Bandit"
+				candidate.special_role = ROLE_BANDIT
 
-				bandaids.restricted_roles = restricted_jobs.Copy() // For posterities sake
-				testing("[key_name(bandaids)] has been selected as a bandit")
-				log_game("[key_name(bandaids)] has been selected as a bandit")
+				candidate.restricted_roles = restricted_jobs.Copy() // For posterities sake
+				testing("[key_name(candidate)] has been selected as a bandit")
+				log_game("[key_name(candidate)] has been selected as a bandit")
 			for(var/antag in pre_bandits)
 				GLOB.pre_setup_antags |= antag
 			restricted_jobs = list() // We empty it here, but its also getting a new list on every relevant other pick proc rn so lol
 
 
 /datum/game_mode/chaosmode/proc/pick_aspirants()
-	var/list/possible_jobs_aspirants = list("Prince", "Princess", "Guard Lieutenant", "Steward", "Hand", "Knight")
-	var/list/possible_jobs_helpers = list("Guard Lieutenant", "Prince", "Princess", "Hand",  "Steward", "Knight")
+	var/list/possible_jobs_aspirants = list("Prince", "Princess", "Retinue Captain", "Steward", "Hand", "Knight")
+	var/list/possible_jobs_helpers = list("Retinue Captain", "Prince", "Princess", "Hand",  "Steward", "Knight")
 	var/list/rolesneeded = list("Aspirant","Loyalist","Supporter")
 
 	antag_candidates = get_players_for_role(ROLE_ASPIRANT)
@@ -355,7 +355,7 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "E
 	"Priest",
 	"Acolyte",
 	"Cleric",
-	"Guard Lieutenant",
+	"Retinue Captain",
 	"Court Magician",
 	"Templar",
 	"Bog Guard",
@@ -402,7 +402,7 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "E
 	"Priest",
 	"Acolyte",
 	"Cleric",
-	"Guard Lieutenant",
+	"Retinue Captain",
 	"Court Magician",
 	"Templar",
 	"Bog Guard",

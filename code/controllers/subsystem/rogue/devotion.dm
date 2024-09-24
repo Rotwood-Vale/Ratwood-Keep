@@ -125,6 +125,7 @@
 		H.mind.AddSpell(newspell)
 		LAZYADD(granted_spells, newspell)
 	level = CLERIC_T0
+	update_devotion(50, 50, silent = TRUE)
 	max_devotion = CLERIC_REQ_1 //Max devotion limit - Paladins are stronger but cannot pray to gain all abilities beyond t1
 	max_progression = CLERIC_REQ_1
 
@@ -159,6 +160,19 @@
 	passive_devotion_gain = 1
 	update_devotion(300, CLERIC_REQ_4, silent = TRUE)
 	START_PROCESSING(SSobj, src)
+
+/datum/devotion/proc/excommunicate(mob/living/carbon/human/H)
+	if(!devotion)
+		return
+
+	prayer_effectiveness = 0
+	devotion = 0
+	to_chat(holder, span_boldnotice("I have been excommunicated. I am now unable to gain devotion."))
+
+/datum/devotion/proc/recommunicate(mob/living/carbon/human/H)
+
+	prayer_effectiveness = 2
+	to_chat(holder, span_boldnotice("I have been welcomed back to the Church. I am now able to gain devotion again."))
 
 // Debug verb
 /mob/living/carbon/human/proc/devotionchange()
