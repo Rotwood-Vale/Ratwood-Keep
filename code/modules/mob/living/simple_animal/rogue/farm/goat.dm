@@ -80,7 +80,7 @@
 		/obj/item/reagent_containers/food/snacks/grown/wheat,
 		/obj/item/reagent_containers/food/snacks/grown/oat,
 		/obj/item/reagent_containers/food/snacks/grown/apple,
-		obj/item/reagent_containers/food/snacks/grown/berries/rogue,
+		/obj/item/reagent_containers/food/snacks/grown/berries/rogue,
 		)
 	tame_chance = 25
 	bonus_tame_chance = 15
@@ -217,7 +217,7 @@
 		/obj/item/reagent_containers/food/snacks/grown/wheat,
 		/obj/item/reagent_containers/food/snacks/grown/oat,
 		/obj/item/reagent_containers/food/snacks/grown/apple,
-		obj/item/reagent_containers/food/snacks/grown/berries/rogue,
+		/obj/item/reagent_containers/food/snacks/grown/berries/rogue,
 		)
 	footstep_type = FOOTSTEP_MOB_SHOE
 	pooptype = /obj/item/natural/poo/horse

@@ -39,7 +39,7 @@
 	H.change_stat("constitution", 2)
 	if(H.age == AGE_OLD)
 		H.mind.adjust_skillrank(/datum/skill/craft/cooking, 1, TRUE)
-var/packcontents = pickweight(list("Honey" = 1, "Truffles" = 1, "Bacon" = 1)) // What is our special ingredient? Honey, truffles, or BACON?
+	var/packcontents = pickweight(list("Honey" = 1, "Truffles" = 1, "Bacon" = 1)) // What is our special ingredient? Honey, truffles, or BACON?
 	switch(packcontents)
 		if("Honey")
 			backpack_contents = list(
