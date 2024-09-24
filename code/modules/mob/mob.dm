@@ -437,15 +437,18 @@ GLOBAL_VAR_INIT(mobids, 1)
 		return
 
 	if(isliving(src))
-		var/target = "\the [A]"
 		var/message = "[src] looks at"
+		var/target = "\the [A]"
 		if(!isturf(A))
-			if(A.loc == src)
+			if(A == src)
+				message = "[src] looks over"
+				target = "themselves"
+			else if(A.loc == src)
 				target = "[src.p_their()] [A.name]"
-			if(A.loc.loc == src)
+			else if(A.loc.loc == src)
 				message = "[src] looks into"
 				target = "[src.p_their()] [A.loc.name]"
-			if(isliving(A))
+			else if(isliving(A))
 				var/mob/living/T = A
 				var/hitzone = check_zone(zone_selected)
 				if(!iscarbon(T))
