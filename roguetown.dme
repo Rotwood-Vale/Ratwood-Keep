@@ -3562,7 +3562,6 @@
 #include "modular_hearthstone\code\game\objects\items\clothes\strapless_dress.dm"
 #include "modular_hearthstone\code\game\objects\structures\canopy.dm"
 #include "modular_hearthstone\code\game\objects\structures\hangingbanners.dm"
-#include "modular_hearthstone\code\game\objects\structures\standard.dm"
 #include "modular_hearthstone\code\interface\LOOC.dm"
 #include "modular_hearthstone\code\modules\mob\living\simple_animal\rogue\orc.dm"
 #include "modular_hearthstone\code\modules\mob\living\simple_animal\rogue\rogue_corpse.dm"
