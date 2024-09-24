@@ -79,6 +79,71 @@
 	M.adjustToxLoss(3, 0)
 	M.blood_volume = min(M.blood_volume+100, BLOOD_VOLUME_MAXIMUM) // Full to bursting.
 
+/datum/chemical_reaction/sublime_ambrosia
+	name = "Sublime Ambrosia"
+	id = /datum/reagent/medicine/sublimeambrosia
+	results = list(/datum/reagent/medicine/sublimeambrosia = 5)
+	required_reagents = list (/datum/reagent/medicine/healthpot = 45, /datum/reagent/medicine/minorhealthpot = 45, /datum/reagent/medicine/majorhealthpot = 45)
+
+/datum/reagent/medicine/sublimeambrosia
+	name = "Sublime Ambrosia"
+	description = "Rapidly regenerates all types of damage, and reverses death."
+	reagent_state = LIQUID
+	color = "#b89c2b"
+	taste_description = "magical apoptosis"
+	overdose_threshold = 6 // Small doses...
+	metabolization_rate = 0.3 * REAGENTS_METABOLISM
+	alpha = 173
+
+/datum/reagent/medicine/sublimeambrosia/on_mob_life(mob/living/carbon/M)
+	var/list/wCount = M.get_wounds()
+	if(M.blood_volume < BLOOD_VOLUME_NORMAL)
+		M.blood_volume = min(M.blood_volume+200, BLOOD_VOLUME_MAXIMUM)
+	else
+		M.blood_volume = min(M.blood_volume+20, BLOOD_VOLUME_MAXIMUM)
+	if(wCount.len > 0)	
+		M.heal_wounds(6)
+		M.update_damage_overlays()
+	M.adjustBruteLoss(-4.5*REM, 0)
+	M.adjustFireLoss(-4.5*REM, 0)
+	M.adjustOxyLoss(-9, 0)
+	M.adjustOrganLoss(ORGAN_SLOT_BRAIN, -9*REM)
+	M.adjustCloneLoss(-9*REM, 0)
+	..()
+	. = 1
+
+/datum/reagent/medicine/sublimeambrosia/reaction_mob(mob/living/M, method=TOUCH, reac_volume)
+	if(iscarbon(M) && M.stat == DEAD)
+		if(M.mob_biotypes & MOB_UNDEAD)
+			return FALSE
+		if(!M.revive(full_heal = FALSE))
+			M.visible_message(span_notice("[M]'s body does not seem to react to the ambrosia..."))
+			return FALSE
+		if(method == INGEST)
+			var/mob/living/carbon/spirit/underworld_spirit = M.get_spirit()
+			if(underworld_spirit)
+				var/mob/dead/observer/ghost = underworld_spirit.ghostize()
+				qdel(underworld_spirit)
+				ghost.mind.transfer_to(M, TRUE)
+			M.grab_ghost(force = TRUE) // even suicides
+			M.emote("breathgasp")
+			M.Jitter(100)
+			M.update_body()
+			M.visible_message(span_notice("[M]'s body convulses as they're ripped from death's embrace by ambrosia!"), span_green("I awake from the void."))
+			if(M.mind)
+				if(!HAS_TRAIT(M, TRAIT_IWASREVIVED))
+					ADD_TRAIT(M, TRAIT_IWASREVIVED, "[type]")
+		return TRUE
+	..()
+
+/datum/reagent/medicine/sublimeambrosia/overdose_process(mob/living/carbon/M) // This is meant for the dead, or near dead. Imbibe at own risk.
+	M.add_nausea(25)
+	M.adjustBruteLoss(3*REM, 0)
+	M.dizziness += 2
+	M.confused += 2
+	M.adjustToxLoss(15, 0)
+	M.blood_volume = min(M.blood_volume+100, BLOOD_VOLUME_MAXIMUM)
+
 /datum/reagent/medicine/shroomt
 	name = "Shroom Tea"
 	description = "Extremely slowly regenerates all types of damage. long lasting."

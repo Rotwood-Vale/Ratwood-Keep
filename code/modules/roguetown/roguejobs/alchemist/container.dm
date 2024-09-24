@@ -8,6 +8,9 @@
 /obj/item/reagent_containers/glass/bottle/rogue/majorhealthpot
 	list_reagents = list(/datum/reagent/medicine/majorhealthpot = 45)
 
+/obj/item/reagent_containers/glass/bottle/rogue/sublimeambrosia
+	list_reagents = list(/datum/reagent/medicine/sublimeambrosia = 5)
+	
 /obj/item/reagent_containers/glass/bottle/rogue/manapot
 	list_reagents = list(/datum/reagent/medicine/manapot = 45)
 
