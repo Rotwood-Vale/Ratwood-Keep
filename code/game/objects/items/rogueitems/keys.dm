@@ -82,6 +82,12 @@
 	icon_state = "mazekey"
 	lockid = "manor"
 
+/obj/item/roguekey/heir
+	name = "heir room key"
+	desc = "A highly coveted key belonging to the doors of the heirs of this monarchy."
+	icon_state = "hornkey"
+	lockid = "heir"
+
 /obj/item/roguekey/garrison
 	name = "town watch key"
 	desc = "This key belongs to the town guards."
