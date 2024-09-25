@@ -200,7 +200,7 @@
 		/obj/effect/proc_holder/spell/invoked/push_spell,
 		/obj/effect/proc_holder/spell/invoked/blade_burst,
 		/obj/effect/proc_holder/spell/targeted/touch/nondetection,
-		/obj/effect/proc_holder/spell/invoked/knock,
+//		/obj/effect/proc_holder/spell/invoked/knock,
 		/obj/effect/proc_holder/spell/invoked/haste,
 		/obj/effect/proc_holder/spell/invoked/featherfall,
 		/obj/effect/proc_holder/spell/targeted/touch/darkvision,

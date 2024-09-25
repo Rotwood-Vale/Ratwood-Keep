@@ -279,7 +279,7 @@ GLOBAL_DATUM_INIT(acid_overlay, /mutable_appearance, mutable_appearance('icons/e
 /obj/proc/obj_break(damage_flag)
 	obj_broken = TRUE
 	if(break_sound)
-		playsound(src, break_sound, 100, TRUE)
+		playsound(src, break_sound, 80, TRUE)
 	if(break_message)
 		visible_message(break_message)
 
