@@ -62,7 +62,7 @@
 	sewrepair = FALSE
 	anvilrepair = /datum/skill/craft/armorsmithing
 
-/obj/item/storage/belt/rogue/leather/hand
+/obj/item/storage/belt/rogue/leather/steel
 	name = "steel belt"
 	icon_state = "steelplaque"
 	sellprice = 30

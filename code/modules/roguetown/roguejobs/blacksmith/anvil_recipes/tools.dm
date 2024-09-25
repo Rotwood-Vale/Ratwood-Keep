@@ -146,6 +146,26 @@
 	req_bar = /obj/item/ingot/iron
 	created_item = /obj/item/reagent_containers/glass/bucket/pot
 
+/datum/anvil_recipe/tools/fork
+	name = "Iron Fork x3"
+	req_bar = /obj/item/ingot/iron
+	created_item = /obj/item/kitchen/ironfork
+	createditem_num = 3
+	craftdiff = 1
+
+/datum/anvil_recipe/tools/spoon
+	name = "Iron Spoon x3"
+	req_bar = /obj/item/ingot/iron
+	created_item = /obj/item/kitchen/ironspoon
+	createditem_num = 3
+	craftdiff = 1
+
+/datum/anvil_recipe/tools/bowl
+	name = "Iron Bowl"
+	req_bar = /obj/item/ingot/iron
+	created_item = /obj/item/reagent_containers/glass/bowl/iron
+	craftdiff = 1
+
 // --------- Steel -----------
 
 /datum/anvil_recipe/tools/steelpick
@@ -166,6 +186,18 @@
 	req_bar = /obj/item/ingot/steel
 	created_item = /obj/item/roguegear
 	createditem_num = 3
+
+/datum/anvil_recipe/tools/chefknife
+	name = "Chef's Knife"
+	req_bar = /obj/item/ingot/steel
+	created_item = /obj/item/rogueweapon/huntingknife/chefknife
+	createditem_num = 1
+
+/datum/anvil_recipe/tools/cleaver
+	name = "Cleaver"
+	req_bar = /obj/item/ingot/steel
+	created_item = /obj/item/rogueweapon/huntingknife/cleaver
+	createditem_num = 1
 
 // --------- SILVER -----------
 

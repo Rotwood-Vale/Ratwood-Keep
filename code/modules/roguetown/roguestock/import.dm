@@ -90,7 +90,7 @@
 	new /obj/item/clothing/suit/roguetown/armor/plate/full(src)
 	new /obj/item/clothing/shoes/roguetown/boots/armor(src)
 	new /obj/item/storage/keyring/guardcastle(src)
-	new /obj/item/storage/belt/rogue/leather/hand(src)
+	new /obj/item/storage/belt/rogue/leather/steel(src)
 	new /obj/item/rogueweapon/sword/long(src)
 
 
@@ -112,7 +112,7 @@
 	new /obj/item/clothing/suit/roguetown/armor/plate/half(src)
 	new /obj/item/clothing/shoes/roguetown/boots/armor(src)
 	new /obj/item/storage/keyring/guardcastle(src)
-	new /obj/item/storage/belt/rogue/leather/hand(src)
+	new /obj/item/storage/belt/rogue/leather/steel(src)
 	new /obj/item/rogueweapon/spear(src)
 
 /datum/roguestock/import/crossbow

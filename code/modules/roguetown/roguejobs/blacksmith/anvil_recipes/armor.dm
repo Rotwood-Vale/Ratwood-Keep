@@ -366,3 +366,21 @@
 	additional_items = list(/obj/item/ingot/steel, /obj/item/ingot/steel)
 	created_item = /obj/item/clothing/head/roguetown/helmet/heavy/frogmouth
 	craftdiff = 3
+
+/datum/anvil_recipes/armor/steelbelt
+	name = "Steel Plated Belt"
+	req_bar = /obj/item/ingot/steel
+	created_item = /obj/item/storage/belt/rogue/leather/steel
+	craftdiff = 2
+
+/datum/anvil_recipes/armor/silverbelt
+	name = "Silver Plated Belt"
+	req_bar = /obj/item/ingot/silver
+	created_item = /obj/item/storage/belt/rogue/leather/plaquesilver
+	craftdiff = 2
+
+/datum/anvil_recipes/armor/goldbelt
+	name = "Gold Plated Belt"
+	req_bar = /obj/item/ingot/gold
+	created_item = /obj/item/storage/belt/rogue/leather/plaquegold
+	craftdiff = 2
