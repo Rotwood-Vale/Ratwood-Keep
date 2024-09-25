@@ -46,9 +46,51 @@
 	name = "The Court of Heartfelt"
 	shared_wave_type = /datum/migrant_wave/heartfelt
 	can_roll = FALSE
+	downgrade_wave = /datum/migrant_wave/heartfelt_down_four
 	roles = list(
 		/datum/migrant_role/heartfelt/lord = 1,
 		/datum/migrant_role/heartfelt/lady = 1,
 		/datum/migrant_role/heartfelt/hand = 1,
+	)
+	greet_text = "Fleeing disaster, you have come together as a court, united in a final effort to restore the former glory and promise of Heartfelt. Stay close and watch out for each other, for all of your sakes! Some of you already did not make it on the way here..."
+
+/datum/migrant_wave/heartfelt_down_four
+	name = "The Court of Heartfelt"
+	shared_wave_type = /datum/migrant_wave/heartfelt
+	can_roll = FALSE
+	downgrade_wave = /datum/migrant_wave/heartfelt_down_five
+	roles = list(
+		/datum/migrant_role/heartfelt/lord = 1,
+		/datum/migrant_role/heartfelt/lady = 1,
+	)
+	greet_text = "Fleeing disaster, you have come together as a court, united in a final effort to restore the former glory and promise of Heartfelt. Stay close and watch out for each other, for all of your sakes! Some of you already did not make it on the way here..."
+
+/datum/migrant_wave/heartfelt_down_five
+	name = "The Court of Heartfelt"
+	shared_wave_type = /datum/migrant_wave/heartfelt
+	can_roll = FALSE
+	downgrade_wave = /datum/migrant_wave/heartfelt_down_six
+	roles = list(
+		/datum/migrant_role/heartfelt/lord = 1,
+	)
+	greet_text = "Fleeing disaster, you have come together as a court, united in a final effort to restore the former glory and promise of Heartfelt. Stay close and watch out for each other, for all of your sakes! Some of you already did not make it on the way here..."
+
+/datum/migrant_wave/heartfelt_down_six
+	name = "The Court of Heartfelt"
+	shared_wave_type = /datum/migrant_wave/heartfelt
+	can_roll = FALSE
+	downgrade_wave = /datum/migrant_wave/heartfelt_down_seven
+	roles = list(
+		/datum/migrant_role/heartfelt/lady = 1,
+	)
+	greet_text = "Fleeing disaster, you have come together as a court, united in a final effort to restore the former glory and promise of Heartfelt. Stay close and watch out for each other, for all of your sakes! Some of you already did not make it on the way here..."
+
+/datum/migrant_wave/heartfelt_down_seven
+	name = "The Court of Heartfelt"
+	shared_wave_type = /datum/migrant_wave/heartfelt
+	can_roll = FALSE
+	roles = list(
+		/datum/migrant_role/heartfelt/knight = 1,
+		/datum/migrant_role/heartfelt/magos = 1,
 	)
 	greet_text = "Fleeing disaster, you have come together as a court, united in a final effort to restore the former glory and promise of Heartfelt. Stay close and watch out for each other, for all of your sakes! Some of you already did not make it on the way here..."

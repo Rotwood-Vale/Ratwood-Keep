@@ -38,13 +38,13 @@
 	heldz_items = 3
 	sewrepair = TRUE
 
-/obj/item/storage/belt/rogue/leather/dropped(mob/living/carbon/human/user)
+/*/obj/item/storage/belt/rogue/leather/dropped(mob/living/carbon/human/user)
 	..()
 	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
 	if(STR)
 		var/list/things = STR.contents()
 		for(var/obj/item/I in things)
-			STR.remove_from_storage(I, get_turf(src))
+			STR.remove_from_storage(I, get_turf(src)) */ //this should stop belts from dropping stuff but isnt
 
 /obj/item/storage/belt/rogue/leather/plaquegold
 	name = "plaque belt"

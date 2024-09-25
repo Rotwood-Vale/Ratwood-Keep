@@ -41,7 +41,7 @@
 		else
 			return PROCESS_KILL
 
-/obj/machinery/light/rogue/lanternpost/attack_hand(mob/user)
+/*/obj/machinery/light/rogue/lanternpost/attack_hand(mob/user)
 	. = ..()
 	if(.)
 		return
@@ -52,7 +52,7 @@
 		on = FALSE
 		set_light(0)
 		update_icon()
-		playsound(src.loc, 'sound/foley/torchfixturetake.ogg', 100)
+		playsound(src.loc, 'sound/foley/torchfixturetake.ogg', 100) */
 
 /obj/machinery/light/rogue/lanternpost/update_icon()
 	if(torchy)

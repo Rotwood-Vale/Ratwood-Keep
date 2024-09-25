@@ -12,7 +12,7 @@
 	var/berry_charges = 0
 	var/atom/movable/inserted
 	var/activecolor = "#FFFFFF"
-	var/list/allowed_types = list(
+	/*var/list/allowed_types = list(
 			/obj/item/clothing/suit/roguetown/shirt/robe,
 			/obj/item/clothing/suit/roguetown/shirt/dress,
 			/obj/item/clothing/suit/roguetown/shirt/undershirt,
@@ -30,6 +30,12 @@
 			/obj/item/clothing/shoes/roguetown/simpleshoes,
 			/obj/item/clothing/suit/roguetown/armor/gambeson
 			)
+*/
+	var/list/allowed_types = list(
+			/obj/item/clothing,
+			/obj/item/storage
+			)
+
 	var/static/list/selectable_colors = list(
   		"White" = "#ffffff",
 		"Black" = "#414143",

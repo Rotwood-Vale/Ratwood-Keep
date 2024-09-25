@@ -200,7 +200,13 @@
 				to_chat(src, span_warning("The enemy defeated my parry!"))
 				return FALSE
 
-			drained = max(drained, 5)		
+			drained = max(drained, 5)
+			var/exp_multi = 1
+
+			if(!U.mind)
+				exp_multi = exp_multi/2
+			if(istype(user.rmb_intent, /datum/rmb_intent/weak))
+				exp_multi = exp_multi/2
 			
 			if(weapon_parry == TRUE)
 				if(do_parry(used_weapon, drained, user)) //show message

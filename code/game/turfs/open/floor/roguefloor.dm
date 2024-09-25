@@ -222,7 +222,7 @@
 		negate_slowdown = TRUE
 
 	if(negate_slowdown)
-		returned = max(returned-2, 0)
+		returned = max(returned-2.5, 0)
 
 	return returned
 

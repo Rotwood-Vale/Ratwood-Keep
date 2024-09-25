@@ -32,10 +32,10 @@
 
 /obj/effect/proc_holder/spell/targeted/churn
 	name = "Churn Undead"
-	range = 8
+	range = 2
 	overlay_state = "necra"
-	releasedrain = 30
-	charge_max = 30 SECONDS
+	releasedrain = 15
+	charge_max = 15 SECONDS
 	max_targets = 0
 	cast_without_targets = TRUE
 	req_items = list(/obj/item/clothing/neck/roguetown/psicross)
@@ -44,7 +44,7 @@
 	invocation = "The Undermaiden rebukes!"
 	invocation_type = "shout" //can be none, whisper, emote and shout
 	miracle = TRUE
-	devotion_cost = 20
+	devotion_cost = 10
 
 /obj/effect/proc_holder/spell/targeted/churn/cast(list/targets,mob/living/user = usr)
 	var/prob2explode = 100

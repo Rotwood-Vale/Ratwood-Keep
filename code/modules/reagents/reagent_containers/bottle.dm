@@ -54,12 +54,14 @@
 		reagents.flags = reagent_flags
 		desc = "A bottle with a cork."
 		spillable = FALSE
+		to_chat(usr, span_notice("You put a cork the bottle."))
 	else
 		reagent_flags = OPENCONTAINER
 		reagents.flags = reagent_flags
 		playsound(user.loc,'sound/items/uncork.ogg', 100, TRUE)
 		desc = "An open bottle, hopefully a cork is close by."
 		spillable = TRUE
+		to_chat(usr, span_notice("You've uncorked the bottle."))
 	update_icon()
 
 /obj/item/reagent_containers/glass/bottle/Initialize()
