@@ -13,7 +13,7 @@
 	move_to_delay = 3
 	base_intents = list(/datum/intent/unarmed/punch)
 	butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat/steak = 15,
-						/obj/item/natural/hide = 15, /obj/item/natural/bundle/bone/full = 3)
+						/obj/item/natural/hide = 15, /obj/item/natural/bundle/bone/full = 3, /obj/item/natural/bogtroll_head = 1)
 	faction = list("trolls")
 	mob_biotypes = MOB_ORGANIC|MOB_BEAST
 	health = 150
@@ -111,3 +111,15 @@
 			return "foreleg"
 	return ..()
 
+/obj/item/natural/bogtroll_head
+	icon = 'icons/roguetown/mob/monster/Trolls.dmi'
+	name = "bogtroll's head"
+	icon_state = "bogtroll_head"
+	desc = "The hideous dismembered head of a bog troll."
+	dropshrink = null
+	force = 0
+	throwforce = 0
+	w_class = WEIGHT_CLASS_BULKY
+	resistance_flags = FLAMMABLE
+	drop_sound = 'sound/foley/dropsound/gen_drop.ogg'
+	sellprice = 80

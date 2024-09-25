@@ -111,3 +111,15 @@
 			return "foreleg"
 	return ..()
 
+/obj/item/natural/cavetroll_head
+	icon = 'icons/roguetown/mob/monster/Trolls.dmi'
+	name = "cavetroll's head"
+	icon_state = "cavetroll_head"
+	desc = "The hideous dismembered head of a cave troll."
+	dropshrink = null
+	force = 0
+	throwforce = 0
+	w_class = WEIGHT_CLASS_BULKY
+	resistance_flags = FLAMMABLE
+	drop_sound = 'sound/foley/dropsound/gen_drop.ogg'
+	sellprice = 80

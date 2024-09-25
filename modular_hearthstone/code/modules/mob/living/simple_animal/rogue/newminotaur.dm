@@ -13,7 +13,7 @@
 	move_to_delay = 3
 	base_intents = list(/datum/intent/simple/minotaur_unarmed)
 	butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat/steak = 10,
-						/obj/item/natural/hide = 10, /obj/item/natural/bundle/bone/full = 2)
+						/obj/item/natural/hide = 10, /obj/item/natural/bundle/bone/full = 2, /obj/item/natural/mino_head = 1)
 	faction = list("caves")
 	mob_biotypes = MOB_ORGANIC|MOB_BEAST
 	health = 500
@@ -44,10 +44,33 @@
 //	stat_attack = UNCONSCIOUS
 	remains_type = /obj/item/rogueweapon/stoneaxe/battle
 
+
+
+/obj/item/natural/mino_head
+	name = "minotaur's head"
+	icon = 'modular_hearthstone/icons/obj/items/mino_head.dmi'
+	icon_state = "mino_head"
+	desc = "Dismembered head of a mighty minotaur."
+	dropshrink = null
+	force = 0
+	throwforce = 0
+	w_class = WEIGHT_CLASS_BULKY
+	resistance_flags = FLAMMABLE
+	drop_sound = 'sound/foley/dropsound/gen_drop.ogg'
+	sellprice = 80
+
+
+/obj/item/natural/mino_head/female
+	icon_state = "fmino_head"
+	desc = "Dismembered head of a mighty female minotaur."
+
+
 /mob/living/simple_animal/hostile/retaliate/rogue/minotaur/female
 	icon_state = "MinotaurFem"
 	icon_living = "MinotaurFem"
 	icon_dead = "MinotaurFem_dead"
+	butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat/steak = 10,
+						/obj/item/natural/hide = 10, /obj/item/natural/bundle/bone/full = 2, /obj/item/natural/mino_head/female	 = 1)
 
 /mob/living/simple_animal/hostile/retaliate/rogue/minotaur/axe
 	icon_state = "MinotaurMale_Axe"
@@ -62,6 +85,8 @@
 	icon_state = "MinotaurFem_Axe"
 	icon_living = "MinotaurFem_Axe"
 	icon_dead = "MinotaurFem_dead"
+	butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat/steak = 10,
+						/obj/item/natural/hide = 10, /obj/item/natural/bundle/bone/full = 2, /obj/item/natural/mino_head/female	 = 1)
 
 /mob/living/simple_animal/hostile/retaliate/rogue/minotaur/death(gibbed)
 	..()
