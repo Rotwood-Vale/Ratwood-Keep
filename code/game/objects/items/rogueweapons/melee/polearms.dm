@@ -364,3 +364,43 @@
 /obj/item/rogueweapon/greatsword/grenz
 	name = "steel zweihander"
 	icon_state = "steelzwei"
+
+/obj/item/rogueweapon/greatsword/estoc
+	name = "estoc"
+	desc = "A sword possessed of a quite long and tapered blade that is intended to be thrust between the \
+	gaps in an opponent's armor. The hilt is wrapped tight in black leather."
+	icon_state = "estoc"
+	force = 11
+	force_wielded = 25
+	possible_item_intents = list(
+		/datum/intent/sword/chop,
+		/datum/intent/sword/strike,
+	)
+	gripped_intents = list(
+		/datum/intent/sword/thrust/estoc,
+		/datum/intent/sword/lunge,
+		/datum/intent/sword/chop,
+		/datum/intent/sword/strike,
+	)
+	minstr = 8
+
+/datum/intent/sword/thrust/estoc
+	name = "thrust"
+	penfactor = 50
+	recovery = 30
+	clickcd = 15
+
+
+/datum/intent/sword/lunge
+	name = "lunge"
+	icon_state = "inimpale"
+	attack_verb = list("lunges")
+	animname = "stab"
+	blade_class = BCLASS_STAB
+	hitsound = list('sound/combat/hits/bladed/genstab (1).ogg', 'sound/combat/hits/bladed/genstab (2).ogg', 'sound/combat/hits/bladed/genstab (3).ogg')
+	reach = 2
+	penfactor = 30
+	damfactor = 1.2
+	chargetime = 1
+	recovery = 40
+	clickcd = 15
