@@ -388,7 +388,7 @@
 	name = "thrust"
 	penfactor = 50
 	recovery = 30
-	clickcd = 15
+	clickcd = 10
 
 
 /datum/intent/sword/lunge
@@ -403,4 +403,4 @@
 	damfactor = 1.2
 	chargetime = 1
 	recovery = 40
-	clickcd = 15
+	clickcd = 10
