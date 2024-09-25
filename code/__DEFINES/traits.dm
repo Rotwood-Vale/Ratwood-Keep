@@ -41,6 +41,7 @@
 #define TRAIT_GOODLOVER "Fabled Lover"
 #define TRAIT_SEEDKNOW "Seed Knower"
 #define TRAIT_SQUIRE_REPAIR "Squire Knowledge"
+#define TRAIT_TRAINED_SMITH "Trained Smith"
 
 //Hearthstone port (Tracking)
 #define TRAIT_PERFECT_TRACKER "Perfect Tracker" //Will always find any tracks and analyzes them perfectly.
@@ -146,6 +147,7 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_NUDE_SLEEPER = span_warning("I can't fall asleep unless I'm nude and in bed."),
 	TRAIT_ABYSSOR_SWIM = "I get far less tired when swimming than my peers.",
 	TRAIT_LONGSTRIDER = "Each of my steps finds it's footing no matter how treacherous the terrain is.",
+	TRAIT_TRAINED_SMITH = span_info("I've spent long training, and with some more, I will be able to smith legendary items.")
 ))
 
 // trait accessor defines

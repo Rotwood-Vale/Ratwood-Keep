@@ -145,6 +145,7 @@
 	..()
 	head = /obj/item/clothing/head/roguetown/hatfur
 	gloves = /obj/item/clothing/gloves/roguetown/grenzelgloves/blacksmith
+	ADD_TRAIT(H, TRAIT_TRAINED_SMITH, TRAIT_GENERIC)
 	if(prob(50))
 		head = /obj/item/clothing/head/roguetown/hatblu
 	if(H.mind)
