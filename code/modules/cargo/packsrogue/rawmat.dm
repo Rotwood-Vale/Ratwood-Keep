@@ -24,7 +24,7 @@
 	/obj/item/rogueore/coal,
 	/obj/item/rogueore/coal)
 
-/datum/supply_pack/rogue/natural/silver
+/datum/supply_pack/rogue/rawmats/silver
 	name = "Silver Ore"
 	cost = 125
 	contains = list(/obj/item/rogueore/silver)
