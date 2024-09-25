@@ -115,10 +115,10 @@
 	i_type = "Tools"
 
 /datum/anvil_recipe/tools/lamptern
-	name = "Lamptern x2"
+	name = "Lamptern x3"
 	req_bar = /obj/item/ingot/iron
 	created_item = /obj/item/flashlight/flare/torch/lantern
-	createditem_num = 2
+	createditem_num = 3
 
 /datum/anvil_recipe/tools/cups
 	name = "Cups x3"

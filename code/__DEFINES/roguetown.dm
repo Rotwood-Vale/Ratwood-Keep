@@ -214,6 +214,7 @@ GLOBAL_LIST_EMPTY(job_respawn_delays)
 #define CTAG_ROYALGUARD		"CAT_ROYALGUARD"	// Royal Guard class - Handles Royal Guard class selector
 #define CTAG_MERCENARY		"CAT_MERCENARY"		// Mercenary class - Handles Mercenary class selector
 #define CTAG_HAND			"CAT_HAND"			// Hand class - Handles Hand class selector
+#define CTAG_TEMPLAR		"CAT_TEMPLAR"		// Templar class - Handles Templar class selector
 
 /*
 	Defines for the triumph buy datum categories
