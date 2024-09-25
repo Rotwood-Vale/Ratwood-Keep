@@ -225,7 +225,16 @@
 	verbage = "builds"
 	craftdiff = 2
 	
-/// TWIG AND TENT
+/// HAY, TWIG AND TENT
+
+/datum/crafting_recipe/roguetown/turfs/hay
+	name = "hay"
+	result = /turf/open/floor/rogue/hay
+	reqs = list(/obj/item/natural/chaff = 2)
+	skillcraft = /datum/skill/craft/crafting
+	verbage_simple = "assemble"
+	verbage = "assembles"
+	craftdiff = 0
 
 /datum/crafting_recipe/roguetown/turfs/twig
 	name = "twig floor"
