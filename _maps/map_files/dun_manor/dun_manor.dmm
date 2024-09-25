@@ -2651,7 +2651,7 @@
 "uts" = (/obj/structure/closet/crate/chest/neu,/obj/item/rope/chain,/obj/item/rope/chain,/obj/item/rope/chain,/turf/open/floor/rogue/cobble/mossy,/area/rogue/under/town/basement)
 "uty" = (/obj/machinery/light/rogue/firebowl/stump,/turf/open/floor/rogue/ruinedwood/spiral,/area/rogue/outdoors/beach)
 "utC" = (/obj/structure/roguemachine/stockpile,/turf/open/floor/rogue/grass,/area/rogue/outdoors/town)
-"utI" = (/obj/structure/closet/crate/chest/neu,/obj/item/rogueweapon/huntingknife/idagger/steel,/obj/item/rogueweapon/huntingknife/idagger/silver,/obj/machinery/light/rogue/torchholder/l,/obj/item/rogueweapon/huntingknife/idagger/navaja,/turf/open/floor/carpet/purple,/area/rogue/indoors/town/shop)
+"utI" = (/obj/structure/closet/crate/chest/neu,/obj/item/rogueweapon/huntingknife/idagger/steel,/obj/machinery/light/rogue/torchholder/l,/obj/item/rogueweapon/huntingknife/idagger/navaja,/turf/open/floor/carpet/purple,/area/rogue/indoors/town/shop)
 "uul" = (/obj/structure/roguewindow,/obj/structure/bars/passage/shutter{redstone_id = "armourer_shutter"},/turf/open/floor/rogue/cobble,/area/rogue/indoors/town/dwarfin)
 "uut" = (/obj/structure/mineral_door/wood{locked = 1; lockid = "house1"; name = "house i"},/turf/open/floor/rogue/ruinedwood{icon_state = "weird1"},/area/rogue/indoors/town)
 "uuE" = (/obj/structure/bed/rogue/inn/hay,/obj/effect/landmark/start/mercenarylate,/turf/open/floor/rogue/ruinedwood/spiral,/area/rogue/indoors)
