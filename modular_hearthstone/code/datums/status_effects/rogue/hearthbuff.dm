@@ -149,3 +149,24 @@
 	if(iscarbon(owner))
 		REMOVE_TRAIT(owner, TRAIT_ANTIMAGIC, TRAIT_GENERIC)
 	return ..()
+
+/datum/status_effect/buff/bogtrekkingbuff
+	id = "virilitybuff"
+	alert_type = /atom/movable/screen/alert/status_effect/buff/bogtrekkingbuff
+	duration = 10 MINUTES
+
+/atom/movable/screen/alert/status_effect/buff/bogtrekkingbuff
+	name = "Freedom of Movement"
+	desc = ""
+	icon_state = "virility"
+
+/datum/status_effect/buff/bogtrekkingbuff/on_apply()
+	if(iscarbon(owner))
+		ADD_TRAIT(owner, TRAIT_BOG_TREKKING, TRAIT_GENERIC)
+
+	return ..()
+
+/datum/status_effect/buff/bogtrekkingbuff/on_remove()
+	if(iscarbon(owner))
+		REMOVE_TRAIT(owner, TRAIT_BOG_TREKKING, TRAIT_GENERIC)
+	return ..()

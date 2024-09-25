@@ -190,6 +190,26 @@
 		holder.remove_reagent(/datum/reagent/medicine/nullmagicpot, 20)
 	..()
 	. = 1 
+/datum/reagent/medicine/trekkersdelight
+	name = "Trekker's Delight"
+	description = "Makes one immune turf slowdown."
+	reagent_state = LIQUID
+	color = "#463612"
+	taste_description = "salt and murk"
+	overdose_threshold = 16
+	metabolization_rate = 0.2 * REAGENTS_METABOLISM 
+	alpha = 225
+
+/datum/reagent/medicine/trekkersdelight/overdose_process(mob/living/carbon/M)
+	if(HAS_TRAIT(M, TRAIT_BOG_TREKKING))
+		if(holder.has_reagent(/datum/reagent/medicine/trekkersdelight))
+			holder.remove_reagent(/datum/reagent/medicine/trekkersdelight, 20)
+		return
+	M.apply_status_effect(/datum/status_effect/buff/bogtrekkingbuff)
+	if(holder.has_reagent(/datum/reagent/medicine/trekkersdelight))
+		holder.remove_reagent(/datum/reagent/medicine/trekkersdelight, 20)
+	..()
+	. = 1 
 
 /datum/reagent/medicine/intellectpot
 	name = "Intellect Potion"
