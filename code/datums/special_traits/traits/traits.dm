@@ -7,7 +7,7 @@
 
 /datum/special_trait/nightvision
 	name = "Night Vision"
-	greet_text = span_notice("I can easily see in the dark.")
+	greet_text = span_notice("Darkness is unbeknownst to me.")
 	weight = 100
 
 /datum/special_trait/nightvision/on_apply(mob/living/carbon/human/character, silent)
@@ -21,7 +21,7 @@
 
 /datum/special_trait/thickskin
 	name = "Tough"
-	greet_text = span_notice("I feel it. Thick Skin. Dense Flesh. Durable Bones. I'm a punch-taking machine.")
+	greet_text = span_notice("My thick skin, dense flesh, durable bones...The Enigma can't break me.")
 	weight = 150
 
 /datum/special_trait/thickskin/on_apply(mob/living/carbon/human/character, silent)
@@ -30,7 +30,7 @@
 
 /datum/special_trait/curseofcain
 	name = "Flawed Immortality"
-	greet_text = span_notice("I feel like I don't need to eat anymore, and my veins feel empty... Is this normal?")
+	greet_text = span_notice("What...happened...to me..? Am I...even alive..?")
 	weight = 50
 
 /datum/special_trait/curseofcain/on_apply(mob/living/carbon/human/character, silent)
@@ -44,7 +44,7 @@
 
 /datum/special_trait/deadened
 	name = "Deadened"
-	greet_text = span_notice("Ever since <b>it</b> happened, I've never been able to feel anything. Inside or out")
+	greet_text = span_notice("Ever since Astratan magic brought me back from death, I haven't been able to feel anything. Inside or out.")
 	weight = 50
 
 /datum/special_trait/deadened/on_apply(mob/living/carbon/human/character, silent)
@@ -54,8 +54,8 @@
 	ADD_TRAIT(character, TRAIT_NOPAINSTUN, "[type]")
 
 /datum/special_trait/value
-	name = "Coin Counter"
-	greet_text = span_notice("I know how to estimate an item's value.")
+	name = "Eyes of Horuz"
+	greet_text = span_notice("With just a glance I can weigh the worth of all things.")
 	weight = 200
 	restricted_traits = list(TRAIT_SEEPRICES)
 
@@ -64,8 +64,8 @@
 	character.change_stat("fortune", 2)
 
 /datum/special_trait/lightstep
-	name = "Light Step"
-	greet_text = span_notice("I am quiet, nobody can hear my steps.")
+	name = "Feather-footed"
+	greet_text = span_notice("I've always wondered if I was blessed by Xylix, as no one could ever hear my steps.")
 	weight = 100
 
 /datum/special_trait/lightstep/on_apply(mob/living/carbon/human/character, silent)
@@ -73,8 +73,8 @@
 	character.change_stat("speed", 1)
 
 /datum/special_trait/night_owl
-	name = "Night Owl"
-	greet_text = span_notice("I've always preferred Noc over her sister")
+	name = "Nite Owl"
+	greet_text = span_notice("Noc is so beautiful. I always feel happy to gaze upon them in the nite sky.")
 	weight = 200
 
 /datum/special_trait/night_owl/on_apply(mob/living/carbon/human/character, silent)
@@ -83,7 +83,7 @@
 
 /datum/special_trait/beautiful
 	name = "Beautiful"
-	greet_text = span_notice("My face is a work of art")
+	greet_text = span_notice("Eora blessed me from birth with striking beauty. In this land? I'm a marvel among the unclean.")
 	weight = 200
 
 /datum/special_trait/beautiful/on_apply(mob/living/carbon/human/character, silent)
@@ -93,7 +93,7 @@
 //positive
 /datum/special_trait/duelist
 	name = "Weaponsmaster's Tutelage"
-	greet_text = span_notice("I was the student of a legendary weaponsmaster, my skill is rivalled by few! I've also hidden a rapier.")
+	greet_text = span_notice("I was the student of a legendary weaponsmaster for many years. There is no weapon of war I haven't sparred with a thousand times. My skill is rivalled by few in this world. I've also hidden my dead master's heirloom, who has passed it down to me to wield.")
 	weight = 50
 
 /datum/special_trait/duelist/on_apply(mob/living/carbon/human/character, silent)
@@ -103,11 +103,11 @@
 	character.mind.adjust_skillrank_up_to(/datum/skill/combat/axes, 5, TRUE)
 	character.mind.adjust_skillrank_up_to(/datum/skill/combat/knives, 5, TRUE)
 	character.mind.adjust_skillrank_up_to(/datum/skill/combat/polearms, 5, TRUE)
-	character.mind.special_items["Rapier"] = /obj/item/rogueweapon/sword/rapier
+	character.mind.special_items["Rapier"] = /obj/item/rogueweapon/sword/rapier/dec
 
 /datum/special_trait/eagle_eyed
-	name = "Eagle Eyed"
-	greet_text = span_notice("With my sharp aim I could always hit distant targets, I've also hidden a crossbow and some bolts.")
+	name = "Crow's eye"
+	greet_text = span_notice("I can spot distant objects far before others. My talent for weapons of range is enhanced far beyond a normal man's because of this. I should get my gear I hid away.")
 	weight = 50
 
 /datum/special_trait/eagle_eyed/on_apply(mob/living/carbon/human/character, silent)
@@ -119,7 +119,7 @@
 
 /datum/special_trait/mule
 	name = "Mule"
-	greet_text = span_notice("I've been dealing drugs and I have a stash hidden away")
+	greet_text = span_notice("Spice, dust, ozzy...Anything they're buyin', I'm sellin'. I got a stash hidden away...I think...what tree was it again..?")
 	weight = 200
 
 /datum/special_trait/mule/on_apply(mob/living/carbon/human/character, silent)
@@ -130,7 +130,7 @@
 
 /datum/special_trait/cunning_linguist
 	name = "Cunning Linguist"
-	greet_text = span_notice("I know an extra language, and I can be quite seductive")
+	greet_text = span_notice("I've picked up another language from my travels, and it opens many legs for me.")
 	weight = 200
 
 /datum/special_trait/cunning_linguist/on_apply(mob/living/carbon/human/character, silent)
@@ -146,12 +146,12 @@
 
 /datum/special_trait/corn_fed
 	name = "Corn Fed"
-	greet_text = span_notice("My diet was quite rich in corn.")
+	greet_text = span_notice("I was born on the cob.")
 	weight = 150
 
 /datum/special_trait/corn_fed/on_apply(mob/living/carbon/human/character, silent)
 	character.change_stat("constitution", 6)
-	character.change_stat("intelligence", -2)
+	character.change_stat("intelligence", -3)
 
 /datum/special_trait/bookworm
 	name = "Bookworm"
@@ -164,7 +164,7 @@
 
 /datum/special_trait/arsonist
 	name = "Arsonist"
-	greet_text = span_notice("I like seeing things combust and burn. I have hidden around two firebombs.")
+	greet_text = span_notice("I used to want to be an Astratan, before they shunned me for my fervent adoration of burnt flesh. Now I just want to see it all burn. I tossed my bombs behind a statue before the guards searched me.")
 	weight = 150
 
 /datum/special_trait/arsonist/on_apply(mob/living/carbon/human/character, silent)
@@ -174,7 +174,7 @@
 
 /datum/special_trait/pineapple
 	name = "The safeword is \"Pineapple\""
-	greet_text = span_notice("I enjoy whipping people until they squirm and whine, their pain makes my pleasure. I also have a hidden a whip")
+	greet_text = span_notice("I enjoy whipping people until they squirm and whine, their pain makes my pleasure. I also have a hidden a whip, and a special drink.")
 	weight = 50
 
 /datum/special_trait/pineapple/on_apply(mob/living/carbon/human/character, silent)
@@ -209,8 +209,8 @@
 	character.change_stat("endurance", 2) // healthy boy
 
 /datum/special_trait/spring_in_my_step
-	name = "Spring in my Step"
-	greet_text = span_notice("My legs are quite strong and where most have to climb, I can just jump")
+	name = "Acrobatic"
+	greet_text = span_notice("I can leap with great ease, even up heights!")
 	weight = 75
 
 /datum/special_trait/spring_in_my_step/on_apply(mob/living/carbon/human/character, silent)
@@ -218,7 +218,7 @@
 
 /datum/special_trait/tolerant
 	name = "Tolerant"
-	greet_text = span_notice("I dream of an ideal future, one with peace between all races")
+	greet_text = span_notice("I dream of an ideal future, one with peace between all races.")
 	weight = 200
 
 /datum/special_trait/tolerant/on_apply(mob/living/carbon/human/character, silent)
@@ -227,7 +227,7 @@
 
 /datum/special_trait/thief
 	name = "Thief"
-	greet_text = span_notice("Life's not easy around here, but I've made mine a little easier by taking things of others")
+	greet_text = span_notice("It's hard to make a fortune, so I make mine by taking others'.")
 	weight = 25 //Cringe special, reduced odds but buffed.
 
 /datum/special_trait/thief/on_apply(mob/living/carbon/human/character, silent)
@@ -248,10 +248,11 @@
 	character.grant_language(/datum/language/orcish)
 	character.grant_language(/datum/language/beast)
 	character.grant_language(/datum/language/draconic)
+	character.grant_language(/datum/language/faexin)
 
 /datum/special_trait/civilizedbarbarian
 	name = "Tavern Brawler"
-	greet_text = span_notice("My fists feel heavier!")
+	greet_text = span_notice("I used to have to fight my father, and my mother gave birth to me drunk. My fists were born to brawl.")
 	weight = 100
 
 /datum/special_trait/civilizedbarbarian/on_apply(mob/living/carbon/human/character, silent)
@@ -260,7 +261,7 @@
 
 /datum/special_trait/mastercraftsmen
 	name = "Master Craftsman"
-	greet_text = "In my youth, I've decided I'd get a grasp on every trade, and pursued the 10 arts of the craft."
+	greet_text = "In my youth, I'd studied under every legendary tradeworker, and pursued the 10 arts of the craft."
 	req_text = "Middle-aged or Old"
 	allowed_ages = list(AGE_MIDDLEAGED, AGE_OLD)
 	weight = 100
@@ -296,7 +297,7 @@
 	character.change_stat("fortune", 3)
 
 /datum/special_trait/richpouch
-	name = "Lucky Find"
+	name = "Lucky Find!"
 	greet_text = span_notice("I've recently come across a small fortune! Who cares who this used to belong to, it's mine now!")
 	weight = 150
 
@@ -305,8 +306,8 @@
 	character.put_in_hands(ring, forced = TRUE)
 
 /datum/special_trait/swift
-	name = "Speedster"
-	greet_text = span_notice("I feel like the fastest person alive and I can probably dodge anything, as long as I'm not weighed down by medium or heavy armor")
+	name = "Bottled Lightning"
+	greet_text = span_notice("I'm the fastest person alive and I can probably dodge anything, as long as I'm not weighed down by medium or heavy armor.")
 	weight = 50
 
 /datum/special_trait/swift/on_apply(mob/living/carbon/human/character, silent)
@@ -316,8 +317,8 @@
 	character.change_stat("speed", 3)
 
 /datum/special_trait/gourmand
-	name = "Gourmand"
-	greet_text = span_notice("I can eat even the most spoiled, raw, or toxic food and water as if they were delicacies..")
+	name = "Lead-bellied"
+	greet_text = span_notice("I can stomach even the most spoiled, raw, or toxic food and water as if they were bread and wine.")
 	weight = 200
 
 /datum/special_trait/gourmand/on_apply(mob/living/carbon/human/character, silent)
@@ -326,7 +327,7 @@
 
 /datum/special_trait/lucky
 	name = "Fortune's Grace"
-	greet_text = span_notice("Xylix favor me, I am extremely lucky.")
+	greet_text = span_notice("I am Xylix's champion. My luck knows no bounds.")
 	req_text = "Have Xylix as your Patron"
 	allowed_patrons = list(/datum/patron/divine/xylix)
 	weight = 50
@@ -355,7 +356,7 @@
 
 /datum/special_trait/atheism
 	name = "Godless"
-	greet_text = span_notice("Gods may exist, but know what? I care not.")
+	greet_text = span_notice("The "gods" do not exist. Miracles and magic is just undiscovered nature of our world. Anyone who thinks otherwise is deluded.")
 	req_text = "Non-Church Role"
 	restricted_jobs = list(CHURCH_ROLES)
 	weight = 200
@@ -369,7 +370,7 @@
 //negative
 /datum/special_trait/nimrod
 	name = "Nimrod"
-	greet_text = span_boldwarning("In the past I learned slower than my peers, and I tend to be clumsy.")
+	greet_text = span_boldwarning("i no tink gud")
 	weight = 50
 
 /datum/special_trait/nimrod/on_apply(mob/living/carbon/human/character, silent)
@@ -377,7 +378,7 @@
 
 /datum/special_trait/hussite
 	name = "Known Heretic"
-	greet_text = span_boldwarning("I've been denounced by the church for either reasons legitimate or not!")
+	greet_text = span_boldwarning("I've been denounced by the church. I'd better not get injured.")
 	req_text = "Non-church role"
 	weight = 200
 	restricted_jobs = list(CHURCH_ROLES)
@@ -387,7 +388,7 @@
 
 /datum/special_trait/bounty
 	name = "Hunted Man"
-	greet_text = span_boldwarning("Someone put a bounty on my head!")
+	greet_text = span_boldwarning("I may not be a bandit, but my head carries it's weight in gold. I need to watch my back, or I'll be having raisin bread with the undermaiden.")
 	weight = 300 // Funnest negative for overall server quality.
 
 /datum/special_trait/bounty/on_apply(mob/living/carbon/human/character, silent)
@@ -425,7 +426,7 @@
 
 /datum/special_trait/outlaw
 	name = "Known Outlaw"
-	greet_text = span_boldwarning("Whether for crimes I did or was accused of, I have been declared an outlaw!")
+	greet_text = span_boldwarning("I have been declared an outlaw! Would it be suicide to try to turn myself in..?")
 	weight = 200
 
 /datum/special_trait/outlaw/on_apply(mob/living/carbon/human/character, silent)
@@ -443,7 +444,7 @@
 
 /datum/special_trait/unlucky
 	name = "Unlucky"
-	greet_text = span_boldwarning("Ever since you knocked over that glass vase, you just feel... off")
+	greet_text = span_boldwarning("I should never have dug that grave...")
 	weight = 50
 
 /datum/special_trait/unlucky/on_apply(mob/living/carbon/human/character, silent)
@@ -452,7 +453,7 @@
 
 /datum/special_trait/jesterphobia
 	name = "Jesterphobic"
-	greet_text = span_boldwarning("I have a severe, irrational fear of Jesters")
+	greet_text = span_boldwarning("I have a severe, irrational fear of jesters.")
 	weight = 200
 
 /datum/special_trait/jesterphobia/on_apply(mob/living/carbon/human/character, silent)
@@ -460,7 +461,7 @@
 
 /datum/special_trait/xenophobic
 	name = "Xenophobic"
-	greet_text = span_boldwarning("Lesser races pollute our land")
+	greet_text = span_boldwarning("GIT THEE WEERD FOOKIN THEENGS UUT MAH TOWN")
 	weight = 200
 
 /datum/special_trait/xenophobic/on_apply(mob/living/carbon/human/character, silent)
@@ -470,7 +471,7 @@
 
 /datum/special_trait/wild_night
 	name = "Wild Night"
-	greet_text = span_boldwarning("I don't remember what I did last night, and now I'm lost!")
+	greet_text = span_boldwarning("The last thing I remember, was a guy I met at a bar calling themself "Psydon's Champion" and riding around with them on a saiga...")
 	weight = 200
 
 /datum/special_trait/wild_night/on_apply(mob/living/carbon/human/character, silent)
@@ -481,7 +482,7 @@
 
 /datum/special_trait/atrophy
 	name = "Atrophy"
-	greet_text = span_boldwarning("When growing up I could barely feed myself... this left me weak and fragile")
+	greet_text = span_boldwarning("When growing up I could barely feed myself...this has left my bones hollow, and even just the smallest injuries hurt. Bad.")
 	weight = 100
 
 /datum/special_trait/atrophy/on_apply(mob/living/carbon/human/character)
@@ -489,7 +490,7 @@
 
 /datum/special_trait/lazy
 	name = "Lazy"
-	greet_text = span_boldwarning("I don't care, never did")
+	greet_text = span_boldwarning("I don't care. Never did.")
 	weight = 50
 
 /datum/special_trait/lazy/on_apply(mob/living/carbon/human/character)
@@ -516,7 +517,7 @@
 //job specials
 /datum/special_trait/punkprincess //I think everyone will like the Rebellous Prince-Like Princess. I'd love to do one for the prince as well that gives him princess loadout, but, up to you!
 	name = "Rebellous Daughter"
-	greet_text = span_notice("I am quite rebellious for a princess. Screw Noble Customs!")
+	greet_text = span_notice("I am quite rebellious for a princess. Screw noble customs!")
 	req_text = "Be a princess"
 	allowed_sexes = list(FEMALE)
 	allowed_jobs = list(/datum/job/roguetown/prince)
@@ -569,7 +570,7 @@
 
 /datum/special_trait/my_precious
 	name = "My Precious"
-	greet_text = span_notice("The ring, it's so shiny.. so valuable, I can feel it's power. It's all mine!")
+	greet_text = span_notice("Ehehehe! Shiny...shiny... NO TAKESIES!!")
 	req_text = "Be a beggar"
 	allowed_jobs = list(/datum/job/roguetown/beggar)
 	weight = 25
@@ -587,7 +588,7 @@
 
 /datum/special_trait/illicit_merchant
 	name = "Illicit Merchant"
-	greet_text = span_notice("I'm sick of working as an underling, I will start my own trade emporium. I've got my hands on a hidden merchant key and a curious magical device")
+	greet_text = span_notice("I'm sick of working as an underling! I will start my own trade emporium, once I get my own goldface device from behind that statue.")
 	req_text = "Be a Shophand"
 	allowed_jobs = list(/datum/job/roguetown/shophand)
 	weight = 100 // Job specials are optional. Increased odds.
