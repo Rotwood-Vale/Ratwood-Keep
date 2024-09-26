@@ -31,7 +31,7 @@
 /datum/outfit/job/roguetown/prince/pre_equip(mob/living/carbon/human/H)
 	..()
 	if(H.pronouns == SHE_HER && H.gender == FEMALE)
-		beltl = /obj/item/roguekey/manor
+		beltl = /obj/item/storage/keyring/heir
 		head = /obj/item/clothing/head/roguetown/hennin
 		neck = /obj/item/storage/belt/rogue/pouch/coins/rich
 		belt = /obj/item/storage/belt/rogue/leather/cloth/lady
@@ -39,13 +39,14 @@
 		shirt = /obj/item/clothing/suit/roguetown/shirt/dress/silkdress/princess
 		shoes = /obj/item/clothing/shoes/roguetown/shortboots
 		pants = /obj/item/clothing/under/roguetown/tights/stockings/silk/random	//Added Silk Stockings for the female nobles
+		backr = /obj/item/storage/backpack/rogue/satchel
 	else
 		pants = /obj/item/clothing/under/roguetown/tights
 		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/guard
 		armor = /obj/item/clothing/suit/roguetown/armor/chainmail
 		shoes = /obj/item/clothing/shoes/roguetown/shortboots
 		belt = /obj/item/storage/belt/rogue/leather
-		beltl = /obj/item/roguekey/manor
+		beltl = /obj/item/storage/keyring/heir
 		beltr = /obj/item/storage/belt/rogue/pouch/coins/rich
 		backr = /obj/item/storage/backpack/rogue/satchel
 	if(H.mind)

@@ -40,11 +40,11 @@
 	cloak = /obj/item/clothing/cloak/stabard/bog
 	shirt = /obj/item/clothing/suit/roguetown/armor/chainmail
 	armor = /obj/item/clothing/suit/roguetown/armor/plate/half
-	neck = /obj/item/clothing/neck/roguetown/bervor
+	neck = /obj/item/clothing/neck/roguetown/bevor
 	wrists = /obj/item/clothing/wrists/roguetown/bracers
 	gloves = /obj/item/clothing/gloves/roguetown/chain
 	shoes = /obj/item/clothing/shoes/roguetown/boots/leather
-	beltl = /obj/item/keyring/guardcastle
+	beltl = /obj/item/storage/keyring/guardcastle
 	beltr = /obj/item/rogueweapon/sword
 	belt = /obj/item/storage/belt/rogue/leather
 	backr = /obj/item/storage/backpack/rogue/satchel

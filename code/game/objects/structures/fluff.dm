@@ -1038,7 +1038,7 @@
 						if(3)
 							I += /obj/item/clothing/suit/roguetown/armor/plate/scale
 						if(4)
-							I += /obj/item/clothing/neck/roguetown/bervor
+							I += /obj/item/clothing/neck/roguetown/bevor
 						if(5)
 							I += /obj/item/clothing/head/roguetown/helmet/horned
 						if(6)

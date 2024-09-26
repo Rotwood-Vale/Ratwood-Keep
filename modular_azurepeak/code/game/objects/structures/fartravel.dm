@@ -50,6 +50,7 @@
 			dat += ", [content.name]"
 		dat += "."
 	LAZYREMOVE(GLOB.actors_list, departing_mob.mobid)
+	LAZYREMOVE(GLOB.roleplay_ads, departing_mob.mobid)
 	message_admins(dat)
 	log_admin(dat)
 	if(departing_mob.stat == DEAD)

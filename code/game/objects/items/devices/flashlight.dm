@@ -331,7 +331,7 @@
 	light_color = "#da8c45"
 	on_damage = 10
 	flags_1 = null
-	possible_item_intents = list(/datum/intent/hit, /datum/intent/use)
+	possible_item_intents = list(/datum/intent/use, /datum/intent/hit)
 	slot_flags = ITEM_SLOT_HIP
 	var/datum/looping_sound/torchloop/soundloop
 	max_integrity = 200
@@ -386,7 +386,8 @@
 
 /obj/item/flashlight/flare/torch/extinguish()
 	if(on)
-		turn_off()
+		if(prob(33))
+			turn_off()
 
 /obj/item/flashlight/flare/torch/turn_off()
 	playsound(src.loc, 'sound/items/firesnuff.ogg', 100)

@@ -31,7 +31,7 @@
 		head = /obj/item/clothing/head/roguetown/nightman
 	shoes = /obj/item/clothing/shoes/roguetown/shortboots
 	belt = /obj/item/storage/belt/rogue/leather/plaquesilver
-	beltl = /obj/item/keyring/archivist
+	beltl = /obj/item/storage/keyring/archivist
 	beltr = /obj/item/storage/belt/rogue/pouch/coins/mid
 	mask = /obj/item/clothing/mask/rogue/spectacles
 

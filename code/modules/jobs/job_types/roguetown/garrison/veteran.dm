@@ -36,14 +36,14 @@
 /datum/outfit/job/roguetown/veteran/pre_equip(mob/living/carbon/human/H)
 	..()
 	cloak = /obj/item/clothing/cloak/half/vet
-	neck = /obj/item/clothing/neck/roguetown/bervor
+	neck = /obj/item/clothing/neck/roguetown/bevor
 	armor = /obj/item/clothing/suit/roguetown/armor/plate/scale
 	shirt = /obj/item/clothing/suit/roguetown/armor/chainmail
 	pants = /obj/item/clothing/under/roguetown/chainlegs
 	shoes = /obj/item/clothing/shoes/roguetown/boots/armor
 	belt = /obj/item/storage/belt/rogue/leather/black
 	beltl = /obj/item/rogueweapon/sword/sabre
-	beltr = /obj/item/keyring/guardcastle
+	beltr = /obj/item/storage/keyring/guardcastle
 	backr = /obj/item/storage/backpack/rogue/satchel/black
 	backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger/steel/special = 1)
 	if(H.mind)

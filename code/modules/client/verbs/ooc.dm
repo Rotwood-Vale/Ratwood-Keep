@@ -67,9 +67,9 @@ GLOBAL_VAR_INIT(normal_ooc_colour, "#002eb8")
 
 	mob.log_talk(raw_msg, LOG_OOC)
 
-	var/keyname = ckey
-	if(ckey in GLOB.anonymize)
-		keyname = get_fake_key(ckey)
+	var/keyname = key
+	/*if(ckey in GLOB.anonymize)
+		keyname = get_fake_key(ckey)*/
 //	if(prefs.unlock_content)
 //		if(prefs.toggles & MEMBER_PUBLIC)
 //			keyname = "<font color='[prefs.ooccolor ? prefs.ooccolor : GLOB.normal_ooc_colour]'>[icon2html('icons/member_content.dmi', world, "blag")][keyname]</font>"
@@ -167,9 +167,9 @@ GLOBAL_VAR_INIT(normal_ooc_colour, "#002eb8")
 
 	mob.log_talk(raw_msg, LOG_OOC)
 
-	var/keyname = ckey
-	if(ckey in GLOB.anonymize)
-		keyname = get_fake_key(ckey)
+	var/keyname = key
+	/*if(ckey in GLOB.anonymize)
+		keyname = get_fake_key(ckey)*/
 //	if(prefs.unlock_content)
 //		if(prefs.toggles & MEMBER_PUBLIC)
 //			keyname = "<font color='[prefs.ooccolor ? prefs.ooccolor : GLOB.normal_ooc_colour]'>[icon2html('icons/member_content.dmi', world, "blag")][keyname]</font>"

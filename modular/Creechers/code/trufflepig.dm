@@ -71,7 +71,7 @@
 /obj/item/reagent_containers/food/snacks/rogue/toxicshrooms/cooked
 	bonus_reagents = list(/datum/reagent/consumable/nutriment = 2)
 	color = "#835b4f"
-/obj/item/reagent_containers/food/snacks/rogue/truffles/Initialize()
+/obj/item/reagent_containers/food/snacks/rogue/toxicshrooms/Initialize()
 	icon_state = pick("mushroom1_full","mushroom1_full","mushroom1_full")
 	. = ..()
 

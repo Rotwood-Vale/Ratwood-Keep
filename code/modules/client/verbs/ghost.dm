@@ -32,7 +32,6 @@ GLOBAL_LIST_INIT(ghost_verbs, list(
 					D.returntolobby()
 					return
 
-				// Check if the player's job is hiv+
 				var/datum/job/target_job = SSjob.GetJob(D.mind.assigned_role)
 				if(target_job)
 					if(target_job.job_reopens_slots_on_death)

@@ -151,7 +151,6 @@ GLOBAL_LIST_EMPTY(chosen_names)
 	var/update_mutant_colors = TRUE
 
 	var/headshot_link
-	var/list/violated = list()
 	var/list/descriptor_entries = list()
 	var/list/custom_descriptors = list()
 	var/defiant = TRUE
@@ -211,9 +210,6 @@ GLOBAL_LIST_EMPTY(chosen_names)
 	random_character(gender)
 	accessory = "Nothing"
 
-	headshot_link = null
-	flavortext = null
-	ooc_notes = null
 	customizer_entries = list()
 	validate_customizer_entries()
 	reset_all_customizer_accessory_colors()

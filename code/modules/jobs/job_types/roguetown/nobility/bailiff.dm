@@ -30,10 +30,9 @@
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
 	pants = /obj/item/clothing/under/roguetown/tights/black
 	shoes = /obj/item/clothing/shoes/roguetown/nobleboot
-	head = /obj/item/clothing/head/roguetown/chaperon/bailiff
 	backl = /obj/item/storage/backpack/rogue/satchel
 	belt = /obj/item/storage/belt/rogue/leather/plaquegold
-	beltl = /obj/item/keyring/sheriff
+	beltl = /obj/item/storage/keyring/sheriff
 	beltr = /obj/item/rogueweapon/mace/cudgel
 	cloak = /obj/item/clothing/cloak/stabard/surcoat/bailiff
 	gloves = /obj/item/clothing/gloves/roguetown/angle

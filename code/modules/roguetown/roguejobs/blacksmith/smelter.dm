@@ -18,7 +18,9 @@
 	var/maxore = 1
 	var/cooking = 0
 	var/actively_smelting = FALSE // Are we currently smelting?
-	fueluse = 5 MINUTES
+	fueluse = 30 MINUTES
+	start_fuel = 5 MINUTES
+	fuel_modifier = 0.33
 	crossfire = FALSE
 
 /obj/machinery/light/rogue/smelter/attackby(obj/item/W, mob/living/user, params)
@@ -48,8 +50,9 @@
 			to_chat(user, span_warning("\The [src] is currently smelting. Wait for it to finish, or douse it with water to retrieve items from it."))
 			return
 
-	if(istype(W, /obj/item/rogueore/coal) && fueluse <= 0)
-		return ..()
+	if(W.firefuel)
+		if (..())
+			return
 	if(W.smeltresult)
 		if(ore.len < maxore)
 			user.dropItemToGround(W)
@@ -145,7 +148,6 @@
 	anchored = TRUE
 	density = TRUE
 	maxore = 4
-	fueluse = 5 MINUTES
 	climbable = FALSE
 
 /obj/machinery/light/rogue/smelter/great/process()

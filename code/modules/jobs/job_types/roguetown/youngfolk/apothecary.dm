@@ -13,8 +13,9 @@
 
 	outfit = /datum/outfit/job/roguetown/apothecary
 
+
 	display_order = JDO_APOTHECARY
-	give_bank_account = TRUE
+	give_bank_account = 30
 
 	min_pq = 0
 	max_pq = null
@@ -25,8 +26,10 @@
 	shirt = /obj/item/clothing/suit/roguetown/shirt/tunic/black
 	armor = /obj/item/clothing/suit/roguetown/shirt/robe/black
 	belt = /obj/item/storage/belt/rogue/leather/rope
-	beltl = /obj/item/storage/belt/rogue/surgery_bag/full
-	beltr = /obj/item/keyring/physician
+	neck = /obj/item/storage/belt/rogue/pouch/coins/poor
+	beltl = /obj/item/storage/belt/rogue/surgery_bag/full/physician
+	beltr = /obj/item/storage/keyring/physician
+	id = /obj/item/scomstone/bad
 	shoes = /obj/item/clothing/shoes/roguetown/simpleshoes
 	backr = /obj/item/storage/backpack/rogue/satchel
 	backpack_contents = list(
@@ -43,5 +46,5 @@
 		H.mind.adjust_skillrank(/datum/skill/misc/sewing, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/alchemy, 3, TRUE)
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/diagnose/secular)
-	H.change_stat("intelligence", 2)
-	H.change_stat("perception", 1)
+	H.change_stat("intelligence", 3)
+	H.change_stat("perception", 2)
