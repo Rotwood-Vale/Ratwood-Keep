@@ -471,7 +471,7 @@
 
 /datum/special_trait/wild_night
 	name = "Wild Night"
-	greet_text = span_boldwarning("The last thing I remember, was a guy I met at a bar calling themself "Psydon's Champion" and riding around with them on a saiga...")
+	greet_text = span_boldwarning("The last thing I remember, was a guy I met at a bar calling themself Psydon's Champion and riding around with them on a saiga...")
 	weight = 200
 
 /datum/special_trait/wild_night/on_apply(mob/living/carbon/human/character, silent)
