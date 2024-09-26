@@ -496,3 +496,4 @@
 	item_state = "esaber"
 	lefthand_file = 'icons/mob/inhands/weapons/swords_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/weapons/swords_righthand.dmi'
+	is_silver = TRUE
