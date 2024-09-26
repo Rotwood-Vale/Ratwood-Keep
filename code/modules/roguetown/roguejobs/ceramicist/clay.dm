@@ -1,6 +1,6 @@
 /obj/item/natural/clay
 	name = "clay"
-	icon_state = "stone1"
+	icon_state = "stone1"     // Placeholder. TODO: Get an icon for clay.
 	desc = "A handful of damp, malleable clay"
 	gripped_intents = null
 	dropshrink = 0.75
@@ -10,33 +10,60 @@
 	slot_flags = null
 	obj_flags = null
 	w_class = WEIGHT_CLASS_TINY
-    var/glazed_result = null // What does this item turn into when glazed in a kiln?
+	var/cooked_type = /obj/item/natural/stone // What does this item turn into when glazed in a kiln?
+											  // A regular clay lump just becomes an ordinary stone.
+					// ...Possibly used to make bricks in a separate PR? Interesting way to integrate
+					// the mason's construction work with the new Potter profession. - SunriseOYH
 
-    var/cooking = 0
-    var/cooktime = 1 MINUTES
+	var/cooking = 0 			// This variable measures the progress of the glazing act.
+	var/cooktime = 5 MINUTES    // This dictates the time needed to glaze.
+	var/burning = 0				// This variable measures the progress of the burning act
+	var/burntime = 5 MINUTES	// How long must it be left unattended to burn and be ruined?
+	var/burned_color = "#302d2d"
+
+// '''Clay''' for making glass.
+/obj/item/natural/clay/glassBatch
+	name = "glass batch"
+	icon_state = "stone1"     // Placeholder. TODO: Get an icon for glass batch.
+	desc = "A mixture of finely ground silica, flux and a stablizer. It glistens against the light, and could be turned into precious glass by a competent potter."
+	smeltresult = /obj/item/ingot/glass 	// Smelted in a furnace, like a ore.
+	grind_results = list(/datum/reagent/iron = 15)
+	sellprice = 5
+	cooktime = 0
+	burntime = 0
 
 /obj/item/natural/clay/Initialize()
-	. = ..()
+	. = ..() // The ..() refers to calling the parent class's (obj/item/natural) Initialize() proc.
 
-
-/obj/item/proc/glaze(input as num)
-	return
-
-/obj/item/natural/clay/glaze(input as num, atom/A)
-	if(!input)
+/obj/item/natural/clay/cooking(input as num, atom/A) // I am using the same variable names from cooking
+	if(!input)                                    
 		return
 	if(cooktime)
 		if(cooking < cooktime)
 			cooking = cooking + input
 			if(cooking >= cooktime)
-				return glaze_act(A)
+				return microwave_act(A) // Glazing happens once Cooking exceeds a threshold.
 			return
-	burning(input)
+	burning(input) // You can still '''burn''' clay and ruin it if you leave it for too long.
 
-/obj/item/natural/clay/glaze_act(atom/A)
-	var/obj/item/result = new /obj/item/ash(A) // Base case.
-	if(istype(A,/obj/machinery/light/rogue/oven/kiln))
-		if(glazed_result)
-			result = new glazed_result(A)
+/obj/item/natural/clay/microwave_act(atom/A)
+	var/obj/item/result
+	if(istype(A,/obj/machinery/light/rogue/oven))
+		if(cooked_type)
+			result = new cooked_type(A)
 		return result
+	result = new /obj/item/ash(A) // No cooked_type? Pulverized.
 	return result
+
+/obj/item/natural/clay/burning(input as num) // Overrides the generic /obj/item/proc/burning in snacks.dm
+	if(!input)
+		return
+	if(burntime)
+		burning = burning + input
+		if(burning >= burntime) // Left it glazing for too long. Right now, it only makes it ugly.
+								// Maybe reduce selling price?
+			color = burned_color
+			name = "burnt [name]"
+			desc = "It's dark and charred, but still functional."
+		if(burning > (burntime * 2)) // Way too long. Incinerate.
+			burn() // Burn is a method of obj/items that Qdels something and replaces it with ash.
