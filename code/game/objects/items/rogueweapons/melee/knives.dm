@@ -213,7 +213,7 @@
 	sellprice = 50
 	smeltresult = /obj/item/ingot/silver
 	var/last_used = 0
-	var/is_silver = TRUE
+	is_silver = TRUE
 
 /obj/item/rogueweapon/huntingknife/idagger/silver/pickup(mob/user)
 	. = ..()
