@@ -2,7 +2,7 @@
 	name = "Potter's Wheel"
 	desc = "A rotating platform used by skilled artisans to mold and shape clay."
 	icon = 'icons/roguetown/misc/structure.dmi'
-	icon_state = "dryrack"
+	icon_state = "potwheel"
 	density = TRUE
 	anchored = TRUE
 	layer = BELOW_OBJ_LAYER

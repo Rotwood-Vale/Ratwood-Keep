@@ -208,6 +208,15 @@
 	max_integrity = 100
 	integrity_failure = 0.9
 
+/obj/structure/roguewindow/openclose/OnCrafted(dirin)
+	dir = turn(dirin, 180)
+	lockdir = dir
+
+/obj/structure/roguewindow/openclose/Initialize()
+	..()
+	lockdir = dir
+	icon_state = base_state
+
 /obj/structure/roguewindow/openclose/reinforced
 	desc = "A glass window. Glass is very rare nowadays. This one looks reinforced with a metal mesh."
 	icon_state = "reinforcedwindowdir"
@@ -215,6 +224,15 @@
 	max_integrity = 800
 	integrity_failure = 0.1
 	night_variants = FALSE
+
+/obj/structure/roguewindow/openclose/reinforced/OnCrafted(dirin)
+	dir = turn(dirin, 180)
+	lockdir = dir
+
+/obj/structure/roguewindow/openclose/reinforced/Initialize()
+	..()
+	lockdir = dir
+	icon_state = base_state
 
 /obj/structure/roguewindow/curtain
 	icon_state = "window-solid-dir"

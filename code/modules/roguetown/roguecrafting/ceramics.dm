@@ -5,7 +5,8 @@
 	structurecraft = /obj/structure/fluff/ceramicswheel
 
 /datum/crafting_recipe/roguetown/ceramics/glass
-	tools = list(/obj/item/rogueweapon/blowRod)
+	tools = list(/obj/item/rogueweapon/blowRod) // To shape it
+	structurecraft = /obj/machinery/light/rogue/smelter // To heat it
 
 /* 0 diff */
 
@@ -23,19 +24,8 @@
 	reqs = list(/obj/item/natural/clay = 3)
 	craftdiff = 1
 
-/datum/crafting_recipe/roguetown/ceramics/clay/clayJug
-	name = "clay pitcher"
-	result = list(/obj/item/natural/clay/clayJug)
-	reqs = list(/obj/item/natural/clay = 2)
-	craftdiff = 1
-
 /* 2 diff */
 
-/datum/crafting_recipe/roguetown/ceramics/clay/clayVase
-	name = "clay pitcher"
-	result = list(/obj/item/natural/clay/clayVase)
-	reqs = list(/obj/item/natural/clay = 3)
-	craftdiff = 2
 
 /* 4 diff */
 
@@ -76,8 +66,7 @@
 
 /* 5 diff */ // High-end glass containers. Should be a direct upgrade to clay in every possible way.
 /datum/crafting_recipe/roguetown/ceramics/glass
-	name = "glass pane"
-	tools = list(/obj/item/rogueweapon/blowRod)
-	result = list(/obj/item/natural/clay/clayVase)
-	reqs = list(/obj/item/natural/clay = 3)
-	craftdiff = 0
+	name = "glass bottles(3x)"
+	result = list(/obj/item/reagent_containers/glass/bottle, /obj/item/reagent_containers/glass/bottle, /obj/item/reagent_containers/glass/bottle)
+	reqs = list(/obj/item/ingot/glass = 1)
+	craftdiff = 5

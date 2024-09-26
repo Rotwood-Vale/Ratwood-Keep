@@ -16,7 +16,7 @@
 					// the mason's construction work with the new Potter profession. - SunriseOYH
 
 	var/cooking = 0 			// This variable measures the progress of the glazing act.
-	var/cooktime = 5 MINUTES    // This dictates the time needed to glaze.
+	var/cooktime = 1 MINUTES    // This dictates the time needed to glaze.
 	var/burning = 0				// This variable measures the progress of the burning act
 	var/burntime = 5 MINUTES	// How long must it be left unattended to burn and be ruined?
 	var/burned_color = "#302d2d"
@@ -24,7 +24,7 @@
 // '''Clay''' for making glass.
 /obj/item/natural/clay/glassBatch
 	name = "glass batch"
-	icon_state = "stone1"     // Placeholder. TODO: Get an icon for glass batch.
+	icon_state = "glassBatch"
 	desc = "A mixture of finely ground silica, flux and a stablizer. It glistens against the light, and could be turned into precious glass by a competent potter."
 	smeltresult = /obj/item/ingot/glass 	// Smelted in a furnace, like a ore.
 	grind_results = list(/datum/reagent/iron = 15)
@@ -33,7 +33,9 @@
 	burntime = 0
 
 /obj/item/natural/clay/Initialize()
-	. = ..() // The ..() refers to calling the parent class's (obj/item/natural) Initialize() proc.
+	if(cooked_type)
+		cooktime = 30 SECONDS
+	..() // The ..() refers to calling the parent class's (obj/item/natural) Initialize() proc.
 
 /obj/item/natural/clay/cooking(input as num, atom/A) // I am using the same variable names from cooking
 	if(!input)                                    
