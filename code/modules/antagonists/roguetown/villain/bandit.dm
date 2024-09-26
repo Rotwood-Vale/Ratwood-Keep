@@ -20,7 +20,7 @@
 
 /datum/antagonist/bandit/on_gain()
 	owner.special_role = "Bandit"
-	owner.assigned_role = "Bandit"
+	//owner.assigned_role = "Bandit"
 	forge_objectives()
 	. = ..()
 	equip_bandit()
