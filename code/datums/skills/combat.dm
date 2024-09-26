@@ -1,6 +1,9 @@
 /datum/skill/combat
+	abstract_type = /datum/skill/combat
 	name = "Combat"
 	desc = ""
+	dream_cost_base = 2
+	dream_cost_per_level = 1
 
 /datum/skill/combat/proc/get_skill_parry_modifier(level) //added parry drain/neg in parries and dodges
 	switch(level)
@@ -41,6 +44,9 @@
 
 /datum/skill/combat/swords
 	name = "Sword-fighting"
+	dreams = list(
+		"...your heart beats wildly as your swords strike eachothers, you parry your opponent and finish him off with a decisive slash..."
+	)
 
 /datum/skill/combat/polearms
 	name = "Polearms"

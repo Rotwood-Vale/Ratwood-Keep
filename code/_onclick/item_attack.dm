@@ -232,8 +232,8 @@
 					if(!I.remove_bintegrity(1))
 						dullfactor = 0.2
 					else
-						dullfactor = 0.5 + (lumberskill * 0.15)
-						lumberjacker.mind.adjust_experience(/datum/skill/labor/lumberjacking, (lumberjacker.STAINT*0.2))
+						dullfactor = 0.45 + (lumberskill * 0.15)
+						lumberjacker.mind.add_sleep_experience(/datum/skill/labor/lumberjacking, (lumberjacker.STAINT*0.2))
 					cont = TRUE
 				if(BCLASS_CHOP)
 					var/mob/living/lumberjacker = user
@@ -242,7 +242,7 @@
 						dullfactor = 0.3
 					else
 						dullfactor = 1.0 + (lumberskill * 0.25)
-						lumberjacker.mind.adjust_experience(/datum/skill/labor/lumberjacking, (lumberjacker.STAINT*0.2))
+						lumberjacker.mind.add_sleep_experience(/datum/skill/labor/lumberjacking, (lumberjacker.STAINT*0.2))
 					cont = TRUE
 			if(!cont)
 				return 0
@@ -290,7 +290,7 @@
 			var/mineskill = miner.mind.get_skill_level(/datum/skill/labor/mining)
 			newforce = newforce * (8+(mineskill*1.5))
 			shake_camera(user, 1, 1)
-			miner.mind.adjust_experience(/datum/skill/labor/mining, (miner.STAINT*0.2))
+			miner.mind.add_sleep_experience(/datum/skill/labor/mining, (miner.STAINT*0.2))
 	
 	newforce = (newforce * user.used_intent.damfactor) * dullfactor
 	if(user.used_intent.get_chargetime() && user.client?.chargedprog < 100)

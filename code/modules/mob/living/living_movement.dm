@@ -22,7 +22,7 @@
 			var/mob/living/M = mover
 			if(M.wallpressed)
 				return !wallpressed
-	return (!density || wallpressed || !(mobility_flags & MOBILITY_STAND))
+	return (!density || wallpressed || (pixelshift_x >= 10 && pixel_x >= 10) || (pixelshift_x <= -10 && pixel_x <= -10) || (pixelshift_y >= 10 && pixel_y >= 10) || (pixelshift_y <= -8 && pixel_y <= -8) || !(mobility_flags & MOBILITY_STAND))
 
 /mob/living/toggle_move_intent()
 	. = ..()
@@ -52,10 +52,11 @@
 			mod = CONFIG_GET(number/movedelay/run_delay)
 		if(MOVE_INTENT_SNEAK)
 			mod = 6
-	if(STASPD < 6)
-		mod = mod+1
-	if(STASPD > 14)
-		mod = mod-0.5
+
+	var/spdchange = (10-STASPD)*0.1
+	spdchange = clamp(spdchange, -0.5, 1)  //if this is not clamped, maniacs will run at unfathomable speed
+	mod = mod+spdchange
+	//maximum speed is achieved at 15spd, everything else results in insanity
 	add_movespeed_modifier(MOVESPEED_ID_MOB_WALK_RUN_CONFIG_SPEED, TRUE, 100, override = TRUE, multiplicative_slowdown = mod)
 
 /mob/living/proc/update_turf_movespeed(turf/open/T)
@@ -85,7 +86,7 @@
 		if(pulling != src)
 			if(isliving(pulling))
 				var/mob/living/L = pulling
-				if(!slowed_by_drag || (L.mobility_flags & MOBILITY_STAND) || L.buckled || grab_state >= GRAB_AGGRESSIVE)
+				if((!slowed_by_drag || (L.mobility_flags & MOBILITY_STAND) || L.buckled || grab_state >= GRAB_AGGRESSIVE) && !(isseelie(src)))
 					remove_movespeed_modifier(MOVESPEED_ID_BULKY_DRAGGING)
 					return
 				add_movespeed_modifier(MOVESPEED_ID_BULKY_DRAGGING, multiplicative_slowdown = PULL_PRONE_SLOWDOWN)

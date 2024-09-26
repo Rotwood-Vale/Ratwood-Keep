@@ -303,6 +303,8 @@
 	name = "palisade"
 	desc = ""
 	icon = 'icons/roguetown/misc/structure.dmi'
+	attacked_sound = 'sound/misc/woodhit.ogg'
+	destroy_sound = 'sound/misc/treefall.ogg'
 	icon_state = "fence"
 	density = TRUE
 	opacity = TRUE
@@ -375,6 +377,7 @@
 	plane = GAME_PLANE_UPPER
 	obj_flags = CAN_BE_HIT | BLOCK_Z_OUT_DOWN
 	attacked_sound = list("sound/combat/hits/onmetal/metalimpact (1).ogg", "sound/combat/hits/onmetal/metalimpact (2).ogg")
+	leanable = TRUE
 
 /obj/structure/bars/CanPass(atom/movable/mover, turf/target)
 	if(isobserver(mover))
@@ -889,25 +892,19 @@
 					user.changeNext_move(CLICK_CD_MELEE)
 					if(W.max_blade_int)
 						W.remove_bintegrity(5)
-					if(!L.rogfat_add(rand(4,6)))
-						if(ishuman(L))
-							var/mob/living/carbon/human/H = L
-							if(H.tiredness >= 50)
-								H.apply_status_effect(/datum/status_effect/debuff/trainsleep)
-						probby = 0
+					L.rogfat_add(rand(4,6))
 					if(!(L.mobility_flags & MOBILITY_STAND))
 						probby = 0
 					if(L.STAINT < 3)
 						probby = 0
-					if(prob(probby) && !L.has_status_effect(/datum/status_effect/debuff/trainsleep) && !user.buckled)
+					if(prob(probby) && !user.buckled)
 						user.visible_message(span_info("[user] trains on [src]!"))
-						var/boon = user.mind.get_learning_boon(W.associated_skill)
-						var/amt2raise = L.STAINT/2
-						if(user.mind.get_skill_level(W.associated_skill) >= SKILL_LEVEL_APPRENTICE)
+						var/amt2raise = L.STAINT * 0.35
+						if(!can_train_combat_skill(user, W.associated_skill, SKILL_LEVEL_APPRENTICE))
 							to_chat(user, span_warning("I've learned all I can from doing this, it's time for the real thing."))
 							amt2raise = 0
 						if(amt2raise > 0)
-							user.mind.adjust_experience(W.associated_skill, amt2raise * boon, FALSE)
+							user.mind.add_sleep_experience(W.associated_skill, amt2raise, FALSE)
 						playsound(loc,pick('sound/combat/hits/onwood/education1.ogg','sound/combat/hits/onwood/education2.ogg','sound/combat/hits/onwood/education3.ogg'), rand(50,100), FALSE)
 					else
 						user.visible_message(span_danger("[user] trains on [src], but [src] ripostes!"))
@@ -944,11 +941,38 @@
 	icon_state = "evilidol"
 	icon = 'icons/roguetown/misc/structure.dmi'
 
+// What items the idol will accept 
+	var/treasuretypes = list(
+		/obj/item/roguecoin,
+		/obj/item/roguegem,
+		/obj/item/clothing/ring,
+		/obj/item/ingot,
+		/obj/item/clothing/neck/roguetown/psicross,
+		/obj/item/reagent_containers/glass/cup,
+		/obj/item/roguestatue,
+		/obj/item/riddleofsteel,
+		/obj/item/listenstone,
+		/obj/item/clothing/neck/roguetown/shalal,
+		/obj/item/clothing/neck/roguetown/horus,
+		/obj/item/rogue/painting,
+		/obj/item/clothing/head/roguetown/crown/serpcrown,
+		/obj/item/clothing/head/roguetown/vampire,
+		/obj/item/scomstone
+	)
+
 /obj/structure/fluff/statue/evil/attackby(obj/item/W, mob/user, params)
 	if(user.mind)
 		var/datum/antagonist/bandit/B = user.mind.has_antag_datum(/datum/antagonist/bandit)
 		if(B)
-			if(istype(W, /obj/item/roguecoin) || istype(W, /obj/item/roguegem) || istype(W, /obj/item/clothing/ring) || istype(W, /obj/item/ingot) || istype(W, /obj/item/clothing/neck/roguetown/psicross) || istype(W, /obj/item/reagent_containers/glass/cup) || istype(W, /obj/item/roguestatue))
+			if(W.sellprice <= 0)
+				to_chat(user, span_warning("This item is worthless."))
+				return
+			var/proceed_with_offer = FALSE
+			for(var/TT in treasuretypes)
+				if(istype(W, TT))
+					proceed_with_offer = TRUE
+					break
+			if(proceed_with_offer)
 				if(B.tri_amt >= 10)
 					to_chat(user, span_warning("The mouth doesn't open."))
 					return
@@ -957,40 +981,55 @@
 					B.tri_amt++
 					user.mind.adjust_triumphs(1)
 					B.contrib -= 100
-					var/obj/item/I
+					var/I = list()
 					switch(B.tri_amt)
 						if(1)
-							I = new /obj/item/reagent_containers/glass/bottle/rogue/healthpot(user.loc)
-							I = new /obj/item/storage/backpack/rogue/backpack(user.loc)
+							I += /obj/item/reagent_containers/glass/bottle/rogue/healthpot
+							I += /obj/item/storage/backpack/rogue/backpack
 						if(2)
-							I = new /obj/item/reagent_containers/powder/moondust(user.loc)
-							I = new /obj/item/reagent_containers/powder/moondust(user.loc)
-							I = new /obj/item/reagent_containers/powder/moondust(user.loc)
+							I += /obj/item/reagent_containers/powder/moondust
+							I += /obj/item/reagent_containers/powder/moondust
+							I += /obj/item/reagent_containers/powder/moondust
+							I += /obj/item/bomb
 						if(3)
-							I = new /obj/item/clothing/suit/roguetown/armor/plate/scale(user.loc)
+							I += /obj/item/clothing/suit/roguetown/armor/plate/scale
 						if(4)
-							I = new /obj/item/clothing/neck/roguetown/bervor(user.loc)
+							I += /obj/item/clothing/neck/roguetown/bervor
 						if(5)
-							I = new /obj/item/clothing/head/roguetown/helmet/horned(user.loc)
+							I += /obj/item/clothing/head/roguetown/helmet/horned
 						if(6)
-							I = new /obj/item/reagent_containers/glass/bottle/rogue/healthpot(user.loc)
-							I = new /obj/item/reagent_containers/powder/moondust(user.loc)
-							I = new /obj/item/reagent_containers/powder/moondust(user.loc)
+							I += /obj/item/reagent_containers/glass/bottle/rogue/healthpot
+							I += /obj/item/reagent_containers/powder/moondust
+							I += /obj/item/reagent_containers/powder/moondust
+							I += /obj/item/bomb
 						if(7)
-							I = new /obj/item/clothing/shoes/roguetown/boots/armor(user.loc)
+							I += /obj/item/clothing/shoes/roguetown/boots/armor
 						if(8)
-							I = new /obj/item/clothing/gloves/roguetown/plate(user.loc)
+							I += /obj/item/clothing/gloves/roguetown/plate
 						if(9)
-							I = new /obj/item/clothing/wrists/roguetown/bracers(user.loc)
+							I += /obj/item/clothing/wrists/roguetown/bracers
 						if(10)
-							I = new /obj/item/clothing/neck/roguetown/blkknight(user.loc)
-					if(I)
-						I.sellprice = 0
+							I += /obj/item/clothing/neck/roguetown/blkknight
+							message_admins("A Bandit [ADMIN_FLW(user)] has reached maximum contribution level 10.")
+							user.log_message("as Bandit reached maximum contribution level 10.", LOG_GAME)
+					if(length(I))
+						for(var/R in I)
+							var/obj/item/T = new R(user.loc)
+							T.sellprice = 0
+					I = list()
 					playsound(loc,'sound/items/carvgood.ogg', 50, TRUE)
 				else
 					playsound(loc,'sound/items/carvty.ogg', 50, TRUE)
 				playsound(loc,'sound/misc/eat.ogg', rand(30,60), TRUE)
+				if(istype(W, /obj/item/clothing/head/roguetown/crown/serpcrown)) // duplicate check here to notify admins and disable a second crown sale
+					message_admins("A Bandit [ADMIN_FLW(user)] has offered the Crown of Rockhill to Matthios.")
+					user.log_message("as Bandit offered the Crown of Rockhill to Matthios. (THRONE)", LOG_GAME)
+					treasuretypes = treasuretypes - /obj/item/clothing/head/roguetown/crown/serpcrown
+					SSroguemachine.crown = null //Avoid keeping an invalid reference to the crown.
 				qdel(W)
+				return
+			else
+				to_chat(user, span_warning("This item isn't a good offering."))
 				return
 	..()
 
@@ -1140,8 +1179,6 @@
 		L.IgniteMob()
 		return FALSE
 	if(length(message2recognize) > 15)
-		if(L.has_flaw(/datum/charflaw/addiction/godfearing))
-			L.sate_addiction()
 		if(L.mob_timers[MT_PSYPRAY])
 			if(world.time < L.mob_timers[MT_PSYPRAY] + 1 MINUTES)
 				L.mob_timers[MT_PSYPRAY] = world.time

@@ -37,7 +37,7 @@
 /mob/living
 	var/can_do_sex = TRUE
 	var/virginity = FALSE
-	var/defiant = TRUE
+	var/defiant = FALSE
 
 /mob/living/carbon/human/MiddleMouseDrop_T(mob/living/target, mob/living/user)
 	if(user.mmb_intent)
@@ -46,7 +46,7 @@
 		return
 	if(target != user)
 		return
-	if(!user.can_do_sex())
+	if(!user.can_do_sex() || user.sexcon.need_to_be_violated(src)) // Changed to remove ZAPE
 		to_chat(user, "<span class='warning'>I can't do this.</span>")
 		return
 	user.sexcon.start(src)

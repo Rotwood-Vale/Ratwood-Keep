@@ -32,10 +32,13 @@
 	owner.current.playsound_local(get_turf(owner.current), 'sound/music/traitor.ogg', 80, FALSE, pressure_affected = FALSE)
 	var/mob/living/carbon/human/H = owner.current
 	ADD_TRAIT(H, TRAIT_BANDITCAMP, TRAIT_GENERIC)
+	for(var/obj/structure/fluff/traveltile/bandit/tile in GLOB.traveltiles)
+		tile.show_travel_tile(H)
 	ADD_TRAIT(H, TRAIT_SEEPRICES, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_STEELHEARTED, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_COMMIE, TRAIT_GENERIC)
+	ADD_TRAIT(H, TRAIT_TOLERANT, TRAIT_GENERIC)
 	H.set_patron(/datum/patron/inhumen/matthios)
 	to_chat(H, span_alertsyndie("I am a BANDIT!"))
 	to_chat(H, span_boldwarning("Long ago I did a crime worthy of my bounty being hung on the wall outside of the local inn. I live now with fellow free men in reverence to MATTHIOS whose idol grants us boons and wishes when fed the money, treasures, and metals of the civilized wretches. I must feed the idol to satisfy my greed!"))
@@ -80,14 +83,6 @@
 
 	return TRUE
 
-/datum/antagonist/bandit/after_name_change()
-	if(owner && owner.current)
-		var/datum/bounty/new_bounty = new /datum/bounty
-		new_bounty.amount = 80 //TODO: Make bandit bounty adjustable by King
-		new_bounty.target = owner.current.real_name
-		new_bounty.bandit = TRUE
-		GLOB.head_bounties += new_bounty
-
 /datum/outfit/job/roguetown/bandit/pre_equip(mob/living/carbon/human/H)
 	..()
 	H.mind.adjust_skillrank(/datum/skill/combat/polearms, 3, TRUE)
@@ -106,6 +101,8 @@
 	H.mind.adjust_skillrank(/datum/skill/misc/climbing, 3, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/sewing, 2, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/medicine, 2, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/misc/athletics, 2, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/misc/swimming, 2, TRUE)
 	belt = /obj/item/storage/belt/rogue/leather
 	pants = /obj/item/clothing/under/roguetown/trou/leather
 	shirt = /obj/item/clothing/suit/roguetown/shirt/shortshirt/random
@@ -114,7 +111,7 @@
 	backpack_contents = list(/obj/item/needle/thorn = 1, /obj/item/natural/cloth = 1)
 	mask = /obj/item/clothing/mask/rogue/facemask/steel
 	neck = /obj/item/clothing/neck/roguetown/coif
-	head = /obj/item/clothing/head/roguetown/helmet/leather/volfhelm
+	head = /obj/item/clothing/head/roguetown/menacing/bandit
 	if(prob(40))
 		neck = /obj/item/clothing/neck/roguetown/chaincoif
 	if(prob(23))
@@ -173,6 +170,7 @@
 	H.change_stat("speed", 1)
 	H.change_stat("intelligence", -3)
 
+	H.verbs |= /mob/proc/haltyell
 	H.ambushable = FALSE
 
 /datum/antagonist/bandit/roundend_report()

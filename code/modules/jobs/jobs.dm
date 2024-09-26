@@ -63,8 +63,8 @@ GLOBAL_LIST_INIT(noble_positions, list(
 	"King",
 	"Queen Consort",
 	"Prince",
-	"Guard Captain",
-	"Bailiff",
+	"Retinue Captain",
+	"Royal Marshal",
 	"Councillor",
 	"Steward",
 	"Knight",
@@ -126,6 +126,7 @@ GLOBAL_LIST_INIT(peasant_positions, list(
 	"Docker",
 	"Prisoner",
 	"Beggar",
+	"Town Seelie",
 	"Adventurer",
 	"Pilgrim",
 ))
@@ -133,6 +134,7 @@ GLOBAL_LIST_INIT(peasant_positions, list(
 GLOBAL_LIST_INIT(mercenary_positions, list(
 	"Grenzelhoft Mercenary",
 	"Desert Rider Mercenary",
+	"Sellsword",
 	"Veteran",
 ))
 
@@ -144,7 +146,7 @@ GLOBAL_LIST_INIT(youngfolk_positions, list(
 	"Churchling",
 	"Servant",
 	"Shophand",
-	"Orphan",
+	"Vagabond",
 ))
 
 GLOBAL_LIST_INIT(allmig_positions, list(

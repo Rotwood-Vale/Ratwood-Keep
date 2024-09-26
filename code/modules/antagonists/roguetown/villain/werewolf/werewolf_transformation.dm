@@ -70,14 +70,20 @@
 	icon = null
 	var/oldinv = invisibility
 	invisibility = INVISIBILITY_MAXIMUM
-	cmode = FALSE
+	set_cmode(FALSE)
 	if(client)
 		SSdroning.play_area_sound(get_area(src), client)
 //	stop_cmusic()
 
 	src.fully_heal(FALSE)
 
-	var/mob/living/carbon/human/species/werewolf/W = new (loc)
+	var/ww_path
+	if(gender == MALE)
+		ww_path = /mob/living/carbon/human/species/werewolf/male
+	else
+		ww_path = /mob/living/carbon/human/species/werewolf/female
+
+	var/mob/living/carbon/human/species/werewolf/W = new ww_path(loc)
 
 	W.set_patron(src.patron)
 	W.gender = gender
@@ -109,11 +115,12 @@
 	to_chat(W, span_userdanger("I transform into a horrible beast!"))
 	W.emote("rage")
 
-	W.stress = stress
-
 	W.mind.adjust_skillrank(/datum/skill/combat/wrestling, 6, TRUE)
 	W.mind.adjust_skillrank(/datum/skill/combat/unarmed, 6, TRUE)
 	W.mind.adjust_skillrank(/datum/skill/misc/climbing, 6, TRUE)
+
+	if(isseelie(W.stored_mob))
+		W.change_stat("speed", -3)
 
 	W.AddSpell(new /obj/effect/proc_holder/spell/self/howl)
 	W.AddSpell(new /obj/effect/proc_holder/spell/self/claws)
@@ -127,6 +134,7 @@
 	ADD_TRAIT(W, TRAIT_BASHDOORS, TRAIT_GENERIC)
 	ADD_TRAIT(W, TRAIT_SHOCKIMMUNE, TRAIT_GENERIC)
 	ADD_TRAIT(W, TRAIT_STEELHEARTED, TRAIT_GENERIC)
+	ADD_TRAIT(W, TRAIT_TOLERANT, TRAIT_GENERIC)
 	ADD_TRAIT(W, TRAIT_BREADY, TRAIT_GENERIC)
 	ADD_TRAIT(W, TRAIT_TOXIMMUNE, TRAIT_GENERIC)
 	ADD_TRAIT(W, TRAIT_ORGAN_EATER, TRAIT_GENERIC)
@@ -162,7 +170,6 @@
 	W.remove_status_effect(STATUS_EFFECT_STASIS)
 
 	REMOVE_TRAIT(W, TRAIT_NOMOOD, TRAIT_GENERIC)
-	stress = W.stress
 
 	mind.transfer_to(W)
 
@@ -172,6 +179,8 @@
 	W.mind.known_skills = WA.stored_skills.Copy()
 	W.mind.skill_experience = WA.stored_experience.Copy()
 
+	if(isseelie(W.stored_mob))
+		W.change_stat("speed", 3)
 	W.RemoveSpell(new /obj/effect/proc_holder/spell/self/howl)
 	W.RemoveSpell(new /obj/effect/proc_holder/spell/self/claws)
 

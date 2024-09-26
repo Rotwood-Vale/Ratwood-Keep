@@ -462,6 +462,9 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 		return
 
 	if(twohands_required)
+		if(HAS_TRAIT(user, TRAIT_TINY))
+			to_chat(user, span_warning("[src] is too big for me to carry."))
+			return
 		if(user.get_num_arms() < 2)
 			to_chat(user, span_warning("[src] is too bulky to carry in one hand!"))
 			return
@@ -1056,10 +1059,6 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 
 	var/skill_modifier = 1
 
-	if(tool_behaviour == TOOL_MINING && ishuman(user))
-		var/mob/living/carbon/human/H = user
-		skill_modifier = H.mind.get_skill_speed_modifier(/datum/skill/mining)
-
 	delay *= toolspeed * skill_modifier
 
 	// Play tool sound at the beginning of tool usage.
@@ -1195,6 +1194,9 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 			user.update_a_intents()
 
 /obj/item/proc/wield(mob/living/carbon/user)
+	if(HAS_TRAIT(user, TRAIT_TINY))
+		to_chat(user, span_warning("[src] is too big for me to carry."))
+		return
 	if(wielded)
 		return
 	if(user.get_inactive_held_item())

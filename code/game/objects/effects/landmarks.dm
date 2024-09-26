@@ -90,6 +90,12 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	jobspawn_override = list("Skeleton", "Pilgrim", "Adventurer", "Migrant")
 	delete_after_roundstart = FALSE
 
+/obj/effect/landmark/start/banditlate
+	name = "Bandit"
+	icon_state = "arrow"
+	jobspawn_override = list("Bandit")
+	delete_after_roundstart = FALSE
+
 /obj/effect/landmark/start/bogguardlate
 	name = "Bogguardlate"
 	icon_state = "arrow"
@@ -108,16 +114,22 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	jobspawn_override = list("Vagabond")
 	delete_after_roundstart = FALSE
 
+/obj/effect/landmark/start/seelielate
+	name = "Seelielate"
+	icon_state = "arrow"
+	jobspawn_override = list("Town Seelie")
+	delete_after_roundstart = FALSE
+
 /obj/effect/landmark/start/desertriderlate
 	name = "DesertRiderlate"
 	icon_state = "arrow"
-	jobspawn_override = list("Desert Rider Mercenary")
+	jobspawn_override = list("Desert Rider Mercenary", "Sellsword")
 	delete_after_roundstart = FALSE
 
 /obj/effect/landmark/start/grenzelhoftlate
 	name = "Grenzelhoftlate"
 	icon_state = "arrow"
-	jobspawn_override = list("Grenzelhoft Mercenary")
+	jobspawn_override = list("Grenzelhoft Mercenary", "Sellsword")
 	delete_after_roundstart = FALSE
 
 /obj/effect/landmark/start/villagerlate
@@ -139,7 +151,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/guard_captain
-	name = "Guard Captain"
+	name = "Retinue Captain"
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/barkeep
@@ -166,10 +178,6 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	name = "Court Physician"
 	icon_state = "arrow"
 
-/obj/effect/landmark/start/guardsman
-	name = "Watchman"
-	icon_state = "arrow"
-
 /obj/effect/landmark/start/manorguardsman
 	name = "Man at Arms"
 	icon_state = "arrow"
@@ -182,8 +190,8 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	name = "Bog Guard"
 	icon_state = "arrow"
 
-/obj/effect/landmark/start/bailiff
-	name = "Bailiff"
+/obj/effect/landmark/start/marshal
+	name = "Royal Marshal"
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/councillor
@@ -198,8 +206,12 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	name = "Dungeoneer"
 	icon_state = "arrow"
 
-/obj/effect/landmark/start/watchman
+/obj/effect/landmark/start/gatemaster
 	name = "Gatemaster"
+	icon_state = "arrow"
+
+/obj/effect/landmark/start/watchman
+	name = "Watchman"
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/villager
@@ -846,12 +858,13 @@ GLOBAL_LIST_EMPTY(travel_spawn_points)
 		return point.loc
 	return null
 
-/proc/create_travel_tiles(var/atom/location, travel_id, travel_goes_to_id, required_trait)
+/proc/create_travel_tiles(var/atom/location, travel_id, travel_goes_to_id, required_trait, tile_path)
 	for(var/obj/effect/landmark/travel_tile_location/landmark as anything in GLOB.travel_tile_locations)
 		if(get_dist(location, landmark) > 5)
 			continue
 		// Create travel tile here
-		var/obj/structure/fluff/traveltile/tile = new /obj/structure/fluff/traveltile(landmark.loc)
+		var/obj/structure/fluff/traveltile/tile = new tile_path(landmark.loc)
 		tile.aportalid = travel_id
 		tile.aportalgoesto = travel_goes_to_id
 		tile.required_trait = required_trait
+		tile.hide_if_needed()

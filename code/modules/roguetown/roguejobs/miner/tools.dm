@@ -11,8 +11,9 @@
 	max_integrity = 400
 	slot_flags = ITEM_SLOT_HIP
 	toolspeed = 1
-	associated_skill = /datum/skill/labor/mining
+	associated_skill = /datum/skill/combat/maces
 	smeltresult = /obj/item/ingot/iron
+	w_class = WEIGHT_CLASS_BULKY
 
 /obj/item/rogueweapon/pick/getonmobprop(tag)
 	. = ..()

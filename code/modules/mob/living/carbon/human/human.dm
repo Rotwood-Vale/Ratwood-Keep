@@ -98,11 +98,13 @@
 		if(4)
 			affecting = get_bodypart(BODY_ZONE_HEAD)
 			chat_message = span_danger("I fall on my head!")
-	if(affecting && apply_damage(dam, BRUTE, affecting, run_armor_check(affecting, "blunt", damage = dam)))
+	if(affecting)
+		apply_damage(dam/2, BRUTE, affecting)
+		if(apply_damage(dam/2, BRUTE, affecting, run_armor_check(affecting, "blunt", damage = dam)))
+			if(levels >= 1)
+				//absurd damage to guarantee a crit
+				affecting.try_crit(BCLASS_TWIST, 300)
 		update_damage_overlays()
-		if(levels >= 1)
-			//absurd damage to guarantee a crit
-			affecting.try_crit(BCLASS_TWIST, 300)
 
 	if(chat_message)
 		to_chat(src, chat_message)
@@ -758,6 +760,7 @@
 /mob/living/carbon/human/vv_get_dropdown()
 	. = ..()
 	VV_DROPDOWN_OPTION("", "---------")
+	VV_DROPDOWN_OPTION(VV_HK_APPLY_SPECIAL, "Apply Special Trait")
 	VV_DROPDOWN_OPTION(VV_HK_REAPPLY_PREFS, "Reapply Preferences")
 	VV_DROPDOWN_OPTION(VV_HK_COPY_OUTFIT, "Copy Outfit")
 	VV_DROPDOWN_OPTION(VV_HK_MOD_MUTATIONS, "Add/Remove Mutation")
@@ -777,6 +780,32 @@
 		if(!client || !client.prefs)
 			return
 		client.prefs.copy_to(src, TRUE, FALSE)
+	if(href_list[VV_HK_APPLY_SPECIAL])
+		if(!check_rights(R_SPAWN))
+			return
+		var/mob/admin_user = usr
+		message_admins("Admin [key_name_admin(admin_user)] is applying a special trait to [key_name(src)].")
+		var/first_result = input(admin_user, "Chosen or random?","Apply Special") as null|anything in list("Choose", "Random")
+		if(!first_result)
+			return
+		var/trait_type
+		if(first_result == "Choose")
+			var/trait_result = input(admin_user, "Choose special to apply","Apply Special") as null|anything in GLOB.special_traits
+			if(!trait_result)
+				return
+			trait_type = trait_result
+		else
+			trait_type = get_random_special_for_char(src, src.client)
+		if(!trait_type)
+			return
+		var/silent_result = input(admin_user, "Trait: [trait_type]\nGive player the trait greet text?","Apply Special") as null|anything in list("Yes", "No", "Cancel")
+		var/silent = FALSE
+		if(!silent_result || silent_result == "Cancel")
+			return
+		if(silent_result == "No")
+			silent = TRUE
+		message_admins("Admin [key_name_admin(admin_user)] applied special [trait_type] to [key_name(src)]. [first_result == "Chosen" ? "(Chosen)" : "(Random)"][silent_result == "No" ? "(Silent)" : ""]")
+		apply_special_trait(src, trait_type, silent)
 	if(href_list[VV_HK_COPY_OUTFIT])
 		if(!check_rights(R_SPAWN))
 			return
@@ -875,7 +904,13 @@
 			message_admins(msg)
 			admin_ticket_log(src, msg)
 
+//Target = what was clicked on, User = thing doing the clicking
 /mob/living/carbon/human/MouseDrop_T(mob/living/target, mob/living/user)
+	if(isseelie(target) && !(HAS_TRAIT(src, TRAIT_TINY)) && istype(user.rmb_intent, /datum/rmb_intent/weak))
+		if(can_piggyback(target))
+			shoulder_ride(target)
+			return TRUE
+
 	if(user == target)
 		return FALSE
 	if(pulling == target && stat == CONSCIOUS)
@@ -892,6 +927,11 @@
 					return TRUE
 	. = ..()
 
+/mob/living/carbon/human/proc/shoulder_ride(mob/living/carbon/target)
+	buckle_mob(target, TRUE, TRUE, FALSE, 0, 0)
+	visible_message(span_notice("[target] gently sits on [src]'s shoulder."))
+	//target.set_mob_offsets("shoulder_ride", _x = 5, _y = 10)
+
 //src is the user that will be carrying, target is the mob to be carried
 /mob/living/carbon/human/proc/can_piggyback(mob/living/carbon/target)
 	return (istype(target) && target.stat == CONSCIOUS)
@@ -901,6 +941,10 @@
 
 /mob/living/carbon/human/proc/fireman_carry(mob/living/carbon/target)
 	var/carrydelay = 50 //if you have latex you are faster at grabbing
+
+	if(HAS_TRAIT(src, TRAIT_TINY))
+		to_chat(src, span_warning("I'm too small to carry [target]."))
+		return
 
 	var/backnotshoulder = FALSE
 	if(r_grab && l_grab)

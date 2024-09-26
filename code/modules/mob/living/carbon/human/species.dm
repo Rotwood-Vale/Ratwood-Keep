@@ -127,6 +127,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 
 	/// List of descriptor choices this species gets in preferences customization
 	var/list/descriptor_choices = list(
+		/datum/descriptor_choice/height,
 		/datum/descriptor_choice/body,
 		/datum/descriptor_choice/stature,
 		/datum/descriptor_choice/face,
@@ -135,8 +136,30 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 		/datum/descriptor_choice/voice,
 		/datum/descriptor_choice/prominent_one,
 		/datum/descriptor_choice/prominent_two,
+		/datum/descriptor_choice/prominent_three,
+		/datum/descriptor_choice/prominent_four,
 	)
 
+	var/list/specstats = list(
+		"strength" = 0, 
+		"perception" = 0, 
+		"intelligence" = 0, 
+		"constitution" = 0, 
+		"endurance" = 0, 
+		"speed" = 0, 
+		"fortune" = 0
+		)
+	var/list/specstats_m = list(
+		"constitution" = 1, 
+		"intelligence" = -1,
+	)
+	var/list/specstats_f = list(
+		"strength" = -1, 
+		"speed" = 1,
+	)
+	var/list/specskills
+	var/list/specskills_m
+	var/list/specskills_f
 	var/obj/item/mutanthands
 
 	/// List of organ customizers for preferences to customize organs.
@@ -150,6 +173,8 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 	var/list/languages = list(/datum/language/common)
 	/// Some species have less than standard gender locks
 	var/gender_swapping = FALSE 
+	var/stress_examine = FALSE
+	var/stress_desc = null
 
 ///////////
 // PROCS //
@@ -217,6 +242,9 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 	return FALSE
 
 /datum/species/proc/random_name(gender,unique,lastname)
+	return random_human_name(gender,unique,lastname)
+
+/proc/random_human_name(gender,unique,lastname)
 	var/randname
 	if(unique)
 		if(gender == MALE)
@@ -869,7 +897,8 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 		return TRUE
 	if(HAS_TRAIT(H, TRAIT_CHUNKYFINGERS))
 		return do_after(H, 5 MINUTES, target = H)
-//	H.visible_message(span_notice("[H] start putting on [I]..."), span_notice("I start putting on [I]..."))
+	if(I.equip_delay_self >= 10)
+		H.visible_message(span_smallnotice("[H] start putting on [I]..."), span_smallnotice("I start putting on [I]..."))
 	if(I.edelay_type)
 		return move_after(H, minone(I.equip_delay_self-H.STASPD), target = H)
 	else
@@ -994,20 +1023,20 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 //				H.apply_status_effect(/datum/status_effect/debuff/fat)
 		if(NUTRITION_LEVEL_FAT to INFINITY)
 			H.add_stress(/datum/stressevent/stuffed)
-			H.remove_stress(list(/datum/stressevent/peckish,/datum/stressevent/hungry,/datum/stressevent/starving))
+			H.remove_stress_list(list(/datum/stressevent/peckish,/datum/stressevent/hungry,/datum/stressevent/starving))
 		if(NUTRITION_LEVEL_FED to NUTRITION_LEVEL_FAT)
-			H.remove_stress(list(/datum/stressevent/peckish,/datum/stressevent/hungry,/datum/stressevent/starving))
+			H.remove_stress_list(list(/datum/stressevent/peckish,/datum/stressevent/hungry,/datum/stressevent/starving))
 		if(NUTRITION_LEVEL_HUNGRY to NUTRITION_LEVEL_FED)
 			H.add_stress(/datum/stressevent/peckish)
-			H.remove_stress(list(/datum/stressevent/stuffed,/datum/stressevent/hungry,/datum/stressevent/starving))
+			H.remove_stress_list(list(/datum/stressevent/stuffed,/datum/stressevent/hungry,/datum/stressevent/starving))
 			H.apply_status_effect(/datum/status_effect/debuff/hungryt1)
 		if(NUTRITION_LEVEL_STARVING to NUTRITION_LEVEL_HUNGRY)
 			H.add_stress(/datum/stressevent/hungry)
-			H.remove_stress(list(/datum/stressevent/stuffed,/datum/stressevent/peckish,/datum/stressevent/starving))
+			H.remove_stress_list(list(/datum/stressevent/stuffed,/datum/stressevent/peckish,/datum/stressevent/starving))
 			H.apply_status_effect(/datum/status_effect/debuff/hungryt2)
 		if(0 to NUTRITION_LEVEL_STARVING)
 			H.add_stress(/datum/stressevent/starving)
-			H.remove_stress(list(/datum/stressevent/stuffed,/datum/stressevent/peckish,/datum/stressevent/hungry))
+			H.remove_stress_list(list(/datum/stressevent/stuffed,/datum/stressevent/peckish,/datum/stressevent/hungry))
 			H.apply_status_effect(/datum/status_effect/debuff/hungryt3)
 			if(prob(3))
 				playsound(get_turf(H), pick('sound/vo/hungry1.ogg','sound/vo/hungry2.ogg','sound/vo/hungry3.ogg'), 100, TRUE, -1)
@@ -1016,18 +1045,18 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 //		if(HYDRATION_LEVEL_WATERLOGGED to INFINITY)
 //			H.apply_status_effect(/datum/status_effect/debuff/waterlogged)
 		if(HYDRATION_LEVEL_SMALLTHIRST to HYDRATION_LEVEL_FULL)
-			H.remove_stress(list(/datum/stressevent/drym,/datum/stressevent/thirst,/datum/stressevent/parched))
+			H.remove_stress_list(list(/datum/stressevent/drym,/datum/stressevent/thirst,/datum/stressevent/parched))
 		if(HYDRATION_LEVEL_THIRSTY to HYDRATION_LEVEL_SMALLTHIRST)
 			H.add_stress(/datum/stressevent/drym)
-			H.remove_stress(list(/datum/stressevent/parched,/datum/stressevent/thirst))
+			H.remove_stress_list(list(/datum/stressevent/parched,/datum/stressevent/thirst))
 			H.apply_status_effect(/datum/status_effect/debuff/thirstyt1)
 		if(HYDRATION_LEVEL_DEHYDRATED to HYDRATION_LEVEL_THIRSTY)
 			H.add_stress(/datum/stressevent/thirst)
-			H.remove_stress(list(/datum/stressevent/parched,/datum/stressevent/drym))
+			H.remove_stress_list(list(/datum/stressevent/parched,/datum/stressevent/drym))
 			H.apply_status_effect(/datum/status_effect/debuff/thirstyt2)
 		if(0 to HYDRATION_LEVEL_DEHYDRATED)
 			H.add_stress(/datum/stressevent/parched)
-			H.remove_stress(list(/datum/stressevent/thirst,/datum/stressevent/drym))
+			H.remove_stress_list(list(/datum/stressevent/thirst,/datum/stressevent/drym))
 			H.apply_status_effect(/datum/status_effect/debuff/thirstyt3)
 
 
@@ -2006,6 +2035,47 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 	if(H.movement_type & FLYING)
 		return TRUE
 	return FALSE
+
+////////////////
+//Wing Ripping//
+////////////////
+
+/datum/species/proc/on_wing_removal(mob/living/carbon/human/Target,  mob/Ripper)
+	var/obj/item/organ/wings/Wing = Target.getorganslot(ORGAN_SLOT_WINGS)
+	if(Wing == null)
+		Ripper.visible_message(span_notice("[Target] is missing their wings"))
+		return
+	Ripper.visible_message(span_notice("[Ripper] begins to rip [Target]'s wings..."), \
+						span_notice("I begin to rip [Target]'s wings..."))
+	if(do_after(Ripper, 80))
+		//if(length(Target.grabbedby) != 0)
+		if(Target.pulledby == Ripper)	//Check for being grabbed by ripper again
+			Wing.Remove(Target)
+			Wing.forceMove(Target.drop_location())
+			Ripper.put_in_hands(Wing)
+			Target.update_body_parts(TRUE)
+			//var/fracture_type = /datum/wound/fracture/neck
+			var/obj/item/bodypart/BP = Target.get_bodypart(BODY_ZONE_PRECISE_NECK)
+			BP.add_wound(/datum/wound/fracture/neck)
+			Target.apply_damage(70, BRUTE, Target.get_bodypart(BODY_ZONE_CHEST))
+			//var/datum/disease/Disease = new /datum/disease/heart_failure
+			//Target.ForceContractDisease(Disease)	//Disease removed in favor of simply stopping the heart via heart attack
+			Target.set_heartattack(TRUE)
+			Target.visible_message(span_danger("[Target] clutches at [Target.p_their()] chest as if [Target.p_their()] heart stopped!"))
+
+			//CURSE OF THE SEELIE
+			if(!isdead(Target))
+				playsound(Target, 'sound/vo/female/gen/scream (2).ogg', 140)
+				for(var/mob/living/M in get_hearers_in_view(4, Target))
+					if(iscarbon(M) && (M != Target))
+						var/mob/living/carbon/C = M
+						C.adjustEarDamage(0, 35)
+						C.confused += 40
+						C.Jitter(50)
+						C.apply_status_effect(/datum/status_effect/debuff/seelie_wing_curse)
+						C.visible_message( null , span_notice("[Target] screams in agony, inflicting a curse for this vild deed!"))
+		else
+			Ripper.visible_message( null , span_notice("I must grab [Target] first."))
 
 ////////////////
 //Tail Wagging//

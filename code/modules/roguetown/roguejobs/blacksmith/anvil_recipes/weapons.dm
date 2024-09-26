@@ -22,6 +22,12 @@
 	created_item = /obj/item/rogueweapon/sword/iron/messer
 	i_type = "Weapons"
 
+/datum/anvil_recipe/weapons/smesser
+	name = "Messer"
+	req_bar = /obj/item/ingot/steel
+	created_item = /obj/item/rogueweapon/sword/iron/messer/steel
+	i_type = "Weapons"
+
 /datum/anvil_recipe/weapons/idagger
 	name = "Dagger"
 	req_bar = /obj/item/ingot/iron
@@ -59,10 +65,10 @@
 	i_type = "Weapons"
 
 /datum/anvil_recipe/weapons/sswordshort
-	name = "steel short sword"
-	appro_skill = /datum/skill/craft/weaponsmithing
+	name = "Arming Sword"
 	req_bar = /obj/item/ingot/steel
 	created_item = /obj/item/rogueweapon/sword/short
+	i_type = "Weapons"
 
 /datum/anvil_recipe/weapons/ssaber
 	name = "Sabre"
@@ -82,6 +88,12 @@
 	created_item = /obj/item/rogueweapon/sword/cutlass
 	i_type = "Weapons"
 
+/datum/anvil_recipe/weapons/katar
+	name = "Katar"
+	req_bar = /obj/item/ingot/steel
+	created_item = /obj/item/rogueweapon/katar
+	i_type = "Weapons"
+
 /datum/anvil_recipe/weapons/hknife
 	name = "Hunting knife"
 	req_bar = /obj/item/ingot/iron
@@ -92,6 +104,13 @@
 	name = "Cleaver"
 	req_bar = /obj/item/ingot/steel
 	created_item = /obj/item/rogueweapon/huntingknife/cleaver
+	i_type = "Weapons"
+
+/datum/anvil_recipe/weapons/ccleaver
+	name = "Combat Knife"
+	req_bar = /obj/item/ingot/steel
+	created_item = /obj/item/rogueweapon/huntingknife/cleaver/combat
+	craftdiff = 2
 	i_type = "Weapons"
 
 /// ADVANCED WEAPONS
@@ -112,19 +131,27 @@
 	craftdiff = 2
 	i_type = "Weapons"
 
-/datum/anvil_recipe/weapons/ccleaver
-	name = "Hunting Knife (+1 Steel)"
-	req_bar = /obj/item/ingot/steel
-	additional_items = list(/obj/item/ingot/steel)
-	created_item = /obj/item/rogueweapon/huntingknife/cleaver/combat
-	craftdiff = 2
-	i_type = "Weapons"
-
 /datum/anvil_recipe/weapons/smace
 	name = "Mace (+1 Steel)"
 	req_bar = /obj/item/ingot/steel
 	additional_items = list(/obj/item/ingot/steel)
 	created_item = /obj/item/rogueweapon/mace/steel
+	craftdiff = 2
+	i_type = "Weapons"
+
+/datum/anvil_recipe/weapons/langesmesser
+	name = "Langesmesser (+1 Steel)"
+	req_bar = /obj/item/ingot/steel
+	additional_items = list(/obj/item/ingot/steel)
+	created_item = /obj/item/rogueweapon/sword/long/rider/messer
+	craftdiff = 2
+	i_type = "Weapons"
+
+/datum/anvil_recipe/weapons/estoc
+	name = "Estoc (+1 Steel)"
+	req_bar = /obj/item/ingot/steel
+	additional_items = list(/obj/item/ingot/steel)
+	created_item = /obj/item/rogueweapon/sword/estoc
 	craftdiff = 2
 	i_type = "Weapons"
 
@@ -142,14 +169,6 @@
 	additional_items = list(/obj/item/ingot/steel, /obj/item/ingot/steel)
 	created_item = /obj/item/rogueweapon/greatsword
 	craftdiff = 3
-	i_type = "Weapons"
-
-/datum/anvil_recipe/weapons/buckler
-	name = "Buckler (+1 Steel)"
-	req_bar = /obj/item/ingot/steel
-	additional_items = list(/obj/item/ingot/steel)
-	created_item = /obj/item/rogueweapon/shield/buckler
-	craftdiff = 2
 	i_type = "Weapons"
 
 /// UPGRADED WEAPONS
@@ -321,6 +340,14 @@
 	created_item = /obj/item/rogueweapon/shield/tower
 	i_type = "Weapons"
 
+/datum/anvil_recipe/weapons/buckler
+	name = "Buckler Shield"
+	appro_skill = /datum/skill/craft/armorsmithing
+	req_bar = /obj/item/ingot/steel
+	created_item = /obj/item/rogueweapon/shield/buckler
+	craftdiff = 3
+	i_type = "Weapons"
+
 /// CROSSBOWS
 /datum/anvil_recipe/weapons/xbow
 	name = "Crossbow (+1 Small Log) (+1 Fiber)"
@@ -341,14 +368,14 @@
 	name = "Arrows 5x (+1 Stick)"
 	req_bar = /obj/item/ingot/iron
 	additional_items = list(/obj/item/grown/log/tree/stick)
-	created_item = list(/obj/item/ammo_casing/caseless/rogue/arrow,/obj/item/ammo_casing/caseless/rogue/arrow,/obj/item/ammo_casing/caseless/rogue/arrow, /obj/item/ammo_casing/caseless/rogue/arrow, /obj/item/ammo_casing/caseless/rogue/arrow)
+	created_item = list(/obj/item/ammo_casing/caseless/rogue/arrow/iron,/obj/item/ammo_casing/caseless/rogue/arrow/iron,/obj/item/ammo_casing/caseless/rogue/arrow/iron, /obj/item/ammo_casing/caseless/rogue/arrow/iron, /obj/item/ammo_casing/caseless/rogue/arrow/iron)
 	i_type = "Ammo"
 
 //Rarity
 /datum/anvil_recipe/valuables/execution
 	name = "Execution Sword (+ 1 Steel, + 1 Iron)"
 	req_bar = /obj/item/ingot/steel
-	additional_items = list(/obj/item/ingot/iron, /obj/item/ingot/steel)	
+	additional_items = list(/obj/item/ingot/iron, /obj/item/ingot/steel)
 	created_item = /obj/item/rogueweapon/sword/long/exe
 	i_type = "Weapons"
 

@@ -18,6 +18,7 @@
 	r_sleeve_status = SLEEVE_NORMAL
 	l_sleeve_status = SLEEVE_NORMAL
 	flags_inv = HIDECROTCH
+	w_class = WEIGHT_CLASS_SMALL
 
 /obj/item/clothing/under/roguetown/AdjustClothes(mob/user)
 #ifdef MATURESERVER
@@ -42,7 +43,7 @@
 
 /obj/item/clothing/under/roguetown/tights
 	name = "tights"
-	desc = ""
+	desc = "A pair of form fitting tights."
 	gender = PLURAL
 	icon_state = "tights"
 	item_state = "tights"
@@ -93,7 +94,7 @@
 
 /obj/item/clothing/under/roguetown/trou
 	name = "work trousers"
-	desc = ""
+	desc = "Good quality trousers worn by laborers."
 	gender = PLURAL
 	icon_state = "trou"
 	item_state = "trou"
@@ -108,16 +109,18 @@
 
 /obj/item/clothing/under/roguetown/trou/leather
 	name = "leather trousers"
+	desc = "Trousers made of fine leather."
 	icon_state = "leathertrou"
 
 /obj/item/clothing/under/roguetown/trou/leather/mourning
 	name = "mourning trousers"
+	desc = "Dark trousers worn by morticians while performing burial rites."
 	icon_state = "leathertrou"
 	color = "#151615"
 
 /obj/item/clothing/under/roguetown/chainlegs
 	name = "chain chausses"
-	desc = ""
+	desc = "Chain leggings composed of interlinked metal rings."
 	gender = PLURAL
 	icon_state = "chain_legs"
 	item_state = "chain_legs"
@@ -132,13 +135,15 @@
 	smeltresult = /obj/item/ingot/steel
 	r_sleeve_status = SLEEVE_NOMOD
 	l_sleeve_status = SLEEVE_NOMOD
+	w_class = WEIGHT_CLASS_NORMAL
 
 /obj/item/clothing/under/roguetown/brayette
 	name = "brayette"
-	desc = ""
+	desc = "Chain underwear which protect the family jewels."
 	gender = PLURAL
 	icon_state = "chain_bootyshorts"
 	item_state = "chain_bootyshorts"
+	max_integrity = 325
 	sewrepair = FALSE
 	armor = list("blunt" = 70, "slash" = 100, "stab" = 80, "bullet" = 50, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
 	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT)
@@ -149,6 +154,8 @@
 	smeltresult = /obj/item/ingot/steel
 	r_sleeve_status = SLEEVE_NOMOD
 	l_sleeve_status = SLEEVE_NOMOD
+	w_class = WEIGHT_CLASS_SMALL
+	clothing_flags = CANT_SLEEP_IN
 
 /obj/item/clothing/under/roguetown/chainlegs/iron
 	icon_state = "ichain_legs"
@@ -157,7 +164,7 @@
 
 /obj/item/clothing/under/roguetown/platelegs
 	name = "plated chausses"
-	desc = ""
+	desc = "Plated armor to protect the legs."
 	gender = PLURAL
 	icon_state = "chain_legs"
 	item_state = "chain_legs"
@@ -171,10 +178,12 @@
 	anvilrepair = /datum/skill/craft/armorsmithing
 	r_sleeve_status = SLEEVE_NOMOD
 	l_sleeve_status = SLEEVE_NOMOD
+	w_class = WEIGHT_CLASS_BULKY
+	clothing_flags = CANT_SLEEP_IN
 
 /obj/item/clothing/under/roguetown/loincloth
 	name = "loincloth"
-	desc = ""
+	desc = "Covers your dignity, but only just."
 	icon_state = "loincloth"
 	item_state = "loincloth"
 //	adjustable = CAN_CADJUST

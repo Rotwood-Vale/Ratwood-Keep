@@ -27,6 +27,11 @@
 	if(isliving(user))
 		var/mob/living/L = user
 		var/area/C = get_area(user)
+
+		if(HAS_TRAIT(usr, TRAIT_ATHEISM_CURSE))
+			to_chat(usr, span_danger("Praying is for fools."))
+			return
+
 		var/msg = input("Whisper your prayer:", "Prayer") as text|null
 		if(msg)
 			L.whisper(msg)
@@ -49,8 +54,6 @@
 	var/message2recognize = sanitize_hear_message(message)
 	var/mob/living/carbon/human/M = L
 	if(length(message2recognize) > 15)
-		if(L.has_flaw(/datum/charflaw/addiction/godfearing))
-			L.sate_addiction()
 		if(L.mob_timers[MT_PSYPRAY])
 			if(world.time < L.mob_timers[MT_PSYPRAY] + 1 MINUTES)
 				L.mob_timers[MT_PSYPRAY] = world.time
@@ -475,6 +478,14 @@
 
 	emote("kiss", intentional = TRUE, targetted = TRUE)
 
+/datum/emote/living/kiss/can_run_emote(mob/living/user, status_check = TRUE , intentional)
+	. = ..()
+	if(HAS_TRAIT(user, TRAIT_EORA_CURSE))
+		var/mob/living/carbon/human/H = user
+		to_chat(H, "<span class='warning'>The idea repulses me!</span>")
+		H.cursed_freak_out()
+		return FALSE
+
 /datum/emote/living/kiss/adjacentaction(mob/user, mob/target)
 	. = ..()
 	message_param = initial(message_param) // re
@@ -482,6 +493,13 @@
 		return
 	if(ishuman(user) && ishuman(target))
 		var/mob/living/carbon/human/H = user
+		var/mob/living/carbon/human/E = target
+
+		// cursed is the one being kissed
+		if(HAS_TRAIT(E, TRAIT_EORA_CURSE))
+			to_chat(E, "<span class='warning'>I feel unexplicably repelled!</span>")
+			E.cursed_freak_out()
+
 		var/do_change
 		if(target.loc == user.loc)
 			do_change = TRUE
@@ -493,7 +511,6 @@
 				message_param = "kisses %t deeply."
 			else if(H.zone_selected == BODY_ZONE_PRECISE_EARS)
 				message_param = "kisses %t on the ear."
-				var/mob/living/carbon/human/E = target
 				if(iself(E) || ishalfelf(E))
 					if(!E.cmode)
 						to_chat(target, span_love("It tickles..."))
@@ -501,6 +518,7 @@
 				message_param = "kisses %t on the brow."
 			else
 				message_param = "kisses %t on \the [parse_zone(H.zone_selected)]."
+
 	playsound(target.loc, pick('sound/vo/kiss (1).ogg','sound/vo/kiss (2).ogg'), 100, FALSE, -1)
 
 
@@ -553,13 +571,26 @@
 
 	emote("hug", intentional = TRUE, targetted = TRUE)
 
+/datum/emote/living/hug/can_run_emote(mob/living/user, status_check = TRUE , intentional)
+	. = ..()
+	if(HAS_TRAIT(user, TRAIT_EORA_CURSE))
+		var/mob/living/carbon/human/H = user
+		to_chat(H, "<span class='warning'>The idea repulses me!</span>")
+		H.cursed_freak_out()
+		return FALSE
+
 /datum/emote/living/hug/adjacentaction(mob/user, mob/target)
 	. = ..()
 	if(!user || !target)
 		return
 	if(ishuman(target))
 		var/mob/living/carbon/human/H = target
-		H.add_stress(/datum/stressevent/hug)
+
+		// cursed is the one being hugged
+		if(HAS_TRAIT(H, TRAIT_EORA_CURSE))
+			to_chat(H, "<span class='warning'>I feel unexplicably repelled!</span>")
+			H.cursed_freak_out()
+			return
 
 /datum/emote/living/holdbreath
 	key = "hold"
@@ -1122,7 +1153,7 @@
 #ifdef MATURESERVER
 	message_param = "%t"
 #endif
-	//mute_time = 1 - RATWOOD CHANGE, I don't want spammers.
+
 /datum/emote/living/custom/can_run_emote(mob/user, status_check, intentional)
 	. = ..() && intentional
 
@@ -1141,9 +1172,6 @@
 
 /datum/emote/living/custom/run_emote(mob/user, params, type_override = null, intentional = FALSE)
 	if(!can_run_emote(user, TRUE, intentional))
-		return FALSE
-	if(is_banned_from(user.ckey, "Emote"))
-		to_chat(user, span_boldwarning("I cannot send custom emotes (banned)."))
 		return FALSE
 	else if(QDELETED(user))
 		return FALSE
@@ -1240,3 +1268,27 @@
 	else
 		to_chat(user, span_warning("You're incapable of slapping in your current state."))
 */
+
+/datum/emote/living/shake
+	key = "shake"
+	key_third_person = "shakes"
+	message = "shakes their head."
+	emote_type = EMOTE_VISIBLE
+
+/mob/living/carbon/human/verb/emote_shake()
+	set name = "Shake Head"
+	set category = "Emotes"
+
+	emote("shake", intentional = TRUE)
+
+/datum/emote/living/squint
+	key = "squint"
+	key_third_person = "squints"
+	message = "squints their eyes."
+	emote_type = EMOTE_VISIBLE
+
+/mob/living/carbon/human/verb/emote_squint()
+	set name = "Squint"
+	set category = "Emotes"
+
+	emote("squint", intentional = TRUE)

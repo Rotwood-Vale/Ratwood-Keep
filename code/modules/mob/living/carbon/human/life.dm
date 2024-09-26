@@ -19,7 +19,6 @@
 #define THERMAL_PROTECTION_HAND_RIGHT	0.025
 
 /mob/living/carbon/human
-	var/leprosy = 2
 	var/allmig_reward = 0
 
 /mob/living/carbon/human/Life()
@@ -39,6 +38,7 @@
 		Stun(50)
 
 	if(mind)
+		mind.sleep_adv.add_stress_cycle(get_stress_amount())
 		for(var/datum/antagonist/A in mind.antag_datums)
 			A.on_life(src)
 
@@ -48,11 +48,14 @@
 				HM.on_life()
 
 		if(mode == AI_OFF)
+			handle_vamp_dreams()
 			if(IsSleeping())
 				if(health > 0)
 					if(has_status_effect(/datum/status_effect/debuff/sleepytime))
-						tiredness = 0
 						remove_status_effect(/datum/status_effect/debuff/sleepytime)
+						remove_stress(/datum/stressevent/sleepytime)
+						if(mind)
+							mind.sleep_adv.advance_cycle()
 						var/datum/game_mode/chaosmode/C = SSticker.mode
 						if(istype(C))
 							if(mind)
@@ -62,21 +65,17 @@
 									if(C.allmig)
 										if(allmig_reward > 3)
 											adjust_triumphs(1)
-					if(has_status_effect(/datum/status_effect/debuff/trainsleep))
-						remove_status_effect(/datum/status_effect/debuff/trainsleep)
-			if(leprosy == 1)
-				adjustToxLoss(2)
-			else if(leprosy == 2)
-				if(client)
-					if(check_blacklist(client.ckey))
-						ADD_TRAIT(src, TRAIT_NOPAIN, TRAIT_GENERIC)
-						leprosy = 1
-						var/obj/item/bodypart/B = get_bodypart(BODY_ZONE_HEAD)
-						if(B)
-							B.sellprice = rand(16, 33)
-					else
-						leprosy = 3
+			if(HAS_TRAIT(src, TRAIT_LEPROSY))
+				if(!mob_timers["leper_bleed"] || mob_timers["leper_bleed"] + 6 MINUTES < world.time)
+					if(prob(10))
+						to_chat(src, span_warning("My skin opens up and bleeds..."))
+						mob_timers["leper_bleed"] = world.time
+						var/obj/item/bodypart/part = pick(bodyparts)
+						if(part)
+							part.add_wound(/datum/wound/slash)
+				adjustToxLoss(0.3)
 			//heart attack stuff
+			handle_curses()
 			handle_heart()
 			handle_liver()
 			update_rogfat()
@@ -84,7 +83,7 @@
 			if(charflaw && !charflaw.ephemeral)
 				charflaw.flaw_on_life(src)
 			if(health <= 0)
-				adjustOxyLoss(0.5)
+				adjustOxyLoss(0.3)
 			if(!client && !HAS_TRAIT(src, TRAIT_NOSLEEP))
 				if(mob_timers["slo"])
 					if(world.time > mob_timers["slo"] + 90 SECONDS)
@@ -94,7 +93,7 @@
 			else
 				if(mob_timers["slo"])
 					mob_timers["slo"] = null
-					
+
 		if(dna?.species)
 			dna.species.spec_life(src) // for mutantraces
 
@@ -400,6 +399,25 @@
 		Unconscious(80)
 	// Tissues die without blood circulation
 	adjustBruteLoss(2)
+
+/mob/living/carbon/human/proc/handle_vamp_dreams()
+	if(!HAS_TRAIT(src, TRAIT_VAMP_DREAMS))
+		return
+	if(!mind)
+		return
+	if(!has_status_effect(/datum/status_effect/debuff/vamp_dreams))
+		return
+	if(!eyesclosed)
+		return
+	if(mobility_flags & MOBILITY_STAND)
+		return
+	if(!istype(loc, /obj/structure/closet/crate/coffin))
+		return
+	var/obj/structure/closet/crate/coffin/coffin = loc
+	if(coffin.opened)
+		return
+	remove_status_effect(/datum/status_effect/debuff/vamp_dreams)
+	mind.sleep_adv.advance_cycle()
 
 #undef THERMAL_PROTECTION_HEAD
 #undef THERMAL_PROTECTION_CHEST

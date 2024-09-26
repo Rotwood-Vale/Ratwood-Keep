@@ -2,7 +2,7 @@
 	force = 15
 	possible_item_intents = list(/datum/intent/flail/strike, /datum/intent/flail/strike/smash)
 	name = "flail"
-	desc = "This is a swift, iron flail. Strikes hard and far."
+	desc = "This is a swift, iron flail. Strikes hard and fast."
 	icon_state = "iflail"
 	icon = 'icons/roguetown/weapons/32.dmi'
 	sharpness = IS_BLUNT
@@ -29,7 +29,7 @@
 	icon_state = "instrike"
 	item_d_type = "slash"
 
-/datum/intent/flail/strikerange
+/datum/intent/flail/strikerange //No flail seems to use this intent.
 	name = "ranged strike"
 	blade_class = BCLASS_BLUNT
 	attack_verb = list("strikes", "hits")
@@ -44,6 +44,7 @@
 /datum/intent/flail/strike/smash
 	name = "smash"
 	chargetime = 5
+	chargedrain = 1
 	no_early_release = TRUE
 	penfactor = 80
 	recovery = 10
@@ -56,15 +57,15 @@
 	hitsound = list('sound/combat/hits/blunt/flailhit.ogg')
 	item_d_type = "blunt"
 
-/datum/intent/flail/strike/smashrange
+/datum/intent/flail/strike/smashrange //No flail seems to use this intent.
 	name = "ranged smash"
 	chargetime = 25
+	chargedrain = 1
 	no_early_release = TRUE
 	penfactor = 50
 	recovery = 30
 	damfactor = 1.5
 	reach = 2
-	swingdelay = 8
 	chargedloop = /datum/looping_sound/flailswing
 	keep_looping = TRUE
 	icon_state = "insmash"
@@ -84,9 +85,9 @@
 
 
 /obj/item/rogueweapon/flail/sflail
-	force = 30
+	force = 20
 	icon_state = "flail"
-	desc = "This is a swift, steel flail. Strikes hard and far."
+	desc = "This is a swift, steel flail. Strikes hard and fast."
 	smeltresult = /obj/item/ingot/steel
 	minstr = 5
 
@@ -94,7 +95,7 @@
 /datum/intent/whip/lash
 	name = "lash"
 	blade_class = BCLASS_BLUNT
-	attack_verb = list("lashes", "cracks")
+	attack_verb = list("lashes", "whips")
 	hitsound = list('sound/combat/hits/blunt/flailhit.ogg')
 	chargetime = 0
 	recovery = 7
@@ -106,7 +107,7 @@
 /datum/intent/whip/crack
 	name = "crack"
 	blade_class = BCLASS_CUT
-	attack_verb = list("cracks", "strikes") //something something dwarf fotresss
+	attack_verb = list("cracks") //something something dwarf fotresss
 	hitsound = list('sound/combat/hits/blunt/flailhit.ogg')
 	chargetime = 0
 	recovery = 10
@@ -118,7 +119,7 @@
 /datum/intent/whip/punish
 	name = "punish"
 	blade_class = BCLASS_BLUNT
-	attack_verb = list("lashes")
+	attack_verb = list("strikes")
 	hitsound = list('sound/combat/hits/blunt/flailhit.ogg')
 	chargetime = 0
 	recovery = 10
@@ -131,7 +132,7 @@
 	force = 21
 	possible_item_intents = list(/datum/intent/whip/crack, /datum/intent/whip/lash, /datum/intent/whip/punish)
 	name = "whip"
-	desc = "A leather whip, built to last with an sharp stone for a tip"
+	desc = "A leather whip, built to last with an sharp stone for a tip."
 	icon_state = "whip"
 	icon = 'icons/roguetown/weapons/32.dmi'
 	sharpness = IS_BLUNT
@@ -160,14 +161,14 @@
 /obj/item/rogueweapon/whip/antique
 	force = 29
 	name = "Repenta En"
-	desc = "An extremely well maintained whip, with a polished steel tip and gilded handle"
+	desc = "An extremely well maintained whip, with a polished steel tip and gilded handle. It clearly needs to see more use."
 	minstr = 11
 	icon_state = "gwhip"
 
 
 /obj/item/rogueweapon/flail/peasantwarflail
 	force = 10
-	force_wielded = 35
+	force_wielded = 25
 	possible_item_intents = list(/datum/intent/flail/strike)
 	gripped_intents = list(/datum/intent/flail/strikerange, /datum/intent/flail/strike/smashrange)
 	name = "peasant war flail"
@@ -187,7 +188,6 @@
 	wbalance = -2
 	smeltresult = /obj/item/ingot/iron
 	associated_skill = /datum/skill/combat/polearms
-	dropshrink = 0.6
 	blade_dulling = DULLING_BASHCHOP
 	wdefense = 1
 

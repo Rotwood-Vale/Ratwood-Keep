@@ -4,16 +4,12 @@
 #ifdef MATURESERVER
 	message_param = "%t"
 #endif
-	restraint_check = TRUE
 
 /datum/emote/living/subtle/can_run_emote(mob/user, status_check, intentional)
 	. = ..() && intentional
 
 /datum/emote/living/subtle/run_emote(mob/user, params, type_override = null, intentional = FALSE)
 	if(!can_run_emote(user, TRUE, intentional))
-		return FALSE
-	if(is_banned_from(user.ckey, "Emote"))
-		to_chat(user, "<span class='boldwarning'>I cannot send custom emotes (banned).</span>")
 		return FALSE
 	else if(QDELETED(user))
 		return FALSE

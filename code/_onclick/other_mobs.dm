@@ -75,7 +75,7 @@
 		to_chat(src, span_warning("I can't move this hand."))
 		return
 
-	if(check_arm_grabbed())
+	if(check_arm_grabbed(used_hand))
 		to_chat(src, span_warning("[pulledby] is restraining my arm!"))
 		return
 
@@ -154,6 +154,37 @@
 	return
 
 /mob/living/carbon/onbite(mob/living/carbon/human/user)
+	var/nodmg = FALSE
+	var/dam2do = 10*(user.STASTR/20)
+	if(HAS_TRAIT(user, TRAIT_STRONGBITE))
+		dam2do *= 2
+
+	var/def_zone = user.zone_selected
+	var/do_bound_check = TRUE
+
+	if(user.sexcon && user.sexcon.target == src && !isnull(user.sexcon.current_action))
+		switch(user.sexcon.current_action)
+			if(/datum/sex_action/blowjob || /datum/sex_action/crotch_nuzzle || /datum/sex_action/cunnilingus || /datum/sex_action/rimming || /datum/sex_action/suck_balls)
+				dam2do *= 2 //Vrell - biting their junk hurts more
+				def_zone = BODY_ZONE_PRECISE_GROIN
+				do_bound_check = FALSE
+			if(/datum/sex_action/armpit_nuzzle)
+				dam2do *= 1.5 //Vrell - biting the soft of the armpit hurts more
+				def_zone = BODY_ZONE_CHEST
+				do_bound_check = FALSE
+	if(sexcon && sexcon.target == user && !isnull(sexcon.current_action))
+		switch(sexcon.current_action)
+			if(/datum/sex_action/throat_sex || /datum/sex_action/force_blowjob || /datum/sex_action/force_crotch_nuzzle || /datum/sex_action/force_cunnilingus || /datum/sex_action/facesitting || /datum/sex_action/force_rimming)
+				dam2do *= 2 //Vrell - biting their junk hurts more
+				def_zone = BODY_ZONE_PRECISE_GROIN
+				do_bound_check = FALSE
+			if(/datum/sex_action/force_armpit_nuzzle)
+				dam2do *= 1.5 //Vrell - biting the soft of the armpit hurts more
+				def_zone = BODY_ZONE_CHEST
+				do_bound_check = FALSE
+
+	if(do_bound_check && user.incapacitated())
+		return FALSE
 	if(HAS_TRAIT(user, TRAIT_PACIFISM))
 		to_chat(user, span_warning("I don't want to harm [src]!"))
 		return FALSE
@@ -169,32 +200,27 @@
 		if(!lying_attack_check(user))
 			return FALSE
 
-	var/def_zone = check_zone(user.zone_selected)
-	var/obj/item/bodypart/affecting = get_bodypart(def_zone)
+	var/obj/item/bodypart/affecting = get_bodypart(check_zone(def_zone))
 	if(!affecting)
 		to_chat(user, span_warning("Nothing to bite."))
 		return
 
 	next_attack_msg.Cut()
 
-	var/nodmg = FALSE
-	var/dam2do = 10*(user.STASTR/20)
-	if(HAS_TRAIT(user, TRAIT_STRONGBITE))
-		dam2do *= 2
 	if(!HAS_TRAIT(user, TRAIT_STRONGBITE))
 		if(!affecting.has_wound(/datum/wound/bite))
 			nodmg = TRUE
 	if(!nodmg)
 		var/armor_block = run_armor_check(user.zone_selected, "stab",blade_dulling=BCLASS_BITE)
-		if(!apply_damage(dam2do, BRUTE, def_zone, armor_block, user))
+		if(!apply_damage(dam2do, BRUTE, check_zone(def_zone), armor_block, user))
 			nodmg = TRUE
 			next_attack_msg += " <span class='warning'>Armor stops the damage.</span>"
 
 	var/datum/wound/caused_wound
 	if(!nodmg)
-		caused_wound = affecting.bodypart_attacked_by(BCLASS_BITE, dam2do, user, user.zone_selected, crit_message = TRUE)
-	visible_message(span_danger("[user] bites [src]'s [parse_zone(user.zone_selected)]![next_attack_msg.Join()]"), \
-					span_userdanger("[user] bites my [parse_zone(user.zone_selected)]![next_attack_msg.Join()]"))
+		caused_wound = affecting.bodypart_attacked_by(BCLASS_BITE, dam2do, user, def_zone, crit_message = TRUE)
+	visible_message(span_danger("[user] bites [src]'s [parse_zone(def_zone)]![next_attack_msg.Join()]"), \
+					span_userdanger("[user] bites my [parse_zone(def_zone)]![next_attack_msg.Join()]"))
 
 	next_attack_msg.Cut()
 
@@ -213,7 +239,7 @@
 	var/obj/item/grabbing/bite/B = new()
 	user.equip_to_slot_or_del(B, SLOT_MOUTH)
 	if(user.mouth == B)
-		var/used_limb = src.find_used_grab_limb(user)
+		var/used_limb = src.find_used_grab_limb(user, def_zone)
 		B.name = "[src]'s [parse_zone(used_limb)]"
 		var/obj/item/bodypart/BP = get_bodypart(check_zone(used_limb))
 		BP.grabbedby += B
@@ -233,6 +259,11 @@
 	if(!mmb_intent)
 		if(!A.Adjacent(src))
 			return
+		if(isseelie(A) && !(isseelie(src)))
+			var/mob/living/carbon/human/target = A
+			if(target.pulledby == src)
+				target.dna.species.on_wing_removal(A, src)
+			return
 		A.MiddleClick(src, params)
 	else
 		switch(mmb_intent.type)
@@ -250,8 +281,7 @@
 				if(A == src)
 					return
 				if(isliving(A))
-					var/mob/living/L = A
-					if(!(L.mobility_flags & MOBILITY_STAND) && L.pulling != src)
+					if(!(mobility_flags & MOBILITY_STAND) && pulledby)
 						return
 				if(IsOffBalanced())
 					to_chat(src, span_warning("I haven't regained my balance yet."))
@@ -360,7 +390,7 @@
 					return
 				if(A == src)
 					return
-				if(src.incapacitated())
+				if(src.incapacitated(ignore_restraints = TRUE))
 					return
 				if(!get_location_accessible(src, BODY_ZONE_PRECISE_MOUTH, grabs="other"))
 					to_chat(src, span_warning("My mouth is blocked."))
@@ -385,62 +415,67 @@
 					var/list/stealpos = list()
 					var/list/mobsbehind = list()
 					var/exp_to_gain = STAINT
-					if(stealroll > targetperception)
-					//TODO add exp here
-						// RATWOOD MODULAR START
-						if(V.cmode)
-							to_chat(src, "<span class='warning'>[V] is alert. I can't pickpocket them like this.</span>")
-							return
-						// RATWOOD MODULAR END
-						if(U.get_active_held_item())
-							to_chat(src, span_warning("I can't pickpocket while my hand is full!"))
-							return
-						if(!(zone_selected in stealablezones))
-							to_chat(src, span_warning("What am I going to steal from there?"))
-							return
-						mobsbehind |= cone(V, list(turn(V.dir, 180)), list(src))
-						if(mobsbehind.Find(src))
-							switch(U.zone_selected)
-								if("chest")
-									if (V.get_item_by_slot(SLOT_BACK_L))
-										stealpos.Add(V.get_item_by_slot(SLOT_BACK_L))
-									if (V.get_item_by_slot(SLOT_BACK_R))
-										stealpos.Add(V.get_item_by_slot(SLOT_BACK_R))
-								if("neck")
-									if (V.get_item_by_slot(SLOT_NECK))
-										stealpos.Add(V.get_item_by_slot(SLOT_NECK))
-								if("groin")
-									if (V.get_item_by_slot(SLOT_BELT_R))
-										stealpos.Add(V.get_item_by_slot(SLOT_BELT_R))
-									if (V.get_item_by_slot(SLOT_BELT_L))
-										stealpos.Add(V.get_item_by_slot(SLOT_BELT_L))	
-								if("r_hand" || "l_hand")
-									if (V.get_item_by_slot(SLOT_RING))
-										stealpos.Add(V.get_item_by_slot(SLOT_RING))
-							if (length(stealpos) > 0)
-								var/obj/item/picked = pick(stealpos)
-								V.dropItemToGround(picked)
-								put_in_active_hand(picked)						
-								to_chat(src, span_green("I stole [picked]!"))
-								V.log_message("has had \the [picked] stolen by [key_name(U)]", LOG_ATTACK, color="black")
-								U.log_message("has stolen \the [picked] from [key_name(V)]", LOG_ATTACK, color="black")
-								exp_to_gain *= src.mind.get_learning_boon(thiefskill)
+					to_chat(src, span_notice("I try to steal from [V]..."))
+					if(do_after(src, 5, target = V, progress = 0))
+						if(stealroll > targetperception)
+						//TODO add exp here
+							// RATWOOD MODULAR START
+							if(V.cmode)
+								to_chat(src, "<span class='warning'>[V] is alert. I can't pickpocket them like this.</span>")
+								return
+							// RATWOOD MODULAR END
+							if(U.get_active_held_item())
+								to_chat(src, span_warning("I can't pickpocket while my hand is full!"))
+								return
+							if(!(zone_selected in stealablezones))
+								to_chat(src, span_warning("What am I going to steal from there?"))
+								return
+							mobsbehind |= cone(V, list(turn(V.dir, 180)), list(src))
+							if(mobsbehind.Find(src))
+								switch(U.zone_selected)
+									if("chest")
+										if (V.get_item_by_slot(SLOT_BACK_L))
+											stealpos.Add(V.get_item_by_slot(SLOT_BACK_L))
+										if (V.get_item_by_slot(SLOT_BACK_R))
+											stealpos.Add(V.get_item_by_slot(SLOT_BACK_R))
+									if("neck")
+										if (V.get_item_by_slot(SLOT_NECK))
+											stealpos.Add(V.get_item_by_slot(SLOT_NECK))
+									if("groin")
+										if (V.get_item_by_slot(SLOT_BELT_R))
+											stealpos.Add(V.get_item_by_slot(SLOT_BELT_R))
+										if (V.get_item_by_slot(SLOT_BELT_L))
+											stealpos.Add(V.get_item_by_slot(SLOT_BELT_L))
+									if("r_hand" || "l_hand")
+										if (V.get_item_by_slot(SLOT_RING))
+											stealpos.Add(V.get_item_by_slot(SLOT_RING))
+								if (length(stealpos) > 0)
+									var/obj/item/picked = pick(stealpos)
+									V.dropItemToGround(picked)
+									put_in_active_hand(picked)
+									to_chat(src, span_green("I stole [picked]!"))
+									V.log_message("has had \the [picked] stolen by [key_name(U)]", LOG_ATTACK, color="black")
+									U.log_message("has stolen \the [picked] from [key_name(V)]", LOG_ATTACK, color="black")
+								else
+									exp_to_gain /= 2 // these can be removed or changed on reviewer's discretion
+									to_chat(src, span_warning("I didn't find anything there. Perhaps I should look elsewhere."))
 							else
-								exp_to_gain /= 2 // these can be removed or changed on reviewer's discretion
-								to_chat(src, span_warning("I didn't find anything there. Perhaps I should look elsewhere."))
-						else
-							to_chat(src, "<span class='warning'>They can see me!")
-					if(stealroll <= 4)
-						V.log_message("has had an attempted pickpocket by [key_name(U)]", LOG_ATTACK, color="black")
-						U.log_message("has attempted to pickpocket [key_name(V)]", LOG_ATTACK, color="black")
-						to_chat(V, span_danger("Someone tried pickpocketing me!"))
-					if(stealroll < targetperception)
-						V.log_message("has had an attempted pickpocket by [key_name(U)]", LOG_ATTACK, color="black")
-						U.log_message("has attempted to pickpocket [key_name(V)]", LOG_ATTACK, color="black")
-						to_chat(src, span_danger("I failed to pick the pocket!"))
-						exp_to_gain /= 5 // these can be removed or changed on reviewer's discretion
-					src.mind.adjust_experience(/datum/skill/misc/stealing, exp_to_gain, FALSE)
-					changeNext_move(mmb_intent.clickcd)
+								to_chat(src, "<span class='warning'>They can see me!")
+						if(stealroll <= 5)
+							V.log_message("has had an attempted pickpocket by [key_name(U)]", LOG_ATTACK, color="black")
+							U.log_message("has attempted to pickpocket [key_name(V)]", LOG_ATTACK, color="black")
+							U.visible_message(span_danger("[U] failed to pickpocket [V]!"))
+							to_chat(V, span_danger("[U] tried pickpocketing me!"))
+						if(stealroll < targetperception)
+							V.log_message("has had an attempted pickpocket by [key_name(U)]", LOG_ATTACK, color="black")
+							U.log_message("has attempted to pickpocket [key_name(V)]", LOG_ATTACK, color="black")
+							to_chat(src, span_danger("I failed to pick the pocket!"))
+							to_chat(V, span_danger("Someone tried pickpocketing me!"))
+							exp_to_gain /= 5 // these can be removed or changed on reviewer's discretion
+						// If we're pickpocketing someone else, and that person is conscious, grant XP
+						if(src != V && V.stat == CONSCIOUS)
+							mind.add_sleep_experience(/datum/skill/misc/stealing, exp_to_gain, FALSE)
+						changeNext_move(mmb_intent.clickcd)
 				return
 			if(INTENT_SPELL)
 				if(ranged_ability?.InterceptClickOn(src, params, A))

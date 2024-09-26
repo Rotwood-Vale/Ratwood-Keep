@@ -19,26 +19,23 @@
 		chance2hit += 10
 
 	if(user.mind)
-		chance2hit += (user.mind.get_skill_level(associated_skill) * 8)
+		chance2hit += (user.mind.get_skill_level(associated_skill) * 7)
 
 	if(used_intent)
 		if(used_intent.blade_class == BCLASS_STAB)
-			chance2hit += 10
+			chance2hit += user.STAPER
 		if(used_intent.blade_class == BCLASS_CUT)
-			chance2hit += 6
+			chance2hit += round(user.STAPER/2)
 
 	if(I)
 		if(I.wlength == WLENGTH_SHORT)
 			chance2hit += 10
 
-	if(user.STAPER > 10)
-		chance2hit += ((user.STAPER-10)*3)
+		chance2hit += ((user.STAPER-10)*5)
 
-	if(user.STAPER < 10)
-		chance2hit -= ((10-user.STAPER)*3)
 
 	if(istype(user.rmb_intent, /datum/rmb_intent/aimed))
-		chance2hit += 20
+		chance2hit += (user.STAPER)*2
 	if(istype(user.rmb_intent, /datum/rmb_intent/swift))
 		chance2hit -= 20
 
@@ -142,7 +139,7 @@
 			var/obj/item/used_weapon = mainhand
 			var/obj/item/rogueweapon/shield/buckler/skiller = get_inactive_held_item()  // buckler code
 			var/obj/item/rogueweapon/shield/buckler/skillerbuck = get_active_held_item()
-			
+
 			if(istype(offhand, /obj/item/rogueweapon/shield/buckler))
 				skiller.bucklerskill(H)
 			if(istype(mainhand, /obj/item/rogueweapon/shield/buckler))
@@ -156,7 +153,7 @@
 				if(offhand.can_parry)
 					offhand_defense += (H.mind ? (H.mind.get_skill_level(offhand.associated_skill) * 20) : 20)
 					offhand_defense += (offhand.wdefense * 10)
-			
+
 			if(mainhand_defense >= offhand_defense)
 				highest_defense += mainhand_defense
 			else
@@ -165,7 +162,7 @@
 
 			var/defender_skill = 0
 			var/attacker_skill = 0
-			
+
 			if(highest_defense <= (H.mind ? (H.mind.get_skill_level(/datum/skill/combat/unarmed) * 20) : 20))
 				defender_skill = H.mind?.get_skill_level(/datum/skill/combat/unarmed)
 				prob2defend += (defender_skill * 20)
@@ -200,24 +197,26 @@
 				to_chat(src, span_warning("The enemy defeated my parry!"))
 				return FALSE
 
-			drained = max(drained, 5)		
-			
+			drained = max(drained, 5)
+
 			if(weapon_parry == TRUE)
 				if(do_parry(used_weapon, drained, user)) //show message
-					
-					if((mobility_flags & MOBILITY_STAND) && attacker_skill && (defender_skill < attacker_skill - SKILL_LEVEL_NOVICE))
-						mind.adjust_experience(used_weapon.associated_skill, max(round(STAINT/2), 0), FALSE)
+
+					if((mobility_flags & MOBILITY_STAND) && can_train_combat_skill(src, used_weapon.associated_skill, attacker_skill - SKILL_LEVEL_NOVICE))
+						mind.add_sleep_experience(used_weapon.associated_skill, max(round(STAINT/2), 0), FALSE)
 
 					var/obj/item/AB = intenty.masteritem
-					
+
 					//attacker skill gain
-					
+
 					if(U.mind)
-						if((U.mobility_flags & MOBILITY_STAND) && defender_skill && (attacker_skill < defender_skill - SKILL_LEVEL_NOVICE))
-							if(AB)
-								U.mind.adjust_experience(AB.associated_skill, max(round(U.STAINT/2), 0), FALSE)
-							else
-								U.mind.adjust_experience(/datum/skill/combat/unarmed, max(round(STAINT/2), 0), FALSE)
+						var/attacker_skill_type
+						if(AB)
+							attacker_skill_type = AB.associated_skill
+						else
+							attacker_skill_type = /datum/skill/combat/unarmed
+						if((U.mobility_flags & MOBILITY_STAND) && can_train_combat_skill(U, attacker_skill_type, defender_skill - SKILL_LEVEL_NOVICE))
+							U.mind.add_sleep_experience(attacker_skill_type, max(round(STAINT/2), 0), FALSE)
 
 					if(prob(66) && AB)
 						if((used_weapon.flags_1 & CONDUCT_1) && (AB.flags_1 & CONDUCT_1))
@@ -241,8 +240,8 @@
 
 			if(weapon_parry == FALSE)
 				if(do_unarmed_parry(drained, user))
-					if((mobility_flags & MOBILITY_STAND) && attacker_skill && (defender_skill < attacker_skill - SKILL_LEVEL_NOVICE))
-						H.mind?.adjust_experience(/datum/skill/combat/unarmed, max(round(STAINT/2), 0), FALSE)
+					if((mobility_flags & MOBILITY_STAND) && can_train_combat_skill(H, /datum/skill/combat/unarmed, attacker_skill - SKILL_LEVEL_NOVICE))
+						H.mind?.add_sleep_experience(/datum/skill/combat/unarmed, max(round(STAINT/2), 0), FALSE)
 					flash_fullscreen("blackflash2")
 					return TRUE
 				else

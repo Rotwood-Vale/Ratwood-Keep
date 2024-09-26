@@ -1,4 +1,5 @@
 /datum/skill/misc
+	abstract_type = /datum/skill/misc
 	name = "Misc"
 	desc = ""
 
@@ -13,6 +14,7 @@
 
 /datum/skill/misc/reading
 	name = "Reading"
+	randomable_dream_xp = FALSE
 
 /datum/skill/misc/swimming
 	name = "Swimming"
@@ -23,9 +25,6 @@
 /datum/skill/misc/sneaking
 	name = "Sneaking"
 
-/datum/skill/misc/lockpicking
-	name = "Lockpicking"
-
 /datum/skill/misc/riding
 	name = "Riding"
 
@@ -34,12 +33,10 @@
 
 /datum/skill/misc/medicine
 	name = "Medicine"
+	dream_cost_base = 3
 
 /datum/skill/misc/sewing
 	name = "Sewing"
-
-/datum/skill/misc/weaving
-	name = "Weaving"
-
+	
 /datum/skill/misc/ceramics
 	name = "Pottery"

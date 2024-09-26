@@ -48,7 +48,20 @@
 	var/obj/item/bodypart/head/stored_head = P
 	var/correct_head = FALSE
 
-	qdel(P)
+	var/reward_amount = 0
+	for(var/datum/bounty/b in GLOB.head_bounties)
+		if(b.target == stored_head.real_name)
+			correct_head = TRUE
+			say("A bounty has been sated.")
+			reward_amount += b.amount
+			GLOB.head_bounties -= b
+		
+	if(correct_head)
+		qdel(P)
+	else // No valid bounty for this head?
+		say("This skull carries no reward.")
+		playsound(src, 'sound/misc/machineno.ogg', 100, FALSE, -1)
+		return
 
 	say(pick(list("Performing intra-cranial inspection...", "Analyzing skull structure...", "Commencing cephalic dissection...")))
 
@@ -61,20 +74,8 @@
 
 	sleep(2 SECONDS)
 
-	//give reward for every bounty that matches
-	var/reward_amount = 0
-	for(var/datum/bounty/b in GLOB.head_bounties)
-		if(b.target == stored_head.real_name)
-			correct_head = TRUE
-			say("A bounty has been sated.")
-			reward_amount += b.amount
-			GLOB.head_bounties -= b
-
 	if(correct_head)
 		budget2change(reward_amount, user)
-	else // No valid bounty for this head?
-		say("This skull carried no reward.")
-		playsound(src, 'sound/misc/machineno.ogg', 100, FALSE, -1)
 
 	// Head has been "analyzed". Return it.
 	sleep(2 SECONDS)
@@ -83,34 +84,13 @@
 	stored_head.name = "mutilated head"
 	stored_head.desc = "This head has been violated beyond recognition, the work of a horrific machine."
 
-///Composes a random bounty banner based on the given bounty info.
-///@param new_bounty:  The bounty datum.
-/obj/structure/roguemachine/bounty/proc/compose_bounty(datum/bounty/new_bounty)
-	switch(rand(1, 3))
-		if(1)
-			new_bounty.banner += "A dire bounty hangs upon the head of [new_bounty.target], for '[new_bounty.reason]'.<BR>"
-			new_bounty.banner += "The patron, [new_bounty.employer], offers [new_bounty.amount] mammons for the task.<BR>"	
-		if(2)
-			new_bounty.banner += "The head of [new_bounty.target] is wanted for '[new_bounty.reason]''.<BR>"
-			new_bounty.banner += "The employer, [new_bounty.employer], offers [new_bounty.amount] mammons for the deed.<BR>"
-		if(3)
-			new_bounty.banner += "[new_bounty.employer] hath offered to pay [new_bounty.amount] mammons for the head of [new_bounty.target].<BR>"
-			new_bounty.banner += "By reason of the following: '[new_bounty.reason]'.<BR>"
-	new_bounty.banner += "--------------<BR>"
-
 ///Shows all active bounties to the user.
 /obj/structure/roguemachine/bounty/proc/consult_bounties(mob/living/carbon/human/user)
 	var/bounty_found = FALSE
 	var/consult_menu
 	consult_menu += "<center>BOUNTIES<BR>"
 	consult_menu += "--------------<BR>"
-	if(SSrole_class_handler.bandits_in_round)
-		consult_menu += "The head of each Bandit is wanted by The Crown for 80 mammons.<BR>"
-		consult_menu += "--------------<BR>"
-		bounty_found = TRUE
 	for(var/datum/bounty/saved_bounty in GLOB.head_bounties)
-		if(saved_bounty.bandit)
-			continue
 		consult_menu += saved_bounty.banner
 		bounty_found = TRUE
 
@@ -174,13 +154,7 @@
 	amount -= royal_tax
 
 	// Finally create bounty
-	var/datum/bounty/new_bounty = new /datum/bounty
-	new_bounty.amount = round(amount)
-	new_bounty.target = target
-	new_bounty.reason = reason
-	new_bounty.employer = user.real_name
-	compose_bounty(new_bounty)
-	GLOB.head_bounties += new_bounty
+	add_bounty(target, amount, FALSE, reason, user.real_name)
 
 	//Announce it locally and on scomm
 	playsound(src, 'sound/misc/machinetalk.ogg', 100, FALSE, -1)
@@ -189,3 +163,28 @@
 	scom_announce(bounty_announcement)
 
 	message_admins("[ADMIN_LOOKUPFLW(user)] has set a bounty on [ADMIN_LOOKUPFLW(target)] with the reason of: '[reason]'")
+
+/proc/add_bounty(target_realname, amount, bandit_status, reason, employer_name)
+	var/datum/bounty/new_bounty = new /datum/bounty
+	new_bounty.amount = amount
+	new_bounty.target = target_realname
+	new_bounty.bandit = bandit_status
+	new_bounty.reason = reason
+	new_bounty.employer = employer_name
+	compose_bounty(new_bounty)
+	GLOB.head_bounties += new_bounty
+
+///Composes a random bounty banner based on the given bounty info.
+///@param new_bounty:  The bounty datum.
+/proc/compose_bounty(datum/bounty/new_bounty)
+	switch(rand(1, 3))
+		if(1)
+			new_bounty.banner += "A dire bounty hangs upon the head of [new_bounty.target], for '[new_bounty.reason]'.<BR>"
+			new_bounty.banner += "The patron, [new_bounty.employer], offers [new_bounty.amount] mammons for the task.<BR>"	
+		if(2)
+			new_bounty.banner += "The head of [new_bounty.target] is wanted for '[new_bounty.reason]''.<BR>"
+			new_bounty.banner += "The employer, [new_bounty.employer], offers [new_bounty.amount] mammons for the deed.<BR>"
+		if(3)
+			new_bounty.banner += "[new_bounty.employer] hath offered to pay [new_bounty.amount] mammons for the head of [new_bounty.target].<BR>"
+			new_bounty.banner += "By reason of the following: '[new_bounty.reason]'.<BR>"
+	new_bounty.banner += "--------------<BR>"

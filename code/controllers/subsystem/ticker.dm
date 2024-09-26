@@ -175,7 +175,7 @@ SUBSYSTEM_DEF(ticker)
 			for(var/client/C in GLOB.clients)
 				window_flash(C, ignorepref = TRUE) //let them know lobby has opened up.
 //			to_chat(world, span_boldnotice("Welcome to [station_name()]!"))
-			send2chat(new /datum/tgs_message_content("New round starting on [SSmapping.config.map_name]!"), CONFIG_GET(string/chat_announce_new_game))
+			send2chat(new /datum/tgs_message_content("<@&[CONFIG_GET(string/game_alert_role_id)]> Round **[GLOB.round_id]** starting on [SSmapping.config.map_name], [CONFIG_GET(string/servername)]! \nIf you wish to be pinged for game related stuff, go to <#[CONFIG_GET(string/role_assign_channel_id)]> and assign yourself the roles."), CONFIG_GET(string/channel_announce_new_game))
 			current_state = GAME_STATE_PREGAME
 			//Everyone who wants to be an observer is now spawned
 			create_observers()
@@ -242,15 +242,6 @@ SUBSYSTEM_DEF(ticker)
 				toggle_dooc(TRUE)
 				declare_completion(force_ending)
 				Master.SetRunLevel(RUNLEVEL_POSTGAME)
-			if(firstvote)
-				if(world.time > round_start_time + time_until_vote && autovote)
-					SSvote.initiate_vote("restart", "The Gods")
-					time_until_vote = 30 MINUTES
-					last_vote_time = world.time
-					firstvote = FALSE
-			else
-				if(world.time > last_vote_time + time_until_vote && autovote)
-					SSvote.initiate_vote("restart", "The Gods")
 
 /datum/controller/subsystem/ticker
 	var/last_bot_update = 0
@@ -547,14 +538,6 @@ SUBSYSTEM_DEF(ticker)
 			player.new_player_panel()
 		CHECK_TICK
 
-/datum/controller/subsystem/ticker/proc/select_ruler()
-	for(var/mob/living/carbon/human/K in world)
-		if(istype(K, /mob/living/carbon/human/dummy))
-			continue
-		if(K.job == "King")
-			rulermob = K
-			return
-
 /datum/controller/subsystem/ticker/proc/collect_minds()
 	for(var/i in GLOB.new_player_list)
 		var/mob/dead/new_player/P = i
@@ -598,6 +581,8 @@ SUBSYSTEM_DEF(ticker)
 				var/atom/movable/screen/splash/S = new(living.client, TRUE)
 				S.Fade(TRUE)
 			livings += living
+			if(ishuman(living))
+				try_apply_character_post_equipment(living)
 	if(livings.len)
 		addtimer(CALLBACK(src, PROC_REF(release_characters), livings), 30, TIMER_CLIENT_TIME)
 

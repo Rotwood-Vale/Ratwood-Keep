@@ -11,8 +11,10 @@
 //0 test
 //12 minutes norma
 //#define ROUNDTIMERBOAT (300 MINUTES)
-#define INITIAL_ROUND_TIMER (150 MINUTES)
-#define ROUND_EXTENSION_TIME (60 MINUTES)
+#define INITIAL_ROUND_TIMER (165 MINUTES)
+#define ROUND_EXTENSION_TIME (30 MINUTES)
+#define ROUND_END_TIME (15 MINUTES)
+#define ROUND_END_TIME_VERBAL "15 minutes"
 //180 norma
 //60 test
 
@@ -75,3 +77,8 @@
 // A reasonable number of maximum overlays an object needs
 // If you think you need more, rethink it
 #define MAX_ATOM_OVERLAYS 100
+
+//Disable unimplemented proc/var warnings
+#ifdef OPENDREAM
+#pragma UnimplementedAccess disable
+#endif

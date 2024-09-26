@@ -97,8 +97,8 @@ GLOBAL_LIST_INIT(our_forest_sex, typecacheof(list(
 #define ishalfelf(A) (is_species(A, /datum/species/human/halfelf))
 #define istiefling(A) (is_species(A, /datum/species/tieberian))
 #define ishalforc(A) (is_species(A, /datum/species/halforc))
-#define isargonian(A) (is_species(A, /datum/species/lizard/brazil))
 #define isgoblinp(A) (is_species(A, /datum/species/goblinp))
+#define isseelie(A) (is_species(A, /datum/species/seelie))
 
 //more carbon mobs
 #define ismonkey(A) (istype(A, /mob/living/carbon/monkey))
@@ -168,6 +168,12 @@ GLOBAL_LIST_INIT(our_forest_sex, typecacheof(list(
 
 //Misc mobs
 #define isobserver(A) (istype(A, /mob/dead/observer))
+
+#define isrogueobserver(A) (istype(A, /mob/dead/observer/rogue))
+
+#define isadminobserver(A) (istype(A, /mob/dead/observer/admin))
+
+#define isroguespirit(A) (istype(A, /mob/living/carbon/spirit)) //underworld spirit 
 
 #define isdead(A) (istype(A, /mob/dead))
 
