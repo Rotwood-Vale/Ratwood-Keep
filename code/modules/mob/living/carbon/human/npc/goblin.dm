@@ -68,7 +68,7 @@
 	raceicon = "goblin_moon"
 
 /datum/species/goblin/moon/spec_death(gibbed, mob/living/carbon/human/H)
-	new /obj/item/reagent_containers/powder/moondust_purest(get_turf(H))
+	new /obj/item/reagent_containers/powder/moondust/purest(get_turf(H))
 	H.visible_message(span_blue("Moondust falls from [H]!"))
 //	qdel(H)
 

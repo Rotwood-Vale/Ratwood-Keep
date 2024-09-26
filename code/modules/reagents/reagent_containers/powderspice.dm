@@ -292,7 +292,7 @@
 /datum/reagent/moondust/overdose_process(mob/living/M)
 	M.adjustToxLoss(10, 0)
 
-/obj/item/reagent_containers/powder/moondust_purest
+/obj/item/reagent_containers/powder/moondust/purest
 	name = "moondust"
 	desc = ""
 	icon = 'icons/roguetown/items/produce.dmi'
