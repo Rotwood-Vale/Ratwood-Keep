@@ -150,7 +150,14 @@
 	landsound = 'sound/foley/jumpland/grassland.wav'
 	slowdown = 0
 	neighborlay = "grassedge"
-
+/turf/open/floor/rogue/grass/get_slowdown(mob/user)
+	var/returned = slowdown
+	var/negate_slowdown = FALSE
+	if(HAS_TRAIT(user, TRAIT_BOG_TREKKING))
+		negate_slowdown = TRUE
+	if(negate_slowdown)
+		returned = max(returned-0.5, -1)
+	return returned
 // /turf/open/floor/rogue/grass/Initialize()
 //	dir = pick(GLOB.cardinals)
 //	GLOB.dirt_list += src
@@ -220,10 +227,8 @@
 
 	if(HAS_TRAIT(user, TRAIT_BOG_TREKKING))
 		negate_slowdown = TRUE
-
 	if(negate_slowdown)
-		returned = max(returned-2.5, 0)
-
+		returned = max(returned-2.5, -1)
 	return returned
 
 
@@ -340,7 +345,14 @@
 	canSmoothWith = list(/turf/open/floor/rogue, /turf/closed/mineral, /turf/closed/wall/mineral)
 	neighborlay = "dirtedge"
 	slowdown = 0
-
+/turf/open/floor/rogue/dirt/road/get_slowdown(mob/user)
+	var/returned = slowdown
+	var/negate_slowdown = FALSE
+	if(HAS_TRAIT(user, TRAIT_BOG_TREKKING))
+		negate_slowdown = TRUE
+	if(negate_slowdown)
+		returned = max(returned-0.5, -1)
+	return returned
 /turf/open/floor/rogue/dirt/road/attack_right(mob/user)
 	return
 

@@ -137,6 +137,23 @@
 	item_state = "carapacecuirass"
 	max_integrity = 150
 	equip_delay_self = 30
+/obj/item/clothing/suit/roguetown/armor/carapace/dragon
+	name = "dragonscale armor"
+	desc = "armor crafted from the hardened scales of a dragon."
+	body_parts_covered = CHEST|GROIN|VITALS
+	color = "red"
+	icon_state = "carapacecuirass"
+	item_state = "carapacecuirass"
+	max_integrity = 200
+	armor = list("blunt" = 80, "slash" = 100, "stab" = 0, "bullet" = 100, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 60, "acid" = 0)
+/obj/item/clothing/suit/roguetown/armor/carapace/dragon/cuirass
+	name = "dragonscale cuirass"
+	desc = "vest styled dragonscale chest armor sown in layers."
+	body_parts_covered = CHEST|GROIN|VITALS
+	icon_state = "carapacecuirass"
+	item_state = "carapacecuirass"
+	max_integrity = 175
+	equip_delay_self = 30
 
 /obj/item/clothing/suit/roguetown/armor/plate
 	slot_flags = ITEM_SLOT_ARMOR

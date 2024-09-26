@@ -1136,6 +1136,12 @@
 	blocksound = PLATEHIT
 	smeltresult = /obj/item/ash
 	drop_sound = 'sound/foley/dropsound/chain_drop.ogg'
+/obj/item/clothing/head/roguetown/helmet/carapacehelm/dragon
+	slot_flags = ITEM_SLOT_HEAD|ITEM_SLOT_HIP
+	name = "dragonslayer helmet"
+	desc = "Helmet crafted from the bones of a dragon."
+	armor = list("blunt" = 80, "slash" = 100, "stab" = 60, "bullet" = 100, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 60, "acid" = 0)
+	max_integrity = 200
 
 /obj/item/clothing/head/roguetown/helmet/leather
 	slot_flags = ITEM_SLOT_HEAD|ITEM_SLOT_HIP

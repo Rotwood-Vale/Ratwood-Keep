@@ -34,8 +34,8 @@
 		armor = /obj/item/clothing/suit/roguetown/shirt/robe
 		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
 	else
-		head = /obj/item/clothing/head/roguetown/armingcap
-		armor = /obj/item/clothing/suit/roguetown/shirt/dress/gen/random
+		head = /obj/item/clothing/head/roguetown/nun
+		armor = /obj/item/clothing/suit/roguetown/shirt/robe/nun
 		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
 	pants = /obj/item/clothing/under/roguetown/tights
 	belt = /obj/item/storage/belt/rogue/leather/rope

@@ -128,8 +128,6 @@
 				newletter+="[newletter]"
 			if(20)
 				newletter+="[newletter][newletter]"
-		if(rand(1,100)==100)
-			newletter= "ඞ" //amogus
 		newphrase+="[newletter]";counter-=1
 	return newphrase
 

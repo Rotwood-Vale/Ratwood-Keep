@@ -34,12 +34,12 @@
 		if(ishuman(AM))
 			var/mob/living/carbon/human/H = AM
 			if(H.dir == get_dir(H,src) && H.m_intent == MOVE_INTENT_RUN && (H.mobility_flags & MOBILITY_STAND))
-				H.Immobilize(10)
+				H.Immobilize(50)
 				H.apply_damage(15, BRUTE, "chest", H.run_armor_check("chest", "blunt", damage = 15))
 				H.toggle_rogmove_intent(MOVE_INTENT_WALK, TRUE)
 				playsound(src, "genblunt", 100, TRUE)
-				H.visible_message(span_warning("[H] runs into [src]!"), span_warning("I run into [src]!"))
-				addtimer(CALLBACK(H, TYPE_PROC_REF(/mob/living/carbon/human, Knockdown), 10), 10)
+				H.visible_message(span_warning("[H] runs into [src] and stumbles into a daze!"), span_warning("I run into [src] and stumble into a daze!"))
+//				addtimer(CALLBACK(H, TYPE_PROC_REF(/mob/living/carbon/human, Knockdown), 10), 10)
 
 
 /obj/structure/Destroy()

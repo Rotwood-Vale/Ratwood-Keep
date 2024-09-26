@@ -186,10 +186,13 @@
 			if(STACON > L.STACON)
 				if(STASTR > L.STASTR)
 					L.Knockdown(1)
+					Immobilize(30)
 				else
 					Knockdown(1)
+					Immobilize(30)
 			if(STACON < L.STACON)
 				Knockdown(30)
+				Immobilize(30)
 			if(STACON == L.STACON)
 				L.Knockdown(1)
 				Knockdown(30)
@@ -658,7 +661,7 @@
 	if(resting)
 		if(!IsKnockdown() && !IsStun() && !IsParalyzed())
 			src.visible_message(span_notice("[src] stands up."))
-			if(move_after(src, 20, target = src))
+			if(move_after(src, 10, target = src))
 				set_resting(FALSE, FALSE)
 				return TRUE
 		else
@@ -676,7 +679,7 @@
 	if(resting)
 		if(!IsKnockdown() && !IsStun() && !IsParalyzed())
 			src.visible_message(span_info("[src] begins to stand up."))
-			if(move_after(src, 20, target = src))
+			if(move_after(src, 10, target = src))
 				set_resting(FALSE, FALSE)
 		else
 			src.visible_message(span_warning("[src] struggles to stand up."))

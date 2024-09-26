@@ -26,13 +26,13 @@
 	return FALSE
 
 /obj/item/book/granter/proc/on_reading_start(mob/user)
-	to_chat(user, span_notice("I start reading [name]..."))
+	to_chat(user, span_notice("I start absorbing knowledge of [name]..."))
 
 /obj/item/book/granter/proc/on_reading_stopped(mob/user)
-	to_chat(user, span_notice("I stop reading..."))
+	to_chat(user, span_notice("I stop absorbing knowledge..."))
 
 /obj/item/book/granter/proc/on_reading_finished(mob/user)
-	to_chat(user, span_notice("I finish reading [name]!"))
+	to_chat(user, span_notice("I finish absorbing from the [name]!"))
 
 /obj/item/book/granter/proc/onlearned(mob/user)
 	used = TRUE
@@ -40,32 +40,142 @@
 
 /obj/item/book/granter/attack_self(mob/living/user)
 	if(reading)
-		to_chat(user, span_warning("You're already reading this!"))
+		to_chat(user, span_warning("You're already using this!"))
 		return FALSE
-	if(!user.can_read(src))
-		return FALSE
+//	if(!user.can_read(src))
+//		return FALSE
 	if(already_known(user))
 		return FALSE
-	if(!user.can_read(src))
-		return FALSE
-	if(user.STAINT < 12)
+//	if(!user.can_read(src))
+//		return FALSE
+	if(user.STAINT < 8)
 		to_chat(user, span_warning("You can't make sense of the sprawling runes!"))
 		return FALSE
 	if(used)
 		if(oneuse)
 			recoil(user)
+			to_chat(user, span_warning("The essence of this crystal is completely drained."))
 		return FALSE
-	on_reading_start(user)
-	reading = TRUE
-	for(var/i=1, i<=pages_to_mastery, i++)
-		if(!turn_page(user))
-			on_reading_stopped()
-			reading = FALSE
-			return
-	if(do_after(user,50, user))
-		on_reading_finished(user)
+	else
+		on_reading_start(user)
+		reading = TRUE
+		for(var/i=1, i<=pages_to_mastery, i++)
+			if(!turn_page(user))
+				on_reading_stopped()
+				reading = FALSE
+				return
+		if(do_after(user,50, user))
+			on_reading_finished(user)
 		reading = FALSE
 	return TRUE
+
+///TRAITS///
+
+/obj/item/book/granter/trait
+	var/granted_trait
+	var/granted_trait2
+	var/traitname = "being cool"
+	var/list/crafting_recipe_types = list()
+	desc = "A fragmented crystal shard, imbuded with magicks unknown. If held tight, they will share their knowledge with the beholder."
+	oneuse = TRUE
+	icon = 'icons/obj/crystal.dmi'
+	icon_state ="Crystal"
+	light_range = 1.5
+	light_power = 150
+	drop_sound = 'sound/items/gem.ogg'
+	pickup_sound =  list('sound/vo/mobs/ghost/whisper (1).ogg','sound/vo/mobs/ghost/whisper (2).ogg','sound/vo/mobs/ghost/whisper (3).ogg')
+
+/obj/item/book/granter/trait/already_known(mob/user)
+	if(!granted_trait)
+		return TRUE
+	if(HAS_TRAIT(user, granted_trait))
+		to_chat(user, "<span class ='notice'>You already have all the insight you need from [traitname].")
+		return TRUE
+	return FALSE
+
+/obj/item/book/granter/trait/on_reading_start(mob/user)
+	to_chat(user, "<span class='notice'>Voices fill your head, imbuing you with the power of [traitname].</span>")
+	playsound(user, pick('sound/vo/mobs/ghost/whisper (1).ogg','sound/vo/mobs/ghost/whisper (2).ogg','sound/vo/mobs/ghost/whisper (3).ogg'), 30, TRUE)
+/obj/item/book/granter/trait/on_reading_finished(mob/user)
+	. = ..()
+	to_chat(user, "<span class='notice'>The shard dims, granting you knowledge of [traitname]!</span>")
+	ADD_TRAIT(user, granted_trait, SHARD_TRAIT)
+	ADD_TRAIT(user, granted_trait2, SHARD_TRAIT)
+	name = "drained crystal shard"
+	desc = "The essence of this crystal is completely drained."
+	color = null
+	light_range = 0
+	light_power = 0
+	icon_state ="Crystal2"
+	if(!user.mind)
+		return
+	for(var/crafting_recipe_type in crafting_recipe_types)
+		var/datum/crafting_recipe/R = crafting_recipe_type
+		user.mind.teach_crafting_recipe(crafting_recipe_type)
+		to_chat(user,"<span class='notice'>You learned how to make [initial(R.name)].</span>")
+	onlearned(user)
+
+/obj/item/book/granter/trait/mobility
+	light_color = "#32CD32"
+	color = "#32CD32"
+/obj/item/book/granter/trait/mobility/bogtrek
+	name = "Fragment of the Swamp"
+	granted_trait = TRAIT_BOG_TREKKING
+	traitname = "the swamp"
+	remarks = list("<font color='#32CD32'>The forest will guide you.", "<font color='#32CD32'>March with haste, there is no fear.", "<font color='#32CD32'>Be one with your surroundings.", "<font color='#32CD32'>What are you doing in my swamp?", "<font color='#32CD32'>Step light, step quick.</font>",)
+/obj/item/book/granter/trait/mobility/kneestinger
+	name = "Fragment of Dendor"
+	granted_trait = TRAIT_KNEESTINGER_IMMUNITY
+	traitname = "Dendor"
+	remarks = list("<font color='#32CD32'>Dendor guides me.", "<font color='#32CD32'>You feel a shiver up your spine.", "<font color='#32CD32'>Your feet go numb.", "<font color='#32CD32'>Dendor watches my path.", "<font color='#32CD32'>I walk without fear...</font>",)
+
+/obj/item/book/granter/trait/defense
+	light_color = "#4f83ff"
+	color = "#4f83ff"
+/obj/item/book/granter/trait/defense/mediumarmor
+	name = "Fragment of the Old Guard"
+	granted_trait = TRAIT_MEDIUMARMOR
+	traitname = "medium armor"
+	remarks = list("<font color='#4f83ff'>Medium armor offers both mobility and protection.", "<font color='#4f83ff'>Wearing medium armor will give you an edge.", "<font color='#4f83ff'>Medium armor has been used since the dawn of time.", "<font color='#4f83ff'>A warrior knows when to strike.", "<font color='#4f83ff'>A warrior knows when to move.</font>",)
+/obj/item/book/granter/trait/defense/heavyarmor
+	name = "Fragment of the Forgotten Knight"
+	granted_trait = TRAIT_HEAVYARMOR
+	traitname = "heavy armor"
+	remarks = list("<font color='#4f83ff'>Everything or nothing.", "<font color='#4f83ff'>Heavy armor is for the most couragious.", "<font color='#4f83ff'>If you choose to wear heavy armor, you choose to stand your ground.", "Clad in shiny armor, I am a beckon of power.", "<font color='#4f83ff'>Heavy metal is for the brave.</font>",)
+
+
+/obj/item/book/granter/trait/war
+	light_color = "#d40303fb"
+	color = "#d40303fb"
+/obj/item/book/granter/trait/war/undying
+	name = "Fragment of the Undying"
+	granted_trait = TRAIT_NOPAIN
+	granted_trait2 = TRAIT_BLOODLOSS_IMMUNE
+	traitname = "the undying"
+	remarks = list("<span class ='colossus'>Curse, bless, me now with your fierce tears, I pray.</span>", "<span class ='colossus'>Rage, rage against the dying of the light.</span>", "<span class ='colossus'>Grave men, near death, who see with blinding sight.</span>", "<span class ='colossus'>Do not go gentle into that good night.</span>",)
+/obj/item/book/granter/trait/war/relentless
+	name = "Fragment of the Relentless"
+	granted_trait = TRAIT_NOROGSTAM
+	traitname = "the relentless"
+	remarks = list("<span class ='colossus'>Death can have me, when I am done.", "<span class ='colossus'>Rip and tear.", "<span class ='colossus'>This is where we hold them. This is where they die.", "<span class ='colossus'>Let go of everything.", "<span class ='colossus'>No surrender. No retreat.</span>",)
+
+
+/obj/item/book/granter/trait/acrobat
+	name = "Fragment of the Acrobat"
+	light_color = "#f3fd2bfb"
+	color = "#f3fd2bfb"
+	granted_trait = TRAIT_NOFALLDAMAGE1
+	granted_trait2 = TRAIT_ZJUMP
+	traitname = "the acrobat"
+	remarks = list("<font color='#f3fd2bfb'>Nothing stops the fleetfooted!", "<font color='#f3fd2bfb'>Which way is up? I forgot!", "<font color='#f3fd2bfb'>The sky is the limits!", "<font color='#f3fd2bfb'>Always land on your feet!", "<font color='#f3fd2bfb'>Who needs stairs?!</font>",)
+/obj/item/book/granter/trait/succubus
+	name = "Fragment of the Succubus"
+	light_color = "#b028fffb"
+	color = "#b028fffb"
+	granted_trait = TRAIT_DEATHBYSNOOSNOO
+	granted_trait2 = TRAIT_GOODLOVER
+	traitname = "the succubus"
+	remarks = list("<font color='#b028fffb'>They like what they see.", "<font color='#b028fffb'>I can't wait to hear you scream.", "<font color='#b028fffb'>So many hearts to break, so little time.","<font color='#b028fffb'>Without pain, how would they know pleasure?</font>",)
 
 ///ACTION BUTTONS///
 

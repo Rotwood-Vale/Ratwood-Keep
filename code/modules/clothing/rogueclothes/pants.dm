@@ -258,6 +258,15 @@
 	name = "carapace plated skirt"
 	icon_state = "carapace_skirt"
 	item_state = "carapace_skirt"
+/obj/item/clothing/under/roguetown/carapacelegs/dragon
+	name = "dragonscale platelegs"
+	desc = "dragonscale armor to protect the legs."
+	armor = list("blunt" = 80, "slash" = 100, "stab" = 60, "bullet" = 50, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 60, "acid" = 0)
+	color = "red"
+/obj/item/clothing/under/roguetown/carapacelegs/dragon/skirt
+	name = "dragonscale plated skirt"
+	icon_state = "carapace_skirt"
+	item_state = "carapace_skirt"
 
 /obj/item/clothing/under/roguetown/loincloth
 	name = "loincloth"

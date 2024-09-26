@@ -58,6 +58,20 @@
 	if(prob(70))
 		var/I = pickweight(loot)
 		new I(src)
+/obj/structure/closet/crate/chest/gold/lootbox/trait/PopulateContents()
+	var/list/loot = list(/obj/item/rogueweapon/huntingknife/idagger/silver=33,
+		/obj/item/book/granter/trait/war/undying=13,
+		/obj/item/book/granter/trait/war/relentless=13,
+		/obj/item/book/granter/trait/mobility/bogtrek=33,
+		/obj/item/book/granter/trait/defense/mediumarmor=40,
+		/obj/item/book/granter/trait/defense/heavyarmor=40,
+		/obj/item/book/granter/trait/acrobat=40,
+		/obj/item/book/granter/trait/succubus=13,
+		/obj/item/riddleofsteel=13,
+		/obj/item/clothing/neck/roguetown/talkstone=13)
+	if(prob(100))
+		var/I = pickweight(loot)
+		new I(src)
 
 /obj/structure/closet/crate/roguecloset
 	name = "closet"

@@ -369,6 +369,7 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define GLASSES_TRAIT "glasses"
 #define VEHICLE_TRAIT "vehicle" // inherited from riding vehicles
 #define INNATE_TRAIT "innate"
+#define SHARD_TRAIT "granter (fragment)" // apple: inherited from shard granters
 
 // unique trait sources, still defines
 #define TRAIT_BOG_TREKKING "trekking"

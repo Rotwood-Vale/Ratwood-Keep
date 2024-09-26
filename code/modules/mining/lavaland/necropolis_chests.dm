@@ -753,9 +753,25 @@
 	name = "dragon chest"
 
 /obj/structure/closet/crate/necropolis/dragon/PopulateContents()
-	var/loot = rand(1,4)
+	var/loot = rand(1,7)
+	var/list/choices = subtypesof(/obj/item/book/granter/trait/defense)
+	var/random_crystal = pick(choices)
 	switch(loot)
 		if(1)
+			new random_crystal(src)
+		if(2)
+			new /obj/item/book/granter/trait/war/undying(src)
+		if(3)
+			new /obj/item/clothing/suit/roguetown/armor/carapace/dragon(src)
+		if(4)
+			new /obj/item/clothing/under/roguetown/carapacelegs/dragon(src)
+		if(5)
+			new /obj/item/clothing/suit/roguetown/armor/carapace/dragon/cuirass(src)
+		if(6)
+			new /obj/item/clothing/under/roguetown/carapacelegs/dragon/skirt(src)
+		if(7)
+			new /obj/item/clothing/head/roguetown/helmet/carapacehelm/dragon(src)
+/*		if(1)
 			new /obj/item/melee/ghost_sword(src)
 		if(2)
 			new /obj/item/lava_staff(src)
@@ -763,7 +779,7 @@
 			new /obj/item/book/granter/spell/sacredflame(src)
 			new /obj/item/gun/magic/wand/fireball(src)
 		if(4)
-			new /obj/item/dragons_blood(src)
+			new /obj/item/dragons_blood(src)*/
 
 /obj/structure/closet/crate/necropolis/dragon/crusher
 	name = "firey dragon chest"
@@ -1076,10 +1092,10 @@
 	return ..()
 
 /obj/structure/closet/crate/necropolis/colossus/PopulateContents()
-	var/list/choices = subtypesof(/obj/machinery/anomalous_crystal)
+	var/list/choices = subtypesof(/obj/item/book/granter/trait/war)
 	var/random_crystal = pick(choices)
 	new random_crystal(src)
-	new /obj/item/organ/vocal_cords/colossus(src)
+//	new /obj/item/organ/vocal_cords/colossus(src)
 
 /obj/structure/closet/crate/necropolis/colossus/crusher
 	name = "angelic colossus chest"
