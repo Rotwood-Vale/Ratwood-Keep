@@ -356,7 +356,7 @@
 
 /datum/special_trait/atheism
 	name = "Godless"
-	greet_text = span_notice("The "gods" do not exist. Miracles and magic is just undiscovered nature of our world. Anyone who thinks otherwise is deluded.")
+	greet_text = span_notice("The 'gods' do not exist. Miracles and magic is just undiscovered nature of our world. Anyone who thinks otherwise is deluded.")
 	req_text = "Non-Church Role"
 	restricted_jobs = list(CHURCH_ROLES)
 	weight = 200
