@@ -10,7 +10,6 @@
 	sleevetype = "leg"
 	bloody_icon_state = "shoeblood"
 	equip_delay_self = 30
-	resistance_flags = FIRE_PROOF
 	w_class = WEIGHT_CLASS_SMALL
 
 /obj/item/clothing/shoes/roguetown/boots
@@ -123,6 +122,7 @@
 	anvilrepair = /datum/skill/craft/armorsmithing
 	smeltresult = /obj/item/ingot/steel
 	clothing_flags = CANT_SLEEP_IN
+	resistance_flags = FIRE_PROOF
 
 /obj/item/clothing/shoes/roguetown/boots/leather
 	name = "leather boots"
