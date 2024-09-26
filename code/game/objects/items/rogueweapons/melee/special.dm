@@ -22,7 +22,7 @@
 	name = "bash"
 	blade_class = BCLASS_BLUNT
 	icon_state = "inbash"
-	attack_verb = list("bashes", "strikes")
+	attack_verb = list("bashes", "clubs", "strikes")
 	penfactor = 10
 	item_d_type = "blunt"
 
@@ -239,7 +239,7 @@
 /datum/intent/katar/thrust
 	name = "thrust"
 	icon_state = "instab"
-	attack_verb = list("thrusts")
+	attack_verb = list("thrusts", "stabs")
 	animname = "stab"
 	blade_class = BCLASS_STAB
 	hitsound = list('sound/combat/hits/bladed/genstab (1).ogg', 'sound/combat/hits/bladed/genstab (2).ogg', 'sound/combat/hits/bladed/genstab (3).ogg')

@@ -897,7 +897,8 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 		return TRUE
 	if(HAS_TRAIT(H, TRAIT_CHUNKYFINGERS))
 		return do_after(H, 5 MINUTES, target = H)
-//	H.visible_message(span_notice("[H] start putting on [I]..."), span_notice("I start putting on [I]..."))
+	if(I.equip_delay_self >= 10)
+		H.visible_message(span_smallnotice("[H] start putting on [I]..."), span_smallnotice("I start putting on [I]..."))
 	if(I.edelay_type)
 		return move_after(H, minone(I.equip_delay_self-H.STASPD), target = H)
 	else
@@ -2034,6 +2035,47 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 	if(H.movement_type & FLYING)
 		return TRUE
 	return FALSE
+
+////////////////
+//Wing Ripping//
+////////////////
+
+/datum/species/proc/on_wing_removal(mob/living/carbon/human/Target,  mob/Ripper)
+	var/obj/item/organ/wings/Wing = Target.getorganslot(ORGAN_SLOT_WINGS)
+	if(Wing == null)
+		Ripper.visible_message(span_notice("[Target] is missing their wings"))
+		return
+	Ripper.visible_message(span_notice("[Ripper] begins to rip [Target]'s wings..."), \
+						span_notice("I begin to rip [Target]'s wings..."))
+	if(do_after(Ripper, 80))
+		//if(length(Target.grabbedby) != 0)
+		if(Target.pulledby == Ripper)	//Check for being grabbed by ripper again
+			Wing.Remove(Target)
+			Wing.forceMove(Target.drop_location())
+			Ripper.put_in_hands(Wing)
+			Target.update_body_parts(TRUE)
+			//var/fracture_type = /datum/wound/fracture/neck
+			var/obj/item/bodypart/BP = Target.get_bodypart(BODY_ZONE_PRECISE_NECK)
+			BP.add_wound(/datum/wound/fracture/neck)
+			Target.apply_damage(70, BRUTE, Target.get_bodypart(BODY_ZONE_CHEST))
+			//var/datum/disease/Disease = new /datum/disease/heart_failure
+			//Target.ForceContractDisease(Disease)	//Disease removed in favor of simply stopping the heart via heart attack
+			Target.set_heartattack(TRUE)
+			Target.visible_message(span_danger("[Target] clutches at [Target.p_their()] chest as if [Target.p_their()] heart stopped!"))
+
+			//CURSE OF THE SEELIE
+			if(!isdead(Target))
+				playsound(Target, 'sound/vo/female/gen/scream (2).ogg', 140)
+				for(var/mob/living/M in get_hearers_in_view(4, Target))
+					if(iscarbon(M) && (M != Target))
+						var/mob/living/carbon/C = M
+						C.adjustEarDamage(0, 35)
+						C.confused += 40
+						C.Jitter(50)
+						C.apply_status_effect(/datum/status_effect/debuff/seelie_wing_curse)
+						C.visible_message( null , span_notice("[Target] screams in agony, inflicting a curse for this vild deed!"))
+		else
+			Ripper.visible_message( null , span_notice("I must grab [Target] first."))
 
 ////////////////
 //Tail Wagging//

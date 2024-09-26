@@ -94,10 +94,13 @@
 	if(!user.defiant && !victim.defiant)
 		return FALSE
 	// Need to violate AFK clients
-	if(victim.mind && victim.mind.key && !victim.client)
+	if(!victim.mind || !victim.mind.key || !victim.client) // Changed to OR statements to remove ZAPE of mobs without minds or keys
 		return TRUE
-	// Need to violate combat mode people
-	if(victim.cmode)
+	// Need to violate combat mode people - Include user to remove ZAPE
+	if(victim.cmode || user.cmode)
+		return TRUE
+	// Need to violate unconscious people, or those surrendering to remove ZAPE
+	if(victim.stat || victim.surrendering)
 		return TRUE
 	return FALSE
 
@@ -129,9 +132,9 @@
 	if(user.client.prefs.violated[victim.mind.key] && user.client.prefs.violated[victim.mind.key] + VIOLATED_ALLOWED_TIME >= world.time)
 		return
 	// ZAPED
-	to_chat(user, span_boldwarning(pick(list("I feel tainted...", "I feel less human..."))))
+	//to_chat(user, span_boldwarning(pick(list("I feel tainted...", "I feel less human...")))) ZAPE
 	log_combat(user, victim, "Initiated rape against")
-	adjust_playerquality(-4, user.ckey, reason = "Initiated rape on an AFK/resisting person.")
+	//adjust_playerquality(-4, user.ckey, reason = "Initiated rape on an AFK/resisting person.") ZAPE
 	user.client.prefs.violated[victim.mind.key] = world.time
 
 /datum/sex_controller/proc/adjust_speed(amt)
@@ -174,6 +177,12 @@
 /datum/sex_controller/proc/start(mob/living/carbon/human/new_target)
 	if(!ishuman(new_target))
 		return
+
+	if(HAS_TRAIT(user, TRAIT_EORA_CURSE))
+		to_chat(user, "<span class='warning'>The idea repulses me!</span>")
+		user.cursed_freak_out()
+		return FALSE
+
 	set_target(new_target)
 	show_ui()
 
@@ -198,6 +207,20 @@
 	user.visible_message(span_lovebold("[user] makes a mess!"))
 	playsound(user, 'sound/misc/mat/endout.ogg', 50, TRUE, ignore_walls = FALSE)
 	add_cum_floor(get_turf(user))
+	after_ejaculation()
+
+/datum/sex_controller/proc/ejaculate_container(obj/item/reagent_containers/glass/C)
+	log_combat(user, user, "Ejaculated into a container")
+	user.visible_message(span_lovebold("[user] spills into [C]!"))
+	playsound(user, 'sound/misc/mat/endout.ogg', 50, TRUE, ignore_walls = FALSE)
+	C.reagents.add_reagent(/datum/reagent/erpjuice/cum, 3)
+	after_ejaculation()
+
+/datum/sex_controller/proc/milk_container(obj/item/reagent_containers/glass/C)
+	log_combat(user, user, "Was milked into a container")
+	user.visible_message(span_lovebold("[user] lactates into [C]!"))
+	playsound(user, 'sound/misc/mat/endout.ogg', 50, TRUE, ignore_walls = FALSE)
+	C.reagents.add_reagent(/datum/reagent/consumable/milk, 15)
 	after_ejaculation()
 
 /datum/sex_controller/proc/after_ejaculation()
@@ -400,6 +423,38 @@
 		return FALSE
 	ejaculate()
 
+/datum/sex_controller/proc/handle_container_ejaculation()
+	if(arousal < PASSIVE_EJAC_THRESHOLD)
+		return
+	if(is_spent())
+		return
+	if(!can_ejaculate())
+		return FALSE
+	ejaculate_container(user.get_active_held_item())
+
+/datum/sex_controller/proc/handle_container_milk()
+	if(arousal < PASSIVE_EJAC_THRESHOLD)
+		return
+	if(is_spent())
+		return
+	milk_container(user.get_active_held_item())
+
+/datum/sex_controller/proc/handle_cock_milking(mob/living/carbon/human/milker)
+	if(arousal < ACTIVE_EJAC_THRESHOLD)
+		return
+	if(is_spent())
+		return
+	if(!can_ejaculate())
+		return FALSE
+	ejaculate_container(milker.get_active_held_item())
+
+/datum/sex_controller/proc/handle_breast_milking(mob/living/carbon/human/milker)
+	if(arousal < ACTIVE_EJAC_THRESHOLD)
+		return
+	if(is_spent())
+		return
+	milk_container(milker.get_active_held_item())
+
 /datum/sex_controller/proc/can_use_penis()
 	if(HAS_TRAIT(user, TRAIT_LIMPDICK))
 		return FALSE
@@ -527,8 +582,8 @@
 		return
 	if(!can_perform_action(action_type))
 		return
-	if(need_to_be_violated(target) && !can_violate_victim(target))
-		violate_victim(target)
+//	if(need_to_be_violated(target) && !can_violate_victim(target))
+//		violate_victim(target) - Commented out to disable the pop up and just disable all defiant ZAPE
 	if(need_to_be_violated(target) && !can_violate_victim(target))
 		return
 	// Set vars

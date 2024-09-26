@@ -9,6 +9,7 @@
 	dropshrink = 0.6
 	max_integrity = 10
 	force = 10
+	w_class = WEIGHT_CLASS_SMALL
 /*
 /obj/item/ammo_casing/caseless/rogue/bolt/poison
 	name = "poisoned bolt"
@@ -50,10 +51,11 @@
 	caliber = "arrow"
 	icon = 'icons/roguetown/weapons/ammo.dmi'
 	icon_state = "arrow"
-	force = 30
+	force = 7
 	dropshrink = 0.6
 	possible_item_intents = list(/datum/intent/dagger/cut, /datum/intent/dagger/thrust)
 	max_integrity = 20
+	w_class = WEIGHT_CLASS_SMALL
 
 /obj/item/ammo_casing/caseless/rogue/arrow/iron
 	name = "iron arrow"
@@ -62,7 +64,7 @@
 	caliber = "arrow"
 	icon = 'icons/roguetown/weapons/ammo.dmi'
 	icon_state = "arrow"
-	force = 30
+	force = 7
 	dropshrink = 0.6
 	possible_item_intents = list(/datum/intent/dagger/cut, /datum/intent/dagger/thrust)
 	max_integrity = 20
@@ -160,3 +162,4 @@
 	dropshrink = 0.5
 	possible_item_intents = list(/datum/intent/use)
 	max_integrity = 0
+	w_class = WEIGHT_CLASS_TINY
