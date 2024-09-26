@@ -51,6 +51,3 @@
 		beltl = /obj/item/storage/belt/rogue/pouch/coins/poor
 		if prob(1)
 			H.mind.adjust_skillrank(/datum/skill/combat/whips, 6, TRUE)
-		else
-			return
-
