@@ -86,7 +86,6 @@
 		if(!picked_name)
 			picked_name = "none"
 		var/mutable_appearance/M = mutable_appearance('icons/roguetown/weapons/wood_heraldry.dmi', picked_name)
-		M.alpha = 178
 		add_overlay(M)
 		var/mutable_appearance/MU = mutable_appearance(icon, "woodsh_detail")
 		MU.alpha = 114
@@ -165,7 +164,6 @@
 		if(!picked_name)
 			picked_name = "none"
 		var/mutable_appearance/M = mutable_appearance('icons/roguetown/weapons/shield_heraldry.dmi', picked_name)
-		M.alpha = 190
 		add_overlay(M)
 		var/mutable_appearance/MU = mutable_appearance(icon, "ironsh_detail")
 		MU.alpha = 90

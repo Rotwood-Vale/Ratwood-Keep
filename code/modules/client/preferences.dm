@@ -1634,7 +1634,7 @@ Slots: [job.spawn_positions]</span>
 							continue
 						loadouts_available[loadout.name] = loadout
 
-					var/loadout_input = input(user, "Choose your character's loadout item. RMB a tree, statue or clock to collect.", "Loadout") as null|anything in loadouts_available
+					var/loadout_input = input(user, "Choose your character's loadout item. RMB a tree, statue or clock to collect. I cannot stress this enough. YOU DON'T SPAWN WITH THESE. YOU HAVE TO MANUALLY PICK THEM UP!!", "LOADOUT THAT YOU GET FROM A TREE OR STATUE OR CLOCK") as null|anything in loadouts_available
 					if(loadout_input)
 						if(loadout_input == "None")
 							loadout = null

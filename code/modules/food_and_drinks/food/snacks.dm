@@ -117,7 +117,7 @@ All foods are distributed among various categories. Use common sense.
 /obj/item/reagent_containers/food/snacks/process()
 	..()
 	if(rotprocess)
-		if(!istype(loc, /obj/structure/closet/crate/chest))
+		if(!istype(loc, /obj/structure/closet/crate/chest) && !(locate(/obj/structure/table) in loc))
 			warming -= 20 //ssobj processing has a wait of 20
 			if(warming < (-1*rotprocess))
 				if(become_rotten())

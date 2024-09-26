@@ -172,7 +172,6 @@
 /datum/status_effect/debuff/sleepytime
 	id = "sleepytime"
 	alert_type = /atom/movable/screen/alert/status_effect/debuff/sleepytime
-	effectedstats = list("speed" = -1, "endurance" = -1)
 
 /atom/movable/screen/alert/status_effect/debuff/sleepytime
 	name = "Tired"

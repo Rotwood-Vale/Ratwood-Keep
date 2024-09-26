@@ -448,11 +448,10 @@ GLOBAL_VAR_INIT(mobids, 1)
 			else if(A.loc.loc == src)
 				message = "[src] looks into"
 				target = "[src.p_their()] [A.loc.name]"
-			else if(isliving(A))
+			else if(isliving(A) && src.cmode)
 				var/mob/living/T = A
-				var/hitzone = check_zone(zone_selected)
 				if(!iscarbon(T))
-					target = "\the [T.name]'s [hitzone]"
+					target = "\the [T.name]'s [T.simple_limb_hit(zone_selected)]"
 				if(iscarbon(T) && T != src)
 					target = "[T]'s [parse_zone(zone_selected)]"
 			visible_message(span_emote("[message] [target]."))
