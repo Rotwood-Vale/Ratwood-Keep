@@ -163,7 +163,7 @@
 		vitae -= 0.25
 
 /mob/living/carbon/human/proc/disguise_button()
-	set name = "Disguise"
+	set name = "Sun Protection"
 	set category = "VAMPIRE"
 
 	var/datum/antagonist/vampirelord/VD = mind.has_antag_datum(/datum/antagonist/vampirelord)
@@ -354,12 +354,12 @@
 	if(silver_curse_status)
 		to_chat(src, span_warning("My BANE is not letting me REGEN!."))	
 		return
-	if(VD.vitae < 500)
+	if(VD.vitae < 150)
 		to_chat(src, span_warning("Not enough vitae."))
 		return
 	to_chat(src, span_greentext("! REGENERATE !"))
 	src.playsound_local(get_turf(src), 'sound/misc/vampirespell.ogg', 100, FALSE, pressure_affected = FALSE)
-	VD.handle_vitae(-500)
+	VD.handle_vitae(-150)
 	fully_heal()
 
 /mob/living/carbon/human/proc/vampire_infect()

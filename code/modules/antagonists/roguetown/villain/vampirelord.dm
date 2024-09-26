@@ -375,7 +375,7 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 
 	if(vitae > 0)
 		H.blood_volume = BLOOD_VOLUME_NORMAL
-		if(vitae < 200)
+		if(vitae < -100)
 			if(disguised)
 				to_chat(H, span_warning("My disguise fails!"))
 				H.vampire_undisguise(src)
