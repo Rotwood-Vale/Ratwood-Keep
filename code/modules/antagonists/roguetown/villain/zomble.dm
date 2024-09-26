@@ -34,7 +34,6 @@
 		TRAIT_NOPAIN,
 		TRAIT_NOPAINSTUN,
 		TRAIT_NOBREATH,
-		TRAIT_NOBREATH,
 		TRAIT_TOXIMMUNE,
 		TRAIT_CHUNKYFINGERS,
 		TRAIT_NOSLEEP,
@@ -191,10 +190,6 @@
 	zombie.update_body()
 	zombie.cmode_music = 'sound/music/combat_weird.ogg'
 	zombie.set_patron(/datum/patron/inhumen/zizo)
-
-	// Outside of one 2% chance remaining for zombie era strength
-	if(prob(2))
-		zombie.STASTR = 18
 
 	// This is the original first commit values for it, aka 5-7
 	zombie.STASPD = rand(5,7)
