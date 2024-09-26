@@ -4,10 +4,10 @@
 
 //Base probabilities to leave a track.
 /turf/open/floor/rogue/dirt
-	track_prob = 5
+	track_prob = 10
 
 /turf/open/floor/rogue/grass
-	track_prob = 5
+	track_prob = 10
 //Probabilities end (albeit mud is handled seperately).
 
 //Analysis levels depending on skillcheck during reveal.

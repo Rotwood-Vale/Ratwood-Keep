@@ -391,11 +391,6 @@
 /obj/item/inhand_tester,
 /turf/open/floor/rogue/blocks,
 /area/rogue)
-"aR" = (
-/obj/item/roguekey/lord,
-/obj/item/roguekey/lord,
-/turf/open/floor/rogue/blocks,
-/area/rogue)
 "aS" = (
 /obj/structure/table/wood{
 	dir = 10;
@@ -673,10 +668,6 @@
 	aportalloc = "latespawn"
 	},
 /turf/open/floor/rogue/blocks,
-/area/rogue)
-"bx" = (
-/obj/item/roguekey/lord,
-/turf/open/floor/rogue/cobble,
 /area/rogue)
 "by" = (
 /obj/structure/table/wood{
@@ -1517,7 +1508,6 @@
 	},
 /obj/item/rogueweapon/flail/sflail,
 /obj/item/rogueweapon/flail/sflail,
-/obj/item/roguekey/lord,
 /turf/open/floor/rogue/cobble,
 /area/rogue)
 "jQ" = (
@@ -1561,7 +1551,6 @@
 /obj/item/rogueweapon/greatsword,
 /obj/item/rogueweapon/greatsword,
 /obj/item/rogueweapon/greatsword,
-/obj/item/roguekey/lord,
 /turf/open/floor/rogue/cobble,
 /area/rogue)
 "la" = (
@@ -3764,7 +3753,7 @@ vP
 vP
 vP
 vP
-aR
+hQ
 hQ
 hQ
 hQ
@@ -4417,7 +4406,7 @@ ad
 aV
 lw
 bo
-bx
+lw
 vl
 vP
 bX

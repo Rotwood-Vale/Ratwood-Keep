@@ -39,7 +39,7 @@
 	cloak = /obj/item/clothing/cloak/apron/waist
 	belt = /obj/item/storage/belt/rogue/leather
 	beltl = /obj/item/storage/belt/rogue/pouch/coins/mid
-	beltr = /obj/item/keyring/innkeep
+	beltr = /obj/item/storage/keyring/innkeep
 	if(H.pronouns == SHE_HER)
 		armor = /obj/item/clothing/suit/roguetown/shirt/dress
 	else

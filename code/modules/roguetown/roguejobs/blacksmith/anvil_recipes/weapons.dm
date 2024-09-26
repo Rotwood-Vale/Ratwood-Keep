@@ -26,12 +26,14 @@
 	name = "Dagger"
 	req_bar = /obj/item/ingot/iron
 	created_item = /obj/item/rogueweapon/huntingknife/idagger
+	createditem_num = 1
 	craftdiff = 0
 
 /datum/anvil_recipe/weapons/sdagger
 	name = "Dagger"
 	req_bar = /obj/item/ingot/steel
 	created_item = /obj/item/rogueweapon/huntingknife/idagger/steel
+	createditem_num = 1
 
 /datum/anvil_recipe/weapons/sdaggerparrying
 	name = "Parrying Dagger (+1 Steel)"
@@ -97,6 +99,7 @@
 	name = "Hunting knife"
 	req_bar = /obj/item/ingot/iron
 	created_item = /obj/item/rogueweapon/huntingknife
+	createditem_num = 1
 
 /datum/anvil_recipe/weapons/cleaver
 	name = "Cleaver"

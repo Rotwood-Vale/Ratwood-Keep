@@ -88,6 +88,8 @@
 
 	var/datum/sleep_adv/sleep_adv = null
 
+	var/mugshot_set = FALSE
+
 /datum/mind/New(key)
 	src.key = key
 	soulOwner = src

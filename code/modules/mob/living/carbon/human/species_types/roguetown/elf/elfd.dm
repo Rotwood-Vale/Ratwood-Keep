@@ -11,7 +11,8 @@
     Their culture and entire lives normally involve serving the evil gods of the inhumen pantheon. \
     Previously rare but in recent times, more and more dark elfs can be seen on the surface. \
     The ones who aren't overtly cruel and bloodthirsty, tend to flee to the surface lest they get culled by their own society, \
-    while some more sinister ones abandon their cities in search of new and greater power."
+    while some more sinister ones abandon their cities in search of new and greater power. \
+	+1 Perception"
 
 /*
 	Former RT Desc: These guys were undead which doesn't really fit considering now you have a ton of them walking around.

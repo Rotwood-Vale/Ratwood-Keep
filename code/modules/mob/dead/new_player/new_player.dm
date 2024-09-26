@@ -162,6 +162,9 @@ GLOBAL_LIST_INIT(roleplay_readme, world.file2list("strings/rt/rp_prompt.txt"))
 			if(SSticker.job_change_locked)
 				return
 		if(SSticker.current_state <= GAME_STATE_PREGAME)
+			if(tready == PLAYER_READY_TO_PLAY && length(client.prefs.flavortext) < MINIMUM_FLAVOR_TEXT)
+				to_chat(src, span_boldwarning("You need a minimum of [MINIMUM_FLAVOR_TEXT] characters in your flavor text in order to play."))
+				return
 			if(ready != tready)
 				ready = tready
 		//if it's post initialisation and they're trying to observe we do the needful
@@ -256,6 +259,10 @@ GLOBAL_LIST_INIT(roleplay_readme, world.file2list("strings/rt/rp_prompt.txt"))
 
 		if(client && client.prefs.is_active_migrant())
 			to_chat(usr, span_boldwarning("You are in the migrant queue."))
+			return
+
+		if(length(client.prefs.flavortext) < MINIMUM_FLAVOR_TEXT)
+			to_chat(usr, span_boldwarning("You need a minimum of [MINIMUM_FLAVOR_TEXT] characters in your flavor text in order to play."))
 			return
 
 		AttemptLateSpawn(href_list["SelectedJob"])

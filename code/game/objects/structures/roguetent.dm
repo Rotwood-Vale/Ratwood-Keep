@@ -7,7 +7,7 @@
 	layer = TABLE_LAYER
 	density = TRUE
 	anchored = TRUE
-	opacity = FALSE
+	opacity = TRUE
 	max_integrity = 100
 	var/base_state = "tent_door"
 	blade_dulling = DULLING_BASHCHOP
