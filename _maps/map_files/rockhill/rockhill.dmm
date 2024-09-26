@@ -5984,7 +5984,7 @@
 /turf/open/transparent/openspace,
 /area/rogue/outdoors/town/roofs)
 "fKe" = (
-/obj/structure/rack/rogue,
+/obj/structure/bed/rogue/inn/wool,
 /turf/open/floor/rogue/tile,
 /area/rogue/indoors/town/tavern)
 "fKf" = (
@@ -186134,7 +186134,7 @@ ajv
 cKg
 xIh
 ftc
-fKe
+xKz
 flH
 sAj
 qAx
@@ -186938,7 +186938,7 @@ xIh
 xIh
 hRh
 xIh
-xKz
+fKe
 flH
 afE
 bIF
