@@ -212,7 +212,7 @@
 	smeltresult = null
 	sellprice = 50
 	smeltresult = /obj/item/ingot/silver
-	var/last_used = 0
+	last_used = 0
 	is_silver = TRUE
 
 /obj/item/rogueweapon/huntingknife/idagger/silver/pickup(mob/user)
@@ -284,12 +284,14 @@
 	force = 19
 	icon_state = "elfdagger"
 	item_state = "elfdag"
+	last_used = 0
 	is_silver = TRUE
 
 /obj/item/rogueweapon/huntingknife/idagger/silver/elvish/drow
 	name = "nite elf dagger"
 	desc = "This ominous, dark handled silver dagger was crafted by the assassin race of nite elves."
 	force = 25
+	last_used = 0
 	is_silver = TRUE
 
 /obj/item/rogueweapon/huntingknife/idagger/navaja

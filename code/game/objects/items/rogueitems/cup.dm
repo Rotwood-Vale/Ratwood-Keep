@@ -48,7 +48,7 @@
 	desc = "A silver goblet, its surface adorned with intricate carvings and runes."
 	icon_state = "silver"
 	sellprice = 30
-	var/last_used = 0
+	last_used = 0
 	is_silver = TRUE
 
 /obj/item/reagent_containers/glass/cup/silver/pickup(mob/user)
