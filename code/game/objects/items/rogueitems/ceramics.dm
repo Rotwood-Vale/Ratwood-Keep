@@ -48,7 +48,7 @@
 
 // Basically a high-end bucket. 
 /obj/item/reagent_containers/glass/bottle/clayBottle/clayJug
-	name = "clay galloon jug"
+	name = "clay jug"
 	desc = "A sizeable jug made from clay. Keeps your beverages cool and refreshing."
 	icon_state = "" // TODO
 	amount_per_transfer_from_this = 20 // Easy to pour out of.
