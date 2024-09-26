@@ -197,18 +197,6 @@
 	zombie.STAINT = 1
 	last_bite = world.time
 	has_turned = TRUE
-	// Drop your helm and gorgies boy you won't need it anymore!!!
-	var/static/list/removed_slots = list(
-		SLOT_HEAD,
-		SLOT_WEAR_MASK,
-		SLOT_MOUTH,
-		SLOT_NECK,
-	)
-	for(var/slot in removed_slots)
-		zombie.dropItemToGround(zombie.get_item_by_slot(slot), TRUE)
-
-	// Ghosts you because this shit was just not working whatsoever, let the AI handle the rest
-	zombie.ghostize(FALSE)
 
 /datum/antagonist/zombie/greet()
 	to_chat(owner.current, span_userdanger("Death is not the end..."))
@@ -221,6 +209,20 @@
 	if(world.time > next_idle_sound)
 		zombie.emote("idle")
 		next_idle_sound = world.time + rand(5 SECONDS, 10 SECONDS)
+	
+	// Auto biting
+	if(world.time - last_bite < 10 SECONDS)
+		return
+
+	var/obj/item/grabbing/bite/bite = zombie.get_item_by_slot(SLOT_MOUTH)
+	if(!bite || !get_location_accessible(src, BODY_ZONE_PRECISE_MOUTH, grabs = TRUE))
+		for(var/mob/living/carbon/human in view(1, zombie))
+			if((human.mob_biotypes & MOB_UNDEAD) || ("undead" in human.faction) || HAS_TRAIT(human, TRAIT_ZOMBIE_IMMUNE))
+				continue
+			human.onbite(zombie)
+	else if(istype(bite))
+		bite.bitelimb(zombie)
+		bite.bitelimb(zombie)
 
 //Infected wake param is just a transition from living to zombie, via zombie_infect()
 //Previously you just died without warning in 3 minutes, now you just become an antag
