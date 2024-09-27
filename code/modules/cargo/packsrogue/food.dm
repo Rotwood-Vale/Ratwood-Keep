@@ -29,6 +29,14 @@
 					/obj/item/reagent_containers/glass/bottle/rogue/antipoisonpot,
 					/obj/item/reagent_containers/glass/bottle/rogue/antipoisonpot,
 				)
+/datum/supply_pack/rogue/food/trekkersdelight
+	name = "Trekkers Delight"
+	cost = 30
+	contains = list(
+					/obj/item/reagent_containers/glass/bottle/rogue/trekkersdelight,
+					/obj/item/reagent_containers/glass/bottle/rogue/trekkersdelight,
+					/obj/item/reagent_containers/glass/bottle/rogue/trekkersdelight,
+				)
 
 /datum/supply_pack/rogue/food/wineb
 	name = "Wine"
@@ -89,7 +97,7 @@
 
 /datum/supply_pack/rogue/food/honey
 	name = "Honey"
-	cost = 30
+	cost = 10
 	contains = list(
 					/obj/item/reagent_containers/food/snacks/rogue/honey,
 					/obj/item/reagent_containers/food/snacks/rogue/honey,

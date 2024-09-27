@@ -30,7 +30,7 @@
 			backr = /obj/item/gun/ballistic/revolver/grenadelauncher/bow/recurve
 			backl = /obj/item/storage/backpack/rogue/satchel
 			beltr = /obj/item/flashlight/flare/torch/lantern
-			backpack_contents = list(/obj/item/bait = 1, /obj/item/rogueweapon/huntingknife = 1)
+			backpack_contents = list(/obj/item/bait = 1, /obj/item/rogueweapon/huntingknife = 1, /obj/item/reagent_containers/glass/bottle/rogue/trekkersdelight = 1)
 			beltl = /obj/item/quiver/arrows
 			H.mind.adjust_skillrank(/datum/skill/combat/swords, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
@@ -41,6 +41,7 @@
 			H.mind.adjust_skillrank(/datum/skill/misc/climbing, 4, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/medicine, 2, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/alchemy, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/craft/cooking, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/labor/butchering, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/riding, rand(1,2), TRUE)
@@ -66,7 +67,7 @@
 			backr = /obj/item/gun/ballistic/revolver/grenadelauncher/bow/recurve
 			backl = /obj/item/storage/backpack/rogue/satchel
 			beltr = /obj/item/flashlight/flare/torch/lantern
-			backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger/steel/special = 1)
+			backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger/steel/special = 1, /obj/item/reagent_containers/glass/bottle/rogue/trekkersdelight = 1)
 			beltl = /obj/item/quiver/arrows
 			H.mind.adjust_skillrank(/datum/skill/combat/swords, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
@@ -80,6 +81,7 @@
 			H.mind.adjust_skillrank(/datum/skill/misc/climbing, 4, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 4, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/medicine, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/alchemy, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/craft/cooking, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/riding, rand(1,2), TRUE)
 			H.mind.adjust_skillrank(/datum/skill/craft/crafting, 2, TRUE)

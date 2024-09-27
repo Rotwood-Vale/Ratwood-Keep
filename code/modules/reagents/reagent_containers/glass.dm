@@ -591,6 +591,11 @@
 		if(grinded)
 			to_chat(user, span_notice("I start grinding..."))
 			if((do_after(user, 25, target = src)) && grinded)
+				user.mind.adjust_experience(/datum/skill/misc/alchemy, user.STAINT * 0.1) // Enough to get to novice with effort to make up for not actually making potions.
+				if(grinded.mill_result) // This goes first. Fewer items, more use than liquid.
+					new grinded.mill_result(get_turf(src))
+					QDEL_NULL(grinded)
+					return
 				if(grinded.juice_results) //prioritize juicing
 					grinded.on_juice()
 					reagents.add_reagent_list(grinded.juice_results)
@@ -663,7 +668,7 @@
 					break
 
 			return
-	if(I.juice_results || I.grind_results)
+	if(I.juice_results || I.grind_results || I.mill_result)
 		I.forceMove(src)
 		grinded = I
 		return
