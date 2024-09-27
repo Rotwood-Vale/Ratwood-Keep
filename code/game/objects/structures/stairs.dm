@@ -145,6 +145,4 @@
 		pulling.forceMove(newtarg)
 		L.start_pulling(pulling, supress_message = TRUE)
 		if(was_pulled_buckled) // Assume this was a fireman carry since piggybacking is not a thing
-			var/mob/living/pulled_mob = pulling
-			pulled_mob.grippedby(L, TRUE)
 			L.buckle_mob(pulling, TRUE, TRUE, 90, 0, 0)
