@@ -86,8 +86,8 @@
 
 //gold rings
 /obj/item/clothing/ring/emerald
-    name = "gemerald ring"
-    icon_state = "g_ring_emerald"
+	name = "gemerald ring"
+	icon_state = "g_ring_emerald"
 	desc = "A beautiful golden ring with a polished Gemerald set into it."
 	sellprice = 195
 
