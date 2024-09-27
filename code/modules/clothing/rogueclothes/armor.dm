@@ -145,6 +145,7 @@
 	icon_state = "carapacecuirass"
 	item_state = "carapacecuirass"
 	max_integrity = 200
+	sellprice = 50
 	armor = list("blunt" = 80, "slash" = 100, "stab" = 0, "bullet" = 100, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 60, "acid" = 0)
 /obj/item/clothing/suit/roguetown/armor/carapace/dragon/cuirass
 	name = "dragonscale cuirass"
@@ -154,6 +155,7 @@
 	item_state = "carapacecuirass"
 	max_integrity = 175
 	equip_delay_self = 30
+	sellprice = 50
 
 /obj/item/clothing/suit/roguetown/armor/plate
 	slot_flags = ITEM_SLOT_ARMOR

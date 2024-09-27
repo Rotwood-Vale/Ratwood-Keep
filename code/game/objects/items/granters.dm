@@ -82,6 +82,7 @@
 	icon_state ="Crystal"
 	light_range = 1.5
 	light_power = 150
+	sellprice = 200
 	drop_sound = 'sound/items/gem.ogg'
 	pickup_sound =  list('sound/vo/mobs/ghost/whisper (1).ogg','sound/vo/mobs/ghost/whisper (2).ogg','sound/vo/mobs/ghost/whisper (3).ogg')
 
@@ -174,6 +175,7 @@
 	color = "#b028fffb"
 	granted_trait = TRAIT_DEATHBYSNOOSNOO
 	granted_trait2 = TRAIT_GOODLOVER
+	sellprice = 150
 	traitname = "the succubus"
 	remarks = list("<font color='#b028fffb'>They like what they see.", "<font color='#b028fffb'>I can't wait to hear you scream.", "<font color='#b028fffb'>So many hearts to break, so little time.","<font color='#b028fffb'>Without pain, how would they know pleasure?</font>",)
 

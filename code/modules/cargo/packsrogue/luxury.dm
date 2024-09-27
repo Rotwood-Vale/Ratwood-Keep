@@ -75,7 +75,7 @@
 
 /datum/supply_pack/rogue/luxury/scrying
 	name = "Scrying Orb"
-	cost = 1000
+	cost = 750
 	contains = list(/obj/item/scrying)
 
 /datum/supply_pack/rogue/luxury/listenst
@@ -87,6 +87,38 @@
 	name = "Riddle of Steel"
 	cost = 400
 	contains = list(/obj/item/riddleofsteel)
+/datum/supply_pack/rogue/luxury/acrobat
+	name = "Fragment of the Acrobat"
+	cost = 400
+	contains = list(/obj/item/book/granter/trait/acrobat)
+/datum/supply_pack/rogue/luxury/swamp
+	name = "Fragment of the Swamp"
+	cost = 750
+	contains = list(/obj/item/book/granter/trait/mobility/bogtrek)
+/datum/supply_pack/rogue/luxury/kneestinger
+	name = "Fragment of Dendor"
+	cost = 400
+	contains = list(/obj/item/book/granter/trait/mobility/kneestinger)
+/datum/supply_pack/rogue/luxury/mediumarmor
+	name = "Fragment of the Old Guard"
+	cost = 250
+	contains = list(/obj/item/book/granter/trait/defense/mediumarmor)
+/datum/supply_pack/rogue/luxury/heavyarmor
+	name = "Fragment of the Forgotten Knight"
+	cost = 750
+	contains = list(/obj/item/book/granter/trait/defense/heavyarmor)
+/datum/supply_pack/rogue/luxury/succubus
+	name = "Fragment of the Succubus"
+	cost = 150
+	contains = list(/obj/item/book/granter/trait/succubus)
+/datum/supply_pack/rogue/luxury/undying
+	name = "Fragment of the Undying"
+	cost = 1000
+	contains = list(/obj/item/book/granter/trait/war/undying)
+/datum/supply_pack/rogue/luxury/relentless
+	name = "Fragment of the Relentless"
+	cost = 1000
+	contains = list(/obj/item/book/granter/trait/war/relentless)
 
 // Flavor Packages - For region specific gear; mostly for flavor, also to buy and LARP I guess.
 // Yeah, it's weapons and armor and clothes but sue me. It's overpriced for the LARP.
@@ -119,7 +151,7 @@
 //Grenzel musketeer pack; EXPENSIVE as shit but hey funni Grenzelhoft musketeer. Pike n' shot.
 /datum/supply_pack/rogue/luxury/grenzelhoftmusket
 	name = "Grenzelhoft Musketeer Arms & Armor Import"
-	cost = 1200		//Lol, lmao. Not worth it, remotely.
+	cost = 1000		//Lol, lmao. Not worth it, remotely.
 	contains = list(/obj/item/clothing/suit/roguetown/armor/plate/half/footmanchestplate,	//Cheaper armor because moosket.
 					/obj/item/clothing/shoes/roguetown/grenzelhoft,
 					/obj/item/clothing/gloves/roguetown/grenzelgloves,
