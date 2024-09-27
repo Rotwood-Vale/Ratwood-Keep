@@ -594,5 +594,6 @@
 	weight = 100 // Job specials are optional. Increased odds.
 
 /datum/special_trait/illicit_merchant/on_apply(mob/living/carbon/human/character, silent)
+	ADD_TRAIT(character, TRAIT_SEEPRICES, "[type]")
 	character.mind.special_items["Merchant Key"] = /obj/item/roguekey/merchant
 	character.mind.special_items["GOLDFACE Gem"] = /obj/item/gem_device/goldface
