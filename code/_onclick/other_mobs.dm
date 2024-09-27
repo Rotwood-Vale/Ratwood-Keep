@@ -201,7 +201,7 @@
 	if(!nodmg)
 		playsound(src, "smallslash", 100, TRUE, -1)
 		if(ishuman(src) && user.mind)
-			if(istype(H.dna.species, /datum/species/werewolf))
+			if(istype(user.dna.species, /datum/species/werewolf))
 				caused_wound?.werewolf_infect_attempt()
 				if(prob(30))
 					user.werewolf_feed(src, 10)
