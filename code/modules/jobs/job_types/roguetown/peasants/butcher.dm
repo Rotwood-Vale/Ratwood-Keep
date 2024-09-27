@@ -25,9 +25,9 @@
 		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/labor/taming, 5, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/craft/tanning, 1, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/craft/tanning, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/riding, 3, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/craft/crafting, 2, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/craft/crafting, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/labor/butchering, 5, TRUE)
 	beltl = /obj/item/storage/keyring/butcher
 	armor = /obj/item/clothing/suit/roguetown/armor/leather/vest

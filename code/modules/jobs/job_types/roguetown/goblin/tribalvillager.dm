@@ -35,6 +35,9 @@
 		H.mind.adjust_skillrank(/datum/skill/labor/mining, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/labor/lumberjacking, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/labor/fishing, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/craft/crafting, 3 , TRUE) //builders
+		H.mind.adjust_skillrank(/datum/skill/craft/masonry, 3, TRUE) // builders
+		H.mind.adjust_skillrank(/datum/skill/craft/carpentry, 3, TRUE) //builders
 		H.mind.adjust_skillrank(/datum/skill/labor/farming, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/swimming, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/climbing, 2, TRUE)

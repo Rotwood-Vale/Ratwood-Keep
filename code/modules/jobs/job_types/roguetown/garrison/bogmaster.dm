@@ -68,9 +68,9 @@
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/medicine, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/riding, 3, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/tracking, 3, TRUE) //Hearthstone change.
+		H.mind.adjust_skillrank(/datum/skill/misc/tracking, 4, TRUE) //Hearthstone change.
 		H.mind.adjust_skillrank(/datum/skill/combat/shields, 3, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/craft/crafting, pick(1,1,2), TRUE)	//Peasent levy, so some skill
+		H.mind.adjust_skillrank(/datum/skill/craft/crafting, 3, TRUE)	//Peasent levy, so some skill
 		H.mind.adjust_skillrank(/datum/skill/labor/farming, pick(1,2,2), TRUE)		//Peasent levy, so some skill
 		H.change_stat("strength", 3)
 		H.change_stat("constitution", 2)

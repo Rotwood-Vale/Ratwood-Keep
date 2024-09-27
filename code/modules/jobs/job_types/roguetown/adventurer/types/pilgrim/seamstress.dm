@@ -7,15 +7,15 @@
 
 /datum/outfit/job/roguetown/adventurer/seamstress/pre_equip(mob/living/carbon/human/H)
 	..()
-	H.mind.adjust_skillrank(/datum/skill/misc/sewing, 4, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/misc/sewing, 5, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/craft/crafting, 3, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/medicine, 2, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 2, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/labor/farming, 1, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/craft/tanning, 1, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/craft/carpentry, 1, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/craft/tanning, 3, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/craft/carpentry, 3, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/stealing, 1, TRUE)
 	neck = /obj/item/storage/belt/rogue/pouch/coins/poor
 	cloak = /obj/item/clothing/cloak/raincloak/furcloak

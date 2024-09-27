@@ -84,7 +84,7 @@
 			H.mind.adjust_skillrank(/datum/skill/misc/alchemy, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/craft/cooking, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/riding, rand(1,2), TRUE)
-			H.mind.adjust_skillrank(/datum/skill/craft/crafting, 2, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/craft/crafting, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/craft/tanning, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/sewing, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)

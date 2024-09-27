@@ -33,6 +33,9 @@
 			H.mind.adjust_skillrank(/datum/skill/combat/whipsflails, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/craft/crafting, 3 , TRUE) //builders
+			H.mind.adjust_skillrank(/datum/skill/craft/masonry, 3, TRUE) // builders
+			H.mind.adjust_skillrank(/datum/skill/craft/carpentry, 3, TRUE) //builders
 			H.mind.adjust_skillrank(/datum/skill/misc/athletics, 4, TRUE)		//Trust me, they'll need it due to stamina drain on their base-sword.
 			H.mind.adjust_skillrank(/datum/skill/misc/tracking, 1, TRUE) //Hearthstone change.
 			H.change_stat("strength", 3)	//Should give minimum required stats to use Zweihander

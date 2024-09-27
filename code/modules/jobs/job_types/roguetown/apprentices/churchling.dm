@@ -28,7 +28,9 @@
 		H.mind.adjust_skillrank(/datum/skill/magic/holy, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/sewing, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/craft/crafting, 1, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/craft/crafting, 3 , TRUE)
+		H.mind.adjust_skillrank(/datum/skill/craft/masonry, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/craft/carpentry, 3, TRUE)
 	neck = /obj/item/clothing/neck/roguetown/psicross
 	if(H.gender == MALE)
 		armor = /obj/item/clothing/suit/roguetown/shirt/robe

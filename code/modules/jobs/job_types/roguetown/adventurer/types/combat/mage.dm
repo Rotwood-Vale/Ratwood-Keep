@@ -29,6 +29,7 @@
 		H.mind.adjust_skillrank(/datum/skill/misc/alchemy, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/magic/arcane, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/craft/cooking, 1, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/craft/crafting, 3 , TRUE)
 		H.mind.adjust_skillrank(/datum/skill/labor/butchering, 1, TRUE)
 		if(H.age == AGE_OLD)
 			head = /obj/item/clothing/head/roguetown/wizhat/gen

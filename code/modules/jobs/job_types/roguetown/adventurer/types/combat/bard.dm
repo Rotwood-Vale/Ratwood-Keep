@@ -61,6 +61,9 @@
 			H.mind.adjust_skillrank(/datum/skill/misc/stealing, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/craft/cooking, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/medicine, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/craft/crafting, 3 , TRUE)
+			H.mind.adjust_skillrank(/datum/skill/craft/masonry, 3, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/craft/carpentry, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/music, rand(3,5), TRUE)
 			head = /obj/item/clothing/head/roguetown/bardhat
 			shoes = /obj/item/clothing/shoes/roguetown/boots

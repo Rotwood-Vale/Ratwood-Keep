@@ -60,11 +60,10 @@
 		H.mind.adjust_skillrank(/datum/skill/misc/riding, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/labor/butchering, 3, TRUE)
 
-		H.change_stat("strength", 4)		//Same as heavy royal guard; highest of normal roles in game.
+		H.change_stat("strength", 3) //Less strength than royal guard. Same as Captain
 		H.change_stat("intelligence", -2)
-		H.change_stat("constitution", 4)	//Fucking strong; maybe consider toning down if too much still.
-		H.change_stat("endurance", 3)
-		H.change_stat("speed", -2)
+		H.change_stat("constitution", 5)	//They will likely have the entire town fighting them.
+		H.change_stat("endurance", 5)
 	
 /obj/effect/proc_holder/spell/self/convertrole/viking
 	name = "Recruit Clanshield"

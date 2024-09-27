@@ -21,7 +21,7 @@
 	H.mind.adjust_skillrank(/datum/skill/combat/knives, pick(3,3,4), TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/swimming, 1, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/climbing, 1, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/craft/crafting, 1, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/craft/crafting, 3, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/reading, 3, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/sewing, 1, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/labor/butchering, 2, TRUE)

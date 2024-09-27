@@ -36,7 +36,9 @@
 		H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/riding, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/sewing, 1, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/craft/crafting, 1, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/craft/crafting, 3 , TRUE) //builders
+		H.mind.adjust_skillrank(/datum/skill/craft/masonry, 3, TRUE) // builders
+		H.mind.adjust_skillrank(/datum/skill/craft/carpentry, 3, TRUE) //builders
 		H.mind.adjust_skillrank(/datum/skill/craft/tanning, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/swimming, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)

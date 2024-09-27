@@ -52,6 +52,7 @@
 			H.mind.adjust_skillrank(/datum/skill/craft/cooking, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/labor/butchering, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/riding, 3, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/craft/crafting, 2 , TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/shields, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
 			ADD_TRAIT(H, TRAIT_SCHIZO_AMBIENCE, TRAIT_GENERIC)
@@ -92,6 +93,7 @@
 			H.mind.adjust_skillrank(/datum/skill/misc/climbing, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/medicine, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/craft/cooking, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/craft/crafting, 2 , TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/riding, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/labor/lumberjacking, 2, TRUE) //i mean, if you have axes, might as well?
@@ -127,6 +129,7 @@
 			H.mind.adjust_skillrank(/datum/skill/misc/swimming, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/climbing, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/craft/cooking, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/craft/crafting, 2 , TRUE)
 			H.mind.adjust_skillrank(/datum/skill/labor/butchering, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/riding, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
