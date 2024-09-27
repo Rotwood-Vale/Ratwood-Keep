@@ -8,7 +8,7 @@
 	/obj/structure/closet/crate/chest/dungeon/weapon = 4,
 	/obj/structure/closet/crate/chest/dungeon/treasure = 2,
 	/obj/structure/closet/crate/chest/dungeon/medicine = 3,
-	/obj/structure/closet/crate/chest/dungeon/mimic = 1
+	/obj/structure/closet/crate/chest/dungeon/mimic = 2
 	)
 	lootcount = 1
 

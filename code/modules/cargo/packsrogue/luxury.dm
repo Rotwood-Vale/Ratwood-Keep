@@ -87,39 +87,6 @@
 	name = "Riddle of Steel"
 	cost = 400
 	contains = list(/obj/item/riddleofsteel)
-/datum/supply_pack/rogue/luxury/acrobat
-	name = "Fragment of the Acrobat"
-	cost = 400
-	contains = list(/obj/item/book/granter/trait/acrobat)
-/datum/supply_pack/rogue/luxury/swamp
-	name = "Fragment of the Swamp"
-	cost = 750
-	contains = list(/obj/item/book/granter/trait/mobility/bogtrek)
-/datum/supply_pack/rogue/luxury/kneestinger
-	name = "Fragment of Dendor"
-	cost = 400
-	contains = list(/obj/item/book/granter/trait/mobility/kneestinger)
-/datum/supply_pack/rogue/luxury/mediumarmor
-	name = "Fragment of the Old Guard"
-	cost = 250
-	contains = list(/obj/item/book/granter/trait/defense/mediumarmor)
-/datum/supply_pack/rogue/luxury/heavyarmor
-	name = "Fragment of the Forgotten Knight"
-	cost = 750
-	contains = list(/obj/item/book/granter/trait/defense/heavyarmor)
-/datum/supply_pack/rogue/luxury/succubus
-	name = "Fragment of the Succubus"
-	cost = 150
-	contains = list(/obj/item/book/granter/trait/succubus)
-/datum/supply_pack/rogue/luxury/undying
-	name = "Fragment of the Undying"
-	cost = 1000
-	contains = list(/obj/item/book/granter/trait/war/undying)
-/datum/supply_pack/rogue/luxury/relentless
-	name = "Fragment of the Relentless"
-	cost = 1000
-	contains = list(/obj/item/book/granter/trait/war/relentless)
-
 // Flavor Packages - For region specific gear; mostly for flavor, also to buy and LARP I guess.
 // Yeah, it's weapons and armor and clothes but sue me. It's overpriced for the LARP.
 
@@ -161,3 +128,109 @@
 					/obj/item/gun/ballistic/revolver/grenadelauncher/matchlock,
 					/obj/item/ammopouch/bullets
 					)
+
+
+/datum/supply_pack/rogue/luxury/acrobat
+	name = "Fragment of the Acrobat"
+	cost = 400
+	contains = list(/obj/item/book/granter/trait/acrobat)
+/datum/supply_pack/rogue/luxury/swamp
+	name = "Fragment of the Swamp"
+	cost = 750
+	contains = list(/obj/item/book/granter/trait/mobility/bogtrek)
+/datum/supply_pack/rogue/luxury/kneestinger
+	name = "Fragment of Dendor"
+	cost = 400
+	contains = list(/obj/item/book/granter/trait/mobility/kneestinger)
+/datum/supply_pack/rogue/luxury/mediumarmor
+	name = "Fragment of the Old Guard"
+	cost = 250
+	contains = list(/obj/item/book/granter/trait/defense/mediumarmor)
+/datum/supply_pack/rogue/luxury/heavyarmor
+	name = "Fragment of the Forgotten Knight"
+	cost = 750
+	contains = list(/obj/item/book/granter/trait/defense/heavyarmor)
+/datum/supply_pack/rogue/luxury/succubus
+	name = "Fragment of the Succubus"
+	cost = 150
+	contains = list(/obj/item/book/granter/trait/succubus)
+/datum/supply_pack/rogue/luxury/undying
+	name = "Fragment of the Undying"
+	cost = 1000
+	contains = list(/obj/item/book/granter/trait/war/undying)
+/datum/supply_pack/rogue/luxury/relentless
+	name = "Fragment of the Relentless"
+	cost = 1000
+	contains = list(/obj/item/book/granter/trait/war/relentless)
+
+
+
+/datum/supply_pack/rogue/luxury/acidsplash5e
+	name = "Acid Splash"
+	cost = 250
+	contains = list(/obj/item/book/granter/spell/spells5e/acidsplash5e)
+/datum/supply_pack/rogue/luxury/bladeward5e
+	name = "Scroll of Blade Ward"
+	cost = 250
+	contains = list(/obj/item/book/granter/spell/spells5e/bladeward5e)
+/datum/supply_pack/rogue/luxury/bladeward5e
+	name = "Scroll of Booming Blade"
+	cost = 250
+	contains = list(/obj/item/book/granter/spell/spells5e/boomingblade5e)
+/datum/supply_pack/rogue/luxury/createbonfire5e
+	name = "Scroll of Create Bonfire"
+	cost = 250
+	contains = list(/obj/item/book/granter/spell/spells5e/createbonfire5e)
+/datum/supply_pack/rogue/luxury/chilltouch5e
+	name = "Scroll of Chill Touch"
+	cost = 250
+	contains = list(/obj/item/book/granter/spell/spells5e/chilltouch5e)
+/datum/supply_pack/rogue/luxury/decompose5e
+	name = "Scroll of Decompose"
+	cost = 250
+	contains = list(/obj/item/book/granter/spell/spells5e/decompose5e)
+/datum/supply_pack/rogue/luxury/eldritchblast5e
+	name = "Scroll of Eldritch Blast"
+	cost = 250
+	contains = list(/obj/item/book/granter/spell/spells5e/eldritchblast5e)
+/datum/supply_pack/rogue/luxury/encodethoughts5e
+	name = "Scroll of Encode Thoughts"
+	cost = 250
+	contains = list(/obj/item/book/granter/spell/spells5e/encodethoughts5e)
+/datum/supply_pack/rogue/luxury/firebolt5e
+	name = "Scroll of Fire Bolt"
+	cost = 250
+	contains = list(/obj/item/book/granter/spell/spells5e/firebolt5e)
+/datum/supply_pack/rogue/luxury/frostbite5e
+	name = "Scroll of Frostbite"
+	cost = 250
+	contains = list(/obj/item/book/granter/spell/spells5e/frostbite5e)
+/datum/supply_pack/rogue/luxury/greenflameblade5e
+	name = "Scroll of Green-Flame Blade"
+	cost = 250
+	contains = list(/obj/item/book/granter/spell/spells5e/greenflameblade5e)
+/datum/supply_pack/rogue/luxury/guidance5e
+	name = "Scroll of Guidance"
+	cost = 250
+	contains = list(/obj/item/book/granter/spell/spells5e/guidance5e)
+
+/datum/supply_pack/rogue/luxury/infestation5e
+	name = "Scroll of Infestation"
+	cost = 250
+	contains = list(/obj/item/book/granter/spell/spells5e/infestation5e)
+/datum/supply_pack/rogue/luxury/light5e
+	name = "Scroll of Light"
+	cost = 250
+	contains = list(/obj/item/book/granter/spell/spells5e/light5e)
+/datum/supply_pack/rogue/luxury/lightninglure5e
+	name = "Scroll of Lightning Lure"
+	cost = 250
+	contains = list(/obj/item/book/granter/spell/spells5e/lightninglure5e)
+/datum/supply_pack/rogue/luxury/magicstone5e
+	name = "Scroll of Magic Stone"
+	cost = 250
+	contains = list(/obj/item/book/granter/spell/spells5e/magicstone5e)
+/datum/supply_pack/rogue/luxury/mending5e
+	name = "Scroll of Mending"
+	cost = 250
+	contains = list(/obj/item/book/granter/spell/spells5e/mending5e)
