@@ -150,6 +150,9 @@
 
 /obj/item/bodypart/onbite(mob/living/carbon/human/user)
 	if((user.mind && user.mind.has_antag_datum(/datum/antagonist/zombie)) || istype(user.dna.species, /datum/species/werewolf))
+		if(user.has_status_effect(/datum/status_effect/debuff/silver_curse))
+			to_chat(user, span_notice("My power is weakened, I cannot heal!"))
+			return
 		if(do_after(user, 50, target = src))
 			user.visible_message(span_warning("[user] consumes [src]!"),\
 							span_notice("I consume [src]!"))
