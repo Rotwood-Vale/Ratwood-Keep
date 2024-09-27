@@ -370,7 +370,7 @@
 	desc = "A sword possessed of a quite long and tapered blade that is intended to be thrust between the \
 	gaps in an opponent's armor. The hilt is wrapped tight in black leather."
 	icon_state = "estoc"
-	force = 11
+	force = 12
 	force_wielded = 25
 	possible_item_intents = list(
 		/datum/intent/sword/chop,
@@ -384,10 +384,63 @@
 	)
 	minstr = 8
 
+/obj/item/rogueweapon/greatsword/estoc/getonmobprop(tag)
+	. = ..()
+	if(tag)
+		switch(tag)
+			if("gen")
+				return list(
+					"shrink" = 0.6,
+					"sx" = -6,
+					"sy" = 7,
+					"nx" = 6,
+					"ny" = 8,
+					"wx" = 0,
+					"wy" = 6,
+					"ex" = -1,
+					"ey" = 8,
+					"northabove" = 0,
+					"southabove" = 1,
+					"eastabove" = 1,
+					"westabove" = 0,
+					"nturn" = -50,
+					"sturn" = 40,
+					"wturn" = 50,
+					"eturn" = -50,
+					"nflip" = 0,
+					"sflip" = 8,
+					"wflip" = 8,
+					"eflip" = 0,
+					)
+			if("wielded")
+				return list(
+					"shrink" = 0.6,
+					"sx" = 3,
+					"sy" = 5,
+					"nx" = -3,
+					"ny" = 5,
+					"wx" = -9,
+					"wy" = 4,
+					"ex" = 9,
+					"ey" = 1,
+					"northabove" = 0,
+					"southabove" = 1,
+					"eastabove" = 1,
+					"westabove" = 0,
+					"nturn" = 0,
+					"sturn" = 0,
+					"wturn" = 0,
+					"eturn" = 15,
+					"nflip" = 8,
+					"sflip" = 0,
+					"wflip" = 8,
+					"eflip" = 0,
+					)
+
 /datum/intent/sword/thrust/estoc
 	name = "thrust"
 	penfactor = 50
-	recovery = 30
+	recovery = 20
 	clickcd = 10
 
 
@@ -401,6 +454,6 @@
 	reach = 2
 	penfactor = 30
 	damfactor = 1.2
-	chargetime = 1
-	recovery = 40
+	chargetime = 5
+	recovery = 20
 	clickcd = 10
