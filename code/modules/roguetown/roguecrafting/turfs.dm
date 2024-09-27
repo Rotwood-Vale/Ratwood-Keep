@@ -273,6 +273,7 @@
 		return
 	return TRUE
 
+
 // Normal, non-openable window
 /datum/crafting_recipe/roguetown/turfs/roguewindow
 	name = "static glass window"
@@ -282,6 +283,12 @@
 	verbage_simple = "build"
 	verbage = "builds"
 	craftdiff = 3
+
+	/*
+	By the way, glass windows needing Masonry and Carpentry instead of Ceramics isn't an oversight.
+	The Mason and the Carpenter are the ones who will build the window itself from wood and
+	an already prepared pane of glass. The potter has nothing to do with this part of the process.
+	*/// - SunriseOYH
 
 /datum/crafting_recipe/roguetown/turfs/roguewindow/TurfCheck(mob/user, turf/T)
 	if(isclosedturf(T))
@@ -340,3 +347,4 @@
 	if(!istype(T, /turf/open/floor/rogue))
 		return
 	return TRUE
+
