@@ -3599,6 +3599,7 @@
 #include "modular_hearthstone\code\game\objects\structures\fluff.dm"
 #include "modular_hearthstone\code\game\objects\structures\hangingbanners.dm"
 #include "modular_hearthstone\code\game\objects\structures\longsleep.dm"
+#include "modular_hearthstone\code\game\objects\structures\timeddoor.dm"
 #include "modular_hearthstone\code\game\objects\structures\sarcophagus.dm"
 #include "modular_hearthstone\code\game\objects\structures\standard.dm"
 #include "modular_hearthstone\code\interface\LOOC.dm"
