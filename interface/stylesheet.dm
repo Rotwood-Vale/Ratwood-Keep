@@ -72,6 +72,7 @@ h1.alert, h2.alert	{color: #c9c1ba;font-family: Pterra, TrueType;}
 .greenannounce			{color: #059223;	font-weight: bold;}
 .rose					{color: #e7bed8;}
 .love					{color: #e7bed8;	font-size: 75%;}
+.lovebold				{color: #e7bed8;	font-weight: bold;}
 .info					{color: #a9a5b6;						font-size: 75%;}
 .biginfo				{color: #a9a5b6;}
 .notice					{color: #f1d669;}
@@ -130,6 +131,7 @@ h1.alert, h2.alert	{color: #c9c1ba;font-family: Pterra, TrueType;}
 .orc					{font-family: "Thief by The Riddler", Pterra;}
 .beast					{font-family: "Thief by The Riddler", Pterra;}
 .reptile				{font-family: "Kingthings Petrock", Pterra; font-size: 120%;}
+.faexin					{font-family: "Sweet Dreams", Pterra;}
 
 .torture				{color: #42ff20}
 

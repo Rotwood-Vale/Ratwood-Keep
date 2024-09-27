@@ -5,7 +5,7 @@
 	if(user == target)
 		return FALSE
 	if(!user.getorganslot(ORGAN_SLOT_PENIS))
-		return
+		return FALSE
 	return TRUE
 
 /datum/sex_action/thighjob/can_perform(mob/living/carbon/human/user, mob/living/carbon/human/target)
@@ -18,7 +18,12 @@
 	return TRUE
 
 /datum/sex_action/thighjob/on_start(mob/living/carbon/human/user, mob/living/carbon/human/target)
-	user.visible_message(span_warning("[user] grabs [target]'s thighs and shoves their cock inbetween!"))
+	if(HAS_TRAIT(target, TRAIT_TINY) && !(HAS_TRAIT(user, TRAIT_TINY)))
+		user.visible_message(span_warning("[user] spreads [target]'s legs apart and shoves his cock inbetween!"))
+	else if(!(HAS_TRAIT(target, TRAIT_TINY)) && HAS_TRAIT(user, TRAIT_TINY))
+		user.visible_message(span_warning("[user] starts humping [target]'s thigh!"))
+	else
+		user.visible_message(span_warning("[user] grabs [target]'s thighs and shoves his cock inbetween!"))
 
 /datum/sex_action/thighjob/on_perform(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] fucks [target]'s thighs."))
@@ -28,4 +33,7 @@
 	user.sexcon.handle_passive_ejaculation()
 
 /datum/sex_action/thighjob/on_finish(mob/living/carbon/human/user, mob/living/carbon/human/target)
-	user.visible_message(span_warning("[user] pulls their cock out from inbetween [target]'s thighs."))
+	if(!(HAS_TRAIT(target, TRAIT_TINY)) && HAS_TRAIT(user, TRAIT_TINY))
+		user.visible_message(span_warning("[user] stops humping [target]'s thigh."))
+	else
+		user.visible_message(span_warning("[user] pulls his cock out from inbetween [target]'s thighs."))

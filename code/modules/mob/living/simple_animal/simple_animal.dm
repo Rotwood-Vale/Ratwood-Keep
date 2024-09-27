@@ -821,14 +821,14 @@ mob/living/simple_animal/handle_fire()
 						do_footstep = FALSE
 			if(user.mind)
 				var/amt = user.mind.get_skill_level(/datum/skill/misc/riding)
-				if(amt)
+				if(amt && !istype(src, /mob/living/simple_animal/hostile/retaliate/rogue/bigrat))
 					riding_datum.vehicle_move_delay -= 5
 				else
 					riding_datum.vehicle_move_delay -= 3
 			if(loc != oldloc)
 				var/obj/structure/mineral_door/MD = locate() in loc
 				if(MD && !MD.ridethrough)
-					if(isliving(user))
+					if(isliving(user) && !isseelie(user))
 						var/mob/living/L = user
 						unbuckle_mob(L)
 						L.Paralyze(50)

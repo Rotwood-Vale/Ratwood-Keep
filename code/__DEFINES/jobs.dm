@@ -186,6 +186,7 @@
 #define DESERT_RIDER	(1<<1)
 #define GRENZELHOFT		(1<<2)
 #define VETERAN		(1<<3)
+#define SEELIE		(1<<4)
 
 #define TRIBAL		(1<<8)
 
@@ -195,7 +196,6 @@
 #define TRIBALSMITH	(1<<3)
 #define TRIBALSHAMAN	(1<<4)
 #define TRIBALVILLAGER	(1<<5)
-
 
 #define VIKING		(1<<9)
 #define HIGHKING	(1<<0)
@@ -294,6 +294,7 @@
 #define JDO_GRENZELHOFT 31.1
 #define JDO_DESERT_RIDER 31.2
 #define JDO_VET 31.3
+#define JDO_SEELIE 31.4
 
 #define JDO_VAGRANT 33
 #define JDO_VAGABOND 34
@@ -383,7 +384,8 @@
 	/datum/job/roguetown/pilgrim,\
 	/datum/job/roguetown/adventurer,\
 	/datum/job/roguetown/mercenary/desert_rider,\
-	/datum/job/roguetown/mercenary/grenzelhoft
+	/datum/job/roguetown/mercenary/grenzelhoft,\
+	/datum/job/roguetown/mercenary/seelie
 
 #define GARRISON_ROLES \
 	/datum/job/roguetown/bogguardsman,\

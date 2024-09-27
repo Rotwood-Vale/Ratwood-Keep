@@ -132,6 +132,9 @@
 	var/newamt = 0
 	switch(stat)
 		if("strength")
+			if(isseelie(src))
+				STASTR = 1
+				return
 			newamt = STASTR + amt
 			if(BUFSTR < 0)
 				BUFSTR = BUFSTR + amt

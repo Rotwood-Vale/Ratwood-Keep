@@ -24,6 +24,7 @@
 	var/round_ends_with_antag_death = 0 //flags the "one verse the station" antags as such
 	var/list/datum/mind/antag_candidates = list()	// List of possible starting antags goes here
 	var/list/restricted_jobs = list()	// Jobs it doesn't make sense to be.  I.E chaplain or AI cultist
+	var/list/restricted_races = list()  // Races that are disallowed to be antags
 	var/list/protected_jobs = list()	// Jobs that can't be traitors because
 	var/list/required_jobs = list()		// alternative required job groups eg list(list(cap=1),list(hos=1,sec=2)) translates to one captain OR one hos and two secmans
 	var/required_players = 0
@@ -378,6 +379,7 @@
 /datum/game_mode/proc/get_players_for_role(role, pre_do, check_pq = TRUE)
 	var/list/players = list()
 	var/list/candidates = list()
+//	var/pass = TRUE
 //	var/list/drafted = list()
 //	var/datum/mind/applicant = null
 

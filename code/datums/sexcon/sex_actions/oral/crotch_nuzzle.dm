@@ -4,6 +4,8 @@
 /datum/sex_action/crotch_nuzzle/shows_on_menu(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(user == target)
 		return FALSE
+	if(HAS_TRAIT(target, TRAIT_TINY))	//Fairy too small to nuzzle, but can do nuzzling
+		return FALSE
 	return TRUE
 
 /datum/sex_action/crotch_nuzzle/can_perform(mob/living/user, mob/living/target)

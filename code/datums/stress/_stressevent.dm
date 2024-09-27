@@ -8,6 +8,9 @@
 /datum/stressevent/proc/get_desc(mob/living/user)
 	return desc
 
+/datum/stressevent/proc/on_apply(mob/living/user)
+	return
+
 /datum/stressevent/test
 	timer = 5 SECONDS
 	stressadd = 3

@@ -88,3 +88,4 @@
 
 	var/domhand = 0
 	var/tiredness = 0
+	var/aura = TRUE //Used to switch between good luck and bad luck auras

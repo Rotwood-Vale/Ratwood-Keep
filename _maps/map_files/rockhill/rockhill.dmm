@@ -7002,8 +7002,8 @@
 /area/rogue/indoors/town/tavern)
 "emH" = (
 /obj/structure/crabnest,
-/turf/open/floor/rogue/dirt/road,
-/area/rogue/outdoors/bog)
+/turf/open/water/cleanshallow,
+/area/rogue/outdoors/beach)
 "emM" = (
 /obj/item/roguebin/water/gross,
 /turf/open/floor/rogue/blocks,
@@ -10915,10 +10915,9 @@
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors/town/garrison)
 "hcS" = (
-/obj/structure/chair/stool/rogue,
-/obj/effect/landmark/start/adventurer,
-/turf/open/floor/rogue/dirt/road,
-/area/rogue/outdoors/rtfield)
+/obj/structure/crabnest,
+/turf/open/floor/rogue/naturalstone,
+/area/rogue/under/cavewet/bogcaves)
 "hcU" = (
 /obj/structure/chair/bench,
 /obj/effect/decal/cobbleedge{
@@ -14504,9 +14503,9 @@
 /turf/open/water/swamp,
 /area/rogue/under/cavewet/bogcaves/chapel)
 "jAV" = (
-/obj/structure/crabnest,
-/turf/closed/mineral/rogue,
-/area/rogue/under/cave)
+/obj/effect/landmark/start/seelielate,
+/turf/open/floor/rogue/grass,
+/area/rogue/outdoors/rtfield)
 "jAY" = (
 /turf/open/floor/rogue/metal/barograte,
 /area/rogue/under/cavewet/bogcaves/sunkencity/psydon)
@@ -15089,9 +15088,9 @@
 	},
 /area/rogue/indoors/town)
 "jXy" = (
-/obj/structure/crabnest,
-/turf/open/floor/rogue/dirt,
-/area/rogue/outdoors/bog)
+/obj/effect/landmark/start/seelie,
+/turf/open/floor/rogue/grass,
+/area/rogue/outdoors/rtfield)
 "jXK" = (
 /obj/machinery/light/rogue/campfire,
 /turf/open/floor/rogue/churchrough,
@@ -15884,7 +15883,8 @@
 /area/rogue/outdoors/rtfield)
 "kAJ" = (
 /obj/structure/bed/rogue/shit,
-/obj/effect/landmark/start/adventurer,
+/obj/effect/landmark/start/seelie,
+/obj/effect/landmark/start/seelielate,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/indoors)
 "kAK" = (
@@ -16709,7 +16709,7 @@
 /area/rogue/indoors/town/church/chapel)
 "lev" = (
 /obj/structure/crabnest,
-/turf/open/water/swamp,
+/turf/open/floor/rogue/dirt,
 /area/rogue/outdoors/bog)
 "leJ" = (
 /obj/effect/landmark/events/testportal{
@@ -20468,9 +20468,9 @@
 /turf/open/floor/rogue/wood/nosmooth,
 /area/rogue/outdoors/town)
 "nUK" = (
-/obj/structure/flora/newtree,
-/turf/open/transparent/openspace,
-/area/rogue/outdoors/bog)
+/obj/structure/crabnest,
+/turf/open/floor/rogue/dirt,
+/area/rogue/outdoors/tribalfort)
 "nUU" = (
 /obj/structure/flora/roguegrass/bush,
 /turf/open/floor/rogue/dirt,
@@ -27780,7 +27780,8 @@
 /area/rogue/indoors/town/church/chapel)
 "sNZ" = (
 /obj/structure/bed/rogue/shit,
-/obj/effect/landmark/start/adventurer,
+/obj/effect/landmark/start/seelie,
+/obj/effect/landmark/start/seelielate,
 /turf/open/floor/rogue/grass,
 /area/rogue/indoors)
 "sOy" = (
@@ -29427,10 +29428,6 @@
 "tYm" = (
 /turf/open/transparent/openspace,
 /area/rogue/indoors/town/tavern)
-"tYv" = (
-/obj/structure/crabnest,
-/turf/open/water/cleanshallow,
-/area/rogue/under/cavewet/bogcaves)
 "tYD" = (
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/closed/wall/mineral/rogue/stonebrick,
@@ -32748,9 +32745,6 @@
 /area/rogue/indoors/town/manor)
 "wpY" = (
 /obj/structure/flora/roguetree/stump,
-/obj/effect/landmark/start/adventurer{
-	dir = 8
-	},
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors/rtfield)
 "wqE" = (
@@ -34470,9 +34464,6 @@
 /area/rogue/outdoors/mountains)
 "xyC" = (
 /obj/structure/chair/stool/rogue,
-/obj/effect/landmark/start/adventurer{
-	dir = 8
-	},
 /turf/open/floor/rogue/grass,
 /area/rogue/outdoors/rtfield)
 "xyG" = (
@@ -35240,10 +35231,6 @@
 	icon_state = "weird1"
 	},
 /area/rogue/indoors)
-"xWW" = (
-/obj/structure/crabnest,
-/turf/open/water/cleanshallow,
-/area/rogue/outdoors/rtfield)
 "xXd" = (
 /mob/living/simple_animal/hostile/rogue/ghost/wraith/wraith3,
 /turf/open/floor/rogue/twig,
@@ -184250,7 +184237,7 @@ dSL
 dSL
 dSL
 oNE
-tYv
+oNE
 gTv
 vCg
 vCg
@@ -197117,7 +197104,7 @@ dSL
 dSL
 dVO
 dVO
-dVO
+hcS
 dVO
 dVO
 dVO
@@ -219592,8 +219579,8 @@ oNE
 oNE
 oNE
 oNE
-tYv
-tYv
+oNE
+oNE
 oNE
 oNE
 oNE
@@ -219654,8 +219641,8 @@ oNE
 oNE
 oNE
 oNE
-tYv
-tYv
+oNE
+oNE
 oNE
 oNE
 oNE
@@ -219994,7 +219981,7 @@ oNE
 oNE
 oNE
 oNE
-tYv
+oNE
 oNE
 oNE
 oNE
@@ -220056,7 +220043,7 @@ oNE
 oNE
 oNE
 oNE
-tYv
+oNE
 oNE
 oNE
 oNE
@@ -220397,7 +220384,7 @@ oNE
 oNE
 oNE
 oNE
-tYv
+oNE
 oNE
 oNE
 oNE
@@ -221111,7 +221098,7 @@ vRu
 vRu
 bIl
 bIl
-bIl
+emH
 bIl
 cfy
 ewB
@@ -224311,7 +224298,7 @@ vRu
 vRu
 vRu
 vRu
-jAV
+vRu
 vRu
 vRu
 jyI
@@ -224426,7 +224413,7 @@ dVO
 dVO
 dVO
 dVO
-dVO
+hcS
 dVO
 dVO
 pEm
@@ -232074,7 +232061,7 @@ oNE
 oNE
 oNE
 oNE
-tYv
+oNE
 oNE
 oNE
 oNE
@@ -232476,7 +232463,7 @@ oNE
 oNE
 oNE
 oNE
-tYv
+oNE
 oNE
 oNE
 oNE
@@ -255890,7 +255877,7 @@ wLx
 wLx
 wLx
 wLx
-lev
+wLx
 wLx
 kDc
 kDc
@@ -256291,7 +256278,7 @@ wLx
 wLx
 wLx
 wLx
-lev
+wLx
 kDc
 kDc
 kDc
@@ -259024,7 +259011,7 @@ ogq
 ogq
 ogq
 ogq
-emH
+wGD
 sYx
 kWT
 odi
@@ -269187,7 +269174,7 @@ odi
 sYx
 uRH
 oXL
-jXy
+sYx
 odi
 odi
 sYx
@@ -269588,7 +269575,7 @@ kWT
 sYx
 kWT
 uRH
-jXy
+sYx
 odi
 kWT
 odi
@@ -269654,7 +269641,7 @@ odi
 uRH
 odi
 odi
-ejC
+odi
 odi
 odi
 odi
@@ -272869,7 +272856,7 @@ wGD
 wJY
 wGD
 sMH
-ejC
+odi
 odi
 aQn
 odi
@@ -273937,7 +273924,7 @@ wLx
 wLx
 wLx
 wLx
-odi
+ejC
 jPp
 sYx
 wGD
@@ -275961,7 +275948,7 @@ wLx
 odi
 oXL
 odi
-ejC
+odi
 odi
 uRH
 odi
@@ -276085,7 +276072,7 @@ wLx
 uRH
 odi
 odi
-ejC
+odi
 sYx
 uRH
 odi
@@ -280654,13 +280641,13 @@ fnl
 qvR
 qvR
 uaL
-hcS
+vLS
 fTe
 uaL
 uaL
 uaL
-qvR
-qvR
+jAV
+jXy
 uaL
 qvR
 qvR
@@ -281591,7 +281578,7 @@ wLx
 odi
 odi
 oXL
-ejC
+odi
 oXL
 wLx
 wLx
@@ -281858,7 +281845,7 @@ hHF
 hHF
 fnl
 qvR
-qvR
+jAV
 uaL
 uaL
 uaL
@@ -281992,7 +281979,7 @@ wLx
 wLx
 sYx
 kWT
-jXy
+sYx
 odi
 uRH
 oXL
@@ -282260,7 +282247,7 @@ cjp
 hHF
 fDI
 qvR
-qvR
+jXy
 uaL
 uaL
 uaL
@@ -282667,7 +282654,7 @@ uaL
 uaL
 uaL
 uaL
-hcS
+vLS
 fTe
 uaL
 uaL
@@ -283862,7 +283849,7 @@ qvR
 qvR
 qvR
 fnl
-kAJ
+bmu
 hHF
 iDD
 ncl
@@ -283992,7 +283979,7 @@ sYx
 uRH
 wGD
 odi
-odi
+ejC
 sYx
 wLx
 wLx
@@ -284817,7 +284804,7 @@ wLx
 sYx
 oXL
 odi
-ejC
+odi
 kWT
 odi
 wLx
@@ -301318,8 +301305,8 @@ wLx
 wLx
 wLx
 wLx
-lev
-lev
+wLx
+wLx
 kDc
 kDc
 kDc
@@ -301721,7 +301708,7 @@ kWT
 odi
 sYx
 wLx
-lev
+wLx
 wLx
 kDc
 kDc
@@ -302594,7 +302581,7 @@ fPm
 fPm
 fPm
 kXN
-kXN
+nUK
 ust
 oqQ
 ust
@@ -303313,7 +303300,7 @@ odi
 sYx
 sYx
 sYx
-sYx
+lev
 wLx
 wLx
 wLx
@@ -316676,7 +316663,7 @@ odi
 sYx
 odi
 sYx
-ejC
+odi
 odi
 oXL
 wLx
@@ -319050,7 +319037,7 @@ sYx
 wLx
 wLx
 wLx
-lev
+wLx
 kDc
 kDc
 kDc
@@ -319453,7 +319440,7 @@ wLx
 wLx
 wLx
 wLx
-lev
+wLx
 kDc
 kDc
 kDc
@@ -320705,7 +320692,7 @@ sYx
 oXL
 uRH
 oXL
-jXy
+sYx
 odi
 kWT
 sYx
@@ -326203,7 +326190,7 @@ eEy
 eEy
 qtv
 sYx
-nUK
+kWT
 odi
 sYx
 sYx
@@ -326601,7 +326588,7 @@ mkO
 nqU
 nqU
 nqU
-bwS
+nqU
 nqU
 nqU
 sYx
@@ -327396,7 +327383,7 @@ uRH
 odi
 sYx
 sYx
-bwS
+nqU
 ccf
 xou
 xou
@@ -327407,13 +327394,13 @@ nqU
 xou
 xou
 aPX
-bwS
+nqU
 sYx
 odi
 sYx
 sYx
 sYx
-nUK
+kWT
 kWT
 odi
 odi
@@ -328365,7 +328352,7 @@ fyc
 (219,1,3) = {"
 cWT
 cWT
-xWW
+sJZ
 sJZ
 sJZ
 sJZ
@@ -351587,16 +351574,16 @@ uuE
 uuE
 uuE
 uuE
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
+hHN
+pDZ
+pDZ
+pDZ
+pDZ
+pDZ
+pDZ
+pDZ
+pDZ
+izW
 uuE
 uuE
 uuE
@@ -351989,16 +351976,16 @@ uuE
 uuE
 uuE
 uuE
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
+eFy
+rOF
+rOF
+rOF
+rOF
+rOF
+rOF
+rOF
+rOF
+rUt
 uuE
 uuE
 uuE
@@ -352391,16 +352378,16 @@ uuE
 uuE
 uuE
 uuE
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
+eFy
+rOF
+rOF
+rOF
+rOF
+rOF
+rOF
+rOF
+rOF
+rUt
 uuE
 uuE
 uuE
@@ -352793,16 +352780,16 @@ uuE
 uuE
 uuE
 uuE
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
+eFy
+rOF
+rOF
+rOF
+rOF
+rOF
+rOF
+rOF
+rOF
+rUt
 uuE
 uuE
 uuE
@@ -353195,16 +353182,16 @@ uuE
 uuE
 uuE
 uuE
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
+eFy
+rOF
+rOF
+rOF
+rOF
+rOF
+rOF
+rOF
+rOF
+rUt
 uuE
 uuE
 uuE
@@ -353597,16 +353584,16 @@ uuE
 uuE
 uuE
 uuE
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
+eFy
+rOF
+rOF
+rOF
+rOF
+rOF
+rOF
+rOF
+mjG
+mTO
 uuE
 uuE
 uuE
@@ -353999,15 +353986,15 @@ uuE
 uuE
 uuE
 uuE
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
+eFy
+rOF
+rOF
+rOF
+rOF
+rOF
+rOF
+rOF
+rUt
 uuE
 uuE
 uuE
@@ -354400,16 +354387,16 @@ uuE
 uuE
 uuE
 uuE
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
+hHN
+pfP
+rOF
+rOF
+rOF
+rOF
+rOF
+rOF
+rOF
+rUt
 uuE
 uuE
 uuE
@@ -354802,16 +354789,16 @@ uuE
 uuE
 uuE
 uuE
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
+eFy
+rOF
+rOF
+rOF
+rOF
+rOF
+rOF
+rOF
+rOF
+rUt
 uuE
 uuE
 uuE
@@ -355204,16 +355191,16 @@ uuE
 uuE
 uuE
 uuE
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
+eFy
+rOF
+rOF
+rOF
+rOF
+rOF
+rOF
+rOF
+rOF
+rUt
 uuE
 uuE
 uuE
@@ -355606,16 +355593,16 @@ uuE
 uuE
 uuE
 uuE
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
+eFy
+rOF
+rOF
+rOF
+rOF
+rOF
+rOF
+rOF
+rOF
+rUt
 uuE
 uuE
 uuE
@@ -356008,16 +355995,16 @@ uuE
 uuE
 uuE
 uuE
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
-uuE
+vCE
+hSA
+hSA
+hSA
+hSA
+hSA
+hSA
+hSA
+hSA
+mTO
 uuE
 uuE
 uuE

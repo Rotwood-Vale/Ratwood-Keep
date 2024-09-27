@@ -897,7 +897,13 @@
 			message_admins(msg)
 			admin_ticket_log(src, msg)
 
+//Target = what was clicked on, User = thing doing the clicking
 /mob/living/carbon/human/MouseDrop_T(mob/living/target, mob/living/user)
+	if(isseelie(target) && !(HAS_TRAIT(src, TRAIT_TINY)) && istype(user.rmb_intent, /datum/rmb_intent/weak))
+		if(can_piggyback(target))
+			shoulder_ride(target)
+			return TRUE
+
 	if(user == target)
 		return FALSE
 	if(pulling == target && stat == CONSCIOUS)
@@ -914,6 +920,11 @@
 					return TRUE
 	. = ..()
 
+/mob/living/carbon/human/proc/shoulder_ride(mob/living/carbon/target)
+	buckle_mob(target, TRUE, TRUE, FALSE, 0, 0)
+	visible_message(span_notice("[target] gently sits on [src]'s shoulder."))
+	//target.set_mob_offsets("shoulder_ride", _x = 5, _y = 10)
+
 //src is the user that will be carrying, target is the mob to be carried
 /mob/living/carbon/human/proc/can_piggyback(mob/living/carbon/target)
 	return (istype(target) && target.stat == CONSCIOUS)
@@ -923,6 +934,10 @@
 
 /mob/living/carbon/human/proc/fireman_carry(mob/living/carbon/target)
 	var/carrydelay = 50 //if you have latex you are faster at grabbing
+
+	if(HAS_TRAIT(src, TRAIT_TINY))
+		to_chat(src, span_warning("I'm too small to carry [target]."))
+		return
 
 	var/backnotshoulder = FALSE
 	if(r_grab && l_grab)

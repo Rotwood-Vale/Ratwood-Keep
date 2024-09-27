@@ -342,3 +342,70 @@
 
 /datum/reagent/moondust_purest/overdose_process(mob/living/M)
 	M.adjustToxLoss(10, 0)
+
+
+//SEELIE DRUGS
+
+/datum/reagent/seelie_drugs
+	name = "Seelie Drugs"
+	description = ""
+	color = "#60A584" // rgb: 96, 165, 132
+	overdose_threshold = 100
+	metabolization_rate = 0.1
+
+/datum/reagent/seelie_drugs/overdose_process(mob/living/M)
+	M.adjustOrganLoss(ORGAN_SLOT_BRAIN, 0.25*REM)
+	M.adjustToxLoss(0.25*REM, 0)
+	..()
+	. = 1
+
+/datum/reagent/seelie_drugs/on_mob_life(mob/living/carbon/M)
+	M.set_drugginess(30)
+	M.slurring += 3
+	if(prob(5))
+		if(M.gender == FEMALE)
+			M.emote(pick("twitch_s","giggle", "drool"))
+		else
+			M.emote(pick("twitch_s","chuckle", "drool"))
+	if(M.has_flaw(/datum/charflaw/addiction/junkie))
+		M.sate_addiction()
+	M.apply_status_effect(/datum/status_effect/buff/seelie_drugs)
+	..()
+
+/atom/movable/screen/fullscreen/seelie_drugs
+	icon_state = "spa"
+	plane = FLOOR_PLANE
+	layer = ABOVE_OPEN_TURF_LAYER
+	blend_mode = 0
+	show_when_dead = FALSE
+
+/datum/reagent/seelie_drugs/overdose_start(mob/living/M)
+	M.visible_message(span_warning("Blood runs from [M]'s nose."))
+
+/datum/reagent/seelie_drugs/overdose_process(mob/living/M)
+	M.adjustToxLoss(10, 0)
+
+/datum/reagent/seelie_drugs/on_mob_metabolize(mob/living/M)
+	M.overlay_fullscreen("druqk", /atom/movable/screen/fullscreen/druqks)
+	M.set_drugginess(30)
+	M.slurring += 3
+	M.update_body_parts_head_only()
+	if(M.client)
+		ADD_TRAIT(M, TRAIT_DRUQK, "based")
+		SSdroning.area_entered(get_area(M), M.client)
+//			if(M.client.screen && M.client.screen.len)
+//				var/atom/movable/screen/plane_master/game_world/PM = locate(/atom/movable/screen/plane_master/game_world) in M.client.screen
+//				PM.backdrop(M.client.mob)
+
+/datum/reagent/seelie_drugs/on_mob_end_metabolize(mob/living/M)
+	M.clear_fullscreen("druqk")
+	M.slurring = 0
+	M.set_drugginess(0)
+	//M.remove_status_effect(/datum/status_effect/buff/seelie_drugs)
+	M.update_body_parts_head_only()
+	if(M.client)
+		REMOVE_TRAIT(M, TRAIT_DRUQK, "based")
+		SSdroning.play_area_sound(get_area(M), M.client)
+//		if(M.client.screen && M.client.screen.len)
+///			var/atom/movable/screen/plane_master/game_world/PM = locate(/atom/movable/screen/plane_master/game_world) in M.client.screen
+//			PM.backdrop(M.client.mob)

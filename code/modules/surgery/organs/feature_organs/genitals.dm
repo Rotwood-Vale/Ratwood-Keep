@@ -97,7 +97,10 @@
 		return
 	if(owner.stat == DEAD)
 		return
-	to_chat(owner, span_love("I feel a surge of warmth in my belly, I’m definitely pregnant!"))
+	if(isseelie(owner))
+		to_chat(owner, span_lovebold("Despite the surge of warmth filling me, I can't get pregnant."))
+		return
+	to_chat(owner, span_lovebold("I feel a surge of warmth in my belly, I’m definitely pregnant!"))
 	pregnant = TRUE
 
 /obj/item/organ/breasts
