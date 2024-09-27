@@ -112,7 +112,7 @@
 /obj/item/clothing/ring/sapphire
     name = "saffira ring"
     icon_state = "g_ring_sapphire"
-		desc = "A beautiful golden ring with a polished Saffira set into it."
+	desc = "A beautiful golden ring with a polished Saffira set into it."
     sellprice = 200
 
 /obj/item/clothing/ring/diamond
