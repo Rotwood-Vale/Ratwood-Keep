@@ -16,6 +16,8 @@
 	display_order = JDO_TEMPLAR
 	give_bank_account = TRUE
 
+	cmode_music = 'sound/music/combat_clergy.ogg'
+
 /datum/outfit/job/roguetown/templar
 	allowed_patrons = ALL_CLERIC_PATRONS
 
