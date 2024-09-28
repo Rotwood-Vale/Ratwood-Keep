@@ -17,3 +17,5 @@
 	poursounds = list('sound/items/fillbottle.ogg')
 	sewrepair = TRUE
 
+/obj/item/reagent_containers/glass/bottle/waterskin/milk // Filled subtype used by the cheesemaker
+	list_reagents = list(/datum/reagent/consumable/milk = 64)

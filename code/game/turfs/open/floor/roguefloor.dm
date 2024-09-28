@@ -54,6 +54,15 @@
 	. = ..()
 	ScrapeAway(flags = CHANGETURF_INHERIT_AIR)
 
+/turf/open/floor/rogue/hay
+	icon_state = "hay"
+	footstep = FOOTSTEP_GRASS
+	barefootstep = FOOTSTEP_SOFT_BAREFOOT
+	heavyfootstep = FOOTSTEP_GENERIC_HEAVY
+	tiled_dirt = FALSE
+	landsound = 'sound/foley/jumpland/grassland.wav'
+	slowdown = 0
+
 /turf/open/floor/rogue/twig
 	icon_state = "twig"
 	footstep = FOOTSTEP_GRASS
@@ -312,7 +321,7 @@
 		footstep = FOOTSTEP_MUD
 		barefootstep = FOOTSTEP_MUD
 		heavyfootstep = FOOTSTEP_MUD
-		track_prob = 13 //Hearthstone port.
+		track_prob = 20 //Hearthstone port.
 		bloodiness = 20
 
 /turf/open/floor/rogue/dirt/road
@@ -336,6 +345,36 @@
 /turf/open/floor/rogue/dirt/road/cardinal_smooth(adjacencies)
 	roguesmooth(adjacencies)
 
+/turf/open/floor/rogue/sand
+	name = "sand"
+	icon = 'icons/turf/sand.dmi'
+	icon_state = "sand"
+	layer = MID_TURF_LAYER
+	footstep = FOOTSTEP_SAND
+	barefootstep = FOOTSTEP_SAND
+	clawfootstep = FOOTSTEP_SAND
+	heavyfootstep = FOOTSTEP_SAND
+	tiled_dirt = FALSE
+	landsound = 'sound/foley/jumpland/dirtland.wav'
+	baseturfs = /turf/open/floor/rogue/sand
+	slowdown = 0
+
+/turf/open/floor/rogue/sand/Initialize(mapload)
+	. = ..()
+	if(prob(15))
+		icon_state = "sand[rand(1,4)]"
+
+/turf/open/floor/rogue/hay
+	name = "hay"
+	desc = "For horses and cows like you."
+	icon = 'icons/turf/roguefloor.dmi'
+	icon_state = "hay"
+	layer = MID_TURF_LAYER
+	footstep = FOOTSTEP_SAND
+	barefootstep = FOOTSTEP_SOFT_BAREFOOT
+	heavyfootstep = FOOTSTEP_GENERIC_HEAVY
+	landsound = 'sound/foley/jumpland/dirtland.wav'
+	slowdown = 0
 
 /turf/proc/roguesmooth(adjacencies)
 	var/list/New
@@ -659,7 +698,7 @@
 	clawfootstep = FOOTSTEP_HARD_CLAW
 	heavyfootstep = FOOTSTEP_GENERIC_HEAVY
 	landsound = 'sound/foley/jumpland/stoneland.wav'
-	neighborlay = "cobbleedge"
+	neighborlay = "mossystone_edges"
 	smooth = SMOOTH_TRUE
 	canSmoothWith = list(/turf/open/floor/rogue/dirt, /turf/open/floor/rogue/grass)
 
@@ -669,6 +708,20 @@
 /turf/open/floor/rogue/cobble/mossy/Initialize()
 	. = ..()
 	icon_state = "mossystone[rand(1,3)]"
+
+/obj/effect/decal/mossy
+	name = ""
+	desc = ""
+	icon = 'icons/turf/roguefloor.dmi'
+	icon_state = "mossyedge"
+	mouse_opacity = 0
+
+/obj/effect/decal/cobble/mossy
+	name = ""
+	desc = ""
+	icon = 'icons/turf/roguefloor.dmi'
+	icon_state = "mossystone_edges"
+	mouse_opacity = 0
 
 /turf/open/floor/rogue/cobblerock
 	icon_state = "cobblerock"

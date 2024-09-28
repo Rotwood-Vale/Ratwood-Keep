@@ -309,3 +309,21 @@
 	resistance_flags = FIRE_PROOF
 	sellprice = 15
 	anvilrepair = /datum/skill/craft/armorsmithing
+
+/obj/item/clothing/neck/roguetown/ornateamulet
+	name = "Ornate Amulet"
+	desc = "A beautiful amulet, made of solid gold."
+	icon_state = "ornateamulet"
+	//dropshrink = 0.75
+	resistance_flags = FIRE_PROOF
+	sellprice = 100
+	anvilrepair = /datum/skill/craft/armorsmithing
+
+/obj/item/clothing/neck/roguetown/skullamulet
+	name = "Skull Amulet"
+	desc = "Gold shaped into the form of a skull, made into an amulet."
+	icon_state = "skullamulet"
+	//dropshrink = 0.75
+	resistance_flags = FIRE_PROOF
+	sellprice = 100
+	anvilrepair = /datum/skill/craft/armorsmithing

@@ -436,9 +436,27 @@ GLOBAL_VAR_INIT(mobids, 1)
 		to_chat(src, span_warning("Something is there but I can't see it!"))
 		return
 
-	if(isturf(A.loc) && isliving(src))
-		face_atom(A)
-		visible_message(span_emote("[src] looks at [A]."))
+	if(isliving(src))
+		var/message = "[src] looks at"
+		var/target = "\the [A]"
+		if(!isturf(A))
+			if(A == src)
+				message = "[src] looks over"
+				target = "themselves"
+			else if(A.loc == src)
+				target = "[src.p_their()] [A.name]"
+			else if(A.loc.loc == src)
+				message = "[src] looks into"
+				target = "[src.p_their()] [A.loc.name]"
+			else if(isliving(A))
+				var/mob/living/T = A
+				var/hitzone = check_zone(zone_selected)
+				if(!iscarbon(T))
+					target = "\the [T.name]'s [hitzone]"
+				if(iscarbon(T) && T != src)
+					target = "[T]'s [parse_zone(zone_selected)]"
+			visible_message(span_emote("[message] [target]."))
+
 	var/list/result = A.examine(src)
 	if(result)
 		to_chat(src, result.Join("\n"))

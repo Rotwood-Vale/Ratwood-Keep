@@ -25,8 +25,8 @@
 
 /obj/item/roguestatue/gold/loot/Initialize()
 	. = ..()
-	sellprice = rand(45,100)
-	icon_state = "lstatue[pick(1,2)]"
+	sellprice = rand(45,150)
+	icon_state = "lstatue[pick(1,2,3,4)]"
 
 /obj/item/roguestatue/silver
 	name = "silver statue"

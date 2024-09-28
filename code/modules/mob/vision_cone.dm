@@ -43,7 +43,7 @@ client/
 /mob/dead/BehindAtom(mob/center = usr, dir = NORTH)//So ghosts aren't calculated.
 	return
 
-/atom/proc/BehindAtom(atom/center = usr, dir = NORTH)
+/atom/proc/BehindAtom(atom/center = usr, dir = NORTH) //Returns TRUE if center is behind src
 	switch(dir)
 		if(NORTH)
 			if(y > center.y)

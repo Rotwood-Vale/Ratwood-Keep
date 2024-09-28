@@ -386,7 +386,8 @@
 
 /obj/item/flashlight/flare/torch/extinguish()
 	if(on)
-		turn_off()
+		if(prob(33))
+			turn_off()
 
 /obj/item/flashlight/flare/torch/turn_off()
 	playsound(src.loc, 'sound/items/firesnuff.ogg', 100)
