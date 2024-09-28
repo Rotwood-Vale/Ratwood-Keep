@@ -140,7 +140,7 @@
 #define WEAPONSMITH (1<<3)
 #define BLACKSMITH  (1<<4)
 #define ALCHEMIST	(1<<5)
-#define MASON		(1<<6)
+#define ARTIFICER	(1<<6)
 #define TAILOR		(1<<7)
 #define MERCHANT	(1<<8)
 #define SCRIBE		(1<<9)
@@ -264,7 +264,7 @@
 #define JDO_BLACKSMITH 20
 #define JDO_APPRENTICE 21
 
-#define JDO_MASON 22
+#define JDO_ARTIFICER 22
 
 #define JDO_BARKEEP 26
 #define JDO_COOK 27
@@ -355,7 +355,7 @@
 	/datum/job/roguetown/armorsmith,\
 	/datum/job/roguetown/weaponsmith,\
 	/datum/job/roguetown/blacksmith,\
-	/datum/job/roguetown/mason,\
+	/datum/job/roguetown/artificer,\
 	/datum/job/roguetown/merchant,\
 	/datum/job/roguetown/scribe
 

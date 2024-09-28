@@ -277,9 +277,9 @@
 	icon_state = "rustkey"
 	lockid = "graveyard"
 
-/obj/item/roguekey/mason
-	name = "mason's key"
-	desc = "This bronze key should open the mason's guild."
+/obj/item/roguekey/artificer
+	name = "artificer's key"
+	desc = "This bronze key should open the Artificer's guild."
 	icon_state = "brownkey"
 	lockid = "mason"
 
