@@ -5,12 +5,30 @@
 
 /datum/supply_pack/rogue/rawmats/iron
 	name = "Iron Ore"
-	cost = 80
+	cost = 60
 	contains = list(/obj/item/rogueore/iron,
 	/obj/item/rogueore/iron,
 	/obj/item/rogueore/iron,
 	/obj/item/rogueore/iron,
 	/obj/item/rogueore/iron)
+
+/datum/supply_pack/rogue/rawmats/copper
+	name = "Copper Ore"
+	cost = 60
+	contains = list(/obj/item/rogueore/copper,
+	/obj/item/rogueore/copper,
+	/obj/item/rogueore/copper,
+	/obj/item/rogueore/copper,
+	/obj/item/rogueore/copper)
+
+/datum/supply_pack/rogue/rawmats/tin
+	name = "Tin Ore"
+	cost = 80
+	contains = list(/obj/item/rogueore/tin,
+	/obj/item/rogueore/tin,
+	/obj/item/rogueore/tin,
+	/obj/item/rogueore/tin,
+	/obj/item/rogueore/tin)
 
 /datum/supply_pack/rogue/rawmats/coal
 	name = "Coal"

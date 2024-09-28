@@ -1,7 +1,8 @@
 
 /obj/item
 	var/smeltresult
-
+	var/smelt_bar_num = 1 //variable for tracking how many bars things smelt back into for multi-bar items
+	
 /obj/machinery/light/rogue/smelter
 	icon = 'icons/roguetown/misc/forge.dmi'
 	name = "stone furnace"
@@ -18,6 +19,7 @@
 	var/maxore = 1
 	var/cooking = 0
 	var/actively_smelting = FALSE // Are we currently smelting?
+
 	fueluse = 30 MINUTES
 	start_fuel = 5 MINUTES
 	fuel_modifier = 0.33
@@ -125,9 +127,11 @@
 				if(cooking == 20)
 					for(var/obj/item/I in ore)
 						if(I.smeltresult)
-							var/obj/item/R = new I.smeltresult(src, ore[I])
+							while(I.smelt_bar_num)
+								I.smelt_bar_num--
+								var/obj/item/R = new I.smeltresult(src, ore[I])
+								ore += R
 							ore -= I
-							ore += R
 							qdel(I)
 					playsound(src,'sound/misc/smelter_fin.ogg', 100, FALSE)
 					visible_message(span_notice("\The [src] finished smelting."))

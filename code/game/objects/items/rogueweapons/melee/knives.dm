@@ -124,7 +124,7 @@
 
 /obj/item/rogueweapon/huntingknife/cleaver/combat
 	force = 16
-	name = "knife"
+	name = "combat knife"
 	desc = "A combat knife. Swift and deadly if you hit."
 	possible_item_intents = list(/datum/intent/dagger/cut, /datum/intent/dagger/chop/cleaver, )
 	icon_state = "combatknife"

@@ -122,6 +122,7 @@
 	icon_state = "battleaxe"
 	max_blade_int = 300
 	smeltresult = /obj/item/ingot/steel
+	smelt_bar_num = 2
 	gripped_intents = list(/datum/intent/axe/cut/battle ,/datum/intent/axe/chop/battle)
 	minstr = 12
 	wdefense = 4
@@ -195,7 +196,7 @@
 
 /obj/item/rogueweapon/stoneaxe/woodcut/wardenpick
 	name = "Wardens' axe"
-	desc = "A multi-use axe smithed by the Wardens since time immorial for both it's use as a tool and a weapon."
+	desc = "A multi-use axe smithed by the Wardens since time immemorial for both it's use as a tool and a weapon."
 	icon_state = "wardenpax"
 	force = 22
 	force_wielded = 28

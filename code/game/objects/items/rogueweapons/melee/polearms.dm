@@ -352,6 +352,7 @@
 	desc = "This is much longer than a common greatsword, and well balanced too!"
 	icon_state = "zwei"
 	smeltresult = /obj/item/ingot/iron
+	smelt_bar_num = 3
 	max_blade_int = 200
 	wdefense = 4
 
@@ -364,3 +365,5 @@
 /obj/item/rogueweapon/greatsword/grenz
 	name = "steel zweihander"
 	icon_state = "steelzwei"
+	smeltresult = /obj/item/ingot/steel
+	smelt_bar_num = 3

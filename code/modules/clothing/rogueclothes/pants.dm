@@ -176,6 +176,7 @@
 	smeltresult = /obj/item/ingot/steel
 	r_sleeve_status = SLEEVE_NOMOD
 	l_sleeve_status = SLEEVE_NOMOD
+	smelt_bar_num = 2
 
 
 /obj/item/clothing/under/roguetown/chainlegs/skirt

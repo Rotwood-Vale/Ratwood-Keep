@@ -68,6 +68,7 @@
 	smeltresult = /obj/item/ingot/steel
 	do_sound = TRUE
 	armor_class = ARMOR_CLASS_MEDIUM
+	smelt_bar_num = 2
 
 /obj/item/clothing/suit/roguetown/armor/chainmail/bikini
 	name = "chainmail bikini"
@@ -97,6 +98,7 @@
 	equip_delay_self = 4 SECONDS
 	unequip_delay_self = 4 SECONDS
 	armor_class = ARMOR_CLASS_HEAVY
+	smelt_bar_num = 3
 
 /obj/item/clothing/suit/roguetown/armor/plate/Initialize()
 	. = ..()
@@ -113,6 +115,7 @@
 	item_state = "halfplatekini"
 	allowed_sex = list(FEMALE)
 	armor_class = ARMOR_CLASS_MEDIUM
+	smelt_bar_num = 2
 
 /obj/item/clothing/suit/roguetown/armor/plate/half
 	slot_flags = ITEM_SLOT_ARMOR
@@ -130,6 +133,7 @@
 	anvilrepair = /datum/skill/craft/armorsmithing
 	smeltresult = /obj/item/ingot/steel
 	armor_class = ARMOR_CLASS_MEDIUM
+	smelt_bar_num = 2
 
 /obj/item/clothing/suit/roguetown/armor/plate/full
 	name = "plate armor"
@@ -140,6 +144,7 @@
 	unequip_delay_self = 12 SECONDS
 	equip_delay_other = 3 SECONDS
 	strip_delay = 6 SECONDS
+	smelt_bar_num = 4
 
 /obj/item/clothing/suit/roguetown/armor/plate/full/bikini
 	name = "fullplate bikini"
@@ -151,6 +156,7 @@
 	unequip_delay_self = 8 SECONDS
 	equip_delay_other = 3 SECONDS
 	strip_delay = 6 SECONDS
+	smelt_bar_num = 3
 
 /obj/item/clothing/suit/roguetown/armor/plate/half/iron
 	name = "iron breastplate"
@@ -158,6 +164,7 @@
 	max_integrity = 200
 	smeltresult = /obj/item/ingot/iron
 	armor_class = ARMOR_CLASS_MEDIUM
+	smelt_bar_num = 2
 
 /obj/item/clothing/suit/roguetown/armor/plate/half/elven
 	name = "elven guardian cuirass"
@@ -176,6 +183,7 @@
 	smeltresult = /obj/item/ingot/steel
 	equip_delay_self = 4 SECONDS
 	armor_class = ARMOR_CLASS_MEDIUM
+	smelt_bar_num = 2
 
 /obj/item/clothing/suit/roguetown/armor/heartfelt/lord
 	slot_flags = ITEM_SLOT_ARMOR
@@ -193,6 +201,7 @@
 	anvilrepair = /datum/skill/craft/armorsmithing
 	smeltresult = /obj/item/ingot/steel
 	armor_class = ARMOR_CLASS_HEAVY
+	smelt_bar_num = 4
 
 /obj/item/clothing/suit/roguetown/armor/heartfelt/hand
 	slot_flags = ITEM_SLOT_ARMOR
@@ -210,6 +219,7 @@
 	anvilrepair = /datum/skill/craft/armorsmithing
 	smeltresult = /obj/item/ingot/steel
 	armor_class = ARMOR_CLASS_HEAVY
+	smelt_bar_num = 4
 
 /obj/item/clothing/suit/roguetown/armor/brigandine
 	slot_flags = ITEM_SLOT_ARMOR
@@ -289,7 +299,10 @@
 	armor = list("blunt" = 90, "slash" = 100, "stab" = 80, "bullet" = 100, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
 	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT, BCLASS_TWIST)
 	max_integrity = 250
+	anvilrepair = /datum/skill/craft/armorsmithing
+	smeltresult = /obj/item/ingot/steel
 	armor_class = ARMOR_CLASS_HEAVY
+	smelt_bar_num = 2
 
 /obj/item/clothing/suit/roguetown/armor/armordress
 	slot_flags = ITEM_SLOT_ARMOR
@@ -389,6 +402,7 @@
 	nodismemsleeves = TRUE
 	body_parts_covered = CHEST|GROIN|VITALS
 	max_integrity = 300
+	smeltresult = /obj/item/ingot/iron
 	sellprice = 25
 	armor_class = ARMOR_CLASS_LIGHT
 
@@ -535,10 +549,13 @@
 
 /obj/item/clothing/suit/roguetown/armor/plate/half/grenzelhoft
 	slot_flags = ITEM_SLOT_ARMOR
-	name = "Blacksteel cuirass"
-	desc = "A basic cuirass built from black-steel. It's somewhat more durable than regular steel."
+	name = "Blacksteel Cuirass"
+	desc = "A basic cuirass built from blacksteel. It's somewhat more durable than regular steel."
 	icon_state = "grenzelcuirass"
 	item_state = "grenzelcuirass"
 	sleeved = 'icons/roguetown/clothing/onmob/helpers/stonekeep_merc.dmi'
 	boobed = TRUE
 	max_integrity = 400
+	anvilrepair = /datum/skill/craft/armorsmithing
+	smeltresult = /obj/item/ingot/blacksteel
+	smelt_bar_num = 2

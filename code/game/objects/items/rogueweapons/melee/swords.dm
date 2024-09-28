@@ -491,10 +491,12 @@
 /obj/item/rogueweapon/sword/sabre/elf
 	force = 25
 	name = "elvish saber"
-	desc = "This finely crafted saber is of elven smithcraft."
+	desc = "This finely crafted saber is of elven design."
 	icon_state = "esaber"
 	item_state = "esaber"
 	lefthand_file = 'icons/mob/inhands/weapons/swords_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/weapons/swords_righthand.dmi'
 	last_used = 0
 	is_silver = TRUE
+	smeltresult = /obj/item/ingot/silver
+	smelt_bar_num = 2
