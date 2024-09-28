@@ -127,9 +127,9 @@
 	createditem_num = 3
 	craftdiff = 0
 
-/datum/anvil_recipe/tools/cogiron
+/datum/anvil_recipe/tools/cog
 	name = "Cogs x3"
-	req_bar = /obj/item/ingot/iron
+	req_bar = /obj/item/ingot/bronze
 	created_item = /obj/item/roguegear
 	createditem_num = 3
 	craftdiff = 0
@@ -179,12 +179,6 @@
 	name = "Goblets x3"
 	req_bar = /obj/item/ingot/steel
 	created_item = /obj/item/reagent_containers/glass/cup/steel
-	createditem_num = 3
-
-/datum/anvil_recipe/tools/cogsteel
-	name = "Cogs x3"
-	req_bar = /obj/item/ingot/steel
-	created_item = /obj/item/roguegear
 	createditem_num = 3
 
 /datum/anvil_recipe/tools/chefknife
