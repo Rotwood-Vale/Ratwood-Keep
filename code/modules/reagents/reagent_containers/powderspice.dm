@@ -220,6 +220,7 @@
 	desc = ""
 	icon = 'icons/roguetown/items/produce.dmi'
 	icon_state = "ozium"
+	color = "#06402B"
 	possible_transfer_amounts = list()
 	volume = 30
 	list_reagents = list(/datum/reagent/medicine/minorhealthpot = 15, /datum/reagent/medicine/shroomt = 15)

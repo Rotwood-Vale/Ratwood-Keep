@@ -145,7 +145,7 @@
 	associated_skill = null
 	var/obj/item/ingot/hingot = null
 	var/hott = FALSE
-	smeltresult = /obj/item/ingot/iron
+	smeltresult = null
 
 /obj/item/rogueweapon/tongs/examine(mob/user)
 	. = ..()

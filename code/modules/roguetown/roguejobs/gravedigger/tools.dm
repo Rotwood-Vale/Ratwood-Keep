@@ -16,6 +16,7 @@
 	drop_sound = 'sound/foley/dropsound/shovel_drop.ogg'
 	var/obj/item/natural/dirtclod/heldclod
 	smeltresult = /obj/item/ingot/iron
+	associated_skill = /datum/skill/combat/maces
 	max_blade_int = 50
 
 /obj/item/rogueweapon/shovel/Destroy()
@@ -164,6 +165,7 @@
 	wlength = WLENGTH_SHORT
 	slot_flags = ITEM_SLOT_HIP
 	w_class = WEIGHT_CLASS_NORMAL
+	associated_skill = /datum/skill/combat/maces
 	max_blade_int = 0
 	smeltresult = null
 

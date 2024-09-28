@@ -730,7 +730,7 @@
 	throwforce = 15
 	thrown_bclass = BCLASS_CUT
 	dropshrink = 0.75
-	smeltresult = /obj/item/ash
+	smeltresult = /obj/item/ingot/steel
 
 /obj/item/rogueweapon/sword/energy_katana
 	force = 25

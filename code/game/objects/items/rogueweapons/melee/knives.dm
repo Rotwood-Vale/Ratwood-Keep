@@ -106,7 +106,7 @@
 	slot_flags = ITEM_SLOT_HIP
 	thrown_bclass = BCLASS_CHOP
 	w_class = WEIGHT_CLASS_NORMAL
-	smeltresult = null
+	smeltresult = /obj/item/ingot/steel
 
 /obj/item/rogueweapon/huntingknife/cleaver/combat
 	force = 16
@@ -121,7 +121,7 @@
 	slot_flags = ITEM_SLOT_HIP
 	thrown_bclass = BCLASS_CHOP
 	w_class = WEIGHT_CLASS_NORMAL
-	smeltresult = null
+	smeltresult = /obj/item/ingot/steel
 
 /obj/item/rogueweapon/huntingknife/cleaver/getonmobprop(tag)
 	. = ..()
@@ -178,15 +178,16 @@
 	desc = "This is a parrying dagger made of solid steel, used to catch opponent's weapons in the handguard."
 	icon_state = "spdagger"
 	wdefense = 6
+	smeltresult = /obj/item/ingot/steel
 
 /obj/item/rogueweapon/huntingknife/idagger/steel/special
 	icon_state = "sdaggeralt"
+	smeltresult = /obj/item/ingot/steel
 
 /obj/item/rogueweapon/huntingknife/idagger/silver
 	name = "silver dagger"
 	desc = "This silver dagger can be the banishment of vampires and werewolves."
 	icon_state = "sildagger"
-	smeltresult = null
 	sellprice = 50
 	smeltresult = /obj/item/ingot/silver
 	var/last_used = 0

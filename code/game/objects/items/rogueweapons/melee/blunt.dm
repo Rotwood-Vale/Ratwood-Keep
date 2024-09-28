@@ -26,6 +26,33 @@
 	wbalance = -1
 	blade_dulling = DULLING_BASHCHOP
 
+/obj/item/rogueweapon/duster
+	force = 15
+	possible_item_intents = list(/datum/intent/mace/strike, /datum/intent/mace/smash)
+	name = "metal dusters"
+	desc = "A set of iron knuckle dusters"
+	icon_state = "brass"
+	icon = 'icons/roguetown/weapons/32.dmi'
+	item_state = "brass"
+	lefthand_file = null
+	righthand_file = null
+	associated_skill = /datum/skill/combat/unarmed
+	wlength = WLENGTH_SHORT
+	w_class = WEIGHT_CLASS_SMALL
+	gripsprite = FALSE
+	slot_flags = ITEM_SLOT_HIP
+	sharpness = IS_BLUNT
+	smeltresult = /obj/item/ingot/iron
+	anvilrepair = /datum/skill/craft/weaponsmithing
+	parrysound = list('sound/combat/parry/parrygen.ogg')
+	swingsound = BLUNTWOOSH_MED
+	minstr = 2
+	wdefense = 4
+	wbalance = 1
+	blade_dulling = DULLING_BASH
+	gripped_intents = null
+
+
 /obj/item/rogueweapon/mace/church
 	force = 25
 	force_wielded = 30
@@ -171,7 +198,7 @@
 	icon_state = "cudgel"
 	force_wielded = 25
 	gripped_intents = null
-	smeltresult = /obj/item/ash
+	smeltresult = /obj/item/ingot/iron
 	wlength = WLENGTH_SHORT
 	w_class = WEIGHT_CLASS_NORMAL
 	wbalance = 0
@@ -269,7 +296,7 @@
 	wlength = WLENGTH_LONG
 	w_class = WEIGHT_CLASS_BULKY
 	associated_skill = /datum/skill/combat/maces
-	smeltresult = /obj/item/ash
+	smeltresult = /obj/item/ingot/iron
 	parrysound = "parrywood"
 	swingsound = BLUNTWOOSH_MED
 	minstr = 10

@@ -61,4 +61,4 @@
 	possible_item_intents = list(/datum/intent/pick)
 	gripped_intents = list(/datum/intent/pick)
 	max_integrity = 250
-	smeltresult = /obj/item/ingot/steel
+	smeltresult = null

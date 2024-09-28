@@ -15,8 +15,10 @@
 	slot_flags = ITEM_SLOT_BACK
 	wlength = 33
 	gripsprite = TRUE
+	associated_skill = /datum/skill/combat/maces
 	drop_sound = 'sound/foley/dropsound/wooden_drop.ogg'
 	smeltresult = /obj/item/ingot/iron
+
 /datum/intent/flailthresh
 	name = "thresh"
 	icon_state = "inthresh"
@@ -108,6 +110,7 @@
 	wlength = 10
 	slot_flags = ITEM_SLOT_HIP
 	max_blade_int = 50
+	associated_skill = /datum/skill/combat/knives
 	smeltresult = /obj/item/ingot/iron
 
 /obj/item/rogueweapon/sickle/getonmobprop(tag)
@@ -156,6 +159,7 @@
 	sharpness = IS_BLUNT
 	//dropshrink = 0.8
 	wlength = 33
+	associated_skill = /datum/skill/combat/polearms
 	drop_sound = 'sound/foley/dropsound/wooden_drop.ogg'
 	smeltresult = /obj/item/ingot/iron
 
@@ -279,6 +283,7 @@
 	wlength = 33
 	var/list/forked = list()
 	slot_flags = ITEM_SLOT_BACK
+	associated_skill = /datum/skill/combat/polearms
 	drop_sound = 'sound/foley/dropsound/wooden_drop.ogg'
 	smeltresult = /obj/item/ingot/iron
 /obj/item/rogueweapon/pitchfork/getonmobprop(tag)
@@ -373,7 +378,7 @@
 
 /obj/item/rogueweapon/sickle/scythe
 	force = 15
-	force_wielded = 15
+	force_wielded = 25
 	possible_item_intents = list(DAGGER_CUT)
 	gripped_intents = list(SPEAR_BASH,DAGGER_CUT)
 	name = "scythe"
@@ -384,6 +389,7 @@
 	lefthand_file = 'icons/mob/inhands/weapons/polearms_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/weapons/polearms_righthand.dmi'
 	sharpness = IS_SHARP
+	associated_skill = /datum/skill/combat/axes
 	//dropshrink = 0.8
 	wlength = 33
 	var/list/forked = list()

@@ -315,7 +315,7 @@
 	gripsprite = FALSE
 	wlength = WLENGTH_GREAT
 	w_class = WEIGHT_CLASS_BULKY
-	smeltresult = /obj/item/ingot/iron
+	smeltresult = null
 
 /obj/item/rogueweapon/spear/banner/attack_hand(mob/user)
 	if(!overlays.len)

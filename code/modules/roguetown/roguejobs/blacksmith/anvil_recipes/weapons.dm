@@ -17,6 +17,12 @@
 	created_item = /obj/item/rogueweapon/sword/iron/short
 	i_type = "Weapons"
 
+/datum/anvil_recipe/weapons/duster
+	name = "Metal Duster"
+	req_bar = /obj/item/ingot/iron
+	created_item = /obj/item/rogueweapon/duster
+	i_type = "Weapons"
+
 /datum/anvil_recipe/weapons/imesser
 	name = "Messer"
 	req_bar = /obj/item/ingot/iron

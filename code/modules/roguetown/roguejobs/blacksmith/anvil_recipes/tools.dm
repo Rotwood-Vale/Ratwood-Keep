@@ -1,12 +1,18 @@
 
 // --------- IRON -----------
 /datum/anvil_recipe/tools/surgery/surgerytools
-	name = "Surgery Kit (+1 iron +1 hide)"
+	name = "Surgery Kit (+1 iron +1 cloth)"
 	req_bar = /obj/item/ingot/iron
-	additional_items = list(/obj/item/ingot/iron, /obj/item/natural/hide)
-	created_item = /obj/item/storage/backpack/rogue/backpack/surgery
+	additional_items = list(/obj/item/ingot/iron, /obj/item/natural/cloth)
+	created_item = /obj/item/storage/belt/rogue/pouch/skit
 	i_type = "Tools"
-	
+
+/datum/anvil_recipe/tools/surgery/lpick
+	name = "Pick Set"
+	req_bar = /obj/item/ingot/iron
+	created_item = /obj/item/lockpickring/mundane
+	i_type = "Tools"
+
 /datum/anvil_recipe/tools/torch
 	name = "Torches 5x (+1 Coal)"
 	req_bar = /obj/item/ingot/iron
