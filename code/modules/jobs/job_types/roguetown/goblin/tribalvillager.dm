@@ -6,7 +6,7 @@
 	total_positions = 5
 	spawn_positions = 5
 	allowed_sexes = list(MALE, FEMALE)
-	allowed_races = list(RACES_ALL_KINDS, /datum/species/seelie,)
+	allowed_races = RACES_ALL_KINDSPLUS
 	display_order = JDO_TRIBALVILLAGER
 	min_pq = 0
 	max_pq = null

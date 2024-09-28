@@ -6,7 +6,7 @@
 	total_positions = 1
 	spawn_positions = 1
 
-	allowed_races = list(RACES_ALL_KINDS, /datum/species/seelie,)
+	allowed_races = RACES_ALL_KINDSPLUS
 
 	tutorial = "The Grenzelhofts were known for their Jesters, wisemen with a tongue just as sharp as their wit. \
 		You command a position of a fool, envious of the position your superiors have upon you. \
@@ -47,6 +47,7 @@
 			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/seelie_dust)
 			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/summon_rat)
 			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/strip)
+			H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/seelie_kiss)
 			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/projectile/splash)
 			H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/roustame)
 			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/projectile/animate_object)

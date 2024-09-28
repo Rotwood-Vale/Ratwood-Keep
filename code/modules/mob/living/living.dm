@@ -360,9 +360,9 @@
 		return FALSE
 	if(throwing || !(mobility_flags & MOBILITY_PULL))
 		return FALSE
-	if(!(isliving(AM)) && isseelie(src))	//Seelie grabbing non living object
+/*	if(!(isliving(AM)) && isseelie(src))	//Seelie grabbing non living object
 		to_chat(src, span_warning("My hands are too small to grab that."))
-		return FALSE
+		return FALSE */
 
 	AM.add_fingerprint(src)
 

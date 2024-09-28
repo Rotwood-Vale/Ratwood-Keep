@@ -8,7 +8,7 @@
 	total_positions = 2
 	spawn_positions = 2
 	allowed_sexes = list(MALE, FEMALE)
-	allowed_races = list(RACES_ALL_KINDS, /datum/species/seelie,)
+	allowed_races = RACES_ALL_KINDSPLUS
 	show_in_credits = FALSE		//Stops Scom from announcing their arrival.
 
 	tutorial = "You have likely seen the brutality of the Northmen firsthand. Put aside any notion of rescue, and serve the warband well. Taken so far away from home, it is better to keep your head down and do your part, for you will likely never see your loved ones ever again."
@@ -64,6 +64,7 @@
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/seelie_dust)
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/summon_rat)
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/strip)
+		H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/seelie_kiss)
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/projectile/splash)
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/roustame)
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/projectile/animate_object)

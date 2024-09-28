@@ -6,7 +6,7 @@
 	total_positions = 2
 	spawn_positions = 2
 
-	allowed_races = list(RACES_ALL_KINDS, /datum/species/seelie,)
+	allowed_races = RACES_ALL_KINDSPLUS
 
 	//thought the level 20 ex adventurer meme would fit considering the bar has a big old sword at the wall.
 	tutorial = "Likely an Ex-Adventurer wise enough to stop by the edge, settling down... Liquor Lodging and Lavish Baths, you are the life of the party and a rich bastard because of it. Well before that pesky merchant came around and convinced people to take up the bottle instead of the tankred, you were the reason the hardworking men and women of this town could rest."
@@ -52,6 +52,7 @@
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/seelie_dust)
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/summon_rat)
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/strip)
+		H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/seelie_kiss)
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/projectile/splash)
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/roustame)
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/projectile/animate_object)

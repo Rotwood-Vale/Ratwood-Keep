@@ -1,7 +1,7 @@
 /datum/advclass/seamstress
 	name = "Seamster"
 	allowed_sexes = list(MALE, FEMALE)
-	allowed_races = list(RACES_ALL_KINDS, /datum/species/seelie,)
+	allowed_races = RACES_ALL_KINDSPLUS
 	outfit = /datum/outfit/job/roguetown/adventurer/seamstress
 	category_tags = list(CTAG_PILGRIM, CTAG_TOWNER)
 
@@ -36,6 +36,7 @@
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/seelie_dust)
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/summon_rat)
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/strip)
+		H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/seelie_kiss)
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/projectile/splash)
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/roustame)
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/projectile/animate_object)

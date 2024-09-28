@@ -6,7 +6,7 @@
 	total_positions = 1
 	spawn_positions = 1
 
-	allowed_races = list(RACES_ALL_KINDS, /datum/species/seelie,)
+	allowed_races = RACES_ALL_KINDSPLUS
 	allowed_sexes = list(MALE, FEMALE)
 	display_order = JDO_STEWARD
 	tutorial = "Coin, Coin, Coin! Oh beautiful coin: You're addicted to it, and you hold the position as the King's personal treasurer of both coin and information. You know the power silver and gold has on a man's mortal soul, and you know just what lengths they'll go to in order to get even more. Keep your festering economy and your rats alive, the'yre the only two things you can weigh any trust into anymore."
@@ -57,6 +57,7 @@
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/seelie_dust)
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/summon_rat)
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/strip)
+		H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/seelie_kiss)
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/projectile/splash)
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/roustame)
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/projectile/animate_object)

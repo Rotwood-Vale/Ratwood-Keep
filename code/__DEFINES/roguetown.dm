@@ -51,9 +51,14 @@
 	/datum/species/kobold
 
 #define RACES_DESPISED \
-	/datum/species/goblinp
+	/datum/species/goblinp,\
+
+#define RACES_SEELIE \
+	/datum/species/seelie,\
 
 #define RACES_ALL_KINDS list(RACES_DESPISED, RACES_SHUNNED, RACES_TOLERATED, RACES_RESPECTED)
+
+#define RACES_ALL_KINDSPLUS list(RACES_DESPISED, RACES_SHUNNED, RACES_TOLERATED, RACES_RESPECTED, RACES_SEELIE)
 
 #define RACES_SHUNNED_UP list(RACES_SHUNNED, RACES_TOLERATED, RACES_RESPECTED)
 
