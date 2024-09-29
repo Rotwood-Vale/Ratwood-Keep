@@ -138,8 +138,12 @@
 		return TRUE
 
 	if(!M.buckled && !M.has_buckled_mobs())
-		var/mob_swap = FALSE
+		var/mob_swap = TRUE
 		var/too_strong = (M.move_resist > move_force) //can't swap with immovable objects unless they help us
+		if((isanimal(src) && src:aggressive) || (isanimal(M) && M:aggressive))
+			mob_swap = FALSE
+			if(cmode || M.cmode)
+				mob_swap = FALSE
 		if(!they_can_move) //we have to physically move them
 			if(!too_strong)
 				mob_swap = FALSE
@@ -160,7 +164,6 @@
 			now_pushing = 1
 			var/oldloc = loc
 			var/oldMloc = M.loc
-
 
 			var/M_passmob = (M.pass_flags & PASSMOB) // we give PASSMOB to both mobs to avoid bumping other mobs during swap.
 			var/src_passmob = (pass_flags & PASSMOB)
