@@ -8,7 +8,7 @@
 	foodtype = MEAT
 	warming = 5 MINUTES
 	rotprocess = 20 MINUTES
-	eat_effect = /datum/status_effect/buff/foodbuff/novice
+	eat_effect = /datum/status_effect/buff/foodbuff/minor
 	drop_sound = 'sound/foley/dropsound/gen_drop.ogg'
 
 /datum/crafting_recipe/roguetown/cooking/peppersteak
@@ -30,7 +30,7 @@
 	foodtype = MEAT
 	warming = 5 MINUTES
 	rotprocess = 20 MINUTES
-	eat_effect = /datum/status_effect/buff/foodbuff/novice
+	eat_effect = /datum/status_effect/buff/foodbuff/minor
 	drop_sound = 'sound/foley/dropsound/gen_drop.ogg'
 
 /datum/crafting_recipe/roguetown/cooking/spicedeggs
@@ -53,7 +53,7 @@
 	foodtype = MEAT
 	warming = 5 MINUTES
 	rotprocess = 20 MINUTES
-	eat_effect = /datum/status_effect/buff/foodbuff/novice
+	eat_effect = /datum/status_effect/buff/foodbuff/minor
 	drop_sound = 'sound/foley/dropsound/gen_drop.ogg'
 
 /datum/crafting_recipe/roguetown/cooking/eggtoast
@@ -76,7 +76,7 @@
 	foodtype = MEAT
 	warming = 5 MINUTES
 	rotprocess = 20 MINUTES
-	eat_effect = /datum/status_effect/buff/foodbuff/novice
+	eat_effect = /datum/status_effect/buff/foodbuff/minor
 
 /datum/crafting_recipe/roguetown/cooking/eggcheese
 	name = "eggcheese"
@@ -98,7 +98,7 @@
 	foodtype = MEAT
 	warming = 5 MINUTES
 	rotprocess = 20 MINUTES
-	eat_effect = /datum/status_effect/buff/foodbuff/novice
+	eat_effect = /datum/status_effect/buff/foodbuff/minor
 
 /datum/crafting_recipe/roguetown/cooking/dogroll
 	name = "dogroll"
@@ -120,7 +120,7 @@
 	foodtype = MEAT
 	warming = 5 MINUTES
 	rotprocess = 20 MINUTES
-	eat_effect = /datum/status_effect/buff/foodbuff
+	eat_effect = /datum/status_effect/buff/foodbuff/minor
 
 /datum/crafting_recipe/roguetown/cooking/grenzeldog
 	name = "grenzeldog"
@@ -142,7 +142,7 @@
 	foodtype = MEAT
 	warming = 5 MINUTES
 	rotprocess = 20 MINUTES
-	eat_effect = /datum/status_effect/buff/foodbuff
+	eat_effect = /datum/status_effect/buff/foodbuff/minor
 
 /datum/crafting_recipe/roguetown/cooking/sandwich
 	name = "sandwich"
@@ -208,7 +208,7 @@
 	warming = 5 MINUTES
 	rotprocess = 15 MINUTES
 	w_class = WEIGHT_CLASS_NORMAL
-	eat_effect = /datum/status_effect/buff/foodbuff/journeyman
+	eat_effect = /datum/status_effect/buff/foodbuff
 
 /datum/crafting_recipe/roguetown/cooking/eggplantparm
 	name = "eggplant parmigiana"
@@ -231,7 +231,7 @@
 	warming = 5 MINUTES
 	rotprocess = 30 MINUTES
 	w_class = WEIGHT_CLASS_NORMAL
-	eat_effect = /datum/status_effect/buff/foodbuff/journeyman
+	eat_effect = /datum/status_effect/buff/foodbuff
 
 /datum/crafting_recipe/roguetown/cooking/sauteedeggplant
 	name = "sauteed eggplant"
@@ -291,7 +291,7 @@
 	warming = 5 MINUTES
 	rotprocess = 25 MINUTES
 	w_class = WEIGHT_CLASS_SMALL
-	eat_effect = /datum/status_effect/buff/foodbuff/journeyman
+	eat_effect = /datum/status_effect/buff/foodbuff
 
 /datum/crafting_recipe/roguetown/cooking/moussaka
 	name = "moussaka"
@@ -365,7 +365,7 @@
 	subtype_reqs = TRUE
 
 /obj/item/reagent_containers/food/snacks/rogue/cornedbeef
-	eat_effect = /datum/status_effect/buff/foodbuff/journeyman
+	eat_effect = /datum/status_effect/buff/foodbuff
 	slices_num = 0
 	name = "corned beef and grenzelkraut"
 	desc = "A slice of salt-cured brisket served with grenzelkraut."
