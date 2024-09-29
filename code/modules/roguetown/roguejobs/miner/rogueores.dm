@@ -171,7 +171,7 @@
 	desc = "This bar radiates purity. Treasured by the realms."
 	icon_state = "ingotsilv"
 	smeltresult = /obj/item/ingot/silver
-	sellprice = 60
+	sellprice = 80
 /obj/item/ingot/steel
 	name = "steel bar"
 	desc = "This ingot is a stalwart defender of the kingdom."

@@ -496,6 +496,7 @@
 /obj/item/flashlight/flare/torch/lantern/bronzelamptern
 	name = "bronze lamptern"
 	icon_state = "bronzelamp"
+	item_state = "bronzelamp"
 	desc = "A marvel of engineering that emits a strange green glow."
 	light_range = 8
 	light_color ="#4ac77e"
