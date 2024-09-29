@@ -58,7 +58,7 @@
 #define SPAN_GEN "say"
 #define SPAN_DWARF "dwarf"
 #define SPAN_ELF "elf"
-#define SPAN_SAND "celestial"
+#define SPAN_SAND "sandspeak"
 #define SPAN_DELF "delf"
 #define SPAN_HELL "infernal"
 #define SPAN_LUPIAN "lupian"
