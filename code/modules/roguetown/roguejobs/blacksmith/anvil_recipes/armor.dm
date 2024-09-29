@@ -400,7 +400,7 @@
 	name = "Blacksteel Cuirass"
 	req_bar = /obj/item/ingot/blacksteel
 	additional_items = list(/obj/item/ingot/blacksteel)
-	created_item = /obj/item/clothing/suit/roguetown/armor/plate/half/grenzelhoft
+	created_item = /obj/item/clothing/suit/roguetown/armor/blacksteel/cuirass
 	craftdiff = 5
 
 /datum/anvil_recipe/armor/blacksteel/platechest
