@@ -360,7 +360,7 @@
 		/obj/item/reagent_containers/food/snacks/grown/onion = 1
 	)
 	result = /obj/item/reagent_containers/food/snacks/rogue/jadepheasant
-	craftdiff = 5
+	craftdiff = 6
 	subtype_reqs = TRUE
 
 /obj/item/reagent_containers/food/snacks/rogue/cornedbeef
