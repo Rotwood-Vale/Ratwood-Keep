@@ -189,11 +189,15 @@
 
 /datum/anvil_recipe/weapons/steel/steelzweihander
 	name = "Zweihander (+2 Steel)"
-  
-/datum/anvil_recipe/weapons/estoc
-	name = "Estoc (+2 Steel)"
 	req_bar = /obj/item/ingot/steel
 	additional_items = list(/obj/item/ingot/steel, /obj/item/ingot/steel)
+	created_item = /obj/item/rogueweapon/greatsword/grenz
+	craftdiff = 4
+
+/datum/anvil_recipe/weapons/estoc
+	name = "Estoc (+1 Steel)"
+	req_bar = /obj/item/ingot/steel
+	additional_items = list(/obj/item/ingot/steel)
 	created_item = /obj/item/rogueweapon/greatsword/estoc
 	craftdiff = 4
 

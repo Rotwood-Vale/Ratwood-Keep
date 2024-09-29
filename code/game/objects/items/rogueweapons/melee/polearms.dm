@@ -334,6 +334,7 @@
 	associated_skill = /datum/skill/combat/swords
 	max_blade_int = 300
 	wdefense = 5
+	smelt_bar_num = 3
 
 /obj/item/rogueweapon/greatsword/getonmobprop(tag)
 	. = ..()
@@ -368,11 +369,16 @@
 	smeltresult = /obj/item/ingot/steel
 	smelt_bar_num = 3
 
-/obj/item/rogueweapon/greatsword/estoc
+/obj/item/rogueweapon/estoc
 	name = "estoc"
 	desc = "A sword possessed of a quite long and tapered blade that is intended to be thrust between the \
 	gaps in an opponent's armor. The hilt is wrapped tight in black leather."
 	icon_state = "estoc"
+	icon = 'icons/roguetown/weapons/64.dmi'
+	pixel_y = -16
+	pixel_x = -16
+	inhand_x_dimension = 64
+	inhand_y_dimension = 64
 	force = 12
 	force_wielded = 25
 	possible_item_intents = list(
@@ -385,9 +391,18 @@
 		/datum/intent/sword/chop,
 		/datum/intent/sword/strike,
 	)
+	bigboy = TRUE
+	gripsprite = TRUE
+	wlength = WLENGTH_GREAT
+	w_class = WEIGHT_CLASS_BULKY
 	minstr = 8
+	smeltresult = /obj/item/ingot/steel
+	associated_skill = /datum/skill/combat/swords
+	max_blade_int = 300
+	wdefense = 5
+	smelt_bar_num = 2
 
-/obj/item/rogueweapon/greatsword/estoc/getonmobprop(tag)
+/obj/item/rogueweapon/estoc/getonmobprop(tag)
 	. = ..()
 	if(tag)
 		switch(tag)

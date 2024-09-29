@@ -384,7 +384,7 @@
 	name = "Silver Plated Belt"
 	req_bar = /obj/item/ingot/silver
 	created_item = /obj/item/storage/belt/rogue/leather/plaquesilver
-	craftdiff = 2
+	craftdiff = 3
 
 // --------- GOLD RECIPES-----------
 
@@ -392,7 +392,13 @@
 	name = "Gold Plated Belt"
 	req_bar = /obj/item/ingot/gold
 	created_item = /obj/item/storage/belt/rogue/leather/plaquegold
-	craftdiff = 2
+	craftdiff = 3
+
+/datum/anvil_recipe/armor/gold/mask
+	name = "Gold Mask"
+	req_bar = /obj/item/ingot/gold
+	created_item = /obj/item/clothing/mask/rogue/facemask/goldmask
+	craftdiff = 3
 
 // --------- BLACKSTEEL RECIPES-----------
 
