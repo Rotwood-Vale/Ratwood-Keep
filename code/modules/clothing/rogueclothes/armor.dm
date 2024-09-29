@@ -547,15 +547,47 @@
 	. = ..()
 	color = pick(CLOTHING_PURPLE, null,CLOTHING_GREEN, CLOTHING_RED)
 
-/obj/item/clothing/suit/roguetown/armor/plate/half/grenzelhoft
+ //--------------- BLACKSTEEL ---------------------
+
+/obj/item/clothing/suit/roguetown/armor/blacksteel/platechest
 	slot_flags = ITEM_SLOT_ARMOR
-	name = "Blacksteel Cuirass"
-	desc = "A basic cuirass built from blacksteel. It's somewhat more durable than regular steel."
-	icon_state = "grenzelcuirass"
-	item_state = "grenzelcuirass"
-	sleeved = 'icons/roguetown/clothing/onmob/helpers/stonekeep_merc.dmi'
-	boobed = TRUE
+	name = "Blacksteel Plate Armor"
+	desc = "A suit of Full Plate smithed of durable blacksteel."
+	body_parts_covered = CHEST|GROIN|VITALS|LEGS|ARMS
+	icon = 'icons/roguetown/clothing/special/blkknight.dmi'
+	mob_overlay_icon = 'icons/roguetown/clothing/special/onmob/blkknight.dmi'
+	icon_state = "bkarmor"
+	item_state = "bkarmor"
+	armor = list("blunt" = 90, "slash" = 100, "stab" = 80, "bullet" = 100, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	allowed_race = CLOTHED_RACES_TYPES
+	nodismemsleeves = TRUE
+	do_sound = FALSE
+	blocking_behavior = null
 	max_integrity = 400
 	anvilrepair = /datum/skill/craft/armorsmithing
 	smeltresult = /obj/item/ingot/blacksteel
+	armor_class = ARMOR_CLASS_HEAVY
+	equip_delay_self = 12 SECONDS
+	unequip_delay_self = 12 SECONDS
+	equip_delay_other = 3 SECONDS
+	strip_delay = 6 SECONDS
+	smelt_bar_num = 4
+
+/obj/item/clothing/suit/roguetown/armor/blacksteel/cuirass
+	slot_flags = ITEM_SLOT_ARMOR
+	name = "Blacksteel Cuirass"
+	desc = "A basic cuirass forged from blacksteel. It's somewhat more durable than regular steel."
+	body_parts_covered = CHEST|VITALS
+	icon_state = "grenzelcuirass"
+	item_state = "grenzelcuirass"
+	sleeved = 'icons/roguetown/clothing/onmob/helpers/stonekeep_merc.dmi'
+	armor = list("blunt" = 80, "slash" = 100, "stab" = 80, "bullet" = 100, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	allowed_race = CLOTHED_RACES_TYPES
+	nodismemsleeves = TRUE
+	do_sound = FALSE
+	blocking_behavior = null
+	max_integrity = 400
+	anvilrepair = /datum/skill/craft/armorsmithing
+	smeltresult = /obj/item/ingot/blacksteel
+	armor_class = ARMOR_CLASS_MEDIUM
 	smelt_bar_num = 2
