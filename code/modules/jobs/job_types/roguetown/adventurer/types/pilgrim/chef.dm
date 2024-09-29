@@ -1,4 +1,4 @@
-/datum/advclass/masterchef
+/datum/advclass/chef
 	name = "Chef"
 	tutorial = "A humble cook, looking for use of your services. Whether that be a cuisine-peddler, royal feast-maker, or devoted servant to the needy."
 	allowed_sexes = list(MALE, FEMALE)
@@ -26,11 +26,13 @@
 	head = /obj/item/clothing/head/roguetown/chef
 	shoes = /obj/item/clothing/shoes/roguetown/simpleshoes
 	backr = /obj/item/storage/backpack/rogue/backpack/sachel
-	neck = /obj/item/storage/belt/rogue/pouch/coins/poor
+	backl = /obj/item/storage/backpack/rogue/backpack/sachel
+	neck = /obj/item/storage/belt/rogue/pouch/coins/mid
 	beltr = /obj/item/cooking/pan
-	mouth = /obj/item/rogueweapon/huntingknife
-	backpack_contents = list(/obj/item/reagent_containers/powder/salt = 4,/obj/item/bait = 1)
+	beltl = /obj/item/reagent_containers/glass/pot
+	mouth = /obj/item/rogueweapon/huntingknife/cleaver
+	backpack_contents = list(/obj/item/reagent_containers/powder/salt = 3,/obj/item/reagent_containers/food/snacks/butter = 1,/obj/item/reagent_containers/food/snacks/rogue/meat/steak = 2, /obj/item/reagent_containers/food/snacks/egg = 2)
 	H.change_stat("strength", 1) 
-  H.change_stat("perception", -2) // Anti-fragger stat
+  	H.change_stat("perception", -2) // Anti-fragger stat
 	H.change_stat("endurance", 1)
 	H.change_stat("constitution", 3) // Hearty diet
