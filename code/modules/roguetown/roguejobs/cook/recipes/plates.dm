@@ -339,7 +339,7 @@
 	subtype_reqs = TRUE
 
 /obj/item/reagent_containers/food/snacks/rogue/jadepheasant
-	eat_effect = /datum/status_effect/buff/foodbuff/legendary, /datum/status_effect/buff/blessed
+	eat_effect = list(/datum/status_effect/buff/foodbuff/legendary, /datum/status_effect/buff/blessed)
 	slices_num = 0
 	name = "Glorious Jade Emperor's Golden Heaven Pheasant"
 	desc = "A truly exotic and wondrous dish consisting of whole-roasted bird, pancakes from the mother country and a golden spiced sauce."
