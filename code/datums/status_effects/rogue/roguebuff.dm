@@ -20,9 +20,53 @@
 	effectedstats = list("constitution" = 1,"endurance" = 1)
 	duration = 10 MINUTES
 
+/datum/status_effect/buff/foodbuff/minor
+	id = "foodbuffminor"
+	alert_type = /atom/movable/screen/alert/status_effect/buff/foodbuff
+	effectedstats = list("constitution" = 1)
+	duration = 5 MINUTES
+
+/datum/status_effect/buff/foodbuff/expert
+	id = "foodbuffexpert"
+	alert_type = /atom/movable/screen/alert/status_effect/buff/foodbuff
+	effectedstats = list("constitution" = 1,"endurance" = 1,"intelligence" = 1)
+	duration = 20 MINUTES
+
+/datum/status_effect/buff/foodbuff/master
+	id = "foodbuffmaster"
+	alert_type = /atom/movable/screen/alert/status_effect/buff/foodbuff
+	effectedstats = list("constitution" = 2,"endurance" = 1, "intelligence" = 1)
+	duration = 30 MINUTES
+
+/datum/status_effect/buff/foodbuff/legendary
+	id = "foodbufflegendary"
+	alert_type = /atom/movable/screen/alert/status_effect/buff/foodbuff
+	effectedstats = list("constitution" = 2,"endurance" = 1,"perception" = 1,"intelligence" = 1,"strength" = 1,"speed" = 1)
+	duration = 60 MINUTES
+
 /atom/movable/screen/alert/status_effect/buff/foodbuff
 	name = "Great Meal"
-	desc = ""
+	desc = "A wonderful meal, nourishing my soul."
+	icon_state = "foodbuff"
+
+/atom/movable/screen/alert/status_effect/buff/foodbuff/minor
+	name = "Good Meal"
+	desc = "A pleasant meal."
+	icon_state = "foodbuff"
+
+/atom/movable/screen/alert/status_effect/buff/foodbuff/expert
+	name = "Amazing Meal"
+	desc = "An exquisite flavor with lovely texture."
+	icon_state = "foodbuff"
+
+/atom/movable/screen/alert/status_effect/buff/foodbuff/master
+	name = "Flawless Meal"
+	desc = "My tastebuds are sizzling with taste! I feel like a king!"
+	icon_state = "foodbuff"
+
+/atom/movable/screen/alert/status_effect/buff/foodbuff/legendary
+	name = "LEGENDARY Meal"
+	desc = "My body is bursting with renewed vigor! This is food worthy of gods!"
 	icon_state = "foodbuff"
 
 /datum/status_effect/buff/druqks
