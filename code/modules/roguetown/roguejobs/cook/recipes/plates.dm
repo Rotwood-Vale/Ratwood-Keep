@@ -7,8 +7,8 @@
 	icon_state = "peppersteak"
 	foodtype = MEAT
 	warming = 5 MINUTES
-	rotprocess = 30 MINUTES
-	eat_effect = /datum/status_effect/buff/foodbuff
+	rotprocess = 20 MINUTES
+	eat_effect = /datum/status_effect/buff/foodbuff/novice
 	drop_sound = 'sound/foley/dropsound/gen_drop.ogg'
 
 /datum/crafting_recipe/roguetown/cooking/peppersteak
@@ -18,7 +18,7 @@
 		/datum/reagent/consumable/blackpepper = 1
 	)
 	result = /obj/item/reagent_containers/food/snacks/rogue/peppersteak
-	skillcraft = null
+	craftdiff = 1
 
 /obj/item/reagent_containers/food/snacks/rogue/spicedeggs
 	icon = 'icons/roguetown/items/food.dmi'
@@ -29,8 +29,8 @@
 	icon_state = "spicedeggs"
 	foodtype = MEAT
 	warming = 5 MINUTES
-	rotprocess = 30 MINUTES
-	eat_effect = /datum/status_effect/buff/foodbuff
+	rotprocess = 20 MINUTES
+	eat_effect = /datum/status_effect/buff/foodbuff/novice
 	drop_sound = 'sound/foley/dropsound/gen_drop.ogg'
 
 /datum/crafting_recipe/roguetown/cooking/spicedeggs
@@ -40,7 +40,7 @@
 		/datum/reagent/consumable/blackpepper = 1
 	)
 	result = /obj/item/reagent_containers/food/snacks/rogue/spicedeggs
-	skillcraft = 0
+	craftdiff = 1
 	subtype_reqs = FALSE
 
 /obj/item/reagent_containers/food/snacks/rogue/eggtoast
@@ -52,7 +52,8 @@
 	icon_state = "eggtoast"
 	foodtype = MEAT
 	warming = 5 MINUTES
-	rotprocess = 30 MINUTES
+	rotprocess = 20 MINUTES
+	eat_effect = /datum/status_effect/buff/foodbuff/novice
 	drop_sound = 'sound/foley/dropsound/gen_drop.ogg'
 
 /datum/crafting_recipe/roguetown/cooking/eggtoast
@@ -62,6 +63,7 @@
 		/obj/item/reagent_containers/food/snacks/rogue/breadslice/toast = 1
 	)
 	result = /obj/item/reagent_containers/food/snacks/rogue/eggtoast
+	craftdiff = 1
 	subtype_reqs = FALSE
 
 /obj/item/reagent_containers/food/snacks/rogue/eggcheese
@@ -73,8 +75,8 @@
 	icon_state = "eggcheese"
 	foodtype = MEAT
 	warming = 5 MINUTES
-	rotprocess = 30 MINUTES
-	eat_effect = /datum/status_effect/buff/foodbuff
+	rotprocess = 20 MINUTES
+	eat_effect = /datum/status_effect/buff/foodbuff/novice
 
 /datum/crafting_recipe/roguetown/cooking/eggcheese
 	name = "eggcheese"
@@ -83,7 +85,7 @@
 		/obj/item/reagent_containers/food/snacks/rogue/cheddarslice = 2
 	)
 	result = /obj/item/reagent_containers/food/snacks/rogue/eggcheese
-
+	craftdiff = 1
 	subtype_reqs = FALSE
 
 /obj/item/reagent_containers/food/snacks/rogue/dogroll
@@ -95,8 +97,8 @@
 	icon_state = "hotdog"
 	foodtype = MEAT
 	warming = 5 MINUTES
-	rotprocess = 30 MINUTES
-	eat_effect = /datum/status_effect/buff/foodbuff
+	rotprocess = 20 MINUTES
+	eat_effect = /datum/status_effect/buff/foodbuff/novice
 
 /datum/crafting_recipe/roguetown/cooking/dogroll
 	name = "dogroll"
@@ -105,7 +107,7 @@
 		/obj/item/reagent_containers/food/snacks/rogue/bun = 1
 	)
 	result = /obj/item/reagent_containers/food/snacks/rogue/dogroll
-	skillcraft = null
+	craftdiff = 1
 	subtype_reqs = FALSE
 
 /obj/item/reagent_containers/food/snacks/rogue/grenzeldog
@@ -117,7 +119,7 @@
 	icon_state = "kraut_dog"
 	foodtype = MEAT
 	warming = 5 MINUTES
-	rotprocess = 30 MINUTES
+	rotprocess = 20 MINUTES
 	eat_effect = /datum/status_effect/buff/foodbuff
 
 /datum/crafting_recipe/roguetown/cooking/grenzeldog
@@ -127,7 +129,7 @@
 		/obj/item/reagent_containers/food/snacks/grown/sauerkraut = 1
 	)
 	result = /obj/item/reagent_containers/food/snacks/rogue/grenzeldog
-	skillcraft = null
+	craftdiff = 2
 	subtype_reqs = FALSE
 
 /obj/item/reagent_containers/food/snacks/rogue/sandwich
@@ -139,7 +141,7 @@
 	icon_state = "sandwich"
 	foodtype = MEAT
 	warming = 5 MINUTES
-	rotprocess = 30 MINUTES
+	rotprocess = 20 MINUTES
 	eat_effect = /datum/status_effect/buff/foodbuff
 
 /datum/crafting_recipe/roguetown/cooking/sandwich
@@ -150,7 +152,7 @@
 		/obj/item/reagent_containers/food/snacks/rogue/meat/salami/slice = 2
 	)
 	result = /obj/item/reagent_containers/food/snacks/rogue/sandwich
-	craftdiff = 0
+	craftdiff = 2
 	subtype_reqs = TRUE
 
 /obj/item/reagent_containers/food/snacks/rogue/fullroast
@@ -163,11 +165,10 @@
 	w_class = WEIGHT_CLASS_GIGANTIC
 	tastes = list("chicken" = 1, "potatoes" = 1, "peas" = 1, "cabbage" = 1, "pepper" = 1, "radish" = 1, "oregano" = 1)
 	warming = 5 MINUTES
-	rotprocess = 25 MINUTES
+	rotprocess = 90 MINUTES
 	slices_num = 6
 	slice_batch = TRUE
 	slice_path = /obj/item/reagent_containers/food/snacks/rogue/roastportion
-	eat_effect = /datum/status_effect/buff/foodbuff
 
 /obj/item/reagent_containers/food/snacks/rogue/roastportion
 	name = "portion of roast dinner"
@@ -177,9 +178,9 @@
 	tastes = list("chicken" = 1, "potatoes" = 1, "peas" = 1, "cabbage" = 1, "pepper" = 1, "radish" = 1, "oregano" = 1)
 	list_reagents = list(/datum/reagent/consumable/nutriment = 20)
 	warming = 5 MINUTES
-	rotprocess = 25 MINUTES
+	rotprocess = 90 MINUTES
 	w_class = WEIGHT_CLASS_NORMAL
-	eat_effect = /datum/status_effect/buff/foodbuff
+	eat_effect = /datum/status_effect/buff/foodbuff/master
 
 /datum/crafting_recipe/roguetown/cooking/roastdinner
 	name = "full roast chicken dinner"
@@ -194,7 +195,7 @@
 		/obj/item/reagent_containers/powder/salt = 1
 	)
 	result = /obj/item/reagent_containers/food/snacks/rogue/fullroast
-	craftdiff = 4
+	craftdiff = 5
 	subtype_reqs = TRUE
 
 /obj/item/reagent_containers/food/snacks/rogue/eggplantparm
@@ -207,7 +208,7 @@
 	warming = 5 MINUTES
 	rotprocess = 15 MINUTES
 	w_class = WEIGHT_CLASS_NORMAL
-	eat_effect = /datum/status_effect/buff/foodbuff
+	eat_effect = /datum/status_effect/buff/foodbuff/journeyman
 
 /datum/crafting_recipe/roguetown/cooking/eggplantparm
 	name = "eggplant parmigiana"
@@ -228,9 +229,9 @@
 	tastes = list("eggplant" = 1, "garlic" = 1, "oil" = 1)
 	list_reagents = list(/datum/reagent/consumable/nutriment = 10, /datum/reagent/consumable/garlic = 3)
 	warming = 5 MINUTES
-	rotprocess = 15 MINUTES
+	rotprocess = 30 MINUTES
 	w_class = WEIGHT_CLASS_NORMAL
-	eat_effect = /datum/status_effect/buff/foodbuff
+	eat_effect = /datum/status_effect/buff/foodbuff/journeyman
 
 /datum/crafting_recipe/roguetown/cooking/sauteedeggplant
 	name = "sauteed eggplant"
@@ -240,7 +241,7 @@
 		/datum/reagent/consumable/cooking_oil = 3
 	)
 	result = /obj/item/reagent_containers/food/snacks/rogue/sauteedeggplant
-	craftdiff = 2
+	craftdiff = 3
 	subtype_reqs = TRUE
 
 /obj/item/reagent_containers/food/snacks/rogue/etruscansalad
@@ -250,9 +251,9 @@
 	icon_state = "etruscan_salad"
 	tastes = list("cheese" = 1, "tomato" = 1, "olive oil" = 1)
 	list_reagents = list(/datum/reagent/consumable/nutriment = 10)
-	rotprocess = 15 MINUTES
+	rotprocess = 60 MINUTES
 	w_class = WEIGHT_CLASS_NORMAL
-	eat_effect = /datum/status_effect/buff/foodbuff
+	eat_effect = /datum/status_effect/buff/foodbuff/expert
 
 /datum/crafting_recipe/roguetown/cooking/etruscansalad
 	name = "etruscan salad"
@@ -263,7 +264,7 @@
 		/datum/reagent/consumable/cooking_oil = 3
 	)
 	result = /obj/item/reagent_containers/food/snacks/rogue/etruscansalad
-	craftdiff = 3
+	craftdiff = 4
 	subtype_reqs = TRUE
 
 /obj/item/reagent_containers/food/snacks/rogue/moussaka
@@ -271,27 +272,26 @@
 	desc = "A layered casserole made of eggplants, veggies, and meat. Native to Shalvestine."
 	icon = 'icons/roguetown/items/food.dmi'
 	icon_state = "moussaka"
-	tastes = list("eggplant" = 1, "onion" = 1, "garlic" = 1, "meat" = 1)
+	tastes = list("eggplant" = 1, "onion" = 1, "garlic" = 1)
 	list_reagents = list(/datum/reagent/consumable/nutriment = 40, /datum/reagent/consumable/garlic = 8)
 	warming = 5 MINUTES
-	rotprocess = 25 MINUTES
+	rotprocess = 60 MINUTES
 	w_class = WEIGHT_CLASS_BULKY
 	slices_num = 4
 	slice_batch = TRUE
 	slice_path = /obj/item/reagent_containers/food/snacks/rogue/moussakaportion
-	eat_effect = /datum/status_effect/buff/foodbuff
 
 /obj/item/reagent_containers/food/snacks/rogue/moussakaportion
 	name = "portion of moussaka"
 	desc = "A slice of layered casserole made of eggplants, veggies, and meat. Native to Shalvestine."
 	icon = 'icons/roguetown/items/food.dmi'
 	icon_state = "moussaka_slice"
-	tastes = list("eggplant" = 1, "onion" = 1, "garlic" = 1, "meat" = 1)
+	tastes = list("eggplant" = 1, "onion" = 1, "garlic" = 1)
 	list_reagents = list(/datum/reagent/consumable/nutriment = 10, /datum/reagent/consumable/garlic = 2)
 	warming = 5 MINUTES
 	rotprocess = 25 MINUTES
 	w_class = WEIGHT_CLASS_SMALL
-	eat_effect = /datum/status_effect/buff/foodbuff
+	eat_effect = /datum/status_effect/buff/foodbuff/journeyman
 
 /datum/crafting_recipe/roguetown/cooking/moussaka
 	name = "moussaka"
@@ -315,13 +315,13 @@
 	list_reagents = list(/datum/reagent/consumable/nutriment = 10, /datum/reagent/consumable/capsaicin = 10)
 
 /obj/item/reagent_containers/food/snacks/rogue/stuffedtiefling/cooked
-	eat_effect = /datum/status_effect/buff/foodbuff
+	eat_effect = /datum/status_effect/buff/foodbuff/expert
 	slices_num = 0
 	name = "hatched tiefling egg"
 	desc = "A tiefling egg fruit with the top cut off and stuffing sticking out! It burns your nostrils."
 	icon_state = "stuffedpepper"
 	warming = 10 MINUTES
-	rotprocess = 25 MINUTES
+	rotprocess = 60 MINUTES
 	w_class = WEIGHT_CLASS_SMALL
 	list_reagents = list(/datum/reagent/consumable/nutriment = 15, /datum/reagent/consumable/capsaicin = 10)
 
@@ -339,14 +339,15 @@
 	subtype_reqs = TRUE
 
 /obj/item/reagent_containers/food/snacks/rogue/jadepheasant
-	eat_effect = /datum/status_effect/buff/foodbuff
+	eat_effect = /datum/status_effect/buff/foodbuff/legendary
 	slices_num = 0
 	name = "Glorious Jade Emperor's Golden Heaven Pheasant"
 	desc = "A truly exotic and wondrous dish consisting of whole-roasted bird, pancakes from the mother country and a golden spiced sauce."
 	icon_state = "ducknpancakes"
+	tastes = list("true royal cuisine" = 1, "perfection" = 1)
 	bitesize = 5
 	warming = 10 MINUTES
-	rotprocess = 25 MINUTES
+	rotprocess = 180 MINUTES
 	w_class = WEIGHT_CLASS_BULKY
 	list_reagents = list(/datum/reagent/consumable/nutriment = 40, /datum/reagent/drug/happiness = 3)
 
@@ -364,14 +365,14 @@
 	subtype_reqs = TRUE
 
 /obj/item/reagent_containers/food/snacks/rogue/cornedbeef
-	eat_effect = /datum/status_effect/buff/foodbuff
+	eat_effect = /datum/status_effect/buff/foodbuff/journeyman
 	slices_num = 0
 	name = "corned beef and grenzelkraut"
 	desc = "A slice of salt-cured brisket served with grenzelkraut."
 	icon_state = "cornedbeef"
 	bitesize = 3
 	warming = 5 MINUTES
-	rotprocess = 20 MINUTES
+	rotprocess = 30 MINUTES
 	w_class = WEIGHT_CLASS_SMALL
 	list_reagents = list(/datum/reagent/consumable/nutriment = 18)
 
@@ -383,5 +384,5 @@
 		/obj/item/reagent_containers/food/snacks/grown/sauerkraut = 1
 	)
 	result = /obj/item/reagent_containers/food/snacks/rogue/cornedbeef
-	craftdiff = 2
+	craftdiff = 3
 	subtype_reqs = TRUE
