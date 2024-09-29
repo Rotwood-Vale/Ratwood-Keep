@@ -199,7 +199,7 @@
 #define NOSE		(1<<16)
 #define RIGHT_EYE	(1<<17)
 #define LEFT_EYE	(1<<18)
-#define HAIR		(1<<19) 
+#define HAIR		(1<<19)
 #define EYES		(LEFT_EYE | RIGHT_EYE)
 #define FACE		(MOUTH | NOSE | EYES)
 #define FULL_HEAD	(HEAD | MOUTH | NOSE | EYES | EARS | HAIR)
@@ -237,7 +237,7 @@
 
 //flags for covering body parts
 #define GLASSESCOVERSEYES	(1<<0)
-#define MASKCOVERSEYES		(1<<1)		// get rid of some of the other retardation in these flags
+#define MASKCOVERSEYES		(1<<1)		// get rid of some of the other silliness in these flags
 #define HEADCOVERSEYES		(1<<2)		// feel free to realloc these numbers for other purposes
 #define MASKCOVERSMOUTH		(1<<3)		// on other items, these are just for mask/head
 #define HEADCOVERSMOUTH		(1<<4)
@@ -249,6 +249,7 @@
 #define CANT_CADJUST 0
 #define CAN_CADJUST 1
 #define CADJUSTED 2
+#define CADJUSTED_MORE 3
 
 //Allowed equipment lists for security vests and hardsuits.
 

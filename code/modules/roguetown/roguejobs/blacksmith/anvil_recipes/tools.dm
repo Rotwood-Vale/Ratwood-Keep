@@ -10,7 +10,7 @@
 	created_item = /obj/item/storage/belt/rogue/surgery_bag/full
 
 /datum/anvil_recipe/tools/torch
-	name = "Torches 5x (+1 Coal)"
+	name = "Torches x5 (+1 Coal)"
 	req_bar = /obj/item/ingot/iron
 	additional_items = list(/obj/item/rogueore/coal)
 	created_item = /obj/item/flashlight/flare/torch/metal
@@ -26,7 +26,7 @@
 /datum/anvil_recipe/tools/keyring
 	name = "Keyrings x3"
 	req_bar = /obj/item/ingot/iron
-	created_item = /obj/item/keyring
+	created_item = /obj/item/storage/keyring
 	createditem_num = 3
 	craftdiff = 0
 
@@ -115,19 +115,20 @@
 	i_type = "Tools"
 
 /datum/anvil_recipe/tools/lamptern
-	name = "Lamptern"
+	name = "Lamptern x3"
 	req_bar = /obj/item/ingot/iron
 	created_item = /obj/item/flashlight/flare/torch/lantern
+	createditem_num = 3
 
 /datum/anvil_recipe/tools/cups
-	name = "Cups 3x"
+	name = "Cups x3"
 	req_bar = /obj/item/ingot/iron
 	created_item = /obj/item/reagent_containers/glass/cup
 	createditem_num = 3
 	craftdiff = 0
 
 /datum/anvil_recipe/tools/cogiron
-	name = "Cogs 3x"
+	name = "Cogs x3"
 	req_bar = /obj/item/ingot/iron
 	created_item = /obj/item/roguegear
 	createditem_num = 3
@@ -155,13 +156,13 @@
 	i_type = "Tools"
 
 /datum/anvil_recipe/tools/cupssteel
-	name = "Goblets 3x"
+	name = "Goblets x3"
 	req_bar = /obj/item/ingot/steel
 	created_item = /obj/item/reagent_containers/glass/cup/steel
 	createditem_num = 3
 
 /datum/anvil_recipe/tools/cogsteel
-	name = "Cogs 3x"
+	name = "Cogs x3"
 	req_bar = /obj/item/ingot/steel
 	created_item = /obj/item/roguegear
 	createditem_num = 3
@@ -169,7 +170,7 @@
 // --------- SILVER -----------
 
 /datum/anvil_recipe/tools/cupssil
-	name = "Goblets 3x"
+	name = "Goblets x3"
 	req_bar = /obj/item/ingot/silver
 	created_item = /obj/item/reagent_containers/glass/cup/silver
 	createditem_num = 3
@@ -178,7 +179,7 @@
 // --------- GOLD -----------
 
 /datum/anvil_recipe/tools/cupsgold
-	name = "Goblets 3x"
+	name = "Goblets x3"
 	req_bar = /obj/item/ingot/gold
 	created_item = /obj/item/reagent_containers/glass/cup/golden
 	createditem_num = 3

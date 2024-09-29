@@ -59,11 +59,8 @@
 							mind.sleep_adv.advance_cycle()
 							if(!mind.antag_datums || !mind.antag_datums.len)
 								allmig_reward++
+								adjust_triumphs(1)
 								to_chat(src, span_danger("Nights Survived: \Roman[allmig_reward]"))
-								var/datum/game_mode/chaosmode/C = SSticker.mode
-								if(istype(C) && C.allmig)
-									if(allmig_reward > 3)
-										adjust_triumphs(1)
 			if(leprosy == 1)
 				adjustToxLoss(2)
 			else if(leprosy == 2)

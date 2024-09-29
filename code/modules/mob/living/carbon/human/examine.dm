@@ -71,7 +71,7 @@
 				display_as_wanderer = TRUE
 		else if(job)
 			var/datum/job/J = SSjob.GetJob(job)
-			if(J.wanderer_examine)
+			if(!J || J.wanderer_examine)
 				display_as_wanderer = TRUE
 			if(islatejoin)
 				is_returning = TRUE
@@ -84,6 +84,9 @@
 
 		if(GLOB.lord_titles[name])
 			. += span_notice("[m3] been granted the title of \"[GLOB.lord_titles[name]]\".")
+
+		if(HAS_TRAIT(src, TRAIT_NOBLE) && HAS_TRAIT(user, TRAIT_NOBLE))
+			. += span_notice("A fellow noble.")
 
 		if(ishuman(user))
 			var/mob/living/carbon/human/H = user

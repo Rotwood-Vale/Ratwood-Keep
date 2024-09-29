@@ -3,8 +3,8 @@
 	flag = SQUIRE
 	department_flag = YOUNGFOLK
 	faction = "Station"
-	total_positions = 2
-	spawn_positions = 2
+	total_positions = 3
+	spawn_positions = 3
 	allowed_races = RACES_ALL_KINDS
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_ages = list(AGE_ADULT)
@@ -26,7 +26,7 @@
 		shoes = /obj/item/clothing/shoes/roguetown/boots
 		belt = /obj/item/storage/belt/rogue/leather
 		beltr = /obj/item/storage/belt/rogue/pouch
-		beltl = /obj/item/keyring/guardcastle
+		beltl = /obj/item/storage/keyring/guardcastle
 		backr = /obj/item/storage/backpack/rogue/satchel
 		if(H.mind)
 			H.mind.adjust_skillrank(/datum/skill/combat/maces, 1, TRUE)
@@ -51,7 +51,7 @@
 		shoes = /obj/item/clothing/shoes/roguetown/boots
 		belt = /obj/item/storage/belt/rogue/leather
 		beltr = /obj/item/storage/belt/rogue/pouch
-		beltl = /obj/item/keyring/guardcastle
+		beltl = /obj/item/storage/keyring/guardcastle
 		backr = /obj/item/storage/backpack/rogue/satchel
 		if(H.mind)
 			H.mind.adjust_skillrank(/datum/skill/combat/maces, 1, TRUE)

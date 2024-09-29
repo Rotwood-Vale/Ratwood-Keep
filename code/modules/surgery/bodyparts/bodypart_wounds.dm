@@ -3,7 +3,7 @@
 	var/list/datum/wound/wounds
 	/// List of items embedded in this bodypart
 	var/list/obj/item/embedded_objects = list()
-	/// Bandage, if this ever hard dels thats fucking retarded lol
+	/// Bandage, if this ever hard dels thats fucking silly lol
 	var/obj/item/bandage
 
 /// Checks if we have any embedded objects whatsoever
@@ -118,11 +118,14 @@
 /obj/item/bodypart/proc/bodypart_attacked_by(bclass = BCLASS_BLUNT, dam, mob/living/user, zone_precise = src.body_zone, silent = FALSE, crit_message = FALSE)
 	if(!bclass || !dam || !owner || (owner.status_flags & GODMODE))
 		return FALSE
+	var/do_crit = TRUE
 	if(ishuman(owner))
 		var/mob/living/carbon/human/human_owner = owner
 		if(human_owner.checkcritarmor(zone_precise, bclass))
 			return FALSE
-	var/do_crit = TRUE
+		if(owner.mind && get_damage() < max_damage/2) //No crits except if it hits a damage threshold on players.
+			if(owner.mobility_flags & MOBILITY_STAND && !owner.buckled) //Unless they're buckled or lying down.
+				do_crit = FALSE
 	if(user)
 		if(user.goodluck(2))
 			dam += 10

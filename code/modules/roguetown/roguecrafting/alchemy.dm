@@ -83,90 +83,103 @@
 /datum/crafting_recipe/roguetown/alchemy/distill
 	name = "distill water"
 	result = list(/obj/item/reagent_containers/glass/bottle/rogue/water = 1)
-	reqs = list(/obj/item/reagent_containers/glass/bottle = 1, /datum/reagent/water/gross = 45)
+	reqs = list(/obj/item/reagent_containers/glass/bottle = 1, /datum/reagent/water/gross = 48)
 	craftdiff = 1
 
 /datum/crafting_recipe/roguetown/alchemy/w2w
-	name = "transmute water to wine"
+	name = "water to wine"
 	result = list(/obj/item/reagent_containers/glass/bottle/rogue/wine = 1)
-	reqs = list(/obj/item/reagent_containers/glass/bottle = 1, /datum/reagent/water = 45)
+	reqs = list(/obj/item/reagent_containers/glass/bottle = 1, /datum/reagent/water = 48)
 	craftdiff = 3 //WHO THE FUCK THOUGHT SETTING THIS AT 2 WAS A GOOD IDEA? MAKE IT MAKE SENSE.
+	verbage_simple = "transmute"
 
 /datum/crafting_recipe/roguetown/alchemy/g2wes
-	name = "transmute grain to westleach"
+	name = "grain to westleach"
 	result = list(/obj/item/reagent_containers/food/snacks/grown/rogue/pipeweed = 1)
 	reqs = list(/obj/item/reagent_containers/food/snacks/grown/wheat = 2)
 	craftdiff = 3
+	verbage_simple = "transmute"
 
 /datum/crafting_recipe/roguetown/alchemy/w2swa
-	name = "transmute westleach to swampweed"
+	name = "westleach to swampweed"
 	result = list(/obj/item/reagent_containers/food/snacks/grown/rogue/sweetleaf = 1)
 	reqs = list(/obj/item/reagent_containers/food/snacks/grown/rogue/pipeweed = 2)
 	craftdiff = 3
+	verbage_simple = "transmute"
 
 /datum/crafting_recipe/roguetown/alchemy/f2gra
-	name = "transmute fiber to grain"
+	name = "fiber to grain"
 	result = list(/obj/item/reagent_containers/food/snacks/grown/wheat = 1)
 	reqs = list(/obj/item/natural/fibers = 4)
 	craftdiff = 3
+	verbage_simple = "transmute"
 
 /datum/crafting_recipe/roguetown/alchemy/b2app
-	name = "transmute berry to apple"
+	name = "berry to apple"
 	result = list(/obj/item/reagent_containers/food/snacks/grown/apple = 1)
 	reqs = list(/obj/item/reagent_containers/food/snacks/grown/berries/rogue = 2)
 	craftdiff = 3
+	verbage_simple = "transmute"
 
 /datum/crafting_recipe/roguetown/alchemy/s2coa
-	name = "transmute stone to coal"
+	name = "stone to coal"
 	result = list(/obj/item/rogueore/coal = 1)
 	reqs = list(/obj/item/natural/stone = 4)
 	craftdiff = 2
+	verbage_simple = "transmute"
 
 /datum/crafting_recipe/roguetown/alchemy/c2irn
-	name = "transmute coal to iron"
+	name = "coal to iron"
 	result = list(/obj/item/rogueore/iron = 1)
 	reqs = list(/obj/item/rogueore/coal = 2)
 	craftdiff = 3
+	verbage_simple = "transmute"
 
 /datum/crafting_recipe/roguetown/alchemy/i2gol
-	name = "transmute iron to gold"
+	name = "iron to gold"
 	result = list(/obj/item/rogueore/gold = 1)
 	reqs = list(/obj/item/rogueore/iron = 4)
 	craftdiff = 4
+	verbage_simple = "transmute"
 
 /datum/crafting_recipe/roguetown/alchemy/g2top
-	name = "transmute gold to toper"
+	name = "gold to toper"
 	result = list(/obj/item/roguegem/yellow = 1)
 	reqs = list(/obj/item/rogueore/gold = 2, /obj/item/natural/stone = 1)
 	craftdiff = 4
+	verbage_simple = "transmute"
 
 /datum/crafting_recipe/roguetown/alchemy/t2gem
-	name = "transmute toper to gemerald"
+	name = "toper to gemerald"
 	result = list(/obj/item/roguegem/green = 1)
 	reqs = list(/obj/item/roguegem/yellow = 1, /obj/item/rogueore/gold = 2)
 	craftdiff = 4
+	verbage_simple = "transmute"
 
 /datum/crafting_recipe/roguetown/alchemy/g2saf
-	name = "transmute gemerald to saffira"
+	name = "gemerald to saffira"
 	result = list(/obj/item/roguegem/violet = 1)
 	reqs = list(/obj/item/roguegem/green = 1, /obj/item/rogueore/gold = 2)
 	craftdiff = 4
+	verbage_simple = "transmute"
 
 /datum/crafting_recipe/roguetown/alchemy/s2blo
-	name = "transmute saffira to blortz"
+	name = "saffira to blortz"
 	result = list(/obj/item/roguegem/blue = 1)
 	reqs = list(/obj/item/roguegem/violet = 1, /obj/item/rogueore/gold = 2)
 	craftdiff = 4
+	verbage_simple = "transmute"
 
 /datum/crafting_recipe/roguetown/alchemy/r2dia
-	name = "transmute blortz to diamond"
+	name = "blortz to diamond"
 	result = list(/obj/item/roguegem/diamond = 1)
 	reqs = list(/obj/item/roguegem/blue = 2, /obj/item/rogueore/gold = 2)
 	craftdiff = 5
+	verbage_simple = "transmute"
 
 /datum/crafting_recipe/roguetown/alchemy/d2ros
-	name = "transmute diamond to riddle of steel" /// holy grail requires legendary. (sell price on average is 350. rontz and diamond worth 100 each. you get to legndary you deserve 150-200 profit)
+	name = "diamond to riddle of steel" /// holy grail requires legendary. (sell price on average is 350. rontz and diamond worth 100 each. you get to legndary you deserve 150-200 profit)
 	result = list(/obj/item/riddleofsteel = 1)
 	reqs = list(/obj/item/roguegem/diamond = 2, /obj/item/rogueore/iron = 1, /obj/item/rogueore/coal = 1)
 	craftdiff = 6
-
+	verbage_simple = "transmute"

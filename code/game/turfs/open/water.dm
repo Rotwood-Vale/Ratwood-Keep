@@ -333,12 +333,11 @@
 	dir = pick(GLOB.cardinals)
 	.  = ..()
 
-
 /turf/open/water/river
 	name = "river"
 	desc = "Crystal clear water! Flowing swiflty along the river."
-	icon_state = "rivermove"
 	icon = 'icons/turf/roguefloor.dmi'
+	icon_state = "rivermove"
 	water_level = 3
 	slowdown = 5
 	wash_in = TRUE
@@ -394,3 +393,14 @@
 	slowdown = 8
 	swim_skill = TRUE
 	wash_in = FALSE
+
+/turf/open/water/pond
+	name = "pond"
+	desc = "Still and idyllic water that flows through meadows."
+	icon_state = "pond"
+	icon = 'icons/turf/roguefloor.dmi'
+	water_level = 3
+	slowdown = 3
+	swim_skill = TRUE
+	wash_in = TRUE
+	water_reagent = /datum/reagent/water

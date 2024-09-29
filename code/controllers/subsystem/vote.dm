@@ -177,14 +177,14 @@ SUBSYSTEM_DEF(vote)
 			if(vote && 1<=vote && vote<=choices.len)
 				voted += usr.ckey
 				var/vote_power = 1
-				if(usr.client.holder)
-					vote_power += 5
+				/*if(usr.client.holder)
+					vote_power += 5*/
 				if(ishuman(usr))
 					var/mob/living/carbon/H = usr
 					if(H.stat != DEAD)
 						vote_power += 3
 					if(H.job)
-						var/list/list_of_powerful = list("Monarch", "Consort", "Priest", "Steward", "Hand")
+						var/list/list_of_powerful = list("Monarch", "Priest")
 						if(H.job in list_of_powerful)
 							vote_power += 5
 						else

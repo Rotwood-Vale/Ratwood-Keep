@@ -17,6 +17,7 @@
 	var/scom_number
 	var/obj/structure/roguemachine/scomm/calling = null
 	var/obj/structure/roguemachine/scomm/called_by = null
+	var/spawned_rat = FALSE
 
 /obj/structure/roguemachine/scomm/OnCrafted(dirin, mob/user)
 	. = ..()
@@ -169,6 +170,9 @@
 			ring_ring()
 			sleep(30)
 		say("This jabberline's rats are exhausted.", spans = list("info"))
+		calling.called_by = null
+		calling = null
+		update_icon()
 
 /obj/structure/roguemachine/scomm/obj_break(damage_flag)
 	..()
@@ -241,6 +245,14 @@
 			if(calling.calling == src)
 				calling.repeat_message(raw_message, src, usedcolor, message_language)
 			return
+		if(length(raw_message) > 100) //When these people talk too much, put that shit in slow motion, yeah
+			if(length(raw_message) > 200)
+				if(!spawned_rat)
+					visible_message(span_warning("An angered rous emerges from the SCOMlines!"))
+					new /mob/living/simple_animal/hostile/retaliate/rogue/bigrat(get_turf(src))
+					spawned_rat = TRUE
+				return
+			raw_message = "<small>[raw_message]</small>"
 		for(var/obj/structure/roguemachine/scomm/S in SSroguemachine.scomm_machines)
 			if(!S.calling)
 				S.repeat_message(raw_message, src, usedcolor, message_language)
@@ -277,7 +289,7 @@
 //SCOMSTONE                 SCOMSTONE
 
 /obj/item/scomstone
-	name = "emerald ring"
+	name = "scomstone"
 	icon_state = "ring_emerald"
 	desc = "A golden ring with an emerald gem."
 	gripped_intents = null
@@ -295,16 +307,22 @@
 	var/speaking = TRUE
 	sellprice = 100
 //wip
-/obj/item/scomstone/attack_right(mob/user)
+/obj/item/scomstone/attack_right(mob/living/carbon/human/user)
 	user.changeNext_move(CLICK_CD_MELEE)
 	var/input_text = input(user, "Enter your message:", "Message")
 	if(input_text)
+		var/usedcolor = user.voice_color
+		if(user.voicecolor_override)
+			usedcolor = user.voicecolor_override
+		user.whisper(input_text)
+		if(length(input_text) > 100) //When these people talk too much, put that shit in slow motion, yeah
+			input_text = "<small>[input_text]</small>"
 		for(var/obj/structure/roguemachine/scomm/S in SSroguemachine.scomm_machines)
-			S.repeat_message(input_text)
+			S.repeat_message(input_text, src, usedcolor)
 		for(var/obj/item/scomstone/S in SSroguemachine.scomm_machines)
-			S.repeat_message(input_text)
+			S.repeat_message(input_text, src, usedcolor)
 		for(var/obj/item/listenstone/S in SSroguemachine.scomm_machines)//make the listenstone hear scomstone
-			S.repeat_message(input_text)
+			S.repeat_message(input_text, src, usedcolor)
 
 /obj/item/scomstone/MiddleClick(mob/user)
 	if(.)
@@ -352,27 +370,6 @@
 	else
 		send_speech(message, 1, src, , spans, message_language=language)
 
-/obj/item/scomstone/Hear(message, atom/movable/speaker, message_language, raw_message, radio_freq, list/spans, message_mode, original_message)
-	if(speaker == src)
-		return
-	if(loc != speaker)
-		return
-	if(!ishuman(speaker))
-		return
-	var/mob/living/carbon/human/H = speaker
-	if(!listening)
-		return
-	var/usedcolor = H.voice_color
-	if(H.voicecolor_override)
-		usedcolor = H.voicecolor_override
-	if(raw_message)
-		for(var/obj/structure/roguemachine/scomm/S in SSroguemachine.scomm_machines)
-			S.repeat_message(raw_message, src, usedcolor, message_language)
-		for(var/obj/item/scomstone/S in SSroguemachine.scomm_machines)
-			S.repeat_message(raw_message, src, usedcolor, message_language)
-		for(var/obj/item/listenstone/S in SSroguemachine.scomm_machines)
-			S.repeat_message(raw_message, src, usedcolor, message_language)//make the listenstone hear scomstone scream
-
 /obj/item/scomstone/bad
 	name = "serfstone"
 	desc = "A steel ring with a dull gem shoddily sticking out of it."
@@ -380,8 +377,9 @@
 	listening = FALSE
 	sellprice = 20
 
-/obj/item/scomstone/bad/Hear(message, atom/movable/speaker, message_language, raw_message, radio_freq, list/spans, message_mode, original_message)
+/obj/item/scomstone/bad/attack_right(mob/user)
 	return
+
 //LISTENSTONE		LISTENSTONE
 /obj/item/listenstone
 	name = "emerald choker"

@@ -18,7 +18,8 @@
 	leads the race towards technological advacement as they continue \
 	to improve their craft through powerful mechanization and forging \
 	Dwarves are hearty, but are not known for their speed or eyesight... \
-	Each dwarf hails from a ancient fortress named after the most plentiful mineral."
+	Each dwarf hails from a ancient fortress named after the most plentiful mineral. \
+	+1 Constitution."
 
 	skin_tone_wording = "Dwarf Fortress"
 

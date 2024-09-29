@@ -11,6 +11,7 @@
 	reqs = list(/obj/item/natural/hide = 1,
 				/obj/item/natural/fibers = 1)
 	sellprice = 6
+	craftdiff = 0
 
 /datum/crafting_recipe/roguetown/leather/satchel
 	name = "leather satchel"
@@ -40,12 +41,20 @@
 				/obj/item/natural/fibers = 2)
 	sellprice = 30
 
+/datum/crafting_recipe/roguetown/leather/belt
+	name = "leather belt"
+	result = /obj/item/storage/belt/rogue/leather
+	reqs = list(/obj/item/natural/hide = 2,
+				/obj/item/natural/fibers = 2)
+	sellprice = 30
+
 /datum/crafting_recipe/roguetown/leather/gloves
 	name = "leather gloves"
 	result = list(/obj/item/clothing/gloves/roguetown/leather,
 	/obj/item/clothing/gloves/roguetown/leather)
 	reqs = list(/obj/item/natural/hide = 1)
 	sellprice = 10
+	craftdiff = 0
 
 /datum/crafting_recipe/roguetown/leather/heavygloves
 	name = "heavy leather gloves"
@@ -91,6 +100,7 @@
 	result = /obj/item/clothing/head/roguetown/helmet/bandana
 	reqs = list(/obj/item/natural/hide = 1)
 	sellprice = 27
+	craftdiff = 0
 
 /datum/crafting_recipe/roguetown/leather/tricorn
 	name = "leather tricorn"

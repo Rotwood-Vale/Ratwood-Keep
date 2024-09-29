@@ -38,6 +38,8 @@
 	var/blessed_time = 0
 	/// Time remaining for the soil to decay and destroy itself, only applicable when its out of water and nutriments and has no plant
 	var/soil_decay_time = SOIL_DECAY_TIME
+	///The time remaining in which the soil was given special fertilizer, effect is similar to being blessed but with less beneficial effects
+	var/fertilized_time = 0
 
 /obj/structure/soil/Crossed(atom/movable/AM)
 	. = ..()
@@ -141,6 +143,11 @@
 		fertilize_amount = 150
 	else if (istype(attacking_item, /obj/item/compost))
 		fertilize_amount = 150
+	else if (istype(attacking_item, /obj/item/fertilizer))
+		to_chat(user, span_notice("You mix the fertilizer into the soil..."))
+		fertilize_soil()
+		qdel(attacking_item)
+		return TRUE
 	if(fertilize_amount > 0)
 		if(nutrition >= MAX_PLANT_NUTRITION * 0.8)
 			to_chat(user, span_warning("The soil is already fertilized!"))
@@ -271,6 +278,9 @@
 	// And it grows a little!
 	if(plant)
 		add_growth(2 MINUTES)
+
+/obj/structure/soil/proc/fertilize_soil()
+	fertilized_time = 60 MINUTES //Keeps the plant fertilized for a good while
 
 /obj/structure/soil/proc/adjust_water(adjust_amount)
 	water = clamp(water + adjust_amount, 0, MAX_PLANT_WATER)
@@ -411,6 +421,8 @@
 	// Blessed feedback
 	if(blessed_time > 0)
 		. += span_good("The soil seems blessed.")
+	if(fertilized_time > 0)
+		. += span_good("The soil has special fertilzier mixed in.")
 
 #define BLESSING_WEED_DECAY_RATE 10 / (1 MINUTES)
 #define WEED_GROWTH_RATE 3 / (1 MINUTES)
@@ -423,7 +435,7 @@
 
 /obj/structure/soil/proc/process_weeds(dt)
 	// Blessed soil will have the weeds die
-	if(blessed_time > 0)
+	if(blessed_time > 0 || fertilized_time > 0)
 		adjust_weeds(-dt * BLESSING_WEED_DECAY_RATE)
 	if(plant && plant.weed_immune)
 		// Weeds die if the plant is immune to them
@@ -490,8 +502,8 @@
 	// If soil is tilled, grow faster
 	if(tilled_time > 0)
 		growth_multiplier *= 1.6
-	// If soil is blessed, grow faster and take up less nutriments
-	if(blessed_time > 0)
+	// If soil is blessed or fertilized, grow faster and take up less nutriments
+	if(blessed_time > 0 || fertilized_time > 0)
 		growth_multiplier *= 2.0
 		nutriment_eat_mutliplier *= 0.4
 	// If there's too many weeds, they hamper the growth of the plant
@@ -545,7 +557,8 @@
 
 	adjust_water(-dt * SOIL_WATER_DECAY_RATE)
 	adjust_nutrition(-dt * SOIL_NUTRIMENT_DECAY_RATE)
-
+	if(fertilized_time > 0)
+		nutrition = 100
 	tilled_time = max(tilled_time - dt, 0)
 	blessed_time = max(blessed_time - dt, 0)
 

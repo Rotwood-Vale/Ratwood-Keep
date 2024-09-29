@@ -25,7 +25,7 @@
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
 	pants = /obj/item/clothing/under/roguetown/tights/random
 	belt = /obj/item/storage/belt/rogue/leather/rope
-	beltr = /obj/item/keyring/mage
+	beltr = /obj/item/storage/keyring/mage
 	backr = /obj/item/storage/backpack/rogue/satchel
 	r_hand = /obj/item/rogueweapon/woodstaff
 	if(H.pronouns == SHE_HER)

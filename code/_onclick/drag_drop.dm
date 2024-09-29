@@ -142,7 +142,8 @@
 				mouse_pointer_icon = mob.mmb_intent.pointer
 		return
 	if (L["left"]) //start charging a lmb intent
-		mob.face_atom(object, location, control, params)
+		if(!L["shift"] || mob.BehindAtom(AD, mob.dir))
+			mob.face_atom(AD, location, control, params)
 		if(L["right"])
 			return
 		if(mob.active_hand_index == 1)

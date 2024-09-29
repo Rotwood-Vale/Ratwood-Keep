@@ -15,10 +15,9 @@
 	var/times_used = 0 //Number of times it's been used.
 	var/burnt_out = FALSE     //Is the flash burnt out?
 	var/burnout_resistance = 0
-	var/last_used = 0 //last world.time it was used.
+	last_used = 0 //last world.time it was used.						
 	var/cooldown = 0
 	var/last_trigger = 0 //Last time it was successfully triggered.
-
 /obj/item/assembly/flash/suicide_act(mob/living/user)
 	if(burnt_out)
 		user.visible_message(span_suicide("[user] raises \the [src] up to [user.p_their()] eyes and activates it ... but it's burnt out!"))

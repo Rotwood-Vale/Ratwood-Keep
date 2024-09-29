@@ -26,7 +26,7 @@
 		else
 			var/shown_patreon_level = client.patreonlevel()
 			if(!shown_patreon_level)
-				shown_patreon_level = "None"
+				shown_patreon_level = "Azurean Chad"
 			switch(shown_patreon_level)
 				if(1)
 					shown_patreon_level = "Silver"
@@ -39,13 +39,14 @@
 				if(5)
 					shown_patreon_level = "Lord"
 			to_chat(src, span_info("Donator Level: [shown_patreon_level]"))
-
+		client.recent_changelog()
+/*
 	if(CONFIG_GET(flag/usewhitelist))
 		if(!client.whitelisted())
 			to_chat(src, span_info("You are not on the whitelist."))
 		else
 			to_chat(src, span_info("You are on the whitelist."))
-
+*/
 //	if(motd)
 //		to_chat(src, "<B>If this is your first time here,</B> <a href='byond://?src=[REF(src)];rpprompt=1'>read this lore primer.</a>", handle_whitespace=FALSE)
 
@@ -71,7 +72,7 @@
 		to_chat(src, "The game will start [postfix].")
 		if(client)
 			var/usedkey = ckey(key)
-			if(usedkey in GLOB.anonymize)
-				usedkey = get_fake_key(usedkey)
+			/*if(usedkey in GLOB.anonymize)
+				usedkey = get_fake_key(usedkey)*/
 			var/list/thinz = list("takes a seat.", "settles in.", "joins the session", "joins the table.", "becomes a player.")
 			SEND_TEXT(world, span_notice("[usedkey] [pick(thinz)]"))

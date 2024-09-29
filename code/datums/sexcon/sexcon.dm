@@ -44,65 +44,6 @@
 		return FALSE
 	return TRUE
 
-/datum/sex_controller/proc/can_violate_victim(mob/living/carbon/human/victim)
-	if(!victim.mind)
-		return FALSE
-	if(!victim.mind.key)
-		return FALSE
-	if(!user.client.prefs.violated[victim.mind.key])
-		return FALSE
-	if(user.client.prefs.violated[victim.mind.key] + VIOLATED_ALLOWED_TIME < world.time)
-		return FALSE
-	return TRUE
-
-/datum/sex_controller/proc/need_to_be_violated(mob/living/carbon/human/victim)
-	// Dont need to violate self
-	if(user == victim)
-		return FALSE
-	// If user and victim both are not defiant, then no violation needs to happen
-	if(!user.defiant && !victim.defiant)
-		return FALSE
-	// Need to violate AFK clients
-	if(victim.mind && victim.mind.key && !victim.client)
-		return TRUE
-	// Need to violate combat mode people
-	if(victim.cmode)
-		return TRUE
-	return FALSE
-
-/datum/sex_controller/proc/violate_victim(mob/living/carbon/human/victim)
-	if(!user.client)
-		return
-	if(!victim.mind)
-		return
-	if(!victim.mind.key)
-		return
-	if(user.client.prefs.violated[victim.mind.key] && user.client.prefs.violated[victim.mind.key] + VIOLATED_ALLOWED_TIME >= world.time)
-		return
-	var/pq_warning = pick(list("If I continue down this road, my soul will be burdened.", "I feel a terrible omen watching me...", "The forces of dark feel heavy on my soul."))
-	to_chat(user, span_userdanger(pq_warning))
-	var/alert = alert(user, "Do I really want to do this?", "Violate", "Yes", "No")
-	if(alert != "Yes")
-		return
-	user.visible_message(span_boldwarning("[user] begins to violate [victim]!"))
-	if(!do_after(user, 5 SECONDS, target = victim))
-		return
-	if(!need_to_be_violated(victim))
-		return
-	if(!user.client)
-		return
-	if(!victim.mind)
-		return
-	if(!victim.mind.key)
-		return
-	if(user.client.prefs.violated[victim.mind.key] && user.client.prefs.violated[victim.mind.key] + VIOLATED_ALLOWED_TIME >= world.time)
-		return
-	// ZAPED
-	to_chat(user, span_boldwarning(pick(list("I feel tainted...", "I feel less human..."))))
-	log_combat(user, victim, "Initiated rape against")
-	adjust_playerquality(-4, user.ckey, reason = "Initiated rape on an AFK/resisting person.")
-	user.client.prefs.violated[victim.mind.key] = world.time
-
 /datum/sex_controller/proc/adjust_speed(amt)
 	speed = clamp(speed + amt, SEX_SPEED_MIN, SEX_SPEED_MAX)
 
@@ -207,6 +148,8 @@
 	set_charge(charge + amount)
 
 /datum/sex_controller/proc/handle_charge(dt)
+	if(user.has_flaw(/datum/charflaw/addiction/lovefiend))
+		dt *= 2
 	adjust_charge(dt * CHARGE_RECHARGE_RATE)
 	if(is_spent())
 		if(arousal > 60)
@@ -490,10 +433,6 @@
 		return
 	if(!can_perform_action(action_type))
 		return
-	if(need_to_be_violated(target) && !can_violate_victim(target))
-		violate_victim(target)
-	if(need_to_be_violated(target) && !can_violate_victim(target))
-		return
 	// Set vars
 	desire_stop = FALSE
 	current_action = action_type
@@ -514,8 +453,6 @@
 		if(!do_after(user, (action.do_time / get_speed_multiplier()), target = target))
 			break
 		if(current_action == null || performed_action_type != current_action)
-			break
-		if(need_to_be_violated(target) && !can_violate_victim(target))
 			break
 		if(!can_perform_action(current_action))
 			break

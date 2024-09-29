@@ -58,6 +58,8 @@
 	inspec += "<br><span class='notice'><b>[name]</b> intent</span>"
 	if(desc)
 		inspec += "\n[desc]"
+	if(reach != 1)
+		inspec += "\n<b>Reach:</b> [reach]"
 	if(damfactor != 1)
 		inspec += "\n<b>Damage:</b> [damfactor]"
 	if(penfactor)
@@ -405,10 +407,10 @@
 	chargetime = 0
 	noaa = TRUE
 	rmb_ranged = TRUE
-	releasedrain = 0
-	misscost = 5
+	releasedrain = 10
+	misscost = 8
 	candodge = TRUE
-	canparry = FALSE
+	canparry = TRUE
 	item_d_type = "blunt"
 
 /datum/intent/unarmed/grab/rmb_ranged(atom/target, mob/user)

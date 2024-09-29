@@ -184,7 +184,16 @@
 	name = "steel dagger"
 	desc = "This is a dagger made of solid steel, more durable."
 	icon_state = "sdagger"
+	force = 20
 	max_integrity = 150
+	smeltresult = /obj/item/ingot/steel
+
+/obj/item/rogueweapon/huntingknife/idagger/dtace
+	name = "'De Tace'"
+	desc = "The right hand of the right hand, this narrow length of steel serves as a quick solution to petty greviences."
+	icon_state = "stiletto"
+	force = 25
+	max_integrity = 200
 	smeltresult = /obj/item/ingot/steel
 
 /obj/item/rogueweapon/huntingknife/idagger/steel/parrying
@@ -203,7 +212,8 @@
 	smeltresult = null
 	sellprice = 50
 	smeltresult = /obj/item/ingot/silver
-	var/last_used = 0
+	last_used = 0
+	is_silver = TRUE
 
 /obj/item/rogueweapon/huntingknife/idagger/silver/pickup(mob/user)
 	. = ..()
@@ -232,7 +242,7 @@
 
 /obj/item/rogueweapon/huntingknife/idagger/silver/mob_can_equip(mob/living/M, mob/living/equipper, slot, disable_warning = FALSE, bypass_equip_delay_self = FALSE)
 	. = ..()
-	if(ishuman(M))
+	if(ishuman(M) && M.mind)
 		var/mob/living/carbon/human/H = M
 		var/datum/antagonist/vampirelord/V_lord = H.mind.has_antag_datum(/datum/antagonist/vampirelord/)
 		var/datum/antagonist/werewolf/W = H.mind.has_antag_datum(/datum/antagonist/werewolf/)
@@ -257,61 +267,6 @@
 			H.fire_act(1,10)
 
 
-/obj/item/rogueweapon/huntingknife/idagger/silver/funny_attack_effects(mob/living/target, mob/living/user = usr, nodmg)
-	if(world.time < src.last_used + 120)
-		to_chat(user, span_notice("The silver effect is on cooldown."))
-		return
-
-	. = ..()
-	if(ishuman(target))
-		var/mob/living/carbon/human/s_user = user
-		var/mob/living/carbon/human/H = target
-		var/datum/antagonist/werewolf/W = H.mind.has_antag_datum(/datum/antagonist/werewolf/)
-		var/datum/antagonist/vampirelord/lesser/V = H.mind.has_antag_datum(/datum/antagonist/vampirelord/lesser)
-		var/datum/antagonist/vampirelord/V_lord = H.mind.has_antag_datum(/datum/antagonist/vampirelord/)
-		if(V)
-			if(V.disguised)
-				H.Knockdown(10)
-				H.Paralyze(10)
-				H.visible_message("<font color='white'>The silver weapon manifests the [H] curse!</font>")
-				to_chat(H, span_userdanger("I'm hit by my BANE!"))
-				H.adjustFireLoss(25)
-				H.fire_act(1,10)
-				H.apply_status_effect(/datum/status_effect/debuff/silver_curse)
-				src.last_used = world.time
-			else
-				to_chat(H, span_userdanger("I'm hit by my BANE!"))
-				H.Knockdown(10)
-				H.Paralyze(10)
-				H.adjustFireLoss(25)
-				H.fire_act(1,10)
-				H.apply_status_effect(/datum/status_effect/debuff/silver_curse)
-				src.last_used = world.time
-		if(V_lord)
-			if(V_lord.vamplevel < 4 && !V)
-				H.Knockdown(10)
-				H.Paralyze(10)
-				to_chat(H, span_userdanger("I'm hit by my BANE!"))
-				H.adjustFireLoss(25)
-				H.fire_act(1,10)
-				src.last_used = world.time
-			if(V_lord.vamplevel == 4 && !V)
-				s_user.Stun(10)
-				s_user.Paralyze(10)
-				s_user.adjustFireLoss(25)
-				s_user.fire_act(1,10)
-				to_chat(s_user, "<font color='red'> The silver weapon fails!</font>")
-				H.visible_message(H, span_userdanger("This feeble metal can't hurt me, I AM THE ANCIENT!"))
-		if(W && W.transformed == TRUE)
-			H.adjustFireLoss(25)
-			H.Paralyze(10)
-			H.Stun(10)
-			H.adjustFireLoss(25)
-			H.fire_act(1,10)
-			to_chat(H, span_userdanger("I'm hit by my BANE!"))
-			src.last_used = world.time
-
-
 /obj/item/rogueweapon/huntingknife/stoneknife
 	possible_item_intents = list(/datum/intent/dagger/cut,/datum/intent/dagger/chop)
 	name = "stone knife"
@@ -329,11 +284,15 @@
 	force = 22
 	icon_state = "elfdagger"
 	item_state = "elfdag"
+	last_used = 0
+	is_silver = TRUE
 
 /obj/item/rogueweapon/huntingknife/idagger/silver/elvish/drow
 	name = "nite elf dagger"
-	desc = "This ominous, dark handled dagger was crafted by the assassin race of nite elves."
+	desc = "This ominous, dark handled silver dagger was crafted by the assassin race of nite elves."
 	force = 25
+	last_used = 0
+	is_silver = TRUE
 
 /obj/item/rogueweapon/huntingknife/idagger/navaja
 	possible_item_intents = list(/datum/intent/dagger/thrust,/datum/intent/dagger/cut,  /datum/intent/dagger/thrust/pick)

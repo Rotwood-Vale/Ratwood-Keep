@@ -63,11 +63,6 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "E
 	if(ttime >= GLOB.round_timer)
 		if(roundvoteend)
 			if(ttime >= (GLOB.round_timer + ROUND_END_TIME) )
-				for(var/mob/living/carbon/human/H in GLOB.human_list)
-					if(H.stat != DEAD)
-						if(H.allmig_reward)
-							H.adjust_triumphs(H.allmig_reward)
-							H.allmig_reward = 0
 				return TRUE
 		else
 			if(!SSvote.mode && SSticker.autovote)

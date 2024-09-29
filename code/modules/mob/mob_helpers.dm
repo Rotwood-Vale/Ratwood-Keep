@@ -128,8 +128,6 @@
 				newletter+="[newletter]"
 			if(20)
 				newletter+="[newletter][newletter]"
-		if(rand(1,100)==100)
-			newletter= "ඞ" //amogus
 		newphrase+="[newletter]";counter-=1
 	return newphrase
 
@@ -978,6 +976,8 @@
 			used_title = advjob
 	else if(job)
 		var/datum/job/J = SSjob.GetJob(job)
+		if(!J)
+			return "unknown"
 		used_title = J.title
 		if(J.f_title && (pronouns == SHE_HER))
 			used_title = J.f_title

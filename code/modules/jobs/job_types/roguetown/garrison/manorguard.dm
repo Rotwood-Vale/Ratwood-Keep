@@ -45,7 +45,7 @@
 	gloves = /obj/item/clothing/gloves/roguetown/leather
 	neck = /obj/item/clothing/neck/roguetown/gorget
 	shoes = /obj/item/clothing/shoes/roguetown/boots/leather
-	beltl = /obj/item/keyring/guardcastle
+	beltl = /obj/item/storage/keyring/guardcastle
 	belt = /obj/item/storage/belt/rogue/leather/black
 	backr = /obj/item/storage/backpack/rogue/satchel/black
 	backpack_contents = list(/obj/item/signal_horn = 1)
@@ -100,7 +100,7 @@
 			backl = /obj/item/rogueweapon/shield/wood
 		if("Billhook & Cudgel")
 			beltr = /obj/item/rogueweapon/mace/cudgel
-			backl = /obj/item/rogueweapon/spear/billhook
+			r_hand = /obj/item/rogueweapon/spear/billhook
 
 	backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger/steel/special = 1, /obj/item/rope/chain = 1)
 	H.verbs |= /mob/proc/haltyell

@@ -28,7 +28,7 @@
 	..()
 	belt = /obj/item/storage/belt/rogue/leather/rope
 	beltr = /obj/item/storage/belt/rogue/pouch/coins/poor
-	beltl = /obj/item/keyring/churchie
+	beltl = /obj/item/storage/keyring/churchie
 	switch(H.patron?.type)
 		if(/datum/patron/divine/astrata)
 			head = /obj/item/clothing/head/roguetown/roguehood/astrata
@@ -36,7 +36,7 @@
 			wrists = /obj/item/clothing/wrists/roguetown/wrappings
 			shoes = /obj/item/clothing/shoes/roguetown/sandals
 			armor = /obj/item/clothing/suit/roguetown/shirt/robe/astrata
-		if(/datum/patron/divine/noc) 
+		if(/datum/patron/divine/noc)
 			head = /obj/item/clothing/head/roguetown/nochood
 			neck = /obj/item/clothing/neck/roguetown/psicross/noc
 			wrists = /obj/item/clothing/wrists/roguetown/nocwrappings
@@ -88,9 +88,9 @@
 		H.mind.adjust_skillrank(/datum/skill/magic/holy, 4, TRUE)
 		if(H.age == AGE_OLD)
 			H.mind.adjust_skillrank(/datum/skill/magic/holy, 1, TRUE)
-		H.change_stat("intelligence", 1)
-		H.change_stat("endurance", 1)
-		H.change_stat("perception", -1)
+		H.change_stat("intelligence", 3)
+		H.change_stat("endurance", 2)
+		H.change_stat("speed", 1)
 		if(H.patron?.type == /datum/patron/divine/necra)
 			ADD_TRAIT(H, TRAIT_NOSTINK, TRAIT_GENERIC)
 			ADD_TRAIT(H, TRAIT_SOUL_EXAMINE, TRAIT_GENERIC)

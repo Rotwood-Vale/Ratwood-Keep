@@ -16,7 +16,7 @@
 	beltl = /obj/item/rogueweapon/tongs
 
 	neck = /obj/item/storage/belt/rogue/pouch/coins/poor
-	gloves = /obj/item/clothing/gloves/roguetown/leather
+	gloves = /obj/item/clothing/gloves/roguetown/grenzelgloves/blacksmith
 	cloak = /obj/item/clothing/cloak/apron/blacksmith
 	mouth = /obj/item/rogueweapon/huntingknife
 	pants = /obj/item/clothing/under/roguetown/trou
