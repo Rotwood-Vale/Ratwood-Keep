@@ -30,52 +30,9 @@
 	. = ..()
 	if(tag)
 		switch(tag)
-			if("gen")
-				return list("shrink" = 0.7,
-"sx" = -16,
-"sy" = -3,
-"nx" = 5,
-"ny" = -3,
-"wx" = -13,
-"wy" = -4,
-"ex" = -1,
-"ey" = -4,
-"northabove" = 0,
-"southabove" = 1,
-"eastabove" = 1,
-"westabove" = 0,
-"nturn" = -15,
-"sturn" = 12,
-"wturn" = 0,
-"eturn" = 354,
-"nflip" = 0,
-"sflip" = 8,
-"wflip" = 8,
-"eflip" = 0)
-			if("wielded")
-				return list("shrink" = 0.8,
-"sx" = -3,
-"sy" = -14,
-"nx" = -12,
-"ny" = -15,
-"wx" = -9,
-"wy" = -14,
-"ex" = -4,
-"ey" = -13,
-"northabove" = 0,
-"southabove" = 1,
-"eastabove" = 1,
-"westabove" = 0,
-"nturn" = 0,
-"sturn" = -6,
-"wturn" = -3,
-"eturn" = -21,
-"nflip" = 8,
-"sflip" = 0,
-"wflip" = 0,
-"eflip" = 0)
-			if("onbelt")
-				return list("shrink" = 0.3,"sx" = -2,"sy" = -5,"nx" = 4,"ny" = -5,"wx" = 0,"wy" = -5,"ex" = 2,"ey" = -5,"nturn" = 0,"sturn" = 0,"wturn" = 0,"eturn" = 0,"nflip" = 0,"sflip" = 0,"wflip" = 0,"eflip" = 0,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0)
+			if("gen") return list("shrink" = 0.7,"sx" = -9,"sy" = 0,"nx" = 10,"ny" = 1,"wx" = -5,"wy" = 0,"ex" = 2,"ey" = 0,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0,"nturn" = -15,"sturn" = 12,"wturn" = 0,"eturn" = 354,"nflip" = 0,"sflip" = 8,"wflip" = 8,"eflip" = 0)
+			if("wielded") return list("shrink" = 0.8,"sx" = 4,"sy" = -8,"nx" = -3,"ny" = -9,"wx" = -2,"wy" = -6,"ex" = 7,"ey" = -7,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0,"nturn" = 0,"sturn" = -6,"wturn" = 7,"eturn" = -21,"nflip" = 8,"sflip" = 0,"wflip" = 8,"eflip" = 0)
+			if("onbelt") return list("shrink" = 0.7,"sx" = 5,"sy" = 2,"nx" = -1,"ny" = 2,"wx" = 0,"wy" = 4,"ex" = 1,"ey" = 3,"nturn" = 0,"sturn" = 0,"wturn" = 0,"eturn" = 0,"nflip" = 8,"sflip" = 0,"wflip" = 8,"eflip" = 0,"northabove" = 1,"southabove" = 0,"eastabove" = 0,"westabove" = 0)
 
 /obj/item/rogueweapon/thresher/afterattack(obj/target, mob/user, proximity)
 	if(user.used_intent.type == /datum/intent/flailthresh)
@@ -114,31 +71,8 @@
 	. = ..()
 	if(tag)
 		switch(tag)
-			if("gen")
-				return list("shrink" = 0.6,
-"sx" = -13,
-"sy" = -4,
-"nx" = 7,
-"ny" = -4,
-"wx" = -10,
-"wy" = -4,
-"ex" = 0,
-"ey" = -4,
-"northabove" = 0,
-"southabove" = 1,
-"eastabove" = 1,
-"westabove" = 0,
-"nturn" = 0,
-"sturn" = 0,
-"wturn" = 0,
-"eturn" = 0,
-"nflip" = 0,
-"sflip" = 8,
-"wflip" = 8,
-"eflip" = 0)
-			if("onbelt")
-				return list("shrink" = 0.3,"sx" = -2,"sy" = -5,"nx" = 4,"ny" = -5,"wx" = 0,"wy" = -5,"ex" = 2,"ey" = -5,"nturn" = 0,"sturn" = 0,"wturn" = 0,"eturn" = 0,"nflip" = 0,"sflip" = 0,"wflip" = 0,"eflip" = 0,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0)
-
+			if("gen") return list("shrink" = 0.6,"sx" = -9,"sy" = 1,"nx" = 12,"ny" = 1,"wx" = -5,"wy" = 1,"ex" = 4,"ey" = 1,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0,"nturn" = 0,"sturn" = 0,"wturn" = 0,"eturn" = 0,"nflip" = 0,"sflip" = 8,"wflip" = 8,"eflip" = 0)
+			if("onbelt") return list("shrink" = 0.5,"sx" = -2,"sy" = -3,"nx" = 3,"ny" = -3,"wx" = -2,"wy" = -3,"ex" = 3,"ey" = -2,"nturn" = 0,"sturn" = 0,"wturn" = 0,"eturn" = 0,"nflip" = 8,"sflip" = 0,"wflip" = 8,"eflip" = 0,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0)
 
 /obj/item/rogueweapon/hoe
 	force = 10
@@ -285,52 +219,9 @@
 	. = ..()
 	if(tag)
 		switch(tag)
-			if("gen")
-				return list("shrink" = 0.7,
-"sx" = -16,
-"sy" = -3,
-"nx" = 5,
-"ny" = -3,
-"wx" = -13,
-"wy" = -4,
-"ex" = -1,
-"ey" = -4,
-"northabove" = 0,
-"southabove" = 1,
-"eastabove" = 1,
-"westabove" = 0,
-"nturn" = -15,
-"sturn" = 12,
-"wturn" = 0,
-"eturn" = 354,
-"nflip" = 0,
-"sflip" = 8,
-"wflip" = 8,
-"eflip" = 0)
-			if("wielded")
-				return list("shrink" = 0.8,
-"sx" = -3,
-"sy" = -14,
-"nx" = -12,
-"ny" = -15,
-"wx" = -9,
-"wy" = -14,
-"ex" = -4,
-"ey" = -13,
-"northabove" = 0,
-"southabove" = 1,
-"eastabove" = 1,
-"westabove" = 0,
-"nturn" = 0,
-"sturn" = -6,
-"wturn" = -3,
-"eturn" = -21,
-"nflip" = 8,
-"sflip" = 0,
-"wflip" = 0,
-"eflip" = 0)
-			if("onbelt")
-				return list("shrink" = 0.3,"sx" = -2,"sy" = -5,"nx" = 4,"ny" = -5,"wx" = 0,"wy" = -5,"ex" = 2,"ey" = -5,"nturn" = 0,"sturn" = 0,"wturn" = 0,"eturn" = 0,"nflip" = 0,"sflip" = 0,"wflip" = 0,"eflip" = 0,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0)
+			if("gen") return list("shrink" = 0.7,"sx" = -9,"sy" = 2,"nx" = 10,"ny" = 2,"wx" = -6,"wy" = 1,"ex" = 3,"ey" = 1,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0,"nturn" = -15,"sturn" = 12,"wturn" = 0,"eturn" = 354,"nflip" = 0,"sflip" = 8,"wflip" = 8,"eflip" = 0)
+			if("wielded") return list("shrink" = 0.8,"sx" = 7,"sy" = -3,"nx" = -6,"ny" = -2,"wx" = -3,"wy" = -2,"ex" = 7,"ey" = -2,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0,"nturn" = -38,"sturn" = 39,"wturn" = -35,"eturn" = 27,"nflip" = 8,"sflip" = 0,"wflip" = 8,"eflip" = 0)
+			if("onback") return list("shrink" = 0.7,"sx" = 1,"sy" = 3,"nx" = -1,"ny" = 3,"wx" = 4,"wy" = 3,"ex" = -3,"ey" = 3,"nturn" = 0,"sturn" = 0,"wturn" = 0,"eturn" = 0,"nflip" = 8,"sflip" = 0,"wflip" = 0,"eflip" = 8,"northabove" = 1,"southabove" = 0,"eastabove" = 0,"westabove" = 0)
 
 /datum/intent/pforkdump
 	name = "scoop"
