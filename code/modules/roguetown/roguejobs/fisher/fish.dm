@@ -21,11 +21,11 @@
 
 /obj/item/reagent_containers/food/snacks/fish/Initialize()
 	. = ..()
-	var/rarity = pickweight(list("gold" = 1, "ultra" =40, "rare"=50, "com"=900))
+	var/rarity = pickweight(list("gold" = 2, "ultra" =40, "rare"=50, "com"=900))
 	icon_state = "[initial(icon_state)][rarity]"
 	switch(rarity)
 		if("gold")
-			sellprice = sellprice * 10
+			sellprice = sellprice * 10 + 200
 			name = "legendary [initial(name)]"
 		if("ultra")
 			sellprice = sellprice * 4
@@ -135,17 +135,17 @@
 /obj/item/reagent_containers/food/snacks/rogue/fryfish/eel
 	icon_state = "eelcooked"
 
-/obj/item/reagent_containers/food/snacks/rogue/fryfish/carp/rare
-	eat_effect = list(/datum/status_effect/buff/foodbuff, /datum/status_effect/buff/blessed)
+/obj/item/reagent_containers/food/snacks/rogue/fryfish/carp/gold
+	eat_effect = list(/datum/status_effect/buff/foodbuff/legendary, /datum/status_effect/buff/blessed)
 
-/obj/item/reagent_containers/food/snacks/rogue/fryfish/clownfish/rare
-	eat_effect = list(/datum/status_effect/buff/foodbuff, /datum/status_effect/buff/blessed)
+/obj/item/reagent_containers/food/snacks/rogue/fryfish/clownfish/gold
+	eat_effect = list(/datum/status_effect/buff/foodbuff/legendary, /datum/status_effect/buff/blessed)
 
-/obj/item/reagent_containers/food/snacks/rogue/fryfish/angler/rare
-	eat_effect = list(/datum/status_effect/buff/foodbuff, /datum/status_effect/buff/blessed)
+/obj/item/reagent_containers/food/snacks/rogue/fryfish/angler/gold
+	eat_effect = list(/datum/status_effect/buff/foodbuff/legendary, /datum/status_effect/buff/blessed)
 
-/obj/item/reagent_containers/food/snacks/rogue/fryfish/eel/rare
-	eat_effect = list(/datum/status_effect/buff/foodbuff, /datum/status_effect/buff/blessed)
+/obj/item/reagent_containers/food/snacks/rogue/fryfish/eel/gold
+	eat_effect = list(/datum/status_effect/buff/foodbuff/legendary, /datum/status_effect/buff/blessed)
 
 /obj/item/reagent_containers/food/snacks/rogue/fryfish/shrimp
 	icon_state = "shrimpcooked"
