@@ -57,7 +57,7 @@
 		ORGAN_SLOT_LIVER = /obj/item/organ/liver,
 		ORGAN_SLOT_STOMACH = /obj/item/organ/stomach,
 		ORGAN_SLOT_APPENDIX = /obj/item/organ/appendix,
-		ORGAN_SLOT_TAIL = /obj/item/organ/tail/cat,
+		//ORGAN_SLOT_TAIL = /obj/item/organ/tail/cat, //Commenting out due to use of customizer organs.
 		ORGAN_SLOT_SNOUT = /obj/item/organ/snout/cat,
 		ORGAN_SLOT_TESTICLES = /obj/item/organ/testicles,
 		ORGAN_SLOT_PENIS = /obj/item/organ/penis/barbed,
