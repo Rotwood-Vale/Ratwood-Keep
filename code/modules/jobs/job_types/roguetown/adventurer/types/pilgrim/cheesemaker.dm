@@ -2,7 +2,7 @@
 	name = "Cheesemaker"
 	tutorial = "Cheese cheese cheese! You have a rare wheel of cheese and know how to make more of the rare delicacy \
 	As very skilled cook you come with some ingredients to make food and feed the masses. \
-	cook up some quisine with food gathered from the local flora and fauna"
+	cook up some cuisine with food gathered from the local flora and fauna"
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
 	outfit = /datum/outfit/job/roguetown/adventurer/cheesemaker
@@ -39,9 +39,10 @@
 	beltl = /obj/item/flint
 	backpack_contents = list(
 		/obj/item/reagent_containers/powder/salt = 3,
-		/obj/item/reagent_containers/food/snacks/rogue/cheddar = 1,
+		/obj/item/reagent_containers/food/snacks/rogue/cheddar = 2,
 		/obj/item/natural/cloth = 2,
 		/obj/item/book/rogue/yeoldecookingmanual = 1,
 		)
-	H.change_stat("intelligence", 1)
+	H.change_stat("intelligence", 2)
 	H.change_stat("constitution", 2) // Cheese diet.
+	H.change_stat("endurance", 1)

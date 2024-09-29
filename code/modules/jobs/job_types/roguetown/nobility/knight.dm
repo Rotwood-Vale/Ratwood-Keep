@@ -96,9 +96,9 @@
 	H.verbs |= /mob/proc/haltyell
 
 
-	H.change_stat("strength", 4)
-	H.change_stat("constitution", 3)
-	H.change_stat("endurance", 3)
+	H.change_stat("strength", 2) //HEY, YOU, BEFORE YOU CHANGE THIS BECAUSE SOMEONE TOOK A STAT PACK WITH -STR: this is specifically because people extremely oftenly broke the 15/16 str threshhold. don't do it.
+	H.change_stat("constitution", 2)
+	H.change_stat("endurance", 2)
 	H.change_stat("speed", -2)		//Lower speed for more strength and con of other knight, and to off-set endurance. (They need the end-stam for 2 handed.)
 
 	H.adjust_blindness(-3)
@@ -151,8 +151,8 @@
 	H.dna.species.soundpack_m = new /datum/voicepack/male/knight()		//For knightly voices; even though I despise them.
 	H.verbs |= /mob/proc/haltyell
 
-	H.change_stat("strength", 3)
-	H.change_stat("constitution", 2)
+	H.change_stat("strength", 2)
+	H.change_stat("constitution", 1)
 	H.change_stat("endurance", 2)
 	H.change_stat("speed", -1)			//Bit faster than a heavy knight, not as fast as a mounted knight.
 
@@ -206,9 +206,9 @@
 	H.dna.species.soundpack_m = new /datum/voicepack/male/knight()		//For knightly voices; even though I despise them.
 	H.verbs |= /mob/proc/haltyell
 
-	H.change_stat("strength", 2)			//Worse strength than others, but bonus intel and no speed penalty.
+	H.change_stat("strength", 1)			//Worse strength than others, but bonus intel and no speed penalty.
 	H.change_stat("intelligence", 2)		//Bonus intel for feinting; swords-moment.
-	H.change_stat("constitution", 2)
+	H.change_stat("constitution", 1)
 	H.change_stat("endurance", 2)
 
 	H.adjust_blindness(-3)
