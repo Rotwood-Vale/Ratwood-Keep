@@ -12,7 +12,6 @@
 /datum/customizer/organ/frills/lizard
 	customizer_choices = list(/datum/customizer_choice/organ/frills/lizard)
 
-
 /datum/customizer_choice/organ/frills/lizard
 	name = "Frills"
 	organ_type = /obj/item/organ/frills/lizard
