@@ -70,6 +70,20 @@
 		/datum/sprite_accessory/tail/sharknofin,
 		)
 
+/datum/customizer/organ/tail/tiefling
+	customizer_choices = list(/datum/customizer_choice/organ/tail/tiefling)
+	allows_disabling = FALSE
+
+/datum/customizer_choice/organ/tail/tiefling
+	name = "Tiefling Tail"
+	organ_type = /obj/item/organ/tail/tiefling
+	generic_random_pick = TRUE
+	sprite_accessories = list(
+		/datum/sprite_accessory/tail/tiefling,
+		/datum/sprite_accessory/tail/tiefling/heart,
+		)
+	allows_accessory_color_customization = FALSE
+
 /datum/customizer/organ/tail/demihuman
 	customizer_choices = list(/datum/customizer_choice/organ/tail/demihuman)
 	allows_disabling = TRUE

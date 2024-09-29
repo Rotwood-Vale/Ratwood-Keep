@@ -323,6 +323,14 @@
 
 /datum/sprite_accessory/tail/tiefling
 	name = "Tiefling"
-	icon = 'icons/mob/sprite_accessory/tiefling.dmi'
+	icon = 'icons/mob/sprite_accessory/tails/tiefling.dmi'
 	icon_state = "tiebtail"
 	color_key_defaults = list(KEY_SKIN_COLOR)
+	can_wag = TRUE
+
+/datum/sprite_accessory/tail/tiefling/heart
+	name = "Succubus"
+	icon = 'icons/mob/sprite_accessory/tails/tiefling.dmi'
+	icon_state = "hearttail"
+	color_key_defaults = list(KEY_SKIN_COLOR)
+	can_wag = TRUE
