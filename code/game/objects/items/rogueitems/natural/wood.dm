@@ -90,9 +90,9 @@
 		return
 	if(istype(I, /obj/item/grown/log/tree/stick))
 		var/obj/item/natural/bundle/stick/F = new(src.loc)
+		qdel(I)
 		H.put_in_hands(F)
 		H.visible_message("[user] ties the sticks into a bundle.")
-		qdel(I)
 		qdel(src)
 	if(istype(I, /obj/item/natural/bundle/stick))
 		var/obj/item/natural/bundle/stick/B = I
