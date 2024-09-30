@@ -167,3 +167,27 @@
 
 /mob/living/carbon/human/species/skeleton/npc/dungeon/boss
 	skel_outfit = /datum/outfit/job/roguetown/npc/skeleton/dungeon/boss
+
+/mob/living/carbon/human/species/skeleton/dwarf
+	name = "skeleton"
+	race = /datum/species/dwarf/mountain
+	gender = MALE
+	bodyparts = list(/obj/item/bodypart/chest, /obj/item/bodypart/head, /obj/item/bodypart/l_arm,
+					 /obj/item/bodypart/r_arm, /obj/item/bodypart/r_leg, /obj/item/bodypart/l_leg)
+	faction = list("undead")
+	skel_outfit = /datum/outfit/job/roguetown/npc/skeleton
+	ambushable = FALSE
+	rot_type = null
+	possible_rmb_intents = list()
+
+
+/mob/living/carbon/human/species/skeleton/dwarf/npc
+	aggressive = 1
+	mode = AI_IDLE
+	wander = FALSE
+
+/mob/living/carbon/human/species/skeleton/dwarf/npc/ambush
+	wander = TRUE
+
+/mob/living/carbon/human/species/skeleton/dwarf/npc/dungeon
+	skel_outfit = /datum/outfit/job/roguetown/npc/skeleton/dungeon

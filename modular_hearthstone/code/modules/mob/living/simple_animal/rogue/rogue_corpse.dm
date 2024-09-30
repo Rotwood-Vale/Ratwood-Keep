@@ -1,4 +1,25 @@
 
+// HUMAN
+
+/obj/effect/mob_spawn/human/searaider
+
+	mob_name = "northman"
+	mob_type = /mob/living/carbon/human/species/human/northern
+	mob_species = /datum/species/human/northern
+	brute_damage = 80
+
+/obj/effect/mob_spawn/human/searaider/archer
+	skin_tone = SKIN_COLOR_GRENZELHOFT
+	outfit = /datum/outfit/searaider
+
+/datum/outfit/searaider
+	armor = /obj/item/clothing/suit/roguetown/armor/leather/vest
+	shirt = /obj/item/clothing/suit/roguetown/armor/gambeson
+	pants =	/obj/item/clothing/under/roguetown/trou/plainpants
+	shoes = /obj/item/clothing/shoes/roguetown/boots/furlinedboots
+	head = /obj/item/clothing/head/roguetown/helmet/leather
+	neck = /obj/item/clothing/neck/roguetown/psicross/skull
+
 // ORC
 
 /obj/effect/mob_spawn/human/orc
@@ -67,8 +88,21 @@
 	mask = /obj/item/clothing/mask/rogue/skullmask
 
 
+// GOBLIN
 
+/obj/effect/mob_spawn/human/goblin
 
+	mob_name = "goblin"
+	mob_type = /mob/living/carbon/human/species/goblin/unarmed
+	mob_species = /datum/species/goblin
+	brute_damage = 80
+
+/obj/effect/mob_spawn/human/goblin_cave
+
+	mob_name = "goblin"
+	mob_type = /mob/living/carbon/human/species/goblin/cave/unarmed
+	mob_species = /datum/species/goblin/cave
+	brute_damage = 80
 
 
 // SKELETONS

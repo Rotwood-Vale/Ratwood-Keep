@@ -110,6 +110,7 @@ GLOBAL_LIST_INIT(orcraider_aggro, world.file2list("strings/rt/orcraideraggroline
 		shoes = /obj/item/clothing/shoes/roguetown/boots/furlinedanklets
 	else
 		shoes = /obj/item/clothing/shoes/roguetown/boots/furlinedboots
+	neck = /obj/item/clothing/neck/roguetown/psicross/skull
 	H.STASTR = rand(14,16)
 	H.STASPD = rand(8,10)
 	H.STACON = rand(9,10)
@@ -141,6 +142,7 @@ GLOBAL_LIST_INIT(orcraider_aggro, world.file2list("strings/rt/orcraideraggroline
 		shoes = /obj/item/clothing/shoes/roguetown/boots/armoriron
 	else
 		shoes = /obj/item/clothing/shoes/roguetown/boots/leather
+	neck = /obj/item/clothing/neck/roguetown/psicross/skull
 	H.STASTR = rand(14,16)
 	H.STASPD = rand(10,11)
 	H.STACON = rand(7,10)

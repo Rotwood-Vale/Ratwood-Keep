@@ -13,6 +13,12 @@
 	base_intents = list(INTENT_HELP, INTENT_DISARM, INTENT_GRAB, /datum/intent/unarmed/claw)
 	possible_rmb_intents = list()
 
+/mob/living/carbon/human/species/goblin/unarmed
+	gob_outfit = null
+
+/mob/living/carbon/human/species/goblin/cave/unarmed
+	gob_outfit = null
+
 /mob/living/carbon/human/species/goblin/npc
 	aggressive=1
 	mode = AI_IDLE

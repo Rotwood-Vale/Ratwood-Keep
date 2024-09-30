@@ -47,7 +47,7 @@
 	allowed_turfs = list(/turf/open/floor/rogue/grass)
 	excluded_turfs = list()
 	allowed_areas = list(/area/rogue/outdoors/woods)
-	spawnableAtoms = list(/obj/structure/flora/roguetree = 30,
+	spawnableAtoms = list(/obj/structure/flora/roguetree = 50,
 							/obj/structure/flora/roguetree/wise=1,
 							/obj/structure/flora/roguegrass/bush = 25,
 							/obj/structure/flora/roguegrass = 44,
