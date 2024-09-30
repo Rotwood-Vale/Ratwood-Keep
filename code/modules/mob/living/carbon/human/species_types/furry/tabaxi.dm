@@ -75,6 +75,7 @@
 		/datum/customizer/organ/penis/feline,
 		/datum/customizer/organ/breasts/animal,
 		/datum/customizer/organ/vagina/animal,
+		/datum/customizer/organ/ears/tajaran
 		)
 	body_marking_sets = list(
 		/datum/body_marking_set/none,
@@ -84,6 +85,7 @@
 	)
 	body_markings = list(
 		/datum/body_marking/flushed_cheeks,
+		/datum/body_marking/eyeliner,
 		/datum/body_marking/belly,
 		/datum/body_marking/bellyslim,
 		/datum/body_marking/butt,

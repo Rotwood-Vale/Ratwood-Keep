@@ -280,8 +280,8 @@
 /obj/item/rogueweapon/huntingknife/idagger/silver/elvish
 	possible_item_intents = list(/datum/intent/dagger/thrust,/datum/intent/dagger/cut,  /datum/intent/dagger/thrust/pick)
 	name = "elvish dagger"
-	desc = "This beautiful silver dagger is of intricate, elvish design. Sharper, too."
-	force = 19
+	desc = "This beautiful dagger is of intricate, elvish design. Sharper, too."
+	force = 22
 	icon_state = "elfdagger"
 	item_state = "elfdag"
 	last_used = 0

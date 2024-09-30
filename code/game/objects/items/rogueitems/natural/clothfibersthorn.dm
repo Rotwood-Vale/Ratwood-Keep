@@ -6,7 +6,7 @@
 	force = 0
 	throwforce = 0
 	obj_flags = null
-	color = "#454032"
+	color = "#575e4a"
 	firefuel = 5 MINUTES
 	resistance_flags = FLAMMABLE
 	slot_flags = ITEM_SLOT_MOUTH
@@ -238,7 +238,7 @@
 	throwforce = 0
 	maxamount = 6
 	obj_flags = null
-	color = "#454032"
+	color = "#575e4a"
 	firefuel = 5 MINUTES
 	resistance_flags = FLAMMABLE
 	slot_flags = ITEM_SLOT_MOUTH
