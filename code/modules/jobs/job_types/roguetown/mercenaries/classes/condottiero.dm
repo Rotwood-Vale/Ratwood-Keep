@@ -3,6 +3,7 @@
 	name = "Condottiero Guildsman"
 	tutorial = "Hailing from shady port cities you found your calling in life. Slinging bolts, cutting throats, and taking names. Wether an ex-thief or an ex-guard, it matters not. You are bound by your Guild, and you are bound by coin."
 	allowed_sexes = list(MALE, FEMALE)
+	allowed_races = RACES_ALL_KINDS
 	outfit = /datum/outfit/job/roguetown/mercenary/condottiero
 	category_tags = list(CTAG_MERCENARY)
 	maximum_possible_slots = 5

@@ -64,7 +64,7 @@
 
 /datum/advclass/knight/heavy
 	name = "Heavy Knight"
-	tutorial = "While other knights may specialize in horse riding and swords, you specialize in ultra-heavy weapons, shockingly adept with massive swords, axes, and maces. People may fear the mounted knights, but they should truly fear those who come off their mount.."
+	tutorial = "You are the indesputed master of man-on-man combat. Shockingly adept with massive swords, axes, and maces. People may fear the mounted knights, but they should truly fear those who come off their mount.."
 	outfit = /datum/outfit/job/roguetown/knight/heavy
 
 	category_tags = list(CTAG_ROYALGUARD)
@@ -100,7 +100,7 @@
 	H.change_stat("constitution", 2)
 	H.change_stat("endurance", 2)
 	H.change_stat("perception", 1)
-	H.change_stat("speed", -2)		//Lower speed for more strength and con of other knight, and to off-set endurance. (They need the end-stam for 2 handed.)
+	H.change_stat("speed", -2)		//Lower speed for more strength and con vs other knight, and to off-set endurance. (They need the end-stam for 2 handed.)
 
 	H.adjust_blindness(-3)
 	var/weapons = list("Zweihander","Great Mace","Battle Axe")
@@ -191,6 +191,8 @@
 	H.mind.adjust_skillrank(/datum/skill/combat/maces, 4, TRUE)		//gave mounted knights maces instead of flails because we only have the one-handed flails currently and maces were more commonly used on horseback
 	H.mind.adjust_skillrank(/datum/skill/combat/shields, 3, TRUE)		//Mildly better shield skill due to less weapon options.
 	H.mind.adjust_skillrank(/datum/skill/misc/riding, 4, TRUE)			//this is their THING
+	H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 2, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/combat/bows, 1, TRUE)
 
 	//Normal shared skill section.
 	H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 4, TRUE)
@@ -199,8 +201,8 @@
 	H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 1, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/reading, 2, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 3, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/combat/bows, 3, TRUE)			//Gets gaurenteed skill due to experience mounted. Maybe buff to 4; only effects aiming time.
+	H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 2, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/combat/bows, 3, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/combat/knives, 3, TRUE)
 	ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_STEELHEARTED, TRAIT_GENERIC)	//Knights should be used to the horrors of war if they're tride-and-true.
