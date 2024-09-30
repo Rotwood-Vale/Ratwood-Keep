@@ -15,7 +15,7 @@
 	H.mind.adjust_skillrank(/datum/skill/craft/crafting, 2, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/reading, 3, TRUE) // Cookbooks.
 	H.mind.adjust_skillrank(/datum/skill/labor/butchering, 5, TRUE) // Same as butcher, but doesn't start with livestock.
-	H.mind.adjust_skillrank(/datum/skill/craft/cooking, 5, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/craft/cooking, 4, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/labor/farming, 1, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/medicine, 1, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/combat/knives, 4, TRUE) 
