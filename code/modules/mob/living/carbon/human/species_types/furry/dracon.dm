@@ -79,6 +79,7 @@
 	)
 	body_markings = list(
 		/datum/body_marking/flushed_cheeks,
+		/datum/body_marking/eyeliner,
 		/datum/body_marking/bellyscale,
 		/datum/body_marking/bellyscaleslim,
 		/datum/body_marking/bellyscaleslimsmooth,

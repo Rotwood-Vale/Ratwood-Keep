@@ -379,28 +379,23 @@
 		if(o_intent)
 			o_intent.afterchange()
 	else
-		var/obj/item/Masteritem = get_active_held_item()
 		if(numb)
 			if(numb > possible_a_intents.len)
 				return
 			else
 				if(active_hand_index == 1)
-					if(!Masteritem)
-						l_ua_index = numb
+					l_ua_index = numb
 					l_index = numb
 				else
-					if(!Masteritem)
-						r_ua_index = numb
+					r_ua_index = numb
 					r_index = numb
 				a_intent = possible_a_intents[numb]
 		else
 			if(active_hand_index == 1)
-				if(!Masteritem)
-					l_ua_index = numb
+				l_ua_index = numb
 				l_index = numb
 			else
-				if(!Masteritem)
-					r_ua_index = numb
+				r_ua_index = numb
 				r_index = numb
 			a_intent = null
 		if(a_intent)
@@ -558,7 +553,7 @@
 	if(isliving(src))
 		L = src
 	var/client/client = L.client
-	if(L.IsSleeping())
+	if(L.IsSleeping() || L.surrendering)
 		if(cmode)
 			playsound_local(src, 'sound/misc/comboff.ogg', 100)
 			SSdroning.play_area_sound(get_area(src), client)

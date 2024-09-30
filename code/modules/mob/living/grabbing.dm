@@ -429,7 +429,7 @@
 		playsound(C.loc, "smallslash", 100, FALSE, -1)
 		var/datum/wound/caused_wound = limb_grabbed.bodypart_attacked_by(BCLASS_BITE, damage, user, sublimb_grabbed, crit_message = TRUE)
 		if(user.mind)
-			if(user.mind.has_antag_datum(/datum/antagonist/werewolf))
+			if(istype(user.dna.species, /datum/species/werewolf))
 				caused_wound?.werewolf_infect_attempt()
 				if(prob(30))
 					user.werewolf_feed(C)

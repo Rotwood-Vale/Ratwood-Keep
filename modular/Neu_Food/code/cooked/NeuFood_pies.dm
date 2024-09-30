@@ -21,6 +21,8 @@
 	var/potpie
 	var/berrypie
 	var/poisoning
+	var/crabby
+	var/substitute //There may be a better way to do this
 
 /obj/item/reagent_containers/food/snacks/rogue/foodbase/piebottom/update_icon()
 	. = ..()
@@ -42,6 +44,9 @@
 	if (process_step == 2 && berrypie)
 		var/mutable_appearance/berry1 = mutable_appearance(icon, "fill_berry1")
 		add_overlay(berry1)
+	if (process_step == 2 && crabby)
+		var/mutable_appearance/crabby1 = mutable_appearance(icon, "fill_crab1")
+		add_overlay(crabby1)
 	if (process_step == 3 && applepie)
 		var/mutable_appearance/apple2 = mutable_appearance(icon, "fill_apple2")
 		add_overlay(apple2)
@@ -57,6 +62,9 @@
 	if (process_step == 3 && berrypie)
 		var/mutable_appearance/berry2 = mutable_appearance(icon, "fill_berry2")
 		add_overlay(berry2)
+	if (process_step == 3 && crabby)
+		var/mutable_appearance/crabby2 = mutable_appearance(icon, "fill_crab2")
+		add_overlay(crabby2)
 	if (process_step == 4 && applepie)
 		var/mutable_appearance/apple3 = mutable_appearance(icon, "fill_apple3")
 		add_overlay(apple3)
@@ -72,6 +80,9 @@
 	if (process_step == 4 && berrypie)
 		var/mutable_appearance/berry3 = mutable_appearance(icon, "fill_berry3")
 		add_overlay(berry3)
+	if (process_step == 4 && crabby)
+		var/mutable_appearance/crabby3 = mutable_appearance(icon, "fill_crab3")
+		add_overlay(crabby3)
 	else if (process_step == 5)
 		cut_overlays()
 		add_overlay(piebottom)
@@ -230,26 +241,67 @@
 
 
 
+	if(istype(I, /obj/item/reagent_containers/food/snacks/rogue/meat/crab))
+		if (process_step > 4)
+			return
+		playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 30, TRUE, -1)
+		if(process_step == 1 && do_after(user,short_cooktime, target = src))
+			to_chat(user, "<span class='notice'>Starting on a crab pie... You consider that shredded cabbage could be used as filler for one of the remaining ingredients. </span>")
+			name = "unfinished crab pie"
+			process_step += 1
+			crabby = TRUE
+			update_icon()
+			qdel(I)
+			return
+		if(crabby && process_step == 2 && do_after(user,short_cooktime, target = src))
+			to_chat(user, "<span class='notice'>Adding filling to the crab pie. Needs more.</span>")
+			process_step += 1
+			update_icon()
+			qdel(I)
+			return
+		if(crabby && process_step == 3 && do_after(user,short_cooktime, target = src))
+			to_chat(user, "<span class='notice'>Filling the crab pie to the brim. Still lacks a pie roof.</span>")
+			process_step += 1
+			update_icon()
+			qdel(I)
+			return
+
+	if(istype(I, /obj/item/reagent_containers/food/snacks/rogue/veg/cabbage_sliced))
+		if (process_step > 4 || process_step == 1)
+			return
+		if (substitute == TRUE)
+			to_chat(user, "<span class='notice'>There is too much cabbage in this pie already.</span>")
+			return
+		playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 30, TRUE, -1)
+		if(crabby && process_step >= 2 && process_step <= 3 && do_after(user,short_cooktime, target = src))
+			to_chat(user, "<span class='notice'>Substituting cabbage for crab meat in the crab pie...</span>")
+			process_step += 1
+			substitute = TRUE
+			update_icon()
+			qdel(I)
+			return
+		
+
 	if(istype(I, /obj/item/reagent_containers/food/snacks/grown/apple))
 		if (process_step > 4)
 			return
 		playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 30, TRUE, -1)
 		if(process_step == 1 && do_after(user,short_cooktime, target = src))
-			to_chat(user, "<span class='notice'>Starting on a applepie...</span>")
-			name = "unfinished applepie"
+			to_chat(user, "<span class='notice'>Starting on an apple pie...</span>")
+			name = "unfinished apple pie"
 			process_step += 1
 			applepie = TRUE
 			update_icon()
 			qdel(I)
 			return
 		if(applepie && process_step == 2 && do_after(user,short_cooktime, target = src))
-			to_chat(user, "<span class='notice'>Adding filling to the applepie. Needs more.</span>")
+			to_chat(user, "<span class='notice'>Adding filling to the apple pie. Needs more.</span>")
 			process_step += 1
 			update_icon()
 			qdel(I)
 			return
 		if(applepie && process_step == 3 && do_after(user,short_cooktime, target = src))
-			to_chat(user, "<span class='notice'>Filling the applepie to the brim. Still lacks a pie roof.</span>")
+			to_chat(user, "<span class='notice'>Filling the apple pie to the brim. Still lacks a pie roof.</span>")
 			process_step += 1
 			update_icon()
 			qdel(I)
@@ -260,7 +312,7 @@
 			return
 		playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 30, TRUE, -1)
 		if(process_step == 1 && do_after(user,short_cooktime, target = src))
-			to_chat(user, "<span class='notice'>Starting on a berrypie...</span>")
+			to_chat(user, "<span class='notice'>Starting on a berry pie...</span>")
 			name = "unfinished berrypie"
 			process_step += 1
 			berrypie = TRUE
@@ -269,14 +321,14 @@
 			qdel(I)
 			return
 		if(berrypie && process_step == 2 && do_after(user,short_cooktime, target = src))
-			to_chat(user, "<span class='notice'>Adding filling to the applepie. Needs more.</span>")
+			to_chat(user, "<span class='notice'>Adding filling to the berry pie. Needs more.</span>")
 			process_step += 1
 			poisoning = TRUE
 			update_icon()
 			qdel(I)
 			return
 		if(berrypie && process_step == 3 && do_after(user,short_cooktime, target = src))
-			to_chat(user, "<span class='notice'>Filling the applepie to the brim. Still lacks a pie roof.</span>")
+			to_chat(user, "<span class='notice'>Filling the berry pie to the brim. Still lacks a pie roof.</span>")
 			process_step += 1
 			poisoning = TRUE
 			update_icon()
@@ -288,7 +340,7 @@
 			return
 		playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 30, TRUE, -1)
 		if(process_step == 1 && do_after(user,short_cooktime, target = src))
-			to_chat(user, "<span class='notice'>Starting on a berrypie...</span>")
+			to_chat(user, "<span class='notice'>Starting on a berry pie...</span>")
 			name = "unfinished berrypie"
 			process_step += 1
 			berrypie = TRUE
@@ -296,13 +348,13 @@
 			qdel(I)
 			return
 		if(berrypie && process_step == 2 && do_after(user,short_cooktime, target = src))
-			to_chat(user, "<span class='notice'>Adding filling to the berrypie. Needs more.</span>")
+			to_chat(user, "<span class='notice'>Adding filling to the berry pie. Needs more.</span>")
 			process_step += 1
 			update_icon()
 			qdel(I)
 			return
 		if(berrypie && process_step == 3 && do_after(user,short_cooktime, target = src))
-			to_chat(user, "<span class='notice'>Filling the berrypie to the brim. Still lacks a pie roof.</span>")
+			to_chat(user, "<span class='notice'>Filling the berry pie to the brim. Still lacks a pie roof.</span>")
 			process_step += 1
 			update_icon()
 			qdel(I)
@@ -334,22 +386,30 @@
 			update_icon()
 			qdel(I)
 		if(applepie && process_step == 4 && do_after(user,short_cooktime, target = src))
-			name = "uncooked applepie"
+			name = "uncooked apple pie"
+			filling_color = "#947a4b"
 			cooked_type = /obj/item/reagent_containers/food/snacks/rogue/pie/cooked/apple
 			process_step += 1
 			update_icon()
 			qdel(I)
 		if(berrypie && process_step == 4 && do_after(user,short_cooktime, target = src))
-			name = "uncooked berrypie"
+			name = "uncooked berry pie"
 			filling_color = "#4a62cf"
 			cooked_type = /obj/item/reagent_containers/food/snacks/rogue/pie/cooked/berry
 			process_step += 1
 			update_icon()
 			qdel(I)
 		if(poisoning && process_step == 4 && do_after(user,short_cooktime, target = src))
-			name = "uncooked berrypie"
+			name = "uncooked berry pie"
 			filling_color = "#4a62cf"
 			cooked_type = /obj/item/reagent_containers/food/snacks/rogue/pie/cooked/poison
+			process_step += 1
+			update_icon()
+			qdel(I)
+		if(crabby && process_step == 4 && do_after(user,short_cooktime, target = src))
+			name = "uncooked crab pie"
+			filling_color = "#f1e0cb"
+			cooked_type = /obj/item/reagent_containers/food/snacks/rogue/pie/cooked/crab
 			process_step += 1
 			update_icon()
 			qdel(I)
@@ -429,7 +489,7 @@
 // -------------- MEAT PIE -----------------
 /obj/item/reagent_containers/food/snacks/rogue/pie/cooked/meat // bae item
 	name = "meat pie"
-	desc = ""
+	desc = "A delicious, homemade pie made with minced meat. Still needs to be sliced."
 	eat_effect = /datum/status_effect/buff/foodbuff
 	foodtype = GRAIN | DAIRY | MEAT
 
@@ -441,6 +501,7 @@
 // -------------- FISH PIE -----------------
 /obj/item/reagent_containers/food/snacks/rogue/pie/cooked/meat/fish
 	name = "fish pie"
+	desc = "A delicious, homemade pie made with fresh fish. Still needs to be sliced."
 	icon_state = "fishpie"
 	tastes = list("baked fish and crispy butterdough" = 1)
 	filling_color = "#d44197"
@@ -449,7 +510,7 @@
 // -------------- POT PIE -----------------
 /obj/item/reagent_containers/food/snacks/rogue/pie/cooked/pot
 	name = "pot pie"
-	desc = ""
+	desc = "A delicious, homemade pie. Still needs to be sliced."
 	list_reagents = list(/datum/reagent/consumable/nutriment = MEAL_GOOD)
 	tastes = list("succulent filling and crispy butterdough" = 1)
 	filling_color = "#755430"
@@ -458,7 +519,7 @@
 // -------------- BERRY PIE -----------------
 /obj/item/reagent_containers/food/snacks/rogue/pie/cooked/berry
 	name = "berry pie"
-	desc = ""
+	desc = "A delicious, homemade pie made with wild berries. Still needs to be sliced."
 	list_reagents = list(/datum/reagent/consumable/nutriment = MEAL_GOOD)
 	slices_num = 4
 	tastes = list("crispy butterdough" = 1, "sweet berries" = 1)
@@ -467,6 +528,7 @@
 // -------------- POISON PIE -----------------
 /obj/item/reagent_containers/food/snacks/rogue/pie/cooked/poison
 	name = "berry pie"
+	desc = "A delicious, homemade pie made with wild berries. Still needs to be sliced."
 	slices_num = 4
 	list_reagents = list(/datum/reagent/consumable/nutriment = MEAL_GOOD, /datum/reagent/berrypoison = 12)
 	tastes = list("crispy butterdough" = 1, "bitter berries" =1)
@@ -475,11 +537,20 @@
 // -------------- APPLE PIE -----------------
 /obj/item/reagent_containers/food/snacks/rogue/pie/cooked/apple
 	name = "apple pie"
-	desc = ""
+	desc = "A delicious, homemade pie made with the sliced apples. Still needs to be cut."
 	slices_num = 4
 	list_reagents = list(/datum/reagent/consumable/nutriment = MEAL_GOOD)
 	tastes = list("baked apples and crispy butterdough" = 1)
+	filling_color = "#947a4b"
 
+// -------------- CRAB PIE -----------------
+/obj/item/reagent_containers/food/snacks/rogue/pie/cooked/crab
+	name = "crab pie"
+	desc = "A delicious, homemade pie made with the inside of a crustacean. Still needs to be sliced."
+	slices_num = 4
+	list_reagents = list(/datum/reagent/consumable/nutriment = MEAL_GOOD)
+	tastes = list("crispy butterdough" = 1, "rich crab meat" = 1)
+	filling_color = "#f1e0cb"
 
 // -------------- HANDPIE (dwarven pie on the go, good shelflife until bitten, made from pie dough and mince, truffles or jacksberries) -----------------
 /obj/item/reagent_containers/food/snacks/rogue/foodbase/handpieraw

@@ -17,7 +17,7 @@
 		for(var/mob/living/carbon/human/X in GLOB.human_list)
 			if(X.real_name in names_to)
 				if(!X.stat)
-					to_chat(X, span_info("[msg]"))
+					to_chat(X, span_biginfo("[msg]"))
 
 SUBSYSTEM_DEF(treasury)
 	name = "treasury"
@@ -173,7 +173,7 @@ SUBSYSTEM_DEF(treasury)
 	var/taxed_amount = 0
 	var/original_amt = amt
 	if(character in bank_accounts)
-		if(character.job in GLOB.noble_positions)
+		if(HAS_TRAIT(character, TRAIT_NOBLE))
 			bank_accounts[character] += amt
 		else
 			taxed_amount = round(amt * tax_value)
