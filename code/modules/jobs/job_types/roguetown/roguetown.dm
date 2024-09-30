@@ -73,6 +73,7 @@
 		for(var/skill_type in pref_species.specskills)
 			H.mind.adjust_skillrank(skill_type, H.dna.species.specskills[skill_type], TRUE)
 		if(H.gender == FEMALE)
+			H.mind.adjust_skillrank_up_to(/datum/skill/craft/cooking, 1, TRUE)
 			for(var/skill_type in pref_species.specskills_f)
 				H.mind.adjust_skillrank(skill_type, H.dna.species.specskills_f[skill_type], TRUE)
 		else
