@@ -13,6 +13,23 @@
 	desc = ""
 	icon_state = "drunk"
 
+/datum/status_effect/buff/foodbuff/minor
+	id = "foodbuffminor"
+	effectedstats = null
+	duration = 1
+
+/datum/status_effect/buff/foodbuffminorcheck
+	id = "foodbuffminorcheck"
+	effectedstats = list("constitution" = 1)
+	duration = 5 MINUTES
+	alert_type = /atom/movable/screen/alert/status_effect/buff/foodbuff/minor
+
+/datum/status_effect/buff/foodbuff/minor/on_apply()
+	if(HAS_TRAIT(owner, TRAIT_NOSTINK))
+		return ..()
+	if(iscarbon(owner))
+		owner.apply_status_effect(/datum/status_effect/buff/foodbuffminorcheck)
+	return ..()
 
 /datum/status_effect/buff/foodbuff
 	id = "foodbuff"
@@ -20,27 +37,21 @@
 	effectedstats = list("constitution" = 1,"endurance" = 1)
 	duration = 10 MINUTES
 
-/datum/status_effect/buff/foodbuff/minor
-	id = "foodbuffminor"
-	alert_type = /atom/movable/screen/alert/status_effect/buff/foodbuff
-	effectedstats = list("constitution" = 1)
-	duration = 5 MINUTES
-
 /datum/status_effect/buff/foodbuff/expert
 	id = "foodbuffexpert"
-	alert_type = /atom/movable/screen/alert/status_effect/buff/foodbuff
+	alert_type = /atom/movable/screen/alert/status_effect/buff/foodbuff/expert
 	effectedstats = list("constitution" = 1,"endurance" = 1,"intelligence" = 1)
 	duration = 20 MINUTES
 
 /datum/status_effect/buff/foodbuff/master
 	id = "foodbuffmaster"
-	alert_type = /atom/movable/screen/alert/status_effect/buff/foodbuff
+	alert_type = /atom/movable/screen/alert/status_effect/buff/foodbuff/master
 	effectedstats = list("constitution" = 2,"endurance" = 1, "intelligence" = 1)
 	duration = 30 MINUTES
 
 /datum/status_effect/buff/foodbuff/legendary
 	id = "foodbufflegendary"
-	alert_type = /atom/movable/screen/alert/status_effect/buff/foodbuff
+	alert_type = /atom/movable/screen/alert/status_effect/buff/foodbuff/legendary
 	effectedstats = list("constitution" = 2,"endurance" = 1,"perception" = 1,"intelligence" = 1,"strength" = 1,"speed" = 1)
 	duration = 60 MINUTES
 
