@@ -52,7 +52,7 @@
 /datum/body_marking/eyeliner
 	icon = 'icons/mob/body_markings/other_markings.dmi'
 	name = "Eyeliner"
-	icon_state = "Eyeliner"
+	icon_state = "eyeliner"
 	default_color = "FF0000"
 	affected_bodyparts = HEAD
 

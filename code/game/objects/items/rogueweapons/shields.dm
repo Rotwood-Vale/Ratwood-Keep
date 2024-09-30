@@ -166,7 +166,7 @@
 		var/mutable_appearance/M = mutable_appearance('icons/roguetown/weapons/shield_heraldry.dmi', picked_name)
 		add_overlay(M)
 		var/mutable_appearance/MU = mutable_appearance(icon, "ironsh_detail")
-		MU.alpha = 90
+		MU.alpha = 50
 		add_overlay(MU)
 		if(alert("Are you pleased with your heraldry?", "Heraldry", "Yes", "No") != "Yes")
 			cut_overlays()
