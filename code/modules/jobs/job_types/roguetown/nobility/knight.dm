@@ -64,7 +64,7 @@
 
 /datum/advclass/knight/heavy
 	name = "Heavy Knight"
-	tutorial = "While other knights may specialize in horse riding and swords, you specialize in ultra-heavy weapons, shockingly adept with massive swords, axes, and maces. People may fear the mounted knights, but they should truly fear those who come off their mount.."
+	tutorial = "You are the indesputed master of man-on-man combat. Shockingly adept with massive swords, axes, and maces. People may fear the mounted knights, but they should truly fear those who come off their mount.."
 	outfit = /datum/outfit/job/roguetown/knight/heavy
 
 	category_tags = list(CTAG_ROYALGUARD)
@@ -96,10 +96,11 @@
 	H.verbs |= /mob/proc/haltyell
 
 
-	H.change_stat("strength", 4)
-	H.change_stat("constitution", 3)
-	H.change_stat("endurance", 3)
-	H.change_stat("speed", -2)		//Lower speed for more strength and con of other knight, and to off-set endurance. (They need the end-stam for 2 handed.)
+	H.change_stat("strength", 2) //HEY, YOU, BEFORE YOU CHANGE THIS BECAUSE SOMEONE TOOK A STAT PACK WITH -STR: this is specifically because people extremely oftenly broke the 15/16 str threshhold. don't do it.
+	H.change_stat("constitution", 2)
+	H.change_stat("endurance", 2)
+	H.change_stat("perception", 1)
+	H.change_stat("speed", -2)		//Lower speed for more strength and con vs other knight, and to off-set endurance. (They need the end-stam for 2 handed.)
 
 	H.adjust_blindness(-3)
 	var/weapons = list("Zweihander","Great Mace","Battle Axe", "Estoc")
@@ -153,9 +154,10 @@
 	H.dna.species.soundpack_m = new /datum/voicepack/male/knight()		//For knightly voices; even though I despise them.
 	H.verbs |= /mob/proc/haltyell
 
-	H.change_stat("strength", 3)
-	H.change_stat("constitution", 2)
+	H.change_stat("strength", 2)
+	H.change_stat("constitution", 1)
 	H.change_stat("endurance", 2)
+	H.change_stat("intelligence", 1)
 	H.change_stat("speed", -1)			//Bit faster than a heavy knight, not as fast as a mounted knight.
 
 	H.adjust_blindness(-3)
@@ -191,6 +193,8 @@
 	H.mind.adjust_skillrank(/datum/skill/combat/maces, 4, TRUE)		//gave mounted knights maces instead of flails because we only have the one-handed flails currently and maces were more commonly used on horseback
 	H.mind.adjust_skillrank(/datum/skill/combat/shields, 3, TRUE)		//Mildly better shield skill due to less weapon options.
 	H.mind.adjust_skillrank(/datum/skill/misc/riding, 4, TRUE)			//this is their THING
+	H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 2, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/combat/bows, 1, TRUE)
 
 	//Normal shared skill section.
 	H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 4, TRUE)
@@ -200,7 +204,7 @@
 	H.mind.adjust_skillrank(/datum/skill/misc/reading, 2, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 2, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/combat/bows, 3, TRUE)			//Gets gaurenteed skill due to experience mounted. Maybe buff to 4; only effects aiming time.
+	H.mind.adjust_skillrank(/datum/skill/combat/bows, 3, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/combat/knives, 3, TRUE)
 	ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_STEELHEARTED, TRAIT_GENERIC)	//Knights should be used to the horrors of war if they're tride-and-true.
@@ -208,10 +212,11 @@
 	H.dna.species.soundpack_m = new /datum/voicepack/male/knight()		//For knightly voices; even though I despise them.
 	H.verbs |= /mob/proc/haltyell
 
-	H.change_stat("strength", 2)			//Worse strength than others, but bonus intel and no speed penalty.
-	H.change_stat("intelligence", 2)		//Bonus intel for feinting; swords-moment.
-	H.change_stat("constitution", 2)
-	H.change_stat("endurance", 2)
+	H.change_stat("strength", 1)			//Worse strength than others, but bonus intel and no speed penalty.
+	H.change_stat("intelligence", 2)
+	H.change_stat("constitution", 1)
+	H.change_stat("endurance", 1)
+	H.change_stat("perception", 2) //really? nobody gave the mounted class with bow/crossbow skill perception? ok, dude lmao
 
 	H.adjust_blindness(-3)
 	var/weapons = list("Bastard Sword","Spear")

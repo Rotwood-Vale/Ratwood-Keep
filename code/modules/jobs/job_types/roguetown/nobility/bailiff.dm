@@ -50,7 +50,7 @@
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/riding, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/tracking, 2, TRUE)
-		H.change_stat("strength", 3)
+		H.change_stat("strength", 2) //important leadership role, but SHOULDN'T be frontlining
 		H.change_stat("perception", 2)
 		H.change_stat("intelligence", 3)
 		H.change_stat("constitution", 1)

@@ -34,7 +34,7 @@
 			H.mind.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/athletics, 4, TRUE)		//Trust me, they'll need it due to stamina drain on their base-sword.
-			H.change_stat("strength", 3)	//Should give minimum required stats to use Zweihander
+			H.change_stat("strength", 2)	//Should give minimum required stats to use Zweihander
 			H.change_stat("endurance", 2)
 			H.change_stat("constitution", 2)
 			H.change_stat("perception", 1)
@@ -56,8 +56,8 @@
 			H.mind.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
-			H.change_stat("strength", 2)	//Less strength then sword-role but more speed; trade-off.
-			H.change_stat("endurance", 2)
+			H.change_stat("strength", 2) //same str, worse end, more speed - actually a good tradeoff, now.
+			H.change_stat("endurance", 1)
 			H.change_stat("constitution", 2)
 			H.change_stat("perception", 1)
 			r_hand = /obj/item/rogueweapon/halberd
