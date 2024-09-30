@@ -52,7 +52,7 @@
 /obj/item/rogueweapon/mace/silver
 	name = "Silver War Hammer"
 	desc = "A light war hammer forged of silver."
-	icon_state = "smace"
+	icon_state = "silverhammer"
 	force = 24
 	gripped_intents = null
 	possible_item_intents = list(/datum/intent/mace/strike, /datum/intent/mace/smash)
