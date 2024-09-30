@@ -312,6 +312,15 @@
 	swingdelay = 12
 	clickcd = 14
 
+/obj/item/rogueweapon/spear/bronze
+	name = "Bronze Spear"
+	desc = "A spear forged of bronze. Much more durable than a regular spear."
+	icon_state = "bronzespear"
+	max_blade_int = 200
+	smeltresult = /obj/item/ingot/bronze
+	smelt_bar_num = 2
+
+
 /obj/item/rogueweapon/greatsword
 	force = 12
 	force_wielded = 30

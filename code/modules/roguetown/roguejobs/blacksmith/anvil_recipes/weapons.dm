@@ -315,12 +315,41 @@
 	created_item = /obj/item/rogueweapon/huntingknife/idagger/silver
 	craftdiff = 2
 
+/datum/anvil_recipe/weapons/silver/sword
+	name = "Silver Sword (+1 Silver)"
+	req_bar = /obj/item/ingot/silver
+	additional_items = list(/obj/item/ingot/silver)
+	created_item = /obj/item/rogueweapon/stoneaxe/silveraxe
+	craftdiff = 3
+
 /datum/anvil_recipe/weapons/silver/waraxe
 	name = "Silver War Axe (+1 Silver, +1 Stick)"
-	req_bar = /obj/item/ingot/iron
+	req_bar = /obj/item/ingot/silver
 	additional_items = list(/obj/item/ingot/silver, /obj/item/grown/log/tree/stick)
 	created_item = /obj/item/rogueweapon/stoneaxe/silveraxe
 	craftdiff = 3
+
+/datum/anvil_recipe/weapons/silver/waraxe
+	name = "Silver War Hammer (+1 Silver, +1 Stick)"
+	req_bar = /obj/item/ingot/silver
+	additional_items = list(/obj/item/ingot/silver, /obj/item/grown/log/tree/stick)
+	created_item = /obj/item/rogueweapon/mace/silver
+	craftdiff = 3
+
+// ------ BRONZE ------
+
+/datum/anvil_recipe/weapons/gladius
+	name = "Gladius"
+	req_bar = /obj/item/ingot/bronze
+	created_item = /obj/item/rogueweapon/sword/gladius
+	craftdiff = 2
+
+/datum/anvil_recipe/weapons/bronze/spear
+	name = "Bronze Spear (+1 Bronze, +1 Small Log)"
+	req_bar = /obj/item/ingot/bronze
+	additional_items = list(/obj/item/ingot/bronze, /obj/item/grown/log/tree/small)
+	created_item = /obj/item/rogueweapon/spear/bronze
+	craftdiff = 0
 
 /// SHIELDS
 /datum/anvil_recipe/weapons/steel/kiteshield
