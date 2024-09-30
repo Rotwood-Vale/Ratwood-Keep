@@ -230,7 +230,7 @@
 /datum/crafting_recipe/roguetown/turfs/hay
 	name = "hay"
 	result = /turf/open/floor/rogue/hay
-	reqs = list(/obj/item/natural/chaff = 2)
+	reqs = list(/obj/item/natural/chaff/wheat = 2)
 	skillcraft = /datum/skill/craft/crafting
 	verbage_simple = "assemble"
 	verbage = "assembles"
