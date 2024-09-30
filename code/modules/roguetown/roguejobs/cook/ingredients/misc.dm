@@ -58,7 +58,7 @@
 	w_class = WEIGHT_CLASS_NORMAL
 	tastes = list("cheese" = 1)
 	eat_effect = null
-	rotprocess = 20 MINUTES
+	rotprocess = 30 MINUTES
 	slices_num = 6
 	slice_batch = TRUE
 	slice_path = /obj/item/reagent_containers/food/snacks/rogue/cheddarwedge
@@ -69,8 +69,7 @@
 	desc = "A wheel with intricate patterns of several types of mold with a pungent aroma."
 	icon_state = "blue_cheese"
 	slice_path = /obj/item/reagent_containers/food/snacks/rogue/cheddarwedge/aged
-	become_rot_type = null
-	rotprocess = null
+	rotprocess = 150 // Good luck ever seeing this.
 
 /obj/item/reagent_containers/food/snacks/rogue/cheddarwedge
 	name = "wedge of cheese"
@@ -82,7 +81,7 @@
 	w_class = WEIGHT_CLASS_TINY
 	tastes = list("cheese" = 1)
 	eat_effect = null
-	rotprocess = 20 MINUTES
+	rotprocess = 30 MINUTES
 	slices_num = 3
 	slice_batch = TRUE
 	slice_path = /obj/item/reagent_containers/food/snacks/rogue/cheddarslice
@@ -97,9 +96,8 @@
 	desc = "A dangerous piece of cheese for the brave."
 	icon_state = "blue_cheese_wedge"
 	slice_path = /obj/item/reagent_containers/food/snacks/rogue/cheddarslice/aged
-	become_rot_type = null
-	rotprocess = null
-	eat_effect = /datum/status_effect/buff/foodbuff
+	eat_effect = /datum/status_effect/buff/foodbuff/minor
+	rotprocess = 150 // Good luck ever seeing this.
 
 /obj/item/reagent_containers/food/snacks/rogue/cheddarslice
 	name = "slice of cheese"
@@ -111,10 +109,10 @@
 	w_class = WEIGHT_CLASS_TINY
 	tastes = list("cheese" = 1)
 	eat_effect = null
-	rotprocess = 20 MINUTES
+	rotprocess = 30
 	slices_num = null
 	slice_path = null
-	become_rot_type = null
+	become_rot_type = /obj/item/reagent_containers/food/snacks/rogue/cheddarslice/aged
 	baitchance = 100
 	fishloot = list(/obj/item/reagent_containers/food/snacks/fish/carp = 10,
 					/obj/item/reagent_containers/food/snacks/fish/eel = 5)
@@ -124,8 +122,8 @@
 	desc = "A dangerous slice of cheese."
 	icon_state = "blue_cheese_slice"
 	become_rot_type = null
-	rotprocess = null
-	eat_effect = /datum/status_effect/buff/foodbuff
+	rotprocess = 150 // Good luck ever seeing this.
+	eat_effect = /datum/status_effect/buff/foodbuff/minor
 
 /obj/item/reagent_containers/food/snacks/rogue/honey
 	name = "honeycomb"
@@ -142,6 +140,7 @@
 	can_distill = TRUE
 	distill_reagent = /datum/reagent/consumable/ethanol/mead
 	distill_amt = 20
+	eat_effect = /datum/status_effect/buff/foodbuff/minor
 
 /obj/item/reagent_containers/food/snacks/rogue/onionslice
 	name = "slice of onion"
@@ -149,9 +148,10 @@
 	icon = 'icons/roguetown/items/food.dmi'
 	icon_state = "onionslice"
 	bitesize = 3
-	rotprocess = 20 MINUTES
+	rotprocess = 10 MINUTES
 	list_reagents = list(/datum/reagent/consumable/nutriment = 1, /datum/reagent/consumable/tearjuice = 1)
 	grind_results = list(/datum/reagent/consumable/tearjuice = 1)
+	eat_effect = /datum/status_effect/debuff/uncookedfood
 
 /obj/item/reagent_containers/food/snacks/rogue/tomatoslice
 	name = "slice of tomato"
@@ -159,7 +159,7 @@
 	icon = 'icons/roguetown/items/food.dmi'
 	icon_state = "tomatoslice"
 	bitesize = 3
-	rotprocess = 20 MINUTES
+	rotprocess = 10 MINUTES
 	list_reagents = list(/datum/reagent/consumable/nutriment = 1, /datum/reagent/consumable/tomatojuice = 1)
 	grind_results = list(/datum/reagent/consumable/tomatojuice = 1)
 
@@ -180,6 +180,7 @@
 	bitesize = 3
 	rotprocess = null
 	list_reagents = list(/datum/reagent/consumable/nutriment = 3)
+	eat_effect = /datum/status_effect/debuff/uncookedfood
 
 /obj/item/reagent_containers/food/snacks/grown/eastspice
 	name = "eastern spices"
@@ -189,13 +190,14 @@
 	bitesize = 3
 	rotprocess = null
 	list_reagents = list(/datum/reagent/consumable/nutriment = 3)
+	eat_effect = /datum/status_effect/debuff/uncookedfood
 
 /obj/item/reagent_containers/food/snacks/grown/cucumberjar
 	name = "jar of pickling cucumbers"
 	desc = "A jar of cucumbers that is currently pickling. Don't eat them until they're ready!"
 	bitesize = 0 
 	icon_state = "cucumberjar"
-	rotprocess = 20 MINUTES
+	rotprocess = 30 MINUTES
 	become_rot_type = /obj/item/storage/belt/rogue/pickles
 
 /obj/item/reagent_containers/food/snacks/grown/pickle
@@ -203,7 +205,8 @@
 	desc = "It has a nice crunch to it."
 	icon = 'icons/roguetown/items/food.dmi'
 	icon_state = "pickle"
-	bitesize = 3
+	bitesize = 1
 	rotprocess = null
 	list_reagents = list(/datum/reagent/consumable/nutriment = 5)
 	w_class = WEIGHT_CLASS_SMALL
+	eat_effect = /datum/status_effect/buff/foodbuff
