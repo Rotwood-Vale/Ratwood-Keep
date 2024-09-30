@@ -99,8 +99,9 @@
 
 /datum/status_effect/debuff/uncookedfood
 	id = "uncookedfood"
-	effectedstats = null
-	duration = 1
+	if(!HAS_TRAIT(owner, TRAIT_NASTY_EATER) && !HAS_TRAIT(owner, TRAIT_ORGAN_EATER) && !HAS_TRAIT(owner, TRAIT_WILD_EATER))
+		effectedstats = list("endurance" = -1, "constitution" = -2)
+	duration = 5 MINUTES
 
 /datum/status_effect/debuff/uncookedfood/on_apply()
 	if(HAS_TRAIT(owner, TRAIT_NASTY_EATER) || HAS_TRAIT(owner, TRAIT_ORGAN_EATER) || HAS_TRAIT(owner, TRAIT_WILD_EATER))
@@ -112,39 +113,47 @@
 
 /datum/status_effect/debuff/badmeal
 	id = "badmeal"
-	effectedstats = null
-	duration = 1
+	if(!HAS_TRAIT(owner, TRAIT_NASTY_EATER))
+		effectedstats = list("endurance" = -2, "constitution" = -4)
+	duration = 10 MINUTES
 
 /datum/status_effect/debuff/badmeal/on_apply()
-	owner.add_stress(/datum/stressevent/badmeal)
+	if(HAS_TRAIT(owner, TRAIT_NASTY_EATER))
+		return ..()
+	if(iscarbon(owner))
+		var/mob/living/carbon/C = owner
+		C.add_nausea(200)
+		owner.add_stress(/datum/stressevent/badmeal)
 	return ..()
 
 /datum/status_effect/debuff/burnedfood
 	id = "burnedfood"
-	effectedstats = null
-	duration = 1
+	if(!HAS_TRAIT(owner, TRAIT_NASTY_EATER))
+		effectedstats = list("endurance" = -1, "constitution" = -2)
+	duration = 15 MINUTES
 
 /datum/status_effect/debuff/burnedfood/on_apply()
 	if(HAS_TRAIT(owner, TRAIT_NASTY_EATER))
 		return ..()
-	owner.add_stress(/datum/stressevent/burntmeal)
 	if(iscarbon(owner))
 		var/mob/living/carbon/C = owner
-		C.add_nausea(100)
+		C.add_nausea(200)
+		owner.add_stress(/datum/stressevent/burntmeal)
 	return ..()
 
 /datum/status_effect/debuff/rotfood
 	id = "rotfood"
-	effectedstats = null
-	duration = 1
+	if(!HAS_TRAIT(owner, TRAIT_NASTY_EATER) && HAS_TRAIT(owner, TRAIT_ROT_EATER))
+		effectedstats = list("endurance" = -2, "constitution" = -4)
+	duration = 10 MINUTES
 
 /datum/status_effect/debuff/rotfood/on_apply()
 	if(HAS_TRAIT(owner, TRAIT_NASTY_EATER) || HAS_TRAIT(owner, TRAIT_ROT_EATER))
 		return ..()
-	owner.add_stress(/datum/stressevent/rotfood)
 	if(iscarbon(owner))
 		var/mob/living/carbon/C = owner
 		C.add_nausea(200)
+		owner.add_stress(/datum/stressevent/rotfood)
 	return ..()
 
 /datum/status_effect/debuff/bleeding
