@@ -143,7 +143,7 @@
 "iB" = (/obj/structure/bed/rogue/shit,/turf/open/floor/rogue/ruinedwood/turned,/area/rogue/indoors/shelter/woods)
 "iC" = (/obj/structure/spacevine{opacity = 1},/turf/open/water/swamp,/area/rogue/under/cave)
 "iF" = (/obj/structure/stairs/stone,/turf/open/floor/rogue/dirt,/area/rogue/outdoors/mountains)
-"iL" = (/mob/living/simple_animal/hostile/retaliate/skeleton/guard,/turf/open/floor/rogue/dirt,/area/rogue/under/cave)
+"iL" = (/mob/living/simple_animal/hostile/rogue/skeleton/guard,/turf/open/floor/rogue/dirt,/area/rogue/under/cave)
 "iR" = (/obj/machinery/conveyor/auto{dir = 4; color = "#755f48"},/turf/open/water/sewer,/area/rogue/under/cave/dungeon1/gethsmane/inner)
 "ja" = (/turf/closed/wall/mineral/rogue/wooddark/vertical,/area/rogue/indoors)
 "jj" = (/turf/open/water/sewer,/area/rogue/under/cave/dungeon1/gethsmane/inner)
