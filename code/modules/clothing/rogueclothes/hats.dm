@@ -771,6 +771,7 @@
 	item_state = "hounskull"
 	adjustable = CAN_CADJUST
 	emote_environment = 3
+	body_parts_covered = FULL_HEAD
 	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR
 	flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH
 	block2add = FOV_RIGHT|FOV_LEFT

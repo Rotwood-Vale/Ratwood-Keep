@@ -53,6 +53,7 @@
 		departing_mob.mind.unknow_all_people()
 		for(var/datum/mind/MF in get_minds())
 			departing_mob.mind.become_unknown_to(MF)
+	GLOB.chosen_names -= departing_mob.real_name
 	LAZYREMOVE(GLOB.actors_list, departing_mob.mobid)
 	LAZYREMOVE(GLOB.roleplay_ads, departing_mob.mobid)
 	message_admins(dat)
