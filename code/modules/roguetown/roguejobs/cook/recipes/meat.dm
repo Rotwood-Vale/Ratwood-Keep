@@ -37,7 +37,7 @@
 	result = /obj/item/reagent_containers/food/snacks/rogue/meat/salami
 	req_table = FALSE
 	structurecraft = /obj/structure/fluff/dryingrack
-	craftdiff = 0
+	craftdiff = 2
 
 /datum/crafting_recipe/roguetown/cooking/coppiette
 	name = "coppiette"
@@ -46,7 +46,7 @@
 		/obj/item/reagent_containers/powder/salt = 1)
 	result = /obj/item/reagent_containers/food/snacks/rogue/meat/coppiette
 	req_table = FALSE
-	craftdiff = 0
+	craftdiff = 1
 	structurecraft = /obj/structure/fluff/dryingrack
 
 
@@ -56,7 +56,7 @@
 		/obj/item/reagent_containers/food/snacks/fat = 1,
 		/obj/item/reagent_containers/powder/salt = 1)
 	result = /obj/item/reagent_containers/food/snacks/salo
-	craftdiff = 0
+	craftdiff = 1
 	structurecraft = /obj/structure/fluff/dryingrack
 	req_table = FALSE
 
@@ -69,7 +69,7 @@
 		/obj/item/reagent_containers/food/snacks/fish = 1)
 	result = /obj/item/reagent_containers/food/snacks/rogue/saltfish
 	req_table = FALSE
-	craftdiff = 0
+	craftdiff = 1
 	subtype_reqs = TRUE
 	structurecraft = /obj/structure/fluff/dryingrack
 
@@ -101,7 +101,7 @@
 	reqs = list(/obj/item/organ/wings/dracon = 1)
 	tools = list(/obj/item/rogueweapon/huntingknife)
 	result = /obj/item/reagent_containers/food/snacks/rogue/meat/drakianwing
-	craftdiff = 2
+	craftdiff = 3
 	subtype_reqs = TRUE
 	req_table = TRUE
 
@@ -110,7 +110,7 @@
 	reqs = list(/obj/item/organ/tail/lizard = 1)
 	tools = list(/obj/item/rogueweapon/huntingknife)
 	result = /obj/item/reagent_containers/food/snacks/rogue/meat/sisseantail
-	craftdiff = 2
+	craftdiff = 3
 	subtype_reqs = TRUE
 	req_table = TRUE
 
@@ -119,7 +119,7 @@
 	reqs = list(/obj/item/organ/tail/kobold = 1)
 	tools = list(/obj/item/rogueweapon/huntingknife)
 	result = /obj/item/reagent_containers/food/snacks/rogue/meat/koboldtail
-	craftdiff = 2
+	craftdiff = 3
 	subtype_reqs = TRUE
 	req_table = TRUE
 
@@ -131,6 +131,6 @@
 		/obj/item/reagent_containers/food/snacks/rogue/meat/mince = 1
 		)
 	result = /obj/item/reagent_containers/food/snacks/rogue/meat/pate
-	craftdiff = 2
+	craftdiff = 4
 	subtype_reqs = TRUE
 	req_table = TRUE
