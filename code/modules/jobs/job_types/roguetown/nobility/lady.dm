@@ -14,7 +14,7 @@
 	outfit = /datum/outfit/job/roguetown/lady
 
 	display_order = JDO_LADY
-	give_bank_account = TRUE
+	give_bank_account = 50
 	min_pq = 0
 	max_pq = null
 
@@ -62,6 +62,7 @@
 		armor = /obj/item/clothing/suit/roguetown/armor/chainmail
 		shoes = /obj/item/clothing/shoes/roguetown/shortboots
 		belt = /obj/item/storage/belt/rogue/leather
+		beltl = /obj/item/storage/keyring/royal
 		beltr = /obj/item/storage/belt/rogue/pouch/coins/rich
 		backr = /obj/item/storage/backpack/rogue/satchel
 		id = /obj/item/clothing/ring/silver
