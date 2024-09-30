@@ -231,7 +231,7 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 	nodismemsleeves = TRUE
 	max_integrity = 500
 	allowed_sex = list(MALE, FEMALE)
-	do_sound = TRUE
+	do_sound_plate = TRUE
 	anvilrepair = /datum/skill/craft/armorsmithing
 	smeltresult = /obj/item/ingot/steel
 	equip_delay_self = 40
