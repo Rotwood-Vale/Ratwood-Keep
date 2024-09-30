@@ -138,11 +138,23 @@
 		return TRUE
 
 	if(!M.buckled && !M.has_buckled_mobs())
-		var/mob_swap = FALSE
+		var/mob_swap = TRUE
 		var/too_strong = (M.move_resist > move_force) //can't swap with immovable objects unless they help us
-		if(!they_can_move) //we have to physically move them
-			if(!too_strong)
+		if(cmode)
+			if(istype(src,/mob/living/simple_animal/hostile/retaliate))
+				if(src:aggressive)
+					mob_swap = FALSE
+			else
 				mob_swap = FALSE
+		if(M.cmode)
+			if(istype(M,/mob/living/simple_animal/hostile/retaliate)) 
+				if(M:aggressive)
+					mob_swap = FALSE
+			else
+				mob_swap = FALSE
+			if(!they_can_move) //we have to physically move them
+				if(!too_strong)
+					mob_swap = FALSE
 		else
 			//You can swap with the person you are dragging on grab intent, and restrained people in most cases
 			if(M.pulledby == src && !too_strong)
@@ -160,7 +172,6 @@
 			now_pushing = 1
 			var/oldloc = loc
 			var/oldMloc = M.loc
-
 
 			var/M_passmob = (M.pass_flags & PASSMOB) // we give PASSMOB to both mobs to avoid bumping other mobs during swap.
 			var/src_passmob = (pass_flags & PASSMOB)

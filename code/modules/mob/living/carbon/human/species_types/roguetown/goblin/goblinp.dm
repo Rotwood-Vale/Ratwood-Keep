@@ -7,7 +7,6 @@
 	desc = "<b>Goblin</b><br>\
 	A vile, cursed race of green skinned fiends with brains as small as their hearts. Be not fooled by their appearance - What they lack in stature, they possess in sheer malice."
 	species_traits = list(EYECOLOR,LIPS,STUBBLE)
-	inherent_traits = list(TRAIT_NOMOBSWAP)
 	possible_ages = ALL_AGES_LIST
 	use_skintones = TRUE
 	skin_tone_wording = "Skin Color"

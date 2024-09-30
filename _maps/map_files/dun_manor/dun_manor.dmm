@@ -435,7 +435,7 @@
 "dcV" = (/obj/item/roguebin/water/gross,/turf/open/floor/rogue/ruinedwood{icon_state = "weird1"},/area/rogue/indoors/town/church/chapel)
 "ddu" = (/obj/structure/mineral_door/wood{icon_state = "wcv"; locked = 1; lockid = "manor"; name = "archivists chambers"},/turf/open/floor/rogue/cobble,/area/rogue/indoors/town/manor)
 "ddz" = (/obj/structure/mineral_door/wood{locked = 1; lockid = "garrison"},/turf/open/floor/rogue/cobble,/area/rogue/indoors/town)
-"ddE" = (/obj/structure/closet/crate/chest,/obj/item/roguekey/manor,/obj/item/roguekey/walls,/obj/item/roguekey/blacksmith,/obj/item/roguekey/steward,/obj/item/roguekey/church,/obj/item/roguekey/dungeon,/obj/item/roguekey/graveyard,/obj/item/roguekey/garrison,/obj/item/roguekey/mercenary,/obj/item/roguekey/tavern,/obj/item/roguekey/merchant,/obj/item/roguekey/physician,/turf/open/floor/rogue/tile/tilerg,/area/rogue/indoors)
+"ddE" = (/obj/structure/closet/crate/chest,/obj/item/roguekey/manor,/obj/item/roguekey/walls,/obj/item/roguekey/blacksmith,/obj/item/roguekey/steward,/obj/item/roguekey/church,/obj/item/roguekey/dungeon,/obj/item/roguekey/graveyard,/obj/item/roguekey/garrison,/obj/item/roguekey/mercenary,/obj/item/roguekey/tavern,/obj/item/roguekey/merchant,/obj/item/roguekey/farm,/obj/item/roguekey/physician,/obj/item/roguekey/artificer,/turf/open/floor/rogue/tile/tilerg,/area/rogue/indoors)
 "ddU" = (/obj/structure/fluff/railing/border{dir = 4; icon_state = "border"},/turf/open/floor/rogue/cobble,/area/rogue/indoors/town/manor)
 "def" = (/obj/structure/roguewindow,/turf/open/floor/rogue/blocks,/area/rogue/indoors/town/church/chapel)
 "der" = (/turf/closed/wall/mineral/rogue/roofwall/middle{dir = 4},/area/rogue/indoors/town/physician)
