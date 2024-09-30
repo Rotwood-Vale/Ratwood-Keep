@@ -5,7 +5,7 @@
 	name = "Kobold"
 	id = "kobold"
 	desc = "<b>Kobold</b><br>\
-	In time you will learn the history of this race."
+	Short in stature and typically scrawny, this little lizards make up for it in their natural agility. People typically stereotype them as thieves, though..."
 	species_traits = list(EYECOLOR,LIPS,STUBBLE,MUTCOLORS)
 	inherent_traits = list(TRAIT_NOMOBSWAP)
 	possible_ages = ALL_AGES_LIST
@@ -68,7 +68,7 @@
 		/datum/customizer/organ/frills/lizard,
 		/datum/customizer/organ/horns/humanoid,
 		/datum/customizer/organ/testicles/anthro,
-		/datum/customizer/organ/penis/lizard,
+		/datum/customizer/organ/penis/anthro,
 		/datum/customizer/organ/breasts/animal,
 		/datum/customizer/organ/vagina/animal,
 		)

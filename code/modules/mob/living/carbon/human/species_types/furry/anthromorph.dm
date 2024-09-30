@@ -4,7 +4,7 @@
 /datum/species/anthromorph
 	name = "Wild-Kin"
 	id = "anthromorph"
-	desc = "In time you will learn the history of this race"
+	desc = "A product of Dendor's madness, or something else? It's lost to history; a menagrie of people with bestial features."
 	default_color = "444"
 	species_traits = list(
 		MUTCOLORS,

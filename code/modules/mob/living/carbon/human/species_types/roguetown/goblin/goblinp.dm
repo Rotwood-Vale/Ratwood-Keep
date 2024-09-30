@@ -62,8 +62,8 @@
 		/datum/customizer/bodypart_feature/accessory,
 		/datum/customizer/bodypart_feature/face_detail,
 		/datum/customizer/bodypart_feature/underwear,
-		/datum/customizer/organ/testicles/human,
-		/datum/customizer/organ/penis/human,
+		/datum/customizer/organ/testicles/anthro,
+		/datum/customizer/organ/penis/anthro,
 		/datum/customizer/organ/breasts/human,
 		/datum/customizer/organ/vagina/human,
 		)
@@ -73,7 +73,7 @@
 	)
 
 /datum/species/goblinp/check_roundstart_eligible()
-	return FALSE
+	return FALSE // HEY MAKE THIS TRUE WHEN IT'S GOBBO TIME
 
 /datum/species/goblinp/qualifies_for_rank(rank, list/features)
 	return TRUE
