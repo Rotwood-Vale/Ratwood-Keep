@@ -102,7 +102,7 @@
 #define STEWARD		(1<<3)
 #define KNIGHT		(1<<4)
 #define GUARD_CAPTAIN		(1<<5)
-#define BAILIFF		(1<<6)
+#define MARSHAL		(1<<6)
 #define HOSTAGE		(1<<7)
 
 #define GARRISON		(1<<1)
@@ -220,7 +220,7 @@
 #define JDO_HAND 2
 #define JDO_STEWARD 3
 #define JDO_CLERK 3.1
-#define JDO_BAILIFF 4
+#define JDO_MARSHAL 4
 #define JDO_COUNCILLOR 4.1
 
 // Courtiers
@@ -311,7 +311,7 @@
 	/datum/job/roguetown/prince,\
 	/datum/job/roguetown/councillor,\
 	/datum/job/roguetown/physician,\
-	/datum/job/roguetown/bailiff,\
+	/datum/job/roguetown/marshal,\
 	/datum/job/roguetown/captain,\
 	/datum/job/roguetown/hand,\
 	/datum/job/roguetown/knight,\

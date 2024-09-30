@@ -1,6 +1,6 @@
-/datum/job/roguetown/bailiff // A somewhat ham-fisted merge between bailiff and the old town sheriff role. The latter was built like a modern day officer, but we medieval in this bitch!
-	title = "Sheriff"
-	flag = BAILIFF
+/datum/job/roguetown/marshal // A somewhat ham-fisted merge between bailiff and the old town sheriff role. The latter was built like a modern day officer, but we medieval in this bitch!
+	title = "Marshal"
+	flag = MARSHAL
 	department_flag = NOBLEMEN
 	faction = "Station"
 	total_positions = 1
@@ -8,8 +8,8 @@
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
 	allowed_ages = list(AGE_ADULT, AGE_MIDDLEAGED, AGE_OLD)
-	display_order = JDO_BAILIFF
-	tutorial = "You are an agent of the crown in matters of law, and if it weren't for the crown's direct presence you'd basically run this place. Instead, you are merely one of the crown's methods of governance; you oversee law and justice, cast sentences, and unlike other nobles even set out to take dispense justice as need be, as well as ensure the church doesn't overstep too much.. You can call upon the retinue to aid you if need be, or failing that a mob from the peasantry. Such is justice."
+	display_order = JDO_MARSHAL
+	tutorial = "You are an agent of the crown in matters of law and military, making sure that laws are pushed, verified and carried out by the retinue upon the citizenry of the nation. While you preside over the knights and men-at-arms, most of your work happens behind a desk, deferring to the Guard Captain to make sure your will is carried out in the field."
 	whitelist_req = FALSE
 
 	spells = list(/obj/effect/proc_holder/spell/self/convertrole/guard) // /obj/effect/proc_holder/spell/self/convertrole/bog
@@ -33,7 +33,7 @@
 	backl = /obj/item/storage/backpack/rogue/satchel
 	belt = /obj/item/storage/belt/rogue/leather/plaquegold
 	beltl = /obj/item/storage/keyring/sheriff
-	beltr = /obj/item/rogueweapon/mace/cudgel
+	beltr = /obj/item/rogueweapon/mace/cudgel/justice
 	cloak = /obj/item/clothing/cloak/stabard/surcoat/bailiff
 	gloves = /obj/item/clothing/gloves/roguetown/angle
 	wrists = /obj/item/clothing/wrists/roguetown/bracers
