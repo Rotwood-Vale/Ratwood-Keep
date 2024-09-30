@@ -99,6 +99,7 @@
 	H.change_stat("strength", 2) //HEY, YOU, BEFORE YOU CHANGE THIS BECAUSE SOMEONE TOOK A STAT PACK WITH -STR: this is specifically because people extremely oftenly broke the 15/16 str threshhold. don't do it.
 	H.change_stat("constitution", 2)
 	H.change_stat("endurance", 2)
+	H.change_stat("perception", 1)
 	H.change_stat("speed", -2)		//Lower speed for more strength and con of other knight, and to off-set endurance. (They need the end-stam for 2 handed.)
 
 	H.adjust_blindness(-3)
@@ -154,6 +155,7 @@
 	H.change_stat("strength", 2)
 	H.change_stat("constitution", 1)
 	H.change_stat("endurance", 2)
+	H.change_stat("intelligence", 1)
 	H.change_stat("speed", -1)			//Bit faster than a heavy knight, not as fast as a mounted knight.
 
 	H.adjust_blindness(-3)
@@ -197,7 +199,7 @@
 	H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 1, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/reading, 2, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 2, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 3, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/combat/bows, 3, TRUE)			//Gets gaurenteed skill due to experience mounted. Maybe buff to 4; only effects aiming time.
 	H.mind.adjust_skillrank(/datum/skill/combat/knives, 3, TRUE)
 	ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
@@ -207,9 +209,10 @@
 	H.verbs |= /mob/proc/haltyell
 
 	H.change_stat("strength", 1)			//Worse strength than others, but bonus intel and no speed penalty.
-	H.change_stat("intelligence", 2)		//Bonus intel for feinting; swords-moment.
+	H.change_stat("intelligence", 2)
 	H.change_stat("constitution", 1)
-	H.change_stat("endurance", 2)
+	H.change_stat("endurance", 1)
+	H.change_stat("perception", 2) //really? nobody gave the mounted class with bow/crossbow skill perception? ok, dude lmao
 
 	H.adjust_blindness(-3)
 	var/weapons = list("Bastard Sword","Spear")
