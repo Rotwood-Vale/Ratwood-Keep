@@ -60,7 +60,6 @@
 	smeltresult = /obj/item/ingot/silver
 	smelt_bar_num = 2
 	is_silver = TRUE
-	dropshrink = 0.80
 
 /obj/item/rogueweapon/mace/getonmobprop(tag)
 	if(tag)

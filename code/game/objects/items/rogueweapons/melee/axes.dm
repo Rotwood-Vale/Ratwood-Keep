@@ -273,7 +273,6 @@
 	force = 24
 	possible_item_intents = list(/datum/intent/axe/cut,/datum/intent/axe/chop)
 	minstr = 6
-	dropshrink = 0.80
 	max_blade_int = 400
 	smeltresult = /obj/item/ingot/silver
 	gripped_intents = null

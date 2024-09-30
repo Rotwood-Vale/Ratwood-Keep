@@ -615,4 +615,3 @@
 	smelt_bar_num = 2
 	max_blade_int = 150
 	max_integrity = 200
-	dropshrink = 0.80
