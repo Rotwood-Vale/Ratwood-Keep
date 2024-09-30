@@ -17,7 +17,7 @@
 		/obj/item/reagent_containers/powder/salt = 1)
 	result = /obj/item/reagent_containers/food/snacks/butter
 	tools = list(/obj/item/reagent_containers/glass/bucket/wooden)
-
+	craftdiff = 0
 	subtype_reqs = FALSE
 
 /datum/crafting_recipe/roguetown/cooking/cheese
@@ -29,24 +29,24 @@
 				/obj/item/reagent_containers/food/snacks/rogue/cheese,
 				/obj/item/reagent_containers/food/snacks/rogue/cheese)
 	tools = list(/obj/item/reagent_containers/glass/bucket/wooden)
-
+	craftdiff = 0
 	subtype_reqs = FALSE
 
 /datum/crafting_recipe/roguetown/cooking/cheesewhee
 	name = "cheese wheel"
 	reqs = list(/obj/item/reagent_containers/food/snacks/rogue/cheese = 6)
 	result = /obj/item/reagent_containers/food/snacks/rogue/cheddar
-
+	craftdiff = 1
 	subtype_reqs = FALSE
 
-/datum/crafting_recipe/roguetown/cooking/soap
+/datum/crafting_recipe/roguetown/alchemy/soap
 	name = "soap"
 	reqs = list(
 		/obj/item/ash = 1,
 		/datum/reagent/water = 10,
 		/obj/item/reagent_containers/food/snacks/fat = 1)
 	result = /obj/item/soap
-	craftdiff = 5
+	craftdiff = 1
 
 /datum/crafting_recipe/roguetown/cooking/cucumberjar
 	name = "jar cucumbers"
@@ -56,4 +56,4 @@
 		/obj/item/reagent_containers/food/snacks/grown/cucumber = 4,
 		/obj/item/reagent_containers/glass/bottle = 1)
 	result = /obj/item/reagent_containers/food/snacks/grown/cucumberjar
-	craftdiff = 1
+	craftdiff = 3
