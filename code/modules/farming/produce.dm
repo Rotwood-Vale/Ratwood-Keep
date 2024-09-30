@@ -67,7 +67,7 @@
 	tastes = list("oat" = 1)
 	can_distill = TRUE
 	distill_reagent = /datum/reagent/consumable/ethanol/ale
-	distill_amt = 12
+	distill_amt = 24
 	grind_results = list(/datum/reagent/floure = 10)
 
 /obj/item/reagent_containers/food/snacks/grown/rice
@@ -83,7 +83,7 @@
 	tastes = list("rice" = 1)
 	can_distill = TRUE
 	distill_reagent = /datum/reagent/consumable/ethanol/sake
-	distill_amt = 12
+	distill_amt = 24
 	grind_results = list(/datum/reagent/floure = 10)
 
 /obj/item/reagent_containers/food/snacks/grown/apple
@@ -101,8 +101,9 @@
 	worn_x_dimension = 64
 	list_reagents = list(/datum/reagent/consumable/nutriment = 3)
 	worn_y_dimension = 64
-	rotprocess = 20 MINUTES
+	rotprocess = 30 
 	can_distill = TRUE
+	distill_amt = 9
 	distill_reagent = /datum/reagent/consumable/ethanol/beer/cider
 	var/equippedloc = null
 	var/list/bitten_names = list()
@@ -152,8 +153,9 @@
 	dropshrink = 0.75
 	var/color_index = "good"
 	can_distill = TRUE
+	distill_amt = 6
 	distill_reagent = /datum/reagent/consumable/ethanol/beer/wine
-	rotprocess = 15 MINUTES
+	rotprocess = 30 
 
 /obj/item/reagent_containers/food/snacks/grown/berries/rogue/Initialize()
 	if(GLOB.berrycolors[color_index])
@@ -206,7 +208,7 @@
 	list_reagents = list(/datum/reagent/consumable/nutriment = 1, /datum/reagent/berrypoison = 5)
 	tastes = list("sweet" = 1,"bitterness" = 1)
 	eat_effect = /datum/status_effect/debuff/badmeal
-	rotprocess = 15 MINUTES
+	rotprocess = 30 
 
 /obj/item/reagent_containers/food/snacks/grown/rogue/pipeweed
 	seed = /obj/item/seeds/pipeweed
@@ -220,7 +222,7 @@
 	list_reagents = list(/datum/reagent/drug/nicotine = 2, /datum/reagent/consumable/nutriment = 1, /datum/reagent/berrypoison = 5)
 	grind_results = list(/datum/reagent/drug/nicotine = 5)
 	eat_effect = /datum/status_effect/debuff/badmeal
-	rotprocess = 15 MINUTES
+	rotprocess = 30 
 
 /obj/item/reagent_containers/food/snacks/grown/rogue/pipeweeddry
 	seed = null
@@ -252,7 +254,7 @@
 	filling_color = "#88c8a0"
 	bitesize = 3
 	foodtype = VEGETABLES
-	rotprocess = 15 MINUTES
+	rotprocess = 30 
 	become_rot_type = /obj/item/reagent_containers/food/snacks/grown/sauerkraut
 	list_reagents = list(/datum/reagent/consumable/nutriment = 2)
 
@@ -264,7 +266,7 @@
 	filling_color = "#9ff35f"
 	bitesize = 3
 	foodtype = FRUIT
-	rotprocess = 20 MINUTES
+	rotprocess = 30 
 	list_reagents = list(/datum/reagent/consumable/nutriment = 3)
 	trash = /obj/item/trash/pearcore
 	can_distill = TRUE
@@ -278,9 +280,10 @@
 	filling_color = "#b90019"
 	bitesize = 3
 	foodtype = FRUIT
-	rotprocess = 20 MINUTES
+	rotprocess = 30 
 	list_reagents = list(/datum/reagent/consumable/nutriment = 3)
 	grind_results = list(/datum/reagent/consumable/cherryjelly = 3)
+	eat_effect = /datum/status_effect/buff/foodbuff/minor
 
 /obj/item/reagent_containers/food/snacks/grown/olive
 	name = "olive"
@@ -290,7 +293,7 @@
 	filling_color = "#a4c74b"
 	bitesize = 3
 	foodtype = FRUIT
-	rotprocess = 20 MINUTES
+	rotprocess = 30 
 	list_reagents = list(/datum/reagent/consumable/nutriment = 2)
 	grind_results = list(/datum/reagent/consumable/cooking_oil = 3)
 
@@ -312,7 +315,7 @@
 	filling_color = "#e4532b"
 	bitesize = 3
 	foodtype = FRUIT
-	rotprocess = 20 MINUTES
+	rotprocess = 30 
 	list_reagents = list(/datum/reagent/consumable/nutriment = 2, /datum/reagent/consumable/tomatojuice = 3)
 	grind_results = list(/datum/reagent/consumable/tomatojuice = 6)
 	slices_num = 5
@@ -332,6 +335,7 @@
 	slices_num = 5
 	slice_batch = TRUE
 	slice_path = /obj/item/reagent_containers/food/snacks/rogue/onionslice
+	eat_effect = /datum/status_effect/debuff/uncookedfood
 
 /obj/item/reagent_containers/food/snacks/grown/garlic
 	name = "garlic"
@@ -344,6 +348,7 @@
 	foodtype = VEGETABLES
 	list_reagents = list(/datum/reagent/consumable/nutriment = 2, /datum/reagent/consumable/garlic = 3)
 	grind_results = list(/datum/reagent/consumable/garlic = 6)
+	eat_effect = /datum/status_effect/debuff/uncookedfood
 
 /obj/item/reagent_containers/food/snacks/grown/carrot
 	name = "carrot"
@@ -353,7 +358,7 @@
 	filling_color = "#d57916"
 	bitesize = 3
 	foodtype = VEGETABLES
-	rotprocess = 40 MINUTES
+	rotprocess = 30 
 	list_reagents = list(/datum/reagent/consumable/nutriment = 2, /datum/reagent/medicine/oculine = 1)
 	grind_results = list(/datum/reagent/medicine/oculine = 3)
 
@@ -365,7 +370,7 @@
 	filling_color = "#d8d8b6"
 	bitesize = 3
 	foodtype = VEGETABLES
-	rotprocess = 50 MINUTES
+	rotprocess = 90 // Potato lore.
 	list_reagents = list(/datum/reagent/consumable/nutriment = 3)
 	can_distill = TRUE
 	distill_reagent = /datum/reagent/consumable/ethanol/vodka
@@ -379,7 +384,7 @@
 	filling_color = "#b6ab70"
 	bitesize = 3
 	foodtype = FRUIT
-	rotprocess = 20 MINUTES
+	rotprocess = 30 
 	list_reagents = list(/datum/reagent/consumable/nutriment = 3)
 
 /obj/item/reagent_containers/food/snacks/grown/bean
@@ -390,7 +395,7 @@
 	filling_color = "#4b360e"
 	bitesize = 3
 	foodtype = FRUIT
-	rotprocess = 50 MINUTES
+	rotprocess = 30 
 	list_reagents = list(/datum/reagent/consumable/nutriment = 3)
 
 /obj/item/reagent_containers/food/snacks/grown/radish
@@ -402,7 +407,7 @@
 	foodtype = VEGETABLES
 	tastes = list("radish" = 1)
 	list_reagents = list(/datum/reagent/consumable/nutriment = 2)
-	rotprocess = 15 MINUTES
+	rotprocess = 30
 
 /obj/item/reagent_containers/food/snacks/grown/beet
 	seed = /obj/item/seeds/beet
@@ -414,7 +419,7 @@
 	tastes = list("sugar" = 1)
 	list_reagents = list(/datum/reagent/consumable/nutriment = 2, /datum/reagent/consumable/sugar = 3)
 	grind_results = list(/datum/reagent/consumable/sugar = 6)
-	rotprocess = 15 MINUTES
+	rotprocess = 30
 
 /obj/item/reagent_containers/food/snacks/grown/bellpepper
 	seed = /obj/item/seeds/bellpepper
@@ -427,7 +432,7 @@
 	tastes = list("heat" = 1)
 	list_reagents = list(/datum/reagent/consumable/nutriment = 2, /datum/reagent/consumable/capsaicin = 3)
 	grind_results = list(/datum/reagent/consumable/capsaicin = 6)
-	rotprocess = 25 MINUTES
+	rotprocess = 30
 
 /obj/item/reagent_containers/food/snacks/grown/peas
 	seed = /obj/item/seeds/peas
@@ -438,7 +443,7 @@
 	foodtype = FRUIT
 	tastes = list("mushy" = 1)
 	list_reagents = list(/datum/reagent/consumable/nutriment = 2)
-	rotprocess = 25 MINUTES
+	rotprocess = 30
 
 /obj/item/reagent_containers/food/snacks/grown/cucumber
 	seed = /obj/item/seeds/cucumber
@@ -449,7 +454,7 @@
 	foodtype = FRUIT
 	tastes = list("cucumber" = 1)
 	list_reagents = list(/datum/reagent/consumable/nutriment = 3)
-	rotprocess = 20 MINUTES
+	rotprocess = 30 
 	fishloot = list(/obj/item/reagent_containers/food/snacks/fish/shrimp = 10)
 
 /obj/item/reagent_containers/food/snacks/grown/tea
@@ -462,7 +467,8 @@
 	tastes = list("sugar" = 1)
 	list_reagents = list(/datum/reagent/consumable/nutriment = 2, /datum/reagent/toxin/teapowder = 3)
 	grind_results = list(/datum/reagent/toxin/teapowder = 6)
-	rotprocess = 20 MINUTES
+	rotprocess = 30 
+	eat_effect = /datum/status_effect/debuff/uncookedfood
 
 /obj/item/reagent_containers/food/snacks/grown/plumphelmet
 	seed = /obj/item/seeds/mycelium/plumphelmet
@@ -474,8 +480,8 @@
 	tastes = list("the mountainhome" = 1)
 	list_reagents = list(/datum/reagent/consumable/nutriment = 3)
 	can_distill = TRUE
+	distill_amt = 12
 	distill_reagent = /datum/reagent/consumable/ethanol/beer/mushroomwine
-	rotprocess = 60 MINUTES
 
 /obj/item/reagent_containers/food/snacks/grown/trippy
 	seed = /obj/item/seeds/mycelium/trippy
@@ -485,6 +491,8 @@
 	bitesize = 3
 	foodtype = GROSS
 	tastes = list("colors" = 1)
+	distill_amt = 12
+	distill_reagent = /datum/reagent/drug/space_drugs
 	list_reagents = list(/datum/reagent/consumable/nutriment = 3, /datum/reagent/drug/space_drugs = 3)
 	grind_results = list(/datum/reagent/drug/space_drugs = 6)
 
@@ -496,5 +504,7 @@
 	bitesize = 3
 	foodtype = GROSS
 	tastes = list("numb" = 1)
+	distill_amt = 1
+	distill_reagent = /datum/reagent/toxin/killersice
 	list_reagents = list(/datum/reagent/consumable/nutriment = 3, /datum/reagent/toxin/amanitin = 3)
 	grind_results = list(/datum/reagent/toxin/amanitin = 6)
