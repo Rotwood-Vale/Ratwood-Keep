@@ -184,13 +184,27 @@
 	force = 25
 	icon_state = "cudgel"
 	force_wielded = 25
-	gripped_intents = null
+	gripped_intents = list(/datum/intent/mace/strike,/datum/intent/mace/smash)
 	smeltresult = /obj/item/ash
 	wlength = WLENGTH_SHORT
 	w_class = WEIGHT_CLASS_NORMAL
 	wbalance = 0
 	minstr = 7
 	wdefense = 3
+
+/obj/item/rogueweapon/mace/cudgel/justice
+	name = "'Justice'"
+	desc = "The icon of the right of office of the Marshal. While mostly ceremonial in design, it serves it's purpose in dishing out some much needed justice."
+	force = 30
+	icon_state = "justice"
+	force_wielded = 30
+	gripped_intents = list(/datum/intent/mace/strike,/datum/intent/mace/smash)
+	smeltresult = /obj/item/ingot/steel
+	wlength = WLENGTH_SHORT
+	w_class = WEIGHT_CLASS_NORMAL
+	wbalance = 4
+	minstr = 7
+	wdefense = 5
 
 /obj/item/rogueweapon/mace/cudgel/getonmobprop(tag)
 	. = ..()
