@@ -22,6 +22,7 @@
 	var/berrypie
 	var/poisoning
 	var/crabby
+	var/substitute //There may be a better way to do this
 
 /obj/item/reagent_containers/food/snacks/rogue/foodbase/piebottom/update_icon()
 	. = ..()
@@ -245,7 +246,7 @@
 			return
 		playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 30, TRUE, -1)
 		if(process_step == 1 && do_after(user,short_cooktime, target = src))
-			to_chat(user, "<span class='notice'>Starting on a crab pie...</span>")
+			to_chat(user, "<span class='notice'>Starting on a crab pie... You consider that shredded cabbage could be used as filler for one of the remaining ingredients. </span>")
 			name = "unfinished crab pie"
 			process_step += 1
 			crabby = TRUE
@@ -264,6 +265,22 @@
 			update_icon()
 			qdel(I)
 			return
+
+	if(istype(I, /obj/item/reagent_containers/food/snacks/rogue/veg/cabbage_sliced))
+		if (process_step > 4 || process_step == 1)
+			return
+		if (substitute == TRUE)
+			to_chat(user, "<span class='notice'>There is too much cabbage in this pie already.</span>")
+			return
+		playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 30, TRUE, -1)
+		if(crabby && process_step >= 2 && process_step <= 3 && do_after(user,short_cooktime, target = src))
+			to_chat(user, "<span class='notice'>Substituting cabbage for crab meat in the crab pie...</span>")
+			process_step += 1
+			substitute = TRUE
+			update_icon()
+			qdel(I)
+			return
+		
 
 	if(istype(I, /obj/item/reagent_containers/food/snacks/grown/apple))
 		if (process_step > 4)
