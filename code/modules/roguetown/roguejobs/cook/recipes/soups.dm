@@ -5,9 +5,9 @@
 	icon_state = "bean_stew"
 	tastes = list("bean" = 1, "carrot" = 1, "potato" = 1, "radish" = 1)
 	list_reagents = list(/datum/reagent/consumable/nutriment = 15)
-	eat_effect = null
+	eat_effect = /datum/status_effect/buff/foodbuff/expert
 	warming = 5 MINUTES
-	rotprocess = 15 MINUTES
+	rotprocess = 60 MINUTES
 	w_class = WEIGHT_CLASS_SMALL
 	trash = /obj/item/reagent_containers/glass/bowl
 
@@ -22,7 +22,7 @@
 		/datum/reagent/water = 15
 	)
 	result = /obj/item/reagent_containers/food/snacks/rogue/beanstew
-	craftdiff = 1
+	craftdiff = 3
 	subtype_reqs = TRUE
 
 /obj/item/reagent_containers/food/snacks/rogue/oatstew
@@ -32,9 +32,9 @@
 	icon_state = "oat_stew"
 	tastes = list("oat" = 1, "carrot" = 1, "potato" = 1, "radish" = 1)
 	list_reagents = list(/datum/reagent/consumable/nutriment = 15)
-	eat_effect = null
+	eat_effect = /datum/status_effect/buff/foodbuff/expert
 	warming = 5 MINUTES
-	rotprocess = 15 MINUTES
+	rotprocess = 60 MINUTES
 	w_class = WEIGHT_CLASS_SMALL
 	trash = /obj/item/reagent_containers/glass/bowl
 
@@ -49,7 +49,7 @@
 		/datum/reagent/water = 15
 	)
 	result = /obj/item/reagent_containers/food/snacks/rogue/oatstew
-	craftdiff = 1
+	craftdiff = 3
 	subtype_reqs = TRUE
 
 /obj/item/reagent_containers/food/snacks/rogue/riceporridge
@@ -59,9 +59,9 @@
 	icon_state = "rice_porridge"
 	tastes = list("mush" = 1, "bland" = 1, "rice" = 1, "salt" = 1)
 	list_reagents = list(/datum/reagent/consumable/nutriment = 10)
-	eat_effect = null
+	eat_effect = /datum/status_effect/buff/foodbuff/expert
 	warming = 5 MINUTES
-	rotprocess = 15 MINUTES
+	rotprocess = 60 MINUTES
 	w_class = WEIGHT_CLASS_SMALL
 	trash = /obj/item/reagent_containers/glass/bowl
 
@@ -74,7 +74,7 @@
 		/datum/reagent/water = 15
 	)
 	result = /obj/item/reagent_containers/food/snacks/rogue/riceporridge
-	craftdiff = 0
+	craftdiff = 3
 	subtype_reqs = TRUE
 
 /obj/item/reagent_containers/food/snacks/rogue/cheesyporridge
@@ -84,9 +84,9 @@
 	icon_state = "rice_porridge"
 	tastes = list("cheese" = 1, "rice" = 1)
 	list_reagents = list(/datum/reagent/consumable/nutriment = 15)
-	eat_effect = /datum/status_effect/buff/foodbuff
+	eat_effect = /datum/status_effect/buff/foodbuff/expert
 	warming = 5 MINUTES
-	rotprocess = 15 MINUTES
+	rotprocess = 60 MINUTES
 	w_class = WEIGHT_CLASS_SMALL
 	trash = /obj/item/reagent_containers/glass/bowl
 
@@ -100,7 +100,7 @@
 		/datum/reagent/water = 15
 	)
 	result = /obj/item/reagent_containers/food/snacks/rogue/cheesyporridge
-	craftdiff = 0
+	craftdiff = 3
 	subtype_reqs = TRUE
 
 /obj/item/reagent_containers/food/snacks/rogue/tieflingrice
@@ -110,9 +110,9 @@
 	icon_state = "tieflingrice"
 	tastes = list("heat" = 1, "rice" = 1)
 	list_reagents = list(/datum/reagent/consumable/nutriment = 15, /datum/reagent/consumable/capsaicin = 5)
-	eat_effect = /datum/status_effect/buff/foodbuff
+	eat_effect = /datum/status_effect/buff/foodbuff/master
 	warming = 10 MINUTES
-	rotprocess = 15 MINUTES
+	rotprocess = 90 MINUTES
 	w_class = WEIGHT_CLASS_SMALL
 	trash = /obj/item/reagent_containers/glass/bowl
 
@@ -127,5 +127,5 @@
 		/datum/reagent/water = 15
 	)
 	result = /obj/item/reagent_containers/food/snacks/rogue/tieflingrice
-	craftdiff = 2
+	craftdiff = 4
 	subtype_reqs = TRUE
