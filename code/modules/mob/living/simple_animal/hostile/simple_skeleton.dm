@@ -1,4 +1,4 @@
-/mob/living/simple_animal/hostile/retaliate/skeleton
+/mob/living/simple_animal/hostile/rogue/skeleton
 	name = "Skeleton"
 	desc = ""
 	icon = 'modular_hearthstone/icons/mob/skeletons.dmi'
@@ -27,7 +27,6 @@
 	attack_verb_continuous = "hacks"
 	attack_verb_simple = "hack"
 	attack_sound = 'sound/blank.ogg'
-	aggressive = 1
 	canparry = TRUE
 	d_intent = INTENT_PARRY
 	defprob = 50
@@ -38,7 +37,7 @@
 	footstep_type = FOOTSTEP_MOB_BAREFOOT
 	del_on_death = TRUE
 
-/mob/living/simple_animal/hostile/retaliate/skeleton/axe
+/mob/living/simple_animal/hostile/rogue/skeleton/axe
 	name = "Skeleton"
 	desc = ""
 	icon = 'modular_hearthstone/icons/mob/skeletons.dmi'
@@ -50,7 +49,7 @@
 
 
 
-/mob/living/simple_animal/hostile/retaliate/skeleton/spear
+/mob/living/simple_animal/hostile/rogue/skeleton/spear
 	name = "Skeleton"
 	desc = ""
 	icon = 'modular_hearthstone/icons/mob/skeletons.dmi'
@@ -61,7 +60,7 @@
 	attack_sound = 'sound/foley/pierce.ogg'
 	loot = list(/obj/item/natural/bone,	/obj/item/natural/bone, /obj/item/natural/bone,	/obj/item/rogueweapon/spear, /obj/item/skull)
 
-/mob/living/simple_animal/hostile/retaliate/skeleton/guard
+/mob/living/simple_animal/hostile/rogue/skeleton/guard
 	name = "Skeleton"
 	desc = ""
 	icon = 'modular_hearthstone/icons/mob/skeletons.dmi'
@@ -73,7 +72,7 @@
 	maxHealth = 200
 	health = 200
 
-/mob/living/simple_animal/hostile/retaliate/skeleton/bow
+/mob/living/simple_animal/hostile/rogue/skeleton/bow
 	name = "Skeleton"
 	desc = ""
 	icon = 'modular_hearthstone/icons/mob/skeletons.dmi'
@@ -90,7 +89,7 @@
 	loot = list(/obj/item/natural/bone,	/obj/item/natural/bone, /obj/item/natural/bone, /obj/item/skull, /obj/item/gun/ballistic/revolver/grenadelauncher/bow,
 			 /obj/item/ammo_casing/caseless/rogue/arrow,  /obj/item/ammo_casing/caseless/rogue/arrow,  /obj/item/ammo_casing/caseless/rogue/arrow)
 
-/mob/living/simple_animal/hostile/retaliate/skeleton/get_sound(input)
+/mob/living/simple_animal/hostile/rogue/skeleton/get_sound(input)
 	switch(input)
 		if("aggro")
 			return pick('sound/vo/mobs/skel/skeleton_rage (1).ogg','sound/vo/mobs/skel/skeleton_rage (2).ogg','sound/vo/mobs/skel/skeleton_rage (3).ogg')
@@ -102,7 +101,7 @@
 			return pick('sound/vo/mobs/skel/skeleton_idle (1).ogg','sound/vo/mobs/skel/skeleton_idle (2).ogg','sound/vo/mobs/skel/skeleton_idle (3).ogg')
 
 
-/mob/living/simple_animal/hostile/retaliate/skeleton/Life()
+/mob/living/simple_animal/hostile/rogue/skeleton/Life()
 	. = ..()
 	if(!target)
 		if(prob(60))
@@ -111,7 +110,7 @@
 
 
 
-/mob/living/simple_animal/hostile/retaliate/skeleton/taunted(mob/user)
+/mob/living/simple_animal/hostile/rogue/skeleton/taunted(mob/user)
 	emote("aggro")
 	GiveTarget(user)
 	return
