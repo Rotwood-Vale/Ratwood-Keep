@@ -39,6 +39,8 @@
 		/obj/item/reagent_containers/food/snacks/rogue/doughslice= 1)
 	result = /obj/item/reagent_containers/food/snacks/rogue/crackers
 	subtype_reqs = FALSE
+	craftdiff = 0
+	skillcraft = null
 
 /obj/item/reagent_containers/food/snacks/rogue/dough
 	name = "dough"
@@ -54,7 +56,7 @@
 	tastes = list("dough" = 1)
 	foodtype = GRAIN
 	eat_effect = /datum/status_effect/debuff/uncookedfood
-	rotprocess = 30 MINUTES
+	rotprocess = 10 MINUTES
 
 /obj/item/reagent_containers/food/snacks/rogue/doughslice
 	name = "smalldough"
@@ -68,7 +70,7 @@
 	tastes = list("dough" = 1)
 	foodtype = GRAIN
 	eat_effect = /datum/status_effect/debuff/uncookedfood
-	rotprocess = 30 MINUTES
+	rotprocess = 10 MINUTES
 
 /obj/item/reagent_containers/food/snacks/rogue/crackers
 	name = "crackers"
@@ -82,7 +84,7 @@
 	tastes = list("dough" = 1)
 	foodtype = GRAIN
 	eat_effect = /datum/status_effect/debuff/uncookedfood
-	rotprocess = 30 MINUTES
+	rotprocess = 10 MINUTES
 
 /obj/item/reagent_containers/food/snacks/rogue/crackerscooked
 	name = "crackers"
@@ -118,7 +120,7 @@
 		/obj/item/reagent_containers/food/snacks/rogue/cheddarslice = 3,
 		/obj/item/reagent_containers/food/snacks/rogue/doughslice = 1)
 	result = /obj/item/reagent_containers/food/snacks/rogue/cheeseegg
-	craftdiff = 1
+	craftdiff = 2
 	subtype_reqs = TRUE
 
 /obj/item/reagent_containers/food/snacks/rogue/cheeseegg
@@ -133,7 +135,7 @@
 	tastes = list("dough" = 1)
 	foodtype = GRAIN
 	eat_effect = /datum/status_effect/debuff/uncookedfood
-	rotprocess = 30 MINUTES
+	rotprocess = 10 MINUTES
 
 /obj/item/reagent_containers/food/snacks/rogue/cheeseeggcooked
 	name = "cheeseegg"
@@ -146,7 +148,7 @@
 	w_class = WEIGHT_CLASS_NORMAL
 	tastes = list("eggs" = 1,"cheese" = 1,"butter" = 1)
 	foodtype = GRAIN
-	eat_effect = null
+	eat_effect = /datum/status_effect/buff/foodbuff/minor
 	rotprocess = 30 MINUTES
 
 
@@ -162,7 +164,7 @@
 	tastes = list("spelt" = 1)
 	foodtype = GRAIN
 	slice_batch = FALSE
-	rotprocess = 30 MINUTES
+	rotprocess = 20 MINUTES
 
 /obj/item/reagent_containers/food/snacks/rogue/bread/update_icon()
 	if(slices_num)
@@ -197,6 +199,7 @@
 	tastes = list("spelt" = 1)
 	foodtype = GRAIN
 	bitesize = 1
+	rotprocess = 20 MINUTES
 //this is a child so we can be used in sammies
 /obj/item/reagent_containers/food/snacks/rogue/breadslice/toast
 	name = "toast"
@@ -223,7 +226,7 @@
 	tastes = list("spelt" = 1)
 	foodtype = GRAIN
 	bitesize = 2
-	rotprocess = 30 MINUTES
+	rotprocess = 20 MINUTES
 
 /datum/crafting_recipe/roguetown/cooking/butterbiscuit
 	name = "butter bun"
@@ -233,7 +236,7 @@
 	)
 	result = /obj/item/reagent_containers/food/snacks/rogue/bun
 	subtype_reqs = FALSE
-	craftdiff = 0
+	craftdiff = 1
 
 /obj/item/reagent_containers/food/snacks/rogue/biscuitcooked/butter
 	name = "biscuit of butter"
@@ -245,7 +248,8 @@
 	tastes = list("butter" = 1, "biscuit" = 1)
 	foodtype = GRAIN
 	bitesize = 3
-	rotprocess = 60 MINUTES
+	rotprocess = 60 MINUTES // Intentionally abnormally long rot time, as a better alternative for making crackers.
+	eat_effect = /datum/status_effect/buff/foodbuff/minor
 
 /datum/crafting_recipe/roguetown/cooking/sweetroll
 	name = "sweetroll"
@@ -254,7 +258,7 @@
 		/datum/reagent/consumable/sugar = 5)
 	result = /obj/item/reagent_containers/food/snacks/rogue/sweetroll
 	subtype_reqs = FALSE
-	craftdiff = 0
+	craftdiff = 3
 
 /obj/item/reagent_containers/food/snacks/rogue/sweetroll
 	name = "sweetroll"
@@ -268,6 +272,7 @@
 	foodtype = GRAIN | SUGAR
 	bitesize = 2
 	rotprocess = 30 MINUTES
+	eat_effect = /datum/status_effect/buff/foodbuff
 
 /datum/crafting_recipe/roguetown/cooking/honeybun
 	name = "honey bun"
@@ -276,7 +281,7 @@
 		/datum/reagent/consumable/honey = 5)
 	result = /obj/item/reagent_containers/food/snacks/rogue/honeybun
 	subtype_reqs = FALSE
-	craftdiff = 1
+	craftdiff = 3
 
 /obj/item/reagent_containers/food/snacks/rogue/honeybun
 	name = "honey bun"
@@ -284,7 +289,7 @@
 	icon = 'icons/roguetown/items/food.dmi'
 	icon_state = "honeybun"
 	slices_num = 0
-	list_reagents = list(/datum/reagent/consumable/nutriment = 13, /datum/reagent/consumable/honey = 5)
+	list_reagents = list(/datum/reagent/consumable/nutriment = 8, /datum/reagent/consumable/honey = 10)
 	w_class = WEIGHT_CLASS_SMALL
 	tastes = list("sweetness and light" = 1)
 	foodtype = GRAIN | SUGAR
@@ -297,8 +302,7 @@
 		/obj/item/reagent_containers/food/snacks/rogue/breadslice/toast = 1,
 		/obj/item/reagent_containers/food/snacks/butterslice = 1)
 	result = /obj/item/reagent_containers/food/snacks/rogue/breadslice/toastbuttered
-	craftdiff = 0
-	skillcraft = null
+	craftdiff = 1
 	subtype_reqs = FALSE
 
 /obj/item/reagent_containers/food/snacks/rogue/breadslice/toastbuttered
@@ -312,16 +316,16 @@
 	tastes = list("spelt" = 1)
 	foodtype = GRAIN
 	bitesize = 2
-
+	rotprocess = 20 MINUTES
+	eat_effect = /datum/status_effect/buff/foodbuff/minor
 
 /datum/crafting_recipe/roguetown/cooking/raisinloaf
 	name = "raisin loaf"
 	reqs = list(
 		/obj/item/reagent_containers/food/snacks/rogue/dough = 1,
 		/obj/item/reagent_containers/food/snacks/rogue/raisins = 2)
-	craftdiff = 1
+	craftdiff = 2
 	result = /obj/item/reagent_containers/food/snacks/rogue/rbreaduncooked
-
 	subtype_reqs = FALSE
 
 /obj/item/reagent_containers/food/snacks/rogue/rbreaduncooked
@@ -336,7 +340,7 @@
 	tastes = list("dough" = 1)
 	foodtype = GRAIN
 	eat_effect = /datum/status_effect/debuff/uncookedfood
-	rotprocess = 30 MINUTES
+	rotprocess = 10 MINUTES
 
 /obj/item/reagent_containers/food/snacks/rogue/raisinbread
 	name = "raisin loaf"
@@ -350,8 +354,8 @@
 	tastes = list("bread" = 1,"dried fruit" = 1)
 	foodtype = GRAIN
 	slice_batch = FALSE
-	rotprocess = 30 MINUTES
-	eat_effect = /datum/status_effect/buff/foodbuff
+	rotprocess = 20 MINUTES
+	eat_effect = /datum/status_effect/buff/foodbuff/minor
 
 /obj/item/reagent_containers/food/snacks/rogue/raisinbread/update_icon()
 	if(slices_num)
@@ -385,8 +389,8 @@
 	tastes = list("spelt" = 1,"dried fruit" = 1)
 	foodtype = GRAIN
 	bitesize = 2
-	eat_effect = /datum/status_effect/buff/foodbuff
-
+	eat_effect = /datum/status_effect/buff/foodbuff/minor
+	rotprocess = 20 MINUTES
 
 /datum/crafting_recipe/roguetown/cooking/biscuit
 	name = "biscuit"
@@ -394,8 +398,7 @@
 		/obj/item/reagent_containers/food/snacks/rogue/doughslice = 1,
 		/obj/item/reagent_containers/food/snacks/butterslice = 1)
 	result = /obj/item/reagent_containers/food/snacks/rogue/biscuituncooked
-	craftdiff = 0
-
+	craftdiff = 1
 	subtype_reqs = FALSE
 
 /obj/item/reagent_containers/food/snacks/rogue/biscuituncooked
@@ -410,7 +413,7 @@
 	tastes = list("dough" = 1)
 	foodtype = GRAIN
 	eat_effect = /datum/status_effect/debuff/uncookedfood
-	rotprocess = 30 MINUTES
+	rotprocess = 10 MINUTES
 
 /obj/item/reagent_containers/food/snacks/rogue/biscuitcooked
 	name = "biscuit"
@@ -423,7 +426,7 @@
 	tastes = list("spelt" = 1)
 	foodtype = GRAIN
 	bitesize = 3
-	rotprocess = 60 MINUTES
+	rotprocess = 20 MINUTES
 
 //=-=================================================================
 
@@ -434,7 +437,7 @@
 		/obj/item/reagent_containers/food/snacks/egg = 1,
 		/obj/item/reagent_containers/food/snacks/rogue/cheese = 2)
 	result = /obj/item/reagent_containers/food/snacks/rogue/ccakeuncooked
-	craftdiff = 1
+	craftdiff = 3
 	subtype_reqs = FALSE
 
 /obj/item/reagent_containers/food/snacks/rogue/ccakeuncooked
@@ -449,7 +452,7 @@
 	tastes = list("dough" = 1)
 	foodtype = GRAIN
 	eat_effect = /datum/status_effect/debuff/uncookedfood
-	rotprocess = 30 MINUTES
+	rotprocess = 10 MINUTES
 
 /obj/item/reagent_containers/food/snacks/rogue/ccake
 	name = "cheesecake"
@@ -480,4 +483,4 @@
 	foodtype = GRAIN
 	bitesize = 2
 	eat_effect = /datum/status_effect/buff/foodbuff
-	rotprocess = 20 MINUTES
+	rotprocess = 30 MINUTES
