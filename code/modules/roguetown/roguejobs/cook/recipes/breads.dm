@@ -165,6 +165,7 @@
 	foodtype = GRAIN
 	slice_batch = FALSE
 	rotprocess = 20 MINUTES
+	eat_effect = /datum/status_effect/debuff/tastelessfood
 
 /obj/item/reagent_containers/food/snacks/rogue/bread/update_icon()
 	if(slices_num)
@@ -200,6 +201,7 @@
 	foodtype = GRAIN
 	bitesize = 1
 	rotprocess = 20 MINUTES
+	eat_effect = /datum/status_effect/debuff/tastelessfood
 //this is a child so we can be used in sammies
 /obj/item/reagent_containers/food/snacks/rogue/breadslice/toast
 	name = "toast"
@@ -214,6 +216,7 @@
 	foodtype = GRAIN
 	bitesize = 1
 	rotprocess = 30 MINUTES
+	eat_effect = null
 
 /obj/item/reagent_containers/food/snacks/rogue/bun
 	name = "bun"
@@ -227,6 +230,7 @@
 	foodtype = GRAIN
 	bitesize = 2
 	rotprocess = 20 MINUTES
+	eat_effect = /datum/status_effect/debuff/tastelessfood
 
 /datum/crafting_recipe/roguetown/cooking/butterbiscuit
 	name = "butter bun"
