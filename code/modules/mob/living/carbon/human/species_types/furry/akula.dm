@@ -74,7 +74,7 @@
 		/datum/customizer/organ/tail/axian,
 		/datum/customizer/organ/ears/axian,
 		/datum/customizer/organ/testicles/anthro,
-		/datum/customizer/organ/penis/lizard,
+		/datum/customizer/organ/penis/anthro,
 		/datum/customizer/organ/breasts/human,
 		/datum/customizer/organ/vagina/human_anthro,
 		)

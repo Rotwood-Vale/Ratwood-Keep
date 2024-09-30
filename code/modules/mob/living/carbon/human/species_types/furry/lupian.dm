@@ -79,8 +79,8 @@
 		/datum/customizer/organ/snout/lupian,
 		/datum/customizer/organ/ears/lupian,
 		/datum/customizer/organ/neck_feature/anthro,
-		/datum/customizer/organ/testicles/external,
-		/datum/customizer/organ/penis/canine,
+		/datum/customizer/organ/testicles/anthro,
+		/datum/customizer/organ/penis/anthro,
 		/datum/customizer/organ/breasts/animal,
 		/datum/customizer/organ/vagina/animal,
 		)

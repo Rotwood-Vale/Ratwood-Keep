@@ -4,7 +4,7 @@
 /datum/species/demihuman
 	name = "Half-Kin"
 	id = "demihuman"
-	desc = "In time you will learn the history of this race"
+	desc = "The inevitable union between wildkin and some form of humanity or another, they've become quite common these days. Perhaps they'll be the dominant species some day."
 	skin_tone_wording = "Ancestry"
 	default_color = "FFFFFF"
 	species_traits = list(EYECOLOR,HAIR,FACEHAIR,LIPS,STUBBLE,OLDGREY,MUTCOLORS_PARTSONLY)
@@ -52,8 +52,9 @@
 		/datum/customizer/organ/ears/demihuman,
 		/datum/customizer/organ/horns/demihuman,
 		/datum/customizer/organ/tail/demihuman,
-		/datum/customizer/organ/testicles/human,
-		/datum/customizer/organ/penis/canine,
+		/datum/customizer/organ/wings/anthro,
+		/datum/customizer/organ/testicles/anthro,
+		/datum/customizer/organ/penis/anthro,
 		/datum/customizer/organ/breasts/animal,
 		/datum/customizer/organ/vagina/animal,
 		)

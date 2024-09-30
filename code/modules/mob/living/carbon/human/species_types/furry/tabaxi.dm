@@ -71,8 +71,8 @@
 		/datum/customizer/bodypart_feature/underwear,
 		/datum/customizer/organ/snout/tabaxi,
 		/datum/customizer/organ/tail/tabaxi,
-		/datum/customizer/organ/testicles/external,
-		/datum/customizer/organ/penis/feline,
+		/datum/customizer/organ/testicles/anthro,
+		/datum/customizer/organ/penis/anthro,
 		/datum/customizer/organ/breasts/animal,
 		/datum/customizer/organ/vagina/animal,
 		/datum/customizer/organ/ears/tajaran

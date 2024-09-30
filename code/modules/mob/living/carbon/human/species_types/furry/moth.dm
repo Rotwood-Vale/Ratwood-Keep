@@ -4,7 +4,7 @@
 /datum/species/moth
 	name = "Fluvian"
 	id = "moth"
-	desc = "In time you will learn the history of this race"
+	desc = "A curious, insectoid creature that almost seems out of place. Uniquely, despite their size, they're capable of flight!"
 	species_traits = list(EYECOLOR,LIPS,STUBBLE,MUTCOLORS,HAIR)
 	inherent_traits = list(TRAIT_NOMOBSWAP)
 	possible_ages = ALL_AGES_LIST
@@ -67,7 +67,7 @@
 		/datum/customizer/organ/antennas/moth,
 		/datum/customizer/organ/neck_feature/moth_fluff,
 		/datum/customizer/organ/testicles/anthro,
-		/datum/customizer/organ/penis/lizard,
+		/datum/customizer/organ/penis/anthro,
 		/datum/customizer/organ/breasts/animal,
 		/datum/customizer/organ/vagina/animal,
 		)
