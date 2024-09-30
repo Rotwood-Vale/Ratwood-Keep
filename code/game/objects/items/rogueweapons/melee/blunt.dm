@@ -47,6 +47,20 @@
 	smeltresult = /obj/item/ingot/steel
 	blade_dulling = DULLING_BASH
 	wdefense = 3
+	smelt_bar_num = 2
+
+/obj/item/rogueweapon/mace/silver
+	name = "Silver War Hammer"
+	desc = "A light war hammer forged of silver."
+	icon_state = "smace"
+	force = 24
+	gripped_intents = null
+	possible_item_intents = list(/datum/intent/mace/strike, /datum/intent/mace/smash)
+	wdefense = 4
+	smeltresult = /obj/item/ingot/silver
+	smelt_bar_num = 2
+	is_silver = TRUE
+	dropshrink = 0.80
 
 /obj/item/rogueweapon/mace/getonmobprop(tag)
 	if(tag)
@@ -313,6 +327,8 @@
 	icon_state = "polemace"
 	force = 15
 	force_wielded = 35
+	smeltresult = /obj/item/ingot/steel
+	smelt_bar_num = 2
 
 /obj/item/rogueweapon/mace/spiked
 	icon_state = "spiked_club"

@@ -579,13 +579,40 @@
 	gripped_intents = null
 	wdefense = 6
 
+/obj/item/rogueweapon/sword/gladius
+	force = 22
+	name = "Gladius"
+	desc = "A bronze short sword with a slightly wider end, and no guard. Compliments a shield."
+	icon_state = "gladius"
+	gripped_intents = null
+	smeltresult = /obj/item/ingot/bronze
+	smelt_bar_num = 2
+	max_blade_int = 100
+	max_integrity = 200
+	dropshrink = 0.80
+	wdefense = 2
+
 /obj/item/rogueweapon/sword/sabre/elf
 	force = 25
 	name = "elvish saber"
-	desc = "This finely crafted saber is of elven smithcraft."
+	desc = "This finely crafted saber is of elven design."
 	icon_state = "esaber"
 	item_state = "esaber"
 	lefthand_file = 'icons/mob/inhands/weapons/swords_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/weapons/swords_righthand.dmi'
 	last_used = 0
 	is_silver = TRUE
+	smeltresult = /obj/item/ingot/silver
+	smelt_bar_num = 2
+
+/obj/item/rogueweapon/sword/silver
+	force = 24
+	name = "Silver Sword"
+	desc = "A sword forged of pure silver. The guard is fashioned into a cross."
+	icon_state = "silversword"
+	is_silver = TRUE
+	smeltresult = /obj/item/ingot/silver
+	smelt_bar_num = 2
+	max_blade_int = 150
+	max_integrity = 200
+	dropshrink = 0.80

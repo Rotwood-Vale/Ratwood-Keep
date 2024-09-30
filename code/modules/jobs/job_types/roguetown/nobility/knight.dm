@@ -114,7 +114,7 @@
 		if("Battle Axe")	// Why did heavy knights get a mace+shield combo if they're supposed to be the two-hander guys? Gives them a greataxe instead.
 			r_hand = /obj/item/rogueweapon/stoneaxe/battle
 		if("Estoc")
-			r_hand = /obj/item/rogueweapon/greatsword/estoc
+			r_hand = /obj/item/rogueweapon/estoc
 
 	neck = /obj/item/clothing/neck/roguetown/bevor
 	armor = /obj/item/clothing/suit/roguetown/armor/plate		//this is actually steel half-plate, full plate is plate/full. given because they are SLOW.

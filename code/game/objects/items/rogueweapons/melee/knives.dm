@@ -105,7 +105,7 @@
 	slot_flags = ITEM_SLOT_HIP
 	thrown_bclass = BCLASS_CHOP
 	w_class = WEIGHT_CLASS_NORMAL
-	smeltresult = null
+	smeltresult = /obj/item/ingot/steel
 
 /obj/item/rogueweapon/huntingknife/chefknife
 	force = 15
@@ -120,11 +120,11 @@
 	slot_flags = ITEM_SLOT_HIP
 	thrown_bclass = BCLASS_CUT
 	w_class = WEIGHT_CLASS_SMALL
-	smeltresult = null
+	smeltresult = /obj/item/ingot/steel
 
 /obj/item/rogueweapon/huntingknife/cleaver/combat
 	force = 16
-	name = "knife"
+	name = "combat knife"
 	desc = "A combat knife. Swift and deadly if you hit."
 	possible_item_intents = list(/datum/intent/dagger/cut, /datum/intent/dagger/chop/cleaver, )
 	icon_state = "combatknife"
@@ -135,7 +135,7 @@
 	slot_flags = ITEM_SLOT_HIP
 	thrown_bclass = BCLASS_CHOP
 	w_class = WEIGHT_CLASS_NORMAL
-	smeltresult = null
+	smeltresult = /obj/item/ingot/steel
 
 /obj/item/rogueweapon/huntingknife/cleaver/getonmobprop(tag)
 	. = ..()
