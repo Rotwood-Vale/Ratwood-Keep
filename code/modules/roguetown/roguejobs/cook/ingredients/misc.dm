@@ -9,7 +9,7 @@
 	w_class = WEIGHT_CLASS_TINY
 	tastes = list("dried fruit" = 1)
 	foodtype = GRAIN
-	eat_effect = null
+	eat_effect = /datum/status_effect/debuff/tastelessfood
 	rotprocess = null
 
 /obj/item/reagent_containers/food/snacks/rogue/raisins/On_Consume(mob/living/eater)
@@ -171,6 +171,7 @@
 	bitesize = 3
 	rotprocess = null
 	list_reagents = list(/datum/reagent/consumable/nutriment = 6, /datum/reagent/consumable/sodiumchloride = 3)
+	eat_effect = /datum/status_effect/debuff/tastelessfood
 
 /obj/item/reagent_containers/food/snacks/grown/westspice
 	name = "western herbs"
