@@ -109,7 +109,7 @@
 /datum/keybinding/mob/target_eye_nose
 	hotkey_keys = list("Numpad7")
 	name = "target_eye_nose"
-	full_name = "Target: Cycle eye and nose"
+	full_name = "Target: Cycle eyes and nose"
 	description = ""
 
 /datum/keybinding/mob/target_eye_nose/down(client/user)

@@ -173,7 +173,6 @@
 /datum/status_effect/debuff/sleepytime
 	id = "sleepytime"
 	alert_type = /atom/movable/screen/alert/status_effect/debuff/sleepytime
-	effectedstats = list("speed" = -1, "endurance" = -1)
 
 /atom/movable/screen/alert/status_effect/debuff/sleepytime
 	name = "Tired"
@@ -208,6 +207,42 @@
 	name = "Insight"
 	desc = "With some sleep in a coffin I feel like I could become better."
 	icon_state = "sleepy"
+
+/// SURRENDERING DEBUFFS
+
+/datum/status_effect/debuff/breedable
+	id = "breedable"
+	alert_type = /atom/movable/screen/alert/status_effect/debuff/breedable
+	duration = 30 SECONDS
+
+/datum/status_effect/debuff/breedable/on_apply()
+	. = ..()
+	ADD_TRAIT(owner, TRAIT_CRITICAL_RESISTANCE, id)
+
+/datum/status_effect/debuff/breedable/on_remove()
+	. = ..()
+	REMOVE_TRAIT(owner, TRAIT_CRITICAL_RESISTANCE, id)
+
+/atom/movable/screen/alert/status_effect/debuff/breedable
+	name = "Obedient"
+	desc = "They won't hurt me too much..."
+
+/datum/status_effect/debuff/submissive
+	id = "submissive"
+	alert_type = /atom/movable/screen/alert/status_effect/debuff/submissive
+	duration = 60 SECONDS
+
+/datum/status_effect/debuff/submissive/on_apply()
+	. = ..()
+	owner.add_movespeed_modifier("SUBMISSIVE", multiplicative_slowdown = 4)
+
+/datum/status_effect/debuff/submissive/on_remove()
+	. = ..()
+	owner.remove_movespeed_modifier("SUBMISSIVE")
+
+/atom/movable/screen/alert/status_effect/debuff/submissive
+	name = "Compliant"
+	desc = "Falling in line is my only choice."
 
 /datum/status_effect/debuff/chilled
 	id = "chilled"

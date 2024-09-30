@@ -643,14 +643,12 @@
 		"Woad Blue"="#395480",
 		"Cornflower Blue"="#749EE8",
 		"Blacksteel Grey"="#404040",)
-		qdel(W)
-		user.visible_message(span_warning("[user] adds [W] to [src]."))
 
-		var/mob/living/carbon/human/L = loc
-		var/choice = input(L, "Choose a color.", "Knight's Plume") as anything in colors
-		var/playerchoice = colors[choice]
-		detail_color = playerchoice
+		var/choice = input(user, "Choose a color.", "Plume") as anything in colors
+		detail_color = colors[choice]
 		detail_tag = "_detail"
+		user.visible_message(span_warning("[user] adds [W] to [src]."))
+		qdel(W)
 		update_icon()
 		if(loc == user && ishuman(user))
 			var/mob/living/carbon/H = user
@@ -674,6 +672,45 @@
 	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR
 	block2add = FOV_RIGHT|FOV_LEFT
 	smeltresult = /obj/item/ingot/steel
+
+/obj/item/clothing/head/roguetown/helmet/heavy/bucket/attackby(obj/item/W, mob/living/user, params)
+	..()
+	if(istype(W, /obj/item/natural/cloth) && !detail_tag)
+		var/list/colors = list(
+		"Swan White"="#ffffff",
+		"Lavender"="#865c9c",
+		"Royal Purple"="#5E4687",
+		"Wine Rouge"="#752B55",
+		"Sow's skin"="#CE929F",
+		"Knight's Red"="#933030",
+		"Madroot Red"="#AD4545",
+		"Marigold Orange"="#E2A844",
+		"Politely, Yuck"="#685542",
+		"Astrata's Yellow"="#FFFD8D",
+		"Bog Green"="#375B48",
+		"Seafoam Green"="#49938B",
+		"Woad Blue"="#395480",
+		"Cornflower Blue"="#749EE8",
+		"Blacksteel Grey"="#404040",)
+
+		var/choice = input(user, "Choose a color.", "Orle") as anything in colors
+		user.visible_message(span_warning("[user] adds [W] to [src]."))
+		qdel(W)
+		detail_color = colors[choice]
+		detail_tag = "_detail"
+		update_icon()
+		if(loc == user && ishuman(user))
+			var/mob/living/carbon/H = user
+			H.update_inv_head()
+
+/obj/item/clothing/head/roguetown/helmet/heavy/bucket/update_icon()
+	cut_overlays()
+	if(get_detail_tag())
+		var/mutable_appearance/pic = mutable_appearance(icon(icon, "[icon_state][detail_tag]"))
+		pic.appearance_flags = RESET_COLOR
+		if(get_detail_color())
+			pic.color = get_detail_color()
+		add_overlay(pic)
 
 /obj/item/clothing/head/roguetown/helmet/heavy/astratahelm
 	name = "astrata helmet"
@@ -734,6 +771,7 @@
 	item_state = "hounskull"
 	adjustable = CAN_CADJUST
 	emote_environment = 3
+	body_parts_covered = FULL_HEAD
 	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR
 	flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH
 	block2add = FOV_RIGHT|FOV_LEFT
@@ -783,20 +821,18 @@
 		"Woad Blue"="#395480",
 		"Cornflower Blue"="#749EE8",
 		"Blacksteel Grey"="#404040",)
-		qdel(W)
-		user.visible_message(span_warning("[user] adds [W] to [src]."))
 
-		var/mob/living/carbon/human/L = loc
-		var/choice = input(L, "Choose a color.", "Bascinet plume") as anything in colors
-		var/playerchoice = colors[choice]
-		detail_color = playerchoice
+		var/choice = input(user, "Choose a color.", "Plume") as anything in colors
+		detail_color = colors[choice]
 		detail_tag = "_detail"
+		user.visible_message(span_warning("[user] adds [W] to [src]."))
+		qdel(W)
 		update_icon()
 		if(loc == user && ishuman(user))
 			var/mob/living/carbon/H = user
 			H.update_inv_head()
 
-/obj/item/clothing/head/roguetown/helmet/heavy/pigface/update_icon()
+/obj/item/clothing/head/roguetown/helmet/bascinet/pigface/update_icon()
 	cut_overlays()
 	if(get_detail_tag())
 		var/mutable_appearance/pic = mutable_appearance(icon(icon, "[icon_state][detail_tag]"))
@@ -835,18 +871,25 @@
 		"Woad Blue"="#395480",
 		"Cornflower Blue"="#749EE8",
 		"Blacksteel Grey"="#404040",)
-		qdel(W)
-		user.visible_message(span_warning("[user] adds [W] to [src]."))
 
-		var/mob/living/carbon/human/L = loc
-		var/choice = input(L, "Choose a color.", "Frogmouth wreath") as anything in colors
-		var/playerchoice = colors[choice]
-		detail_color = playerchoice
+		var/choice = input(user, "Choose a color.", "Orle") as anything in colors
+		user.visible_message(span_warning("[user] adds [W] to [src]."))
+		qdel(W)
+		detail_color = colors[choice]
 		detail_tag = "_detail"
 		update_icon()
 		if(loc == user && ishuman(user))
 			var/mob/living/carbon/H = user
 			H.update_inv_head()
+
+/obj/item/clothing/head/roguetown/helmet/heavy/frogmouth/update_icon()
+	cut_overlays()
+	if(get_detail_tag())
+		var/mutable_appearance/pic = mutable_appearance(icon(icon, "[icon_state][detail_tag]"))
+		pic.appearance_flags = RESET_COLOR
+		if(get_detail_color())
+			pic.color = get_detail_color()
+		add_overlay(pic)
 
 /obj/item/clothing/head/roguetown/helmet/bascinet
 	name = "bascinet"

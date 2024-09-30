@@ -141,6 +141,10 @@
 	name = "Bun Head 3"
 	icon_state = "bun3"
 
+/datum/sprite_accessory/hair/head/lowbun
+	name = "Bun (Low)"
+	icon_state = "bun-low"
+
 /datum/sprite_accessory/hair/head/largebun
 	name = "Bun (Large)"
 	icon_state = "bun-large"
