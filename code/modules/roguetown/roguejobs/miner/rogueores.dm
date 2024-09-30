@@ -182,5 +182,5 @@
 	name = "blacksteel bar"
 	desc = "Sacrificing the holy elements of silver for raw strength, this strange and powerful ingot's origin carries dark rumors.."
 	icon_state = "ingotblacksteel"
-	smeltresult = /obj/item/ingot/steel
+	smeltresult = /obj/item/ingot/blacksteel
 	sellprice = 90

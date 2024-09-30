@@ -329,7 +329,7 @@
 	created_item = /obj/item/rogueweapon/stoneaxe/silver
 	craftdiff = 3
 
-/datum/anvil_recipe/weapons/silver/waraxe
+/datum/anvil_recipe/weapons/silver/warhammer
 	name = "Silver War Hammer (+1 Silver, +1 Stick)"
 	req_bar = /obj/item/ingot/silver
 	additional_items = list(/obj/item/ingot/silver, /obj/item/grown/log/tree/stick)
