@@ -18,6 +18,7 @@
 	cooked_type = /obj/item/reagent_containers/food/snacks/rogue/meat/steak/fried
 	slices_num = 1
 	slice_path = /obj/item/reagent_containers/food/snacks/rogue/meat/mince/beef
+	rotprocess = 20
 
 /obj/item/reagent_containers/food/snacks/rogue/meat/steak/fried
 	eat_effect = null
@@ -26,6 +27,7 @@
 	desc = "A fried piece of steak, yum."
 	icon_state = "friedsteak"
 	bonus_reagents = list(/datum/reagent/consumable/nutriment = 15)
+	rotprocess = 25
 
 /obj/item/reagent_containers/food/snacks/rogue/meat/mince
 	name = "minced meat"
@@ -35,15 +37,17 @@
 	slice_path = null
 	slices_num = 0
 	filling_color = "#8a0000"
+	rotprocess = 10
 
 /obj/item/reagent_containers/food/snacks/rogue/meat/mince/beef
 	name = "mince"
 	desc = "A beef of minced meat."
+	rotprocess = 20
 
 /obj/item/reagent_containers/food/snacks/rogue/meat/fatty //pork
 	slices_num = 4
 	slice_path = /obj/item/reagent_containers/food/snacks/rogue/meat/bacon
-
+	rotprocess = 40
 
 /obj/item/reagent_containers/food/snacks/rogue/meat/bacon
 	name = "bacon"
@@ -54,6 +58,7 @@
 	fried_type = /obj/item/reagent_containers/food/snacks/rogue/meat/bacon/fried
 	cooked_type = /obj/item/reagent_containers/food/snacks/rogue/meat/bacon/fried
 	filling_color = "#8a0000"
+	rotprocess = 20
 
 /obj/item/reagent_containers/food/snacks/rogue/meat/bacon/fried
 	eat_effect = null
@@ -62,11 +67,14 @@
 	icon_state = "friedbacon"
 	desc = "This bacon smells good. Must taste good, too."
 	bonus_reagents = list(/datum/reagent/consumable/nutriment = 5)
+	eat_effect = /datum/status_effect/buff/foodbuff // Super secret OP food.
+	rotprocess = null // Part 2.
 
 /obj/item/reagent_containers/food/snacks/rogue/meat/spider
 	icon_state = "spidermeat"
 	desc = "For the desperate. Or the brave."
 	slices_num = 0
+	rotprocess = 20
 
 /obj/item/reagent_containers/food/snacks/rogue/meat/poultry
 	name = "chicken meat"
@@ -77,6 +85,7 @@
 	fried_type = null
 	slices_num = 2
 	ingredient_size = 4
+	rotprocess = 20
 
 /obj/item/reagent_containers/food/snacks/rogue/meat/poultry/baked
 	eat_effect = null
@@ -86,6 +95,8 @@
 	icon_state = "roastchicken"
 	cooked_type = null
 	bonus_reagents = list(/datum/reagent/consumable/nutriment = 20)
+	eat_effect = /datum/status_effect/buff/foodbuff/minor
+	rotprocess = 40
 
 /obj/item/reagent_containers/food/snacks/rogue/meat/poultry/cutlet
 	name = "chicken steak"
@@ -97,6 +108,7 @@
 	slice_bclass = BCLASS_CHOP
 	slice_path = /obj/item/reagent_containers/food/snacks/rogue/meat/mince/poultry
 	cooked_type = /obj/item/reagent_containers/food/snacks/rogue/meat/poultry/cutlet/fried
+	rotprocess = 10
 
 /obj/item/reagent_containers/food/snacks/rogue/meat/poultry/cutlet/fried
 	eat_effect = null
@@ -106,6 +118,8 @@
 	desc = "Smells so wonderfully good!"
 	fried_type = null
 	bonus_reagents = list(/datum/reagent/consumable/nutriment = 5)
+	eat_effect = /datum/status_effect/buff/foodbuff/minor
+	rotprocess = 60
 
 /obj/item/reagent_containers/food/snacks/rogue/meat/mince/poultry
 	name = "minced chicken meat"
@@ -129,6 +143,7 @@
 	fried_type = /obj/item/reagent_containers/food/snacks/rogue/meat/sausage/cooked
 	cooked_type = /obj/item/reagent_containers/food/snacks/rogue/meat/sausage/cooked
 	slices_num = 0
+	rotprocess = 20
 
 /obj/item/reagent_containers/food/snacks/rogue/meat/sausage/cooked
 	eat_effect = null
@@ -138,6 +153,7 @@
 	desc = "A tub of sausage fried to perfection, should make a good breakfast!"
 	fried_type = null
 	bonus_reagents = list(/datum/reagent/consumable/nutriment = 5)
+	rotprocess = 20
 
 /obj/item/reagent_containers/food/snacks/rogue/meat/meatloaf
 	name = "raw meatloaf"
@@ -147,6 +163,7 @@
 	fried_type = /obj/item/reagent_containers/food/snacks/rogue/meat/meatloaf/cooked
 	cooked_type = /obj/item/reagent_containers/food/snacks/rogue/meat/meatloaf/cooked
 	slices_num = 0
+	rotprocess = 10
 
 /obj/item/reagent_containers/food/snacks/rogue/meat/meatloaf/cooked
 	eat_effect = /datum/status_effect/buff/foodbuff
@@ -159,6 +176,8 @@
 	bitesize = 15
 	list_reagents = list(/datum/reagent/consumable/nutriment = 60, /datum/reagent/consumable/garlic = 20)
 	slice_path = /obj/item/reagent_containers/food/snacks/rogue/meat/meatloaf/cooked/slice
+	eat_effect = /datum/status_effect/buff/foodbuff/minor
+	rotprocess = 60 // It's fucking huge.
 
 /obj/item/reagent_containers/food/snacks/rogue/meat/meatloaf/cooked/update_icon()
 	if(slices_num)
@@ -190,6 +209,8 @@
 	list_reagents = list(/datum/reagent/consumable/nutriment = 10, /datum/reagent/consumable/garlic = 5)
 	bitesize = 3
 	tastes = list("seasoned meat" = 1)
+	eat_effect = /datum/status_effect/buff/foodbuff
+	rotprocess = 60 // It's fucking huge.
 
 /obj/item/reagent_containers/food/snacks/rogue/meat/wellington
 	name = "beef à la Kron"
@@ -202,6 +223,8 @@
 	list_reagents = list(/datum/reagent/consumable/nutriment = 90)
 	bitesize = 15
 	slice_path = /obj/item/reagent_containers/food/snacks/rogue/meat/wellington/slice
+	eat_effect = /datum/status_effect/buff/foodbuff/expert
+	rotprocess = 120
 
 /obj/item/reagent_containers/food/snacks/rogue/meat/wellington/update_icon()
 	if(slices_num)
@@ -233,6 +256,8 @@
 	list_reagents = list(/datum/reagent/consumable/nutriment = 15)
 	bitesize = 3
 	tastes = list("steak" = 1, "mushrooms" = 1, "puff pastry" = 1)
+	eat_effect = /datum/status_effect/buff/foodbuff/expert
+	rotprocess = 120
 
 /obj/item/reagent_containers/food/snacks/rogue/meat/salami
 	eat_effect = null
@@ -247,6 +272,7 @@
 	slice_path = /obj/item/reagent_containers/food/snacks/rogue/meat/salami/slice
 	tastes = list("salted meat" = 1)
 	rotprocess = null
+	eat_effect = /datum/status_effect/buff/foodbuff/minor
 
 /obj/item/reagent_containers/food/snacks/rogue/meat/salami/update_icon()
 	if(slices_num)
@@ -277,6 +303,7 @@
 	list_reagents = list(/datum/reagent/consumable/nutriment = 2)
 	bitesize = 1
 	tastes = list("salted meat" = 1)
+	eat_effect = /datum/status_effect/buff/foodbuff/minor
 
 /obj/item/reagent_containers/food/snacks/rogue/meat/coppiette
 	eat_effect = null
@@ -336,6 +363,7 @@
 	icon_state = "drakianwing"
 	list_reagents = list(/datum/reagent/consumable/nutriment = 15, /datum/reagent/consumable/capsaicin = 10)
 	bitesize = 5
+	eat_effect = /datum/status_effect/buff/foodbuff/master
 
 /obj/item/reagent_containers/food/snacks/rogue/meat/sisseantail
 	name = "descaled sissean tail"
@@ -353,6 +381,7 @@
 	color = "#946114"
 	list_reagents = list(/datum/reagent/consumable/nutriment = 15)
 	bitesize = 3
+	eat_effect = /datum/status_effect/buff/foodbuff/master
 
 /obj/item/reagent_containers/food/snacks/rogue/meat/koboldtail
 	name = "descaled kobold tail"
@@ -370,6 +399,7 @@
 	color = "#946114"
 	list_reagents = list(/datum/reagent/consumable/nutriment = 15)
 	bitesize = 3
+	eat_effect = list(/datum/status_effect/buff/foodbuff/master, /datum/status_effect/buff/blessed) // Fuck those little bastards.
 
 /obj/item/reagent_containers/food/snacks/rogue/meat/pate
 	eat_effect = /datum/status_effect/buff/foodbuff
@@ -379,3 +409,4 @@
 	desc = "A forcemeat with a prominent flavor of liver."
 	list_reagents = list(/datum/reagent/consumable/nutriment = 15)
 	bitesize = 3
+	eat_effect = /datum/status_effect/buff/foodbuff/expert
