@@ -319,7 +319,7 @@
 	name = "Silver Sword (+1 Silver)"
 	req_bar = /obj/item/ingot/silver
 	additional_items = list(/obj/item/ingot/silver)
-	created_item = /obj/item/rogueweapon/stoneaxe/silveraxe
+	created_item = /obj/item/rogueweapon/sword/silver
 	craftdiff = 3
 
 /datum/anvil_recipe/weapons/silver/waraxe

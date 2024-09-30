@@ -54,7 +54,7 @@
 	desc = "A light war hammer forged of silver."
 	icon_state = "smace"
 	force = 24
-	gripped_intents = NULL
+	gripped_intents = null
 	possible_item_intents = list(/datum/intent/mace/strike, /datum/intent/mace/smash)
 	wdefense = 4
 	smeltresult = /obj/item/ingot/silver

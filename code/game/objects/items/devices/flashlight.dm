@@ -439,14 +439,14 @@
 	name = "torch"
 	force = 15
 	icon_state = "mtorch"
-	light_range = 5
+	light_range = 6
 	fuel = 9999 MINUTES
 
 /obj/item/flashlight/flare/torch/lantern
 	name = "iron lamptern"
 	icon_state = "lamp"
 	desc = "Flames kept safe within an iron cage."
-	light_range = 6
+	light_range = 7
 	on = FALSE
 	flags_1 = CONDUCT_1
 	slot_flags = ITEM_SLOT_HIP
@@ -500,6 +500,7 @@
 	desc = "A marvel of engineering that emits a strange green glow."
 	light_range = 8
 	light_color ="#4ac77e"
+	on = FALSE
 
 /obj/item/flashlight/lantern
 	name = "lantern"
