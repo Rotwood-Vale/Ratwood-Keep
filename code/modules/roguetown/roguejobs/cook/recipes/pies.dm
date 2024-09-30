@@ -13,6 +13,7 @@
 	bitesize = 5
 	var/stunning = FALSE
 	eat_effect = /datum/status_effect/debuff/uncookedfood
+	rotprocess = 10 MINUTES
 
 /obj/item/reagent_containers/food/snacks/rogue/pie/cooked
 	icon_state = "pie"
@@ -23,6 +24,7 @@
 	slice_batch = TRUE
 	warming = 10 MINUTES
 	eat_effect = null
+	rotprocess = 40 MINUTES
 
 /obj/item/reagent_containers/food/snacks/rogue/pie/throw_impact(atom/hit_atom, datum/thrownthing/throwingdatum)
 	. = ..()
@@ -71,6 +73,7 @@
 	warming = 10 MINUTES
 	bitesize = 3
 	eat_effect = /datum/status_effect/buff/foodbuff
+	rotprocess = 40 MINUTES
 
 /obj/item/reagent_containers/food/snacks/rogue/piedough
 	name = "pie dough"
@@ -93,8 +96,7 @@
 		/obj/item/reagent_containers/food/snacks/butterslice = 1,
 	)
 	result = /obj/item/reagent_containers/food/snacks/rogue/piedough
-
-
+	craftdiff = 1
 
 /datum/crafting_recipe/roguetown/cooking/berrypie
 	name = "berry pie"
@@ -104,7 +106,7 @@
 	parts = list(
 		/obj/item/reagent_containers/food/snacks/grown/berries/rogue = 3)
 	result = /obj/item/reagent_containers/food/snacks/rogue/pie/berry
-
+	craftdiff = 2
 
 /datum/crafting_recipe/roguetown/cooking/applepie
 	name = "apple pie"
@@ -114,6 +116,7 @@
 	parts = list(
 		/obj/item/reagent_containers/food/snacks/grown/apple = 3)
 	result = /obj/item/reagent_containers/food/snacks/rogue/pie/apple
+	craftdiff = 2
 
 /obj/item/reagent_containers/food/snacks/rogue/pie/berry
 	name = "berry pie"
@@ -148,7 +151,7 @@
 	parts = list(
 		/obj/item/reagent_containers/food/snacks/rogue/meat/mince = 3)
 	result = /obj/item/reagent_containers/food/snacks/rogue/pie/meat
-
+	craftdiff = 2
 	subtype_reqs = FALSE
 
 /obj/item/reagent_containers/food/snacks/rogue/pie/meat
@@ -174,7 +177,7 @@
 		/obj/item/reagent_containers/food/snacks/rogue/meat/mince/fish = 3
 	)
 	result = /obj/item/reagent_containers/food/snacks/rogue/pie/meat/fish
-
+	craftdiff = 2
 
 /obj/item/reagent_containers/food/snacks/rogue/pie/meat/fish
 	name = "fish pie"
@@ -195,7 +198,7 @@
 		/obj/item/reagent_containers/food/snacks/rogue/meat/mince/poultry = 3
 	)
 	result = /obj/item/reagent_containers/food/snacks/rogue/pie/meat/poultry
-
+	craftdiff = 2
 
 /obj/item/reagent_containers/food/snacks/rogue/pie/meat/poultry
 	name = "pot pie"
@@ -204,6 +207,7 @@
 /obj/item/reagent_containers/food/snacks/rogue/pie/cooked/meat/poultry
 	name = "pot pie"
 	tastes = list("chicken" = 1)
+	eat_effect = /datum/status_effect/buff/foodbuff/expert // Bonus buff for eating a pot pie as it should be.
 
 /datum/crafting_recipe/roguetown/cooking/eggpie
 	name = "egg pie"
@@ -213,7 +217,7 @@
 	parts = list(
 		/obj/item/reagent_containers/food/snacks/egg = 3)
 	result = /obj/item/reagent_containers/food/snacks/rogue/pie/egg
-
+	craftdiff = 2
 
 /obj/item/reagent_containers/food/snacks/rogue/pie/egg
 	name = "egg pie"
@@ -235,6 +239,7 @@
 	parts = list(
 		/obj/item/reagent_containers/food/snacks/grown/pear = 3)
 	result = /obj/item/reagent_containers/food/snacks/rogue/pie/pear
+	craftdiff = 2
 
 /obj/item/reagent_containers/food/snacks/rogue/pie/cooked/pear
 	name = "pear pie"
@@ -256,6 +261,7 @@
 	parts = list(
 		/obj/item/reagent_containers/food/snacks/grown/cherry = 3)
 	result = /obj/item/reagent_containers/food/snacks/rogue/pie/cherry
+	craftdiff = 2
 
 /obj/item/reagent_containers/food/snacks/rogue/pie/cooked/cherry
 	name = "cherry pie"
@@ -277,6 +283,7 @@
 	parts = list(
 		/obj/item/reagent_containers/food/snacks/grown/cabbage = 3)
 	result = /obj/item/reagent_containers/food/snacks/rogue/pie/cabbage
+	craftdiff = 2
 
 /obj/item/reagent_containers/food/snacks/rogue/pie/cooked/cabbage
 	name = "cabbage pie"
@@ -298,6 +305,7 @@
 	parts = list(
 		/obj/item/reagent_containers/food/snacks/grown/onion = 3)
 	result = /obj/item/reagent_containers/food/snacks/rogue/pie/onion
+	craftdiff = 2
 
 /obj/item/reagent_containers/food/snacks/rogue/pie/cooked/onion
 	name = "onion pie"
@@ -319,6 +327,7 @@
 	parts = list(
 		/obj/item/reagent_containers/food/snacks/grown/carrot = 3)
 	result = /obj/item/reagent_containers/food/snacks/rogue/pie/carrot
+	craftdiff = 2
 
 /obj/item/reagent_containers/food/snacks/rogue/pie/cooked/carrot
 	name = "carrot pie"
@@ -340,6 +349,7 @@
 	parts = list(
 		/obj/item/reagent_containers/food/snacks/grown/radish = 3)
 	result = /obj/item/reagent_containers/food/snacks/rogue/pie/radish
+	craftdiff = 2
 
 /obj/item/reagent_containers/food/snacks/rogue/pie/cooked/radish
 	name = "radish pie"
@@ -361,6 +371,7 @@
 	parts = list(
 		/obj/item/reagent_containers/food/snacks/grown/nut = 3)
 	result = /obj/item/reagent_containers/food/snacks/rogue/pie/rocknut
+	craftdiff = 2
 
 /obj/item/reagent_containers/food/snacks/rogue/pie/cooked/rocknut
 	name = "rocknut pie"
@@ -382,6 +393,7 @@
 	parts = list(
 		/obj/item/reagent_containers/food/snacks/grown/plumphelmet = 3)
 	result = /obj/item/reagent_containers/food/snacks/rogue/pie/plumphelmet
+	craftdiff = 2
 
 /obj/item/reagent_containers/food/snacks/rogue/pie/cooked/plumphelmet
 	name = "plump helmet pie"
