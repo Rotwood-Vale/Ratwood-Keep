@@ -1,5 +1,5 @@
 /obj/item/rogueweapon/flail
-	force = 15
+	force = 25
 	possible_item_intents = list(/datum/intent/flail/strike, /datum/intent/flail/strike/smash)
 	name = "flail"
 	desc = "This is a swift, iron flail. Strikes hard and far."
@@ -47,7 +47,8 @@
 	no_early_release = TRUE
 	penfactor = 80
 	recovery = 10
-	damfactor = 1.5
+	swingdelay = 7
+	damfactor = 1.2
 	chargedloop = /datum/looping_sound/flailswing
 	keep_looping = TRUE
 	icon_state = "insmash"
