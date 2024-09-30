@@ -52,6 +52,16 @@
 	created_item = /obj/item/clothing/ring/silver
 	createditem_num = 3
 
+/datum/anvil_recipe/valuables/ornateamulet
+	name = "Ornate Amulet"
+	req_bar = /obj/item/ingot/gold
+	created_item = /obj/item/clothing/neck/roguetown/ornateamulet
+
+/datum/anvil_recipe/valuables/skullamulet
+	name = "Skull Amulet"
+	req_bar = /obj/item/ingot/gold
+	created_item = /obj/item/clothing/neck/roguetown/skullamulet
+
 //Gold Rings
 /datum/anvil_recipe/valuables/emeringg
 	name = "Gemerald Ring (+1 Gemerald)"
@@ -89,6 +99,11 @@
 	req_bar = /obj/item/ingot/gold
 	additional_items = list(/obj/item/roguegem/diamond)
 	created_item = /obj/item/clothing/ring/diamond
+
+/datum/anvil_recipe/valuables/signet
+	name = "Signet Ring"
+	req_bar = /obj/item/ingot/gold
+	created_item = /obj/item/clothing/ring/signet
 
 //Steel rings
 //BE AWARE THOSE RINGS SHOULD BE TURNED TO SILVER ONCE SILVER INGOTS ARE IN PLAY - Sarkness

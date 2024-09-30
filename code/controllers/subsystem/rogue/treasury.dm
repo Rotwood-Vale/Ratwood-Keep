@@ -17,7 +17,7 @@
 		for(var/mob/living/carbon/human/X in GLOB.human_list)
 			if(X.real_name in names_to)
 				if(!X.stat)
-					to_chat(X, span_info("[msg]"))
+					to_chat(X, span_biginfo("[msg]"))
 
 SUBSYSTEM_DEF(treasury)
 	name = "treasury"

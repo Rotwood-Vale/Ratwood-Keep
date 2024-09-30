@@ -3233,6 +3233,7 @@
 #include "code\modules\roguetown\mapgen\rogueoutdoors.dm"
 #include "code\modules\roguetown\roguecrafting\alchemy.dm"
 #include "code\modules\roguetown\roguecrafting\cooking.dm"
+#include "code\modules\roguetown\roguecrafting\farming.dm"
 #include "code\modules\roguetown\roguecrafting\items.dm"
 #include "code\modules\roguetown\roguecrafting\leather.dm"
 #include "code\modules\roguetown\roguecrafting\sewing.dm"
