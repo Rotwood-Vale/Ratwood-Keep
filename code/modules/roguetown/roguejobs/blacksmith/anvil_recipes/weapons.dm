@@ -297,7 +297,7 @@
 
 // SILVER
 /datum/anvil_recipe/weapons/silver/elfsaber
-	name = "Elvish Saber"
+	name = "Elvish Saber (+1 Silver)"
 	req_bar = /obj/item/ingot/silver
 	additional_items = list(/obj/item/ingot/silver)
 	created_item = /obj/item/rogueweapon/sword/sabre/elf
@@ -314,6 +314,13 @@
 	req_bar = /obj/item/ingot/silver
 	created_item = /obj/item/rogueweapon/huntingknife/idagger/silver
 	craftdiff = 2
+
+/datum/anvil_recipe/weapons/silver/waraxe
+	name = "Silver War Axe (+1 Silver, +1 Stick)"
+	req_bar = /obj/item/ingot/iron
+	additional_items = list(/obj/item/ingot/silver, /obj/item/grown/log/tree/stick)
+	created_item = /obj/item/rogueweapon/stoneaxe/silveraxe
+	craftdiff = 3
 
 /// SHIELDS
 /datum/anvil_recipe/weapons/steel/kiteshield
