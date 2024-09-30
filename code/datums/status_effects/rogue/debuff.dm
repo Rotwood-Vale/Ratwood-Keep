@@ -97,11 +97,43 @@
 
 /////////
 
+/datum/status_effect/debuff/tastelessfood
+	id = "tastelessfood"
+	effectedstats = null
+	duration = 1
+
+/datum/status_effect/debuff/tastelessfoodcheck
+	id = "tastelessfoodcheck"
+	effectedstats = "constitution" = -1
+	duration = 5 MINUTES
+	alert_type = /atom/movable/screen/alert/status_effect/debuff/tastelessfood
+
+/atom/movable/screen/alert/status_effect/debuff/tastelessfood
+	name = "Tasteless food"
+	desc = ""
+
+/datum/status_effect/debuff/tastelessfood/on_apply()
+	if(HAS_TRAIT(owner, TRAIT_NASTY_EATER) || HAS_TRAIT(owner, TRAIT_WILD_EATER) || HAS_TRAIT(owner, TRAIT_NOSTINK))
+		return ..()
+	if(iscarbon(owner))
+		var/mob/living/carbon/C = owner
+		owner.apply_status_effect(/datum/status_effect/debuff/tastelessfoodcheck)
+	return ..()
+
 /datum/status_effect/debuff/uncookedfood
 	id = "uncookedfood"
-	if(!HAS_TRAIT(owner, TRAIT_NASTY_EATER) && !HAS_TRAIT(owner, TRAIT_ORGAN_EATER) && !HAS_TRAIT(owner, TRAIT_WILD_EATER))
-		effectedstats = list("endurance" = -1, "constitution" = -2)
+	effectedstats = null
+	duration = 1
+
+/datum/status_effect/debuff/uncookedfoodcheck
+	id = "uncookedfoodcheck"
+	effectedstats = list("endurance" = -1, "constitution" = -2)
 	duration = 5 MINUTES
+	alert_type = /atom/movable/screen/alert/status_effect/debuff/uncookedfood
+
+/atom/movable/screen/alert/status_effect/debuff/uncookedfood
+	name = "Bad food"
+	desc = "I really regret eating that..."
 
 /datum/status_effect/debuff/uncookedfood/on_apply()
 	if(HAS_TRAIT(owner, TRAIT_NASTY_EATER) || HAS_TRAIT(owner, TRAIT_ORGAN_EATER) || HAS_TRAIT(owner, TRAIT_WILD_EATER))
@@ -109,13 +141,23 @@
 	if(iscarbon(owner))
 		var/mob/living/carbon/C = owner
 		C.add_nausea(100)
+		owner.apply_status_effect(/datum/status_effect/debuff/uncookedfoodcheck)
 	return ..()
 
 /datum/status_effect/debuff/badmeal
 	id = "badmeal"
-	if(!HAS_TRAIT(owner, TRAIT_NASTY_EATER))
-		effectedstats = list("endurance" = -2, "constitution" = -4)
+	effectedstats = null
+	duration = 1
+
+/datum/status_effect/debuff/badmealcheck
+	id = "badmealcheck"
+	effectedstats = list("endurance" = -2, "constitution" = -4)
 	duration = 10 MINUTES
+	alert_type = /atom/movable/screen/alert/status_effect/debuff/badmeal
+
+/atom/movable/screen/alert/status_effect/debuff/badmeal
+	name = "Disgusting food"
+	desc = "It feels like there's Seelies trying to gouge out my stomach!"
 
 /datum/status_effect/debuff/badmeal/on_apply()
 	if(HAS_TRAIT(owner, TRAIT_NASTY_EATER))
@@ -124,13 +166,19 @@
 		var/mob/living/carbon/C = owner
 		C.add_nausea(200)
 		owner.add_stress(/datum/stressevent/badmeal)
+		owner.apply_status_effect(/datum/status_effect/debuff/badmealcheck)
 	return ..()
 
 /datum/status_effect/debuff/burnedfood
 	id = "burnedfood"
-	if(!HAS_TRAIT(owner, TRAIT_NASTY_EATER))
-		effectedstats = list("endurance" = -1, "constitution" = -2)
+	effectedstats = null
+	duration = 1
+
+/datum/status_effect/debuff/burnedfoodcheck
+	id = "burnedfoodcheck"
+	effectedstats = list("endurance" = -1, "constitution" = -2)
 	duration = 15 MINUTES
+	alert_type = /atom/movable/screen/alert/status_effect/debuff/uncookedfood
 
 /datum/status_effect/debuff/burnedfood/on_apply()
 	if(HAS_TRAIT(owner, TRAIT_NASTY_EATER))
@@ -139,13 +187,19 @@
 		var/mob/living/carbon/C = owner
 		C.add_nausea(200)
 		owner.add_stress(/datum/stressevent/burntmeal)
+		owner.apply_status_effect(/datum/status_effect/debuff/burnedfoodcheck)
 	return ..()
 
 /datum/status_effect/debuff/rotfood
 	id = "rotfood"
-	if(!HAS_TRAIT(owner, TRAIT_NASTY_EATER) && HAS_TRAIT(owner, TRAIT_ROT_EATER))
-		effectedstats = list("endurance" = -2, "constitution" = -4)
-	duration = 10 MINUTES
+	effectedstats = null
+	duration = 1
+
+/datum/status_effect/debuff/rotfoodcheck
+	id = "rotfoodcheck"
+	effectedstats = list("endurance" = -2, "constitution" = -4)
+	duration = 15 MINUTES
+	alert_type = /atom/movable/screen/alert/status_effect/debuff/badmeal
 
 /datum/status_effect/debuff/rotfood/on_apply()
 	if(HAS_TRAIT(owner, TRAIT_NASTY_EATER) || HAS_TRAIT(owner, TRAIT_ROT_EATER))
@@ -154,6 +208,7 @@
 		var/mob/living/carbon/C = owner
 		C.add_nausea(200)
 		owner.add_stress(/datum/stressevent/rotfood)
+		owner.apply_status_effect(/datum/status_effect/debuff/rotfoodcheck)
 	return ..()
 
 /datum/status_effect/debuff/bleeding
