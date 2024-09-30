@@ -75,7 +75,6 @@
 	desc = "A sturdy wooden shield. Will block anything you can imagine."
 	icon_state = "woodsh"
 	dropshrink = 0.8
-	wdefense = 15
 	coverage = 40
 
 /obj/item/rogueweapon/shield/wood/attack_right(mob/user)
@@ -114,7 +113,7 @@
 	throw_range = 3
 	wlength = WLENGTH_NORMAL
 	resistance_flags = FLAMMABLE
-	wdefense = 15
+	wdefense = 6
 	coverage = 70
 	parrysound = list('sound/combat/parry/shield/towershield (1).ogg','sound/combat/parry/shield/towershield (2).ogg','sound/combat/parry/shield/towershield (3).ogg')
 	max_integrity = 200

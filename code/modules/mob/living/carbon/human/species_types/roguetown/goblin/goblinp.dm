@@ -7,7 +7,6 @@
 	desc = "<b>Goblin</b><br>\
 	A vile, cursed race of green skinned fiends with brains as small as their hearts. Be not fooled by their appearance - What they lack in stature, they possess in sheer malice."
 	species_traits = list(EYECOLOR,LIPS,STUBBLE)
-	inherent_traits = list(TRAIT_NOMOBSWAP)
 	possible_ages = ALL_AGES_LIST
 	use_skintones = TRUE
 	skin_tone_wording = "Skin Color"
@@ -62,8 +61,8 @@
 		/datum/customizer/bodypart_feature/accessory,
 		/datum/customizer/bodypart_feature/face_detail,
 		/datum/customizer/bodypart_feature/underwear,
-		/datum/customizer/organ/testicles/human,
-		/datum/customizer/organ/penis/human,
+		/datum/customizer/organ/testicles/anthro,
+		/datum/customizer/organ/penis/anthro,
 		/datum/customizer/organ/breasts/human,
 		/datum/customizer/organ/vagina/human,
 		)
@@ -73,7 +72,7 @@
 	)
 
 /datum/species/goblinp/check_roundstart_eligible()
-	return FALSE
+	return FALSE // HEY MAKE THIS TRUE WHEN IT'S GOBBO TIME
 
 /datum/species/goblinp/qualifies_for_rank(rank, list/features)
 	return TRUE

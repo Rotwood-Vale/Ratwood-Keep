@@ -4,7 +4,7 @@
 /datum/species/anthromorph
 	name = "Wild-Kin"
 	id = "anthromorph"
-	desc = "In time you will learn the history of this race"
+	desc = "A product of Dendor's madness, or something else? It's lost to history; a menagrie of people with bestial features."
 	default_color = "444"
 	species_traits = list(
 		MUTCOLORS,
@@ -12,7 +12,6 @@
 		LIPS,
 		HAIR,
 	)
-	inherent_traits = list(TRAIT_NOMOBSWAP)
 	inherent_biotypes = MOB_ORGANIC|MOB_HUMANOID
 	attack_verb = "slash"
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT

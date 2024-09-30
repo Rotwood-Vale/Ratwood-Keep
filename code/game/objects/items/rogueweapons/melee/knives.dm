@@ -198,7 +198,9 @@
 
 /obj/item/rogueweapon/huntingknife/idagger/steel/parrying
 	name = "steel parrying dagger"
-	desc = "This is a parrying dagger made of solid steel, used to catch opponent's weapons in the handguard."
+	force = 12
+	throwforce = 12
+	desc = "This is a parrying dagger made of solid steel, used to catch opponent's weapons in the handguard. It's a bit more dull, however."
 	icon_state = "spdagger"
 	wdefense = 6
 

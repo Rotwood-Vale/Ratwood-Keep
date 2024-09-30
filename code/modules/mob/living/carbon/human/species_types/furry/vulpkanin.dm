@@ -4,7 +4,7 @@
 /datum/species/vulpkanin
 	name = "Vulpkian"
 	id = "vulpkanin"
-	desc = "In time you will learn the history of this race"
+	desc = "Foxy creatures known for their cleverness and mischief. In ancient history they were Dendor's original champions, but as His madness grew the connect became frey and forgotten, leaving them to their own devices. Or, at least, that's what they say."
 	default_color = "444"
 	species_traits = list(
 		MUTCOLORS,
@@ -12,7 +12,6 @@
 		LIPS,
 		HAIR,
 	)
-	inherent_traits = list(TRAIT_NOMOBSWAP)
 	inherent_biotypes = MOB_ORGANIC|MOB_HUMANOID
 	attack_verb = "slash"
 	liked_food = GROSS | MEAT | FRIED
@@ -69,8 +68,8 @@
 		/datum/customizer/organ/tail/vulpkanin,
 		/datum/customizer/organ/snout/vulpkanin,
 		/datum/customizer/organ/ears/vulpkanin,
-		/datum/customizer/organ/testicles/external,
-		/datum/customizer/organ/penis/canine,
+		/datum/customizer/organ/testicles/anthro,
+		/datum/customizer/organ/penis/anthro,
 		/datum/customizer/organ/breasts/animal,
 		/datum/customizer/organ/vagina/animal,
 		)
