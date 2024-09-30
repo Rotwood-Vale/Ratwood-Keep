@@ -104,7 +104,7 @@
 
 /datum/status_effect/debuff/tastelessfoodcheck
 	id = "tastelessfoodcheck"
-	effectedstats = "constitution" = -1
+	effectedstats = list("constitution" = -1)
 	duration = 5 MINUTES
 	alert_type = /atom/movable/screen/alert/status_effect/debuff/tastelessfood
 
@@ -116,7 +116,6 @@
 	if(HAS_TRAIT(owner, TRAIT_NASTY_EATER) || HAS_TRAIT(owner, TRAIT_WILD_EATER) || HAS_TRAIT(owner, TRAIT_NOSTINK))
 		return ..()
 	if(iscarbon(owner))
-		var/mob/living/carbon/C = owner
 		owner.apply_status_effect(/datum/status_effect/debuff/tastelessfoodcheck)
 	return ..()
 
