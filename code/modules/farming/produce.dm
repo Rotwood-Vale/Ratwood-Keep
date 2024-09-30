@@ -6,6 +6,7 @@
 	var/list/pipe_reagents = list()
 	var/seed
 	var/bitesize_mod = 0
+	eat_effect = /datum/status_effect/debuff/tastelessfood
 
 
 /obj/item/reagent_containers/food/snacks/grown/Initialize(mapload)
@@ -107,6 +108,7 @@
 	distill_reagent = /datum/reagent/consumable/ethanol/beer/cider
 	var/equippedloc = null
 	var/list/bitten_names = list()
+	eat_effect = null
 
 /obj/item/reagent_containers/food/snacks/grown/apple/On_Consume(mob/living/eater)
 	..()
@@ -156,6 +158,7 @@
 	distill_amt = 6
 	distill_reagent = /datum/reagent/consumable/ethanol/beer/wine
 	rotprocess = 30 
+	eat_effect = null
 
 /obj/item/reagent_containers/food/snacks/grown/berries/rogue/Initialize()
 	if(GLOB.berrycolors[color_index])
@@ -271,6 +274,7 @@
 	trash = /obj/item/trash/pearcore
 	can_distill = TRUE
 	distill_reagent = /datum/reagent/consumable/ethanol/beer/cider
+	eat_effect = null
 
 /obj/item/reagent_containers/food/snacks/grown/cherry
 	name = "cherries"
@@ -296,6 +300,7 @@
 	rotprocess = 30 
 	list_reagents = list(/datum/reagent/consumable/nutriment = 2)
 	grind_results = list(/datum/reagent/consumable/cooking_oil = 3)
+	eat_effect = null
 
 /obj/item/reagent_containers/food/snacks/grown/nut
 	name = "rocknut"
@@ -361,6 +366,7 @@
 	rotprocess = 30 
 	list_reagents = list(/datum/reagent/consumable/nutriment = 2, /datum/reagent/medicine/oculine = 1)
 	grind_results = list(/datum/reagent/medicine/oculine = 3)
+	eat_effect = null
 
 /obj/item/reagent_containers/food/snacks/grown/potato
 	name = "potato"
@@ -456,6 +462,7 @@
 	list_reagents = list(/datum/reagent/consumable/nutriment = 3)
 	rotprocess = 30 
 	fishloot = list(/obj/item/reagent_containers/food/snacks/fish/shrimp = 10)
+	eat_effect = null
 
 /obj/item/reagent_containers/food/snacks/grown/tea
 	seed = /obj/item/seeds/tea
@@ -482,6 +489,7 @@
 	can_distill = TRUE
 	distill_amt = 12
 	distill_reagent = /datum/reagent/consumable/ethanol/beer/mushroomwine
+	eat_effect = null
 
 /obj/item/reagent_containers/food/snacks/grown/trippy
 	seed = /obj/item/seeds/mycelium/trippy
