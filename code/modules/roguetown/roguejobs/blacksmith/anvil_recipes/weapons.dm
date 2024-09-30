@@ -198,7 +198,7 @@
 	name = "Estoc (+1 Steel)"
 	req_bar = /obj/item/ingot/steel
 	additional_items = list(/obj/item/ingot/steel)
-	created_item = /obj/item/rogueweapon/greatsword/estoc
+	created_item = /obj/item/rogueweapon/estoc
 	craftdiff = 4
 
 /datum/anvil_recipe/weapons/buckler
