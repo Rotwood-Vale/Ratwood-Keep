@@ -270,7 +270,7 @@
 			return
 		playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 30, TRUE, -1)
 		if(process_step == 1 && do_after(user,short_cooktime, target = src))
-			to_chat(user, "<span class='notice'>Starting on a apple pie...</span>")
+			to_chat(user, "<span class='notice'>Starting on an apple pie...</span>")
 			name = "unfinished apple pie"
 			process_step += 1
 			applepie = TRUE
