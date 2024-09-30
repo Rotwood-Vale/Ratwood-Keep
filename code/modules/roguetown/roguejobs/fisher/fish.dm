@@ -122,6 +122,7 @@
 	foodtype = MEAT
 	warming = 5 MINUTES
 	dropshrink = 0.6
+	rotprocess = 20
 
 /obj/item/reagent_containers/food/snacks/rogue/fryfish/carp
 	icon_state = "carpcooked"
@@ -137,15 +138,19 @@
 
 /obj/item/reagent_containers/food/snacks/rogue/fryfish/carp/gold
 	eat_effect = list(/datum/status_effect/buff/foodbuff/legendary, /datum/status_effect/buff/blessed)
+	rotprocess = 120
 
 /obj/item/reagent_containers/food/snacks/rogue/fryfish/clownfish/gold
 	eat_effect = list(/datum/status_effect/buff/foodbuff/legendary, /datum/status_effect/buff/blessed)
+	rotprocess = 120
 
 /obj/item/reagent_containers/food/snacks/rogue/fryfish/angler/gold
 	eat_effect = list(/datum/status_effect/buff/foodbuff/legendary, /datum/status_effect/buff/blessed)
+	rotprocess = 120
 
 /obj/item/reagent_containers/food/snacks/rogue/fryfish/eel/gold
 	eat_effect = list(/datum/status_effect/buff/foodbuff/legendary, /datum/status_effect/buff/blessed)
+	rotprocess = 120
 
 /obj/item/reagent_containers/food/snacks/rogue/fryfish/shrimp
 	icon_state = "shrimpcooked"
