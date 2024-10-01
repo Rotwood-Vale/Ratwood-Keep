@@ -53,6 +53,9 @@
 	add_sleep_experience(user, /datum/skill/labor/farming, user.STAINT * 2)
 
 	var/farming_skill = user.mind.get_skill_level(/datum/skill/labor/farming)
+	var/is_legendary = FALSE
+	if(farming_skill == SKILL_LEVEL_LEGENDARY) //check if the user has legendary farming skill
+		is_legendary = TRUE //we do
 	var/chance_to_ruin = 50 - (farming_skill * 25)
 	if(prob(chance_to_ruin))
 		ruin_produce()
@@ -70,7 +73,7 @@
 		modifier += 1
 
 	to_chat(user, span_notice(feedback))
-	yield_produce(modifier)
+	yield_produce(modifier, is_legendary)
 
 /obj/structure/soil/proc/try_handle_harvest(obj/item/attacking_item, mob/user, params)
 	if(istype(attacking_item, /obj/item/rogueweapon/sickle))
@@ -102,9 +105,15 @@
 
 /obj/structure/soil/proc/try_handle_tilling(obj/item/attacking_item, mob/user, params)
 	if(istype(attacking_item, /obj/item/rogueweapon/hoe))
+		var/is_legendary = FALSE
+		if(user.mind.get_skill_level(/datum/skill/labor/farming) == SKILL_LEVEL_LEGENDARY)
+			is_legendary = TRUE
+		var/work_time = 4 SECONDS
+		if(is_legendary)
+			work_time = 1.5 SECONDS //this is then by get_farming_do_time to around .5 seconds
 		to_chat(user, span_notice("I begin to till the soil..."))
 		playsound(src,'sound/items/dig_shovel.ogg', 100, TRUE)
-		if(do_after(user, get_farming_do_time(user, 4 SECONDS), target = src))
+		if(do_after(user, get_farming_do_time(user, work_time), target = src))
 			to_chat(user, span_notice("I till the soil."))
 			playsound(src,'sound/items/dig_shovel.ogg', 100, TRUE)
 			user_till_soil(user)
@@ -588,7 +597,7 @@
 	update_icon()
 
 /// Yields produce on its tile if it's ready for harvest
-/obj/structure/soil/proc/yield_produce(modifier = 0)
+/obj/structure/soil/proc/yield_produce(modifier = 0, is_legendary = FALSE)
 	if(!produce_ready)
 		return
 	var/base_amount = rand(plant.produce_amount_min, plant.produce_amount_max)
@@ -597,7 +606,11 @@
 		new plant.produce_type(loc)
 	produce_ready = FALSE
 	if(!plant.perennial)
-		uproot()
+		if(is_legendary) //the user has legendary skill
+			growth_time = 0 //reset growth time
+			matured = FALSE //not mature anymore
+		else
+			uproot()
 	update_icon()
 
 /obj/structure/soil/proc/insert_plant(datum/plant_def/new_plant)

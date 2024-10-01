@@ -17,8 +17,14 @@
 	bundletype = /obj/item/natural/bundle/fibers
 
 /obj/item/natural/fibers/attack_right(mob/user)
+	var/is_legendary = FALSE
+	if(user.mind.get_skill_level(/datum/skill/labor/farming) == SKILL_LEVEL_LEGENDARY) //check if the user has legendary farming skill
+		is_legendary = TRUE //they do
+	var/work_time = 1 SECONDS //time to gather fibers
+	if(is_legendary)
+		work_time = 2 //if legendary skill, the move_after is fast, 0.2 seconds
 	to_chat(user, span_warning("I start to collect [src]..."))
-	if(move_after(user, 1 SECONDS, target = src))
+	if(move_after(user, work_time, target = src))
 		var/fibercount = 0
 		for(var/obj/item/natural/fibers/F in get_turf(src))
 			fibercount++

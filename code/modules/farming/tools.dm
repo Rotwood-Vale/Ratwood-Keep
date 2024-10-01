@@ -212,17 +212,24 @@
 
 /obj/item/rogueweapon/hoe/attack_turf(turf/T, mob/living/user)
 	if(user.used_intent.type == /datum/intent/till)
+		var/is_legendary = FALSE
+		if(user.mind.get_skill_level(/datum/skill/labor/farming) == SKILL_LEVEL_LEGENDARY) //check if the user has legendary farming skill
+			is_legendary = TRUE //they do
+		var/work_time = 3 SECONDS //define the time it takes to make new soil or till soil
+		if(is_legendary)
+			work_time = 5 //if legendary skill, do_afters take half a second instead of 3
+
 		user.changeNext_move(CLICK_CD_MELEE)
 		if(istype(T, /turf/open/floor/rogue/grass))
 			playsound(T,'sound/items/dig_shovel.ogg', 100, TRUE)
-			if (do_after(user, 3 SECONDS, target = src))
+			if (do_after(user, work_time, target = src))
 				apply_farming_fatigue(user, 10)
 				T.ChangeTurf(/turf/open/floor/rogue/dirt, flags = CHANGETURF_INHERIT_AIR)
 				playsound(T,'sound/items/dig_shovel.ogg', 100, TRUE)
 			return
 		if(istype(T, /turf/open/floor/rogue/dirt))
 			playsound(T,'sound/items/dig_shovel.ogg', 100, TRUE)
-			if(do_after(user, 3 SECONDS, target = src))	
+			if(do_after(user, work_time, target = src))	
 				playsound(T,'sound/items/dig_shovel.ogg', 100, TRUE)
 				var/obj/structure/soil/soil = get_soil_on_turf(T)
 				if(soil)
