@@ -23,7 +23,7 @@
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/black
 	pants = /obj/item/clothing/under/roguetown/chainlegs/iron
 	neck = /obj/item/clothing/neck/roguetown/shalal
-	handl = /obj/item/rogueweapon/shield/wood
+	r_hand = /obj/item/rogueweapon/shield/wood
 
 	backpack_contents = list(/obj/item/roguekey/mercenary, /obj/item/rogueweapon/huntingknife/idagger/navaja)
 	if(H.mind)
