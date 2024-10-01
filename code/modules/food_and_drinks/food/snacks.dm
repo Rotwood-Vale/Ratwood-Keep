@@ -118,7 +118,10 @@ All foods are distributed among various categories. Use common sense.
 	..()
 	if(rotprocess)
 		if(!istype(loc, /obj/structure/closet/crate/chest))
-			warming -= 20 //ssobj processing has a wait of 20
+			if(!locate(/obj/structure/table) in loc)
+				warming -= 20 //ssobj processing has a wait of 20
+			else
+				warming -= 10
 			if(warming < (-1*rotprocess))
 				if(become_rotten())
 					STOP_PROCESSING(SSobj, src)

@@ -177,7 +177,6 @@
 
 /datum/sprite_accessory/horns/tiefling
 	name = "Tiefling"
-	icon = 'icons/mob/sprite_accessory/tiefling.dmi'
 	icon_state = "tiebhorns"
 
 /datum/sprite_accessory/horns/halforc

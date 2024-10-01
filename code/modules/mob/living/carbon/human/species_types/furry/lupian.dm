@@ -18,7 +18,6 @@
 		LIPS,
 		HAIR,
 	)
-	inherent_traits = list(TRAIT_NOMOBSWAP)
 	inherent_biotypes = MOB_ORGANIC|MOB_HUMANOID
 	use_skintones = 1
 	attack_verb = "slash"
@@ -79,8 +78,8 @@
 		/datum/customizer/organ/snout/lupian,
 		/datum/customizer/organ/ears/lupian,
 		/datum/customizer/organ/neck_feature/anthro,
-		/datum/customizer/organ/testicles/external,
-		/datum/customizer/organ/penis/canine,
+		/datum/customizer/organ/testicles/anthro,
+		/datum/customizer/organ/penis/anthro,
 		/datum/customizer/organ/breasts/animal,
 		/datum/customizer/organ/vagina/animal,
 		)
@@ -93,6 +92,7 @@
 	)
 	body_markings = list(
 		/datum/body_marking/flushed_cheeks,
+		/datum/body_marking/eyeliner,
 		/datum/body_marking/plain,
 		/datum/body_marking/belly,
 		/datum/body_marking/bellyslim,

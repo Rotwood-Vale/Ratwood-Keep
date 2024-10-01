@@ -46,6 +46,30 @@
 	importexport_amt = 10
 	passive_generation = 2
 
+/datum/roguestock/stockpile/copper
+	name = "Raw Copper"
+	desc = "Chunks of copper used for smithing and alloying."
+	item_type = /obj/item/rogueore/copper
+	held_items = list(6, 0)
+	payout_price = 3
+	withdraw_price = 5
+	transport_fee = 3
+	export_price = 5
+	importexport_amt = 10
+	passive_generation = 2
+
+/datum/roguestock/stockpile/tin
+	name = "Raw Tin"
+	desc = "Chunks of tin used for smithing and alloying."
+	item_type = /obj/item/rogueore/tin
+	held_items = list(6, 0)
+	payout_price = 4
+	withdraw_price = 5
+	transport_fee = 4
+	export_price = 5
+	importexport_amt = 10
+	passive_generation = 2
+
 /datum/roguestock/stockpile/gold
 	name = "Raw Gold"
 	desc = "Chunks of unrefined gold."
@@ -55,6 +79,17 @@
 	withdraw_price = 75
 	transport_fee = 10
 	export_price = 75
+	importexport_amt = 10
+
+/datum/roguestock/stockpile/silver
+	name = "Raw Silver"
+	desc = "Chunks of unrefined silver."
+	item_type = /obj/item/rogueore/silver
+	held_items = list(0, 0)
+	payout_price = 75
+	withdraw_price = 100
+	transport_fee = 10
+	export_price = 100
 	importexport_amt = 10
 
 /datum/roguestock/stockpile/cloth
@@ -176,7 +211,7 @@
 	importexport_amt = 5
 	passive_generation = 1
 
-/datum/roguestock/stockpile/poultry
+/datum/roguestock/stockpile/egg
 	name = "Egg"
 	desc = "Egg laid by a hen."
 	item_type = /obj/item/reagent_containers/food/snacks/egg
@@ -184,6 +219,18 @@
 	payout_price = 3
 	withdraw_price = 5
 	transport_fee = 2
+	export_price = 5
+	importexport_amt = 5
+	passive_generation = 2
+
+/datum/roguestock/stockpile/fat
+	name = "Fat"
+	desc = "Greasy flesh from an animal."
+	item_type = /obj/item/reagent_containers/food/snacks/fat
+	held_items = list(0, 0)
+	payout_price = 3
+	withdraw_price = 5
+	transport_fee = 1
 	export_price = 5
 	importexport_amt = 5
 	passive_generation = 2
@@ -217,7 +264,7 @@
 	desc = "Sweet berries, prime for winemaking."
 	item_type = /obj/item/reagent_containers/food/snacks/grown/berries/rogue
 	held_items = list(0, 0)
-	payout_price = 1
+	payout_price = 2
 	withdraw_price = 3
 	transport_fee = 1
 	export_price = 3

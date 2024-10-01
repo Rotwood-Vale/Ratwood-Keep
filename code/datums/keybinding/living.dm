@@ -139,7 +139,7 @@
 		return
 	if(L.doing)
 		L.doing = 0
-	L.submit()
+	L.submit(TRUE)
 	return TRUE
 
 
