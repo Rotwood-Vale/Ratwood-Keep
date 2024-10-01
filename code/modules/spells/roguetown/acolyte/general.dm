@@ -35,7 +35,7 @@
 			return FALSE
 		//this if chain is stupid, replace with variables on /datum/patron when possible?
 		switch(user.patron.type)
-			if(/datum/patron/old_god)
+			if(/datum/patron/psydon)
 				target.visible_message(span_info("A strange stirring feeling pours from [target]!"), span_notice("Sentimental thoughts drive away my pains!"))
 			if(/datum/patron/divine/astrata)
 				target.visible_message(span_info("A wreath of gentle light passes over [target]!"), span_notice("I'm bathed in holy light!"))
@@ -57,7 +57,7 @@
 				target.visible_message("<span class='info'>A tempering heat is discharged out of [target]!</span>", "<span class='notice'>I feel the heat of a forge soothing my pains!</span>")
 			if(/datum/patron/divine/eora)
 				target.visible_message("<span class='info'>An emanance of love blossoms around [target]!</span>", "<span class='notice'>I'm filled with the restorative warmth of love!</span>")
-			if(/datum/patron/inhumen/zizo)
+			if(/datum/patron/zizo)
 				target.visible_message(span_info("Vital energies are sapped towards [target]!"), span_notice("The life around me pales as I am restored!"))
 			if(/datum/patron/inhumen/graggar)
 				target.visible_message(span_info("Foul fumes billow outward as [target] is restored!"), span_notice("A noxious scent burns my nostrils, but I feel better!"))

@@ -8,7 +8,7 @@
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_TOLERATED_UP
 	allowed_patrons = list(
-		/datum/patron/old_god
+		/datum/patron/psydon
 	)
 	tutorial = "Created with the re-emergence of the cult of Psydon, The Inquisition has sent you to Rockhill on a quest to root out the blasphemous and the accursed of these lands. Guided by religious fervor and paranoia, you hope that your uneasy alliance with the Church will hold."
 	whitelist_req = TRUE
@@ -22,7 +22,7 @@
 /datum/outfit/job/roguetown/puritan
 	name = "Inquisitor"
 	jobtype = /datum/job/roguetown/puritan
-	allowed_patrons = list(/datum/patron/old_god)
+	allowed_patrons = list(/datum/patron/psydon)
 
 /datum/outfit/job/roguetown/puritan/pre_equip(mob/living/carbon/human/H)
 	..()
