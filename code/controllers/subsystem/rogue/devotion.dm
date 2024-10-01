@@ -163,7 +163,7 @@
 		return
 
 	granted_spells = list()
-	var/list/spelllist = list(patron.t0, patron.t1, patron.t2, patron.t3, patron.t4)
+	var/list/spelllist = list(patron.t0, patron.t1, patron.t2, patron.t3, patron.t4, /obj/effect/proc_holder/spell/invoked/heal, /obj/effect/proc_holder/spell/invoked/lesser_heal, /obj/effect/proc_holder/spell/invoked/revive)
 	for(var/spell_type in spelllist)
 		if(!spell_type || H.mind.has_spell(spell_type))
 			continue

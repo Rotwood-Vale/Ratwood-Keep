@@ -117,8 +117,8 @@
 	desc = span_red("YUCK!")
 
 /datum/stressevent/psycurse
-	timer = 5 MINUTES
-	stressadd = 5
+	timer = 60 MINUTES
+	stressadd = 10
 	desc = span_red("Oh no! I've received divine punishment!")
 
 /datum/stressevent/virginchurch

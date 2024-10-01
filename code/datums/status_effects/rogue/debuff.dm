@@ -209,7 +209,8 @@
 
 /atom/movable/screen/alert/status_effect/debuff/devitalised
 	name = "Devitalised"
-	desc = "Something has been taken from me, and it will take time to recover."
+	desc = "Something has been taken from me, and it will take time to recover." 
+  
 /datum/status_effect/buff/seelie/sad
 	id = "Seelie Curse"
 	alert_type = /atom/movable/screen/alert/status_effect/buff/seelie/sad

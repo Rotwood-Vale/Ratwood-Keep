@@ -23,12 +23,11 @@
 	allowed_patrons = ALL_DIVINE_PATRONS
 
 /datum/outfit/job/roguetown/monk/pre_equip(mob/living/carbon/human/H)
-	..()
 	H.virginity = TRUE
-	belt = /obj/item/storage/belt/rogue/leather/rope
-	beltr = /obj/item/storage/belt/rogue/pouch/coins/poor
-	beltl = /obj/item/roguekey/church
+	belt = /obj/item/storage/belt/rogue/leather/black
+	beltr = /obj/item/storage/belt/rogue/pouch/coins/rich
 	backl = /obj/item/storage/backpack/rogue/satchel
+	backpack_contents = list(/obj/item/roguekey/church = 1, /obj/item/storage/belt/rogue/pouch/skit =1,) // Doktor, HEAL me!
 	switch(H.patron?.type)
 		if(/datum/patron/divine/astrata)
 			head = /obj/item/clothing/head/roguetown/roguehood/astrata
@@ -43,10 +42,14 @@
 			shoes = /obj/item/clothing/shoes/roguetown/sandals
 			armor = /obj/item/clothing/suit/roguetown/shirt/robe/noc
 			shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/black
+			H.mind.adjust_skillrank(/datum/skill/magic/arcane, 1, TRUE) // shouldn't be that bad.
+			H.mind.adjust_skillrank(/datum/skill/misc/alchemy, 3, TRUE)
 		if(/datum/patron/divine/dendor) //Dendorites all busted. Play Druid.
 			head = /obj/item/clothing/head/roguetown/helmet/dendorculthelm
 			neck = /obj/item/clothing/neck/roguetown/psicross/dendor
 			armor = /obj/item/clothing/suit/roguetown/shirt/robe/dendor
+			H.mind.adjust_skillrank(/datum/skill/labor/farming, 3, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/labor/taming, 3, TRUE)
 		if(/datum/patron/divine/necra) //disabled and moved unto gravedigger, but code supports it
 			head = /obj/item/clothing/head/roguetown/roguehood/necracolytehood
 			neck = /obj/item/clothing/neck/roguetown/psicross/necra
@@ -60,29 +63,40 @@
 			shoes = /obj/item/clothing/shoes/roguetown/boots
 			pants = /obj/item/clothing/under/roguetown/tights/black
 			shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/priest
+			H.mind.adjust_skillrank(/datum/skill/misc/medicine, 4, TRUE)
 		if(/datum/patron/divine/eora) //Eora content from Stonekeep
 			head = /obj/item/clothing/head/roguetown/eoramask
 			neck = /obj/item/clothing/neck/roguetown/psicross/eora
 			shoes = /obj/item/clothing/shoes/roguetown/sandals
 			armor = /obj/item/clothing/suit/roguetown/shirt/robe/eora
+			ADD_TRAIT(H, TRAIT_GOODLOVER, TRAIT_GENERIC)
 		if(/datum/patron/divine/xylix)
 			head = /obj/item/clothing/head/roguetown/helmet/heavy/xylixcagehelm
 			neck = /obj/item/clothing/neck/roguetown/psicross/xylix
 			shoes = /obj/item/clothing/shoes/roguetown/sandals
 			pants = /obj/item/clothing/under/roguetown/loincloth
 			shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/priest
+			H.mind.adjust_skillrank(/datum/skill/misc/climbing, 3, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 4, TRUE) // the eyes and ears of the Church
 		if(/datum/patron/divine/malum)
 			head = /obj/item/clothing/head/roguetown/helmet/heavy/malumhelm
 			neck = /obj/item/clothing/neck/roguetown/psicross/malum
 			pants = /obj/item/clothing/under/roguetown/trou/leather
 			shoes = /obj/item/clothing/shoes/roguetown/boots
 			armor =	/obj/item/clothing/suit/roguetown/armor/leathervest
+			H.mind.adjust_skillrank(/datum/skill/craft/weaponsmithing, 2, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/craft/armorsmithing, 2, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/craft/smelting, 2, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/labor/mining, 5, TRUE)
 		if(/datum/patron/divine/abyssor)
 			head = /obj/item/clothing/head/roguetown/helmet/abyssorhat
 			neck = /obj/item/clothing/neck/roguetown/psicross/abyssor
 			pants = /obj/item/clothing/under/roguetown/tights/purple
 			armor =	/obj/item/clothing/suit/roguetown/shirt/robe/abyssoracorobe
 			shoes = /obj/item/clothing/shoes/roguetown/boots
+			H.mind.adjust_skillrank(/datum/skill/labor/fishing, 3, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/swimming, 3, TRUE)
 		if(/datum/patron/divine/ravox)
 			head = /obj/item/clothing/head/roguetown/roguehood/flagellanthood
 			neck = /obj/item/clothing/neck/roguetown/psicross/ravox
@@ -90,7 +104,7 @@
 			shoes = shoes = /obj/item/clothing/shoes/roguetown/sandals
 			shirt =	/obj/item/clothing/suit/roguetown/shirt/undershirt/ravoxrobe			
 	if(H.mind)
-		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 5, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/medicine, rand(3, 4), TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 3, TRUE)
@@ -98,9 +112,9 @@
 		H.mind.adjust_skillrank(/datum/skill/magic/holy, 4, TRUE)
 		if(H.age == AGE_OLD)
 			H.mind.adjust_skillrank(/datum/skill/magic/holy, 1, TRUE)
-		H.change_stat("intelligence", 1)
-		H.change_stat("endurance", 1)
-		H.change_stat("perception", -1)
+		H.change_stat("intelligence", 4) // dedicated crafters
+		H.change_stat("endurance", 3)
+		H.change_stat("perception", 2)
 		H.cmode_music = 'sound/music/combat_clergy.ogg'
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/diagnose/secular)
 
