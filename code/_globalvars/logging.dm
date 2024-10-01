@@ -47,6 +47,8 @@ GLOBAL_VAR(world_attack_log)
 GLOBAL_PROTECT(world_attack_log)
 GLOBAL_VAR(world_href_log)
 GLOBAL_PROTECT(world_href_log)
+GLOBAL_VAR(world_seen_log)
+GLOBAL_PROTECT(world_seen_log)
 
 GLOBAL_VAR(config_error_log)
 GLOBAL_PROTECT(config_error_log)

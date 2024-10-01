@@ -27,7 +27,7 @@
 	attacked_sound = "parrywood"
 	max_integrity = 150
 	blade_dulling = DULLING_BASHCHOP
-	anvilrepair = null
+	anvilrepair = /datum/skill/craft/weaponsmithing
 	COOLDOWN_DECLARE(shield_bang)
 
 
@@ -75,7 +75,6 @@
 	desc = "A sturdy wooden shield. Will block anything you can imagine."
 	icon_state = "woodsh"
 	dropshrink = 0.8
-	wdefense = 15
 	coverage = 40
 
 /obj/item/rogueweapon/shield/wood/attack_right(mob/user)
@@ -86,7 +85,6 @@
 		if(!picked_name)
 			picked_name = "none"
 		var/mutable_appearance/M = mutable_appearance('icons/roguetown/weapons/wood_heraldry.dmi', picked_name)
-		M.alpha = 178
 		add_overlay(M)
 		var/mutable_appearance/MU = mutable_appearance(icon, "woodsh_detail")
 		MU.alpha = 114
@@ -115,7 +113,7 @@
 	throw_range = 3
 	wlength = WLENGTH_NORMAL
 	resistance_flags = FLAMMABLE
-	wdefense = 15
+	wdefense = 6
 	coverage = 70
 	parrysound = list('sound/combat/parry/shield/towershield (1).ogg','sound/combat/parry/shield/towershield (2).ogg','sound/combat/parry/shield/towershield (3).ogg')
 	max_integrity = 200
@@ -165,10 +163,9 @@
 		if(!picked_name)
 			picked_name = "none"
 		var/mutable_appearance/M = mutable_appearance('icons/roguetown/weapons/shield_heraldry.dmi', picked_name)
-		M.alpha = 190
 		add_overlay(M)
 		var/mutable_appearance/MU = mutable_appearance(icon, "ironsh_detail")
-		MU.alpha = 90
+		MU.alpha = 50
 		add_overlay(MU)
 		if(alert("Are you pleased with your heraldry?", "Heraldry", "Yes", "No") != "Yes")
 			cut_overlays()

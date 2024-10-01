@@ -105,7 +105,7 @@
 	slot_flags = ITEM_SLOT_HIP
 	thrown_bclass = BCLASS_CHOP
 	w_class = WEIGHT_CLASS_NORMAL
-	smeltresult = null
+	smeltresult = /obj/item/ingot/steel
 
 /obj/item/rogueweapon/huntingknife/chefknife
 	force = 15
@@ -120,11 +120,11 @@
 	slot_flags = ITEM_SLOT_HIP
 	thrown_bclass = BCLASS_CUT
 	w_class = WEIGHT_CLASS_SMALL
-	smeltresult = null
+	smeltresult = /obj/item/ingot/steel
 
 /obj/item/rogueweapon/huntingknife/cleaver/combat
 	force = 16
-	name = "knife"
+	name = "combat knife"
 	desc = "A combat knife. Swift and deadly if you hit."
 	possible_item_intents = list(/datum/intent/dagger/cut, /datum/intent/dagger/chop/cleaver, )
 	icon_state = "combatknife"
@@ -135,7 +135,7 @@
 	slot_flags = ITEM_SLOT_HIP
 	thrown_bclass = BCLASS_CHOP
 	w_class = WEIGHT_CLASS_NORMAL
-	smeltresult = null
+	smeltresult = /obj/item/ingot/steel
 
 /obj/item/rogueweapon/huntingknife/cleaver/getonmobprop(tag)
 	. = ..()
@@ -198,7 +198,9 @@
 
 /obj/item/rogueweapon/huntingknife/idagger/steel/parrying
 	name = "steel parrying dagger"
-	desc = "This is a parrying dagger made of solid steel, used to catch opponent's weapons in the handguard."
+	force = 12
+	throwforce = 12
+	desc = "This is a parrying dagger made of solid steel, used to catch opponent's weapons in the handguard. It's a bit more dull, however."
 	icon_state = "spdagger"
 	wdefense = 6
 
@@ -280,8 +282,8 @@
 /obj/item/rogueweapon/huntingknife/idagger/silver/elvish
 	possible_item_intents = list(/datum/intent/dagger/thrust,/datum/intent/dagger/cut,  /datum/intent/dagger/thrust/pick)
 	name = "elvish dagger"
-	desc = "This beautiful silver dagger is of intricate, elvish design. Sharper, too."
-	force = 19
+	desc = "This beautiful dagger is of intricate, elvish design. Sharper, too."
+	force = 22
 	icon_state = "elfdagger"
 	item_state = "elfdag"
 	last_used = 0
