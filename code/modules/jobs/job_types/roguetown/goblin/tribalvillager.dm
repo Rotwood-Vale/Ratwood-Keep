@@ -32,27 +32,31 @@
 		H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/polearms, 2, TRUE) //classic tribal spear moment.
-		H.mind.adjust_skillrank(/datum/skill/labor/mining, 3, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/labor/lumberjacking, 3, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/labor/fishing, 3, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/craft/crafting, 3 , TRUE) //builders
-		H.mind.adjust_skillrank(/datum/skill/craft/masonry, 3, TRUE) // builders
-		H.mind.adjust_skillrank(/datum/skill/craft/carpentry, 3, TRUE) //builders
-		H.mind.adjust_skillrank(/datum/skill/labor/farming, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/labor/mining, 6, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/labor/lumberjacking, 6, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/labor/fishing, 4, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/craft/crafting, 4 , TRUE) //builders
+		H.mind.adjust_skillrank(/datum/skill/craft/masonry, 4, TRUE) // builders
+		H.mind.adjust_skillrank(/datum/skill/craft/carpentry, 4, TRUE) //builders
+		H.mind.adjust_skillrank(/datum/skill/labor/farming, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/swimming, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/climbing, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 1, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/sewing, 1, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/sewing, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/music, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/riding, 2, TRUE)
-		H.change_stat("intelligence", 1)
+		H.mind.adjust_skillrank(/datum/skill/craft/traps, 2, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/labor/butchering, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/craft/tanning, 1, TRUE)
+		H.change_stat("intelligence", 6)
 		H.change_stat("fortune", 2)
-		H.change_stat("strength", 1)
+		H.change_stat("endurance", -1)
 		H.change_stat("constitution", -1)
 	if(isseelie(H))
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/seelie_dust)
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/summon_rat)
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/strip)
+		H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/seelie_kiss)
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/projectile/splash)
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/roustame)
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/projectile/animate_object)
