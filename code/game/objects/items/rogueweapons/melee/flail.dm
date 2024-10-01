@@ -64,7 +64,6 @@
 	recovery = 30
 	damfactor = 1.5
 	reach = 2
-	swingdelay = 8
 	chargedloop = /datum/looping_sound/flailswing
 	keep_looping = TRUE
 	icon_state = "insmash"
@@ -84,7 +83,7 @@
 
 
 /obj/item/rogueweapon/flail/sflail
-	force = 30
+	force = 20
 	icon_state = "flail"
 	desc = "This is a swift, steel flail. Strikes hard and far."
 	smeltresult = /obj/item/ingot/steel
@@ -168,7 +167,7 @@
 
 /obj/item/rogueweapon/flail/peasantwarflail
 	force = 10
-	force_wielded = 35
+	force_wielded = 25
 	possible_item_intents = list(/datum/intent/flail/strike)
 	gripped_intents = list(/datum/intent/flail/strikerange, /datum/intent/flail/strike/smashrange)
 	name = "peasant war flail"

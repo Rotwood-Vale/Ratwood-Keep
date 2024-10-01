@@ -252,14 +252,13 @@
 	smeltresult = /obj/item/ingot/steel
 	armor_class = ARMOR_CLASS_MEDIUM	
 
-/obj/item/clothing/suit/roguetown/armor/plate/bikini
+/obj/item/clothing/suit/roguetown/armor/plate/half/bikini
 	name = "plate bikini"
 	desc = "Half plate in bikini form, still just as protective somehow."
 	icon_state = "halfplatekini"
 	item_state = "halfplatekini"
 	allowed_sex = list(FEMALE)
 	anvilrepair = /datum/skill/craft/armorsmithing
-	armor_class = ARMOR_CLASS_MEDIUM
 
 /obj/item/clothing/suit/roguetown/armor/plate/full
 	name = "plate armor"
