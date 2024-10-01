@@ -140,6 +140,7 @@ GLOBAL_LIST_INIT(stone_personality_descs, list(
 	w_class = WEIGHT_CLASS_TINY
 	destroy_sound = 'sound/foley/hit_rock.ogg'
 	grind_results = list(/datum/reagent/consumable/sodiumchloride = 15)
+	var/magicstone = FALSE
 
 /obj/item/natural/stone/Initialize()
 	. = ..()

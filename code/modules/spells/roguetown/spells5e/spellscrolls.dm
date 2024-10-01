@@ -86,7 +86,7 @@
 
 /obj/item/book/granter/spell/spells5e/encodethoughts5e
 	name = "Scroll of Encode Thoughts"
-	spell = /obj/effect/proc_holder/spell/invoked/encodethoughts5e
+	spell = /obj/effect/proc_holder/spell/targeted/encodethoughts5e
 	spellname = "encode thoughts"
 	icon_state ="scrollred"
 
@@ -110,7 +110,7 @@
 
 /obj/item/book/granter/spell/spells5e/guidance5e
 	name = "Scroll of Guidance"
-	spell = /obj/effect/proc_holder/spell/invoked/guidance5e
+	spell = /obj/effect/proc_holder/spell/targeted/guidance5e
 	spellname = "guidance"
 	icon_state ="scrollred"
 
@@ -142,4 +142,28 @@
 	name = "Scroll of Mending"
 	spell = /obj/effect/proc_holder/spell/invoked/mending5e
 	spellname = "mending"
+	icon_state ="scrollred"
+
+/obj/item/book/granter/spell/spells5e/mindsliver5e
+	name = "Scroll of Mind Sliver"
+	spell = /obj/effect/proc_holder/spell/invoked/mindsliver5e
+	spellname = "mind sliver"
+	icon_state ="scrollred"
+
+/obj/item/book/granter/spell/spells5e/poisonspray5e
+	name = "Scroll of Poison Spray"
+	spell = /obj/effect/proc_holder/spell/invoked/poisonspray5e
+	spellname = "poison spray"
+	icon_state ="scrollred"
+
+/obj/item/book/granter/spell/spells5e/primalsavagery5e
+	name = "Scroll of Primal Savagery"
+	spell = /obj/effect/proc_holder/spell/self/primalsavagery5e
+	spellname = "primal savagery"
+	icon_state ="scrollred"
+
+/obj/item/book/granter/spell/spells5e/rayoffrost5e
+	name = "Scroll of Ray of Frost"
+	spell = /obj/effect/proc_holder/spell/invoked/projectile/rayoffrost5e
+	spellname = "ray of frost"
 	icon_state ="scrollred"

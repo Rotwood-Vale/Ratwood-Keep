@@ -48,6 +48,7 @@
 #define TRAIT_NOCSIGHT "Blessing of Noc" // I can see just a bit more clearly in darkness.
 #define TRAIT_MALUMSGRACE "Malum's Grace" // For now, just means you dont combust when snorting malum's fire.
 #define TRAIT_DEATHBYSNOOSNOO "Bed Breaker" // double sex damage (requires strong intent)
+#define TRAIT_POISONBITE "Venomous Bite" // Adds tox damage on bites
 //Hearthstone end.
 
 // PATRON GOD TRAITS
@@ -142,6 +143,7 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_NOCSIGHT = "Noc blesses my eyes to be unburdened by the night.", //Hearthstone change.
 	TRAIT_MALUMSGRACE = "Malum is my muse.", // Hearthstone change
 	TRAIT_DEATHBYSNOOSNOO = "It's an unlucky thing to share my bed.", // Hearthstone change
+	TRAIT_POISONBITE = "My bites inject venom into my target.", // Hearthstone change
 	TRAIT_BOG_TREKKING = "Expert in navigating these lands.", // Hearthstone change
 	TRAIT_TINY = span_info("I am tiny in size and quite fragile!"),
 ))
