@@ -1,11 +1,10 @@
 /datum/advclass/blacksmith
-	name = "Blacksmith"
-	tutorial = "A skilled blacksmith, able to forge capable weapons for warriors in the bog, \
-	only after building a forge for themselves of course."
+	name = "Malumworker"
+	tutorial = "A devoted servant to Malum, the God of creation. Your prayers are the kneeling to craft works of art, whether it be glistening blades or sculpted stone."
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
 	outfit = /datum/outfit/job/roguetown/adventurer/blacksmith
-
+	allowed_patrons = list(/datum/patron/divine/malum)
 	category_tags = list(CTAG_PILGRIM, CTAG_TOWNER)
 
 /datum/outfit/job/roguetown/adventurer/blacksmith/pre_equip(mob/living/carbon/human/H)
