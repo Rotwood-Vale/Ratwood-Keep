@@ -524,6 +524,7 @@
 	flags_cover = HEADCOVERSEYES
 	body_parts_covered = HEAD|EARS|HAIR|NOSE|EYES
 	block2add = FOV_BEHIND
+	smelt_bar_num = 2
 
 /obj/item/clothing/head/roguetown/helmet/sallet/visored/AdjustClothes(mob/user)
 	if(loc == user)
@@ -575,6 +576,7 @@
 	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR
 	block2add = FOV_RIGHT|FOV_LEFT
 	smeltresult = /obj/item/ingot/steel
+	smelt_bar_num = 2
 
 /obj/item/clothing/head/roguetown/helmet/heavy/sheriff
 	name = "barred helmet"
@@ -584,6 +586,7 @@
 	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR
 	block2add = FOV_RIGHT|FOV_LEFT
 	smeltresult = /obj/item/ingot/steel
+	smelt_bar_num = 2
 
 /obj/item/clothing/head/roguetown/helmet/heavy/knight
 	name = "knight's helmet"
@@ -595,6 +598,7 @@
 	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR
 	block2add = FOV_RIGHT|FOV_LEFT
 	smeltresult = /obj/item/ingot/steel
+	smelt_bar_num = 2
 
 /obj/item/clothing/head/roguetown/helmet/heavy/knight/black
 	color = CLOTHING_BLACK
@@ -643,14 +647,12 @@
 		"Woad Blue"="#395480",
 		"Cornflower Blue"="#749EE8",
 		"Blacksteel Grey"="#404040",)
-		qdel(W)
-		user.visible_message(span_warning("[user] adds [W] to [src]."))
 
-		var/mob/living/carbon/human/L = loc
-		var/choice = input(L, "Choose a color.", "Knight's Plume") as anything in colors
-		var/playerchoice = colors[choice]
-		detail_color = playerchoice
+		var/choice = input(user, "Choose a color.", "Plume") as anything in colors
+		detail_color = colors[choice]
 		detail_tag = "_detail"
+		user.visible_message(span_warning("[user] adds [W] to [src]."))
+		qdel(W)
 		update_icon()
 		if(loc == user && ishuman(user))
 			var/mob/living/carbon/H = user
@@ -674,6 +676,46 @@
 	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR
 	block2add = FOV_RIGHT|FOV_LEFT
 	smeltresult = /obj/item/ingot/steel
+	smelt_bar_num = 2
+
+/obj/item/clothing/head/roguetown/helmet/heavy/bucket/attackby(obj/item/W, mob/living/user, params)
+	..()
+	if(istype(W, /obj/item/natural/cloth) && !detail_tag)
+		var/list/colors = list(
+		"Swan White"="#ffffff",
+		"Lavender"="#865c9c",
+		"Royal Purple"="#5E4687",
+		"Wine Rouge"="#752B55",
+		"Sow's skin"="#CE929F",
+		"Knight's Red"="#933030",
+		"Madroot Red"="#AD4545",
+		"Marigold Orange"="#E2A844",
+		"Politely, Yuck"="#685542",
+		"Astrata's Yellow"="#FFFD8D",
+		"Bog Green"="#375B48",
+		"Seafoam Green"="#49938B",
+		"Woad Blue"="#395480",
+		"Cornflower Blue"="#749EE8",
+		"Blacksteel Grey"="#404040",)
+
+		var/choice = input(user, "Choose a color.", "Orle") as anything in colors
+		user.visible_message(span_warning("[user] adds [W] to [src]."))
+		qdel(W)
+		detail_color = colors[choice]
+		detail_tag = "_detail"
+		update_icon()
+		if(loc == user && ishuman(user))
+			var/mob/living/carbon/H = user
+			H.update_inv_head()
+
+/obj/item/clothing/head/roguetown/helmet/heavy/bucket/update_icon()
+	cut_overlays()
+	if(get_detail_tag())
+		var/mutable_appearance/pic = mutable_appearance(icon(icon, "[icon_state][detail_tag]"))
+		pic.appearance_flags = RESET_COLOR
+		if(get_detail_color())
+			pic.color = get_detail_color()
+		add_overlay(pic)
 
 /obj/item/clothing/head/roguetown/helmet/heavy/astratahelm
 	name = "astrata helmet"
@@ -684,6 +726,7 @@
 	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR
 	block2add = FOV_RIGHT|FOV_LEFT
 	smeltresult = /obj/item/ingot/steel
+	smelt_bar_num = 2
 
 /obj/item/clothing/head/roguetown/helmet/heavy/nochelm
 	name = "noc helmet"
@@ -695,6 +738,7 @@
 	flags_inv = HIDEEARS|HIDEHAIR
 	block2add = FOV_BEHIND
 	smeltresult = /obj/item/ingot/steel
+	smelt_bar_num = 2
 
 /obj/item/clothing/head/roguetown/helmet/heavy/necrahelm
 	name = "necra helmet"
@@ -705,6 +749,7 @@
 	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR
 	block2add = FOV_RIGHT|FOV_LEFT
 	smeltresult = /obj/item/ingot/steel
+	smelt_bar_num = 2
 
 /obj/item/clothing/head/roguetown/helmet/heavy/dendorhelm
 	name = "dendor helmet"
@@ -715,6 +760,7 @@
 	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR
 	block2add = FOV_RIGHT|FOV_LEFT
 	smeltresult = /obj/item/ingot/steel
+	smelt_bar_num = 2
 
 /obj/item/clothing/head/roguetown/helmet/bascinet
 	name = "bascinet"
@@ -734,10 +780,12 @@
 	item_state = "hounskull"
 	adjustable = CAN_CADJUST
 	emote_environment = 3
+	body_parts_covered = FULL_HEAD
 	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR
 	flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH
 	block2add = FOV_RIGHT|FOV_LEFT
 	smeltresult = /obj/item/ingot/steel
+	smelt_bar_num = 2
 
 /obj/item/clothing/head/roguetown/helmet/bascinet/pigface/AdjustClothes(mob/user)
 	if(loc == user)
@@ -783,20 +831,18 @@
 		"Woad Blue"="#395480",
 		"Cornflower Blue"="#749EE8",
 		"Blacksteel Grey"="#404040",)
-		qdel(W)
-		user.visible_message(span_warning("[user] adds [W] to [src]."))
 
-		var/mob/living/carbon/human/L = loc
-		var/choice = input(L, "Choose a color.", "Bascinet plume") as anything in colors
-		var/playerchoice = colors[choice]
-		detail_color = playerchoice
+		var/choice = input(user, "Choose a color.", "Plume") as anything in colors
+		detail_color = colors[choice]
 		detail_tag = "_detail"
+		user.visible_message(span_warning("[user] adds [W] to [src]."))
+		qdel(W)
 		update_icon()
 		if(loc == user && ishuman(user))
 			var/mob/living/carbon/H = user
 			H.update_inv_head()
 
-/obj/item/clothing/head/roguetown/helmet/heavy/pigface/update_icon()
+/obj/item/clothing/head/roguetown/helmet/bascinet/pigface/update_icon()
 	cut_overlays()
 	if(get_detail_tag())
 		var/mutable_appearance/pic = mutable_appearance(icon(icon, "[icon_state][detail_tag]"))
@@ -815,6 +861,7 @@
 	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR
 	block2add = FOV_RIGHT|FOV_LEFT
 	smeltresult = /obj/item/ingot/steel
+	smelt_bar_num = 2
 
 /obj/item/clothing/head/roguetown/helmet/heavy/frogmouth/attackby(obj/item/W, mob/living/user, params)
 	..()
@@ -835,18 +882,25 @@
 		"Woad Blue"="#395480",
 		"Cornflower Blue"="#749EE8",
 		"Blacksteel Grey"="#404040",)
-		qdel(W)
-		user.visible_message(span_warning("[user] adds [W] to [src]."))
 
-		var/mob/living/carbon/human/L = loc
-		var/choice = input(L, "Choose a color.", "Frogmouth wreath") as anything in colors
-		var/playerchoice = colors[choice]
-		detail_color = playerchoice
+		var/choice = input(user, "Choose a color.", "Orle") as anything in colors
+		user.visible_message(span_warning("[user] adds [W] to [src]."))
+		qdel(W)
+		detail_color = colors[choice]
 		detail_tag = "_detail"
 		update_icon()
 		if(loc == user && ishuman(user))
 			var/mob/living/carbon/H = user
 			H.update_inv_head()
+
+/obj/item/clothing/head/roguetown/helmet/heavy/frogmouth/update_icon()
+	cut_overlays()
+	if(get_detail_tag())
+		var/mutable_appearance/pic = mutable_appearance(icon(icon, "[icon_state][detail_tag]"))
+		pic.appearance_flags = RESET_COLOR
+		if(get_detail_color())
+			pic.color = get_detail_color()
+		add_overlay(pic)
 
 /obj/item/clothing/head/roguetown/helmet/bascinet
 	name = "bascinet"
@@ -1105,3 +1159,22 @@
 	smeltresult = null
 	sewrepair = TRUE
 	blocksound = SOFTHIT
+
+//----------------- BLACKSTEEL ---------------------
+
+/obj/item/clothing/head/roguetown/helmet/blacksteel/bucket
+	name = "Blacksteel Bucket Helm"
+	desc = "A bucket helmet forged of durable blacksteel. None shall pass.."
+	body_parts_covered = FULL_HEAD
+	icon = 'icons/roguetown/clothing/special/blkknight.dmi'
+	mob_overlay_icon = 'icons/roguetown/clothing/special/onmob/blkknight.dmi'
+	icon_state = "bkhelm"
+	item_state = "bkhelm"
+	flags_inv = HIDEEARS|HIDEFACE
+	flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH
+	armor = list("blunt" = 90, "slash" = 100, "stab" = 80, "bullet" = 100, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT, BCLASS_SMASH, BCLASS_TWIST, BCLASS_PICK)
+	block2add = FOV_RIGHT|FOV_LEFT
+	max_integrity = 425
+	smeltresult = /obj/item/ingot/blacksteel
+	smelt_bar_num = 2

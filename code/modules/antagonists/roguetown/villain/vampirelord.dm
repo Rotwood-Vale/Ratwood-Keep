@@ -231,7 +231,7 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 	nodismemsleeves = TRUE
 	max_integrity = 500
 	allowed_sex = list(MALE, FEMALE)
-	do_sound = TRUE
+	do_sound_plate = TRUE
 	anvilrepair = /datum/skill/craft/armorsmithing
 	smeltresult = /obj/item/ingot/steel
 	equip_delay_self = 40
@@ -1358,38 +1358,31 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 	if(length(msg) < 10)
 		to_chat(user, span_userdanger("This is not enough!"))
 		return FALSE
-	var/bloodskill = user.mind.get_skill_level(/datum/skill/magic/blood)
-	var/bloodroll = roll("[bloodskill]d10")
 	user.say(msg)
 	user.visible_message("<font color='red'>[user]'s eyes glow a ghastly red as they project their will outwards!</font>")
 	for(var/mob/living/carbon/human/L in targets)
 		var/datum/antagonist/vampirelord/VD = L.mind.has_antag_datum(/datum/antagonist/vampirelord)
-		var/willpower = round(L.STAINT / 4)
-		var/willroll = roll("[willpower]d6")
 		if(VD)
 			return
-		if(L.cmode)
-			willroll += 15
-		if(bloodroll >= willroll)
-			L.drowsyness = min(L.drowsyness + 50, 150)
-			switch(L.drowsyness)
-				if(0 to 50)
-					to_chat(L, "You feel like a curtain is coming over your mind.")
-					L.Slowdown(20)
-				if(50 to 100)
-					to_chat(L, "Your eyelids force themselves shut as you feel intense lethargy.")
-					L.Slowdown(50)
-					L.eyesclosed = TRUE
-					for(var/atom/movable/screen/eye_intent/eyet in L.hud_used.static_inventory)
-						eyet.update_icon(L)
-					L.become_blind("eyelids")
-				if(100 to INFINITY)
-					to_chat(L, span_userdanger("You can't take it anymore. Your legs give out as you fall into the dreamworld."))
-					L.eyesclosed = TRUE
-					for(var/atom/movable/screen/eye_intent/eyet in L.hud_used.static_inventory)
-						eyet.update_icon(L)
-					L.become_blind("eyelids")
-					L.Slowdown(50)
-					sleep(50)
-					L.Sleeping(300)
+		L.drowsyness = min(L.drowsyness + 50, 150)
+		switch(L.drowsyness)
+			if(0 to 50)
+				to_chat(L, "You feel like a curtain is coming over your mind.")
+				L.Slowdown(20)
+			if(50 to 100)
+				to_chat(L, "Your eyelids force themselves shut as you feel intense lethargy.")
+				L.Slowdown(50)
+				L.eyesclosed = TRUE
+				for(var/atom/movable/screen/eye_intent/eyet in L.hud_used.static_inventory)
+					eyet.update_icon(L)
+				L.become_blind("eyelids")
+			if(100 to INFINITY)
+				to_chat(L, span_userdanger("You can't take it anymore. Your legs give out as you fall into the dreamworld."))
+				L.eyesclosed = TRUE
+				for(var/atom/movable/screen/eye_intent/eyet in L.hud_used.static_inventory)
+					eyet.update_icon(L)
+				L.become_blind("eyelids")
+				L.Slowdown(50)
+				sleep(50)
+				L.Sleeping(300)
 

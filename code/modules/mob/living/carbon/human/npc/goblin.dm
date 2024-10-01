@@ -14,7 +14,7 @@
 	possible_rmb_intents = list()
 
 /mob/living/carbon/human/species/goblin/npc
-	aggressive=1
+	aggressive = 1
 	mode = AI_IDLE
 	dodgetime = 30 //they can dodge easily, but have a cooldown on it
 	flee_in_pain = TRUE

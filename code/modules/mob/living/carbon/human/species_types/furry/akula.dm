@@ -14,7 +14,7 @@
 	find their sanity being clawed away as they find themselves stuck in one place."
 	species_traits = list(EYECOLOR,LIPS,STUBBLE,MUTCOLORS)
 	species_traits = list(EYECOLOR,LIPS,STUBBLE,MUTCOLORS)
-	inherent_traits = list(TRAIT_NOMOBSWAP, TRAIT_WATERBREATHING)
+	inherent_traits = list(TRAIT_WATERBREATHING)
 	possible_ages = ALL_AGES_LIST
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
 	limbs_icon_m = 'icons/roguetown/mob/bodies/m/mt.dmi'
@@ -74,7 +74,7 @@
 		/datum/customizer/organ/tail/axian,
 		/datum/customizer/organ/ears/axian,
 		/datum/customizer/organ/testicles/anthro,
-		/datum/customizer/organ/penis/lizard,
+		/datum/customizer/organ/penis/anthro,
 		/datum/customizer/organ/breasts/human,
 		/datum/customizer/organ/vagina/human_anthro,
 		)
@@ -84,6 +84,7 @@
 	)
 	body_markings = list(
 		/datum/body_marking/flushed_cheeks,
+		/datum/body_marking/eyeliner,
 		/datum/body_marking/belly,
 		/datum/body_marking/bellyslim,
 		/datum/body_marking/butt,

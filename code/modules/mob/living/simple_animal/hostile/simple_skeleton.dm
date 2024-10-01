@@ -57,6 +57,7 @@
 	icon_state = "skeleton_spear"
 	icon_living = "skeleton_spear"
 	icon_dead = ""
+	attack_sound = 'sound/foley/pierce.ogg'
 	loot = list(/obj/item/natural/bone,	/obj/item/natural/bone, /obj/item/natural/bone,	/obj/item/rogueweapon/spear, /obj/item/skull)
 
 /mob/living/simple_animal/hostile/rogue/skeleton/guard

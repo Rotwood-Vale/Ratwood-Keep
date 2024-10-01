@@ -41,19 +41,6 @@
 		else
 			return PROCESS_KILL
 
-/obj/machinery/light/rogue/lanternpost/attack_hand(mob/user)
-	. = ..()
-	if(.)
-		return
-	if(torchy)
-		if(!istype(user) || !Adjacent(user) || !user.put_in_active_hand(torchy))
-			torchy.forceMove(loc)
-		torchy = null
-		on = FALSE
-		set_light(0)
-		update_icon()
-		playsound(src.loc, 'sound/foley/torchfixturetake.ogg', 100)
-
 /obj/machinery/light/rogue/lanternpost/update_icon()
 	if(torchy)
 		if(on)

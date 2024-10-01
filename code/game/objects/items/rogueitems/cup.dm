@@ -48,34 +48,8 @@
 	desc = "A silver goblet, its surface adorned with intricate carvings and runes."
 	icon_state = "silver"
 	sellprice = 30
-	var/last_used = 0
-
-/obj/item/reagent_containers/glass/cup/silver/funny_attack_effects(mob/living/target, mob/living/user = usr, nodmg)
-	if(world.time < src.last_used + 120)
-		to_chat(user, span_notice("The silver effect is on cooldown."))
-		return
-
-	. = ..()
-	if(ishuman(target))
-		var/mob/living/carbon/human/H = target
-		if(H.dna && H.dna.species)
-			if(istype(H.dna.species, /datum/species/werewolf))
-				H.Paralyze(10)
-				H.Stun(10)
-				H.adjustFireLoss(10)
-				H.fire_act(1,10)
-				to_chat(H, span_userdanger("I'm bonked by my BANE!"))
-				src.last_used = world.time
-	if(target.mind && target.mind.has_antag_datum(/datum/antagonist/vampirelord))
-		var/datum/antagonist/vampirelord/VD = target.mind.has_antag_datum(/datum/antagonist/vampirelord)
-		var/mob/living/carbon/human/H = target
-		if(!VD.disguised)
-			H.Paralyze(10)
-			H.Stun(10)
-			H.adjustFireLoss(10)
-			H.fire_act(1,10)
-			to_chat(H, span_userdanger("I'm bonked by my BANE!"))
-			src.last_used = world.time
+	last_used = 0
+	is_silver = TRUE
 
 /obj/item/reagent_containers/glass/cup/silver/pickup(mob/user)
 	. = ..()

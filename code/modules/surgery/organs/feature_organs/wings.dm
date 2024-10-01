@@ -22,6 +22,12 @@
 	desc = "A pair of fuzzy moth wings."
 	flight_for_species = list("moth")
 
+/obj/item/organ/wings/dracon
+	name = "drakian wings"
+	desc = "A pair of majestic drakian wings."
+//	flight_for_species = list("dracon") we'll revisit this later it's probably moth sprite only
+
+
 /obj/item/organ/wings/anthro
 	name = "wild-kin wings"
 
@@ -40,7 +46,3 @@
 /obj/item/organ/wings/flight/megamoth
 	name = "megamoth wings"
 	desc = "A pair of horrifyingly large, fuzzy wings. They look strong enough to lift you up in the air."
-
-/obj/item/organ/wings/dracon
-	name = "drakian wings"
-	accessory_type = /datum/sprite_accessory/wings/huge/dragon

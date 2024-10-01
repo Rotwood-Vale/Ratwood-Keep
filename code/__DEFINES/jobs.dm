@@ -102,7 +102,7 @@
 #define STEWARD		(1<<3)
 #define KNIGHT		(1<<4)
 #define GUARD_CAPTAIN		(1<<5)
-#define BAILIFF		(1<<6)
+#define MARSHAL		(1<<6)
 #define HOSTAGE		(1<<7)
 
 #define GARRISON		(1<<1)
@@ -140,7 +140,7 @@
 #define WEAPONSMITH (1<<3)
 #define BLACKSMITH  (1<<4)
 #define ALCHEMIST	(1<<5)
-#define MASON		(1<<6)
+#define ARTIFICER	(1<<6)
 #define TAILOR		(1<<7)
 #define MERCHANT	(1<<8)
 #define SCRIBE		(1<<9)
@@ -221,7 +221,7 @@
 #define JDO_HAND 2
 #define JDO_STEWARD 3
 #define JDO_CLERK 3.1
-#define JDO_BAILIFF 4
+#define JDO_MARSHAL 4
 #define JDO_COUNCILLOR 4.1
 
 // Courtiers
@@ -265,7 +265,7 @@
 #define JDO_BLACKSMITH 20
 #define JDO_APPRENTICE 21
 
-#define JDO_MASON 22
+#define JDO_ARTIFICER 22
 
 #define JDO_BARKEEP 26
 #define JDO_COOK 27
@@ -313,7 +313,7 @@
 	/datum/job/roguetown/prince,\
 	/datum/job/roguetown/councillor,\
 	/datum/job/roguetown/physician,\
-	/datum/job/roguetown/bailiff,\
+	/datum/job/roguetown/marshal,\
 	/datum/job/roguetown/captain,\
 	/datum/job/roguetown/hand,\
 	/datum/job/roguetown/knight,\
@@ -357,7 +357,7 @@
 	/datum/job/roguetown/armorsmith,\
 	/datum/job/roguetown/weaponsmith,\
 	/datum/job/roguetown/blacksmith,\
-	/datum/job/roguetown/mason,\
+	/datum/job/roguetown/artificer,\
 	/datum/job/roguetown/merchant,\
 	/datum/job/roguetown/scribe
 

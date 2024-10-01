@@ -161,7 +161,6 @@
 			var/oldloc = loc
 			var/oldMloc = M.loc
 
-
 			var/M_passmob = (M.pass_flags & PASSMOB) // we give PASSMOB to both mobs to avoid bumping other mobs during swap.
 			var/src_passmob = (pass_flags & PASSMOB)
 			M.pass_flags |= PASSMOB
@@ -331,6 +330,8 @@
 /mob/living/carbon/proc/kick_attack_check(mob/living/L)
 	if(L == src)
 		return FALSE
+	if(!(src.mobility_flags & MOBILITY_STAND))
+		return TRUE
 	var/list/acceptable = list(BODY_ZONE_L_LEG, BODY_ZONE_R_LEG, BODY_ZONE_R_ARM, BODY_ZONE_CHEST, BODY_ZONE_L_ARM)
 	if( !(check_zone(L.zone_selected) in acceptable) )
 		to_chat(L, span_warning("I can't reach that."))
@@ -1067,25 +1068,31 @@
 		else if(last_special <= world.time)
 			resist_restraints() //trying to remove cuffs.
 
-/mob/living/verb/submit()
+/mob/living/proc/submit(var/instant = FALSE)
 	set name = "Yield"
 	set category = "IC"
 	set hidden = 1
-	if(surrendering)
+	if(surrendering || stat)
 		return
-	if(stat)
-		return
+	if(!instant)
+		if(alert(src, "Do you yield?", "SURRENDER", "Yes", "No") == "No")
+			return
+	log_combat(src, null, "surrendered")
 	surrendering = 1
+	toggle_cmode()
 	changeNext_move(CLICK_CD_EXHAUSTED)
-	var/image/flaggy = image('icons/effects/effects.dmi',src,"surrender_large",ABOVE_MOB_LAYER)
-	flaggy.appearance_flags = RESET_TRANSFORM|KEEP_APART
-	flaggy.transform = null
-	flaggy.pixel_y = 8
-	flick_overlay_view(flaggy, src, 150)
-	Stun(150)
+	var/obj/effect/temp_visual/surrender/flaggy = new(src)
+	vis_contents += flaggy
+	Stun(300)
+	Knockdown(300)
+	apply_status_effect(/datum/status_effect/debuff/breedable)
+	apply_status_effect(/datum/status_effect/debuff/submissive)
 	src.visible_message(span_notice("[src] yields!"))
-	playsound(src, 'sound/misc/surrender.ogg', 100, FALSE, -1)
-	sleep(150)
+	playsound(src, 'sound/misc/surrender.ogg', 100, FALSE, -1, ignore_walls=TRUE)
+	update_vision_cone()
+	addtimer(CALLBACK(src, PROC_REF(end_submit)), 600)
+
+/mob/living/proc/end_submit()
 	surrendering = 0
 
 
@@ -1244,11 +1251,21 @@
 		to_chat(src, span_warning("Your hands pass right through \the [what]!"))
 		return
 
+	var/surrender_mod = 1
+
+	if(isliving(who))
+		var/mob/living/L = who
+		if(L.cmode && L.mobility_flags & MOBILITY_STAND && !L.restrained())
+			to_chat(src, span_warning("I can't take \the [what] off, they are too tense!"))
+			return
+		if(L.surrendering)
+			surrender_mod = 0.5
+
 	who.visible_message(span_warning("[src] tries to remove [who]'s [what.name]."), \
 					span_danger("[src] tries to remove my [what.name]."), null, null, src)
 	to_chat(src, span_danger("I try to remove [who]'s [what.name]..."))
 	what.add_fingerprint(src)
-	if(do_mob(src, who, what.strip_delay))
+	if(do_mob(src, who, what.strip_delay * surrender_mod))
 		if(what && Adjacent(who))
 			if(islist(where))
 				var/list/L = where
@@ -1285,10 +1302,20 @@
 			to_chat(src, span_warning("\The [what.name] doesn't fit in that place!"))
 			return
 
+		var/surrender_mod = 1
+
+		if(isliving(who))
+			var/mob/living/L = who
+			if(L.cmode && L.mobility_flags & MOBILITY_STAND)
+				to_chat(src, span_warning("I can't put \the [what] on them, they are too tense!"))
+				return
+			if(L.surrendering)
+				surrender_mod = 0.5
+
 		who.visible_message(span_notice("[src] tries to put [what] on [who]."), \
 						span_notice("[src] tries to put [what] on you."), null, null, src)
 		to_chat(src, span_notice("I try to put [what] on [who]..."))
-		if(do_mob(src, who, what.equip_delay_other))
+		if(do_mob(src, who, what.equip_delay_other * surrender_mod))
 			if(what && Adjacent(who) && what.mob_can_equip(who, src, final_where, TRUE, TRUE))
 				if(temporarilyRemoveItemFromInventory(what))
 					if(where_list)
@@ -1623,7 +1650,7 @@
 	else
 		mobility_flags |= MOBILITY_PULL
 
-	var/canitem = !paralyzed && !stun && conscious && !chokehold && !restrained && has_arms
+	var/canitem = !paralyzed && !stun && conscious && !chokehold && !restrained && has_arms && !surrendering
 	if(canitem)
 		mobility_flags |= (MOBILITY_USE | MOBILITY_PICKUP | MOBILITY_STORAGE)
 	else
@@ -1645,7 +1672,7 @@
 	else
 		if(layer == LYING_MOB_LAYER)
 			layer = initial(layer)
-
+	update_cone_show()
 	update_transform()
 	lying_prev = lying
 

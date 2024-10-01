@@ -65,7 +65,7 @@ GLOBAL_LIST_INIT(noble_positions, list(
 	"Prince",
 	"Hand",
 	"Guard Captain",
-	"Sheriff",
+	"Marshal",
 	"Councillor",
 	"Steward",
 	"Royal Guard",
@@ -106,7 +106,7 @@ GLOBAL_LIST_INIT(yeoman_positions, list(
 	"Weaponsmith",
 	"Tailor",
 	"Alchemist",
-	"Mason",
+	"Artificer",
 	"Scribe",
 	"Town Elder",
 ))
