@@ -344,7 +344,7 @@
 				if(zone_precise in earstab_zones)
 					var/obj/item/organ/ears/my_ears = owner.getorganslot(ORGAN_SLOT_EARS)
 					if(!my_ears || has_wound(/datum/wound/facial/ears))
-						attempted_wounds += /datum/wound/artery
+						attempted_wounds += /datum/wound/fracture/head/ears
 					else 
 						attempted_wounds += /datum/wound/facial/ears
 				else if(zone_precise in eyestab_zones)
