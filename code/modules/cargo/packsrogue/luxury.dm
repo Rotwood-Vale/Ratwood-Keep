@@ -154,6 +154,10 @@
 	name = "Fragment of the Succubus"
 	cost = 50
 	contains = list(/obj/item/book/granter/trait/succubus)
+/datum/supply_pack/rogue/luxury/
+	name = "Fragment of the North"
+	cost = 200
+	contains = list(/obj/item/book/granter/trait/north)
 /*/datum/supply_pack/rogue/luxury/undying
 	name = "Fragment of the Undying"
 	cost = 500
@@ -234,3 +238,22 @@
 	name = "Scroll of Mending"
 	cost = 50
 	contains = list(/obj/item/book/granter/spell/spells5e/mending5e)
+
+
+//p2
+/datum/supply_pack/rogue/luxury/mindsliver5e
+	name = "Scroll of Mind Sliver"
+	cost = 50
+	contains = list(/obj/item/book/granter/spell/spells5e/mindsliver5e)
+/datum/supply_pack/rogue/luxury/poisonspray5e
+	name = "Scroll of Poison Spray"
+	cost = 50
+	contains = list(/obj/item/book/granter/spell/spells5e/poisonspray5e)
+/datum/supply_pack/rogue/luxury/primalsavagery5e
+	name = "Scroll of Primal Savagery"
+	cost = 50
+	contains = list(/obj/effect/proc_holder/spell/self/rayoffrost5e)
+/datum/supply_pack/rogue/luxury/mending5e
+	name = "Scroll of Ray of Frost"
+	cost = 50
+	contains = list(/obj/item/book/granter/spell/spells5e/rayoffrost5e)
