@@ -73,7 +73,7 @@
 					H.change_stat("constitution", -2)
 					H.change_stat("intelligence", 2)
 					H.change_stat("perception", 2)
-			if(/datum/patron/divine/graggar) // Butcher-surgeon.
+			if(/datum/patron/inhumen/graggar) // Butcher-surgeon.
 				H.change_stat("strength", 3) // Their only weapon skill is apprentice knives.
 				H.change_stat("intelligence", -2)
 				H.change_stat("speed", 2)  
