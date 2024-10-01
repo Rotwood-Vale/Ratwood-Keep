@@ -227,7 +227,7 @@
 
 /datum/supply_pack/rogue/weapons/matchlock
 	name = "Matchlock Musket"
-	cost = 750	//Pricey as shit, money-sink due to ammo cost along with musket cost. (Probably too much money, maybe reduce if too hard to get.)
+	cost = 400	//Pricey as shit, money-sink due to ammo cost along with musket cost. (Probably too much money, maybe reduce if too hard to get.)
 	contains = list(/obj/item/gun/ballistic/revolver/grenadelauncher/matchlock,
 					/obj/item/ammo_casing/caseless/rogue/bullet,
 					/obj/item/ammo_casing/caseless/rogue/bullet,

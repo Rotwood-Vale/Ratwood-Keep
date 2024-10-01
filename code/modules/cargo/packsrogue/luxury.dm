@@ -75,7 +75,7 @@
 
 /datum/supply_pack/rogue/luxury/scrying
 	name = "Scrying Orb"
-	cost = 750
+	cost = 250
 	contains = list(/obj/item/scrying)
 
 /datum/supply_pack/rogue/luxury/listenst
@@ -93,7 +93,7 @@
 //Desert Rider / Desert Warrior pack; very good helm, decent medium armor, unique sword from rider.
 /datum/supply_pack/rogue/luxury/zybantine
 	name = "Zybantine Arms & Armor Import"
-	cost = 500
+	cost = 300
 	contains = list(/obj/item/rogueweapon/sword/long/rider,
 					/obj/item/clothing/head/roguetown/roguehood/shalal,
 					/obj/item/clothing/head/roguetown/helmet/heavy/zybantinehelm,
@@ -104,7 +104,7 @@
 //Grenzel pack; decent medium armor, no helmet, but whole clothing loadout and the two meme weapons.
 /datum/supply_pack/rogue/luxury/grenzelhoft
 	name = "Grenzelhoft Landsknecht Arms & Armor Import"
-	cost = 600
+	cost = 300
 	contains = list(/obj/item/clothing/suit/roguetown/armor/plate/half/grenzelhoft,
 					/obj/item/clothing/shoes/roguetown/grenzelhoft,
 					/obj/item/clothing/gloves/roguetown/grenzelgloves,
@@ -118,7 +118,7 @@
 //Grenzel musketeer pack; EXPENSIVE as shit but hey funni Grenzelhoft musketeer. Pike n' shot.
 /datum/supply_pack/rogue/luxury/grenzelhoftmusket
 	name = "Grenzelhoft Musketeer Arms & Armor Import"
-	cost = 1000		//Lol, lmao. Not worth it, remotely.
+	cost = 600		//Lol, lmao. Not worth it, remotely.
 	contains = list(/obj/item/clothing/suit/roguetown/armor/plate/half/footmanchestplate,	//Cheaper armor because moosket.
 					/obj/item/clothing/shoes/roguetown/grenzelhoft,
 					/obj/item/clothing/gloves/roguetown/grenzelgloves,
@@ -132,105 +132,105 @@
 
 /datum/supply_pack/rogue/luxury/acrobat
 	name = "Fragment of the Acrobat"
-	cost = 400
+	cost = 200
 	contains = list(/obj/item/book/granter/trait/acrobat)
-/datum/supply_pack/rogue/luxury/swamp
+/*/datum/supply_pack/rogue/luxury/swamp
 	name = "Fragment of the Swamp"
 	cost = 750
-	contains = list(/obj/item/book/granter/trait/mobility/bogtrek)
+	contains = list(/obj/item/book/granter/trait/mobility/bogtrek) */
 /datum/supply_pack/rogue/luxury/kneestinger
 	name = "Fragment of Dendor"
-	cost = 400
+	cost = 100
 	contains = list(/obj/item/book/granter/trait/mobility/kneestinger)
 /datum/supply_pack/rogue/luxury/mediumarmor
 	name = "Fragment of the Old Guard"
-	cost = 250
+	cost = 200
 	contains = list(/obj/item/book/granter/trait/defense/mediumarmor)
-/datum/supply_pack/rogue/luxury/heavyarmor
+/*/datum/supply_pack/rogue/luxury/heavyarmor
 	name = "Fragment of the Forgotten Knight"
-	cost = 750
-	contains = list(/obj/item/book/granter/trait/defense/heavyarmor)
+	cost = 200
+	contains = list(/obj/item/book/granter/trait/defense/heavyarmor) */
 /datum/supply_pack/rogue/luxury/succubus
 	name = "Fragment of the Succubus"
-	cost = 150
+	cost = 50
 	contains = list(/obj/item/book/granter/trait/succubus)
-/datum/supply_pack/rogue/luxury/undying
+/*/datum/supply_pack/rogue/luxury/undying
 	name = "Fragment of the Undying"
-	cost = 1000
+	cost = 500
 	contains = list(/obj/item/book/granter/trait/war/undying)
 /datum/supply_pack/rogue/luxury/relentless
 	name = "Fragment of the Relentless"
 	cost = 1000
-	contains = list(/obj/item/book/granter/trait/war/relentless)
+	contains = list(/obj/item/book/granter/trait/war/relentless) */
 
 
 
 /datum/supply_pack/rogue/luxury/acidsplash5e
 	name = "Acid Splash"
-	cost = 250
+	cost = 60
 	contains = list(/obj/item/book/granter/spell/spells5e/acidsplash5e)
 /datum/supply_pack/rogue/luxury/bladeward5e
 	name = "Scroll of Blade Ward"
-	cost = 250
+	cost = 60
 	contains = list(/obj/item/book/granter/spell/spells5e/bladeward5e)
 /datum/supply_pack/rogue/luxury/bladeward5e
 	name = "Scroll of Booming Blade"
-	cost = 250
+	cost = 60
 	contains = list(/obj/item/book/granter/spell/spells5e/boomingblade5e)
 /datum/supply_pack/rogue/luxury/createbonfire5e
 	name = "Scroll of Create Bonfire"
-	cost = 250
+	cost = 30
 	contains = list(/obj/item/book/granter/spell/spells5e/createbonfire5e)
 /datum/supply_pack/rogue/luxury/chilltouch5e
 	name = "Scroll of Chill Touch"
-	cost = 250
+	cost = 60
 	contains = list(/obj/item/book/granter/spell/spells5e/chilltouch5e)
 /datum/supply_pack/rogue/luxury/decompose5e
 	name = "Scroll of Decompose"
-	cost = 250
+	cost = 30
 	contains = list(/obj/item/book/granter/spell/spells5e/decompose5e)
 /datum/supply_pack/rogue/luxury/eldritchblast5e
 	name = "Scroll of Eldritch Blast"
-	cost = 250
+	cost = 60
 	contains = list(/obj/item/book/granter/spell/spells5e/eldritchblast5e)
 /datum/supply_pack/rogue/luxury/encodethoughts5e
 	name = "Scroll of Encode Thoughts"
-	cost = 250
+	cost = 30
 	contains = list(/obj/item/book/granter/spell/spells5e/encodethoughts5e)
 /datum/supply_pack/rogue/luxury/firebolt5e
 	name = "Scroll of Fire Bolt"
-	cost = 250
+	cost = 30
 	contains = list(/obj/item/book/granter/spell/spells5e/firebolt5e)
 /datum/supply_pack/rogue/luxury/frostbite5e
 	name = "Scroll of Frostbite"
-	cost = 250
+	cost = 60
 	contains = list(/obj/item/book/granter/spell/spells5e/frostbite5e)
 /datum/supply_pack/rogue/luxury/greenflameblade5e
 	name = "Scroll of Green-Flame Blade"
-	cost = 250
+	cost = 60
 	contains = list(/obj/item/book/granter/spell/spells5e/greenflameblade5e)
 /datum/supply_pack/rogue/luxury/guidance5e
 	name = "Scroll of Guidance"
-	cost = 250
+	cost = 30
 	contains = list(/obj/item/book/granter/spell/spells5e/guidance5e)
 
 /datum/supply_pack/rogue/luxury/infestation5e
 	name = "Scroll of Infestation"
-	cost = 250
+	cost = 60
 	contains = list(/obj/item/book/granter/spell/spells5e/infestation5e)
 /datum/supply_pack/rogue/luxury/light5e
 	name = "Scroll of Light"
-	cost = 250
+	cost = 30
 	contains = list(/obj/item/book/granter/spell/spells5e/light5e)
 /datum/supply_pack/rogue/luxury/lightninglure5e
 	name = "Scroll of Lightning Lure"
-	cost = 250
+	cost = 60
 	contains = list(/obj/item/book/granter/spell/spells5e/lightninglure5e)
 /datum/supply_pack/rogue/luxury/magicstone5e
 	name = "Scroll of Magic Stone"
-	cost = 250
+	cost = 25
 	contains = list(/obj/item/book/granter/spell/spells5e/magicstone5e)
 /datum/supply_pack/rogue/luxury/mending5e
 	name = "Scroll of Mending"
-	cost = 250
+	cost = 50
 	contains = list(/obj/item/book/granter/spell/spells5e/mending5e)
