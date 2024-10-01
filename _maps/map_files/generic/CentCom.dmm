@@ -739,9 +739,6 @@
 /obj/structure/vampire/portalmaker,
 /turf/open/floor/rogue/hexstone,
 /area/rogue/indoors)
-"bM" = (
-/turf/open/floor/plating/dirt/dark,
-/area/rogue/underworld)
 "bN" = (
 /obj/effect/decal/cleanable/cobweb,
 /turf/open/floor/rogue/herringbone,
@@ -1343,10 +1340,6 @@
 /obj/effect/decal/cleanable/blood/old,
 /turf/open/floor/rogue/blocks,
 /area/rogue/indoors)
-"dP" = (
-/obj/structure/flora/roguetree/underworld,
-/turf/open/floor/rogue/underworld/road,
-/area/rogue/underworld)
 "dQ" = (
 /obj/effect/decal/cleanable/blood/gibs/body,
 /turf/open/floor/rogue/blocks,
@@ -1407,9 +1400,6 @@
 /obj/effect/landmark/shuttle_import,
 /turf/closed,
 /area/rogue)
-"fe" = (
-/turf/open/floor/rogue/underworld/road,
-/area/rogue/underworld)
 "fi" = (
 /obj/structure/table/wood{
 	dir = 10;
@@ -1424,10 +1414,6 @@
 /obj/item/candle/skull,
 /turf/open/floor/rogue/herringbone,
 /area/rogue/indoors)
-"fD" = (
-/obj/machinery/light/rogue/firebowl/standing,
-/turf/open/floor/rogue/wood,
-/area/rogue/outdoors/woods)
 "gm" = (
 /obj/structure/table/wood{
 	dir = 4;
@@ -1436,14 +1422,6 @@
 /obj/item/reagent_containers/glass/cup/skull,
 /turf/open/floor/rogue/hexstone,
 /area/rogue/indoors)
-"gr" = (
-/obj/structure/bed/rogue,
-/turf/open/floor/rogue/wood,
-/area/rogue/outdoors/woods)
-"gw" = (
-/obj/effect/landmark/underworld,
-/turf/open/floor/rogue/underworld/road,
-/area/rogue/underworld)
 "gD" = (
 /obj/structure/table/wood{
 	icon_state = "tablewood3"
@@ -1453,31 +1431,9 @@
 	icon_state = "chess"
 	},
 /area/rogue/indoors)
-"hv" = (
-/obj/effect/landmark/underworldcoin,
-/turf/open/floor/plating/dirt/dark,
-/area/rogue/underworld)
 "hQ" = (
 /turf/open/floor/rogue/blocks,
 /area/rogue)
-"hX" = (
-/obj/structure/stairs{
-	dir = 1;
-	icon_state = "stairs"
-	},
-/obj/structure/fluff/railing/border{
-	dir = 9
-	},
-/turf/open/floor/rogue/cobblerock,
-/area/rogue/outdoors/woods)
-"iM" = (
-/obj/structure/table/wood{
-	dir = 1;
-	icon_state = "tablewood1"
-	},
-/obj/item/candle/skull/lit,
-/turf/open/floor/rogue/ruinedwood,
-/area/rogue/outdoors/woods)
 "jd" = (
 /obj/structure/table/wood{
 	dir = 2;
@@ -1485,10 +1441,6 @@
 	},
 /turf/open/floor/rogue/hexstone,
 /area/rogue/indoors)
-"jn" = (
-/obj/structure/flora/roguetree/underworld,
-/turf/open/floor/plating/dirt/dark,
-/area/rogue/underworld)
 "js" = (
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors)
@@ -1512,11 +1464,12 @@
 /turf/open/floor/rogue/cobble,
 /area/rogue)
 "jU" = (
-/turf/open/water/river{
-	icon_state = "rockwd";
-	dir = 4
+/obj/item/roguekey/walls{
+	lockid = "bandit";
+	name = "old key"
 	},
-/area/rogue/outdoors/woods)
+/turf/open/floor/rogue/ruinedwood,
+/area/rogue/indoors)
 "jW" = (
 /obj/structure/mirror{
 	pixel_y = 32
@@ -1544,9 +1497,6 @@
 /obj/item/rogueweapon/greatsword,
 /turf/open/floor/rogue/cobble,
 /area/rogue)
-"kZ" = (
-/turf/open/floor/rogue/grass,
-/area/rogue/outdoors/woods)
 "la" = (
 /obj/effect/landmark/start/bandit{
 	dir = 8;
@@ -1558,23 +1508,12 @@
 "lw" = (
 /turf/open/floor/rogue/cobble,
 /area/rogue)
-"lx" = (
-/turf/open/floor/rogue/ruinedwood{
-	dir = 1;
-	icon_state = "vertw"
-	},
-/area/rogue/outdoors/woods)
 "mp" = (
 /obj/structure/roguewindow/openclose{
 	dir = 1;
 	icon_state = "woodwindowdir"
 	},
 /turf/open/floor/rogue/ruinedwood,
-/area/rogue/indoors)
-"mI" = (
-/obj/structure/rack/rogue,
-/obj/item/reagent_containers/glass/bottle/rogue/healthpot,
-/turf/open/floor/rogue/herringbone,
 /area/rogue/indoors)
 "mO" = (
 /obj/structure/table/wood{
@@ -1609,7 +1548,6 @@
 	dir = 9;
 	icon_state = "largetable"
 	},
-/obj/item/rogue/instrument/accord,
 /turf/open/floor/rogue/hexstone,
 /area/rogue/indoors)
 "ns" = (
@@ -1646,9 +1584,6 @@
 	icon_state = "chess"
 	},
 /area/rogue/indoors)
-"ow" = (
-/turf/closed/wall/mineral/rogue/wood,
-/area/rogue/outdoors/woods)
 "oV" = (
 /obj/structure/fluff/railing/fence{
 	dir = 1;
@@ -1676,27 +1611,6 @@
 /obj/effect/landmark/vteleportsending,
 /obj/machinery/light/rogue/wallfire/candle/blue/l,
 /turf/open/floor/rogue/hexstone,
-/area/rogue/indoors)
-"pD" = (
-/obj/item/roguekey/walls{
-	lockid = "bandit";
-	name = "old key";
-	pixel_x = -9
-	},
-/obj/item/roguekey/walls{
-	lockid = "bandit";
-	name = "old key";
-	pixel_y = 3
-	},
-/obj/item/roguekey/walls{
-	lockid = "bandit";
-	name = "old key";
-	pixel_x = 12
-	},
-/obj/structure/table/wood{
-	icon_state = "tablewood3"
-	},
-/turf/open/floor/rogue/ruinedwood,
 /area/rogue/indoors)
 "pE" = (
 /obj/structure/table/wood{
@@ -1726,10 +1640,7 @@
 /area/rogue/indoors)
 "qP" = (
 /obj/structure/rack/rogue,
-/obj/item/clothing/head/roguetown/helmet/leather/volfhelm,
-/obj/item/clothing/head/roguetown/helmet/leather/volfhelm,
-/obj/item/clothing/head/roguetown/helmet/leather/volfhelm,
-/obj/item/clothing/head/roguetown/helmet/leather/volfhelm,
+/obj/item/quiver/bolts,
 /turf/open/floor/rogue/herringbone,
 /area/rogue/indoors)
 "qR" = (
@@ -1751,13 +1662,6 @@
 /obj/structure/fermenting_barrel/random/water,
 /turf/open/floor/rogue/herringbone,
 /area/rogue/indoors)
-"rA" = (
-/obj/structure/underworld/carriageman{
-	pixel_x = -15;
-	pixel_y = -20
-	},
-/turf/open/floor/rogue/churchrough,
-/area/rogue/underworld)
 "rQ" = (
 /turf/closed,
 /area/rogue)
@@ -1772,25 +1676,12 @@
 	},
 /turf/open/floor/rogue/herringbone,
 /area/rogue/indoors)
-"si" = (
-/turf/open/floor/rogue/wood,
-/area/rogue/outdoors/woods)
 "sk" = (
 /obj/structure/fluff/traveltile/vampire{
 	aportalgoesto = "vampexit";
 	aportalid = "vampin"
 	},
 /turf/open/floor/rogue/dirt/road,
-/area/rogue/outdoors/woods)
-"sn" = (
-/obj/structure/mineral_door/wood/deadbolt{
-	dir = 4;
-	icon_state = "wooddir"
-	},
-/turf/open/floor/rogue/ruinedwood{
-	dir = 1;
-	icon_state = "vertw"
-	},
 /area/rogue/outdoors/woods)
 "so" = (
 /obj/structure/bars,
@@ -1799,10 +1690,6 @@
 	icon_state = "vertw"
 	},
 /area/rogue/indoors)
-"sr" = (
-/obj/structure/underworld/barrier,
-/turf/open/floor/rogue/churchrough,
-/area/rogue/underworld)
 "sz" = (
 /obj/effect/landmark/events/testportal{
 	aportalloc = "bandit"
@@ -1829,18 +1716,6 @@
 	icon_state = "chess"
 	},
 /area/rogue/indoors)
-"uu" = (
-/obj/structure/closet/crate/roguecloset,
-/obj/item/flashlight/flare/torch/metal,
-/obj/item/flashlight/flare/torch/metal,
-/obj/item/flashlight/flare/torch/metal,
-/obj/item/flashlight/flare/torch/lantern,
-/turf/open/floor/rogue/herringbone,
-/area/rogue/indoors)
-"vf" = (
-/obj/effect/landmark/underworldcoin,
-/turf/open/floor/rogue/underworld/road,
-/area/rogue/underworld)
 "vl" = (
 /obj/structure/table/wood{
 	dir = 10;
@@ -1985,16 +1860,6 @@
 "Ba" = (
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue/indoors)
-"Bm" = (
-/obj/structure/stairs{
-	dir = 1;
-	icon_state = "stairs"
-	},
-/obj/structure/fluff/railing/border{
-	dir = 5
-	},
-/turf/open/floor/rogue/cobblerock,
-/area/rogue/outdoors/woods)
 "BM" = (
 /obj/structure/mineral_door/wood/deadbolt{
 	dir = 8;
@@ -2002,13 +1867,6 @@
 	},
 /turf/open/floor/rogue/herringbone,
 /area/rogue/indoors)
-"BT" = (
-/obj/structure/closet/crate/roguecloset,
-/turf/open/floor/rogue/ruinedwood{
-	dir = 1;
-	icon_state = "vertw"
-	},
-/area/rogue/outdoors/woods)
 "BY" = (
 /obj/effect/landmark/mapGenerator/rogue/forest{
 	endTurfX = 128;
@@ -2021,23 +1879,12 @@
 /obj/machinery/light/rogue/wallfire/candle/blue/r,
 /turf/open/floor/rogue/hexstone,
 /area/rogue/indoors)
-"Dk" = (
-/obj/structure/flora/roguegrass/water/reeds,
-/turf/open/water/river{
-	icon_state = "rockwd";
-	dir = 4
-	},
-/area/rogue/outdoors/woods)
 "Do" = (
 /turf/open/floor/rogue/grass,
 /area/rogue/outdoors)
 "Dw" = (
 /turf/open/floor/rogue/dirt/road,
 /area/rogue)
-"Ea" = (
-/obj/structure/underworld/barrier,
-/turf/open/floor/rogue/underworld/road,
-/area/rogue/underworld)
 "Eq" = (
 /obj/structure/table/wood{
 	dir = 10;
@@ -2049,14 +1896,6 @@
 /obj/item/rogueweapon/huntingknife/idagger/silver,
 /turf/open/floor/rogue/cobble,
 /area/rogue)
-"EP" = (
-/obj/structure/table/wood{
-	dir = 1;
-	icon_state = "largetable_mid"
-	},
-/mob/living/simple_animal/pet/cat/black,
-/turf/open/floor/rogue/hexstone,
-/area/rogue/indoors)
 "FJ" = (
 /obj/structure/fluff/railing/fence{
 	dir = 4;
@@ -2068,13 +1907,6 @@
 /obj/effect/landmark/start/bandit,
 /turf/open/floor/rogue/herringbone,
 /area/rogue/indoors)
-"FU" = (
-/turf/open/floor/rogue/ruinedwood,
-/area/rogue/outdoors/woods)
-"Gg" = (
-/obj/structure/underworld/barrier,
-/turf/open/floor/plating/dirt/dark,
-/area/rogue/underworld)
 "Gs" = (
 /obj/structure/fluff/walldeco/chains,
 /obj/structure/closet/crate/coffin/vampire,
@@ -2118,7 +1950,6 @@
 "In" = (
 /obj/structure/rack/rogue,
 /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow,
-/obj/item/quiver/bolts,
 /turf/open/floor/rogue/herringbone,
 /area/rogue/indoors)
 "Iw" = (
@@ -2130,14 +1961,6 @@
 	},
 /turf/open/floor/rogue/blocks,
 /area/rogue)
-"Jg" = (
-/obj/structure/stairs,
-/obj/structure/fluff/railing/border{
-	dir = 6;
-	icon_state = "border"
-	},
-/turf/open/floor/rogue/cobblerock,
-/area/rogue/outdoors/woods)
 "Jo" = (
 /obj/structure/fluff/railing/fence{
 	dir = 8;
@@ -2188,9 +2011,6 @@
 	},
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue/indoors)
-"Lt" = (
-/turf/open/floor/rogue/churchrough,
-/area/rogue/underworld)
 "LE" = (
 /obj/structure/table/wood{
 	dir = 10;
@@ -2213,16 +2033,6 @@
 	},
 /turf/open/water/swamp,
 /area/rogue/outdoors)
-"MB" = (
-/obj/structure/fluff/railing/border{
-	dir = 8;
-	icon_state = "border"
-	},
-/turf/open/floor/rogue/ruinedwood{
-	dir = 1;
-	icon_state = "vertw"
-	},
-/area/rogue/outdoors/woods)
 "MF" = (
 /obj/structure/bed/rogue/shit,
 /turf/open/floor/rogue/wood,
@@ -2255,20 +2065,6 @@
 "Ph" = (
 /turf/open/floor/rogue/cobble,
 /area/rogue/outdoors)
-"Pw" = (
-/obj/structure/flora/newtree,
-/turf/open/floor/rogue/dirt,
-/area/rogue/outdoors/woods)
-"PM" = (
-/obj/structure/fluff/railing/border{
-	dir = 4;
-	icon_state = "border"
-	},
-/turf/open/floor/rogue/ruinedwood{
-	dir = 1;
-	icon_state = "vertw"
-	},
-/area/rogue/outdoors/woods)
 "Qv" = (
 /obj/structure/table/wood{
 	icon_state = "longtable"
@@ -2294,10 +2090,6 @@
 	icon_state = "weird1"
 	},
 /area/rogue/indoors)
-"Rj" = (
-/obj/structure/flora/roguetree/wise,
-/turf/open/floor/plating/dirt/dark,
-/area/rogue/underworld)
 "Rt" = (
 /obj/structure/mineral_door/bars{
 	locked = 1;
@@ -2342,15 +2134,8 @@
 /area/rogue/outdoors/woods)
 "Sq" = (
 /obj/structure/roguewindow/stained,
-/obj/structure/roguewindow,
 /turf/open/floor/rogue/herringbone,
 /area/rogue/indoors)
-"SP" = (
-/obj/machinery/light/rogue/campfire/densefire{
-	fueluse = 1800000
-	},
-/turf/open/floor/rogue/underworld/road,
-/area/rogue/underworld)
 "Te" = (
 /turf/open/floor/rogue/dirt,
 /area/rogue/outdoors/woods)
@@ -2375,14 +2160,6 @@
 /obj/item/rogueweapon/mace/cudgel,
 /turf/open/floor/rogue/cobble,
 /area/rogue)
-"UK" = (
-/obj/structure/stairs,
-/obj/structure/fluff/railing/border{
-	dir = 10;
-	icon_state = "border"
-	},
-/turf/open/floor/rogue/cobblerock,
-/area/rogue/outdoors/woods)
 "Ve" = (
 /obj/structure/table/wood{
 	dir = 1;
@@ -2420,15 +2197,6 @@
 /obj/structure/fluff/statue/tdummy,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors)
-"VJ" = (
-/obj/structure/rack/rogue,
-/obj/item/clothing/cloak/raincloak/blue,
-/obj/item/clothing/cloak/raincloak/brown,
-/obj/item/clothing/cloak/raincloak/green,
-/obj/item/clothing/cloak/raincloak/red,
-/obj/item/clothing/cloak/raincloak/mortus,
-/turf/open/floor/rogue/herringbone,
-/area/rogue/indoors)
 "VS" = (
 /turf/open/water/swamp,
 /area/rogue/outdoors)
@@ -2449,10 +2217,6 @@
 /area/rogue/outdoors/woods)
 "WI" = (
 /obj/effect/landmark/start/banditlate,
-/turf/open/floor/rogue/dirt/road,
-/area/rogue/outdoors/woods)
-"Xd" = (
-/obj/item/chair/stool/bar/rogue/crafted,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors/woods)
 "Xj" = (
@@ -2500,28 +2264,14 @@
 /obj/machinery/light/rogue/firebowl/stump,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors/woods)
-"YJ" = (
-/obj/structure/underworld/carriage{
-	pixel_x = -100
-	},
-/turf/open/floor/rogue/churchrough,
-/area/rogue/underworld)
 "YS" = (
 /obj/structure/closet/crate/roguecloset,
 /obj/item/reagent_containers/food/snacks/grown/rogue/pipeweeddry,
 /turf/open/floor/rogue/hexstone,
 /area/rogue/indoors)
-"Zk" = (
-/obj/structure/flora/roguetree/stump/log,
-/turf/open/water/cleanshallow,
-/area/rogue/outdoors/woods)
 "Zl" = (
 /turf/open/floor/rogue/herringbone,
 /area/rogue/indoors)
-"Zz" = (
-/obj/item/grown/log/tree/small,
-/turf/open/floor/rogue/dirt,
-/area/rogue/outdoors/woods)
 
 (1,1,1) = {"
 rQ
@@ -2879,35 +2629,35 @@ Te
 Te
 Te
 bz
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-bA
-jU
-jU
-bA
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
 bz
 bz
 bz
@@ -3004,40 +2754,40 @@ Te
 Te
 Te
 Te
-Pw
+Te
 Te
 Te
 Te
 bz
-Te
-Te
-Te
-Pw
-Te
-Te
-Te
-Te
-Te
-bA
-jU
-jU
-bA
-Te
-Te
-Te
-Te
-Pw
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
 bz
 bz
 bz
@@ -3140,34 +2890,34 @@ Te
 Te
 Te
 Te
-Pw
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-bA
-jU
-jU
-bA
-Te
-Te
-Te
-Te
-Te
-Te
 Te
 Te
 bz
-Te
-Te
-Pw
-Te
-Te
-Te
-Te
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
 bz
 bz
 bz
@@ -3272,32 +3022,32 @@ bz
 Te
 Te
 Te
-Te
-Te
 bz
-Te
-Te
-Te
-bA
-Dk
-jU
-bA
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
 bz
 bz
 bz
@@ -3402,32 +3152,32 @@ bz
 Te
 Te
 Te
-Pw
-Te
-Te
-Te
-Te
-Te
-bA
-jU
-jU
-bA
-Te
-Te
 Te
 bz
-Te
-Te
-Pw
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
 bz
 Te
 bz
@@ -3531,33 +3281,33 @@ bz
 bz
 Te
 Te
-kZ
+Te
+Te
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
 Te
 Te
 Te
 Te
 Te
 Te
-bA
-jU
-jU
-bA
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
 bz
 Te
 bz
@@ -3636,7 +3386,7 @@ bz
 bz
 bz
 Te
-bz
+Te
 Te
 WB
 gD
@@ -3661,19 +3411,18 @@ Te
 bz
 Te
 Te
-Pw
 Te
 Te
-Te
-Te
-Te
-Te
-bA
-jU
-jU
-bA
-Te
-Te
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
 Te
 Te
 Te
@@ -3684,10 +3433,11 @@ Te
 Te
 Te
 bz
-Te
-Te
-Te
-Te
+bz
+bz
+bz
+bz
+bz
 bz
 Te
 bz
@@ -3774,7 +3524,7 @@ ni
 Zl
 Zl
 sN
-EP
+Ve
 Ve
 jd
 WB
@@ -3789,28 +3539,28 @@ vQ
 oV
 Te
 bz
+bz
+bz
+bz
+Te
+Te
+bz
+bz
+bz
+bz
+bz
+bz
 Te
 Te
 Te
 Te
 Te
-Pw
-Te
-Te
-Te
-bA
-jU
-jU
-bA
-Te
-Te
-kZ
-Pw
 Te
 Te
 Te
 Te
-Pw
+Te
+Te
 Te
 Te
 Te
@@ -3919,33 +3669,33 @@ vQ
 oV
 Te
 Te
+bz
+bz
+bz
 Te
 Te
+bz
 bz
 Te
 Te
 Te
 Te
-Pw
-Te
-bA
-jU
-jU
-dF
 Te
 Te
+Te
+Te
+Te
+bz
+bz
+bz
+bz
 bz
 Te
 Te
 Te
 Te
-Pw
 Te
 Te
-Te
-Te
-Pw
-kZ
 Te
 Te
 Te
@@ -4041,7 +3791,7 @@ WB
 NG
 In
 qP
-VJ
+NG
 pc
 ft
 WB
@@ -4050,23 +3800,9 @@ oV
 Te
 Te
 Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-bA
-jU
-jU
-bA
-Te
-Te
-Te
-Te
-Pw
+bz
+bz
+bz
 Te
 Te
 Te
@@ -4076,7 +3812,21 @@ Te
 Te
 Te
 Te
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
 Te
+Te
+bz
+bz
+bz
+bz
+bz
 Te
 Te
 Te
@@ -4179,33 +3929,33 @@ vQ
 Jo
 Jo
 Oc
+vQ
+vQ
 Te
+bz
 Te
-Te
-Pw
-Te
-Te
-Te
-Te
-Te
-Te
-bA
-jU
-jU
-bA
-Te
-Te
-Te
-Te
-Te
-Pw
-Te
-Te
-Te
+bz
+bz
+bz
+bz
 bz
 Te
 Te
 Te
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
 Te
 Te
 Te
@@ -4309,33 +4059,33 @@ vQ
 vQ
 vQ
 Sn
+vQ
+vQ
 Te
 Te
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
 Te
 Te
-Te
-Te
-Pw
-Te
-Te
-Te
-bA
-jU
-jU
-bA
-Te
-Te
-Pw
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
 Te
 Te
 Te
@@ -4415,7 +4165,7 @@ bz
 bz
 Te
 Te
-bz
+Te
 Te
 Te
 WB
@@ -4425,15 +4175,15 @@ WB
 WB
 WB
 WB
-ct
+Sq
 WB
 WB
-uu
+As
 xI
 Zl
 Zl
 Zl
-mI
+nh
 WB
 vQ
 Yv
@@ -4448,13 +4198,13 @@ Te
 Te
 Te
 Te
-kZ
-bA
-jU
-jU
-bA
 Te
-kZ
+Te
+Te
+Te
+Te
+Te
+Te
 Te
 Te
 Te
@@ -4578,12 +4328,12 @@ vQ
 vQ
 vQ
 vQ
-UK
-MB
-MB
-MB
-MB
-hX
+vQ
+vQ
+vQ
+vQ
+vQ
+vQ
 vQ
 vQ
 vQ
@@ -4708,12 +4458,12 @@ vQ
 vQ
 vQ
 vQ
-Jg
-PM
-PM
-PM
-PM
-Bm
+vQ
+vQ
+vQ
+vQ
+vQ
+vQ
 vQ
 vQ
 vQ
@@ -4837,17 +4587,17 @@ vQ
 vQ
 vQ
 vQ
+vQ
 Te
-kZ
-bA
-jU
-jU
-bA
+Te
+Te
+Te
+Te
 Te
 Te
 xt
 Te
-kZ
+Te
 Te
 Te
 xt
@@ -4939,7 +4689,7 @@ pg
 js
 MF
 HQ
-pD
+Ba
 Vl
 Ba
 Ba
@@ -4966,13 +4716,6 @@ vQ
 vQ
 vQ
 Te
-kZ
-Te
-Te
-bA
-jU
-jU
-bA
 Te
 Te
 Te
@@ -4986,7 +4729,14 @@ Te
 Te
 Te
 Te
-Xd
+Te
+Te
+Te
+Te
+Te
+Te
+Te
+vQ
 vQ
 vQ
 vQ
@@ -5069,7 +4819,7 @@ pg
 js
 js
 HQ
-Ba
+jU
 Ba
 sR
 pg
@@ -5097,28 +4847,28 @@ Te
 Te
 Te
 Te
-Pw
-Te
-bA
-jU
-Dk
-bA
-Te
-Te
-Te
-Te
-Te
-Te
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
 Te
 Te
 Te
+bz
+bz
+bz
+bz
+bz
 Te
 Te
-Te
-Zz
-Te
-Te
-Te
+vQ
+vQ
 vQ
 vQ
 Iw
@@ -5227,24 +4977,24 @@ Te
 Te
 Te
 Te
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
 Te
 Te
-bA
-jU
-jU
-bA
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
+bz
+bz
+bz
+bz
+bz
+bz
 Te
 Te
 Te
@@ -5352,29 +5102,29 @@ Sn
 Te
 Te
 Te
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
 Te
 Te
 Te
 Te
-Te
-Te
-Te
-bA
-jU
-jU
-bA
-Te
-kZ
-Te
-Te
-Te
-Te
-Pw
 Te
 Te
 bz
-Te
-Pw
+bz
 Te
 Te
 Te
@@ -5481,19 +5231,19 @@ FJ
 Xk
 Te
 Te
-Pw
 Te
+bz
+bz
+bz
+bz
+bz
+bz
+bz
 Te
 Te
 bz
-kZ
-Te
-Te
-bA
-jU
-jU
-bA
-Te
+bz
+bz
 Te
 Te
 Te
@@ -5612,22 +5362,18 @@ Te
 Te
 Te
 Te
+bz
+bz
+bz
+bz
+bz
+bz
+bz
 Te
 Te
-Te
-Te
-Pw
-Te
-Te
-bA
-jU
-jU
-Zk
-Te
-Te
-Te
-Te
-Te
+bz
+bz
+bz
 Te
 Te
 Te
@@ -5639,6 +5385,10 @@ Te
 Te
 Te
 Te
+Te
+Te
+bz
+bz
 bz
 bz
 Iw
@@ -5739,25 +5489,19 @@ vQ
 Sn
 Te
 Te
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
 Te
 Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-bA
-Dk
-jU
-bA
-Te
-Te
-Te
-Te
-Te
+bz
 bz
 Te
 Te
@@ -5768,7 +5512,13 @@ Te
 Te
 Te
 Te
-Te
+bz
+bz
+bz
+bz
+bz
+bz
+bz
 bz
 bz
 Iw
@@ -5869,6 +5619,22 @@ vQ
 Sn
 Te
 Te
+bz
+bz
+bz
+Te
+Te
+Te
+Te
+Te
+Te
+bz
+bz
+bz
+bz
+bz
+bz
+bz
 Te
 Te
 Te
@@ -5876,29 +5642,13 @@ Te
 Te
 Te
 Te
-Te
-Te
-Pw
-bA
-jU
-Dk
-bA
-Te
-Te
-Pw
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
+bz
+bz
+bz
+bz
+bz
+bz
+bz
 bz
 bz
 Iw
@@ -5975,20 +5725,20 @@ bz
 Te
 Te
 Te
+Te
+Te
+Te
+Te
+Te
+Te
+vQ
+vQ
+Te
+Te
+Te
+Te
+Te
 bz
-Te
-Te
-Te
-Te
-Te
-vQ
-vQ
-Te
-ow
-ow
-sn
-ow
-ow
 Te
 Te
 vQ
@@ -6000,20 +5750,8 @@ Xk
 Te
 Te
 bz
-Te
-Te
 bz
-Te
-Te
-Pw
-Te
-Te
-Te
-bA
-jU
-jU
-bA
-Te
+bz
 Te
 Te
 Te
@@ -6021,14 +5759,26 @@ Te
 Te
 Te
 bz
+bz
+bz
+bz
+bz
+bz
+bz
 Te
 Te
-Pw
 Te
 Te
 Te
 Te
 Te
+bz
+bz
+bz
+bz
+bz
+bz
+bz
 bz
 bz
 Iw
@@ -6114,13 +5864,13 @@ Te
 vQ
 vQ
 Te
-ow
-lx
-lx
-lx
-ow
 Te
-bz
+Te
+Te
+Te
+Te
+Te
+Te
 vQ
 vQ
 vQ
@@ -6129,26 +5879,22 @@ Te
 Te
 Te
 Te
-Te
-Te
-Te
-Te
-kZ
-Te
-Te
-Te
-Te
-Te
-bA
-jU
-jU
-bA
+bz
+bz
+bz
 Te
 Te
 Te
 Te
 Te
 Te
+bz
+bz
+bz
+bz
+bz
+bz
+bz
 Te
 Te
 Te
@@ -6157,8 +5903,12 @@ Te
 Te
 Te
 bz
-Te
-Te
+bz
+bz
+bz
+bz
+bz
+bz
 bz
 bz
 Iw
@@ -6240,15 +5990,15 @@ bA
 bA
 Te
 Te
-bz
+Te
 vQ
 vQ
 Te
-ow
-BT
-lx
-lx
-ow
+Te
+bz
+Te
+Te
+Te
 Te
 Te
 vQ
@@ -6259,36 +6009,36 @@ Te
 Te
 Te
 Te
+bz
+bz
+bz
 Te
 Te
 Te
 Te
 Te
 Te
+bz
+bz
+bz
+bz
+bz
+bz
+bz
 Te
-Te
-Te
-Te
-bA
-jU
-jU
-bA
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
 bz
 bz
 Iw
@@ -6374,11 +6124,11 @@ Te
 vQ
 vQ
 Te
-ow
-fD
-si
-FU
-ow
+Te
+Te
+Te
+bz
+Te
 Te
 Te
 vQ
@@ -6389,6 +6139,9 @@ Te
 Te
 Te
 Te
+bz
+bz
+bz
 Te
 Te
 Te
@@ -6399,26 +6152,23 @@ Te
 Te
 Te
 Te
-bA
-jU
-jU
-bA
 Te
 Te
 Te
 Te
-Te
-Te
-Te
-Pw
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
 bz
 bz
 Iw
@@ -6504,11 +6254,11 @@ vQ
 vQ
 vQ
 Te
-ow
-ow
-si
-FU
-ow
+Te
+Te
+Te
+Te
+Te
 Te
 Te
 vQ
@@ -6519,25 +6269,7 @@ Te
 Te
 Te
 bz
-Te
-Te
-Pw
-Te
-Te
-Te
 bz
-Te
-Te
-Te
-bA
-jU
-jU
-bA
-Te
-Pw
-Te
-Te
-Te
 bz
 Te
 Te
@@ -6549,6 +6281,24 @@ Te
 Te
 Te
 Te
+Te
+Te
+Te
+Te
+Te
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
 bz
 bz
 Iw
@@ -6632,13 +6382,13 @@ bA
 vQ
 vQ
 vQ
-Yv
+vQ
 Te
 Te
-ow
-gr
-iM
-ow
+Te
+Te
+Te
+vQ
 Te
 vQ
 vQ
@@ -6648,21 +6398,9 @@ Sn
 Te
 Te
 Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-bA
-jU
-Dk
-bA
+bz
+bz
+bz
 Te
 Te
 Te
@@ -6675,10 +6413,22 @@ Te
 Te
 Te
 Te
-Pw
 Te
 Te
 Te
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
 bz
 bz
 Iw
@@ -6765,34 +6515,22 @@ Te
 Te
 Te
 Te
-ow
-ow
-ow
-ow
+Te
+Te
+Te
+Te
 Te
 vQ
-vQ
 WE
+vQ
 vQ
 Sn
 Te
 Te
 Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-bA
-jU
-jU
-bA
+bz
+bz
+bz
 Te
 Te
 Te
@@ -6808,7 +6546,19 @@ Te
 Te
 Te
 Te
-Te
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
 bz
 bz
 Iw
@@ -6919,10 +6669,6 @@ Te
 Te
 Te
 Te
-bA
-jU
-jU
-bA
 Te
 Te
 Te
@@ -6930,15 +6676,19 @@ Te
 Te
 Te
 Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
 bz
 bz
 Iw
@@ -7884,21 +7634,21 @@ rQ
 rQ
 rQ
 rQ
-dP
-jn
-jn
-jn
-dP
-dP
-dP
-dP
-dP
-dP
-dP
-dP
-dP
-dP
-dP
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
 rQ
 rQ
 rQ
@@ -8014,21 +7764,21 @@ rQ
 rQ
 rQ
 rQ
-dP
-bM
-bM
-bM
-bM
-dP
-vf
-fe
-vf
-fe
-fe
-dP
-dP
-dP
-dP
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
 rQ
 rQ
 rQ
@@ -8144,21 +7894,21 @@ rQ
 rQ
 rQ
 rQ
-dP
-bM
-bM
-bM
-bM
-dP
-fe
-fe
-fe
-fe
-fe
-vf
-fe
-dP
-dP
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
 rQ
 rQ
 rQ
@@ -8274,21 +8024,21 @@ rQ
 rQ
 rQ
 rQ
-jn
-bM
-bM
-bM
-bM
-dP
-vf
-fe
-vf
-fe
-fe
-fe
-fe
-fe
-dP
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
 rQ
 rQ
 rQ
@@ -8404,21 +8154,21 @@ rQ
 rQ
 rQ
 rQ
-jn
-bM
-bM
-bM
-bM
-fe
-fe
-fe
-fe
-fe
-fe
-vf
-fe
-fe
-dP
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
 rQ
 rQ
 rQ
@@ -8534,21 +8284,21 @@ rQ
 rQ
 rQ
 rQ
-jn
-bM
-Gg
-Gg
-bM
-fe
-fe
-fe
-fe
-SP
-fe
-fe
-fe
-fe
-dP
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
 rQ
 rQ
 rQ
@@ -8664,21 +8414,21 @@ rQ
 rQ
 rQ
 rQ
-jn
-bM
-Gg
-sr
-Lt
-Lt
-Lt
-Lt
-Lt
-fe
-fe
-fe
-vf
-fe
-dP
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
 rQ
 rQ
 rQ
@@ -8794,21 +8544,21 @@ rQ
 rQ
 rQ
 rQ
-jn
-bM
-Gg
-YJ
-Lt
-Lt
-Lt
-rA
-Lt
-gw
-fe
-fe
-fe
-dP
-dP
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
 rQ
 rQ
 rQ
@@ -8924,21 +8674,21 @@ rQ
 rQ
 rQ
 rQ
-jn
-bM
-Gg
-Gg
-bM
-fe
-fe
-Ea
-fe
-fe
-fe
-vf
-fe
-dP
-dP
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
 rQ
 rQ
 rQ
@@ -9054,21 +8804,21 @@ rQ
 rQ
 rQ
 rQ
-jn
-bM
-Gg
-bM
-bM
-dP
-fe
-fe
-fe
-SP
-fe
-fe
-fe
-dP
-dP
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
 rQ
 rQ
 rQ
@@ -9184,21 +8934,21 @@ rQ
 rQ
 rQ
 rQ
-jn
-bM
-bM
-bM
-bM
-dP
-fe
-fe
-fe
-fe
-fe
-fe
-vf
-fe
-dP
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
 rQ
 rQ
 rQ
@@ -9314,21 +9064,21 @@ rQ
 rQ
 rQ
 rQ
-jn
-bM
-bM
-bM
-bM
-dP
-fe
-vf
-fe
-fe
-vf
-fe
-fe
-fe
-dP
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
 rQ
 rQ
 rQ
@@ -9444,21 +9194,21 @@ rQ
 rQ
 rQ
 rQ
-jn
-hv
-bM
-bM
-bM
-dP
-vf
-fe
-vf
-dP
-dP
-dP
-dP
-dP
-dP
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
 rQ
 rQ
 rQ
@@ -9574,21 +9324,21 @@ rQ
 rQ
 rQ
 rQ
-Rj
-jn
-jn
-jn
-fe
-dP
-dP
-dP
-dP
-dP
-dP
-dP
-dP
-dP
-dP
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
 rQ
 rQ
 rQ
