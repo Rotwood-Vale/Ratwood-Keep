@@ -118,9 +118,24 @@
 		location_accessible = get_location_accessible(owner, body_zone) //Hidden by underwear
 		if(body_zone == BODY_ZONE_CHEST || body_zone == BODY_ZONE_PRECISE_GROIN) //Vrell - Makes genitals visible when inspecting the chest.
 			bodypart_status += "<B>Genitalia:</B>"
-			if(owner.has_penis())
+			var/salami = FALSE
+			var/penisAdd = 0
+			var/obj/item/belt = owner.get_item_by_slot(SLOT_BELT)
+			if(belt)
+				for(var/atom/A in belt.contents)
+					var/obj/item/reagent_containers/food/snacks/rogue/meat/salami/S = A
+					if(S)
+						salami = TRUE
+						penisAdd = 1
+			if(owner.has_penis() || salami)
 				var/obj/item/organ/penis/ownerpenis = owner.getorgan(/obj/item/organ/penis)
-				bodypart_status += "[owner] has a [find_key_by_value(GLOB.named_penis_sizes, ownerpenis.penis_size)] penis."
+				if (ownerpenis)
+					if (ownerpenis.penis_size == 3 && salami)
+						bodypart_status += "[owner] has an emormous penis."
+					else
+						bodypart_status += "[owner] has a [find_key_by_value(GLOB.named_penis_sizes, ownerpenis.penis_size+penisAdd)] penis."
+				else
+					bodypart_status += "[owner] has a [find_key_by_value(GLOB.named_penis_sizes, 1)] penis."
 			if(owner.has_testicles())
 				var/obj/item/organ/testicles/ownerballs = owner.getorgan(/obj/item/organ/testicles)
 				bodypart_status += "[owner] has [find_key_by_value(GLOB.named_ball_sizes, ownerballs.ball_size)] testicles."
