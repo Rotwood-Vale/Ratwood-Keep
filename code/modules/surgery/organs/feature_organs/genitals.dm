@@ -11,6 +11,8 @@
 	var/erect_state = ERECT_STATE_NONE
 	var/penis_type = PENIS_TYPE_PLAIN
 	var/penis_size = DEFAULT_PENIS_SIZE
+	var/always_hard = FALSE
+	var/strapon = FALSE
 
 /obj/item/organ/penis/Initialize()
 	. = ..()
@@ -20,7 +22,7 @@
 	var/new_state = ERECT_STATE_NONE
 	if(owner)
 		var/mob/living/carbon/human/human = owner
-		if(human.sexcon.arousal > 20 && human.sexcon.manual_arousal == 1 || human.sexcon.manual_arousal == 4)
+		if(always_hard || (human.sexcon.arousal > 20 && human.sexcon.manual_arousal == 1) || human.sexcon.manual_arousal == 4)
 			new_state = ERECT_STATE_HARD
 		else if(human.sexcon.arousal > 10 && human.sexcon.manual_arousal == 1 || human.sexcon.manual_arousal == 3)
 			new_state = ERECT_STATE_PARTIAL

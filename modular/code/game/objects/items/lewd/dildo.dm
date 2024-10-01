@@ -10,12 +10,17 @@
 	throwforce = 10
 	w_class = WEIGHT_CLASS_SMALL
 	obj_flags = CAN_BE_HIT
+	slot_flags = ITEM_SLOT_BELT
 	sellprice = 1
 	var/dildo_type = "human"
 	var/dildo_size = "small"
 	var/pleasure = 4
 	var/can_custom = TRUE
 	var/dildo_material
+	var/shape_choice
+	var/size_choice
+	var/mob/living/carbon/human/wearer
+	var/obj/item/organ/penis/strapon
 
 /obj/item/dildo/New()
 	. = ..()
@@ -28,16 +33,37 @@
 	if(can_custom)
 		customize(user)
 
+// /obj/item/dildo/equipped()
+	//. = ..()
+	//.internal_organs_slot[ORGAN_SLOT_PENIS] = /obj/item/organ/penis/internal
+
+/obj/item/dildo/equipped(mob/user, slot, initial = FALSE)
+	if(slot == SLOT_BELT)
+		var/mob/living/carbon/human/U = user
+		if(strapon)
+			var/obj/item/organ/penis/penis = U.getorganslot(ORGAN_SLOT_PENIS)
+			if(!penis)
+				penis = strapon
+				wearer = U
+				penis.Insert(U)
+	. = ..()
+
+/obj/item/dildo/proc/emptyStorage() //called when belt removed so we can use it to remove the strapon
+	if(wearer) // so males who already have a penis dont get their dicks removed
+		var/obj/item/organ/penis = wearer.getorganslot(ORGAN_SLOT_PENIS)
+		if (penis)
+			penis.Remove(wearer)
+
 /obj/item/dildo/proc/customize(mob/living/user)
 	if(!can_custom)
 		return FALSE
 	if(src && !user.incapacitated() && in_range(user,src))
-		var/shape_choice = input(user, "Choose a shape for your dildo.","Dildo Shape") as null|anything in list("knotted", "human", "flared")
+		shape_choice = input(user, "Choose a shape for your dildo.","Dildo Shape") as null|anything in list("knotted", "human", "flared")
 		if(src && shape_choice && !user.incapacitated() && in_range(user,src))
 			dildo_type = shape_choice
 	update_appearance()
 	if(src && !user.incapacitated() && in_range(user,src))
-		var/size_choice = input(user, "Choose a size for your dildo.","Dildo Size") as null|anything in list("small", "medium", "big", "huge")
+		size_choice = input(user, "Choose a size for your dildo.","Dildo Size") as null|anything in list("small", "medium", "big", "huge")
 		if(src && size_choice && !user.incapacitated() && in_range(user,src))
 			dildo_size = size_choice
 			switch(dildo_size)
@@ -50,7 +76,32 @@
 				if("huge")
 					pleasure = 10
 	update_appearance()
+	update_strapon()
 	return TRUE
+
+/obj/item/dildo/proc/update_strapon()
+	var/obj/item/organ/penis/temp = new /obj/item/organ/penis
+	temp.name = name
+	icon_state = "dildo_[dildo_type]_[dildo_size]"
+	switch(shape_choice)
+		if("knotted")
+			temp.penis_type = PENIS_TYPE_KNOTTED
+		if("human")
+			temp.penis_type = PENIS_TYPE_PLAIN
+		if("flared")
+			temp.penis_type = PENIS_TYPE_EQUINE
+	switch(dildo_size)
+		if("small")
+			temp.penis_size = DEFAULT_PENIS_SIZE-1
+		if("medium")
+			temp.penis_size = DEFAULT_PENIS_SIZE
+		if("big")
+			temp.penis_size = DEFAULT_PENIS_SIZE+1
+		if("huge")
+			temp.penis_size = DEFAULT_PENIS_SIZE+1 //huge doesnt exist in mobs
+	temp.always_hard = TRUE
+	temp.strapon = TRUE
+	strapon = temp
 
 /obj/item/dildo/proc/update_appearance()
 	icon_state = "dildo_[dildo_type]_[dildo_size]"
