@@ -25,8 +25,8 @@
 
 /obj/item/roguestatue/gold/loot/Initialize()
 	. = ..()
-	sellprice = rand(45,100)
-	icon_state = "lstatue[pick(1,2)]"
+	sellprice = rand(45,150)
+	icon_state = "lstatue[pick(1,2,3,4)]"
 
 /obj/item/roguestatue/silver
 	name = "silver statue"
@@ -63,50 +63,6 @@
 
 
 //000000000000000000000000000--
-
-/obj/item/roguegear
-	icon = 'icons/roguetown/items/misc.dmi'
-	name = "cog"
-	desc = "A cog with teeth meticulously crafted for tight interlocking."
-	icon_state = "gear"
-	w_class = WEIGHT_CLASS_SMALL
-	smeltresult = null
-	var/obj/structure/linking
-
-/obj/item/roguegear/Destroy()
-	if(linking)
-		linking = null
-	. = ..()
-
-/obj/item/roguegear/attack_self(mob/user)
-	if(linking)
-		linking = null
-		to_chat(user, span_warning("Linking halted."))
-		return
-
-/obj/item/roguegear/attack_obj(obj/O, mob/living/user)
-	if(!istype(O, /obj/structure))
-		return ..()
-	var/obj/structure/S = O
-	if(linking)
-		if(linking == O)
-			to_chat(user, span_warning("You cannot link me to myself."))
-			return
-		if(linking in S.redstone_attached)
-			to_chat(user, span_warning("Already linked."))
-			linking = null
-			return
-		S.redstone_attached |= linking
-		linking.redstone_attached |= S
-		linking = null
-		to_chat(user, span_notice("Link complete."))
-		return
-	else
-		linking = S
-		to_chat(user, span_info("Link beginning..."))
-		return
-	..()
-
 
 /obj/item/var/polished = FALSE
 

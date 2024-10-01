@@ -100,18 +100,11 @@
 	item_d_type = "slash"
 
 /datum/intent/axe/chop/battle
-	penfactor = 70
+	penfactor = 30
 	damfactor = 1.2 //36 on battleaxe
 
 /datum/intent/axe/cut/battle
-	penfactor = 30
-
-/datum/intent/axe/chop/battle
-	penfactor = 70
-	damfactor = 1.2 //36 on battleaxe
-
-/datum/intent/axe/cut/battle
-	penfactor = 30
+	penfactor = 15
 
 /obj/item/rogueweapon/stoneaxe/battle
 	force = 25
@@ -122,8 +115,9 @@
 	icon_state = "battleaxe"
 	max_blade_int = 300
 	smeltresult = /obj/item/ingot/steel
+	smelt_bar_num = 2
 	gripped_intents = list(/datum/intent/axe/cut/battle ,/datum/intent/axe/chop/battle)
-	minstr = 12
+	minstr = 9
 	wdefense = 4
 
 /obj/item/rogueweapon/stoneaxe/battle/getonmobprop(tag)
@@ -195,7 +189,7 @@
 
 /obj/item/rogueweapon/stoneaxe/woodcut/wardenpick
 	name = "Wardens' axe"
-	desc = "A multi-use axe smithed by the Wardens since time immorial for both it's use as a tool and a weapon."
+	desc = "A multi-use axe smithed by the Wardens since time immemorial for both it's use as a tool and a weapon."
 	icon_state = "wardenpax"
 	force = 22
 	force_wielded = 28
@@ -271,3 +265,16 @@
 			if("onbelt")
 				return list("shrink" = 0.3,"sx" = -2,"sy" = -5,"nx" = 4,"ny" = -5,"wx" = 0,"wy" = -5,"ex" = 2,"ey" = -5,"nturn" = 0,"sturn" = 0,"wturn" = 0,"eturn" = 0,"nflip" = 0,"sflip" = 0,"wflip" = 0,"eflip" = 0,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0)
 	return ..()
+
+/obj/item/rogueweapon/stoneaxe/silver
+	name = "Silver War Axe"
+	desc = "A one-handed war axe forged of silver."
+	icon_state = "silveraxe"
+	force = 24
+	possible_item_intents = list(/datum/intent/axe/cut,/datum/intent/axe/chop)
+	minstr = 6
+	max_blade_int = 400
+	smeltresult = /obj/item/ingot/silver
+	gripped_intents = null
+	wdefense = 4
+	is_silver = TRUE

@@ -195,6 +195,9 @@
 	playsound(user.loc, "smallslash", 100, FALSE, -1)
 	user.next_attack_msg.Cut()
 	if(stat == DEAD)
+		if(user.has_status_effect(/datum/status_effect/debuff/silver_curse))
+			to_chat(user, span_notice("My power is weakened, I cannot heal!"))
+			return
 		if(user.mind && istype(user, /mob/living/carbon/human/species/werewolf))
 			visible_message(span_danger("The werewolf ravenously consumes the [src]!"))
 			to_chat(src, span_warning("I feed on succulent flesh. I feel reinvigorated."))

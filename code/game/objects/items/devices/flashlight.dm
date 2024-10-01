@@ -318,7 +318,7 @@
 
 /obj/item/flashlight/flare/torch
 	name = "torch"
-	desc = ""
+	desc = "The light.. the promise of safety!"
 	w_class = WEIGHT_CLASS_NORMAL
 	light_range = 4
 	light_color = LIGHT_COLOR_ORANGE
@@ -443,9 +443,9 @@
 	fuel = 9999 MINUTES
 
 /obj/item/flashlight/flare/torch/lantern
-	name = "lamptern"
+	name = "iron lamptern"
 	icon_state = "lamp"
-	desc = ""
+	desc = "Flames kept safe within an iron cage."
 	light_range = 7
 	on = FALSE
 	flags_1 = CONDUCT_1
@@ -493,6 +493,14 @@
 			if("onbelt")
 				return list("shrink" = 0.3,"sx" = -2,"sy" = -5,"nx" = 4,"ny" = -5,"wx" = 0,"wy" = -5,"ex" = 2,"ey" = -5,"nturn" = 0,"sturn" = 0,"wturn" = 0,"eturn" = 0,"nflip" = 0,"sflip" = 0,"wflip" = 0,"eflip" = 0,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0)
 
+/obj/item/flashlight/flare/torch/lantern/bronzelamptern
+	name = "bronze lamptern"
+	icon_state = "bronzelamp"
+	item_state = "bronzelamp"
+	desc = "A marvel of engineering that emits a strange green glow."
+	light_range = 8
+	light_color ="#4ac77e"
+	on = FALSE
 
 /obj/item/flashlight/lantern
 	name = "lantern"

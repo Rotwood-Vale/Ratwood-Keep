@@ -85,7 +85,6 @@
 
 		// tools
 		/obj/item/rogueweapon/shovel = 3,
-		/obj/machinery/light/rogue/hearth = 4,
 		/obj/item/rogueweapon/thresher = 3,
 		/obj/item/flint = 4,
 		/obj/item/rogueweapon/stoneaxe/woodcut = 3,

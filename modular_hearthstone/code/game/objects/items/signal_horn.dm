@@ -15,7 +15,7 @@
 /obj/item/signal_horn/proc/sound_horn(mob/living/user)
 	user.visible_message(span_warning("[user] sounds the alarm!"))
 	switch(user.job)
-		if("Bog Guard", "Bog Master")
+		if("Warden")
 			playsound(src, 'modular_hearthstone/sound/items/bogguardhorn.ogg', 100, TRUE)
 		if("Town Sheriff", "Watchman")
 			playsound(src, 'modular_hearthstone/sound/items/watchhorn.ogg', 100, TRUE)
@@ -55,30 +55,60 @@
 			if(SOUTHEAST)
 				dirtext += "southeast"
 			else //Where ARE you.
-				dirtext = ", although I cannot make out a direction"
+				dirtext = "although I cannot make out an exact direction"
+
 		var/disttext
 		switch(distance)
 			if(0 to 20)
-				disttext = " very close"
+				disttext = " within 20 meters"
 			if(20 to 40)
-				disttext = " close"
+				disttext = " 20 to 40 meters away"
 			if(40 to 80)
-				disttext = ""
+				disttext = " 40 to 80 meters away"
 			if(80 to 160)
 				disttext = " far"
 			else
-				disttext = " very far"
+				disttext = " very far" 
+		
+		var/placetext
+		var/area/localarea = get_area_name(src)
+		switch(localarea)
+			if("mountains")
+				placetext = " In the Mountains!"
+			if("mt decapitation")
+				placetext = " from Mt Decapitation!"
+			if("azure basin")
+				placetext = " in the The Azure Basin!"
+			if("wilderness")
+				placetext = " in the The Azure Grove!"
+			if("bog", "dense bog")
+				placetext = " in the The Terrorbog!"
+			if("coast", "coastforest")
+				placetext = " on the Azure Coast!"
+			if("indoors", "Shop", "Physician", "outdoors", "roofs")
+				placetext = " somewhere in town!"
+			if("Manor", "Wizard's Tower")
+				placetext = " from the Keep!"
+			if("Garrison", "dungeon cell")
+				placetext = " from the Garrison!"
+			if("Baths", "tavern")
+				placetext = " from the Inn!"
+			if("church")
+				placetext = " from the Church!"
+			else
+				placetext = " I cannot discern where it came from exactly!"
+
 		//sound played for other players
 		switch(user.job)
-			if("Bog Guard", "Bog Master")
+			if("Warden")
 				player.playsound_local(get_turf(player), 'modular_hearthstone/sound/items/bogguardhorn.ogg', 35, FALSE, pressure_affected = FALSE)
-				to_chat(player, span_warning("I hear the horn of the Bog Garrison somewhere[disttext][dirtext]!"))
+				to_chat(player, span_warning("I hear the horn of the Wardens somewhere[disttext],[dirtext],[placetext]"))
 			if("Town Sheriff", "Watchman")
 				player.playsound_local(get_turf(player), 'modular_hearthstone/sound/items/watchhorn.ogg', 35, FALSE, pressure_affected = FALSE)
-				to_chat(player, span_warning("I hear the horn of the Watch somewhere[disttext][dirtext]!"))
+				to_chat(player, span_warning("I hear the horn of the Watch somewhere[disttext],[dirtext],[placetext]]"))
 			if("Man at Arms", "Royal Guard")
 				player.playsound_local(get_turf(player), 'modular_hearthstone/sound/items/rghorn.ogg', 35, FALSE, pressure_affected = FALSE)
-				to_chat(player, span_warning("I hear the horn of the Royal Guard somewhere[disttext][dirtext]!"))
+				to_chat(player, span_warning("I hear the horn of the Royal Guard somewhere[disttext],[dirtext],[placetext]]"))
 			else
 				player.playsound_local(get_turf(player), 'modular_hearthstone/sound/items/signalhorn.ogg', 35, FALSE, pressure_affected = FALSE)
-				to_chat(player, span_warning("I hear the signal horn somewhere[disttext][dirtext]!"))
+				to_chat(player, span_warning("I hear the signal horn somewhere[disttext], [dirtext],[placetext]"))

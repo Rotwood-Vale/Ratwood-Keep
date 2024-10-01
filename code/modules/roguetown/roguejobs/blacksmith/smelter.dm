@@ -1,7 +1,8 @@
 
 /obj/item
 	var/smeltresult
-
+	var/smelt_bar_num = 1 //variable for tracking how many bars things smelt back into for multi-bar items
+	
 /obj/machinery/light/rogue/smelter
 	icon = 'icons/roguetown/misc/forge.dmi'
 	name = "stone furnace"
@@ -18,6 +19,7 @@
 	var/maxore = 1
 	var/cooking = 0
 	var/actively_smelting = FALSE // Are we currently smelting?
+
 	fueluse = 30 MINUTES
 	start_fuel = 5 MINUTES
 	fuel_modifier = 0.33
@@ -125,9 +127,11 @@
 				if(cooking == 20)
 					for(var/obj/item/I in ore)
 						if(I.smeltresult)
-							var/obj/item/R = new I.smeltresult(src, ore[I])
+							while(I.smelt_bar_num)
+								I.smelt_bar_num--
+								var/obj/item/R = new I.smeltresult(src, ore[I])
+								ore += R
 							ore -= I
-							ore += R
 							qdel(I)
 					playsound(src,'sound/misc/smelter_fin.ogg', 100, FALSE)
 					visible_message(span_notice("\The [src] finished smelting."))
@@ -160,15 +164,32 @@
 				actively_smelting = TRUE
 			else
 				if(cooking == 30)
-					var/alloy
+					var/alloy //moving each alloy to it's own var allows for possible additions later
+					var/steelalloy
+					var/bronzealloy
+					var/blacksteelalloy
 					for(var/obj/item/I in ore)
 						if(I.smeltresult == /obj/item/rogueore/coal)
-							alloy = alloy + 1
+							steelalloy = steelalloy + 1
 						if(I.smeltresult == /obj/item/ingot/iron)
-							alloy = alloy + 2
-					if(alloy == 7)
-						testing("ALLOYED")
+							steelalloy = steelalloy + 2
+						if(I.smeltresult == /obj/item/ingot/tin)
+							bronzealloy = bronzealloy + 1
+						if(I.smeltresult == /obj/item/ingot/copper)
+							bronzealloy = bronzealloy + 2
+						if(I.smeltresult == /obj/item/ingot/silver)
+							blacksteelalloy = blacksteelalloy + 1
+						if(I.smeltresult == /obj/item/ingot/steel)
+							blacksteelalloy = blacksteelalloy + 2
+					if(steelalloy == 7)
+						testing("STEEL ALLOYED")
 						alloy = /obj/item/ingot/steel
+					else if(bronzealloy == 7)
+						testing("BRONZE ALLOYED")
+						alloy = /obj/item/ingot/bronze
+					else if(blacksteelalloy == 7)
+						testing("BLACKSTEEL ALLOYED")
+						alloy = /obj/item/ingot/blacksteel
 					else
 						alloy = null
 					if(alloy)
@@ -187,9 +208,11 @@
 					else
 						for(var/obj/item/I in ore)
 							if(I.smeltresult)
-								var/obj/item/R = new I.smeltresult(src, ore[I])
+								while(I.smelt_bar_num)
+									I.smelt_bar_num--
+									var/obj/item/R = new I.smeltresult(src, ore[I])
+									ore += R
 								ore -= I
-								ore += R
 								qdel(I)
 					playsound(src,'sound/misc/smelter_fin.ogg', 100, FALSE)
 					visible_message(span_notice("\The [src] finished smelting."))
