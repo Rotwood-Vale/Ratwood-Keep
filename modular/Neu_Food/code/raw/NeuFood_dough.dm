@@ -400,7 +400,7 @@
 	foodtype = GRAIN | DAIRY
 /obj/item/reagent_containers/food/snacks/rogue/sandwich/egg
 	tastes = list("cheese" = 1,"cackleberry" = 1)
-	name = "cackleberry bread"
+	name = "cackleberry toast"
 	icon_state = "bread_egg"
 	foodtype = GRAIN | MEAT
 /obj/item/reagent_containers/food/snacks/rogue/sandwich/salo

@@ -52,29 +52,14 @@
 							// Store the current time for the player
 							GLOB.job_respawn_delays[G.ckey] = world.time + target_job.same_job_respawn_delay
 
-					for(var/obj/effect/landmark/underworld/A in GLOB.landmarks_list)
-						var/mob/living/carbon/spirit/O = new /mob/living/carbon/spirit(A.loc)
-						O.livingname = G.name
-						O.ckey = G.ckey
-						O.set_patron(O.client.prefs.selected_patron)
-						SSdroning.area_entered(get_area(O), O.client)
 					G.client.verbs -= GLOB.ghost_verbs
+					G.returntolobby()
 
 				return
 
 //		var/take_triumph = FALSE
-		var/datum/game_mode/chaosmode/C = SSticker.mode
-		if(istype(C))
-			if(C.skeletons)
-				G.returntolobby()
-		if(alert("Travel with the boatman?", "", "Yes", "No") == "Yes")
-			for(var/obj/effect/landmark/underworld/A in GLOB.landmarks_list)
-				var/mob/living/carbon/spirit/O = new /mob/living/carbon/spirit(A.loc)
-				O.livingname = G.name
-				O.ckey = G.ckey
-				O.set_patron(O.client.prefs.selected_patron)
-				SSdroning.area_entered(get_area(O), O.client)
-			G.client.verbs -= GLOB.ghost_verbs
+		G.client.verbs -= GLOB.ghost_verbs
+		G.returntolobby()
 /*		if(world.time < G.ghostize_time + RESPAWNTIME)
 			var/ttime = round((G.ghostize_time + RESPAWNTIME - world.time) / 10)
 			var/list/thingsz = list("My connection to the world is still too strong.",\
