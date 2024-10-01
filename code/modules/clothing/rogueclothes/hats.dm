@@ -1117,6 +1117,11 @@
 	blocksound = PLATEHIT
 	smeltresult = /obj/item/ash
 	drop_sound = 'sound/foley/dropsound/chain_drop.ogg'
+/obj/item/clothing/head/roguetown/helmet/carapacecap/dragon
+	name = "dragon cap"
+	desc = "Fiery armored plates sown together to protect your head."
+	color = "red"
+	armor = list("blunt" = 60, "slash" = 60, "stab" = 60, "bullet" = 60, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 30, "acid" = 0)
 
 /obj/item/clothing/head/roguetown/helmet/carapacehelm
 	slot_flags = ITEM_SLOT_HEAD|ITEM_SLOT_HIP
@@ -1138,7 +1143,7 @@
 	drop_sound = 'sound/foley/dropsound/chain_drop.ogg'
 /obj/item/clothing/head/roguetown/helmet/carapacehelm/dragon
 	slot_flags = ITEM_SLOT_HEAD|ITEM_SLOT_HIP
-	name = "dragonslayer helmet"
+	name = "dragonslayer full helm"
 	desc = "Helmet crafted from the bones of a dragon."
 	color = "red"
 	armor = list("blunt" = 80, "slash" = 100, "stab" = 60, "bullet" = 100, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 60, "acid" = 0)

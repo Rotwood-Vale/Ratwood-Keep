@@ -6,9 +6,9 @@
 /mob/living/simple_animal/hostile/jungle/leaper
 	name = "Rabid Drake"
 	desc = ""
-	icon = 'modular/icons/mob/96x96/ratwood_dragon.dmi'
-	icon_state = "dragonclipped"
-	icon_living = "dragonclipped"
+	icon = 'icons/mob/lavaland/96x96megafauna.dmi'
+	icon_state = "dragon"
+	icon_living = "dragon"
 	icon_dead = "dragon_dead"
 	mob_biotypes = MOB_ORGANIC|MOB_BEAST
 	maxHealth = 300
@@ -258,8 +258,8 @@
 		return
 	if(ranged_cooldown <= world.time)
 		if(AIStatus == AI_ON && projectile_ready || ckey)
-			icon_state = "dragonclipped"
+			icon_state = "dragon"
 			return
-	icon_state = "dragonclipped"
+	icon_state = "dragon"
 
 #undef PLAYER_HOP_DELAY

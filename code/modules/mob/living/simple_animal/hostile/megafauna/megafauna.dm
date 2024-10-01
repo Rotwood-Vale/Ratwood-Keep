@@ -1,4 +1,4 @@
-/mob/living/simple_animal/hostile/megafauna
+/mob/living/simple_animal/hostile/retaliate/rogue/megafauna
 	name = "boss of this gym"
 	desc = ""
 	health = 1000
@@ -43,7 +43,7 @@
 	var/list/attack_action_types = list()
 	var/small_sprite_type
 
-/mob/living/simple_animal/hostile/megafauna/Initialize(mapload)
+/mob/living/simple_animal/hostile/retaliate/rogue/megafauna/Initialize(mapload)
 	. = ..()
 	if(gps_name && true_spawn)
 		AddComponent(/datum/component/gps, gps_name)
@@ -56,7 +56,7 @@
 		var/datum/action/small_sprite/small_action = new small_sprite_type()
 		small_action.Grant(src)
 
-/mob/living/simple_animal/hostile/megafauna/Moved()
+/mob/living/simple_animal/hostile/retaliate/rogue/megafauna/Moved()
 	if(nest && nest.parent && get_dist(nest.parent, src) > nest_range)
 		var/turf/closest = get_turf(nest.parent)
 		for(var/i = 1 to nest_range)
@@ -66,7 +66,7 @@
 		return
 	return ..()
 
-/mob/living/simple_animal/hostile/megafauna/death(gibbed, list/force_grant)
+/mob/living/simple_animal/hostile/retaliate/rogue/megafauna/death(gibbed, list/force_grant)
 	if(health > 0)
 		return
 	else
@@ -84,22 +84,22 @@
 				SSblackbox.record_feedback("tally", tab, 1, "[initial(name)]")
 		..()
 
-/mob/living/simple_animal/hostile/megafauna/proc/spawn_crusher_loot()
+/mob/living/simple_animal/hostile/retaliate/rogue/megafauna/proc/spawn_crusher_loot()
 	loot = crusher_loot
 
-/mob/living/simple_animal/hostile/megafauna/gib()
+/mob/living/simple_animal/hostile/retaliate/rogue/megafauna/gib()
 	if(health > 0)
 		return
 	else
 		..()
 
-/mob/living/simple_animal/hostile/megafauna/dust(just_ash, drop_items, force)
+/mob/living/simple_animal/hostile/retaliate/rogue/megafauna/dust(just_ash, drop_items, force)
 	if(!force && health > 0)
 		return
 	else
 		..()
 
-/mob/living/simple_animal/hostile/megafauna/AttackingTarget()
+/mob/living/simple_animal/hostile/retaliate/rogue/megafauna/AttackingTarget()
 	if(recovery_time >= world.time)
 		return
 	. = ..()
@@ -111,7 +111,7 @@
 		else
 			devour(L)
 
-/mob/living/simple_animal/hostile/megafauna/proc/devour(mob/living/L)
+/mob/living/simple_animal/hostile/retaliate/rogue/megafauna/proc/devour(mob/living/L)
 	if(!L)
 		return FALSE
 	visible_message(
@@ -122,7 +122,7 @@
 	L.gib()
 	return TRUE
 
-/mob/living/simple_animal/hostile/megafauna/ex_act(severity, target)
+/mob/living/simple_animal/hostile/retaliate/rogue/megafauna/ex_act(severity, target)
 	switch (severity)
 		if (EXPLODE_DEVASTATE)
 			adjustBruteLoss(250)
@@ -133,11 +133,11 @@
 		if (EXPLODE_LIGHT)
 			adjustBruteLoss(50)
 
-/mob/living/simple_animal/hostile/megafauna/proc/SetRecoveryTime(buffer_time)
+/mob/living/simple_animal/hostile/retaliate/rogue/megafauna/proc/SetRecoveryTime(buffer_time)
 	recovery_time = world.time + buffer_time
 	ranged_cooldown = world.time + buffer_time
 
-/mob/living/simple_animal/hostile/megafauna/proc/grant_achievement(medaltype, scoretype, crusher_kill, list/grant_achievement = list())
+/mob/living/simple_animal/hostile/retaliate/rogue/megafauna/proc/grant_achievement(medaltype, scoretype, crusher_kill, list/grant_achievement = list())
 	if(!achievement_type || (flags_1 & ADMIN_SPAWNED_1) || !SSachievements.hub_enabled) //Don't award medals if the medal type isn't set
 		return FALSE
 	if(!grant_achievement.len)
@@ -158,7 +158,7 @@
 	name = "Megafauna Attack"
 	icon_icon = 'icons/mob/actions/actions_animal.dmi'
 	button_icon_state = ""
-	var/mob/living/simple_animal/hostile/megafauna/M
+	var/mob/living/simple_animal/hostile/retaliate/rogue/megafauna/M
 	var/chosen_message
 	var/chosen_attack_num = 0
 

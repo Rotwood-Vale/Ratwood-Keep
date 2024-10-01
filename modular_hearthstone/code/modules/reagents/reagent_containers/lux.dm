@@ -56,3 +56,35 @@
 	verbage = "bind souls into"
 	craftsound = 'sound/misc/carriage2.ogg'
 	time = 200
+
+/obj/item/soul_fragment/essence
+	force = 1
+	name = "essence"
+	desc = "A counterpart of a soul, which stores the memories of the beast."
+	icon = 'modular_hearthstone/icons/obj/items/souls.dmi'
+	icon_state = "soul_floor"
+	color = "red"
+	light_system = MOVABLE_LIGHT
+	light_power = 1
+	light_range = 1
+/datum/crafting_recipe/roguetown/alchemy/fragmentundying
+	name = "Fragment of the Undying"
+	result = /obj/item/book/granter/trait/war/undying
+	reqs = list(/obj/item/soul_fragment/essence = 10, /obj/item/natural/dragon_head = 2)
+	craftsound = 'sound/misc/carriage2.ogg'
+	time = 200
+	craftdiff = 3
+/datum/crafting_recipe/roguetown/alchemy/fragmentsuc
+	name = "Fragment of the Succubus"
+	result = /obj/item/book/granter/trait/succubus
+	reqs = list(/obj/item/soul_fragment/essence = 3)
+	craftsound = 'sound/misc/carriage2.ogg'
+	time = 200
+	craftdiff = 3
+/datum/crafting_recipe/roguetown/alchemy/fragmentacro
+	name = "Fragment of the Acrobat"
+	result = /obj/item/book/granter/trait/acrobat
+	reqs = list(/obj/item/soul_fragment/essence = 3)
+	craftsound = 'sound/misc/carriage2.ogg'
+	time = 200
+	craftdiff = 3

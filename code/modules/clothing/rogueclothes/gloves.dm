@@ -23,6 +23,11 @@
 	smeltresult = /obj/item/ash
 	anvilrepair = null
 	sewrepair = TRUE
+/obj/item/clothing/gloves/roguetown/carapace/dragon
+	name = "dragon gauntlets"
+	desc = "Strong dragonbone plated gauntlets."
+	color = "red"
+	armor = list("blunt" = 80, "slash" = 100, "stab" = 60, "bullet" = 100, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 60, "acid" = 0)
 
 /obj/item/clothing/gloves/roguetown/leather
 	name = "leather gloves"

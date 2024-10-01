@@ -65,30 +65,30 @@
 	max_mobs = 3
 	icon = 'icons/mob/nest.dmi'
 	spawn_text = "crawls out of"
-	mob_types = list(/mob/living/simple_animal/hostile/asteroid/goldgrub, /mob/living/simple_animal/hostile/asteroid/goliath, /mob/living/simple_animal/hostile/asteroid/hivelord, /mob/living/simple_animal/hostile/asteroid/basilisk, /mob/living/simple_animal/hostile/asteroid/fugu)
+	mob_types = list(/mob/living/simple_animal/hostile/retaliate/rogue/asteroid/goldgrub, /mob/living/simple_animal/hostile/retaliate/rogue/asteroid/goliath, /mob/living/simple_animal/hostile/retaliate/rogue/asteroid/hivelord, /mob/living/simple_animal/hostile/retaliate/rogue/asteroid/basilisk, /mob/living/simple_animal/hostile/retaliate/rogue/asteroid/fugu)
 	faction = list("mining")
 
 /obj/structure/spawner/mining/goldgrub
 	name = "goldgrub den"
 	desc = ""
-	mob_types = list(/mob/living/simple_animal/hostile/asteroid/goldgrub)
+	mob_types = list(/mob/living/simple_animal/hostile/retaliate/rogue/asteroid/goldgrub)
 
 /obj/structure/spawner/mining/goliath
 	name = "goliath den"
 	desc = ""
-	mob_types = list(/mob/living/simple_animal/hostile/asteroid/goliath)
+	mob_types = list(/mob/living/simple_animal/hostile/retaliate/rogue/asteroid/goliath)
 
 /obj/structure/spawner/mining/hivelord
 	name = "hivelord den"
 	desc = ""
-	mob_types = list(/mob/living/simple_animal/hostile/asteroid/hivelord)
+	mob_types = list(/mob/living/simple_animal/hostile/retaliate/rogue/asteroid/hivelord)
 
 /obj/structure/spawner/mining/basilisk
 	name = "basilisk den"
 	desc = ""
-	mob_types = list(/mob/living/simple_animal/hostile/asteroid/basilisk)
+	mob_types = list(/mob/living/simple_animal/hostile/retaliate/rogue/asteroid/basilisk)
 
 /obj/structure/spawner/mining/wumborian
 	name = "wumborian fugu den"
 	desc = ""
-	mob_types = list(/mob/living/simple_animal/hostile/asteroid/fugu)
+	mob_types = list(/mob/living/simple_animal/hostile/retaliate/rogue/asteroid/fugu)

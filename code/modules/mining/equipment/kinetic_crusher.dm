@@ -437,3 +437,44 @@
 
 /obj/effect/temp_visual/hierophant/wall/crusher
 	duration = 75
+
+//great brown wolf sif
+/obj/item/crusher_trophy/dark_energy
+	name = "dark energy"
+	desc = "A black ball of energy that was formed when Sif miraculously imploded. Suitable as a trophy for a kinetic crusher."
+	icon = 'modular_hearthstone/icons/obj/lavaland/sif.dmi'
+	icon_state = "sif_energy"
+	denied_type = /obj/item/crusher_trophy/dark_energy
+	bonus_value = 30
+	var/range = 3
+
+/obj/item/crusher_trophy/dark_energy/effect_desc()
+	return "mark detonation to perform a bash dealing <b>[bonus_value]</b> - dashing through the target if possible"
+
+/obj/item/crusher_trophy/dark_energy/on_mark_detonation(mob/living/target, mob/living/user)
+	if(!target || !user)
+		return
+	var/chargeturf = get_turf(target) //get target turf
+	if(!chargeturf)
+		return
+	var/dir = get_dir(user, chargeturf)//get direction
+	var/turf/T = get_ranged_target_turf(chargeturf,dir,range)//get final dash turf
+	if(!T) //the final dash turf was out of range - we settle for the target turf instead
+		T = chargeturf
+	playsound(user, pick('modular_hearthstone/sound/sif/whoosh1.ogg', 'modular_hearthstone/sound/sif/whoosh2.ogg', 'modular_hearthstone/sound/sif/whoosh3.ogg'), 300, 1)
+	new /obj/effect/temp_visual/decoy/fading(user.loc, user)
+	//Stop movement
+	walk(user,0)
+	setDir(dir)
+	var/movespeed = 0.7
+	//Apply damage
+	target.apply_damage(bonus_value, BRUTE)
+	playsound(user, 'modular_hearthstone/sound/effects/meteorimpact.ogg', 200, 1, 2, 1)
+	//Dash through the target if possible (it was a furious bash after all)
+	if(target.CanPass(user, T))
+		walk_to(user, T, 0, 1, movespeed)
+		playsound(user, pick('modular_hearthstone/sound/sif/whoosh1.ogg', 'modular_hearthstone/sound/sif/whoosh2.ogg', 'modular_hearthstone/sound/sif/whoosh3.ogg'), 300, 1)
+		new /obj/effect/temp_visual/decoy/fading(user.loc, user)
+	//Stop movement
+	walk(user, 0)
+

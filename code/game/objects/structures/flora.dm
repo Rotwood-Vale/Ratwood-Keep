@@ -463,17 +463,40 @@
 	. = ..()
 	icon_state = "[initial(icon_state)][rand(1,3)]"
 
+//hearthstone
+/obj/structure/flora/rock_icy
+	icon = 'modular_hearthstone/icons/obj/flora/ice_rocks.dmi'
+	desc = ""
+	icon_state = "rock_1"
+	resistance_flags = FIRE_PROOF
+	density = TRUE
+/obj/structure/flora/rock/Initialize()
+	. = ..()
+	icon_state = "rock_[rand(1,3)]"
 
+/obj/structure/flora/rock_desert
+	icon = 'modular_hearthstone/icons/obj/flora/desertflora.dmi'
+	icon_state = "desert_rock"
+	desc = ""
+	resistance_flags = FIRE_PROOF
+	density = TRUE
+/obj/structure/flora/rock_desert/Initialize()
+	. = ..()
+	icon_state = "[icon_state][rand(1,8)]"
+/obj/structure/flora/rock_snow
+	icon = 'modular_hearthstone/icons/obj/flora/snowrocks.dmi'
+	icon_state = "rocklarge1"
+	desc = ""
+	resistance_flags = FIRE_PROOF
+	density = TRUE
+/obj/structure/flora/rock_snow/Initialize()
+	. = ..()
+	icon_state = "rocklarge[rand(1,2)]"
 
-
-
-
-
-
-
-
-
-
-
-
-
+/obj/structure/flora/tree/crystal
+	icon = 'modular_hearthstone/icons/obj/flora/crystal_trees.dmi'
+	desc = ""
+	icon_state = "gem1"
+/obj/structure/flora/tree/crysal/Initialize()
+	icon_state = "gem[rand(1, 2)]"
+	. = ..()

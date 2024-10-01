@@ -329,6 +329,77 @@
 	craftdiff = 2
 	sellprice = 20	//Costs about ~30 to make. Not great resale, though.. good armor.
 
+/datum/crafting_recipe/roguetown/leather/carapacecuirass/dragon
+	name = "carapace cuirass"
+	result = list(/obj/item/clothing/suit/roguetown/armor/carapace/dragon/cuirass)
+	reqs = list(/obj/item/natural/carapace/dragon = 2,
+				/obj/item/natural/fibers = 4)
+	craftdiff = 2
+	sellprice = 22	//Costs about ~32 to make! Not great resale, though.. good armor.
+
+/datum/crafting_recipe/roguetown/leather/carapacearmor/dragon
+	name = "carapace armor"
+	result = list(/obj/item/clothing/suit/roguetown/armor/carapace/dragon)
+	reqs = list(/obj/item/natural/carapace/dragon = 4,
+				/obj/item/natural/fibers = 6)
+	craftdiff = 2
+	sellprice = 42	//Costs about ~62 to make! Not great resale at ALL, though.. good armor.
+
+/datum/crafting_recipe/roguetown/leather/carapacelegs/dragon
+	name = "carapace chausses"
+	result = list(/obj/item/clothing/under/roguetown/carapacelegs/dragon)
+	reqs = list(/obj/item/natural/carapace/dragon = 1,
+				/obj/item/natural/fibers = 2)
+	craftdiff = 1
+	sellprice = 10	//Costs about ~16 to make. Not great resale, though.. good armor.
+
+/datum/crafting_recipe/roguetown/leather/carapaceskirt/dragon
+	name = "carapace skirt"
+	result = list(/obj/item/clothing/under/roguetown/carapacelegs/dragon/skirt)
+	reqs = list(/obj/item/natural/carapace/dragon = 1,
+				/obj/item/natural/fibers = 2)
+	craftdiff = 1
+	sellprice = 10	//Costs about ~16 to make. Not great resale, though.. good armor.
+
+/datum/crafting_recipe/roguetown/leather/carapacecap/dragon
+	name = "carapace cap"
+	result = list(/obj/item/clothing/head/roguetown/helmet/carapacecap/dragon)
+	reqs = list(/obj/item/natural/carapace/dragon = 1,
+				/obj/item/natural/fibers = 2)
+	craftdiff = 1
+	sellprice = 10	//Costs about ~16 to make. Not great resale, though.. good armor.
+/datum/crafting_recipe/roguetown/leather/carapacehelm/dragon
+	name = "carapace helmet"
+	result = list(/obj/item/clothing/head/roguetown/helmet/carapacehelm/dragon)
+	reqs = list(/obj/item/natural/dragon_head = 1,
+				/obj/item/natural/fibers = 4)
+	craftdiff = 2
+	sellprice = 22	//Costs about ~32 to make. Not great resale, though.. good armor.
+
+/datum/crafting_recipe/roguetown/leather/carapaceboots/dragon
+	name = "carapace boots"
+	result = list(/obj/item/clothing/shoes/roguetown/boots/carapace/dragon)
+	reqs = list(/obj/item/natural/carapace/dragon = 2,
+				/obj/item/natural/fibers = 2)
+	craftdiff = 1
+	sellprice = 20	//Costs about ~30 to make. Not great resale, though.. good armor.
+
+/datum/crafting_recipe/roguetown/leather/carapacegloves/dragon
+	name = "carapace gauntlets"
+	result = list(/obj/item/clothing/gloves/roguetown/carapace/dragon)
+	reqs = list(/obj/item/natural/carapace/dragon = 2,
+				/obj/item/natural/fibers = 2)
+	craftdiff = 2
+	sellprice = 20	//Costs about ~30 to make. Not great resale, though.. good armor.
+
+/datum/crafting_recipe/roguetown/leather/carapacebracers/dragon
+	name = "carapace bracers"
+	result = list(/obj/item/clothing/wrists/roguetown/bracers/carapace/dragon)
+	reqs = list(/obj/item/natural/carapace/dragon = 2,
+				/obj/item/natural/fibers = 2)
+	craftdiff = 2
+	sellprice = 20	//Costs about ~30 to make. Not great resale, though.. good armor.
+
 /datum/crafting_recipe/roguetown/leather/vest
 	name = "leather sea jacket"
 	result = /obj/item/clothing/suit/roguetown/armor/leather/vest/sailor

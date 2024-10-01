@@ -30,11 +30,9 @@ Difficulty: Medium
 
 */
 
-/mob/living/simple_animal/hostile/megafauna/dragon
+/mob/living/simple_animal/hostile/retaliate/rogue/megafauna/dragon
 	name = "ash drake"
 	desc = ""
-	health = 2500
-	maxHealth = 2500
 	attack_verb_continuous = "chomps"
 	attack_verb_simple = "chomp"
 	attack_sound = 'sound/blank.ogg'
@@ -47,15 +45,11 @@ Difficulty: Medium
 	friendly_verb_simple = "stare down"
 	speak_emote = list("roars")
 	armor_penetration = 40
-	melee_damage_lower = 40
-	melee_damage_upper = 40
 	speed = 5
-	move_to_delay = 5
 	ranged = TRUE
 	pixel_x = -16
 	crusher_loot = list(/obj/structure/closet/crate/necropolis/dragon/crusher)
 	loot = list(/obj/structure/closet/crate/necropolis/dragon)
-	butcher_results = list(/obj/item/stack/ore/diamond = 5, /obj/item/stack/sheet/sinew = 5, /obj/item/stack/sheet/bone = 30)
 	guaranteed_butcher_results = list(/obj/item/stack/sheet/animalhide/ashdrake = 10)
 	var/swooping = NONE
 	var/player_cooldown = 0
@@ -71,6 +65,42 @@ Difficulty: Medium
 							   /datum/action/innate/megafauna_attack/mass_fire,
 							   /datum/action/innate/megafauna_attack/lava_swoop)
 	small_sprite_type = /datum/action/small_sprite/megafauna/drake
+
+	emote_hear = null
+	emote_see = null
+	speak_chance = 1
+	turns_per_move = 2
+	see_in_dark = 10
+	move_to_delay = 3
+	base_intents = list(/datum/intent/simple/drake)
+	butcher_results = list(/obj/item/natural/carapace/dragon = 2,/obj/item/reagent_containers/food/snacks/rogue/meat/steak = 2, /obj/item/soul_fragment/essence = 1)
+	faction = list("caves")
+	mob_biotypes = MOB_ORGANIC|MOB_BEAST
+	health = 2500
+	maxHealth = 2500
+	melee_damage_lower = 55
+	melee_damage_upper = 80
+	vision_range = 3
+	aggro_vision_range = 8
+	environment_smash = ENVIRONMENT_SMASH_STRUCTURES
+	obj_damage = 1
+	retreat_distance = 0
+	minimum_distance = 0
+	milkies = FALSE
+	food_type = list(/obj/item/reagent_containers/food/snacks/rogue/meat, /obj/item/bodypart, /obj/item/organ)
+	footstep_type = FOOTSTEP_MOB_HEAVY
+	pooptype = null
+	STACON = 19
+	STASTR = 20
+	STASPD = 8
+	deaggroprob = 0
+	defprob = 40
+	defdrain = 10
+	retreat_health = 0
+	food = 0
+	dodgetime = 0
+	aggressive = 1
+//	stat_attack = UNCONSCIOUS
 
 /datum/action/innate/megafauna_attack/fire_cone
 	name = "Fire Cone"
@@ -100,7 +130,7 @@ Difficulty: Medium
 	chosen_message = span_colossus("I are now swooping and raining lava at your target.")
 	chosen_attack_num = 4
 
-/mob/living/simple_animal/hostile/megafauna/dragon/OpenFire()
+/mob/living/simple_animal/hostile/retaliate/rogue/megafauna/dragon/OpenFire()
 	if(swooping)
 		return
 
@@ -127,13 +157,13 @@ Difficulty: Medium
 	else
 		fire_cone()
 
-/mob/living/simple_animal/hostile/megafauna/dragon/proc/shoot_fire_attack()
+/mob/living/simple_animal/hostile/retaliate/rogue/megafauna/dragon/proc/shoot_fire_attack()
 	if(health < maxHealth*0.5)
 		mass_fire()
 	else
 		fire_cone()
 
-/mob/living/simple_animal/hostile/megafauna/dragon/proc/fire_rain()
+/mob/living/simple_animal/hostile/retaliate/rogue/megafauna/dragon/proc/fire_rain()
 	if(!target)
 		return
 	target.visible_message(span_boldwarning("Fire rains from the sky!"))
@@ -141,7 +171,7 @@ Difficulty: Medium
 		if(prob(11))
 			new /obj/effect/temp_visual/target(turf)
 
-/mob/living/simple_animal/hostile/megafauna/dragon/proc/lava_pools(amount, delay = 0.8)
+/mob/living/simple_animal/hostile/retaliate/rogue/megafauna/dragon/proc/lava_pools(amount, delay = 0.8)
 	if(!target)
 		return
 	target.visible_message(span_boldwarning("Lava starts to pool up around you!"))
@@ -153,7 +183,7 @@ Difficulty: Medium
 		amount--
 		SLEEP_CHECK_DEATH(delay)
 
-/mob/living/simple_animal/hostile/megafauna/dragon/proc/lava_swoop(amount = 30)
+/mob/living/simple_animal/hostile/retaliate/rogue/megafauna/dragon/proc/lava_swoop(amount = 30)
 	if(health < maxHealth * 0.5)
 		return swoop_attack(lava_arena = TRUE, swoop_cooldown = 60)
 	INVOKE_ASYNC(src, PROC_REF(lava_pools), amount)
@@ -167,7 +197,7 @@ Difficulty: Medium
 		fire_cone()
 	SetRecoveryTime(40)
 
-/mob/living/simple_animal/hostile/megafauna/dragon/proc/mass_fire(spiral_count = 12, range = 15, times = 3)
+/mob/living/simple_animal/hostile/retaliate/rogue/megafauna/dragon/proc/mass_fire(spiral_count = 12, range = 15, times = 3)
 	SLEEP_CHECK_DEATH(0)
 	for(var/i = 1 to times)
 		SetRecoveryTime(50)
@@ -179,7 +209,7 @@ Difficulty: Medium
 		SLEEP_CHECK_DEATH(25)
 	SetRecoveryTime(30)
 
-/mob/living/simple_animal/hostile/megafauna/dragon/proc/lava_arena()
+/mob/living/simple_animal/hostile/retaliate/rogue/megafauna/dragon/proc/lava_arena()
 	if(!target)
 		return
 	target.visible_message(span_boldwarning("[src] encases you in an arena of fire!"))
@@ -224,7 +254,7 @@ Difficulty: Medium
 		SLEEP_CHECK_DEATH(24)
 	return 1 // attack finished completely
 
-/mob/living/simple_animal/hostile/megafauna/dragon/proc/arena_escape_enrage() // you ran somehow / teleported away from my arena attack now i'm mad fucker
+/mob/living/simple_animal/hostile/retaliate/rogue/megafauna/dragon/proc/arena_escape_enrage() // you ran somehow / teleported away from my arena attack now i'm mad fucker
 	SLEEP_CHECK_DEATH(0)
 	SetRecoveryTime(80)
 	visible_message(span_boldwarning("[src] starts to glow vibrantly as its wounds close up!"))
@@ -238,7 +268,7 @@ Difficulty: Medium
 	remove_atom_colour(TEMPORARY_COLOUR_PRIORITY)
 	light_range = initial(light_range)
 
-/mob/living/simple_animal/hostile/megafauna/dragon/proc/fire_cone(atom/at = target, meteors = TRUE)
+/mob/living/simple_animal/hostile/retaliate/rogue/megafauna/dragon/proc/fire_cone(atom/at = target, meteors = TRUE)
 	playsound(get_turf(src),'sound/blank.ogg', 200, TRUE)
 	SLEEP_CHECK_DEATH(0)
 	if(prob(50) && meteors)
@@ -252,7 +282,7 @@ Difficulty: Medium
 	turfs = line_target(40, range, at)
 	INVOKE_ASYNC(src, PROC_REF(fire_line), turfs)
 
-/mob/living/simple_animal/hostile/megafauna/dragon/proc/line_target(offset, range, atom/at = target)
+/mob/living/simple_animal/hostile/retaliate/rogue/megafauna/dragon/proc/line_target(offset, range, atom/at = target)
 	if(!at)
 		return
 	var/angle = ATAN2(at.x - src.x, at.y - src.y) + offset
@@ -264,7 +294,7 @@ Difficulty: Medium
 		T = check
 	return (getline(src, T) - get_turf(src))
 
-/mob/living/simple_animal/hostile/megafauna/dragon/proc/fire_line(list/turfs)
+/mob/living/simple_animal/hostile/retaliate/rogue/megafauna/dragon/proc/fire_line(list/turfs)
 	SLEEP_CHECK_DEATH(0)
 	dragon_fire_line(src, turfs)
 
@@ -291,7 +321,7 @@ Difficulty: Medium
 			M.take_damage(45, BRUTE, "blunt", 1)
 		sleep(1.5)
 
-/mob/living/simple_animal/hostile/megafauna/dragon/proc/swoop_attack(lava_arena = FALSE, atom/movable/manual_target, swoop_cooldown = 30)
+/mob/living/simple_animal/hostile/retaliate/rogue/megafauna/dragon/proc/swoop_attack(lava_arena = FALSE, atom/movable/manual_target, swoop_cooldown = 30)
 	if(stat || swooping)
 		return
 	if(manual_target)
@@ -384,34 +414,34 @@ Difficulty: Medium
 	if(!lava_success)
 		arena_escape_enrage()
 
-/mob/living/simple_animal/hostile/megafauna/dragon/ex_act(severity, target)
+/mob/living/simple_animal/hostile/retaliate/rogue/megafauna/dragon/ex_act(severity, target)
 	if(severity == EXPLODE_LIGHT)
 		return
 	..()
 
-/mob/living/simple_animal/hostile/megafauna/dragon/adjustHealth(amount, updating_health = TRUE, forced = FALSE)
+/mob/living/simple_animal/hostile/retaliate/rogue/megafauna/dragon/adjustHealth(amount, updating_health = TRUE, forced = FALSE)
 	if(!forced && (swooping & SWOOP_INVULNERABLE))
 		return FALSE
 	return ..()
 
-/mob/living/simple_animal/hostile/megafauna/dragon/visible_message(message, self_message, blind_message, vision_distance = DEFAULT_MESSAGE_RANGE, list/ignored_mobs)
+/mob/living/simple_animal/hostile/retaliate/rogue/megafauna/dragon/visible_message(message, self_message, blind_message, vision_distance = DEFAULT_MESSAGE_RANGE, list/ignored_mobs)
 	if(swooping & SWOOP_INVULNERABLE) //to suppress attack messages without overriding every single proc that could send a message saying we got hit
 		return
 	return ..()
 
-/mob/living/simple_animal/hostile/megafauna/dragon/AttackingTarget()
+/mob/living/simple_animal/hostile/retaliate/rogue/megafauna/dragon/AttackingTarget()
 	if(!swooping)
 		return ..()
 
-/mob/living/simple_animal/hostile/megafauna/dragon/DestroySurroundings()
+/mob/living/simple_animal/hostile/retaliate/rogue/megafauna/dragon/DestroySurroundings()
 	if(!swooping)
 		..()
 
-/mob/living/simple_animal/hostile/megafauna/dragon/Move()
+/mob/living/simple_animal/hostile/retaliate/rogue/megafauna/dragon/Move()
 	if(!swooping)
 		..()
 
-/mob/living/simple_animal/hostile/megafauna/dragon/Goto(target, delay, minimum_distance)
+/mob/living/simple_animal/hostile/retaliate/rogue/megafauna/dragon/Goto(target, delay, minimum_distance)
 	if(!swooping)
 		..()
 
@@ -437,7 +467,7 @@ Difficulty: Medium
 	playsound(T,'sound/blank.ogg', 200, TRUE)
 
 	for(var/mob/living/L in T.contents)
-		if(istype(L, /mob/living/simple_animal/hostile/megafauna/dragon))
+		if(istype(L, /mob/living/simple_animal/hostile/retaliate/rogue/megafauna/dragon))
 			continue
 		L.adjustFireLoss(1)
 		to_chat(L, span_danger("I fall directly into the pool of lava!"))
@@ -562,7 +592,7 @@ obj/effect/temp_visual/fireball
 	new /obj/effect/hotspot(T)
 	T.hotspot_expose(700, 50, 1)
 	for(var/mob/living/L in T.contents)
-		if(istype(L, /mob/living/simple_animal/hostile/megafauna/dragon))
+		if(istype(L, /mob/living/simple_animal/hostile/retaliate/rogue/megafauna/dragon))
 			continue
 		if(islist(flame_hit) && !flame_hit[L])
 			L.adjustFireLoss(1)
@@ -571,7 +601,7 @@ obj/effect/temp_visual/fireball
 		else
 			L.adjustFireLoss(1) //if we've already hit them, do way less damage
 
-/mob/living/simple_animal/hostile/megafauna/dragon/lesser
+/mob/living/simple_animal/hostile/retaliate/rogue/megafauna/dragon/lesser
 	name = "lesser ash drake"
 	maxHealth = 200
 	health = 200
@@ -583,10 +613,10 @@ obj/effect/temp_visual/fireball
 	damage_coeff = list(BRUTE = 1, BURN = 1, TOX = 1, CLONE = 1, STAMINA = 0, OXY = 1)
 	loot = list()
 	crusher_loot = list()
-	butcher_results = list(/obj/item/stack/ore/diamond = 5, /obj/item/stack/sheet/sinew = 5, /obj/item/stack/sheet/bone = 30)
+	butcher_results = list(/obj/item/natural/carapace/dragon = 2,/obj/item/reagent_containers/food/snacks/rogue/meat/steak = 2)
 	attack_action_types = list()
 
-/mob/living/simple_animal/hostile/megafauna/dragon/lesser/AltClickOn(atom/movable/A)
+/mob/living/simple_animal/hostile/retaliate/rogue/megafauna/dragon/lesser/AltClickOn(atom/movable/A)
 	if(!istype(A))
 		return
 	if(player_cooldown >= world.time)
@@ -596,10 +626,10 @@ obj/effect/temp_visual/fireball
 	lava_pools(10, 2) // less pools but longer delay before spawns
 	player_cooldown = world.time + 200 // needs seperate cooldown or cant use fire attacks
 
-/mob/living/simple_animal/hostile/megafauna/dragon/lesser/grant_achievement(medaltype,scoretype)
+/mob/living/simple_animal/hostile/retaliate/rogue/megafauna/dragon/lesser/grant_achievement(medaltype,scoretype)
 	return
 
-/mob/living/simple_animal/hostile/megafauna/dragon/space_dragon
+/mob/living/simple_animal/hostile/retaliate/rogue/megafauna/dragon/space_dragon
 	name = "space dragon"
 	maxHealth = 250
 	health = 250
@@ -616,7 +646,7 @@ obj/effect/temp_visual/fireball
 	mouse_opacity = MOUSE_OPACITY_ICON
 	loot = list()
 	crusher_loot = list()
-	butcher_results = list(/obj/item/stack/ore/diamond = 5, /obj/item/stack/sheet/sinew = 5, /obj/item/stack/sheet/bone = 30)
+	butcher_results = list(/obj/item/natural/carapace/dragon = 2,/obj/item/reagent_containers/food/snacks/rogue/meat/steak = 2)
 	move_force = MOVE_FORCE_NORMAL
 	move_resist = MOVE_FORCE_NORMAL
 	pull_force = MOVE_FORCE_NORMAL
@@ -624,16 +654,16 @@ obj/effect/temp_visual/fireball
 	attack_action_types = list()
 	small_sprite_type = /datum/action/small_sprite/megafauna/spacedragon
 
-/mob/living/simple_animal/hostile/megafauna/dragon/space_dragon/grant_achievement(medaltype,scoretype)
+/mob/living/simple_animal/hostile/retaliate/rogue/megafauna/dragon/space_dragon/grant_achievement(medaltype,scoretype)
 	return
 
-/mob/living/simple_animal/hostile/megafauna/dragon/space_dragon/Initialize()
+/mob/living/simple_animal/hostile/retaliate/rogue/megafauna/dragon/space_dragon/Initialize()
 	var/obj/effect/proc_holder/spell/aoe_turf/repulse/spacedragon/repulse_action = new /obj/effect/proc_holder/spell/aoe_turf/repulse/spacedragon(src)
 	repulse_action.action.Grant(src)
 	mob_spell_list += repulse_action
 	. = ..()
 
-/mob/living/simple_animal/hostile/megafauna/dragon/space_dragon/proc/fire_stream(atom/at = target)
+/mob/living/simple_animal/hostile/retaliate/rogue/megafauna/dragon/space_dragon/proc/fire_stream(atom/at = target)
 	playsound(get_turf(src),'sound/blank.ogg', 200, TRUE)
 	SLEEP_CHECK_DEATH(0)
 	var/range = 20
@@ -641,7 +671,7 @@ obj/effect/temp_visual/fireball
 	turfs = line_target(0, range, at)
 	INVOKE_ASYNC(src, PROC_REF(fire_line), turfs)
 
-/mob/living/simple_animal/hostile/megafauna/dragon/space_dragon/OpenFire()
+/mob/living/simple_animal/hostile/retaliate/rogue/megafauna/dragon/space_dragon/OpenFire()
 	if(swooping)
 		return
 	ranged_cooldown = world.time + ranged_cooldown_time
@@ -670,5 +700,20 @@ obj/effect/temp_visual/fireball
 		C.spin(6,1)
 	..(targets, user, 60)
 
-/mob/living/simple_animal/hostile/megafauna/dragon/space_dragon/AltClickOn(atom/movable/A)
+/mob/living/simple_animal/hostile/retaliate/rogue/megafauna/dragon/space_dragon/AltClickOn(atom/movable/A)
 	return
+
+
+/datum/intent/simple/drake
+	name = "drake"
+	icon_state = "instrike"
+	attack_verb = list("lacerates", "bites", "claws", "slashes")
+	animname = "blank22"
+	blade_class = BCLASS_CUT
+	hitsound = "genchop"
+	chargetime = 20
+	penfactor = 20
+	swingdelay = 3
+	candodge = TRUE
+	canparry = TRUE
+	item_d_type = "stab"

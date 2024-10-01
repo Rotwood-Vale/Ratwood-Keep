@@ -16,7 +16,7 @@
   * A unique fight incorporating the head mechanic of legion into a whole new beast.  Combatants will need to make sure the tag-team of head and body don't lure them into a deadly trap.
   */
 
-/mob/living/simple_animal/hostile/asteroid/elite/legionnaire
+/mob/living/simple_animal/hostile/retaliate/rogue/asteroid/elite/legionnaire
 	name = "legionnaire"
 	desc = ""
 	icon_state = "legionnaire"
@@ -24,27 +24,60 @@
 	icon_aggro = "legionnaire"
 	icon_dead = "legionnaire_dead"
 	icon_gib = "syndicate_gib"
-	maxHealth = 800
-	health = 800
-	melee_damage_lower = 30
-	melee_damage_upper = 30
 	attack_verb_continuous = "slashes its arms at"
 	attack_verb_simple = "slash my arms at"
 	attack_sound = 'sound/blank.ogg'
 	throw_message = "doesn't affect the sturdiness of"
 	speed = 1
-	move_to_delay = 3
 	mouse_opacity = MOUSE_OPACITY_ICON
 	deathsound = 'sound/blank.ogg'
 	deathmessage = "'s arms reach out before it falls apart onto the floor, lifeless."
 	loot_drop = /obj/item/crusher_trophy/legionnaire_spine
+
+
+	emote_hear = null
+	emote_see = null
+	speak_chance = 1
+	turns_per_move = 4
+	see_in_dark = 10
+	move_to_delay = 3
+	base_intents = list(/datum/intent/simple/drake)
+	butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat/steak = 2, /obj/item/soul_fragment/essence)
+	faction = list("caves")
+	mob_biotypes = MOB_ORGANIC|MOB_BEAST
+	maxHealth = 800
+	health = 800
+	melee_damage_lower = 30
+	melee_damage_upper = 30
+	vision_range = 5
+	aggro_vision_range = 8
+	environment_smash = ENVIRONMENT_SMASH_STRUCTURES
+	obj_damage = 100
+	retreat_distance = 0
+	minimum_distance = 0
+	milkies = FALSE
+	food_type = list(/obj/item/reagent_containers/food/snacks/rogue/meat, /obj/item/bodypart, /obj/item/organ)
+	footstep_type = FOOTSTEP_MOB_HEAVY
+	pooptype = null
+	STACON = 19
+	STASTR = 12
+	STASPD = 9
+	deaggroprob = 0
+	defprob = 40
+	defdrain = 10
+	retreat_health = 100
+	food = 0
+	dodgetime = 0
+	aggressive = 1
+//	stat_attack = UNCONSCIOUS
+
 
 	attack_action_types = list(/datum/action/innate/elite_attack/legionnaire_charge,
 								/datum/action/innate/elite_attack/head_detach,
 								/datum/action/innate/elite_attack/bonfire_teleport,
 								/datum/action/innate/elite_attack/spew_smoke)
 
-	var/mob/living/simple_animal/hostile/asteroid/elite/legionnairehead/myhead = null
+	var/mob/living/simple_animal/hostile/retaliate/rogue/asteroid/elite/legionnairehead/myhead = null
 	var/obj/structure/legionnaire_bonfire/mypile = null
 	var/has_head = TRUE
 
@@ -72,7 +105,7 @@
 	chosen_message = span_boldwarning("My head will spew smoke in an area, wherever it may be.")
 	chosen_attack_num = SPEW_SMOKE
 
-/mob/living/simple_animal/hostile/asteroid/elite/legionnaire/OpenFire()
+/mob/living/simple_animal/hostile/retaliate/rogue/asteroid/elite/legionnaire/OpenFire()
 	if(client)
 		switch(chosen_attack)
 			if(LEGIONNAIRE_CHARGE)
@@ -95,7 +128,7 @@
 		if(SPEW_SMOKE)
 			spew_smoke()
 
-/mob/living/simple_animal/hostile/asteroid/elite/legionnaire/proc/legionnaire_charge(target)
+/mob/living/simple_animal/hostile/retaliate/rogue/asteroid/elite/legionnaire/proc/legionnaire_charge(target)
 	ranged_cooldown = world.time + 50
 	var/dir_to_target = get_dir(get_turf(src), get_turf(target))
 	var/turf/T = get_step(get_turf(src), dir_to_target)
@@ -106,7 +139,7 @@
 	visible_message(span_boldwarning("[src] prepares to charge!"))
 	addtimer(CALLBACK(src, PROC_REF(legionnaire_charge_2), dir_to_target, 0), 5)
 
-/mob/living/simple_animal/hostile/asteroid/elite/legionnaire/proc/legionnaire_charge_2(move_dir, times_ran)
+/mob/living/simple_animal/hostile/retaliate/rogue/asteroid/elite/legionnaire/proc/legionnaire_charge_2(move_dir, times_ran)
 	if(times_ran >= 4)
 		return
 	var/turf/T = get_step(get_turf(src), move_dir)
@@ -134,7 +167,7 @@
 		L.adjustBruteLoss(50)
 	addtimer(CALLBACK(src, PROC_REF(legionnaire_charge_2), move_dir, (times_ran + 1)), 2)
 
-/mob/living/simple_animal/hostile/asteroid/elite/legionnaire/proc/head_detach(target)
+/mob/living/simple_animal/hostile/retaliate/rogue/asteroid/elite/legionnaire/proc/head_detach(target)
 	ranged_cooldown = world.time + 10
 	if(myhead != null)
 		myhead.adjustBruteLoss(600)
@@ -145,7 +178,7 @@
 		icon_living = "legionnaire_headless"
 		icon_aggro = "legionnaire_headless"
 		visible_message(span_boldwarning("[src]'s head flies off!"))
-		var/mob/living/simple_animal/hostile/asteroid/elite/legionnairehead/newhead = new /mob/living/simple_animal/hostile/asteroid/elite/legionnairehead(loc)
+		var/mob/living/simple_animal/hostile/retaliate/rogue/asteroid/elite/legionnairehead/newhead = new /mob/living/simple_animal/hostile/retaliate/rogue/asteroid/elite/legionnairehead(loc)
 		newhead.flags_1 |= (flags_1 & ADMIN_SPAWNED_1)
 		newhead.GiveTarget(target)
 		newhead.faction = faction.Copy()
@@ -158,11 +191,11 @@
 			myhead.melee_damage_lower = 20
 			myhead.melee_damage_upper = 20
 
-/mob/living/simple_animal/hostile/asteroid/elite/legionnaire/proc/onHeadDeath()
+/mob/living/simple_animal/hostile/retaliate/rogue/asteroid/elite/legionnaire/proc/onHeadDeath()
 	myhead = null
 	addtimer(CALLBACK(src, PROC_REF(regain_head)), 50)
 
-/mob/living/simple_animal/hostile/asteroid/elite/legionnaire/proc/regain_head()
+/mob/living/simple_animal/hostile/retaliate/rogue/asteroid/elite/legionnaire/proc/regain_head()
 	has_head = TRUE
 	if(stat == DEAD)
 		return
@@ -171,7 +204,7 @@
 	icon_aggro = "legionnaire"
 	visible_message(span_boldwarning("The top of [src]'s spine leaks a black liquid, forming into a skull!"))
 
-/mob/living/simple_animal/hostile/asteroid/elite/legionnaire/proc/bonfire_teleport()
+/mob/living/simple_animal/hostile/retaliate/rogue/asteroid/elite/legionnaire/proc/bonfire_teleport()
 	ranged_cooldown = world.time + 5
 	if(mypile == null)
 		var/obj/structure/legionnaire_bonfire/newpile = new /obj/structure/legionnaire_bonfire(loc)
@@ -194,7 +227,7 @@
 		visible_message(span_boldwarning("[src] forms from the bonfire!"))
 		mypile.forceMove(legionturf)
 
-/mob/living/simple_animal/hostile/asteroid/elite/legionnaire/proc/spew_smoke()
+/mob/living/simple_animal/hostile/retaliate/rogue/asteroid/elite/legionnaire/proc/spew_smoke()
 	ranged_cooldown = world.time + 60
 	var/turf/T = null
 	if(myhead != null)
@@ -212,7 +245,7 @@
 	smoke.start()
 
 //The legionnaire's head.  Basically the same as any legion head, but we have to tell our creator when we die so they can generate another head.
-/mob/living/simple_animal/hostile/asteroid/elite/legionnairehead
+/mob/living/simple_animal/hostile/retaliate/rogue/asteroid/elite/legionnairehead
 	name = "legionnaire head"
 	desc = ""
 	icon_state = "legionnaire_head"
@@ -234,9 +267,9 @@
 	deathmessage = "crumbles away!"
 	faction = list()
 	ranged = FALSE
-	var/mob/living/simple_animal/hostile/asteroid/elite/legionnaire/body = null
+	var/mob/living/simple_animal/hostile/retaliate/rogue/asteroid/elite/legionnaire/body = null
 
-/mob/living/simple_animal/hostile/asteroid/elite/legionnairehead/death()
+/mob/living/simple_animal/hostile/retaliate/rogue/asteroid/elite/legionnairehead/death()
 	. = ..()
 	if(body)
 		body.onHeadDeath()
@@ -253,7 +286,7 @@
 	density = FALSE
 	light_range = 4
 	light_color = LIGHT_COLOR_RED
-	var/mob/living/simple_animal/hostile/asteroid/elite/legionnaire/myowner = null
+	var/mob/living/simple_animal/hostile/retaliate/rogue/asteroid/elite/legionnaire/myowner = null
 
 
 /obj/structure/legionnaire_bonfire/Entered(atom/movable/mover, turf/target)
@@ -293,7 +326,7 @@
 /obj/item/crusher_trophy/legionnaire_spine/on_mark_detonation(mob/living/target, mob/living/user)
 	if(!rand(1, 100) <= bonus_value || target.stat == DEAD)
 		return
-	var/mob/living/simple_animal/hostile/asteroid/hivelordbrood/legion/A = new /mob/living/simple_animal/hostile/asteroid/hivelordbrood/legion(user.loc)
+	var/mob/living/simple_animal/hostile/retaliate/rogue/asteroid/hivelordbrood/legion/A = new /mob/living/simple_animal/hostile/retaliate/rogue/asteroid/hivelordbrood/legion(user.loc)
 	A.flags_1 |= (flags_1 & ADMIN_SPAWNED_1)
 	A.GiveTarget(target)
 	A.friends = user

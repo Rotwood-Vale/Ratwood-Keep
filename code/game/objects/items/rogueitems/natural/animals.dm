@@ -34,6 +34,17 @@
 	resistance_flags = FLAMMABLE
 	drop_sound = 'sound/foley/dropsound/food_drop.ogg'
 	sellprice = 14
+/obj/item/natural/carapace/dragon
+	name = "dragonscale"
+	icon_state = "carapace"
+	desc = "Carapace from one of Gott's feiry creachers."
+	color = "red"
+	force = 0
+	throwforce = 0
+	w_class = WEIGHT_CLASS_SMALL
+	resistance_flags = FLAMMABLE
+	drop_sound = 'sound/foley/dropsound/food_drop.ogg'
+	sellprice = 14
 
 //RTD make this a storage item and make clickign on animals with things put it in storage
 /obj/item/natural/saddle
@@ -98,6 +109,19 @@
 	sellprice = 20
 	dropshrink = 0.50
 
+/obj/item/natural/dragon_head
+	name = "dragon head"
+	icon_state = "volf_head"
+	color = "red"
+	desc = "Dismembered head of a dragon."
+	dropshrink = 0.90
+	force = 0
+	throwforce = 0
+	w_class = WEIGHT_CLASS_SMALL
+	resistance_flags = FLAMMABLE
+	drop_sound = 'sound/foley/dropsound/gen_drop.ogg'
+	sellprice = 100
+	dropshrink = 0.50
 
 /obj/item/natural/antler
 	name = "antler"

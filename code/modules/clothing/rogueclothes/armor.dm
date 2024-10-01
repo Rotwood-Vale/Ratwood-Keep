@@ -140,7 +140,7 @@
 
 /obj/item/clothing/suit/roguetown/armor/carapace/dragon
 	name = "dragonscale armor"
-	desc = "armor crafted from the hardened scales of a dragon."
+	desc = "armor crafted from the hardened bones of a dragon."
 	body_parts_covered = CHEST|GROIN|VITALS
 	color = "red"
 	icon_state = "carapacecuirass"
@@ -151,8 +151,9 @@
 
 /obj/item/clothing/suit/roguetown/armor/carapace/dragon/cuirass
 	name = "dragonscale cuirass"
-	desc = "vest styled dragonscale chest armor sown in layers."
+	desc = "vest styled dragonbone chest armor sown in layers."
 	body_parts_covered = CHEST|GROIN|VITALS
+	color = "red"
 	icon_state = "carapacecuirass"
 	item_state = "carapacecuirass"
 	max_integrity = 175

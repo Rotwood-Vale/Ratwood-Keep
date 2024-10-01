@@ -1,66 +1,92 @@
 //A slow but strong beast that tries to stun using its tentacles
-/mob/living/simple_animal/hostile/asteroid/goliath
-	name = "goliath"
+/mob/living/simple_animal/hostile/retaliate/rogue/asteroid/goliath
+	name = "eldritch beast"
 	desc = ""
-	icon = 'icons/mob/lavaland/lavaland_monsters.dmi'
-	icon_state = "Goliath"
-	icon_living = "Goliath"
-	icon_aggro = "Goliath_alert"
-	icon_dead = "Goliath_dead"
+	icon = 'icons/mob/lavaland/lavaland_monsters_wide.dmi'
+	icon_state = "goliath"
+	icon_living = "goliath"
+	icon_aggro = "goliath"
+	icon_dead = "goliath_dead"
 	icon_gib = "syndicate_gib"
-	mob_biotypes = MOB_ORGANIC|MOB_BEAST
 	mouse_opacity = MOUSE_OPACITY_ICON
-	move_to_delay = 40
 	ranged = 1
 	ranged_cooldown_time = 120
 	friendly_verb_continuous = "wails at"
 	friendly_verb_simple = "wail at"
 	speak_emote = list("bellows")
 	speed = 3
-	maxHealth = 300
-	health = 300
 	harm_intent_damage = 0
-	obj_damage = 100
-	melee_damage_lower = 25
-	melee_damage_upper = 25
 	attack_verb_continuous = "pulverizes"
 	attack_verb_simple = "pulverize"
 	attack_sound = 'sound/blank.ogg'
 	throw_message = "does nothing to the rocky hide of the"
-	vision_range = 5
-	aggro_vision_range = 9
 	move_force = MOVE_FORCE_VERY_STRONG
 	move_resist = MOVE_FORCE_VERY_STRONG
 	pull_force = MOVE_FORCE_VERY_STRONG
 	var/pre_attack = 0
-	var/pre_attack_icon = "Goliath_preattack"
+	var/pre_attack_icon = "goliath_preattack"
 	loot = list(/obj/item/stack/sheet/animalhide/goliath_hide)
 
-	footstep_type = FOOTSTEP_MOB_HEAVY
 
-/mob/living/simple_animal/hostile/asteroid/goliath/Life()
+	emote_hear = null
+	emote_see = null
+	speak_chance = 1
+	turns_per_move = 2
+	see_in_dark = 10
+	move_to_delay = 5
+	base_intents = list(/datum/intent/simple/goliath)
+	butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat/steak = 2)
+	faction = list("caves")
+	mob_biotypes = MOB_ORGANIC|MOB_BEAST
+	maxHealth = 300
+	health = 300
+	melee_damage_lower = 25
+	melee_damage_upper = 25
+	vision_range = 5
+	aggro_vision_range = 8
+	environment_smash = ENVIRONMENT_SMASH_STRUCTURES
+	obj_damage = 100
+	retreat_distance = 0
+	minimum_distance = 0
+	milkies = FALSE
+	food_type = list(/obj/item/reagent_containers/food/snacks/rogue/meat, /obj/item/bodypart, /obj/item/organ)
+	footstep_type = FOOTSTEP_MOB_HEAVY
+	pooptype = null
+	STACON = 19
+	STASTR = 10
+	STASPD = 8
+	deaggroprob = 0
+	defprob = 40
+	defdrain = 10
+	retreat_health = 0
+	food = 0
+	dodgetime = 0
+	aggressive = 1
+//	stat_attack = UNCONSCIOUS
+
+/mob/living/simple_animal/hostile/retaliate/rogue/asteroid/goliath/Life()
 	. = ..()
 	handle_preattack()
 
-/mob/living/simple_animal/hostile/asteroid/goliath/proc/handle_preattack()
+/mob/living/simple_animal/hostile/retaliate/rogue/asteroid/goliath/proc/handle_preattack()
 	if(ranged_cooldown <= world.time + ranged_cooldown_time*0.25 && !pre_attack)
 		pre_attack++
 	if(!pre_attack || stat || AIStatus == AI_IDLE)
 		return
 	icon_state = pre_attack_icon
 
-/mob/living/simple_animal/hostile/asteroid/goliath/revive(full_heal = FALSE, admin_revive = FALSE)
+/mob/living/simple_animal/hostile/retaliate/rogue/asteroid/goliath/revive(full_heal = FALSE, admin_revive = FALSE)
 	if(..())
 		anchored = TRUE
 		. = 1
 
-/mob/living/simple_animal/hostile/asteroid/goliath/death(gibbed)
+/mob/living/simple_animal/hostile/retaliate/rogue/asteroid/goliath/death(gibbed)
 	move_force = MOVE_FORCE_DEFAULT
 	move_resist = MOVE_RESIST_DEFAULT
 	pull_force = PULL_FORCE_DEFAULT
 	..(gibbed)
 
-/mob/living/simple_animal/hostile/asteroid/goliath/OpenFire()
+/mob/living/simple_animal/hostile/retaliate/rogue/asteroid/goliath/OpenFire()
 	var/tturf = get_turf(target)
 	if(!isturf(tturf))
 		return
@@ -71,19 +97,19 @@
 		icon_state = icon_aggro
 		pre_attack = 0
 
-/mob/living/simple_animal/hostile/asteroid/goliath/adjustHealth(amount, updating_health = TRUE, forced = FALSE)
+/mob/living/simple_animal/hostile/retaliate/rogue/asteroid/goliath/adjustHealth(amount, updating_health = TRUE, forced = FALSE)
 	ranged_cooldown -= 10
 	handle_preattack()
 	. = ..()
 
-/mob/living/simple_animal/hostile/asteroid/goliath/Aggro()
+/mob/living/simple_animal/hostile/retaliate/rogue/asteroid/goliath/Aggro()
 	vision_range = aggro_vision_range
 	handle_preattack()
 	if(icon_state != icon_aggro)
 		icon_state = icon_aggro
 
 //Lavaland Goliath
-/mob/living/simple_animal/hostile/asteroid/goliath/beast
+/mob/living/simple_animal/hostile/retaliate/rogue/asteroid/goliath/beast
 	name = "goliath"
 	desc = ""
 	icon = 'icons/mob/lavaland/lavaland_monsters.dmi'
@@ -100,23 +126,24 @@
 	stat_attack = UNCONSCIOUS
 	robust_searching = 1
 
-/mob/living/simple_animal/hostile/asteroid/goliath/beast/random/Initialize()
+/mob/living/simple_animal/hostile/retaliate/rogue/asteroid/goliath/beast/random/Initialize()
 	. = ..()
 	if(prob(1))
-		new /mob/living/simple_animal/hostile/asteroid/goliath/beast/ancient(loc)
+		new /mob/living/simple_animal/hostile/retaliate/rogue/asteroid/goliath/beast/ancient(loc)
 		return INITIALIZE_HINT_QDEL
 
-/mob/living/simple_animal/hostile/asteroid/goliath/beast/ancient
+/mob/living/simple_animal/hostile/retaliate/rogue/asteroid/goliath/beast/ancient
 	name = "ancient goliath"
 	desc = ""
-	icon_state = "Goliath"
-	icon_living = "Goliath"
-	icon_aggro = "Goliath_alert"
-	icon_dead = "Goliath_dead"
+	icon = 'icons/mob/lavaland/lavaland_monsters_wide.dmi'
+	icon_state = "ancient_goliath"
+	icon_living = "ancient_goliath"
+	icon_aggro = "ancient_goliath"
+	icon_dead = "ancient_goliath_dead"
 	maxHealth = 400
 	health = 400
 	speed = 4
-	pre_attack_icon = "Goliath_preattack"
+	pre_attack_icon = "ancient_goliath_preattack"
 	throw_message = "does nothing to the rocky hide of the"
 	loot = list(/obj/item/stack/sheet/animalhide/goliath_hide) //A throwback to the asteroid days
 	butcher_results = list(/obj/item/reagent_containers/food/snacks/meat/slab/goliath = 2, /obj/item/stack/sheet/bone = 2)
@@ -127,7 +154,7 @@
 	var/turf/last_location
 	var/tentacle_recheck_cooldown = 100
 
-/mob/living/simple_animal/hostile/asteroid/goliath/beast/ancient/Life()
+/mob/living/simple_animal/hostile/retaliate/rogue/asteroid/goliath/beast/ancient/Life()
 	. = ..()
 	if(!.) // dead
 		return
@@ -145,12 +172,12 @@
 			else
 				cached_tentacle_turfs -= t
 
-/mob/living/simple_animal/hostile/asteroid/goliath/beast/tendril
+/mob/living/simple_animal/hostile/retaliate/rogue/asteroid/goliath/beast/tendril
 	fromtendril = TRUE
 
 //tentacles
 /obj/effect/temp_visual/goliath_tentacle
-	name = "goliath tentacle"
+	name = "tentacle"
 	icon = 'icons/mob/lavaland/lavaland_monsters.dmi'
 	icon_state = "Goliath_tentacle_spawn"
 	layer = BELOW_MOB_LAYER
@@ -189,7 +216,7 @@
 		if((!QDELETED(spawner) && spawner.faction_check_mob(L)) || L.stat == DEAD)
 			continue
 		visible_message(span_danger("[src] grabs hold of [L]!"))
-		L.Stun(100)
+		L.Immobilize(100)
 		L.adjustBruteLoss(rand(10,15))
 		latched = TRUE
 	if(!latched)
@@ -202,3 +229,17 @@
 	icon_state = "Goliath_tentacle_retract"
 	deltimer(timerid)
 	timerid = QDEL_IN(src, 7)
+
+/datum/intent/simple/goliath
+	name = "golaith"
+	icon_state = "instrike"
+	attack_verb = list("charges at", "bites", "pummels", "slams")
+	animname = "blank22"
+	blade_class = BCLASS_CUT
+	hitsound = "genchop"
+	chargetime = 20
+	penfactor = 10
+	swingdelay = 3
+	candodge = TRUE
+	canparry = TRUE
+	item_d_type = "stab"

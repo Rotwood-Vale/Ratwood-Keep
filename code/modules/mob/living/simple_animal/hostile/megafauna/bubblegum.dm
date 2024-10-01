@@ -27,11 +27,9 @@ Difficulty: Hard
 
 */
 
-/mob/living/simple_animal/hostile/megafauna/bubblegum
-	name = "bubblegum"
+/mob/living/simple_animal/hostile/retaliate/rogue/megafauna/bubblegum
+	name = "abomination"
 	desc = ""
-	health = 2500
-	maxHealth = 2500
 	attack_verb_continuous = "rends"
 	attack_verb_simple = "rend"
 	attack_sound = 'sound/blank.ogg'
@@ -46,9 +44,6 @@ Difficulty: Hard
 	melee_damage_lower = 40
 	melee_damage_upper = 40
 	speed = 5
-	move_to_delay = 5
-	retreat_distance = 5
-	minimum_distance = 5
 	rapid_melee = 8 // every 1/4 second
 	melee_queue_distance = 20 // as far as possible really, need this because of blood warp
 	ranged = TRUE
@@ -56,6 +51,44 @@ Difficulty: Hard
 	del_on_death = TRUE
 	crusher_loot = list(/obj/structure/closet/crate/necropolis/bubblegum/crusher)
 	loot = list(/obj/structure/closet/crate/necropolis/bubblegum)
+
+	emote_hear = null
+	emote_see = null
+	speak_chance = 1
+	turns_per_move = 2
+	see_in_dark = 10
+	move_to_delay = 5
+	base_intents = list(/datum/intent/simple/bubblegum)
+	butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat/steak = 10, /obj/item/soul_fragment/essence = 1)
+	faction = list("caves")
+	mob_biotypes = MOB_ORGANIC|MOB_BEAST
+	health = 2500
+	maxHealth = 2500
+	melee_damage_lower = 55
+	melee_damage_upper = 80
+	vision_range = 3
+	aggro_vision_range = 8
+	environment_smash = ENVIRONMENT_SMASH_STRUCTURES
+	obj_damage = 100
+	retreat_distance = 5
+	minimum_distance = 5
+	milkies = FALSE
+	food_type = list(/obj/item/reagent_containers/food/snacks/rogue/meat, /obj/item/bodypart, /obj/item/organ)
+	footstep_type = FOOTSTEP_MOB_HEAVY
+	pooptype = null
+	STACON = 19
+	STASTR = 18
+	STASPD = 8
+	deaggroprob = 0
+	defprob = 40
+	defdrain = 10
+	retreat_health = 0
+	food = 0
+	dodgetime = 0
+	aggressive = 1
+//	stat_attack = UNCONSCIOUS
+
+
 	blood_volume = BLOOD_VOLUME_MAXIMUM //BLEED FOR ME
 	var/charging = FALSE
 	var/enrage_till = 0
@@ -102,7 +135,7 @@ Difficulty: Hard
 	chosen_message = span_colossus("I are now warping to blood around your clicked position.")
 	chosen_attack_num = 4
 
-/mob/living/simple_animal/hostile/megafauna/bubblegum/OpenFire()
+/mob/living/simple_animal/hostile/retaliate/rogue/megafauna/bubblegum/OpenFire()
 	if(charging)
 		return
 
@@ -133,13 +166,13 @@ Difficulty: Hard
 		else
 			surround_with_hallucinations()
 
-/mob/living/simple_animal/hostile/megafauna/bubblegum/proc/triple_charge()
+/mob/living/simple_animal/hostile/retaliate/rogue/megafauna/bubblegum/proc/triple_charge()
 	charge(delay = 6)
 	charge(delay = 4)
 	charge(delay = 2)
 	SetRecoveryTime(15)
 
-/mob/living/simple_animal/hostile/megafauna/bubblegum/proc/hallucination_charge()
+/mob/living/simple_animal/hostile/retaliate/rogue/megafauna/bubblegum/proc/hallucination_charge()
 	if(!BUBBLEGUM_SMASH || prob(33))
 		hallucination_charge_around(times = 6, delay = 8)
 		SetRecoveryTime(10)
@@ -150,7 +183,7 @@ Difficulty: Hard
 		triple_charge()
 		SetRecoveryTime(20)
 
-/mob/living/simple_animal/hostile/megafauna/bubblegum/proc/surround_with_hallucinations()
+/mob/living/simple_animal/hostile/retaliate/rogue/megafauna/bubblegum/proc/surround_with_hallucinations()
 	for(var/i = 1 to 5)
 		INVOKE_ASYNC(src, PROC_REF(hallucination_charge_around), 2, 8, 2, 0, 4)
 		if(ismob(target))
@@ -159,7 +192,7 @@ Difficulty: Hard
 			SLEEP_CHECK_DEATH(6)
 	SetRecoveryTime(20)
 
-/mob/living/simple_animal/hostile/megafauna/bubblegum/proc/charge(atom/chargeat = target, delay = 3, chargepast = 2)
+/mob/living/simple_animal/hostile/retaliate/rogue/megafauna/bubblegum/proc/charge(atom/chargeat = target, delay = 3, chargepast = 2)
 	if(!chargeat)
 		return
 	var/chargeturf = get_turf(chargeat)
@@ -186,7 +219,7 @@ Difficulty: Hard
 	try_bloodattack()
 	charging = FALSE
 
-/mob/living/simple_animal/hostile/megafauna/bubblegum/proc/get_mobs_on_blood()
+/mob/living/simple_animal/hostile/retaliate/rogue/megafauna/bubblegum/proc/get_mobs_on_blood()
 	var/list/targets = ListTargets()
 	. = list()
 	for(var/mob/living/L in targets)
@@ -194,14 +227,14 @@ Difficulty: Hard
 		if(bloodpool.len && (!faction_check_mob(L) || L.stat == DEAD))
 			. += L
 
-/mob/living/simple_animal/hostile/megafauna/bubblegum/proc/try_bloodattack()
+/mob/living/simple_animal/hostile/retaliate/rogue/megafauna/bubblegum/proc/try_bloodattack()
 	var/list/targets = get_mobs_on_blood()
 	if(targets.len)
 		INVOKE_ASYNC(src, PROC_REF(bloodattack), targets, prob(50))
 		return TRUE
 	return FALSE
 
-/mob/living/simple_animal/hostile/megafauna/bubblegum/proc/bloodattack(list/targets, handedness)
+/mob/living/simple_animal/hostile/retaliate/rogue/megafauna/bubblegum/proc/bloodattack(list/targets, handedness)
 	var/mob/living/target_one = pick_n_take(targets)
 	var/turf/target_one_turf = get_turf(target_one)
 	var/mob/living/target_two
@@ -233,7 +266,7 @@ Difficulty: Hard
 				else
 					bloodsmack(target_one_turf, handedness)
 
-/mob/living/simple_animal/hostile/megafauna/bubblegum/proc/bloodsmack(turf/T, handedness)
+/mob/living/simple_animal/hostile/retaliate/rogue/megafauna/bubblegum/proc/bloodsmack(turf/T, handedness)
 	if(handedness)
 		new /obj/effect/temp_visual/bubblegum_hands/rightsmack(T)
 	else
@@ -247,7 +280,7 @@ Difficulty: Hard
 			L.apply_damage(10, BRUTE, limb_to_hit, L.run_armor_check(limb_to_hit, "slash", null, null, armor_penetration))
 	SLEEP_CHECK_DEATH(3)
 
-/mob/living/simple_animal/hostile/megafauna/bubblegum/proc/bloodgrab(turf/T, handedness)
+/mob/living/simple_animal/hostile/retaliate/rogue/megafauna/bubblegum/proc/bloodgrab(turf/T, handedness)
 	if(handedness)
 		new /obj/effect/temp_visual/bubblegum_hands/rightpaw(T)
 		new /obj/effect/temp_visual/bubblegum_hands/rightthumb(T)
@@ -266,7 +299,7 @@ Difficulty: Hard
 				addtimer(CALLBACK(src, PROC_REF(devour), L), 2)
 	SLEEP_CHECK_DEATH(1)
 
-/mob/living/simple_animal/hostile/megafauna/bubblegum/proc/blood_warp()
+/mob/living/simple_animal/hostile/retaliate/rogue/megafauna/bubblegum/proc/blood_warp()
 	if(Adjacent(target))
 		return FALSE
 	var/list/can_jaunt = get_pools(get_turf(src), 1)
@@ -304,7 +337,7 @@ Difficulty: Hard
 		return TRUE
 	return FALSE
 
-/mob/living/simple_animal/hostile/megafauna/bubblegum/proc/be_aggressive()
+/mob/living/simple_animal/hostile/retaliate/rogue/megafauna/bubblegum/proc/be_aggressive()
 	if(BUBBLEGUM_IS_ENRAGED)
 		return TRUE
 	if(isliving(target))
@@ -312,17 +345,17 @@ Difficulty: Hard
 		return (livingtarget.stat != CONSCIOUS || !(livingtarget.mobility_flags & MOBILITY_STAND))
 	return FALSE
 
-/mob/living/simple_animal/hostile/megafauna/bubblegum/proc/get_retreat_distance()
+/mob/living/simple_animal/hostile/retaliate/rogue/megafauna/bubblegum/proc/get_retreat_distance()
 	return (be_aggressive() ? null : initial(retreat_distance))
 
-/mob/living/simple_animal/hostile/megafauna/bubblegum/proc/get_minimum_distance()
+/mob/living/simple_animal/hostile/retaliate/rogue/megafauna/bubblegum/proc/get_minimum_distance()
 	return (be_aggressive() ? 1 : initial(minimum_distance))
 
-/mob/living/simple_animal/hostile/megafauna/bubblegum/proc/update_approach()
+/mob/living/simple_animal/hostile/retaliate/rogue/megafauna/bubblegum/proc/update_approach()
 	retreat_distance = get_retreat_distance()
 	minimum_distance = get_minimum_distance()
 
-/mob/living/simple_animal/hostile/megafauna/bubblegum/proc/blood_enrage()
+/mob/living/simple_animal/hostile/retaliate/rogue/megafauna/bubblegum/proc/blood_enrage()
 	if(!BUBBLEGUM_CAN_ENRAGE)
 		return FALSE
 	enrage_till = world.time + enrage_time
@@ -333,17 +366,17 @@ Difficulty: Hard
 	var/datum/callback/cb = CALLBACK(src, PROC_REF(blood_enrage_end))
 	addtimer(cb, enrage_time)
 
-/mob/living/simple_animal/hostile/megafauna/bubblegum/proc/blood_enrage_end(newcolor = rgb(149, 10, 10))
+/mob/living/simple_animal/hostile/retaliate/rogue/megafauna/bubblegum/proc/blood_enrage_end(newcolor = rgb(149, 10, 10))
 	update_approach()
 	change_move_delay()
 	remove_atom_colour(TEMPORARY_COLOUR_PRIORITY, newcolor)
 
-/mob/living/simple_animal/hostile/megafauna/bubblegum/proc/change_move_delay(newmove = initial(move_to_delay))
+/mob/living/simple_animal/hostile/retaliate/rogue/megafauna/bubblegum/proc/change_move_delay(newmove = initial(move_to_delay))
 	move_to_delay = newmove
 	set_varspeed(move_to_delay)
 	handle_automated_action() // need to recheck movement otherwise move_to_delay won't update until the next checking aka will be wrong speed for a bit
 
-/mob/living/simple_animal/hostile/megafauna/bubblegum/proc/get_pools(turf/T, range)
+/mob/living/simple_animal/hostile/retaliate/rogue/megafauna/bubblegum/proc/get_pools(turf/T, range)
 	. = list()
 	for(var/obj/effect/decal/cleanable/nearby in view(T, range))
 		if(nearby.can_bloodcrawl_in())
@@ -355,7 +388,7 @@ Difficulty: Hard
 /obj/effect/decal/cleanable/blood/bubblegum/can_bloodcrawl_in()
 	return TRUE
 
-/mob/living/simple_animal/hostile/megafauna/bubblegum/proc/hallucination_charge_around(times = 4, delay = 6, chargepast = 0, useoriginal = 1, radius)
+/mob/living/simple_animal/hostile/retaliate/rogue/megafauna/bubblegum/proc/hallucination_charge_around(times = 4, delay = 6, chargepast = 0, useoriginal = 1, radius)
 	var/startingangle = rand(1, 360)
 	if(!target)
 		return
@@ -375,13 +408,13 @@ Difficulty: Hard
 				forceMove(place)
 				srcplaced = TRUE
 				continue
-		var/mob/living/simple_animal/hostile/megafauna/bubblegum/hallucination/B = new /mob/living/simple_animal/hostile/megafauna/bubblegum/hallucination(src.loc)
+		var/mob/living/simple_animal/hostile/retaliate/rogue/megafauna/bubblegum/hallucination/B = new /mob/living/simple_animal/hostile/retaliate/rogue/megafauna/bubblegum/hallucination(src.loc)
 		B.forceMove(place)
 		INVOKE_ASYNC(B, PROC_REF(charge), chargeat, delay, chargepast)
 	if(useoriginal)
 		charge(chargeat, delay, chargepast)
 
-/mob/living/simple_animal/hostile/megafauna/bubblegum/adjustBruteLoss(amount, updating_health = TRUE, forced = FALSE)
+/mob/living/simple_animal/hostile/retaliate/rogue/megafauna/bubblegum/adjustBruteLoss(amount, updating_health = TRUE, forced = FALSE)
 	. = ..()
 	if(. > 0 && prob(25))
 		var/obj/effect/decal/cleanable/blood/gibs/bubblegum/B = new /obj/effect/decal/cleanable/blood/gibs/bubblegum(loc)
@@ -399,48 +432,48 @@ Difficulty: Hard
 /obj/effect/decal/cleanable/blood/gibs/bubblegum/can_bloodcrawl_in()
 	return TRUE
 
-/mob/living/simple_animal/hostile/megafauna/bubblegum/grant_achievement(medaltype,scoretype)
+/mob/living/simple_animal/hostile/retaliate/rogue/megafauna/bubblegum/grant_achievement(medaltype,scoretype)
 	. = ..()
 	if(.)
 		SSshuttle.shuttle_purchase_requirements_met |= SHUTTLE_UNLOCK_BUBBLEGUM
 
-/mob/living/simple_animal/hostile/megafauna/bubblegum/do_attack_animation(atom/A, visual_effect_icon)
+/mob/living/simple_animal/hostile/retaliate/rogue/megafauna/bubblegum/do_attack_animation(atom/A, visual_effect_icon)
 	if(!charging)
 		..()
 
-/mob/living/simple_animal/hostile/megafauna/bubblegum/AttackingTarget()
+/mob/living/simple_animal/hostile/retaliate/rogue/megafauna/bubblegum/AttackingTarget()
 	if(!charging)
 		. = ..()
 		if(.)
 			recovery_time = world.time + 20 // can only attack melee once every 2 seconds but rapid_melee gives higher priority
 
-/mob/living/simple_animal/hostile/megafauna/bubblegum/bullet_act(obj/projectile/P)
+/mob/living/simple_animal/hostile/retaliate/rogue/megafauna/bubblegum/bullet_act(obj/projectile/P)
 	if(BUBBLEGUM_IS_ENRAGED)
 		visible_message(span_danger("[src] deflects the projectile; [p_they()] can't be hit with ranged weapons while enraged!"), span_danger("I deflect the projectile!"))
 		playsound(src, pick('sound/blank.ogg'), 300, TRUE)
 		return BULLET_ACT_BLOCK
 	return ..()
 
-/mob/living/simple_animal/hostile/megafauna/bubblegum/ex_act(severity, target)
+/mob/living/simple_animal/hostile/retaliate/rogue/megafauna/bubblegum/ex_act(severity, target)
 	if(severity >= EXPLODE_LIGHT)
 		return
 	severity = EXPLODE_LIGHT // puny mortals
 	return ..()
 
-/mob/living/simple_animal/hostile/megafauna/bubblegum/CanPass(atom/movable/mover, turf/target)
-	if(istype(mover, /mob/living/simple_animal/hostile/megafauna/bubblegum/hallucination))
+/mob/living/simple_animal/hostile/retaliate/rogue/megafauna/bubblegum/CanPass(atom/movable/mover, turf/target)
+	if(istype(mover, /mob/living/simple_animal/hostile/retaliate/rogue/megafauna/bubblegum/hallucination))
 		return TRUE
 	return ..()
 
-/mob/living/simple_animal/hostile/megafauna/bubblegum/Goto(target, delay, minimum_distance)
+/mob/living/simple_animal/hostile/retaliate/rogue/megafauna/bubblegum/Goto(target, delay, minimum_distance)
 	if(!charging)
 		..()
 
-/mob/living/simple_animal/hostile/megafauna/bubblegum/MoveToTarget(list/possible_targets)
+/mob/living/simple_animal/hostile/retaliate/rogue/megafauna/bubblegum/MoveToTarget(list/possible_targets)
 	if(!charging)
 		..()
 
-/mob/living/simple_animal/hostile/megafauna/bubblegum/Move()
+/mob/living/simple_animal/hostile/retaliate/rogue/megafauna/bubblegum/Move()
 	update_approach()
 	if(revving_charge)
 		return FALSE
@@ -449,7 +482,7 @@ Difficulty: Hard
 		DestroySurroundings()
 	..()
 
-/mob/living/simple_animal/hostile/megafauna/bubblegum/Moved(atom/OldLoc, Dir, Forced = FALSE)
+/mob/living/simple_animal/hostile/retaliate/rogue/megafauna/bubblegum/Moved(atom/OldLoc, Dir, Forced = FALSE)
 	if(Dir)
 		new /obj/effect/decal/cleanable/blood/bubblegum(src.loc)
 	if(charging)
@@ -457,7 +490,7 @@ Difficulty: Hard
 	playsound(src, 'sound/blank.ogg', 200, TRUE, 2, TRUE)
 	return ..()
 
-/mob/living/simple_animal/hostile/megafauna/bubblegum/Bump(atom/A)
+/mob/living/simple_animal/hostile/retaliate/rogue/megafauna/bubblegum/Bump(atom/A)
 	if(charging)
 		if(isturf(A) || isobj(A) && A.density)
 			A.ex_act(EXPLODE_HEAVY)
@@ -466,7 +499,8 @@ Difficulty: Hard
 			var/mob/living/L = A
 			L.visible_message(span_danger("[src] slams into [L]!"), span_danger("[src] tramples you into the ground!"))
 			src.forceMove(get_turf(L))
-			L.apply_damage(istype(src, /mob/living/simple_animal/hostile/megafauna/bubblegum/hallucination) ? 15 : 30, BRUTE)
+			L.apply_damage(istype(src, /mob/living/simple_animal/hostile/retaliate/rogue/megafauna/bubblegum/hallucination) ? 15 : 30, BRUTE)
+			L.Knockdown(30)
 			playsound(get_turf(L), 'sound/blank.ogg', 100, TRUE)
 			shake_camera(L, 4, 3)
 			shake_camera(src, 2, 3)
@@ -499,7 +533,7 @@ Difficulty: Hard
 /obj/effect/temp_visual/bubblegum_hands/leftsmack
 	icon_state = "leftsmack"
 
-/mob/living/simple_animal/hostile/megafauna/bubblegum/hallucination
+/mob/living/simple_animal/hostile/retaliate/rogue/megafauna/bubblegum/hallucination
 	name = "bubblegum's hallucination"
 	desc = ""
 	health = 1
@@ -514,34 +548,49 @@ Difficulty: Hard
 	deathsound = 'sound/blank.ogg'
 	true_spawn = FALSE
 
-/mob/living/simple_animal/hostile/megafauna/bubblegum/hallucination/Initialize()
+/mob/living/simple_animal/hostile/retaliate/rogue/megafauna/bubblegum/hallucination/Initialize()
 	..()
 	toggle_ai(AI_OFF)
 
-/mob/living/simple_animal/hostile/megafauna/bubblegum/hallucination/charge(atom/chargeat = target, delay = 3, chargepast = 2)
+/mob/living/simple_animal/hostile/retaliate/rogue/megafauna/bubblegum/hallucination/charge(atom/chargeat = target, delay = 3, chargepast = 2)
 	..()
 	qdel(src)
 
-/mob/living/simple_animal/hostile/megafauna/bubblegum/hallucination/Destroy()
+/mob/living/simple_animal/hostile/retaliate/rogue/megafauna/bubblegum/hallucination/Destroy()
 	new /obj/effect/decal/cleanable/blood(get_turf(src))
 	. = ..()
 
-/mob/living/simple_animal/hostile/megafauna/bubblegum/hallucination/CanPass(atom/movable/mover, turf/target)
-	if(istype(mover, /mob/living/simple_animal/hostile/megafauna/bubblegum)) // hallucinations should not be stopping bubblegum or eachother
+/mob/living/simple_animal/hostile/retaliate/rogue/megafauna/bubblegum/hallucination/CanPass(atom/movable/mover, turf/target)
+	if(istype(mover, /mob/living/simple_animal/hostile/retaliate/rogue/megafauna/bubblegum)) // hallucinations should not be stopping bubblegum or eachother
 		return TRUE
 	return ..()
 
-/mob/living/simple_animal/hostile/megafauna/bubblegum/hallucination/Life()
+/mob/living/simple_animal/hostile/retaliate/rogue/megafauna/bubblegum/hallucination/Life()
 	return
 
-/mob/living/simple_animal/hostile/megafauna/bubblegum/hallucination/adjustBruteLoss(amount, updating_health = TRUE, forced = FALSE)
+/mob/living/simple_animal/hostile/retaliate/rogue/megafauna/bubblegum/hallucination/adjustBruteLoss(amount, updating_health = TRUE, forced = FALSE)
 	return
 
-/mob/living/simple_animal/hostile/megafauna/bubblegum/hallucination/OpenFire()
+/mob/living/simple_animal/hostile/retaliate/rogue/megafauna/bubblegum/hallucination/OpenFire()
 	return
 
-/mob/living/simple_animal/hostile/megafauna/bubblegum/hallucination/AttackingTarget()
+/mob/living/simple_animal/hostile/retaliate/rogue/megafauna/bubblegum/hallucination/AttackingTarget()
 	return
 
-/mob/living/simple_animal/hostile/megafauna/bubblegum/hallucination/try_bloodattack()
+/mob/living/simple_animal/hostile/retaliate/rogue/megafauna/bubblegum/hallucination/try_bloodattack()
 	return
+
+
+/datum/intent/simple/bubblegum
+	name = "bubblegum"
+	icon_state = "instrike"
+	attack_verb = list("lacerates", "rends", "slams", "bashes")
+	animname = "blank22"
+	blade_class = BCLASS_CUT
+	hitsound = "genchop"
+	chargetime = 20
+	penfactor = 20
+	swingdelay = 3
+	candodge = TRUE
+	canparry = TRUE
+	item_d_type = "stab"

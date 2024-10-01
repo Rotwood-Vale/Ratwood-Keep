@@ -82,7 +82,7 @@
 	convert_damage = FALSE
 
 
-	shapeshift_type = /mob/living/simple_animal/hostile/megafauna/dragon/lesser
+	shapeshift_type = /mob/living/simple_animal/hostile/retaliate/rogue/megafauna/dragon/lesser
 
 
 /obj/shapeshift_holder

@@ -1,0 +1,6 @@
+{
+    "map_name": "deepnorth",
+    "map_path": "map_files/hearthstone",
+    "map_file": "deepnorth.dmm",
+	"traits": [{"Up": 1}, {"Up": 1, "Down": -1}, {"Down": -1}]
+}

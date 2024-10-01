@@ -16,7 +16,7 @@
   * Herald is a more concentrated variation of the Colossus fight, having less projectiles overall, but more focused attacks.
   */
 
-/mob/living/simple_animal/hostile/asteroid/elite/herald
+/mob/living/simple_animal/hostile/retaliate/rogue/asteroid/elite/herald
 	name = "herald"
 	desc = ""
 	icon_state = "herald"
@@ -24,10 +24,6 @@
 	icon_aggro = "herald"
 	icon_dead = "herald_dying"
 	icon_gib = "syndicate_gib"
-	maxHealth = 800
-	health = 800
-	melee_damage_lower = 20
-	melee_damage_upper = 20
 	attack_verb_continuous = "preaches to"
 	attack_verb_simple = "preach to"
 	attack_sound = 'sound/blank.ogg'
@@ -40,26 +36,61 @@
 	loot_drop = /obj/item/clothing/neck/cloak/herald_cloak
 
 	can_talk = 1
+	emote_hear = null
+	emote_see = null
+	speak_chance = 1
+	turns_per_move = 4
+	see_in_dark = 10
+	move_to_delay = 10
+	base_intents = list(/datum/intent/simple/drake)
+	butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat/steak = 2, /obj/item/soul_fragment/essence)
+	faction = list("caves")
+	mob_biotypes = MOB_ORGANIC|MOB_BEAST
+	maxHealth = 800
+	health = 800
+	melee_damage_lower = 20
+	melee_damage_upper = 20
+	vision_range = 5
+	aggro_vision_range = 8
+	environment_smash = ENVIRONMENT_SMASH_STRUCTURES
+	obj_damage = 100
+	retreat_distance = 0
+	minimum_distance = 0
+	milkies = FALSE
+	food_type = list(/obj/item/reagent_containers/food/snacks/rogue/meat, /obj/item/bodypart, /obj/item/organ)
+	footstep_type = FOOTSTEP_MOB_HEAVY
+	pooptype = null
+	STACON = 19
+	STASTR = 15
+	STASPD = 8
+	deaggroprob = 0
+	defprob = 40
+	defdrain = 10
+	retreat_health = 100
+	food = 0
+	dodgetime = 0
+	aggressive = 1
+//	stat_attack = UNCONSCIOUS
 
 	attack_action_types = list(/datum/action/innate/elite_attack/herald_trishot,
 								/datum/action/innate/elite_attack/herald_directionalshot,
 								/datum/action/innate/elite_attack/herald_teleshot,
 								/datum/action/innate/elite_attack/herald_mirror)
 
-	var/mob/living/simple_animal/hostile/asteroid/elite/herald/mirror/my_mirror = null
+	var/mob/living/simple_animal/hostile/retaliate/rogue/asteroid/elite/herald/mirror/my_mirror = null
 	var/is_mirror = FALSE
 
-/mob/living/simple_animal/hostile/asteroid/elite/herald/death()
+/mob/living/simple_animal/hostile/retaliate/rogue/asteroid/elite/herald/death()
 	. = ..()
 	if(!is_mirror)
 		addtimer(CALLBACK(src, PROC_REF(become_ghost)), 8)
 	if(my_mirror != null)
 		qdel(my_mirror)
 
-/mob/living/simple_animal/hostile/asteroid/elite/herald/proc/become_ghost()
+/mob/living/simple_animal/hostile/retaliate/rogue/asteroid/elite/herald/proc/become_ghost()
 	icon_state = "herald_ghost"
 
-/mob/living/simple_animal/hostile/asteroid/elite/herald/say(message, bubble_type, list/spans = list(), sanitize = TRUE, datum/language/language = null, ignore_spam = FALSE, forced = null)
+/mob/living/simple_animal/hostile/retaliate/rogue/asteroid/elite/herald/say(message, bubble_type, list/spans = list(), sanitize = TRUE, datum/language/language = null, ignore_spam = FALSE, forced = null)
 	. = ..()
 	playsound(get_turf(src), 'sound/blank.ogg', 20, TRUE)
 
@@ -87,7 +118,7 @@
 	chosen_message = span_boldwarning("I will spawn a mirror which duplicates your attacks.")
 	chosen_attack_num = HERALD_MIRROR
 
-/mob/living/simple_animal/hostile/asteroid/elite/herald/OpenFire()
+/mob/living/simple_animal/hostile/retaliate/rogue/asteroid/elite/herald/OpenFire()
 	if(client)
 		switch(chosen_attack)
 			if(HERALD_TRISHOT)
@@ -122,7 +153,7 @@
 		if(HERALD_MIRROR)
 			herald_mirror()
 
-/mob/living/simple_animal/hostile/asteroid/elite/herald/proc/shoot_projectile(turf/marker, set_angle, is_teleshot)
+/mob/living/simple_animal/hostile/retaliate/rogue/asteroid/elite/herald/proc/shoot_projectile(turf/marker, set_angle, is_teleshot)
 	var/turf/startloc = get_turf(src)
 	var/obj/projectile/herald/H = null
 	if(!is_teleshot)
@@ -135,7 +166,7 @@
 		H.original = target
 	H.fire(set_angle)
 
-/mob/living/simple_animal/hostile/asteroid/elite/herald/proc/herald_trishot(target)
+/mob/living/simple_animal/hostile/retaliate/rogue/asteroid/elite/herald/proc/herald_trishot(target)
 	ranged_cooldown = world.time + 30
 	playsound(get_turf(src), 'sound/blank.ogg', 20, TRUE)
 	var/target_turf = get_turf(target)
@@ -149,17 +180,17 @@
 		addtimer(CALLBACK(src, PROC_REF(shoot_projectile), target_turf, angle_to_target, FALSE), 12)
 		addtimer(CALLBACK(src, PROC_REF(shoot_projectile), target_turf, angle_to_target, FALSE), 14)
 
-/mob/living/simple_animal/hostile/asteroid/elite/herald/proc/herald_circleshot()
+/mob/living/simple_animal/hostile/retaliate/rogue/asteroid/elite/herald/proc/herald_circleshot()
 	var/static/list/directional_shot_angles = list(0, 45, 90, 135, 180, 225, 270, 315)
 	for(var/i in directional_shot_angles)
 		shoot_projectile(get_turf(src), i, FALSE)
 
-/mob/living/simple_animal/hostile/asteroid/elite/herald/proc/unenrage()
+/mob/living/simple_animal/hostile/retaliate/rogue/asteroid/elite/herald/proc/unenrage()
 	if(stat == DEAD || is_mirror)
 		return
 	icon_state = "herald"
 
-/mob/living/simple_animal/hostile/asteroid/elite/herald/proc/herald_directionalshot()
+/mob/living/simple_animal/hostile/retaliate/rogue/asteroid/elite/herald/proc/herald_directionalshot()
 	ranged_cooldown = world.time + 50
 	if(!is_mirror)
 		icon_state = "herald_enraged"
@@ -170,25 +201,25 @@
 		addtimer(CALLBACK(src, PROC_REF(herald_circleshot)), 15)
 	addtimer(CALLBACK(src, PROC_REF(unenrage)), 20)
 
-/mob/living/simple_animal/hostile/asteroid/elite/herald/proc/herald_teleshot(target)
+/mob/living/simple_animal/hostile/retaliate/rogue/asteroid/elite/herald/proc/herald_teleshot(target)
 	ranged_cooldown = world.time + 30
 	playsound(get_turf(src), 'sound/blank.ogg', 20, TRUE)
 	var/target_turf = get_turf(target)
 	var/angle_to_target = Get_Angle(src, target_turf)
 	shoot_projectile(target_turf, angle_to_target, TRUE)
 
-/mob/living/simple_animal/hostile/asteroid/elite/herald/proc/herald_mirror()
+/mob/living/simple_animal/hostile/retaliate/rogue/asteroid/elite/herald/proc/herald_mirror()
 	ranged_cooldown = world.time + 40
 	playsound(get_turf(src), 'sound/blank.ogg', 20, TRUE)
 	if(my_mirror != null)
 		qdel(my_mirror)
 		my_mirror = null
-	var/mob/living/simple_animal/hostile/asteroid/elite/herald/mirror/new_mirror = new /mob/living/simple_animal/hostile/asteroid/elite/herald/mirror(loc)
+	var/mob/living/simple_animal/hostile/retaliate/rogue/asteroid/elite/herald/mirror/new_mirror = new /mob/living/simple_animal/hostile/retaliate/rogue/asteroid/elite/herald/mirror(loc)
 	my_mirror = new_mirror
 	my_mirror.my_master = src
 	my_mirror.faction = faction.Copy()
 
-/mob/living/simple_animal/hostile/asteroid/elite/herald/mirror
+/mob/living/simple_animal/hostile/retaliate/rogue/asteroid/elite/herald/mirror
 	name = "herald's mirror"
 	desc = ""
 	health = 60
@@ -199,13 +230,13 @@
 	movement_type = FLYING
 	del_on_death = TRUE
 	is_mirror = TRUE
-	var/mob/living/simple_animal/hostile/asteroid/elite/herald/my_master = null
+	var/mob/living/simple_animal/hostile/retaliate/rogue/asteroid/elite/herald/my_master = null
 
-/mob/living/simple_animal/hostile/asteroid/elite/herald/mirror/Initialize()
+/mob/living/simple_animal/hostile/retaliate/rogue/asteroid/elite/herald/mirror/Initialize()
 	..()
 	toggle_ai(AI_OFF)
 
-/mob/living/simple_animal/hostile/asteroid/elite/herald/mirror/Destroy()
+/mob/living/simple_animal/hostile/retaliate/rogue/asteroid/elite/herald/mirror/Destroy()
 	if(my_master != null)
 		my_master.my_mirror = null
 	. = ..()
@@ -234,7 +265,7 @@
 	else if(isliving(target))
 		var/mob/living/L = target
 		var/mob/living/F = firer
-		if(F != null && istype(F, /mob/living/simple_animal/hostile/asteroid/elite) && F.faction_check_mob(L))
+		if(F != null && istype(F,/mob/living/simple_animal/hostile/retaliate/rogue/asteroid/elite) && F.faction_check_mob(L))
 			L.heal_overall_damage(damage)
 
 /obj/projectile/herald/teleshot/on_hit(atom/target, blocked = FALSE)

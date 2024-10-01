@@ -78,7 +78,7 @@
 			new /obj/item/borg/upgrade/modkit/lifesteal(src)
 			new /obj/item/bedsheet/cult(src)
 		if(28)
-			new /obj/item/clothing/neck/necklace/memento_mori(src)
+			new /obj/item/clothing/neck/roguetown/memento_mori(src)
 
 //KA modkit design discs
 /obj/item/disk/design_disk/modkit_disc
@@ -198,7 +198,7 @@
 	activated = TRUE
 
 //Memento Mori
-/obj/item/clothing/neck/necklace/memento_mori
+/obj/item/clothing/neck/roguetown/memento_mori
 	name = "Memento Mori"
 	desc = ""
 	icon = 'icons/obj/lavaland/artefacts.dmi'
@@ -207,21 +207,21 @@
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
 	var/mob/living/carbon/human/active_owner
 
-/obj/item/clothing/neck/necklace/memento_mori/item_action_slot_check(slot)
+/obj/item/clothing/neck/roguetown/memento_mori/item_action_slot_check(slot)
 	return slot == SLOT_NECK
 
-/obj/item/clothing/neck/necklace/memento_mori/dropped(mob/user)
+/obj/item/clothing/neck/roguetown/memento_mori/dropped(mob/user)
 	..()
 	if(active_owner)
 		mori()
 
 //Just in case
-/obj/item/clothing/neck/necklace/memento_mori/Destroy()
+/obj/item/clothing/neck/roguetown/memento_mori/Destroy()
 	if(active_owner)
 		mori()
 	return ..()
 
-/obj/item/clothing/neck/necklace/memento_mori/proc/memento(mob/living/carbon/human/user)
+/obj/item/clothing/neck/roguetown/memento_mori/proc/memento(mob/living/carbon/human/user)
 	to_chat(user, span_warning("I feel my life being drained by the pendant..."))
 	if(do_after(user, 40, target = user))
 		to_chat(user, span_notice("My lifeforce is now linked to the pendant! You feel like removing it would kill you, and yet you instinctively know that until then, you won't die."))
@@ -231,7 +231,7 @@
 		icon_state = "memento_mori_active"
 		active_owner = user
 
-/obj/item/clothing/neck/necklace/memento_mori/proc/mori()
+/obj/item/clothing/neck/roguetown/memento_mori/proc/mori()
 	icon_state = "memento_mori"
 	if(!active_owner)
 		return
@@ -246,7 +246,7 @@
 	desc = ""
 
 /datum/action/item_action/hands_free/memento_mori/Trigger()
-	var/obj/item/clothing/neck/necklace/memento_mori/MM = target
+	var/obj/item/clothing/neck/roguetown/memento_mori/MM = target
 	if(!MM.active_owner)
 		if(ishuman(owner))
 			MM.memento(owner)
@@ -754,16 +754,11 @@
 
 /obj/structure/closet/crate/necropolis/dragon/PopulateContents()
 //	var/loot = rand(1,7)
-	var/list/loot = list(/obj/item/book/granter/trait/defense/heavyarmor=40,
-		/obj/item/book/granter/trait/defense/mediumarmor=20,
-		/obj/item/book/granter/trait/war/undying=10,
-		/obj/item/book/granter/trait/war/relentless=9,
-		/obj/item/clothing/suit/roguetown/armor/carapace/dragon=40,
-		/obj/item/clothing/under/roguetown/carapacelegs/dragon=60,
-		/obj/item/clothing/suit/roguetown/armor/carapace/dragon/cuirass=30,
-		/obj/item/clothing/under/roguetown/carapacelegs/dragon/skirt=30,
-		/obj/item/clothing/head/roguetown/helmet/carapacehelm/dragon=50,)
-	if(prob(100))
+	var/list/loot = list(/obj/item/book/granter/trait/defense/heavyarmor=35,
+		/obj/item/book/granter/trait/defense/mediumarmor=12,
+		/obj/item/book/granter/trait/war/undying=8,
+		/obj/item/natural/dragon_head = 45)
+	if(prob(50))
 		var/I = pickweight(loot)
 		new I(src)
 /*		if(1)
@@ -924,7 +919,7 @@
 	stage3	= list(span_danger("I have an overwhelming urge to terrorize some peasants."), span_danger("My teeth feel sharper."))
 	stage4	= list(span_danger("My blood burns."))
 	stage5	= list(span_danger("You're a fucking dragon. However, any previous allegiances you held still apply. It'd be incredibly rude to eat my still human friends for no reason."))
-	new_form = /mob/living/simple_animal/hostile/megafauna/dragon/lesser
+	new_form = /mob/living/simple_animal/hostile/retaliate/rogue/megafauna/dragon/lesser
 
 
 //Lava Staff
@@ -1381,3 +1376,160 @@
 			new /obj/item/wisp_lantern(src)
 		if(3)
 			new /obj/item/prisoncube(src)
+
+
+
+//Sif stuff
+//=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=Sword Of The Forsaken=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=//
+
+/*Videos on what the sword can do:
+**
+**Attacking: ----------	https://bungdeep.com/Sif/Sword_of_the_Forsaken_Attack.mp4
+**Butchering: --------- https://bungdeep.com/Sif/Sword_of_the_Forsaken_Butcher.mp4
+**Dodging: ------------ https://bungdeep.com/Sif/Sword_of_the_Forsaken_Block_Melee.png
+**Projectile Dodging: - https://bungdeep.com/Sif/Sword_of_the_Forsaken_Block.png
+**
+*/
+/obj/item/rogueweapon/sword/sword_of_the_forsaken
+	name = "Sword of the Forsaken"
+	desc = "A giant, glowing, permafrost blade that grows and slightly shrinks in size depending on the wielder's strength."
+	icon = 'modular_hearthstone/icons/obj/lavaland/sif.dmi'
+	icon_state = "sword_of_the_forsaken"
+	item_state = "sword_of_the_forsaken"
+	lefthand_file = 'modular_hearthstone/icons/mob/inhands/item_lefthand.dmi'
+	righthand_file = 'modular_hearthstone/icons/mob/inhands/item_righthand.dmi'
+	w_class = WEIGHT_CLASS_BULKY
+	force = 20
+	throwforce = 10
+	// block_chance = 20 //does nothing on rogue
+	possible_item_intents = list(/datum/intent/sword/cut, /datum/intent/sword/thrust, /datum/intent/sword/chop)
+	gripped_intents = list(/datum/intent/sword/cut, /datum/intent/sword/thrust, /datum/intent/sword/chop)
+	max_integrity = 300
+	max_blade_int = 300
+	wdefense = 10
+	sellprice = 80
+	//armor_penetration = 200 //the armor penetration is really what makes this unique and actually worth it so boomp it //does nothing on rogue
+	hitsound = 'modular_hearthstone/sound/sif/sif_slash.ogg'
+	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut", "gutted", "gored")
+	// sharpness = SHARP_EDGED
+	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
+
+//Enables the sword to butcher bodies
+/obj/item/melee/sword_of_the_forsaken/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/butchering, 50, 100, 10)
+
+//Sword blocking attacks, really hard to block projectiles but still possible.
+// /obj/item/melee/sword_of_the_forsaken/run_block(mob/living/owner, atom/object, damage, attack_text, attack_type, armour_penetration, mob/attacker, def_zone, final_block_chance, list/block_return)
+// 	if(attack_type == ATTACK_TYPE_PROJECTILE)
+// 		final_block_chance = 10 //half as much what you get in melee
+// 	return ..()
+
+//=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=End of Sworf Of The Forsaken=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=//
+
+
+//=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=Necklace Of The Forsaken=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=//
+
+/*Videos on what the necklace can do:
+**
+**Binding the necklace to yourself: ------- https://bungdeep.com/Sif/Necklace_of_the_Forsaken_Binding.mp4
+**Reviving when died: --------------------- https://bungdeep.com/Sif/Necklace_of_the_Forsaken_Death_Revive.mp4
+**Becomes a cosmetic item after it is used: https://bungdeep.com/Sif/Necklace_of_the_Forsaken_Revive_Used.png
+**
+*/
+/obj/item/clothing/neck/roguetown/necklace_of_the_forsaken
+	name = "Necklace of the Forsaken"
+	desc = "A rose gold necklace with a small static ember that burns inside of the black gem stone, making it warm to the touch."
+	icon = 'modular_hearthstone/icons/obj/lavaland/sif.dmi'
+	icon_state = "necklace_forsaken_active"
+	actions_types = list(/datum/action/item_action/hands_free/necklace_of_the_forsaken)
+	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
+	var/mob/living/carbon/active_owner
+	var/numUses = 1
+
+/obj/item/clothing/neck/roguetown/necklace_of_the_forsaken/item_action_slot_check(slot)
+	return (..() && (slot == ITEM_SLOT_NECK))
+
+/obj/item/clothing/neck/roguetown/necklace_of_the_forsaken/dropped(mob/user)
+	..()
+	if(active_owner)
+		remove_necklace()
+
+//Apply a temp buff until the necklace is used
+/obj/item/clothing/neck/roguetown/necklace_of_the_forsaken/proc/temp_buff(mob/living/carbon/human/user)
+	to_chat(user, span_warning("You feel as if you have a second chance at something, but you're not sure what."))
+	if(do_after(user, 4 SECONDS, user))
+		to_chat(user, span_notice("The ember warms you..."))
+		ADD_TRAIT(user, TRAIT_NOHARDCRIT, "necklace_of_the_forsaken")//less chance of being gibbed
+		active_owner = user
+
+//Revive the user and remove buffs
+/obj/item/clothing/neck/roguetown/necklace_of_the_forsaken/proc/second_chance()
+	icon_state = "necklace_forsaken_active"
+	if(!active_owner)
+		return
+	var/mob/living/carbon/C = active_owner
+	active_owner = null
+	to_chat(C, span_userdanger("You feel a scorching burn fill your body and limbs!"))
+	C.revive(TRUE, FALSE)
+	remove_necklace() //remove buffs
+
+//Remove buffs
+/obj/item/clothing/neck/roguetown/necklace_of_the_forsaken/proc/remove_necklace()
+	icon_state = "necklace_forsaken_active"
+	if(!active_owner)
+		return
+	REMOVE_TRAIT(active_owner, TRAIT_NOHARDCRIT, "necklace_of_the_forsaken")
+	active_owner = null //just in case
+
+//Add action
+/datum/action/item_action/hands_free/necklace_of_the_forsaken
+	check_flags = NONE
+	name = "Necklace of the Forsaken"
+	desc = "Bind the necklaces ember to yourself, so that next time you activate it, it will revive or fully heal you whether dead or knocked out. (Beware of being gibbed)"
+
+//What happens when the user clicks on datum
+/datum/action/item_action/hands_free/necklace_of_the_forsaken/Trigger()
+	var/obj/item/clothing/neck/roguetown/necklace_of_the_forsaken/MM = target
+	if(MM.numUses <= 0)//skip if it has already been used up
+		return
+	if(!MM.active_owner)//apply bind if there is no active owner
+		if(iscarbon(owner))
+			MM.temp_buff(owner)
+		src.desc = "Revive or fully heal yourself, but you can only do this once! Can be used when knocked out or dead."
+		to_chat(MM.active_owner, span_userdanger("You have binded the ember to yourself! The next time you use the necklace it will heal you!"))
+	else if(MM.numUses >= 1 && MM.active_owner)//revive / heal then remove usage
+		MM.second_chance()
+		MM.numUses = 0
+		MM.icon_state = "necklace_forsaken"
+		MM.desc = "A rose gold necklace that used to have a bright burning ember inside of it."
+		src.desc = "The necklaces ember has already been used..."
+
+//=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=End of Necklace of The Forsaken=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=//
+
+
+//Sifs loot chest
+/obj/structure/closet/crate/necropolis/sif
+	name = "Fenrir's Truce"
+	color = "#73e3ff"
+
+/obj/structure/closet/crate/necropolis/sif/PopulateContents()
+	var/list/loot = list(/obj/item/melee/sword_of_the_forsaken=30,
+		/obj/item/clothing/neck/roguetown/necklace_of_the_forsaken=12,
+		/obj/item/book/granter/trait/war/relentless=8,
+		/obj/item/natural/volf_head = 50,
+		/obj/item/storage/belt/rogue/pouch/coins/mid = 20,
+		/obj/item/reagent_containers/glass/bottle/rogue/healthpot = 50,)
+	if(prob(100))
+		var/I = pickweight(loot)
+		new I(src)
+		new I(src)
+		
+
+/obj/structure/closet/crate/necropolis/sif/crusher
+	name = "Great Brown Wolf Sif's infinity chest"
+
+/obj/structure/closet/crate/necropolis/sif/crusher/PopulateContents()
+	new /obj/item/melee/sword_of_the_forsaken(src)
+	new /obj/item/clothing/neck/roguetown/necklace_of_the_forsaken(src)
+	new /obj/item/crusher_trophy/dark_energy(src)

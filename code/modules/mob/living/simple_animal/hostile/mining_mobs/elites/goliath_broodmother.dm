@@ -16,8 +16,8 @@
   * The broodmother is a fight revolving around stage control, as the activator has to manage the baby goliaths and the broodmother herself, along with all the tendrils.
   */
 
-/mob/living/simple_animal/hostile/asteroid/elite/broodmother
-	name = "goliath broodmother"
+/mob/living/simple_animal/hostile/retaliate/rogue/asteroid/elite/broodmother
+	name = "birthgiver"
 	desc = ""
 	gender = FEMALE
 	icon_state = "broodmother"
@@ -25,8 +25,6 @@
 	icon_aggro = "broodmother"
 	icon_dead = "egg_sac"
 	icon_gib = "syndicate_gib"
-	maxHealth = 800
-	health = 800
 	melee_damage_lower = 30
 	melee_damage_upper = 30
 	armor_penetration = 30
@@ -35,11 +33,48 @@
 	attack_sound = 'sound/blank.ogg'
 	throw_message = "does nothing to the rocky hide of the"
 	speed = 2
-	move_to_delay = 5
-	mob_biotypes = MOB_ORGANIC|MOB_BEAST
 	mouse_opacity = MOUSE_OPACITY_ICON
 	deathmessage = "explodes into gore!"
 	loot_drop = /obj/item/crusher_trophy/broodmother_tongue
+
+
+
+	emote_hear = null
+	emote_see = null
+	speak_chance = 1
+	turns_per_move = 2
+	see_in_dark = 10
+	move_to_delay = 5
+	base_intents = list(/datum/intent/simple/drake)
+	butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat/steak = 2)
+	faction = list("caves")
+	mob_biotypes = MOB_ORGANIC|MOB_BEAST
+	maxHealth = 800
+	health = 800
+	melee_damage_lower = 30
+	melee_damage_upper = 30
+	vision_range = 5
+	aggro_vision_range = 8
+	environment_smash = ENVIRONMENT_SMASH_STRUCTURES
+	obj_damage = 100
+	retreat_distance = 0
+	minimum_distance = 0
+	milkies = FALSE
+	food_type = list(/obj/item/reagent_containers/food/snacks/rogue/meat, /obj/item/bodypart, /obj/item/organ)
+	footstep_type = FOOTSTEP_MOB_HEAVY
+	pooptype = null
+	STACON = 19
+	STASTR = 16
+	STASPD = 5
+	deaggroprob = 0
+	defprob = 40
+	defdrain = 10
+	retreat_health = 0
+	food = 0
+	dodgetime = 0
+	aggressive = 1
+//	stat_attack = UNCONSCIOUS
+	pixel_x = -16
 
 	attack_action_types = list(/datum/action/innate/elite_attack/tentacle_patch,
 								/datum/action/innate/elite_attack/spawn_children,
@@ -47,7 +82,7 @@
 								/datum/action/innate/elite_attack/call_children)
 
 	var/rand_tent = 0
-	var/list/mob/living/simple_animal/hostile/asteroid/elite/broodmother_child/children_list = list()
+	var/list/mob/living/simple_animal/hostile/retaliate/rogue/asteroid/elite/broodmother_child/children_list = list()
 
 /datum/action/innate/elite_attack/tentacle_patch
 	name = "Tentacle Patch"
@@ -73,7 +108,7 @@
 	chosen_message = span_boldwarning("I will summon your children to your location.")
 	chosen_attack_num = CALL_CHILDREN
 
-/mob/living/simple_animal/hostile/asteroid/elite/broodmother/OpenFire()
+/mob/living/simple_animal/hostile/retaliate/rogue/asteroid/elite/broodmother/OpenFire()
 	if(client)
 		switch(chosen_attack)
 			if(TENTACLE_PATCH)
@@ -96,7 +131,7 @@
 		if(CALL_CHILDREN)
 			call_children()
 
-/mob/living/simple_animal/hostile/asteroid/elite/broodmother/Life()
+/mob/living/simple_animal/hostile/retaliate/rogue/asteroid/elite/broodmother/Life()
 	. = ..()
 	if(health < maxHealth * 0.5 && rand_tent < world.time)
 		rand_tent = world.time + 30
@@ -108,7 +143,7 @@
 			var/turf/t = pick_n_take(tentacle_loc)
 			new /obj/effect/temp_visual/goliath_tentacle/broodmother(t, src)
 
-/mob/living/simple_animal/hostile/asteroid/elite/broodmother/proc/tentacle_patch(target)
+/mob/living/simple_animal/hostile/retaliate/rogue/asteroid/elite/broodmother/proc/tentacle_patch(target)
 	ranged_cooldown = world.time + 15
 	var/tturf = get_turf(target)
 	if(!isturf(tturf))
@@ -116,20 +151,20 @@
 	visible_message(span_warning("[src] digs its tentacles under [target]!"))
 	new /obj/effect/temp_visual/goliath_tentacle/broodmother/patch(tturf, src)
 
-/mob/living/simple_animal/hostile/asteroid/elite/broodmother/proc/spawn_children(target)
+/mob/living/simple_animal/hostile/retaliate/rogue/asteroid/elite/broodmother/proc/spawn_children(target)
 	ranged_cooldown = world.time + 40
 	visible_message(span_boldwarning("The ground churns behind [src]!"))
 	for(var/i in 1 to 2)
 		if(children_list.len >= 8)
 			return
-		var/mob/living/simple_animal/hostile/asteroid/elite/broodmother_child/newchild = new /mob/living/simple_animal/hostile/asteroid/elite/broodmother_child(loc)
+		var/mob/living/simple_animal/hostile/retaliate/rogue/asteroid/elite/broodmother_child/newchild = new /mob/living/simple_animal/hostile/retaliate/rogue/asteroid/elite/broodmother_child(loc)
 		newchild.GiveTarget(target)
 		newchild.faction = faction.Copy()
 		visible_message(span_boldwarning("[newchild] appears below [src]!"))
 		newchild.mother = src
 		children_list += newchild
 
-/mob/living/simple_animal/hostile/asteroid/elite/broodmother/proc/rage()
+/mob/living/simple_animal/hostile/retaliate/rogue/asteroid/elite/broodmother/proc/rage()
 	ranged_cooldown = world.time + 70
 	playsound(src,'sound/blank.ogg', 200, 1)
 	visible_message(span_warning("[src] starts picking up speed!"))
@@ -138,12 +173,12 @@
 	move_to_delay = 3
 	addtimer(CALLBACK(src, PROC_REF(reset_rage)), 65)
 
-/mob/living/simple_animal/hostile/asteroid/elite/broodmother/proc/reset_rage()
+/mob/living/simple_animal/hostile/retaliate/rogue/asteroid/elite/broodmother/proc/reset_rage()
 	color = "#FFFFFF"
 	set_varspeed(2)
 	move_to_delay = 5
 
-/mob/living/simple_animal/hostile/asteroid/elite/broodmother/proc/call_children()
+/mob/living/simple_animal/hostile/retaliate/rogue/asteroid/elite/broodmother/proc/call_children()
 	ranged_cooldown = world.time + 60
 	visible_message(span_warning("The ground shakes near [src]!"))
 	var/list/directions = GLOB.cardinals.Copy() + GLOB.diagonals.Copy()
@@ -155,8 +190,8 @@
 			playsound(src, 'sound/blank.ogg', 100, 1)
 
 //The goliath's children.  Pretty weak, simple mobs which are able to put a single tentacle under their target when at range.
-/mob/living/simple_animal/hostile/asteroid/elite/broodmother_child
-	name = "baby goliath"
+/mob/living/simple_animal/hostile/retaliate/rogue/asteroid/elite/broodmother_child
+	name = "newborn"
 	desc = ""
 	icon = 'icons/mob/lavaland/lavaland_monsters.dmi'
 	icon_state = "goliath_baby"
@@ -164,25 +199,55 @@
 	icon_aggro = "goliath_baby"
 	icon_dead = "goliath_baby_dead"
 	icon_gib = "syndicate_gib"
-	maxHealth = 30
-	health = 30
-	melee_damage_lower = 5
-	melee_damage_upper = 5
 	attack_verb_continuous = "bashes against"
 	attack_verb_simple = "bash against"
 	attack_sound = 'sound/blank.ogg'
 	throw_message = "does nothing to the rocky hide of the"
-	speed = 2
-	move_to_delay = 5
-	mob_biotypes = MOB_ORGANIC|MOB_BEAST
+	speed = 3
 	mouse_opacity = MOUSE_OPACITY_ICON
-	butcher_results = list()
 	guaranteed_butcher_results = list(/obj/item/stack/sheet/animalhide/goliath_hide = 1)
 	deathmessage = "falls to the ground."
 	status_flags = CANPUSH
-	var/mob/living/simple_animal/hostile/asteroid/elite/broodmother/mother = null
 
-/mob/living/simple_animal/hostile/asteroid/elite/broodmother_child/OpenFire(target)
+
+	emote_hear = null
+	emote_see = null
+	speak_chance = 1
+	turns_per_move = 2
+	see_in_dark = 10
+	move_to_delay = 5
+	base_intents = list(/datum/intent/simple/drake)
+	butcher_results = list()
+	faction = list("caves")
+	mob_biotypes = MOB_ORGANIC|MOB_BEAST
+	maxHealth = 30
+	health = 30
+	melee_damage_lower = 10
+	melee_damage_upper = 10
+	vision_range = 5
+	aggro_vision_range = 8
+	environment_smash = ENVIRONMENT_SMASH_STRUCTURES
+	obj_damage = 100
+	retreat_distance = 0
+	minimum_distance = 0
+	milkies = FALSE
+	food_type = list(/obj/item/reagent_containers/food/snacks/rogue/meat, /obj/item/bodypart, /obj/item/organ)
+	footstep_type = FOOTSTEP_MOB_HEAVY
+	pooptype = null
+	STACON = 20
+	STASTR = 12
+	STASPD = 10
+	deaggroprob = 0
+	defprob = 40
+	defdrain = 10
+	retreat_health = 0
+	food = 0
+	dodgetime = 0
+	aggressive = 1
+//	stat_attack = UNCONSCIOUS
+	var/mob/living/simple_animal/hostile/retaliate/rogue/asteroid/elite/broodmother/mother = null
+
+/mob/living/simple_animal/hostile/retaliate/rogue/asteroid/elite/broodmother_child/OpenFire(target)
 	ranged_cooldown = world.time + 40
 	var/tturf = get_turf(target)
 	if(!isturf(tturf))
@@ -191,7 +256,7 @@
 		visible_message(span_warning("[src] digs one of its tentacles under [target]!"))
 		new /obj/effect/temp_visual/goliath_tentacle/broodmother(tturf, src)
 
-/mob/living/simple_animal/hostile/asteroid/elite/broodmother_child/death()
+/mob/living/simple_animal/hostile/retaliate/rogue/asteroid/elite/broodmother_child/death()
 	. = ..()
 	if(mother != null)
 		mother.children_list -= src
@@ -228,7 +293,7 @@
 
 // Broodmother's loot: Broodmother Tongue
 /obj/item/crusher_trophy/broodmother_tongue
-	name = "broodmother tongue"
+	name = "eldritch tongue"
 	desc = ""
 	icon = 'icons/obj/lavaland/elite_trophies.dmi'
 	icon_state = "broodmother_tongue"

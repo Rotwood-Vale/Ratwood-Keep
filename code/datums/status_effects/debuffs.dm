@@ -407,7 +407,7 @@
 				spawn_turf = locate(owner.x + pick(rand(10, 15), rand(-10, -15)), owner.y + pick(rand(10, 15), rand(-10, -15)), owner.z)
 				sanity--
 			if(spawn_turf)
-				var/mob/living/simple_animal/hostile/asteroid/curseblob/C = new (spawn_turf)
+				var/mob/living/simple_animal/hostile/retaliate/rogue/asteroid/curseblob/C = new (spawn_turf)
 				C.set_target = owner
 				C.GiveTarget()
 		if(curse_flags & CURSE_GRASPING)

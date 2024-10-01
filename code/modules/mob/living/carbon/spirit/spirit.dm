@@ -59,7 +59,7 @@
 	owned_lantern = L
 	put_in_hands(L)
 	AddComponent(/datum/component/footstep, FOOTSTEP_MOB_BAREFOOT, 1, 2)
-	addtimer(CALLBACK(src, PROC_REF(give_patron_toll)), 5 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(give_patron_toll)), 15 MINUTES)
 
 /mob/living/carbon/spirit/IgniteMob() // Override so they don't catch on fire.
 	return

@@ -34,11 +34,9 @@ Difficulty: Hard
 
 */
 
-/mob/living/simple_animal/hostile/megafauna/hierophant
+/mob/living/simple_animal/hostile/retaliate/rogue/megafauna/hierophant
 	name = "hierophant"
 	desc = ""
-	health = 2500
-	maxHealth = 2500
 	attack_verb_continuous = "clubs"
 	attack_verb_simple = "club"
 	attack_sound = 'sound/blank.ogg'
@@ -47,16 +45,11 @@ Difficulty: Hard
 	friendly_verb_continuous = "stares down"
 	friendly_verb_simple = "stare down"
 	icon = 'icons/mob/lavaland/hierophant_new.dmi'
-	faction = list("boss") //asteroid mobs? get that shit out of my beautiful square house
 	speak_emote = list("preaches")
 	armor_penetration = 50
-	melee_damage_lower = 15
-	melee_damage_upper = 15
 	speed = 10
-	move_to_delay = 10
 	ranged = TRUE
 	ranged_cooldown_time = 40
-	aggro_vision_range = 21 //so it can see to one side of the arena to the other
 	loot = list(/obj/item/hierophant_club)
 	crusher_loot = list(/obj/item/hierophant_club, /obj/item/crusher_trophy/vortex_talisman)
 	wander = FALSE
@@ -66,6 +59,43 @@ Difficulty: Hard
 	score_achievement_type = /datum/award/score/hierophant_score
 	del_on_death = TRUE
 	deathsound = 'sound/blank.ogg'
+
+
+	emote_hear = null
+	emote_see = null
+	speak_chance = 1
+	turns_per_move = 2
+	see_in_dark = 10
+	move_to_delay = 10
+	base_intents = list(/datum/intent/simple/drake)
+	butcher_results = list(/obj/item/soul_fragment/essence = 1)
+	faction = list("caves")
+	mob_biotypes = MOB_ORGANIC|MOB_BEAST
+	health = 2500
+	maxHealth = 2500
+	melee_damage_lower = 30
+	melee_damage_upper = 30
+	vision_range = 21
+	aggro_vision_range = 8
+	environment_smash = ENVIRONMENT_SMASH_STRUCTURES
+	obj_damage = 1
+	retreat_distance = 0
+	minimum_distance = 0
+	milkies = FALSE
+	food_type = list(/obj/item/reagent_containers/food/snacks/rogue/meat, /obj/item/bodypart, /obj/item/organ)
+	footstep_type = FOOTSTEP_MOB_HEAVY
+	pooptype = null
+	STACON = 19
+	STASTR = 20
+	STASPD = 12
+	deaggroprob = 0
+	defprob = 40
+	defdrain = 10
+	retreat_health = 0
+	food = 0
+	dodgetime = 0
+	aggressive = 1
+//	stat_attack = UNCONSCIOUS
 	attack_action_types = list(/datum/action/innate/megafauna_attack/blink,
 							   /datum/action/innate/megafauna_attack/chaser_swarm,
 							   /datum/action/innate/megafauna_attack/cross_blasts,
@@ -85,7 +115,7 @@ Difficulty: Hard
 	var/list/target_phrases = list("Xevkix psgexih.", "Iriqc jsyrh.", "Eguymvih xevkix.")
 	var/list/stored_nearby = list() // stores people nearby the hierophant when it enters the death animation
 
-/mob/living/simple_animal/hostile/megafauna/hierophant/Initialize()
+/mob/living/simple_animal/hostile/retaliate/rogue/megafauna/hierophant/Initialize()
 	. = ..()
 	spawned_beacon = new(loc)
 
@@ -117,7 +147,7 @@ Difficulty: Hard
 	chosen_message = span_colossus("I are now repeatedly blinking at my target.")
 	chosen_attack_num = 4
 
-/mob/living/simple_animal/hostile/megafauna/hierophant/OpenFire()
+/mob/living/simple_animal/hostile/retaliate/rogue/megafauna/hierophant/OpenFire()
 	if(blinking)
 		return
 
@@ -196,7 +226,7 @@ Difficulty: Hard
 	else //just release a burst of power
 		INVOKE_ASYNC(src, PROC_REF(burst), get_turf(src))
 
-/mob/living/simple_animal/hostile/megafauna/hierophant/proc/blink_spam(blink_counter, target_slowness, cross_counter)
+/mob/living/simple_animal/hostile/retaliate/rogue/megafauna/hierophant/proc/blink_spam(blink_counter, target_slowness, cross_counter)
 	ranged_cooldown = world.time + max(5, major_attack_cooldown - anger_modifier * 0.75)
 	if(health < maxHealth * 0.5 && blink_counter > 1)
 		visible_message(span_hierophant("\"Mx ampp rsx iwgeti.\""))
@@ -218,7 +248,7 @@ Difficulty: Hard
 	else
 		blink(target)
 
-/mob/living/simple_animal/hostile/megafauna/hierophant/proc/cross_blast_spam(blink_counter, target_slowness, cross_counter)
+/mob/living/simple_animal/hostile/retaliate/rogue/megafauna/hierophant/proc/cross_blast_spam(blink_counter, target_slowness, cross_counter)
 	ranged_cooldown = world.time + max(5, major_attack_cooldown - anger_modifier * 0.75)
 	visible_message(span_hierophant("\"Piezi mx rsalivi xs vyr.\""))
 	blinking = TRUE
@@ -238,7 +268,7 @@ Difficulty: Hard
 	blinking = FALSE
 
 
-/mob/living/simple_animal/hostile/megafauna/hierophant/proc/chaser_swarm(blink_counter, target_slowness, cross_counter)
+/mob/living/simple_animal/hostile/retaliate/rogue/megafauna/hierophant/proc/chaser_swarm(blink_counter, target_slowness, cross_counter)
 	ranged_cooldown = world.time + max(5, major_attack_cooldown - anger_modifier * 0.75)
 	visible_message(span_hierophant("\"Mx gerrsx lmhi.\""))
 	blinking = TRUE
@@ -265,7 +295,7 @@ Difficulty: Hard
 	SLEEP_CHECK_DEATH(8)
 	blinking = FALSE
 
-/mob/living/simple_animal/hostile/megafauna/hierophant/proc/blasts(mob/victim, list/directions = GLOB.cardinals) //fires cross blasts with a delay
+/mob/living/simple_animal/hostile/retaliate/rogue/megafauna/hierophant/proc/blasts(mob/victim, list/directions = GLOB.cardinals) //fires cross blasts with a delay
 	var/turf/T = get_turf(victim)
 	if(!T)
 		return
@@ -281,7 +311,7 @@ Difficulty: Hard
 	for(var/d in directions)
 		INVOKE_ASYNC(src, PROC_REF(blast_wall), T, d)
 
-/mob/living/simple_animal/hostile/megafauna/hierophant/proc/blast_wall(turf/T, set_dir) //make a wall of blasts beam_range tiles long
+/mob/living/simple_animal/hostile/retaliate/rogue/megafauna/hierophant/proc/blast_wall(turf/T, set_dir) //make a wall of blasts beam_range tiles long
 	var/range = beam_range
 	var/turf/previousturf = T
 	var/turf/J = get_step(previousturf, set_dir)
@@ -290,7 +320,7 @@ Difficulty: Hard
 		previousturf = J
 		J = get_step(previousturf, set_dir)
 
-/mob/living/simple_animal/hostile/megafauna/hierophant/proc/arena_squares(turf/T, set_dir) //make a fancy effect extending from the arena target
+/mob/living/simple_animal/hostile/retaliate/rogue/megafauna/hierophant/proc/arena_squares(turf/T, set_dir) //make a fancy effect extending from the arena target
 	var/turf/previousturf = T
 	var/turf/J = get_step(previousturf, set_dir)
 	for(var/i in 1 to 10)
@@ -300,7 +330,7 @@ Difficulty: Hard
 		J = get_step(previousturf, set_dir)
 		SLEEP_CHECK_DEATH(0.5)
 
-/mob/living/simple_animal/hostile/megafauna/hierophant/proc/blink(mob/victim) //blink to a target
+/mob/living/simple_animal/hostile/retaliate/rogue/megafauna/hierophant/proc/blink(mob/victim) //blink to a target
 	if(blinking || !victim)
 		return
 	var/turf/T = get_turf(victim)
@@ -333,7 +363,7 @@ Difficulty: Hard
 	SLEEP_CHECK_DEATH(1) //at this point the blasts we made detonate
 	blinking = FALSE
 
-/mob/living/simple_animal/hostile/megafauna/hierophant/proc/melee_blast(mob/victim) //make a 3x3 blast around a target
+/mob/living/simple_animal/hostile/retaliate/rogue/megafauna/hierophant/proc/melee_blast(mob/victim) //make a 3x3 blast around a target
 	if(!victim)
 		return
 	var/turf/T = get_turf(victim)
@@ -359,10 +389,10 @@ Difficulty: Hard
 			sleep(1 + min(burst_range - last_dist, 12) * spread_speed) //gets faster as it gets further out
 		new /obj/effect/temp_visual/hierophant/blast(T, caster, FALSE)
 
-/mob/living/simple_animal/hostile/megafauna/hierophant/proc/burst(turf/original, spread_speed)
+/mob/living/simple_animal/hostile/retaliate/rogue/megafauna/hierophant/proc/burst(turf/original, spread_speed)
 	hierophant_burst(src, original, burst_range, spread_speed)
 
-/mob/living/simple_animal/hostile/megafauna/hierophant/Life()
+/mob/living/simple_animal/hostile/retaliate/rogue/megafauna/hierophant/Life()
 	. = ..()
 	if(. && spawned_beacon && !QDELETED(spawned_beacon) && !client)
 		if(target || loc == spawned_beacon.loc)
@@ -380,7 +410,7 @@ Difficulty: Hard
 			else
 				visible_message(span_hierophant("\"Vitemvw gsqtpixi. Stivexmsrep ijjmgmirgc gsqtvsqmwih.\""))
 
-/mob/living/simple_animal/hostile/megafauna/hierophant/death()
+/mob/living/simple_animal/hostile/retaliate/rogue/megafauna/hierophant/death()
 	if(health > 0 || stat == DEAD)
 		return
 	else
@@ -394,11 +424,11 @@ Difficulty: Hard
 		stat = CONSCIOUS // deathgasp wont run if dead, stupid
 		..(force_grant = stored_nearby)
 
-/mob/living/simple_animal/hostile/megafauna/hierophant/Destroy()
+/mob/living/simple_animal/hostile/retaliate/rogue/megafauna/hierophant/Destroy()
 	qdel(spawned_beacon)
 	. = ..()
 
-/mob/living/simple_animal/hostile/megafauna/hierophant/devour(mob/living/L)
+/mob/living/simple_animal/hostile/retaliate/rogue/megafauna/hierophant/devour(mob/living/L)
 	for(var/obj/item/W in L)
 		if(!L.dropItemToGround(W))
 			qdel(W)
@@ -407,24 +437,24 @@ Difficulty: Hard
 	adjustHealth(-L.maxHealth*0.5)
 	L.dust()
 
-/mob/living/simple_animal/hostile/megafauna/hierophant/CanAttack(atom/the_target)
+/mob/living/simple_animal/hostile/retaliate/rogue/megafauna/hierophant/CanAttack(atom/the_target)
 	. = ..()
-	if(istype(the_target, /mob/living/simple_animal/hostile/asteroid/hivelordbrood)) //ignore temporary targets in favor of more permanent targets
+	if(istype(the_target, /mob/living/simple_animal/hostile/retaliate/rogue/asteroid/hivelordbrood)) //ignore temporary targets in favor of more permanent targets
 		return FALSE
 
-/mob/living/simple_animal/hostile/megafauna/hierophant/GiveTarget(new_target)
+/mob/living/simple_animal/hostile/retaliate/rogue/megafauna/hierophant/GiveTarget(new_target)
 	var/targets_the_same = (new_target == target)
 	. = ..()
 	if(. && target && !targets_the_same)
 		visible_message(span_hierophant_warning("\"[pick(target_phrases)]\""))
 
-/mob/living/simple_animal/hostile/megafauna/hierophant/adjustHealth(amount, updating_health = TRUE, forced = FALSE)
+/mob/living/simple_animal/hostile/retaliate/rogue/megafauna/hierophant/adjustHealth(amount, updating_health = TRUE, forced = FALSE)
 	. = ..()
 	if(src && . && !blinking)
 		wander = TRUE
 		did_reset = FALSE
 
-/mob/living/simple_animal/hostile/megafauna/hierophant/AttackingTarget()
+/mob/living/simple_animal/hostile/retaliate/rogue/megafauna/hierophant/AttackingTarget()
 	if(!blinking)
 		if(target && isliving(target))
 			var/mob/living/L = target
@@ -441,27 +471,27 @@ Difficulty: Hard
 		else
 			return ..()
 
-/mob/living/simple_animal/hostile/megafauna/hierophant/DestroySurroundings()
+/mob/living/simple_animal/hostile/retaliate/rogue/megafauna/hierophant/DestroySurroundings()
 	if(!blinking)
 		..()
 
-/mob/living/simple_animal/hostile/megafauna/hierophant/Move()
+/mob/living/simple_animal/hostile/retaliate/rogue/megafauna/hierophant/Move()
 	if(!blinking)
 		. = ..()
 
-/mob/living/simple_animal/hostile/megafauna/hierophant/Moved(oldLoc, movement_dir)
+/mob/living/simple_animal/hostile/retaliate/rogue/megafauna/hierophant/Moved(oldLoc, movement_dir)
 	. = ..()
 	if(!stat && .)
 		var/obj/effect/temp_visual/hierophant/squares/HS = new(oldLoc)
 		HS.setDir(movement_dir)
 		playsound(src, 'sound/blank.ogg', 150, TRUE, -4)
 
-/mob/living/simple_animal/hostile/megafauna/hierophant/Goto(target, delay, minimum_distance)
+/mob/living/simple_animal/hostile/retaliate/rogue/megafauna/hierophant/Goto(target, delay, minimum_distance)
 	wander = TRUE
 	if(!blinking)
 		..()
 
-/mob/living/simple_animal/hostile/megafauna/hierophant/proc/calculate_rage() //how angry we are overall
+/mob/living/simple_animal/hostile/retaliate/rogue/megafauna/hierophant/proc/calculate_rage() //how angry we are overall
 	did_reset = FALSE //oh hey we're doing SOMETHING, clearly we might need to heal if we recall
 	anger_modifier = CLAMP(((maxHealth - health) / 42),0,50)
 	burst_range = initial(burst_range) + round(anger_modifier * 0.08)
@@ -665,7 +695,7 @@ Difficulty: Hard
 						H.FindTarget(list(caster), 1)
 					else
 						H.Goto(get_turf(caster), H.move_to_delay, 3)
-		if(monster_damage_boost && (ismegafauna(L) || istype(L, /mob/living/simple_animal/hostile/asteroid)))
+		if(monster_damage_boost && (ismegafauna(L) || istype(L, /mob/living/simple_animal/hostile/retaliate/rogue/asteroid)))
 			L.adjustBruteLoss(damage)
 		if(caster)
 			log_combat(caster, L, "struck with a [name]")

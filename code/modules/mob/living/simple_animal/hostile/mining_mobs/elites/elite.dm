@@ -3,7 +3,7 @@
 #define TUMOR_PASSIVE 2
 
 //Elite mining mobs
-/mob/living/simple_animal/hostile/asteroid/elite
+/mob/living/simple_animal/hostile/retaliate/rogue/asteroid/elite
 	name = "elite"
 	desc = ""
 	icon = 'icons/mob/lavaland/lavaland_elites.dmi'
@@ -27,14 +27,14 @@
 
 
 //Gives player-controlled variants the ability to swap attacks
-/mob/living/simple_animal/hostile/asteroid/elite/Initialize(mapload)
+/mob/living/simple_animal/hostile/retaliate/rogue/asteroid/elite/Initialize(mapload)
 	. = ..()
 	for(var/action_type in attack_action_types)
 		var/datum/action/innate/elite_attack/attack_action = new action_type()
 		attack_action.Grant(src)
 
 //Prevents elites from attacking members of their faction (can't hurt themselves either) and lets them mine rock with an attack despite not being able to smash walls.
-/mob/living/simple_animal/hostile/asteroid/elite/AttackingTarget()
+/mob/living/simple_animal/hostile/retaliate/rogue/asteroid/elite/AttackingTarget()
 	if(istype(target, /mob/living/simple_animal/hostile))
 		var/mob/living/simple_animal/hostile/M = target
 		if(faction_check_mob(M))
@@ -56,7 +56,7 @@
 		M.gets_drilled()
 
 //Elites can't talk (normally)!
-/mob/living/simple_animal/hostile/asteroid/elite/say(message, bubble_type, list/spans = list(), sanitize = TRUE, datum/language/language = null, ignore_spam = FALSE, forced = null)
+/mob/living/simple_animal/hostile/retaliate/rogue/asteroid/elite/say(message, bubble_type, list/spans = list(), sanitize = TRUE, datum/language/language = null, ignore_spam = FALSE, forced = null)
 	if(can_talk)
 		. = ..()
 		return TRUE
@@ -70,12 +70,12 @@ While using this makes the system rely on OnFire, it still gives options for tim
 	icon_icon = 'icons/mob/actions/actions_elites.dmi'
 	button_icon_state = ""
 	background_icon_state = "bg_default"
-	var/mob/living/simple_animal/hostile/asteroid/elite/M
+	var/mob/living/simple_animal/hostile/retaliate/rogue/asteroid/elite/M
 	var/chosen_message
 	var/chosen_attack_num = 0
 
 /datum/action/innate/elite_attack/Grant(mob/living/L)
-	if(istype(L, /mob/living/simple_animal/hostile/asteroid/elite))
+	if(istype(L, /mob/living/simple_animal/hostile/retaliate/rogue/asteroid/elite))
 		M = L
 		return ..()
 	return FALSE
@@ -84,11 +84,11 @@ While using this makes the system rely on OnFire, it still gives options for tim
 	M.chosen_attack = chosen_attack_num
 	to_chat(M, chosen_message)
 
-/mob/living/simple_animal/hostile/asteroid/elite/updatehealth()
+/mob/living/simple_animal/hostile/retaliate/rogue/asteroid/elite/updatehealth()
 	. = ..()
 	update_health_hud()
 
-/mob/living/simple_animal/hostile/asteroid/elite/update_health_hud()
+/mob/living/simple_animal/hostile/retaliate/rogue/asteroid/elite/update_health_hud()
 	if(hud_used)
 		var/severity = 0
 		var/healthpercent = (health/maxHealth) * 100
@@ -126,11 +126,11 @@ While using this makes the system rely on OnFire, it still gives options for tim
 	var/boosted = FALSE
 	var/times_won = 0
 	var/mob/living/carbon/human/activator = null
-	var/mob/living/simple_animal/hostile/asteroid/elite/mychild = null
-	var/potentialspawns = list(/mob/living/simple_animal/hostile/asteroid/elite/broodmother,
-								/mob/living/simple_animal/hostile/asteroid/elite/pandora,
-								/mob/living/simple_animal/hostile/asteroid/elite/legionnaire,
-								/mob/living/simple_animal/hostile/asteroid/elite/herald)
+	var/mob/living/simple_animal/hostile/retaliate/rogue/asteroid/elite/mychild = null
+	var/potentialspawns = list(/mob/living/simple_animal/hostile/retaliate/rogue/asteroid/elite/broodmother,
+								/mob/living/simple_animal/hostile/retaliate/rogue/asteroid/elite/pandora,
+								/mob/living/simple_animal/hostile/retaliate/rogue/asteroid/elite/legionnaire,
+								/mob/living/simple_animal/hostile/retaliate/rogue/asteroid/elite/herald)
 	icon = 'icons/obj/lavaland/tumor.dmi'
 	icon_state = "tumor"
 	pixel_x = -16
@@ -207,7 +207,7 @@ obj/structure/elite_tumor/proc/return_elite()
 
 /obj/structure/elite_tumor/process()
 	if(isturf(loc))
-		for(var/mob/living/simple_animal/hostile/asteroid/elite/elitehere in loc)
+		for(var/mob/living/simple_animal/hostile/retaliate/rogue/asteroid/elite/elitehere in loc)
 			if(elitehere == mychild && activity == TUMOR_PASSIVE)
 				mychild.adjustHealth(-mychild.maxHealth*0.05)
 				var/obj/effect/temp_visual/heal/H = new /obj/effect/temp_visual/heal(get_turf(mychild))
@@ -310,8 +310,8 @@ obj/structure/elite_tumor/proc/onEliteWon()
 
 /obj/item/tumor_shard/afterattack(atom/target, mob/user, proximity_flag)
 	. = ..()
-	if(istype(target, /mob/living/simple_animal/hostile/asteroid/elite) && proximity_flag)
-		var/mob/living/simple_animal/hostile/asteroid/elite/E = target
+	if(istype(target, /mob/living/simple_animal/hostile/retaliate/rogue/asteroid/elite) && proximity_flag)
+		var/mob/living/simple_animal/hostile/retaliate/rogue/asteroid/elite/E = target
 		if(E.stat != DEAD || E.sentience_type != SENTIENCE_BOSS || !E.key)
 			user.visible_message(span_notice("It appears [E] is unable to be revived right now.  Perhaps try again later."))
 			return
@@ -337,7 +337,7 @@ obj/structure/elite_tumor/proc/onEliteWon()
 	smooth = SMOOTH_TRUE
 	layer = BELOW_MOB_LAYER
 	var/mob/living/carbon/human/activator = null
-	var/mob/living/simple_animal/hostile/asteroid/elite/ourelite = null
+	var/mob/living/simple_animal/hostile/retaliate/rogue/asteroid/elite/ourelite = null
 	color = rgb(255,0,0)
 	light_range = MINIMUM_USEFUL_LIGHT_RANGE
 	light_color = LIGHT_COLOR_RED

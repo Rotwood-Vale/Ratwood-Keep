@@ -9,7 +9,7 @@
 	faction = list("mining")
 	max_mobs = 3
 	max_integrity = 250
-	mob_types = list(/mob/living/simple_animal/hostile/asteroid/basilisk/watcher/tendril)
+	mob_types = list(/mob/living/simple_animal/hostile/retaliate/rogue/asteroid/basilisk/watcher/tendril)
 
 	move_resist=INFINITY // just killing it tears a massive hole in the ground, let's not move it
 	anchored = TRUE
@@ -20,10 +20,10 @@
 
 
 /obj/structure/spawner/lavaland/goliath
-	mob_types = list(/mob/living/simple_animal/hostile/asteroid/goliath/beast/tendril)
+	mob_types = list(/mob/living/simple_animal/hostile/retaliate/rogue/asteroid/goliath/beast/tendril)
 
 /obj/structure/spawner/lavaland/legion
-	mob_types = list(/mob/living/simple_animal/hostile/asteroid/hivelord/legion/tendril)
+	mob_types = list(/mob/living/simple_animal/hostile/retaliate/rogue/asteroid/hivelord/legion/tendril)
 
 GLOBAL_LIST_INIT(tendrils, list())
 /obj/structure/spawner/lavaland/Initialize()

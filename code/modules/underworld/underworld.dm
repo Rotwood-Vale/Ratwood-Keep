@@ -80,7 +80,7 @@
 	set_light(5, 30, LIGHT_COLOR_BLUE)
 
 /obj/structure/underworld/carriage/attack_hand(mob/living/carbon/spirit/user)
-	if(user.paid)
+	if(user)
 		switch(alert("Are you ready to be judged?",,"Yes","No"))
 			if("Yes")
 				playsound(user, 'sound/misc/deadbell.ogg', 50, TRUE, -2, ignore_walls = TRUE)

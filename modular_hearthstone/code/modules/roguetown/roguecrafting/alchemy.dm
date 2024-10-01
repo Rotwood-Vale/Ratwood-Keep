@@ -110,7 +110,8 @@
 		/obj/item/reagent_containers/glass/bottle = 1, 
 		/obj/item/reagent_containers/powder/sublimate = 1, 
 		/obj/item/reagent_containers/powder/salt = 1,
-		/obj/item/natural/dirtclod = 1)
+		/obj/item/natural/dirtclod = 1,
+		/obj/item/soul_fragment/essence = 1,)
 	craftdiff = 2
 
 /datum/crafting_recipe/roguetown/alchemy/intellectpot

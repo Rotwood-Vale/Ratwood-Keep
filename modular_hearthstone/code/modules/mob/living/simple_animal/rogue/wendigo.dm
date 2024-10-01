@@ -14,6 +14,7 @@
 	see_in_dark = 10
 	move_to_delay = 3
 	base_intents = list(/datum/intent/simple/bite)
+	loot = /obj/item/soul_fragment/essence
 	butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat/steak = 13,
 						/obj/item/natural/hide = 15, /obj/item/natural/bundle/bone/full = 3)
 	mob_biotypes = MOB_ORGANIC|MOB_BEAST

@@ -510,3 +510,157 @@
     dir = SOUTH
     debris = list(/obj/item/natural/thorn = 3, /obj/item/grown/log/tree/stick = 1)
 //WIP
+
+
+
+
+//hearthstone
+
+/obj/structure/flora/rogueshroom2
+	name = "mushroom"
+	desc = "Mushrooms are the only happy beings in this island."
+	icon = 'modular_hearthstone/icons/obj/flora/fungaltrees.dmi'
+	icon_state = "shroom1"
+	opacity = 0
+	density = 0
+	max_integrity = 120
+	blade_dulling = DULLING_CUT
+	pixel_x = -16
+	layer = 4.81
+	attacked_sound = 'sound/misc/woodhit.ogg'
+	destroy_sound = 'sound/misc/woodhit.ogg'
+	static_debris = list( /obj/item/grown/log/tree/small = 1)
+	dir = SOUTH
+
+/obj/structure/flora/rogueshroom2/Initialize()
+	..()
+	icon_state = "shroom[rand(1,2)]"
+	if(icon_state == "shroom2")
+		static_debris = list(/obj/item/natural/thorn=1, /obj/item/grown/log/tree/small = 1)
+	pixel_x += rand(8,-8)
+
+/obj/structure/flora/rogueshroom2/CanPass(atom/movable/mover, turf/target)
+	if(istype(mover) && (mover.pass_flags & PASSGRILLE))
+		return 1
+	if(get_dir(loc, target) == dir)
+		return 0
+	return 1
+
+/obj/structure/flora/rogueshroom2/CheckExit(atom/movable/mover as mob|obj, turf/target)
+	if(istype(mover) && (mover.pass_flags & PASSGRILLE))
+		return 1
+	if(get_dir(mover.loc, target) == dir)
+		return 0
+	return 1
+
+/obj/structure/flora/rogueshroom2/fire_act(added, maxstacks)
+	if(added > 5)
+		return ..()
+
+/obj/structure/flora/rogueshroom2/obj_destruction(damage_flag)
+	var/obj/structure/S = new /obj/structure/flora/shroomstump(loc)
+	S.icon_state = "[icon_state]stump"
+	. = ..()
+
+
+
+
+/obj/structure/flora/roguegrass/fungus_bush
+	name = "fungus bush"
+	desc = "A fungus bush, I think I can see some spiders crawling in it."
+	icon = 'modular_hearthstone/icons/obj/flora/fungalflora.dmi'
+	icon_state = "fungus_bush1"
+	layer = ABOVE_ALL_MOB_LAYER
+	var/res_replenish
+	blade_dulling = DULLING_CUT
+	max_integrity = 35
+	climbable = FALSE
+	dir = SOUTH
+	debris = list(/obj/item/natural/fibers = 1, /obj/item/grown/log/tree/stick = 1)
+	var/list/looty = list()
+	var/bushtype
+
+/obj/structure/flora/roguegrass/fungus_bush/Initialize()
+	if(prob(88))
+		bushtype = pickweight(list(/obj/item/reagent_containers/food/snacks/grown/rogue/sweetleaf=2,
+					/obj/item/reagent_containers/food/snacks/grown/shroom=2,
+					/obj/item/reagent_containers/food/snacks/grown/rogue/pipeweed=1))
+	loot_replenish()
+	pixel_x += rand(-3,3)
+	return ..()
+
+/obj/structure/flora/roguegrass/fungus_bush/proc/loot_replenish()
+	if(bushtype)
+		looty += bushtype
+	if(prob(66))
+		looty += /obj/item/natural/thorn
+	looty += /obj/item/natural/fibers
+
+
+/obj/structure/flora/roguegrass/fungus_bush/Crossed(atom/movable/AM)
+	..()
+	if(isliving(AM))
+		var/mob/living/L = AM
+		if(L.m_intent == MOVE_INTENT_RUN && (L.mobility_flags & MOBILITY_STAND))
+			if(!ishuman(L))
+				to_chat(L, span_warning("I'm cut on a thorn!"))
+				L.apply_damage(5, BRUTE)
+
+			else
+				var/mob/living/carbon/human/H = L
+				if(prob(20))
+					if(!HAS_TRAIT(src, TRAIT_PIERCEIMMUNE))
+//						H.throw_alert("embeddedobject", /atom/movable/screen/alert/embeddedobject)
+						var/obj/item/bodypart/BP = pick(H.bodyparts)
+						var/obj/item/natural/thorn/TH = new(src.loc)
+						BP.add_embedded_object(TH, silent = TRUE)
+						BP.receive_damage(10)
+						to_chat(H, span_danger("\A [TH] impales my [BP.name]!"))
+				else
+					var/obj/item/bodypart/BP = pick(H.bodyparts)
+					to_chat(H, span_warning("A thorn [pick("slices","cuts","nicks")] my [BP.name]."))
+					BP.receive_damage(10)
+
+/obj/structure/flora/roguegrass/fungus_bush/attack_hand(mob/user)
+	if(isliving(user))
+		var/mob/living/L = user
+		user.changeNext_move(CLICK_CD_MELEE)
+		playsound(src.loc, "plantcross", 50, FALSE, -1)
+		if(do_after(L, rand(1,5), target = src))
+#ifndef MATURESERVER
+			if(!looty.len && (world.time > res_replenish))
+				loot_replenish()
+#endif
+			if(prob(50) && looty.len)
+				if(looty.len == 1)
+					res_replenish = world.time + 8 MINUTES
+				var/obj/item/B = pick_n_take(looty)
+				if(B)
+					B = new B(user.loc)
+					user.put_in_hands(B)
+					user.visible_message(span_notice("[user] finds [B] in [src]."))
+					return
+			user.visible_message(span_warning("[user] searches through [src]."))
+#ifdef MATURESERVER
+			if(!looty.len)
+				to_chat(user, span_warning("Picked clean."))
+#else
+			if(!looty.len)
+				to_chat(user, span_warning("Picked clean... I should try later."))
+#endif
+/obj/structure/flora/roguegrass/fungus_bush/update_icon()
+	icon_state = "fungus_bush[rand(1, 3)]"
+
+/obj/structure/flora/roguegrass/fungus_bush/CanPass(atom/movable/mover, turf/target)
+	if(istype(mover) && (mover.pass_flags & PASSGRILLE))
+		return 1
+	if(get_dir(loc, target) == dir)
+		return 0
+	return 1
+
+/obj/structure/flora/roguegrass/fungus_bush/CheckExit(atom/movable/mover as mob|obj, turf/target)
+	if(istype(mover) && (mover.pass_flags & PASSGRILLE))
+		return 1
+	if(get_dir(mover.loc, target) == dir)
+		return 0
+	return 1

@@ -20,20 +20,16 @@ Difficulty: Medium
 
 */
 
-/mob/living/simple_animal/hostile/megafauna/blood_drunk_miner
+/mob/living/simple_animal/hostile/retaliate/rogue/megafauna/blood_drunk_miner
 	name = "blood-drunk miner"
 	desc = ""
-	health = 900
-	maxHealth = 900
 	icon_state = "miner"
 	icon_living = "miner"
 	icon = 'icons/mob/broadMobs.dmi'
-	mob_biotypes = MOB_ORGANIC|MOB_HUMANOID
 	light_color = "#E4C7C5"
 	movement_type = GROUND
 	speak_emote = list("roars")
 	speed = 3
-	move_to_delay = 3
 	projectiletype = /obj/projectile/kinetic/miner
 	projectilesound = 'sound/blank.ogg'
 	ranged = TRUE
@@ -56,12 +52,49 @@ Difficulty: Medium
 	var/transform_stop_attack = FALSE // stops the blood drunk miner from attacking after transforming his weapon until the next attack chain
 	deathmessage = "falls to the ground, decaying into glowing particles."
 	deathsound = "bodyfall"
+
+	emote_hear = null
+	emote_see = null
+	speak_chance = 1
+	turns_per_move = 2
+	see_in_dark = 10
+	move_to_delay = 3
+	base_intents = list(/datum/intent/simple/drake)
+	butcher_results = list(/obj/item/soul_fragment/essence = 1)
+	faction = list("caves")
+	mob_biotypes = MOB_ORGANIC|MOB_HUMANOID
+	health = 900
+	maxHealth = 900
+	melee_damage_lower = 25
+	melee_damage_upper = 25
+	vision_range = 13
+	aggro_vision_range = 8
+	environment_smash = ENVIRONMENT_SMASH_STRUCTURES
+	obj_damage = 1
+	retreat_distance = 5
+	minimum_distance = 5
+	milkies = FALSE
+	food_type = list(/obj/item/reagent_containers/food/snacks/rogue/meat, /obj/item/bodypart, /obj/item/organ)
 	footstep_type = FOOTSTEP_MOB_HEAVY
+	pooptype = null
+	STACON = 19
+	STASTR = 20
+	STASPD = 10
+	deaggroprob = 0
+	defprob = 40
+	defdrain = 10
+	retreat_health = 0
+	food = 0
+	dodgetime = 0
+	aggressive = 1
+//	stat_attack = UNCONSCIOUS
+
+
 	attack_action_types = list(/datum/action/innate/megafauna_attack/dash,
 							   /datum/action/innate/megafauna_attack/kinetic_accelerator,
 							   /datum/action/innate/megafauna_attack/transform_weapon)
 
-/mob/living/simple_animal/hostile/megafauna/blood_drunk_miner/Initialize()
+/mob/living/simple_animal/hostile/retaliate/rogue/megafauna/blood_drunk_miner/Initialize()
 	. = ..()
 	miner_saw = new(src)
 
@@ -86,7 +119,7 @@ Difficulty: Medium
 	chosen_message = span_colossus("I are now transforming your weapon.")
 	chosen_attack_num = 3
 
-/mob/living/simple_animal/hostile/megafauna/blood_drunk_miner/OpenFire()
+/mob/living/simple_animal/hostile/retaliate/rogue/megafauna/blood_drunk_miner/OpenFire()
 	if(client)
 		switch(chosen_attack)
 			if(1)
@@ -119,32 +152,32 @@ Difficulty: Medium
 	icon_state = "ka_tracer"
 	range = MINER_DASH_RANGE
 
-/mob/living/simple_animal/hostile/megafauna/blood_drunk_miner/adjustHealth(amount, updating_health = TRUE, forced = FALSE)
+/mob/living/simple_animal/hostile/retaliate/rogue/megafauna/blood_drunk_miner/adjustHealth(amount, updating_health = TRUE, forced = FALSE)
 	var/adjustment_amount = amount * 0.1
 	if(world.time + adjustment_amount > next_move)
 		changeNext_move(adjustment_amount) //attacking it interrupts it attacking, but only briefly
 	. = ..()
 
-/mob/living/simple_animal/hostile/megafauna/blood_drunk_miner/death()
+/mob/living/simple_animal/hostile/retaliate/rogue/megafauna/blood_drunk_miner/death()
 	. = ..()
 	if(.)
 		new /obj/effect/temp_visual/dir_setting/miner_death(loc, dir)
 
-/mob/living/simple_animal/hostile/megafauna/blood_drunk_miner/Move(atom/newloc)
+/mob/living/simple_animal/hostile/retaliate/rogue/megafauna/blood_drunk_miner/Move(atom/newloc)
 	if(dashing || (newloc && newloc.z == z && (islava(newloc) || ischasm(newloc)))) //we're not stupid!
 		return FALSE
 	return ..()
 
-/mob/living/simple_animal/hostile/megafauna/blood_drunk_miner/ex_act(severity, target)
+/mob/living/simple_animal/hostile/retaliate/rogue/megafauna/blood_drunk_miner/ex_act(severity, target)
 	if(dash())
 		return
 	return ..()
 
-/mob/living/simple_animal/hostile/megafauna/blood_drunk_miner/MeleeAction(patience = TRUE)
+/mob/living/simple_animal/hostile/retaliate/rogue/megafauna/blood_drunk_miner/MeleeAction(patience = TRUE)
 	transform_stop_attack = FALSE
 	return ..()
 
-/mob/living/simple_animal/hostile/megafauna/blood_drunk_miner/AttackingTarget()
+/mob/living/simple_animal/hostile/retaliate/rogue/megafauna/blood_drunk_miner/AttackingTarget()
 	if(client)
 		transform_stop_attack = FALSE
 	if(QDELETED(target) || transform_stop_attack)
@@ -168,22 +201,22 @@ Difficulty: Medium
 		adjustHealth(-2)
 	return TRUE
 
-/mob/living/simple_animal/hostile/megafauna/blood_drunk_miner/do_attack_animation(atom/A, visual_effect_icon, obj/item/used_item, no_effect)
+/mob/living/simple_animal/hostile/retaliate/rogue/megafauna/blood_drunk_miner/do_attack_animation(atom/A, visual_effect_icon, obj/item/used_item, no_effect)
 	if(!used_item && !isturf(A))
 		used_item = miner_saw
 	..()
 
-/mob/living/simple_animal/hostile/megafauna/blood_drunk_miner/GiveTarget(new_target)
+/mob/living/simple_animal/hostile/retaliate/rogue/megafauna/blood_drunk_miner/GiveTarget(new_target)
 	var/targets_the_same = (new_target == target)
 	. = ..()
 	if(. && target && !targets_the_same)
 		wander = TRUE
 
-/mob/living/simple_animal/hostile/megafauna/blood_drunk_miner/proc/dash_attack()
+/mob/living/simple_animal/hostile/retaliate/rogue/megafauna/blood_drunk_miner/proc/dash_attack()
 	INVOKE_ASYNC(src, PROC_REF(dash), target)
 	shoot_ka()
 
-/mob/living/simple_animal/hostile/megafauna/blood_drunk_miner/proc/shoot_ka()
+/mob/living/simple_animal/hostile/retaliate/rogue/megafauna/blood_drunk_miner/proc/shoot_ka()
 	if(ranged_cooldown <= world.time && get_dist(src, target) <= MINER_DASH_RANGE && !Adjacent(target))
 		ranged_cooldown = world.time + ranged_cooldown_time
 		visible_message(span_danger("[src] fires the proto-kinetic accelerator!"))
@@ -192,7 +225,7 @@ Difficulty: Medium
 		Shoot(target)
 		changeNext_move(CLICK_CD_RANGE)
 
-/mob/living/simple_animal/hostile/megafauna/blood_drunk_miner/proc/dash(atom/dash_target)
+/mob/living/simple_animal/hostile/retaliate/rogue/megafauna/blood_drunk_miner/proc/dash(atom/dash_target)
 	if(world.time < dash_cooldown)
 		return
 	var/list/accessable_turfs = list()
@@ -243,7 +276,7 @@ Difficulty: Medium
 	dashing = FALSE
 	return TRUE
 
-/mob/living/simple_animal/hostile/megafauna/blood_drunk_miner/proc/transform_weapon()
+/mob/living/simple_animal/hostile/retaliate/rogue/megafauna/blood_drunk_miner/proc/transform_weapon()
 	if(time_until_next_transform <= world.time)
 		miner_saw.transform_cooldown = 0
 		miner_saw.transform_weapon(src, TRUE)
@@ -277,10 +310,10 @@ Difficulty: Medium
 	sleep(4)
 	animate(src, alpha = 0, time = 6, easing = EASE_OUT, flags = ANIMATION_PARALLEL)
 
-/mob/living/simple_animal/hostile/megafauna/blood_drunk_miner/guidance
+/mob/living/simple_animal/hostile/retaliate/rogue/megafauna/blood_drunk_miner/guidance
 	guidance = TRUE
 
-/mob/living/simple_animal/hostile/megafauna/blood_drunk_miner/hunter/AttackingTarget()
+/mob/living/simple_animal/hostile/retaliate/rogue/megafauna/blood_drunk_miner/hunter/AttackingTarget()
 	. = ..()
 	if(. && prob(12))
 		INVOKE_ASYNC(src, PROC_REF(dash))

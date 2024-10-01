@@ -261,9 +261,9 @@
 /obj/effect/sliding_puzzle/lavaland/dispense_reward()
 	if(prob(25))
 		//If it's not roaming somewhere else already.
-		var/mob/living/simple_animal/hostile/megafauna/bubblegum/B = locate() in GLOB.mob_list
+		var/mob/living/simple_animal/hostile/retaliate/rogue/megafauna/bubblegum/B = locate() in GLOB.mob_list
 		if(!B)
-			reward_type = /mob/living/simple_animal/hostile/megafauna/bubblegum
+			reward_type = /mob/living/simple_animal/hostile/retaliate/rogue/megafauna/bubblegum
 	return ..()
 
 //Prison cube version

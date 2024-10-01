@@ -1,5 +1,5 @@
 //A fragile mob that becomes temporarily invincible and large to attack
-/mob/living/simple_animal/hostile/asteroid/fugu
+/mob/living/simple_animal/hostile/retaliate/rogue/asteroid/fugu
 	name = "wumborian fugu"
 	desc = ""
 	icon = 'icons/mob/lavaland/64x64megafauna.dmi'
@@ -36,28 +36,28 @@
 	var/datum/action/innate/fugu/expand/E
 	loot = list(/obj/item/fugu_gland{layer = ABOVE_MOB_LAYER})
 
-/mob/living/simple_animal/hostile/asteroid/fugu/Initialize()
+/mob/living/simple_animal/hostile/retaliate/rogue/asteroid/fugu/Initialize()
 	. = ..()
 	E = new
 	E.Grant(src)
 
-/mob/living/simple_animal/hostile/asteroid/fugu/Destroy()
+/mob/living/simple_animal/hostile/retaliate/rogue/asteroid/fugu/Destroy()
 	QDEL_NULL(E)
 	return ..()
 
-/mob/living/simple_animal/hostile/asteroid/fugu/Life()
+/mob/living/simple_animal/hostile/retaliate/rogue/asteroid/fugu/Life()
 	if(!wumbo)
 		inflate_cooldown = max((inflate_cooldown - 1), 0)
 	if(target && AIStatus == AI_ON)
 		E.Activate()
 	..()
 
-/mob/living/simple_animal/hostile/asteroid/fugu/adjustHealth(amount, updating_health = TRUE, forced = FALSE)
+/mob/living/simple_animal/hostile/retaliate/rogue/asteroid/fugu/adjustHealth(amount, updating_health = TRUE, forced = FALSE)
 	if(!forced && wumbo)
 		return FALSE
 	. = ..()
 
-/mob/living/simple_animal/hostile/asteroid/fugu/Aggro()
+/mob/living/simple_animal/hostile/retaliate/rogue/asteroid/fugu/Aggro()
 	..()
 	E.Activate()
 
@@ -70,7 +70,7 @@
 	button_icon_state = "expand"
 
 /datum/action/innate/fugu/expand/Activate()
-	var/mob/living/simple_animal/hostile/asteroid/fugu/F = owner
+	var/mob/living/simple_animal/hostile/retaliate/rogue/asteroid/fugu/F = owner
 	if(F.wumbo)
 		to_chat(F, span_warning("YOU'RE ALREADY WUMBO!"))
 		return
@@ -93,9 +93,9 @@
 	F.environment_smash = ENVIRONMENT_SMASH_WALLS
 	F.mob_size = MOB_SIZE_LARGE
 	F.speed = 1
-	addtimer(CALLBACK(F, TYPE_PROC_REF(/mob/living/simple_animal/hostile/asteroid/fugu, Deflate)), 100)
+	addtimer(CALLBACK(F, TYPE_PROC_REF(/mob/living/simple_animal/hostile/retaliate/rogue/asteroid/fugu, Deflate)), 100)
 
-/mob/living/simple_animal/hostile/asteroid/fugu/proc/Deflate()
+/mob/living/simple_animal/hostile/retaliate/rogue/asteroid/fugu/proc/Deflate()
 	if(wumbo)
 		walk(src, 0)
 		wumbo = 0
@@ -113,7 +113,7 @@
 		mob_size = MOB_SIZE_SMALL
 		speed = 0
 
-/mob/living/simple_animal/hostile/asteroid/fugu/death(gibbed)
+/mob/living/simple_animal/hostile/retaliate/rogue/asteroid/fugu/death(gibbed)
 	Deflate()
 	..(gibbed)
 

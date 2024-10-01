@@ -7,8 +7,8 @@
 /turf/open/floor/plating/dirt/dark,
 /area/rogue/underworld)
 "d" = (
-/obj/structure/underworld/barrier,
-/turf/open/floor/plating/dirt/dark,
+/obj/effect/landmark/underworldsafe,
+/turf/open/floor/rogue/underworld/road,
 /area/rogue/underworld)
 "e" = (
 /turf/open/floor/rogue/underworld/road,
@@ -18,100 +18,67 @@
 /turf/open/floor/rogue/churchrough,
 /area/rogue/underworld)
 "g" = (
-/obj/structure/underworld/barrier,
-/turf/open/floor/rogue/underworld/road,
-/area/rogue/underworld)
-"h" = (
-/obj/machinery/light/rogue/campfire/densefire{
-	fueluse = 1800000
-	},
-/turf/open/floor/rogue/underworld/road,
-/area/rogue/underworld)
-"i" = (
-/obj/effect/landmark/underworld,
-/turf/open/floor/rogue/underworld/road,
-/area/rogue/underworld)
-"j" = (
 /obj/structure/underworld/carriage{
 	pixel_x = -100
 	},
 /turf/open/floor/rogue/churchrough,
 /area/rogue/underworld)
+"h" = (
+/obj/structure/bed/rogue/shit,
+/turf/open/floor/rogue/underworld/road,
+/area/rogue/underworld)
+"i" = (
+/obj/effect/landmark/underworldcoin,
+/turf/open/floor/rogue/underworld/road,
+/area/rogue/underworld)
+"j" = (
+/obj/structure/underworld/carriageman{
+	pixel_x = -15;
+	pixel_y = -20
+	},
+/obj/structure/underworld/barrier,
+/turf/open/floor/rogue/underworld/road,
+/area/rogue/underworld)
 "k" = (
 /turf/open/floor/rogue/churchrough,
 /area/rogue/underworld)
 "l" = (
-/obj/effect/landmark/underworldsafe,
-/turf/open/floor/rogue/underworld/road,
+/obj/structure/underworld/barrier,
+/turf/open/floor/plating/dirt/dark,
 /area/rogue/underworld)
 "n" = (
 /obj/structure/flora/roguetree/underworld,
 /turf/open/floor/rogue/underworld/road,
 /area/rogue/underworld)
 "o" = (
-/obj/effect/landmark/underworldcoin,
+/obj/machinery/light/rogue/campfire/densefire{
+	fueluse = 1800000
+	},
 /turf/open/floor/rogue/underworld/road,
 /area/rogue/underworld)
 "p" = (
-/obj/structure/underworld/carriageman{
-	pixel_x = -15;
-	pixel_y = -20
-	},
-/turf/open/floor/rogue/churchrough,
+/obj/structure/fluff/clock,
+/turf/open/floor/rogue/underworld/road,
 /area/rogue/underworld)
-"v" = (
-/obj/item/underworld/coin,
-/obj/item/underworld/coin,
-/obj/item/underworld/coin,
-/obj/item/underworld/coin,
-/obj/item/underworld/coin,
-/obj/item/underworld/coin,
-/obj/item/underworld/coin,
-/obj/item/underworld/coin,
-/obj/item/underworld/coin,
-/obj/item/underworld/coin,
-/obj/item/underworld/coin,
-/obj/item/underworld/coin,
-/obj/item/underworld/coin,
-/obj/item/underworld/coin,
-/obj/item/underworld/coin,
-/obj/item/underworld/coin,
-/obj/item/underworld/coin,
-/obj/item/underworld/coin,
-/obj/item/underworld/coin,
-/obj/item/underworld/coin,
-/obj/item/underworld/coin,
-/obj/item/underworld/coin,
-/obj/item/underworld/coin,
-/obj/item/underworld/coin,
-/obj/item/underworld/coin,
-/obj/item/underworld/coin,
-/obj/item/underworld/coin,
-/obj/item/underworld/coin,
-/obj/item/underworld/coin,
-/obj/item/underworld/coin,
-/obj/item/underworld/coin,
-/obj/item/underworld/coin,
-/obj/item/underworld/coin,
-/obj/item/underworld/coin,
-/obj/item/underworld/coin,
-/obj/item/underworld/coin,
-/obj/item/underworld/coin,
-/obj/item/underworld/coin,
-/obj/item/underworld/coin,
-/obj/item/underworld/coin,
-/obj/item/underworld/coin,
-/obj/item/underworld/coin,
+"u" = (
+/obj/structure/flora/roguetree/underworld,
+/obj/structure/flora/roguetree/underworld,
+/turf/open/floor/rogue/underworld/road,
+/area/rogue/underworld)
+"G" = (
+/obj/structure/bed/rogue/shit,
+/obj/effect/landmark/underworld,
 /turf/open/floor/rogue/underworld/road,
 /area/rogue/underworld)
 
 (1,1,1) = {"
 e
-l
+d
 c
 c
 c
-l
+d
+n
 n
 n
 n
@@ -119,11 +86,13 @@ n
 n
 n
 e
+n
+n
 e
-e
+n
 "}
 (2,1,1) = {"
-l
+d
 e
 b
 b
@@ -136,11 +105,14 @@ n
 n
 n
 e
-e
+n
+n
+n
+u
 e
 "}
 (3,1,1) = {"
-l
+d
 e
 b
 b
@@ -148,16 +120,19 @@ b
 e
 n
 e
-o
 e
 e
-n
 e
-n
+e
+e
+e
+e
+e
+e
 n
 "}
 (4,1,1) = {"
-l
+d
 e
 b
 b
@@ -168,13 +143,16 @@ e
 e
 e
 e
-n
-n
-n
-n
+e
+e
+e
+e
+e
+e
+e
 "}
 (5,1,1) = {"
-l
+d
 e
 b
 b
@@ -186,12 +164,15 @@ e
 e
 e
 e
-n
-n
-n
+e
+e
+e
+e
+e
+e
 "}
 (6,1,1) = {"
-l
+d
 e
 b
 b
@@ -203,66 +184,78 @@ e
 e
 e
 e
-o
 e
-n
+e
+e
+e
+e
+e
 "}
 (7,1,1) = {"
-l
-b
-b
-b
-b
-b
-n
-e
-e
-e
-e
-e
-e
-e
-n
-"}
-(8,1,1) = {"
-l
-b
-b
-b
-b
-b
-e
-e
-e
-e
-e
-e
-e
-e
-n
-"}
-(9,1,1) = {"
-l
-b
-b
-d
 d
 b
+b
+b
+b
+b
+n
+e
+e
+e
 e
 e
 e
 e
 h
 e
+e
+e
+"}
+(8,1,1) = {"
+d
+b
+b
+b
+b
+b
+e
+e
+e
 o
 e
-n
+e
+e
+e
+e
+e
+e
+e
 "}
-(10,1,1) = {"
+(9,1,1) = {"
+d
+b
+b
+l
 l
 b
-b
+e
+e
+e
+p
+e
+e
+e
+h
+o
+e
+e
+e
+"}
+(10,1,1) = {"
 d
+b
+b
+l
 f
 k
 k
@@ -273,67 +266,80 @@ e
 e
 e
 e
-n
+G
+e
+e
+e
 "}
 (11,1,1) = {"
-l
-b
-b
 d
-j
+b
+b
+l
+g
 k
 k
 k
-p
 k
-i
+k
 e
-v
 e
-n
+e
+e
+e
+e
+e
+e
 "}
 (12,1,1) = {"
+d
+b
+b
+l
 l
 b
-b
-d
-d
-b
-e
-e
-g
 e
 e
 e
 e
 e
-n
+e
+e
+e
+e
+e
+e
+e
 "}
 (13,1,1) = {"
-l
-b
-b
 d
+b
+b
+l
 b
 b
 n
 e
 e
+o
 e
-h
+e
+e
+e
 e
 e
 e
 n
 "}
 (14,1,1) = {"
-l
+d
 b
 b
 b
 b
 b
 n
+i
 e
 e
 e
@@ -341,10 +347,12 @@ e
 e
 e
 e
+e
+n
 n
 "}
 (15,1,1) = {"
-l
+d
 c
 b
 b
@@ -352,12 +360,15 @@ b
 b
 n
 e
+j
 e
 e
 e
 e
-o
 e
+e
+e
+n
 n
 "}
 (16,1,1) = {"
@@ -376,6 +387,9 @@ n
 n
 n
 n
+n
+n
+e
 "}
 (17,1,1) = {"
 e
@@ -385,13 +399,16 @@ b
 b
 e
 n
-o
+e
 e
 e
 n
 n
 n
 e
+e
+e
+n
 e
 "}
 (18,1,1) = {"
@@ -410,6 +427,9 @@ e
 e
 e
 n
+e
+e
+e
 "}
 (19,1,1) = {"
 e
@@ -427,6 +447,9 @@ e
 n
 n
 e
+n
+e
+e
 "}
 (20,1,1) = {"
 e
@@ -434,7 +457,7 @@ c
 c
 c
 c
-l
+d
 n
 e
 e
@@ -443,5 +466,8 @@ e
 e
 n
 n
+e
+e
+e
 e
 "}

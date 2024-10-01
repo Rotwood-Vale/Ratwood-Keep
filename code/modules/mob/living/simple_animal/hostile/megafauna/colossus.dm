@@ -21,11 +21,9 @@ Difficulty: Very Hard
 
 */
 
-/mob/living/simple_animal/hostile/megafauna/colossus
-	name = "colossus"
+/mob/living/simple_animal/hostile/retaliate/rogue/megafauna/colossus
+	name = "Idol of Exodus"
 	desc = ""
-	health = 2500
-	maxHealth = 2500
 	attack_verb_continuous = "judges"
 	attack_verb_simple = "judge"
 	attack_sound = 'sound/blank.ogg'
@@ -37,10 +35,7 @@ Difficulty: Very Hard
 	icon = 'icons/mob/lavaland/96x96megafauna.dmi'
 	speak_emote = list("roars")
 	armor_penetration = 40
-	melee_damage_lower = 40
-	melee_damage_upper = 40
 	speed = 10
-	move_to_delay = 10
 	ranged = TRUE
 	pixel_x = -32
 	del_on_death = TRUE
@@ -57,6 +52,43 @@ Difficulty: Very Hard
 							   /datum/action/innate/megafauna_attack/shotgun,
 							   /datum/action/innate/megafauna_attack/alternating_cardinals)
 	small_sprite_type = /datum/action/small_sprite/megafauna/colossus
+
+	emote_hear = null
+	emote_see = null
+	speak_chance = 1
+	turns_per_move = 2
+	see_in_dark = 10
+	move_to_delay = 10
+	base_intents = list(/datum/intent/simple/drake)
+	butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat/steak = 2, /obj/item/soul_fragment/essence = 1)
+	faction = list("caves")
+	mob_biotypes = MOB_ORGANIC|MOB_BEAST
+	health = 2500
+	maxHealth = 2500
+	melee_damage_lower = 55
+	melee_damage_upper = 80
+	vision_range = 3
+	aggro_vision_range = 8
+	environment_smash = ENVIRONMENT_SMASH_STRUCTURES
+	obj_damage = 1
+	retreat_distance = 0
+	minimum_distance = 0
+	milkies = FALSE
+	food_type = list(/obj/item/reagent_containers/food/snacks/rogue/meat, /obj/item/bodypart, /obj/item/organ)
+	footstep_type = FOOTSTEP_MOB_HEAVY
+	pooptype = null
+	STACON = 19
+	STASTR = 20
+	STASPD = 8
+	deaggroprob = 0
+	defprob = 40
+	defdrain = 10
+	retreat_health = 0
+	food = 0
+	dodgetime = 0
+	aggressive = 1
+//	stat_attack = UNCONSCIOUS
+
 
 /datum/action/innate/megafauna_attack/spiral_attack
 	name = "Spiral Shots"
@@ -86,7 +118,7 @@ Difficulty: Very Hard
 	chosen_message = span_colossus("I are now firing in alternating cardinal directions.")
 	chosen_attack_num = 4
 
-/mob/living/simple_animal/hostile/megafauna/colossus/OpenFire()
+/mob/living/simple_animal/hostile/retaliate/rogue/megafauna/colossus/OpenFire()
 	anger_modifier = CLAMP(((maxHealth - health)/50),0,20)
 	ranged_cooldown = world.time + 120
 
@@ -123,14 +155,14 @@ Difficulty: Very Hard
 		else
 			alternating_dir_shots()
 
-/mob/living/simple_animal/hostile/megafauna/colossus/proc/enrage(mob/living/L)
+/mob/living/simple_animal/hostile/retaliate/rogue/megafauna/colossus/proc/enrage(mob/living/L)
 	if(ishuman(L))
 		var/mob/living/carbon/human/H = L
 		if(H.mind)
 			if(istype(H.mind.martial_art, /datum/martial_art/the_sleeping_carp))
 				. = TRUE
 
-/mob/living/simple_animal/hostile/megafauna/colossus/proc/alternating_dir_shots()
+/mob/living/simple_animal/hostile/retaliate/rogue/megafauna/colossus/proc/alternating_dir_shots()
 	ranged_cooldown = world.time + 40
 	dir_shots(GLOB.diagonals)
 	SLEEP_CHECK_DEATH(10)
@@ -140,21 +172,21 @@ Difficulty: Very Hard
 	SLEEP_CHECK_DEATH(10)
 	dir_shots(GLOB.cardinals)
 
-/mob/living/simple_animal/hostile/megafauna/colossus/proc/select_spiral_attack()
+/mob/living/simple_animal/hostile/retaliate/rogue/megafauna/colossus/proc/select_spiral_attack()
 	telegraph()
 	if(health < maxHealth/3)
 		return double_spiral()
 	visible_message(span_colossus("\"<b>Judgement.</b>\""))
 	return spiral_shoot()
 
-/mob/living/simple_animal/hostile/megafauna/colossus/proc/double_spiral()
+/mob/living/simple_animal/hostile/retaliate/rogue/megafauna/colossus/proc/double_spiral()
 	visible_message(span_colossus("\"<b>Die.</b>\""))
 
 	SLEEP_CHECK_DEATH(10)
 	INVOKE_ASYNC(src, PROC_REF(spiral_shoot), FALSE)
 	INVOKE_ASYNC(src, PROC_REF(spiral_shoot), TRUE)
 
-/mob/living/simple_animal/hostile/megafauna/colossus/proc/spiral_shoot(negative = pick(TRUE, FALSE), counter_start = 8)
+/mob/living/simple_animal/hostile/retaliate/rogue/megafauna/colossus/proc/spiral_shoot(negative = pick(TRUE, FALSE), counter_start = 8)
 	var/turf/start_turf = get_step(src, pick(GLOB.alldirs))
 	var/counter = counter_start
 	for(var/i in 1 to 80)
@@ -170,7 +202,7 @@ Difficulty: Very Hard
 		playsound(get_turf(src), 'sound/blank.ogg', 20, TRUE)
 		SLEEP_CHECK_DEATH(1)
 
-/mob/living/simple_animal/hostile/megafauna/colossus/proc/shoot_projectile(turf/marker, set_angle)
+/mob/living/simple_animal/hostile/retaliate/rogue/megafauna/colossus/proc/shoot_projectile(turf/marker, set_angle)
 	if(!isnum(set_angle) && (!marker || marker == loc))
 		return
 	var/turf/startloc = get_turf(src)
@@ -181,7 +213,7 @@ Difficulty: Very Hard
 		P.original = target
 	P.fire(set_angle)
 
-/mob/living/simple_animal/hostile/megafauna/colossus/proc/random_shots()
+/mob/living/simple_animal/hostile/retaliate/rogue/megafauna/colossus/proc/random_shots()
 	ranged_cooldown = world.time + 30
 	var/turf/U = get_turf(src)
 	playsound(U, 'sound/blank.ogg', 300, TRUE, 5)
@@ -189,7 +221,7 @@ Difficulty: Very Hard
 		if(prob(5))
 			shoot_projectile(T)
 
-/mob/living/simple_animal/hostile/megafauna/colossus/proc/blast(set_angle)
+/mob/living/simple_animal/hostile/retaliate/rogue/megafauna/colossus/proc/blast(set_angle)
 	ranged_cooldown = world.time + 20
 	var/turf/target_turf = get_turf(target)
 	playsound(src, 'sound/blank.ogg', 200, TRUE, 2)
@@ -201,7 +233,7 @@ Difficulty: Very Hard
 	for(var/i in colossus_shotgun_shot_angles)
 		shoot_projectile(target_turf, angle_to_target + i)
 
-/mob/living/simple_animal/hostile/megafauna/colossus/proc/dir_shots(list/dirs)
+/mob/living/simple_animal/hostile/retaliate/rogue/megafauna/colossus/proc/dir_shots(list/dirs)
 	if(!islist(dirs))
 		dirs = GLOB.alldirs.Copy()
 	playsound(src, 'sound/blank.ogg', 200, TRUE, 2)
@@ -209,7 +241,7 @@ Difficulty: Very Hard
 		var/turf/E = get_step(src, d)
 		shoot_projectile(E)
 
-/mob/living/simple_animal/hostile/megafauna/colossus/proc/telegraph()
+/mob/living/simple_animal/hostile/retaliate/rogue/megafauna/colossus/proc/telegraph()
 	for(var/mob/M in range(10,src))
 		if(M.client)
 			flash_color(M.client, "#C80000", 1)
@@ -217,7 +249,7 @@ Difficulty: Very Hard
 	playsound(src, 'sound/blank.ogg', 200, TRUE)
 
 
-/mob/living/simple_animal/hostile/megafauna/colossus/devour(mob/living/L)
+/mob/living/simple_animal/hostile/retaliate/rogue/megafauna/colossus/devour(mob/living/L)
 	visible_message(span_colossus("[src] disintegrates [L]!"))
 	L.dust()
 
@@ -236,7 +268,7 @@ Difficulty: Very Hard
 	target = new_target
 	INVOKE_ASYNC(src, TYPE_PROC_REF(/atom/movable, orbit), target, 0, FALSE, 0, 0, FALSE, TRUE)
 
-/mob/living/simple_animal/hostile/megafauna/colossus/bullet_act(obj/projectile/P)
+/mob/living/simple_animal/hostile/retaliate/rogue/megafauna/colossus/bullet_act(obj/projectile/P)
 	if(!stat)
 		var/obj/effect/temp_visual/at_shield/AT = new /obj/effect/temp_visual/at_shield(loc, src)
 		var/random_x = rand(-32, 32)
@@ -491,7 +523,7 @@ Difficulty: Very Hard
 		if("lavaland")//Depressurizes the place... and free cult metal, I guess.
 			NewTerrainFloors = /turf/open/floor/grass/snow/basalt
 			NewTerrainWalls = /turf/closed/wall/mineral/cult
-			NewFlora = list(/mob/living/simple_animal/hostile/asteroid/goldgrub)
+			NewFlora = list(/mob/living/simple_animal/hostile/retaliate/rogue/asteroid/goldgrub)
 			florachance = 1
 		if("winter") //Snow terrain is slow to move in and cold! Get the assistants to shovel your driveway.
 			NewTerrainFloors = /turf/open/floor/grass/snow
