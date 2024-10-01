@@ -8038,9 +8038,9 @@
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/cave)
 "eNj" = (
-/mob/living/simple_animal/hostile/retaliate/rogue/asteroid/imp,
-/turf/open/floor/rogue/naturalstone,
-/area/rogue/under/cavewet/bogcaves)
+/obj/item/book/granter/trait/north,
+/turf/open/floor/grass/snow,
+/area/rogue/indoors/shelter/mountains)
 "eNB" = (
 /obj/structure/table/church{
 	dir = 1
@@ -8212,7 +8212,8 @@
 /area/rogue/indoors/town/manor)
 "eUW" = (
 /obj/effect/decal/cleanable/blood/splatter,
-/obj/effect/spawner/lootdrop/roguetown/dungeon_chest,
+/obj/structure/closet/crate/chest,
+/obj/item/clothing/gloves/roguetown/leather,
 /turf/open/floor/rogue/tile{
 	icon_state = "bfloorz"
 	},
@@ -11203,6 +11204,12 @@
 	icon_state = "roof"
 	},
 /area/rogue/outdoors/town/roofs)
+"gYX" = (
+/obj/structure/flora/roguegrass/fungus_bush,
+/turf/open/floor/rogue/dirt/road{
+	muddy = true
+	},
+/area/rogue/outdoors/bog)
 "gZc" = (
 /obj/structure/closet/crate/chest,
 /obj/item/reagent_containers/food/snacks/grown/oat,
@@ -20243,6 +20250,13 @@
 /obj/structure/chair/wood/rogue/chair3,
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/tavern)
+"nsT" = (
+/obj/structure/closet/crate/chest,
+/obj/item/reagent_containers/glass/bottle/rogue/healthpot,
+/turf/open/floor/rogue/tile{
+	icon_state = "bfloorz"
+	},
+/area/rogue/indoors)
 "ntc" = (
 /obj/structure/flora/roguegrass/bush/wall/tall,
 /turf/open/floor/rogue/dirt/road{
@@ -30422,6 +30436,10 @@
 /obj/structure/flora/roguetree/burnt,
 /turf/open/floor/rogue/dirt,
 /area/rogue/outdoors/bog)
+"unU" = (
+/obj/structure/closet/crate/chest/gold/lootbox/trait,
+/turf/open/floor/grass/snow,
+/area/rogue/indoors/shelter/mountains)
 "uod" = (
 /obj/item/roguekey/tribal,
 /turf/open/floor/rogue/dirt/road{
@@ -32001,6 +32019,13 @@
 /obj/structure/sarcophagus/alt,
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/cavewet/bogcaves/tomb/martyr)
+"vpM" = (
+/obj/item/natural/stone,
+/obj/effect/spawner/lootdrop/roguetown/dungeon_chest,
+/turf/open/floor/rogue/dirt/road{
+	muddy = true
+	},
+/area/rogue/under/cavewet/bogcaves)
 "vpP" = (
 /obj/structure/table/wood{
 	dir = 4;
@@ -36397,6 +36422,10 @@
 	},
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/outdoors/bog)
+"ykn" = (
+/obj/item/rogueweapon/pick,
+/turf/open/floor/rogue/church,
+/area/rogue/indoors/shelter/mountains)
 "ykp" = (
 /obj/structure/fluff/railing/wood{
 	dir = 1;
@@ -64446,9 +64475,9 @@ iSb
 afN
 cSl
 iSb
-gLh
+qtE
 iSb
-qJW
+iSb
 hGf
 iSb
 hGf
@@ -65647,7 +65676,7 @@ hGf
 iSb
 hGf
 hGf
-qJW
+iSb
 iSb
 iSb
 iSb
@@ -68491,7 +68520,7 @@ hGf
 hGf
 bzg
 oBo
-muz
+vpM
 qGP
 whb
 whb
@@ -75711,7 +75740,7 @@ ohE
 yca
 cwh
 nRs
-xBB
+nsT
 nRs
 wQj
 xQK
@@ -76499,7 +76528,7 @@ odi
 hHI
 oEL
 yca
-xBB
+yca
 hHI
 rhJ
 yca
@@ -78509,7 +78538,7 @@ odi
 pAV
 pPG
 xBl
-aRa
+xBl
 xBl
 xBl
 xBl
@@ -97452,9 +97481,9 @@ xkm
 dVO
 dVO
 dVO
-eNj
 dVO
-eNj
+dVO
+dVO
 dVO
 dVO
 dVO
@@ -247622,7 +247651,7 @@ aUc
 tmH
 tmH
 vzW
-afQ
+unU
 vaN
 tmH
 vaN
@@ -248428,7 +248457,7 @@ vaN
 olD
 olD
 afQ
-afQ
+dki
 tmH
 tmH
 tmH
@@ -248830,7 +248859,7 @@ tmH
 tmH
 tmH
 afQ
-dki
+afQ
 afQ
 tmH
 tmH
@@ -249232,8 +249261,8 @@ tmH
 lXa
 jgK
 jgK
-afQ
-olD
+tmH
+tmH
 jgK
 lXa
 jgK
@@ -249635,7 +249664,7 @@ lIW
 wPf
 oJu
 oJu
-oJu
+ykn
 wYW
 lIW
 oJu
@@ -250439,7 +250468,7 @@ lIW
 kPr
 oJu
 oJu
-oJu
+vHb
 oJu
 lIW
 oJu
@@ -250839,7 +250868,7 @@ tmH
 tmH
 lIW
 wYW
-kaO
+kYg
 cuC
 cuC
 cuC
@@ -253249,7 +253278,7 @@ afQ
 afQ
 afQ
 olD
-afQ
+tmH
 oJu
 oJu
 cuC
@@ -256454,7 +256483,7 @@ tmH
 tmH
 aUc
 afQ
-afQ
+eNj
 afQ
 tmH
 tmH
@@ -258073,8 +258102,8 @@ afQ
 afQ
 afQ
 afQ
-vaN
-oJu
+tmH
+ykn
 oJu
 eQb
 oJu
@@ -280473,7 +280502,7 @@ wLx
 wLx
 sYx
 sYx
-sYx
+aTh
 sYx
 sYx
 sYx
@@ -283987,7 +284016,7 @@ rfl
 jFN
 odi
 jFN
-wGD
+gYX
 wGD
 wGD
 sYx
@@ -284475,7 +284504,7 @@ odi
 kWT
 odi
 odi
-sYx
+aTh
 uRH
 sYx
 wLx
@@ -288028,7 +288057,7 @@ wGD
 wGD
 sYx
 odi
-odi
+dpL
 odi
 sYx
 wLx
@@ -292128,7 +292157,7 @@ kXN
 kXN
 kXN
 lPu
-lPu
+mLu
 lPu
 kXN
 kXN
@@ -299950,7 +299979,7 @@ odi
 odi
 sYx
 wGD
-odi
+afG
 wGD
 lOV
 lOV
@@ -308977,7 +309006,7 @@ odi
 odi
 wLx
 sYx
-odi
+dpL
 sYx
 odi
 odi
@@ -309794,7 +309823,7 @@ odi
 odi
 uRH
 sYx
-odi
+dpL
 odi
 odi
 sYx
@@ -330231,7 +330260,7 @@ sYx
 sYx
 odi
 odi
-sYx
+aTh
 odi
 sYx
 wLx
@@ -333430,7 +333459,7 @@ sYx
 odi
 sYx
 odi
-sYx
+aTh
 sYx
 wGD
 wGD
@@ -335838,7 +335867,7 @@ sYx
 odi
 odi
 sYx
-odi
+dpL
 odi
 wGD
 odi

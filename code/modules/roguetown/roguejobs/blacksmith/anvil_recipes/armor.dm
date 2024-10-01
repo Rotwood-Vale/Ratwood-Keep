@@ -246,7 +246,7 @@
 	name = "Half-Plate Bikini (+2 Steel +1 Cloth)"
 	req_bar = /obj/item/ingot/steel
 	additional_items = list(/obj/item/ingot/steel, /obj/item/ingot/steel, /obj/item/natural/cloth)
-	created_item = /obj/item/clothing/suit/roguetown/armor/plate/bikini
+	created_item = /obj/item/clothing/suit/roguetown/armor/plate/half/bikini
 	craftdiff = 3
 	i_type = "Armor"
 

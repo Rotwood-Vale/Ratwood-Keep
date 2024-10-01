@@ -46,7 +46,7 @@
 	turns_per_move = 8
 	see_in_dark = 10
 	move_to_delay = 15
-	base_intents = list(/datum/intent/simple/goldengrub)
+	base_intents = list(/datum/intent/simple/goldgrub)
 	butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat/steak = 2, /obj/item/soul_fragment/essence)
 	faction = list("caves")
 	mob_biotypes = MOB_ORGANIC|MOB_BEAST
