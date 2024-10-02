@@ -6,7 +6,8 @@
 	total_positions = 1
 	spawn_positions = 1
 
-	allowed_races = RACES_SHUNNED_UP
+	allowed_races = RACES_SHUNNED_UP	
+	allowed_patrons = list(/datum/patron/divine/malum)
 
 	tutorial = "You studied for many decades under your master with a few other apprentices to become an malumworker, a trade that certainly has seen a boom in revenue in recent times with many a bannerlord seeing the importance in maintaining a well-equipped army."
 
