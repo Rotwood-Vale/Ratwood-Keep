@@ -49,7 +49,7 @@
 			var/needed_amount = R.reqs[A]
 			for(var/B in contents)
 				if(ispath(B, A))
-					if(!R.subtype_reqs && B in subtypesof(A))
+					if(!R.subtype_reqs && (B in subtypesof(A)))
 						continue
 					if (R.blacklist.Find(B))
 						testing("foundinblacklist")
