@@ -4,7 +4,7 @@
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
 	outfit = /datum/outfit/job/roguetown/adventurer/gambler
-	category_tags = list(CTAG_TOWNER)
+	category_tags = list(CTAG_DISABLED)
 
 /datum/outfit/job/roguetown/adventurer/gambler
 	allowed_patrons = list(/datum/patron/inhumen/baotha, /datum/patron/divine/xylix)
