@@ -1215,4 +1215,3 @@ GLOBAL_LIST_EMPTY(external_rsc_urls)
 				var/lghost = burial_rite_make_ghost(L)
 				burial_rite_return_ghost_to_lobby(lghost)
 		return FALSE
-	return FALSE

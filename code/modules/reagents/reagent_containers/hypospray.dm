@@ -19,8 +19,8 @@
 /obj/item/reagent_containers/hypospray/attack(mob/living/M, mob/user)
 	if(has_cap)
 		to_chat(user, span_warning("[src] has a cap on! You need to remove it first."))
-		return FALSE
 		playsound(src, 'modular/Smoker/sound/inject.ogg')
+		return FALSE
 	inject(M, user)
 
 ///Handles all injection checks, injection and logging.
