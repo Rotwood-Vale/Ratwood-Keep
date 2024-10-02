@@ -26,7 +26,12 @@
 	var/require_comms_key = FALSE
 
 /datum/world_topic/proc/TryRun(list/input)
-	key_valid = config && (CONFIG_GET(string/comms_key) == input["key"])
+	if(!config)
+		return "Configuration has not initialised yet"
+	var/comms_key = CONFIG_GET(string/comms_key)
+	if(!comms_key) // key was not set
+		return "Commskey disabled"
+	key_valid = comms_key == input["key"]
 	if(require_comms_key && !key_valid)
 		return "Bad Key"
 	input -= "key"
