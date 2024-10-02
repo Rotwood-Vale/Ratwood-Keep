@@ -24,7 +24,7 @@
   * Arguments:
   * * zone [a BODY_ZONE_X define](https://github.com/tgstation/tgstation/blob/master/code/__DEFINES/combat.dm#L187-L200)
   */
-/mob/proc/getorganszone(zone)
+/mob/proc/getorganszone(zone, subzones = FALSE)
 	return
 
 /mob/living/carbon/getorgan(typepath)

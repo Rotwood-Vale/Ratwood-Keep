@@ -106,7 +106,7 @@
 /obj/mecha/attack_tk()
 	return
 
-/obj/mecha/hitby(atom/movable/AM, skipcatch, hitpush, blocked, datum/thrownthing/throwingdatum) //wrapper
+/obj/mecha/hitby(atom/movable/AM, skipcatch, hitpush, blocked, datum/thrownthing/throwingdatum, d_type = "blunt") //wrapper
 	log_message("Hit by [AM].", LOG_MECHA, color="red")
 	. = ..()
 

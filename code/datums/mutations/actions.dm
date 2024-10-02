@@ -128,7 +128,7 @@
 	deactive_msg = "You swallow the flame."
 	var/strength = 1
 
-/obj/effect/proc_holder/spell/aimed/firebreath/before_cast(list/targets)
+/obj/effect/proc_holder/spell/aimed/firebreath/before_cast(list/targets, recharge = TRUE, mob/user = usr) //if recharge is started is important for the trigger spells
 	. = ..()
 	if(iscarbon(usr))
 		var/mob/living/carbon/C = usr

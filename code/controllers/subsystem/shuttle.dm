@@ -911,7 +911,7 @@ SUBSYSTEM_DEF(shuttle)
 
 /datum/controller/subsystem/shuttle/proc/autoEnd() //CIT CHANGE - allows shift to end without being a proper shuttle call?
 	if(EMERGENCY_IDLE_OR_RECALLED)
-		SSshuttle.emergency.request(silent = TRUE)
+		SSshuttle.emergency.request()
 		priority_announce("The last boat is leaving.", null, 'sound/misc/notice.ogg')
 //		log_game("Round end vote passed. Shuttle has been auto-called.")
 //		message_admins("Round end vote passed. Shuttle has been auto-called.")

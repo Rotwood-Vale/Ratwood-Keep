@@ -113,7 +113,7 @@ obj/mecha/combat/durand/attack_generic(mob/user, damage_amount = 0, damage_type 
 	else
 		. = ..()
 
-/obj/mecha/combat/durand/hitby(atom/movable/AM, skipcatch, hitpush, blocked, datum/thrownthing/throwingdatum)
+/obj/mecha/combat/durand/hitby(atom/movable/AM, skipcatch, hitpush, blocked, datum/thrownthing/throwingdatum, d_type = "blunt")
 	if(defense_check(AM.loc))
 		log_message("Impact with [AM] absorbed by defense field.", LOG_MECHA, color="orange")
 		shield.hitby(AM, skipcatch, hitpush, blocked, throwingdatum)
