@@ -62,21 +62,21 @@
 /datum/crafting_recipe/roguetown/sewing/untie_headband
 	name = "untie headband"
 	result = list(/obj/item/natural/cloth = 1)
-	reqs = list(/obj/item/clothing/head/roguetown/headband)
+	reqs = list(/obj/item/clothing/head/roguetown/headband = 1)
 	craftdiff = 0
 
 /// Im legally obligated to say these are a temporary fix until a more permanent solution is made
 /datum/crafting_recipe/roguetown/sewing/untie_loincloth
 	name = "untie loincloth"
 	result = list(/obj/item/natural/cloth = 1)
-	reqs = list(/obj/item/clothing/under/roguetown/loincloth)
+	reqs = list(/obj/item/clothing/under/roguetown/loincloth = 1)
 	craftdiff = 0
 
 /// Im legally obligated to say these are a temporary fix until a more permanent solution is made
 /datum/crafting_recipe/roguetown/sewing/untie_brownloincloth
 	name = "untie brown loincloth"
 	result = list(/obj/item/natural/cloth = 1)
-	reqs = list(/obj/item/clothing/under/roguetown/loincloth/brown)
+	reqs = list(/obj/item/clothing/under/roguetown/loincloth/brown = 1)
 	craftdiff = 0
 
 
