@@ -102,7 +102,7 @@
 		to_chat(user, span_info("I strap the armor plating to [A] and sharpen [A.p_their()] claws with the nail filer. This was a great idea."))
 		qdel(src)
 
-mob/living/simple_animal/hostile/bear/butter //The mighty companion to Cak. Several functions used from it.
+/mob/living/simple_animal/hostile/bear/butter //The mighty companion to Cak. Several functions used from it.
 	name = "Terrygold"
 	icon_state = "butterbear"
 	icon_living = "butterbear"
