@@ -25,7 +25,7 @@ SUBSYSTEM_DEF(role_class_handler)
 	ex: special_session_queue[ckey] += /datum/subclass/BIGMAN
 	contents: special_session_queue = list("ckey" = list("funID" = /datum/subclass/class), "ckey2" = list("funID" = /datum/subclass/class)... etc)
 */
-	var/list/special_session_queue = list()
+	var/list/list/special_session_queue = list()
 
 
 /*

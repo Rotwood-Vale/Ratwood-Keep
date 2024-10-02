@@ -262,12 +262,9 @@ Turf and target are separate in case you want to teleport some distance from a t
 /proc/sortmobs()
 	var/list/moblist = list()
 	var/list/sortmob = sortNames(GLOB.mob_list)
-	var/list/types = list()
+	var/list/list/mob/types = list()
 	for(var/mob/M in sortmob)
-		if(M.type in types)
-			types[M.type].Add(M)
-		else
-			types[M.type] = list(M)
+		LAZYADD(types[M.type], M)
 	var/types_sort = sortNames(types)
 	for(var/T in types_sort)
 		moblist.Add(types_sort[T])
@@ -349,6 +346,7 @@ Turf and target are separate in case you want to teleport some distance from a t
 // note range is non-pythagorean
 // used for disposal system
 /proc/get_ranged_target_turf(atom/A, direction, range)
+	RETURN_TYPE(/turf)
 
 	var/x = A.x
 	var/y = A.y
