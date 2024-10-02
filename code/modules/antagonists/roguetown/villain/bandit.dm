@@ -183,28 +183,3 @@
 			to_chat(world, "[the_name] was a bandit.")
 		else
 			to_chat(world, "[the_name] was a bandit. He stole [amt] triumphs worth of loot.")
-	return
-
-	var/traitorwin = TRUE
-
-	var/count = 0
-	if(objectives.len)//If the traitor had no objectives, don't need to process this.
-		for(var/datum/objective/objective in objectives)
-			objective.update_explanation_text()
-			if(!objective.check_completion())
-				traitorwin = FALSE
-			count += objective.triumph_count
-
-	if(!count)
-		count = 1
-
-	if(traitorwin)
-		owner.adjust_triumphs(count)
-		to_chat(owner.current, span_greentext("I've TRIUMPHED!"))
-		if(owner.current)
-			owner.current.playsound_local(get_turf(owner.current), 'sound/misc/triumph.ogg', 100, FALSE, pressure_affected = FALSE)
-	else
-		to_chat(owner.current, span_redtext("I've failed to satisfy my greed."))
-		if(owner.current)
-			owner.current.playsound_local(get_turf(owner.current), 'sound/misc/fail.ogg', 100, FALSE, pressure_affected = FALSE)
-

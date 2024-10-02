@@ -487,40 +487,6 @@
 
 /mob/living/proc/set_pull_offsets(mob/living/M, grab_state = GRAB_PASSIVE)
 	return //rtd fix not updating because no dirchange
-	if(M == src)
-		return
-	if(M.wallpressed)
-		return
-	if(M.buckled)
-		return //don't make them change direction or offset them if they're buckled into something.
-	var/offset = 0
-	switch(grab_state)
-		if(GRAB_PASSIVE)
-			offset = GRAB_PIXEL_SHIFT_PASSIVE
-		if(GRAB_AGGRESSIVE)
-			offset = GRAB_PIXEL_SHIFT_AGGRESSIVE
-		if(GRAB_NECK)
-			offset = GRAB_PIXEL_SHIFT_NECK
-		if(GRAB_KILL)
-			offset = GRAB_PIXEL_SHIFT_NECK
-	M.setDir(get_dir(M, src))
-	switch(M.dir)
-		if(NORTH)
-			M.set_mob_offsets("pulledby", _x = 0, _y = offset)
-		if(SOUTH)
-			M.set_mob_offsets("pulledby", _x = 0, _y = -offset)
-		if(EAST)
-			if(M.lying == 270) //update the dragged dude's direction if we've turned
-				M.lying = 90
-				M.update_transform() //force a transformation update, otherwise it'll take a few ticks for update_mobility() to do so
-				M.lying_prev = M.lying
-			M.set_mob_offsets("pulledby", _x = offset, _y = 0)
-		if(WEST)
-			if(M.lying == 90)
-				M.lying = 270
-				M.update_transform()
-				M.lying_prev = M.lying
-			M.set_mob_offsets("pulledby", _x = offset, _y = 0)
 
 /mob/living
 	var/list/mob_offsets = list()

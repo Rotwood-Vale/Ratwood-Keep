@@ -84,9 +84,6 @@
 					return
 				if(!hingot.currecipe)
 					return
-					user.flash_fullscreen("whiteflash")
-					shake_camera(user, 1, 1)
-					playsound(src,pick('sound/items/bsmith1.ogg','sound/items/bsmith2.ogg','sound/items/bsmith3.ogg','sound/items/bsmith4.ogg'), 100, FALSE)
 				var/used_str = user.STASTR
 				if(iscarbon(user))
 					var/mob/living/carbon/carbon_user = user

@@ -125,8 +125,8 @@
 			if(!computer || !hard_drive || !hard_drive.store_file(logfile))
 				if(!computer)
 					// This program shouldn't even be runnable without computer.
+					. = TRUE
 					CRASH("Var computer is null!")
-					return 1
 				if(!hard_drive)
 					computer.visible_message(span_warning("\The [computer] shows an \"I/O Error - Hard drive connection error\" warning."))
 				else	// In 99.9% cases this will mean our HDD is full

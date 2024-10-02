@@ -353,8 +353,8 @@
 //			else
 //				if(FindHidden())
 //					return 1
-	LoseTarget()
-	return 0
+//	LoseTarget()
+//	return 0
 
 /mob/living/simple_animal/hostile/proc/Goto(target, delay, minimum_distance)
 	if(target == src.target)

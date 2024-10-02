@@ -77,48 +77,7 @@
 	var/name = real_name
 	var/alt_name = ""
 
-	return
-
-	if(GLOB.say_disabled)	//This is here to try to identify lag problems
-		to_chat(usr, span_danger("Speech is currently admin-disabled."))
-		return
-
-	var/jb = is_banned_from(ckey, "Deadchat")
-	if(QDELETED(src))
-		return
-
-	if(jb)
-		to_chat(src, span_danger("I have been banned from deadchat."))
-		return
-
-
-
-	if (src.client)
-		if(src.client.prefs.muted & MUTE_DEADCHAT)
-			to_chat(src, span_danger("I cannot talk in deadchat (muted)."))
-			return
-
-		if(src.client.handle_spam_prevention(message,MUTE_DEADCHAT))
-			return
-
-	var/mob/dead/observer/O = src
-	if(isobserver(src) && O.deadchat_name)
-		name = "[O.deadchat_name]"
-	else
-		if(mind && mind.name)
-			name = "[mind.name]"
-		else
-			name = real_name
-		if(name != real_name)
-			alt_name = " (died as [real_name])"
-
-	var/spanned = say_quote(message)
-	var/source = "<span class='game'><span class='prefix'>DEAD:</span> <span class='name'>[name]</span>[alt_name]"
-	var/rendered = " <span class='message'>[emoji_parse(spanned)]</span></span>"
-	log_talk(message, LOG_SAY, tag="DEAD")
-	if(SEND_SIGNAL(src, COMSIG_MOB_DEADSAY, message) & MOB_DEADSAY_SIGNAL_INTERCEPT)
-		return
-	deadchat_broadcast(rendered, source, follow_target = src, speaker_key = key)
+	return // RTCHANGE
 
 ///Check if this message is an emote
 /mob/proc/check_emote(message, forced)
