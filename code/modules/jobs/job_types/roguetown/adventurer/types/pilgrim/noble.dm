@@ -11,40 +11,43 @@
 
 /datum/outfit/job/roguetown/adventurer/noble/pre_equip(mob/living/carbon/human/H)
 	..()
-	H.mind.adjust_skillrank(/datum/skill/misc/reading, 3, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/misc/reading, 4, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/combat/knives, 3, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/music, 2, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/riding, 4, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/craft/crafting, 1, TRUE)
-	H.change_stat("intelligence", 1)
-	H.change_stat("strength", -1)
+	H.mind.adjust_skillrank(/datum/skill/combat/polearms, 1, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 3, TRUE) // To make it make more sense, being a lone noble in the terrorbog.
+	H.change_stat("intelligence", 2)
+	H.change_stat("perception", 2)
+	H.change_stat("endurance", -2)
+	H.change_stat("strength", -2)
+	H.change_stat("fortune", 3)
 	shoes = /obj/item/clothing/shoes/roguetown/boots
 	belt = /obj/item/storage/belt/rogue/leather/black
 	beltr = /obj/item/flashlight/flare/torch/lantern
 	backl = /obj/item/storage/backpack/rogue/satchel
 	backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger/steel)
-	neck = /obj/item/storage/belt/rogue/pouch/coins/rich
-	id = /obj/item/clothing/ring/silver
+	neck = /obj/item/listenstone
+	beltl = /obj/item/storage/belt/rogue/pouch/food
+	id = /obj/item/clothing/ring/diamond // Helps prove you are a noble.
+	r_hand = /obj/item/rogueweapon/woodstaff
 	if(H.gender == FEMALE)
-		H.mind.adjust_skillrank(/datum/skill/combat/bows, 2, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/sewing, 1, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/craft/cooking, 1, TRUE)
 		pants = /obj/item/clothing/under/roguetown/tights/stockings/silk/white
 		armor = /obj/item/clothing/suit/roguetown/shirt/dress/gen/purple
 		head = /obj/item/clothing/head/roguetown/hatblu
 		cloak = /obj/item/clothing/cloak/raincloak/purple
-		beltl = /obj/item/storage/belt/rogue/pouch/food
 	if(H.gender == MALE)
-		H.mind.adjust_skillrank(/datum/skill/combat/swords, 2, TRUE)
 		pants = /obj/item/clothing/under/roguetown/tights/purple
 		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/purple
 		cloak = /obj/item/clothing/cloak/half
 		head = /obj/item/clothing/head/roguetown/fancyhat
 	if(H.age == AGE_OLD)
-		H.mind.adjust_skillrank(/datum/skill/combat/polearms, 3, TRUE) 
-		r_hand = /obj/item/rogueweapon/woodstaff
-
-
-
-
-
+		H.mind.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/knives, 1, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/music, 1, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/riding, 1, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/craft/crafting, 1, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/polearms, 2, TRUE)
+		H.change_stat("fortune", 2)
+		H.change_stat("intelligence", 3)
