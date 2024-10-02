@@ -7,18 +7,16 @@
 		return FALSE
 	if(!target.getorganslot(ORGAN_SLOT_VAGINA))
 		return FALSE
-	if(!user.getorganslot(ORGAN_SLOT_TAIL))
-		return FALSE
-	if(!user.getorganslot(ORGAN_SLOT_TAIL).can_penetrate)
+	var/obj/item/organ/tail/tail = user.getorganslot(ORGAN_SLOT_TAIL)
+	if(!tail?.can_penetrate)
 		return FALSE
 	return TRUE
 
 /datum/sex_action/tailpegging_vaginal/can_perform(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(!get_location_accessible(target, BODY_ZONE_PRECISE_GROIN))
 		return FALSE
-	if(!user.getorganslot(ORGAN_SLOT_TAIL))
-		return FALSE
-	if(!user.getorganslot(ORGAN_SLOT_TAIL).can_penetrate)
+	var/obj/item/organ/tail/tail = user.getorganslot(ORGAN_SLOT_TAIL)
+	if(!tail?.can_penetrate)
 		return FALSE
 	return TRUE
 

@@ -231,6 +231,7 @@
 
 
 /datum/mind/proc/get_language_holder()
+	RETURN_TYPE(/datum/language_holder)
 	if(!language_holder)
 		var/datum/language_holder/L = current.get_language_holder(shadow=FALSE)
 		language_holder = L.copy(src)
@@ -507,6 +508,7 @@
 		A.on_removal()
 
 /datum/mind/proc/has_antag_datum(datum_type, check_subtypes = TRUE)
+	RETURN_TYPE(datum_type)
 	if(!datum_type)
 		return
 	. = FALSE

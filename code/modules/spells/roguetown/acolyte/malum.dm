@@ -287,11 +287,12 @@
 var/global/list/anvil_recipe_prices[][]
 /proc/add_recipe_to_global(var/datum/anvil_recipe/recipe)
 	var/total_sellprice = 0
-	var/obj/item/ingot/bar = recipe.req_bar
-	var/obj/item/itemtosend = null
-	if (bar)
-		total_sellprice += bar.sellprice
-		itemtosend = recipe.created_item
+	var/obj/item/itemtosend
+	if (ispath(recipe.req_bar, /obj/item/ingot))
+		var/obj/item/ingot/bar = recipe.req_bar
+		total_sellprice += bar::sellprice
+	if (ispath(recipe.needed_item))
+		total_sellprice = recipe.needed_item::sellprice
 	if (recipe.additional_items)
 		for (var/obj/additional_item in recipe.additional_items)
 			total_sellprice += additional_item.sellprice

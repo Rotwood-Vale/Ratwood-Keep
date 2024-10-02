@@ -4,7 +4,7 @@
 	var/stage = 1
 
 	/// List of crafting stages for this structure. THEY NEED TO BE IN ORDER.
-	var/list/stages
+	var/list/datum/crafting_stage/stages
 
 	/// Reference to the final product of the multi-stage structure. To be spawned when the final stage is completed.
 	var/obj/structure/final_product

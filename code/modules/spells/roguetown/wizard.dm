@@ -28,7 +28,7 @@ Unless of course, they went heavy into the gameplay loop, and got a better book.
 	//TODO: make GLOB list of spells, give them a true/false tag for learning, run through that list to generate choices
 	var/list/choices = list()//Current thought: standard combat spells 3 spell points. utility/buff spells 2 points, minor spells 1 point
 
-	var/list/spell_choices = list(
+	var/list/obj/effect/proc_holder/spell/spell_choices = list(
 		SPELL_FIREBALLGREATER,		// 13 cost	combat, AOE heavy single target damage
 		SPELL_METEOR,				// 13 cost	combat, LARGE AOE, light damage.
 		SPELL_SUNDER_LIGHTNING,		// 13 cost	combat, upper level AOE hard stunning damage
@@ -59,46 +59,34 @@ Unless of course, they went heavy into the gameplay loop, and got a better book.
 	)
 
 	//Patron Spelllists
-	var/list/spell_choices_noc = list(
+	var/list/obj/effect/proc_holder/spell/spell_choices_noc = list(
 		SPELL_MAGEBLINDNESS,  // 2cost
 		SPELL_MAGEINVISIBILITY,
 	)
 
-	var/list/spell_choices_graggar = list(
+	var/list/obj/effect/proc_holder/spell/spell_choices_graggar = list(
 
 	)
 
-	var/list/spell_choices_matthios = list()
+	var/list/obj/effect/proc_holder/spell/spell_choices_matthios = list()
 
-	var/list/spell_choices_zizo = list(
+	var/list/obj/effect/proc_holder/spell/spell_choices_zizo = list(
 		SPELL_STRENGTHEN_UNDEAD,// 4 cost
 		SPELL_SICKNESS,// 3 cost
 		SPELL_EYEBITE,// 3 cost
 	)
 
-	if(user.patron.type == /datum/patron/divine/noc)
-		spell_choices.Add(spell_choices_noc)
-		for(var/i = 1, i <= spell_choices.len, i++)
-			choices["[spell_choices[i].name]: [spell_choices[i].cost]"] = spell_choices[i]
-
-	else if(user.patron.type == /datum/patron/inhumen/graggar)
-		spell_choices.Add(spell_choices_graggar)
-		for(var/i = 1, i <= spell_choices.len, i++)
-			choices["[spell_choices[i].name]: [spell_choices[i].cost]"] = spell_choices[i]
-
-	else if(user.patron.type == /datum/patron/inhumen/matthios)
-		spell_choices.Add(spell_choices_matthios)
-		for(var/i = 1, i <= spell_choices.len, i++)
-			choices["[spell_choices[i].name]: [spell_choices[i].cost]"] = spell_choices[i]
-
-	else if(user.patron.type == /datum/patron/zizo)
-		spell_choices.Add(spell_choices_zizo)
-		for(var/i = 1, i <= spell_choices.len, i++)
-			choices["[spell_choices[i].name]: [spell_choices[i].cost]"] = spell_choices[i]
-
-	else
-		for(var/i = 1, i <= spell_choices.len, i++)
-			choices["[spell_choices[i].name]: [spell_choices[i].cost]"] = spell_choices[i]
+	switch(user.patron.type)
+		if(/datum/patron/divine/noc)
+			spell_choices.Add(spell_choices_noc)
+		if(/datum/patron/inhumen/graggar)
+			spell_choices.Add(spell_choices_graggar)
+		if(/datum/patron/inhumen/matthios)
+			spell_choices.Add(spell_choices_matthios)
+		if(/datum/patron/zizo)
+			spell_choices.Add(spell_choices_zizo)
+	for(var/obj/effect/proc_holder/spell/spell_choice as anything in spell_choices)
+		choices["[spell_choice::name]: [spell_choice::cost]"] = spell_choice
 
 	var/totalspellcount = 0
 	for(var/obj/effect/proc_holder/spell/knownspell in user.mind.spell_list)

@@ -868,6 +868,7 @@
 
 /* Language procs */
 /atom/movable/proc/get_language_holder(shadow=TRUE)
+	RETURN_TYPE(/datum/language_holder)
 	if(language_holder)
 		return language_holder
 	else
