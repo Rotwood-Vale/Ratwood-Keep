@@ -526,7 +526,7 @@ GLOBAL_VAR_INIT(farm_animals, FALSE)
 			return FALSE
 	return TRUE
 
-mob/living/simple_animal/handle_fire()
+/mob/living/simple_animal/handle_fire()
 	. = ..()
 	if(fire_stacks > 0)
 		apply_damage(5, BURN)
