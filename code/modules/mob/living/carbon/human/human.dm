@@ -1178,10 +1178,13 @@
 	return getorganslot(ORGAN_SLOT_VAGINA)
 
 /mob/living/carbon/human/has_breasts()
+	RETURN_TYPE(/obj/item/organ/breasts)
 	return getorganslot(ORGAN_SLOT_BREASTS)
 
 /mob/living/carbon/human/proc/is_fertile()
-	return getorganslot(ORGAN_SLOT_VAGINA).fertility
+	var/obj/item/organ/vagina/vagina = getorganslot(ORGAN_SLOT_VAGINA)
+	return vagina.fertility
 
 /mob/living/carbon/human/proc/is_virile()
-	return getorganslot(ORGAN_SLOT_TESTICLES).virility
+	var/obj/item/organ/testicles/testicles = getorganslot(ORGAN_SLOT_TESTICLES)
+	return testicles.virility
