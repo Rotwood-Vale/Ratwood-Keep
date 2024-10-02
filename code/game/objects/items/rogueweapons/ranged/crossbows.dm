@@ -24,10 +24,6 @@
 	smeltresult = /obj/item/ingot/steel
 	var/damfactor = 2
 
-/obj/item/gun/ballistic/revolver/grenadelauncher/bow/update_icon()
-    . = ..()
-    cut_overlays()
-
 /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow/getonmobprop(tag)
 	. = ..()
 	if(tag)
@@ -143,11 +139,11 @@
 
 /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow/update_icon()
 	. = ..()
+	cut_overlays()
 	if(cocked)
 		icon_state = "crossbow1"
 	else
 		icon_state = "crossbow0"
-	cut_overlays()
 	if(chambered)
 		var/obj/item/I = chambered
 		I.pixel_x = 0

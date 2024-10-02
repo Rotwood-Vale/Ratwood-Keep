@@ -83,17 +83,57 @@
 	verbage = "strings together"
 	craftdiff = 2
 
-/*/datum/crafting_recipe/roguetown/recurvepartial
+/datum/crafting_recipe/roguetown/recurvepartial
 	name = "unstrung recurve bow"
-	result = 
+	result = /obj/item/grown/log/tree/recurvepartial
 	req = list(
 		/obj/item/grown/log/tree = 1,
 		/obj/item/natural/bone = 2,
 		/obj/item/reagent_containers/food/snacks/fat = 2,
+		/obj/item/natural/fibers = 2,
 	)
 	tools = /obj/item/rogueweapon/huntingknife
 	verbage_simple = "carve"
-	verbage = "carves"*/
+	verbage = "carves"
+	craftdiff = 3
+
+/datum/crafting_recipe/roguetown/recurvebow
+	name = "recurve bow"
+	result = /obj/item/gun/ballistic/revolver/grenadelauncher/bow/recurve
+	reqs = list(
+		/obj/item/natural/bowstring = 1,
+		/obj/item/grown/log/tree/recurvepartial = 1,
+		)
+	skillcraft = /datum/skill/combat/bows
+	verbage_simple = "string together"
+	verbage = "strings together"
+	craftdiff = 3
+
+/datum/crafting_recipe/roguetown/longbowpartial
+	name = "unstrung recurve bow"
+	result = /obj/item/grown/log/tree/longbowpartial
+	req = list(
+		/obj/item/grown/log/tree = 1,
+		/obj/item/natural/cloth = 1,
+		/obj/item/reagent_containers/food/snacks/fat = 2,
+		/obj/item/natural/fibers = 2,
+	)
+	tools = /obj/item/rogueweapon/huntingknife
+	verbage_simple = "carve"
+	verbage = "carves"
+	craftdiff = 3
+
+/datum/crafting_recipe/roguetown/longbow
+	name = "long bow"
+	result = /obj/item/gun/ballistic/revolver/grenadelauncher/bow/longbow
+	reqs = list(
+		/obj/item/natural/bowstring = 1,
+		/obj/item/grown/log/tree/longbowpartial = 1,
+		)
+	skillcraft = /datum/skill/combat/bows
+	verbage_simple = "string together"
+	verbage = "strings together"
+	craftdiff = 3
 
 /datum/crafting_recipe/roguetown/torch
 	name = "torch"

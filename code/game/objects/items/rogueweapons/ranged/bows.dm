@@ -27,10 +27,6 @@
 	load_sound = 'sound/foley/nockarrow.ogg'
 	var/damfactor = 1
 
-/obj/item/gun/ballistic/revolver/grenadelauncher/bow/update_icon()
-    . = ..()
-    cut_overlays()
-
 /obj/item/gun/ballistic/revolver/grenadelauncher/bow/getonmobprop(tag)
 	. = ..()
 	if(tag)
@@ -359,6 +355,7 @@
 	power is worth the effort."
 	icon = 'icons/roguetown/weapons/64.dmi'
 	icon_state = "longbow"
+	slot_flags = ITEM_SLOT_BACK
 	damfactor = 1.1
 	pixel_y = -16
 	pixel_x = -16

@@ -43,12 +43,14 @@
 /obj/item/grown/log/tree/bowpartial/recurve
 	name = "recurve bowstave"
 	desc = "An incomplete recurve awaiting stringing."
-	icon_state = ""
+	icon = 'icons/roguetown/items/64x.dmi'
+	icon_state = "recurve_bowstave"
 
 /obj/item/grown/log/tree/bowpartial/longbow
 	name = "long bowstave"
 	desc = "An incomplete longbow awaiting its string."
-	icon_state = ""
+	icon = 'icons/roguetown/items/64x.dmi'
+	icon_state = "long_bowstave"
 
 /obj/item/grown/log/tree/stick
 	name = "stick"
