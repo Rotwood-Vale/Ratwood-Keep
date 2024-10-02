@@ -30,7 +30,7 @@
 	smeltresult = /obj/item/rogueore/coal
 
 /obj/item/grown/log/tree/bowpartial
-	name = "unstrung bow"
+	name = "crude bowstave"
 	desc = "A partially completed bow, still waiting to be strung."
 	icon_state = "bowpartial"
 	max_integrity = 30
@@ -39,6 +39,16 @@
 	gripped_intents = null
 	w_class = WEIGHT_CLASS_BULKY
 	smeltresult = /obj/item/rogueore/coal
+
+/obj/item/grown/log/tree/bowpartial/recurve
+	name = "recurve bowstave"
+	desc = "An incomplete recurve awaiting stringing."
+	icon_state = ""
+
+/obj/item/grown/log/tree/bowpartial/longbow
+	name = "long bowstave"
+	desc = "An incomplete longbow awaiting its string."
+	icon_state = ""
 
 /obj/item/grown/log/tree/stick
 	name = "stick"

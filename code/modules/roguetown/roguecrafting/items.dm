@@ -83,6 +83,18 @@
 	verbage = "strings together"
 	craftdiff = 2
 
+/*/datum/crafting_recipe/roguetown/recurvepartial
+	name = "unstrung recurve bow"
+	result = 
+	req = list(
+		/obj/item/grown/log/tree = 1,
+		/obj/item/natural/bone = 2,
+		/obj/item/reagent_containers/food/snacks/fat = 2,
+	)
+	tools = /obj/item/rogueweapon/huntingknife
+	verbage_simple = "carve"
+	verbage = "carves"*/
+
 /datum/crafting_recipe/roguetown/torch
 	name = "torch"
 	result = /obj/item/flashlight/flare/torch

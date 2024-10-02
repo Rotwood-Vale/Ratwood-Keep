@@ -1,11 +1,18 @@
 
 /obj/item/gun/ballistic/revolver/grenadelauncher/bow
-	name = "bow"
-	desc = "A wooden weapon with a taut string."
+	name = "crude selfbow"
+	desc = "This roughly hewn selfbow is just a bit too little of everything. Too little length, \
+	too little poundage, too slow a shot."
 	icon = 'icons/roguetown/weapons/32.dmi'
 	icon_state = "bow"
 	item_state = "bow"
-	possible_item_intents = list(/datum/intent/shoot/bow, /datum/intent/arc/bow,INTENT_GENERIC)
+	experimental_onhip = TRUE
+	experimental_onback = TRUE
+	possible_item_intents = list(
+		/datum/intent/shoot/bow,
+		/datum/intent/arc/bow,
+		INTENT_GENERIC,
+		)
 	mag_type = /obj/item/ammo_box/magazine/internal/shot/bow
 	fire_sound = 'sound/combat/Ranged/flatbow-shot-01.ogg'
 	slot_flags = ITEM_SLOT_BACK|ITEM_SLOT_HIP
@@ -20,16 +27,85 @@
 	load_sound = 'sound/foley/nockarrow.ogg'
 	var/damfactor = 1
 
+/obj/item/gun/ballistic/revolver/grenadelauncher/bow/update_icon()
+    . = ..()
+    cut_overlays()
+
 /obj/item/gun/ballistic/revolver/grenadelauncher/bow/getonmobprop(tag)
 	. = ..()
 	if(tag)
 		switch(tag)
 			if("gen")
-				return list("shrink" = 0.7,"sx" = -3,"sy" = 0,"nx" = 6,"ny" = 1,"wx" = -1,"wy" = 1,"ex" = -2,"ey" = 1,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0,"nturn" = 9,"sturn" = -100,"wturn" = -102,"eturn" = 10,"nflip" = 1,"sflip" = 8,"wflip" = 8,"eflip" = 1)
+				return list(
+					"shrink" = 0.7,
+					"sx" = -3,
+					"sy" = 0,
+					"nx" = 6,
+					"ny" = 1,
+					"wx" = -1,
+					"wy" = 1,
+					"ex" = -2,
+					"ey" = 1,
+					"northabove" = 0,
+					"southabove" = 1,
+					"eastabove" = 1,
+					"westabove" = 0,
+					"nturn" = 9,
+					"sturn" = -100,
+					"wturn" = -102,
+					"eturn" = 10,
+					"nflip" = 1,
+					"sflip" = 8,
+					"wflip" = 8,
+					"eflip" = 1,
+					)
 			if("onbelt")
-				return list("shrink" = 0.3,"sx" = -2,"sy" = -5,"nx" = 4,"ny" = -5,"wx" = 0,"wy" = -5,"ex" = 2,"ey" = -5,"nturn" = 0,"sturn" = 0,"wturn" = 0,"eturn" = 0,"nflip" = 0,"sflip" = 0,"wflip" = 0,"eflip" = 0,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0)
+				return list(
+					"shrink" = 0.7,
+					"sx" = -2,
+					"sy" = -5,
+					"nx" = 4,
+					"ny" = -5,
+					"wx" = 0,
+					"wy" = -5,
+					"ex" = 2,
+					"ey" = -5,
+					"nturn" = 0,
+					"sturn" = 0,
+					"wturn" = 0,
+					"eturn" = 0,
+					"nflip" = 0,
+					"sflip" = 0,
+					"wflip" = 0,
+					"eflip" = 0,
+					"northabove" = 0,
+					"southabove" = 1,
+					"eastabove" = 1,
+					"westabove" = 0)
 			if("onback")
-				return list("shrink" = 0.3,"sx" = -2,"sy" = -5,"nx" = 4,"ny" = -5,"wx" = 0,"wy" = -5,"ex" = 2,"ey" = -5,"nturn" = 0,"sturn" = 0,"wturn" = 0,"eturn" = 0,"nflip" = 0,"sflip" = 0,"wflip" = 0,"eflip" = 0,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0)
+				return list(
+					"shrink" = 0.7,
+					"sx" = -2,
+					"sy" = -5,
+					"nx" = 4,
+					"ny" = -5,
+					"wx" = 0,
+					"wy" = -5,
+					"ex" = 2,
+					"ey" = -5,
+					"nturn" = 0,
+					"sturn" = 0,
+					"wturn" = 0,
+					"eturn" = 0,
+					"nflip" = 0,
+					"sflip" = 0,
+					"wflip" = 0,
+					"eflip" = 0,
+					"northabove" = 0,
+					"southabove" = 1,
+					"eastabove" = 1,
+					"westabove" = 0,
+					)
 
 
 /obj/item/gun/ballistic/revolver/grenadelauncher/bow/shoot_with_empty_chamber()
@@ -162,20 +238,219 @@
 
 /obj/item/gun/ballistic/revolver/grenadelauncher/bow/recurve
 	name = "recurve bow"
-	desc = "A long but slender bow, finely crafted from horn, sinew, and wood. It has an atypical shape."
+	desc = "A medium length composite bow of glued horn, wood, and sinew with good shooting \
+	characteristics."
+	icon = 'icons/roguetown/weapons/64.dmi'
 	icon_state = "bowr"
-	possible_item_intents = list(/datum/intent/shoot/bow/recurve, /datum/intent/arc/bow/recurve,INTENT_GENERIC)
-	randomspread = 1
-	spread = 1
+	possible_item_intents = list(
+		/datum/intent/shoot/bow/recurve,
+		/datum/intent/arc/bow/recurve,
+		INTENT_GENERIC,
+		)
 	force = 9
-	damfactor = 0.9
+	pixel_y = -16
+	pixel_x = -16
+	inhand_x_dimension = 64
+	inhand_y_dimension = 64
+	bigboy = TRUE
+	dropshrink = 0.8
+
+/obj/item/gun/ballistic/revolver/grenadelauncher/bow/recurve/getonmobprop(tag)
+	. = ..()
+	if(tag)
+		switch(tag)
+			if("gen")
+				return list(
+					"shrink" = 0.7,
+					"sx" = -3,
+					"sy" = 0,
+					"nx" = 6,
+					"ny" = 1,
+					"wx" = -1,
+					"wy" = 1,
+					"ex" = -2,
+					"ey" = 1,
+					"northabove" = 0,
+					"southabove" = 1,
+					"eastabove" = 1,
+					"westabove" = 0,
+					"nturn" = 9,
+					"sturn" = -100,
+					"wturn" = -102,
+					"eturn" = 10,
+					"nflip" = 1,
+					"sflip" = 8,
+					"wflip" = 8,
+					"eflip" = 1,
+					)
+			if("onbelt")
+				return list(
+					"shrink" = 0.7,
+					"sx" = -2,
+					"sy" = -5,
+					"nx" = 4,
+					"ny" = -5,
+					"wx" = 0,
+					"wy" = -5,
+					"ex" = 2,
+					"ey" = -5,
+					"nturn" = 0,
+					"sturn" = 0,
+					"wturn" = 0,
+					"eturn" = 0,
+					"nflip" = 0,
+					"sflip" = 0,
+					"wflip" = 0,
+					"eflip" = 0,
+					"northabove" = 0,
+					"southabove" = 1,
+					"eastabove" = 1,
+					"westabove" = 0)
+			if("onback")
+				return list(
+					"shrink" = 0.7,
+					"sx" = -2,
+					"sy" = -5,
+					"nx" = 4,
+					"ny" = -5,
+					"wx" = 0,
+					"wy" = -5,
+					"ex" = 2,
+					"ey" = -5,
+					"nturn" = 0,
+					"sturn" = 0,
+					"wturn" = 0,
+					"eturn" = 0,
+					"nflip" = 0,
+					"sflip" = 0,
+					"wflip" = 0,
+					"eflip" = 0,
+					"northabove" = 0,
+					"southabove" = 1,
+					"eastabove" = 1,
+					"westabove" = 0,
+					)
+
+/obj/item/gun/ballistic/revolver/grenadelauncher/bow/recurve/update_icon()
+	. = ..()
+	cut_overlays()
+	if(chambered)
+		var/obj/item/I = chambered
+		I.pixel_x = 16
+		I.pixel_y = 16
+		add_overlay(new /mutable_appearance(I))
+	if(ismob(loc))
+		var/mob/M = loc
+		M.update_inv_hands()
 
 /datum/intent/shoot/bow/recurve
-	chargetime = 0.75
-	chargedrain = 1.5
+	chargetime = 0.8
+	chargedrain = 2
 	charging_slowdown = 2.5
 
 /datum/intent/arc/bow/recurve
-	chargetime = 0.75
-	chargedrain = 1.5
+	chargetime = 0.8
+	chargedrain = 2
 	charging_slowdown = 2.5
+
+/obj/item/gun/ballistic/revolver/grenadelauncher/bow/longbow
+	name = "yew longbow"
+	desc = "A sturdy warbow made of a tillered yew stave. It's difficult to handle, but the \
+	power is worth the effort."
+	icon = 'icons/roguetown/weapons/64.dmi'
+	icon_state = "longbow"
+	damfactor = 1.1
+	pixel_y = -16
+	pixel_x = -16
+	inhand_x_dimension = 64
+	inhand_y_dimension = 64
+	bigboy = TRUE
+	dropshrink = 0.8
+
+/obj/item/gun/ballistic/revolver/grenadelauncher/bow/longbow/getonmobprop(tag)
+	. = ..()
+	if(tag)
+		switch(tag)
+			if("gen")
+				return list(
+					"shrink" = 0.7,
+					"sx" = -3,
+					"sy" = 0,
+					"nx" = 6,
+					"ny" = 1,
+					"wx" = -1,
+					"wy" = 1,
+					"ex" = -2,
+					"ey" = 1,
+					"northabove" = 0,
+					"southabove" = 1,
+					"eastabove" = 1,
+					"westabove" = 0,
+					"nturn" = 9,
+					"sturn" = -100,
+					"wturn" = -102,
+					"eturn" = 10,
+					"nflip" = 1,
+					"sflip" = 8,
+					"wflip" = 8,
+					"eflip" = 1,
+					)
+			if("onbelt")
+				return list(
+					"shrink" = 0.7,
+					"sx" = -2,
+					"sy" = -5,
+					"nx" = 4,
+					"ny" = -5,
+					"wx" = 0,
+					"wy" = -5,
+					"ex" = 2,
+					"ey" = -5,
+					"nturn" = 0,
+					"sturn" = 0,
+					"wturn" = 0,
+					"eturn" = 0,
+					"nflip" = 0,
+					"sflip" = 0,
+					"wflip" = 0,
+					"eflip" = 0,
+					"northabove" = 0,
+					"southabove" = 1,
+					"eastabove" = 1,
+					"westabove" = 0)
+			if("onback")
+				return list(
+					"shrink" = 0.7,
+					"sx" = -2,
+					"sy" = -5,
+					"nx" = 4,
+					"ny" = -5,
+					"wx" = 0,
+					"wy" = -5,
+					"ex" = 2,
+					"ey" = -5,
+					"nturn" = 0,
+					"sturn" = 0,
+					"wturn" = 0,
+					"eturn" = 0,
+					"nflip" = 0,
+					"sflip" = 0,
+					"wflip" = 0,
+					"eflip" = 0,
+					"northabove" = 0,
+					"southabove" = 1,
+					"eastabove" = 1,
+					"westabove" = 0,
+					)
+
+/obj/item/gun/ballistic/revolver/grenadelauncher/bow/longbow/update_icon()
+	. = ..()
+	cut_overlays()
+	if(chambered)
+		var/obj/item/I = chambered
+		I.pixel_x = 16
+		I.pixel_y = 16
+		add_overlay(new /mutable_appearance(I))
+	if(ismob(loc))
+		var/mob/M = loc
+		M.update_inv_hands()

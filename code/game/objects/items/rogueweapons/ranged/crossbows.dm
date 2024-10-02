@@ -5,6 +5,8 @@
 	icon = 'icons/roguetown/weapons/32.dmi'
 	icon_state = "crossbow0"
 	item_state = "crossbow"
+	experimental_onhip = TRUE
+	experimental_onback = TRUE
 	possible_item_intents = list(/datum/intent/shoot/crossbow, /datum/intent/arc/crossbow, INTENT_GENERIC)
 	mag_type = /obj/item/ammo_box/magazine/internal/shot/xbow
 	slot_flags = ITEM_SLOT_BACK
@@ -21,6 +23,10 @@
 	anvilrepair = /datum/skill/craft/weaponsmithing
 	smeltresult = /obj/item/ingot/steel
 	var/damfactor = 2
+
+/obj/item/gun/ballistic/revolver/grenadelauncher/bow/update_icon()
+    . = ..()
+    cut_overlays()
 
 /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow/getonmobprop(tag)
 	. = ..()
