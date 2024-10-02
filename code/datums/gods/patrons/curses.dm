@@ -62,7 +62,6 @@
 				curse.on_loss(src, TRUE)
 			curses -= curse
 			return TRUE
-			break
 
 	return FALSE
 

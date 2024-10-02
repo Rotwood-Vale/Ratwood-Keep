@@ -106,14 +106,14 @@ Notes:
 //Theme is a CSS class in tooltip.html, by default this wrapper chooses a CSS class based on the user's UI_style (Midnight, Plasmafire, Retro, etc)
 //Includes sanity.checks
 /proc/openToolTip(mob/user = null, atom/movable/tip_src = null, params = null,title = "",content = "",theme = "")
-	return
-	if(istype(user))
+	return // RTCHANGE
+/* 	if(istype(user))
 		if(user.client && user.client.tooltips)
 			if(!theme && user.client.prefs && user.client.prefs.UI_style)
 				theme = "rogue"
 			if(!theme)
 				theme = "rogue"
-			user.client.tooltips.show(tip_src, params,title,content,theme)
+			user.client.tooltips.show(tip_src, params,title,content,theme) */
 
 
 //Arbitrarily close a user's tooltip

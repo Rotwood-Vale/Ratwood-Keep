@@ -18,12 +18,4 @@
 	return
 
 /mob/living/update_turflayer(input)
-	return
-	remove_overlay(TURF_LAYER)
-
-	if(input)
-		var/mutable_appearance/new_fire_overlay = mutable_appearance('icons/turf/mob_overlay.dmi', input, -TURF_LAYER)
-		new_fire_overlay.appearance_flags = RESET_COLOR
-		overlays_standing[TURF_LAYER] = new_fire_overlay
-
-	apply_overlay(TURF_LAYER)
+	return // RTCHANGE

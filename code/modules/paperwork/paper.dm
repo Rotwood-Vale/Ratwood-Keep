@@ -400,9 +400,7 @@
 			format_browse(info_links, user)
 			update_icon_state()
 			return
-		else
-			to_chat(user, span_warning("I can't write."))
-			return
+		to_chat(user, span_warning("I can't write."))
 		return
 	if(istype(P, /obj/item/paper))
 		var/obj/item/paper/p = P

@@ -246,8 +246,7 @@
 		return 1
 	if(mover.throwing && !ismob(mover))
 		return prob(66)
-	return !density
-	..()
+	return ..()
 
 /obj/structure/bars/chainlink
 	icon_state = "chainlink"

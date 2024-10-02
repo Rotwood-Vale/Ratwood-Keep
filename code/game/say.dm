@@ -168,10 +168,6 @@ GLOBAL_LIST_INIT(freqtospan, list(
 
 /proc/get_radio_name(freq)
 	return freq
-	var/returntext = GLOB.reverseradiochannels["[freq]"]
-	if(returntext)
-		return returntext
-	return "[copytext_char("[freq]", 1, 4)].[copytext_char("[freq]", 4, 5)]"
 
 /proc/attach_spans(input, list/spans)
 	return "[message_spans_start(spans)][input]</span>"
