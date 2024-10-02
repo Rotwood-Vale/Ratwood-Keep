@@ -147,10 +147,11 @@
 	. = ..()
 	cut_overlays()
 	if(chambered)
-		var/obj/item/I = chambered
-		I.pixel_x = 0
-		I.pixel_y = 0
-		add_overlay(new /mutable_appearance(I))
+		icon_state = "bow_ready"
+//		var/obj/item/I = chambered //temporarily disabled pending a better fix for the onmob sprite bug
+//		I.pixel_x = 0
+//		I.pixel_y = 0
+//		add_overlay(new /mutable_appearance(I))
 	if(ismob(loc))
 		var/mob/M = loc
 		M.update_inv_hands()
@@ -238,7 +239,7 @@
 	desc = "A medium length composite bow of glued horn, wood, and sinew with good shooting \
 	characteristics."
 	icon = 'icons/roguetown/weapons/64.dmi'
-	icon_state = "bowr"
+	icon_state = "recurve_bow"
 	possible_item_intents = list(
 		/datum/intent/shoot/bow/recurve,
 		/datum/intent/arc/bow/recurve,
@@ -258,7 +259,7 @@
 		switch(tag)
 			if("gen")
 				return list(
-					"shrink" = 0.7,
+					"shrink" = 0.6,
 					"sx" = -3,
 					"sy" = 0,
 					"nx" = 6,
@@ -332,10 +333,11 @@
 	. = ..()
 	cut_overlays()
 	if(chambered)
-		var/obj/item/I = chambered
-		I.pixel_x = 16
-		I.pixel_y = 16
-		add_overlay(new /mutable_appearance(I))
+		icon_state = "recurve_bow_ready"
+//		var/obj/item/I = chambered
+//		I.pixel_x = 16
+//		I.pixel_y = 16
+//		add_overlay(new /mutable_appearance(I))
 	if(ismob(loc))
 		var/mob/M = loc
 		M.update_inv_hands()
@@ -371,7 +373,7 @@
 		switch(tag)
 			if("gen")
 				return list(
-					"shrink" = 0.7,
+					"shrink" = 0.6,
 					"sx" = -3,
 					"sy" = 0,
 					"nx" = 6,
@@ -422,10 +424,11 @@
 	. = ..()
 	cut_overlays()
 	if(chambered)
-		var/obj/item/I = chambered
-		I.pixel_x = 16
-		I.pixel_y = 16
-		add_overlay(new /mutable_appearance(I))
+		icon_state = "longbow_ready"
+//		var/obj/item/I = chambered
+//		I.pixel_x = 16
+//		I.pixel_y = 16
+//		add_overlay(new /mutable_appearance(I))
 	if(ismob(loc))
 		var/mob/M = loc
 		M.update_inv_hands()
