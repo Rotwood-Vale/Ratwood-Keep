@@ -77,10 +77,10 @@
 		"Otava" = SKIN_COLOR_OTAVA,
 		"Etrusca" = SKIN_COLOR_ETRUSCA,
 		"Gronn" = SKIN_COLOR_GRONN,
-		"Giza" = SKIN_COLOR_GIZA,
-		"Shalvistine" = SKIN_COLOR_SHALVISTINE,
-		"Lalvestine" = SKIN_COLOR_LALVESTINE,
-		"Ebon" = SKIN_COLOR_EBON,
+		"North Zybantia (Giza)" = SKIN_COLOR_GIZA,
+		"West Zybantia (Shalvistine)" = SKIN_COLOR_SHALVISTINE,
+		"East Zybantia (Lalvestine)" = SKIN_COLOR_LALVESTINE,
+		"Naledi" = SKIN_COLOR_NALEDI,
 		"Kazengun" = SKIN_COLOR_KAZENGUN
 	)
 

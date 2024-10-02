@@ -38,28 +38,21 @@
 		if(G.isinhell)
 			return
 		if(G.client)
-			if(G.client.holder)
-				if(istype(G, /mob/dead/observer/rogue/arcaneeye))
-					return
-				if(alert("Travel with the boatman?", "", "Yes", "No") == "Yes")
-
-					// Check if the player's job is hiv+
-					var/datum/job/target_job = SSjob.GetJob(G.mind.assigned_role)
-					if(target_job)
-						if(target_job.job_reopens_slots_on_death)
-							target_job.current_positions = max(0, target_job.current_positions - 1)
-						if(target_job.same_job_respawn_delay)
-							// Store the current time for the player
-							GLOB.job_respawn_delays[G.ckey] = world.time + target_job.same_job_respawn_delay
-
-					G.client.verbs -= GLOB.ghost_verbs
-					G.returntolobby()
-
+			if(istype(G, /mob/dead/observer/rogue/arcaneeye))
 				return
+			if(alert("Travel with the boatman?", "", "Yes", "No") == "Yes")
+				var/datum/job/target_job = SSjob.GetJob(G.mind.assigned_role)
+				if(target_job)
+					if(target_job.job_reopens_slots_on_death)
+						target_job.current_positions = max(0, target_job.current_positions - 1)
+					if(target_job.same_job_respawn_delay)
+						// Store the current time for the player
+						GLOB.job_respawn_delays[G.ckey] = world.time + target_job.same_job_respawn_delay
+
+				G.client.verbs -= GLOB.ghost_verbs
+				G.returntolobby()
 
 //		var/take_triumph = FALSE
-		G.client.verbs -= GLOB.ghost_verbs
-		G.returntolobby()
 /*		if(world.time < G.ghostize_time + RESPAWNTIME)
 			var/ttime = round((G.ghostize_time + RESPAWNTIME - world.time) / 10)
 			var/list/thingsz = list("My connection to the world is still too strong.",\

@@ -85,6 +85,8 @@
 
 /datum/species/aasimar/get_skin_list()
 	return list(
+		"Cultor" = SKIN_COLOR_CULTOR,
+		"Spiritus" = SKIN_COLOR_SPIRITUS,
 		"Planetar" = SKIN_COLOR_PLANETAR,
 		"Deva"	   = SKIN_COLOR_DEVA,
 		"Solar" = SKIN_COLOR_SOLAR,
