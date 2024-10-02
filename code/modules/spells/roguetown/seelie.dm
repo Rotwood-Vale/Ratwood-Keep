@@ -255,6 +255,7 @@
 		if(awaken_choice == "Yes")
 			// Poll for candidates to control the tamed animal
 			var/list/candidates = pollCandidatesForMob("Do you want to play as a tamed rous?", null, null, null, 100, target, POLL_IGNORE_TAMED_BEAST)
+			user.log_message("has tamed a rous via the spell", LOG_GAME)
 			// If there are candidates, assign control to a player
 			if(LAZYLEN(candidates))
 				var/mob/C = pick(candidates)
@@ -263,14 +264,9 @@
 				target.visible_message(span_warning("The rous' eyes light up with intelligence as it awakens!"), runechat_message = TRUE)
 				to_chat(C, span_notice("You have been chosen to control the rous."))
 				return TRUE
-			// If there are no candidates, the animal will have been calmed but not controlled
-			else
-				target.visible_message(span_warning("The rous seems calmer but remains mindless."), runechat_message = TRUE)
-				return TRUE
-			user.log_message("has tamed a rous via the spell", LOG_GAME)
-			return TRUE
-		else
-			target.visible_message(span_warning("The [target.real_name] seems calmer but remains mindless."), runechat_message = TRUE)
+		// If there are no candidates or we chose not to awaken the animal, the animal will have been calmed but not controlled
+		target.visible_message(span_warning("The [target.real_name] seems calmer but remains mindless."), runechat_message = TRUE)
+		return TRUE
 	else if(user.mind.awakened_animals >= user.mind.awakened_max)
 		to_chat(user, span_warning("I cannot sustain another awakened beast.."))
 		return FALSE

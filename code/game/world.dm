@@ -206,7 +206,6 @@ GLOBAL_VAR(restart_counter)
 
 /world/Topic(T, addr, master, key)
 	TGS_TOPIC //redirect to server tools if necessary
-	return // Disable topics altogether
 
 	var/static/list/topic_handlers = TopicHandlers()
 
