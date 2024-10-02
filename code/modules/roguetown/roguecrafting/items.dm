@@ -85,8 +85,8 @@
 
 /datum/crafting_recipe/roguetown/recurvepartial
 	name = "unstrung recurve bow"
-	result = /obj/item/grown/log/tree/recurvepartial
-	req = list(
+	result = /obj/item/grown/log/tree/bowpartial/recurve
+	reqs = list(
 		/obj/item/grown/log/tree = 1,
 		/obj/item/natural/bone = 2,
 		/obj/item/reagent_containers/food/snacks/fat = 2,
@@ -102,7 +102,7 @@
 	result = /obj/item/gun/ballistic/revolver/grenadelauncher/bow/recurve
 	reqs = list(
 		/obj/item/natural/bowstring = 1,
-		/obj/item/grown/log/tree/recurvepartial = 1,
+		/obj/item/grown/log/tree/bowpartial/recurve = 1,
 		)
 	skillcraft = /datum/skill/combat/bows
 	verbage_simple = "string together"
@@ -111,8 +111,8 @@
 
 /datum/crafting_recipe/roguetown/longbowpartial
 	name = "unstrung recurve bow"
-	result = /obj/item/grown/log/tree/longbowpartial
-	req = list(
+	result = /obj/item/grown/log/tree/bowpartial/longbow
+	reqs = list(
 		/obj/item/grown/log/tree = 1,
 		/obj/item/natural/cloth = 1,
 		/obj/item/reagent_containers/food/snacks/fat = 2,
@@ -128,7 +128,7 @@
 	result = /obj/item/gun/ballistic/revolver/grenadelauncher/bow/longbow
 	reqs = list(
 		/obj/item/natural/bowstring = 1,
-		/obj/item/grown/log/tree/longbowpartial = 1,
+		/obj/item/grown/log/tree/bowpartial/longbow = 1,
 		)
 	skillcraft = /datum/skill/combat/bows
 	verbage_simple = "string together"
