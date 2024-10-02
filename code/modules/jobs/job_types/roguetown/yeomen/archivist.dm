@@ -87,28 +87,28 @@
 /obj/effect/proc_holder/spell/invoked/teach/cast(list/targets, mob/user = usr)
 	. = ..()
 	var/list/choices = list()
-	var/list/skill_choices = list(
-	/datum/skill/craft/blacksmithing,
-	/datum/skill/craft/carpentry,
-	/datum/skill/craft/cooking,
-	/datum/skill/craft/crafting,
-	/datum/skill/craft/engineering,
-	/datum/skill/craft/hunting,
-	/datum/skill/craft/masonry,
-	/datum/skill/labor/farming,
-	/datum/skill/labor/fishing,
-	/datum/skill/labor/lumberjacking,
-	/datum/skill/labor/mining,
-	/datum/skill/magic/arcane,
-	/datum/skill/misc/lockpicking,
-	/datum/skill/misc/music,
-	/datum/skill/misc/reading,
-	/datum/skill/misc/riding,
-	/datum/skill/misc/sewing,
-	/datum/skill/misc/treatment
-    )
-	for(var/i = 1, i <= skill_choices.len, i++)
-		choices["[skill_choices[i].name]"] = skill_choices[i]
+	var/list/datum/skill/skill_choices = list(
+		/datum/skill/craft/blacksmithing,
+		/datum/skill/craft/carpentry,
+		/datum/skill/craft/cooking,
+		/datum/skill/craft/crafting,
+		/datum/skill/craft/engineering,
+		/datum/skill/craft/hunting,
+		/datum/skill/craft/masonry,
+		/datum/skill/labor/farming,
+		/datum/skill/labor/fishing,
+		/datum/skill/labor/lumberjacking,
+		/datum/skill/labor/mining,
+		/datum/skill/magic/arcane,
+		/datum/skill/misc/lockpicking,
+		/datum/skill/misc/music,
+		/datum/skill/misc/reading,
+		/datum/skill/misc/riding,
+		/datum/skill/misc/sewing,
+		/datum/skill/misc/treatment
+	)
+	for(var/datum/skill/skill_choice as anything in skill_choices)
+		choices[skill_choice::name] = skill_choices
 
 	var/teachingtime = 30 SECONDS
 

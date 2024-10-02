@@ -93,8 +93,8 @@ var/sound_cooldown = 10 * 60 * 10 // cooldown in deciseconds (15 minutes)
     devotion_cost = 0
 
 /obj/effect/proc_holder/spell/targeted/woundlick/cast(list/targets, mob/user)
-    if(iscarbon(targets[1]))
-        var/mob/living/carbon/target = targets[1]
+    if(ishuman(targets[1]))
+        var/mob/living/carbon/human/target = targets[1]
         if(target.mind)
             if(target.mind.has_antag_datum(/datum/antagonist/zombie))
                 to_chat(src, span_warning("I shall not lick it..."))
@@ -123,4 +123,4 @@ var/sound_cooldown = 10 * 60 * 10 // cooldown in deciseconds (15 minutes)
             rid = /datum/reagent/water
             target.reagents.add_reagent(rid, ramount)
             if(prob(10))
-                targets[1].werewolf_infect_attempt(CHEST)
+                target.werewolf_infect_attempt(CHEST)
