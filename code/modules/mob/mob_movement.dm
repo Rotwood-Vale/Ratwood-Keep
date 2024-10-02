@@ -436,7 +436,7 @@
 	switch(mob.zone_selected)
 		if(BODY_ZONE_PRECISE_R_EYE)
 			next_in_line = BODY_ZONE_PRECISE_NOSE
-		else if(BODY_ZONE_PRECISE_NOSE)
+		if(BODY_ZONE_PRECISE_NOSE)
 			next_in_line = BODY_ZONE_PRECISE_L_EYE
 		else
 			next_in_line = BODY_ZONE_PRECISE_R_EYE
