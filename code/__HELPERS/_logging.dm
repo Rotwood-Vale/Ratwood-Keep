@@ -26,8 +26,8 @@
 #define testing(msg)
 #endif
 
-#ifdef UNIT_TESTS
 /proc/log_test(text)
+#ifdef UNIT_TESTS
 	WRITE_LOG(GLOB.test_log, text)
 	SEND_TEXT(world.log, text)
 #endif
