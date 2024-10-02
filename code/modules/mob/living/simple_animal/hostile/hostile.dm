@@ -353,8 +353,8 @@
 //			else
 //				if(FindHidden())
 //					return 1
-	LoseTarget()
-	return 0
+//	LoseTarget()
+//	return 0
 
 /mob/living/simple_animal/hostile/proc/Goto(target, delay, minimum_distance)
 	if(target == src.target)
@@ -521,7 +521,7 @@
 			O.climb_structure(src)
 			break
 
-mob/living/simple_animal/hostile/proc/DestroySurroundings() // for use with megafauna destroying everything around them
+/mob/living/simple_animal/hostile/proc/DestroySurroundings() // for use with megafauna destroying everything around them
 	if(environment_smash)
 		EscapeConfinement()
 		for(var/dir in GLOB.cardinals)

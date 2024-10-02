@@ -77,7 +77,7 @@ GLOBAL_LIST_EMPTY(bounties_list)
 
 // Returns a new bounty of random type, but does not add it to GLOB.bounties_list.
 /proc/random_bounty()
-	switch(rand(1, 13))
+	switch(rand(1, 12))
 		if(1)
 			var/subtype = pick(subtypesof(/datum/bounty/item/assistant))
 			return new subtype
@@ -91,11 +91,11 @@ GLOBAL_LIST_EMPTY(bounties_list)
 			var/subtype = pick(subtypesof(/datum/bounty/item/security))
 			return new subtype
 		if(5)
-			if(rand(2) == 1)
+			if(prob(50))
 				return new /datum/bounty/reagent/simple_drink
 			return new /datum/bounty/reagent/complex_drink
 		if(6)
-			if(rand(2) == 1)
+			if(prob(50))
 				return new /datum/bounty/reagent/chemical_simple
 			return new /datum/bounty/reagent/chemical_complex
 		if(7)

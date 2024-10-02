@@ -76,11 +76,11 @@
 	if(lastminer.goodluck(2) && mineralType)
 //		to_chat(lastminer, span_notice("Bonus ducks!"))
 		new mineralType(src)
-	gets_drilled(lastminer, give_exp = FALSE)
+	gets_drilled(lastminer)
 	queue_smooth_neighbors(src)
 	..()
 
-/turf/closed/mineral/proc/gets_drilled(mob/living/user, give_exp = TRUE)
+/turf/closed/mineral/proc/gets_drilled(mob/living/user, triggered_by_explosion = FALSE)
 	new /obj/item/natural/stone(src)
 	if(prob(30))
 		new /obj/item/natural/stone(src)
@@ -142,12 +142,12 @@
 	switch(severity)
 		if(3)
 			if (prob(75))
-				gets_drilled(null, 1)
+				gets_drilled(null, triggered_by_explosion = TRUE)
 		if(2)
 			if (prob(90))
-				gets_drilled(null, 1)
+				gets_drilled(null, triggered_by_explosion = TRUE)
 		if(1)
-			gets_drilled(null, 1)
+			gets_drilled(null, triggered_by_explosion = TRUE)
 	return
 
 /turf/closed/mineral/Spread(turf/T)
@@ -563,7 +563,7 @@
 	to_chat(usr, span_warning("The rock seems to be too strong to destroy. Maybe I can break it once I become a master miner."))
 
 
-/turf/closed/mineral/strong/gets_drilled(user)
+/turf/closed/mineral/strong/gets_drilled(user, triggered_by_explosion = FALSE)
 	drop_ores()
 	var/flags = NONE
 	if(defer_change) // TODO: make the defer change var a var for any changeturf flag

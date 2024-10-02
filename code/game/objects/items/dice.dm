@@ -95,7 +95,7 @@
 /obj/item/dice/d6
 	name = "d6"
 
-obj/item/dice/d6/ebony
+/obj/item/dice/d6/ebony
 	name = "ebony die"
 	desc = ""
 	icon_state = "de6"

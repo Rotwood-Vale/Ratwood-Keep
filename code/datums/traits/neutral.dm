@@ -30,14 +30,14 @@
 		var/datum/species/species = H.dna.species
 		if(initial(species.liked_food) & MEAT)
 			species.liked_food |= MEAT
-		if(!initial(species.disliked_food) & MEAT)
+		if(!(initial(species.disliked_food) & MEAT))
 			species.disliked_food &= ~MEAT
 
 /datum/quirk/snob
 	name = "Snob"
 	desc = ""
 	value = 0
-	gain_text = span_notice("I feel like you understand what things should look like.")
+	gain_text = span_notice("I feel like I understand what things should look like.")
 	lose_text = span_notice("Well who cares about deco anyways?")
 	medical_record_text = "Patient seems to be rather stuck up."
 	mob_trait = TRAIT_SNOB

@@ -161,7 +161,7 @@
 	update_icon()
 	..()
 
-/obj/structure/pillory/unbuckle_mob(mob/living/user)
+/obj/structure/pillory/unbuckle_mob(mob/living/user, force=FALSE)
 	if(latched)
 		if(user.STASTR >= 18)
 			if(do_after(user, 25))
