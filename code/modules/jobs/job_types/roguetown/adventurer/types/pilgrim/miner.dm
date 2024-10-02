@@ -1,7 +1,7 @@
 /datum/advclass/miner
-	name = "Miner"
-	tutorial = "You are a Miner, you mine for the local blacksmith, gathering rare ores. \
-	There are tales of ambitious dwarf miners building great forts in the lavalands, to harvest all of it's hardly touched ores."
+	name = "Toiler"
+	tutorial = "You are a Toiler, you scrape the land for it's many resources. \
+	Whether it be for expensive furs, legendary fish, or rare gems."
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
 	outfit = /datum/outfit/job/roguetown/adventurer/miner
@@ -10,39 +10,48 @@
 
 /datum/outfit/job/roguetown/adventurer/miner/pre_equip(mob/living/carbon/human/H)
 	..()
-	head = /obj/item/clothing/head/roguetown/armingcap
+	cloak = /obj/item/clothing/cloak/raincloak/furcloak/brown
+	pants = /obj/item/clothing/under/roguetown/tights/random
+	shirt = /obj/item/clothing/suit/roguetown/shirt/shortshirt/random
 	shoes = /obj/item/clothing/shoes/roguetown/boots/leather
 	belt = /obj/item/storage/belt/rogue/leather
+	armor = /obj/item/clothing/suit/roguetown/armor/workervest
 	neck = /obj/item/storage/belt/rogue/pouch/coins/poor
 	beltl = /obj/item/rogueweapon/pick
-	beltr = /obj/item/rogueweapon/huntingknife
+	beltr = /obj/item/quiver/arrows
 	backl = /obj/item/storage/backpack/rogue/backpack
-	backpack_contents = list(/obj/item/flint = 1)
-	if(H.gender == FEMALE)
-		armor = /obj/item/clothing/suit/roguetown/shirt/dress/gen
-		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/brown
-	if(H.gender == MALE)
-		armor = /obj/item/clothing/suit/roguetown/armor/workervest
-		pants = /obj/item/clothing/under/roguetown/trou
-		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/random
+	backr = /obj/item/gun/ballistic/revolver/grenadelauncher/bow/recurve
+	gloves = /obj/item/clothing/gloves/roguetown/leather
+	backpack_contents = list(/obj/item/flint = 1,/obj/item/natural/worms = 5,/obj/item/rogueweapon/shovel/small=1,/obj/item/bait = 1, /obj/item/rogueweapon/huntingknife = 1, /obj/item/flashlight/flare/torch/lantern = 1)
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/combat/maces, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/athletics, 4, TRUE) // Tough. Well fed. The strongest of the strong.
 		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 3, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/combat/knives, 1, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/combat/polearms, 3, TRUE) 
-		H.mind.adjust_skillrank(/datum/skill/misc/swimming, 1, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/climbing, 2, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/knives, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/swimming, 4, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/climbing, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/craft/crafting, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/craft/traps, 2, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/craft/engineering, 1, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/craft/carpentry, 1, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/craft/masonry, 1, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/medicine, 1, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/medicine, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/labor/mining, 4, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/craft/tanning, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/labor/fishing, 4, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/sewing, 2, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/labor/butchering, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/craft/cooking, 1, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/bows, 3, TRUE)
+		if(H.age == AGE_OLD) // Better survivalist.
+			H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/bows, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/medicine, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/craft/crafting, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/craft/tanning, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/labor/fishing, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/sewing, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/labor/butchering, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/craft/cooking, 1, TRUE)
 		H.change_stat("strength", 2)
-		H.change_stat("intelligence", -1)
-		H.change_stat("endurance", 1)
-		H.change_stat("constitution", 2)
+		H.change_stat("perception", 3)
 		H.change_stat("fortune", 2)
