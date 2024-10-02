@@ -105,7 +105,7 @@
 	domain = "Goddess of Decay, Disease and Medicine"
 	desc = "The Loving Daughter of Psydon, gifted man medicine."
 	worshippers = "The Sick, Phyicians, Apothecaries"
-	mob_traits = list(TRAIT_EMPATH, TRAIT_ROT_EATER)
+	mob_traits = list(TRAIT_EMPATH)
 	t0 = /obj/effect/proc_holder/spell/invoked/diagnose
 	t1 = /obj/effect/proc_holder/spell/invoked/lesser_heal
 	t2 = /obj/effect/proc_holder/spell/invoked/heal
