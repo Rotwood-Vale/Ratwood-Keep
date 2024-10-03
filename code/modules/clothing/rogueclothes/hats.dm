@@ -79,6 +79,9 @@
 	max_integrity = 100
 	sewrepair = TRUE
 
+/obj/item/clothing/head/roguetown/roguehood/shalal/black
+	color = CLOTHING_BLACK
+
 /obj/item/clothing/head/roguetown/roguehood/astrata
 	name = "sun hood"
 	desc = "A hood worn by those who favor Astrata. Praise the firstborn sun!"
