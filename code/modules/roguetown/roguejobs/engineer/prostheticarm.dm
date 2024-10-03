@@ -79,14 +79,14 @@
 /obj/item/bodypart/r_arm/prosthetic/bronzeright
 	name = "Bronze right arm"
 	desc = "A replacement right arm, engineered out of bronze."
-	icon = 'icons/roguetown/items/misc.dmi' //CHANGE THIS
-	icon_state = "prarm" //THIS TOO
+	icon = 'icons/roguetown/items/misc.dmi'
+	icon_state = "prarm" //UPDATE THIS WITH SPRITE SOON
 	resistance_flags = FIRE_PROOF
 	obj_flags = CAN_BE_HIT
 	status = BODYPART_ROBOTIC
 	brute_reduction = 0
 	burn_reduction = 0
-	max_damage = 20
+	max_damage = 100
 	w_class = WEIGHT_CLASS_NORMAL
 	max_integrity = 350
 	sellprice = 30

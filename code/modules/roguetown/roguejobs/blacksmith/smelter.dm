@@ -2,7 +2,8 @@
 /obj/item
 	var/smeltresult
 	var/smelt_bar_num = 1 //variable for tracking how many bars things smelt back into for multi-bar items
-	
+// MULTIBAR SMELTING WAS DISABLED FOR BALANCE REASONS
+// DO NOT RE-ENABLE IT UNTIL FURTHER NOTICE
 /obj/machinery/light/rogue/smelter
 	icon = 'icons/roguetown/misc/forge.dmi'
 	name = "stone furnace"
@@ -127,11 +128,14 @@
 				if(cooking == 20)
 					for(var/obj/item/I in ore)
 						if(I.smeltresult)
-							while(I.smelt_bar_num)
-								I.smelt_bar_num--
-								var/obj/item/R = new I.smeltresult(src, ore[I])
-								ore += R
-							ore -= I
+//							while(I.smelt_bar_num)
+//								I.smelt_bar_num--
+//	DISABLED FOR NOW			var/obj/item/R = new I.smeltresult(src, ore[I])
+//								ore += R
+//							ore -= I
+							var/obj/item/R = new I.smeltresult(src, ore[I])
+							ore -= R
+							ore += I
 							qdel(I)
 					playsound(src,'sound/misc/smelter_fin.ogg', 100, FALSE)
 					visible_message(span_notice("\The [src] finished smelting."))
@@ -208,11 +212,14 @@
 					else
 						for(var/obj/item/I in ore)
 							if(I.smeltresult)
-								while(I.smelt_bar_num)
-									I.smelt_bar_num--
-									var/obj/item/R = new I.smeltresult(src, ore[I])
-									ore += R
-								ore -= I
+//								while(I.smelt_bar_num)
+//									I.smelt_bar_num--
+//									var/obj/item/R = new I.smeltresult(src, ore[I])
+//									ore += R
+//								ore -= I
+								var/obj/item/R = new I.smeltresult(src, ore[I])
+								ore -= R
+								ore += I
 								qdel(I)
 					playsound(src,'sound/misc/smelter_fin.ogg', 100, FALSE)
 					visible_message(span_notice("\The [src] finished smelting."))
