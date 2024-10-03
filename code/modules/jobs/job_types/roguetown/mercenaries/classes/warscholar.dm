@@ -5,7 +5,7 @@
 	allowed_races = RACES_ALL_KINDS
 	outfit = /datum/outfit/job/roguetown/mercenary/warscholar
 	category_tags = list(CTAG_MERCENARY)
-	maximum_possible_slots = 6
+	maximum_possible_slots = 2
 	cmode_music = 'sound/music/combat_maniac2.ogg'
 
 /datum/outfit/job/roguetown/mercenary/warscholar/pre_equip(mob/living/carbon/human/H)
@@ -29,7 +29,7 @@
 			H.mind.adjust_skillrank(/datum/skill/misc/riding, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/reading, 4, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/alchemy, 3, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/magic/arcane, 4, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/magic/arcane, 3, TRUE)
 			if(H.age == AGE_OLD)
 				H.mind.adjust_skillrank(/datum/skill/magic/arcane, 1, TRUE)
 				H.change_stat("speed", -1)
@@ -55,7 +55,7 @@
 			H.mind.adjust_skillrank(/datum/skill/misc/medicine, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/reading, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/magic/arcane, 2, TRUE)
-			H.mind.adjust_spellpoints(-2)
+			H.mind.adjust_spellpoints(-6) //The - is intended.
 			H.change_stat("strength", 1)
 			H.change_stat("endurance", 2)
 			H.change_stat("perception", -1)
