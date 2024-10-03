@@ -111,6 +111,11 @@
 	desc = "This key belongs to the captain of the guard."
 	icon_state = "cheesekey"
 	lockid = "sheriff"
+/obj/item/roguekey/armory
+	name = "armory key"
+	desc = "This key grants access to the keep's armory."
+	icon_state = "cheesekey"
+	lockid = "armory"
 
 /obj/item/roguekey/bailiff
 	name = "bailiff's key"
