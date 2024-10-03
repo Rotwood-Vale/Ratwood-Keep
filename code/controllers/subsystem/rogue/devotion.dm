@@ -50,7 +50,7 @@
 	patron = null
 	granted_spells = null
 	STOP_PROCESSING(SSobj, src)
-	
+
 /datum/devotion/process()
 	if(!passive_devotion_gain && !passive_progression_gain)
 		return PROCESS_KILL
@@ -149,7 +149,7 @@
 		return
 
 	granted_spells = list()
-	var/list/spelllist = list(patron.t0, patron.t1, patron.t2, patron.t3, patron.t4)
+	var/list/spelllist = list(patron.t0, patron.t1, patron.t2, patron.t3, patron.t4, /obj/effect/proc_holder/spell/invoked/solar_smite)
 	for(var/spell_type in spelllist)
 		if(!spell_type || H.mind.has_spell(spell_type))
 			continue
@@ -194,14 +194,14 @@
 
 	if(!devotion)
 		return FALSE
-	
+
 	to_chat(src,"My devotion is [devotion.devotion].")
 	return TRUE
 
 /mob/living/carbon/human/proc/clericpray()
 	set name = "Give Prayer"
 	set category = "Cleric"
-	
+
 	if(!devotion)
 		return FALSE
 

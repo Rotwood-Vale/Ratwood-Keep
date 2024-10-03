@@ -217,3 +217,71 @@
 	recruitment_message = "Serve the ten, %RECRUIT!"
 	accept_message = "FOR THE TEN!"
 	refuse_message = "I refuse."
+
+/obj/effect/proc_holder/spell/invoked/solar_smite
+	name = "Solar Smite"
+	overlay_state = "solarsmite"
+	releasedrain = 100
+	chargedrain = 0
+	chargetime = 1 SECONDS
+	range = 8
+	warnie = "sydwarning"
+	movement_interrupt = FALSE
+	chargedloop = /datum/looping_sound/invokeholy
+	req_items = list(/obj/item/clothing/neck/roguetown/psicross)
+	sound = 'sound/magic/churn.ogg'
+	invocation = "ASTRATA SMITE YOU! BURN!!"
+	invocation_type = "shout"
+	associated_skill = /datum/skill/magic/holy
+	antimagic_allowed = TRUE
+	charge_max = 60 SECONDS
+	miracle = TRUE
+	devotion_cost = 100
+	//explosion values
+	var/exp_heavy = 0
+	var/exp_light = 4
+	var/exp_flash = 16
+
+/obj/effect/proc_holder/spell/invoked/solar_smite/cast(list/targets, mob/user = usr)
+	. = ..()
+	if(isliving(targets[1]))
+		var/mob/living/L = targets[1]
+		user.visible_message("<font color='yellow'>[user] points at [L]!</font>")
+		if(GLOB.tod == "night")
+			if(L.mob_biotypes & MOB_UNDEAD) //positive energy harms the undead
+				L.adjust_fire_stacks(12)
+				L.IgniteMob()
+				L.adjustFireLoss(60)
+				explosion(L, -1, 0, 2, exp_flash, 0, soundin = 'sound/misc/lava_death.ogg')
+				return TRUE
+			else
+				L.adjust_fire_stacks(8)
+				L.IgniteMob()
+				L.adjustFireLoss(40)
+				explosion(L, -1, 0, 2, exp_flash, 0, soundin = 'sound/misc/lava_death.ogg')
+				return TRUE
+		if(GLOB.tod == "dawn" || "dusk")
+			if(L.mob_biotypes & MOB_UNDEAD) //positive energy harms the undead
+				L.visible_message(span_danger("[L] is unmade by holy light!"), span_userdanger("I'm unmade by holy light!"))
+				explosion(L, -1, 0, 3, exp_flash, 0, soundin = 'sound/misc/lava_death.ogg')
+				L.gib()
+				return TRUE
+			else
+				L.adjust_fire_stacks(10)
+				L.IgniteMob()
+				L.adjustFireLoss(60)
+				explosion(L, -1, 0, 3, exp_flash, 0, soundin = 'sound/misc/lava_death.ogg')
+				return TRUE
+		else
+			if(L.mob_biotypes & MOB_UNDEAD) //positive energy harms the undead
+				L.visible_message(span_danger("[L] is unmade by holy light!"), span_userdanger("I'm unmade by holy light!"))
+				explosion(L, -1, exp_heavy, exp_light, exp_flash, 0, soundin = 'sound/misc/lava_death.ogg')
+				L.gib()
+				return TRUE
+			else
+				L.adjust_fire_stacks(12)
+				L.IgniteMob()
+				L.adjustFireLoss(80)
+			explosion(L, -1, exp_heavy, exp_light, exp_flash, 0, soundin = 'sound/misc/lava_death.ogg')
+			return TRUE
+		return FALSE
