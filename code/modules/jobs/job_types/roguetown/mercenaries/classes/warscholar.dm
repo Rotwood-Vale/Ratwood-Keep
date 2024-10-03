@@ -13,7 +13,7 @@
 
 	// CLASS ARCHETYPES
 	H.adjust_blindness(-3)
-	var/classes = list("Heirophant","Arcyne-Knight")
+	var/classes = list("Heirophant","Arcyne-Monk")
 	var/classchoice = input("Choose your archetypes", "Available archetypes") as anything in classes
 
 	switch(classchoice)
@@ -43,9 +43,9 @@
 			H.mind.adjust_spellpoints(2)
 			H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/touch/prestidigitation)
 			r_hand = /obj/item/rogueweapon/woodstaff
-		if("Arcyne-Knight")
+		if("Arcyne-Monk")
 			H.set_blindness(0)
-			to_chat(H, span_warning("You are a Naledi Arcyne-Knight, a squire trained into a hybridized style of movement-controlling magic and hand-to-hand combat. Though your abilities in magical fields are lacking, you are far more dangerous than other magi in a straight fight."))
+			to_chat(H, span_warning("You are a Naledi Arcyne-Monk, a warrior trained into a hybridized style of movement-controlling magic and hand-to-hand combat. Though your abilities in magical fields are lacking, you are far more dangerous than other magi in a straight fight."))
 			H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 4, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 4, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/swimming, 1, TRUE)
