@@ -271,8 +271,8 @@
 	name = "Chill Touch"
 	overlay_state = "null"
 	releasedrain = 50
-	chargetime = 5
-	charge_max = 10 SECONDS
+	chargetime = 10
+	charge_max = 50 SECONDS
 	range = 6
 	warnie = "spellwarning"
 	movement_interrupt = FALSE
@@ -301,14 +301,15 @@
 		hand.bodypart = bodypart
 		hand.forceMove(target)
 		bodypart.add_embedded_object(hand, silent = TRUE, crit_message = FALSE)
-		if(user.zone_selected == BODY_ZONE_CHEST)
-			var/choice = alert(target, "A skeletal hand attempts to grapple your private parts!", "", "Accept it!", "Fight it!")
-			switch(choice)
-			//IF YOU CHOOSE Accept it! - YOU RECIEVE PLEASURE
-				if("Accept it!")
-					hand.pleasureaccepted = TRUE
-				if("Fight it!")
-					hand.pleasureaccepted = FALSE
+		if(user.zone_selected == BODY_ZONE_CHEST && !target.cmode && target.client.prefs.sexable) //must be out of combat mode and have erp panel allowed for this prompt to appear
+			target.visible_message(span_warning("A skeletal hand grips [target]'s [bodypart]!"), span_danger("A skeletal hand grips me [bodypart]!"))
+		//	var/choice = alert(target, "A skeletal hand attempts to grapple your private parts!", "", "Accept it!", "Fight it!")
+		//	switch(choice)
+		//	//IF YOU CHOOSE Accept it! - YOU RECIEVE PLEASURE
+		//		if("Accept it!")
+		//			hand.pleasureaccepted = TRUE
+		//		if("Fight it!")
+			hand.pleasureaccepted = FALSE
 	return FALSE
 
 /obj/item/chilltouch5e
@@ -325,7 +326,7 @@
 	var/oxy_drain = 2
 	var/pleasure = 1
 	var/curprocs = 0
-	var/procsmax = 360
+	var/procsmax = 180
 	var/pleasureaccepted = FALSE
 	var/mob/living/host //who are we stuck to?
 	var/obj/item/bodypart/bodypart //where are we stuck to?
@@ -366,7 +367,7 @@
 	if(hand_proc == 1)
 		switch(bodypart.name)
 			if(BODY_ZONE_HEAD) //choke
-				to_chat(host, "<span class='warning'>[host] chokes!</span>")
+				to_chat(host, "<span class='warning'>[host] is choked by a skeletal hand!</span>")
 				playsound(get_turf(host), pick('sound/combat/shove.ogg'), 100, FALSE, -1)
 				host.emote("choke")
 
@@ -378,11 +379,11 @@
 					playsound(get_turf(host), pick('sound/misc/mat/insert (1).ogg','sound/misc/mat/insert (2).ogg'), 100, FALSE, -1)
 					target.sexcon.perform_sex_action(host, pleasure*mult*3, 0, TRUE)
 				else //damage
-					to_chat(host, "<span class='danger'>[host] is pummeled!</span>")
+					to_chat(host, "<span class='danger'>[host] is pummeled by a skeletal hand!</span>")
 					playsound(get_turf(host), pick('sound/combat/hits/punch/punch_hard (1).ogg','sound/combat/hits/punch/punch_hard (2).ogg','sound/combat/hits/punch/punch_hard (3).ogg'), 100, FALSE, -1)
 					target.adjustBruteLoss(oxy_drain*mult*3)
 			else
-				to_chat(host, "<span class='danger'>[host]'s [bodypart] is twisted!</span>")
+				to_chat(host, "<span class='danger'>[host]'s [bodypart] is twisted by a skeletal hand!</span>")
 				playsound(get_turf(host), pick('sound/combat/hits/punch/punch (1).ogg','sound/combat/hits/punch/punch (2).ogg','sound/combat/hits/punch/punch (3).ogg'), 100, FALSE, -1)
 				target.apply_damage(oxy_drain*mult*3, BRUTE, bodypart)
 				bodypart.update_disabled()
