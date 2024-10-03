@@ -175,6 +175,7 @@
 	light_flags = NONE
 	light_color = "#3FBAFD"
 
+/*
 //A spell to choose new spells, upon spawning or gaining levels
 /obj/effect/proc_holder/spell/invoked/learnspell
 	name = "Attempt to learn a new spell"
@@ -191,23 +192,43 @@
 	var/list/choices = list()
 	var/list/spell_choices = list(/obj/effect/proc_holder/spell/invoked/projectile/fireball,
 		/obj/effect/proc_holder/spell/invoked/projectile/lightningbolt,
+		/obj/effect/proc_holder/spell/invoked/projectile/eldritchblast5e,
 		/obj/effect/proc_holder/spell/invoked/projectile/fetch,
 		/obj/effect/proc_holder/spell/invoked/projectile/spitfire,
+		/obj/effect/proc_holder/spell/invoked/projectile/firebolt5e,
+		/obj/effect/proc_holder/spell/invoked/projectile/rayoffrost5e,
+		/obj/effect/proc_holder/spell/invoked/projectile/acidsplash5e,
 		/obj/effect/proc_holder/spell/invoked/forcewall_weak,
 		/obj/effect/proc_holder/spell/invoked/slowdown_spell_aoe,
 		/obj/effect/proc_holder/spell/invoked/message,
 		/obj/effect/proc_holder/spell/invoked/push_spell,
 		/obj/effect/proc_holder/spell/invoked/longjump,
 		/obj/effect/proc_holder/spell/invoked/blade_burst,
+	//	/obj/effect/proc_holder/spell/invoked/boomingblade5e,
 		/obj/effect/proc_holder/spell/invoked/arcyne_storm,
+		/obj/effect/proc_holder/spell/invoked/frostbite5e,
+		/obj/effect/proc_holder/spell/invoked/poisonspray5e,
+		/obj/effect/proc_holder/spell/invoked/greenflameblade5e,
+		/obj/effect/proc_holder/spell/invoked/chilltouch5e,
+		/obj/effect/proc_holder/spell/invoked/infestation5e,
+		/obj/effect/proc_holder/spell/invoked/magicstone5e,
+		/obj/effect/proc_holder/spell/invoked/mending5e,
+	//	/obj/effect/proc_holder/spell/invoked/decompose5e,
 		/obj/effect/proc_holder/spell/aoe_turf/conjure/Wolf,
+		/obj/effect/proc_holder/spell/targeted/encodethoughts5e,
+		/obj/effect/proc_holder/spell/invoked/mindsliver5e,
+		/obj/effect/proc_holder/spell/targeted/guidance5e,
+		/obj/effect/proc_holder/spell/targeted/lightninglure5e,
+		/obj/effect/proc_holder/spell/self/light5e,
+		/obj/effect/proc_holder/spell/self/bladeward5e,
+		/obj/effect/proc_holder/spell/aoe_turf/conjure/createbonfire5e,
 	)
 	for(var/i = 1, i <= spell_choices.len, i++)
 		choices["[spell_choices[i].name]: [spell_choices[i].cost]"] = spell_choices[i]
 		
 	var/choice = input("Choose a spell, points left: [user.mind.spell_points - user.mind.used_spell_points]") as null|anything in choices
 	var/obj/effect/proc_holder/spell/item = choices[choice]
-	if(!item) 
+	if(!item)
 		return     // user canceled; 
 	for(var/obj/effect/proc_holder/spell/knownspell in user.mind.spell_list)
 		if(knownspell.type == item.type)
@@ -219,6 +240,7 @@
 	else
 		user.mind.used_spell_points += item.cost
 		user.mind.AddSpell(new item)
+*/
 
 //forcewall
 /obj/effect/proc_holder/spell/invoked/forcewall_weak

@@ -93,3 +93,20 @@
 		var/datum/triumph_buy/thing = SStriumphs.post_equip_calls[list_key]
 		thing.on_activate(H)
 	return
+
+// For magic class roundstart spell selection
+/datum/outfit/job/roguetown/proc/choose_magic(list/category, mob/living/carbon/human/H)
+	var/list/choices = list()
+	for(var/i = 1, i <= category.len, i++)
+		choices["[category[i].name]: [category[i].cost]"] = category[i]
+
+	var/choice = input("Choose a spell, points left: [H.mind.spell_points - H.mind.used_spell_points]") as null|anything in choices
+	var/obj/effect/proc_holder/spell/item = choices[choice]
+	if(!item)
+		return     // user canceled; 
+	if(item.cost > H.mind.spell_points - H.mind.used_spell_points)
+		to_chat(H,span_warning("You do not have enough experience to learn a new spell"))
+		return		// not enough spell points
+	else
+		H.mind.used_spell_points += item.cost
+		H.mind.AddSpell(new item)

@@ -567,6 +567,7 @@
 	damage_type = BRUTE
 	flag = "magic"
 	range = 15
+	woundclass = BCLASS_STAB
 
 /obj/projectile/magic/eldritchblast5e/on_hit(atom/target, blocked = FALSE)
 	. = ..()

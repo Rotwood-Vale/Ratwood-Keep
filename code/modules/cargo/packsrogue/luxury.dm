@@ -154,7 +154,7 @@
 	name = "Fragment of the Succubus"
 	cost = 50
 	contains = list(/obj/item/book/granter/trait/succubus)
-/datum/supply_pack/rogue/luxury/
+/datum/supply_pack/rogue/luxury/north
 	name = "Fragment of the North"
 	cost = 200
 	contains = list(/obj/item/book/granter/trait/north)
@@ -238,6 +238,7 @@
 	name = "Scroll of Mending"
 	cost = 50
 	contains = list(/obj/item/book/granter/spell/spells5e/mending5e)
+
 
 
 //p2

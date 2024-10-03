@@ -3,7 +3,7 @@
 	icon_state = "energy"
 	damage = 0
 	damage_type = OXY
-	nodamage = TRUE
+	nodamage = FALSE
 	armor_penetration = 100
 	pass_flags = PASSTABLE | PASSGRILLE
 	flag = "magic"
