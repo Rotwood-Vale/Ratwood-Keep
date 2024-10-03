@@ -595,6 +595,13 @@ GLOBAL_LIST_INIT(roguetown_areas_typecache, typecacheof(/area/rogue/indoors/town
 /area/rogue/indoors/town/vault/can_craft_here()
 	return FALSE
 
+/area/rogue/indoors/town/library
+	name = "library"
+	icon_state = "vault"
+
+/area/rogue/indoors/town/library/can_craft_here()
+	return FALSE
+
 /area/rogue/indoors/town/entrance
 	first_time_text = "Roguetown"
 	icon_state = "entrance"

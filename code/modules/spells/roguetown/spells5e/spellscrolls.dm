@@ -5,6 +5,7 @@
 	drop_sound = 'sound/foley/dropsound/paper_drop.ogg'
 	pickup_sound =  'sound/blank.ogg'
 	remarks = list("Fascinating!", "Is that so...", "Like this?", "Really now...", "There's a little schmutz on this section...")
+	sellprice = 30
 
 /obj/item/book/granter/spell/spells5e/onlearned(mob/living/carbon/user)
 	..()
