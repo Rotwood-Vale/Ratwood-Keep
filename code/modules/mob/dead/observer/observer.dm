@@ -111,6 +111,7 @@ GLOBAL_VAR_INIT(observer_default_invisibility, INVISIBILITY_OBSERVER)
 
 	if(!(istype(src, /mob/dead/observer/rogue/arcaneeye)))
 		client?.verbs += GLOB.ghost_verbs
+		to_chat(src, span_warning("Use the skill icon on the left of your HUD to respawn."))
 
 	if(icon_state in GLOB.ghost_forms_with_directions_list)
 		ghostimage_default = image(src.icon,src,src.icon_state + "")
@@ -221,6 +222,7 @@ GLOBAL_VAR_INIT(observer_default_invisibility, INVISIBILITY_OBSERVER)
 	. = ..()
 	if(!(istype(src, /mob/dead/observer/rogue/arcaneeye)))
 		client?.verbs += GLOB.ghost_verbs
+		to_chat(src, span_warning("Use the skill icon on the left of your HUD to respawn."))
 
 /mob/dead/observer/get_photo_description(obj/item/camera/camera)
 	if(!invisibility || camera.see_ghosts)
@@ -534,7 +536,6 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 
 	client.verbs -= GLOB.ghost_verbs
 	M.key = key
-//	M.Login()	//wat
 	return
 
 
