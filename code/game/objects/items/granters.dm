@@ -169,13 +169,14 @@
 	granted_trait2 = TRAIT_ZJUMP
 	traitname = "the acrobat"
 	remarks = list("<font color='#f3fd2bfb'>Nothing stops the fleetfooted!", "<font color='#f3fd2bfb'>Which way is up? I forgot!", "<font color='#f3fd2bfb'>The sky is the limits!", "<font color='#f3fd2bfb'>Always land on your feet!", "<font color='#f3fd2bfb'>Who needs stairs?!</font>",)
+
 /obj/item/book/granter/trait/succubus
 	name = "Fragment of the Succubus"
 	light_color = "#b028fffb"
 	color = "#b028fffb"
 	granted_trait = TRAIT_DEATHBYSNOOSNOO
 	granted_trait2 = TRAIT_GOODLOVER
-	sellprice = 150
+	sellprice = 50
 	traitname = "the succubus"
 	remarks = list("<font color='#b028fffb'>They like what they see.", "<font color='#b028fffb'>I can't wait to hear you scream.", "<font color='#b028fffb'>So many hearts to break, so little time.","<font color='#b028fffb'>Without pain, how would they know pleasure?</font>",)
 
