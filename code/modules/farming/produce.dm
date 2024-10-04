@@ -105,12 +105,11 @@
 	foodtype = VEGETABLES
 	tastes = list("mushroom" = 1)
 	worn_x_dimension = 64
-	list_reagents = list(/datum/reagent/consumable/nutriment = 4, /datum/reagent/druqks = 2)
+	list_reagents = list(/datum/reagent/consumable/nutriment = 4, /datum/reagent/druqks = 5, /datum/reagent/water = 12)
 	worn_y_dimension = 64
 	rotprocess = 20 MINUTES
 	can_distill = TRUE
 	distill_reagent = /datum/reagent/medicine/shroomt
-	mill_result = /obj/item/reagent_containers/powder/flour // mushroom flour. it exists. and its gross.
 
 /obj/item/reagent_containers/food/snacks/grown/apple/On_Consume(mob/living/eater)
 	..()
@@ -252,7 +251,7 @@
 	foodtype = VEGETABLES
 	tastes = list("sweet" = 1,"bitterness" = 1)
 	mill_result = /obj/item/reagent_containers/powder/heal
-	list_reagents = list(/datum/reagent/consumable/nutriment = 1, /datum/reagent/medicine/minorhealthpot = 5)
+	list_reagents = list(/datum/reagent/consumable/nutriment = 1, /datum/reagent/medicine/minorhealthpot = 15)
 	rotprocess = 15 MINUTES
 
 /obj/item/reagent_containers/food/snacks/grown/rogue/pipeweeddry
@@ -276,6 +275,29 @@
 	list_reagents = list(/datum/reagent/drug/space_drugs = 2,/datum/reagent/consumable/nutriment = 1)
 	grind_results = list(/datum/reagent/drug/space_drugs = 5)
 	eat_effect = /datum/status_effect/debuff/badmeal
+
+/obj/item/reagent_containers/food/snacks/grown/rogue/shroomdry
+	seed = null
+	name = "dryed elder shroom"
+	desc = ""
+	icon_state = "eldershroom"
+	color = COLOR_YELLOW
+	dry = TRUE
+	pipe_reagents = list(/datum/reagent/medicine/shroomt = 30, /datum/reagent/water = 30)
+	list_reagents = list(/datum/reagent/medicine/shroomt = 10, /datum/reagent/consumable/nutriment = 4)
+	mill_result = /obj/item/reagent_containers/powder/flour // mushroom flour. it exists. and its gross.
+
+/obj/item/reagent_containers/food/snacks/grown/rogue/duddry
+	seed = null
+	name = "pipe filler"
+	desc = ""
+	color = COLOR_GREEN_GRAY
+	icon_state = "oat"
+	dry = TRUE
+	pipe_reagents = list(/datum/reagent/consumable/nutriment = 2, /datum/reagent/water = 30)
+	list_reagents = list(/datum/reagent/water = 5, /datum/reagent/consumable/nutriment = 1)
+	eat_effect = /datum/status_effect/debuff/badmeal
+
 
 /obj/item/reagent_containers/food/snacks/grown/potato/rogue
 	seed = /obj/item/seeds/potato

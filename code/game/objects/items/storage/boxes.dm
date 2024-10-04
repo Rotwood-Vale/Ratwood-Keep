@@ -633,7 +633,7 @@
 	SEND_SIGNAL(src, COMSIG_TRY_STORAGE_FILL_TYPE, /obj/item/toy/snappop)
 
 /obj/item/storage/box/matches
-	name = "matchbox"
+	name = "tinderbox"
 	desc = ""
 	icon = 'icons/obj/cigarettes.dmi'
 	icon_state = "matchbox"
