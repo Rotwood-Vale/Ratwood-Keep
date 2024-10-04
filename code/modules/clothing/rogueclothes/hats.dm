@@ -1043,6 +1043,11 @@
 	icon_state = "witch"
 	sewrepair = TRUE
 
+/obj/item/clothing/head/roguetown/archercap
+	name = "archer's cap"
+	desc = "For the merry men."
+	icon_state = "archercap"
+
 /obj/item/clothing/head/roguetown/physician
 	name = "doctor's hat"
 	desc = "My cure is most effective."
