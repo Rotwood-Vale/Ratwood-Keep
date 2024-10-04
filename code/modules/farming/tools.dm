@@ -2,7 +2,7 @@
 	force = 10
 	force_wielded = 15
 	possible_item_intents = list(MACE_STRIKE)
-	gripped_intents = list(MACE_STRIKE,/datum/intent/flailthresh)
+	gripped_intents = list(/datum/intent/flailthresh,MACE_STRIKE)
 	name = "thresher"
 	desc = "A shredding tool for farmers."
 	icon_state = "flail"
