@@ -45,6 +45,12 @@
 	created_item = /obj/item/clothing/mask/rogue/facemask
 	i_type = "Armor"
 
+/datum/anvil_recipe/armor/platemask/hound
+	name = "Mask (Hound)"
+	req_bar = /obj/item/ingot/iron
+	created_item = /obj/item/clothing/mask/rogue/facemask/hound
+	i_type = "Armor"
+
 /datum/anvil_recipe/armor/skullcap
 	name = "Skullcap"
 	req_bar = /obj/item/ingot/iron

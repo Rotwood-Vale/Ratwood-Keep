@@ -93,6 +93,11 @@
 	smeltresult = /obj/item/ingot/iron
 	clothing_flags = CANT_SLEEP_IN
 
+/obj/item/clothing/mask/rogue/facemask/hound
+	name = "iron hound mask"
+	desc = "An iron mask, made for those who have snouts."
+	icon_state = "imask_hound"
+
 /obj/item/clothing/mask/rogue/facemask/prisoner/Initialize()
 	. = ..()
 	name = "cursed mask"
@@ -113,8 +118,8 @@
 	smeltresult = /obj/item/ingot/steel
 
 /obj/item/clothing/mask/rogue/facemask/steel/hound
-	name = "hound mask"
-	desc = "A steel mask, this one looks more comfortable for Lupians."
+	name = "steel hound mask"
+	desc = "A steel mask, made for those who have snouts."
 	icon_state = "smask_hound"
 
 /obj/item/clothing/mask/rogue/shepherd
