@@ -95,9 +95,7 @@
 		if(prob(0.1))
 			new /obj/item/book_crafting_kit(location)
 		if(prob(clamp(length(player_book_titles), 10, 90)))
-			var/obj/item/book/rogue/playerbook/newbook = new /obj/item/book/rogue/playerbook(location)
-			if(prob(33))
-				newbook.pages = SSlibrarian.file2playerbook("ruined")["text"]
+			new /obj/item/book/rogue/playerbook(location)
 		else
 			var/obj/item/book/rogue/addition = pick(possible_books)
 			var/obj/item/book/rogue/newbook = new addition(location)
@@ -107,8 +105,6 @@
 			if(istype(newbook, /obj/item/book/rogue/bibble))
 				qdel(newbook)
 				continue
-			if(prob(33))
-				newbook.bookfile = "ruined.json"
 
 
 /obj/structure/bookcase/random/fiction

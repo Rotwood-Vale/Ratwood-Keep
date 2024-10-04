@@ -445,9 +445,7 @@ Pass the desired type path itself, declaring a temporary var beforehand is not r
 	var/scan_result = process_scan(scan) //Some bots may require additional processing when a result is selected.
 	if(scan_result)
 		return scan_result
-	else
-		return FALSE //The current element failed assessment, move on to the next.
-	return
+	return FALSE //The current element failed assessment, move on to the next.
 
 /mob/living/simple_animal/bot/proc/check_bot(targ)
 	var/turf/T = get_turf(targ)

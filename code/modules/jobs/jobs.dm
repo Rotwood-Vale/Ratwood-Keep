@@ -129,6 +129,7 @@ GLOBAL_LIST_INIT(peasant_positions, list(
 	"Beggar",
 	"Adventurer",
 	"Pilgrim",
+	"Bandit",
 ))
 
 GLOBAL_LIST_INIT(mercenary_positions, list(
@@ -255,3 +256,5 @@ GLOBAL_PROTECT(exp_specialmap)
 	job = chef_expand.Replace(job, "cook")
 	job = borg_expand.Replace(job, "cyborg")
 	return job
+
+

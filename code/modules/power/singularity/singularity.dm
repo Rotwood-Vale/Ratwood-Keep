@@ -351,12 +351,12 @@
 	var/dir2 = 0
 	var/dir3 = 0
 	switch(direction)
-		if(NORTH||SOUTH)
-			dir2 = 4
-			dir3 = 8
-		if(EAST||WEST)
-			dir2 = 1
-			dir3 = 2
+		if(NORTH, SOUTH)
+			dir2 = EAST
+			dir3 = WEST
+		if(EAST, WEST)
+			dir2 = NORTH
+			dir3 = SOUTH
 	var/turf/T2 = T
 	for(var/j = 1 to steps-1)
 		T2 = get_step(T2,dir2)

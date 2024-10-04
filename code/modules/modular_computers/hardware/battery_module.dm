@@ -49,20 +49,17 @@
 	if(!battery)
 		to_chat(user, span_warning("There is no power cell connected to \the [src]."))
 		return FALSE
+	if(user)
+		user.put_in_hands(battery)
 	else
-		if(user)
-			user.put_in_hands(battery)
-		else
-			battery.forceMove(drop_location())
-		to_chat(user, span_notice("I detach \the [battery] from \the [src]."))
-		battery = null
+		battery.forceMove(drop_location())
+	to_chat(user, span_notice("I detach \the [battery] from \the [src]."))
+	battery = null
 
-		if(holder)
-			if(holder.enabled && !holder.use_power())
-				holder.shutdown_computer()
-
-		return TRUE
-	return FALSE
+	if(holder)
+		if(holder.enabled && !holder.use_power())
+			holder.shutdown_computer()
+	return TRUE
 
 
 

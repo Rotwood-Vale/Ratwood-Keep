@@ -1,6 +1,6 @@
 /datum/crafting_recipe/roguetown/weaving
 	structurecraft = /obj/machinery/loom
-	skillcraft = /datum/skill/misc/weaving
+	skillcraft = /datum/skill/misc/sewing
 
 /datum/crafting_recipe/roguetown/weaving/rags
 	name = "webbed shirt"

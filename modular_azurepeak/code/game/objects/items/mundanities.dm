@@ -45,7 +45,7 @@
 
 //medium
 
-obj/item/mundane/puzzlebox/medium
+/obj/item/mundane/puzzlebox/medium
 	name = "\improper ebony puzzle-box"
 	icon = 'modular_azurepeak/icons/obj/items/mundanities.dmi'
 	icon_state = "ebon_box"

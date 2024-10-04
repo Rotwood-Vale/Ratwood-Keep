@@ -725,8 +725,8 @@
 /datum/reagents/proc/remove_reagent(reagent, amount, safety)//Added a safety check for the trans_id_to
 	if(isnull(amount))
 		amount = 0
+		. = FALSE
 		CRASH("null amount passed to reagent code")
-		return FALSE
 
 	if(!isnum(amount))
 		return FALSE

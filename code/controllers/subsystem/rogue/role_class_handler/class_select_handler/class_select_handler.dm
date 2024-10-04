@@ -199,7 +199,7 @@
 		rolled_classes[pick(possible_list)] = 0
 
 	if(cur_picked_class == filled_class)
-		if(special_session_queue && cur_picked_class in special_session_queue)
+		if(special_session_queue && (cur_picked_class in special_session_queue))
 			special_selected = FALSE
 		cur_picked_class = null
 
