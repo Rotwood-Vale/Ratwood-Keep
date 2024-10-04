@@ -5,7 +5,7 @@
 	allowed_races = RACES_ALL_KINDS
 	outfit = /datum/outfit/job/roguetown/mercenary/warscholar
 	category_tags = list(CTAG_MERCENARY)
-	maximum_possible_slots = 2
+	maximum_possible_slots = 3
 	cmode_music = 'sound/music/WarScholar.ogg'
 
 /datum/outfit/job/roguetown/mercenary/warscholar/pre_equip(mob/living/carbon/human/H)
@@ -13,23 +13,25 @@
 
 	// CLASS ARCHETYPES
 	H.adjust_blindness(-3)
-	var/classes = list("Heirophant","Arcyne-Monk")
+	var/classes = list("Hierophant","Arcyne-Monk")
 	var/classchoice = input("Choose your archetypes", "Available archetypes") as anything in classes
 
 	switch(classchoice)
-		if("Heirophant")
+		if("Hierophant")
 			H.set_blindness(0)
 			to_chat(H, span_warning("Hierophants are magicians who studied under cloistered sages, well-versed in all manners of arcyne. They prioritize enhancing their teammates and distracting foes while staying in the backline."))
-			H.mind.adjust_skillrank(/datum/skill/combat/polearms, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/polearms, 2, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/swimming, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/climbing, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/athletics, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/craft/crafting, 2, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/misc/medicine, 2, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/medicine, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/riding, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/reading, 4, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/alchemy, 3, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/magic/arcane, 3, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/magic/arcane, 4, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/sewing, 2, TRUE)
 			if(H.age == AGE_OLD)
 				H.mind.adjust_skillrank(/datum/skill/magic/arcane, 1, TRUE)
 				H.change_stat("speed", -1)
@@ -79,4 +81,4 @@
 	head = /obj/item/clothing/head/roguetown/roguehood/shalal/black
 	cloak = /obj/item/clothing/cloak/half
 
-	backpack_contents = list(/obj/item/roguekey/mercenary)
+	backpack_contents = list(/obj/item/roguekey/mercenary,/obj/item/rogueweapon/huntingknife)
