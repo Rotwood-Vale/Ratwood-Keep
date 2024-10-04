@@ -8,7 +8,7 @@
 	category_tags = list(CTAG_DISABLED)
 
 /datum/outfit/job/roguetown/adventurer/sorceress
-	allowed_patrons = list(/datum/patron/divine/noc)
+	allowed_patrons = list(/datum/patron/divine/noc, /datum/patron/inhumen/zizo)
 
 /datum/outfit/job/roguetown/adventurer/sorceress/pre_equip(mob/living/carbon/human/H)
 	..()

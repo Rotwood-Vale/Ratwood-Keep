@@ -11,7 +11,6 @@
 	cmode_music = 'sound/music/combat_pirate.ogg'
 
 /datum/outfit/job/roguetown/adventurer/smuggler
-	allowed_patrons =  list(/datum/patron/divine/abyssor, /datum/patron/inhumen/matthios)
 
 /datum/outfit/job/roguetown/adventurer/smuggler/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -25,25 +24,24 @@
 	armor = /obj/item/clothing/suit/roguetown/armor/leather/vest/sailor
 	backl = /obj/item/storage/backpack/rogue/backpack
 	backr = /obj/item/storage/backpack/rogue/satchel
-	beltr = /obj/item/rogueweapon/huntingknife/idagger/steel
-	beltl = /obj/item/rogueweapon/huntingknife/idagger/steel
+	beltr = /obj/item/rogueweapon/huntingknife/idagger/iron
+	beltl = /obj/item/rogueweapon/huntingknife/idagger/iron
 	backpack_contents = list(/obj/item/reagent_containers/powder/spice = 3, /obj/item/reagent_containers/glass/bottle/mercury = 1, /obj/item/reagent_containers/glass/bottle/rogue/poison = 1, /obj/item/reagent_containers/glass/bottle/rogue/healthpot = 1, /obj/item/reagent_containers/glass/bottle/rogue/manapot = 2,)
 	
-	ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
-	ADD_TRAIT(H, TRAIT_GOODRUNNER, TRAIT_GENERIC)
 
-	H.mind.adjust_skillrank(/datum/skill/combat/swords, 2, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/combat/knives, 3, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE) 
 	H.mind.adjust_skillrank(/datum/skill/misc/swimming, 4, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/climbing, 3, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/misc/athletics, 4, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 3, TRUE) 
 	H.mind.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/labor/fishing, 3, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/alchemy, 3, TRUE)
 	H.change_stat("strength", -2)
+	H.change_stat("constitution", -2)
 	H.change_stat("perception", 1)
 	H.change_stat("intelligence", 2)
-	H.change_stat("speed", 3)
+	H.change_stat("speed", 2)

@@ -7,7 +7,6 @@
 	category_tags = list(CTAG_TOWNER)
 
 /datum/outfit/job/roguetown/adventurer/gambler
-	allowed_patrons = list(/datum/patron/inhumen/baotha, /datum/patron/divine/xylix)
 
 /datum/outfit/job/roguetown/adventurer/gambler/pre_equip(mob/living/carbon/human/H)
 	..()
