@@ -9,16 +9,7 @@ SUBSYSTEM_DEF(library)
 	var/next_library_check = 0
 
 /datum/controller/subsystem/library/Initialize()
-	library_value = rand(800,1500)
-	for(var/path in subtypesof(/datum/roguestock/bounty))
-		var/datum/D = new path
-		stockpile_datums += D
-	for(var/path in subtypesof(/datum/roguestock/stockpile))
-		var/datum/D = new path
-		stockpile_datums += D
-	for(var/path in subtypesof(/datum/roguestock/import))
-		var/datum/D = new path
-		stockpile_datums += D
+	library_value = rand(100,300)
 	return ..()
 
 /datum/controller/subsystem/library/fire(resumed = 0)
@@ -27,14 +18,6 @@ SUBSYSTEM_DEF(library)
 		var/list/stockpile_items = list()
 
 		if(SSticker.current_state == GAME_STATE_PLAYING)
-
-		//wtf is this?
-			for(var/datum/roguestock/X in stockpile_datums)
-				if(!X.stable_price && !X.transport_item)
-					if(X.demand < initial(X.demand))
-						X.demand += rand(5,15)
-					if(X.demand > initial(X.demand))
-						X.demand -= rand(5,15)
 
 		var/area/A = GLOB.areas_by_type[/area/rogue/indoors/town/library]
 		var/amt_to_generate = 0
