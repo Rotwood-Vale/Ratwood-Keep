@@ -97,7 +97,7 @@
 					"nflip" = 0,
 					"sflip" = 0,
 					"wflip" = 0,
-					"eflip" = 0,
+					"eflip" = 8,
 					"northabove" = 1,
 					"southabove" = 0,
 					"eastabove" = 0,
@@ -311,7 +311,7 @@
 					"sy" = 0,
 					"nx" = 0,
 					"ny" = 1,
-					"wx" = 0,
+					"wx" = -2,
 					"wy" = 0,
 					"ex" = 0,
 					"ey" = 0,
@@ -322,7 +322,7 @@
 					"nflip" = 0,
 					"sflip" = 0,
 					"wflip" = 0,
-					"eflip" = 0,
+					"eflip" = 8,
 					"northabove" = 1,
 					"southabove" = 0,
 					"eastabove" = 0,
@@ -359,7 +359,7 @@
 	icon = 'icons/roguetown/weapons/64.dmi'
 	icon_state = "longbow"
 	slot_flags = ITEM_SLOT_BACK
-	damfactor = 1.1
+	damfactor = 1.2
 	pixel_y = -16
 	pixel_x = -16
 	inhand_x_dimension = 64
@@ -379,9 +379,9 @@
 					"nx" = 6,
 					"ny" = 1,
 					"wx" = -1,
-					"wy" = 1,
+					"wy" = 0,
 					"ex" = -2,
-					"ey" = 1,
+					"ey" = 0,
 					"northabove" = 0,
 					"southabove" = 1,
 					"eastabove" = 1,
@@ -402,8 +402,8 @@
 					"sy" = 1,
 					"nx" = 0,
 					"ny" = 0,
-					"wx" = 0,
-					"wy" = 0,
+					"wx" = -1,
+					"wy" = 1,
 					"ex" = 0,
 					"ey" = 0,
 					"nturn" = 0,
@@ -413,7 +413,7 @@
 					"nflip" = 0,
 					"sflip" = 0,
 					"wflip" = 0,
-					"eflip" = 0,
+					"eflip" = 8,
 					"northabove" = 1,
 					"southabove" = 0,
 					"eastabove" = 0,
