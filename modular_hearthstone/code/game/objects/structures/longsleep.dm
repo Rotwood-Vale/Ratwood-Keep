@@ -51,6 +51,11 @@
 			content = departing_mob.contents[i]
 			dat += ", [content.name]"
 		dat += "."
+	if(departing_mob.mind)
+		departing_mob.mind.unknow_all_people()
+		for(var/datum/mind/MF in get_minds())
+			departing_mob.mind.become_unknown_to(MF)
+	GLOB.chosen_names -= departing_mob.real_name
 	message_admins(dat)
 	log_admin(dat)
 	if(departing_mob.stat == DEAD)

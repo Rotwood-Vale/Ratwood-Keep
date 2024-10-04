@@ -88,8 +88,8 @@
 /area/rogue)
 "am" = (
 /obj/structure/table/wood{
-	icon_state = "tablewood2";
-	dir = 10
+	dir = 10;
+	icon_state = "tablewood2"
 	},
 /obj/item/clothing/wrists/roguetown/bracers,
 /obj/item/clothing/wrists/roguetown/bracers,
@@ -107,8 +107,8 @@
 /area/rogue)
 "ao" = (
 /obj/structure/table/wood{
-	icon_state = "tablewood2";
-	dir = 10
+	dir = 10;
+	icon_state = "tablewood2"
 	},
 /obj/item/clothing/suit/roguetown/armor/leather/studded,
 /obj/item/clothing/suit/roguetown/armor/leather/studded,
@@ -120,8 +120,8 @@
 /area/rogue)
 "ap" = (
 /obj/structure/table/wood{
-	icon_state = "tablewood2";
-	dir = 10
+	dir = 10;
+	icon_state = "tablewood2"
 	},
 /obj/item/clothing/suit/roguetown/armor/plate,
 /obj/item/clothing/suit/roguetown/armor/plate,
@@ -131,8 +131,8 @@
 /area/rogue)
 "aq" = (
 /obj/structure/table/wood{
-	icon_state = "tablewood2";
-	dir = 10
+	dir = 10;
+	icon_state = "tablewood2"
 	},
 /obj/item/clothing/suit/roguetown/armor/gambeson,
 /obj/item/clothing/suit/roguetown/armor/gambeson,
@@ -142,8 +142,8 @@
 /area/rogue)
 "ar" = (
 /obj/structure/table/wood{
-	icon_state = "tablewood2";
-	dir = 10
+	dir = 10;
+	icon_state = "tablewood2"
 	},
 /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk,
 /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk,
@@ -156,8 +156,8 @@
 /area/rogue)
 "as" = (
 /obj/structure/table/wood{
-	icon_state = "tablewood2";
-	dir = 10
+	dir = 10;
+	icon_state = "tablewood2"
 	},
 /obj/item/clothing/suit/roguetown/armor/chainmail/iron,
 /obj/item/clothing/suit/roguetown/armor/chainmail/iron,
@@ -165,8 +165,8 @@
 /area/rogue)
 "at" = (
 /obj/structure/table/wood{
-	icon_state = "tablewood2";
-	dir = 10
+	dir = 10;
+	icon_state = "tablewood2"
 	},
 /obj/item/clothing/suit/roguetown/armor/armordress,
 /obj/item/clothing/suit/roguetown/armor/armordress/alt,
@@ -175,8 +175,8 @@
 /area/rogue)
 "au" = (
 /obj/structure/table/wood{
-	icon_state = "tablewood2";
-	dir = 10
+	dir = 10;
+	icon_state = "tablewood2"
 	},
 /obj/item/clothing/gloves/roguetown/chain,
 /obj/item/clothing/gloves/roguetown/chain,
@@ -189,8 +189,8 @@
 /area/rogue)
 "aw" = (
 /obj/structure/table/wood{
-	icon_state = "tablewood2";
-	dir = 10
+	dir = 10;
+	icon_state = "tablewood2"
 	},
 /obj/item/clothing/head/roguetown/helmet/heavy/crusader,
 /obj/item/clothing/head/roguetown/helmet/heavy/crusader/t,
@@ -198,8 +198,8 @@
 /area/rogue)
 "ax" = (
 /obj/structure/table/wood{
-	icon_state = "tablewood2";
-	dir = 10
+	dir = 10;
+	icon_state = "tablewood2"
 	},
 /obj/item/clothing/head/roguetown/helmet/sallet,
 /obj/item/clothing/head/roguetown/helmet/sallet,
@@ -214,8 +214,8 @@
 /area/rogue)
 "az" = (
 /obj/structure/table/wood{
-	icon_state = "tablewood2";
-	dir = 10
+	dir = 10;
+	icon_state = "tablewood2"
 	},
 /obj/item/clothing/head/roguetown/helmet/sallet/visored,
 /obj/item/clothing/head/roguetown/helmet/sallet/visored,
@@ -225,8 +225,8 @@
 /area/rogue)
 "aA" = (
 /obj/structure/table/wood{
-	icon_state = "tablewood2";
-	dir = 10
+	dir = 10;
+	icon_state = "tablewood2"
 	},
 /obj/item/clothing/under/roguetown/chainlegs,
 /obj/item/clothing/under/roguetown/chainlegs,
@@ -237,8 +237,8 @@
 /area/rogue)
 "aB" = (
 /obj/structure/table/wood{
-	icon_state = "tablewood2";
-	dir = 10
+	dir = 10;
+	icon_state = "tablewood2"
 	},
 /obj/item/clothing/head/roguetown/helmet/leather,
 /obj/item/clothing/head/roguetown/helmet/leather,
@@ -246,8 +246,8 @@
 /area/rogue)
 "aC" = (
 /obj/structure/table/wood{
-	icon_state = "tablewood2";
-	dir = 10
+	dir = 10;
+	icon_state = "tablewood2"
 	},
 /obj/item/clothing/mask/rogue/facemask/steel,
 /obj/item/clothing/mask/rogue/facemask/steel,
@@ -257,8 +257,8 @@
 /area/rogue)
 "aD" = (
 /obj/structure/table/wood{
-	icon_state = "tablewood2";
-	dir = 10
+	dir = 10;
+	icon_state = "tablewood2"
 	},
 /obj/item/clothing/under/roguetown/trou,
 /obj/item/clothing/under/roguetown/trou,
@@ -269,8 +269,8 @@
 /area/rogue)
 "aE" = (
 /obj/structure/table/wood{
-	icon_state = "tablewood2";
-	dir = 10
+	dir = 10;
+	icon_state = "tablewood2"
 	},
 /obj/item/clothing/head/roguetown/helmet,
 /obj/item/clothing/head/roguetown/helmet,
@@ -279,8 +279,8 @@
 /area/rogue)
 "aF" = (
 /obj/structure/table/wood{
-	icon_state = "tablewood2";
-	dir = 10
+	dir = 10;
+	icon_state = "tablewood2"
 	},
 /obj/item/clothing/mask/rogue/facemask,
 /obj/item/clothing/mask/rogue/facemask,
@@ -292,8 +292,8 @@
 /area/rogue)
 "aG" = (
 /obj/structure/table/wood{
-	icon_state = "tablewood2";
-	dir = 10
+	dir = 10;
+	icon_state = "tablewood2"
 	},
 /obj/item/clothing/under/roguetown/tights,
 /obj/item/clothing/under/roguetown/tights,
@@ -307,8 +307,8 @@
 /area/rogue/outdoors)
 "aI" = (
 /obj/structure/table/wood{
-	icon_state = "tablewood2";
-	dir = 10
+	dir = 10;
+	icon_state = "tablewood2"
 	},
 /obj/item/clothing/neck/roguetown/chaincoif,
 /obj/item/clothing/neck/roguetown/chaincoif,
@@ -318,8 +318,8 @@
 /area/rogue)
 "aJ" = (
 /obj/structure/table/wood{
-	icon_state = "tablewood2";
-	dir = 10
+	dir = 10;
+	icon_state = "tablewood2"
 	},
 /obj/item/clothing/ring/active/nomag,
 /obj/item/clothing/ring/active/nomag,
@@ -327,8 +327,8 @@
 /area/rogue)
 "aK" = (
 /obj/structure/table/wood{
-	icon_state = "tablewood2";
-	dir = 10
+	dir = 10;
+	icon_state = "tablewood2"
 	},
 /obj/item/clothing/shoes/roguetown/boots,
 /obj/item/clothing/shoes/roguetown/boots,
@@ -339,8 +339,8 @@
 /area/rogue)
 "aL" = (
 /obj/structure/table/wood{
-	icon_state = "tablewood2";
-	dir = 10
+	dir = 10;
+	icon_state = "tablewood2"
 	},
 /obj/item/clothing/neck/roguetown/coif,
 /obj/item/clothing/neck/roguetown/coif,
@@ -349,8 +349,8 @@
 /area/rogue)
 "aM" = (
 /obj/structure/table/wood{
-	icon_state = "tablewood2";
-	dir = 10
+	dir = 10;
+	icon_state = "tablewood2"
 	},
 /obj/item/clothing/neck/roguetown/talkstone,
 /obj/item/clothing/neck/roguetown/talkstone,
@@ -360,8 +360,8 @@
 /area/rogue)
 "aN" = (
 /obj/structure/table/wood{
-	icon_state = "tablewood2";
-	dir = 10
+	dir = 10;
+	icon_state = "tablewood2"
 	},
 /obj/item/clothing/shoes/roguetown/boots/armor,
 /obj/item/clothing/shoes/roguetown/boots/armor,
@@ -372,8 +372,8 @@
 /area/rogue)
 "aO" = (
 /obj/structure/table/wood{
-	icon_state = "tablewood2";
-	dir = 10
+	dir = 10;
+	icon_state = "tablewood2"
 	},
 /obj/item/clothing/neck/roguetown/psicross,
 /obj/item/clothing/neck/roguetown/psicross,
@@ -382,8 +382,8 @@
 /area/rogue)
 "aP" = (
 /obj/structure/table/wood{
-	icon_state = "tablewood2";
-	dir = 10
+	dir = 10;
+	icon_state = "tablewood2"
 	},
 /turf/open/floor/rogue/carpet,
 /area/rogue)
@@ -398,8 +398,8 @@
 /area/rogue)
 "aS" = (
 /obj/structure/table/wood{
-	icon_state = "tablewood2";
-	dir = 10
+	dir = 10;
+	icon_state = "tablewood2"
 	},
 /obj/item/rogueweapon/greatsword/zwei,
 /obj/item/rogueweapon/greatsword/zwei,
@@ -408,8 +408,8 @@
 /area/rogue)
 "aT" = (
 /obj/structure/table/wood{
-	icon_state = "tablewood2";
-	dir = 10
+	dir = 10;
+	icon_state = "tablewood2"
 	},
 /obj/item/rogueweapon/flail,
 /obj/item/rogueweapon/flail,
@@ -418,8 +418,8 @@
 /area/rogue)
 "aU" = (
 /obj/structure/table/wood{
-	icon_state = "tablewood2";
-	dir = 10
+	dir = 10;
+	icon_state = "tablewood2"
 	},
 /obj/item/rogueweapon/eaglebeak/lucerne,
 /obj/item/rogueweapon/eaglebeak/lucerne,
@@ -427,8 +427,8 @@
 /area/rogue)
 "aV" = (
 /obj/structure/table/wood{
-	icon_state = "tablewood2";
-	dir = 10
+	dir = 10;
+	icon_state = "tablewood2"
 	},
 /obj/item/rogueweapon/halberd/bardiche,
 /obj/item/rogueweapon/halberd/bardiche,
@@ -436,8 +436,8 @@
 /area/rogue)
 "aW" = (
 /obj/structure/table/wood{
-	icon_state = "tablewood2";
-	dir = 10
+	dir = 10;
+	icon_state = "tablewood2"
 	},
 /obj/item/rogueweapon/spear,
 /obj/item/rogueweapon/spear,
@@ -445,8 +445,8 @@
 /area/rogue)
 "aX" = (
 /obj/structure/table/wood{
-	icon_state = "tablewood2";
-	dir = 10
+	dir = 10;
+	icon_state = "tablewood2"
 	},
 /obj/item/rogueweapon/sword/long/exe,
 /obj/item/rogueweapon/sword/long/exe,
@@ -456,8 +456,8 @@
 /area/rogue)
 "aY" = (
 /obj/structure/table/wood{
-	icon_state = "tablewood2";
-	dir = 10
+	dir = 10;
+	icon_state = "tablewood2"
 	},
 /obj/item/rogueweapon/sword/long,
 /obj/item/rogueweapon/sword/long,
@@ -469,8 +469,8 @@
 /area/rogue)
 "aZ" = (
 /obj/structure/table/wood{
-	icon_state = "tablewood2";
-	dir = 10
+	dir = 10;
+	icon_state = "tablewood2"
 	},
 /obj/item/rogueweapon/sword/iron,
 /obj/item/rogueweapon/sword/iron,
@@ -482,8 +482,8 @@
 /area/rogue)
 "ba" = (
 /obj/structure/table/wood{
-	icon_state = "tablewood2";
-	dir = 10
+	dir = 10;
+	icon_state = "tablewood2"
 	},
 /obj/item/rogueweapon/sword/decorated,
 /obj/item/rogueweapon/sword/decorated,
@@ -494,8 +494,8 @@
 /area/rogue)
 "bb" = (
 /obj/structure/table/wood{
-	icon_state = "tablewood2";
-	dir = 10
+	dir = 10;
+	icon_state = "tablewood2"
 	},
 /obj/item/rogueweapon/sword,
 /obj/item/rogueweapon/sword,
@@ -505,8 +505,8 @@
 /area/rogue)
 "bc" = (
 /obj/structure/table/wood{
-	icon_state = "tablewood2";
-	dir = 10
+	dir = 10;
+	icon_state = "tablewood2"
 	},
 /obj/item/rogueweapon/sword/sabre/dec,
 /obj/item/rogueweapon/sword/sabre,
@@ -514,8 +514,8 @@
 /area/rogue)
 "bd" = (
 /obj/structure/table/wood{
-	icon_state = "tablewood2";
-	dir = 10
+	dir = 10;
+	icon_state = "tablewood2"
 	},
 /obj/item/rogueweapon/sword/rapier,
 /obj/item/rogueweapon/sword/rapier/dec,
@@ -523,8 +523,8 @@
 /area/rogue)
 "be" = (
 /obj/structure/table/wood{
-	icon_state = "tablewood2";
-	dir = 10
+	dir = 10;
+	icon_state = "tablewood2"
 	},
 /obj/item/rogueweapon/mace/woodclub,
 /obj/item/rogueweapon/mace/woodclub,
@@ -534,8 +534,8 @@
 /area/rogue)
 "bf" = (
 /obj/structure/table/wood{
-	icon_state = "tablewood2";
-	dir = 10
+	dir = 10;
+	icon_state = "tablewood2"
 	},
 /obj/item/rogueweapon/mace,
 /obj/item/rogueweapon/mace,
@@ -562,8 +562,8 @@
 /area/rogue)
 "bj" = (
 /obj/structure/table/wood{
-	icon_state = "largetable";
-	dir = 4
+	dir = 4;
+	icon_state = "largetable"
 	},
 /obj/item/natural/feather,
 /turf/open/floor/rogue/hexstone,
@@ -574,8 +574,8 @@
 /area/rogue)
 "bl" = (
 /obj/structure/table/wood{
-	icon_state = "tablewood2";
-	dir = 10
+	dir = 10;
+	icon_state = "tablewood2"
 	},
 /obj/item/rogueweapon/mace/goden,
 /obj/item/rogueweapon/mace/goden,
@@ -593,8 +593,8 @@
 /area/rogue)
 "bo" = (
 /obj/structure/table/wood{
-	icon_state = "tablewood2";
-	dir = 10
+	dir = 10;
+	icon_state = "tablewood2"
 	},
 /obj/item/rogueweapon/stoneaxe,
 /obj/item/rogueweapon/stoneaxe,
@@ -603,8 +603,8 @@
 /area/rogue)
 "bp" = (
 /obj/structure/table/wood{
-	icon_state = "tablewood2";
-	dir = 10
+	dir = 10;
+	icon_state = "tablewood2"
 	},
 /obj/item/rogueweapon/stoneaxe/woodcut,
 /obj/item/rogueweapon/stoneaxe/woodcut,
@@ -616,8 +616,8 @@
 /area/rogue)
 "bq" = (
 /obj/structure/table/wood{
-	icon_state = "tablewood2";
-	dir = 10
+	dir = 10;
+	icon_state = "tablewood2"
 	},
 /obj/item/rogueweapon/stoneaxe/battle,
 /obj/item/rogueweapon/stoneaxe/battle,
@@ -628,8 +628,8 @@
 /area/rogue)
 "br" = (
 /obj/structure/table/wood{
-	icon_state = "tablewood2";
-	dir = 10
+	dir = 10;
+	icon_state = "tablewood2"
 	},
 /obj/item/rogueweapon/shield/tower/metal,
 /obj/item/rogueweapon/shield/tower/metal,
@@ -637,8 +637,8 @@
 /area/rogue)
 "bs" = (
 /obj/structure/table/wood{
-	icon_state = "tablewood2";
-	dir = 10
+	dir = 10;
+	icon_state = "tablewood2"
 	},
 /obj/item/rogueweapon/shield/wood,
 /obj/item/rogueweapon/shield/wood,
@@ -646,8 +646,8 @@
 /area/rogue)
 "bt" = (
 /obj/structure/table/wood{
-	icon_state = "tablewood2";
-	dir = 10
+	dir = 10;
+	icon_state = "tablewood2"
 	},
 /obj/item/rogueweapon/mace/goden/steel,
 /obj/item/rogueweapon/mace/goden/steel,
@@ -680,8 +680,8 @@
 /area/rogue)
 "by" = (
 /obj/structure/table/wood{
-	icon_state = "tablewood2";
-	dir = 10
+	dir = 10;
+	icon_state = "tablewood2"
 	},
 /obj/item/rogueweapon/mace/steel,
 /obj/item/rogueweapon/mace/steel,
@@ -799,8 +799,8 @@
 /area/rogue/indoors)
 "bW" = (
 /obj/structure/table/wood{
-	icon_state = "largetable";
-	dir = 9
+	dir = 9;
+	icon_state = "largetable"
 	},
 /obj/item/paper,
 /turf/open/floor/carpet/inn,
@@ -810,16 +810,16 @@
 /area/rogue)
 "bY" = (
 /obj/structure/table/wood{
-	icon_state = "largetable";
-	dir = 1
+	dir = 1;
+	icon_state = "largetable"
 	},
 /obj/item/natural/feather,
 /turf/open/floor/carpet/inn,
 /area/rogue/indoors)
 "bZ" = (
 /obj/structure/table/wood{
-	icon_state = "largetable";
-	dir = 5
+	dir = 5;
+	icon_state = "largetable"
 	},
 /obj/item/reagent_containers/glass/cup/golden,
 /turf/open/floor/carpet/inn,
@@ -841,8 +841,8 @@
 /area/rogue/indoors)
 "cd" = (
 /obj/structure/chair/wood/rogue/fancy{
-	icon_state = "chair1";
-	dir = 1
+	dir = 1;
+	icon_state = "chair1"
 	},
 /turf/open/floor/carpet/inn,
 /area/rogue/indoors)
@@ -852,37 +852,37 @@
 /area/rogue/indoors)
 "cf" = (
 /obj/structure/chair/wood/rogue/fancy{
-	icon_state = "chair1";
-	dir = 4
+	dir = 4;
+	icon_state = "chair1"
 	},
 /turf/open/floor/carpet/inn,
 /area/rogue/indoors)
 "cg" = (
 /obj/structure/table/wood{
-	icon_state = "largetable";
-	dir = 8
+	dir = 8;
+	icon_state = "largetable"
 	},
 /obj/item/reagent_containers/glass/cup/skull,
 /turf/open/floor/carpet/inn,
 /area/rogue/indoors)
 "ch" = (
 /obj/structure/table/wood{
-	icon_state = "largetable_mid";
-	dir = 1
+	dir = 1;
+	icon_state = "largetable_mid"
 	},
 /turf/open/floor/carpet/inn,
 /area/rogue/indoors)
 "ci" = (
 /obj/structure/table/wood{
-	icon_state = "largetable";
-	dir = 4
+	dir = 4;
+	icon_state = "largetable"
 	},
 /turf/open/floor/carpet/inn,
 /area/rogue/indoors)
 "cj" = (
 /obj/structure/chair/wood/rogue/fancy{
-	icon_state = "chair1";
-	dir = 8
+	dir = 8;
+	icon_state = "chair1"
 	},
 /turf/open/floor/carpet/inn,
 /area/rogue/indoors)
@@ -915,15 +915,15 @@
 /area/rogue/indoors)
 "cq" = (
 /obj/structure/table/wood{
-	icon_state = "largetable";
-	dir = 8
+	dir = 8;
+	icon_state = "largetable"
 	},
 /turf/open/floor/carpet/inn,
 /area/rogue/indoors)
 "cr" = (
 /obj/structure/table/wood{
-	icon_state = "largetable";
-	dir = 4
+	dir = 4;
+	icon_state = "largetable"
 	},
 /obj/item/reagent_containers/glass/cup/skull,
 /turf/open/floor/carpet/inn,
@@ -946,27 +946,27 @@
 /area/rogue/indoors)
 "cv" = (
 /obj/structure/table/wood{
-	icon_state = "largetable";
-	dir = 10
+	dir = 10;
+	icon_state = "largetable"
 	},
 /obj/item/reagent_containers/glass/cup/silver,
 /turf/open/floor/carpet/inn,
 /area/rogue/indoors)
 "cw" = (
 /obj/effect/landmark/start/bandit{
-	icon_state = "arrow";
-	dir = 4
+	dir = 4;
+	icon_state = "arrow"
 	},
 /obj/structure/chair/wood/rogue{
-	icon_state = "chair2";
-	dir = 8
+	dir = 8;
+	icon_state = "chair2"
 	},
 /turf/open/floor/rogue/herringbone,
 /area/rogue/indoors)
 "cx" = (
 /obj/structure/table/wood{
-	icon_state = "tablewood2";
-	dir = 10
+	dir = 10;
+	icon_state = "tablewood2"
 	},
 /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow,
 /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow,
@@ -976,15 +976,15 @@
 /area/rogue/outdoors)
 "cy" = (
 /obj/structure/table/wood{
-	icon_state = "largetable";
-	dir = 2
+	dir = 2;
+	icon_state = "largetable"
 	},
 /turf/open/floor/carpet/inn,
 /area/rogue/indoors)
 "cz" = (
 /obj/structure/table/wood{
-	icon_state = "largetable";
-	dir = 6
+	dir = 6;
+	icon_state = "largetable"
 	},
 /turf/open/floor/carpet/inn,
 /area/rogue/indoors)
@@ -1010,8 +1010,8 @@
 /area/rogue/indoors)
 "cD" = (
 /obj/structure/stairs{
-	icon_state = "stairs";
-	dir = 4
+	dir = 4;
+	icon_state = "stairs"
 	},
 /turf/open/floor/rogue/ruinedwood{
 	icon_state = "weird1"
@@ -1031,8 +1031,8 @@
 /area/rogue/indoors)
 "cH" = (
 /obj/structure/table/church{
-	icon_state = "churchtable";
-	dir = 1
+	dir = 1;
+	icon_state = "churchtable"
 	},
 /obj/structure/fluff/walldeco/bigpainting/lake,
 /obj/item/candle/skull,
@@ -1144,8 +1144,8 @@
 /area/rogue/indoors)
 "dd" = (
 /obj/structure/stairs{
-	icon_state = "stairs";
-	dir = 1
+	dir = 1;
+	icon_state = "stairs"
 	},
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue/indoors)
@@ -1156,8 +1156,8 @@
 /area/rogue/indoors)
 "df" = (
 /obj/structure/table/wood{
-	icon_state = "longtable";
-	dir = 1
+	dir = 1;
+	icon_state = "longtable"
 	},
 /obj/item/roguekey/vampire,
 /obj/item/roguekey/vampire,
@@ -1198,8 +1198,8 @@
 /area/rogue/outdoors/woods)
 "dl" = (
 /obj/structure/table/wood{
-	icon_state = "largetable";
-	dir = 6
+	dir = 6;
+	icon_state = "largetable"
 	},
 /obj/item/paper,
 /turf/open/floor/rogue/hexstone,
@@ -1213,8 +1213,8 @@
 /area/rogue/outdoors/woods)
 "do" = (
 /obj/structure/table/wood{
-	icon_state = "largetable";
-	dir = 8
+	dir = 8;
+	icon_state = "largetable"
 	},
 /obj/item/reagent_containers/powder/salt,
 /turf/open/floor/rogue/hexstone,
@@ -1228,8 +1228,8 @@
 /area/rogue/indoors)
 "dr" = (
 /obj/structure/table/wood{
-	icon_state = "largetable";
-	dir = 9
+	dir = 9;
+	icon_state = "largetable"
 	},
 /obj/item/reagent_containers/food/condiment/peppermill,
 /obj/machinery/light/rogue/wallfire/candle/l,
@@ -1237,8 +1237,8 @@
 /area/rogue/indoors)
 "ds" = (
 /obj/structure/table/wood{
-	icon_state = "largetable";
-	dir = 5
+	dir = 5;
+	icon_state = "largetable"
 	},
 /obj/item/reagent_containers/glass/bottle/rogue/wine,
 /turf/open/floor/rogue/tile{
@@ -1247,8 +1247,8 @@
 /area/rogue/indoors)
 "dt" = (
 /obj/structure/chair/wood/rogue{
-	icon_state = "chair2";
-	dir = 8
+	dir = 8;
+	icon_state = "chair2"
 	},
 /turf/open/floor/rogue/tile{
 	icon_state = "chess"
@@ -1261,8 +1261,8 @@
 /area/rogue/indoors)
 "dv" = (
 /obj/structure/fluff/traveltile/bandit{
-	aportalid = "banditin";
-	aportalgoesto = "banditexit"
+	aportalgoesto = "banditexit";
+	aportalid = "banditin"
 	},
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors/woods)
@@ -1276,8 +1276,8 @@
 /area/rogue/indoors)
 "dy" = (
 /obj/structure/table/wood{
-	icon_state = "largetable";
-	dir = 10
+	dir = 10;
+	icon_state = "largetable"
 	},
 /obj/item/reagent_containers/powder/salt,
 /obj/item/reagent_containers/powder/salt,
@@ -1287,8 +1287,8 @@
 /area/rogue/indoors)
 "dz" = (
 /obj/structure/table/wood{
-	icon_state = "largetable";
-	dir = 6
+	dir = 6;
+	icon_state = "largetable"
 	},
 /obj/item/storage/roguebag,
 /turf/open/floor/rogue/tile{
@@ -1354,8 +1354,8 @@
 /area/rogue/indoors)
 "dP" = (
 /obj/structure/chair/wood/rogue{
-	icon_state = "chair2";
-	dir = 4
+	dir = 4;
+	icon_state = "chair2"
 	},
 /turf/open/floor/rogue/dirt/road,
 /area/rogue)
@@ -1407,44 +1407,70 @@
 	},
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors/woods)
+"ec" = (
+/obj/effect/decal/remains/mole,
+/turf/open/water/swamp,
+/area/rogue/outdoors/bog)
 "eP" = (
 /obj/structure/table/wood{
-	icon_state = "largetable_mid";
-	dir = 1
+	dir = 1;
+	icon_state = "largetable_mid"
 	},
 /mob/living/simple_animal/pet/cat/black,
 /turf/open/floor/carpet/inn,
 /area/rogue/indoors)
+"eV" = (
+/obj/structure/fluff/traveltile{
+	aportalid = "woods1";
+	name = "woods"
+	},
+/turf/open/floor/rogue/dirt/road,
+/area/rogue/outdoors/bog)
 "eY" = (
 /obj/effect/landmark/shuttle_import,
 /turf/closed,
 /area/rogue)
+"fc" = (
+/obj/effect/decal/remains/mole,
+/turf/open/floor/rogue/dirt,
+/area/rogue/outdoors/bog)
 "fe" = (
 /obj/effect/landmark/hellexit,
 /turf/open/lava,
 /area/rogue)
 "fi" = (
 /obj/structure/table/wood{
-	icon_state = "tablewood2";
-	dir = 10
+	dir = 10;
+	icon_state = "tablewood2"
 	},
 /obj/item/rogueweapon/eaglebeak,
 /obj/item/rogueweapon/eaglebeak,
 /obj/item/rogueweapon/eaglebeak,
 /turf/open/floor/rogue/cobble,
 /area/rogue)
+"fr" = (
+/obj/structure/closet/dirthole/grave,
+/turf/open/floor/rogue/dirt,
+/area/rogue/outdoors/bog)
 "ft" = (
 /obj/item/candle/skull,
 /turf/open/floor/rogue/herringbone,
 /area/rogue/indoors)
 "gm" = (
 /obj/structure/table/wood{
-	icon_state = "largetable";
-	dir = 4
+	dir = 4;
+	icon_state = "largetable"
 	},
 /obj/item/reagent_containers/glass/cup/skull,
 /turf/open/floor/rogue/hexstone,
 /area/rogue/indoors)
+"gr" = (
+/obj/structure/flora/roguegrass/water/reeds,
+/turf/open/water/swamp,
+/area/rogue/outdoors/bog)
+"gx" = (
+/turf/open/floor/rogue/twig,
+/area/rogue/outdoors/bog)
 "gD" = (
 /obj/structure/table/wood{
 	icon_state = "tablewood3"
@@ -1454,13 +1480,31 @@
 	icon_state = "chess"
 	},
 /area/rogue/indoors)
+"gI" = (
+/obj/structure/flora/roguetree/burnt,
+/turf/open/water/swamp,
+/area/rogue/outdoors/bog)
 "hQ" = (
 /turf/open/floor/rogue/blocks,
 /area/rogue)
+"ii" = (
+/obj/item/rogueweapon/shovel/small,
+/turf/open/floor/rogue/dirt,
+/area/rogue/outdoors/bog)
+"iR" = (
+/obj/structure/fermenting_barrel/random/beer,
+/turf/open/floor/rogue/dirt,
+/area/rogue/outdoors/bog)
+"iU" = (
+/obj/effect/decal/cleanable/blood,
+/obj/item/natural/poo,
+/obj/structure/closet/dirthole/grave,
+/turf/open/floor/rogue/dirt,
+/area/rogue/outdoors/bog)
 "jd" = (
 /obj/structure/table/wood{
-	icon_state = "largetable";
-	dir = 2
+	dir = 2;
+	icon_state = "largetable"
 	},
 /turf/open/floor/rogue/hexstone,
 /area/rogue/indoors)
@@ -1472,8 +1516,8 @@
 /area/rogue/indoors)
 "jH" = (
 /obj/structure/table/wood{
-	icon_state = "tablewood2";
-	dir = 10
+	dir = 10;
+	icon_state = "tablewood2"
 	},
 /obj/item/rogueweapon/flail/sflail,
 /obj/item/rogueweapon/flail/sflail,
@@ -1482,8 +1526,8 @@
 /area/rogue)
 "jQ" = (
 /obj/structure/table/wood{
-	icon_state = "tablewood2";
-	dir = 10
+	dir = 10;
+	icon_state = "tablewood2"
 	},
 /obj/item/rogueweapon/huntingknife/idagger,
 /obj/item/rogueweapon/huntingknife/idagger,
@@ -1506,6 +1550,24 @@
 "jZ" = (
 /turf/open/floor/rogue/hexstone,
 /area/rogue/indoors)
+"ke" = (
+/obj/item/needle/thorn,
+/obj/item/needle/thorn,
+/obj/item/natural/cloth,
+/obj/item/natural/cloth,
+/turf/open/floor/rogue/dirt,
+/area/rogue/outdoors/bog)
+"kh" = (
+/obj/item/reagent_containers/glass/bucket/pot,
+/obj/structure/table/wood{
+	icon_state = "tablewood1"
+	},
+/turf/open/floor/rogue/dirt,
+/area/rogue/outdoors/bog)
+"kq" = (
+/obj/structure/flora/roguetree/burnt,
+/turf/open/floor/rogue/dirt,
+/area/rogue/outdoors/bog)
 "kB" = (
 /obj/effect/landmark/mapGenerator/sunlights{
 	endTurfX = 128;
@@ -1515,8 +1577,8 @@
 /area/rogue/outdoors/woods)
 "kF" = (
 /obj/structure/table/wood{
-	icon_state = "tablewood2";
-	dir = 10
+	dir = 10;
+	icon_state = "tablewood2"
 	},
 /obj/item/rogueweapon/greatsword,
 /obj/item/rogueweapon/greatsword,
@@ -1527,8 +1589,8 @@
 /area/rogue)
 "la" = (
 /obj/effect/landmark/start/bandit{
-	icon_state = "arrow";
-	dir = 8
+	dir = 8;
+	icon_state = "arrow"
 	},
 /obj/structure/chair/stool/rogue,
 /turf/open/floor/rogue/herringbone,
@@ -1538,15 +1600,15 @@
 /area/rogue)
 "mp" = (
 /obj/structure/roguewindow/openclose{
-	icon_state = "woodwindowdir";
-	dir = 1
+	dir = 1;
+	icon_state = "woodwindowdir"
 	},
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue/indoors)
 "mO" = (
 /obj/structure/table/wood{
-	icon_state = "tablewood2";
-	dir = 10
+	dir = 10;
+	icon_state = "tablewood2"
 	},
 /obj/item/quiver/bolts,
 /obj/item/quiver/bolts,
@@ -1555,11 +1617,15 @@
 /obj/item/quiver/bolts,
 /turf/open/floor/rogue/dirt,
 /area/rogue/outdoors)
+"mP" = (
+/obj/effect/decal/remains/saiga,
+/turf/open/floor/rogue/dirt,
+/area/rogue/outdoors/bog)
 "mQ" = (
 /obj/structure/bed/rogue/shit,
 /turf/open/floor/rogue/ruinedwood{
-	icon_state = "vertw";
-	dir = 1
+	dir = 1;
+	icon_state = "vertw"
 	},
 /area/rogue/indoors)
 "nh" = (
@@ -1573,31 +1639,35 @@
 /area/rogue/indoors)
 "nj" = (
 /obj/structure/table/wood{
-	icon_state = "largetable";
-	dir = 9
+	dir = 9;
+	icon_state = "largetable"
 	},
 /turf/open/floor/rogue/hexstone,
 /area/rogue/indoors)
 "ns" = (
 /obj/effect/landmark/start/bandit{
-	icon_state = "arrow";
-	dir = 4
+	dir = 4;
+	icon_state = "arrow"
 	},
 /obj/structure/chair/stool/rogue,
 /turf/open/floor/rogue/herringbone,
 /area/rogue/indoors)
+"nA" = (
+/obj/effect/decal/remains/bigrat,
+/turf/open/floor/rogue/dirt,
+/area/rogue/outdoors/bog)
 "nG" = (
 /obj/item/chair/rogue,
 /obj/effect/landmark/start/bandit{
-	icon_state = "arrow";
-	dir = 4
+	dir = 4;
+	icon_state = "arrow"
 	},
 /turf/open/floor/rogue/herringbone,
 /area/rogue/indoors)
 "nQ" = (
 /obj/structure/table/wood{
-	icon_state = "tablewood2";
-	dir = 10
+	dir = 10;
+	icon_state = "tablewood2"
 	},
 /obj/item/rogueweapon/sword/cutlass,
 /obj/item/rogueweapon/sword/cutlass,
@@ -1612,17 +1682,21 @@
 	icon_state = "chess"
 	},
 /area/rogue/indoors)
+"oc" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/rogue/twig,
+/area/rogue/outdoors/bog)
 "oV" = (
 /obj/structure/fluff/railing/fence{
-	icon_state = "fence";
-	dir = 1
+	dir = 1;
+	icon_state = "fence"
 	},
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors/woods)
 "pb" = (
 /turf/open/floor/rogue/ruinedwood{
-	icon_state = "vertw";
-	dir = 1
+	dir = 1;
+	icon_state = "vertw"
 	},
 /area/rogue/indoors)
 "pc" = (
@@ -1635,6 +1709,10 @@
 "pr" = (
 /turf/open/floor/rogue/dirt,
 /area/rogue/outdoors)
+"pz" = (
+/obj/item/natural/stone,
+/turf/open/floor/rogue/dirt,
+/area/rogue/outdoors/bog)
 "pA" = (
 /obj/effect/landmark/vteleportsending,
 /obj/machinery/light/rogue/wallfire/candle/blue/l,
@@ -1642,8 +1720,8 @@
 /area/rogue/indoors)
 "pE" = (
 /obj/structure/table/wood{
-	icon_state = "tablewood2";
-	dir = 10
+	dir = 10;
+	icon_state = "tablewood2"
 	},
 /obj/item/rogueweapon/shovel,
 /obj/item/rogueweapon/shovel,
@@ -1673,15 +1751,22 @@
 /area/rogue/indoors)
 "qR" = (
 /obj/effect/landmark/start/bandit{
-	icon_state = "arrow";
-	dir = 4
+	dir = 4;
+	icon_state = "arrow"
 	},
 /obj/structure/chair/wood/rogue{
-	icon_state = "chair2";
-	dir = 4
+	dir = 4;
+	icon_state = "chair2"
 	},
 /turf/open/floor/rogue/herringbone,
 /area/rogue/indoors)
+"rc" = (
+/turf/open/floor/rogue/dirt,
+/area/rogue/outdoors/bog)
+"re" = (
+/obj/item/natural/poo,
+/turf/open/floor/rogue/dirt,
+/area/rogue/outdoors/bog)
 "rl" = (
 /obj/structure/toilet,
 /turf/open/floor/rogue/ruinedwood,
@@ -1690,17 +1775,26 @@
 /obj/structure/fermenting_barrel/random/water,
 /turf/open/floor/rogue/herringbone,
 /area/rogue/indoors)
+"ru" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/rogue/dirt,
+/area/rogue/outdoors/bog)
 "rQ" = (
 /turf/closed,
 /area/rogue)
+"sf" = (
+/obj/structure/flora/roguegrass/water/reeds,
+/obj/structure/flora/roguegrass/water/reeds,
+/turf/open/water/swamp,
+/area/rogue/outdoors/bog)
 "sh" = (
 /obj/effect/landmark/start/bandit{
-	icon_state = "arrow";
-	dir = 8
+	dir = 8;
+	icon_state = "arrow"
 	},
 /obj/structure/chair/wood/rogue{
-	icon_state = "chair2";
-	dir = 8
+	dir = 8;
+	icon_state = "chair2"
 	},
 /turf/open/floor/rogue/herringbone,
 /area/rogue/indoors)
@@ -1714,8 +1808,8 @@
 "so" = (
 /obj/structure/bars,
 /turf/open/floor/rogue/ruinedwood{
-	icon_state = "vertw";
-	dir = 1
+	dir = 1;
+	icon_state = "vertw"
 	},
 /area/rogue/indoors)
 "sr" = (
@@ -1728,10 +1822,19 @@
 	},
 /turf/open/floor/rogue/blocks,
 /area/rogue)
+"sB" = (
+/obj/item/natural/worms/leech,
+/obj/item/natural/worms,
+/obj/item/reagent_containers/food/snacks/rogue/meat/spider,
+/obj/item/reagent_containers/food/snacks/rogue/meat/spider,
+/obj/item/natural/worms/leech,
+/obj/item/natural/worms,
+/turf/open/floor/rogue/dirt,
+/area/rogue/outdoors/bog)
 "sN" = (
 /obj/structure/table/wood{
-	icon_state = "largetable";
-	dir = 1
+	dir = 1;
+	icon_state = "largetable"
 	},
 /turf/open/floor/rogue/hexstone,
 /area/rogue/indoors)
@@ -1739,26 +1842,56 @@
 /obj/machinery/light/rogue/firebowl/standing,
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue/indoors)
+"tn" = (
+/obj/structure/mineral_door/wood/deadbolt{
+	dir = 1
+	},
+/turf/open/floor/rogue/dirt,
+/area/rogue/outdoors/bog)
+"tM" = (
+/obj/structure/flora/roguetree/stump,
+/turf/open/floor/rogue/dirt,
+/area/rogue/outdoors/bog)
 "tN" = (
 /turf/closed,
 /area/rogue/under)
+"ub" = (
+/obj/item/signal_horn{
+	pixel_y = 10
+	},
+/turf/open/floor/rogue/dirt/road,
+/area/rogue/indoors)
+"uc" = (
+/obj/structure/flora/roguetree/burnt,
+/turf/open/water/swamp/deep,
+/area/rogue/outdoors/bog)
 "up" = (
 /obj/item/cooking/pan,
 /turf/open/floor/rogue/tile{
 	icon_state = "chess"
 	},
 /area/rogue/indoors)
+"uD" = (
+/obj/item/rope/chain,
+/obj/item/rope/chain,
+/obj/item/rope/chain,
+/turf/open/floor/rogue/dirt,
+/area/rogue/outdoors/bog)
+"uX" = (
+/obj/machinery/light/rogue/hearth,
+/turf/open/floor/rogue/dirt,
+/area/rogue/outdoors/bog)
 "vf" = (
 /obj/structure/table/wood{
-	icon_state = "tablewood1";
-	dir = 1
+	dir = 1;
+	icon_state = "tablewood1"
 	},
 /turf/open/floor/rogue/dirt/road,
 /area/rogue)
 "vl" = (
 /obj/structure/table/wood{
-	icon_state = "tablewood2";
-	dir = 10
+	dir = 10;
+	icon_state = "tablewood2"
 	},
 /obj/item/rogueweapon/halberd,
 /obj/item/rogueweapon/halberd,
@@ -1766,8 +1899,8 @@
 /area/rogue)
 "vq" = (
 /obj/structure/table/wood{
-	icon_state = "tablewood2";
-	dir = 10
+	dir = 10;
+	icon_state = "tablewood2"
 	},
 /obj/item/rogueweapon/shield/tower,
 /obj/item/rogueweapon/shield/tower,
@@ -1775,25 +1908,40 @@
 /area/rogue)
 "vt" = (
 /obj/structure/table/wood{
-	icon_state = "largetable";
-	dir = 8
+	dir = 8;
+	icon_state = "largetable"
 	},
 /obj/item/reagent_containers/glass/cup/skull,
 /turf/open/floor/rogue/hexstone,
 /area/rogue/indoors)
+"vu" = (
+/obj/item/restraints/legcuffs/beartrap/armed/camouflage,
+/turf/open/water/swamp,
+/area/rogue/outdoors/bog)
 "vP" = (
 /turf/closed/wall/mineral/rogue/stone,
 /area/rogue)
 "vQ" = (
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors/woods)
+"wp" = (
+/turf/open/floor/rogue/dirt/road,
+/area/rogue/outdoors/bog)
 "wB" = (
 /obj/effect/landmark/start/new_player,
 /turf/open/floor/plating,
 /area/start)
+"wL" = (
+/obj/item/bodypart/head,
+/turf/open/floor/rogue/dirt,
+/area/rogue/outdoors/bog)
 "wO" = (
 /turf/closed,
 /area/rogue/outdoors)
+"wU" = (
+/obj/machinery/light/rogue/firebowl/standing,
+/turf/open/floor/rogue/dirt/road,
+/area/rogue/indoors)
 "xi" = (
 /obj/effect/proc_holder/spell/invoked/heal,
 /turf/open/floor/rogue/blocks,
@@ -1819,8 +1967,8 @@
 /area/rogue/indoors)
 "xO" = (
 /obj/structure/table/wood{
-	icon_state = "tablewood2";
-	dir = 10
+	dir = 10;
+	icon_state = "tablewood2"
 	},
 /obj/item/rogueweapon/huntingknife/idagger/steel,
 /obj/item/rogueweapon/huntingknife/idagger/steel,
@@ -1833,10 +1981,15 @@
 /obj/structure/mineral_door/wood/deadbolt,
 /turf/open/floor/rogue/herringbone,
 /area/rogue/indoors)
+"xX" = (
+/obj/structure/rack/rogue,
+/obj/item/rogueweapon/stoneaxe,
+/turf/open/floor/rogue/dirt,
+/area/rogue/outdoors/bog)
 "yy" = (
 /obj/structure/table/wood{
-	icon_state = "tablewood2";
-	dir = 10
+	dir = 10;
+	icon_state = "tablewood2"
 	},
 /obj/item/gun/ballistic/revolver/grenadelauncher/bow,
 /obj/item/gun/ballistic/revolver/grenadelauncher/bow,
@@ -1866,8 +2019,8 @@
 /area/rogue/outdoors/woods)
 "Am" = (
 /obj/structure/table/wood{
-	icon_state = "largetable";
-	dir = 10
+	dir = 10;
+	icon_state = "largetable"
 	},
 /turf/open/floor/rogue/hexstone,
 /area/rogue/indoors)
@@ -1893,16 +2046,27 @@
 "AU" = (
 /turf/closed/mineral/rogue/bedrock,
 /area/rogue/outdoors)
+"AW" = (
+/turf/open/water/swamp/deep,
+/area/rogue/outdoors/bog)
 "Ba" = (
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue/indoors)
 "BM" = (
 /obj/structure/mineral_door/wood/deadbolt{
-	icon_state = "wooddir";
-	dir = 8
+	dir = 8;
+	icon_state = "wooddir"
 	},
 /turf/open/floor/rogue/herringbone,
 /area/rogue/indoors)
+"BN" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/rogue/twig,
+/area/rogue/indoors)
+"BU" = (
+/obj/structure/flora/roguetree,
+/turf/open/floor/rogue/dirt,
+/area/rogue/outdoors/bog)
 "BY" = (
 /obj/effect/landmark/mapGenerator/rogue/forest{
 	endTurfX = 128;
@@ -1910,6 +2074,15 @@
 	},
 /turf/closed/mineral/rogue/bedrock,
 /area/rogue/outdoors/woods)
+"CL" = (
+/obj/effect/decal/cleanable/blood/gibs{
+	layer = 200
+	},
+/obj/structure/table/wood{
+	icon_state = "tablewood1"
+	},
+/turf/open/floor/rogue/dirt,
+/area/rogue/outdoors/bog)
 "CM" = (
 /obj/effect/landmark/vteleport,
 /obj/machinery/light/rogue/wallfire/candle/blue/r,
@@ -1923,8 +2096,8 @@
 /area/rogue)
 "Eq" = (
 /obj/structure/table/wood{
-	icon_state = "tablewood2";
-	dir = 10
+	dir = 10;
+	icon_state = "tablewood2"
 	},
 /obj/item/rogueweapon/huntingknife/idagger/silver,
 /obj/item/rogueweapon/huntingknife/idagger/silver,
@@ -1932,17 +2105,35 @@
 /obj/item/rogueweapon/huntingknife/idagger/silver,
 /turf/open/floor/rogue/cobble,
 /area/rogue)
+"EM" = (
+/obj/machinery/light/rogue/firebowl/standing,
+/turf/closed/mineral/rogue/bedrock,
+/area/rogue/outdoors/bog)
 "FJ" = (
 /obj/structure/fluff/railing/fence{
-	icon_state = "fence";
-	dir = 4
+	dir = 4;
+	icon_state = "fence"
 	},
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors/woods)
+"FN" = (
+/obj/structure/bed/rogue/shit{
+	name = "makeshift bed"
+	},
+/turf/open/floor/rogue/dirt/road,
+/area/rogue/outdoors/bog)
 "FR" = (
 /obj/effect/landmark/start/bandit,
 /turf/open/floor/rogue/herringbone,
 /area/rogue/indoors)
+"FT" = (
+/obj/item/flashlight/flare/torch,
+/obj/item/flashlight/flare/torch,
+/obj/structure/rack/rogue,
+/obj/item/flashlight/flare/torch,
+/obj/item/flashlight/flare/torch,
+/turf/open/floor/rogue/dirt,
+/area/rogue/outdoors/bog)
 "Gg" = (
 /obj/effect/landmark/hellspawn,
 /turf/open/lava,
@@ -1968,6 +2159,10 @@
 /obj/structure/closet/crate/coffin/vampire,
 /turf/open/floor/rogue/blocks/paving,
 /area/rogue/indoors)
+"GR" = (
+/obj/item/grown/log/tree/small,
+/turf/open/floor/rogue/dirt,
+/area/rogue/outdoors/bog)
 "GX" = (
 /obj/structure/closet/crate/chest,
 /obj/item/rope/chain,
@@ -1995,6 +2190,14 @@
 "Iw" = (
 /turf/closed/mineral/rogue/bedrock,
 /area/rogue/outdoors/woods)
+"IL" = (
+/obj/structure/fluff/railing/fence{
+	dir = 8;
+	icon_state = "fence"
+	},
+/obj/machinery/light/rogue/firebowl/standing,
+/turf/open/floor/rogue/dirt,
+/area/rogue/outdoors/bog)
 "IY" = (
 /obj/effect/landmark/events/testportal{
 	aportalloc = "spidercave"
@@ -2003,22 +2206,29 @@
 /area/rogue)
 "Jo" = (
 /obj/structure/fluff/railing/fence{
-	icon_state = "fence";
-	dir = 8
+	dir = 8;
+	icon_state = "fence"
 	},
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors/woods)
 "Jp" = (
 /obj/structure/table/wood{
-	icon_state = "tablewood2";
-	dir = 10
+	dir = 10;
+	icon_state = "tablewood2"
 	},
 /turf/open/floor/rogue/cobble,
 /area/rogue)
+"Jv" = (
+/obj/structure/bed/rogue/shit{
+	name = "makeshift bed"
+	},
+/obj/item/reagent_containers/food/snacks/smallrat,
+/turf/open/floor/rogue/dirt,
+/area/rogue/outdoors/bog)
 "JJ" = (
 /obj/structure/table/wood{
-	icon_state = "tablewood2";
-	dir = 10
+	dir = 10;
+	icon_state = "tablewood2"
 	},
 /obj/item/rogueweapon/pick,
 /obj/item/rogueweapon/pick,
@@ -2034,10 +2244,26 @@
 /obj/item/natural/feather,
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors)
+"Kb" = (
+/obj/structure/fluff/railing/fence{
+	dir = 4;
+	icon_state = "fence"
+	},
+/turf/open/floor/rogue/dirt,
+/area/rogue/outdoors/bog)
 "Kd" = (
 /obj/structure/fluff/grindwheel,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors)
+"KN" = (
+/obj/effect/decal/remains/wolf,
+/turf/open/floor/rogue/dirt,
+/area/rogue/outdoors/bog)
+"KT" = (
+/obj/structure/flora/roguetree/burnt,
+/obj/structure/flora/roguegrass/water/reeds,
+/turf/open/water/swamp,
+/area/rogue/outdoors/bog)
 "Le" = (
 /obj/effect/landmark/events/testportal{
 	aportalloc = "bog"
@@ -2056,14 +2282,17 @@
 /area/rogue)
 "LE" = (
 /obj/structure/table/wood{
-	icon_state = "tablewood2";
-	dir = 10
+	dir = 10;
+	icon_state = "tablewood2"
 	},
 /obj/item/rogueweapon/spear/billhook,
 /obj/item/rogueweapon/spear/billhook,
 /obj/item/rogueweapon/spear/billhook,
 /turf/open/floor/rogue/cobble,
 /area/rogue)
+"LI" = (
+/turf/closed/mineral/rogue/bedrock,
+/area/rogue/outdoors/bog)
 "Ms" = (
 /obj/docking_port/stationary{
 	dir = 1;
@@ -2094,20 +2323,42 @@
 "Oc" = (
 /obj/structure/fluff/railing/fence,
 /obj/structure/fluff/railing/fence{
-	icon_state = "fence";
-	dir = 8
+	dir = 8;
+	icon_state = "fence"
 	},
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors/woods)
+"Oh" = (
+/obj/structure/bars,
+/turf/open/floor/rogue/dirt,
+/area/rogue/outdoors/bog)
 "OQ" = (
 /obj/machinery/light/rogue/firebowl/standing,
 /turf/open/floor/rogue/tile{
 	icon_state = "chess"
 	},
 /area/rogue/indoors)
+"Pg" = (
+/obj/machinery/light/rogue/firebowl/standing,
+/obj/structure/fluff/railing/fence{
+	dir = 4;
+	icon_state = "fence"
+	},
+/turf/open/floor/rogue/dirt,
+/area/rogue/outdoors/bog)
 "Ph" = (
 /turf/open/floor/rogue/cobble,
 /area/rogue/outdoors)
+"PY" = (
+/turf/closed/wall/mineral/rogue/tent,
+/area/rogue/indoors)
+"Qb" = (
+/obj/item/reagent_containers/glass/cup/skull,
+/obj/structure/table/wood{
+	icon_state = "tablewood1"
+	},
+/turf/open/floor/rogue/dirt,
+/area/rogue/outdoors/bog)
 "Qv" = (
 /obj/structure/table/wood{
 	icon_state = "longtable"
@@ -2120,6 +2371,16 @@
 /obj/item/candle/skull/lit,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors/woods)
+"QI" = (
+/obj/item/reagent_containers/glass/bowl,
+/obj/item/reagent_containers/glass/bowl,
+/obj/item/reagent_containers/glass/bowl,
+/obj/item/reagent_containers/glass/bowl,
+/obj/structure/table/wood{
+	icon_state = "tablewood1"
+	},
+/turf/open/floor/rogue/dirt,
+/area/rogue/outdoors/bog)
 "QP" = (
 /obj/machinery/light/rogue/oven/south,
 /turf/open/floor/rogue/tile{
@@ -2143,8 +2404,8 @@
 	lockid = "bandit"
 	},
 /turf/open/floor/rogue/ruinedwood{
-	icon_state = "vertw";
-	dir = 1
+	dir = 1;
+	icon_state = "vertw"
 	},
 /area/rogue/indoors)
 "Rw" = (
@@ -2169,8 +2430,8 @@
 /area/start)
 "Se" = (
 /obj/structure/table/wood{
-	icon_state = "tablewood1";
-	dir = 1
+	dir = 1;
+	icon_state = "tablewood1"
 	},
 /obj/item/candle/skull/lit,
 /turf/open/floor/rogue/hexstone,
@@ -2187,6 +2448,10 @@
 /obj/machinery/light/rogue/firebowl/standing,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue)
+"SZ" = (
+/obj/structure/fluff/railing/fence,
+/turf/open/floor/rogue/dirt,
+/area/rogue/outdoors/bog)
 "Te" = (
 /turf/open/floor/rogue/dirt,
 /area/rogue/outdoors/woods)
@@ -2194,34 +2459,62 @@
 /obj/effect/landmark/start/vampirespawn,
 /turf/open/floor/rogue/blocks/paving,
 /area/rogue/indoors)
+"Tp" = (
+/obj/item/rogueore/gold,
+/obj/item/reagent_containers/powder/moondust,
+/turf/open/floor/rogue/dirt/road,
+/area/rogue/indoors)
 "TD" = (
 /obj/structure/table/wood{
-	icon_state = "longtable";
-	dir = 1
+	dir = 1;
+	icon_state = "longtable"
 	},
 /obj/item/paper/scroll,
 /turf/open/floor/rogue/herringbone,
 /area/rogue/indoors)
+"Uk" = (
+/obj/structure/fluff/railing/fence{
+	dir = 8;
+	icon_state = "fence"
+	},
+/turf/open/floor/rogue/dirt,
+/area/rogue/outdoors/bog)
 "Ut" = (
 /obj/effect/proc_holder/spell/invoked/heal,
 /obj/structure/table/wood{
-	icon_state = "tablewood2";
-	dir = 10
+	dir = 10;
+	icon_state = "tablewood2"
 	},
 /obj/item/rogueweapon/mace/cudgel,
 /turf/open/floor/rogue/cobble,
 /area/rogue)
+"UH" = (
+/obj/effect/decal/cleanable/blood,
+/obj/structure/fluff/railing/fence{
+	dir = 4;
+	icon_state = "fence"
+	},
+/turf/open/floor/rogue/dirt,
+/area/rogue/outdoors/bog)
+"UX" = (
+/obj/structure/fermenting_barrel/water,
+/turf/open/floor/rogue/dirt,
+/area/rogue/outdoors/bog)
+"Vb" = (
+/obj/effect/decal/remains/wolf,
+/turf/open/floor/rogue/dirt/road,
+/area/rogue/indoors)
 "Ve" = (
 /obj/structure/table/wood{
-	icon_state = "largetable_mid";
-	dir = 1
+	dir = 1;
+	icon_state = "largetable_mid"
 	},
 /turf/open/floor/rogue/hexstone,
 /area/rogue/indoors)
 "Vh" = (
 /obj/structure/table/wood{
-	icon_state = "tablewood2";
-	dir = 10
+	dir = 10;
+	icon_state = "tablewood2"
 	},
 /obj/item/quiver/arrows,
 /obj/item/quiver/arrows,
@@ -2231,6 +2524,10 @@
 /obj/item/quiver/arrows,
 /turf/open/floor/rogue/dirt,
 /area/rogue/outdoors)
+"Vi" = (
+/obj/machinery/light/rogue/firebowl/standing,
+/turf/open/floor/rogue/dirt,
+/area/rogue/outdoors/bog)
 "Vl" = (
 /obj/structure/fluff/wallclock/l,
 /turf/open/floor/rogue/ruinedwood,
@@ -2241,6 +2538,15 @@
 	icon_state = "weird1"
 	},
 /area/rogue/indoors)
+"Vw" = (
+/obj/effect/decal/cleanable/blood/gibs/body{
+	layer = 200
+	},
+/obj/structure/table/wood{
+	icon_state = "tablewood1"
+	},
+/turf/open/floor/rogue/dirt,
+/area/rogue/outdoors/bog)
 "Vz" = (
 /turf/closed/indestructible/splashscreen,
 /area/start)
@@ -2259,6 +2565,15 @@
 /obj/machinery/light/rogue/campfire,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors/woods)
+"Wq" = (
+/turf/open/water/swamp,
+/area/rogue/outdoors/bog)
+"Wu" = (
+/obj/structure/fluff/walldeco/chains{
+	pixel_y = 9
+	},
+/turf/open/floor/rogue/dirt,
+/area/rogue/outdoors/bog)
 "WB" = (
 /turf/closed/wall/mineral/rogue/craftstone,
 /area/rogue/indoors)
@@ -2272,30 +2587,39 @@
 "Xk" = (
 /obj/structure/fluff/railing/fence,
 /obj/structure/fluff/railing/fence{
-	icon_state = "fence";
-	dir = 4
+	dir = 4;
+	icon_state = "fence"
 	},
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors/woods)
 "Xp" = (
 /obj/structure/table/wood{
-	icon_state = "largetable";
-	dir = 5
+	dir = 5;
+	icon_state = "largetable"
 	},
 /obj/item/candle/skull/lit,
 /turf/open/floor/rogue/hexstone,
 /area/rogue/indoors)
+"XB" = (
+/obj/structure/flora/roguetree/stump,
+/obj/item/flashlight/flare/torch,
+/turf/open/floor/rogue/dirt,
+/area/rogue/outdoors/bog)
 "XC" = (
 /obj/effect/proc_holder/spell/invoked/heal,
 /turf/open/floor/rogue/cobble,
 /area/rogue/outdoors)
 "XV" = (
 /obj/structure/mineral_door/wood/deadbolt{
-	icon_state = "wooddir";
-	dir = 1
+	dir = 1;
+	icon_state = "wooddir"
 	},
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors/woods)
+"Ya" = (
+/obj/item/natural/rock,
+/turf/open/floor/rogue/dirt,
+/area/rogue/outdoors/bog)
 "Yk" = (
 /obj/item/rogueweapon/pick,
 /turf/open/floor/rogue/dirt/road,
@@ -2313,11 +2637,15 @@
 /area/rogue/outdoors/woods)
 "YJ" = (
 /obj/structure/chair/wood/rogue{
-	icon_state = "chair2";
-	dir = 8
+	dir = 8;
+	icon_state = "chair2"
 	},
 /turf/open/floor/rogue/dirt/road,
 /area/rogue)
+"YQ" = (
+/obj/item/reagent_containers/food/snacks/rogue/meat/steak,
+/turf/open/floor/rogue/dirt,
+/area/rogue/outdoors/bog)
 "YS" = (
 /obj/structure/closet/crate/roguecloset,
 /obj/item/reagent_containers/food/snacks/grown/rogue/pipeweeddry,
@@ -12683,49 +13011,49 @@ rQ
 rQ
 rQ
 rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
+LI
+LI
+LI
+LI
+LI
+LI
+LI
+LI
+LI
+LI
+LI
+LI
+LI
+LI
+LI
+LI
+LI
+EM
+LI
+LI
+LI
+LI
+LI
+LI
+LI
+LI
+LI
+LI
+LI
+LI
+LI
+LI
+LI
+LI
+LI
+LI
+LI
+LI
+LI
+LI
+LI
+LI
+LI
 "}
 (81,1,1) = {"
 rQ
@@ -12813,49 +13141,49 @@ rQ
 rQ
 rQ
 rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
+LI
+BU
+BU
+BU
+BU
+BU
+BU
+BU
+BU
+BU
+BU
+BU
+BU
+BU
+BU
+BU
+BU
+BU
+BU
+BU
+BU
+BU
+BU
+BU
+BU
+BU
+BU
+BU
+BU
+BU
+BU
+BU
+BU
+BU
+BU
+BU
+BU
+BU
+BU
+BU
+BU
+BU
+LI
 "}
 (82,1,1) = {"
 rQ
@@ -12943,49 +13271,49 @@ rQ
 rQ
 rQ
 rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
+LI
+BU
+BU
+BU
+BU
+BU
+BU
+rc
+wp
+wp
+wp
+rc
+rc
+BU
+BU
+BU
+BU
+rc
+rc
+rc
+rc
+rc
+rc
+rc
+rc
+rc
+rc
+rc
+rc
+rc
+Ya
+rc
+rc
+rc
+wp
+wp
+rc
+BU
+BU
+BU
+BU
+BU
+LI
 "}
 (83,1,1) = {"
 rQ
@@ -13073,49 +13401,49 @@ rQ
 rQ
 rQ
 rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
+LI
+BU
+BU
+BU
+BU
+BU
+BU
+rc
+rc
+rc
+rc
+rc
+rc
+rc
+rc
+rc
+tM
+rc
+rc
+rc
+rc
+rc
+Wq
+gr
+Wq
+rc
+rc
+rc
+rc
+rc
+rc
+rc
+rc
+rc
+rc
+rc
+wp
+rc
+BU
+BU
+BU
+BU
+LI
 "}
 (84,1,1) = {"
 rQ
@@ -13203,49 +13531,49 @@ rQ
 rQ
 rQ
 rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
+LI
+BU
+BU
+BU
+BU
+rc
+rc
+rc
+rc
+rc
+rc
+rc
+rc
+rc
+rc
+rc
+rc
+rc
+rc
+rc
+rc
+rc
+gr
+gr
+gr
+rc
+rc
+rc
+rc
+rc
+rc
+rc
+rc
+rc
+rc
+rc
+rc
+rc
+rc
+BU
+BU
+BU
+LI
 "}
 (85,1,1) = {"
 rQ
@@ -13333,49 +13661,49 @@ rQ
 rQ
 rQ
 rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
+LI
+BU
+BU
+BU
+rc
+rc
+rc
+rc
+rc
+rc
+rc
+rc
+rc
+rc
+rc
+rc
+rc
+rc
+rc
+rc
+rc
+rc
+Wq
+KT
+gr
+Wq
+rc
+rc
+rc
+rc
+rc
+BU
+BU
+rc
+rc
+rc
+rc
+rc
+rc
+BU
+BU
+BU
+LI
 "}
 (86,1,1) = {"
 rQ
@@ -13463,49 +13791,49 @@ rQ
 rQ
 rQ
 rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
+LI
+BU
+BU
+rc
+rc
+rc
+rc
+rc
+rc
+rc
+rc
+rc
+BU
+rc
+rc
+rc
+Ya
+rc
+rc
+rc
+rc
+rc
+rc
+Wq
+Wq
+Wq
+rc
+rc
+rc
+rc
+rc
+BU
+BU
+BU
+Wq
+Wq
+rc
+rc
+rc
+rc
+BU
+BU
+LI
 "}
 (87,1,1) = {"
 rQ
@@ -13593,49 +13921,49 @@ rQ
 rQ
 rQ
 rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
+LI
+BU
+rc
+rc
+rc
+rc
+BU
+BU
+rc
+rc
+rc
+BU
+BU
+BU
+rc
+rc
+rc
+rc
+Wq
+rc
+rc
+rc
+Wq
+gr
+gr
+Wq
+rc
+rc
+rc
+rc
+rc
+rc
+BU
+Wq
+gr
+gr
+Wq
+rc
+rc
+rc
+BU
+BU
+LI
 "}
 (88,1,1) = {"
 rQ
@@ -13723,49 +14051,49 @@ rQ
 rQ
 rQ
 rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
+LI
+BU
+BU
+rc
+rc
+rc
+BU
+BU
+rc
+rc
+BU
+BU
+BU
+BU
+rc
+rc
+rc
+rc
+Wq
+rc
+rc
+Wq
+Wq
+KT
+gr
+gI
+Wq
+rc
+rc
+pz
+rc
+rc
+Wq
+gr
+gr
+sf
+Wq
+rc
+rc
+rc
+rc
+BU
+LI
 "}
 (89,1,1) = {"
 rQ
@@ -13853,49 +14181,49 @@ rQ
 rQ
 rQ
 rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
+LI
+BU
+BU
+rc
+rc
+rc
+rc
+rc
+rc
+rc
+BU
+BU
+BU
+rc
+rc
+rc
+rc
+pz
+rc
+rc
+rc
+Wq
+vu
+gr
+gr
+Wq
+Wq
+rc
+rc
+rc
+rc
+rc
+Wq
+Wq
+gr
+gr
+gr
+Wq
+rc
+rc
+rc
+BU
+LI
 "}
 (90,1,1) = {"
 rQ
@@ -13983,49 +14311,49 @@ rQ
 rQ
 rQ
 rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
+LI
+BU
+BU
+rc
+rc
+rc
+rc
+rc
+rc
+rc
+rc
+BU
+BU
+rc
+rc
+rc
+rc
+rc
+rc
+rc
+rc
+rc
+rc
+Wq
+Wq
+rc
+rc
+wp
+rc
+tM
+rc
+rc
+rc
+rc
+YQ
+Wq
+Wq
+Wq
+rc
+rc
+rc
+BU
+LI
 "}
 (91,1,1) = {"
 rQ
@@ -14113,49 +14441,49 @@ rQ
 rQ
 rQ
 rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
+LI
+BU
+BU
+rc
+rc
+rc
+rc
+Wq
+Wq
+Wq
+rc
+rc
+rc
+pz
+rc
+wp
+rc
+rc
+rc
+rc
+wp
+rc
+rc
+rc
+rc
+rc
+wp
+wp
+rc
+tM
+tM
+rc
+wp
+rc
+rc
+rc
+rc
+rc
+rc
+rc
+rc
+BU
+LI
 "}
 (92,1,1) = {"
 rQ
@@ -14243,49 +14571,49 @@ rQ
 rQ
 rQ
 rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
+LI
+BU
+BU
+rc
+rc
+Wq
+Wq
+Wq
+gr
+Wq
+vu
+rc
+rc
+rc
+wp
+wp
+XB
+Vi
+rc
+wp
+wp
+wp
+rc
+rc
+rc
+rc
+wp
+wp
+rc
+rc
+wp
+wp
+wp
+wp
+rc
+rc
+rc
+rc
+rc
+rc
+rc
+BU
+LI
 "}
 (93,1,1) = {"
 rQ
@@ -14373,49 +14701,49 @@ rQ
 rQ
 rQ
 rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
+LI
+BU
+rc
+rc
+rc
+Wq
+Wq
+gr
+KT
+gr
+Wq
+rc
+rc
+KN
+rc
+rc
+rc
+ru
+rc
+wp
+rc
+UH
+Kb
+Kb
+Kb
+Kb
+Pg
+rc
+rc
+rc
+rc
+rc
+rc
+rc
+rc
+rc
+rc
+rc
+rc
+rc
+rc
+BU
+LI
 "}
 (94,1,1) = {"
 rQ
@@ -14503,49 +14831,49 @@ rQ
 rQ
 rQ
 rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
+LI
+BU
+rc
+rc
+rc
+Wq
+Wq
+gr
+gr
+gr
+Wq
+rc
+rc
+pg
+PY
+PY
+PY
+pg
+rc
+rc
+SZ
+mP
+rc
+rc
+rc
+rc
+Oh
+Oh
+Oh
+Oh
+Oh
+Oh
+rc
+rc
+pz
+rc
+rc
+rc
+rc
+rc
+rc
+BU
+LI
 "}
 (95,1,1) = {"
 rQ
@@ -14633,49 +14961,49 @@ rQ
 rQ
 rQ
 rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
+LI
+BU
+rc
+rc
+rc
+rc
+Wq
+Wq
+gr
+Wq
+Wq
+rc
+BU
+PY
+wU
+ub
+Yt
+PY
+wp
+rc
+SZ
+rc
+ru
+rc
+rc
+Wq
+Oh
+rc
+rc
+rc
+ru
+Oh
+rc
+rc
+rc
+rc
+rc
+rc
+rc
+rc
+rc
+BU
+LI
 "}
 (96,1,1) = {"
 rQ
@@ -14763,49 +15091,49 @@ rQ
 rQ
 rQ
 rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
+LI
+BU
+rc
+rc
+rc
+rc
+Wq
+Wq
+Wq
+Wq
+Wq
+BU
+BU
+PY
+Yt
+Yt
+Yt
+PY
+wp
+wp
+SZ
+Wq
+rc
+ru
+Wq
+rc
+Oh
+rc
+Wu
+rc
+Jv
+Oh
+rc
+Wq
+rc
+rc
+rc
+rc
+rc
+BU
+BU
+BU
+LI
 "}
 (97,1,1) = {"
 rQ
@@ -14893,49 +15221,49 @@ rQ
 rQ
 rQ
 rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
+LI
+BU
+BU
+rc
+rc
+rc
+Wq
+Wq
+Wq
+rc
+rc
+rc
+tM
+PY
+Yt
+Yt
+Yt
+BN
+wp
+wp
+tn
+rc
+rc
+rc
+rc
+rc
+tn
+rc
+rc
+Wq
+rc
+Oh
+rc
+rc
+rc
+wp
+wp
+rc
+rc
+BU
+BU
+BU
+LI
 "}
 (98,1,1) = {"
 rQ
@@ -15023,49 +15351,49 @@ rQ
 rQ
 rQ
 rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
+LI
+BU
+BU
+Wq
+Wq
+rc
+rc
+rc
+rc
+rc
+rc
+Wq
+rc
+PY
+Yt
+Yt
+Yt
+PY
+wp
+wp
+SZ
+rc
+rc
+ru
+Wq
+rc
+Oh
+rc
+mP
+rc
+rc
+Oh
+rc
+Vi
+rc
+rc
+wp
+rc
+rc
+BU
+BU
+BU
+LI
 "}
 (99,1,1) = {"
 rQ
@@ -15153,49 +15481,49 @@ rQ
 rQ
 rQ
 rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
+LI
+BU
+BU
+Wq
+gr
+gr
+gr
+Wq
+rc
+rc
+rc
+gr
+rc
+pg
+Tp
+Yt
+Vb
+PY
+wp
+rc
+SZ
+rc
+rc
+Wq
+rc
+rc
+Oh
+ru
+rc
+rc
+iU
+Oh
+rc
+rc
+rc
+wp
+rc
+rc
+rc
+BU
+BU
+BU
+LI
 "}
 (100,1,1) = {"
 rQ
@@ -15283,49 +15611,49 @@ rQ
 rQ
 rQ
 rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
+LI
+BU
+BU
+Wq
+KT
+gr
+gr
+Wq
+rc
+rc
+rc
+rc
+rc
+pg
+PY
+PY
+PY
+pg
+rc
+rc
+SZ
+rc
+rc
+rc
+ru
+rc
+Oh
+Oh
+Oh
+Oh
+Oh
+Oh
+rc
+rc
+wp
+wp
+rc
+rc
+rc
+BU
+BU
+BU
+LI
 "}
 (101,1,1) = {"
 rQ
@@ -15413,49 +15741,49 @@ rQ
 rQ
 rQ
 rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
+LI
+BU
+BU
+Wq
+gr
+gr
+Wq
+fc
+rc
+rc
+rc
+KN
+rc
+rc
+rc
+rc
+rc
+rc
+wp
+wp
+rc
+IL
+Uk
+Uk
+Uk
+Uk
+Uk
+uD
+rc
+rc
+rc
+rc
+rc
+pz
+rc
+rc
+rc
+Wq
+rc
+rc
+BU
+BU
+LI
 "}
 (102,1,1) = {"
 rQ
@@ -15543,49 +15871,49 @@ rQ
 rQ
 rQ
 rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
+LI
+BU
+rc
+Wq
+Wq
+Wq
+Wq
+rc
+rc
+rc
+fr
+wL
+wp
+wp
+pz
+ru
+rc
+rc
+wp
+pz
+rc
+wp
+wp
+wp
+rc
+FN
+wp
+FT
+rc
+rc
+rc
+rc
+rc
+rc
+rc
+rc
+Wq
+gr
+rc
+rc
+BU
+BU
+LI
 "}
 (103,1,1) = {"
 rQ
@@ -15673,49 +16001,49 @@ rQ
 rQ
 rQ
 rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
+LI
+BU
+rc
+rc
+rc
+rc
+rc
+rc
+rc
+nA
+re
+rc
+rc
+wp
+GR
+KN
+sB
+rc
+rc
+wp
+wp
+FN
+wp
+xX
+wp
+wp
+wp
+rc
+rc
+wp
+wp
+rc
+rc
+rc
+rc
+pz
+rc
+rc
+rc
+rc
+rc
+BU
+LI
 "}
 (104,1,1) = {"
 rQ
@@ -15803,49 +16131,49 @@ rQ
 rQ
 rQ
 rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
+LI
+BU
+rc
+rc
+rc
+rc
+rc
+rc
+rc
+rc
+rc
+rc
+rc
+wp
+kq
+uX
+kh
+UX
+wp
+wp
+wp
+wp
+wp
+ii
+wp
+wp
+FN
+wp
+rc
+wp
+wp
+rc
+rc
+wp
+BU
+BU
+rc
+rc
+rc
+rc
+rc
+BU
+LI
 "}
 (105,1,1) = {"
 rQ
@@ -15933,49 +16261,49 @@ rQ
 rQ
 rQ
 rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
+LI
+BU
+rc
+rc
+rc
+rc
+rc
+rc
+rc
+BU
+BU
+rc
+rc
+nA
+rc
+gx
+gx
+wp
+wp
+rc
+wp
+wp
+nA
+rc
+wp
+FN
+wp
+FN
+rc
+rc
+wp
+wp
+rc
+wp
+BU
+BU
+BU
+rc
+rc
+rc
+rc
+BU
+LI
 "}
 (106,1,1) = {"
 rQ
@@ -16063,49 +16391,49 @@ rQ
 rQ
 rQ
 rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
+LI
+BU
+rc
+rc
+Ya
+rc
+rc
+rc
+rc
+BU
+BU
+rc
+pz
+wp
+rc
+oc
+oc
+wp
+Qb
+wp
+wp
+wp
+rc
+rc
+wp
+ke
+pz
+rc
+rc
+rc
+wp
+wp
+rc
+rc
+rc
+BU
+rc
+rc
+rc
+rc
+rc
+BU
+LI
 "}
 (107,1,1) = {"
 rQ
@@ -16193,49 +16521,49 @@ rQ
 rQ
 rQ
 rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
+LI
+BU
+rc
+rc
+rc
+rc
+rc
+rc
+rc
+rc
+BU
+rc
+rc
+wp
+CL
+QI
+Vw
+wp
+Qb
+wp
+wp
+wp
+rc
+rc
+wp
+rc
+rc
+Vi
+rc
+rc
+rc
+rc
+rc
+rc
+rc
+rc
+rc
+rc
+rc
+rc
+rc
+BU
+LI
 "}
 (108,1,1) = {"
 rQ
@@ -16309,18 +16637,6 @@ rQ
 rQ
 rQ
 rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
 an
 rQ
 rQ
@@ -16335,37 +16651,49 @@ rQ
 rQ
 rQ
 rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
+LI
+BU
+rc
+rc
+rc
+rc
+rc
+rc
+rc
+rc
+BU
+rc
+rc
+rc
+rc
+fc
+ru
+rc
+iR
+wp
+wp
+wp
+wp
+wp
+wp
+rc
+wp
+rc
+rc
+rc
+BU
+BU
+rc
+rc
+rc
+rc
+rc
+Wq
+Wq
+rc
+rc
+BU
+LI
 "}
 (109,1,1) = {"
 rQ
@@ -16453,49 +16781,49 @@ rQ
 rQ
 rQ
 rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
+LI
+BU
+BU
+rc
+BU
+BU
+rc
+rc
+rc
+rc
+rc
+mP
+rc
+rc
+Vi
+rc
+rc
+rc
+rc
+rc
+wp
+wp
+wp
+rc
+rc
+rc
+wp
+rc
+BU
+BU
+BU
+rc
+rc
+rc
+rc
+rc
+Wq
+Wq
+Wq
+Wq
+Wq
+BU
+LI
 "}
 (110,1,1) = {"
 rQ
@@ -16583,49 +16911,49 @@ rQ
 rQ
 rQ
 rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
+LI
+BU
+BU
+rc
+BU
+BU
+rc
+rc
+rc
+rc
+rc
+rc
+rc
+rc
+rc
+rc
+rc
+rc
+rc
+rc
+wp
+wp
+wp
+rc
+Wq
+rc
+ru
+rc
+BU
+BU
+BU
+rc
+rc
+rc
+rc
+Wq
+gr
+gr
+Wq
+Wq
+Wq
+BU
+LI
 "}
 (111,1,1) = {"
 rQ
@@ -16713,49 +17041,49 @@ rQ
 rQ
 rQ
 rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
+LI
+BU
+BU
+rc
+rc
+rc
+rc
+rc
+rc
+rc
+rc
+rc
+rc
+rc
+rc
+BU
+rc
+rc
+rc
+wp
+wp
+wp
+wp
+rc
+rc
+rc
+Wq
+rc
+rc
+rc
+rc
+rc
+rc
+Wq
+Wq
+Wq
+gr
+AW
+Wq
+Wq
+Wq
+BU
+LI
 "}
 (112,1,1) = {"
 rQ
@@ -16843,49 +17171,49 @@ rQ
 rQ
 rQ
 rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
+LI
+BU
+BU
+rc
+rc
+rc
+rc
+rc
+Wq
+ec
+Wq
+vu
+rc
+rc
+rc
+tM
+rc
+rc
+rc
+rc
+rc
+rc
+wp
+rc
+rc
+rc
+rc
+rc
+rc
+rc
+rc
+rc
+Wq
+Wq
+gr
+gr
+AW
+uc
+AW
+Wq
+Wq
+BU
+LI
 "}
 (113,1,1) = {"
 rQ
@@ -16973,49 +17301,49 @@ rQ
 rQ
 rQ
 rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
+LI
+BU
+BU
+rc
+rc
+rc
+rc
+Wq
+Wq
+gr
+gr
+Wq
+rc
+rc
+rc
+rc
+rc
+rc
+rc
+rc
+rc
+Wq
+Wq
+rc
+rc
+rc
+rc
+rc
+Wq
+rc
+rc
+Wq
+Wq
+Wq
+AW
+AW
+AW
+AW
+AW
+Wq
+Wq
+BU
+LI
 "}
 (114,1,1) = {"
 rQ
@@ -17103,49 +17431,49 @@ rQ
 rQ
 rQ
 rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
+LI
+BU
+rc
+rc
+rc
+rc
+Wq
+Wq
+gr
+gr
+gr
+gr
+Wq
+rc
+rc
+rc
+rc
+rc
+rc
+rc
+rc
+rc
+gr
+Wq
+rc
+rc
+rc
+rc
+rc
+rc
+rc
+Wq
+Wq
+gI
+AW
+AW
+AW
+AW
+AW
+Wq
+Wq
+BU
+LI
 "}
 (115,1,1) = {"
 rQ
@@ -17233,49 +17561,49 @@ rQ
 rQ
 rQ
 rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
+LI
+BU
+rc
+rc
+rc
+Wq
+Wq
+gI
+AW
+AW
+AW
+Wq
+Wq
+Wq
+rc
+rc
+rc
+rc
+rc
+rc
+wp
+rc
+Wq
+Wq
+rc
+BU
+rc
+rc
+rc
+rc
+gr
+gr
+Wq
+Wq
+AW
+AW
+AW
+AW
+AW
+Wq
+Wq
+BU
+LI
 "}
 (116,1,1) = {"
 rQ
@@ -17363,49 +17691,49 @@ rQ
 rQ
 rQ
 rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
+LI
+BU
+rc
+rc
+Wq
+Wq
+Wq
+AW
+AW
+AW
+AW
+Wq
+Wq
+Wq
+rc
+rc
+pz
+rc
+rc
+rc
+wp
+wp
+rc
+rc
+BU
+BU
+rc
+rc
+Wq
+Wq
+Wq
+gr
+Wq
+Wq
+AW
+AW
+AW
+AW
+AW
+Wq
+Wq
+BU
+LI
 "}
 (117,1,1) = {"
 rQ
@@ -17493,49 +17821,49 @@ rQ
 rQ
 rQ
 rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
+LI
+BU
+rc
+rc
+Wq
+gr
+Wq
+AW
+AW
+AW
+AW
+AW
+AW
+Wq
+Wq
+rc
+rc
+rc
+rc
+rc
+wp
+rc
+rc
+rc
+rc
+rc
+rc
+rc
+Wq
+Wq
+gI
+Wq
+Wq
+AW
+AW
+uc
+AW
+AW
+Wq
+gI
+Wq
+BU
+LI
 "}
 (118,1,1) = {"
 rQ
@@ -17623,49 +17951,49 @@ rQ
 rQ
 rQ
 rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
+LI
+BU
+rc
+rc
+Wq
+gr
+AW
+AW
+AW
+uc
+AW
+AW
+AW
+Wq
+Wq
+rc
+rc
+rc
+rc
+rc
+rc
+wp
+rc
+rc
+rc
+rc
+rc
+Wq
+Wq
+Wq
+AW
+AW
+AW
+AW
+AW
+AW
+AW
+AW
+Wq
+Wq
+Wq
+BU
+LI
 "}
 (119,1,1) = {"
 rQ
@@ -17753,49 +18081,49 @@ rQ
 rQ
 rQ
 rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
+LI
+BU
+rc
+rc
+Wq
+Wq
+AW
+AW
+AW
+AW
+AW
+AW
+Wq
+gr
+Wq
+rc
+BU
+rc
+rc
+Wq
+rc
+wp
+rc
+rc
+rc
+rc
+rc
+Wq
+gr
+AW
+AW
+AW
+AW
+AW
+AW
+AW
+Wq
+Wq
+Wq
+Wq
+rc
+BU
+LI
 "}
 (120,1,1) = {"
 rQ
@@ -17883,49 +18211,49 @@ rQ
 rQ
 rQ
 rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
+LI
+BU
+BU
+rc
+Wq
+Wq
+Wq
+AW
+AW
+AW
+AW
+AW
+gr
+gr
+rc
+rc
+BU
+BU
+rc
+rc
+wp
+wp
+rc
+rc
+rc
+Wq
+rc
+gr
+gr
+AW
+AW
+uc
+AW
+AW
+AW
+AW
+Wq
+Wq
+Wq
+rc
+rc
+BU
+LI
 "}
 (121,1,1) = {"
 rQ
@@ -18013,49 +18341,49 @@ rQ
 rQ
 rQ
 rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
+LI
+BU
+BU
+rc
+rc
+Wq
+Wq
+Wq
+uc
+AW
+AW
+AW
+Wq
+Wq
+rc
+BU
+BU
+BU
+BU
+rc
+rc
+rc
+rc
+rc
+rc
+rc
+rc
+Wq
+Wq
+Wq
+AW
+AW
+AW
+AW
+AW
+uc
+Wq
+Wq
+rc
+rc
+rc
+BU
+LI
 "}
 (122,1,1) = {"
 rQ
@@ -18143,49 +18471,49 @@ rQ
 rQ
 rQ
 rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
+LI
+BU
+BU
+rc
+rc
+rc
+Wq
+gr
+AW
+AW
+Wq
+Wq
+Wq
+Wq
+rc
+BU
+BU
+BU
+BU
+rc
+wp
+wp
+rc
+rc
+rc
+rc
+rc
+YQ
+Wq
+Wq
+Wq
+Wq
+Wq
+AW
+AW
+Wq
+Wq
+Wq
+rc
+rc
+rc
+BU
+LI
 "}
 (123,1,1) = {"
 rQ
@@ -18273,49 +18601,49 @@ rQ
 rQ
 rQ
 rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
+LI
+BU
+BU
+rc
+rc
+rc
+Wq
+gr
+gr
+gr
+Wq
+Wq
+Wq
+rc
+rc
+rc
+BU
+KN
+rc
+rc
+wp
+wp
+wp
+rc
+rc
+rc
+rc
+rc
+rc
+Wq
+gr
+gr
+Wq
+Wq
+Wq
+Wq
+Wq
+Wq
+rc
+rc
+BU
+BU
+LI
 "}
 (124,1,1) = {"
 rQ
@@ -18403,49 +18731,49 @@ rQ
 rQ
 rQ
 rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
+LI
+BU
+BU
+rc
+BU
+rc
+rc
+Wq
+Wq
+Wq
+Wq
+rc
+rc
+rc
+rc
+rc
+rc
+rc
+rc
+rc
+wp
+wp
+wp
+rc
+rc
+rc
+rc
+rc
+rc
+Wq
+Wq
+gr
+gr
+Wq
+Wq
+Wq
+rc
+rc
+rc
+BU
+BU
+BU
+LI
 "}
 (125,1,1) = {"
 rQ
@@ -18533,49 +18861,49 @@ rQ
 rQ
 rQ
 rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
+LI
+BU
+BU
+BU
+BU
+rc
+rc
+rc
+rc
+rc
+rc
+rc
+rc
+rc
+rc
+rc
+rc
+rc
+rc
+Vi
+eV
+eV
+eV
+rc
+rc
+Ya
+rc
+rc
+rc
+rc
+rc
+rc
+rc
+rc
+rc
+rc
+rc
+rc
+BU
+BU
+BU
+BU
+LI
 "}
 (126,1,1) = {"
 tN
@@ -18663,49 +18991,49 @@ rQ
 rQ
 rQ
 rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
+LI
+BU
+BU
+BU
+BU
+BU
+BU
+BU
+BU
+BU
+BU
+BU
+BU
+BU
+BU
+BU
+BU
+BU
+BU
+BU
+BU
+BU
+BU
+BU
+BU
+BU
+BU
+BU
+BU
+BU
+BU
+BU
+BU
+BU
+BU
+BU
+BU
+BU
+BU
+BU
+BU
+BU
+LI
 "}
 (127,1,1) = {"
 wO
@@ -18793,49 +19121,49 @@ rQ
 rQ
 rQ
 rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
+LI
+LI
+LI
+LI
+LI
+LI
+LI
+LI
+LI
+LI
+LI
+LI
+LI
+LI
+LI
+LI
+LI
+LI
+LI
+LI
+LI
+LI
+LI
+LI
+LI
+LI
+LI
+LI
+LI
+LI
+LI
+LI
+LI
+LI
+LI
+LI
+LI
+LI
+LI
+LI
+LI
+LI
+LI
 "}
 (128,1,1) = {"
 yK
