@@ -267,9 +267,4 @@
 		SSdroning.kill_loop(ghost.client)
 		SSdroning.kill_droning(ghost.client)
 		ghost.remove_client_colour(/datum/client_colour/monochrome)
-
-	var/mob/dead/new_player/M = new /mob/dead/new_player()
-
-	M.key = ghost.key
-	if(ghost.client)
-		ghost.client.verbs -= GLOB.ghost_verbs
+	ghost.returntolobby()
