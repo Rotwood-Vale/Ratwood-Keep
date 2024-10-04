@@ -6,7 +6,7 @@
 	outfit = /datum/outfit/job/roguetown/mercenary/warscholar
 	category_tags = list(CTAG_MERCENARY)
 	maximum_possible_slots = 3
-	cmode_music = 'sound/music/WarScholar.ogg'
+	cmode_music = 'sound/music/combat_bandit_brigand.ogg'
 
 /datum/outfit/job/roguetown/mercenary/warscholar/pre_equip(mob/living/carbon/human/H)
 	..()
