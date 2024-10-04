@@ -148,10 +148,6 @@
 	cut_overlays()
 	if(chambered)
 		icon_state = "bow_ready"
-//		var/obj/item/I = chambered //temporarily disabled pending a better fix for the onmob sprite bug
-//		I.pixel_x = 0
-//		I.pixel_y = 0
-//		add_overlay(new /mutable_appearance(I))
 	if(ismob(loc))
 		var/mob/M = loc
 		M.update_inv_hands()
@@ -288,9 +284,9 @@
 					"sy" = -3,
 					"nx" = 3,
 					"ny" = -5,
-					"wx" = -5,
+					"wx" = -7,
 					"wy" = -5,
-					"ex" = 4,
+					"ex" = 2,
 					"ey" = -5,
 					"nturn" = 0,
 					"sturn" = 0,
@@ -334,10 +330,6 @@
 	cut_overlays()
 	if(chambered)
 		icon_state = "recurve_bow_ready"
-//		var/obj/item/I = chambered
-//		I.pixel_x = 16
-//		I.pixel_y = 16
-//		add_overlay(new /mutable_appearance(I))
 	if(ismob(loc))
 		var/mob/M = loc
 		M.update_inv_hands()
@@ -425,10 +417,6 @@
 	cut_overlays()
 	if(chambered)
 		icon_state = "longbow_ready"
-//		var/obj/item/I = chambered
-//		I.pixel_x = 16
-//		I.pixel_y = 16
-//		add_overlay(new /mutable_appearance(I))
 	if(ismob(loc))
 		var/mob/M = loc
 		M.update_inv_hands()
