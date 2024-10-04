@@ -234,54 +234,31 @@
 	invocation_type = "shout"
 	associated_skill = /datum/skill/magic/holy
 	antimagic_allowed = TRUE
-	charge_max = 60 SECONDS
+	charge_max = 90 SECONDS
 	miracle = TRUE
 	devotion_cost = 100
 	//explosion values
 	var/exp_heavy = 0
 	var/exp_light = 4
-	var/exp_flash = 16
+	var/exp_flash = 8
 
 /obj/effect/proc_holder/spell/invoked/solar_smite/cast(list/targets, mob/user = usr)
 	. = ..()
 	if(isliving(targets[1]))
 		var/mob/living/L = targets[1]
 		user.visible_message("<font color='yellow'>[user] points at [L]!</font>")
-		if(GLOB.tod == "night")
-			if(L.mob_biotypes & MOB_UNDEAD) //positive energy harms the undead
-				L.adjust_fire_stacks(12)
-				L.IgniteMob()
-				L.adjustFireLoss(60)
-				explosion(L, -1, 0, 2, exp_flash, 0, soundin = 'sound/misc/lava_death.ogg')
-				return TRUE
-			else
-				L.adjust_fire_stacks(8)
-				L.IgniteMob()
-				L.adjustFireLoss(40)
-				explosion(L, -1, 0, 2, exp_flash, 0, soundin = 'sound/misc/lava_death.ogg')
-				return TRUE
-		if(GLOB.tod == "dawn" || "dusk")
+		explosion(L, -1, exp_heavy, exp_light, 8, 0, soundin = 'sound/misc/lava_death.ogg')
+		L.adjust_fire_stacks(6)
+		L.IgniteMob()
+		L.adjustFireLoss(30)
+		if(istype(get_area(L), /area/rogue/indoors/town/church))
+			L.adjust_fire_stacks(9)
+			L.adjustFireLoss(50)
 			if(L.mob_biotypes & MOB_UNDEAD) //positive energy harms the undead
 				L.visible_message(span_danger("[L] is unmade by holy light!"), span_userdanger("I'm unmade by holy light!"))
-				explosion(L, -1, 0, 3, exp_flash, 0, soundin = 'sound/misc/lava_death.ogg')
 				L.gib()
 				return TRUE
-			else
-				L.adjust_fire_stacks(10)
-				L.IgniteMob()
-				L.adjustFireLoss(60)
-				explosion(L, -1, 0, 3, exp_flash, 0, soundin = 'sound/misc/lava_death.ogg')
-				return TRUE
-		else
-			if(L.mob_biotypes & MOB_UNDEAD) //positive energy harms the undead
-				L.visible_message(span_danger("[L] is unmade by holy light!"), span_userdanger("I'm unmade by holy light!"))
-				explosion(L, -1, exp_heavy, exp_light, exp_flash, 0, soundin = 'sound/misc/lava_death.ogg')
-				L.gib()
-				return TRUE
-			else
-				L.adjust_fire_stacks(12)
-				L.IgniteMob()
-				L.adjustFireLoss(80)
-			explosion(L, -1, exp_heavy, exp_light, exp_flash, 0, soundin = 'sound/misc/lava_death.ogg')
 			return TRUE
+		return TRUE
+	else
 		return FALSE
