@@ -273,3 +273,78 @@
 		return
 	return TRUE
 
+
+// Normal, non-openable window
+/datum/crafting_recipe/roguetown/turfs/roguewindow
+	name = "static glass window"
+	result = /obj/structure/roguewindow
+	reqs = list(/obj/item/grown/log/tree/small = 2, /obj/item/ingot/glass = 1)
+	skillcraft = /datum/skill/craft/carpentry
+	verbage_simple = "build"
+	verbage = "builds"
+	craftdiff = 3
+
+	/*
+	By the way, glass windows needing Masonry and Carpentry instead of Ceramics isn't an oversight.
+	The Mason and the Carpenter are the ones who will build the window itself from wood and
+	an already prepared pane of glass. The potter has nothing to do with this part of the process.
+	*/// - SunriseOYH
+
+/datum/crafting_recipe/roguetown/turfs/roguewindow/TurfCheck(mob/user, turf/T)
+	if(isclosedturf(T))
+		return
+	if(!istype(T, /turf/open/floor/rogue))
+		return
+	return TRUE
+
+// The windows you can open and close
+/datum/crafting_recipe/roguetown/turfs/roguewindowDynamic
+	name = "openable glass window"
+	result = /obj/structure/roguewindow/openclose
+	reqs = list(/obj/item/grown/log/tree/small = 2, /obj/item/ingot/glass = 1)
+	skillcraft = /datum/skill/craft/carpentry
+	verbage_simple = "build"
+	verbage = "builds"
+	craftdiff = 3
+
+/datum/crafting_recipe/roguetown/turfs/roguewindowDynamic/TurfCheck(mob/user, turf/T)
+	if(isclosedturf(T))
+		return
+	if(!istype(T, /turf/open/floor/rogue))
+		return
+	return TRUE
+
+// The 'windows' of the church that almost no one knows exists.
+/datum/crafting_recipe/roguetown/turfs/roguewindowstone
+	name = "static glass window"
+	result = /obj/structure/roguewindow/stained/silver
+	reqs = list(/obj/item/natural/stone = 2, /obj/item/ingot/glass = 1)
+	skillcraft = /datum/skill/craft/masonry
+	verbage_simple = "build"
+	verbage = "builds"
+	craftdiff = 3
+
+/datum/crafting_recipe/roguetown/turfs/roguewindowstone/TurfCheck(mob/user, turf/T)
+	if(isclosedturf(T))
+		return
+	if(!istype(T, /turf/open/floor/rogue))
+		return
+	return TRUE
+
+// Reinfored windows
+/datum/crafting_recipe/roguetown/turfs/roguewindowReinforced
+	name = "reinforced glass window"
+	result = /obj/structure/roguewindow/openclose/reinforced
+	reqs = list(/obj/item/grown/log/tree/small = 2, /obj/item/ingot/glass = 1, /obj/item/ingot/iron = 1)
+	skillcraft = /datum/skill/craft/carpentry // Not the best one, but the most suitable.
+	verbage_simple = "build"
+	verbage = "builds"
+	craftdiff = 3
+	
+/datum/crafting_recipe/roguetown/turfs/roguewindowReinforced/TurfCheck(mob/user, turf/T)
+	if(isclosedturf(T))
+		return
+	if(!istype(T, /turf/open/floor/rogue))
+		return
+	return TRUE
+

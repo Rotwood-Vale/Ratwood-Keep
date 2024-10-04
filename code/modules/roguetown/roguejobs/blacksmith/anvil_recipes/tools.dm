@@ -1,5 +1,12 @@
 
 // --------- IRON -----------
+
+/datum/anvil_recipe/tools/torch
+	name = "Glass Blowing Rod"
+	req_bar = /obj/item/ingot/iron
+	created_item = /obj/item/rogueweapon/blowRod
+	i_type = "Tools"
+
 /datum/anvil_recipe/tools/torch
 	name = "Torches 5x (+1 Coal)"
 	req_bar = /obj/item/ingot/iron

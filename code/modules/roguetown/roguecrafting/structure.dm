@@ -592,3 +592,12 @@
 	verbage = "builds"
 	skillcraft = /datum/skill/craft/masonry
 	craftdiff = 3
+
+
+/datum/crafting_recipe/roguetown/structure/ceramicswheel
+	name = "potter's wheel"
+	result = /obj/structure/fluff/ceramicswheel
+	reqs = list(/obj/item/natural/stone = 2, /obj/item/grown/log/tree/small = 2, /obj/item/roguegear = 1)
+	verbage_simple = "construct"
+	craftdiff = 2
+	verbage = "constructs"
