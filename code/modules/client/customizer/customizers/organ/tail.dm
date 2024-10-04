@@ -1,6 +1,7 @@
 /datum/customizer/organ/tail
 	name = "Tail"
 	abstract_type = /datum/customizer/organ/tail
+	allows_disabling = TRUE
 
 /datum/customizer_choice/organ/tail
 	name = "Tail"
@@ -59,6 +60,17 @@
 		/datum/sprite_accessory/tail/lizard/spikes,
 		)
 
+/datum/customizer/organ/tail/kobold
+	customizer_choices = list(/datum/customizer_choice/organ/tail/kobold)
+
+/datum/customizer_choice/organ/tail/kobold
+	name = "Kobold Tail"
+	organ_type = /obj/item/organ/tail/kobold
+	generic_random_pick = TRUE
+	sprite_accessories = list(
+		/datum/sprite_accessory/tail/lizard/kobold,
+		)
+
 /datum/customizer/organ/tail/axian
 	customizer_choices = list(/datum/customizer_choice/organ/tail/axian)
 
@@ -72,7 +84,6 @@
 
 /datum/customizer/organ/tail/tiefling
 	customizer_choices = list(/datum/customizer_choice/organ/tail/tiefling)
-	allows_disabling = FALSE
 
 /datum/customizer_choice/organ/tail/tiefling
 	name = "Tiefling Tail"
@@ -86,7 +97,6 @@
 
 /datum/customizer/organ/tail/demihuman
 	customizer_choices = list(/datum/customizer_choice/organ/tail/demihuman)
-	allows_disabling = TRUE
 
 /datum/customizer_choice/organ/tail/demihuman
 	name = "Half-Kinhuman Tail"
@@ -144,7 +154,6 @@
 
 /datum/customizer/organ/tail/anthro
 	customizer_choices = list(/datum/customizer_choice/organ/tail/anthro)
-	allows_disabling = TRUE
 	default_disabled = TRUE
 
 /datum/customizer_choice/organ/tail/anthro
