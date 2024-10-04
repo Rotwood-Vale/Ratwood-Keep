@@ -86,7 +86,7 @@
 	status = BODYPART_ROBOTIC
 	brute_reduction = 0
 	burn_reduction = 0
-	max_damage = 100
+	max_damage = 110
 	w_class = WEIGHT_CLASS_NORMAL
 	max_integrity = 350
 	sellprice = 30
