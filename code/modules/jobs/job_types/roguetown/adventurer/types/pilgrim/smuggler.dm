@@ -24,8 +24,7 @@
 	armor = /obj/item/clothing/suit/roguetown/armor/leather/vest/sailor
 	backl = /obj/item/storage/backpack/rogue/backpack
 	backr = /obj/item/storage/backpack/rogue/satchel
-	beltr = /obj/item/rogueweapon/huntingknife/idagger/iron
-	beltl = /obj/item/rogueweapon/huntingknife/idagger/iron
+	beltr = /obj/item/rogueweapon/huntingknife/idagger
 	backpack_contents = list(/obj/item/reagent_containers/powder/spice = 3, /obj/item/reagent_containers/glass/bottle/mercury = 1, /obj/item/reagent_containers/glass/bottle/rogue/poison = 1, /obj/item/reagent_containers/glass/bottle/rogue/healthpot = 1, /obj/item/reagent_containers/glass/bottle/rogue/manapot = 2,)
 	
 
