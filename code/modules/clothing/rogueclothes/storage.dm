@@ -189,7 +189,6 @@
 /obj/item/storage/belt/rogue/pouch/skit
 	name = "surgical pouch"
 	desc = "Emergency surgical pouch."
-	color =  COLOR_RED_LIGHT
 	icon_state = "pouch"
 	item_state = "pouch"
 	icon = 'icons/roguetown/clothing/storage.dmi'

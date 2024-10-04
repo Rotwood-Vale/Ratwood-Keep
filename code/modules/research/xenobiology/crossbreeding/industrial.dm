@@ -61,7 +61,7 @@ Industrial extracts:
 	colour = "orange"
 	effect_desc = ""
 	plasmarequired = 6
-	itempath = /obj/item/extinguisher /// /obj/item/lighter/slime
+	itempath = /obj/item/lighter/slime
 
 /obj/item/slimecross/industrial/purple
 	colour = "purple"

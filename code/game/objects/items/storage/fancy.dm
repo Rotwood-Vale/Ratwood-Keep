@@ -306,19 +306,19 @@
 /////////////
 
 /obj/item/storage/fancy/cigarettes/cigars
-	name = "zig case"
+	name = "\improper premium cigar case"
 	desc = ""
 	icon = 'icons/obj/cigarettes.dmi'
 	icon_state = "cigarcase"
 	w_class = WEIGHT_CLASS_NORMAL
 	icon_type = "premium cigar"
-	spawn_type = null
+	spawn_type = /obj/item/clothing/mask/cigarette/cigar
 
 /obj/item/storage/fancy/cigarettes/cigars/ComponentInitialize()
 	. = ..()
 	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
 	STR.max_items = 5
-	STR.set_holdable(list(/obj/item/clothing/mask/cigarette/rollie/nicotine, /obj/item/clothing/mask/cigarette/rollie/cannabis, /obj/item/clothing/mask/cigarette/rollie/shroom, /obj/item/clothing/mask/cigarette/rollie/dud))
+	STR.set_holdable(list(/obj/item/clothing/mask/cigarette/cigar))
 
 /obj/item/storage/fancy/cigarettes/cigars/update_icon()
 	cut_overlays()
@@ -326,7 +326,7 @@
 		icon_state = "[initial(icon_state)]_open"
 
 		var/cigar_position = 1 //generate sprites for cigars in the box
-		for(var/obj/item/clothing/mask/cigarette/smokes in contents)
+		for(var/obj/item/clothing/mask/cigarette/cigar/smokes in contents)
 			var/mutable_appearance/cigar_overlay = mutable_appearance(icon, "[smokes.icon_off]_[cigar_position]")
 			add_overlay(cigar_overlay)
 			cigar_position++
@@ -335,11 +335,10 @@
 		icon_state = "[initial(icon_state)]"
 
 /obj/item/storage/fancy/cigarettes/cigars/cohiba
-	name = "regal zig case"
-	desc = "you spent too much for this, or stole it."
+	name = "\improper Cohiba Robusto cigar case"
+	desc = ""
 	icon_state = "cohibacase"
-	spawn_type = /obj/item/clothing/mask/cigarette/rollie/shroom
-	sellprice = 600
+	spawn_type = /obj/item/clothing/mask/cigarette/cigar/cohiba
 
 /obj/item/storage/fancy/cigarettes/cigars/havana
 	name = "\improper premium Havanian cigar case"

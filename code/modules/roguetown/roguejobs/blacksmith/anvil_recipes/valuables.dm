@@ -14,20 +14,6 @@
 	created_item = /obj/item/roguestatue/silver
 	i_type = "Valuables"
 
-/datum/anvil_recipe/valuables/zcase
-	name = "Zig Case (+1 Cloth)"
-	req_bar = /obj/item/ingot/iron
-	additional_items = list(/obj/item/natural/cloth = 1)
-	created_item = /obj/item/storage/fancy/cigarettes/cigars
-	i_type = "Valuables"
-
-/datum/anvil_recipe/valuables/lightr
-	name = "Port-A-Flame (+1 Cloth +1 Fat)"
-	req_bar = /obj/item/ingot/iron
-	additional_items = list(/obj/item/natural/cloth = 1, /obj/item/reagent_containers/food/snacks/fat = 1)
-	created_item = /obj/item/lighter/paf
-	i_type = "Valuables"
-
 /datum/anvil_recipe/valuables/iron
 	name = "Statue"
 	req_bar = /obj/item/ingot/iron

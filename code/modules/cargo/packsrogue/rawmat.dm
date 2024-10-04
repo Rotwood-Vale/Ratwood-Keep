@@ -26,7 +26,7 @@
 
 /datum/supply_pack/rogue/rawmats/cloth
 	name = "Cloth"
-	cost = 15
+	cost = 10
 	contains = list(/obj/item/natural/cloth,
 	/obj/item/natural/cloth,
 	/obj/item/natural/cloth,

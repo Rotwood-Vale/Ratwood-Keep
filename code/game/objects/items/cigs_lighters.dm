@@ -382,7 +382,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	type_butt = /obj/item/cigbutt/roach
 	throw_speed = 0.5
 	item_state = "spliffoff"
-	smoketime = 120
+	smoketime = 120 // four minutes
 	chem_volume = 50
 	list_reagents = null
 	muteinmouth = FALSE
@@ -395,20 +395,12 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 /obj/item/clothing/mask/cigarette/rollie/nicotine
 	list_reagents = list(/datum/reagent/drug/nicotine = 30)
 
-/obj/item/clothing/mask/cigarette/rollie/shroom
-	list_reagents = list(/datum/reagent/medicine/shroomt = 30, /datum/reagent/water = 30)
-	color = COLOR_RED_LIGHT
-
 /obj/item/clothing/mask/cigarette/rollie/trippy
 	list_reagents = list(/datum/reagent/drug/nicotine = 15, /datum/reagent/drug/mushroomhallucinogen = 35)
+	starts_lit = TRUE
 
 /obj/item/clothing/mask/cigarette/rollie/cannabis
 	list_reagents = list(/datum/reagent/drug/space_drugs = 30)
-	color = COLOR_OLIVE
-
-/obj/item/clothing/mask/cigarette/rollie/dud
-	smoketime = 300
-	list_reagents = list(/datum/reagent/consumable/nutriment = 1, /datum/reagent/water = 30)
 
 /obj/item/clothing/mask/cigarette/rollie/mindbreaker
 	list_reagents = list(/datum/reagent/toxin/mindbreaker = 35, /datum/reagent/toxin/lipolicide = 15)
@@ -505,7 +497,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	item_state = "pipeoff"
 	icon_on = "pipeon"  //Note - these are in masks.dmi
 	icon_off = "pipeoff"
-	smoketime = 300
+	smoketime = 120
 	chem_volume = 100
 	list_reagents = null
 	var/packeditem = 0
@@ -711,7 +703,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		if(!lit)
 			set_lit(TRUE)
 			if(fancy)
-				to_chat(user, span_notice("Without even breaking stride, you flip open and light [src] in one smooth movement."))
+				user.visible_message(span_notice("Without even breaking stride, [user] flips open and lights [src] in one smooth movement."), span_notice("Without even breaking stride, you flip open and light [src] in one smooth movement."))
 			else
 				var/prot = FALSE
 				var/mob/living/carbon/human/H = user
@@ -734,7 +726,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		else
 			set_lit(FALSE)
 			if(fancy)
-				to_chat(user, span_notice("I quietly shut off [src] without even looking at what you're doing. Wow."))
+				user.visible_message(span_notice("I hear a quiet click, as [user] shuts off [src] without even looking at what [user.p_theyre()] doing. Wow."), span_notice("I quietly shut off [src] without even looking at what you're doing. Wow."))
 			else
 				user.visible_message(span_notice("[user] quietly shuts off [src]."), span_notice("I quietly shut off [src]."))
 	else
@@ -814,16 +806,14 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		. = span_notice("After some fiddling, [user] manages to light [A] with [src].")
 
 
-/obj/item/lighter/paf
-	name = "Port-A-Flame"
-	desc = "portable fire. in your hand. magic? not magic?"
+/obj/item/lighter/slime
+	name = "slime zippo"
+	desc = ""
 	icon_state = "slighter"
-	light_range = 4
-	light_power = 0.6
-	heat = 3000
-	light_color = LIGHT_COLOR_LAVENDER
+	heat = 3000 //Blue flame!
+	light_color = LIGHT_COLOR_CYAN
 	overlay_state = "slime"
-	grind_results = null
+	grind_results = list(/datum/reagent/iron = 1, /datum/reagent/fuel = 5, /datum/reagent/medicine/pyroxadone = 5)
 
 
 ///////////
