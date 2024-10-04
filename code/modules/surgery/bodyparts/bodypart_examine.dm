@@ -123,8 +123,7 @@
 			var/obj/item/belt = owner.get_item_by_slot(SLOT_BELT)
 			if(belt)
 				for(var/atom/A in belt.contents)
-					var/obj/item/reagent_containers/food/snacks/rogue/meat/salami/S = A
-					if(S)
+					if(istype(A, /obj/item/reagent_containers/food/snacks/rogue/meat/salami))
 						salami = TRUE
 						penisAdd = 1
 			if(owner.has_penis() || salami)
