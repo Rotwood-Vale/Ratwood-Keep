@@ -21,7 +21,7 @@
 	cast(targets,thearea,user)
 	after_cast(targets)
 
-/obj/effect/proc_holder/spell/targeted/area_teleport/before_cast(list/targets)
+/obj/effect/proc_holder/spell/targeted/area_teleport/before_cast(list/targets, recharge = TRUE, mob/user = usr) //if recharge is started is important for the trigger spells
 	var/A = null
 
 	if(!randomise_selection)

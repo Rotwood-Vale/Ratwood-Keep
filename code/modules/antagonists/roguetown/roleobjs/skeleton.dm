@@ -31,22 +31,3 @@
 
 /datum/antagonist/skeleton/roundend_report()
 	return
-	var/traitorwin = TRUE
-
-	if(objectives.len)//If the traitor had no objectives, don't need to process this.
-		for(var/datum/objective/objective in objectives)
-			objective.update_explanation_text()
-			if(!objective.check_completion())
-				traitorwin = FALSE
-
-	if(traitorwin)
-		//arriving gives them a tri anyway, all good
-//		owner.adjust_triumphs(1)
-		to_chat(owner.current, span_greentext("I've TRIUMPHED! Arcadia belongs to death!"))
-		if(owner.current)
-			owner.current.playsound_local(get_turf(owner.current), 'sound/misc/triumph.ogg', 100, FALSE, pressure_affected = FALSE)
-	else
-		to_chat(owner.current, span_redtext("I've FAILED to invade Arcadia!"))
-		if(owner.current)
-			owner.current.playsound_local(get_turf(owner.current), 'sound/misc/fail.ogg', 100, FALSE, pressure_affected = FALSE)
-

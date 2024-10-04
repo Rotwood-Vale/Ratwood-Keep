@@ -60,11 +60,11 @@
 		var/disttext
 		switch(distance)
 			if(0 to 20)
-				disttext = " within 20 meters"
+				disttext = " within 20 paces"
 			if(20 to 40)
-				disttext = " 20 to 40 meters away"
+				disttext = " 20 to 40 paces away"
 			if(40 to 80)
-				disttext = " 40 to 80 meters away"
+				disttext = " 40 to 80 paces away"
 			if(80 to 160)
 				disttext = " far"
 			else
@@ -103,12 +103,12 @@
 			if("Warden")
 				player.playsound_local(get_turf(player), 'modular_hearthstone/sound/items/bogguardhorn.ogg', 35, FALSE, pressure_affected = FALSE)
 				to_chat(player, span_warning("I hear the horn of the Wardens somewhere[disttext],[dirtext],[placetext]"))
-			if("Town Sheriff", "Watchman")
+			if("Marshall", "Watchman")
 				player.playsound_local(get_turf(player), 'modular_hearthstone/sound/items/watchhorn.ogg', 35, FALSE, pressure_affected = FALSE)
-				to_chat(player, span_warning("I hear the horn of the Watch somewhere[disttext],[dirtext],[placetext]]"))
+				to_chat(player, span_warning("I hear the horn of the Watch somewhere[disttext],[dirtext],[placetext]"))
 			if("Man at Arms", "Royal Guard")
 				player.playsound_local(get_turf(player), 'modular_hearthstone/sound/items/rghorn.ogg', 35, FALSE, pressure_affected = FALSE)
-				to_chat(player, span_warning("I hear the horn of the Royal Guard somewhere[disttext],[dirtext],[placetext]]"))
+				to_chat(player, span_warning("I hear the horn of the Royal Guard somewhere[disttext],[dirtext],[placetext]"))
 			else
 				player.playsound_local(get_turf(player), 'modular_hearthstone/sound/items/signalhorn.ogg', 35, FALSE, pressure_affected = FALSE)
 				to_chat(player, span_warning("I hear the signal horn somewhere[disttext], [dirtext],[placetext]"))

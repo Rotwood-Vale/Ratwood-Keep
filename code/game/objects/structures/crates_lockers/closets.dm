@@ -311,7 +311,7 @@
 		else
 			playsound(src, 'sound/foley/doors/lockrattle.ogg', 100)
 
-obj/structure/closet/proc/trypicklock(obj/item/I, mob/user)
+/obj/structure/closet/proc/trypicklock(obj/item/I, mob/user)
 	if(opened)
 		to_chat(user, "<span class='warning'>This cannot be picked while it is open.</span>")
 		return

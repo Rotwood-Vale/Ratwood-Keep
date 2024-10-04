@@ -39,15 +39,8 @@ GLOBAL_LIST_INIT(ghost_verbs, list(
 					if(target_job.same_job_respawn_delay)
 						// Store the current time for the player
 						GLOB.job_respawn_delays[src.ckey] = world.time + target_job.same_job_respawn_delay
-
-			for(var/obj/effect/landmark/underworld/A in shuffle(GLOB.landmarks_list))
-				var/mob/living/carbon/spirit/O = new /mob/living/carbon/spirit(A.loc)
-				O.livingname = mob.name
-				O.ckey = ckey
-				O.set_patron(prefs.selected_patron)
-				SSdroning.area_entered(get_area(O), O.client)
-				break
 			verbs -= GLOB.ghost_verbs
+			mob.returntolobby()
 		if("No")
 			usr << "You have second thoughts."
 

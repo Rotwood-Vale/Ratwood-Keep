@@ -59,7 +59,7 @@
 	lose_text = span_danger("I feel isolated from others.")
 	medical_record_text = "Patient is highly perceptive of and sensitive to social cues, or may possibly have ESP. Further testing needed."
 
-datum/quirk/fan_clown
+/datum/quirk/fan_clown
 	name = "Clown Fan"
 	desc = ""
 	value = 1
@@ -77,7 +77,7 @@ datum/quirk/fan_clown
 	)
 	H.equip_in_one_of_slots(B, slots , qdel_on_fail = TRUE)
 
-datum/quirk/fan_mime
+/datum/quirk/fan_mime
 	name = "Mime Fan"
 	desc = ""
 	value = 1

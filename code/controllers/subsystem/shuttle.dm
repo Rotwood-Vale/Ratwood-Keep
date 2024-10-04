@@ -188,7 +188,6 @@ SUBSYSTEM_DEF(shuttle)
 			resolve this problem by loading an emergency shuttle template \
 			manually, and then calling register() on the mobile docking port. \
 			Good luck.")
-			return
 		emergency = backup_shuttle
 	var/srd = CONFIG_GET(number/shuttle_refuel_delay)
 	if(world.time - SSticker.round_start_time < srd)
@@ -912,7 +911,7 @@ SUBSYSTEM_DEF(shuttle)
 
 /datum/controller/subsystem/shuttle/proc/autoEnd() //CIT CHANGE - allows shift to end without being a proper shuttle call?
 	if(EMERGENCY_IDLE_OR_RECALLED)
-		SSshuttle.emergency.request(silent = TRUE)
+		SSshuttle.emergency.request()
 		priority_announce("The last boat is leaving.", null, 'sound/misc/notice.ogg')
 //		log_game("Round end vote passed. Shuttle has been auto-called.")
 //		message_admins("Round end vote passed. Shuttle has been auto-called.")

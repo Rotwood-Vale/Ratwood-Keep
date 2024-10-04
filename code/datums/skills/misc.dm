@@ -87,6 +87,3 @@
 		"...as the years go by, the mantra becomes more and more opressive. Stitch, sew, cut ties, stitch, sew, thread the needle twice...",
 		"...you turn over the fabric, and within the two layers of the gown, you hide a secret. your stiched initials, for no one to ever lay eyes upon but you. A curse in some cultures. You never liked the bride much..."
 	)
-
-/datum/skill/misc/weaving
-	name = "Weaving"
