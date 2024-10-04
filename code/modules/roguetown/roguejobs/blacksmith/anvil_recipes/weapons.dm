@@ -406,3 +406,11 @@
 	created_item = /obj/item/rogueweapon/sword/long/exe
 	i_type = "Weapons"
 
+// BLACKSTEEL
+
+/datum/anvil_recipe/weapons/blackflamb
+	name = "Flamberge"
+	req_bar = /obj/item/ingot/blacksteel
+	additional_items = list(/obj/item/ingot/blacksteel, /obj/item/roguegem)
+	created_item = /obj/item/rogueweapon/sword/blacksteel/flamberge
+	craftdiff = 5
