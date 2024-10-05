@@ -141,7 +141,7 @@
 	var/chance2learn = (reader.STAINT*2 + (user.mind?.get_skill_level(/datum/skill/misc/reading)*2) + (user.mind?.get_skill_level(/datum/skill/magic/arcane)*2))
 	if(reader.has_status_effect(/datum/status_effect/buff/weed))
 		to_chat(user, span_smallgreen("Swampweed truly does open one's third eye to the secrets of the arcyne..."))
-		chance2learn += 5.5
+		chance2learn += 3.5
 	var/obj/effect/roguerune/rune = (locate(/obj/effect/roguerune) in range(1, user))
 	if(rune)
 		to_chat(user, span_cultsmall("The rune beneath my feet glows..."))
@@ -319,7 +319,7 @@
 	arcyne_potency = 25
 
 /obj/item/roguegem/amethyst
-	name = "amythorts"
+	name = "amythortz"
 	icon_state = "amethyst"
 	sellprice = 18
 	arcyne_potency = 25
@@ -352,7 +352,7 @@
 	resistance_flags = FIRE_PROOF | UNACIDABLE | ACID_PROOF
 	layer = SIGIL_LAYER
 	color = "#3A0B61"
-	var/spellbonus = 10
+	var/spellbonus = 15
 	var/scribe_damage = 10
 
 /obj/item/rogueweapon/huntingknife/idagger/silver/arcyne
@@ -396,7 +396,7 @@
 	if(do_after(user, crafttime, target = src))
 		playsound(loc, 'modular_azurepeak/sound/spellbooks/bladescrape.ogg', 100, TRUE)
 		user.visible_message(span_warning("[user] carves an arcyne rune with [user.p_their()] [src]!"), \
-							span_notice("I drag the blade in symbols and circles, until it snaps, a rune now carved before me in a deep manna blue."))
+							span_notice("I drag the blade in symbols and circles, until it snaps, a rune now carved before me in iridiscent purple."))
 		new rune_to_scribe(Turf)
 		qdel(src)
 	
