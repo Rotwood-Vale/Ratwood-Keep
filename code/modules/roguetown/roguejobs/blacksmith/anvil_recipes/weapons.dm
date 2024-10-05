@@ -412,5 +412,5 @@
 	name = "Flamberge"
 	req_bar = /obj/item/ingot/blacksteel
 	additional_items = list(/obj/item/ingot/blacksteel, /obj/item/roguegem)
-	created_item = /obj/item/rogueweapon/sword/blacksteel/flamberge
+	created_item = /obj/item/rogueweapon/sword/long/blackflamb
 	craftdiff = 5
