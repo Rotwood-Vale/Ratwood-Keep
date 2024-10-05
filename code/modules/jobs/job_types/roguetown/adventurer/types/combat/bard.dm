@@ -43,7 +43,7 @@
 			H.mind.adjust_skillrank(/datum/skill/misc/music, pick(4,5), TRUE)
 			head = /obj/item/clothing/head/roguetown/bardhat
 			r_hand = /obj/item/gun/ballistic/revolver/grenadelauncher/bow
-			l_hand = /obj/item/quiver/arrowshead = /obj/item/clothing/head/roguetown/bardhat
+			beltl = /obj/item/quiver/arrows
 			shoes = /obj/item/clothing/shoes/roguetown/boots
 			pants = /obj/item/clothing/under/roguetown/tights/random
 			shirt = /obj/item/clothing/suit/roguetown/shirt/shortshirt
@@ -55,7 +55,7 @@
 				cloak = /obj/item/clothing/cloak/raincloak/red
 			backl = /obj/item/storage/backpack/rogue/satchel
 			neck = /obj/item/storage/belt/rogue/pouch/coins/poor
-			beltl = /obj/item/rogueweapon/huntingknife/idagger
+			beltr = /obj/item/rogueweapon/huntingknife/idagger
 			H.change_stat("intelligence", 1)
 			H.change_stat("perception", 2)
 			H.change_stat("endurance", 1)
