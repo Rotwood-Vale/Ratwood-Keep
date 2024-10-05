@@ -350,7 +350,7 @@
 	var/atom/movable/AM = parent
 	for(var/obj/item/riding_offhand/O in user.contents)
 		if(O.parent != AM)
-			CRASH("RIDING OFFHAND ON WRONG MOB")
+			stack_trace("RIDING OFFHAND ON WRONG MOB")
 			continue
 		if(O.selfdeleting)
 			continue

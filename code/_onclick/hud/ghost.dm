@@ -35,15 +35,11 @@
 		if(G.client?.holder)
 			G.follow()
 	else
-		if(G.isinhell)
-			return
 		if(G.client)
-			if(G.client.holder)
-				if(istype(G, /mob/dead/observer/rogue/arcaneeye))
-					return
-				if(alert("Travel with the boatman?", "", "Yes", "No") == "Yes")
-
-					// Check if the player's job is hiv+
+			if(istype(G, /mob/dead/observer/rogue/arcaneeye))
+				return
+			if(alert("Travel with the boatman?", "", "Yes", "No") == "Yes")
+				if(G.mind)
 					var/datum/job/target_job = SSjob.GetJob(G.mind.assigned_role)
 					if(target_job)
 						if(target_job.job_reopens_slots_on_death)
@@ -52,22 +48,7 @@
 							// Store the current time for the player
 							GLOB.job_respawn_delays[G.ckey] = world.time + target_job.same_job_respawn_delay
 
-					G.client.verbs -= GLOB.ghost_verbs
-					G.returntolobby()
-
-				return
-
-//		var/take_triumph = FALSE
-		G.client.verbs -= GLOB.ghost_verbs
-		G.returntolobby()
-/*		if(world.time < G.ghostize_time + RESPAWNTIME)
-			var/ttime = round((G.ghostize_time + RESPAWNTIME - world.time) / 10)
-			var/list/thingsz = list("My connection to the world is still too strong.",\
-			"I'm not ready to leave...", "I'm not ready to travel with Charon.",\
-			"Don't make me leave!", "No... Not yet!", "Please, don't make me go yet...",\
-			"The shores are calling me but I cannot go...","My soul isn't ready yet...")
-			to_chat(G, span_warning("[pick(thingsz)] ([ttime])"))
-			return */ //Disabling this since the underworld will exist
+				G.returntolobby()
 
 /atom/movable/screen/ghost/reenter_corpse
 	name = "Reenter corpse"

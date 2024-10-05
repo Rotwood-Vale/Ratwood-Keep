@@ -8,6 +8,7 @@
 	maximum_possible_slots = 6
 	cmode_music = 'sound/music/combat_steppe.ogg'
 
+
 /datum/outfit/job/roguetown/mercenary/steppesman/pre_equip(mob/living/carbon/human/H)
 	..()
 	shoes = /obj/item/clothing/shoes/roguetown/boots/leather
@@ -17,19 +18,19 @@
 	armor = /obj/item/clothing/suit/roguetown/armor/leather/studded
 	cloak = /obj/item/clothing/cloak/raincloak/furcloak
 	wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
-	beltr = /obj/item/rogueweapon/sword/sabre
+	beltr = /obj/item/rogueweapon/whip
 	beltl= /obj/item/quiver/arrows
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
-	pants = /obj/item/clothing/under/roguetown/tights/red
+	pants = /obj/item/clothing/under/roguetown/trou/leather
 	neck = /obj/item/storage/belt/rogue/pouch/coins/poor
-	backl = /obj/item/gun/ballistic/revolver/grenadelauncher/bow
+	backl = /obj/item/gun/ballistic/revolver/grenadelauncher/bow/recurve
 	backr = /obj/item/storage/backpack/rogue/satchel
 	l_hand = /obj/item/rogueweapon/shield/buckler
 	backpack_contents = list(/obj/item/roguekey/mercenary, /obj/item/storage/belt/rogue/pouch/coins/poor)
 	if(H.mind)
-		H.mind.adjust_skillrank(/datum/skill/combat/bows, 4, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/combat/swords, 4, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/combat/shields, 2, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/bows, 5, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/swords, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/shields, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/whipsflails, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/knives, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE)
@@ -43,11 +44,11 @@
 		H.mind.adjust_skillrank(/datum/skill/craft/cooking, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/climbing, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 3, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/athletics, 4, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/tracking, 1, TRUE)
-	H.change_stat("perception", 2)
+	H.change_stat("perception", 3)
 	H.change_stat("constitution", 1)
-	H.change_stat("endurance", 3)
+	H.change_stat("endurance", 2)
 	H.change_stat("speed", 2)
 	ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_CRITICAL_RESISTANCE, TRAIT_GENERIC)

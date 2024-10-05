@@ -35,8 +35,5 @@
 		linking = null
 		to_chat(user, span_notice("Link complete."))
 		return
-	else
-		linking = S
-		to_chat(user, span_info("Link beginning..."))
-		return
-	..()
+	linking = S
+	to_chat(user, span_info("Link beginning..."))

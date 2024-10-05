@@ -651,7 +651,7 @@
 		else
 			. += "It looks very robust."
 
-	if(issilicon(user) && (!stat & BROKEN))
+	if(issilicon(user) && !(stat & BROKEN))
 		. += span_notice("Shift-click [src] to [ density ? "open" : "close"] it.")
 		. += span_notice("Ctrl-click [src] to [ locked ? "raise" : "drop"] its bolts.")
 		. += span_notice("Alt-click [src] to [ secondsElectrified ? "un-electrify" : "permanently electrify"] it.")

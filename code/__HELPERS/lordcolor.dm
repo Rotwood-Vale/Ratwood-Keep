@@ -54,7 +54,7 @@ GLOBAL_VAR(lordsecondary)
 		T.lordcolor(prim,sec)
 		GLOB.lordcolor -= T
 
-proc/lord_color_default()
+/proc/lord_color_default()
 	GLOB.lordprimary = "#007fff" //AZURE
 	GLOB.lordsecondary = "#ffffff" //WHITE
 	for(var/obj/O in GLOB.lordcolor)

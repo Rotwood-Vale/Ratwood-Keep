@@ -322,13 +322,14 @@
 		update_clothes_damaged_state(TRUE)
 	original_armor = armor
 	var/brokemessage = FALSE
-	for(var/x in armor)
-		if(armor[x] > 0)
+	var/list/armorlist = armor.getList()
+	for(var/x in armorlist)
+		if(armorlist[x] > 0)
 			brokemessage = TRUE
-			armor[x] = 0
+			armorlist[x] = 0
 	if(ismob(loc) && brokemessage)
 		var/mob/M = loc
-		to_chat(M, "ARMOR BROKEN..!")
+		to_chat(M, "ARMOR BROKEN...!")
 	..()
 
 /obj/item/clothing/proc/obj_fix(damage_flag)

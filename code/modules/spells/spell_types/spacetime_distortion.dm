@@ -35,7 +35,7 @@
 
 	perform(turf_steps,user=user)
 
-/obj/effect/proc_holder/spell/spacetime_dist/after_cast(list/targets)
+/obj/effect/proc_holder/spell/spacetime_dist/after_cast(list/targets, mob/user = usr)
 	. = ..()
 	addtimer(CALLBACK(src, PROC_REF(clean_turfs)), duration)
 

@@ -9,10 +9,8 @@ SUBSYSTEM_DEF(librarian)
 		return list()
 	if(books.Find(input))
 		return books[input]
-	else
-		books[input] = file2book(input)
-		return books[input]
-	return list()
+	books[input] = file2book(input)
+	return books[input]
 
 /proc/file2book(filename)
 	if(!filename)

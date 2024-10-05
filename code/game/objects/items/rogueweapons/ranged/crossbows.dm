@@ -5,6 +5,8 @@
 	icon = 'icons/roguetown/weapons/32.dmi'
 	icon_state = "crossbow0"
 	item_state = "crossbow"
+	experimental_onhip = TRUE
+	experimental_onback = TRUE
 	possible_item_intents = list(/datum/intent/shoot/crossbow, /datum/intent/arc/crossbow, INTENT_GENERIC)
 	mag_type = /obj/item/ammo_box/magazine/internal/shot/xbow
 	slot_flags = ITEM_SLOT_BACK
@@ -137,11 +139,11 @@
 
 /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow/update_icon()
 	. = ..()
+	cut_overlays()
 	if(cocked)
 		icon_state = "crossbow1"
 	else
 		icon_state = "crossbow0"
-	cut_overlays()
 	if(chambered)
 		var/obj/item/I = chambered
 		I.pixel_x = 0

@@ -86,7 +86,7 @@
 /obj/item/bodypart/head/goblin/update_icon_dropped()
 	return
 
-/obj/item/bodypart/head/goblin/get_limb_icon()
+/obj/item/bodypart/head/goblin/get_limb_icon(dropped, hideaux = FALSE)
 	return
 
 /obj/item/bodypart/head/goblin/skeletonize()

@@ -478,9 +478,6 @@ GLOBAL_VAR_INIT(farm_animals, FALSE)
 /mob/living/simple_animal/Stat()
 	..()
 	return //RTCHANGE
-	if(statpanel("Status"))
-		stat(null, "Health: [round((health / maxHealth) * 100)]%")
-		return 1
 
 /mob/living/simple_animal/proc/drop_loot()
 	if(loot.len)
@@ -529,7 +526,7 @@ GLOBAL_VAR_INIT(farm_animals, FALSE)
 			return FALSE
 	return TRUE
 
-mob/living/simple_animal/handle_fire()
+/mob/living/simple_animal/handle_fire()
 	. = ..()
 	if(fire_stacks > 0)
 		apply_damage(5, BURN)
@@ -591,8 +588,8 @@ mob/living/simple_animal/handle_fire()
 		if(target)
 			return new childspawn(target)
 //			visible_message(span_warning("[src] finally gives birth."))
-			playsound(src, 'sound/foley/gross.ogg', 100, FALSE)
-			breedchildren--
+//			playsound(src, 'sound/foley/gross.ogg', 100, FALSE)
+//			breedchildren--
 
 /mob/living/simple_animal/canUseTopic(atom/movable/M, be_close=FALSE, no_dexterity=FALSE, no_tk=FALSE)
 	if(incapacitated())

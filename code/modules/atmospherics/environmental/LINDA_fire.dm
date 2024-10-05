@@ -11,34 +11,6 @@
 
 /turf/open/hotspot_expose(added, maxstacks, soh)
 	return
-	var/list/air_gases = air?.gases
-	if(!air_gases)
-		return
-
-	. = air_gases[/datum/gas/oxygen]
-	var/oxy = . ? .[MOLES] : 0
-	if (oxy < 0.5)
-		return
-	. = air_gases[/datum/gas/plasma]
-	var/tox = . ? .[MOLES] : 0
-	. = air_gases[/datum/gas/tritium]
-	var/trit = . ? .[MOLES] : 0
-	if(active_hotspot)
-		if(soh)
-			if(tox > 0.5 || trit > 0.5)
-				if(active_hotspot.temperature < added)
-					active_hotspot.temperature = added
-				if(active_hotspot.volume < maxstacks)
-					active_hotspot.volume = maxstacks
-		return
-
-	if((added > PLASMA_MINIMUM_BURN_TEMPERATURE) && (tox > 0.5 || trit > 0.5))
-
-		active_hotspot = new /obj/effect/hotspot(src, maxstacks*25, added)
-
-		active_hotspot.just_spawned = (current_cycle < SSair.times_fired)
-			//remove just_spawned protection if no longer processing this cell
-		SSair.add_to_active(src, 0)
 
 //This is the icon for fire on turfs, also helps for nurturing small fires until they are full tile
 /obj/effect/hotspot
@@ -185,49 +157,6 @@
 		return
 
 	perform_exposure()
-	return
-
-	if((temperature < FIRE_MINIMUM_TEMPERATURE_TO_EXIST) || (volume <= 1))
-		qdel(src)
-		return
-	if(!location.air || (INSUFFICIENT(/datum/gas/plasma) && INSUFFICIENT(/datum/gas/tritium)) || INSUFFICIENT(/datum/gas/oxygen))
-		qdel(src)
-		return
-
-	//Not enough to burn
-	if(((!location.air.gases[/datum/gas/plasma] || location.air.gases[/datum/gas/plasma][MOLES] < 0.5) && (!location.air.gases[/datum/gas/tritium] || location.air.gases[/datum/gas/tritium][MOLES] < 0.5)) || location.air.gases[/datum/gas/oxygen][MOLES] < 0.5)
-		qdel(src)
-		return
-
-//	perform_exposure()
-
-	if(bypassing)
-		icon_state = "3"
-		location.burn_tile()
-
-		//Possible spread due to radiated heat
-		if(location.air.temperature > FIRE_MINIMUM_TEMPERATURE_TO_SPREAD)
-			var/radiated_temperature = location.air.temperature*FIRE_SPREAD_RADIOSITY_SCALE
-			for(var/t in location.atmos_adjacent_turfs)
-				var/turf/open/T = t
-				if(!T.active_hotspot)
-					T.hotspot_expose(radiated_temperature, CELL_VOLUME/4)
-
-	else
-		if(volume > CELL_VOLUME*0.4)
-			icon_state = "2"
-		else
-			icon_state = "1"
-
-//	if((visual_update_tick++ % 7) == 0)
-//		update_color()
-
-	if(temperature > location.max_fire_temperature_sustained)
-		location.max_fire_temperature_sustained = temperature
-
-	if(location.heat_capacity && temperature > location.heat_capacity)
-		location.to_be_destroyed = TRUE
-	return TRUE
 
 /obj/effect/hotspot/Destroy()
 	SSair.hotspots -= src

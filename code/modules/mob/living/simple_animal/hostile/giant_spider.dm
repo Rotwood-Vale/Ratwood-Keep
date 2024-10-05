@@ -384,7 +384,7 @@
 	name = "Wrap"
 	panel = "Spider"
 	active = FALSE
-	datum/action/spell_action/action = null
+	action = null
 	desc = ""
 	ranged_mousepointer = 'icons/effects/wrap_target.dmi'
 	action_icon = 'icons/mob/actions/actions_animal.dmi'

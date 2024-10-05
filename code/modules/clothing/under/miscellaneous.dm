@@ -122,11 +122,9 @@
 		if (extinguishes_left == 5)
 			to_chat(user, span_notice("The inbuilt extinguisher is full."))
 			return
-		else
-			extinguishes_left = 5
-			to_chat(user, span_notice("I refill the suit's built-in extinguisher, using up the cartridge."))
-			qdel(E)
-			return
+		extinguishes_left = 5
+		to_chat(user, span_notice("I refill the suit's built-in extinguisher, using up the cartridge."))
+		qdel(E)
 		return
 	return
 

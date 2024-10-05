@@ -197,7 +197,6 @@
 		open_machine()
 		SendBack(H)
 		return span_bad("Specimen braindead - disposed.")
-	return span_bad("ERROR")
 
 
 /obj/machinery/abductor/experiment/proc/SendBack(mob/living/carbon/human/H)

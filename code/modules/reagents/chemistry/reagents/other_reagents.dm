@@ -302,16 +302,15 @@
 		var/mob/living/carbon/human/H = M
 		if(!HAS_TRAIT(H, TRAIT_NOHUNGER))
 			H.adjust_hydration(hydration)
-	if(!data)
-		data = 1
-	data++
+	var/count = LAZYACCESS(data, "misc") + 1
+	LAZYSET(data, "misc", count)
 	M.jitteriness = min(M.jitteriness+4,10)
 	if(iscultist(M))
 		for(var/datum/action/innate/cult/blood_magic/BM in M.actions)
 			to_chat(M, span_cultlarge("My blood rites falter as holy water scours my body!"))
 			for(var/datum/action/innate/cult/blood_spell/BS in BM.spells)
 				qdel(BS)
-	if(data >= 25)		// 10 units, 45 seconds @ metabolism 0.4 units & tick rate 1.8 sec
+	if(count >= 25)		// 10 units, 45 seconds @ metabolism 0.4 units & tick rate 1.8 sec
 		if(!M.stuttering)
 			M.stuttering = 1
 		M.stuttering = min(M.stuttering+4, 10)
@@ -323,7 +322,7 @@
 				M.Unconscious(120)
 				to_chat(M, "<span class='cultlarge'>[pick("Your blood is my bond - you are nothing without it", "Do not forget my place", \
 				"All that power, and you still fail?", "If you cannot scour this poison, I shall scour my meager life!")].</span>")
-	if(data >= 60)	// 30 units, 135 seconds
+	if(count >= 60)	// 30 units, 135 seconds
 		if(iscultist(M))
 			SSticker.mode.remove_cultist(M.mind, FALSE, TRUE)
 		M.jitteriness = 0

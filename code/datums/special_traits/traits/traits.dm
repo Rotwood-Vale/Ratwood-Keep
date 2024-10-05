@@ -435,14 +435,6 @@
 /datum/special_trait/jesterphobia/on_apply(mob/living/carbon/human/character, silent)
 	ADD_TRAIT(character, TRAIT_JESTERPHOBIA, "[type]")
 
-/datum/special_trait/xenophobic
-	name = "Xenophobic"
-	greet_text = span_boldwarning("Lesser races pollute our land")
-	weight = 200
-
-/datum/special_trait/xenophobic/on_apply(mob/living/carbon/human/character, silent)
-	ADD_TRAIT(character, TRAIT_XENOPHOBIC, "[type]")
-
 /datum/special_trait/wild_night
 	name = "Wild Night"
 	greet_text = span_boldwarning("I don't remember what I did last night, and now I'm lost!")
