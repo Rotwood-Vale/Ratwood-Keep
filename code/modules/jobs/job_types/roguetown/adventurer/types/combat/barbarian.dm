@@ -35,7 +35,7 @@
 			H.mind.adjust_skillrank(/datum/skill/craft/traps, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/labor/fishing, pick(0,1), TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/polearms, 2, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/combat/axes, 4, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/axes, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/maces, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/swords, 3, TRUE)
 			beltr = /obj/item/rogueweapon/stoneaxe/woodcut
