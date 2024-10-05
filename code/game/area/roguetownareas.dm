@@ -305,6 +305,7 @@ GLOBAL_LIST_INIT(roguetown_areas_typecache, typecacheof(/area/rogue/indoors/town
 	converted_type = /area/rogue/outdoors/caves
 
 /area/rogue/under/cavewet/bogcaves
+	first_time_text = "The Undergrove"
 
 /area/rogue/under/cave/spider
 	icon_state = "spider"
