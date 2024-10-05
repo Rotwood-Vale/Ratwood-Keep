@@ -5,24 +5,42 @@
 	faction = "Station"
 	total_positions = 0
 	spawn_positions = 0
-
-	outfit = /datum/outfit/job/roguetown/tailor
-	outfit_female = /datum/outfit/job/roguetown/tailor/female
 	display_order = 6
 	min_pq = 0
+	selection_color = JCOLOR_YEOMAN
 	allowed_races = RACES_ALL_KINDS
+	display_order = JDO_TAILOR
+	outfit = /datum/outfit/job/roguetown/tailor
+	give_bank_account = 16
+	min_pq = 0
+	max_pq = null
 
-/datum/outfit/job/roguetown/tailor
-	name = "Tailor"
-	jobtype = /datum/job/roguetown/tailor
 
-	pants = /obj/item/clothing/under/roguetown/tights
+/datum/outfit/job/roguetown/tailor/pre_equip(mob/living/carbon/human/H)
+	..()
+	if(H.mind)
+		H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 2, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/sewing, 4, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/craft/crafting, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/craft/tanning, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/reading, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/medicine, 2, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/lockpicking, 1, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/labor/farming, 1, TRUE)
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
-	armor = /obj/item/clothing/suit/roguetown/shirt/rags
-	shoes = /obj/item/clothing/shoes/roguetown/boots
-
-/datum/outfit/job/roguetown/tailor/female
-	name = "Tailor"
-	jobtype = /datum/job/roguetown/tailor
-
-	pants = null
+	pants = /obj/item/clothing/under/roguetown/tights
+	belt = /obj/item/storage/belt/rogue/leather/cloth
+	beltr = /obj/item/storage/belt/rogue/pouch/coins/mid
+	beltl = /obj/item/rogueweapon/huntingknife/idagger
+	shoes = /obj/item/clothing/shoes/roguetown/shortboots
+	backr = /obj/item/storage/backpack/rogue/satchel
+	backpack_contents = list(/obj/item/needle, /obj/item/roguekey/tailor)
+	if(H.pronouns == SHE_HER)
+		armor = /obj/item/clothing/suit/roguetown/shirt/dress/silkdress
+	else
+		armor = /obj/item/clothing/suit/roguetown/shirt/tunic/random
+	H.change_stat("intelligence", 2)
+	H.change_stat("perception", 1)
+	H.change_stat("speed", 1)
+	H.change_stat("strength", -1)

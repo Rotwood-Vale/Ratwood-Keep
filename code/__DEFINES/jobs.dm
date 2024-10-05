@@ -266,6 +266,7 @@
 #define JDO_APPRENTICE 21
 
 #define JDO_ARTIFICER 22
+#define JDO_TAILOR 24
 
 #define JDO_BARKEEP 26
 #define JDO_COOK 27
