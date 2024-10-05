@@ -39,6 +39,10 @@
 
 
 /obj/item/book/granter/attack_self(mob/living/user)
+	if(user.mind?.has_studied == TRUE)
+		to_chat(user, span_notice("These symbols assault my mind -- I cannot control the book's power!"))
+		recoil(user)
+		return FALSE
 	if(reading)
 		to_chat(user, span_warning("You're already reading this!"))
 		return FALSE
@@ -48,9 +52,10 @@
 		return FALSE
 	if(!user.can_read(src))
 		return FALSE
+/*	AZURE PEAK REMOVAL -- UNUSED ANYWAY
 	if(user.STAINT < 12)
-		to_chat(user, span_warning("You can't make sense of the sprawling runes!"))
-		return FALSE
+			to_chat(user, span_warning("You can't make sense of the sprawling runes!"))
+			return FALSE */
 	if(used)
 		if(oneuse)
 			recoil(user)

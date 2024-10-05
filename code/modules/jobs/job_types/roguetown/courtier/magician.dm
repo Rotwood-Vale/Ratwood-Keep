@@ -36,6 +36,7 @@
 	shoes = /obj/item/clothing/shoes/roguetown/shortboots
 	belt = /obj/item/storage/belt/rogue/leather/plaquesilver
 	beltr = /obj/item/storage/keyring/mage
+	beltl = /obj/item/book/granter/spellbook/magician
 	id = /obj/item/clothing/ring/gold
 	r_hand = /obj/item/rogueweapon/woodstaff
 	backl = /obj/item/storage/backpack/rogue/satchel

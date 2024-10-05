@@ -33,7 +33,7 @@
 	else
 		shoes = /obj/item/clothing/shoes/roguetown/simpleshoes
 	if(H.mind)
-		H.mind.adjust_skillrank(/datum/skill/misc/reading, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/reading, 5, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/magic/arcane, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/craft/crafting, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/alchemy, 2, TRUE)
