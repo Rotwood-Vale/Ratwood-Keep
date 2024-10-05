@@ -9,9 +9,6 @@
 	cmode_music = 'sound/music/combat_physician.ogg'
 	allow_custom_genitals = TRUE
 
-/datum/outfit/job/roguetown/adventurer/doctor
-	allowed_patrons = list(/datum/patron/divine/pestra, /datum/patron/inhumen/graggar)
-
 /datum/outfit/job/roguetown/adventurer/doctor/pre_equip(mob/living/carbon/human/H)
 	..()
 	mask = /obj/item/clothing/mask/rogue/spectacles

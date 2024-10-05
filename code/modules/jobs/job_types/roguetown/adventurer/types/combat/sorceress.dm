@@ -7,9 +7,6 @@
 	allowed_ages = list(AGE_MIDDLEAGED, AGE_OLD)
 	category_tags = list(CTAG_DISABLED)
 
-/datum/outfit/job/roguetown/adventurer/sorceress
-	allowed_patrons = list(/datum/patron/divine/noc)
-
 /datum/outfit/job/roguetown/adventurer/sorceress/pre_equip(mob/living/carbon/human/H)
 	..()
 	shoes = /obj/item/clothing/shoes/roguetown/simpleshoes
