@@ -3,8 +3,8 @@
 	flag = TAILOR
 	department_flag = YEOMEN
 	faction = "Station"
-	total_positions = 0
-	spawn_positions = 0
+	total_positions = 1
+	spawn_positions = 1
 	display_order = 6
 	min_pq = 0
 	selection_color = JCOLOR_YEOMAN
