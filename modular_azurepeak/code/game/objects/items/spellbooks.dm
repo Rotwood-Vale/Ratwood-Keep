@@ -395,7 +395,7 @@
 	var/crafttime = (100 - ((user.mind?.get_skill_level(/datum/skill/magic/arcane))*5))
 	if(do_after(user, crafttime, target = src))
 		playsound(loc, 'modular_azurepeak/sound/spellbooks/bladescrape.ogg', 100, TRUE)
-		user.visible_message(span_warning("[user] carves an arcane rune with [user.p_their()] [src]!"), \
+		user.visible_message(span_warning("[user] carves an arcyne rune with [user.p_their()] [src]!"), \
 							span_notice("I drag the blade in symbols and circles, until it snaps, a rune now carved before me in a deep manna blue."))
 		new rune_to_scribe(Turf)
 		qdel(src)
