@@ -18,3 +18,4 @@ tav_tune.ogg: Divinity Original Sin 2 - Black Bull Tavern
 combat_steppe.ogg: Tatar Theme (Hellish Quart OST)
 combat_bandit_brigand: Silent Scream - Lateralis
 combat_bandit_mage: Timestopper Tactics - corru.works
+warscholar.ogg: Butcher's Boulevard - Kristjan Thomas Haaristo

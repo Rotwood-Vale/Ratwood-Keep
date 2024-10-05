@@ -70,6 +70,10 @@
 /obj/item/clothing/mask/rogue/lordmask/l
 	icon_state = "lmask_l"
 
+/obj/item/clothing/mask/rogue/lordmask/tarnished
+	name = "tarnished golden halfmask"
+	desc = "Runes and wards, meant for daemons; the gold has somehow rusted in unnatural, impossible agony. It is worthless."
+	sellprice = 0
 
 /obj/item/clothing/mask/rogue/wildguard
 	name = "wild guard"
