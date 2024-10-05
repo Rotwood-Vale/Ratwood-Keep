@@ -622,7 +622,14 @@
 	possible_item_intents = list(/datum/intent/sword/cut, /datum/intent/sword/thrust, /datum/intent/sword/strike)
 	gripped_intents = list(/datum/intent/sword/cut, /datum/intent/sword/thrust, /datum/intent/sword/strike, /datum/intent/sword/chop)
 	icon_state = "blackflamb"
-	icon = 'icons/roguetown/weapons/64.dmi'
+	/obj/item/rogueweapon/sword/long/blackflamb
+	force = 20
+	force_wielded = 32
+	icon_state = "blackflamb"
+	name = "blacksteel flamberge"
+	desc = "A strange sword with a winding blade forged of blacksteel and a rontz pommel."
+	smeltresult = /obj/item/ingot/blacksteel
+	max_integrity = 200
 	lefthand_file = 'icons/mob/inhands/weapons/roguebig_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/weapons/roguebig_righthand.dmi'
 	name = "blacksteel flamberge"
