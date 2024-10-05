@@ -270,3 +270,15 @@
 		held_items[P]["NAME"] = P.name
 		held_items[P]["PRICE"] = 10
 	update_icon()
+
+/obj/structure/roguemachine/vendor/merchant
+	keycontrol = "merchant"
+
+/obj/structure/roguemachine/vendor/merchant/Initialize()
+	. = ..()
+	for(var/X in list(/obj/item/roguekey/apartments/apartment2,/obj/item/roguekey/apartments/apartment3,/obj/item/roguekey/apartments/apartment4))
+		var/obj/P = new X(src)
+		held_items[P] = list()
+		held_items[P]["NAME"] = P.name
+		held_items[P]["PRICE"] = 10
+	update_icon()

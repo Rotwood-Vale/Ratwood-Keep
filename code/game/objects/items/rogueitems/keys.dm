@@ -283,6 +283,12 @@
 	icon_state = "brownkey"
 	lockid = "artificer"
 
+/obj/item/roguekey/tailor
+	name = "tailor's key"
+	desc = "This key opens the tailor's shop. There is a thin thread wrapped around it."
+	icon_state = "brownkey"
+	lockid = "tailor"
+
 /obj/item/roguekey/nightman
 	name = "nightmaster's key"
 	desc = "This regal key opens a few doors within the castle."

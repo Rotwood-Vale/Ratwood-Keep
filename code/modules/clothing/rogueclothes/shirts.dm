@@ -192,7 +192,7 @@
 	color = COLOR_GRAY
 
 /obj/item/clothing/suit/roguetown/shirt/tunic/random/Initialize()
-	color = pick(CLOTHING_PURPLE, CLOTHING_RED, CLOTHING_BLUE, CLOTHING_GREEN)
+	color = pick(CLOTHING_PURPLE, CLOTHING_RED, CLOTHING_BLUE, CLOTHING_GREEN, CLOTHING_BLACK, CLOTHING_WHITE, COLOR_GRAY)
 	..()
 /obj/item/clothing/suit/roguetown/shirt/dress
 	slot_flags = ITEM_SLOT_ARMOR
