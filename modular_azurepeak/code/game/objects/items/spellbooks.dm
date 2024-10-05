@@ -156,7 +156,7 @@
 	testing("chance to learn is [chance2learn]")
 	if(prob(chance2learn))
 		user.visible_message(span_warning("[user] is filled with arcyne energy! You witness [user.p_their()] body convulse and spark brightly."), \
-			span_notice("Noc blesses me. I have been granted knowledge and wisdom beyond my years, these tomes' mysteries unveiled one at a time."))
+			span_notice("Noc blesses me. I have been granted knowledge and wisdom beyond my years, this tome's mysteries unveiled one at a time."))
 		var/nextlevel = user.mind?.get_next_level_for_skill(/datum/skill/magic/arcane)
 		testing("next level is [nextlevel]")
 		var/expgain = user.mind?.get_requried_sleep_xp_for_skill(/datum/skill/magic/arcane, nextlevel)
