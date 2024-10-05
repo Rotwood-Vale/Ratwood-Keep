@@ -41,6 +41,7 @@
 			H.mind.adjust_skillrank(/datum/skill/craft/cooking, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/riding, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/music, pick(4,5), TRUE)
+			head = /obj/item/clothing/head/roguetown/bardhat
 			r_hand = /obj/item/gun/ballistic/revolver/grenadelauncher/bow
 			l_hand = /obj/item/quiver/arrowshead = /obj/item/clothing/head/roguetown/bardhat
 			shoes = /obj/item/clothing/shoes/roguetown/boots
