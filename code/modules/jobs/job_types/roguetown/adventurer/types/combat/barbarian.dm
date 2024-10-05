@@ -63,8 +63,8 @@
 			H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/knives, 3, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/craft/crafting, pick(1,2), TRUE)
-			H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/craft/crafting, 2, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/athletics, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/swimming, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/craft/tanning, 1, TRUE)
@@ -78,7 +78,6 @@
 			H.mind.adjust_skillrank(/datum/skill/combat/bows, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/polearms, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/axes, 3, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/combat/maces, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE)
 			beltr = /obj/item/rogueweapon/stoneaxe/woodcut
 			r_hand = /obj/item/gun/ballistic/revolver/grenadelauncher/bow
