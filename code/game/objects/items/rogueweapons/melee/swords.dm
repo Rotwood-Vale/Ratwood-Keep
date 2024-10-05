@@ -616,7 +616,7 @@
 	max_blade_int = 150
 	max_integrity = 200
 
-	/obj/item/rogueweapon/sword/long/blackflamb
+/obj/item/rogueweapon/sword/long/blackflamb
 	force = 20
 	force_wielded = 32
 	icon_state = "blackflamb"
