@@ -527,11 +527,12 @@
 	var/res_replenish3
 
 /obj/structure/flora/roguegrass/swampweed/Initialize()
+	. = ..()
+	icon_state = "swampweed[rand(1,3)]"
 	if(prob(88))
 		bushtype3 = pickweight(list(/obj/item/reagent_containers/food/snacks/grown/rogue/sweetleaf = 1))
 	loot_replenish3()
 	pixel_x += rand(-3,3)
-	return ..()
 
 /obj/structure/flora/roguegrass/swampweed/proc/loot_replenish3()
 	if(bushtype3)
