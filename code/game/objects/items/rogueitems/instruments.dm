@@ -81,6 +81,7 @@
 			soundloop.start()
 		for(var/mob/living/carbon/human/L in viewers(7))
 			L.add_stress(stressevent)
+			add_sleep_experience(user, /datum/skill/misc/music, user.STAINT)
 	else
 		playing = FALSE
 		soundloop.stop()
