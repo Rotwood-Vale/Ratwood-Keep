@@ -67,14 +67,6 @@
 					/obj/item/rogueweapon/huntingknife/idagger/steel,
 				)
 
-/datum/supply_pack/rogue/weapons/stunmace
-	name = "Stunmaces"
-	cost = 450
-	contains = list(
-					/obj/item/rogueweapon/mace/stunmace,
-					/obj/item/rogueweapon/mace/stunmace,
-				)
-
 /datum/supply_pack/rogue/weapons/shield
 	name = "Wooden Shields"
 	cost = 45
