@@ -18,7 +18,7 @@
 	min_pq = -10
 	max_pq = null
 
-	cmode_music = 'sound/music/combat_giza.ogg'
+	cmode_music = 'sound/music/combat_fancy.ogg'
 
 /datum/outfit/job/roguetown/shophand/pre_equip(mob/living/carbon/human/H)
 	..()

@@ -654,7 +654,9 @@
 	name = "hearth"
 	icon_state = "hearth1"
 	base_state = "hearth"
-	density = FALSE
+	density = TRUE
+	climbable = TRUE
+	pass_flags = LETPASSTHROW
 	anchored = TRUE
 	layer = 2.8
 	var/obj/item/attachment = null
@@ -665,6 +667,16 @@
 /obj/machinery/light/rogue/hearth/Initialize()
 	boilloop = new(list(src), FALSE)
 	. = ..()
+
+/obj/machinery/light/rogue/hearth/CanPass(atom/movable/mover, turf/target)
+	if(istype(mover) && (mover.pass_flags & PASSTABLE))
+		return 1
+	if(mover.throwing)
+		return 1
+	if(locate(/obj/structure/table) in get_turf(mover))
+		return 1
+	else
+		return !density
 
 /obj/machinery/light/rogue/hearth/attackby(obj/item/W, mob/living/user, params)
 	if(!attachment)

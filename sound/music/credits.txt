@@ -1,6 +1,5 @@
 combat_maniac2.ogg: Thomas Bangalter - Stress
 combat_vamp2.ogg: Filmmaker - Mystic Circles
-combat_merchant.ogg: Neospherix Project - Hava Nagila (Psychedelic Trance)
 combat_desertrider.ogg: Two Fingers- You Ain't Down
 combat_grenzelhoft.ogg: Helbrede - Sons of Tyr
 combat_jester.ogg: OFF - Pepper Steak
@@ -19,3 +18,4 @@ combat_steppe.ogg: Tatar Theme (Hellish Quart OST)
 combat_bandit_brigand: Silent Scream - Lateralis
 combat_bandit_mage: Timestopper Tactics - corru.works
 warscholar.ogg: Butcher's Boulevard - Kristjan Thomas Haaristo
+combat_fancy.ogg: Eric Heberling - Wilderness (Piano)

@@ -17,6 +17,8 @@
 	min_pq = 0
 	max_pq = null
 
+	cmode_music = 'sound/music/combat_fancy.ogg'
+
 /datum/outfit/job/roguetown/councillor/pre_equip(mob/living/carbon/human/H)
 	..()
 	neck = /obj/item/storage/belt/rogue/pouch/coins/rich

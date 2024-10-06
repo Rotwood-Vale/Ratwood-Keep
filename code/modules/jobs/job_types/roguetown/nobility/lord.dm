@@ -32,6 +32,8 @@ GLOBAL_LIST_EMPTY(lord_titles)
 
 	allow_custom_genitals = TRUE
 
+	cmode_music = 'sound/music/combat_fancy.ogg'
+
 /datum/job/roguetown/exlord //just used to change the lords title
 	title = "Monarch Emeritus"
 	flag = LORD
