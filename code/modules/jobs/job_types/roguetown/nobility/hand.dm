@@ -19,6 +19,8 @@
 
 	allow_custom_genitals = TRUE
 
+	cmode_music = 'sound/music/combat_fancy.ogg'
+
 /*
 /datum/job/roguetown/hand/special_job_check(mob/dead/new_player/player)
 	if(!player)
