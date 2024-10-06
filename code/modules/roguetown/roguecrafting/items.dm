@@ -110,7 +110,7 @@
 	craftdiff = 3
 
 /datum/crafting_recipe/roguetown/longbowpartial
-	name = "unstrung recurve bow"
+	name = "unstrung long bow"
 	result = /obj/item/grown/log/tree/bowpartial/longbow
 	reqs = list(
 		/obj/item/grown/log/tree = 1,
