@@ -276,7 +276,7 @@
 
 /obj/structure/roguemachine/vendor/merchant/Initialize()
 	. = ..()
-	for(var/X in list(/obj/item/roguekey/apartments/apartment2,/obj/item/roguekey/apartments/apartment3,/obj/item/roguekey/apartments/apartment4))
+	for(var/X in list(/obj/item/roguekey/apartments/stall1,/obj/item/roguekey/apartments/stall2,/obj/item/roguekey/apartments/stall3))
 		var/obj/P = new X(src)
 		held_items[P] = list()
 		held_items[P]["NAME"] = P.name
