@@ -134,8 +134,8 @@
 //								ore += R
 //							ore -= I
 							var/obj/item/R = new I.smeltresult(src, ore[I])
-							ore -= R
-							ore += I
+							ore -= I
+							ore += R
 							qdel(I)
 					playsound(src,'sound/misc/smelter_fin.ogg', 100, FALSE)
 					visible_message(span_notice("\The [src] finished smelting."))
@@ -212,14 +212,9 @@
 					else
 						for(var/obj/item/I in ore)
 							if(I.smeltresult)
-//								while(I.smelt_bar_num)
-//									I.smelt_bar_num--
-//									var/obj/item/R = new I.smeltresult(src, ore[I])
-//									ore += R
-//								ore -= I
 								var/obj/item/R = new I.smeltresult(src, ore[I])
-								ore -= R
-								ore += I
+								ore -= I
+								ore += R
 								qdel(I)
 					playsound(src,'sound/misc/smelter_fin.ogg', 100, FALSE)
 					visible_message(span_notice("\The [src] finished smelting."))
