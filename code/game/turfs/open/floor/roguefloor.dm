@@ -826,7 +826,7 @@
 	icon_state = ""
 
 /turf/open/floor/rogue/carpet/lord/Initialize()
-	..()
+	. = ..()
 	if(GLOB.lordprimary)
 		lordcolor(GLOB.lordprimary,GLOB.lordsecondary)
 	GLOB.lordcolor += src

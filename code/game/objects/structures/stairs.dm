@@ -36,7 +36,7 @@
 	icon_state = "fancy_stairs_l"
 
 /obj/structure/stairs/fancy/Initialize()
-	..()
+	. = ..()
 	if(GLOB.lordprimary)
 		lordcolor(GLOB.lordprimary,GLOB.lordsecondary)
 	GLOB.lordcolor += src

@@ -194,7 +194,7 @@
 	layer = ABOVE_MOB_LAYER
 
 /obj/structure/fluff/railing/Initialize()
-	..()
+	. = ..()
 	var/lay = getwlayer(dir)
 	if(lay)
 		layer = lay
@@ -316,7 +316,7 @@
 	climb_offset = 6
 
 /obj/structure/fluff/railing/fence/Initialize()
-	..()
+	. = ..()
 	smooth_fences()
 
 /obj/structure/fluff/railing/fence/Destroy()

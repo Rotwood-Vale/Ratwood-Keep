@@ -39,6 +39,7 @@
 /datum/status_effect/Destroy()
 	STOP_PROCESSING(SSfastprocess, src)
 	if(owner)
+		linked_alert = null
 		owner.clear_alert(id)
 		LAZYREMOVE(owner.status_effects, src)
 		on_remove()
@@ -111,6 +112,10 @@
 
 	inspec += "<br>----------------------"
 	to_chat(user, "[inspec.Join()]")
+
+/atom/movable/screen/alert/status_effect/Destroy()
+	attached_effect = null
+	return ..()
 
 //////////////////
 // HELPER PROCS //

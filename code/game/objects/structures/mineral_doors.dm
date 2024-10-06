@@ -733,7 +733,7 @@
 	lockdir = dir
 
 /obj/structure/mineral_door/wood/deadbolt/Initialize()
-	..()
+	. = ..()
 	lockdir = dir
 	icon_state = base_state
 
@@ -846,7 +846,7 @@
 	icon_state = "barsold"
 
 /obj/structure/mineral_door/bars/Initialize()
-	..()
+	. = ..()
 	add_overlay(mutable_appearance(icon, "barsopen", ABOVE_MOB_LAYER))
 
 
