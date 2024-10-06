@@ -607,49 +607,6 @@ GLOBAL_VAR_INIT(mobids, 1)
 //		to_chat(src, "You don't have a mind datum for some reason, so you can't add a note to it.")
 
 /**
-  * Allows you to respawn, abandoning your current mob
-  *
-  * This sends you back to the lobby creating a new dead mob
-  *
-  * Only works if flag/norespawn is allowed in config
-  */
-/mob/verb/abandon_mob()
-	set name = "{RETURN TO LOBBY}"
-	set category = "Options"
-	set hidden = 1
-	if(!check_rights(0))
-		return
-	if (CONFIG_GET(flag/norespawn))
-		return
-	if ((stat != DEAD || !( SSticker )))
-		to_chat(usr, span_boldnotice("I must be dead to use this!"))
-		return
-
-	log_game("[key_name(usr)] used abandon mob.")
-
-	to_chat(src, span_info("Returned to lobby successfully."))
-
-	if(!client)
-		log_game("[key_name(usr)] AM failed due to disconnect.")
-		return
-	client.screen.Cut()
-	client.screen += client.void
-	if(!client)
-		log_game("[key_name(usr)] AM failed due to disconnect.")
-		return
-
-	var/mob/dead/new_player/M = new /mob/dead/new_player()
-	if(!client)
-		log_game("[key_name(usr)] AM failed due to disconnect.")
-		qdel(M)
-		return
-
-	M.key = key
-//	M.Login()	//wat
-	return
-
-
-/**
   * Sometimes helps if the user is stuck in another perspective or camera
   */
 /mob/verb/cancel_camera()
