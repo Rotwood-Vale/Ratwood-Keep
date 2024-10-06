@@ -95,12 +95,13 @@
 	attack_verb = list("chops", "hacks")
 	animname = "chop"
 	hitsound = list('sound/combat/hits/bladed/genchop (1).ogg', 'sound/combat/hits/bladed/genchop (2).ogg', 'sound/combat/hits/bladed/genchop (3).ogg')
-	penfactor = 50
+	penfactor = 35
 	swingdelay = 10
 	item_d_type = "slash"
 
 /datum/intent/axe/chop/battle
 	damfactor = 1.2 //36 on battleaxe
+	penfactor = 40
 
 /datum/intent/axe/cut/battle
 	penfactor = 25
