@@ -690,6 +690,15 @@
 	allowed_race = CLOTHED_RACES_TYPES
 	flags_inv = HIDECROTCH|HIDEBOOB
 
+/obj/item/clothing/cloak/apron/ComponentInitialize()
+	. = ..()
+	AddComponent(/datum/component/storage/concrete)
+	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
+	if(STR)
+		STR.max_combined_w_class = 3
+		STR.max_w_class = WEIGHT_CLASS_NORMAL
+		STR.max_items = 1
+
 /obj/item/clothing/cloak/apron/blacksmith
 	name = "leather apron"
 	desc = "A leather apron used by those who temper metals and work forges."
@@ -727,6 +736,7 @@
 	icon_state = "aproncook"
 	item_state = "aproncook"
 	body_parts_covered = GROIN
+	slot_flags = ITEM_SLOT_ARMOR|ITEM_SLOT_CLOAK
 	boobed = FALSE
 
 /*

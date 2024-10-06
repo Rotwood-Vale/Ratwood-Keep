@@ -87,6 +87,10 @@ GLOBAL_LIST_EMPTY(loadout_items)
 	path = /obj/item/clothing/shoes/roguetown/ridingboots
 
 //SHIRTS
+/datum/loadout_item/longcoat
+	name = "Longcoat"
+	path = /obj/item/clothing/suit/roguetown/armor/longcoat
+
 /datum/loadout_item/robe
 	name = "Robe"
 	path = /obj/item/clothing/suit/roguetown/shirt/robe
