@@ -360,7 +360,10 @@
 	/datum/job/roguetown/blacksmith,\
 	/datum/job/roguetown/artificer,\
 	/datum/job/roguetown/merchant,\
+	/datum/job/roguetown/tailor,\
 	/datum/job/roguetown/scribe
+
+
 
 #define WANDERER_ROLES \
 	/datum/job/roguetown/pilgrim,\
