@@ -32,6 +32,7 @@
 	head = /obj/item/clothing/head/roguetown/dendormask
 	neck = /obj/item/clothing/neck/roguetown/psicross/dendor
 	armor = /obj/item/clothing/suit/roguetown/shirt/robe/dendor
+	backpack_contents = list(/obj/item/roguekey/farm)
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/misc/sewing, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/craft/tanning, 1, TRUE)
@@ -48,6 +49,7 @@
 		H.mind.adjust_skillrank(/datum/skill/misc/climbing, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/magic/druidic, 2, TRUE) //This does nothing, but maybe one day it will.
 		H.mind.adjust_skillrank(/datum/skill/misc/tracking, 1, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/swimming, 2, TRUE)
 		H.change_stat("intelligence", 1)
 		H.change_stat("endurance", 1)
 		H.change_stat("speed", 1)
