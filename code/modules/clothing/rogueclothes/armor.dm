@@ -498,6 +498,17 @@
 	allowed_sex = list(MALE, FEMALE)
 	allowed_race = NON_DWARVEN_RACE_TYPES
 
+/obj/item/clothing/suit/roguetown/armor/longcoat
+	name = "longcoat"
+	desc = "A padded longcoat meant to keep you warm in the frigid winters"
+	icon_state = "longcoat"
+	color = null
+	slot_flags = ITEM_SLOT_ARMOR|ITEM_SLOT_CLOAK
+	r_sleeve_status = SLEEVE_NORMAL
+	l_sleeve_status = SLEEVE_NORMAL
+	allowed_sex = list(MALE, FEMALE)
+
+
 /obj/item/clothing/suit/roguetown/armor/leather/vest/black
 	color = "#3c3a38"
 
