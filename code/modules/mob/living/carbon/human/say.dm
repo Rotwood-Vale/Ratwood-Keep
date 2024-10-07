@@ -77,7 +77,13 @@
 
 /mob/living/carbon/human/get_alt_name()
 	if(name != GetVoice())
-		return "Unknown [(voice_type == VOICE_TYPE_FEM) ? "Woman" : "Man"]"
+		switch(voice_type)
+			if(VOICE_TYPE_FEM)
+				return "Unknown Woman"
+			if(VOICE_TYPE_MASC)
+				return "Unknown Man"
+			if(VOICE_TYPE_ANDR)
+				return "Unknown Person"
 
 /mob/living/carbon/human/proc/forcesay(list/append) //this proc is at the bottom of the file because quote fuckery makes notepad++ cri
 	if(stat == CONSCIOUS)
