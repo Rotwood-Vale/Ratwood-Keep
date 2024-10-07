@@ -174,6 +174,9 @@
 			var/mob/living/carbon/freaky = user
 			freaky.freak_out()
 		return
+	
+/obj/item/book/granter/spellbook/onlearned(mob/user)
+	used = FALSE
 
 /obj/item/book/granter/spellbook/recoil(mob/user)
 	user.visible_message(span_warning("[src] shoots out a spark of angry, arcyne energy at [user]!"))
