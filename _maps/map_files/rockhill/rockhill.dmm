@@ -15327,10 +15327,6 @@
 /obj/item/flint,
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/dwarfin)
-"qLA" = (
-/obj/machinery/light/rogue/oven,
-/turf/closed/wall/mineral/rogue/stone,
-/area/rogue/indoors)
 "qLP" = (
 /obj/structure/fluff/statue/gargoyle/moss/candles,
 /obj/machinery/light/rogue/wallfire/candle/r,
@@ -21626,9 +21622,9 @@
 /turf/closed/wall/mineral/rogue/roofwall/middle,
 /area/rogue/indoors/town/manor)
 "xMw" = (
-/obj/structure/roguemachine/scomm,
-/turf/open/floor/rogue/cobble,
-/area/rogue/outdoors/rtfield)
+/obj/machinery/light/rogue/oven/east,
+/turf/open/floor/rogue/ruinedwood/spiral,
+/area/rogue/indoors)
 "xNa" = (
 /turf/closed/wall/mineral/rogue/stone/window,
 /area/rogue/outdoors/town/roofs)
@@ -21863,8 +21859,9 @@
 	},
 /area/rogue/outdoors/town)
 "ybj" = (
-/obj/machinery/light/rogue/oven,
-/turf/closed/wall/mineral/rogue/decowood,
+/obj/effect/decal/cleanable/blood/old,
+/obj/machinery/light/rogue/oven/west,
+/turf/open/floor/rogue/hexstone,
 /area/rogue/indoors)
 "yby" = (
 /obj/structure/fluff/statue/gargoyle/moss,
@@ -257530,7 +257527,7 @@ xou
 fUS
 nqU
 nqU
-ybj
+nqU
 xou
 xou
 nqU
@@ -257932,7 +257929,7 @@ xou
 fUS
 nqU
 iuS
-xou
+xMw
 xou
 lzv
 nqU
@@ -263827,7 +263824,7 @@ jqD
 ucb
 xOx
 bdN
-xMw
+jXZ
 fxx
 fxx
 jJW
@@ -266284,7 +266281,7 @@ sYx
 odi
 pAV
 liM
-aWs
+ybj
 pAV
 khC
 wLx
@@ -266686,7 +266683,7 @@ sYx
 odi
 pAV
 xbt
-qLA
+pAV
 hHI
 myR
 wLx
