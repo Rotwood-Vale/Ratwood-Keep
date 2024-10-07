@@ -123,13 +123,13 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 /obj/effect/landmark/start/desertriderlate
 	name = "DesertRiderlate"
 	icon_state = "arrow"
-	jobspawn_override = list("Desert Rider Mercenary", "Sellsword", "Black Star Mercenary")
+	jobspawn_override = list("Desert Rider Mercenary", "Sellsword", "Silver Star Mercenary")
 	delete_after_roundstart = FALSE
 
 /obj/effect/landmark/start/grenzelhoftlate
 	name = "Grenzelhoftlate"
 	icon_state = "arrow"
-	jobspawn_override = list("Grenzelhoft Mercenary", "Sellsword", "Black Star Mercenary")
+	jobspawn_override = list("Grenzelhoft Mercenary", "Sellsword", "Silver Star Mercenary")
 	delete_after_roundstart = FALSE
 
 /obj/effect/landmark/start/villagerlate

@@ -186,7 +186,7 @@
 #define VETERAN		(1<<2)
 #define SELLSWORD		(1<<3)
 #define SEELIE		(1<<4)
-#define BLACKSTAR		(1<<5)
+#define SILVERDAWN	(1<<5)
 
 #define GOBLIN		(1<<8)
 
@@ -282,7 +282,7 @@
 #define JDO_VET 31.2
 #define JDO_SELLSWORD 31.3
 #define JDO_SEELIE 31.4
-#define JDO_BLACKSTAR 31.5
+#define JDO_SILVERDAWN 31.5
 
 #define JDO_VAGRANT 33
 #define JDO_ORPHAN 34
@@ -363,7 +363,7 @@
 	/datum/job/roguetown/adventurer,\
 	/datum/job/roguetown/mercenary/desert_rider,\
 	/datum/job/roguetown/mercenary/grenzelhoft,\
-	/datum/job/roguetown/mercenary/blackstar,\
+	/datum/job/roguetown/mercenary/silverdawn,\
 	/datum/job/roguetown/mercenary/seelie
 
 #define GARRISON_ROLES \
