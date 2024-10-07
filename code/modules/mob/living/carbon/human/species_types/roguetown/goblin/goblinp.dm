@@ -13,8 +13,8 @@
 	possible_ages = ALL_AGES_LIST
 	use_skintones = TRUE
 	skin_tone_wording = "Skin Color"
-	limbs_icon_m = 'icons/roguetown/mob/bodies/m/md.dmi'
-	limbs_icon_f = 'icons/roguetown/mob/bodies/f/fd.dmi'
+	limbs_icon_m = 'icons/mob/species/anthro_small_male.dmi'
+	limbs_icon_f = 'icons/mob/species/anthro_small_female.dmi'
 	dam_icon = 'icons/roguetown/mob/bodies/dam/dam_male.dmi'
 	dam_icon_f = 'icons/roguetown/mob/bodies/dam/dam_female.dmi'
 	soundpack_m = /datum/voicepack/male/goblin
