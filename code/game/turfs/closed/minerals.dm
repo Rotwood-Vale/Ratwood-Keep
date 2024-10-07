@@ -73,11 +73,15 @@
 					S.forceMove(get_turf(user))
 
 /turf/closed/mineral/turf_destruction(damage_flag)
-	if(lastminer.goodluck(2) && mineralType)
-//		to_chat(lastminer, span_notice("Bonus ducks!"))
-		new mineralType(src)
-	gets_drilled(lastminer, give_exp = FALSE)
-	queue_smooth_neighbors(src)
+	if(damage_flag == "bomb")
+		gets_drilled(lastminer, give_exp = FALSE)
+		queue_smooth_neighbors(src)
+	else
+		if(lastminer.goodluck(2) && mineralType)
+	//		to_chat(lastminer, span_notice("Bonus ducks!"))
+			new mineralType(src)
+		gets_drilled(lastminer, give_exp = FALSE)
+		queue_smooth_neighbors(src)
 	..()
 
 /turf/closed/mineral/proc/gets_drilled(mob/living/user, give_exp = TRUE)
@@ -92,10 +96,12 @@
 			if(prob(23))
 				new rockType(src)
 		SSblackbox.record_feedback("tally", "ore_mined", mineralAmt, mineralType)
-	else if(user.goodluck(2))
+	if(user.goodluck(2))
 		var/newthing = pickweight(list(/obj/item/natural/rock/salt = 2, /obj/item/natural/rock/iron = 1, /obj/item/natural/rock/coal = 2))
 //		to_chat(user, span_notice("Bonus ducks!"))
 		new newthing(src)
+	else
+		return
 
 	for(var/obj/effect/temp_visual/mining_overlay/M in src)
 		qdel(M)
@@ -140,15 +146,14 @@
 /turf/closed/mineral/ex_act(severity, target)
 	..()
 	switch(severity)
-		if(3)
-			if (prob(75))
-				gets_drilled(null, 1)
-		if(2)
-			if (prob(90))
-				gets_drilled(null, 1)
 		if(1)
-			gets_drilled(null, 1)
-	return
+			ScrapeAway()
+		if(2)
+			take_damage(rand(350, 600), BRUTE, "bomb", 0)
+		if(3)
+			take_damage(rand(50, 200), BRUTE, "bomb", 0)
+	if(!density)
+		..()
 
 /turf/closed/mineral/Spread(turf/T)
 	T.ChangeTurf(type)

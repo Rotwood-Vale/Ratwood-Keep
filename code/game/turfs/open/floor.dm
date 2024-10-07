@@ -64,6 +64,7 @@
 		return
 	if(target == src)
 		ScrapeAway(flags = CHANGETURF_INHERIT_AIR)
+		take_damage(INFINITY, BRUTE, "bomb", 0)
 		return
 	if(target != null)
 		severity = 3
@@ -72,24 +73,9 @@
 		if(1)
 			ScrapeAway(2, flags = CHANGETURF_INHERIT_AIR)
 		if(2)
-			switch(pick(1,2;75,3))
-				if(1)
-					if(!length(baseturfs))
-						ScrapeAway(flags = CHANGETURF_INHERIT_AIR)
-					else
-						ScrapeAway(2, flags = CHANGETURF_INHERIT_AIR)
-				if(2)
-					ScrapeAway(2, flags = CHANGETURF_INHERIT_AIR)
-				if(3)
-					if(prob(80))
-						ScrapeAway(flags = CHANGETURF_INHERIT_AIR)
-					else
-						break_tile()
-					hotspot_expose(1000,CELL_VOLUME)
+			take_damage(rand(350, 600), BRUTE, "bomb", 0)
 		if(3)
-			if (prob(50))
-				src.break_tile()
-				src.hotspot_expose(1000,CELL_VOLUME)
+			take_damage(rand(50, 200), BRUTE, "bomb", 0)
 
 /turf/open/floor/is_shielded()
 	for(var/obj/structure/A in contents)
