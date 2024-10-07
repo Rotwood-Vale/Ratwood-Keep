@@ -1,8 +1,8 @@
 /datum/advclass/rogue
 	name = "Rogue"
 	tutorial = "Rogues are men of shadows, and commonly associated with banditry. Most are usually akin to criminals, \
-	and those who aren't are usually treated as such anyway, \
-	they are most commonly associated with the god Xylix due to their skills in thievery"
+	and those who aren't are usually treated as such anyway. \
+	The class has the choice between the thieving rogue, the shadowy assassin, or the more upfront duelist."
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
 	outfit = /datum/outfit/job/roguetown/adventurer/rogue
@@ -67,7 +67,7 @@
 	ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
 	H.change_stat("strength", -1)
 	H.change_stat("perception", 2)
-	H.change_stat("speed", 4)
+	H.change_stat("speed", 3)
 	H.change_stat("intelligence", 2)
 
 
@@ -110,7 +110,7 @@
 	ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
 	H.change_stat("strength", -1)
 	H.change_stat("perception", 2)
-	H.change_stat("speed", 4)
+	H.change_stat("speed", 3)
 	H.change_stat("intelligence", 2)
 	H.visible_message(span_info("I honed my skills as a rogue through the years, and was skilled enough to become an assassin. Now it depends to me how I use my abilities."))
 	backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger/steel, /obj/item/lockpickring/mundane)
