@@ -20,6 +20,7 @@
 	H.mind.adjust_skillrank(/datum/skill/misc/stealing, 1, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 2, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/climbing, 2, TRUE) 
+	H.mind.adjust_skillrank(/datum/skill/misc/lockpicking, 1, TRUE)
 	belt = /obj/item/storage/belt/rogue/leather/rope
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/random
 	pants = /obj/item/clothing/under/roguetown/trou
