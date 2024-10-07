@@ -24,9 +24,13 @@
 /datum/mapGeneratorModule/proc/generate()
 	if(!mother)
 		return
+	excluded_turfs = typecacheof(excluded_turfs)
+	allowed_turfs = typecacheof(allowed_turfs)
+	allowed_areas = typecacheof(allowed_areas, only_root_path = include_subtypes)
 	var/list/map = mother.map
 	for(var/turf/T in map)
 		place(T)
+		CHECK_TICK
 
 
 //Place a spawnable atom or turf on this turf
@@ -36,27 +40,16 @@
 	var/clustering = 0
 	var/skipLoopIteration = FALSE
 
-	if(T.type in excluded_turfs)
+	if(excluded_turfs[T.type])
 		return
 
-	if(allowed_turfs.len)
-		if(!(T.type in allowed_turfs))
-			return
+	if(!allowed_turfs[T.type])
+		return
 
 	if(allowed_areas.len)
 		var/area/A = get_area(T)
-		if(A)
-			if(include_subtypes)
-				var/found
-				for(var/AT in allowed_areas)
-					if(istype(A, AT))
-						found = TRUE
-						break
-				if(!found)
-					return
-			else
-				if(!(A.type in allowed_areas))
-					return
+		if(!allowed_areas[A.type])
+			return
 
 	//Turfs don't care whether atoms can be placed here
 	for(var/turfPath in spawnableTurfs)
