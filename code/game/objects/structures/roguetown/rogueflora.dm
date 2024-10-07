@@ -361,7 +361,7 @@
 	attacked_sound = 'sound/misc/woodhit.ogg'
 
 /obj/structure/flora/roguegrass/bush/wall/Initialize()
-	..()
+	. = ..()
 	icon_state = "bushwall[pick(1,2)]"
 
 /obj/structure/flora/roguegrass/bush/wall/update_icon()
@@ -386,7 +386,7 @@
 	static_debris = null
 
 /obj/structure/flora/roguegrass/bush/wall/tall/Initialize()
-	..()
+	. = ..()
 	icon_state = "tallbush[pick(1,2)]"
 
 
@@ -421,7 +421,7 @@
 
 
 /obj/structure/flora/rogueshroom/Initialize()
-	..()
+	. = ..()
 	icon_state = "mush[rand(1,5)]"
 	if(icon_state == "mush5")
 		static_debris = list(/obj/item/natural/thorn=1, /obj/item/grown/log/tree/small = 1)
@@ -511,3 +511,59 @@
     dir = SOUTH
     debris = list(/obj/item/natural/thorn = 3, /obj/item/grown/log/tree/stick = 1)
 //WIP
+
+// swarmpweed bush -- STONEKEEP PORT
+/obj/structure/flora/roguegrass/swampweed
+	name = "bunch of swampweed"
+	desc = "a green root good for smoking."
+	icon_state = "swampweed1"
+	layer = ABOVE_ALL_MOB_LAYER
+	max_integrity = 1
+	climbable = FALSE
+	dir = SOUTH
+	debris = list(/obj/item/natural/fibers = 1)
+	var/list/looty3 = list()
+	var/bushtype3
+	var/res_replenish3
+
+/obj/structure/flora/roguegrass/swampweed/Initialize()
+	. = ..()
+	icon_state = "swampweed[rand(1,3)]"
+	if(prob(88))
+		bushtype3 = pickweight(list(/obj/item/reagent_containers/food/snacks/grown/rogue/sweetleaf = 1))
+	loot_replenish3()
+	pixel_x += rand(-3,3)
+
+/obj/structure/flora/roguegrass/swampweed/proc/loot_replenish3()
+	if(bushtype3)
+		looty3 += bushtype3
+	if(prob(66))
+		looty3 += /obj/item/reagent_containers/food/snacks/grown/rogue/sweetleaf
+
+/obj/structure/flora/roguegrass/swampweed/attack_hand(mob/user)
+	if(isliving(user))
+		var/mob/living/L = user
+		user.changeNext_move(CLICK_CD_MELEE)
+		playsound(src.loc, "plantcross", 80, FALSE, -1)
+		if(do_after(L, rand(1,5), target = src))
+#ifndef MATURESERVER
+			if(!looty3.len && (world.time > res_replenish3))
+				loot_replenish3()
+#endif
+			if(prob(50) && looty3.len)
+				if(looty3.len == 1)
+					res_replenish3 = world.time + 8 MINUTES
+				var/obj/item/B = pick_n_take(looty3)
+				if(B)
+					B = new B(user.loc)
+					user.put_in_hands(B)
+					user.visible_message("<span class='notice'>[user] finds [B] in [src].</span>")
+					return
+			user.visible_message("<span class='warning'>[user] searches through [src].</span>")
+#ifdef MATURESERVER
+			if(!looty3.len)
+				to_chat(user, "<span class='warning'>Picked clean.</span>")
+#else
+			if(!looty3.len)
+				to_chat(user, "<span class='warning'>Picked clean... I should try later.</span>")
+#endif

@@ -215,9 +215,6 @@
 	grant_lit_torch = TRUE
 	show_wanderer_examine = FALSE
 
-/datum/outfit/job/roguetown/heartfelt/magos
-	allowed_patrons = list(/datum/patron/divine/noc)
-
 /datum/outfit/job/roguetown/heartfelt/magos/pre_equip(mob/living/carbon/human/H)
 	..()
 	neck = /obj/item/clothing/neck/roguetown/talkstone
@@ -275,10 +272,6 @@
 	allowed_races = RACES_ALL_KINDS
 	grant_lit_torch = TRUE
 	show_wanderer_examine = FALSE
-
-
-/datum/outfit/job/roguetown/heartfelt/prior
-	allowed_patrons = list(/datum/patron/divine/astrata)
 
 /datum/outfit/job/roguetown/heartfelt/prior/pre_equip(mob/living/carbon/human/H)
 	..()

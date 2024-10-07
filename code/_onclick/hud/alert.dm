@@ -689,8 +689,8 @@ so as to remain in compliance with the most up-to-date laws."
 	return 1
 
 /atom/movable/screen/alert/Destroy()
-	. = ..()
 	severity = 0
 	master = null
 	mob_viewer = null
 	screen_loc = ""
+	return ..()

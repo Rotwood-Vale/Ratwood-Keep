@@ -266,6 +266,7 @@
 #define JDO_APPRENTICE 21
 
 #define JDO_ARTIFICER 22
+#define JDO_TAILOR 24
 
 #define JDO_BARKEEP 26
 #define JDO_COOK 27
@@ -359,7 +360,10 @@
 	/datum/job/roguetown/blacksmith,\
 	/datum/job/roguetown/artificer,\
 	/datum/job/roguetown/merchant,\
+	/datum/job/roguetown/tailor,\
 	/datum/job/roguetown/scribe
+
+
 
 #define WANDERER_ROLES \
 	/datum/job/roguetown/pilgrim,\

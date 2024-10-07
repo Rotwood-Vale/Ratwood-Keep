@@ -28,12 +28,13 @@
 	beltr = /obj/item/storage/keyring/mage
 	backr = /obj/item/storage/backpack/rogue/satchel
 	r_hand = /obj/item/rogueweapon/woodstaff
+	backpack_contents = list(/obj/item/roguegem/amethyst = 1)
 	if(H.pronouns == SHE_HER)
 		shoes = /obj/item/clothing/shoes/roguetown/sandals
 	else
 		shoes = /obj/item/clothing/shoes/roguetown/simpleshoes
 	if(H.mind)
-		H.mind.adjust_skillrank(/datum/skill/misc/reading, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/reading, 5, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/magic/arcane, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/craft/crafting, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/alchemy, 2, TRUE)
@@ -41,4 +42,3 @@
 		H.mind.adjust_spellpoints(1)
 	H.change_stat("intelligence", 2)
 	H.change_stat("speed", -1)
-

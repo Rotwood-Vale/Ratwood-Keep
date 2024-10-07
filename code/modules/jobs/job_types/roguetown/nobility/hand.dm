@@ -11,15 +11,15 @@
 	outfit = /datum/outfit/job/roguetown/hand
 	advclass_cat_rolls = list(CTAG_HAND = 20)
 	display_order = JDO_HAND
-	tutorial = "You owe everything to your liege. Once, you were just a humble friend- now you are one of the most important men within the kingdom itself. You have played spymaster and confidant to the Noble-Family for so long that you are a vault of intrigue, something you exploit with potent conviction. Let no man ever forget whose ear you whisper into. You've killed more men with those lips than any blademaster could ever claim to. \
-		\
-		This role allows for full customization."
+	tutorial = "You owe everything to your liege. Once, you were just a humble friend- now you are one of the most important men within the kingdom itself. You have played spymaster and confidant to the Noble-Family for so long that you are a vault of intrigue, something you exploit with potent conviction. Let no man ever forget whose ear you whisper into. You've killed more men with those lips than any blademaster could ever claim to."
 	whitelist_req = TRUE
 	give_bank_account = 44
 	min_pq = 0
 	max_pq = null
 
 	allow_custom_genitals = TRUE
+
+	cmode_music = 'sound/music/combat_fancy.ogg'
 
 /*
 /datum/job/roguetown/hand/special_job_check(mob/dead/new_player/player)

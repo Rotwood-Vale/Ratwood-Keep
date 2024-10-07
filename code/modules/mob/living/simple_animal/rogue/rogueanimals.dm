@@ -152,7 +152,7 @@
 	return FALSE
 
 /mob/living/simple_animal/hostile/retaliate/rogue/Initialize()
-	..()
+	. = ..()
 	if(milkies)
 		udder = new()
 	if(tame)
@@ -177,9 +177,8 @@
 	..()
 
 /mob/living/simple_animal/hostile/retaliate/rogue/Destroy()
-	qdel(udder)
-	udder = null
-	..()
+	QDEL_NULL(udder)
+	return ..()
 
 /mob/living/simple_animal/hostile/retaliate/rogue/Life()
 	. = ..()

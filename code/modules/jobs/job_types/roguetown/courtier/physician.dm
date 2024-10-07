@@ -13,9 +13,7 @@
 		Perhaps in another life, you would have turned out to be a powerful mage, wise archivist or a shrewd steward, \
 		but leprosy took away your younger years. \
 		Out of desperation, you followed the ways of Pestra and managed to be cured. \
-		Now you serve in the King's court ensuring the good health of those inhabiting the keep. \
-		\
-		This role allows for full customization."
+		Now you serve in the King's court ensuring the good health of those inhabiting the keep."
 	outfit = /datum/outfit/job/roguetown/physician
 	whitelist_req = TRUE
 
@@ -30,7 +28,6 @@
 /datum/outfit/job/roguetown/physician
 	name = "Physician"
 	jobtype = /datum/job/roguetown/physician
-	allowed_patrons = list(/datum/patron/divine/pestra)
 
 /datum/outfit/job/roguetown/physician/pre_equip(mob/living/carbon/human/H)
 	..()

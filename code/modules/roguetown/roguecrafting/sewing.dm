@@ -58,6 +58,13 @@
 				/obj/item/natural/fibers = 1)
 	craftdiff = 1
 
+/datum/crafting_recipe/roguetown/sewing/longcoat
+	name = "longcoat"
+	result = list(/obj/item/clothing/suit/roguetown/armor/longcoat)
+	reqs = list(/obj/item/natural/cloth = 2,
+				/obj/item/natural/fibers = 2)
+	craftdiff = 1
+
 /datum/crafting_recipe/roguetown/sewing/workervest
 	name = "striped tunic"
 	result = list(/obj/item/clothing/suit/roguetown/armor/workervest)

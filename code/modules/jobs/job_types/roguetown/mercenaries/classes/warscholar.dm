@@ -73,12 +73,15 @@
 	belt = /obj/item/storage/belt/rogue/leather
 	beltl = /obj/item/flashlight/flare/torch
 	beltr = /obj/item/storage/belt/rogue/pouch/coins/poor
-	shirt = /obj/item/clothing/suit/roguetown/armor/gambeson/lord
 	pants = /obj/item/clothing/under/roguetown/trou/leather
 	shoes = /obj/item/clothing/shoes/roguetown/boots
 	gloves = /obj/item/clothing/gloves/roguetown/angle
 	backr = /obj/item/storage/backpack/rogue/satchel/black
 	head = /obj/item/clothing/head/roguetown/roguehood/shalal/black
 	cloak = /obj/item/clothing/cloak/half
+	if(H.pronouns == SHE_HER)
+		shirt = /obj/item/clothing/suit/roguetown/armor/gambeson
+	else
+		shirt = /obj/item/clothing/suit/roguetown/armor/gambeson/lord // FUCK YOU ZETH, WHY DOESN'T THE ARMING JACKET GET WOMEN SPRITES..
 
 	backpack_contents = list(/obj/item/roguekey/mercenary,/obj/item/rogueweapon/huntingknife)

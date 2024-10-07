@@ -5,9 +5,6 @@
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
 
-/datum/outfit/job/roguetown/fablefield/goliard
-	allowed_patrons = list(/datum/patron/divine/xylix)
-
 /datum/outfit/job/roguetown/fablefield/goliard/pre_equip(mob/living/carbon/human/H)
 	..()
 	head = /obj/item/clothing/head/roguetown/bardhat
@@ -54,9 +51,6 @@
 	outfit = /datum/outfit/job/roguetown/fablefield/troubadour
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
-
-/datum/outfit/job/roguetown/fablefield/troubadour
-	allowed_patrons = list(/datum/patron/divine/xylix)
 
 /datum/outfit/job/roguetown/fablefield/troubadour/pre_equip(mob/living/carbon/human/H)
 	..()

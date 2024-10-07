@@ -1,17 +1,14 @@
 /datum/advclass/rogue
 	name = "Rogue"
 	tutorial = "Rogues are men of shadows, and commonly associated with banditry. Most are usually akin to criminals, \
-	and those who aren't are usually treated as such anyway, \
-	they are most commonly associated with the god Xylix due to their skills in thievery"
+	and those who aren't are usually treated as such anyway. \
+	The class has the choice between the thieving rogue, the shadowy assassin, or the more upfront duelist."
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
 	outfit = /datum/outfit/job/roguetown/adventurer/rogue
 	traits_applied = list(TRAIT_MEDIUMARMOR, TRAIT_DODGEEXPERT)
 	category_tags = list(CTAG_ADVENTURER)
 	cmode_music = 'sound/music/combat_rogue.ogg'
-
-/datum/outfit/job/roguetown/adventurer/rogue
-	allowed_patrons = list(/datum/patron/divine/xylix, /datum/patron/inhumen/matthios)
 
 /datum/outfit/job/roguetown/adventurer/rogue/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -63,14 +60,14 @@
 	cloak = /obj/item/clothing/cloak/raincloak/mortus
 	backl = /obj/item/storage/backpack/rogue/satchel
 	beltr = /obj/item/rogueweapon/huntingknife/idagger/steel
-	beltl = /obj/item/rogueweapon/huntingknife/idagger/steel
+	beltl = /obj/item/rogueweapon/huntingknife/idagger/steel/parrying
 	backpack_contents = list(/obj/item/lockpickring/mundane)
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_STEELHEARTED, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
 	H.change_stat("strength", -1)
 	H.change_stat("perception", 2)
-	H.change_stat("speed", 4)
+	H.change_stat("speed", 3)
 	H.change_stat("intelligence", 2)
 
 
@@ -79,7 +76,7 @@
 	neck = /obj/item/storage/belt/rogue/pouch/coins/poor
 	H.mind.adjust_skillrank(/datum/skill/combat/swords, 3, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/combat/maces, 2, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 3, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 4, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/athletics, 4, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/combat/bows, 3, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE)
@@ -113,16 +110,16 @@
 	ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
 	H.change_stat("strength", -1)
 	H.change_stat("perception", 2)
-	H.change_stat("speed", 4)
+	H.change_stat("speed", 3)
 	H.change_stat("intelligence", 2)
 	H.visible_message(span_info("I honed my skills as a rogue through the years, and was skilled enough to become an assassin. Now it depends to me how I use my abilities."))
-	backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger/steel, /obj/item/lockpick)
+	backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger/steel, /obj/item/lockpickring/mundane)
 
 /datum/outfit/job/roguetown/adventurer/rogue/proc/duelistarch(mob/living/carbon/human/H)
 	//less of other skills, more sword and knife combat skills.
 	H.mind.adjust_skillrank(/datum/skill/combat/swords, 4, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/combat/maces, 2, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/combat/shields, 1, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/combat/shields, 2, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 1, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/athletics, 4, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/combat/bows, 1, TRUE)
@@ -134,11 +131,11 @@
 	H.mind.adjust_skillrank(/datum/skill/misc/climbing, 3, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/craft/crafting, 1, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 2, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/misc/stealing, 2, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 3, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/misc/stealing, 3, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/craft/traps, 1, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/riding, 1, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/misc/lockpicking, 2, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/misc/lockpicking, 3, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/tracking, 2, TRUE)
 	shoes = /obj/item/clothing/shoes/roguetown/shortboots
 	neck = /obj/item/storage/belt/rogue/pouch/coins/poor

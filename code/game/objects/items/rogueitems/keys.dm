@@ -283,6 +283,12 @@
 	icon_state = "brownkey"
 	lockid = "artificer"
 
+/obj/item/roguekey/tailor
+	name = "tailor's key"
+	desc = "This key opens the tailor's shop. There is a thin thread wrapped around it."
+	icon_state = "brownkey"
+	lockid = "tailor"
+
 /obj/item/roguekey/nightman
 	name = "nightmaster's key"
 	desc = "This regal key opens a few doors within the castle."
@@ -405,6 +411,26 @@
 	name = "apartment iv key"
 	icon_state = "brownkey"
 	lockid = "apartment4"
+
+/obj/item/roguekey/apartments/stall1
+	name = "stall i key"
+	icon_state = "brownkey"
+	lockid = "stall1"
+
+/obj/item/roguekey/apartments/stall2
+	name = "stall ii key"
+	icon_state = "brownkey"
+	lockid = "stall2"
+
+/obj/item/roguekey/apartments/stall3
+	name = "stall iii key"
+	icon_state = "brownkey"
+	lockid = "stall3"
+
+/obj/item/roguekey/apartments/stall4
+	name = "stall iv key"
+	icon_state = "brownkey"
+	lockid = "stall4"
 
 //custom key
 /obj/item/roguekey/custom

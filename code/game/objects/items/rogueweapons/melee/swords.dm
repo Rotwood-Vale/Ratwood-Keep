@@ -1,7 +1,7 @@
 
 /obj/item/rogueweapon/sword
 	slot_flags = ITEM_SLOT_HIP | ITEM_SLOT_BACK
-	force = 18
+	force = 22
 	force_wielded = 25
 	possible_item_intents = list(/datum/intent/sword/cut, /datum/intent/sword/thrust)
 	gripped_intents = list(/datum/intent/sword/cut, /datum/intent/sword/thrust)
@@ -67,6 +67,7 @@
 	chargetime = 0
 	hitsound = list('sound/combat/hits/bladed/genslash (1).ogg', 'sound/combat/hits/bladed/genslash (2).ogg', 'sound/combat/hits/bladed/genslash (3).ogg')
 	swingdelay = 0
+	damfactor = 1.1
 	item_d_type = "slash"
 
 /datum/intent/sword/thrust
@@ -350,9 +351,9 @@
 	animname = "chop"
 	blade_class = BCLASS_CHOP
 	hitsound = list('sound/combat/hits/bladed/genchop (1).ogg', 'sound/combat/hits/bladed/genchop (2).ogg', 'sound/combat/hits/bladed/genchop (3).ogg')
-	penfactor = 10
+	penfactor = 30
 	swingdelay = 8
-	damfactor = 0.8
+	damfactor = 1.0
 	item_d_type = "slash"
 
 /obj/item/rogueweapon/sword/long/exe
@@ -615,3 +616,109 @@
 	smelt_bar_num = 2
 	max_blade_int = 150
 	max_integrity = 200
+
+/obj/item/rogueweapon/sword/long/blackflamb
+	force = 20
+	force_wielded = 32
+	icon_state = "blackflamb"
+	name = "blacksteel flamberge"
+	desc = "A strange sword with a winding blade forged of blacksteel and a rontz pommel."
+	smeltresult = /obj/item/ingot/blacksteel
+	max_integrity = 200
+
+/obj/item/rogueweapon/sword/long/blackflamb/getonmobprop(tag)
+	. = ..()
+	if(tag)
+		switch(tag)
+			if("gen") return list(
+				"shrink" = 0.5,
+				"sx" = -14,
+				"sy" = -8,
+				"nx" = 15,
+				"ny" = -7,
+				"wx" = -10,
+				"wy" = -5,
+				"ex" = 7,
+				"ey" = -6,
+				"northabove" = 0,
+				"southabove" = 1,
+				"eastabove" = 1,
+				"westabove" = 0,
+				"nturn" = -13,
+				"sturn" = 110,
+				"wturn" = -60,
+				"eturn" = -30,
+				"nflip" = 1,
+				"sflip" = 1,
+				"wflip" = 8,
+				"eflip" = 1,
+				)
+			if("onback") return list(
+				"shrink" = 0.5,
+				"sx" = -1,
+				"sy" = 2,
+				"nx" = 0,
+				"ny" = 2,
+				"wx" = 2,
+				"wy" = 1,
+				"ex" = 0,
+				"ey" = 1,
+				"nturn" = 0,
+				"sturn" = 0,
+				"wturn" = 70,
+				"eturn" = 15,
+				"nflip" = 1,
+				"sflip" = 1,
+				"wflip" = 1,
+				"eflip" = 1,
+				"northabove" = 1,
+				"southabove" = 0,
+				"eastabove" = 0,
+				"westabove" = 0,
+				)
+			if("wielded") return list(
+				"shrink" = 0.6,
+				"sx" = 3,
+				"sy" = 5,
+				"nx" = -3,
+				"ny" = 5,
+				"wx" = -9,
+				"wy" = 4,
+				"ex" = 9,
+				"ey" = 1,
+				"northabove" = 0,
+				"southabove" = 1,
+				"eastabove" = 1,
+				"westabove" = 0,
+				"nturn" = 0,
+				"sturn" = 0,
+				"wturn" = 0,
+				"eturn" = 15,
+				"nflip" = 8,
+				"sflip" = 0,
+				"wflip" = 8,
+				"eflip" = 0,
+				)
+			if("onbelt") return list(
+				"shrink" = 0.4,
+				"sx" = -4,
+				"sy" = -6,
+				"nx" = 5,
+				"ny" = -6,
+				"wx" = 0,
+				"wy" = -6,
+				"ex" = -1,
+				"ey" = -6,
+				"nturn" = 100,
+				"sturn" = 156,
+				"wturn" = 90,
+				"eturn" = 180,
+				"nflip" = 0,
+				"sflip" = 0,
+				"wflip" = 0,
+				"eflip" = 0,
+				"northabove" = 0,
+				"southabove" = 1,
+				"eastabove" = 1,
+				"westabove" = 0,
+				)

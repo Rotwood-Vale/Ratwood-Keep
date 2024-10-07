@@ -12,14 +12,11 @@ FORBID_INCLUDE = [
     # Included by tgs/includes.dm
     r'code/modules/tgs/**/*.dm',
 
-    # Included by _ndatabase/includes.dm
-    r'code/datums/_ndatabase/**/*.dm',
-
-    # Included by BSQL/includes.dm
-    r'code/__HELPERS/BSQL/**/*.dm',
-
     # Included as part of OD lints
-    r'code/__pragmas.dm'
+    r'code/__pragmas.dm',
+
+    # Not code
+    r'code/__DEFINES/_readme.dm',
 ]
 
 lines = []

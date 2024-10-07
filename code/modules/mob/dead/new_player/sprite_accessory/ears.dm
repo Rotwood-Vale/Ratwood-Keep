@@ -305,5 +305,6 @@
 
 /datum/sprite_accessory/ears/goblin
 	name = "Goblin"
+	icon = 'icons/mob/sprite_accessory/halforc.dmi'
 	icon_state = "goblin"
 	color_key_defaults = list(KEY_SKIN_COLOR)

@@ -12,7 +12,7 @@
 	var/datum/antagonist/lich/possessor
 
 /obj/item/phylactery/Initialize()
-	..()
+	. = ..()
 	filters += filter(type="drop_shadow", x=0, y=0, size=1, offset=2, color=rgb(rand(1,255),rand(1,255),rand(1,255)))
 
 /obj/item/phylactery/proc/be_consumed(timer)
