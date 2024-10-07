@@ -257,8 +257,6 @@
 			if(L.mob_biotypes & MOB_UNDEAD) //positive energy harms the undead
 				L.visible_message(span_danger("[L] is unmade by holy light!"), span_userdanger("I'm unmade by holy light!"))
 				L.gib()
-				return TRUE
-			return TRUE
 		return TRUE
 	else
 		return FALSE
