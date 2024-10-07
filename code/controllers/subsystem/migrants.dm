@@ -191,7 +191,6 @@ SUBSYSTEM_DEF(migrants)
 /datum/controller/subsystem/migrants/proc/spawn_migrant(datum/migrant_wave/wave, datum/migrant_assignment/assignment, spawn_on_location)
 	var/rank = "Migrant"
 	var/mob/dead/new_player/newplayer = assignment.client.mob
-	var/ckey = assignment.client.ckey
 
 	SSjob.AssignRole(newplayer, rank, TRUE)
 
