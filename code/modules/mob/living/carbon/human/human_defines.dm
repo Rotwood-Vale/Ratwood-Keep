@@ -110,6 +110,10 @@
 
 	var/ooc_notes = null
 
+	var/nsfw_headshot_link = null
+
+	var/nsfw_info = null
+
 	possible_rmb_intents = list(/datum/rmb_intent/feint,\
 	/datum/rmb_intent/aimed,\
 	/datum/rmb_intent/strong,\

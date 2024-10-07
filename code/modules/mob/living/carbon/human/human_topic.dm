@@ -34,6 +34,15 @@
 		popup.set_content(dat.Join())
 		popup.open(FALSE)
 		return
+	if(href_list["task"] == "view_nsfw_headshot")
+		if(!ismob(usr))
+			return
+		var/mob/user = usr
+		var/list/dat = list("<div align='center'><img src='[nsfw_headshot_link]' width='500px' height='500px'></div><br><font size=3><u>NSFW Info:</u><br>[replacetext(nsfw_info, "\n", "<BR>")]<br><br>")
+		var/datum/browser/popup = new(user, "nsfw_headshot", "<div align='center'>[src]'s NSFW Information</div>", 560, 570)
+		popup.set_content(dat.Join())
+		popup.open(FALSE)
+		return
 
 	if(href_list["inspect_limb"] && (observer_privilege || usr.canUseTopic(src, BE_CLOSE, NO_DEXTERITY)))
 		var/list/msg = list()

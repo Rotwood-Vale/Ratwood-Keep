@@ -202,6 +202,8 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 
 	S["defiant"]			>> defiant
 
+	S["nsfw"]			>> nsfw
+
 	//try to fix any outdated data if necessary
 	if(needs_update >= 0)
 		update_preferences(needs_update, S)		//needs_update = savefile_version if we need an update (positive integer)
@@ -236,7 +238,8 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	pda_style		= sanitize_inlist(pda_style, GLOB.pda_styles, initial(pda_style))
 	pda_color		= sanitize_hexcolor(pda_color, 6, 1, initial(pda_color))
 	key_bindings 	= sanitize_islist(key_bindings, list())
-	defiant	= sanitize_integer(defiant, FALSE, TRUE, TRUE)
+	defiant			= sanitize_integer(defiant, FALSE, TRUE, TRUE)
+	nsfw			= sanitize_integer(nsfw, FALSE, TRUE, TRUE)
 
 	//ROGUETOWN
 	parallax = PARALLAX_INSANE
@@ -302,6 +305,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	WRITE_FILE(S["pda_color"], pda_color)
 	WRITE_FILE(S["key_bindings"], key_bindings)
 	WRITE_FILE(S["defiant"], defiant)
+	WRITE_FILE(S["nsfw"], nsfw)
 	return TRUE
 
 
@@ -451,6 +455,15 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	S["headshot_link"]			>> headshot_link
 	if(!valid_headshot_link(null, headshot_link, TRUE))
 		headshot_link = null
+
+	S["nsfw_headshot_link"]		>> nsfw_headshot_link
+	if(!valid_nsfw_headshot_link(null, nsfw_headshot_link, TRUE))
+		nsfw_headshot_link = null
+
+	S["nsfw_info"]		>> nsfw_info
+	if(!valid_nsfw_info(null, nsfw_info, TRUE))
+		nsfw_info = null
+
 
 	S["char_accent"]		>> char_accent
 	if (!char_accent)
@@ -605,6 +618,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 
 	WRITE_FILE(S["update_mutant_colors"] , update_mutant_colors)
 	WRITE_FILE(S["headshot_link"] , headshot_link)
+	WRITE_FILE(S["nsfw_headshot_link"] , nsfw_headshot_link)
 	WRITE_FILE(S["char_accent"] , char_accent)
 	WRITE_FILE(S["statpack"] , statpack.type)
 	WRITE_FILE(S["voice_type"] , voice_type)
@@ -617,6 +631,8 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	WRITE_FILE(S["flavor_text"] , flavor_text)
 
 	WRITE_FILE(S["ooc_notes"] , ooc_notes)
+
+	WRITE_FILE(S["nsfw_info"] , nsfw_info)
 
 	WRITE_FILE(S["is_updated_for_genitalia"], TRUE)
 

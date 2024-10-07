@@ -513,25 +513,40 @@
 
 	if(!obscure_name && headshot_link)
 		. += "<a href='?src=[REF(src)];task=view_headshot;'>View Infocard</a>"
-		. += "<a href='?src=[REF(src)];task=view_erp_preferences;'>View ERP Preferences</a>"
+//		. += "<a href='?src=[REF(src)];task=view_erp_preferences;'>View ERP Preferences</a>"
 		for(var/line in lines)        //this line
 			. += span_info(line)	// and this line are responsible for placing descriptor position
+	if(!obscure_name && nsfw_headshot_link && user.client.prefs.nsfw || !obscure_name && nsfw_info && user.client.prefs.nsfw)
+		. += "<a href='?src=[REF(src)];task=view_nsfw_headshot;'>View NSFW Info</a>"
+
+
+
 	if(!obscure_name && flavor_text)
 		if(!obscure_name && headshot_link)
 	 	return
 		. += "<a href='?src=[REF(src)];task=view_flavor;'>View Description</a>"
-		. += "<a href='?src=[REF(src)];task=view_erp_preferences;'>View ERP Preferences</a>"
+//		. += "<a href='?src=[REF(src)];task=view_erp_preferences;'>View ERP Preferences</a>"
 		for(var/line in lines)        //this line
 			. += span_info(line)	// and this line are responsible for placing descriptor position
+	if(!obscure_name && nsfw_headshot_link && user.client.prefs.nsfw || !obscure_name && nsfw_info && user.client.prefs.nsfw)
+		. += "<a href='?src=[REF(src)];task=view_nsfw_headshot;'>View NSFW Info</a>"
+
+
+
 	if(!obscure_name && ooc_notes)
 		if(!obscure_name && headshot_link)
 			return
 		if(!obscure_name && flavor_text)
 			return
 		. += "<a href='?src=[REF(src)];task=view_ooc_notes;'>View OOC Notes</a>"
-		. += "<a href='?src=[REF(src)];task=view_erp_preferences;'>View ERP Preferences</a>"
+//		. += "<a href='?src=[REF(src)];task=view_erp_preferences;'>View ERP Preferences</a>"
 		for(var/line in lines)        //this line
 			. += span_info(line)	// and this line are responsible for placing descriptor position
+	if(!obscure_name && nsfw_headshot_link && user.client.prefs.nsfw || !obscure_name && nsfw_info && user.client.prefs.nsfw)
+		. += "<a href='?src=[REF(src)];task=view_nsfw_headshot;'>View NSFW Infoc</a>"
+
+
+
 	if(!obscure_name)
 		if(!obscure_name && headshot_link)
 			return
@@ -539,9 +554,13 @@
 			return
 		if(!obscure_name && ooc_notes)
 			return
-		. += "<a href='?src=[REF(src)];task=view_erp_preferences;'>View ERP Preferences</a>"
+//		. += "<a href='?src=[REF(src)];task=view_erp_preferences;'>View ERP Preferences</a>"
 		for(var/line in lines)        //this line
 			. += span_info(line)	// and this line are responsible for placing descriptor position
+	if(!obscure_name && nsfw_headshot_link && user.client.prefs.nsfw || !obscure_name && nsfw_info && user.client.prefs.nsfw)
+		. += "<a href='?src=[REF(src)];task=view_nsfw_headshot;'>View NSFW Info</a>"
+
+
 	var/trait_exam = common_trait_examine()
 	if(!isnull(trait_exam))
 		. += trait_exam

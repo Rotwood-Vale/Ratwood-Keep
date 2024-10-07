@@ -60,6 +60,17 @@
 		else
 			to_chat(src, "Others can't touch you.")
 
+/client/verb/toggle_nsfw()
+	set category = "Options"
+	set name = "Toggle NSFW Content"
+	if(prefs)
+		prefs.nsfw = !prefs.nsfw
+		prefs.save_preferences()
+		if(prefs.nsfw)
+			to_chat(src, "NSFW Content enabled.")
+		else
+			to_chat(src, "NSFW Content disabled.")
+
 /client/verb/toggle_lobby_music()
 	set name = "Toggle Lobby Music"
 	set category = "Options"

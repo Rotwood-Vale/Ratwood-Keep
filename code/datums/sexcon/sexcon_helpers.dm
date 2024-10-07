@@ -38,6 +38,7 @@
 	var/can_do_sex = TRUE
 	var/virginity = FALSE
 	var/defiant = FALSE
+	var/nsfw = FALSE
 
 /mob/living/carbon/human/MiddleMouseDrop_T(mob/living/target, mob/living/user)
 	if(user.mmb_intent)
