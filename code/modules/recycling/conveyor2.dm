@@ -130,13 +130,11 @@ GLOBAL_LIST_EMPTY(conveyors_by_id)
 	if(!operating)
 		return
 	use_power(6)
-	affecting = loc.contents - src		// moved items will be all in loc
-	addtimer(CALLBACK(src, PROC_REF(convey), affecting), 1)
-
-/obj/machinery/conveyor/proc/convey(list/affecting)
-	for(var/atom/movable/A in affecting)
-		if((A.loc == loc) && A.has_gravity())
-			A.ConveyorMove(movedir)
+	// Who the fuck put this on a 1ds delay? It happens every 2s, what does it matter
+	for(var/atom/movable/A as anything in loc)
+		if(A == src)
+			continue
+		A.ConveyorMove(movedir)
 
 // attack with item, place item on conveyor
 /obj/machinery/conveyor/attackby(obj/item/I, mob/user, params)
