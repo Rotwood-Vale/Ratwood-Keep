@@ -30,15 +30,14 @@ SUBSYSTEM_DEF(icon_smooth)
 			can_fire = 0
 
 /datum/controller/subsystem/icon_smooth/Initialize()
-	smooth_zlevel(1,TRUE)
-	smooth_zlevel(2,TRUE)
-	var/queue = smooth_queue
+	var/list/queue = smooth_queue
 	smooth_queue = list()
 	for(var/V in queue)
-		var/atom/A = V
-		if(!A || A.z <= 2)
+		var/atom/smoothing_atom = queue[length(queue)]
+		queue.len--
+		if(QDELETED(smoothing_atom) || !(smoothing_atom.smooth & SMOOTH_QUEUED) || !smoothing_atom.z)
 			continue
-		smooth_icon(A)
+		smooth_icon(smoothing_atom)
 		CHECK_TICK
 	queue = blueprint_queue
 	blueprint_queue = list()
