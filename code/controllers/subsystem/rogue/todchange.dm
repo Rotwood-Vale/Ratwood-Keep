@@ -6,25 +6,20 @@ SUBSYSTEM_DEF(todchange)
 	var/list/processing = list()
 	var/list/currentrun = list()
 	processing_flag = PROCESSING_TODCHANGE
-	var/amt2update = 100
 
 /datum/controller/subsystem/todchange/fire(resumed = 0)
 	if (!resumed || !currentrun.len)
-		src.currentrun = shuffle(processing.Copy())
+		src.currentrun = processing.Copy()
 
-//	//cache for sanic speed (lists are references anyways)
-//	var/list/currentrun = src.currentrun
+	//cache for sanic speed (lists are references anyways)
+	var/list/current = src.currentrun
 
-//	if(!currentrun.len)
+//	if(!current.len)
 //		testing("nothing to update [rand(1,9)]")
 
-	var/ye = 0
-	while(currentrun.len)
-		if(ye > amt2update)
-			return
-		ye++
-		var/obj/effect/sunlight/L = currentrun[currentrun.len]
-		currentrun.len--
+	while(current.len)
+		var/obj/effect/sunlight/L = current[current.len]
+		current.len--
 		if (!L || QDELETED(L))
 			processing -= L
 			if (MC_TICK_CHECK)

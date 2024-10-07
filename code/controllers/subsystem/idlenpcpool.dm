@@ -2,9 +2,8 @@ SUBSYSTEM_DEF(idlenpcpool)
 	name = "Idling NPC Pool"
 	flags = SS_POST_FIRE_TIMING|SS_BACKGROUND|SS_NO_INIT
 	priority = FIRE_PRIORITY_IDLE_NPC
-//	wait = 10
+	wait = 6 SECONDS
 	runlevels = RUNLEVEL_GAME | RUNLEVEL_POSTGAME
-	var/amt2update = 10
 
 	var/list/currentrun = list()
 	var/static/list/idle_mobs_by_zlevel[][]
@@ -30,18 +29,14 @@ SUBSYSTEM_DEF(idlenpcpool)
 /datum/controller/subsystem/idlenpcpool/fire(resumed = FALSE)
 	if (!resumed || !currentrun.len)
 		var/list/idlelist = GLOB.simple_animals[AI_IDLE]
-		src.currentrun = shuffle(idlelist.Copy())
+		src.currentrun = idlelist.Copy()
 
-//	//cache for sanic speed (lists are references anyways)
-//	var/list/currentrun = src.currentrun
+	//cache for sanic speed (lists are references anyways)
+	var/list/current = src.currentrun
 
-	var/ye = 0
-	while(currentrun.len)
-		if(ye > amt2update)
-			return
-		ye++
-		var/mob/living/simple_animal/SA = currentrun[currentrun.len]
-		--currentrun.len
+	while(current.len)
+		var/mob/living/simple_animal/SA = current[current.len]
+		--current.len
 		if (!SA)
 			GLOB.simple_animals[AI_IDLE] -= SA
 			continue
