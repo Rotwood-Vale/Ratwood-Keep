@@ -220,6 +220,9 @@
 /obj/item/lockpickring/mundane
 	picks = list(/obj/item/lockpick, /obj/item/lockpick, /obj/item/lockpick)
 
+/obj/item/lockpickring/one
+	picks = list(/obj/item/lockpick)
+
 /obj/item/storage/keyring/butcher	// Just incase, butcher can at least see to getting farmers incase there are none given he sucks at farming.
 	keys = list(/obj/item/roguekey/farm, /obj/item/roguekey/butcher)
 
