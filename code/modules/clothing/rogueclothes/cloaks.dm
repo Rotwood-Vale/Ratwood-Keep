@@ -1271,7 +1271,8 @@
 
 /obj/item/clothing/suit/roguetown/armor/plate/blkknight
 	slot_flags = ITEM_SLOT_ARMOR
-	name = "blacksteel plate"
+	name = "darkened steel plate"
+	desc = "A darkened half-plate piece with added arm coverage."
 	body_parts_covered = CHEST|GROIN|VITALS|ARMS
 	r_sleeve_status = SLEEVE_NOMOD
 	l_sleeve_status = SLEEVE_NOMOD
@@ -1281,7 +1282,7 @@
 	sleeved = 'icons/roguetown/clothing/special/onmob/blkknight.dmi'
 
 /obj/item/clothing/shoes/roguetown/boots/armor/blkknight
-	name = "blacksteel boots"
+	name = "darkened steel boots"
 	icon_state = "bkboots"
 	icon = 'icons/roguetown/clothing/special/blkknight.dmi'
 	mob_overlay_icon = 'icons/roguetown/clothing/special/onmob/blkknight.dmi'
