@@ -21,6 +21,7 @@
 
 /datum/outfit/job/roguetown/squire
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/guard
+	pants = /obj/item/clothing/under/roguetown/chainlegs/iron
 	shoes = /obj/item/clothing/shoes/roguetown/boots
 	belt = /obj/item/storage/belt/rogue/leather
 	beltl = /obj/item/storage/keyring/guardcastle
@@ -34,7 +35,7 @@
 		H.become_blind("advsetup")
 
 /datum/advclass/squire/lancer
-	name = "Lancer Trainee"
+	name = "Lancer Squire"
 	tutorial = "A hopeful for the next generation of knightly mounted lancers and infantry pike specialists, \
 	your training with polearms sets you apart from other squires."
 	outfit = /datum/outfit/job/roguetown/squire/lancer
@@ -44,13 +45,12 @@
 /datum/outfit/job/roguetown/squire/lancer/pre_equip(mob/living/carbon/human/H)
 	r_hand = /obj/item/rogueweapon/spear
 	armor = /obj/item/clothing/suit/roguetown/armor/chainmail
-	neck = /obj/item/clothing/neck/roguetown/chaincoif
-	pants = /obj/item/clothing/under/roguetown/chainlegs/iron
 	gloves = /obj/item/clothing/gloves/roguetown/leather
 	wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
 	backr = /obj/item/storage/backpack/rogue/satchel
 	backpack_contents = list(
 		/obj/item/storage/belt/rogue/pouch,
+		/obj/item/clothing/neck/roguetown/chaincoif
 	)
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/combat/maces, 1, TRUE)
@@ -71,7 +71,7 @@
 	ADD_TRAIT(H, TRAIT_SQUIRE_REPAIR, TRAIT_GENERIC)
 
 /datum/advclass/squire/footman
-	name = "Trainee Footman"
+	name = "Footman Squire"
 	tutorial = "Your training has been singularly focused on the intricacies of sword, a weapon whose versatility \
 	belies the difficulty of its use."
 	outfit = /datum/outfit/job/roguetown/squire/footman
@@ -80,13 +80,12 @@
 
 /datum/outfit/job/roguetown/squire/footman/pre_equip(mob/living/carbon/human/H)
 	armor = /obj/item/clothing/suit/roguetown/armor/chainmail
-	neck = /obj/item/clothing/neck/roguetown/chaincoif
-	pants = /obj/item/clothing/under/roguetown/chainlegs/iron
 	gloves = /obj/item/clothing/gloves/roguetown/leather
 	wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
 	backr = /obj/item/storage/backpack/rogue/satchel
 	backpack_contents = list(
 		/obj/item/storage/belt/rogue/pouch,
+		/obj/item/clothing/neck/roguetown/chaincoif
 	)
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/combat/maces, 2, TRUE)
@@ -116,7 +115,7 @@
 			beltr = /obj/item/rogueweapon/mace/cudgel
 
 /datum/advclass/squire/skirmisher
-	name = "Skirmisher"
+	name = "Irregular Squire"
 	tutorial = "As militaries become more flexible and tactics more moderne the importance of irregular troops \
 	has become more apparent, and hopefuls such as yourself have been trained into the future of elite skirmisher \
 	troops."
@@ -128,14 +127,13 @@
 	beltr = /obj/item/quiver/arrows
 	armor = /obj/item/clothing/suit/roguetown/armor/leather/studded
 	backl = /obj/item/gun/ballistic/revolver/grenadelauncher/bow/recurve
-	neck = /obj/item/clothing/neck/roguetown/chaincoif
-	pants = /obj/item/clothing/under/roguetown/chainlegs/iron
 	gloves = /obj/item/clothing/gloves/roguetown/leather
 	wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
 	backr = /obj/item/storage/backpack/rogue/satchel
 	backpack_contents = list(
 		/obj/item/rogueweapon/huntingknife/idagger,
 		/obj/item/storage/belt/rogue/pouch,
+		/obj/item/clothing/neck/roguetown/chaincoif,
 		)
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/combat/bows, 2, TRUE)
