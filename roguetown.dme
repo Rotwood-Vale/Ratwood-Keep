@@ -1686,6 +1686,8 @@
 #include "code\modules\antagonists\roguetown\villain\vampire.dm"
 #include "code\modules\antagonists\roguetown\villain\vampirelord.dm"
 #include "code\modules\antagonists\roguetown\villain\zomble.dm"
+#include "code\modules\antagonists\roguetown\villain\ascendant\ascendant.dm"
+#include "code\modules\antagonists\roguetown\villain\ascendant\ascendant_altar.dm"
 #include "code\modules\antagonists\roguetown\villain\lich\lich.dm"
 #include "code\modules\antagonists\roguetown\villain\lich\phylactery.dm"
 #include "code\modules\antagonists\roguetown\villain\maniac\maniac.dm"

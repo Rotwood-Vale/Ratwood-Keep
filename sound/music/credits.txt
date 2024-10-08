@@ -19,5 +19,6 @@ tavern2.ogg: Pathologic (Classic) - Broken Heart Pub
 combat_steppe.ogg: Tatar Theme (Hellish Quart OST)
 combat_bandit_brigand: Silent Scream - Lateralis
 combat_bandit_mage: Timestopper Tactics - corru.works
+combat_ascended: TO PIERCE THE BLACK SKY /// ENVY INTERLUDE - UNFORTUNATE DEVELOPMENT
 warscholar.ogg: Butcher's Boulevard - Kristjan Thomas Haaristo
 combat_fancy.ogg: Eric Heberling - Wilderness (Piano)
