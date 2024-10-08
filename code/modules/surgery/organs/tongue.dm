@@ -18,7 +18,8 @@
 		/datum/language/beast,
 		/datum/language/orcish,
 		/datum/language/draconic,
-		/datum/language/canilunzt
+		/datum/language/canilunzt,
+		/datum/language/thievescant
 	))
 
 /obj/item/organ/tongue/Initialize(mapload)

@@ -89,6 +89,7 @@
 	domain = "God of Trickery, Freedom and Inspiration"
 	desc = "The Mad-God, gifted man wanderlust and a thousand tricks."
 	worshippers = "Cheats, Frauds, Silver-Tongued devils and Roguish Types"
+	mob_traits = list(TRAIT_XYLIX)
 	confess_lines = list(
 		"ASTRATA IS MY LIGHT!",
 		"NOC IS NIGHT!",
