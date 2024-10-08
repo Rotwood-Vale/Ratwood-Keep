@@ -30,11 +30,6 @@
 	display_order = JDO_LADY
 	give_bank_account = TRUE
 
-/datum/job/roguetown/lady/after_spawn(mob/living/H, mob/M, latejoin)
-	. = ..()
-	if(GLOB.lordsurname && H)
-		give_lord_surname(H, preserve_original = TRUE)
-
 /datum/outfit/job/roguetown/lady/pre_equip(mob/living/carbon/human/H)
 	. = ..()
 	ADD_TRAIT(H, TRAIT_SEEPRICES, TRAIT_GENERIC)

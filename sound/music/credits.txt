@@ -14,6 +14,8 @@ combat_knight.ogg: Dragon's Dogma OST: Tense Combat
 title1.ogg: Aphex Twin - Stone In Focus
 bath.ogg: Mabisyo - No Baby (Cropped to 1:00)
 tav_tune.ogg: Divinity Original Sin 2 - Black Bull Tavern
+tavern1.ogg: Pathologic 2 - Broken Heart Pub
+tavern2.ogg: Pathologic (Classic) - Broken Heart Pub
 combat_steppe.ogg: Tatar Theme (Hellish Quart OST)
 combat_bandit_brigand: Silent Scream - Lateralis
 combat_bandit_mage: Timestopper Tactics - corru.works

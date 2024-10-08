@@ -58,8 +58,6 @@
 		OFFSET_NECK_F = list(0,-1), OFFSET_MOUTH_F = list(0,-1), OFFSET_PANTS_F = list(0,0), \
 		OFFSET_SHIRT_F = list(0,0), OFFSET_ARMOR_F = list(0,0), OFFSET_UNDIES_F = list(0,-1), \
 		)
-	specstats = list("strength" = 0, "perception" = -1, "intelligence" = 1, "constitution" = -1, "endurance" = 1, "speed" = 2, "fortune" = 0)
-	specstats_f = list("strength" = 1, "perception" = -1, "intelligence" = 2, "constitution" = 0, "endurance" = 1, "speed" = 1, "fortune" = 0)
 	race_bonus = list(STAT_PERCEPTION = 1)
 	enflamed_icon = "widefire"
 	organs = list(

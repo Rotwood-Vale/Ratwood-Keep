@@ -1522,7 +1522,7 @@ Slots: [job.spawn_positions]</span>
 					if(pronouns_input)
 						pronouns = pronouns_input
 						ResetJobs()
-						to_chat(user, "<font color='red'>Your character's pronouns are now [pronouns].")
+						to_chat(user, "<font color='red'>Your character's pronouns are now [pronouns].</font>")
 						to_chat(user, "<font color='red'><b>Your classes have been reset.</b></font>")
 
 				// LETHALSTONE EDIT: add voice type selection
@@ -1530,7 +1530,7 @@ Slots: [job.spawn_positions]</span>
 					var voicetype_input = input(user, "Choose your character's voice type", "Voice Type") as null|anything in GLOB.voice_types_list
 					if(voicetype_input)
 						voice_type = voicetype_input
-						to_chat(user, "<font color='red'>Your character will now vocalize with a [lowertext(voice_type)] affect.")
+						to_chat(user, "<font color='red'>Your character will now vocalize with a [lowertext(voice_type)] affect.</font>")
 
 				if("faith")
 					var/list/faiths_named = list()
@@ -1821,7 +1821,7 @@ Slots: [job.spawn_positions]</span>
 						pickedGender = "female"
 					if(pickedGender && pickedGender != gender)
 						gender = pickedGender
-						to_chat(user, "<font color='red'>Your character will now use a [friendlyGenders[pickedGender]] sprite.")
+						to_chat(user, "<font color='red'>Your character will now use a [friendlyGenders[pickedGender]] sprite.</font>")
 						//random_character(gender)
 					genderize_customizer_entries()
 				if("domhand")

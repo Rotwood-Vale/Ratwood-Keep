@@ -6,23 +6,29 @@
 	name = "Man/Woman"
 
 /datum/mob_descriptor/stature/man/get_description(mob/living/described)
-	if(described.pronouns == SHE_HER)
-		return "woman"
-	else if(described.pronouns == HE_HIM)
-		return "man"
-	else
-		return "person"
+	switch(described.pronouns)
+		if(SHE_HER)
+			return "woman"
+		if(HE_HIM)
+			return "man"
+		if(THEY_THEM)
+			return "person"
+		else
+			return "creacher"
 
 /datum/mob_descriptor/stature/gentleman
 	name = "Gentleman/Gentlewoman"
 
 /datum/mob_descriptor/stature/gentleman/get_description(mob/living/described)
-	if(described.pronouns == SHE_HER)
-		return "gentlewoman"
-	else if(described.pronouns == HE_HIM)
-		return "gentleman"
-	else
-		return "gentleperson"
+	switch(described.pronouns)
+		if(SHE_HER)
+			return "gentlewoman"
+		if(HE_HIM)
+			return "gentleman"
+		if(THEY_THEM)
+			return "gentleperson"
+		else
+			return "gentlecreacher"
 
 /datum/mob_descriptor/stature/thug
 	name = "Thug"

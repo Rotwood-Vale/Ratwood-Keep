@@ -35,7 +35,6 @@
 	force = 0
 	throwforce = 0
 	sellprice = 10
-	twohands_required = TRUE
 
 /obj/item/natural/saddle/attack(mob/living/target, mob/living/carbon/human/user)
 	if(istype(target, /mob/living/simple_animal))
