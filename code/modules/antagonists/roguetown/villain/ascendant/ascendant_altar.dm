@@ -67,7 +67,7 @@ GLOBAL_LIST_INIT(capstone_pool, list(
 		to_chat(user, span_danger("There are nO MORE ARTEFACts to collect. It is time for my BUSINESS to be DONE."))
 		return
 	ascendpoints++
-	
+
 	user.STASTR += 2
 	user.STAPER += 2
 	user.STAINT += 2
@@ -91,6 +91,8 @@ GLOBAL_LIST_INIT(capstone_pool, list(
 		if(3)
 			ADD_TRAIT(user, TRAIT_NOPAIN, TRAIT_GENERIC)
 			ADD_TRAIT(user, TRAIT_NOPAINSTUN, TRAIT_GENERIC)
+			user.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/projectile/fireball)
+			user.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/projectile/lightningbolt)
 			to_chat(user, span_userdanger("I have many enemies- AND they HAVE NOTHING. TEN OF SWORDS, UPRIGHT"))
 		if(4)
 			ADD_TRAIT(user, TRAIT_STABLEHEART, TRAIT_GENERIC)
@@ -144,7 +146,7 @@ GLOBAL_LIST_INIT(capstone_pool, list(
 		if(1)
 			ADD_TRAIT(user, TRAIT_LONGSTRIDER, TRAIT_GENERIC)
 			to_chat(user, span_danger("The first capstone. My mind opens. The world around me seems to get smaller. A corpse. We are living on a corpse. And this deadite must be dealt with the same as the rest. My pace stiffens."))
-			user.mind.AddSpell(/obj/effect/proc_holder/spell/targeted/churn)
+			user.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/churn)
 			addomen(ASCEND_FIRST)
 			priority_announce("The leylines begin to tremble in unnatural perversion - MAJOR ARCANA: THE FOOL, UPRIGHT.", "THE DREAMER", 'sound/villain/dreamer_warning.ogg')
 		if(2)
@@ -155,7 +157,9 @@ GLOBAL_LIST_INIT(capstone_pool, list(
 			to_chat(user, span_userdanger("GOD IS COMING."))
 			sleep(10)
 			to_chat(user, span_userdanger("GODISCOMINGGODISCOMING"))
+			new /obj/item/rogueweapon/sword/long/judgement/ascendant
 			addomen(ASCEND_WAKENING)
+			ADD_TRAIT(user, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
 			ADD_TRAIT(user, TRAIT_ANTIMAGIC, TRAIT_GENERIC)
 			priority_announce("The sky begins to turn quicker - MAJOR ARCANA: THE HANGED MAN, REVERSED", "THE DREAMER ", 'sound/villain/dreamer_warning.ogg')
 		if(3)
@@ -178,7 +182,6 @@ GLOBAL_LIST_INIT(capstone_pool, list(
 			user.emote("agony", forced = TRUE)
 			user.Stun(100)
 			user.Knockdown(100)
-			user.SetSleeping(10 SECONDS)
 			for(var/i = 1, i <= 10, i++)
 				spawn((i - 1) * 5)
 					to_chat(user, span_userdanger("I AM GOD I AM GOD I AM GOD I AM GOD I AM GOD I AM GOD I AM GOD I AM GOD I AM GOD I AM GOD I AM GOD I AM GOD I AM GOD I AM GOD I AM GOD I AM GOD I AM GOD I AM GOD I AM GOD I AM GOD I AM GOD I AM GOD I AM GOD I AM GOD "))
@@ -187,6 +190,7 @@ GLOBAL_LIST_INIT(capstone_pool, list(
 
 //all goes dark. tp them over. give them their stats.
 			user.emote("agony", forced = TRUE)
+			user.SetSleeping(10 SECONDS)
 			to_chat(user, span_reallybig("THE WORLD GOES DARK!"))
 			var/turf/location = get_spawn_turf_for_job("Pilgrim")
 			user.forceMove(location)
@@ -202,6 +206,9 @@ GLOBAL_LIST_INIT(capstone_pool, list(
 
 			heavensaysdanger() //Roger, our deal is honored; you will be rewarded in heaven.
 			addomen(ASCEND_ASCENDANT)
+			sleep(15 SECONDS)
+			to_chat(user, span_mind_control("i muST go O TO THE TRHORne. THE THRONE. THE THRONE. MY KINGDO M. AWAITS. PSYd ONIA IS DEAD. I MUST ASC end "))
+
 			qdel(src)
 
 /obj/structure/ascendant_altar/attack_right(mob/living/user)
@@ -212,3 +219,5 @@ GLOBAL_LIST_INIT(capstone_pool, list(
 
 /obj/structure/ascendant_altar/proc/heavensaysdanger()
 	priority_announce("THE DREAMER HAS ASCENDED - MAJOR ARCANA : T$yh3 TOW##ER, RE v3RSED", "GOD IS COMING", 'sound/villain/ascendant_intro.ogg')
+	sleep(15 SECONDS)
+	to_chat(world, span_danger("The ground underneath THE THRONE shakes. The sky is opening."))

@@ -17,6 +17,7 @@
 	var/static/list/applied_traits = list(
 		TRAIT_NOROGSTAM,
 		TRAIT_SCHIZO_AMBIENCE,
+		TRAIT_SHOCKIMMUNE,
 	)
 
 	/// Cached old stats in case we get removed
