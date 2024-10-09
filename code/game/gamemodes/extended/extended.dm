@@ -29,7 +29,7 @@
 	priority_announce("Thanks to the tireless efforts of our security and intelligence divisions, there are currently no credible threats to [station_name()]. All station construction projects have been authorized. Have a secure shift!", "Security Report", 'sound/blank.ogg')
 
 /datum/game_mode/extended/check_finished()
-	ttime = world.time - SSticker.round_start_time
+	var/ttime = world.time - SSticker.round_start_time
 
 	if(ttime >= GLOB.round_timer)
 		if(roundvoteend)
