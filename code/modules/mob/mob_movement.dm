@@ -573,12 +573,10 @@
   * triggers an update the move intent hud as well
   */
 /mob/proc/toggle_move_intent(mob/user)
-	message_admins("adasd")
 	if(m_intent == MOVE_INTENT_RUN)
 		m_intent = MOVE_INTENT_WALK
 	else
 		if(!HAS_TRAIT(user, TRAIT_NORUN))
-			message_admins("asdasd")
 			m_intent = MOVE_INTENT_RUN
 		else
 			to_chat(user, span_warning("My joints have decayed too much for running!"))
