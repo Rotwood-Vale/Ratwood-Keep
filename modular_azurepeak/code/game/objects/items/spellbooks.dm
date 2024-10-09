@@ -25,6 +25,7 @@
 	var/list/allowed_readers = list()
 	var/stored_gem = FALSE
 	var/picked // if the book has had it's style picked or not
+	var/born_of_rock = FALSE // was a magical stone used to make it instead of a gem?
 
 /obj/item/book/granter/spellbook/getonmobprop(tag)
 	. = ..()
@@ -152,7 +153,14 @@
 		chance2learn += stored_gem
 		stored_gem = FALSE
 	if(!isarcyne(user))
-		chance2learn = 1
+		if (gamer != owner) // if you didn't make this book, get fucked.
+			chance2learn = 1
+		else
+			chance2learn *= 0.5
+			chance2learn = min(chance2learn, 15) 
+	if (born_of_rock)
+		// the rock tomes are a *lot* easier to make, so we make them worse by them reducing your chances by 20%
+		chance2learn *= 0.8
 	testing("chance to learn is [chance2learn]")
 	if(prob(chance2learn))
 		user.visible_message(span_warning("[user] is filled with arcyne energy! You witness [user.p_their()] body convulse and spark brightly."), \
@@ -274,29 +282,68 @@
 			if(do_after(user, crafttime, target = src))
 				if(isarcyne(user))
 					playsound(loc, 'modular_azurepeak/sound/spellbooks/crystal.ogg', 100, TRUE)
-					user.visible_message(span_warning("[user] crushes [user.p_their()] [P]! It's powder seeps into the [src]."), \
-						span_notice("I run my arcyne energy into the crystal. It shatters and seeps into the cover of the tome! Runes and symbols of an unknowable language cover it's pages now..."))
+					user.visible_message(span_warning("[user] crushes [user.p_their()] [P]! Its powder seeps into the [src]."), \
+						span_notice("I run my arcyne energy into the crystal. It shatters and seeps into the cover of the tome! Runes and symbols of an unknowable language cover its pages now..."))
 					var/obj/item/book/granter/spellbook/newbook = new /obj/item/book/granter/spellbook(loc)
 					newbook.owner = user
+					newbook.desc += " Traces of [P] dust linger in its margins."
 					qdel(P)
 					qdel(src)
 				else
 					if(prob(1))
 						playsound(loc, 'modular_azurepeak/sound/spellbooks/crystal.ogg', 100, TRUE)
-						user.visible_message(span_warning("[user] crushes [user.p_their()] [P]! It's powder seeps into the [src]."), \
+						user.visible_message(span_warning("[user] crushes [user.p_their()] [P]! Its powder seeps into the [src]."), \
 							span_notice("By the Ten! That gem just exploded -- and my useless tome is filled with gleaming energy and strange letters!"))
 						var/obj/item/book/granter/spellbook/newbook = new /obj/item/book/granter/spellbook(loc)
 						newbook.owner = user
+						newbook.desc += " Traces of [P] dust linger in its margins."
 						qdel(P)
 						qdel(src)
 					else
 						playsound(loc, 'modular_azurepeak/sound/spellbooks/icicle.ogg', 100, TRUE)
-						user.visible_message(span_warning("[user] crushes [user.p_their()] [P]! It's powder just kind of sits on top of the [src]. Awkward."), \
+						user.visible_message(span_warning("[user] crushes [user.p_their()] [P]! Its powder just kind of sits on top of the [src]. Awkward."), \
 							span_notice("... why and how did I just crush this gem into a worthless scroll-book? What a WASTE of mammon!"))
 						qdel(P)
 					return ..()
 		else
 			to_chat(user, "<span class='warning'>You need to put the [src] on a table to work on it.</span>")
+	else if (istype(P, /obj/item/natural/stone))
+		var/obj/item/natural/stone/the_rock = P
+		if (the_rock.magic_power)
+			if(isturf(loc) && (found_table))
+				var/crafttime = ((130 - the_rock.magic_power) - ((user.mind?.get_skill_level(/datum/skill/magic/arcane))*5))
+				if(do_after(user, crafttime, target = src))
+					if (isarcyne(user))
+						playsound(loc, 'modular_azurepeak/sound/spellbooks/crystal.ogg', 100, TRUE)
+						user.visible_message(span_warning("[user] crushes [user.p_their()] [P]! Its powder seeps into the [src]."), \
+							span_notice("I join my arcyne energy with that of the magical stone in my hands, which shudders briefly before dissolving into motes of ash. Runes and symbols of an unknowable language cover its pages now..."))
+						to_chat(user, span_notice("...yet even for an enigma of the arcyne, these characters are unlike anything I've seen before. They're going to be -much- harder to understand..."))
+						var/obj/item/book/granter/spellbook/newbook = new /obj/item/book/granter/spellbook(loc)
+						newbook.owner = user
+						newbook.born_of_rock = TRUE
+						newbook.desc += " Traces of multicolored stone limn its margins."
+						qdel(P)
+						qdel(src)
+					else
+						if (prob(the_rock.magic_power)) // for reference, this is never higher than 15 and usually significantly lower
+							playsound(loc, 'modular_azurepeak/sound/spellbooks/crystal.ogg', 100, TRUE)
+							user.visible_message(span_warning("[user] carefully sets down [the_rock] upon [src]. Nothing happens for a moment or three, then suddenly, the glow surrounding the stone becomes as liquid, seeps down and soaks into the tome!"), \
+							span_notice("I knew this stone was special! Its colourful magick has soaked into my tome and given me gift of mystery!"))
+							to_chat(user, span_notice("...what in the world does any of this scribbling possibly mean?"))
+							var/obj/item/book/granter/spellbook/newbook = new /obj/item/book/granter/spellbook(loc)
+							newbook.owner = user
+							newbook.born_of_rock = TRUE
+							newbook.desc += " Traces of multicolored stone limn its margins."
+							qdel(P)
+							qdel(src)
+						else
+							user.visible_message(span_warning("[user] sets down [the_rock] upon the surface of [src] and watches expectantly. Without warning, the rock violently pops like a squashed gourd!"), \
+							span_notice("No! My precious stone! It musn't have wanted to share its mysteries with me..."))
+							user.electrocute_act(5, src)
+							qdel(P)
+		else
+			to_chat(user, span_notice("This is a mere rock - it has no arcyne potential. Bah!"))
+			return ..()
 	else
 		return ..()
 
@@ -325,7 +372,7 @@
 	icon_state = "amethyst"
 	sellprice = 18
 	arcyne_potency = 25
-	desc = "A deep lavender crystal, it surges with magical energy, yet it's artificial nature means it's worth little."
+	desc = "A deep lavender crystal, it surges with magical energy, yet it's artificial nature means it is worth little."
 
 /obj/item/book/granter/spellbook/attackby(obj/item/P, mob/living/carbon/human/user, params)
 	if(istype(P, /obj/item/roguegem))
@@ -359,7 +406,7 @@
 
 /obj/item/rogueweapon/huntingknife/idagger/silver/arcyne
 	name = "glowing purple silver dagger"
-	desc = "This dagger glows a faint purple. Powder runs across it's blade."
+	desc = "This dagger glows a faint purple. Powder runs across its blade."
 	var/is_bled = FALSE
 	var/rune_to_scribe = /obj/effect/roguerune/
 
