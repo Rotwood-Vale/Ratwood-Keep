@@ -1,20 +1,20 @@
-/obj/effect/proc_holder/spell/targeted/touch/bladeofnoc
-	name = "Blade of Noc"
+/obj/effect/proc_holder/spell/targeted/touch/summonrogueweapon
+	refresh_on_drop = FALSE
+	castdrain = 25
+	charge_max = 20 SECONDS
+	school = "transmutation"
+
+/obj/effect/proc_holder/spell/targeted/touch/summonrogueweapon/bladeofpsydon
+	name = "Blade of Psydon"
 	desc = "The manifestation of the higher concept of a blade itself. Said to be drawn upon from Noc's tresury of wisdom, each casting a poor facsimile of the perfect weapon They hold."
 	clothes_req = FALSE
 	drawmessage = "I imagine the perfect weapon, forged by arcyne knowledge, it's edge flawless.."
 	dropmessage = "I feel it in my mind's eye -- but it's just out of reach. I pull away it's shadow, a bad copy, and yet it is one of a great weapon nonetheless..."
-	school = "transmutation"
-	overlay_state = "prestidigitation"
-	no_early_release = TRUE
-	charge_max = 20 SECONDS
-	cooldown_min = 20 SECONDS
 	chargedloop = /datum/looping_sound/invokegen
 	associated_skill = /datum/skill/magic/arcane
-	hand_path = /obj/item/melee/touch_attack/rogueweapon/bladeofnoc
-	castdrain = 25
+	hand_path = /obj/item/melee/touch_attack/rogueweapon/bladeofpsydon
 
-/obj/item/melee/touch_attack/rogueweapon/bladeofnoc
+/obj/item/melee/touch_attack/rogueweapon/bladeofpsydon
 	name = "\improper arcyne push dagger"
 	desc = "This blade throbs, translucent and iridiscent, it's color coated by your soul..."
 	catchphrase = null
@@ -40,7 +40,7 @@
 	wbalance = 1
 
 /obj/item/melee/touch_attack/rogueweapon/attack_self()
-	qdel(src)
+	attached_spell.remove_hand()
 
 /obj/item/melee/touch_attack/rogueweapon/get_dismemberment_chance(obj/item/bodypart/affecting, mob/user)
 	if(!get_sharpness() || !affecting.can_dismember(src))
