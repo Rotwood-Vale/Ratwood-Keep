@@ -380,9 +380,8 @@
 	var/mob/living/carbon/human/FM = AM
 	if(isseelie(FM) && !(FM.resting))	//Add wingcheck
 		return
-	if(isliving(AM))
-		if(!river_processing)
-			river_processing = addtimer(CALLBACK(src, PROC_REF(process_river)), 5, TIMER_STOPPABLE)
+	if(!river_processing)
+		river_processing = addtimer(CALLBACK(src, PROC_REF(process_river)), 5, TIMER_STOPPABLE)
 
 /turf/open/water/river/proc/process_river()
 	river_processing = null
