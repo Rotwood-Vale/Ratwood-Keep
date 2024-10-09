@@ -97,7 +97,7 @@
 	if(prob(50))
 		r_hand = /obj/item/rogueweapon/sword/iron
 	else
-		r_hand = /obj/item/rogueweapon/mace
+		r_hand = /obj/item/rogueweapon/stoneaxe/woodcut
 
 /mob/living/carbon/human/species/skeleton/npc/no_equipment
     skel_outfit = null
