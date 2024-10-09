@@ -6,6 +6,7 @@
 	invocation_type = "none" //you scream on connecting, not summoning
 	include_user = TRUE
 	range = -1
+	var/castdrain = FALSE // value for if you want a summonable weapon to
 
 /obj/effect/proc_holder/spell/targeted/touch/Destroy()
 	remove_hand()
@@ -53,6 +54,11 @@
 		else
 			to_chat(user, span_warning("My hands are full!"))
 		return FALSE
+	if(castdrain)
+		testing("rogfat adding [castdrain] to [user]")
+		user.rogfat_add(castdrain)
+	else
+		testing("castdrain is NOT TRUE !!")
 	to_chat(user, span_notice("[drawmessage]"))
 	return TRUE
 

@@ -7,17 +7,14 @@
 	school = "transmutation"
 	overlay_state = "prestidigitation"
 	no_early_release = TRUE
-	chargedrain = 10
-	chargetime = 15
-	releasedrain = 25
-	chargedrain = 0
-	chargetime = 0
-	releasedrain = 5 // this influences -every- cost involved in the spell's functionality, if you want to edit specific features, do so in handle_cost
+	charge_max = 20 SECONDS
+	cooldown_min = 20 SECONDS
 	chargedloop = /datum/looping_sound/invokegen
 	associated_skill = /datum/skill/magic/arcane
-	hand_path = /obj/item/melee/touch_attack/bladeofnoc
+	hand_path = /obj/item/melee/touch_attack/rogueweapon/bladeofnoc
+	castdrain = 25
 
-/obj/item/melee/touch_attack/bladeofnoc
+/obj/item/melee/touch_attack/rogueweapon/bladeofnoc
 	name = "\improper arcyne push dagger"
 	desc = "This blade throbs, translucent and iridiscent, it's color coated by your soul..."
 	catchphrase = null
@@ -26,14 +23,13 @@
 	icon_state = "grabbing_greyscale"
 	color = "#3FBAFD" // this produces green because the icon base is yellow but someone else can fix that if they want
 	charges = 20
-
-	force = 18
+	force = 20
 	possible_item_intents = list(/datum/intent/katar/cut, /datum/intent/katar/thrust)
 	icon_state = "katar"
 	icon = 'icons/roguetown/weapons/32.dmi'
 	gripsprite = FALSE
 	wlength = WLENGTH_SHORT
-	w_class = WWEIGHT_CLASS_HUGE
+	w_class = WEIGHT_CLASS_HUGE
 	parrysound = list('sound/combat/parry/bladed/bladedsmall (1).ogg','sound/combat/parry/bladed/bladedsmall (2).ogg','sound/combat/parry/bladed/bladedsmall (3).ogg')
 	max_blade_int = 999
 	max_integrity = 999
@@ -43,10 +39,10 @@
 	wdefense = 4
 	wbalance = 1
 
-/obj/item/melee/touch_attack/bladeofnoc/attack_self()
+/obj/item/melee/touch_attack/rogueweapon/attack_self()
 	qdel(src)
 
-/obj/item/melee/touch_attack/bladeofnoc/get_dismemberment_chance(obj/item/bodypart/affecting, mob/user)
+/obj/item/melee/touch_attack/rogueweapon/get_dismemberment_chance(obj/item/bodypart/affecting, mob/user)
 	if(!get_sharpness() || !affecting.can_dismember(src))
 		return 0
 

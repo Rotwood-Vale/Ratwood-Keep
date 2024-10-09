@@ -16,6 +16,7 @@
 	throw_range = 0
 	throw_speed = 0
 	var/charges = 1
+	var/charge_message = FALSE
 
 /obj/item/melee/touch_attack/Initialize()
 	. = ..()
@@ -37,6 +38,7 @@
 	playsound(get_turf(user), on_use_sound,50,TRUE)
 	charges--
 	if(charges <= 0)
+		if(charge_message)
 		qdel(src)
 
 /obj/item/melee/touch_attack/Destroy()
