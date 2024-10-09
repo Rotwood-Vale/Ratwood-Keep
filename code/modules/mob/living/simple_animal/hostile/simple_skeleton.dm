@@ -101,6 +101,11 @@
 			return pick('sound/vo/mobs/skel/skeleton_idle (1).ogg','sound/vo/mobs/skel/skeleton_idle (2).ogg','sound/vo/mobs/skel/skeleton_idle (3).ogg')
 
 
+/mob/living/simple_animal/hostile/rogue/skeleton/Initialize(mapload, mob/user)
+	. = ..()
+	if(user)
+		friends += user
+
 /mob/living/simple_animal/hostile/rogue/skeleton/Life()
 	. = ..()
 	if(!target)
@@ -113,6 +118,23 @@
 /mob/living/simple_animal/hostile/rogue/skeleton/taunted(mob/user)
 	emote("aggro")
 	GiveTarget(user)
+	return
+
+/mob/living/simple_animal/hostile/rogue/skeleton/beckoned(mob/user)
+	if(user in friends)
+		for(var/mob/living/simple_animal/hostile/rogue/skeleton/target in viewers(user))
+			if(!(user in target.friends))
+				return
+			target.LoseTarget()
+			target.search_objects = 2
+	return
+
+/mob/living/simple_animal/hostile/rogue/skeleton/shood(mob/user)
+	if(user in friends)
+		for(var/mob/living/simple_animal/hostile/rogue/skeleton/target in viewers(user))
+			if(!(user in target.friends))
+				return
+			target.RegainSearchObjects()
 	return
 
 
