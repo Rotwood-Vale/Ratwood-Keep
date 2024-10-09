@@ -20,7 +20,7 @@
 	. = ..()
 	var/race = pick(list(ALL_RACES_TYPES))
 	set_species(race)
-	randomize_human(src, TRUE)
+	//randomize_human(src, TRUE) //Fix this shit if you want racially diverse zombies
 	addtimer(CALLBACK(src, PROC_REF(after_creation)), 10)
 
 /mob/living/carbon/human/species/deadite/after_creation()
