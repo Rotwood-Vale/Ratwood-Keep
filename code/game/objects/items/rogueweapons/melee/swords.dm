@@ -58,7 +58,7 @@
 
 
 /datum/intent/sword/cut
-	name = "strike"
+	name = "cut"
 	icon_state = "incut"
 	attack_verb = list("cuts", "slashes")
 	animname = "cut"
@@ -337,7 +337,7 @@
 /datum/intent/sword/strike
 	name = "pommel strike"
 	icon_state = "instrike"
-	attack_verb = list("bashes", "clubs")
+	attack_verb = list("bashes", "clubs", "strikes")
 	animname = "strike"
 	blade_class = BCLASS_BLUNT
 	hitsound = list('sound/combat/hits/blunt/metalblunt (1).ogg', 'sound/combat/hits/blunt/metalblunt (2).ogg', 'sound/combat/hits/blunt/metalblunt (3).ogg')
@@ -425,6 +425,7 @@
 	name = "iron messer"
 	desc = "A single edged blade to slice and chop with."
 	icon_state = "imesser"
+	max_integrity = 125
 	possible_item_intents = list(/datum/intent/sword/cut/sabre, /datum/intent/sword/thrust, /datum/intent/axe/chop)
 	gripped_intents = null
 	minstr = 4
@@ -434,12 +435,14 @@
 	name = "steel messer" //People often ask for messers when the smithy only has steel, now they can make it.
 	desc = "A single edged blade to slice and chop with. This one is made of sturdy steel."
 	icon_state = "smesser"
+	smeltresult = /obj/item/ingot/steel
 	max_integrity = 175 //A stout blade that will last a long time before breakage
 
 /obj/item/rogueweapon/sword/sabre
 	name = "sabre"
-	desc = "A swift saber. Parries realiantly and strikes swiftly"
+	desc = "A swift sabre. Parries realiantly and strikes swiftly"
 	icon_state = "saber"
+	max_integrity = 230
 	possible_item_intents = list(/datum/intent/sword/cut/sabre, /datum/intent/sword/thrust)
 	gripped_intents = null
 	parrysound = list('sound/combat/parry/bladed/bladedthin (1).ogg', 'sound/combat/parry/bladed/bladedthin (2).ogg', 'sound/combat/parry/bladed/bladedthin (3).ogg')
@@ -459,6 +462,7 @@
 	name = "rapier"
 	desc = "A precise rapier, a good stabbing weapon."
 	icon_state = "rapier"
+	max_integrity = 215
 	possible_item_intents = list(/datum/intent/sword/thrust/rapier, /datum/intent/sword/cut/rapier)
 	gripped_intents = null
 	parrysound = list('sound/combat/parry/bladed/bladedthin (1).ogg', 'sound/combat/parry/bladed/bladedthin (2).ogg', 'sound/combat/parry/bladed/bladedthin (3).ogg')
@@ -493,13 +497,13 @@
 	desc = "An specialised steel longsword, tailor made for stabbing through armor."
 	force = 18
 	force_wielded = 30
-	possible_item_intents = list(/datum/intent/sword/cut/rapier, /datum/intent/sword/thrust) //Better at stabbing than the longsword, worse at evrything else. It fits the time period because of our use of bervors and visored sallets.
+	possible_item_intents = list(/datum/intent/sword/cut/rapier, /datum/intent/sword/thrust) //Better at stabbing than the longsword, worse at everything else. It fits the time period because of our use of bervors and visored sallets.
 	icon_state = "estoc"
 	gripped_intents = list(/datum/intent/sword/cut/rapier, /datum/intent/sword/thrust/estoc, /datum/intent/sword/strike)
 	minstr = 6
 	wdefense = 4
 
-/datum/intent/sword/thrust/estoc // Around 12 or so dmg gets through armor, making it weaker than spears, but more portable
+/datum/intent/sword/thrust/estoc // Around 12 or so dmg gets through armor, making it weaker than spears, but more portable.
 	clickcd = 10
 	penfactor = 60
 
@@ -507,9 +511,10 @@
 	name = "cutlass"
 	desc = "Used by pirates and deckhands."
 	icon_state = "cutlass"
+	max_integrity = 220
 	possible_item_intents = list(/datum/intent/sword/cut, /datum/intent/sword/thrust)
 	gripped_intents = null
-	wdefense = 6
+	wdefense = 7
 
 /obj/item/rogueweapon/sword/sabre/elf
 	force = 25
@@ -517,5 +522,6 @@
 	desc = "This finely crafted saber is of elven smithcraft."
 	icon_state = "esaber"
 	item_state = "esaber"
+	max_integrity = 205
 	lefthand_file = 'icons/mob/inhands/weapons/swords_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/weapons/swords_righthand.dmi'

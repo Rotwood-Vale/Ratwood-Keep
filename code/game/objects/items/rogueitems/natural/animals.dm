@@ -46,6 +46,7 @@
 			if(!target.has_buckled_mobs())
 				user.visible_message(span_warning("[user] tries to saddle [target]..."))
 				if(do_after(user, 40, target = target))
+					S.name = input("Choose a new name for your mount!","Name", S.name)
 					playsound(loc, 'sound/foley/saddledismount.ogg', 100, FALSE)
 					user.dropItemToGround(src)
 					S.ssaddle = src
