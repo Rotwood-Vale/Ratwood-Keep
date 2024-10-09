@@ -5,7 +5,6 @@
 	allowed_races = RACES_ALL_KINDS
 	outfit = /datum/outfit/job/roguetown/mercenary/condottiero
 	category_tags = list(CTAG_MERCENARY)
-	maximum_possible_slots = 5
 
 /datum/outfit/job/roguetown/mercenary/condottiero/pre_equip(mob/living/carbon/human/H)
 	..()

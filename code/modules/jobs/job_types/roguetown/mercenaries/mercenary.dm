@@ -3,8 +3,8 @@
 	flag = MERCENARY
 	department_flag = MERCENARIES
 	faction = "Station"
-	total_positions = 6		//Was 3 Grenz and 3 Desert, merging together to 6 total.
-	spawn_positions = 6
+	total_positions = 8
+	spawn_positions = 8
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
 	tutorial = "Blood stains your hands and the coins you hold. You are a sell-sword, a mercenary, a contractor of war. Where you come from, what you are, who you serve.. none of it matters. What matters is that the mammon flows to your pocket."

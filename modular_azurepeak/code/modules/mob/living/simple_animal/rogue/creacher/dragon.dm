@@ -14,14 +14,13 @@
 	see_in_dark = 6
 	move_to_delay = 3
 	base_intents = list(/datum/intent/simple/bite)
-	butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat/steak = 2,
-						/obj/item/natural/hide = 2,
-						/obj/item/natural/fur = 1, /obj/item/natural/bone = 4)
+	butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat/steak = 20,
+						/obj/item/natural/hide = 20, /obj/item/natural/bundle/bone/full = 4)
 	mob_biotypes = MOB_ORGANIC|MOB_BEAST
 	health = 2500
 	maxHealth = 2500
-	melee_damage_lower = 19
-	melee_damage_upper = 29
+	melee_damage_lower = 45
+	melee_damage_upper = 70
 	vision_range = 7
 	aggro_vision_range = 9
 	environment_smash = ENVIRONMENT_SMASH_NONE
