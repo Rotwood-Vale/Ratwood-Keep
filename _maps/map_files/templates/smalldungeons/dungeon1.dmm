@@ -810,7 +810,6 @@
 /area/rogue/under/cave/spider)
 "Op" = (
 /obj/machinery/light/rogue/forge,
-/obj/machinery/light/rogue/forge,
 /turf/open/floor/rogue/tile/masonic/inverted,
 /area/rogue/under/cave/spider)
 "Oq" = (
