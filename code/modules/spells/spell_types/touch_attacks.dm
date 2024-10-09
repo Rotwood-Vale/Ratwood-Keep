@@ -7,7 +7,6 @@
 	include_user = TRUE
 	range = -1
 	var/castdrain = FALSE // value for if you want a summonable weapon to cost rogfat
-	var/refresh_on_drop = TRUE
 
 /obj/effect/proc_holder/spell/targeted/touch/Destroy()
 	remove_hand()
@@ -29,7 +28,7 @@
 
 /obj/effect/proc_holder/spell/targeted/touch/cast(list/targets,mob/user = usr)
 	if(!QDELETED(attached_hand))
-		remove_hand(refresh_on_drop)
+		remove_hand(TRUE)
 		to_chat(user, span_notice("[dropmessage]"))
 		return
 

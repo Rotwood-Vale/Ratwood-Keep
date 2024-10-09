@@ -271,7 +271,7 @@
 			if(do_after(user, crafttime, target = src))
 				if(isarcyne(user))
 					playsound(loc, 'modular_azurepeak/sound/spellbooks/crystal.ogg', 100, TRUE)
-					user.visible_message(span_warning("[user] crushes [user.p_their()] [P]! It's powder seeps into the [src]."), \
+					user.visible_message(span_warning("[user] crushes [user.p_their()] \the [P]! It's powder seeps into the [src]."), \
 						span_notice("I run my arcyne energy into the crystal. It shatters and seeps into the cover of the tome! Runes and symbols of an unknowable language cover it's pages now..."))
 					var/obj/item/book/granter/spellbook/newbook = new /obj/item/book/granter/spellbook(loc)
 					newbook.owner = user
@@ -280,7 +280,7 @@
 				else
 					if(prob(1))
 						playsound(loc, 'modular_azurepeak/sound/spellbooks/crystal.ogg', 100, TRUE)
-						user.visible_message(span_warning("[user] crushes [user.p_their()] [P]! It's powder seeps into the [src]."), \
+						user.visible_message(span_warning("[user] crushes [user.p_their()] \the [P]! It's powder seeps into the [src]."), \
 							span_notice("By the Ten! That gem just exploded -- and my useless tome is filled with gleaming energy and strange letters!"))
 						var/obj/item/book/granter/spellbook/newbook = new /obj/item/book/granter/spellbook(loc)
 						newbook.owner = user
@@ -288,12 +288,12 @@
 						qdel(src)
 					else
 						playsound(loc, 'modular_azurepeak/sound/spellbooks/icicle.ogg', 100, TRUE)
-						user.visible_message(span_warning("[user] crushes [user.p_their()] [P]! It's powder just kind of sits on top of the [src]. Awkward."), \
+						user.visible_message(span_warning("[user] crushes [user.p_their()] \the [P]! It's powder just kind of sits on top of the [src]. Awkward."), \
 							span_notice("... why and how did I just crush this gem into a worthless scroll-book? What a WASTE of mammon!"))
 						qdel(P)
 					return ..()
 		else
-			to_chat(user, "<span class='warning'>You need to put the [src] on a table to work on it.</span>")
+			to_chat(user, "<span class='warning'>You need to put [src] on a table to work on it.</span>")
 	else
 		return ..()
 
