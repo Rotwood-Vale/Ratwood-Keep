@@ -13,3 +13,4 @@ combat_guard2.ogg: Deus Ex - NYC Streets Combat
 combat_physician.ogg: Pathologic (Classic) - Utroba Aggression
 combat_bum.ogg: Pathologic (Classic) - Most Combat Theme
 combat_pirate.ogg: Alestorm - Alestorm (instrumental edit)
+combat_clergy.ogg: Pathologic (Classic) - Main Theme
