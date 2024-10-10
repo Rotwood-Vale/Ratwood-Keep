@@ -121,8 +121,8 @@
 	)
 	embed_chance = 100
 	paralysis = TRUE
-	mortal = TRUE
-	dents_brain = FALSE
+	mortal = FALSE
+	dents_brain = TRUE
 
 /datum/wound/fracture/head/ears
 	name = "temporal fracture"
@@ -134,8 +134,8 @@
 	)
 	embed_chance = 100
 	paralysis = TRUE
-	mortal = TRUE
-	dents_brain = FALSE
+	mortal = FALSE
+	dents_brain = TRUE
 
 /datum/wound/fracture/head/nose
 	name = "nasal fracture"
