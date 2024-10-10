@@ -15,6 +15,7 @@
 	var/vampcompat = TRUE
 	var/list/traits_applied
 	var/cmode_music
+	var/spawn_with_torch = TRUE
 
 	/// This class is immune to species-based swapped gender locks
 	var/immune_to_genderswap = FALSE
@@ -37,9 +38,10 @@
 
 	//sleep(1)
 	//testing("[H] spawn troch")
-	var/obj/item/flashlight/flare/torch/T = new()
-	T.spark_act()
-	H.put_in_hands(T, forced = TRUE)
+	if(spawn_with_torch)
+		var/obj/item/flashlight/flare/torch/T = new()
+		T.spark_act()
+		H.put_in_hands(T, forced = TRUE)
 
 	var/turf/TU = get_turf(H)
 	if(TU)
