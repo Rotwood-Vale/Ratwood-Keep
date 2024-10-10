@@ -43,7 +43,7 @@
 
 /datum/mapGeneratorModule/roguetowngrass
 	clusterCheckFlags = CLUSTER_CHECK_DIFFERENT_ATOMS
-	allowed_turfs = list(/turf/open/floor/rogue/dirt,/turf/open/floor/rogue/grass)
+	allowed_turfs = list(/turf/open/floor/rogue/dirt,/turf/open/floor/rogue/grass,/turf/open/floor/rogue/grassred,/turf/open/floor/rogue/grassyel,/turf/open/floor/rogue/grasscold)
 	excluded_turfs = list(/turf/open/floor/rogue/dirt/road)
 	spawnableAtoms = list(/obj/structure/flora/roguegrass = 40,
 						/obj/structure/flora/roguegrass/maneater = 7,
