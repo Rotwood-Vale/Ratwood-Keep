@@ -121,7 +121,7 @@
 		to_chat(usr, span_warning("Unlock it first!"))
 		return FALSE
 
-	if (!istype(M, /mob/living/carbon/human))
+	if ((!istype(M, /mob/living/carbon/human)) || HAS_TRAIT(M, TRAIT_TINY))
 		to_chat(usr, span_warning("It doesn't look like [M.p_they()] can fit into this properly!"))
 		return FALSE // Can't hold non-humanoids
 

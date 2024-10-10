@@ -14,6 +14,7 @@
 	return TRUE
 
 /datum/sex_action/masturbate_anus/on_start(mob/living/carbon/human/user, mob/living/carbon/human/target)
+	..()
 	user.visible_message(span_warning("[user] starts fingering their butt..."))
 
 /datum/sex_action/masturbate_anus/on_perform(mob/living/carbon/human/user, mob/living/carbon/human/target)
@@ -25,6 +26,7 @@
 	user.sexcon.handle_passive_ejaculation()
 
 /datum/sex_action/masturbate_anus/on_finish(mob/living/carbon/human/user, mob/living/carbon/human/target)
+	..()
 	user.visible_message(span_warning("[user] stops fingering their butt."))
 
 /datum/sex_action/masturbate_anus/is_finished(mob/living/carbon/human/user, mob/living/carbon/human/target)

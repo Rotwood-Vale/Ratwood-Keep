@@ -52,12 +52,12 @@ GLOBAL_LIST_EMPTY(lord_titles)
 			GLOB.lordsurname = jointext(chopped_name, " ")
 		else
 			GLOB.lordsurname = "of [L.real_name]"
-		SSticker.select_ruler()
+		SSticker.rulermob = L
 		if(L.gender != FEMALE)
-			to_chat(world, "<b><span class='notice'><span class='big'>[L.real_name] is King of Rockhill.</span></span></b>")
+			to_chat(world, "<b><span class='notice'><span class='big'>[L.real_name] is King of Ratwood.</span></span></b>")
 			addtimer(CALLBACK(L, TYPE_PROC_REF(/mob, lord_color_choice)), 50)
 		else
-			to_chat(world, "<b><span class='notice'><span class='big'>[L.real_name] is Queen of Rockhill.</span></span></b>")
+			to_chat(world, "<b><span class='notice'><span class='big'>[L.real_name] is Queen of Ratwood.</span></span></b>")
 			addtimer(CALLBACK(L, TYPE_PROC_REF(/mob, lord_color_choice)), 50)
 
 /datum/outfit/job/roguetown/lord/pre_equip(mob/living/carbon/human/H)

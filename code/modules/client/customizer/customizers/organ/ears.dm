@@ -31,16 +31,20 @@
 		/datum/sprite_accessory/ears/fox,
 		/datum/sprite_accessory/ears/husky,
 		/datum/sprite_accessory/ears/otie,
+		/datum/sprite_accessory/ears/lab,
+		/datum/sprite_accessory/ears/vulp,
+		/datum/sprite_accessory/ears/perky,
 		/datum/sprite_accessory/ears/wolf
 	)
 
-/datum/customizer/organ/ears/tajaran
-	customizer_choices = list(/datum/customizer_choice/organ/ears/tajaran)
+/datum/customizer/organ/ears/tabaxi
+	customizer_choices = list(/datum/customizer_choice/organ/ears/tabaxi)
 
-/datum/customizer_choice/organ/ears/tajaran
-	name = "Tajaran Ears"
-	organ_type = /obj/item/organ/ears/tajaran
+/datum/customizer_choice/organ/ears/tabaxi
+	name = "Tabaxi Ears"
+	organ_type = /obj/item/organ/ears/tabaxi
 	sprite_accessories = list(
+		/datum/sprite_accessory/ears/cat,
 		/datum/sprite_accessory/ears/cat_big,
 		/datum/sprite_accessory/ears/cat_normal,
 		)

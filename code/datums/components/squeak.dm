@@ -67,7 +67,8 @@
 		return
 	if(ismob(AM))
 		var/mob/M = AM
-		if(M.movement_type & (FLYING|FLOATING))
+		var/mob/living/carbon/human/HM = AM
+		if(M.movement_type & (FLYING|FLOATING) || isseelie(HM))	//Dont squeek for seelie, since they fly but do not have FLYING|FLOATING tags (Add wingcheck here too)
 			return
 	var/atom/current_parent = parent
 	if(isturf(current_parent.loc))
@@ -85,9 +86,9 @@
 	UnregisterSignal(user, COMSIG_MOVABLE_DISPOSING)
 
 // Disposal pipes related shit
-/datum/component/squeak/proc/disposing_react(datum/source, obj/structure/disposalholder/holder, obj/machinery/disposal/source)
+/datum/component/squeak/proc/disposing_react(datum/source, obj/structure/disposalholder/disposal_holder, obj/machinery/disposal/disposal_source)
 	//We don't need to worry about unregistering this signal as it will happen for us automaticaly when the holder is qdeleted
-	RegisterSignal(holder, COMSIG_ATOM_DIR_CHANGE, PROC_REF(holder_dir_change))
+	RegisterSignal(disposal_holder, COMSIG_ATOM_DIR_CHANGE, PROC_REF(holder_dir_change))
 
 /datum/component/squeak/proc/holder_dir_change(datum/source, old_dir, new_dir)
 	//If the dir changes it means we're going through a bend in the pipes, let's pretend we bumped the wall

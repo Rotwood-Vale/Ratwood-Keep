@@ -9,7 +9,7 @@
 	amount_per_transfer_from_this = 6
 	possible_transfer_amounts = list(6)
 	dropshrink = 0.8
-	w_class = WEIGHT_CLASS_NORMAL
+	w_class = WEIGHT_CLASS_SMALL
 	volume = 24
 	obj_flags = CAN_BE_HIT
 	sellprice = 1
@@ -141,7 +141,7 @@
 	amount_per_transfer_from_this = 6
 	possible_transfer_amounts = list(6)
 	dropshrink = 0.8
-	w_class = WEIGHT_CLASS_NORMAL
+	w_class = WEIGHT_CLASS_SMALL
 	volume = 24
 	obj_flags = CAN_BE_HIT
 	sellprice = 1

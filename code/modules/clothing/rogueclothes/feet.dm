@@ -10,7 +10,7 @@
 	sleevetype = "leg"
 	bloody_icon_state = "shoeblood"
 	equip_delay_self = 30
-	resistance_flags = FIRE_PROOF
+	w_class = WEIGHT_CLASS_SMALL
 
 /obj/item/clothing/shoes/roguetown/boots
 	name = "dark boots"
@@ -107,6 +107,7 @@
 	icon_state = "shalal"
 	item_state = "shalal"
 	sewrepair = TRUE
+	armor = list("blunt" = 25, "slash" = 20, "stab" = 25, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
 
 /obj/item/clothing/shoes/roguetown/boots/armor
 	name = "steel plated boots"
@@ -121,6 +122,7 @@
 	anvilrepair = /datum/skill/craft/armorsmithing
 	smeltresult = /obj/item/ingot/steel
 	clothing_flags = CANT_SLEEP_IN
+	resistance_flags = FIRE_PROOF
 
 /obj/item/clothing/shoes/roguetown/boots/leather
 	name = "leather boots"

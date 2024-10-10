@@ -8,7 +8,7 @@
 	allowed_races = RACES_TOLERATED_UP
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_ages = list(AGE_ADULT, AGE_MIDDLEAGED)
-	allowed_patrons = ALL_DIVINE_PATRONS
+	allowed_patrons = ALL_NON_INHUMEN_PATRONS
 	tutorial = "A Knight with expert training; Born into petty nobility and raised as a squire from a young age, now you Guard the king as His knight, answer to His commands, and protect His honor. You're wholy dedicated to Him, and His safety. Do not fail Him."
 	display_order = JDO_KNIGHT
 	whitelist_req = TRUE
@@ -65,9 +65,11 @@
 		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 4, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/bows, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/climbing, 1, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/swimming, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/riding, 4, TRUE)
 		H.change_stat("strength", 4)

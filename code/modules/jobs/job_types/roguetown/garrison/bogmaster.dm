@@ -5,7 +5,7 @@
 	faction = "Station"
 	total_positions = 1
 	spawn_positions = 1
-	allowed_patrons = ALL_DIVINE_PATRONS
+	allowed_patrons = ALL_NON_INHUMEN_PATRONS
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_VERY_SHUNNED_UP
 	allowed_ages = list(AGE_ADULT, AGE_MIDDLEAGED, AGE_OLD)

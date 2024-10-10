@@ -723,7 +723,7 @@ GLOBAL_LIST_EMPTY(chosen_names)
 	popup.open(FALSE)
 	onclose(user, "capturekeypress", src)
 
-/datum/preferences/proc/SetChoices(mob/user, limit = 15, list/splitJobs = list("Court Magician", "Guard Lieutenant", "Priest", "Merchant", "Archivist", "Towner", "Grenzelhoft Mercenary", "Beggar", "Prisoner", "Goblin King"), widthPerColumn = 295, height = 670) //295 620
+/datum/preferences/proc/SetChoices(mob/user, limit = 15, list/splitJobs = list("Court Magician", "Retinue Captain", "Priest", "Merchant", "Archivist", "Towner", "Grenzelhoft Mercenary", "Beggar", "Prisoner", "Goblin King"), widthPerColumn = 295, height = 670) //295 620
 	if(!SSjob)
 		return
 
@@ -1959,7 +1959,7 @@ Slots: [job.spawn_positions]</span>
 				if("be_defiant")
 					defiant = !defiant
 					if(defiant)
-						to_chat(user, span_notice("You will now have resistance from people violating you, but be punished for trying to violate others. This is not full protection."))
+						to_chat(user, span_notice("You will now have resistance from people violating you, but be punished for trying to violate others." + " " + span_boldwarning("(COMBAT Mode will disable ERP interactions. Bypassing this is a bannable offense, AHELP if necessary.)")))
 					else
 						to_chat(user, span_boldwarning("You fully immerse yourself in the grim experience, waiving your resistance from people violating you, but letting you do the same unto other non-defiants"))
 
