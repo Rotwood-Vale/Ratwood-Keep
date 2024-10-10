@@ -73,7 +73,7 @@
 		else if(!IsSleeping() && !HAS_TRAIT(src, TRAIT_NOSLEEP))
 			// Resting on a bed or something
 			if(buckled?.sleepy)
-				if(eyesclosed && !cant_fall_asleep || (eyesclosed && !(fallingas >= 14 && cant_fall_asleep))) // its a little slop but im not sure on how to else
+				if((eyesclosed && !cant_fall_asleep) || (eyesclosed && !(fallingas >= 14 && cant_fall_asleep)) || InCritical()) // its a little slop but im not sure on how to else
 					if(!fallingas)
 						to_chat(src, span_warning("I'll fall asleep soon..."))
 					fallingas++
@@ -88,7 +88,7 @@
 					rogstam_add(buckled.sleepy * 10)
 			// Resting on the ground (not sleeping or with eyes closed and about to fall asleep)
 			else if(!(mobility_flags & MOBILITY_STAND))
-				if(eyesclosed && !HAS_TRAIT(src, TRAIT_NUDE_SLEEPER) && !cant_fall_asleep || (eyesclosed && !HAS_TRAIT(src, TRAIT_NUDE_SLEEPER) && !(fallingas >= 14 && cant_fall_asleep)))
+				if((eyesclosed && !HAS_TRAIT(src, TRAIT_NUDE_SLEEPER) && !cant_fall_asleep) || (eyesclosed && !HAS_TRAIT(src, TRAIT_NUDE_SLEEPER) && !(fallingas >= 14 && cant_fall_asleep)) || InCritical())
 					if(!fallingas)
 						to_chat(src, span_warning("I'll fall asleep soon, although a bed would be more comfortable..."))
 					fallingas++
