@@ -238,6 +238,10 @@
 	else if(!user.cmode && cmode)
 		combat_modifier -= 0.3
 
+	for(var/obj/item/grabbing/G in grabbedby)
+		if(G.chokehold == TRUE)
+			combat_modifier += 0.15
+	
 	var/probby =  clamp((((4 + (((user.STASTR - STASTR)/2) + skill_diff)) * 10 + rand(-5, 5)) * combat_modifier), 5, 95)
 
 	if(!prob(probby) && !instant && !stat)
