@@ -216,6 +216,8 @@
 /datum/status_effect/buff/blessed
 	id = "blessed"
 	alert_type = /atom/movable/screen/alert/status_effect/buff/blessed
+	if(has_status_effect(/datum/status_effect/debuff/death_weaken))
+		remove_status_effect(/datum/status_effect/debuff/death_weaken)
 	effectedstats = list("fortune" = 1)
 	duration = 20 MINUTES
 
