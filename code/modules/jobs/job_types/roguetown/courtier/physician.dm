@@ -23,8 +23,6 @@
 
 	cmode_music = 'sound/music/combat_physician.ogg'
 
-	allow_custom_genitals = TRUE
-
 /datum/outfit/job/roguetown/physician
 	name = "Physician"
 	jobtype = /datum/job/roguetown/physician

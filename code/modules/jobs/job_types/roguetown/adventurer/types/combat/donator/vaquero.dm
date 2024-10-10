@@ -1,7 +1,7 @@
 
 /datum/advclass/vaquero
 	name = "Vaquero"
-	tutorial = "Vaquero are lone drifters and swashbucklers who have their origins as skilled horse-tamers of Asturia. It's hard to find horses these days..."
+	tutorial = "Vaqueros are lone drifters and swashbucklers who have their origins as skilled horse-tamers of Etrusca. It's hard to find horses these days..."
 	allowed_sexes = list(MALE, FEMALE)
 	outfit = /datum/outfit/job/roguetown/adventurer/vaquero
 	horse = /mob/living/simple_animal/hostile/retaliate/rogue/saigabuck/tame/saddled

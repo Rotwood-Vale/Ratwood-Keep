@@ -20,8 +20,6 @@
 	min_pq = -10
 	max_pq = null
 
-	allow_custom_genitals = TRUE
-
 /datum/outfit/job/roguetown/nightmaiden/pre_equip(mob/living/carbon/human/H)
 	..()
 	shoes = /obj/item/clothing/shoes/roguetown/sandals

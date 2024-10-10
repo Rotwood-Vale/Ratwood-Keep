@@ -16,11 +16,9 @@
 
 	display_order = JDO_PRINCE
 	give_bank_account = 30
+	noble_income = 20
 	min_pq = -10
 	max_pq = null
-
-	allow_custom_genitals = TRUE
-
 	cmode_music = 'sound/music/combat_fancy.ogg'
 
 /datum/job/roguetown/prince/after_spawn(mob/living/H, mob/M, latejoin)

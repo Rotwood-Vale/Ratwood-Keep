@@ -16,12 +16,10 @@
 	outfit = /datum/outfit/job/roguetown/bailiff
 
 	give_bank_account = 40
+	noble_income = 20
 	min_pq = 0
 	max_pq = null
-
 	cmode_music = 'sound/music/combat_guard.ogg'
-
-	allow_custom_genitals = TRUE
 
 /datum/outfit/job/roguetown/bailiff/pre_equip(mob/living/carbon/human/H)
 	..()

@@ -15,10 +15,9 @@
 
 	display_order = JDO_LADY
 	give_bank_account = 50
+	noble_income = 22
 	min_pq = 0
 	max_pq = null
-
-	allow_custom_genitals = TRUE
 
 /datum/job/roguetown/exlady //just used to change the ladys title
 	title = "Consort Dowager"

@@ -15,7 +15,6 @@
 	
 	
 	display_order = JDO_BANDIT
-	show_in_credits = FALSE
 	announce_latejoin = FALSE
 	min_pq = 1
 	max_pq = null
@@ -28,9 +27,6 @@
 	always_show_on_latechoices = TRUE
 	job_reopens_slots_on_death = FALSE //no endless stream of bandits, unless the migration waves deem it so
 	same_job_respawn_delay = 30 MINUTES
-
-	allow_custom_genitals = TRUE //Vrell - This prevents the job itself from culling the parts since advanced classes determine if they are allowed
-
 	cmode_music = 'sound/music/combat_bandit2.ogg'
 
 /datum/job/roguetown/bandit/after_spawn(mob/living/L, mob/M, latejoin = TRUE)

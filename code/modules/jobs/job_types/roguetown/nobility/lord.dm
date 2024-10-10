@@ -28,9 +28,6 @@ GLOBAL_LIST_EMPTY(lord_titles)
 	max_pq = null
 	give_bank_account = 1000
 	required = TRUE
-
-	allow_custom_genitals = TRUE
-
 	cmode_music = 'sound/music/combat_fancy.ogg'
 
 /datum/job/roguetown/exlord //just used to change the lords title

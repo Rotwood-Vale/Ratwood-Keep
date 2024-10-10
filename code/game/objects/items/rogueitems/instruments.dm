@@ -118,7 +118,11 @@
 	"Song 3" = 'sound/music/instruments/guitar (3).ogg',
 	"Song 4" = 'sound/music/instruments/guitar (4).ogg',
 	"Song 5" = 'sound/music/instruments/guitar (5).ogg',
-	"Song 6" = 'sound/music/instruments/guitar (6).ogg')
+	"Song 6" = 'sound/music/instruments/guitar (6).ogg',
+	"Song 7" = 'sound/music/instruments/guitar (7).ogg',
+	"Song 8" = 'sound/music/instruments/guitar (8).ogg',
+	"Song 9" = 'sound/music/instruments/guitar (9).ogg',
+	"Song 10" = 'sound/music/instruments/guitar (10).ogg')
 
 /obj/item/rogue/instrument/harp
 	name = "harp"

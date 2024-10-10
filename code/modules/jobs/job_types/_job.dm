@@ -96,8 +96,9 @@
 	var/max_pq = 0
 
 	var/show_in_credits = TRUE
-	var/announce_latejoin = TRUE //sigma told me to throw this here. For bandits not being announced when they latejoin.
+	var/announce_latejoin = TRUE
 	var/give_bank_account = FALSE
+	var/noble_income = FALSE //Passive income every day from noble estate
 
 	var/can_random = TRUE
 
@@ -136,9 +137,6 @@
 	How this works, they get one extra roll on every category per PQ amount
 */
 	var/PQ_boost_divider = 0
-
-	//VRELL - Stuff to support custom genital restrictions
-	var/allow_custom_genitals = FALSE
 
 
 /datum/job/proc/special_job_check(mob/dead/new_player/player)
@@ -191,7 +189,7 @@
 		for(var/datum/mind/MF in get_minds(X))
 			H.mind.i_know_person(MF)
 
-	if(H.islatejoin && show_in_credits)
+	if(H.islatejoin && announce_latejoin)
 		var/used_title = title
 		if((H.pronouns == SHE_HER) && f_title)
 			used_title = f_title
@@ -200,6 +198,9 @@
 	if(give_bank_account)
 		if(give_bank_account > 1)
 			SStreasury.create_bank_account(H, give_bank_account)
+			if(noble_income)
+				SStreasury.noble_incomes[H] = noble_income
+
 		else
 			SStreasury.create_bank_account(H)
 

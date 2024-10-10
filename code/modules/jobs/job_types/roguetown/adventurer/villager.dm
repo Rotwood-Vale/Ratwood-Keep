@@ -21,9 +21,6 @@
 	always_show_on_latechoices = TRUE
 	same_job_respawn_delay = 0
 
-	allow_custom_genitals = TRUE //Vrell - This prevents the job itself from culling the parts since advanced classes determine if they are allowed
-	
-
 /datum/job/roguetown/villager/after_spawn(mob/living/L, mob/M, latejoin = TRUE)
 	..()
 	if(L)

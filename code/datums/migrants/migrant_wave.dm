@@ -102,7 +102,7 @@
 		/datum/migrant_role/adventurer = 1,
 	)
 	greet_text = "Together with a party of trusted friends we decided to venture out, seeking thrills, glory and treasure, ending up in the misty and damp bog underneath Azure Peak, perhaps getting ourselves into more than what we bargained for."
-
+/*
 /datum/migrant_wave/bandit
 	name = "Bandit Raid"
 	downgrade_wave = /datum/migrant_wave/bandit_down_one
@@ -137,3 +137,4 @@
 	roles = list(
 		/datum/migrant_role/bandit = 1,
 	)
+*/
