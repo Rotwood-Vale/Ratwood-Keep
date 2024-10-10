@@ -30,6 +30,9 @@
 		/obj/item/natural/worms/leech/cheele = 1,
 		/obj/item/needle = 1,
 		/obj/item/natural/cloth = 2,
+		/obj/item/reagent_containers/glass/bottle = 3,
+		/obj/item/reagent_containers/glass/mortar = 1,
+		/obj/item/pestle = 1,
 	)
 	if(H.gender == MALE)
 		armor = /obj/item/clothing/suit/roguetown/armor/leather/vest
@@ -54,7 +57,9 @@
 		H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/medicine, 5, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/sewing, 3, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/alchemy, 2, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/alchemy, 4, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/craft/cooking, 1, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/labor/farming, 1, TRUE)
 		H.change_stat("intelligence", 1)
 		H.change_stat("fortune", 1)
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/diagnose/secular)
