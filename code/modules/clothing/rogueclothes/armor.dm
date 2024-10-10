@@ -366,6 +366,12 @@
 	allowed_sex = list(MALE, FEMALE)
 	allowed_race = NON_DWARVEN_RACE_TYPES
 
+/obj/item/clothing/suit/roguetown/armor/gambeson/shadowrobe
+	name = "stalker robe"
+	desc = "A thick robe in royal purple, befitting the hand, while remaining easy for them to slip about in.."
+	allowed_race = NON_DWARVEN_RACE_TYPES
+	icon_state = "shadowrobe"
+
 /obj/item/clothing/suit/roguetown/armor/leather
 	name = "leather armor"
 	desc = "Flexible cowhide armor. Lightweight, better than nothing."

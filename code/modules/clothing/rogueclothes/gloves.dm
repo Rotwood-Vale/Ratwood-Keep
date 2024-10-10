@@ -38,6 +38,11 @@
 	anvilrepair = null
 	sewrepair = TRUE
 
+/obj/item/clothing/gloves/roguetown/fingerless/shadowgloves
+	name = "fingerless gloves"
+	desc = "Cloth gloves to absorb palm sweat while leaving the fingers free for fine manipulation."
+	icon_state = "shadowgloves"
+	allowed_race = NON_DWARVEN_RACE_TYPES
 
 /obj/item/clothing/gloves/roguetown/angle
 	name = "heavy leather gloves"
