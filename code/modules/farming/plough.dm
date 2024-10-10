@@ -16,7 +16,7 @@
 		user_tries_tilling(pulledby, get_turf(src))
 
 /obj/structure/plough/proc/user_tries_tilling(mob/living/user, turf/location)
-	if(istype(location, /turf/open/floor/rogue/grass))
+	if(istype(location, /turf/open/floor/rogue/grass) || istype(location, /turf/open/floor/rogue/grassred) || istype(location, /turf/open/floor/rogue/grassyel) || istype(location, /turf/open/floor/rogue/grasscold))
 		apply_farming_fatigue(user, 10)
 		playsound(location,'sound/items/dig_shovel.ogg', 100, TRUE)
 		location.ChangeTurf(/turf/open/floor/rogue/dirt, flags = CHANGETURF_INHERIT_AIR)
