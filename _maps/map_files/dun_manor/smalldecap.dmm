@@ -105,8 +105,8 @@
 /turf/open/floor/rogue/blocks,
 /area/rogue/outdoors/mountains/decap)
 "dn" = (
-/obj/structure/winch{
-	redstone_id = "bigasscastlegate"
+/obj/structure/lever{
+	redstone_id = "scary_manor"
 	},
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/cave/dungeon1)
@@ -810,8 +810,8 @@
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/outdoors/mountains/decap)
 "Ee" = (
-/obj/structure/gate/bars{
-	redstone_id = "bigasscastlegate"
+/obj/structure/bars/passage/steel{
+	redstone_id = "scary_manor"
 	},
 /turf/open/floor/carpet/red,
 /area/rogue/under/cave/dungeon1)
@@ -16649,7 +16649,7 @@ tg
 tg
 tg
 tg
-tg
+Ee
 tg
 tg
 tg
@@ -16779,7 +16779,7 @@ tg
 tg
 Ia
 tg
-tg
+Ee
 tg
 tg
 tg
