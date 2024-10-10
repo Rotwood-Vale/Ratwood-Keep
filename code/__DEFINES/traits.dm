@@ -77,6 +77,7 @@
 #define TRAIT_PUNISHMENT_CURSE "PunishmentCurse"
 #define TRAIT_LEPROSY "Leprosy"
 #define TRAIT_NUDE_SLEEPER "Nude Sleeper"
+#define TRAIT_WOLFHUNT "wolfhunt"
 
 // PATRON CURSE TRAITS
 #define TRAIT_CURSE "Curse" //source

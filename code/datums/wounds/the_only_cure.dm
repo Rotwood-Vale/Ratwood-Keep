@@ -8,7 +8,7 @@
 	var/zombie_infection_timer
 
 	/// Werewolf infection probability for bites on this wound
-	var/werewolf_infection_probability = 8
+	var/werewolf_infection_probability = 25
 	/// Time taken until werewolf infection comes in
 	var/werewolf_infection_time = 2 MINUTES
 	/// Actual infection timer
@@ -50,11 +50,16 @@
 	zombie_antag.wake_zombie(TRUE)
 	return TRUE
 
-/datum/wound/proc/werewolf_infect_attempt()
+/datum/wound/proc/werewolf_infect_attempt(var/mob/living/og_wolf)
 	if(QDELETED(src) || QDELETED(owner) || QDELETED(bodypart_owner))
 		return FALSE
 	if(zombie_infection_timer || werewolf_infection_timer || !ishuman(owner) || !prob(werewolf_infection_probability))
 		return
+	if(og_wolf.mind)
+		var/datum/antagonist/werewolf/wolfy = og_wolf.mind.has_antag_datum(/datum/antagonist/werewolf)
+		if(!wolfy.converts_left)
+			return
+		wolfy.converts_left--
 	var/mob/living/carbon/human/human_owner = owner
 	if(!human_owner.can_werewolf())
 		return
