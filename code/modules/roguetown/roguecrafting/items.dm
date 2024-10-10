@@ -375,6 +375,7 @@
 				)
 
 	req_table = TRUE
+
 /*
 /datum/crafting_recipe/roguetown/poisonbolt_five //Coded, but commented out pending balance discussion.
 	name = "poisoned bolts (x5)"
@@ -399,6 +400,55 @@
 				)
 
 	req_table = TRUE
+
+//pyro arrow crafting, from stonekeep
+/datum/crafting_recipe/roguetown/pyrobolt
+	name = "pyroclastic bolt"
+	result = /obj/item/ammo_casing/caseless/rogue/bolt/pyro
+	reqs = list(/obj/item/ammo_casing/caseless/rogue/bolt = 1,
+				/obj/item/reagent_containers/food/snacks/grown/rogue/fyritius = 1)
+	req_table = TRUE
+	craftdiff = 1
+	skillcraft = /datum/skill/craft/engineering
+
+/datum/crafting_recipe/roguetown/pyrobolt_five
+	name = "pyroclastic bolt (x5)"
+	result = list(
+				/obj/item/ammo_casing/caseless/rogue/bolt/pyro,
+				/obj/item/ammo_casing/caseless/rogue/bolt/pyro,
+				/obj/item/ammo_casing/caseless/rogue/bolt/pyro,
+				/obj/item/ammo_casing/caseless/rogue/bolt/pyro,
+				/obj/item/ammo_casing/caseless/rogue/bolt/pyro
+				)
+	reqs = list(/obj/item/ammo_casing/caseless/rogue/bolt = 5,
+				/obj/item/reagent_containers/food/snacks/grown/rogue/fyritius = 5)
+	req_table = TRUE
+	craftdiff = 1
+	skillcraft = /datum/skill/craft/engineering
+
+/datum/crafting_recipe/roguetown/pyroarrow
+	name = "pyroclastic arrow"
+	result = /obj/item/ammo_casing/caseless/rogue/arrow/pyro
+	reqs = list(/obj/item/ammo_casing/caseless/rogue/arrow = 1,
+				/obj/item/reagent_containers/food/snacks/grown/rogue/fyritius = 1)
+	req_table = TRUE
+	craftdiff = 1
+	skillcraft = /datum/skill/craft/engineering
+
+/datum/crafting_recipe/roguetown/pyroarrow_five
+	name = "pyroclastic arrow (x5)"
+	result = list(
+				/obj/item/ammo_casing/caseless/rogue/arrow/pyro,
+				/obj/item/ammo_casing/caseless/rogue/arrow/pyro,
+				/obj/item/ammo_casing/caseless/rogue/arrow/pyro,
+				/obj/item/ammo_casing/caseless/rogue/arrow/pyro,
+				/obj/item/ammo_casing/caseless/rogue/arrow/pyro
+				)
+	reqs = list(/obj/item/ammo_casing/caseless/rogue/arrow = 5,
+				/obj/item/reagent_containers/food/snacks/grown/rogue/fyritius = 5)
+	req_table = TRUE
+	craftdiff = 1
+	skillcraft = /datum/skill/craft/engineering
 
 /datum/crafting_recipe/roguetown/mortar
 	name = "stone mortar"
