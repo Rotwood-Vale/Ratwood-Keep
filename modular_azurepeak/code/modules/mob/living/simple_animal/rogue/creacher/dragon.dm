@@ -14,8 +14,11 @@
 	see_in_dark = 6
 	move_to_delay = 3
 	base_intents = list(/datum/intent/simple/bite)
+	minbodytemp = 0
+	maxbodytemp = INFINITY
+	damage_coeff = list(BRUTE = 1, BURN = 0.2, TOX = 1, CLONE = 1, STAMINA = 0, OXY = 1)
 	butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat/steak = 20,
-						/obj/item/natural/hide = 20, /obj/item/natural/bundle/bone/full = 4)
+						/obj/item/natural/hide = 10, /obj/item/natural/bundle/bone/full = 4)
 	mob_biotypes = MOB_ORGANIC|MOB_BEAST
 	health = 2500
 	maxHealth = 2500
