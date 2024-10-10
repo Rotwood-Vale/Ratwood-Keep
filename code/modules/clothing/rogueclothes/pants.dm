@@ -118,6 +118,12 @@
 	icon_state = "leathertrou"
 	color = "#151615"
 
+/obj/item/clothing/under/roguetown/trou/shadowpants
+	name = "silk tights"
+	desc = "Form-fitting legwear. Almost too form-fitting."
+	icon_state = "shadowpants"
+	allowed_race = NON_DWARVEN_RACE_TYPES
+
 /obj/item/clothing/under/roguetown/chainlegs
 	name = "steel chain chausses"
 	desc = "Chain leggings composed of interlinked metal rings."

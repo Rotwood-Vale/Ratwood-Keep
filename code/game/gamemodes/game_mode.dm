@@ -53,7 +53,6 @@
 
 	var/roundvoteend = FALSE
 	var/round_ends_at
-	var/ttime
 
 	var/list/datum/mind/villains = list() //Murders Runtimes via shoving this into parent
 	var/list/datum/mind/liches = list()

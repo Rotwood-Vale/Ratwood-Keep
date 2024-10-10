@@ -20,6 +20,22 @@
 	verbage = "sews"
 	craftdiff = 0
 
+/datum/crafting_recipe/roguetown/cloth5x
+	name = "cloth 5x"
+	result = list(
+				/obj/item/natural/cloth,
+				/obj/item/natural/cloth,
+				/obj/item/natural/cloth,
+				/obj/item/natural/cloth,
+				/obj/item/natural/cloth,
+				)
+	reqs = list(/obj/item/natural/fibers = 10)
+	tools = list(/obj/item/needle)
+	skillcraft = /datum/skill/misc/sewing
+	verbage_simple = "sew"
+	verbage = "sews"
+	craftdiff = 0
+
 /datum/crafting_recipe/roguetown/clothbelt
 	name = "cloth belt"
 	result = /obj/item/storage/belt/rogue/leather/cloth
@@ -403,6 +419,21 @@
 				/obj/item/natural/cloth = 1)
 	tools = list(/obj/item/needle)
 	skillcraft = /datum/skill/misc/sewing
+
+/datum/crafting_recipe/roguetown/bagx5
+	name = "bag x5"
+	result = list(
+				/obj/item/storage/roguebag/crafted,
+				/obj/item/storage/roguebag/crafted,
+				/obj/item/storage/roguebag/crafted,
+				/obj/item/storage/roguebag/crafted,
+				/obj/item/storage/roguebag/crafted,
+				)
+	reqs = list(/obj/item/natural/fibers = 5,
+				/obj/item/natural/cloth = 5)
+	tools = list(/obj/item/needle)
+	skillcraft = /datum/skill/misc/sewing
+	req_table = FALSE
 
 /obj/item/storage/roguebag/crafted
 	sellprice = 4

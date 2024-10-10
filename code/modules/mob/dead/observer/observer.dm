@@ -617,90 +617,14 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	set name = "Orbit" // "Haunt"
 	set desc = ""
 	set hidden = 1
-	var/list/mobs
-	if(client.holder)
-		if(check_rights(R_WATCH, FALSE))
-			mobs = getpois(mobs_only=1,skip_mindless=1)
-		else
-			mobs = gethaunt()
-	else
-		mobs = gethaunt()
+	var/list/mobs = getpois(mobs_only=1,skip_mindless=1)
 
 	var/input = input("Who?!", "Haunt", null, null) as null|anything in mobs
 	var/mob/target = mobs[input]
 	ManualFollow(target)
 
-
-#define HAUNTTIME (10 MINUTES)
-
-/mob/dead/observer
-	var/hauntexpire
-	var/skipprocess = FALSE
-/*
-/mob/dead/observer/proc/jumptorandom()
-	var/mob/living/carbon/human/target = pick(gethaunt())
-	if(myfriends)
-		for(var/A in myfriends)
-			if(target.real_name && A == target.real_name)
-				to_chat(src, span_danger("I can no longer haunt that person."))
-				ManualFollow(target)
-				skipprocess = FALSE
-				return TRUE
-	if(attackedme)
-		for(var/A in attackedme)
-			if(target.real_name && A == target.real_name)
-				to_chat(src, span_danger("I can no longer haunt that person."))
-				hauntexpire = world.time
-				ManualFollow(target)
-				skipprocess = FALSE
-				return FALSE
-	hauntexpire = null
-	to_chat(src, span_danger("There is nobody left to haunt."))
-	if(!reenter_corpse())
-		returntolobby(RESPAWNTIME*-1)*/
-
 /datum/mind
 	var/list/attackedme = list()
-	var/list/myfriends = list()
-
-/mob/dead/observer/proc/gethaunt()
-	var/list/mobs = sortmobs()
-	var/list/namecounts = list()
-	var/list/pois = list()
-	for(var/mob/M in mobs)
-		if((!M.mind || !M.ckey))
-//			if(!isbot(M) && !iscameramob(M) && !ismegafauna(M))
-			continue
-		if(M.client && M.client.holder && M.client.holder.fakekey) //stealthmins
-			continue
-		var/friendorfoe
-		if(mind)
-			if(mind.attackedme)
-				for(var/A in mind.attackedme)
-					if(M.real_name && A == M.real_name)
-						if(mind.attackedme[A])
-							if(world.time < mind.attackedme[A] + HAUNTTIME)
-								friendorfoe = TRUE
-			if(mind.myfriends)
-				for(var/A in mind.myfriends)
-					if(M.real_name && A == M.real_name)
-						friendorfoe = TRUE
-		if(!friendorfoe)
-			continue
-		var/name = avoid_assoc_duplicate_keys(M.name, namecounts)
-
-		if(M.real_name && M.real_name != M.name)
-			name += " \[[M.real_name]\]"
-		if(M.stat == DEAD)
-			continue
-/*			if(isobserver(M))
-				name += " \[ghost\]"
-			else
-				name += " \[dead\]"*/
-		pois[name] = M
-
-	return pois
-
 
 // This is the ghost's follow verb with an argument
 /mob/dead/observer/proc/ManualFollow(atom/movable/target)

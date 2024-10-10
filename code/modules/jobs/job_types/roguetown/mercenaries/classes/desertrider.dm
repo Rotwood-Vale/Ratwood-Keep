@@ -5,7 +5,6 @@
 	allowed_races = RACES_ALL_KINDS
 	outfit = /datum/outfit/job/roguetown/mercenary/desert_rider
 	category_tags = list(CTAG_MERCENARY)
-	maximum_possible_slots = 6
 	cmode_music = 'sound/music/combat_desertrider.ogg' //GREATEST COMBAT TRACK IN THE GAME SO FAR BESIDES MAYBE MANIAC2.OGG
 
 

@@ -45,6 +45,12 @@ GLOBAL_LIST_INIT(badomens, list())
 			used = "The Sun, she is wounded!"
 		if(OMEN_SKELETONSIEGE)
 			used = "Unwelcome visitors!"
+		if(ASCEND_FIRST)
+			used = "A tremble runs through the leylines of the realm. NEW DECK, MAJOR ARCANA: THE FOOL - UPRIGHT"
+		if(ASCEND_WAKENING)
+			used = "The sky begins to turn quicker. NEW OMEN, MAJOR ARCANA: THE HANGED MAN - REVERSED"
+		if(ASCEND_ASCENDANT)
+			used = "A N##EW G$ $OD A@@AKENSS IN GORE AND S3%HIT - <span class='userdanger'>MAJOR ARCANA: THE TOWER - UPRIGHT</span>"
 	if(eventreason && used)
 		priority_announce(used, "Bad Omen", 'sound/misc/evilevent.ogg')
 

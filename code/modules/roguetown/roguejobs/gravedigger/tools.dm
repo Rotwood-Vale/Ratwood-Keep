@@ -95,7 +95,7 @@
 			playsound(T,'sound/items/empty_shovel.ogg', 100, TRUE)
 			update_icon()
 			return
-		if(istype(T, /turf/open/floor/rogue/grass))
+		if(istype(T, /turf/open/floor/rogue/grass) || istype(T, /turf/open/floor/rogue/grassred) || istype(T, /turf/open/floor/rogue/grassyel) || istype(T, /turf/open/floor/rogue/grasscold))
 			to_chat(user, span_warning("There is grass in the way."))
 			return
 		return

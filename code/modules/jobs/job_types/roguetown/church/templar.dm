@@ -114,16 +114,16 @@
 	switch(H.patron?.type)
 		if(/datum/patron/divine/astrata)
 			wrists = /obj/item/clothing/neck/roguetown/psicross/astrata
-			head = /obj/item/clothing/head/roguetown/helmet/heavy/astratahelm
-			cloak = /obj/item/clothing/cloak/tabard/crusader/astrata
+			head = /obj/item/clothing/head/roguetown/helmet/heavy/astratan
+			cloak = /obj/item/clothing/cloak/templar/astratan
 		if(/datum/patron/divine/dendor)
 			wrists = /obj/item/clothing/neck/roguetown/psicross/dendor
 			head = /obj/item/clothing/head/roguetown/helmet/heavy/dendorhelm
 			cloak = /obj/item/clothing/cloak/tabard/crusader/dendor
 		if(/datum/patron/divine/necra)
 			wrists = /obj/item/clothing/neck/roguetown/psicross/necra
-			head = /obj/item/clothing/head/roguetown/helmet/heavy/necrahelm
-			cloak = /obj/item/clothing/cloak/tabard/crusader/necra
+			head = /obj/item/clothing/head/roguetown/helmet/heavy/necran
+			cloak = /obj/item/clothing/cloak/templar/necran
 		if(/datum/patron/divine/pestra)
 			wrists = /obj/item/clothing/neck/roguetown/psicross/pestra
 			cloak = /obj/item/clothing/cloak/tabard/crusader/pestra
@@ -136,7 +136,8 @@
 			cloak = /obj/item/clothing/cloak/tabard/crusader/ravox
 		if(/datum/patron/divine/malum)
 			wrists = /obj/item/clothing/neck/roguetown/psicross/malum
-			cloak = /obj/item/clothing/cloak/tabard/crusader/malum
+			cloak = /obj/item/clothing/cloak/templar/malumite
+			head = /obj/item/clothing/head/roguetown/helmet/heavy/malum
 		if(/datum/patron/old_god)
 			wrists = /obj/item/clothing/neck/roguetown/psicross
 			cloak = /obj/item/clothing/cloak/tabard/crusader/psydon

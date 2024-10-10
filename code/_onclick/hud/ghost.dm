@@ -32,8 +32,7 @@
 	var/mob/dead/observer/G = usr
 	var/paramslist = params2list(params)
 	if(paramslist["right"]) // screen objects don't do the normal Click() stuff so we'll cheat
-		if(G.client?.holder)
-			G.follow()
+		G.follow()
 	else
 		if(G.client)
 			if(istype(G, /mob/dead/observer/rogue/arcaneeye))

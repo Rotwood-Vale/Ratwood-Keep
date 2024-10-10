@@ -4,3 +4,6 @@
 #define OMEN_NOBLEDEATH "nobledeath"
 #define OMEN_SUNSTEAL "sunsteal"
 #define OMEN_SKELETONSIEGE "skeletonsiege"
+#define ASCEND_FIRST "ascendantone"
+#define ASCEND_WAKENING "ascendanttwo"
+#define ASCEND_ASCENDANT "ascendantfinal"

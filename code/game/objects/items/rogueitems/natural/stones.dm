@@ -137,6 +137,8 @@ GLOBAL_LIST_INIT(stone_personality_descs, list(
 	slot_flags = ITEM_SLOT_MOUTH
 	obj_flags = null
 	w_class = WEIGHT_CLASS_TINY
+	/// If our stone is magical, this lets us know -how- magical. Maximum is 15.
+	var/magic_power = 0
 
 /obj/item/natural/stone/Initialize()
 	. = ..()
@@ -201,16 +203,21 @@ GLOBAL_LIST_INIT(stone_personality_descs, list(
 			stone_title = "[picked_name] [stone_title]" // Prefix and then stone
 			stone_desc += " [picked_desc]" // We put the descs after the original one
 
+	var/personality_modifier = 0
 	switch(stone_personality_rating)
 		if(10 to 22)
 			if(prob(3)) // Stone has a 3 percent chance to have a personality despite missing its roll
 				stone_title = "[stone_title] of [pick(GLOB.stone_personalities)]"
 				stone_desc += " [pick(GLOB.stone_personality_descs)]"
-				bonus_force += rand(1,5) // Personality gives a stone some more power too
+				personality_modifier += rand(1,5) // Personality gives a stone some more power too
 		if(23 to 25)
 			stone_title = "[stone_title] of [pick(GLOB.stone_personalities)]"
 			stone_desc += " [pick(GLOB.stone_personality_descs)]"
-			bonus_force += rand(1,5) // Personality gives a stone some more power too
+			personality_modifier += rand(1,5) // Personality gives a stone some more power too
+			
+	if (personality_modifier)
+		bonus_force += personality_modifier
+		magic_power += personality_modifier
 
 	var/max_force_range = sharpness_rating + bluntness_rating // Add them together
 	//max_force_range = round(max_force_range/2) // Divide by 2 and round jus incase
@@ -223,6 +230,7 @@ GLOBAL_LIST_INIT(stone_personality_descs, list(
 		stone_title = "[pick(GLOB.stone_magic_names)] [stone_title] +[magic_force]"
 		stone_desc += " [pick(GLOB.stone_magic_descs)]"
 		bonus_force += magic_force // Add on the magic force modifier
+		magic_power += magic_force
 
 	if(extra_intent_list.len)
 		for(var/i in 1 to min(4, extra_intent_list.len))

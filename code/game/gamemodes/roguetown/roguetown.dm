@@ -49,7 +49,7 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "E
 	skeletons = FALSE
 
 /datum/game_mode/chaosmode/check_finished()
-	ttime = world.time - SSticker.round_start_time
+	var/ttime = world.time - SSticker.round_start_time
 	if(roguefight)
 		if(ttime >= 30 MINUTES)
 			return TRUE
@@ -202,7 +202,7 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "E
 	"Royal Guard")
 	var/num_bandits = 0
 	if(num_players() >= 10)
-		num_bandits = CLAMP(round(num_players() / 2), 25, 30)
+		num_bandits = CLAMP(round(num_players() / 5), 4, 6)
 		var/datum/job/bandit_job = SSjob.GetJob("Bandit")
 		bandit_job.total_positions = num_bandits
 		bandit_job.spawn_positions = num_bandits

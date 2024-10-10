@@ -46,17 +46,15 @@ Difficulty: Medium
 	friendly_verb_continuous = "stares down"
 	friendly_verb_simple = "stare down"
 	speak_emote = list("roars")
-	armor_penetration = 40
-	melee_damage_lower = 40
-	melee_damage_upper = 40
+	armor_penetration = 30
+	melee_damage_lower = 45
+	melee_damage_upper = 70
 	speed = 5
 	move_to_delay = 5
 	ranged = TRUE
 	pixel_x = -16
-	crusher_loot = list(/obj/structure/closet/crate/necropolis/dragon/crusher)
-	loot = list(/obj/structure/closet/crate/necropolis/dragon)
-	butcher_results = list(/obj/item/stack/ore/diamond = 5, /obj/item/stack/sheet/sinew = 5, /obj/item/stack/sheet/bone = 30)
-	guaranteed_butcher_results = list(/obj/item/stack/sheet/animalhide/ashdrake = 10)
+	butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat/steak = 20,
+						/obj/item/natural/hide = 20, /obj/item/natural/bundle/bone/full = 4)
 	var/swooping = NONE
 	var/player_cooldown = 0
 	gps_name = "Fiery Signal"

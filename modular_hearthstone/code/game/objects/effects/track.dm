@@ -8,6 +8,21 @@
 
 /turf/open/floor/rogue/grass
 	track_prob = 10
+
+/turf/open/floor/rogue/grassyel
+	track_prob = 10
+
+/turf/open/floor/rogue/grassred
+	track_prob = 10
+
+/turf/open/floor/rogue/grasscold
+	track_prob = 10
+
+/turf/open/floor/rogue/snow
+	track_prob = 20
+
+/turf/open/floor/rogue/snowrough
+	track_prob = 10
 //Probabilities end (albeit mud is handled seperately).
 
 //Analysis levels depending on skillcheck during reveal.

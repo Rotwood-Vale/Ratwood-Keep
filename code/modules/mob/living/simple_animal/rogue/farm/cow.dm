@@ -149,7 +149,8 @@
 	see_in_dark = 6
 	move_to_delay = 8
 	base_intents = list(/datum/intent/simple/headbutt)
-	butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat/steak = 6, /obj/item/natural/bundle/bone/full = 1)
+	butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat/steak = 6,
+						/obj/item/natural/hide=2, /obj/item/natural/bundle/bone/full = 1)
 	faction = list("cows")
 	mob_biotypes = MOB_ORGANIC|MOB_BEAST
 	attack_same = 0

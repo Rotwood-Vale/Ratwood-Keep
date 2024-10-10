@@ -5,7 +5,6 @@
 	allowed_races = RACES_ALL_KINDS
 	outfit = /datum/outfit/job/roguetown/mercenary/warscholar
 	category_tags = list(CTAG_MERCENARY)
-	maximum_possible_slots = 3
 	cmode_music = 'sound/music/warscholar.ogg'
 
 /datum/outfit/job/roguetown/mercenary/warscholar/pre_equip(mob/living/carbon/human/H)

@@ -249,7 +249,7 @@
 	if(isclosedturf(T))
 		return
 	if(!istype(T, /turf/open/floor/rogue/dirt))
-		if(!istype(T, /turf/open/floor/rogue/grass))
+		if(!(istype(T, /turf/open/floor/rogue/grass) || istype(T, /turf/open/floor/rogue/grassred) || istype(T, /turf/open/floor/rogue/grassyel) || istype(T, /turf/open/floor/rogue/grasscold)))
 			return
 	return TRUE
 
