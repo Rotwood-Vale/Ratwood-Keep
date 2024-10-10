@@ -94,10 +94,6 @@
 					update_inv_shoes()
 				//End bloody footprints
 				S.step_action()
-		if(mouth)
-			if(mouth.spitoutmouth && prob(5))
-				visible_message(span_warning("[src] spits out [mouth]."))
-				dropItemToGround(mouth, silent = FALSE)
 		if(held_items.len)
 			for(var/obj/item/I in held_items)
 				if(I.minstr)
