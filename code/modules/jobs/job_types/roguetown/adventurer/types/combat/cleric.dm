@@ -21,6 +21,7 @@
 			neck = /obj/item/clothing/neck/roguetown/psicross/noc
 		if(/datum/patron/divine/dendor)
 			neck = /obj/item/clothing/neck/roguetown/psicross/dendor
+			H.mind.adjust_skillrank(/datum/skill/magic/druidic, 1, TRUE) // enough to craft druid mask, at least
 		if(/datum/patron/divine/necra)
 			neck = /obj/item/clothing/neck/roguetown/psicross/necra
 		if(/datum/patron/divine/pestra)
