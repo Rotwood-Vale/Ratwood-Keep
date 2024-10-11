@@ -22,27 +22,6 @@
 		STR.not_while_equipped = TRUE
 		STR.set_holdable(list(/obj/item/rogueweapon/surgery, /obj/item/needle, /obj/item/natural/worms/leech, /obj/item/reagent_containers/lux))
 
-/obj/item/storage/belt/rogue/surgery_bag/pickup(mob/user)
-	..()
-	content_overlays = FALSE
-	update_icon()
-
-/obj/item/storage/belt/rogue/surgery_bag/dropped(mob/living/carbon/human/user)
-	..()
-	if (isturf(loc))
-		content_overlays = TRUE
-	update_icon()
-
-/obj/item/storage/belt/rogue/surgery_bag/update_icon()
-	cut_overlays()
-	..()
-	if (content_overlays)
-		icon = 'icons/roguetown/items/surgery_bag.dmi'
-		var/mutable_appearance/straps = mutable_appearance('icons/roguetown/items/surgery_bag.dmi', "straps")
-		add_overlay(straps)
-	else
-		icon = 'icons/roguetown/clothing/storage.dmi'
-
 /obj/item/storage/belt/rogue/surgery_bag/full/PopulateContents()
 	new /obj/item/rogueweapon/surgery/scalpel(src)
 	new /obj/item/rogueweapon/surgery/saw(src)
