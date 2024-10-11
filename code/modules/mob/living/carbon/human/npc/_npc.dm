@@ -56,9 +56,8 @@
 			if(!(mobility_flags & MOBILITY_STAND) && !stand_attempts)
 				resisting = TRUE
 				npc_stand()
-				resisting = FALSE
 			else
-				stand_attempts = 0
+				stand_attempts = max(stand_attempts-1, 0)
 				if(!handle_combat())
 					if(mode == AI_IDLE && !pickupTarget)
 						npc_idle()
@@ -72,8 +71,10 @@
 /mob/living/carbon/human/proc/npc_stand()
 	if(stand_up())
 		stand_attempts = 0
+		resisting = FALSE
 	else
-		stand_attempts += rand(30,60)
+		stand_attempts = rand(10,120)
+		resisting = FALSE
 
 /mob/living/carbon/human/proc/npc_idle()
 	if(m_intent == MOVE_INTENT_SNEAK)

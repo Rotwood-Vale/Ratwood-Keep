@@ -695,10 +695,16 @@
 				to_chat(src, span_warning("I can't stand without my wings!"))
 				return FALSE
 		if(!IsKnockdown() && !IsStun() && !IsParalyzed())
-			src.visible_message(span_notice("[src] stands up."))
 			if(move_after(src, 20, target = src))
 				set_resting(FALSE, FALSE)
+				if(resting)
+					src.visible_message(span_warning("[src] tries to stand up."))
+					return FALSE // workaround for broken legs and stuff
+				src.visible_message(span_notice("[src] stands up."))
 				return TRUE
+			else
+				src.visible_message(span_warning("[src] tries to stand up."))
+				return FALSE
 		else
 			src.visible_message(span_warning("[src] tries to stand up."))
 			return FALSE
