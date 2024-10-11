@@ -4,8 +4,8 @@ GLOBAL_LIST_EMPTY(explosions)
 //Against my better judgement, I will return the explosion datum
 //If I see any GC errors for it I will find you
 //and I will gib you
-/proc/explosion(atom/epicenter, devastation_range, heavy_impact_range, light_impact_range, flash_range, adminlog = TRUE, ignorecap = FALSE, flame_range = 0, silent = FALSE, smoke = FALSE, soundin)
-	return new /datum/explosion(epicenter, devastation_range, heavy_impact_range, light_impact_range, flash_range, adminlog, ignorecap, flame_range, silent, smoke, soundin)
+/proc/explosion(atom/epicenter, devastation_range, heavy_impact_range, light_impact_range, flash_range, adminlog = TRUE, ignorecap = FALSE, flame_range = 0, silent = FALSE, visfx, smoke = FALSE, soundin)
+	return new /datum/explosion(epicenter, devastation_range, heavy_impact_range, light_impact_range, flash_range, adminlog, ignorecap, flame_range, silent, visfx, smoke, soundin)
 
 //This datum creates 3 async tasks
 //1 GatherSpiralTurfsProc runs spiral_range_turfs(tick_checked = TRUE) to populate the affected_turfs list
@@ -33,7 +33,7 @@ GLOBAL_LIST_EMPTY(explosions)
 		EX_PREPROCESS_EXIT_CHECK\
 	}
 
-/datum/explosion/New(atom/epicenter, devastation_range, heavy_impact_range, light_impact_range, flash_range, adminlog, ignorecap, flame_range, silent, smoke, soundin = 'sound/misc/explode/explosion.ogg')
+/datum/explosion/New(atom/epicenter, devastation_range, heavy_impact_range, light_impact_range, flash_range, adminlog, ignorecap, flame_range, silent, visfx = "explosion", smoke, soundin = 'sound/misc/explode/explosion.ogg')
 	set waitfor = FALSE
 
 	var/id = ++id_counter
@@ -141,13 +141,25 @@ GLOBAL_LIST_EMPTY(explosions)
 	SSlighting.postpone(postponeCycles)
 	SSmachines.postpone(postponeCycles)
 
-	var/datum/effect_system/explosion/E
-	if(smoke)
-		E = new /datum/effect_system/explosion/smoke
-	else
-		E = new
-	E.set_up(epicenter)
-	E.start()
+	// Pick custom effects from code/game/objects/effects/
+	var/datum/effect_system/E
+	switch(visfx)
+		if("explosion")
+			if(smoke)
+				E = new /datum/effect_system/explosion/smoke
+			E = new /datum/effect_system/explosion
+			E.set_up(epicenter)
+			E.start()
+		if("firespark")
+			E = new /datum/effect_system/spark_spread()
+			E.set_up(1, 1, epicenter)
+			E.start()
+		else
+			E = new /datum/effect_system/explosion
+			if(smoke)
+				E = new /datum/effect_system/explosion/smoke
+			E.set_up(epicenter)
+			E.start()
 
 	EX_PREPROCESS_CHECK_TICK
 
