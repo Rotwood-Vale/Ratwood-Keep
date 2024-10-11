@@ -13,6 +13,7 @@
 		"They deserve to be put at my blade.",
 		"Do what thou wilt shall be the whole of the law.",
 	)
+	rogue_enabled = TRUE
 	/// Traits we apply to the owner
 	var/static/list/applied_traits = list(
 		TRAIT_CRITICAL_RESISTANCE,

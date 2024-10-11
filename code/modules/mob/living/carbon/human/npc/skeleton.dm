@@ -1,6 +1,6 @@
 /mob/living/carbon/human/species/skeleton
 	name = "skeleton"
-	
+
 	race = /datum/species/human/northern
 	gender = MALE
 	bodyparts = list(/obj/item/bodypart/chest, /obj/item/bodypart/head, /obj/item/bodypart/l_arm,
@@ -14,7 +14,7 @@
 /mob/living/carbon/human/species/skeleton/npc
 	aggressive = 1
 	mode = AI_IDLE
-	wander = FALSE
+	wander = TRUE
 
 /mob/living/carbon/human/species/skeleton/npc/ambush
 
@@ -48,8 +48,8 @@
 		QDEL_NULL(src.charflaw)
 	mob_biotypes |= MOB_UNDEAD
 	faction = list("undead")
-	name = "skelelon"
-	real_name = "skelelon"
+	name = "Skeleton"
+	real_name = "Skeleton"
 	ADD_TRAIT(src, TRAIT_NOMOOD, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_NOROGSTAM, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_NOHUNGER, TRAIT_GENERIC)
@@ -58,6 +58,19 @@
 	ADD_TRAIT(src, TRAIT_NOPAIN, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_TOXIMMUNE, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_LIMBATTACHMENT, TRAIT_GENERIC)
+	ADD_TRAIT(src, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
+	ADD_TRAIT(src, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
+
+	var/obj/item/organ/tongue/tongue = src.getorganslot(ORGAN_SLOT_TONGUE)
+	if(tongue)
+		tongue.Remove(src,1)
+		QDEL_NULL(tongue)
+	var/obj/item/organ/eyes/eyes = src.getorganslot(ORGAN_SLOT_EYES)
+	if(eyes)
+		eyes.Remove(src,1)
+		QDEL_NULL(eyes)
+	eyes = new /obj/item/organ/eyes/night_vision/zombie
+	eyes.Insert(src)
 	for(var/obj/item/bodypart/B in src.bodyparts)
 		B.skeletonize(FALSE)
 	update_body()
@@ -73,19 +86,19 @@
 	if(prob(80))
 		shoes = /obj/item/clothing/shoes/roguetown/boots/leather
 	if(prob(30))
-		armor = /obj/item/clothing/suit/roguetown/armor/chainmail/iron
+		armor = /obj/item/clothing/suit/roguetown/armor/chainmail/iron/rusted
 	if(prob(30))
 		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/vagrant
 		if(prob(50))
 			shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/vagrant/l
 	if(prob(90))
-		pants = /obj/item/clothing/under/roguetown/chainlegs/iron
+		pants = /obj/item/clothing/under/roguetown/chainlegs/iron/rusted
 	if(prob(40))
 		head = /obj/item/clothing/head/roguetown/helmet/leather
 	if(prob(70))
-		gloves = /obj/item/clothing/gloves/roguetown/chain/iron
+		gloves = /obj/item/clothing/gloves/roguetown/chain/rusted
 	if(prob(70))
-		neck = /obj/item/clothing/neck/roguetown/chaincoif/iron
+		neck = /obj/item/clothing/neck/roguetown/chaincoif/rusted
 	if(H.gender == FEMALE)
 		H.STASTR = rand(9,12)
 	else
@@ -95,12 +108,58 @@
 	H.STAEND = 15
 	H.STAINT = 1
 	if(prob(50))
-		r_hand = /obj/item/rogueweapon/sword/iron
+		r_hand = /obj/item/rogueweapon/sword/rusted
 	else
-		r_hand = /obj/item/rogueweapon/mace
+		r_hand = /obj/item/rogueweapon/mace/rusted
 
 /mob/living/carbon/human/species/skeleton/npc/no_equipment
     skel_outfit = null
 
 /mob/living/carbon/human/species/skeleton/no_equipment
     skel_outfit = null
+
+/*
+*  Bandaid half assed fix for people smelting summoned skeleton gear.
+*  Rusted(or whatever you want to rename it to) gear should eventually get its own sprites and moved to its respective ".dm".
+*  Poke Neon about it.
+*/
+
+/obj/item/clothing/suit/roguetown/armor/chainmail/iron/rusted
+	name = "rusted chainmaille"
+	desc = "A piece of gear that looks damaged beyond repair."
+	anvilrepair = null
+	smeltresult = null
+
+/obj/item/clothing/under/roguetown/chainlegs/iron/rusted
+	name = "rusted chain chausses"
+	desc = "A piece of gear that looks damaged beyond repair."
+	anvilrepair = null
+	smeltresult = null
+
+
+/obj/item/clothing/gloves/roguetown/chain/rusted
+	name = "rusted chain gloves"
+	desc = "A piece of gear that looks damaged beyond repair."
+	anvilrepair = null
+	smeltresult = null
+
+
+/obj/item/clothing/neck/roguetown/chaincoif/rusted
+	name = "rusted chain coif"
+	desc = "A piece of gear that looks damaged beyond repair."
+	anvilrepair = null
+	smeltresult = null
+
+
+/obj/item/rogueweapon/sword/rusted
+	name = "rusted sword"
+	desc = "A piece of gear that looks damaged beyond repair."
+	anvilrepair = null
+	smeltresult = null
+
+
+/obj/item/rogueweapon/mace/rusted
+	name = "rusted mace"
+	desc = "A piece of gear that looks damaged beyond repair."
+	anvilrepair = null
+	smeltresult = null
