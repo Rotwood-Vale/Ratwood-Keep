@@ -13,7 +13,7 @@ GLOBAL_LIST_INIT(laws_of_the_land, initialize_laws_of_the_land())
 
 /obj/structure/roguemachine/titan
 	name = "throat"
-	desc = "He who wears the crown holds the key to this strange thing. If all else fails, yell \"Help!\""
+	desc = "He who wears the crown holds the key to this strange thing. If all else fails, demand the \"secrets of the throat!\""
 	icon = 'icons/roguetown/misc/machines.dmi'
 	icon_state = ""
 	density = FALSE
