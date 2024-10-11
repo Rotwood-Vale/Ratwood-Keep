@@ -3,7 +3,7 @@
 	flag = BANDIT
 	department_flag = PEASANTS
 	faction = "Station"
-	total_positions = 0 
+	total_positions = 0
 	spawn_positions = 0
 	antag_job = TRUE
 	allowed_races = RACES_ALL_KINDS
@@ -12,11 +12,11 @@
 	outfit = null
 	outfit_female = null
 
-	
-	
+
+
 	display_order = JDO_BANDIT
 	announce_latejoin = FALSE
-	min_pq = 1
+	min_pq = 3
 	max_pq = null
 
 	advclass_cat_rolls = list(CTAG_BANDIT = 20)
