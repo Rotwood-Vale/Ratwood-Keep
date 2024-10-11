@@ -461,4 +461,4 @@
 	reqs = list(/obj/item/grown/log/tree/stick = 4,
 				/obj/item/natural/fibers = 3)
 	skillcraft = /datum/skill/magic/druidic
-	craftdiff = 1 // druids & dendor clerics can craft
+	craftdiff = 2 // druids & dendor clerics can craft
