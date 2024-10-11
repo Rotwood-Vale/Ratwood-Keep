@@ -29,7 +29,7 @@
 		perc += (ourskill - theirskill)*15 	//skill is of the essence
 		perc += (user.STAINT - L.STAINT)*10	//but it's also mostly a mindgame
 		perc += (user.STASPD - L.STASPD)*5 	//yet a speedy feint is hard to counter
-		
+
 
 
 	if(L.d_intent == INTENT_DODGE)
@@ -45,14 +45,14 @@
 	if(prob(perc)) //feint intent increases the immobilize duration significantly
 		if(istype(user.rmb_intent, /datum/rmb_intent/feint))
 			L.apply_status_effect(/datum/status_effect/debuff/feinted)
-			L.changeNext_move(10)
-			L.Immobilize(12)
+			L.changeNext_move(20)
+			L.Immobilize(30)
 			to_chat(user, span_notice("[L] fell for my feint attack!"))
 			to_chat(L, span_danger("I fall for [user]'s feint attack!"))
 		else
 			L.apply_status_effect(/datum/status_effect/debuff/feinted)
-			L.changeNext_move(4)
-			L.Immobilize(5)
+			L.changeNext_move(10)
+			L.Immobilize(15)
 			to_chat(user, span_notice("[L] fell for my feint attack!"))
 			to_chat(L, span_danger("I fall for [user]'s feint attack!"))
 	else
