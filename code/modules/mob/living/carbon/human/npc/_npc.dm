@@ -44,7 +44,7 @@
 //	if(world.time < next_ai_tick)
 //		return
 //	next_ai_tick = world.time + rand(10,20)
-	set_cmode(TRUE)
+	cmode = 1
 	update_cone_show()
 	if(stat == CONSCIOUS)
 		if(on_fire || buckled || restrained() || pulledby)
@@ -52,18 +52,19 @@
 			walk_to(src,0)
 			resist()
 			resisting = FALSE
-		if(!(mobility_flags & MOBILITY_STAND) && (stand_attempts < 3))
-			resisting = TRUE
-			npc_stand()
-			resisting = FALSE
-		else
-			stand_attempts = 0
-			if(!handle_combat())
-				if(mode == AI_IDLE && !pickupTarget)
-					npc_idle()
-					if(del_on_deaggro && last_aggro_loss && (world.time >= last_aggro_loss + del_on_deaggro))
-						if(deaggrodel())
-							return TRUE
+		if(!resisting)
+			if(!(mobility_flags & MOBILITY_STAND) && !stand_attempts)
+				resisting = TRUE
+				npc_stand()
+				resisting = FALSE
+			else
+				stand_attempts = 0
+				if(!handle_combat())
+					if(mode == AI_IDLE && !pickupTarget)
+						npc_idle()
+						if(del_on_deaggro && last_aggro_loss && (world.time >= last_aggro_loss + del_on_deaggro))
+							if(deaggrodel())
+								return TRUE
 	else
 		walk_to(src,0)
 		return TRUE
@@ -72,7 +73,7 @@
 	if(stand_up())
 		stand_attempts = 0
 	else
-		stand_attempts += rand(1,3)
+		stand_attempts += rand(30,60)
 
 /mob/living/carbon/human/proc/npc_idle()
 	if(m_intent == MOVE_INTENT_SNEAK)
@@ -95,8 +96,7 @@
 
 /mob/living/carbon/human/proc/deaggrodel()
 	if(aggressive)
-		var/list/around = hearers(7, src)  // scan for enemies
-		for(var/mob/living/L in around)
+		for(var/mob/living/L in view(7)) // scan for enemies
 			if( should_target(L) && (L != src))
 				if(L.stat != DEAD)
 					retaliate(L)
@@ -232,7 +232,7 @@
 	if(L == src)
 		return FALSE
 
-	if(!is_in_zweb(src, L))
+	if(!is_in_zweb(src.z,L.z))
 		return FALSE
 
 	if(L.stat == DEAD)
@@ -257,8 +257,7 @@
 		if(AI_IDLE)		// idle
 			if(world.time >= next_seek)
 				next_seek = world.time + 3 SECONDS
-				var/list/around = hearers(7, src) // scan for enemies
-				for(var/mob/living/L in around)
+				for(var/mob/living/L in view(7, src)) // scan for enemies
 					if(should_target(L))
 						retaliate(L)
 
@@ -275,9 +274,9 @@
 				for(var/obj/item/I in view(1,src))
 					if(!isturf(I.loc))
 						continue
-					if(I in blacklistItems)
+					if(blacklistItems[I])
 						continue
-					if(I && I.force > 7)
+					if(I.force > 7)
 						equip_item(I)
 
 //			// switch targets
