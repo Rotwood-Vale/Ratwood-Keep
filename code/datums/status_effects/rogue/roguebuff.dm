@@ -147,6 +147,57 @@
 	desc = ""
 	icon_state = "weed"
 
+/atom/movable/screen/alert/status_effect/buff/featherfall
+	name = "Featherfall"
+	desc = "I am somewhat protected against falling from heights."
+	icon_state = "buff"
+
+/datum/status_effect/buff/featherfall
+	id = "featherfall"
+	alert_type = /atom/movable/screen/alert/status_effect/buff/featherfall
+	duration = 1 MINUTES
+
+/datum/status_effect/buff/featherfall/on_apply()
+	. = ..()
+	to_chat(owner, span_warning("I feel lighter."))
+	ADD_TRAIT(owner, TRAIT_NOFALLDAMAGE1, MAGIC_TRAIT)
+
+/datum/status_effect/buff/featherfall/on_remove()
+	. = ..()
+	to_chat(owner, span_warning("The feeling of lightness fades."))
+	REMOVE_TRAIT(owner, TRAIT_NOFALLDAMAGE1, MAGIC_TRAIT)
+
+/atom/movable/screen/alert/status_effect/buff/darkvision
+	name = "Darkvision"
+	desc = "I can see in the dark somewhat."
+	icon_state = "buff"
+
+/datum/status_effect/buff/darkvision
+	id = "darkvision"
+	alert_type = /atom/movable/screen/alert/status_effect/buff/darkvision
+	duration = 10 MINUTES
+
+/datum/status_effect/buff/darkvision/on_apply()
+	. = ..()
+	to_chat(owner, span_warning("The darkness fades somewhat."))
+	ADD_TRAIT(owner, TRAIT_DARKVISION, MAGIC_TRAIT)
+
+/datum/status_effect/buff/darkvision/on_remove()
+	. = ..()
+	to_chat(owner, span_warning("The darkness returns to normal."))
+	REMOVE_TRAIT(owner, TRAIT_DARKVISION, MAGIC_TRAIT)
+
+/atom/movable/screen/alert/status_effect/buff/haste
+	name = "Haste"
+	desc = "I am magically hastened."
+	icon_state = "buff"
+
+/datum/status_effect/buff/haste
+	id = "haste"
+	alert_type = /atom/movable/screen/alert/status_effect/buff/haste
+	effectedstats = list("speed" = 3)
+	duration = 1 MINUTES
+
 /datum/status_effect/buff/seelie_drugs
 	id = "seelie drugs"
 	alert_type = /atom/movable/screen/alert/status_effect/buff/druqks

@@ -2,7 +2,7 @@
 	force = 15
 	possible_item_intents = list(/datum/intent/flail/strike, /datum/intent/flail/strike/smash)
 	name = "flail"
-	desc = "This is a swift, iron flail. Strikes hard and far."
+	desc = "This is a swift, iron flail. Strikes hard and fast."
 	icon_state = "iflail"
 	icon = 'icons/roguetown/weapons/32.dmi'
 	sharpness = IS_BLUNT
@@ -29,7 +29,7 @@
 	icon_state = "instrike"
 	item_d_type = "slash"
 
-/datum/intent/flail/strikerange
+/datum/intent/flail/strikerange //No flail seems to use this intent.
 	name = "ranged strike"
 	blade_class = BCLASS_BLUNT
 	attack_verb = list("strikes", "hits")
@@ -57,7 +57,7 @@
 	hitsound = list('sound/combat/hits/blunt/flailhit.ogg')
 	item_d_type = "blunt"
 
-/datum/intent/flail/strike/smashrange
+/datum/intent/flail/strike/smashrange //No flail seems to use this intent.
 	name = "ranged smash"
 	chargetime = 25
 	chargedrain = 1
@@ -87,7 +87,7 @@
 /obj/item/rogueweapon/flail/sflail
 	force = 20
 	icon_state = "flail"
-	desc = "This is a swift, steel flail. Strikes hard and far."
+	desc = "This is a swift, steel flail. Strikes hard and fast."
 	smeltresult = /obj/item/ingot/steel
 	minstr = 5
 
@@ -95,7 +95,7 @@
 /datum/intent/whip/lash
 	name = "lash"
 	blade_class = BCLASS_BLUNT
-	attack_verb = list("lashes", "cracks")
+	attack_verb = list("lashes", "whips")
 	hitsound = list('sound/combat/hits/blunt/flailhit.ogg')
 	chargetime = 0
 	recovery = 7
@@ -107,7 +107,7 @@
 /datum/intent/whip/crack
 	name = "crack"
 	blade_class = BCLASS_CUT
-	attack_verb = list("cracks", "strikes") //something something dwarf fotresss
+	attack_verb = list("cracks") //something something dwarf fotresss
 	hitsound = list('sound/combat/hits/blunt/flailhit.ogg')
 	chargetime = 0
 	recovery = 10
@@ -119,7 +119,7 @@
 /datum/intent/whip/punish
 	name = "punish"
 	blade_class = BCLASS_BLUNT
-	attack_verb = list("lashes")
+	attack_verb = list("strikes")
 	hitsound = list('sound/combat/hits/blunt/flailhit.ogg')
 	chargetime = 0
 	recovery = 10

@@ -18,8 +18,8 @@
 	species_traits = list(EYECOLOR,HAIR,FACEHAIR,LIPS,STUBBLE, MUTCOLORS)
 	inherent_traits = list(TRAIT_NOMOBSWAP)
 	possible_ages = ALL_AGES_LIST
-	limbs_icon_m = 'icons/mob/species/male.dmi'
-	limbs_icon_f = 'icons/mob/species/female.dmi'
+	limbs_icon_m = 'icons/roguetown/mob/bodies/m/mt.dmi'
+	limbs_icon_f = 'icons/roguetown/mob/bodies/f/fm.dmi'
 	dam_icon = 'icons/roguetown/mob/bodies/dam/dam_male.dmi'
 	dam_icon_f = 'icons/roguetown/mob/bodies/dam/dam_female.dmi'
 
@@ -38,12 +38,12 @@
 		OFFSET_SHIRT_F = list(0,0), OFFSET_ARMOR_F = list(0,0), OFFSET_UNDIES_F = list(0,0)
 		)
 	specstats = list(
-		"strength" = 0, 
-		"perception" = 1, 
-		"intelligence" = 0, 
-		"constitution" = -1, 
-		"endurance" = -1, 
-		"speed" = 2, 
+		"strength" = 0,
+		"perception" = 1,
+		"intelligence" = 0,
+		"constitution" = -1,
+		"endurance" = -1,
+		"speed" = 2,
 		"fortune" = 0
 		)
 	enflamed_icon = "widefire"
@@ -57,7 +57,7 @@
 		ORGAN_SLOT_LIVER = /obj/item/organ/liver,
 		ORGAN_SLOT_STOMACH = /obj/item/organ/stomach,
 		ORGAN_SLOT_APPENDIX = /obj/item/organ/appendix,
-		ORGAN_SLOT_TAIL = /obj/item/organ/tail/cat,
+		//ORGAN_SLOT_TAIL = /obj/item/organ/tail/cat, //Commenting out due to use of customizer organs.
 		ORGAN_SLOT_SNOUT = /obj/item/organ/snout/cat,
 		ORGAN_SLOT_TESTICLES = /obj/item/organ/testicles,
 		ORGAN_SLOT_PENIS = /obj/item/organ/penis/barbed,

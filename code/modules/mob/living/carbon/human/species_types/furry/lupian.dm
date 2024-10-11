@@ -25,8 +25,8 @@
 	liked_food = GROSS | MEAT | FRIED
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
 	possible_ages = ALL_AGES_LIST
-	limbs_icon_m = 'icons/mob/species/male.dmi'
-	limbs_icon_f = 'icons/mob/species/female.dmi'
+	limbs_icon_m = 'icons/roguetown/mob/bodies/m/mt.dmi'
+	limbs_icon_f = 'icons/roguetown/mob/bodies/f/fm.dmi'
 	dam_icon = 'icons/roguetown/mob/bodies/dam/dam_male.dmi'
 	dam_icon_f = 'icons/roguetown/mob/bodies/dam/dam_female.dmi'
 	soundpack_m = /datum/voicepack/male
@@ -44,12 +44,12 @@
 		OFFSET_SHIRT_F = list(0,0), OFFSET_ARMOR_F = list(0,0), OFFSET_UNDIES_F = list(0,0), \
 		)
 	specstats = list(
-		"strength" = 1, 
-		"perception" = -1, 
-		"intelligence" = 1, 
-		"constitution" = 0, 
-		"endurance" = 1, 
-		"speed" = -1, 
+		"strength" = 1,
+		"perception" = -1,
+		"intelligence" = 1,
+		"constitution" = 0,
+		"endurance" = 1,
+		"speed" = -1,
 		"fortune" = 0
 		)
 	enflamed_icon = "widefire"
@@ -140,7 +140,7 @@
 	. = ..()
 	UnregisterSignal(C, COMSIG_MOB_SAY)
 
-/datum/species/lupian/get_skin_list() 
+/datum/species/lupian/get_skin_list()
 	return list(
 		"Vakran" = "271f1b",
 		"Lanarain" = "271f1c",
