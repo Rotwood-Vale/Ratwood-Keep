@@ -230,3 +230,43 @@
 	. = ..()
 	to_chat(owner, span_warning("The rough floors slow my travels once again."))
 	REMOVE_TRAIT(owner, TRAIT_LONGSTRIDER, MAGIC_TRAIT)
+
+/atom/movable/screen/alert/status_effect/buff/longstrider
+	name = "Longstrider"
+	desc = "I can easily walk through rough terrain."
+	icon_state = "buff"
+
+/datum/status_effect/buff/fortitude
+	id = "fortitude"
+	alert_type = /atom/movable/screen/alert/status_effect/buff/fortitude
+	duration = 1 MINUTES
+
+/datum/status_effect/buff/fortitude/on_apply()
+	. = ..()
+	to_chat(owner, span_warning("My body feels lighter..."))
+	ADD_TRAIT(owner, TRAIT_LONGSTRIDER, MAGIC_TRAIT)
+
+/datum/status_effect/buff/fortitude/on_remove()
+	. = ..()
+	to_chat(owner, span_warning("The weight of the world rests upon my shoulders once more."))
+	REMOVE_TRAIT(owner, TRAIT_LONGSTRIDER, MAGIC_TRAIT)
+
+/atom/movable/screen/alert/status_effect/buff/guidance
+	name = "Guidance"
+	desc = "Arcyne assistance guides my hands."
+	icon_state = "buff"
+
+/datum/status_effect/buff/guidance
+	id = "guidance"
+	alert_type = /atom/movable/screen/alert/status_effect/buff/guidance
+	duration = 1 MINUTES
+
+/datum/status_effect/buff/guidance/on_apply()
+	. = ..()
+	to_chat(owner, span_warning("I have better control over my accuracy!"))
+	ADD_TRAIT(owner, TRAIT_LONGSTRIDER, MAGIC_TRAIT)
+
+/datum/status_effect/buff/guidance/on_remove()
+	. = ..()
+	to_chat(owner, span_warning("My feeble mind muddies my warcraft once more."))
+	REMOVE_TRAIT(owner, TRAIT_LONGSTRIDER, MAGIC_TRAIT)
