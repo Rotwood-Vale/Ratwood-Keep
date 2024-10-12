@@ -58,7 +58,7 @@
 	return ..()
 
 
-/turf/closed/mineral/attackby(obj/item/I, mob/user, params)
+/turf/closed/mineral/attackby(obj/item/I, mob/user, params, multiplier)
 	if (!user.IsAdvancedToolUser())
 		to_chat(usr, span_warning("I don't have the dexterity to do this!"))
 		return
@@ -71,6 +71,16 @@
 				if(user.Adjacent(src))
 					var/obj/item/natural/stone/S = new(src)
 					S.forceMove(get_turf(user))
+
+/turf/closed/mineral/attack_right(mob/user)
+	var/obj/item = user.get_active_held_item()
+	if(user.used_intent.type == /datum/intent/pick && (user.mind.get_skill_level(/datum/skill/labor/mining) >= SKILL_LEVEL_JOURNEYMAN))
+		if(do_after(user, 4 SECONDS, TRUE, src))
+			if(!ismineralturf(src))
+				return
+			src.attackby(item, user, multiplier = 4)
+			user.rogfat_add(25)
+	..()
 
 /turf/closed/mineral/turf_destruction(damage_flag)
 	if(lastminer.goodluck(2) && mineralType)
@@ -464,7 +474,7 @@
 	det_time = rand(8,10) //So you don't know exactly when the hot potato will explode
 	. = ..()
 
-/turf/closed/mineral/gibtonite/attackby(obj/item/I, mob/user, params)
+/turf/closed/mineral/gibtonite/attackby(obj/item/I, mob/user, params, multiplier)
 	if(istype(I, /obj/item/mining_scanner) || istype(I, /obj/item/t_scanner/adv_mining_scanner) && stage == 1)
 		user.visible_message(span_notice("[user] holds [I] to [src]..."), span_notice("I use [I] to locate where to cut off the chain reaction and attempt to stop it..."))
 		defuse()
@@ -556,7 +566,7 @@
 	defer_change = 1
 	smooth_icon = 'icons/turf/walls/rock_wall.dmi'
 
-/turf/closed/mineral/strong/attackby(obj/item/I, mob/user, params)
+/turf/closed/mineral/strong/attackby(obj/item/I, mob/user, params, multiplier)
 	if(!ishuman(user))
 		to_chat(usr, span_warning("Only a more advanced species could break a rock such as this one!"))
 		return FALSE
@@ -695,10 +705,10 @@
 /turf/closed/mineral/rogue/bedrock
 	icon_state = "rockyashbed"
 //	smooth_icon = 'icons/turf/walls/hardrock.dmi'
-	max_integrity = 900
+	max_integrity = 9000
 	above_floor = /turf/closed/mineral/rogue/bedrock
 
-/turf/closed/mineral/rogue/bedrock/attackby(obj/item/I, mob/user, params)
+/turf/closed/mineral/rogue/bedrock/attackby(obj/item/I, mob/user, params, multiplier)
 	..()
 	to_chat(user, span_warning("TOO HARD!"))
 	turf_integrity = max_integrity
