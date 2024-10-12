@@ -3586,6 +3586,7 @@
 #include "modular_hearthstone\code\datums\skills\misc.dm"
 #include "modular_hearthstone\code\game\objects\effects\track.dm"
 #include "modular_hearthstone\code\game\objects\items\signal_horn.dm"
+#include "modular_hearthstone\code\game\objects\items\clothes\neck.dm"
 #include "modular_hearthstone\code\game\objects\items\clothes\stockings.dm"
 #include "modular_hearthstone\code\game\objects\items\clothes\strapless_dress.dm"
 #include "modular_hearthstone\code\game\objects\structures\canopy.dm"
