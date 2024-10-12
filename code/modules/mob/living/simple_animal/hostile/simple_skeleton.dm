@@ -121,21 +121,28 @@
 	return
 
 /mob/living/simple_animal/hostile/rogue/skeleton/beckoned(mob/user)
-	if(user in friends)
-		for(var/mob/living/simple_animal/hostile/rogue/skeleton/target in viewers(user))
-			if(!(user in target.friends))
-				return
-			target.LoseTarget()
-			target.search_objects = 2
+	if(!user.mind)
+		return
+	if(!(user.mind.has_antag_datum(/datum/antagonist/lich)))
+		return
+	for(var/mob/living/simple_animal/hostile/rogue/skeleton/target in viewers(user))
+		target.LoseTarget()
+		target.search_objects = 2
+		target.add_overlay("peace_overlay")
 	return
 
 /mob/living/simple_animal/hostile/rogue/skeleton/shood(mob/user)
-	if(user in friends)
-		for(var/mob/living/simple_animal/hostile/rogue/skeleton/target in viewers(user))
-			if(!(user in target.friends))
-				return
-			target.RegainSearchObjects()
+	if(!user.mind)
+		return
+	if(!(user.mind.has_antag_datum(/datum/antagonist/lich)))
+		return
+	for(var/mob/living/simple_animal/hostile/rogue/skeleton/target in viewers(user))
+		target.RegainSearchObjects()
 	return
+
+/mob/living/simple_animal/hostile/rogue/skeleton/RegainSearchObjects(value)
+	cut_overlay("peace_overlay")
+	. = ..()
 
 
 /datum/intent/simple/claw/skeleton_unarmed
