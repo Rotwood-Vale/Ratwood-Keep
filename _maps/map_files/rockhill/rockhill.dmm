@@ -1158,15 +1158,6 @@
 /obj/structure/fluff/railing/border,
 /turf/open/floor/rogue/blocks,
 /area/rogue/outdoors/town)
-"bhJ" = (
-/obj/structure/table/wood{
-	dir = 1;
-	icon_state = "longtable_mid";
-	climbable = 0
-	},
-/obj/structure/roguemachine/vendor/inn,
-/turf/open/floor/rogue/ruinedwood/spiral,
-/area/rogue/indoors/town/tavern)
 "bis" = (
 /obj/structure/stairs{
 	dir = 4
@@ -2900,6 +2891,7 @@
 	icon_state = "longtable_mid";
 	climbable = 0
 	},
+/obj/structure/roguemachine/vendor/inn,
 /turf/open/floor/rogue/tile{
 	icon_state = "tile"
 	},
@@ -3940,6 +3932,7 @@
 /obj/structure/fluff/walldeco/customflag{
 	pixel_x = -32
 	},
+/obj/item/rogue/instrument/flute,
 /turf/open/floor/rogue/tile,
 /area/rogue/indoors/town/tavern)
 "dNY" = (
@@ -6948,9 +6941,7 @@
 /obj/structure/table/wood{
 	dir = 1;
 	icon_state = "longtable_mid";
-	climbable = 0;
-	pass_flags = 0;
-	CanAtmosPass = 0
+	climbable = 0
 	},
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors/town/tavern)
@@ -9265,15 +9256,6 @@
 /obj/structure/fluff/walldeco/stone,
 /turf/closed/wall/mineral/rogue/craftstone,
 /area/rogue/indoors/town/bath)
-"jbU" = (
-/obj/structure/table/wood{
-	dir = 1;
-	icon_state = "longtable_mid";
-	climbable = 0;
-	jumping = 1
-	},
-/turf/open/floor/rogue/ruinedwood/spiral,
-/area/rogue/indoors/town/tavern)
 "jcb" = (
 /obj/structure/flora/newtree,
 /turf/open/floor/rogue/cobblerock,
@@ -10234,12 +10216,6 @@
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/indoors)
 "kbo" = (
-/obj/structure/table/wood{
-	dir = 1;
-	icon_state = "tablewood1";
-	climbable = 0
-	},
-/obj/item/rogue/instrument/flute,
 /obj/structure/fluff/railing/border{
 	dir = 4;
 	pixel_x = 3
@@ -10609,15 +10585,6 @@
 /obj/machinery/light/rogue/firebowl/standing/blue,
 /turf/open/floor/rogue/tile/bfloorz,
 /area/rogue/outdoors/town)
-"ksb" = (
-/obj/structure/table/wood{
-	dir = 1;
-	icon_state = "longtable_mid";
-	climbable = 0;
-	pass_flags = 0
-	},
-/turf/open/floor/rogue/ruinedwood/spiral,
-/area/rogue/indoors/town/tavern)
 "ksG" = (
 /obj/structure/table/wood{
 	dir = 1;
@@ -289160,7 +289127,7 @@ yeA
 tOk
 rXX
 yci
-ksb
+gHJ
 mqM
 kmV
 dti
@@ -289964,7 +289931,7 @@ vtU
 xIh
 xIh
 iZI
-jbU
+gHJ
 nOG
 kmV
 dti
@@ -290366,7 +290333,7 @@ xIh
 xIh
 xIh
 xIh
-bhJ
+gHJ
 mqM
 kmV
 vkI
