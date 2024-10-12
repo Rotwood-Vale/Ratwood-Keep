@@ -175,7 +175,7 @@
 	name = "stone hammer"
 	result = /obj/item/rogueweapon/hammer/stone
 	reqs = list(/obj/item/grown/log/tree/small = 1,
-				/obj/item/natural/stone = 3)
+				/obj/item/natural/stone = 1)
 
 /datum/crafting_recipe/roguetown/stonetongs
 	name = "stone tongs"

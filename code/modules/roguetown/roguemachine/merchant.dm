@@ -176,7 +176,7 @@
 		if(!ispath(path, /datum/supply_pack))
 			message_admins("silly MOTHERFUCKER [usr.key] IS TRYING TO BUY A [path] WITH THE GOLDFACE")
 			return
-		var/datum/supply_pack/PA = new path
+		var/datum/supply_pack/PA = SSshuttle.supply_packs[path]
 		var/cost = PA.cost
 		var/tax_amt=round(SStreasury.tax_value * cost)
 		cost=cost+tax_amt
@@ -196,7 +196,6 @@
 			var/obj/item/I = new pathi(get_turf(M))
 			if(shoplength == 1)
 				M.put_in_hands(I)
-		qdel(PA)
 	if(href_list["change"])
 		if(budget > 0)
 			budget2change(budget, usr)

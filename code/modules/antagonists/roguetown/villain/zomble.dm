@@ -19,7 +19,6 @@
 	var/STASPD
 	var/STAINT
 	var/cmode_music
-	var/datum/patron/patron
 	var/list/base_intents
 	/// Whether or not we have been turned
 	var/has_turned = FALSE
@@ -88,7 +87,6 @@
 	STASPD = zombie.STASPD
 	STAINT = zombie.STAINT
 	cmode_music = zombie.cmode_music
-	patron = zombie.patron
 	return ..()
 
 /datum/antagonist/zombie/on_removal()
@@ -111,7 +109,6 @@
 		zombie.STASPD = STASPD
 		zombie.STAINT = STAINT
 		zombie.cmode_music = cmode_music
-		zombie.set_patron(patron)
 		for(var/trait in traits_zombie)
 			REMOVE_TRAIT(zombie, trait, "[type]")
 		zombie.remove_client_colour(/datum/client_colour/monochrome)
@@ -186,7 +183,6 @@
 		zombie_part.update_disabled()
 	zombie.update_body()
 	zombie.cmode_music = 'sound/music/combat_weird.ogg'
-	zombie.set_patron(/datum/patron/inhumen/zizo)
 
 
 	// This is the original first commit values for it, aka 5-7
