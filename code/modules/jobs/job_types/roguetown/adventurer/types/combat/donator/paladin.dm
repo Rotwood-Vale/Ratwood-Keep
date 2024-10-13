@@ -9,6 +9,8 @@
 	traits_applied = list(TRAIT_HEAVYARMOR)
 	category_tags = list(CTAG_ADVENTURER)
 
+	cmode_music = 'sound/music/combat_clergy.ogg'
+
 /datum/outfit/job/roguetown/adventurer/paladin
 	allowed_patrons = ALL_CLERIC_PATRONS
 

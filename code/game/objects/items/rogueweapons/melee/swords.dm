@@ -435,6 +435,7 @@
 	name = "steel messer" //People often ask for messers when the smithy only has steel, now they can make it.
 	desc = "A single edged blade to slice and chop with. This one is made of sturdy steel."
 	icon_state = "smesser"
+	smeltresult = /obj/item/ingot/steel
 	max_integrity = 175 //A stout blade that will last a long time before breakage
 
 /obj/item/rogueweapon/sword/sabre

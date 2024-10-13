@@ -509,6 +509,7 @@
 	max_integrity = 200
 	w_class = WEIGHT_CLASS_NORMAL
 	clothing_flags = CANT_SLEEP_IN
+	resistance_flags = FIRE_PROOF
 
 /obj/item/clothing/head/roguetown/helmet/skullcap
 	name = "skull cap"
