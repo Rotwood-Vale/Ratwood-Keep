@@ -26,7 +26,6 @@
 	desc = "A dense leafed vegetable, crunchy and ripe. A symbol of prosperity for elves."
 	slices_num = 3
 	slice_path = /obj/item/reagent_containers/food/snacks/rogue/veg/cabbage_sliced
-	dropshrink = 0.7
 	chopping_sound = TRUE
 
 /obj/item/reagent_containers/food/snacks/rogue/veg/cabbage_sliced
