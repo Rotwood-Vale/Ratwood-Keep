@@ -160,7 +160,7 @@
 
 /obj/item/rope/chain
 	name = "chain"
-	desc = "A heavy steel chain."
+	desc = "A heavy iron chain."
 	icon = 'icons/roguetown/items/misc.dmi'
 	icon_state = "chain"
 	slot_flags = ITEM_SLOT_HIP|ITEM_SLOT_WRISTS
@@ -173,7 +173,7 @@
 	cuffsound = 'sound/blank.ogg'
 	possible_item_intents = list(/datum/intent/tie, /datum/intent/whips)
 	firefuel = null
-	smeltresult = /obj/item/ingot/steel
+	smeltresult = /obj/item/ingot/iron
 	drop_sound = 'sound/foley/dropsound/chain_drop.ogg'
 	sewrepair = FALSE
 	anvilrepair = /datum/skill/craft/blacksmithing
