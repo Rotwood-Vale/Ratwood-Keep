@@ -74,8 +74,21 @@
 
 /turf/closed/mineral/turf_destruction(damage_flag)
 	if(damage_flag == "bomb")
-		gets_drilled(lastminer, give_exp = FALSE)
+		ScrapeAway()
 		queue_smooth_neighbors(src)
+		new /obj/item/natural/stone(src)
+		if(prob(30))
+			new /obj/item/natural/stone(src)
+		if (mineralType && (mineralAmt > 0))
+			if(prob(33)) //chance to spawn ore directly
+				new mineralType(src)
+			if(rockType) //always spawn at least 1 rock
+				new rockType(src)
+				if(prob(23))
+					new rockType(src)
+			SSblackbox.record_feedback("tally", "ore_mined", mineralAmt, mineralType)
+		else
+			return
 	else
 		if(lastminer.goodluck(2) && mineralType)
 	//		to_chat(lastminer, span_notice("Bonus ducks!"))
