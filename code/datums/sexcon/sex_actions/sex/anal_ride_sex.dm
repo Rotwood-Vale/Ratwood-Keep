@@ -42,9 +42,9 @@
 	playsound(target, 'sound/misc/mat/segso.ogg', 50, TRUE, -2, ignore_walls = FALSE)
 	do_thrust_animate(user, target)
 	if(target.sexcon.considered_limp())
-		user.sexcon.perform_sex_action(target, 1.2, 4, TRUE)
+		user.sexcon.perform_sex_action(user, 1.2, 4, TRUE)
 	else
-		user.sexcon.perform_sex_action(target, 2.4, 9, TRUE)
+		user.sexcon.perform_sex_action(user, 2.4, 9, TRUE)
 	user.sexcon.handle_passive_ejaculation()
 
 	user.sexcon.perform_sex_action(target, 2, 4, FALSE)

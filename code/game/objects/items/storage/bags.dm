@@ -252,6 +252,7 @@
 /*
  * Trays - Agouri
  *///wip
+// Prevents spilling cups' reagents via both a snowflakey storage component var & a snowflakey check in roguespill.dm.
 /obj/item/storage/bag/tray
 	name = "tray"
 	icon = 'icons/obj/food/containers.dmi'
@@ -275,6 +276,7 @@
 	. = ..()
 	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
 	STR.insert_preposition = "on"
+	STR.spills_on_move = FALSE
 	update_icon()
 
 /obj/item/storage/bag/tray/Moved()

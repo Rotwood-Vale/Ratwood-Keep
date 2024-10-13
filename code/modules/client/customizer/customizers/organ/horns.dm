@@ -1,6 +1,7 @@
 /datum/customizer/organ/horns
 	abstract_type = /datum/customizer/organ/horns
 	name = "Horns"
+	allows_disabling = TRUE
 
 /datum/customizer_choice/organ/horns
 	abstract_type = /datum/customizer_choice/organ/horns
@@ -12,7 +13,6 @@
 	customizer_choices = list(/datum/customizer_choice/organ/horns/humanoid)
 
 /datum/customizer/organ/horns/humanoid/sissean
-	allows_disabling = TRUE
 	default_disabled = TRUE
 
 /datum/customizer_choice/organ/horns/humanoid
@@ -52,7 +52,6 @@
 
 /datum/customizer/organ/horns/demihuman
 	customizer_choices = list(/datum/customizer_choice/organ/horns/demihuman)
-	allows_disabling = TRUE
 	default_disabled =  TRUE
 
 /datum/customizer_choice/organ/horns/demihuman
@@ -92,7 +91,6 @@
 
 /datum/customizer/organ/horns/anthro
 	customizer_choices = list(/datum/customizer_choice/organ/horns/anthro)
-	allows_disabling = TRUE
 	default_disabled =  TRUE
 
 /datum/customizer_choice/organ/horns/anthro
@@ -132,7 +130,6 @@
 
 /datum/customizer/organ/horns/humanoid/tiefling
 	customizer_choices = list(/datum/customizer_choice/organ/horns/humanoid/tiefling)
-	allows_disabling = FALSE
 	default_disabled = FALSE
 
 /datum/customizer_choice/organ/horns/humanoid/tiefling
