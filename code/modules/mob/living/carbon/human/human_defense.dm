@@ -471,12 +471,15 @@
 		..()
 
 
-/mob/living/carbon/human/ex_act(severity, target, origin)
+/mob/living/carbon/human/ex_act(severity, target, origin, epicenter, heavy_impact_range, light_impact_range)
 	if(origin && istype(origin, /datum/spacevine_mutation) && isvineimmune(src))
 		return
 	..()
 	if (!severity)
 		return
+	var/hdist = heavy_impact_range
+	var/ldist = light_impact_range
+	var/fodist = get_dist(src, epicenter)
 	var/brute_loss = 0
 	var/burn_loss = 0
 	var/bomb_armor = getarmor(null, "bomb")
@@ -500,25 +503,25 @@
 				damage_clothes(400 - bomb_armor, BRUTE, "bomb")
 
 		if (EXPLODE_HEAVY)
-			brute_loss = 60
-			burn_loss = 60
+			brute_loss = (60 * hdist) - (60 * (fodist - 1))
+			burn_loss = (60 * hdist) - (60 * (fodist - 1))
 			if(bomb_armor)
-				brute_loss = 30*(2 - round(bomb_armor*0.01, 0.05))
+				brute_loss = (60 * (2 - round(bomb_armor*0.01, 0.05)) * hdist) - ((60 * (2 - round(bomb_armor*0.01, 0.05))) * fodist)
 				burn_loss = brute_loss				//damage gets reduced from 120 to up to 60 combined brute+burn
 			damage_clothes(100 - bomb_armor, BRUTE, "bomb")
-//			if (!istype(ears, /obj/item/clothing/ears/earmuffs))
-//				adjustEarDamage(30, 120)
+//				if (!istype(ears, /obj/item/clothing/ears/earmuffs))
+//					adjustEarDamage(30, 120)
 			Unconscious(20)							//short amount of time for follow up attacks against elusive enemies like wizards
 			Knockdown(200 - (bomb_armor * 1.6)) 	//between ~4 and ~20 seconds of knockdown depending on bomb armor
 
 		if(EXPLODE_LIGHT)
-			brute_loss = 5
+			brute_loss = (10 * ldist) - (10 * fodist)
 			if(bomb_armor)
-				brute_loss = 5*(2 - round(bomb_armor*0.01, 0.05))
-//			damage_clothes(max(50 - bomb_armor, 0), BRUTE, "bomb")
-//			if (!istype(ears, /obj/item/clothing/ears/earmuffs))
-//				adjustEarDamage(15,60)
-			Knockdown(160 - (bomb_armor * 1.6))		//100 bomb armor will prevent knockdown altogether
+				brute_loss = (10 * (2 - round(bomb_armor*0.01, 0.05)) * ldist) - ((10 * (2 - round(bomb_armor*0.01, 0.05))) * fodist)
+//				damage_clothes(max(50 - bomb_armor, 0), BRUTE, "bomb")
+//				if (!istype(ears, /obj/item/clothing/ears/earmuffs))
+//					adjustEarDamage(15,60)
+			Knockdown(((15 * ldist) - (15 * fodist))  - (bomb_armor * 1.6))		//100 bomb armor will prevent knockdown altogether
 
 	take_overall_damage(brute_loss,burn_loss)
 
@@ -809,7 +812,7 @@
 			examination += span_danger("[m1] TETRAPLEGIC!")
 	else if(HAS_TRAIT(src, TRAIT_PARALYSIS_R_LEG) && HAS_TRAIT(src, TRAIT_PARALYSIS_L_LEG))
 		examination += span_warning("[m1] PARAPLEGIC!")
-	
+
 	var/static/list/body_zones = list(
 		BODY_ZONE_HEAD,
 		BODY_ZONE_CHEST,
@@ -846,7 +849,7 @@
 		examination += span_notice("Let's see how [src]'s [parse_zone(choice)] is doing.")
 		if(!user.stat && !silent)
 			visible_message(span_notice("[user] examines [src]'s [parse_zone(choice)]."))
-	
+
 	var/obj/item/bodypart/examined_part = get_bodypart(choice)
 	if(examined_part)
 		examination += examined_part.check_for_injuries(user, advanced)
