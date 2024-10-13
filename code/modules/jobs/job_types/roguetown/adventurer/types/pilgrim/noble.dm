@@ -17,7 +17,8 @@
 	H.mind.adjust_skillrank(/datum/skill/misc/riding, 4, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/craft/crafting, 1, TRUE)
 	H.change_stat("intelligence", 1)
-	H.change_stat("strength", -1)
+	H.change_stat("speed", 2) //for running from bandits, good luck running from knife bandits +4 spd tho
+	H.change_stat("fortune", 1) //for being a noble
 	shoes = /obj/item/clothing/shoes/roguetown/boots
 	belt = /obj/item/storage/belt/rogue/leather/black
 	beltr = /obj/item/flashlight/flare/torch/lantern
