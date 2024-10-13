@@ -229,6 +229,12 @@
 	additional_items = list(/obj/item/roguegear)
 	i_type = "General"
 
+/datum/anvil_recipe/tools/chain
+	name = "Chain"
+	req_bar = /obj/item/ingot/steel
+	created_item = /obj/item/rope/chain
+	i_type = "General"
+
 // --------- SILVER -----------
 
 /datum/anvil_recipe/tools/cupssil

@@ -173,7 +173,7 @@
 	cuffsound = 'sound/blank.ogg'
 	possible_item_intents = list(/datum/intent/tie, /datum/intent/whips)
 	firefuel = null
-	smeltresult = /obj/item/ingot/iron
+	smeltresult = /obj/item/ingot/steel
 	drop_sound = 'sound/foley/dropsound/chain_drop.ogg'
 	sewrepair = FALSE
 	anvilrepair = /datum/skill/craft/blacksmithing
