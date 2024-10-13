@@ -89,3 +89,206 @@
 		if(ORGAN_SLOT_REGENERATIVE_CORE)
 			return "regenerative core"
 	return slot
+
+/proc/parse_zone_fancy(zone, combat, combattarget, closeby, turnedaround, ontheground, grabbing, squinting, defiant, uncovered, dicked, pussied, strength, self = FALSE)
+	switch(zone)
+		if(BODY_ZONE_PRECISE_R_HAND)
+			if(closeby && !combat)
+				if(squinting)
+					return "fingers"
+				return "hands"
+			else
+				return "arms"
+		if(BODY_ZONE_PRECISE_L_HAND)
+			if(closeby && !combat)
+				if(squinting)
+					return "fingers"
+				return "hands"
+			else
+				return "arms"
+		if(BODY_ZONE_PRECISE_R_INHAND)
+			if(closeby && !combat)
+				if(squinting)
+					return "fingers"
+				return "hands"
+			else
+				return "arms"
+		if(BODY_ZONE_PRECISE_L_INHAND)
+			if(closeby && !combat)
+				if(squinting)
+					return "fingers"
+				return "hands"
+			else
+				return "arms"
+		if(BODY_ZONE_L_ARM)
+			if(closeby && !combat)
+				if(grabbing)
+					return "armpits"
+				return "shoulders"
+			if(closeby && squinting && strength && combat && combattarget)
+				return "biceps"
+			else
+				return "arms"
+		if(BODY_ZONE_R_ARM)
+			if(closeby && !combat)
+				if(grabbing)
+					return "armpits"
+				return "shoulders"
+			if(closeby && squinting && strength && combat && combattarget)
+				return "biceps"
+			else
+				return "arms"
+		if(BODY_ZONE_L_LEG)
+			if(closeby && !combat)
+				if(squinting)
+					return "thighs"
+				return "knees"
+			if(closeby && squinting && strength && combat && combattarget)
+				return "calves"
+			else
+				return "legs"
+		if(BODY_ZONE_R_LEG)
+			if(closeby && !combat)
+				if(squinting)
+					return "thighs"
+				return "knees"
+			if(closeby && squinting && strength && combat && combattarget)
+				return "calves"
+			else
+				return "legs"
+		if(BODY_ZONE_PRECISE_L_FOOT)
+			if(ontheground && closeby && squinting && uncovered)
+				if(combat)
+					return "toes"
+				return "soles"
+			if(turnedaround && closeby && !combat && uncovered)
+				return "ankles"
+			if(closeby && !combat)
+				if(!uncovered)
+					return "shoes"
+				return "feet"
+			return "legs"
+		if(BODY_ZONE_PRECISE_R_FOOT)
+			if(ontheground && closeby && squinting && uncovered)
+				if(combat)
+					return "toes"
+				return "soles"
+			if(turnedaround && closeby && !combat && uncovered)
+				return "ankles"
+			if(closeby && !combat)
+				if(!uncovered)
+					return "shoes"
+				return "feet"
+			return "legs"
+		if(BODY_ZONE_PRECISE_STOMACH)
+			if(closeby && squinting && strength && combat && combattarget && uncovered)
+				return "abs"
+			if(closeby && !combat)
+				if(squinting)
+					return "waist"
+				if(grabbing)
+					return "belly"
+				return "stomach"
+			else
+				return "body"
+		if(BODY_ZONE_CHEST)
+			if(closeby && squinting && strength && combat && combattarget && uncovered)
+				return "pecs"
+			if(closeby && !combat)
+				if(squinting && uncovered)
+					return "breasts"
+				return "chest"
+			else
+				return "body"
+		if(BODY_ZONE_PRECISE_GROIN)
+			if((turnedaround && !self) || (self && !squinting && combat))
+				if(closeby && grabbing && squinting && ontheground && !defiant && !combat && uncovered && !self)
+					return "asshole"
+				return "ass"
+			if(closeby && !combat)
+				if(squinting && !defiant)
+					if(dicked)
+						if(uncovered)
+							return "cock"
+						else
+							return "bulge"
+					if(pussied)
+						if(uncovered)
+							return "slit"
+						else
+							return "camel toe"
+				return "crotch"
+			if(squinting && combat)
+				return "hips"
+			else
+				return "groin"
+		if(BODY_ZONE_PRECISE_NECK)
+			if(self)
+				return FALSE
+			if(closeby && !turnedaround && !combat)
+				return "neck"
+			return "head"
+		if(BODY_ZONE_PRECISE_EARS)
+			if(self)
+				return FALSE
+			if(closeby && !combat && uncovered)
+				return "ears"
+			else
+				return "head"
+		if(BODY_ZONE_PRECISE_R_EYE)
+			if(self)
+				return FALSE
+			if(closeby && !turnedaround && !combat && uncovered)
+				if(squinting)
+					return "cheeks"
+				return "eyes"
+			else
+				return "head"
+		if(BODY_ZONE_PRECISE_L_EYE)
+			if(self)
+				return FALSE
+			if(closeby && !turnedaround && !combat && uncovered)
+				if(squinting)
+					return "cheeks"
+				return "eyes"
+			else
+				return "head"
+		if(BODY_ZONE_PRECISE_NOSE)
+			if(self)
+				return FALSE
+			if(closeby && !turnedaround && !combat && uncovered)
+				return "nose"
+			else
+				return "head"
+		if(BODY_ZONE_HEAD)
+			if(self)
+				return FALSE
+			if(closeby && !turnedaround && !combat && uncovered)
+				if(squinting)
+					return "chin"
+				return "face"
+			else
+				return "head"
+		if(BODY_ZONE_PRECISE_SKULL)
+			if(self)
+				return FALSE
+			if(closeby && !combat && uncovered)
+				if(squinting && !turnedaround)
+					return "forehead"
+				return "hair"
+			else
+				return "head"
+		if(BODY_ZONE_PRECISE_MOUTH)
+			if(self)
+				return FALSE
+			if(closeby && !turnedaround && uncovered)
+				if(!combat)
+					if(squinting)
+						if(!defiant && prob(1))
+							return "seductive lips"
+						return "lips"
+					return "mouth"
+				return "jaw"
+			else
+				return "head"
+	return zone

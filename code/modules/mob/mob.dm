@@ -447,10 +447,41 @@ GLOBAL_VAR_INIT(mobids, 1)
 		if(isliving(A))
 			var/mob/living/T = A
 			var/hitzone = T.simple_limb_hit(zone_selected)
-			if(!iscarbon(T))
+			var/behind = FALSE
+			var/grabbing = FALSE
+			var/defiancy = TRUE
+			var/uncovered = get_location_accessible(T, zone_selected)
+			var/penised = FALSE
+			var/pussied = FALSE
+			var/strcheck = FALSE
+			if((src != T && src.dir == T.dir)  || (src == T && fixedeye))
+				behind = TRUE
+			if(ishuman(src))
+				var/obj/item/grabbing/G = get_active_held_item()
+				if(istype(G))
+					if(G.grabbed == T)
+						if(G.sublimb_grabbed == zone_selected)
+							grabbing = TRUE
+			if(!ishuman(T))
 				target = "\the [T.name]'s [hitzone]"
-			if(iscarbon(T) && T != src)
-				target = "[T]'s [parse_zone(zone_selected)]"
+			else if(ishuman(T))
+				var/mob/living/carbon/human/target_human = T
+				if(isliving(src))
+					var/mob/living/L = src
+					if(!L.sexcon.need_to_be_violated(target_human))
+						defiancy = FALSE
+				if(target_human.getorganslot(ORGAN_SLOT_PENIS))
+					penised = TRUE
+				if(target_human.getorganslot(ORGAN_SLOT_VAGINA))
+					pussied = TRUE
+				if(T.STASTR >= 12)
+					strcheck = TRUE
+				if(T == src)
+					var/parsed_zone = parse_zone_fancy(zone_selected, cmode, cmode, Adjacent(T), behind, T.resting, grabbing, fixedeye, defiancy, uncovered, penised, pussied, strcheck, TRUE)
+					if(parsed_zone)
+						target = "[src.p_their()] [parsed_zone]"
+				else
+					target = "[T]'s [parse_zone_fancy(zone_selected, cmode, T.cmode, Adjacent(T), behind, T.resting, grabbing, fixedeye, defiancy, uncovered, penised, pussied, strcheck)]"
 		visible_message(span_emote("[message] [target]."))
 
 	var/list/result = A.examine(src)
