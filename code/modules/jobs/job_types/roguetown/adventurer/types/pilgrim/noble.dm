@@ -44,7 +44,7 @@
 	if(H.age == AGE_OLD)
 		H.mind.adjust_skillrank(/datum/skill/combat/polearms, 3, TRUE) 
 		r_hand = /obj/item/rogueweapon/woodstaff
-
+	ADD_TRAIT(H, TRAIT_GOODLOVER, TRAIT_GENERIC)
 
 
 
