@@ -1,5 +1,5 @@
 /datum/advclass/towndoctor
-	name = "Barber Surgeon"
+	name = "Doctor"
 	tutorial = "You are the closest thing to a doctor that the townsfolk here will ever meet. Wielding crude tools and accumulated knowledge, you have probably cut into as many people as the average Knight."
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
