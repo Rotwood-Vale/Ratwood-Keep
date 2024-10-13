@@ -436,7 +436,8 @@ GLOBAL_VAR_INIT(mobids, 1)
 		to_chat(src, span_warning("Something is there but I can't see it!"))
 		return
 
-	if(isliving(src))
+
+	if(isliving(src) && src.m_intent != MOVE_INTENT_SNEAK)
 		var/target = "\the [A]"
 		var/message = "[src] looks at"
 		if(A.loc == src)
@@ -764,16 +765,10 @@ GLOBAL_VAR_INIT(mobids, 1)
   */
 /mob/MouseDrop_T(atom/dropping, atom/user)
 	. = ..()
-	if(ismob(dropping) && dropping != user)
+	if(ismob(dropping) && dropping != user && src == user)
 		var/mob/M = dropping
-		if(ismob(user))
-			var/mob/U = user
-			if(!iscyborg(U) || !U.cmode || U.used_intent.type == INTENT_HARM)
-				M.show_inv(U)
-				return TRUE
-		else
-			M.show_inv(user)
-			return TRUE
+		M.show_inv(user)
+		return TRUE
 
 ///Is the mob muzzled (default false)
 /mob/proc/is_muzzled()
@@ -1419,3 +1414,11 @@ GLOBAL_VAR_INIT(mobids, 1)
 		input = capitalize(copytext_char(input, customsayverb+1))
 	return "[message_spans_start(spans)][input]</span>"
 
+/mob/proc/haswings(mob/living/carbon/human/Target)
+	if(!ishuman(Target))
+		return FALSE
+	var/obj/item/organ/wings/Wing = Target.getorganslot(ORGAN_SLOT_WINGS)
+	if(Wing == null)
+		return FALSE
+	else
+		return TRUE

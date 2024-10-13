@@ -133,17 +133,29 @@
 			return parse_zone(zone)
 		return affecting.name
 
-/mob/living/carbon/proc/find_used_grab_limb(mob/living/user) //for finding the exact limb or inhand to grab
+/mob/living/carbon/proc/find_used_grab_limb(mob/living/user, var/override_zone = null) //for finding the exact limb or inhand to grab
 	var/used_limb = BODY_ZONE_CHEST
 	var/missing_nose = HAS_TRAIT(src, TRAIT_MISSING_NOSE)
 	var/obj/item/bodypart/affecting
-	affecting = get_bodypart(check_zone(user.zone_selected))
-	if(user.zone_selected && affecting)
-		if(user.zone_selected in affecting.grabtargets)
-			if(missing_nose && user.zone_selected == BODY_ZONE_PRECISE_NOSE)
+	if(isnull(override_zone))
+		affecting = get_bodypart(check_zone(user.zone_selected))
+		if(user.zone_selected && affecting)
+			if(user.zone_selected in affecting.grabtargets)
+				if(missing_nose && user.zone_selected == BODY_ZONE_PRECISE_NOSE)
+					used_limb = BODY_ZONE_HEAD
+				else
+					used_limb = user.zone_selected
+			else
+				used_limb = affecting.body_zone
+		return used_limb
+	
+	affecting = get_bodypart(check_zone(override_zone))
+	if(override_zone && affecting)
+		if(override_zone in affecting.grabtargets)
+			if(missing_nose && override_zone == BODY_ZONE_PRECISE_NOSE)
 				used_limb = BODY_ZONE_HEAD
 			else
-				used_limb = user.zone_selected
+				used_limb = override_zone
 		else
 			used_limb = affecting.body_zone
 	return used_limb
@@ -434,6 +446,12 @@
 	AdjustSleeping(-100)
 	AdjustParalyzed(-60)
 	AdjustImmobilized(-60)
+	if(isseelie(src))
+		var/obj/item/organ/wings/Wing = src.getorganslot(ORGAN_SLOT_WINGS)
+		if(Wing == null)
+			to_chat(M, span_warning("They cant stand without their wings!"))
+			return
+	
 	set_resting(FALSE)
 
 	playsound(loc, 'sound/blank.ogg', 50, TRUE, -1)
@@ -538,5 +556,5 @@
 /mob/living/carbon/can_hear()
 	. = FALSE
 	var/obj/item/organ/ears/ears = getorganslot(ORGAN_SLOT_EARS)
-	if(istype(ears) && !ears.deaf)
+	if((istype(ears) && !ears.deaf) || (src.stat == DEAD)) // 2nd check so you can hear messages when beheaded
 		. = TRUE

@@ -53,12 +53,12 @@
 		OFFSET_SHIRT_F = list(0,0), OFFSET_ARMOR_F = list(0,0), OFFSET_UNDIES = list(0,-4), OFFSET_UNDIES_F = list(0,-4), \
 		)
 	specstats = list(
-		"strength" = 1, 
-		"perception" = -1, 
-		"intelligence" = 0, 
-		"constitution" = 2, 
-		"endurance" = 2, 
-		"speed" = -3, 
+		"strength" = 1,
+		"perception" = -1,
+		"intelligence" = 0,
+		"constitution" = 2,
+		"endurance" = 2,
+		"speed" = -3,
 		"fortune" = 0
 		)
 	enflamed_icon = "widefire"
@@ -150,6 +150,20 @@
 //this accent is HORRIBLE right now, someone please fix this shit
 // oh yeah here we go again 85 to 23
 // changed my mind, if the accent were to return it should just be on a single subset of dwarves.
-/datum/species/dwarf/mountain/get_accent(mob/living/carbon/human/H)
-	return strings("dwarf_replacement.json", "dwarf")
 
+//Groups of Accents for each race set by associated 'skin_tone', see 'get_skin_list' above
+// "full" group in JSON lists
+/datum/species/dwarf/mountain/get_accent(mob/living/carbon/human/H)
+	return strings("dwarf_replacement.json", "full")
+
+// "start" group in JSON lists
+/datum/species/dwarf/mountain/get_accent_start(mob/living/carbon/human/H)
+	return strings("dwarf_replacement.json", "start")
+
+// "end" group in JSON lists
+/datum/species/dwarf/mountain/get_accent_end(mob/living/carbon/human/H)
+	return strings("dwarf_replacement.json", "end")
+
+// "syllable" group in JSON lists
+/datum/species/dwarf/mountain/get_accent_any(mob/living/carbon/human/H)
+	return strings("dwarf_replacement.json", "syllable")

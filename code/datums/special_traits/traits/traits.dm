@@ -39,7 +39,7 @@
 /datum/special_trait/deadened
 	name = "Deadened"
 	greet_text = span_notice("Ever since <b>it</b> happened, I've never been able to feel anything. Inside or out")
-	weight = 25
+	weight = 50
 
 /datum/special_trait/deadened/on_apply(mob/living/carbon/human/character, silent)
 	ADD_TRAIT(character, TRAIT_NOMOOD, "[type]")
@@ -82,7 +82,7 @@
 /datum/special_trait/duelist
 	name = "Swordmaster Apprentice"
 	greet_text = span_notice("I was the student of a legendary sword master, my skill is rivalled by few! I've also hidden a rapier.")
-	weight = 50
+	weight = 25
 
 /datum/special_trait/duelist/on_apply(mob/living/carbon/human/character, silent)
 	character.cmode_music = 'sound/music/combat_duelist.ogg'
@@ -93,7 +93,7 @@
 /datum/special_trait/eagle_eyed
 	name = "Eagle Eyed"
 	greet_text = span_notice("With my sharp aim I could always hit distant targets, I've also hidden a crossbow and some bolts.")
-	weight = 50
+	weight = 25
 
 /datum/special_trait/eagle_eyed/on_apply(mob/living/carbon/human/character, silent)
 	character.change_stat("perception", 2)
@@ -158,7 +158,7 @@
 /datum/special_trait/pineapple
 	name = "The safeword is \"Pineapple\""
 	greet_text = span_notice("I enjoy whipping people until they squirm and whine, their pain makes my pleasure. I also have a hidden a whip")
-	weight = 50
+	weight = 25
 
 /datum/special_trait/pineapple/on_apply(mob/living/carbon/human/character, silent)
 	character.mind.special_items["Whip"] = /obj/item/rogueweapon/whip
@@ -238,7 +238,7 @@
 	ADD_TRAIT(character, TRAIT_CIVILIZEDBARBARIAN, TRAIT_GENERIC) //Need to make trait improve hitting people with chairs, mugs, goblets.
 
 /datum/special_trait/mastercraftsmen
-	name = "Master Crasftman"
+	name = "Master Craftsman"
 	greet_text = "In my youth, I've decided I'd get a grasp on every trade, and pursued the 10 arts of the craft."
 	req_text = "Middle-aged or Old"
 	allowed_ages = list(AGE_MIDDLEAGED, AGE_OLD)
@@ -308,8 +308,8 @@
 /datum/special_trait/backproblems
 	name = "Giant"
 	greet_text = span_notice("I've always been called a giant. I am valued for my stature, but, this world made for smaller folk has forced me to move cautiously.")
-	req_text = "Not a kobold, verminvolk or a dwarf"
-	restricted_races = list(/datum/species/anthromorphsmall, /datum/species/dwarf/mountain, /datum/species/kobold)
+	req_text = "Not a kobold, seelie, verminvolk or a dwarf"
+	restricted_races = list(/datum/species/anthromorphsmall, /datum/species/dwarf/mountain, /datum/species/kobold, /datum/species/seelie)
 	weight = 50
 
 /datum/special_trait/backproblems/on_apply(mob/living/carbon/human/character)
@@ -408,7 +408,7 @@
 /datum/special_trait/unlucky
 	name = "Unlucky"
 	greet_text = span_boldwarning("Ever since you knocked over that glass vase, you just feel... off")
-	weight = 100
+	weight = 25
 
 /datum/special_trait/unlucky/on_apply(mob/living/carbon/human/character, silent)
 	character.STALUC = rand(1, 10)
@@ -443,7 +443,7 @@
 /datum/special_trait/atrophy
 	name = "Atrophy"
 	greet_text = span_boldwarning("When growing up I could barely feed myself... this left me weak and fragile")
-	weight = 200
+	weight = 50
 
 /datum/special_trait/atrophy/on_apply(mob/living/carbon/human/character)
 	character.change_stat("strength", -2)
@@ -473,7 +473,7 @@
 /datum/special_trait/nude_sleeper
 	name = "Picky Sleeper"
 	greet_text = span_boldwarning("I just can't seem to fall asleep unless I'm <i>truly</i> comfortable...")
-	weight = 25
+	weight = 50
 
 /datum/special_trait/nude_sleeper/on_apply(mob/living/carbon/human/character, silent)
 	ADD_TRAIT(character, TRAIT_NUDE_SLEEPER, "[type]")
@@ -552,7 +552,7 @@
 	greet_text = span_notice("I'm sick of working as an underling, I will start my own trade emporium. I've got my hands on a hidden merchant key and a curious magical device")
 	req_text = "Be a Shophand"
 	allowed_jobs = list(/datum/job/roguetown/shophand)
-	weight = 50
+	weight = 100
 
 /datum/special_trait/illicit_merchant/on_apply(mob/living/carbon/human/character, silent)
 	character.mind.special_items["Merchant Key"] = /obj/item/roguekey/merchant

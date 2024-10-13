@@ -1,8 +1,6 @@
 /mob/living/simple_animal/hostile/retaliate/rogue/goat/Initialize()
 	..()
 	GLOB.farm_animals++
-	if(tame)
-		tamed()
 
 /mob/living/simple_animal/hostile/retaliate/rogue/goat/Destroy()
 	..()
@@ -246,8 +244,6 @@
 /mob/living/simple_animal/hostile/retaliate/rogue/goatmale/Initialize()
 	..()
 	GLOB.farm_animals++
-	if(tame)
-		tamed()
 
 /mob/living/simple_animal/hostile/retaliate/rogue/goatmale/Destroy()
 	..()

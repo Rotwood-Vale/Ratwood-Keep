@@ -7,6 +7,7 @@
 	slice_batch = FALSE
 	filling_color = "#8f433a"
 	rotprocess = 20 MINUTES
+	w_class = WEIGHT_CLASS_SMALL
 
 /obj/item/reagent_containers/food/snacks/rogue/meat/steak
 	ingredient_size = 2

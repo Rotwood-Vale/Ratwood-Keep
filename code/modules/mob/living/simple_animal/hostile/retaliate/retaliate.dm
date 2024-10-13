@@ -29,6 +29,8 @@
 	var/list/around = hearers(vision_range, src)
 
 	for(var/atom/movable/A in around)
+		if(A in friends) //Makes the mob not target it's friends (only applies to tamed Rous)
+			continue
 		if(A == src)
 			continue
 		if(isliving(A))

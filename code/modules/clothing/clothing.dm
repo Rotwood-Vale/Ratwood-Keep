@@ -66,6 +66,7 @@
 	var/block2add
 	var/detail_tag
 	var/detail_color
+	var/boobed_detail = TRUE //Whether details have their own boobed sprite
 
 /obj/item/clothing/New()
 	..()
@@ -311,6 +312,12 @@
 	if(!damaged_clothes)
 		update_clothes_damaged_state(TRUE)
 	var/brokemessage = FALSE
+	// So, what this does is it iterates over all vars on the object, and then it sets them to zero.
+	// Including the ones that don't represent armor values. This is BAD. 
+	// Also, accessing a type's variables with [] will stop working in 1641. You can do the same with .vars[] there but please don't
+	// Frankly just rewrite armor entirely. This system just sucks. This proc in particular should probably just set a broken flag,
+	// and code taking into account armor should check if an armor piece is not broken.
+
 	for(var/x in armor)
 		if(armor[x] > 0)
 			brokemessage = TRUE

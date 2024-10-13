@@ -538,14 +538,6 @@ SUBSYSTEM_DEF(ticker)
 			player.new_player_panel()
 		CHECK_TICK
 
-/datum/controller/subsystem/ticker/proc/select_ruler()
-	for(var/mob/living/carbon/human/K in world)
-		if(istype(K, /mob/living/carbon/human/dummy))
-			continue
-		if(K.job == "King")
-			rulermob = K
-			return
-
 /datum/controller/subsystem/ticker/proc/collect_minds()
 	for(var/i in GLOB.new_player_list)
 		var/mob/dead/new_player/P = i

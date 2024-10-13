@@ -1,16 +1,14 @@
 {
-
-    "german": {
+    "full": {
         "axe": "axt",
         "bad": "schlecht",
         "beautiful": "schön",
         "big": "groß",
-		"good bye": [
-            "auf wiedersehen",
-            "tschüss"
-        ],
-		"idiot":"schweinhund",
-		"dumb":"dummkopf",
+        "great": "groß",
+        "good bye": ["auf wiedersehen", "tschüss"],
+        "goodbye": ["auf wiedersehen", "tschüss"],
+        "idiot": "schweinhund",
+        "dumb": "dummkopf",
         "cake": "kuchen",
         "captain": "kapitän",
         "cat": "katze",
@@ -23,10 +21,7 @@
         "friend": "freund",
         "god": "gott",
         "good": "gut",
-        "hello": [
-            "hallo",
-            "guten tag"
-        ],
+        "hello": ["hallo", "guten tag"],
         "helmet": "helm",
         "house": "haus",
         "lance": "lanze",
@@ -35,7 +30,7 @@
         "my": "mein",
         "no": "nein",
         "old": "alt",
-		"shit": "scheiße",
+        "shit": "scheiße",
         "shield": "schild",
         "shi": "schii",
         "small": "klein",
@@ -45,7 +40,6 @@
         "thanks": "danke",
         "thank you": "danke",
         "the": "die",
-        "thi": "tii",
         "ugly": "hässlich",
         "very": "sehr",
         "water": "wasser",
@@ -54,35 +48,38 @@
         "with": "mit",
         "yes": "ja",
         "young": "jung",
-		"soldier": "soldat",
-		"knight": "ritter",
-		"kingdom": "königreich",
-		"king": "könig",
-		"princess": "prinzess",
-		"prince": "prinz",
-		"dwarf": "zwarf",
-		"dragon": "drachen",
-		"wizard": "vizard",
-		"witch": "vitch",
-		"beast": "biest",
-		"forest": [
-            "wald",
-            "forst"
-        ],
-		"necromancer": "nekromant",
-		"demon": "dämon",
-		"vampire": "vampir",
+        "soldier": "soldat",
+        "knight": "ritter",
+        "kingdom": "königreich",
+        "king": "könig",
+        "princess": "prinzess",
+        "prince": "prinz",
+        "dwarf": "zwarf",
+        "dragon": "drachen",
+        "wizard": "vizard",
+        "witch": "vitch",
+        "beast": "biest",
+        "forest": ["wald", "forst"],
+        "necromancer": "nekromant",
+        "demon": "dämon",
+        "vampire": "vampir",
         "black": "schwarz",
         "church": "kirche",
         "is": "ist",
         "queen": "königin",
-        "bog": [
-            "moor",
-            "sumpf"
-        ],
+        "bog": ["moor", "sumpf"],
         "town": "stadt",
         "an": "eine",
         "fellow": "kollege",
         "colleague": "kollege"
+    },
+    "start": {
+
+    },
+    "end": {
+
+    },
+    "syllable": {
+        "thi": "tii"
     }
 }

@@ -42,9 +42,17 @@
 		H.mind.adjust_skillrank(/datum/skill/misc/stealing, 5, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/climbing, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/music, 2, TRUE)
-		H.STASTR = clamp(roll("4d6-4"), 1, 20)
-		H.STAINT = clamp(roll("4d6-4"), 1, 20)
-		H.STALUC = clamp(roll("4d6-4"), 1, 20)
+		if(!isseelie(H))	
+			H.STASTR = clamp(roll("4d6-4"), 1, 20)
+			H.STAINT = clamp(roll("4d6-4"), 1, 20)
+			H.STALUC = clamp(roll("4d6-4"), 1, 20)
+		else if(isseelie(H))
+			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/seelie_dust)
+			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/summon_rat)
+			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/strip)
+			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/projectile/splash)
+			H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/roustame)
+			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/projectile/animate_object)
 		H.cmode_music = 'sound/music/combat_jester.ogg'
 	H.verbs |= /mob/living/carbon/human/proc/ventriloquate
 	H.verbs |= /mob/living/carbon/human/proc/ear_trick

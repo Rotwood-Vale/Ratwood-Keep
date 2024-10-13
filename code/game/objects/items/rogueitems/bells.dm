@@ -13,6 +13,7 @@
 	hitsound = 'sound/items/bsmith1.ogg'
 	var/cooldown = 3 SECONDS
 	var/ringing = FALSE
+	w_class = WEIGHT_CLASS_SMALL
 
 /obj/item/handheld_bell/attack_self(mob/user)
 	. = ..()

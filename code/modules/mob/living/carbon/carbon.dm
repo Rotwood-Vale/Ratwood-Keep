@@ -141,8 +141,12 @@
 				hurt = FALSE
 	if(hit_atom.density && isturf(hit_atom))
 		if(hurt)
-			Paralyze(20)
+			if(IsOffBalanced())
+				Paralyze(20)
+			if(prob(20))
+				emote("scream") // lifeweb reference ?? xd
 			take_bodypart_damage(10,check_armor = TRUE)
+			playsound(src,"genblunt",100,TRUE)
 	if(iscarbon(hit_atom) && hit_atom != src)
 		var/mob/living/carbon/victim = hit_atom
 		if(victim.movement_type & FLYING)
@@ -210,10 +214,7 @@
 					if(!throwable_mob.buckled)
 						thrown_thing = throwable_mob
 						thrown_speed = 1
-						if(STASTR > throwable_mob.STACON)
-							thrown_range = 4
-						else
-							thrown_range = 1
+						thrown_range = max(round((STASTR/throwable_mob.STACON)*2), 1)
 						stop_pulling()
 						if(G.grab_state < GRAB_AGGRESSIVE)
 							return
@@ -222,6 +223,8 @@
 							return
 						var/turf/start_T = get_turf(loc) //Get the start and target tile for the descriptors
 						var/turf/end_T = get_turf(target)
+						if(start_T.z != end_T.z && throwable_mob.mobility_flags & MOBILITY_STAND)
+							return
 						if(start_T && end_T)
 							log_combat(src, throwable_mob, "thrown", addition="grab from tile in [AREACOORD(start_T)] towards tile at [AREACOORD(end_T)]")
 				else
@@ -320,7 +323,7 @@
 		return FALSE
 
 /obj/structure
-	var/breakoutextra = 30 SECONDS
+	var/breakoutextra = 10 SECONDS
 
 /mob/living/carbon/resist_buckle()
 	if(restrained())
@@ -348,11 +351,11 @@
 		buckled.user_unbuckle_mob(src,src)
 
 /mob/living/carbon/resist_fire()
-	fire_stacks -= 5
-	if(fire_stacks > 10)
-		Paralyze(60, TRUE, TRUE)
+	fire_stacks -= 2.5
+	if(fire_stacks > 10 || !(mobility_flags & MOBILITY_STAND))
+		Paralyze(50, TRUE, TRUE)
 		spin(32,2)
-		fire_stacks -= 5
+		fire_stacks -= 7.5
 		visible_message(span_warning("[src] rolls on the ground, trying to put [p_them()]self out!"))
 	else
 		visible_message(span_notice("[src] pats the flames to extinguish them."))
@@ -382,7 +385,7 @@
 
 /mob/living/carbon/proc/cuff_resist(obj/item/I, breakouttime = 600, cuff_break = 0)
 	if(I.item_flags & BEING_REMOVED)
-		to_chat(src, span_warning("You're already attempting to remove [I]!"))
+		to_chat(src, span_warning("I'm already trying to get out of \the [I]\s!"))
 		return
 	I.item_flags |= BEING_REMOVED
 	breakouttime = I.slipouttime
@@ -392,18 +395,18 @@
 	if(STASTR > 15 || (mind && mind.has_antag_datum(/datum/antagonist/zombie)) )
 		cuff_break = INSTANT_CUFFBREAK
 	if(!cuff_break)
-		to_chat(src, span_notice("I attempt to remove [I]..."))
-		if(do_after(src, breakouttime, 0, target = src))
+		to_chat(src, span_notice("I try to get out of \the [I]\s..."))
+		if(move_after(src, breakouttime, 0, target = src))
 			clear_cuffs(I, cuff_break)
 		else
-			to_chat(src, span_danger("I fail to remove [I]!"))
+			to_chat(src, span_danger("I fail to get out of \the [I]\s!"))
 
 	else if(cuff_break == FAST_CUFFBREAK)
-		to_chat(src, span_notice("I attempt to break [I]..."))
-		if(do_after(src, breakouttime, 0, target = src))
+		to_chat(src, span_notice("I attempt to break \the [I]\s..."))
+		if(move_after(src, breakouttime, 0, target = src))
 			clear_cuffs(I, cuff_break)
 		else
-			to_chat(src, span_danger("I fail to break [I]!"))
+			to_chat(src, span_danger("I fail to break \the [I]\s!"))
 
 	else if(cuff_break == INSTANT_CUFFBREAK)
 		clear_cuffs(I, cuff_break)
@@ -546,6 +549,7 @@
 
 /mob/living/carbon
 	var/nausea = 0
+	var/mouth_blocked = FALSE
 
 /mob/living/carbon/proc/add_nausea(amt)
 	nausea = clamp(nausea + amt, 0, 300)
@@ -753,6 +757,9 @@
 			see_invisible = min(G.invis_view, see_invisible)
 		if(!isnull(G.lighting_alpha))
 			lighting_alpha = min(lighting_alpha, G.lighting_alpha)
+
+	if(HAS_TRAIT(src, TRAIT_DARKVISION))
+		lighting_alpha = min(lighting_alpha, LIGHTING_PLANE_ALPHA_DARKVISION)
 
 	if(HAS_TRAIT(src, TRAIT_THERMAL_VISION))
 		sight |= (SEE_MOBS)
@@ -1279,6 +1286,8 @@
 	if(!.)
 		return
 	if(mouth?.muteinmouth)
+		return FALSE
+	if(mouth_blocked)
 		return FALSE
 	for(var/obj/item/grabbing/grab in grabbedby)
 		if(grab.sublimb_grabbed == BODY_ZONE_PRECISE_MOUTH)

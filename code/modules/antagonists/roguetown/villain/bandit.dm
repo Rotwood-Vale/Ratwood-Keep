@@ -32,6 +32,8 @@
 	owner.current.playsound_local(get_turf(owner.current), 'sound/music/traitor.ogg', 80, FALSE, pressure_affected = FALSE)
 	var/mob/living/carbon/human/H = owner.current
 	ADD_TRAIT(H, TRAIT_BANDITCAMP, TRAIT_GENERIC)
+	for(var/obj/structure/fluff/traveltile/bandit/tile in GLOB.traveltiles)
+		tile.show_travel_tile(H)
 	ADD_TRAIT(H, TRAIT_SEEPRICES, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_STEELHEARTED, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
@@ -81,10 +83,6 @@
 
 	return TRUE
 
-/datum/antagonist/bandit/after_name_change()
-	if(owner && owner.current)
-		add_bounty(owner.current.real_name, 80, TRUE, "bandit activity", "The King")
-
 /datum/outfit/job/roguetown/bandit/pre_equip(mob/living/carbon/human/H)
 	..()
 	H.mind.adjust_skillrank(/datum/skill/combat/polearms, 3, TRUE)
@@ -107,21 +105,16 @@
 	H.mind.adjust_skillrank(/datum/skill/misc/swimming, 2, TRUE)
 	belt = /obj/item/storage/belt/rogue/leather
 	pants = /obj/item/clothing/under/roguetown/trou/leather
-	shirt = /obj/item/clothing/suit/roguetown/shirt/shortshirt/random
+	shirt = /obj/item/clothing/suit/roguetown/armor/gambeson
 	shoes = /obj/item/clothing/shoes/roguetown/boots
 	backr = /obj/item/storage/backpack/rogue/satchel
 	backpack_contents = list(/obj/item/needle/thorn = 1, /obj/item/natural/cloth = 1)
 	mask = /obj/item/clothing/mask/rogue/facemask/steel
-	neck = /obj/item/clothing/neck/roguetown/coif
+	neck = /obj/item/clothing/neck/roguetown/chaincoif
 	head = /obj/item/clothing/head/roguetown/menacing/bandit
-	if(prob(40))
-		neck = /obj/item/clothing/neck/roguetown/chaincoif
-	if(prob(23))
-		gloves = /obj/item/clothing/gloves/roguetown/leather
-		armor = /obj/item/clothing/suit/roguetown/armor/gambeson
-	else
-		wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
-		armor = /obj/item/clothing/suit/roguetown/armor/leather
+	gloves = /obj/item/clothing/gloves/roguetown/leather
+	wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
+	armor = /obj/item/clothing/suit/roguetown/armor/leather/studded
 	var/loadoutm = rand(1,16)
 	switch(loadoutm)
 		if(1 to 3) // sword bandit
@@ -172,6 +165,7 @@
 	H.change_stat("speed", 1)
 	H.change_stat("intelligence", -3)
 
+	H.verbs |= /mob/proc/haltyell
 	H.ambushable = FALSE
 
 /datum/antagonist/bandit/roundend_report()

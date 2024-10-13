@@ -49,12 +49,12 @@
 		OFFSET_SHIRT_F = list(0,0), OFFSET_ARMOR_F = list(0,0), OFFSET_UNDIES_F = list(0,0), \
 		)
 	specstats = list(
-		"strength" = -2, 
-		"perception" = 1, 
-		"intelligence" = 2, 
-		"constitution" = -2, 
-		"endurance" = 0, 
-		"speed" = 2, 
+		"strength" = -2,
+		"perception" = 1,
+		"intelligence" = 2,
+		"constitution" = -2,
+		"endurance" = 0,
+		"speed" = 2,
 		"fortune" = 0
 		)
 	enflamed_icon = "widefire"
@@ -163,5 +163,19 @@
 /datum/species/elf/wood/random_surname()
 	return " [pick(world.file2list("strings/rt/names/elf/elfwlast.txt"))]"
 
+//Groups of Accents for each race set by associated 'skin_tone', see 'get_skin_list' above
+// "full" group in JSON lists
 /datum/species/elf/wood/get_accent(mob/living/carbon/human/H)
-	return strings("russian_replacement.json", "russian")
+		return strings("russian_replacement.json", "full")
+
+// "start" group in JSON lists
+/datum/species/elf/wood/get_accent_start(mob/living/carbon/human/H)
+		return strings("russian_replacement.json", "start")
+
+// "end" group in JSON lists
+/datum/species/elf/wood/get_accent_end(mob/living/carbon/human/H)
+		return strings("russian_replacement.json", "end")
+
+// "syllable" group in JSON lists
+/datum/species/elf/wood/get_accent_any(mob/living/carbon/human/H)
+		return strings("russian_replacement.json", "syllable")

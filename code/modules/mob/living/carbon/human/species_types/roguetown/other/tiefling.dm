@@ -28,8 +28,8 @@
 	liked_food = NONE
 	possible_ages = ALL_AGES_LIST
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
-	limbs_icon_m = 'icons/mob/species/male.dmi'
-	limbs_icon_f = 'icons/mob/species/female.dmi'
+	limbs_icon_m = 'icons/roguetown/mob/bodies/m/mt.dmi'
+	limbs_icon_f = 'icons/roguetown/mob/bodies/f/fm.dmi'
 	dam_icon = 'icons/roguetown/mob/bodies/dam/dam_male.dmi'
 	dam_icon_f = 'icons/roguetown/mob/bodies/dam/dam_female.dmi'
 	soundpack_m = /datum/voicepack/male/elf
@@ -38,7 +38,7 @@
 		OFFSET_ID = list(0,1), OFFSET_GLOVES = list(0,1), OFFSET_WRISTS = list(0,1),\
 		OFFSET_CLOAK = list(0,1), OFFSET_FACEMASK = list(0,1), OFFSET_HEAD = list(0,1), \
 		OFFSET_FACE = list(0,1), OFFSET_BELT = list(0,1), OFFSET_BACK = list(0,1), \
-		OFFSET_NECK = list(0,1), OFFSET_MOUTH = list(0,1), OFFSET_PANTS = list(0,1), \
+		OFFSET_NECK = list(0,1), OFFSET_MOUTH = list(0,1), OFFSET_PANTS = list(0,0), \
 		OFFSET_SHIRT = list(0,1), OFFSET_ARMOR = list(0,1), OFFSET_HANDS = list(0,1), OFFSET_UNDIES = list(0,1), \
 		OFFSET_ID_F = list(0,-1), OFFSET_GLOVES_F = list(0,0), OFFSET_WRISTS_F = list(0,0), OFFSET_HANDS_F = list(0,0), \
 		OFFSET_CLOAK_F = list(0,0), OFFSET_FACEMASK_F = list(0,-1), OFFSET_HEAD_F = list(0,-1), \
@@ -47,12 +47,12 @@
 		OFFSET_SHIRT_F = list(0,0), OFFSET_ARMOR_F = list(0,0), OFFSET_UNDIES_F = list(0,0), \
 		)
 	specstats = list(
-		"strength" = 0, 
-		"perception" = 1, 
-		"intelligence" = 2, 
-		"constitution" = -2, 
-		"endurance" = 1, 
-		"speed" = 0, 
+		"strength" = 0,
+		"perception" = 1,
+		"intelligence" = 2,
+		"constitution" = -2,
+		"endurance" = 1,
+		"speed" = 0,
 		"fortune" = -1
 		)
 	enflamed_icon = "widefire"
@@ -66,8 +66,9 @@
 		ORGAN_SLOT_LIVER = /obj/item/organ/liver,
 		ORGAN_SLOT_STOMACH = /obj/item/organ/stomach,
 		ORGAN_SLOT_APPENDIX = /obj/item/organ/appendix,
-		ORGAN_SLOT_TAIL = /obj/item/organ/tail/tiefling,
-		ORGAN_SLOT_HORNS = /obj/item/organ/horns/tiefling,
+//		ORGAN_SLOT_TAIL = /obj/item/organ/tail/tiefling,  //Commenting out due to use of customizer organs.
+//		ORGAN_SLOT_HORNS = /obj/item/organ/horns/tiefling,
+
 		)
 	bodypart_features = list(
 		/datum/bodypart_feature/hair/head,
@@ -79,6 +80,8 @@
 		/datum/customizer/bodypart_feature/hair/facial/humanoid,
 		/datum/customizer/bodypart_feature/accessory,
 		/datum/customizer/bodypart_feature/face_detail,
+		/datum/customizer/organ/horns/humanoid/tiefling,
+		/datum/customizer/organ/tail/tiefling,
 		/datum/customizer/organ/testicles/human,
 		/datum/customizer/organ/penis/human,
 		/datum/customizer/organ/breasts/human,
@@ -151,3 +154,33 @@
 
 /datum/species/tieberian/random_surname()
 	return " [pick(world.file2list("strings/rt/names/other/tieflast.txt"))]"
+/* Commenting out Spanish Tieflings for now.
+//Groups of Accents for each race set by associated 'skin_tone', see 'get_skin_list' above
+// "full" group in JSON lists
+/datum/species/tieberian/get_accent(mob/living/carbon/human/H)
+		switch(H.skin_tone)
+				if(SKIN_COLOR_CASTILLIAN)
+						return strings("spanish_replacement.json", "full")
+		return null
+
+// "start" group in JSON lists
+/datum/species/tieberian/get_accent_start(mob/living/carbon/human/H)
+		switch(H.skin_tone)
+				if(SKIN_COLOR_CASTILLIAN)
+						return strings("spanish_replacement.json", "start")
+		return null
+
+// "end" group in JSON lists
+/datum/species/tieberian/get_accent_end(mob/living/carbon/human/H)
+		switch(H.skin_tone)
+				if(SKIN_COLOR_CASTILLIAN)
+						return strings("spanish_replacement.json", "end")
+		return null
+
+// "syllable" group in JSON lists
+/datum/species/tieberian/get_accent_any(mob/living/carbon/human/H)
+		switch(H.skin_tone)
+				if(SKIN_COLOR_CASTILLIAN)
+						return strings("spanish_replacement.json", "syllable")
+		return null
+*/

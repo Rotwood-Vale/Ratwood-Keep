@@ -7,7 +7,7 @@
 	spawn_positions = 2
 
 	allowed_sexes = list(MALE, FEMALE)
-	allowed_races = RACES_ALL_KINDS
+	allowed_races = RACES_VERY_SHUNNED_UP
 	tutorial = "You're too valuable to outright kill yet not a free person. You either messed up really bad or got very unlucky. Either way, the crown has held you hostage until you home country pays your ransom, as if that would ever happen. Might as well start praying to whatever god you find solace in."
 
 	outfit = /datum/outfit/job/roguetown/hostage
@@ -20,11 +20,7 @@
 
 /datum/outfit/job/roguetown/hostage/pre_equip(mob/living/carbon/human/H)
 	..()
-	mask = /obj/item/clothing/mask/rogue/facemask/prisoner
-	if(H.wear_mask)
-		var/obj/I = H.wear_mask
-		H.dropItemToGround(H.wear_mask, TRUE)
-		qdel(I)
+	neck = /obj/item/clothing/neck/roguetown/gorget/prisoner
 	shoes = /obj/item/clothing/shoes/roguetown/shortboots
 	id = /obj/item/clothing/ring/gold
 	if(H.mind)

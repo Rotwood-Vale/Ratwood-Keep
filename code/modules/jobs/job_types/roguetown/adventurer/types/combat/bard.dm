@@ -53,7 +53,7 @@
 				cloak = /obj/item/clothing/cloak/raincloak/red
 			backl = /obj/item/storage/backpack/rogue/satchel
 			beltl = /obj/item/storage/belt/rogue/pouch/coins/poor
-			beltr = /obj/item/rogueweapon/huntingknife/idagger/steel
+			beltr = /obj/item/rogueweapon/huntingknife/idagger
 			H.change_stat("intelligence", 1)
 			H.change_stat("perception", 2)
 			H.change_stat("endurance", 1)
@@ -91,7 +91,7 @@
 			if(prob(50))
 				cloak = /obj/item/clothing/cloak/raincloak/red
 			backl = /obj/item/storage/backpack/rogue/satchel
-			l_hand = /obj/item/rogueweapon/huntingknife/idagger/steel
+			l_hand = /obj/item/rogueweapon/huntingknife/idagger
 			beltl = /obj/item/storage/belt/rogue/pouch/coins/mid
 			l_hand = /obj/item/rogueweapon/sword/iron
 			H.change_stat("constitution", 2)

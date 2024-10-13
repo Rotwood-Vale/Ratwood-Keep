@@ -1,6 +1,6 @@
 #define TARGET_CLOSEST 1
 #define TARGET_RANDOM 2
-
+#define MAGIC_XP_MULTIPLIER 0.3 //used to miltuply the amount of xp gained from spells
 
 /obj/effect/proc_holder
 	var/panel = "Debug"//What panel the proc holder needs to go on.
@@ -129,6 +129,9 @@ GLOBAL_LIST_INIT(spells, typesof(/obj/effect/proc_holder/spell)) //needed for th
 	density = FALSE
 	opacity = 0
 
+	var/cost = 0 //how many points it costs to learn this spell
+	var/xp_gain = FALSE
+
 	var/school = "evocation" //not relevant at now, but may be important later if there are changes to how spells work. the ones I used for now will probably be changed... maybe spell presets? lacking flexibility but with some other benefit?
 
 	var/charge_type = "recharge" //can be recharge or charges, see charge_max and charge_counter descriptions; can also be based on the holder's vars now, use "holder_var" for that
@@ -252,6 +255,10 @@ GLOBAL_LIST_INIT(spells, typesof(/obj/effect/proc_holder/spell)) //needed for th
 
 	if(!ignore_cockblock && HAS_TRAIT(user, TRAIT_SPELLCOCKBLOCK))
 		to_chat(user, span_warning("I can't cast spells!"))
+		return FALSE
+
+	if(HAS_TRAIT(user, TRAIT_NOC_CURSE))
+		to_chat(user, span_warning("My magicka has left me..."))
 		return FALSE
 
 	if(!antimagic_allowed)
@@ -470,6 +477,9 @@ GLOBAL_LIST_INIT(spells, typesof(/obj/effect/proc_holder/spell)) //needed for th
 		var/mob/living/carbon/human/devotee = user
 		devotee.devotion?.update_devotion(-devotion_cost)
 		to_chat(devotee, "<font color='purple'>I [devotion_cost > 0 ? "lost" : "gained"] [abs(devotion_cost)] devotion.</font>")
+	//Add xp based on the fatigue used
+	if(xp_gain)
+		adjust_experience(usr, associated_skill, round(get_fatigue_drain() * MAGIC_XP_MULTIPLIER))
 
 /obj/effect/proc_holder/spell/proc/view_or_range(distance = world.view, center=usr, type="view")
 	switch(type)
@@ -681,3 +691,4 @@ GLOBAL_LIST_INIT(spells, typesof(/obj/effect/proc_holder/spell)) //needed for th
 	user.visible_message(span_warning("A wreath of gentle light passes over [user]!"), span_notice("I wreath myself in healing light!"))
 	user.adjustBruteLoss(-10)
 	user.adjustFireLoss(-10)
+

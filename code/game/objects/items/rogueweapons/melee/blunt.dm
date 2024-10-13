@@ -103,7 +103,7 @@
 /datum/intent/mace/strike
 	name = "strike"
 	blade_class = BCLASS_BLUNT
-	attack_verb = list("strikes", "hits")
+	attack_verb = list("strikes", "whacks")
 	hitsound = list('sound/combat/hits/blunt/metalblunt (1).ogg', 'sound/combat/hits/blunt/metalblunt (2).ogg', 'sound/combat/hits/blunt/metalblunt (3).ogg')
 	chargetime = 0
 	penfactor = 15
@@ -125,7 +125,7 @@
 /datum/intent/mace/rangedthrust
 	name = "thrust"
 	blade_class = BCLASS_STAB
-	attack_verb = list("thrusts")
+	attack_verb = list("thrusts", "stabs")
 	animname = "stab"
 	icon_state = "instab"
 	reach = 2
@@ -189,7 +189,7 @@
 
 /obj/item/rogueweapon/mace/wsword
 	name = "wooden sword"
-	desc = "This wooden sword is great for training."
+	desc = "This wooden sword is great for training. Or humiliating opponents."
 	force = 5
 	force_wielded = 8
 	icon_state = "wsword"
@@ -278,7 +278,6 @@
 	pixel_x = -16
 	inhand_x_dimension = 64
 	inhand_y_dimension = 64
-	dropshrink = 0.6
 	bigboy = TRUE
 	gripsprite = TRUE
 

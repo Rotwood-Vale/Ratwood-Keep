@@ -10,6 +10,7 @@
 	drop_sound = 'sound/foley/dropsound/book_drop.ogg'
 	force = 5
 	associated_skill = /datum/skill/misc/reading
+	w_class = WEIGHT_CLASS_SMALL
 
 /obj/item/book/rogue/getonmobprop(tag)
 	. = ..()
@@ -232,7 +233,7 @@
 	bookfile = "law.json"
 
 /obj/item/book/rogue/cooking
-	name = "Tastes Fit For The Lord" 
+	name = "Tastes Fit For The Lord"
 	desc = ""
 	icon_state ="book_0"
 	base_icon_state = "book"
@@ -392,14 +393,14 @@
 	icon_state = "basic_book_0"
 	base_icon_state = "basic_book"
 	override_find_book = TRUE
-	
+
 /obj/item/book/rogue/playerbook/Initialize(loc, in_round_player_generated, var/mob/living/in_round_player_mob, text)
 	. = ..()
 	is_in_round_player_generated = in_round_player_generated
 	if(is_in_round_player_generated)
 		player_book_text = text
 		while(!player_book_author_ckey) // doesn't have to be this, but better than defining a bool.
-			player_book_title = dd_limittext(capitalize(sanitize_hear_message(input(in_round_player_mob, "What title do you want to give the book? (max 42 characters)", "Title", "Unknown"))), MAX_NAME_LEN)	
+			player_book_title = dd_limittext(capitalize(sanitize_hear_message(input(in_round_player_mob, "What title do you want to give the book? (max 42 characters)", "Title", "Unknown"))), MAX_NAME_LEN)
 			player_book_author = "[dd_limittext(sanitize_hear_message(input(in_round_player_mob, "What do you want the author text to be? (max 42 characters)", "Author", "")), MAX_NAME_LEN)]"
 			player_book_icon = book_icons[input(in_round_player_mob, "Choose a book style", "Book Style") as anything in book_icons]
 			player_book_author_ckey = in_round_player_mob.ckey

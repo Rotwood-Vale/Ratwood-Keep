@@ -68,9 +68,9 @@
 
 /datum/outfit/job/roguetown/npc/skeleton/pre_equip(mob/living/carbon/human/H)
 	..()
-	if(prob(50))
+	if(prob(90))
 		wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
-	if(prob(70))
+	if(prob(80))
 		shoes = /obj/item/clothing/shoes/roguetown/boots/leather
 	if(prob(30))
 		armor = /obj/item/clothing/suit/roguetown/armor/chainmail/iron
@@ -78,12 +78,14 @@
 		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/vagrant
 		if(prob(50))
 			shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/vagrant/l
-	if(prob(80))
+	if(prob(90))
 		pants = /obj/item/clothing/under/roguetown/chainlegs/iron
-	if(prob(20))
+	if(prob(40))
 		head = /obj/item/clothing/head/roguetown/helmet/leather
-	if(prob(10))
-		head = /obj/item/clothing/head/roguetown/roguehood
+	if(prob(70))
+		gloves = /obj/item/clothing/gloves/roguetown/chain/iron
+	if(prob(70))
+		neck = /obj/item/clothing/neck/roguetown/chaincoif/iron
 	if(H.gender == FEMALE)
 		H.STASTR = rand(9,12)
 	else
@@ -93,9 +95,9 @@
 	H.STAEND = 15
 	H.STAINT = 1
 	if(prob(50))
-		r_hand = /obj/item/rogueweapon/sword
+		r_hand = /obj/item/rogueweapon/sword/iron
 	else
-		r_hand = /obj/item/rogueweapon/mace
+		r_hand = /obj/item/rogueweapon/stoneaxe/woodcut
 
 /mob/living/carbon/human/species/skeleton/npc/no_equipment
     skel_outfit = null
