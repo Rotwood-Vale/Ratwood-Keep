@@ -314,7 +314,7 @@
 // --------- SILVER -----------
 
 /datum/anvil_recipe/armor/belt_silver
-	name = "Steel Belt"
+	name = "Silver Belt"
 	req_bar = /obj/item/ingot/silver
 	created_item = /obj/item/storage/belt/rogue/leather/plaquesilver
 	i_type = "Armor"
