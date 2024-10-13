@@ -181,23 +181,31 @@
 				return "feet"
 			return "legs"
 		if(BODY_ZONE_PRECISE_STOMACH)
-			if(closeby && squinting && strength && combat && combattarget && uncovered)
-				return "abs"
+			if(!turnedaround)
+				if(closeby && squinting && strength && combat && combattarget && uncovered)
+					return "abs"
+				if(closeby && !combat)
+					if(squinting)
+						return "waist"
+					if(grabbing)
+						return "belly"
+					return "stomach"
 			if(closeby && !combat)
-				if(squinting)
-					return "waist"
-				if(grabbing)
-					return "belly"
-				return "stomach"
+				return "lower back"
 			else
 				return "body"
 		if(BODY_ZONE_CHEST)
+			if(!turnedaround)
+				if(closeby && squinting && strength && combat && combattarget && uncovered)
+					return "pecs"
+				if(closeby && !combat)
+					if(squinting && uncovered)
+						return "breasts"
+					return "chest"
 			if(closeby && squinting && strength && combat && combattarget && uncovered)
-				return "pecs"
-			if(closeby && !combat)
-				if(squinting && uncovered)
-					return "breasts"
-				return "chest"
+				return "lats"
+			if(closeby && !combat && !self)
+				return "back"
 			else
 				return "body"
 		if(BODY_ZONE_PRECISE_GROIN)
