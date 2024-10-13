@@ -436,7 +436,7 @@ GLOBAL_VAR_INIT(mobids, 1)
 		to_chat(src, span_warning("Something is there but I can't see it!"))
 		return
 
-	if(isturf(A.loc) && isliving(src))
+	if(isturf(A.loc) && isliving(src) && (src.m_intent != MOVE_INTENT_SNEAK))
 		face_atom(A)
 		visible_message(span_emote("[src] looks at [A]."))
 	var/list/result = A.examine(src)
