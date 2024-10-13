@@ -436,7 +436,7 @@ GLOBAL_VAR_INIT(mobids, 1)
 		to_chat(src, span_warning("Something is there but I can't see it!"))
 		return
 
-	if(isturf(A.loc) && isliving(src))
+	if(isturf(A.loc) && isliving(src) && (src.m_intent != MOVE_INTENT_SNEAK))
 		face_atom(A)
 		visible_message(span_emote("[src] looks at [A]."))
 	var/list/result = A.examine(src)
@@ -719,16 +719,10 @@ GLOBAL_VAR_INIT(mobids, 1)
   */
 /mob/MouseDrop_T(atom/dropping, atom/user)
 	. = ..()
-	if(ismob(dropping) && dropping != user)
+	if(ismob(dropping) && dropping != user && src == user)
 		var/mob/M = dropping
-		if(ismob(user))
-			var/mob/U = user
-			if(!iscyborg(U) || !U.cmode || U.used_intent.type == INTENT_HARM)
-				M.show_inv(U)
-				return TRUE
-		else
-			M.show_inv(user)
-			return TRUE
+		M.show_inv(user)
+		return TRUE
 
 ///Is the mob muzzled (default false)
 /mob/proc/is_muzzled()
