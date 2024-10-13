@@ -658,7 +658,10 @@ GLOBAL_LIST_EMPTY(chosen_names)
 	// well.... one empty slot here for something I suppose lol
 	dat += "<table width='100%'>"
 	dat += "<tr>"
-	dat += "<td width='33%' align='left'></td>"
+	dat += "<td width='33%' align='left'>"
+	dat += "<a class='animationcolor' href='byond://?src=[REF(N)];rpprompt=1'>Lore Primer</a><br>"
+//	dat += "<a href='byond://?src=[REF(N)];rgprompt=1'>Religion Primer</a><br>"
+	dat += 	"</td>"
 	dat += "<td width='33%' align='center'>"
 	dat += "<a href='?_src_=prefs;preference=bespecial'><b>[next_special_trait ? "<font color='red'>SPECIAL</font>" : "Be Special"]</b></a><BR>"
 	if(SSticker.current_state <= GAME_STATE_PREGAME)
