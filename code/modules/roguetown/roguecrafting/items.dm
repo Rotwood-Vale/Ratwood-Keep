@@ -177,6 +177,13 @@
 	reqs = list(/obj/item/grown/log/tree/small = 1,
 				/obj/item/natural/stone = 1)
 
+/datum/crafting_recipe/roguetown/stonehoe
+	name = "stone hoe"
+	result = /obj/item/rogueweapon/hoe/stone
+	reqs = list(/obj/item/grown/log/tree/small = 2,
+				/obj/item/natural/fibers = 1,
+				/obj/item/natural/stone = 1)
+
 /datum/crafting_recipe/roguetown/stonetongs
 	name = "stone tongs"
 	result = /obj/item/rogueweapon/tongs/stone

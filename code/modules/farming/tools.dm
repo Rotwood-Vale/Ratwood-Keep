@@ -92,6 +92,22 @@
 	wlength = 33
 	drop_sound = 'sound/foley/dropsound/wooden_drop.ogg'
 	smeltresult = /obj/item/ingot/iron
+	var/hoe_damage = null //the durability damage recieved for every work cycle
+	var/work_time = 3 SECONDS // the time it takes to make new soil or till soil
+
+/obj/item/rogueweapon/hoe/stone
+	force = 7
+	force_wielded = 12
+	name = "stone hoe"
+	desc = "A makeshift hoe made out of stone, brittle."
+	icon_state = "stonehoe"
+	//dropshrink = 0.8
+	smeltresult = null
+	anvilrepair = null
+	max_integrity = 100
+	hoe_damage = 25
+	work_time = 15 SECONDS
+
 
 /obj/item/rogueweapon/hoe/getonmobprop(tag)
 	. = ..()
@@ -146,18 +162,17 @@
 
 /obj/item/rogueweapon/hoe/attack_turf(turf/T, mob/living/user)
 	if(user.used_intent.type == /datum/intent/till)
-		var/is_legendary = FALSE
 		if(user.mind.get_skill_level(/datum/skill/labor/farming) == SKILL_LEVEL_LEGENDARY) //check if the user has legendary farming skill
-			is_legendary = TRUE //they do
-		var/work_time = 3 SECONDS //define the time it takes to make new soil or till soil
-		if(is_legendary)
-			work_time = 5 //if legendary skill, do_afters take half a second instead of 3
+			work_time = 0.5 SECONDS //if legendary skill, do_afters take half a second instead of 3
 
 		user.changeNext_move(CLICK_CD_MELEE)
 		if(istype(T, /turf/open/floor/rogue/snow) || istype(T, /turf/open/floor/rogue/snowrough) || istype(T, /turf/open/floor/rogue/snowpatchy))
 			playsound(T,'sound/items/dig_shovel.ogg', 100, TRUE)
 			if (do_after(user, work_time, target = src))
 				apply_farming_fatigue(user, 10)
+				if(hoe_damage)
+					to_chat(user,span_warning("[src] degrades."))
+					src.take_damage(hoe_damage, BRUTE, "blunt")
 				T.ChangeTurf(/turf/open/floor/rogue/grasscold, flags = CHANGETURF_INHERIT_AIR)
 				playsound(T,'sound/items/dig_shovel.ogg', 100, TRUE)
 			return
@@ -165,6 +180,9 @@
 			playsound(T,'sound/items/dig_shovel.ogg', 100, TRUE)
 			if (do_after(user, work_time, target = src))
 				apply_farming_fatigue(user, 10)
+				if(hoe_damage)
+					to_chat(user,span_warning("[src] degrades."))
+					src.take_damage(hoe_damage, BRUTE, "blunt")
 				T.ChangeTurf(/turf/open/floor/rogue/dirt, flags = CHANGETURF_INHERIT_AIR)
 				playsound(T,'sound/items/dig_shovel.ogg', 100, TRUE)
 			return
@@ -175,8 +193,14 @@
 				var/obj/structure/soil/soil = get_soil_on_turf(T)
 				if(soil)
 					soil.user_till_soil(user)
+					if(hoe_damage)
+						to_chat(user,span_warning("[src] degrades."))
+						src.take_damage(hoe_damage, BRUTE, "blunt")
 				else
 					apply_farming_fatigue(user, 10)
+					if(hoe_damage)
+						to_chat(user,span_warning("[src] degrades."))
+						src.take_damage(hoe_damage, BRUTE, "blunt")
 					new /obj/structure/soil(T)
 			return
 	. = ..()
