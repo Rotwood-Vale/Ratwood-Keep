@@ -1,6 +1,6 @@
 /mob/living/simple_animal/hostile/retaliate/rogue/spider
 	icon = 'icons/roguetown/mob/monster/spider.dmi'
-	name = "beespider"
+	name = "spider"
 	icon_state = "spider"
 	icon_living = "spider"
 	icon_dead = "spider-dead"
