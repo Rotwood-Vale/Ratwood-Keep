@@ -10,6 +10,12 @@
 		"...you feel grass under you feet as you peer onto a meadow, you prepare a campfire and a tent and drift off into deeper slumber.."
 	)
 
+/datum/skill/craft/weaponsmithing
+	name = "Weaponsmithing"
+
+/datum/skill/craft/armorsmithing
+	name = "Armorsmithing"
+
 /datum/skill/craft/blacksmithing
 	name = "Blacksmithing"
 
