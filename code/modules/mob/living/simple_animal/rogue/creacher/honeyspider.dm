@@ -1,9 +1,9 @@
 /mob/living/simple_animal/hostile/retaliate/rogue/spider
 	icon = 'icons/roguetown/mob/monster/spider.dmi'
 	name = "beespider"
-	icon_state = "honeys"
-	icon_living = "honeys"
-	icon_dead = "honeys-dead"
+	icon_state = "spider"
+	icon_living = "spider"
+	icon_dead = "spider-dead"
 	gender = MALE
 	speak_chance = 1
 	turns_per_move = 3
