@@ -509,6 +509,7 @@
 	max_integrity = 200
 	w_class = WEIGHT_CLASS_NORMAL
 	clothing_flags = CANT_SLEEP_IN
+	resistance_flags = FIRE_PROOF
 
 /obj/item/clothing/head/roguetown/helmet/skullcap
 	name = "skull cap"
@@ -522,14 +523,14 @@
 	name = "horned cap"
 	desc = "A helmet with two horns poking out of the sides."
 	icon_state = "hornedcap"
-	max_integrity = 200
+	max_integrity = 225
 	body_parts_covered = HEAD|HAIR
 
 /obj/item/clothing/head/roguetown/helmet/winged
 	name = "winged cap"
 	desc = "A helmet with two wings on its sides."
 	icon_state = "wingedcap"
-	max_integrity = 200
+	max_integrity = 225
 	mob_overlay_icon = 'icons/roguetown/clothing/onmob/64x64/head.dmi'
 	worn_x_dimension = 64
 	worn_y_dimension = 64
@@ -549,8 +550,9 @@
 
 /obj/item/clothing/head/roguetown/helmet/sallet/visored
 	name = "visored sallet"
-	desc = "A steel helmet which protects the ears, nose, and eyes."
+	desc = "A steel helmet which protects the ears, eyes and nose."
 	icon_state = "sallet_visor"
+	max_integrity = 275
 	adjustable = CAN_CADJUST
 	flags_inv = HIDEFACE
 	flags_cover = HEADCOVERSEYES
@@ -700,21 +702,68 @@
 	desc = "A helmet which covers the whole of the head. Offers excellent protection."
 	icon_state = "topfhelm"
 	item_state = "topfhelm"
+	max_integrity = 435
 	emote_environment = 3
 	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR
-	block2add = FOV_RIGHT|FOV_LEFT
+	block2add = FOV_BEHIND
+	smeltresult = /obj/item/ingot/steel
+
+
+/obj/item/clothing/head/roguetown/helmet/heavy/bucket/gold
+	desc = "A helmet which covers the whole of the head. Offers excellent protection. This one has a golden cross-shaped brow."
+	icon_state = "topfhelm_gold"
+	item_state = "topfhelm_gold"
+
+/obj/item/clothing/head/roguetown/helmet/heavy/astratahelm
+	name = "astrata helmet"
+	desc = "Headwear commonly worn by Templars in service to Astrata. The firstborn child's light will forever shine on within its crest."
+	icon_state = "astratahelm"
+	item_state = "astratahelm"
+	emote_environment = 3
+	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR
+	block2add = FOV_BEHIND
+	smeltresult = /obj/item/ingot/steel
+
+/obj/item/clothing/head/roguetown/helmet/heavy/nochelm
+	name = "noc helmet"
+	desc = "Hearwear commonly worn by Templars in service to Noc. Without the night there can be no day, without Noc there can be no light in the dark hours."
+	icon_state = "nochelm"
+	item_state = "nochelm"
+	emote_environment = 3
+	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR
+	block2add = FOV_BEHIND
+	smeltresult = /obj/item/ingot/steel
+
+/obj/item/clothing/head/roguetown/helmet/heavy/necrahelm
+	name = "necra helmet"
+	desc = "Headwear commonly worn by Templars in service to Necra. Let its skeletal features remind you of the only thing which is guaranteed in life. You will die."
+	icon_state = "necrahelm"
+	item_state = "necrahelm"
+	emote_environment = 3
+	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR
+	block2add = FOV_BEHIND
+	smeltresult = /obj/item/ingot/steel
+
+/obj/item/clothing/head/roguetown/helmet/heavy/dendorhelm
+	name = "dendor helmet"
+	desc = "Headwear commonly worn by Templars in service to Dendor. Its protrusions almost resemble branches. Take root in the earth, and you will never be moved."
+	icon_state = "dendorhelm"
+	item_state = "dendorhelm"
+	emote_environment = 3
+	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR
+	block2add = FOV_BEHIND
 	smeltresult = /obj/item/ingot/steel
 
 /obj/item/clothing/head/roguetown/helmet/heavy/pigface
 	name = "pigface bascinet"
-	desc = "A steel bascinet helmet with a pigface visor protecting the head, ears, nose, mouth, and eyes."
+	desc = "A steel bascinet helmet with a pigface visor protecting the head, ears, eyes, nose and mouth."
 	icon_state = "hounskull"
 	item_state = "hounskull"
 	adjustable = CAN_CADJUST
 	emote_environment = 3
 	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR
 	flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH
-	block2add = FOV_RIGHT|FOV_LEFT
+	block2add = FOV_BEHIND
 	smeltresult = /obj/item/ingot/steel
 
 /obj/item/clothing/head/roguetown/helmet/heavy/pigface/AdjustClothes(mob/user)
@@ -743,6 +792,7 @@
 	desc = "A steel bascinet helmet without a visor protecting the the head and ears."
 	icon_state = "bascinet_novisor"
 	item_state = "bascinet_novisor"
+	max_integrity = 235
 	emote_environment = 3
 	body_parts_covered = HEAD|HAIR|EARS
 	flags_inv = HIDEHAIR

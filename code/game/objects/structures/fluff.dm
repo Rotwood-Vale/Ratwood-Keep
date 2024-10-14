@@ -990,7 +990,7 @@
 							I += /obj/item/reagent_containers/powder/moondust
 							I += /obj/item/reagent_containers/powder/moondust
 							I += /obj/item/reagent_containers/powder/moondust
-							I += /obj/item/slimepotion/lovepotion
+							I += /obj/item/bomb
 						if(3)
 							I += /obj/item/clothing/suit/roguetown/armor/plate/scale
 						if(4)
@@ -1001,6 +1001,7 @@
 							I += /obj/item/reagent_containers/glass/bottle/rogue/healthpot
 							I += /obj/item/reagent_containers/powder/moondust
 							I += /obj/item/reagent_containers/powder/moondust
+							I += /obj/item/bomb
 						if(7)
 							I += /obj/item/clothing/shoes/roguetown/boots/armor
 						if(8)
@@ -1111,57 +1112,50 @@
 									found_mobs += C
 						testing("foundmobslen [found_mobs.len]")
 						if(found_mobs.len == 2)
-							var/mob/living/carbon/human/theman
-							var/mob/living/carbon/human/thewoman
-							for(var/mob/living/carbon/human/M in found_mobs) //first find man
+							var/mob/living/carbon/human/FirstPerson
+							var/mob/living/carbon/human/SecondPerson
+							for(var/mob/living/carbon/human/M in found_mobs)
 								if(M.marriedto)
 									continue
-								if(M.gender == MALE)
-									if(theman)
-										testing("fail64")
-										A.burn()
-										return
-									theman = M
+								if(!FirstPerson)
+									FirstPerson = M
 								else
-									if(thewoman)
-										A.burn()
-										testing("fai33")
-										return
-									thewoman = M
-							if(!theman || !thewoman)
+									if(!SecondPerson)
+										SecondPerson = M
+							if(!FirstPerson || !SecondPerson)
 								testing("fail22")
 								return
 							var/surname2use
-							var/index = findtext(theman.real_name, " ")
-							var/womanfirst
-							theman.original_name = theman.real_name
-							thewoman.original_name = thewoman.real_name
+							var/index = findtext(FirstPerson.real_name, " ")
+							var/SecondPersonFirstName
+							FirstPerson.original_name = FirstPerson.real_name
+							SecondPerson.original_name = SecondPerson.real_name
 							if(!index)
-								surname2use = theman.dna.species.random_surname()
+								surname2use = FirstPerson.dna.species.random_surname()
 							else
-								if(findtext(theman.real_name, " of ") || findtext(theman.real_name, " the "))
-									surname2use = theman.dna.species.random_surname()
-									theman.change_name(copytext(theman.real_name, 1,index))
+								if(findtext(FirstPerson.real_name, " of ") || findtext(FirstPerson.real_name, " the "))
+									surname2use = FirstPerson.dna.species.random_surname()
+									FirstPerson.change_name(copytext(FirstPerson.real_name, 1,index))
 								else
-									surname2use = copytext(theman.real_name, index)
-									theman.change_name(copytext(theman.real_name, 1,index))
-							index = findtext(thewoman.real_name, " ")
+									surname2use = copytext(FirstPerson.real_name, index)
+									FirstPerson.change_name(copytext(FirstPerson.real_name, 1,index))
+							index = findtext(SecondPerson.real_name, " ")
 							if(index)
-								thewoman.change_name(copytext(thewoman.real_name, 1,index))
-							womanfirst = thewoman.real_name
-							theman.change_name(theman.real_name + surname2use)
-							thewoman.change_name(thewoman.real_name + surname2use)
-							theman.marriedto = thewoman.real_name
-							thewoman.marriedto = theman.real_name
-							theman.adjust_triumphs(1)
-							thewoman.adjust_triumphs(1)
-							priority_announce("[theman.real_name] has married [womanfirst]!", title = "Holy Union!", sound = 'sound/misc/bell.ogg')
+								SecondPerson.change_name(copytext(SecondPerson.real_name, 1,index))
+							SecondPersonFirstName = SecondPerson.real_name
+							FirstPerson.change_name(FirstPerson.real_name + surname2use)
+							SecondPerson.change_name(SecondPerson.real_name + surname2use)
+							FirstPerson.marriedto = SecondPerson.real_name
+							SecondPerson.marriedto = FirstPerson.real_name
+							FirstPerson.adjust_triumphs(1)
+							SecondPerson.adjust_triumphs(1)
+							priority_announce("[FirstPerson.real_name] has married [SecondPersonFirstName]!", title = "Holy Union!", sound = 'sound/misc/bell.ogg')
 							marriage = TRUE
 							qdel(A)
-//							if(theman.has_stress(/datum/stressevent/nobel))
-//								thewoman.add_stress(/datum/stressevent/nobel)
-//							if(thewoman.has_stress(/datum/stressevent/nobel))
-//								theman.add_stress(/datum/stressevent/nobel)
+//							if(FirstPerson.has_stress(/datum/stressevent/nobel))
+//								SecondPerson.add_stress(/datum/stressevent/nobel)
+//							if(SecondPerson.has_stress(/datum/stressevent/nobel))
+//								FirstPerson.add_stress(/datum/stressevent/nobel)
 
 				if(!marriage)
 					A.burn()

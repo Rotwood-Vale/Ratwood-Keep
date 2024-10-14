@@ -6,8 +6,9 @@
 	allowed_races = RACES_ALL_KINDS
 	vampcompat = FALSE
 	outfit = /datum/outfit/job/roguetown/adventurer/cleric
-	traits_applied = list(TRAIT_HEAVYARMOR)
 	category_tags = list(CTAG_ADVENTURER)
+
+	cmode_music = 'sound/music/combat_clergy.ogg'
 
 /datum/outfit/job/roguetown/adventurer/cleric
 	allowed_patrons = ALL_CLERIC_PATRONS
@@ -22,6 +23,7 @@
 			neck = /obj/item/clothing/neck/roguetown/psicross/noc
 		if(/datum/patron/divine/dendor)
 			neck = /obj/item/clothing/neck/roguetown/psicross/dendor
+			H.mind.adjust_skillrank(/datum/skill/magic/druidic, 2, TRUE) // enough to craft druid mask, at least
 		if(/datum/patron/divine/necra)
 			neck = /obj/item/clothing/neck/roguetown/psicross/necra
 		if(/datum/patron/divine/pestra)
@@ -76,7 +78,7 @@
 			pants = /obj/item/clothing/under/roguetown/trou/leather
 			shoes = /obj/item/clothing/shoes/roguetown/boots/leather
 			belt = /obj/item/storage/belt/rogue/leather
-			beltr = /obj/item/rogueweapon/mace/steel
+			beltr = /obj/item/rogueweapon/mace
 			beltl = /obj/item/storage/belt/rogue/pouch/coins/poor
 			backl = /obj/item/storage/backpack/rogue/satchel
 			backr = /obj/item/rogueweapon/shield/wood

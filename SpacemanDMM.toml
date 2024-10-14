@@ -1,0 +1,4 @@
+environment = "roguetown.dme"
+
+[debugger]
+engine = "auxtools"

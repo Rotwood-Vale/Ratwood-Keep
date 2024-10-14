@@ -72,6 +72,9 @@
 	//Vrell - Used for repair bypass clicks
 	var/being_repaired = FALSE
 
+	var/spills_on_move = TRUE 					//Reagent containers inside this will not spill if the storage moves. (For trays.)
+	//roguespill.dm additionally handles spilling on a containing bag getting equipped - change the code if you want something else to ignore that behavior
+
 /datum/component/storage/Initialize(datum/component/storage/concrete/master)
 	if(!isatom(parent))
 		return COMPONENT_INCOMPATIBLE
@@ -196,9 +199,10 @@
 	for(var/mob/living/L in can_see_contents())
 		if(!L.CanReach(A))
 			hide_from(L)
-	for(var/obj/item/reagent_containers/I in A.contents)
-		if(I.reagents && I.spillable)
-			I.reagents.remove_all(3)
+	if(spills_on_move)
+		for(var/obj/item/reagent_containers/I in A.contents)
+			if(I.reagents && I.spillable)
+				I.reagents.remove_all(3)
 
 /datum/component/storage/proc/attack_self(datum/source, mob/M)
 	if(locked)

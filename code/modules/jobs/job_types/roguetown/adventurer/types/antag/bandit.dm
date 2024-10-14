@@ -7,7 +7,7 @@
 	name = "Bandit"
 	tutorial = "A person living in service of the god Matthios, through theft and social woes can ones suffering be alleviated."
 	allowed_sexes = list(MALE, FEMALE)
-	allowed_races = RACES_ALL_KINDS
+	allowed_races = RACES_VERY_SHUNNED_UP
 	outfit = /datum/outfit/job/roguetown/adventurer/bandit
 	category_tags = list(CTAG_ANTAG, CTAG_BANDIT)
 
