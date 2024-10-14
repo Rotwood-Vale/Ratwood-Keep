@@ -257,7 +257,7 @@
 "bKy" = (/obj/structure/table/wood{icon_state = "longtable"},/obj/item/clothing/mask/cigarette/pipe/westman,/turf/open/floor/rogue/tile{icon_state = "chess"},/area/rogue/indoors/town/bath)
 "bKz" = (/obj/structure/stairs{dir = 4; icon_state = "stairs"},/turf/open/floor/rogue/cobblerock,/area/rogue/outdoors/rtfield)
 "bKO" = (/turf/closed/wall/mineral/rogue/wooddark/end,/area/rogue/indoors/town)
-"bLn" = (/obj/structure/closet/crate/drawer,/obj/item/clothing/under/roguetown/tights/formal,/obj/item/clothing/under/roguetown/tights/formal,/obj/item/clothing/under/roguetown/tights/black,/obj/item/clothing/under/roguetown/tights/black,/obj/item/clothing/under/roguetown/trou/leather/mourning,/obj/item/clothing/under/roguetown/trou/leather/mourning,/turf/open/floor/rogue/ruinedwood{icon_state = "weird1"},/area/rogue/indoors/town/physician)
+"bLn" = (/obj/structure/closet/crate/drawer,/obj/item/clothing/under/roguetown/tights/black,/obj/item/clothing/under/roguetown/tights/black,/obj/item/clothing/under/roguetown/trou/leather/mourning,/obj/item/clothing/under/roguetown/trou/leather/mourning,/turf/open/floor/rogue/ruinedwood{icon_state = "weird1"},/area/rogue/indoors/town/physician)
 "bLo" = (/obj/structure/fluff/walldeco/customflag{pixel_x = -32; pixel_y = 0},/turf/open/floor/rogue/wood,/area/rogue/outdoors/town/roofs)
 "bLB" = (/turf/closed/wall/mineral/rogue/pipe{dir = 1; icon_state = "iron_corner"},/area/rogue/under/town/sewer)
 "bLJ" = (/obj/machinery/light/rogue/wallfire/candle/blue/l,/turf/open/water/bath,/area/rogue/under/town/basement)
