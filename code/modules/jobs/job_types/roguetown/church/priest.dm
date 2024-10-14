@@ -22,6 +22,8 @@
 	min_pq = 8
 	max_pq = null
 
+	cmode_music = 'sound/music/combat_clergy.ogg'
+
 /datum/outfit/job/roguetown/priest
 	allowed_patrons = list(/datum/patron/divine/astrata)
 
@@ -174,7 +176,6 @@
 				H.add_stress(/datum/stressevent/psycurse)
 		if(!found)
 			return FALSE
-
 		GLOB.heretical_players += inputty
 		priority_announce("[real_name] has placed a Heretic's Brand upon [inputty]!", title = "SHAME", sound = 'sound/misc/excomm.ogg')
 

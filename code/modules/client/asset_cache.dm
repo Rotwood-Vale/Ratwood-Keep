@@ -592,6 +592,7 @@ GLOBAL_LIST_EMPTY(asset_datums)
 		"sand.ttf" = 'interface/fonts/languages/sand.ttf',
 		"undead.ttf" = 'interface/fonts/languages/undead.ttf',
 		"draconic.ttf" = 'interface/fonts/languages/draconic.ttf',
+		"fae.ttf" = 'interface/fonts/languages/fae.ttf',
 		"lupian.ttf" = 'interface/fonts/languages/lupian.ttf'
 	)
 

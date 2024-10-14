@@ -171,7 +171,7 @@
 	else
 		..()
 
-obj/item/rogueweapon/shield/buckler
+/obj/item/rogueweapon/shield/buckler
 	name = "buckler shield"
 	desc = "A sturdy buckler shield. Will block anything you can imagine."
 	icon_state = "bucklersh"
@@ -188,7 +188,7 @@ obj/item/rogueweapon/shield/buckler
 	blade_dulling = DULLING_BASH
 	associated_skill = 0
 
-obj/item/rogueweapon/shield/buckler/proc/bucklerskill(mob/living/user)
+/obj/item/rogueweapon/shield/buckler/proc/bucklerskill(mob/living/user)
 	if(!ishuman(user))
 		return
 	var/mob/living/carbon/bucklerer = user

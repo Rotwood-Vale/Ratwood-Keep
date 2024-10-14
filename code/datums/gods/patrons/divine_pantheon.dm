@@ -35,10 +35,10 @@
 	domain = "God of the Earth and Nature"
 	desc = "The Primordial Son of Psydon, patron of beasts and the wood. Gone mad with time."
 	worshippers = "Druids, Beasts, Madmen"
-	mob_traits = list(TRAIT_KNEESTINGER_IMMUNITY)
+	mob_traits = list(TRAIT_VINE_WALKER)
 	t1 = /obj/effect/proc_holder/spell/targeted/blesscrop
 	t2 = /obj/effect/proc_holder/spell/targeted/beasttame
-	t3 = /obj/effect/proc_holder/spell/targeted/conjure_glowshroom
+	t3 = /obj/effect/proc_holder/spell/targeted/conjure_vines
 	confess_lines = list(
 		"DENDOR PROVIDES!",
 		"THE TREEFATHER BRINGS BOUNTY!",

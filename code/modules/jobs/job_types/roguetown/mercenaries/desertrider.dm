@@ -32,6 +32,7 @@
 	belt = /obj/item/storage/belt/rogue/leather/shalal
 	armor = /obj/item/clothing/suit/roguetown/armor/plate/scale
 	beltr = /obj/item/storage/belt/rogue/pouch/coins/poor
+	backr = /obj/item/storage/backpack/rogue/satchel
 	backl = /obj/item/rogueweapon/sword/long/rider
 	beltl = /obj/item/flashlight/flare/torch
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/black

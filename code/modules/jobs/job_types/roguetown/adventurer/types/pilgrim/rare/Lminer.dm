@@ -7,9 +7,7 @@
 	allowed_races = RACES_ALL_KINDS
 	outfit = /datum/outfit/job/roguetown/adventurer/minermaster
 
-	maximum_possible_slots = 1
-	pickprob = 5
-
+	pickprob = 10
 	category_tags = list(CTAG_PILGRIM)
 
 /datum/outfit/job/roguetown/adventurer/minermaster/pre_equip(mob/living/carbon/human/H)
@@ -20,22 +18,28 @@
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/random
 	shoes = /obj/item/clothing/shoes/roguetown/boots/leather
 	belt = /obj/item/storage/belt/rogue/leather/rope
-	neck = /obj/item/storage/belt/rogue/pouch/coins/mid
-	beltl = /obj/item/rogueweapon/pick
+	neck = /obj/item/storage/belt/rogue/pouch/coins/rich
+	beltl = /obj/item/rogueweapon/pick/steel
 	backl = /obj/item/storage/backpack/rogue/backpack
 	if(H.mind)
+		H.mind.adjust_skillrank(/datum/skill/craft/traps, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/craft/engineering, 2, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/craft/carpentry, 2, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/craft/masonry, 4, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/medicine, 1, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/polearms, 4, TRUE) 
+		H.mind.adjust_skillrank(/datum/skill/combat/maces, 4, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/athletics, 6, TRUE) // The TRUE strongest of the strong.
 		H.mind.adjust_skillrank(/datum/skill/combat/axes, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/maces, 3, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 5, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/craft/crafting, 4, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/swimming, 3, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/climbing, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/swimming, 5, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/climbing, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/labor/mining, 6, TRUE)
-		H.change_stat("strength", 2)
-		H.change_stat("intelligence", 2)
-		H.change_stat("endurance", 2)
-		H.change_stat("constitution", 1)
-		H.change_stat("perception", 1)
-		H.change_stat("fortune", 4)
+		H.change_stat("strength", 4)
+		H.change_stat("endurance", 6) // Must...mine...
+		H.change_stat("constitution", 3)
+		H.change_stat("fortune", 6) // Legendary miner SHOULD have the most in the game. Now it does.
 

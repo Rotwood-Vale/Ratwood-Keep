@@ -212,7 +212,7 @@
 	keys = list(/obj/item/roguekey/manor, /obj/item/roguekey/archive)
 
 /obj/item/keyring/physician
-	keys = list(/obj/item/roguekey/manor, /obj/item/roguekey/keep_barracks, /obj/item/roguekey/physician)
+	keys = list(/obj/item/roguekey/manor, /obj/item/roguekey/keep_barracks, /obj/item/roguekey/physician, /obj/item/roguekey/keep_dungeon_torture)
 
 /obj/item/keyring/royal
 	keys = list(/obj/item/roguekey/councillor_rooms, /obj/item/roguekey/prince_rooms, /obj/item/roguekey/manor, /obj/item/roguekey/royal)

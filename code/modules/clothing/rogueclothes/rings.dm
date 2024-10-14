@@ -147,7 +147,7 @@
     sellprice = 140
 
 /obj/item/clothing/ring/dragon_ring
-	name = "Dragon Ring"
+	name = "dragon ring"
 	icon_state = "dragonring"
 	sellprice = 666
 	var/active_item

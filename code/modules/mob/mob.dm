@@ -436,9 +436,55 @@ GLOBAL_VAR_INIT(mobids, 1)
 		to_chat(src, span_warning("Something is there but I can't see it!"))
 		return
 
-	if(isturf(A.loc) && isliving(src))
-		face_atom(A)
-		visible_message(span_emote("[src] looks at [A]."))
+
+	if(isliving(src) && src.m_intent != MOVE_INTENT_SNEAK)
+		var/target = "\the [A]"
+		var/message = "[src] looks at"
+		if(A.loc == src)
+			target = "[src.p_their()] [A.name]"
+		if(A.loc.loc == src)
+			message = "[src] looks into"
+			target = "[src.p_their()] [A.loc.name]"
+		if(isliving(A))
+			var/mob/living/T = A
+			var/hitzone = T.simple_limb_hit(zone_selected)
+			var/behind = FALSE
+			var/grabbing = FALSE
+			var/defiancy = TRUE
+			var/uncovered = get_location_accessible(T, zone_selected)
+			var/penised = FALSE
+			var/pussied = FALSE
+			var/strcheck = FALSE
+			if((src != T && src.dir == T.dir)  || (src == T && fixedeye))
+				behind = TRUE
+			if(ishuman(src))
+				var/obj/item/grabbing/G = get_active_held_item()
+				if(istype(G))
+					if(G.grabbed == T)
+						if(G.sublimb_grabbed == zone_selected)
+							grabbing = TRUE
+			if(!ishuman(T))
+				target = "\the [T.name]'s [hitzone]"
+			else if(ishuman(T))
+				var/mob/living/carbon/human/target_human = T
+				if(isliving(src))
+					var/mob/living/L = src
+					if(!L.sexcon.need_to_be_violated(target_human))
+						defiancy = FALSE
+				if(target_human.getorganslot(ORGAN_SLOT_PENIS))
+					penised = TRUE
+				if(target_human.getorganslot(ORGAN_SLOT_VAGINA))
+					pussied = TRUE
+				if(T.STASTR >= 12)
+					strcheck = TRUE
+				if(T == src)
+					var/parsed_zone = parse_zone_fancy(zone_selected, cmode, cmode, Adjacent(T), behind, T.resting, grabbing, fixedeye, defiancy, uncovered, penised, pussied, strcheck, TRUE)
+					if(parsed_zone)
+						target = "[src.p_their()] [parsed_zone]"
+				else
+					target = "[T]'s [parse_zone_fancy(zone_selected, cmode, T.cmode, Adjacent(T), behind, T.resting, grabbing, fixedeye, defiancy, uncovered, penised, pussied, strcheck)]"
+		visible_message(span_emote("[message] [target]."))
+
 	var/list/result = A.examine(src)
 	if(result)
 		to_chat(src, result.Join("\n"))
@@ -719,16 +765,10 @@ GLOBAL_VAR_INIT(mobids, 1)
   */
 /mob/MouseDrop_T(atom/dropping, atom/user)
 	. = ..()
-	if(ismob(dropping) && dropping != user)
+	if(ismob(dropping) && dropping != user && src == user)
 		var/mob/M = dropping
-		if(ismob(user))
-			var/mob/U = user
-			if(!iscyborg(U) || !U.cmode || U.used_intent.type == INTENT_HARM)
-				M.show_inv(U)
-				return TRUE
-		else
-			M.show_inv(user)
-			return TRUE
+		M.show_inv(user)
+		return TRUE
 
 ///Is the mob muzzled (default false)
 /mob/proc/is_muzzled()
@@ -1374,3 +1414,11 @@ GLOBAL_VAR_INIT(mobids, 1)
 		input = capitalize(copytext_char(input, customsayverb+1))
 	return "[message_spans_start(spans)][input]</span>"
 
+/mob/proc/haswings(mob/living/carbon/human/Target)
+	if(!ishuman(Target))
+		return FALSE
+	var/obj/item/organ/wings/Wing = Target.getorganslot(ORGAN_SLOT_WINGS)
+	if(Wing == null)
+		return FALSE
+	else
+		return TRUE
