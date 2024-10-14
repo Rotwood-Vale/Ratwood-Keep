@@ -20852,10 +20852,6 @@
 	},
 /turf/open/transparent/openspace,
 /area/rogue/indoors/town/tavern)
-"tAX" = (
-/obj/structure/fluff/clock,
-/turf/open/floor/rogue/woodturned,
-/area/rogue/indoors/town/tavern)
 "tBd" = (
 /obj/effect/decal/cleanable/blood,
 /obj/effect/decal/cleanable/blood/tracks,
@@ -291247,7 +291243,7 @@ oqm
 vdZ
 edF
 qJm
-tAX
+wRK
 wRK
 lJA
 wRK
