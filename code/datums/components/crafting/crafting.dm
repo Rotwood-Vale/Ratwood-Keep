@@ -230,7 +230,7 @@
 						return ", missing tool."
 
 					var/prob2craft = 25
-					var/prob2fail = 1
+//					var/prob2fail = 1
 					if(R.craftdiff)
 						prob2craft -= (25*R.craftdiff)
 					if(R.skillcraft)
@@ -240,16 +240,16 @@
 						prob2craft = 100
 					if(isliving(user))
 						var/mob/living/L = user
-						if(L.STALUC > 10)
-							prob2fail = 0
-						if(L.STALUC < 10)
-							prob2fail += (10-L.STALUC)
+//						if(L.STALUC > 10)
+//							prob2fail = 0
+//						if(L.STALUC < 10)
+//							prob2fail += (10-L.STALUC)
 						if(L.STAINT > 10)
 							prob2craft += ((10-L.STAINT)*-1)*2
 					prob2craft = CLAMP(prob2craft, 0, 99)
-					if(prob(prob2fail)) //critical fail
-						to_chat(user, span_danger("MISTAKE! I fumbled the crafting of \the [R.name]!"))
-						return
+//					if(prob(prob2fail)) //critical fail
+//						to_chat(user, span_danger("MISTAKE! I fumbled the crafting of \the [R.name]!"))
+//						return
 					if(!prob(prob2craft))
 						if(user.client?.prefs.showrolls)
 							to_chat(user, span_danger("I've failed to craft \the [R.name]... [prob2craft]%"))
