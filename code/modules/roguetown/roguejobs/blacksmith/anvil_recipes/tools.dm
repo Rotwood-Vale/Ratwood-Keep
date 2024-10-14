@@ -110,12 +110,6 @@
 	created_item = /obj/item/rogueweapon/thresher
 	i_type = "Tools"
 
-/datum/anvil_recipe/tools/pot
-	name = "Metal Pot"
-	req_bar = /obj/item/ingot/iron
-	created_item = /obj/item/reagent_containers/glass/pot
-	i_type = "Tools"
-
 /datum/anvil_recipe/tools/iron_arm_left
 	name = "Iron arm (L)"
 	req_bar = /obj/item/ingot/iron

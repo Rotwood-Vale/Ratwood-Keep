@@ -150,7 +150,7 @@
 				user.changeNext_move(CLICK_CD_MELEE)
 				playsound(user, 'sound/foley/drawwater.ogg', 100, FALSE)
 				var/list/L = list()
-				L[water_reagent] = 100
+				L[water_reagent] = 200
 				C.reagents.add_reagent_list(L)
 				to_chat(user, span_notice("I fill [C] from [src]."))
 			return
@@ -196,7 +196,7 @@
 		user.visible_message(span_info("[user] starts to drink from [src]."))
 		if(do_after(L, 25, target = src))
 			var/list/waterl = list()
-			waterl[water_reagent] = 2
+			waterl[water_reagent] = 12
 			var/datum/reagents/reagents = new()
 			reagents.add_reagent_list(waterl)
 			reagents.trans_to(L, reagents.total_volume, transfered_by = user, method = INGEST)
