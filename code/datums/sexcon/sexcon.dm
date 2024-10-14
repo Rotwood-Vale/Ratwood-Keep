@@ -222,7 +222,6 @@
 	var milk_amount
 
 	if(isseelie(user))
-	{
 		switch(breasts.breast_size)
 			if(0)
 				milk_amount = 5
@@ -238,12 +237,8 @@
 				milk_amount = 10
 		
 		if(vagina.pregnant)
-		{
 			milk_amount = milk_amount + 5
-		}
-	}
 	else
-	{
 		switch(breasts.breast_size)
 			if(0)
 				milk_amount = 10
@@ -259,11 +254,8 @@
 				milk_amount = 40
 				
 		if(vagina.pregnant)
-		{
 			milk_amount = milk_amount + 20
-		}
-	}
-	return milk_amount = round((milk_amount * min(((world.time - breasts.last_milked)/(5 MINUTES)), 1)), 1)
+	return milk_amount = round(milk_amount * (min((world.time - breasts.last_milked)/(2 MINUTES), 1) * (((user.nutrition + user.hydration)/2)/500)))
 
 /datum/sex_controller/proc/milk_container(obj/item/reagent_containers/glass/C)
 	var/obj/item/organ/breasts/breasts = user.getorganslot(ORGAN_SLOT_BREASTS)
@@ -273,6 +265,8 @@
 	playsound(user, 'sound/misc/mat/endout.ogg', 50, TRUE, ignore_walls = FALSE)
 	milk_amount = calculate_milk()
 	C.reagents.add_reagent(/datum/reagent/consumable/breastmilk, milk_amount)
+	user.adjust_hydration(-(milk_amount * 10))
+	user.adjust_nutrition(-(milk_amount * 5))
 	breasts.last_milked = world.time
 	after_milking()
 
