@@ -79,11 +79,6 @@
 /mob/living/simple_animal/hostile/retaliate/rogue/spider/update_icon()
 	cut_overlays()
 	..()
-	if(stat != DEAD)
-		var/mutable_appearance/eye_lights = mutable_appearance(icon, "honeys-eyes")
-		eye_lights.plane = 19
-		eye_lights.layer = 19
-		add_overlay(eye_lights)
 
 /mob/living/simple_animal/hostile/retaliate/rogue/spider/get_sound(input)
 	switch(input)
