@@ -1,12 +1,12 @@
-/datum/job/roguetown/mercenary/silverdawn
-	title = "Silver Dawn Mercenary"
-	flag = SILVERDAWN
+/datum/job/roguetown/mercenary/blackstar
+	title = "Black Star Mercenary"
+	flag = BLACKSTAR
 	department_flag = MERCENARIES
-	tutorial = "Once the Order of the Silver Dawn, now riddled with the wounded, the veterans and the landless of the Vakran civil war. Take up the banner and fight again in the name of the Ten, or use the pretense of faith and zealotry to make ends meet by any means necessary."
+	tutorial = "Once the Order of the Black Star, now riddled with the wounded, the veterans and the landless of the Vakran civil war. Take up the banner and fight again in the name of the Ten, or use the pretense of faith and zealotry to make ends meet by any means necessary."
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = list(/datum/species/lupian, /datum/species/vulpkanin, /datum/species/anthromorph)
-	outfit = /datum/outfit/job/roguetown/mercenary/silverdawn
-	display_order = JDO_SILVERDAWN
+	outfit = /datum/outfit/job/roguetown/mercenary/blackstar
+	display_order = JDO_BLACKSTAR
 	selection_color = JCOLOR_MERCENARY
 	faction = "Station"
 	total_positions = 3
@@ -17,7 +17,7 @@
 	advclass_cat_rolls = list(CTAG_MERCENARY = 20)
 	always_show_on_latechoices = TRUE
 
-/datum/outfit/job/roguetown/mercenary/silverdawn/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/job/roguetown/mercenary/blackstar/pre_equip(mob/living/carbon/human/H)
 	..()
 	shoes = /obj/item/clothing/shoes/roguetown/boots
 	neck = /obj/item/clothing/neck/roguetown/gorget
@@ -29,8 +29,8 @@
 	armor = /obj/item/clothing/suit/roguetown/armor/brigandine/light
 	backr = /obj/item/storage/backpack/rogue/satchel
 	beltr = /obj/item/storage/belt/rogue/pouch/coins/poor
-	beltl = /obj/item/rogueweapon/sword/sabre
-	l_hand = /obj/item/rogueweapon/shield/buckler
+	beltl = /obj/item/rogueweapon/stoneaxe/battle
+	l_hand = /obj/item/rogueweapon/shield/wood
 	backpack_contents = list(/obj/item/rogueweapon/huntingknife)
 
 	if(H.mind)
@@ -42,15 +42,15 @@
 		H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/combat/swords, 4, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/swords, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/axes, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/polearms, 2, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/combat/whipsflails, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/knives, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/riding, 2, TRUE)
-		H.change_stat("strength", 2)
-		H.change_stat("endurance", 2)
+		H.change_stat("strength", 3) //with the axe they need to have a minimum of 12 strength to even use it
+		H.change_stat("endurance", 1)
 		H.change_stat("constitution", 2)
 		H.change_stat("perception", 1)
 		H.change_stat("speed", 1)

@@ -134,7 +134,7 @@ GLOBAL_LIST_INIT(peasant_positions, list(
 GLOBAL_LIST_INIT(mercenary_positions, list(
 	"Grenzelhoft Mercenary",
 	"Desert Rider Mercenary",
-	"Silver Dawn Mercenary",
+	"Black Star Mercenary",
 	"Sellsword",
 	"Veteran",
 ))
