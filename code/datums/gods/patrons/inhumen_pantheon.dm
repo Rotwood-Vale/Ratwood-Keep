@@ -2,11 +2,7 @@
 	name = null
 	associated_faith = /datum/faith/inhumen
 	undead_hater = FALSE
-	confess_lines = list(
-		"PSYDON IS THE DEMIURGE!",
-		"THE TEN ARE UNWORTHY!",
-		"THE TEN ARE PSYDON!",
-	)
+	confess_lines = list()
 
 /datum/patron/inhumen/graggar
 	name = "Graggar"

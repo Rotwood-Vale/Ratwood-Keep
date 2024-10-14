@@ -206,10 +206,22 @@ SUBSYSTEM_DEF(ticker)
 				tipped = TRUE
 
 			if(timeLeft <= 0)
-				current_state = GAME_STATE_SETTING_UP
-				Master.SetRunLevel(RUNLEVEL_SETUP)
-				if(start_immediately)
-					fire()
+				if(!checkreqroles())
+/*					if(failedstarts >= 13)
+						current_state = GAME_STATE_SETTING_UP
+						Master.SetRunLevel(RUNLEVEL_SETUP)
+						if(start_immediately)
+							fire()
+					else*/
+					current_state = GAME_STATE_STARTUP
+					start_at = world.time + 600
+					timeLeft = null
+					Master.SetRunLevel(RUNLEVEL_LOBBY)
+				else
+					current_state = GAME_STATE_SETTING_UP
+					Master.SetRunLevel(RUNLEVEL_SETUP)
+					if(start_immediately)
+						fire()
 
 		if(GAME_STATE_SETTING_UP)
 			if(!setup())
@@ -233,6 +245,69 @@ SUBSYSTEM_DEF(ticker)
 
 /datum/controller/subsystem/ticker
 	var/last_bot_update = 0
+
+/datum/controller/subsystem/ticker/proc/checkreqroles()
+	var/list/readied_jobs = list()
+	var/list/required_jobs = list()
+
+	//var/list/required_jobs = list("Lady","Lord","Merchant") //JTGSZ - 4/11/2024 - This was the prev set of required jobs to go with the hardcoded checks commented out below
+
+	for(var/V in required_jobs)
+		for(var/mob/dead/new_player/player in GLOB.player_list)
+			if(!player)
+				continue
+			if(player.client.prefs.job_preferences[V] == JP_HIGH)
+				if(player.ready == PLAYER_READY_TO_PLAY)
+					if(player.client.prefs.lastclass == V)
+						if(player.IsJobUnavailable(V) != JOB_AVAILABLE)
+							to_chat(player, span_warning("You cannot be [V] and thus are not considered."))
+							continue
+				readied_jobs.Add(V)
+		/*
+			// These else conditions stop the round from starting unless there is a merchant, lord, and lady.
+		else
+			var/list/stuffy = list("Set a Ruler to 'high' in your class preferences to start the game!", "PLAY Ruler NOW!", "A Ruler is required to start.", "Pray for a Ruler.", "One day, there will be a Ruler.", "Just try playing Ruler.", "If you don't play Ruler, the game will never start.", "We need at least one Ruler to start the game.", "We're waiting for you to pick Ruler to start.", "Still no Ruler is readied..", "I'm going to lose my mind if we don't get a Ruler readied up.","No. The game will not start because there is no Ruler.","What's the point of ROGUETOWN without a Ruler?")
+			to_chat(world, span_purple("[pick(stuffy)]"))
+			return FALSE
+	else
+		var/list/stuffy = list("Set Merchant to 'high' in your class preferences to start the game!", "PLAY Merchant NOW!", "A Merchant is required to start.", "Pray for a Merchant.", "One day, there will be a Merchant.", "Just try playing Merchant.", "If you don't play Merchant, the game will never start.", "We need at least one Merchant to start the game.", "We're waiting for you to pick Merchant to start.", "Still no Merchant is readied..", "I'm going to lose my mind if we don't get a Merchant readied up.","No. The game will not start because there is no Merchant.","What's the point of ROGUETOWN without a Merchant?")
+		to_chat(world, span_purple("[pick(stuffy)]"))
+		return FALSE
+	*/
+
+	/*
+		This prevents any gamemode from starting unless theres at least 2 players ready, but the comments say 20 or it defaults into a deathmatch mode.
+		It is commented out and just left here for posterity
+	*/
+	/*
+	var/amt_ready = 0
+	for(var/mob/dead/new_player/player in GLOB.player_list)
+		if(!player)
+			continue
+		if(player.ready == PLAYER_READY_TO_PLAY)
+			amt_ready++
+
+	if(amt_ready < 2)
+		to_chat(world, span_purple("[amt_ready]/20 players ready."))
+		failedstarts++
+		if(failedstarts > 7)
+			to_chat(world, span_purple("[failedstarts]/13"))
+		if(failedstarts >= 13)
+			to_chat(world, span_greentext("Starting ROGUEFIGHT..."))
+			var/icon/ikon
+			var/file_path = "icons/roguefight_title.dmi"
+			ASSERT(fexists(file_path))
+			ikon = new(fcopy_rsc(file_path))
+			if(SStitle.splash_turf && ikon)
+				SStitle.splash_turf.icon = ikon
+			for(var/mob/dead/new_player/player in GLOB.player_list)
+				player.playsound_local(player, 'sound/music/wartitle.ogg', 100, TRUE)
+		return FALSE
+	*/
+	job_change_locked = TRUE
+	return TRUE
+
+/datum/controller/subsystem/ticker
 	var/isroguefight = FALSE
 	var/isrogueworld = FALSE
 
