@@ -2219,6 +2219,12 @@
 	icon_state = "vertw"
 	},
 /area/rogue/indoors/town)
+"cmH" = (
+/turf/open/water/river{
+	dir = 8;
+	icon_state = "rockwd"
+	},
+/area/rogue/under/town/sewer)
 "cmJ" = (
 /obj/structure/stairs{
 	dir = 1
@@ -179970,8 +179976,8 @@ bpD
 bpD
 bpD
 vRu
-rSC
-rSC
+pOf
+pOf
 pOf
 pOf
 pOf
@@ -180372,8 +180378,8 @@ vRu
 vRu
 vRu
 vRu
-rSC
-rSC
+pOf
+pOf
 pOf
 pOf
 pOf
@@ -180774,8 +180780,8 @@ vRu
 vRu
 vRu
 vRu
-rSC
-rSC
+pOf
+pOf
 pOf
 pOf
 pOf
@@ -181176,8 +181182,8 @@ vRu
 vRu
 vRu
 vRu
-rSC
-rSC
+cmH
+cmH
 rRb
 rRb
 rRb
@@ -181578,8 +181584,8 @@ vRu
 vRu
 vRu
 vRu
-rSC
-rSC
+cmH
+cmH
 rRb
 lrs
 lrs
@@ -181980,8 +181986,8 @@ vRu
 vRu
 vRu
 pOf
-rSC
-rSC
+cmH
+cmH
 rRb
 lrs
 lrs
@@ -182382,8 +182388,8 @@ pOf
 pOf
 pOf
 pOf
-rSC
-rSC
+cmH
+cmH
 rRb
 lrs
 lrs
@@ -182784,8 +182790,8 @@ pOf
 pOf
 pOf
 pOf
-rSC
-rSC
+cmH
+cmH
 rRb
 lrs
 lrs
@@ -183186,8 +183192,8 @@ vRu
 vRu
 vRu
 pOf
-rSC
-rSC
+cmH
+cmH
 rRb
 lrs
 lrs
