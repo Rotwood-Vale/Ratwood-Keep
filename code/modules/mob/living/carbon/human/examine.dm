@@ -97,8 +97,8 @@
 			if(mind.special_role == "Bandit")
 				if(HAS_TRAIT(user, TRAIT_COMMIE))
 					commie_text = span_notice("Free man!")
-				else
-					commie_text = span_userdanger("BANDIT!")
+				/*else
+					commie_text = span_userdanger("BANDIT!")*/
 			if(mind.special_role == "Vampire Lord")
 				. += span_userdanger("A MONSTER!")
 			if(mind.assigned_role == "Lunatic")
