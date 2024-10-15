@@ -11,7 +11,7 @@
 	head = /obj/item/clothing/head/roguetown/helmet/sallet/visored
 	mask = /obj/item/clothing/head/roguetown/roguehood/shalalz
 	neck = /obj/item/clothing/neck/roguetown/chaincoif
-	shoes = /obj/item/clothing/shoes/roguetown/shalal
+	shoes = /obj/item/clothing/shoes/roguetown/boots/shalal
 	pants = /obj/item/clothing/under/roguetown/chainlegs
 	gloves = /obj/item/clothing/gloves/roguetown/angle
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/purple
@@ -61,7 +61,7 @@
 	head = /obj/item/clothing/head/roguetown/helmet/sallet
 	mask = /obj/item/clothing/head/roguetown/roguehood/shalalz
 	neck = /obj/item/storage/belt/rogue/pouch/coins/poor
-	shoes = /obj/item/clothing/shoes/roguetown/shalal
+	shoes = /obj/item/clothing/shoes/roguetown/boots/shalal
 	pants = /obj/item/clothing/under/roguetown/trou/leather
 	gloves = /obj/item/clothing/gloves/roguetown/angle
 	belt = /obj/item/storage/belt/rogue/leather/shalalz
@@ -113,7 +113,7 @@
 	head = /obj/item/clothing/head/roguetown/helmet/sallet
 	mask = /obj/item/clothing/head/roguetown/roguehood/shalalz
 	neck = /obj/item/storage/belt/rogue/pouch/coins/poor
-	shoes = /obj/item/clothing/shoes/roguetown/shalal
+	shoes = /obj/item/clothing/shoes/roguetown/boots/shalal
 	pants = /obj/item/clothing/under/roguetown/trou/leather
 	gloves = /obj/item/clothing/gloves/roguetown/angle
 	belt = /obj/item/storage/belt/rogue/leather/shalalz
@@ -164,7 +164,7 @@
 	head = /obj/item/clothing/head/roguetown/helmet/sallet
 	mask = /obj/item/clothing/head/roguetown/roguehood/shalalz
 	neck = /obj/item/clothing/neck/roguetown/gorget
-	shoes = /obj/item/clothing/shoes/roguetown/shalal
+	shoes = /obj/item/clothing/shoes/roguetown/boots/shalal
 	pants = /obj/item/clothing/under/roguetown/trou/leather
 	gloves = /obj/item/clothing/gloves/roguetown/angle
 	belt = /obj/item/storage/belt/rogue/leather/shalalz

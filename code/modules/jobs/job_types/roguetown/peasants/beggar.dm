@@ -55,7 +55,7 @@
 		armor = /obj/item/clothing/suit/roguetown/shirt/rags
 		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/vagrant
 		pants = /obj/item/clothing/under/roguetown/tights/vagrant
-		shoes = /obj/item/clothing/shoes/roguetown/shalal // wise boots
+		shoes = /obj/item/clothing/shoes/roguetown/boots/shalal // wise boots
 		r_hand = /obj/item/rogueweapon/woodstaff/wise // dog beating staff
 		l_hand = /obj/item/rogueweapon/huntingknife/idagger/steel/special // dog butchering knife
 		if(H.mind)

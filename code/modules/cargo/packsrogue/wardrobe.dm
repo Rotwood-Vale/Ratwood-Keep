@@ -87,8 +87,8 @@
 	name = "Shalal Shoes"
 	cost = 10
 	contains = list(
-					/obj/item/clothing/shoes/roguetown/shalal,
-					/obj/item/clothing/shoes/roguetown/shalal,
+					/obj/item/clothing/shoes/roguetown/boots/shalal,
+					/obj/item/clothing/shoes/roguetown/boots/shalal,
 				)
 
 /datum/supply_pack/rogue/wardrobe/shoes/sandals
@@ -153,6 +153,6 @@
 	name = "Noble Boots"
 	cost = 30
 	contains = list(
-					/obj/item/clothing/shoes/roguetown/nobleboot,
-					/obj/item/clothing/shoes/roguetown/nobleboot,
+					/obj/item/clothing/shoes/roguetown/boots/nobleboot,
+					/obj/item/clothing/shoes/roguetown/boots/nobleboot,
 				)

@@ -242,7 +242,7 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 	armor_class = 3
 	resistance_flags = FIRE_PROOF | ACID_PROOF
 
-/obj/item/clothing/shoes/roguetown/boots/armor/vampire
+/obj/item/clothing/shoes/roguetown/boots/steel/vampire
 	name = "ancient ceremonial plated boots"
 	desc = ""
 	body_parts_covered = FEET
@@ -663,7 +663,7 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 					new /obj/item/clothing/under/roguetown/platelegs/vampire(user.loc)
 					new /obj/item/clothing/suit/roguetown/armor/chainmail/iron/vampire(user.loc)
 					new /obj/item/clothing/suit/roguetown/armor/plate/vampire(user.loc)
-					new /obj/item/clothing/shoes/roguetown/boots/armor/vampire(user.loc)
+					new /obj/item/clothing/shoes/roguetown/boots/steel/vampire(user.loc)
 					new /obj/item/clothing/head/roguetown/helmet/heavy/vampire(user.loc)
 					new /obj/item/clothing/gloves/roguetown/chain/vampire(user.loc)
 				user.playsound_local(get_turf(src), 'sound/misc/vcraft.ogg', 100, FALSE, pressure_affected = FALSE)

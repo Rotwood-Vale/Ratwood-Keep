@@ -1003,7 +1003,7 @@
 							I += /obj/item/reagent_containers/powder/moondust
 							I += /obj/item/bomb
 						if(7)
-							I += /obj/item/clothing/shoes/roguetown/boots/armor
+							I += /obj/item/clothing/shoes/roguetown/boots/steel
 						if(8)
 							I += /obj/item/clothing/gloves/roguetown/plate
 						if(9)

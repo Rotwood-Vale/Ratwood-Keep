@@ -11695,7 +11695,7 @@
 "lbB" = (
 /obj/structure/closet/crate/roguecloset/lord,
 /obj/item/scomstone,
-/obj/item/clothing/shoes/roguetown/nobleboot,
+/obj/item/clothing/shoes/roguetown/boots/nobleboot,
 /obj/item/rogueweapon/greatsword,
 /turf/open/floor/rogue/tile,
 /area/rogue/indoors/town/manor)

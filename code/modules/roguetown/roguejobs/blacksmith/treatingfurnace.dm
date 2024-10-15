@@ -19,7 +19,7 @@
 			/obj/item/clothing/mask/rogue/facemask/steel,
 			/obj/item/clothing/neck/roguetown/bervor,
 			/obj/item/clothing/wrists/roguetown/bracers,
-			/obj/item/clothing/shoes/roguetown/boots/armor
+			/obj/item/clothing/shoes/roguetown/boots/steel
 			)
 	var/static/list/selectable_colors = list(
   		"Scrape Off Coating" = "#ffffff",

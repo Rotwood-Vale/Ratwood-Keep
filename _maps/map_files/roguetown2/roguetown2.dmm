@@ -11914,7 +11914,7 @@
 /area/rogue/outdoors/beach)
 "VE" = (
 /obj/structure/closet/crate/roguecloset/lord,
-/obj/item/clothing/shoes/roguetown/nobleboot,
+/obj/item/clothing/shoes/roguetown/boots/nobleboot,
 /obj/item/rogueweapon/greatsword,
 /obj/item/scomstone,
 /obj/item/clothing/suit/roguetown/armor/plate/blkknight,

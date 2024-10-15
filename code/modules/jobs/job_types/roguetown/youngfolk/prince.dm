@@ -30,7 +30,7 @@
 		pants = /obj/item/clothing/under/roguetown/tights
 		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/guard
 		armor = /obj/item/clothing/suit/roguetown/armor/chainmail
-		shoes = /obj/item/clothing/shoes/roguetown/nobleboot
+		shoes = /obj/item/clothing/shoes/roguetown/boots/nobleboot
 		belt = /obj/item/storage/belt/rogue/leather
 		beltl = /obj/item/keyring/royal
 		beltr = /obj/item/storage/belt/rogue/pouch/coins/rich
