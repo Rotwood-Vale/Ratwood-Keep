@@ -236,7 +236,7 @@
 
 /datum/crafting_recipe/roguetown/pot
 	name = "stone pot"
-	result = /obj/item/reagent_containers/glass/pot
+	result = /obj/item/reagent_containers/glass/bucket/pot
 	reqs = list(/obj/item/natural/stone = 2)
 
 /datum/crafting_recipe/roguetown/stonearrow
@@ -454,3 +454,11 @@
 	tools = list(/obj/item/rogueweapon/huntingknife = 1)
 	structurecraft = /obj/structure/fluff/dryingrack
 	craftdiff = 1
+
+/datum/crafting_recipe/roguetown/briarmask
+	name = "briarmask"
+	result = /obj/item/clothing/head/roguetown/dendormask
+	reqs = list(/obj/item/grown/log/tree/stick = 4,
+				/obj/item/natural/fibers = 3)
+	skillcraft = /datum/skill/magic/druidic
+	craftdiff = 2 // druids & dendor clerics can craft

@@ -102,11 +102,11 @@
 	penfactor = 10
 	reach = 2
 	icon_state = "inlash"
-	item_d_type = "slash"
+	item_d_type = "blunt"
 
 /datum/intent/whip/crack
 	name = "crack"
-	blade_class = BCLASS_CUT
+	blade_class = BCLASS_BLUNT
 	attack_verb = list("cracks") //something something dwarf fotresss
 	hitsound = list('sound/combat/hits/blunt/flailhit.ogg')
 	chargetime = 0
@@ -114,7 +114,7 @@
 	penfactor = 40
 	reach = 3
 	icon_state = "incrack"
-	item_d_type = "slash"
+	item_d_type = "blunt"
 
 /datum/intent/whip/punish
 	name = "punish"
@@ -123,6 +123,7 @@
 	hitsound = list('sound/combat/hits/blunt/flailhit.ogg')
 	chargetime = 0
 	recovery = 10
+	damfactor = 0.5
 	penfactor = 0
 	reach = 2
 	icon_state = "inpunish"
@@ -162,7 +163,7 @@
 	force = 29
 	name = "Repenta En"
 	desc = "An extremely well maintained whip, with a polished steel tip and gilded handle. It clearly needs to see more use."
-	minstr = 11
+	minstr = 8
 	icon_state = "gwhip"
 
 

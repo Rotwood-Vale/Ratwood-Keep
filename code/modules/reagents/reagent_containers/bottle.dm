@@ -60,6 +60,7 @@
 		playsound(user.loc,'sound/items/uncork.ogg', 100, TRUE)
 		desc = "An open bottle, hopefully a cork is close by."
 		spillable = TRUE
+		to_chat(usr, span_notice("You've uncorked the bottle."))
 	update_icon()
 
 /obj/item/reagent_containers/glass/bottle/Initialize()

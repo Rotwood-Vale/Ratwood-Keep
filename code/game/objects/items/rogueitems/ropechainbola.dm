@@ -160,7 +160,7 @@
 
 /obj/item/rope/chain
 	name = "chain"
-	desc = "A heavy steel chain."
+	desc = "A heavy iron chain."
 	icon = 'icons/roguetown/items/misc.dmi'
 	icon_state = "chain"
 	slot_flags = ITEM_SLOT_HIP|ITEM_SLOT_WRISTS
