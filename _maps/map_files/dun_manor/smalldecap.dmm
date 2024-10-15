@@ -564,7 +564,7 @@
 "vC" = (
 /mob/living/simple_animal/hostile/retaliate/rogue/dragon{
 	faction = list("wolfs");
-	health = 400
+	retreat_health = 0.1
 	},
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/outdoors/mountains/decap)
@@ -915,10 +915,9 @@
 /turf/open/floor/rogue/dirt,
 /area/rogue/under/cave)
 "Hb" = (
-/mob/living/simple_animal/hostile/megafauna/dragon{
-	health = 1500;
-	faction = list("wolfs");
-	name = "dragon broodmother"
+/mob/living/simple_animal/hostile/retaliate/rogue/dragon/broodmother{
+	retreat_health = 0.1;
+	faction = list("wolfs")
 	},
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/outdoors/mountains/decap)
