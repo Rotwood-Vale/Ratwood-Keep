@@ -29,28 +29,27 @@
 	armor = /obj/item/clothing/suit/roguetown/armor/brigandine/light
 	backr = /obj/item/storage/backpack/rogue/satchel
 	beltr = /obj/item/storage/belt/rogue/pouch/coins/poor
-	beltl = /obj/item/rogueweapon/stoneaxe/battle
-	l_hand = /obj/item/rogueweapon/shield/wood
+	beltl = /obj/item/rogueweapon/mace/warhammer/steel
+	l_hand = /obj/item/rogueweapon/shield/heater
 	backpack_contents = list(/obj/item/rogueweapon/huntingknife)
 
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/misc/swimming, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/climbing, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 2, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/combat/maces, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/bows, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/swords, 3, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/combat/axes, 4, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/maces, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/polearms, 2, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/combat/knives, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/riding, 2, TRUE)
-		H.change_stat("strength", 3) //with the axe they need to have a minimum of 12 strength to even use it
-		H.change_stat("endurance", 1)
+		H.mind.adjust_skillrank(/datum/skill/misc/riding, 1, TRUE)
+		H.change_stat("strength", 2)
+		H.change_stat("endurance", 2)
 		H.change_stat("constitution", 2)
 		H.change_stat("perception", 1)
 		H.change_stat("speed", 1)
