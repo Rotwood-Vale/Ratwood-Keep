@@ -236,7 +236,7 @@
 
 /datum/crafting_recipe/roguetown/pot
 	name = "stone pot"
-	result = /obj/item/reagent_containers/glass/bucket/pot
+	result = /obj/item/reagent_containers/glass/pot
 	reqs = list(/obj/item/natural/stone = 2)
 
 /datum/crafting_recipe/roguetown/stonearrow

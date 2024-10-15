@@ -31,7 +31,7 @@
 		if(bitecount == 5)
 			changefood(slice_path, eater)
 
-/*/obj/item/reagent_containers/food/snacks/proc/changefood(path, mob/living/eater)
+/obj/item/reagent_containers/food/snacks/proc/changefood(path, mob/living/eater)
 	if(!path || !eater)
 		return
 	var/turf/T = get_turf(eater)
@@ -39,7 +39,7 @@
 		qdel(src)
 	var/obj/item/I = new path(T)
 	eater.put_in_active_hand(I)
-*/
+
 /obj/item/reagent_containers/food/snacks/butterslice
 	icon = 'icons/roguetown/items/food.dmi'
 	icon_state = "butter_slice"
