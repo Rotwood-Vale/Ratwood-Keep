@@ -684,23 +684,30 @@
 	set category = "IC"
 	set hidden = 1
 	if(stat)
-		return
+		return FALSE
 	if(pulledby)
 		to_chat(src, span_warning("I'm grabbed!"))
-		return
+		return FALSE
 	if(resting)
 		if(isseelie(src))
 			var/obj/item/organ/wings/Wing = src.getorganslot(ORGAN_SLOT_WINGS)
 			if(Wing == null)
 				to_chat(src, span_warning("I can't stand without my wings!"))
-				return
+				return FALSE
 		if(!IsKnockdown() && !IsStun() && !IsParalyzed())
-			src.visible_message(span_notice("[src] stands up."))
 			if(move_after(src, 20, target = src))
 				set_resting(FALSE, FALSE)
+				if(resting)
+					src.visible_message(span_warning("[src] tries to stand up."))
+					return FALSE // workaround for broken legs and stuff
+				src.visible_message(span_notice("[src] stands up."))
 				return TRUE
+			else
+				src.visible_message(span_warning("[src] tries to stand up."))
+				return FALSE
 		else
 			src.visible_message(span_warning("[src] tries to stand up."))
+			return FALSE
 
 /mob/living/proc/toggle_rest()
 	set name = "Rest/Stand"
@@ -1144,6 +1151,10 @@
 		combat_modifier += 0.3
 	else if(!cmode && L.cmode)
 		combat_modifier -= 0.3
+
+	for(var/obj/item/grabbing/G in grabbedby)
+		if(G.chokehold == TRUE)
+			combat_modifier -= 0.15
 
 	resist_chance = clamp((((4 + (((STASTR - L.STASTR)/2) + wrestling_diff)) * 10 + rand(-5, 10)) * combat_modifier), 5, 95)
 

@@ -43,4 +43,3 @@ SUBSYSTEM_DEF(fire_burning)
 
 		if (MC_TICK_CHECK)
 			return
-

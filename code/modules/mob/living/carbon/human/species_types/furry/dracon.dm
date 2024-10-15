@@ -9,8 +9,8 @@
 	inherent_traits = list(TRAIT_NOMOBSWAP)
 	possible_ages = ALL_AGES_LIST
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
-	limbs_icon_m = 'icons/mob/species/male.dmi'
-	limbs_icon_f = 'icons/mob/species/female.dmi'
+	limbs_icon_m = 'icons/roguetown/mob/bodies/m/mt.dmi'
+	limbs_icon_f = 'icons/roguetown/mob/bodies/f/fm.dmi'
 	dam_icon = 'icons/roguetown/mob/bodies/dam/dam_male.dmi'
 	dam_icon_f = 'icons/roguetown/mob/bodies/dam/dam_female.dmi'
 	soundpack_m = /datum/voicepack/male
@@ -28,12 +28,12 @@
 		OFFSET_SHIRT_F = list(0,0), OFFSET_ARMOR_F = list(0,0), OFFSET_UNDIES_F = list(0,0), \
 		)
 	specstats = list(
-		"strength" = 0, 
-		"perception" = 0, 
-		"intelligence" = 1, 
-		"constitution" = 1, 
-		"endurance" = 0, 
-		"speed" = -1, 
+		"strength" = 0,
+		"perception" = 0,
+		"intelligence" = 1,
+		"constitution" = 1,
+		"endurance" = 0,
+		"speed" = -1,
 		"fortune" = 0
 		)
 	enflamed_icon = "widefire"
@@ -50,7 +50,7 @@
 		ORGAN_SLOT_LIVER = /obj/item/organ/liver,
 		ORGAN_SLOT_STOMACH = /obj/item/organ/stomach,
 		ORGAN_SLOT_APPENDIX = /obj/item/organ/appendix,
-		ORGAN_SLOT_TAIL = /obj/item/organ/tail/lizard,
+		//ORGAN_SLOT_TAIL = /obj/item/organ/tail/lizard, //Commenting out due to use of customizer organs.
 		ORGAN_SLOT_SNOUT = /obj/item/organ/snout/lizard,
 		ORGAN_SLOT_TAIL_FEATURE = /obj/item/organ/tail_feature/lizard_spines,
 		ORGAN_SLOT_FRILLS = /obj/item/organ/frills/lizard,
