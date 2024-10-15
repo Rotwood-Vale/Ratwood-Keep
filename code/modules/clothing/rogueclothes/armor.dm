@@ -31,7 +31,7 @@
 /obj/item/clothing/suit/roguetown/armor/chainmail
 	slot_flags = ITEM_SLOT_ARMOR|ITEM_SLOT_SHIRT
 	name = "haubergeon"
-	desc = "A steel maille shirt also known as the little coat of mail, composed of interwoven metal rings that that absorb arrow impacts decently enough while being also comfortable enough to sleep in covering the torso, arms and legs."
+	desc = "A steel maille shirt also known as the little coat of mail, composed of interwoven metal rings, that absorb arrow impacts decently enough while being also comfortable enough to sleep in covering the torso and arms."
 	body_parts_covered = CHEST|GROIN|ARMS|VITALS
 	icon_state = "haubergeon"
 	armor = list("blunt" = 60, "slash" = 100, "stab" = 80, "bullet" = 20, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
@@ -293,7 +293,7 @@
 /obj/item/clothing/suit/roguetown/armor/gambeson
 	slot_flags = ITEM_SLOT_ARMOR|ITEM_SLOT_SHIRT
 	name = "gambeson"
-	desc = "A large padded defense jacket designed to be cheap, resewable and worned as its own armor or go beneath armor that protects the torso, arms and legs."
+	desc = "A large padded defense jacket designed to be cheap, resewable and worn as its own armor or go beneath armor that protects the torso, arms and legs."
 	icon_state = "gambeson"
 	body_parts_covered = CHEST|GROIN|LEGS|ARMS|VITALS
 	armor = list("blunt" = 60, "slash" = 40, "stab" = 50, "bullet" = 25, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
