@@ -10,12 +10,14 @@
 	name = "coif"
 	icon_state = "coif"
 	item_state = "coif"
+	Desc = "A coif made either of leather or cloth that is comfortable enough to sleep in that protects the head, ears and neck, while providing no protection from arrows and bolts and sadly enough too soft to prevent chops from decapitating."
 	flags_inv = HIDEHAIR
 	slot_flags = ITEM_SLOT_NECK|ITEM_SLOT_HEAD
 	blocksound = SOFTHIT
 	body_parts_covered = NECK|HAIR|EARS|HEAD
 	armor = list("blunt" = 33, "slash" = 12, "stab" = 22, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
-	prevent_crits = list(BCLASS_CUT, BCLASS_BLUNT)
+	max_integrity = 125
+	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_BLUNT)
 	adjustable = CAN_CADJUST
 	toggle_icon_state = TRUE
 	sewrepair = TRUE
@@ -47,10 +49,10 @@
 	name = "chain coif"
 	icon_state = "chaincoif"
 	item_state = "chaincoif"
+	Desc = "A steel chain coif, composed of interlinked metal rings that barely absorb hits from arrows and bolts that protects the head, ears and neck, and is sadly too uncomfortable to sleep in."
 	flags_inv = HIDEHAIR
 	resistance_flags = FIRE_PROOF
 	armor = list("blunt" = 30, "slash" = 60, "stab" = 45, "bullet" = 10, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
-
 	max_integrity = 200
 	resistance_flags = FIRE_PROOF
 	slot_flags = ITEM_SLOT_NECK|ITEM_SLOT_HEAD
@@ -87,13 +89,14 @@
 
 /obj/item/clothing/neck/roguetown/chaincoif/iron
 	icon_state = "ichaincoif"
+	Desc = "An iron chain coif, composed of interlinked metal rings that barely absorb hits from arrows and bolts that protects the head, ears and neck, and is sadly too uncomfortable to sleep in."
 	anvilrepair = /datum/skill/craft/armorsmithing
 	smeltresult = /obj/item/ingot/iron
 	max_integrity = 150
 
 /obj/item/clothing/neck/roguetown/bervor
-	name = "bervor"
-	desc = "A steel bervor designed to protect the neck."
+	name = "bevor"
+	desc = "A steel bevor that protects the lower part of the head, that being the neck, mouth and nose."
 	icon_state = "bervor"
 	armor = list("blunt" = 90, "slash" = 100, "stab" = 80, "bullet" = 100, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
 	anvilrepair = /datum/skill/craft/armorsmithing
@@ -101,7 +104,7 @@
 	max_integrity = 300
 	resistance_flags = FIRE_PROOF
 	slot_flags = ITEM_SLOT_NECK
-	body_parts_covered = NECK|EARS|MOUTH|NOSE
+	body_parts_covered = NECK|MOUTH|NOSE
 	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT, BCLASS_TWIST)
 	blocksound = PLATEHIT
 
