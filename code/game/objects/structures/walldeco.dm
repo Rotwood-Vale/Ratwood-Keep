@@ -46,26 +46,12 @@
 
 /obj/structure/fluff/walldeco/wantedposter/examine(mob/user)
 	. = ..()
-
-	if(!user.Adjacent(src))
-		. += span_bold("You need to be closer to read the notice.")
-		return
-
-	if(!ishuman(user))
-		return
-
-	var/mob/living/carbon/human/H = user
-	
-	if(!SSrole_class_handler.bandits_in_round)
-		. += span_bold("There doesn't seem to be any reports of bandit activity.")
-		return
-	
-	if(!isbandit(user))
-		to_chat(H, span_bold("I now know the faces of the local bandits."))
-		H.playsound_local(H, 'sound/misc/notice (2).ogg', 100, FALSE)
-	else
-		var/list/funny = list("Yup. My face is on there.", "Wait a minute... That's me!", "Look at that handsome devil...", "At least I am wanted by someone...", "My chin can't be that big... right?")
-		to_chat(H, span_bold("[pick(funny)]")) 
+	if(user.Adjacent(src))
+		if(SSrole_class_handler.bandits_in_round)
+			. += span_bold("I see that bandits are active in the region.")
+			user.playsound_local(user, 'sound/misc/notice (2).ogg', 100, FALSE)
+		else
+			. += span_bold("There doesn't seem to be any reports of bandit activity.")
 
 /obj/structure/fluff/walldeco/innsign
 	name = "sign"
