@@ -110,12 +110,6 @@
 	created_item = /obj/item/rogueweapon/thresher
 	i_type = "Tools"
 
-/datum/anvil_recipe/tools/pot
-	name = "Metal Pot"
-	req_bar = /obj/item/ingot/iron
-	created_item = /obj/item/reagent_containers/glass/pot
-	i_type = "Tools"
-
 /datum/anvil_recipe/tools/iron_arm_left
 	name = "Iron arm (L)"
 	req_bar = /obj/item/ingot/iron
@@ -142,6 +136,12 @@
 	req_bar = /obj/item/ingot/iron
 	created_item = /obj/item/bodypart/r_leg/rprosthetic/iron
 	additional_items = list(/obj/item/roguegear)
+	i_type = "General"
+
+/datum/anvil_recipe/tools/chain
+	name = "Chain"
+	req_bar = /obj/item/ingot/iron
+	created_item = /obj/item/rope/chain
 	i_type = "General"
 
 // --------- Steel -----------
