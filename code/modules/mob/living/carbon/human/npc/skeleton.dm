@@ -87,9 +87,9 @@
 	if(prob(70))
 		neck = /obj/item/clothing/neck/roguetown/chaincoif/iron
 	if(H.gender == FEMALE)
-		H.STASTR = rand(9,12)
+		H.STASTR = rand(8,10)
 	else
-		H.STASTR = rand(14,16)
+		H.STASTR = rand(10,12)
 	H.STASPD = 8
 	H.STACON = 4
 	H.STAEND = 15
