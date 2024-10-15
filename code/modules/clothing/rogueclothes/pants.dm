@@ -121,7 +121,7 @@
 
 /obj/item/clothing/under/roguetown/chainlegs
 	name = "chain chausses"
-	desc = "Steel chain leggings, composed of interlinked metal rings that stop arrows decently enough."
+	desc = "Steel chain leggings, composed of interlinked metal rings, that absorb arrow impacts decently enough."
 	gender = PLURAL
 	icon_state = "chain_legs"
 	item_state = "chain_legs"
@@ -162,7 +162,7 @@
 	resistance_flags = FIRE_PROOF
 
 /obj/item/clothing/under/roguetown/chainlegs/iron
-	desc = "Iron chain leggings, composed of interlinked metal rings that stop arrows decently enough."
+	desc = "Iron chain leggings, composed of interlinked metal rings, that absorb arrow impacts decently enough."
 	icon_state = "ichain_legs"
 	max_integrity = 175
 	anvilrepair = /datum/skill/craft/armorsmithing
