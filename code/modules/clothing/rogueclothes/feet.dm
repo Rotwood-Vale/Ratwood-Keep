@@ -27,6 +27,25 @@
 	icon_state = "ridingboots"
 	item_state = "ridingboots"
 
+
+/obj/item/clothing/shoes/roguetown/gladiator
+	name = "leather sandals"
+	desc = ""
+	icon_state = "gladiator"
+	item_state = "gladiator"
+
+/obj/item/clothing/shoes/roguetown/sandals
+	name = "sandals"
+	desc = ""
+	icon_state = "sandals"
+	item_state = "sandals"
+
+/obj/item/clothing/shoes/roguetown/jester
+	name = "funny shoes"
+	desc = "Perfect for performing a jig or running for your life after a bad joke."
+	icon_state = "jestershoes"
+	resistance_flags = null
+
 /obj/item/clothing/shoes/roguetown/simpleshoes
 	name = "shoes"
 	desc = "Better than going barefoot."
@@ -50,24 +69,6 @@
 	item_state = "simpleshoe"
 	resistance_flags = null
 	color = "#cbcac9"
-
-/obj/item/clothing/shoes/roguetown/gladiator
-	name = "leather sandals"
-	desc = ""
-	icon_state = "gladiator"
-	item_state = "gladiator"
-
-/obj/item/clothing/shoes/roguetown/sandals
-	name = "sandals"
-	desc = ""
-	icon_state = "sandals"
-	item_state = "sandals"
-
-/obj/item/clothing/shoes/roguetown/jester
-	name = "funny shoes"
-	desc = "Perfect for performing a jig or running for your life after a bad joke."
-	icon_state = "jestershoes"
-	resistance_flags = null
 
 
 // **ARMOURED** //
