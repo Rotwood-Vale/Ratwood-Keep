@@ -6,8 +6,8 @@
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
 	outfit = /datum/outfit/job/roguetown/adventurer/fishermaster
-
-	pickprob = 15
+	maximum_possible_slots = 1
+	pickprob = 5
 	category_tags = list(CTAG_PILGRIM)
 
 /datum/outfit/job/roguetown/adventurer/fishermaster/pre_equip(mob/living/carbon/human/H)
