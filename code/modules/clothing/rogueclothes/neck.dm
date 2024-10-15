@@ -10,7 +10,7 @@
 	name = "coif"
 	icon_state = "coif"
 	item_state = "coif"
-	Desc = "A coif made either of leather or cloth that is comfortable enough to sleep in that protects the head, ears and neck, while providing no protection from arrows and bolts and sadly enough, too soft to prevent chops from decapitating."
+	desc = "A coif made either of leather or cloth that is comfortable enough to sleep in that protects the head, ears and neck, while providing no protection from arrows and bolts and sadly enough, too soft to prevent chops from decapitating."
 	flags_inv = HIDEHAIR
 	slot_flags = ITEM_SLOT_NECK|ITEM_SLOT_HEAD
 	blocksound = SOFTHIT
@@ -49,7 +49,7 @@
 	name = "chain coif"
 	icon_state = "chaincoif"
 	item_state = "chaincoif"
-	Desc = "A steel chain coif, composed of interlinked metal rings that barely absorb impacts from arrows and bolts that protects the head, ears and neck, and is sadly too uncomfortable to sleep in."
+	desc = "A steel chain coif, composed of interlinked metal rings that barely absorb impacts from arrows and bolts that protects the head, ears and neck, and is sadly too uncomfortable to sleep in."
 	flags_inv = HIDEHAIR
 	resistance_flags = FIRE_PROOF
 	armor = list("blunt" = 30, "slash" = 60, "stab" = 45, "bullet" = 10, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
@@ -89,7 +89,7 @@
 
 /obj/item/clothing/neck/roguetown/chaincoif/iron
 	icon_state = "ichaincoif"
-	Desc = "An iron chain coif, composed of interlinked metal rings, that barely absorb impacts from arrows that protects the head, ears and neck, and is sadly too uncomfortable to sleep in."
+	desc = "An iron chain coif, composed of interlinked metal rings, that barely absorb impacts from arrows that protects the head, ears and neck, and is sadly too uncomfortable to sleep in."
 	anvilrepair = /datum/skill/craft/armorsmithing
 	smeltresult = /obj/item/ingot/iron
 	max_integrity = 150
