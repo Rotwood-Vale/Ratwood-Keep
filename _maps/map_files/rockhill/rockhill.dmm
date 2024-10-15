@@ -203,7 +203,7 @@
 /obj/structure/stairs{
 	dir = 1
 	},
-/turf/open/floor/plating/ashplanet/rocky,
+/turf/open/floor/rogue/cobble,
 /area/rogue/outdoors/beach)
 "afA" = (
 /obj/machinery/light/rogue/firebowl,
@@ -11353,10 +11353,6 @@
 "kHC" = (
 /turf/closed/wall/mineral/rogue/wooddark/end,
 /area/rogue/indoors)
-"kHO" = (
-/obj/machinery/light/rogue/wallfire/candle,
-/turf/open/floor/rogue/blocks,
-/area/rogue/outdoors/town)
 "kHR" = (
 /turf/open/water/bath,
 /area/rogue/indoors/town/bath)
@@ -286029,7 +286025,7 @@ uNX
 bOU
 nYz
 qkH
-wER
+wVI
 wbg
 wbg
 wbg
@@ -287637,7 +287633,7 @@ bmn
 usF
 usF
 qkH
-wVI
+jTj
 wbg
 wbg
 wbg
@@ -290049,7 +290045,7 @@ qBX
 dSo
 bne
 thT
-kHO
+jTj
 wbg
 wbg
 wbg
@@ -294475,7 +294471,7 @@ wVI
 wbg
 wbg
 wbg
-wVI
+riG
 evo
 evo
 evo
@@ -305932,7 +305928,7 @@ sYx
 odi
 sYx
 sYx
-odi
+uRH
 sYx
 sYx
 sYx
@@ -306330,7 +306326,7 @@ uuE
 uuE
 uuE
 uRH
-kWT
+sYx
 sYx
 sYx
 sYx
@@ -306732,7 +306728,7 @@ uuE
 uuE
 hmJ
 hmJ
-kWT
+sYx
 kWT
 sYx
 odi
@@ -308740,7 +308736,7 @@ sYx
 sYx
 odi
 sYx
-odi
+uRH
 odi
 sYx
 sYx
