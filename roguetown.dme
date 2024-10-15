@@ -3578,6 +3578,7 @@
 #include "modular_azurepeak\code\modules\mob\living\simple_animal\rogue\creacher\dragon.dm"
 #include "modular_azurepeak\code\modules\mob\living\simple_animal\rogue\creacher\gethsmane.dm"
 #include "modular_azurepeak\code\modules\mob\living\simple_animal\rogue\creacher\newminotaur.dm"
+#include "modular_azurepeak\code\modules\spells\orison.dm"
 #include "modular_azurepeak\statpacks\agile.dm"
 #include "modular_azurepeak\statpacks\mental.dm"
 #include "modular_azurepeak\statpacks\physical.dm"
