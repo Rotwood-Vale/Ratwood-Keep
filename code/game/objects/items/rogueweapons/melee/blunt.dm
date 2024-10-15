@@ -50,7 +50,7 @@
 	smelt_bar_num = 2
 
 /obj/item/rogueweapon/mace/silver
-	name = "Silver War Hammer"
+	name = "silver war hammer"
 	desc = "A light war hammer forged of silver."
 	icon_state = "silverhammer"
 	force = 24

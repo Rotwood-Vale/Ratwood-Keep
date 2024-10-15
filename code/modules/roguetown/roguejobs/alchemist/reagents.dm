@@ -100,7 +100,7 @@
 	color = "#0000ff"
 	taste_description = "manna"
 	overdose_threshold = 45
-	metabolization_rate = 1 * REAGENTS_METABOLISM
+	metabolization_rate = 0.5 * REAGENTS_METABOLISM
 	alpha = 173
 
 /datum/reagent/medicine/manapot/on_mob_life(mob/living/carbon/M)

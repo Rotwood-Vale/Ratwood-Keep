@@ -267,7 +267,7 @@
 	return ..()
 
 /obj/item/rogueweapon/stoneaxe/silver
-	name = "Silver War Axe"
+	name = "silver war axe"
 	desc = "A one-handed war axe forged of silver."
 	icon_state = "silveraxe"
 	force = 24

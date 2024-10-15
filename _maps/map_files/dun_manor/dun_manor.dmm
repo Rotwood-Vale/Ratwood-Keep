@@ -909,7 +909,7 @@
 "gdr" = (/obj/machinery/light/rogue/wallfire{pixel_y = 32},/obj/structure/chair/wood/rogue{dir = 8; icon_state = "chair2"},/turf/open/floor/rogue/ruinedwood/chevron,/area/rogue/indoors/town/tavern)
 "gdw" = (/turf/closed/wall/mineral/rogue/craftstone,/area/rogue/under/town/basement)
 "gdK" = (/turf/open/floor/rogue/hexstone,/area/rogue/indoors/town/physician)
-"gef" = (/mob/living/simple_animal/pet/cat/inn{name = "bingus"},/turf/open/floor/carpet/red,/area/rogue/indoors/town/tavern)
+"gef" = (/mob/living/simple_animal/pet/cat/inn{name = "Bintu"},/turf/open/floor/carpet/red,/area/rogue/indoors/town/tavern)
 "geE" = (/obj/structure/roguemachine/withdraw,/turf/open/floor/rogue/hexstone,/area/rogue/indoors/town/manor)
 "geM" = (/obj/structure/roguewindow/openclose/reinforced,/turf/open/floor/rogue/herringbone,/area/rogue/indoors)
 "geX" = (/obj/structure/table/wood{dir = 1; icon_state = "longtable_mid"},/obj/item/clothing/mask/rogue/facemask,/obj/item/clothing/mask/rogue/lordmask,/turf/open/floor/rogue/blocks/stonered/tiny,/area/rogue/indoors/town/shop)
@@ -2282,6 +2282,7 @@
 "pjY" = (/obj/structure/mineral_door/wood/donjon/stone{locked = 1; lockid = "church"},/turf/open/floor/rogue/church,/area/rogue/indoors/town/church/chapel)
 "pkc" = (/obj/structure/rack/rogue,/obj/item/rogueweapon/mace/cudgel,/obj/item/rogueweapon/mace/cudgel,/turf/open/floor/rogue/cobble,/area/rogue/under/town/basement)
 "pkG" = (/turf/closed/wall/mineral/rogue/stonebrick,/area/rogue/indoors/town)
+"pkN" = (/obj/effect/landmark/mapGenerator/sunlights{endTurfX = 155; endTurfY = 155},/turf/open/transparent/openspace,/area/rogue/outdoors/mountains)
 "pkP" = (/obj/machinery/light/rogue/wallfire/candle,/obj/structure/closet/crate/chest{lockid = "merchant"; locked = 1},/obj/item/roguekey/shop,/obj/item/roguekey/shop,/turf/open/floor/carpet/purple,/area/rogue/indoors/town/shop)
 "pkV" = (/obj/machinery/light/rogue/lanternpost{dir = 1},/turf/open/floor/rogue/cobble,/area/rogue/indoors/town)
 "pkW" = (/obj/structure/chair/stool/rogue,/turf/open/floor/rogue/ruinedwood{icon_state = "weird1"},/area/rogue/indoors/town/physician)
@@ -2738,7 +2739,7 @@
 "shZ" = (/obj/effect/decal/cobbleedge{dir = 9},/obj/machinery/light/rogue/wallfire/candle/r,/turf/open/floor/rogue/ruinedwood{icon_state = "weird1"},/area/rogue/indoors/town)
 "sid" = (/obj/structure/table/wood{dir = 6; icon_state = "largetable"},/turf/open/floor/rogue/blocks,/area/rogue/under/town/basement)
 "sif" = (/obj/structure/gate{name = "The Throne"; redstone_id = "thronegate"},/turf/open/floor/rogue/carpet/lord/left,/area/rogue/indoors/town/manor)
-"sij" = (/obj/effect/landmark/mapGenerator/rogue/cave{endTurfX = 155; endTurfY = 155},/turf/open/transparent/openspace,/area/rogue/under/cave)
+"sij" = (/obj/effect/landmark/mapGenerator/rogue/cave{endTurfX = 155; endTurfY = 155},/turf/closed/mineral/rogue/bedrock,/area/rogue/under/cave)
 "siA" = (/obj/structure/roguemachine/scomm/l,/turf/open/floor/carpet/royalblack,/area/rogue/indoors/town/manor)
 "siS" = (/obj/structure/plough,/turf/open/floor/rogue/dirt,/area/rogue/outdoors/town)
 "sjl" = (/obj/structure/roguemachine/withdraw,/turf/open/floor/rogue/blocks/stonered,/area/rogue/indoors/town/dwarfin)
@@ -3159,7 +3160,6 @@
 "voI" = (/obj/structure/flora/roguegrass,/obj/structure/flora/roguegrass/bush,/turf/open/floor/rogue/grass,/area/rogue/outdoors/town/roofs)
 "vpm" = (/obj/structure/fluff/railing/border{dir = 4; icon_state = "border"},/obj/effect/landmark/start/monk{dir = 4},/turf/open/floor/rogue/ruinedwood{icon_state = "weird1"},/area/rogue/indoors/town/church/chapel)
 "vps" = (/obj/structure/mineral_door/wood/donjon{dir = 4; locked = 1; lockid = "farm"; max_integrity = 1000; lock_strength = 100; name = "Farm"},/turf/open/floor/rogue/dirt/road,/area/rogue/outdoors/town)
-"vpx" = (/obj/effect/landmark/mapGenerator/sunlights{endTurfX = 128; endTurfY = 128},/turf/open/transparent/openspace,/area/rogue/outdoors/mountains)
 "vpI" = (/obj/machinery/light/rogue/wallfire/candle/l,/turf/open/floor/rogue/ruinedwood{icon_state = "weird1"},/area/rogue/indoors/town/church/chapel)
 "vpP" = (/turf/open/floor/rogue/herringbone,/area/rogue/indoors/town)
 "vqp" = (/obj/structure/bars/grille{density = 1},/turf/open/floor/rogue/cobble,/area/rogue/indoors/town/garrison)
@@ -4253,5 +4253,5 @@ famfamfamfamfamfamfamfamfamfamfamfamfamfamfamfamfamfamfamfamsrJsrJsrJsrJrOVrOVrO
 famfamfamfamfamfamfamfamfamfamfamfamfamfamfamfamfamfamfamfamfamsrJsrJsrJrOVrOVrOVrOVrOVrOVrOVrOVrOVrcvrcvrcvrcvrcvrcvrcvrcvrcvrcvrcvrcvrcvrcvrcvtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZ
 famfamfamfamfamfamfamfamfamfamfamfamfamfamfamfamfamfamfamfamfamfamfamfamfamfamfamfamfamrOVrOVrOVrOVrcvrcvrcvrcvrcvrcvrcvrcvrcvrcvrcvrcvrcvrcvrcvrcvrcvtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZ
 famfamfamfamfamfamfamfamfamfamfamfamfamfamfamfamfamfamfamfamfamfamfamfamfamfamfamfamfamfamfamfamfamfamfamfamfamfamfamfamfamfamfamfamfamfamfamfamfamtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZ
-cdYvpxfamfamfamfamfamfamfamfamfamfamfamfamfamfamfamfamfamfamfamfamfamfamfamfamfamfamfamfamfamfamfamfamfamfamfamfamfamfamfamfamfamfamfamfamfamfamtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZ
+cdYpkNfamfamfamfamfamfamfamfamfamfamfamfamfamfamfamfamfamfamfamfamfamfamfamfamfamfamfamfamfamfamfamfamfamfamfamfamfamfamfamfamfamfamfamfamfamfamtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZtXZ
 "}

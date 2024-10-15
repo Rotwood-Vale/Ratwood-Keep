@@ -5,7 +5,6 @@
 "av" = (/obj/structure/fluff/statue/small,/mob/living/simple_animal/hostile/retaliate/rogue/orc/orc_marauder,/turf/open/floor/rogue/blocks,/area/rogue/indoors/cave)
 "aw" = (/obj/structure/table/wood{dir = 1; icon_state = "tablewood1"},/turf/open/floor/rogue/wood,/area/rogue/indoors/shelter)
 "ax" = (/obj/item/natural/rock/salt,/mob/living/simple_animal/hostile/retaliate/rogue/spider/mutated,/turf/open/floor/rogue/dirt/road,/area/rogue/indoors/cave)
-"ay" = (/obj/effect/landmark/mapGenerator/sunlights,/turf/closed/mineral/rogue/bedrock,/area/rogue/outdoors/beach/forest)
 "aC" = (/obj/structure/fluff/railing/border{dir = 6; icon_state = "border"},/obj/machinery/light/rogue/wallfire/candle/blue/l,/turf/open/floor/rogue/ruinedwood/chevron,/area/rogue/indoors/shelter)
 "aE" = (/obj/structure/closet/crate/roguecloset,/obj/item/clothing/ring/active/nomag,/turf/open/floor/carpet/purple,/area/rogue/indoors/shelter)
 "aI" = (/obj/structure/fluff/railing/border{dir = 4; icon_state = "border"},/turf/open/floor/rogue/ruinedwood/chevron,/area/rogue/indoors/shelter)
@@ -609,6 +608,7 @@
 "RS" = (/obj/item/restraints/legcuffs/beartrap/armed,/turf/open/water/ocean,/area/rogue/outdoors/beach)
 "RT" = (/turf/closed/wall/mineral/rogue/tent,/area/rogue/outdoors/beach/forest)
 "Se" = (/obj/structure/fluff/railing/wood,/turf/open/floor/rogue/dirt,/area/rogue/outdoors/beach/forest)
+"Sg" = (/obj/effect/landmark/mapGenerator/sunlights{endTurfX = 128; endTurfY = 128},/turf/closed/mineral/rogue/bedrock,/area/rogue/outdoors/beach/forest)
 "Sh" = (/obj/structure/fluff/railing/border{dir = 10; icon_state = "border"},/turf/open/floor/rogue/cobble,/area/rogue/indoors/shelter)
 "Sk" = (/obj/effect/decal/cleanable/blood/tracks{dir = 5},/turf/open/floor/rogue/woodturned,/area/rogue/indoors/cave)
 "Sn" = (/obj/structure/table/wood{dir = 1; icon_state = "longtable_mid"},/turf/open/floor/rogue/ruinedwood,/area/rogue/indoors/shelter)
@@ -1223,5 +1223,5 @@ pZpZpZpZpZpZpZpZpzpzpzpzpzpzpzpzpzpzpzpzpzpzpzpzpzpzpzpzpzpzpzpzpzBABABABABABABA
 pZpZpZpZpZpZpZpZpZpZpzpzpzpzpzpzpzpzpzpzvFpzpzpzpzpzpzpzpzpzpzpzpzpzpzpzpzpzpzpzpzpzpzpzpzpzpzpzpzpzpzpzpzpzpzpzpzpzpzpzpzpzpzpzpzpzpzvFpzpzpzpzrbrbrbrbrbrbrbrbrbrbrbrbrbrbpapapzQBXKXKXKXKpzpzpzpzpzrbrbrbrbrbrbrbBABABABABABABABABABABABABABABABABABABABABABA
 pZpZpZpZpZpZpZpZpZpZpZpZpzpzpzpzpzpzpzpzpzpzpzpzpzpzpzpzpzvFpzpzpzpzpzpzpzpzpzpzpzpzpzpzvFpzpzpzpzpzpzpzpzpzpzpzpzpzpzpzpzpzpzpzvFpzpzpzpzpzpzrbrbrbrbrbrbrbrbrbrbrbrbrbrbrbpapapzpzXKXKXKXKpzpzpzpzrbrbrbrbrbrbrbrbBABABABABABABABABABABABABABABABABABABABABABA
 pZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpzpzpzpzpzpzpzpzpzpzpzpzpzpzpzpzpzpzpzpzpzpzpzpzpzpzpzpzpzpzpzpzpzpzpzpzpzpzpzpzpzrbrbrbrbrbrbrbrbrbrbrbrbrbrbrbrbrbpzpzQRQRQRQRpzpzpzrbrbrbrbrbrbrbrbrbBABABABABABABABABABABABABABABABABABABABABABA
-ADaypZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZBABABABABABABABABABABABABABABABABABABABABABA
+ADSgpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZpZBABABABABABABABABABABABABABABABABABABABABABA
 "}

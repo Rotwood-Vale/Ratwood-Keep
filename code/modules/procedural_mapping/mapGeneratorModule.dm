@@ -26,7 +26,7 @@
 		return
 	excluded_turfs = typecacheof(excluded_turfs)
 	allowed_turfs = typecacheof(allowed_turfs)
-	allowed_areas = typecacheof(allowed_areas, only_root_path = include_subtypes)
+	allowed_areas = typecacheof(allowed_areas, only_root_path = !include_subtypes)
 	var/list/map = mother.map
 	for(var/turf/T in map)
 		place(T)
@@ -43,7 +43,7 @@
 	if(excluded_turfs[T.type])
 		return
 
-	if(!allowed_turfs[T.type])
+	if(allowed_turfs.len && !allowed_turfs[T.type])
 		return
 
 	if(allowed_areas.len)

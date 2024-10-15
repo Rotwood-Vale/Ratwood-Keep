@@ -757,7 +757,6 @@
 "Kp" = (/obj/effect/decal/cobbleedge,/turf/open/floor/rogue/naturalstone,/area/rogue/under/town/basement)
 "Kq" = (/obj/structure/mineral_door/wood/window,/turf/open/floor/rogue/ruinedwood/turned,/area/rogue/indoors)
 "Ks" = (/obj/effect/decal/cobbleedge{dir = 6},/obj/effect/decal/cobbleedge{dir = 10; icon_state = "cobbleedge-n"},/turf/open/floor/rogue/naturalstone,/area/rogue/under/town/basement)
-"Kt" = (/obj/effect/landmark/mapGenerator/rogue/mountain{endTurfX = 155; endTurfY = 155},/obj/effect/landmark/mapGenerator/sunlights{endTurfX = 155; endTurfY = 155},/turf/closed/mineral/rogue/bedrock,/area/rogue/under/cave)
 "Ku" = (/obj/machinery/conveyor/auto{dir = 1; color = "#755f48"},/obj/item/restraints/legcuffs/beartrap/armed/camouflage,/turf/open/floor/rogue/greenstone,/area/rogue/under/town/sewer)
 "Kv" = (/turf/closed/wall/mineral/rogue/stone/moss,/area/rogue/indoors/shelter/woods)
 "Ky" = (/obj/structure/bed/rogue/inn/hay,/turf/open/floor/rogue/ruinedwood{icon_state = "wooden_floort"},/area/rogue/outdoors/beach/forest)
@@ -833,6 +832,7 @@
 "NK" = (/obj/structure/glowshroom,/turf/open/floor/rogue/dirt,/area/rogue/under/town/sewer)
 "NL" = (/obj/structure/bars/steel,/turf/open/water/swamp/deep,/area/rogue/under/cavewet/bogcaves)
 "NN" = (/obj/structure/mineral_door/wood,/turf/open/floor/rogue/twig,/area/rogue/indoors/shelter/woods)
+"NP" = (/obj/effect/landmark/mapGenerator/sunlights{endTurfX = 155; endTurfY = 155},/turf/closed/mineral/rogue/bedrock,/area/rogue/under/cavewet/bogcaves)
 "NR" = (/obj/effect/decal/cobbleedge,/obj/structure/fluff/railing/border{dir = 5; icon_state = "border"},/obj/structure/chair/stool/rogue,/turf/open/floor/rogue/cobble/mossy,/area/rogue/indoors/shelter/woods)
 "NU" = (/turf/closed/wall/mineral/rogue/stone,/area/rogue/indoors/shelter/woods)
 "NX" = (/obj/structure/bars/pipe,/turf/open/water/sewer,/area/rogue/under/town/sewer)
@@ -921,7 +921,7 @@
 "Sq" = (/obj/machinery/light/rogue/torchholder/r,/turf/open/floor/rogue/ruinedwood/spiral,/area/rogue/outdoors/woods)
 "Sr" = (/obj/effect/spawner/lootdrop/roguetown/dungeon/money,/turf/open/floor/rogue/greenstone,/area/rogue/under/town/sewer)
 "Ss" = (/obj/structure/closet/crate/chest,/obj/item/reagent_containers/food/snacks/rogue/meat/steak,/obj/item/reagent_containers/food/snacks/rogue/meat/steak,/turf/open/floor/rogue/dirt,/area/rogue/under/town/basement)
-"Sy" = (/obj/effect/landmark/mapGenerator/rogue/cave{endTurfX = 155; endTurfY = 155},/turf/closed/mineral/rogue/bedrock,/area/rogue/under/cavewet/bogcaves)
+"Sy" = (/obj/effect/landmark/mapGenerator/sunlights{endTurfX = 155; endTurfY = 155},/turf/closed/mineral/rogue/bedrock,/area/rogue/under/cave)
 "Sz" = (/turf/open/floor/rogue/cobble/mossy,/area/rogue/indoors/shelter/woods)
 "SA" = (/obj/item/natural/stone,/turf/open/floor/rogue/dirt/road,/area/rogue/outdoors/woods)
 "SF" = (/obj/structure/spacevine,/turf/closed/wall/mineral/rogue/pipe,/area/rogue/under/town/sewer)
@@ -1229,7 +1229,7 @@ VOVOmhmhmhmhmhmhmhmhmhcpcpIuDzjKatDzcOzbHDzbcOatTxzfvmjKjKjKjKjKjKjKjKjKjKjKjKjK
 VOVOmhmhmhmhmhmhmhmhmhcpcpcpVOjKatMpoBkQkQkQNqatjKjKjKjKjKjKjKjKjKjKjKjKjKjKjKjKjKDzDzDzIuIuIuIuIuIuIuIuIuiYzCzCopiizCzCzCzCzCzCzCzCzCVOVOVOmhmhmhmhmhmhmhmhmhmhmhmhmhmhmhmhmhmhmhmhmhmhmhmhmhmhmhmhmhmhmhmhmhmhmhmhmhmhmhmhmhmhmhmhmhmhmhmhmhmhmhmhmhmhmhmhmhmhmhmhmhmhmhmhmhmhmhmhcpcpcpcpcpcpIuIuIuIuRxRxTpTpTpTpTp
 VOVOmhmhmhmhmhmhmhmhmhcpcpcpVOjKDpBAkQkQkQkQQiatjKjKjKjKjKjKjKjKjKjKjKjKjKjKjKjKjKjKDzIuIuIuIuIuIuIuIuIuIuzCzCzCFsFszCzCzCzCzCzCzCzCVOVOVOVOmhmhmhmhmhmhmhmhmhmhmhmhmhmhmhmhmhmhmhmhmhmhmhmhmhmhmhmhmhmhmhmhmhmhmhmhmhmhmhmhmhmhmhmhmhmhmhmhmhmhmhmhmhmhmhmhmhmhmhmhmhmhmhmhmhmhmhmhcpcpcpcpcpcpIuIuIuIuRxRxTpTpTpTpTp
 VOVOVOVOVOVOVOVOVOVOVOVOVOVOVOjKDpZRkQQiNqkQxGDpjKjKjKjKjKjKjKjKjKjKjKjKjKjKjKjKjKjKjKVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVORxRxRxTpTpTpTp
-VOSyVOVOVOVOVOVOVOVOVOVOVOVOVOjKatDpDpDpDpatatDpjKjKjKjKjKjKjKjKjKjKjKjKjKjKjKjKjKjKVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVORxRxTpTpTpTp
+NPVOVOVOVOVOVOVOVOVOVOVOVOVOVOjKatDpDpDpDpatatDpjKjKjKjKjKjKjKjKjKjKjKjKjKjKjKjKjKjKVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVORxRxTpTpTpTp
 "}
 (1,1,2) = {"
 gUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgU
@@ -1700,5 +1700,5 @@ gUgUGHGHGHGHGHGHGHGHGHGHGHGHGHzuJxJxJxJxHOJxzuGHGHzuzuJxJxJxzuzuzuzuJxJxdPzudPzu
 gUgUGHGHGHGHGHGHGHGHGHGHGHGHGHHOFkAXjgAXFkHOHOGHGHGHGHGHzuJxJxJxJxJxJxJxJxJxdPJxJxJxJxJxJxJxJxzuJxJxdPzuJxJxMcaihBhBOrvdJxJxJxGHGHGHGHGHGHHOHOHOHOJwJwHOHOGHGHGHHOUgUgdPzuzudPHOUgUgdPHOJwrjHOHOHOGHGHlglglglglglglglglglglglglglglgRuRulglglgRuRuRuRulglglgRulglglglglglglglglglgGHGHlglglglgGHGHrjrjrjrjrjrjrjrjrjrj
 gUgUGHGHGHGHGHGHGHGHGHGHGHGHgUgUgUFMFMFMgUgUgUGHGHGHGHGHGHGHGHGHGHGHGHGHGHUgzuJxJxJxJxHOJwJwHOHOzuzuJwJwJwucvUTLTLTLTLtuHOGHGHGHGHGHGHGHGHGHHOJwHOHOHOHOGHGHGHGHGHGHGHGHGHGHGHGHHOHOHOHOHOHOHOHOGHGHGHGHGHGHGHGHGHGHlglglglgGHGHGHGHlglglglglglglglglglglgRuRulglglglgGHGHGHGHGHGHGHGHGHlglglgGHGHGHGHrjrjrjrjrjrjrjrj
 gUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUHOHOHOUggUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUrjrjrjrjrjrjrj
-gUKtgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUrjrjrjrjrjrj
+SyrfgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUrjrjrjrjrjrj
 "}

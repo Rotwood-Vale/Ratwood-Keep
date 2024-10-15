@@ -69,6 +69,7 @@
 		H.change_stat("constitution", 1)
 		H.change_stat("speed", 1)
 	ADD_TRAIT(H, TRAIT_SQUIRE_REPAIR, TRAIT_GENERIC)
+	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 
 /datum/advclass/squire/footman
 	name = "Footman Squire"
@@ -103,6 +104,7 @@
 		H.change_stat("constitution", 1)
 		H.change_stat("speed", 1)
 	ADD_TRAIT(H, TRAIT_SQUIRE_REPAIR, TRAIT_GENERIC)
+	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 
 	H.adjust_blindness(-3)
 	var/weapons = list("Iron Sword","Cudgel",)
@@ -151,3 +153,4 @@
 		H.change_stat("constitution", 1)
 		H.change_stat("speed", 2)
 	ADD_TRAIT(H, TRAIT_SQUIRE_REPAIR, TRAIT_GENERIC)
+	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
