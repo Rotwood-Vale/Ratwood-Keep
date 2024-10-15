@@ -213,7 +213,7 @@
 				/obj/item/natural/hide = 2)
 	skillcraft = /datum/skill/craft/carpentry
 
-/obj/item/rogueweapon/shield/heater/crafter
+/obj/item/rogueweapon/shield/heater/crafted
 	sellprice = 6
 
 /datum/crafting_recipe/roguetown/woodbucket
