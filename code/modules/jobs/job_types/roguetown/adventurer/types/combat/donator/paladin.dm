@@ -63,7 +63,7 @@
 			armor = /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk
 			wrists = /obj/item/clothing/wrists/roguetown/bracers
 			pants = /obj/item/clothing/under/roguetown/chainlegs
-			shoes = /obj/item/clothing/shoes/roguetown/boots/leather
+			shoes = /obj/item/clothing/shoes/roguetown/armor/leather
 			belt = /obj/item/storage/belt/rogue/leather/hand
 			beltl = /obj/item/storage/belt/rogue/pouch/coins/poor
 			id = /obj/item/clothing/ring/silver
@@ -118,7 +118,7 @@
 			armor = /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk
 			wrists = /obj/item/clothing/wrists/roguetown/bracers
 			pants = /obj/item/clothing/under/roguetown/chainlegs
-			shoes = /obj/item/clothing/shoes/roguetown/boots/leather
+			shoes = /obj/item/clothing/shoes/roguetown/armor/leather
 			belt = /obj/item/storage/belt/rogue/leather/hand
 			beltl = /obj/item/storage/belt/rogue/pouch/coins/poor
 			id = /obj/item/clothing/ring/silver

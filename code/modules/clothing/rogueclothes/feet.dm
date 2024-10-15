@@ -74,7 +74,7 @@
 // **ARMOURED** //
 
 
-/obj/item/clothing/shoes/roguetown/boots //This subtype is for armoured shoes
+/obj/item/clothing/shoes/roguetown/armor //This subtype is for armoured shoes
 	name = "dark boots"
 	color = "#d5c2aa"
 	desc = "A fine set of dark boots."
@@ -84,13 +84,13 @@
 	prevent_crits = list(BCLASS_BLUNT, BCLASS_TWIST) //These match leather helmets
 	armor = list("blunt" = 30, "slash" = 10, "stab" = 20, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
 
-/obj/item/clothing/shoes/roguetown/boots/leather
+/obj/item/clothing/shoes/roguetown/armor/leather
 	name = "leather boots"
 	desc = "Boots made of leather."
 	icon_state = "leatherboots"
 	item_state = "leatherboots"
 
-/obj/item/clothing/shoes/roguetown/boots/steel
+/obj/item/clothing/shoes/roguetown/armor/steel
 	name = "steel plated boots"
 	desc = "A heavy pair of steel plated boots."
 	icon_state = "armorboots"
@@ -105,21 +105,21 @@
 	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT, BCLASS_TWIST)
 	armor = list("blunt" = 90, "slash" = 100, "stab" = 80, "bullet" = 100, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
 
-/obj/item/clothing/shoes/roguetown/boots/nobleboot
+/obj/item/clothing/shoes/roguetown/armor/nobleboot
 	name = "noble boots"
 	desc = "Fine dark leather boots."
 	icon_state = "nobleboots"
 	item_state = "nobleboots"
 	armor = list("blunt" = 35, "slash" = 15, "stab" = 25, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
 
-/obj/item/clothing/shoes/roguetown/boots/shalal
+/obj/item/clothing/shoes/roguetown/armor/shalal
 	name = "babouche"
 	desc = "Simple cheap shoes."
 	icon_state = "shalal"
 	item_state = "shalal"
 	armor = list("blunt" = 25, "slash" = 20, "stab" = 25, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
 
-/obj/item/clothing/shoes/roguetown/boots/grenzelhoft
+/obj/item/clothing/shoes/roguetown/armor/grenzelhoft
 	name = "grenzelhoft boots"
 	desc = "A pair of fine boots worn by mercenaries."
 	icon_state = "grenzelboots"

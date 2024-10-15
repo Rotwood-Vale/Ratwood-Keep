@@ -1002,7 +1002,7 @@
 	sleeved = 'icons/roguetown/clothing/special/onmob/blkknight.dmi'
 	w_class = WEIGHT_CLASS_BULKY
 
-/obj/item/clothing/shoes/roguetown/boots/steel/blkknight
+/obj/item/clothing/shoes/roguetown/armor/steel/blkknight
 	name = "blacksteel boots"
 	icon_state = "bkboots"
 	icon = 'icons/roguetown/clothing/special/blkknight.dmi'

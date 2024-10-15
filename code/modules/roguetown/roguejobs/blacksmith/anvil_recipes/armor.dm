@@ -258,7 +258,7 @@
 /datum/anvil_recipe/armor/plateboot
 	name = "Plated Boots"
 	req_bar = /obj/item/ingot/steel
-	created_item = /obj/item/clothing/shoes/roguetown/boots/steel
+	created_item = /obj/item/clothing/shoes/roguetown/armor/steel
 	i_type = "Armor"
 
 /datum/anvil_recipe/armor/platemask/steel

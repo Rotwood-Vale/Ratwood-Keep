@@ -911,13 +911,13 @@
 /area/rogue/indoors)
 "wR" = (
 /obj/structure/rack/rogue,
-/obj/item/clothing/shoes/roguetown/boots/leather,
-/obj/item/clothing/shoes/roguetown/boots/leather,
-/obj/item/clothing/shoes/roguetown/boots/leather,
-/obj/item/clothing/shoes/roguetown/boots/leather,
-/obj/item/clothing/shoes/roguetown/boots/leather,
-/obj/item/clothing/shoes/roguetown/boots/leather,
-/obj/item/clothing/shoes/roguetown/boots/leather,
+/obj/item/clothing/shoes/roguetown/armor/leather,
+/obj/item/clothing/shoes/roguetown/armor/leather,
+/obj/item/clothing/shoes/roguetown/armor/leather,
+/obj/item/clothing/shoes/roguetown/armor/leather,
+/obj/item/clothing/shoes/roguetown/armor/leather,
+/obj/item/clothing/shoes/roguetown/armor/leather,
+/obj/item/clothing/shoes/roguetown/armor/leather,
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/under/town/basement)
 "xc" = (
@@ -926,9 +926,9 @@
 /area/rogue/outdoors/woods)
 "xk" = (
 /obj/structure/rack/rogue,
-/obj/item/clothing/shoes/roguetown/boots,
-/obj/item/clothing/shoes/roguetown/boots,
-/obj/item/clothing/shoes/roguetown/boots,
+/obj/item/clothing/shoes/roguetown/armor,
+/obj/item/clothing/shoes/roguetown/armor,
+/obj/item/clothing/shoes/roguetown/armor,
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/under/town/basement)
 "xl" = (
