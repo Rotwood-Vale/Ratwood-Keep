@@ -34,8 +34,8 @@
 		/obj/item/storage/belt/rogue/leather/rope = 3,
 		/obj/item/clothing/under/roguetown/tights/vagrant = 4,
 		/obj/item/clothing/gloves/roguetown/leather = 4,
-		/obj/item/clothing/shoes/roguetown/boots = 4,
-		/obj/item/clothing/shoes/roguetown/boots/leather = 4,
+		/obj/item/clothing/shoes/roguetown/armor = 4,
+		/obj/item/clothing/shoes/roguetown/armor/leather = 4,
 
 		// Money
 		/obj/item/roguecoin/copper = 5,
@@ -152,8 +152,8 @@
 		/obj/item/storage/belt/rogue/leather/rope = 3,
 		/obj/item/clothing/under/roguetown/tights/vagrant = 4,
 		/obj/item/clothing/gloves/roguetown/leather = 4,
-		/obj/item/clothing/shoes/roguetown/boots = 4,
-		/obj/item/clothing/shoes/roguetown/boots/leather = 4
+		/obj/item/clothing/shoes/roguetown/armor = 4,
+		/obj/item/clothing/shoes/roguetown/armor/leather = 4
 	)
 	lootcount = 1
 

@@ -76,7 +76,7 @@
 
 /datum/crafting_recipe/roguetown/leather/boots
 	name = "leather boots"
-	result = /obj/item/clothing/shoes/roguetown/boots/leather
+	result = /obj/item/clothing/shoes/roguetown/armor/leather
 	reqs = list(/obj/item/natural/hide = 1)
 	sellprice = 27
 

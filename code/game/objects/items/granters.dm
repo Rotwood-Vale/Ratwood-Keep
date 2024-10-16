@@ -494,3 +494,29 @@
 	spellname = "Bone Chill"
 	icon_state ="scrolldarkred"
 	remarks = list("Mediolanum ventis..", "Sana damnatorum..", "Frigidus ossa mortuorum..")
+
+//scroll for giving the reader a spell point, this should be dungeon loot
+/obj/item/book/granter/spell_points
+	name = "Arcyne Insight"
+	icon_state = "scrollpurple"
+	icon = 'icons/roguetown/items/misc.dmi'
+	oneuse = TRUE
+	drop_sound = 'sound/foley/dropsound/paper_drop.ogg'
+	pickup_sound =  'sound/blank.ogg'
+
+/obj/item/book/granter/spell_points/on_reading_finished(mob/user)
+	var/arcaneskill = user.mind.get_skill_level(/datum/skill/magic/arcane)
+	if(arcaneskill >= SKILL_LEVEL_NOVICE) //Required arcane skill of NOVICE or higher to use the granter
+		to_chat(user, span_notice("I absorb the insights on the scroll, and feel more adept at spellcraft!"))
+		user.mind.adjust_spellpoints(1)
+		onlearned(user)
+	else
+		to_chat(user, span_notice("I don't know what to make of this."))
+
+/obj/item/book/granter/spell_points/onlearned(mob/living/carbon/user)
+	..()
+	if(oneuse == TRUE)
+		name = "siphoned scroll"
+		desc = "A scroll once inscribed with magical scripture. The surface is now barren of knowledge, siphoned by someone else. It's utterly useless."
+		icon_state = "scroll"
+		user.visible_message(span_warning("[src] has had its magic ink ripped from the scroll!"))

@@ -71,7 +71,7 @@
 	if(prob(90))
 		wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
 	if(prob(80))
-		shoes = /obj/item/clothing/shoes/roguetown/boots/leather
+		shoes = /obj/item/clothing/shoes/roguetown/armor/leather
 	if(prob(30))
 		armor = /obj/item/clothing/suit/roguetown/armor/chainmail/iron
 	if(prob(30))
@@ -97,7 +97,7 @@
 	if(prob(50))
 		r_hand = /obj/item/rogueweapon/sword/iron
 	else
-		r_hand = /obj/item/rogueweapon/mace
+		r_hand = /obj/item/rogueweapon/stoneaxe/woodcut
 
 /mob/living/carbon/human/species/skeleton/npc/no_equipment
     skel_outfit = null

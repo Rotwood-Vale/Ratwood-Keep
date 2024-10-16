@@ -38,7 +38,7 @@
 		armor = /obj/item/clothing/suit/roguetown/armor/chainmail/chainkini
 	wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
 	if(prob(50))
-		shoes = /obj/item/clothing/shoes/roguetown/boots
+		shoes = /obj/item/clothing/shoes/roguetown/armor
 	if(prob(75))
 		beltr = /obj/item/rogueweapon/sword/iron
 		H.mind.adjust_skillrank(/datum/skill/combat/swords, 2, TRUE)

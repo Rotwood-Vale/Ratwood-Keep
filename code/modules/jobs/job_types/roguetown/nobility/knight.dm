@@ -48,7 +48,7 @@
 	neck = /obj/item/clothing/neck/roguetown/bervor
 	shirt = /obj/item/clothing/suit/roguetown/armor/chainmail
 	armor = /obj/item/clothing/suit/roguetown/armor/plate/full
-	shoes = /obj/item/clothing/shoes/roguetown/boots/armor
+	shoes = /obj/item/clothing/shoes/roguetown/armor/steel
 	beltr = /obj/item/rogueweapon/sword/long
 	beltl = /obj/item/keyring/knight
 	belt = /obj/item/storage/belt/rogue/leather/hand

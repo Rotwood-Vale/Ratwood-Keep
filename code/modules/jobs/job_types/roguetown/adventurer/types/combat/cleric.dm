@@ -8,6 +8,8 @@
 	outfit = /datum/outfit/job/roguetown/adventurer/cleric
 	category_tags = list(CTAG_ADVENTURER)
 
+	cmode_music = 'sound/music/combat_clergy.ogg'
+
 /datum/outfit/job/roguetown/adventurer/cleric
 	allowed_patrons = ALL_CLERIC_PATRONS
 
@@ -21,6 +23,7 @@
 			neck = /obj/item/clothing/neck/roguetown/psicross/noc
 		if(/datum/patron/divine/dendor)
 			neck = /obj/item/clothing/neck/roguetown/psicross/dendor
+			H.mind.adjust_skillrank(/datum/skill/magic/druidic, 2, TRUE) // enough to craft druid mask, at least
 		if(/datum/patron/divine/necra)
 			neck = /obj/item/clothing/neck/roguetown/psicross/necra
 		if(/datum/patron/divine/pestra)
@@ -39,7 +42,7 @@
 			shirt = /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk
 			armor = /obj/item/clothing/suit/roguetown/shirt/robe/white
 			pants = /obj/item/clothing/under/roguetown/trou/leather
-			shoes = /obj/item/clothing/shoes/roguetown/boots/leather
+			shoes = /obj/item/clothing/shoes/roguetown/armor/leather
 			belt = /obj/item/storage/belt/rogue/leather
 			beltr = /obj/item/rogueweapon/mace
 			beltl = /obj/item/storage/belt/rogue/pouch/coins/poor
@@ -73,7 +76,7 @@
 			armor = /obj/item/clothing/suit/roguetown/armor/plate
 			wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
 			pants = /obj/item/clothing/under/roguetown/trou/leather
-			shoes = /obj/item/clothing/shoes/roguetown/boots/leather
+			shoes = /obj/item/clothing/shoes/roguetown/armor/leather
 			belt = /obj/item/storage/belt/rogue/leather
 			beltr = /obj/item/rogueweapon/mace
 			beltl = /obj/item/storage/belt/rogue/pouch/coins/poor

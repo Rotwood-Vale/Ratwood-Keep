@@ -1,6 +1,7 @@
 /datum/customizer/organ/frills
 	abstract_type = /datum/customizer/organ/frills
 	name = "Frills"
+	allows_disabling = TRUE
 
 /datum/customizer_choice/organ/frills
 	abstract_type = /datum/customizer_choice/organ/frills
@@ -33,7 +34,6 @@
 
 /datum/customizer/organ/frills/anthro
 	customizer_choices = list(/datum/customizer_choice/organ/frills/anthro)
-	allows_disabling = TRUE
 	default_disabled = TRUE
 
 /datum/customizer_choice/organ/frills/anthro
