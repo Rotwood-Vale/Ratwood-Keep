@@ -246,12 +246,12 @@
 				calling.repeat_message(raw_message, src, usedcolor, message_language)
 			return
 		if(length(raw_message) > 100) //When these people talk too much, put that shit in slow motion, yeah
-			if(length(raw_message) > 200)
+			/*if(length(raw_message) > 200)
 				if(!spawned_rat)
 					visible_message(span_warning("An angered rous emerges from the SCOMlines!"))
 					new /mob/living/simple_animal/hostile/retaliate/rogue/bigrat(get_turf(src))
 					spawned_rat = TRUE
-				return
+				return*/
 			raw_message = "<small>[raw_message]</small>"
 		for(var/obj/structure/roguemachine/scomm/S in SSroguemachine.scomm_machines)
 			if(!S.calling)
