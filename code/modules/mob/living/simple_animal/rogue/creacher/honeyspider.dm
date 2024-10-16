@@ -1,9 +1,9 @@
 /mob/living/simple_animal/hostile/retaliate/rogue/spider
 	icon = 'icons/roguetown/mob/monster/spider.dmi'
-	name = "beespider"
-	icon_state = "honeys"
-	icon_living = "honeys"
-	icon_dead = "honeys-dead"
+	name = "spider"
+	icon_state = "spider"
+	icon_living = "spider"
+	icon_dead = "spider-dead"
 	gender = MALE
 	speak_chance = 1
 	turns_per_move = 3
@@ -79,11 +79,6 @@
 /mob/living/simple_animal/hostile/retaliate/rogue/spider/update_icon()
 	cut_overlays()
 	..()
-	if(stat != DEAD)
-		var/mutable_appearance/eye_lights = mutable_appearance(icon, "honeys-eyes")
-		eye_lights.plane = 19
-		eye_lights.layer = 19
-		add_overlay(eye_lights)
 
 /mob/living/simple_animal/hostile/retaliate/rogue/spider/get_sound(input)
 	switch(input)
