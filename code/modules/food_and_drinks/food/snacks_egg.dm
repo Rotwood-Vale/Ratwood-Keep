@@ -23,7 +23,7 @@
 	warming = 10 MINUTES
 
 /obj/item/reagent_containers/food/snacks/egg
-	icon = 'modular/Neu_Food/icons/food.dmi'
+	icon = 'icons/roguetown/items/food.dmi'
 	name = "cackleberry"
 	desc = ""
 	icon_state = "egg"

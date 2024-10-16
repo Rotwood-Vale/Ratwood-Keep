@@ -49,7 +49,7 @@
 					/obj/item/seeds/sweetleaf,
 				)
 
-/*/datum/supply_pack/rogue/seeds/berry
+/datum/supply_pack/rogue/seeds/berry
 	name = "Berry"
 	cost = 10
 	contains = list(
@@ -57,43 +57,32 @@
 					/obj/item/seeds/berryrogue,
 					/obj/item/seeds/berryrogue,
 					/obj/item/seeds/berryrogue/poison,
-				)*/
+				)
 
 /datum/supply_pack/rogue/seeds/vegetable
-	name = "Seed Bundle (veg)"
+	name = "Vegetable Garden"
 	cost = 30
 	contains = list(
 					/obj/item/seeds/cabbage,
-					/obj/item/seeds/cabbage,
-					/obj/item/seeds/cabbage,
 					/obj/item/seeds/onion,
-					/obj/item/seeds/onion,
-					/obj/item/seeds/onion,
-					////obj/item/seeds/garlic,
-					////obj/item/seeds/carrot,
+					/obj/item/seeds/garlic,
+					/obj/item/seeds/carrot,
 					/obj/item/seeds/potato,
-					/obj/item/seeds/potato,
-					/obj/item/seeds/potato,
-					////obj/item/seeds/radish,
+					/obj/item/seeds/radish,
 				)
 
 /datum/supply_pack/rogue/seeds/orchard
-	name = "Seed Bundle (fruit)"
+	name = "Orchard Pack"
 	cost = 30
 	contains = list(
-					/obj/item/seeds/berryrogue,
-					/obj/item/seeds/berryrogue,
-					/obj/item/seeds/berryrogue,
 					/obj/item/seeds/apple,
-					/obj/item/seeds/apple,
-					/obj/item/seeds/apple,
-					////obj/item/seeds/pear,
-					////obj/item/seeds/cherry,
-					////obj/item/seeds/nut,
-					////obj/item/seeds/olive,
+					/obj/item/seeds/pear,
+					/obj/item/seeds/cherry,
+					/obj/item/seeds/nut,
+					/obj/item/seeds/olive,
 				)
 
-/*/datum/supply_pack/rogue/seeds/cashcrops
+/datum/supply_pack/rogue/seeds/cashcrops
 	name = "Cash Crops"
 	cost = 30
 	contains = list(
@@ -102,9 +91,9 @@
 					/obj/item/seeds/peas,
 					/obj/item/seeds/tea,
 					/obj/item/seeds/beet,
-				)*/
+				)
 
-/*/datum/supply_pack/rogue/seeds/savoryfruits
+/datum/supply_pack/rogue/seeds/savoryfruits
 	name = "Savory Fruits"
 	cost = 30
 	contains = list(
@@ -112,9 +101,9 @@
 					/obj/item/seeds/tomato,
 					/obj/item/seeds/bellpepper,
 					/obj/item/seeds/cucumber,
-				)*/
+				)
 
-/*/datum/supply_pack/rogue/seeds/mushrooms
+/datum/supply_pack/rogue/seeds/mushrooms
 	name = "Mushroom Spores"
 	cost = 20
 	contains = list(
@@ -124,4 +113,4 @@
 					/obj/item/seeds/mycelium/plumphelmet,
 					/obj/item/seeds/mycelium/trippy,
 
-				)*/
+				)
