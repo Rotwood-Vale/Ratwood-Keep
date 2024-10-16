@@ -897,6 +897,12 @@
 	icon = 'icons/roguetown/misc/96x96.dmi'
 	pixel_x = -32
 
+/obj/structure/fluff/statue/psybloody
+	icon_state = "psy_bloody"
+	icon = 'icons/roguetown/misc/96x96.dmi'
+	pixel_x = -32
+
+
 /obj/structure/fluff/statue/small
 	icon = 'icons/roguetown/misc/structure.dmi'
 	icon_state = "elfs"
@@ -912,6 +918,18 @@
 	pixel_y = -16
 
 /obj/structure/fluff/statue/femalestatue/Initialize()
+	. = ..()
+	var/matrix/M = new
+	M.Scale(0.7,0.7)
+	src.transform = M
+
+/obj/structure/fluff/statue/femalestatue/zizo
+	icon = 'icons/roguetown/misc/ay.dmi'
+	icon_state = "4"
+	pixel_x = -32
+	pixel_y = -16
+
+/obj/structure/fluff/statue/femalestatue/zizo/Initialize()
 	. = ..()
 	var/matrix/M = new
 	M.Scale(0.7,0.7)
