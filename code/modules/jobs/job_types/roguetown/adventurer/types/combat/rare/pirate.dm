@@ -24,7 +24,7 @@
 			head = /obj/item/clothing/head/roguetown/helmet/tricorn
 		if(3)
 			head = /obj/item/clothing/head/roguetown/helmet/bandana
-	shoes = /obj/item/clothing/shoes/roguetown/boots/leather
+	shoes = /obj/item/clothing/shoes/roguetown/armor/leather
 	neck = /obj/item/storage/belt/rogue/pouch/coins/poor
 	pants = /obj/item/clothing/under/roguetown/trou/leather
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/sailor

@@ -42,7 +42,7 @@
 	armor = /obj/item/clothing/suit/roguetown/armor/gambeson
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
 	pants = /obj/item/clothing/under/roguetown/tights/random
-	shoes = /obj/item/clothing/shoes/roguetown/boots/leather
+	shoes = /obj/item/clothing/shoes/roguetown/armor/leather
 	belt = /obj/item/storage/belt/rogue/leather
 	beltr = /obj/item/rogueweapon/mace/cudgel
 	beltl = /obj/item/flashlight/flare/torch/lantern

@@ -49,13 +49,13 @@
 		if(/datum/patron/divine/necra) //disabled and moved unto gravedigger, but code supports it
 			head = /obj/item/clothing/head/roguetown/necrahood
 			neck = /obj/item/clothing/neck/roguetown/psicross/necra
-			shoes = /obj/item/clothing/shoes/roguetown/boots
+			shoes = /obj/item/clothing/shoes/roguetown/armor
 			pants = /obj/item/clothing/under/roguetown/trou/leather/mourning
 			armor = /obj/item/clothing/suit/roguetown/shirt/robe/necra
 		if(/datum/patron/divine/pestra) //PLEASE add leper gear later, this SUCKS dude
 			head = /obj/item/clothing/head/roguetown/necrahood
 			neck = /obj/item/clothing/neck/roguetown/psicross/pestra
-			shoes = /obj/item/clothing/shoes/roguetown/boots
+			shoes = /obj/item/clothing/shoes/roguetown/armor
 			pants = /obj/item/clothing/under/roguetown/trou/leather/mourning
 			armor = /obj/item/clothing/suit/roguetown/shirt/robe/necra
 		else
