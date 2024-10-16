@@ -130,7 +130,7 @@
 	name = "cabbage patch"
 	icon = 'icons/roguetown/misc/crops.dmi'
 	icon_state = "cabbage"
-	produce_type = /obj/item/reagent_containers/food/snacks/grown/cabbage
+	produce_type = /obj/item/reagent_containers/food/snacks/grown/cabbage/rogue
 	produce_amount_min = 2
 	produce_amount_max = 4
 	maturation_nutrition = 25
@@ -203,7 +203,7 @@
 	name = "onion patch"
 	icon = 'icons/roguetown/misc/crops.dmi'
 	icon_state = "onion"
-	produce_type = /obj/item/reagent_containers/food/snacks/grown/onion
+	produce_type = /obj/item/reagent_containers/food/snacks/grown/onion/rogue
 	produce_amount_min = 2
 	produce_amount_max = 4
 	maturation_nutrition = 25
@@ -237,7 +237,7 @@
 	name = "potato plant"
 	icon = 'icons/roguetown/misc/crops.dmi'
 	icon_state = "potato"
-	produce_type = /obj/item/reagent_containers/food/snacks/grown/potato
+	produce_type = /obj/item/reagent_containers/food/snacks/grown/potato/rogue
 	produce_amount_min = 2
 	produce_amount_max = 4
 	maturation_nutrition = 25

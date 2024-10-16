@@ -36,7 +36,7 @@
 
 	belt = /obj/item/storage/belt/rogue/leather/plaquegold
 	pants = /obj/item/clothing/under/roguetown/chainlegs
-	shoes = /obj/item/clothing/shoes/roguetown/boots/armor
+	shoes = /obj/item/clothing/shoes/roguetown/armor/steel
 	shirt = /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk
 	armor = /obj/item/clothing/cloak/stabard/crusader
 	cloak = /obj/item/clothing/cloak/cape/crusader
@@ -68,7 +68,7 @@
 	if(H.gender == FEMALE)
 		backr = /obj/item/storage/backpack/rogue/satchel
 		gloves = null
-		shoes = /obj/item/clothing/shoes/roguetown/boots/leather
+		shoes = /obj/item/clothing/shoes/roguetown/armor/leather
 		backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger/silver = 1, /obj/item/storage/belt/rogue/pouch/coins/rich=1)
 		H.change_stat("strength", 1)
 		var/acceptable = list("Tomboy", "Bob", "Curly Short")
