@@ -19,7 +19,7 @@
 	var/athletics_skill = 0
 	if(mind)
 		athletics_skill = mind.get_skill_level(/datum/skill/misc/athletics)
-	maxrogstam = (STAINT + (athletics_skill) / 2) * 100 // STAMINA / BLUE most useful for wizards, affected by INT
+	maxrogstam = (STAEND + (athletics_skill) / 2) * 100 // STAMINA / BLUE
 	if(cmode)
 		if(!HAS_TRAIT(src, TRAIT_BREADY))
 			rogstam_add(-2)
