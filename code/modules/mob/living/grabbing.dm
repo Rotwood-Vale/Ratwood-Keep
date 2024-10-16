@@ -202,7 +202,7 @@
 				return
 			if(!(M.mobility_flags & MOBILITY_STAND))
 				if(user.loc != M.loc)
-					to_chat(user, span_warning("I must be above them."))
+					to_chat(user, span_warning("I must be on top of them."))
 					return
 				user.rogfat_add(rand(1,3))
 				M.visible_message(span_danger("[user] pins [M] to the ground!"), \
