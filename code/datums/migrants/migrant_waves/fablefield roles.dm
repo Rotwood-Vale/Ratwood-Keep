@@ -12,7 +12,7 @@
 	..()
 	head = /obj/item/clothing/head/roguetown/bardhat
 	neck = /obj/item/storage/belt/rogue/pouch/coins/mid
-	shoes = /obj/item/clothing/shoes/roguetown/boots
+	shoes = /obj/item/clothing/shoes/roguetown/armor
 	pants = /obj/item/clothing/under/roguetown/tights/random
 	shirt = /obj/item/clothing/suit/roguetown/shirt/shortshirt
 	gloves = /obj/item/clothing/gloves/roguetown/fingerless
@@ -62,7 +62,7 @@
 	..()
 	head = /obj/item/clothing/head/roguetown/bardhat
 	neck = /obj/item/storage/belt/rogue/pouch/coins/poor
-	shoes = /obj/item/clothing/shoes/roguetown/boots
+	shoes = /obj/item/clothing/shoes/roguetown/armor
 	pants = /obj/item/clothing/under/roguetown/tights/random
 	shirt = /obj/item/clothing/suit/roguetown/shirt/shortshirt
 	gloves = /obj/item/clothing/gloves/roguetown/fingerless

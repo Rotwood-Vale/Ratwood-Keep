@@ -45,6 +45,12 @@
 	created_item = /obj/item/clothing/mask/rogue/facemask
 	i_type = "Armor"
 
+/datum/anvil_recipe/armor/platemask/hound
+	name = "Mask (Hound)"
+	req_bar = /obj/item/ingot/iron
+	created_item = /obj/item/clothing/mask/rogue/facemask/hound
+	i_type = "Armor"
+
 /datum/anvil_recipe/armor/skullcap
 	name = "Skullcap"
 	req_bar = /obj/item/ingot/iron
@@ -258,7 +264,7 @@
 /datum/anvil_recipe/armor/plateboot
 	name = "Plated Boots"
 	req_bar = /obj/item/ingot/steel
-	created_item = /obj/item/clothing/shoes/roguetown/boots/armor
+	created_item = /obj/item/clothing/shoes/roguetown/armor/steel
 	i_type = "Armor"
 
 /datum/anvil_recipe/armor/platemask/steel
