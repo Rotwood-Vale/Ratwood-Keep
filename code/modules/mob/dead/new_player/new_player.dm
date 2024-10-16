@@ -178,9 +178,14 @@ GLOBAL_LIST_INIT(roleplay_readme, world.file2list("strings/rt/rp_prompt.txt"))
 //		src << browse(null, "window=playersetup") //closes the player setup window
 		new_player_panel()
 
-//	if(href_list["rpprompt"])
-//		do_rp_prompt()
+	if(href_list["rpprompt"])
+		do_rp_prompt()
+		return
+
+//	if(href_list["rgprompt"])
+//		do_religion_prompt()
 //		return
+
 
 	if(href_list["late_join"])
 		if(!SSticker?.IsRoundInProgress())
@@ -293,6 +298,16 @@ GLOBAL_LIST_INIT(roleplay_readme, world.file2list("strings/rt/rp_prompt.txt"))
 		popup.set_content(dat.Join())
 		popup.open()
 
+/*mob/dead/new_player/verb/do_religion_prompt() --- FOR THE INEVITABLE!
+	set name = "Religion Primer"
+	set category = "Memory"
+	var/list/dat = list()
+	dat += GLOB.religion_readme
+	if(dat)
+		var/datum/browser/popup = new(src, "RPrimer", "RATWOOD", 460, 550)
+		popup.set_content(dat.Join())
+		popup.open()
+*/
 //When you cop out of the round (NB: this HAS A SLEEP FOR PLAYER INPUT IN IT)
 /mob/dead/new_player/proc/make_me_an_observer()
 	if(QDELETED(src) || !src.client)
