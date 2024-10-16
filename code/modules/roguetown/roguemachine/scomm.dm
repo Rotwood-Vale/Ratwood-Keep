@@ -450,9 +450,9 @@
 // MATTHIAN SCOMCOIN
 
 /obj/item/mattcoin
-	name = "Blooded Coin"
+	name = "Ruby Band"
 	icon_state = "mattcoin"
-	desc = "A faded zenarri, a loop put through it for wearing. Freefolk are bound together with these."
+	desc = "A faded coin, a ruby laid into its center."
 	gripped_intents = null
 	dropshrink = 0.75
 	possible_item_intents = list(INTENT_GENERIC)
@@ -495,7 +495,7 @@
 	playsound(loc, 'sound/misc/coindispense.ogg', 100, FALSE, -1)
 	listening = !listening
 	speaking = !speaking
-	to_chat(user, span_info("I [speaking ? "unmute" : "mute"] the Matthian-Coin."))
+	to_chat(user, span_info("I [speaking ? "unmute" : "mute"] the Matthian-SCOMstone"))
 	update_icon()
 
 /obj/item/mattcoin/Destroy()
