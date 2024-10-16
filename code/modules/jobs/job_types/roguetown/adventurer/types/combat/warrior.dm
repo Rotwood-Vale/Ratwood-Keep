@@ -23,23 +23,24 @@
 			H.set_blindness(0)
 			to_chat(H, span_warning("Warriors are well rounded fighters, experienced often in many theaters of warfare and battle they are capable of rising to any challenge that might greet them on the path."))
 			H.mind.adjust_skillrank(/datum/skill/combat/crossbows, rand(1,2), TRUE)
-			H.mind.adjust_skillrank(/datum/skill/combat/polearms, 2, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/combat/maces, 2, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/combat/axes, 2, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/polearms, 3, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/maces, 3, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/axes, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/bows, rand(1,2), TRUE)
-			H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 3, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/whipsflails, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/athletics, 4, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/swords, 3, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/combat/knives, rand(1,3), TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/knives, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/sneaking, pick(1,1,2), TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/swimming, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/climbing, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/riding, pick(2,3), TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/medicine, 1, TRUE)
 			H.change_stat("strength", 2)
-			H.change_stat("endurance", 2) // 7 stat points total as a low-skill martial role without magic. Compared to Pally with 5 points.
-			H.change_stat("constitution", 2)
+			H.change_stat("endurance", 2) // Slightly worse stats since they're now actually skilled
+			H.change_stat("constitution", 1)
 			H.change_stat("speed", 1)
 			shoes = /obj/item/clothing/shoes/roguetown/armor
 			gloves = /obj/item/clothing/gloves/roguetown/leather
@@ -65,25 +66,33 @@
 			beltl = /obj/item/rogueweapon/huntingknife
 			if(prob(50))
 				beltr = /obj/item/rogueweapon/sword/iron
-			else
+			else if(prob(30))
 				beltr = /obj/item/rogueweapon/sword/iron/messer
+			else if(prob(30))
+				beltr = /obj/item/rogueweapon/mace
+			else if(prob(30))
+				beltr = /obj/item/rogueweapon/stoneaxe/handaxe
+			else
+				beltr = /obj/item/rogueweapon/flail
+
 		if("Monster Hunter")
 			H.set_blindness(0)
 			to_chat(H, span_warning("Monsters Hunters are typically contracted champions of the common folk dedicated to the slaying of both lesser vermin and greater beasts of the wilds."))
-			H.mind.adjust_skillrank(/datum/skill/combat/crossbows, rand(1,2), TRUE)
-			H.mind.adjust_skillrank(/datum/skill/combat/bows, rand(1,2), TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/crossbows, rand(3,4), TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/bows, rand(3,4), TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/athletics, 4, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/combat/knives, rand(1,3), TRUE)
-			H.mind.adjust_skillrank(/datum/skill/misc/sneaking, pick(1,1,2), TRUE)
-			H.mind.adjust_skillrank(/datum/skill/misc/swimming, 1, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/misc/climbing, 2, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/knives, 3, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 3, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/swimming, 2, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/climbing, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/riding, pick(2,3), TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/medicine, 1, TRUE)
-			H.change_stat("strength", 2)
-			H.change_stat("endurance", 1) // Weaker endurance compared to a traditional warrior/soldier. Smarter due to study of rare magical beasts.
-			H.change_stat("constitution", 2)
+			H.mind.adjust_skillrank(/datum/skill/craft/crafting, 1, TRUE)
+			H.change_stat("strength", 2) 
+			H.change_stat("endurance", 1)// Weaker endurance compared to a traditional warrior/soldier. Smarter due to study of rare magical beasts.
+			H.change_stat("constitution", 1)
 			H.change_stat("intelligence", 1)
 			H.change_stat("speed", 1)
 			shoes = /obj/item/clothing/shoes/roguetown/armor
@@ -121,3 +130,4 @@
 
 	ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
+	ADD_TRAIT(H, TRAIT_STEELHEARTED, TRAIT_GENERIC)
