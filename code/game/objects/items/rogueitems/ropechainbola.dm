@@ -153,7 +153,6 @@
 /datum/intent/whips/iron_chain
 	name = "chain-lash"
 	desc = "A rather slow ranged lash used for slowing down opponents for a tie up."
-	force = 13
 	blade_class = BCLASS_BLUNT
 	attack_verb = list("chain-whips", "chain-lashes")
 	hitsound = list('sound/combat/hits/blunt/flailhit.ogg')
@@ -163,10 +162,7 @@
 	no_early_release = TRUE
 	penfactor = 15
 	reach = 2
-	blade_dulling = DULLING_BASHCHOP
 	chargedloop = /datum/looping_sound/flailswing
-	parrysound = list('sound/combat/parry/parrygen.ogg')
-	swingsound = WHIPWOOSH
 	icon_state = "inlash"
 	item_d_type = "blunt"
 
@@ -175,6 +171,10 @@
 	desc = "A heavy steel chain."
 	icon = 'icons/roguetown/items/misc.dmi'
 	icon_state = "chain"
+	force = 13
+	blade_dulling = DULLING_BASHCHOP
+	parrysound = list('sound/combat/parry/parrygen.ogg')
+	swingsound = WHIPWOOSH
 	slot_flags = ITEM_SLOT_HIP|ITEM_SLOT_WRISTS
 	throwforce = 5
 	w_class = WEIGHT_CLASS_SMALL
