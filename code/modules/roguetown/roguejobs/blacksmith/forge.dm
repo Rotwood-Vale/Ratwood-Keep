@@ -28,6 +28,15 @@
 			W.forceMove(src)
 			update_icon()
 			return
+	if(istype(W, /obj/item/rogueweapon/tongs) && on)
+		var/obj/item/rogueweapon/tongs/T = W
+		if(T.hingot)
+			var/tyme = world.time
+			T.hott = tyme
+			addtimer(CALLBACK(T, TYPE_PROC_REF(/obj/item/rogueweapon/tongs, make_unhot), tyme), 100)
+			T.update_icon()
+			user.visible_message(span_info("[user] heats the bar."))
+			return
 	else
 		if(istype(W, /obj/item/reagent_containers/glass/bowl))
 			to_chat(user, "<span class='notice'>Remove the pot from the forge first.</span>")
