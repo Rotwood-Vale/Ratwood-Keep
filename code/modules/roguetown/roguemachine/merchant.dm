@@ -142,7 +142,7 @@
 		var/obj/item/roguekey/K = P
 		if(K.lockid == "merchant")
 			locked = !locked
-			playsound(loc, 'sound/misc/beep.ogg', 100, FALSE, -1)
+			playsound(loc, 'sound/misc/gold_misc.ogg', 100, FALSE, -1)
 			update_icon()
 			return attack_hand(user)
 		else
@@ -153,7 +153,7 @@
 		for(var/obj/item/roguekey/KE in K.keys)
 			if(KE.lockid == "merchant")
 				locked = !locked
-				playsound(loc, 'sound/misc/beep.ogg', 100, FALSE, -1)
+				playsound(loc, 'sound/misc/gold_misc.ogg', 100, FALSE, -1)
 				update_icon()
 				return attack_hand(user)
 	if(istype(P, /obj/item/roguecoin))
@@ -226,10 +226,10 @@
 		switch(select)
 			if("Enable Paying Taxes")
 				upgrade_flags &= ~UPGRADE_NOTAX
-				playsound(loc, 'sound/misc/beep.ogg', 100, FALSE, -1)
+				playsound(loc, 'sound/misc/gold_misc.ogg', 100, FALSE, -1)
 			if("Stop Paying Taxes")
 				upgrade_flags |= UPGRADE_NOTAX
-				playsound(loc, 'sound/misc/beep.ogg', 100, FALSE, -1)
+				playsound(loc, 'sound/misc/gold_misc.ogg', 100, FALSE, -1)
 			if("Purchase Armors License (150)")
 				if(upgrade_flags & UPGRADE_ARMOR)
 					return
@@ -239,7 +239,7 @@
 					return
 				budget -= 150
 				upgrade_flags |= UPGRADE_ARMOR
-				playsound(loc, 'sound/misc/beep.ogg', 100, FALSE, -1)
+				playsound(loc, 'sound/misc/gold_license.ogg', 100, FALSE, -1)
 			if("Purchase Weapons License (110)")
 				if(upgrade_flags & UPGRADE_WEAPONS)
 					return
@@ -249,7 +249,7 @@
 					return
 				budget -= 110
 				upgrade_flags |= UPGRADE_WEAPONS
-				playsound(loc, 'sound/misc/beep.ogg', 100, FALSE, -1)
+				playsound(loc, 'sound/misc/gold_license.ogg', 100, FALSE, -1)
 			if("Purchase Pantry License (50)")
 				if(upgrade_flags & UPGRADE_FOOD)
 					return
@@ -259,7 +259,7 @@
 					return
 				budget -= 50
 				upgrade_flags |= UPGRADE_FOOD
-				playsound(loc, 'sound/misc/beep.ogg', 100, FALSE, -1)
+				playsound(loc, 'sound/misc/gold_license.ogg', 100, FALSE, -1)
 			if("Purchase Wardrobe License (50)")
 				if(upgrade_flags & UPGRADE_WARDROBE)
 					return
@@ -269,7 +269,7 @@
 					return
 				budget -= 50
 				upgrade_flags |= UPGRADE_WARDROBE
-				playsound(loc, 'sound/misc/beep.ogg', 100, FALSE, -1)
+				playsound(loc, 'sound/misc/gold_license.ogg', 100, FALSE, -1)
 			if("Purchase Alcohols License (50)")
 				if(upgrade_flags & UPGRADE_ALCOHOLS)
 					return
@@ -279,7 +279,7 @@
 					return
 				budget -= 50
 				upgrade_flags |= UPGRADE_ALCOHOLS
-				playsound(loc, 'sound/misc/beep.ogg', 100, FALSE, -1)
+				playsound(loc, 'sound/misc/gold_license.ogg', 100, FALSE, -1)
 	return attack_hand(usr)
 
 /obj/structure/roguemachine/merchantvend/attack_hand(mob/living/user)
@@ -292,7 +292,7 @@
 		to_chat(user, span_warning("It's locked. Of course."))
 		return
 	user.changeNext_move(CLICK_CD_MELEE)
-	playsound(loc, 'sound/misc/beep.ogg', 100, FALSE, -1)
+	playsound(loc, 'sound/misc/gold_menu.ogg', 100, FALSE, -1)
 	var/canread = user.can_read(src, TRUE)
 	var/contents
 	contents = "<center>GOLDFACE - In the name of greed.<BR>"
