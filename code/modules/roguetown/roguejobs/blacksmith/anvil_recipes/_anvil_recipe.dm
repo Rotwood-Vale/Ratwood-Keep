@@ -39,14 +39,13 @@
 		to_chat(user, span_info("Now it's time to add a [needed_item_text]."))
 		user.visible_message(span_warning("[user] strikes the bar!"))
 		return FALSE
-	// Calculate probability of a successful, based on smith's skill level
-	if(!skill_level)
-		proab = 25
-	else if(skill_level < 4)
-		proab = 33 * skill_level
-	else // No good smith start with skill levels lower than 3
-		proab = 100
-	proab -= craftdiff // Crafting difficulty substracts from your chance to advance
+	// Calculate probability of a successful strike, based on smith's skill level
+	if(!skill_level && !craftdiff)
+		proab = 35
+	else if(skill_level < craftdiff) //Way out of your league, buddy.
+		proab = 10
+	else
+		proab = min(45 * skill_level, 100)
 	// Roll the dice to see if the hit actually causes to accumulate progress
 	if(prob(proab))
 		moveup += round((skill_level * 6 * L.STASTR/10) * (breakthrough == 1 ? 1.5 : 1))

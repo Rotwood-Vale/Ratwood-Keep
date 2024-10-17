@@ -163,6 +163,7 @@
 	if(SSticker.current_state != GAME_STATE_FINISHED)
 		return
 	if(client)
+		client.verbs += /client/proc/lobbyooc
 		client.show_game_over()
 
 /mob/living/do_game_over()
@@ -180,8 +181,6 @@
 	if(ishuman(src))
 		var/mob/living/carbon/human/H = src
 		H.mode = AI_OFF
-	if(client)
-		client.verbs += /client/proc/lobbyooc
 
 /client/proc/show_game_over()
 	var/atom/movable/screen/splash/credits/S = new(src, FALSE)

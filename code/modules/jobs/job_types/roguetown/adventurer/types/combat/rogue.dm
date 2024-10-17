@@ -112,7 +112,7 @@
 	H.change_stat("speed", 3)
 	H.change_stat("intelligence", 2)
 	H.cmode_music = 'sound/music/combat_rogue.ogg'
-	H.visible_message(span_info("I honed my skills as a rogue through the years, and was skilled enough to become an assassin. Now it depends to me how I use my abilities."))
+	to_chat(H, span_info("I honed my skills as a rogue through the years, and was skilled enough to become an assassin. Now it depends to me how I use my abilities."))
 	backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger/steel, /obj/item/lockpickring/mundane)
 
 /datum/outfit/job/roguetown/adventurer/rogue/proc/duelistarch(mob/living/carbon/human/H)
@@ -157,4 +157,4 @@
 	H.change_stat("intelligence", 1)
 	H.change_stat("perception", 1)
 	H.cmode_music = 'sound/music/combat_duelist.ogg'
-	H.visible_message(span_info("I trained as a swashbuckler, flair and precision is my weapon... And some dirty tricks under my cape. I can fool people into underestimating me, their last mistake."))
+	to_chat(H, span_info("I trained as a swashbuckler, flair and precision is my weapon... And some dirty tricks under my cape. I can fool people into underestimating me, their last mistake."))

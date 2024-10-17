@@ -117,6 +117,8 @@
 	if(!istype(T, /turf/open/transparent/openspace))
 		if(!istype(T, /turf/open/water))
 			return
+		if(!istype(T, /turf/open/lava))
+			return
 	return TRUE
 
 /datum/crafting_recipe/roguetown/turfs/stonewall

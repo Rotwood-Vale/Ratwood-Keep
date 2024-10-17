@@ -79,6 +79,7 @@
 	clusterMax = 10
 	clusterMin = 10
 	checkdensity = FALSE
+	excluded_turfs = list(/turf/closed)
 	allowed_areas = list(/area/rogue/outdoors)
 
 /obj/machinery/light/roguestreet

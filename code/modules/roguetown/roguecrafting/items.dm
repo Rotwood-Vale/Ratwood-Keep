@@ -94,7 +94,6 @@
 	name = "wooden bow"
 	result = /obj/item/gun/ballistic/revolver/grenadelauncher/bow
 	reqs = list(/obj/item/natural/bowstring = 1, /obj/item/grown/log/tree/bowpartial = 1)
-	skillcraft = /datum/skill/combat/bows
 	verbage_simple = "string together"
 	verbage = "strings together"
 	craftdiff = 2
@@ -120,7 +119,6 @@
 		/obj/item/natural/bowstring = 1,
 		/obj/item/grown/log/tree/bowpartial/recurve = 1,
 		)
-	skillcraft = /datum/skill/combat/bows
 	verbage_simple = "string together"
 	verbage = "strings together"
 	craftdiff = 3
@@ -146,7 +144,6 @@
 		/obj/item/natural/bowstring = 1,
 		/obj/item/grown/log/tree/bowpartial/longbow = 1,
 		)
-	skillcraft = /datum/skill/combat/bows
 	verbage_simple = "string together"
 	verbage = "strings together"
 	craftdiff = 3
@@ -175,7 +172,14 @@
 	name = "stone hammer"
 	result = /obj/item/rogueweapon/hammer/stone
 	reqs = list(/obj/item/grown/log/tree/small = 1,
-				/obj/item/natural/stone = 3)
+				/obj/item/natural/stone = 1)
+
+/datum/crafting_recipe/roguetown/stonehoe
+	name = "stone hoe"
+	result = /obj/item/rogueweapon/hoe/stone
+	reqs = list(/obj/item/grown/log/tree/small = 2,
+				/obj/item/natural/fibers = 1,
+				/obj/item/natural/stone = 1)
 
 /datum/crafting_recipe/roguetown/stonetongs
 	name = "stone tongs"
@@ -429,7 +433,7 @@
 /datum/crafting_recipe/roguetown/pyroarrow
 	name = "pyroclastic arrow"
 	result = /obj/item/ammo_casing/caseless/rogue/arrow/pyro
-	reqs = list(/obj/item/ammo_casing/caseless/rogue/arrow = 1,
+	reqs = list(/obj/item/ammo_casing/caseless/rogue/arrow/iron = 1,
 				/obj/item/reagent_containers/food/snacks/grown/rogue/fyritius = 1)
 	req_table = TRUE
 	craftdiff = 1
@@ -444,7 +448,7 @@
 				/obj/item/ammo_casing/caseless/rogue/arrow/pyro,
 				/obj/item/ammo_casing/caseless/rogue/arrow/pyro
 				)
-	reqs = list(/obj/item/ammo_casing/caseless/rogue/arrow = 5,
+	reqs = list(/obj/item/ammo_casing/caseless/rogue/arrow/iron = 5,
 				/obj/item/reagent_containers/food/snacks/grown/rogue/fyritius = 5)
 	req_table = TRUE
 	craftdiff = 1

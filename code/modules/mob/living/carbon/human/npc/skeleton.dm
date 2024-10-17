@@ -7,6 +7,7 @@
 					 /obj/item/bodypart/r_arm, /obj/item/bodypart/r_leg, /obj/item/bodypart/l_leg)
 	faction = list("undead")
 	var/skel_outfit = /datum/outfit/job/roguetown/npc/skeleton
+	var/skel_fragile = FALSE
 	ambushable = FALSE
 	rot_type = null
 	possible_rmb_intents = list()
@@ -16,6 +17,7 @@
 	aggressive = 1
 	mode = AI_IDLE
 	wander = FALSE
+	skel_fragile = TRUE
 
 /mob/living/carbon/human/species/skeleton/npc/ambush
 
@@ -58,6 +60,8 @@
 	ADD_TRAIT(src, TRAIT_NOPAIN, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_TOXIMMUNE, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_LIMBATTACHMENT, TRAIT_GENERIC)
+	if(skel_fragile)
+		ADD_TRAIT(src, TRAIT_CRITICAL_WEAKNESS, TRAIT_GENERIC)
 	var/obj/item/organ/eyes/eyes = src.getorganslot(ORGAN_SLOT_EYES)
 	if(eyes)
 		eyes.Remove(src,1)

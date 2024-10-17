@@ -379,12 +379,40 @@ GLOBAL_LIST_INIT(roguetown_areas_typecache, typecacheof(/area/rogue/indoors/town
 	droning_sound_dusk = null
 	droning_sound_night = null
 	converted_type = /area/rogue/outdoors/dungeon1
+
 /area/rogue/outdoors/dungeon1
 	name = "smalldungeonoutdoors"
 	icon_state = "spidercave"
 	droning_sound = 'sound/music/area/dungeon.ogg'
 	droning_sound_dusk = null
 	droning_sound_night = null
+
+/area/rogue/under/cave/mazedungeon
+	name = "mazedungeon"
+	icon_state = "under"
+	first_time_text = "TEMPLE OF THE SHATTERED GOD"
+	droning_sound = 'sound/music/area/dungeon2.ogg'
+	droning_sound_dusk = null
+	droning_sound_night = null
+	converted_type = /area/rogue/outdoors/dungeon1
+
+/area/rogue/under/cave/orcdungeon
+	name = "orcdungeon"
+	icon_state = "under"
+	first_time_text = "OLD RUIN"
+	droning_sound = 'sound/music/area/dungeon.ogg'
+	droning_sound_dusk = null
+	droning_sound_night = null
+	converted_type = /area/rogue/outdoors/dungeon1
+
+/area/rogue/under/cave/dukecourt
+	name = "dukedungeon"
+	icon_state = "duke"
+	first_time_text = "FORGOTTEN COURT"
+	droning_sound = 'sound/music/area/dungeon2.ogg'
+	droning_sound_dusk = null
+	droning_sound_night = null
+	converted_type = /area/rogue/outdoors/dungeon1
 
 //////
 /////

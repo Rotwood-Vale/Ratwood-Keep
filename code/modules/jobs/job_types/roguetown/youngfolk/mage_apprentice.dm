@@ -41,4 +41,4 @@
 		H.mind.adjust_skillrank(/datum/skill/combat/polearms, 1, TRUE)
 		H.mind.adjust_spellpoints(1)
 	H.change_stat("intelligence", 2)
-	H.change_stat("speed", -1)
+	H.change_stat("speed", 1)

@@ -60,9 +60,6 @@ GLOBAL_LIST_EMPTY_TYPED(schizohelps, /datum/schizohelp)
 	if(schizo.owner == src.mob)
 		to_chat(src, span_warning("I can't answer my own meditation!"))
 		return
-	if(schizo.answers[src.key])
-		to_chat(src, span_warning("I have already answered this meditation!"))
-		return
 	var/answer = input("Answer their meditations...", "VOICE")
 	if(!answer || QDELETED(schizo))
 		return
@@ -74,7 +71,7 @@ GLOBAL_LIST_EMPTY_TYPED(schizohelps, /datum/schizohelp)
 	/// Answers we got so far, indexed by client key
 	var/list/answers = list()
 	/// How many answers we can get at maximum
-	var/max_answers = 3
+	var/max_answers = 5
 	/// How much time we have to be answered
 	var/timeout = 5 MINUTES
 
@@ -97,10 +94,17 @@ GLOBAL_LIST_EMPTY_TYPED(schizohelps, /datum/schizohelp)
 	if(QDELETED(src) || !voice.client)
 		return
 	to_chat(owner, "<i>I hear a voice in my head...\n<b>[answer]</i></b>")
-	for(var/client/admin in GLOB.admins)
-		if(!(admin.prefs.chat_toggles & CHAT_PRAYER))
-			continue
-		to_chat(admin, span_info("<i>[voice] ([voice.key || "NO KEY"]) [ADMIN_FLW(owner)] [ADMIN_SM(owner)] answered [owner] ([owner.key || "NO KEY"])'s [ADMIN_FLW(owner)] [ADMIN_SM(owner)] meditation:</i>\n[answer]"))
+
+	for(var/client/listener in (GLOB.clients - owner.client))
+		if(listener in GLOB.admins)
+			if(!(listener.prefs.chat_toggles & CHAT_PRAYER))
+				continue
+			to_chat(listener, span_info("<i>[voice] ([voice.key || "NO KEY"]) [ADMIN_FLW(owner)] [ADMIN_SM(owner)] answered [owner] ([owner.key || "NO KEY"])'s [ADMIN_FLW(owner)] [ADMIN_SM(owner)] meditation:</i>\n[answer]"))
+		else
+			if(!(listener.prefs.toggles & SCHIZO_VOICE))
+				continue
+			to_chat(listener, "Someone answers: [answer]")
+
 	answers[voice.key] = answer
 	if(length(answers) >= max_answers)
 		qdel(src)

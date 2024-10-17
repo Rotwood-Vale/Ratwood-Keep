@@ -67,7 +67,7 @@
 	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_BLUNT)
 	resistance_flags = FIRE_PROOF
 	blocksound = CHAINHIT
-	max_integrity = 200
+	max_integrity = 250
 	blade_dulling = DULLING_BASHCHOP
 	break_sound = 'sound/foley/breaksound.ogg'
 	drop_sound = 'sound/foley/dropsound/chain_drop.ogg'
@@ -78,6 +78,7 @@
 	icon_state = "icgloves"
 	anvilrepair = /datum/skill/craft/armorsmithing
 	smeltresult = /obj/item/ingot/iron
+	max_integrity = 200
 
 //rogtodo sprites for this
 /obj/item/clothing/gloves/roguetown/plate

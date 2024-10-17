@@ -1,8 +1,8 @@
 /datum/reagent/medicine/healthpot
-	name = "Health Potion"
-	description = "Gradually regenerates all types of damage."
+	name = "Dated Health Potion"
+	description = "Gradually regenerates all types of damage, is past it's shelf-life."
 	reagent_state = LIQUID
-	color = "#ff0000"
+	color = "#A20000"
 	taste_description = "red"
 	overdose_threshold = 45
 	metabolization_rate = 0.5 * REAGENTS_METABOLISM
@@ -21,11 +21,11 @@
 		//some peeps dislike the church, this allows an alternative thats not a doctor or sleep.
 		M.heal_wounds(3) //at a motabalism of .5 U a tick this translates to 120WHP healing with 20 U Most wounds are unsewn 15-100. This is powerful on single wounds but rapidly weakens at multi wounds.
 		M.update_damage_overlays()
-	M.adjustBruteLoss(-1*REM, 0)
-	M.adjustFireLoss(-1*REM, 0)
-	M.adjustOxyLoss(-1, 0)
-	M.adjustOrganLoss(ORGAN_SLOT_BRAIN, -1*REM)
-	M.adjustCloneLoss(-1*REM, 0)
+	M.adjustBruteLoss(-0.7*REM, 0)
+	M.adjustFireLoss(-0.7*REM, 0)
+	M.adjustOxyLoss(-0.7, 0)
+	M.adjustOrganLoss(ORGAN_SLOT_BRAIN, -0.7*REM)
+	M.adjustCloneLoss(-0.7*REM, 0)
 	..()
 	. = 1
 
@@ -45,6 +45,54 @@
 	..()
 	. = 1
 
+/datum/reagent/medicine/healthpotnew
+	name = "Health Potion"
+	description = "Gradually regenerates all types of damage."
+	reagent_state = LIQUID
+	color = "#ff0000"
+	taste_description = "red"
+	overdose_threshold = 45
+	metabolization_rate = 0.5 * REAGENTS_METABOLISM
+	alpha = 173
+
+/datum/reagent/medicine/healthpotnew/on_mob_life(mob/living/carbon/M)
+	M.reagents.remove_reagent(/datum/reagent/medicine/healthpot, 100) //removes old health pot so you can't double-up
+	if(volume >= 60)
+		M.reagents.remove_reagent(/datum/reagent/medicine/healthpotnew, 2) //No overhealing.
+	var/list/wCount = M.get_wounds()
+	if(M.blood_volume < BLOOD_VOLUME_NORMAL)
+		M.blood_volume = min(M.blood_volume+50, BLOOD_VOLUME_MAXIMUM)
+	else
+		//can overfill you with blood, but at a slower rate
+		M.blood_volume = min(M.blood_volume+10, BLOOD_VOLUME_MAXIMUM)
+	if(wCount.len > 0)
+		//some peeps dislike the church, this allows an alternative thats not a doctor or sleep.
+		M.heal_wounds(3) //at a motabalism of .5 U a tick this translates to 120WHP healing with 20 U Most wounds are unsewn 15-100. This is powerful on single wounds but rapidly weakens at multi wounds.
+		M.update_damage_overlays()
+	M.adjustBruteLoss(-1.4*REM, 0)
+	M.adjustFireLoss(-1.4*REM, 0)
+	M.adjustOxyLoss(-1.4, 0)
+	M.adjustOrganLoss(ORGAN_SLOT_BRAIN, -1.4*REM)
+	M.adjustCloneLoss(-1.4*REM, 0)
+	..()
+	. = 1
+
+/datum/reagent/medicine/healthpotnew/overdose_start(mob/living/M)
+	if(ishuman(M))
+		var/mob/living/carbon/human/H = M
+		if(!istype(H.dna.species, /datum/species/werewolf))
+			H.playsound_local(H, 'sound/misc/heroin_rush.ogg', 100, FALSE)
+			H.visible_message(span_warning("Blood runs from [H]'s nose."))
+	. = 1
+
+/datum/reagent/medicine/healthpotnew/overdose_process(mob/living/M)
+	if(ishuman(M))
+		var/mob/living/carbon/human/H = M
+		if(!istype(H.dna.species, /datum/species/werewolf))
+			M.adjustToxLoss(2, 0)
+	..()
+	. = 1
+
 /datum/reagent/medicine/manapot
 	name = "Mana Potion"
 	description = "Gradually regenerates stamina."
@@ -52,7 +100,7 @@
 	color = "#0000ff"
 	taste_description = "manna"
 	overdose_threshold = 45
-	metabolization_rate = 1 * REAGENTS_METABOLISM
+	metabolization_rate = 0.5 * REAGENTS_METABOLISM
 	alpha = 173
 
 /datum/reagent/medicine/manapot/on_mob_life(mob/living/carbon/M)

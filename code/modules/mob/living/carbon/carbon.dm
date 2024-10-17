@@ -351,7 +351,7 @@
 		buckled.user_unbuckle_mob(src,src)
 
 /mob/living/carbon/resist_fire()
-	fire_stacks -= 5
+	fire_stacks -= 2
 	if(fire_stacks > 10)
 		Paralyze(60, TRUE, TRUE)
 		spin(32,2)

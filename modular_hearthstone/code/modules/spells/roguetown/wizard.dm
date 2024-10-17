@@ -106,6 +106,7 @@
 	var/skill_level = user.mind?.get_skill_level(attached_spell.associated_skill)
 	var/mote_power = clamp(4 + (skill_level - 3), 4, 7) // every step above journeyman should get us 1 more tile of brightness
 	mote.light_range = mote_power
+	mote.update_light()
 
 	if (mote.loc == src)
 		user.visible_message(span_notice("[user] holds open the palm of [user.p_their()] hand and concentrates..."), span_notice("I hold open the palm of my hand and concentrate on my arcyne power..."))
@@ -355,7 +356,7 @@
 /obj/effect/proc_holder/spell/self/message
 	name = "Message"
 	desc = "Latch onto the mind of one who is familiar to you, whispering a message into their head."
-	cost = 2
+	cost = 1
 	xp_gain = TRUE
 	releasedrain = 30
 	charge_max = 60 SECONDS
@@ -397,6 +398,7 @@
 			if(!identified) //we failed the check OR we just dont know who that is
 				to_chat(HL, "Arcyne whispers fill the back of my head, resolving into an unknown [user.gender == FEMALE ? "woman" : "man"]'s voice: <font color=#7246ff>[message]</font>")
 
+			user.visible_message("[user] mutters an incantation and their mouth briefly flashes white.")
 			user.whisper(message)
 			log_game("[key_name(user)] sent a message to [key_name(HL)] with contents [message]")
 			// maybe an option to return a message, here?
@@ -587,7 +589,7 @@
 	drawmessage = "I prepare to grant Darkvision."
 	dropmessage = "I release my arcyne focus."
 	school = "transmutation"
-	charge_max = 2 MINUTES
+	charge_max = 1 MINUTES
 	chargedloop = /datum/looping_sound/invokegen
 	associated_skill = /datum/skill/magic/arcane
 	hand_path = /obj/item/melee/touch_attack/darkvision
@@ -656,7 +658,7 @@
 	releasedrain = 60
 	chargedrain = 1
 	chargetime = 4 SECONDS
-	charge_max = 5 MINUTES
+	charge_max = 1.5 MINUTES
 	warnie = "spellwarning"
 	school = "transmutation"
 	no_early_release = TRUE
@@ -731,7 +733,7 @@
 	releasedrain = 50
 	chargedrain = 0
 	chargetime = 4 SECONDS
-	charge_max = 2 MINUTES
+	charge_max = 1.5 MINUTES
 	warnie = "spellwarning"
 	no_early_release = TRUE
 	charging_slowdown = 1

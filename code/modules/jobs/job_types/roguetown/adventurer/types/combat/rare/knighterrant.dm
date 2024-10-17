@@ -31,7 +31,6 @@
 			wrists = /obj/item/clothing/wrists/roguetown/bracers
 			shoes = /obj/item/clothing/shoes/roguetown/boots/armor
 			belt = /obj/item/storage/belt/rogue/leather
-			beltr = /obj/item/rogueweapon/sword/long
 			backr = /obj/item/storage/backpack/rogue/satchel/black
 			backl = /obj/item/rogueweapon/shield/tower/metal
 			backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger = 1,/obj/item/storage/belt/rogue/pouch/coins/poor)
@@ -39,6 +38,7 @@
 			H.mind.adjust_skillrank(/datum/skill/combat/swords, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/shields, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/maces, 3, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/whipsflails, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
@@ -54,6 +54,16 @@
 			H.change_stat("intelligence", 1)
 			H.change_stat("speed", 1)
 			H.dna.species.soundpack_m = new /datum/voicepack/male/knight()
+			var/weapons = list("Bastard Sword","Flail","Spear")
+			var/weapon_choice = input("Choose your weapon.", "TAKE UP ARMS") as anything in weapons
+			H.set_blindness(0)
+			switch(weapon_choice)
+				if("Bastard Sword")	
+					beltr = /obj/item/rogueweapon/sword/long
+				if("Flail")
+					beltr = /obj/item/rogueweapon/flail/sflail
+				if("Spear")
+					r_hand = /obj/item/rogueweapon/spear
 
 		if("Black Knight")
 			head = /obj/item/clothing/head/roguetown/helmet/heavy/knight/black
@@ -66,7 +76,6 @@
 			wrists = /obj/item/clothing/wrists/roguetown/bracers
 			shoes = /obj/item/clothing/shoes/roguetown/boots/armor/blk
 			belt = /obj/item/storage/belt/rogue/leather
-			beltr = /obj/item/rogueweapon/sword/long
 			backr = /obj/item/storage/backpack/rogue/satchel/black
 			backl = /obj/item/rogueweapon/shield/tower/metal
 			backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger = 1, /obj/item/storage/belt/rogue/pouch/coins/poor)
@@ -74,6 +83,7 @@
 			H.mind.adjust_skillrank(/datum/skill/combat/swords, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/shields, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/maces, 3, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/whipsflails, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
@@ -89,6 +99,16 @@
 			H.change_stat("intelligence", 1)
 			H.change_stat("speed", 1)
 			H.dna.species.soundpack_m = new /datum/voicepack/male/knight()
+			var/weapons = list("Bastard Sword","Flail","Spear")
+			var/weapon_choice = input("Choose your weapon.", "TAKE UP ARMS") as anything in weapons
+			H.set_blindness(0)
+			switch(weapon_choice)
+				if("Bastard Sword")	
+					beltr = /obj/item/rogueweapon/sword/long
+				if("Flail")
+					beltr = /obj/item/rogueweapon/flail/sflail
+				if("Spear")
+					r_hand = /obj/item/rogueweapon/spear
 
 /obj/item/clothing/gloves/roguetown/chain/blk
 		color = CLOTHING_GREY

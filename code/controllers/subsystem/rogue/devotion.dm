@@ -103,7 +103,7 @@
 	if(!H || !H.mind || !patron)
 		return
 
-	var/list/spelllist = list(patron.t0, patron.t1)
+	var/list/spelllist = list(/obj/effect/proc_holder/spell/targeted/touch/orison, patron.t0, patron.t1)
 	for(var/spell_type in spelllist)
 		if(!spell_type || H.mind.has_spell(spell_type))
 			continue
@@ -117,7 +117,7 @@
 	if(!H || !H.mind || !patron)
 		return
 
-	var/list/spelllist = list(patron.t0)
+	var/list/spelllist = list(/obj/effect/proc_holder/spell/targeted/touch/orison, patron.t0)
 	if(istype(patron,/datum/patron/divine))
 		spelllist += /obj/effect/proc_holder/spell/targeted/churn
 	for(var/spell_type in spelllist)
@@ -134,7 +134,7 @@
 	if(!H || !H.mind || !patron)
 		return
 
-	var/list/spelllist = list(/obj/effect/proc_holder/spell/invoked/lesser_heal, /obj/effect/proc_holder/spell/invoked/diagnose) //This would have caused jank.
+	var/list/spelllist = list(/obj/effect/proc_holder/spell/targeted/touch/orison, /obj/effect/proc_holder/spell/invoked/lesser_heal, /obj/effect/proc_holder/spell/invoked/diagnose) //This would have caused jank.
 	for(var/spell_type in spelllist)
 		if(!spell_type || H.mind.has_spell(spell_type))
 			continue
@@ -150,7 +150,7 @@
 		return
 
 	granted_spells = list()
-	var/list/spelllist = list(patron.t0, patron.t1, patron.t2, patron.t3, patron.t4)
+	var/list/spelllist = list(/obj/effect/proc_holder/spell/targeted/touch/orison, patron.t0, patron.t1, patron.t2, patron.t3, patron.t4)
 	for(var/spell_type in spelllist)
 		if(!spell_type || H.mind.has_spell(spell_type))
 			continue
@@ -167,7 +167,7 @@
 		return
 
 	granted_spells = list()
-	var/list/spelllist = list(patron.t0, patron.t1, patron.t2, patron.t3, patron.t4)
+	var/list/spelllist = list(/obj/effect/proc_holder/spell/targeted/touch/orison, patron.t0, patron.t1, patron.t2, patron.t3, patron.t4)
 	for(var/spell_type in spelllist)
 		if(!spell_type || H.mind.has_spell(spell_type))
 			continue

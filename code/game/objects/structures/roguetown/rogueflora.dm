@@ -535,7 +535,6 @@
 		bushtype2 = pickweight(list(/obj/item/reagent_containers/food/snacks/grown/rogue/fyritius = 1))
 	loot_replenish2()
 	pixel_x += rand(-3,3)
-	return ..()
 
 /obj/structure/flora/roguegrass/pyroclasticflowers/proc/loot_replenish2()
 	if(bushtype2)
