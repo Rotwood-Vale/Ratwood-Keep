@@ -72,7 +72,7 @@
 		if(roundvoteend)
 			return TRUE
 		if(!SSvote.mode)
-			SSvote.initiate_vote("endround", pick("Zlod", "Sun King", "Gaia", "Aeon", "Gemini", "Aries"))
+			SSvote.initiate_vote("endround", "Zizo")
 //	if(SSshuttle.emergency && (SSshuttle.emergency.mode == SHUTTLE_ENDGAME))
 //		return TRUE
 	if(headrebdecree)
