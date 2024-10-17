@@ -62,6 +62,7 @@
 	name = "icepick stab"
 	icon_state = "inpick"
 	attack_verb = list("picks", "impales")
+	blade_class = BCLASS_PICK
 	hitsound = list('sound/combat/hits/bladed/genstab (1).ogg', 'sound/combat/hits/bladed/genstab (2).ogg', 'sound/combat/hits/bladed/genstab (3).ogg')
 	penfactor = 80
 	clickcd = 14
