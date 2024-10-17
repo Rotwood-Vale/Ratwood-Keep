@@ -92,7 +92,7 @@
 	soundloop.stop()
 	if(controller)
 		controller.endvines()
-	controller.tree = null
+		controller.tree = null
 	controller = null
 	. = ..()
 
