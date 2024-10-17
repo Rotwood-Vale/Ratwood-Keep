@@ -69,6 +69,7 @@
 /obj/item/clothing/under/roguetown/tights/vagrant
 	r_sleeve_status = SLEEVE_TORN
 	body_parts_covered = GROIN|LEG_LEFT
+	torn_sleeve_number = 1
 
 /obj/item/clothing/under/roguetown/tights/vagrant/l
 	r_sleeve_status = SLEEVE_NORMAL
@@ -91,6 +92,7 @@
 	item_state = "webs"
 	r_sleeve_status = SLEEVE_NOMOD
 	l_sleeve_status = SLEEVE_NOMOD
+	salvage_result = /obj/item/natural/silk
 
 /obj/item/clothing/under/roguetown/trou
 	name = "work trousers"
@@ -111,6 +113,8 @@
 	name = "leather trousers"
 	desc = "Trousers made of fine leather."
 	icon_state = "leathertrou"
+	salvage_amount = 1
+	salvage_result = /obj/item/natural/hide
 
 /obj/item/clothing/under/roguetown/trou/leather/mourning
 	name = "mourning trousers"
@@ -192,6 +196,8 @@
 //	adjustable = CAN_CADJUST
 	r_sleeve_status = SLEEVE_NOMOD
 	l_sleeve_status = SLEEVE_NOMOD
+	fiber_salvage = FALSE
+	salvage_amount = 1
 
 /obj/item/clothing/under/roguetown/loincloth/brown
 	color = CLOTHING_BROWN
