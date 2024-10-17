@@ -1,8 +1,7 @@
 /datum/faith/inhumen
-	name = "Inhumen Pantheon"
-	desc = "The ten are FALSE GODS.\n\
-		They keep us trapped in tartarus and choke out our divine light, \
-		but only though FULL BELIEF in the divinity of men and women can we escape and reach the TRUE spiritual realm.\n\
-		The godhead smiles upon us as we defile Psydon and become the divinities we were always meant to be."
-	worshippers = "Dark elves, cultists and those forsaken by the ten"
+	name = "New Pantheon"
+	desc = "The Holy Ecclesial was formed by a violent schism with the Holy See that split the church in twain. \n\
+		The Holy Ecclesial accepts the New Pantheon as True Divinity, proof that Mortals can ascend past the coil of Psydon's corpse.  \
+		So close to the seat of the Holy See, worship of the New Pantheon is considered heretical, and they are denounced as the INHUMEN."
+	worshippers = "cultists, those who live outside of the Peak, those spurned by the Ten, zealotry-filled fools."
 	godhead = /datum/patron/inhumen/zizo
