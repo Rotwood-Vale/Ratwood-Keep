@@ -4,7 +4,7 @@
 
 
 /datum/crafting_recipe/roguetown/tneedle
-	name = "sewing needle"
+	name = "thorn sewing needle"
 	result = /obj/item/needle/thorn
 	reqs = list(/obj/item/natural/thorn = 1,
 				/obj/item/natural/fibers = 1)
@@ -190,7 +190,8 @@
 /datum/crafting_recipe/roguetown/woodsword
 	name = "wood sword"
 	result = list(/obj/item/rogueweapon/mace/wsword,
-					/obj/item/rogueweapon/mace/wsword)
+				/obj/item/rogueweapon/mace/wsword,
+				/obj/item/rogueweapon/mace/wsword)
 	reqs = list(/obj/item/grown/log/tree/small = 1,
 				/obj/item/natural/fibers = 1)
 	craftdiff = 1
@@ -343,7 +344,7 @@
 	subtype_reqs = TRUE //Unsure if needed for stone knife to work, feel free to remove this if not.
 
 /datum/crafting_recipe/roguetown/bag
-	name = "bag"
+	name = "sack/bag"
 	result = /obj/item/storage/roguebag/crafted
 	reqs = list(/obj/item/natural/fibers = 1,
 				/obj/item/natural/cloth = 1)
@@ -390,7 +391,7 @@
 /datum/crafting_recipe/roguetown/pipe
 	name = "wood pipe"
 	result = /obj/item/clothing/mask/cigarette/pipe/crafted
-	reqs = list(/obj/item/grown/log/tree/small = 1)
+	reqs = list(/obj/item/grown/log/tree/stick = 1)
 
 
 /obj/item/clothing/mask/cigarette/pipe/crafted
@@ -454,6 +455,23 @@
 	tools = list(/obj/item/rogueweapon/huntingknife = 1)
 	structurecraft = /obj/structure/fluff/dryingrack
 	craftdiff = 1
+
+/datum/crafting_recipe/roguetown/parchment
+	name = "paper parchment (x8)"
+	result = list(/obj/item/paper,
+				  /obj/item/paper,
+				  /obj/item/paper,
+				  /obj/item/paper,
+				  /obj/item/paper,
+				  /obj/item/paper,
+				  /obj/item/paper,
+				  /obj/item/paper)
+	reqs = list(/obj/item/grown/log/tree/small = 1,
+	/datum/reagent/water = 30)
+	tools = list(/obj/item/rogueweapon/huntingknife = 1)
+	structurecraft = /obj/structure/fluff/dryingrack
+	craftdiff = 1
+
 
 /datum/crafting_recipe/roguetown/briarmask
 	name = "briarmask"

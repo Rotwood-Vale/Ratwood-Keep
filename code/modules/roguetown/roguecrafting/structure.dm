@@ -301,7 +301,7 @@
 /datum/crafting_recipe/roguetown/structure/railing
 	name = "railing"
 	result = /obj/structure/fluff/railing/wood
-	reqs = list(/obj/item/grown/log/tree/small = 1)
+	reqs = list(/obj/item/grown/log/tree/stick = 2)
 	ontile = TRUE
 	verbage_simple = "construct"
 	verbage = "constructs"
@@ -331,7 +331,8 @@
 
 /datum/crafting_recipe/roguetown/structure/fencealt
 	name = "palisade (small log)"
-	result = /obj/structure/fluff/railing/fence
+	result = (/obj/structure/fluff/railing/fence,
+				/obj/item/grown/log/tree/stick)
 	reqs = list(/obj/item/grown/log/tree/small = 1)
 	ontile = TRUE
 	verbage_simple = "set up"
@@ -349,7 +350,8 @@
 /datum/crafting_recipe/roguetown/structure/chest
 	name = "chest"
 	result = /obj/structure/closet/crate/chest/crafted
-	reqs = list(/obj/item/grown/log/tree/small = 1)
+	reqs = list(/obj/item/grown/log/tree/small = 1,
+				/obj/item/grown/log/tree/stick = 1)
 	verbage_simple = "construct"
 	verbage = "constructs"
 	skillcraft = /datum/skill/craft/carpentry
@@ -368,7 +370,7 @@
 	skillcraft = /datum/skill/craft/carpentry
 
 /datum/crafting_recipe/roguetown/structure/coffin
-	name = "wooden coffin"
+	name = "wooden coffin/casket"
 	result = /obj/structure/closet/crate/coffin
 	reqs = list(/obj/item/grown/log/tree/small = 2)
 	verbage_simple = "construct"
