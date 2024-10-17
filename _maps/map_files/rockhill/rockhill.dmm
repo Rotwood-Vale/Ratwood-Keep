@@ -2265,7 +2265,7 @@
 /turf/closed/wall/mineral/rogue/wood,
 /area/rogue/indoors/town/manor)
 "cqm" = (
-/turf/open/floor/rogue/grass,
+/turf/open/floor/rogue/dirt,
 /area/rogue/indoors/shelter/rtfield)
 "cqx" = (
 /obj/structure/stairs,
@@ -3534,6 +3534,9 @@
 	dir = 1
 	},
 /area/rogue/indoors/town/church)
+"duA" = (
+/turf/open/floor/rogue/dirt/road,
+/area/rogue/indoors/shelter/rtfield)
 "duQ" = (
 /obj/structure/table/wood{
 	icon_state = "map1"
@@ -14201,7 +14204,7 @@
 /obj/item/natural/bundle/cloth,
 /obj/item/natural/feather,
 /turf/open/floor/rogue/hexstone,
-/area/rogue/indoors)
+/area/rogue/outdoors/bog)
 "nJy" = (
 /turf/closed/wall/mineral/rogue/decostone/long,
 /area/rogue/indoors/town/church/chapel)
@@ -15691,9 +15694,6 @@
 	},
 /turf/open/floor/rogue/carpet/lord/center,
 /area/rogue/indoors/town/manor)
-"oZw" = (
-/turf/open/floor/rogue/dirt/road,
-/area/rogue/indoors/shelter/rtfield)
 "oZC" = (
 /obj/structure/fluff/railing/border{
 	dir = 9
@@ -16524,7 +16524,7 @@
 "pOw" = (
 /obj/item/grown/log/tree/stick,
 /turf/open/floor/rogue/hexstone,
-/area/rogue/indoors)
+/area/rogue/outdoors/bog)
 "pPy" = (
 /obj/structure/flora/roguetree/stump/log,
 /turf/open/floor/rogue/dirt/road,
@@ -22100,6 +22100,9 @@
 /obj/machinery/light/rogue/wallfire/candle/blue/r,
 /turf/open/floor/rogue/herringbone,
 /area/rogue/indoors/town/church)
+"vsA" = (
+/turf/open/floor/rogue/grass,
+/area/rogue/indoors/shelter/rtfield)
 "vsS" = (
 /obj/structure/fluff/wallclock,
 /turf/open/floor/rogue/wood,
@@ -22738,9 +22741,6 @@
 	dir = 4
 	},
 /area/rogue/indoors/town/manor)
-"vXK" = (
-/turf/open/floor/rogue/dirt,
-/area/rogue/indoors/shelter/rtfield)
 "vXS" = (
 /obj/structure/closet/crate/roguecloset/inn/south,
 /turf/open/floor/carpet/purple,
@@ -256248,8 +256248,8 @@ tmH
 vIa
 vIa
 vIa
-vXK
-vXK
+cqm
+cqm
 vIa
 vIa
 tmH
@@ -256649,10 +256649,10 @@ vIa
 vIa
 vIa
 vIa
-oZw
-oZw
-oZw
-oZw
+duA
+duA
+duA
+duA
 vIa
 tmH
 tmH
@@ -257051,10 +257051,10 @@ vIa
 vIa
 vIa
 vIa
-oZw
-oZw
-oZw
-oZw
+duA
+duA
+duA
+duA
 vIa
 tmH
 tmH
@@ -257451,13 +257451,13 @@ vIa
 vIa
 vIa
 twI
-oZw
-vXK
-vXK
-oZw
-oZw
-vXK
-oZw
+duA
+cqm
+cqm
+duA
+duA
+cqm
+duA
 vIa
 tmH
 tmH
@@ -257848,18 +257848,18 @@ vIa
 vIa
 vIa
 vIa
-oZw
-oZw
-oZw
-oZw
-oZw
-oZw
-vXK
-vXK
-vXK
-vXK
-vXK
-oZw
+duA
+duA
+duA
+duA
+duA
+duA
+cqm
+cqm
+cqm
+cqm
+cqm
+duA
 vIa
 vIa
 vIa
@@ -258247,22 +258247,22 @@ aUc
 aUc
 vIa
 vIa
-vXK
-vXK
-oZw
-oZw
-vXK
-oZw
-oZw
-oZw
-oZw
-oZw
-oZw
-oZw
-oZw
-oZw
-oZw
-oZw
+cqm
+cqm
+duA
+duA
+cqm
+duA
+duA
+duA
+duA
+duA
+duA
+duA
+duA
+duA
+duA
+duA
 vIa
 vIa
 vIa
@@ -258647,24 +258647,24 @@ fyc
 (72,1,3) = {"
 cWT
 cWT
-oZw
-vXK
-vXK
-oZw
-oZw
-vXK
-vXK
-vXK
-vXK
-vXK
-oZw
-oZw
-oZw
-oZw
-oZw
-oZw
-oZw
-oZw
+duA
+cqm
+cqm
+duA
+duA
+cqm
+cqm
+cqm
+cqm
+cqm
+duA
+duA
+duA
+duA
+duA
+duA
+duA
+duA
 uaL
 uaL
 uaL
@@ -259049,24 +259049,24 @@ fyc
 (73,1,3) = {"
 cWT
 cWT
-oZw
-vXK
-oZw
-oZw
-vXK
-vXK
-vXK
-vXK
-oZw
+duA
+cqm
+duA
+duA
+cqm
+cqm
+cqm
+cqm
+duA
 hcW
 hcW
 hcW
 hcW
 hcW
-oZw
-vXK
-vXK
-oZw
+duA
+cqm
+cqm
+duA
 uaL
 uaL
 uaL
@@ -259451,14 +259451,14 @@ fyc
 (74,1,3) = {"
 cWT
 cWT
-vXK
-vXK
-oZw
-oZw
-vXK
-vXK
-vXK
-oZw
+cqm
+cqm
+duA
+duA
+cqm
+cqm
+cqm
+duA
 hcW
 hcW
 hcW
@@ -259466,9 +259466,9 @@ hcW
 hcW
 hcW
 hcW
-vXK
-vXK
-vXK
+cqm
+cqm
+cqm
 uaL
 uaL
 uaL
@@ -259853,13 +259853,13 @@ fyc
 (75,1,3) = {"
 cWT
 cWT
-oZw
-oZw
-oZw
-vXK
-vXK
-vXK
-oZw
+duA
+duA
+duA
+cqm
+cqm
+cqm
+duA
 hcW
 hcW
 hcW
@@ -259868,9 +259868,9 @@ hcW
 hcW
 hcW
 hcW
-oZw
-vXK
-vXK
+duA
+cqm
+cqm
 uaL
 uaL
 uaL
@@ -260255,13 +260255,13 @@ fyc
 (76,1,3) = {"
 cWT
 cWT
-oZw
-oZw
-vXK
-vXK
-vXK
-vXK
-oZw
+duA
+duA
+cqm
+cqm
+cqm
+cqm
+duA
 hcW
 hcW
 hcW
@@ -260271,8 +260271,8 @@ hcW
 hcW
 hcW
 hcW
-vXK
-vXK
+cqm
+cqm
 wSn
 uaL
 uaL
@@ -260657,13 +260657,13 @@ fyc
 (77,1,3) = {"
 cWT
 cWT
-oZw
-vXK
-vXK
-oZw
-oZw
-oZw
-oZw
+duA
+cqm
+cqm
+duA
+duA
+duA
+duA
 hcW
 hcW
 hcW
@@ -260674,7 +260674,7 @@ hcW
 hcW
 hcW
 hcW
-oZw
+duA
 wSn
 uaL
 uaL
@@ -261059,12 +261059,12 @@ fyc
 (78,1,3) = {"
 cWT
 cWT
-oZw
-vXK
-oZw
-oZw
-vXK
-oZw
+duA
+cqm
+duA
+duA
+cqm
+duA
 hcW
 hcW
 hcW
@@ -261461,12 +261461,12 @@ fyc
 (79,1,3) = {"
 cWT
 cWT
-oZw
-vXK
-vXK
-vXK
-vXK
-oZw
+duA
+cqm
+cqm
+cqm
+cqm
+duA
 hcW
 hcW
 hcW
@@ -261863,12 +261863,12 @@ fyc
 (80,1,3) = {"
 cWT
 cWT
-oZw
-oZw
-vXK
-vXK
-oZw
-oZw
+duA
+duA
+cqm
+cqm
+duA
+duA
 hcW
 hcW
 hcW
@@ -262265,12 +262265,12 @@ fyc
 (81,1,3) = {"
 cWT
 cWT
-oZw
-oZw
-vXK
-oZw
-oZw
-oZw
+duA
+duA
+cqm
+duA
+duA
+duA
 hcW
 hcW
 hcW
@@ -262667,11 +262667,11 @@ fyc
 (82,1,3) = {"
 cWT
 cWT
-oZw
-oZw
-oZw
-oZw
-oZw
+duA
+duA
+duA
+duA
+duA
 hcW
 hcW
 hcW
@@ -263069,10 +263069,10 @@ fyc
 (83,1,3) = {"
 cWT
 cWT
-oZw
-vXK
-oZw
-oZw
+duA
+cqm
+duA
+duA
 hcW
 hcW
 hcW
@@ -263471,9 +263471,9 @@ fyc
 (84,1,3) = {"
 cWT
 cWT
-vXK
-vXK
-oZw
+cqm
+cqm
+duA
 hcW
 hcW
 hcW
@@ -263481,7 +263481,7 @@ hcW
 hcW
 hcW
 hcW
-oZw
+duA
 hcW
 hcW
 hcW
@@ -263873,18 +263873,18 @@ fyc
 (85,1,3) = {"
 cWT
 cWT
-vXK
-vXK
-oZw
+cqm
+cqm
+duA
 hcW
 hcW
 hcW
 hcW
 hcW
 hcW
-oZw
-oZw
-oZw
+duA
+duA
+duA
 hcW
 hcW
 hcW
@@ -264275,8 +264275,8 @@ fyc
 (86,1,3) = {"
 cWT
 cWT
-vXK
-vXK
+cqm
+cqm
 hcW
 hcW
 hcW
@@ -264677,7 +264677,7 @@ fyc
 (87,1,3) = {"
 cWT
 cWT
-vXK
+cqm
 hcW
 hcW
 hcW
@@ -265079,7 +265079,7 @@ fyc
 (88,1,3) = {"
 cWT
 cWT
-vXK
+cqm
 hcW
 hcW
 hcW
@@ -265481,7 +265481,7 @@ fyc
 (89,1,3) = {"
 cWT
 cWT
-oZw
+duA
 hcW
 hcW
 hcW
@@ -265883,7 +265883,7 @@ fyc
 (90,1,3) = {"
 cWT
 cWT
-oZw
+duA
 hcW
 hcW
 hcW
@@ -266285,7 +266285,7 @@ fyc
 (91,1,3) = {"
 cWT
 cWT
-oZw
+duA
 hcW
 hcW
 hcW
@@ -266687,7 +266687,7 @@ fyc
 (92,1,3) = {"
 cWT
 cWT
-oZw
+duA
 hcW
 hcW
 hcW
@@ -267089,7 +267089,7 @@ fyc
 (93,1,3) = {"
 cWT
 cWT
-oZw
+duA
 hcW
 hcW
 hcW
@@ -267491,7 +267491,7 @@ fyc
 (94,1,3) = {"
 cWT
 cWT
-vXK
+cqm
 hcW
 hcW
 hcW
@@ -267893,7 +267893,7 @@ fyc
 (95,1,3) = {"
 cWT
 cWT
-vXK
+cqm
 hcW
 hcW
 hcW
@@ -268295,8 +268295,8 @@ fyc
 (96,1,3) = {"
 cWT
 cWT
-vXK
-oZw
+cqm
+duA
 hcW
 hcW
 hcW
@@ -268697,8 +268697,8 @@ fyc
 (97,1,3) = {"
 cWT
 cWT
-vXK
-vXK
+cqm
+cqm
 hcW
 hcW
 hcW
@@ -269099,9 +269099,9 @@ fyc
 (98,1,3) = {"
 cWT
 cWT
-oZw
-vXK
-oZw
+duA
+cqm
+duA
 hcW
 hcW
 hcW
@@ -269502,8 +269502,8 @@ fyc
 cWT
 cWT
 hcW
-vXK
-oZw
+cqm
+duA
 hcW
 hcW
 hcW
@@ -269905,7 +269905,7 @@ cWT
 cWT
 hcW
 hcW
-oZw
+duA
 hcW
 hcW
 hcW
@@ -270306,8 +270306,8 @@ fyc
 cWT
 cWT
 hcW
-vXK
-oZw
+cqm
+duA
 hcW
 hcW
 hcW
@@ -270707,9 +270707,9 @@ fyc
 (102,1,3) = {"
 cWT
 cWT
-vXK
-vXK
-oZw
+cqm
+cqm
+duA
 hcW
 hcW
 hcW
@@ -271109,7 +271109,7 @@ fyc
 (103,1,3) = {"
 cWT
 cWT
-vXK
+cqm
 hcW
 hcW
 hcW
@@ -271511,9 +271511,9 @@ fyc
 (104,1,3) = {"
 cWT
 cWT
-oZw
-oZw
-vXK
+duA
+duA
+cqm
 hcW
 hcW
 kQl
@@ -271913,10 +271913,10 @@ fyc
 (105,1,3) = {"
 cWT
 cWT
-oZw
-oZw
-vXK
-vXK
+duA
+duA
+cqm
+cqm
 hcW
 kQl
 kQl
@@ -272317,8 +272317,8 @@ cWT
 cWT
 hcW
 hcW
-oZw
-oZw
+duA
+duA
 hcW
 kQl
 kQl
@@ -272720,7 +272720,7 @@ cWT
 hcW
 hcW
 hcW
-oZw
+duA
 hcW
 kQl
 kQl
@@ -273121,8 +273121,8 @@ cWT
 cWT
 hcW
 hcW
-oZw
-oZw
+duA
+duA
 hcW
 kQl
 kQl
@@ -273522,9 +273522,9 @@ fyc
 cWT
 cWT
 hcW
-oZw
-oZw
-oZw
+duA
+duA
+duA
 hcW
 kQl
 kQl
@@ -273924,9 +273924,9 @@ fyc
 cWT
 cWT
 hcW
-oZw
-oZw
-oZw
+duA
+duA
+duA
 hcW
 kQl
 kQl
@@ -274326,8 +274326,8 @@ fyc
 cWT
 cWT
 hcW
-vXK
-oZw
+cqm
+duA
 hcW
 hcW
 kQl
@@ -274728,7 +274728,7 @@ fyc
 cWT
 cWT
 hcW
-vXK
+cqm
 hcW
 hcW
 hcW
@@ -275130,7 +275130,7 @@ fyc
 cWT
 cWT
 hcW
-vXK
+cqm
 hcW
 hcW
 hcW
@@ -275532,8 +275532,8 @@ fyc
 cWT
 cWT
 hcW
-oZw
-oZw
+duA
+duA
 hcW
 hcW
 kQl
@@ -275934,8 +275934,8 @@ fyc
 cWT
 cWT
 hcW
-vXK
-oZw
+cqm
+duA
 hcW
 hcW
 kQl
@@ -276336,8 +276336,8 @@ fyc
 cWT
 cWT
 hcW
-vXK
-oZw
+cqm
+duA
 hcW
 hcW
 kQl
@@ -276738,8 +276738,8 @@ fyc
 cWT
 cWT
 hcW
-vXK
-oZw
+cqm
+duA
 hcW
 hcW
 kQl
@@ -277140,8 +277140,8 @@ fyc
 cWT
 cWT
 hcW
-vXK
-vXK
+cqm
+cqm
 hcW
 hcW
 kQl
@@ -277542,8 +277542,8 @@ fyc
 cWT
 cWT
 hcW
-oZw
-vXK
+duA
+cqm
 hcW
 hcW
 kQl
@@ -277945,7 +277945,7 @@ cWT
 cWT
 hcW
 hcW
-vXK
+cqm
 hcW
 hcW
 kQl
@@ -278347,8 +278347,8 @@ cWT
 cWT
 hcW
 hcW
-vXK
-oZw
+cqm
+duA
 hcW
 kQl
 kQl
@@ -278749,8 +278749,8 @@ cWT
 cWT
 hcW
 hcW
-vXK
-oZw
+cqm
+duA
 hcW
 hcW
 kQl
@@ -279150,9 +279150,9 @@ fyc
 cWT
 cWT
 hcW
-vXK
-vXK
-oZw
+cqm
+cqm
+duA
 hcW
 kQl
 kQl
@@ -279552,7 +279552,7 @@ fyc
 cWT
 cWT
 hcW
-vXK
+cqm
 hcW
 hcW
 hcW
@@ -279954,7 +279954,7 @@ fyc
 cWT
 cWT
 hcW
-oZw
+duA
 hcW
 hcW
 hcW
@@ -280355,9 +280355,9 @@ fyc
 (126,1,3) = {"
 cWT
 cWT
-vXK
-oZw
-oZw
+cqm
+duA
+duA
 hcW
 hcW
 kQl
@@ -280757,10 +280757,10 @@ fyc
 (127,1,3) = {"
 cWT
 cWT
+vsA
 cqm
-vXK
-oZw
-oZw
+duA
+duA
 hcW
 kQl
 kQl
@@ -281159,9 +281159,9 @@ fyc
 (128,1,3) = {"
 cWT
 cWT
-oZw
-oZw
-oZw
+duA
+duA
+duA
 hcW
 hcW
 kQl
@@ -281561,7 +281561,7 @@ fyc
 (129,1,3) = {"
 cWT
 cWT
-oZw
+duA
 hcW
 hcW
 hcW
@@ -281963,7 +281963,7 @@ fyc
 (130,1,3) = {"
 cWT
 cWT
-cqm
+vsA
 hcW
 hcW
 hcW
@@ -282365,8 +282365,8 @@ fyc
 (131,1,3) = {"
 cWT
 cWT
-cqm
-cqm
+vsA
+vsA
 hcW
 hcW
 hcW
@@ -282767,10 +282767,10 @@ fyc
 (132,1,3) = {"
 cWT
 cWT
-cqm
-cqm
-cqm
-cqm
+vsA
+vsA
+vsA
+vsA
 hcW
 hcW
 hcW
@@ -319251,8 +319251,8 @@ wGD
 wGD
 wGD
 fLL
-ltT
-ltT
+sKX
+sKX
 mJb
 frL
 pgj
@@ -357138,7 +357138,7 @@ fyc
 (62,1,4) = {"
 aUc
 aUc
-vIa
+tmH
 tmH
 tmH
 tmH
@@ -357540,10 +357540,10 @@ fyc
 (63,1,4) = {"
 aUc
 aUc
-vIa
-vIa
-vIa
-vIa
+tmH
+tmH
+tmH
+tmH
 tmH
 tmH
 tmH
@@ -357942,10 +357942,10 @@ fyc
 (64,1,4) = {"
 aUc
 aUc
-vIa
-vIa
-vIa
-vIa
+tmH
+tmH
+tmH
+tmH
 tmH
 tmH
 tmH
@@ -358344,10 +358344,10 @@ fyc
 (65,1,4) = {"
 aUc
 aUc
-vIa
-vIa
-vIa
-vIa
+tmH
+tmH
+tmH
+tmH
 tmH
 tmH
 tmH
@@ -358746,10 +358746,10 @@ fyc
 (66,1,4) = {"
 aUc
 aUc
-vIa
-vIa
-vIa
-vIa
+tmH
+tmH
+tmH
+tmH
 tmH
 tmH
 tmH
@@ -359148,10 +359148,10 @@ fyc
 (67,1,4) = {"
 aUc
 aUc
-vIa
-vIa
-vIa
-vIa
+tmH
+tmH
+tmH
+tmH
 tmH
 tmH
 tmH
@@ -359550,10 +359550,10 @@ fyc
 (68,1,4) = {"
 aUc
 aUc
-vIa
-vIa
-vIa
-vIa
+tmH
+tmH
+tmH
+tmH
 tmH
 tmH
 tmH
@@ -359952,10 +359952,10 @@ fyc
 (69,1,4) = {"
 aUc
 aUc
-vIa
-vIa
-vIa
-vIa
+tmH
+tmH
+tmH
+tmH
 tmH
 tmH
 tmH
@@ -360354,10 +360354,10 @@ fyc
 (70,1,4) = {"
 aUc
 aUc
-vIa
-vIa
-vIa
-vIa
+tmH
+tmH
+tmH
+tmH
 tmH
 tmH
 tmH
@@ -360756,10 +360756,10 @@ fyc
 (71,1,4) = {"
 aUc
 aUc
-vIa
-vIa
-vIa
-vIa
+tmH
+tmH
+tmH
+tmH
 tmH
 tmH
 tmH
@@ -361158,10 +361158,10 @@ fyc
 (72,1,4) = {"
 aUc
 aUc
-vIa
-vIa
-vIa
-vIa
+tmH
+tmH
+tmH
+tmH
 tmH
 tmH
 tmH
@@ -361560,10 +361560,10 @@ fyc
 (73,1,4) = {"
 aUc
 aUc
-vIa
-vIa
-vIa
-vIa
+tmH
+tmH
+tmH
+tmH
 tmH
 tmH
 tmH
@@ -361962,12 +361962,12 @@ fyc
 (74,1,4) = {"
 aUc
 aUc
-vIa
-vIa
-vIa
-vIa
-vIa
-vIa
+tmH
+tmH
+tmH
+tmH
+tmH
+tmH
 tmH
 tmH
 tmH
@@ -362364,12 +362364,12 @@ fyc
 (75,1,4) = {"
 aUc
 aUc
-vIa
-vIa
-vIa
-vIa
-vIa
-vIa
+tmH
+tmH
+tmH
+tmH
+tmH
+tmH
 tmH
 tmH
 tmH
@@ -362766,12 +362766,12 @@ fyc
 (76,1,4) = {"
 aUc
 aUc
-vIa
-vIa
-vIa
-vIa
-vIa
-vIa
+tmH
+tmH
+tmH
+tmH
+tmH
+tmH
 tmH
 tmH
 tmH
@@ -363168,12 +363168,12 @@ fyc
 (77,1,4) = {"
 aUc
 aUc
-vIa
-vIa
-vIa
-vIa
-vIa
-vIa
+tmH
+tmH
+tmH
+tmH
+tmH
+tmH
 tmH
 tmH
 tmH
@@ -363570,12 +363570,12 @@ fyc
 (78,1,4) = {"
 aUc
 aUc
-vIa
-vIa
-vIa
-vIa
-vIa
-vIa
+tmH
+tmH
+tmH
+tmH
+tmH
+tmH
 tmH
 tmH
 tmH
@@ -363972,12 +363972,12 @@ fyc
 (79,1,4) = {"
 aUc
 aUc
-vIa
-vIa
-vIa
-vIa
-vIa
-vIa
+tmH
+tmH
+tmH
+tmH
+tmH
+tmH
 tmH
 tmH
 tmH
@@ -364374,12 +364374,12 @@ fyc
 (80,1,4) = {"
 aUc
 aUc
-vIa
-vIa
-vIa
-vIa
-vIa
-vIa
+tmH
+tmH
+tmH
+tmH
+tmH
+tmH
 tmH
 tmH
 tmH
@@ -364776,12 +364776,12 @@ fyc
 (81,1,4) = {"
 aUc
 aUc
-vIa
-vIa
-vIa
-vIa
-vIa
-vIa
+tmH
+tmH
+tmH
+tmH
+tmH
+tmH
 tmH
 tmH
 tmH
@@ -365178,12 +365178,12 @@ fyc
 (82,1,4) = {"
 aUc
 aUc
-vIa
-vIa
-vIa
-vIa
-vIa
-vIa
+tmH
+tmH
+tmH
+tmH
+tmH
+tmH
 tmH
 tmH
 tmH
@@ -365580,11 +365580,11 @@ fyc
 (83,1,4) = {"
 aUc
 aUc
-vIa
-vIa
-vIa
-vIa
-vIa
+tmH
+tmH
+tmH
+tmH
+tmH
 tmH
 tmH
 tmH
@@ -365982,11 +365982,11 @@ fyc
 (84,1,4) = {"
 aUc
 aUc
-vIa
-vIa
-vIa
-vIa
-vIa
+tmH
+tmH
+tmH
+tmH
+tmH
 tmH
 tmH
 tmH
@@ -366384,11 +366384,11 @@ fyc
 (85,1,4) = {"
 aUc
 aUc
-vIa
-vIa
-vIa
-vIa
-vIa
+tmH
+tmH
+tmH
+tmH
+tmH
 tmH
 tmH
 tmH
@@ -366786,11 +366786,11 @@ fyc
 (86,1,4) = {"
 aUc
 aUc
-vIa
-vIa
-vIa
-vIa
-vIa
+tmH
+tmH
+tmH
+tmH
+tmH
 tmH
 tmH
 tmH
@@ -367188,11 +367188,11 @@ fyc
 (87,1,4) = {"
 aUc
 aUc
-vIa
-vIa
-vIa
-vIa
-vIa
+tmH
+tmH
+tmH
+tmH
+tmH
 tmH
 tmH
 tmH
@@ -367590,11 +367590,11 @@ fyc
 (88,1,4) = {"
 aUc
 aUc
-vIa
-vIa
-vIa
-vIa
-vIa
+tmH
+tmH
+tmH
+tmH
+tmH
 tmH
 tmH
 tmH
@@ -367992,11 +367992,11 @@ fyc
 (89,1,4) = {"
 aUc
 aUc
-vIa
-vIa
-vIa
-vIa
-vIa
+tmH
+tmH
+tmH
+tmH
+tmH
 tmH
 tmH
 tmH
@@ -368394,11 +368394,11 @@ fyc
 (90,1,4) = {"
 aUc
 aUc
-vIa
-vIa
-vIa
-vIa
-vIa
+tmH
+tmH
+tmH
+tmH
+tmH
 tmH
 tmH
 tmH
@@ -368796,11 +368796,11 @@ fyc
 (91,1,4) = {"
 aUc
 aUc
-vIa
-vIa
-vIa
-vIa
-vIa
+tmH
+tmH
+tmH
+tmH
+tmH
 tmH
 tmH
 tmH
@@ -369198,11 +369198,11 @@ fyc
 (92,1,4) = {"
 aUc
 aUc
-vIa
-vIa
-vIa
-vIa
-vIa
+tmH
+tmH
+tmH
+tmH
+tmH
 tmH
 tmH
 tmH
@@ -369600,12 +369600,12 @@ fyc
 (93,1,4) = {"
 aUc
 aUc
-vIa
-vIa
-vIa
-vIa
-vIa
-vIa
+tmH
+tmH
+tmH
+tmH
+tmH
+tmH
 tmH
 tmH
 tmH
@@ -370002,11 +370002,11 @@ fyc
 (94,1,4) = {"
 aUc
 aUc
-vIa
-vIa
-vIa
-vIa
-vIa
+tmH
+tmH
+tmH
+tmH
+tmH
 tmH
 tmH
 tmH
@@ -370404,11 +370404,11 @@ fyc
 (95,1,4) = {"
 aUc
 aUc
-vIa
-vIa
-vIa
-vIa
-vIa
+tmH
+tmH
+tmH
+tmH
+tmH
 tmH
 tmH
 tmH
@@ -370806,11 +370806,11 @@ fyc
 (96,1,4) = {"
 aUc
 aUc
-vIa
-vIa
-vIa
-vIa
-vIa
+tmH
+tmH
+tmH
+tmH
+tmH
 tmH
 tmH
 tmH
@@ -371208,11 +371208,11 @@ fyc
 (97,1,4) = {"
 aUc
 aUc
-vIa
-vIa
-vIa
-vIa
-vIa
+tmH
+tmH
+tmH
+tmH
+tmH
 tmH
 tmH
 tmH
@@ -371610,11 +371610,11 @@ fyc
 (98,1,4) = {"
 aUc
 aUc
-vIa
-vIa
-vIa
-vIa
-vIa
+tmH
+tmH
+tmH
+tmH
+tmH
 tmH
 tmH
 tmH
@@ -372012,11 +372012,11 @@ fyc
 (99,1,4) = {"
 aUc
 aUc
-vIa
-vIa
-vIa
-vIa
-vIa
+tmH
+tmH
+tmH
+tmH
+tmH
 tmH
 tmH
 tmH
@@ -372414,11 +372414,11 @@ fyc
 (100,1,4) = {"
 aUc
 aUc
-vIa
-vIa
-vIa
-vIa
-vIa
+tmH
+tmH
+tmH
+tmH
+tmH
 tmH
 tmH
 tmH
@@ -372816,11 +372816,11 @@ fyc
 (101,1,4) = {"
 aUc
 aUc
-vIa
-vIa
-vIa
-vIa
-vIa
+tmH
+tmH
+tmH
+tmH
+tmH
 tmH
 tmH
 tmH
@@ -373218,11 +373218,11 @@ fyc
 (102,1,4) = {"
 aUc
 aUc
-vIa
-vIa
-vIa
-vIa
-vIa
+tmH
+tmH
+tmH
+tmH
+tmH
 tmH
 tmH
 tmH
@@ -373620,11 +373620,11 @@ fyc
 (103,1,4) = {"
 aUc
 aUc
-vIa
-vIa
-vIa
-vIa
-vIa
+tmH
+tmH
+tmH
+tmH
+tmH
 tmH
 tmH
 tmH
@@ -374022,11 +374022,11 @@ fyc
 (104,1,4) = {"
 aUc
 aUc
-vIa
-vIa
-vIa
-vIa
-vIa
+tmH
+tmH
+tmH
+tmH
+tmH
 tmH
 tmH
 tmH
@@ -374424,11 +374424,11 @@ fyc
 (105,1,4) = {"
 aUc
 aUc
-vIa
-vIa
-vIa
-vIa
-vIa
+tmH
+tmH
+tmH
+tmH
+tmH
 tmH
 tmH
 tmH
@@ -374826,11 +374826,11 @@ fyc
 (106,1,4) = {"
 aUc
 aUc
-vIa
-vIa
-vIa
-vIa
-vIa
+tmH
+tmH
+tmH
+tmH
+tmH
 tmH
 tmH
 tmH
@@ -375228,11 +375228,11 @@ fyc
 (107,1,4) = {"
 aUc
 aUc
-vIa
-vIa
-vIa
-vIa
-vIa
+tmH
+tmH
+tmH
+tmH
+tmH
 tmH
 tmH
 tmH
@@ -375630,11 +375630,11 @@ fyc
 (108,1,4) = {"
 aUc
 aUc
-vIa
-vIa
-vIa
-vIa
-vIa
+tmH
+tmH
+tmH
+tmH
+tmH
 tmH
 tmH
 tmH
@@ -376032,11 +376032,11 @@ fyc
 (109,1,4) = {"
 aUc
 aUc
-vIa
-vIa
-vIa
-vIa
-vIa
+tmH
+tmH
+tmH
+tmH
+tmH
 tmH
 tmH
 tmH
@@ -376434,11 +376434,11 @@ fyc
 (110,1,4) = {"
 aUc
 aUc
-vIa
-vIa
-vIa
-vIa
-vIa
+tmH
+tmH
+tmH
+tmH
+tmH
 tmH
 tmH
 tmH
@@ -376836,11 +376836,11 @@ fyc
 (111,1,4) = {"
 aUc
 aUc
-vIa
-vIa
-vIa
-vIa
-vIa
+tmH
+tmH
+tmH
+tmH
+tmH
 tmH
 tmH
 tmH
