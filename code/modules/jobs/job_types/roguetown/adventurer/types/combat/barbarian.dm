@@ -44,7 +44,7 @@
 			neck = /obj/item/storage/belt/rogue/pouch/coins/poor
 			beltl = /obj/item/rogueweapon/huntingknife
 			backl = /obj/item/storage/backpack/rogue/satchel
-			shoes = /obj/item/clothing/shoes/roguetown/boots/leather
+			shoes = /obj/item/clothing/shoes/roguetown/armor/leather
 			wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
 			if(prob(55))
 				head = /obj/item/clothing/head/roguetown/helmet/horned
@@ -87,7 +87,7 @@
 			belt = /obj/item/storage/belt/rogue/leather
 			neck = /obj/item/storage/belt/rogue/pouch/coins/poor
 			beltl = /obj/item/rogueweapon/huntingknife
-			shoes = /obj/item/clothing/shoes/roguetown/boots/leather
+			shoes = /obj/item/clothing/shoes/roguetown/armor/leather
 			wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
 			backr = /obj/item/storage/backpack/rogue/satchel
 			cloak = /obj/item/clothing/cloak/raincloak/furcloak/brown
@@ -127,7 +127,7 @@
 					neck = /obj/item/storage/belt/rogue/pouch/coins/poor
 					beltl = /obj/item/rogueweapon/huntingknife
 					backl = /obj/item/storage/backpack/rogue/satchel
-					shoes = /obj/item/clothing/shoes/roguetown/boots/leather
+					shoes = /obj/item/clothing/shoes/roguetown/armor/leather
 					wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
 					if(prob(55))
 						head = /obj/item/clothing/head/roguetown/helmet/horned
@@ -171,7 +171,7 @@
 					neck = /obj/item/storage/belt/rogue/pouch/coins/poor
 					beltl = /obj/item/rogueweapon/huntingknife
 					backl = /obj/item/storage/backpack/rogue/satchel
-					shoes = /obj/item/clothing/shoes/roguetown/boots/leather
+					shoes = /obj/item/clothing/shoes/roguetown/armor/leather
 					wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
 					cloak = /obj/item/clothing/cloak/raincloak/furcloak/brown
 					if(prob(33))
@@ -208,7 +208,7 @@
 					neck = /obj/item/storage/belt/rogue/pouch/coins/poor
 					beltl = /obj/item/rogueweapon/huntingknife
 					backl = /obj/item/storage/backpack/rogue/satchel
-					shoes = /obj/item/clothing/shoes/roguetown/boots/leather
+					shoes = /obj/item/clothing/shoes/roguetown/armor/leather
 					wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
 					H.change_stat("intelligence", -1)
 					H.change_stat("strength", pick(3,4)) // The bear wolf is an endurance fighter. Never tiring. Unrelenting.

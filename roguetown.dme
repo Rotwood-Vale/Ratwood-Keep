@@ -3578,5 +3578,8 @@
 #include "modular\code\modules\maturity-prompt\code\config_entries.dm"
 #include "modular\code\modules\maturity-prompt\code\maturity_prompt.dm"
 #include "modular\code\modules\maturity-prompt\code\maturity_subsystem.dm"
+#include "modular\Neu_Food\code\NeuFood.dm"
+#include "modular\Neu_Food\code\cooked\NeuFood_snacks.dm"
+#include "modular\Neu_Food\code\raw\NeuFood_veggies.dm"
 #include "modular\ze_genesis_call\genesis_call.dm"
 // END_INCLUDE
