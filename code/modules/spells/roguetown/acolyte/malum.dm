@@ -159,7 +159,7 @@ proc/handle_tongs(obj/item/rogueweapon/tongs/T, mob/user) //Stole the code from 
 	T.hott = tyme
 	addtimer(CALLBACK(T, TYPE_PROC_REF(/obj/item/rogueweapon/tongs, make_unhot), tyme), 100)
 	T.update_icon()
-	show_visible_message(user, "After [user]'s incantation, the ingot inside [T] starts glowing.", null)
+	show_visible_message(user, "After [user]'s incantation, the ingot inside [T] starts glowing.", "After your incantation, the ingot inside [T] starts glowing.")
 
 proc/handle_heating_in_hand(mob/living/carbon/target, obj/item/targeteditem, mob/user)
 	var/datum/effect_system/spark_spread/sparks = new()
