@@ -206,10 +206,10 @@ proc/handle_heating_equipped(mob/living/carbon/target, obj/item/clothing/targete
 	apply_damage_if_covered(target, body_zones_arms, targeteditem, ARMS|HANDS, damage_to_apply)
 	apply_damage_if_covered(target, body_zones_legs, targeteditem, GROIN|LEGS|FEET, damage_to_apply)
 	apply_damage_if_covered(target, list(BODY_ZONE_HEAD), targeteditem, HEAD|HAIR|NECK|NOSE|MOUTH|EARS|EYES, damage_to_apply)
+	show_visible_message(target, "[target]'s [targeteditem.name] glows brightly, searing their flesh.", "My [targeteditem.name] glows brightly, It burns!")
 	playsound(target.loc, 'sound/misc/frying.ogg', 100, FALSE, -1)
 
 proc/apply_damage_if_covered(mob/living/carbon/target, list/body_zones, obj/item/clothing/targeteditem, mask, damage)
-	show_visible_message(target, "[target]'s [targeteditem.name] glows brightly, searing their flesh.", "My [targeteditem.name] glows brightly, It burns!")
 	for (var/zone in body_zones)
 		if (targeteditem.body_parts_covered & mask)
 			var/obj/item/bodypart/affecting = target.get_bodypart(zone)
