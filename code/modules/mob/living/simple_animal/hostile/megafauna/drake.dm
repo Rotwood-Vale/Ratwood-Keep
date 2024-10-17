@@ -52,7 +52,12 @@ Difficulty: Medium
 	speed = 5
 	move_to_delay = 5
 	ranged = TRUE
+	move_force = MOVE_FORCE_NORMAL
+	move_resist = MOVE_FORCE_NORMAL
+	pull_force = MOVE_FORCE_NORMAL
 	pixel_x = -16
+	base_intents = list(/datum/intent/simple/bite)
+	damage_coeff = list(BRUTE = 1, BURN = 0.2, TOX = 1, CLONE = 1, STAMINA = 0, OXY = 1)
 	butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat/steak = 20,
 						/obj/item/natural/hide = 20, /obj/item/natural/bundle/bone/full = 4)
 	var/swooping = NONE
@@ -66,8 +71,7 @@ Difficulty: Medium
 	footstep_type = FOOTSTEP_MOB_HEAVY
 	attack_action_types = list(/datum/action/innate/megafauna_attack/fire_cone,
 							   /datum/action/innate/megafauna_attack/fire_cone_meteors,
-							   /datum/action/innate/megafauna_attack/mass_fire,
-							   /datum/action/innate/megafauna_attack/lava_swoop)
+							   /datum/action/innate/megafauna_attack/mass_fire)
 	small_sprite_type = /datum/action/small_sprite/megafauna/drake
 
 /datum/action/innate/megafauna_attack/fire_cone
@@ -579,6 +583,9 @@ Difficulty: Medium
 	melee_damage_lower = 30
 	mouse_opacity = MOUSE_OPACITY_ICON
 	damage_coeff = list(BRUTE = 1, BURN = 1, TOX = 1, CLONE = 1, STAMINA = 0, OXY = 1)
+	move_force = MOVE_FORCE_NORMAL
+	move_resist = MOVE_FORCE_NORMAL
+	pull_force = MOVE_FORCE_NORMAL
 	loot = list()
 	crusher_loot = list()
 	butcher_results = list(/obj/item/stack/ore/diamond = 5, /obj/item/stack/sheet/sinew = 5, /obj/item/stack/sheet/bone = 30)

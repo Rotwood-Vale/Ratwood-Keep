@@ -18,8 +18,6 @@
 	max_pq = null
 	can_random = FALSE
 
-	allow_custom_genitals = TRUE //Vrell - Canonically a noble
-
 /datum/outfit/job/roguetown/hostage/pre_equip(mob/living/carbon/human/H)
 	..()
 	mask = /obj/item/clothing/mask/rogue/facemask/prisoner

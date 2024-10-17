@@ -21,8 +21,6 @@
 	min_pq = -4 //silly jesters are funny so low PQ requirement
 	max_pq = null
 
-	allow_custom_genitals = TRUE
-
 /datum/outfit/job/roguetown/jester/pre_equip(mob/living/carbon/human/H)
 	..()
 	shoes = /obj/item/clothing/shoes/roguetown/jester

@@ -24,13 +24,10 @@ GLOBAL_LIST_EMPTY(lord_titles)
 	display_order = JDO_LORD
 	tutorial = "Elevated upon your throne through a web of intrigue and political upheaval, you are the absolute authority of these lands and at the center of every plot within it. Every man, woman and child is envious of your position and would replace you in less than a heartbeat: Show them the error in their ways."
 	whitelist_req = FALSE
-	min_pq = 0
+	min_pq = 10
 	max_pq = null
 	give_bank_account = 1000
 	required = TRUE
-
-	allow_custom_genitals = TRUE
-
 	cmode_music = 'sound/music/combat_fancy.ogg'
 
 /datum/job/roguetown/exlord //just used to change the lords title

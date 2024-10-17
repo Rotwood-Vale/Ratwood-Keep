@@ -1012,6 +1012,9 @@
 	allowed_race = NON_DWARVEN_RACE_TYPES
 	inhand_mod = FALSE
 
+/obj/item/clothing/cloak/half/rider/red
+	color = CLOTHING_RED
+
 /obj/item/clothing/cloak/half/vet
 	name = "town watch cloak"
 	icon_state = "guardcloak"

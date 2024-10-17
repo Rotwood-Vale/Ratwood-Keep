@@ -54,6 +54,10 @@
 		H.flash_fullscreen("redflash3")
 		playsound(H, 'sound/combat/hits/bladed/genstab (1).ogg', 100, FALSE, -1)
 		SStreasury.create_bank_account(H)
+		if(H.mind)
+			var/datum/job/target_job = SSjob.GetJob(H.mind.assigned_role)
+			if(target_job && target_job.noble_income)
+				SStreasury.noble_incomes[H] = target_job.noble_income
 		spawn(5)
 			say("New account created.")
 			playsound(src, 'sound/misc/machinetalk.ogg', 100, FALSE, -1)

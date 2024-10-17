@@ -8,7 +8,6 @@
 	outfit = /datum/outfit/job/roguetown/adventurer/rogue
 	traits_applied = list(TRAIT_MEDIUMARMOR, TRAIT_DODGEEXPERT)
 	category_tags = list(CTAG_ADVENTURER)
-	cmode_music = 'sound/music/combat_rogue.ogg'
 
 /datum/outfit/job/roguetown/adventurer/rogue/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -69,7 +68,7 @@
 	H.change_stat("perception", 2)
 	H.change_stat("speed", 3)
 	H.change_stat("intelligence", 2)
-
+	H.cmode_music = 'sound/music/combat_rogue.ogg'
 
 /datum/outfit/job/roguetown/adventurer/rogue/proc/assassinarch(mob/living/carbon/human/H)
 	shoes = /obj/item/clothing/shoes/roguetown/boots
@@ -112,6 +111,7 @@
 	H.change_stat("perception", 2)
 	H.change_stat("speed", 3)
 	H.change_stat("intelligence", 2)
+	H.cmode_music = 'sound/music/combat_rogue.ogg'
 	H.visible_message(span_info("I honed my skills as a rogue through the years, and was skilled enough to become an assassin. Now it depends to me how I use my abilities."))
 	backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger/steel, /obj/item/lockpickring/mundane)
 
@@ -156,4 +156,5 @@
 	H.change_stat("speed", 2)
 	H.change_stat("intelligence", 1)
 	H.change_stat("perception", 1)
+	H.cmode_music = 'sound/music/combat_duelist.ogg'
 	H.visible_message(span_info("I trained as a swashbuckler, flair and precision is my weapon... And some dirty tricks under my cape. I can fool people into underestimating me, their last mistake."))

@@ -4,7 +4,7 @@
 	department_flag = NOBLEMEN
 	faction = "Station"
 	total_positions = 3
-	spawn_positions = 2
+	spawn_positions = 3
 	allowed_ages = ALL_AGES_LIST
 	allowed_races = RACES_ALL_KINDS
 	allowed_sexes = list(MALE, FEMALE)
@@ -14,7 +14,8 @@
 	outfit = /datum/outfit/job/roguetown/councillor
 
 	give_bank_account = 40
-	min_pq = 0
+	noble_income = 20
+	min_pq = 1
 	max_pq = null
 
 	cmode_music = 'sound/music/combat_fancy.ogg'

@@ -606,7 +606,7 @@
 	smelt_bar_num = 2
 
 /obj/item/clothing/head/roguetown/helmet/heavy/knight/black
-	color = CLOTHING_BLACK
+	color = CLOTHING_GREY
 
 /obj/item/clothing/head/roguetown/helmet/heavy/knight/AdjustClothes(mob/user)
 	if(loc == user)

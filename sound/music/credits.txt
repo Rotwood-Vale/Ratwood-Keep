@@ -11,6 +11,7 @@ combat_guard2.ogg: Deus Ex - NYC Streets Combat
 combat_physician.ogg: Pathologic (Classic) - Utroba Aggression
 combat_bum.ogg: Pathologic (Classic) - Most Combat Theme
 combat_knight.ogg: Dragon's Dogma OST: Tense Combat
+combat_duelist.ogg: Medieval Total War 2 OST: Spanish Battle Theme
 title1.ogg: Aphex Twin - Stone In Focus
 bath.ogg: Mabisyo - No Baby (Cropped to 1:00)
 tav_tune.ogg: Divinity Original Sin 2 - Black Bull Tavern
@@ -22,3 +23,7 @@ combat_bandit_mage: Timestopper Tactics - corru.works
 combat_ascended: TO PIERCE THE BLACK SKY /// ENVY INTERLUDE - UNFORTUNATE DEVELOPMENT
 warscholar.ogg: Butcher's Boulevard - Kristjan Thomas Haaristo
 combat_fancy.ogg: Eric Heberling - Wilderness (Piano)
+guitar (7).ogg: https://youtu.be/to2iDSr6_KA
+guitar (8).ogg: https://youtu.be/8B6jOUzBKYc
+guitar (9).ogg: https://youtu.be/tux7GLWmV2M
+guitar (10).ogg: https://open.spotify.com/track/37yQRGfndzGwUUScYOBMyk?si=d2d8c73cb7eb4723

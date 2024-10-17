@@ -95,3 +95,19 @@
 		M.add_nausea(9)
 		M.adjustToxLoss(3, 0)
 	return ..()
+
+//pyro flower nectar - stonekeep port
+/datum/reagent/toxin/fyritiusnectar
+	name = "fyritius nectar"
+	description = "oh no"
+	reagent_state = LIQUID
+	color = "#ffc400"
+	metabolization_rate = 0.5
+
+/datum/reagent/toxin/fyritiusnectar/on_mob_life(mob/living/carbon/M)
+	if(volume > 0.99)
+		M.add_nausea(9)
+		M.adjustFireLoss(2, 0)
+		M.adjust_fire_stacks(1)
+		M.IgniteMob()
+	return ..()

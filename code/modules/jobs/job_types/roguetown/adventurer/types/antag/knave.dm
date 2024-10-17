@@ -37,6 +37,7 @@
 	mask = /obj/item/clothing/mask/rogue/facemask/steel
 	neck = /obj/item/clothing/neck/roguetown/coif
 	armor = /obj/item/clothing/suit/roguetown/armor/leather
+	id = /obj/item/mattcoin
 	H.change_stat("endurance", 1) 
 	H.change_stat("perception", 2)
 	H.change_stat("speed", 3) //It's all about speed and perception

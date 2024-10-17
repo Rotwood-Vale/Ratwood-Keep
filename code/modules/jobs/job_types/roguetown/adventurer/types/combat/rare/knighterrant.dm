@@ -8,6 +8,7 @@
 	traits_applied = list(TRAIT_HEAVYARMOR, TRAIT_NOBLE)
 	category_tags = list(CTAG_ADVENTURER)
 
+	noble_income = 5
 	cmode_music = 'sound/music/combat_knight.ogg'
 
 
@@ -58,7 +59,7 @@
 			head = /obj/item/clothing/head/roguetown/helmet/heavy/knight/black
 			gloves = /obj/item/clothing/gloves/roguetown/chain/blk
 			pants = /obj/item/clothing/under/roguetown/chainlegs/blk
-			cloak = /obj/item/clothing/cloak/tabard/blkknight
+			cloak = /obj/item/clothing/cloak/half/rider/red
 			neck = /obj/item/clothing/neck/roguetown/gorget
 			shirt = /obj/item/clothing/suit/roguetown/armor/chainmail
 			armor = /obj/item/clothing/suit/roguetown/armor/plate/blk
@@ -90,13 +91,13 @@
 			H.dna.species.soundpack_m = new /datum/voicepack/male/knight()
 
 /obj/item/clothing/gloves/roguetown/chain/blk
-		color = CLOTHING_BLACK
+		color = CLOTHING_GREY
 
 /obj/item/clothing/under/roguetown/chainlegs/blk
-		color = CLOTHING_BLACK
+		color = CLOTHING_GREY
 
 /obj/item/clothing/suit/roguetown/armor/plate/blk
-		color = CLOTHING_BLACK
+		color = CLOTHING_GREY
 
 /obj/item/clothing/shoes/roguetown/boots/armor/blk
-		color = CLOTHING_BLACK
+		color = CLOTHING_GREY

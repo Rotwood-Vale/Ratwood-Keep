@@ -8,7 +8,8 @@
 	outfit = /datum/outfit/job/roguetown/adventurer/noble
 	traits_applied = list(TRAIT_NOBLE)
 	category_tags = list(CTAG_PILGRIM)
-	allow_custom_genitals = TRUE
+
+	noble_income = 10
 
 /datum/outfit/job/roguetown/adventurer/noble/pre_equip(mob/living/carbon/human/H)
 	..()

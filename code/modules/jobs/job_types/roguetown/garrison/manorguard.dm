@@ -17,7 +17,7 @@
 	advclass_cat_rolls = list(CTAG_MENATARMS = 20)
 
 	give_bank_account = 22
-	min_pq = 0
+	min_pq = 1
 	max_pq = null
 
 	cmode_music = 'sound/music/combat_guard2.ogg'
