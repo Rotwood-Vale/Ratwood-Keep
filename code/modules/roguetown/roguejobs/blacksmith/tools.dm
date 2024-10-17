@@ -48,7 +48,7 @@
 				to_chat(user, span_warning("You fumble your way into slightly repairing [attacked_item]."))
 			else	
 				user.visible_message(span_info("[user] repairs [attacked_item]!"))
-			blacksmith_mind.add_sleep_experience(attacked_item.anvilrepair, exp_gained/3) //We gain as much exp as we fix divided by 2
+			blacksmith_mind.add_sleep_experience(attacked_item.anvilrepair, exp_gained/3) //We gain as much exp as we fix divided by 3
 			return
 		else
 			user.visible_message(span_warning("[user] damages [attacked_item]!"))
