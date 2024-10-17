@@ -2,60 +2,62 @@
 	var/mob/stored_mob = null
 
 /datum/antagonist/werewolf/on_life(mob/user)
-    if(!user) return
-    var/mob/living/carbon/human/H = user
-    if(H.stat == DEAD) return
-    if(H.advsetup) return
+	if(!user) return
+	var/mob/living/carbon/human/H = user
+	if(H.stat == DEAD) return
+	if(H.advsetup) return
 
-    // Werewolf transforms at night AND under the sky
-    if(!transformed && !transforming)
-        if(GLOB.tod == "night")
-            if(isturf(H.loc))
-                var/turf/loc = H.loc
-                if(loc.can_see_sky())
-                    to_chat(H, span_userdanger("The moonlight scorns me... It is too late."))
-                    owner.current.playsound_local(get_turf(owner.current), 'sound/music/wolfintro.ogg', 80, FALSE, pressure_affected = FALSE)
-                    H.flash_fullscreen("redflash3")
-                    transforming = world.time // timer
-    
-    // Begin transformation
-    else if(transforming)
-        if (world.time >= transforming + 35 SECONDS) // Stage 3
-            H.werewolf_transform()
-            transforming = FALSE
-            transformed = TRUE // Mark as transformed
-            
-        else if (world.time >= transforming + 25 SECONDS) // Stage 2
-            H.flash_fullscreen("redflash3")
-            H.emote("agony", forced = TRUE)
-            to_chat(H, span_userdanger("UNIMAGINABLE PAIN!"))
-            H.Stun(30)
-            H.Knockdown(30)
-
-        else if (world.time >= transforming + 10 SECONDS) // Stage 1
-            H.emote("")
-            to_chat(H, span_warning("I can feel my muscles aching, it feels HORRIBLE..."))
-        
-
-    // Werewolf reverts to human form during the day
-    else if(transformed)
-        H.real_name = wolfname
-        H.name = wolfname
-
-        if(GLOB.tod != "night")
-            if(!untransforming)
-                untransforming = world.time // Start untransformation phase
-
-            if (world.time >= untransforming + 25 SECONDS) // Untransform
-                H.emote("rage", forced = TRUE)
-                H.werewolf_untransform()
-                transformed = FALSE
-                untransforming = FALSE // Reset untransforming phase
-                
-            else if (world.time >= untransforming + 10 SECONDS) // Alert player
-                H.flash_fullscreen("redflash1")
-                to_chat(H, span_warning("Daylight shines around me... the curse begins to fade."))
+	// Werewolf transforms at night AND under the sky
+	if(!transformed && !transforming)
+		if(GLOB.tod == "night")
+			if(isturf(H.loc))
+				var/turf/loc = H.loc
+				if(loc.can_see_sky())
+					to_chat(H, span_userdanger("The moonlight scorns me... It is too late."))
+					owner.current.playsound_local(get_turf(owner.current), 'sound/music/wolfintro.ogg', 80, FALSE, pressure_affected = FALSE)
+					H.flash_fullscreen("redflash3")
+					transforming = world.time // timer
+	
+	// Begin transformation
+	else if(transforming)
+		if(world.time >= transforming + 35 SECONDS) // Stage 3
+			H.werewolf_transform()
+			transforming = FALSE
+			transformed = TRUE // Mark as transformed
 			
+		else if(world.time >= transforming + 25 SECONDS) // Stage 2
+			H.flash_fullscreen("redflash3")
+			H.emote("agony", forced = TRUE)
+			to_chat(H, span_userdanger("UNIMAGINABLE PAIN!"))
+			H.Stun(30)
+			H.Knockdown(30)
+
+		else if(world.time >= transforming + 10 SECONDS) // Stage 1
+			H.emote("")
+			to_chat(H, span_warning("I can feel my muscles aching, it feels HORRIBLE..."))
+
+
+	// Werewolf reverts to human form during the day
+	else if(transformed)
+		H.real_name = wolfname
+		H.name = wolfname
+
+		if(GLOB.tod != "night")
+			if(!untransforming)
+				untransforming = world.time // Start untransformation phase
+
+			if(world.time >= untransforming + 25 SECONDS) // Untransform
+				H.emote("rage", forced = TRUE)
+				H.werewolf_untransform()
+				transformed = FALSE
+				untransforming = FALSE // Reset untransforming phase
+				if(!istype(src, /datum/antagonist/werewolf/lesser))
+					converts_left = 1
+
+			else if(world.time >= untransforming + 10 SECONDS) // Alert player
+				H.flash_fullscreen("redflash1")
+				to_chat(H, span_warning("Daylight shines around me... the curse begins to fade."))
+
 
 /mob/living/carbon/human/species/werewolf/death(gibbed)
 	werewolf_untransform(TRUE, gibbed)

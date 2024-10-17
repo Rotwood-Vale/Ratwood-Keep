@@ -13,10 +13,12 @@
 	var/transforming
 	var/untransforming
 	var/wolfname = "Verewolf"
+	var/converts_left = 1
 
 /datum/antagonist/werewolf/lesser
 	name = "Lesser Verewolf"
 	increase_votepwr = FALSE
+	converts_left = 0
 
 /datum/antagonist/werewolf/lesser/roundend_report()
 	return
