@@ -1884,13 +1884,13 @@
 			add_overlay("rainlay")
 
 /atom/movable/screen/rogfat
-	name = "stamina"
+	name = "fatigue"
 	icon_state = "fat100"
 	icon = 'icons/mob/rogueheat.dmi'
 	screen_loc = rogueui_fat
 
 /atom/movable/screen/rogstam
-	name = "fatigue"
+	name = "stamina"
 	icon_state = "stam100"
 	icon = 'icons/mob/rogueheat.dmi'
 	screen_loc = rogueui_fat
