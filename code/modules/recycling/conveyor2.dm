@@ -130,13 +130,22 @@ GLOBAL_LIST_EMPTY(conveyors_by_id)
 	if(!operating)
 		return
 	use_power(6)
-	affecting = loc.contents - src		// moved items will be all in loc
-	addtimer(CALLBACK(src, PROC_REF(convey), affecting), 1)
+	if(!isturf(loc)) // We're nowhere!
+		return
+	var/turf/turf_loc = loc
+	var/list/cached_contents = loc.contents - src - turf_loc.lighting_object
+	if(!length(cached_contents)) // nothing to convey, don't waste time creating a timer!
+		return
+	// This is on a one-decisecond delay to prevent conveyors from chaining movement into each other.
+	addtimer(CALLBACK(src, PROC_REF(convey), cached_contents), 0.1 SECONDS)
 
-/obj/machinery/conveyor/proc/convey(list/affecting)
-	for(var/atom/movable/A in affecting)
-		if((A.loc == loc) && A.has_gravity())
-			A.ConveyorMove(movedir)
+/obj/machinery/conveyor/proc/convey(list/atom/movable/cached_contents)
+	for(var/atom/movable/A as anything in cached_contents)
+		if(A == src)
+			continue
+		if(A.anchored)
+			continue
+		A.ConveyorMove(movedir)
 
 // attack with item, place item on conveyor
 /obj/machinery/conveyor/attackby(obj/item/I, mob/user, params)
