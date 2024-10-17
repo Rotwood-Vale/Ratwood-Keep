@@ -114,7 +114,7 @@
 	icon_state = "leathertrou"
 	max_integrity = 130
 	armor = list("blunt" = 50, "slash" = 25, "stab" = 40, "bullet" = 10, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
-	(BCLASS_CUT, BCLASS_STAB)
+	prevent_crits = list(BCLASS_CUT, BCLASS_STAB)
 
 /obj/item/clothing/under/roguetown/trou/leather/mourning
 	name = "mourning trousers"
