@@ -59,7 +59,7 @@
 	result = list(/obj/item/clothing/wrists/roguetown/bracers/leather,
 			/obj/item/clothing/wrists/roguetown/bracers/leather)
 	reqs = list(/obj/item/natural/hide = 1)
-	sellprice = 13
+	sellprice = 6
 
 /datum/crafting_recipe/roguetown/leather/pants
 	name = "leather trousers"
@@ -140,11 +140,8 @@
 /datum/crafting_recipe/roguetown/leather/cloakfur
 	name = "fur cloak"
 	result = /obj/item/clothing/cloak/raincloak/furcloak/crafted
-	reqs = list(/obj/item/natural/hide = 2, 
+	reqs = list(/obj/item/natural/hide = 2,
 				/obj/item/natural/fur = 1)
- 	sellprice = 31
-
-/obj/item/clothing/cloak/raincloak/furcloak/crafted
 	sellprice = 31
 
 /datum/crafting_recipe/roguetown/leather/saddle
