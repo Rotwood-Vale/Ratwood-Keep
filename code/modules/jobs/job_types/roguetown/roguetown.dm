@@ -78,10 +78,6 @@
 		else
 			for(var/skill_type in pref_species.specskills_m)
 				H.mind.adjust_skillrank(skill_type, H.dna.species.specskills_m[skill_type], TRUE)
-		if(H.dna)
-			if(H.dna.species)
-				if(H.dna.species.name in list("Elf", "Half-Elf"))
-					H.mind.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
 	H.underwear_color = null
 	H.update_body()
 
