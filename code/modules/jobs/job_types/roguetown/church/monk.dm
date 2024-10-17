@@ -20,7 +20,7 @@
 /datum/outfit/job/roguetown/monk
 	name = "Acolyte"
 	jobtype = /datum/job/roguetown/monk
-	allowed_patrons = list(/datum/patron/divine/pestra, /datum/patron/divine/astrata)
+	allowed_patrons = list(/datum/patron/divine/pestra, /datum/patron/divine/astrata, /datum/patron/divine/malum)
 
 /datum/outfit/job/roguetown/monk/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -58,6 +58,12 @@
 			shoes = /obj/item/clothing/shoes/roguetown/armor
 			pants = /obj/item/clothing/under/roguetown/trou/leather/mourning
 			armor = /obj/item/clothing/suit/roguetown/shirt/robe/necra
+		if(/datum/patron/divine/malum) //Will need their own gear.
+			head = /obj/item/clothing/head/roguetown/roguehood/black
+			neck = /obj/item/clothing/neck/roguetown/psicross/malum
+			shoes = /obj/item/clothing/shoes/roguetown/sandals
+			shirt = /obj/item/clothing/suit/roguetown/shirt/dress/gen/black
+			cloak = /obj/item/clothing/cloak/apron/blacksmith
 		else
 			head = /obj/item/clothing/head/roguetown/roguehood/astrata
 			neck = /obj/item/clothing/neck/roguetown/psicross/astrata
