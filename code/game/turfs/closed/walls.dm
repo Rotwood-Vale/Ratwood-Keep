@@ -81,6 +81,7 @@
 /turf/closed/wall/ex_act(severity, target)
 	if(target == src)
 		dismantle_wall(1,1)
+		take_damage(INFINITY, BRUTE, "bomb", 0)
 		return
 	switch(severity)
 		if(1)
@@ -89,13 +90,9 @@
 			NT.contents_explosion(severity, target)
 			return
 		if(2)
-			if (prob(50))
-				dismantle_wall(0,1)
-			else
-				dismantle_wall(1,1)
+			take_damage(rand(350, 600), BRUTE, "bomb", 0)
 		if(3)
-			if (prob(hardness))
-				dismantle_wall(0,1)
+			take_damage(rand(50, 200), BRUTE, "bomb", 0)
 	if(!density)
 		..()
 
