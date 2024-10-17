@@ -136,9 +136,9 @@
 			H.mind.adjust_skillrank(/datum/skill/craft/armorsmithing, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/craft/weaponsmithing, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/craft/traps, 1, TRUE)
-			H.change_stat("intelligence", 2) // Weaker than war cleric but smarter
+			H.change_stat("intelligence", 2) // Changed to follow balance people's advice.
 			H.change_stat("constitution", 1) 
-			H.change_stat("endurance", 2) 
+			H.change_stat("strength", 2)
 			H.change_stat("speed", -2)
 			ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
 			ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
