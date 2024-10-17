@@ -3,7 +3,7 @@
 	greet_text = "The leader of the Zybantynian slave troup. You have came to the Isle of Enigma from the western deserts of Zybantine in the hopes of gathering wealth through the trade unfortunate laborers. The practice can be called despicable by some, but it is without a doubt efficient in filling your pockets before you return to Zybantine"
 	outfit = /datum/outfit/job/roguetown/slaver/master
 	allowed_sexes = list(MALE, FEMALE)
-	allowed_races = RACES_TOLERATED_UP
+	allowed_races = RACES_VERY_SHUNNED_UP
 	show_wanderer_examine = FALSE
 
 /datum/outfit/job/roguetown/slaver/master/pre_equip(mob/living/carbon/human/H)
@@ -52,7 +52,7 @@
 	greet_text = "A hired arm for the Zybantine Slave troup. You have come from the western deserts of Zybantine, and are hired for the week you are spending on this island."
 	outfit = /datum/outfit/job/roguetown/slaver/slavemercsword
 	allowed_sexes = list(MALE, FEMALE)
-	allowed_races = RACES_TOLERATED_UP
+	allowed_races = RACES_VERY_SHUNNED_UP
 	grant_lit_torch = TRUE
 	show_wanderer_examine = FALSE
 
@@ -103,7 +103,7 @@
 	greet_text = "A hired arm for the Zybantine Slave troup. You have come from the western deserts of Zybantine, and are hired for the week you are spending on this island."
 	outfit = /datum/outfit/job/roguetown/slaver/slavemercwhip
 	allowed_sexes = list(MALE, FEMALE)
-	allowed_races = RACES_TOLERATED_UP
+	allowed_races = RACES_VERY_SHUNNED_UP
 	grant_lit_torch = TRUE
 	show_wanderer_examine = FALSE
 	show_wanderer_examine = FALSE
@@ -155,7 +155,7 @@
 	greet_text = "A hired arm for the Zybantine Slave troup, and also a discount first aider. You have come from the western deserts of Zybantine, and are hired for the week you are spending on this island."
 	outfit = /datum/outfit/job/roguetown/slaver/slavemercbow
 	allowed_sexes = list(MALE, FEMALE)
-	allowed_races = RACES_TOLERATED_UP
+	allowed_races = RACES_VERY_SHUNNED_UP
 	grant_lit_torch = TRUE
 	show_wanderer_examine = FALSE
 
