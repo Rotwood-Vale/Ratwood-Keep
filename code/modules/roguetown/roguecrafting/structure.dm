@@ -331,7 +331,7 @@
 
 /datum/crafting_recipe/roguetown/structure/fencealt
 	name = "palisade (small log)"
-	result = (/obj/structure/fluff/railing/fence,
+	result = list(/obj/structure/fluff/railing/fence,
 				/obj/item/grown/log/tree/stick)
 	reqs = list(/obj/item/grown/log/tree/small = 1)
 	ontile = TRUE
