@@ -239,15 +239,13 @@
 
 /datum/special_trait/mastercraftsmen
 	name = "Master Craftsman"
-	greet_text = "In my youth, I've decided I'd get a grasp on every trade, and pursued the 10 arts of the craft."
+	greet_text = "In my youth, I've decided I'd get a grasp on every trade, and pursued the 8 arts of the craft."
 	req_text = "Middle-aged or Old"
 	allowed_ages = list(AGE_MIDDLEAGED, AGE_OLD)
 	weight = 100
 
 /datum/special_trait/mastercraftsmen/on_apply(mob/living/carbon/human/character)
 	character.mind.adjust_skillrank_up_to(/datum/skill/craft/crafting, 2, TRUE)
-	character.mind.adjust_skillrank_up_to(/datum/skill/craft/weaponsmithing, 2, TRUE)
-	character.mind.adjust_skillrank_up_to(/datum/skill/craft/armorsmithing, 2, TRUE)
 	character.mind.adjust_skillrank_up_to(/datum/skill/craft/blacksmithing, 2, TRUE)
 	character.mind.adjust_skillrank_up_to(/datum/skill/craft/carpentry, 2, TRUE)
 	character.mind.adjust_skillrank_up_to(/datum/skill/craft/masonry, 2, TRUE)

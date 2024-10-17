@@ -48,7 +48,7 @@
 				to_chat(user, span_warning("You fumble your way into slightly repairing [attacked_item]."))
 			else	
 				user.visible_message(span_info("[user] repairs [attacked_item]!"))
-			blacksmith_mind.add_sleep_experience(attacked_item.anvilrepair, exp_gained/2) //We gain as much exp as we fix divided by 2
+			blacksmith_mind.add_sleep_experience(attacked_item.anvilrepair, exp_gained/3) //We gain as much exp as we fix divided by 3
 			return
 		else
 			user.visible_message(span_warning("[user] damages [attacked_item]!"))
@@ -65,7 +65,7 @@
 		repair_percent *= blacksmith_mind.get_skill_level(attacked_structure.hammer_repair) * attacked_structure.max_integrity
 		exp_gained = min(attacked_structure.obj_integrity + repair_percent, attacked_structure.max_integrity) - attacked_structure.obj_integrity
 		attacked_structure.obj_integrity = min(attacked_structure.obj_integrity + repair_percent, attacked_structure.max_integrity)
-		blacksmith_mind.add_sleep_experience(attacked_structure.hammer_repair, exp_gained) //We gain as much exp as we fix
+		blacksmith_mind.add_sleep_experience(attacked_structure.hammer_repair, exp_gained/1.5) //We gain as much exp as we fix
 		playsound(src,'sound/items/bsmithfail.ogg', 100, FALSE)
 		user.visible_message(span_info("[user] repairs [attacked_structure]!"))
 		return

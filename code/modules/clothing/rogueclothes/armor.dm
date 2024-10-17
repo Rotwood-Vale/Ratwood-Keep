@@ -39,7 +39,7 @@
 	blocksound = CHAINHIT
 	var/do_sound = FALSE
 	drop_sound = 'sound/foley/dropsound/chain_drop.ogg'
-	anvilrepair = /datum/skill/craft/armorsmithing
+	anvilrepair = /datum/skill/craft/blacksmithing
 	smeltresult = /obj/item/ingot/steel
 	armor_class = ARMOR_CLASS_LIGHT
 
@@ -55,7 +55,7 @@
 	name = "chainmaille"
 	desc = "A chain vest made of heavy iron rings."
 	body_parts_covered = CHEST|GROIN|VITALS
-	anvilrepair = /datum/skill/craft/armorsmithing
+	anvilrepair = /datum/skill/craft/blacksmithing
 	smeltresult = /obj/item/ingot/iron
 	armor_class = ARMOR_CLASS_LIGHT
 
@@ -68,7 +68,7 @@
 	item_state = "hauberk"
 	max_integrity = 220
 	armor = list("blunt" = 60, "slash" = 100, "stab" = 80, "bullet" = 20, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
-	anvilrepair = /datum/skill/craft/armorsmithing
+	anvilrepair = /datum/skill/craft/blacksmithing
 	smeltresult = /obj/item/ingot/steel
 	do_sound = TRUE
 	armor_class = ARMOR_CLASS_MEDIUM
@@ -82,7 +82,7 @@
 	allowed_sex = list(FEMALE)
 	allowed_race = CLOTHED_RACES_TYPES
 	body_parts_covered = CHEST|GROIN
-	anvilrepair = /datum/skill/craft/armorsmithing
+	anvilrepair = /datum/skill/craft/blacksmithing
 	armor_class = ARMOR_CLASS_LIGHT
 	edelay_type = 1
 	w_class = WEIGHT_CLASS_SMALL
@@ -100,7 +100,7 @@
 	max_integrity = 500
 	allowed_sex = list(MALE, FEMALE)
 	var/do_sound = TRUE
-	anvilrepair = /datum/skill/craft/armorsmithing
+	anvilrepair = /datum/skill/craft/blacksmithing
 	smeltresult = /obj/item/ingot/steel
 	equip_delay_self = 40
 	unequip_delay_self = 40
@@ -128,7 +128,7 @@
 	do_sound = FALSE
 	blocking_behavior = null
 	max_integrity = 300
-	anvilrepair = /datum/skill/craft/armorsmithing
+	anvilrepair = /datum/skill/craft/blacksmithing
 	smeltresult = /obj/item/ingot/steel
 	armor_class = ARMOR_CLASS_MEDIUM
 
@@ -159,7 +159,7 @@
 	allowed_sex = list(MALE, FEMALE)
 	icon_state = "lamellar"
 	max_integrity = 200
-	anvilrepair = /datum/skill/craft/armorsmithing
+	anvilrepair = /datum/skill/craft/blacksmithing
 	smeltresult = /obj/item/ingot/steel
 	equip_delay_self = 40
 	armor_class = ARMOR_CLASS_MEDIUM
@@ -177,7 +177,7 @@
 	nodismemsleeves = TRUE
 	blocking_behavior = null
 	max_integrity = 400
-	anvilrepair = /datum/skill/craft/armorsmithing
+	anvilrepair = /datum/skill/craft/blacksmithing
 	smeltresult = /obj/item/ingot/steel
 	armor_class = ARMOR_CLASS_HEAVY
 	w_class = WEIGHT_CLASS_BULKY
@@ -196,7 +196,7 @@
 	nodismemsleeves = TRUE
 	blocking_behavior = null
 	max_integrity = 400
-	anvilrepair = /datum/skill/craft/armorsmithing
+	anvilrepair = /datum/skill/craft/blacksmithing
 	smeltresult = /obj/item/ingot/steel
 	armor_class = ARMOR_CLASS_HEAVY
 	w_class = WEIGHT_CLASS_BULKY
@@ -214,7 +214,7 @@
 	allowed_sex = list(MALE, FEMALE)
 	nodismemsleeves = TRUE
 	max_integrity = 350
-	anvilrepair = /datum/skill/craft/armorsmithing
+	anvilrepair = /datum/skill/craft/blacksmithing
 	smeltresult = /obj/item/ingot/steel
 	equip_delay_self = 40
 	armor_class = ARMOR_CLASS_HEAVY
