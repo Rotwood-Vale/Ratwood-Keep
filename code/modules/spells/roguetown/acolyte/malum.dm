@@ -138,7 +138,10 @@ proc/handle_living_entity(mob/target, mob/user, list/nosmeltore)
 		if (BODY_ZONE_HEAD || BODY_ZONE_PRECISE_EARS)
 			target_item = target.get_item_by_slot(SLOT_HEAD)
 		if (BODY_ZONE_CHEST)
-			target_item = target.get_item_by_slot(SLOT_ARMOR)
+			if(target.get_item_by_slot(SLOT_ARMOR))
+				target_item = target.get_item_by_slot(SLOT_ARMOR)
+			else if (target.get_item_by_slot(SLOT_SHIRT))
+				target_item = target.get_item_by_slot(SLOT_SHIRT)	
 		if (BODY_ZONE_PRECISE_NECK)
 			target_item = target.get_item_by_slot(SLOT_NECK)
 		if (BODY_ZONE_PRECISE_R_EYE || BODY_ZONE_PRECISE_L_EYE || BODY_ZONE_PRECISE_NOSE)
@@ -184,37 +187,37 @@ proc/apply_damage_to_hands(mob/living/carbon/target, mob/user)
 	affecting.receive_damage(0, adth_damage_to_apply)
 
 proc/handle_heating_equipped(mob/living/carbon/target, obj/item/clothing/targeteditem, mob/user)
-	var/list/body_zones_arms = list(BODY_ZONE_L_ARM, BODY_ZONE_R_ARM)
-	var/list/body_zones_legs = list(BODY_ZONE_L_LEG, BODY_ZONE_R_LEG)
 	var/obj/item/armor = target.get_item_by_slot(SLOT_ARMOR)
 	var/obj/item/shirt = target.get_item_by_slot(SLOT_SHIRT)
 	var/armor_can_heat = armor && armor.smeltresult && armor.smeltresult != /obj/item/ash
 	var/shirt_can_heat = shirt && shirt.smeltresult && shirt.smeltresult != /obj/item/ash // Full damage if no shirt 
 	var/damage_to_apply = 20 // How much damage should your armor burning you should do.
-	var/datum/effect_system/spark_spread/sparks = new()
-	if (BODY_ZONE_CHEST)
-		if (armor_can_heat && shirt_can_heat)
-			damage_to_apply = damage_to_apply * 2 // Double the damage if both armor and shirt can heat.
-		else if (armor_can_heat && (!shirt_can_heat && shirt))
+	if (user.zone_selected == BODY_ZONE_CHEST)
+		if (armor_can_heat && (!shirt_can_heat && shirt))
 			damage_to_apply = damage_to_apply / 2 // Halve the damage if only armor can heat but shirt can't.
-		if (armor_can_heat)
-			apply_damage_if_covered(target, list(BODY_ZONE_CHEST), targeteditem, CHEST, damage_to_apply)
-		else if (shirt_can_heat)
-			apply_damage_if_covered(target, list(BODY_ZONE_CHEST), targeteditem, CHEST, damage_to_apply)
-	sparks.set_up(1, 1, target.loc) // You can adjust the parameters as needed
-	sparks.start()
-	apply_damage_if_covered(target, body_zones_arms, targeteditem, ARMS|HANDS, damage_to_apply)
-	apply_damage_if_covered(target, body_zones_legs, targeteditem, GROIN|LEGS|FEET, damage_to_apply)
+		if (targeteditem == shirt & armor_can_heat) //this looks redundant but it serves to make sure the damage is doubled if both shirt and armor are metallic.
+			apply_damage_if_covered(target, list(BODY_ZONE_CHEST), armor, CHEST, damage_to_apply)
+		else if (targeteditem == armor & shirt_can_heat)
+			apply_damage_if_covered(target, list(BODY_ZONE_CHEST), shirt, CHEST, damage_to_apply)
+	apply_damage_if_covered(target, list(BODY_ZONE_CHEST), targeteditem, CHEST, damage_to_apply)
+	apply_damage_if_covered(target, list(BODY_ZONE_L_ARM, BODY_ZONE_R_ARM), targeteditem, ARMS|HANDS, damage_to_apply)
+	apply_damage_if_covered(target, list(BODY_ZONE_L_LEG, BODY_ZONE_R_LEG), targeteditem, GROIN|LEGS|FEET, damage_to_apply)
 	apply_damage_if_covered(target, list(BODY_ZONE_HEAD), targeteditem, HEAD|HAIR|NECK|NOSE|MOUTH|EARS|EYES, damage_to_apply)
 	show_visible_message(target, "[target]'s [targeteditem.name] glows brightly, searing their flesh.", "My [targeteditem.name] glows brightly, It burns!")
 	playsound(target.loc, 'sound/misc/frying.ogg', 100, FALSE, -1)
 
 proc/apply_damage_if_covered(mob/living/carbon/target, list/body_zones, obj/item/clothing/targeteditem, mask, damage)
+	var/datum/effect_system/spark_spread/sparks = new()
+	var/obj/item/bodypart/affecting = null
 	for (var/zone in body_zones)
+	{
 		if (targeteditem.body_parts_covered & mask)
-			var/obj/item/bodypart/affecting = target.get_bodypart(zone)
-			if (affecting)
-				affecting.receive_damage(0, damage)
+			affecting = target.get_bodypart(zone)
+		if (affecting)
+			affecting.receive_damage(0, damage)
+			sparks.set_up(1, 1, target.loc)
+			sparks.start()
+	}
 
 /obj/effect/proc_holder/spell/invoked/vigorousexchange/cast(list/targets, mob/living/carbon/user = usr)
 	. = ..()
