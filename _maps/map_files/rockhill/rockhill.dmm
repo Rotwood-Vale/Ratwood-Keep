@@ -11110,6 +11110,12 @@
 "kIh" = (
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/town/garrison)
+"kIm" = (
+/obj/structure/roguewindow/openclose/reinforced{
+	dir = 8
+	},
+/turf/open/floor/rogue/wood,
+/area/rogue/indoors/town)
 "kIu" = (
 /obj/structure/stairs,
 /turf/open/floor/rogue/woodturned,
@@ -301092,8 +301098,8 @@ evo
 evo
 evo
 evo
-dzT
-dzT
+kIm
+kIm
 evo
 evo
 xna
