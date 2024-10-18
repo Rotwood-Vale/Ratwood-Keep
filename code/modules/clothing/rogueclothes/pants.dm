@@ -100,9 +100,10 @@
 	gender = PLURAL
 	icon_state = "trou"
 	item_state = "trou"
+	max_integrity = 100
 //	adjustable = CAN_CADJUST
 	sewrepair = TRUE
-	armor = list("blunt" = 30, "slash" = 10, "stab" = 20, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	armor = list("blunt" = 33, "slash" = 12, "stab" = 22, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
 	prevent_crits = list(BCLASS_CUT)
 	blocksound = SOFTHIT
 	blade_dulling = DULLING_BASHCHOP
@@ -113,6 +114,9 @@
 	name = "leather trousers"
 	desc = "Trousers made of fine leather."
 	icon_state = "leathertrou"
+	max_integrity = 130
+	armor = list("blunt" = 50, "slash" = 25, "stab" = 40, "bullet" = 10, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	prevent_crits = list(BCLASS_CUT, BCLASS_STAB)
 	salvage_amount = 1
 	salvage_result = /obj/item/natural/hide
 
@@ -124,10 +128,11 @@
 
 /obj/item/clothing/under/roguetown/chainlegs
 	name = "chain chausses"
-	desc = "Chain leggings composed of interlinked metal rings."
+	desc = "Steel chain leggings, composed of interlinked metal rings, that absorb arrow impacts decently enough."
 	gender = PLURAL
 	icon_state = "chain_legs"
 	item_state = "chain_legs"
+	max_integrity = 200
 //	adjustable = CAN_CADJUST
 	sewrepair = FALSE
 	armor = list("blunt" = 60, "slash" = 100, "stab" = 80, "bullet" = 20, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
@@ -164,13 +169,15 @@
 	resistance_flags = FIRE_PROOF
 
 /obj/item/clothing/under/roguetown/chainlegs/iron
+	desc = "Iron chain leggings, composed of interlinked metal rings, that absorb arrow impacts decently enough."
 	icon_state = "ichain_legs"
+	max_integrity = 175
 	anvilrepair = /datum/skill/craft/armorsmithing
 	smeltresult = /obj/item/ingot/iron
 
 /obj/item/clothing/under/roguetown/platelegs
 	name = "plated chausses"
-	desc = "Plated armor to protect the legs."
+	desc = "Plated armor to protect the legs, especially against arrows."
 	gender = PLURAL
 	icon_state = "chain_legs"
 	item_state = "chain_legs"

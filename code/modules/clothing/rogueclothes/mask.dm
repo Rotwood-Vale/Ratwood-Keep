@@ -96,7 +96,7 @@
 
 /obj/item/clothing/mask/rogue/facemask/hound
 	name = "iron hound mask"
-	desc = "An iron mask, made for those who have snouts."
+	desc = "An iron mask, made for those who have snouts, protecting the eyes, nose and muzzle while obscuring the face."
 	icon_state = "imask_hound"
 
 /obj/item/clothing/mask/rogue/facemask/prisoner/Initialize()
@@ -120,7 +120,7 @@
 
 /obj/item/clothing/mask/rogue/facemask/steel/hound
 	name = "steel hound mask"
-	desc = "A steel mask, made for those who have snouts."
+	desc = "A steel mask, made for those who have snouts, protecting the eyes, nose and muzzle while obscuring the face."
 	icon_state = "smask_hound"
 
 /obj/item/clothing/mask/rogue/shepherd
