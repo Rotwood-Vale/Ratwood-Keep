@@ -33,7 +33,8 @@
 	//EVIL CODE !!
 	var/list/allowed_types = list(
 			/obj/item/clothing,
-			/obj/item/storage
+			/obj/item/storage,
+			/obj/item/bedroll
 			)
 
 	var/static/list/selectable_colors = list(
