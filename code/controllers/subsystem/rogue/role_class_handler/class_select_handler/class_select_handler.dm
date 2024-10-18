@@ -134,7 +134,7 @@
 				if(attempts > local_insert_sortlist.len)
 					attempts = local_insert_sortlist.len
 
-				local_insert_sortlist = sortlist(local_insert_sortlist)
+				local_insert_sortlist = shuffle(local_insert_sortlist)
 				for(var/i in 1 to attempts)
 					rolled_classes[local_insert_sortlist[i]] = 0
 
