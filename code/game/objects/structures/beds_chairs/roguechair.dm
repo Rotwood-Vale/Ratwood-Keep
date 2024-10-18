@@ -85,8 +85,7 @@
 	..()
 	if(GLOB.lordprimary)
 		lordcolor(GLOB.lordprimary,GLOB.lordsecondary)
-	else
-		GLOB.lordcolor += src
+	GLOB.lordcolor += src
 
 /obj/structure/chair/bench/couch/Destroy()
 	GLOB.lordcolor -= src
@@ -98,7 +97,6 @@
 	var/mutable_appearance/M = mutable_appearance(icon, "[icon_state]_primary", -(layer+0.1))
 	M.color = secondary //looks better
 	add_overlay(M)
-	GLOB.lordcolor -= src
 
 /obj/structure/chair/wood/rogue
 	icon_state = "chair2"
