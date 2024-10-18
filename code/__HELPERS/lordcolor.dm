@@ -51,7 +51,7 @@ GLOBAL_VAR(lordsecondary)
 		GLOB.lordcolor -= O
 	for(var/turf/T in GLOB.lordcolor)
 		T.lordcolor(prim,sec)
-			GLOB.lordcolor -= T
+		GLOB.lordcolor -= T
 
 //	Default Kingdom colors, if none are picked.
 proc/lord_color_default()
