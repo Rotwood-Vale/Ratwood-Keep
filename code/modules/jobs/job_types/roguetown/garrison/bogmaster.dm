@@ -86,8 +86,8 @@
 	new_role = "Bog Guard"
 	recruitment_faction = "Bog Guard"
 	recruitment_message = "Serve the bog, %RECRUIT!"
-	accept_message = "FOR THE BOG!"
-	refuse_message = "I refuse."
+	accept_message = "FOR BOGARDY!"
+	refuse_message = "Decline."
 
 /obj/effect/proc_holder/spell/self/convertrole/bog/convert(mob/living/carbon/human/recruit, mob/living/carbon/human/recruiter)
 	. = ..()

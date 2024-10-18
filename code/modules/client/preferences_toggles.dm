@@ -29,6 +29,14 @@
 		prefs.toggles ^= TOGGLE_FULLSCREEN
 		toggle_fullscreeny(prefs.toggles & TOGGLE_FULLSCREEN)
 
+/client/verb/toggle_screenshake()
+	set name = "Toggle Screen Shake"
+	set category = "Options"
+	set desc = ""
+	if(prefs)
+		prefs.shake = !prefs.shake
+		to_chat(src, "Screen shake toggled")
+
 /client/verb/stop_sounds_rogue()
 	set name = "StopSounds"
 	set category = "Options"

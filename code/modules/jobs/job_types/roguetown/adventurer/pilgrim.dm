@@ -33,5 +33,5 @@
 		H.become_blind("advsetup")
 
 		if(GLOB.adventurer_hugbox_duration)
-			///FOR SOME RETARDED FUCKING REASON THIS REFUSED TO WORK WITHOUT A FUCKING TIMER IT JUST FUCKED SHIT UP
+			//For whatever reason, this refuses to work without a timer, as in it breaks.
 			addtimer(CALLBACK(H, TYPE_PROC_REF(/mob/living/carbon/human, adv_hugboxing_start)), 1)
