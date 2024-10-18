@@ -25,6 +25,8 @@ SUBSYSTEM_DEF(droning)
 		new_droning = list('sound/music/dreamer_is_still_asleep.ogg')
 	else if(HAS_TRAIT(entering.mob, TRAIT_DRUQK))
 		new_droning = list('sound/music/spice.ogg')
+	else if(HAS_TRAIT(entering.mob, TRAIT_WOLFHUNT))
+		new_droning = list('sound/music/wolfhunt.ogg')
 
 	//Same ambience, don't bother
 	if(last_droning ~= new_droning)
@@ -64,6 +66,10 @@ SUBSYSTEM_DEF(droning)
 		used_gay = list('sound/music/dreamer_is_still_asleep.ogg')
 	else if(HAS_TRAIT(listener.mob, TRAIT_DRUQK))
 		used_gay = list('sound/music/spice.ogg')
+
+	if(HAS_TRAIT(listener.mob, TRAIT_WOLFHUNT))
+		used_gay = list('sound/music/wolfhunt.ogg')
+	
 	//our music for real
 	area_player.droning_sound_current = used_gay
 	//last phase!
@@ -75,12 +81,20 @@ SUBSYSTEM_DEF(droning)
 /datum/controller/subsystem/droning/proc/play_combat_music(music = null, client/dreamer)
 	if(!music || !dreamer)
 		return
+
+	if(!dreamer.mob.cmode)
+		play_area_sound(get_area(dreamer.mob), dreamer)
+		return
+
 /*
 	if(HAS_TRAIT(dreamer.mob, TRAIT_LEAN))
 		return
 	if(HAS_TRAIT(dreamer.mob, TRAIT_BLOODARN))
 		return
 */
+
+	if(HAS_TRAIT(dreamer.mob, TRAIT_WOLFHUNT))
+		music = list('sound/music/wolfhuntcmode.ogg')
 
 	if(HAS_TRAIT(dreamer.mob, TRAIT_DRUQK))
 		return
@@ -106,6 +120,8 @@ SUBSYSTEM_DEF(droning)
 			droning.file = 'sound/music/dreamer_is_still_asleep.ogg'
 		else if(HAS_TRAIT(listener.mob, TRAIT_DRUQK))
 			droning.file = 'sound/music/spice.ogg'
+		else if(HAS_TRAIT(listener.mob, TRAIT_WOLFHUNT))
+			droning.file = list('sound/music/wolfhunt.ogg')
 
 		listener.droning_sound = droning
 		listener.last_droning_sound = area_player.droning_sound
@@ -129,6 +145,8 @@ SUBSYSTEM_DEF(droning)
 			droning.file = 'sound/music/dreamer_is_still_asleep.ogg'
 		else if(HAS_TRAIT(listener.mob, TRAIT_DRUQK))
 			droning.file = 'sound/music/spice.ogg'
+		else if(HAS_TRAIT(listener.mob, TRAIT_WOLFHUNT))
+			droning.file = list('sound/music/wolfhunt.ogg')
 
 		listener.droning_sound = droning
 		listener.last_droning_sound = area_player.droning_sound_current

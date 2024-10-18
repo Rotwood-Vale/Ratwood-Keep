@@ -44,12 +44,12 @@
 	soundpack_m = /datum/voicepack/werewolf
 	soundpack_f = /datum/voicepack/werewolf
 	specstats = list(
-		"strength" = 8, 
-		"perception" = 7, 
+		"strength" = 2, 
+		"perception" = 6, 
 		"intelligence" = -6, 
 		"constitution" = 8, 
-		"endurance" = 8, 
-		"speed" = 3, 
+		"endurance" = 4, 
+		"speed" = -2, 
 		"fortune" = 0
 		)
 	enflamed_icon = "widefire"
