@@ -209,6 +209,31 @@
 		var/mob/living/carbon/human/H = M
 		if(!HAS_TRAIT(H, TRAIT_NOHUNGER))
 			H.adjust_hydration(10)
+			H.adjust_nutrition(5)
+		if(H.blood_volume < BLOOD_VOLUME_NORMAL)
+			H.blood_volume = min(H.blood_volume+10, BLOOD_VOLUME_NORMAL)
+	..()
+
+/datum/reagent/consumable/breastmilk
+	name = "Breast Milk"
+	description = "An opaque white liquid produced by the mammary glands of women. Its a bit sweeter than normal milk"
+	color = "#e9e6e6" 
+	taste_description = "breast milk"
+	glass_icon_state = "glass_white"
+	glass_name = "glass of breast milk"
+	glass_desc = ""
+
+/datum/reagent/consumable/breastmilk/on_mob_life(mob/living/carbon/M)
+	if(M.getBruteLoss() && prob(20))
+		M.heal_bodypart_damage(1,0, 0)
+		. = 1
+	if(holder.has_reagent(/datum/reagent/consumable/capsaicin))
+		holder.remove_reagent(/datum/reagent/consumable/capsaicin, 2)
+	if(ishuman(M))
+		var/mob/living/carbon/human/H = M
+		if(!HAS_TRAIT(H, TRAIT_NOHUNGER))
+			H.adjust_hydration(10)
+			H.adjust_nutrition(5)
 		if(H.blood_volume < BLOOD_VOLUME_NORMAL)
 			H.blood_volume = min(H.blood_volume+10, BLOOD_VOLUME_NORMAL)
 	..()
