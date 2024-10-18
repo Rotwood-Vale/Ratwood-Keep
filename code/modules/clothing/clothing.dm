@@ -102,7 +102,7 @@
 		if(torn_sleeve_number == 1)
 			. += span_notice("It has one torn sleeve.")
 		else
-			. += span_notice("Both its sleves have been torn!")
+			. += span_notice("Both its sleeves have been torn!")
 
 /obj/item/proc/get_detail_tag() //this is for extra layers on clothes
 	return detail_tag
