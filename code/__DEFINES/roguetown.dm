@@ -148,14 +148,16 @@
 	/datum/patron/divine/noc,\
 	/datum/patron/divine/dendor,\
 	/datum/patron/divine/necra,\
-	/datum/patron/divine/pestra\
+	/datum/patron/divine/pestra,\
+	/datum/patron/divine/malum\
 )
 
 #define ALL_ACOLYTE_PATRONS list(\
 	/datum/patron/divine/astrata,\
 	/datum/patron/divine/noc,\
 	/datum/patron/divine/dendor,\
-	/datum/patron/divine/pestra\
+	/datum/patron/divine/pestra,\
+	/datum/patron/divine/malum\
 )
 
 #define ALL_DIVINE_PATRONS list(\
