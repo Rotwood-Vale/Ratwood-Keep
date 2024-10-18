@@ -7,7 +7,6 @@
 	allowed_races = list(
 		/datum/species/akula,
 		/datum/species/vulpkanin,
-		/datum/species/lupian,
 		/datum/species/dracon,
 		/datum/species/moth, //grenzelmoft?
 		/datum/species/dwarf/mountain,

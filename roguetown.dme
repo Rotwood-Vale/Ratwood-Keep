@@ -2293,6 +2293,7 @@
 #include "code\modules\jobs\job_types\roguetown\goblin\goblinguard.dm"
 #include "code\modules\jobs\job_types\roguetown\goblin\goblinking.dm"
 #include "code\modules\jobs\job_types\roguetown\goblin\goblinsmith.dm"
+#include "code\modules\jobs\job_types\roguetown\mercenaries\blackstar.dm"
 #include "code\modules\jobs\job_types\roguetown\mercenaries\desertrider.dm"
 #include "code\modules\jobs\job_types\roguetown\mercenaries\grenzelhoft.dm"
 #include "code\modules\jobs\job_types\roguetown\mercenaries\seelie.dm"
