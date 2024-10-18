@@ -344,7 +344,7 @@
 	subtype_reqs = TRUE //Unsure if needed for stone knife to work, feel free to remove this if not.
 
 /datum/crafting_recipe/roguetown/bag
-	name = "sack/bag"
+	name = "sack"
 	result = /obj/item/storage/roguebag/crafted
 	reqs = list(/obj/item/natural/fibers = 1,
 				/obj/item/natural/cloth = 1)
