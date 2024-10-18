@@ -117,7 +117,7 @@
 		if(fiber_salvage)
 			new /obj/item/natural/fibers(get_turf(src))
 		var/skill_level = user.mind.get_skill_level(/datum/skill/misc/sewing)
-		if(prob(50 - (skill_level))) // We are dumb and we failed!
+		if(prob(50 - (skill_level * 10))) // We are dumb and we failed!
 			to_chat(user, span_info("I ruined some of the materials due to my lack of skill..."))
 			playsound(src, 'sound/foley/cloth_rip.ogg', 50, TRUE)
 			qdel(src)
@@ -194,7 +194,6 @@
 				var/obj/item/natural/cloth/C = new get_turf(src)
 				C.color = color
 				user.put_in_hands(C)
-				L.mind.add_sleep_experience(/datum/skill/misc/sewing, (L.STAINT*0.5)) //We're getting experience for tearing, less than for salvaging of course!
 				return
 			else
 				user.visible_message(span_warning("[user] tries to tear [src]."))
@@ -219,7 +218,6 @@
 				var/obj/item/natural/cloth/C = new get_turf(src)
 				C.color = color
 				user.put_in_hands(C)
-				L.mind.add_sleep_experience(/datum/skill/misc/sewing, (L.STAINT*0.5)) //We're getting experience for tearing, less than for salvaging of course!
 				return
 			else
 				user.visible_message(span_warning("[user] tries to tear [src]."))
