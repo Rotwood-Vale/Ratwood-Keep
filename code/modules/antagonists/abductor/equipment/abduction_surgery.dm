@@ -1,4 +1,4 @@
-/* RETARDED
+/*
 /datum/surgery_step/extract_organ
 	name = "remove heart"
 	accept_hand = 1
