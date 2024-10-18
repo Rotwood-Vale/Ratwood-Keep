@@ -160,6 +160,7 @@ SUBSYSTEM_DEF(droning)
 		return
 
 		var/loopsounds = null
+	var/sound/loop_sound = sound(pick(loopsounds), repeat = TRUE, wait = 0, channel = CHANNEL_MUSIC, volume = dreamer?.prefs.musicvol)
 		if(area_entered.we_looping_here)
 		if(GLOB.tod == "night")
 			if(area_entered.ambientnight)
