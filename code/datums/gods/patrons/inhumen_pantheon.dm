@@ -2,22 +2,7 @@
 	name = null
 	associated_faith = /datum/faith/inhumen
 	undead_hater = FALSE
-	confess_lines = list(
-		"PSYDON IS THE DEMIURGE!",
-		"THE TEN ARE WORTHLESS COWARDS!",
-		"THE TEN ARE DECEIVERS!",
-	)
-
-/datum/patron/inhumen/zizo
-	name = "Zizo"
-	domain = "God of Necromancy and Left Hand Magicks"
-	desc = "Snow Elf turned God, Zizo taught dark elves to bend the natural world to their will."
-	worshippers = "Necromancers, Warlocks, and the Undead"
-	confess_lines = list(
-		"PRAISE ZIZO!",
-		"LONG LIVE ZIZO!",
-		"ZIZO IS KING!",
-	)
+	confess_lines = list()
 
 /datum/patron/inhumen/graggar
 	name = "Graggar"
