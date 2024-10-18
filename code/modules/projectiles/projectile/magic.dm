@@ -703,7 +703,14 @@
 //		M.take_overall_damage(0,10) //between this 10 burn, the 10 brute, the explosion brute, and the onfire burn, my at about 65 damage if you stop drop and roll immediately
 	var/turf/T
 	if(isturf(target))
-		T = target
+		if(isclosedturf(target))
+			explosion(get_turf(target), -1, 1, 1, 0, 0, 0, visfx = "firespark", soundin = null)
+			var/datum/point/vector/previous = trajectory.return_vector_after_increments(1,-1)
+			T = previous.return_turf()
+			explosion(T, -1, (exp_heavy - 1), (exp_light - 1), exp_flash, 0, flame_range = exp_fire, soundin = explode_sound)
+			return TRUE
+		else
+			T = target
 	else
 		T = get_turf(target)
 	explosion(T, -1, exp_heavy, exp_light, exp_flash, 0, flame_range = exp_fire, soundin = explode_sound)

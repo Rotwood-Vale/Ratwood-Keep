@@ -1,7 +1,7 @@
 ///the essential proc to call when an obj must receive damage of any kind.
 /turf/proc/take_damage(damage_amount, damage_type = BRUTE, damage_flag = "", sound_effect = TRUE)
 	testing("attackby2")
-	if((damage_flag == "blunt" || damage_flag == "slash" || damage_flag == "stab") && damage_amount < damage_deflection)
+	if((damage_flag == "blunt" || damage_flag == "slash" || damage_flag == "stab" || damage_flag == "bomb") && damage_amount < damage_deflection)
 		return 0
 	if(QDELETED(src))
 		stack_trace("[src] taking damage after deletion")
