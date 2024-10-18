@@ -162,7 +162,7 @@
 	tastes = list("spelt" = 1)
 	foodtype = GRAIN
 	slice_batch = FALSE
-	rotprocess = 30 MINUTES
+	rotprocess = 40 MINUTES
 
 /obj/item/reagent_containers/food/snacks/rogue/bread/update_icon()
 	if(slices_num)
@@ -197,6 +197,8 @@
 	tastes = list("spelt" = 1)
 	foodtype = GRAIN
 	bitesize = 1
+	rotprocess = 40 MINUTES
+
 //this is a child so we can be used in sammies
 /obj/item/reagent_containers/food/snacks/rogue/breadslice/toast
 	name = "toast"
@@ -350,7 +352,7 @@
 	tastes = list("bread" = 1,"dried fruit" = 1)
 	foodtype = GRAIN
 	slice_batch = FALSE
-	rotprocess = 30 MINUTES
+	rotprocess = 40 MINUTES
 	eat_effect = /datum/status_effect/buff/foodbuff
 
 /obj/item/reagent_containers/food/snacks/rogue/raisinbread/update_icon()
@@ -386,7 +388,7 @@
 	foodtype = GRAIN
 	bitesize = 2
 	eat_effect = /datum/status_effect/buff/foodbuff
-
+	rotprocess = 40 MINUTES
 
 /datum/crafting_recipe/roguetown/cooking/biscuit
 	name = "biscuit"
