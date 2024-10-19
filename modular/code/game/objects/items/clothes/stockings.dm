@@ -8,6 +8,7 @@
 	l_sleeve_status = SLEEVE_NOMOD
 	body_parts_covered = null
 	flags_inv = null
+	salvage_amount = 1
 
 /obj/item/clothing/under/roguetown/tights/stockings/random/Initialize()
 	. = ..()

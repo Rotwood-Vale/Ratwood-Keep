@@ -22,6 +22,7 @@
 	var/next_seek = 0
 	var/flee_in_pain = FALSE
 	var/stand_attempts = 0
+	var/ai_currently_active = FALSE
 
 	var/returning_home = FALSE
 

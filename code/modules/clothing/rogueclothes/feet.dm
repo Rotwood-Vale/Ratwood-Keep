@@ -53,6 +53,8 @@
 	item_state = "simpleshoe"
 	resistance_flags = null
 	color = "#473a30"
+	salvage_amount = 1
+	salvage_result = /obj/item/natural/hide
 
 /obj/item/clothing/shoes/roguetown/simpleshoes/white
 	color = null
@@ -89,6 +91,8 @@
 	desc = "Boots made of leather."
 	icon_state = "leatherboots"
 	item_state = "leatherboots"
+	salvage_amount = 1
+	salvage_result = /obj/item/natural/hide
 
 /obj/item/clothing/shoes/roguetown/armor/steel
 	name = "steel plated boots"

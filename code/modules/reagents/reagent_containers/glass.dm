@@ -304,7 +304,7 @@
 	w_class = WEIGHT_CLASS_BULKY
 	amount_per_transfer_from_this = 9
 	possible_transfer_amounts = list(9)
-	volume = 70
+	volume = 198
 	flags_inv = HIDEHAIR
 	reagent_flags = OPENCONTAINER
 	obj_flags = CAN_BE_HIT
@@ -331,7 +331,7 @@
 	force = 5
 	throwforce = 10
 	amount_per_transfer_from_this = 9
-	volume = 99
+	volume = 198
 	armor = list("blunt" = 25, "slash" = 20, "stab" = 15, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 50)
 	resistance_flags = FLAMMABLE
 	drop_sound = 'sound/foley/dropsound/wooden_drop.ogg'
@@ -341,9 +341,7 @@
 /obj/item/reagent_containers/glass/bucket/wooden/alter
 	icon = 'modular/Neu_Food/icons/cooking.dmi'
 
-/* using the version in Neu_Food instead
-
-/obj/item/reagent_containers/glass/bucket/wooden/attackby(obj/item/I, mob/user, params)
+/obj/item/reagent_containers/glass/bucket/attackby(obj/item/I, mob/user, params)
 	if(istype(I, /obj/item/natural/cloth))
 		var/obj/item/natural/cloth/T = I
 		if(T.wet && !T.return_blood_DNA())
@@ -360,7 +358,7 @@
 		user.visible_message(span_info("[user] soaks [T] in [src]."))
 		return
 	..()
-*/
+
 /obj/item/reagent_containers/glass/bucket/wooden/getonmobprop(tag)
 	. = ..()
 	if(tag)
