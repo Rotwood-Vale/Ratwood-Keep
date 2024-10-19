@@ -584,7 +584,7 @@
 					var/mob/living/carbon/H = user
 					H.update_inv_head()
 		user.update_fov_angles()
-		
+
 /obj/item/clothing/head/roguetown/helmet/astratahelm
 	name = "astrata helmet"
 	desc = "Headwear commonly worn by Templars in service to Astrata. The firstborn child's light will forever shine on within its crest."
@@ -907,6 +907,7 @@
 	detail_tag = "_detail"
 	dynamic_hair_suffix = ""
 	max_integrity = 150
+	sewrepair = TRUE
 	colorgrenz = TRUE
 
 /obj/item/clothing/head/roguetown/grenzelhofthat/update_icon()
