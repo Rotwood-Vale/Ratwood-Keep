@@ -115,7 +115,7 @@
 			deity = " to THE GODHEAD"
 			INVOKE_ASYNC(maniac, TYPE_PROC_REF(/datum/antagonist/maniac, wake_up))
 		else
-			var/datum/patron/zizo = GLOB.patronlist[/datum/patron/inhumen/zizo]
+			var/datum/patron/zizo = GLOB.patronlist[/datum/patron/zizo]
 			deity = " to [zizo.name]"
 	
 	var/display_name = "[real_name || src.name]"

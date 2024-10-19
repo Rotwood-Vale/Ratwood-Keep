@@ -26,7 +26,7 @@
 	attacked_sound = "parrywood"
 	max_integrity = 150
 	blade_dulling = DULLING_BASHCHOP
-	anvilrepair = /datum/skill/craft/armorsmithing
+	anvilrepair = /datum/skill/craft/blacksmithing
 	COOLDOWN_DECLARE(shield_bang)
 	w_class = WEIGHT_CLASS_BULKY
 
