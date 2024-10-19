@@ -22,14 +22,15 @@
 	layer = -0.1
 
 /obj/structure/well/attackby(obj/item/I, mob/user, params)
-	if(istype(I, /obj/item/reagent_containers/glass/bucket/wooden))
-		var/obj/item/reagent_containers/glass/bucket/wooden/W = I
+	if(istype(I, /obj/item/reagent_containers/glass/bucket))
+		var/obj/item/reagent_containers/glass/bucket/W = I
 		if(W.reagents.holder_full())
 			to_chat(user, span_warning("[W] is full."))
 			return
 		if(do_after(user, 60, target = src))
-			var/list/waterl = list(/datum/reagent/water = 100)
+			var/list/waterl = list(/datum/reagent/water = 200)
 			W.reagents.add_reagent_list(waterl)
-			to_chat(user, span_notice("I fill [W] from [src]."))
+			to_chat(user, "<span class='notice'>I fill [W] from [src].</span>")
+			playsound(user, pick('sound/foley/waterwash (1).ogg','sound/foley/waterwash (2).ogg'), 80, FALSE)
 			return
 	else ..()

@@ -583,6 +583,7 @@
 	body_parts_covered = CHEST|GROIN
 	armor = list("blunt" = 25, "slash" = 5, "stab" = 15, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 24, "acid" = 0)
 	boobed = TRUE
+	salvage_result = /obj/item/natural/hide
 
 /obj/item/clothing/cloak/apron/brown
 	color = CLOTHING_BROWN
@@ -643,6 +644,7 @@
 	inhand_mod = TRUE
 	hoodtype = /obj/item/clothing/head/hooded/rainhood
 	toggle_icon_state = FALSE
+	salvage_result = /obj/item/natural/hide
 
 /obj/item/clothing/wash_act(clean)
 	. = ..()
@@ -714,6 +716,8 @@
 	icon_state = "furgrey"
 	inhand_mod = FALSE
 	hoodtype = /obj/item/clothing/head/hooded/rainhood/furhood
+	salvage_amount = 1
+	salvage_result = /obj/item/natural/fur
 
 /obj/item/clothing/cloak/raincloak/furcloak/crafted/Initialize()
 	. = ..()
@@ -872,6 +876,7 @@
 	allowed_race = NON_DWARVEN_RACE_TYPES
 	flags_inv = null
 	w_class = WEIGHT_CLASS_SMALL
+	salvage_amount = 1
 
 /obj/item/clothing/cloak/half/brown
 	color = CLOTHING_BROWN
@@ -1002,7 +1007,7 @@
 	sleeved = 'icons/roguetown/clothing/special/onmob/blkknight.dmi'
 	w_class = WEIGHT_CLASS_BULKY
 
-/obj/item/clothing/shoes/roguetown/boots/armor/blkknight
+/obj/item/clothing/shoes/roguetown/armor/steel/blkknight
 	name = "blacksteel boots"
 	icon_state = "bkboots"
 	icon = 'icons/roguetown/clothing/special/blkknight.dmi'

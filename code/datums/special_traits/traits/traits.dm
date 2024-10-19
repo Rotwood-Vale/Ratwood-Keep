@@ -147,7 +147,7 @@
 
 /datum/special_trait/arsonist
 	name = "Arsonist"
-	greet_text = span_notice("I like seeing things combust and burn. I have hidden around two firebobms")
+	greet_text = span_notice("I like seeing things combust and burn. I have hidden around two firebombs")
 	weight = 100
 
 /datum/special_trait/arsonist/on_apply(mob/living/carbon/human/character, silent)
@@ -168,7 +168,7 @@
 	name = "Psydon's Drunkest Rider"
 	greet_text = span_notice("I ride! None of the laws shall stop me for that is Psydon's divine will!")
 	req_text = "Worship Psydon"
-	allowed_patrons = list(/datum/patron/old_god)
+	allowed_patrons = list(/datum/patron/psydon)
 	weight = 100
 
 /datum/special_trait/psydons_rider/on_apply(mob/living/carbon/human/character, silent)
@@ -239,15 +239,13 @@
 
 /datum/special_trait/mastercraftsmen
 	name = "Master Craftsman"
-	greet_text = "In my youth, I've decided I'd get a grasp on every trade, and pursued the 10 arts of the craft."
+	greet_text = "In my youth, I've decided I'd get a grasp on every trade, and pursued the 8 arts of the craft."
 	req_text = "Middle-aged or Old"
 	allowed_ages = list(AGE_MIDDLEAGED, AGE_OLD)
 	weight = 100
 
 /datum/special_trait/mastercraftsmen/on_apply(mob/living/carbon/human/character)
 	character.mind.adjust_skillrank_up_to(/datum/skill/craft/crafting, 2, TRUE)
-	character.mind.adjust_skillrank_up_to(/datum/skill/craft/weaponsmithing, 2, TRUE)
-	character.mind.adjust_skillrank_up_to(/datum/skill/craft/armorsmithing, 2, TRUE)
 	character.mind.adjust_skillrank_up_to(/datum/skill/craft/blacksmithing, 2, TRUE)
 	character.mind.adjust_skillrank_up_to(/datum/skill/craft/carpentry, 2, TRUE)
 	character.mind.adjust_skillrank_up_to(/datum/skill/craft/masonry, 2, TRUE)
@@ -314,7 +312,7 @@
 
 /datum/special_trait/backproblems/on_apply(mob/living/carbon/human/character)
 	character.change_stat("strength", 2)
-	character.change_stat("constitution", 1)
+	character.change_stat("constitution", 2)
 	character.change_stat("speed", -2)
 	character.transform = character.transform.Scale(1.25, 1.25)
 	character.transform = character.transform.Translate(0, (0.25 * 16))
@@ -338,7 +336,7 @@
 
 /datum/special_trait/nimrod/on_apply(mob/living/carbon/human/character, silent)
 	character.change_stat("speed", -2)
-	character.change_stat("intelligence", -4)	
+	character.change_stat("intelligence", -4)
 
 /datum/special_trait/hussite
 	name = "Known Heretic"
@@ -503,7 +501,7 @@
 	character.equip_to_slot_or_del(new /obj/item/storage/belt/rogue/leather(character), SLOT_BELT)
 	character.equip_to_slot_or_del(new /obj/item/storage/belt/rogue/pouch/coins/rich(character), SLOT_BELT_R)
 	character.equip_to_slot_or_del(new /obj/item/storage/backpack/rogue/satchel(character), SLOT_BACK_R)
-	character.equip_to_slot_or_del(new /obj/item/clothing/shoes/roguetown/nobleboot(character), SLOT_SHOES)
+	character.equip_to_slot_or_del(new /obj/item/clothing/shoes/roguetown/armor/nobleboot(character), SLOT_SHOES)
 	character.mind.adjust_skillrank(/datum/skill/combat/maces, 1, TRUE)
 	character.mind.adjust_skillrank(/datum/skill/combat/bows, 3, TRUE)
 	character.mind.adjust_skillrank(/datum/skill/combat/crossbows, 2, TRUE)
@@ -557,3 +555,13 @@
 /datum/special_trait/illicit_merchant/on_apply(mob/living/carbon/human/character, silent)
 	character.mind.special_items["Merchant Key"] = /obj/item/roguekey/merchant
 	character.mind.special_items["GOLDFACE Gem"] = /obj/item/gem_device/goldface
+
+/datum/special_trait/reps_redemption
+	name = "Reps for Redemption"
+	greet_text = span_notice("Pain has finally transformed into gain.")
+	weight = 75
+
+/datum/special_trait/reps_redemption/on_apply(mob/living/carbon/human/character)
+	character.mind.adjust_skillrank(/datum/skill/misc/athletics, 1, TRUE)
+	character.change_stat("strength", 1)
+	character.change_stat("constitution", 1)

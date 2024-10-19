@@ -569,7 +569,7 @@
 	var/obj/effect/proc_holder/spell/item = choices[choice]
 	if(!item)
 		return     // user canceled;
-	if(alert(user, "[item.desc]", "[item.name]", "Learn", "Cancel") == "Return") //gives a preview of the spell's description to let people know what a spell does
+	if(alert(user, "[item.desc]", "[item.name]", "Learn", "Cancel") == "Cancel") //gives a preview of the spell's description to let people know what a spell does
 		return
 	for(var/obj/effect/proc_holder/spell/knownspell in user.mind.spell_list)
 		if(knownspell.type == item.type)

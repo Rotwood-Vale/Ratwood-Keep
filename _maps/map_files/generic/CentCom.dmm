@@ -330,11 +330,11 @@
 	dir = 10;
 	icon_state = "tablewood2"
 	},
-/obj/item/clothing/shoes/roguetown/boots,
-/obj/item/clothing/shoes/roguetown/boots,
-/obj/item/clothing/shoes/roguetown/boots,
-/obj/item/clothing/shoes/roguetown/boots,
-/obj/item/clothing/shoes/roguetown/boots,
+/obj/item/clothing/shoes/roguetown/armor,
+/obj/item/clothing/shoes/roguetown/armor,
+/obj/item/clothing/shoes/roguetown/armor,
+/obj/item/clothing/shoes/roguetown/armor,
+/obj/item/clothing/shoes/roguetown/armor,
 /turf/open/floor/rogue/carpet,
 /area/rogue)
 "aL" = (
@@ -363,11 +363,11 @@
 	dir = 10;
 	icon_state = "tablewood2"
 	},
-/obj/item/clothing/shoes/roguetown/boots/armor,
-/obj/item/clothing/shoes/roguetown/boots/armor,
-/obj/item/clothing/shoes/roguetown/boots/armor,
-/obj/item/clothing/shoes/roguetown/boots/armor,
-/obj/item/clothing/shoes/roguetown/boots/armor,
+/obj/item/clothing/shoes/roguetown/armor/steel,
+/obj/item/clothing/shoes/roguetown/armor/steel,
+/obj/item/clothing/shoes/roguetown/armor/steel,
+/obj/item/clothing/shoes/roguetown/armor/steel,
+/obj/item/clothing/shoes/roguetown/armor/steel,
 /turf/open/floor/rogue/carpet,
 /area/rogue)
 "aO" = (

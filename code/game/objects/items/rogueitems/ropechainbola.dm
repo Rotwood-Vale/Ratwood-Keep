@@ -8,10 +8,10 @@
 	lefthand_file = 'icons/mob/inhands/equipment/security_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/equipment/security_righthand.dmi'
 	slot_flags = ITEM_SLOT_HIP|ITEM_SLOT_WRISTS
-	throwforce = 5
+	throwforce = 3
 	w_class = WEIGHT_CLASS_SMALL
 	throw_speed = 1
-	throw_range = 3
+	throw_range = 5
 	breakouttime = 5 SECONDS
 	slipouttime = 1 MINUTES
 	var/cuffsound = 'sound/blank.ogg'
@@ -150,28 +150,42 @@
 		return
 
 
-/datum/intent/whips
-	name = "strike"
+/datum/intent/whips/iron_chain
+	name = "chain-lash"
+	desc = "A rather slow ranged lash used for slowing down opponents for a tie up."
 	blade_class = BCLASS_BLUNT
-	attack_verb = list("whips", "strikes", "smacks")
-	penfactor = 0 //40
-	chargetime = 5
-	item_d_type = "slash"
+	attack_verb = list("chain-whips", "chain-lashes")
+	hitsound = list('sound/combat/hits/blunt/flailhit.ogg')
+	chargetime = 15
+	chargedrain = 1
+	recovery = 30
+	no_early_release = TRUE
+	penfactor = 15
+	reach = 2
+	chargedloop = /datum/looping_sound/flailswing
+	icon_state = "inlash"
+	item_d_type = "blunt"
 
 /obj/item/rope/chain
 	name = "chain"
-	desc = "A heavy steel chain."
+	desc = "A heavy iron chain."
 	icon = 'icons/roguetown/items/misc.dmi'
 	icon_state = "chain"
+	force = 13
+	blade_dulling = DULLING_BASHCHOP
+	parrysound = list('sound/combat/parry/parrygen.ogg')
+	swingsound = WHIPWOOSH
 	slot_flags = ITEM_SLOT_HIP|ITEM_SLOT_WRISTS
 	throwforce = 5
 	w_class = WEIGHT_CLASS_SMALL
+	associated_skill = /datum/skill/combat/whipsflails
+	wdefense = 1
 	throw_speed = 1
 	throw_range = 3
 	breakouttime = 10 SECONDS
 	slipouttime = 2 MINUTES
 	cuffsound = 'sound/blank.ogg'
-	possible_item_intents = list(/datum/intent/tie, /datum/intent/whips)
+	possible_item_intents = list(/datum/intent/tie, /datum/intent/whips/iron_chain)
 	firefuel = null
 	smeltresult = /obj/item/ingot/iron
 	drop_sound = 'sound/foley/dropsound/chain_drop.ogg'

@@ -52,7 +52,8 @@
 	icon_state = "goldplaque"
 	sellprice = 50
 	sewrepair = FALSE
-	anvilrepair = /datum/skill/craft/armorsmithing
+	smeltresult = /obj/item/ingot/gold
+	anvilrepair = /datum/skill/craft/blacksmithing
 
 /obj/item/storage/belt/rogue/leather/shalal
 	name = "shalal belt"
@@ -75,7 +76,8 @@
 	icon_state = "silverplaque"
 	sellprice = 30
 	sewrepair = FALSE
-	anvilrepair = /datum/skill/craft/armorsmithing
+	smeltresult = /obj/item/ingot/silver
+	anvilrepair = /datum/skill/craft/blacksmithing
 
 /obj/item/storage/belt/rogue/leather/hand
 	name = "steel belt"
@@ -83,7 +85,8 @@
 	icon_state = "steelplaque"
 	sellprice = 30
 	sewrepair = FALSE
-	anvilrepair = /datum/skill/craft/armorsmithing
+	smeltresult = /obj/item/ingot/steel
+	anvilrepair = /datum/skill/craft/blacksmithing
 
 /obj/item/storage/belt/rogue/leather/rope
 	name = "rope belt"
