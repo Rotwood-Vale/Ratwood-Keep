@@ -56,7 +56,8 @@
 	..()
 	if(GLOB.lordprimary)
 		lordcolor(GLOB.lordprimary,GLOB.lordsecondary)
-	GLOB.lordcolor += src
+	else
+		GLOB.lordcolor += src
 
 /obj/item/clothing/suit/roguetown/shirt/undershirt/guard/Destroy()
 	GLOB.lordcolor -= src
@@ -70,7 +71,8 @@
 	..()
 	if(GLOB.lordprimary)
 		lordcolor(GLOB.lordprimary,GLOB.lordsecondary)
-	GLOB.lordcolor += src
+	else
+		GLOB.lordcolor += src
 
 /obj/item/clothing/suit/roguetown/shirt/undershirt/guardsecond/lordcolor(primary,secondary)
 	if(secondary)
@@ -232,7 +234,8 @@
 	. = ..()
 	if(GLOB.lordprimary)
 		lordcolor(GLOB.lordprimary,GLOB.lordsecondary)
-	GLOB.lordcolor += src
+	else
+		GLOB.lordcolor += src
 
 /obj/item/clothing/suit/roguetown/shirt/dress/silkdress/princess/Destroy()
 	GLOB.lordcolor -= src

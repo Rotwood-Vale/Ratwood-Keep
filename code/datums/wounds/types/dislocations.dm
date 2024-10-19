@@ -45,8 +45,6 @@
 	. = ..()
 	REMOVE_TRAIT(affected, TRAIT_FINGERLESS, "[type]")
 	REMOVE_TRAIT(affected, TRAIT_BRITTLE, "[type]")
-	if(!affected.owner)
-		return
 	switch(affected.body_zone)
 		if(BODY_ZONE_R_LEG)
 			affected.owner.remove_movespeed_modifier(MOVESPEED_ID_DISLOCATION_RIGHT_LEG)
