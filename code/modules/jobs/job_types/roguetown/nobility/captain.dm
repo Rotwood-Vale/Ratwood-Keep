@@ -12,7 +12,7 @@
 	allowed_ages = list(AGE_MIDDLEAGED, AGE_OLD)
 	tutorial = "You served your time gracefully as a warrior of His Royal Majesty, and now you've grown into a role which many men dream to become. \
 				You are the Marshal's chosen, elevated to command His Majesty's personal retinue. \
-				Keep your men in line, as for this kingdom to prosper, the crown must be safe. \
+				Keep your men in line, as for this realm to prosper, the lord must be safe. \
 				The Men at Arms and the Gatemaster are under your direct supervision."
 	display_order = JDO_GUARD_CAPTAIN
 	whitelist_req = FALSE
@@ -52,7 +52,7 @@
 	pants = /obj/item/clothing/under/roguetown/chainlegs
 	gloves = /obj/item/clothing/gloves/roguetown/plate
 	wrists = /obj/item/clothing/wrists/roguetown/bracers
-	shoes = /obj/item/clothing/shoes/roguetown/boots/armor
+	shoes = /obj/item/clothing/shoes/roguetown/armor/steel
 	belt = /obj/item/storage/belt/rogue/leather/plaquesilver
 	beltr = /obj/item/rogueweapon/mace/steel
 	beltl = /obj/item/rogueweapon/sword/sabre
@@ -173,8 +173,9 @@
 	new_role = "Watchman"
 	recruitment_faction = "Watchman"
 	recruitment_message = "Serve the town guard, %RECRUIT!"
-	accept_message = "FOR THE KING!"
-	refuse_message = "I refuse."
+	accept_message = "FOR OUR TOWN!"
+	refuse_message = "Decline."
+
 
 /obj/effect/proc_holder/spell/self/convertrole/guard/convert(mob/living/carbon/human/recruit, mob/living/carbon/human/recruiter)
 	. = ..()

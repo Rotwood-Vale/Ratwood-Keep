@@ -148,14 +148,16 @@
 	/datum/patron/divine/noc,\
 	/datum/patron/divine/dendor,\
 	/datum/patron/divine/necra,\
-	/datum/patron/divine/pestra\
+	/datum/patron/divine/pestra,\
+	/datum/patron/divine/malum\
 )
 
 #define ALL_ACOLYTE_PATRONS list(\
 	/datum/patron/divine/astrata,\
 	/datum/patron/divine/noc,\
 	/datum/patron/divine/dendor,\
-	/datum/patron/divine/pestra\
+	/datum/patron/divine/pestra,\
+	/datum/patron/divine/malum\
 )
 
 #define ALL_DIVINE_PATRONS list(\
@@ -198,7 +200,7 @@
 	INHUMEN_CURSES\
 )
 
-#define ALL_NON_INHUMEN_PATRONS list(/datum/patron/divine/astrata, /datum/patron/divine/noc, /datum/patron/divine/dendor, /datum/patron/divine/abyssor, /datum/patron/divine/ravox, /datum/patron/divine/necra, /datum/patron/divine/xylix, /datum/patron/divine/pestra, /datum/patron/divine/malum, /datum/patron/divine/eora, /datum/patron/old_god)
+#define ALL_NON_INHUMEN_PATRONS list(/datum/patron/divine/astrata, /datum/patron/divine/noc, /datum/patron/divine/dendor, /datum/patron/divine/abyssor, /datum/patron/divine/ravox, /datum/patron/divine/necra, /datum/patron/divine/xylix, /datum/patron/divine/pestra, /datum/patron/divine/malum, /datum/patron/divine/eora, /datum/patron/psydon)
 
 #define PLATEHIT "plate"
 #define CHAINHIT "chain"

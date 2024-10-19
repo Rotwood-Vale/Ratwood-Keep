@@ -7,8 +7,14 @@
 	created_item = list(/obj/item/flashlight/flare/torch/metal, /obj/item/flashlight/flare/torch/metal, /obj/item/flashlight/flare/torch/metal, /obj/item/flashlight/flare/torch/metal, /obj/item/flashlight/flare/torch/metal)
 	i_type = "General"
 
+/datum/anvil_recipe/tools/scissors
+	name = "Scissors"
+	req_bar = /obj/item/ingot/iron
+	created_item = /obj/item/rogueweapon/huntingknife/scissors
+	i_type = "Tools"
+
 /datum/anvil_recipe/tools/pan
-	name = "Frypan"
+	name = "Skillet"
 	req_bar = /obj/item/ingot/iron
 	created_item = /obj/item/cooking/pan
 	i_type = "Tools"
@@ -151,6 +157,12 @@
 	req_bar = /obj/item/ingot/steel
 	additional_items = list(/obj/item/grown/log/tree/stick)
 	created_item = /obj/item/rogueweapon/pick/steel
+	i_type = "Tools"
+
+/datum/anvil_recipe/tools/steelscissors
+	name = "Scissors"
+	req_bar = /obj/item/ingot/steel
+	created_item = /obj/item/rogueweapon/huntingknife/scissors/steel
 	i_type = "Tools"
 
 /datum/anvil_recipe/tools/surgery/scalpel

@@ -39,7 +39,7 @@
 	if(world.time > next_decree)
 		next_decree = world.time + rand(3 MINUTES, 8 MINUTES)
 		if(GLOB.lord_decrees.len)
-			say("The King Decrees: [pick(GLOB.lord_decrees)]", spans = list("info"))
+			say("The Lord Decrees: [pick(GLOB.lord_decrees)]", spans = list("info"))
 
 /obj/structure/roguemachine/scomm/attack_hand(mob/living/user)
 	. = ..()
@@ -59,10 +59,10 @@
 	playsound(loc, 'sound/misc/beep.ogg', 100, FALSE, -1)
 	var/canread = user.can_read(src, TRUE)
 	var/contents
-	if(SSticker.rulertype == "King")
-		contents += "<center>KING'S DECREES<BR>"
+	if(SSticker.rulertype == "Lord")
+		contents += "<center>LORD'S DECREES<BR>"
 	else
-		contents += "<center>QUEEN'S DECREES<BR>"
+		contents += "<center>LADY'S DECREES<BR>"
 	contents += "-----------<BR><BR></center>"
 	for(var/i = GLOB.lord_decrees.len to 1 step -1)
 		contents += "[i]. <span class='info'>[GLOB.lord_decrees[i]]</span><BR>"
@@ -237,26 +237,6 @@
 	else
 		send_speech(message, 1, src, , spans, message_language=language)
 
-/obj/item/scomstone/Hear(message, atom/movable/speaker, message_language, raw_message, radio_freq, list/spans, message_mode, original_message)
-	if(speaker == src)
-		return
-	if(loc != speaker)
-		return
-	if(!ishuman(speaker))
-		return
-	var/mob/living/carbon/human/H = speaker
-	if(!listening)
-		return
-	var/usedcolor = H.voice_color
-	if(H.voicecolor_override)
-		usedcolor = H.voicecolor_override
-	if(raw_message)
-		for(var/obj/structure/roguemachine/scomm/S in SSroguemachine.scomm_machines)
-			S.repeat_message(raw_message, src, usedcolor, message_language)
-		for(var/obj/item/scomstone/S in SSroguemachine.scomm_machines)
-			S.repeat_message(raw_message, src, usedcolor, message_language)
-		for(var/obj/item/listenstone/S in SSroguemachine.scomm_machines)
-			S.repeat_message(raw_message, src, usedcolor, message_language)//make the listenstone hear scomstone scream
 
 /obj/item/scomstone/bad
 	name = "serfstone"
@@ -264,8 +244,9 @@
 	listening = FALSE
 	sellprice = 2
 
-/obj/item/scomstone/bad/Hear(message, atom/movable/speaker, message_language, raw_message, radio_freq, list/spans, message_mode, original_message)
+/obj/item/scomstone/bad/attack_right(mob/user)
 	return
+
 //LISTENSTONE		LISTENSTONE
 /obj/item/listenstone
 	name = "gemerald choker"

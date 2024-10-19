@@ -9,7 +9,7 @@
 	allowed_sexes = list(MALE, FEMALE) //same as bog guard
 	allowed_races = RACES_SHUNNED_UP
 	allowed_ages = list(AGE_OLD)
-	tutorial = "You are as venerable and ancient as the trees themselves, wise even for your years spent in the bog guard. The King may lead officially, but people look to you as Ealdorman to solve lesser issues. Remember the old ways of the law, not everything must end in bloodshed: no matter how much the Bog Guards wish it were the case."
+	tutorial = "You are as venerable and ancient as the trees themselves, wise even for your years spent in the bog guard. The Lord may lead officially, but people look to you as Ealdorman to solve lesser issues. Remember the old ways of the law, not everything must end in bloodshed: no matter how much the Bog Guards wish it were the case."
 	whitelist_req = TRUE
 	outfit = /datum/outfit/job/roguetown/woodsman
 	display_order = JDO_CHIEF
@@ -42,7 +42,7 @@
 	armor = /obj/item/clothing/suit/roguetown/armor/gambeson
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
 	pants = /obj/item/clothing/under/roguetown/tights/random
-	shoes = /obj/item/clothing/shoes/roguetown/boots/leather
+	shoes = /obj/item/clothing/shoes/roguetown/armor/leather
 	belt = /obj/item/storage/belt/rogue/leather
 	beltr = /obj/item/rogueweapon/mace/cudgel
 	beltl = /obj/item/flashlight/flare/torch/lantern

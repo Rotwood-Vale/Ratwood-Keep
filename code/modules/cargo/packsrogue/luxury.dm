@@ -10,6 +10,11 @@
 	cost = 3
 	contains = list(/obj/item/clothing/mask/cigarette/rollie/nicotine)
 
+/datum/supply_pack/rogue/luxury/coolersigs
+	name = "Swamp Weed Zig"
+	cost = 8
+	contains = list(/obj/item/clothing/mask/cigarette/rollie/cannabis)
+
 /datum/supply_pack/rogue/luxury/perfume
 	name = "Perfume"
 	cost = 15
@@ -94,3 +99,8 @@
 	name = "Riddle of Steel"
 	cost = 400
 	contains = list(/obj/item/riddleofsteel)
+
+/datum/supply_pack/rogue/luxury/lovepotion
+	name = "Love Potion"
+	cost = 600
+	contains = list(/obj/item/slimepotion/lovepotion)

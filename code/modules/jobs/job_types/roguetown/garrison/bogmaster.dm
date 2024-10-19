@@ -47,7 +47,7 @@
 	neck = /obj/item/clothing/neck/roguetown/bervor
 	wrists = /obj/item/clothing/wrists/roguetown/bracers
 	gloves = /obj/item/clothing/gloves/roguetown/chain
-	shoes = /obj/item/clothing/shoes/roguetown/boots/leather
+	shoes = /obj/item/clothing/shoes/roguetown/armor/leather
 	beltl = /obj/item/keyring/bog_master
 	beltr = /obj/item/rogueweapon/sword
 	belt = /obj/item/storage/belt/rogue/leather
@@ -86,8 +86,8 @@
 	new_role = "Bog Guard"
 	recruitment_faction = "Bog Guard"
 	recruitment_message = "Serve the bog, %RECRUIT!"
-	accept_message = "FOR THE BOG!"
-	refuse_message = "I refuse."
+	accept_message = "FOR BOGARDY!"
+	refuse_message = "Decline."
 
 /obj/effect/proc_holder/spell/self/convertrole/bog/convert(mob/living/carbon/human/recruit, mob/living/carbon/human/recruiter)
 	. = ..()

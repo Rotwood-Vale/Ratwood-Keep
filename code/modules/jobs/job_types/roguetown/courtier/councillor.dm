@@ -12,7 +12,7 @@
 	tutorial = "You may have inherited this role, bought your way into it, or were appointed by the Marshal themselves; \
 			Regardless of origin, you now serve as an assistant, planner, and juror for the Marshal. \
 			You help him oversee the taxation, construction, and planning of new laws. \
-			You only answer to the Marshal, Queen, King, Princes, or Princesses. However, your main focus is to assist the Marshal with their duties."
+			You only answer to the Marshal, Lady, Lord, Princes, or Princesses. However, your main focus is to assist the Marshal with their duties."
 	whitelist_req = FALSE
 	outfit = /datum/outfit/job/roguetown/councillor
 	
@@ -26,7 +26,7 @@
 	armor = /obj/item/clothing/suit/roguetown/armor/gambeson/councillor
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/random
 	pants = /obj/item/clothing/under/roguetown/tights/random
-	shoes = /obj/item/clothing/shoes/roguetown/boots
+	shoes = /obj/item/clothing/shoes/roguetown/armor
 	head = /obj/item/clothing/head/roguetown/chaperon/councillor
 	backl = /obj/item/storage/backpack/rogue/satchel
 	belt = /obj/item/storage/belt/rogue/leather/plaquesilver

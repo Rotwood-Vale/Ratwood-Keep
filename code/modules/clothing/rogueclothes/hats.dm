@@ -37,6 +37,8 @@
 	toggle_icon_state = TRUE
 	max_integrity = 100
 	sewrepair = TRUE
+	salvage_amount = 1
+	salvage_result = /obj/item/natural/hide
 
 /obj/item/clothing/head/roguetown/roguehood/shalal
 	name = "keffiyeh"
@@ -238,7 +240,7 @@
 	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR|HIDEFACIALHAIR
 	dynamic_hair_suffix = ""
 	sewrepair = TRUE
-	//dropshrink = 0.75
+	fiber_salvage = FALSE
 
 /obj/item/clothing/head/roguetown/menacing/bandit
 	icon_state = "bandithood"
@@ -266,6 +268,7 @@
 	desc = "Keeps the sun off your head while toiling the fields."
 	icon_state = "strawhat"
 	sewrepair = TRUE
+	salvage_result = /obj/item/natural/fibers
 
 /obj/item/clothing/head/roguetown/puritan
 	name = "buckled hat"
@@ -382,7 +385,8 @@
 	icon_state = "headband"
 	item_state = "headband"
 	sewrepair = TRUE
-	//dropshrink = 0.75
+	fiber_salvage = FALSE
+	salvage_amount = 1
 	dynamic_hair_suffix = null
 
 /obj/item/clothing/head/roguetown/headband/red
@@ -396,7 +400,7 @@
 	dynamic_hair_suffix = null
 	sellprice = 200
 	resistance_flags = FIRE_PROOF | ACID_PROOF
-	anvilrepair = /datum/skill/craft/armorsmithing
+	anvilrepair = /datum/skill/craft/blacksmithing
 	clothing_flags = CANT_SLEEP_IN
 
 /obj/item/clothing/head/roguetown/crown/serpcrown/Initialize()
@@ -427,7 +431,7 @@
 	dynamic_hair_suffix = null
 	resistance_flags = FIRE_PROOF | ACID_PROOF
 	sellprice = 50
-	anvilrepair = /datum/skill/craft/armorsmithing
+	anvilrepair = /datum/skill/craft/blacksmithing
 
 /obj/item/clothing/head/roguetown/priesthat
 	name = "priest's hat"
@@ -446,7 +450,7 @@
 	desc = ""
 	icon_state = "reqhat"
 	sellprice = 100
-	anvilrepair = /datum/skill/craft/armorsmithing
+	anvilrepair = /datum/skill/craft/blacksmithing
 
 /obj/item/clothing/head/roguetown/headdress
 	name = "foreign headdress"
@@ -503,7 +507,7 @@
 	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT, BCLASS_TWIST)
 	dynamic_hair_suffix = "+generic"
 	bloody_icon_state = "helmetblood"
-	anvilrepair = /datum/skill/craft/armorsmithing
+	anvilrepair = /datum/skill/craft/blacksmithing
 	smeltresult = /obj/item/ingot/steel
 	blocksound = PLATEHIT
 	max_integrity = 200
@@ -705,7 +709,7 @@
 	max_integrity = 435
 	emote_environment = 3
 	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR
-	block2add = FOV_BEHIND
+	block2add = FOV_RIGHT|FOV_LEFT
 	smeltresult = /obj/item/ingot/steel
 
 
@@ -763,7 +767,7 @@
 	emote_environment = 3
 	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR
 	flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH
-	block2add = FOV_BEHIND
+	block2add = FOV_RIGHT|FOV_LEFT
 	smeltresult = /obj/item/ingot/steel
 
 /obj/item/clothing/head/roguetown/helmet/heavy/pigface/AdjustClothes(mob/user)
@@ -812,6 +816,8 @@
 	sewrepair = TRUE
 	blocksound = SOFTHIT
 	clothing_flags = null
+	salvage_amount = 1
+	salvage_result = /obj/item/natural/hide
 
 /obj/item/clothing/head/roguetown/helmet/leather/volfhelm
 	slot_flags = ITEM_SLOT_HEAD|ITEM_SLOT_HIP
@@ -888,7 +894,7 @@
 	dynamic_hair_suffix = null
 	sellprice = 100
 	resistance_flags = FIRE_PROOF
-	anvilrepair = /datum/skill/craft/armorsmithing
+	anvilrepair = /datum/skill/craft/blacksmithing
 
 /obj/item/clothing/head/roguetown/grenzelhofthat
 	name = "grenzelhoft plume hat"
@@ -925,6 +931,8 @@
 	sewrepair = TRUE
 	blocksound = SOFTHIT
 	clothing_flags = null
+	salvage_amount = 1
+	salvage_result = /obj/item/natural/hide
 
 /obj/item/clothing/head/roguetown/helmet/tricorn/skull
 	icon_state = "tricorn_skull"
@@ -948,3 +956,5 @@
 	sewrepair = TRUE
 	blocksound = SOFTHIT
 	clothing_flags = null
+	salvage_amount = 1
+	salvage_result = /obj/item/natural/hide

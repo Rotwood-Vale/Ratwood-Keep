@@ -19,7 +19,7 @@
 
 /datum/outfit/job/roguetown/mercenary/sellsword/pre_equip(mob/living/carbon/human/H)
 	..()
-	shoes = /obj/item/clothing/shoes/roguetown/boots/leather
+	shoes = /obj/item/clothing/shoes/roguetown/armor/leather
 	neck = /obj/item/storage/belt/rogue/pouch/coins/poor
 	pants = /obj/item/clothing/under/roguetown/trou/leather
 	gloves = /obj/item/clothing/gloves/roguetown/leather
@@ -70,7 +70,7 @@
 	beltr = /obj/item/rogueweapon/sword
 	if(prob(40))
 		beltr = /obj/item/rogueweapon/sword/long
-	shoes = /obj/item/clothing/shoes/roguetown/boots/leather
+	shoes = /obj/item/clothing/shoes/roguetown/armor/leather
 	neck = /obj/item/storage/belt/rogue/pouch/coins/poor
 	pants = /obj/item/clothing/under/roguetown/trou/leather
 	gloves = /obj/item/clothing/gloves/roguetown/leather
@@ -107,7 +107,7 @@
 	head = /obj/item/clothing/head/roguetown/helmet/tricorn
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
 	beltr = /obj/item/rogueweapon/sword/rapier
-	shoes = /obj/item/clothing/shoes/roguetown/boots/leather
+	shoes = /obj/item/clothing/shoes/roguetown/armor/leather
 	neck = /obj/item/storage/belt/rogue/pouch/coins/poor
 	pants = /obj/item/clothing/under/roguetown/trou/leather
 	gloves = /obj/item/clothing/gloves/roguetown/leather
@@ -144,7 +144,7 @@
 	head = /obj/item/clothing/head/roguetown/helmet/bandana
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/sailor/red
 	beltr = /obj/item/rogueweapon/sword/cutlass
-	shoes = /obj/item/clothing/shoes/roguetown/boots/leather
+	shoes = /obj/item/clothing/shoes/roguetown/armor/leather
 	neck = /obj/item/storage/belt/rogue/pouch/coins/poor
 	pants = /obj/item/clothing/under/roguetown/trou/leather
 	gloves = /obj/item/clothing/gloves/roguetown/leather
