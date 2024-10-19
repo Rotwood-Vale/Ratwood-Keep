@@ -35,7 +35,10 @@
 	set desc = ""
 	if(prefs)
 		prefs.shake = !prefs.shake
-		to_chat(src, "Screen shake toggled")
+		if(prefs.shake)
+			to_chat(src, "Screen shake enabled")
+		else
+			to_chat(scr, "Screen shake disabled")
 
 /client/verb/stop_sounds_rogue()
 	set name = "StopSounds"
