@@ -54,7 +54,7 @@ GLOBAL_VAR(lordsecondary)
 		GLOB.lordcolor -= T
 
 //	Default Kingdom colors, if none are picked.
-proc/lord_color_default()
+/proc/lord_color_default()
 	GLOB.lordprimary = "#933030" //RED
 	GLOB.lordsecondary = "#2f352f" //BLACK
 	for(var/obj/O in GLOB.lordcolor)
