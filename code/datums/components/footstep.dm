@@ -125,7 +125,7 @@
 	else
 		//SANITY CHECK, WILL NOT PLAY A SOUND IF THE LIST IS INVALID
 		if(!GLOB.barefootstep[T.barefootstep] || (LAZYLEN(GLOB.barefootstep[T.barefootstep]) < 3))
-			testing("SOME MUPPET GAVE AN INVALID BAREFOOTSTEP VALUE ([T.barefootstep]) TO [T.type]!!! FIX THIS SHIT!!!")
+		CRASH("Invalid barefootstep value given. Turf type: [T.type]; Value: [T.barefootstep]")
 			return
 		used_footsteps = GLOB.barefootstep[T.barefootstep][1]
 		used_footsteps = used_footsteps.Copy()
