@@ -438,6 +438,21 @@
 	icon_state = "brownkey"
 	lockid = "stall4"
 
+/obj/item/roguekey/apartments/stable1
+	name = "stable i key"
+	icon_state = "brownkey"
+	lockid = "stable1"
+
+/obj/item/roguekey/apartments/stable2
+	name = "stable ii key"
+	icon_state = "brownkey"
+	lockid = "stable2"
+
+/obj/item/roguekey/apartments/stable3
+	name = "stable iii key"
+	icon_state = "brownkey"
+	lockid = "stable3"
+
 //custom key
 /obj/item/roguekey/custom
 	name = "custom key"
