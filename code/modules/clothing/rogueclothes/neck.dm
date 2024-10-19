@@ -90,7 +90,6 @@
 /obj/item/clothing/neck/roguetown/chaincoif/iron
 	icon_state = "ichaincoif"
 	anvilrepair = /datum/skill/craft/blacksmithing
-=======
 	desc = "An iron chain coif, composed of interlinked metal rings, that barely absorb impacts from arrows that protects the head, ears and neck, and is sadly too uncomfortable to sleep in."
 	smeltresult = /obj/item/ingot/iron
 	max_integrity = 150
