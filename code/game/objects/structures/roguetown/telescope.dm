@@ -11,7 +11,7 @@
 		return
 
 	var/mob/living/carbon/human/H = user
-	var/random_message = pick("You can see noc rotating.", "Looking at Astrata blinds you!", "The stars smile at you.", "Nepolx is red today.", "Blessed yellow strife.", "You see a star!")
+	var/random_message = pick("You can see noc rotating.", "Looking at Astrata blinds you!", "The stars smile at you.", "Blessed yellow strife.", "You see a star!")
 	to_chat(H, span_notice("[random_message]"))
 
 	if(random_message == "Looking at Astrata blinds you!")
@@ -35,5 +35,5 @@
 		return
 
 	var/mob/living/carbon/human/H = user
-	var/random_message = pick("you spin the globe!", "You land on Rockhill!", "You land on Zybantine!", "You land on port Ice cube!.", "You land on port Thornvale!", "You land on grenzelhoft!")
+	var/random_message = pick("you spin the globe!", "You land on Rockhill!", "You land on Zybantium!", "You land on Grenzelhoft!")
 	to_chat(H, span_notice("[random_message]"))

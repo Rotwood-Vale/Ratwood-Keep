@@ -120,6 +120,10 @@
 		reagents.maximum_volume = 0 //Makes them useless afterwards
 		reagents.flags = NONE
 		update_icon()
+	to_chat(user, span_danger(" You stab [M] in the chest, straight to the heart with [src]."))
+	to_chat(M, span_danger("You are stabbed in the heart with a needle!"))
+	playsound(src, 'modular/Smoker/sound/inject.ogg', 30, TRUE)
+
 
 /obj/item/reagent_containers/hypospray/medipen/attack_self(mob/user)
 	if(user.canUseTopic(src, BE_CLOSE, FALSE, NO_TK))

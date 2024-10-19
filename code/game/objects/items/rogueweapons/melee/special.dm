@@ -60,7 +60,7 @@
 	if(ishuman(user))
 		var/mob/living/carbon/human/HU = user
 
-		if((HU.job != "King") && (HU.job != "Queen Consort"))
+		if((HU.job != "Lord") && (HU.job != "Lady Consort"))
 			to_chat(user, span_danger("The rod doesn't obey me."))
 			return
 
@@ -217,7 +217,7 @@
 	wdefense = 4
 	wbalance = 1
 	thrown_bclass = BCLASS_CUT
-	anvilrepair = /datum/skill/craft/weaponsmithing
+	anvilrepair = /datum/skill/craft/blacksmithing
 	smeltresult = /obj/item/ingot/steel
 
 /datum/intent/katar

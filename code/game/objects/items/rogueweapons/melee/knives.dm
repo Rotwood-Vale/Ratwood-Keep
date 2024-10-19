@@ -25,7 +25,7 @@
 	wdefense = 3
 	wbalance = 1
 	thrown_bclass = BCLASS_CUT
-	anvilrepair = /datum/skill/craft/weaponsmithing
+	anvilrepair = /datum/skill/craft/blacksmithing
 	smeltresult = /obj/item/ingot/iron
 
 
@@ -98,7 +98,6 @@
 	desc = "A big, heavy knife designed to chop through meat with ease."
 	possible_item_intents = list(/datum/intent/dagger/cut, /datum/intent/dagger/chop/cleaver)
 	icon_state = "cleav"
-	icon = 'icons/roguetown/weapons/32.dmi'
 	parrysound = list('sound/combat/parry/bladed/bladedmedium (1).ogg','sound/combat/parry/bladed/bladedmedium (2).ogg','sound/combat/parry/bladed/bladedmedium (3).ogg')
 	swingsound = list('sound/combat/wooshes/bladed/wooshmed (1).ogg','sound/combat/wooshes/bladed/wooshmed (2).ogg','sound/combat/wooshes/bladed/wooshmed (3).ogg')
 	throwforce = 15
@@ -113,14 +112,7 @@
 	desc = "A swift and deadly combat knife."
 	possible_item_intents = list(/datum/intent/dagger/cut, /datum/intent/dagger/chop/cleaver, /datum/intent/dagger/thrust)
 	icon_state = "combatknife"
-	icon = 'icons/roguetown/weapons/32.dmi'
-	parrysound = list('sound/combat/parry/bladed/bladedmedium (1).ogg','sound/combat/parry/bladed/bladedmedium (2).ogg','sound/combat/parry/bladed/bladedmedium (3).ogg')
-	swingsound = list('sound/combat/wooshes/bladed/wooshmed (1).ogg','sound/combat/wooshes/bladed/wooshmed (2).ogg','sound/combat/wooshes/bladed/wooshmed (3).ogg')
 	throwforce = 16
-	slot_flags = ITEM_SLOT_HIP
-	thrown_bclass = BCLASS_CHOP
-	w_class = WEIGHT_CLASS_NORMAL
-	smeltresult = /obj/item/ingot/steel
 
 /obj/item/rogueweapon/huntingknife/cleaver/getonmobprop(tag)
 	. = ..()
@@ -156,6 +148,21 @@
 	hitsound = list('sound/combat/hits/bladed/genchop (1).ogg', 'sound/combat/hits/bladed/genchop (2).ogg', 'sound/combat/hits/bladed/genchop (3).ogg')
 	penfactor = 30
 
+/obj/item/rogueweapon/huntingknife/scissors
+	possible_item_intents = list(/datum/intent/dagger/thrust, /datum/intent/dagger/cut)
+	max_integrity = 100
+	name = "iron scissors"
+	desc = "Scissors made of iron that may be used to salvage usable materials from clothing."
+	icon_state = "iscissors"
+
+/obj/item/rogueweapon/huntingknife/scissors/steel
+	force = 14
+	max_integrity = 150
+	name = "steel scissors"
+	desc = "Scissors made of solid steel that may be used to salvage usable materials from clothing, more durable and a tad more deadly than their iron conterpart."
+	icon_state = "sscissors"
+	smeltresult = /obj/item/ingot/steel
+
 /obj/item/rogueweapon/huntingknife/idagger
 	possible_item_intents = list(/datum/intent/dagger/thrust,/datum/intent/dagger/cut, /datum/intent/dagger/thrust/pick)
 	force = 15
@@ -163,7 +170,6 @@
 	name = "iron dagger"
 	desc = "This is a common dagger of iron."
 	icon_state = "idagger"
-	smeltresult = /obj/item/ingot/iron
 
 /obj/item/rogueweapon/huntingknife/idagger/steel
 	name = "steel dagger"

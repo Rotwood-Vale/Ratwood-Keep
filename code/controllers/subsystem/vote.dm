@@ -184,7 +184,7 @@ SUBSYSTEM_DEF(vote)
 					if(H.stat != DEAD)
 						vote_power += 3
 					if(H.job)
-						var/list/list_of_powerful = list("King", "Queen Consort", "Priest", "Steward", "Hand")
+						var/list/list_of_powerful = list("Lord", "Lady Consort", "Priest", "Steward", "Hand")
 						if(H.job in list_of_powerful)
 							vote_power += 5
 						else
@@ -240,7 +240,7 @@ SUBSYSTEM_DEF(vote)
 						break
 					choices.Add(option)
 			if("endround")
-				initiator_key = pick("Zlod", "Sun King", "Gaia", "Aeon", "Gemini", "Aries")
+				initiator_key = "Zizo"
 				choices.Add("Continue Playing","End Round")
 			else
 				return 0
