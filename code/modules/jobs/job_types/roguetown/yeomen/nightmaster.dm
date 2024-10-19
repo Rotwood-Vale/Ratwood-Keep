@@ -13,6 +13,7 @@
 	display_order = JDO_NITEMASTER
 	give_bank_account = 20
 	min_pq = 0
+	max_pq = null
 	bypass_lastclass = TRUE
 
 /datum/outfit/job/roguetown/niteman/pre_equip(mob/living/carbon/human/H)
