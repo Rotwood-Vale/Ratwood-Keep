@@ -1723,6 +1723,9 @@
 	icon_state = "longtable"
 	},
 /obj/item/clothing/mask/cigarette/pipe/westman,
+/obj/item/clothing/mask/cigarette/pipe/westman{
+	pixel_y = 10
+	},
 /turf/open/floor/rogue/tile{
 	icon_state = "chess"
 	},
@@ -7366,13 +7369,7 @@
 	dir = 1;
 	icon_state = "tablewood1"
 	},
-/obj/item/clothing/mask/cigarette/pipe/westman{
-	pixel_x = 5;
-	pixel_y = 3
-	},
-/obj/item/clothing/mask/cigarette/pipe/westman{
-	pixel_y = 10
-	},
+/obj/item/reagent_containers/glass/cup/steel,
 /turf/open/floor/rogue/tile{
 	icon_state = "chess"
 	},
@@ -9479,8 +9476,7 @@
 "jPP" = (
 /obj/structure/mineral_door/wood/donjon{
 	dir = 8;
-	lockid = "nightmaiden";
-	locked = 1
+	lockid = "nightmaiden"
 	},
 /turf/open/floor/rogue/cobble,
 /area/rogue/indoors/town/bath)
@@ -9917,6 +9913,10 @@
 	dir = 1;
 	icon_state = "longtable"
 	},
+/obj/item/reagent_containers/food/snacks/grown/rogue/sweetleafdry,
+/obj/item/reagent_containers/food/snacks/grown/rogue/sweetleafdry,
+/obj/item/reagent_containers/food/snacks/grown/rogue/sweetleafdry,
+/obj/item/reagent_containers/food/snacks/grown/rogue/sweetleafdry,
 /turf/open/floor/rogue/blocks/stonered/tiny,
 /area/rogue/indoors/town/bath)
 "kpC" = (
@@ -17291,8 +17291,6 @@
 	dir = 6;
 	icon_state = "largetable"
 	},
-/obj/item/reagent_containers/food/snacks/grown/rogue/sweetleafdry,
-/obj/item/reagent_containers/food/snacks/grown/rogue/sweetleafdry,
 /turf/open/floor/rogue/tile{
 	icon_state = "chess"
 	},
@@ -17959,8 +17957,13 @@
 	dir = 1;
 	icon_state = "longtable"
 	},
-/obj/item/reagent_containers/food/snacks/grown/rogue/pipeweeddry,
-/obj/item/reagent_containers/food/snacks/grown/rogue/pipeweeddry,
+/obj/item/clothing/mask/cigarette/pipe/westman{
+	pixel_x = 5;
+	pixel_y = 3
+	},
+/obj/item/clothing/mask/cigarette/pipe/westman{
+	pixel_y = 10
+	},
 /turf/open/floor/rogue/tile{
 	icon_state = "chess"
 	},
@@ -19469,8 +19472,6 @@
 /obj/item/clothing/mask/cigarette/pipe/westman{
 	pixel_y = 10
 	},
-/obj/item/reagent_containers/food/snacks/grown/rogue/sweetleafdry,
-/obj/item/reagent_containers/food/snacks/grown/rogue/sweetleafdry,
 /obj/item/clothing/mask/cigarette/pipe/westman{
 	pixel_x = 5;
 	pixel_y = 3
@@ -22444,6 +22445,10 @@
 	icon_state = "longtable"
 	},
 /obj/structure/mirror,
+/obj/item/reagent_containers/food/snacks/grown/rogue/pipeweeddry,
+/obj/item/reagent_containers/food/snacks/grown/rogue/pipeweeddry,
+/obj/item/reagent_containers/food/snacks/grown/rogue/pipeweeddry,
+/obj/item/reagent_containers/food/snacks/grown/rogue/pipeweeddry,
 /turf/open/floor/rogue/blocks/stonered/tiny,
 /area/rogue/indoors/town/bath)
 "wQM" = (
