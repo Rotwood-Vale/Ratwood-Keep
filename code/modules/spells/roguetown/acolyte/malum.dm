@@ -221,7 +221,7 @@ proc/apply_damage_if_covered(mob/living/carbon/target, list/body_zones, obj/item
 
 /obj/effect/proc_holder/spell/invoked/vigorousexchange/cast(list/targets, mob/living/carbon/user = usr)
 	. = ..()
-	var/const/starminatoregen = 50 // How much stamina should the spell give back to the caster.
+	var/const/starminatoregen = 250 // How much stamina should the spell give back to the caster.
 	var/mob/target = targets[1]
 	if (!iscarbon(target)) 
 		return
@@ -259,19 +259,10 @@ proc/apply_damage_if_covered(mob/living/carbon/target, list/body_zones, obj/item
 	buyprice = tithe * divine_tax
 	for (var/list/entry in anvil_recipe_prices)
 	{
-		var/datum/anvil_recipe/recipe = entry[1] // The recipe
+		var/obj/item/tentative_item = entry[1] // The recipe
 		var/total_sellprice = entry[2] // The precompiled material price
-		if (istype(recipe.created_item, /list))
-			var/list/itemlist = recipe.created_item
-			buyprice = buyprice / itemlist.len
-			if (total_sellprice <= buyprice)
-				for (var/obj/single_item in recipe)
-				{
-					if (!(single_item in doable))
-						doable += list(list(single_item.name, single_item))
-				}
-		else if (total_sellprice <= buyprice)
-			var/obj/itemtorecord = new recipe.created_item
+		if (total_sellprice <= buyprice)
+			var/obj/itemtorecord = tentative_item
 			doable += list(list(itemtorecord.name, itemtorecord))
 	}
 	if (!doable.len)
@@ -297,13 +288,21 @@ var/global/list/anvil_recipe_prices[][]
 proc/add_recipe_to_global(var/datum/anvil_recipe/recipe)
 	var/total_sellprice = 0
 	var/obj/item/ingot/bar = recipe.req_bar
+	var/obj/item/itemtosend = null
 	if (bar)
-		total_sellprice +=bar.sellprice
+		total_sellprice += bar.sellprice
+		itemtosend = recipe.created_item
 	if (recipe.additional_items)
 		for (var/obj/additional_item in recipe.additional_items)
 			total_sellprice += additional_item.sellprice
+	if (istype(recipe.created_item, /list))
+		var/list/itemlist = recipe.created_item
+		total_sellprice = total_sellprice/itemlist.len
+		itemtosend = recipe.created_item[1]
+	if (!istype(recipe.created_item, /list))
+		itemtosend = recipe.created_item
 	if (total_sellprice > 0)
-		global.anvil_recipe_prices += list(list(recipe, total_sellprice))
+		global.anvil_recipe_prices += list(list(itemtosend, total_sellprice))
 
 proc/initialize_anvil_recipe_prices()
 	for (var/datum/anvil_recipe/armor/recipe)
@@ -318,14 +317,18 @@ proc/initialize_anvil_recipe_prices()
 	{
 		add_recipe_to_global(recipe)
 	}
-	global.anvil_recipe_prices += list(list(/obj/item/rogue/instrument/flute, 10))
-	global.anvil_recipe_prices += list(list(/obj/item/rogue/instrument/drum, 10))
-	global.anvil_recipe_prices += list(list(/obj/item/rogue/instrument/harp, 20))
-	global.anvil_recipe_prices += list(list(/obj/item/rogue/instrument/lute, 20))
-	global.anvil_recipe_prices += list(list(/obj/item/rogue/instrument/guitar, 30))
-	global.anvil_recipe_prices += list(list(/obj/item/rogue/instrument/accord, 30))
-	global.anvil_recipe_prices += list(list(/obj/item/riddleofsteel, 400))
-	global.anvil_recipe_prices += list(list(/obj/item/dmusicbox, 500))
+	for (var/datum/anvil_recipe/weapons/recipe)
+	{
+		add_recipe_to_global(recipe)
+	}
+	global.anvil_recipe_prices += list(list(new /obj/item/rogue/instrument/flute, 10))
+	global.anvil_recipe_prices += list(list(new /obj/item/rogue/instrument/drum, 10))
+	global.anvil_recipe_prices += list(list(new /obj/item/rogue/instrument/harp, 20))
+	global.anvil_recipe_prices += list(list(new /obj/item/rogue/instrument/lute, 20))
+	global.anvil_recipe_prices += list(list(new /obj/item/rogue/instrument/guitar, 30))
+	global.anvil_recipe_prices += list(list(new /obj/item/rogue/instrument/accord, 30))
+	global.anvil_recipe_prices += list(list(new /obj/item/riddleofsteel, 400))
+	global.anvil_recipe_prices += list(list(new /obj/item/dmusicbox, 500))
 	// Add any other recipe types if needed
 
 world/New()
