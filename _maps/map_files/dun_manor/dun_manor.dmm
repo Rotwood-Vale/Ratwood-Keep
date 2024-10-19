@@ -12765,7 +12765,7 @@
 "naO" = (
 /obj/structure/mineral_door/wood{
 	locked = 1;
-	lockid = "tavern";
+	lockid = "nightmaiden";
 	name = "nitemaiden chambers"
 	},
 /turf/open/floor/rogue/herringbone,
