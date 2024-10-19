@@ -228,6 +228,7 @@
 	character.grant_language(/datum/language/orcish)
 	character.grant_language(/datum/language/beast)
 	character.grant_language(/datum/language/draconic)
+	character.grant_language(/datum/language/faexin)
 
 /datum/special_trait/civilizedbarbarian
 	name = "Tavern Brawler"
@@ -547,7 +548,7 @@
 
 /datum/special_trait/illicit_merchant
 	name = "Illicit Merchant"
-	greet_text = span_notice("I'm sick of working as an underling, I will start my own trade emporium. I've got my hands on a hidden merchant key and a curious magical device")
+	greet_text = span_notice("I'm sick of working as an underling, I will start my own trade emporium. I've got my hands on a hidden merchant key and a curious magical device.")
 	req_text = "Be a Shophand"
 	allowed_jobs = list(/datum/job/roguetown/shophand)
 	weight = 100
@@ -565,3 +566,15 @@
 	character.mind.adjust_skillrank(/datum/skill/misc/athletics, 1, TRUE)
 	character.change_stat("strength", 1)
 	character.change_stat("constitution", 1)
+
+/datum/special_trait/seed_feed
+	name = "Seed & Feed"
+	greet_text = span_notice("Armed with seeds and the unwavering belief that sharing is mandatory. Bag safely stashed, until the next seed-worthy moment arises.")
+	req_text = "Be a Soilson, Towner or Pilgrim."
+	allowed_jobs = list(/datum/job/roguetown/farmer, /datum/job/roguetown/pilgrim, /datum/job/roguetown/villager)
+	weight = 100
+
+/datum/special_trait/seed_feed/on_apply(mob/living/carbon/human/character)
+	character.mind.adjust_skillrank(/datum/skill/combat/wrestling, 1, TRUE)
+	character.mind.special_items["The Bag"] = /obj/item/storage/roguebag/seedfeed
+	character.mind.special_items["The Sickle"] = /obj/item/rogueweapon/sickle
