@@ -101,7 +101,7 @@
 	item_state = "armorboots"
 	color = null
 	blocksound = PLATEHIT
-	anvilrepair = /datum/skill/craft/armorsmithing
+	anvilrepair = /datum/skill/craft/blacksmithing
 	smeltresult = /obj/item/ingot/steel
 	sewrepair = FALSE
 	clothing_flags = CANT_SLEEP_IN
