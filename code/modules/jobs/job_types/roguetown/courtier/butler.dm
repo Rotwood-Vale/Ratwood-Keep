@@ -7,7 +7,7 @@
 	total_positions = 1
 	spawn_positions = 1
 
-	allowed_races = RACES_TOLERATED_UP
+	allowed_races = RACES_SHUNNED_UP
 	allowed_ages = list(AGE_MIDDLEAGED, AGE_OLD)
 
 	tutorial = "Servitude unto death; That is your motto. Having nurtured royalty for years, you are nothing short of the Lord's majordomo, commanding over the rest of the house staff."

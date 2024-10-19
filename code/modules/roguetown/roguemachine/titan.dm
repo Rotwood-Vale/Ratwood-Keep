@@ -84,7 +84,7 @@ GLOBAL_LIST_INIT(laws_of_the_land, initialize_laws_of_the_land())
 				say("The crown is summoned!")
 				playsound(src, 'sound/misc/machinetalk.ogg', 100, FALSE, -1)
 				playsound(src, 'sound/misc/hiss.ogg', 100, FALSE, -1)
-				return 
+				return
 			if(ishuman(I.loc))
 				var/mob/living/carbon/human/HC = I.loc
 				if(HC.stat != DEAD)
@@ -92,7 +92,7 @@ GLOBAL_LIST_INIT(laws_of_the_land, initialize_laws_of_the_land())
 						say("[HC.real_name] holds the crown!")
 						playsound(src, 'sound/misc/machinetalk.ogg', 100, FALSE, -1)
 						return
-					if(H.head == I)
+					if(HC.head == I)
 						say("[HC.real_name] wears the crown!")
 						playsound(src, 'sound/misc/machinetalk.ogg', 100, FALSE, -1)
 						return

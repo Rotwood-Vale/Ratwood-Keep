@@ -7,7 +7,7 @@
 	allowed_races = RACES_ALL_KINDS
 	outfit = /datum/outfit/job/roguetown/adventurer/minermaster
 	maximum_possible_slots = 1
-	pickprob = 0.0001
+	pickprob = 5
 	category_tags = list(CTAG_PILGRIM)
 
 /datum/outfit/job/roguetown/adventurer/minermaster/pre_equip(mob/living/carbon/human/H)
@@ -16,7 +16,7 @@
 	pants = /obj/item/clothing/under/roguetown/trou
 	armor = /obj/item/clothing/suit/roguetown/armor/workervest
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/random
-	shoes = /obj/item/clothing/shoes/roguetown/boots/leather
+	shoes = /obj/item/clothing/shoes/roguetown/armor/leather
 	belt = /obj/item/storage/belt/rogue/leather/rope
 	neck = /obj/item/storage/belt/rogue/pouch/coins/rich
 	beltl = /obj/item/rogueweapon/pick/steel

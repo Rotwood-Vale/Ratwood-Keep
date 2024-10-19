@@ -8,7 +8,7 @@
 	allowed_races = RACES_ALL_KINDS
 	outfit = /datum/outfit/job/roguetown/adventurer/masterblacksmith
 	maximum_possible_slots = 1
-	pickprob = 0.0001
+	pickprob = 5
 	category_tags = list(CTAG_PILGRIM)
 
 /datum/outfit/job/roguetown/adventurer/masterblacksmith/pre_equip(mob/living/carbon/human/H)
@@ -29,7 +29,7 @@
 
 	if(H.gender == MALE)
 		
-		shoes = /obj/item/clothing/shoes/roguetown/boots/leather
+		shoes = /obj/item/clothing/shoes/roguetown/armor/leather
 		shirt = /obj/item/clothing/suit/roguetown/shirt/shortshirt
 
 		if(H.mind)

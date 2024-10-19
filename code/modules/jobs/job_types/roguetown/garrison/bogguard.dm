@@ -77,7 +77,7 @@
 	wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
 	shirt = /obj/item/clothing/suit/roguetown/shirt/shortshirt/bog
 	pants = /obj/item/clothing/under/roguetown/trou/leather
-	shoes = /obj/item/clothing/shoes/roguetown/boots/leather
+	shoes = /obj/item/clothing/shoes/roguetown/armor/leather
 	beltl = /obj/item/keyring/bog_guard
 	belt = /obj/item/storage/belt/rogue/leather
 

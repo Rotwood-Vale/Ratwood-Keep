@@ -7,6 +7,12 @@
 	created_item = list(/obj/item/flashlight/flare/torch/metal, /obj/item/flashlight/flare/torch/metal, /obj/item/flashlight/flare/torch/metal, /obj/item/flashlight/flare/torch/metal, /obj/item/flashlight/flare/torch/metal)
 	i_type = "General"
 
+/datum/anvil_recipe/tools/scissors
+	name = "Scissors"
+	req_bar = /obj/item/ingot/iron
+	created_item = /obj/item/rogueweapon/huntingknife/scissors
+	i_type = "Tools"
+
 /datum/anvil_recipe/tools/pan
 	name = "Frypan"
 	req_bar = /obj/item/ingot/iron
@@ -110,12 +116,6 @@
 	created_item = /obj/item/rogueweapon/thresher
 	i_type = "Tools"
 
-/datum/anvil_recipe/tools/pot
-	name = "Metal Pot"
-	req_bar = /obj/item/ingot/iron
-	created_item = /obj/item/reagent_containers/glass/pot
-	i_type = "Tools"
-
 /datum/anvil_recipe/tools/iron_arm_left
 	name = "Iron arm (L)"
 	req_bar = /obj/item/ingot/iron
@@ -144,6 +144,12 @@
 	additional_items = list(/obj/item/roguegear)
 	i_type = "General"
 
+/datum/anvil_recipe/tools/chain
+	name = "Chain"
+	req_bar = /obj/item/ingot/iron
+	created_item = /obj/item/rope/chain
+	i_type = "General"
+
 // --------- Steel -----------
 
 /datum/anvil_recipe/tools/steelpick
@@ -151,6 +157,12 @@
 	req_bar = /obj/item/ingot/steel
 	additional_items = list(/obj/item/grown/log/tree/stick)
 	created_item = /obj/item/rogueweapon/pick/steel
+	i_type = "Tools"
+
+/datum/anvil_recipe/tools/steelscissors
+	name = "Scissors"
+	req_bar = /obj/item/ingot/steel
+	created_item = /obj/item/rogueweapon/huntingknife/scissors/steel
 	i_type = "Tools"
 
 /datum/anvil_recipe/tools/surgery/scalpel

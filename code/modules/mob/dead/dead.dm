@@ -114,7 +114,7 @@ INITIALIZE_IMMEDIATE(/mob/dead)
 			else
 				dat += "<B>[job.title]</B> ([readiedas])<br>"
 	var/datum/browser/popup = new(src, "lobby_window", "<div align='center'>LOBBY</div>", 330, 430)
-	popup.set_window_options("can_close=0;can_minimize=0;can_maximize=0;can_resize=1;")
+	popup.set_window_options("can_close=1;can_minimize=0;can_maximize=0;can_resize=1;")
 	popup.set_content(dat.Join())
 	if(!client)
 		return
