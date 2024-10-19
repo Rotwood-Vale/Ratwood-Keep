@@ -34,7 +34,7 @@
 /datum/patron/inhumen/matthios
 	name = "Matthios"
 	domain = "God of Robbery, Redistribution of Wealth, and Commerce"
-	desc = "The Man who stole fire from the Underworld and gave it in exchange for worship; the first Transaction, cutting a hole in the firmament and flooding ontological reality with the fact of Wealth. Destabilize the Old Ten; take from the wealthy, give to the worthless, empower."
+	desc = "The Man who stole fire from the Underworld and gave it in exchange for worship; the first Transaction, cutting a hole in the firmament and flooding ontological reality with the fact of Wealth. Take from the wealthy, give to the worthless, empower."
 	worshippers = "Highwaymen, Robbers, Downtrodden Peasants, Merchants"
 	mob_traits = list(TRAIT_COMMIE)
 	confess_lines = list(
