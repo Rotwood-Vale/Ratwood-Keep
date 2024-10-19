@@ -193,7 +193,7 @@
 	if(stat)
 		return FALSE
 
-	var/inputty = input("Make an announcement", "ROCKHILL") as text|null
+	var/inputty = input("Make an announcement", "ROGUETOWN") as text|null
 	if(!inputty)
 		return FALSE
 
@@ -210,7 +210,7 @@
 	recruitment_faction = "Templars"
 	recruitment_message = "Serve the ten, %RECRUIT!"
 	accept_message = "FOR THE TEN!"
-	refuse_message = "Decline."
+	refuse_message = "I refuse."
 
 /obj/effect/proc_holder/spell/self/convertrole/monk
 	name = "Recruit Acolyte"
@@ -218,4 +218,4 @@
 	recruitment_faction = "Church"
 	recruitment_message = "Serve the ten, %RECRUIT!"
 	accept_message = "FOR THE TEN!"
-	refuse_message = "Decline."
+	refuse_message = "I refuse."

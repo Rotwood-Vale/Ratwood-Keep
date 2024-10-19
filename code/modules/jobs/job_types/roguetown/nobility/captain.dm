@@ -173,9 +173,8 @@
 	new_role = "Watchman"
 	recruitment_faction = "Watchman"
 	recruitment_message = "Serve the town guard, %RECRUIT!"
-	accept_message = "FOR OUR TOWN!"
-	refuse_message = "Decline."
-
+	accept_message = "FOR THE LORD!"
+	refuse_message = "I refuse."
 
 /obj/effect/proc_holder/spell/self/convertrole/guard/convert(mob/living/carbon/human/recruit, mob/living/carbon/human/recruiter)
 	. = ..()

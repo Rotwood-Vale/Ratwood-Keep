@@ -30,7 +30,8 @@ GLOBAL_VAR(king_throne)
 		GLOB.king_throne = src
 	if(GLOB.lordprimary)
 		lordcolor(GLOB.lordprimary,GLOB.lordsecondary)
-	GLOB.lordcolor += src
+	else
+		GLOB.lordcolor += src
 
 /obj/structure/roguethrone/Destroy()
 	if(GLOB.king_throne == src)
@@ -69,7 +70,7 @@ GLOBAL_VAR(king_throne)
 	if(rebel_leader_sit_time >= REBEL_THRONE_TIME && !notified_rebel_able)
 		notified_rebel_able = TRUE
 		to_chat(user, span_notice("That's it - time to announce our victory!"))
-
+	
 /obj/structure/roguethrone/lordcolor(primary,secondary)
 	if(!primary || !secondary)
 		return
@@ -79,3 +80,4 @@ GLOBAL_VAR(king_throne)
 	M = mutable_appearance(icon, "throne_secondary", -(layer+0.1))
 	M.color = secondary
 	add_overlay(M)
+	GLOB.lordcolor -= src
