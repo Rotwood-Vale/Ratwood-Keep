@@ -53,6 +53,8 @@
 	item_state = "simpleshoe"
 	resistance_flags = null
 	color = "#473a30"
+	salvage_amount = 1
+	salvage_result = /obj/item/natural/hide
 
 /obj/item/clothing/shoes/roguetown/simpleshoes/white
 	color = null
@@ -89,6 +91,8 @@
 	desc = "Boots made of leather."
 	icon_state = "leatherboots"
 	item_state = "leatherboots"
+	salvage_amount = 1
+	salvage_result = /obj/item/natural/hide
 
 /obj/item/clothing/shoes/roguetown/armor/steel
 	name = "steel plated boots"
@@ -97,7 +101,7 @@
 	item_state = "armorboots"
 	color = null
 	blocksound = PLATEHIT
-	anvilrepair = /datum/skill/craft/armorsmithing
+	anvilrepair = /datum/skill/craft/blacksmithing
 	smeltresult = /obj/item/ingot/steel
 	sewrepair = FALSE
 	clothing_flags = CANT_SLEEP_IN

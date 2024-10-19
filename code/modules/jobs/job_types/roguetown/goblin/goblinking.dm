@@ -14,7 +14,7 @@
 	whitelist_req = FALSE
 	outfit = /datum/outfit/job/roguetown/goblinking
 	display_order = JDO_GOBLINKING
-	min_pq = 0//from2
+	min_pq = 2
 	max_pq = null
 	always_show_on_latechoices = TRUE
 

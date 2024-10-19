@@ -139,7 +139,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	delete_after_roundstart = FALSE
 
 /obj/effect/landmark/start/lord
-	name = "King"
+	name = "Lord"
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/knight
@@ -279,12 +279,8 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	name = "Archivist"
 	icon_state = "arrow"
 
-/obj/effect/landmark/start/weaponsmith
-	name = "Weaponsmith"
-	icon_state = "arrow"
-
-/obj/effect/landmark/start/armorsmith
-	name = "Armorer"
+/obj/effect/landmark/start/guildsmith
+	name = "Guild smith"
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/tailor
@@ -328,7 +324,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/lady
-	name = "Queen Consort"
+	name = "Lady Consort"
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/prince
