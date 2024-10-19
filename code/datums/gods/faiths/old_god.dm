@@ -4,5 +4,5 @@
 		PSYDON YET LIVES. PSYDON YET ENDURES.\n\
 		The Holy See and Holy Ecclesial squabble over TRUE DIVINITY, while IGNORING the savior that sent the COMET SYON \
 		to save the Azure Coast from the rampaging Archdevil Vheslyn. HE YET RESTS- BUT HE IS NOT DEAD. PSYDON YET ENDURES. PSYDON YET LIVES."
-	worshippers = "People of Giza, people of Stine and religious extremists"
+	worshippers = "People of Zybantium, people of Stine, religious extremists, zealotry-filled fools"
 	godhead = /datum/patron/old_god

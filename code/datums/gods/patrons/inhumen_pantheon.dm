@@ -22,7 +22,7 @@
 /datum/patron/inhumen/graggar
 	name = "Graggar"
 	domain = "God of Conquest, Murder and Pillaging"
-	desc = "Orc turned deity, said by the Holy Ecclesial to have been blessed by Ravox himself to fight the Archdevil Vheslyn. Instead of joining the Stalwart Warrior's army, he took his blessings to begin one of his own."
+	desc = "Orc turned deity, said by the Holy Ecclesial to have been blessed by Ravox himself to fight the Archdevil Vheslyn. Instead of joining the Stalwart Warrior's army, he took his blessings to rampage and tear down the Old Ten. Bless the Blooded One."
 	worshippers = "Prisoners, Murderers and the Cruel"
 	mob_traits = list(TRAIT_ORGAN_EATER)
 	confess_lines = list(
