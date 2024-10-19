@@ -56,7 +56,6 @@
 	ADD_TRAIT(src, TRAIT_NOHUNGER, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_EASYDISMEMBER, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_NOBREATH, TRAIT_GENERIC)
-	ADD_TRAIT(src, TRAIT_NOPAIN, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_TOXIMMUNE, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_LIMBATTACHMENT, TRAIT_GENERIC)
 	if(skel_fragile)
@@ -82,7 +81,7 @@
 		if(prob(50))
 			shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/vagrant/l
 	if(prob(90))
-		pants = /obj/item/clothing/under/roguetown/chainlegs/iron
+		pants = /obj/item/clothing/under/roguetown/trou/leather
 	if(prob(40))
 		head = /obj/item/clothing/head/roguetown/helmet/leather
 	if(prob(70))
@@ -90,9 +89,9 @@
 	if(prob(70))
 		neck = /obj/item/clothing/neck/roguetown/chaincoif/iron
 	if(H.gender == FEMALE)
-		H.STASTR = rand(9,12)
+		H.STASTR = rand(8,10)
 	else
-		H.STASTR = rand(14,16)
+		H.STASTR = rand(10,12)
 	H.STASPD = 8
 	H.STACON = 4
 	H.STAEND = 15
