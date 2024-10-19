@@ -262,9 +262,6 @@
 /obj/structure/roguemachine/vendor/inn
 	keycontrol = "tavern"
 
-/obj/structure/roguemachine/vendor/bathhouse
-	keycontrol = "nightman"
-
 /obj/structure/roguemachine/vendor/inn/Initialize()
 	. = ..()
 	for(var/X in list(/obj/item/roguekey/roomi,/obj/item/roguekey/roomii,/obj/item/roguekey/roomiii,/obj/item/roguekey/roomiv,/obj/item/roguekey/roomv,/obj/item/roguekey/roomvi))
