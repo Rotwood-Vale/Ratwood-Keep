@@ -423,6 +423,10 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	name = "Goblin Smith"
 	icon_state = "arrow"
 
+/obj/effect/landmark/start/goblinrabble
+	name = "Goblin Rabble"
+	icon_state = "arrow"
+
 // START LANDMARKS FOLLOW. Don't change the names unless
 // you are refactoring shitty landmark code.
 /obj/effect/landmark/start/assistant

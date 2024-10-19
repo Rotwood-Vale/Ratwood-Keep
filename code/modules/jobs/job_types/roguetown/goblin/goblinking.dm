@@ -4,18 +4,19 @@
 	flag = GOBLINKING
 	department_flag = GOBLIN
 	faction = "Station"
-	total_positions = 0
-	spawn_positions = 0
+	total_positions = 1
+	spawn_positions = 1
 	allowed_sexes = list(MALE)
-	allowed_races = list()
+	allowed_races = list(/datum/species/goblinp)
 	allowed_patrons = list(/datum/patron/inhumen/graggar)
-	tutorial = "Goblin King is a fatty lazy pig who wishes to do nothing but eat apple pies and fart while sitting on his stone throne."
+	tutorial = "Lord above, it's good to be King. You don't have to do anything beyond lifting a finger for your subjects to move. \
+	Should they ignore you or disobey, you've your guards to handle them. Try to provide some manner of order to the camp and your subjects."
 	whitelist_req = FALSE
 	outfit = /datum/outfit/job/roguetown/goblinking
-
 	display_order = JDO_GOBLINKING
-	min_pq = 2
+	min_pq = 0//from2
 	max_pq = null
+	always_show_on_latechoices = TRUE
 
 /datum/outfit/job/roguetown/goblinking/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -25,6 +26,7 @@
 	belt = /obj/item/storage/belt/rogue/leather/rope
 	beltr = /obj/item/storage/belt/rogue/pouch/coins/rich
 	armor = /obj/item/clothing/suit/roguetown/armor/leather/hide/goblin
+	pants = /obj/item/clothing/under/roguetown/loincloth/brown
 	head = /obj/item/clothing/head/roguetown/crown/surplus
 	cloak = /obj/item/clothing/cloak/heartfelt
 	if(H.mind)
@@ -43,8 +45,8 @@
 		return
 	var/inputty = input("Make an announcement", "ROGUETOWN") as text|null
 	if(inputty)
-		if(!istype(get_area(src), /area/rogue/indoors/shelter/mountains/decap))
-			to_chat(src, span_warning("I need to do this from the Goblin Kingdom."))
+		if(!istype(get_area(src), /area/rogue/under/town/goblin))
+			to_chat(src, span_warning("I need to do this from the encampment."))
 			return FALSE
 		priority_announce("[inputty]", title = "The Goblin King Squeals", sound = 'sound/misc/dun.ogg')
 /*
