@@ -185,7 +185,7 @@
 
 /client/proc/show_game_over()
 	var/atom/movable/screen/splash/credits/S = new(src, FALSE)
-	S.Fade(FALSE,FALSE)
+	S.Fade(FALSE,FALSE, 8 SECONDS)
 	RollCredits()
 //	if(GLOB.credits_icons.len)
 //		for(var/i=0, i<=GLOB.credits_icons.len, i++)
@@ -199,7 +199,7 @@
 
 	log_game("The round has ended.")
 
-	to_chat(world, "<BR><BR><BR><span class='reallybig'>So ends this tale of Ratwood Keep.</span>")
+	to_chat(world, "<BR><BR><BR><span class='reallybig'>So ends another week in Ratwood Keep.</span>")
 	get_end_reason()
 
 	var/list/key_list = list()

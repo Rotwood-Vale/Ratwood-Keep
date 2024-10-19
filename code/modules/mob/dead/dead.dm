@@ -92,10 +92,10 @@ INITIALIZE_IMMEDIATE(/mob/dead)
 							var/thing = "[player.client.prefs.real_name]"
 							if(istype(job, /datum/job/roguetown/hand))
 								if(player != src)
-									if(client.prefs.job_preferences["King"] == JP_HIGH)
+									if(client.prefs.job_preferences["Lord"] == JP_HIGH)
 										thing = "<a href='byond://?src=[REF(src)];sethand=[player.client.ckey]'>[player.client.prefs.real_name]</a>"
 								for(var/mob/dead/new_player/Lord in GLOB.player_list)
-									if(Lord.client.prefs.job_preferences["King"] == JP_HIGH)
+									if(Lord.client.prefs.job_preferences["Lord"] == JP_HIGH)
 										if(Lord.brohand == player.ckey)
 											thing = "*[thing]*"
 											break
@@ -114,7 +114,7 @@ INITIALIZE_IMMEDIATE(/mob/dead)
 			else
 				dat += "<B>[job.title]</B> ([readiedas])<br>"
 	var/datum/browser/popup = new(src, "lobby_window", "<div align='center'>LOBBY</div>", 330, 430)
-	popup.set_window_options("can_close=0;can_minimize=0;can_maximize=0;can_resize=1;")
+	popup.set_window_options("can_close=1;can_minimize=0;can_maximize=0;can_resize=1;")
 	popup.set_content(dat.Join())
 	if(!client)
 		return

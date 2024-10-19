@@ -202,7 +202,7 @@
 				return
 			if(!(M.mobility_flags & MOBILITY_STAND))
 				if(user.loc != M.loc)
-					to_chat(user, span_warning("I must be above them."))
+					to_chat(user, span_warning("I must be on top of them."))
 					return
 				user.rogfat_add(rand(1,3))
 				M.visible_message(span_danger("[user] pins [M] to the ground!"), \
@@ -496,8 +496,8 @@
 				if(prob(30))
 					user.werewolf_feed(C)
 			var/datum/antagonist/zombie/zombie_antag = user.mind.has_antag_datum(/datum/antagonist/zombie)
-			if(zombie_antag)
-				zombie_antag.last_bite = world.time
+			if(zombie_antag || istype(user, /mob/living/carbon/human/species/deadite))
+				user.mob_timers["deadite_bite"] = world.time
 				var/datum/antagonist/zombie/existing_zomble = C.mind?.has_antag_datum(/datum/antagonist/zombie)
 				if(caused_wound?.zombie_infect_attempt() && !existing_zomble)
 					user.mind.adjust_triumphs(1)

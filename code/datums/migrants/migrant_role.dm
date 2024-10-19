@@ -27,11 +27,6 @@
 /datum/migrant_role/proc/after_spawn(mob/living/carbon/human/character)
 	return
 
-/datum/migrant_role/pilgrim
-	name = "Pilgrim"
-	banned_leprosy = FALSE
-	advclass_cat_rolls = list(CTAG_PILGRIM = 10)
-
 /datum/migrant_role/adventurer
 	name = "Adventurer"
 	advclass_cat_rolls = list(CTAG_ADVENTURER = 5)

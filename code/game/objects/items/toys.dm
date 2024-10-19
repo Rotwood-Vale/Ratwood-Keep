@@ -710,7 +710,7 @@
 		cards += "Ace of [suit]"
 		for(var/i in 2 to 10)
 			cards += "[i] of [suit]"
-		for(var/person in list("Jack", "Queen", "King"))
+		for(var/person in list("Jack", "Lord", "Lady"))
 			cards += "[person] of [suit]"
 
 //ATTACK HAND IGNORING PARENT RETURN VALUE

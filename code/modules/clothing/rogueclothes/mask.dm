@@ -57,6 +57,7 @@
 	block2add = FOV_RIGHT
 	body_parts_covered = EYES
 	sewrepair = TRUE
+	salvage_amount = 1
 
 /obj/item/clothing/mask/rogue/eyepatch/left
 	desc = "An eyepatch, fitted for the left eye."
@@ -95,7 +96,7 @@
 
 /obj/item/clothing/mask/rogue/facemask/hound
 	name = "iron hound mask"
-	desc = "An iron mask, made for those who have snouts."
+	desc = "An iron mask, made for those who have snouts, protecting the eyes, nose and muzzle while obscuring the face."
 	icon_state = "imask_hound"
 
 /obj/item/clothing/mask/rogue/facemask/prisoner/Initialize()
@@ -119,7 +120,7 @@
 
 /obj/item/clothing/mask/rogue/facemask/steel/hound
 	name = "steel hound mask"
-	desc = "A steel mask, made for those who have snouts."
+	desc = "A steel mask, made for those who have snouts, protecting the eyes, nose and muzzle while obscuring the face."
 	icon_state = "smask_hound"
 
 /obj/item/clothing/mask/rogue/shepherd
@@ -132,6 +133,7 @@
 	toggle_icon_state = TRUE
 	experimental_onhip = TRUE
 	sewrepair = TRUE
+	salvage_amount = 1
 
 /obj/item/clothing/mask/rogue/shepherd/AdjustClothes(mob/user)
 	if(loc == user)

@@ -28,6 +28,14 @@
 			W.forceMove(src)
 			update_icon()
 			return
+	if(istype(W, /obj/item/rogueweapon/tongs) && on)
+		var/obj/item/rogueweapon/tongs/T = W
+		if(T.hingot)
+			var/tyme = world.time
+			T.hott = tyme
+			addtimer(CALLBACK(T, TYPE_PROC_REF(/obj/item/rogueweapon/tongs, make_unhot), tyme), 100)
+			T.update_icon()
+			user.visible_message(span_info("[user] heats the bar."))
 	else
 		if(istype(W, /obj/item/reagent_containers/glass/bowl))
 			to_chat(user, "<span class='notice'>Remove the pot from the forge first.</span>")
@@ -150,7 +158,7 @@
 				I.pixel_x = 0
 				I.pixel_y = 0
 				add_overlay(new /mutable_appearance(I))
-	
+
 /obj/machinery/light/rogue/forge/attack_hand(mob/user)
 	. = ..()
 	if(.)
@@ -215,5 +223,5 @@
 		update_icon()
 
 /obj/machinery/light/rogue/forge/Destroy()
-	QDEL_NULL(boilloop)	
+	QDEL_NULL(boilloop)
 	. = ..()
