@@ -60,8 +60,8 @@ GLOBAL_LIST_INIT(nonhuman_positions, list(
 	ROLE_PAI))
 
 GLOBAL_LIST_INIT(noble_positions, list(
-	"King",
-	"Queen Consort",
+	"Lord",
+	"Lady Consort",
 	"Prince",
 	"Retinue Captain",
 	"Royal Marshal",

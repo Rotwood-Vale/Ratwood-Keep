@@ -8,10 +8,9 @@
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_TOLERATED_UP
 	allowed_patrons = list(
-		/datum/patron/old_god,
-		ALL_DIVINE_PATRONS,
-	) //gets set to old god.
-	tutorial = "As an Inquisitor, the Queen has emboldened your radical sect to root out cultists and the cursed night beasts, using your practice of extracting involuntary 'sin confessions' as a guise to spy on the local populace. Witch Hunters are hired for their extreme paranoia and religious fervor."
+		/datum/patron/psydon
+	)
+	tutorial = "Created with the re-emergence of the cult of Psydon, The Inquisition has sent you to Rockhill on a quest to root out the blasphemous and the accursed of these lands. Guided by religious fervor and paranoia, you hope that your uneasy alliance with the Church will hold."
 	whitelist_req = TRUE
 
 	outfit = /datum/outfit/job/roguetown/puritan
@@ -23,7 +22,7 @@
 /datum/outfit/job/roguetown/puritan
 	name = "Inquisitor"
 	jobtype = /datum/job/roguetown/puritan
-	allowed_patrons = list(/datum/patron/old_god)
+	allowed_patrons = list(/datum/patron/psydon)
 
 /datum/outfit/job/roguetown/puritan/pre_equip(mob/living/carbon/human/H)
 	..()

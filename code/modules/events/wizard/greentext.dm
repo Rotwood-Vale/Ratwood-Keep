@@ -77,7 +77,7 @@
 	if(last_holder && last_holder != new_holder) //Somehow it was swiped without ever getting dropped
 		to_chat(last_holder, span_warning("A sudden wave of failure washes over you..."))
 		last_holder.add_atom_colour("#FF0000", ADMIN_COLOUR_PRIORITY)
-		last_holder = new_holder //long live the king
+		last_holder = new_holder
 
 /obj/item/greentext/Destroy(force)
 	if(!(resistance_flags & ON_FIRE) && !force)
