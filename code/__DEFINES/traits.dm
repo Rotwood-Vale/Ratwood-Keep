@@ -25,7 +25,7 @@
 #define TRAIT_NUDIST "Nudist" //you can't wear most clothes
 #define TRAIT_CYCLOPS_LEFT "Cyclops (Left)" //poked left eye
 #define TRAIT_CYCLOPS_RIGHT "Cyclops (Right)" //poked right eye
-#define TRAIT_INHUMEN_ANATOMY "Inhumen Anatomy" //can't wear hats and shoes
+#define TRAIT_RETARD_ANATOMY "Inhumen Anatomy" //can't wear hats and shoes
 #define TRAIT_NASTY_EATER "Inhumen Digestion" //can eat rotten food, organs, poison berries, and drink murky water
 #define TRAIT_WILD_EATER "Beastly Digestion" //can eat raw and rotten food and drink murky water
 #define TRAIT_NOFALLDAMAGE1 "Minor fall damage immunity"
@@ -126,7 +126,7 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_NUDIST = "I <b>refuse</b> to wear clothes. They are a hindrance to my freedom.",
 	TRAIT_CYCLOPS_LEFT = span_warning("My left eye has been poked out..."),
 	TRAIT_CYCLOPS_RIGHT = span_warning("My right eye has been poked out..."),
-	TRAIT_INHUMEN_ANATOMY = "My anatomy is inhumen, preventing me from wearing hats and shoes.",
+	TRAIT_RETARD_ANATOMY = "My anatomy is inhumen, preventing me from wearing hats and shoes.",
 	TRAIT_NASTY_EATER = span_dead("I can eat bad food, and water that would be toxic to humen will not affect me."),
 	TRAIT_WILD_EATER = span_info("I can eat raw food and drink from dirty water."),
 	TRAIT_NOFALLDAMAGE1 = span_warning("I can easily handle minor falls."),

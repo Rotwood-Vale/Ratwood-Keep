@@ -96,7 +96,8 @@
 	..()
 	if(GLOB.lordprimary)
 		lordcolor(GLOB.lordprimary,GLOB.lordsecondary)
-	GLOB.lordcolor += src
+	else
+		GLOB.lordcolor += src
 
 /obj/item/clothing/cloak/tabard/knight/Destroy()
 	GLOB.lordcolor -= src
@@ -189,7 +190,7 @@
 	desc = "A tabard with the lord's heraldic colors."
 	color = CLOTHING_RED
 	detail_tag = "_spl"
-	detail_color = CLOTHING_BLACK
+	detail_color = CLOTHING_PURPLE
 
 /obj/item/clothing/cloak/tabard/knight/guard/attack_right(mob/user)
 	if(picked)
@@ -219,7 +220,8 @@
 	..()
 	if(GLOB.lordprimary)
 		lordcolor(GLOB.lordprimary,GLOB.lordsecondary)
-	GLOB.lordcolor += src
+	else
+		GLOB.lordcolor += src
 
 /obj/item/clothing/cloak/tabard/knight/guard/update_icon()
 	cut_overlays()
@@ -302,7 +304,7 @@
 	desc = "A tabard with the lord's heraldic colors."
 	color = CLOTHING_RED
 	detail_tag = "_spl"
-	detail_color = CLOTHING_BLACK
+	detail_color = CLOTHING_PURPLE
 
 /obj/item/clothing/cloak/stabard/guard/attack_right(mob/user)
 	if(picked)
@@ -332,7 +334,8 @@
 	..()
 	if(GLOB.lordprimary)
 		lordcolor(GLOB.lordprimary,GLOB.lordsecondary)
-	GLOB.lordcolor += src
+	else
+		GLOB.lordcolor += src
 
 /obj/item/clothing/cloak/stabard/guard/update_icon()
 	cut_overlays()
@@ -449,7 +452,7 @@
 	desc = "A surcoat with the lord's heraldic colors."
 	color = CLOTHING_RED
 	detail_tag = "_quad"
-	detail_color = CLOTHING_BLACK
+	detail_color = CLOTHING_PURPLE
 
 /obj/item/clothing/cloak/stabard/surcoat/guard/attack_right(mob/user)
 	if(picked)
@@ -480,7 +483,8 @@
 	..()
 	if(GLOB.lordprimary)
 		lordcolor(GLOB.lordprimary,GLOB.lordsecondary)
-	GLOB.lordcolor += src
+	else
+		GLOB.lordcolor += src
 
 /obj/item/clothing/cloak/stabard/surcoat/guard/lordcolor(primary,secondary)
 	color = primary
@@ -510,7 +514,7 @@
 //	allowed_sex = list(MALE)
 	allowed_race = NON_DWARVEN_RACE_TYPES
 	detail_tag = "_det"
-	detail_color = CLOTHING_BLACK
+	detail_color = CLOTHING_PURPLE
 
 /obj/item/clothing/cloak/lordcloak/update_icon()
 	cut_overlays()
@@ -532,7 +536,8 @@
 	..()
 	if(GLOB.lordprimary)
 		lordcolor(GLOB.lordprimary,GLOB.lordsecondary)
-	GLOB.lordcolor += src
+	else
+		GLOB.lordcolor += src
 
 /obj/item/clothing/cloak/lordcloak/Destroy()
 	GLOB.lordcolor -= src
@@ -747,7 +752,7 @@
 	color = "#801380"
 
 /obj/item/clothing/cloak/cape/knight
-	color = CLOTHING_BLACK
+	color = CLOTHING_PURPLE
 
 /obj/item/clothing/cloak/cape/guard
 	color = CLOTHING_RED
@@ -759,8 +764,8 @@
 	. = ..()
 	if(GLOB.lordprimary)
 		lordcolor(GLOB.lordprimary,GLOB.lordsecondary)
-	GLOB.lordcolor += src
-
+	else
+		GLOB.lordcolor += src
 /obj/item/clothing/cloak/cape/guard/lordcolor(primary,secondary)
 	color = secondary
 	update_icon()
@@ -894,7 +899,8 @@
 	..()
 	if(GLOB.lordprimary)
 		lordcolor(GLOB.lordprimary,GLOB.lordsecondary)
-	GLOB.lordcolor += src
+	else
+		GLOB.lordcolor += src
 
 /obj/item/clothing/cloak/half/vet/Destroy()
 	GLOB.lordcolor -= src
@@ -1042,7 +1048,8 @@
 	..()
 	if(GLOB.lordprimary)
 		lordcolor(GLOB.lordprimary,GLOB.lordsecondary)
-	GLOB.lordcolor += src
+	else
+		GLOB.lordcolor += src
 
 /obj/item/clothing/cloak/stabard/guardhood/update_icon()
 	cut_overlays()

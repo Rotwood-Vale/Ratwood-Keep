@@ -237,6 +237,26 @@
 	else
 		send_speech(message, 1, src, , spans, message_language=language)
 
+/obj/item/scomstone/Hear(message, atom/movable/speaker, message_language, raw_message, radio_freq, list/spans, message_mode, original_message)
+	if(speaker == src)
+		return
+	if(loc != speaker)
+		return
+	if(!ishuman(speaker))
+		return
+	var/mob/living/carbon/human/H = speaker
+	if(!listening)
+		return
+	var/usedcolor = H.voice_color
+	if(H.voicecolor_override)
+		usedcolor = H.voicecolor_override
+	if(raw_message)
+		for(var/obj/structure/roguemachine/scomm/S in SSroguemachine.scomm_machines)
+			S.repeat_message(raw_message, src, usedcolor, message_language)
+		for(var/obj/item/scomstone/S in SSroguemachine.scomm_machines)
+			S.repeat_message(raw_message, src, usedcolor, message_language)
+		for(var/obj/item/listenstone/S in SSroguemachine.scomm_machines)
+			S.repeat_message(raw_message, src, usedcolor, message_language)//make the listenstone hear scomstone scream
 
 /obj/item/scomstone/bad
 	name = "serfstone"
@@ -244,9 +264,8 @@
 	listening = FALSE
 	sellprice = 2
 
-/obj/item/scomstone/bad/attack_right(mob/user)
+/obj/item/scomstone/bad/Hear(message, atom/movable/speaker, message_language, raw_message, radio_freq, list/spans, message_mode, original_message)
 	return
-
 //LISTENSTONE		LISTENSTONE
 /obj/item/listenstone
 	name = "gemerald choker"
