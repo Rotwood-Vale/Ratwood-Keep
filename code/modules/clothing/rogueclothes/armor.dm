@@ -240,7 +240,8 @@
 	. = ..()
 	if(GLOB.lordprimary)
 		lordcolor(GLOB.lordprimary,GLOB.lordsecondary)
-	GLOB.lordcolor += src
+	else
+		GLOB.lordcolor += src
 
 /obj/item/clothing/suit/roguetown/armor/brigandine/sheriff/lordcolor(primary,secondary)
 	detail_tag = "_det"
