@@ -3,7 +3,7 @@
 	var/list/datum/wound/wounds
 	/// List of items embedded in this bodypart
 	var/list/obj/item/embedded_objects = list()
-	/// Bandage, if this ever hard dels thats fucking retarded lol
+	/// Bandage, if this ever hard dels thats simply stupid lol
 	var/obj/item/bandage
 
 /// Checks if we have any embedded objects whatsoever
