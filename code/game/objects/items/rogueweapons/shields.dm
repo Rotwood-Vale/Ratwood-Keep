@@ -182,7 +182,7 @@
 	coverage = 60
 	attacked_sound = list('sound/combat/parry/shield/towershield (1).ogg','sound/combat/parry/shield/towershield (2).ogg','sound/combat/parry/shield/towershield (3).ogg')
 	parrysound = list('sound/combat/parry/shield/towershield (1).ogg','sound/combat/parry/shield/towershield (2).ogg','sound/combat/parry/shield/towershield (3).ogg')
-	max_integrity = 250
+	max_integrity = 200
 
 /obj/item/rogueweapon/shield/heater/attack_hand(mob/user)
 	if(!overlays.len)

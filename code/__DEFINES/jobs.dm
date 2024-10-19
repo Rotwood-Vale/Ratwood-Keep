@@ -180,12 +180,9 @@
 
 #define MERCENARIES		(1<<7)
 
-#define DESERT_RIDER	(1<<0)
-#define GRENZELHOFT		(1<<1)
-#define VETERAN		(1<<2)
-#define SELLSWORD		(1<<3)
-#define SEELIE		(1<<4)
-#define BLACKSTAR	(1<<5)
+#define MERCENARY	(1<<0)
+#define VETERAN		(1<<1)
+#define SEELIE		(1<<2)
 
 #define GOBLIN		(1<<8)
 
@@ -275,12 +272,9 @@
 #define JDO_PILGRIM 30.2
 #define JDO_MIGRANT 32.3
 
-#define JDO_GRENZELHOFT 31
-#define JDO_DESERT_RIDER 31.1
-#define JDO_VET 31.2
-#define JDO_SELLSWORD 31.3
-#define JDO_SEELIE 31.4
-#define JDO_BLACKSTAR 31.5
+#define JDO_MERCENARY 31
+#define JDO_VET 31.1
+#define JDO_SEELIE 31.2
 
 #define JDO_VAGRANT 33
 #define JDO_ORPHAN 34
@@ -359,9 +353,7 @@
 #define WANDERER_ROLES \
 	/datum/job/roguetown/pilgrim,\
 	/datum/job/roguetown/adventurer,\
-	/datum/job/roguetown/mercenary/desert_rider,\
-	/datum/job/roguetown/mercenary/grenzelhoft,\
-	/datum/job/roguetown/mercenary/blackstar,\
+	/datum/job/roguetown/mercenary,\
 	/datum/job/roguetown/mercenary/seelie
 
 #define GARRISON_ROLES \
