@@ -620,7 +620,7 @@
 	CanAtmosPass = ATMOS_PASS_DENSITY
 	climbable = TRUE
 	climb_time = 0
-	var/timeleft = 20 SECONDS
+	var/timeleft = 10 SECONDS
 
 /obj/structure/forcefield_weak/Initialize()
 	. = ..()
@@ -647,6 +647,8 @@
 	caster = summoner
 
 /obj/structure/forcefield_weak/caster/CanPass(atom/movable/mover, turf/target)	//only the caster can move through this freely
+	if(mover == caster)
+		return TRUE
 	if(ismob(mover))
 		var/mob/M = mover
 		if(M.anti_magic_check(chargecost = 0) || structureclimber == M)
@@ -677,7 +679,7 @@
 	range = 6
 	overlay_state = "ensnare"
 	var/area_of_effect = 1
-	var/duration = 2.5 SECONDS
+	var/duration = 4 SECONDS
 	var/delay = 0.8 SECONDS
 
 /obj/effect/proc_holder/spell/invoked/slowdown_spell_aoe/cast(list/targets, mob/user = usr)
@@ -852,6 +854,9 @@
 	new /obj/effect/temp_visual/blade_burst(T)
 	playsound(T,'sound/magic/charged.ogg', 80, TRUE)
 	for(var/mob/living/L in T.contents)
+		def_zone = pick(BODY_ZONE_L_LEG, BODY_ZONE_R_LEG)
+		var/obj/item/bodypart/BP = L.get_bodypart(def_zone)
+		L.apply_damage(damage, BRUTE, def_zone)
 		L.adjustBruteLoss(damage)
 		playsound(T, "genslash", 80, TRUE)
 		to_chat(L, "<span class='userdanger'>I'm cut by arcyne force!</span>")
@@ -994,12 +999,12 @@
 /obj/effect/proc_holder/spell/invoked/haste
 	name = "Haste"
 	desc = "Cause a target to be magically hastened."
-	cost = 3
+	cost = 2
 	xp_gain = TRUE
 	releasedrain = 25
 	chargedrain = 1
-	chargetime = 4 SECONDS
-	charge_max = 5 MINUTES
+	chargetime = 2 SECONDS
+	charge_max = 2.5 MINUTES
 	warnie = "spellwarning"
 	school = "transmutation"
 	no_early_release = TRUE
