@@ -266,7 +266,9 @@
 
 ///Shake the camera of the person viewing the mob SO REAL!
 /proc/shake_camera(mob/M, duration, strength=1)
-	if(!M || !M.client || duration < 1)
+	if(!M || !M.client || !M.client.prefs || duration < 1)
+		return
+	if(!M.client.prefs.shake)
 		return
 	var/client/C = M.client
 	var/oldx = C.pixel_x
