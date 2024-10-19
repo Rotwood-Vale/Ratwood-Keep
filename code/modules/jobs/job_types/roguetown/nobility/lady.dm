@@ -72,6 +72,6 @@
 	new_role = "Servant"
 	recruitment_faction = "Servants"
 	recruitment_message = "Serve the crown, %RECRUIT!"
-	accept_message = "FOR SERVITUDE!"
+	accept_message = "FOR SOVEREIGNTY!"
 	refuse_message = "Decline."
 	charge_max = 100
