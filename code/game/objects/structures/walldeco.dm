@@ -187,7 +187,8 @@
 	..()
 	if(GLOB.lordprimary)
 		lordcolor(GLOB.lordprimary,GLOB.lordsecondary)
-	GLOB.lordcolor += src
+	else
+		GLOB.lordcolor += src
 
 /obj/structure/fluff/walldeco/customflag/Destroy()
 	GLOB.lordcolor -= src
@@ -202,6 +203,7 @@
 	M = mutable_appearance(icon, "wallflag_secondary", -(layer+0.1))
 	M.color = secondary
 	add_overlay(M)
+	GLOB.lordcolor -= src
 
 /obj/structure/fluff/walldeco/moon
 	name = "banner"
