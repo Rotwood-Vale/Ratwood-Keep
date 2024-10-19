@@ -133,8 +133,6 @@
 			H.mind.adjust_skillrank(/datum/skill/combat/maces, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/magic/holy, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/craft/blacksmithing, 2, TRUE) //Traded a few weapon proficiencies from war cleric for smithing.
-			H.mind.adjust_skillrank(/datum/skill/craft/armorsmithing, 2, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/craft/weaponsmithing, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/craft/traps, 1, TRUE)
 			H.change_stat("intelligence", 2) // Changed to follow balance people's advice.
 			H.change_stat("constitution", 1) 
