@@ -217,6 +217,7 @@
 	slot_flags = ITEM_SLOT_HIP | ITEM_SLOT_BACK
 	force = 20
 	throwforce = 10
+	dropshrink = 0.8
 	resistance_flags = null
 	wdefense = 9
 	coverage = 10
