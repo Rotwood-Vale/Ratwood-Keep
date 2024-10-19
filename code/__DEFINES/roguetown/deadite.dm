@@ -3,8 +3,6 @@ GLOBAL_LIST_INIT(traits_deadite, list(
 	TRAIT_NOMOOD,
 	TRAIT_NOHUNGER,
 	TRAIT_EASYDISMEMBER,
-	TRAIT_NOPAIN,
-	TRAIT_NOPAINSTUN,
 	TRAIT_NOBREATH,
 	TRAIT_TOXIMMUNE,
 	TRAIT_CHUNKYFINGERS,
@@ -22,8 +20,6 @@ GLOBAL_LIST_INIT(traits_deadite, list(
 /// Traits applied to the owner when we are cured and turn into just "rotmen" (currently disabled)
 GLOBAL_LIST_INIT(traits_rotman, list(
 	TRAIT_EASYDISMEMBER,
-	TRAIT_NOPAIN,
-	TRAIT_NOPAINSTUN,
 	TRAIT_NOBREATH,
 	TRAIT_TOXIMMUNE,
 	TRAIT_LIMPDICK,
