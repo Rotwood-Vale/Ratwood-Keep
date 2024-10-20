@@ -1,22 +1,21 @@
 GLOBAL_LIST_EMPTY(ritualslist)
 
 /datum/antagonist/zizocultist
-	name = "Zizoid Lackey"
-	roundend_category = "zizoid cultists"
-	antagpanel_category = "Zizoid Cult"
+	name = "Cultist"
+	roundend_category = "cultists"
+	antagpanel_category = "Cult"
 	job_rank = ROLE_ZIZOIDCULTIST
 	antag_hud_type = ANTAG_HUD_TRAITOR
 	antag_hud_name = "cultist"
 	confess_lines = list(
-		"DEATH TO THE TEN!", 
+		"DEATH TO THE SUCCESSORS!", 
 		"PRAISE ZIZO!",
-		"I AM THE FUTURE!",
-		"NO GODS! ONLY MASTERS!",
+		"THE GODHEAD FAVORS ME!",
 	)
 	var/islesser = TRUE
 
 /datum/antagonist/zizocultist/leader
-	name = "Zizoid Cultist"
+	name = "Heresiarch"
 	islesser = FALSE
 
 /proc/iszizolackey(mob/living/M)
@@ -29,7 +28,7 @@ GLOBAL_LIST_EMPTY(ritualslist)
 	if(istype(examined_datum, /datum/antagonist/zizocultist/leader))
 		return "<span class='boldnotice'>OUR LEADER!</span>"
 	if(istype(examined_datum, /datum/antagonist/zizocultist))
-		return "<span class='boldnotice'>A lackey for the future.</span>"
+		return "<span class='boldnotice'>An expendable follower.</span>"
 
 /datum/antagonist/zizocultist/on_gain()
 	. = ..()
@@ -38,14 +37,13 @@ GLOBAL_LIST_EMPTY(ritualslist)
 	C.cultists |= owner
 	H.patron = GLOB.patronlist[/datum/patron/zizo]
 
-	owner.special_role = "Zizoid Lackey"
+	owner.special_role = "Cultist"
 	H.cmode_music = 'sound/music/combatcult.ogg'
 	owner.adjust_skillrank(/datum/skill/misc/reading, 3, TRUE)
 	owner.current.playsound_local(get_turf(owner.current), 'sound/music/maniac.ogg', 80, FALSE, pressure_affected = FALSE)
 	owner.current.verbs |= /mob/living/carbon/human/proc/praise
 	owner.current.verbs |= /mob/living/carbon/human/proc/communicate
 	ADD_TRAIT(H, TRAIT_STEELHEARTED, TRAIT_GENERIC)
-	//ADD_TRAIT(H, TRAIT_VILLAIN, TRAIT_GENERIC)
 
 	H.change_stat("strength", 2)
 
@@ -68,11 +66,11 @@ GLOBAL_LIST_EMPTY(ritualslist)
 		owner.current.verbs |= /mob/living/carbon/human/proc/release_minion
 
 /datum/antagonist/zizocultist/greet()
-	to_chat(owner, "<span class='danger'>I'm a lackey to the LEADER. A new future begins.</span>")
+	to_chat(owner, "<span class='danger'>I'm a Cultist of Zizo, under the orders of the Heresiarch.</span>")
 	owner.announce_objectives()
 
 /datum/antagonist/zizocultist/leader/greet()
-	to_chat(owner, "<span class='danger'>I'm a cultist to the ALMIGHTY. They call it the UNSPEAKABLE. I require LACKEYS to make my RITUALS easier. I SHALL ASCEND.</span>")
+	to_chat(owner, "<span class='danger'>I'm a Heresiarch of Zizo. I must form a great cult and follow her footsteps. My ascensions will be glorious.</span>")
 	owner.announce_objectives()
 
 /datum/antagonist/zizocultist/can_be_owned(datum/mind/new_owner)
@@ -163,7 +161,7 @@ GLOBAL_LIST_EMPTY(ritualslist)
 // VERBS
 
 /mob/living/carbon/human/proc/praise()
-	set name = "Praise the Lord!"
+	set name = "Praise the Godhead!"
 	set category = "ZIZO"
 	audible_message("\The [src] praises <span class='bold'>Zizo</span>!")
 	playsound(src.loc, 'sound/vo/cult/praise.ogg', 45, 1)
@@ -173,7 +171,7 @@ GLOBAL_LIST_EMPTY(ritualslist)
 	set category = "ZIZO"
 
 	var/datum/game_mode/chaosmode/C = SSticker.mode
-	var/speak = input("What do you speak of?", "ROGUETOWN") as text|null
+	var/speak = input("What do you speak of?", "RATWOOD") as text|null
 	if(!speak)
 		return
 	whisper("O schlet'a ty'schkotot ty'skvoro...")
@@ -249,7 +247,7 @@ GLOBAL_LIST_EMPTY(ritualslist)
 			if(path.circle == sigil_type)
 				rituals |= path.name
 
-		var/ritualnameinput = input(user, "Rituals", "ROGUETOWN") as null|anything in rituals
+		var/ritualnameinput = input(user, "Rituals", "RATWOOD") as null|anything in rituals
 		testing("ritualnameinput [ritualnameinput]")
 		var/datum/ritual/pickritual
 		
@@ -403,7 +401,7 @@ GLOBAL_LIST_EMPTY(ritualslist)
 		to_chat(src, "<span class='danger'>My hands aren't bloody enough.</span>")
 		return
 
-	var/input = input("Sigil Type", "ROGUETOWN") as null|anything in runes
+	var/input = input("Sigil Type", "RATWOOD") as null|anything in runes
 	if(!input)
 		return
 	
@@ -422,7 +420,7 @@ GLOBAL_LIST_EMPTY(ritualslist)
 
 	var/mob/living/carbon/human/choice = input(src, "Whom do you no longer have use for?", "ROGUETOWN") as null|anything in possible
 	if(choice)
-		var/alert = alert(src, "Are you sure?", "ROGUETOWN", "Yes", "Cancel")
+		var/alert = alert(src, "Are you sure?", "RATWOOD", "Yes", "Cancel")
 		if(alert == "Yes")
 			visible_message("<span class='danger'>[src] reaches out, ripping up [choice]'s soul!</span>")
 			to_chat(choice, "<span class='userdanger'>I HAVE FAILED MY LEADER! I HAVE FAILED ZIZO! NOTHING ELSE BUT DEATH REMAINS FOR ME NOW!</span>")
@@ -433,7 +431,7 @@ GLOBAL_LIST_EMPTY(ritualslist)
 // RITUAL DATUMS
 
 /datum/ritual
-	var/name = "DVRK AND EVIL RITVAL"
+	var/name = "DARK AND EVIL RITVAL"
 	var/circle = null // Servantry, Transmutation, Fleshcrafting
 	var/center_requirement = /obj/item
 	// This is absolutely fucking terrible. I tried to do it with lists but it just didn't work and 
@@ -471,10 +469,10 @@ GLOBAL_LIST_EMPTY(ritualslist)
 				to_chat(user.mind, "<span class='danger'>\"They are wearing my bane...\"</span>")
 				return
 			if(M.cultists.len >= 4)
-				to_chat(user.mind, "<span class='danger'>\"The veil is too strong to support more than three lackeys.\"</span>")
+				to_chat(user.mind, "<span class='danger'>\"The veil is too strong to support more than three cultists.\"</span>")
 				return
 			var/datum/antagonist/zizocultist/PR = user.mind.has_antag_datum(/datum/antagonist/zizocultist)
-			var/alert = alert(H, "YOU WILL BE SHOWN THE TRUTH. DO YOU RESIST? (Resisting: 1 TRI)", "ROGUETOWN", "Yield", "Resist")
+			var/alert = alert(H, "YOU WILL BE SHOWN THE TRUTH. DO YOU RESIST? (Resisting: 1 TRI)", "RATWOOD", "Yield", "Resist")
 			H.anchored = TRUE
 			if(alert == "Yield")
 				to_chat(H.mind, "<span class='notice'>I see the truth now! It all makes so much sense! They aren't HERETICS! They want the BEST FOR US!</span>")
@@ -645,7 +643,7 @@ GLOBAL_LIST_EMPTY(ritualslist)
 
 /obj/item/pactofunity/attack_self(mob/user)
 	. = ..()
-	var/alert = alert(user, "Rip up the pact of unity?", "ROGUETOWN", "RIP", "Cancel")
+	var/alert = alert(user, "Rip up the pact of unity?", "RATWOOD", "RIP", "Cancel")
 	if(alert == "RIP")
 		user.playsound_local(user, 'sound/foley/cloth_rip.ogg', 50)
 		to_chat(signed.mind, "<span class='userdanger'>I FAILED! MY LIFE DWINDLES!</span>")
@@ -666,7 +664,7 @@ GLOBAL_LIST_EMPTY(ritualslist)
 		return
 	if(!H.stat)
 		to_chat(user, "<span class='info'>I courteously offer \the [src] to [H].</span>")
-		if(alert(H, "Sign the pact with your blood?", "ROGUETOWN", "Yes", "No") != "Yes")
+		if(alert(H, "Sign the pact with your blood?", "RATWOOD", "Yes", "No") != "Yes")
 			return
 		if(H.stat)
 			return
@@ -760,7 +758,7 @@ GLOBAL_LIST_EMPTY(ritualslist)
 	for(var/obj/item/paper/P in C.contents)
 		var/info = ""
 		info = sanitize(P.info)
-		var/input = stripped_input(user, "To whom do we send this message?", "ROGUETOWN")
+		var/input = stripped_input(user, "To whom do we send this message?", "RATWOOD")
 		if(!input)
 			return
 		for(var/mob/living/carbon/human/HL in GLOB.human_list)
