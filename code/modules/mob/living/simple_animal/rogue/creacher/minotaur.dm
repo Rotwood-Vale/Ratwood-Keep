@@ -42,14 +42,6 @@
 	dodgetime = 0
 	aggressive = 1
 //	stat_attack = UNCONSCIOUS
-	remains_type = /obj/effect/decal/remains/xeno/troll // Placeholder until Troll remains are sprited.
-	body_eater = TRUE
-	var/critvuln = TRUE
-
-/mob/living/simple_animal/hostile/retaliate/rogue/troll/Initialize()
-	. = ..()
-	if(critvuln)
-		ADD_TRAIT(src, TRAIT_CRITICAL_WEAKNESS, TRAIT_GENERIC)
 
 /mob/living/simple_animal/hostile/retaliate/rogue/troll/blood
 	name = "FLESH HOMUNCULUS"
@@ -59,7 +51,6 @@
 	icon_living = "FLESH"
 	icon = 'icons/mob/mob.dmi'
 	mob_biotypes = MOB_EPIC
-	critvuln = FALSE
 	STACON = 10
 	STASTR = 19
 	STASPD = 1
@@ -77,7 +68,6 @@
 	melee_damage_upper = 550
 	health = 666666
 	maxHealth = 666666
-	critvuln = FALSE
 	STACON = 66
 	STASTR = 66
 	STASPD = 66
