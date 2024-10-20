@@ -81,19 +81,20 @@
 				to_chat(user, span_warning("I should put this on a table first."))
 				return
 			playsound(loc, 'sound/foley/sewflesh.ogg', 100, TRUE, -2)
-			var/sewtime = 70
-			if(user.mind)
-				sewtime = (70 - ((user.mind.get_skill_level(/datum/skill/misc/sewing)) * 10))
-			if(do_after(user, sewtime, target = I))
-				if(user.mind.get_skill_level(/datum/skill/misc/sewing) <= 1 && prob(60)) //If we have little sewing knowledge, we may damage the object
-					I.obj_integrity -= 50 //Arbitrary number
-					user.visible_message(span_info("[user] damages [I] due to a lack of skill!"))
-					playsound(src, 'sound/foley/cloth_rip.ogg', 50, TRUE)
-					return
-				else
-					playsound(loc, 'sound/foley/sewflesh.ogg', 100, TRUE, -2)
-					user.visible_message(span_info("[user] repairs [I]!"))
-					I.obj_integrity += (user.mind.get_skill_level(/datum/skill/misc/sewing) * 10)
+			var/skill = ((user.mind.get_skill_level(/datum/skill/misc/sewing)) * 10)
+			var/sewtime = (60 - skill)
+			if(!do_after(user, sewtime, target = I))
+				return
+			if(prob(60 - skill)) //The more knowlegeable we are the less chance we damage the object
+				I.obj_integrity -= (60 - skill)
+				user.visible_message(span_info("[user] damages [I] due to a lack of skill!"))
+				playsound(src, 'sound/foley/cloth_rip.ogg', 50, TRUE)
+				user.mind.add_sleep_experience(/datum/skill/misc/sewing, (user.STAINT) / 2) // Only failing a repair teaches us something
+				return
+			else
+				playsound(loc, 'sound/foley/sewflesh.ogg', 100, TRUE, -2)
+				user.visible_message(span_info("[user] repairs [I]!"))
+				I.obj_integrity = min(I.obj_integrity + skill, I.max_integrity)
 		return
 	return ..()
 

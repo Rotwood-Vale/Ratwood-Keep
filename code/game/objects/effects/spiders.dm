@@ -11,7 +11,7 @@
 /obj/structure/spider/attacked_by(obj/item/I, mob/living/user) //Snipping action for webs, scissors turning webs into silk fast!
 	var/snip_time = 50
 	var/sewing_skill = user.mind.get_skill_level(/datum/skill/misc/sewing)
-	var/amount = sewing_skill > 0 ? rand(1, (sewing_skill / 2)) : 1
+	var/amount = sewing_skill > 0 ? rand(1, (1 + (sewing_skill / 2))) : 1
 	if(user.used_intent.type == /datum/intent/snip)
 		snip_time = (50 - (sewing_skill * 10))
 		if(!do_after(user, snip_time, target = user))
