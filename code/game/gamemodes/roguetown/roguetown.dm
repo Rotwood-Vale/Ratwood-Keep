@@ -171,7 +171,7 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "E
 			log_game("Major Antagonist: Werewolves")
 		if(71 to 100)
 			log_game("Major Antagonist: Extended") //gotta put something here.
-	
+
 	// if(prob(80))
 	pick_bandits()
 	log_game("Minor Antagonist: Bandit")
@@ -181,7 +181,7 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "E
 	// if(prob(10))
 	// 	pick_maniac()
 	// 	log_game("Minor Antagonist: Maniac")
-	
+
 	return TRUE
 
 /datum/game_mode/chaosmode/proc/pick_bandits()
@@ -195,6 +195,9 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "E
 	var/num_bandits = 0
 	if(num_players() >= 10)
 		num_bandits = CLAMP(round(num_players() / 2), 25, 30)
+		var/datum/job/bandit_job = SSjob.GetJob("Bandit")
+		bandit_job.total_positions = num_bandits
+		bandit_job.spawn_positions = num_bandits
 		banditgoal += (num_bandits * rand(200,400))
 
 	if(num_bandits)
@@ -237,8 +240,7 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "E
 				allantags -= candidate
 				pre_bandits += candidate
 
-				candidate.assigned_role = "Bandit"
-				candidate.special_role = ROLE_BANDIT
+				SSjob.AssignRole(candidate.current, "Bandit")
 
 				candidate.restricted_roles = restricted_jobs.Copy() // For posterities sake
 				testing("[key_name(candidate)] has been selected as a bandit")
@@ -478,8 +480,6 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "E
 			vampires += vampire
 ///////////////// BANDIT
 	for(var/datum/mind/bandito in pre_bandits)
-		var/datum/antagonist/new_antag = new /datum/antagonist/bandit()
-		bandito.add_antag_datum(new_antag)
 		GLOB.pre_setup_antags -= bandito
 		bandits += bandito
 		SSrole_class_handler.bandits_in_round = TRUE
