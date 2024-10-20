@@ -17,7 +17,7 @@
 	advclass_cat_rolls = list(CTAG_MERCENARY = 20)
 	PQ_boost_divider = 10
 	wanderer_examine = FALSE
-	advjob_examine = FALSE
+	advjob_examine = TRUE
 	always_show_on_latechoices = TRUE
 	job_reopens_slots_on_death = TRUE
 	same_job_respawn_delay = 15 MINUTES
