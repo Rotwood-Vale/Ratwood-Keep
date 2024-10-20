@@ -77,9 +77,6 @@
 			if(I.obj_integrity == I.max_integrity)
 				to_chat(user, span_warning("This is not broken."))
 				return
-			if(user.mind.get_skill_level(/datum/skill/misc/sewing) < I.required_repair_skill)
-				to_chat(user, span_warning("I don't know how to repair this..."))
-				return
 			if(!I.ontable())
 				to_chat(user, span_warning("I should put this on a table first."))
 				return
@@ -87,19 +84,16 @@
 			var/sewtime = 70
 			if(user.mind)
 				sewtime = (70 - ((user.mind.get_skill_level(/datum/skill/misc/sewing)) * 10))
-			var/datum/component/storage/target_storage = I.GetComponent(/datum/component/storage) //Vrell - Part of storage item repair fix
 			if(do_after(user, sewtime, target = I))
-				playsound(loc, 'sound/foley/sewflesh.ogg', 100, TRUE, -2)
-				user.visible_message(span_info("[user] repairs [I]!"))
-				I.obj_integrity = I.max_integrity
-				//Vrell - Part of storage item repair fix
-				if(target_storage)
-					target_storage.being_repaired = FALSE
-				return
-			else
-				//Vrell - Part of storage item repair fix
-				if(target_storage)
-					target_storage.being_repaired = FALSE
+				if(user.mind.get_skill_level(/datum/skill/misc/sewing) <= 1 && prob(60)) //If we have little sewing knowledge, we may damage the object
+					I.obj_integrity -= 50 //Arbitrary number
+					user.visible_message(span_info("[user] damages [I] due to a lack of skill!"))
+					playsound(src, 'sound/foley/cloth_rip.ogg', 50, TRUE)
+					return
+				else
+					playsound(loc, 'sound/foley/sewflesh.ogg', 100, TRUE, -2)
+					user.visible_message(span_info("[user] repairs [I]!"))
+					I.obj_integrity += (user.mind.get_skill_level(/datum/skill/misc/sewing) * 10)
 		return
 	return ..()
 
