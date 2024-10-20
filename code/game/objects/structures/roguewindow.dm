@@ -1,7 +1,7 @@
 
 /obj/structure/roguewindow
 	name = "window"
-	desc = "A glass window. Glass is very rare nowadays."
+	desc = "A glass window."
 	icon = 'icons/roguetown/misc/structure.dmi'
 	icon_state = "window-solid"
 	layer = TABLE_LAYER
@@ -63,7 +63,7 @@
 	integrity_failure = 0.9
 
 /obj/structure/roguewindow/openclose/reinforced
-	desc = "A glass window. Glass is very rare nowadays. This one looks reinforced with a metal mesh."
+	desc = "A glass window. This one looks reinforced with a metal mesh."
 	icon_state = "reinforcedwindowdir"
 	base_state = "reinforcedwindow"
 	max_integrity = 800
