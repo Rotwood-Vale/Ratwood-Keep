@@ -21965,10 +21965,6 @@
 /obj/structure/chair/stool/rogue,
 /turf/open/floor/rogue/blocks/stonered/tiny,
 /area/rogue/outdoors/town)
-"vbE" = (
-/obj/machinery/light/rogue/wallfire/candle/blue/r,
-/turf/open/water/bath,
-/area/rogue/indoors/town/bath)
 "vbG" = (
 /obj/structure/closet/crate/chest,
 /obj/item/reagent_containers/glass/cup/wooden,
@@ -69539,7 +69535,7 @@ fsU
 qjN
 qjN
 kJC
-vbE
+kHR
 kHR
 fsU
 bpD
