@@ -267,6 +267,21 @@
 	max_integrity = 250
 	armor_class = ARMOR_CLASS_HEAVY
 
+/obj/item/clothing/suit/roguetown/armor/brigandine/light
+	slot_flags = ITEM_SLOT_ARMOR
+	name = "lightweight brigandine"
+	desc = "A light riveted coat with plates concealed inside an exterior fabric."
+	icon_state = "light_brigandine"
+	blocksound = SOFTHIT
+	body_parts_covered = CHEST|GROIN|VITALS
+	armor = list("blunt" = 60, "slash" = 70, "stab" = 70, "bullet" = 70, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	max_integrity = 350
+	smeltresult = /obj/item/ingot/iron
+	equip_delay_self = 40
+	armor_class = ARMOR_CLASS_MEDIUM
+	w_class = WEIGHT_CLASS_BULKY
+	clothing_flags = CANT_SLEEP_IN
+
 /obj/item/clothing/suit/roguetown/armor/armordress
 	slot_flags = ITEM_SLOT_ARMOR
 	name = "padded dress"
