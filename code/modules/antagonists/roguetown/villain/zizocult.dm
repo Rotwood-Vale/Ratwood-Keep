@@ -129,10 +129,10 @@ GLOBAL_LIST_EMPTY(ritualslist)
 		if(objectives.len)//If the traitor had no objectives, don't need to process this.
 			for(var/datum/objective/objective in objectives)
 				objective.update_explanation_text()
-				if(objective.check_completion()):
-    				to_chat(owner, "<B>Goal #[count]</B>: [objective.explanation_text] " + span_green("TRIUMPH!"))
-				else:
-    				to_chat(owner, "<B>Goal #[count]</B>: [objective.explanation_text] " + span_red("Failure."))
+				if(objective.check_completion())
+					to_chat(owner, "<B>Goal #[count]</B>: [objective.explanation_text] " + span_green("TRIUMPH!"))
+				else
+					to_chat(owner, "<B>Goal #[count]</B>: [objective.explanation_text] " + span_red("Failure."))
 
 					traitorwin = FALSE
 				count += objective.triumph_count
@@ -140,10 +140,10 @@ GLOBAL_LIST_EMPTY(ritualslist)
 		if(objectives.len)//If the traitor had no objectives, don't need to process this.
 			for(var/datum/objective/objective in objectives)
 				objective.update_explanation_text()
-				if(objective.check_completion()):
-   					to_chat(owner, "<B>Goal #[count]</B>: [objective.explanation_text] " + span_green("TRIUMPH!"))
-				else:
-    				to_chat(owner, "<B>Goal #[count]</B>: [objective.explanation_text] " + span_red("Failure."))
+				if(objective.check_completion())
+					to_chat(owner, "<B>Goal #[count]</B>: [objective.explanation_text] " + span_green("TRIUMPH!"))
+				else
+					to_chat(owner, "<B>Goal #[count]</B>: [objective.explanation_text] " + span_red("Failure."))
 
 					traitorwin = FALSE
 				count += objective.triumph_count
@@ -154,10 +154,10 @@ GLOBAL_LIST_EMPTY(ritualslist)
 			if(owner)
 				owner.adjust_triumphs(count)
 		to_chat(world, span_green("The [special_role_text] has TRIUMPHED!"))
-		if(owner?.current):
-    		owner.current.playsound_local(get_turf(owner.current), 'sound/misc/triumph.ogg', 100, FALSE, pressure_affected = FALSE)
-		else:
-    		to_chat(world, span_red("The [special_role_text] has FAILED!"))
+		if(owner?.current)
+			owner.current.playsound_local(get_turf(owner.current), 'sound/misc/triumph.ogg', 100, FALSE, pressure_affected = FALSE)
+		else
+			to_chat(world, span_red("The [special_role_text] has FAILED!"))
 
 		if(owner?.current)
 			owner.current.playsound_local(get_turf(owner.current), 'sound/misc/fail.ogg', 100, FALSE, pressure_affected = FALSE)
