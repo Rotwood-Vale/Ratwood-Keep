@@ -172,7 +172,6 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 	var/list/specskills
 	var/list/specskills_m
 	var/list/specskills_f
-	var/obj/item/mutanthands
 
 	/// List of organ customizers for preferences to customize organs.
 	var/list/customizers
