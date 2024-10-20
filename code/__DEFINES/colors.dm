@@ -70,7 +70,6 @@
 #define CLOTHING_BLUE			"#537bc6"
 #define CLOTHING_YELLOW			"#b5b004"
 #define CLOTHING_TEAL			"#249589"
-#define CLOTHING_AZURE			"#007fff"
 #define CLOTHING_WHITE			"#ffffff"
 #define CLOTHING_ORANGE			"#bd6606"
 #define CLOTHING_MAJENTA		"#962e5c"
@@ -97,8 +96,6 @@
 			return CLOTHING_YELLOW
 		if("Teal")
 			return CLOTHING_TEAL
-		if("Azure")
-			return CLOTHING_AZURE
 		if("White")
 			return CLOTHING_WHITE
 		if("Orange")
