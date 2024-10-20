@@ -1,7 +1,7 @@
 
 SUBSYSTEM_DEF(humannpc)
 	name = "humannpc"
-	wait = 2 SECONDS
+	wait = 20
 	flags = SS_KEEP_TIMING
 	priority = 50
 	var/list/processing = list()
