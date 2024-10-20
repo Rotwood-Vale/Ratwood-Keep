@@ -10,16 +10,6 @@
 				/obj/item/natural/fibers = 1)
 	craftdiff = 0
 
-/datum/crafting_recipe/roguetown/cloth
-	name = "cloth"
-	result = /obj/item/natural/cloth
-	reqs = list(/obj/item/natural/fibers = 2)
-	tools = list(/obj/item/needle)
-	skillcraft = /datum/skill/misc/sewing
-	verbage_simple = "sew"
-	verbage = "sews"
-	craftdiff = 0
-
 /datum/crafting_recipe/roguetown/clothbelt
 	name = "cloth belt"
 	result = /obj/item/storage/belt/rogue/leather/cloth
@@ -352,15 +342,6 @@
 	tools = list(/obj/item/rogueweapon/huntingknife) // Intended to be either stone knife or steel hunting knife
 	craftdiff = 1
 	subtype_reqs = TRUE //Unsure if needed for stone knife to work, feel free to remove this if not.
-
-/datum/crafting_recipe/roguetown/bag
-	name = "sack"
-	result = /obj/item/storage/roguebag/crafted
-	reqs = list(/obj/item/natural/fibers = 1,
-				/obj/item/natural/cloth = 1)
-	tools = list(/obj/item/needle)
-	skillcraft = /datum/skill/misc/sewing
-	req_table = TRUE
 
 /obj/item/storage/roguebag/crafted
 	sellprice = 4
