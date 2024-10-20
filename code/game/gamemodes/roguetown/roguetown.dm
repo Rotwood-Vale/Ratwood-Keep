@@ -349,8 +349,8 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "E
 
 /datum/game_mode/chaosmode/proc/pick_cultist()
 	var/remaining = 2 // 1 leader, 1 lackey :)
-	restricted_jobs = list("King",
-	"Queen",
+	restricted_jobs = list("Lord",
+	"Lady",
 	"Merchant",
 	"Priest")
 	antag_candidates = get_players_for_role(ROLE_ZIZOIDCULTIST)

@@ -26,9 +26,9 @@ GLOBAL_LIST_EMPTY(ritualslist)
 
 /datum/antagonist/zizocultist/examine_friendorfoe(datum/antagonist/examined_datum, mob/examiner, mob/examined)
 	if(istype(examined_datum, /datum/antagonist/zizocultist/leader))
-		return "<span class='boldnotice'>OUR LEADER!</span>"
+		return span_boldnotice("OUR LEADER!")
 	if(istype(examined_datum, /datum/antagonist/zizocultist))
-		return "<span class='boldnotice'>An expendable follower.</span>"
+		return span_boldnotice("An expendable follower.")
 
 /datum/antagonist/zizocultist/on_gain()
 	. = ..()
@@ -66,11 +66,12 @@ GLOBAL_LIST_EMPTY(ritualslist)
 		owner.current.verbs |= /mob/living/carbon/human/proc/release_minion
 
 /datum/antagonist/zizocultist/greet()
-	to_chat(owner, "<span class='danger'>I'm a Cultist of Zizo, under the orders of the Heresiarch.</span>")
+	to_chat(owner, span_danger("I'm a Cultist of Zizo, under the orders of the Heresiarch."))
 	owner.announce_objectives()
 
 /datum/antagonist/zizocultist/leader/greet()
-	to_chat(owner, "<span class='danger'>I'm a Heresiarch of Zizo. I must form a great cult and follow her footsteps. My ascensions will be glorious.</span>")
+	to_chat(owner, span_danger("I'm a Heresiarch of Zizo. I must form a great cult and follow her footsteps. My ascension will be glorious."))
+
 	owner.announce_objectives()
 
 /datum/antagonist/zizocultist/can_be_owned(datum/mind/new_owner)
@@ -128,20 +129,22 @@ GLOBAL_LIST_EMPTY(ritualslist)
 		if(objectives.len)//If the traitor had no objectives, don't need to process this.
 			for(var/datum/objective/objective in objectives)
 				objective.update_explanation_text()
-				if(objective.check_completion())
-					to_chat(owner, "<B>Goal #[count]</B>: [objective.explanation_text] <span class='greentext'>TRIUMPH!</span>")
-				else
-					to_chat(owner, "<B>Goal #[count]</B>: [objective.explanation_text] <span class='redtext'>Failure.</span>")
+				if(objective.check_completion()):
+    				to_chat(owner, "<B>Goal #[count]</B>: [objective.explanation_text] " + span_green("TRIUMPH!"))
+				else:
+    				to_chat(owner, "<B>Goal #[count]</B>: [objective.explanation_text] " + span_red("Failure."))
+
 					traitorwin = FALSE
 				count += objective.triumph_count
 	else
 		if(objectives.len)//If the traitor had no objectives, don't need to process this.
 			for(var/datum/objective/objective in objectives)
 				objective.update_explanation_text()
-				if(objective.check_completion())
-					to_chat(world, "<B>Goal #[count]</B>: [objective.explanation_text] <span class='greentext'>TRIUMPH!</span>")
-				else
-					to_chat(world, "<B>Goal #[count]</B>: [objective.explanation_text] <span class='redtext'>Failure.</span>")
+				if(objective.check_completion()):
+   					to_chat(owner, "<B>Goal #[count]</B>: [objective.explanation_text] " + span_green("TRIUMPH!"))
+				else:
+    				to_chat(owner, "<B>Goal #[count]</B>: [objective.explanation_text] " + span_red("Failure."))
+
 					traitorwin = FALSE
 				count += objective.triumph_count
 
@@ -150,11 +153,12 @@ GLOBAL_LIST_EMPTY(ritualslist)
 		if(count)
 			if(owner)
 				owner.adjust_triumphs(count)
-		to_chat(world, "<span class='greentext'>The [special_role_text] has TRIUMPHED!</span>")
-		if(owner?.current)
-			owner.current.playsound_local(get_turf(owner.current), 'sound/misc/triumph.ogg', 100, FALSE, pressure_affected = FALSE)
-	else
-		to_chat(world, "<span class='redtext'>The [special_role_text] has FAILED!</span>")
+		to_chat(world, span_green("The [special_role_text] has TRIUMPHED!"))
+		if(owner?.current):
+    		owner.current.playsound_local(get_turf(owner.current), 'sound/misc/triumph.ogg', 100, FALSE, pressure_affected = FALSE)
+		else:
+    		to_chat(world, span_red("The [special_role_text] has FAILED!"))
+
 		if(owner?.current)
 			owner.current.playsound_local(get_turf(owner.current), 'sound/misc/fail.ogg', 100, FALSE, pressure_affected = FALSE)
 
@@ -163,7 +167,7 @@ GLOBAL_LIST_EMPTY(ritualslist)
 /mob/living/carbon/human/proc/praise()
 	set name = "Praise the Godhead!"
 	set category = "ZIZO"
-	audible_message("\The [src] praises <span class='bold'>Zizo</span>!")
+	audible_message("\\The [src] praises " + span_bold("Zizo") + "!")
 	playsound(src.loc, 'sound/vo/cult/praise.ogg', 45, 1)
 
 /mob/living/carbon/human/proc/communicate()
@@ -178,7 +182,7 @@ GLOBAL_LIST_EMPTY(ritualslist)
 	whisper("[speak]")
 
 	for(var/datum/mind/V in C.cultists)
-		to_chat(V, "<span class='boldnotice'>A message from [src.real_name]: \"[speak]\"</span>")
+		to_chat(V, span_boldnotice("A message from [src.real_name]: \"[speak]\""))
 		playsound_local(V.current, 'sound/vo/cult/skvor.ogg', 100)
 
 /obj/effect/decal/cleanable/sigil
@@ -318,14 +322,14 @@ GLOBAL_LIST_EMPTY(ritualslist)
 		if(cardinal_success != TRUE)
 			if(badritualpunishment)
 				return
-			to_chat(user.mind, "<span class='danger'>\"That's not how you do it, fool.\"</span>")
+			to_chat(user.mind, span_danger("\"That's not how you do it, fool.\""))
 			user.electrocute_act(10, src)
 			return
 
 		if(center_success != TRUE)
 			if(badritualpunishment)
 				return
-			to_chat(user.mind, "<span class='danger'>\"That's not how you do it, fool.\"</span>")
+			to_chat(user.mind, span_danger("\"That's not how you do it, fool.\""))
 			user.electrocute_act(10, src)
 			return
 
@@ -363,10 +367,10 @@ GLOBAL_LIST_EMPTY(ritualslist)
 	var/turf/T = get_turf(M.loc)
 	for(var/obj/A in T)
 		if(istype(A, /obj/effect/decal/cleanable/sigil))
-			to_chat(M, "<span class='warning'>There is already a sigil here.</span>")
+			to_chat(M, span_warning("There is already a sigil here."))
 			return
 		if(A.density && !(A.flags_1 & ON_BORDER_1))
-			to_chat(M, "<span class='warning'>There is already something here!</span>")
+			to_chat(M, span_warning("There is already something here!"))
 			return
 	if(do_after(M, 5 SECONDS))
 		M.bloody_hands--
@@ -398,7 +402,7 @@ GLOBAL_LIST_EMPTY(ritualslist)
 	var/list/runes = list("Servantry", "Transmutation", "Fleshcrafting")
 
 	if(!bloody_hands)
-		to_chat(src, "<span class='danger'>My hands aren't bloody enough.</span>")
+		to_chat(src, span_danger("My hands aren't bloody enough."))
 		return
 
 	var/input = input("Sigil Type", "RATWOOD") as null|anything in runes
@@ -409,21 +413,21 @@ GLOBAL_LIST_EMPTY(ritualslist)
 	T.generateSigils(src, input)
 
 /mob/living/carbon/human/proc/release_minion()
-	set name = "Release Lackey"
+	set name = "Release follower"
 	set category = "ZIZO"
 
 	var/datum/game_mode/chaosmode/C = SSticker.mode
 	var/list/mob/living/carbon/human/possible = list()
 	for(var/datum/mind/V in C.cultists)
-		if(V.special_role == "Zizoid Lackey")
+		if(V.special_role == "Cultist")
 			possible |= V.current
 
 	var/mob/living/carbon/human/choice = input(src, "Whom do you no longer have use for?", "ROGUETOWN") as null|anything in possible
 	if(choice)
 		var/alert = alert(src, "Are you sure?", "RATWOOD", "Yes", "Cancel")
 		if(alert == "Yes")
-			visible_message("<span class='danger'>[src] reaches out, ripping up [choice]'s soul!</span>")
-			to_chat(choice, "<span class='userdanger'>I HAVE FAILED MY LEADER! I HAVE FAILED ZIZO! NOTHING ELSE BUT DEATH REMAINS FOR ME NOW!</span>")
+			visible_message(span_danger("[src] reaches out, ripping up [choice]'s soul!"))
+			to_chat(choice, span_userdanger("I HAVE FAILED MY LEADER! I HAVE FAILED ZIZO! NOTHING ELSE BUT DEATH REMAINS FOR ME NOW!"))
 			sleep(20)
 			choice.gib() // Cooler than dusting.
 			C.cultists -= choice.mind
@@ -466,23 +470,23 @@ GLOBAL_LIST_EMPTY(ritualslist)
 			if(H.anchored) // a way to bind the person to the rune if they choose to resist converting
 				return
 			if(istype(H.wear_neck, /obj/item/clothing/neck/roguetown/psicross))
-				to_chat(user.mind, "<span class='danger'>\"They are wearing my bane...\"</span>")
+				to_chat(user.mind, span_danger("\"They are wearing my bane...\""))
 				return
-			if(M.cultists.len >= 4)
-				to_chat(user.mind, "<span class='danger'>\"The veil is too strong to support more than three cultists.\"</span>")
+			if(M.cultists.len >= 10)
+				to_chat(user.mind, span_danger("\"The veil is too strong to support more than ten cultists.\""))
 				return
 			var/datum/antagonist/zizocultist/PR = user.mind.has_antag_datum(/datum/antagonist/zizocultist)
 			var/alert = alert(H, "YOU WILL BE SHOWN THE TRUTH. DO YOU RESIST? (Resisting: 1 TRI)", "RATWOOD", "Yield", "Resist")
 			H.anchored = TRUE
 			if(alert == "Yield")
-				to_chat(H.mind, "<span class='notice'>I see the truth now! It all makes so much sense! They aren't HERETICS! They want the BEST FOR US!</span>")
+				to_chat(H.mind, span_notice("I see the truth now! It all makes so much sense! They aren't HERETICS! They want the BEST FOR US!"))
 				PR.add_cultist(H.mind)
 				H.praise()
 				H.anchored = FALSE
 			else
 				H.adjust_triumphs(-1)
-				H.visible_message("<span class='danger'>\The [H] thrashes around, unyielding!</span>")
-				to_chat(H.mind, "<span class='danger'>\"Yield.\"</span>")
+				H.visible_message(span_danger("\The [H] thrashes around, unyielding!"))
+				to_chat(H.mind, span_danger("\"Yield.\""))
 				if(H.electrocute_act(10, src))
 					H.emote("painscream")
 				sleep(20)
@@ -502,7 +506,7 @@ GLOBAL_LIST_EMPTY(ritualslist)
 		if(H == user)
 			return
 		if(iszizocultist(H))
-			to_chat(H.mind, "<span class='danger'>\"I'm not gonna let my strongest follower become a mindless brute.\"</span>")
+			to_chat(H.mind, span_danger("\"I'm not gonna let my strongest follower become a mindless brute.\""))
 			return
 		if(H.mind)
 			H.mind.special_role = "Cult Summon"
@@ -558,8 +562,8 @@ GLOBAL_LIST_EMPTY(ritualslist)
 		ADD_TRAIT(H, TRAIT_TOXIMMUNE, TRAIT_GENERIC)
 		ADD_TRAIT(H, TRAIT_NOSLEEP, TRAIT_GENERIC)
 		ADD_TRAIT(H, TRAIT_SHOCKIMMUNE, TRAIT_GENERIC)
-		to_chat(H, "<span class='userdanger'>I am returned to serve. I will obey, so that I may return to rest.</span>")
-		to_chat(H, "<span class='userdanger'>My master is [user].</span>")
+		to_chat(H, span_userdanger("I am returned to serve. I will obey, so that I may return to rest."))
+		to_chat(H, span_userdanger("My master is [user]."))
 		break
 
 /datum/ritual/thecall
@@ -575,13 +579,13 @@ GLOBAL_LIST_EMPTY(ritualslist)
 /proc/thecall(var/mob/user, var/turf/C)
 	for(var/obj/item/paper/P in C.contents)
 		if(!user.mind || !user.mind.do_i_know(name=P.info))
-			to_chat(user.mind, "<span class='warning'>I don't know anyone by that name.</span>")
+			to_chat(user.mind, span_warning("I don't know anyone by that name."))
 			return
 		for(var/mob/living/carbon/human/HL in GLOB.human_list)
 			if(HL.real_name == P.info)
 				if(HL.IsSleeping())
 					if(HL.mind.assigned_role in GLOB.church_positions)
-						to_chat(HL.mind, "<span class='warning'>I sense an unholy presence loom near my soul.</span>")
+						to_chat(HL.mind, span_warning("I sense an unholy presence loom near my soul."))
 						return
 					if(HL == SSticker.rulermob)
 						return
@@ -590,7 +594,7 @@ GLOBAL_LIST_EMPTY(ritualslist)
 					if(HAS_TRAIT(HL, TRAIT_NOROGSTAM))
 						return
 					HL.apply_status_effect(/datum/status_effect/debuff/sleepytime)
-					to_chat(HL.mind, "<span class='warning'>This isn't my bed... Where am I?!</span>")
+					to_chat(HL.mind, span_warning("This isn't my bed... Where am I?!"))
 					HL.playsound_local(src, pick('sound/misc/jumphumans (1).ogg','sound/misc/jumphumans (2).ogg','sound/misc/jumphumans (3).ogg'), 100)
 					HL.forceMove(C)
 					qdel(P)
@@ -646,7 +650,7 @@ GLOBAL_LIST_EMPTY(ritualslist)
 	var/alert = alert(user, "Rip up the pact of unity?", "RATWOOD", "RIP", "Cancel")
 	if(alert == "RIP")
 		user.playsound_local(user, 'sound/foley/cloth_rip.ogg', 50)
-		to_chat(signed.mind, "<span class='userdanger'>I FAILED! MY LIFE DWINDLES!</span>")
+		to_chat(signed.mind, span_userdanger("I FAILED! MY LIFE DWINDLES!"))
 		sleep(2 MINUTES)
 		if(istype(signed.wear_neck, /obj/item/clothing/neck/roguetown/psicross))
 			return
@@ -660,22 +664,22 @@ GLOBAL_LIST_EMPTY(ritualslist)
 	if(signed)
 		return ..()
 	if(!H.get_bleed_rate())
-		to_chat(user, "<span class='warning'>No. They must be bleeding.</span>")
+		to_chat(user, span_warning("No. They must be bleeding."))
 		return
 	if(!H.stat)
-		to_chat(user, "<span class='info'>I courteously offer \the [src] to [H].</span>")
+		to_chat(user, span_info("I courteously offer \the [src] to [H]."))
 		if(alert(H, "Sign the pact with your blood?", "RATWOOD", "Yes", "No") != "Yes")
 			return
 		if(H.stat)
 			return
 		if(signed)
 			return
-		to_chat(H, "<span class='info'>I signed the paper, hopefully I won't regret this.</span>")
+		to_chat(H, span_info("I signed the paper, hopefully I won't regret this."))
 		signed = H
 
 /proc/pactofunity(var/mob/user, var/turf/C)
 	new /obj/item/pactofunity(C)
-	to_chat(user.mind, "<span class='notice'>The Pact of Unity. When a person willingly signs their name on this they become my pawn. When I rip up the paper their soul is good as dead.</span>")
+	to_chat(user.mind, span_notice("The Pact of Unity. When a person willingly signs their name on this they become my pawn. When I rip up the paper their soul is good as dead."))
 
 // TRANSMUTATION
 
@@ -698,7 +702,7 @@ GLOBAL_LIST_EMPTY(ritualslist)
 
 /proc/criminalstool(var/mob/user, var/turf/C)
 	new /obj/item/soap/cult(C)
-	to_chat(user.mind, "<span class='notice'>The Criminal's Tool. Could be useful for hiding tracks or getting rid of sigils.</span>")
+	to_chat(user.mind, span_notice("The Criminal's Tool. Could be useful for hiding tracks or getting rid of sigils."))
 
 /datum/ritual/propaganda
 	name = "Propaganda"
@@ -711,7 +715,7 @@ GLOBAL_LIST_EMPTY(ritualslist)
 
 /proc/propaganda(var/mob/user, var/turf/C)
 	new /obj/item/natural/worms/leech/propaganda(C)
-	to_chat(user.mind, "<span class='notice'>A leech to make their minds wrangled. They'll be in bad spirits.</span>")
+	to_chat(user.mind, span_notice("A leech to make their minds wrangled. They'll be in bad spirits."))
 
 /datum/ritual/falseidol
 	name = "False Idol"
@@ -804,7 +808,7 @@ GLOBAL_LIST_EMPTY(ritualslist)
 /proc/bunnylegs(var/mob/user, var/turf/C)
 	for(var/mob/living/carbon/human/H in C.contents)
 		ADD_TRAIT(H, TRAIT_ZJUMP, TRAIT_GENERIC)
-		to_chat(H.mind, "<span class='notice'>I feel like my legs have become stronger.</span>")
+		to_chat(H.mind, span_notice("I feel like my legs have become stronger."))
 		break
 
 /datum/ritual/darkeyes
@@ -826,7 +830,7 @@ GLOBAL_LIST_EMPTY(ritualslist)
 			QDEL_NULL(eyes)
 		eyes = new /obj/item/organ/eyes/night_vision/zombie
 		eyes.Insert(H)
-		to_chat(H.mind, "<span class='notice'>I no longer fear the dark.</span>")
+		to_chat(H.mind, span_notice("I no longer fear the dark."))
 		break
 
 /datum/ritual/nopain
@@ -843,7 +847,7 @@ GLOBAL_LIST_EMPTY(ritualslist)
 /proc/nopain(var/mob/user, var/turf/C)
 	for(var/mob/living/carbon/human/H in C.contents)
 		ADD_TRAIT(user, TRAIT_NOPAIN, TRAIT_GENERIC)
-		to_chat(H.mind, "<span class='notice'>I no longer feel pain, but it has come at a terrible cost.</span>")
+		to_chat(H.mind, span_notice("I no longer feel pain, but it has come at a terrible cost."))
 		H.change_stat("strength", -2)
 		H.change_stat("constitution", -2)
 		if(H.gender == FEMALE)
@@ -867,9 +871,9 @@ GLOBAL_LIST_EMPTY(ritualslist)
 /proc/fleshform(var/mob/user, var/turf/C)
 	for(var/mob/living/carbon/human/H in C.contents)
 		if(iszizocultist(H))
-			to_chat(H.mind, "<span class='danger'>\"I'm not letting my strongest follower become a mindless brute.\"</span>")
+			to_chat(H.mind, span_danger("\"I'm not letting my strongest follower become a mindless brute.\""))
 			return
-		to_chat(user.mind, "<span class='danger'>SOON I WILL BECOME A HIGHER FORM!!!</span>")
+		to_chat(user.mind, span_danger("SOON I WILL BECOME A HIGHER FORM!!!"))
 		sleep(5 SECONDS)
 		var/mob/living/trl = new /mob/living/simple_animal/hostile/retaliate/rogue/troll/blood(H)
 		trl.forceMove(H)
@@ -887,7 +891,7 @@ GLOBAL_LIST_EMPTY(ritualslist)
 	for(var/mob/living/carbon/human/H in C.contents)
 		if(H.stat == DEAD)
 			H.take_overall_damage(500)
-			C.visible_message("<span class='danger'>[H.real_name] is lifted up into the air and multiple scratches, incisions and deep cuts start etching themselves into their skin as all of their internal organs spill on the floor below!</span>")
+			C.visible_message(span_danger("[H.real_name] is lifted up into the air and multiple scratches, incisions and deep cuts start etching themselves into their skin as all of their internal organs spill on the floor below!"))
 
 			var/atom/drop_location = H.drop_location()
 			for(var/obj/item/organ/organ as anything in H.internal_organs)
@@ -924,7 +928,7 @@ GLOBAL_LIST_EMPTY(ritualslist)
 			VIRGIN.gib()
 		CM.cultascended = TRUE
 		addomen("ascend")
-		to_chat(user.mind, "<span class='userdanger'>I HAVE DONE IT! I HAVE REACHED A HIGHER FORM! SOON THERE WILL BE NO GODS. ONLY MASTERS!</span>")
+		to_chat(user.mind, span_danger("I HAVE DONE IT! I HAVE REACHED A HIGHER FORM! SOON THERE WILL BE NO GODS. ONLY MASTERS!"))
 		var/mob/living/trl = new /mob/living/simple_animal/hostile/retaliate/rogue/troll/blood/ascended(C)
 		trl.ckey = H.ckey
 		H.gib()
