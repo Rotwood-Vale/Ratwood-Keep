@@ -234,14 +234,14 @@
 
 /obj/effect/proc_holder/spell/invoked/projectile/spitfire
 	name = "Spitfire"
-	desc = "Shoot out a low-powered ball of fire that shines brightly on impact, potentially blinding a target."
+	desc = "Shoot out a series of low-powered balls of fire that shines brightly on impact, potentially blinding a target."
 	clothes_req = FALSE
 	range = 8
 	projectile_type = /obj/projectile/magic/aoe/fireball/rogue2
 	overlay_state = "fireball_multi"
 	sound = list('sound/magic/whiteflame.ogg')
 	active = FALSE
-	releasedrain = 30
+	releasedrain = 10
 	chargedrain = 1
 	chargetime = 10
 	charge_max = 8 SECONDS
@@ -251,7 +251,7 @@
 	charging_slowdown = 3
 	chargedloop = /datum/looping_sound/invokegen
 	associated_skill = /datum/skill/magic/arcane
-	cost = 3
+	cost = 1
 	xp_gain = TRUE
 
 /obj/projectile/magic/aoe/fireball/rogue2
@@ -262,11 +262,12 @@
 	exp_fire = 0
 	damage = 20
 	damage_type = BURN
+	proj_homing = TRUE
 	nodamage = FALSE
 	flag = "magic"
 	hitsound = 'sound/blank.ogg'
 	aoe_range = 0
-	speed = 2.5
+	speed = 1
 
 /obj/projectile/magic/aoe/fireball/rogue2/on_hit(target)
 	. = ..()
@@ -297,13 +298,13 @@
 	charging_slowdown = 3
 	chargedloop = /datum/looping_sound/invokegen
 	associated_skill = /datum/skill/magic/arcane
-	cost = 2
+	cost = 3
 	xp_gain = TRUE
 
 /obj/projectile/energy/rogue3
 	name = "Arcane Bolt"
 	icon_state = "arcane_barrage"
-	damage = 30
+	damage = 45	//Average bow user with 13 PER does 44ish damage. Arrows fly faster then arcane bolt.
 	damage_type = BRUTE
 	armor_penetration = 10
 	nodamage = FALSE
