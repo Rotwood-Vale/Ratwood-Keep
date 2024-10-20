@@ -227,7 +227,7 @@
 	else
 		user.mind.used_spell_points += item.cost
 		user.mind.AddSpell(new item)
-		addtimer(CALLBACK(user.mind, TYPE_PROC_REF(/datum/mind, check_learnspell), src), 2 SECONDS) //self remove if no points
+		addtimer(CALLBACK(user.mind, TYPE_PROC_REF(/datum/mind, check_learnspell)), 2 SECONDS) //self remove if no points
 		return TRUE
 
 //forcewall

@@ -160,6 +160,7 @@
 
 /obj/item/clothing/suit/roguetown/armor/plate/half/iron
 	name = "iron breastplate"
+	desc = "A basic cuirass of iron, protective and moderately durable."
 	icon_state = "ibreastplate"
 	max_integrity = 200
 	smeltresult = /obj/item/ingot/iron

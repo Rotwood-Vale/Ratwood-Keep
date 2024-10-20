@@ -155,7 +155,7 @@
 
 /datum/special_trait/arsonist
 	name = "Arsonist"
-	greet_text = span_notice("I like seeing things combust and burn. I have hidden around two firebobms")
+	greet_text = span_notice("I like seeing things combust and burn. I have hidden around two firebombs.")
 	weight = 100
 
 /datum/special_trait/arsonist/on_apply(mob/living/carbon/human/character, silent)
