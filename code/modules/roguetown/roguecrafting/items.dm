@@ -94,7 +94,7 @@
 				/obj/item/natural/stone = 1)
 
 /datum/crafting_recipe/roguetown/stoneknife
-	name = "stone knife"
+	name = "knife (stone) - (stick, stone; NONE)"
 	result = /obj/item/rogueweapon/huntingknife/stoneknife
 	reqs = list(/obj/item/grown/log/tree/stick = 1,
 				/obj/item/natural/stone = 1)
@@ -165,8 +165,6 @@
 	reqs = list(/obj/item/grown/log/tree/small = 1)
 	skillcraft = /datum/skill/craft/carpentry
 	craftdiff = 1
-
-/obj/item/rogueweapon/mace/woodclub/crafted
 
 /datum/crafting_recipe/roguetown/woodstaff
 	name = "staff (wooden, x3) - (log; NONE)"
@@ -276,7 +274,7 @@
 	req_table = TRUE
 */
 /datum/crafting_recipe/roguetown/poisonarrow_five //Arrows and bolts can be smithed in batches of five. Makes sense for them to be dipped in batches of five, too
-	name = "arrow (poisoned, iron-tipped, x5) - (iron arrow, 5 ooze of berry poison; NONE)"
+	name = "arrow (poisoned, iron-tipped, x5) - (5 iron arrows, 25 ooze of berry poison; NONE)"
 	result = list(
 				/obj/item/ammo_casing/caseless/rogue/arrow/poison,
 				/obj/item/ammo_casing/caseless/rogue/arrow/poison,
@@ -300,7 +298,7 @@
 	req_table = TRUE
 */
 /datum/crafting_recipe/roguetown/poisonarrow_five_stone
-	name = "poisoned stone arrow (x5)"
+	name = "arrow (poisoned, stone-tipped, x5) - (5 stone arrows, 25 ooze of berry poison; NONE)"
 	result = list(
 				/obj/item/ammo_casing/caseless/rogue/arrow/stone/poison,
 				/obj/item/ammo_casing/caseless/rogue/arrow/stone/poison,
@@ -316,7 +314,7 @@
 	req_table = TRUE
 
 /datum/crafting_recipe/roguetown/mortar
-	name = "stone mortar"
+	name = "mortar (stone) - (stone, stone-knife/knife; NONE"
 	result = /obj/item/reagent_containers/glass/mortar
 	reqs = list(/obj/item/natural/stone = 1)
 	tools = list(/obj/item/rogueweapon/huntingknife) // Intended to be either stone knife or steel hunting knife
@@ -324,19 +322,15 @@
 	subtype_reqs = TRUE //Unsure if needed for stone knife to work, feel free to remove this if not.
 
 /datum/crafting_recipe/roguetown/pestle
-	name = "stone pestle"
+	name = "pestle (stone) - (stone, stone-knife/knife; NONE"
 	result = /obj/item/pestle
 	reqs = list(/obj/item/natural/stone = 1)
 	tools = list(/obj/item/rogueweapon/huntingknife) // Intended to be either stone knife or steel hunting knife
 	craftdiff = 1
 	subtype_reqs = TRUE //Unsure if needed for stone knife to work, feel free to remove this if not.
 
-/obj/item/storage/roguebag/crafted
-	sellprice = 4
-
-
 /datum/crafting_recipe/roguetown/bait
-	name = "bait"
+	name = "bait (wheat) - (sack, 2 wheats; NONE)"
 	result = /obj/item/bait
 	reqs = list(/obj/item/storage/roguebag = 1,
 				/obj/item/reagent_containers/food/snacks/grown/wheat = 2)
@@ -344,7 +338,7 @@
 	subtype_reqs = TRUE
 
 /datum/crafting_recipe/roguetown/sbaita
-	name = "sweetbait (apple)"
+	name = "bait (apple sweet) - (sack, 2 apples; NONE)"
 	result = /obj/item/bait/sweet
 	reqs = list(/obj/item/storage/roguebag = 1,
 				/obj/item/reagent_containers/food/snacks/grown/apple = 2)
@@ -352,7 +346,7 @@
 	subtype_reqs = TRUE
 
 /datum/crafting_recipe/roguetown/sbait
-	name = "sweetbait (berry)"
+	name = "bait (berry sweet) - (sack, 2 berries; NONE)"
 	result = /obj/item/bait/sweet
 	reqs = list(/obj/item/storage/roguebag = 1,
 				/obj/item/reagent_containers/food/snacks/grown/berries/rogue = 2)
@@ -360,7 +354,7 @@
 	subtype_reqs = TRUE
 
 /datum/crafting_recipe/roguetown/bloodbait
-	name = "bloodbait"
+	name = "bait (blood/meat) - (sack, 2 meats; NONE)"
 	result = /obj/item/bait/bloody
 	reqs = list(/obj/item/storage/roguebag = 1,
 				/obj/item/reagent_containers/food/snacks/rogue/meat = 2)
@@ -368,34 +362,30 @@
 	subtype_reqs = TRUE
 
 /datum/crafting_recipe/roguetown/pipe
-	name = "wood pipe"
+	name = "pipe (wood pipe) - (stick; NONE)"
 	result = /obj/item/clothing/mask/cigarette/pipe/crafted
 	reqs = list(/obj/item/grown/log/tree/stick = 1)
 
-
-/obj/item/clothing/mask/cigarette/pipe/crafted
-	sellprice = 6
-
 /datum/crafting_recipe/roguetown/rod
-	name = "fishing rod"
+	name = "fishing rod (2 fibers, small log; NONE"
 	result = /obj/item/fishingrod/crafted
 	reqs = list(/obj/item/grown/log/tree/small = 1,
 		/obj/item/natural/fibers = 2)
 
-
 /obj/item/fishingrod/crafted
-	sellprice = 8
+	sellprice = 5
 
 /datum/crafting_recipe/roguetown/woodspade
-	name = "wood spade"
+	name = "spade (wooden hip mounted mini-shovel) - (stick, small log; NONE)"
 	result = /obj/item/rogueweapon/shovel/small
 	reqs = list(/obj/item/grown/log/tree/small = 1,
 			/obj/item/grown/log/tree/stick = 1)
+
 /obj/item/rogueweapon/shovel/small/crafted
-	sellprice = 5
+	sellprice = 3
 
 /datum/crafting_recipe/roguetown/book_crafting_kit
-	name = "book crafting kit"
+	name = "book crafting kit (cloth, 2 hides, needle to sew; TABLE, NONE"
 	result = /obj/item/book_crafting_kit
 	reqs = list(
 			/obj/item/natural/hide = 2,
@@ -404,13 +394,13 @@
 	req_table = TRUE
 
 /datum/crafting_recipe/roguetown/woodcross
-	name = "wooden amulet"
+	name = "amulet (wooden) - (2 fibers, stick; NONE"
 	result = /obj/item/clothing/neck/roguetown/psicross/wood
 	reqs = list(/obj/item/natural/fibers = 2,
 				/obj/item/grown/log/tree/stick = 2)
 
 /datum/crafting_recipe/roguetown/mantrap
-	name = "mantrap"
+	name = "mantrap (2 fibers, small log, iron; TABLE, NOVICE"
 	result = list(/obj/item/restraints/legcuffs/beartrap,
 				/obj/item/restraints/legcuffs/beartrap)
 	reqs = list(/obj/item/grown/log/tree/small = 1,
@@ -423,7 +413,7 @@
 	verbage = "puts together"
 
 /datum/crafting_recipe/roguetown/paperscroll
-	name = "scroll of parchment (x5)"
+	name = "scroll (x5) - (small log, 50 ooze of water, stone-knife/knife; DRYING-RACK, NOVICE"
 	result = list(/obj/item/paper/scroll,
 				  /obj/item/paper/scroll,
 				  /obj/item/paper/scroll,
@@ -436,7 +426,7 @@
 	craftdiff = 1
 
 /datum/crafting_recipe/roguetown/parchment
-	name = "paper parchment (x8)"
+	name = "parchment (paper, x8) - (small log, 30 ooze of water, stone-knife/knife; DRYING-RACK, NOVICE"
 	result = list(/obj/item/paper,
 				  /obj/item/paper,
 				  /obj/item/paper,
@@ -453,7 +443,7 @@
 
 
 /datum/crafting_recipe/roguetown/briarmask
-	name = "briarmask"
+	name = "briarmask (3 fibers, 4 sticks; druids/clerics of Dendor can make, APPRENTICE)"
 	result = /obj/item/clothing/head/roguetown/dendormask
 	reqs = list(/obj/item/grown/log/tree/stick = 4,
 				/obj/item/natural/fibers = 3)
