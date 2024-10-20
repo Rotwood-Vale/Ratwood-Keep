@@ -92,7 +92,7 @@
 				user.mind.add_sleep_experience(/datum/skill/misc/sewing, (user.STAINT) / 2) // Only failing a repair teaches us something
 				return
 			else
-				playsound(loc, 'sound/foley/sewflesh.ogg', 100, TRUE, -2)
+				playsound(loc, 'sound/foley/sewflesh.ogg', 50, TRUE, -2)
 				user.visible_message(span_info("[user] repairs [I]!"))
 				I.obj_integrity = min(I.obj_integrity + skill, I.max_integrity)
 		return
