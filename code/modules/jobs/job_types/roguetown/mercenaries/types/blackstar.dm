@@ -1,8 +1,8 @@
 /datum/advclass/blackstar
-	name = "Black Star Mercenary"
-	tutorial = "Once the Order of the Black Star, now riddled with the wounded, the veterans and the landless of the Vakran civil war. Take up the banner and fight again in the name of the Ten, or use the pretense of faith and zealotry to make ends meet by any means necessary."
+	name = "Forlorn Hope Mercenary"
+	tutorial = "The Order of the Forlorn Hope, a holy order founded in the name of Noc and the banishment of the rot. Now it is riddled with the wounded, the veterans and the landless of the Vakran civil war. Take up the banner and fight again in the name of the Ten, or use the pretense of faith and zealotry to make ends meet by any means necessary."
 	allowed_sexes = list(MALE, FEMALE)
-	allowed_races = list(/datum/species/lupian, /datum/species/vulpkanin, /datum/species/anthromorph)
+	allowed_races = list(/datum/species/lupian, /datum/species/vulpkanin, /datum/species/tabaxi, /datum/species/anthromorph)
 	outfit = /datum/outfit/job/roguetown/mercenary/blackstar
 	maximum_possible_slots = 3
 	min_pq = 2
