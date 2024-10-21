@@ -51,8 +51,9 @@
 	tastes = list("wheat" = 1)
 	can_distill = TRUE
 	distill_reagent = /datum/reagent/consumable/ethanol/beer
-	distill_amt = 24
+	distill_amt = 48
 	grind_results = list(/datum/reagent/floure = 10)
+	mill_result = /obj/item/reagent_containers/powder/flour
 
 /obj/item/reagent_containers/food/snacks/grown/oat
 	seed = /obj/item/seeds/wheat/oat
@@ -67,8 +68,9 @@
 	tastes = list("oat" = 1)
 	can_distill = TRUE
 	distill_reagent = /datum/reagent/consumable/ethanol/ale
-	distill_amt = 12
+	distill_amt = 24
 	grind_results = list(/datum/reagent/floure = 10)
+	mill_result = /obj/item/reagent_containers/powder/flour
 
 /obj/item/reagent_containers/food/snacks/grown/rice
 	seed = /obj/item/seeds/rice
@@ -253,7 +255,6 @@
 	bitesize = 3
 	foodtype = VEGETABLES
 	rotprocess = 15 MINUTES
-	become_rot_type = /obj/item/reagent_containers/food/snacks/grown/sauerkraut
 	list_reagents = list(/datum/reagent/consumable/nutriment = 2)
 
 /obj/item/reagent_containers/food/snacks/grown/pear
@@ -317,7 +318,7 @@
 	grind_results = list(/datum/reagent/consumable/tomatojuice = 6)
 	slices_num = 5
 	slice_batch = TRUE
-	slice_path = /obj/item/reagent_containers/food/snacks/rogue/tomatoslice
+	//slice_path = /obj/item/reagent_containers/food/snacks/rogue/tomatoslice
 
 /obj/item/reagent_containers/food/snacks/grown/onion
 	name = "onion"
@@ -331,7 +332,7 @@
 	grind_results = list(/datum/reagent/consumable/tearjuice = 6)
 	slices_num = 5
 	slice_batch = TRUE
-	slice_path = /obj/item/reagent_containers/food/snacks/rogue/onionslice
+	//slice_path = /obj/item/reagent_containers/food/snacks/rogue/onionslice
 
 /obj/item/reagent_containers/food/snacks/grown/garlic
 	name = "garlic"
@@ -414,6 +415,7 @@
 	tastes = list("sugar" = 1)
 	list_reagents = list(/datum/reagent/consumable/nutriment = 2, /datum/reagent/consumable/sugar = 3)
 	grind_results = list(/datum/reagent/consumable/sugar = 6)
+	mill_result = /obj/item/reagent_containers/powder/sugar
 	rotprocess = 15 MINUTES
 
 /obj/item/reagent_containers/food/snacks/grown/bellpepper
