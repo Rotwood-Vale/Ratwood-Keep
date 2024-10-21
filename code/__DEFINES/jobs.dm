@@ -354,7 +354,7 @@
 	/datum/job/roguetown/pilgrim,\
 	/datum/job/roguetown/adventurer,\
 	/datum/job/roguetown/mercenary,\
-	/datum/job/roguetown/seelie
+	/datum/job/roguetown/mercenary/seelie
 
 #define GARRISON_ROLES \
 	/datum/job/roguetown/bogguardsman,\
