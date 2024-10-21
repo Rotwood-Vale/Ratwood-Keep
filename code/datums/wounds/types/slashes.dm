@@ -61,8 +61,8 @@
 	/// Organs we can disembowel associated with chance to disembowel
 	var/static/list/affected_organs = list(
 		ORGAN_SLOT_STOMACH = 100,
-		ORGAN_SLOT_LIVER = 50,
 		ORGAN_SLOT_STOMACH_AID = 100 // It's called GUTTED for a reason.
+		ORGAN_SLOT_LIVER = 100,
 	)
 
 /datum/wound/slash/disembowel/can_stack_with(datum/wound/other)
