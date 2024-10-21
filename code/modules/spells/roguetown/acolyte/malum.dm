@@ -256,7 +256,7 @@ proc/apply_damage_if_covered(mob/living/carbon/target, list/body_zones, obj/item
 			tithe += sacrifice.sellprice
 		qdel(sacrifice)
 	}
-	buyprice = tithe * divine_tax
+	buyprice = tithe / divine_tax
 	for (var/list/entry in anvil_recipe_prices)
 	{
 		var/obj/item/tentative_item = entry[1] // The recipe
