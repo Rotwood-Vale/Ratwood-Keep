@@ -60,7 +60,7 @@
 /datum/skill/combat/maces
 	name = "Maces"
 	dreams = list(
-		"...maces maces maces, they're all around, striking to slow, unleashing a hefty delayed smash to fully penetrate all that would rather stand in your path, stunning them briefly, smashing them when they're down to be unable to get up, what an amusing sight."
+		"...maces maces maces, they're all around, striking to slow, unleashing a hefty, delayed smash to fully punch though its protection, stunning them briefly and staggering them after, making their retreats and advances more than futile, smashing them when they're down, making them too meek to stand on their legs, what an amusing sight." 
 	)
 
 /datum/skill/combat/axes
