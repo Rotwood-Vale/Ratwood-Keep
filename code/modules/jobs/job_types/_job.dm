@@ -30,6 +30,9 @@
 	//How many players have this job
 	var/current_positions = 0
 
+	//Whether this job clears a slot when you get a rename prompt.
+	var/antag_job = FALSE
+
 	//Supervisors, who this person answers to directly
 	var/supervisors = ""
 
@@ -96,6 +99,7 @@
 
 	var/show_in_credits = TRUE
 
+	var/announce_latejoin = TRUE
 	var/give_bank_account = FALSE
 
 	var/can_random = TRUE
@@ -125,7 +129,7 @@
 	var/immune_to_genderswap = FALSE
 
 /*
-	How this works, its CTAG_DEFINE = amount_to_attempt_to_role 
+	How this works, its CTAG_DEFINE = amount_to_attempt_to_role
 	EX: advclass_cat_rolls = list(CTAG_PILGRIM = 5, CTAG_ADVENTURER = 5)
 	You will still need to contact the subsystem though
 */
@@ -140,7 +144,13 @@
 /datum/job/proc/special_job_check(mob/dead/new_player/player)
 	return TRUE
 
+/client/proc/job_greet(var/datum/job/greeting_job)
+	if(mob.job == greeting_job.title)
+		greeting_job.greet(mob)
+
 /datum/job/proc/greet(mob/player)
+	if(player?.mind.assigned_role != title)
+		return
 	if(!job_greet_text)
 		return
 	to_chat(player, span_notice("You are the <b>[title]</b>"))
@@ -193,19 +203,19 @@
 
 	if(show_in_credits)
 		SScrediticons.processing += H
-	
+
 	if(cmode_music)
 		H.cmode_music = cmode_music
 
 /datum/job/proc/add_spells(mob/living/H)
-	if(spells && H.mind)	
+	if(spells && H.mind)
 		for(var/S in spells)
 			if(H.mind.has_spell(S))
 				continue
 			H.mind.AddSpell(new S)
 
 /datum/job/proc/remove_spells(mob/living/H)
-	if(spells && H.mind)	
+	if(spells && H.mind)
 		for(var/S in spells)
 			if(!H.mind.has_spell(S))
 				continue

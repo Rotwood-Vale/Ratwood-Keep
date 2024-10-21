@@ -128,6 +128,7 @@ GLOBAL_LIST_INIT(peasant_positions, list(
 	"Town Seelie",
 	"Adventurer",
 	"Pilgrim",
+	"Bandit",
 ))
 
 GLOBAL_LIST_INIT(mercenary_positions, list(

@@ -6,7 +6,8 @@
 	if(!stat)
 		if(job)
 			var/datum/job/j = SSjob.GetJob(job)
-			j.current_positions--
+			if(!j.antag_job)
+				j.current_positions--
 		mob_timers["mirrortime"] = world.time
 		var/begin_time = world.time
 		var/new_name = input(src, "What should your [input] name be?", "RATWOOD")
