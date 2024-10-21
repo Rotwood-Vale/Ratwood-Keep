@@ -1828,10 +1828,6 @@
 /obj/effect/spawner/lootdrop/roguetown/sewers,
 /turf/open/floor/rogue/blocks/green,
 /area/rogue/under/town/sewer)
-"bPa" = (
-/obj/structure/flora/roguetree/burnt,
-/turf/open/floor/rogue/dirt/road,
-/area/rogue/outdoors/rtfield)
 "bPh" = (
 /obj/structure/roguemachine/steward,
 /turf/open/floor/rogue/hexstone,
@@ -4306,6 +4302,12 @@
 /obj/structure/roguetent,
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/indoors/town)
+"enF" = (
+/obj/structure/fluff/signage{
+	name = "AZURE PEAK - NORTH"
+	},
+/turf/open/floor/rogue/dirt/road,
+/area/rogue/outdoors/rtfield)
 "eon" = (
 /obj/structure/chair/wood/rogue/fancy{
 	dir = 1;
@@ -16274,6 +16276,7 @@
 /area/rogue/indoors/town/manor)
 "qjQ" = (
 /obj/structure/fluff/railing/border,
+/obj/machinery/light/rogue/torchholder/c,
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors/town/tavern)
 "qko" = (
@@ -52630,7 +52633,7 @@ jIk
 omo
 jIk
 jIk
-wDa
+qal
 jIk
 jIk
 dPz
@@ -53424,7 +53427,7 @@ fsP
 dPz
 eUz
 mIn
-jMT
+ylN
 ylN
 ylN
 dPz
@@ -54996,7 +54999,7 @@ fsP
 ylN
 ylN
 ylN
-fsP
+nPK
 fsP
 fsP
 jIk
@@ -55476,7 +55479,7 @@ jIk
 omo
 jIk
 nPK
-fsP
+enF
 ylN
 ylN
 ylN
@@ -56410,7 +56413,7 @@ jIk
 ylN
 ylN
 ylN
-bPa
+fsP
 fsP
 fsP
 jIk
@@ -56566,7 +56569,7 @@ wDa
 jIk
 ylN
 ylN
-fsP
+nPK
 fsP
 lyQ
 huO
@@ -57348,7 +57351,7 @@ jIk
 wDa
 wDa
 jIk
-oYo
+wDa
 ylN
 ylN
 fsP
@@ -57662,7 +57665,7 @@ omo
 wDa
 wDa
 wDa
-jIk
+fsP
 ylN
 ylN
 ylN
@@ -57819,7 +57822,7 @@ jIk
 jIk
 jIk
 wDa
-pHC
+fsP
 fsP
 ylN
 ylN
@@ -57974,9 +57977,9 @@ ymg
 ymg
 jIk
 jIk
-jIk
+pHC
 wDa
-wDa
+nPK
 fsP
 ylN
 ylN
@@ -58133,7 +58136,7 @@ jIk
 jIk
 wDa
 wDa
-oYo
+fsP
 fsP
 ylN
 ylN
@@ -58290,7 +58293,7 @@ jIk
 jIk
 wDa
 wDa
-jIk
+fsP
 ylN
 ylN
 ylN
@@ -58604,7 +58607,7 @@ fsP
 jIk
 jIk
 wDa
-oYo
+wDa
 ylN
 ylN
 ylN
@@ -59232,7 +59235,7 @@ ymg
 fsP
 fsP
 fsP
-omo
+jIk
 ylN
 ylN
 ylN
@@ -59863,7 +59866,7 @@ ylN
 ylN
 ylN
 ylN
-omo
+jIk
 biI
 biI
 biI
@@ -60019,7 +60022,7 @@ ymg
 fsP
 ylN
 ylN
-fsP
+nPK
 biI
 biI
 biI
@@ -63618,7 +63621,7 @@ cxb
 cxb
 iPW
 rhJ
-fZj
+pJn
 pJn
 mKL
 mKL
