@@ -40,11 +40,11 @@
 	H.change_stat("speed", 2)
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 	H.adjust_blindness(-3)
-	var/weapons = list("Spear & Crossbow","Sword & Buckler")
+	var/weapons = list("Spear","Sword & Buckler")
 	var/weapon_choice = input("Choose your weapon.", "TAKE UP ARMS") as anything in weapons
 	H.set_blindness(0)
 	switch(weapon_choice)
-		if("Spear") //Deserter watchman. Maybe should be shield and spear? spear and crossbow is kinda clumsy
+		if("Spear") //Deserter watchman. Maybe should be shield and spear? plenty of shields at the bandit hideout though.
 			r_hand = /obj/item/rogueweapon/spear
 			head = /obj/item/clothing/head/roguetown/helmet/kettle
 		if("Sword & Buckler") //Mercenary on the wrong side of the law
