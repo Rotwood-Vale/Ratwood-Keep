@@ -116,10 +116,16 @@
 			pants = /obj/item/clothing/under/roguetown/trou/leather
 			shoes = /obj/item/clothing/shoes/roguetown/armor/leather
 			belt = /obj/item/storage/belt/rogue/leather
-			beltr = /obj/item/rogueweapon/stoneaxe/woodcut
+			beltr = /obj/item/rogueweapon/mace
 			beltl = /obj/item/storage/belt/rogue/pouch/coins/poor
 			backr = /obj/item/rogueweapon/shield/wood
-			backl = /obj/item/storage/backpack/rogue/backpack
+			backl = /obj/item/storage/backpack/rogue/satchel	
+			if(H.gender == MALE)
+				shirt = /obj/item/clothing/suit/roguetown/shirt/shortshirt
+
+			else
+				shirt = /obj/item/clothing/suit/roguetown/shirt/dress/gen/random
+
 			backpack_contents = list(/obj/item/rogueweapon/huntingknife =1, /obj/item/clothing/neck/roguetown/chaincoif/iron, /obj/item/rogueore/coal = 1, /obj/item/rogueweapon/tongs=1, /obj/item/rogueore/iron=1, /obj/item/rogueweapon/hammer)
 			H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
@@ -133,6 +139,7 @@
 			H.mind.adjust_skillrank(/datum/skill/combat/maces, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/magic/holy, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/craft/blacksmithing, 2, TRUE) //Traded a few weapon proficiencies from war cleric for smithing.
+			H.mind.adjust_skillrank(/datum/skill/craft/crafting, 2, TRUE) //crafting so they can make the forge without 2%ing it
 			H.mind.adjust_skillrank(/datum/skill/craft/traps, 1, TRUE)
 			H.AddSpell(new /obj/effect/proc_holder/spell/invoked/malum_flame_rogue) // weaker astra fire spell. mostly for lighting things.
 			H.change_stat("intelligence", 2) // Changed to follow balance people's advice.
