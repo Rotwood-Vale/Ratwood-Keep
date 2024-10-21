@@ -6,10 +6,10 @@
 #define CLERIC_T4 4
 
 #define CLERIC_REQ_0 0
-#define CLERIC_REQ_1 100
-#define CLERIC_REQ_2 250
-#define CLERIC_REQ_3 500
-#define CLERIC_REQ_4 750
+#define CLERIC_REQ_1 75
+#define CLERIC_REQ_2 150
+#define CLERIC_REQ_3 350
+#define CLERIC_REQ_4 500
 
 // Cleric Holder Datums
 
@@ -33,7 +33,7 @@
 	/// How much progression is gained per process call
 	var/passive_progression_gain = 0
 	/// How much devotion is gained per prayer cycle
-	var/prayer_effectiveness = 2
+	var/prayer_effectiveness = 3
 	/// Spells we have granted thus far
 	var/list/granted_spells
 

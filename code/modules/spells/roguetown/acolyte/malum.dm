@@ -14,12 +14,12 @@
 	invocation_type = "shout"
 	associated_skill = /datum/skill/magic/holy
 	antimagic_allowed = FALSE
-	charge_max = 1 MINUTES
+	charge_max = 3 MINUTES
 	chargetime = 2 SECONDS
 	miracle = TRUE
 	charging_slowdown = 3
 	chargedloop = /datum/looping_sound/invokegen
-	devotion_cost = 20
+	devotion_cost = 30
 	
 /obj/effect/proc_holder/spell/invoked/heatmetal
 	name = "Heat Metal"
@@ -221,7 +221,7 @@ proc/apply_damage_if_covered(mob/living/carbon/target, list/body_zones, obj/item
 
 /obj/effect/proc_holder/spell/invoked/vigorousexchange/cast(list/targets, mob/living/carbon/user = usr)
 	. = ..()
-	var/const/starminatoregen = 250 // How much stamina should the spell give back to the caster.
+	var/const/starminatoregen = 500 // How much stamina should the spell give back to the caster.
 	var/mob/target = targets[1]
 	if (!iscarbon(target)) 
 		return
