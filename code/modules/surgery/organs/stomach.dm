@@ -125,3 +125,20 @@
 
 /obj/item/organ/stomach/ethereal/proc/adjust_charge(amount)
 	crystal_charge = CLAMP(crystal_charge + amount, ETHEREAL_CHARGE_NONE, ETHEREAL_CHARGE_FULL)
+
+/obj/item/organ/guts // relatively unimportant, just fluff :)
+	name = "guts"
+	icon_state = "guts"
+	w_class = WEIGHT_CLASS_SMALL
+	zone = BODY_ZONE_PRECISE_STOMACH
+	slot = ORGAN_SLOT_STOMACH_AID
+	attack_verb = list("gored", "squished", "slapped", "digested")
+	desc = ""
+
+	healing_factor = STANDARD_ORGAN_HEALING
+	decay_factor = STANDARD_ORGAN_DECAY
+
+	low_threshold_passed = "<span class='info'>My guts flashes with pain before subsiding.</span>"
+	high_threshold_passed = "<span class='warning'>My guts flares up with constant pain.</span>"
+	high_threshold_cleared = "<span class='info'>The pain in my guts die down for now.</span>"
+	low_threshold_cleared = "<span class='info'>The last bouts of pain in my guts have died out.</span>"

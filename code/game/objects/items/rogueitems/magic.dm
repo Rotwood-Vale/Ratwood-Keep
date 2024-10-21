@@ -17,13 +17,20 @@
 	var/mob/current_owner
 	var/last_scry
 	w_class = WEIGHT_CLASS_SMALL
+	var/cooldown = 30 SECONDS	
 
+/obj/item/scrying/eye
+	name = "accursed eye"
+	desc = "It is pulsating."
+	icon = 'icons/roguetown/items/misc.dmi'
+	icon_state ="scryeye"
+	cooldown = 5 MINUTES
 
 /obj/item/scrying/attack_self(mob/living/user)
 	. = ..()
 	if(!user.mind)
 		return
-	if(world.time < last_scry + 30 SECONDS)
+	if(world.time < last_scry + cooldown)
 		to_chat(user, span_warning("I look into the ball but only see inky smoke. Maybe I should wait."))
 		return
 	var/input = stripped_input(user, "Who are you looking for?", "Scrying Orb")
@@ -31,7 +38,7 @@
 		return
 	if(!user.key)
 		return
-	if(world.time < last_scry + 30 SECONDS)
+	if(world.time < last_scry + cooldown)
 		to_chat(user, span_warning("I look into the ball but only see inky smoke. Maybe I should wait."))
 		return
 	if(!user.mind || !user.mind.do_i_know(name=input))
