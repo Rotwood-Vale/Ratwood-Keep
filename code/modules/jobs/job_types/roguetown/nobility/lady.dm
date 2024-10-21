@@ -3,7 +3,7 @@
 	flag = LADY
 	department_flag = NOBLEMEN
 	faction = "Station"
-	total_positions = 1
+	total_positions = 0
 	spawn_positions = 1
 
 	allowed_sexes = list(FEMALE)
