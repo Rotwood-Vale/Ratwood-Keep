@@ -14413,10 +14413,6 @@
 	icon_state = "weird1"
 	},
 /area/rogue/indoors/shelter/rtfield)
-"nUK" = (
-/obj/structure/flora/newtree,
-/turf/open/transparent/openspace,
-/area/rogue/outdoors/bog)
 "nUS" = (
 /obj/structure/fluff/railing/wood{
 	dir = 1;
@@ -315636,7 +315632,7 @@ odi
 odi
 sYx
 sYx
-nUK
+kWT
 odi
 sYx
 sYx
@@ -316846,7 +316842,7 @@ odi
 sYx
 sYx
 sYx
-nUK
+kWT
 kWT
 odi
 odi
