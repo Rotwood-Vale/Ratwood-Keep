@@ -1,12 +1,11 @@
 /datum/job/roguetown/prince
-	title = "Prince"
-	f_title = "Princess"
+	title = "Heir"
+	f_title = "Heiress"
 	flag = PRINCE
 	department_flag = YOUNGFOLK
 	faction = "Station"
 	total_positions = 2
 	spawn_positions = 2
-	f_title = "Princess"
 	allowed_races = RACES_TOLERATED_UP 
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_ages = list(AGE_ADULT)
