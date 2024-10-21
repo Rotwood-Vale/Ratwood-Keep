@@ -111,9 +111,6 @@
 	if(stringamt < 1)
 		to_chat(user, span_warning("The needle has no thread left!"))
 		return
-	if(!get_location_accessible(patient, check_zone(doctor.zone_selected)))
-		to_chat(doctor, span_warning("Something in the way."))
-		return FALSE
 	var/list/sewable
 	var/obj/item/bodypart/affecting
 	if(iscarbon(patient))
