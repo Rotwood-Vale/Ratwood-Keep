@@ -448,7 +448,7 @@
 
 /datum/crafting_recipe/roguetown/structure/nicebed
 	name = "nice bed"
-	result = /obj/structure/bed/rogue
+	result = /obj/structure/bed/rogue/inn
 	reqs = list(/obj/item/grown/log/tree/small = 2,
 				/obj/item/natural/cloth = 1)
 	tools = list(/obj/item/needle)
