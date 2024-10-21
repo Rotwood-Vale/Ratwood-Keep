@@ -120,13 +120,15 @@
 			beltl = /obj/item/storage/belt/rogue/pouch/coins/poor
 			backr = /obj/item/rogueweapon/shield/wood
 			backl = /obj/item/storage/backpack/rogue/satchel	
+			head = /obj/item/clothing/neck/roguetown/chaincoif/iron
+		mouth = /obj/item/rogueweapon/huntingknife
 			if(H.gender == MALE)
 				shirt = /obj/item/clothing/suit/roguetown/shirt/shortshirt
 
 			else
 				shirt = /obj/item/clothing/suit/roguetown/shirt/dress/gen/random
 
-			backpack_contents = list(/obj/item/rogueweapon/huntingknife =1, /obj/item/clothing/neck/roguetown/chaincoif/iron, /obj/item/rogueore/coal = 1, /obj/item/rogueweapon/tongs=1, /obj/item/rogueore/iron=1, /obj/item/rogueweapon/hammer)
+			backpack_contents = list(/obj/item/rogueore/coal = 1, /obj/item/rogueweapon/tongs=1, /obj/item/rogueore/iron=1, /obj/item/rogueweapon/hammer)
 			H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/swimming, 2, TRUE)
