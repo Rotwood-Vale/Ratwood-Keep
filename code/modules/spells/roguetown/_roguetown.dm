@@ -69,7 +69,7 @@
 
 /obj/effect/proc_holder/spell/invoked/projectile/proc/ready_projectile(obj/projectile/P, atom/target, mob/user, iteration)//WIP FOR VARIATION
 	if(projectiles_per_fire > 1)
-		sleep(2)
+		sleep(5)
 	return
 
 /obj/effect/proc_holder/spell/invoked/projectile/cast(list/targets, mob/living/user)

@@ -173,7 +173,7 @@
 	charging_slowdown = 3
 	chargedloop = /datum/looping_sound/invokegen
 	associated_skill = /datum/skill/magic/arcane
-	cost = 4
+	cost = 3
 	xp_gain = TRUE
 
 /obj/projectile/magic/aoe/fireball/rogue
@@ -220,7 +220,7 @@
 	no_early_release = TRUE
 	movement_interrupt = TRUE
 	chargedloop = /datum/looping_sound/invokegen
-	cost = 10
+	cost = 7	//Only court mage andheartfelt get this. No point in it being obscenely expensive, especially with fire stack nerfs
 	xp_gain = TRUE
 
 /obj/projectile/magic/aoe/fireball/rogue/great
@@ -241,33 +241,34 @@
 	overlay_state = "fireball_multi"
 	sound = list('sound/magic/whiteflame.ogg')
 	active = FALSE
-	releasedrain = 10
+	releasedrain = 30
 	chargedrain = 1
 	chargetime = 10
-	charge_max = 8 SECONDS
+	charge_max = 10 SECONDS
 	warnie = "spellwarning"
+	projectiles_per_fire = 3
 	no_early_release = TRUE
 	movement_interrupt = FALSE
 	charging_slowdown = 3
 	chargedloop = /datum/looping_sound/invokegen
 	associated_skill = /datum/skill/magic/arcane
-	cost = 1
+	cost = 3
 	xp_gain = TRUE
 
 /obj/projectile/magic/aoe/fireball/rogue2
-	name = "fireball"
+	name = "spitfire"
 	exp_heavy = 0
 	exp_light = 0
 	exp_flash = 1
 	exp_fire = 0
-	damage = 20
+	damage = 15	//no armor really has burn protection. So assuming all three connect, 45 burn damage- average damage of fireball with firestacks nerfed. Thats a big 'if' however. Notably, won't cause wounds,
 	damage_type = BURN
-	proj_homing = TRUE
+	homing = TRUE
 	nodamage = FALSE
 	flag = "magic"
 	hitsound = 'sound/blank.ogg'
 	aoe_range = 0
-	speed = 1
+	speed = 3
 
 /obj/projectile/magic/aoe/fireball/rogue2/on_hit(target)
 	. = ..()
@@ -291,7 +292,7 @@
 	releasedrain = 20
 	chargedrain = 1
 	chargetime = 7
-	charge_max = 5 SECONDS
+	charge_max = 8 SECONDS
 	warnie = "spellwarning"
 	no_early_release = TRUE
 	movement_interrupt = FALSE
@@ -815,7 +816,7 @@
 
 /obj/effect/proc_holder/spell/invoked/blade_burst
 	name = "Blade Burst"
-	desc = "Summon a storm of arcyne force in an area that damages through armor, wounding anything in that location after a delay."
+	desc = "Summon a arcyne blades from the floor that damages through armor, wounding the legs anything in that location after a delay."
 	cost = 2
 	xp_gain = TRUE
 	releasedrain = 30
@@ -855,12 +856,13 @@
 	new /obj/effect/temp_visual/blade_burst(T)
 	playsound(T,'sound/magic/charged.ogg', 80, TRUE)
 	for(var/mob/living/L in T.contents)
-		def_zone = pick(BODY_ZONE_L_LEG, BODY_ZONE_R_LEG)
+		var/def_zone = pick(BODY_ZONE_L_LEG, BODY_ZONE_R_LEG)
 		var/obj/item/bodypart/BP = L.get_bodypart(def_zone)
 		L.apply_damage(damage, BRUTE, def_zone)
+		BP.add_wound(/datum/wound/fracture)
 		L.adjustBruteLoss(damage)
 		playsound(T, "genslash", 80, TRUE)
-		to_chat(L, "<span class='userdanger'>I'm cut by arcyne force!</span>")
+		to_chat(L, "<span class='userdanger'>I'm cut by blades rising from the floor!</span>")
 	return TRUE
 
 /obj/effect/proc_holder/spell/targeted/touch/nondetection
@@ -1002,7 +1004,7 @@
 	desc = "Cause a target to be magically hastened."
 	cost = 2
 	xp_gain = TRUE
-	releasedrain = 25
+	releasedrain = 50
 	chargedrain = 1
 	chargetime = 2 SECONDS
 	charge_max = 2.5 MINUTES
