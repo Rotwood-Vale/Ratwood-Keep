@@ -121,7 +121,7 @@
 			backr = /obj/item/rogueweapon/shield/wood
 			backl = /obj/item/storage/backpack/rogue/satchel	
 			head = /obj/item/clothing/neck/roguetown/chaincoif/iron
-		mouth = /obj/item/rogueweapon/huntingknife
+			mouth = /obj/item/rogueweapon/huntingknife
 			if(H.gender == MALE)
 				shirt = /obj/item/clothing/suit/roguetown/shirt/shortshirt
 
