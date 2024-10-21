@@ -112,10 +112,12 @@
 	var/obj/item/grabbing/bite/bite = get_item_by_slot(SLOT_MOUTH)
 	if(!bite || !get_location_accessible(src, BODY_ZONE_PRECISE_MOUTH, grabs = TRUE))
 		for(var/mob/living/carbon/human in view(1, src))
+			if(human == src) //prevent self biting
+				continue
 			if((human.mob_biotypes & MOB_UNDEAD) || ("undead" in human.faction) || HAS_TRAIT(human, TRAIT_ZOMBIE_IMMUNE))
 				continue
 			human.onbite(src)
-	else if(istype(bite))
+	else if(istype(bite)) // continue biting if already started
 		bite.bitelimb(src)
 
 /mob/living/carbon/human/proc/try_do_deadite_idle()
