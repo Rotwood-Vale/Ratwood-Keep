@@ -167,7 +167,7 @@ GLOBAL_LIST_EMPTY(ritualslist)
 /mob/living/carbon/human/proc/praise()
 	set name = "Praise the Godhead!"
 	set category = "ZIZO"
-	audible_message("\\The [src] praises " + span_bold("Zizo") + "!")
+	audible_message("[src] praises " + span_bold("Zizo") + "!")
 	playsound(src.loc, 'sound/vo/cult/praise.ogg', 45, 1)
 
 /mob/living/carbon/human/proc/communicate()
