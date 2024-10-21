@@ -61,6 +61,13 @@
 //		to_chat(user, span_notice("I close [src]."))
 //	update_icon()
 
+/datum/crafting_recipe/fermenting_barrel
+	name = "Wooden Barrel"
+	result = /obj/structure/fermenting_barrel
+	reqs = list(/obj/item/stack/sheet/mineral/wood = 30)
+	time = 50
+	category = CAT_NONE
+
 /obj/structure/fermenting_barrel/update_icon()
 	if(open)
 		icon_state = "barrel_open"

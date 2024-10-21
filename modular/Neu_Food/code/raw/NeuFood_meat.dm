@@ -153,4 +153,3 @@
 /obj/item/reagent_containers/food/snacks/fish
 	chopping_sound = TRUE
 
-
