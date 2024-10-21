@@ -73,7 +73,7 @@
 /datum/migrant_wave/bandit
 	name = "Bandit Raid"
 	downgrade_wave = /datum/migrant_wave/bandit_down_one
-	weight = 16
+	weight = 8
 	spawn_landmark = "Bandit"
 	roles = list(
 		/datum/migrant_role/bandit = 4,
