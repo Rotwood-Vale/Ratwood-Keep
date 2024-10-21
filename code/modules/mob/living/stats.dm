@@ -76,7 +76,7 @@
 				change_stat("perception", -1)
 				change_stat("constitution", -2)
 				change_stat("intelligence", 3)
-                change_stat("fortune", 1)
+				change_stat("fortune", 1)
 		if(HAS_TRAIT(src, TRAIT_LEPROSY))
 			change_stat("strength", -5)
 			change_stat("speed", -5)
