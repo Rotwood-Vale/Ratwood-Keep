@@ -214,12 +214,14 @@
 		return
 
 /datum/status_effect/buff/blessed
-	id = "blessed"
-	alert_type = /atom/movable/screen/alert/status_effect/buff/blessed
-	if(has_status_effect(/datum/status_effect/debuff/death_weaken))
-		remove_status_effect(/datum/status_effect/debuff/death_weaken)
-	effectedstats = list("fortune" = 1)
-	duration = 20 MINUTES
+    id = "blessed"
+    alert_type = /atom/movable/screen/alert/status_effect/buff/blessed
+
+/datum/status_effect/buff/blessed/apply_effect(target)
+    if (target.has_status_effect(/datum/status_effect/debuff/death_weaken))
+        target.remove_status_effect(/datum/status_effect/debuff/death_weaken)
+    target.effectstats = list("fortune" = 1)
+    target.duration = 20 MINUTES
 
 /atom/movable/screen/alert/status_effect/buff/blessed
 	name = "Blessed"
