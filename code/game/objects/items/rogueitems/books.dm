@@ -218,15 +218,32 @@
     alert_type = /atom/movable/screen/alert/status_effect/buff/blessed
 
 /datum/status_effect/buff/blessed/apply_effect(target)
+    ..()
     if (target.has_status_effect(/datum/status_effect/debuff/death_weaken))
         target.remove_status_effect(/datum/status_effect/debuff/death_weaken)
-    target.effectstats = list("fortune" = 1)
-    target.duration = 20 MINUTES
+    target.add_stat("fortune", 1)
+    target.add_status_effect("blessed_duration", 20 * 60) // 20 minutes in seconds
+
+/mob/living/proc/has_status_effect(effect_type)
+    return (effect_type in status_effects)
+
+/mob/living/proc/remove_status_effect(effect_type)
+    del status_effects[effect_type]
+
+/mob/living/proc/add_stat(stat_name, value)
+    if (!isnull(stats[stat_name]))
+        stats[stat_name] += value
+    else
+        stats[stat_name] = value
+
+/mob/living/proc/add_status_effect(effect_name, duration)
+    status_effects[effect_name] = duration
 
 /atom/movable/screen/alert/status_effect/buff/blessed
-	name = "Blessed"
-	desc = ""
-	icon_state = "buff"
+    name = "Blessed"
+    desc = ""
+    icon_state = "buff"
+
 
 
 /obj/item/book/rogue/law
