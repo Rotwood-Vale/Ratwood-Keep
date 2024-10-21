@@ -5,7 +5,7 @@
 /* craftdif of 0 = NONE */
 
 /datum/crafting_recipe/roguetown/woodcross
-	name = "amulet (wooden) - (2 fibers, stick; NONE"
+	name = "amulet (wooden) - (2 fibers, stick; NONE)"
 	result = /obj/item/clothing/neck/roguetown/psicross/wood
 	reqs = list(/obj/item/natural/fibers = 2,
 				/obj/item/grown/log/tree/stick = 2)
@@ -124,7 +124,7 @@
 	sellprice = 1
 
 /datum/crafting_recipe/roguetown/rod
-	name = "fishing rod (2 fibers, small log; NONE"
+	name = "fishing rod (2 fibers, small log; NONE)"
 	result = /obj/item/fishingrod/crafted
 	reqs = list(/obj/item/grown/log/tree/small = 1,
 		/obj/item/natural/fibers = 2)
@@ -138,7 +138,7 @@
 	reqs = list(/obj/item/natural/stone = 2)
 
 /datum/crafting_recipe/roguetown/pestle
-	name = "pestle (stone) - (stone, stone-knife/knife; NONE"
+	name = "pestle (stone) - (stone, stone-knife/knife; NONE)"
 	result = /obj/item/pestle
 	reqs = list(/obj/item/natural/stone = 1)
 	tools = list(/obj/item/rogueweapon/huntingknife) // Intended to be either stone knife or steel hunting knife
@@ -231,7 +231,7 @@
 /* craftdif of 1 = NOVICE */
 
 /datum/crafting_recipe/roguetown/mantrap
-	name = "mantrap (2 fibers, small log, iron; TABLE, NOVICE"
+	name = "mantrap (2 fibers, small log, iron; TABLE, NOVICE)"
 	result = list(/obj/item/restraints/legcuffs/beartrap,
 				/obj/item/restraints/legcuffs/beartrap)
 	reqs = list(/obj/item/grown/log/tree/small = 1,
@@ -244,7 +244,7 @@
 	verbage = "puts together"
 
 /datum/crafting_recipe/roguetown/mortar
-	name = "mortar (stone) - (stone, stone-knife/knife; NOVICE"
+	name = "mortar (stone) - (stone, stone-knife/knife; NOVICE)"
 	result = /obj/item/reagent_containers/glass/mortar
 	reqs = list(/obj/item/natural/stone = 1)
 	tools = list(/obj/item/rogueweapon/huntingknife) // Intended to be either stone knife or steel hunting knife
@@ -268,7 +268,7 @@
 	craftdiff = 1
 
 /datum/crafting_recipe/roguetown/paperscroll
-	name = "scroll (x5) - (small log, 50 ooze of water, stone-knife/knife; DRYING-RACK, NOVICE"
+	name = "scroll (x5) - (small log, 50 ooze of water, stone-knife/knife; DRYING-RACK, NOVICE)"
 	result = list(/obj/item/paper/scroll,
 				  /obj/item/paper/scroll,
 				  /obj/item/paper/scroll,
@@ -380,25 +380,6 @@
 
 //Too much clutter from arrows/bolts lines alone, so, they get their own category to be sorted by.
 
-/datum/crafting_recipe/roguetown/stonearrow
-	name = "arrow (stone) - (stick, stone; TABLE, NONE)"
-	result = /obj/item/ammo_casing/caseless/rogue/arrow/stone
-	reqs = list(/obj/item/grown/log/tree/stick = 1,
-				/obj/item/natural/stone = 1)
-	req_table = TRUE
-
-/datum/crafting_recipe/roguetown/stonearrow_five
-	name = "arrow (stone, x5) - (5 sticks, 5 stones; TABLE, NONE)"
-	result = list(
-				/obj/item/ammo_casing/caseless/rogue/arrow/stone,
-				/obj/item/ammo_casing/caseless/rogue/arrow/stone,
-				/obj/item/ammo_casing/caseless/rogue/arrow/stone,
-				/obj/item/ammo_casing/caseless/rogue/arrow/stone,
-				/obj/item/ammo_casing/caseless/rogue/arrow/stone
-				)
-	reqs = list(/obj/item/grown/log/tree/stick = 5,
-				/obj/item/natural/stone = 5)
-	req_table = TRUE
 
 /datum/crafting_recipe/roguetown/poisonarrow
 	name = "arrow (poisoned, iron-tip) - (iron arrow, 5 ooze of berry poison; TABLE, NONE)"
@@ -409,24 +390,6 @@
 				)
 	req_table = TRUE
 
-/datum/crafting_recipe/roguetown/poisonarrow_stone
-	name = "arrow (poisoned, stone-tip) - (stone arrow, 5 ooze of berry poison; TABLE, NONE)"
-	result = /obj/item/ammo_casing/caseless/rogue/arrow/stone/poison
-	reqs = list(
-				/obj/item/ammo_casing/caseless/rogue/arrow/stone = 1,
-				/datum/reagent/berrypoison = 5
-				)
-	req_table = TRUE
-
-/*
-/datum/crafting_recipe/roguetown/poisonbolt //Coded, but commented out pending balance discussion.
-	name = "poisoned bolt"
-	result = /obj/item/ammo_casing/caseless/rogue/bolt/poison
-	reqs = list(/obj/item/ammo_casing/caseless/rogue/bolt = 1,
-				/datum/reagent/berrypoison = 5)
-
-	req_table = TRUE
-*/
 /datum/crafting_recipe/roguetown/poisonarrow_five //Arrows and bolts can be smithed in batches of five. Makes sense for them to be dipped in batches of five, too
 	name = "arrow (poisoned, iron-tipped, x5) - (5 iron arrows, 25 ooze of berry poison; TABLE, NONE)"
 	result = list(
@@ -442,15 +405,36 @@
 				)
 
 	req_table = TRUE
-/*
-/datum/crafting_recipe/roguetown/poisonbolt_five //Coded, but commented out pending balance discussion.
-	name = "poisoned bolts (x5)"
-	result = list(/obj/item/ammo_casing/caseless/rogue/bolt/poison = 5)
-	reqs = list(/obj/item/ammo_casing/caseless/rogue/bolt = 5,
-				/datum/reagent/berrypoison = 25)
 
+/datum/crafting_recipe/roguetown/stonearrow
+	name = "arrow (stone) - (stick, stone; TABLE, NONE)"
+	result = /obj/item/ammo_casing/caseless/rogue/arrow/stone
+	reqs = list(/obj/item/grown/log/tree/stick = 1,
+				/obj/item/natural/stone = 1)
 	req_table = TRUE
-*/
+
+/datum/crafting_recipe/roguetown/poisonarrow_stone
+	name = "arrow (poisoned, stone-tip) - (stone arrow, 5 ooze of berry poison; TABLE, NONE)"
+	result = /obj/item/ammo_casing/caseless/rogue/arrow/stone/poison
+	reqs = list(
+				/obj/item/ammo_casing/caseless/rogue/arrow/stone = 1,
+				/datum/reagent/berrypoison = 5
+				)
+	req_table = TRUE
+
+/datum/crafting_recipe/roguetown/stonearrow_five
+	name = "arrow (stone, x5) - (5 sticks, 5 stones; TABLE, NONE)"
+	result = list(
+				/obj/item/ammo_casing/caseless/rogue/arrow/stone,
+				/obj/item/ammo_casing/caseless/rogue/arrow/stone,
+				/obj/item/ammo_casing/caseless/rogue/arrow/stone,
+				/obj/item/ammo_casing/caseless/rogue/arrow/stone,
+				/obj/item/ammo_casing/caseless/rogue/arrow/stone
+				)
+	reqs = list(/obj/item/grown/log/tree/stick = 5,
+				/obj/item/natural/stone = 5)
+	req_table = TRUE
+
 /datum/crafting_recipe/roguetown/poisonarrow_five_stone
 	name = "arrow (poisoned, stone-tipped, x5) - (5 stone arrows, 25 ooze of berry poison; TABLE, NONE)"
 	result = list(
@@ -467,3 +451,24 @@
 
 	req_table = TRUE
 
+// The currently forbidden item.
+
+/*
+/datum/crafting_recipe/roguetown/poisonbolt //Coded, but commented out pending balance discussion.
+	name = "poisoned bolt"
+	result = /obj/item/ammo_casing/caseless/rogue/bolt/poison
+	reqs = list(/obj/item/ammo_casing/caseless/rogue/bolt = 1,
+				/datum/reagent/berrypoison = 5)
+
+	req_table = TRUE
+*/
+
+/*
+/datum/crafting_recipe/roguetown/poisonbolt_five //Coded, but commented out pending balance discussion.
+	name = "poisoned bolts (x5)"
+	result = list(/obj/item/ammo_casing/caseless/rogue/bolt/poison = 5)
+	reqs = list(/obj/item/ammo_casing/caseless/rogue/bolt = 5,
+				/datum/reagent/berrypoison = 25)
+
+	req_table = TRUE
+*/
