@@ -156,3 +156,4 @@
 	req_bar =  /obj/item/ingot/steel
 	additional_items = list(/obj/item/ingot/gold, /obj/item/ingot/steel, /obj/item/roguegem/blue, /obj/item/roguegem/violet, /obj/item/clothing/neck/roguetown/psicross)
 	created_item = /obj/item/clothing/ring/dragon_ring
+	craftdiff = 6

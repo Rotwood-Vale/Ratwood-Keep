@@ -59,8 +59,9 @@
 			if(drugrade_flags & DRUGRADE_MONEYB)
 				amt = recent_payments * 0.50
 			recent_payments = 0
-			send_ooc_note("<b>Income from PURITY:</b> [amt]", job = "Nightmaster")
+			send_ooc_note("<b>Income from PURITY:</b> [amt]", job = "Bathmaster")
 			secret_budget += amt
+			last_payout = world.time
 
 /obj/structure/roguemachine/drugmachine/Topic(href, href_list)
 	. = ..()
@@ -72,7 +73,7 @@
 		var/mob/M = usr
 		var/O = text2path(href_list["buy"])
 		if(held_items[O]["PRICE"])
-			var/tax_amt = round(SStreasury.tax_value * held_items[O]["PRICE"])
+			var/tax_amt = FLOOR(SStreasury.tax_value * held_items[O]["PRICE"], 1)
 			var/full_price = held_items[O]["PRICE"] + tax_amt
 			if(drugrade_flags & DRUGRADE_NOTAX)
 				full_price = held_items[O]["PRICE"]
@@ -177,7 +178,7 @@
 
 
 	var/mob/living/carbon/human/H = user
-	if(H.job == "Nightmaster")
+	if(H.job == "Bathmaster")
 		if(canread)
 			contents = "<a href='?src=[REF(src)];secrets=1'>Secrets</a>"
 		else
@@ -186,7 +187,7 @@
 	contents += "</center>"
 
 	for(var/I in held_items)
-		var/price = held_items[I]["PRICE"] + (SStreasury.tax_value * held_items[I]["PRICE"])
+		var/price = FLOOR(held_items[I]["PRICE"] + (SStreasury.tax_value * held_items[I]["PRICE"]), 1)
 		var/namer = held_items[I]["NAME"]
 		if(!price)
 			price = "0"

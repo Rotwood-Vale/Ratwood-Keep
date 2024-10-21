@@ -2034,7 +2034,9 @@
 //	RegisterSignal(src, COMSIG_MOVABLE_PRE_MOVE, PROC_REF(stop_looking))
 
 /mob/living/proc/stop_looking()
-//	animate(client, pixel_x = 0, pixel_y = 0, 2, easing = SINE_EASING)
+	if(!client)
+		return
+	animate(client, pixel_x = 0, pixel_y = 0, 2, easing = SINE_EASING)
 	if(client)
 		client.pixel_x = 0
 		client.pixel_y = 0
