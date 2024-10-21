@@ -6,17 +6,14 @@
 
 /datum/crafting_recipe/roguetown/leather/pouch
 	name = "leather pouch"
-	result = list(/obj/item/storage/belt/rogue/pouch,
-				/obj/item/storage/belt/rogue/pouch)
-	reqs = list(/obj/item/natural/hide = 1,
-				/obj/item/natural/fibers = 1)
+	result = list(/obj/item/storage/belt/rogue/pouch)
+	reqs = list(/obj/item/natural/hide = 1)
 	sellprice = 6
 
 /datum/crafting_recipe/roguetown/leather/satchel
 	name = "leather satchel"
-	result = list(/obj/item/storage/backpack/rogue/satchel,
-			/obj/item/storage/backpack/rogue/satchel)
-	reqs = list(/obj/item/natural/hide = 2,
+	result = list(/obj/item/storage/backpack/rogue/satchel)
+	reqs = list(/obj/item/natural/hide = 1,
 				/obj/item/natural/fibers = 1)
 	sellprice = 13
 
@@ -43,8 +40,7 @@
 
 /datum/crafting_recipe/roguetown/leather/gloves
 	name = "leather gloves"
-	result = list(/obj/item/clothing/gloves/roguetown/leather,
-	/obj/item/clothing/gloves/roguetown/leather)
+	result = list(/obj/item/clothing/gloves/roguetown/leather)
 	reqs = list(/obj/item/natural/hide = 1)
 	sellprice = 6
 
@@ -56,8 +52,7 @@
 
 /datum/crafting_recipe/roguetown/leather/bracers
 	name = "leather bracers"
-	result = list(/obj/item/clothing/wrists/roguetown/bracers/leather,
-			/obj/item/clothing/wrists/roguetown/bracers/leather)
+	result = list(/obj/item/clothing/wrists/roguetown/bracers/leather)
 	reqs = list(/obj/item/natural/hide = 1)
 	sellprice = 6
 
@@ -69,9 +64,7 @@
 
 /datum/crafting_recipe/roguetown/leather/shoes
 	name = "leather shoes"
-	result = list(/obj/item/clothing/shoes/roguetown/simpleshoes,
-				/obj/item/clothing/shoes/roguetown/simpleshoes,
-				/obj/item/clothing/shoes/roguetown/simpleshoes)
+	result = list(/obj/item/clothing/shoes/roguetown/simpleshoes)
 	reqs = list(/obj/item/natural/hide = 1)
 	sellprice = 4
 

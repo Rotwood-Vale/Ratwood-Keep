@@ -1,5 +1,5 @@
 /datum/anvil_recipe/armor
-	appro_skill = /datum/skill/craft/armorsmithing
+	appro_skill = /datum/skill/craft/blacksmithing
 	craftdiff = 1
 
 /datum/anvil_recipe/armor/ichainmail

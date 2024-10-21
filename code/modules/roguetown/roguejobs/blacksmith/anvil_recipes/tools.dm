@@ -14,7 +14,7 @@
 	i_type = "Tools"
 
 /datum/anvil_recipe/tools/pan
-	name = "Frypan"
+	name = "Skillet"
 	req_bar = /obj/item/ingot/iron
 	created_item = /obj/item/cooking/pan
 	i_type = "Tools"
