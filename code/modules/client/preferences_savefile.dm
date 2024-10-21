@@ -121,13 +121,13 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 		if(S["species_is_always_random"] == 1)
 			randomise[RANDOM_SPECIES] = TRUE
 		if(S["backbag"])
-			S["backbag"]			>> backpack
+			S["backbag"]	>> backpack
 		if(S["hair_style_name"])
 			S["hair_style_name"]	>> hairstyle
 		if(S["facial_style_name"])
 			S["facial_style_name"]	>> facial_hairstyle
 	if(current_version < 30)
-		S["voice_color"]			>> voice_color
+		S["voice_color"]		>> voice_color
 
 /datum/preferences/proc/load_path(ckey,filename="preferences.sav")
 	if(!ckey)
@@ -167,7 +167,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	S["triumphs"]			>> triumphs
 	S["musicvol"]			>> musicvol
 	S["anonymize"]			>> anonymize
-	S["crt"]				>> crt
+	S["crt"]			>> crt
 	S["mastervol"]			>> mastervol
 	S["lastclass"]			>> lastclass
 
@@ -205,36 +205,36 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 		update_preferences(needs_update, S)		//needs_update = savefile_version if we need an update (positive integer)
 
 	//Sanitize
-	asaycolor			= sanitize_ooccolor(sanitize_hexcolor(asaycolor, 6, 1, initial(asaycolor)))
-	ooccolor			= sanitize_ooccolor(sanitize_hexcolor(ooccolor, 6, 1, initial(ooccolor)))
-	lastchangelog		= sanitize_text(lastchangelog, initial(lastchangelog))
-	UI_style			= sanitize_inlist(UI_style, GLOB.available_ui_styles, GLOB.available_ui_styles[1])
-	hotkeys				= sanitize_integer(hotkeys, 0, 1, initial(hotkeys))
-	chat_on_map			= sanitize_integer(chat_on_map, 0, 1, initial(chat_on_map))
-	showrolls			= sanitize_integer(showrolls, 0, 1, initial(showrolls))
-	max_chat_length		= sanitize_integer(max_chat_length, 1, CHAT_MESSAGE_MAX_LENGTH, initial(max_chat_length))
+	asaycolor		= sanitize_ooccolor(sanitize_hexcolor(asaycolor, 6, 1, initial(asaycolor)))
+	ooccolor		= sanitize_ooccolor(sanitize_hexcolor(ooccolor, 6, 1, initial(ooccolor)))
+	lastchangelog	= sanitize_text(lastchangelog, initial(lastchangelog))
+	UI_style		= sanitize_inlist(UI_style, GLOB.available_ui_styles, GLOB.available_ui_styles[1])
+	hotkeys			= sanitize_integer(hotkeys, 0, 1, initial(hotkeys))
+	chat_on_map		= sanitize_integer(chat_on_map, 0, 1, initial(chat_on_map))
+	showrolls		= sanitize_integer(showrolls, 0, 1, initial(showrolls))
+	max_chat_length = sanitize_integer(max_chat_length, 1, CHAT_MESSAGE_MAX_LENGTH, initial(max_chat_length))
 	see_chat_non_mob	= sanitize_integer(see_chat_non_mob, 0, 1, initial(see_chat_non_mob))
-	tgui_fancy			= sanitize_integer(tgui_fancy, 0, 1, initial(tgui_fancy))
-	tgui_lock			= sanitize_integer(tgui_lock, 0, 1, initial(tgui_lock))
-	buttons_locked		= sanitize_integer(buttons_locked, 0, 1, initial(buttons_locked))
-	windowflashing		= sanitize_integer(windowflashing, 0, 1, initial(windowflashing))
-	default_slot		= sanitize_integer(default_slot, 1, max_save_slots, initial(default_slot))
-	toggles				= sanitize_integer(toggles, 0, INFINITY, initial(toggles))
-	clientfps			= sanitize_integer(clientfps, 0, 1000, 0)
-	parallax			= sanitize_integer(parallax, PARALLAX_INSANE, PARALLAX_DISABLE, null)
+	tgui_fancy		= sanitize_integer(tgui_fancy, 0, 1, initial(tgui_fancy))
+	tgui_lock		= sanitize_integer(tgui_lock, 0, 1, initial(tgui_lock))
+	buttons_locked	= sanitize_integer(buttons_locked, 0, 1, initial(buttons_locked))
+	windowflashing	= sanitize_integer(windowflashing, 0, 1, initial(windowflashing))
+	default_slot	= sanitize_integer(default_slot, 1, max_save_slots, initial(default_slot))
+	toggles			= sanitize_integer(toggles, 0, INFINITY, initial(toggles))
+	clientfps		= sanitize_integer(clientfps, 0, 1000, 0)
+	parallax		= sanitize_integer(parallax, PARALLAX_INSANE, PARALLAX_DISABLE, null)
 	ambientocclusion	= sanitize_integer(ambientocclusion, 0, 1, initial(ambientocclusion))
 	auto_fit_viewport	= sanitize_integer(auto_fit_viewport, 0, 1, initial(auto_fit_viewport))
-	widescreenpref 		= sanitize_integer(widescreenpref, 0, 1, initial(widescreenpref))
-	ghost_form			= sanitize_inlist(ghost_form, GLOB.ghost_forms, initial(ghost_form))
-	ghost_orbit 		= sanitize_inlist(ghost_orbit, GLOB.ghost_orbits, initial(ghost_orbit))
-	ghost_accs			= sanitize_inlist(ghost_accs, GLOB.ghost_accs_options, GHOST_ACCS_DEFAULT_OPTION)
-	ghost_others		= sanitize_inlist(ghost_others, GLOB.ghost_others_options, GHOST_OTHERS_DEFAULT_OPTION)
-	menuoptions			= SANITIZE_LIST(menuoptions)
-	be_special			= SANITIZE_LIST(be_special)
-	pda_style			= sanitize_inlist(pda_style, GLOB.pda_styles, initial(pda_style))
-	pda_color			= sanitize_hexcolor(pda_color, 6, 1, initial(pda_color))
-	key_bindings 		= sanitize_islist(key_bindings, list())
-	defiant				= sanitize_integer(defiant, FALSE, TRUE, TRUE)
+	widescreenpref  = sanitize_integer(widescreenpref, 0, 1, initial(widescreenpref))
+	ghost_form		= sanitize_inlist(ghost_form, GLOB.ghost_forms, initial(ghost_form))
+	ghost_orbit 	= sanitize_inlist(ghost_orbit, GLOB.ghost_orbits, initial(ghost_orbit))
+	ghost_accs		= sanitize_inlist(ghost_accs, GLOB.ghost_accs_options, GHOST_ACCS_DEFAULT_OPTION)
+	ghost_others	= sanitize_inlist(ghost_others, GLOB.ghost_others_options, GHOST_OTHERS_DEFAULT_OPTION)
+	menuoptions		= SANITIZE_LIST(menuoptions)
+	be_special		= SANITIZE_LIST(be_special)
+	pda_style		= sanitize_inlist(pda_style, GLOB.pda_styles, initial(pda_style))
+	pda_color		= sanitize_hexcolor(pda_color, 6, 1, initial(pda_color))
+	key_bindings 	= sanitize_islist(key_bindings, list())
+	defiant	= sanitize_integer(defiant, FALSE, TRUE, TRUE)
 
 	//ROGUETOWN
 	parallax = PARALLAX_INSANE
@@ -344,22 +344,22 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	if (!voice_pitch)
 		voice_pitch = 1
 	S["skin_tone"]			>> skin_tone
-	S["hairstyle_name"]		>> hairstyle
+	S["hairstyle_name"]	>> hairstyle
 	S["facial_style_name"]	>> facial_hairstyle
 	S["underwear"]			>> underwear
 	S["underwear_color"]	>> underwear_color
 	S["undershirt"]			>> undershirt
 	S["accessory"]			>> accessory
-	S["detail"]				>> detail
+	S["detail"]			>> detail
 	S["socks"]				>> socks
 	S["backpack"]			>> backpack
 	S["jumpsuit_style"]		>> jumpsuit_style
 	S["uplink_loc"]			>> uplink_spawn_loc
-	S["randomise"]			>> randomise
-	S["feature_mcolor"]		>> features["mcolor"]
-	S["feature_mcolor2"]	>> features["mcolor2"]
-	S["feature_mcolor3"]	>> features["mcolor3"]
-	S["feature_ethcolor"]	>> features["ethcolor"]
+	S["randomise"]	>>  randomise
+	S["feature_mcolor"]					>> features["mcolor"]
+	S["feature_mcolor2"]					>> features["mcolor2"]
+	S["feature_mcolor3"]					>> features["mcolor3"]
+	S["feature_ethcolor"]					>> features["ethcolor"]
 
 /datum/preferences/proc/load_character(slot)
 	if(!path)
@@ -423,7 +423,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	//Quirks
 	S["all_quirks"] >> all_quirks
 
-	S["update_mutant_colors"]	>> update_mutant_colors
+	S["update_mutant_colors"]			>> update_mutant_colors
 	update_mutant_colors = sanitize_integer(update_mutant_colors, FALSE, TRUE, initial(update_mutant_colors))
 
 	S["headshot_link"]			>> headshot_link
@@ -465,12 +465,12 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 
 	socks			= sanitize_inlist(socks, GLOB.socks_list)
 	age				= sanitize_inlist(age, pref_species.possible_ages)
-	underwear_color	= sanitize_hexcolor(underwear_color, 3, 0)
+	underwear_color			= sanitize_hexcolor(underwear_color, 3, 0)
 	eye_color		= sanitize_hexcolor(eye_color, 3, 0)
 	voice_color		= voice_color
 	voice_pitch		= voice_pitch
 	skin_tone		= skin_tone
-	backpack		= sanitize_inlist(backpack, GLOB.backpacklist, initial(backpack))
+	backpack			= sanitize_inlist(backpack, GLOB.backpacklist, initial(backpack))
 	jumpsuit_style	= sanitize_inlist(jumpsuit_style, GLOB.jumpsuitlist, initial(jumpsuit_style))
 	uplink_spawn_loc = sanitize_inlist(uplink_spawn_loc, GLOB.uplink_spawn_loc_list, initial(uplink_spawn_loc))
 	features["mcolor"]	= sanitize_hexcolor(features["mcolor"], 6, 0)
