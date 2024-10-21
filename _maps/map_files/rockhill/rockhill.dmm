@@ -924,7 +924,8 @@
 /area/rogue/outdoors/town)
 "aSZ" = (
 /obj/structure/mineral_door/wood/deadbolt{
-	lockid = "squareshop"
+	lockid = "seamster";
+	keylock = 1
 	},
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town)
@@ -1643,6 +1644,7 @@
 	pixel_x = 0;
 	pixel_y = -32
 	},
+/obj/effect/landmark/start/seamster,
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town)
 "bFU" = (
@@ -8964,11 +8966,12 @@
 /obj/structure/table/wood{
 	icon_state = "tablewood1"
 	},
-/obj/item/clothing/suit/roguetown/shirt/shortshirt/merc{
-	pixel_x = -2;
-	pixel_y = 5
+/obj/item/clothing/suit/roguetown/shirt/undershirt/random{
+	pixel_y = 6;
+	pixel_x = -3
 	},
-/obj/item/clothing/suit/roguetown/shirt/shortshirt/merc{
+/obj/item/clothing/suit/roguetown/shirt/undershirt/random{
+	pixel_y = 2;
 	pixel_x = 4
 	},
 /turf/open/floor/rogue/wood,
@@ -15670,7 +15673,10 @@
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/indoors/shelter/mountains)
 "oSr" = (
-/obj/structure/mineral_door/wood/towner/seamstress,
+/obj/structure/mineral_door/wood{
+	locked = 1;
+	lockid = "seamster"
+	},
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town)
 "oSy" = (
@@ -16292,9 +16298,7 @@
 /turf/closed/wall/mineral/rogue/decostone/cand,
 /area/rogue/indoors/shelter/mountains)
 "pzi" = (
-/obj/machinery/light/rogue/wallfire{
-	pixel_y = 32
-	},
+/obj/machinery/light/rogue/oven/south,
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town)
 "pzl" = (
@@ -22049,6 +22053,13 @@
 "veg" = (
 /turf/closed/wall/mineral/rogue/wooddark/window,
 /area/rogue/outdoors/mountains)
+"vej" = (
+/obj/structure/mineral_door/wood{
+	locked = 1;
+	lockid = "seamster"
+	},
+/turf/open/floor/rogue/wood,
+/area/rogue/indoors/town/dwarfin)
 "ven" = (
 /obj/structure/glowshroom,
 /turf/open/floor/rogue/naturalstone,
@@ -289464,7 +289475,7 @@ mvp
 mvp
 mvp
 mvp
-svc
+vej
 wbg
 wbg
 wbg
