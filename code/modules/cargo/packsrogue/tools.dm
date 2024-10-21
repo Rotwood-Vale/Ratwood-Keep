@@ -123,6 +123,16 @@
 	cost = 10
 	contains = list(/obj/item/reagent_containers/glass/bottle/waterskin)
 
+/datum/supply_pack/rogue/tools/bedroll
+	name = "Bedroll"
+	cost = 20
+	contains = list(/obj/item/bedroll)
+
+/datum/supply_pack/rogue/tools/hoe
+	name = "Hoe"
+	cost = 30
+	contains = list(/obj/item/rogueweapon/hoe)
+
 /datum/supply_pack/rogue/tools/soapps
 	name = "Soap"
 	cost = 10
