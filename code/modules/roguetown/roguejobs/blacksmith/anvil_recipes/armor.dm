@@ -1,5 +1,5 @@
 /datum/anvil_recipe/armor
-	appro_skill = /datum/skill/craft/armorsmithing
+	appro_skill = /datum/skill/craft/blacksmithing
 	craftdiff = 1
 
 /datum/anvil_recipe/armor/ichainmail
@@ -43,6 +43,12 @@
 	name = "Mask"
 	req_bar = /obj/item/ingot/iron
 	created_item = /obj/item/clothing/mask/rogue/facemask
+	i_type = "Armor"
+
+/datum/anvil_recipe/armor/platemask/hound
+	name = "Mask (Hound)"
+	req_bar = /obj/item/ingot/iron
+	created_item = /obj/item/clothing/mask/rogue/facemask/hound
 	i_type = "Armor"
 
 /datum/anvil_recipe/armor/skullcap
@@ -258,7 +264,7 @@
 /datum/anvil_recipe/armor/plateboot
 	name = "Plated Boots"
 	req_bar = /obj/item/ingot/steel
-	created_item = /obj/item/clothing/shoes/roguetown/boots/armor
+	created_item = /obj/item/clothing/shoes/roguetown/armor/steel
 	i_type = "Armor"
 
 /datum/anvil_recipe/armor/platemask/steel
@@ -303,4 +309,27 @@
 	additional_items = list(/obj/item/ingot/steel)
 	created_item = /obj/item/clothing/head/roguetown/helmet/dendorhelm
 	craftdiff = 2
+	i_type = "Armor"
+
+/datum/anvil_recipe/armor/belt_steel
+	name = "Steel Belt"
+	req_bar = /obj/item/ingot/steel
+	created_item = /obj/item/storage/belt/rogue/leather/hand
+	i_type = "Armor"
+
+// --------- SILVER -----------
+
+/datum/anvil_recipe/armor/belt_silver
+	name = "Silver Belt"
+	req_bar = /obj/item/ingot/silver
+	created_item = /obj/item/storage/belt/rogue/leather/plaquesilver
+	i_type = "Armor"
+
+
+// --------- GOLD -----------
+
+/datum/anvil_recipe/armor/belt_gold
+	name = "Gold Belt"
+	req_bar = /obj/item/ingot/gold
+	created_item = /obj/item/storage/belt/rogue/leather/plaquegold
 	i_type = "Armor"

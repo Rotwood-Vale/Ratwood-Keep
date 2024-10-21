@@ -24,8 +24,7 @@
 	pants = /obj/item/clothing/under/roguetown/tights/random
 	shoes = /obj/item/clothing/shoes/roguetown/shortboots
 	belt = /obj/item/storage/belt/rogue/leather/cloth/lady
-	beltl = /obj/item/needle
-	beltr = /obj/item/rogueweapon/huntingknife/idagger
+	beltr = /obj/item/rogueweapon/huntingknife/scissors
 	backl = /obj/item/storage/backpack/rogue/satchel
 	backpack_contents = list(/obj/item/natural/cloth = 2, /obj/item/natural/bundle/fibers/full = 1, /obj/item/needle = 1)
 	H.change_stat("intelligence", 2)

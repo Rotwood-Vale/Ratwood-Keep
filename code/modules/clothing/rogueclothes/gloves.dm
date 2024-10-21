@@ -9,6 +9,9 @@
 	sleevetype = "shirt"
 	max_heat_protection_temperature = 361
 	w_class = WEIGHT_CLASS_SMALL
+	sewrepair = TRUE
+	fiber_salvage = FALSE
+	salvage_amount = 1
 
 /obj/item/clothing/gloves/roguetown/leather
 	name = "leather gloves"
@@ -21,8 +24,7 @@
 	blade_dulling = DULLING_BASHCHOP
 	break_sound = 'sound/foley/cloth_rip.ogg'
 	drop_sound = 'sound/foley/dropsound/cloth_drop.ogg'
-	anvilrepair = null
-	sewrepair = TRUE
+	salvage_result = /obj/item/natural/hide
 
 /obj/item/clothing/gloves/roguetown/leather/black
 	icon_state = "gloves_black"
@@ -36,8 +38,6 @@
 	blade_dulling = DULLING_BASHCHOP
 	break_sound = 'sound/foley/cloth_rip.ogg'
 	drop_sound = 'sound/foley/dropsound/cloth_drop.ogg'
-	anvilrepair = null
-	sewrepair = TRUE
 
 
 /obj/item/clothing/gloves/roguetown/angle
@@ -52,8 +52,7 @@
 	blade_dulling = DULLING_BASHCHOP
 	break_sound = 'sound/foley/cloth_rip.ogg'
 	drop_sound = 'sound/foley/dropsound/cloth_drop.ogg'
-	anvilrepair = null
-	sewrepair = TRUE
+	salvage_result = /obj/item/natural/fur
 
 /obj/item/clothing/gloves/roguetown/chain
 	name = "chain gauntlets"
@@ -67,13 +66,14 @@
 	blade_dulling = DULLING_BASHCHOP
 	break_sound = 'sound/foley/breaksound.ogg'
 	drop_sound = 'sound/foley/dropsound/chain_drop.ogg'
-	anvilrepair = /datum/skill/craft/armorsmithing
+	anvilrepair = /datum/skill/craft/blacksmithing
 	smeltresult = /obj/item/ingot/steel
 	resistance_flags = FIRE_PROOF
+	sewrepair = FALSE
 
 /obj/item/clothing/gloves/roguetown/chain/iron
 	icon_state = "icgloves"
-	anvilrepair = /datum/skill/craft/armorsmithing
+	anvilrepair = /datum/skill/craft/blacksmithing
 	smeltresult = /obj/item/ingot/iron
 
 //rogtodo sprites for this
@@ -89,9 +89,10 @@
 	blade_dulling = DULLING_BASH
 	break_sound = 'sound/foley/breaksound.ogg'
 	drop_sound = 'sound/foley/dropsound/armor_drop.ogg'
-	anvilrepair = /datum/skill/craft/armorsmithing
+	anvilrepair = /datum/skill/craft/blacksmithing
 	smeltresult = /obj/item/ingot/steel
 	clothing_flags = CANT_SLEEP_IN
+	sewrepair = FALSE
 
 /obj/item/clothing/gloves/roguetown/grenzelgloves
 	name = "grenzelhoft gloves"
@@ -106,5 +107,3 @@
 	blade_dulling = DULLING_BASHCHOP
 	break_sound = 'sound/foley/cloth_rip.ogg'
 	drop_sound = 'sound/foley/dropsound/cloth_drop.ogg'
-	anvilrepair = null
-	sewrepair = TRUE

@@ -112,3 +112,6 @@
 
 #define ALL_AGES_LIST list(AGE_ADULT, AGE_MIDDLEAGED, AGE_OLD)
 
+//Voice ranges
+#define MIN_VOICE_PITCH		0.8
+#define MAX_VOICE_PITCH		1.35

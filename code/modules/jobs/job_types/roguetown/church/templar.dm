@@ -16,6 +16,8 @@
 	display_order = JDO_TEMPLAR
 	give_bank_account = TRUE
 
+	cmode_music = 'sound/music/combat_clergy.ogg'
+
 /datum/outfit/job/roguetown/templar
 	allowed_patrons = ALL_CLERIC_PATRONS
 
@@ -48,7 +50,7 @@
 	armor = /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk
 	shirt = /obj/item/clothing/suit/roguetown/armor/gambeson
 	pants = /obj/item/clothing/under/roguetown/chainlegs
-	shoes = /obj/item/clothing/shoes/roguetown/boots
+	shoes = /obj/item/clothing/shoes/roguetown/armor
 	backl = /obj/item/storage/backpack/rogue/satchel
 	backpack_contents = list(/obj/item/roguekey/church = 1)
 	backr = /obj/item/rogueweapon/shield/tower/metal

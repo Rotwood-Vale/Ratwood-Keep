@@ -9,7 +9,7 @@
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_ages = list(AGE_ADULT, AGE_MIDDLEAGED)
 	allowed_patrons = ALL_NON_INHUMEN_PATRONS
-	tutorial = "A Knight with expert training; Born into petty nobility and raised as a squire from a young age, now you Guard the king as His knight, answer to His commands, and protect His honor. You're wholy dedicated to Him, and His safety. Do not fail Him."
+	tutorial = "A Knight with expert training; Born into petty nobility and raised as a squire from a young age, now you Guard the Lord as His knight, answer to His commands, and protect His honor. You're wholy dedicated to Him, and His safety. Do not fail Him."
 	display_order = JDO_KNIGHT
 	whitelist_req = TRUE
 	outfit = /datum/outfit/job/roguetown/knight
@@ -48,7 +48,7 @@
 	neck = /obj/item/clothing/neck/roguetown/bervor
 	shirt = /obj/item/clothing/suit/roguetown/armor/chainmail
 	armor = /obj/item/clothing/suit/roguetown/armor/plate/full
-	shoes = /obj/item/clothing/shoes/roguetown/boots/armor
+	shoes = /obj/item/clothing/shoes/roguetown/armor/steel
 	beltr = /obj/item/rogueweapon/sword/long
 	beltl = /obj/item/keyring/knight
 	belt = /obj/item/storage/belt/rogue/leather/hand

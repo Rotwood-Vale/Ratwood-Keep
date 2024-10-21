@@ -91,7 +91,8 @@
 		var/mob/living/L = user
 		for(var/obj/item/implant/I in L.implants)
 			I.trigger(key, L)
-		pitch = L.get_emote_pitch()
+		if(L.voice_pitch)
+			pitch = L.voice_pitch
 
 	var/sound/tmp_sound = get_sound(user)
 	if(!istype(tmp_sound))
@@ -113,19 +114,6 @@
 			user.audible_message(msg, runechat_message = runechat_msg_to_use, log_seen = SEEN_LOG_EMOTE)
 		else
 			user.visible_message(msg, runechat_message = runechat_msg_to_use, log_seen = SEEN_LOG_EMOTE)
-
-/mob/living/proc/get_emote_pitch()
-	return clamp(voice_pitch, 0.7, 1.5)
-
-/mob/living/carbon/human/get_emote_pitch()
-	var/final_pitch = ..()
-	var/pitch_modifier = 0
-	if(!HAS_TRAIT(src, TRAIT_DECEIVING_MEEKNESS))
-		if(STASTR > 10)
-			pitch_modifier -= (STASTR - 10) * 0.03
-		else if(STASTR < 10)
-			pitch_modifier += (10 - STASTR) * 0.06
-	return clamp(final_pitch + pitch_modifier, 0.8, 1.35)
 
 /datum/emote/proc/get_env(mob/living/user)
 	return

@@ -18,7 +18,7 @@
 	H.mind.adjust_skillrank(/datum/skill/craft/crafting, 1, TRUE)
 	H.change_stat("intelligence", 1)
 	H.change_stat("strength", -1)
-	shoes = /obj/item/clothing/shoes/roguetown/boots
+	shoes = /obj/item/clothing/shoes/roguetown/armor
 	belt = /obj/item/storage/belt/rogue/leather/black
 	beltr = /obj/item/flashlight/flare/torch/lantern
 	backl = /obj/item/storage/backpack/rogue/satchel

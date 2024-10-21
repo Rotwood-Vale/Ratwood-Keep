@@ -106,11 +106,10 @@
 	desc = "The Loving Daughter of Psydon, gifted man medicine."
 	worshippers = "The Sick, Phyicians, Apothecaries"
 	mob_traits = list(TRAIT_EMPATH, TRAIT_ROT_EATER)
-	t0 = /obj/effect/proc_holder/spell/invoked/diagnose
-	t1 = /obj/effect/proc_holder/spell/invoked/lesser_heal
-	t2 = /obj/effect/proc_holder/spell/invoked/heal
-	t3 = /obj/effect/proc_holder/spell/invoked/attach_bodypart
-	t4 = /obj/effect/proc_holder/spell/invoked/cure_rot
+	t0 = list(/obj/effect/proc_holder/spell/invoked/diagnose, /obj/effect/proc_holder/spell/invoked/lesser_heal) // Combine both spells on t0
+	t1 = /obj/effect/proc_holder/spell/invoked/heal
+	t2 = /obj/effect/proc_holder/spell/invoked/attach_bodypart
+	t3 = /obj/effect/proc_holder/spell/invoked/cure_rot
 	confess_lines = list(
 		"PESTRA SOOTHES ALL ILLS!",
 		"DECAY IS A CONTINUATION OF LIFE!",
@@ -122,7 +121,10 @@
 	domain = "God of Fire, Destruction and Rebirth"
 	desc = "The Opinionless God, his children hold no malice in their actions."
 	worshippers = "Smiths, Miners, Artists"
-	t1 = /obj/effect/proc_holder/spell/invoked/sacred_flame_rogue
+	t1 = /obj/effect/proc_holder/spell/invoked/vigorousexchange
+	t2 = /obj/effect/proc_holder/spell/invoked/heatmetal
+	t3 = /obj/effect/proc_holder/spell/invoked/hammerfall
+	t4 = /obj/effect/proc_holder/spell/invoked/craftercovenant
 	confess_lines = list(
 		"MALUM IS MY MUSE!",
 		"TRUE VALUE IS IN THE TOIL!",

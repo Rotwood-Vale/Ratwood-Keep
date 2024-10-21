@@ -7,8 +7,8 @@
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
 	outfit = /datum/outfit/job/roguetown/adventurer/masterblacksmith
-
-	pickprob = 10
+	maximum_possible_slots = 1
+	pickprob = 5
 	category_tags = list(CTAG_PILGRIM)
 
 /datum/outfit/job/roguetown/adventurer/masterblacksmith/pre_equip(mob/living/carbon/human/H)
@@ -29,7 +29,7 @@
 
 	if(H.gender == MALE)
 		
-		shoes = /obj/item/clothing/shoes/roguetown/boots/leather
+		shoes = /obj/item/clothing/shoes/roguetown/armor/leather
 		shirt = /obj/item/clothing/suit/roguetown/shirt/shortshirt
 
 		if(H.mind)
@@ -39,8 +39,6 @@
 			H.mind.adjust_skillrank(/datum/skill/craft/masonry, 5)
 			H.mind.adjust_skillrank(/datum/skill/craft/carpentry, 2)
 			H.mind.adjust_skillrank(/datum/skill/craft/blacksmithing, 6)
-			H.mind.adjust_skillrank(/datum/skill/craft/armorsmithing, 6)
-			H.mind.adjust_skillrank(/datum/skill/craft/weaponsmithing, 6)
 			H.mind.adjust_skillrank(/datum/skill/misc/reading, 1)
 			if(H.age == AGE_OLD)
 				H.mind.adjust_skillrank(/datum/skill/craft/masonry, 1)
@@ -67,8 +65,6 @@
 			H.mind.adjust_skillrank(/datum/skill/craft/masonry, 5)
 			H.mind.adjust_skillrank(/datum/skill/craft/carpentry, 2)
 			H.mind.adjust_skillrank(/datum/skill/craft/blacksmithing, 6)
-			H.mind.adjust_skillrank(/datum/skill/craft/armorsmithing, 6)
-			H.mind.adjust_skillrank(/datum/skill/craft/weaponsmithing, 6)
 			H.mind.adjust_skillrank(/datum/skill/misc/reading, 1)
 			if(H.age == AGE_OLD)
 				H.mind.adjust_skillrank(/datum/skill/craft/masonry, 1)

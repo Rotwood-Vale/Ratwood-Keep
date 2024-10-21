@@ -18,7 +18,7 @@
 	can_cauterize = TRUE
 	critical = TRUE
 	sleep_healing = 0
-	embed_chance = 75
+	embed_chance = 40
 
 	zombie_infection_probability = 50
 	werewolf_infection_probability = 50
