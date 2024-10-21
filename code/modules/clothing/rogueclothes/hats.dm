@@ -789,6 +789,34 @@
 	worn_x_dimension = 64
 	worn_y_dimension = 64
 
+	/// This var basicly counts the numbers of times this hat has changes its appearence
+	var/hat_count = 0
+
+/obj/item/clothing/head/roguetown/wizhat/MiddleClick(mob/user, params)
+	. = ..()
+	if(!do_after(user, 20, target = user))
+		return
+	if(hat_count == 0)
+		icon_state = "wizardhatred"
+		hat_count += 1
+	else if(hat_count == 1)
+		icon_state = "wizardhatyellow"
+		hat_count += 1
+	else if(hat_count == 2)
+		icon_state = "wizardhatgreen"
+		hat_count += 1
+	else if(hat_count == 3)
+		icon_state = "wizardhatblack"
+		hat_count += 1
+	else if(hat_count == 4)
+		icon_state = "wizardhatgen"
+		hat_count += 1
+	else if(hat_count == 5)
+		icon_state = "wizardhat"
+		hat_count = 0
+	to_chat(user, span_info("The wizard hat magically changes it's colours!"))
+	playsound(src, 'sound/magic/swap.ogg', 50, TRUE)
+
 /obj/item/clothing/head/roguetown/wizhat/red
 	icon_state = "wizardhatred"
 
