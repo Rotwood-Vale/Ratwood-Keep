@@ -5,7 +5,7 @@
 	allowed_races = RACES_ALL_KINDS
 	outfit = /datum/outfit/job/roguetown/bandit/hedgeknight
 	category_tags = list(CTAG_BANDIT)
-	cmode_music = 'sound/music/combat_bandit.ogg'
+	cmode_music = 'sound/music/combat_bandit2.ogg'
 	maximum_possible_slots = 1
 	min_pq = 30
 	pickprob = 25
