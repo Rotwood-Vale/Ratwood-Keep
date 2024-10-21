@@ -103,7 +103,7 @@ GLOBAL_LIST_EMPTY_TYPED(schizohelps, /datum/schizohelp)
 		else
 			if(!(listener.prefs.toggles & SCHIZO_VOICE))
 				continue
-			to_chat(listener, "Someone answers: [answer]")
+			to_chat(listener, span_info("Someone answers:<i>[answer]</i>"))
 
 	answers[voice.key] = answer
 	if(length(answers) >= max_answers)

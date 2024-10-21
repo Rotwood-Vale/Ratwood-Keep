@@ -4,6 +4,16 @@
 	structurecraft = /obj/structure/fluff/dryingrack
 	skillcraft = /datum/skill/craft/tanning
 
+/datum/crafting_recipe/roguetown/leather/bedroll
+	name = "bedroll"
+	result = /obj/item/bedroll
+	reqs = list(/obj/item/natural/hide = 2,
+				/obj/item/rope = 1)
+	tools = list(/obj/item/needle)
+	verbage_simple = "construct"
+	verbage = "constructs"
+	craftdiff = 0
+
 /datum/crafting_recipe/roguetown/leather/pouch
 	name = "leather pouch"
 	result = list(/obj/item/storage/belt/rogue/pouch,

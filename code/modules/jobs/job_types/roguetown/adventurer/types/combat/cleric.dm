@@ -164,8 +164,9 @@
 				armor = /obj/item/clothing/suit/roguetown/shirt/robe/eora
 				// HEARTHSTONE ADDITION: cloistered devout devo regen & tier buff
 		var/datum/devotion/C = new /datum/devotion(H, H.patron)
-		C.passive_devotion_gain += 0.5
+		C.passive_devotion_gain += 1
 		C.grant_spells(H) // don't give churn as an extra spell to cloistered since they get their patron's full spell list (up to t3)
+		START_PROCESSING(SSobj, C)
 	else
 // HEARTHSTONE ADDITION END
 		ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)

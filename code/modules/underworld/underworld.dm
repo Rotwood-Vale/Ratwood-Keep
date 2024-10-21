@@ -66,11 +66,9 @@
 
 /obj/structure/underworld/carriage_normal
 	name = "Carriage"
-	desc = "Azure Peaks awaits."
+	desc = "Azure Peak awaits."
 	icon = 'icons/roguetown/underworld/enigma_carriage.dmi'
 	icon_state = "carriage_normal"
-	layer = BELOW_MOB_LAYER
-	plane = GAME_PLANE_UPPER
 	anchored = TRUE
 	density = TRUE
 
@@ -151,11 +149,11 @@ GLOBAL_VAR_INIT(underworld_coins, 0)
 	icon_living = "dragger"
 	icon_dead = "dragger_dead"
 	mob_biotypes = MOB_UNDEAD|MOB_HUMANOID
-	movement_type = FLYING
+	movement_type = GROUND
 	environment_smash = ENVIRONMENT_SMASH_NONE
 	pass_flags = PASSTABLE|PASSGRILLE
 	base_intents = list(/datum/intent/simple/slash)
-	gender = MALE
+	gender = FEMALE //they're WOKE now...
 	speak_chance = 0
 	turns_per_move = 5
 	response_help_continuous = "passes through"
@@ -164,7 +162,7 @@ GLOBAL_VAR_INIT(underworld_coins, 0)
 	health = 215
 	layer = 16
 	plane = 16
-	spacewalk = TRUE
+	spacewalk = FALSE
 	stat_attack = UNCONSCIOUS
 	robust_searching = 1
 	speed = 1

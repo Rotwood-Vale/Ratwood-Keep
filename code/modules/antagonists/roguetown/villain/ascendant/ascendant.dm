@@ -7,10 +7,10 @@
 	antag_hud_type = ANTAG_HUD_TRAITOR
 	antag_hud_name = "villain"
 	confess_lines = list(
-		"",
-		"I shant quit ripping them.",
-		"They deserve to be put at my blade.",
-		"Do what thou wilt shall be the whole of the law.",
+		"Hah- ahah- ahahah! You're LIVING ON A CORPSE!!",
+		"God is coming. God is here.",
+		"I AM GOD.",
+		"THE DECK IS LINED, AND THE RIVER TURNS.",
 	)
 	rogue_enabled = TRUE
 	/// Traits we apply to the owner

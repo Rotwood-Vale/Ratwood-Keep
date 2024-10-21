@@ -13,7 +13,7 @@
 
 /turf/open/floor/rogue/dirt/Initialize()
 	. = ..()
-	if(istype(loc, /area/rogue/outdoors/bog))
+	if(istype(loc, /area/rogue/outdoors/woods))
 		if(!((locate(/obj/structure) in src) || (locate(/obj/machinery) in src)))
 			if(prob(4))
 				hidden_truffles = TRUE

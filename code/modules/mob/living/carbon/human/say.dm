@@ -121,41 +121,6 @@
 	if(message_mode != MODE_WHISPER)
 		send_voice(message)
 
-/*
-/mob/living/carbon/human/proc/send_voice(message, skip_thingy)
-	if(!message || !length(message))
-		return
-	var/numessage = message
-//	if(ranger)
-//		erange = ranger-7
-	if(!skip_thingy)
-		numessage = replacetext(message, " ", "")
-		numessage = sanitize_hear_message(message)
-	spawn()
-		var/freq2use = get_emote_frequency()
-		freq2use += rand(-100,100)
-		for(var/i=1, i<=min(length(numessage),20), i++)
-			var/ascii_char = text2ascii(numessage,i)
-			var/text_char
-			switch(ascii_char)
-				// A  .. Z
-				if(65 to 90)			//Uppercase Letters
-					text_char=ascii2text(ascii_char)
-				// a  .. z
-				if(97 to 122)			//Lowercase Letters
-					text_char=ascii2text(ascii_char)
-				// 0  .. 9
-//				if(48 to 57)			//Numbers
-//					text_char="bebebese"
-			if(text_char)
-				var/path = "sound/vo/female/spch/[text_char].ogg"
-				if(gender == MALE)
-					path = "sound/vo/male/spch/[text_char].ogg"
-				if(fexists(path))
-					playsound(get_turf(src), path, 100, FALSE, -1, frequency = freq2use)
-			sleep(1)
-*/
-
 /mob/living/carbon/human/proc/send_voice(message, skip_thingy)
 	if(!message || !length(message))
 		return

@@ -142,6 +142,12 @@
 	icon_state = "hornkey"
 	lockid = "tavern"
 
+/obj/item/roguekey/tavernkeep
+	name = "innkeep's key"
+	desc = "This key opens and closes the innkeep's bedroom."
+	icon_state = "greenkey"
+	lockid = "innkeep"
+
 /obj/item/roguekey/velder
 	name = "elder's key"
 	desc = "This key should open and close the elder's home."
@@ -290,14 +296,14 @@
 	lockid = "tailor"
 
 /obj/item/roguekey/nightman
-	name = "nightmaster's key"
-	desc = "This regal key opens a few doors within the castle."
+	name = "bathmaster's key"
+	desc = "This regal key opens the bathmaster's office - and his vault."
 	icon_state = "greenkey"
 	lockid = "nightman"
 
 /obj/item/roguekey/nightmaiden
-	name = "nightmaiden's key"
-	desc = "This regal key opens a few doors within the castle."
+	name = "bathhouse key"
+	desc = "This regal key opens doors inside the bath-house."
 	icon_state = "brownkey"
 	lockid = "nightmaiden"
 
@@ -431,6 +437,21 @@
 	name = "stall iv key"
 	icon_state = "brownkey"
 	lockid = "stall4"
+
+/obj/item/roguekey/apartments/stable1
+	name = "stable i key"
+	icon_state = "brownkey"
+	lockid = "stable1"
+
+/obj/item/roguekey/apartments/stable2
+	name = "stable ii key"
+	icon_state = "brownkey"
+	lockid = "stable2"
+
+/obj/item/roguekey/apartments/stable3
+	name = "stable iii key"
+	icon_state = "brownkey"
+	lockid = "stable3"
 
 //custom key
 /obj/item/roguekey/custom

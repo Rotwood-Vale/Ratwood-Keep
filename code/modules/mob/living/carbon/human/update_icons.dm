@@ -60,6 +60,7 @@ There are several things that need to be remembered:
 
 //HAIR OVERLAY
 /mob/living/carbon/human/update_hair()
+	rebuild_obscured_flags()
 	update_body_parts(TRUE)
 	return
 
@@ -379,6 +380,7 @@ There are several things that need to be remembered:
 			overlays_standing[NECK_LAYER] = neck_overlay
 
 		update_hud_neck(wear_neck)
+	rebuild_obscured_flags()
 	update_hair()
 	apply_overlay(NECK_LAYER)
 
@@ -480,8 +482,7 @@ There are several things that need to be remembered:
 							S.pixel_x += dna.species.offset_features[OFFSET_GLOVES_F][1]
 							S.pixel_y += dna.species.offset_features[OFFSET_GLOVES_F][2]
 				overlays_standing[GLOVESLEEVE_LAYER] = sleeves
-
-
+	rebuild_obscured_flags()
 	apply_overlay(GLOVES_LAYER)
 	apply_overlay(GLOVESLEEVE_LAYER)
 
@@ -538,6 +539,7 @@ There are several things that need to be remembered:
 							S.pixel_y += dna.species.offset_features[OFFSET_WRISTS_F][2]
 				overlays_standing[WRISTSLEEVE_LAYER] = sleeves
 
+	rebuild_obscured_flags()
 	apply_overlay(WRISTS_LAYER)
 	apply_overlay(WRISTSLEEVE_LAYER)
 
@@ -640,6 +642,7 @@ There are several things that need to be remembered:
 
 				overlays_standing[SHOESLEEVE_LAYER] = sleeves
 
+	rebuild_obscured_flags()
 	apply_overlay(SHOES_LAYER)
 	apply_overlay(SHOESLEEVE_LAYER)
 
@@ -696,6 +699,7 @@ There are several things that need to be remembered:
 			overlays_standing[HEAD_LAYER] = head_overlay
 		apply_overlay(HEAD_LAYER)
 
+	rebuild_obscured_flags()
 	update_hair() //hoodies
 
 /mob/living/carbon/human/update_inv_belt()
@@ -727,7 +731,7 @@ There are several things that need to be remembered:
 			if(beltr.experimental_onhip)
 				var/list/prop
 				if(beltr.force_reupdate_inhand)
-					prop = beltr?.onprop["onbelt"]
+					prop = beltr?.onprop?["onbelt"]
 					if(!prop)
 						prop = beltr.getonmobprop("onbelt")
 						LAZYSET(beltr.onprop, "onbelt", prop)
@@ -784,8 +788,8 @@ There are several things that need to be remembered:
 				if(beltl.force_reupdate_inhand)
 					prop = beltl.onprop?["onbelt"]
 					if(!prop)
-						beltl.onprop["onbelt"] = beltl.getonmobprop("onbelt")
-						prop = beltl.onprop["onbelt"]
+						prop = beltl.getonmobprop("onbelt")
+						LAZYSET(beltl.onprop, "onbelt", prop)
 				else
 					prop = beltl.getonmobprop("onbelt")
 				if(prop)
@@ -852,12 +856,14 @@ There are several things that need to be remembered:
 	overlays_standing[BELT_LAYER] = standing_front
 	overlays_standing[BELT_BEHIND_LAYER] = standing_behind
 
+	rebuild_obscured_flags()
 	apply_overlay(BELT_LAYER)
 	apply_overlay(BELT_BEHIND_LAYER)
 
 
 
 /mob/living/carbon/human/update_inv_wear_suit()
+	rebuild_obscured_flags()
 	update_body_parts(TRUE)
 	return
 /*
@@ -913,6 +919,7 @@ There are several things that need to be remembered:
 	update_body_parts(TRUE)
 	var/mutable_appearance/mask_overlay = overlays_standing[MASK_LAYER]
 	if(mask_overlay)
+		rebuild_obscured_flags()
 		remove_overlay(MASK_LAYER)
 		if(gender == MALE)
 			if(OFFSET_FACEMASK in dna.species.offset_features)
@@ -951,8 +958,8 @@ There are several things that need to be remembered:
 				if(backr.force_reupdate_inhand)
 					prop = backr.onprop?["onback"]
 					if(!prop)
-						backr.onprop["onback"] = backr.getonmobprop("onback")
-						prop = backr.onprop["onback"]
+						prop = backr.getonmobprop("onback")
+						LAZYSET(backr.onprop, "onback", prop)
 				else
 					prop = backr.getonmobprop("onback")
 				if(prop)
@@ -1004,8 +1011,8 @@ There are several things that need to be remembered:
 				if(backl.force_reupdate_inhand)
 					prop = backl.onprop?["onback"]
 					if(!prop)
-						backl.onprop["onback"] = backl.getonmobprop("onback")
-						prop = backl.onprop["onback"]
+						prop = backl.getonmobprop("onback")
+						LAZYSET(backl.onprop, "onback", backl.getonmobprop("onback"))
 				else
 					prop = backl.getonmobprop("onback")
 				if(prop)
@@ -1052,6 +1059,7 @@ There are several things that need to be remembered:
 	if(undercloaks.len)
 		overlays_standing[UNDER_CLOAK_LAYER] = undercloaks
 
+	rebuild_obscured_flags()
 	apply_overlay(BACK_LAYER)
 	apply_overlay(BACK_BEHIND_LAYER)
 	apply_overlay(UNDER_CLOAK_LAYER)
@@ -1167,6 +1175,7 @@ There are several things that need to be remembered:
 					cloaklays += S
 
 	overlays_standing[CLOAK_LAYER] = cloaklays
+	rebuild_obscured_flags()
 	update_inv_armor() //fixboob
 	apply_overlay(TABARD_LAYER)
 	apply_overlay(CLOAK_BEHIND_LAYER)
@@ -1226,6 +1235,7 @@ There are several things that need to be remembered:
 							S.pixel_y += dna.species.offset_features[OFFSET_SHIRT_F][2]
 				overlays_standing[SHIRTSLEEVE_LAYER] = sleeves
 
+	rebuild_obscured_flags()
 	if(gender == FEMALE && dna?.species)
 		update_body_parts(redraw = TRUE)
 		dna.species.handle_body(src)
@@ -1292,6 +1302,7 @@ There are several things that need to be remembered:
 							S.pixel_y += dna.species.offset_features[OFFSET_ARMOR_F][2]
 				overlays_standing[ARMORSLEEVE_LAYER] = sleeves
 
+	rebuild_obscured_flags()
 	if(gender == FEMALE && dna?.species)
 		update_body_parts(redraw = TRUE)
 		dna.species.handle_body(src)
@@ -1360,8 +1371,8 @@ There are several things that need to be remembered:
 							S.pixel_y += dna.species.offset_features[OFFSET_PANTS_F][2]
 				overlays_standing[LEGSLEEVE_LAYER] = sleeves
 
+	rebuild_obscured_flags()
 	update_hair()
-
 	apply_overlay(PANTS_LAYER)
 	apply_overlay(LEGSLEEVE_LAYER)
 
@@ -1394,6 +1405,8 @@ There are several things that need to be remembered:
 				mouth_overlay.pixel_y += dna.species.offset_features[OFFSET_MOUTH_F][2]
 		overlays_standing[MOUTH_LAYER] = mouth_overlay
 		apply_overlay(MOUTH_LAYER)
+	
+	rebuild_obscured_flags()
 
 //endrogue
 

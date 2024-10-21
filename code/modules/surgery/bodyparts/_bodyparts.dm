@@ -170,26 +170,33 @@
 	var/obj/item/held_item = user.get_active_held_item()
 	if(held_item)
 		if(held_item.get_sharpness() && held_item.wlength == WLENGTH_SHORT)
+			if(skeletonized)
+				to_chat(user, span_warning("There's not even a sliver of flesh on this!"))
+				return
 			var/used_time = 210
 			if(user.mind)
 				used_time -= (user.mind.get_skill_level(/datum/skill/labor/butchering) * 30)
 			visible_message("[user] begins to butcher \the [src].")
 			playsound(src, 'sound/foley/gross.ogg', 100, FALSE)
-			var/steaks = 0
+			var/steaks = 1
 			switch(user.mind.get_skill_level(/datum/skill/labor/butchering))
 				if(3)
-					steaks = 1
-				if(4 to 5)
 					steaks = 2
+				if(4 to 5)
+					steaks = 3
 				if(6)
-					steaks = 3 // the steaks have never been higher
+					steaks = 4 // the steaks have never been higher
 			var/amt2raise = user.STAINT/3
+			var/produced_steaks = list()
 			if(do_after(user, used_time, target = src))
 				for(steaks, steaks>0, steaks--)
-					new /obj/item/reagent_containers/food/snacks/rogue/meat/steak(get_turf(src))
-				new /obj/item/reagent_containers/food/snacks/rogue/meat/steak(get_turf(src))
+					var/obj/item/reagent_containers/food/snacks/rogue/meat/steak/new_steak = new(get_turf(src))
+					produced_steaks += new_steak
+				if(rotted)
+					for(var/obj/item/reagent_containers/food/snacks/rogue/meat/steak/putrid in produced_steaks)
+						putrid.become_rotten()
 				new /obj/effect/decal/cleanable/blood/splatter(get_turf(src))
-				user.mind.adjust_experience(/datum/skill/labor/butchering, amt2raise, FALSE)
+				user.mind.add_sleep_experience(/datum/skill/labor/butchering, amt2raise, FALSE)
 				qdel(src)
 	..()
 

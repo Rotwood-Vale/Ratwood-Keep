@@ -299,7 +299,7 @@
 /obj/item/rogueweapon/huntingknife/idagger/navaja
 	possible_item_intents = list(/datum/intent/dagger/thrust,/datum/intent/dagger/cut,  /datum/intent/dagger/thrust/pick)
 	name = "navaja"
-	desc = "A folding Zybantian knife used by merchants, mercenaries, and peasants out east. It's far rarer, here. The long hilt allows for a sizeable blade with good reach."
+	desc = "A folding Etruscan knife valued by merchants, mercenaries and peasants for its convenience. It possesses a long hilt, allowing for a sizeable blade with good reach."
 	force = 5
 	icon_state = "navaja_c"
 	item_state = "elfdag"
