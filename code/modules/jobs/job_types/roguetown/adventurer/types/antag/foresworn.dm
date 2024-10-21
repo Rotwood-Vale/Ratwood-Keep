@@ -33,7 +33,7 @@
 	backpack_contents = list(/obj/item/needle/thorn = 1, /obj/item/natural/cloth = 1)
 	mask = /obj/item/clothing/mask/rogue/facemask/steel
 	neck = /obj/item/clothing/neck/roguetown/gorget
-	armor = /obj/item/clothing/suit/roguetown/armor/chainmail
+	armor = /obj/item/clothing/suit/roguetown/armor/chainmail/iron
 	H.change_stat("strength", 3) //less buffs than brigand but no int debuff
 	H.change_stat("endurance", 3)
 	H.change_stat("constitution", 1)
@@ -46,8 +46,8 @@
 	switch(weapon_choice)
 		if("Spear") //Deserter watchman. Maybe should be shield and spear? plenty of shields at the bandit hideout though.
 			r_hand = /obj/item/rogueweapon/spear
-			head = /obj/item/clothing/head/roguetown/helmet/kettle
+			head = /obj/item/clothing/head/roguetown/helmet/skullcap
 		if("Sword & Buckler") //Mercenary on the wrong side of the law
 			backl= /obj/item/rogueweapon/shield/buckler
 			beltr = /obj/item/rogueweapon/sword/iron //iron sword like literally every adventurer gets
-			head = /obj/item/clothing/head/roguetown/helmet
+			head = /obj/item/clothing/head/roguetown/helmet/leather/volfhelm
