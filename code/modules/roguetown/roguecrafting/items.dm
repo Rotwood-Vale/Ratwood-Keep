@@ -197,16 +197,6 @@
 /obj/item/rogueweapon/shield/wood/crafted
 	sellprice = 6
 
-/datum/crafting_recipe/roguetown/heatershield
-	name = "heater shield"
-	result = /obj/item/rogueweapon/shield/heater/crafted
-	reqs = list(/obj/item/grown/log/tree/small = 2,
-				/obj/item/natural/hide = 1)
-	skillcraft = /datum/skill/craft/carpentry
-
-/obj/item/rogueweapon/shield/heater/crafted
-	sellprice = 6
-
 /datum/crafting_recipe/roguetown/woodbucket
 	name = "wooden bucket"
 	result = /obj/item/reagent_containers/glass/bucket/wooden
