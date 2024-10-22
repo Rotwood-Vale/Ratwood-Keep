@@ -817,7 +817,7 @@
 
 /obj/effect/proc_holder/spell/invoked/blade_burst
 	name = "Blade Burst"
-	desc = "Summon a arcyne blades from the floor that damages through armor, wounding the legs anything in that location after a delay."
+	desc = "Summon a arcyne blades from the floor that damages through armor, wounding anything with legs after a delay."
 	cost = 2
 	xp_gain = TRUE
 	releasedrain = 30
@@ -1055,7 +1055,7 @@
 	xp_gain = TRUE
 	cost = 3
 
-/mob/living/simple_animal/hostile/retaliate/rogue/volf/familiar/Initialize(mapload, mob/user)
+/mob/living/simple_animal/hostile/retaliate/rogue/wolf/familiar/Initialize(mapload, mob/user)
 	. = ..()
 	if(timeleft)
 		QDEL_IN(src, timeleft) //delete after it runs out, see code/modules/mob/living/simple_animal/rogue/creacher/familiar.dm for timeleft var
@@ -1063,7 +1063,7 @@
 
 /obj/effect/proc_holder/spell/invoked/findfamiliar/cast(list/targets,mob/user = usr)
 	var/turf/target_turf = get_turf(targets[1])
-		new /mob/living/simple_animal/hostile/retaliate/rogue/volf/familiar(target_turf, user)
+		new /mob/living/simple_animal/hostile/retaliate/rogue/wolf/familiar(target_turf, user)
 	return TRUE
 
 
