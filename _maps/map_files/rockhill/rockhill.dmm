@@ -230,6 +230,12 @@
 /obj/item/rogueweapon/thresher,
 /turf/open/floor/rogue/churchbrick,
 /area/rogue/indoors/town/manor)
+"ajl" = (
+/obj/structure/roguemachine/atm{
+	pixel_y = -32
+	},
+/turf/open/floor/rogue/cobble,
+/area/rogue/indoors/town/manor)
 "ajv" = (
 /turf/open/floor/rogue/tile{
 	icon_state = "tile"
@@ -1985,6 +1991,13 @@
 	},
 /turf/open/transparent/openspace,
 /area/rogue/indoors)
+"bYR" = (
+/obj/structure/fluff/wallclock,
+/obj/structure/roguemachine/mail/r,
+/turf/open/floor/rogue/ruinedwood{
+	icon_state = "weird1"
+	},
+/area/rogue/indoors/town/manor)
 "bZh" = (
 /obj/structure/rack/rogue,
 /obj/item/gun/ballistic/revolver/grenadelauncher/bow,
@@ -4174,7 +4187,9 @@
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/manor)
 "eaD" = (
-/obj/structure/fluff/wallclock,
+/obj/structure/closet/crate/chest{
+	lockid = "keep_gatehouse"
+	},
 /turf/open/floor/rogue/ruinedwood{
 	icon_state = "weird1"
 	},
@@ -12079,6 +12094,10 @@
 /obj/structure/flora/roguegrass/water/reeds,
 /turf/open/water/cleanshallow,
 /area/rogue/outdoors/beach)
+"lEA" = (
+/obj/structure/ladder,
+/turf/open/floor/rogue/carpet/lord/left,
+/area/rogue/indoors/town/manor)
 "lEB" = (
 /obj/structure/mineral_door/wood/deadbolt{
 	dir = 4
@@ -18515,9 +18534,6 @@
 /obj/item/paper/scroll,
 /obj/item/paper/scroll,
 /obj/item/natural/feather,
-/obj/machinery/light/rogue/torchholder{
-	pixel_y = 26
-	},
 /turf/open/floor/rogue/blocks,
 /area/rogue/indoors/town/manor)
 "rEe" = (
@@ -20449,6 +20465,13 @@
 /obj/structure/fluff/statue/gargoyle,
 /turf/open/floor/rogue/blocks,
 /area/rogue/outdoors/town)
+"tCm" = (
+/obj/machinery/light/rogue/torchholder{
+	pixel_y = 26
+	},
+/obj/structure/table/wood,
+/turf/open/floor/rogue/blocks,
+/area/rogue/indoors/town/manor)
 "tCr" = (
 /obj/effect/landmark/map_load_mark/sewers_top,
 /turf/closed/wall/mineral/rogue/stonebrick,
@@ -23016,6 +23039,14 @@
 /obj/structure/stairs,
 /turf/open/floor/rogue/cobble/mossy,
 /area/rogue/outdoors/town)
+"vYG" = (
+/obj/structure/table/wood,
+/obj/structure/bars{
+	icon_state = "barsbent";
+	layer = 2.81
+	},
+/turf/open/floor/rogue/blocks,
+/area/rogue/indoors/town/manor)
 "vYT" = (
 /turf/open/floor/rogue/rooftop{
 	icon_state = "roofg"
@@ -296343,7 +296374,7 @@ mwE
 wbg
 wbg
 wbg
-wbg
+wtF
 gPy
 uoM
 uoM
@@ -296745,8 +296776,8 @@ hOh
 wbg
 wbg
 wbg
-gPy
 wtF
+tCm
 rEd
 rVg
 eBa
@@ -297147,11 +297178,11 @@ mwE
 wbg
 wbg
 wbg
-gPy
 wtF
 mSD
 dds
-yhZ
+dds
+ajl
 wrj
 xAt
 xAt
@@ -297549,8 +297580,8 @@ mwE
 wbg
 wbg
 wbg
-mwE
-wtF
+vYG
+dds
 arZ
 dds
 mUq
@@ -297951,8 +297982,8 @@ mwE
 wbg
 wVI
 wbg
-mwE
 wtF
+hLW
 hLW
 hLW
 hLW
@@ -298353,8 +298384,8 @@ mwE
 wbg
 wbg
 wbg
-mwE
 wtF
+bYR
 eaD
 hLW
 sfJ
@@ -298755,7 +298786,7 @@ fnA
 wVI
 wbg
 wbg
-mwE
+wtF
 wtF
 wtF
 cwL
@@ -397632,7 +397663,7 @@ xlm
 xlm
 xlm
 qRa
-ohU
+lEA
 ohU
 wKq
 duQ
@@ -400060,7 +400091,7 @@ fZJ
 fZJ
 fZJ
 fZJ
-fZJ
+wrj
 wrj
 wtF
 hLW
@@ -400462,7 +400493,7 @@ fZJ
 fZJ
 fZJ
 fZJ
-fZJ
+wrj
 wrj
 wtF
 hLW
@@ -400864,7 +400895,7 @@ fZJ
 fZJ
 fZJ
 fZJ
-fZJ
+wrj
 wrj
 wtF
 iWG
@@ -401266,7 +401297,7 @@ fZJ
 fZJ
 fZJ
 fZJ
-fZJ
+wrj
 wrj
 wtF
 hLW

@@ -16,7 +16,7 @@
 
 	outfit = /datum/outfit/job/roguetown/gatemaster
 	give_bank_account = 3
-	min_pq = 4
+	min_pq = 0
 	max_pq = null
 	
 	cmode_music = 'sound/music/combat_guard2.ogg'
@@ -39,7 +39,7 @@
 
 /datum/outfit/job/roguetown/gatemaster/pre_equip(mob/living/carbon/human/H)
 	..()
-	head = /obj/item/clothing/head/roguetown/roguehood/red
+	head = /obj/item/clothing/head/roguetown/helmet/heavy/gate
 	neck = /obj/item/clothing/neck/roguetown/gorget
 	cloak = /obj/item/clothing/cloak/stabard/surcoat/guard
 	armor = /obj/item/clothing/suit/roguetown/armor/chainmail
