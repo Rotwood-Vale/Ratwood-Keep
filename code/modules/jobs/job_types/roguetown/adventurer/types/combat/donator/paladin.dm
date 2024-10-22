@@ -27,6 +27,8 @@
 			neck = /obj/item/clothing/neck/roguetown/psicross/pestra
 		if("Noc")
 			neck = /obj/item/clothing/neck/roguetown/psicross/noc
+		if("Malum")
+			neck = /obj/item/clothing/neck/roguetown/psicross/malum
 
 
 	H.adjust_blindness(-3)
