@@ -1426,7 +1426,6 @@
 #include "code\game\objects\structures\lavaland\geyser.dm"
 #include "code\game\objects\structures\lavaland\necropolis_tendril.dm"
 #include "code\game\objects\structures\roguetown\bell.dm"
-#include "code\game\objects\structures\roguetown\bell_common.dm"
 #include "code\game\objects\structures\roguetown\gate.dm"
 #include "code\game\objects\structures\roguetown\handcart.dm"
 #include "code\game\objects\structures\roguetown\loot.dm"
