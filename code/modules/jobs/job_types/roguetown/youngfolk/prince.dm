@@ -61,8 +61,7 @@
 		head = /obj/item/clothing/head/roguetown/hennin
 		neck = /obj/item/storage/belt/rogue/pouch/coins/rich
 		belt = /obj/item/storage/belt/rogue/leather/cloth/lady
-		armor = /obj/item/clothing/suit/roguetown/armor/silkcoat
-		shirt = /obj/item/clothing/suit/roguetown/shirt/dress/silkdress/princess
+		shirt = /obj/item/clothing/suit/roguetown/shirt/dress/velvetdress
 		shoes = /obj/item/clothing/shoes/roguetown/shortboots
 		if(H.mind)
 			H.mind.adjust_skillrank(/datum/skill/misc/swimming, 2, TRUE)

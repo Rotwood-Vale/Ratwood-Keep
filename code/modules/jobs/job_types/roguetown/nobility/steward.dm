@@ -20,7 +20,7 @@
 	if(H.gender == FEMALE)
 		H.virginity = TRUE
 		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/sailor
-		armor = /obj/item/clothing/suit/roguetown/shirt/dress/silkdress/green
+		armor = /obj/item/clothing/suit/roguetown/shirt/dress/nobledress
 		cloak = /obj/item/clothing/cloak/tabard/knight
 		pants = /obj/item/clothing/under/roguetown/tights/stockings/silk/random
 	else

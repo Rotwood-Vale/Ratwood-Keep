@@ -227,20 +227,6 @@
 	item_state = "silkdress"
 	color = "#e6e5e5"
 
-/obj/item/clothing/suit/roguetown/shirt/dress/silkdress/princess
-	color = CLOTHING_WHITE
-
-/obj/item/clothing/suit/roguetown/shirt/dress/silkdress/princess/Initialize()
-	. = ..()
-	if(GLOB.lordprimary)
-		lordcolor(GLOB.lordprimary,GLOB.lordsecondary)
-	else
-		GLOB.lordcolor += src
-
-/obj/item/clothing/suit/roguetown/shirt/dress/silkdress/princess/Destroy()
-	GLOB.lordcolor -= src
-	return ..()
-
 /obj/item/clothing/suit/roguetown/shirt/dress/silkdress/black
 	color = CLOTHING_BLACK
 
@@ -250,6 +236,55 @@
 /obj/item/clothing/suit/roguetown/shirt/dress/silkdress/random/Initialize()
 	. = ..()
 	color = pick("#e6e5e5", "#52BE80", "#C39BD3", "#EC7063","#5DADE2")
+
+// 
+//   Velvet Dress
+//
+
+/obj/item/clothing/suit/roguetown/shirt/dress/velvetdress
+	slot_flags = ITEM_SLOT_ARMOR|ITEM_SLOT_SHIRT
+	name = "velvet dress"
+	desc = "A dress made with the finest velvet, befitting a person of high standing"
+	body_parts_covered = CHEST|GROIN|LEGS|VITALS
+	icon = 'icons/roguetown/clothing/nobledresses/shirts.dmi'
+	mob_overlay_icon = 'icons/roguetown/clothing/nobledresses/onmob/shirts.dmi'
+	icon_state = "velvetdress"
+	item_state = "velvetdress"
+
+/obj/item/clothing/suit/roguetown/shirt/dress/velvetdress/black
+	color = CLOTHING_BLACK
+
+/obj/item/clothing/suit/roguetown/shirt/dress/velvetdress/green
+	color = CLOTHING_DARK_GREEN
+
+/obj/item/clothing/suit/roguetown/shirt/dress/velvetdress/random/Initialize()
+	. = ..()
+	color = pick("#e6e5e5", "#52BE80", "#C39BD3", "#EC7063","#5DADE2")
+
+// 
+//   Noble dress
+//
+
+/obj/item/clothing/suit/roguetown/shirt/nobledress
+	slot_flags = ITEM_SLOT_ARMOR|ITEM_SLOT_SHIRT
+	name = "noble dress"
+	desc = "a noble dress, fit for a person of high standing"
+	body_parts_covered = CHEST|GROIN|LEGS|VITALS
+	icon = 'icons/roguetown/clothing/nobledresses/shirts.dmi'
+	mob_overlay_icon = 'icons/roguetown/clothing/nobledresses/onmob/shirts.dmi'
+	icon_state = "nobledress"
+	item_state = "nobledress"
+
+/obj/item/clothing/suit/roguetown/shirt/dress/nobledress/black
+	color = CLOTHING_BLACK
+
+/obj/item/clothing/suit/roguetown/shirt/dress/nobledress/green
+	color = CLOTHING_DARK_GREEN
+
+/obj/item/clothing/suit/roguetown/shirt/dress/nobledress/random/Initialize()
+	. = ..()
+	color = pick("#e6e5e5", "#52BE80", "#C39BD3", "#EC7063","#5DADE2")
+
 
 /obj/item/clothing/suit/roguetown/shirt/dress/gen/sexy
 	slot_flags = ITEM_SLOT_ARMOR
