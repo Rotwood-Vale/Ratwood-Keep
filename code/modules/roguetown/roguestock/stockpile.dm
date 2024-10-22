@@ -152,7 +152,7 @@
 	export_price = 8
 	importexport_amt = 5
 
-/datum/roguestock/stockpile/poultry
+/datum/roguestock/stockpile/egg
 	name = "Egg"
 	desc = "Egg laid by a hen."
 	item_type = /obj/item/reagent_containers/food/snacks/egg

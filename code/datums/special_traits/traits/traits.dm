@@ -228,6 +228,7 @@
 	character.grant_language(/datum/language/orcish)
 	character.grant_language(/datum/language/beast)
 	character.grant_language(/datum/language/draconic)
+	character.grant_language(/datum/language/faexin)
 
 /datum/special_trait/civilizedbarbarian
 	name = "Tavern Brawler"
@@ -362,9 +363,9 @@
 	else
 		employer_gender = FEMALE
 	if(employer_gender == MALE)
-		employer = pick(list("Baron", "Lord", "Nobleman", "Prince"))
+		employer = pick(list("Baron", "Lord", "Nobleman", "Heir"))
 	else
-		employer = pick(list("Duchess", "Lady", "Noblelady", "Princess"))
+		employer = pick(list("Duchess", "Lady", "Noblelady", "Heiress"))
 	employer = "[employer] [random_human_name(employer_gender, FALSE, FALSE)]"
 	var/amount = rand(40,100)
 	switch(rand(1,7))
@@ -479,7 +480,7 @@
 //job specials
 /datum/special_trait/punkprincess //I think everyone will like the Rebellous Prince-Like Princess. I'd love to do one for the prince as well that gives him princess loadout, but, up to you!
 	name = "Rebellous Daughter"
-	greet_text = span_notice("I am quite rebellious for a princess. Screw Noble Customs!")
+	greet_text = span_notice("I am quite rebellious for a noblewoman. Screw Noble Customs!")
 	req_text = "Be a princess"
 	allowed_sexes = list(FEMALE)
 	allowed_jobs = list(/datum/job/roguetown/prince)
@@ -547,7 +548,7 @@
 
 /datum/special_trait/illicit_merchant
 	name = "Illicit Merchant"
-	greet_text = span_notice("I'm sick of working as an underling, I will start my own trade emporium. I've got my hands on a hidden merchant key and a curious magical device")
+	greet_text = span_notice("I'm sick of working as an underling, I will start my own trade emporium. I've got my hands on a hidden merchant key and a curious magical device.")
 	req_text = "Be a Shophand"
 	allowed_jobs = list(/datum/job/roguetown/shophand)
 	weight = 100
@@ -565,3 +566,15 @@
 	character.mind.adjust_skillrank(/datum/skill/misc/athletics, 1, TRUE)
 	character.change_stat("strength", 1)
 	character.change_stat("constitution", 1)
+
+/datum/special_trait/seed_feed
+	name = "Seed & Feed"
+	greet_text = span_notice("Armed with seeds and the unwavering belief that sharing is mandatory. Bag safely stashed, until the next seed-worthy moment arises.")
+	req_text = "Be a Soilson, Towner or Pilgrim."
+	allowed_jobs = list(/datum/job/roguetown/farmer, /datum/job/roguetown/pilgrim, /datum/job/roguetown/villager)
+	weight = 100
+
+/datum/special_trait/seed_feed/on_apply(mob/living/carbon/human/character)
+	character.mind.adjust_skillrank(/datum/skill/combat/wrestling, 1, TRUE)
+	character.mind.special_items["The Bag"] = /obj/item/storage/roguebag/seedfeed
+	character.mind.special_items["The Sickle"] = /obj/item/rogueweapon/sickle

@@ -6,10 +6,10 @@
 #define CLERIC_T4 4
 
 #define CLERIC_REQ_0 0
-#define CLERIC_REQ_1 100
-#define CLERIC_REQ_2 250
-#define CLERIC_REQ_3 500
-#define CLERIC_REQ_4 750
+#define CLERIC_REQ_1 75
+#define CLERIC_REQ_2 150
+#define CLERIC_REQ_3 350
+#define CLERIC_REQ_4 500
 
 // Cleric Holder Datums
 
@@ -33,7 +33,7 @@
 	/// How much progression is gained per process call
 	var/passive_progression_gain = 0
 	/// How much devotion is gained per prayer cycle
-	var/prayer_effectiveness = 2
+	var/prayer_effectiveness = 3
 	/// Spells we have granted thus far
 	var/list/granted_spells
 
@@ -102,8 +102,12 @@
 /datum/devotion/proc/grant_spells(mob/living/carbon/human/H)
 	if(!H || !H.mind || !patron)
 		return
-
-	var/list/spelllist = list(patron.t0, patron.t1)
+	var/list/spelllist = list()
+	if(islist(patron.t0)) // Snowflake code to check if T0 is a list, necessary for pestra
+		spelllist += patron.t0
+	else if (patron.t0)
+		spelllist += list(patron.t0)
+	spelllist += list(patron.t1)
 	for(var/spell_type in spelllist)
 		if(!spell_type || H.mind.has_spell(spell_type))
 			continue

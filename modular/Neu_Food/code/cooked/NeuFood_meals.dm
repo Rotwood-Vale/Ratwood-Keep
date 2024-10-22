@@ -361,4 +361,3 @@
 	bonus_reagents = list(/datum/reagent/consumable/nutriment = 2)
 	trash = /obj/item/cooking/platter
 	rotprocess = SHELFLIFE_LONG
-
