@@ -11,7 +11,7 @@
 	eat_effect = /datum/status_effect/debuff/uncookedfood
 	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_DECENT)
 	name = "meat"
-	des = "Chop to create mince, bake or fry to make frysteak"
+	desc = "Chop to create mince, bake or fry to make frysteak"
 	icon_state = "meatslab"
 	slice_batch = TRUE // so it takes more time, changed from FALSE
 	filling_color = "#8f433a"
