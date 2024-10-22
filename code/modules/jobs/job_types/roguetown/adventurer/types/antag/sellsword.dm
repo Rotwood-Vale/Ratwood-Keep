@@ -5,7 +5,7 @@
 	allowed_races = RACES_ALL_KINDS
 	outfit = /datum/outfit/job/roguetown/bandit/sellsword
 	category_tags = list(CTAG_BANDIT)
-	cmode_music = 'sound/music/combat_bandit2.ogg'	
+	cmode_music = 'sound/music/combat_bandit2.ogg'
 
 /datum/outfit/job/roguetown/bandit/sellsword/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -35,11 +35,12 @@
 	mask = /obj/item/clothing/mask/rogue/facemask/steel
 	neck = /obj/item/clothing/neck/roguetown/gorget
 	armor = /obj/item/clothing/suit/roguetown/armor/chainmail
-	id = /obj/item/mattcoin	
-	H.change_stat("strength", 2) //less buffs than brigand but no int debuff 
+	id = /obj/item/mattcoin
+	H.change_stat("strength", 2)
 	H.change_stat("endurance", 2)
 	H.change_stat("constitution", 1)
-	H.change_stat("speed", 1)
+	H.change_stat("speed", 2)
+	H.change_stat("fortune", 1)
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 	H.adjust_blindness(-3)
 	var/weapons = list("Spear & Crossbow","Sword & Buckler")

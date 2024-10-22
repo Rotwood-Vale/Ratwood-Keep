@@ -129,7 +129,7 @@
 	name = "Bat Form"
 	desc = ""
 	invocation = ""
-	vitaedrain = 2500
+	vitaedrain = 1000
 	charge_max = 60
 	cooldown_min = 50
 	die_with_shapeshifted_form =  FALSE
@@ -139,7 +139,7 @@
 	name = "Mist Form"
 	desc = ""
 	invocation = ""
-	vitaedrain = 2500
+	vitaedrain = 1500
 	charge_max = 60
 	cooldown_min = 50
 	die_with_shapeshifted_form =  FALSE
