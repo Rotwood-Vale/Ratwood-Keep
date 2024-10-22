@@ -111,6 +111,12 @@
 			. += commie_text
 		else if(HAS_TRAIT(src, TRAIT_COMMIE) && HAS_TRAIT(user, TRAIT_COMMIE))
 			. += span_notice("Comrade!")
+		else if(HAS_TRAIT(src, TRAIT_CABAL) && HAS_TRAIT(user, TRAIT_CABAL))
+			. += span_notice("Another of the Cabal!")
+		else if(HAS_TRAIT(src, TRAIT_HORDE) && HAS_TRAIT(user, TRAIT_HORDE))
+			. += span_notice("Anointed!")
+		else if(HAS_TRAIT(src, TRAIT_DEPRAVED) && HAS_TRAIT(user, TRAIT_DEPRAVED))
+			. += span_notice("Debased!")
 
 	if(leprosy == 1)
 		. += span_necrosis("A LEPER...")

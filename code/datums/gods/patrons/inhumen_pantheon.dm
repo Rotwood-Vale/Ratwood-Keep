@@ -13,6 +13,7 @@
 	domain = "Advancement, Hubris, Left Hand Magicks"
 	desc = "Snow Elf turned God, who in her endless pursuit of greatness sacrificed her kin for ascension. Zizo revolutionized many a science and magick and taught mortals to bend the natural world to their will."
 	worshippers = "Necromancers, Warlocks, and the Undead"
+	mob_traits = list(TRAIT_CABAL)
 	confess_lines = list(
 		"PRAISE ZIZO!",
 		"LONG LIVE ZIZO!",
@@ -24,7 +25,7 @@
 	domain = "God of Conquest, Murder and Pillaging"
 	desc = "Orc turned deity, said by the Holy Ecclesial to have been blessed by Ravox himself to fight the Archdevil Vheslyn. Instead of joining the Stalwart Warrior's army, he took his blessings to rampage and tear down the Old Ten. Bless the Blooded One."
 	worshippers = "Prisoners, Murderers and the Cruel"
-	mob_traits = list(TRAIT_ORGAN_EATER)
+	mob_traits = list(TRAIT_HORDE, TRAIT_ORGAN_EATER)
 	confess_lines = list(
 		"GRAGGAR IS THE BEAST I WORSHIP!",
 		"THROUGH VIOLENCE, DIVINITY!",
@@ -48,7 +49,7 @@
 	domain = "Goddess of Degeneracy, Debauchery and Addiction"
 	desc = "Eora's crueler half, made be from her one true love having been unfaithful. Filled with bitterness, she separated from Eora in spirit and spiraled into a dark hole of crippling hedonism. She teaches her ilk to place their trust in no one, and do only as they please."
 	worshippers = "Perverts, Gamblers, Drunkards, and Bards"
-	mob_traits = list(TRAIT_CRACKHEAD)
+	mob_traits = list(TRAIT_DEPRAVED, TRAIT_CRACKHEAD)
 	confess_lines = list(
 		"BAOTHA DEMANDS PLEASURE!",
 		"LIVE, LAUGH, LOVE!",
