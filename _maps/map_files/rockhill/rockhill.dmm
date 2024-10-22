@@ -860,6 +860,7 @@
 /area/rogue/under/town/basement)
 "aRj" = (
 /obj/structure/roguemachine/steward,
+/obj/structure/roguemachine/atm,
 /turf/open/floor/rogue/hexstone,
 /area/rogue/indoors/town/manor)
 "aRI" = (
