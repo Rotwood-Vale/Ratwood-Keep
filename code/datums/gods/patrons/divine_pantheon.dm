@@ -107,8 +107,8 @@
 	worshippers = "The Sick, Phyicians, Apothecaries"
 	mob_traits = list(TRAIT_EMPATH, TRAIT_ROT_EATER)
 	t0 = list(/obj/effect/proc_holder/spell/invoked/diagnose, /obj/effect/proc_holder/spell/invoked/lesser_heal) // Combine both spells on t0
-	t1 = /obj/effect/proc_holder/spell/invoked/heal
-	t2 = /obj/effect/proc_holder/spell/invoked/attach_bodypart
+	t1 = /obj/effect/proc_holder/spell/invoked/attach_bodypart
+	t2 = /obj/effect/proc_holder/spell/invoked/heal
 	t3 = /obj/effect/proc_holder/spell/invoked/cure_rot
 	confess_lines = list(
 		"PESTRA SOOTHES ALL ILLS!",
