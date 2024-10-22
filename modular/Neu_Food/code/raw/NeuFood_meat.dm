@@ -11,6 +11,7 @@
 	eat_effect = /datum/status_effect/debuff/uncookedfood
 	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_DECENT)
 	name = "meat"
+	desc = "Chop to create mince, bake or fry to make frysteak"
 	icon_state = "meatslab"
 	slice_batch = TRUE // so it takes more time, changed from FALSE
 	filling_color = "#8f433a"
@@ -34,6 +35,7 @@
 /obj/item/reagent_containers/food/snacks/rogue/meat/mince
 	name = "mince"
 	icon_state = "meatmince"
+	desc = "Use in stew, pie or alchemy or use with fat or more mince to make a Sausage"
 	ingredient_size = 2
 	slice_path = null
 	filling_color = "#8a0000"

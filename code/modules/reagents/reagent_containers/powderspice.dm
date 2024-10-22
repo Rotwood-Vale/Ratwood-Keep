@@ -153,7 +153,7 @@
 	sellprice = 0
 /datum/reagent/floure
 	name = "flour"
-	description = ""
+	description = "Add water and knead it"
 	color = "#FFFFFF" // rgb: 96, 165, 132
 
 /datum/reagent/floure/on_mob_life(mob/living/carbon/M)

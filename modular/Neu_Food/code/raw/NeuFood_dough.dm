@@ -10,7 +10,7 @@
 /*	.................   Dough   ................... */
 /obj/item/reagent_containers/food/snacks/rogue/dough_base
 	name = "unfinished dough"
-	desc = "With a little more ambition, you will conquer."
+	desc = "With a little more ambition, you will conquer.(Add powder and knead to make dough)"
 	icon_state = "dough_base"
 	w_class = WEIGHT_CLASS_NORMAL
 /obj/item/reagent_containers/food/snacks/rogue/dough_base/attackby(obj/item/I, mob/living/user, params)
@@ -34,7 +34,7 @@
 
 /obj/item/reagent_containers/food/snacks/rogue/dough
 	name = "dough"
-	desc = "The triumph of all bakers."
+	desc = "The triumph of all bakers.(Bake to make bread, add butter to make butterdough, cut to make small dough, add three raisins to make Raisinloaf, roll to make Hardtack)"
 	icon_state = "dough"
 	slices_num = 2
 	slice_batch = TRUE
@@ -124,7 +124,7 @@
 /*	.................   Butterdough   ................... */
 /obj/item/reagent_containers/food/snacks/rogue/butterdough
 	name = "butterdough"
-	desc = "What is a triumph, to a legacy?"
+	desc = "What is a triumph, to a legacy?(Slice to start making a pie, add cackleberry to make cake dough)"
 	icon_state = "butterdough"
 	color = "#feffc1"
 	slices_num = 2
@@ -156,7 +156,7 @@
 /*	.................   Butterdough piece   ................... */
 /obj/item/reagent_containers/food/snacks/rogue/butterdoughslice
 	name = "butterdough piece"
-	desc = "A slice of pedigree, to create lines of history."
+	desc = "A slice of pedigree, to create lines of history.(Roll to make pie dough, place one piedough in the oven to make a pie shell. Fry to make Frybread. Roll to make Handpie)"
 	icon_state = "butterdoughslice"
 	color = "#feffc1"
 	slices_num = 0
@@ -210,7 +210,7 @@
 /*	.................   Piedough   ................... */
 /obj/item/reagent_containers/food/snacks/rogue/piedough
 	name = "piedough"
-	desc = "The beginning of greater things to come."
+	desc = "The beginning of greater things to come.(Add mince or berries to make handpie!. bake to make a pie shell)"
 	icon_state = "piedough"
 	cooked_type = /obj/item/reagent_containers/food/snacks/rogue/foodbase/piebottom
 	w_class = WEIGHT_CLASS_NORMAL
@@ -293,7 +293,7 @@
 /*	.................   Bread   ................... */
 /obj/item/reagent_containers/food/snacks/rogue/bread
 	name = "bread loaf"
-	desc = "One of the staple foods of the world, with the decline of magic, the loss of bread-duplication has led to mass famines around Grimoria."
+	desc = "One of the staple foods of the world, with the decline of magic, the loss of bread-duplication has led to mass famines around Grimoria.(Slice!)"
 	icon_state = "loaf6"
 	slices_num = 6
 	slice_path = /obj/item/reagent_containers/food/snacks/rogue/breadslice
@@ -327,7 +327,7 @@
 /*	.................   Breadslice & Toast   ................... */
 /obj/item/reagent_containers/food/snacks/rogue/breadslice
 	name = "sliced bread"
-	desc = "A bit of comfort to start your dae."
+	desc = "A bit of comfort to start your dae.(Serve as is or add friend Cackleberry, cheese or butter! oven to toast it.)"
 	icon_state = "loaf_slice"
 	w_class = WEIGHT_CLASS_NORMAL
 	cooked_type = /obj/item/reagent_containers/food/snacks/rogue/breadslice/toast
