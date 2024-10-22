@@ -73,6 +73,8 @@ All foods are distributed among various categories. Use common sense.
 	var/rotprocess = FALSE
 	var/become_rot_type = null
 
+	var/mill_result = null
+
 	var/fertamount = 50
 	
 	var/can_distill = FALSE //If FALSE, this object cannot be distilled into an alcohol.

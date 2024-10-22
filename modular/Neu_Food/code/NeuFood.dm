@@ -29,8 +29,6 @@
 */
 
 
-
-
 /*	........   Templates / Base items   ................ */
 /obj/item/reagent_containers // added vars used in neu cooking, might be used for other things too in the future. How it works is in each items attackby code.
 	var/short_cooktime = FALSE  // based on cooking skill
@@ -95,33 +93,6 @@
 			return 1
 	..()
 
-/*
-
-/*	........   Spicing and Poisoning   ................ */
-
-// Used for adding reagents from bottles into food items.
-
-/obj/item/reagent_containers/food/snacks/rogue/MiddleClick(mob/living/user, params) 
-	. = ..()
-	
-	var/obj/item/held_item = user.get_active_held_item()
-	
-	if(held_item)
-		if(istype(held_item, /obj/item/reagent_containers/glass/bottle))
-			if(!held_item.reagents.total_volume)
-				to_chat(user, span_warning("[held_item] is empty!"))
-				return
-			if(src.reagents.total_volume >= src.reagents.maximum_volume)
-				to_chat(user, span_warning("You can't add anymore to [src]!"))
-				return
-			held_item.reagents.trans_to(src, 3, transfered_by = user)
-			var/stealth = user.mind.get_skill_level(/datum/skill/misc/sneaking)
-			var/soh = (6 - (stealth + rand(0,4))) // master level sneaking means a 80% chance of not being noticed at all, decreasing in increments of 20% per level under.
-			if(soh >= 1)
-				user.visible_message(span_warning("[user] slips something into the [src]"), span_warning("I hastily transfer some of the reagents to [src]."), vision_distance = soh)
-			else
-				user.visible_message(span_warning("[user] slips something into the [src]"), span_notice("I carefully transfer some of the reagents to [src]."), vision_distance = soh)
-*/
 /*	........   Kitchen tools / items   ................ */
 /obj/item/kitchen/spoon
 	name = "wooden spoon"
@@ -130,7 +101,7 @@
 	icon_state = "spoon"
 	force = 0
 	w_class = WEIGHT_CLASS_TINY
-/*
+
 /obj/item/kitchen/rollingpin
 	icon = 'modular/Neu_Food/icons/cooking.dmi'
 	lefthand_file = 'modular/Neu_Food/icons/food_lefthand.dmi'
@@ -144,7 +115,7 @@
 	experimental_inhand = FALSE
 	experimental_onhip = FALSE
 	experimental_onback = FALSE
-*/
+
 /obj/item/reagent_containers/glass/bowl
 	name = "wooden bowl"
 	desc = "It is the empty space that makes the bowl useful."
@@ -231,7 +202,7 @@
 	lefthand_file = 'modular/Neu_Food/icons/food_lefthand.dmi'
 	righthand_file = 'modular/Neu_Food/icons/food_righthand.dmi'
 	experimental_inhand = FALSE
-/*
+
 /obj/item/reagent_containers/peppermill // new with some animated art
 	name = "pepper mill"
 	icon = 'modular/Neu_Food/icons/cooking.dmi'
@@ -260,11 +231,11 @@
 	bookfile = "Neu_cooking.json"
 
 /obj/item/storage/foodbag
-	name = "snack pouch"
+	name = "food pouch"
 	desc = "A small pouch for carrying handfuls of food items."
-	icon_state = "pouch_e"
-	item_state = "pouch_e"
-	icon = 'icons/roguetown/clothing/storage.dmi'
+	icon_state = "sack_rope"
+	item_state = "sack_rope"
+	icon = 'icons/roguetown/items/misc.dmi'
 	w_class = WEIGHT_CLASS_NORMAL
 	slot_flags = ITEM_SLOT_HIP
 	resistance_flags = NONE
@@ -293,10 +264,10 @@
 	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
 	var/list/things = STR.contents()
 	if(things.len)
-		icon_state = "pouch"
+		icon_state = "sack_rope"
 		w_class = WEIGHT_CLASS_NORMAL
 	else
-		icon_state = "pouch_e"
+		icon_state = "sack_rope"
 		w_class = WEIGHT_CLASS_NORMAL
 
 /obj/item/storage/foodbag/ComponentInitialize()
@@ -308,12 +279,8 @@
 	STR.set_holdable(list(
 		/obj/item/reagent_containers/food/snacks/rogue/berrycandy,
 		/obj/item/reagent_containers/food/snacks/rogue/applecandy,
-		/obj/item/reagent_containers/food/snacks/rogue/pumpkincandy,
 		/obj/item/reagent_containers/food/snacks/rogue/raisins,
-		/obj/item/reagent_containers/food/snacks/rogue/crackerscooked,
-		/obj/item/reagent_containers/food/snacks/rogue/meat/coppiette,
-		/obj/item/reagent_containers/food/snacks/fat/salo,
-		/obj/item/reagent_containers/food/snacks/fat/salo/slice
+		/obj/item/reagent_containers/food/snacks/rogue/crackerscooked
 		))
 	STR.click_gather = TRUE
 	STR.attack_hand_interact = FALSE
@@ -325,18 +292,6 @@
 	STR.allow_dump_out = TRUE
 	STR.display_numerical_stacking = TRUE
 
-/obj/item/storage/foodbag/hardtack
-	name = "rations pouch"
-	desc = "A small pouch for carrying handfuls of food items."
-	icon_state = "pouch"
-	item_state = "pouch"
-
-/obj/item/storage/foodbag/hardtack/PopulateContents()
-	new /obj/item/reagent_containers/food/snacks/rogue/crackerscooked(src)
-	new /obj/item/reagent_containers/food/snacks/rogue/crackerscooked(src)
-	new /obj/item/reagent_containers/food/snacks/rogue/crackerscooked(src)
-
-*/
 
 /* * * * * * * * * * * * * * *	*
  *								*
@@ -388,6 +343,10 @@
 	color = "#859e56"
 	taste_description = "watery cabbage"
 
+/datum/reagent/consumable/soup/veggie/beet
+	color = "#8E3A59"
+	taste_description = "watery beets"
+
 /datum/reagent/consumable/soup/stew
 	name = "thick stew"
 	description = "All manners of edible bits went into this."
@@ -412,15 +371,12 @@
 	taste_description = "something rancid"
 
 
-
 /* * * * * * * * * * * * * * *	*
  *								*
  *		Powder & Salt			*
  *					 			*
  *								*
- * * * * * * * * * * * * * * * */
-
-/*
+ * * * * * * * * * * * * * * * 	*/
 
 // -------------- POWDER (flour) -----------------
 /obj/item/reagent_containers/powder/flour
@@ -661,8 +617,6 @@
 			to_chat(user, "<span class='warning'>You need to put [src] on a table to work on it.</span>")
 	else
 		return ..()	
-
-*/
 
 /* * * * * * * * * * * **
  *						*

@@ -1,3 +1,7 @@
+
+/*                      feel free to delete if you want it cleaner. decpreciated old food not Neu food here.
+
+
 /obj/item/reagent_containers/food/snacks/rogue/meat
 	icon = 'icons/roguetown/items/food.dmi'
 	eat_effect = /datum/status_effect/debuff/uncookedfood
@@ -379,3 +383,4 @@
 	desc = "A forcemeat with a prominent flavor of liver."
 	list_reagents = list(/datum/reagent/consumable/nutriment = 15)
 	bitesize = 3
+*/

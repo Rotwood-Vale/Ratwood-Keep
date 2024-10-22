@@ -62,7 +62,7 @@ GLOBAL_LIST_INIT(nonhuman_positions, list(
 GLOBAL_LIST_INIT(noble_positions, list(
 	"Lord",
 	"Lady Consort",
-	"Prince",
+	"Heir",
 	"Retinue Captain",
 	"Royal Marshal",
 	"Councillor",

@@ -363,9 +363,9 @@
 	else
 		employer_gender = FEMALE
 	if(employer_gender == MALE)
-		employer = pick(list("Baron", "Lord", "Nobleman", "Prince"))
+		employer = pick(list("Baron", "Lord", "Nobleman", "Heir"))
 	else
-		employer = pick(list("Duchess", "Lady", "Noblelady", "Princess"))
+		employer = pick(list("Duchess", "Lady", "Noblelady", "Heiress"))
 	employer = "[employer] [random_human_name(employer_gender, FALSE, FALSE)]"
 	var/amount = rand(40,100)
 	switch(rand(1,7))
@@ -480,7 +480,7 @@
 //job specials
 /datum/special_trait/punkprincess //I think everyone will like the Rebellous Prince-Like Princess. I'd love to do one for the prince as well that gives him princess loadout, but, up to you!
 	name = "Rebellous Daughter"
-	greet_text = span_notice("I am quite rebellious for a princess. Screw Noble Customs!")
+	greet_text = span_notice("I am quite rebellious for a noblewoman. Screw Noble Customs!")
 	req_text = "Be a princess"
 	allowed_sexes = list(FEMALE)
 	allowed_jobs = list(/datum/job/roguetown/prince)

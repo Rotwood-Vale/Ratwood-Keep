@@ -1,3 +1,6 @@
+/*
+
+
 /obj/item/reagent_containers/food/snacks/rogue/beanstew
 	name = "bean stew"
 	desc = "A hearty stew, with beans at the forefront."
@@ -129,3 +132,5 @@
 	result = /obj/item/reagent_containers/food/snacks/rogue/tieflingrice
 	craftdiff = 2
 	subtype_reqs = TRUE
+
+*/
