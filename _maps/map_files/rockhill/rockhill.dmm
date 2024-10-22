@@ -6083,7 +6083,7 @@
 	climbable = 0
 	},
 /obj/structure/bars{
-	icon_state = "barsbent";
+	icon_state = "openspace";
 	layer = 2.81
 	},
 /turf/open/floor/rogue/ruinedwood/spiral,
@@ -9583,7 +9583,7 @@
 	climbable = 0
 	},
 /obj/structure/bars{
-	icon_state = "barsbent";
+	icon_state = "openspace";
 	layer = 2.81
 	},
 /turf/open/floor/rogue/tile{
@@ -15083,7 +15083,7 @@
 	pixel_x = 3
 	},
 /obj/structure/bars{
-	icon_state = "barsbent";
+	icon_state = "openspace";
 	layer = 2.81
 	},
 /turf/open/floor/rogue/ruinedwood/spiral,
@@ -18901,7 +18901,7 @@
 	climbable = 0
 	},
 /obj/structure/bars{
-	icon_state = "barsbent";
+	icon_state = "openspace";
 	layer = 2.81
 	},
 /turf/open/floor/rogue/ruinedwood/spiral,
