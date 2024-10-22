@@ -593,7 +593,6 @@
 	sellprice = 140
 
 /obj/item/rogueweapon/sword/rapier/lord
-	force = 20
 	name = "sword of the Mad Duke"
 	desc = "A royal heirloom whose spiraling basket hilt is inlaid with fine cut gems. It bears the burnish of \
 	time, where once sharply defined features have been worn down by so many hands. An old rumor ties this implement \
