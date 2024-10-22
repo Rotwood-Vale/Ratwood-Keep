@@ -7,17 +7,15 @@
 	max_integrity = 0
 	anchored = TRUE
 	var/last_ring
-	var/datum/looping_sound/boatloop/soundloop
+	var/ignore_wallz = TRUE
 
-/obj/structure/bell_common/Initialize()
-	soundloop = new(list(src), FALSE)
-	soundloop.start()
-	. = ..()
 
 /obj/structure/bell_common/attack_hand(mob/user)
 	if(world.time < last_ring + 15)
 		return
-	user.visible_message(span_info("[user] rings the bell."))
-	SSshuttle.moveShuttle("supply", "supply_away", TRUE)
-	playsound(src, 'sound/misc/bell_common.ogg', 100, extrarange = 5)
+	user.visible_message(span_info("[user] starts ringing the bell."))
+	playsound(src, 'sound/misc/bell_common.ogg', 100, extrarange = 8)
+	flick("bell_commonpressed", src)
 	last_ring = world.time
+	
+	

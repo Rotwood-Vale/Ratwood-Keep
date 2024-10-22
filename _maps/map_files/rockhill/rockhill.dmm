@@ -7954,6 +7954,22 @@
 /obj/structure/bed/rogue/inn/hay,
 /turf/open/floor/rogue/twig,
 /area/rogue/under/town/basement)
+"hCc" = (
+/obj/structure/table/wood{
+	dir = 1;
+	icon_state = "longtable_mid";
+	climbable = 0
+	},
+/obj/structure/bars{
+	icon_state = "barsbent";
+	layer = 2.81
+	},
+/obj/structure/bell_common{
+	pixel_y = 3;
+	pixel_x = 3
+	},
+/turf/open/floor/rogue/ruinedwood/spiral,
+/area/rogue/indoors/town/tavern)
 "hCu" = (
 /obj/machinery/light/rogue/firebowl/standing,
 /turf/open/floor/rogue/tile{
@@ -9551,10 +9567,6 @@
 /obj/structure/bars{
 	icon_state = "barsbent";
 	layer = 2.81
-	},
-/obj/structure/bell_common{
-	pixel_y = 1;
-	pixel_x = 2
 	},
 /turf/open/floor/rogue/tile{
 	icon_state = "tile"
@@ -23497,13 +23509,11 @@
 /area/rogue/indoors/town/manor)
 "wAQ" = (
 /obj/structure/bell_common{
-	pixel_x = 4;
-	pixel_y = 4
+	pixel_x = -11;
+	pixel_y = -8;
+	dir = 4
 	},
-/obj/structure/table/wood{
-	icon_state = "tablewood1"
-	},
-/turf/open/floor/rogue/greenstone,
+/turf/open/floor/rogue/blocks/paving,
 /area/rogue/under/town/sewer)
 "wBf" = (
 /obj/structure/closet/crate/chest{
@@ -25067,10 +25077,7 @@
 "xXZ" = (
 /obj/structure/bell_common{
 	pixel_x = 2;
-	pixel_y = 4
-	},
-/obj/structure/table/wood{
-	icon_state = "tablewood1"
+	pixel_y = -11
 	},
 /turf/open/floor/rogue/blocks,
 /area/rogue/outdoors/town)
@@ -179348,7 +179355,7 @@ pOf
 pOf
 gLf
 bWQ
-gUg
+wAQ
 gUg
 gUg
 gUg
@@ -179750,7 +179757,7 @@ pOf
 pOf
 bJs
 tqP
-wAQ
+gLf
 gUg
 gLf
 tqP
@@ -289496,7 +289503,7 @@ bDY
 lyG
 wEm
 xIh
-oqm
+hCc
 wIK
 haG
 qJm
