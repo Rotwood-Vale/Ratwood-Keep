@@ -81,7 +81,7 @@
 				to_chat(user, span_warning("I should put this on a table first."))
 				return
 			var/skill_level = user.mind.get_skill_level(/datum/skill/misc/sewing)
-			if((!I.armor && skill_level < 1) || (I.armor & skill_level < 2))
+			if((!I.armor && skill_level < 1) || (I.armor && skill_level < 2))
 				to_chat(user, span_warning("I should probably not be doing this..."))
 			playsound(loc, 'sound/foley/sewflesh.ogg', 100, TRUE, -2)
 			var/skill_multiplied = (skill_level * 10)
@@ -93,7 +93,7 @@
 				I.obj_integrity = min(I.obj_integrity + skill_multiplied, I.max_integrity)
 			else
 				if(prob(20 - user.STALUC)) //Unlucky here!
-					I.obj_integrity -= 150
+					I.take_damage(150, BRUTE, "slash")
 					user.visible_message(span_info("[user] was extremely unlucky and ruined [I] while trying to unskillfuly repair it!"))
 					playsound(src, 'sound/foley/cloth_rip.ogg', 50, TRUE)
 				else if(prob(user.STALUC)) //Lucky here!
@@ -101,7 +101,7 @@
 					playsound(src, 'sound/magic/ahh2.ogg', 50, TRUE)
 					user.visible_message(span_info("A miracle! [user] somehow managed to repair [I] while not having a single clue what he was doing!"))
 				else
-					I.obj_integrity -= 50
+					I.take_damage(50, BRUTE, "slash")
 					user.visible_message(span_info("[user] damaged [I] due to a lack of skill!"))
 					playsound(src, 'sound/foley/cloth_rip.ogg', 50, TRUE)
 				user.mind.add_sleep_experience(/datum/skill/misc/sewing, (user.STAINT) / 2) // Only failing if we have no idea what we're doing
