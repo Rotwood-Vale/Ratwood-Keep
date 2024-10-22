@@ -3,8 +3,8 @@
 	flag = GOBLINGUARD
 	department_flag = GOBLIN
 	faction = "Station"
-	total_positions = 6
-	spawn_positions = 6
+	total_positions = 3//From 6
+	spawn_positions = 3//From 6
 	allowed_sexes = list(MALE)
 	allowed_races = list(/datum/species/goblinp)
 	allowed_patrons = list(/datum/patron/inhumen/graggar)

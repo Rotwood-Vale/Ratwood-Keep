@@ -3,12 +3,12 @@
 	flag = GOBLINCOOK
 	department_flag = GOBLIN
 	faction = "Station"
-	total_positions = 2
-	spawn_positions = 2
+	total_positions = 1//From 2
+	spawn_positions = 1//From 2
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = list(/datum/species/goblinp)
 	allowed_patrons = list(/datum/patron/inhumen/graggar)
-	tutorial = "You're one of two camp cooks, in service to the King, your lord on this mortal plane. \
+	tutorial = "You're one of the camp cooks, in service to the King, your lord on this mortal plane. \
 	He's chosen you, out of many others, to prepare and service the camp when it comes to the culinary arts. \
 	Maintain a farm, task the lower-goblins with foraging and try not to cook anything that'll kill your King."
 	outfit = /datum/outfit/job/roguetown/goblincook
