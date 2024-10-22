@@ -28,7 +28,7 @@ GLOBAL_LIST_EMPTY(lord_titles)
 	whitelist_req = FALSE
 	min_pq = 10
 	max_pq = null
-	give_bank_account = 1000
+	give_bank_account = TRUE
 	required = TRUE
 
 /datum/job/roguetown/exlord //just used to change the lords title
