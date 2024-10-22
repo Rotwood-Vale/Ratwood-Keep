@@ -81,14 +81,14 @@
 				to_chat(user, span_warning("I should put this on a table first."))
 				return
 			var/skill_level = user.mind.get_skill_level(/datum/skill/misc/sewing)
-			if(!I.armor & skill_level < 1 || I.armor & skill_level < 2)
+			if((!I.armor && skill_level < 1) || (I.armor & skill_level < 2))
 				to_chat(user, span_warning("I should probably not be doing this..."))
 			playsound(loc, 'sound/foley/sewflesh.ogg', 100, TRUE, -2)
 			var/skill_multiplied = (skill_level * 10)
 			var/sewtime = (60 - skill_multiplied)
 			if(!do_after(user, sewtime, target = I))
 				return
-			if(!I.armor & skill_level > 0 || I.armor & skill_level > 1) //If not armor but skill level at least 1 or Armor and skill level at least 2
+			if((!I.armor && skill_level > 0) || (I.armor && skill_level > 1)) //If not armor but skill level at least 1 or Armor and skill level at least 2
 				user.visible_message(span_info("[user] repairs [I]!"))
 				I.obj_integrity = min(I.obj_integrity + skill_multiplied, I.max_integrity)
 			else
