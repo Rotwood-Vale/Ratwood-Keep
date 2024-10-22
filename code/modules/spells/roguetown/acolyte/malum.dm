@@ -376,24 +376,24 @@ world/New()
 /obj/effect/proc_holder/spell/invoked/malum_flame_rogue
 	name = "Malum's Fire"
 	overlay_state = "sacredflame"
-	releasedrain = 30
+	releasedrain = 15
 	chargedrain = 0
 	chargetime = 0
 	range = 15
 	warnie = "sydwarning"
 	movement_interrupt = FALSE
 	chargedloop = null
-	req_items = null
+	req_items = list(/obj/item/clothing/neck/roguetown/psicross)
 	sound = 'sound/magic/heal.ogg'
-	invocation = "Ignite!"
-	invocation_type = "shout"
+	invocation = "Flame."
+	invocation_type = "whisper"
 	associated_skill = /datum/skill/magic/holy
-	antimagic_allowed = FALSE
+	antimagic_allowed = TRUE
 	charge_max = 15 SECONDS
 	miracle = TRUE
-	devotion_cost = 10
+	devotion_cost = 15
 
-/obj/effect/proc_holder/spell/invoked/malum_flame_rogue/cast(list/targets, mob/user = usr) // weaker longer cooldown sacred flame. sacred flame adds 5 fires stacks and puts out after 5 seconds. this adds one fire stack and doesnt extinguish
+obj/effect/proc_holder/spell/invoked/sacred_flame_rogue/cast(list/targets, mob/user = usr)
 	. = ..()
 	if(isliving(targets[1]))
 		var/mob/living/L = targets[1]
