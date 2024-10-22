@@ -8641,12 +8641,6 @@
 	},
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue/indoors/town/shop)
-"ioC" = (
-/obj/structure/flora/newtree,
-/obj/structure/flora/newtree,
-/obj/structure/flora/newtree,
-/turf/open/floor/rogue/grass,
-/area/rogue/outdoors/rtfield)
 "ipb" = (
 /obj/structure/spider/stickyweb,
 /turf/open/water/cleanshallow,
@@ -19780,9 +19774,6 @@
 	icon_state = "bfloorz"
 	},
 /area/rogue/indoors/town/manor)
-"tcf" = (
-/turf/open/floor/rogue/naturalstone,
-/area/rogue/under/town/sewer)
 "tck" = (
 /obj/structure/table/wood{
 	dir = 1;
@@ -312708,15 +312699,15 @@ spp
 spp
 spp
 spp
-uTY
-ioC
-tcf
-ioC
-ioC
 spp
 spp
 spp
-ioC
+spp
+spp
+spp
+spp
+spp
+spp
 spp
 qvR
 hcW
