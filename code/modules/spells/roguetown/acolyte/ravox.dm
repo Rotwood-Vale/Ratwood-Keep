@@ -21,6 +21,7 @@ Within this file:
 	associated_skill = /datum/skill/magic/holy
 	antimagic_allowed = TRUE
 	miracle = TRUE
+	charge_max = 30 SECONDS
 	devotion_cost = 20
 
 /obj/effect/proc_holder/spell/invoked/burden/cast(list/targets, mob/user)
