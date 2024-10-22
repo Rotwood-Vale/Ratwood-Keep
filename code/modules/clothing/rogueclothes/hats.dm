@@ -764,6 +764,7 @@
 	smeltresult = null
 	blocksound = SOFTHIT
 	clothing_flags = null
+	sewrepair = TRUE
 	salvage_amount = 1
 	salvage_result = /obj/item/natural/hide
 
