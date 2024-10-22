@@ -118,8 +118,8 @@
 			belt = /obj/item/storage/belt/rogue/leather
 			beltr = /obj/item/rogueweapon/stoneaxe/woodcut
 			beltl = /obj/item/storage/belt/rogue/pouch/coins/poor
-			backl = /obj/item/rogueweapon/shield/wood
-			backr = /obj/item/storage/backpack/rogue/backpack
+			backr = /obj/item/rogueweapon/shield/wood
+			backl = /obj/item/storage/backpack/rogue/backpack
 			backpack_contents = list(/obj/item/rogueweapon/huntingknife =1, /obj/item/clothing/neck/roguetown/chaincoif/iron, /obj/item/rogueore/coal = 1, /obj/item/rogueweapon/tongs=1, /obj/item/rogueore/iron=1, /obj/item/rogueweapon/hammer)
 			H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
