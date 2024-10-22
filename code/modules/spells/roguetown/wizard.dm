@@ -220,7 +220,7 @@
 	no_early_release = TRUE
 	movement_interrupt = TRUE
 	chargedloop = /datum/looping_sound/invokegen
-	cost = 7	//Only court mage andheartfelt get this. No point in it being obscenely expensive, especially with fire stack nerfs
+	cost = 10	//Court mage starts with this, If they want a /second/ they can pay the massive price for it.
 	xp_gain = TRUE
 
 /obj/projectile/magic/aoe/fireball/rogue/great
