@@ -156,3 +156,19 @@
 					/obj/item/clothing/shoes/roguetown/armor/nobleboot,
 					/obj/item/clothing/shoes/roguetown/armor/nobleboot,
 				)
+
+/datum/supply_pack/rogue/wardrobe/suits/noble
+	name = "Noble Dresses"
+	cost = 50
+	contains = list(
+					/obj/item/clothing/suit/roguetown/shirt/nobledress,
+					/obj/item/clothing/suit/roguetown/shirt/nobledress,
+				)
+
+/datum/supply_pack/rogue/wardrobe/suits/noble/velvet
+	name = "Velvet Noble Dresses"
+	cost = 60
+	contains = list(
+					/obj/item/clothing/suit/roguetown/shirt/velvetdress,
+					/obj/item/clothing/suit/roguetown/shirt/velvetdress,
+				)
