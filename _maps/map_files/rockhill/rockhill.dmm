@@ -12094,10 +12094,6 @@
 /obj/structure/flora/roguegrass/water/reeds,
 /turf/open/water/cleanshallow,
 /area/rogue/outdoors/beach)
-"lEA" = (
-/obj/structure/ladder,
-/turf/open/floor/rogue/carpet/lord/left,
-/area/rogue/indoors/town/manor)
 "lEB" = (
 /obj/structure/mineral_door/wood/deadbolt{
 	dir = 4
@@ -397663,7 +397659,7 @@ xlm
 xlm
 xlm
 qRa
-lEA
+ohU
 ohU
 wKq
 duQ
