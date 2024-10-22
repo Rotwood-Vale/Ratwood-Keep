@@ -37,6 +37,7 @@
 	equip_sound = 'sound/blank.ogg'
 	heldz_items = 3
 	sewrepair = TRUE
+	resistance_flags = FIRE_PROOF
 
 /obj/item/storage/belt/rogue/leather/plaquegold
 	name = "plaque belt"
@@ -106,6 +107,7 @@
 	content_overlays = FALSE
 	bloody_icon_state = "bodyblood"
 	sewrepair = TRUE
+	resistance_flags = FIRE_PROOF
 
 /obj/item/storage/belt/rogue/pouch/ComponentInitialize()
 	. = ..()
@@ -168,7 +170,7 @@
 	righthand_file = 'icons/mob/inhands/equipment/backpack_righthand.dmi'
 	w_class = WEIGHT_CLASS_BULKY
 	slot_flags = ITEM_SLOT_BACK
-	resistance_flags = NONE
+	resistance_flags = FIRE_PROOF
 	max_integrity = 300
 	equip_sound = 'sound/blank.ogg'
 	bloody_icon_state = "bodyblood"
@@ -220,7 +222,7 @@
 	icon = 'icons/roguetown/clothing/storage.dmi'
 	w_class = WEIGHT_CLASS_BULKY
 	slot_flags = ITEM_SLOT_BACK_L
-	resistance_flags = NONE
+	resistance_flags = FIRE_PROOF
 	max_integrity = 300
 	equip_sound = 'sound/blank.ogg'
 	bloody_icon_state = "bodyblood"

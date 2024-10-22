@@ -23,6 +23,7 @@
 	var/base_type //used for compares
 	var/quantity = 1
 	var/plural_name
+	resistance_flags = FIRE_PROOF
 
 /obj/item/roguecoin/Initialize(mapload, coin_amount)
 	. = ..()

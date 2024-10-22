@@ -13,6 +13,7 @@
 	hitsound = 'sound/items/bsmith1.ogg'
 	var/cooldown = 3 SECONDS
 	var/ringing = FALSE
+	resistance_flags = FIRE_PROOF
 
 /obj/item/handheld_bell/attack_self(mob/user)
 	. = ..()

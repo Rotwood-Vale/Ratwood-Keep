@@ -14,6 +14,7 @@
 	slot_flags = ITEM_SLOT_HIP|ITEM_SLOT_NECK|ITEM_SLOT_MOUTH|ITEM_SLOT_WRISTS
 	drop_sound = 'sound/foley/dropsound/chain_drop.ogg'
 	anvilrepair = /datum/skill/craft/blacksmithing
+	resistance_flags = FIRE_PROOF
 
 /obj/item/storage/keyring/Initialize()
     . = ..()

@@ -12,6 +12,7 @@
 	drop_sound = 'sound/items/gem.ogg'
 	sellprice = 100
 	static_price = FALSE
+	resistance_flags = FIRE_PROOF
 
 /obj/item/roguegem/getonmobprop(tag)
 	. = ..()

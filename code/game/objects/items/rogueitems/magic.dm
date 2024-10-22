@@ -13,6 +13,7 @@
 	hitsound = 'sound/blank.ogg'
 	sellprice = 30
 	dropshrink = 0.6
+	resistance_flags = FIRE_PROOF
 
 	var/mob/current_owner
 	var/last_scry

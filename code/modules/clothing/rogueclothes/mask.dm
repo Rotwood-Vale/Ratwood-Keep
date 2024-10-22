@@ -66,6 +66,7 @@
 	icon_state = "lmask"
 	sellprice = 50
 	anvilrepair = /datum/skill/craft/armorsmithing
+	resistance_flags = FIRE_PROOF
 
 /obj/item/clothing/mask/rogue/lordmask/l
 	icon_state = "lmask_l"

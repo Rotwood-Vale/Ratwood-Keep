@@ -166,6 +166,7 @@
 	flags_inv = HIDEBOOB|HIDETAIL
 	r_sleeve_status = SLEEVE_NORMAL
 	l_sleeve_status = SLEEVE_NORMAL
+	resistance_flags = FIRE_PROOF
 
 //Eora content from Stonekeep
 

@@ -30,7 +30,7 @@
 	icon_state = "saddle"
 	w_class = WEIGHT_CLASS_BULKY
 	slot_flags = ITEM_SLOT_BACK_L
-	resistance_flags = FLAMMABLE
+	resistance_flags = FIRE_PROOF
 	gripped_intents = list(/datum/intent/use)
 	force = 0
 	throwforce = 0

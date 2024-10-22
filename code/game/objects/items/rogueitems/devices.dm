@@ -10,6 +10,7 @@
 	dropshrink = 0.4
 	drop_sound = 'sound/items/gem.ogg'
 	var/usage_prompt
+	resistance_flags = FIRE_PROOF
 
 /obj/item/gem_device/attack_self(mob/living/user)
 	var/alert = alert(user, "Do I want to use this? \n[usage_prompt]", "Enchanted Gem", "Yes", "No")

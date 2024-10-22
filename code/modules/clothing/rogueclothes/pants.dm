@@ -112,6 +112,7 @@
 /obj/item/clothing/under/roguetown/trou/leather
 	name = "leather trousers"
 	icon_state = "leathertrou"
+	resistance_flags = FIRE_PROOF
 
 /obj/item/clothing/under/roguetown/trou/leather/mourning
 	name = "mourning trousers"
@@ -142,6 +143,7 @@
 	smeltresult = /obj/item/ingot/steel
 	r_sleeve_status = SLEEVE_NOMOD
 	l_sleeve_status = SLEEVE_NOMOD
+	resistance_flags = FIRE_PROOF
 
 /obj/item/clothing/under/roguetown/brayette
 	name = "brayette"
@@ -160,6 +162,7 @@
 	smeltresult = /obj/item/ingot/steel
 	r_sleeve_status = SLEEVE_NOMOD
 	l_sleeve_status = SLEEVE_NOMOD
+	resistance_flags = FIRE_PROOF
 
 /obj/item/clothing/under/roguetown/chainlegs/iron
 	name = "iron chain chausses"
@@ -187,6 +190,7 @@
 	r_sleeve_status = SLEEVE_NOMOD
 	l_sleeve_status = SLEEVE_NOMOD
 	smelt_bar_num = 2
+	resistance_flags = FIRE_PROOF
 
 
 /obj/item/clothing/under/roguetown/chainlegs/skirt
@@ -291,3 +295,4 @@
 	r_sleeve_status = SLEEVE_NOMOD
 	l_sleeve_status = SLEEVE_NOMOD
 	smelt_bar_num = 2
+	resistance_flags = FIRE_PROOF

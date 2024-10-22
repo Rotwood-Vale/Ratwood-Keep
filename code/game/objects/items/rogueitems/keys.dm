@@ -14,6 +14,7 @@
 	slot_flags = ITEM_SLOT_HIP|ITEM_SLOT_MOUTH|ITEM_SLOT_NECK
 	drop_sound = 'sound/items/gems (1).ogg'
 	anvilrepair = /datum/skill/craft/blacksmithing
+	resistance_flags = FIRE_PROOF
 
 /obj/item/roguekey/Initialize()
 	. = ..()
@@ -39,6 +40,7 @@
 	picklvl = 1
 	slot_flags = ITEM_SLOT_HIP|ITEM_SLOT_MOUTH|ITEM_SLOT_NECK
 	destroy_sound = 'sound/items/pickbreak.ogg'
+	resistance_flags = FIRE_PROOF
 
 /obj/item/roguekey/lord
 	name = "master key"
