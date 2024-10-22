@@ -121,7 +121,11 @@
 	if(!H || !H.mind || !patron)
 		return
 
-	var/list/spelllist = list(/obj/effect/proc_holder/spell/targeted/churn, patron.t0)
+	var/list/spelllist = list(/obj/effect/proc_holder/spell/targeted/churn)
+	if(islist(patron.t0))
+		spelllist += patron.t0
+	else if (patron.t0)
+		spelllist += list(patron.t0)
 	for(var/spell_type in spelllist)
 		if(!spell_type || H.mind.has_spell(spell_type))
 			continue
