@@ -265,7 +265,7 @@
 //   Noble dress
 //
 
-/obj/item/clothing/suit/roguetown/shirt/nobledress
+/obj/item/clothing/suit/roguetown/shirt/dress/nobledress
 	slot_flags = ITEM_SLOT_ARMOR|ITEM_SLOT_SHIRT
 	name = "noble dress"
 	desc = "a noble dress, fit for a person of high standing"
