@@ -75,26 +75,36 @@
 			return
 		if(I.sewrepair && I.max_integrity && !I.obj_broken)
 			if(I.obj_integrity == I.max_integrity)
-				to_chat(user, span_warning("This is not broken."))
+				to_chat(user, span_warning("This is not damaged!"))
 				return
 			if(!I.ontable())
 				to_chat(user, span_warning("I should put this on a table first."))
 				return
+			var/skill_level = user.mind.get_skill_level(/datum/skill/misc/sewing)
+			if(!I.armor & skill_level < 1 || I.armor & skill_level < 2)
+				to_chat(user, span_warning("I should probably not be doing this..."))
 			playsound(loc, 'sound/foley/sewflesh.ogg', 100, TRUE, -2)
-			var/skill = ((user.mind.get_skill_level(/datum/skill/misc/sewing)) * 10)
-			var/sewtime = (60 - skill)
+			var/skill_multiplied = (skill_level * 10)
+			var/sewtime = (60 - skill_multiplied)
 			if(!do_after(user, sewtime, target = I))
 				return
-			if(prob(60 - skill)) //The more knowlegeable we are the less chance we damage the object
-				I.obj_integrity -= (60 - skill)
-				user.visible_message(span_info("[user] damages [I] due to a lack of skill!"))
-				playsound(src, 'sound/foley/cloth_rip.ogg', 50, TRUE)
-				user.mind.add_sleep_experience(/datum/skill/misc/sewing, (user.STAINT) / 2) // Only failing a repair teaches us something
-				return
-			else
-				playsound(loc, 'sound/foley/sewflesh.ogg', 50, TRUE, -2)
+			if(!I.armor & skill_level > 0 || I.armor & skill_level > 1) //If not armor but skill level at least 1 or Armor and skill level at least 2
 				user.visible_message(span_info("[user] repairs [I]!"))
-				I.obj_integrity = min(I.obj_integrity + skill, I.max_integrity)
+				I.obj_integrity = min(I.obj_integrity + skill_multiplied, I.max_integrity)
+			else
+				if(prob(20 - user.STALUC)) //Unlucky here!
+					I.obj_integrity -= 150
+					user.visible_message(span_info("[user] was extremely unlucky and ruined [I] while trying to unskillfuly repair it!"))
+					playsound(src, 'sound/foley/cloth_rip.ogg', 50, TRUE)
+				else if(prob(user.STALUC)) //Lucky here!
+					I.obj_integrity = min(I.obj_integrity + 50, I.max_integrity)
+					playsound(src, 'sound/magic/ahh2.ogg', 50, TRUE)
+					user.visible_message(span_info("A miracle! [user] somehow managed to repair [I] while not having a single clue what he was doing!"))
+				else
+					I.obj_integrity -= 50
+					user.visible_message(span_info("[user] damaged [I] due to a lack of skill!"))
+					playsound(src, 'sound/foley/cloth_rip.ogg', 50, TRUE)
+				user.mind.add_sleep_experience(/datum/skill/misc/sewing, (user.STAINT) / 2) // Only failing if we have no idea what we're doing
 		return
 	return ..()
 
