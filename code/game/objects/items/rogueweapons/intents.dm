@@ -466,7 +466,7 @@
 	icon_state = "instrike"
 	attack_verb = list("bites")
 	animname = "blank22"
-	blade_class = BCLASS_CUT
+	blade_class = BCLASS_BITE
 	hitsound = "smallslash"
 	chargetime = 0
 	penfactor = 0

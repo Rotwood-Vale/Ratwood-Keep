@@ -270,12 +270,6 @@ GLOBAL_LIST_EMPTY(job_respawn_delays)
 #define TRIUMPH_CAT_MISC "MISC!"
 #define TRIUMPH_CAT_ACTIVE_DATUMS "ACTIVE"
 
-
-#define TRIUMPH_CAT_ROUND_EFX "ROUND-EFX"
-#define TRIUMPH_CAT_CHARACTER "CHARACTER"
-#define TRIUMPH_CAT_MISC "MISC!"
-#define TRIUMPH_CAT_ACTIVE_DATUMS "ACTIVE"
-
 /*	........   Nutrition defines   ................ */
 #define MEAL_FILLING 30
 #define MEAL_GOOD 24

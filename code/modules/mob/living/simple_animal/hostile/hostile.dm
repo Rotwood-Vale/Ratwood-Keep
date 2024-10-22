@@ -377,6 +377,11 @@
 /mob/living/simple_animal/hostile/proc/AttackingTarget()
 	SEND_SIGNAL(src, COMSIG_HOSTILE_ATTACKINGTARGET, target)
 	in_melee = TRUE
+	zone_selected = zone_simpmob_target(src.zone_selected)
+	var/list/accuracy_check = simple_accuracy_check(src.zone_selected, src, target, src.used_intent)
+	var/goodhit = accuracy_check[2]
+	if(goodhit == "Miss")
+		return FALSE
 	return target.attack_animal(src)
 
 /mob/living/simple_animal/hostile/proc/Aggro()

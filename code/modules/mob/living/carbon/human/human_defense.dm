@@ -378,7 +378,7 @@
 			apply_damage(damage, BRUTE, affecting, armor_block)
 
 
-/mob/living/carbon/human/attack_animal(mob/living/simple_animal/M)
+/mob/living/carbon/human/attack_animal(mob/living/simple_animal/M, zone_selected)
 	. = ..()
 	if(.)
 		var/damage = rand(M.melee_damage_lower, M.melee_damage_upper)
@@ -391,7 +391,7 @@
 		if(!dam_zone) //Dismemberment successful
 			return TRUE
 
-		var/obj/item/bodypart/affecting = get_bodypart(ran_zone(dam_zone))
+		var/obj/item/bodypart/affecting = get_bodypart(M.zone_selected)
 		if(!affecting)
 			affecting = get_bodypart(BODY_ZONE_CHEST)
 		var/armor = run_armor_check(affecting, M.d_type, armor_penetration = M.a_intent.penfactor, damage = damage)

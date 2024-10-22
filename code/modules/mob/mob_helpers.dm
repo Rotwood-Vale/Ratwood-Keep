@@ -65,6 +65,63 @@
 		return 1
 	else
 		return 0
+
+/proc/zone_ace_mod(zone)
+	var/zone_ace_mod = 0
+	switch(zone)
+		if(BODY_ZONE_PRECISE_R_EYE)
+			zone_ace_mod = 0.3
+		if(BODY_ZONE_PRECISE_L_EYE)
+			zone_ace_mod = 0.3
+		if(BODY_ZONE_PRECISE_NOSE)
+			zone_ace_mod = 0.3
+		if(BODY_ZONE_PRECISE_MOUTH)
+			zone_ace_mod = 0.7
+		if(BODY_ZONE_PRECISE_SKULL)
+			zone_ace_mod = 0.9
+		if(BODY_ZONE_PRECISE_EARS)
+			zone_ace_mod = 0.15
+		if(BODY_ZONE_PRECISE_NECK)
+			zone_ace_mod = 0.65
+		if(BODY_ZONE_PRECISE_L_HAND)
+			zone_ace_mod = 0.6
+		if(BODY_ZONE_PRECISE_R_HAND)
+			zone_ace_mod = 0.6
+		if(BODY_ZONE_PRECISE_L_FOOT)
+			zone_ace_mod = 0.55
+		if(BODY_ZONE_PRECISE_R_FOOT)
+			zone_ace_mod = 0.55
+		if(BODY_ZONE_PRECISE_GROIN)
+			zone_ace_mod = 0.75
+		if(BODY_ZONE_PRECISE_STOMACH)
+			zone_ace_mod = 0.9
+		if(BODY_ZONE_PRECISE_R_INHAND)
+			zone_ace_mod = 0.7
+		if(BODY_ZONE_PRECISE_L_INHAND)
+			zone_ace_mod = 0.7
+		if(BODY_ZONE_HEAD || BODY_ZONE_L_ARM || BODY_ZONE_R_ARM || BODY_ZONE_L_LEG || BODY_ZONE_R_LEG)
+			zone_ace_mod = 1
+	return zone_ace_mod
+
+/proc/zone_simpmob_target(zone)
+	zone = pickweight(list(
+		BODY_ZONE_HEAD = 3,
+		BODY_ZONE_CHEST = 5,
+		BODY_ZONE_L_ARM = 2,
+		BODY_ZONE_R_ARM = 2,
+		BODY_ZONE_L_LEG = 4,
+		BODY_ZONE_R_LEG = 4,
+		BODY_ZONE_PRECISE_MOUTH = 1,
+		BODY_ZONE_PRECISE_NECK = 2,
+		BODY_ZONE_PRECISE_STOMACH = 3,
+		BODY_ZONE_PRECISE_GROIN = 3,
+		BODY_ZONE_PRECISE_L_HAND = 1,
+		BODY_ZONE_PRECISE_R_HAND = 1,
+		BODY_ZONE_PRECISE_L_FOOT = 3,
+		BODY_ZONE_PRECISE_R_FOOT = 3,
+		))
+	return zone
+
 /**
   * Convert random parts of a passed in message to stars
   *

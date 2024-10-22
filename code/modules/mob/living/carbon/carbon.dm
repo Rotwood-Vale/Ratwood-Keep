@@ -516,7 +516,7 @@
 	if(num == domhand)
 		return used
 	else
-		used = STASTR - 1
+		used = (STASTR - floor(STASTR*0.9))
 		if(used < 1)
 			used = 1
 		return used

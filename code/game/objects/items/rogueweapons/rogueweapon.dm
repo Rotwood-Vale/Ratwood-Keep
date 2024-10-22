@@ -73,7 +73,7 @@
 			nuforce *= 1.1
 
 		if(user.used_intent.blade_class == BCLASS_CHOP) //chopping attacks always attempt dismembering
-			nuforce *= 1.1
+			nuforce *= 1.25
 		else if(user.used_intent.blade_class == BCLASS_CUT)
 			if(!pristine_blade && (total_dam < affecting.max_damage * 0.8))
 				return 0

@@ -178,6 +178,10 @@
 	/* Can be used to change the lighting threshholds at which players can sneak.*/
 	var/rogue_sneaking_light_threshhold = 0.15
 
+	var/domhand = 0
+	/// Combat bonuses for Simple Mobs
+	var/simpmob_attack = 0
+	var/simpmob_defend = 0
 
 	/// Default pitch for emotes, on humans this is modified by stats
 	var/voice_pitch = 1

@@ -79,47 +79,6 @@
 	defprob = 50
 	adult_growth = /mob/living/simple_animal/hostile/retaliate/rogue/cow
 
-/mob/living/simple_animal/hostile/retaliate/rogue/cow/simple_limb_hit(zone)
-	if(!zone)
-		return ""
-	switch(zone)
-		if(BODY_ZONE_PRECISE_R_EYE)
-			return "head"
-		if(BODY_ZONE_PRECISE_L_EYE)
-			return "head"
-		if(BODY_ZONE_PRECISE_NOSE)
-			return "snout"
-		if(BODY_ZONE_PRECISE_MOUTH)
-			return "snout"
-		if(BODY_ZONE_PRECISE_SKULL)
-			return "head"
-		if(BODY_ZONE_PRECISE_EARS)
-			return "head"
-		if(BODY_ZONE_PRECISE_NECK)
-			return "neck"
-		if(BODY_ZONE_PRECISE_L_HAND)
-			return "foreleg"
-		if(BODY_ZONE_PRECISE_R_HAND)
-			return "foreleg"
-		if(BODY_ZONE_PRECISE_L_FOOT)
-			return "leg"
-		if(BODY_ZONE_PRECISE_R_FOOT)
-			return "leg"
-		if(BODY_ZONE_PRECISE_STOMACH)
-			return "stomach"
-		if(BODY_ZONE_HEAD)
-			return "head"
-		if(BODY_ZONE_R_LEG)
-			return "leg"
-		if(BODY_ZONE_L_LEG)
-			return "leg"
-		if(BODY_ZONE_R_ARM)
-			return "foreleg"
-		if(BODY_ZONE_L_ARM)
-			return "foreleg"
-
-	return ..()
-
 /mob/living/simple_animal/hostile/retaliate/rogue/cow/attack_hand(mob/living/carbon/M)
 	if(!stat && M.used_intent.type == INTENT_DISARM && icon_state != icon_dead && !has_buckled_mobs())
 		M.visible_message(span_warning("[M] tips over [src]."),
@@ -186,46 +145,6 @@
 	Retaliate()
 	GiveTarget(user)
 	return
-
-/mob/living/simple_animal/hostile/retaliate/bull/simple_limb_hit(zone)
-	if(!zone)
-		return ""
-	switch(zone)
-		if(BODY_ZONE_PRECISE_R_EYE)
-			return "head"
-		if(BODY_ZONE_PRECISE_L_EYE)
-			return "head"
-		if(BODY_ZONE_PRECISE_NOSE)
-			return "snout"
-		if(BODY_ZONE_PRECISE_MOUTH)
-			return "snout"
-		if(BODY_ZONE_PRECISE_SKULL)
-			return "head"
-		if(BODY_ZONE_PRECISE_EARS)
-			return "head"
-		if(BODY_ZONE_PRECISE_NECK)
-			return "neck"
-		if(BODY_ZONE_PRECISE_L_HAND)
-			return "foreleg"
-		if(BODY_ZONE_PRECISE_R_HAND)
-			return "foreleg"
-		if(BODY_ZONE_PRECISE_L_FOOT)
-			return "leg"
-		if(BODY_ZONE_PRECISE_R_FOOT)
-			return "leg"
-		if(BODY_ZONE_PRECISE_STOMACH)
-			return "stomach"
-		if(BODY_ZONE_HEAD)
-			return "head"
-		if(BODY_ZONE_R_LEG)
-			return "leg"
-		if(BODY_ZONE_L_LEG)
-			return "leg"
-		if(BODY_ZONE_R_ARM)
-			return "foreleg"
-		if(BODY_ZONE_L_ARM)
-			return "foreleg"
-	return ..()
 
 /mob/living/simple_animal/hostile/retaliate/bull/taunted(mob/user)
 	Retaliate()

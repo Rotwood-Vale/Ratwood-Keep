@@ -1,60 +1,159 @@
-/proc/accuracy_check(zone, mob/living/user, mob/living/target, associated_skill, datum/intent/used_intent, obj/item/I)
+/proc/accuracy_check(zone, mob/living/user, mob/living/target, obj/item/I, associated_skill, datum/intent/used_intent)
+	var/hit = "Hit"
+	used_intent = user.used_intent
 	if(!zone)
 		return
 	if(user == target)
-		return zone
+		return list(zone, hit)
 	if(zone == BODY_ZONE_CHEST)
-		return zone
-	if(target.grabbedby == user)
+		return list(zone, hit)
+	if(used_intent.type == INTENT_GRAB)
+		if(!(target.mobility_flags & MOBILITY_STAND)) //If they're grounded, you can just grab them
+			return list(zone, hit)
 		if(user.grab_state >= GRAB_AGGRESSIVE)
-			return zone
-	if(!(target.mobility_flags & MOBILITY_STAND))
-		return zone
-	if( (target.dir == turn(get_dir(target,user), 180)))
-		return zone
+			return list(zone, hit)
 
+	var/ace_mod = zone_ace_mod(zone)
 	var/chance2hit = 0
-
-	if(check_zone(zone) == zone)
-		chance2hit += 10
+	var/chance2acehit = 0
+	var/strmod = 0
+//	var/facing = 0
 
 	if(user.mind)
-		chance2hit += (user.mind.get_skill_level(associated_skill) * 7)
+		chance2hit += (user.mind.get_skill_level(associated_skill) * 15) //15 points per skill level, 95 bonus at Legendary
+
+	if(target.grabbedby == user)
+		if(used_intent.reach == 1)
+			chance2hit += 30
+
+	if(user.simpmob_attack >= 1) //To compensate for NPCs lack of skills
+		chance2hit += (user.simpmob_attack)
+
+	if(user.domhand != user.active_hand_index) //Attacking with your offhand will penalize your To-Hit
+		chance2hit -= 25
 
 	if(used_intent)
-		if(used_intent.blade_class == BCLASS_STAB)
-			chance2hit += user.STAPER
-		if(used_intent.blade_class == BCLASS_CUT)
-			chance2hit += round(user.STAPER/2)
+		if(used_intent.blade_class == BCLASS_STAB) //Thrusting attacks are the most accurate
+			chance2hit += user.STAPER 
+		if(used_intent.blade_class == BCLASS_CUT) //Slashing is still semi-aimed
+			chance2hit += round(user.STAPER / 2)
+		if(used_intent.blade_class == BCLASS_PUNCH) //It is easiest to aim your fists
+			chance2hit += (40 + user.STAPER)
+		if(used_intent == INTENT_KICK) 
+			chance2hit += (30 + user.STAPER)
+		if(used_intent == INTENT_BITE)
+			chance2hit += (50 + user.STAPER)
+		if(used_intent.reach >= 2) //Using a polearm's reach attack at close range reduces the To-Hit chance
+			if(get_dist(user, target) <= 1)
+				chance2hit -= 25
+	
+	if(!(target.mobility_flags & MOBILITY_STAND)) //If they're grounded, you get a bonus to your To-Hit
+		chance2hit += 40
 
 	if(I)
-		if(I.wlength == WLENGTH_SHORT)
-			chance2hit += 10
+		if(I.wlength == WLENGTH_SHORT) //Small weapons like daggers are easier to aim
+			chance2hit += 15
+		if(I.minstr >= 0) //Using a weapon while below minimum strength requirement will penalize your To-Hit
+			strmod = (user.STASTR - I.minstr)
+			if(strmod <= 0)
+				chance2hit += (strmod * 2) 
+		if(I.wielded) //Two Handing a weapon will add part of your Strength score to your To-Hit
+			chance2hit += (user.STASTR / 1.5) //
+		chance2hit += (user.STAPER / 2) //Using weapons gives you half your Perception as a To-Hit bonus
 
-		chance2hit += ((user.STAPER-10)*5)
+	if(user.mob_size != target.mob_size) //Size modifier. Easier to hit bigger enemies, harder to hit smaller enemies.
+		chance2hit += ((target.mob_size - user.mob_size) * 10)
 
-
-	if(istype(user.rmb_intent, /datum/rmb_intent/aimed))
-		chance2hit += (user.STAPER)*2
-	if(istype(user.rmb_intent, /datum/rmb_intent/swift))
+	if(istype(user.rmb_intent, /datum/rmb_intent/aimed)) //Taking time to aim attacks gives Perception + 10
+		chance2hit += (user.STAPER + 10)
+	if(istype(user.rmb_intent, /datum/rmb_intent/swift)) //Swinging as fast as you can reduces your To-Hit
 		chance2hit -= 20
+/*
+	if((target.dir == turn(get_dir(target,user), 180))) //Attacks from the rear will prevent precision hits to the face
+		if(zone == BODY_ZONE_PRECISE_R_EYE || zone == BODY_ZONE_PRECISE_L_EYE || zone == BODY_ZONE_PRECISE_NOSE || zone == BODY_ZONE_PRECISE_MOUTH || zone == BODY_ZONE_PRECISE_STOMACH)
+			ace_mod = (ace_mod * 0)
+	if((target.dir == turn(get_dir(target,user), 90 || target.dir == turn(get_dir(target,user), 240)))) //Attacks from the sides half face To-Hit, but double ear To-Hit
+		if(zone == BODY_ZONE_PRECISE_R_EYE || BODY_ZONE_PRECISE_L_EYE || BODY_ZONE_PRECISE_NOSE || BODY_ZONE_PRECISE_MOUTH || BODY_ZONE_PRECISE_STOMACH)
+			ace_mod = (ace_mod / 2)
+		if(zone == BODY_ZONE_PRECISE_EARS)
+			ace_mod = (ace_mod * 2)
+*/
 
-	chance2hit = CLAMP(chance2hit, 5, 99)
-
-	if(prob(chance2hit))
-		return zone
+	chance2acehit = CLAMP((round(chance2hit * ace_mod)), 0, 100) //Ability to hit sub-locations
+	chance2hit = CLAMP((round(chance2hit)), 0, 100) //Ability to hit the target
+	var/tohit = rand(1,100)
+	if(tohit <= chance2acehit)
+		if(user.client?.prefs.showrolls)
+			to_chat(user, span_nicegreen("Good Hit!! Rolled [tohit] against [chance2acehit]%"))
+		hit = "Hit"
+		return list(zone, hit)
 	else
-		if(prob(chance2hit+5))
-			if(check_zone(zone) == zone)
-				return zone
-			else
-				if(user.client?.prefs.showrolls)
-					to_chat(user, span_warning("Accuracy fail! [chance2hit]%"))
-				return check_zone(zone)
+		if(tohit <= chance2hit)
+			if(user.client?.prefs.showrolls)
+				to_chat(user, span_warning("Hit! Rolled [tohit] against [chance2hit]%"))
+			hit = "Hit"
+			zone = check_zone(zone)
+			return list(zone, hit)
 		else
 			if(user.client?.prefs.showrolls)
-				to_chat(user, span_warning("Double accuracy fail! [chance2hit]%"))
-			return BODY_ZONE_CHEST
+				to_chat(user, span_warning("Missed!! Rolled [tohit] against [chance2hit]%"))
+				to_chat(target, span_warning("[user] Missed!! Rolled [tohit] against [chance2hit]%")) ///DEBUGGING FIELD
+			user.aftermiss()
+			hit = "Miss"
+			zone = check_zone(zone)
+			return list(zone, hit)
+
+/proc/simple_accuracy_check(zone, mob/living/user, mob/living/target, datum/intent/used_intent)
+	var/hit = "Hit"
+	used_intent = user.used_intent
+	if(!zone)
+		return
+	if(user == target)
+		return list(zone, hit)
+	if(zone == BODY_ZONE_CHEST)
+		return list(zone, hit)
+
+	var/ace_mod = zone_ace_mod(zone)
+	var/chance2hit = 0
+	var/chance2acehit = 0
+//	var/facing = 0
+
+	chance2hit += (user.simpmob_attack)
+	chance2hit += user.STAPER 
+	chance2hit += (user.STASTR / 2)
+
+	if(user.grabbedby == target)
+		chance2hit -= 20
+
+	if(user.mob_size != target.mob_size) //Size modifier. Easier to hit bigger enemies, harder to hit smaller enemies.
+		chance2hit += ((target.mob_size - user.mob_size) * 10)
+
+	if(!(target.mobility_flags & MOBILITY_STAND)) //If they're grounded, you get a bonus to your To-Hit
+		chance2hit += 40
+
+	chance2acehit = CLAMP((round(chance2hit * ace_mod)), 0, 100) //Ability to hit sub-locations
+	chance2hit = CLAMP((round(chance2hit)), 0, 100) //Ability to hit the target
+	var/tohit = rand(1,100)
+	if(tohit <= chance2acehit)
+		if(user.client?.prefs.showrolls)
+			to_chat(user, span_nicegreen("Good Hit!! Rolled [tohit] against [chance2acehit]%"))
+		hit = "Hit"
+		return list(zone, hit)
+	else
+		if(tohit <= chance2hit)
+			if(user.client?.prefs.showrolls)
+				to_chat(user, span_warning("Hit! Rolled [tohit] against [chance2hit]%"))
+			hit = "Hit"
+			zone = check_zone(zone)
+			return list(zone, hit)
+		else
+			if(user.client?.prefs.showrolls)
+				to_chat(user, span_warning("Missed!! Rolled [tohit] against [chance2hit]%"))
+				to_chat(target, span_warning("[user] Missed!! Rolled [tohit] against [chance2hit]%")) ///DEBUGGING FIELD
+			user.aftermiss()
+			hit = "Miss"
+			zone = check_zone(zone)
+			return list(zone, hit)
 
 /mob/proc/get_generic_parry_drain()
 	return 30
@@ -424,7 +523,7 @@
 			return FALSE
 	dodgecd = TRUE
 	playsound(src, 'sound/combat/dodge.ogg', 100, FALSE)
-	throw_at(turfy, 1, 2, src, FALSE)
+	throw_at(turfy, 1, 4, src, FALSE)
 	if(drained > 0)
 		src.visible_message(span_warning("<b>[src]</b> dodges [user]'s attack!"))
 	else

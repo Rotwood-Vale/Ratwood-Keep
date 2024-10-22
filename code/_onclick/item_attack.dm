@@ -54,7 +54,7 @@
 /mob/living/attackby(obj/item/I, mob/living/user, params)
 	if(..())
 		return TRUE
-	var/adf = user.used_intent.clickcd
+	var/adf = ((user.used_intent.clickcd + 8) - round((user.STASPD - 10) / 2))
 	if(istype(user.rmb_intent, /datum/rmb_intent/aimed))
 		adf = round(adf * 1.4)
 	if(istype(user.rmb_intent, /datum/rmb_intent/swift))
@@ -407,6 +407,10 @@
 	return
 
 /mob/living/attacked_by(obj/item/I, mob/living/user)
+	var/list/accuracy_check = accuracy_check(user.zone_selected, user, src, I)
+	var/goodhit = accuracy_check[2]
+	if(goodhit == "Miss")
+		return FALSE
 	var/hitlim = simple_limb_hit(user.zone_selected)
 	testing("[src] attacked_by")
 	I.funny_attack_effects(src, user)
@@ -448,12 +452,12 @@
 
 // Proximity_flag is 1 if this afterattack was called on something adjacent, in your square, or on your person.
 // Click parameters is the params string from byond Click() code, see that documentation.
-/obj/item/proc/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
+/obj/item/proc/afterattack(atom/target, mob/living/user, proximity_flag, click_parameters)
 	SEND_SIGNAL(src, COMSIG_ITEM_AFTERATTACK, target, user, proximity_flag, click_parameters)
 	SEND_SIGNAL(user, COMSIG_MOB_ITEM_AFTERATTACK, target, user, proximity_flag, click_parameters)
 	if(force && !user.used_intent.tranged && !user.used_intent.tshield)
 		if(proximity_flag && isopenturf(target) && !user.used_intent?.noaa)
-			var/adf = user.used_intent.clickcd
+			var/adf = ((user.used_intent.clickcd + 8) - round((user.STASPD - 10) / 2))
 			if(istype(user.rmb_intent, /datum/rmb_intent/aimed))
 				adf = round(adf * 1.4)
 			if(istype(user.rmb_intent, /datum/rmb_intent/swift))
@@ -463,7 +467,7 @@
 			playsound(get_turf(src), pick(swingsound), 100, FALSE, -1)
 			user.aftermiss()
 		if(!proximity_flag && ismob(target) && !user.used_intent?.noaa) //this block invokes miss cost clicking on seomone who isn't adjacent to you
-			var/adf = user.used_intent.clickcd
+			var/adf = ((user.used_intent.clickcd + 8) - round((user.STASPD - 10) / 2))
 			if(istype(user.rmb_intent, /datum/rmb_intent/aimed))
 				adf = round(adf * 1.4)
 			if(istype(user.rmb_intent, /datum/rmb_intent/swift))

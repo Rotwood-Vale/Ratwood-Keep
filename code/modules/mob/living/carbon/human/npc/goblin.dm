@@ -5,18 +5,23 @@
 	icon_state = "blank"
 	race = /datum/species/goblin
 	gender = MALE
+	domhand = 2
+	simpmob_attack = 45
+	simpmob_defend = 10
 	bodyparts = list(/obj/item/bodypart/chest/goblin, /obj/item/bodypart/head/goblin, /obj/item/bodypart/l_arm/goblin,
 					 /obj/item/bodypart/r_arm/goblin, /obj/item/bodypart/r_leg/goblin, /obj/item/bodypart/l_leg/goblin)
 	rot_type = /datum/component/rot/corpse/goblin
 	var/gob_outfit = /datum/outfit/job/roguetown/npc/goblin
 	ambushable = FALSE
 	base_intents = list(INTENT_HELP, INTENT_DISARM, INTENT_GRAB, /datum/intent/unarmed/claw)
-	possible_rmb_intents = list()
+	a_intent = INTENT_HELP
+	possible_mmb_intents = list(INTENT_STEAL, INTENT_JUMP, INTENT_KICK, INTENT_BITE)
+	possible_rmb_intents = list(/datum/rmb_intent/feint, /datum/rmb_intent/swift, /datum/rmb_intent/riposte, /datum/rmb_intent/weak)
 
 /mob/living/carbon/human/species/goblin/npc
 	aggressive=1
 	mode = AI_IDLE
-	dodgetime = 30 //they can dodge easily, but have a cooldown on it
+	dodgetime = 20 //they can dodge easily, but have a cooldown on it
 	flee_in_pain = TRUE
 
 	wander = FALSE
@@ -72,15 +77,22 @@
 	H.visible_message(span_blue("Moondust falls from [H]!"))
 //	qdel(H)
 
+/obj/item/bodypart/head/goblin
+	max_damage = 150
 /obj/item/bodypart/chest/goblin
+	max_damage = 180
 	dismemberable = 0
 /obj/item/bodypart/l_arm/goblin
+	max_damage = 100
 	dismemberable = 0
 /obj/item/bodypart/r_arm/goblin
+	max_damage = 100
 	dismemberable = 0
 /obj/item/bodypart/r_leg/goblin
+	max_damage = 120
 	dismemberable = 0
 /obj/item/bodypart/l_leg/goblin
+	max_damage = 120
 	dismemberable = 0
 
 /obj/item/bodypart/head/goblin/update_icon_dropped()
@@ -100,7 +112,7 @@
 	name = "goblin"
 	id = "goblin"
 	species_traits = list(NO_UNDERWEAR,NOEYESPRITES)
-	inherent_traits = list(TRAIT_NOROGSTAM,TRAIT_RESISTCOLD,TRAIT_RESISTHIGHPRESSURE,TRAIT_RESISTLOWPRESSURE,TRAIT_RADIMMUNE)
+	inherent_traits = list(TRAIT_RESISTCOLD,TRAIT_RESISTHIGHPRESSURE,TRAIT_RESISTLOWPRESSURE,TRAIT_RADIMMUNE)
 	no_equip = list(SLOT_SHIRT, SLOT_WEAR_MASK, SLOT_GLOVES, SLOT_SHOES, SLOT_PANTS, SLOT_S_STORE)
 	nojumpsuit = 1
 	sexes = 1
@@ -230,10 +242,9 @@
 	real_name = "goblin"
 	ADD_TRAIT(src, TRAIT_NOMOOD, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_NOHUNGER, TRAIT_GENERIC)
-	ADD_TRAIT(src, TRAIT_NOROGSTAM, TRAIT_GENERIC)
-//	ADD_TRAIT(src, TRAIT_NOBREATH, TRAIT_GENERIC)
-//	blue breathes underwater, need a new specific one for this maybe organ cheque
-//	ADD_TRAIT(src, TRAIT_TOXIMMUNE, TRAIT_GENERIC)
+	ADD_TRAIT(src, TRAIT_TOXIMMUNE, TRAIT_GENERIC)
+	if(is_species(src, /datum/species/goblin/sea))
+		ADD_TRAIT(src, TRAIT_NOBREATH, TRAIT_GENERIC)
 	if(gob_outfit)
 		var/datum/outfit/O = new gob_outfit
 		if(O)
@@ -284,17 +295,25 @@
 
 /datum/outfit/job/roguetown/npc/goblin/pre_equip(mob/living/carbon/human/H)
 	..()
-	H.STASTR = 8
+	H.STASTR = rand(6, 10)
+	H.STAPER = rand(5, 10)
+	H.STAINT = rand(1, 4)
+	H.STACON = rand(4, 8)
+	H.STAEND = rand(8, 12)
+	H.STASPD = rand(8, 14)
+	if(is_species(H, /datum/species/goblin/hell))
+		H.STASTR += 6
+		H.STACON += 6
+		H.STASPD -= 4
+	if(is_species(H, /datum/species/goblin/cave))
+		H.STAPER += 6
+		H.STAEND += 2
+	if(is_species(H, /datum/species/goblin/sea))
+		H.STAINT += 6
+		H.STAEND += 2
 	if(is_species(H, /datum/species/goblin/moon))
-		H.STASPD = 16
-	else
-		H.STASPD = 14
-	H.STACON = 6
-	H.STAEND = 15
-	if(is_species(H, /datum/species/goblin/moon))
-		H.STAINT = 8
-	else
-		H.STAINT = 4
+		H.STAINT += 4
+		H.STASPD += 4
 	var/loadout = rand(1,5)
 	switch(loadout)
 		if(1) //tribal spear
@@ -309,6 +328,8 @@
 			if(prob(10))
 				head = /obj/item/clothing/head/roguetown/helmet/leather/goblin
 		if(4) //lightly armored sword/flail/daggers
+			H.simpmob_attack += 25
+			H.simpmob_defend += 10
 			if(prob(50))
 				r_hand = /obj/item/rogueweapon/sword/iron
 			else
@@ -322,6 +343,8 @@
 			if(prob(80))
 				head = /obj/item/clothing/head/roguetown/helmet/leather/goblin
 		if(5) //heavy armored sword/flail/shields
+			H.simpmob_attack += 45
+			H.simpmob_defend += 25
 			if(prob(30))
 				armor = /obj/item/clothing/suit/roguetown/armor/plate/half/iron/goblin
 			else

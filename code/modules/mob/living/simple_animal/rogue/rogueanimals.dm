@@ -234,7 +234,7 @@
 	mob_timers["aggro_time"] = world.time
 	..()
 
-/mob/living/simple_animal/hostile/retaliate/rogue/attackby(obj/item/O, mob/user, params)
+/mob/living/simple_animal/hostile/retaliate/rogue/attackby(obj/item/O, mob/living/user, params)
 	if(!stat && istype(O, /obj/item/reagent_containers/glass))
 		if(udder && tame)
 			udder.milkAnimal(O, user)

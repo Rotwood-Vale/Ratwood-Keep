@@ -298,7 +298,7 @@
 				monkey_attack(target)
 				if(flee_in_pain && (target.stat == CONSCIOUS))
 					var/paine = get_complex_pain()
-					if(paine >= ((STAEND * 10)*0.9))
+					if(paine >= ((STAEND * 10)*rand(0.6, 0.95)))
 //						mode = AI_FLEE
 						walk_away(src, target, 5, update_movespeed())
 				return TRUE
@@ -375,7 +375,7 @@
 		used_intent = a_intent
 		UnarmedAttack(L,1)
 
-	var/adf = used_intent.clickcd
+	var/adf = ((used_intent.clickcd + 8) - round((src.STASPD - 10) / 2))
 	if(istype(rmb_intent, /datum/rmb_intent/aimed))
 		adf = round(adf * 1.4)
 	if(istype(rmb_intent, /datum/rmb_intent/swift))

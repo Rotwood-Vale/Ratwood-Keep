@@ -146,7 +146,7 @@
 					if(isturf(pickupTarget.loc)) // on floor
 						equip_item(pickupTarget)
 						pickupTarget = null
-						pickupTimer = 0
+						pickupTimer = 30
 					else if(ismob(pickupTarget.loc)) // in someones hand
 						var/mob/M = pickupTarget.loc
 						if(!pickpocketing)

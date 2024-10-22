@@ -133,35 +133,35 @@
 	switch(bclass) //do stuff but only when we are a blade that adds wounds
 		if(BCLASS_SMASH, BCLASS_BLUNT)
 			switch(dam)
-				if(20 to INFINITY)
+				if(40 to INFINITY)
 					added_wound = /datum/wound/bruise/large
-				if(10 to 20)
+				if(15 to 40)
 					added_wound = /datum/wound/bruise
-				if(1 to 10)
+				if(1 to 15)
 					added_wound = /datum/wound/bruise/small
 		if(BCLASS_CUT, BCLASS_CHOP)
 			switch(dam)
-				if(20 to INFINITY)
+				if(40 to INFINITY)
 					added_wound = /datum/wound/slash/large
-				if(10 to 20)
+				if(15 to 40)
 					added_wound = /datum/wound/slash
-				if(1 to 10)
+				if(1 to 15)
 					added_wound = /datum/wound/slash/small
 		if(BCLASS_STAB, BCLASS_PICK)
 			switch(dam)
-				if(20 to INFINITY)
+				if(40 to INFINITY)
 					added_wound = /datum/wound/puncture/large
-				if(10 to 20)
+				if(15 to 40)
 					added_wound = /datum/wound/puncture
-				if(1 to 10)
+				if(1 to 15)
 					added_wound = /datum/wound/puncture/small
 		if(BCLASS_BITE)
 			switch(dam)
-				if(20 to INFINITY)
+				if(40 to INFINITY)
 					added_wound = /datum/wound/bite/large
-				if(10 to 20)
+				if(15 to 40)
 					added_wound = /datum/wound/bite
-				if(1 to 10)
+				if(1 to 15)
 					added_wound = /datum/wound/bite/small
 	if(added_wound)
 		added_wound = add_wound(added_wound, silent, crit_message)
@@ -181,9 +181,9 @@
 	var/damage_dividend = (total_dam / max_damage)
 	if (user && dam)
 		if(user.goodluck(2))
-			dam += 10
+			dam += 5
 	if(bclass in GLOB.dislocation_bclasses)
-		used = round(damage_dividend * 20 + (dam / 3), 1)
+		used = round(damage_dividend * 10 + (dam / 3), 1)
 		if(user && istype(user.rmb_intent, /datum/rmb_intent/strong))
 			used += 10
 		if(prob(used))
@@ -192,7 +192,7 @@
 			else
 				attempted_wounds += /datum/wound/dislocation
 	if(bclass in GLOB.fracture_bclasses)
-		used = round(damage_dividend * 20 + (dam / 3), 1)
+		used = round(damage_dividend * 10 + (dam / 3), 1)
 		if(user)
 			if(istype(user.rmb_intent, /datum/rmb_intent/strong))
 				used += 10
@@ -202,12 +202,12 @@
 			attempted_wounds += /datum/wound/dislocation
 			attempted_wounds += /datum/wound/fracture
 	if(bclass in GLOB.artery_bclasses)
-		used = round(damage_dividend * 20 + (dam / 3), 1)
+		used = round(user.STAPER + (dam / 3), 1)
 		if(user)
 			if((bclass in GLOB.artery_strong_bclasses) && istype(user.rmb_intent, /datum/rmb_intent/strong))
-				used += 10
+				used += 5
 			else if(istype(user.rmb_intent, /datum/rmb_intent/aimed))
-				used += user.STAPER
+				used += (user.STAPER + 5)
 		if(prob(used))
 			attempted_wounds += /datum/wound/artery
 
@@ -227,21 +227,21 @@
 	var/resistance = HAS_TRAIT(owner, TRAIT_CRITICAL_RESISTANCE)
 	if(user && dam)
 		if(user.goodluck(2))
-			dam += 10
+			dam += 5
 	if ((bclass = BCLASS_PUNCH) && (user && dam))
 		if(user && HAS_TRAIT(user, TRAIT_CIVILIZEDBARBARIAN))
 			dam += 15
 	if((bclass in GLOB.cbt_classes) && (zone_precise == BODY_ZONE_PRECISE_GROIN))
 		var/cbt_multiplier = 1
 		if(user && HAS_TRAIT(user, TRAIT_NUTCRACKER))
-			cbt_multiplier = 2
+			cbt_multiplier = 5
 		if(!resistance && prob(round(dam/5) * cbt_multiplier))
 			attempted_wounds += /datum/wound/cbt
 		if(prob(dam * cbt_multiplier))
 			owner.emote("groin", TRUE)
 			owner.Stun(10)
 	if((bclass in GLOB.fracture_bclasses) && (zone_precise != BODY_ZONE_PRECISE_STOMACH))
-		used = round(damage_dividend * 20 + (dam / 3), 1)
+		used = round(damage_dividend * 10 + (dam / 3), 1)
 		if(user && istype(user.rmb_intent, /datum/rmb_intent/strong))
 			used += 10
 		if(HAS_TRAIT(src, TRAIT_BRITTLE))
@@ -252,12 +252,12 @@
 		if(prob(used))
 			attempted_wounds += fracture_type
 	if(bclass in GLOB.artery_bclasses)
-		used = round(damage_dividend * 20 + (dam / 4), 1)
+		used = round(user.STAPER + (dam / 4), 1)
 		if(user)
 			if((bclass in GLOB.artery_strong_bclasses) && istype(user.rmb_intent, /datum/rmb_intent/strong))
-				used += 10
+				used += 5
 			else if(istype(user.rmb_intent, /datum/rmb_intent/aimed))
-				used += user.STAPER
+				used += (user.STAPER + 5)
 		if(prob(used))
 			if((zone_precise == BODY_ZONE_PRECISE_STOMACH) && !resistance)
 				attempted_wounds += /datum/wound/slash/disembowel
