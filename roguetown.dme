@@ -1711,6 +1711,7 @@
 #include "code\modules\antagonists\roguetown\villain\peasantrebel.dm"
 #include "code\modules\antagonists\roguetown\villain\vampire.dm"
 #include "code\modules\antagonists\roguetown\villain\vampirelord.dm"
+#include "code\modules\antagonists\roguetown\villain\zizocult.dm"
 #include "code\modules\antagonists\roguetown\villain\zomble.dm"
 #include "code\modules\antagonists\roguetown\villain\maniac\maniac.dm"
 #include "code\modules\antagonists\roguetown\villain\maniac\maniac_items.dm"
