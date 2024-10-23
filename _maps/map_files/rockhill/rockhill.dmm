@@ -1382,6 +1382,10 @@
 /obj/item/clothing/suit/roguetown/armor/gambeson,
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/basement)
+"bsj" = (
+/obj/machinery/light/rogue/wallfire/candle/blue,
+/turf/open/floor/rogue/dirt/road,
+/area/rogue/indoors/town/tavern)
 "btk" = (
 /obj/structure/bed/rogue/inn/hay,
 /obj/effect/landmark/start/shophand,
@@ -6438,11 +6442,11 @@
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/town/tavern)
 "gaL" = (
-/obj/structure/mineral_door/wood/red{
+/obj/structure/mineral_door/wood/violet{
 	lockid = "tavern";
-	name = "Barkeeper's room"
+	name = "Innkeeper's room"
 	},
-/turf/open/floor/carpet/red,
+/turf/open/floor/rogue/cobble,
 /area/rogue/indoors/town/tavern)
 "gbh" = (
 /obj/machinery/light/rogue/wallfire/candle/blue/r,
@@ -13829,10 +13833,6 @@
 /obj/structure/ladder,
 /turf/open/floor/rogue/ruinedwood/turned,
 /area/rogue/outdoors/town)
-"nkX" = (
-/obj/machinery/light/rogue/wallfire/candle/blue,
-/turf/open/floor/rogue/dirt/road,
-/area/rogue/indoors/town/tavern)
 "nlU" = (
 /obj/effect/decal/cleanable/generic,
 /obj/effect/decal/cleanable/blood/gibs/down,
@@ -24051,9 +24051,9 @@
 "wYA" = (
 /obj/structure/mineral_door/wood/red{
 	lockid = "tavern";
-	name = "Innkeeper's room"
+	name = "Cook's room"
 	},
-/turf/open/floor/carpet/royalblack,
+/turf/open/floor/rogue/cobble,
 /area/rogue/indoors/town/tavern)
 "wZy" = (
 /obj/structure/fluff/railing/border{
@@ -188228,7 +188228,7 @@ vRu
 rSC
 rSC
 orb
-nkX
+bsj
 wQG
 wQG
 lyG
