@@ -313,10 +313,6 @@ proc/initialize_anvil_recipe_prices()
 	{
 		add_recipe_to_global(recipe)
 	}
-	for (var/datum/anvil_recipe/valuables/recipe)
-	{
-		add_recipe_to_global(recipe)
-	}
 	for (var/datum/anvil_recipe/weapons/recipe)
 	{
 		add_recipe_to_global(recipe)
