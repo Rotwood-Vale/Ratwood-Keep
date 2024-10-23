@@ -389,7 +389,7 @@ world/New()
 	miracle = TRUE
 	devotion_cost = 15
 
-obj/effect/proc_holder/spell/invoked/sacred_flame_rogue/cast(list/targets, mob/user = usr)
+obj/effect/proc_holder/spell/invoked/malum_flame_rogue/cast(list/targets, mob/user = usr)
 	. = ..()
 	if(isliving(targets[1]))
 		var/mob/living/L = targets[1]
