@@ -612,14 +612,14 @@
 	block2add = FOV_RIGHT|FOV_LEFT
 	smeltresult = /obj/item/ingot/iron
 
-/obj/item/clothing/head/roguetown/helmet/heavy/sheriff
+/obj/item/clothing/head/roguetown/helmet/heavy/gate
 	name = "barred helmet"
-	desc = "A helmet which offers good protection to the face at the expense of vision."
+	desc = "A helmet which offers good protection to the face. The bars resemble the gates of the manor, closed and protecting the gatemaster's identity."
 	icon_state = "gatehelm"
 	emote_environment = 3
 	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR
-	block2add = FOV_RIGHT|FOV_LEFT
-	smeltresult = /obj/item/ingot/iron
+	block2add = FOV_BEHIND
+	smeltresult = /obj/item/ingot/steel
 
 /obj/item/clothing/head/roguetown/helmet/heavy/knight
 	name = "knight's helmet"
@@ -764,6 +764,7 @@
 	smeltresult = null
 	blocksound = SOFTHIT
 	clothing_flags = null
+	sewrepair = TRUE
 	salvage_amount = 1
 	salvage_result = /obj/item/natural/hide
 

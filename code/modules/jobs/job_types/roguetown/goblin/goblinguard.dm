@@ -13,7 +13,7 @@
 	'Tend' to captives when possible, instead of outright killing them."
 	display_order = JDO_GOBLINGUARD
 	outfit = /datum/outfit/job/roguetown/goblinguard
-	min_pq = 1
+	min_pq = 3
 	max_pq = null
 	advclass_cat_rolls = list(CTAG_GOBS = 20)
 	advjob_examine = TRUE
@@ -53,9 +53,9 @@
 	H.verbs |= /mob/proc/haltyell
 	ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
 	if(H.mind)
-		H.mind.adjust_skillrank(/datum/skill/combat/maces, 4, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/maces, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/medicine, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/swimming, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/climbing, 3, TRUE)
@@ -85,7 +85,7 @@
 	H.verbs |= /mob/proc/haltyell
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 	if(H.mind)
-		H.mind.adjust_skillrank(/datum/skill/combat/polearms, 4 , TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/polearms, 3 , TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
@@ -93,8 +93,38 @@
 		H.mind.adjust_skillrank(/datum/skill/misc/swimming, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/climbing, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/riding, 2, TRUE)
 		H.change_stat("strength", 1)
 		H.change_stat("perception", 2)
 		H.change_stat("constitution", 1)
 		H.change_stat("endurance", 1)
 		H.change_stat("intelligence", -2)
+
+/datum/advclass/gob_raider
+	name = "Goblin Raider"
+	allowed_sexes = list(MALE)
+	allowed_races = list(/datum/species/goblinp)
+	outfit = /datum/outfit/job/roguetown/goblinguard/raider
+	tutorial = "Armour? A mace? Crossbows? Who needs any of that. You've an axe. \
+	A really big fucking axe. At the King's word, you destroy. Simple as. If you can even lift the damn thing."
+	category_tags = list(CTAG_GOBS)
+
+/datum/outfit/job/roguetown/goblinguard/raider/pre_equip(mob/living/carbon/human/H)
+	. = ..()
+	armor = /obj/item/clothing/suit/roguetown/armor/leather/hide/goblin
+	r_hand = /obj/item/rogueweapon/stoneaxe/battle
+	H.verbs |= /mob/proc/haltyell
+	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
+	if(H.mind)
+		H.mind.adjust_skillrank(/datum/skill/combat/axes, 3 , TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 1, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 1, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/medicine, 1, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/swimming, 2, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/climbing, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
+		H.change_stat("strength", 4)
+		H.change_stat("constitution", 1)
+		H.change_stat("endurance", 1)
+		H.change_stat("perception", -2)
+		H.change_stat("intelligence", -4)

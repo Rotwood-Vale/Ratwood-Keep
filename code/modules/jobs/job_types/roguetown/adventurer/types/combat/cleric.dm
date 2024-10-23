@@ -29,7 +29,9 @@
 		if(/datum/patron/divine/pestra)
 			neck = /obj/item/clothing/neck/roguetown/psicross/pestra
 		if(/datum/patron/divine/malum)
-			neck = /obj/item/clothing/neck/roguetown/psicross/malum 
+			neck = /obj/item/clothing/neck/roguetown/psicross/malum
+		if(/datum/patron/divine/ravox)
+			neck = /obj/item/clothing/neck/roguetown/psicross/ravox
 
 	// CLASS ARCHETYPES
 	H.adjust_blindness(-3)
@@ -136,7 +138,7 @@
 			H.mind.adjust_skillrank(/datum/skill/craft/traps, 1, TRUE)
 			H.AddSpell(new /obj/effect/proc_holder/spell/invoked/malum_flame_rogue) // weaker astra fire spell. mostly for lighting things.
 			H.change_stat("intelligence", 2) // Changed to follow balance people's advice.
-			H.change_stat("endurance", 1) 
+			H.change_stat("endurance", 1)
 			H.change_stat("strength", 2)
 			H.change_stat("speed", -2)
 			ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)

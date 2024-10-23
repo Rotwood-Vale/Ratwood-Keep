@@ -13,7 +13,7 @@
 	Maintain a farm, task the lower-goblins with foraging and try not to cook anything that'll kill your King."
 	outfit = /datum/outfit/job/roguetown/goblincook
 	display_order = JDO_GOBLINCOOK
-	min_pq = 0
+	min_pq = 1
 	max_pq = null
 	always_show_on_latechoices = TRUE
 

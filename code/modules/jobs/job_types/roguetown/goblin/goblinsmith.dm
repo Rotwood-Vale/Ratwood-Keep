@@ -12,7 +12,7 @@
 	Try not to fail him, or the many subjects that you're to service by extension with your trade."
 	display_order = JDO_GOBLINSMITH
 	outfit = /datum/outfit/job/roguetown/goblinsmith
-	min_pq = 0
+	min_pq = 1
 	max_pq = null
 	always_show_on_latechoices = TRUE
 
