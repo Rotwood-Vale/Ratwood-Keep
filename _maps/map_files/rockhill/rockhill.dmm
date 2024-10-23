@@ -10741,7 +10741,7 @@
 /area/rogue/indoors/town/church)
 "kkS" = (
 /obj/structure/roguemachine/vendor{
-	keycontrol = "blacksmith"
+	keycontrol = "seamster"
 	},
 /turf/closed/wall/mineral/rogue/craftstone,
 /area/rogue/indoors/town)
