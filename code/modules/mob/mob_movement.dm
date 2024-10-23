@@ -604,7 +604,7 @@
 		used_time = max(used_time - (mind.get_skill_level(/datum/skill/misc/sneaking) * 8), 0)
 
 	if(rogue_sneaking) //If sneaking, check if they should be revealed
-		if((stat > SOFT_CRIT) || IsSleeping() || (world.time < mob_timers[MT_FOUNDSNEAK] + 30 SECONDS) || !T || reset || (m_intent != MOVE_INTENT_SNEAK) || light_amount >= rogue_sneaking_light_threshhold || (world.time < mob_timers[MT_SNEAKATTACK] + 3 SECONDS)) //SEVERELY nerfs sneak attacking.
+		if((stat > SOFT_CRIT) || IsSleeping() || (world.time < mob_timers[MT_FOUNDSNEAK] + 30 SECONDS) || !T || reset || (m_intent != MOVE_INTENT_SNEAK) || light_amount >= rogue_sneaking_light_threshhold || (world.time < mob_timers[MT_SNEAKATTACK] + 6 SECONDS) || (world.time < mob_timers[MT_SPELLSNEAK] + 25 SECONDS)) //SEVERELY nerfs sneak attacking.
 			used_time = round(clamp((50 - (used_time*1.75)), 5, 50),1)
 			animate(src, alpha = initial(alpha), time =	used_time) //sneak skill makes you reveal slower but not as drastic as disappearing speed
 			spawn(used_time) regenerate_icons() //why does this use spawn what the fuck??? I'm not changing this anyway..
