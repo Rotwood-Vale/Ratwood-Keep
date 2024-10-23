@@ -11,7 +11,7 @@
 	allowed_patrons = list(/datum/patron/inhumen/graggar)
 	tutorial = "Lord above, it's good to be King. You don't have to do anything beyond lifting a finger for your subjects to move. \
 	Should they ignore you or disobey, you've your guards to handle them. Try to provide some manner of order to the camp and your subjects. \
-	Ideally, you should focus inwards, ignoring the town and keep to the north, for your own sake, and develop what land you have in the mire."
+	Ideally, you should focus inwards, ignoring the town and others to the north, for your own sake, and develop what land you have in the mire."
 	whitelist_req = FALSE
 	outfit = /datum/outfit/job/roguetown/goblinking
 	display_order = JDO_GOBLINKING
