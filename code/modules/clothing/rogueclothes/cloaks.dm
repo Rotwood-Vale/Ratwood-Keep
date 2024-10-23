@@ -297,7 +297,7 @@
 
 /obj/item/clothing/cloak/stabard
 	name = "surcoat"
-	desc = "A medieval overcoat meant to be used over the armor."
+	desc = "An outer garment commonly worn by soldiers."
 	icon_state = "stabard"
 	alternate_worn_layer = TABARD_LAYER
 	body_parts_covered = CHEST|GROIN
@@ -1059,7 +1059,7 @@
 
 /obj/item/clothing/cloak/templar/psydon
 	name = "psydon tabard"
-	desc = "A medieval overcoat meant to be used over the armor. This one has the symbol of Psydon on it."
+	desc = "An outer garment commonly worn by soldiers. This one has the symbol of Psydon on it."
 	icon_state = "tabard_weeping"
 	alternate_worn_layer = TABARD_LAYER
 	body_parts_covered = CHEST|GROIN
@@ -1073,7 +1073,7 @@
 
 /obj/item/clothing/cloak/templar/astrata
 	name = "astratan tabard"
-	desc = "A medieval overcoat meant to be used over the armor. This one has the symbol of Astrata on it."
+	desc = "An outer garment commonly worn by soldiers. This one has the symbol of Astrata on it."
 	icon_state = "tabard_astrata_alt"
 	alternate_worn_layer = TABARD_LAYER
 	body_parts_covered = CHEST|GROIN
@@ -1087,7 +1087,7 @@
 
 /obj/item/clothing/cloak/templar/noc
 	name = "noc tabard"
-	desc = "A medieval overcoat meant to be used over the armor. This one has the symbol of Noc on it."
+	desc = "An outer garment commonly worn by soldiers. This one has the symbol of Noc on it."
 	icon_state = "tabard_noc"
 	alternate_worn_layer = TABARD_LAYER
 	body_parts_covered = CHEST|GROIN
@@ -1101,7 +1101,7 @@
 
 /obj/item/clothing/cloak/templar/dendor
 	name = "dendor tabard"
-	desc = "A medieval overcoat meant to be used over the armor. This one has the symbol of Dendor on it."
+	desc = "An outer garment commonly worn by soldiers. This one has the symbol of Dendor on it."
 	icon_state = "tabard_dendor"
 	alternate_worn_layer = TABARD_LAYER
 	body_parts_covered = CHEST|GROIN
@@ -1115,7 +1115,7 @@
 
 /obj/item/clothing/cloak/templar/necra
 	name = "necra tabard"
-	desc = "A medieval overcoat meant to be used over the armor. This one has the symbol of Necra on it."
+	desc = "An outer garment commonly worn by soldiers. This one has the symbol of Necra on it."
 	icon_state = "tabard_necra"
 	alternate_worn_layer = TABARD_LAYER
 	body_parts_covered = CHEST|GROIN
@@ -1129,7 +1129,7 @@
 
 /obj/item/clothing/cloak/templar/abyssor
 	name = "abyssor tabard"
-	desc = "A medieval overcoat meant to be used over the armor. This one has the symbol of Abyssor on it."
+	desc = "An outer garment commonly worn by soldiers. This one has the symbol of Abyssor on it."
 	icon_state = "tabard_abyssor"
 	alternate_worn_layer = TABARD_LAYER
 	body_parts_covered = CHEST|GROIN
@@ -1143,7 +1143,7 @@
 
 /obj/item/clothing/cloak/templar/malum
 	name = "malum tabard"
-	desc = "A medieval overcoat meant to be used over the armor. This one has the symbol of Malum on it."
+	desc = "An outer garment commonly worn by soldiers. This one has the symbol of Malum on it."
 	icon_state = "tabard_malum"
 	alternate_worn_layer = TABARD_LAYER
 	body_parts_covered = CHEST|GROIN
@@ -1157,7 +1157,7 @@
 
 /obj/item/clothing/cloak/templar/eora
 	name = "eora tabard"
-	desc = "A medieval overcoat meant to be used over the armor. This one has the symbol of Eora on it."
+	desc = "An outer garment commonly worn by soldiers. This one has the symbol of Eora on it."
 	icon_state = "tabard_eora"
 	alternate_worn_layer = TABARD_LAYER
 	body_parts_covered = CHEST|GROIN
@@ -1171,7 +1171,7 @@
 
 /obj/item/clothing/cloak/templar/pestra
 	name = "pestra tabard"
-	desc = "A medieval overcoat meant to be used over the armor. This one has the symbol of Pestra on it."
+	desc = "An outer garment commonly worn by soldiers. This one has the symbol of Pestra on it."
 	icon_state = "tabard_pestra"
 	alternate_worn_layer = TABARD_LAYER
 	body_parts_covered = CHEST|GROIN
@@ -1185,7 +1185,7 @@
 
 /obj/item/clothing/cloak/templar/ravox
 	name = "ravox tabard"
-	desc = "A medieval overcoat meant to be used over the armor. This one has the symbol of Ravox on it."
+	desc = "An outer garment commonly worn by soldiers. This one has the symbol of Ravox on it."
 	icon_state = "tabard_ravox"
 	alternate_worn_layer = TABARD_LAYER
 	body_parts_covered = CHEST|GROIN
@@ -1199,7 +1199,7 @@
 
 /obj/item/clothing/cloak/templar/xylix
 	name = "xylix tabard"
-	desc = "A medieval overcoat meant to be used over the armor. This one has the symbol of Xylix on it."
+	desc = "An outer garment commonly worn by soldiers. This one has the symbol of Xylix on it."
 	icon_state = "tabard_xylix"
 	alternate_worn_layer = TABARD_LAYER
 	body_parts_covered = CHEST|GROIN
