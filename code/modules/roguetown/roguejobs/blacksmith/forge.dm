@@ -36,6 +36,7 @@
 			addtimer(CALLBACK(T, TYPE_PROC_REF(/obj/item/rogueweapon/tongs, make_unhot), tyme), 100)
 			T.update_icon()
 			user.visible_message(span_info("[user] heats the bar."))
+			return
 	else
 		if(istype(W, /obj/item/reagent_containers/glass/bowl))
 			to_chat(user, "<span class='notice'>Remove the pot from the forge first.</span>")

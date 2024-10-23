@@ -170,8 +170,13 @@
 	name = "amulet of Pestra"
 	desc = ""
 
+/obj/item/clothing/neck/roguetown/psicross/ravox
+	name = "amulet of Ravox"
+	desc = ""
+
 /obj/item/clothing/neck/roguetown/psicross/malum
 	name = "amulet of Malum"
+	icon_state = "malum"
 	desc = ""
 
 /obj/item/clothing/neck/roguetown/psicross/wood

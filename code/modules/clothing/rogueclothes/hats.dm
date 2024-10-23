@@ -612,14 +612,14 @@
 	block2add = FOV_RIGHT|FOV_LEFT
 	smeltresult = /obj/item/ingot/iron
 
-/obj/item/clothing/head/roguetown/helmet/heavy/sheriff
+/obj/item/clothing/head/roguetown/helmet/heavy/gate
 	name = "barred helmet"
-	desc = "A helmet which offers good protection to the face at the expense of vision."
+	desc = "A helmet which offers good protection to the face. The bars resemble the gates of the manor, closed and protecting the gatemaster's identity."
 	icon_state = "gatehelm"
 	emote_environment = 3
 	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR
-	block2add = FOV_RIGHT|FOV_LEFT
-	smeltresult = /obj/item/ingot/iron
+	block2add = FOV_BEHIND
+	smeltresult = /obj/item/ingot/steel
 
 /obj/item/clothing/head/roguetown/helmet/heavy/knight
 	name = "knight's helmet"
@@ -797,6 +797,7 @@
 	smeltresult = null
 	blocksound = SOFTHIT
 	clothing_flags = null
+	sewrepair = TRUE
 	salvage_amount = 1
 	salvage_result = /obj/item/natural/hide
 
@@ -821,6 +822,34 @@
 	dynamic_hair_suffix = "+generic"
 	worn_x_dimension = 64
 	worn_y_dimension = 64
+
+	/// This var basicly counts the numbers of times this hat has changes its appearence
+	var/hat_count = 0
+
+/obj/item/clothing/head/roguetown/wizhat/MiddleClick(mob/user, params)
+	. = ..()
+	if(!do_after(user, 20, target = user))
+		return
+	if(hat_count == 0)
+		icon_state = "wizardhatred"
+		hat_count += 1
+	else if(hat_count == 1)
+		icon_state = "wizardhatyellow"
+		hat_count += 1
+	else if(hat_count == 2)
+		icon_state = "wizardhatgreen"
+		hat_count += 1
+	else if(hat_count == 3)
+		icon_state = "wizardhatblack"
+		hat_count += 1
+	else if(hat_count == 4)
+		icon_state = "wizardhatgen"
+		hat_count += 1
+	else if(hat_count == 5)
+		icon_state = "wizardhat"
+		hat_count = 0
+	to_chat(user, span_info("The wizard hat magically changes it's colours!"))
+	playsound(src, 'sound/magic/swap.ogg', 50, TRUE)
 
 /obj/item/clothing/head/roguetown/wizhat/red
 	icon_state = "wizardhatred"

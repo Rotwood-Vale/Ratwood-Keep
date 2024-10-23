@@ -289,8 +289,8 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	name = "Guild smith"
 	icon_state = "arrow"
 
-/obj/effect/landmark/start/tailor
-	name = "Tailor"
+/obj/effect/landmark/start/seamster
+	name = "Seamster"
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/alchemist
@@ -334,7 +334,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/prince
-	name = "Prince"
+	name = "Heir"
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/prisonerr

@@ -86,6 +86,7 @@
 	tastes = list("batter" = 1)
 	foodtype = GRAIN | DAIRY
 
+/*
 // Cake batter + rolling pin = pie dough
 /obj/item/reagent_containers/food/snacks/cakebatter/attackby(obj/item/I, mob/user, params)
 	if(istype(I, /obj/item/kitchen/rollingpin))
@@ -121,6 +122,7 @@
 	list_reagents = list(/datum/reagent/consumable/nutriment = 1)
 	tastes = list("raw pastry" = 1)
 	foodtype = GRAIN | DAIRY
+*/
 
 /obj/item/reagent_containers/food/snacks/pastrybase
 	name = "pastry base"

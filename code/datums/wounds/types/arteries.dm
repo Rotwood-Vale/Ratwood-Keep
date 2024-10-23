@@ -6,7 +6,7 @@
 	sound_effect = 'sound/combat/crit.ogg'
 	whp = 50
 	sewn_whp = 20
-	bleed_rate = 10
+	bleed_rate = 20
 	sewn_bleed_rate = 0.2
 	clotting_threshold = null
 	sewn_clotting_threshold = null
@@ -18,7 +18,7 @@
 	can_cauterize = TRUE
 	critical = TRUE
 	sleep_healing = 0
-	embed_chance = 75
+	embed_chance = 40
 
 	zombie_infection_probability = 50
 	werewolf_infection_probability = 50

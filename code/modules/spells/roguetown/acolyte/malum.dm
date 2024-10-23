@@ -14,12 +14,12 @@
 	invocation_type = "shout"
 	associated_skill = /datum/skill/magic/holy
 	antimagic_allowed = FALSE
-	charge_max = 1 MINUTES
+	charge_max = 3 MINUTES
 	chargetime = 2 SECONDS
 	miracle = TRUE
 	charging_slowdown = 3
 	chargedloop = /datum/looping_sound/invokegen
-	devotion_cost = 20
+	devotion_cost = 30
 	
 /obj/effect/proc_holder/spell/invoked/heatmetal
 	name = "Heat Metal"
@@ -221,7 +221,7 @@ proc/apply_damage_if_covered(mob/living/carbon/target, list/body_zones, obj/item
 
 /obj/effect/proc_holder/spell/invoked/vigorousexchange/cast(list/targets, mob/living/carbon/user = usr)
 	. = ..()
-	var/const/starminatoregen = 250 // How much stamina should the spell give back to the caster.
+	var/const/starminatoregen = 500 // How much stamina should the spell give back to the caster.
 	var/mob/target = targets[1]
 	if (!iscarbon(target)) 
 		return
@@ -256,7 +256,7 @@ proc/apply_damage_if_covered(mob/living/carbon/target, list/body_zones, obj/item
 			tithe += sacrifice.sellprice
 		qdel(sacrifice)
 	}
-	buyprice = tithe * divine_tax
+	buyprice = tithe / divine_tax
 	for (var/list/entry in anvil_recipe_prices)
 	{
 		var/obj/item/tentative_item = entry[1] // The recipe
@@ -372,3 +372,45 @@ world/New()
 	for (var/turf/closed/mineral/aoemining in view(radius, fallzone))
 		aoemining.lastminer = usr
 		aoemining.take_damage(damage,BRUTE,"blunt",1)
+
+/obj/effect/proc_holder/spell/invoked/malum_flame_rogue
+	name = "Malum's Fire"
+	overlay_state = "sacredflame"
+	releasedrain = 15
+	chargedrain = 0
+	chargetime = 0
+	range = 15
+	warnie = "sydwarning"
+	movement_interrupt = FALSE
+	chargedloop = null
+	req_items = list(/obj/item/clothing/neck/roguetown/psicross)
+	sound = 'sound/magic/heal.ogg'
+	invocation = "Flame."
+	invocation_type = "whisper"
+	associated_skill = /datum/skill/magic/holy
+	antimagic_allowed = TRUE
+	charge_max = 15 SECONDS
+	miracle = TRUE
+	devotion_cost = 15
+
+obj/effect/proc_holder/spell/invoked/sacred_flame_rogue/cast(list/targets, mob/user = usr)
+	. = ..()
+	if(isliving(targets[1]))
+		var/mob/living/L = targets[1]
+		user.visible_message("<font color='yellow'>[user] points at [L]!</font>")
+		if(L.anti_magic_check(TRUE, TRUE))
+			return FALSE
+		L.adjust_fire_stacks(1)
+		L.IgniteMob()
+		return TRUE
+
+	// Spell interaction with ignitable objects (burn wooden things, light torches up)
+	else if(isobj(targets[1]))
+		var/obj/O = targets[1]
+		if(O.fire_act())
+			user.visible_message("<font color='yellow'>[user] points at [O], igniting it with sacred flames!</font>")
+			return TRUE
+		else
+			to_chat(user, span_warning("You point at [O], but it fails to catch fire."))
+			return FALSE
+	return FALSE

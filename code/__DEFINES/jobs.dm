@@ -139,7 +139,7 @@
 #define GUILDSMITH	(1<<2)
 #define ALCHEMIST	(1<<3)
 #define MASON		(1<<4)
-#define TAILOR		(1<<5)
+#define SEAMSTER	(1<<5)
 #define MERCHANT	(1<<6)
 #define SCRIBE		(1<<7)
 #define ELDER		(1<<8)
@@ -258,6 +258,8 @@
 
 #define JDO_MASON 22
 
+#define JDO_SEAMSTER 23
+
 #define JDO_BARKEEP 26
 #define JDO_COOK 27
 
@@ -347,6 +349,7 @@
 	/datum/job/roguetown/barkeep,\
 	/datum/job/roguetown/guildsmith,\
 	/datum/job/roguetown/mason,\
+	/datum/job/roguetown/seamster, \
 	/datum/job/roguetown/merchant,\
 	/datum/job/roguetown/scribe
 

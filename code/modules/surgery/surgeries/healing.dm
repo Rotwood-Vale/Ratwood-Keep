@@ -21,6 +21,7 @@
 	requires_tech = TRUE
 	replaced_by = /datum/surgery_step
 	repeating = TRUE
+	ignore_clothes = TRUE
 	surgery_flags = SURGERY_BLOODY | SURGERY_INCISED | SURGERY_CLAMPED
 	skill_min = SKILL_LEVEL_APPRENTICE
 	skill_median = SKILL_LEVEL_APPRENTICE
