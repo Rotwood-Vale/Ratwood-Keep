@@ -54,7 +54,7 @@
 	resistance_flags = null
 	color = "#473a30"
 	salvage_amount = 1
-	salvage_result = /obj/item/natural/hide
+	salvage_result = /obj/item/natural/hide/cured
 
 /obj/item/clothing/shoes/roguetown/simpleshoes/white
 	color = null
@@ -92,7 +92,7 @@
 	icon_state = "leatherboots"
 	item_state = "leatherboots"
 	salvage_amount = 1
-	salvage_result = /obj/item/natural/hide
+	salvage_result = /obj/item/natural/hide/cured
 
 /obj/item/clothing/shoes/roguetown/armor/steel
 	name = "steel plated boots"

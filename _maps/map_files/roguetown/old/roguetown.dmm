@@ -12916,7 +12916,7 @@
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/under/cave)
 "nkA" = (
-/obj/structure/fluff/dryingrack,
+/obj/machinery/tanningrack,
 /obj/item/needle/thorn,
 /turf/open/floor/rogue/woodturned,
 /area/rogue/outdoors/rtfield)
@@ -13094,7 +13094,7 @@
 	},
 /area/rogue)
 "oQy" = (
-/obj/structure/fluff/dryingrack,
+/obj/machinery/tanningrack,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors/rtfield)
 "oTa" = (
