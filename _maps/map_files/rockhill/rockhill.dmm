@@ -1494,6 +1494,7 @@
 	dir = 8;
 	icon_state = "largetable"
 	},
+/obj/item/rogueweapon/huntingknife/cleaver,
 /turf/open/floor/rogue/church,
 /area/rogue/indoors/town/church)
 "bxD" = (
@@ -4675,9 +4676,9 @@
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/basement)
 "eyb" = (
-/obj/structure/roguemachine/vendor/seed,
-/turf/closed/wall/mineral/rogue/wooddark,
-/area/rogue/outdoors/rtfield)
+/obj/item/reagent_containers/glass/bucket/wooden,
+/turf/open/floor/rogue/herringbone,
+/area/rogue/indoors/town/church)
 "eyq" = (
 /obj/structure/fluff/walldeco/rpainting{
 	pixel_x = -32
@@ -5027,6 +5028,17 @@
 	icon_state = "vertw"
 	},
 /area/rogue/indoors/town)
+"eNB" = (
+/obj/structure/table/wood{
+	dir = 8;
+	icon_state = "largetable"
+	},
+/obj/item/kitchen/spoon,
+/obj/item/kitchen/spoon,
+/obj/item/kitchen/spoon,
+/obj/item/reagent_containers/peppermill,
+/turf/open/floor/rogue/church,
+/area/rogue/indoors/town/church)
 "eND" = (
 /obj/structure/chair/wood{
 	dir = 1
@@ -8675,9 +8687,9 @@
 	},
 /area/rogue/outdoors/rtfield)
 "iko" = (
-/obj/structure/roguemachine/vendor/seed,
-/turf/closed/wall/mineral/rogue/stone,
-/area/rogue/indoors/town/tavern)
+/obj/structure/roguemachine/seedmachine,
+/turf/closed/wall/mineral/rogue/wooddark,
+/area/rogue/outdoors/rtfield)
 "ikq" = (
 /obj/structure/ladder,
 /turf/open/floor/rogue/woodturned,
@@ -9938,6 +9950,11 @@
 /obj/item/reagent_containers/glass/cup/wooden,
 /obj/item/reagent_containers/glass/cup/wooden,
 /obj/item/reagent_containers/glass/cup/wooden,
+/obj/item/cooking/platter,
+/obj/item/cooking/platter,
+/obj/item/cooking/platter,
+/obj/item/cooking/platter,
+/obj/item/cooking/platter,
 /turf/open/floor/rogue/church,
 /area/rogue/indoors/town/church)
 "jBb" = (
@@ -11027,6 +11044,7 @@
 	dir = 9;
 	icon_state = "largetable"
 	},
+/obj/item/book/rogue/yeoldecookingmanual,
 /turf/open/floor/rogue/church,
 /area/rogue/indoors/town/church)
 "kyq" = (
@@ -12034,10 +12052,12 @@
 	dir = 1;
 	icon_state = "longtable"
 	},
-/obj/item/reagent_containers/food/condiment/peppermill,
 /obj/item/reagent_containers/food/condiment/saltshaker{
 	pixel_y = 10
 	},
+/obj/item/kitchen/spoon,
+/obj/item/kitchen/spoon,
+/obj/item/reagent_containers/peppermill,
 /turf/open/floor/rogue/tile/checker,
 /area/rogue/indoors/town/manor)
 "lBt" = (
@@ -12876,7 +12896,7 @@
 	dir = 1;
 	icon_state = "longtable_mid"
 	},
-/obj/item/book/rogue/cooking,
+/obj/item/book/rogue/yeoldecookingmanual,
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/town/manor)
 "mqO" = (
@@ -14980,6 +15000,14 @@
 /obj/item/reagent_containers/food/snacks/rogue/meat/poultry,
 /obj/item/reagent_containers/powder/flour,
 /obj/item/reagent_containers/powder/flour,
+/obj/item/reagent_containers/food/snacks/grown/onion/rogue,
+/obj/item/reagent_containers/food/snacks/grown/onion/rogue,
+/obj/item/reagent_containers/food/snacks/grown/cabbage/rogue,
+/obj/item/reagent_containers/food/snacks/grown/cabbage/rogue,
+/obj/item/reagent_containers/food/snacks/grown/beet,
+/obj/item/reagent_containers/food/snacks/grown/beet,
+/obj/item/reagent_containers/food/snacks/grown/potato/rogue,
+/obj/item/reagent_containers/food/snacks/grown/potato/rogue,
 /turf/open/floor/rogue/concrete,
 /area/rogue/indoors/town/tavern)
 "ojC" = (
@@ -15479,6 +15507,12 @@
 /obj/item/reagent_containers/food/snacks/grown/wheat,
 /obj/item/reagent_containers/food/snacks/grown/wheat,
 /obj/item/reagent_containers/food/snacks/grown/wheat,
+/obj/item/reagent_containers/food/snacks/grown/cabbage/rogue,
+/obj/item/reagent_containers/food/snacks/grown/cabbage/rogue,
+/obj/item/reagent_containers/food/snacks/grown/potato/rogue,
+/obj/item/reagent_containers/food/snacks/grown/potato/rogue,
+/obj/item/reagent_containers/food/snacks/grown/onion/rogue,
+/obj/item/reagent_containers/food/snacks/grown/onion/rogue,
 /turf/open/floor/rogue/church,
 /area/rogue/indoors/town/church)
 "oGO" = (
@@ -16959,6 +16993,10 @@
 	},
 /turf/open/floor/rogue/cobble,
 /area/rogue/indoors/town/church/chapel)
+"qbj" = (
+/obj/structure/roguemachine/seedmachine,
+/turf/closed/wall/mineral/rogue/stone,
+/area/rogue/indoors/town/tavern)
 "qbw" = (
 /obj/structure/closet/crate/chest{
 	lockid = "keep_armory"
@@ -17705,6 +17743,11 @@
 	pixel_y = 1;
 	pixel_x = -20
 	},
+/obj/item/cooking/platter,
+/obj/item/cooking/platter,
+/obj/item/cooking/platter,
+/obj/item/cooking/platter,
+/obj/item/cooking/platter,
 /turf/open/floor/rogue/tile,
 /area/rogue/indoors/town/tavern)
 "qQZ" = (
@@ -21512,6 +21555,8 @@
 	icon_state = "longtable"
 	},
 /obj/item/cooking/pan,
+/obj/item/kitchen/spoon,
+/obj/item/kitchen/spoon,
 /turf/open/floor/rogue/tile{
 	icon_state = "tile"
 	},
@@ -22182,7 +22227,7 @@
 /obj/item/kitchen/rollingpin,
 /obj/item/reagent_containers/powder/salt,
 /obj/item/reagent_containers/powder/salt,
-/obj/item/reagent_containers/food/condiment/peppermill,
+/obj/item/reagent_containers/peppermill,
 /turf/open/floor/rogue/tile{
 	icon_state = "tile"
 	},
@@ -25132,6 +25177,10 @@
 	},
 /turf/open/transparent/openspace,
 /area/rogue/outdoors/mountains)
+"xWK" = (
+/obj/item/book/rogue/yeoldecookingmanual,
+/turf/open/floor/rogue/tile,
+/area/rogue/indoors/town/tavern)
 "xWU" = (
 /obj/item/roguebin/water,
 /turf/open/floor/rogue/church,
@@ -80510,7 +80559,7 @@ bpD
 bpD
 bpD
 bpD
-iko
+csO
 ckL
 ckL
 nRZ
@@ -186639,7 +186688,7 @@ vRu
 vRu
 rSC
 rSC
-iko
+qbj
 wxX
 ckL
 ckL
@@ -264785,7 +264834,7 @@ jXZ
 jXZ
 jXZ
 jXZ
-eyb
+iko
 fxx
 uaL
 wSn
@@ -287548,7 +287597,7 @@ csO
 vPA
 ajv
 uwl
-xIh
+xWK
 uRd
 lyG
 ujj
@@ -425055,7 +425104,7 @@ eCn
 eCn
 eCn
 eCn
-eBN
+eyb
 teW
 eBN
 eBN
@@ -427063,7 +427112,7 @@ uZy
 jzn
 kyn
 bxi
-bxi
+eNB
 jom
 emH
 uZy

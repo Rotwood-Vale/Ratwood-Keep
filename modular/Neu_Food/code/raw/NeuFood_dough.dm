@@ -156,7 +156,7 @@
 /*	.................   Butterdough piece   ................... */
 /obj/item/reagent_containers/food/snacks/rogue/butterdoughslice
 	name = "butterdough piece"
-	desc = "A slice of pedigree, to create lines of history.(Roll to make pie dough, place one piedough in the oven to make a pie shell. Fry to make Frybread. Roll to make Handpie)"
+	desc = "A slice of pedigree, to create lines of history.(place in oven to make pastry. Roll to make pie dough, place one piedough in the oven to make a pie shell. Fry to make Frybread. Roll to make Handpie)"
 	icon_state = "butterdoughslice"
 	color = "#feffc1"
 	slices_num = 0
@@ -434,7 +434,7 @@
 /*	.................   Bread bun   ................... */
 /obj/item/reagent_containers/food/snacks/rogue/bun
 	name = "bun"
-	desc = "Portable, quaint and entirely consumable"
+	desc = "Portable, quaint and entirely consumable (Serve as is or add cooked sausage to make a Dogroll)"
 	icon_state = "bun"
 	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_DECENT)
 	w_class = WEIGHT_CLASS_NORMAL
@@ -661,7 +661,7 @@
 /*	.................   Cake   ................... */
 /obj/item/reagent_containers/food/snacks/rogue/cake_base
 	name = "cake base"
-	desc = "With this sweet thing, you shall make them sing."
+	desc = "With this sweet thing, you shall make them sing.(Add fresh cheese or honeycomb and bake!)"
 	icon_state = "cake"
 	list_reagents = list(/datum/reagent/consumable/nutriment = 1)
 	w_class = WEIGHT_CLASS_NORMAL
