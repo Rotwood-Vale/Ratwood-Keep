@@ -36,7 +36,7 @@
 	// CLASS ARCHETYPES
 	H.adjust_blindness(-3)
 	var/classes = list("Life Cleric","War Cleric")
-	if H.patron.type == /datum/patron/divine/malum
+	if (H.patron.type == /datum/patron/divine/malum)
 		classes += ("Forge Cleric")
 	var/classchoice = input("Choose your archetypes", "Available archetypes") as anything in classes
 
