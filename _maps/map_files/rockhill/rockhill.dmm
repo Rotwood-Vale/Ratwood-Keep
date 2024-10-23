@@ -1382,10 +1382,6 @@
 /obj/item/clothing/suit/roguetown/armor/gambeson,
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/basement)
-"bsj" = (
-/obj/machinery/light/rogue/wallfire/candle/blue,
-/turf/open/floor/rogue/dirt/road,
-/area/rogue/indoors/town/tavern)
 "btk" = (
 /obj/structure/bed/rogue/inn/hay,
 /obj/effect/landmark/start/shophand,
@@ -1747,7 +1743,8 @@
 "bJA" = (
 /obj/structure/mineral_door/wood/red{
 	lockid = "tavern";
-	locked = 1
+	locked = 1;
+	name = "Kitchen"
 	},
 /turf/open/floor/rogue/tile,
 /area/rogue/indoors/town/tavern)
@@ -4402,7 +4399,7 @@
 /turf/open/floor/rogue/churchrough,
 /area/rogue/indoors/town/church/chapel)
 "elB" = (
-/turf/open/floor/rogue/woodturned,
+/turf/open/floor/rogue/dirt/road,
 /area/rogue/indoors/shelter/rtfield)
 "emc" = (
 /obj/structure/closet/dirthole/grave,
@@ -8896,6 +8893,7 @@
 /area/rogue/indoors/town/tavern)
 "ixl" = (
 /obj/structure/mirror,
+/obj/item/reagent_containers/food/snacks/smallrat,
 /turf/open/floor/rogue/cobble/mossy,
 /area/rogue/indoors/town/tavern)
 "ixt" = (
@@ -10292,6 +10290,10 @@
 /obj/structure/rack/rogue/shelf/big,
 /turf/open/floor/rogue/ruinedwood/turned,
 /area/rogue/indoors)
+"jNB" = (
+/obj/item/reagent_containers/food/snacks/smallrat,
+/turf/open/floor/rogue/dirt/road,
+/area/rogue/indoors/town/tavern)
 "jOo" = (
 /obj/structure/fluff/walldeco/customflag{
 	pixel_y = 32
@@ -20960,7 +20962,7 @@
 "tZG" = (
 /obj/structure/mineral_door/wood/donjon{
 	lockid = "tavern";
-	name = "Bath House";
+	name = "Kitchen";
 	dir = 1;
 	locked = 1
 	},
@@ -22055,6 +22057,10 @@
 	},
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors)
+"vao" = (
+/obj/machinery/light/rogue/wallfire/candle/blue,
+/turf/open/floor/rogue/dirt/road,
+/area/rogue/indoors/town/tavern)
 "vaB" = (
 /obj/structure/chair/stool/rogue,
 /turf/open/floor/rogue/blocks/stonered/tiny,
@@ -188228,9 +188234,9 @@ vRu
 rSC
 rSC
 orb
-bsj
+vao
 wQG
-wQG
+jNB
 lyG
 lyG
 lyG
