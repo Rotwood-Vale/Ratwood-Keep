@@ -186,10 +186,10 @@
 					prob2defend -= (attacker_skill * 20)
 			
 			if(HAS_TRAIT(src, TRAIT_GUIDANCE))
-				prob2defend += 7.5
+				prob2defend += 10
 			
 			if(HAS_TRAIT(user, TRAIT_GUIDANCE))
-				prob2defend -= 7.5
+				prob2defend -= 10
 				
 			// parrying while knocked down sucks ass
 			if(!(mobility_flags & MOBILITY_STAND))
