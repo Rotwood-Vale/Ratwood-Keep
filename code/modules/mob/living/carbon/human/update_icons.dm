@@ -724,7 +724,7 @@ There are several things that need to be remembered:
 			if(beltr.experimental_onhip)
 				var/list/prop
 				if(beltr.force_reupdate_inhand)
-					prop = beltr.onprop["onbelt"]
+					prop = beltr?.onprop["onbelt"]
 					if(!prop)
 						prop = beltr.getonmobprop("onbelt")
 						LAZYSET(beltr.onprop, "onbelt", prop)
