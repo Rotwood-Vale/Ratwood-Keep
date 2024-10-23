@@ -73,22 +73,25 @@
 		if(stringamt < 1)
 			to_chat(user, span_warning("The needle has no thread left!"))
 			return
-		if(I.sewrepair && I.max_integrity && !I.obj_broken)
+		if(I.sewrepair && I.max_integrity)
 			if(I.obj_integrity == I.max_integrity)
 				to_chat(user, span_warning("This is not damaged!"))
 				return
 			if(!I.ontable())
 				to_chat(user, span_warning("I should put this on a table first."))
 				return
+			var/armor_value = 0
 			var/skill_level = user.mind.get_skill_level(/datum/skill/misc/sewing)
-			if((!I.armor && skill_level < 1) || (I.armor && skill_level < 2))
+			for(var/key in I.armor.getList()) // Here we are checking if the armor value of the item is 0 so we can know if the item is armor without having to make a snowflake var
+				armor_value += I.armor[key]
+			if((armor_value == 0 && skill_level < 1) || (armor_value > 0 && skill_level < 2))
 				to_chat(user, span_warning("I should probably not be doing this..."))
 			playsound(loc, 'sound/foley/sewflesh.ogg', 100, TRUE, -2)
 			var/skill_multiplied = (skill_level * 10)
 			var/sewtime = (60 - skill_multiplied)
 			if(!do_after(user, sewtime, target = I))
 				return
-			if((!I.armor && skill_level > 0) || (I.armor && skill_level > 1)) //If not armor but skill level at least 1 or Armor and skill level at least 2
+			if((armor_value == 0 && skill_level > 0) || (armor_value > 0 && skill_level > 1)) //If not armor but skill level at least 1 or Armor and skill level at least 2
 				user.visible_message(span_info("[user] repairs [I]!"))
 				I.obj_integrity = min(I.obj_integrity + skill_multiplied, I.max_integrity)
 			else
