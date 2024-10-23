@@ -591,6 +591,9 @@
 
 //* Updates a mob's sneaking status, rendering them invisible or visible in accordance to their status. TODO:Fix people bypassing the sneak fade by turning, and add a proc var to have a timer after resetting visibility.
 /mob/living/update_sneak_invis(reset = FALSE) //Why isn't this in mob/living/living_movements.dm? Why, I'm glad you asked!
+	if(ishuman(src))
+		if(mind)
+			rogue_sneaking_light_threshhold = (mind.get_skill_level(/datum/skill/misc/sneaking) * 0.092)+0.1 //THIS IS WHERE WE DO A LITTLE TROLLING. At 6 sneak skill, this raises the lumcount max from 0.15 to 1.0 (massive); but at 0 sneak skill... you are now brutually punished by needing pitch black to sneak!
 	if(!reset && world.time < mob_timers[MT_INVISIBILITY]) // Check if the mob is affected by the invisibility spell
 		rogue_sneaking = TRUE
 		return
@@ -612,7 +615,7 @@
 		if(light_amount < rogue_sneaking_light_threshhold && m_intent == MOVE_INTENT_SNEAK)
 			animate(src, alpha = 0, time = used_time)
 			if(ishuman(src))
-				invisibility = (mind.get_skill_level(/datum/skill/misc/sneaking) * 0.75)+1 //At 5 sneak, you get a total of ~24 invis - 3.75 bonus
+				invisibility = (SEE_INVISIBLE_LIVING + (mind.get_skill_level(/datum/skill/misc/sneaking) * 0.75))+1 //At 5 sneak, you get a total of ~24 invis - 3.75 bonus
 			else
 				invisibility = (SEE_INVISIBLE_LIVING + 1) //fixes ghosts being unable to see these guys
 			alpha = 150 //Forcibly set these guys to have an alpha of 150 (to differentiate for admemes)
