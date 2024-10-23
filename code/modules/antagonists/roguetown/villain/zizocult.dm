@@ -168,7 +168,7 @@ GLOBAL_LIST_EMPTY(ritualslist)
 	set name = "Praise the Godhead!"
 	set category = "ZIZO"
 	audible_message("[src] praises " + span_bold("Zizo") + "!")
-	log_game("[src] praises " + span_bold("Zizo") + "!")
+	log_game("[src] praises Zizo!")
 	playsound(src.loc, 'sound/vo/cult/praise.ogg', 45, 1)
 
 /mob/living/carbon/human/proc/communicate()
