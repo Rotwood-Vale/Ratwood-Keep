@@ -6,20 +6,15 @@ SUBSYSTEM_DEF(damoverlays)
 	var/list/currentrun = list()
 	var/list/processing = list()
 	processing_flag = PROCESSING_DAMOVERLAYS
-	var/amt2update = 5
 
 /datum/controller/subsystem/damoverlays/fire(resumed = 0)
-	if (!resumed || !currentrun.len)
-		currentrun = processing.Copy()
+	if (!resumed || !src.currentrun.len)
+		src.currentrun = processing.Copy()
 
-//	//cache for sanic speed (lists are references anyways)
-//	var/list/currentrun = src.currentrun
+	//cache for sanic speed (lists are references anyways)
+	var/list/currentrun = src.currentrun
 
-	var/ye = 0
 	while(currentrun.len)
-		if(ye > amt2update)
-			return
-		ye++
 		var/mob/living/carbon/human/thing = currentrun[currentrun.len]
 		currentrun.len--
 		if (!thing || QDELETED(thing))
