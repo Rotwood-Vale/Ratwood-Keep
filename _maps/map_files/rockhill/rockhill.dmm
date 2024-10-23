@@ -13829,6 +13829,10 @@
 /obj/structure/ladder,
 /turf/open/floor/rogue/ruinedwood/turned,
 /area/rogue/outdoors/town)
+"nkX" = (
+/obj/machinery/light/rogue/wallfire/candle/blue,
+/turf/open/floor/rogue/dirt/road,
+/area/rogue/indoors/town/tavern)
 "nlU" = (
 /obj/effect/decal/cleanable/generic,
 /obj/effect/decal/cleanable/blood/gibs/down,
@@ -24673,6 +24677,7 @@
 /obj/structure/stairs/stone{
 	dir = 8
 	},
+/obj/machinery/light/rogue/wallfire/candle,
 /turf/open/floor/rogue/tile{
 	icon_state = "tile"
 	},
@@ -188223,7 +188228,7 @@ vRu
 rSC
 rSC
 orb
-wQG
+nkX
 wQG
 wQG
 lyG
