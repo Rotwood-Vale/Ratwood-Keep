@@ -21,7 +21,7 @@
 	name = "\improper prestidigitating touch"
 	desc = "You recall the following incantations you've learned:\n \
 	<b>Touch</b>: Use your arcyne powers to scrub an object or something clean, like using soap. Also known as the Apprentice's Woe.\n \
-	<b>Shove</b>: Will forth a spark <i>in front of you</i> to ignite flammable items and things like torches, lanterns or campfires. \n \
+	<b>Shove</b>: Will forth a spark on an item of your choosing (or in front of you, if used on the ground) to ignite flammable items and things like torches, lanterns or campfires. \n \
 	<b>Use</b>: Conjure forth an orbiting mote of magelight to light your way."
 	catchphrase = null
 	possible_item_intents = list(INTENT_HELP, INTENT_DISARM, /datum/intent/use)
@@ -58,7 +58,7 @@
 				handle_xp(user, fatigue_used, TRUE) // cleaning ignores the xp cooldown because it awards comparatively little
 		if (INTENT_DISARM) // Snap your fingers and produce a spark
 			fatigue_used = handle_cost(user, PRESTI_SPARK)
-			if (create_spark(user))
+			if (create_spark(user, target))
 				handle_xp(user, fatigue_used)
 		if (/datum/intent/use) // Summon an orbiting arcane mote for light
 			fatigue_used = handle_cost(user, PRESTI_MOTE)
@@ -120,20 +120,27 @@
 		mote.forceMove(src)
 		return TRUE
 
-/obj/item/melee/touch_attack/prestidigitation/proc/create_spark(mob/living/carbon/human/user)
+/obj/item/melee/touch_attack/prestidigitation/proc/create_spark(mob/living/carbon/human/user, atom/thing)
 	// adjusted from /obj/item/flint
 	if (world.time < spark_cd + sparkspeed)
-		return
+		return FALSE
 	spark_cd = world.time
+
 	playsound(user, 'sound/foley/finger-snap.ogg', 100, FALSE)
-	user.visible_message(span_notice("[user] snaps [user.p_their()] fingers, producing a spark!"), span_notice("I will forth a tiny spark with a snap of my fingers."))
+	user.flash_fullscreen("whiteflash")
 	flick("flintstrike", src)
 
-	user.flash_fullscreen("whiteflash")
-	var/datum/effect_system/spark_spread/S = new()
-	var/turf/front = get_step(user, user.dir)
-	S.set_up(1, 1, front)
-	S.start()
+	if (isturf(thing) || !user.Adjacent(thing))
+		var/datum/effect_system/spark_spread/S = new()
+		var/turf/front = get_step(user, user.dir)
+		S.set_up(1, 1, front)
+		S.start()
+		user.visible_message(span_notice("[user] snaps [user.p_their()] fingers, producing a spark!"), span_notice("I will forth a tiny spark with a snap of my fingers."))
+	else
+		thing.spark_act()
+		user.visible_message(span_notice("[user] snaps [user.p_their()] fingers, and a spark leaps forth towards [thing]!"), span_notice("I will forth a tiny spark and direct it towards [thing]."))
+	
+	return TRUE
 
 /obj/item/melee/touch_attack/prestidigitation/proc/clean_thing(atom/target, mob/living/carbon/human/user)
 	// adjusted from /obj/item/soap in clown_items.dm, some duplication unfortunately (needed for flavor)

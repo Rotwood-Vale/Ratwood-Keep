@@ -88,6 +88,7 @@
 	status_type = STATUS_EFFECT_REFRESH
 	examine_text = "SUBJECTPRONOUN is surrounded by an aura of gentle light."
 	var/potency = 1
+	var/list/mobs_affected
 
 /datum/status_effect/light_buff/on_creation(mob/living/new_owner, light_power)
 	potency = light_power
@@ -99,16 +100,27 @@
 
 /datum/status_effect/light_buff/on_apply()
 	to_chat(owner, span_notice("Light blossoms into being around me!"))
-	owner.light_range = potency
-	owner.light_flags = NONE
-	owner.update_light()
+	add_light(owner)
 	return TRUE
+
+/datum/status_effect/light_buff/proc/add_light(mob/living/source)
+	var/obj/effect/dummy/lighting_obj/moblight/mob_light_obj = source.mob_light(potency)
+	LAZYSET(mobs_affected, source, mob_light_obj)
+	RegisterSignal(source, COMSIG_PARENT_QDELETING, PROC_REF(on_living_holder_deletion))
+
+/datum/status_effect/light_buff/proc/remove_light(mob/living/source)
+	UnregisterSignal(source, COMSIG_PARENT_QDELETING)
+	var/obj/effect/dummy/lighting_obj/moblight/mob_light_obj = LAZYACCESS(mobs_affected, source)
+	LAZYREMOVE(mobs_affected, source)
+	if(mob_light_obj)
+		qdel(mob_light_obj)
+
+/datum/status_effect/light_buff/proc/on_living_holder_deletion(mob/living/M)
+	remove_light(M)
 
 /datum/status_effect/light_buff/on_remove()
 	to_chat(owner, span_notice("The miraculous light surrounding me has fled..."))
-	owner.light_range = initial(owner.light_range)
-	owner.light_flags = initial(owner.light_flags)
-	owner.update_light()
+	remove_light(owner)
 
 /obj/item/melee/touch_attack/orison/proc/cast_light(atom/thing, mob/living/carbon/human/user)
 	var/holy_skill = user.mind?.get_skill_level(attached_spell.associated_skill)
