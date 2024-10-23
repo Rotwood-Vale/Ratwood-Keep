@@ -178,6 +178,12 @@
 	name = "town blacksmith key"
 	lockid = "townblacksmith"
 
+/obj/item/roguekey/seamster
+	name = "workshop key"
+	desc = "This key opens the door to the tailor workshop."
+	icon_state = "brownkey"
+	lockid = "seamster"
+
 /obj/item/roguekey/walls
 	name = "walls key"
 	desc = "This is a rusty key."
