@@ -1748,6 +1748,14 @@
 	},
 /turf/open/floor/rogue/tile,
 /area/rogue/indoors/town/tavern)
+"bJN" = (
+/obj/structure/fluff/railing/border{
+	dir = 9
+	},
+/turf/open/floor/rogue/tile{
+	icon_state = "tile"
+	},
+/area/rogue/indoors/town/tavern)
 "bJU" = (
 /turf/open/floor/rogue/wood/nosmooth,
 /area/rogue/indoors/town/tavern)
@@ -1871,9 +1879,7 @@
 "bRa" = (
 /obj/machinery/light/rogue/hearth,
 /obj/item/reagent_containers/glass/bucket/pot,
-/turf/open/floor/rogue/tile{
-	icon_state = "tile"
-	},
+/turf/open/floor/rogue/concrete,
 /area/rogue/indoors/town/tavern)
 "bRj" = (
 /obj/structure/flora/roguegrass/bush/wall/tall,
@@ -5657,6 +5663,10 @@
 	},
 /turf/open/floor/rogue/tile,
 /area/rogue/indoors/town/church)
+"foP" = (
+/obj/item/reagent_containers/food/snacks/smallrat,
+/turf/open/floor/rogue/dirt/road,
+/area/rogue/indoors/town/tavern)
 "fpa" = (
 /obj/structure/table/wood{
 	dir = 1;
@@ -10001,7 +10011,9 @@
 /area/rogue/indoors/town/manor)
 "jDz" = (
 /obj/machinery/light/rogue/wallfire/candle,
-/obj/structure/fluff/millstone,
+/obj/structure/fluff/railing/border{
+	dir = 8
+	},
 /turf/open/floor/rogue/tile{
 	icon_state = "tile"
 	},
@@ -12727,6 +12739,12 @@
 /obj/effect/landmark/events/haunts,
 /turf/open/floor/rogue/carpet/lord/center,
 /area/rogue/indoors/town/manor)
+"mji" = (
+/obj/structure/fluff/millstone,
+/turf/open/floor/rogue/tile{
+	icon_state = "tile"
+	},
+/area/rogue/indoors/town/tavern)
 "mjz" = (
 /obj/machinery/light/rogue/wallfire/candle/blue,
 /turf/open/floor/rogue/wood,
@@ -18169,10 +18187,6 @@
 /obj/item/bedsheet/rogue/fabric_double,
 /turf/open/floor/carpet/royalblack,
 /area/rogue/indoors/town/manor)
-"rnd" = (
-/obj/machinery/light/rogue/wallfire/candle/blue,
-/turf/open/floor/rogue/dirt/road,
-/area/rogue/indoors/town/tavern)
 "rny" = (
 /obj/structure/flora/newtree,
 /turf/open/water/swamp/deep,
@@ -20528,6 +20542,10 @@
 	},
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue/indoors/town/magician)
+"tFn" = (
+/obj/machinery/light/rogue/wallfire/candle/blue,
+/turf/open/floor/rogue/dirt/road,
+/area/rogue/indoors/town/tavern)
 "tFB" = (
 /obj/structure/closet/crate/chest,
 /obj/item/reagent_containers/food/snacks/grown/wheat,
@@ -23126,10 +23144,6 @@
 /obj/structure/fluff/walldeco/wantedposter,
 /turf/open/floor/rogue/blocks,
 /area/rogue/indoors)
-"wcR" = (
-/obj/item/reagent_containers/food/snacks/smallrat,
-/turf/open/floor/rogue/dirt/road,
-/area/rogue/indoors/town/tavern)
 "wdq" = (
 /obj/structure/roguemachine/scomm/l,
 /turf/open/floor/rogue/cobble,
@@ -188234,9 +188248,9 @@ vRu
 rSC
 rSC
 orb
-rnd
+tFn
 wQG
-wcR
+foP
 lyG
 lyG
 lyG
@@ -285522,8 +285536,8 @@ eoy
 wbg
 lyG
 bRa
+mji
 rvt
-ajv
 xjv
 ojk
 lyG
@@ -285924,7 +285938,7 @@ eoy
 wbg
 orb
 jDz
-ajv
+bJN
 iZs
 xIh
 nXC
