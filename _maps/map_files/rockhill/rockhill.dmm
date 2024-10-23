@@ -8687,9 +8687,9 @@
 	},
 /area/rogue/outdoors/rtfield)
 "iko" = (
-/obj/structure/roguemachine/vendor/seed,
-/turf/closed/wall/mineral/rogue/stone,
-/area/rogue/indoors/town/tavern)
+/obj/structure/roguemachine/seedmachine,
+/turf/closed/wall/mineral/rogue/wooddark,
+/area/rogue/outdoors/rtfield)
 "ikq" = (
 /obj/structure/ladder,
 /turf/open/floor/rogue/woodturned,
@@ -16993,6 +16993,10 @@
 	},
 /turf/open/floor/rogue/cobble,
 /area/rogue/indoors/town/church/chapel)
+"qbj" = (
+/obj/structure/roguemachine/seedmachine,
+/turf/closed/wall/mineral/rogue/stone,
+/area/rogue/indoors/town/tavern)
 "qbw" = (
 /obj/structure/closet/crate/chest{
 	lockid = "keep_armory"
@@ -80555,7 +80559,7 @@ bpD
 bpD
 bpD
 bpD
-iko
+csO
 ckL
 ckL
 nRZ
@@ -186684,7 +186688,7 @@ vRu
 vRu
 rSC
 rSC
-csO
+qbj
 wxX
 ckL
 ckL
@@ -264830,7 +264834,7 @@ jXZ
 jXZ
 jXZ
 jXZ
-lcg
+iko
 fxx
 uaL
 wSn
