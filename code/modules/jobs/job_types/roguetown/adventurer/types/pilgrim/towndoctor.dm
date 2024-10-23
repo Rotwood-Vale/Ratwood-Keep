@@ -1,5 +1,5 @@
 /datum/advclass/towndoctor
-	name = "Barber Surgeon"
+	name = "Physician"
 	tutorial = "You are the closest thing to a doctor that the townsfolk here will ever meet. Wielding crude tools and accumulated knowledge, you have probably cut into as many people as the average Knight."
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
@@ -7,9 +7,6 @@
 	category_tags = list(CTAG_PILGRIM, CTAG_TOWNER)
 	traits_applied = list(TRAIT_EMPATH, TRAIT_NOSTINK)
 	cmode_music = 'sound/music/combat_physician.ogg'
-
-/datum/outfit/job/roguetown/adventurer/doctor
-	allowed_patrons = list(/datum/patron/divine/pestra, /datum/patron/inhumen/graggar)
 
 /datum/outfit/job/roguetown/adventurer/doctor/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -58,4 +55,7 @@
 		H.change_stat("intelligence", 1)
 		H.change_stat("fortune", 1)
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/diagnose/secular)
+		H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/docheal)
+		H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/stable)
+		H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/purge)
 
