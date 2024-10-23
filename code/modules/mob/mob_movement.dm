@@ -611,7 +611,10 @@
 	else //not currently sneaking, check if we can sneak
 		if(light_amount < rogue_sneaking_light_threshhold && m_intent == MOVE_INTENT_SNEAK)
 			animate(src, alpha = 0, time = used_time)
-			invisibility = (SEE_INVISIBLE_LIVING + 1) //fixes ghosts being unable to see these guys
+			if(ishuman(src))
+				invisibility = (mind.get_skill_level(/datum/skill/misc/sneaking) * 0.75)+1 //At 5 sneak, you get a total of ~24 invis - 3.75 bonus
+			else
+				invisibility = (SEE_INVISIBLE_LIVING + 1) //fixes ghosts being unable to see these guys
 			alpha = 150 //Forcibly set these guys to have an alpha of 150 (to differentiate for admemes)
 			spawn(used_time + 5) regenerate_icons()
 			rogue_sneaking = TRUE
