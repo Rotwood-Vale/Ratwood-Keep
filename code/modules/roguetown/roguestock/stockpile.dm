@@ -91,7 +91,7 @@
 	desc = "Cured Leather ready to be worked."
 	item_type = /obj/item/natural/hide/cured
 	held_items = list(2, 0)
-	payout_price = 4
+	payout_price = 5
 	withdraw_price = 7
 	transport_fee = 1
 	export_price = 7

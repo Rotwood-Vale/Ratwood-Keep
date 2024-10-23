@@ -16,6 +16,8 @@
 	. = ..()
 	if(hide)
 		. += span_warning("There is a piece of hide ready to be worked. I might need a knife for this.")
+	if(!anchored)
+		. += span_warning("It is un-anchored and able to be moved.")
 
 /obj/machinery/tanningrack/attack_hand(mob/user, params)
 	if(hide)
@@ -63,8 +65,11 @@
 	if(istype(I, /obj/item/rogueweapon/hammer))
 		if(anchored)
 			anchored = FALSE
+			to_chat(user, span_warning("The [src] can now be moved."))
 		else
 			anchored = TRUE
+			to_chat(user, span_warning("You anchor [src]."))
+		playsound(src,pick('sound/items/bsmith1.ogg','sound/items/bsmith2.ogg','sound/items/bsmith3.ogg','sound/items/bsmith4.ogg'), 100, FALSE)
 		return
 	..()
 
