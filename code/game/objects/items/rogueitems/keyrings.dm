@@ -14,6 +14,7 @@
 	slot_flags = ITEM_SLOT_HIP|ITEM_SLOT_NECK|ITEM_SLOT_MOUTH|ITEM_SLOT_WRISTS
 	drop_sound = 'sound/foley/dropsound/chain_drop.ogg'
 	anvilrepair = /datum/skill/craft/blacksmithing
+	resistance_flags = FIRE_PROOF
 
 /obj/item/storage/keyring/Initialize()
     . = ..()
@@ -220,6 +221,9 @@
 /obj/item/lockpickring/mundane
 	picks = list(/obj/item/lockpick, /obj/item/lockpick, /obj/item/lockpick)
 
+/obj/item/lockpickring/one
+	picks = list(/obj/item/lockpick)
+
 /obj/item/storage/keyring/butcher	// Just incase, butcher can at least see to getting farmers incase there are none given he sucks at farming.
 	keys = list(/obj/item/roguekey/farm, /obj/item/roguekey/butcher)
 
@@ -257,7 +261,7 @@
 	keys = list(/obj/item/roguekey/manor, /obj/item/roguekey/tower, /obj/item/roguekey/mage)
 
 /obj/item/storage/keyring/innkeep
-	keys = list(/obj/item/roguekey/tavern, /obj/item/roguekey/roomiv, /obj/item/roguekey/roomiii, /obj/item/roguekey/roomii, /obj/item/roguekey/roomi)
+	keys = list(/obj/item/roguekey/tavern, /obj/item/roguekey/roomiv, /obj/item/roguekey/roomiii, /obj/item/roguekey/roomii, /obj/item/roguekey/roomi, /obj/item/roguekey/tavernkeep)
 
 /obj/item/storage/keyring/priest
 	keys = list(/obj/item/roguekey/priest, /obj/item/roguekey/confession, /obj/item/roguekey/church)

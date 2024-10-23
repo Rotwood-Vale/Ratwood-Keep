@@ -112,11 +112,18 @@
 /obj/item/clothing/under/roguetown/trou/leather
 	name = "leather trousers"
 	icon_state = "leathertrou"
+	resistance_flags = FIRE_PROOF
 
 /obj/item/clothing/under/roguetown/trou/leather/mourning
 	name = "mourning trousers"
 	icon_state = "leathertrou"
 	color = "#151615"
+
+/obj/item/clothing/under/roguetown/trou/shadowpants
+	name = "silk tights"
+	desc = "Form-fitting legwear. Almost too form-fitting."
+	icon_state = "shadowpants"
+	allowed_race = NON_DWARVEN_RACE_TYPES
 
 /obj/item/clothing/under/roguetown/chainlegs
 	name = "steel chain chausses"
@@ -129,12 +136,14 @@
 	armor = list("blunt" = 60, "slash" = 100, "stab" = 80, "bullet" = 20, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
 	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT)
 	blocksound = CHAINHIT
+	max_integrity = 300
 	var/do_sound = FALSE
 	drop_sound = 'sound/foley/dropsound/chain_drop.ogg'
 	anvilrepair = /datum/skill/craft/armorsmithing
 	smeltresult = /obj/item/ingot/steel
 	r_sleeve_status = SLEEVE_NOMOD
 	l_sleeve_status = SLEEVE_NOMOD
+	resistance_flags = FIRE_PROOF
 
 /obj/item/clothing/under/roguetown/brayette
 	name = "brayette"
@@ -147,15 +156,18 @@
 	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT)
 	body_parts_covered = GROIN
 	blocksound = CHAINHIT
+	max_integrity = 300
 	drop_sound = 'sound/foley/dropsound/chain_drop.ogg'
 	anvilrepair = /datum/skill/craft/armorsmithing
 	smeltresult = /obj/item/ingot/steel
 	r_sleeve_status = SLEEVE_NOMOD
 	l_sleeve_status = SLEEVE_NOMOD
+	resistance_flags = FIRE_PROOF
 
 /obj/item/clothing/under/roguetown/chainlegs/iron
 	name = "iron chain chausses"
 	icon_state = "ichain_legs"
+	max_integrity = 200
 	anvilrepair = /datum/skill/craft/armorsmithing
 	smeltresult = /obj/item/ingot/iron
 
@@ -170,6 +182,7 @@
 	armor = list("blunt" = 90, "slash" = 100, "stab" = 80, "bullet" = 50, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
 	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT)
 	blocksound = PLATEHIT
+	max_integrity = 400
 	var/do_sound = FALSE
 	drop_sound = 'sound/foley/dropsound/armor_drop.ogg'
 	anvilrepair = /datum/skill/craft/armorsmithing
@@ -177,6 +190,7 @@
 	r_sleeve_status = SLEEVE_NOMOD
 	l_sleeve_status = SLEEVE_NOMOD
 	smelt_bar_num = 2
+	resistance_flags = FIRE_PROOF
 
 
 /obj/item/clothing/under/roguetown/chainlegs/skirt
@@ -273,6 +287,7 @@
 	armor = list("blunt" = 90, "slash" = 100, "stab" = 80, "bullet" = 50, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
 	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT)
 	blocksound = PLATEHIT
+	max_integrity = 500
 	var/do_sound = FALSE
 	drop_sound = 'sound/foley/dropsound/armor_drop.ogg'
 	anvilrepair = /datum/skill/craft/armorsmithing
@@ -280,3 +295,4 @@
 	r_sleeve_status = SLEEVE_NOMOD
 	l_sleeve_status = SLEEVE_NOMOD
 	smelt_bar_num = 2
+	resistance_flags = FIRE_PROOF

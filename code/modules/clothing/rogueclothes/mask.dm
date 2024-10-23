@@ -66,6 +66,7 @@
 	icon_state = "lmask"
 	sellprice = 50
 	anvilrepair = /datum/skill/craft/armorsmithing
+	resistance_flags = FIRE_PROOF
 
 /obj/item/clothing/mask/rogue/lordmask/l
 	icon_state = "lmask_l"
@@ -165,6 +166,11 @@
 				if(ishuman(user))
 					var/mob/living/carbon/H = user
 					H.update_inv_wear_mask()
+
+/obj/item/clothing/mask/rogue/shepherd/shadowmask
+	name = "purple halfmask"
+	icon_state = "shadowmask"
+	desc = "For when one wants to conceal their face while performing dastardly deeds in the name of the crown."
 
 /obj/item/clothing/mask/rogue/physician
 	name = "plague mask"

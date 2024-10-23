@@ -131,5 +131,6 @@ GLOBAL_LIST_INIT(pronouns_list, list(HE_HIM, SHE_HER, THEY_THEM, IT_ITS))
 
 #define VOICE_TYPE_MASC	"Masculine"
 #define VOICE_TYPE_FEM	"Feminine"
+#define VOICE_TYPE_ANDR	"Androgynous"
 
-GLOBAL_LIST_INIT(voice_types_list, list(VOICE_TYPE_MASC, VOICE_TYPE_FEM))
+GLOBAL_LIST_INIT(voice_types_list, list(VOICE_TYPE_MASC, VOICE_TYPE_FEM, VOICE_TYPE_ANDR))

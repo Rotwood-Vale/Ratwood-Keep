@@ -153,7 +153,6 @@ GLOBAL_LIST_EMPTY(chosen_names)
 	var/headshot_link
 	var/list/descriptor_entries = list()
 	var/list/custom_descriptors = list()
-	var/defiant = TRUE
 
 	var/char_accent = "No accent"
 
@@ -697,7 +696,6 @@ GLOBAL_LIST_EMPTY(chosen_names)
 
 	dat += "</td>"
 	dat += "<td width='33%' align='right'>"
-	dat += "<b>Be defiant:</b> <a href='?_src_=prefs;preference=be_defiant'>[(defiant) ? "Yes":"No"]</a><br>"
 	dat += "<b>Be voice:</b> <a href='?_src_=prefs;preference=schizo_voice'>[(toggles & SCHIZO_VOICE) ? "Enabled":"Disabled"]</a>"
 	dat += "</td>"
 	dat += "</tr>"
@@ -1522,7 +1520,7 @@ Slots: [job.spawn_positions]</span>
 					if(pronouns_input)
 						pronouns = pronouns_input
 						ResetJobs()
-						to_chat(user, "<font color='red'>Your character's pronouns are now [pronouns].")
+						to_chat(user, "<font color='red'>Your character's pronouns are now [pronouns].</font>")
 						to_chat(user, "<font color='red'><b>Your classes have been reset.</b></font>")
 
 				// LETHALSTONE EDIT: add voice type selection
@@ -1530,7 +1528,7 @@ Slots: [job.spawn_positions]</span>
 					var voicetype_input = input(user, "Choose your character's voice type", "Voice Type") as null|anything in GLOB.voice_types_list
 					if(voicetype_input)
 						voice_type = voicetype_input
-						to_chat(user, "<font color='red'>Your character will now vocalize with a [lowertext(voice_type)] affect.")
+						to_chat(user, "<font color='red'>Your character will now vocalize with a [lowertext(voice_type)] affect.</font>")
 
 				if("faith")
 					var/list/faiths_named = list()
@@ -1821,7 +1819,7 @@ Slots: [job.spawn_positions]</span>
 						pickedGender = "female"
 					if(pickedGender && pickedGender != gender)
 						gender = pickedGender
-						to_chat(user, "<font color='red'>Your character will now use a [friendlyGenders[pickedGender]] sprite.")
+						to_chat(user, "<font color='red'>Your character will now use a [friendlyGenders[pickedGender]] sprite.</font>")
 						//random_character(gender)
 					genderize_customizer_entries()
 				if("domhand")
@@ -2039,13 +2037,6 @@ Slots: [job.spawn_positions]</span>
 					widescreenpref = !widescreenpref
 					user.client.change_view(CONFIG_GET(string/default_view))
 
-				if("be_defiant")
-					defiant = !defiant
-					if(defiant)
-						to_chat(user, span_notice("You will now have resistance from people violating you. Ahelp if you are targeted in spite of this."))
-					else
-						to_chat(user, span_boldwarning("You fully immerse yourself in the grim experience, waiving your resistance from people violating you."))
-
 				if("schizo_voice")
 					toggles ^= SCHIZO_VOICE
 					if(toggles & SCHIZO_VOICE)
@@ -2191,7 +2182,6 @@ Slots: [job.spawn_positions]</span>
 	character.detail = detail
 	character.set_patron(selected_patron)
 	character.backpack = backpack
-	character.defiant = defiant
 
 	character.jumpsuit_style = jumpsuit_style
 

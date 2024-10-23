@@ -82,7 +82,7 @@
 
 
 /obj/structure/chair/bench/couch/Initialize()
-	..()
+	. = ..()
 	if(GLOB.lordprimary)
 		lordcolor(GLOB.lordprimary,GLOB.lordsecondary)
 	GLOB.lordcolor += src
@@ -281,6 +281,48 @@
 /obj/structure/bed/rogue/post_unbuckle_mob(mob/living/M)
 	..()
 	M.reset_offsets("bed_buckle")
+
+/obj/structure/bed/rogue/bedroll
+	name = "bedroll"
+	desc = "So you can sleep on the ground in relative peace."
+	icon_state = "bedroll"
+	attacked_sound = 'sound/foley/cloth_rip.ogg'
+	break_sound = 'sound/foley/cloth_rip.ogg'
+	sleepy = 2
+
+/obj/structure/bed/rogue/bedroll/attack_hand(mob/user, params)
+	..()
+	user.visible_message("<span class='notice'>[user] begins rolling up \the [src].</span>")
+	if(do_after(user, 2 SECONDS, TRUE, src))
+		var/obj/item/bedroll/new_bedroll = new /obj/item/bedroll(get_turf(src))
+		new_bedroll.color = src.color
+		qdel(src)
+
+/obj/item/bedroll
+	name = "rolled bedroll"
+	icon = 'icons/roguetown/items/misc.dmi'
+	icon_state = "bedroll_r"
+	w_class = WEIGHT_CLASS_BULKY
+	slot_flags = ITEM_SLOT_BACK
+
+/obj/item/bedroll/attack_self(mob/user, params)
+	..()
+	var/turf/T = get_turf(loc)
+	if(!isfloorturf(T))
+		to_chat(user, "<span class='warning'>I need ground to plant this on!</span>")
+		return
+	for(var/obj/A in T)
+		if(istype(A, /obj/structure))
+			to_chat(user, "<span class='warning'>I need some free space to deploy a [src] here!</span>")
+			return
+		if(A.density && !(A.flags_1 & ON_BORDER_1))
+			to_chat(user, "<span class='warning'>There is already something here!</span>")
+			return
+	user.visible_message("<span class='notice'>[user] begins placing \the [src] down on the ground.</span>")
+	if(do_after(user, 2 SECONDS, TRUE, src))
+		var/obj/structure/bed/rogue/bedroll/new_bedroll = new /obj/structure/bed/rogue/bedroll(get_turf(src))
+		new_bedroll.color = src.color
+		qdel(src)
 
 /obj/structure/bed/rogue/inn
 	icon_state = "inn_bed"

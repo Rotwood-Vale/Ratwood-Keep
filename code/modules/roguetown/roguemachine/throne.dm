@@ -2,7 +2,7 @@ GLOBAL_VAR(king_throne)
 
 /obj/structure/roguethrone
 	name = "throne of Azure Peak"
-	desc = "A big throne, to hold the Lord's giant personality. Say 'help' with the crown on your head if you are confused."
+	desc = "A big throne, to hold the Lord's giant personality. Say 'secrets of the throat' with the crown on your head if you are confused."
 	icon = 'icons/roguetown/misc/96x96.dmi'
 	icon_state = "throne"
 	density = FALSE
@@ -25,7 +25,7 @@ GLOBAL_VAR(king_throne)
 	M.reset_offsets("bed_buckle")
 
 /obj/structure/roguethrone/Initialize()
-	..()
+	. = ..()
 	if(GLOB.king_throne == null)
 		GLOB.king_throne = src
 	if(GLOB.lordprimary)

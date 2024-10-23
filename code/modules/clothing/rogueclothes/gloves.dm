@@ -15,7 +15,7 @@
 	icon_state = "leather_gloves"
 	armor = list("blunt" = 30, "slash" = 10, "stab" = 20, "bullet" = 1, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
 	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_BLUNT)
-	resistance_flags = null
+	resistance_flags = FIRE_PROOF
 	blocksound = SOFTHIT
 	blade_dulling = DULLING_BASHCHOP
 	break_sound = 'sound/foley/cloth_rip.ogg'
@@ -30,7 +30,7 @@
 	name = "fingerless gloves"
 	desc = ""
 	icon_state = "fingerless_gloves"
-	resistance_flags = null
+	resistance_flags = FIRE_PROOF
 	blocksound = SOFTHIT
 	blade_dulling = DULLING_BASHCHOP
 	break_sound = 'sound/foley/cloth_rip.ogg'
@@ -38,6 +38,11 @@
 	anvilrepair = null
 	sewrepair = TRUE
 
+/obj/item/clothing/gloves/roguetown/fingerless/shadowgloves
+	name = "fingerless gloves"
+	desc = "Cloth gloves to absorb palm sweat while leaving the fingers free for fine manipulation."
+	icon_state = "shadowgloves"
+	allowed_race = NON_DWARVEN_RACE_TYPES
 
 /obj/item/clothing/gloves/roguetown/angle
 	name = "heavy leather gloves"
@@ -62,7 +67,7 @@
 	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_BLUNT)
 	resistance_flags = FIRE_PROOF
 	blocksound = CHAINHIT
-	max_integrity = 200
+	max_integrity = 250
 	blade_dulling = DULLING_BASHCHOP
 	break_sound = 'sound/foley/breaksound.ogg'
 	drop_sound = 'sound/foley/dropsound/chain_drop.ogg'
@@ -73,6 +78,7 @@
 	icon_state = "icgloves"
 	anvilrepair = /datum/skill/craft/armorsmithing
 	smeltresult = /obj/item/ingot/iron
+	max_integrity = 200
 
 //rogtodo sprites for this
 /obj/item/clothing/gloves/roguetown/plate
@@ -98,7 +104,7 @@
 	sleeved = 'icons/roguetown/clothing/onmob/helpers/stonekeep_merc.dmi'
 	armor = list("blunt" = 15, "slash" = 15, "stab" = 15, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
 	prevent_crits = list(BCLASS_CUT, BCLASS_BLUNT)
-	resistance_flags = null
+	resistance_flags = FIRE_PROOF
 	blocksound = SOFTHIT
 	blade_dulling = DULLING_BASHCHOP
 	break_sound = 'sound/foley/cloth_rip.ogg'

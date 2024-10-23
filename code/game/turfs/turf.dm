@@ -294,7 +294,7 @@
 			C.wiringGuiUpdate(user)
 		C.is_empty(user)
 
-/turf/attackby(obj/item/C, mob/user, params)
+/turf/attackby(obj/item/C, mob/user, params, multiplier)
 	if(..())
 		return TRUE
 	//Cables and RCD
@@ -314,7 +314,7 @@
 	else if(istype(C, /obj/item/twohanded/rcl))
 		handleRCL(C, user)
 
-	return max_integrity && C.attack_turf(src, user)
+	return max_integrity && C.attack_turf(src, user, multiplier)
 
 /turf/CanPass(atom/movable/mover, turf/target)
 	if(!target)

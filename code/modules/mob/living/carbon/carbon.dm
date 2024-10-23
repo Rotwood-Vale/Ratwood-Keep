@@ -351,7 +351,7 @@
 		buckled.user_unbuckle_mob(src,src)
 
 /mob/living/carbon/resist_fire()
-	fire_stacks -= 5
+	fire_stacks -= 2
 	if(fire_stacks > 10)
 		Paralyze(60, TRUE, TRUE)
 		spin(32,2)
@@ -769,8 +769,8 @@
 		see_in_dark = max(see_in_dark, 8)
 
 	if(HAS_TRAIT(src, TRAIT_NOCSIGHT))
-		E.lighting_alpha = LIGHTING_PLANE_ALPHA_LESSER_NV_TRAIT
-		E.see_in_dark = 7
+		lighting_alpha = min(lighting_alpha, LIGHTING_PLANE_ALPHA_NOCVISION)
+		see_in_dark = max(see_in_dark, 8)
 
 	if(see_override)
 		see_invisible = see_override

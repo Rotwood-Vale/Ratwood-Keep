@@ -79,6 +79,20 @@
 	icon_state = "goblet"
 	layer = ABOVE_MOB_LAYER
 
+/obj/structure/fluff/walldeco/barbersign
+	name = "sign"
+	desc = "The iconic swirl of the barber surgeon."
+	icon = 'icons/roguetown/misc/tallstructure.dmi'
+	icon_state = "barbersign"
+	layer = ABOVE_MOB_LAYER
+
+/obj/structure/fluff/walldeco/barbersignreverse
+	name = "sign"
+	desc = "The iconic swirl of the barber surgeon."
+	icon = 'icons/roguetown/misc/tallstructure.dmi'
+	icon_state = "barbersignflip"
+	layer = ABOVE_MOB_LAYER
+
 /obj/structure/fluff/walldeco/sparrowflag
 	name = "sparrow flag"
 	desc = ""
@@ -184,7 +198,7 @@
 	icon_state = "wallflag"
 
 /obj/structure/fluff/walldeco/customflag/Initialize()
-	..()
+	. = ..()
 	if(GLOB.lordprimary)
 		lordcolor(GLOB.lordprimary,GLOB.lordsecondary)
 	GLOB.lordcolor += src

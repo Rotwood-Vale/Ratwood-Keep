@@ -3,6 +3,7 @@
 	antag_hud_type = ANTAG_HUD_TRAITOR
 	antag_hud_name = "zombie"
 	show_in_roundend = FALSE
+	rogue_enabled = TRUE
 	/// SET TO FALSE IF WE DON'T TURN INTO ROTMEN WHEN REMOVED
 	var/become_rotman = FALSE
 	var/zombie_start
@@ -18,7 +19,6 @@
 	var/STASPD
 	var/STAINT
 	var/cmode_music
-	var/datum/patron/patron
 	var/list/base_intents
 	/// Whether or not we have been turned
 	var/has_turned = FALSE
@@ -87,7 +87,6 @@
 	STASPD = zombie.STASPD
 	STAINT = zombie.STAINT
 	cmode_music = zombie.cmode_music
-	patron = zombie.patron
 	return ..()
 
 /datum/antagonist/zombie/on_removal()
@@ -110,7 +109,6 @@
 		zombie.STASPD = STASPD
 		zombie.STAINT = STAINT
 		zombie.cmode_music = cmode_music
-		zombie.set_patron(patron)
 		for(var/trait in traits_zombie)
 			REMOVE_TRAIT(zombie, trait, "[type]")
 		zombie.remove_client_colour(/datum/client_colour/monochrome)
@@ -143,8 +141,6 @@
 	return ..()
 
 /datum/antagonist/zombie/proc/transform_zombie()
-	if(owner)
-		owner.skill_experience = list()
 	var/mob/living/carbon/human/zombie = owner.current
 	if(!zombie)
 		qdel(src)
@@ -187,11 +183,7 @@
 		zombie_part.update_disabled()
 	zombie.update_body()
 	zombie.cmode_music = 'sound/music/combat_weird.ogg'
-	zombie.set_patron(/datum/patron/inhumen/zizo)
 
-	// Outside of one 2% chance remaining for zombie era strength
-	if(prob(2))
-		zombie.STASTR = 18
 
 	// This is the original first commit values for it, aka 5-7
 	zombie.STASPD = rand(5,7)
@@ -209,8 +201,6 @@
 	for(var/slot in removed_slots)
 		zombie.dropItemToGround(zombie.get_item_by_slot(slot), TRUE)
 
-	// Ghosts you because this shit was just not working whatsoever, let the AI handle the rest
-	zombie.ghostize(FALSE)
 
 /datum/antagonist/zombie/greet()
 	to_chat(owner.current, span_userdanger("Death is not the end..."))
@@ -244,7 +234,6 @@
 		qdel(src)
 		return
 
-	zombie.can_do_sex = FALSE
 
 	zombie.blood_volume = BLOOD_VOLUME_NORMAL
 	zombie.setOxyLoss(0, updating_health = FALSE, forced = TRUE) //zombles dont breathe

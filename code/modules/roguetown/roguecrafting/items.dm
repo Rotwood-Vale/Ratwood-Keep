@@ -20,6 +20,22 @@
 	verbage = "sews"
 	craftdiff = 0
 
+/datum/crafting_recipe/roguetown/cloth5x
+	name = "cloth 5x"
+	result = list(
+				/obj/item/natural/cloth,
+				/obj/item/natural/cloth,
+				/obj/item/natural/cloth,
+				/obj/item/natural/cloth,
+				/obj/item/natural/cloth,
+				)
+	reqs = list(/obj/item/natural/fibers = 10)
+	tools = list(/obj/item/needle)
+	skillcraft = /datum/skill/misc/sewing
+	verbage_simple = "sew"
+	verbage = "sews"
+	craftdiff = 0
+
 /datum/crafting_recipe/roguetown/clothbelt
 	name = "cloth belt"
 	result = /obj/item/storage/belt/rogue/leather/cloth
@@ -78,7 +94,6 @@
 	name = "wooden bow"
 	result = /obj/item/gun/ballistic/revolver/grenadelauncher/bow
 	reqs = list(/obj/item/natural/bowstring = 1, /obj/item/grown/log/tree/bowpartial = 1)
-	skillcraft = /datum/skill/combat/bows
 	verbage_simple = "string together"
 	verbage = "strings together"
 	craftdiff = 2
@@ -104,13 +119,12 @@
 		/obj/item/natural/bowstring = 1,
 		/obj/item/grown/log/tree/bowpartial/recurve = 1,
 		)
-	skillcraft = /datum/skill/combat/bows
 	verbage_simple = "string together"
 	verbage = "strings together"
 	craftdiff = 3
 
 /datum/crafting_recipe/roguetown/longbowpartial
-	name = "unstrung recurve bow"
+	name = "unstrung long bow"
 	result = /obj/item/grown/log/tree/bowpartial/longbow
 	reqs = list(
 		/obj/item/grown/log/tree = 1,
@@ -130,7 +144,6 @@
 		/obj/item/natural/bowstring = 1,
 		/obj/item/grown/log/tree/bowpartial/longbow = 1,
 		)
-	skillcraft = /datum/skill/combat/bows
 	verbage_simple = "string together"
 	verbage = "strings together"
 	craftdiff = 3
@@ -159,7 +172,14 @@
 	name = "stone hammer"
 	result = /obj/item/rogueweapon/hammer/stone
 	reqs = list(/obj/item/grown/log/tree/small = 1,
-				/obj/item/natural/stone = 3)
+				/obj/item/natural/stone = 1)
+
+/datum/crafting_recipe/roguetown/stonehoe
+	name = "stone hoe"
+	result = /obj/item/rogueweapon/hoe/stone
+	reqs = list(/obj/item/grown/log/tree/small = 2,
+				/obj/item/natural/fibers = 1,
+				/obj/item/natural/stone = 1)
 
 /datum/crafting_recipe/roguetown/stonetongs
 	name = "stone tongs"
@@ -359,6 +379,7 @@
 				)
 
 	req_table = TRUE
+
 /*
 /datum/crafting_recipe/roguetown/poisonbolt_five //Coded, but commented out pending balance discussion.
 	name = "poisoned bolts (x5)"
@@ -384,6 +405,55 @@
 
 	req_table = TRUE
 
+//pyro arrow crafting, from stonekeep
+/datum/crafting_recipe/roguetown/pyrobolt
+	name = "pyroclastic bolt"
+	result = /obj/item/ammo_casing/caseless/rogue/bolt/pyro
+	reqs = list(/obj/item/ammo_casing/caseless/rogue/bolt = 1,
+				/obj/item/reagent_containers/food/snacks/grown/rogue/fyritius = 1)
+	req_table = TRUE
+	craftdiff = 1
+	skillcraft = /datum/skill/craft/engineering
+
+/datum/crafting_recipe/roguetown/pyrobolt_five
+	name = "pyroclastic bolt (x5)"
+	result = list(
+				/obj/item/ammo_casing/caseless/rogue/bolt/pyro,
+				/obj/item/ammo_casing/caseless/rogue/bolt/pyro,
+				/obj/item/ammo_casing/caseless/rogue/bolt/pyro,
+				/obj/item/ammo_casing/caseless/rogue/bolt/pyro,
+				/obj/item/ammo_casing/caseless/rogue/bolt/pyro
+				)
+	reqs = list(/obj/item/ammo_casing/caseless/rogue/bolt = 5,
+				/obj/item/reagent_containers/food/snacks/grown/rogue/fyritius = 5)
+	req_table = TRUE
+	craftdiff = 1
+	skillcraft = /datum/skill/craft/engineering
+
+/datum/crafting_recipe/roguetown/pyroarrow
+	name = "pyroclastic arrow"
+	result = /obj/item/ammo_casing/caseless/rogue/arrow/pyro
+	reqs = list(/obj/item/ammo_casing/caseless/rogue/arrow/iron = 1,
+				/obj/item/reagent_containers/food/snacks/grown/rogue/fyritius = 1)
+	req_table = TRUE
+	craftdiff = 1
+	skillcraft = /datum/skill/craft/engineering
+
+/datum/crafting_recipe/roguetown/pyroarrow_five
+	name = "pyroclastic arrow (x5)"
+	result = list(
+				/obj/item/ammo_casing/caseless/rogue/arrow/pyro,
+				/obj/item/ammo_casing/caseless/rogue/arrow/pyro,
+				/obj/item/ammo_casing/caseless/rogue/arrow/pyro,
+				/obj/item/ammo_casing/caseless/rogue/arrow/pyro,
+				/obj/item/ammo_casing/caseless/rogue/arrow/pyro
+				)
+	reqs = list(/obj/item/ammo_casing/caseless/rogue/arrow/iron = 5,
+				/obj/item/reagent_containers/food/snacks/grown/rogue/fyritius = 5)
+	req_table = TRUE
+	craftdiff = 1
+	skillcraft = /datum/skill/craft/engineering
+
 /datum/crafting_recipe/roguetown/mortar
 	name = "stone mortar"
 	result = /obj/item/reagent_containers/glass/mortar
@@ -403,6 +473,21 @@
 				/obj/item/natural/cloth = 1)
 	tools = list(/obj/item/needle)
 	skillcraft = /datum/skill/misc/sewing
+
+/datum/crafting_recipe/roguetown/bagx5
+	name = "bag x5"
+	result = list(
+				/obj/item/storage/roguebag/crafted,
+				/obj/item/storage/roguebag/crafted,
+				/obj/item/storage/roguebag/crafted,
+				/obj/item/storage/roguebag/crafted,
+				/obj/item/storage/roguebag/crafted,
+				)
+	reqs = list(/obj/item/natural/fibers = 5,
+				/obj/item/natural/cloth = 5)
+	tools = list(/obj/item/needle)
+	skillcraft = /datum/skill/misc/sewing
+	req_table = FALSE
 
 /obj/item/storage/roguebag/crafted
 	sellprice = 4
@@ -492,15 +577,12 @@
 	verbage = "puts together"
 
 /datum/crafting_recipe/roguetown/paperscroll
-	name = "scroll of parchment (x5)"
+	name = "scroll of parchment"
 	result = list(/obj/item/paper/scroll,
-				  /obj/item/paper/scroll,
-				  /obj/item/paper/scroll,
 				  /obj/item/paper/scroll,
 				  /obj/item/paper/scroll)
 	reqs = list(/obj/item/grown/log/tree/small = 1,
-	/datum/reagent/water = 50)
-	tools = list(/obj/item/rogueweapon/huntingknife = 1)
+	/datum/reagent/water = 48)
 	structurecraft = /obj/structure/fluff/dryingrack
 	craftdiff = 1
 

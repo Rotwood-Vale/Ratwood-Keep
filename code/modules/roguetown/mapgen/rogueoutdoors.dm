@@ -21,7 +21,8 @@
 							/obj/item/natural/stone = 18,
 							/obj/item/natural/rock = 2,
 							/obj/item/grown/log/tree/stick = 3,
-							/obj/structure/closet/dirthole/closed/loot=3)
+							/obj/structure/closet/dirthole/closed/loot=3,
+							/obj/structure/flora/roguegrass/pyroclasticflowers = 1)
 	spawnableTurfs = list(/turf/open/floor/rogue/dirt/road=5)
 	allowed_areas = list(/area/rogue/outdoors/rtfield)
 
@@ -43,7 +44,7 @@
 
 /datum/mapGeneratorModule/roguetowngrass
 	clusterCheckFlags = CLUSTER_CHECK_DIFFERENT_ATOMS
-	allowed_turfs = list(/turf/open/floor/rogue/dirt,/turf/open/floor/rogue/grass)
+	allowed_turfs = list(/turf/open/floor/rogue/dirt,/turf/open/floor/rogue/grass,/turf/open/floor/rogue/grassred,/turf/open/floor/rogue/grassyel,/turf/open/floor/rogue/grasscold)
 	excluded_turfs = list(/turf/open/floor/rogue/dirt/road)
 	spawnableAtoms = list(/obj/structure/flora/roguegrass = 40,
 						/obj/structure/flora/roguegrass/maneater = 7,

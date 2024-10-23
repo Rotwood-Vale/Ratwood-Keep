@@ -28,7 +28,11 @@
 		H.mind.adjust_skillrank(/datum/skill/misc/sewing, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/craft/crafting, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 3, TRUE)
-		H.change_stat("constitution", -1)
+		H.mind.adjust_skillrank(/datum/skill/misc/stealing, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/lockpicking, 2, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/climbing, 2, TRUE)
+		H.change_stat("strength", -1)
+		H.change_stat("speed", 1)
 		H.change_stat("intelligence", 2)
 		H.change_stat("perception", 1)
 

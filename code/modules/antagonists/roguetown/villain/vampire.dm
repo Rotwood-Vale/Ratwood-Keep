@@ -66,7 +66,6 @@
 	ADD_TRAIT(owner.current, TRAIT_NOPAIN, TRAIT_GENERIC)
 	ADD_TRAIT(owner.current, TRAIT_TOXIMMUNE, TRAIT_GENERIC)
 	ADD_TRAIT(owner.current, TRAIT_STEELHEARTED, TRAIT_GENERIC)
-	ADD_TRAIT(owner.current, TRAIT_LIMPDICK, TRAIT_GENERIC)
 	owner.current.cmode_music = 'sound/music/combat_vamp2.ogg'
 	var/obj/item/organ/eyes/eyes = owner.current.getorganslot(ORGAN_SLOT_EYES)
 	if(eyes)
@@ -210,13 +209,13 @@
 	if(VD.disguised)
 		to_chat(src, span_warning("My curse is hidden."))
 		return
-	if(VD.vitae < 500)
+	if(VD.vitae < 100)
 		to_chat(src, span_warning("Not enough vitae."))
 		return
 	if(has_status_effect(/datum/status_effect/buff/bloodstrength))
 		to_chat(src, span_warning("Already active."))
 		return
-	VD.handle_vitae(-500)
+	VD.handle_vitae(-100)
 	apply_status_effect(/datum/status_effect/buff/bloodstrength)
 	to_chat(src, span_greentext("! NIGHT MUSCLES !"))
 	src.playsound_local(get_turf(src), 'sound/misc/vampirespell.ogg', 100, FALSE, pressure_affected = FALSE)
@@ -242,13 +241,13 @@
 	if(VD.disguised)
 		to_chat(src, span_warning("My curse is hidden."))
 		return
-	if(VD.vitae < 500)
+	if(VD.vitae < 100)
 		to_chat(src, span_warning("Not enough vitae."))
 		return
 	if(has_status_effect(/datum/status_effect/buff/celerity))
 		to_chat(src, span_warning("Already active."))
 		return
-	VD.handle_vitae(-500)
+	VD.handle_vitae(-100)
 	rogstam_add(2000)
 	apply_status_effect(/datum/status_effect/buff/celerity)
 	to_chat(src, span_greentext("! QUICKENING !"))
@@ -278,13 +277,13 @@
 	if(VD.disguised)
 		to_chat(src, span_warning("My curse is hidden."))
 		return
-	if(VD.vitae < 200)
+	if(VD.vitae < 100)
 		to_chat(src, span_warning("Not enough vitae blood."))
 		return
 	if(has_status_effect(/datum/status_effect/buff/fortitude))
 		to_chat(src, span_warning("Already active."))
 		return
-	VD.vitae -= 200
+	VD.vitae -= 100
 	rogstam_add(2000)
 	apply_status_effect(/datum/status_effect/buff/fortitude)
 	to_chat(src, span_greentext("! ARMOR OF DARKNESS !"))
@@ -345,12 +344,12 @@
 	if(silver_curse_status)
 		to_chat(src, span_warning("My BANE is not letting me REGEN!."))
 		return
-	if(VD.vitae < 500)
+	if(VD.vitae < 200)
 		to_chat(src, span_warning("Not enough vitae."))
 		return
 	to_chat(src, span_greentext("! REGENERATE !"))
 	src.playsound_local(get_turf(src), 'sound/misc/vampirespell.ogg', 100, FALSE, pressure_affected = FALSE)
-	VD.handle_vitae(-500)
+	VD.handle_vitae(-200)
 	fully_heal()
 
 /mob/living/carbon/human/proc/vampire_infect()

@@ -14,14 +14,16 @@
 	see_in_dark = 6
 	move_to_delay = 3
 	base_intents = list(/datum/intent/simple/bite)
-	butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat/steak = 2,
-						/obj/item/natural/hide = 2,
-						/obj/item/natural/fur = 1, /obj/item/natural/bone = 4)
+	minbodytemp = 0
+	maxbodytemp = INFINITY
+	damage_coeff = list(BRUTE = 1, BURN = 0.2, TOX = 1, CLONE = 1, STAMINA = 0, OXY = 1)
+	butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat/steak = 20,
+						/obj/item/natural/hide = 10, /obj/item/natural/bundle/bone/full = 4)
 	mob_biotypes = MOB_ORGANIC|MOB_BEAST
-	health = 2500
-	maxHealth = 2500
-	melee_damage_lower = 19
-	melee_damage_upper = 29
+	health = 800
+	maxHealth = 800
+	melee_damage_lower = 45
+	melee_damage_upper = 70
 	vision_range = 7
 	aggro_vision_range = 9
 	environment_smash = ENVIRONMENT_SMASH_NONE
@@ -150,3 +152,49 @@
 			return "foreleg"
 	return ..()
 
+/obj/projectile/magic/aoe/dragon_breath
+    name = "fire hairball"
+    icon_state = "fireball"
+    damage = 10
+    damage_type = BRUTE
+    nodamage = FALSE
+    light_color = "#f8af07"
+    light_range = 2
+    damage = 40
+    flag = "magic"
+    hitsound = 'sound/blank.ogg'
+
+    //explosion values
+    var/exp_heavy = 0
+    var/exp_light = 2
+    var/exp_flash = 3
+    var/exp_fire = 3
+
+
+
+/obj/projectile/magic/aoe/dragon_breath/on_hit(target)
+    . = ..()
+    if(ismob(target))
+        var/mob/living/M = target
+        if(exp_fire)
+            M.adjust_fire_stacks(exp_fire*3)
+    var/turf/T
+    if(isturf(target))
+        T = target
+    else
+        T = get_turf(target)
+    explosion(T, -1, exp_heavy, exp_light, exp_flash, 0, flame_range = exp_fire, soundin = explode_sound)
+    if(ismob(target))
+        var/mob/living/M = target
+        var/atom/throw_target = get_edge_target_turf(M, angle2dir(Angle))
+        M.throw_at(throw_target, exp_light, EXPLOSION_THROW_SPEED)
+    
+/mob/living/simple_animal/hostile/retaliate/rogue/dragon/broodmother
+	health = 1600
+	maxHealth = 1600
+	name = "dragon broodmother"
+	projectiletype = /obj/projectile/magic/aoe/dragon_breath
+	projectilesound = 'sound/blank.ogg'
+	ranged = 1
+	ranged_message = "breathes fire"
+	ranged_cooldown_time = 20 SECONDS

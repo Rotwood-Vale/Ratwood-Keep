@@ -50,7 +50,7 @@
 	smelt_bar_num = 2
 
 /obj/item/rogueweapon/mace/silver
-	name = "Silver War Hammer"
+	name = "silver war hammer"
 	desc = "A light war hammer forged of silver."
 	icon_state = "silverhammer"
 	force = 24
@@ -154,7 +154,7 @@
 	force = 15
 	force_wielded = 18
 	name = "wooden club"
-	desc = "Unga! Unga to the head!"
+	desc = "A primitive cudgel carved of a stout piece of treefall."
 	icon_state = "club1"
 	//dropshrink = 0.75
 	wbalance = 0
@@ -163,6 +163,7 @@
 	gripped_intents = list(/datum/intent/mace/strike/wood, /datum/intent/mace/smash/wood)
 	smeltresult = /obj/item/ash
 	minstr = 7
+	resistance_flags = FLAMMABLE
 
 /obj/item/rogueweapon/mace/woodclub/New()
 	..()
@@ -190,6 +191,7 @@
 	wbalance = 0
 	minstr = 7
 	wdefense = 3
+	resistance_flags = FLAMMABLE
 
 /obj/item/rogueweapon/mace/cudgel/justice
 	name = "'Justice'"
@@ -228,6 +230,7 @@
 	wdefense = 5
 	wbalance = 0
 	associated_skill = /datum/skill/combat/swords
+	resistance_flags = FLAMMABLE
 
 
 /obj/item/rogueweapon/mace/wsword/getonmobprop(tag)

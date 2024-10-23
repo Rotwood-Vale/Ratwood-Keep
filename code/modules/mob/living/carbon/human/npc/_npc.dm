@@ -20,8 +20,10 @@
 	var/ai_when_client = FALSE
 	var/next_idle = 0
 	var/next_seek = 0
+	var/next_stand = 0
 	var/flee_in_pain = FALSE
 	var/stand_attempts = 0
+	var/ai_currently_active = FALSE
 
 	var/returning_home = FALSE
 
@@ -52,27 +54,31 @@
 			walk_to(src,0)
 			resist()
 			resisting = FALSE
-		if(!(mobility_flags & MOBILITY_STAND) && (stand_attempts < 3))
-			resisting = TRUE
-			npc_stand()
-			resisting = FALSE
-		else
-			stand_attempts = 0
-			if(!handle_combat())
-				if(mode == AI_IDLE && !pickupTarget)
-					npc_idle()
-					if(del_on_deaggro && last_aggro_loss && (world.time >= last_aggro_loss + del_on_deaggro))
-						if(deaggrodel())
-							return TRUE
+		if(!resisting)
+			if(!(mobility_flags & MOBILITY_STAND) && (stand_attempts < 3))
+				npc_stand()
+			else
+				if(!handle_combat())
+					if(mode == AI_IDLE && !pickupTarget)
+						npc_idle()
+						if(del_on_deaggro && last_aggro_loss && (world.time >= last_aggro_loss + del_on_deaggro))
+							if(deaggrodel())
+								return TRUE
 	else
 		walk_to(src,0)
 		return TRUE
 
 /mob/living/carbon/human/proc/npc_stand()
+	// the sane way to do this would be to try and check if we can even realistically stand 
+	resisting = TRUE
 	if(stand_up())
 		stand_attempts = 0
+		resisting = FALSE
+		return TRUE
 	else
 		stand_attempts += rand(1,3)
+		resisting = FALSE
+		return FALSE
 
 /mob/living/carbon/human/proc/npc_idle()
 	if(m_intent == MOVE_INTENT_SNEAK)
@@ -80,6 +86,10 @@
 	if(world.time < next_idle + rand(30,50))
 		return
 	next_idle = world.time + rand(30,50)
+	if ((world.time < next_stand + rand(50, 100)) && !npc_stand()) // attempt to stand up when idle, but only once every so often
+		next_stand = world.time + rand(50, 100)
+	if (getToxLoss() <= STACON) // if we have toxin damage less than our constitution, attempt to heal
+		heal_wounds(STACON / 4)
 	if((mobility_flags & MOBILITY_MOVE) && isturf(loc))
 		if(wander)
 			if(prob(50))
@@ -95,8 +105,7 @@
 
 /mob/living/carbon/human/proc/deaggrodel()
 	if(aggressive)
-		var/list/around = hearers(7, src)  // scan for enemies
-		for(var/mob/living/L in around)
+		for(var/mob/living/L in view(7)) // scan for enemies
 			if( should_target(L) && (L != src))
 				if(L.stat != DEAD)
 					retaliate(L)
@@ -257,8 +266,7 @@
 		if(AI_IDLE)		// idle
 			if(world.time >= next_seek)
 				next_seek = world.time + 3 SECONDS
-				var/list/around = hearers(7, src) // scan for enemies
-				for(var/mob/living/L in around)
+				for(var/mob/living/L in view(7, src)) // scan for enemies
 					if(should_target(L))
 						retaliate(L)
 
@@ -275,9 +283,9 @@
 				for(var/obj/item/I in view(1,src))
 					if(!isturf(I.loc))
 						continue
-					if(I in blacklistItems)
+					if(blacklistItems[I])
 						continue
-					if(I && I.force > 7)
+					if(I.force > 7)
 						equip_item(I)
 
 //			// switch targets
@@ -300,7 +308,8 @@
 					var/paine = get_complex_pain()
 					if(paine >= ((STAEND * 10)*0.9))
 //						mode = AI_FLEE
-						walk_away(src, target, 5, update_movespeed())
+						if (!restrained())
+							walk_away(src, target, 5, update_movespeed())
 				return TRUE
 			else								// not next to perp
 				frustration++

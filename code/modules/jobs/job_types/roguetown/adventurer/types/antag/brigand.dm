@@ -5,7 +5,7 @@
 	allowed_races = RACES_ALL_KINDS
 	outfit = /datum/outfit/job/roguetown/bandit/brigand
 	category_tags = list(CTAG_BANDIT)
-	cmode_music = 'sound/music/combat_bandit_brigand.ogg'	
+	cmode_music = 'sound/music/combat_bandit_brigand.ogg'
 
 /datum/outfit/job/roguetown/bandit/brigand/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -25,6 +25,8 @@
 	H.mind.adjust_skillrank(/datum/skill/misc/climbing, 3, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/sewing, 1, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/medicine, 1, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/combat/shields, 3, TRUE)
 	belt = /obj/item/storage/belt/rogue/leather
 	pants = /obj/item/clothing/under/roguetown/trou/leather
 	shirt = /obj/item/clothing/suit/roguetown/shirt/shortshirt/random
@@ -35,10 +37,13 @@
 	neck = /obj/item/clothing/neck/roguetown/coif
 	head = /obj/item/clothing/head/roguetown/helmet/leather/volfhelm
 	armor = /obj/item/clothing/suit/roguetown/armor/leather/hide
-	H.change_stat("strength", 3)
+	id = /obj/item/mattcoin
+	H.change_stat("strength", 4) //have you seen this idiot's starting gear and skill spread??
 	H.change_stat("endurance", 2)
 	H.change_stat("constitution", 2)
-	H.change_stat("intelligence", -3)
+	H.change_stat("intelligence", -1)
+	H.change_stat("speed", 1)
+	H.change_stat("fortune", 1)
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 	H.adjust_blindness(-3)
 	var/weapons = list("Battleaxe & Cudgel","Flail & Shield")
@@ -46,8 +51,8 @@
 	H.set_blindness(0)
 	switch(weapon_choice)
 		if("Battleaxe & Cudgel") //one weapon to hurt people one weapon to kill people
-			backl= /obj/item/rogueweapon/stoneaxe/battle		
+			backl= /obj/item/rogueweapon/stoneaxe/battle
 			beltr = /obj/item/rogueweapon/mace/cudgel
 		if("Flail & Shield") //plate users beware, you're in for a scare!
-			backl= /obj/item/rogueweapon/shield/wood	
-			beltr = /obj/item/rogueweapon/flail	
+			backl= /obj/item/rogueweapon/shield/wood
+			beltr = /obj/item/rogueweapon/flail

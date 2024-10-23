@@ -4,7 +4,7 @@
 /datum/species/demihuman
 	name = "Half-Kin"
 	id = "demihuman"
-	desc = "The inevitable union between wildkin and some form of humanity or another, they've become quite common these days. Perhaps they'll be the dominant species some day."
+	desc = "The inevitable union between wildkin and some form of humanity or another, and while they also experience animalistic tendencies akin to their full-blooded ancestors, their intermingling with others has stemmed the intensity. (Half-kin are not a template race to play your own custom race, if you play a half-kin, you are expected to roleplay to the setting and the race's lore.)"
 	skin_tone_wording = "Ancestry"
 	default_color = "FFFFFF"
 	species_traits = list(EYECOLOR,HAIR,FACEHAIR,LIPS,STUBBLE,OLDGREY,MUTCOLORS_PARTSONLY)
@@ -33,8 +33,6 @@
 		OFFSET_NECK_F = list(0,-1), OFFSET_MOUTH_F = list(0,-1), OFFSET_PANTS_F = list(0,0), \
 		OFFSET_SHIRT_F = list(0,0), OFFSET_ARMOR_F = list(0,0), OFFSET_UNDIES_F = list(0,-1), \
 		)
-	specstats = list("strength" = 0, "perception" = 1, "intelligence" = -1, "constitution" = 0, "endurance" = 1, "speed" = -1, "fortune" = 0)
-	specstats_f = list("strength" = -1, "perception" = 0, "intelligence" = 2, "constitution" = -1, "endurance" = 0, "speed" = 1, "fortune" = 0)
 	race_bonus = list(STAT_PERCEPTION = 1)
 	enflamed_icon = "widefire"
 	bodypart_features = list(

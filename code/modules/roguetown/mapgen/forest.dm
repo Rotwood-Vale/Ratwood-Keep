@@ -20,6 +20,7 @@
 							/obj/structure/flora/roguegrass = 26,
 							/obj/structure/flora/roguegrass/maneater = 13,
 							/obj/structure/flora/roguegrass/swampweed = 15,
+							/obj/structure/flora/roguegrass/pyroclasticflowers = 1,
 							/obj/item/natural/stone = 23,
 							/obj/item/natural/rock = 6,
 							/obj/item/grown/log/tree/stick = 16,
@@ -45,7 +46,7 @@
 
 /datum/mapGeneratorModule/forestgrass
 	clusterCheckFlags = CLUSTER_CHECK_DIFFERENT_ATOMS
-	allowed_turfs = list(/turf/open/floor/rogue/grass)
+	allowed_turfs = list(/turf/open/floor/rogue/grass, /turf/open/floor/rogue/grassred, /turf/open/floor/rogue/grassyel, /turf/open/floor/rogue/grasscold)
 	excluded_turfs = list()
 	allowed_areas = list(/area/rogue/outdoors/woods)
 	spawnableAtoms = list(/obj/structure/flora/roguetree = 30,

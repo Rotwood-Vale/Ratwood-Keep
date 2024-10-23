@@ -156,6 +156,105 @@
 	poisonfeel = "burning" //Ditto
 	poisonamount = 5 //Support and balance for bodkins, which will hold less poison due to how
 
+//pyro bolts - stonekeep port 
+
+/obj/item/ammo_casing/caseless/rogue/bolt/pyro
+	name = "pyroclastic bolt"
+	desc = "A bolt smeared with a flammable tincture."
+	projectile_type = /obj/projectile/bullet/bolt/pyro
+	possible_item_intents = list(/datum/intent/mace/strike)
+	caliber = "regbolt"
+	icon = 'icons/roguetown/weapons/ammo.dmi'
+	icon_state = "bolt_pyroclastic"
+	dropshrink = 0.8
+	max_integrity = 10
+	force = 10
+
+/obj/projectile/bullet/bolt/pyro
+	name = "pyroclastic bolt"
+	desc = "A bolt smeared with a flammable tincture."
+	damage = 20
+	damage_type = BRUTE
+	icon = 'icons/roguetown/weapons/ammo.dmi'
+	icon_state = "boltpyro_proj"
+	ammo_type = /obj/item/ammo_casing/caseless/rogue/bolt
+	range = 15
+	hitsound = 'sound/blank.ogg'
+	embedchance = 0
+	woundclass = BCLASS_BLUNT
+	flag = "bullet"
+	speed = 0.3
+
+	var/explode_sound = list('sound/misc/explode/incendiary (1).ogg','sound/misc/explode/incendiary (2).ogg')
+
+	//explosion values
+	var/exp_heavy = 0
+	var/exp_light = 0
+	var/exp_flash = 0
+	var/exp_fire = 1
+
+/obj/projectile/bullet/bolt/pyro/on_hit(target)
+	. = ..()
+	if(ismob(target))
+		var/mob/living/M = target
+		M.adjust_fire_stacks(6)
+//		M.take_overall_damage(0,10) //between this 10 burn, the 10 brute, the explosion brute, and the onfire burn, my at about 65 damage if you stop drop and roll immediately
+	var/turf/T
+	if(isturf(target))
+		T = target
+	else
+		T = get_turf(target)
+	explosion(T, -1, exp_heavy, exp_light, exp_flash, 0, flame_range = exp_fire, soundin = explode_sound)
+
+//pyro arrows
+/obj/item/ammo_casing/caseless/rogue/arrow/pyro
+	name = "pyroclastic arrow"
+	desc = "An arrow with its tip drenched in a flammable tincture."
+	projectile_type = /obj/projectile/bullet/arrow/pyro
+	possible_item_intents = list(/datum/intent/mace/strike)
+	caliber = "arrow"
+	icon = 'icons/roguetown/weapons/ammo.dmi'
+	icon_state = "arrow_pyroclastic"
+	dropshrink = 0.8
+	max_integrity = 10
+	force = 10
+
+/obj/projectile/bullet/arrow/pyro
+	name = "pyroclatic arrow"
+	desc = "An arrow with its tip drenched in a flammable tincture."
+	damage = 15
+	damage_type = BRUTE
+	icon = 'icons/roguetown/weapons/ammo.dmi'
+	icon_state = "arrowpyro_proj"
+	ammo_type = /obj/item/ammo_casing/caseless/rogue/arrow
+	range = 15
+	hitsound = 'sound/blank.ogg'
+	embedchance = 0
+	woundclass = BCLASS_BLUNT
+	flag = "bullet"
+	speed = 0.4
+
+	var/explode_sound = list('sound/misc/explode/incendiary (1).ogg','sound/misc/explode/incendiary (2).ogg')
+
+	//explosion values
+	var/exp_heavy = 0
+	var/exp_light = 0
+	var/exp_flash = 0
+	var/exp_fire = 1
+
+/obj/projectile/bullet/arrow/pyro/on_hit(target)
+	. = ..()
+	if(ismob(target))
+		var/mob/living/M = target
+		M.adjust_fire_stacks(6)
+//		M.take_overall_damage(0,10) //between this 10 burn, the 10 brute, the explosion brute, and the onfire burn, my at about 65 damage if you stop drop and roll immediately
+	var/turf/T
+	if(isturf(target))
+		T = target
+	else
+		T = get_turf(target)
+	explosion(T, -1, exp_heavy, exp_light, exp_flash, 0, flame_range = exp_fire, soundin = explode_sound)
+
 /obj/projectile/bullet/reusable/arrow/poison/stone
 	name = "stone arrow"
 	ammo_type = /obj/item/ammo_casing/caseless/rogue/arrow/stone

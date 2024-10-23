@@ -523,9 +523,6 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 		if(!do_mob(user,src,30*grav_power))
 			return
 
-	if(!ontable() && isturf(loc))
-		if(!move_after(user,3,target = src))
-			return
 
 	//If the item is in a storage item, take it out
 	SEND_SIGNAL(loc, COMSIG_TRY_STORAGE_TAKE, src, user.loc, TRUE)
@@ -683,6 +680,10 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 			wield(user)
 		else
 			ungrip(user)
+	
+	if (isliving(user) && slot != ITEM_SLOT_HANDS)
+		var/mob/living/living_user = user
+		living_user.rebuild_obscured_flags() // AZURE EDIT: cache our equipped items `flags_inv` values
 
 	update_transform()
 

@@ -11,7 +11,7 @@
 	allowed_races = RACES_ALL_KINDS
 	allowed_ages = list(AGE_ADULT, AGE_MIDDLEAGED)
 
-	tutorial = "Most would decry the humble bath attendant as a desperate fool tempting others into bedsheets for money - only sometimes, you say! You work under the Innkeeper in the communal bathhouse, keeping it and the guests in turn as tidy as they please. Laudry, mild wounds, and your tender touch with a bar of soap is your craft. Occassionally you help upstairs; put a shirt on!"
+	tutorial = "Most would decry the humble bath attendant as a desperate fool tempting others into bedsheets for money - only sometimes, you say! You work under the Bathmaster in the communal bathhouse, keeping it and the guests in turn as tidy as they please. Laundry, mild wounds, and your tender touch with a bar of soap is your craft."
 
 	outfit = /datum/outfit/job/roguetown/nightmaiden
 	display_order = JDO_WENCH
@@ -20,15 +20,13 @@
 	min_pq = -10
 	max_pq = null
 
-	allow_custom_genitals = TRUE
-
 /datum/outfit/job/roguetown/nightmaiden/pre_equip(mob/living/carbon/human/H)
 	..()
 	shoes = /obj/item/clothing/shoes/roguetown/sandals
 	neck = /obj/item/storage/belt/rogue/pouch/coins/poor
 	r_hand = /obj/item/bath/soap
 	belt =	/obj/item/storage/belt/rogue/leather/cloth
-	beltl = /obj/item/roguekey/tavern
+	beltl = /obj/item/roguekey/nightmaiden
 	if(H.pronouns == SHE_HER)
 		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
 		armor = /obj/item/clothing/suit/roguetown/shirt/dress/gen/sexy

@@ -182,9 +182,9 @@
 		user.do_attack_animation(O)
 		return TRUE
 
-/obj/item/proc/attack_turf(turf/T, mob/living/user)
+/obj/item/proc/attack_turf(turf/T, mob/living/user, multiplier)
 	if(T.max_integrity)
-		if(T.attacked_by(src, user))
+		if(T.attacked_by(src, user, multiplier))
 			user.do_attack_animation(T)
 			return TRUE
 
@@ -327,7 +327,7 @@
 		I.take_damage(1, BRUTE, I.d_type)
 	return TRUE
 
-/turf/proc/attacked_by(obj/item/I, mob/living/user)
+/turf/proc/attacked_by(obj/item/I, mob/living/user, multiplier)
 	var/newforce = get_complex_damage(I, user, blade_dulling)
 	if(!newforce)
 		testing("attack6")
@@ -350,6 +350,9 @@
 	else
 		user.visible_message(span_warning("[user] [verbu] [src] with [I]!"))
 
+	if(multiplier)
+		newforce = newforce * multiplier
+	
 	take_damage(newforce, I.damtype, I.d_type, 1)
 	if(newforce > 1)
 		I.take_damage(1, BRUTE, I.d_type)

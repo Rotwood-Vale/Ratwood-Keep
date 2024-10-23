@@ -307,7 +307,7 @@
 	if(computer)
 		if(card_slot)
 			var/obj/item/card/id/auth_card = card_slot.stored_card2
-			data["auth_name"] = auth_card ? strip_html_simple(auth_card.name) : "-----"
+			data["auth_name"] = auth_card ? STRIP_HTML_SIMPLE(auth_card.name, MAX_MESSAGE_LEN) : "-----"
 			authed = authorized()
 
 
@@ -367,7 +367,7 @@
 			data["has_id"] = !!id_card
 			data["id_rank"] = id_card && id_card.assignment ? html_encode(id_card.assignment) : "Unassigned"
 			data["id_owner"] = id_card && id_card.registered_name ? html_encode(id_card.registered_name) : "-----"
-			data["id_name"] = id_card ? strip_html_simple(id_card.name) : "-----"
+			data["id_name"] = id_card ? STRIP_HTML_SIMPLE(id_card.name, MAX_MESSAGE_LEN) : "-----"
 
 			if(show_assignments)
 				data["engineering_jobs"] = format_jobs(GLOB.engineering_positions)

@@ -155,7 +155,7 @@
 
 /datum/special_trait/arsonist
 	name = "Arsonist"
-	greet_text = span_notice("I like seeing things combust and burn. I have hidden around two firebobms")
+	greet_text = span_notice("I like seeing things combust and burn. I have hidden around two firebombs.")
 	weight = 100
 
 /datum/special_trait/arsonist/on_apply(mob/living/carbon/human/character, silent)
@@ -448,7 +448,7 @@
 /datum/special_trait/atrophy
 	name = "Atrophy"
 	greet_text = span_boldwarning("When growing up I could barely feed myself... this left me weak and fragile")
-	weight = 200
+	weight = 50
 
 /datum/special_trait/atrophy/on_apply(mob/living/carbon/human/character)
 	character.change_stat("strength", -2)
@@ -458,7 +458,7 @@
 /datum/special_trait/lazy
 	name = "Lazy"
 	greet_text = span_boldwarning("I don't care, never did")
-	weight = 200
+	weight = 50
 
 /datum/special_trait/lazy/on_apply(mob/living/carbon/human/character)
 	character.change_stat("strength", -1)

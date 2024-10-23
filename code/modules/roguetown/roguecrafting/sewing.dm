@@ -10,6 +10,18 @@
 	reqs = list(/obj/item/natural/cloth = 1)
 	craftdiff = 0
 
+/datum/crafting_recipe/roguetown/sewing/peasantcap
+	name = "peasant cap"
+	result = list(/obj/item/clothing/head/roguetown/armingcap)
+	reqs = list(/obj/item/natural/cloth = 1)
+	craftdiff = 0
+
+/datum/crafting_recipe/roguetown/sewing/apron_waist
+	name = "waist apron"
+	result = list(/obj/item/clothing/cloak/apron/waist)
+	reqs = list(/obj/item/natural/cloth = 3) // 3 because it thas a storage, but it really just a apron.
+	craftdiff = 0
+
 /datum/crafting_recipe/roguetown/sewing/rags
 	name = "rags"
 	result = list(/obj/item/clothing/suit/roguetown/shirt/rags)
@@ -56,6 +68,13 @@
 	result = list(/obj/item/clothing/under/roguetown/trou)
 	reqs = list(/obj/item/natural/cloth = 2,
 				/obj/item/natural/fibers = 1)
+	craftdiff = 1
+
+/datum/crafting_recipe/roguetown/sewing/longcoat
+	name = "longcoat"
+	result = list(/obj/item/clothing/suit/roguetown/armor/longcoat)
+	reqs = list(/obj/item/natural/cloth = 2,
+				/obj/item/natural/fibers = 2)
 	craftdiff = 1
 
 /datum/crafting_recipe/roguetown/sewing/workervest

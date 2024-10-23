@@ -101,6 +101,11 @@
 			return pick('sound/vo/mobs/skel/skeleton_idle (1).ogg','sound/vo/mobs/skel/skeleton_idle (2).ogg','sound/vo/mobs/skel/skeleton_idle (3).ogg')
 
 
+/mob/living/simple_animal/hostile/rogue/skeleton/Initialize(mapload, mob/user)
+	. = ..()
+	if(user)
+		friends += user
+
 /mob/living/simple_animal/hostile/rogue/skeleton/Life()
 	. = ..()
 	if(!target)
@@ -114,6 +119,30 @@
 	emote("aggro")
 	GiveTarget(user)
 	return
+
+/mob/living/simple_animal/hostile/rogue/skeleton/beckoned(mob/user)
+	if(!user.mind)
+		return
+	if(!(user.mind.has_antag_datum(/datum/antagonist/lich)))
+		return
+	for(var/mob/living/simple_animal/hostile/rogue/skeleton/target in viewers(user))
+		target.LoseTarget()
+		target.search_objects = 2
+		target.add_overlay("peace_overlay")
+	return
+
+/mob/living/simple_animal/hostile/rogue/skeleton/shood(mob/user)
+	if(!user.mind)
+		return
+	if(!(user.mind.has_antag_datum(/datum/antagonist/lich)))
+		return
+	for(var/mob/living/simple_animal/hostile/rogue/skeleton/target in viewers(user))
+		target.RegainSearchObjects()
+	return
+
+/mob/living/simple_animal/hostile/rogue/skeleton/RegainSearchObjects(value)
+	cut_overlay("peace_overlay")
+	. = ..()
 
 
 /datum/intent/simple/claw/skeleton_unarmed

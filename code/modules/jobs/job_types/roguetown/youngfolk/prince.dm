@@ -16,17 +16,13 @@
 
 	display_order = JDO_PRINCE
 	give_bank_account = 30
-	min_pq = -10
+	noble_income = 20
+	min_pq = 1
 	max_pq = null
-
-	allow_custom_genitals = TRUE
-
 	cmode_music = 'sound/music/combat_fancy.ogg'
 
 /datum/job/roguetown/prince/after_spawn(mob/living/H, mob/M, latejoin)
 	. = ..()
-	if(GLOB.lordsurname && H)
-		give_lord_surname(H)
 	if(ishuman(H))
 		var/mob/living/carbon/human/Q = H
 		Q.advsetup = 1
@@ -124,7 +120,7 @@
 	..()
 	ADD_TRAIT(H, TRAIT_NOBLE, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_CRITICAL_WEAKNESS, TRAIT_GENERIC)
-	ADD_TRAIT(H, TRAIT_NORUN, TRAIT_GENERIC) 
+	ADD_TRAIT(H, TRAIT_NORUN, TRAIT_GENERIC)
 	belt = /obj/item/storage/belt/rogue/leather
 	beltl = /obj/item/storage/keyring/heir
 	beltr = /obj/item/storage/belt/rogue/pouch/coins/rich

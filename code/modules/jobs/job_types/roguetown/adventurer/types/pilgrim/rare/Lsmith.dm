@@ -29,7 +29,7 @@
 	backl = /obj/item/storage/backpack/rogue/backpack
 	backpack_contents = list(/obj/item/flint = 1, /obj/item/rogueore/coal=2, /obj/item/rogueore/iron=2, /obj/item/rogueore/silver=1)
 	ADD_TRAIT(H, TRAIT_TRAINED_SMITH, TRAIT_GENERIC)
-	if(H.gender == MALE)
+	if(H.pronouns == HE_HIM)
 
 		shoes = /obj/item/clothing/shoes/roguetown/boots/leather
 		shirt = /obj/item/clothing/suit/roguetown/shirt/shortshirt
@@ -52,7 +52,7 @@
 				H.mind.adjust_skillrank(/datum/skill/craft/weaponsmithing, 1, TRUE)
 			H.change_stat("strength", 2)
 			H.change_stat("speed", -1)
-			H.change_stat("fortune", 2)
+			H.change_stat("fortune", 3)
 
 
 	else
@@ -70,6 +70,7 @@
 			H.mind.adjust_skillrank(/datum/skill/craft/blacksmithing, 6, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/craft/armorsmithing, 6, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/craft/weaponsmithing, 6, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/craft/smelting, 6, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
 			if(H.age == AGE_OLD)
 				H.mind.adjust_skillrank(/datum/skill/craft/blacksmithing, 1, TRUE)

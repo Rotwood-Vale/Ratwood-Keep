@@ -81,8 +81,8 @@
 	. = ..()
 	var/turf/T = get_turf(targets[1])
 	if(isopenturf(T))
-		var/mob/living/carbon/target = new /mob/living/carbon/human/species/skeleton/npc(T)
-		var/list/candidates = pollCandidatesForMob("Do you want to play as a Necromancer's skeleton?", null, null, null, 100, target, POLL_IGNORE_NECROMANCER_SKELETON)
+		var/mob/living/carbon/human/target = new /mob/living/carbon/human/species/skeleton/no_equipment(T)
+		var/list/candidates = pollCandidatesForMob("Do you want to play as a Necromancer's skeleton?", ROLE_NECRO_SKELETON, null, null, 100, target, POLL_IGNORE_NECROMANCER_SKELETON)
 		if(LAZYLEN(candidates))
 			var/mob/C = pick(candidates)
 			if(istype(C,/mob/dead/new_player))
@@ -91,10 +91,14 @@
 			target.key = C.key
 			target.visible_message(span_warning("[target]'s eyes light up with an eerie glow!"))
 			target.mind.AddSpell(new /obj/effect/proc_holder/spell/self/suicidebomb/lesser)
+			target.equipOutfit(/datum/outfit/job/roguetown/greater_skeleton)
 		else
-			target.visible_message(span_warning("[target]'s eyes remain dully devoid of life. The spell failed to capture a soul from the ether."))
+			target.visible_message(span_warning("[target]'s form crumbles into dust."))
+			qdel(target)
+			revert_cast()
 		return TRUE
 	to_chat(user, span_warning("The targeted location is blocked. My summon fails to come forth."))
+	revert_cast()
 	return FALSE
 
 /obj/effect/proc_holder/spell/invoked/raise_lesser_undead
@@ -120,15 +124,15 @@
 	if(isopenturf(T))
 		switch(skeleton_roll)
 			if(1 to 20)
-				new /mob/living/simple_animal/hostile/rogue/skeleton/axe(T)
+				new /mob/living/simple_animal/hostile/rogue/skeleton/axe(T, user)
 			if(21 to 40)
-				new /mob/living/simple_animal/hostile/rogue/skeleton/spear(T)
+				new /mob/living/simple_animal/hostile/rogue/skeleton/spear(T, user)
 			if(41 to 60)
-				new /mob/living/simple_animal/hostile/rogue/skeleton/guard(T)
+				new /mob/living/simple_animal/hostile/rogue/skeleton/guard(T, user)
 			if(61 to 80)
-				new /mob/living/simple_animal/hostile/rogue/skeleton/bow(T)
+				new /mob/living/simple_animal/hostile/rogue/skeleton/bow(T, user)
 			if(81 to 100)
-				new /mob/living/simple_animal/hostile/rogue/skeleton(T)
+				new /mob/living/simple_animal/hostile/rogue/skeleton(T, user)
 		return TRUE
 	else
 		to_chat(user, span_warning("The targeted location is blocked. My summon fails to come forth."))

@@ -15,10 +15,9 @@
 
 	display_order = JDO_LADY
 	give_bank_account = 50
-	min_pq = 0
+	noble_income = 22
+	min_pq = 5
 	max_pq = null
-
-	allow_custom_genitals = TRUE
 
 /datum/job/roguetown/exlady //just used to change the ladys title
 	title = "Consort Dowager"
@@ -29,11 +28,6 @@
 	spawn_positions = 0
 	display_order = JDO_LADY
 	give_bank_account = TRUE
-
-/datum/job/roguetown/lady/after_spawn(mob/living/H, mob/M, latejoin)
-	. = ..()
-	if(GLOB.lordsurname && H)
-		give_lord_surname(H, preserve_original = TRUE)
 
 /datum/outfit/job/roguetown/lady/pre_equip(mob/living/carbon/human/H)
 	. = ..()

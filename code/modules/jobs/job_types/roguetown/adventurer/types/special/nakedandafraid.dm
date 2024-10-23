@@ -7,7 +7,6 @@
 	allowed_patrons = list(/datum/patron/divine/dendor)
 	outfit = /datum/outfit/job/roguetown/adventurer/nudist
 	category_tags = list(CTAG_ADVENTURER)
-	allow_custom_genitals = TRUE
 
 /datum/outfit/job/roguetown/adventurer/nudist/pre_equip(mob/living/carbon/human/H)
 	..()

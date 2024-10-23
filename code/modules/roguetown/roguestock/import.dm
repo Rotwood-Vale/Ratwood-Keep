@@ -133,19 +133,73 @@
 
 /datum/roguestock/import/saigabuck
 	name = "Saigabuck"
-	desc = "One Saigabuck tamed with a saddle from a far away land"
-	item_type = /mob/living/simple_animal/hostile/retaliate/rogue/saigabuck/tame/saddled/saigabuck
+	desc = "One Saigabuck tamed with a saddle from a far away land."
+	item_type = /obj/structure/closet/crate/chest/steward/saigabuck
 	export_price = 100
 	importexport_amt = 1
 
-/mob/living/simple_animal/hostile/retaliate/rogue/saigabuck/tame/saddled/saigabuck/Initialize()
+/obj/structure/closet/crate/chest/steward/saigabuck/Initialize()
 	. = ..()
 	new /mob/living/simple_animal/hostile/retaliate/rogue/saigabuck/tame/saddled(src)
 
+/datum/roguestock/import/cow
+	name = "Cow"
+	desc = "Farmer's best friend, reliable provider of milk and meat."
+	item_type = /obj/structure/closet/crate/chest/steward/cow
+	export_price = 100
+	importexport_amt = 1
+
+/obj/structure/closet/crate/chest/steward/cow/Initialize()
+	. = ..()
+	new /mob/living/simple_animal/hostile/retaliate/rogue/cow(src)
+
+/datum/roguestock/import/bull
+	name = "Bull"
+	desc = "Horned and aggressive, required to start a herd."
+	item_type = /obj/structure/closet/crate/chest/steward/bull
+	export_price = 100
+	importexport_amt = 1
+
+/obj/structure/closet/crate/chest/steward/bull/Initialize()
+	. = ..()
+	new /mob/living/simple_animal/hostile/retaliate/rogue/bull(src)
+
+/datum/roguestock/import/goat
+	name = "Doe Goat"
+	desc = "An all-purpose source of milk, hide and fat."
+	item_type = /obj/structure/closet/crate/chest/steward/goat
+	export_price = 100
+	importexport_amt = 1
+
+/obj/structure/closet/crate/chest/steward/goat/Initialize()
+	. = ..()
+	new /mob/living/simple_animal/hostile/retaliate/rogue/goat(src)
+
+/datum/roguestock/import/goatmale
+	name = "Billy Goat"
+	desc = "Bearded, male goat capable of saddling."
+	item_type = /obj/structure/closet/crate/chest/steward/goatmale
+	export_price = 100
+	importexport_amt = 1
+
+/obj/structure/closet/crate/chest/steward/goatmale/Initialize()
+	. = ..()
+	new /mob/living/simple_animal/hostile/retaliate/rogue/goatmale(src)
+
+/datum/roguestock/import/chicken
+	name = "Chicken"
+	desc = "A reliable source of egg and meat."
+	item_type = /obj/structure/closet/crate/chest/steward/chicken
+	export_price = 50
+	importexport_amt = 1
+
+/obj/structure/closet/crate/chest/steward/chicken/Initialize()
+	. = ..()
+	new /mob/living/simple_animal/hostile/retaliate/rogue/chicken(src)
 
 /datum/roguestock/import/farmequip
 	name = "Farm Equipment Crate"
-	desc = "A crate with a pitchfork, sickle , hoe and some seeds."
+	desc = "A crate with a pitchfork, sickle, hoe and some seeds."
 	item_type = /obj/structure/closet/crate/chest/steward/farmequip
 	export_price = 100
 	importexport_amt = 1

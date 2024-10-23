@@ -67,18 +67,18 @@
 				var/datum/mind/smelter_mind = user.mind // Who smelted the ore?
 				var/smelter_exp = smelter_mind.get_skill_level(/datum/skill/craft/smelting) // 0 to 6
 				if(smelter_exp < 6)
-					ore[W] = min(6, floor(rand(smelter_exp*15, max(30, smelter_exp*25))/25)+1) // Math explained below
+					ore[W] = min(6, floor(rand(smelter_exp*15 + 10, max(30, smelter_exp*25))/25)+1) // Math explained below
 				else
 					ore[W] = 6 // Guarantees a return of 6 no matter how extra experience past 3000 you have.
 				/*
 				RANDOMLY PICKED NUMBER ACCORDING TO SMELTER SKILL:
-					NO SKILL: 		between 00 and 30
-					WEAK:	 		between 15 and 30
-					AVERAGE:	 	between 30 and 50
-					SKILLED: 		between 45 and 75
-					EXPERT: 		between 60 and 100
-					MASTER: 		between 75 and 125
-					LEGENDARY: 		between 90 and 150
+					NO SKILL: 		between 10 and 30
+					NOVICE:	 		between 25 and 30
+					APPRENTICE:	 	between 40 and 50
+					JOURNEYMAN: 	between 55 and 75
+					EXPERT: 		between 70 and 100
+					MASTER: 		between 85 and 125
+					LEGENDARY: 		between 100 and 150
 
 				PICKED NUMBER GETS DIVIDED BY 25 AND ROUNDED DOWN TO CLOSEST INTEGER, +1.
 				RESULT DETERMINES QUALITY OF BAR. SEE code/__DEFINES/skills.dm

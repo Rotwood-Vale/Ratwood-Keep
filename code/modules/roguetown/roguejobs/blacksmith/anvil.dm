@@ -107,7 +107,7 @@
 					break
 				playsound(src,pick('sound/items/bsmith1.ogg','sound/items/bsmith2.ogg','sound/items/bsmith3.ogg','sound/items/bsmith4.ogg'), 100, FALSE)
 				if(do_after(user, 20, target = src)) //Let's do it all over again!
-					advance_multiplier = 0.25
+					advance_multiplier = 0.50
 				else
 					break
 

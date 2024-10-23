@@ -1138,9 +1138,10 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 				to_chat(target, span_danger("[user] stole my [I.name]!"))*/
 		var/def_zone = check_zone(user.zone_selected)
 		var/obj/item/bodypart/affecting = target.get_bodypart(def_zone)
-		for(var/obj/item/embedded in affecting.embedded_objects)
-			target.grabbedby(user, 1, item_override = embedded)
-			return TRUE
+		if(length(affecting?.embedded_objects))
+			for(var/obj/item/embedded in affecting.embedded_objects)
+				target.grabbedby(user, 1, item_override = embedded)
+				return TRUE
 		target.grabbedby(user)
 		return TRUE
 
@@ -1209,7 +1210,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 		if(!target.lying_attack_check(user))
 			return 0
 
-		var/armor_block = target.run_armor_check(selzone, "blunt", blade_dulling = user.used_intent.blade_class)
+		var/armor_block = target.run_armor_check(selzone, "blunt", blade_dulling = user.used_intent.blade_class, damage = damage)
 
 		target.lastattacker = user.real_name
 		if(target.mind)
@@ -1417,8 +1418,8 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 				target.mind.attackedme[user.real_name] = world.time
 			var/selzone = accuracy_check(user.zone_selected, user, target, /datum/skill/combat/unarmed, user.used_intent)
 			var/obj/item/bodypart/affecting = target.get_bodypart(check_zone(selzone))
-			var/armor_block = target.run_armor_check(selzone, "blunt", blade_dulling = BCLASS_BLUNT)
 			var/damage = user.get_punch_dmg() * 1.4
+			var/armor_block = target.run_armor_check(selzone, "blunt", blade_dulling = BCLASS_BLUNT, damage = damage)
 			target.next_attack_msg.Cut()
 			var/nodmg = FALSE
 			if(!target.apply_damage(damage, user.dna.species.attack_type, affecting, armor_block))
@@ -1861,9 +1862,9 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 		var/burn_damage
 		var/firemodifier = H.fire_stacks / 50
 		if (H.on_fire)
-			burn_damage = 20
+			burn_damage = 30
 			if(H.fire_stacks >= 10)
-				burn_damage = 40
+				burn_damage = 60
 		else
 			firemodifier = min(firemodifier, 0)
 			burn_damage = max(log(2-firemodifier,(H.bodytemperature-BODYTEMP_NORMAL))-5,0) // this can go below 5 at log 2.5

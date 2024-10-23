@@ -1,6 +1,3 @@
 Roleplay ads can be set in the OOC tabs. Toggle Roleplay Ads on to be notified of new postings.
 Critical hits have minimum damage thresholds.
 Loadout items can be selected in the character creation menu.
-Grabs have been reworked.
-Preload Ambience command added to Options tab. Use it in lobby to avoid freezes during the round from loading music.
-Credits mugshots added. Use the Set Credits Mugshot command in the OOC tab to update yours at any time. By default it uses your roundstart mugshot.

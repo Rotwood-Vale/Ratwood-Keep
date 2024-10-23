@@ -41,7 +41,6 @@
 		/datum/mob_descriptor/testicles,
 		/datum/mob_descriptor/breasts,
 		/datum/mob_descriptor/vagina,
-		/datum/mob_descriptor/defiant,
 		)
 
 /mob/living/proc/get_descriptor_of_slot(descriptor_slot, list/descs)
@@ -147,6 +146,10 @@
 				they_replace = "they"
 				man_replace = "person"
 				him_replace = "them"
+			if (IT_ITS)
+				they_replace = "it"
+				man_replace = "creacher"
+				him_replace = "it"
 	// LETHALSTONE EDIT END
 	string = replacetext(string, "%THEY%", they_replace)
 	if(they_replace == "they")

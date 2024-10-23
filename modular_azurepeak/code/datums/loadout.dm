@@ -39,6 +39,10 @@ GLOBAL_LIST_EMPTY(loadout_items)
 	name = "Headband"
 	path = /obj/item/clothing/head/roguetown/headband
 
+/datum/loadout_item/buckled_hat
+	name = "Buckled Hat"
+	path = /obj/item/clothing/head/roguetown/puritan
+
 //CLOAKS
 /datum/loadout_item/tabard
 	name = "Tabard"
@@ -87,6 +91,10 @@ GLOBAL_LIST_EMPTY(loadout_items)
 	path = /obj/item/clothing/shoes/roguetown/ridingboots
 
 //SHIRTS
+/datum/loadout_item/longcoat
+	name = "Longcoat"
+	path = /obj/item/clothing/suit/roguetown/armor/longcoat
+
 /datum/loadout_item/robe
 	name = "Robe"
 	path = /obj/item/clothing/suit/roguetown/shirt/robe
@@ -123,6 +131,10 @@ GLOBAL_LIST_EMPTY(loadout_items)
 	name = "Leather Vest"
 	path = /obj/item/clothing/suit/roguetown/armor/leather/vest
 
+/datum/loadout_item/nun_habit
+	name = "Nun Habit"
+	path = /obj/item/clothing/suit/roguetown/shirt/robe/nun
+
 //ACCESSORIES
 /datum/loadout_item/stockings
 	name = "Stockings"
@@ -135,6 +147,10 @@ GLOBAL_LIST_EMPTY(loadout_items)
 /datum/loadout_item/fishnet
 	name = "Fishnet Stockings"
 	path = /obj/item/clothing/under/roguetown/tights/stockings/fishnet
+
+/datum/loadout_item/loincloth
+	name = "Loincloth"
+	path = /obj/item/clothing/under/roguetown/loincloth
 
 /datum/loadout_item/spectacles
 	name = "Spectacles"

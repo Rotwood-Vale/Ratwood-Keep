@@ -16,14 +16,13 @@
 	var/list/traits_applied
 	var/cmode_music
 
+	var/noble_income = FALSE //Passive income every day from noble estate
+
 	/// This class is immune to species-based swapped gender locks
 	var/immune_to_genderswap = FALSE
 
 	//What categories we are going to sort it in
 	var/list/category_tags = list(CTAG_DISABLED)
-
-	//Vrell - So we can do this on a per-class basis
-	var/allow_custom_genitals = FALSE
 
 /datum/advclass/proc/equipme(mob/living/carbon/human/H)
 	// input sleeps....
@@ -52,34 +51,13 @@
 	for(var/trait in traits_applied)
 		ADD_TRAIT(H, trait, ADVENTURER_TRAIT)
 
+	if(noble_income)
+		SStreasury.noble_incomes[H] = noble_income
+
 
 	// After the end of adv class equipping, apply a SPECIAL trait if able
 
 	apply_character_post_equipment(H)
-
-/* The people can have their bits if they want to.
-	//Vrell - Removing people's bits if their role doesn't allow it.
-	if(!allow_custom_genitals)
-		var/obj/item/organ/organ_to_remove = null
-		if(H.gender == MALE)
-			organ_to_remove = H.getorganslot(ORGAN_SLOT_BREASTS)
-			if(organ_to_remove)
-				organ_to_remove.Remove(H)
-				qdel(organ_to_remove)
-			organ_to_remove = H.getorganslot(ORGAN_SLOT_VAGINA)
-			if(organ_to_remove)
-				organ_to_remove.Remove(H)
-				qdel(organ_to_remove)
-		else
-			organ_to_remove = H.getorganslot(ORGAN_SLOT_PENIS)
-			if(organ_to_remove)
-				organ_to_remove.Remove(H)
-				qdel(organ_to_remove)
-			organ_to_remove = H.getorganslot(ORGAN_SLOT_TESTICLES)
-			if(organ_to_remove)
-				organ_to_remove.Remove(H)
-				qdel(organ_to_remove)
-*/
 
 /datum/advclass/proc/post_equip(mob/living/carbon/human/H)
 	addtimer(CALLBACK(H,TYPE_PROC_REF(/mob/living/carbon/human, add_credit), TRUE), 20)

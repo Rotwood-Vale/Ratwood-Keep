@@ -15,7 +15,8 @@
 	advclass_cat_rolls = list(CTAG_ROYALGUARD = 20)
 
 	give_bank_account = 22
-	min_pq = 0
+	noble_income = 10
+	min_pq = 4
 	max_pq = null
 
 	cmode_music = 'sound/music/combat_knight.ogg'

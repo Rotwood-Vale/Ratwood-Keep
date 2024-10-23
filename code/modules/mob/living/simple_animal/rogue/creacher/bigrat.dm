@@ -53,7 +53,7 @@
 	pixel_y = -8
 
 /mob/living/simple_animal/hostile/retaliate/rogue/bigrat/Initialize()
-	..()
+	. = ..()
 	gender = MALE
 	if(prob(33))
 		gender = FEMALE

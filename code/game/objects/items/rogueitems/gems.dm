@@ -12,6 +12,7 @@
 	drop_sound = 'sound/items/gem.ogg'
 	sellprice = 100
 	static_price = FALSE
+	resistance_flags = FIRE_PROOF
 
 /obj/item/roguegem/getonmobprop(tag)
 	. = ..()
@@ -86,5 +87,5 @@
 	sellprice = 400
 
 /obj/item/riddleofsteel/Initialize()
-	..()
+	. = ..()
 	set_light(2, 1, "#ff0d0d")

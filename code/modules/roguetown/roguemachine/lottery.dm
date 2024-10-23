@@ -90,21 +90,23 @@
 			src.say(pick("Well-maneuvered, aristocrat! Your peasant's tithe is now [src.gamblingprice] mammons. Play again?", "A bountiful harvest, this year- the peasant's tithe rises to [src.gamblingprice] mammons. Spin me again?",))
 
 			playsound(src, 'sound/misc/machinetalk.ogg', 100, FALSE, -1)
-			src.stopgambling = 0
 			src.gamblingprob = src.gamblingbaseprob
 			src.oldtithe = src.gamblingprice //this is redundant but i feel like bad things will happen if i don't do this :T
+			sleep(15)
+			src.stopgambling = 0
 			return
 
 		else
 			src.say(pick("TEN, WHEEL OF FORTUNE - inversed.", "The Castle. O, Omen!", "A harvest of locusts...!", "Look into my eyes and whisper your woes.", "Aw, dangit.", "Fool. Poor fool.", "Your eyes leak out of your skull, drool falling from your lips.", "Divine idiocy.", "You stand just as I did; loser and a freek."))
 			playsound(src, 'sound/misc/bug.ogg', 100, FALSE, -1)
 			sleep(20) //really make them THINK about their life choices up to this point
-			src.stopgambling = 0
 			src.say(pick("King of fools, your land is barren. Play again?", "Divine comedy. Play again?", "Next time, surely. Play again?", "Haha-...ah-ha-ha! Again! Play again, jester!", "Poor beggar! Spin me again?"))
 			playsound(src, 'sound/misc/bug.ogg', 100, FALSE, -1)
 			src.gamblingprob = src.gamblingbaseprob
 			src.gamblingprice = 0
 			src.oldtithe = 0
+			sleep(15)
+			src.stopgambling = 0
 			return
 
 
@@ -163,7 +165,7 @@
 
 	if(src.checkchatter == 1)
 		return
-	if(src.gamblingprice < 1000)
+	if(src.gamblingprice < 140)
 		return
 
 	chatterbox = rand(1,4)
@@ -188,7 +190,7 @@
 			src.say("...especially for a lowly fool who thinks himself a king.")
 			playsound(src, 'sound/misc/bug.ogg', 100, FALSE, -1)
 		else
-			src.say("Me? Oh, no.")
+			src.say("Me? Am I anybody important...? Oh, no.")
 			playsound(src, 'sound/misc/machineyes.ogg', 100, FALSE, -1)
 			sleep(25)
 			src.say("I am nothing but a lowly jester, just like you! Ha-ha-ha!")

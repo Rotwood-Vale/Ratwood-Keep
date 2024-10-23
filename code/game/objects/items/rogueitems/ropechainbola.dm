@@ -177,3 +177,4 @@
 	drop_sound = 'sound/foley/dropsound/chain_drop.ogg'
 	sewrepair = FALSE
 	anvilrepair = /datum/skill/craft/blacksmithing
+	resistance_flags = FIRE_PROOF

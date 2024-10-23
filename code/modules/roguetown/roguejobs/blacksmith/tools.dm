@@ -29,18 +29,14 @@
 			return
 
 		if(blacksmith_mind.get_skill_level(attacked_item.anvilrepair) <= 0)
-			if(prob(30))
+			if(HAS_TRAIT(user, TRAIT_SQUIRE_REPAIR) && locate(/obj/machinery/anvil) in attacked_object.loc)
+				repair_percent = 0.035
+			else if(prob(30))
 				repair_percent = 0.01
 			else
 				repair_percent = 0
 		else
 			repair_percent *= blacksmith_mind.get_skill_level(attacked_item.anvilrepair)
-
-		if(HAS_TRAIT(user, TRAIT_SQUIRE_REPAIR) && blacksmith_mind.get_skill_level(attacked_item.anvilrepair) < SKILL_LEVEL_MASTER)
-			if(!locate(/obj/machinery/anvil) in attacked_object.loc)
-				repair_percent = 0
-			else
-				repair_percent = 0.035
 
 		playsound(src,'sound/items/bsmithfail.ogg', 100, FALSE)
 		if(repair_percent)
@@ -55,7 +51,7 @@
 				var/obj/item/clothing/clothing = attacked_item
 				clothing.obj_fix()
 			blacksmith_mind.add_sleep_experience(attacked_item.anvilrepair, exp_gained/2) //We gain as much exp as we fix divided by 2
-			if(HAS_TRAIT(user, TRAIT_SQUIRE_REPAIR) && do_after(user, CLICK_CD_MELEE - blacksmith_mind.get_skill_level(attacked_item.anvilrepair), target = attacked_object))
+			if(do_after(user, CLICK_CD_MELEE, target = attacked_object))
 				attack_obj(attacked_object, user)
 			return
 		else

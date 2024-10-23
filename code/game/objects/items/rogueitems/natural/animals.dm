@@ -30,12 +30,11 @@
 	icon_state = "saddle"
 	w_class = WEIGHT_CLASS_BULKY
 	slot_flags = ITEM_SLOT_BACK_L
-	resistance_flags = FLAMMABLE
+	resistance_flags = FIRE_PROOF
 	gripped_intents = list(/datum/intent/use)
 	force = 0
 	throwforce = 0
 	sellprice = 10
-	twohands_required = TRUE
 
 /obj/item/natural/saddle/attack(mob/living/target, mob/living/carbon/human/user)
 	if(istype(target, /mob/living/simple_animal))

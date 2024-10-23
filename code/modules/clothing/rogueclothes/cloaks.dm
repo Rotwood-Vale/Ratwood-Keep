@@ -102,7 +102,7 @@
 	return
 
 /obj/item/clothing/cloak/tabard/knight/Initialize()
-	..()
+	. = ..()
 	if(GLOB.lordprimary)
 		lordcolor(GLOB.lordprimary,GLOB.lordsecondary)
 	GLOB.lordcolor += src
@@ -117,7 +117,7 @@
 	boobed_detail = FALSE
 
 /obj/item/clothing/cloak/tabard/crusader/Initialize()
-	..()
+	. = ..()
 	update_icon()
 
 /obj/item/clothing/cloak/tabard/crusader/attack_right(mob/user)
@@ -264,7 +264,7 @@
 	picked = TRUE
 
 /obj/item/clothing/cloak/tabard/knight/guard/Initialize()
-	..()
+	. = ..()
 	if(GLOB.lordprimary)
 		lordcolor(GLOB.lordprimary,GLOB.lordsecondary)
 	GLOB.lordcolor += src
@@ -297,7 +297,7 @@
 
 /obj/item/clothing/cloak/stabard
 	name = "surcoat"
-	desc = "A medieval overcoat meant to be used over the armor."
+	desc = "An outer garment commonly worn by soldiers."
 	icon_state = "stabard"
 	alternate_worn_layer = TABARD_LAYER
 	body_parts_covered = CHEST|GROIN
@@ -394,7 +394,7 @@
 	picked = TRUE
 
 /obj/item/clothing/cloak/stabard/guard/Initialize()
-	..()
+	. = ..()
 	if(GLOB.lordprimary)
 		lordcolor(GLOB.lordprimary,GLOB.lordsecondary)
 	GLOB.lordcolor += src
@@ -443,7 +443,7 @@
 	detail_tag = "_quad"
 
 /obj/item/clothing/cloak/stabard/mercenary/Initialize()
-	..()
+	. = ..()
 	detail_tag = pick("_quad", "_spl", "_box", "_dim")
 	color = clothing_color2hex(pick(CLOTHING_COLOR_NAMES))
 	detail_color = clothing_color2hex(pick(CLOTHING_COLOR_NAMES))
@@ -557,7 +557,7 @@
 	picked = TRUE
 
 /obj/item/clothing/cloak/stabard/surcoat/guard/Initialize()
-	..()
+	. = ..()
 	if(GLOB.lordprimary)
 		lordcolor(GLOB.lordprimary,GLOB.lordsecondary)
 	GLOB.lordcolor += src
@@ -609,7 +609,7 @@
 		L.update_inv_cloak()
 
 /obj/item/clothing/cloak/lordcloak/Initialize()
-	..()
+	. = ..()
 	if(GLOB.lordprimary)
 		lordcolor(GLOB.lordprimary,GLOB.lordsecondary)
 	GLOB.lordcolor += src
@@ -690,6 +690,15 @@
 	allowed_race = CLOTHED_RACES_TYPES
 	flags_inv = HIDECROTCH|HIDEBOOB
 
+/obj/item/clothing/cloak/apron/ComponentInitialize()
+	. = ..()
+	AddComponent(/datum/component/storage/concrete)
+	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
+	if(STR)
+		STR.max_combined_w_class = 3
+		STR.max_w_class = WEIGHT_CLASS_NORMAL
+		STR.max_items = 1
+
 /obj/item/clothing/cloak/apron/blacksmith
 	name = "leather apron"
 	desc = "A leather apron used by those who temper metals and work forges."
@@ -727,6 +736,7 @@
 	icon_state = "aproncook"
 	item_state = "aproncook"
 	body_parts_covered = GROIN
+	slot_flags = ITEM_SLOT_ARMOR|ITEM_SLOT_CLOAK
 	boobed = FALSE
 
 /*
@@ -985,6 +995,23 @@
 	allowed_sex = list(MALE, FEMALE)
 	flags_inv = null
 
+/obj/item/clothing/cloak/half/ComponentInitialize()
+	. = ..()
+	AddComponent(/datum/component/storage/concrete)
+	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
+	if(STR)
+		STR.max_combined_w_class = 3
+		STR.max_w_class = WEIGHT_CLASS_NORMAL
+		STR.max_items = 1
+
+/obj/item/clothing/cloak/half/dropped(mob/living/carbon/human/user)
+	..()
+	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
+	if(STR)
+		var/list/things = STR.contents()
+		for(var/obj/item/I in things)
+			STR.remove_from_storage(I, get_turf(src))
+
 /obj/item/clothing/cloak/half/brown
 	color = CLOTHING_BROWN
 
@@ -1002,6 +1029,9 @@
 	allowed_race = NON_DWARVEN_RACE_TYPES
 	inhand_mod = FALSE
 
+/obj/item/clothing/cloak/half/rider/red
+	color = CLOTHING_RED
+
 /obj/item/clothing/cloak/half/vet
 	name = "town watch cloak"
 	icon_state = "guardcloak"
@@ -1011,7 +1041,7 @@
 	inhand_mod = FALSE
 
 /obj/item/clothing/cloak/half/vet/Initialize()
-	..()
+	. = ..()
 	if(GLOB.lordprimary)
 		lordcolor(GLOB.lordprimary,GLOB.lordsecondary)
 	GLOB.lordcolor += src
@@ -1020,9 +1050,16 @@
 	GLOB.lordcolor -= src
 	return ..()
 
+/obj/item/clothing/cloak/half/shadowcloak
+	name = "stalker cloak"
+	desc = "A heavy leather cloak held together by a gilded pin, depicting the Monarch's house. The sign of a faithful servant."
+	icon_state = "shadowcloak"
+	color = null
+	allowed_race = NON_DWARVEN_RACE_TYPES
+
 /obj/item/clothing/cloak/templar/psydon
 	name = "psydon tabard"
-	desc = "A medieval overcoat meant to be used over the armor. This one has the symbol of Psydon on it."
+	desc = "An outer garment commonly worn by soldiers. This one has the symbol of Psydon on it."
 	icon_state = "tabard_weeping"
 	alternate_worn_layer = TABARD_LAYER
 	body_parts_covered = CHEST|GROIN
@@ -1036,7 +1073,7 @@
 
 /obj/item/clothing/cloak/templar/astrata
 	name = "astratan tabard"
-	desc = "A medieval overcoat meant to be used over the armor. This one has the symbol of Astrata on it."
+	desc = "An outer garment commonly worn by soldiers. This one has the symbol of Astrata on it."
 	icon_state = "tabard_astrata_alt"
 	alternate_worn_layer = TABARD_LAYER
 	body_parts_covered = CHEST|GROIN
@@ -1050,7 +1087,7 @@
 
 /obj/item/clothing/cloak/templar/noc
 	name = "noc tabard"
-	desc = "A medieval overcoat meant to be used over the armor. This one has the symbol of Noc on it."
+	desc = "An outer garment commonly worn by soldiers. This one has the symbol of Noc on it."
 	icon_state = "tabard_noc"
 	alternate_worn_layer = TABARD_LAYER
 	body_parts_covered = CHEST|GROIN
@@ -1064,7 +1101,7 @@
 
 /obj/item/clothing/cloak/templar/dendor
 	name = "dendor tabard"
-	desc = "A medieval overcoat meant to be used over the armor. This one has the symbol of Dendor on it."
+	desc = "An outer garment commonly worn by soldiers. This one has the symbol of Dendor on it."
 	icon_state = "tabard_dendor"
 	alternate_worn_layer = TABARD_LAYER
 	body_parts_covered = CHEST|GROIN
@@ -1078,7 +1115,7 @@
 
 /obj/item/clothing/cloak/templar/necra
 	name = "necra tabard"
-	desc = "A medieval overcoat meant to be used over the armor. This one has the symbol of Necra on it."
+	desc = "An outer garment commonly worn by soldiers. This one has the symbol of Necra on it."
 	icon_state = "tabard_necra"
 	alternate_worn_layer = TABARD_LAYER
 	body_parts_covered = CHEST|GROIN
@@ -1092,7 +1129,7 @@
 
 /obj/item/clothing/cloak/templar/abyssor
 	name = "abyssor tabard"
-	desc = "A medieval overcoat meant to be used over the armor. This one has the symbol of Abyssor on it."
+	desc = "An outer garment commonly worn by soldiers. This one has the symbol of Abyssor on it."
 	icon_state = "tabard_abyssor"
 	alternate_worn_layer = TABARD_LAYER
 	body_parts_covered = CHEST|GROIN
@@ -1106,7 +1143,7 @@
 
 /obj/item/clothing/cloak/templar/malum
 	name = "malum tabard"
-	desc = "A medieval overcoat meant to be used over the armor. This one has the symbol of Malum on it."
+	desc = "An outer garment commonly worn by soldiers. This one has the symbol of Malum on it."
 	icon_state = "tabard_malum"
 	alternate_worn_layer = TABARD_LAYER
 	body_parts_covered = CHEST|GROIN
@@ -1120,7 +1157,7 @@
 
 /obj/item/clothing/cloak/templar/eora
 	name = "eora tabard"
-	desc = "A medieval overcoat meant to be used over the armor. This one has the symbol of Eora on it."
+	desc = "An outer garment commonly worn by soldiers. This one has the symbol of Eora on it."
 	icon_state = "tabard_eora"
 	alternate_worn_layer = TABARD_LAYER
 	body_parts_covered = CHEST|GROIN
@@ -1134,7 +1171,7 @@
 
 /obj/item/clothing/cloak/templar/pestra
 	name = "pestra tabard"
-	desc = "A medieval overcoat meant to be used over the armor. This one has the symbol of Pestra on it."
+	desc = "An outer garment commonly worn by soldiers. This one has the symbol of Pestra on it."
 	icon_state = "tabard_pestra"
 	alternate_worn_layer = TABARD_LAYER
 	body_parts_covered = CHEST|GROIN
@@ -1148,7 +1185,7 @@
 
 /obj/item/clothing/cloak/templar/ravox
 	name = "ravox tabard"
-	desc = "A medieval overcoat meant to be used over the armor. This one has the symbol of Ravox on it."
+	desc = "An outer garment commonly worn by soldiers. This one has the symbol of Ravox on it."
 	icon_state = "tabard_ravox"
 	alternate_worn_layer = TABARD_LAYER
 	body_parts_covered = CHEST|GROIN
@@ -1162,7 +1199,7 @@
 
 /obj/item/clothing/cloak/templar/xylix
 	name = "xylix tabard"
-	desc = "A medieval overcoat meant to be used over the armor. This one has the symbol of Xylix on it."
+	desc = "An outer garment commonly worn by soldiers. This one has the symbol of Xylix on it."
 	icon_state = "tabard_xylix"
 	alternate_worn_layer = TABARD_LAYER
 	body_parts_covered = CHEST|GROIN
@@ -1261,7 +1298,8 @@
 
 /obj/item/clothing/suit/roguetown/armor/plate/blkknight
 	slot_flags = ITEM_SLOT_ARMOR
-	name = "blacksteel plate"
+	name = "darkened steel plate"
+	desc = "A darkened half-plate piece with added arm coverage."
 	body_parts_covered = CHEST|GROIN|VITALS|ARMS
 	r_sleeve_status = SLEEVE_NOMOD
 	l_sleeve_status = SLEEVE_NOMOD
@@ -1271,7 +1309,7 @@
 	sleeved = 'icons/roguetown/clothing/special/onmob/blkknight.dmi'
 
 /obj/item/clothing/shoes/roguetown/boots/armor/blkknight
-	name = "blacksteel boots"
+	name = "darkened steel boots"
 	icon_state = "bkboots"
 	icon = 'icons/roguetown/clothing/special/blkknight.dmi'
 	mob_overlay_icon = 'icons/roguetown/clothing/special/onmob/blkknight.dmi'
@@ -1314,7 +1352,7 @@
 	picked = TRUE
 
 /obj/item/clothing/cloak/stabard/guardhood/Initialize()
-	..()
+	. = ..()
 	if(GLOB.lordprimary)
 		lordcolor(GLOB.lordprimary,GLOB.lordsecondary)
 	GLOB.lordcolor += src

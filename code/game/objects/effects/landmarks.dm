@@ -64,7 +64,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	icon_state = "generic_event"
 
 /obj/effect/landmark/events/haunts/Initialize(mapload)
-	..()
+	. = ..()
 	GLOB.hauntstart += src
 	icon_state = ""
 
@@ -75,7 +75,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	var/aportalloc = "a"
 
 /obj/effect/landmark/events/testportal/Initialize(mapload)
-	..()
+	. = ..()
 //	GLOB.hauntstart += loc
 #ifdef TESTSERVER
 	var/obj/structure/fluff/testportal/T = new /obj/structure/fluff/testportal(loc)
@@ -251,7 +251,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/nightman
-	name = "Nightmaster"
+	name = "Bathmaster"
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/nightmaiden
@@ -617,7 +617,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	icon_state = "wiznerd_spawn"
 
 /obj/effect/landmark/start/wizard/Initialize()
-	..()
+	. = ..()
 	GLOB.wizardstart += loc
 
 /obj/effect/landmark/start/nukeop
@@ -626,7 +626,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	icon_state = "snukeop_spawn"
 
 /obj/effect/landmark/start/nukeop/Initialize()
-	..()
+	. = ..()
 	GLOB.nukeop_start += loc
 
 /obj/effect/landmark/start/bandit
@@ -635,7 +635,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/bandit/Initialize()
-	..()
+	. = ..()
 	GLOB.bandit_starts += loc
 
 
@@ -645,7 +645,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/delf/Initialize()
-	..()
+	. = ..()
 	GLOB.delf_starts += loc
 
 
@@ -655,7 +655,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	icon_state = "snukeop_leader_spawn"
 
 /obj/effect/landmark/start/nukeop_leader/Initialize()
-	..()
+	. = ..()
 	GLOB.nukeop_leader_start += loc
 
 // Must be immediate because players will
@@ -666,7 +666,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark/start/new_player)
 	name = "New Player"
 
 /obj/effect/landmark/start/new_player/Initialize()
-	..()
+	. = ..()
 	GLOB.newplayer_start += loc
 
 /obj/effect/landmark/latejoin

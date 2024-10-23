@@ -52,7 +52,7 @@
 	var/setup_error		//What stopepd setting up the mode.
 
 	var/roundvoteend = FALSE
-	var/ttime
+	var/round_ends_at
 
 	var/list/datum/mind/villains = list() //Murders Runtimes via shoving this into parent
 	var/list/datum/mind/liches = list()

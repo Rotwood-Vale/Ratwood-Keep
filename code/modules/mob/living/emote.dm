@@ -31,11 +31,6 @@
 		if(msg)
 			L.whisper(msg)
 			L.roguepray(msg)
-//			for(var/obj/structure/fluff/psycross/P in view(7, get_turf(L)) ) // We'll reenable this later when the patron statues are more fleshed out.
-//				if(P.obj_broken)
-//					continue
-//				P.check_prayer(L,msg)
-//				break
 			if(istype(C, /area/rogue/underworld))
 				L.check_prayer_underworld(L,msg)
 				return
@@ -44,11 +39,10 @@
 				LICKMYBALLS.succumb_timer = world.time
 
 /mob/living/proc/check_prayer(mob/living/L,message)
-	if(!L || !message)
+	if(!L || !message || !ishuman(L))
 		return FALSE
-	var/message2recognize = sanitize_hear_message(message)
 	var/mob/living/carbon/human/M = L
-	if(length(message2recognize) > 15)
+	if(length(message) > 15)
 		if(L.has_flaw(/datum/charflaw/addiction/godfearing))
 			L.sate_addiction()
 		if(L.mob_timers[MT_PSYPRAY])
@@ -57,7 +51,12 @@
 				return FALSE
 		else
 			L.mob_timers[MT_PSYPRAY] = world.time
-		if(!findtext(message2recognize, "[M.patron]"))
+
+		var/patron_name = M?.patron?.name
+		if(!patron_name)
+			CRASH("check_prayer called with null patron")
+
+		if(!findtext(message, "[patron_name]"))
 			return FALSE
 		else
 			L.playsound_local(L, 'sound/misc/notice (2).ogg', 100, FALSE)
@@ -70,11 +69,10 @@
 	if(!L || !message)
 		return FALSE
 	var/list/bannedwords = list("cock","dick","fuck","shit","pussy","ass","cuck","fucker","fucked","cunt","asshole")
-	var/message2recognize = sanitize_hear_message(message)
 	var/mob/living/carbon/spirit/M = L
 	for(var/T in bannedwords)
 		var/list/turfs = list()
-		if(findtext(message2recognize, T))
+		if(findtext(message, T))
 			for(var/turf/U in /area/rogue/underworld)
 				if(U.density)
 					continue
@@ -86,10 +84,10 @@
 			to_chat(L, "<font color='yellow'>INSOLENT WRETCH, YOUR STRUGGLE IS DESERVED.</font>")
 			L.forceMove(pickedturf)
 			return FALSE
-	if(length(message2recognize) > 15)
-		if(findtext(message2recognize, "[M.patron]"))
+	if(length(message) > 15)
+		if(findtext(message, "[M.patron.name]"))
 			L.playsound_local(L, 'sound/misc/notice (2).ogg', 100, FALSE)
-			to_chat(L, "<font color='yellow'>I, [M.patron], have heard your prayer and yet cannot aid you.</font>")
+			to_chat(L, "<font color='yellow'>I, [M.patron.name], have heard your prayer and yet cannot aid you.</font>")
 			/*var/obj/item/underworld/coin/C = new
 			L.put_in_active_hand(C)*/
 			return TRUE

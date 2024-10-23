@@ -25,10 +25,10 @@
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
 	pants = /obj/item/clothing/under/roguetown/tights/random
 	belt = /obj/item/storage/belt/rogue/leather/rope
-	beltl = /obj/item/roguegem/amethyst
 	beltr = /obj/item/storage/keyring/mage
 	backr = /obj/item/storage/backpack/rogue/satchel
 	r_hand = /obj/item/rogueweapon/woodstaff
+	backpack_contents = list(/obj/item/roguegem/amethyst = 1)
 	if(H.pronouns == SHE_HER)
 		shoes = /obj/item/clothing/shoes/roguetown/sandals
 	else
@@ -41,5 +41,4 @@
 		H.mind.adjust_skillrank(/datum/skill/combat/polearms, 1, TRUE)
 		H.mind.adjust_spellpoints(1)
 	H.change_stat("intelligence", 2)
-	H.change_stat("speed", -1)
-
+	H.change_stat("speed", 1)

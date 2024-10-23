@@ -92,7 +92,15 @@ GLOBAL_LIST_INIT(freqtospan, list(
 					arrowpart = " ⇘"
 			if(istype(speaker, /mob/living/carbon/human))
 				var/mob/living/carbon/human/H = speaker
-				namepart = "Unknown [(H.voice_type == VOICE_TYPE_FEM) ? "Woman" : "Man"]"
+				var/appellation
+				switch(H.voice_type)
+					if(VOICE_TYPE_FEM)
+						appellation = "Woman"
+					if(VOICE_TYPE_MASC)
+						appellation = "Man"
+					else
+						appellation = "Person"
+				namepart = "Unknown [appellation]"
 			else
 				namepart = "Unknown"
 			spanpart1 = "<span class='smallyell'>"

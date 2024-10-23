@@ -26,10 +26,10 @@
 	layer = ABOVE_MOB_LAYER
 	plane = GAME_PLANE_UPPER
 	anchored = TRUE
-	density = TRUE	
+	density = TRUE
 
 /obj/structure/underworld/carriageman/Initialize()
-	..()
+	. = ..()
 	set_light(5, 30, LIGHT_COLOR_BLUE)
 
 /obj/structure/underworld/carriageman/attack_hand(mob/living/carbon/spirit/user)
@@ -64,6 +64,14 @@
 	density = TRUE
 	anchored = TRUE
 
+/obj/structure/underworld/carriage_normal
+	name = "Carriage"
+	desc = "Azure Peak awaits."
+	icon = 'icons/roguetown/underworld/enigma_carriage.dmi'
+	icon_state = "carriage_normal"
+	anchored = TRUE
+	density = TRUE
+
 /obj/structure/underworld/carriage
 	name = "Carriage"
 	desc = "The Undermaiden awaits."
@@ -72,11 +80,11 @@
 	layer = ABOVE_MOB_LAYER
 	plane = GAME_PLANE_UPPER
 	anchored = TRUE
-	density = TRUE	
+	density = TRUE
 
 
 /obj/structure/underworld/carriage/Initialize()
-	..()
+	. = ..()
 	set_light(5, 30, LIGHT_COLOR_BLUE)
 
 /obj/structure/underworld/carriage/attack_hand(mob/living/carbon/spirit/user)
@@ -130,7 +138,7 @@ GLOBAL_VAR_INIT(underworld_coins, 0)
 	if(GLOB.underworld_coins < 8)
 		for(var/obj/effect/landmark/underworldcoin/B in GLOB.landmarks_list)
 			new /obj/item/underworld/coin(B.loc)
-	
+
 
 // why not also some mob stuff too
 /mob/living/simple_animal/hostile/rogue/dragger
@@ -141,11 +149,11 @@ GLOBAL_VAR_INIT(underworld_coins, 0)
 	icon_living = "dragger"
 	icon_dead = "dragger_dead"
 	mob_biotypes = MOB_UNDEAD|MOB_HUMANOID
-	movement_type = FLYING
+	movement_type = GROUND
 	environment_smash = ENVIRONMENT_SMASH_NONE
 	pass_flags = PASSTABLE|PASSGRILLE
 	base_intents = list(/datum/intent/simple/slash)
-	gender = MALE
+	gender = FEMALE //they're WOKE now...
 	speak_chance = 0
 	turns_per_move = 5
 	response_help_continuous = "passes through"
@@ -154,7 +162,7 @@ GLOBAL_VAR_INIT(underworld_coins, 0)
 	health = 215
 	layer = 16
 	plane = 16
-	spacewalk = TRUE
+	spacewalk = FALSE
 	stat_attack = UNCONSCIOUS
 	robust_searching = 1
 	speed = 1
@@ -250,7 +258,7 @@ GLOBAL_VAR_INIT(underworld_coins, 0)
 
 /mob/living/simple_animal/hostile/rogue/dragger/Life()
 	. = ..()
-	
+
 /mob/living/simple_animal/hostile/rogue/dragger/get_sound(input)
 	switch(input)
 		if("laugh")

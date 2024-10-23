@@ -117,6 +117,8 @@
 	if(!istype(T, /turf/open/transparent/openspace))
 		if(!istype(T, /turf/open/water))
 			return
+		if(!istype(T, /turf/open/lava))
+			return
 	return TRUE
 
 /datum/crafting_recipe/roguetown/turfs/stonewall
@@ -249,7 +251,7 @@
 	if(isclosedturf(T))
 		return
 	if(!istype(T, /turf/open/floor/rogue/dirt))
-		if(!istype(T, /turf/open/floor/rogue/grass))
+		if(!(istype(T, /turf/open/floor/rogue/grass) || istype(T, /turf/open/floor/rogue/grassred) || istype(T, /turf/open/floor/rogue/grassyel) || istype(T, /turf/open/floor/rogue/grasscold)))
 			return
 	return TRUE
 

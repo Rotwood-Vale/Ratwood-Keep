@@ -23,8 +23,6 @@
 
 	cmode_music = 'sound/music/combat_physician.ogg'
 
-	allow_custom_genitals = TRUE
-
 /datum/outfit/job/roguetown/physician
 	name = "Physician"
 	jobtype = /datum/job/roguetown/physician
@@ -53,7 +51,6 @@
 	)
 	ADD_TRAIT(H, TRAIT_EMPATH, "[type]")
 	ADD_TRAIT(H, TRAIT_NOSTINK, "[type]")
-	ADD_TRAIT(H, TRAIT_ROT_EATER, "[type]")
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 5, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/alchemy, 5, TRUE)

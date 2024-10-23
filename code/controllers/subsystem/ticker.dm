@@ -500,9 +500,9 @@ SUBSYSTEM_DEF(ticker)
 		else
 			stack_trace("[S] [S.type] found in start landmarks list, which isn't a start landmark!")
 
-	if(living_player_count() < 10) //If it's lowpop, open up the gates so people don't have to start doing assassin's creed bullshit to get into town
+/*	if(living_player_count() < 10) //If it's lowpop, open up the gates so people don't have to start doing assassin's creed bullshit to get into town
 		for(var/obj/structure/gate/obstacle in GLOB.biggates)
-			obstacle.open()
+			obstacle.open() */
 
 	if(!rulermob)
 		lord_color_default()

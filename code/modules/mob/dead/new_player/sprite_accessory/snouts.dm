@@ -444,3 +444,13 @@
 	extra_state = TRUE
 	color_keys = 2
 	color_key_names = list("Snout", "Inner")
+
+/*
+---- azure snouts below this ----
+*/
+
+/datum/sprite_accessory/snout/shortnosed
+	name = "Short Nosed"
+	icon_state = "shortnosed"
+	color_keys = 2
+	color_key_names = list("Snout", "Nose")
