@@ -87,7 +87,7 @@
 		return
 	//SANITY CHECK, WILL NOT PLAY A SOUND IF THE LIST IS INVALID
 	if(!footstep_sounds[turf_footstep] || (LAZYLEN(footstep_sounds) < 3))
-			CRASH("Invalid footstep value given. Turf type: [T.type]; Footstep Type: [footstep_type]; Value: [turf_footstep]")
+		CRASH("Invalid footstep value given. Turf type: [T.type]; Footstep Type: [footstep_type]; Value: [turf_footstep]")
 		return
 	playsound(T, pick(footstep_sounds[turf_footstep][1]), footstep_sounds[turf_footstep][2], FALSE, footstep_sounds[turf_footstep][3] + e_range)
 
