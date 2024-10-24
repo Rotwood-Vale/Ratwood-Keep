@@ -8015,10 +8015,9 @@
 /area/rogue/indoors/town/bath)
 "hAT" = (
 /obj/structure/table/wood,
-/obj/item/book/rogue/cooking,
 /obj/item/book/rogue/yeoldecookingmanual{
-	pixel_x = -7;
-	pixel_y = -3
+	pixel_x = -3;
+	pixel_y = 1
 	},
 /turf/open/floor/rogue/tile,
 /area/rogue/indoors/town/tavern)
@@ -14420,6 +14419,10 @@
 	icon_state = "vertw"
 	},
 /area/rogue/indoors/town/shop)
+"nLf" = (
+/obj/structure/roguemachine/drugmachine,
+/turf/closed/wall/mineral/rogue/stonebrick,
+/area/rogue/under/town/sewer)
 "nLI" = (
 /obj/item/roguebin/water,
 /turf/open/floor/rogue/cobble,
@@ -182243,8 +182246,8 @@ rRb
 rRb
 rRb
 gLf
-gLf
 pXZ
+gLf
 gLf
 gLf
 rRb
@@ -182646,7 +182649,7 @@ lrs
 rRb
 rRb
 rRb
-rRb
+nLf
 rRb
 rRb
 rRb
