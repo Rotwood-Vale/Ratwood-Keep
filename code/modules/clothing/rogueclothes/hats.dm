@@ -748,6 +748,7 @@
 	item_state = "volfplate"
 	adjustable = CAN_CADJUST
 	emote_environment = 3
+	armor_class = ARMOR_CLASS_MEDIUM
 	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR
 	flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH
 	block2add = FOV_BEHIND
