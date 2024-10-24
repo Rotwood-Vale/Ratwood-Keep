@@ -29,15 +29,11 @@
 		if(/datum/patron/divine/pestra)
 			neck = /obj/item/clothing/neck/roguetown/psicross/pestra
 		if(/datum/patron/divine/malum)
-			neck = /obj/item/clothing/neck/roguetown/psicross/malum
-		if(/datum/patron/divine/ravox)
-			neck = /obj/item/clothing/neck/roguetown/psicross/ravox
+			neck = /obj/item/clothing/neck/roguetown/psicross/malum 
 
 	// CLASS ARCHETYPES
 	H.adjust_blindness(-3)
-	var/classes = list("Life Cleric","War Cleric")
-	if (H.patron.type == /datum/patron/divine/malum)
-		classes += ("Forge Cleric")
+	var/classes = list("Life Cleric","War Cleric","Forge Cleric")
 	var/classchoice = input("Choose your archetypes", "Available archetypes") as anything in classes
 
 	switch(classchoice)
@@ -140,7 +136,7 @@
 			H.mind.adjust_skillrank(/datum/skill/craft/traps, 1, TRUE)
 			H.AddSpell(new /obj/effect/proc_holder/spell/invoked/malum_flame_rogue) // weaker astra fire spell. mostly for lighting things.
 			H.change_stat("intelligence", 2) // Changed to follow balance people's advice.
-			H.change_stat("endurance", 1)
+			H.change_stat("endurance", 1) 
 			H.change_stat("strength", 2)
 			H.change_stat("speed", -2)
 			ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)

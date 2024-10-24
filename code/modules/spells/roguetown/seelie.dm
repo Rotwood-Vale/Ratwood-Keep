@@ -281,27 +281,3 @@
 
 /obj/item/reagent_containers/glass/bucket/wooden/spell_water
 	list_reagents = list(/datum/reagent/water = 40)
-
-/obj/effect/proc_holder/spell/invoked/summon_berry
-	name = "Summon Berry"
-	range = 7
-	overlay_state = "berry_spell"
-	releasedrain = 30
-	charge_max = 3 MINUTES
-	cast_without_targets = TRUE
-	sound = 'sound/items/gem.ogg' // Not a spell sound but infinitely more fun and, I think, fitting!
-	invocation = "A berry for someone in need..."
-	invocation_type = "whisper"
-
-/obj/effect/proc_holder/spell/invoked/summon_berry/cast(list/targets, mob/user)
-	. = ..()
-	user.emote("giggle")
-	var/turf/T = get_turf(targets[1])
-	if(prob(50))
-		var/obj/item/reagent_containers/food/snacks/grown/berries/rogue/berry = new get_turf(T)
-		berry.become_rotten()
-		user.visible_message(span_notice("[user] summons a rotten berry!"))
-	else
-		new /obj/item/reagent_containers/food/snacks/grown/berries/rogue (T)
-		user.visible_message(span_notice("[user] summons a tasty berry!"))
-	return TRUE

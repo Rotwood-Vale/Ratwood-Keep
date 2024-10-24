@@ -94,18 +94,3 @@
 	time = 40 MINUTES
 	needsate_text = "Time for a flavorful smoke."
 
-/// GOD-FEARING
-
-/datum/charflaw/addiction/godfearing
-	name = "Devout Follower"
-	desc = "I need to pray to my Patron, their blessings are stronger."
-	time = 40 MINUTES
-	needsate_text = "Time to pray."
-
-/// ALCOHOLIC
-
-/datum/charflaw/addiction/lovefiend
-	name = "Love-Fiend"
-	desc = "I must make love!"
-	time = 50 MINUTES
-	needsate_text = "Time to get happy."

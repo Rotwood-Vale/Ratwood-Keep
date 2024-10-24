@@ -26,8 +26,6 @@
 	var/chargedloop = null
 	var/charging_slowdown = 0
 	var/obj/inhand_requirement = null
-
-	/// This will be the spells image and it is located in icons/mob/actions/roguespells.dmi
 	var/overlay_state = null
 
 

@@ -448,7 +448,7 @@
 
 /datum/crafting_recipe/roguetown/structure/nicebed
 	name = "nice bed"
-	result = /obj/structure/bed/rogue/inn
+	result = /obj/structure/bed/rogue
 	reqs = list(/obj/item/grown/log/tree/small = 2,
 				/obj/item/natural/cloth = 1)
 	tools = list(/obj/item/needle)
@@ -456,30 +456,6 @@
 	verbage = "constructs"
 	skillcraft = /datum/skill/craft/carpentry
 	craftdiff = 2
-	
-/datum/crafting_recipe/roguetown/structure/doublebed
-	name = "double bed"
-	result = /obj/structure/bed/rogue/inn/wooldouble
-	reqs = list(/obj/item/grown/log/tree/small = 4,
-				/obj/item/natural/cloth = 2,
-				/obj/item/natural/fibers = 1)
-	tools = list(/obj/item/needle)
-	verbage_simple = "construct"
-	verbage = "constructs"
-	skillcraft = /datum/skill/craft/carpentry
-	craftdiff = 3
-
-/datum/crafting_recipe/roguetown/structure/nicedoublebed
-	name = "nice double bed"
-	result = /obj/structure/bed/rogue/inn/double
-	reqs = list(/obj/item/grown/log/tree/small = 4,
-				/obj/item/natural/cloth = 2,
-				/obj/item/natural/silk = 2)
-	tools = list(/obj/item/needle, /obj/item/rogueweapon/hammer)
-	verbage_simple = "construct"
-	verbage = "constructs"
-	skillcraft = /datum/skill/craft/carpentry
-	craftdiff = 4
 
 /datum/crafting_recipe/roguetown/structure/table
 	name = "wooden table"

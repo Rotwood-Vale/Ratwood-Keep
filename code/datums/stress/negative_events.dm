@@ -97,11 +97,6 @@
 	stressadd = 1
 	desc = span_red("I fell. I'm a fool.")
 
-/datum/stressevent/hatezizo
-	timer = 99999 MINUTES
-	stressadd = 666 // :)
-	desc = "<span class='red'>ZIZOZIZOZIZO</span>"
-
 /datum/stressevent/burntmeal
 	timer = 2 MINUTES
 	stressadd = 2
@@ -155,16 +150,6 @@
 	timer = 1 MINUTES
 	stressadd = 2
 	desc = span_red("My loins ache!")
-
-/datum/stressevent/leechcult
-	timer = 1 MINUTES
-	stressadd = 3
-	desc = list("<span class='red'>There's a little goblin in my head telling me to do things and I don't like it!</span>","<span class='red'>\"Kill your friends.\"</span>","<span class='red'>\"Make them bleed.\"</span>","<span class='red'>\"Give them no time to squeal.\"</span>","<span class='red'>\"Praise Zizo.\"</span>","<span class='red'>\"Death to the Ten.\"</span>","<span class='red'>\"The Weeper weeps his last.\"</span>")
-
-/datum/stressevent/delf
-	timer = 1 MINUTES
-	stressadd = 1
-	desc = span_red("Better stay away.")
 
 /datum/stressevent/shunned_race
 	timer = 1 MINUTES

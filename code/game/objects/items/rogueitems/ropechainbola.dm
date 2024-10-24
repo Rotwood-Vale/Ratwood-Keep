@@ -12,7 +12,7 @@
 	w_class = WEIGHT_CLASS_SMALL
 	throw_speed = 1
 	throw_range = 5
-	breakouttime = 10 SECONDS
+	breakouttime = 5 SECONDS
 	slipouttime = 1 MINUTES
 	var/cuffsound = 'sound/blank.ogg'
 	possible_item_intents = list(/datum/intent/tie)
@@ -182,8 +182,8 @@
 	wdefense = 1
 	throw_speed = 1
 	throw_range = 3
-	breakouttime = 30 SECONDS
-	slipouttime = 3 MINUTES
+	breakouttime = 10 SECONDS
+	slipouttime = 2 MINUTES
 	cuffsound = 'sound/blank.ogg'
 	possible_item_intents = list(/datum/intent/tie, /datum/intent/whips/iron_chain)
 	firefuel = null
