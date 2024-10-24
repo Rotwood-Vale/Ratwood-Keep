@@ -308,6 +308,7 @@
 	damage = 45	//Average bow user with 13 PER does 44ish damage. Arrows fly faster then arcane bolt.
 	damage_type = BRUTE
 	armor_penetration = 10
+	woundclass = BCLASS_STAB
 	nodamage = FALSE
 	flag = "bullet"
 	hitsound = 'sound/blank.ogg'
