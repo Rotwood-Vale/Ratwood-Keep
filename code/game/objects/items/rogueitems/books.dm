@@ -232,7 +232,7 @@
 	bookfile = "law.json"
 
 /obj/item/book/rogue/cooking
-	name = "Tastes Fit For The Lord" 
+	name = "Tastes Fit For The Lord"
 	desc = ""
 	icon_state ="book_0"
 	base_icon_state = "book"
@@ -248,7 +248,7 @@
 
 /obj/item/book/rogue/secret/xylix
 	name = "Book of Gold"
-	desc = "{<font color='red'><blink>An ominous book with untold powers.</blink></font>}"
+	desc = "<font color='red'><blink>An ominous book with untold powers.</blink></font>"
 	icon_state ="xylix_0"
 	base_icon_state = "xylix"
 	bookfile = "xylix.json"
@@ -260,6 +260,13 @@
 	..()
 	user.update_inv_hands()
 	to_chat(user, span_notice("You feel laughter echo in your head."))
+
+/obj/item/book/rogue/secret/thefireisgone
+	name = "THE FIRE IS GONE"
+	desc = "{<font color='red'><blink>AN ANCIENT TOME WRITTEN BY THE GODS' GREATEST FOOL</blink></font>}"
+	icon_state ="book6_0"
+	base_icon_state = "book6"
+	bookfile = "thefireisgone.json"
 
 //player made books
 /obj/item/book/rogue/tales1
@@ -390,7 +397,7 @@
 	icon_state = "basic_book_0"
 	base_icon_state = "basic_book"
 	override_find_book = TRUE
-	
+
 /obj/item/book/rogue/playerbook/Initialize(loc, in_round_player_generated, var/mob/living/in_round_player_mob, text)
 	. = ..()
 	is_in_round_player_generated = in_round_player_generated

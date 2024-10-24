@@ -49,7 +49,7 @@
 /datum/patron/divine/abyssor
 	name = "Abyssor"
 	domain = "God of the Ocean, Storms and the Tide"
-	desc = "The strongest of the Ten, the last he was awake the world flooded for a thousand daes before he was put to sleep. Resting fitfully did Dendor split from his skull like a gaping wound. Gifted primordial Man water."
+	desc = "The strongest of the Ten; when awakened, the world flooded for a thousand daes and a thousand nights before he was put to slumber. Resting fitfully did Dendor split from his skull like a gaping wound. Communes rarely with his followers, only offering glimpses in dreams. Gifted primordial Man water. "
 	worshippers = "Men of the Sea, Primitive Aquatics"
 	mob_traits = list(TRAIT_ABYSSOR_SWIM)
 	confess_lines = list(
@@ -61,7 +61,7 @@
 /datum/patron/divine/ravox
 	name = "Ravox"
 	domain = "God of Justice, Glory, War"
-	desc = "Stalwart warrior, glorious justicier; legends say he came down to the Basin to repel the vile hordes of demons with his own hands, and that he disguises to seek warriors for his divine army among mortals."
+	desc = "Stalwart warrior, glorious justicier; legends say he came down to the Basin to repel the vile hordes of demons with his own hands, and that he seeks warriors for his divine army among mortals."
 	worshippers = "Warriors, Sellswords & those who seek Justice"
 	confess_lines = list(
 		"RAVOX IS JUSTICE!",

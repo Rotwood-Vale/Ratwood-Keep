@@ -11,7 +11,7 @@
 /datum/patron/inhumen/zizo
 	name = "Zizo"
 	domain = "Advancement, Hubris, Left Hand Magicks"
-	desc = "Snow Elf turned God, who in her endless pursuit of greatness sacrificed her kin for ascension. Zizo revolutionized many a science and magick and taught mortals to bend the natural world to their will."
+	desc = "Snow Elf turned God- banished by the Ten for spreading unholy magicks and forbidden sciences. Her craft taught mortals to bend the natural world to their will, but destroyed the Snow Elf race.."
 	worshippers = "Necromancers, Warlocks, and the Undead"
 	mob_traits = list(TRAIT_CABAL)
 	confess_lines = list(
