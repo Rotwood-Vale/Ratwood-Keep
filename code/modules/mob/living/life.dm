@@ -53,7 +53,7 @@
 		//Random events (vomiting etc)
 		handle_random_events()
 		//Handle temperature/pressure differences between body and environment
-		var/datum/gas_mixture/environment = loc.return_air()
+		var/datum/gas_mixture/environment = loc?.return_air()
 		if(environment)
 			handle_environment(environment)
 

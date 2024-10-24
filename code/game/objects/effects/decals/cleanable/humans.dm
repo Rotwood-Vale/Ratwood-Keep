@@ -29,6 +29,14 @@
 	appearance_flags = NO_CLIENT_COLOR
 	var/blood_timer
 
+/obj/effect/decal/cleanable/blood/attack_hand(mob/living/user)
+	. = ..()
+	if(ishuman(user))
+		var/mob/living/carbon/human/H = user
+		to_chat(H, "<span class='notice'>I get my hands bloody.</span>")
+		H.bloody_hands++
+		H.update_inv_gloves()
+
 /obj/effect/decal/cleanable/blood/Initialize(mapload, list/datum/disease/diseases)
 	. = ..()
 	if(. == INITIALIZE_HINT_QDEL)

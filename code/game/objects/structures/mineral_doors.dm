@@ -977,10 +977,6 @@
 	resident_advclass = /datum/advclass/farmer
 	lockid = "towner_farmer"
 
-/obj/structure/mineral_door/wood/towner/seamstress
-	resident_advclass = /datum/advclass/seamstress
-	lockid = "towner_seamstress"
-
 /obj/structure/mineral_door/wood/towner/towndoctor
 	resident_advclass = /datum/advclass/towndoctor
 	lockid = "towner_towndoctor"

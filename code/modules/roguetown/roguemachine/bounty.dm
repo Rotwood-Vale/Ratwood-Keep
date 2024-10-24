@@ -42,7 +42,7 @@
 	if(!(ishuman(user))) return
 
 	// Only heads are allowed
-	if(P.type != /obj/item/bodypart/head) return
+	if(P.type != /obj/item/bodypart/head && P.type != /obj/item/bodypart/head/goblin) return
 
 	var/machine_location = get_turf(src)
 	var/obj/item/bodypart/head/stored_head = P
@@ -55,7 +55,11 @@
 			say("A bounty has been sated.")
 			reward_amount += b.amount
 			GLOB.head_bounties -= b
-		
+	if(P.type == /obj/item/bodypart/head/goblin)
+		correct_head = TRUE
+		say("A bounty has been sated.")
+		reward_amount += P.sellprice
+
 	if(correct_head)
 		qdel(P)
 	else // No valid bounty for this head?
