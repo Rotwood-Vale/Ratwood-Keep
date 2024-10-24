@@ -196,7 +196,7 @@
 	id = "haste"
 	alert_type = /atom/movable/screen/alert/status_effect/buff/haste
 	effectedstats = list("speed" = 3)
-	duration = 1 MINUTES
+	duration = 1.5 MINUTES
 
 /datum/status_effect/buff/seelie_drugs
 	id = "seelie drugs"

@@ -7,6 +7,7 @@
 	mob_overlay_icon = 'icons/roguetown/clothing/onmob/gloves.dmi'
 	bloody_icon_state = "bloodyhands"
 	sleevetype = "shirt"
+	siemens_coefficient = 1 //Who in astrata's name forgot to set this to 1? No more immunity from lightning due to gloves.
 	max_heat_protection_temperature = 361
 	w_class = WEIGHT_CLASS_SMALL
 	sewrepair = TRUE
