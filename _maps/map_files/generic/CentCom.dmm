@@ -26,6 +26,9 @@
 /obj/item/rogueweapon/hammer,
 /obj/item/rogueweapon/hammer,
 /obj/item/rogueweapon/hammer,
+/obj/machinery/light/rogue/torchholder{
+	dir = 4
+	},
 /turf/open/floor/rogue/dirt/road,
 /area/rogue)
 "af" = (
@@ -66,6 +69,9 @@
 /area/rogue)
 "ai" = (
 /obj/structure/closet/crate/chest,
+/obj/machinery/light/rogue/torchholder{
+	dir = 4
+	},
 /turf/open/floor/rogue/dirt/road,
 /area/rogue)
 "aj" = (
@@ -99,6 +105,10 @@
 /obj/item/clothing/wrists/roguetown/bracers/leather,
 /obj/item/clothing/wrists/roguetown/bracers,
 /obj/item/clothing/wrists/roguetown/bracers,
+/obj/machinery/light/rogue/wallfire/candle{
+	pixel_x = -32;
+	pixel_y = 0
+	},
 /turf/open/floor/rogue/carpet,
 /area/rogue)
 "an" = (
@@ -171,6 +181,10 @@
 /obj/item/clothing/suit/roguetown/armor/armordress,
 /obj/item/clothing/suit/roguetown/armor/armordress/alt,
 /obj/item/clothing/suit/roguetown/armor/armordress,
+/obj/machinery/light/rogue/wallfire/candle{
+	pixel_x = 32;
+	pixel_y = 0
+	},
 /turf/open/floor/rogue/carpet,
 /area/rogue)
 "au" = (
@@ -221,6 +235,10 @@
 /obj/item/clothing/head/roguetown/helmet/sallet/visored,
 /obj/item/clothing/head/roguetown/helmet/sallet/visored,
 /obj/item/clothing/head/roguetown/helmet/sallet/visored,
+/obj/machinery/light/rogue/wallfire/candle{
+	pixel_x = -32;
+	pixel_y = 0
+	},
 /turf/open/floor/rogue/carpet,
 /area/rogue)
 "aA" = (
@@ -233,6 +251,10 @@
 /obj/item/clothing/under/roguetown/chainlegs,
 /obj/item/clothing/under/roguetown/chainlegs,
 /obj/item/clothing/under/roguetown/chainlegs,
+/obj/machinery/light/rogue/wallfire/candle{
+	pixel_x = 32;
+	pixel_y = 0
+	},
 /turf/open/floor/rogue/carpet,
 /area/rogue)
 "aB" = (
@@ -345,6 +367,10 @@
 /obj/item/clothing/neck/roguetown/coif,
 /obj/item/clothing/neck/roguetown/coif,
 /obj/item/clothing/neck/roguetown/coif,
+/obj/machinery/light/rogue/wallfire/candle{
+	pixel_x = -32;
+	pixel_y = 0
+	},
 /turf/open/floor/rogue/carpet,
 /area/rogue)
 "aM" = (
@@ -368,6 +394,10 @@
 /obj/item/clothing/shoes/roguetown/armor/steel,
 /obj/item/clothing/shoes/roguetown/armor/steel,
 /obj/item/clothing/shoes/roguetown/armor/steel,
+/obj/machinery/light/rogue/wallfire/candle{
+	pixel_x = 32;
+	pixel_y = 0
+	},
 /turf/open/floor/rogue/carpet,
 /area/rogue)
 "aO" = (
@@ -423,6 +453,7 @@
 	},
 /obj/item/rogueweapon/eaglebeak/lucerne,
 /obj/item/rogueweapon/eaglebeak/lucerne,
+/obj/machinery/light/rogue/wallfire/candle,
 /turf/open/floor/rogue/cobble,
 /area/rogue)
 "aV" = (
@@ -478,6 +509,7 @@
 /obj/item/rogueweapon/sword/iron,
 /obj/item/rogueweapon/sword/iron,
 /obj/item/rogueweapon/sword/iron,
+/obj/machinery/light/rogue/wallfire/candle,
 /turf/open/floor/rogue/cobble,
 /area/rogue)
 "ba" = (
@@ -530,6 +562,7 @@
 /obj/item/rogueweapon/mace/woodclub,
 /obj/item/rogueweapon/mace/woodclub,
 /obj/item/rogueweapon/mace/woodclub,
+/obj/machinery/light/rogue/wallfire/candle,
 /turf/open/floor/rogue/cobble,
 /area/rogue)
 "bf" = (
@@ -1453,6 +1486,9 @@
 /obj/item/rogueweapon/eaglebeak,
 /obj/item/rogueweapon/eaglebeak,
 /obj/item/rogueweapon/eaglebeak,
+/obj/machinery/light/rogue/wallfire/candle{
+	pixel_y = -32
+	},
 /turf/open/floor/rogue/cobble,
 /area/rogue)
 "ft" = (
@@ -1485,6 +1521,10 @@
 /obj/item/candle/skull/lit,
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors)
+"hc" = (
+/obj/machinery/light/rogue/wallfire/candle,
+/turf/open/floor/rogue/blocks,
+/area/rogue)
 "hQ" = (
 /turf/open/floor/rogue/blocks,
 /area/rogue)
@@ -1602,6 +1642,10 @@
 	icon_state = "vertw"
 	},
 /area/rogue/indoors)
+"mV" = (
+/obj/machinery/light/rogue/firebowl/stump,
+/turf/open/floor/rogue/dirt/road,
+/area/rogue/outdoors)
 "nh" = (
 /obj/structure/rack/rogue,
 /turf/open/floor/rogue/herringbone,
@@ -1641,6 +1685,9 @@
 	},
 /obj/item/rogueweapon/sword/cutlass,
 /obj/item/rogueweapon/sword/cutlass,
+/obj/machinery/light/rogue/wallfire/candle{
+	pixel_y = -32
+	},
 /turf/open/floor/rogue/cobble,
 /area/rogue)
 "nZ" = (
@@ -1806,6 +1853,13 @@
 	},
 /turf/open/floor/rogue/blocks,
 /area/rogue)
+"sC" = (
+/obj/structure/fermenting_barrel/water,
+/obj/machinery/light/rogue/torchholder{
+	pixel_y = 26
+	},
+/turf/open/floor/rogue/dirt/road,
+/area/rogue)
 "sN" = (
 /obj/structure/table/wood{
 	dir = 1;
@@ -1886,6 +1940,9 @@
 /area/rogue/outdoors)
 "xi" = (
 /obj/effect/proc_holder/spell/invoked/heal,
+/obj/machinery/light/rogue/wallfire/candle{
+	pixel_y = -32
+	},
 /turf/open/floor/rogue/blocks,
 /area/rogue)
 "xt" = (
@@ -2049,6 +2106,9 @@
 /obj/item/rogueweapon/huntingknife/idagger/silver,
 /obj/item/rogueweapon/huntingknife/idagger/silver,
 /obj/item/rogueweapon/huntingknife/idagger/silver,
+/obj/machinery/light/rogue/wallfire/candle{
+	pixel_y = -32
+	},
 /turf/open/floor/rogue/cobble,
 /area/rogue)
 "FJ" = (
@@ -2185,6 +2245,10 @@
 /obj/item/rogueweapon/spear/billhook,
 /turf/open/floor/rogue/cobble,
 /area/rogue)
+"LZ" = (
+/obj/machinery/light/rogue/firebowl/stump,
+/turf/open/floor/rogue/dirt,
+/area/rogue/outdoors)
 "Ms" = (
 /obj/docking_port/stationary{
 	dir = 1;
@@ -2197,6 +2261,12 @@
 	},
 /turf/open/water/swamp,
 /area/rogue/outdoors)
+"Mx" = (
+/obj/machinery/light/rogue/wallfire/candle{
+	pixel_y = -32
+	},
+/turf/open/floor/rogue/blocks,
+/area/rogue)
 "MF" = (
 /obj/structure/bed/rogue/shit,
 /turf/open/floor/rogue/wood,
@@ -2280,6 +2350,12 @@
 /obj/machinery/light/rogue/wallfire/candle/r,
 /turf/open/floor/rogue/herringbone,
 /area/rogue/indoors)
+"RF" = (
+/obj/machinery/light/rogue/torchholder{
+	pixel_y = 26
+	},
+/turf/open/floor/rogue/dirt/road,
+/area/rogue)
 "RH" = (
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors)
@@ -2304,6 +2380,10 @@
 /obj/structure/fluff/railing/fence,
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/outdoors/woods)
+"Su" = (
+/obj/machinery/light/rogue/firebowl/stump,
+/turf/open/floor/rogue/grass,
+/area/rogue/outdoors)
 "SE" = (
 /obj/structure/closet/crate/chest{
 	lockid = "bandit"
@@ -2318,6 +2398,12 @@
 /area/rogue/indoors)
 "SP" = (
 /obj/machinery/light/rogue/firebowl/standing,
+/turf/open/floor/rogue/dirt/road,
+/area/rogue)
+"Tb" = (
+/obj/machinery/light/rogue/torchholder{
+	dir = 8
+	},
 /turf/open/floor/rogue/dirt/road,
 /area/rogue)
 "Te" = (
@@ -3206,7 +3292,7 @@ aJ
 aM
 av
 vP
-hQ
+hc
 bh
 hQ
 bv
@@ -3317,7 +3403,7 @@ rQ
 rQ
 bX
 bX
-ac
+sC
 Dw
 Dw
 Dw
@@ -3601,7 +3687,7 @@ bk
 hQ
 hQ
 hQ
-hQ
+Mx
 vP
 bX
 rQ
@@ -3711,7 +3797,7 @@ ac
 Dw
 Dw
 Dw
-Dw
+Tb
 al
 bX
 vP
@@ -3838,7 +3924,7 @@ rQ
 bX
 bX
 ad
-Dw
+RF
 Dw
 Dw
 ad
@@ -4363,7 +4449,7 @@ Ph
 Ph
 RH
 RH
-pr
+LZ
 pr
 RH
 RH
@@ -4371,7 +4457,7 @@ Ph
 Ph
 RH
 Ph
-pr
+LZ
 pr
 aH
 pr
@@ -5008,7 +5094,7 @@ rQ
 bX
 bX
 Do
-Do
+Su
 pr
 Ph
 Ph
@@ -5149,7 +5235,7 @@ Ph
 RH
 Ph
 Ph
-RH
+mV
 Ph
 RH
 RH
@@ -5534,7 +5620,7 @@ RH
 RH
 RH
 RH
-RH
+mV
 RH
 RH
 RH
