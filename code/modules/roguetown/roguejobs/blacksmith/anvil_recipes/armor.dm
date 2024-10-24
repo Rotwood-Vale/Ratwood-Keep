@@ -82,7 +82,7 @@
 	name = "Brigandine Chausses (+1 Cloth)"
 	req_bar = /obj/item/ingot/iron
 	additional_items = list(/obj/item/natural/cloth)
-	created_item = /obj/item/clothing/wrists/roguetown/splintlegs
+	created_item = /obj/item/clothing/under/roguetown/splintlegs
 	i_type = "Armor"
 
 /datum/anvil_recipe/armor/helmetgoblin
