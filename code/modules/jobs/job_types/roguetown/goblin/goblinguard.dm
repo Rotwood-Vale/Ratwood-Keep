@@ -25,7 +25,7 @@
 	pants = /obj/item/clothing/under/roguetown/loincloth/brown
 	belt = /obj/item/storage/belt/rogue/leather
 	backl = /obj/item/storage/backpack/rogue/satchel
-	backpack_contents = list(/obj/item/rope/chain = 1)
+	backpack_contents = list(/obj/item/rope/chain = 2)
 
 /datum/job/roguetown/goblinguard/after_spawn(mob/living/L, mob/M, latejoin = TRUE)
 	..()
@@ -36,7 +36,7 @@
 		H.become_blind("advsetup")
 
 /datum/advclass/gob_brute
-	name = "Goblin Brute"
+	name = "Brute"
 	allowed_sexes = list(MALE)
 	allowed_races = list(/datum/species/goblinp)
 	outfit = /datum/outfit/job/roguetown/goblinguard/brute
@@ -46,11 +46,12 @@
 
 /datum/outfit/job/roguetown/goblinguard/brute/pre_equip(mob/living/carbon/human/H)
 	. = ..()
-	head = /obj/item/clothing/head/roguetown/helmet/goblin
-	armor = /obj/item/clothing/suit/roguetown/armor/plate/half/iron/goblin
+	head = /obj/item/clothing/head/roguetown/helmet/skullcap
+	armor = /obj/item/clothing/suit/roguetown/armor/plate/half/iron
 	r_hand = /obj/item/rogueweapon/mace/spiked
 	l_hand = /obj/item/rogueweapon/shield/wood
 	H.verbs |= /mob/proc/haltyell
+	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/combat/maces, 3, TRUE)
@@ -67,7 +68,7 @@
 		H.change_stat("intelligence", -2)
 
 /datum/advclass/gob_outrider
-	name = "Goblin Outrider"
+	name = "Outrider"
 	allowed_sexes = list(MALE)
 	allowed_races = list(/datum/species/goblinp)
 	outfit = /datum/outfit/job/roguetown/goblinguard/outrider
@@ -78,8 +79,8 @@
 
 /datum/outfit/job/roguetown/goblinguard/outrider/pre_equip(mob/living/carbon/human/H)
 	. = ..()
-	head = /obj/item/clothing/head/roguetown/helmet/leather/goblin
-	armor = /obj/item/clothing/suit/roguetown/armor/leather/goblin
+	head = /obj/item/clothing/head/roguetown/helmet/leather
+	armor = /obj/item/clothing/suit/roguetown/armor/leather/hide
 	r_hand = /obj/item/rogueweapon/spear/stone
 	l_hand = /obj/item/rogueweapon/shield/wood
 	H.verbs |= /mob/proc/haltyell
@@ -101,7 +102,7 @@
 		H.change_stat("intelligence", -2)
 
 /datum/advclass/gob_raider
-	name = "Goblin Raider"
+	name = "Raider"
 	allowed_sexes = list(MALE)
 	allowed_races = list(/datum/species/goblinp)
 	outfit = /datum/outfit/job/roguetown/goblinguard/raider
@@ -114,7 +115,6 @@
 	armor = /obj/item/clothing/suit/roguetown/armor/leather/hide/goblin
 	r_hand = /obj/item/rogueweapon/stoneaxe/battle
 	H.verbs |= /mob/proc/haltyell
-	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/combat/axes, 3 , TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 1, TRUE)
