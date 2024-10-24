@@ -278,20 +278,26 @@ GLOBAL_LIST_INIT(laws_of_the_land, initialize_laws_of_the_land())
 	return make_outlaw(raw_message)
 
 /proc/make_outlaw(raw_message, silent = FALSE)
-	if(raw_message in GLOB.outlawed_players)
-		GLOB.outlawed_players -= raw_message
+	var/sanitized_name = html_encode(raw_message)  // Escapes special characters
+
+	if(sanitized_name in GLOB.outlawed_players)
+		GLOB.outlawed_players -= sanitized_name
 		if(!silent)
-			priority_announce("[raw_message] is no longer an outlaw in Rockhill lands.", "The Duke Decrees", 'sound/misc/royal_decree.ogg', "Captain")
+			priority_announce("[sanitized_name] is no longer an outlaw in Rockhill lands.", "The Duke Decrees", 'sound/misc/royal_decree.ogg', "Captain")
 		return FALSE
+
 	var/found = FALSE
 	for(var/mob/living/carbon/human/H in GLOB.player_list)
-		if(H.real_name == raw_message)
+		if(H.real_name == sanitized_name)
 			found = TRUE
+			break
+
 	if(!found)
 		return FALSE
-	GLOB.outlawed_players += raw_message
+
+	GLOB.outlawed_players += sanitized_name
 	if(!silent)
-		priority_announce("[raw_message] has been declared an outlaw and must be captured or slain.", "The Duke Decrees", 'sound/misc/royal_decree2.ogg', "Captain")
+		priority_announce("[sanitized_name] has been declared an outlaw and must be captured or slain.", "The Duke Decrees", 'sound/misc/royal_decree2.ogg', "Captain")
 	return TRUE
 
 /proc/make_law(raw_message)
