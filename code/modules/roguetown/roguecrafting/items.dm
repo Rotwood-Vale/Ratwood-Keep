@@ -25,7 +25,7 @@
 				/obj/item/kitchen/spoon)
 	reqs = list(/obj/item/grown/log/tree/small = 1)
 
-	/datum/crafting_recipe/roguetown/platter
+/datum/crafting_recipe/roguetown/platter
 	name = "plater (x3)"
 	result = list(/obj/item/cooking/platter,
 				/obj/item/cooking/platter,
