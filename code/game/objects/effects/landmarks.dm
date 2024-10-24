@@ -120,16 +120,22 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	jobspawn_override = list("Town Seelie")
 	delete_after_roundstart = FALSE
 
-/obj/effect/landmark/start/desertriderlate
+/obj/effect/landmark/start/desertriderlate // Left behind for map compatibility 
 	name = "DesertRiderlate"
 	icon_state = "arrow"
-	jobspawn_override = list("Desert Rider Mercenary", "Sellsword")
+	jobspawn_override = list("Mercenary")
 	delete_after_roundstart = FALSE
 
-/obj/effect/landmark/start/grenzelhoftlate
+/obj/effect/landmark/start/grenzelhoftlate // Left behind for map compatibility 
 	name = "Grenzelhoftlate"
 	icon_state = "arrow"
-	jobspawn_override = list("Grenzelhoft Mercenary", "Sellsword")
+	jobspawn_override = list("Mercenary")
+	delete_after_roundstart = FALSE
+
+/obj/effect/landmark/start/mercenarylate
+	name = "Mercenarylate"
+	icon_state = "arrow"
+	jobspawn_override = list("Mercenary")
 	delete_after_roundstart = FALSE
 
 /obj/effect/landmark/start/villagerlate
