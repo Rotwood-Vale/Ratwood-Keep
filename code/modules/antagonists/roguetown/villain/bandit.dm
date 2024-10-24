@@ -154,14 +154,15 @@
 				neck = /obj/item/clothing/neck/roguetown/bervor
 			else
 				neck = /obj/item/clothing/neck/roguetown/gorget
-			H.mind.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE) // changed it to 4 just to balance the -2 speed loss
+			H.mind.adjust_skillrank(/datum/skill/combat/swords, rand(1,2), TRUE) // either expert or master skill - knights start with master and templars expert sword skill
 			H.change_stat("strength", 1)
-			H.change_stat("constitution", 1)//more stats for being a rare role
+			H.change_stat("constitution", 1)
+			H.change_stat("speed", -2)
 			ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
 	H.change_stat("strength", 3)
 	H.change_stat("endurance", 2)
 	H.change_stat("constitution", 1)
-	H.change_stat("speed", 2)
+	H.change_stat("speed", 1)
 	H.change_stat("intelligence", -3)
 
 	H.verbs |= /mob/proc/haltyell
