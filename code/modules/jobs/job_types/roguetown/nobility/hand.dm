@@ -21,9 +21,9 @@
 		return
 	if(!player.ckey)
 		return
-	for(var/mob/dead/new_player/Lord in GLOB.player_list)
-		if(Lord.mind.assigned_role == "Lord")
-			if(Lord.brohand == player.ckey)
+	for(var/mob/dead/new_player/duke in GLOB.player_list)
+		if(duke.mind.assigned_role == "Duke")
+			if(duke.brohand == player.ckey)
 				return TRUE
 */
 

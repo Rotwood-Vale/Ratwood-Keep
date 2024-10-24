@@ -1,5 +1,5 @@
 /datum/job/roguetown/lady
-	title = "Lady Consort"
+	title = "Duchess Consort"
 	flag = LADY
 	department_flag = NOBLEMEN
 	faction = "Station"
@@ -19,7 +19,7 @@
 	max_pq = null
 
 /datum/job/roguetown/exlady //just used to change the ladys title
-	title = "Lady Dowager"
+	title = "Duchess Dowager"
 	flag = LADY
 	department_flag = NOBLEMEN
 	faction = "Station"
@@ -71,7 +71,7 @@
 	name = "Recruit Servant"
 	new_role = "Servant"
 	recruitment_faction = "Servants"
-	recruitment_message = "Serve the liege, %RECRUIT!"
-	accept_message = "FOR THE LIEGE!"
+	recruitment_message = "Serve the duchy, %RECRUIT!"
+	accept_message = "Yes, your highness!"
 	refuse_message = "I refuse."
 	charge_max = 100
