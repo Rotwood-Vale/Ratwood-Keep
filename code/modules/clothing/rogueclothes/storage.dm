@@ -260,7 +260,7 @@
 		STR.max_w_class = WEIGHT_CLASS_NORMAL
 		STR.max_items = 14
 		STR.not_while_equipped = TRUE
-
+/*
 /obj/item/storage/belt/rogue/pickles
 	name = "jar of pickles"
 	desc = "Briney goodness!"
@@ -287,3 +287,5 @@
 	new /obj/item/reagent_containers/food/snacks/grown/pickle(src)
 	new /obj/item/reagent_containers/food/snacks/grown/pickle(src)
 	new /obj/item/reagent_containers/food/snacks/grown/pickle(src)
+
+*/

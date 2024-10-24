@@ -3,8 +3,8 @@
 	name = "pot"
 	desc = ""
 	icon = 'modular/Neu_Food/icons/cooking.dmi'
-	lefthand_file = null
-	righthand_file = null
+	lefthand_file = 'modular/Neu_Food/icons/food_lefthand.dmi'
+	righthand_file = 'modular/Neu_Food/icons/food_righthand.dmi'
 	experimental_inhand = FALSE
 	icon_state = "pote"
 	sharpness = IS_BLUNT

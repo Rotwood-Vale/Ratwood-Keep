@@ -29,11 +29,15 @@
 		if(/datum/patron/divine/pestra)
 			neck = /obj/item/clothing/neck/roguetown/psicross/pestra
 		if(/datum/patron/divine/malum)
-			neck = /obj/item/clothing/neck/roguetown/psicross/malum 
+			neck = /obj/item/clothing/neck/roguetown/psicross/malum
+		if(/datum/patron/divine/ravox)
+			neck = /obj/item/clothing/neck/roguetown/psicross/ravox
 
 	// CLASS ARCHETYPES
 	H.adjust_blindness(-3)
-	var/classes = list("Life Cleric","War Cleric","Forge Cleric")
+	var/classes = list("Life Cleric","War Cleric")
+	if (H.patron.type == /datum/patron/divine/malum)
+		classes += ("Forge Cleric")
 	var/classchoice = input("Choose your archetypes", "Available archetypes") as anything in classes
 
 	switch(classchoice)
@@ -118,8 +122,8 @@
 			belt = /obj/item/storage/belt/rogue/leather
 			beltr = /obj/item/rogueweapon/stoneaxe/woodcut
 			beltl = /obj/item/storage/belt/rogue/pouch/coins/poor
-			backl = /obj/item/rogueweapon/shield/wood
-			backr = /obj/item/storage/backpack/rogue/backpack
+			backr = /obj/item/rogueweapon/shield/wood
+			backl = /obj/item/storage/backpack/rogue/backpack
 			backpack_contents = list(/obj/item/rogueweapon/huntingknife =1, /obj/item/clothing/neck/roguetown/chaincoif/iron, /obj/item/rogueore/coal = 1, /obj/item/rogueweapon/tongs=1, /obj/item/rogueore/iron=1, /obj/item/rogueweapon/hammer)
 			H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
@@ -136,7 +140,7 @@
 			H.mind.adjust_skillrank(/datum/skill/craft/traps, 1, TRUE)
 			H.AddSpell(new /obj/effect/proc_holder/spell/invoked/malum_flame_rogue) // weaker astra fire spell. mostly for lighting things.
 			H.change_stat("intelligence", 2) // Changed to follow balance people's advice.
-			H.change_stat("endurance", 1) 
+			H.change_stat("endurance", 1)
 			H.change_stat("strength", 2)
 			H.change_stat("speed", -2)
 			ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
