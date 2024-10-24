@@ -61,7 +61,6 @@
 	/// Organs we can disembowel associated with chance to disembowel
 	var/static/list/affected_organs = list(
 		ORGAN_SLOT_STOMACH = 100,
-		ORGAN_SLOT_STOMACH_AID = 100, // It's called GUTTED for a reason.
 		ORGAN_SLOT_LIVER = 100,
 	)
 
@@ -87,11 +86,9 @@
 			continue
 		if(!(organ.slot in affected_organs))
 			continue
-		/*
 		var/spill_prob = affected_organs[organ.slot]
 		if(prob(spill_prob))
-		*/
-		spilled_organs += organ
+			spilled_organs += organ
 	for(var/obj/item/organ/spilled as anything in spilled_organs)
 		spilled.Remove(owner)
 		spilled.forceMove(drop_location)

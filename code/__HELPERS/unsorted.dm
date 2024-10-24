@@ -1,5 +1,4 @@
-var/list/cardinal = list( NORTH, SOUTH, EAST, WEST )
-var/list/alldirs = list(NORTH, SOUTH, EAST, WEST, NORTHEAST, NORTHWEST, SOUTHEAST, SOUTHWEST)
+
 
 /*
  * A large number of misc global procs.

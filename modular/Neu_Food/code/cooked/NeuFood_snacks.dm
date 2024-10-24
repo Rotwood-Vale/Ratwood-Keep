@@ -11,7 +11,7 @@
 	eat_effect = null
 	slices_num = 0
 	name = "frysteak"
-	desc = "A slab of beastflesh, fried to a perfect medium-rare(Serve as is or add Pepper, Onion or use with salt to make a Coppiette)"
+	desc = "A slab of beastflesh, fried to a perfect medium-rare"
 	icon_state = "frysteak"
 	bonus_reagents = list(/datum/reagent/consumable/nutriment = MEATSLAB_NUTRITION)
 	rotprocess = SHELFLIFE_DECENT
