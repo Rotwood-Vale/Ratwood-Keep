@@ -23,7 +23,7 @@
 		H.mind.adjust_skillrank(/datum/skill/craft/cooking, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/craft/crafting, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/sewing, 1, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/labor/butchering, 2, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/craft/hunting, 2, TRUE)
 		if(H.age == AGE_OLD)
 			H.mind.adjust_skillrank(/datum/skill/craft/cooking, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/knives, 1, TRUE)

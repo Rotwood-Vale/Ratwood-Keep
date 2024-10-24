@@ -2504,7 +2504,7 @@
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/under/town/basement)
 "lv" = (
-/obj/structure/fluff/dryingrack,
+/obj/machinery/tanningrack,
 /obj/item/needle/thorn,
 /turf/open/floor/rogue/woodturned,
 /area/rogue/under/town/basement)
@@ -4426,7 +4426,7 @@
 	},
 /area/rogue/indoors)
 "tJ" = (
-/obj/structure/fluff/dryingrack,
+/obj/machinery/tanningrack,
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/indoors/town)
 "tK" = (

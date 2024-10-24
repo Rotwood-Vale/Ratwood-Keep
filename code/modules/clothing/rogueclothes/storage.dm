@@ -16,7 +16,7 @@
 	sewrepair = TRUE
 	fiber_salvage = TRUE
 	salvage_amount = 1
-	salvage_result = /obj/item/natural/hide
+	salvage_result = /obj/item/natural/hide/cured
 
 /obj/item/storage/belt/rogue/ComponentInitialize()
 	. = ..()
@@ -186,7 +186,7 @@
 	sewrepair = TRUE
 	fiber_salvage = TRUE
 	salvage_amount = 1
-	salvage_result = /obj/item/natural/hide
+	salvage_result = /obj/item/natural/hide/cured
 
 /obj/item/storage/backpack/rogue/satchel
 	name = "satchel"

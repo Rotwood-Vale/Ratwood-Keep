@@ -27,7 +27,7 @@
 		H.mind.adjust_skillrank(/datum/skill/combat/knives, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/medicine, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 2, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/craft/tanning, 2, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/craft/hunting, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/stealing, 3, TRUE)
 		H.change_stat("intelligence", 1)
 		H.change_stat("speed", 3)  

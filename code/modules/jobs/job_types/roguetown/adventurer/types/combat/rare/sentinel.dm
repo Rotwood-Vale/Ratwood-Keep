@@ -22,7 +22,7 @@
 	H.mind.adjust_skillrank(/datum/skill/combat/swords, 3, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 3, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/combat/bows, 5, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/craft/tanning, 3, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/craft/hunting, 3, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 1, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/craft/crafting, 1, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/swimming, 2, TRUE)

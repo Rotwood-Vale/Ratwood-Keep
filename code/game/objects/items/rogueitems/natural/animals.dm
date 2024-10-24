@@ -1,16 +1,43 @@
-
-
 /obj/item/natural/hide
 	name = "hide"
 	icon_state = "hide"
 	desc = "Hide from one of Gott's creachers."
-	dropshrink = 0.50
-	force = 0
-	throwforce = 0
 	w_class = WEIGHT_CLASS_SMALL
 	resistance_flags = FLAMMABLE
 	drop_sound = 'sound/foley/dropsound/cloth_drop.ogg'
 	sellprice = 20
+
+/obj/item/natural/hide/cured
+	name = "cured leather"
+	icon_state = "leather"
+	desc = "A hide piece that has been cured and may now be worked."
+	sellprice = 7
+	bundletype = /obj/item/natural/bundle/curred_hide
+
+/obj/item/natural/cured/masterwork //This has to be a different typepath so recipes dont use this type of leather
+	name = "masterwork cured leather"
+	icon_state = "masterwork_leather"
+	desc = "A hide piece that has been masterfully cured and may now be used by a talented craftsman."
+	resistance_flags = FLAMMABLE
+	w_class = WEIGHT_CLASS_SMALL
+	drop_sound = 'sound/foley/dropsound/cloth_drop.ogg'
+	sellprice = 20
+	bundletype = null
+
+/obj/item/natural/bundle/curred_hide
+	name = "bundle of cured leather"
+	desc = "A bunch of cured leather pieces bundled together."
+	icon_state = "clothroll1"
+	possible_item_intents = list(/datum/intent/use)
+	maxamount = 10
+	spitoutmouth = FALSE
+	stacktype = /obj/item/natural/hide/cured
+	stackname = "cured leather"
+	icon1 = "clothroll1"
+	icon1step = 5
+	icon2 = "clothroll2"
+	icon2step = 10
+	color = "#7a4c45"
 
 /obj/item/natural/fur
 	name = "fur"

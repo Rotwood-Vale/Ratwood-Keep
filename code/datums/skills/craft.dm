@@ -19,15 +19,15 @@
 /datum/skill/craft/masonry
 	name = "Masonry"
 
-/datum/skill/craft/traps
-	name = "Trapmaking"
-
 /datum/skill/craft/cooking
 	name = "Cooking"
 
 /datum/skill/craft/engineering
 	name = "Engineering"
 
-/datum/skill/craft/tanning
-	name = "Skincrafting"
+/datum/skill/craft/hunting
+	name = "Hunting"
 	desc = ""
+	dreams = list(
+		"...you feel the forest's embrace as you drift into dreams, visions of stalking prey and the thrill of the hunt filling your mind.."
+	)

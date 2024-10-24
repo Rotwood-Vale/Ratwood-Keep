@@ -1875,7 +1875,7 @@
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/outdoors/woods)
 "XH" = (
-/obj/structure/fluff/dryingrack,
+/obj/machinery/tanningrack,
 /obj/item/needle/thorn,
 /turf/open/floor/rogue/woodturned,
 /area/rogue/outdoors/woods)

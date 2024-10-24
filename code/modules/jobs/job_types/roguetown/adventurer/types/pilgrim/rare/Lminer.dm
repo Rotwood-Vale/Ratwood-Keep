@@ -22,7 +22,6 @@
 	beltl = /obj/item/rogueweapon/pick/steel
 	backl = /obj/item/storage/backpack/rogue/backpack
 	if(H.mind)
-		H.mind.adjust_skillrank(/datum/skill/craft/traps, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/craft/engineering, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/craft/carpentry, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/craft/masonry, 4, TRUE)

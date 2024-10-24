@@ -142,7 +142,7 @@
 	w_class = WEIGHT_CLASS_NORMAL
 	slot_flags = ITEM_SLOT_HIP //| ITEM_SLOT_BELT (Either someone fixes this, or this remains disabled because it's very bugged)
 	associated_skill = /datum/skill/combat/whipsflails
-	anvilrepair = /datum/skill/craft/tanning
+	anvilrepair = /datum/skill/craft/hunting
 	parrysound = list('sound/combat/parry/parrygen.ogg')
 	swingsound = WHIPWOOSH
 	throwforce = 5

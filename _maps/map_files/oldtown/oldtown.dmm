@@ -8441,7 +8441,7 @@
 /turf/open/floor/rogue/cobble,
 /area/rogue/outdoors/town)
 "aCA" = (
-/obj/structure/fluff/dryingrack,
+/obj/machinery/tanningrack,
 /obj/item/storage/roguebag,
 /turf/open/floor/rogue/churchbrick,
 /area/rogue/indoors/town/manor)
@@ -10061,7 +10061,7 @@
 	},
 /area/rogue/under/cave)
 "aIg" = (
-/obj/structure/fluff/dryingrack,
+/obj/machinery/tanningrack,
 /obj/item/needle/thorn,
 /turf/open/floor/rogue/dirt,
 /area/rogue/outdoors/rtfield)

@@ -38,7 +38,7 @@
 	anvilrepair = null
 	sewrepair = TRUE
 	salvage_amount = 1
-	salvage_result = /obj/item/natural/hide
+	salvage_result = /obj/item/natural/hide/cured
 
 /obj/item/clothing/wrists/roguetown/wrappings
 	name = "solar wrappings"
