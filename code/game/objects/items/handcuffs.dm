@@ -322,6 +322,7 @@
 
 /obj/item/restraints/legcuffs/beartrap/armed
 	armed = TRUE
+	w_class = WEIGHT_CLASS_GIGANTIC
 
 /obj/item/restraints/legcuffs/beartrap/armed/camouflage
 	armed = TRUE
