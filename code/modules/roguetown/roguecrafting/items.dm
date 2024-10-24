@@ -18,25 +18,6 @@
 	verbage_simple = "tie"
 	verbage = "ties"
 
-/datum/crafting_recipe/roguetown/spoon
-	name = "spoon (x3)"
-	result = list(/obj/item/kitchen/spoon,
-				/obj/item/kitchen/spoon,
-				/obj/item/kitchen/spoon)
-	reqs = list(/obj/item/grown/log/tree/small = 1)
-
-/datum/crafting_recipe/roguetown/platter
-	name = "plater (x3)"
-	result = list(/obj/item/cooking/platter,
-				/obj/item/cooking/platter,
-				/obj/item/cooking/platter)
-	reqs = list(/obj/item/grown/log/tree/small = 1)
-
-/datum/crafting_recipe/roguetown/rollingpin
-	name = "rollingpin"
-	result = /obj/item/kitchen/rollingpin
-	reqs = list(/obj/item/grown/log/tree/small = 1)
-
 /datum/crafting_recipe/roguetown/unclothbelt
 	name = "untie cloth belt"
 	result = /obj/item/natural/cloth
