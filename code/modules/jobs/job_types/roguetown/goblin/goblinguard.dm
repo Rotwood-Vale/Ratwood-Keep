@@ -46,12 +46,11 @@
 
 /datum/outfit/job/roguetown/goblinguard/brute/pre_equip(mob/living/carbon/human/H)
 	. = ..()
-	head = /obj/item/clothing/head/roguetown/helmet/skullcap
-	armor = /obj/item/clothing/suit/roguetown/armor/plate/half/iron
+	head = /obj/item/clothing/head/roguetown/helmet/goblin
+	armor = /obj/item/clothing/suit/roguetown/armor/plate/half/iron/goblin
 	r_hand = /obj/item/rogueweapon/mace/spiked
 	l_hand = /obj/item/rogueweapon/shield/wood
 	H.verbs |= /mob/proc/haltyell
-	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/combat/maces, 3, TRUE)
@@ -79,8 +78,8 @@
 
 /datum/outfit/job/roguetown/goblinguard/outrider/pre_equip(mob/living/carbon/human/H)
 	. = ..()
-	head = /obj/item/clothing/head/roguetown/helmet/leather
-	armor = /obj/item/clothing/suit/roguetown/armor/leather/hide
+	head = /obj/item/clothing/head/roguetown/helmet/leather/goblin
+	armor = /obj/item/clothing/suit/roguetown/armor/leather/goblin
 	r_hand = /obj/item/rogueweapon/spear/stone
 	l_hand = /obj/item/rogueweapon/shield/wood
 	H.verbs |= /mob/proc/haltyell

@@ -15153,9 +15153,9 @@
 /area/rogue/indoors)
 "oaZ" = (
 /obj/structure/rack/rogue,
-/obj/item/clothing/head/roguetown/helmet/skullcap,
-/obj/item/clothing/head/roguetown/helmet/skullcap,
-/obj/item/clothing/head/roguetown/helmet/skullcap,
+/obj/item/clothing/head/roguetown/helmet/goblin,
+/obj/item/clothing/head/roguetown/helmet/goblin,
+/obj/item/clothing/head/roguetown/helmet/goblin,
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/goblin)
 "obt" = (
@@ -17312,9 +17312,9 @@
 /area/rogue/under/town/basement)
 "pUW" = (
 /obj/structure/rack/rogue,
-/obj/item/clothing/suit/roguetown/armor/plate/half/iron,
-/obj/item/clothing/suit/roguetown/armor/plate/half/iron,
-/obj/item/clothing/suit/roguetown/armor/plate/half/iron,
+/obj/item/clothing/suit/roguetown/armor/plate/half/iron/goblin,
+/obj/item/clothing/suit/roguetown/armor/plate/half/iron/goblin,
+/obj/item/clothing/suit/roguetown/armor/plate/half/iron/goblin,
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/goblin)
 "pWb" = (
@@ -19434,9 +19434,9 @@
 /area/rogue/indoors/town/shop)
 "rYQ" = (
 /obj/structure/rack/rogue,
-/obj/item/clothing/head/roguetown/helmet/leather,
-/obj/item/clothing/head/roguetown/helmet/leather,
-/obj/item/clothing/head/roguetown/helmet/leather,
+/obj/item/clothing/head/roguetown/helmet/leather/goblin,
+/obj/item/clothing/head/roguetown/helmet/leather/goblin,
+/obj/item/clothing/head/roguetown/helmet/leather/goblin,
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/goblin)
 "rZi" = (
@@ -25099,9 +25099,9 @@
 /area/rogue/under/town/basement)
 "xlA" = (
 /obj/structure/rack/rogue,
-/obj/item/clothing/suit/roguetown/armor/leather/hide,
-/obj/item/clothing/suit/roguetown/armor/leather/hide,
-/obj/item/clothing/suit/roguetown/armor/leather/hide,
+/obj/item/clothing/suit/roguetown/armor/leather/goblin,
+/obj/item/clothing/suit/roguetown/armor/leather/goblin,
+/obj/item/clothing/suit/roguetown/armor/leather/goblin,
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/goblin)
 "xmn" = (
