@@ -49,6 +49,13 @@
 	color_key_names = list("Tail", "Tip")
 	can_wag = TRUE
 
+/datum/sprite_accessory/tail/snuppy
+	name = "Rattleyote"
+	icon_state = "snuppy"
+	color_keys = 2
+	color_key_names = list("Tail", "Tip")
+	can_wag = TRUE
+
 /datum/sprite_accessory/tail/bats
 	name = "Bat (Short)"
 	icon_state = "bats"
