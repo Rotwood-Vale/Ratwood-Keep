@@ -219,3 +219,12 @@
 
 /obj/item/keyring/gravedigger
 	keys = list(/obj/item/roguekey/graveyard, /obj/item/roguekey/church)
+
+/obj/item/keyring/goblin
+	keys = list(/obj/item/roguekey/goblin)
+
+/obj/item/keyring/goblinguard
+	keys = list(/obj/item/roguekey/goblin, /obj/item/roguekey/goblinguard)
+
+/obj/item/keyring/goblinchief
+	keys = list(/obj/item/roguekey/goblin, /obj/item/roguekey/goblinguard, /obj/item/roguekey/goblinchief)
