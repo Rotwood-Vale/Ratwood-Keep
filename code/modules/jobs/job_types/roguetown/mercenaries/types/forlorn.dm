@@ -4,7 +4,7 @@
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = list(/datum/species/lupian, /datum/species/vulpkanin, /datum/species/tabaxi, /datum/species/anthromorph)
 	outfit = /datum/outfit/job/roguetown/mercenary/forlorn
-	maximum_possible_slots = 3
+	maximum_possible_slots = 10
 	min_pq = 4
 	torch = FALSE
 	cmode_music = 'sound/music/combat_forlorn.ogg'

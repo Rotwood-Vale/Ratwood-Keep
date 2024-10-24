@@ -4,7 +4,7 @@
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_VERY_SHUNNED_UP
 	outfit = /datum/outfit/job/roguetown/mercenary/sellsword
-	maximum_possible_slots = 5
+	maximum_possible_slots = 10
 	min_pq = 0
 	torch = FALSE
 	category_tags = list(CTAG_MERCENARY)

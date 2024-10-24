@@ -12,7 +12,7 @@
 		/datum/species/elf/dark,
 	)
 	outfit = /datum/outfit/job/roguetown/mercenary/desert_rider
-	maximum_possible_slots = 4
+	maximum_possible_slots = 10
 	min_pq = 2
 	torch = FALSE
 	cmode_music = 'sound/music/combat_desertrider.ogg'
