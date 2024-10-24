@@ -49,13 +49,13 @@
 	// Special session queue classes - aka a connector to the special_session_queue
 	var/list/special_session_queue
 
-	// Local cache of sorted shit
+	// Local cache of sorted stuff.
 	var/list/local_sorted_class_cache = list()
 
 	//Current class we lookin at and its boost power
 	var/datum/advclass/cur_picked_class
 	var/plus_power = 0
-	// If this is set to true we don't run some other menu updating shit in the off-chance we max out our stupid shit
+	// If this is set to true we don't run some other menu updating stuff in the off-chance we max out our moronic stuff.
 	var/special_selected = FALSE
 
 	// If this is set to true we display all the challenge classes
@@ -182,7 +182,7 @@
 		message_admins("CLASS_SELECT_HANDLER HAD PERSON WITH 0 CLASS SELECT OPTIONS. THIS IS REALLY BAD! RETURNED THEM TO LOBBY")
 
 // Something is calling to tell this datum a class it rolled is currently maxed out.
-// More shitcode!
+// More slopcode!
 /datum/class_select_handler/proc/rolled_class_is_full(datum/advclass/filled_class)
 	// Fun fact, if you don't remove the class that is maxed they just get new choices infinitely
 	// Also all the checks are done causing this to be called anyways
