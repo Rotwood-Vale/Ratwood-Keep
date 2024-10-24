@@ -1038,13 +1038,13 @@
 					break
 			if(proceed_with_offer)
 				playsound(loc,'sound/items/carvty.ogg', 50, TRUE)
-				qdel(W)
 				for(var/mob/player in GLOB.player_list)
 					if(player.mind.has_antag_datum(/datum/antagonist/bandit))
 						var/datum/antagonist/bandit/bandit_players = player.mind.has_antag_datum(/datum/antagonist/bandit)
 						bandit_players.favor += donatedamnt
 						bandit_players.totaldonated += donatedamnt
 						to_chat(player, ("<font color='yellow'>[user.name] donates [donatedamnt] to the shrine! You now have [bandit_players.favor] favor.</font>"))
+				qdel(W)
 
 			else
 				to_chat(user, span_warning("This item isn't a good offering."))
