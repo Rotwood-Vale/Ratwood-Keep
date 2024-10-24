@@ -11,7 +11,7 @@
 	allowed_ages = list(AGE_ADULT, AGE_MIDDLEAGED)
 	tutorial = "Having proven yourself loyal and capable, you are entrusted to defend the Royal Family and their Court, \
 				trained regularly in combat and siege warfare you stand a small chance of surviving the Duke's reign. \
-				It's an honor to die as part of His Highness's retinue, the Marshal reminds you every night."
+				It's an honor to die as part of His Highness' retinue, the Marshal reminds you every night."
 	display_order = JDO_CASTLEGUARD
 	whitelist_req = TRUE
 
