@@ -155,8 +155,7 @@
 			else
 				neck = /obj/item/clothing/neck/roguetown/gorget
 			H.mind.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE) 
-			H.change_stat("strength", 1)
-			H.change_stat("constitution", 1)//more stats due to rare role
+			H.change_stat("constitution", 1)
 			ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
 	H.change_stat("strength", 3)
 	H.change_stat("endurance", 2)
