@@ -8,16 +8,15 @@
 	allowed_sexes = list(MALE)
 	allowed_races = list(/datum/species/goblinp)
 	allowed_patrons = list(/datum/patron/inhumen/graggar)
-	tutorial = "You're the hand of the King. He's an individual of higher power than any mortal. At least, that's what you've been taught. \
-	Do what the king insists, while keeping order in the camp. Try not to venture out without the king's say-so. \
+	tutorial = "You're the hand of the Chief. He's an individual of higher power than any mortal. At least, that's what you've been taught. \
+	Do what the Chief insists, while keeping order in the fort. Try not to venture out without the Chief's say-so. \
 	'Tend' to captives when possible, instead of outright killing them."
 	display_order = JDO_GOBLINGUARD
 	outfit = /datum/outfit/job/roguetown/goblinguard
-	min_pq = 3
+	min_pq = 4
 	max_pq = null
 	advclass_cat_rolls = list(CTAG_GOBS = 20)
 	advjob_examine = TRUE
-	always_show_on_latechoices = TRUE
 
 /datum/outfit/job/roguetown/goblinguard/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -25,7 +24,8 @@
 	pants = /obj/item/clothing/under/roguetown/loincloth/brown
 	belt = /obj/item/storage/belt/rogue/leather
 	backl = /obj/item/storage/backpack/rogue/satchel
-	backpack_contents = list(/obj/item/rope/chain = 2)
+	backpack_contents = list(/obj/item/rope/chain = 2, /obj/item/keyring/goblinguard = 1)
+	ADD_TRAIT(H, TRAIT_GOBLINCAMP, TRAIT_GENERIC)
 
 /datum/job/roguetown/goblinguard/after_spawn(mob/living/L, mob/M, latejoin = TRUE)
 	..()
@@ -40,7 +40,7 @@
 	allowed_sexes = list(MALE)
 	allowed_races = list(/datum/species/goblinp)
 	outfit = /datum/outfit/job/roguetown/goblinguard/brute
-	tutorial = "You're one of the King's trusted guards, though many just know you to be a brute. \
+	tutorial = "You're one of the Chief's trusted guards, though many just know you to be a brute. \
 	Strong, perhaps too strong, for a Goblin. You've experience with a mace, heavy armor and unarmed combat."
 	category_tags = list(CTAG_GOBS)
 
@@ -72,7 +72,7 @@
 	allowed_races = list(/datum/species/goblinp)
 	outfit = /datum/outfit/job/roguetown/goblinguard/outrider
 	tutorial = "You're one of the few experienced with 'mounted' combat. \
-	Whether by spear or crossbow, you'll tame these lands in the name of the King. \
+	Whether by spear or crossbow, you'll tame these lands in the name of the Chief. \
 	You're trained in the use of 'medium' armor, unlike your brutish contemporaries."
 	category_tags = list(CTAG_GOBS)
 
@@ -106,7 +106,7 @@
 	allowed_races = list(/datum/species/goblinp)
 	outfit = /datum/outfit/job/roguetown/goblinguard/raider
 	tutorial = "Armour? A mace? Crossbows? Who needs any of that. You've an axe. \
-	A really big fucking axe. At the King's word, you destroy. Simple as. If you can even lift the damn thing."
+	A really big fucking axe. At the Chief's word, you destroy. Simple as. If you can even lift the damn thing."
 	category_tags = list(CTAG_GOBS)
 
 /datum/outfit/job/roguetown/goblinguard/raider/pre_equip(mob/living/carbon/human/H)

@@ -403,8 +403,8 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 
 //goblin
 
-/obj/effect/landmark/start/goblinking
-	name = "Goblin King"
+/obj/effect/landmark/start/goblinchief
+	name = "Goblin Chief"
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/goblincook

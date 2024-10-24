@@ -1,7 +1,6 @@
-
-/datum/job/roguetown/goblinking
-	title = "Goblin King"
-	flag = GOBLINKING
+/datum/job/roguetown/goblinchief
+	title = "Goblin Chief"
+	flag = GOBLINCHIEF
 	department_flag = GOBLIN
 	faction = "Station"
 	total_positions = 1
@@ -9,17 +8,16 @@
 	allowed_sexes = list(MALE)
 	allowed_races = list(/datum/species/goblinp)
 	allowed_patrons = list(/datum/patron/inhumen/graggar)
-	tutorial = "Lord above, it's good to be King. You don't have to do anything beyond lifting a finger for your subjects to move. \
-	Should they ignore you or disobey, you've your guards to handle them. Try to provide some manner of order to the camp and your subjects. \
-	Ideally, you should focus inwards, ignoring the town and others to the north, for your own sake, and develop what land you have in the mire."
+	tutorial = "You're the Chief of the local Goblin tribe, assuring Graggar's rule is spread to the surrounding lands. \
+	Currently, you're in hiding, beneath the town and, thankfully, bypassing the Mire's gate. \
+	Have your subjects trudge through the sewers, in the name of Gragger, robbing passerby."
 	whitelist_req = FALSE
-	outfit = /datum/outfit/job/roguetown/goblinking
-	display_order = JDO_GOBLINKING
-	min_pq = 4
+	outfit = /datum/outfit/job/roguetown/goblinchief
+	display_order = JDO_GOBLINCHIEF
+	min_pq = 6
 	max_pq = null
-	always_show_on_latechoices = TRUE
 
-/datum/outfit/job/roguetown/goblinking/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/job/roguetown/goblinchief/pre_equip(mob/living/carbon/human/H)
 	..()
 	H.verbs |= /mob/living/carbon/human/proc/goblinannouncement
 	//H.verbs |= /mob/living/carbon/human/proc/goblinopenslot
@@ -30,6 +28,9 @@
 	pants = /obj/item/clothing/under/roguetown/loincloth/brown
 	head = /obj/item/clothing/head/roguetown/crown/surplus
 	cloak = /obj/item/clothing/cloak/heartfelt
+	backl = /obj/item/storage/backpack/rogue/satchel
+	backpack_contents = list(/obj/item/keyring/goblinchief = 1)
+	ADD_TRAIT(H, TRAIT_GOBLINCAMP, TRAIT_GENERIC)
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/knives, 3, TRUE)
@@ -39,9 +40,10 @@
 		H.change_stat("endurance", 1)
 		H.change_stat("speed", -2)
 
+/*
 /mob/living/carbon/human/proc/goblinannouncement()
 	set name = "Announcement"
-	set category = "Goblin King"
+	set category = "Goblin Chief"
 	if(stat)
 		return
 	var/inputty = input("Make an announcement", "ROGUETOWN") as text|null
@@ -49,7 +51,8 @@
 		if(!istype(get_area(src), /area/rogue/under/town/goblin))
 			to_chat(src, span_warning("I need to do this from the encampment."))
 			return FALSE
-		priority_announce("[inputty]", title = "The Goblin King Squeals", sound = 'sound/misc/dun.ogg')
+		priority_announce("[inputty]", title = "The Goblin Chief Speaks", sound = 'sound/misc/dun.ogg')
+*/
 /*
 /mob/living/carbon/human/proc/goblinopenslot()
 	set name = "Open Slot"

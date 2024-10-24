@@ -8,13 +8,12 @@
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = list(/datum/species/goblinp)
 	allowed_patrons = list(/datum/patron/inhumen/graggar)
-	tutorial = "You're an accomplished smith in your own right, chosen by your lord, the King, to supply the camp with fresh material. \
+	tutorial = "You're an accomplished smith in your own right, chosen by your lord, the Chief, to supply the camp with fresh material. \
 	Try not to fail him, or the many subjects that you're to service by extension with your trade."
 	display_order = JDO_GOBLINSMITH
 	outfit = /datum/outfit/job/roguetown/goblinsmith
-	min_pq = 1
+	min_pq = 2
 	max_pq = null
-	always_show_on_latechoices = TRUE
 
 /datum/outfit/job/roguetown/goblinsmith/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -24,6 +23,8 @@
 	neck = /obj/item/storage/belt/rogue/pouch/coins/poor
 	cloak = /obj/item/clothing/cloak/apron/blacksmith
 	backl = /obj/item/storage/backpack/rogue/satchel
+	backpack_contents = list(/obj/item/keyring/goblin = 1)
+	ADD_TRAIT(H, TRAIT_GOBLINCAMP, TRAIT_GENERIC)
 
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)

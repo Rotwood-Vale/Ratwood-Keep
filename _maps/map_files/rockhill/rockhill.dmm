@@ -512,7 +512,8 @@
 "awH" = (
 /obj/structure/mineral_door/wood/donjon{
 	dir = 1;
-	lockid = "goblinkey"
+	lockid = "gobbo_guards";
+	locked = 1
 	},
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/goblin)
@@ -595,6 +596,10 @@
 /obj/item/book/rogue/law,
 /turf/open/floor/carpet/royalblack,
 /area/rogue/indoors/town/garrison)
+"aAN" = (
+/obj/structure/fluff/statue/tdummy,
+/turf/open/floor/rogue/cobble,
+/area/rogue/under/town/goblin)
 "aAV" = (
 /obj/machinery/light/rogue/wallfire{
 	pixel_y = 32
@@ -2012,6 +2017,10 @@
 /obj/structure/bed/rogue/inn/hay,
 /turf/open/floor/rogue/dirt,
 /area/rogue/outdoors/rtfield)
+"bUT" = (
+/obj/effect/landmark/start/goblinrabble,
+/turf/open/floor/rogue/naturalstone,
+/area/rogue/under/cavewet/bogcaves)
 "bUY" = (
 /obj/structure/chair/bench/church/mid{
 	dir = 4
@@ -4377,12 +4386,12 @@
 /turf/open/floor/rogue/blocks,
 /area/rogue/outdoors/town)
 "edg" = (
-/obj/structure/stairs/stone{
+/obj/structure/fluff/nest,
+/obj/effect/landmark/start/adventurerlate{
 	dir = 1
 	},
-/obj/structure/stairs/stone,
-/turf/open/floor/rogue/naturalstone,
-/area/rogue/under/cavewet/bogcaves)
+/turf/open/floor/rogue/twig,
+/area/rogue/outdoors/bog)
 "eds" = (
 /obj/structure/stairs/fancy/l{
 	dir = 1
@@ -4494,7 +4503,7 @@
 /obj/item/rogueore/gold,
 /obj/structure/closet/crate/chest/gold{
 	locked = 1;
-	lockid = "kinggoblin"
+	lockid = "gobbo_chief"
 	},
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/goblin)
@@ -5572,7 +5581,8 @@
 /area/rogue/indoors/town/tavern)
 "fbd" = (
 /obj/structure/mineral_door/wood/donjon{
-	lockid = "goblinkey"
+	lockid = "gobbo_guards";
+	locked = 1
 	},
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/goblin)
@@ -8261,7 +8271,6 @@
 /area/rogue/outdoors/rtfield)
 "hDz" = (
 /obj/structure/fluff/nest,
-/obj/effect/landmark/start/goblinrabble,
 /turf/open/floor/rogue/twig,
 /area/rogue/outdoors/bog)
 "hDG" = (
@@ -8534,6 +8543,12 @@
 /obj/structure/flora/roguegrass/bush/wall/tall,
 /turf/open/floor/rogue/grass,
 /area/rogue/outdoors/town)
+"hOn" = (
+/obj/effect/landmark/start/goblinrabble{
+	dir = 8
+	},
+/turf/open/floor/rogue/naturalstone,
+/area/rogue/under/cavewet/bogcaves)
 "hOA" = (
 /obj/structure/chair/bench/church/r,
 /obj/structure/chair/bench/church/r,
@@ -9556,10 +9571,6 @@
 	},
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/basement)
-"iPa" = (
-/obj/machinery/light/rogue/firebowl/standing/blue,
-/turf/open/floor/rogue/naturalstone,
-/area/rogue/outdoors/bog)
 "iPe" = (
 /obj/structure/table/wood{
 	dir = 10;
@@ -11717,7 +11728,11 @@
 /turf/open/floor/rogue/grass,
 /area/rogue/outdoors/rtfield)
 "kVJ" = (
-/turf/closed,
+/obj/structure/fluff/traveltile/goblin{
+	aportalgoesto = "goblinin";
+	aportalid = "goblinexit"
+	},
+/turf/open/floor/rogue/dirt,
 /area/rogue/under/cave)
 "kWa" = (
 /turf/open/floor/rogue/cobble,
@@ -12569,6 +12584,10 @@
 /obj/structure/bars/cemetery,
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/outdoors/town/roofs)
+"lKC" = (
+/obj/effect/landmark/start/goblinchief,
+/turf/open/floor/rogue/cobble,
+/area/rogue/under/town/goblin)
 "lLa" = (
 /turf/open/floor/rogue/rooftop{
 	dir = 8
@@ -14244,10 +14263,6 @@
 	},
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors)
-"npK" = (
-/obj/effect/landmark/start/goblinking,
-/turf/open/floor/rogue/cobble,
-/area/rogue/under/town/goblin)
 "npT" = (
 /obj/structure/closet/crate/roguecloset,
 /obj/item/reagent_containers/food/snacks/butter,
@@ -14600,47 +14615,6 @@
 /obj/item/clothing/under/roguetown/trou/leather,
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/town/basement)
-"nDq" = (
-/obj/item/roguekey/custom{
-	name = "goblin key";
-	lockid = "goblinkey"
-	},
-/obj/item/roguekey/custom{
-	name = "goblin key";
-	lockid = "goblinkey"
-	},
-/obj/item/roguekey/custom{
-	name = "goblin key";
-	lockid = "goblinkey"
-	},
-/obj/item/roguekey/custom{
-	name = "goblin key";
-	lockid = "goblinkey"
-	},
-/obj/item/roguekey/custom{
-	name = "goblin key";
-	lockid = "goblinkey"
-	},
-/obj/item/roguekey/custom{
-	name = "goblin key";
-	lockid = "goblinkey"
-	},
-/obj/item/roguekey/custom{
-	name = "goblin key";
-	lockid = "goblinkey"
-	},
-/obj/item/roguekey/custom{
-	name = "goblin key";
-	lockid = "goblinkey"
-	},
-/obj/structure/table/wood{
-	icon_state = "tablewood1"
-	},
-/obj/machinery/light/rogue/torchholder{
-	pixel_y = 26
-	},
-/turf/open/floor/rogue/cobble,
-/area/rogue/under/town/goblin)
 "nDs" = (
 /obj/structure/table/wood{
 	dir = 8;
@@ -16911,12 +16885,6 @@
 	pixel_y = 26
 	},
 /obj/structure/closet/crate/drawer,
-/obj/item/roguekey/lord{
-	name = "King Goblin key";
-	desc = "The King Goblin's key.";
-	lockid = "kinggoblin"
-	},
-/obj/item/keyring,
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/goblin)
 "pBo" = (
@@ -17763,9 +17731,9 @@
 /area/rogue/indoors/town/magician)
 "qsS" = (
 /obj/structure/mineral_door/wood/donjon{
-	locked = 1;
 	armor = list(blunt=90, slash=90, stab=90, bullet=0, laser=0, energy=100, bomb=10, bio=100, rad=100, fire=50, acid=50);
-	lockid = "kinggoblin"
+	lockid = "gobbo_chief";
+	locked = 1
 	},
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/goblin)
@@ -18867,7 +18835,8 @@
 /area/rogue/indoors/town/manor)
 "rui" = (
 /obj/structure/mineral_door/wood/donjon/stone{
-	lockid = "goblinkey"
+	lockid = "gobbo";
+	locked = 1
 	},
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/goblin)
@@ -19163,10 +19132,6 @@
 /obj/structure/roguemachine/atm,
 /turf/open/floor/rogue/blocks,
 /area/rogue/outdoors/town)
-"rKl" = (
-/obj/structure/stairs/stone,
-/turf/open/floor/rogue/naturalstone,
-/area/rogue/outdoors/bog)
 "rKW" = (
 /obj/structure/table/wood{
 	dir = 1;
@@ -19777,7 +19742,7 @@
 /obj/structure/mineral_door/wood/donjon{
 	dir = 1;
 	locked = 1;
-	lockid = "kinggoblin"
+	lockid = "gobbo_chief"
 	},
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/goblin)
@@ -21448,44 +21413,12 @@
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/goblin)
 "tRE" = (
-/obj/structure/closet/crate/drawer,
-/obj/item/roguekey/custom{
-	name = "goblin key";
-	lockid = "goblinkey"
+/obj/structure/fluff/traveltile/goblin{
+	aportalgoesto = "goblinexit";
+	aportalid = "goblinin"
 	},
-/obj/item/roguekey/custom{
-	name = "goblin key";
-	lockid = "goblinkey"
-	},
-/obj/item/roguekey/custom{
-	name = "goblin key";
-	lockid = "goblinkey"
-	},
-/obj/item/roguekey/custom{
-	name = "goblin key";
-	lockid = "goblinkey"
-	},
-/obj/item/roguekey/custom{
-	name = "goblin key";
-	lockid = "goblinkey"
-	},
-/obj/item/roguekey/custom{
-	name = "goblin key";
-	lockid = "goblinkey"
-	},
-/obj/item/roguekey/custom{
-	name = "goblin key";
-	lockid = "goblinkey"
-	},
-/obj/item/roguekey/custom{
-	name = "goblin key";
-	lockid = "goblinkey"
-	},
-/obj/machinery/light/rogue/torchholder{
-	pixel_y = 26
-	},
-/turf/open/floor/rogue/cobble,
-/area/rogue/under/town/goblin)
+/turf/open/floor/rogue/naturalstone,
+/area/rogue/under/cavewet/bogcaves)
 "tRS" = (
 /obj/structure/closet/crate/drawer,
 /obj/item/book/rogue/playerbook,
@@ -21737,9 +21670,6 @@
 /obj/item/clothing/neck/roguetown/psicross/pestra,
 /turf/open/floor/rogue/herringbone,
 /area/rogue/indoors/town/church)
-"ucL" = (
-/turf/closed/mineral/rogue/bedrock,
-/area/rogue/outdoors/bog)
 "ucS" = (
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue/indoors/town)
@@ -23289,8 +23219,13 @@
 	},
 /area/rogue/outdoors/bog)
 "vCK" = (
-/turf/closed/mineral/rogue,
-/area/rogue/outdoors/bog)
+/obj/structure/mineral_door/wood/donjon{
+	dir = 1;
+	lockid = "gobbo";
+	locked = 1
+	},
+/turf/open/floor/rogue/cobble,
+/area/rogue/under/town/goblin)
 "vCO" = (
 /obj/structure/table/wood,
 /obj/structure/table/wood,
@@ -24203,7 +24138,8 @@
 "wuU" = (
 /obj/structure/mineral_door/wood/donjon{
 	dir = 4;
-	lockid = "goblinkey"
+	lockid = "gobbo";
+	locked = 1
 	},
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/goblin)
@@ -24815,7 +24751,7 @@
 "wYy" = (
 /obj/structure/mineral_door/wood/deadbolt{
 	dir = 8;
-	lockid = "goblinkey"
+	lockid = "gobbo"
 	},
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/goblin)
@@ -51461,7 +51397,7 @@ hJI
 qGg
 pRu
 qGg
-tRE
+pRu
 xAw
 xAw
 sDw
@@ -51863,7 +51799,7 @@ xAw
 qGg
 xAw
 qGg
-xAw
+aAN
 xAw
 xAw
 xAw
@@ -53471,7 +53407,7 @@ xAw
 qGg
 xAw
 qGg
-nDq
+pRu
 xAw
 hDm
 sDw
@@ -58702,7 +58638,7 @@ xAw
 xAw
 xAw
 xAw
-awH
+vCK
 xAw
 xAw
 xAw
@@ -61116,7 +61052,7 @@ xAw
 xAw
 jKg
 jKg
-vhY
+jOv
 xAw
 xAw
 xAw
@@ -63115,7 +63051,7 @@ kXQ
 kXQ
 fyc
 fyc
-dVO
+bUT
 xHV
 dVO
 dVO
@@ -63517,7 +63453,7 @@ kXQ
 fyc
 fyc
 fyc
-dVO
+bUT
 dVO
 dVO
 dVO
@@ -64322,7 +64258,7 @@ fyc
 fyc
 ilt
 dVO
-dVO
+hOn
 dVO
 xHV
 fyc
@@ -64723,9 +64659,9 @@ kXQ
 fyc
 fyc
 fyc
-dVO
-dVO
-dVO
+hOn
+hOn
+hOn
 fyc
 fyc
 fyc
@@ -162842,7 +162778,7 @@ whb
 whb
 qGg
 pXl
-npK
+lKC
 xAw
 xAw
 tQv
@@ -165621,11 +165557,11 @@ whb
 whb
 whb
 whb
-whb
-whb
-whb
-whb
-whb
+fyc
+fyc
+fyc
+fyc
+fyc
 whb
 whb
 whb
@@ -166023,7 +165959,7 @@ whb
 whb
 whb
 whb
-whb
+fyc
 dVO
 dVO
 pEm
@@ -166425,7 +166361,7 @@ whb
 whb
 whb
 whb
-whb
+fyc
 dVO
 dVO
 ilt
@@ -166827,7 +166763,7 @@ whb
 whb
 whb
 whb
-whb
+fyc
 dVO
 dVO
 ilt
@@ -167229,7 +167165,7 @@ whb
 whb
 whb
 whb
-whb
+fyc
 dVO
 dVO
 dVO
@@ -167631,12 +167567,12 @@ whb
 whb
 whb
 whb
-whb
+fyc
 dVO
 dVO
 dVO
-whb
-whb
+fyc
+fyc
 whb
 whb
 whb
@@ -168032,12 +167968,13 @@ whb
 whb
 whb
 whb
-whb
-whb
+fyc
+fyc
 dVO
 dVO
 dVO
 dVO
+fyc
 whb
 whb
 whb
@@ -168048,10 +167985,9 @@ whb
 whb
 whb
 whb
-whb
-whb
-whb
-whb
+fyc
+fyc
+fyc
 whb
 whb
 whb
@@ -168434,12 +168370,13 @@ whb
 whb
 whb
 whb
-whb
+fyc
 dVO
 dVO
 dVO
 dVO
 dVO
+fyc
 whb
 whb
 whb
@@ -168449,9 +168386,8 @@ whb
 whb
 whb
 whb
-whb
-whb
-whb
+fyc
+fyc
 dVO
 fyc
 fyc
@@ -168834,13 +168770,15 @@ whb
 whb
 whb
 whb
-whb
-whb
-whb
+fyc
+fyc
+fyc
 dVO
 dVO
 dVO
 dVO
+fyc
+fyc
 whb
 whb
 whb
@@ -168848,14 +168786,12 @@ whb
 whb
 whb
 whb
-whb
-whb
-whb
-whb
-whb
+fyc
+fyc
+fyc
 dVO
 dVO
-edg
+tRE
 fyc
 whb
 whb
@@ -169236,28 +169172,28 @@ whb
 whb
 whb
 whb
-whb
+fyc
 pEm
 dVO
 dVO
 dVO
 dVO
 dVO
-whb
-whb
-whb
-whb
-whb
-whb
-whb
-whb
-whb
-whb
+fyc
+fyc
+fyc
+fyc
+fyc
+fyc
+fyc
+fyc
+fyc
+fyc
 pEm
 dVO
 dVO
 dVO
-edg
+tRE
 fyc
 whb
 whb
@@ -169638,8 +169574,8 @@ whb
 whb
 whb
 whb
-whb
-whb
+fyc
+fyc
 dVO
 dVO
 dVO
@@ -170041,7 +169977,7 @@ whb
 whb
 whb
 whb
-whb
+fyc
 dVO
 dVO
 dVO
@@ -170060,8 +169996,8 @@ dVO
 dVO
 dVO
 dVO
-whb
-whb
+fyc
+fyc
 whb
 whb
 whb
@@ -170443,11 +170379,11 @@ whb
 whb
 whb
 whb
-whb
-whb
-whb
-whb
-whb
+fyc
+fyc
+fyc
+fyc
+fyc
 dVO
 dVO
 dVO
@@ -170459,10 +170395,10 @@ dVO
 dVO
 dVO
 dVO
-whb
-whb
-whb
-whb
+fyc
+fyc
+fyc
+fyc
 whb
 whb
 whb
@@ -170849,19 +170785,19 @@ whb
 whb
 whb
 whb
-whb
-whb
-whb
-whb
+fyc
+fyc
+fyc
+fyc
 pEm
 dVO
 dVO
 dVO
-whb
-whb
-whb
-whb
-whb
+fyc
+fyc
+fyc
+fyc
+fyc
 whb
 whb
 whb
@@ -171254,12 +171190,12 @@ whb
 whb
 whb
 whb
-whb
-whb
-whb
-whb
-whb
-whb
+fyc
+fyc
+fyc
+fyc
+fyc
+fyc
 whb
 whb
 whb
@@ -212359,7 +212295,7 @@ rSC
 rSC
 vRu
 vRu
-kVJ
+vRu
 vRu
 vRu
 vRu
@@ -222003,8 +221939,8 @@ vRu
 vRu
 vRu
 vRu
-nIH
-nIH
+rSC
+rSC
 vRu
 bMj
 vFD
@@ -222401,12 +222337,12 @@ vRu
 vRu
 vRu
 vRu
-vRu
-vRu
-vRu
-vRu
-rSC
-rSC
+sYw
+sYw
+sYw
+sYw
+nIH
+nIH
 vRu
 pWb
 vuH
@@ -222802,11 +222738,11 @@ vRu
 vRu
 vRu
 vRu
-vRu
-vRu
-vRu
-vRu
-vRu
+sYw
+sYw
+cdX
+cdX
+sYw
 rSC
 rSC
 vRu
@@ -223204,11 +223140,11 @@ vRu
 vRu
 vRu
 vRu
-vRu
-vRu
-vRu
-vRu
-vRu
+sYw
+kVJ
+cdX
+cdX
+cdX
 rSC
 rSC
 vuH
@@ -223606,11 +223542,11 @@ vRu
 vRu
 vRu
 vRu
-vRu
-vRu
-vRu
-vRu
-vRu
+sYw
+kVJ
+cdX
+cdX
+cdX
 rSC
 rSC
 vuH
@@ -224008,11 +223944,11 @@ vRu
 vRu
 vRu
 vRu
-vRu
-vRu
-vRu
-vRu
-vRu
+sYw
+sYw
+cdX
+cdX
+sYw
 rSC
 rSC
 vRu
@@ -224411,10 +224347,10 @@ vRu
 vRu
 vRu
 vRu
-vRu
-vRu
-vRu
-vRu
+sYw
+sYw
+sYw
+sYw
 nIH
 nIH
 vRu
@@ -269763,7 +269699,7 @@ kDc
 kDc
 kDc
 kDc
-kDc
+wLx
 wLx
 wLx
 wLx
@@ -270159,14 +270095,14 @@ kDc
 kDc
 kDc
 kDc
-vCK
-vCK
-vCK
-vCK
-vCK
-vCK
-vCK
-vCK
+kDc
+kDc
+kDc
+kDc
+kDc
+kDc
+wLx
+wLx
 qvG
 vGA
 vGA
@@ -270560,16 +270496,16 @@ kDc
 kDc
 kDc
 kDc
-vCK
-vCK
-ucL
-ucL
-ucL
-ucL
-ucL
-ucL
-vCK
-vCK
+kDc
+kDc
+kDc
+kDc
+kDc
+kDc
+kDc
+wLx
+wLx
+wLx
 sYx
 sYx
 odi
@@ -270962,17 +270898,17 @@ wLx
 kDc
 kDc
 kDc
-vCK
-ucL
-ucL
-iPa
-hmJ
-hmJ
-hmJ
-ucL
-ucL
-vCK
-vCK
+kDc
+kDc
+kDc
+kDc
+kDc
+kDc
+kDc
+wLx
+wLx
+wLx
+wLx
 sYx
 sYx
 odi
@@ -271364,17 +271300,17 @@ wLx
 wLx
 kDc
 kDc
-vCK
-ucL
-uuE
-rKl
-hmJ
-hmJ
-hmJ
-hmJ
-ucL
-ucL
-vCK
+kDc
+kDc
+kDc
+kDc
+kDc
+kDc
+wLx
+wLx
+wLx
+wLx
+wLx
 sYx
 sYx
 odi
@@ -271766,23 +271702,23 @@ wLx
 wLx
 wLx
 kDc
-vCK
-ucL
-uuE
-rKl
-hmJ
-hmJ
-hmJ
-hmJ
-hmJ
-ucL
-ucL
+kDc
+kDc
+kDc
+kDc
+kDc
+wLx
+wLx
+wLx
+wLx
+wLx
+wLx
 sYx
 odi
 nPf
 hDz
 sKX
-hDz
+edg
 sKX
 aDC
 sYx
@@ -272168,17 +272104,17 @@ wLx
 wLx
 wLx
 kDc
-vCK
-ucL
-ucL
-iPa
-hmJ
-hmJ
-hmJ
-hmJ
-hmJ
-hmJ
-ucL
+kDc
+kDc
+kDc
+wLx
+wLx
+wLx
+wLx
+wLx
+wLx
+wLx
+wLx
 odi
 odi
 sKX
@@ -272570,21 +272506,21 @@ wLx
 wLx
 wLx
 wLx
-vCK
-vCK
-ucL
-ucL
-ucL
-ucL
-ucL
-hmJ
-hmJ
-hmJ
+kDc
+kDc
+kDc
+wLx
+wLx
+wLx
+wLx
+wLx
+wLx
+wLx
 odi
 odi
 odi
 sYx
-hDz
+edg
 sKX
 xCZ
 sKX
@@ -272973,14 +272909,14 @@ wLx
 wLx
 wLx
 wLx
-vCK
-vCK
-vCK
-vCK
-vCK
-ucL
-ucL
-hmJ
+wLx
+wLx
+wLx
+wLx
+wLx
+wLx
+wLx
+wLx
 odi
 odi
 sYx
