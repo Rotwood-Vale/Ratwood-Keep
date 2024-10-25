@@ -200,7 +200,7 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "E
 	var/num_bandits = 0
 	if(num_players() >= 8)
 		// 1 bandit per 8 players, 0 if less than 8, no maximum
-    	num_bandits = round(num_players() / 8)
+		num_bandits = round(num_players() / 8)
 		banditgoal += (num_bandits * rand(200,400))
 
 	if(num_bandits)
