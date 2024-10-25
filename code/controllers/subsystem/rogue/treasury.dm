@@ -103,7 +103,7 @@ SUBSYSTEM_DEF(treasury)
 /datum/controller/subsystem/treasury/proc/update_lord_money()
 	for(var/mob/living/carbon/human/X in GLOB.human_list)
 		switch(X.job)
-			if("Lord")
+			if("Duke")
 				bank_accounts[X] = SStreasury.treasury_value
 				return
 
