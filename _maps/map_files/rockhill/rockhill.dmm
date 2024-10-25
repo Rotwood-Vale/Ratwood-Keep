@@ -3530,7 +3530,8 @@
 /area/rogue/indoors/town/church)
 "duA" = (
 /obj/structure/roguemachine/drugmachine{
-	pixel_y = -32
+	pixel_y = -32;
+	density = 0
 	},
 /turf/open/floor/rogue/blocks/stonered/tiny,
 /area/rogue/indoors/town/tavern)
@@ -8717,7 +8718,8 @@
 /area/rogue/indoors/town/manor)
 "iut" = (
 /obj/structure/roguemachine/drugmachine{
-	pixel_y = 32
+	pixel_y = 32;
+	density = 0
 	},
 /turf/open/floor/rogue/blocks,
 /area/rogue/outdoors/town)
@@ -9274,7 +9276,8 @@
 /area/rogue/indoors/town/dwarfin)
 "iWZ" = (
 /obj/structure/roguemachine/drugmachine{
-	pixel_y = 32
+	pixel_y = 32;
+	density = 0
 	},
 /turf/open/floor/rogue/cobble,
 /area/rogue/outdoors/town)
@@ -314199,7 +314202,7 @@ jvj
 eBN
 eBN
 eBN
-iuo
+eBN
 eBN
 eBN
 jvj
