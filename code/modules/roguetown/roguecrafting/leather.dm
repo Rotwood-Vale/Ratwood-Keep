@@ -11,6 +11,36 @@
 	result = /obj/item/clothing/cloak/raincloak/brown
 	reqs = list(/obj/item/natural/hide/cured = 2)
 
+/datum/crafting_recipe/roguetown/hunting/gloves
+	name = "leather gloves"
+	result = list(/obj/item/clothing/gloves/roguetown/leather)
+	reqs = list(/obj/item/natural/hide/cured = 1)
+
+/datum/crafting_recipe/roguetown/hunting/bracers
+	name = "leather bracers"
+	result = list(/obj/item/clothing/wrists/roguetown/bracers/leather)
+	reqs = list(/obj/item/natural/hide/cured = 1)
+
+/datum/crafting_recipe/roguetown/hunting/pants
+	name = "leather trousers"
+	result = list(/obj/item/clothing/under/roguetown/trou/leather)
+	reqs = list(/obj/item/natural/hide/cured = 2)
+
+/datum/crafting_recipe/roguetown/hunting/boots
+	name = "leather boots"
+	result = /obj/item/clothing/shoes/roguetown/armor/leather
+	reqs = list(/obj/item/natural/hide/cured = 1)
+
+/datum/crafting_recipe/roguetown/hunting/helmet
+	name = "leather helmet"
+	result = /obj/item/clothing/head/roguetown/helmet/leather
+	reqs = list(/obj/item/natural/hide/cured = 1)
+
+/datum/crafting_recipe/roguetown/hunting/armor
+	name = "leather armor"
+	result = /obj/item/clothing/suit/roguetown/armor/leather
+	reqs = list(/obj/item/natural/hide/cured = 2)
+
 /datum/crafting_recipe/roguetown/hunting/pouch
 	name = "leather pouch"
 	result = list(/obj/item/storage/belt/rogue/pouch)

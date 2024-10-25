@@ -3269,7 +3269,6 @@
 #include "code\modules\roguetown\roguecrafting\sewing.dm"
 #include "code\modules\roguetown\roguecrafting\structure.dm"
 #include "code\modules\roguetown\roguecrafting\turfs.dm"
-#include "code\modules\roguetown\roguecrafting\weaving.dm"
 #include "code\modules\roguetown\roguejobs\alchemist\container.dm"
 #include "code\modules\roguetown\roguejobs\alchemist\reagents.dm"
 #include "code\modules\roguetown\roguejobs\alchemist\recipe\reagents.dm"
