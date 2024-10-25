@@ -201,7 +201,11 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "E
 	if(num_players() >= 8)
 		// 1 bandit per 8 players, 0 if less than 8, no maximum
 		num_bandits = round(num_players() / 8)
+		var/datum/job/bandit_job = SSjob.GetJob("Bandit")
+		bandit_job.total_positions = num_bandits
+		bandit_job.spawn_positions = num_bandits
 		banditgoal += (num_bandits * rand(200,400))
+
 
 	if(num_bandits)
 		//antag_candidates = get_players_for_role(ROLE_BANDIT, pre_do=TRUE) //pre_do checks for their preferences since they don't have a job yet
