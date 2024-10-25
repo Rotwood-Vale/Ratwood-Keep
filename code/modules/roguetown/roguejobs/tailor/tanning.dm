@@ -1,6 +1,6 @@
 /obj/machinery/tanningrack
 	name = "drying rack"
-	desc = "A tanning rack for the preparation and curring of hides into leather, it can be moved with the help of a hammer."
+	desc = "A tanning rack for the preparation and curring of hides into leather, it can be moved with the help of a wooden stake."
 	icon = 'icons/roguetown/misc/structure.dmi'
 	icon_state = "dryrack"
 	var/obj/item/natural/hide/hide
@@ -53,23 +53,24 @@
 			for(var/i = 0; i < pieces_to_spawn; i++)
 				if(prob(skill_level))
 					new /obj/item/natural/cured/masterwork(get_turf(user))
-					to_chat(user, span_warning("Praised be Malum!"))
+					sound_played = TRUE
 					if(!sound_played)
+						to_chat(user, span_warning("Praised be Malum!"))
 						playsound(src,pick('sound/items/gem.ogg'), 100, FALSE)
 				else
 					new /obj/item/natural/hide/cured(get_turf(user))
 			return
 		else
-			to_chat(user, span_warning("I need to anchor this down with a hammer before I can work this hide."))
+			to_chat(user, span_warning("I need to anchor this down with a wooden stake before I can work this hide."))
 			return
-	if(istype(I, /obj/item/rogueweapon/hammer))
+	if(istype(I, /obj/item/grown/log/tree/stake))
 		if(anchored)
 			anchored = FALSE
 			to_chat(user, span_warning("The [src] can now be moved."))
 		else
 			anchored = TRUE
 			to_chat(user, span_warning("You anchor [src]."))
-		playsound(src,pick('sound/items/bsmith1.ogg','sound/items/bsmith2.ogg','sound/items/bsmith3.ogg','sound/items/bsmith4.ogg'), 100, FALSE)
+		playsound(src,pick('sound/foley/woodclimb.ogg'), 100, TRUE)
 		return
 	..()
 

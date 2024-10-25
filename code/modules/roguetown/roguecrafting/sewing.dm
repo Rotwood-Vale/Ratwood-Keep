@@ -466,7 +466,15 @@
 /datum/crafting_recipe/roguetown/sewing/leather/gloves/masterwork
 	name = "masterwork leather gloves"
 	result = /obj/item/clothing/gloves/roguetown/leather/masterwork
-	reqs = list(/obj/item/clothing/gloves/roguetown/leather/advanced = 1,
+	reqs = list(/obj/item/clothing/gloves/roguetown/leather = 1,
+				/obj/item/natural/cured/masterwork = 1,
+				/obj/item/natural/fibers = 1)
+	craftdiff = 5
+
+/datum/crafting_recipe/roguetown/sewing/leather/bracers/masterwork
+	name = "masterwork leather bracers"
+	result = /obj/item/clothing/wrists/roguetown/bracers/leather/masterwork
+	reqs = list(/obj/item/clothing/wrists/roguetown/bracers/leather = 1,
 				/obj/item/natural/cured/masterwork = 1,
 				/obj/item/natural/fibers = 1)
 	craftdiff = 5

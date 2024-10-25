@@ -17,17 +17,15 @@
 /obj/item/natural/bundle/curred_hide
 	name = "bundle of cured leather"
 	desc = "A bunch of cured leather pieces bundled together."
-	icon_state = "clothroll1"
-	possible_item_intents = list(/datum/intent/use)
+	icon_state = "leatherroll1"
 	maxamount = 10
 	spitoutmouth = FALSE
 	stacktype = /obj/item/natural/hide/cured
 	stackname = "cured leather"
-	icon1 = "clothroll1"
+	icon1 = "leatherroll1"
 	icon1step = 5
-	icon2 = "clothroll2"
+	icon2 = "leatherroll2"
 	icon2step = 10
-	color = "#7a4c45"
 
 /obj/item/natural/cured/masterwork //This has to be a different typepath so recipes dont use this type of leather
 	name = "masterwork cured leather"
@@ -37,17 +35,15 @@
 	w_class = WEIGHT_CLASS_SMALL
 	drop_sound = 'sound/foley/dropsound/cloth_drop.ogg'
 	sellprice = 20
-	bundletype = null
-	filters = filter(type="drop_shadow", x=0, y=0, size=0.5, offset=2, color=rgb(255, 215, 0))
+	bundletype = /obj/item/natural/bundle/curred_hide/masterwork
+	filters = filter(type="drop_shadow", x=0, y=0, size=0.5, offset=1, color=rgb(218, 165, 32))
 
 /obj/item/natural/bundle/curred_hide/masterwork
 	name = "bundle of masterwork leather"
 	desc = "A bunch of masterwork leather pieces bundled together."
-	possible_item_intents = list(/datum/intent/use)
-	maxamount = 10
 	stacktype = /obj/item/natural/cured/masterwork
 	stackname = "masterwork cured leather"
-	filters = filter(type="drop_shadow", x=0, y=0, size=0.5, offset=2, color=rgb(255, 215, 0))
+	filters = filter(type="drop_shadow", x=0, y=0, size=0.5, offset=1, color=rgb(218, 165, 32))
 
 /obj/item/natural/fur
 	name = "fur"
