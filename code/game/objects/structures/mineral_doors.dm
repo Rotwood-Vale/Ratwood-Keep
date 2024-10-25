@@ -977,10 +977,6 @@
 	resident_advclass = /datum/advclass/farmer
 	lockid = "towner_farmer"
 
-/obj/structure/mineral_door/wood/towner/seamstress
-	resident_advclass = /datum/advclass/seamstress
-	lockid = "towner_seamstress"
-
 /obj/structure/mineral_door/wood/towner/towndoctor
 	resident_advclass = /datum/advclass/towndoctor
 	lockid = "towner_towndoctor"
@@ -992,3 +988,15 @@
 /obj/structure/mineral_door/wood/towner/fisher
 	resident_advclass = /datum/advclass/fisher
 	lockid = "towner_fisher"
+
+/obj/structure/mineral_door/wood/deadbolt/shutter
+	name = "serving hatch"
+	desc = "Can be locked from the inside."
+	icon_state = "serving"
+	base_state = "serving"
+	max_integrity = 250
+	over_state = "servingopen"
+	openSound = 'modular/Neu_Food/sound/blindsopen.ogg'
+	closeSound = 'modular/Neu_Food/sound/blindsclose.ogg'
+	dir = NORTH
+	locked = TRUE

@@ -274,18 +274,18 @@
 	icon_state = "light_brigandine"
 	blocksound = SOFTHIT
 	body_parts_covered = CHEST|GROIN|VITALS
-	armor = list("blunt" = 60, "slash" = 70, "stab" = 70, "bullet" = 70, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
-	max_integrity = 350
+	armor = list("blunt" = 60, "slash" = 70, "stab" = 70, "bullet" = 60, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
 	smeltresult = /obj/item/ingot/iron
 	equip_delay_self = 40
 	armor_class = ARMOR_CLASS_MEDIUM
 	w_class = WEIGHT_CLASS_BULKY
 	clothing_flags = CANT_SLEEP_IN
+	resistance_flags = FIRE_PROOF
 
 /obj/item/clothing/suit/roguetown/armor/armordress
 	slot_flags = ITEM_SLOT_ARMOR
 	name = "padded dress"
-	desc = "This dress has been padded with leather for extra protection."
+	desc = "This dress has been padded for extra protection."
 	body_parts_covered = CHEST|GROIN|LEGS|ARMS|VITALS
 	icon_state = "armordress"
 	armor = list("blunt" = 60, "slash" = 40, "stab" = 50, "bullet" = 10, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
@@ -300,7 +300,6 @@
 	r_sleeve_status = SLEEVE_NORMAL
 	l_sleeve_status = SLEEVE_NORMAL
 	armor_class = ARMOR_CLASS_LIGHT
-	color = CLOTHING_DARK_GREEN
 
 /obj/item/clothing/suit/roguetown/armor/armordress/alt
 	icon_state = "armordressalt"

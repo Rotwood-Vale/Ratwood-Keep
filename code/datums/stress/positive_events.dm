@@ -3,6 +3,16 @@
 	stressadd = -2
 	desc = span_green("The Gods smiles upon me.")
 
+/datum/stressevent/cumok
+	timer = 5 MINUTES
+	stressadd = -1
+	desc = "<span class='green'>I came.</span>"
+
+/datum/stressevent/lovezizo
+	timer = 99999 MINUTES
+	stressadd = -666 // :)
+	desc = "<span class='green'>ZIZOZIZOZIZO</span>"
+
 /datum/stressevent/viewsinpunish
 	timer = 5 MINUTES
 	stressadd = -2
@@ -126,4 +136,9 @@
 /datum/stressevent/perfume
 	stressadd = -1
 	desc = span_green("A soothing fragrance envelops me.")
+	timer = 10 MINUTES
+
+/datum/stressevent/guillotinekill
+	stressadd = -5
+	desc = span_green("A nice modern entertainmant.")
 	timer = 10 MINUTES

@@ -26,6 +26,8 @@
 	var/chargedloop = null
 	var/charging_slowdown = 0
 	var/obj/inhand_requirement = null
+
+	/// This will be the spells image and it is located in icons/mob/actions/roguespells.dmi
 	var/overlay_state = null
 
 
@@ -414,6 +416,7 @@ GLOBAL_LIST_INIT(spells, typesof(/obj/effect/proc_holder/spell)) //needed for th
 			recharging = FALSE
 
 /obj/effect/proc_holder/spell/proc/perform(list/targets, recharge = TRUE, mob/user = usr) //if recharge is started is important for the trigger spells
+	user.mob_timers[MT_SPELLSNEAK] = world.time //no more stealth mages for you.
 	before_cast(targets, user = user)
 	invocation(user)
 	if(user && user.ckey)

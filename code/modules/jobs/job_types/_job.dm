@@ -198,6 +198,8 @@
 	if(give_bank_account)
 		if(give_bank_account > 1)
 			SStreasury.create_bank_account(H, give_bank_account)
+		else if(H.job == "Duke")
+			SStreasury.create_bank_account(H, SStreasury.treasury_value)
 		else
 			SStreasury.create_bank_account(H)
 
@@ -433,4 +435,3 @@
 	if(CONFIG_GET(flag/security_has_maint_access))
 		return list(ACCESS_MAINT_TUNNELS)
 	return list()
-

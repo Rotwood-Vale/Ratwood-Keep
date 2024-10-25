@@ -71,6 +71,20 @@
 	created_item = /obj/item/clothing/suit/roguetown/armor/brigandine/light
 	i_type = "Armor"
 
+/datum/anvil_recipe/armor/splintarms
+	name = "Brigandine Rerebraces (+1 Cloth)"
+	req_bar = /obj/item/ingot/iron
+	additional_items = list(/obj/item/natural/cloth)
+	created_item = /obj/item/clothing/wrists/roguetown/splintarms
+	i_type = "Armor"
+
+/datum/anvil_recipe/armor/splintlegs
+	name = "Brigandine Chausses (+1 Cloth)"
+	req_bar = /obj/item/ingot/iron
+	additional_items = list(/obj/item/natural/cloth)
+	created_item = /obj/item/clothing/under/roguetown/splintlegs
+	i_type = "Armor"
+
 /datum/anvil_recipe/armor/helmetgoblin
 	name = "Goblin Helmet (+1 Iron)"
 	req_bar = /obj/item/ingot/iron
