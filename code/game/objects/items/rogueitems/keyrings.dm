@@ -140,7 +140,7 @@
 	keys = list(/obj/item/roguekey/bog_gatehouse, /obj/item/roguekey/bog_dungeon)
 
 /obj/item/keyring/bog_master
-	keys = list(/obj/item/roguekey/bog_gatehouse, /obj/item/roguekey/bog_dungeon)
+	keys = list(/obj/item/roguekey/bog_gatehouse, /obj/item/roguekey/bog_master, /obj/item/roguekey/bog_dungeon)
 
 /obj/item/keyring/town_watch
 	keys = list(/obj/item/roguekey/town_barracks, /obj/item/roguekey/town_dungeon)
