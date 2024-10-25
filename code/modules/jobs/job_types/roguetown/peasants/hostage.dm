@@ -41,7 +41,7 @@
 		H.mind.add_antag_datum(new_antag)
 	ADD_TRAIT(H, TRAIT_BANDITCAMP, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_NOBLE, TRAIT_GENERIC)
-	if(H.pronouns == SHE_HER)
+	if(H.pronouns == SHE_HER || THEY_THEM_F)
 		H.change_stat("strength", -1)
 		armor = /obj/item/clothing/suit/roguetown/shirt/dress/gen/purple
 		head = /obj/item/clothing/head/roguetown/hatblu

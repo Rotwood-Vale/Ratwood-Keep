@@ -35,7 +35,7 @@
 	ADD_TRAIT(H, TRAIT_NOBLE, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_NUTCRACKER, TRAIT_GENERIC)
 //		SSticker.rulermob = H
-	if(H.pronouns == SHE_HER)
+	if(H.pronouns == SHE_HER || THEY_THEM_F)
 		beltl = /obj/item/storage/keyring/royal
 		neck = /obj/item/storage/belt/rogue/pouch/coins/rich
 		belt = /obj/item/storage/belt/rogue/leather/cloth/lady

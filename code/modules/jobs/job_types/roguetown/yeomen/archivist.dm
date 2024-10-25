@@ -20,7 +20,7 @@
 
 /datum/outfit/job/roguetown/archivist/pre_equip(mob/living/carbon/human/H)
 	..()
-	if(H.pronouns == SHE_HER)
+	if(H.pronouns == SHE_HER || THEY_THEM_F)
 		shirt = /obj/item/clothing/suit/roguetown/shirt/dress/gen/black
 		pants = /obj/item/clothing/under/roguetown/tights/stockings/black
 		head  = /obj/item/clothing/head/roguetown/roguehood/black

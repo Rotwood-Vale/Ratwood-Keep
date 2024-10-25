@@ -49,7 +49,7 @@
 		ADD_TRAIT(H, TRAIT_NOSTINK, TRAIT_GENERIC)
 		ADD_TRAIT(H, TRAIT_LONGSTRIDER, TRAIT_GENERIC)
 
-	if(H.pronouns == SHE_HER)
+	if(H.pronouns == SHE_HER || THEY_THEM_F)
 		head = /obj/item/clothing/head/roguetown/armingcap
 //		pants = /obj/item/clothing/under/roguetown/trou
 		armor = /obj/item/clothing/suit/roguetown/shirt/dress/gen/random

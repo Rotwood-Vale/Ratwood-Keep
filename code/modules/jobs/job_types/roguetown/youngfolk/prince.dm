@@ -124,12 +124,12 @@
 	belt = /obj/item/storage/belt/rogue/leather
 	beltl = /obj/item/storage/keyring/heir
 	beltr = /obj/item/storage/belt/rogue/pouch/coins/rich
-	if(H.gender == MALE)
+	if(H.pronouns == HE_HIM || THEY_THEM || IT_ITS)
 		pants = /obj/item/clothing/under/roguetown/tights
 		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/guard
 		belt = /obj/item/storage/belt/rogue/leather
 		shoes = /obj/item/clothing/shoes/roguetown/nobleboot
-	if(H.gender == FEMALE)
+	if(H.pronouns == SHE_HER || THEY_THEM_F)
 		belt = /obj/item/storage/belt/rogue/leather/cloth/lady
 		head = /obj/item/clothing/head/roguetown/hennin
 		armor = /obj/item/clothing/suit/roguetown/armor/silkcoat

@@ -44,7 +44,7 @@
 	cloak = /obj/item/clothing/cloak/apron/waist
 	shoes = /obj/item/clothing/shoes/roguetown/simpleshoes
 	beltr = /obj/item/storage/belt/rogue/pouch/coins/poor
-	if(H.gender == MALE)
+	if(H.gender == MALE || THEY_THEM)
 		pants = /obj/item/clothing/under/roguetown/tights/random
 		shirt = /obj/item/clothing/suit/roguetown/shirt/shortshirt/random
 	else

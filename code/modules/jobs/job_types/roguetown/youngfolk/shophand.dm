@@ -23,7 +23,7 @@
 /datum/outfit/job/roguetown/shophand/pre_equip(mob/living/carbon/human/H)
 	..()
 	ADD_TRAIT(H, TRAIT_SEEPRICES_SHITTY, "[type]")
-	if(H.pronouns == SHE_HER)
+	if(H.pronouns == SHE_HER || THEY_THEM_F)
 		pants = /obj/item/clothing/under/roguetown/tights
 		armor = /obj/item/clothing/suit/roguetown/shirt/dress/gen/blue
 		shoes = /obj/item/clothing/shoes/roguetown/simpleshoes

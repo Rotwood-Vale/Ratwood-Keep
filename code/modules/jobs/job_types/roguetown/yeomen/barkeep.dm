@@ -40,7 +40,7 @@
 	belt = /obj/item/storage/belt/rogue/leather
 	beltl = /obj/item/storage/belt/rogue/pouch/coins/mid
 	beltr = /obj/item/storage/keyring/innkeep
-	if(H.pronouns == SHE_HER)
+	if(H.pronouns == SHE_HER || THEY_THEM_F)
 		armor = /obj/item/clothing/suit/roguetown/shirt/dress
 	else
 		shirt = /obj/item/clothing/suit/roguetown/shirt/shortshirt/random

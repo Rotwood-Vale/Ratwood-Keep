@@ -14,7 +14,7 @@
 
 /datum/outfit/job/roguetown/adventurer/fishermaster/pre_equip(mob/living/carbon/human/H)
 	..()
-	if(H.gender == MALE)
+	if(H.pronouns == HE_HIM || THEY_THEM || IT_ITS)
 		pants = /obj/item/clothing/under/roguetown/trou
 		shirt = /obj/item/clothing/suit/roguetown/shirt/shortshirt/random
 		shoes = /obj/item/clothing/shoes/roguetown/boots/leather
