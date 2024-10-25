@@ -4,7 +4,11 @@
 	department_flag = MERCENARIES
 	tutorial = "Experts, Professionals, Expensive. Those are the first words that come to mind when the emperiate Grenzelhoft mercenary guild is mentioned. While you may work for coin like any common sellsword, the guilds goal is to appeal to the guilds goals of racial superiority and upholding its image."
 	allowed_sexes = list(MALE, FEMALE)
-	allowed_races = /datum/species/human/northern
+	allowed_races = list(
+		/datum/species/human/northern,
+		/datum/species/demihuman,
+		/datum/species/lupian
+	)
 	outfit = /datum/outfit/job/roguetown/mercenary/grenzelhoft
 	display_order = JDO_GRENZELHOFT
 	selection_color = JCOLOR_MERCENARY
