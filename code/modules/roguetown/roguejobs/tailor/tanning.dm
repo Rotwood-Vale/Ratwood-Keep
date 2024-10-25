@@ -37,7 +37,7 @@
 		else
 			to_chat(user, span_warning("The rack is already occupied!"))
 			return
-	if(istype(I, /obj/item/rogueweapon/huntingknife) && hide)
+	if((user.used_intent.type == /datum/intent/dagger/cut || user.used_intent.type == /datum/intent/sword/cut || user.used_intent.type == /datum/intent/axe/cut) && hide)
 		if(anchored)
 			var/skill_level = user.mind.get_skill_level(/datum/skill/craft/hunting)
 			var/work_time = (120 - (skill_level * 15))
