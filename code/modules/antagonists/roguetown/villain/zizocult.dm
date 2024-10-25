@@ -219,7 +219,7 @@ GLOBAL_LIST_EMPTY(ritualslist)
 		if(istype(A, R.n_req) && !ishuman(A))
 			playsound(src, 'sound/foley/flesh_rem2.ogg', 30)
 			qdel(A)
-	
+
 	for(var/atom/A in get_step(src, SOUTH))
 		if(istype(A, R.s_req) && !ishuman(A))
 			playsound(src, 'sound/foley/flesh_rem2.ogg', 30)
@@ -229,7 +229,7 @@ GLOBAL_LIST_EMPTY(ritualslist)
 		if(istype(A, R.e_req) && !ishuman(A))
 			playsound(src, 'sound/foley/flesh_rem2.ogg', 30)
 			qdel(A)
-	
+
 	for(var/atom/A in get_step(src, WEST))
 		if(istype(A, R.w_req) && !ishuman(A))
 			playsound(src, 'sound/foley/flesh_rem2.ogg', 30)
@@ -255,7 +255,7 @@ GLOBAL_LIST_EMPTY(ritualslist)
 		var/ritualnameinput = input(user, "Rituals", "RATWOOD") as null|anything in rituals
 		testing("ritualnameinput [ritualnameinput]")
 		var/datum/ritual/pickritual
-		
+
 		pickritual = GLOB.ritualslist[ritualnameinput]
 		testing("pickritual [pickritual]")
 
@@ -264,7 +264,7 @@ GLOBAL_LIST_EMPTY(ritualslist)
 
 		if(!pickritual)
 			return
-		
+
 		var/dews = 0
 
 		if(pickritual.e_req)
@@ -318,7 +318,7 @@ GLOBAL_LIST_EMPTY(ritualslist)
 				center_success = TRUE
 				testing("CENTER SUCCESS!")
 				break
-		
+
 		var/badritualpunishment = FALSE
 		if(cardinal_success != TRUE)
 			if(badritualpunishment)
@@ -409,7 +409,7 @@ GLOBAL_LIST_EMPTY(ritualslist)
 	var/input = input("Sigil Type", "RATWOOD") as null|anything in runes
 	if(!input)
 		return
-	
+
 	var/turf/open/floor/T = get_turf(src.loc)
 	T.generateSigils(src, input)
 
@@ -439,7 +439,7 @@ GLOBAL_LIST_EMPTY(ritualslist)
 	var/name = "DARK AND EVIL RITVAL"
 	var/circle = null // Servantry, Transmutation, Fleshcrafting
 	var/center_requirement = /obj/item
-	// This is absolutely fucking terrible. I tried to do it with lists but it just didn't work and 
+	// This is absolutely fucking terrible. I tried to do it with lists but it just didn't work and
 	//kept runtiming. Something something, can't access list inside a datum.
 	//I couldn't find a more efficient solution to do this, I'm sorry. -7
 	var/n_req = null
@@ -584,7 +584,7 @@ GLOBAL_LIST_EMPTY(ritualslist)
 			return
 		for(var/mob/living/carbon/human/HL in GLOB.human_list)
 			if(HL.real_name == P.info)
-				if(HL.IsSleeping())
+				if(HL.has_status_effect(/datum/status_effect/debuff/sleepytime))
 					if(HL.mind.assigned_role in GLOB.church_positions)
 						to_chat(HL.mind, span_warning("I sense an unholy presence loom near my soul."))
 						return
@@ -594,10 +594,12 @@ GLOBAL_LIST_EMPTY(ritualslist)
 						return
 					if(HAS_TRAIT(HL, TRAIT_NOROGSTAM))
 						return
-					HL.apply_status_effect(/datum/status_effect/debuff/sleepytime)
-					to_chat(HL.mind, span_warning("This isn't my bed... Where am I?!"))
-					HL.playsound_local(src, pick('sound/misc/jumphumans (1).ogg','sound/misc/jumphumans (2).ogg','sound/misc/jumphumans (3).ogg'), 100)
-					HL.forceMove(C)
+					to_chat(HL.mind, span_warning("I'm so sleepy..."))
+					HL.SetSleeping(30)
+					spawn(10 SECONDS)
+						to_chat(HL.mind, span_warning("This isn't my bed... Where am I?!"))
+						HL.playsound_local(HL.loc, pick('sound/misc/jumphumans (1).ogg','sound/misc/jumphumans (2).ogg','sound/misc/jumphumans (3).ogg'), 100)
+						HL.forceMove(C)
 					qdel(P)
 
 /datum/ritual/falseappearance
@@ -625,14 +627,14 @@ GLOBAL_LIST_EMPTY(ritualslist)
 		H.dna.update_dna_identity()
 		break
 
-/datum/ritual/pactofunity
-	name = "Pact of Unity"
+/datum/ritual/heartache
+	name = "Heartaches"
 	circle = "Servantry"
-	center_requirement = /obj/item/paper
-	
-	n_req = /obj/item/organ/eyes
+	center_requirement = /obj/item/organ/heart
 
-	function = /proc/pactofunity
+	n_req = /obj/item/natural/worms/leech
+
+	function = /proc/heartache
 
 /obj/item/pactofunity // Not paper because I don't fuck with that.
 	name = "pact of unity"
@@ -682,6 +684,66 @@ GLOBAL_LIST_EMPTY(ritualslist)
 	new /obj/item/pactofunity(C)
 	to_chat(user.mind, span_notice("The Pact of Unity. When a person willingly signs their name on this they become my pawn. When I rip up the paper their soul is good as dead."))
 
+/obj/item/corruptedheart
+	name = "corrupted heart"
+	desc = "It sparkles with forbidden magic energy. It makes all the heart aches go away."
+	icon = 'icons/obj/surgery.dmi'
+	icon_state = "heart-on"
+
+/obj/item/corruptedheart/attack(mob/living/M, mob/living/user)
+	if(ishuman(M))
+		var/mob/living/carbon/human/H = M
+		if(iszizocultist(H) || iszizolackey(H))
+			H.blood_volume = BLOOD_VOLUME_MAXIMUM
+			to_chat(H, "<span class='notice'>My elixir of life is stagnant once again.</span>")
+			qdel(src)
+		else
+			if(!do_mob(user, H, 2 SECONDS))
+				return
+			if(M.cmode)
+				user.electrocute_act(30)
+			H.electrocute_act(20)
+			H.Stun(10 SECONDS)
+			H.silent += 30
+			qdel(src)
+
+/proc/heartache(mob/user, turf/C)
+	new /obj/item/corruptedheart(C)
+	to_chat(user.mind, "<span class='notice'>A corrupted heart. When used on a non-enlightened mortal their heart shall ache and they will be immobilized and too stunned to speak. Perfect for getting new soon-to-be enlightened. Now, just don't use it at the combat ready.</span>")
+
+/datum/ritual/darksunmark
+	name = "Dark Sun's Mark"
+	circle = "Servantry"
+	center_requirement = /obj/item/rogueweapon/huntingknife/idagger // Requires a combat dagger. Can be iron, steel or silver.
+
+	function = /proc/darksunmark
+
+/proc/darksunmark(mob/user, turf/C)
+	var/found_assassin = FALSE
+	for(var/obj/item/paper/P in C.contents)
+		if(!user.mind || !user.mind.do_i_know(name=P.info))
+			to_chat(user, "<span class='warning'>I don't know anyone by that name.</span>")
+			return
+		for(var/mob/living/carbon/human/HL in GLOB.human_list)
+			if(HL.real_name == P.info)
+				for (var/mob/living/carbon in world) // Iterate through all mobs in the world
+					if (HAS_TRAIT(carbon, TRAIT_ASSASSIN) && !(carbon.stat == DEAD)) //Check if they are an assassin and alive
+						found_assassin = TRUE
+						for(var/obj/item/I in carbon) // Checks to see if the assassin has their dagger on them. If so, the dagger will let them know of a new target.
+							if(istype(I, /obj/item/rogueweapon/huntingknife/idagger/steel/profane)) // Checks to see if the assassin has their dagger on them.
+								carbon.visible_message("profane dagger whispers, <span class='danger'>\"The terrible Zizo has called for our aid. Hunt and strike down our common foe, [HL.real_name]!\"</span>")
+				if(found_assassin == TRUE)
+					ADD_TRAIT(HL, TRAIT_ZIZOID_HUNTED, TRAIT_GENERIC) // Gives the victim a trait to track that they are wanted dead.
+					log_hunted("[key_name(HL)] playing as [HL] had the hunted flaw by Zizoid curse.")
+					to_chat(HL, "<span class='danger'>My hair stands on end. Has someone just said my name? I should watch my back.</span>")
+					to_chat(user, "<span class='warning'>Your target has been marked, your profane call answered. [HL.real_name] will surely perish!</span>")
+					for(var/obj/item/rogueweapon/huntingknife/idagger/D in C.contents) // Get rid of the dagger used as a sacrifice.
+						qdel(D)
+					qdel(P) // Get rid of the paper with the name on it too.
+					HL.playsound_local(HL.loc, 'sound/magic/marked.ogg', 100)
+				else
+					to_chat(user, "<span class='warning'>There has been no answer to your call to the Dark Sun. It seems his servants are far from here...</span>")
+
 // TRANSMUTATION
 
 /datum/ritual/allseeingeye
@@ -711,7 +773,7 @@ GLOBAL_LIST_EMPTY(ritualslist)
 	center_requirement = /obj/item/natural/worms/leech
 	n_req = /obj/item/paper
 	s_req = /obj/item/natural/feather
-	
+
 	function = /proc/propaganda
 
 /proc/propaganda(var/mob/user, var/turf/C)
@@ -724,7 +786,7 @@ GLOBAL_LIST_EMPTY(ritualslist)
 	center_requirement = /mob/living/carbon/human
 	w_req = /obj/item/paper
 	s_req = /obj/item/natural/feather
-	
+
 	function = /proc/falseidol
 
 /obj/effect/dummy/falseidol
@@ -756,7 +818,7 @@ GLOBAL_LIST_EMPTY(ritualslist)
 	name = "Invade Mind"
 	circle = "Transmutation"
 	center_requirement = /obj/item/natural/feather
-	
+
 	function = /proc/invademind
 
 /proc/invademind(var/mob/user, var/turf/C)
@@ -783,6 +845,12 @@ GLOBAL_LIST_EMPTY(ritualslist)
 	var/datum/effect_system/spark_spread/S = new(C)
 	S.set_up(1, 1, C)
 	S.start()
+
+	new /obj/item/clothing/head/roguetown/helmet/leather/hood_ominous/cult(C)
+	new /obj/item/clothing/head/roguetown/helmet/leather/hood_ominous/cult(C)
+
+	new /obj/item/clothing/cloak/half/shadowcloak/cult(C)
+	new /obj/item/clothing/cloak/half/shadowcloak/cult(C)
 
 	new /obj/item/rogueweapon/sword(C)
 	new /obj/item/rogueweapon/huntingknife(C)
@@ -811,6 +879,23 @@ GLOBAL_LIST_EMPTY(ritualslist)
 		ADD_TRAIT(H, TRAIT_ZJUMP, TRAIT_GENERIC)
 		to_chat(H.mind, span_notice("I feel like my legs have become stronger."))
 		break
+
+/datum/ritual/fleshmend
+	name = "Fleshmend"
+	circle = "Fleshcrafting"
+	center_requirement = /mob/living/carbon/human
+	n_req =  /obj/item/reagent_containers/food/snacks/rogue/meat
+
+	function = /proc/fleshmend
+
+/proc/fleshmend(mob/user, turf/C)
+	for(var/mob/living/carbon/human/H in C.contents)
+		H.playsound_local(C, 'sound/misc/vampirespell.ogg', 100, FALSE, pressure_affected = FALSE)
+		H.fully_heal()
+		to_chat(H.mind, "<span class='notice'>ZIZO EMPOWERS ME!</span>")
+		break
+
+
 
 /datum/ritual/darkeyes
 	name = "Darkened Eyes"
@@ -880,7 +965,7 @@ GLOBAL_LIST_EMPTY(ritualslist)
 		trl.forceMove(H)
 		trl.ckey = H.ckey
 		H.gib()
-		
+
 /datum/ritual/gutted
 	name = "Gutted Fish"
 	circle = "Fleshcrafting"
@@ -903,6 +988,19 @@ GLOBAL_LIST_EMPTY(ritualslist)
 				cavity.cavity_item.forceMove(drop_location)
 				cavity.cavity_item = null
 
+/datum/ritual/badomen
+	name = "Bad Omen"
+	circle = "Fleshcrafting"
+	center_requirement = /mob/living/carbon/human
+
+	function = /proc/badomenzizo
+
+/proc/badomenzizo(mob/user, turf/C)
+	for(var/mob/living/carbon/human/H in C.contents)
+		if(H.stat == DEAD)
+			H.gib(FALSE, FALSE, FALSE)
+			addomen("roundstart")
+
 /datum/ritual/ascend
 	name = "ASCEND!"
 	circle = "Fleshcrafting"
@@ -910,7 +1008,7 @@ GLOBAL_LIST_EMPTY(ritualslist)
 
 	n_req = /mob/living/carbon/human // the ruler
 	s_req = /mob/living/carbon/human // virgin
-	
+
 	function = /proc/ascend
 
 /proc/ascend(var/mob/user, var/turf/C)
@@ -919,22 +1017,22 @@ GLOBAL_LIST_EMPTY(ritualslist)
 	for(var/mob/living/carbon/human/H in C.contents)
 		if(!iszizocultist(H))
 			return
-		for(var/mob/living/carbon/human/RULER in get_step(src, NORTH))
+		for(var/mob/living/carbon/human/RULER in get_step(C, NORTH))
 			if(RULER != SSticker.rulermob && RULER.stat != DEAD)
 				break
 			RULER.gib()
-		for(var/mob/living/carbon/human/VIRGIN in get_step(src, SOUTH))
+		for(var/mob/living/carbon/human/VIRGIN in get_step(C, SOUTH))
 			if(!VIRGIN.virginity && VIRGIN.stat != DEAD)
 				break
 			VIRGIN.gib()
 		CM.cultascended = TRUE
 		addomen("ascend")
 		to_chat(user.mind, span_danger("I HAVE DONE IT! I HAVE REACHED A HIGHER FORM! SOON THERE WILL BE NO GODS. ONLY MASTERS!"))
-		var/mob/living/trl = new /mob/living/simple_animal/hostile/retaliate/rogue/troll/blood/ascended(C)
+		var/mob/living/trl = new /mob/living/simple_animal/hostile/retaliate/rogue/blood/ascended(C)
 		trl.ckey = H.ckey
 		H.gib()
 		to_chat(world, "\n<font color='purple'>15 minutes remain.</font>")
-		for(var/mob/living/carbon/V in GLOB.human_list)
+		for(var/mob/living/carbon/human/V in GLOB.human_list)
 			if(V.mind in CM.cultists)
 				V.add_stress(/datum/stressevent/lovezizo)
 			else

@@ -878,6 +878,13 @@
 	w_class = WEIGHT_CLASS_SMALL
 	salvage_amount = 1
 
+/obj/item/clothing/cloak/half/shadowcloak/cult
+	name = "ominous cloak"
+	desc = "Those who wear, thy should beware, for those who do; never come back as who they once were again."
+	allowed_race = ALL_RACES_LIST
+	body_parts_covered = ARMS|CHEST
+	armor = ARMOR_STEEL_BAD
+
 /obj/item/clothing/cloak/half/brown
 	color = CLOTHING_BROWN
 

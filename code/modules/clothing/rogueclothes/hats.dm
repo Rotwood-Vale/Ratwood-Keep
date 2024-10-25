@@ -507,6 +507,30 @@
 	icon_state = "kettle"
 	body_parts_covered = HEAD|HAIR|EARS
 
+	bloody_icon = 'icons/effects/blood64x64.dmi'
+	bloody_icon_state = "helmetblood_big"
+	worn_x_dimension = 64
+	worn_y_dimension = 64
+	flags_inv = HIDEEARS
+	smeltresult = /obj/item/ash
+	sellprice = VALUE_CHEAP_IRON_HELMET
+
+	armor = ARMOR_STEEL_BAD
+	body_parts_covered = HEAD|HAIR
+
+//................ CULTIST HOOD ............... //
+/obj/item/clothing/head/roguetown/helmet/leather/hood_ominous/cult
+	name = "ominous hood"
+	desc = "It echoes with ominous laughter."
+	icon_state = "warlockhood"
+	dynamic_hair_suffix = ""
+	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR|HIDEFACIALHAIR
+	sellprice = VALUE_LEATHER_HELMET/2
+
+	armor = ARMOR_STEEL_BAD
+	body_parts_covered = NECK|HAIR|EARS|HEAD
+
+//................ Sallet ............... //
 /obj/item/clothing/head/roguetown/helmet/sallet
 	name = "sallet"
 	icon_state = "sallet"
