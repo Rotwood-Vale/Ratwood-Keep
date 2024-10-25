@@ -5,13 +5,14 @@
 	allowed_races = list(
 		/datum/species/akula,
 		/datum/species/vulpkanin,
+		/datum/species/lupian,
 		/datum/species/dracon,
 		/datum/species/moth, //grenzelmoft?
 		/datum/species/dwarf/mountain,
 		/datum/species/human/northern,
 		/datum/species/demihuman,
 		/datum/species/anthromorph,
-		/datum/species/tabaxi,
+		/datum/species/tabaxi
 	)
 	outfit = /datum/outfit/job/roguetown/mercenary/grenzelhoft
 	maximum_possible_slots = 10
