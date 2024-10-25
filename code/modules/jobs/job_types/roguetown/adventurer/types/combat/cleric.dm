@@ -135,7 +135,6 @@
 			H.mind.adjust_skillrank(/datum/skill/combat/maces, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/magic/holy, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/craft/blacksmithing, 2, TRUE) //Traded a few weapon proficiencies from war cleric for smithing.
-			H.mind.adjust_skillrank(/datum/skill/craft/hunting, 1, TRUE)
 			H.AddSpell(new /obj/effect/proc_holder/spell/invoked/malum_flame_rogue) // weaker astra fire spell. mostly for lighting things.
 			H.change_stat("intelligence", 2) // Changed to follow balance people's advice.
 			H.change_stat("endurance", 1)
