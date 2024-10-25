@@ -60,8 +60,8 @@ GLOBAL_LIST_INIT(nonhuman_positions, list(
 	ROLE_PAI))
 
 GLOBAL_LIST_INIT(noble_positions, list(
-	"Lord",
-	"Lady Consort",
+	"Duke",
+	"Duchess Consort",
 	"Heir",
 	"Retinue Captain",
 	"Royal Marshal",
@@ -102,7 +102,7 @@ GLOBAL_LIST_INIT(yeoman_positions, list(
 	"Barkeep",
 	"Archivist",
 	"Guild smith",
-	"Tailor",
+	"Seamster",
 	"Alchemist",
 	"Mason",
 	"Scribe",

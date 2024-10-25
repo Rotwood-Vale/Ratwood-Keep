@@ -149,7 +149,8 @@
 	/datum/patron/divine/dendor,\
 	/datum/patron/divine/necra,\
 	/datum/patron/divine/pestra,\
-	/datum/patron/divine/malum\
+	/datum/patron/divine/malum,\
+	/datum/patron/divine/ravox,\
 )
 
 #define ALL_ACOLYTE_PATRONS list(\
@@ -267,12 +268,6 @@ GLOBAL_LIST_EMPTY(job_respawn_delays)
 /*
 	Defines for the triumph buy datum categories
 */
-#define TRIUMPH_CAT_ROUND_EFX "ROUND-EFX"
-#define TRIUMPH_CAT_CHARACTER "CHARACTER"
-#define TRIUMPH_CAT_MISC "MISC!"
-#define TRIUMPH_CAT_ACTIVE_DATUMS "ACTIVE"
-
-
 #define TRIUMPH_CAT_ROUND_EFX "ROUND-EFX"
 #define TRIUMPH_CAT_CHARACTER "CHARACTER"
 #define TRIUMPH_CAT_MISC "MISC!"
