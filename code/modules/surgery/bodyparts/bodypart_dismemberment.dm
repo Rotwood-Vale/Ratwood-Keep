@@ -46,14 +46,18 @@
 	SEND_SIGNAL(C, COMSIG_ADD_MOOD_EVENT, "dismembered", /datum/mood_event/dismembered)
 	C.add_stress(/datum/stressevent/dismembered)
 	var/stress2give = /datum/stressevent/viewdismember
+	var/guillotine_execution = FALSE
+
 	if(C)
 		if(C.buckled)
+			if(istype(C.buckled, /obj/structure/guillotine))
+				guillotine_execution = TRUE
 			if(istype(C.buckled, /obj/structure/fluff/psycross))
 				if(C.real_name in GLOB.excommunicated_players)
 					stress2give = /datum/stressevent/viewsinpunish
 	if(stress2give)
 		for(var/mob/living/carbon/CA in hearers(world.view, C))
-			if(CA != C && !HAS_TRAIT(CA, TRAIT_BLIND))
+			if(CA != C && !HAS_TRAIT(CA, TRAIT_BLIND) && !guillotine_execution)
 				if(stress2give == /datum/stressevent/viewdismember)
 					if(HAS_TRAIT(CA, TRAIT_STEELHEARTED))
 						continue
