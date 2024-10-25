@@ -100,7 +100,7 @@ SUBSYSTEM_DEF(treasury)
 	return TRUE
 
 //whole tresury is lord's account because he owns everything
-/datum/controller/subsystem/treasury/proc/update_lord_money()
+/datum/controller/subsystem/treasury/proc/update_ruler_money()
 	for(var/mob/living/carbon/human/X in GLOB.human_list)
 		switch(X.job)
 			if("Lord")
@@ -112,7 +112,7 @@ SUBSYSTEM_DEF(treasury)
 	if(!amt)
 		return
 	treasury_value += amt
-	update_lord_money()
+	update_ruler_money()
 	if(source)
 		log_to_steward("+[amt] to treasury ([source])")
 	else
@@ -139,7 +139,7 @@ SUBSYSTEM_DEF(treasury)
 					return FALSE  // Return early if the player has insufficient funds
 				bank_accounts[X] -= abs(amt)  // Deduct the fine amount from the player's account
 			found_account = TRUE
-			update_lord_money() //to prevent any shenanigans with giving/fining lord
+			update_ruler_money() //to prevent any shenanigans with giving/fining lord
 			break
 	if(!found_account)
 		return FALSE
@@ -182,7 +182,7 @@ SUBSYSTEM_DEF(treasury)
 			amt -= taxed_amount
 			bank_accounts[character] += amt
 		treasury_value += original_amt
-		update_lord_money()
+		update_ruler_money()
 	else
 		return FALSE
 
@@ -203,7 +203,7 @@ SUBSYSTEM_DEF(treasury)
 			bank_accounts[X] -= amt
 			treasury_value -= amt
 			found_account = TRUE
-			update_lord_money()
+			update_ruler_money()
 			break
 	if(!found_account)
 		return

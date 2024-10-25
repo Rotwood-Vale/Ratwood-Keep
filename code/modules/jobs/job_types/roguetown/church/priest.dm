@@ -111,7 +111,7 @@
 		HU.mind.assigned_role = "Duke"
 		HU.job = "Duke"
 		SSjob.type_occupations[/datum/job/roguetown/lord].add_spells(HU)
-		SStreasury.update_lord_money()
+		SStreasury.update_ruler_money()
 
 		switch(HU.gender)
 			if("male")
