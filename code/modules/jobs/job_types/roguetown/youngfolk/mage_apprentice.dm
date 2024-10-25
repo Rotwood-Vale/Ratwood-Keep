@@ -29,7 +29,7 @@
 	backr = /obj/item/storage/backpack/rogue/satchel
 	r_hand = /obj/item/rogueweapon/woodstaff
 	backpack_contents = list(/obj/item/roguegem/amethyst = 1)
-	if(H.pronouns == SHE_HER)
+	if(H.pronouns == SHE_HER || H.pronouns == THEY_THEM_F)
 		shoes = /obj/item/clothing/shoes/roguetown/sandals
 	else
 		shoes = /obj/item/clothing/shoes/roguetown/simpleshoes

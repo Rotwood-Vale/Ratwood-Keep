@@ -13,6 +13,8 @@
 			return "man"
 		if(THEY_THEM)
 			return "person"
+		if(THEY_THEM_F)
+			return "person"
 		else
 			return "creacher"
 
@@ -26,6 +28,8 @@
 		if(HE_HIM)
 			return "gentleman"
 		if(THEY_THEM)
+			return "gentleperson"
+		if(THEY_THEM_F)
 			return "gentleperson"
 		else
 			return "gentlecreacher"

@@ -978,7 +978,7 @@
 		if(!J)
 			return "unknown"
 		used_title = J.title
-		if(J.f_title && (pronouns == SHE_HER))
+		if(J.f_title && (pronouns == SHE_HER || pronouns == THEY_THEM_F))
 			used_title = J.f_title
 		if(J.advjob_examine)
 			used_title = advjob

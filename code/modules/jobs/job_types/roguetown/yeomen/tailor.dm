@@ -36,7 +36,7 @@
 	shoes = /obj/item/clothing/shoes/roguetown/shortboots
 	backr = /obj/item/storage/backpack/rogue/satchel
 	backpack_contents = list(/obj/item/needle, /obj/item/roguekey/tailor)
-	if(H.pronouns == SHE_HER)
+	if(H.pronouns == SHE_HER || H.pronouns == THEY_THEM_F)
 		armor = /obj/item/clothing/suit/roguetown/shirt/dress/silkdress
 	else
 		armor = /obj/item/clothing/suit/roguetown/shirt/tunic/random

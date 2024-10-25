@@ -191,7 +191,7 @@
 
 	if(H.islatejoin && announce_latejoin)
 		var/used_title = title
-		if((H.pronouns == SHE_HER) && f_title)
+		if((H.pronouns == SHE_HER || H.pronouns == THEY_THEM_F) && f_title)
 			used_title = f_title
 		scom_announce("[H.real_name] the [used_title] arrives from Kingsfield.")
 
