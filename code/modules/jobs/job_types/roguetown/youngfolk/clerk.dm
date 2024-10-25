@@ -32,7 +32,7 @@
 		H.change_stat("intelligence", 1)
 		H.change_stat("fortune", 1)
 
-	if(H.pronouns == SHE_HER || THEY_THEM_F)
+	if(H.pronouns == SHE_HER || H.pronouns == THEY_THEM_F)
 		shirt = /obj/item/clothing/suit/roguetown/shirt/dress/silkdress/green
 	else
 		armor = /obj/item/clothing/cloak/tabard/knight

@@ -21,7 +21,7 @@
 	neck = /obj/item/storage/belt/rogue/pouch/coins/rich
 	id = /obj/item/clothing/ring/silver
 	cloak = /obj/item/clothing/cloak/half/red
-	if(H.pronouns == SHE_HER || THEY_THEM_F)
+	if(H.pronouns == SHE_HER || H.pronouns == THEY_THEM_F)
 		armor = /obj/item/clothing/suit/roguetown/shirt/dress/gen/purple
 		head = /obj/item/clothing/head/roguetown/hatblu
 		beltl = /obj/item/storage/belt/rogue/pouch/food

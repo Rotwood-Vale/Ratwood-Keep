@@ -30,7 +30,7 @@
 		H.mind.adjust_skillrank(/datum/skill/craft/crafting, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/craft/cooking, 1, TRUE)
 	neck = /obj/item/clothing/neck/roguetown/psicross
-	if(H.pronouns == SHE_HER || THEY_THEM_F)
+	if(H.pronouns == SHE_HER || H.pronouns == THEY_THEM_F)
 		head = /obj/item/clothing/head/roguetown/armingcap
 		armor = /obj/item/clothing/suit/roguetown/shirt/dress/gen/random
 		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt

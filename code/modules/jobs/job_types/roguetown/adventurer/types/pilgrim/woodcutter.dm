@@ -37,7 +37,7 @@
 	beltr = /obj/item/rogueweapon/stoneaxe/woodcut
 	beltl = /obj/item/rogueweapon/huntingknife
 	backpack_contents = list(/obj/item/flint = 1)
-	if(H.pronouns == SHE_HER || THEY_THEM_F)
+	if(H.pronouns == SHE_HER || H.pronouns == THEY_THEM_F)
 		armor = /obj/item/clothing/suit/roguetown/shirt/dress/gen
 	else
 		armor = /obj/item/clothing/suit/roguetown/armor/workervest

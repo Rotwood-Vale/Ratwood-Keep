@@ -40,7 +40,7 @@
 	head = /obj/item/clothing/head/roguetown/cookhat
 	shoes = /obj/item/clothing/shoes/roguetown/simpleshoes
 	neck = /obj/item/storage/belt/rogue/pouch/coins/mid
-	if(H.gender == MALE || THEY_THEM)
+	if(H.pronouns == HE_HIM || H.pronouns == THEY_THEM || H.pronouns == IT_ITS)
 		pants = /obj/item/clothing/under/roguetown/tights/random
 		shirt = /obj/item/clothing/suit/roguetown/shirt/shortshirt/random
 	else

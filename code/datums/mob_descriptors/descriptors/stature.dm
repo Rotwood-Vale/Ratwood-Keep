@@ -29,7 +29,7 @@
 			return "gentleman"
 		if(THEY_THEM)
 			return "gentleperson"
-		if(THEY_THEM)
+		if(THEY_THEM_F)
 			return "gentleperson"
 		else
 			return "gentlecreacher"

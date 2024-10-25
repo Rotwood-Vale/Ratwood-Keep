@@ -99,7 +99,7 @@
 			H.change_stat("endurance", 1)
 			H.change_stat("speed", 3)
 		
-	if(H.pronouns == HE_HIM || THEY_THEM || IT_ITS)
+	if(H.pronouns == HE_HIM || H.pronouns == THEY_THEM || H.pronouns == IT_ITS)
 		pants = /obj/item/clothing/under/roguetown/trou/leather
 		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
 	else

@@ -39,7 +39,7 @@
 		H.change_stat("constitution", 1)
 		H.change_stat("perception", -1)
 
-	if(H.pronouns == HE_HIM || THEY_THEM)
+	if(H.pronouns == HE_HIM || H.pronouns == THEY_THEM || H.pronouns == IT_ITS)
 		armor = /obj/item/clothing/suit/roguetown/armor/leather/vest/sailor/nightman
 		H.dna.species.soundpack_m = new /datum/voicepack/male/zeth()
 	else
