@@ -9,7 +9,7 @@
 	category_tags = list(CTAG_ADVENTURER)
 
 /datum/outfit/job/roguetown/adventurer/cleric
-	allowed_patrons = ALL_CLERIC_PATRONS
+	allowed_patrons = ALL_PATRONS
 
 /datum/outfit/job/roguetown/adventurer/cleric/pre_equip(mob/living/carbon/human/H)
 	..()
