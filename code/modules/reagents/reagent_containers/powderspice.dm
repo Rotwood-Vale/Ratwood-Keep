@@ -144,16 +144,20 @@
 */
 /obj/item/reagent_containers/powder/flour
 	name = "powder"
-	desc = ""
+	desc = "Add water and knead it"
 	gender = PLURAL
 	icon_state = "flour"
+	can_brew = TRUE
+	brew_reagent = /datum/reagent/consumable/ethanol/moonshine
+	brew_amt = 22
 	list_reagents = list(/datum/reagent/floure = 1)
 	grind_results = list(/datum/reagent/floure = 10)
 	volume = 1
 	sellprice = 0
+
 /datum/reagent/floure
 	name = "flour"
-	description = "Add water and knead it"
+	description = ""
 	color = "#FFFFFF" // rgb: 96, 165, 132
 
 /datum/reagent/floure/on_mob_life(mob/living/carbon/M)
