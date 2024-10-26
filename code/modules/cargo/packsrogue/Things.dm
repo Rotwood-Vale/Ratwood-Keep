@@ -25,17 +25,15 @@
 	cost = 5
 	contains = list(/obj/item/needle)
 
+/datum/supply_pack/rogue/Things/hknife
+	name = "Hunting Knife"
+	cost = 5
+	contains = list(/obj/item/rogueweapon/huntingknife)
+
 /datum/supply_pack/rogue/Things/cloth
 	name = "Cloth"
-	cost = 10
-	contains = list(/obj/item/natural/cloth,
-	/obj/item/natural/cloth,
-	/obj/item/natural/cloth,
-	/obj/item/natural/cloth,
-	/obj/item/natural/cloth,
-	/obj/item/natural/cloth,
-	/obj/item/natural/cloth,
-	/obj/item/natural/cloth)
+	cost = 2
+	contains = list(/obj/item/natural/cloth)
 
 /datum/supply_pack/rogue/Things/Waterskin
 	name = "Waterskin"
@@ -81,5 +79,5 @@
 
 /datum/supply_pack/rogue/Things/Dragonscale
 	name = "Dragonscale Necklace"
-	cost = 750
+	cost = 900
 	contains = list(/obj/item/clothing/neck/roguetown/blkknight)

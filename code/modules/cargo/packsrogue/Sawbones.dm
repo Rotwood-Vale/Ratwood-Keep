@@ -54,10 +54,10 @@
 
 /datum/supply_pack/rogue/Sawbones/leather/botbomb
 	name = "Bottle bomb"
-	cost = 50
+	cost = 30
 	contains = list(/obj/item/bomb)
 
 /datum/supply_pack/rogue/Sawbones/leather/poison
 	name = "High-Potency poison"
-	cost = 50
+	cost = 100
 	contains = list(/obj/item/reagent_containers/glass/bottle/rogue/poison)

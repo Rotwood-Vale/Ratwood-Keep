@@ -4,31 +4,33 @@
 	crate_name = "Gifts of Coinspillers"
 	crate_type = /obj/structure/closet/crate/chest/merchant
 
-/datum/supply_pack/rogue/Sellsword/drider
+
+/datum/supply_pack/rogue/Sellsword/dridersword
 	name = "Old Zybantine package..."
-	cost = 70
-	contains = list(/obj/item/clothing/head/roguetown/roguehood/shalal,
-					/obj/item/storage/belt/rogue/leather/shalal,
-					/obj/item/rogueweapon/sword/long/rider,
-					/obj/item/clothing/suit/roguetown/armor/plate/scale,
-					/obj/item/clothing/under/roguetown/chainlegs/iron,
-					/obj/item/clothing/neck/roguetown/shalal,
-					/obj/item/clothing/suit/roguetown/armor/plate/scale,
-					/obj/item/storage/backpack/rogue/satchel/black,
-					/obj/item/clothing/gloves/roguetown/angle)
+	cost = 10
+	contains = list(/obj/item/rogueweapon/sword/long/rider)
 
-/datum/supply_pack/rogue/Sellsword/Grenzel
-	name = "Old Grenzelhoft package..."
-	cost = 70
-	contains = list(/obj/item/clothing/suit/roguetown/shirt/grenzelhoft,
-					/obj/item/clothing/head/roguetown/grenzelhofthat,
-					/obj/item/clothing/suit/roguetown/armor/blacksteel/cuirass,
-					/obj/item/clothing/under/roguetown/grenzelpants,
-					/obj/item/clothing/shoes/roguetown/grenzelhoft,
-					/obj/item/clothing/gloves/roguetown/grenzelgloves,
-					/obj/item/storage/backpack/rogue/satchel/black,
-					/obj/item/rogueweapon/halberd)
 
+/datum/supply_pack/rogue/Sellsword/driderhead
+	name = "Desert Rider headdress"
+	cost = 5
+	contains = list(/obj/item/clothing/head/roguetown/roguehood/shalal)
+
+
+/datum/supply_pack/rogue/Sellsword/grenzelhofthat
+	name = "Grenzel Hat"
+	cost = 5
+	contains = list(/obj/item/clothing/head/roguetown/grenzelhofthat)
+
+/datum/supply_pack/rogue/Sellsword/Grenzelpants
+	name = "Grenzel Pants"
+	cost = 5
+	contains = list(/obj/item/clothing/under/roguetown/grenzelpants)
+
+/datum/supply_pack/rogue/Sellsword/Grenzelshoes
+	name = "Grenzel Shoes"
+	cost = 5
+	contains = list(/obj/item/clothing/shoes/roguetown/grenzelhoft)
 
 /datum/supply_pack/rogue/Sellsword/coif/steel
 	name = "Steel Coif"
@@ -163,32 +165,6 @@
 	name = "Quiver of Bolts"
 	cost = 20
 	contains = list(/obj/item/quiver/bolts)
-
-/datum/supply_pack/rogue/Sellsword/bolt
-	name = "Bolts"
-	cost = 15
-	contains = list(
-					/obj/item/ammo_casing/caseless/rogue/bolt,
-					/obj/item/ammo_casing/caseless/rogue/bolt,
-					/obj/item/ammo_casing/caseless/rogue/bolt,
-					/obj/item/ammo_casing/caseless/rogue/bolt,
-					/obj/item/ammo_casing/caseless/rogue/bolt,
-					/obj/item/ammo_casing/caseless/rogue/bolt,
-					/obj/item/ammo_casing/caseless/rogue/bolt,
-					/obj/item/ammo_casing/caseless/rogue/bolt,
-					/obj/item/ammo_casing/caseless/rogue/bolt,
-					/obj/item/ammo_casing/caseless/rogue/bolt,
-					/obj/item/ammo_casing/caseless/rogue/bolt,
-					/obj/item/ammo_casing/caseless/rogue/bolt,
-					/obj/item/ammo_casing/caseless/rogue/bolt,
-					/obj/item/ammo_casing/caseless/rogue/bolt,
-					/obj/item/ammo_casing/caseless/rogue/bolt,
-					/obj/item/ammo_casing/caseless/rogue/bolt,
-					/obj/item/ammo_casing/caseless/rogue/bolt,
-					/obj/item/ammo_casing/caseless/rogue/bolt,
-					/obj/item/ammo_casing/caseless/rogue/bolt,
-					/obj/item/ammo_casing/caseless/rogue/bolt,
-				)
 
 
 /datum/supply_pack/rogue/Sellsword/crossbow

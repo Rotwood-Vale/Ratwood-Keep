@@ -59,7 +59,7 @@
 	contains = list(/obj/item/clothing/suit/roguetown/armor/gambeson/heavy)
 
 
-/datum/supply_pack/rogue/Brigand/steelcuirass
+/datum/supply_pack/rogue/Brigand/blksteelcuirass
 	name = "Blacksteel Cuirass"
 	cost = 60
 	contains = list(/obj/item/clothing/suit/roguetown/armor/blacksteel/cuirass)
@@ -97,11 +97,6 @@
 	name = "Iron flail"
 	cost = 10
 	contains = list(/obj/item/rogueweapon/flail)
-
-/datum/supply_pack/rogue/Brigand/repentaen
-	name = "Loyalty's Reward"
-	cost = 50
-	contains = list(/obj/item/rogueweapon/whip/antique)
 
 /datum/supply_pack/rogue/Brigand/mace
 	name = "Iron Mace"

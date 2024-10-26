@@ -36,12 +36,8 @@
 
 /datum/supply_pack/rogue/Mage/scrolls
 	name = "Scrolls"
-	cost = 10
-	contains = list(/obj/item/paper/scroll,
-					/obj/item/paper/scroll,
-					/obj/item/paper/scroll,
-					/obj/item/paper/scroll,
-					/obj/item/paper/scroll)
+	cost = 2
+	contains = list(/obj/item/paper/scroll)
 
 /datum/supply_pack/rogue/Mage/unfinbook
 	name = "Unfinished Spellbook"
