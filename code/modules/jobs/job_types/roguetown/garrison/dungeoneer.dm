@@ -32,11 +32,13 @@
 	shoes = /obj/item/clothing/shoes/roguetown/shortboots
 	wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
 	gloves = /obj/item/clothing/gloves/roguetown/angle
-	cloak = /obj/item/clothing/cloak/stabard/dungeon
+	armor = /obj/item/clothing/cloak/stabard/dungeon
+	cloak = /obj/item/clothing/cloak/raincloak/mortus
 	shirt = /obj/item/clothing/suit/roguetown/armor/gambeson/councillor
-	belt = /obj/item/storage/belt/rogue/leather
+	belt = /obj/item/storage/belt/rogue/leather/black
 	beltr = /obj/item/rogueweapon/whip/antique
 	beltl = /obj/item/keyring/dungeoneer
+	backr = /obj/item/storage/backpack/rogue/satchel/black
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/combat/whipsflails, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 4, TRUE)
