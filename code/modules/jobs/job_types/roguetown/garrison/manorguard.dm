@@ -17,7 +17,7 @@
 	advclass_cat_rolls = list(CTAG_MENATARMS = 20)
 
 	give_bank_account = 22
-	min_pq = 1 //Should hopefully know the basics of escalation 
+	min_pq = 1
 	max_pq = null
 
 	cmode_music = 'sound/music/combat_guard2.ogg'
@@ -79,8 +79,8 @@
 	H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/riding, 1, TRUE)
 	ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
+	ADD_TRAIT(H, TRAIT_GUARDSMAN, TRAIT_GENERIC) //+1 spd, con, end, +3 per in town
 
-	//Basically slight bonuses; slightly better than Watch, less than a knight
 	H.change_stat("strength", 2)
 	H.change_stat("intelligence", 1)
 	H.change_stat("constitution", 1)
@@ -134,12 +134,13 @@
 	H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/riding, 1, TRUE)
 	ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
+	ADD_TRAIT(H, TRAIT_GUARDSMAN, TRAIT_GENERIC) //+1 spd, con, end, +3 per in town
 
 	//Basically slight bonuses; slightly better than Watch, less than a knight
 	H.change_stat("strength", 1)
 	H.change_stat("intelligence", 1)
 	H.change_stat("constitution", 1)
-	H.change_stat("perception", 1)
+	H.change_stat("perception", 2)
 	H.change_stat("speed", 1)
 
 	shirt = /obj/item/clothing/suit/roguetown/armor/chainmail			//Helps against other attack types

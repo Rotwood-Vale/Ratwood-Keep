@@ -72,7 +72,7 @@
 
 /datum/special_trait/night_owl
 	name = "Night Owl"
-	greet_text = span_notice("I've always preferred Noc over her sister")
+	greet_text = span_notice("I've always preferred Noc over his other half.")
 	weight = 100
 
 /datum/special_trait/night_owl/on_apply(mob/living/carbon/human/character, silent)

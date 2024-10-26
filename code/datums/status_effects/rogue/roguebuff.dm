@@ -231,6 +231,25 @@
 	to_chat(owner, span_warning("The rough floors slow my travels once again."))
 	REMOVE_TRAIT(owner, TRAIT_LONGSTRIDER, MAGIC_TRAIT)
 
+
+/atom/movable/screen/alert/status_effect/buff/guardbuffone
+	name = "Vigilant Guardsman"
+	desc = "My home. I watch vigilantly and respond swiftly."
+	icon_state = "buff"
+
+/datum/status_effect/buff/guardbuffone
+	id = "guardbuffone"
+	alert_type = /atom/movable/screen/alert/status_effect/buff/guardbuffone
+	effectedstats = list("constitution" = 1,"endurance" = 1, "speed" = 1, "perception" = 3) //if they can't figure out how to ply this for winning chances i'm going to sob openly
+	duration = 50000 //essentially permanent, removes when we're out of the area
+
+/datum/status_effect/buff/guardbuffone/process()
+
+	.=..()
+	var/area/rogue/our_area = get_area(owner)
+	if(!(our_area.town_area))
+		owner.remove_status_effect(/datum/status_effect/buff/guardbuffone)
+
 /atom/movable/screen/alert/status_effect/buff/healing
 	name = "Healing Miracle"
 	desc = "Divine intervention relieves me of my ailments."
@@ -267,3 +286,4 @@
 	id = "fortify"
 	alert_type = /atom/movable/screen/alert/status_effect/buff/fortify
 	duration = 1 MINUTES
+
