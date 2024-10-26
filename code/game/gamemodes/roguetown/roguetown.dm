@@ -100,7 +100,7 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "E
 	var/lord_dead = FALSE
 	for(var/mob/living/carbon/human/H in GLOB.human_list)
 		if(H.mind)
-			if(H.job == "Lord")
+			if(H.job == "Duke")
 				lord_found = TRUE
 				if(H.stat == DEAD)
 					lord_dead = TRUE
@@ -192,14 +192,15 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "E
 /datum/game_mode/chaosmode/proc/pick_bandits()
 	//BANDITS
 	banditgoal = rand(200,400)
-	restricted_jobs = list("Lord",
-	"Lady Consort",
+	restricted_jobs = list("Duke",
+	"Duchess Consort",
 	"Merchant",
 	"Priest",
 	"Knight")
 	var/num_bandits = 0
-	if(num_players() >= 10)
-		num_bandits = CLAMP(round(num_players() / 2), 25, 30)
+	if(num_players() >= 8)
+		// 1 bandit per 8 players, 0 if less than 8, no maximum
+		num_bandits = round(num_players() / 8)
 		banditgoal += (num_bandits * rand(200,400))
 
 	if(num_bandits)
@@ -216,7 +217,7 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "E
 			Both pre_setup() and post_setup() get called within the Setup() proc in SSticker at earlier and later timings.
 
 			Also the pre_do param only checks to see if a job preference is set to HIGH,
-			so if it was working a medium priority lord would still get shunted into a bandit.
+			so if it was working a medium priority duke would still get shunted into a bandit.
 			Along with that every person who has a restricted job set to HIGH would also just get rejected from it.
 
 			Also to note, we check the restricted jobs list on the mind in get_players_for_role() too
@@ -328,7 +329,7 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "E
 	restricted_jobs = list()
 
 /datum/game_mode/chaosmode/proc/pick_maniac()
-	restricted_jobs = list("Lord", "Lady Consort")
+	restricted_jobs = list("Duke", "Duchess Consort")
 	antag_candidates = get_players_for_role(ROLE_MANIAC)
 	var/datum/mind/villain = pick_n_take(antag_candidates)
 	if(villain)
@@ -349,8 +350,8 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "E
 
 /datum/game_mode/chaosmode/proc/pick_cultist()
 	var/remaining = 2 // 1 leader, 1 lackey :)
-	restricted_jobs = list("Lord",
-	"Lady",
+	restricted_jobs = list("Duke",
+	"Duchess Consort",
 	"Merchant",
 	"Priest")
 	antag_candidates = get_players_for_role(ROLE_ZIZOIDCULTIST)
@@ -380,8 +381,8 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "E
 /datum/game_mode/chaosmode/proc/pick_vampires()
 	var/vampsremaining = 3
 	restricted_jobs = list(
-	"Lord",
-	"Lady Consort",
+	"Duke",
+	"Duchess Consort",
 	"Dungeoneer",
 	"Inquisitor",
 	"Confessor",
@@ -427,8 +428,8 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "E
 /datum/game_mode/chaosmode/proc/pick_werewolves()
 	// Ideally we want adventurers/pilgrims/towners to roll it
 	restricted_jobs = list(
-	"Lord",
-	"Lady Consort",
+	"Duke",
+	"Duchess Consort",
 	"Dungeoneer",
 	"Inquisitor",
 	"Confessor",
@@ -444,10 +445,7 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "E
 	"Bog Master",
 	"Knight",
 	"Mortician",
-	"Desert Rider",
-	"Desert Rider Mercenary",
-	"Grenzelhoft Mercenary",
-	"Sellsword"
+	"Mercenary"
 	)
 
 	var/num_werewolves = rand(1,2)
@@ -554,10 +552,10 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "E
 				rogue.add_antag_datum(new_asp)
 				aspirants += rogue
 				pre_aspirants -= rogue
-	var/mob/living/lord = SSticker.rulermob
-	if(lord)
-		var/datum/antagonist/ruler = new /datum/antagonist/aspirant/ruler() // Do the lord last.
-		lord.mind.add_antag_datum(ruler)
+	var/mob/living/duke = SSticker.rulermob
+	if(duke)
+		var/datum/antagonist/ruler = new /datum/antagonist/aspirant/ruler() // Do the duke last.
+		duke.mind.add_antag_datum(ruler)
 
 ///////////////// REBELS
 	for(var/datum/mind/rebelguy in pre_rebels)

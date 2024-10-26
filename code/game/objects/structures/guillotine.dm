@@ -1,5 +1,5 @@
-#define GUILLOTINE_BLADE_MAX_SHARP  10 // This is maxiumum sharpness and will decapitate without failure
-#define GUILLOTINE_DECAP_MIN_SHARP  5  // Minimum amount of sharpness for decapitation. Any less and it will just do severe brute damage
+#define GUILLOTINE_BLADE_MAX_SHARP  5 // This is maxiumum sharpness and will decapitate without failure
+#define GUILLOTINE_DECAP_MIN_SHARP  4 // Minimum amount of sharpness for decapitation. Any less and it will just do severe brute damage. 2 executions before it needs to be sharpened.
 #define GUILLOTINE_ANIMATION_LENGTH 5 // How many deciseconds the animation is
 #define GUILLOTINE_ANIMATION_RAISE_LENGTH 36
 #define GUILLOTINE_BLADE_RAISED     1
@@ -35,32 +35,20 @@
 	LAZYINITLIST(buckled_mobs)
 	. = ..()
 
-/obj/structure/guillotine/attackby(obj/item/I, mob/user)
-	if(istype(I, /obj/item/stack/sheet/plasteel))
-		to_chat(user, span_notice("I start repairing the guillotine with the plasteel..."))
-		if(blade_sharpness<10)
-			if(do_after(user,100,target=user))
-				blade_sharpness = min(10,blade_sharpness+3)
-				I.use(1)
-				to_chat(user, span_notice("I repair the guillotine with the plasteel."))
-			else
-				to_chat(user, span_notice("I stop repairing the guillotine with the plasteel."))
-		else
-			to_chat(user, span_warning("The guillotine is already fully repaired!"))
-
 /obj/structure/guillotine/examine(mob/user)
 	. = ..()
 
-	var/msg = "It is [anchored ? "wrenched to the floor." : "unsecured. A wrench should fix that."]<br/>"
+	var/msg = "The blade "
 
 	if (blade_status == GUILLOTINE_BLADE_RAISED)
-		msg += "The blade is raised, ready to fall, and"
+		msg += "is raised, ready to fall, and"
 
 		if (blade_sharpness >= GUILLOTINE_DECAP_MIN_SHARP)
 			msg += " looks sharp enough to decapitate without any resistance."
 		else
-			msg += " doesn't look particularly sharp. Perhaps a whetstone can be used to sharpen it."
-
+			msg += " doesn't look particularly sharp. Perhaps a stone can be used to sharpen it."
+	else
+		msg += "has fallen already."
 	. += msg
 
 /obj/structure/guillotine/attack_hand(mob/user)
@@ -137,6 +125,9 @@
 
 		playsound(src, 'sound/misc/guillotine.ogg', 100, TRUE)
 
+		// The delay is to making large crowds have a longer laster applause
+		var/delay_offset = 0
+
 		if(blade_sharpness >= GUILLOTINE_DECAP_MIN_SHARP || head.brute_dam >= 100)
 			if(head.dismemberable)
 				head.dismember()
@@ -161,17 +152,25 @@
 			add_overlay(mutable_appearance(icon, blood_overlay))
 
 			// The crowd is pleased
-			// The delay is to making large crowds have a longer laster applause
-			var/delay_offset = 0
 			for(var/mob/M in viewers(src, 7))
 				var/mob/living/carbon/human/C = M
 				if (ishuman(M))
+					C.add_stress(/datum/stressevent/guillotinekill)
 					addtimer(CALLBACK(C, TYPE_PROC_REF(/mob, emote), "clap"), delay_offset * 0.3)
 					delay_offset++
 		else
-			H.apply_damage(15 * blade_sharpness, BRUTE, head)
+			H.apply_damage(30 * blade_sharpness, BRUTE, head)
 			log_combat(user, H, "dropped the blade on", src, " non-fatally")
 			H.emote("scream")
+			// Executor has failed and was ashamed
+			user.add_stress(/datum/stressevent/guillotineexecutorfail)
+			// The crowd is unpleased
+			for(var/mob/M in viewers(src, 7))
+				var/mob/living/carbon/human/C = M
+				if (ishuman(M))
+					C.add_stress(/datum/stressevent/guillotinefail)
+					addtimer(CALLBACK(C, TYPE_PROC_REF(/mob, emote), "huh"), delay_offset * 0.3)
+					delay_offset++
 
 		if (blade_sharpness > 1)
 			blade_sharpness -= 1

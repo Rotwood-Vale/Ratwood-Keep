@@ -25,7 +25,7 @@
 				/obj/item/kitchen/spoon)
 	reqs = list(/obj/item/grown/log/tree/small = 1)
 
-	/datum/crafting_recipe/roguetown/platter
+/datum/crafting_recipe/roguetown/platter
 	name = "plater (x3)"
 	result = list(/obj/item/cooking/platter,
 				/obj/item/cooking/platter,
@@ -214,6 +214,16 @@
 
 
 /obj/item/rogueweapon/shield/wood/crafted
+	sellprice = 6
+
+/datum/crafting_recipe/roguetown/heatershield
+	name = "heater shield"
+	result = /obj/item/rogueweapon/shield/heater/crafted
+	reqs = list(/obj/item/grown/log/tree/small = 2,
+				/obj/item/natural/hide = 1)
+	skillcraft = /datum/skill/craft/carpentry
+
+/obj/item/rogueweapon/shield/heater/crafted
 	sellprice = 6
 
 /datum/crafting_recipe/roguetown/woodbucket
