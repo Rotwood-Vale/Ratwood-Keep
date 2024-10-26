@@ -821,14 +821,14 @@ GLOBAL_LIST_EMPTY(ritualslist)
 				to_chat(HL, "<i>You hear a voice in your head... <b>[info]</i></b>")
 		break
 
-/datum/ritual/summonweapons
-	name = "Summon Weaponry"
+/datum/ritual/summongear
+	name = "Summon Gear"
 	circle = "Transmutation"
 	center_requirement = /obj/item/ingot/steel
 
-	function = /proc/summonweapons
+	function = /proc/summongear
 
-/proc/summonweapons(var/mob/user, var/turf/C)
+/proc/summongear(var/mob/user, var/turf/C)
 	var/datum/effect_system/spark_spread/S = new(C)
 	S.set_up(1, 1, C)
 	S.start()
