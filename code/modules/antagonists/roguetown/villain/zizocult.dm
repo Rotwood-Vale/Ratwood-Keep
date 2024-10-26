@@ -711,39 +711,6 @@ GLOBAL_LIST_EMPTY(ritualslist)
 	new /obj/item/corruptedheart(C)
 	to_chat(user.mind, "<span class='notice'>A corrupted heart. When used on a non-enlightened mortal their heart shall ache and they will be immobilized and too stunned to speak. Perfect for getting new soon-to-be enlightened. Now, just don't use it at the combat ready.</span>")
 
-/datum/ritual/darksunmark
-	name = "Dark Sun's Mark"
-	circle = "Servantry"
-	center_requirement = /obj/item/rogueweapon/huntingknife/idagger // Requires a combat dagger. Can be iron, steel or silver.
-
-	function = /proc/darksunmark
-
-/proc/darksunmark(mob/user, turf/C)
-	var/found_assassin = FALSE
-	for(var/obj/item/paper/P in C.contents)
-		if(!user.mind || !user.mind.do_i_know(name=P.info))
-			to_chat(user, "<span class='warning'>I don't know anyone by that name.</span>")
-			return
-		for(var/mob/living/carbon/human/HL in GLOB.human_list)
-			if(HL.real_name == P.info)
-				for (var/mob/living/carbon in world) // Iterate through all mobs in the world
-					if (HAS_TRAIT(carbon, TRAIT_ASSASSIN) && !(carbon.stat == DEAD)) //Check if they are an assassin and alive
-						found_assassin = TRUE
-						for(var/obj/item/I in carbon) // Checks to see if the assassin has their dagger on them. If so, the dagger will let them know of a new target.
-							if(istype(I, /obj/item/rogueweapon/huntingknife/idagger/steel/profane)) // Checks to see if the assassin has their dagger on them.
-								carbon.visible_message("profane dagger whispers, <span class='danger'>\"The terrible Zizo has called for our aid. Hunt and strike down our common foe, [HL.real_name]!\"</span>")
-				if(found_assassin == TRUE)
-					ADD_TRAIT(HL, TRAIT_ZIZOID_HUNTED, TRAIT_GENERIC) // Gives the victim a trait to track that they are wanted dead.
-					log_hunted("[key_name(HL)] playing as [HL] had the hunted flaw by Zizoid curse.")
-					to_chat(HL, "<span class='danger'>My hair stands on end. Has someone just said my name? I should watch my back.</span>")
-					to_chat(user, "<span class='warning'>Your target has been marked, your profane call answered. [HL.real_name] will surely perish!</span>")
-					for(var/obj/item/rogueweapon/huntingknife/idagger/D in C.contents) // Get rid of the dagger used as a sacrifice.
-						qdel(D)
-					qdel(P) // Get rid of the paper with the name on it too.
-					HL.playsound_local(HL.loc, 'sound/magic/marked.ogg', 100)
-				else
-					to_chat(user, "<span class='warning'>There has been no answer to your call to the Dark Sun. It seems his servants are far from here...</span>")
-
 // TRANSMUTATION
 
 /datum/ritual/allseeingeye
@@ -961,7 +928,7 @@ GLOBAL_LIST_EMPTY(ritualslist)
 			return
 		to_chat(user.mind, span_danger("SOON I WILL BECOME A HIGHER FORM!!!"))
 		sleep(5 SECONDS)
-		var/mob/living/trl = new /mob/living/simple_animal/hostile/retaliate/rogue/troll/blood(H)
+		var/mob/living/trl = new /mob/living/simple_animal/hostile/retaliate/rogue/blood(H)
 		trl.forceMove(H)
 		trl.ckey = H.ckey
 		H.gib()

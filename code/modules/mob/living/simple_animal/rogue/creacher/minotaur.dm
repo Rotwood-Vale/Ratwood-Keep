@@ -78,19 +78,17 @@
 	defdrain = 15
 	del_on_deaggro = 99 SECONDS
 	retreat_health = 0
-	food_max = 250
 	food = 0
 	dodgetime = 20
 	aggressive = TRUE
 //	stat_attack = UNCONSCIOUS
-	remains_type = /obj/effect/decal/remains/troll // Placeholder until Troll remains are sprited.
-	body_eater = TRUE
+
 
 /mob/living/simple_animal/hostile/retaliate/rogue/blood/Initialize()
 	. = ..()
 	ADD_TRAIT(src, TRAIT_BLOODLOSS_IMMUNE, TRAIT_GENERIC)
 
-/mob/living/simple_animal/hostile/retaliate/rogue/troll/blood/ascended
+/mob/living/simple_animal/hostile/retaliate/rogue/blood/ascended
 	name = "???"
 	desc = ""
 	hud_type = /datum/hud/human
@@ -108,17 +106,17 @@
 	STASPD = 66
 	STAEND = 66
 
-/mob/living/simple_animal/hostile/retaliate/rogue/troll/blood/ascended/examine(mob/user)
+/mob/living/simple_animal/hostile/retaliate/rogue/blood/ascended/examine(mob/user)
 	. = ..()
 	. += "<span class='narsiesmall'>It is impossible to comprehend such a thing.</span>"
 
-/mob/living/simple_animal/hostile/retaliate/rogue/troll/blood/ascended/Initialize()
+/mob/living/simple_animal/hostile/retaliate/rogue/blood/ascended/Initialize()
 	. = ..()
 	set_light(5,5, LIGHT_COLOR_RED)
 	ADD_TRAIT(src, TRAIT_CRITICAL_RESISTANCE, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_BLOODLOSS_IMMUNE, TRAIT_GENERIC)
 
-/mob/living/simple_animal/hostile/retaliate/rogue/troll/blood/ascended/get_sound(input)
+/mob/living/simple_animal/hostile/retaliate/rogue/blood/ascended/get_sound(input)
 	switch(input)
 		if("aggro")
 			return pick('sound/misc/HL (1).ogg','sound/misc/HL (2).ogg','sound/misc/HL (3).ogg','sound/misc/HL (4).ogg','sound/misc/HL (5).ogg','sound/misc/HL (6).ogg')
@@ -131,12 +129,12 @@
 		if("cidle")
 			return pick('sound/misc/HL (1).ogg','sound/misc/HL (2).ogg','sound/misc/HL (3).ogg','sound/misc/HL (4).ogg','sound/misc/HL (5).ogg','sound/misc/HL (6).ogg')
 
-/mob/living/simple_animal/hostile/retaliate/rogue/troll/blood/death(gibbed)
+/mob/living/simple_animal/hostile/retaliate/rogue/blood/death(gibbed)
 	. = ..()
 	gib()
 	qdel(src)
 
-/mob/living/simple_animal/hostile/retaliate/rogue/troll/death(gibbed)
+/mob/living/simple_animal/hostile/retaliate/rogue/death(gibbed)
 	..()
 	update_icon()
 
