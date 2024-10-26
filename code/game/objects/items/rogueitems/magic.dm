@@ -38,13 +38,13 @@
 		return
 	if(!user.key)
 		return
-	if(world.time < last_scry + cooldown)
-		to_chat(user, span_warning("I look into the ball but only see inky smoke. Maybe I should wait."))
-		return
 	if(!user.mind || !user.mind.do_i_know(name=input))
 		to_chat(user, span_warning("I don't know anyone by that name."))
 		return
 	var/arcane_skill = user.mind.get_skill_level(/datum/skill/magic/arcane)
+	if(!do_after(user, (60 / arcane_skill), target = user))
+		to_chat(user, span_warning("I need to focus..."))
+		return
 	var/success_chance = 0
 	switch(arcane_skill)
 		if(SKILL_LEVEL_NONE)
@@ -67,6 +67,7 @@
 		playsound(src, "shatter", 70, TRUE)
 		qdel(src)
 		return
+	playsound(src, 'sound/magic/whiteflame.ogg', 100, TRUE)
 	for(var/mob/living/carbon/human/HL in GLOB.human_list)
 		if(HL.real_name == input)
 			var/turf/T = get_turf(HL)
