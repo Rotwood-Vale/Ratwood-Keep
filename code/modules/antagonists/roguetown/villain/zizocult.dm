@@ -973,19 +973,6 @@ GLOBAL_LIST_EMPTY(ritualslist)
 				cavity.cavity_item.forceMove(drop_location)
 				cavity.cavity_item = null
 
-/datum/ritual/badomen
-	name = "Bad Omen"
-	circle = "Fleshcrafting"
-	center_requirement = /mob/living/carbon/human
-
-	function = /proc/badomenzizo
-
-/proc/badomenzizo(mob/user, turf/C)
-	for(var/mob/living/carbon/human/H in C.contents)
-		if(H.stat == DEAD)
-			H.gib(FALSE, FALSE, FALSE)
-			addomen("roundstart")
-
 /datum/ritual/ascend
 	name = "ASCEND!"
 	circle = "Fleshcrafting"
