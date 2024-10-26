@@ -833,11 +833,11 @@ GLOBAL_LIST_EMPTY(ritualslist)
 	S.set_up(1, 1, C)
 	S.start()
 
-	new /obj/item/clothing/head/roguetown/helmet/leather/hood_ominous/cult(C)
-	new /obj/item/clothing/head/roguetown/helmet/leather/hood_ominous/cult(C)
+	new /obj/item/clothing/head/roguetown/helmet/leather/cult_hood(C)
+	new /obj/item/clothing/head/roguetown/helmet/leather/cult_hood(C)
 
-	new /obj/item/clothing/cloak/half/shadowcloak/cult(C)
-	new /obj/item/clothing/cloak/half/shadowcloak/cult(C)
+	new /obj/item/clothing/suit/roguetown/armor/leather/cult_robe(C)
+	new /obj/item/clothing/suit/roguetown/armor/leather/cult_robe(C)
 
 	new /obj/item/rogueweapon/sword(C)
 	new /obj/item/rogueweapon/huntingknife(C)

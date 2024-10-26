@@ -514,8 +514,8 @@
 	body_parts_covered = HEAD|HAIR
 
 //................ CULTIST HOOD ............... //
-/obj/item/clothing/head/roguetown/helmet/leather/hood_ominous/cult
-	name = "ominous hood"
+/obj/item/clothing/head/roguetown/helmet/leather/cult_hood
+	name = "cultist hood"
 	desc = "It echoes with ominous laughter."
 	icon_state = "warlockhood"
 	dynamic_hair_suffix = ""

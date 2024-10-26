@@ -493,3 +493,23 @@
 	sleeved = 'icons/roguetown/clothing/onmob/helpers/stonekeep_merc.dmi'
 	boobed = TRUE
 	max_integrity = 400
+
+/obj/item/clothing/suit/roguetown/armor/leather/cult_robe
+	name = "cultist robes"
+	desc = " "
+	icon_state = "warlock"
+	item_state = "warlock"
+	color = "#514339"
+	armor = list("blunt" = 30, "slash" = 10, "stab" = 20, "bullet" = 5, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	prevent_crits = list(BCLASS_CUT)
+	blocksound = SOFTHIT
+	slot_flags = ITEM_SLOT_ARMOR|ITEM_SLOT_SHIRT
+	blade_dulling = DULLING_BASHCHOP
+	body_parts_covered = CHEST|VITALS|LEGS
+	break_sound = 'sound/foley/cloth_rip.ogg'
+	drop_sound = 'sound/foley/dropsound/cloth_drop.ogg'
+	sewrepair = TRUE
+	sleevetype = null
+	sleeved = null
+	armor_class = ARMOR_CLASS_LIGHT
+	salvage_result = /obj/item/natural/hide
