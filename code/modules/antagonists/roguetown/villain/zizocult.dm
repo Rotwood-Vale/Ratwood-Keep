@@ -695,7 +695,7 @@ GLOBAL_LIST_EMPTY(ritualslist)
 		var/mob/living/carbon/human/H = M
 		if(iszizocultist(H) || iszizolackey(H))
 			H.blood_volume = BLOOD_VOLUME_MAXIMUM
-			to_chat(H, "<span class='notice'>My elixir of life is stagnant once again.</span>")
+			to_chat(H, span_notice("My elixir of life is stagnant once again."))
 			qdel(src)
 		else
 			if(!do_mob(user, H, 2 SECONDS))
@@ -709,7 +709,7 @@ GLOBAL_LIST_EMPTY(ritualslist)
 
 /proc/heartache(mob/user, turf/C)
 	new /obj/item/corruptedheart(C)
-	to_chat(user.mind, "<span class='notice'>A corrupted heart. When used on a non-enlightened mortal their heart shall ache and they will be immobilized and too stunned to speak. Perfect for getting new soon-to-be enlightened. Now, just don't use it at the combat ready.</span>")
+	to_chat(user.mind, span_notice("A corrupted heart. When used on a non-enlightened mortal their heart shall ache and they will be immobilized and too stunned to speak. Perfect for getting new soon-to-be enlightened. Now, just don't use it at the combat ready."))
 
 // TRANSMUTATION
 
@@ -859,7 +859,7 @@ GLOBAL_LIST_EMPTY(ritualslist)
 	for(var/mob/living/carbon/human/H in C.contents)
 		H.playsound_local(C, 'sound/misc/vampirespell.ogg', 100, FALSE, pressure_affected = FALSE)
 		H.fully_heal()
-		to_chat(H.mind, "<span class='notice'>ZIZO EMPOWERS ME!</span>")
+		to_chat(H.mind, span_notice("ZIZO EMPOWERS ME!"))
 		break
 
 
