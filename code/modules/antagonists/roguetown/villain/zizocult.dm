@@ -168,6 +168,9 @@ GLOBAL_LIST_EMPTY(ritualslist)
 	set name = "Praise the Godhead!"
 	set category = "ZIZO"
 
+	if(stat == DEAD)
+		return
+
 	// 3 seconds cooldown
 	if(mob_timers["cult_praise_zizo"])
 		if(world.time < mob_timers["cult_praise_zizo"] + 3 SECONDS)
@@ -181,6 +184,9 @@ GLOBAL_LIST_EMPTY(ritualslist)
 /mob/living/carbon/human/proc/communicate()
 	set name = "Communicate"
 	set category = "ZIZO"
+
+	if(stat == DEAD)
+		return
 
 	// 5 seconds cooldown
 	if(mob_timers["cult_communicate"])
