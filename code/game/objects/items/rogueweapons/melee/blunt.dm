@@ -106,7 +106,7 @@
 	name = "warhammer"
 	desc = "Made to punch through armor and skull alike."
 	icon_state = "iwarhammer"
-	wbalance = -1
+	wbalance = 0
 	smeltresult = /obj/item/ingot/iron
 	blade_dulling = DULLING_BASH
 	wdefense = 3
@@ -187,6 +187,7 @@
 	attack_verb = list("picks", "impales")
 	hitsound = list('sound/combat/hits/blunt/metalblunt (1).ogg', 'sound/combat/hits/blunt/metalblunt (2).ogg', 'sound/combat/hits/blunt/metalblunt (3).ogg')
 	chargetime = 14
+	chargedrain = 1
 	misscost = 1
 	no_early_release = TRUE
 	penfactor = 80
