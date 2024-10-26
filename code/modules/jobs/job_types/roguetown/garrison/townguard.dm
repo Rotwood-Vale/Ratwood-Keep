@@ -17,7 +17,7 @@
 	advclass_cat_rolls = list(CTAG_WATCH = 20)
 
 	give_bank_account = 16
-	min_pq = 0
+	min_pq = 1 //Introductory guard role, but still requires knowledge of escalation.
 	max_pq = null
 
 	cmode_music = 'sound/music/combat_guard.ogg'

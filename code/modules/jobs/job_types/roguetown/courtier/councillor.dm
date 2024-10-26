@@ -15,7 +15,7 @@
 
 	give_bank_account = 40
 	noble_income = 20
-	min_pq = 1
+	min_pq = 1 //Probably a bad idea to have a complete newbie advising the monarch
 	max_pq = null
 
 	cmode_music = 'sound/music/combat_fancy.ogg'

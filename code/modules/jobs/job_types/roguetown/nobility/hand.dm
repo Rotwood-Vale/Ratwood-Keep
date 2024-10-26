@@ -15,7 +15,7 @@
 	whitelist_req = TRUE
 	give_bank_account = 44
 	noble_income = 22
-	min_pq = 0
+	min_pq = 6 //The second most powerful person in the realm...is Mhelping where the keep is
 	max_pq = null
 	cmode_music = 'sound/music/combat_fancy.ogg'
 

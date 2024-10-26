@@ -13,7 +13,7 @@
 	outfit = /datum/outfit/job/roguetown/steward
 	give_bank_account = 22
 	noble_income = 16
-	min_pq = 1
+	min_pq = 3 //Please don't give the vault keys to somebody that's going to lock themselves in on accident
 	max_pq = null
 
 /datum/outfit/job/roguetown/steward/pre_equip(mob/living/carbon/human/H)

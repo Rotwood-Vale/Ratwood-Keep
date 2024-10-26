@@ -19,7 +19,7 @@
 
 	display_order = JDO_PRIEST
 	give_bank_account = 115
-	min_pq = 5
+	min_pq = 5 // You should know the basics of things if you're going to lead the town's entire religious sector
 	max_pq = null
 
 /datum/outfit/job/roguetown/priest

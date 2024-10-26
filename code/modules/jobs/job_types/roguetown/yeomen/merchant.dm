@@ -13,7 +13,7 @@
 
 	outfit = /datum/outfit/job/roguetown/merchant
 	give_bank_account = 22
-	min_pq = 0
+	min_pq = 1 //"Yeah...my guy says the best I can do is one PQ, final offer"
 	max_pq = null
 	required = TRUE
 

@@ -18,7 +18,7 @@
 	whitelist_req = TRUE
 
 	give_bank_account = 30
-	min_pq = 0
+	min_pq = 3 //Please don't kill the monarch by operating on strong intent. Play apothecary until you're deserving of the great white beak of doom
 	max_pq = null
 
 	cmode_music = 'sound/music/combat_physician.ogg'

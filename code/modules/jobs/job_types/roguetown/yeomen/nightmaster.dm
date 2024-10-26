@@ -12,7 +12,7 @@
 	outfit = /datum/outfit/job/roguetown/niteman
 	display_order = JDO_NITEMASTER
 	give_bank_account = 20
-	min_pq = 0
+	min_pq = 1 //No drugs until you finish the tutorial, Jimmy!
 	max_pq = null
 	bypass_lastclass = TRUE
 

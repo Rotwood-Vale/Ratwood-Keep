@@ -17,7 +17,7 @@
 	outfit = /datum/outfit/job/roguetown/magician
 	whitelist_req = TRUE
 	give_bank_account = 47
-	min_pq = 0
+	min_pq = 4 //High potential for abuse, lovepotion/killersice/greater fireball is not for the faint of heart
 	max_pq = null
 
 /datum/outfit/job/roguetown/magician/pre_equip(mob/living/carbon/human/H)

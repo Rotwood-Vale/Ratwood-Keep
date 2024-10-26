@@ -15,7 +15,7 @@
 
 	outfit = /datum/outfit/job/roguetown/veteran
 	give_bank_account = 35
-	min_pq = 0
+	min_pq = 5 //Should...probably actually be a veteran of at least a few weeks before trying to teach others
 	max_pq = null
 
 	cmode_music = 'sound/music/combat_guard.ogg'

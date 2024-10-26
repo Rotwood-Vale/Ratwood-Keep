@@ -13,7 +13,7 @@
 	outfit = /datum/outfit/job/roguetown/archivist
 	display_order = JDO_ARCHIVIST
 	give_bank_account = 15
-	min_pq = 0
+	min_pq = 1 // Please do not read smut while brewing bottle bombs. It upsets the maids when they have to scrape archivists off the ceiling.
 	max_pq = null
 
 	cmode_music = 'sound/music/combat_fancy.ogg'
