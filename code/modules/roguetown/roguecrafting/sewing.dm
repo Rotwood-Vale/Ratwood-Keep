@@ -320,6 +320,12 @@
 
 /// LEATHER ///
 
+/datum/crafting_recipe/roguetown/sewing/belt
+	name = "leather belt"
+	result = /obj/item/storage/belt/rogue/leather
+	reqs = list(/obj/item/natural/hide/cured = 1)
+	craftdiff = 2
+
 /datum/crafting_recipe/roguetown/sewing/bandana
 	name = "leather bandana"
 	result = /obj/item/clothing/head/roguetown/helmet/bandana

@@ -11,6 +11,11 @@
 	result = /obj/item/clothing/cloak/raincloak/brown
 	reqs = list(/obj/item/natural/hide/cured = 2)
 
+/datum/crafting_recipe/roguetown/hunting/belt
+	name = "leather belt"
+	result = /obj/item/storage/belt/rogue/leather
+	reqs = list(/obj/item/natural/hide/cured = 1)
+
 /datum/crafting_recipe/roguetown/hunting/gloves
 	name = "leather gloves"
 	result = list(/obj/item/clothing/gloves/roguetown/leather)
