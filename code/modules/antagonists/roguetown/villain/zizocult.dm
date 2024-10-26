@@ -647,15 +647,6 @@ GLOBAL_LIST_EMPTY(ritualslist)
 		H.dna.update_dna_identity()
 		break
 
-/datum/ritual/heartache
-	name = "Heartaches"
-	circle = "Servantry"
-	center_requirement = /obj/item/organ/heart
-
-	n_req = /obj/item/natural/worms/leech
-
-	function = /proc/heartache
-
 /obj/item/pactofunity // Not paper because I don't fuck with that.
 	name = "pact of unity"
 	desc = "Write down your name and about your fiendish ways."
@@ -704,6 +695,19 @@ GLOBAL_LIST_EMPTY(ritualslist)
 	new /obj/item/pactofunity(C)
 	to_chat(user.mind, span_notice("The Pact of Unity. When a person willingly signs their name on this they become my pawn. When I rip up the paper their soul is good as dead."))
 
+/datum/ritual/heartache
+	name = "Heartache"
+	circle = "Servantry"
+	center_requirement = /obj/item/organ/heart
+
+	n_req = /obj/item/natural/worms/leech
+
+	function = /proc/heartache
+	
+/proc/heartache(mob/user, turf/C)
+	new /obj/item/corruptedheart(C)
+	to_chat(user.mind, span_notice("A corrupted heart. When used on a non-enlightened mortal their heart shall ache and they will be immobilized and too stunned to speak. Perfect for getting new soon-to-be enlightened. Now, just don't use it at the combat ready."))
+
 /obj/item/corruptedheart
 	name = "corrupted heart"
 	desc = "It sparkles with forbidden magic energy. It makes all the heart aches go away."
@@ -714,7 +718,7 @@ GLOBAL_LIST_EMPTY(ritualslist)
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
 		if(iszizocultist(H) || iszizolackey(H))
-			H.blood_volume = BLOOD_VOLUME_MAXIMUM
+			H.fully_heal()
 			to_chat(H, span_notice("My elixir of life is stagnant once again."))
 			qdel(src)
 		else
@@ -726,10 +730,6 @@ GLOBAL_LIST_EMPTY(ritualslist)
 			H.Stun(10 SECONDS)
 			H.silent += 30
 			qdel(src)
-
-/proc/heartache(mob/user, turf/C)
-	new /obj/item/corruptedheart(C)
-	to_chat(user.mind, span_notice("A corrupted heart. When used on a non-enlightened mortal their heart shall ache and they will be immobilized and too stunned to speak. Perfect for getting new soon-to-be enlightened. Now, just don't use it at the combat ready."))
 
 // TRANSMUTATION
 
@@ -850,6 +850,21 @@ GLOBAL_LIST_EMPTY(ritualslist)
 
 // FLESH CRAFTING
 
+/datum/ritual/fleshmend
+	name = "Fleshmend"
+	circle = "Fleshcrafting"
+	center_requirement = /mob/living/carbon/human
+	n_req =  /obj/item/reagent_containers/food/snacks/rogue/meat
+
+	function = /proc/fleshmend
+
+/proc/fleshmend(mob/user, turf/C)
+	for(var/mob/living/carbon/human/H in C.contents)
+		H.playsound_local(C, 'sound/misc/vampirespell.ogg', 100, FALSE, pressure_affected = FALSE)
+		H.fully_heal(admin_revive = TRUE)
+		to_chat(H.mind, span_notice("ZIZO EMPOWERS ME!"))
+		break
+
 /datum/ritual/bunnylegs
 	name = "Saliendo Pedes"
 	circle = "Fleshcrafting"
@@ -866,23 +881,6 @@ GLOBAL_LIST_EMPTY(ritualslist)
 		ADD_TRAIT(H, TRAIT_ZJUMP, TRAIT_GENERIC)
 		to_chat(H.mind, span_notice("I feel like my legs have become stronger."))
 		break
-
-/datum/ritual/fleshmend
-	name = "Fleshmend"
-	circle = "Fleshcrafting"
-	center_requirement = /mob/living/carbon/human
-	n_req =  /obj/item/reagent_containers/food/snacks/rogue/meat
-
-	function = /proc/fleshmend
-
-/proc/fleshmend(mob/user, turf/C)
-	for(var/mob/living/carbon/human/H in C.contents)
-		H.playsound_local(C, 'sound/misc/vampirespell.ogg', 100, FALSE, pressure_affected = FALSE)
-		H.fully_heal()
-		to_chat(H.mind, span_notice("ZIZO EMPOWERS ME!"))
-		break
-
-
 
 /datum/ritual/darkeyes
 	name = "Darkened Eyes"
