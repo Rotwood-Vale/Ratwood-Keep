@@ -182,6 +182,7 @@
 	icon_state = "chain_legs"
 	item_state = "chain_legs"
 //	adjustable = CAN_CADJUST
+	armor_class = ARMOR_CLASS_HEAVY
 	sewrepair = FALSE
 	armor = list("blunt" = 90, "slash" = 100, "stab" = 80, "bullet" = 50, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
 	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT)
@@ -189,6 +190,7 @@
 	var/do_sound = FALSE
 	drop_sound = 'sound/foley/dropsound/armor_drop.ogg'
 	anvilrepair = /datum/skill/craft/blacksmithing
+	smeltresult = /obj/item/ingot/steel
 	r_sleeve_status = SLEEVE_NOMOD
 	l_sleeve_status = SLEEVE_NOMOD
 	w_class = WEIGHT_CLASS_BULKY
@@ -231,3 +233,23 @@
 		if(get_detail_color())
 			pic.color = get_detail_color()
 		add_overlay(pic)
+
+/obj/item/clothing/under/roguetown/splintlegs
+	name = "brigandine chausses"
+	desc = "Splint mail and brigandine chausses, designed to protect the legs while still providing almost complete free range of movement."
+	icon_state = "splintlegs"
+	item_state = "splintlegs"
+	max_integrity = 250
+	armor = list("blunt" = 60, "slash" = 70, "stab" = 70, "bullet" = 60, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT)
+	blocksound = SOFTHIT
+	drop_sound = 'sound/foley/dropsound/chain_drop.ogg'
+	anvilrepair = /datum/skill/craft/blacksmithing
+	smeltresult = /obj/item/ingot/iron
+	r_sleeve_status = SLEEVE_NOMOD
+	l_sleeve_status = SLEEVE_NOMOD
+	armor_class = ARMOR_CLASS_MEDIUM
+	w_class = WEIGHT_CLASS_NORMAL
+	clothing_flags = CANT_SLEEP_IN
+	resistance_flags = FIRE_PROOF
+	sewrepair = FALSE

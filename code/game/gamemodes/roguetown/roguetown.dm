@@ -198,8 +198,9 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "E
 	"Priest",
 	"Knight")
 	var/num_bandits = 0
-	if(num_players() >= 10)
-		num_bandits = CLAMP(round(num_players() / 2), 25, 30)
+	if(num_players() >= 8)
+		// 1 bandit per 8 players, 0 if less than 8, no maximum
+		num_bandits = round(num_players() / 8)
 		banditgoal += (num_bandits * rand(200,400))
 
 	if(num_bandits)
@@ -444,10 +445,7 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "E
 	"Bog Master",
 	"Knight",
 	"Mortician",
-	"Desert Rider",
-	"Desert Rider Mercenary",
-	"Grenzelhoft Mercenary",
-	"Sellsword"
+	"Mercenary"
 	)
 
 	var/num_werewolves = rand(1,2)
