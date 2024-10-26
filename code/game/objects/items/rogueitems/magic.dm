@@ -26,12 +26,16 @@
 	icon_state ="scryeye"
 	cooldown = 5 MINUTES
 
+/obj/item/scrying/examine(mob/user)
+	if(world.time < last_scry + cooldown)
+		. += "The orb requires rest..."
+	else
+		. += "The orb seems eager to be used!"
+	..()
+
 /obj/item/scrying/attack_self(mob/living/user)
 	. = ..()
 	if(!user.mind)
-		return
-	if(world.time < last_scry + cooldown)
-		to_chat(user, span_warning("I look into the ball but only see inky smoke. Maybe I should wait."))
 		return
 	var/input = stripped_input(user, "Who are you looking for?", "Scrying Orb")
 	if(!input)
@@ -42,31 +46,36 @@
 		to_chat(user, span_warning("I don't know anyone by that name."))
 		return
 	var/arcane_skill = user.mind.get_skill_level(/datum/skill/magic/arcane)
+	if(world.time < last_scry + cooldown)
+		to_chat(user, span_warning("The orb doesn't seem ready. Maybe I should wait..."))
 	if(!do_after(user, (60 / arcane_skill), target = user))
 		to_chat(user, span_warning("I need to focus..."))
 		return
 	var/success_chance = 0
-	switch(arcane_skill)
-		if(SKILL_LEVEL_NONE)
-			success_chance = 50
-		if(SKILL_LEVEL_NOVICE)
-			success_chance = 65
-		if(SKILL_LEVEL_APPRENTICE) //Apprentices have this
-			success_chance = 80
-		if(SKILL_LEVEL_JOURNEYMAN) // Adventurer mages have this
-			success_chance = 90
-		if(SKILL_LEVEL_EXPERT)
-			success_chance = 94
-		if(SKILL_LEVEL_MASTER || SKILL_LEVEL_LEGENDARY) // Magus has this
-			success_chance = 100
-	if(!prob(success_chance))
-		to_chat(user, span_boldwarning("You focus your thoughts on the orb, but feel a sharp pain!"))
-		visible_message("\The [src] shatters!")
-		user.flash_fullscreen("redflash1")
-		new /obj/item/shard(get_turf(src))
-		playsound(src, "shatter", 70, TRUE)
-		qdel(src)
-		return
+	if(world.time < last_scry + cooldown)
+		switch(arcane_skill)
+			if(SKILL_LEVEL_NONE)
+				success_chance = 50
+			if(SKILL_LEVEL_NOVICE)
+				success_chance = 65
+			if(SKILL_LEVEL_APPRENTICE) //Apprentices have this
+				success_chance = 80
+			if(SKILL_LEVEL_JOURNEYMAN) // Adventurer mages have this
+				success_chance = 90
+			if(SKILL_LEVEL_EXPERT)
+				success_chance = 94
+			if(SKILL_LEVEL_MASTER) // Magus has this
+				success_chance = 97
+			if(SKILL_LEVEL_LEGENDARY)
+				success_chance = 100
+		if(!prob(success_chance))
+			to_chat(user, span_boldwarning("You focus your thoughts on the orb, but feel a sharp pain!"))
+			visible_message("\The [src] shatters!")
+			user.flash_fullscreen("redflash1")
+			new /obj/item/shard(get_turf(src))
+			playsound(src, "shatter", 70, TRUE)
+			qdel(src)
+			return
 	playsound(src, 'sound/magic/whiteflame.ogg', 100, TRUE)
 	for(var/mob/living/carbon/human/HL in GLOB.human_list)
 		if(HL.real_name == input)
