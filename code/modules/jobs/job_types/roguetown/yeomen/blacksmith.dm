@@ -8,7 +8,7 @@
 
 	allowed_races = RACES_ALL_KINDS
 
-	tutorial = "You studied for many decades under your master with a few other apprentices to become an Armorer, a trade that certainly has seen a boom in revenue in recent times with many a bannerlord seeing the importance in maintaining a well-equipped army."
+	tutorial = "You studied for many decades under your master with a few other apprentices to become an Armorer--a trade that certainly has seen a boom in recent times, with many a bannerlord keenly aware of the importance in maintaining a well-equipped army."
 
 	outfit = /datum/outfit/job/roguetown/armorsmith
 	display_order = JDO_ARMORER

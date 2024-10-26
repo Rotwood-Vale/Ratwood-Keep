@@ -8,7 +8,7 @@
 
 	allowed_races = RACES_ALL_KINDS
 
-	tutorial = "You came to Azure Peak after hearing that there is a lack of potion-makers outside of the nobility. Stir up potions with your alchemy expertise, of health or death."
+	tutorial = "You came to Azure Peak after hearing that there is a lack of potion-makers outside of the nobility. Stir up potions with your alchemy expertise--whether of health or death."
 
 	outfit = /datum/outfit/job/roguetown/alchemist
 	display_order = 6
