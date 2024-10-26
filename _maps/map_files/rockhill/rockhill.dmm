@@ -14212,6 +14212,12 @@
 /obj/item/grown/log/tree/small,
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors)
+"nBL" = (
+/obj/structure/fermenting_barrel/random/water{
+	name = "Water barrel"
+	},
+/turf/open/floor/rogue/concrete,
+/area/rogue/indoors/town/tavern)
 "nBM" = (
 /obj/machinery/light/rogue/torchholder{
 	dir = 8
@@ -186661,7 +186667,7 @@ vRu
 rSC
 rSC
 csO
-wxX
+nBL
 ckL
 nRZ
 nRZ
