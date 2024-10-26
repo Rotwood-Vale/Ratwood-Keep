@@ -151,6 +151,12 @@
 	name = "undead eyes"
 	desc = ""
 
+/obj/item/organ/eyes/night_vision/zombie/on_life()
+	. = ..()
+	if (!(owner.mob_biotypes & MOB_UNDEAD))
+		if (prob(10))
+			owner.adjustToxLoss(0.2)
+
 /obj/item/organ/eyes/night_vision/werewolf
 	name = "moonlight eyes"
 	desc = ""
@@ -159,6 +165,17 @@
 	name = "burning red eyes"
 	desc = ""
 	icon_state = "burning_eyes"
+
+/obj/item/organ/eyes/night_vision/wild_goblin
+	name = "wild goblin eyes"
+	desc = "What manner of madness have these reddened orbs espied in the darker places of the realm?"
+	icon_state = "burning_eyes"
+
+/obj/item/organ/eyes/night_vision/wild_goblin/on_life()
+	. = ..()
+	if (!istype(owner, /mob/living/carbon/human/species/goblin))
+		if (prob(10))
+			owner.adjustToxLoss(0.2)
 
 /obj/item/organ/eyes/night_vision/mushroom
 	name = "fung-eye"
