@@ -167,13 +167,26 @@ GLOBAL_LIST_EMPTY(ritualslist)
 /mob/living/carbon/human/proc/praise()
 	set name = "Praise the Godhead!"
 	set category = "ZIZO"
+
+	// 3 seconds cooldown
+	if(mob_timers["cult_praise_zizo"])
+		if(world.time < mob_timers["cult_praise_zizo"] + 3 SECONDS)
+			return
+	mob_timers["cult_praise_zizo"] = world.time
+
 	audible_message("[src] praises " + span_bold("Zizo") + "!")
-	log_game("[src] praises Zizo!")
+	log_game("[src.real_name] praises Zizo!")
 	playsound(src.loc, 'sound/vo/cult/praise.ogg', 45, 1)
 
 /mob/living/carbon/human/proc/communicate()
 	set name = "Communicate"
 	set category = "ZIZO"
+
+	// 5 seconds cooldown
+	if(mob_timers["cult_communicate"])
+		if(world.time < mob_timers["cult_communicate"] + 5 SECONDS)
+			return
+	mob_timers["cult_communicate"] = world.time
 
 	var/datum/game_mode/chaosmode/C = SSticker.mode
 	var/speak = input("What do you speak of?", "RATWOOD") as text|null
@@ -181,6 +194,7 @@ GLOBAL_LIST_EMPTY(ritualslist)
 		return
 	whisper("O schlet'a ty'schkotot ty'skvoro...")
 	whisper("[speak]")
+	log_game("[src.real_name]: [speak]")
 
 	for(var/datum/mind/V in C.cultists)
 		to_chat(V, span_boldnotice("A message from [src.real_name]: \"[speak]\""))
