@@ -932,9 +932,9 @@ GLOBAL_LIST_EMPTY(ritualslist)
 	circle = "Fleshcrafting"
 	center_requirement = /mob/living/carbon/human
 
-	w_req = /obj/item/organ/guts
-	e_req = /obj/item/organ/guts
-	n_req = /obj/item/reagent_containers/food/snacks/rogue/meat
+	w_req = /obj/item/bodypart/l_arm
+	e_req = /obj/item/bodypart/r_arm
+	n_req = /obj/item/organ/eyes
 	s_req = /obj/item/reagent_containers/food/snacks/rogue/meat
 
 	function = /proc/fleshform
