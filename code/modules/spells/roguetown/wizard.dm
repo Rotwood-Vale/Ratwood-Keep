@@ -312,7 +312,7 @@
 	nodamage = FALSE
 	flag = "bullet"
 	hitsound = 'sound/blank.ogg'
-	speed = 2
+	speed = 1
 
 /obj/projectile/energy/rogue3/on_hit(target)
 	. = ..()
