@@ -74,9 +74,8 @@
 		H.mind.adjust_skillrank(/datum/skill/misc/riding, 4, TRUE)
 		H.change_stat("strength", 4)
 		H.change_stat("perception", 1)
-		H.change_stat("intelligence", 2)
-		H.change_stat("constitution", 3)
-		H.change_stat("endurance", 2)
+		H.change_stat("constitution", 4)
+		H.change_stat("endurance", 3)
 		H.change_stat("speed", -1)
 	H.dna.species.soundpack_m = new /datum/voicepack/male/knight()
 
