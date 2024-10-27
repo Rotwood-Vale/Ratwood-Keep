@@ -1396,9 +1396,8 @@
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors/town/tavern)
 "brn" = (
-/obj/structure/roguewindow/openclose{
-	dir = 4;
-	icon_state = "woodwindowdir"
+/obj/structure/roguewindow/openclose/reinforced{
+	dir = 4
 	},
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors/town/shop)
@@ -1485,7 +1484,10 @@
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/indoors/shelter/woods)
 "bzn" = (
-/obj/structure/closet/crate/roguecloset,
+/obj/structure/closet/crate/roguecloset{
+	locked = 1;
+	lockid = "steward"
+	},
 /obj/item/roguekey/vault,
 /turf/open/floor/rogue/tile/tilerg,
 /area/rogue/indoors)
@@ -1698,9 +1700,8 @@
 /turf/open/floor/rogue/grass,
 /area/rogue/outdoors/town)
 "bIP" = (
-/obj/structure/roguewindow/openclose{
-	dir = 4;
-	icon_state = "woodwindowdir"
+/obj/structure/roguewindow/openclose/reinforced{
+	dir = 4
 	},
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors)
@@ -3081,7 +3082,10 @@
 /turf/open/floor/rogue/cobble,
 /area/rogue/indoors/town)
 "ddE" = (
-/obj/structure/closet/crate/chest,
+/obj/structure/closet/crate/chest{
+	lockid = "steward";
+	locked = 1
+	},
 /obj/item/roguekey/manor,
 /obj/item/roguekey/walls,
 /obj/item/roguekey/blacksmith,
@@ -3471,7 +3475,9 @@
 /area/rogue/indoors/town/shop)
 "dxs" = (
 /obj/structure/closet/crate/chest{
-	name = "spare house keys"
+	name = "spare house keys";
+	locked = 1;
+	lockid = "steward"
 	},
 /obj/item/roguekey/houses/house1,
 /obj/item/roguekey/houses/house2,
@@ -3663,7 +3669,9 @@
 /area/rogue/indoors/town)
 "dHr" = (
 /obj/structure/closet/crate/chest{
-	name = "house keys"
+	name = "house keys";
+	lockid = "steward";
+	locked = 1
 	},
 /obj/item/roguekey/houses/house1,
 /obj/item/roguekey/houses/house2,
@@ -4532,6 +4540,10 @@
 	},
 /turf/open/floor/rogue/woodturned,
 /area/rogue/outdoors/town/roofs)
+"ezi" = (
+/obj/structure/roguemachine/scomm/l,
+/turf/open/floor/rogue/blocks/stonered/tiny,
+/area/rogue/indoors)
 "ezZ" = (
 /obj/effect/decal/cobbleedge{
 	dir = 8
@@ -5093,9 +5105,8 @@
 	},
 /area/rogue/indoors/town/bath)
 "ffs" = (
-/obj/structure/roguewindow/openclose{
-	dir = 1;
-	icon_state = "woodwindowdir"
+/obj/structure/roguewindow/openclose/reinforced{
+	dir = 1
 	},
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors)
@@ -11082,9 +11093,8 @@
 /turf/open/floor/rogue/twig,
 /area/rogue/indoors/town)
 "lkx" = (
-/obj/structure/roguewindow/openclose{
-	dir = 1;
-	icon_state = "woodwindowdir"
+/obj/structure/roguewindow/openclose/reinforced{
+	dir = 1
 	},
 /turf/open/floor/rogue/ruinedwood/herringbone,
 /area/rogue/indoors/town/shop)
@@ -11302,9 +11312,7 @@
 /turf/open/floor/rogue/grassyel,
 /area/rogue/outdoors/town)
 "lvh" = (
-/obj/structure/roguewindow/openclose{
-	icon_state = "woodwindowdir"
-	},
+/obj/structure/roguewindow/openclose/reinforced,
 /turf/open/floor/rogue/ruinedwood/herringbone,
 /area/rogue/indoors/town/shop)
 "lvi" = (
@@ -19908,8 +19916,7 @@
 /turf/open/floor/carpet/red,
 /area/rogue/indoors/town/physician)
 "tSz" = (
-/obj/structure/roguewindow/openclose{
-	icon_state = "woodwindowdir";
+/obj/structure/roguewindow/openclose/reinforced{
 	dir = 8
 	},
 /turf/open/floor/rogue/ruinedwood/herringbone,
@@ -21724,20 +21731,10 @@
 /obj/structure/closet/crate/chest{
 	name = "stall keys"
 	},
-/obj/item/roguekey/apartments/apartment3{
-	name = "stall iii key";
-	pixel_x = -6
-	},
-/obj/item/roguekey/apartments/apartment4{
-	name = "stall iv key";
-	pixel_x = 6;
-	pixel_y = 4
-	},
-/obj/item/roguekey/apartments/apartment2{
-	name = "stall ii key";
-	pixel_x = 6
-	},
 /obj/machinery/light/rogue/wallfire/candle/r,
+/obj/item/roguekey/apartments/stall1,
+/obj/item/roguekey/apartments/stall2,
+/obj/item/roguekey/apartments/stall3,
 /turf/open/floor/rogue/blocks/stonered/tiny,
 /area/rogue/indoors/town/shop)
 "wgE" = (
@@ -22506,7 +22503,8 @@
 /area/rogue/outdoors/town/roofs)
 "wOe" = (
 /obj/structure/lever/wall{
-	redstone_id = "southgate_outer"
+	redstone_id = "southgate_outer";
+	dir = 1
 	},
 /turf/closed/wall/mineral/rogue/stone,
 /area/rogue/indoors/town)
@@ -56232,7 +56230,7 @@ hvn
 hvn
 oLW
 nap
-mhz
+ezi
 mhz
 mhz
 rGm
