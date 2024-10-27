@@ -298,9 +298,20 @@ GLOBAL_VAR_INIT(normal_ooc_colour, "#002eb8")
 	testing("[CheckJoinDate(ckey)]")
 */
 /mob/dead/new_player/verb/togglobb()
-	set name = "SilenceLobbyMusic"
+	set name = "ToggleLobbyMusic"
 	set category = "Options"
-	stop_sound_channel(CHANNEL_LOBBYMUSIC)
+	usr.client.prefs.toggles ^= SOUND_LOBBY
+	usr.client.prefs.save_preferences()
+	if(usr.client.prefs.toggles & SOUND_LOBBY)
+		to_chat(usr, "You will now hear music in the lobby.")
+		if(isnewplayer(usr))
+			usr.client.playtitlemusic()
+	else
+		to_chat(usr, "You will no longer hear music in the lobby.")
+		usr.stop_sound_channel(CHANNEL_LOBBYMUSIC)
+	SSblackbox.record_feedback("nested tally", "preferences_verb", 1, list("Toggle Lobby Music", "[usr.client.prefs.toggles & SOUND_LOBBY ? "Enabled" : "Disabled"]")) //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+/datum/verbs/menu/Settings/Sound/toggletitlemusic/Get_checked(client/C)
+	return C.prefs.toggles & SOUND_LOBBY
 
 /proc/CheckJoinDate(ckey)
 	var/list/http = world.Export("http://byond.com/members/[ckey]?format=text")

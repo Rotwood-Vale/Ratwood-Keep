@@ -14,7 +14,7 @@
 	var/obj/item/organ/eyes/eyes = character.getorganslot(ORGAN_SLOT_EYES)
 	if(!eyes)
 		return
-	eyes.see_in_dark = 3
+	eyes.see_in_dark = 6
 	eyes.lighting_alpha = LIGHTING_PLANE_ALPHA_NV_TRAIT
 	character.update_sight()
 
@@ -120,13 +120,19 @@
 
 /datum/special_trait/cunning_linguist/on_apply(mob/living/carbon/human/character, silent)
 	ADD_TRAIT(character, TRAIT_GOODLOVER, "[type]")
-	switch(rand(1,3))
+	switch(rand(1,5))
 		if(1)
 			character.grant_language(/datum/language/elvish)
 		if(2)
 			character.grant_language(/datum/language/hellspeak)
 		if(3)
 			character.grant_language(/datum/language/draconic)
+		if(4)
+			character.grant_language(/datum/language/dwarvish)
+		if(5)
+			character.grant_language(/datum/language/orcish)
+		if(5)
+			character.grant_language(/datum/language/celestial)
 
 /datum/special_trait/corn_fed
 	name = "Corn Fed"
@@ -188,6 +194,7 @@
 /datum/special_trait/packed_lunch/on_apply(mob/living/carbon/human/character, silent)
 	var/obj/item/bag = new /obj/item/storage/roguebag/lunch(get_turf(character))
 	character.put_in_hands(bag, forced = TRUE)
+	bag.update_icon() //upon spawn it looks like an empty bag and people often just throws it away
 
 /datum/special_trait/spring_in_my_step
 	name = "Spring in my Step"
@@ -370,19 +377,19 @@
 	var/amount = rand(40,100)
 	switch(rand(1,7))
 		if(1)
-			reason = "murder"
+			reason = "Murder"
 		if(2)
-			reason = "kinslaying"
+			reason = "Kinslaying"
 		if(3)
-			reason = "besmirching a noble's name"
+			reason = "Besmirching a Noble's name"
 		if(4)
-			reason = "treason"
+			reason = "Treason"
 		if(5)
-			reason = "arson"
+			reason = "Arson"
 		if(6)
-			reason = "heresy"
+			reason = "Heresy"
 		if(7)
-			reason = "robbing a noble"
+			reason = "Robbing a Noble"
 	add_bounty(character.real_name, amount, FALSE, reason, employer)
 	if(!silent)
 		to_chat(character, span_notice("Whether I done it or not, I have been accused of [reason], and the [employer] put a bounty on my head!"))
@@ -517,11 +524,12 @@
 /datum/special_trait/vengantbum
 	name = "Vengant Bum"
 	greet_text = span_notice("I was once a nobleman, high on life until my father was murdered right in front of me. Thankfully, my mentor took me to safety and taught me all I needed to survive in these disgusting lands. They think I am a lowlife, but that's just an advantage.")
-	req_text = "Be a beggar"
-	allowed_jobs = list(/datum/job/roguetown/beggar)
+	req_text = "Be a beggar or vagabond"
+	allowed_jobs = list(/datum/job/roguetown/beggar, /datum/job/roguetown/orphan)
 	weight = 7
 
 /datum/special_trait/vengantbum/on_apply(mob/living/carbon/human/character, silent)
+	ADD_TRAIT(character, TRAIT_NOBLE, "[type]")
 	ADD_TRAIT(character, TRAIT_DECEIVING_MEEKNESS, "[type]")
 	character.mind.adjust_skillrank(/datum/skill/combat/wrestling, 6, TRUE)
 	character.mind.adjust_skillrank(/datum/skill/combat/unarmed, 6, TRUE)
@@ -533,8 +541,8 @@
 /datum/special_trait/my_precious
 	name = "My Precious"
 	greet_text = span_notice("The ring, it's so shiny.. so valuable, I can feel it's power. It's all mine!")
-	req_text = "Be a beggar"
-	allowed_jobs = list(/datum/job/roguetown/beggar)
+	req_text = "Be a beggar or vagabond"
+	allowed_jobs = list(/datum/job/roguetown/beggar, /datum/job/roguetown/orphan)
 	weight = 50
 
 /datum/special_trait/my_precious/on_apply(mob/living/carbon/human/character, silent)
@@ -544,6 +552,7 @@
 	QDEL_NULL(character.shoes)
 	QDEL_NULL(character.head)
 	var/obj/item/ring = new /obj/item/clothing/ring/dragon_ring(get_turf(character))
+	ring.desc = "The name of [character.real_name] can be seen engraved on ring's inner side."
 	character.put_in_hands(ring, forced = TRUE)
 
 /datum/special_trait/illicit_merchant

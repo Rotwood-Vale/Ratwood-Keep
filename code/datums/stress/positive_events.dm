@@ -137,3 +137,8 @@
 	stressadd = -1
 	desc = span_green("A soothing fragrance envelops me.")
 	timer = 10 MINUTES
+
+/datum/stressevent/guillotinekill
+	stressadd = -5
+	desc = span_green("A nice modern entertainmant.")
+	timer = 10 MINUTES
