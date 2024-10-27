@@ -54,6 +54,10 @@
 #define TRAIT_CRACKHEAD "Blessing of Baotha" //will never overdose
 #define TRAIT_COMMIE "Blessing of Matthios" //recognized by bandits as an ally
 #define TRAIT_CHOSEN "Astrata's Chosen"
+#define TRAIT_SUPPORT_ZIZO "Follower of Zizo" //Int +1 Speed +1
+#define TRAIT_SUPPORT_GRAGGAR "Follower of Graggar" //Str +1
+#define TRAIT_SUPPORT_MATTHIOS "Follower of Matthios" //Edu +1
+#define TRAIT_SUPPORT_BAOTHA "Follower of Baotha" //Con + 1
 
 #define TRAIT_KNEESTINGER_IMMUNITY "Kneestinger Immunity"
 #define TRAIT_BASHDOORS "bashdoors"
@@ -153,6 +157,10 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_GOODRUNNER = span_info("I can run without breaking a sweat!"),
 	TRAIT_NUDE_SLEEPER = span_warning("I can't fall asleep unless I'm nude and in bed."),
 	TRAIT_TINY = span_info("I am tiny in size and quite fragile!"),
+	TRAIT_SUPPORT_ZIZO = span_info("I feel myself smarter and faster."),
+	TRAIT_SUPPORT_GRAGGAR = span_info("I feel myself stronger"),
+	TRAIT_SUPPORT_MATTHIOS = span_info("I can manage my breathe better ."),
+	TRAIT_SUPPORT_BAOTHA = span_info("My body can handle pain much better."),
 ))
 
 // trait accessor defines

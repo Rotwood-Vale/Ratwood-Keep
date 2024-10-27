@@ -52,8 +52,8 @@
 		"intelligence" = 2,
 		"constitution" = -2,
 		"endurance" = 1,
-		"speed" = 0,
-		"fortune" = -1
+		"speed" = 1,
+		"fortune" = 0
 		)
 	enflamed_icon = "widefire"
 	organs = list(
@@ -93,6 +93,7 @@
 	languages = list(
 		/datum/language/common,
 		/datum/language/hellspeak,
+		/datum/language/elvish,
 	)
 	stress_examine = TRUE
 	stress_desc = span_red("Helldweller... better stay away.")

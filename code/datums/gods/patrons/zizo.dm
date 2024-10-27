@@ -4,6 +4,7 @@
 	desc = "A long time ago, a single woman achieved the impossible: she challenged God, and won."
 	worshippers = "Necromancers, The Power-hungry,  Cultists and Heretics of all kinds"
 	associated_faith = /datum/faith/zizo
+	mob_traits = list(TRAIT_SUPPORT_ZIZO)
 	confess_lines = list(
 		"PRAISE ZIZO!",
 		"LONG LIVE ZIZO!",
