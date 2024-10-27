@@ -5700,10 +5700,6 @@
 /obj/item/flint,
 /turf/open/floor/rogue/cobble,
 /area/rogue/indoors)
-"fqC" = (
-/obj/structure/roguemachine/drugmachine,
-/turf/closed/wall/mineral/rogue/stone,
-/area/rogue/outdoors/rtfield)
 "fqH" = (
 /obj/structure/bed/rogue/inn/hay,
 /obj/machinery/light/rogue/torchholder{
@@ -7742,10 +7738,6 @@
 "hmJ" = (
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/outdoors/bog)
-"hmK" = (
-/obj/structure/roguemachine/drugmachine,
-/turf/closed/wall/mineral/rogue/wooddark/horizontal,
-/area/rogue/indoors/town/shop)
 "hmN" = (
 /obj/structure/mineral_door/wood/red{
 	lockid = "nightmaiden";
@@ -11898,10 +11890,6 @@
 /obj/structure/chair/bench/couch,
 /turf/open/floor/rogue/carpet,
 /area/rogue/indoors/town/manor)
-"lve" = (
-/obj/structure/roguemachine/drugmachine,
-/turf/closed/wall/mineral/rogue/stone,
-/area/rogue/outdoors/town)
 "lvA" = (
 /obj/structure/fluff/clock,
 /turf/open/floor/rogue/tile,
@@ -14869,10 +14857,6 @@
 /obj/structure/closet/crate/roguecloset,
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue/indoors/town)
-"ofk" = (
-/obj/structure/roguemachine/drugmachine,
-/turf/closed/wall/mineral/rogue/stone/moss,
-/area/rogue/outdoors/town)
 "ofl" = (
 /turf/closed/wall/mineral/rogue/decowood,
 /area/rogue/outdoors/town/roofs)
@@ -182659,7 +182643,7 @@ lrs
 rRb
 rRb
 rRb
-qbj
+rRb
 rRb
 rRb
 rRb
@@ -192310,7 +192294,7 @@ rRb
 rRb
 rRb
 rRb
-rRb
+qbj
 rRb
 rRb
 rRb
@@ -290510,7 +290494,7 @@ lVe
 lVe
 qvR
 qvR
-fqC
+fDB
 fxx
 fxx
 fxx
@@ -297208,7 +297192,7 @@ mwE
 mwE
 mwE
 mwE
-ofk
+esR
 mwE
 wbg
 wbg
@@ -297264,7 +297248,7 @@ pKQ
 xut
 hUt
 hUt
-hmK
+fmR
 wVI
 wbg
 wbg
@@ -312110,7 +312094,7 @@ wbg
 lCn
 wbg
 wue
-lve
+rfx
 wbg
 wVI
 rfx
