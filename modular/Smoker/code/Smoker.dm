@@ -39,7 +39,7 @@
 	icon_state = "nourish"
 	volume = 135
 	amount_per_transfer_from_this = 135
-	list_reagents = list(/datum/reagent/consumable/nutrient = 3, /datum/reagent/consumable/nutriment/vitamin = 3, /datum/reagent/water = 50) // as much water as a bucket so full hydrate. enough honey to IF good rng rolls get 30hp. 33% chance to decay into sugar, sugar has a 33% chance to decay into nutrients. so saturation varies.
+	list_reagents = list(/datum/reagent/consumable/nutriment = 3, /datum/reagent/consumable/nutriment/vitamin = 3, /datum/reagent/water = 50) // as much water as a bucket so full hydrate. enough honey to IF good rng rolls get 30hp. 33% chance to decay into sugar, sugar has a 33% chance to decay into nutrients. so saturation varies.
 
 /datum/reagent/drug/snekbt
 	name = "Snake Bite"
