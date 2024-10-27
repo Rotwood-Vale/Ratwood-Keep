@@ -109,7 +109,7 @@
 
 /datum/stressevent/hatezizo
 	timer = 99999 MINUTES
-	stressadd = 666 // :)
+	stressadd = 10
 	desc = "<span class='red'>ZIZOZIZOZIZO</span>"
 
 /datum/stressevent/burntmeal
