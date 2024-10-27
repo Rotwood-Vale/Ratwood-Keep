@@ -35,7 +35,7 @@
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC) //Given for consistencysake as the idol still provides scalemail.
 	H.change_stat("strength", 3)
 	H.change_stat("endurance", 2)
-	H.change_stat("constitution", 1)
+	H.change_stat("intelligence", 1)
 	H.change_stat("speed", 1)
 	if(H.age == AGE_OLD)
 		H.change_stat("speed", -1)

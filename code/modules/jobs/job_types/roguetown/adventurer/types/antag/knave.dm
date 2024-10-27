@@ -40,7 +40,7 @@
 	H.change_stat("constitution", 1)
 	H.change_stat("intelligence", -3)
 	H.change_stat("perception", 2)
-	H.change_stat("speed", 3) //It's all about speed and perception
+	H.change_stat("speed", 2) //It's all about speed and perception
 	ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC) //gets dodge expert but no medium armor training - gotta stay light
 	H.adjust_blindness(-3)
 	var/weapons = list("2x Dagger", "Bow & Sword")
@@ -54,7 +54,7 @@
 			backr = /obj/item/storage/backpack/rogue/satchel
 			backpack_contents = list(/obj/item/needle/thorn = 1, /obj/item/natural/cloth = 1)
 			H.mind.adjust_skillrank(/datum/skill/combat/knives, 1, TRUE)
-			H.change_stat("speed", 3)
+			H.change_stat("speed", 2)
 		if("Bow & Sword") //Poacher
 			backl= /obj/item/gun/ballistic/revolver/grenadelauncher/bow
 			beltr = /obj/item/rogueweapon/sword/iron // sword like literally every adventurer gets
