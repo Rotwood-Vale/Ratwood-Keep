@@ -1446,13 +1446,9 @@
 /turf/open/floor/rogue/blocks/stonered/tiny,
 /area/rogue/indoors/town)
 "buT" = (
-/obj/structure/mineral_door/bars{
-	locked = 1;
-	lockid = "vault"
-	},
-/turf/open/floor/rogue/tile{
-	icon_state = "chess"
-	},
+/obj/machinery/light/rogue/torchholder/r,
+/obj/structure/roguemachine/scomm,
+/turf/open/floor/rogue/blocks,
 /area/rogue/under/town/basement)
 "bvK" = (
 /obj/effect/decal/cobbleedge{
@@ -1480,6 +1476,10 @@
 /obj/structure/roguemachine/lottery_roguetown,
 /turf/open/floor/rogue/cobble,
 /area/rogue/outdoors/town)
+"bxf" = (
+/obj/structure/fluff/walldeco/alarm,
+/turf/open/floor/rogue/wood,
+/area/rogue/indoors)
 "bxn" = (
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/indoors/shelter/woods)
@@ -5047,8 +5047,15 @@
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors)
 "fcJ" = (
-/obj/structure/roguemachine/scomm,
-/turf/open/floor/rogue/cobble,
+/obj/structure/mineral_door/bars{
+	locked = 1;
+	lockid = "garrison"
+	},
+/obj/structure/fluff/walldeco/alarm{
+	pixel_y = 0;
+	pixel_x = 32
+	},
+/turf/open/floor/rogue/blocks,
 /area/rogue/under/town/basement)
 "fcW" = (
 /obj/machinery/light/rogue/oven/north,
@@ -10859,6 +10866,19 @@
 /obj/structure/bars/cemetery,
 /turf/open/floor/rogue/blocks,
 /area/rogue/indoors/town/manor)
+"kZm" = (
+/obj/structure/mineral_door/bars{
+	locked = 1;
+	lockid = "vault"
+	},
+/obj/structure/fluff/walldeco/alarm{
+	pixel_y = 0;
+	pixel_x = -32
+	},
+/turf/open/floor/rogue/tile{
+	icon_state = "chess"
+	},
+/area/rogue/under/town/basement)
 "kZU" = (
 /obj/effect/landmark/start/wapprentice,
 /turf/open/floor/carpet/stellar,
@@ -40493,7 +40513,7 @@ uGe
 dAi
 onk
 xpt
-eeN
+fcJ
 bBD
 qEa
 xpt
@@ -40651,7 +40671,7 @@ dIf
 dIf
 dIf
 dIf
-fcJ
+bBD
 bBD
 xjB
 ugy
@@ -41121,7 +41141,7 @@ oGK
 vrR
 dIf
 dIf
-onk
+buT
 fvy
 bBD
 dIf
@@ -42978,7 +42998,7 @@ bup
 ruG
 ruG
 ruG
-jZD
+kZm
 ruG
 ruG
 ruG
@@ -43135,7 +43155,7 @@ ruG
 ruG
 ruG
 ruG
-buT
+jZD
 ruG
 ruG
 ruG
@@ -61529,7 +61549,7 @@ hvn
 hvn
 oLW
 oLW
-aoP
+bxf
 oLW
 bYR
 oLW

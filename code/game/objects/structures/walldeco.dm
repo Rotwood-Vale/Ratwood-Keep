@@ -254,3 +254,80 @@
 /obj/structure/fluff/walldeco/med6
 	name = "diagram"
 	icon_state = "medposter6"
+
+/obj/structure/fluff/walldeco/alarm
+	name = ""
+	icon_state = "alarm"
+	pixel_y = 32
+	var/stop_yapping = 0
+	var/onoff = 0
+
+/obj/structure/fluff/walldeco/alarm/attack_hand(mob/living/user)
+
+	user.changeNext_move(CLICK_CD_MELEE)
+
+	if(!(HAS_TRAIT(user, TRAIT_NOBLE)))
+		playsound(src, 'sound/misc/machineno.ogg', 100, TRUE, -1)
+		return
+
+	else
+
+		playsound(src, 'sound/misc/bug.ogg', 100, FALSE, -1)
+		if(onoff == 0)
+			onoff = 1
+			icon_state = "face"
+		if(onoff == 1)
+			onoff = 0
+			icon_state = "alarm"
+		else
+			onoff = 0
+			icon_state = "alarm"
+
+/obj/structure/fluff/walldeco/alarm/Crossed(mob/living/user)
+
+	if(stop_yapping == 1)
+		return
+
+	if(ishuman(user)) //are we a person?
+		var/mob/living/carbon/human/HU = user
+
+		if(HU.anti_magic_check()) //are we shielded?
+			return
+
+		if(!(HU in SStreasury.bank_accounts)) //first off- do we not have an account? we'll ALWAYS scream if that's the case
+			playsound(loc, 'sound/misc/gold_license.ogg', 100, TRUE, -1)
+			say("UNKNOWN PERSON IN SECURE AREA- ARRETZ-VOUZ!!")
+			stop_yapping = 1
+			sleep(60)
+			stop_yapping = 0
+			return
+
+		if(HAS_TRAIT(user, TRAIT_NOBLE))
+			stop_yapping = 1
+			icon_state = "face"
+			sleep(200)
+			stop_yapping = 0
+			icon_state = "alarm"
+			return
+
+		if((HU in SStreasury.bank_accounts)) //do we not have an account?
+			playsound(loc, 'sound/misc/gold_menu.ogg', 100, TRUE, -1)
+			say("Layman [user.real_name] logged entering secure area.")
+			stop_yapping = 1
+			sleep(60)
+			stop_yapping = 0
+			return
+
+		else //?????
+			playsound(loc, 'sound/misc/gold_license.ogg', 100, TRUE, -1)
+			say("UNAUTHORIZED PERSON IN SECURE AREA- ARRETZ-VOUZ!!")
+			stop_yapping = 1
+			sleep(60)
+			stop_yapping = 0
+
+	else
+		playsound(loc, 'sound/misc/gold_license.ogg', 100, TRUE, -1)
+		say("UNKNOWN CREATURE IN SECURE AREA- ARRETZ-VOUS!!")
+		stop_yapping = 1
+		sleep(60)
+		stop_yapping = 0
