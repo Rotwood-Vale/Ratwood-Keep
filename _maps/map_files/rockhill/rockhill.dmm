@@ -8956,11 +8956,11 @@
 /obj/structure/table/wood{
 	icon_state = "tablewood1"
 	},
-/obj/item/clothing/suit/roguetown/shirt/shortshirt/merc{
+/obj/item/clothing/suit/roguetown/shirt/shortshirt/random{
 	pixel_x = -2;
 	pixel_y = 5
 	},
-/obj/item/clothing/suit/roguetown/shirt/shortshirt/merc{
+/obj/item/clothing/suit/roguetown/shirt/shortshirt/random{
 	pixel_x = 4
 	},
 /turf/open/floor/rogue/wood,
