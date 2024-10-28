@@ -38,9 +38,14 @@
 
 All original code and assets of this repository are under the [GNU Affero General Public License v3.0](https://www.gnu.org/licenses/agpl-3.0.en.html) unless otherwise indicated.
 
-### Ratwood - Proprietary
+## Ratwood - Proprietary
 
-The following code and assets are under a priopetary license as per original author's wishes.
+The following code and assets are under a custom priopetary license as per original author's wishes.
+
+| Name                 | Reference                                           | Author   | License |
+|----------------------|-----------------------------------------------------|----------|---------|
+| Example              | commit12e4                                          | John Doe | license.txt|
+
 
 ## TG
 
