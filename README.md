@@ -40,7 +40,7 @@ All original code and assets of this repository are under the [GNU Affero Genera
 
 ## Ratwood - Proprietary
 
-The following code and assets are under a custom priopetary license as per original author's wishes.
+The following code and assets are under a custom proprietary license as per original author's wishes.
 
 | Name                 | Reference                                           | Author   |   License  |
 |----------------------|-----------------------------------------------------|----------|------------|
