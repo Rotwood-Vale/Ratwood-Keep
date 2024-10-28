@@ -11,7 +11,7 @@
 	allowed_races = RACES_VERY_SHUNNED_UP
 	allowed_ages = list(AGE_ADULT, AGE_MIDDLEAGED)
 
-	tutorial = "Nobody would envy your lot in life, for the role of bath-servant is not something so idly taken. Such folk often come from a place of desperation, 'least usually: for any with true compassion or skill would seek position with a nunnery or the medical trade. Launder clothes and soothe wounds, that is your loathsome creed."
+	tutorial = "A seldom few would envy your position. You serve as a bath servant, cleaning your patrons and sewing their wounds... and more often than not offering other - less wholesome - services. Work hard to keep the nightmaster happy and his pouch full, lest you are abandoned by week's end."
 
 	outfit = /datum/outfit/job/roguetown/nightmaiden
 	display_order = JDO_WENCH

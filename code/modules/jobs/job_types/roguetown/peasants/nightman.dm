@@ -3,13 +3,13 @@
 	flag = NIGHTMASTER
 	department_flag = PEASANTS
 	faction = "Station"
-	total_positions = 0 
-	spawn_positions = 0 // Disabled until he gets his own place on the map
+	total_positions = 1 
+	spawn_positions = 1 // Disabled until he gets his own place on the map
 
 	allowed_sexes = list(MALE)
 	allowed_races = RACES_TOLERATED_UP
 
-	tutorial = "The Nightmaster is technically a noble. Owner of the Whitevein Lounge, a decaying bathhouse converted into a den of low-lifes. A troublemaking rake that the others hate to tolerate."
+	tutorial = "You own the bath house in the town, most men's sole reprieve for a warm bath and kind company. It's no secret that your avenues of business are hardly very honest, but your drugs and whores might be the only thing keeping the town sane."
 
 	allowed_ages = ALL_AGES_LIST
 	outfit = /datum/outfit/job/roguetown/nightman

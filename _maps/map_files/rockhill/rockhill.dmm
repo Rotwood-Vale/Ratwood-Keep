@@ -97,7 +97,11 @@
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/indoors/town/tavern)
 "abV" = (
-/obj/structure/closet/crate/chest/gold,
+/obj/structure/closet/crate/chest/gold{
+	name = Powder Chest;
+	lockid = nightman;
+	desc = "A container no doubt full of eclectic powders and dusts. A Baothan's wet dream."
+	},
 /turf/open/floor/rogue/tile,
 /area/rogue/indoors/town/manor)
 "acE" = (
@@ -588,6 +592,12 @@
 	},
 /turf/open/floor/carpet/royalblack,
 /area/rogue/indoors/town/tavern)
+"aBl" = (
+/obj/structure/mineral_door/wood/fancywood{
+	name = "Nightmaster's Bedroom"
+	},
+/turf/open/floor/rogue/cobble,
+/area/rogue/indoors/town/bath)
 "aBq" = (
 /obj/structure/closet/crate/roguecloset,
 /obj/item/reagent_containers/glass/cup/silver,
@@ -1485,7 +1495,11 @@
 /turf/open/floor/rogue/tile,
 /area/rogue/under/town/basement)
 "bwY" = (
-/obj/structure/closet/crate/chest/gold,
+/obj/structure/closet/crate/chest/gold{
+	name = Powder Chest;
+	lockid = nightman;
+	desc = "A container no doubt full of eclectic powders and dusts. A Baothan's wet dream."
+	},
 /obj/item/roguegem/blue,
 /turf/open/floor/rogue/tile,
 /area/rogue/indoors/town/manor)
@@ -1955,6 +1969,10 @@
 "bXB" = (
 /turf/open/transparent/openspace,
 /area/rogue/indoors/town/church/chapel)
+"bXG" = (
+/obj/structure/chair/bench/couchablack/r,
+/turf/open/floor/carpet/royalblack,
+/area/rogue/indoors/town/bath)
 "bXI" = (
 /obj/machinery/light/rogue/firebowl/standing,
 /turf/open/floor/rogue/grass,
@@ -2676,6 +2694,10 @@
 /obj/structure/glowshroom,
 /turf/open/floor/rogue/greenstone,
 /area/rogue/under/cave)
+"cHz" = (
+/obj/effect/decal/cleanable/vomit/old,
+/turf/open/floor/rogue/greenstone,
+/area/rogue/under/town/sewer)
 "cHD" = (
 /turf/open/floor/rogue/ruinedwood{
 	icon_state = "horzw"
@@ -4339,8 +4361,12 @@
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors/bog)
 "eij" = (
-/obj/structure/mineral_door/wood/red{
+/obj/structure/mineral_door/wood/donjon{
+	dir = 8;
+	icon_state = "donjondir";
+	locked = 1;
 	lockid = "nightmaiden";
+	max_integrity = 9999;
 	name = "Bath Wench Quarters"
 	},
 /turf/open/floor/rogue/cobble/mossy,
@@ -4623,6 +4649,10 @@
 	},
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/basement)
+"evs" = (
+/obj/machinery/light/rogue/wallfire,
+/turf/closed/wall/mineral/rogue/stone,
+/area/rogue/indoors/town/bath)
 "evV" = (
 /obj/structure/chair/wood/rogue{
 	dir = 1
@@ -5028,6 +5058,13 @@
 	icon_state = "vertw"
 	},
 /area/rogue/indoors/town)
+"eNf" = (
+/obj/machinery/light/rogue/wallfire/candle{
+	pixel_x = -32;
+	pixel_y = 0
+	},
+/turf/open/floor/rogue/tile,
+/area/rogue/indoors/town/bath)
 "eNB" = (
 /obj/structure/table/wood{
 	dir = 8;
@@ -5956,7 +5993,11 @@
 /turf/closed/wall/mineral/rogue/wooddark,
 /area/rogue/indoors/town/shop)
 "fEF" = (
-/obj/structure/closet/crate/chest/gold,
+/obj/structure/closet/crate/chest/gold{
+	name = Powder Chest;
+	lockid = nightman;
+	desc = "A container no doubt full of eclectic powders and dusts. A Baothan's wet dream."
+	},
 /turf/open/floor/rogue/church,
 /area/rogue/under/town/basement)
 "fEK" = (
@@ -6316,6 +6357,9 @@
 	},
 /turf/open/floor/rogue/tile,
 /area/rogue/indoors/town/tavern)
+"fSn" = (
+/turf/open/floor/carpet/purple,
+/area/rogue/indoors/town/bath)
 "fSM" = (
 /turf/open/floor/rogue/ruinedwood{
 	dir = 1;
@@ -6725,6 +6769,11 @@
 /obj/item/clothing/gloves/roguetown/leather,
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/town/basement)
+"gns" = (
+/obj/structure/chair/bench/couchablack,
+/obj/effect/landmark/start/nightman,
+/turf/open/floor/carpet/royalblack,
+/area/rogue/indoors/town/bath)
 "gnv" = (
 /obj/structure/chair/wood{
 	dir = 1
@@ -6765,6 +6814,10 @@
 	},
 /turf/open/floor/rogue/grass,
 /area/rogue/outdoors/rtfield)
+"gpj" = (
+/obj/structure/fluff/statue/small,
+/turf/open/floor/rogue/tile,
+/area/rogue/indoors/town/bath)
 "gpl" = (
 /obj/structure/flora/roguegrass/water,
 /turf/open/water/cleanshallow,
@@ -6976,6 +7029,10 @@
 /obj/structure/roguewindow,
 /turf/open/floor/rogue/twig,
 /area/rogue/indoors)
+"gxV" = (
+/obj/structure/roguemachine/atm,
+/turf/open/floor/rogue/tile,
+/area/rogue/indoors/town/bath)
 "gxY" = (
 /obj/structure/flora/roguetree/burnt{
 	max_integrity = 1000;
@@ -8058,6 +8115,15 @@
 /obj/structure/chair/bench,
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/outdoors/town)
+"hDR" = (
+/obj/structure/table/wood{
+	dir = 1;
+	icon_state = "tablewood1"
+	},
+/obj/item/reagent_containers/glass/cup/silver,
+/obj/item/reagent_containers/glass/cup/silver,
+/turf/open/floor/carpet/purple,
+/area/rogue/indoors/town/bath)
 "hEc" = (
 /turf/open/floor/rogue/rooftop/green/corner1{
 	dir = 5
@@ -8297,6 +8363,10 @@
 "hNW" = (
 /turf/open/floor/rogue/concrete,
 /area/rogue/indoors/town/garrison)
+"hNY" = (
+/obj/structure/bearpelt,
+/turf/open/floor/carpet/royalblack,
+/area/rogue/indoors/town/bath)
 "hOh" = (
 /obj/structure/flora/roguegrass/bush/wall/tall,
 /turf/open/floor/rogue/grass,
@@ -9237,7 +9307,11 @@
 /turf/open/floor/rogue/dirt,
 /area/rogue/outdoors/rtfield)
 "iML" = (
-/obj/structure/closet/crate/chest/gold,
+/obj/structure/closet/crate/chest/gold{
+	name = Powder Chest;
+	lockid = nightman;
+	desc = "A container no doubt full of eclectic powders and dusts. A Baothan's wet dream."
+	},
 /turf/open/floor/rogue/tile,
 /area/rogue/indoors/town/vault)
 "iMU" = (
@@ -9324,6 +9398,18 @@
 	},
 /turf/open/floor/rogue/rooftop,
 /area/rogue/outdoors/town/roofs)
+"iRw" = (
+/obj/structure/closet/crate/roguecloset,
+/obj/item/paper/natural,
+/obj/item/paper/natural,
+/obj/item/paper/natural,
+/obj/item/paper/natural,
+/obj/item/paper/natural,
+/obj/item/paper/scroll,
+/obj/item/paper/scroll,
+/obj/item/natural/feather,
+/turf/open/floor/carpet/royalblack,
+/area/rogue/indoors/town/bath)
 "iRE" = (
 /obj/structure/rack/rogue,
 /obj/item/storage/pill_bottle/dice,
@@ -9814,6 +9900,20 @@
 /obj/machinery/light/rogue/firebowl/standing,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors/rtfield)
+"jpx" = (
+/obj/structure/fluff/walldeco/maidendrape,
+/obj/structure/closet/crate/roguecloset/dark,
+/obj/item/clothing/shoes/roguetown/armor/nobleboot,
+/obj/item/clothing/suit/roguetown/armor/leather/vest/black,
+/obj/item/clothing/suit/roguetown/shirt/shortshirt,
+/obj/item/roguekey/nightman,
+/obj/item/clothing/head/roguetown/nightman,
+/obj/item/roguekey/nightmaiden,
+/obj/item/roguekey/nightmaiden,
+/obj/item/roguekey/nightmaiden,
+/obj/item/roguekey/nightmaiden,
+/turf/open/floor/rogue/cobble,
+/area/rogue/indoors/town/bath)
 "jqq" = (
 /obj/effect/landmark/events/haunts,
 /turf/open/floor/rogue/cobblerock,
@@ -12437,6 +12537,12 @@
 /obj/structure/fluff/walldeco/stone,
 /turf/closed/wall/mineral/rogue/stone,
 /area/rogue/indoors/town/tavern)
+"lTc" = (
+/obj/machinery/light/rogue/wallfire/candle{
+	pixel_y = -32
+	},
+/turf/open/floor/carpet/royalblack,
+/area/rogue/indoors/town/bath)
 "lTg" = (
 /obj/structure/table/wood{
 	icon_state = "tablewood1"
@@ -13335,6 +13441,12 @@
 	},
 /turf/open/floor/rogue/dirt,
 /area/rogue/outdoors/bog)
+"mLK" = (
+/obj/machinery/light/rogue/wallfire/candle{
+	pixel_y = -32
+	},
+/turf/open/floor/rogue/tile,
+/area/rogue/indoors/town/bath)
 "mLV" = (
 /obj/structure/stairs/stone{
 	dir = 8
@@ -13642,6 +13754,24 @@
 	},
 /turf/open/floor/rogue/carpet,
 /area/rogue/indoors/town/manor)
+"mZu" = (
+/obj/structure/closet/crate/chest/gold{
+	name = Powder Chest;
+	lockid = nightman;
+	desc = "A container no doubt full of eclectic powders and dusts. A Baothan's wet dream."
+	},
+/obj/item/reagent_containers/powder/moondust,
+/obj/item/reagent_containers/powder/moondust,
+/obj/item/reagent_containers/powder/moondust,
+/obj/item/reagent_containers/powder/moondust_purest,
+/obj/item/reagent_containers/powder/spice,
+/obj/item/reagent_containers/powder/spice,
+/obj/item/reagent_containers/powder/spice,
+/obj/item/reagent_containers/powder/ozium,
+/obj/item/reagent_containers/powder/ozium,
+/obj/item/reagent_containers/powder/ozium,
+/turf/open/floor/rogue/tile,
+/area/rogue/indoors/town/bath)
 "naj" = (
 /obj/machinery/light/rogue/torchholder{
 	dir = 4
@@ -13882,6 +14012,10 @@
 /obj/item/roguebin/water,
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/town/manor)
+"nmr" = (
+/obj/structure/fluff/walldeco/maidendrape,
+/turf/open/floor/rogue/cobble,
+/area/rogue/indoors/town/bath)
 "nnZ" = (
 /obj/structure/closet/crate/chest{
 	lockid = "keep_armory"
@@ -14442,6 +14576,13 @@
 /obj/structure/fluff/walldeco/wantedposter,
 /turf/open/floor/rogue/cobble/mossy,
 /area/rogue/indoors/town/tavern)
+"nMB" = (
+/obj/structure/table/wood{
+	dir = 1;
+	icon_state = "tablewood1"
+	},
+/turf/open/floor/carpet/purple,
+/area/rogue/indoors/town/bath)
 "nMZ" = (
 /obj/structure/fluff/railing/wood{
 	dir = 8;
@@ -15446,7 +15587,11 @@
 	},
 /area/rogue/indoors/town)
 "oFc" = (
-/obj/structure/closet/crate/chest/gold,
+/obj/structure/closet/crate/chest/gold{
+	name = Powder Chest;
+	lockid = nightman;
+	desc = "A container no doubt full of eclectic powders and dusts. A Baothan's wet dream."
+	},
 /turf/open/floor/rogue/tile{
 	icon_state = "linoleum"
 	},
@@ -15572,15 +15717,11 @@
 /turf/open/floor/carpet/royalblack,
 /area/rogue/indoors/town/tavern)
 "oJi" = (
-/obj/structure/table/wood{
-	dir = 10;
-	icon_state = "tablewood2"
+/obj/machinery/light/rogue/wallfire/candle{
+	pixel_x = 32;
+	pixel_y = 0
 	},
-/obj/item/paper/scroll,
-/obj/item/paper/scroll,
-/obj/item/paper/scroll,
-/obj/item/natural/feather,
-/turf/open/floor/rogue/blocks,
+/turf/open/floor/carpet/purple,
 /area/rogue/indoors/town/bath)
 "oJn" = (
 /obj/structure/chair/wood/rogue{
@@ -17272,6 +17413,10 @@
 /obj/structure/fluff/railing/wood,
 /turf/open/floor/rogue/blocks,
 /area/rogue/outdoors/town)
+"qqj" = (
+/obj/item/roguekey/nightmaiden,
+/turf/open/water/bath,
+/area/rogue/indoors/town/bath)
 "qrc" = (
 /obj/machinery/light/rogue/torchholder/c,
 /turf/open/floor/rogue/ruinedwood{
@@ -17481,6 +17626,14 @@
 /obj/structure/stairs/stone,
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/town/tavern)
+"qCo" = (
+/obj/structure/table/wood{
+	dir = 1;
+	icon_state = "tablewood1"
+	},
+/obj/item/reagent_containers/glass/bottle/rogue/wine,
+/turf/open/floor/carpet/purple,
+/area/rogue/indoors/town/bath)
 "qCp" = (
 /obj/machinery/light/rogue/torchholder{
 	pixel_y = 26
@@ -17698,6 +17851,9 @@
 	},
 /turf/open/floor/rogue/hexstone,
 /area/rogue/indoors/town/church)
+"qPe" = (
+/turf/open/floor/carpet/royalblack,
+/area/rogue/indoors/town/bath)
 "qPA" = (
 /turf/closed/wall/mineral/rogue/stone,
 /area/rogue/indoors/town/church)
@@ -17705,6 +17861,11 @@
 /obj/machinery/light/rogue/firebowl/stump,
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/under/town/basement)
+"qPJ" = (
+/obj/structure/bed/rogue/inn/double,
+/obj/item/bedsheet/rogue/double_pelt,
+/turf/open/floor/carpet/royalblack,
+/area/rogue/indoors/town/bath)
 "qPK" = (
 /obj/structure/fluff/walldeco/bsmith,
 /turf/open/floor/rogue/blocks,
@@ -19199,6 +19360,9 @@
 	dir = 1
 	},
 /area/rogue/indoors)
+"skR" = (
+/turf/open/floor/rogue/tile,
+/area/rogue/indoors/town/bath)
 "skY" = (
 /obj/structure/table/wood{
 	dir = 10;
@@ -19261,6 +19425,10 @@
 /obj/structure/mineral_door/wood,
 /turf/open/floor/rogue/grass,
 /area/rogue/outdoors/bog)
+"soR" = (
+/obj/structure/roguemachine/drugmachine,
+/turf/closed/wall/mineral/rogue/stone,
+/area/rogue/indoors/town/bath)
 "spp" = (
 /obj/structure/flora/newtree,
 /turf/open/floor/rogue/grass,
@@ -19598,6 +19766,12 @@
 	dir = 1
 	},
 /area/rogue/indoors/town/manor)
+"sHH" = (
+/obj/structure/lever/wall{
+	redstone_id = nightmaster_shutter
+	},
+/turf/closed/wall/mineral/rogue/stone,
+/area/rogue/indoors/town/bath)
 "sIb" = (
 /obj/effect/decal/cobbleedge{
 	icon_state = "borderfall";
@@ -19707,6 +19881,12 @@
 	},
 /turf/open/floor/rogue/carpet/lord/right,
 /area/rogue/indoors/town/manor)
+"sOr" = (
+/obj/structure/mineral_door/wood/fancywood{
+	name = "Nightmaster's Bedroom"
+	},
+/turf/open/floor/rogue/tile,
+/area/rogue/indoors/town/bath)
 "sOV" = (
 /obj/structure/closet/crate/chest,
 /obj/effect/spawner/lootdrop/roguetown/dungeon/misc,
@@ -19761,6 +19941,13 @@
 "sQE" = (
 /turf/closed/wall/mineral/rogue/wooddark,
 /area/rogue/under/cavewet/bogcaves)
+"sQI" = (
+/obj/structure/chair/wood/rogue/fancy{
+	icon_state = "chair1";
+	dir = 8
+	},
+/turf/open/floor/carpet/purple,
+/area/rogue/indoors/town/bath)
 "sQL" = (
 /obj/structure/table/wood{
 	icon_state = "tablewood1"
@@ -21374,6 +21561,17 @@
 /obj/structure/closet/crate/chest,
 /turf/open/floor/rogue/dirt,
 /area/rogue/outdoors/rtfield)
+"umU" = (
+/obj/structure/table/wood,
+/obj/structure/bars{
+	icon_state = "barsbent"
+	},
+/obj/structure/bars/passage/shutter{
+	name = "Nightmaster's Shutters";
+	redstone_id = nightmaster_shutter
+	},
+/turf/open/floor/rogue/blocks,
+/area/rogue/indoors/town/bath)
 "unM" = (
 /obj/effect/landmark/start/orphanlate,
 /turf/open/floor/rogue/grass,
@@ -72128,7 +72326,7 @@ wPJ
 kHR
 kHR
 kHR
-kHR
+qqj
 kHR
 qhR
 fsU
@@ -73743,7 +73941,7 @@ aVC
 fig
 aVC
 aVC
-kZe
+aVC
 fBy
 cqV
 fsU
@@ -74145,7 +74343,7 @@ aVC
 fsU
 sgq
 fsU
-fsU
+sOr
 fsU
 fsU
 fsU
@@ -74544,13 +74742,13 @@ lmE
 oXU
 aVC
 oXU
+umU
+skR
+eNf
+skR
+skR
+mZu
 fsU
-bpD
-bpD
-bpD
-bpD
-bpD
-bpD
 bpD
 bpD
 bpD
@@ -74945,14 +75143,14 @@ fsU
 fsU
 vco
 oVb
-oJi
-paf
-bpD
-bpD
-bpD
-bpD
-bpD
-bpD
+oXU
+umU
+skR
+skR
+skR
+skR
+skR
+fsU
 bpD
 bpD
 bpD
@@ -75349,12 +75547,12 @@ fsU
 fsU
 paf
 paf
-bpD
-bpD
-bpD
-bpD
-bpD
-bpD
+gpj
+fSn
+fSn
+fSn
+skR
+fsU
 bpD
 bpD
 bpD
@@ -75750,13 +75948,13 @@ bpD
 bpD
 bpD
 bpD
-bpD
-bpD
-bpD
-bpD
-bpD
-bpD
-bpD
+sHH
+skR
+fSn
+fSn
+fSn
+mLK
+fsU
 bpD
 bpD
 bpD
@@ -76152,13 +76350,13 @@ bpD
 bpD
 bpD
 bpD
-bpD
-bpD
-bpD
-bpD
-bpD
-bpD
-bpD
+soR
+skR
+hDR
+qCo
+nMB
+skR
+fsU
 bpD
 bpD
 bpD
@@ -76554,13 +76752,13 @@ bpD
 bpD
 bpD
 bpD
-bpD
-bpD
-bpD
-bpD
-bpD
-bpD
-bpD
+fsU
+gxV
+oJi
+sQI
+oJi
+skR
+fsU
 bpD
 bpD
 bpD
@@ -76956,13 +77154,13 @@ bpD
 bpD
 bpD
 bpD
-bpD
-bpD
-bpD
-bpD
-bpD
-bpD
-bpD
+fsU
+aBl
+fsU
+fsU
+fsU
+fsU
+fsU
 bpD
 bpD
 bpD
@@ -77358,13 +77556,13 @@ bpD
 bpD
 bpD
 bpD
-bpD
-bpD
-bpD
-bpD
-bpD
-bpD
-bpD
+fsU
+nmr
+nqQ
+nqQ
+qPe
+iRw
+fsU
 bpD
 bpD
 bpD
@@ -77760,13 +77958,13 @@ bpD
 bpD
 bpD
 bpD
-bpD
-bpD
-bpD
-bpD
-bpD
-bpD
-bpD
+fsU
+gns
+hNY
+qPe
+qPe
+lTc
+fsU
 bpD
 bpD
 bpD
@@ -78162,13 +78360,13 @@ bpD
 bpD
 bpD
 bpD
-bpD
-bpD
-bpD
-bpD
-bpD
-bpD
-bpD
+fsU
+bXG
+qPe
+qPe
+qPe
+qPe
+fsU
 bpD
 bpD
 bpD
@@ -78564,13 +78762,13 @@ bpD
 bpD
 bpD
 bpD
-bpD
-bpD
-bpD
-bpD
-bpD
-bpD
-bpD
+fsU
+jpx
+nqQ
+nqQ
+qPe
+qPJ
+fsU
 bpD
 bpD
 bpD
@@ -78966,13 +79164,13 @@ bpD
 bpD
 bpD
 bpD
-bpD
-bpD
-bpD
-bpD
-bpD
-bpD
-bpD
+fsU
+fsU
+fsU
+evs
+fsU
+fsU
+fsU
 bpD
 bpD
 bpD
@@ -178264,7 +178462,7 @@ ygU
 qjN
 fsU
 ozH
-gLf
+cHz
 mof
 rSC
 rSC
@@ -178667,7 +178865,7 @@ vXA
 paf
 mof
 gLf
-pOf
+gLf
 rSC
 rSC
 rSC
@@ -179067,10 +179265,10 @@ tuI
 fsU
 paf
 paf
-pOf
-pOf
-pOf
-pOf
+gLf
+gLf
+gLf
+mof
 rSC
 rSC
 vRu
