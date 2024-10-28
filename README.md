@@ -32,7 +32,17 @@
 
 </div>
 
-## LICENSE
+# LICENSE
+
+## Ratwood
+
+All original code and assets of this repository are under the [GNU Affero General Public License v3.0](https://www.gnu.org/licenses/agpl-3.0.en.html) unless otherwise indicated.
+
+### Ratwood - Proprietary
+
+The following code and assets are under a priopetary license as per original author's wishes.
+
+## TG
 
 All code after [commit 333c566b88108de218d882840e61928a9b759d8f on 2014/31/12 at 4:38 PM PST](https://github.com/tgstation/tgstation/commit/333c566b88108de218d882840e61928a9b759d8f) is licensed under [GNU AGPL v3](https://www.gnu.org/licenses/agpl-3.0.html).
 
@@ -43,4 +53,4 @@ The TGS DMAPI is licensed as a subproject under the MIT license.
 
 See the footer of [code/__DEFINES/tgs.dm](./code/__DEFINES/tgs.dm) and [code/modules/tgs/LICENSE](./code/modules/tgs/LICENSE) for the MIT license.
 
-All assets including icons and sound are under a [Creative Commons 3.0 BY-SA license](https://creativecommons.org/licenses/by-sa/3.0/) unless otherwise indicated.
+All other assets including icons and sound are under the [Creative Commons 3.0 BY-SA license](https://creativecommons.org/licenses/by-sa/3.0/) unless otherwise indicated.
