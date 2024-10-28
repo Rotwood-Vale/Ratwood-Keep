@@ -109,6 +109,7 @@ SUBSYSTEM_DEF(job)
 			if(player.client)
 				player.client.prefs.lastclass = null
 				player.client.prefs.save_preferences()
+		GLOB.round_join_times[player.ckey] = world.time
 		addtimer(CALLBACK(player.client, TYPE_PROC_REF(/client, job_greet), job), 5 SECONDS)
 		return TRUE
 	JobDebug("AR has failed, Player: [player], Rank: [rank]")

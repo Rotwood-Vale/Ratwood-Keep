@@ -18,6 +18,7 @@
 	noble_income = 22
 	min_pq = 5
 	max_pq = null
+	round_contrib_points = 3
 
 /datum/job/roguetown/exlady //just used to change the ladys title
 	title = "Consort Dowager"

@@ -18,6 +18,7 @@
 	noble_income = 10
 	min_pq = 4
 	max_pq = null
+	round_contrib_points = 2
 
 	cmode_music = 'sound/music/combat_knight.ogg'
 

@@ -15,6 +15,7 @@
 	give_bank_account = 10
 	min_pq = -10
 	max_pq = null
+	round_contrib_points = 2
 
 /datum/outfit/job/roguetown/knavewench/pre_equip(mob/living/carbon/human/H)
 	..()

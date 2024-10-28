@@ -20,6 +20,7 @@
 	noble_income = 16
 	min_pq = 5
 	max_pq = null
+	round_contrib_points = 3
 	cmode_music = 'sound/music/combat_knight.ogg'
 
 /datum/job/roguetown/captain/after_spawn(mob/living/L, mob/M, latejoin = TRUE)

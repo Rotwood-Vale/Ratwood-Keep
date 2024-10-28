@@ -26,6 +26,7 @@ GLOBAL_LIST_EMPTY(lord_titles)
 	whitelist_req = FALSE
 	min_pq = 10
 	max_pq = null
+	round_contrib_points = 4
 	give_bank_account = 1000
 	required = TRUE
 	cmode_music = 'sound/music/combat_fancy.ogg'

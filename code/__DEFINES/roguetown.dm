@@ -189,6 +189,7 @@ GLOBAL_LIST_EMPTY(confessors)
 GLOBAL_LIST_EMPTY(sunlights)
 GLOBAL_LIST_EMPTY(head_bounties)
 GLOBAL_LIST_EMPTY(job_respawn_delays)
+GLOBAL_LIST_EMPTY(round_join_times)
 
 //stress levels
 #define STRESS_MAX 30

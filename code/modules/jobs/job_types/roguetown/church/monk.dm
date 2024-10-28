@@ -16,6 +16,7 @@
 	give_bank_account = TRUE
 	min_pq = 1 //A step above Churchling, should funnel new players to the churchling role to learn miracles at a more sedate pace
 	max_pq = null
+	round_contrib_points = 2
 
 /datum/outfit/job/roguetown/monk
 	name = "Acolyte"

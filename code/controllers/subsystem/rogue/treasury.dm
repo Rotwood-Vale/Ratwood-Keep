@@ -152,10 +152,10 @@ SUBSYSTEM_DEF(treasury)
 		// Player was fined
 		if(source)
 			send_ooc_note("<b>MEISTER:</b> You were fined [amt]m. ([source])", name = target_name)
-			log_to_steward("[name] was fined [amt] ([source])")
+			log_to_steward("[target_name] was fined [amt] ([source])")
 		else
 			send_ooc_note("<b>MEISTER:</b> You were fined [amt]m.", name = target_name)
-			log_to_steward("[name] was fined [amt]")
+			log_to_steward("[target_name] was fined [amt]")
 
 	return TRUE
 

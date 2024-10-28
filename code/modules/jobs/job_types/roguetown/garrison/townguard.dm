@@ -19,6 +19,7 @@
 	give_bank_account = 16
 	min_pq = 1 //Introductory guard role, but still requires knowledge of escalation.
 	max_pq = null
+	round_contrib_points = 2
 
 	cmode_music = 'sound/music/combat_guard.ogg'
 

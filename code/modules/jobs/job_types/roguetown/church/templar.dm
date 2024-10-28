@@ -11,6 +11,7 @@
 	outfit = /datum/outfit/job/roguetown/templar
 	min_pq = 3 //Deus vult, but only according to the proper escalation rules
 	max_pq = null
+	round_contrib_points = 2
 	total_positions = 3
 	spawn_positions = 3
 	advclass_cat_rolls = list(CTAG_TEMPLAR = 20)

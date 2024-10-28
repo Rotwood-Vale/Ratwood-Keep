@@ -15,6 +15,7 @@
 	give_bank_account = 15
 	min_pq = 1 // Please do not read smut while brewing bottle bombs. It upsets the maids when they have to scrape archivists off the ceiling.
 	max_pq = null
+	round_contrib_points = 3
 
 	cmode_music = 'sound/music/combat_fancy.ogg'
 

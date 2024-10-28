@@ -17,6 +17,7 @@
 	noble_income = 22
 	min_pq = 6 //The second most powerful person in the realm...is Mhelping where the keep is
 	max_pq = null
+	round_contrib_points = 3
 	cmode_music = 'sound/music/combat_fancy.ogg'
 
 /*

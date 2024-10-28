@@ -16,6 +16,7 @@
 	min_pq = 2 //mentor role, not a high PQ requirement but not zero
 	max_pq = null
 	give_bank_account = 16
+	round_contrib_points = 3
 
 	cmode_music = 'sound/music/combat_bog.ogg'
 

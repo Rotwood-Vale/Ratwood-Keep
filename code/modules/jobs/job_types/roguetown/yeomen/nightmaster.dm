@@ -15,6 +15,7 @@
 	min_pq = 1 //No drugs until you finish the tutorial, Jimmy!
 	max_pq = null
 	bypass_lastclass = TRUE
+	round_contrib_points = 3
 
 /datum/outfit/job/roguetown/niteman/pre_equip(mob/living/carbon/human/H)
 	..()

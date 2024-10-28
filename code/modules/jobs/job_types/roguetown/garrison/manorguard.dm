@@ -19,6 +19,7 @@
 	give_bank_account = 22
 	min_pq = 1
 	max_pq = null
+	round_contrib_points = 2
 
 	cmode_music = 'sound/music/combat_guard2.ogg'
 

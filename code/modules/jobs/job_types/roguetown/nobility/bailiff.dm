@@ -19,6 +19,7 @@
 	noble_income = 20
 	min_pq = 5
 	max_pq = null
+	round_contrib_points = 3
 	cmode_music = 'sound/music/combat_guard.ogg'
 
 /datum/outfit/job/roguetown/bailiff/pre_equip(mob/living/carbon/human/H)

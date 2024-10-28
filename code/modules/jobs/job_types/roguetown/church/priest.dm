@@ -21,6 +21,7 @@
 	give_bank_account = 115
 	min_pq = 5 // You should know the basics of things if you're going to lead the town's entire religious sector
 	max_pq = null
+	round_contrib_points = 3
 
 /datum/outfit/job/roguetown/priest
 	allowed_patrons = list(/datum/patron/divine/astrata)

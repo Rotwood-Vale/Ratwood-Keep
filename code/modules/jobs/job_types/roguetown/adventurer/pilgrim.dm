@@ -20,6 +20,7 @@
 	display_order = JDO_PILGRIM
 	min_pq = -20
 	max_pq = null
+	round_contrib_points = 2
 	wanderer_examine = TRUE
 	advjob_examine = TRUE
 	always_show_on_latechoices = TRUE
