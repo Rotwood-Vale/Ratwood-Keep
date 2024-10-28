@@ -1,14 +1,11 @@
 
 <p align="center">
  <img width="450px" src="https://res.cloudinary.com/dxckdses2/image/upload/v1730145846/ydfd9atasnhj9jn3r5jw.png" align="center" alt="Ratwood Stats" />
- <h1 class="Esteban" align="center">RATWOOD</h1>
- <h2 class="esteban" align="center">Anthros Allowed Medieval Roleplay</h2>
+ <h1 align="center">RATWOOD</h1>
+ <h2 align="center">Anthros Allowed Medieval Roleplay</h2>
 </p>
 
 <p align="center">
-	<a href="https://github.com/Rotwood-Vale/Ratwood-Keep/actions">
-      <img alt="Tests Passing" src="https://github.com/Rotwood-Vale/Ratwood-Keep/workflows/Test/badge.svg" />
-    </a>
     <a href="https://github.com/Rotwood-Vale/Ratwood-Keep/graphs/contributors">
       <img alt="GitHub Contributors" src="https://img.shields.io/github/contributors/Rotwood-Vale/Ratwood-Keep" />
     </a>
