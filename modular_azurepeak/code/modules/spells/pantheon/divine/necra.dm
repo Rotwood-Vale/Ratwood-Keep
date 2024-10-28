@@ -1,3 +1,5 @@
+#define CHURN_FILTER "churn_glow"
+
 // T1: Avert End (channel on an adjacent target to slowly spend devotion to grant them NODEATH and ticks of oxyloss healing)
 
 /obj/effect/proc_holder/spell/invoked/avert
@@ -56,3 +58,117 @@
 	REMOVE_TRAIT(living_target, TRAIT_NODEATH, "avert_spell")
 
 	user.visible_message(span_danger("[user]'s concentration breaks, the motes receding from [living_target] and into [user.p_their()] hand once more."), span_danger("My concentration breaks, and the Intercession falls silent."))
+
+/obj/effect/proc_holder/spell/targeted/abrogation
+	name = "Abrogation"
+	range = 8
+	overlay_state = "necra"
+	releasedrain = 30
+	chargedloop = /datum/looping_sound/invokeholy
+	chargetime = 50
+	chargedrain = 0.5
+	charge_max = 30 SECONDS
+	max_targets = 0
+	cast_without_targets = TRUE
+	req_items = list(/obj/item/clothing/neck/roguetown/psicross)
+	sound = 'sound/magic/churn.ogg'
+	associated_skill = /datum/skill/magic/holy
+	invocation = "The Undermaiden rebukes!"
+	invocation_type = "shout" //can be none, whisper, emote and shout
+	miracle = TRUE
+	devotion_cost = 20
+
+/obj/effect/proc_holder/spell/targeted/abrogation/cast(list/targets, mob/living/user = usr)
+	. = ..()
+	var/debuff_power = 1
+	if (user && user.mind)
+		debuff_power = clamp((user.mind.get_skill_level(/datum/skill/magic/holy) / 2), 1, 3)
+	
+	var/too_powerful = FALSE
+	var/list/things_to_churn = list()
+	for (var/mob/living/L in targets)
+		var/is_vampire = FALSE
+		var/is_zombie = FALSE
+		if(L.stat == DEAD)
+			continue
+		if (L.mind)
+			var/datum/antagonist/vampirelord/lesser/V = L.mind.has_antag_datum(/datum/antagonist/vampirelord/lesser)
+			if (V && !V.disguised)
+				is_vampire = TRUE
+			if (L.mind.has_antag_datum(/datum/antagonist/zombie))
+				is_zombie = TRUE
+			if (L.mind.special_role == "Vampire Lord")
+				too_powerful = L
+				user.visible_message(span_warning("[user] suddenly pales before an unseen presence, and gasps!"), span_warning("The sound of rushing blood fills my ears and mind, drowning out my abrogation!"))
+				break
+		if (L.mob_biotypes & MOB_UNDEAD || is_vampire || is_zombie)
+			things_to_churn += L
+	
+	if (!too_powerful)
+		if (LAZYLEN(things_to_churn))
+			user.visible_message(span_warning("A frigid blue glower suddenly erupts in [user]'s eyes as a whispered prayer summons forth a winding veil of ghostly mists!"), span_notice("I perform the sacred rite of Abrogation, bringing forth Her servants to harry and weaken the unliving!"))
+			for(var/mob/living/thing in things_to_churn)
+				thing.apply_status_effect(/datum/status_effect/churned, user, debuff_power)
+		else
+			to_chat(user, span_notice("The rite of Abrogation passes from my lips in silence, having found nothing to assail."))
+			return
+	else
+		user.Stun(25)
+		user.throw_at(get_ranged_target_turf(user, get_dir(user,too_powerful), 7), 7, 1, too_powerful, spin = FALSE)
+		user.visible_message(span_warning("[user] ceases their prayer, suddenly choking upon a gout of blood in their throat!"), span_boldwarning("My vision swims in red!"))
+
+/atom/movable/screen/alert/status_effect/churned
+	name = "Churning Essence"
+	desc = "The magicks that bind me into being are being disrupted! I should get away from the source as soon as I can!"
+	icon_state = "stressvb"
+
+/datum/status_effect/churned
+	id = "necra_churned"
+	alert_type = /atom/movable/screen/alert/status_effect/churned
+	duration = 30 SECONDS
+	examine_text = "<b>SUBJECTPRONOUN is wreathed in a wild frenzy of ghostly motes!</b>"
+	effectedstats = list("strength" = -2, "constitution" = -2, "endurance" = -2, "speed" = -2)
+	status_type = STATUS_EFFECT_REFRESH
+	var/datum/weakref/debuffer
+	var/outline_colour = "#33cabc"
+	var/base_tick = 0.2
+	var/intensity = 1
+	var/range = 10
+
+/datum/status_effect/churned/on_creation(mob/living/new_owner, mob/living/caster, potency)
+	intensity = potency
+	if (caster)
+		debuffer = WEAKREF(caster)
+	return ..()
+	
+/datum/status_effect/churned/on_apply()
+	var/filter = owner.get_filter(CHURN_FILTER)
+	to_chat(owner, span_warning("Wisps leap from the cloying mists to surround me, their chill disrupting my body! FLEE!"))
+	if (!filter)
+		owner.add_filter(CHURN_FILTER, 2, list("type" = "outline", "color" = outline_colour, "alpha" = 200, "size" = 1))
+	return TRUE
+
+/datum/status_effect/churned/refresh()
+	. = ..()
+	intensity += 1
+	to_chat(owner, span_boldwarning("The mists intensify, the glowing wisps steadily disrupting my body..."))
+
+/datum/status_effect/churned/process()
+	. = ..()
+	if (!owner)
+		return
+	if (prob(33))
+		owner.adjustFireLoss(base_tick * intensity)
+	if (prob(10))
+		to_chat(owner, span_warning("A frenzy of ghostly motes assail my form!"))
+		owner.emote("scream")
+
+	var/mob/living/our_debuffer = debuffer.resolve()
+	if (get_dist(our_debuffer, owner) > range)
+		to_chat(owner, span_notice("I've escaped the cloying mists!"))
+		qdel(src)
+
+/datum/status_effect/churned/on_remove()
+	owner.remove_filter(CHURN_FILTER)
+
+#undef CHURN_FILTER
