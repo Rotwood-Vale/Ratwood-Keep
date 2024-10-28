@@ -276,7 +276,7 @@
 	if(isclothing(item_to_check))
 		var/obj/item/clothing/C = item_to_check
 		//Thank you DM Refrence website for telling me how to find out negative if in arguments.
-		if(!(gender in C.allowed_sex) || !("human" in C.allowed_race))
+		if(!(gender in C.allowed_sex))
 			to_chat(user, "<span class='warning'>This clothing wont fit this mannequins frame.</span>")
 			return FALSE
 
@@ -393,7 +393,7 @@
 		var/obj/item/clothing/under/C = worn_thing
 		fitting = C.fitted
 
-	var/added_overlays = worn_thing.build_worn_icon(default_layer = clothing_layer, default_icon_file = overlay_icon, isinhands = FALSE, femaleuniform = fitting, coom = is_female)
+	var/added_overlays = worn_thing.build_worn_icon(default_layer = clothing_layer, default_icon_file = overlay_icon, isinhands = FALSE, femaleuniform = fitting, female = is_female)
 	//Cloaks refuse to be shown behind the mannequin unless they are applied to the underlays.
 	if(clothing_layer >= CLOAK_BEHIND_LAYER)
 		underlays += added_overlays
@@ -684,4 +684,4 @@
 #undef SLOT_MANNEQUIN_MASK
 #undef SLOT_MANNEQUIN_HEAD
 #undef SLOT_MANNEQUIN_PANTS
-#undef MANNEQUIN_LAYER_CALC
+//#undef MANNEQUIN_LAYER_CALC
