@@ -1484,11 +1484,10 @@
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/indoors/shelter/woods)
 "bzn" = (
-/obj/structure/closet/crate/roguecloset{
-	locked = 1;
+/obj/item/roguekey/vault,
+/obj/structure/closet/crate/roguecloset/lord{
 	lockid = "steward"
 	},
-/obj/item/roguekey/vault,
 /turf/open/floor/rogue/tile/tilerg,
 /area/rogue/indoors)
 "bzt" = (
