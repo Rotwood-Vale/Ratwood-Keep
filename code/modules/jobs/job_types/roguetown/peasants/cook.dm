@@ -43,4 +43,4 @@
 		head = /obj/item/clothing/head/roguetown/cookhat
 		shoes = /obj/item/clothing/shoes/roguetown/simpleshoes
 		neck = /obj/item/storage/belt/rogue/pouch/coins/poor
-		H.change_stat("constitution", 1)
+		H.change_stat("constitution", 2)
