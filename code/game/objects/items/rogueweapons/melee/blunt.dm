@@ -187,7 +187,8 @@
 	attack_verb = list("picks", "impales")
 	hitsound = list('sound/combat/hits/blunt/metalblunt (1).ogg', 'sound/combat/hits/blunt/metalblunt (2).ogg', 'sound/combat/hits/blunt/metalblunt (3).ogg')
 	chargetime = 14
-	chargedrain = 1
+	chargedrain = 1 // Bows have 2
+	charging_slowdown = 2 // Bows have 3
 	misscost = 1
 	no_early_release = TRUE
 	penfactor = 80
