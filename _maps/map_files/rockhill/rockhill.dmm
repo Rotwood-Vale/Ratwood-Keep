@@ -96,14 +96,6 @@
 /obj/machinery/light/rogue/wallfire/candle/blue/r,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/indoors/town/tavern)
-"abV" = (
-/obj/structure/closet/crate/chest/gold{
-	name = Powder Chest;
-	lockid = nightman;
-	desc = "A container no doubt full of eclectic powders and dusts. A Baothan's wet dream."
-	},
-/turf/open/floor/rogue/tile,
-/area/rogue/indoors/town/manor)
 "acE" = (
 /obj/structure/bed/rogue/inn,
 /obj/item/bedsheet/rogue/pelt,
@@ -1495,11 +1487,6 @@
 /turf/open/floor/rogue/tile,
 /area/rogue/under/town/basement)
 "bwY" = (
-/obj/structure/closet/crate/chest/gold{
-	name = Powder Chest;
-	lockid = nightman;
-	desc = "A container no doubt full of eclectic powders and dusts. A Baothan's wet dream."
-	},
 /obj/item/roguegem/blue,
 /turf/open/floor/rogue/tile,
 /area/rogue/indoors/town/manor)
@@ -5992,14 +5979,6 @@
 /obj/structure/roguemachine/vendor,
 /turf/closed/wall/mineral/rogue/wooddark,
 /area/rogue/indoors/town/shop)
-"fEF" = (
-/obj/structure/closet/crate/chest/gold{
-	name = Powder Chest;
-	lockid = nightman;
-	desc = "A container no doubt full of eclectic powders and dusts. A Baothan's wet dream."
-	},
-/turf/open/floor/rogue/church,
-/area/rogue/under/town/basement)
 "fEK" = (
 /turf/closed/wall/mineral/rogue/stone/moss,
 /area/rogue/indoors/town/church/chapel)
@@ -9306,14 +9285,6 @@
 	},
 /turf/open/floor/rogue/dirt,
 /area/rogue/outdoors/rtfield)
-"iML" = (
-/obj/structure/closet/crate/chest/gold{
-	name = Powder Chest;
-	lockid = nightman;
-	desc = "A container no doubt full of eclectic powders and dusts. A Baothan's wet dream."
-	},
-/turf/open/floor/rogue/tile,
-/area/rogue/indoors/town/vault)
 "iMU" = (
 /turf/closed/mineral/random/rogue/high,
 /area/rogue/under/cave)
@@ -13756,7 +13727,7 @@
 /area/rogue/indoors/town/manor)
 "mZu" = (
 /obj/structure/closet/crate/chest/gold{
-	name = Powder Chest;
+	name = "Powder Chest";
 	lockid = nightman;
 	desc = "A container no doubt full of eclectic powders and dusts. A Baothan's wet dream."
 	},
@@ -15586,16 +15557,6 @@
 	icon_state = "vertw"
 	},
 /area/rogue/indoors/town)
-"oFc" = (
-/obj/structure/closet/crate/chest/gold{
-	name = Powder Chest;
-	lockid = nightman;
-	desc = "A container no doubt full of eclectic powders and dusts. A Baothan's wet dream."
-	},
-/turf/open/floor/rogue/tile{
-	icon_state = "linoleum"
-	},
-/area/rogue/indoors/town/vault)
 "oFh" = (
 /obj/structure/mineral_door/wood/violet{
 	lockid = "fancyroomii";
@@ -184449,7 +184410,7 @@ vRu
 uAu
 eWW
 fBR
-fEF
+sID
 pzz
 vng
 pzz
@@ -185265,7 +185226,7 @@ fBR
 fBR
 fBR
 fBR
-fEF
+sID
 uAu
 vRu
 vRu
@@ -186057,7 +186018,7 @@ vRu
 uAu
 kcm
 fBR
-fEF
+sID
 pzz
 qLP
 pzz
@@ -188463,9 +188424,9 @@ rpo
 opv
 rpo
 opv
-iML
+rpo
 opv
-iML
+rpo
 txa
 iTw
 iTw
@@ -188861,7 +188822,7 @@ vRu
 fjw
 vRu
 txa
-iML
+rpo
 opv
 rpo
 opv
@@ -190873,8 +190834,8 @@ fjw
 txa
 uKD
 rpo
-iML
-oFc
+rpo
+opv
 rpo
 rpo
 rpo
@@ -402341,7 +402302,7 @@ lvA
 sPu
 vLZ
 bwY
-abV
+sPu
 wtF
 fZJ
 fZJ
