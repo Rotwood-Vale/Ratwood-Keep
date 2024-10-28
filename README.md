@@ -20,7 +20,11 @@
     </a>
 </p>
 
-[![BYOND Build](https://github.com/Rotwood-Vale/Ratwood-Keep/actions/workflows/ci_suite.yml/badge.svg)](https://github.com/Rotwood-Vale/Ratwood-Keep/actions/workflows/ci_suite.yml)
+<p align="center">
+	<a href="https://github.com/Rotwood-Vale/Ratwood-Keep/actions/workflows/ci_suite.yml">
+      <img alt="BYOND Build" src="https://github.com/Rotwood-Vale/Ratwood-Keep/actions/workflows/ci_suite.yml/badge.svg" />
+    </a>
+</p>
 
 
 
