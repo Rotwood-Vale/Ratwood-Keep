@@ -48,6 +48,16 @@
 	stressadd = 6
 	desc = span_boldred("I'd rather cut my own throat than my beard.")
 
+/datum/stressevent/guillotinefail
+	timer = 5 MINUTES
+	stressadd = 3
+	desc = span_red("This execution sucks!")
+
+/datum/stressevent/guillotineexecutorfail
+	timer = 15 MINUTES
+	stressadd = 5
+	desc = span_boldred("I have failed the guillotine execution! What a shame!")
+
 /datum/stressevent/viewdismember
 	timer = 15 MINUTES
 	max_stacks = 5
@@ -99,7 +109,7 @@
 
 /datum/stressevent/hatezizo
 	timer = 99999 MINUTES
-	stressadd = 666 // :)
+	stressadd = 10
 	desc = "<span class='red'>ZIZOZIZOZIZO</span>"
 
 /datum/stressevent/burntmeal
