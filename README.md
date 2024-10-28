@@ -23,9 +23,11 @@
     </a>
 </p>
 
+<p align="center">
 
-| Website                   | Link                                           |
-|---------------------------|------------------------------------------------|
-| Discord          | [https://discord.gg/nQDetK6ktR](https://discord.gg/nQDetK6ktR) |
-| Wiki                      | [https://wiki.ratwood.rip/index.php/Main_Page](https://wiki.ratwood.rip/index.php/Main_Page) |
+	| Website                   | Link                                           |
+	|---------------------------|------------------------------------------------|
+	| Discord          | [discord.gg/nQDetK6ktR](https://discord.gg/nQDetK6ktR) |
+	| Wiki                      | [wiki.ratwood.rip](https://wiki.ratwood.rip/index.php/Main_Page) |
 
+</p>
