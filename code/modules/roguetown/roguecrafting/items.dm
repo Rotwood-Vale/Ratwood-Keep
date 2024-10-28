@@ -346,22 +346,6 @@
 
 	req_table = TRUE
 
-/datum/crafting_recipe/roguetown/mortar
-	name = "stone mortar"
-	result = /obj/item/reagent_containers/glass/mortar
-	reqs = list(/obj/item/natural/stone = 1)
-	tools = list(/obj/item/rogueweapon/huntingknife) // Intended to be either stone knife or steel hunting knife
-	craftdiff = 1
-	subtype_reqs = TRUE //Unsure if needed for stone knife to work, feel free to remove this if not.
-
-/datum/crafting_recipe/roguetown/pestle
-	name = "stone pestle"
-	result = /obj/item/pestle
-	reqs = list(/obj/item/natural/stone = 1)
-	tools = list(/obj/item/rogueweapon/huntingknife) // Intended to be either stone knife or steel hunting knife
-	craftdiff = 1
-	subtype_reqs = TRUE //Unsure if needed for stone knife to work, feel free to remove this if not.
-
 /obj/item/storage/roguebag/crafted
 	sellprice = 4
 

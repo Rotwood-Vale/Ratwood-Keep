@@ -236,6 +236,10 @@
 	held_items[/obj/item/reagent_containers/hypospray/medipen/sty/nourish] = list("PRICE" = rand(10,15),"NAME" = "NOURISH")
 	held_items[/obj/item/storage/fancy/shhig] = list("PRICE" = rand(15,25),"NAME" = "box of ssssigs")
 	held_items[/obj/item/storage/box/matches] = list("PRICE" = rand(10,15),"NAME" = "tinderbox")
+	held_items[/obj/item/reagent_containers/hypospray/medipen/sty/detox] = list("PRICE" = rand(15,20),"NAME" = "tinderbox")
+	held_items[/obj/item/reagent_containers/glass/alembic] = list("PRICE" = rand(35,50),"NAME" = "alembic")
+	held_items[/obj/item/storage/belt/rogue/pouch/pill] = list("PRICE" = rand(25,30),"NAME" = "pep pills bag")
+	held_items[/obj/item/storage/fancy/ifak] = list("PRICE" = rand(25,50),"NAME" = "patch kit")
 
 #undef DRUGRADE_MONEYA
 #undef DRUGRADE_MONEYB

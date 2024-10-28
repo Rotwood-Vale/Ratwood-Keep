@@ -10,7 +10,7 @@
 	name = "Secular Diagnosis"
 	overlay_state = "diagnose"
 	range = 1
-	associated_skill = /datum/skill/misc/medicine
+	associated_skill = /datum/skill/misc/treatment
 	miracle = FALSE
 	devotion_cost = 0 
 
@@ -21,7 +21,7 @@
 	range = 1
 	include_user = TRUE
 	sound = 'sound/gore/flesh_eat_03.ogg'
-	associated_skill = /datum/skill/misc/medicine
+	associated_skill = /datum/skill/misc/treatment
 	antimagic_allowed = TRUE
 	charge_max = 60 SECONDS
 	miracle = FALSE
@@ -33,7 +33,7 @@
 	overlay_state = "stable"
 	range = 1
 	sound = 'modular/Smoker/sound/inject.ogg'
-	associated_skill = /datum/skill/misc/medicine
+	associated_skill = /datum/skill/misc/treatment
 	antimagic_allowed = TRUE
 	include_user = TRUE
 	charge_max = 5 MINUTES
@@ -47,7 +47,7 @@
 	range = 1
 	include_user = TRUE
 	sound = 'sound/combat/newstuck.ogg'
-	associated_skill = /datum/skill/misc/medicine
+	associated_skill = /datum/skill/misc/treatment
 	antimagic_allowed = TRUE
 	charge_max = 5 MINUTES
 	miracle = FALSE
@@ -56,14 +56,14 @@
 /obj/effect/proc_holder/spell/targeted/debride // Cure rot if has weak liver debuff
 	action_icon = 'icons/mob/actions/roguespells.dmi'
 	name = "Tissue Debridement"
-	overlay_state = "heal"
+	overlay_state = "unrot"
 	range = 1
 	include_user = FALSE
 	sound = 'sound/combat/newstuck.ogg'
-	associated_skill = /datum/skill/misc/medicine
+	associated_skill = /datum/skill/misc/treatment
 	antimagic_allowed = TRUE
 	chargetime = 100
-	charge_max = 2 MINUTES
+	charge_max = 1 MINUTES
 	miracle = FALSE
 	devotion_cost = 0
 	var/unzombification_pq = PQ_GAIN_UNZOMBIFY
@@ -71,14 +71,14 @@
 /obj/effect/proc_holder/spell/targeted/cpr
 	action_icon = 'icons/mob/actions/roguespells.dmi'
 	name = "Cardiac Massage"
-	overlay_state = "heal"
+	overlay_state = "cpr"
 	range = 1
 	include_user = FALSE
 	sound = 'sound/combat/newstuck.ogg'
-	associated_skill = /datum/skill/misc/medicine
+	associated_skill = /datum/skill/misc/treatment
 	antimagic_allowed = TRUE
 	chargetime = 100
-	charge_max = 2 MINUTES
+	charge_max = 1 MINUTES
 	miracle = FALSE
 	devotion_cost = 0
 	var/revive_pq = PQ_GAIN_REVIVE
@@ -395,6 +395,239 @@
 		heart.Insert(target)
 		return TRUE
 
+///////////////////////////////////////////////------------------------------------------------reagents--------------------------------------------/////////////////////////////////////////////////
+
+
+
+/obj/item/reagent_containers/powder/alch
+	name = "essence"
+	desc = "powderized and ready to brew"
+	gender = PLURAL
+	icon_state = "salt"
+	can_brew = TRUE
+	list_reagents = null
+	grind_results = null
+	volume = 22
+
+/obj/item/reagent_containers/powder/alch/berry
+	name = "essence of berry"
+	gender = PLURAL
+	icon_state = "salt"
+	color = "#4682b4"
+	brew_reagent = /datum/reagent/alch/syrumb
+	brew_amt = 22
+	can_brew = TRUE
+	list_reagents = null
+	grind_results = null
+	volume = 22
+
+/obj/item/reagent_containers/powder/alch/berryp
+	name = "essence of poison berry"
+	gender = PLURAL
+	icon_state = "salt"
+	color = "#61DE2A"
+	brew_reagent = /datum/reagent/alch/syrump
+	brew_amt = 22
+	can_brew = TRUE
+	list_reagents = null
+	grind_results = list(/datum/reagent/berrypoison = 10)
+	volume = 10
+
+/obj/item/reagent_containers/powder/alch/mincem
+	name = "essence of flesh"
+	gender = PLURAL
+	icon_state = "salt"
+	color = "#ff7f7f"
+	can_brew = TRUE
+	brew_reagent = /datum/reagent/alch/syrumm
+	brew_amt = 22
+	list_reagents = list(/datum/reagent/consumable/nutriment = 3)
+	grind_results = null
+	volume = 10
+
+/obj/item/reagent_containers/powder/alch/mincef
+	name = "essence of fish"
+	gender = PLURAL
+	icon_state = "salt"
+	color = "#ff7f7f"
+	brew_reagent = /datum/reagent/alch/syrumf
+	brew_amt = 22
+	can_brew = TRUE
+	list_reagents = list(/datum/reagent/consumable/nutriment = 3)
+	grind_results = null
+	volume = 10
+
+/obj/item/reagent_containers/powder/alch/stone
+	name = "essence of earth"
+	gender = PLURAL
+	icon_state = "salt"
+	brew_reagent = /datum/reagent/alch/syrumr
+	brew_amt = 22
+	can_brew = TRUE
+	color = "#808080"
+	list_reagents = null
+	grind_results = null
+	volume = 10
+
+/obj/item/reagent_containers/powder/alch/pipe
+	name = "essence of addiction"
+	gender = PLURAL
+	icon_state = "salt"
+	brew_reagent = /datum/reagent/alch/syrumpw
+	brew_amt = 22
+	can_brew = TRUE
+	color = "#808080"
+	list_reagents = list(/datum/reagent/drug/nicotine = 30)
+	grind_results = null
+	volume = 10
+
+/obj/item/reagent_containers/powder/alch/swamp
+	name = "essence of clarity"
+	gender = PLURAL
+	icon_state = "salt"
+	brew_reagent = /datum/reagent/alch/syrumsw
+	brew_amt = 22
+	can_brew = TRUE
+	color = "#61DE2A"
+	list_reagents = list(/datum/reagent/drug/space_drugs = 30)
+	grind_results = null
+	volume = 10
+
+/datum/reagent/alch
+	name = "hmm"
+	description = "shouldnt see this"
+	reagent_state = LIQUID
+	color = "#808080"
+	metabolization_rate = 0.25 * REAGENTS_METABOLISM
+	overdose_threshold = null
+
+/datum/reagent/alch/syruma
+	name = "syrum of fire"
+	description = "refined viscous ash"
+	reagent_state = LIQUID
+	color = "#808080"
+	metabolization_rate = 1 * REAGENTS_METABOLISM
+	overdose_threshold = null
+
+/datum/reagent/alch/syrumpw
+	name = "west syrum"
+	description = "refined west essence"
+	reagent_state = LIQUID
+	color = "#808080"
+	metabolization_rate = 0.25 * REAGENTS_METABOLISM
+	overdose_threshold = null
+
+/datum/reagent/alch/syrumsw
+	name = "swamp syrum"
+	description = "refined berry poison"
+	reagent_state = LIQUID
+	color = "#61DE2A"
+	metabolization_rate = 0.25 * REAGENTS_METABOLISM
+	overdose_threshold = null
+
+/datum/reagent/alch/syrumm
+	name = "meaty syrum"
+	description = "refined viscous slop"
+	reagent_state = LIQUID
+	color = "#ff7f7f"
+	metabolization_rate = 1 * REAGENTS_METABOLISM
+	overdose_threshold = null
+
+/datum/reagent/alch/syrumf
+	name = "fishyy syrum"
+	description = "refined viscous fishy smelling gunk"
+	reagent_state = LIQUID
+	color = "#ff7f7f"
+	metabolization_rate = 1 * REAGENTS_METABOLISM
+	overdose_threshold = null
+
+/datum/reagent/alch/syrumr
+	name = "earthy syrum"
+	description = "refined liquid state stone"
+	reagent_state = LIQUID
+	color = "#E2E5DE"
+	metabolization_rate = 0.25 * REAGENTS_METABOLISM
+	overdose_threshold = null
+
+/datum/reagent/alch/syrums
+	name = "salty syrum"
+	description = "refined liquid state salt"
+	reagent_state = LIQUID
+	color = "#E2E5DE"
+	metabolization_rate = 0.25 * REAGENTS_METABOLISM
+	overdose_threshold = null
+
+/datum/reagent/alch/syrump
+	name = "poison syrum"
+	description = "refined berry poison"
+	reagent_state = LIQUID
+	color = "#61DE2A"
+	metabolization_rate = 0.25 * REAGENTS_METABOLISM
+	overdose_threshold = null
+
+/datum/reagent/alch/syrumb
+	name = "berry syrum"
+	description = "refined berry essence"
+	reagent_state = LIQUID
+	color = "#61DE2A"
+	metabolization_rate = 0.25 * REAGENTS_METABOLISM
+	overdose_threshold = null
+
+/datum/reagent/medicine/caffeine
+	name = "caffeine"
+	description = "No Sleep"
+	reagent_state = LIQUID
+	color = "#D2FFFA"
+	metabolization_rate = 20 * REAGENTS_METABOLISM
+	overdose_threshold = null
+
+/datum/reagent/medicine/stimu
+	name = "Stimu"
+	description = "crit stabalizer and blood restorer painkiller"
+	reagent_state = LIQUID
+	color = "#D2FFFA"
+	metabolization_rate = 0.25 * REAGENTS_METABOLISM
+	overdose_threshold = null
+
+/datum/reagent/alch/syruma
+	name = "syrum of fire"
+	description = "refined viscous ash"
+	reagent_state = LIQUID
+	color = "#808080"
+	metabolization_rate = 1 * REAGENTS_METABOLISM
+	overdose_threshold = null
+
+/datum/reagent/alch/on_mob_metabolize(mob/living/carbon/M)
+	if(prob(50))
+		M.confused = max(M.confused+3,0)
+	M.emote(pick("cough"))
+
+/datum/reagent/alch/syruma/on_mob_metabolize(mob/living/carbon/M)
+	M.adjustToxLoss(-1*REM, 0)
+	M.adjustFireLoss(0.25*REM, 0)
+	M.reagents.remove_all_type(/datum/reagent, 1)
+	M.emote(pick("gag"))
+
+/datum/reagent/alch/syrump/on_mob_metabolize(mob/living/carbon/M)
+	M.add_nausea(9)
+	M.adjustToxLoss(2, 0)
+
+/datum/reagent/medicine/caffeine/on_mob_life(mob/living/carbon/M)
+	M.rogstam_add(800)
+	..()
+	. = 1
+	if(M.has_status_effect(/datum/status_effect/debuff/sleepytime))
+		M.remove_status_effect(/datum/status_effect/debuff/sleepytime)
+		M.remove_stress(/datum/stressevent/sleepytime)
+		M.mind.sleep_adv.advance_cycle()
+
+/datum/reagent/medicine/caffeine
+	name = "caffeine"
+	description = "No Sleep"
+	reagent_state = LIQUID
+	color = "#D2FFFA"
+	metabolization_rate = 20 * REAGENTS_METABOLISM
+	overdose_threshold = null
 
 /datum/reagent/medicine/stimu
 	name = "Stimu"
@@ -428,29 +661,119 @@
 	if(M.losebreath < 0)
 		M.losebreath = 0
 	..()
-///////////////////////////////////////////////------------------------------------------------reagents--------------------------------------------/////////////////////////////////////////////////
-/datum/reagent/medicine/caffeine
-	name = "caffeine"
-	description = "No Sleep"
-	reagent_state = LIQUID
-	color = "#D2FFFA"
-	metabolization_rate = 20 * REAGENTS_METABOLISM
-	overdose_threshold = null
 
-/datum/reagent/medicine/caffeine/on_mob_life(mob/living/carbon/M)
-	M.rogstam_add(800)
-	..()
-	. = 1
-	if(M.has_status_effect(/datum/status_effect/debuff/sleepytime))
-		M.remove_status_effect(/datum/status_effect/debuff/sleepytime)
-		M.remove_stress(/datum/stressevent/sleepytime)
-		M.mind.sleep_adv.advance_cycle()
+////////////////////////////////////////////////////---------------------------------------alch reactions----------------------------------------------//////////////////////////////////////////////////////////
+
+/datum/chemical_reaction/alch/health
+	name = "health pot"
+	mix_sound = 'sound/items/fillbottle.ogg'
+	id = /datum/reagent/medicine/healthpot
+	results = list(/datum/reagent/medicine/healthpot = 45)
+	required_reagents = list(/datum/reagent/alch/syrumm = 22, /datum/reagent/alch/syruma = 22)
+
+/datum/chemical_reaction/alch/mana
+	name = "mana pot"
+	id = /datum/reagent/medicine/manapot
+	results = list(/datum/reagent/medicine/manapot = 45)
+	required_reagents = list(/datum/reagent/alch/syrumf = 22, /datum/reagent/alch/syruma = 22)
+
+/datum/chemical_reaction/alch/salt
+	name = "saltify"
+	id = "saltify"
+	required_reagents = list(/datum/reagent/alch/syrumr = 22, /datum/reagent/alch/syruma = 22)
+
+/datum/chemical_reaction/alch/salt/on_reaction(datum/reagents/holder, created_volume)
+	var/location = get_turf(holder.my_atom)
+	for(var/i = 1, i <= created_volume, i++)
+		new /obj/item/reagent_containers/powder/salt(location)
+
+/datum/chemical_reaction/alch/ozium
+	name = "oziumify"
+	id = "oziumify"
+	required_reagents = list(/datum/reagent/alch/syrump = 22, /datum/reagent/alch/syrumsw = 22)
+
+/datum/chemical_reaction/alch/ozium/on_reaction(datum/reagents/holder, created_volume)
+	var/location = get_turf(holder.my_atom)
+	for(var/i = 1, i <= created_volume, i++)
+		new /obj/item/reagent_containers/powder/ozium(location)
+
+/datum/chemical_reaction/alch/moon
+	name = "moondustify"
+	id = "moondustify"
+	required_reagents = list(/datum/reagent/alch/syrump = 22, /datum/reagent/alch/syrumpw = 22)
+
+/datum/chemical_reaction/alch/moon/on_reaction(datum/reagents/holder, created_volume)
+	var/location = get_turf(holder.my_atom)
+	for(var/i = 1, i <= created_volume, i++)
+		new /obj/item/reagent_containers/powder/moondust(location)
+
+/datum/chemical_reaction/alch/spice
+	name = "spiceify"
+	id = "spiceify"
+	required_reagents = list(/datum/reagent/alch/syrumsw = 22, /datum/reagent/alch/syrumpw = 22)
+
+/datum/chemical_reaction/alch/spice/on_reaction(datum/reagents/holder, created_volume)
+	var/location = get_turf(holder.my_atom)
+	for(var/i = 1, i <= created_volume, i++)
+		new /obj/item/reagent_containers/powder/spice(location)
+
+/datum/chemical_reaction/alch/pure
+	name = "clean moondustify"
+	id = "clean moondustify"
+	required_reagents = list(/datum/reagent/ozium = 15, /datum/reagent/moondust = 15)
+
+/datum/chemical_reaction/alch/pure/on_reaction(datum/reagents/holder, created_volume)
+	var/location = get_turf(holder.my_atom)
+	for(var/i = 1, i <= created_volume, i++)
+		new /obj/item/reagent_containers/powder/moondust_purest(location)
+
 /////////////////////////////////////////////////////------------------------------------tools and pre made bottles-----------------------------------------/////////////////////////////////////////////////////
+
+/obj/item/storage/backpack/rogue/backpack/rucksack
+	name = "rucksack"
+	desc = "A bulky backpack worn on the back which can store many items."
+	icon_state = "rucksack"
+	item_state = "rucksack"
+	icon = 'icons/roguetown/clothing/storage.dmi'
+	w_class = WEIGHT_CLASS_BULKY
+	slot_flags = ITEM_SLOT_BACK
+	resistance_flags = NONE
+	max_integrity = 300
+	equip_sound = 'sound/blank.ogg'
+	bloody_icon_state = "bodyblood"
+	sewrepair = TRUE
+
+/obj/item/storage/backpack/rogue/backpack/rucksack/ComponentInitialize()
+	. = ..()
+	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
+	if(STR)
+		STR.max_combined_w_class = 42
+		STR.max_w_class = WEIGHT_CLASS_NORMAL
+		STR.max_items = 10
+		STR.not_while_equipped = TRUE
+
+/obj/item/storage/belt/rogue/pouch/pill
+	name = "pill pouch"
+	desc = "for holding all your pill.... and ONLY pill needs."
+
+/obj/item/storage/belt/rogue/pouch/pill/ComponentInitialize()
+	. = ..()
+	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
+	if(STR)
+		STR.max_combined_w_class = 42
+		STR.max_w_class = WEIGHT_CLASS_NORMAL
+		STR.max_items = 12
+		STR.set_holdable(list(/obj/item/reagent_containers/pill/caffpill,))
+
+/obj/item/storage/belt/rogue/pouch/pill/PopulateContents()
+	new /obj/item/reagent_containers/pill/caffpill(src)
+	new /obj/item/reagent_containers/pill/caffpill(src)
+	new /obj/item/reagent_containers/pill/caffpill(src)
 
 /obj/item/rogueweapon/surgery/saw/improv
 	name = "improvised saw"
 	desc = "A tool used to carve through bone......poorly, but better than nothing."
-	icon_state = "bonesaw_wooden"
+	icon_state = "bonesaw_wood"
 	possible_item_intents = list(/datum/intent/dagger/cut, /datum/intent/dagger/chop/cleaver)
 	slot_flags = ITEM_SLOT_HIP
 	parrysound = list('sound/combat/parry/bladed/bladedmedium (1).ogg','sound/combat/parry/bladed/bladedmedium (2).ogg','sound/combat/parry/bladed/bladedmedium (3).ogg')
@@ -467,7 +790,7 @@
 /obj/item/rogueweapon/surgery/hemostat/improv
 	name = "improvised clamp"
 	desc = "A tool used to clamp down on soft tissue. A poor alternative to metal but, better than nothing."
-	icon_state = "forceps_wooden"
+	icon_state = "forceps_wood"
 	possible_item_intents = list(/datum/intent/use)
 	slot_flags = ITEM_SLOT_HIP|ITEM_SLOT_MOUTH
 	parrysound = list('sound/combat/parry/bladed/bladedsmall (1).ogg','sound/combat/parry/bladed/bladedsmall (2).ogg','sound/combat/parry/bladed/bladedsmall (3).ogg')
@@ -498,11 +821,6 @@
 	w_class = WEIGHT_CLASS_SMALL
 	throwforce = 1
 	slot_flags = null
-
-/obj/item/storage/fancy/skit/PopulateContents()
-	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
-	for(var/i = 1 to STR.max_items)
-		new spawn_type(src)
 
 /obj/item/storage/fancy/skit/update_icon()
 	if(fancy_open)
@@ -547,7 +865,8 @@
 /obj/item/storage/fancy/skit/ComponentInitialize()
 	..()
 	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
-	STR.max_items = 8
+	STR.max_items = 10
+	STR.max_combined_w_class = 42
 	STR.set_holdable(list(
 		/obj/item/rogueweapon/surgery/scalpel,
 		/obj/item/rogueweapon/surgery/saw,
@@ -565,9 +884,11 @@
 	new /obj/item/rogueweapon/surgery/scalpel(src)
 	new /obj/item/rogueweapon/surgery/saw(src)
 	new /obj/item/rogueweapon/surgery/hemostat(src)
+	new /obj/item/rogueweapon/surgery/hemostat(src)
 	new /obj/item/rogueweapon/surgery/retractor(src)
 	new /obj/item/rogueweapon/surgery/bonesetter(src)
 	new /obj/item/rogueweapon/surgery/cautery(src)
+	new /obj/item/natural/worms/leech/cheele(src)
 	new /obj/item/needle/pestra(src)
 
 /obj/item/storage/fancy/ifak
@@ -628,14 +949,15 @@
 	. = ..()
 	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
 	STR.max_items = 8
+	STR.max_combined_w_class = 42
 	STR.set_holdable(list(
 		/obj/item/reagent_containers/hypospray/medipen/sealbottle/reju,
-		/obj/item/rogueweapon/surgery/saw,
-		/obj/item/rogueweapon/surgery/hemostat,
-		/obj/item/rogueweapon/surgery/retractor,
-		/obj/item/rogueweapon/surgery/bonesetter,
-		/obj/item/rogueweapon/surgery/cautery,
-		/obj/item/natural/worms/leech/cheele,
+		/obj/item/reagent_containers/hypospray/medipen/sty/detox,
+		/obj/item/natural/cloth/bandage,
+		/obj/item/natural/bundle/cloth/bandage,
+		/obj/item/natural/bundle/cloth/bandage/full,
+		/obj/item/reagent_containers/pill/pnkpill,
+		/obj/item/candle,
 		/obj/item/needle,
 		/obj/item/needle/thorn,
 		/obj/item/needle/pestra,
@@ -643,6 +965,10 @@
 
 /obj/item/storage/fancy/ifak/PopulateContents()
 	new /obj/item/reagent_containers/hypospray/medipen/sealbottle/reju(src)
+	new /obj/item/natural/bundle/cloth/bandage/full(src)
+	new /obj/item/reagent_containers/hypospray/medipen/sty/detox(src)
+	new /obj/item/reagent_containers/pill/pnkpill(src)
+	new /obj/item/candle/yellow(src)
 	new /obj/item/needle(src)
 
 /obj/item/reagent_containers/hypospray/medipen/sealbottle
@@ -740,6 +1066,31 @@
 			return
 		inject(user, user)
 
+/obj/item/reagent_containers/pill/caffpill
+	name = "WAKE-UP"
+	desc = "a handful of Dr V's pep-pills. a promise to make you both alert and have an uncomfortable amount of vigor for everyone involved. Who needs sleep anyway? thats how you get diddled by an orc!"
+	icon_state = "pillg"
+	icon = 'icons/roguetown/items/surgery.dmi'
+	list_reagents = list(/datum/reagent/medicine/caffeine = 1, /datum/reagent/medicine/antihol = 10, /datum/reagent/consumable/coffee = 81) //coffee OD is safe. causes jitters for awhile.
+	dissolvable = FALSE
+	grind_results = null
+
+/obj/item/reagent_containers/pill/pnkpill
+	name = "PNKBAWLS"
+	desc = "a handful of Dr V's pink little balls. says they restore vitality, you are pretty certain this is watered down red mixed with ash"
+	icon_state = "pinkb"
+	icon = 'icons/roguetown/items/surgery.dmi'
+	list_reagents = list(/datum/reagent/ash = 15, /datum/reagent/iron = 15, /datum/reagent/medicine/healthpot = 24) //mug of red, bottle is 45u
+	dissolvable = FALSE
+	grind_results = null
+
+/obj/item/reagent_containers/hypospray/medipen/sty/detox
+	name = "DETOX"
+	desc = "Dr. V's well aint this funny? a snake curing toxin's and venoms. heresy... purges the body of all that is not natural."
+	volume = 34
+	amount_per_transfer_from_this = 34
+	list_reagents = list(/datum/reagent/medicine/antihol = 10, /datum/reagent/medicine/pen_acid = 24)
+
 /obj/item/reagent_containers/hypospray/medipen/sealbottle/reju
 	name = "rejuv elixer"
 	desc = "Dr V's special formulated body revitalizer; restores blood, helps seal wounds, helps to stabalize breathing and numbs pain with a non-addictive snake venom derived analgesic. Single dose. Caffeinated, just like the snake that made it."
@@ -748,78 +1099,78 @@
 	amount_per_transfer_from_this = 16
 	list_reagents = list(/datum/reagent/medicine/stimu = 15, /datum/reagent/medicine/caffeine = 1)
 
-/obj/item/natural/bandage
+/obj/item/natural/cloth/bandage
 	name = "bandage"
-	desc = "A simple bandage used to bind wounds. Faster than just cloth."
-	icon_state = "bandage_closed"
+	desc = "A simple bandage used to bind wounds. More effective than just cloth."
+	icon_state = "bandageroll"
 	icon = 'icons/roguetown/items/surgery.dmi'
-	lefthand_file = 'icons/mob/inhands/misc/food_lefthand.dmi'
-	righthand_file = 'icons/mob/inhands/misc/food_righthand.dmi'
-	w_class = WEIGHT_CLASS_TINY
+	possible_item_intents = list(/datum/intent/use)
+	force = 0
+	throwforce = 0
+	obj_flags = null
+	firefuel = 5 MINUTES
 	resistance_flags = FLAMMABLE
-	slot_flags = ITEM_SLOT_BELT
-	var/charge_amt = 3
-	var/max_charge = 3
+	slot_flags = ITEM_SLOT_MOUTH | ITEM_SLOT_HIP
+	body_parts_covered = null
+	experimental_onhip = TRUE
+	max_integrity = 20
+	muteinmouth = TRUE
+	w_class = WEIGHT_CLASS_TINY
+	spitoutmouth = FALSE
+	bundletype = /obj/item/natural/bundle/cloth/bandage
+	bandage_effectiveness = 1.17 // increased by 30%
 
-/obj/item/natural/bandage/examine()
-	. = ..()
-	if(charge_amt > 0)
-		. += span_bold("It has [charge_amt] uses left.")
-	else
-		. += span_bold("It has no uses left.")
-
-/obj/item/natural/bandage/Initialize()
-	. = ..()
-	update_icon()
-
-/obj/item/natural/bandage/update_icon()
-	if(charge_amt == max_charge)
-		icon_state = "bandage_closed"
-	else if(charge_amt == 2)
-		icon_state = "bandage_1"
-	else if(charge_amt == 1)
-		icon_state = "bandage_2"
-	else
-		icon_state = "bandage_empty"
-
-/obj/item/natural/bandage/use()
-	charge_amt -= 1
-	update_icon()
-	return charge_amt > 0
-
-/obj/item/natural/bandage/attack(mob/living/M, mob/user)
-	if(use())
-		bandage(M, user)
-
-/obj/item/natural/bandage/proc/bandage(mob/living/M, mob/user)
-	if(!M.can_inject(user, TRUE))
-		return
-	if(!ishuman(M))
-		return
+/obj/item/natural/cloth/bandage/attack(mob/living/M, mob/user)
+	if(!M.can_inject(user, TRUE)) return
+	if(!ishuman(M)) return
 	var/mob/living/carbon/human/H = M
 	var/obj/item/bodypart/affecting = H.get_bodypart(check_zone(user.zone_selected))
-	if(!affecting)
-		return
+	if(!affecting) return
 	if(affecting.bandage)
-		to_chat(user, span_warning("There is already a bandage."))
+		to_chat(user, "There is already a bandage.")
 		return
-	var/used_time = 70
-	if(H.mind)
-		used_time -= (H.mind.get_skill_level(/datum/skill/misc/medicine) * 10)
+	var/used_time = 49 // reduced by 30%
+	if(H.mind) used_time -= (H.mind.get_skill_level(/datum/skill/misc/treatment) * 10)
 	playsound(loc, 'sound/foley/bandage.ogg', 100, FALSE)
-	if(!do_mob(user, M, used_time))
-		return
+	if(!do_mob(user, M, used_time)) return
 	playsound(loc, 'sound/foley/bandage.ogg', 100, FALSE)
 	user.dropItemToGround(src)
 	affecting.try_bandage(src)
 	H.update_damage_overlays()
 	if(M == user)
-		user.visible_message(span_notice("You bandage [user.p_their()] [affecting]."), span_notice("I bandage my [affecting]."))
+		user.visible_message("You bandage your [affecting].")
 	else
-		user.visible_message(span_notice("You bandage [M]'s [affecting]."), span_notice("I bandage [M]'s [affecting]."))
+		user.visible_message("You bandage [M]'s [affecting].")
+
+/obj/item/natural/bundle/cloth/bandage
+	name = "roll of bandages"
+	desc = "A bundle of bandages used to bind wounds. More effective than just cloth."
+	icon = 'icons/roguetown/items/surgery.dmi'
+	icon_state = "bandageroll1"
+	possible_item_intents = list(/datum/intent/use)
+	force = 0
+	throwforce = 0
+	maxamount = 3
+	obj_flags = null
+	firefuel = 15 MINUTES
+	resistance_flags = FLAMMABLE
+	w_class = WEIGHT_CLASS_TINY
+	stacktype = /obj/item/natural/cloth/bandage
+	stackname = "bandages"
+	icon1 = "bandageroll1"
+	icon1step = 2
+	icon2 = "bandageroll2"
+	icon2step = 3
+
+
+/obj/item/natural/bundle/cloth/bandage/full
+	icon_state = "bandageroll2"
+	amount = 3
+	firefuel = 60 MINUTES
+
 
 /*
-/obj/item/natural/acid
+/obj/item/natural/acid																		////// DO NOT LOOK AT MY SHAME. seriously dont I will return to this when I dont wanna burn my house down over it.
 	name = "acidic salve"
 	desc = "A salve that can cauterize wounds and remove early-stage infections."
 	icon_state = "acid_closed"
@@ -891,7 +1242,7 @@
 				if(W.can_cauterize)
 					var/used_time = 50
 					if(M.mind)
-						used_time -= (M.mind.get_skill_level(/datum/skill/misc/medicine) * 10)
+						used_time -= (M.mind.get_skill_level(/datum/skill/misc/treatment) * 10)
 					playsound(loc, 'sound/items/firelight.ogg', 100, FALSE)
 					if(!do_mob(user, M, used_time))
 						return
@@ -908,44 +1259,46 @@
 
 ///////////////////////////////////////////////////------------------------------------alembic/brewing--------------------------------/////////////////////////////////////////
 
-
 // I'm going to hate every moment of working on this.
 
 
 // *cry. agony.
 
 /obj/item/reagent_containers/glass/alembic
-	name = "copper alembic"
+	name = "metal alembic"
 	possible_item_intents = list(INTENT_POUR, INTENT_SPLASH)
 	desc = "so you're an alchemist then?"
 	icon = 'icons/roguetown/items/surgery.dmi'
 	icon_state = "alembic_empty"
 	var/speed_multiplier = 1 // How fast it brews. Defaults to 100% (1.0). Lower is better.
 	var/list/active_brews = list()
+	var/brewing_started = FALSE // Track if brewing has started
+	var/datum/looping_sound/boilloop/boilloop
 
-/obj/item/reagent_containers
+/obj/item
 	var/can_brew = FALSE // If FALSE, this object cannot be brewed
 	var/brew_reagent // If NULL and this object can be brewed, it uses a generic fruit_wine reagent and adjusts its variables
 	var/brew_amt = 22
 	var/start_time
 	var/brewing_time
+	var/mill_result = null
 
 /obj/item/reagent_containers/glass/alembic/Initialize()
-	create_reagents(45, DRAINABLE | AMOUNT_VISIBLE) // Bottle capacity, cannot put liquids into it. Only items to brew into liquids, drainable.
+	create_reagents(90, REFILLABLE | DRAINABLE | AMOUNT_VISIBLE) // 2 Bottles capacity, cannot put liquids into it. Only items to brew into liquids, drainable.
 	icon_state = "alembic_empty"
-	. = ..()
+	..()
 
 /obj/item/reagent_containers/glass/alembic/examine(mob/user)
-	. = ..()
+	..()
 	if(active_brews.len == 0)
 		. += span_notice("The alembic is not brewing.")
 	else
 		. += span_notice("The alembic is brewing.")
-		for(var/obj/item/reagent_containers/I in active_brews)
+		for(var/obj/item/I in active_brews)
 			var/time_left = (I.brewing_time - (world.time - I.start_time)) / 10
 			. += span_notice("[I]: [time_left] seconds left until completion.")
 
-/obj/item/reagent_containers/glass/alembic/proc/makebrew(obj/item/reagent_containers/I)
+/obj/item/reagent_containers/glass/alembic/proc/makebrew(obj/item/I)
 	if(I.reagents)
 		I.reagents.remove_reagent(/datum/reagent, I.reagents.total_volume)
 		I.reagents.trans_to(src, I.reagents.total_volume)
@@ -953,14 +1306,19 @@
 		reagents.add_reagent(I.brew_reagent, I.brew_amt)
 	qdel(I)
 	active_brews -= I
-	if(reagents.total_volume > 0 || active_brews.len >= 2)
+	if(active_brews.len >= 2)
 		icon_state = "alembic_full"
 	else
 		icon_state = "alembic_empty"
-	playsound(src, "bubbles", 100, TRUE)
+	playsound(src, "bubbles", 60, TRUE)
+	if(boilloop) boilloop.stop() // Stop the looping sound once brewing is done
+	brewing_started = FALSE // Reset brewing status after brewing completes
 
-/obj/item/reagent_containers/glass/alembic/attackby(obj/item/reagent_containers/I, mob/user, params)
-	if(istype(I, /obj/item/reagent_containers))
+/obj/item/reagent_containers/glass/alembic/attackby(obj/item/I, mob/user, params)
+	if(istype(I, /obj/item))
+		if(user.mind.get_skill_level(/datum/skill/misc/treatment) <= 2)
+			to_chat(user, span_warning("I don't know how this works."))
+			return TRUE
 		if(!I.can_brew)
 			to_chat(user, span_warning("I can't brew this into anything."))
 			return TRUE
@@ -972,11 +1330,179 @@
 			return TRUE
 		to_chat(user, span_info("I place [I] into [src]."))
 		I.start_time = world.time
-		I.brewing_time = rand(600, 1200) // Brewing time between 60 and 120 seconds in deciseconds
+		I.brewing_time = 600
 		active_brews += I
 		icon_state = "alembic_brew"
+		boilloop = playsound(src, "sound/misc/boiling.ogg", 50, TRUE)
 		addtimer(CALLBACK(src, /obj/item/reagent_containers/glass/alembic/proc/makebrew, I), I.brewing_time)
 		return TRUE
 	return ..()
 
+/obj/item/reagent_containers/glass/alembic/attack_self(mob/user)
+	if(brewing_started)
+		to_chat(user, span_warning("Brewing has started, you cannot remove items now."))
+		return TRUE
+	for(var/obj/item/I in active_brews)
+		I.forceMove(drop_location())
+	active_brews.Cut()
+	icon_state = "alembic_empty"
+	to_chat(user, span_notice("I remove the items inside."))
 
+
+
+/obj/item/reagent_containers/glass/mortar
+	name = "mortar"
+	desc = "A small, thick-walled stone bowl made for grinding things up inside."
+	icon = 'icons/roguetown/items/surgery.dmi'
+	icon_state = "mortar_empty"
+	amount_per_transfer_from_this = 9
+	volume = 100
+	reagent_flags = REFILLABLE | DRAINABLE
+	spillable = TRUE
+	var/obj/item/grinded
+	var/grinding_started = FALSE
+
+/obj/item/reagent_containers/glass/mortar/attack_self(mob/user)
+	if(grinding_started)
+		to_chat(user, "Grinding has started, you cannot remove items now.")
+		return TRUE
+	if(grinded)
+		grinded.forceMove(drop_location())
+		grinded = null
+		icon_state = "mortar_empty"
+		to_chat(user, "I eject the item inside.")
+
+/obj/item/reagent_containers/glass/mortar/MiddleClick(mob/user, params)
+	if(grinded)
+		grinding_started = TRUE // Mark grinding as started
+		to_chat(user, "I start grinding...")
+		if((do_after(user, 25, target = src)) && grinded)
+			if(grinded.mill_result) // This goes first.
+				new grinded.mill_result(get_turf(src))
+				QDEL_NULL(grinded)
+				icon_state = reagents.total_volume > 0 ? "mortar_full" : "mortar_empty"
+				grinding_started = FALSE // Reset grinding status
+				return
+			if(grinded.juice_results)
+				grinded.on_juice()
+				reagents.add_reagent_list(grinded.juice_results)
+				to_chat(user, "I juice [grinded] into a fine liquid.")
+			if(grinded.reagents) // Food and pills.
+				grinded.reagents.trans_to(src, grinded.reagents.total_volume, transfered_by = user)
+				QDEL_NULL(grinded)
+				icon_state = reagents.total_volume > 0 ? "mortar_full" : "mortar_empty"
+				grinding_started = FALSE // Reset grinding status
+				return
+			grinded.on_grind()
+			reagents.add_reagent_list(grinded.grind_results)
+			to_chat(user, "I break [grinded] into powder.")
+			QDEL_NULL(grinded)
+			icon_state = reagents.total_volume > 0 ? "mortar_full" : "mortar_empty"
+			grinding_started = FALSE // Reset grinding status
+			return
+		else
+			to_chat(user, "There is nothing to grind!")
+			return
+
+/obj/item/reagent_containers/glass/mortar/attackby(obj/item/I, mob/living/carbon/human/user)
+	if(grinded)
+		to_chat(user, "There is something inside already!")
+		return TRUE
+	if(istype(I, /obj/item/reagent_containers/glass))
+		if(user.used_intent.type == INTENT_POUR)
+			if(!I.reagents.total_volume)
+				to_chat(user, "[I] is empty!")
+				return TRUE
+			if(reagents.holder_full())
+				to_chat(user, "[src] is full.")
+				return TRUE
+			user.visible_message(span_notice("Starting the transfer"), span_notice("Completing the transfer"))
+			if(user.m_intent != MOVE_INTENT_SNEAK)
+				if(poursounds)
+					playsound(user.loc, pick(poursounds), 100, TRUE)
+			for(var/i in 1 to 10)
+				if(do_after(user, 8, target = src))
+					if(!I.reagents.total_volume) break
+					if(reagents.holder_full()) break
+					if(!I.reagents.trans_to(src, amount_per_transfer_from_this, transfered_by = user))
+						reagents.reaction(src, TOUCH, amount_per_transfer_from_this)
+					else break
+			return
+		if(is_drainable() && (user.used_intent.type == /datum/intent/fill))
+			if(!reagents.total_volume)
+				to_chat(user, "[src] is empty!")
+				return
+			if(I.reagents.holder_full())
+				to_chat(user, "[I] is full.")
+				return
+			if(user.m_intent != MOVE_INTENT_SNEAK)
+				if(fillsounds)
+					playsound(user.loc, pick(fillsounds), 100, TRUE)
+			user.visible_message(span_notice("Starting the transfer"), span_notice("Completing the transfer"))
+			for(var/i in 1 to 10)
+				if(do_after(user, 8, target = src))
+					if(I.reagents.holder_full()) break
+					if(!reagents.total_volume) break
+					reagents.trans_to(I, amount_per_transfer_from_this, transfered_by = user)
+				else break
+			return
+	if(I.juice_results || I.grind_results || I.mill_result)
+		I.forceMove(src)
+		grinded = I
+		icon_state = "mortar_grind"
+		return
+	to_chat(user, "I can't grind this!")
+
+
+
+
+/////////////////////////////////////////////////////////-----------------------------------crafts----------------------------------------/////////////////////////////////////////////////////////////////////
+
+/datum/anvil_recipe/tools/alembic        ////////// yes I know the sprites copper. chill.
+	name = "Alembic"
+	req_bar = /obj/item/ingot/iron
+	created_item = /obj/item/reagent_containers/glass/alembic
+	i_type = "Tools"
+
+
+/datum/crafting_recipe/roguetown/mortar
+	name = "mortar and pestle"
+	result = /obj/item/reagent_containers/glass/mortar
+	reqs = list(/obj/item/grown/log/tree/stick = 1, /obj/item/grown/log/tree/small = 1,)
+	craftdiff = 1
+	skillcraft = /datum/skill/craft/crafting
+
+/datum/crafting_recipe/roguetown/bandage
+	name = "roll of bandages"
+	result = /obj/item/natural/bundle/cloth/bandage/full
+	reqs = list(/obj/item/natural/cloth = 3, /obj/item/ash = 1,)
+	craftdiff = 1
+	skillcraft = /datum/skill/craft/crafting
+
+/datum/crafting_recipe/roguetown/impsaw
+	name = "improvised saw"
+	result = /obj/item/rogueweapon/surgery/saw/improv
+	reqs = list(/obj/item/natural/fibers = 1, /obj/item/natural/stone = 3, /obj/item/grown/log/tree/small = 1,)
+	craftdiff = 1
+	skillcraft = /datum/skill/craft/crafting
+
+/datum/crafting_recipe/roguetown/impretra
+	name = "improvised clamp"
+	result = /obj/item/rogueweapon/surgery/hemostat/improv
+	reqs = list(/obj/item/natural/fibers = 1, /obj/item/natural/stone = 2, /obj/item/grown/log/tree/stick = 2,)
+	craftdiff = 1
+	skillcraft = /datum/skill/craft/crafting
+
+/datum/crafting_recipe/roguetown/imphemo
+	name = "improvised retractor"
+	result = /obj/item/rogueweapon/surgery/retractor/improv
+	reqs = list(/obj/item/natural/fibers = 1, /obj/item/natural/stone = 2, /obj/item/grown/log/tree/stick = 2,)
+	craftdiff = 1
+	skillcraft = /datum/skill/craft/crafting
+
+/datum/crafting_recipe/roguetown/rucksack
+	name = "Rucksack"
+	result = /obj/item/storage/backpack/rogue/backpack/rucksack
+	reqs = list(/obj/item/rope = 1, /obj/item/storage/roguebag/crafted = 1,)
+	craftdiff = 0
+	skillcraft = /datum/skill/craft/crafting

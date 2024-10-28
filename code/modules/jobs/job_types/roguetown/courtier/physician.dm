@@ -44,24 +44,13 @@
 	id = /obj/item/clothing/ring/quartzs
 	r_hand = /obj/item/rogueweapon/woodstaff
 	backl = /obj/item/storage/backpack/rogue/backpack
-	backpack_contents = list(
-		/obj/item/reagent_containers/glass/bottle/rogue/healthpot = 2,
-		/obj/item/needle/pestra = 1,
-		/obj/item/rogueweapon/surgery/scalpel = 1,
-		/obj/item/rogueweapon/surgery/saw = 1,
-		/obj/item/rogueweapon/surgery/hemostat = 2, //2 forceps so you can clamp bleeders AND manipulate organs
-		/obj/item/rogueweapon/surgery/retractor = 1,
-		/obj/item/rogueweapon/surgery/bonesetter = 1,
-		/obj/item/rogueweapon/surgery/cautery = 1,
-		/obj/item/natural/worms/leech/cheele = 1, //little buddy
-	)
+	backpack_contents = list(/obj/item/storage/fancy/skit = 1, /obj/item/storage/fancy/ifak = 1, /obj/item/reagent_containers/glass/alembic = 1,)
 	ADD_TRAIT(H, TRAIT_EMPATH, "[type]")
 	ADD_TRAIT(H, TRAIT_NOSTINK, "[type]")
 	ADD_TRAIT(H, TRAIT_ROT_EATER, "[type]")
 	ADD_TRAIT(H, TRAIT_STEELHEARTED, "[type]")
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 5, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/alchemy, 5, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/polearms, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
@@ -69,7 +58,7 @@
 		H.mind.adjust_skillrank(/datum/skill/craft/crafting, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/labor/farming, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/sewing, 3, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/medicine, 6, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/treatment, 6, TRUE)
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/diagnose/secular)
 		H.change_stat("strength", -1)
 		H.change_stat("constitution", -1)

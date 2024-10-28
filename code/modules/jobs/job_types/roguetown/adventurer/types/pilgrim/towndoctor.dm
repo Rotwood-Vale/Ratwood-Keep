@@ -17,7 +17,7 @@
 	beltr = /obj/item/rogueweapon/huntingknife/idagger
 	shoes = /obj/item/clothing/shoes/roguetown/simpleshoes
 	backl = /obj/item/storage/backpack/rogue/backpack
-	backpack_contents = list(/obj/item/storage/fancy/skit = 1, /obj/item/storage/fancy/ifak = 1,)
+	backpack_contents = list(/obj/item/storage/fancy/skit = 1, /obj/item/storage/fancy/ifak = 1, /obj/item/reagent_containers/glass/alembic = 1,)
 	if(H.gender == MALE)
 		armor = /obj/item/clothing/suit/roguetown/armor/leather/vest
 		pants = /obj/item/clothing/under/roguetown/trou
@@ -39,9 +39,8 @@
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/climbing, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 1, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/medicine, 5, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/treatment, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/sewing, 3, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/alchemy, 2, TRUE)
 		H.change_stat("intelligence", 2)
 		H.change_stat("fortune", 2)
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/diagnose/secular)

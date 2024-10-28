@@ -169,7 +169,6 @@
 	dir = 8
 	},
 /obj/item/reagent_containers/glass/mortar,
-/obj/item/pestle,
 /turf/open/floor/rogue/ruinedwood{
 	dir = 1;
 	icon_state = "vertw"
@@ -8010,7 +8009,6 @@
 "hBA" = (
 /obj/structure/table/vtable/v2,
 /obj/item/reagent_containers/glass/mortar,
-/obj/item/pestle,
 /turf/open/floor/rogue/church,
 /area/rogue/indoors/town/manor)
 "hBF" = (
@@ -8676,9 +8674,10 @@
 	},
 /area/rogue/outdoors/rtfield)
 "iko" = (
-/obj/structure/roguemachine/seedmachine,
-/turf/closed/wall/mineral/rogue/wooddark,
-/area/rogue/outdoors/rtfield)
+/turf/closed/mineral/rogue{
+	contents = list(/object/rogueore/silver = 2)
+	},
+/area/rogue/indoors/shelter/mountains)
 "ikq" = (
 /obj/structure/ladder,
 /turf/open/floor/rogue/woodturned,
@@ -9249,8 +9248,8 @@
 /turf/open/floor/rogue/hexstone,
 /area/rogue/indoors/town/church)
 "iNO" = (
-/obj/structure/roguemachine/withdraw,
 /obj/effect/landmark/start/cook,
+/obj/structure/roguemachine/stockpile,
 /turf/open/floor/rogue/tile{
 	icon_state = "tile"
 	},
@@ -264815,7 +264814,7 @@ jXZ
 jXZ
 jXZ
 jXZ
-iko
+lcg
 fxx
 uaL
 wSn
@@ -453992,7 +453991,7 @@ fON
 fON
 fON
 fON
-fON
+iko
 fON
 fON
 fON
@@ -454800,7 +454799,7 @@ fON
 fON
 fON
 fON
-fON
+iko
 fON
 fON
 fON
@@ -455199,7 +455198,7 @@ fON
 fON
 fON
 fON
-fON
+iko
 fON
 fON
 fON
@@ -459222,7 +459221,7 @@ tmH
 tmH
 fZe
 fZe
-tmH
+iko
 tmH
 tmH
 tmH

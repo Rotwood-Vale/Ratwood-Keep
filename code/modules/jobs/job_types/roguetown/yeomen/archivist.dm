@@ -18,7 +18,7 @@
 /datum/outfit/job/roguetown/archivist
 	allowed_patrons = list(/datum/patron/divine/noc)
 
-/datum/outfit/job/roguetown/archivist/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/job/roguetown/archivist/pre_equip(mob/living/carbon/human/H)         ///////////// gave a lil love with a satchel and dagger. virgin ass needs it.
 	..()
 	if(H.gender == FEMALE)
 		shirt = /obj/item/clothing/suit/roguetown/shirt/dress/gen/black
@@ -32,15 +32,16 @@
 	H.virginity = TRUE
 	shoes = /obj/item/clothing/shoes/roguetown/shortboots
 	belt = /obj/item/storage/belt/rogue/leather/plaquesilver
-	beltl = /obj/item/keyring/archivist
+	backr = /obj/item/storage/backpack/rogue/satchel
+	backpack_contents = list(/obj/item/storage/fancy/ifak = 1, /obj/item/reagent_containers/glass/alembic = 1, /obj/item/keyring/archivist)
+	beltl = /obj/item/rogueweapon/huntingknife/idagger
 	beltr = /obj/item/storage/belt/rogue/pouch/coins/mid
 	mask = /obj/item/clothing/mask/rogue/spectacles
 
 
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 6, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/alchemy, 6, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/medicine, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/treatment, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/riding, 2, TRUE)
 		H.change_stat("strength", -2)
 		H.change_stat("intelligence", 8)
