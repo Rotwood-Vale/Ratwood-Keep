@@ -17,7 +17,13 @@
     </a>
 </p>
 
+# RATWOOD
+## Anthros Allowed Medieval Roleplay
+
 [![BYOND Build](https://github.com/Rotwood-Vale/Ratwood-Keep/actions/workflows/ci_suite.yml/badge.svg)](https://github.com/Rotwood-Vale/Ratwood-Keep/actions/workflows/ci_suite.yml)
+[![BYOND Build](https://github.com/Rotwood-Vale/Ratwood-Keep/graphs/contributors)](https://img.shields.io/github/contributors/Rotwood-Vale/Ratwood-Keep)
+[![BYOND Build](https://github.com/Rotwood-Vale/Ratwood-Keep/issues)](https://img.shields.io/github/issues/Rotwood-Vale/Ratwood-Keep?color=0088ff)
+[![BYOND Build](https://github.com/Rotwood-Vale/Ratwood-Keep/pulls)](https://img.shields.io/github/issues-pr/Rotwood-Vale/Ratwood-Keep?color=0088ff)
 
 
 
