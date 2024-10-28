@@ -150,8 +150,8 @@
 	lefthand_file = null
 	righthand_file = null
 	icon = 'icons/roguetown/weapons/32.dmi'
-	max_blade_int = 100
-	max_integrity = 1000
+	max_blade_int = 99
+	max_integrity = 999
 	force = 25
 	block_chance = 0
 	wdefense = 4
@@ -182,4 +182,4 @@
 /proc/check_integrity(/obj/item/rogueweapon/werewolf_claw/I)
     if(I.max_integrity <= 999 || I.max_blade_int <= 99)
         return TRUE // Infinite durability for either condition
-    return I.max_integrity >= 1000 && I.max_blade_int >= 100 // Normal integrity check
+    return I.max_integrity >= 999 && I.max_blade_int >= 99 // Normal integrity check
