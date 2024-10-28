@@ -3989,8 +3989,8 @@
 	},
 /area/rogue/indoors/town/shop)
 "dPp" = (
-/obj/structure/fluff/walldeco/chains,
-/turf/open/floor/rogue/blocks,
+/obj/structure/noose,
+/turf/open/floor/rogue/concrete,
 /area/rogue/indoors/town/garrison)
 "dPv" = (
 /obj/structure/stairs/stone{
@@ -7111,9 +7111,9 @@
 /turf/open/floor/rogue/cobble/mossy,
 /area/rogue/indoors/town/bath)
 "gGL" = (
-/obj/structure/pillory/town_square,
-/turf/open/floor/rogue/wood,
-/area/rogue/outdoors/town)
+/obj/structure/noose/gallows,
+/turf/open/floor/rogue/dirt,
+/area/rogue/outdoors/rtfield)
 "gGN" = (
 /obj/machinery/light/rogue/wallfire/candle/r,
 /turf/open/floor/rogue/wood,
@@ -14046,6 +14046,7 @@
 	dir = 1;
 	icon_state = "borderfall"
 	},
+/obj/structure/pillory/town_square,
 /turf/open/floor/rogue/blocks,
 /area/rogue/outdoors/town)
 "nvT" = (
@@ -14348,6 +14349,10 @@
 /obj/structure/fluff/walldeco/masonflag,
 /turf/closed/wall/mineral/rogue/craftstone,
 /area/rogue/indoors/town/dwarfin)
+"nHi" = (
+/obj/structure/noose/gallows,
+/turf/open/floor/rogue/dirt,
+/area/rogue/outdoors/bog)
 "nHK" = (
 /turf/closed/wall/mineral/rogue/wooddark/window,
 /area/rogue/outdoors/rtfield)
@@ -19045,6 +19050,10 @@
 	},
 /turf/open/transparent/openspace,
 /area/rogue/indoors/town/shop)
+"sem" = (
+/obj/structure/noose/gallows,
+/turf/open/floor/rogue/dirt/road,
+/area/rogue/outdoors/rtfield)
 "seA" = (
 /obj/structure/mineral_door/bars{
 	locked = 1;
@@ -22681,6 +22690,10 @@
 "vGc" = (
 /turf/closed/wall/mineral/rogue/stone/moss,
 /area/rogue/indoors/shelter/rtfield)
+"vGg" = (
+/obj/structure/noose,
+/turf/open/floor/rogue/blocks,
+/area/rogue/under/town/basement)
 "vGA" = (
 /obj/structure/fluff/railing/fence{
 	dir = 8
@@ -78250,7 +78263,7 @@ deE
 ida
 nux
 cBf
-cBf
+vGg
 cBf
 cBf
 txa
@@ -190679,7 +190692,7 @@ jyI
 hWx
 iTw
 cBf
-cBf
+vGg
 cBf
 txa
 vRu
@@ -281164,7 +281177,7 @@ xAt
 xAt
 xAt
 qvR
-wSn
+gGL
 jXZ
 jXZ
 fxx
@@ -288106,7 +288119,7 @@ rZt
 qvR
 wSn
 qvR
-wSn
+gGL
 qvR
 qvR
 fxx
@@ -288543,7 +288556,7 @@ wGD
 jUk
 sYx
 sYx
-sYx
+nHi
 sYx
 odi
 odi
@@ -295265,7 +295278,7 @@ tMZ
 kZv
 uaL
 uaL
-uaL
+sem
 uaL
 qvR
 qvR
@@ -297629,7 +297642,7 @@ wVI
 wVI
 cXf
 cXf
-gGL
+cXf
 nvJ
 wbg
 rET
@@ -298433,7 +298446,7 @@ wbg
 wVI
 cXf
 cXf
-gGL
+cXf
 nvJ
 wbg
 cka
@@ -310096,7 +310109,7 @@ gVS
 hpj
 tNj
 lQy
-hNW
+dPp
 hNW
 hNW
 fja
@@ -311303,7 +311316,7 @@ wNH
 tNj
 lxk
 xpC
-dPp
+hpj
 det
 poR
 tNj
