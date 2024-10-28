@@ -128,7 +128,7 @@
 	var/immune_to_genderswap = FALSE
 
 /*
-	How this works, its CTAG_DEFINE = amount_to_attempt_to_role 
+	How this works, its CTAG_DEFINE = amount_to_attempt_to_role
 	EX: advclass_cat_rolls = list(CTAG_PILGRIM = 5, CTAG_ADVENTURER = 5)
 	You will still need to contact the subsystem though
 */
@@ -191,26 +191,24 @@
 	if(give_bank_account)
 		if(give_bank_account > 1)
 			SStreasury.create_bank_account(H, give_bank_account)
-		else if(H.job == "Duke")
-			SStreasury.create_bank_account(H, SStreasury.treasury_value)
 		else
 			SStreasury.create_bank_account(H)
 
 	if(show_in_credits)
 		SScrediticons.processing += H
-	
+
 	if(cmode_music)
 		H.cmode_music = cmode_music
 
 /datum/job/proc/add_spells(mob/living/H)
-	if(spells && H.mind)	
+	if(spells && H.mind)
 		for(var/S in spells)
 			if(H.mind.has_spell(S))
 				continue
 			H.mind.AddSpell(new S)
 
 /datum/job/proc/remove_spells(mob/living/H)
-	if(spells && H.mind)	
+	if(spells && H.mind)
 		for(var/S in spells)
 			if(!H.mind.has_spell(S))
 				continue

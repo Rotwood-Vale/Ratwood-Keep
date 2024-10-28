@@ -85,7 +85,7 @@ SUBSYSTEM_DEF(treasury)
 					send_ooc_note("Income from wealth horde: +[amt_to_generate]", name = X.real_name)
 					if(people_told > 4)
 						return
-			
+
 
 /datum/controller/subsystem/treasury/proc/create_bank_account(name, initial_deposit)
 	if(!name)
@@ -99,20 +99,11 @@ SUBSYSTEM_DEF(treasury)
 		bank_accounts[name] = 0
 	return TRUE
 
-//whole tresury is lord's account because he owns everything
-/datum/controller/subsystem/treasury/proc/update_ruler_money()
-	for(var/mob/living/carbon/human/X in GLOB.human_list)
-		switch(X.job)
-			if("Duke")
-				bank_accounts[X] = SStreasury.treasury_value
-				return
-
 //increments the treasury directly (tax collection)
 /datum/controller/subsystem/treasury/proc/give_money_treasury(amt, source)
 	if(!amt)
 		return
 	treasury_value += amt
-	update_ruler_money()
 	if(source)
 		log_to_steward("+[amt] to treasury ([source])")
 	else
@@ -132,14 +123,15 @@ SUBSYSTEM_DEF(treasury)
 		if(X == name)
 			if(amt > 0)
 				bank_accounts[X] += amt  // Deposit the money into the player's account
+				treasury_value -= amt   // Deduct the given amount from the treasury
 			else
 				// Check if the amount to be fined exceeds the player's account balance
 				if(abs(amt) > bank_accounts[X])
 					send_ooc_note("<b>The Bank:</b> Error: Insufficient funds in the player's account to complete the fine.", name = name)
 					return FALSE  // Return early if the player has insufficient funds
 				bank_accounts[X] -= abs(amt)  // Deduct the fine amount from the player's account
+				treasury_value += abs(amt)  // Add the fined amount to the treasury
 			found_account = TRUE
-			update_ruler_money() //to prevent any shenanigans with giving/fining lord
 			break
 	if(!found_account)
 		return FALSE
@@ -181,8 +173,7 @@ SUBSYSTEM_DEF(treasury)
 			taxed_amount = round(amt * tax_value)
 			amt -= taxed_amount
 			bank_accounts[character] += amt
-		treasury_value += original_amt
-		update_ruler_money()
+			treasury_value += taxed_amount
 	else
 		return FALSE
 
@@ -201,9 +192,7 @@ SUBSYSTEM_DEF(treasury)
 				send_ooc_note("<b>The Bank:</b> Error: Insufficient funds in the player's account to complete the withdrawal.", name = name)
 				return  // Return without processing the transaction
 			bank_accounts[X] -= amt
-			treasury_value -= amt
 			found_account = TRUE
-			update_ruler_money()
 			break
 	if(!found_account)
 		return
