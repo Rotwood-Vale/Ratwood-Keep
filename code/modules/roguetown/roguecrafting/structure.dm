@@ -557,7 +557,6 @@
 	reqs = list(/obj/item/grown/log/tree/small = 1,
 				/obj/item/grown/log/tree/stick = 3)
 	verbage = "construct"
-	verbage_tp = "constructs"
 	craftsound = 'sound/foley/Building-01.ogg'
 	skillcraft = /datum/skill/craft/carpentry
 	craftdiff = 2
@@ -569,7 +568,6 @@
 				/obj/item/natural/cloth = 1,
 				/obj/item/ingot/iron = 1)
 	verbage = "construct"
-	verbage_tp = "constructs"
 	craftsound = 'sound/foley/Building-01.ogg'
 	skillcraft = /datum/skill/craft/carpentry
 	craftdiff = 2
@@ -581,7 +579,6 @@
 				/obj/item/natural/cloth = 1,
 				/obj/item/ingot/iron = 1)
 	verbage = "construct"
-	verbage_tp = "constructs"
 	craftsound = 'sound/foley/Building-01.ogg'
 	skillcraft = /datum/skill/craft/carpentry
 	craftdiff = 2
