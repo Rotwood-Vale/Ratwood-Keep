@@ -1,7 +1,7 @@
 
 <p align="center">
  <img width="450px" src="https://res.cloudinary.com/dxckdses2/image/upload/v1730145846/ydfd9atasnhj9jn3r5jw.png" align="center" alt="Ratwood Stats" />
- <h1 align="center">Ratwood</h1>
+ <h1 align="center">RATWOOD</h1>
  <h2 align="center">Anthros Allowed Medieval Roleplay</h2>
 </p>
 
