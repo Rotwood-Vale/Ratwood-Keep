@@ -4753,6 +4753,9 @@
 /area/rogue/indoors/town/manor)
 "eBm" = (
 /obj/machinery/light/rogue/wallfire/candle/r,
+/obj/structure/fluff/walldeco/stone{
+	pixel_y = 32
+	},
 /turf/open/floor/carpet/red,
 /area/rogue/indoors/town/tavern)
 "eBC" = (
@@ -7704,10 +7707,6 @@
 /obj/item/book/rogue/xylix,
 /turf/open/water/cleanshallow,
 /area/rogue/under/cave)
-"hnw" = (
-/obj/structure/fluff/walldeco/stone,
-/turf/closed/wall/mineral/rogue/stone/moss,
-/area/rogue/indoors/town/tavern)
 "hnN" = (
 /obj/structure/flora/newtree,
 /obj/structure/flora/newtree,
@@ -181211,7 +181210,7 @@ rRb
 rRb
 azi
 psH
-pOf
+rSC
 rSC
 rSC
 nVv
@@ -184019,7 +184018,7 @@ vRu
 vRu
 rSC
 rSC
-hnw
+orb
 eBm
 per
 csO
