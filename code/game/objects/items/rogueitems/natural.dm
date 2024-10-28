@@ -80,6 +80,20 @@
 	else
 		return ..()
 
+/obj/item/natural/bundle/use(used)
+	if(src.amount >= used)
+		src.amount -= used
+		src.update_bundle()
+		switch(src.amount)
+			if(1)
+				new src.stacktype(src.loc)
+				qdel(src)
+			if(0)
+				qdel(src)
+		return TRUE
+	else
+		return FALSE
+
 /obj/item/natural/bundle/attack_right(mob/user)
 	var/mob/living/carbon/human/H = user
 	switch(amount)
