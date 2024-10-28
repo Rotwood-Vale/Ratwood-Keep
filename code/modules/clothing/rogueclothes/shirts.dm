@@ -158,7 +158,7 @@
 	boobed = FALSE
 	icon_state = "tunic"
 	item_state = "undershirt"
-	sleevetype = "tunic"
+	sleevetype = "shirt"
 	r_sleeve_status = SLEEVE_NORMAL
 	l_sleeve_status = SLEEVE_NORMAL
 	flags_inv = HIDECROTCH|HIDEBOOB
