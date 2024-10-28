@@ -249,7 +249,7 @@
 			if (thing.reagents.holder_full() || (user.devotion.devotion - fatigue_used <= 0))
 				break
 
-			var/water_qty = max(1, holy_skill / 2) + 1
+			var/water_qty = max(1, holy_skill) + 1
 			var/list/water_contents = list(/datum/reagent/water = water_qty)
 			var/datum/reagents/reagents_to_add = new()
 			reagents_to_add.add_reagent_list(water_contents)
