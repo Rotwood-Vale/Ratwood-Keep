@@ -96,9 +96,6 @@
 
 	var/show_in_credits = TRUE
 
-	//Set to FALSE for no roundstart bank account, TRUE for an empty roundstart bank account;
-	//Number greater then 1 for a bank account with amount of money equal to that number;
-	//Non-constant value (ie rand()) will not work
 	var/give_bank_account = FALSE
 
 	var/can_random = TRUE
@@ -191,8 +188,6 @@
 	if(give_bank_account)
 		if(give_bank_account > 1)
 			SStreasury.create_bank_account(H, give_bank_account)
-		else if(H.job == "Duke")
-			SStreasury.create_bank_account(H, SStreasury.treasury_value)
 		else
 			SStreasury.create_bank_account(H)
 
