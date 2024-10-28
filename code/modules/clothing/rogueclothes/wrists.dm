@@ -51,3 +51,21 @@
 	slot_flags = ITEM_SLOT_WRISTS
 	icon_state = "nocwrappings"
 	item_state = "nocwrappings"
+
+/obj/item/clothing/wrists/roguetown/splintarms
+	name = "brigandine rerebraces"
+	desc = "Brigandine bracers, pauldrons and a set of metal couters, designed to protect the arms while still providing almost complete free range of movement."
+	body_parts_covered = ARMS
+	icon_state = "splintarms"
+	item_state = "splintarms"
+	armor = list("blunt" = 60, "slash" = 70, "stab" = 70, "bullet" = 60, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT)
+	blocksound = SOFTHIT
+	max_integrity = 250
+	anvilrepair = /datum/skill/craft/blacksmithing
+	smeltresult = /obj/item/ingot/iron
+	armor_class = ARMOR_CLASS_MEDIUM
+	w_class = WEIGHT_CLASS_NORMAL
+	clothing_flags = CANT_SLEEP_IN
+	resistance_flags = FIRE_PROOF
+	sewrepair = FALSE
