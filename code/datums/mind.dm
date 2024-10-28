@@ -88,6 +88,8 @@
 
 	var/datum/sleep_adv/sleep_adv = null
 
+	var/funeral = FALSE // used for sending funeralized rogueghosts back to lobby on login
+
 /datum/mind/New(key)
 	src.key = key
 	soulOwner = src

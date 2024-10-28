@@ -5,6 +5,7 @@ GLOBAL_LIST_INIT(roleplay_readme, world.file2list("strings/rt/rp_prompt.txt"))
 	var/ready = 0
 	var/spawning = 0//Referenced when you want to delete the new_player later on in the code.
 	var/topjob = "Hero!"
+	var/burial_respawn = FALSE // Tells the player that they're in the lobby due to having been funeralized
 	flags_1 = NONE
 
 	invisibility = INVISIBILITY_ABSTRACT

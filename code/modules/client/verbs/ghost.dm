@@ -22,16 +22,25 @@ GLOBAL_LIST_INIT(ghost_verbs, list(
 
 	switch(alert("Descend to the Underworld?",,"Yes","No"))
 		if("Yes")
-			if(istype(mob, /mob/living/carbon/spirit))
-				//HONEYPOT CODE, REMOVE LATER
-				message_admins("RETARDED MOTHERFUCKER [key] IS TRYING TO CRASH THE SERVER BY SPAWNING 3 GORILLION SPIRITS!")
-				return
 
-			if(istype(mob, /mob/living/carbon/human))
-				var/mob/living/carbon/human/D = mob
-				if(D.buried && D.funeral)
-					D.returntolobby()
+			if(isrogueobserver(mob) && mob.mind)
+				if(mob.mind.funeral == TRUE)
+					var/mob/dead/observer/rogue/rogueghost = mob
+					to_chat(rogueghost, span_rose("With my body buried in creation, my soul passes on in peace..."))
+					burial_rite_return_ghost_to_lobby(rogueghost)
 					return
+
+			if(isliving(mob))
+				var/mob/living/D = mob
+				if(D.funeral)
+					var/ghost = burial_rite_get_ghost(D)
+					if(ghost)
+						to_chat(ghost, span_rose("With my body buried in creation, my soul passes on in peace..."))
+						burial_rite_return_ghost_to_lobby(ghost)
+						return
+					else
+						message_admins("[key_name(mob)] was funeralized, but failed to turn into ghost when using Journey to the Underworld verb. Might need admin intervention.")
+						mob.log_message("was funeralized, but failed to turn into ghost when using Journey to the Underworld verb.", LOG_GAME)
 
 				// Check if the player's job is hiv+
 				var/datum/job/target_job = SSjob.GetJob(D.mind.assigned_role)

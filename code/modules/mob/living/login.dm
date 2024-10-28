@@ -34,6 +34,12 @@
 	if(changeling)
 		changeling.regain_powers()
 
+	if(funeral)
+		var/ghost = burial_rite_get_ghost(src)
+		if(ghost)
+			to_chat(ghost, span_rose("With my body buried in creation, my soul passes on in peace..."))
+			burial_rite_return_ghost_to_lobby(ghost)
+
 /mob/living/proc/login_fade()
 	set waitfor = FALSE
 	if(!client)

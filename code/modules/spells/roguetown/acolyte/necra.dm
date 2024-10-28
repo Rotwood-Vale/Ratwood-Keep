@@ -19,14 +19,16 @@
 	. = ..()
 	var/success = FALSE
 	for(var/obj/structure/closet/crate/coffin/coffin in view(1))
-		success = pacify_coffin(coffin, user)
+		if(pacify_coffin(coffin, user))
+			success = TRUE
 		if(success)
-			user.visible_message("[user] consecrates [coffin]!", "My funeral rites have been performed on [coffin]!")
+			user.visible_message("[user] consecrates [coffin]!", "I perform funeral rites on [coffin]!")
 			return
 	for(var/obj/structure/closet/dirthole/hole in view(1))
-		success = pacify_coffin(hole, user)
+		if(pacify_coffin(hole, user))
+			success = TRUE
 		if(success)
-			user.visible_message("[user] consecrates [hole]!", "My funeral rites have been performed on [hole]!")
+			user.visible_message("[user] consecrates [hole]!", "I perform funeral rites on [hole]!")
 			return
 	to_chat(user, span_red("I failed to perform the rites."))
 
