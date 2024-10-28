@@ -257,7 +257,7 @@
 
 			fatigue_spent += fatigue_used
 			user.rogfat_add(fatigue_used)
-			user.devotion?.update_devotion(-0.5)
+			user.devotion?.update_devotion(-1.0)
 
 			if (prob(80))
 				playsound(user, 'sound/items/fillcup.ogg', 55, TRUE)
