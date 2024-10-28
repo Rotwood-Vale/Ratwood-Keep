@@ -1,8 +1,8 @@
 
 <p align="center">
  <img width="450px" src="https://res.cloudinary.com/dxckdses2/image/upload/v1730145846/ydfd9atasnhj9jn3r5jw.png" align="center" alt="Ratwood Stats" />
- <h1 align="center">RATWOOD</h1>
- <h2 align="center">Anthros Allowed Medieval Roleplay</h2>
+ <h1 class="Esteban" align="center">RATWOOD</h1>
+ <h2 class="esteban" align="center">Anthros Allowed Medieval Roleplay</h2>
 </p>
 
 <p align="center">
@@ -20,14 +20,6 @@
     </a>
 </p>
 
-
-
-
-
-[![CI Suite](https://github.com/Skyrat-SS13/Skyrat-tg/workflows/CI%20Suite/badge.svg)](https://github.com/Skyrat-SS13/Skyrat-tg/actions?query=workflow%3A%22CI+Suite%22)
-[![Percentage of issues still open](https://isitmaintained.com/badge/open/Skyrat-SS13/Skyrat-tg.svg)](https://isitmaintained.com/project/Skyrat-SS13/Skyrat-tg "Percentage of issues still open")
-[![Average time to resolve an issue](https://isitmaintained.com/badge/resolution/Skyrat-SS13/Skyrat-tg.svg)](https://isitmaintained.com/project/Skyrat-SS13/Skyrat-tg "Average time to resolve an issue")
-![Coverage](https://img.shields.io/codecov/c/github/Skyrat-SS13/Skyrat-tg)
 
 
 ## Wiki
