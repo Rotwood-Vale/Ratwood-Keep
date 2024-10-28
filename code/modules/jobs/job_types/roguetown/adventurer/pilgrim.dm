@@ -16,6 +16,7 @@
 	advclass_cat_rolls = list(CTAG_PILGRIM = 20)
 	PQ_boost_divider = 10
 
+	announce_latejoin = FALSE
 	display_order = JDO_PILGRIM
 	min_pq = -20
 	max_pq = null
