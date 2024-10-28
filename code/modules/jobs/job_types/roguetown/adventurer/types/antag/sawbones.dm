@@ -17,8 +17,8 @@
 	beltr = /obj/item/rogueweapon/huntingknife/cleaver /// proper self defense an tree aquiring
 	pants = /obj/item/clothing/under/roguetown/trou
 	shoes = /obj/item/clothing/shoes/roguetown/simpleshoes
-	backr = /obj/item/storage/backpack/rogue/backpack/surgery
-	H.mind.adjust_skillrank(/datum/skill/combat/knives, 3, TRUE)
+	backl = /obj/item/storage/backpack/rogue/backpack/surgery
+	H.mind.adjust_skillrank(/datum/skill/combat/knives, 4, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/craft/crafting, 2, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/craft/carpentry, 2, TRUE)

@@ -356,7 +356,8 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "E
 	restricted_jobs = list("Duke",
 	"Duchess Consort",
 	"Merchant",
-	"Priest")
+	"Priest",
+	"Bandit")
 	antag_candidates = get_players_for_role(ROLE_ZIZOIDCULTIST)
 	antag_candidates = shuffle(antag_candidates)
 	for(var/datum/mind/villain in antag_candidates)
@@ -399,7 +400,8 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "E
 	"Templar",
 	"Bog Guard",
 	"Bog Master",
-	"Knight"
+	"Knight",
+	"Bandit"
 	)
 	antag_candidates = get_players_for_role(ROLE_NBEAST)
 	antag_candidates = shuffle(antag_candidates)
@@ -448,7 +450,8 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "E
 	"Bog Master",
 	"Knight",
 	"Mortician",
-	"Mercenary"
+	"Mercenary",
+	"Bandit"
 	)
 
 	var/num_werewolves = rand(1,2)

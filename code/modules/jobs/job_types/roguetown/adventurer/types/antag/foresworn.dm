@@ -53,3 +53,5 @@
 			backl= /obj/item/rogueweapon/shield/buckler
 			beltr = /obj/item/rogueweapon/sword/iron //iron sword like literally every adventurer gets
 			head = /obj/item/clothing/head/roguetown/helmet/leather/volfhelm
+	H.verbs |= /mob/proc/haltyell
+	H.ambushable = FALSE

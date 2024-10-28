@@ -38,7 +38,7 @@
 	armor = /obj/item/clothing/suit/roguetown/armor/leather/hide
 	H.change_stat("strength", 4)
 	H.change_stat("endurance", 2)
-	H.change_stat("constitution", 1)
+	H.change_stat("constitution", 2)
 	H.change_stat("intelligence", -3)
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 	H.adjust_blindness(-3)
