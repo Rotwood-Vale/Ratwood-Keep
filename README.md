@@ -42,9 +42,9 @@ All original code and assets of this repository are under the [GNU Affero Genera
 
 The following code and assets are under a custom priopetary license as per original author's wishes.
 
-| Name                 | Reference                                           | Author   | License |
-|----------------------|-----------------------------------------------------|----------|---------|
-| Example              | commit12e4                                          | John Doe | license.txt|
+| Name                 | Reference                                           | Author   |   Licens   |
+|----------------------|-----------------------------------------------------|----------|------------|
+| Sprites              | sprite.dmi                                          | John Doe | license.txt|
 
 
 ## TG
