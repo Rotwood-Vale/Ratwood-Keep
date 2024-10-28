@@ -179,7 +179,7 @@
 	ADD_TRAIT(src, TRAIT_NODROP, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_NOEMBED, TRAIT_GENERIC)
 
-/proc/check_integrity(/obj/item/rogueweapon/werewolf_claw/I)
+/obj/item/rogueweapon/werewolf_claw/proc/check_integrity(/obj/item/rogueweapon/werewolf_claw/I)
     if(I.max_integrity <= 999 || I.max_blade_int <= 99)
         return TRUE // Infinite durability for either condition
     return I.max_integrity >= 999 && I.max_blade_int >= 99 // Normal integrity check
