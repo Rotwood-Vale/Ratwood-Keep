@@ -150,8 +150,8 @@
 	lefthand_file = null
 	righthand_file = null
 	icon = 'icons/roguetown/weapons/32.dmi'
-	max_blade_int = -1
-	max_integrity = -1
+	max_blade_int = 100
+	max_integrity = 1000
 	force = 25
 	block_chance = 0
 	wdefense = 4
@@ -178,3 +178,8 @@
 	. = ..()
 	ADD_TRAIT(src, TRAIT_NODROP, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_NOEMBED, TRAIT_GENERIC)
+
+/proc/check_integrity(/obj/item/rogueweapon/werewolf_claw/I)
+    if(I.max_integrity <= 999 || I.max_blade_int <= 99)
+        return TRUE // Infinite durability for either condition
+    return I.max_integrity >= 1000 && I.max_blade_int >= 100 // Normal integrity check
