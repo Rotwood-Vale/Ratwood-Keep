@@ -150,8 +150,8 @@
 	lefthand_file = null
 	righthand_file = null
 	icon = 'icons/roguetown/weapons/32.dmi'
-	max_blade_int = -1
-	max_integrity = -1
+	max_blade_int = 999999
+	max_integrity = 999999
 	force = 25
 	block_chance = 0
 	wdefense = 4
@@ -178,3 +178,4 @@
 	. = ..()
 	ADD_TRAIT(src, TRAIT_NODROP, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_NOEMBED, TRAIT_GENERIC)
+
