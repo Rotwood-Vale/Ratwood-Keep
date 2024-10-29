@@ -142,7 +142,11 @@
 		to_chat(usr, span_warning("It doesn't look like [M.p_they()] can fit into this properly!"))
 		return FALSE // Can't hold non-humanoids
 
-	return ..(M, force, FALSE)
+	for(var/obj/item/grabbing/G in M.grabbedby)
+		if(G.grab_state == 1)
+			return ..(M, force, FALSE)
+	to_chat(usr, span_warning("I must grab them more forcefully to put them in the pillory."))
+	return FALSE
 
 /obj/structure/pillory/post_buckle_mob(mob/living/M)
 	if (!istype(M, /mob/living/carbon/human))
