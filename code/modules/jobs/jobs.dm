@@ -60,7 +60,7 @@ GLOBAL_LIST_INIT(nonhuman_positions, list(
 	ROLE_PAI))
 
 GLOBAL_LIST_INIT(noble_positions, list(
-	"Monarch",
+	"Grand Duke",
 	"Consort",
 	"Prince",
 	"Hand",

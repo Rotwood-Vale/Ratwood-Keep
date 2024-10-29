@@ -127,7 +127,7 @@
 /proc/find_lord(required_stat = CONSCIOUS)
 	var/mob/living/lord
 	for(var/mob/living/carbon/human/H in GLOB.human_list)
-		if(!H.mind || H.job != "Monarch" || (H.stat > required_stat))
+		if(!H.mind || H.job != "Grand Duke" || (H.stat > required_stat))
 			continue
 		lord = H
 		break

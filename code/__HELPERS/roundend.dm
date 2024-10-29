@@ -315,7 +315,7 @@
 						"Our actors hang up their masks. A new cast begins to rehearse.",
 						"Thus the week's events have taken place. Eventful or mundane, life continues.",
 						"Pawns of gods, preachers of nite, all come together to recite this tale.",
-						"Whether with loss or life, kingdom survives... for now.",
+						"Whether with loss or life, the duchy survives... for now.",
 						"The people of Azure prepare to look forward; their actions locked in the impermeable past.")
 //		if(C.not_enough_players)
 //			end_reason = "The town was abandoned."
