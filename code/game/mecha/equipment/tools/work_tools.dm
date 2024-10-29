@@ -87,7 +87,7 @@
 			target.visible_message(span_danger("[chassis] squeezes [target]!"), \
 								span_danger("[chassis] squeezes you!"),\
 								span_hear("I hear something crack."))
-			log_combat(chassis.occupant, M, "attacked", "[name]", "(INTENT: [uppertext(chassis.occupant.used_intent)]) (DAMTYPE: [uppertext(damtype)])")
+			log_combat(chassis.occupant, M, "attacked", "[name]", "(INTENT: [uppertext(chassis.occupant.used_intent.name)]) (DAMTYPE: [uppertext(damtype)])")
 		else
 			step_away(M,chassis)
 			occupant_message(span_notice("I push [target] out of the way."))
@@ -147,7 +147,7 @@
 				M.updatehealth()
 				target.visible_message(span_danger("[chassis] destroys [target] in an unholy fury!"), \
 									span_danger("[chassis] destroys you in an unholy fury!"))
-				log_combat(chassis.occupant, M, "attacked", "[name]", "(INTENT: [uppertext(chassis.occupant.used_intent)]) (DAMTYPE: [uppertext(damtype)])")
+				log_combat(chassis.occupant, M, "attacked", "[name]", "(INTENT: [uppertext(chassis.occupant.used_intent.name)]) (DAMTYPE: [uppertext(damtype)])")
 			else
 				target.visible_message(span_danger("[chassis] destroys [target] in an unholy fury!"), \
 									span_danger("[chassis] destroys you in an unholy fury!"))
@@ -170,7 +170,7 @@
 					playsound(src, get_dismember_sound(), 80, TRUE)
 					target.visible_message(span_danger("[chassis] rips [target]'s arms off!"), \
 								   span_danger("[chassis] rips your arms off!"))
-					log_combat(chassis.occupant, M, "dismembered of[limbs_gone],", "[name]", "(INTENT: [uppertext(chassis.occupant.used_intent)]) (DAMTYPE: [uppertext(damtype)])")
+					log_combat(chassis.occupant, M, "dismembered of[limbs_gone],", "[name]", "(INTENT: [uppertext(chassis.occupant.used_intent.name)]) (DAMTYPE: [uppertext(damtype)])")
 			else
 				target.visible_message(span_danger("[chassis] rips [target]'s arms off!"), \
 								   span_danger("[chassis] rips your arms off!"))

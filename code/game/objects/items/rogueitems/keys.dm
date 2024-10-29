@@ -433,6 +433,7 @@
 	else if(istype(user.get_active_held_item(), /obj/item/rogueweapon/hammer) && src.lockhash != 0)
 		var/obj/item/roguekey/custom/F = new (get_turf(src))
 		F.lockhash = src.lockhash
+		F.lockid = lockhash
 		to_chat(user, span_notice("You finish [F]."))
 		qdel(src)
 	
