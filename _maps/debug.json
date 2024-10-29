@@ -1,0 +1,14 @@
+{
+    "map_name": "Ye Ol' Debug Map",
+    "map_path": "map_files/debug",
+    "map_file": "debug.dmm",
+	"minetype": null,
+	"space_empty_levels": 0,
+	"space_ruin_levels": 0,
+	"shuttles": {
+	    "cargo": "cargo_rogue",
+	    "ferry": "ferry_fancy",
+	    "whiteship": "whiteship_box",
+	    "emergency": "emergency_rogue"
+    }
+}
