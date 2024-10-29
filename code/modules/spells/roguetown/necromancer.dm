@@ -1,5 +1,5 @@
-/obj/effect/proc_holder/spell/invoked/bonechill
-	name = "Bone Chill"
+/obj/effect/proc_holder/spell/invoked/strengthen_undead
+	name = "Strengthen Undead"
 	overlay_state = "raiseskele"
 	releasedrain = 30
 	chargetime = 5
@@ -13,7 +13,7 @@
 	charge_max = 15 SECONDS
 	miracle = FALSE
 
-/obj/effect/proc_holder/spell/invoked/bonechill/cast(list/targets, mob/living/user)
+/obj/effect/proc_holder/spell/invoked/strengthen_undead/cast(list/targets, mob/living/user)
 	. = ..()
 	if(isliving(targets[1]))
 		var/mob/living/target = targets[1]
@@ -77,50 +77,151 @@
 	associated_skill = /datum/skill/magic/arcane
 	charge_max = 30 SECONDS
 
+
+/**
+  * Raises a minion from a corpse. Prioritizing ownership to original player > ghosts > npc.
+  *
+  * Vars:
+  * * targets: list of mobs that are targetted.
+  * * user: spell caster.
+  */
 /obj/effect/proc_holder/spell/invoked/raise_undead/cast(list/targets, mob/living/carbon/human/user)
 	. = ..()
 
-	var/mob/living/carbon/target = targets[1]
+	user.say("Hgf'ant'kthar!")
 
-	if(!target)
+	var/obj = targets[1]
+
+	if(!obj || !istype(obj, /mob/living/carbon/human))
 		to_chat(user, span_warning("I need to cast this spell on a corpse."))
 		return FALSE
 
-	if(isliving(target))
+	var/mob/living/carbon/human/target = obj
+
+	if(target.stat != DEAD)
 		to_chat(user, span_warning("I cannot raise the living."))
 		return FALSE
 
+	var/obj/item/bodypart/target_head = target.get_bodypart(BODY_ZONE_HEAD)
+	if(!target_head)
+		to_chat(user, span_warning("This corpse is headless."))
+		return FALSE
+
+	var/offer_refused = FALSE
+
+	target.visible_message(span_warning("[target.real_name]'s body is engulfed by dark energy..."), runechat_message = TRUE)
+
+	if(target.ckey) //player still inside body
+
+		var/offer = alert(target, "Do you wish to be reanimated as a minion?", "RAISED BY NECROMANCER", "Yes", "No")
+		var/offer_time = world.time
+
+		if(offer == "No" || world.time > offer_time + 5 SECONDS)
+			to_chat(target, span_danger("Another soul will take over."))
+			offer_refused = TRUE
+
+		else if(offer == "Yes")
+			to_chat(target, span_danger("You rise as a minion."))
+			target.turn_to_minion(user, target.ckey)
+			target.visible_message(span_warning("[target.real_name]'s eyes light up with an evil glow."), runechat_message = TRUE)
+			return TRUE
+
+	if(!target.ckey || offer_refused) //player is not inside body or has refused, poll for candidates
+
+		var/list/candidates = pollCandidatesForMob("Do you want to play as a Necromancer's minion?", null, null, null, 100, target, POLL_IGNORE_NECROMANCER_SKELETON)
+
+		// theres at least one candidate
+		if(LAZYLEN(candidates))
+			var/mob/C = pick(candidates)
+			target.turn_to_minion(user, C.ckey)
+			target.visible_message(span_warning("[target.real_name]'s eyes light up with an eerie glow."), runechat_message = TRUE)
+
+		//no candidates, raise as npc
+		else
+			target.turn_to_minion(user)
+			target.visible_message(span_warning("[target.real_name]'s eyes light up with a weak glow."), runechat_message = TRUE)
+
+		return TRUE
+
+	return FALSE
+
+/**
+  * Turns a mob into a skeletonized minion. Used for raising undead minions.
+  * If a ckey is provided, the minion will be controlled by the player, NPC otherwise.
+  *
+  * Vars:
+  * * master: master of the minion.
+  * * ckey (optional): ckey of the player that will control the minion.
+  */
+/mob/living/carbon/human/proc/turn_to_minion(mob/living/carbon/human/master, ckey)
+
+	if(!master)
+		return FALSE
+
+	src.revive(TRUE, TRUE)
+
+	if(ckey) //player
+		src.ckey = ckey
+	else //npc
+		aggressive = 1
+		mode = AI_HUNT
+		wander = TRUE
+
+	if(!mind)
+		mind_initialize()
+
+	mind.AddSpell(new /obj/effect/proc_holder/spell/self/suicidebomb/lesser)
+	mind.adjust_skillrank(/datum/skill/combat/maces, 3, TRUE)
+	mind.adjust_skillrank(/datum/skill/combat/axes, 3, TRUE)
+	mind.adjust_skillrank(/datum/skill/combat/crossbows, 3, TRUE)
+	mind.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE)
+	mind.adjust_skillrank(/datum/skill/combat/unarmed, 3, TRUE)
+	mind.adjust_skillrank(/datum/skill/combat/swords, 3, TRUE)
+	mind.current.job = null
+
+	dna.species.species_traits |= NOBLOOD
+	dna.species.soundpack_m = new /datum/voicepack/skeleton()
+	dna.species.soundpack_f = new /datum/voicepack/skeleton()
+
+
+	cmode_music = 'sound/music/combat_cult.ogg'
 	
-	//Undead should be played by corpse's owner > random candidate > npc  in order of priority
-	if(target.ckey)
-		
+	patron = master.patron
+	mob_biotypes = MOB_UNDEAD
+	faction = list("undead")
+	ambushable = FALSE
+	underwear = "Nude"
 
-	
-	//Raise the corpse as a zombie or skeleton depending on the decay level
+	for(var/obj/item/bodypart/BP in bodyparts)
+		BP.skeletonize()
 
+	var/obj/item/organ/eyes/eyes = getorganslot(ORGAN_SLOT_EYES)
+	if(eyes)
+		eyes.Remove(src,1)
+		QDEL_NULL(eyes)
 
-	// 	var/mob/living/carbon/target = new /mob/living/carbon/human/species/skeleton/npc(T)
-	// 	user.minions += target
-	// 	var/list/candidates = pollCandidatesForMob("Do you want to play as a Necromancer's skeleton?", null, null, null, 100, target, POLL_IGNORE_NECROMANCER_SKELETON)
-	// 	if(LAZYLEN(candidates))
-	// 		var/mob/C = pick(candidates)
-	// 		if(istype(C,/mob/dead/new_player))
-	// 			var/mob/dead/new_player/N = C
-	// 			N.close_spawn_windows()
-	// 		target.key = C.key
-	// 		target.visible_message(span_warning("[target]'s eyes light up with an eerie glow!"))
-	// 		target.mind.AddSpell(new /obj/effect/proc_holder/spell/self/suicidebomb/lesser)
-	// 		target.mind.adjust_skillrank(/datum/skill/combat/maces, 2, TRUE)
-	// 		target.mind.adjust_skillrank(/datum/skill/combat/axes, 2, TRUE)
-	// 		target.mind.adjust_skillrank(/datum/skill/combat/crossbows, 2, TRUE)
-	// 		target.mind.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE)
-	// 		target.mind.adjust_skillrank(/datum/skill/combat/unarmed, 3, TRUE)
-	// 		target.mind.adjust_skillrank(/datum/skill/combat/swords, 2, TRUE)
-	// 	else
-	// 		target.visible_message(span_warning("[target]'s eyes remain dully devoid of life. The spell failed to capture a soul from the ether."))
-	// 	return TRUE
-	// to_chat(user, span_warning("The targeted location is blocked. My summon fails to come forth."))
-	// return FALSE
+	eyes = new /obj/item/organ/eyes/night_vision/zombie
+	eyes.Insert(src)
+
+	if(charflaw)
+		QDEL_NULL(charflaw)
+
+	ADD_TRAIT(src, TRAIT_NOMOOD, TRAIT_GENERIC)
+	ADD_TRAIT(src, TRAIT_NOLIMBDISABLE, TRAIT_GENERIC)
+	ADD_TRAIT(src, TRAIT_EASYDISMEMBER, TRAIT_GENERIC)
+	ADD_TRAIT(src, TRAIT_LIMBATTACHMENT, TRAIT_GENERIC)
+	ADD_TRAIT(src, TRAIT_NOHUNGER, TRAIT_GENERIC)
+	ADD_TRAIT(src, TRAIT_NOBREATH, TRAIT_GENERIC)
+	ADD_TRAIT(src, TRAIT_NOPAIN, TRAIT_GENERIC)
+	ADD_TRAIT(src, TRAIT_TOXIMMUNE, TRAIT_GENERIC)
+	ADD_TRAIT(src, TRAIT_NOSLEEP, TRAIT_GENERIC)
+	ADD_TRAIT(src, TRAIT_SHOCKIMMUNE, TRAIT_GENERIC)
+
+	update_body()
+
+	to_chat(src, span_userdanger("My master is [master.real_name]."))
+
+	return TRUE
 
 /obj/effect/proc_holder/spell/invoked/projectile/sickness
 	name = "Ray of Sickness"
@@ -189,7 +290,7 @@
 	exp_fire = 0
 
 /obj/effect/proc_holder/spell/self/command_undead
-	name = "Command the Dead"
+	name = "Command Undead"
 	desc = "!"
 	overlay_state = "raiseskele"
 	sound = list('sound/magic/magnet.ogg')
@@ -201,7 +302,11 @@
 /obj/effect/proc_holder/spell/self/command_undead/cast(mob/user = usr)
 	..()
 	var/message = input("Speak to your minions!", "LICH") as text|null
-	if(!message) return
+
+	if(!message)
+		return
+
+	to_chat(lich_player, span_boldannounce("Lich [lich_player.real_name] commands: [message]"))
 
 	var/mob/living/carbon/human/lich_player = user
 	
