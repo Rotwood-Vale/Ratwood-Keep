@@ -141,7 +141,7 @@
 	var/choice = alert(lord, "The Royal Marshal requests a new law!\n[requested_law]", "MARTIAL LAW REQUEST", "Yes", "No")
 	if(choice != "Yes" || QDELETED(lord) || lord.stat > CONSCIOUS)
 		if(marshal)
-			to_chat(marshal, span_warning("The Duke has denied the request for a new law!"))
+			to_chat(span_warning("The Duke has denied the request for a new law!"))
 		return
 	make_law(requested_law)
 
@@ -151,7 +151,7 @@
 	var/choice = alert(lord, "The Royal Marshal requests the removal of a law!\n[GLOB.laws_of_the_land[requested_law]]", "MARTIAL LAW REQUEST", "Yes", "No")
 	if(choice != "Yes" || QDELETED(lord) || lord.stat > CONSCIOUS)
 		if(marshal)
-			to_chat(marshal, span_warning("The Duke has denied the request for a law removal!"))
+			to_chat(span_warning("The Duke has denied the request for a law removal!"))
 		return
 	remove_law(requested_law)
 
@@ -159,7 +159,7 @@
 	var/choice = alert(lord, "The Royal Marshal requests a purge of all laws!", "MARSHAL PURGE REQUEST", "Yes", "No")
 	if(choice != "Yes" || QDELETED(lord) || lord.stat > CONSCIOUS)
 		if(marshal)
-			to_chat(marshal, span_warning("The Duke has denied the request for a purge of all laws!"))
+			to_chat(span_warning("The Duke has denied the request for a purge of all laws!"))
 		return
 	purge_laws()
 
@@ -167,6 +167,6 @@
 	var/choice = alert(lord, "The Royal Marshal requests to outlaw someone!\n[requested_outlaw]", "MARSHAL OUTLAW REQUEST", "Yes", "No")
 	if(choice != "Yes" || QDELETED(lord) || lord.stat > CONSCIOUS)
 		if(marshal)
-			to_chat(marshal, span_warning("The Duke has denied the request for declaring an outlaw!"))
+			to_chat(span_warning("The Duke has denied the request for declaring an outlaw!"))
 		return
 	make_outlaw(requested_outlaw)

@@ -10,14 +10,6 @@
 		return FALSE
 	return ..()
 
-/datum/crafting_recipe/roguetown/structure/pillory
-	name = "pillory"
-	result = /obj/structure/pillory/double/custom
-	reqs = list(/obj/item/grown/log/tree/small = 1,
-				/obj/item/ingot/iron = 1,)
-	verbage_simple = "construct"
-	verbage = "constructs"
-
 /datum/crafting_recipe/roguetown/structure/handcart
 	name = "handcart"
 	result = /obj/structure/handcart

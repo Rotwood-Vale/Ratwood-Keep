@@ -51,9 +51,9 @@
 		"perception" = 1,
 		"intelligence" = 2,
 		"constitution" = -2,
-		"endurance" = 0,
+		"endurance" = 1,
 		"speed" = 0,
-		"fortune" = 0
+		"fortune" = -1
 		)
 	enflamed_icon = "widefire"
 	organs = list(

@@ -23,14 +23,14 @@
 
 	user.do_attack_animation(M)
 	M.Paralyze(100)
-	M.apply_effect(5, EFFECT_STUTTER)
+	M.apply_effect(EFFECT_STUTTER, 5)
 
 	M.visible_message(span_danger("[user] has prodded [M] with [src]!"), \
 					span_danger("[user] has prodded you with [src]!"))
 
 	playsound(loc, 'sound/blank.ogg', 50, TRUE, -1)
 
-	log_combat(user, M, "stunned", src, "(INTENT: [uppertext(user.used_intent.name)])")
+	log_combat(user, M, "stunned", src, "(INTENT: [uppertext(user.used_intent)])")
 
 /obj/item/borg/cyborghug
 	name = "hugging module"

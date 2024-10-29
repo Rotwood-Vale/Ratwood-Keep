@@ -16,6 +16,7 @@
 	var/classes = list("Swordsman","Fencer", "Cutthroat")
 	var/classchoice = input("Choose your archetypes", "Available archetypes") as anything in classes
 	shoes = /obj/item/clothing/shoes/roguetown/armor/leather
+	neck = /obj/item/storage/belt/rogue/pouch/coins/poor
 	pants = /obj/item/clothing/under/roguetown/trou/leather
 	gloves = /obj/item/clothing/gloves/roguetown/leather
 	belt = /obj/item/storage/belt/rogue/leather
@@ -33,7 +34,7 @@
 			if(prob(40))
 				beltr = /obj/item/rogueweapon/sword/long
 			shoes = /obj/item/clothing/shoes/roguetown/armor/leather
-			neck = /obj/item/keyring/mercenary
+			neck = /obj/item/storage/belt/rogue/pouch/coins/poor
 			pants = /obj/item/clothing/under/roguetown/trou/leather
 			gloves = /obj/item/clothing/gloves/roguetown/leather
 			belt = /obj/item/storage/belt/rogue/leather
@@ -70,7 +71,7 @@
 			shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
 			beltr = /obj/item/rogueweapon/sword/rapier
 			shoes = /obj/item/clothing/shoes/roguetown/armor/leather
-			neck = /obj/item/keyring/mercenary
+			neck = /obj/item/storage/belt/rogue/pouch/coins/poor
 			pants = /obj/item/clothing/under/roguetown/trou/leather
 			gloves = /obj/item/clothing/gloves/roguetown/leather
 			belt = /obj/item/storage/belt/rogue/leather
@@ -107,7 +108,7 @@
 			shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/sailor/red
 			beltr = /obj/item/rogueweapon/sword/cutlass
 			shoes = /obj/item/clothing/shoes/roguetown/armor/leather
-			neck = /obj/item/keyring/mercenary
+			neck = /obj/item/storage/belt/rogue/pouch/coins/poor
 			pants = /obj/item/clothing/under/roguetown/trou/leather
 			gloves = /obj/item/clothing/gloves/roguetown/leather
 			belt = /obj/item/storage/belt/rogue/leather

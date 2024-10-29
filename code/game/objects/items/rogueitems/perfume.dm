@@ -30,7 +30,7 @@
 	if(!uses_remaining)
 		underlays.Cut()
 	else
-		perfume_overlay.color = initial(fragrance_type.color)
+		perfume_overlay.color = fragrance_type.color
 		underlays.Add(perfume_overlay)
 
 /obj/item/perfume/examine(mob/user)
@@ -63,7 +63,7 @@
 
 /obj/item/perfume/random/Initialize()
 	fragrance_type = pick(subtypesof(/datum/pollutant/fragrance))
-	name = initial(fragrance_type.name) + " perfume"
+	name = fragrance_type.name + " perfume"
 	. = ..()
 
 /obj/item/perfume/lavender

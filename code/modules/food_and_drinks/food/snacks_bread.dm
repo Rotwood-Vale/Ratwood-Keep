@@ -268,7 +268,7 @@
 	filling_color = "#F1F49A"
 	list_reagents = list(/datum/reagent/consumable/nutriment = 5)
 	bonus_reagents = list(/datum/reagent/consumable/nutriment = 1, /datum/reagent/consumable/nutriment/vitamin = 1)
-	tastes = list("butter" = 1, "exotic butter" = 1)
+	tastes = list("butter", "exotic butter")
 	foodtype = GRAIN | DAIRY
 
 /obj/item/reagent_containers/food/snacks/butterdog/ComponentInitialize()

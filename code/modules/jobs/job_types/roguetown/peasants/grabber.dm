@@ -1,25 +1,19 @@
 /datum/job/roguetown/grabber
-	title = "Thug"
+	title = "Grabber"
 	flag = GRABBER
-	department_flag = MERCENARIES
+	department_flag = PEASANTS
 	faction = "Station"
-	total_positions = 2
-	spawn_positions = 2
+	total_positions = 0
+	spawn_positions = 0
 
 	allowed_races = RACES_ALL_KINDS
-	allowed_sexes = list(MALE, FEMALE)
 
-	tutorial = "A mercenary of the Merchant's Guild is paid well, but given little to no training. That's what you are in title. A mercenary. \
-	In practice? You're a paid thug. There to act as a guard dog. Nothing more. \
-	Try to retain the favour of your current employer, for you've no other contacts to the guild."
+	tutorial = "Grabber is the lowest position in the Merchant's Guild, reserved for the strong, loyal newcomers. They can be like family to the merchant in these foreign lands."
 
 	outfit = /datum/outfit/job/roguetown/grabber
 	display_order = JDO_GRABBER
-	give_bank_account = TRUE
-	min_pq = 0
+	min_pq = -10
 	max_pq = null
-
-	cmode_music = 'sound/music/combat_giza.ogg'
 
 /datum/outfit/job/roguetown/grabber/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -40,7 +34,7 @@
 		pants = /obj/item/clothing/under/roguetown/tights/sailor
 		neck = /obj/item/storage/belt/rogue/pouch/coins/poor
 		beltr = /obj/item/rogueweapon/mace/woodclub
-		beltl = /obj/item/keyring/shophand
+		beltl = /obj/item/roguekey/shop
 		belt = /obj/item/storage/belt/rogue/leather/rope
 		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/sailor
 		if(prob(30))
@@ -56,7 +50,7 @@
 		pants = /obj/item/clothing/under/roguetown/tights/sailor
 		beltr = /obj/item/rogueweapon/sword/cutlass
 		neck = /obj/item/storage/belt/rogue/pouch/coins/poor
-		beltl = /obj/item/keyring/shophand
+		beltl = /obj/item/roguekey/shop
 		belt = /obj/item/storage/belt/rogue/leather/rope
 		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/sailor
 		if(prob(23))

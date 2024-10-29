@@ -142,7 +142,7 @@
 /datum/sprite_accessory/wings/wide
 	abstract_type = /datum/sprite_accessory/wings/wide
 	icon = 'icons/mob/sprite_accessory/wings/wings_wide.dmi'
-	pixel_x = -7
+	pixel_x = -6
 
 /datum/sprite_accessory/wings/wide/succubus
 	name = "Succubus"
