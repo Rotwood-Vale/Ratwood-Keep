@@ -79,30 +79,48 @@
 
 /obj/effect/proc_holder/spell/invoked/raise_undead/cast(list/targets, mob/living/carbon/human/user)
 	. = ..()
-	var/turf/T = get_turf(targets[1])
-	if(isopenturf(T))
-		var/mob/living/carbon/target = new /mob/living/carbon/human/species/skeleton/npc(T)
-		user.minions += target
-		var/list/candidates = pollCandidatesForMob("Do you want to play as a Necromancer's skeleton?", null, null, null, 100, target, POLL_IGNORE_NECROMANCER_SKELETON)
-		if(LAZYLEN(candidates))
-			var/mob/C = pick(candidates)
-			if(istype(C,/mob/dead/new_player))
-				var/mob/dead/new_player/N = C
-				N.close_spawn_windows()
-			target.key = C.key
-			target.visible_message(span_warning("[target]'s eyes light up with an eerie glow!"))
-			target.mind.AddSpell(new /obj/effect/proc_holder/spell/self/suicidebomb/lesser)
-			target.mind.adjust_skillrank(/datum/skill/combat/maces, 2, TRUE)
-			target.mind.adjust_skillrank(/datum/skill/combat/axes, 2, TRUE)
-			target.mind.adjust_skillrank(/datum/skill/combat/crossbows, 2, TRUE)
-			target.mind.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE)
-			target.mind.adjust_skillrank(/datum/skill/combat/unarmed, 3, TRUE)
-			target.mind.adjust_skillrank(/datum/skill/combat/swords, 2, TRUE)
-		else
-			target.visible_message(span_warning("[target]'s eyes remain dully devoid of life. The spell failed to capture a soul from the ether."))
-		return TRUE
-	to_chat(user, span_warning("The targeted location is blocked. My summon fails to come forth."))
-	return FALSE
+
+	var/mob/living/carbon/target = targets[1]
+
+	if(!target)
+		to_chat(user, span_warning("I need to cast this spell on a corpse."))
+		return FALSE
+
+	if(isliving(target))
+		to_chat(user, span_warning("I cannot raise the living."))
+		return FALSE
+
+	
+	//Undead should be played by corpse's owner > random candidate > npc  in order of priority
+	if(target.ckey)
+		
+
+	
+	//Raise the corpse as a zombie or skeleton depending on the decay level
+
+
+	// 	var/mob/living/carbon/target = new /mob/living/carbon/human/species/skeleton/npc(T)
+	// 	user.minions += target
+	// 	var/list/candidates = pollCandidatesForMob("Do you want to play as a Necromancer's skeleton?", null, null, null, 100, target, POLL_IGNORE_NECROMANCER_SKELETON)
+	// 	if(LAZYLEN(candidates))
+	// 		var/mob/C = pick(candidates)
+	// 		if(istype(C,/mob/dead/new_player))
+	// 			var/mob/dead/new_player/N = C
+	// 			N.close_spawn_windows()
+	// 		target.key = C.key
+	// 		target.visible_message(span_warning("[target]'s eyes light up with an eerie glow!"))
+	// 		target.mind.AddSpell(new /obj/effect/proc_holder/spell/self/suicidebomb/lesser)
+	// 		target.mind.adjust_skillrank(/datum/skill/combat/maces, 2, TRUE)
+	// 		target.mind.adjust_skillrank(/datum/skill/combat/axes, 2, TRUE)
+	// 		target.mind.adjust_skillrank(/datum/skill/combat/crossbows, 2, TRUE)
+	// 		target.mind.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE)
+	// 		target.mind.adjust_skillrank(/datum/skill/combat/unarmed, 3, TRUE)
+	// 		target.mind.adjust_skillrank(/datum/skill/combat/swords, 2, TRUE)
+	// 	else
+	// 		target.visible_message(span_warning("[target]'s eyes remain dully devoid of life. The spell failed to capture a soul from the ether."))
+	// 	return TRUE
+	// to_chat(user, span_warning("The targeted location is blocked. My summon fails to come forth."))
+	// return FALSE
 
 /obj/effect/proc_holder/spell/invoked/projectile/sickness
 	name = "Ray of Sickness"
