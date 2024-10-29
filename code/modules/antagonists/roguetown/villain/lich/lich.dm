@@ -13,7 +13,7 @@
 	var/out_of_lives = FALSE
 
 /mob/living/carbon/human
-	/// List of minions that this mob has control over. Used for things like the Lich's "Command the Dead" spell.
+	/// List of minions that this mob has control over. Used for things like the Lich's "Command Undead" spell.
 	var/list/mob/minions = list()
 
 /datum/antagonist/lich/on_gain()
@@ -119,6 +119,7 @@
 	H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/projectile/fireball)
 	H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/projectile/bloodlightning)
 	H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/eyebite)
+	H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/projectile/sickness)
 	H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/projectile/fetch)
 	H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/diagnose/secular)
 	H.mind.AddSpell(new /obj/effect/proc_holder/spell/self/suicidebomb)

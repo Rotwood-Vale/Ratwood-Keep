@@ -221,6 +221,8 @@
 
 	to_chat(src, span_userdanger("My master is [master.real_name]."))
 
+	master.minions += src
+
 	return TRUE
 
 /obj/effect/proc_holder/spell/invoked/projectile/sickness
@@ -308,7 +310,7 @@
 
 
 	var/mob/living/carbon/human/lich_player = user
-	
+
 	to_chat(lich_player, span_boldannounce("Lich [lich_player.real_name] commands: [message]"))
 
 	for(var/mob/player in lich_player.minions)
