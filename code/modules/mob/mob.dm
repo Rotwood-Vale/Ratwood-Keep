@@ -754,7 +754,7 @@ GLOBAL_VAR_INIT(mobids, 1)
 				stat("Round End: [DisplayTimeText(time_left)]")
 			stat("TimeOfDay: [GLOB.tod]")
 
-	if(client && client.holder && check_rights(R_ADMIN,0))
+	if(client && client.holder && check_rights(R_DEBUG,0))
 		if(statpanel("MC"))
 			var/turf/T = get_turf(client.eye)
 			stat("Location:", COORD(T))

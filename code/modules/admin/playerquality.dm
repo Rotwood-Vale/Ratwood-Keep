@@ -248,7 +248,7 @@
 	fdel(json_file)
 	WRITE_FILE(json_file, json_encode(json))
 
-	if(get_playerquality(key) > 10)
+	if(curcomm < 100 || get_playerquality(key) < 10)
 		adjust_playerquality(round(amt/10,0.1), ckey(key))
 
 /proc/get_roundpoints(key)

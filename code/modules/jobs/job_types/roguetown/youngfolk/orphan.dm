@@ -16,6 +16,7 @@
 	show_in_credits = FALSE
 	min_pq = -30
 	max_pq = null
+	round_contrib_points = 2
 
 	cmode_music = 'sound/music/combat_bum.ogg'
 
