@@ -174,7 +174,7 @@
 			S.AOE_flash(user, range = 8)
 		testing("curerot2")
 		if(was_zombie)
-			if(was_zombie.become_rotman && prob(50)) //50% chance to NOT become a rotman
+			if(was_zombie.become_rotman && prob(25)) //50% chance to NOT become a rotman
 				was_zombie.become_rotman = FALSE
 			target.mind.remove_antag_datum(/datum/antagonist/zombie)
 			target.Unconscious(20 SECONDS)
