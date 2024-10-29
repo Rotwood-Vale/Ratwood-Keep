@@ -827,7 +827,7 @@
 	var/ghost_counter = 0
 	var/turf/T = get_turf(src)
 	var/list/contents = T.GetAllContents()
-	var/mob/dead/observer/current_spirits = list()
+	var/list/mob/dead/observer/current_spirits = list()
 	for(var/thing in contents)
 		var/atom/A = thing
 		A.transfer_observers_to(src)

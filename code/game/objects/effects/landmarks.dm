@@ -120,16 +120,22 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	jobspawn_override = list("Town Seelie")
 	delete_after_roundstart = FALSE
 
-/obj/effect/landmark/start/desertriderlate
+/obj/effect/landmark/start/desertriderlate // Left behind for map compatibility
 	name = "DesertRiderlate"
 	icon_state = "arrow"
-	jobspawn_override = list("Desert Rider Mercenary", "Sellsword")
+	jobspawn_override = list("Mercenary")
 	delete_after_roundstart = FALSE
 
-/obj/effect/landmark/start/grenzelhoftlate
+/obj/effect/landmark/start/grenzelhoftlate // Left behind for map compatibility
 	name = "Grenzelhoftlate"
 	icon_state = "arrow"
-	jobspawn_override = list("Grenzelhoft Mercenary", "Sellsword")
+	jobspawn_override = list("Mercenary")
+	delete_after_roundstart = FALSE
+
+/obj/effect/landmark/start/mercenarylate
+	name = "Mercenarylate"
+	icon_state = "arrow"
+	jobspawn_override = list("Mercenary")
 	delete_after_roundstart = FALSE
 
 /obj/effect/landmark/start/villagerlate
@@ -139,7 +145,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	delete_after_roundstart = FALSE
 
 /obj/effect/landmark/start/lord
-	name = "Lord"
+	name = "Duke"
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/knight
@@ -267,7 +273,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/grabber
-	name = "Grabber"
+	name = "Thug"
 	icon_state = "arrow"
 
 
@@ -283,8 +289,8 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	name = "Guild Smith"
 	icon_state = "arrow"
 
-/obj/effect/landmark/start/tailor
-	name = "Tailor"
+/obj/effect/landmark/start/seamster
+	name = "Seamster"
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/alchemist
@@ -324,11 +330,11 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/lady
-	name = "Lady Consort"
+	name = "Duchess Consort"
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/prince
-	name = "Prince"
+	name = "Heir"
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/prisonerr

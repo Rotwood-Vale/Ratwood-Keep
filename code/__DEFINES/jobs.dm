@@ -139,7 +139,7 @@
 #define GUILDSMITH	(1<<2)
 #define ALCHEMIST	(1<<3)
 #define MASON		(1<<4)
-#define TAILOR		(1<<5)
+#define SEAMSTER	(1<<5)
 #define MERCHANT	(1<<6)
 #define SCRIBE		(1<<7)
 #define ELDER		(1<<8)
@@ -180,11 +180,9 @@
 
 #define MERCENARIES		(1<<7)
 
-#define DESERT_RIDER	(1<<0)
-#define GRENZELHOFT		(1<<1)
-#define VETERAN		(1<<2)
-#define SELLSWORD		(1<<3)
-#define SEELIE		(1<<4)
+#define MERCENARY	(1<<0)
+#define VETERAN		(1<<1)
+#define SEELIE		(1<<2)
 
 #define GOBLIN		(1<<8)
 
@@ -260,6 +258,8 @@
 
 #define JDO_MASON 22
 
+#define JDO_SEAMSTER 23
+
 #define JDO_BARKEEP 26
 #define JDO_COOK 27
 
@@ -274,11 +274,9 @@
 #define JDO_PILGRIM 30.2
 #define JDO_MIGRANT 32.3
 
-#define JDO_GRENZELHOFT 31
-#define JDO_DESERT_RIDER 31.1
-#define JDO_VET 31.2
-#define JDO_SELLSWORD 31.3
-#define JDO_SEELIE 31.4
+#define JDO_MERCENARY 31
+#define JDO_VET 31.1
+#define JDO_SEELIE 31.2
 
 #define JDO_VAGRANT 33
 #define JDO_ORPHAN 34
@@ -351,15 +349,15 @@
 	/datum/job/roguetown/barkeep,\
 	/datum/job/roguetown/guildsmith,\
 	/datum/job/roguetown/mason,\
+	/datum/job/roguetown/seamster, \
 	/datum/job/roguetown/merchant,\
 	/datum/job/roguetown/scribe
 
 #define WANDERER_ROLES \
 	/datum/job/roguetown/pilgrim,\
 	/datum/job/roguetown/adventurer,\
-	/datum/job/roguetown/mercenary/desert_rider,\
-	/datum/job/roguetown/mercenary/grenzelhoft,\
-	/datum/job/roguetown/mercenary/seelie
+	/datum/job/roguetown/mercenary,\
+	/datum/job/roguetown/seelie
 
 #define GARRISON_ROLES \
 	/datum/job/roguetown/bogguardsman,\

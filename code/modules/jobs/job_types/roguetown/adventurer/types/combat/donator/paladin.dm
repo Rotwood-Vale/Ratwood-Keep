@@ -2,7 +2,7 @@
 
 /datum/advclass/paladin
 	name = "Paladin"
-	tutorial = "Paladins are holy warriors who have taken sacred vows to uphold justice and righteousness. Often, they were promised redemption for past sins if they crusaded in the name of the gods."	
+	tutorial = "Paladins are holy warriors who have taken sacred vows to uphold justice and righteousness. Often, they were promised redemption for past sins if they crusaded in the name of the gods."
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
 	outfit = /datum/outfit/job/roguetown/adventurer/paladin
@@ -19,14 +19,18 @@
 	switch(H.patron.name)
 		if("Astrata")
 			neck = /obj/item/clothing/neck/roguetown/psicross/astrata
+		if("Noc")
+			neck = /obj/item/clothing/neck/roguetown/psicross/noc
 		if("Dendor")
 			neck = /obj/item/clothing/neck/roguetown/psicross/dendor
 		if("Necra")
 			neck = /obj/item/clothing/neck/roguetown/psicross/necra
 		if("Pestra")
 			neck = /obj/item/clothing/neck/roguetown/psicross/pestra
-		if("Noc")
-			neck = /obj/item/clothing/neck/roguetown/psicross/noc
+		if("Malum")
+			neck = /obj/item/clothing/neck/roguetown/psicross/malum
+		if("Ravox")
+			neck = /obj/item/clothing/neck/roguetown/psicross/ravox
 
 
 	H.adjust_blindness(-3)
@@ -34,7 +38,7 @@
 	var/classchoice = input("Choose your archetypes", "Available archetypes") as anything in classes
 
 	switch(classchoice)
-	
+
 		if("Paladin")
 			to_chat(H, span_warning("Paladins are holy warriors who have taken sacred vows to uphold justice and righteousness. Often, they were promised redemption for past sins if they crusaded in the name of the gods."))
 			H.set_blindness(0) // No introduction text due to there being no real difference in Paladin archetypes for now.
@@ -69,7 +73,7 @@
 			id = /obj/item/clothing/ring/silver
 			backpack_contents = list(/obj/item/rogueweapon/huntingknife)
 			cloak = /obj/item/clothing/cloak/tabard/crusader
-			switch(H.patron.name)	
+			switch(H.patron.name)
 				if("Astrata")
 					cloak = /obj/item/clothing/cloak/tabard/crusader/astrata
 				if("Dendor")
@@ -112,7 +116,7 @@
 			if(H.age == AGE_OLD)
 				H.mind.adjust_skillrank(/datum/skill/combat/whipsflails, 1, TRUE)
 			H.change_stat("strength", 2)
-			H.change_stat("constitution", 2) 
+			H.change_stat("constitution", 2)
 			H.change_stat("endurance", 2)
 			H.change_stat("speed", -1)
 			armor = /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk
@@ -124,7 +128,7 @@
 			id = /obj/item/clothing/ring/silver
 			backpack_contents = list(/obj/item/rogueweapon/huntingknife)
 			cloak = /obj/item/clothing/cloak/tabard/crusader
-			switch(H.patron.name)	
+			switch(H.patron.name)
 				if("Astrata")
 					cloak = /obj/item/clothing/cloak/tabard/crusader/astrata
 				if("Dendor")
@@ -148,7 +152,7 @@
 			else
 				head = /obj/item/clothing/head/roguetown/helmet
 			backl = /obj/item/storage/backpack/rogue/satchel
-		
+
 	ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_STEELHEARTED, TRAIT_GENERIC)
 	H.dna.species.soundpack_m = new /datum/voicepack/male/knight()

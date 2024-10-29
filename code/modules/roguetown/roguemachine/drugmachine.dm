@@ -229,20 +229,13 @@
 	START_PROCESSING(SSroguemachine, src)
 	update_icon()
 	held_items[/obj/item/reagent_containers/hypospray/medipen/snekbt] = list("PRICE" = rand(35,50),"NAME" = "snake bite")
-	held_items[/obj/item/reagent_containers/powder/spice] = list("PRICE" = rand(20,35),"NAME" = "spice")
+	held_items[/obj/item/reagent_containers/powder/spice] = list("PRICE" = rand(20,30),"NAME" = "spice")
 	held_items[/obj/item/reagent_containers/powder/ozium] = list("PRICE" = rand(6,15),"NAME" = "ozium")
 	held_items[/obj/item/reagent_containers/powder/moondust] = list("PRICE" = rand(35,55),"NAME" = "moondust")
 	held_items[/obj/item/clothing/mask/cigarette/rollie/cannabis] = list("PRICE" = rand(12,18),"NAME" = "swampweed zig")
-	held_items[/obj/item/reagent_containers/hypospray/medipen/nourish] = list("PRICE" = rand(15,20),"NAME" = "NOURISH")
+	held_items[/obj/item/reagent_containers/hypospray/medipen/nourish] = list("PRICE" = rand(15,25),"NAME" = "NOURISH")
 	held_items[/obj/item/storage/fancy/shhig] = list("PRICE" = rand(15,25),"NAME" = "box of ssssigs")
 	held_items[/obj/item/storage/box/matches] = list("PRICE" = rand(10,15),"NAME" = "tinderbox")
-/*	held_items[/obj/item/reagent_containers/glass/bottle/rogue/wine] = list("PRICE" = rand(35,77),"NAME" = "vino")
-	held_items[/obj/item/rogueweapon/huntingknife/idagger] = list("PRICE" = rand(20,33),"NAME" = "kinfe")
-	held_items[/obj/item/clothing/cloak/half] = list("PRICE" = rand(103,110),"NAME" = "black halfcloak")
-	held_items[/obj/item/clothing/gloves/roguetown/fingerless] = list("PRICE" = rand(16,31),"NAME" = "gloves with 6 holes")
-	held_items[/obj/item/clothing/head/roguetown/roguehood/black] = list("PRICE" = rand(43,45),"NAME" = "black hood")
-	held_items[/obj/item/gun/ballistic/revolver/grenadelauncher/crossbow] = list("PRICE" = rand(58,88),"NAME" = "crossed bow")
-	held_items[/obj/item/quiver/bolts] = list("PRICE" = rand(33,57),"NAME" = "quiver w/ bolts")*/
 
 #undef DRUGRADE_MONEYA
 #undef DRUGRADE_MONEYB

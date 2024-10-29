@@ -18,6 +18,25 @@
 	verbage_simple = "tie"
 	verbage = "ties"
 
+/datum/crafting_recipe/roguetown/spoon
+	name = "spoon (x3)"
+	result = list(/obj/item/kitchen/spoon,
+				/obj/item/kitchen/spoon,
+				/obj/item/kitchen/spoon)
+	reqs = list(/obj/item/grown/log/tree/small = 1)
+
+/datum/crafting_recipe/roguetown/platter
+	name = "plater (x3)"
+	result = list(/obj/item/cooking/platter,
+				/obj/item/cooking/platter,
+				/obj/item/cooking/platter)
+	reqs = list(/obj/item/grown/log/tree/small = 1)
+
+/datum/crafting_recipe/roguetown/rollingpin
+	name = "rollingpin"
+	result = /obj/item/kitchen/rollingpin
+	reqs = list(/obj/item/grown/log/tree/small = 1)
+
 /datum/crafting_recipe/roguetown/unclothbelt
 	name = "untie cloth belt"
 	result = /obj/item/natural/cloth
@@ -60,7 +79,7 @@
 	name = "unstrung bow"
 	result = /obj/item/grown/log/tree/bowpartial
 	reqs = list(/obj/item/grown/log/tree/small = 1)
-	tools = /obj/item/rogueweapon/huntingknife
+	tools = list(/obj/item/rogueweapon/huntingknife)
 	verbage_simple = "carve"
 	verbage = "carves"
 
@@ -195,6 +214,16 @@
 
 
 /obj/item/rogueweapon/shield/wood/crafted
+	sellprice = 6
+
+/datum/crafting_recipe/roguetown/heatershield
+	name = "heater shield"
+	result = /obj/item/rogueweapon/shield/heater/crafted
+	reqs = list(/obj/item/grown/log/tree/small = 2,
+				/obj/item/natural/hide = 1)
+	skillcraft = /datum/skill/craft/carpentry
+
+/obj/item/rogueweapon/shield/heater/crafted
 	sellprice = 6
 
 /datum/crafting_recipe/roguetown/woodbucket

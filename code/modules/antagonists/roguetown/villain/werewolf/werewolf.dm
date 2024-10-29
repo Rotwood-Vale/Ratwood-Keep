@@ -121,7 +121,7 @@
 	desc = ""
 	icon_state = null
 	body_parts_covered = FULL_BODY
-	armor = list("blunt" = 100, "slash" = 90, "stab" = 80, "bullet" = 70, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	armor = list("blunt" = 80, "slash" = 60, "stab" = 60, "bullet" = 60, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
 	prevent_crits = list(BCLASS_CUT, BCLASS_CHOP, BCLASS_STAB, BCLASS_BLUNT, BCLASS_TWIST)
 	blocksound = SOFTHIT
 	blade_dulling = DULLING_BASHCHOP
@@ -136,7 +136,7 @@
 	attack_verb = list("claws", "mauls", "eviscerates")
 	animname = "chop"
 	hitsound = "genslash"
-	penfactor = 50
+	penfactor = 30
 	candodge = TRUE
 	canparry = TRUE
 	miss_text = "slashes the air!"
@@ -150,12 +150,12 @@
 	lefthand_file = null
 	righthand_file = null
 	icon = 'icons/roguetown/weapons/32.dmi'
-	max_blade_int = 900
-	max_integrity = 900
+	max_blade_int = 999999
+	max_integrity = 999999
 	force = 25
 	block_chance = 0
 	wdefense = 4
-	armor_penetration = 15
+	armor_penetration = 20
 	associated_skill = /datum/skill/combat/unarmed
 	wlength = WLENGTH_NORMAL
 	w_class = WEIGHT_CLASS_BULKY
@@ -178,3 +178,4 @@
 	. = ..()
 	ADD_TRAIT(src, TRAIT_NODROP, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_NOEMBED, TRAIT_GENERIC)
+

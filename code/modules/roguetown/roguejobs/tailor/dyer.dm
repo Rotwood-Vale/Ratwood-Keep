@@ -11,9 +11,28 @@
 	throw_range = 1
 	var/berry_charges = 0
 	var/atom/movable/inserted
+	var/list/allowed_types = list(
+			/obj/item/clothing/suit/roguetown/shirt/robe,
+			/obj/item/clothing/suit/roguetown/shirt/dress,
+			/obj/item/clothing/suit/roguetown/shirt/undershirt,
+			/obj/item/clothing/suit/roguetown/shirt/shortshirt,
+			/obj/item/clothing/under/roguetown/tights,
+			/obj/item/clothing/cloak/raincloak,
+			/obj/item/clothing/cloak/cape,
+			/obj/item/clothing/cloak/half,
+			/obj/item/clothing/head/roguetown/roguehood,
+			/obj/item/clothing/head/roguetown/headband,
+			/obj/item/clothing/head/roguetown/armingcap,
+			/obj/item/clothing/head/roguetown/chaperon,
+			/obj/item/storage/belt/rogue/leather/rope,
+			/obj/item/storage/belt/rogue/leather/cloth,
+			/obj/item/clothing/shoes/roguetown/simpleshoes,
+			/obj/item/clothing/suit/roguetown/armor/gambeson,
+			/obj/item/clothing/suit/roguetown/armor/armordress
+			)
 	var/activecolor = "#FFFFFF"
 	var/static/list/selectable_colors = list(
-  		"White" = "#ffffff",
+		"White" = "#ffffff",
 		"Black" = "#414143",
 		"Light Grey" = "#999999",
 		"Mage Grey" = "#6c6c6c",
@@ -68,25 +87,19 @@
 
 /obj/structure/dye_bin/attackby(obj/item/I, mob/living/user)
 	if(istype(I, /obj/item/reagent_containers/food/snacks/grown/berries/rogue))
-		to_chat(user, span_notice("I squeeze the berries into some colorful dye"))
+		to_chat(user, span_notice("I squeeze \the [I] into some colorful dye."))
 		berry_charges += 5
 		update_icon()
 		qdel(I)
 		return
-	if(I.sewrepair)
-		if(user.mind.get_skill_level(/datum/skill/misc/sewing) <= 2) // We're not letting people with 0 knowledge in sewing do dying, so they don't step on the toes of the seamstress
-			to_chat(user, "<span class='warning'>I do not know enough about this craft...</span>")
-			return
-		if(inserted)
-			to_chat(user, "<span class='warning'>There is already something inside the dye bin!</span>")
-			return
+	if(is_type_in_list(I, allowed_types))
 		if(!user.transferItemToLoc(I, src))
 			to_chat(user, "<span class='warning'>[I] is stuck to your hand!</span>")
 			return
 		user.visible_message("<span class='notice'>[user] inserts [I] into the [src].</span>")
+
 		inserted = I
 	else
-		to_chat(user, "<span class='warning'>I don't think this item can be dyed this way.</span>")
 		return ..()
 
 /obj/structure/dye_bin/AllowDrop()

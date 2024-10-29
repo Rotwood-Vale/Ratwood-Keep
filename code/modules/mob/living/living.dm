@@ -231,6 +231,7 @@
 	if(!(M.status_flags & CANPUSH))
 		return TRUE
 	if(isliving(M))
+		M.mob_timers[MT_SNEAKATTACK] = world.time //Why shouldn't you know you're walking into someone stealthed? You JUST bumped into them.
 		var/mob/living/L = M
 		if(HAS_TRAIT(L, TRAIT_PUSHIMMUNE))
 			return TRUE
@@ -1170,8 +1171,8 @@
 		pulledby.stop_pulling()
 
 		var/wrestling_cooldown_reduction = 0
-		if(pulledby?.mind?.get_skill_level("wrestling"))
-			wrestling_cooldown_reduction = 0.2 SECONDS * pulledby.mind.get_skill_level("wrestling")
+		if(pulledby?.mind?.get_skill_level(/datum/skill/combat/wrestling))
+			wrestling_cooldown_reduction = 0.2 SECONDS * pulledby.mind.get_skill_level(/datum/skill/combat/wrestling)
 		TIMER_COOLDOWN_START(src, "broke_free", max(0, 1.6 SECONDS - wrestling_cooldown_reduction))
 
 		return FALSE
@@ -1920,8 +1921,8 @@
 		for(var/mob/living/M in view(7,src))
 			if(M == src)
 				continue
-			if(see_invisible < M.invisibility)
-				continue
+			//if(see_invisible < M.invisibility)
+				//continue
 			if(M.mob_timers[MT_INVISIBILITY] > world.time) // Check if the mob is affected by the invisibility spell
 				continue
 			var/probby = 3 * STAPER

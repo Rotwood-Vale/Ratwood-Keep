@@ -6,7 +6,7 @@
 	faction = "Station"
 	tutorial = "Templars are warriors who have forsaken wealth and title in lieu of service to the church, due to either zealotry or a past shame. They guard the church and its priest, while keeping a watchful eye against heresy and nite-creechers. Within troubled dreams, they wonder if the blood they shed makes them holy or stained."
 	allowed_sexes = list(MALE, FEMALE)
-	allowed_races = RACES_TOLERATED_UP
+	allowed_races = RACES_VERY_SHUNNED_UP
 	allowed_patrons = ALL_CLERIC_PATRONS
 	outfit = /datum/outfit/job/roguetown/templar
 	min_pq = 2
@@ -25,13 +25,16 @@
 	..()
 	H.virginity = TRUE
 	head = /obj/item/clothing/head/roguetown/helmet/heavy/bucket
-	neck = /obj/item/clothing/neck/roguetown/psicross/astrata
 	cloak = /obj/item/clothing/cloak/tabard/crusader/tief
 	switch(H.patron.name)
 		if("Astrata")
 			wrists = /obj/item/clothing/neck/roguetown/psicross/astrata
 			head = /obj/item/clothing/head/roguetown/helmet/astratahelm
 			cloak = /obj/item/clothing/cloak/tabard/crusader/astrata
+		if("Noc")
+			wrists = /obj/item/clothing/neck/roguetown/psicross/noc
+			head = /obj/item/clothing/head/roguetown/helmet/nochelm
+			cloak = /obj/item/clothing/cloak/tabard/crusader/noc
 		if("Dendor")
 			wrists = /obj/item/clothing/neck/roguetown/psicross/dendor
 			head = /obj/item/clothing/head/roguetown/helmet/dendorhelm
@@ -43,10 +46,10 @@
 		if("Pestra")
 			wrists = /obj/item/clothing/neck/roguetown/psicross/pestra
 			cloak = /obj/item/clothing/cloak/tabard/crusader/pestra
-		if("Noc")
-			wrists = /obj/item/clothing/neck/roguetown/psicross/noc
-			head = /obj/item/clothing/head/roguetown/helmet/nochelm
-			cloak = /obj/item/clothing/cloak/tabard/crusader/noc
+		if("Malum")
+			wrists = /obj/item/clothing/neck/roguetown/psicross/malum
+		if("Ravox")
+			wrists = /obj/item/clothing/neck/roguetown/psicross/ravox
 	armor = /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk
 	shirt = /obj/item/clothing/suit/roguetown/armor/gambeson
 	pants = /obj/item/clothing/under/roguetown/chainlegs

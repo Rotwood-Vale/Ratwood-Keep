@@ -1,3 +1,4 @@
+/*
 /obj/item/reagent_containers/food/snacks/butter
 	icon = 'icons/roguetown/items/food.dmi'
 	name = "butter"
@@ -31,7 +32,7 @@
 		if(bitecount == 5)
 			changefood(slice_path, eater)
 
-/*/obj/item/reagent_containers/food/snacks/proc/changefood(path, mob/living/eater)
+/obj/item/reagent_containers/food/snacks/proc/changefood(path, mob/living/eater)
 	if(!path || !eater)
 		return
 	var/turf/T = get_turf(eater)
@@ -58,7 +59,7 @@
 	list_reagents = list(/datum/reagent/consumable/nutriment = 8)
 	eat_effect = /datum/status_effect/debuff/uncookedfood
 	w_class = WEIGHT_CLASS_TINY
-
+/*
 /obj/item/reagent_containers/food/snacks/salo
 	name = "salo"
 	desc = "A salty piece of fatty salo. Delicious!"
@@ -99,3 +100,4 @@
 	slice_path = /obj/item/reagent_containers/food/snacks/salo/slice
 	list_reagents = list(/datum/reagent/consumable/nutriment = 3)
 	w_class = WEIGHT_CLASS_TINY
+*/

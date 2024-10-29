@@ -91,6 +91,7 @@
 	)
 	time = 2.4 SECONDS
 	surgery_flags = SURGERY_BLOODY
+	ignore_clothes = TRUE
 	skill_min = SKILL_LEVEL_NOVICE
 	skill_median = SKILL_LEVEL_APPRENTICE
 

@@ -3,12 +3,15 @@
 	flag = CONFESSOR
 	department_flag = CHURCHMEN
 	faction = "Station"
-	total_positions = 0
-	spawn_positions = 0
+	total_positions = 2
+	spawn_positions = 2
 
 	allowed_races = RACES_TOLERATED_UP
 	allowed_sexes = list(MALE)
-	tutorial = "Confessors are shady agents of the church hired to spy on the populace and keep them moral. As the most fanatical members of the clergy, their main concern is assisting the local Puritan with their work in extracting confessions of sin as well as hunting night beasts and cultists that hide in plain sight."
+
+	tutorial = "Confessors are shady agents of the church hired to spy on the populace and keep them moral. \
+	As the most fanatical members of the clergy, their main concern is assisting the local Inquisitor with their work. \
+	Whether that be in extracting confessions of sin or hunting night beasts and cultists that hide in plain sight."
 
 	outfit = /datum/outfit/job/roguetown/shepherd
 	spells = list(/obj/effect/proc_holder/spell/invoked/heal, /obj/effect/proc_holder/spell/invoked/shepherd)
@@ -52,8 +55,8 @@
 		H.change_stat("strength", 2)
 		H.change_stat("speed", 2)
 		H.change_stat("perception", 1)
-		if(H.mind.has_antag_datum(/datum/antagonist))
+/*		if(H.mind.has_antag_datum(/datum/antagonist))
 			return
 		var/datum/antagonist/new_antag = new /datum/antagonist/purishep()
-		H.mind.add_antag_datum(new_antag)
+		H.mind.add_antag_datum(new_antag)*/
 	H.verbs |= /mob/living/carbon/human/proc/faith_test

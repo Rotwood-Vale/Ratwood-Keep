@@ -440,7 +440,7 @@
 //				playsound(T, T.landsound, 100, FALSE)
 	return TRUE
 
-/mob/proc/food_tempted(/obj/item/W, mob/user)
+/mob/proc/food_tempted(obj/item/W, mob/user)
 	return
 
 /mob/proc/taunted(mob/user)
