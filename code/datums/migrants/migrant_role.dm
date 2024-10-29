@@ -31,7 +31,9 @@
 	name = "Adventurer"
 	advclass_cat_rolls = list(CTAG_ADVENTURER = 5)
 
+/*
 /datum/migrant_role/bandit
 	name = "Bandit"
 	antag_datum = /datum/antagonist/bandit
 	grant_lit_torch = TRUE
+*/
