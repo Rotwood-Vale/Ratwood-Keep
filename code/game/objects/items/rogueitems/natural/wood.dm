@@ -132,6 +132,7 @@
 	blade_dulling = 0
 	max_integrity = 20
 	static_debris = null
+	tool_behaviour = TOOL_IMPROVISED_RETRACTOR
 	obj_flags = null
 	w_class = WEIGHT_CLASS_SMALL
 	twohands_required = FALSE
