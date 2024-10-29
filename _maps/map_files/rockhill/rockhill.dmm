@@ -179,7 +179,7 @@
 /obj/structure/stairs{
 	dir = 1
 	},
-/turf/open/floor/rogue/cobble,
+/turf/open/floor/plating/ashplanet/rocky,
 /area/rogue/outdoors/beach)
 "afA" = (
 /obj/machinery/light/rogue/firebowl,
