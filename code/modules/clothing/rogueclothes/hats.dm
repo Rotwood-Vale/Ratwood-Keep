@@ -991,3 +991,19 @@
 	clothing_flags = null
 	salvage_amount = 1
 	salvage_result = /obj/item/natural/hide
+
+/obj/item/clothing/head/roguetown/helmet/bandanab
+	slot_flags = ITEM_SLOT_HEAD
+	name = "bandana"
+	desc = ""
+	body_parts_covered = HEAD|HAIR|EARS|NOSE
+	icon_state = "bandana"
+	armor = list("blunt" = 47, "slash" = 27, "stab" = 37, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	prevent_crits = list(BCLASS_BLUNT, BCLASS_TWIST)
+	anvilrepair = null
+	smeltresult = null
+	blocksound = SOFTHIT
+	clothing_flags = null
+	salvage_amount = 1
+	salvage_result = /obj/item/natural/hide
+	color = "#151615"

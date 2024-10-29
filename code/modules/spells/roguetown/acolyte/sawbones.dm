@@ -662,6 +662,39 @@
 		M.losebreath = 0
 	..()
 
+/datum/reagent/medicine/purify
+	name = "PURIFY"
+	reagent_state = LIQUID
+	color = "#808080"
+	metabolization_rate = 0.5 * REAGENTS_METABOLISM
+	overdose_threshold = null
+	description = "A powerful drug that purifies the blood and seals wounds painfully on the body."
+
+/datum/reagent/medicine/purify/on_mob_life(mob/living/carbon/human/M)
+	M.adjustFireLoss(0.5*REM, 0)
+	M.heal_wounds(3)
+	
+	// Iterate through all body parts
+	for (var/obj/item/bodypart/B in M.bodyparts)
+		// Iterate through wounds on each body part
+		for (var/datum/wound/W in B.wounds)
+			// Check for and remove zombie infection
+			if (W.zombie_infection_timer)
+				deltimer(W.zombie_infection_timer)
+				W.zombie_infection_timer = null
+				to_chat(M, "You feel the drugs burning intensely in [B.name].")
+			// Check for and remove werewolf infection
+			if (W.werewolf_infection_timer)
+				deltimer(W.werewolf_infection_timer)
+				W.werewolf_infection_timer = null
+				to_chat(M, "You feel the drugs burning intensely in [B.name].")
+
+			// Handle destruction of the wound
+			W.Destroy(0)
+
+	M.update_damage_overlays()
+
+
 ////////////////////////////////////////////////////---------------------------------------alch reactions----------------------------------------------//////////////////////////////////////////////////////////
 
 /datum/chemical_reaction/alch/health
@@ -669,18 +702,18 @@
 	mix_sound = 'sound/items/fillbottle.ogg'
 	id = /datum/reagent/medicine/healthpot
 	results = list(/datum/reagent/medicine/healthpot = 45)
-	required_reagents = list(/datum/reagent/alch/syrumm = 22, /datum/reagent/alch/syruma = 22)
+	required_reagents = list(/datum/reagent/alch/syrumm = 24, /datum/reagent/alch/syruma = 24)
 
 /datum/chemical_reaction/alch/mana
 	name = "mana pot"
 	id = /datum/reagent/medicine/manapot
 	results = list(/datum/reagent/medicine/manapot = 45)
-	required_reagents = list(/datum/reagent/alch/syrumf = 22, /datum/reagent/alch/syruma = 22)
+	required_reagents = list(/datum/reagent/alch/syrumf = 24, /datum/reagent/alch/syruma = 24)
 
 /datum/chemical_reaction/alch/salt
 	name = "saltify"
 	id = "saltify"
-	required_reagents = list(/datum/reagent/alch/syrumr = 22, /datum/reagent/alch/syruma = 22)
+	required_reagents = list(/datum/reagent/alch/syrumr = 24, /datum/reagent/alch/syruma = 24)
 
 /datum/chemical_reaction/alch/salt/on_reaction(datum/reagents/holder, created_volume)
 	var/location = get_turf(holder.my_atom)
@@ -690,7 +723,7 @@
 /datum/chemical_reaction/alch/ozium
 	name = "oziumify"
 	id = "oziumify"
-	required_reagents = list(/datum/reagent/alch/syrump = 22, /datum/reagent/alch/syrumsw = 22)
+	required_reagents = list(/datum/reagent/alch/syrump = 24, /datum/reagent/alch/syrumsw = 24)
 
 /datum/chemical_reaction/alch/ozium/on_reaction(datum/reagents/holder, created_volume)
 	var/location = get_turf(holder.my_atom)
@@ -700,7 +733,7 @@
 /datum/chemical_reaction/alch/moon
 	name = "moondustify"
 	id = "moondustify"
-	required_reagents = list(/datum/reagent/alch/syrump = 22, /datum/reagent/alch/syrumpw = 22)
+	required_reagents = list(/datum/reagent/alch/syrump = 24, /datum/reagent/alch/syrumpw = 24)
 
 /datum/chemical_reaction/alch/moon/on_reaction(datum/reagents/holder, created_volume)
 	var/location = get_turf(holder.my_atom)
@@ -710,7 +743,7 @@
 /datum/chemical_reaction/alch/spice
 	name = "spiceify"
 	id = "spiceify"
-	required_reagents = list(/datum/reagent/alch/syrumsw = 22, /datum/reagent/alch/syrumpw = 22)
+	required_reagents = list(/datum/reagent/alch/syrumsw = 24, /datum/reagent/alch/syrumpw = 24)
 
 /datum/chemical_reaction/alch/spice/on_reaction(datum/reagents/holder, created_volume)
 	var/location = get_turf(holder.my_atom)
@@ -752,23 +785,42 @@
 		STR.max_items = 10
 		STR.not_while_equipped = TRUE
 
-/obj/item/storage/belt/rogue/pouch/pill
+/obj/item/storage/belt/rogue/pouch/pillc
 	name = "pill pouch"
 	desc = "for holding all your pill.... and ONLY pill needs."
 
-/obj/item/storage/belt/rogue/pouch/pill/ComponentInitialize()
+/obj/item/storage/belt/rogue/pouch/pillc/ComponentInitialize()
 	. = ..()
 	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
 	if(STR)
 		STR.max_combined_w_class = 42
 		STR.max_w_class = WEIGHT_CLASS_NORMAL
 		STR.max_items = 12
-		STR.set_holdable(list(/obj/item/reagent_containers/pill/caffpill,))
+		STR.set_holdable(list(/obj/item/reagent_containers/pill/caffpill, /obj/item/reagent_containers/pill/pnkpill))
 
-/obj/item/storage/belt/rogue/pouch/pill/PopulateContents()
+/obj/item/storage/belt/rogue/pouch/pillc/PopulateContents()
 	new /obj/item/reagent_containers/pill/caffpill(src)
 	new /obj/item/reagent_containers/pill/caffpill(src)
 	new /obj/item/reagent_containers/pill/caffpill(src)
+
+/obj/item/storage/belt/rogue/pouch/pillp
+	name = "pill pouch"
+	color = "#ff7f7f"
+	desc = "for holding all your pill.... and ONLY pill needs."
+
+/obj/item/storage/belt/rogue/pouch/pillp/ComponentInitialize()
+	. = ..()
+	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
+	if(STR)
+		STR.max_combined_w_class = 42
+		STR.max_w_class = WEIGHT_CLASS_NORMAL
+		STR.max_items = 12
+		STR.set_holdable(list(/obj/item/reagent_containers/pill/caffpill, /obj/item/reagent_containers/pill/pnkpill))
+
+/obj/item/storage/belt/rogue/pouch/pillp/PopulateContents()
+	new /obj/item/reagent_containers/pill/pnkpill(src)
+	new /obj/item/reagent_containers/pill/pnkpill(src)
+	new /obj/item/reagent_containers/pill/pnkpill(src)
 
 /obj/item/rogueweapon/surgery/saw/improv
 	name = "improvised saw"
@@ -866,6 +918,7 @@
 	..()
 	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
 	STR.max_items = 10
+	STR.max_w_class = WEIGHT_CLASS_NORMAL
 	STR.max_combined_w_class = 42
 	STR.set_holdable(list(
 		/obj/item/rogueweapon/surgery/scalpel,
@@ -949,6 +1002,7 @@
 	. = ..()
 	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
 	STR.max_items = 8
+	STR.max_w_class = WEIGHT_CLASS_NORMAL
 	STR.max_combined_w_class = 42
 	STR.set_holdable(list(
 		/obj/item/reagent_containers/hypospray/medipen/sealbottle/reju,
@@ -970,7 +1024,7 @@
 	new /obj/item/reagent_containers/pill/pnkpill(src)
 	new /obj/item/candle/yellow(src)
 	new /obj/item/needle(src)
-
+	new /obj/item/book/rogue/snek(src)
 /obj/item/reagent_containers/hypospray/medipen/sealbottle
 	name = "sealed bottle item"
 	desc = "If you see this, call an admin."
@@ -1099,6 +1153,14 @@
 	amount_per_transfer_from_this = 16
 	list_reagents = list(/datum/reagent/medicine/stimu = 15, /datum/reagent/medicine/caffeine = 1)
 
+/obj/item/reagent_containers/hypospray/medipen/sealbottle/purify
+	name = "purifying elixer"
+	desc = "Dr V's special formulated body purifier; A powerful drug that purifies the blood and seals wounds painfully on the body. flooding your blood with anything like this isnt exactly healthy but, if it stops you needing to use the word 'festering' to describe part of your body, it's worth it."
+	icon_state = "THEbottle"
+	volume = 30
+	amount_per_transfer_from_this = 30
+	list_reagents = list(/datum/reagent/medicine/purify = 20, /datum/reagent/ozium = 5, /datum/reagent/consumable/ethanol/hooch = 5) // lil laudanum for your troubles
+
 /obj/item/natural/cloth/bandage
 	name = "bandage"
 	desc = "A simple bandage used to bind wounds. More effective than just cloth."
@@ -1162,6 +1224,12 @@
 	icon2 = "bandageroll2"
 	icon2step = 3
 
+/obj/item/book/rogue/snek
+	name = "Snake Stitches"
+	desc = "{<font color='green'><blink>By Dr.volva, snake.</blink></font>}"
+	icon_state ="book6_0"
+	base_icon_state = "book6"
+	bookfile = "medical.json"
 
 /obj/item/natural/bundle/cloth/bandage/full
 	icon_state = "bandageroll2"
@@ -1169,10 +1237,10 @@
 	firefuel = 60 MINUTES
 
 /*/obj/item/splint
-    name = "splint"
-    desc = "A splint used to stabilize fractures and dislocations, and stop bleeding."
-    icon = 'icons/obj/splint.dmi'
-    item_state = "splint"
+	name = "splint"
+	desc = "A splint used to stabilize fractures and dislocations, and stop bleeding."
+	icon = 'icons/obj/splint.dmi'
+	item_state = "splint"
 
 
 /obj/item/natural/acid																		////// DO NOT LOOK AT MY SHAME. seriously dont I will return to this when I dont wanna burn my house down over it.
@@ -1275,9 +1343,8 @@
 	desc = "so you're an alchemist then?"
 	icon = 'icons/roguetown/items/surgery.dmi'
 	icon_state = "alembic_empty"
-	amount_per_transfer_from_this = 9
-	volume = 100
-	reagent_flags = OPENCONTAINER|REFILLABLE|DRAINABLE
+	volume = 120
+	reagent_flags = OPENCONTAINER|REFILLABLE|DRAINABLE|AMOUNT_VISIBLE
 	var/speed_multiplier = 1 // How fast it brews. Defaults to 100% (1.0). Lower is better.
 	var/list/active_brews = list()
 	var/brewing_started = FALSE // Track if brewing has started
@@ -1286,29 +1353,29 @@
 /obj/item
 	var/can_brew = FALSE // If FALSE, this object cannot be brewed
 	var/brew_reagent // If NULL and this object can be brewed, it uses a generic fruit_wine reagent and adjusts its variables
-	var/brew_amt = 22
-	var/start_time
+	var/brew_amt = 24
 	var/brewing_time
+	var/start_time
 	var/mill_result = null
 
 /obj/item/reagent_containers/glass/alembic/Initialize()
-	create_reagents(90, REFILLABLE | DRAINABLE | AMOUNT_VISIBLE) // 2 Bottles capacity, cannot put liquids into it. Only items to brew into liquids, drainable.
+	create_reagents(100, REFILLABLE | DRAINABLE | AMOUNT_VISIBLE) // 2 Bottles capacity
 	icon_state = "alembic_empty"
 	..()
 
 /obj/item/reagent_containers/glass/alembic/examine(mob/user)
 	..()
-	if(active_brews.len == 0)
+	if (active_brews.len == 0)
 		. += span_notice("The alembic is not brewing.")
 	else
 		. += span_notice("The alembic is brewing.")
-		for(var/obj/item/I in active_brews)
+		for (var/obj/item/I in active_brews)
 			var/time_left = (I.brewing_time - (world.time - I.start_time)) / 10
 			. += span_notice("[I]: [time_left] seconds left until completion.")
 
 /obj/item/reagent_containers/glass/alembic/proc/makebrew(obj/item/I)
 	if(I.reagents)
-		I.reagents.remove_reagent(/datum/reagent, I.reagents.total_volume)
+		I.reagents.remove_all_type(/datum/reagent, I.reagents.total_volume)
 		I.reagents.trans_to(src, I.reagents.total_volume)
 	if(I.brew_reagent)
 		reagents.add_reagent(I.brew_reagent, I.brew_amt)

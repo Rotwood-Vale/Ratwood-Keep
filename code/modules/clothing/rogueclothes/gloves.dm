@@ -26,6 +26,20 @@
 	drop_sound = 'sound/foley/dropsound/cloth_drop.ogg'
 	salvage_result = /obj/item/natural/hide
 
+/obj/item/clothing/gloves/roguetown/leatherb
+	name = "leather gloves"
+	desc = "Leather gloves usually worn by laborers. dyed black."
+	icon_state = "leather_gloves"
+	armor = list("blunt" = 30, "slash" = 10, "stab" = 20, "bullet" = 1, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_BLUNT)
+	resistance_flags = null
+	blocksound = SOFTHIT
+	blade_dulling = DULLING_BASHCHOP
+	break_sound = 'sound/foley/cloth_rip.ogg'
+	drop_sound = 'sound/foley/dropsound/cloth_drop.ogg'
+	color = "#151615"
+	salvage_result = /obj/item/natural/hide
+
 /obj/item/clothing/gloves/roguetown/leather/black
 	icon_state = "gloves_black"
 

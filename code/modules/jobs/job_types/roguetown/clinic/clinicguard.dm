@@ -6,38 +6,38 @@
 	flag = CLINICGUARD
 	department_flag = CLINIC
 	outfit = /datum/outfit/job/roguetown/clinicguard
-	torch = FALSE
 	faction = "Station"
 	display_order = JDO_CLINICGUARD
-	always_show_on_latechoices = TRUE
-	job_reopens_slots_on_death = TRUE
-	same_job_respawn_delay = 5 MINUTES
-	maximum_possible_slots = 3
 	spawn_positions = 3
 	total_positions = 3
 	min_pq = 0
+	always_show_on_latechoices = TRUE
+	job_reopens_slots_on_death = TRUE
+	same_job_respawn_delay = 15 MINUTES
+	selection_color = JCOLOR_CLINIC
+	give_bank_account = 30
 	max_pq = null
-	whitelist_req = TRUE
-	traits_applied = list(TRAIT_EMPATH, TRAIT_NOSTINK, TRAIT_NOPAINSTUN)
 	cmode_music = 'sound/music/combat_maniac2.ogg'
 
 /datum/outfit/job/roguetown/clinicguard/pre_equip(mob/living/carbon/human/H)
 	..()
 	cloak = /obj/item/clothing/cloak/raincloak/mortus
-	head = /obj/item/clothing/head/roguetown/helmet/bandana
+	head = /obj/item/clothing/head/roguetown/helmet/bandanab
 	shirt = /obj/item/clothing/suit/roguetown/armor/gambeson
 	beltr = /obj/item/rogueweapon/sword
 	wrists = /obj/item/clothing/wrists/roguetown/bracers
-	shoes = /obj/item/clothing/shoes/roguetown/armor/leather
-	neck = /obj/item/clothing/neck/roguetown/chaincoif/iron
+	shoes = /obj/item/clothing/shoes/roguetown/armor
+	neck = /obj/item/clothing/neck/roguetown/chaincoif/ironb
 	pants = /obj/item/clothing/under/roguetown/trou/leather/mourning
-	gloves = /obj/item/clothing/gloves/roguetown/leather
+	gloves = /obj/item/clothing/gloves/roguetown/leatherb
 	belt = /obj/item/storage/belt/rogue/leather
 	armor = /obj/item/clothing/suit/roguetown/armor/brigandine/light
 	backl = /obj/item/storage/backpack/rogue/backpack/rucksack
 	beltl = /obj/item/rogueweapon/flail
 	backpack_contents = list( /obj/item/storage/fancy/ifak = 1, /obj/item/storage/belt/rogue/pouch/coins/mid, /obj/item/rogueweapon/huntingknife, /obj/item/roguekey/clinic)
 
+	ADD_TRAIT(H, TRAIT_NOSTINK, "[type]")
+	ADD_TRAIT(H, TRAIT_NOPAINSTUN, "[type]")
 	ADD_TRAIT(H, TRAIT_STEELHEARTED, "[type]")
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/misc/swimming, 3, TRUE)

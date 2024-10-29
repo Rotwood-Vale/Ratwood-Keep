@@ -197,7 +197,10 @@
 #define DEATHKNIGHT (1<<1)
 #define SKELETON	(1<<2)
 
-#define CLINIC	(1<<0)
+#define CLINIC		(1<<10)
+
+#define CLINICGUARD	(1<<0)
+#define CLINICDOC	(1<<1)
 
 #define JCOLOR_NOBLE "#aa83b9"
 #define JCOLOR_COURTIER "#81adc8"

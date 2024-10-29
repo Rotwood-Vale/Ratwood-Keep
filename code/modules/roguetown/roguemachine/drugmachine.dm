@@ -233,13 +233,15 @@
 	held_items[/obj/item/reagent_containers/powder/ozium] = list("PRICE" = rand(6,15),"NAME" = "ozium")
 	held_items[/obj/item/reagent_containers/powder/moondust] = list("PRICE" = rand(35,55),"NAME" = "moondust")
 	held_items[/obj/item/clothing/mask/cigarette/rollie/cannabis] = list("PRICE" = rand(12,18),"NAME" = "swampweed zig")
-	held_items[/obj/item/reagent_containers/hypospray/medipen/sty/nourish] = list("PRICE" = rand(10,15),"NAME" = "NOURISH")
+	held_items[/obj/item/reagent_containers/hypospray/medipen/sty/nourish] = list("PRICE" = rand(20,25),"NAME" = "NOURISH")
 	held_items[/obj/item/storage/fancy/shhig] = list("PRICE" = rand(15,25),"NAME" = "box of ssssigs")
 	held_items[/obj/item/storage/box/matches] = list("PRICE" = rand(10,15),"NAME" = "tinderbox")
-	held_items[/obj/item/reagent_containers/hypospray/medipen/sty/detox] = list("PRICE" = rand(15,20),"NAME" = "tinderbox")
-	held_items[/obj/item/reagent_containers/glass/alembic] = list("PRICE" = rand(35,50),"NAME" = "alembic")
-	held_items[/obj/item/storage/belt/rogue/pouch/pill] = list("PRICE" = rand(25,30),"NAME" = "pep pills bag")
-	held_items[/obj/item/storage/fancy/ifak] = list("PRICE" = rand(25,50),"NAME" = "patch kit")
+	held_items[/obj/item/reagent_containers/hypospray/medipen/sty/detox] = list("PRICE" = rand(15,20),"NAME" = "DETOX")
+	held_items[/obj/item/reagent_containers/glass/alembic] = list("PRICE" = rand(30,40),"NAME" = "alembic")
+	held_items[/obj/item/storage/belt/rogue/pouch/pillc] = list("PRICE" = rand(25,30),"NAME" = "pep pills pouch")
+	held_items[/obj/item/reagent_containers/hypospray/medipen/sealbottle/purify] = list("PRICE" = rand(25,30),"NAME" = "PURIFY")
+	held_items[/obj/item/storage/belt/rogue/pouch/pillp] = list("PRICE" = rand(25,35),"NAME" = "pink pill pouch")
+	held_items[/obj/item/natural/bundle/cloth/bandage/full] = list("PRICE" = rand(10,15),"NAME" = "roll of bandages")
 
 #undef DRUGRADE_MONEYA
 #undef DRUGRADE_MONEYB

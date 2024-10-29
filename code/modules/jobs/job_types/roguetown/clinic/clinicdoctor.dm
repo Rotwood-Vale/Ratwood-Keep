@@ -1,40 +1,42 @@
 /datum/job/roguetown/clinicdoctor
-title = "Clinic Physician"
+	title = "Clinic Physician"
 	tutorial = "You are a newly funded sawbones for a small upcoming clinic in town, weather you got tired of traveling and wanted to settle down somewhere or your good natured outlook drove you to be closer to the ill and infirmed here you are, funded by a private benefactor and a reasonable two weeks pay provided in advance. and here you stand yet to prove you are worth the coins payed."
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
 	flag = CLINICDOC
 	department_flag = CLINIC
-	outfit = /datum/outfit/job/roguetown/clinic/clinicdoctor
-	torch = FALSE
+	outfit = /datum/outfit/job/roguetown/clinicdoctor
 	faction = "Station"
 	display_order = JDO_CLINICDOC
-	always_show_on_latechoices = TRUE
-	job_reopens_slots_on_death = TRUE
-	same_job_respawn_delay = 5 MINUTES
 	spawn_positions = 3
 	total_positions = 3
 	min_pq = 0
+	give_bank_account = 30
+	always_show_on_latechoices = TRUE
+	job_reopens_slots_on_death = TRUE
+	same_job_respawn_delay = 15 MINUTES
+	selection_color = JCOLOR_CLINIC
 	max_pq = null
-	whitelist_req = TRUE
-	traits_applied = list(TRAIT_EMPATH, TRAIT_NOSTINK)/obj/item/clothing/cloak/raincloak/mortus
 	cmode_music = 'sound/music/combat_maniac2.ogg'
 
 /datum/outfit/job/roguetown/clinicdoctor/pre_equip(mob/living/carbon/human/H)
 	..()
 	cloak = /obj/item/clothing/cloak/raincloak/mortus
-	neck = /obj/item/clothing/neck/roguetown/chaincoif/iron
+	head = /obj/item/clothing/head/roguetown/helmet/bandanab
+	neck = /obj/item/clothing/neck/roguetown/chaincoif/ironb
 	armor = /obj/item/clothing/suit/roguetown/shirt/robe/physician
 	shirt = /obj/item/clothing/suit/roguetown/armor/chainmail
-	gloves = /obj/item/clothing/gloves/roguetown/leather
+	gloves = /obj/item/clothing/gloves/roguetown/leatherb
 	pants = /obj/item/clothing/under/roguetown/trou/leather/mourning
-	shoes = /obj/item/clothing/shoes/roguetown/armor/leather
+	shoes = /obj/item/clothing/shoes/roguetown/armor
 	belt = /obj/item/storage/belt/rogue/leather/black
 	beltl = /obj/item/rogueweapon/huntingknife/cleaver/combat
 	beltr = /obj/item/storage/belt/rogue/pouch/coins/mid
 	backl = /obj/item/storage/backpack/rogue/backpack/rucksack
 	backpack_contents = list(/obj/item/storage/fancy/skit = 1, /obj/item/storage/fancy/ifak = 1, /obj/item/reagent_containers/glass/alembic = 1, /obj/item/roguekey/clinic)
 
+	ADD_TRAIT(H, TRAIT_EMPATH, "[type]")
+	ADD_TRAIT(H, TRAIT_NOSTINK, "[type]")
 	ADD_TRAIT(H, TRAIT_STEELHEARTED, "[type]")
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/combat/knives, 3, TRUE)

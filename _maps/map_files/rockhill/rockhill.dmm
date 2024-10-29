@@ -2711,6 +2711,10 @@
 	icon_state = "glyph1"
 	},
 /area/rogue/indoors/town/vault)
+"cHb" = (
+/obj/effect/landmark/start/doctorlate,
+/turf/open/floor/rogue/dirt/road,
+/area/rogue/outdoors/rtfield)
 "cHf" = (
 /turf/open/floor/rogue/churchbrick,
 /area/rogue/indoors/town/church)
@@ -5015,7 +5019,6 @@
 	tame = 1;
 	health = 200;
 	name = "Bedside";
-	unique_name = 1;
 	color = "#FFD700";
 	STASTR = 10;
 	STACON = 10
@@ -5401,7 +5404,7 @@
 /area/rogue/outdoors/mountains)
 "eYF" = (
 /obj/structure/chair/wood,
-/obj/effect/landmark/start/dguardlate,
+/obj/effect/landmark/start/dguard,
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/indoors/shelter/rtfield)
 "eYN" = (
@@ -7673,13 +7676,6 @@
 	},
 /turf/open/floor/rogue/ruinedwood/turned,
 /area/rogue/indoors/shelter/mountains)
-"hbT" = (
-/obj/machinery/light/rogue/wallfire/candle/blue/r{
-	light_color = "#c2f2a5"
-	},
-/obj/effect/landmark/start/dguardlate,
-/turf/open/floor/rogue/cobblerock,
-/area/rogue/indoors/shelter/rtfield)
 "hcg" = (
 /turf/closed/wall/mineral/rogue/wooddark,
 /area/rogue/outdoors/mountains)
@@ -8833,7 +8829,6 @@
 /mob/living/simple_animal/hostile/retaliate/poison/snake{
 	tame = 1;
 	name = "Ozium";
-	unique_name = 1;
 	desc = "Stalward protector of the drug stash.";
 	light_range = 2;
 	light_color = "#c2f2a5";
@@ -9454,6 +9449,10 @@
 /obj/structure/closet/crate/chest/gold,
 /turf/open/floor/rogue/tile,
 /area/rogue/indoors/town/vault)
+"iMQ" = (
+/obj/effect/landmark/start/dguardlate,
+/turf/open/floor/rogue/dirt,
+/area/rogue/outdoors/rtfield)
 "iMU" = (
 /turf/closed/mineral/random/rogue/high,
 /area/rogue/under/cave)
@@ -10137,7 +10136,7 @@
 /obj/machinery/light/rogue/wallfire/candle/blue/r{
 	light_color = "#c2f2a5"
 	},
-/obj/effect/landmark/start/doctorlate,
+/obj/effect/landmark/start/doctor,
 /turf/open/floor/rogue/ruinedwood{
 	icon_state = "weird1"
 	},
@@ -10488,7 +10487,7 @@
 /area/rogue/indoors)
 "jKH" = (
 /obj/structure/chair/wood,
-/obj/effect/landmark/start/dguardlate,
+/obj/effect/landmark/start/dguard,
 /turf/open/floor/rogue/ruinedwood{
 	icon_state = "weird1"
 	},
@@ -12132,6 +12131,11 @@
 /obj/item/reagent_containers/powder/ozium,
 /obj/item/natural/bundle/cloth/bandage/full,
 /obj/item/natural/bundle/cloth/bandage/full,
+/obj/item/book/rogue/snek,
+/obj/item/storage/fancy/shhig,
+/obj/item/reagent_containers/hypospray/medipen/sealbottle/purify,
+/obj/item/reagent_containers/hypospray/medipen/sealbottle/purify,
+/obj/item/reagent_containers/glass/alembic,
 /turf/open/floor/rogue/herringbone,
 /area/rogue/indoors/town/church)
 "lrs" = (
@@ -12473,8 +12477,6 @@
 	lockhash = 0
 	},
 /obj/item/storage/fancy/shhig,
-/obj/item/storage/fancy/shhig,
-/obj/item/storage/fancy/shhig,
 /obj/item/clothing/mask/cigarette/pipe/westman,
 /obj/item/clothing/mask/cigarette/pipe/westman,
 /obj/item/clothing/mask/cigarette/pipe/westman,
@@ -12491,21 +12493,19 @@
 /obj/item/reagent_containers/hypospray/medipen/sty/detox,
 /obj/item/reagent_containers/hypospray/medipen/sty/detox,
 /obj/item/reagent_containers/hypospray/medipen/sty/detox,
-/obj/item/storage/belt/rogue/pouch/pill,
-/obj/item/storage/belt/rogue/pouch/pill,
 /obj/item/reagent_containers/hypospray/medipen/sealbottle/reju,
 /obj/item/reagent_containers/hypospray/medipen/sealbottle/reju,
 /obj/item/reagent_containers/hypospray/medipen/sealbottle/reju,
 /obj/item/storage/box/matches,
 /obj/item/storage/box/matches,
-/obj/item/reagent_containers/pill/pnkpill,
-/obj/item/reagent_containers/pill/pnkpill,
-/obj/item/reagent_containers/pill/pnkpill,
-/obj/item/reagent_containers/pill/pnkpill,
-/obj/item/reagent_containers/pill/pnkpill,
-/obj/item/reagent_containers/pill/pnkpill,
 /obj/item/reagent_containers/glass/alembic,
 /obj/item/reagent_containers/glass/alembic,
+/obj/item/book/rogue/snek,
+/obj/item/reagent_containers/hypospray/medipen/sealbottle/purify,
+/obj/item/reagent_containers/hypospray/medipen/sealbottle/purify,
+/obj/item/reagent_containers/hypospray/medipen/sealbottle/purify,
+/obj/item/storage/belt/rogue/pouch/pillp,
+/obj/item/storage/belt/rogue/pouch/pillp,
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/indoors/shelter/rtfield)
 "lGX" = (
@@ -12534,6 +12534,12 @@
 	},
 /turf/open/floor/rogue/herringbone,
 /area/rogue/indoors/town/church)
+"lIp" = (
+/obj/effect/landmark/start/doctor,
+/turf/open/floor/rogue/ruinedwood{
+	icon_state = "weird1"
+	},
+/area/rogue/indoors/shelter/rtfield)
 "lIH" = (
 /obj/structure/fluff/statue/knight/r,
 /turf/open/floor/rogue/tile{
@@ -13126,6 +13132,10 @@
 /obj/item/reagent_containers/glass/cup/golden,
 /turf/open/floor/carpet/red,
 /area/rogue/indoors/town/church/chapel)
+"mlA" = (
+/obj/effect/landmark/start/doctor,
+/turf/open/floor/rogue/cobblerock,
+/area/rogue/indoors/shelter/rtfield)
 "mmu" = (
 /obj/structure/fluff/walldeco/chains,
 /obj/effect/decal/cleanable/cobweb{
@@ -14485,6 +14495,10 @@
 	},
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/basement)
+"nyB" = (
+/obj/item/book/rogue/snek,
+/turf/open/floor/rogue/church,
+/area/rogue/indoors/town/manor)
 "nyH" = (
 /obj/structure/chair/wood/rogue/fancy{
 	dir = 8
@@ -16115,6 +16129,8 @@
 /obj/structure/roguemachine/mail{
 	ournum = 12
 	},
+/obj/item/reagent_containers/glass/alembic,
+/obj/item/storage/fancy/shhig,
 /turf/open/floor/rogue/churchbrick,
 /area/rogue/indoors/town/manor)
 "oQk" = (
@@ -18614,6 +18630,10 @@
 /obj/structure/flora/newtree,
 /turf/open/water/swamp/deep,
 /area/rogue/indoors/town/church/chapel)
+"rnE" = (
+/obj/effect/landmark/start/dguard,
+/turf/open/floor/rogue/cobblerock,
+/area/rogue/indoors/shelter/rtfield)
 "rok" = (
 /turf/open/floor/rogue/blocks/stonered/tiny,
 /area/rogue/indoors/town/dwarfin)
@@ -20596,6 +20616,13 @@
 /obj/item/paper/scroll,
 /turf/open/floor/rogue/tile/masonic/single,
 /area/rogue/indoors/town/manor)
+"tkT" = (
+/obj/structure/bed/rogue,
+/obj/effect/landmark/start/dguard,
+/turf/open/floor/rogue/ruinedwood{
+	icon_state = "weird1"
+	},
+/area/rogue/indoors/shelter/rtfield)
 "tlB" = (
 /obj/structure/table/wood{
 	dir = 8;
@@ -22924,6 +22951,10 @@
 /obj/effect/decal/cleanable/blood/tracks,
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/basement)
+"vvp" = (
+/obj/effect/landmark/start/dguardlate,
+/turf/open/floor/rogue/dirt/road,
+/area/rogue/outdoors/rtfield)
 "vvz" = (
 /obj/item/natural/cloth,
 /obj/item/natural/cloth,
@@ -23972,8 +24003,11 @@
 /turf/open/floor/rogue/twig,
 /area/rogue/indoors)
 "wxr" = (
-/obj/effect/landmark/start/doctorlate,
-/turf/open/floor/rogue/cobblerock,
+/obj/structure/table/wood,
+/obj/item/book/rogue/snek,
+/turf/open/floor/rogue/ruinedwood{
+	icon_state = "weird1"
+	},
 /area/rogue/indoors/shelter/rtfield)
 "wxs" = (
 /obj/effect/decal/cleanable/cobweb,
@@ -307325,7 +307359,7 @@ cWT
 cWT
 iNT
 iNT
-uaL
+vvp
 uaL
 uaL
 uaL
@@ -308129,7 +308163,7 @@ cWT
 cWT
 iNT
 iNT
-wSn
+iMQ
 qvR
 uaL
 iNT
@@ -308933,10 +308967,10 @@ cWT
 cWT
 hcW
 uaL
-wSn
+iMQ
 uaL
 iNT
-uaL
+cHb
 lve
 lve
 qgd
@@ -309736,9 +309770,9 @@ fyc
 cWT
 cWT
 hcW
+cHb
 uaL
-uaL
-uaL
+cHb
 lve
 ylt
 qgd
@@ -311352,12 +311386,12 @@ lve
 tWs
 lve
 qgd
-bjN
+tkT
 qgd
 qgd
 bjN
 qgd
-qgd
+lIp
 dNL
 qgd
 qgd
@@ -311760,7 +311794,7 @@ qgd
 frV
 qgd
 dNL
-dNL
+wxr
 qgd
 qgd
 jrn
@@ -316580,7 +316614,7 @@ jsn
 jsn
 jsn
 jsn
-jsn
+rnE
 dgn
 vGc
 hcW
@@ -317380,11 +317414,11 @@ vGc
 aJP
 pys
 jsn
-wxr
+mlA
 jsn
 jsn
 jsn
-hbT
+pys
 jRN
 vGc
 hcW
@@ -403407,7 +403441,7 @@ vIa
 wtF
 sHm
 mrb
-kUR
+nyB
 kUR
 kUR
 kUR
