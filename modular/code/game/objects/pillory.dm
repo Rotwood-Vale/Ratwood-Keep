@@ -145,7 +145,7 @@
 	for(var/obj/item/grabbing/G in M.grabbedby)
 		if(G.grab_state == 1)
 			return ..(M, force, FALSE)
-	to_chat(usr, span_warning("You must grab them more forcefully to put them in the pillory."))
+	to_chat(usr, span_warning("I must grab them more forcefully to put them in the pillory."))
 	return FALSE
 
 /obj/structure/pillory/post_buckle_mob(mob/living/M)
