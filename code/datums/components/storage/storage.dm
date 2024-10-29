@@ -319,8 +319,8 @@
 //		if(I.loc != real_location)
 //			continue
 		remove_from_storage(I, target)
-		I.pixel_x = initial(I.pixel_x) += rand(-10,10)
-		I.pixel_y = initial(I.pixel_y) += rand(-10,10)
+		I.pixel_x = initial(I.pixel_x) + rand(-10,10)
+		I.pixel_y = initial(I.pixel_y) + rand(-10,10)
 //		if(trigger_on_found && I.on_found())
 //			return FALSE
 
@@ -332,8 +332,8 @@
 			testing("debugbag5 [I]")
 			continue
 		remove_from_storage(I, target)
-		I.pixel_x = initial(I.pixel_x) += rand(-10,10)
-		I.pixel_y = initial(I.pixel_y) += rand(-10,10)
+		I.pixel_x = initial(I.pixel_x) + rand(-10,10)
+		I.pixel_y = initial(I.pixel_y) + rand(-10,10)
 		if(trigger_on_found && I.on_found())
 			testing("debugbag6 [I]")
 			return FALSE

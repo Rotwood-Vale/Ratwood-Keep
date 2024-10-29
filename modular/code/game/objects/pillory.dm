@@ -17,6 +17,10 @@
 	var/locked = FALSE
 	var/base_icon = "pillory_single"
 	var/list/lockid = list()
+	var/keylock = TRUE
+
+/obj/structure/pillory/double/custom
+	keylock = FALSE
 
 /obj/structure/pillory/double
 	icon_state = "pillory_double"
@@ -63,14 +67,27 @@
 	togglelatch(user)
 	
 /obj/structure/pillory/attackby(obj/item/P, mob/user, params)
+	if(istype(P, /obj/item/customlock/finished))
+		var/obj/item/customlock/finished/K = P
+		if(keylock)
+			to_chat(user, span_warning("[src] already has a lock."))
+		else
+			keylock = TRUE
+			lockid = list(K.lockhash)
+			to_chat(user, span_notice("You add [K] to [P]."))
+			qdel(P)
+		return
 	if(user in buckled_mobs)
 		to_chat(user, span_warning("I can't reach the lock!"))
 		return
-	if(!latched)
+	if(!latched && keylock)
 		to_chat(user, span_warning("It's not latched shut!"))
 		return
 	if(istype(P, /obj/item/roguekey))
 		var/obj/item/roguekey/K = P
+		if (!keylock)
+			to_chat(user, span_warning("\The [src] lacks a lock."))
+			return
 		if(K.lockid in lockid)
 			togglelock(user)
 			return
@@ -145,6 +162,7 @@
 						H.set_mob_offsets("bed_buckle", _x = 0, _y = PILLORY_HEAD_OFFSET)
 				icon_state = "[base_icon]-over"
 				update_icon()
+				H.setDir(SOUTH) //Makes the person always face south, in case someone constructed the pillory on the wrong direction
 			else
 				unbuckle_all_mobs()
 		else
