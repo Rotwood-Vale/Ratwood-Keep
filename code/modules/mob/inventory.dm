@@ -287,8 +287,8 @@
 /mob/proc/dropItemToGround(obj/item/I, force = FALSE, silent = TRUE)
 	. = doUnEquip(I, force, drop_location(), FALSE, silent = silent)
 	if(. && I) //ensure the item exists and that it was dropped properly.
-		I.pixel_x = initial(I.pixel_x) += rand(-6,6)
-		I.pixel_y = initial(I.pixel_x) += rand(-6,6)
+		I.pixel_x = initial(I.pixel_x) + rand(-6,6)
+		I.pixel_y = initial(I.pixel_x) + rand(-6,6)
 
 //for when the item will be immediately placed in a loc other than the ground
 /mob/proc/transferItemToLoc(obj/item/I, newloc = null, force = FALSE, silent = TRUE)
