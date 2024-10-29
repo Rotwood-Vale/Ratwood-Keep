@@ -4,6 +4,7 @@
 	name = "Profane"
 	desc = "Fire forth a splinter of unholy bone, tearing flesh and causing bleeding. If you hold pieces of bone in your other hand, you will coax a much stronger lance of bone into being."
 	clothes_req = FALSE
+	overlay_state = "profane"
 	range = 8
 	associated_skill = /datum/skill/magic/arcane
 	projectile_type = /obj/projectile/magic/profane
@@ -97,6 +98,7 @@
 	name = "Rituos"
 	desc = "Draw upon the Lesser Work of She Who Is Z, and expunge the trappings of mortal flesh from your form in exchange for power unimaginable. Be warned: indulging in even the first step of this ritual will make you more deadite than not..."
 	clothes_req = FALSE
+	overlay_state = "rituos"
 	associated_skill = /datum/skill/magic/arcane
 	chargedloop = /datum/looping_sound/invokeholy
 	chargedrain = 0

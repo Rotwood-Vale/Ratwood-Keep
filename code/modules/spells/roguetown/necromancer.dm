@@ -66,7 +66,7 @@
 	desc = ""
 	clothes_req = FALSE
 	range = 7
-	overlay_state = "raiseskele"
+	overlay_state = "animate"
 	sound = list('sound/magic/magnet.ogg')
 	releasedrain = 40
 	chargetime = 60
@@ -105,8 +105,8 @@
 	name = "Raise Lesser Undead"
 	desc = ""
 	clothes_req = FALSE
+	overlay_state = "animate"
 	range = 7
-	overlay_state = "raiseskele"
 	sound = list('sound/magic/magnet.ogg')
 	releasedrain = 40
 	chargetime = 60
