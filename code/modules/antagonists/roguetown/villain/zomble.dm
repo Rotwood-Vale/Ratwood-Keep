@@ -14,7 +14,7 @@
 	var/soundpack_m
 	var/soundpack_f
 	var/stored_skills
-	var/stored_experience 
+	var/stored_experience
 
 	var/STASTR
 	var/STASPD
@@ -97,8 +97,22 @@
 		zombie.STAEND = STAEND
 		zombie.cmode_music = cmode_music
 		zombie.set_patron(patron)
-		for(var/trait in GLOB.traits_deadite)
-			REMOVE_TRAIT(zombie, trait, "[type]")
+//		for(var/trait in GLOB.traits_deadite)	-This is bugged and causing us SOooo much grief
+//			REMOVE_TRAIT(zombie, trait, "[type]")
+		REMOVE_TRAIT(W, TRAIT_NOMOOD, TRAIT_GENERIC)	//Start temporary longform trait removal- Please refractor this to remove via an entire list, please.
+		REMOVE_TRAIT(W, TRAIT_NOHUNGER, TRAIT_GENERIC)
+		REMOVE_TRAIT(W, TRAIT_EASYDISMEMBER, TRAIT_GENERIC)
+		REMOVE_TRAIT(W, TRAIT_NOBREATH, TRAIT_GENERIC)
+		REMOVE_TRAIT(W, TRAIT_TOXIMMUNE, TRAIT_GENERIC)
+		REMOVE_TRAIT(W, TRAIT_CHUNKYFINGERS, TRAIT_GENERIC)
+		REMOVE_TRAIT(W, TRAIT_NOSLEEP, TRAIT_GENERIC)
+		REMOVE_TRAIT(W, TRAIT_BASHDOORS, TRAIT_GENERIC)
+		REMOVE_TRAIT(W, TRAIT_SPELLCOCKBLOCK, TRAIT_GENERIC)
+		REMOVE_TRAIT(W, TRAIT_BLOODLOSS_IMMUNE, TRAIT_GENERIC)
+		REMOVE_TRAIT(W, TRAIT_LIMPDICK, TRAIT_GENERIC)
+		REMOVE_TRAIT(W, TRAIT_ZOMBIE_SPEECH, TRAIT_GENERIC)
+		REMOVE_TRAIT(W, TRAIT_ZOMBIE_IMMUNE, TRAIT_GENERIC)
+		REMOVE_TRAIT(W, TRAIT_NORUN, TRAIT_GENERIC)	//end temporary longform trait removal
 		zombie.remove_client_colour(/datum/client_colour/monochrome)
 		if(has_turned && become_rotman)
 			zombie.STACON = max(zombie.STACON - 2, 1) //ur rotting bro
@@ -147,11 +161,11 @@
 
 	revived = TRUE //so we can die for real later
 	zombie.add_client_colour(/datum/client_colour/monochrome)
-	
+
 	if(zombie.mind)
 		special_role = zombie.mind.special_role
 		zombie.mind.special_role = name
-		
+
 	if(zombie.dna?.species)
 		soundpack_m = zombie.dna.species.soundpack_m
 		soundpack_f = zombie.dna.species.soundpack_f
@@ -175,7 +189,7 @@
 	var/mob/living/carbon/human/deadite = owner?.current
 	deadite.try_do_deadite_bite()
 	deadite.try_do_deadite_idle()
-	
+
 //Infected wake param is just a transition from living to zombie, via zombie_infect()
 //Previously you just died without warning in 3 minutes, now you just become an antag
 /datum/antagonist/zombie/proc/wake_zombie(infected_wake = FALSE)
