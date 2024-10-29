@@ -7,6 +7,7 @@
 					 /obj/item/bodypart/r_arm, /obj/item/bodypart/r_leg, /obj/item/bodypart/l_leg)
 	faction = list("undead")
 	var/skel_outfit = /datum/outfit/job/roguetown/npc/skeleton
+	var/skel_fragile = FALSE
 	ambushable = FALSE
 	rot_type = null
 	possible_rmb_intents = list()
@@ -14,7 +15,8 @@
 /mob/living/carbon/human/species/skeleton/npc
 	aggressive = 1
 	mode = AI_IDLE
-	wander = TRUE
+	wander = FALSE
+	skel_fragile = TRUE
 
 /mob/living/carbon/human/species/skeleton/npc/ambush
 
@@ -51,26 +53,13 @@
 	name = "Skeleton"
 	real_name = "Skeleton"
 	ADD_TRAIT(src, TRAIT_NOMOOD, TRAIT_GENERIC)
-	ADD_TRAIT(src, TRAIT_NOROGSTAM, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_NOHUNGER, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_EASYDISMEMBER, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_NOBREATH, TRAIT_GENERIC)
-	ADD_TRAIT(src, TRAIT_NOPAIN, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_TOXIMMUNE, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_LIMBATTACHMENT, TRAIT_GENERIC)
-	ADD_TRAIT(src, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
-	ADD_TRAIT(src, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
-
-	var/obj/item/organ/tongue/tongue = src.getorganslot(ORGAN_SLOT_TONGUE)
-	if(tongue)
-		tongue.Remove(src,1)
-		QDEL_NULL(tongue)
-	var/obj/item/organ/eyes/eyes = src.getorganslot(ORGAN_SLOT_EYES)
-	if(eyes)
-		eyes.Remove(src,1)
-		QDEL_NULL(eyes)
-	eyes = new /obj/item/organ/eyes/night_vision/zombie
-	eyes.Insert(src)
+	if(skel_fragile)
+		ADD_TRAIT(src, TRAIT_CRITICAL_WEAKNESS, TRAIT_GENERIC)
 	for(var/obj/item/bodypart/B in src.bodyparts)
 		B.skeletonize(FALSE)
 	update_body()
@@ -84,7 +73,7 @@
 	if(prob(90))
 		wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
 	if(prob(80))
-		shoes = /obj/item/clothing/shoes/roguetown/boots/leather
+		shoes = /obj/item/clothing/shoes/roguetown/armor/leather
 	if(prob(30))
 		armor = /obj/item/clothing/suit/roguetown/armor/chainmail/iron/rusted
 	if(prob(30))
@@ -92,7 +81,7 @@
 		if(prob(50))
 			shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/vagrant/l
 	if(prob(90))
-		pants = /obj/item/clothing/under/roguetown/chainlegs/iron/rusted
+		pants = /obj/item/clothing/under/roguetown/trou/leather
 	if(prob(40))
 		head = /obj/item/clothing/head/roguetown/helmet/leather
 	if(prob(70))
@@ -100,9 +89,9 @@
 	if(prob(70))
 		neck = /obj/item/clothing/neck/roguetown/chaincoif/rusted
 	if(H.gender == FEMALE)
-		H.STASTR = rand(9,12)
+		H.STASTR = rand(8,10)
 	else
-		H.STASTR = rand(14,16)
+		H.STASTR = rand(10,12)
 	H.STASPD = 8
 	H.STACON = 4
 	H.STAEND = 15

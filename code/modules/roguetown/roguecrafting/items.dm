@@ -4,20 +4,10 @@
 
 
 /datum/crafting_recipe/roguetown/tneedle
-	name = "sewing needle"
+	name = "thorn sewing needle"
 	result = /obj/item/needle/thorn
 	reqs = list(/obj/item/natural/thorn = 1,
 				/obj/item/natural/fibers = 1)
-	craftdiff = 0
-
-/datum/crafting_recipe/roguetown/cloth
-	name = "cloth"
-	result = /obj/item/natural/cloth
-	reqs = list(/obj/item/natural/fibers = 2)
-	tools = list(/obj/item/needle)
-	skillcraft = /datum/skill/misc/sewing
-	verbage_simple = "sew"
-	verbage = "sews"
 	craftdiff = 0
 
 /datum/crafting_recipe/roguetown/clothbelt
@@ -27,6 +17,25 @@
 	craftdiff = 0
 	verbage_simple = "tie"
 	verbage = "ties"
+
+/datum/crafting_recipe/roguetown/spoon
+	name = "spoon (x3)"
+	result = list(/obj/item/kitchen/spoon,
+				/obj/item/kitchen/spoon,
+				/obj/item/kitchen/spoon)
+	reqs = list(/obj/item/grown/log/tree/small = 1)
+
+/datum/crafting_recipe/roguetown/platter
+	name = "plater (x3)"
+	result = list(/obj/item/cooking/platter,
+				/obj/item/cooking/platter,
+				/obj/item/cooking/platter)
+	reqs = list(/obj/item/grown/log/tree/small = 1)
+
+/datum/crafting_recipe/roguetown/rollingpin
+	name = "rollingpin"
+	result = /obj/item/kitchen/rollingpin
+	reqs = list(/obj/item/grown/log/tree/small = 1)
 
 /datum/crafting_recipe/roguetown/unclothbelt
 	name = "untie cloth belt"
@@ -190,7 +199,8 @@
 /datum/crafting_recipe/roguetown/woodsword
 	name = "wood sword"
 	result = list(/obj/item/rogueweapon/mace/wsword,
-					/obj/item/rogueweapon/mace/wsword)
+				/obj/item/rogueweapon/mace/wsword,
+				/obj/item/rogueweapon/mace/wsword)
 	reqs = list(/obj/item/grown/log/tree/small = 1,
 				/obj/item/natural/fibers = 1)
 	craftdiff = 1
@@ -204,6 +214,16 @@
 
 
 /obj/item/rogueweapon/shield/wood/crafted
+	sellprice = 6
+
+/datum/crafting_recipe/roguetown/heatershield
+	name = "heater shield"
+	result = /obj/item/rogueweapon/shield/heater/crafted
+	reqs = list(/obj/item/grown/log/tree/small = 2,
+				/obj/item/natural/hide = 1)
+	skillcraft = /datum/skill/craft/carpentry
+
+/obj/item/rogueweapon/shield/heater/crafted
 	sellprice = 6
 
 /datum/crafting_recipe/roguetown/woodbucket
@@ -236,7 +256,7 @@
 
 /datum/crafting_recipe/roguetown/pot
 	name = "stone pot"
-	result = /obj/item/reagent_containers/glass/pot
+	result = /obj/item/reagent_containers/glass/bucket/pot
 	reqs = list(/obj/item/natural/stone = 2)
 
 /datum/crafting_recipe/roguetown/stonearrow
@@ -342,15 +362,6 @@
 	craftdiff = 1
 	subtype_reqs = TRUE //Unsure if needed for stone knife to work, feel free to remove this if not.
 
-/datum/crafting_recipe/roguetown/bag
-	name = "bag"
-	result = /obj/item/storage/roguebag/crafted
-	reqs = list(/obj/item/natural/fibers = 1,
-				/obj/item/natural/cloth = 1)
-	tools = list(/obj/item/needle)
-	skillcraft = /datum/skill/misc/sewing
-	req_table = TRUE
-
 /obj/item/storage/roguebag/crafted
 	sellprice = 4
 
@@ -390,7 +401,7 @@
 /datum/crafting_recipe/roguetown/pipe
 	name = "wood pipe"
 	result = /obj/item/clothing/mask/cigarette/pipe/crafted
-	reqs = list(/obj/item/grown/log/tree/small = 1)
+	reqs = list(/obj/item/grown/log/tree/stick = 1)
 
 
 /obj/item/clothing/mask/cigarette/pipe/crafted
@@ -454,3 +465,28 @@
 	tools = list(/obj/item/rogueweapon/huntingknife = 1)
 	structurecraft = /obj/structure/fluff/dryingrack
 	craftdiff = 1
+
+/datum/crafting_recipe/roguetown/parchment
+	name = "paper parchment (x8)"
+	result = list(/obj/item/paper,
+				  /obj/item/paper,
+				  /obj/item/paper,
+				  /obj/item/paper,
+				  /obj/item/paper,
+				  /obj/item/paper,
+				  /obj/item/paper,
+				  /obj/item/paper)
+	reqs = list(/obj/item/grown/log/tree/small = 1,
+	/datum/reagent/water = 30)
+	tools = list(/obj/item/rogueweapon/huntingknife = 1)
+	structurecraft = /obj/structure/fluff/dryingrack
+	craftdiff = 1
+
+
+/datum/crafting_recipe/roguetown/briarmask
+	name = "briarmask"
+	result = /obj/item/clothing/head/roguetown/dendormask
+	reqs = list(/obj/item/grown/log/tree/stick = 4,
+				/obj/item/natural/fibers = 3)
+	skillcraft = /datum/skill/magic/druidic
+	craftdiff = 2 // druids & dendor clerics can craft

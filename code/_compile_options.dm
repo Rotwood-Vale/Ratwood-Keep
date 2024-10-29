@@ -46,7 +46,7 @@
 									//	2 for preloading absolutely everything;
 
 #ifdef LOWMEMORYMODE
-#define FORCE_MAP "_maps/runtimestation.json"
+#define FORCE_MAP "_maps/debug.json"
 #endif
 
 //Update this whenever you need to take advantage of more recent byond features
@@ -77,3 +77,8 @@
 // A reasonable number of maximum overlays an object needs
 // If you think you need more, rethink it
 #define MAX_ATOM_OVERLAYS 100
+
+//Disable unimplemented proc/var warnings
+#ifdef OPENDREAM
+#pragma UnimplementedAccess disable
+#endif

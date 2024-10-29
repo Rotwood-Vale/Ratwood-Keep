@@ -724,10 +724,10 @@ There are several things that need to be remembered:
 			if(beltr.experimental_onhip)
 				var/list/prop
 				if(beltr.force_reupdate_inhand)
-					prop = beltr.onprop["onbelt"]
+					prop = beltr?.onprop?["onbelt"]
 					if(!prop)
-						beltr.onprop["onbelt"] = beltr.getonmobprop("onbelt")
-						prop = beltr.onprop["onbelt"]
+						prop = beltr.getonmobprop("onbelt")
+						LAZYSET(beltr.onprop, "onbelt", prop)
 				else
 					prop = beltr.getonmobprop("onbelt")
 				if(prop)
@@ -776,10 +776,10 @@ There are several things that need to be remembered:
 			if(beltl.experimental_onhip)
 				var/list/prop
 				if(beltl.force_reupdate_inhand)
-					prop = beltl.onprop["onbelt"]
+					prop = beltl.onprop?["onbelt"]
 					if(!prop)
-						beltl.onprop["onbelt"] = beltl.getonmobprop("onbelt")
-						prop = beltl.onprop["onbelt"]
+						prop = beltl.getonmobprop("onbelt")
+						LAZYSET(beltl.onprop, "onbelt", prop)
 				else
 					prop = beltl.getonmobprop("onbelt")
 				if(prop)
@@ -943,10 +943,10 @@ There are several things that need to be remembered:
 			if(backr.experimental_onback)
 				var/list/prop
 				if(backr.force_reupdate_inhand)
-					prop = backr.onprop["onback"]
+					prop = backr.onprop?["onback"]
 					if(!prop)
-						backr.onprop["onback"] = backr.getonmobprop("onback")
-						prop = backr.onprop["onback"]
+						prop = backr.getonmobprop("onback")
+						LAZYSET(backr.onprop, "onback", prop)
 				else
 					prop = backr.getonmobprop("onback")
 				if(prop)
@@ -996,10 +996,10 @@ There are several things that need to be remembered:
 			if(backl.experimental_onback)
 				var/list/prop
 				if(backl.force_reupdate_inhand)
-					prop = backl.onprop["onback"]
+					prop = backl.onprop?["onback"]
 					if(!prop)
-						backl.onprop["onback"] = backl.getonmobprop("onback")
-						prop = backl.onprop["onback"]
+						prop = backl.getonmobprop("onback")
+						LAZYSET(backl.onprop, "onback", backl.getonmobprop("onback"))
 				else
 					prop = backl.getonmobprop("onback")
 				if(prop)
@@ -1577,7 +1577,7 @@ generate/load female uniform sprites matching all previously decided variables
 		if(get_detail_color())
 			pic.color = get_detail_color()
 		standing.overlays.Add(pic)
-		if(!isinhands && boobed_overlay && boobed)
+		if(!isinhands && boobed_overlay && boobed_detail && boobed)
 			pic = mutable_appearance(icon(file2use, "[t_state]_boob[get_detail_tag()]"), -layer2use)
 			pic.appearance_flags = RESET_COLOR
 			if(get_detail_color())

@@ -10,7 +10,7 @@
 	allowed_races = RACES_SHUNNED_UP
 	allowed_ages = ALL_AGES_LIST
 
-	tutorial = "Granted a life of comfortable servitute in the King's manor, you follow the Head Butler/Maid's commands and spend your day performing necessary but menial tasks."
+	tutorial = "Granted a life of comfortable servitute in the Duke's manor, you follow the Head Butler/Maid's commands and spend your day performing necessary but menial tasks."
 
 	outfit = /datum/outfit/job/roguetown/servant
 	display_order = JDO_SERVANT
@@ -28,10 +28,12 @@
 		H.mind.adjust_skillrank(/datum/skill/misc/sewing, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/stealing, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/craft/crafting, 1, TRUE)
 		H.change_stat("strength", -1)
 		H.change_stat("constitution", -1)
 		H.change_stat("intelligence", 1)
 		H.change_stat("perception", 1)
+		H.change_stat("speed", 1)
 
 	if(H.gender == MALE)
 		pants = /obj/item/clothing/under/roguetown/tights

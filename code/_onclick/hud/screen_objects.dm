@@ -1883,16 +1883,16 @@
 		if(R.stage == 2)
 			add_overlay("rainlay")
 
-/atom/movable/screen/rogfat //Fatigue and stamina have their names switched in the code. I love roguedevs.
-	name = "stamina"
-	desc = "How winded I am. I need only a moment to catch my breath."
+/atom/movable/screen/rogfat
+	name = "fatigue"
+	desc = "My long-term weariness. Rest will be needed to recover this."
 	icon_state = "fat100"
 	icon = 'icons/mob/rogueheat.dmi'
 	screen_loc = rogueui_fat
 
 /atom/movable/screen/rogstam
-	name = "fatigue"
-	desc = "My long-term weariness. Rest will be needed to recover this."
+	name = "stamina"
+	desc = "How winded I am. I need only a moment to catch my breath."
 	icon_state = "stam100"
 	icon = 'icons/mob/rogueheat.dmi'
 	screen_loc = rogueui_fat

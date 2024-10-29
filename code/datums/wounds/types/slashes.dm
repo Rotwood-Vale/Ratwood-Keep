@@ -61,7 +61,7 @@
 	/// Organs we can disembowel associated with chance to disembowel
 	var/static/list/affected_organs = list(
 		ORGAN_SLOT_STOMACH = 100,
-		ORGAN_SLOT_LIVER = 50,
+		ORGAN_SLOT_LIVER = 100,
 	)
 
 /datum/wound/slash/disembowel/can_stack_with(datum/wound/other)
@@ -86,9 +86,11 @@
 			continue
 		if(!(organ.slot in affected_organs))
 			continue
+		/*
 		var/spill_prob = affected_organs[organ.slot]
 		if(prob(spill_prob))
-			spilled_organs += organ
+		*/
+		spilled_organs += organ
 	for(var/obj/item/organ/spilled as anything in spilled_organs)
 		spilled.Remove(owner)
 		spilled.forceMove(drop_location)

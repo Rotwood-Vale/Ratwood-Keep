@@ -39,7 +39,7 @@
 			H.mind.adjust_skillrank(/datum/skill/misc/stealing, 5, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/riding, pick(1,2), TRUE)
 			H.mind.adjust_skillrank(/datum/skill/craft/engineering, 1, TRUE)
-			shoes = /obj/item/clothing/shoes/roguetown/boots
+			shoes = /obj/item/clothing/shoes/roguetown/armor
 			neck = /obj/item/storage/belt/rogue/pouch/coins/poor
 			pants = /obj/item/clothing/under/roguetown/trou/leather
 			shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
@@ -76,7 +76,7 @@
 			H.mind.adjust_skillrank(/datum/skill/misc/riding, pick(1,2), TRUE)
 			H.mind.adjust_skillrank(/datum/skill/craft/engineering, 1, TRUE)
 			head = /obj/item/clothing/head/roguetown/helmet/tricorn
-			shoes = /obj/item/clothing/shoes/roguetown/boots
+			shoes = /obj/item/clothing/shoes/roguetown/armor
 			pants = /obj/item/clothing/under/roguetown/trou/leather
 			shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
 			gloves = /obj/item/clothing/gloves/roguetown/leather/black

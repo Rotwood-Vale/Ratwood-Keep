@@ -16,6 +16,8 @@
 	display_order = JDO_TEMPLAR
 	give_bank_account = TRUE
 
+	cmode_music = 'sound/music/combat_clergy.ogg'
+
 /datum/outfit/job/roguetown/templar
 	allowed_patrons = ALL_CLERIC_PATRONS
 
@@ -23,13 +25,16 @@
 	..()
 	H.virginity = TRUE
 	head = /obj/item/clothing/head/roguetown/helmet/heavy/bucket
-	neck = /obj/item/clothing/neck/roguetown/psicross/astrata
 	cloak = /obj/item/clothing/cloak/tabard/crusader/tief
 	switch(H.patron.name)
 		if("Astrata")
 			wrists = /obj/item/clothing/neck/roguetown/psicross/astrata
 			head = /obj/item/clothing/head/roguetown/helmet/astratahelm
 			cloak = /obj/item/clothing/cloak/tabard/crusader/astrata
+		if("Noc")
+			wrists = /obj/item/clothing/neck/roguetown/psicross/noc
+			head = /obj/item/clothing/head/roguetown/helmet/nochelm
+			cloak = /obj/item/clothing/cloak/tabard/crusader/noc
 		if("Dendor")
 			wrists = /obj/item/clothing/neck/roguetown/psicross/dendor
 			head = /obj/item/clothing/head/roguetown/helmet/dendorhelm
@@ -41,14 +46,14 @@
 		if("Pestra")
 			wrists = /obj/item/clothing/neck/roguetown/psicross/pestra
 			cloak = /obj/item/clothing/cloak/tabard/crusader/pestra
-		if("Noc")
-			wrists = /obj/item/clothing/neck/roguetown/psicross/noc
-			head = /obj/item/clothing/head/roguetown/helmet/nochelm
-			cloak = /obj/item/clothing/cloak/tabard/crusader/noc
+		if("Malum")
+			wrists = /obj/item/clothing/neck/roguetown/psicross/malum
+		if("Ravox")
+			wrists = /obj/item/clothing/neck/roguetown/psicross/ravox
 	armor = /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk
 	shirt = /obj/item/clothing/suit/roguetown/armor/gambeson
 	pants = /obj/item/clothing/under/roguetown/chainlegs
-	shoes = /obj/item/clothing/shoes/roguetown/boots
+	shoes = /obj/item/clothing/shoes/roguetown/armor
 	backl = /obj/item/storage/backpack/rogue/satchel
 	backpack_contents = list(/obj/item/roguekey/church = 1)
 	backr = /obj/item/rogueweapon/shield/tower/metal

@@ -1,3 +1,7 @@
+
+/*                      feel free to delete if you want it cleaner. decpreciated old food not Neu food here.
+
+
 /obj/item/reagent_containers/food/snacks/rogue/meat
 	icon = 'icons/roguetown/items/food.dmi'
 	eat_effect = /datum/status_effect/debuff/uncookedfood
@@ -7,6 +11,7 @@
 	slice_batch = FALSE
 	filling_color = "#8f433a"
 	rotprocess = 20 MINUTES
+	w_class = WEIGHT_CLASS_SMALL
 
 /obj/item/reagent_containers/food/snacks/rogue/meat/steak
 	ingredient_size = 2
@@ -378,3 +383,4 @@
 	desc = "A forcemeat with a prominent flavor of liver."
 	list_reagents = list(/datum/reagent/consumable/nutriment = 15)
 	bitesize = 3
+*/

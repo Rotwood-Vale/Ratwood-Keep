@@ -1,5 +1,5 @@
 /datum/anvil_recipe/armor
-	appro_skill = /datum/skill/craft/armorsmithing
+	appro_skill = /datum/skill/craft/blacksmithing
 	craftdiff = 1
 
 /datum/anvil_recipe/armor/ichainmail
@@ -45,6 +45,12 @@
 	created_item = /obj/item/clothing/mask/rogue/facemask
 	i_type = "Armor"
 
+/datum/anvil_recipe/armor/platemask/hound
+	name = "Mask (Hound)"
+	req_bar = /obj/item/ingot/iron
+	created_item = /obj/item/clothing/mask/rogue/facemask/hound
+	i_type = "Armor"
+
 /datum/anvil_recipe/armor/skullcap
 	name = "Skullcap"
 	req_bar = /obj/item/ingot/iron
@@ -56,6 +62,27 @@
 	req_bar = /obj/item/ingot/iron
 	additional_items = list(/obj/item/clothing/suit/roguetown/armor/leather)
 	created_item = /obj/item/clothing/suit/roguetown/armor/leather/studded
+	i_type = "Armor"
+
+/datum/anvil_recipe/armor/lbrigandine
+	name = "Light Brigandine (+1 Cloth)"
+	req_bar = /obj/item/ingot/iron
+	additional_items = list(/obj/item/natural/cloth)
+	created_item = /obj/item/clothing/suit/roguetown/armor/brigandine/light
+	i_type = "Armor"
+
+/datum/anvil_recipe/armor/splintarms
+	name = "Brigandine Rerebraces (+1 Cloth)"
+	req_bar = /obj/item/ingot/iron
+	additional_items = list(/obj/item/natural/cloth)
+	created_item = /obj/item/clothing/wrists/roguetown/splintarms
+	i_type = "Armor"
+
+/datum/anvil_recipe/armor/splintlegs
+	name = "Brigandine Chausses (+1 Cloth)"
+	req_bar = /obj/item/ingot/iron
+	additional_items = list(/obj/item/natural/cloth)
+	created_item = /obj/item/clothing/under/roguetown/splintlegs
 	i_type = "Armor"
 
 /datum/anvil_recipe/armor/helmetgoblin
@@ -240,6 +267,14 @@
 	craftdiff = 2
 	i_type = "Armor"
 
+/datum/anvil_recipe/armor/helmetvolf
+	name = "Volf Face Helmet (+1 Steel)"
+	req_bar = /obj/item/ingot/steel
+	additional_items = list(/obj/item/ingot/steel)
+	created_item = /obj/item/clothing/head/roguetown/helmet/heavy/volfplate
+	craftdiff = 3
+	i_type = "Armor"
+
 /datum/anvil_recipe/armor/bascinet
 	name = "Bascinet Helmet"
 	req_bar = /obj/item/ingot/steel
@@ -258,13 +293,19 @@
 /datum/anvil_recipe/armor/plateboot
 	name = "Plated Boots"
 	req_bar = /obj/item/ingot/steel
-	created_item = /obj/item/clothing/shoes/roguetown/boots/armor
+	created_item = /obj/item/clothing/shoes/roguetown/armor/steel
 	i_type = "Armor"
 
 /datum/anvil_recipe/armor/platemask/steel
 	name = "Mask"
 	req_bar = /obj/item/ingot/steel
 	created_item = /obj/item/clothing/mask/rogue/facemask/steel
+	i_type = "Armor"
+
+/datum/anvil_recipe/armor/platemask/steel/hound
+	name = "Mask (Hound)"
+	req_bar = /obj/item/ingot/steel
+	created_item = /obj/item/clothing/mask/rogue/facemask/steel/hound
 	i_type = "Armor"
 
 /datum/anvil_recipe/armor/astratahelm
@@ -297,4 +338,27 @@
 	additional_items = list(/obj/item/ingot/steel)
 	created_item = /obj/item/clothing/head/roguetown/helmet/dendorhelm
 	craftdiff = 2
+	i_type = "Armor"
+
+/datum/anvil_recipe/armor/belt_steel
+	name = "Steel Belt"
+	req_bar = /obj/item/ingot/steel
+	created_item = /obj/item/storage/belt/rogue/leather/hand
+	i_type = "Armor"
+
+// --------- SILVER -----------
+
+/datum/anvil_recipe/armor/belt_silver
+	name = "Silver Belt"
+	req_bar = /obj/item/ingot/silver
+	created_item = /obj/item/storage/belt/rogue/leather/plaquesilver
+	i_type = "Armor"
+
+
+// --------- GOLD -----------
+
+/datum/anvil_recipe/armor/belt_gold
+	name = "Gold Belt"
+	req_bar = /obj/item/ingot/gold
+	created_item = /obj/item/storage/belt/rogue/leather/plaquegold
 	i_type = "Armor"

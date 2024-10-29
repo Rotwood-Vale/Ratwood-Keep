@@ -14,7 +14,7 @@
 	..()
 	head = /obj/item/clothing/head/roguetown/helmet/winged
 	pants = /obj/item/clothing/under/roguetown/trou
-	shoes = /obj/item/clothing/shoes/roguetown/boots/leather
+	shoes = /obj/item/clothing/shoes/roguetown/armor/leather
 	belt = /obj/item/storage/belt/rogue/leather
 	armor = /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk
 	neck = /obj/item/storage/belt/rogue/pouch/coins/poor

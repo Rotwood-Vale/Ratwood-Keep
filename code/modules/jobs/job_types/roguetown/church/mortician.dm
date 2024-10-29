@@ -28,7 +28,7 @@
 	armor = /obj/item/clothing/suit/roguetown/shirt/robe/necra
 	shirt = /obj/item/clothing/suit/roguetown/armor/leather/vest/black
 	pants = /obj/item/clothing/under/roguetown/trou/leather/mourning
-	shoes = /obj/item/clothing/shoes/roguetown/boots
+	shoes = /obj/item/clothing/shoes/roguetown/armor
 	belt = /obj/item/storage/belt/rogue/leather/rope
 	beltl = /obj/item/keyring/gravedigger
 	beltr = /obj/item/storage/belt/rogue/pouch/coins/poor

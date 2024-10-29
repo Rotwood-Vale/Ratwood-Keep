@@ -1,11 +1,14 @@
 /datum/sex_action/throat_sex
 	name = "Fuck their throat"
 	stamina_cost = 1.0
+	gags_target = TRUE
 
 /datum/sex_action/throat_sex/shows_on_menu(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(user == target)
 		return FALSE
 	if(!user.getorganslot(ORGAN_SLOT_PENIS))
+		return FALSE
+	if(HAS_TRAIT(target, TRAIT_TINY) || HAS_TRAIT(user, TRAIT_TINY))	//This would cause too many believability and fetish issues for seelies
 		return FALSE
 	return TRUE
 
@@ -23,6 +26,7 @@
 	return TRUE
 
 /datum/sex_action/throat_sex/on_start(mob/living/carbon/human/user, mob/living/carbon/human/target)
+	..()
 	user.visible_message(span_warning("[user] slides his cock into [target]'s throat!"))
 	playsound(target, list('sound/misc/mat/insert (1).ogg','sound/misc/mat/insert (2).ogg'), 20, TRUE, ignore_walls = FALSE)
 
@@ -46,6 +50,7 @@
 	target.sexcon.handle_passive_ejaculation()
 
 /datum/sex_action/throat_sex/on_finish(mob/living/carbon/human/user, mob/living/carbon/human/target)
+	..()
 	user.visible_message(span_warning("[user] pulls his cock out of [target]'s throat."))
 
 /datum/sex_action/throat_sex/is_finished(mob/living/carbon/human/user, mob/living/carbon/human/target)

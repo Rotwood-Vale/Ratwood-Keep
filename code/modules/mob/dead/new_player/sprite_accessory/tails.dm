@@ -49,6 +49,13 @@
 	color_key_names = list("Tail", "Tip")
 	can_wag = TRUE
 
+/datum/sprite_accessory/tail/snuppy
+	name = "Rattleyote"
+	icon_state = "snuppy"
+	color_keys = 2
+	color_key_names = list("Tail", "Tip")
+	can_wag = TRUE
+
 /datum/sprite_accessory/tail/bats
 	name = "Bat (Short)"
 	icon_state = "bats"
@@ -288,8 +295,16 @@
 	name = "Kobold"
 	icon_state = "kobold"
 
-/datum/sprite_accessory/tail/tiefling
-	name = "Tiefling"
-	icon = 'icons/mob/sprite_accessory/tiefling.dmi'
+/datum/sprite_accessory/tail/tiefling/pointed
+	name = "Pointed"
+	icon = 'icons/mob/sprite_accessory/tails/tiefling.dmi'
 	icon_state = "tiebtail"
 	color_key_defaults = list(KEY_SKIN_COLOR)
+	can_wag = TRUE
+
+/datum/sprite_accessory/tail/tiefling/heart
+	name = "Succubus"
+	icon = 'icons/mob/sprite_accessory/tails/tiefling.dmi'
+	icon_state = "hearttail"
+	color_key_defaults = list(KEY_SKIN_COLOR)
+	can_wag = TRUE

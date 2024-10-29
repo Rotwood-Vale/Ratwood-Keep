@@ -52,7 +52,7 @@
 
 /mob/living/onZImpact(turf/T, levels)
 	if(HAS_TRAIT(src, TRAIT_NOFALLDAMAGE1))
-		if(levels <= 2)	
+		if(levels <= 2 || isseelie(src))	
 			return 
 	var/points
 	for(var/i in 2 to levels)
@@ -231,6 +231,7 @@
 	if(!(M.status_flags & CANPUSH))
 		return TRUE
 	if(isliving(M))
+		M.mob_timers[MT_SNEAKATTACK] = world.time //Why shouldn't you know you're walking into someone stealthed? You JUST bumped into them.
 		var/mob/living/L = M
 		if(HAS_TRAIT(L, TRAIT_PUSHIMMUNE))
 			return TRUE
@@ -378,6 +379,9 @@
 	if(!(AM.can_be_pulled(src, state, force)))
 		return FALSE
 	if(throwing || !(mobility_flags & MOBILITY_PULL))
+		return FALSE
+	if(!(isliving(AM)) && isseelie(src))	//Seelie grabbing non living object
+		to_chat(src, span_warning("My hands are too small to grab that."))
 		return FALSE
 
 	AM.add_fingerprint(src)
@@ -681,18 +685,30 @@
 	set category = "IC"
 	set hidden = 1
 	if(stat)
-		return
+		return FALSE
 	if(pulledby)
 		to_chat(src, span_warning("I'm grabbed!"))
-		return
+		return FALSE
 	if(resting)
+		if(isseelie(src))
+			var/obj/item/organ/wings/Wing = src.getorganslot(ORGAN_SLOT_WINGS)
+			if(Wing == null)
+				to_chat(src, span_warning("I can't stand without my wings!"))
+				return FALSE
 		if(!IsKnockdown() && !IsStun() && !IsParalyzed())
-			src.visible_message(span_notice("[src] stands up."))
 			if(move_after(src, 20, target = src))
 				set_resting(FALSE, FALSE)
+				if(resting)
+					src.visible_message(span_warning("[src] tries to stand up."))
+					return FALSE // workaround for broken legs and stuff
+				src.visible_message(span_notice("[src] stands up."))
 				return TRUE
+			else
+				src.visible_message(span_warning("[src] tries to stand up."))
+				return FALSE
 		else
 			src.visible_message(span_warning("[src] tries to stand up."))
+			return FALSE
 
 /mob/living/proc/toggle_rest()
 	set name = "Rest/Stand"
@@ -704,6 +720,11 @@
 		to_chat(src, span_warning("I'm grabbed!"))
 		return
 	if(resting)
+		if(isseelie(src))
+			var/obj/item/organ/wings/Wing = src.getorganslot(ORGAN_SLOT_WINGS)
+			if(Wing == null)
+				to_chat(src, span_warning("I can't stand without my wings!"))
+				return
 		if(!IsKnockdown() && !IsStun() && !IsParalyzed())
 			src.visible_message(span_info("[src] begins to stand up."))
 			if(move_after(src, 20, target = src))
@@ -723,10 +744,18 @@
 	if(!silent)
 		if(rest == resting)
 			if(resting)
-				playsound(src, 'sound/foley/toggledown.ogg', 100, FALSE)
+				if(isseelie(src))
+					//Quiet the falling and rising sound for fairies. Possibly replace the ogg outright
+					playsound(src, 'sound/foley/toggledown.ogg', 30, FALSE)
+				else
+					playsound(src, 'sound/foley/toggledown.ogg', 100, FALSE)
 				src.visible_message(span_info("[src] lays down."))
 			else
-				playsound(src, 'sound/foley/toggleup.ogg', 100, FALSE)
+				if(isseelie(src))
+					//Quiet the falling and rising sound for fairies. Possibly replace the ogg outright
+					playsound(src, 'sound/foley/toggleup.ogg', 30, FALSE)
+				else
+					playsound(src, 'sound/foley/toggleup.ogg', 100, FALSE)
 		else
 			to_chat(src, span_warning("I fail to get up!"))
 	update_cone_show()
@@ -774,6 +803,7 @@
 	SEND_SIGNAL(src, COMSIG_LIVING_REVIVE, full_heal, admin_revive)
 	if(full_heal)
 		fully_heal(admin_revive = admin_revive)
+		remove_status_effect(/datum/status_effect/debuff/death_weaken)
 	if(stat == DEAD && (admin_revive || can_be_revived())) //in some cases you can't revive (e.g. no brain)
 		GLOB.dead_mob_list -= src
 		GLOB.alive_mob_list += src
@@ -1048,23 +1078,29 @@
 		else if(last_special <= world.time)
 			resist_restraints() //trying to remove cuffs.
 
-/mob/living/verb/submit()
+/mob/living/proc/submit(var/instant = FALSE)
 	set name = "Yield"
 	set category = "IC"
 	set hidden = 1
-	if(surrendering)
+	if(surrendering || stat)
 		return
-	if(stat)
-		return
+	if(!instant)
+		if(alert(src, "Do you yield?", "SURRENDER", "Yes", "No") == "No")
+			return
 	log_combat(src, null, "surrendered")
 	surrendering = 1
+	toggle_cmode()
 	changeNext_move(CLICK_CD_EXHAUSTED)
 	var/obj/effect/temp_visual/surrender/flaggy = new(src)
 	vis_contents += flaggy
-	Stun(150)
+	Stun(300)
+	Knockdown(300)
+	apply_status_effect(/datum/status_effect/debuff/breedable)
+	apply_status_effect(/datum/status_effect/debuff/submissive)
 	src.visible_message(span_notice("[src] yields!"))
 	playsound(src, 'sound/misc/surrender.ogg', 100, FALSE, -1, ignore_walls=TRUE)
-	addtimer(CALLBACK(src, PROC_REF(end_submit)), 150)
+	update_vision_cone()
+	addtimer(CALLBACK(src, PROC_REF(end_submit)), 600)
 
 /mob/living/proc/end_submit()
 	surrendering = 0
@@ -1097,26 +1133,31 @@
 	. = TRUE
 
 	var/wrestling_diff = 0
-	var/resist_chance = 60
+	var/resist_chance = 40
 	var/mob/living/L = pulledby
+	var/combat_modifier = 1
 
 	if(mind)
 		wrestling_diff += (mind.get_skill_level(/datum/skill/combat/wrestling)) //NPCs don't use this
 	if(L.mind)
 		wrestling_diff -= (L.mind.get_skill_level(/datum/skill/combat/wrestling))
-	
-	resist_chance += ((STASTR - L.STASTR) * 7)
-	
-	if(!(mobility_flags & MOBILITY_STAND))
-		resist_chance -= clamp(15 - (wrestling_diff * 4), 0, 15)
-	if(pulledby.grab_state >= GRAB_AGGRESSIVE)
-		resist_chance -= clamp(15 - (wrestling_diff * 4), 0, 15)
 
-	var/minimum_roll = 40
-	if(pulledby.grab_state >= GRAB_AGGRESSIVE || !(mobility_flags & MOBILITY_STAND))
-		minimum_roll = 25
+	if(restrained())
+		combat_modifier -= 0.25
 
-	resist_chance = max(resist_chance, minimum_roll)
+	if(!(L.mobility_flags & MOBILITY_STAND) && mobility_flags & MOBILITY_STAND)
+		combat_modifier += 0.2
+
+	if(cmode && !L.cmode)
+		combat_modifier += 0.3
+	else if(!cmode && L.cmode)
+		combat_modifier -= 0.3
+
+	for(var/obj/item/grabbing/G in grabbedby)
+		if(G.chokehold == TRUE)
+			combat_modifier -= 0.15
+
+	resist_chance = clamp((((4 + (((STASTR - L.STASTR)/2) + wrestling_diff)) * 10 + rand(-5, 10)) * combat_modifier), 5, 95)
 
 	if(moving_resist && client) //we resisted by trying to move
 		client.move_delay = world.time + 20
@@ -1230,11 +1271,21 @@
 		to_chat(src, span_warning("Your hands pass right through \the [what]!"))
 		return
 
+	var/surrender_mod = 1
+
+	if(isliving(who))
+		var/mob/living/L = who
+		if(L.cmode && L.mobility_flags & MOBILITY_STAND)
+			to_chat(src, span_warning("I can't take \the [what] off, they are too tense!"))
+			return
+		if(L.surrendering)
+			surrender_mod = 0.5
+
 	who.visible_message(span_warning("[src] tries to remove [who]'s [what.name]."), \
 					span_danger("[src] tries to remove my [what.name]."), null, null, src)
 	to_chat(src, span_danger("I try to remove [who]'s [what.name]..."))
 	what.add_fingerprint(src)
-	if(do_mob(src, who, what.strip_delay))
+	if(do_mob(src, who, what.strip_delay * surrender_mod))
 		if(what && Adjacent(who))
 			if(islist(where))
 				var/list/L = where
@@ -1271,10 +1322,20 @@
 			to_chat(src, span_warning("\The [what.name] doesn't fit in that place!"))
 			return
 
+		var/surrender_mod = 1
+
+		if(isliving(who))
+			var/mob/living/L = who
+			if(L.cmode && L.mobility_flags & MOBILITY_STAND)
+				to_chat(src, span_warning("I can't put \the [what] on them, they are too tense!"))
+				return
+			if(L.surrendering)
+				surrender_mod = 0.5
+
 		who.visible_message(span_notice("[src] tries to put [what] on [who]."), \
 						span_notice("[src] tries to put [what] on you."), null, null, src)
 		to_chat(src, span_notice("I try to put [what] on [who]..."))
-		if(do_mob(src, who, what.equip_delay_other))
+		if(do_mob(src, who, what.equip_delay_other * surrender_mod))
 			if(what && Adjacent(who) && what.mob_can_equip(who, src, final_where, TRUE, TRUE))
 				if(temporarilyRemoveItemFromInventory(what))
 					if(where_list)
@@ -1578,6 +1639,8 @@
 
 	var/should_be_lying = !canstand
 	if(buckled)
+		if(isseelie(src))
+			src.reset_offsets("pixie_hover")
 		if(buckled.buckle_lying != -1)
 			should_be_lying = buckled.buckle_lying
 
@@ -1588,8 +1651,14 @@
 			if(buckled.buckle_lying != -1)
 				lying = buckled.buckle_lying
 		if(!lying) //force them on the ground
+			//If Seelie then they need to 'fall' to the ground by resetting position
+			if(isseelie(src))
+				src.reset_offsets("pixie_hover")
 			lying = 90
 	else
+		//Shift Seelie back 'up' from lying down on the ground
+		if(isseelie(src) && !buckled)
+			src.set_mob_offsets("pixie_hover", _x = 0, _y = 10)
 		mobility_flags |= MOBILITY_STAND
 		lying = 0
 
@@ -1609,7 +1678,7 @@
 	else
 		mobility_flags |= MOBILITY_PULL
 
-	var/canitem = !paralyzed && !stun && conscious && !chokehold && !restrained && has_arms
+	var/canitem = !paralyzed && !stun && conscious && !chokehold && !restrained && has_arms && !surrendering
 	if(canitem)
 		mobility_flags |= (MOBILITY_USE | MOBILITY_PICKUP | MOBILITY_STORAGE)
 	else
@@ -1631,7 +1700,7 @@
 	else
 		if(layer == LYING_MOB_LAYER)
 			layer = initial(layer)
-
+	update_cone_show()
 	update_transform()
 	lying_prev = lying
 
@@ -1852,8 +1921,8 @@
 		for(var/mob/living/M in view(7,src))
 			if(M == src)
 				continue
-			if(see_invisible < M.invisibility)
-				continue
+			//if(see_invisible < M.invisibility)
+				//continue
 			if(M.mob_timers[MT_INVISIBILITY] > world.time) // Check if the mob is affected by the invisibility spell
 				continue
 			var/probby = 3 * STAPER

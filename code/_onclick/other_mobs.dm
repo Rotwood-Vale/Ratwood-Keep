@@ -154,6 +154,37 @@
 	return
 
 /mob/living/carbon/onbite(mob/living/carbon/human/user)
+	var/nodmg = FALSE
+	var/dam2do = 10*(user.STASTR/20)
+	if(HAS_TRAIT(user, TRAIT_STRONGBITE))
+		dam2do *= 2
+
+	var/def_zone = user.zone_selected
+	var/do_bound_check = TRUE
+
+	if(user.sexcon && user.sexcon.target == src && !isnull(user.sexcon.current_action))
+		switch(user.sexcon.current_action)
+			if(/datum/sex_action/blowjob || /datum/sex_action/crotch_nuzzle || /datum/sex_action/cunnilingus || /datum/sex_action/rimming || /datum/sex_action/suck_balls)
+				dam2do *= 2 //Vrell - biting their junk hurts more
+				def_zone = BODY_ZONE_PRECISE_GROIN
+				do_bound_check = FALSE
+			if(/datum/sex_action/armpit_nuzzle)
+				dam2do *= 1.5 //Vrell - biting the soft of the armpit hurts more
+				def_zone = BODY_ZONE_CHEST
+				do_bound_check = FALSE
+	if(sexcon && sexcon.target == user && !isnull(sexcon.current_action))
+		switch(sexcon.current_action)
+			if(/datum/sex_action/throat_sex || /datum/sex_action/force_blowjob || /datum/sex_action/force_crotch_nuzzle || /datum/sex_action/force_cunnilingus || /datum/sex_action/facesitting || /datum/sex_action/force_rimming)
+				dam2do *= 2 //Vrell - biting their junk hurts more
+				def_zone = BODY_ZONE_PRECISE_GROIN
+				do_bound_check = FALSE
+			if(/datum/sex_action/force_armpit_nuzzle)
+				dam2do *= 1.5 //Vrell - biting the soft of the armpit hurts more
+				def_zone = BODY_ZONE_CHEST
+				do_bound_check = FALSE
+
+	if(do_bound_check && user.incapacitated())
+		return FALSE
 	if(HAS_TRAIT(user, TRAIT_PACIFISM))
 		to_chat(user, span_warning("I don't want to harm [src]!"))
 		return FALSE
@@ -169,32 +200,27 @@
 		if(!lying_attack_check(user))
 			return FALSE
 
-	var/def_zone = check_zone(user.zone_selected)
-	var/obj/item/bodypart/affecting = get_bodypart(def_zone)
+	var/obj/item/bodypart/affecting = get_bodypart(check_zone(def_zone))
 	if(!affecting)
 		to_chat(user, span_warning("Nothing to bite."))
 		return
 
 	next_attack_msg.Cut()
 
-	var/nodmg = FALSE
-	var/dam2do = 10*(user.STASTR/20)
-	if(HAS_TRAIT(user, TRAIT_STRONGBITE))
-		dam2do *= 2
 	if(!HAS_TRAIT(user, TRAIT_STRONGBITE))
 		if(!affecting.has_wound(/datum/wound/bite))
 			nodmg = TRUE
 	if(!nodmg)
 		var/armor_block = run_armor_check(user.zone_selected, "stab",blade_dulling=BCLASS_BITE)
-		if(!apply_damage(dam2do, BRUTE, def_zone, armor_block, user))
+		if(!apply_damage(dam2do, BRUTE, check_zone(def_zone), armor_block, user))
 			nodmg = TRUE
 			next_attack_msg += " <span class='warning'>Armor stops the damage.</span>"
 
 	var/datum/wound/caused_wound
 	if(!nodmg)
-		caused_wound = affecting.bodypart_attacked_by(BCLASS_BITE, dam2do, user, user.zone_selected, crit_message = TRUE)
-	visible_message(span_danger("[user] bites [src]'s [parse_zone(user.zone_selected)]![next_attack_msg.Join()]"), \
-					span_userdanger("[user] bites my [parse_zone(user.zone_selected)]![next_attack_msg.Join()]"))
+		caused_wound = affecting.bodypart_attacked_by(BCLASS_BITE, dam2do, user, def_zone, crit_message = TRUE)
+	visible_message(span_danger("[user] bites [src]'s [parse_zone(def_zone)]![next_attack_msg.Join()]"), \
+					span_userdanger("[user] bites my [parse_zone(def_zone)]![next_attack_msg.Join()]"))
 
 	next_attack_msg.Cut()
 
@@ -205,7 +231,8 @@
 				caused_wound?.werewolf_infect_attempt()
 				if(prob(30))
 					user.werewolf_feed(src)
-			if(user.mind.has_antag_datum(/datum/antagonist/zombie))
+			// both player and npc deadites can infect
+			if(user.mind.has_antag_datum(/datum/antagonist/zombie) || istype(user, /mob/living/carbon/human/species/deadite))
 				var/datum/antagonist/zombie/existing_zomble = mind?.has_antag_datum(/datum/antagonist/zombie)
 				if(caused_wound?.zombie_infect_attempt() && !existing_zomble)
 					user.mind.adjust_triumphs(1)
@@ -213,7 +240,7 @@
 	var/obj/item/grabbing/bite/B = new()
 	user.equip_to_slot_or_del(B, SLOT_MOUTH)
 	if(user.mouth == B)
-		var/used_limb = src.find_used_grab_limb(user)
+		var/used_limb = src.find_used_grab_limb(user, def_zone)
 		B.name = "[src]'s [parse_zone(used_limb)]"
 		var/obj/item/bodypart/BP = get_bodypart(check_zone(used_limb))
 		BP.grabbedby += B
@@ -232,6 +259,11 @@
 	..()
 	if(!mmb_intent)
 		if(!A.Adjacent(src))
+			return
+		if(isseelie(A) && !(isseelie(src)))
+			var/mob/living/carbon/human/target = A
+			if(target.pulledby == src)
+				target.dna.species.on_wing_removal(A, src)
 			return
 		A.MiddleClick(src, params)
 	else
@@ -359,7 +391,7 @@
 					return
 				if(A == src)
 					return
-				if(src.incapacitated())
+				if(src.incapacitated(ignore_restraints = TRUE))
 					return
 				if(!get_location_accessible(src, BODY_ZONE_PRECISE_MOUTH, grabs="other"))
 					to_chat(src, span_warning("My mouth is blocked."))

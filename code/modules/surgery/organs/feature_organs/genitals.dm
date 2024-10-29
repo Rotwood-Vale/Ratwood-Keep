@@ -103,6 +103,9 @@
 		return
 	if(owner.stat == DEAD)
 		return
+	if(isseelie(owner))
+		to_chat(owner, span_lovebold("Despite the surge of warmth filling me, I can't get pregnant."))
+		return
 	to_chat(owner, span_lovebold("I feel a surge of warmth in my belly, I’m definitely pregnant!"))
 	pregnant = TRUE
 
@@ -115,6 +118,7 @@
 	organ_dna_type = /datum/organ_dna/breasts
 	accessory_type = /datum/sprite_accessory/breasts/pair
 	var/breast_size = DEFAULT_BREASTS_SIZE
+	var/last_milked
 
 /obj/item/organ/testicles
 	name = "testicles"

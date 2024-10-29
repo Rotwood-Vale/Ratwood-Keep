@@ -178,6 +178,12 @@
 	name = "town blacksmith key"
 	lockid = "townblacksmith"
 
+/obj/item/roguekey/seamster
+	name = "workshop key"
+	desc = "This key opens the door to the tailor workshop."
+	icon_state = "brownkey"
+	lockid = "seamster"
+
 /obj/item/roguekey/walls
 	name = "walls key"
 	desc = "This is a rusty key."
@@ -270,7 +276,7 @@
 
 /obj/item/roguekey/hand
 	name = "hand's key"
-	desc = "This regal key belongs to the King's Right Hand."
+	desc = "This regal key belongs to the Duke's Right Hand."
 	icon_state = "cheesekey"
 	lockid = "hand"
 
@@ -421,6 +427,7 @@
 	else if(istype(user.get_active_held_item(), /obj/item/rogueweapon/hammer) && src.lockhash != 0)
 		var/obj/item/roguekey/custom/F = new (get_turf(src))
 		F.lockhash = src.lockhash
+		F.lockid = lockhash
 		to_chat(user, span_notice("You finish [F]."))
 		qdel(src)
 	

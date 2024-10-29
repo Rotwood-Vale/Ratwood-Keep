@@ -4,6 +4,7 @@
 	mob_overlay_icon = 'icons/roguetown/clothing/onmob/masks.dmi'
 	body_parts_covered = FACE
 	slot_flags = ITEM_SLOT_MASK
+	w_class = WEIGHT_CLASS_SMALL
 
 /obj/item/clothing/mask/rogue/spectacles
 	name = "spectacles"
@@ -15,7 +16,7 @@
 	integrity_failure = 0.5
 	resistance_flags = FIRE_PROOF
 	body_parts_covered = EYES
-	anvilrepair = /datum/skill/craft/armorsmithing
+	anvilrepair = /datum/skill/craft/blacksmithing
 //	block2add = FOV_BEHIND
 
 /obj/item/clothing/mask/rogue/spectacles/golden
@@ -28,7 +29,7 @@
 	integrity_failure = 0.5
 	resistance_flags = FIRE_PROOF
 	body_parts_covered = EYES
-	anvilrepair = /datum/skill/craft/armorsmithing
+	anvilrepair = /datum/skill/craft/blacksmithing
 
 /obj/item/clothing/mask/rogue/spectacles/Initialize()
 	. = ..()
@@ -56,6 +57,7 @@
 	block2add = FOV_RIGHT
 	body_parts_covered = EYES
 	sewrepair = TRUE
+	salvage_amount = 1
 
 /obj/item/clothing/mask/rogue/eyepatch/left
 	desc = "An eyepatch, fitted for the left eye."
@@ -67,14 +69,14 @@
 	desc = "Half of your face turned gold."
 	icon_state = "lmask"
 	sellprice = 50
-	anvilrepair = /datum/skill/craft/armorsmithing
+	anvilrepair = /datum/skill/craft/blacksmithing
 
 /obj/item/clothing/mask/rogue/lordmask/l
 	icon_state = "lmask_l"
 
 /obj/item/clothing/mask/rogue/facemask
 	name = "iron mask"
-	desc = "An iron mask which protects the fact and obscures it."
+	desc = "An iron mask which protects the eyes, nose and mouth while also obscuring the face it."
 	icon_state = "imask"
 	max_integrity = 100
 	blocksound = PLATEHIT
@@ -88,9 +90,14 @@
 	block2add = FOV_BEHIND
 	slot_flags = ITEM_SLOT_MASK|ITEM_SLOT_HIP
 	experimental_onhip = TRUE
-	anvilrepair = /datum/skill/craft/armorsmithing
+	anvilrepair = /datum/skill/craft/blacksmithing
 	smeltresult = /obj/item/ingot/iron
 	clothing_flags = CANT_SLEEP_IN
+
+/obj/item/clothing/mask/rogue/facemask/hound
+	name = "iron hound mask"
+	desc = "An iron mask, made for those who have snouts, protecting the eyes, nose and muzzle while obscuring the face."
+	icon_state = "imask_hound"
 
 /obj/item/clothing/mask/rogue/facemask/prisoner/Initialize()
 	. = ..()
@@ -106,10 +113,15 @@
 
 /obj/item/clothing/mask/rogue/facemask/steel
 	name = "steel mask"
-	desc = "A mask of steel to both protect and hide the face."
+	desc = "A mask of steel which protects the eyes, nose and mouth while also obscuring the face."
 	icon_state = "smask"
 	max_integrity = 200
 	smeltresult = /obj/item/ingot/steel
+
+/obj/item/clothing/mask/rogue/facemask/steel/hound
+	name = "steel hound mask"
+	desc = "A steel mask, made for those who have snouts, protecting the eyes, nose and muzzle while obscuring the face."
+	icon_state = "smask_hound"
 
 /obj/item/clothing/mask/rogue/shepherd
 	name = "halfmask"
@@ -121,6 +133,7 @@
 	toggle_icon_state = TRUE
 	experimental_onhip = TRUE
 	sewrepair = TRUE
+	salvage_amount = 1
 
 /obj/item/clothing/mask/rogue/shepherd/AdjustClothes(mob/user)
 	if(loc == user)

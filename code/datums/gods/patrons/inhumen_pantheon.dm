@@ -2,22 +2,7 @@
 	name = null
 	associated_faith = /datum/faith/inhumen
 	undead_hater = FALSE
-	confess_lines = list(
-		"PSYDON IS THE DEMIURGE!",
-		"THE TEN ARE WORTHLESS COWARDS!",
-		"THE TEN ARE DECEIVERS!",
-	)
-
-/datum/patron/inhumen/zizo
-	name = "Zizo"
-	domain = "God of Necromancy and Left Hand Magicks"
-	desc = "Snow Elf turned God, Zizo taught dark elves to bend the natural world to their will."
-	worshippers = "Necromancers, Warlocks, and the Undead"
-	confess_lines = list(
-		"PRAISE ZIZO!",
-		"LONG LIVE ZIZO!",
-		"ZIZO IS KING!",
-	)
+	confess_lines = list()
 
 /datum/patron/inhumen/graggar
 	name = "Graggar"
@@ -54,18 +39,3 @@
         "LIVE, LAUGH, LOVE!",
         "BAOTHA IS MY JOY!",
 	)
-
-
-/* RATWOOD EDIT - Back to the main pantheon
-/datum/patron/inhumen/eora
-	name = "Eora"
-	domain = "Goddess of Degeneracy, Debauchery and Addiction"
-	desc = "The Fallen Daughter of Psydon, once used to be a goddess of love and family but has now fallen from grace as she leads mortals to hedonism."
-	worshippers = "Drunkards, Junkies, Gamblers and Bards"
-	confess_lines = list(
-		"EORA BRINGS ME PLEASURE!",
-		"EORA BRINGS ME LUCK!",
-		"EORA IS MY HAPPINESS!",
-	)
-	t0 = /obj/effect/proc_holder/spell/invoked/lesser_heal
-*/

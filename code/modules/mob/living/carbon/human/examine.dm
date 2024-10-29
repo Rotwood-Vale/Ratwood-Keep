@@ -20,6 +20,7 @@
 
 /mob/living/carbon/human/examine(mob/user)
 	var/observer_privilege = isobserver(user)
+	var/aghost_privilege = isadminobserver(user)
 	var/t_He = p_they(TRUE)
 	var/t_his = p_their()
 //	var/t_him = p_them()
@@ -115,7 +116,22 @@
 				. += span_love("It's my spouse.")
 
 		if(name in GLOB.excommunicated_players)
-			. += span_userdanger("HERETIC! SHAME!")
+			. += span_userdanger("EXCOMMUNICATED!")
+
+		if(name in GLOB.heretical_players)
+			. += span_userdanger("HERETIC'S BRAND! SHAME!")
+		if(iszizocultist(user) || iszizolackey(user))
+			if(virginity)
+				. += "<span class='userdanger'>VIRGIN!</span>"
+
+		if(real_name in GLOB.outlawed_players)
+			. += "<span class='userdanger'>OUTLAW!</span>"
+		if(mind && mind.special_role)
+		else
+			if(mind && mind.special_role == "Bandit")
+				. += "<span class='userdanger'>BANDIT!</span>"
+			if(mind && mind.special_role == "Vampire Lord")
+				. += "<span class='userdanger'>A MONSTER!</span>"
 
 		if(name in GLOB.outlawed_players)
 			. += span_userdanger("OUTLAW!")
@@ -484,10 +500,22 @@
 
 	if(maniac)
 		var/obj/item/organ/heart/heart = getorganslot(ORGAN_SLOT_HEART)
-		if(heart?.inscryption && (heart.inscryption_key in maniac.key_nums))
-			. += span_danger("[t_He] know[p_s()] [heart.inscryption_key], I AM SURE OF IT!")
+		if(heart)
+			var/inscryption_key = LAZYACCESS(heart.inscryption_keys, maniac) // SPECIFICALLY the key that WE wrote
+			if(inscryption_key && (inscryption_key in maniac.key_nums))
+				. += span_danger("[t_He] know[p_s()] [inscryption_key], I AM SURE OF IT!")
 
-	if(Adjacent(user))
+	if(aghost_privilege)
+		var/obj/item/organ/heart/heart = getorganslot(ORGAN_SLOT_HEART)
+		if(heart && heart.maniacs)
+			for(var/datum/antagonist/maniac/M in heart.maniacs)
+				var/K = LAZYACCESS(heart.inscryptions, M)
+				var/W = LAZYACCESS(heart.maniacs2wonder_ids, M)
+				var/N = M.owner?.name
+				. += span_notice("Inscryption[N ? " by [N]'s " : ""][W ? "Wonder #[W]" : ""]: [K ? K : ""]")
+				
+
+	if(Adjacent(user) || aghost_privilege)
 		if(observer_privilege)
 			var/static/list/check_zones = list(
 				BODY_ZONE_HEAD,

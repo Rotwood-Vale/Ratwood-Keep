@@ -11,7 +11,6 @@
 	throw_range = 1
 	var/berry_charges = 0
 	var/atom/movable/inserted
-	var/activecolor = "#FFFFFF"
 	var/list/allowed_types = list(
 			/obj/item/clothing/suit/roguetown/shirt/robe,
 			/obj/item/clothing/suit/roguetown/shirt/dress,
@@ -31,8 +30,9 @@
 			/obj/item/clothing/suit/roguetown/armor/gambeson,
 			/obj/item/clothing/suit/roguetown/armor/armordress
 			)
+	var/activecolor = "#FFFFFF"
 	var/static/list/selectable_colors = list(
-  		"White" = "#ffffff",
+		"White" = "#ffffff",
 		"Black" = "#414143",
 		"Light Grey" = "#999999",
 		"Mage Grey" = "#6c6c6c",
@@ -88,7 +88,7 @@
 /obj/structure/dye_bin/attackby(obj/item/I, mob/living/user)
 	if(istype(I, /obj/item/reagent_containers/food/snacks/grown/berries/rogue))
 		to_chat(user, span_notice("I squeeze \the berries into some colorful dye"))
-		berry_charges += 3
+		berry_charges += 5
 		update_icon()
 		qdel(I)
 		return

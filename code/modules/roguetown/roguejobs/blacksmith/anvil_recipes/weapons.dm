@@ -1,5 +1,5 @@
 /datum/anvil_recipe/weapons
-	appro_skill = /datum/skill/craft/weaponsmithing  // inheritance yay !!
+	appro_skill = /datum/skill/craft/blacksmithing  // inheritance yay !!
 	craftdiff = 1
 
 /// BASIC WEAPONS
@@ -106,6 +106,13 @@
 	created_item = /obj/item/rogueweapon/huntingknife/cleaver
 	i_type = "Weapons"
 
+/datum/anvil_recipe/weapons/ccleaver
+	name = "Combat Knife"
+	req_bar = /obj/item/ingot/steel
+	created_item = /obj/item/rogueweapon/huntingknife/cleaver/combat
+	craftdiff = 2
+	i_type = "Weapons"
+
 /// ADVANCED WEAPONS
 
 /datum/anvil_recipe/weapons/tsword
@@ -124,19 +131,19 @@
 	craftdiff = 2
 	i_type = "Weapons"
 
-/datum/anvil_recipe/weapons/ccleaver
-	name = "Hunting Knife (+1 Steel)"
-	req_bar = /obj/item/ingot/steel
-	additional_items = list(/obj/item/ingot/steel)
-	created_item = /obj/item/rogueweapon/huntingknife/cleaver/combat
-	craftdiff = 2
-	i_type = "Weapons"
-
 /datum/anvil_recipe/weapons/smace
 	name = "Mace (+1 Steel)"
 	req_bar = /obj/item/ingot/steel
 	additional_items = list(/obj/item/ingot/steel)
 	created_item = /obj/item/rogueweapon/mace/steel
+	craftdiff = 2
+	i_type = "Weapons"
+
+/datum/anvil_recipe/weapons/swarhammer
+	name = "Warhammer (+1 Steel)"
+	req_bar = /obj/item/ingot/steel
+	additional_items = list(/obj/item/ingot/steel)
+	created_item = /obj/item/rogueweapon/mace/warhammer/steel
 	craftdiff = 2
 	i_type = "Weapons"
 
@@ -170,14 +177,6 @@
 	additional_items = list(/obj/item/ingot/steel, /obj/item/ingot/steel)
 	created_item = /obj/item/rogueweapon/greatsword
 	craftdiff = 3
-	i_type = "Weapons"
-
-/datum/anvil_recipe/weapons/buckler
-	name = "Buckler (+1 Steel)"
-	req_bar = /obj/item/ingot/steel
-	additional_items = list(/obj/item/ingot/steel)
-	created_item = /obj/item/rogueweapon/shield/buckler
-	craftdiff = 2
 	i_type = "Weapons"
 
 /// UPGRADED WEAPONS
@@ -269,6 +268,13 @@
 	created_item = /obj/item/rogueweapon/mace
 	i_type = "Weapons"
 
+/datum/anvil_recipe/weapons/warhammer
+	name = "Warhammer (+1 Stick)"
+	req_bar = /obj/item/ingot/iron
+	additional_items = list(/obj/item/grown/log/tree/stick)
+	created_item = /obj/item/rogueweapon/mace/warhammer
+	i_type = "Weapons"
+
 // WOOD HANDLE
 
 /datum/anvil_recipe/weapons/billhook
@@ -334,7 +340,7 @@
 /// SHIELDS
 /datum/anvil_recipe/weapons/steelshield
 	name = "Heraldic Shield (+1 Steel +1 Hide)"
-	appro_skill = /datum/skill/craft/armorsmithing
+	appro_skill = /datum/skill/craft/blacksmithing
 	req_bar = /obj/item/ingot/steel
 	additional_items = list(/obj/item/ingot/steel, /obj/item/natural/hide)
 	created_item = /obj/item/rogueweapon/shield/tower/metal
@@ -343,10 +349,18 @@
 
 /datum/anvil_recipe/weapons/ironshield
 	name = "Tower Shield (+1 Small Log)"
-	appro_skill = /datum/skill/craft/armorsmithing
+	appro_skill = /datum/skill/craft/blacksmithing
 	req_bar = /obj/item/ingot/iron
 	additional_items = list(/obj/item/grown/log/tree/small)
 	created_item = /obj/item/rogueweapon/shield/tower
+	i_type = "Weapons"
+
+/datum/anvil_recipe/weapons/buckler
+	name = "Buckler Shield"
+	appro_skill = /datum/skill/craft/blacksmithing
+	req_bar = /obj/item/ingot/steel
+	created_item = /obj/item/rogueweapon/shield/buckler
+	craftdiff = 3
 	i_type = "Weapons"
 
 /// CROSSBOWS

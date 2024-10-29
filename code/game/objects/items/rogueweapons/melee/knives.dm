@@ -25,7 +25,7 @@
 	wdefense = 3
 	wbalance = 1
 	thrown_bclass = BCLASS_CUT
-	anvilrepair = /datum/skill/craft/weaponsmithing
+	anvilrepair = /datum/skill/craft/blacksmithing
 	smeltresult = /obj/item/ingot/iron
 
 
@@ -35,7 +35,6 @@
 
 /datum/intent/dagger/cut
 	name = "cut"
-	desc = "A simple iron dagger favored as a fallback weapon for archers and crossbowmen. Just as likely to be in the hands on an assassin or rogue too."
 	icon_state = "incut"
 	attack_verb = list("cuts", "slashes")
 	animname = "cut"
@@ -50,7 +49,7 @@
 /datum/intent/dagger/thrust
 	name = "thrust"
 	icon_state = "instab"
-	attack_verb = list("thrusts")
+	attack_verb = list("thrusts", "stabs")
 	animname = "stab"
 	blade_class = BCLASS_STAB
 	hitsound = list('sound/combat/hits/bladed/genstab (1).ogg', 'sound/combat/hits/bladed/genstab (2).ogg', 'sound/combat/hits/bladed/genstab (3).ogg')
@@ -62,7 +61,8 @@
 /datum/intent/dagger/thrust/pick
 	name = "icepick stab"
 	icon_state = "inpick"
-	attack_verb = list("stabs", "impales")
+	attack_verb = list("picks", "impales")
+	blade_class = BCLASS_PICK
 	hitsound = list('sound/combat/hits/bladed/genstab (1).ogg', 'sound/combat/hits/bladed/genstab (2).ogg', 'sound/combat/hits/bladed/genstab (3).ogg')
 	penfactor = 80
 	clickcd = 14
@@ -82,7 +82,7 @@
 /datum/intent/dagger/chop
 	name = "chop"
 	icon_state = "inchop"
-	attack_verb = list("chops")
+	attack_verb = list("chops",)
 	animname = "chop"
 	blade_class = BCLASS_CHOP
 	hitsound = list('sound/combat/hits/bladed/smallslash (1).ogg', 'sound/combat/hits/bladed/smallslash (2).ogg', 'sound/combat/hits/bladed/smallslash (3).ogg')
@@ -98,7 +98,6 @@
 	desc = "A big, heavy knife designed to chop through meat with ease."
 	possible_item_intents = list(/datum/intent/dagger/cut, /datum/intent/dagger/chop/cleaver)
 	icon_state = "cleav"
-	icon = 'icons/roguetown/weapons/32.dmi'
 	parrysound = list('sound/combat/parry/bladed/bladedmedium (1).ogg','sound/combat/parry/bladed/bladedmedium (2).ogg','sound/combat/parry/bladed/bladedmedium (3).ogg')
 	swingsound = list('sound/combat/wooshes/bladed/wooshmed (1).ogg','sound/combat/wooshes/bladed/wooshmed (2).ogg','sound/combat/wooshes/bladed/wooshmed (3).ogg')
 	throwforce = 15
@@ -109,18 +108,11 @@
 
 /obj/item/rogueweapon/huntingknife/cleaver/combat
 	force = 16
-	name = "knife"
-	desc = "A combat knife. Swift and deadly if you hit."
-	possible_item_intents = list(/datum/intent/dagger/cut, /datum/intent/dagger/chop/cleaver)
+	name = "combat knife"
+	desc = "A swift and deadly combat knife."
+	possible_item_intents = list(/datum/intent/dagger/cut, /datum/intent/dagger/chop/cleaver, /datum/intent/dagger/thrust)
 	icon_state = "combatknife"
-	icon = 'icons/roguetown/weapons/32.dmi'
-	parrysound = list('sound/combat/parry/bladed/bladedmedium (1).ogg','sound/combat/parry/bladed/bladedmedium (2).ogg','sound/combat/parry/bladed/bladedmedium (3).ogg')
-	swingsound = list('sound/combat/wooshes/bladed/wooshmed (1).ogg','sound/combat/wooshes/bladed/wooshmed (2).ogg','sound/combat/wooshes/bladed/wooshmed (3).ogg')
 	throwforce = 16
-	slot_flags = ITEM_SLOT_HIP
-	thrown_bclass = BCLASS_CHOP
-	w_class = WEIGHT_CLASS_NORMAL
-	smeltresult = /obj/item/ingot/steel
 
 /obj/item/rogueweapon/huntingknife/cleaver/getonmobprop(tag)
 	. = ..()
@@ -156,6 +148,64 @@
 	hitsound = list('sound/combat/hits/bladed/genchop (1).ogg', 'sound/combat/hits/bladed/genchop (2).ogg', 'sound/combat/hits/bladed/genchop (3).ogg')
 	penfactor = 30
 
+/obj/item/rogueweapon/huntingknife/scissors
+	possible_item_intents = list(/datum/intent/dagger/thrust, /datum/intent/dagger/cut, /datum/intent/snip)
+	max_integrity = 100
+	name = "iron scissors"
+	desc = "Scissors made of iron that may be used to salvage usable materials from clothing."
+	icon_state = "iscissors"
+
+/datum/intent/snip // The salvaging intent! Used only for the scissors for now!
+	name = "snip"
+	icon_state = "insnip"
+	chargetime = 0
+	noaa = TRUE
+	candodge = FALSE
+	canparry = FALSE
+	misscost = 0
+	no_attack = TRUE
+	releasedrain = 0
+	blade_class = BCLASS_PUNCH
+
+/obj/item/rogueweapon/huntingknife/scissors/attack_obj(obj/O, mob/living/user) //This is scissor action! We're putting this here not to lose sight of it!
+	if(user.used_intent.type == /datum/intent/snip && istype(O, /obj/item))
+		var/obj/item/item = O
+		if(item.sewrepair && item.salvage_result) // We can only salvage objects which can be sewn!
+			var/salvage_time = 70
+			var/skill_level = user.mind.get_skill_level(/datum/skill/misc/sewing)
+			salvage_time = (70 - (skill_level * 10))
+			if(!do_after(user, salvage_time, target = user))
+				return
+			if(item.fiber_salvage) //We're getting fiber as base if fiber is present on the item
+				new /obj/item/natural/fibers(get_turf(item))
+			if(istype(item, /obj/item/storage))
+				var/obj/item/storage/bag = item
+				bag.emptyStorage()
+			var/probability = max(0, 50 - (skill_level * 10))
+			if(prob(probability)) // We are dumb and we failed!
+				to_chat(user, span_info("I ruined some of the materials due to my lack of skill..."))
+				playsound(item, 'sound/foley/cloth_rip.ogg', 50, TRUE)
+				qdel(item)
+				user.mind.add_sleep_experience(/datum/skill/misc/sewing, (user.STAINT)) //Getting exp for failing
+				return //We are returning early if the skill check fails!
+			item.salvage_amount -= item.torn_sleeve_number
+			for(var/i = 1; i <= item.salvage_amount; i++) // We are spawning salvage result for the salvage amount minus the torn sleves!
+				var/obj/item/Sr = new item.salvage_result(get_turf(item))
+				Sr.color = item.color
+			user.visible_message(span_notice("[user] salvages [item] into usable materials."))
+			playsound(item, 'sound/items/flint.ogg', 100, TRUE) //In my mind this sound was more fitting for a scissor
+			qdel(item)
+			user.mind.add_sleep_experience(/datum/skill/misc/sewing, (user.STAINT)) //We're getting experience for salvaging!
+	..()
+
+/obj/item/rogueweapon/huntingknife/scissors/steel
+	force = 14
+	max_integrity = 150
+	name = "steel scissors"
+	desc = "Scissors made of solid steel that may be used to salvage usable materials from clothing, more durable and a tad more deadly than their iron conterpart."
+	icon_state = "sscissors"
+	smeltresult = /obj/item/ingot/steel
+
 /obj/item/rogueweapon/huntingknife/idagger
 	possible_item_intents = list(/datum/intent/dagger/thrust,/datum/intent/dagger/cut, /datum/intent/dagger/thrust/pick)
 	force = 15
@@ -163,7 +213,6 @@
 	name = "iron dagger"
 	desc = "This is a common dagger of iron."
 	icon_state = "idagger"
-	smeltresult = /obj/item/ingot/iron
 
 /obj/item/rogueweapon/huntingknife/idagger/steel
 	name = "steel dagger"
