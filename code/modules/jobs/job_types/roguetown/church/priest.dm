@@ -102,15 +102,11 @@
 			if(HL.job == "Duchess Consort")
 				HL.job = "Duchess Dowager"
 			SSjob.type_occupations[/datum/job/roguetown/lord].remove_spells(HL)
-			SStreasury.give_money_account(-SStreasury.treasury_value, HL)
 
 		//Coronate new Lord (or Lady)
-		if(!(HU in SStreasury.bank_accounts))
-			SStreasury.create_bank_account(HU)	
 		HU.mind.assigned_role = "Duke"
 		HU.job = "Duke"
 		SSjob.type_occupations[/datum/job/roguetown/lord].add_spells(HU)
-		SStreasury.update_ruler_money()
 
 		switch(HU.gender)
 			if("male")
