@@ -74,12 +74,12 @@
 	for(var/obj/item/bodypart/B in L.bodyparts)
 		B.skeletonize(FALSE)
 	L.equipOutfit(/datum/outfit/job/roguetown/lich)
-	L.set_patron(/datum/patron/inhumen/zizo)
+	L.set_patron(/datum/patron/zizo)
 
 /datum/outfit/job/roguetown/lich/pre_equip(mob/living/carbon/human/H)
 	..()
 	pants = /obj/item/clothing/under/roguetown/chainlegs
-	shoes = /obj/item/clothing/shoes/roguetown/boots
+	shoes = /obj/item/clothing/shoes/roguetown/shortboots
 	neck = /obj/item/clothing/neck/roguetown/chaincoif
 	cloak = /obj/item/clothing/cloak/raincloak/mortus
 	armor = /obj/item/clothing/suit/roguetown/armor/plate/half/grenzelhoft
