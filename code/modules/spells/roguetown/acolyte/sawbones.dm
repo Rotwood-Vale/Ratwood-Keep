@@ -1168,8 +1168,13 @@
 	amount = 3
 	firefuel = 60 MINUTES
 
+/*/obj/item/splint
+    name = "splint"
+    desc = "A splint used to stabilize fractures and dislocations, and stop bleeding."
+    icon = 'icons/obj/splint.dmi'
+    item_state = "splint"
 
-/*
+
 /obj/item/natural/acid																		////// DO NOT LOOK AT MY SHAME. seriously dont I will return to this when I dont wanna burn my house down over it.
 	name = "acidic salve"
 	desc = "A salve that can cauterize wounds and remove early-stage infections."
@@ -1270,6 +1275,9 @@
 	desc = "so you're an alchemist then?"
 	icon = 'icons/roguetown/items/surgery.dmi'
 	icon_state = "alembic_empty"
+	amount_per_transfer_from_this = 9
+	volume = 100
+	reagent_flags = OPENCONTAINER|REFILLABLE|DRAINABLE
 	var/speed_multiplier = 1 // How fast it brews. Defaults to 100% (1.0). Lower is better.
 	var/list/active_brews = list()
 	var/brewing_started = FALSE // Track if brewing has started
@@ -1322,7 +1330,7 @@
 		if(!I.can_brew)
 			to_chat(user, span_warning("I can't brew this into anything."))
 			return TRUE
-		else if(active_brews.len >= 2 || reagents.total_volume >= 44)
+		else if(active_brews.len >= 2 || reagents.total_volume >= 99)
 			to_chat(user, span_warning("I can only brew two items at a time or it is too full."))
 			return TRUE
 		else if(!user.transferItemToLoc(I, src))
@@ -1355,10 +1363,9 @@
 	desc = "A small, thick-walled stone bowl made for grinding things up inside."
 	icon = 'icons/roguetown/items/surgery.dmi'
 	icon_state = "mortar_empty"
-	amount_per_transfer_from_this = 9
 	volume = 100
-	reagent_flags = REFILLABLE | DRAINABLE
-	spillable = TRUE
+	reagent_flags = OPENCONTAINER|REFILLABLE|DRAINABLE
+	spillable = FALSE
 	var/obj/item/grinded
 	var/grinding_started = FALSE
 
@@ -1476,8 +1483,8 @@
 	name = "roll of bandages"
 	result = /obj/item/natural/bundle/cloth/bandage/full
 	reqs = list(/obj/item/natural/cloth = 3, /obj/item/ash = 1,)
-	craftdiff = 1
-	skillcraft = /datum/skill/craft/crafting
+	craftdiff = 2
+	skillcraft = /datum/skill/misc/treatment
 
 /datum/crafting_recipe/roguetown/impsaw
 	name = "improvised saw"
@@ -1506,3 +1513,10 @@
 	reqs = list(/obj/item/rope = 1, /obj/item/storage/roguebag/crafted = 1,)
 	craftdiff = 0
 	skillcraft = /datum/skill/craft/crafting
+
+/*/datum/crafting_recipe/roguetown/splint
+	name = "splint"
+	result = /obj/item/splint
+	reqs = list(/obj/item/natural/cloth = 2, /obj/item/grown/log/tree/stick = 2,)
+	craftdiff = 2
+	skillcraft = /datum/skill/misc/treatment*/
