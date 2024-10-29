@@ -306,10 +306,11 @@
 	if(!message)
 		return
 
-	to_chat(lich_player, span_boldannounce("Lich [lich_player.real_name] commands: [message]"))
 
 	var/mob/living/carbon/human/lich_player = user
 	
+	to_chat(lich_player, span_boldannounce("Lich [lich_player.real_name] commands: [message]"))
+
 	for(var/mob/player in lich_player.minions)
 		if(player.mind)
 			to_chat(player, span_boldannounce("Lich [lich_player.real_name] commands: [message]"))
