@@ -154,34 +154,31 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "E
 					log_game("Minor Antagonist: Aspirant")
 				if("Maniac")
 					pick_maniac()
-					log_game("Minor Antagonist: Maniac)")
+					log_game("Minor Antagonist: Maniac")
 				if("Lich")
 					pick_lich()
-					log_game("Minor Antagonist: Lich)")	
+					log_game("Minor Antagonist: Lich")	
 				if("Cultists")
 					pick_cultist()
-					log_game("Minor Antagonist: Cultists)")
+					log_game("Major Antagonist: Cultists")
 				if("Extended")
 					log_game("Major Antagonist: Extended")
 		return TRUE
 
 	var/major_roll = rand(1,100)
 	switch(major_roll)
-		if(0 to 24)
+		if(0 to 25)
 			pick_rebels()
 			log_game("Major Antagonist: Rebellion")
-		if(25 to 49)
-			pick_lich()
-			log_game("Major Antagonist: Lich")
-		if(50 to 74)
+		if(26 to 51)
 			pick_cultist()
 			log_game("Major Antagonist: Cultists")
-		if(75 to 89)
+		if(52 to 76)
 			//WWs and Vamps now normally roll together
 			// pick_vampires()
 			pick_werewolves()
 			log_game("Major Antagonist: Werewolves")
-		if(90 to 99)
+		if(77 to 99)
 			log_game("Major Antagonist: Extended") //gotta put something here.
 	
 	pick_bandits()
@@ -189,6 +186,11 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "E
 	if(prob(45))
 		pick_aspirants()
 		log_game("Minor Antagonist: Aspirant")
+	
+	if(prob(30))
+		pick_lich()
+		log_game("Minor Antagonist: Lich")
+
 	// if(prob(10))
 	// 	pick_maniac()
 	// 	log_game("Minor Antagonist: Maniac")
@@ -386,8 +388,8 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "E
 
 /datum/game_mode/chaosmode/proc/pick_lich()
 	restricted_jobs = list(
-	"King",
-	"Queen Consort",
+	"Duke",
+	"Duchess Consort",
 	"Dungeoneer",
 	"Inquisitor",
 	"Confessor",
@@ -396,17 +398,14 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "E
 	"Priest",
 	"Acolyte",
 	"Cleric",
-	"Guard Lieutenant",
+	"Retinue Captain",
 	"Court Magician",
 	"Templar",
 	"Bog Guard",
 	"Bog Master",
 	"Knight",
 	"Mortician",
-	"Desert Rider",
-	"Desert Rider Mercenary",
-	"Grenzelhoft Mercenary",
-	"Sellsword"
+	"Mercenary"
 	)
 	antag_candidates = get_players_for_role(ROLE_LICH)
 	var/datum/mind/lichman = pick_n_take(antag_candidates)
