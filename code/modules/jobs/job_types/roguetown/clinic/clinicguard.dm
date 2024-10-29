@@ -24,7 +24,7 @@
 	cloak = /obj/item/clothing/cloak/raincloak/mortus
 	head = /obj/item/clothing/head/roguetown/helmet/bandanab
 	shirt = /obj/item/clothing/suit/roguetown/armor/gambeson
-	beltr = /obj/item/rogueweapon/sword
+	beltr = /obj/item/rogueweapon/sword/short
 	wrists = /obj/item/clothing/wrists/roguetown/bracers
 	shoes = /obj/item/clothing/shoes/roguetown/armor
 	neck = /obj/item/clothing/neck/roguetown/chaincoif/ironb
@@ -33,7 +33,7 @@
 	belt = /obj/item/storage/belt/rogue/leather
 	armor = /obj/item/clothing/suit/roguetown/armor/brigandine/light
 	backl = /obj/item/storage/backpack/rogue/backpack/rucksack
-	beltl = /obj/item/rogueweapon/flail
+	beltl = /obj/item/rogueweapon/mace/warhammer
 	backpack_contents = list( /obj/item/storage/fancy/ifak = 1, /obj/item/storage/belt/rogue/pouch/coins/mid, /obj/item/rogueweapon/huntingknife, /obj/item/roguekey/clinic)
 
 	ADD_TRAIT(H, TRAIT_NOSTINK, "[type]")
@@ -42,7 +42,7 @@
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/misc/swimming, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/climbing, 3, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/combat/whipsflails, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/mace, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/swords, 4, TRUE)
