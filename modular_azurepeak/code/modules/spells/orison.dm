@@ -246,7 +246,7 @@
 			if (upd)
 				M.update_damage_overlays()
 
-/datum/reagent/water/reaction_mob(mob/living/M, method=TOUCH, reac_volume)
+/datum/reagent/water/blessed/reaction_mob(mob/living/M, method=TOUCH, reac_volume)
 	if (!istype(M))
 		return ..()
 	
@@ -257,6 +257,35 @@
 			M.emote("scream")
 	
 	return ..()
+
+/datum/reagent/water/cursed
+	name = "cursed water"
+	description = "A gift of Devotion. Very slightly heals wounds of the dead and the enlightened."
+
+/datum/reagent/water/cursed/on_mob_life(mob/living/carbon/M)
+	. = ..()
+	var/mob/living/carbon/human/M_hum
+	if(istype(M,/mob/living/carbon/human/))
+		M_hum = M
+	if((M.mob_biotypes & MOB_UNDEAD) || (M_hum.patron.undead_hater == FALSE))
+		M.adjustBruteLoss(-0.1*REM)
+		M.adjustFireLoss(-0.1*REM)
+		M.adjustOxyLoss(-0.1, 0)
+		var/list/our_wounds = M.get_wounds()
+		if (LAZYLEN(our_wounds))
+			var/upd = M.heal_wounds(1)
+			if (upd)
+				M.update_damage_overlays()
+	else
+		M.adjustBruteLoss(-0.1*REM)
+		M.adjustFireLoss(-0.1*REM)
+		M.adjustOxyLoss(-0.1, 0)
+		var/list/our_wounds = M.get_wounds()
+		if (LAZYLEN(our_wounds))
+			var/upd = M.heal_wounds(1)
+			if (upd)
+				M.update_damage_overlays()
+		M.rogfat_add(0.5*REM)
 
 /obj/item/melee/touch_attack/orison/proc/create_water(atom/thing, mob/living/carbon/human/user)
 	// normally we wouldn't use fatigue here to keep in line w/ other holy magic, but we have to since water is a persistent resource
@@ -280,7 +309,9 @@
 				break
 
 			var/water_qty = max(1, holy_skill / 2) + 1
-			var/list/water_contents = list(/datum/reagent/water/blessed = water_qty)
+			var/list/water_contents = list(/datum/reagent/water/cursed = water_qty)
+			if(user.patron.undead_hater == TRUE)
+				water_contents = list(/datum/reagent/water/blessed = water_qty)
 			var/datum/reagents/reagents_to_add = new()
 			reagents_to_add.add_reagent_list(water_contents)
 			reagents_to_add.trans_to(thing, reagents_to_add.total_volume, transfered_by = user, method = INGEST)
