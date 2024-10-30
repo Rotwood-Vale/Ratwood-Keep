@@ -30,6 +30,8 @@
 
 /datum/outfit/job/roguetown/shepherd/pre_equip(mob/living/carbon/human/H)
 	..()
+	head = /obj/item/clothing/head/roguetown/puritan
+	cloak = /obj/item/clothing/cloak/cape/puritan
 	belt = /obj/item/storage/belt/rogue/leather
 	shoes = /obj/item/clothing/shoes/roguetown/armor
 	neck = /obj/item/clothing/neck/roguetown/psicross/silver
