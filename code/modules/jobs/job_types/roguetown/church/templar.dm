@@ -48,7 +48,6 @@
 			cloak = /obj/item/clothing/cloak/tabard/crusader/pestra
 		if("Malum")
 			wrists = /obj/item/clothing/neck/roguetown/psicross/malum
-			H.mind.adjust_skillrank(/datum/skill/craft/blacksmithing, 2, TRUE)
 		if("Ravox")
 			wrists = /obj/item/clothing/neck/roguetown/psicross/ravox
 	armor = /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk
