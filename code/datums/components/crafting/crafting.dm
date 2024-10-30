@@ -405,9 +405,7 @@
 					Deletion += I
 					surroundings -= I
 					amt--
-	var/list/partlist = list(R.parts.len)
-	for(var/M in R.parts)
-		partlist[M] = R.parts[M]
+	var/list/partlist = R.parts.Copy()
 	for(var/A in R.parts)
 		if(istype(A, /datum/reagent))
 			var/datum/reagent/RG = locate(A) in Deletion

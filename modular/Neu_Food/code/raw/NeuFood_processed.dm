@@ -389,7 +389,7 @@
 	icon_state = "saloslice"
 	bitesize = 2
 	slices_num = FALSE
-	slice_path = FALSE
+	slice_path = null
 	list_reagents = list(/datum/reagent/consumable/nutriment = 3)
 
 

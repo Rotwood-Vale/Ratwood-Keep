@@ -13,7 +13,7 @@
 	total_positions = 10
 	spawn_positions = 10 //subject to change, was originally 6
 	min_pq = 0
-	max_pq = null	
+	max_pq = null
 	advclass_cat_rolls = list(CTAG_MERCENARY = 20)
 	PQ_boost_divider = 10
 	wanderer_examine = FALSE
