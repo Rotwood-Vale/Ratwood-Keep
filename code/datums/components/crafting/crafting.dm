@@ -175,8 +175,13 @@
 	var/list/contents = get_surroundings(user)
 //	var/send_feedback = 1
 	var/turf/T = get_step(user, user.dir)
-	var/obj/N = R.result
-	var/result_name = N.name
+	var/obj/N
+	var/result_name
+	if(islist(R.result))
+		N = R.result[1]
+	else
+		N = R.result
+	result_name = N.name
 	if(isopenturf(T) && R.wallcraft)
 		to_chat(user, span_warning("Need to craft this on a wall."))
 		return
