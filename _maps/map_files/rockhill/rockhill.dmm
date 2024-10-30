@@ -16132,11 +16132,6 @@
 /obj/structure/chair/bench/church/smallbench,
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/basement)
-"pjQ" = (
-/turf/closed/wall/mineral/rogue/decostone/long{
-	dir = 1
-	},
-/area/rogue/indoors/shelter/rtfield)
 "pjZ" = (
 /obj/machinery/light/rogue/hearth,
 /turf/open/floor/rogue/cobble,
@@ -24212,9 +24207,6 @@
 	icon_state = "weird1"
 	},
 /area/rogue/indoors/town)
-"xhM" = (
-/turf/closed/wall/mineral/rogue/decostone,
-/area/rogue/indoors/shelter/rtfield)
 "xif" = (
 /obj/structure/fluff/railing/border{
 	dir = 8
@@ -300737,7 +300729,7 @@ fyc
 "}
 (176,1,3) = {"
 cWT
-xhM
+uOL
 jDm
 jDm
 jDm
@@ -301139,7 +301131,7 @@ fyc
 "}
 (177,1,3) = {"
 cWT
-pjQ
+sHm
 nQi
 oif
 fHo
@@ -301541,7 +301533,7 @@ fyc
 "}
 (178,1,3) = {"
 cWT
-pjQ
+sHm
 qxN
 oif
 oif
@@ -301943,7 +301935,7 @@ fyc
 "}
 (179,1,3) = {"
 cWT
-pjQ
+sHm
 vOa
 oif
 oif
@@ -302345,7 +302337,7 @@ fyc
 "}
 (180,1,3) = {"
 cWT
-pjQ
+sHm
 gAL
 oif
 cSF
@@ -302747,7 +302739,7 @@ fyc
 "}
 (181,1,3) = {"
 cWT
-xhM
+uOL
 jDm
 jDm
 jDm
