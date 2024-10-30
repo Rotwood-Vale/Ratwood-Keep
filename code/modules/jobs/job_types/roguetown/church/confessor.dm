@@ -7,6 +7,9 @@
 	spawn_positions = 2
 
 	allowed_races = RACES_TOLERATED_UP
+	allowed_patrons = list(
+		/datum/patron/psydon
+	)
 	allowed_sexes = list(MALE)
 
 	tutorial = "Confessors are shady agents of the church hired to spy on the populace and keep them moral. \
