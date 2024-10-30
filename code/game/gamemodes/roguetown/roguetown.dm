@@ -387,6 +387,11 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "E
 	restricted_jobs = list()
 
 /datum/game_mode/chaosmode/proc/pick_lich()
+
+	// High pop only
+	if(num_players() < 70)
+		return FALSE
+
 	restricted_jobs = list(
 	"Duke",
 	"Duchess Consort",
