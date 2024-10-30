@@ -91,59 +91,59 @@
 	name = "lute"
 	desc = "Its graceful curves were designed to weave joyful melodies."
 	icon_state = "lute"
-	song_list = list("Song 1" = 'sound/music/instruments/lute (1).ogg',
-	"Song 2" = 'sound/music/instruments/lute (2).ogg',
-	"Song 3" = 'sound/music/instruments/lute (3).ogg',
-	"Song 4" = 'sound/music/instruments/lute (4).ogg',
-	"Song 5" = 'sound/music/instruments/lute (5).ogg',
-	"Song 6" = 'sound/music/instruments/lute (6).ogg',
-	"Song 7" = 'sound/music/instruments/lute (7).ogg')
+	song_list = list("A Knight's Return" = 'sound/music/instruments/lute (1).ogg',
+	"Amongst Fare Friends" = 'sound/music/instruments/lute (2).ogg',
+	"The Road Traveled by Few" = 'sound/music/instruments/lute (3).ogg',
+	"Tip Thine Tankard" = 'sound/music/instruments/lute (4).ogg',
+	"A Reed On the Wind" = 'sound/music/instruments/lute (5).ogg',
+	"Jests On Steel Ears" = 'sound/music/instruments/lute (6).ogg',
+	"Merchant in the Mire" = 'sound/music/instruments/lute (7).ogg')
 
 /obj/item/rogue/instrument/accord
 	name = "accordion"
 	desc = "A harmonious vessel of nostalgia and celebration."
 	icon_state = "accordion"
-	song_list = list("Song 1" = 'sound/music/instruments/accord (1).ogg',
-	"Song 2" = 'sound/music/instruments/accord (2).ogg',
-	"Song 3" = 'sound/music/instruments/accord (3).ogg',
-	"Song 4" = 'sound/music/instruments/accord (4).ogg',
-	"Song 5" = 'sound/music/instruments/accord (5).ogg',
-	"Song 6" = 'sound/music/instruments/accord (6).ogg')
+	song_list = list("Her Healing Tears" = 'sound/music/instruments/accord (1).ogg',
+	"Peddler's Tale" = 'sound/music/instruments/accord (2).ogg',
+	"We Toil Together" = 'sound/music/instruments/accord (3).ogg',
+	"Just One More, Tavern Wench" = 'sound/music/instruments/accord (4).ogg',
+	"Moonlight Carnival" = 'sound/music/instruments/accord (5).ogg',
+	"'Ye Best Be Goin'" = 'sound/music/instruments/accord (6).ogg')
 
 /obj/item/rogue/instrument/guitar
 	name = "guitar"
 	desc = "This is a guitar." // i do not like this instrument, i refuse to describe it any better.
 	icon_state = "guitar"
-	song_list = list("Song 1" = 'sound/music/instruments/guitar (1).ogg',
-	"Song 2" = 'sound/music/instruments/guitar (2).ogg',
-	"Song 3" = 'sound/music/instruments/guitar (3).ogg',
-	"Song 4" = 'sound/music/instruments/guitar (4).ogg',
-	"Song 5" = 'sound/music/instruments/guitar (5).ogg',
-	"Song 6" = 'sound/music/instruments/guitar (6).ogg')
+	song_list = list("Fire-Cast Shadows" = 'sound/music/instruments/guitar (1).ogg',
+	"The Forced Hand" = 'sound/music/instruments/guitar (2).ogg',
+	"Regrets Unpaid" = 'sound/music/instruments/guitar (3).ogg',
+	"'Took the Mammon and Ran'" = 'sound/music/instruments/guitar (4).ogg',
+	"Poor Man's Tithe" = 'sound/music/instruments/guitar (5).ogg',
+	"In His Arms Ye'll Find Me" = 'sound/music/instruments/guitar (6).ogg')
 
 /obj/item/rogue/instrument/harp
 	name = "harp"
 	desc = "A harp of elven craftsmanship."
 	icon_state = "harp"
-	song_list = list("Song 1" = 'sound/music/instruments/harb (1).ogg',
-	"Song 2" = 'sound/music/instruments/harb (2).ogg',
-	"Song 3" = 'sound/music/instruments/harb (3).ogg')
+	song_list = list("Through Thine Window, He Glanced" = 'sound/music/instruments/harb (1).ogg',
+	"The Lady of Red Silks" = 'sound/music/instruments/harb (2).ogg',
+	"Eora Doth Watches" = 'sound/music/instruments/harb (3).ogg')
 
 /obj/item/rogue/instrument/flute
 	name = "flute"
 	desc = "A slender flute carefully carved from a smooth wood piece."
 	icon_state = "flute"
-	song_list = list("Song 1" = 'sound/music/instruments/flute (1).ogg',
-	"Song 2" = 'sound/music/instruments/flute (2).ogg',
-	"Song 3" = 'sound/music/instruments/flute (3).ogg',
-	"Song 4" = 'sound/music/instruments/flute (4).ogg',
-	"Song 5" = 'sound/music/instruments/flute (5).ogg',
-	"Song 6" = 'sound/music/instruments/flute (6).ogg')
+	song_list = list("Half-Dragon's Ten Mammon" = 'sound/music/instruments/flute (1).ogg',
+	"'The Local Favorite'" = 'sound/music/instruments/flute (2).ogg',
+	"Rous in the Cellar" = 'sound/music/instruments/flute (3).ogg',
+	"Her Boots, So Incandescent" = 'sound/music/instruments/flute (4).ogg',
+	"Moondust Minx" = 'sound/music/instruments/flute (5).ogg',
+	"Quest to the Ends" = 'sound/music/instruments/flute (6).ogg')
 
 /obj/item/rogue/instrument/drum
 	name = "drum"
 	desc = "Fashioned from taut skins across a sturdy frame, pulses like a giant heartbeat."
 	icon_state = "drum"
-	song_list = list("Song 1" = 'sound/music/instruments/drum (1).ogg',
-	"Song 2" = 'sound/music/instruments/drum (2).ogg',
-	"Song 3" = 'sound/music/instruments/drum (3).ogg')
+	song_list = list("Barbarian's Moot" = 'sound/music/instruments/drum (1).ogg',
+	"Muster the Wardens" = 'sound/music/instruments/drum (2).ogg',
+	"The Earth That Quakes" = 'sound/music/instruments/drum (3).ogg')
