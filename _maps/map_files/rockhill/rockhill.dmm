@@ -21587,10 +21587,6 @@
 /obj/machinery/light/rogue/torchholder,
 /turf/closed/wall/mineral/rogue/stonebrick,
 /area/rogue/under/town/sewer)
-"uAS" = (
-/obj/structure/flora/newtree,
-/turf/closed,
-/area/rogue/outdoors/bog)
 "uBf" = (
 /obj/structure/mannequin/male,
 /turf/open/floor/rogue/blocks,
@@ -274944,7 +274940,7 @@ sYx
 odi
 sYx
 kWT
-khC
+kWT
 uRH
 odi
 wLx
@@ -276159,7 +276155,7 @@ sYx
 sYx
 odi
 uRH
-khC
+kWT
 oXL
 oXL
 sYx
@@ -277369,7 +277365,7 @@ sYx
 sYx
 oXL
 kWT
-khC
+kWT
 oXL
 sYx
 sYx
@@ -278568,7 +278564,7 @@ sYx
 sYx
 odi
 sYx
-jpp
+oXL
 odi
 sYx
 sYx
@@ -296269,7 +296265,7 @@ sYx
 sYx
 odi
 odi
-khC
+kWT
 wLx
 wLx
 odi
@@ -299066,7 +299062,7 @@ odi
 odi
 wLx
 kWT
-khC
+kWT
 sYx
 odi
 odi
@@ -305535,7 +305531,7 @@ odi
 sYx
 oXL
 sYx
-uAS
+kWT
 odi
 sYx
 wLx
@@ -313133,7 +313129,7 @@ sYx
 odi
 odi
 odi
-khC
+kWT
 sYx
 sYx
 sYx
@@ -314338,7 +314334,7 @@ wLx
 wLx
 odi
 sYx
-khC
+kWT
 sYx
 sYx
 odi
