@@ -6,7 +6,7 @@
 	total_positions = 2
 	spawn_positions = 2
 
-	allowed_races = RACES_ALL_KINDS
+	allowed_races = RACES_VERY_SHUNNED_UP
 	allowed_sexes = list(MALE, FEMALE)
 
 	tutorial = "A mercenary of the Merchant's Guild is paid well, but given little to no training. That's what you are in title. A mercenary. \
