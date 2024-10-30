@@ -121,7 +121,7 @@
 	if(!H || !H.mind || !patron)
 		return
 
-	var/list/spelllist = list(/obj/effect/proc_holder/spell/targeted/churn)
+	var/list/spelllist = list()
 	if(islist(patron.t0))
 		spelllist += patron.t0
 	else if (patron.t0)

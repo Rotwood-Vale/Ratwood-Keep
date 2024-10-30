@@ -30,6 +30,7 @@
 			return
 	to_chat(user, span_red("I failed to perform the rites."))
 
+/*
 /obj/effect/proc_holder/spell/targeted/churn
 	name = "Churn Undead"
 	range = 8
@@ -82,6 +83,7 @@
 				L.visible_message(span_warning("[L] resists being churned!"), span_userdanger("I resist being churned!"))
 	..()
 	return TRUE
+*/
 
 /obj/effect/proc_holder/spell/targeted/soulspeak
 	name = "Speak with Soul"
