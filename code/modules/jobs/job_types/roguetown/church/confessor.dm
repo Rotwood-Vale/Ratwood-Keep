@@ -32,12 +32,14 @@
 	..()
 	belt = /obj/item/storage/belt/rogue/leather
 	shoes = /obj/item/clothing/shoes/roguetown/armor
+	neck = /obj/item/clothing/neck/roguetown/psicross/silver
 	pants = /obj/item/clothing/under/roguetown/tights/black
 	beltr = /obj/item/storage/belt/rogue/pouch/coins/poor
 	mask = /obj/item/clothing/mask/rogue/shepherd
 	armor = /obj/item/clothing/suit/roguetown/armor/leather/vest/black
 	beltl = /obj/item/rogueweapon/mace/cudgel
 	wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
+	backl = /obj/item/storage/backpack/rogue/satchel
 	backpack_contents = list(/obj/item/keyring/shepherd = 1)
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/misc/sewing, 1, TRUE)
