@@ -31,7 +31,7 @@
 		moveup += round((user.mind.get_skill_level(appro_skill) * 6) * (breakthrough == 1 ? 1.5 : 1))
 		moveup -= 3 * craftdiff
 		if(!user.mind.get_skill_level(appro_skill))
-			proab = 23
+			proab = 50
 	if(prob(proab))
 		moveup = 0
 	progress = min(progress + moveup, 100)
