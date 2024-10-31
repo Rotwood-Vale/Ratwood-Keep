@@ -8,7 +8,7 @@
 	opacity = FALSE//from TRUE
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
 
-	var/dissipate_time = 30 MINUTES
+	var/dissipate_time = 60 MINUTES
 
 /obj/structure/fog_wall/Initialize()
 	. = ..()

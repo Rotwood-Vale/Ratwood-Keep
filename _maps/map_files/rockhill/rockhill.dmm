@@ -2139,6 +2139,10 @@
 "cip" = (
 /turf/closed/wall/mineral/rogue/roofwall/outercorner,
 /area/rogue/indoors/town/manor)
+"ciq" = (
+/obj/structure/fog_wall,
+/turf/closed/mineral/random/rogue/med,
+/area/rogue/under/cavewet/bogcaves)
 "ciL" = (
 /obj/structure/closet/crate/chest{
 	lockid = "town_barracks"
@@ -3092,6 +3096,7 @@
 /obj/structure/bars{
 	alpha = 150
 	},
+/obj/structure/fog_wall,
 /turf/open/transparent/openspace,
 /area/rogue/outdoors/bog)
 "cZh" = (
@@ -5669,6 +5674,12 @@
 /obj/item/reagent_containers/food/snacks/smallrat,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/indoors/town/tavern)
+"foT" = (
+/obj/structure/fog_wall,
+/turf/open/floor/rogue/rooftop/green/corner1{
+	dir = 9
+	},
+/area/rogue/outdoors/bog)
 "fpa" = (
 /obj/structure/table/wood{
 	dir = 1;
@@ -7659,6 +7670,12 @@
 "hhH" = (
 /turf/closed/wall/mineral/rogue/craftstone,
 /area/rogue/under/cave)
+"hib" = (
+/obj/structure/fog_wall,
+/turf/open/floor/rogue/rooftop/green{
+	dir = 8
+	},
+/area/rogue/outdoors/bog)
 "hiq" = (
 /obj/structure/fluff/railing/wood{
 	dir = 1;
@@ -8738,6 +8755,12 @@
 /obj/structure/chair/bench/coucha/r,
 /turf/open/floor/rogue/tile/bath,
 /area/rogue/indoors/town/bath)
+"imS" = (
+/obj/structure/fog_wall,
+/turf/open/floor/rogue/rooftop/green/corner1{
+	dir = 5
+	},
+/area/rogue/outdoors/bog)
 "inZ" = (
 /obj/structure/closet/crate/roguecloset/inn/chest,
 /turf/open/floor/rogue/ruinedwood{
@@ -10499,6 +10522,12 @@
 /obj/machinery/light/rogue/wallfire/candle/blue,
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/basement)
+"jYY" = (
+/obj/structure/fog_wall,
+/turf/open/floor/rogue/rooftop/green/corner1{
+	dir = 1
+	},
+/area/rogue/outdoors/bog)
 "jZd" = (
 /turf/open/floor/carpet/purple,
 /area/rogue/indoors/town/magician)
@@ -15533,8 +15562,8 @@
 /area/rogue/outdoors/rtfield)
 "oIs" = (
 /obj/structure/fog_wall,
-/turf/open/transparent/openspace,
-/area/rogue/outdoors/bog)
+/turf/closed/mineral/random/rogue,
+/area/rogue/under/cavewet/bogcaves)
 "oIv" = (
 /obj/structure/stairs,
 /turf/open/floor/rogue/cobble,
@@ -21282,6 +21311,10 @@
 	},
 /turf/open/floor/rogue/grass,
 /area/rogue/outdoors/rtfield)
+"ulZ" = (
+/obj/structure/fog_wall,
+/turf/open/floor/rogue/rooftop/green/corner1,
+/area/rogue/outdoors/bog)
 "uma" = (
 /obj/structure/chair/bench/couchablack,
 /turf/open/floor/carpet/royalblack,
@@ -128897,7 +128930,7 @@ whb
 whb
 whb
 whb
-whb
+oIs
 whb
 whb
 whb
@@ -129299,7 +129332,7 @@ whb
 whb
 whb
 whb
-whb
+oIs
 whb
 whb
 whb
@@ -129701,7 +129734,7 @@ whb
 whb
 whb
 whb
-whb
+oIs
 whb
 whb
 whb
@@ -130103,7 +130136,7 @@ whb
 whb
 whb
 whb
-whb
+oIs
 whb
 whb
 whb
@@ -130505,7 +130538,7 @@ whb
 whb
 whb
 whb
-whb
+oIs
 whb
 whb
 whb
@@ -130907,7 +130940,7 @@ whb
 whb
 whb
 whb
-whb
+oIs
 whb
 whb
 whb
@@ -131309,7 +131342,7 @@ whb
 whb
 whb
 whb
-whb
+oIs
 whb
 whb
 whb
@@ -131711,7 +131744,7 @@ whb
 whb
 whb
 whb
-whb
+oIs
 whb
 whb
 whb
@@ -132113,7 +132146,7 @@ whb
 whb
 whb
 whb
-whb
+oIs
 whb
 whb
 whb
@@ -132515,7 +132548,7 @@ whb
 whb
 whb
 whb
-whb
+oIs
 whb
 whb
 whb
@@ -132917,7 +132950,7 @@ whb
 whb
 whb
 whb
-whb
+oIs
 whb
 whb
 whb
@@ -133319,7 +133352,7 @@ whb
 whb
 whb
 whb
-whb
+oIs
 whb
 whb
 whb
@@ -133721,7 +133754,7 @@ whb
 whb
 whb
 whb
-whb
+oIs
 whb
 whb
 whb
@@ -134123,7 +134156,7 @@ whb
 whb
 whb
 whb
-whb
+oIs
 whb
 whb
 whb
@@ -134525,7 +134558,7 @@ whb
 whb
 whb
 whb
-whb
+oIs
 whb
 whb
 whb
@@ -134927,7 +134960,7 @@ whb
 whb
 whb
 whb
-whb
+oIs
 whb
 whb
 whb
@@ -135329,7 +135362,7 @@ whb
 whb
 whb
 whb
-whb
+oIs
 whb
 whb
 whb
@@ -135731,7 +135764,7 @@ whb
 whb
 whb
 whb
-whb
+oIs
 whb
 whb
 whb
@@ -136133,7 +136166,7 @@ whb
 whb
 whb
 whb
-whb
+oIs
 whb
 whb
 whb
@@ -136535,7 +136568,7 @@ whb
 whb
 whb
 whb
-whb
+oIs
 whb
 whb
 whb
@@ -136937,7 +136970,7 @@ whb
 whb
 whb
 whb
-whb
+oIs
 whb
 whb
 whb
@@ -137339,7 +137372,7 @@ whb
 whb
 whb
 whb
-whb
+oIs
 whb
 whb
 whb
@@ -137741,7 +137774,7 @@ whb
 whb
 whb
 whb
-whb
+oIs
 whb
 whb
 whb
@@ -138143,7 +138176,7 @@ whb
 whb
 whb
 whb
-whb
+oIs
 whb
 whb
 whb
@@ -138545,7 +138578,7 @@ whb
 whb
 whb
 whb
-whb
+oIs
 whb
 whb
 whb
@@ -138947,7 +138980,7 @@ whb
 whb
 whb
 whb
-whb
+oIs
 whb
 whb
 whb
@@ -139349,7 +139382,7 @@ whb
 whb
 whb
 whb
-whb
+oIs
 whb
 whb
 whb
@@ -139751,7 +139784,7 @@ whb
 whb
 whb
 whb
-whb
+oIs
 whb
 whb
 whb
@@ -140153,7 +140186,7 @@ whb
 whb
 whb
 whb
-whb
+oIs
 whb
 whb
 whb
@@ -140555,7 +140588,7 @@ whb
 whb
 whb
 whb
-whb
+oIs
 whb
 whb
 whb
@@ -140957,7 +140990,7 @@ whb
 whb
 whb
 whb
-whb
+oIs
 whb
 whb
 whb
@@ -141359,7 +141392,7 @@ whb
 whb
 whb
 whb
-whb
+oIs
 whb
 whb
 whb
@@ -141761,7 +141794,7 @@ whb
 whb
 whb
 whb
-whb
+oIs
 whb
 whb
 whb
@@ -142163,7 +142196,7 @@ whb
 whb
 whb
 whb
-whb
+oIs
 whb
 whb
 whb
@@ -142565,7 +142598,7 @@ whb
 whb
 whb
 whb
-whb
+oIs
 whb
 whb
 whb
@@ -142967,7 +143000,7 @@ whb
 whb
 whb
 whb
-whb
+oIs
 whb
 whb
 whb
@@ -143369,7 +143402,7 @@ whb
 whb
 whb
 whb
-whb
+oIs
 whb
 whb
 whb
@@ -143771,7 +143804,7 @@ whb
 whb
 whb
 whb
-whb
+oIs
 whb
 whb
 whb
@@ -144173,7 +144206,7 @@ whb
 whb
 whb
 whb
-whb
+oIs
 whb
 whb
 whb
@@ -144575,7 +144608,7 @@ whb
 whb
 whb
 whb
-whb
+oIs
 whb
 whb
 whb
@@ -144977,7 +145010,7 @@ whb
 whb
 whb
 whb
-whb
+oIs
 whb
 whb
 whb
@@ -145379,7 +145412,7 @@ whb
 whb
 whb
 whb
-whb
+oIs
 whb
 whb
 whb
@@ -145781,7 +145814,7 @@ whb
 whb
 whb
 whb
-whb
+oIs
 whb
 whb
 whb
@@ -146183,7 +146216,7 @@ whb
 whb
 whb
 whb
-whb
+oIs
 whb
 whb
 whb
@@ -146585,7 +146618,7 @@ whb
 whb
 whb
 whb
-whb
+oIs
 whb
 whb
 whb
@@ -146987,7 +147020,7 @@ whb
 whb
 whb
 whb
-whb
+oIs
 whb
 whb
 whb
@@ -147389,7 +147422,7 @@ whb
 whb
 whb
 whb
-whb
+oIs
 whb
 whb
 whb
@@ -147791,7 +147824,7 @@ whb
 whb
 whb
 whb
-whb
+oIs
 whb
 whb
 whb
@@ -148193,7 +148226,7 @@ whb
 whb
 whb
 whb
-whb
+oIs
 whb
 whb
 whb
@@ -148595,7 +148628,7 @@ whb
 whb
 whb
 whb
-whb
+oIs
 whb
 whb
 whb
@@ -148997,7 +149030,7 @@ whb
 whb
 whb
 whb
-whb
+oIs
 whb
 whb
 whb
@@ -149399,7 +149432,7 @@ whb
 whb
 whb
 whb
-whb
+oIs
 whb
 whb
 whb
@@ -149801,7 +149834,7 @@ whb
 whb
 whb
 whb
-whb
+oIs
 whb
 whb
 whb
@@ -150203,7 +150236,7 @@ whb
 whb
 whb
 whb
-whb
+oIs
 whb
 whb
 whb
@@ -150605,7 +150638,7 @@ whb
 whb
 whb
 whb
-whb
+oIs
 whb
 whb
 whb
@@ -151007,7 +151040,7 @@ whb
 whb
 whb
 whb
-whb
+oIs
 whb
 whb
 whb
@@ -151409,7 +151442,7 @@ whb
 whb
 whb
 whb
-whb
+oIs
 whb
 whb
 whb
@@ -151811,7 +151844,7 @@ whb
 whb
 whb
 whb
-whb
+oIs
 whb
 whb
 whb
@@ -152213,7 +152246,7 @@ whb
 whb
 whb
 whb
-whb
+oIs
 whb
 whb
 whb
@@ -152615,7 +152648,7 @@ whb
 whb
 whb
 whb
-whb
+oIs
 whb
 whb
 whb
@@ -153017,7 +153050,7 @@ whb
 whb
 whb
 whb
-whb
+oIs
 whb
 whb
 whb
@@ -153419,7 +153452,7 @@ whb
 whb
 whb
 whb
-whb
+oIs
 whb
 whb
 whb
@@ -153821,7 +153854,7 @@ whb
 whb
 whb
 whb
-whb
+oIs
 whb
 whb
 whb
@@ -154223,7 +154256,7 @@ whb
 whb
 whb
 whb
-whb
+oIs
 whb
 whb
 whb
@@ -154625,7 +154658,7 @@ whb
 whb
 whb
 whb
-whb
+oIs
 whb
 whb
 whb
@@ -155027,7 +155060,7 @@ whb
 whb
 whb
 whb
-whb
+oIs
 whb
 whb
 whb
@@ -155429,7 +155462,7 @@ whb
 whb
 whb
 whb
-whb
+oIs
 whb
 whb
 whb
@@ -155831,7 +155864,7 @@ whb
 whb
 whb
 whb
-whb
+oIs
 whb
 whb
 whb
@@ -156233,7 +156266,7 @@ whb
 whb
 whb
 whb
-whb
+oIs
 whb
 whb
 whb
@@ -156635,7 +156668,7 @@ whb
 whb
 whb
 whb
-whb
+oIs
 whb
 whb
 whb
@@ -157037,7 +157070,7 @@ whb
 whb
 whb
 whb
-whb
+oIs
 whb
 whb
 whb
@@ -157439,7 +157472,7 @@ whb
 whb
 whb
 whb
-whb
+oIs
 whb
 whb
 whb
@@ -157841,7 +157874,7 @@ whb
 whb
 whb
 whb
-whb
+oIs
 whb
 whb
 whb
@@ -158243,7 +158276,7 @@ whb
 whb
 whb
 whb
-whb
+oIs
 whb
 whb
 whb
@@ -158645,7 +158678,7 @@ whb
 whb
 whb
 whb
-whb
+oIs
 whb
 whb
 whb
@@ -159047,7 +159080,7 @@ whb
 whb
 whb
 whb
-whb
+oIs
 whb
 whb
 whb
@@ -159449,7 +159482,7 @@ whb
 whb
 whb
 whb
-whb
+oIs
 whb
 whb
 whb
@@ -159851,7 +159884,7 @@ whb
 whb
 whb
 whb
-whb
+oIs
 whb
 whb
 whb
@@ -160253,7 +160286,7 @@ whb
 whb
 whb
 whb
-whb
+oIs
 whb
 whb
 whb
@@ -160655,7 +160688,7 @@ whb
 whb
 whb
 whb
-whb
+oIs
 whb
 whb
 whb
@@ -161057,7 +161090,7 @@ whb
 whb
 whb
 whb
-whb
+oIs
 whb
 whb
 whb
@@ -161459,7 +161492,7 @@ whb
 whb
 whb
 whb
-whb
+oIs
 whb
 whb
 whb
@@ -161861,7 +161894,7 @@ whb
 whb
 whb
 whb
-whb
+oIs
 whb
 whb
 whb
@@ -162263,7 +162296,7 @@ whb
 whb
 whb
 whb
-whb
+oIs
 whb
 whb
 whb
@@ -162665,7 +162698,7 @@ whb
 whb
 whb
 whb
-whb
+oIs
 whb
 whb
 whb
@@ -163067,7 +163100,7 @@ whb
 whb
 whb
 whb
-whb
+oIs
 whb
 whb
 whb
@@ -163469,7 +163502,7 @@ whb
 whb
 whb
 whb
-whb
+oIs
 whb
 whb
 whb
@@ -163871,7 +163904,7 @@ whb
 whb
 whb
 whb
-whb
+oIs
 whb
 whb
 whb
@@ -164273,7 +164306,7 @@ whb
 whb
 whb
 whb
-whb
+oIs
 whb
 whb
 whb
@@ -164675,7 +164708,7 @@ whb
 whb
 whb
 whb
-whb
+oIs
 whb
 whb
 whb
@@ -165077,7 +165110,7 @@ whb
 whb
 whb
 whb
-whb
+oIs
 whb
 whb
 whb
@@ -165479,7 +165512,7 @@ whb
 whb
 whb
 whb
-whb
+oIs
 whb
 whb
 whb
@@ -165881,7 +165914,7 @@ whb
 whb
 whb
 whb
-whb
+oIs
 whb
 whb
 whb
@@ -166283,7 +166316,7 @@ whb
 whb
 whb
 whb
-whb
+oIs
 whb
 whb
 whb
@@ -166685,7 +166718,7 @@ whb
 whb
 whb
 whb
-whb
+oIs
 whb
 whb
 whb
@@ -167087,7 +167120,7 @@ whb
 whb
 whb
 whb
-whb
+oIs
 whb
 whb
 whb
@@ -167489,7 +167522,7 @@ whb
 whb
 whb
 whb
-whb
+oIs
 whb
 whb
 whb
@@ -167891,7 +167924,7 @@ whb
 whb
 whb
 whb
-whb
+oIs
 whb
 whb
 whb
@@ -168293,7 +168326,7 @@ whb
 whb
 whb
 whb
-whb
+oIs
 whb
 whb
 whb
@@ -168695,7 +168728,7 @@ whb
 whb
 whb
 whb
-whb
+oIs
 whb
 whb
 whb
@@ -169097,7 +169130,7 @@ whb
 whb
 whb
 whb
-whb
+oIs
 whb
 whb
 whb
@@ -169499,7 +169532,7 @@ whb
 whb
 whb
 whb
-whb
+oIs
 whb
 whb
 whb
@@ -169901,7 +169934,7 @@ whb
 whb
 whb
 whb
-whb
+oIs
 whb
 whb
 whb
@@ -170303,7 +170336,7 @@ whb
 whb
 whb
 whb
-whb
+oIs
 whb
 whb
 whb
@@ -170705,7 +170738,7 @@ whb
 whb
 whb
 whb
-whb
+oIs
 whb
 whb
 whb
@@ -171107,7 +171140,7 @@ whb
 whb
 whb
 whb
-whb
+oIs
 whb
 whb
 whb
@@ -171509,7 +171542,7 @@ iad
 whb
 whb
 whb
-whb
+oIs
 whb
 whb
 whb
@@ -171911,7 +171944,7 @@ iad
 whb
 whb
 whb
-whb
+oIs
 whb
 whb
 whb
@@ -172313,7 +172346,7 @@ iad
 whb
 whb
 whb
-whb
+oIs
 whb
 whb
 whb
@@ -172715,7 +172748,7 @@ iad
 whb
 whb
 whb
-whb
+oIs
 whb
 whb
 whb
@@ -173117,7 +173150,7 @@ iad
 iad
 whb
 whb
-whb
+oIs
 whb
 whb
 whb
@@ -173519,7 +173552,7 @@ iad
 iad
 whb
 whb
-whb
+oIs
 whb
 whb
 whb
@@ -173921,7 +173954,7 @@ iad
 iad
 iad
 whb
-whb
+oIs
 whb
 whb
 whb
@@ -174323,7 +174356,7 @@ iad
 iad
 iad
 whb
-whb
+oIs
 whb
 whb
 whb
@@ -174725,8 +174758,8 @@ iad
 iad
 iad
 whb
-whb
-whb
+oIs
+oIs
 whb
 whb
 whb
@@ -175128,7 +175161,7 @@ iad
 iad
 whb
 whb
-whb
+oIs
 whb
 whb
 whb
@@ -175530,7 +175563,7 @@ iad
 iad
 whb
 whb
-whb
+oIs
 whb
 whb
 whb
@@ -175932,7 +175965,7 @@ iad
 iad
 iad
 whb
-whb
+oIs
 whb
 whb
 whb
@@ -176334,7 +176367,7 @@ iad
 iad
 iad
 whb
-whb
+oIs
 whb
 whb
 whb
@@ -176736,7 +176769,7 @@ iad
 iad
 iad
 whb
-whb
+oIs
 whb
 whb
 whb
@@ -177138,7 +177171,7 @@ iad
 iad
 iad
 whb
-whb
+oIs
 whb
 whb
 whb
@@ -177540,7 +177573,7 @@ iad
 iad
 iad
 whb
-whb
+oIs
 whb
 whb
 whb
@@ -177942,7 +177975,7 @@ iad
 iad
 iad
 whb
-whb
+oIs
 whb
 whb
 whb
@@ -178344,7 +178377,7 @@ iad
 iad
 iad
 whb
-whb
+oIs
 whb
 whb
 whb
@@ -178746,7 +178779,7 @@ iad
 iad
 iad
 whb
-whb
+oIs
 whb
 whb
 whb
@@ -179148,7 +179181,7 @@ iad
 iad
 iad
 whb
-whb
+oIs
 whb
 whb
 whb
@@ -179550,7 +179583,7 @@ iad
 iad
 iad
 whb
-whb
+oIs
 whb
 whb
 whb
@@ -179952,7 +179985,7 @@ iad
 iad
 iad
 whb
-whb
+oIs
 whb
 whb
 whb
@@ -180319,33 +180352,33 @@ fPR
 nFg
 txa
 whb
-whb
-whb
-whb
-whb
-whb
-whb
-whb
-whb
-whb
-whb
-whb
-whb
-whb
-whb
-whb
-whb
-whb
-whb
-whb
-whb
-whb
-whb
-whb
-whb
-whb
-whb
-whb
+oIs
+oIs
+oIs
+oIs
+oIs
+oIs
+oIs
+oIs
+oIs
+oIs
+oIs
+oIs
+oIs
+oIs
+oIs
+oIs
+oIs
+oIs
+oIs
+oIs
+oIs
+oIs
+oIs
+oIs
+oIs
+oIs
+oIs
 jUl
 jUl
 jUl
@@ -180353,8 +180386,8 @@ jUl
 jUl
 jUl
 jUl
-whb
-whb
+oIs
+oIs
 whb
 whb
 whb
@@ -180721,7 +180754,7 @@ fPR
 fPR
 txa
 whb
-whb
+oIs
 whb
 whb
 whb
@@ -181123,7 +181156,7 @@ txa
 txa
 txa
 whb
-whb
+oIs
 whb
 whb
 whb
@@ -181525,7 +181558,7 @@ whb
 whb
 whb
 whb
-whb
+oIs
 whb
 whb
 whb
@@ -181927,7 +181960,7 @@ whb
 whb
 whb
 whb
-whb
+oIs
 whb
 whb
 whb
@@ -182329,7 +182362,7 @@ whb
 whb
 whb
 whb
-whb
+oIs
 whb
 whb
 whb
@@ -182731,7 +182764,7 @@ whb
 whb
 whb
 whb
-whb
+oIs
 whb
 whb
 whb
@@ -183133,7 +183166,7 @@ whb
 whb
 whb
 whb
-whb
+oIs
 whb
 whb
 whb
@@ -183535,7 +183568,7 @@ whb
 whb
 whb
 whb
-whb
+oIs
 whb
 whb
 whb
@@ -183937,7 +183970,7 @@ whb
 whb
 whb
 whb
-whb
+oIs
 whb
 whb
 whb
@@ -184339,7 +184372,7 @@ whb
 whb
 whb
 whb
-whb
+oIs
 whb
 whb
 whb
@@ -184741,7 +184774,7 @@ whb
 whb
 whb
 whb
-whb
+oIs
 whb
 whb
 whb
@@ -185143,7 +185176,7 @@ whb
 whb
 whb
 whb
-whb
+oIs
 whb
 whb
 whb
@@ -185545,7 +185578,7 @@ whb
 whb
 whb
 whb
-whb
+oIs
 whb
 whb
 whb
@@ -185920,34 +185953,34 @@ vRu
 vRu
 vRu
 vRu
-whb
-whb
-whb
-whb
-whb
-whb
-whb
-whb
-whb
-whb
-whb
-whb
-whb
-whb
-whb
-whb
-whb
-whb
-whb
-whb
-whb
-whb
-whb
-whb
-whb
-whb
-whb
-whb
+oIs
+oIs
+oIs
+oIs
+oIs
+oIs
+oIs
+oIs
+oIs
+oIs
+oIs
+oIs
+oIs
+oIs
+oIs
+oIs
+oIs
+oIs
+oIs
+oIs
+oIs
+oIs
+oIs
+oIs
+oIs
+oIs
+oIs
+oIs
 whb
 whb
 whb
@@ -186322,7 +186355,7 @@ vRu
 vRu
 vRu
 vRu
-whb
+oIs
 whb
 whb
 whb
@@ -186724,7 +186757,7 @@ vRu
 vRu
 vRu
 vRu
-whb
+oIs
 whb
 whb
 whb
@@ -187126,7 +187159,7 @@ vRu
 vRu
 vRu
 vRu
-whb
+oIs
 whb
 whb
 whb
@@ -187528,7 +187561,7 @@ vRu
 vRu
 vRu
 vRu
-whb
+oIs
 whb
 whb
 whb
@@ -187930,7 +187963,7 @@ vRu
 vRu
 vRu
 vRu
-whb
+oIs
 whb
 whb
 whb
@@ -188332,7 +188365,7 @@ vRu
 vRu
 vRu
 vRu
-whb
+oIs
 whb
 whb
 whb
@@ -188734,7 +188767,7 @@ vRu
 vRu
 vRu
 vRu
-whb
+oIs
 whb
 whb
 whb
@@ -189136,7 +189169,7 @@ vRu
 vRu
 vRu
 vRu
-whb
+oIs
 whb
 whb
 whb
@@ -189538,7 +189571,7 @@ vRu
 vRu
 vRu
 vRu
-whb
+oIs
 whb
 whb
 whb
@@ -189940,7 +189973,7 @@ vRu
 vRu
 vRu
 vRu
-whb
+oIs
 whb
 whb
 whb
@@ -190342,7 +190375,7 @@ vRu
 vRu
 vRu
 vRu
-whb
+oIs
 whb
 whb
 whb
@@ -190744,7 +190777,7 @@ vRu
 vRu
 vRu
 vRu
-whb
+oIs
 whb
 whb
 whb
@@ -191146,7 +191179,7 @@ vRu
 vRu
 vRu
 vRu
-whb
+oIs
 whb
 whb
 whb
@@ -191548,7 +191581,7 @@ vRu
 vRu
 vRu
 vRu
-whb
+oIs
 whb
 whb
 whb
@@ -191950,7 +191983,7 @@ vRu
 vRu
 vRu
 vRu
-whb
+oIs
 whb
 whb
 whb
@@ -192352,7 +192385,7 @@ vRu
 vRu
 vRu
 vRu
-whb
+oIs
 whb
 whb
 whb
@@ -192754,7 +192787,7 @@ vRu
 vRu
 vRu
 vRu
-whb
+oIs
 whb
 whb
 whb
@@ -193156,7 +193189,7 @@ vRu
 vRu
 vRu
 vRu
-whb
+oIs
 whb
 whb
 whb
@@ -193558,7 +193591,7 @@ vRu
 vRu
 vRu
 vRu
-whb
+oIs
 whb
 whb
 whb
@@ -193960,7 +193993,7 @@ vRu
 vRu
 vRu
 vRu
-whb
+oIs
 whb
 whb
 whb
@@ -194362,7 +194395,7 @@ vRu
 vRu
 vRu
 vRu
-whb
+oIs
 whb
 whb
 whb
@@ -194764,7 +194797,7 @@ vRu
 vRu
 vRu
 vRu
-whb
+oIs
 whb
 whb
 whb
@@ -195166,7 +195199,7 @@ vRu
 vRu
 vRu
 vRu
-whb
+oIs
 whb
 whb
 whb
@@ -195568,7 +195601,7 @@ vRu
 vRu
 vRu
 vRu
-whb
+oIs
 whb
 whb
 whb
@@ -195970,7 +196003,7 @@ vRu
 vRu
 vRu
 vRu
-whb
+oIs
 whb
 whb
 whb
@@ -196372,7 +196405,7 @@ vRu
 vRu
 vRu
 vRu
-whb
+oIs
 whb
 whb
 whb
@@ -196774,7 +196807,7 @@ vRu
 vRu
 vRu
 vRu
-whb
+oIs
 whb
 whb
 whb
@@ -197176,7 +197209,7 @@ vRu
 vRu
 vRu
 vRu
-whb
+oIs
 whb
 whb
 whb
@@ -197578,7 +197611,7 @@ vRu
 vRu
 vRu
 vRu
-whb
+oIs
 whb
 whb
 whb
@@ -197980,7 +198013,7 @@ vRu
 vRu
 vRu
 vRu
-whb
+oIs
 whb
 whb
 whb
@@ -198382,7 +198415,7 @@ vRu
 vRu
 vRu
 vRu
-whb
+oIs
 whb
 whb
 whb
@@ -198784,7 +198817,7 @@ vRu
 vRu
 vRu
 vRu
-whb
+oIs
 whb
 whb
 whb
@@ -199186,7 +199219,7 @@ vRu
 vRu
 vRu
 vRu
-whb
+oIs
 whb
 whb
 whb
@@ -199588,7 +199621,7 @@ vRu
 vRu
 vRu
 vRu
-whb
+oIs
 whb
 whb
 whb
@@ -199990,7 +200023,7 @@ vRu
 vRu
 vRu
 vRu
-whb
+oIs
 whb
 whb
 whb
@@ -200392,7 +200425,7 @@ vRu
 vRu
 vRu
 vRu
-whb
+oIs
 whb
 whb
 whb
@@ -200794,7 +200827,7 @@ vRu
 vRu
 vRu
 vRu
-whb
+oIs
 whb
 whb
 whb
@@ -201196,7 +201229,7 @@ vRu
 vRu
 vRu
 vRu
-whb
+oIs
 whb
 whb
 whb
@@ -201598,7 +201631,7 @@ vRu
 vRu
 vRu
 vRu
-whb
+oIs
 whb
 whb
 whb
@@ -202000,7 +202033,7 @@ vRu
 vRu
 vRu
 vRu
-whb
+oIs
 whb
 whb
 whb
@@ -202402,7 +202435,7 @@ vRu
 vRu
 vRu
 vRu
-whb
+oIs
 whb
 whb
 whb
@@ -202804,7 +202837,7 @@ vRu
 vRu
 vRu
 vRu
-whb
+oIs
 whb
 whb
 whb
@@ -203206,7 +203239,7 @@ vRu
 vRu
 vRu
 vRu
-whb
+oIs
 whb
 whb
 whb
@@ -203608,7 +203641,7 @@ vRu
 vRu
 vRu
 vRu
-whb
+oIs
 whb
 whb
 whb
@@ -204010,7 +204043,7 @@ vRu
 vRu
 vRu
 vRu
-whb
+oIs
 whb
 whb
 whb
@@ -204412,7 +204445,7 @@ vRu
 vRu
 vRu
 vRu
-whb
+oIs
 whb
 whb
 whb
@@ -204814,7 +204847,7 @@ vRu
 vRu
 vRu
 vRu
-whb
+oIs
 whb
 whb
 whb
@@ -205216,7 +205249,7 @@ vRu
 vRu
 vRu
 vRu
-whb
+oIs
 whb
 whb
 whb
@@ -205618,7 +205651,7 @@ vRu
 vRu
 vRu
 vRu
-whb
+oIs
 whb
 whb
 whb
@@ -206020,7 +206053,7 @@ vRu
 vRu
 vRu
 vRu
-whb
+oIs
 whb
 whb
 whb
@@ -206422,7 +206455,7 @@ vRu
 vRu
 vRu
 vRu
-whb
+oIs
 whb
 whb
 whb
@@ -206824,7 +206857,7 @@ vRu
 vRu
 vRu
 vRu
-whb
+oIs
 whb
 whb
 whb
@@ -207226,7 +207259,7 @@ vRu
 vRu
 vRu
 vRu
-whb
+oIs
 whb
 whb
 whb
@@ -207628,7 +207661,7 @@ vRu
 vRu
 vRu
 vRu
-whb
+oIs
 whb
 whb
 whb
@@ -208030,7 +208063,7 @@ vRu
 vRu
 vRu
 vRu
-whb
+oIs
 whb
 whb
 whb
@@ -208432,7 +208465,7 @@ vRu
 vRu
 vRu
 vRu
-whb
+oIs
 whb
 whb
 whb
@@ -208834,7 +208867,7 @@ vRu
 vRu
 vRu
 vRu
-whb
+oIs
 whb
 whb
 whb
@@ -209236,7 +209269,7 @@ vRu
 vRu
 vRu
 vRu
-whb
+oIs
 whb
 whb
 whb
@@ -209638,7 +209671,7 @@ vRu
 vRu
 vRu
 vRu
-whb
+oIs
 whb
 whb
 whb
@@ -210040,7 +210073,7 @@ vRu
 vRu
 vRu
 vRu
-whb
+oIs
 whb
 whb
 whb
@@ -210442,7 +210475,7 @@ vRu
 vRu
 vRu
 vRu
-whb
+oIs
 whb
 whb
 whb
@@ -210844,7 +210877,7 @@ vRu
 vRu
 vRu
 vRu
-whb
+oIs
 whb
 whb
 whb
@@ -211246,7 +211279,7 @@ vRu
 vRu
 vRu
 vRu
-whb
+oIs
 whb
 whb
 whb
@@ -211648,7 +211681,7 @@ vRu
 vRu
 vRu
 vRu
-whb
+oIs
 whb
 whb
 whb
@@ -212050,7 +212083,7 @@ vRu
 vRu
 vRu
 vRu
-whb
+oIs
 whb
 whb
 whb
@@ -212452,7 +212485,7 @@ vRu
 vRu
 vRu
 vRu
-whb
+oIs
 whb
 whb
 whb
@@ -212854,7 +212887,7 @@ vRu
 vRu
 vRu
 vRu
-whb
+oIs
 whb
 whb
 whb
@@ -213256,7 +213289,7 @@ vRu
 vRu
 vRu
 vRu
-whb
+oIs
 whb
 whb
 whb
@@ -213658,7 +213691,7 @@ vRu
 vRu
 vRu
 vRu
-whb
+oIs
 whb
 whb
 whb
@@ -214060,7 +214093,7 @@ vRu
 vRu
 vRu
 vRu
-whb
+oIs
 whb
 whb
 whb
@@ -214462,7 +214495,7 @@ vRu
 vRu
 vRu
 vRu
-whb
+oIs
 whb
 whb
 xaf
@@ -214864,7 +214897,7 @@ vRu
 vRu
 vRu
 vRu
-whb
+oIs
 xaf
 xaf
 xaf
@@ -215266,7 +215299,7 @@ vRu
 vRu
 vRu
 vRu
-xaf
+ciq
 xaf
 xaf
 xaf
@@ -215668,7 +215701,7 @@ vRu
 vRu
 vRu
 vRu
-xaf
+ciq
 xaf
 xaf
 xaf
@@ -216070,7 +216103,7 @@ vRu
 vRu
 vRu
 vRu
-xaf
+ciq
 xaf
 xaf
 xaf
@@ -216472,7 +216505,7 @@ vRu
 vRu
 vRu
 vRu
-xaf
+ciq
 xaf
 xaf
 xaf
@@ -216874,7 +216907,7 @@ vRu
 vRu
 vRu
 vRu
-xaf
+ciq
 xaf
 xaf
 xaf
@@ -217276,7 +217309,7 @@ vRu
 vRu
 vRu
 vRu
-xaf
+ciq
 xaf
 xaf
 xaf
@@ -217678,7 +217711,7 @@ vRu
 vRu
 vRu
 vRu
-xaf
+ciq
 xaf
 xaf
 xaf
@@ -218080,7 +218113,7 @@ vRu
 vRu
 vRu
 vRu
-xaf
+ciq
 xaf
 xaf
 xaf
@@ -218482,7 +218515,7 @@ vRu
 vRu
 vRu
 vRu
-xaf
+ciq
 xaf
 xaf
 xaf
@@ -218884,7 +218917,7 @@ vRu
 vRu
 vRu
 vRu
-xaf
+ciq
 xaf
 xaf
 xaf
@@ -219286,7 +219319,7 @@ vRu
 vRu
 vRu
 vRu
-xaf
+ciq
 xaf
 xaf
 xaf
@@ -219688,7 +219721,7 @@ vRu
 vRu
 vRu
 vRu
-xaf
+ciq
 xaf
 xaf
 xaf
@@ -220090,7 +220123,7 @@ vRu
 vRu
 vRu
 vRu
-xaf
+ciq
 xaf
 xaf
 xaf
@@ -220492,7 +220525,7 @@ vRu
 vRu
 vRu
 vRu
-xaf
+ciq
 xaf
 xaf
 xaf
@@ -220894,7 +220927,7 @@ vRu
 vRu
 vRu
 vRu
-xaf
+ciq
 xaf
 xaf
 xaf
@@ -221296,7 +221329,7 @@ vRu
 vRu
 vRu
 vRu
-xaf
+ciq
 xaf
 xaf
 xaf
@@ -221698,7 +221731,7 @@ vRu
 vRu
 vRu
 vRu
-xaf
+ciq
 xaf
 xaf
 xaf
@@ -222100,7 +222133,7 @@ vRu
 vRu
 vRu
 vRu
-xaf
+ciq
 xaf
 xaf
 xaf
@@ -222502,7 +222535,7 @@ vRu
 vRu
 vRu
 vRu
-xaf
+ciq
 xaf
 xaf
 xaf
@@ -222904,7 +222937,7 @@ vRu
 vRu
 vRu
 vRu
-xaf
+ciq
 xaf
 xaf
 xaf
@@ -223306,7 +223339,7 @@ vRu
 vRu
 vRu
 vRu
-xaf
+ciq
 xaf
 xaf
 xaf
@@ -223708,7 +223741,7 @@ vRu
 vRu
 vRu
 vRu
-xaf
+ciq
 xaf
 xaf
 xaf
@@ -224110,7 +224143,7 @@ vRu
 vRu
 vRu
 vRu
-xaf
+ciq
 xaf
 xaf
 xaf
@@ -224512,7 +224545,7 @@ vRu
 vRu
 vRu
 vRu
-xaf
+ciq
 xaf
 xaf
 xaf
@@ -224914,7 +224947,7 @@ vRu
 vRu
 vRu
 vRu
-xaf
+ciq
 xaf
 xaf
 xaf
@@ -225316,7 +225349,7 @@ vRu
 vRu
 vRu
 vRu
-xaf
+ciq
 xaf
 xaf
 xaf
@@ -225718,7 +225751,7 @@ vRu
 vRu
 vRu
 vRu
-xaf
+ciq
 xaf
 xaf
 xaf
@@ -226120,7 +226153,7 @@ vRu
 vRu
 vRu
 vRu
-xaf
+ciq
 xaf
 xaf
 xaf
@@ -226522,7 +226555,7 @@ vRu
 vRu
 vRu
 vRu
-xaf
+ciq
 xaf
 xaf
 xaf
@@ -226924,7 +226957,7 @@ vRu
 vRu
 vRu
 vRu
-xaf
+ciq
 xaf
 xaf
 xaf
@@ -227326,7 +227359,7 @@ vRu
 vRu
 vRu
 vRu
-xaf
+ciq
 xaf
 xaf
 xaf
@@ -227728,7 +227761,7 @@ vRu
 vRu
 vRu
 vRu
-xaf
+ciq
 xaf
 xaf
 xaf
@@ -228130,7 +228163,7 @@ vRu
 vRu
 vRu
 vRu
-xaf
+ciq
 xaf
 xaf
 xaf
@@ -228532,7 +228565,7 @@ vRu
 vRu
 vRu
 vRu
-xaf
+ciq
 xaf
 xaf
 xaf
@@ -228934,7 +228967,7 @@ vRu
 vRu
 vRu
 vRu
-xaf
+ciq
 xaf
 xaf
 xaf
@@ -229336,7 +229369,7 @@ vRu
 vRu
 vRu
 vRu
-xaf
+ciq
 xaf
 xaf
 xaf
@@ -326236,7 +326269,7 @@ whb
 whb
 whb
 whb
-whb
+fyc
 whb
 whb
 whb
@@ -326638,7 +326671,7 @@ whb
 whb
 whb
 whb
-whb
+fyc
 whb
 whb
 whb
@@ -327040,7 +327073,7 @@ whb
 whb
 whb
 whb
-whb
+fyc
 whb
 whb
 whb
@@ -327442,7 +327475,7 @@ whb
 whb
 whb
 whb
-whb
+fyc
 whb
 whb
 whb
@@ -327844,7 +327877,7 @@ whb
 whb
 whb
 whb
-whb
+fyc
 whb
 whb
 whb
@@ -328246,7 +328279,7 @@ whb
 whb
 whb
 whb
-whb
+fyc
 whb
 whb
 whb
@@ -328648,7 +328681,7 @@ whb
 whb
 whb
 whb
-whb
+fyc
 whb
 whb
 whb
@@ -329050,7 +329083,7 @@ whb
 whb
 whb
 whb
-whb
+fyc
 whb
 whb
 whb
@@ -329452,7 +329485,7 @@ whb
 whb
 whb
 whb
-whb
+fyc
 whb
 whb
 whb
@@ -329854,7 +329887,7 @@ whb
 whb
 whb
 whb
-whb
+fyc
 whb
 whb
 whb
@@ -330256,7 +330289,7 @@ whb
 whb
 whb
 whb
-whb
+fyc
 whb
 whb
 whb
@@ -330658,7 +330691,7 @@ whb
 whb
 whb
 whb
-whb
+fyc
 whb
 whb
 whb
@@ -331060,7 +331093,7 @@ whb
 whb
 whb
 whb
-whb
+fyc
 whb
 whb
 whb
@@ -331462,7 +331495,7 @@ whb
 whb
 whb
 whb
-whb
+fyc
 whb
 whb
 whb
@@ -331864,7 +331897,7 @@ whb
 whb
 whb
 whb
-whb
+fyc
 whb
 whb
 whb
@@ -390990,8 +391023,8 @@ oGO
 pAV
 pAV
 hHI
-eFy
-oIs
+hib
+uuE
 uuE
 uuE
 uuE
@@ -391391,9 +391424,9 @@ qrn
 qrn
 qrn
 pAV
-hHN
-pfP
-oIs
+imS
+ulZ
+uuE
 uuE
 uuE
 uuE
@@ -391793,9 +391826,9 @@ uLB
 uLB
 qrn
 rDt
-eFy
+hib
 uuE
-oIs
+uuE
 uuE
 uuE
 uuE
@@ -392195,9 +392228,9 @@ uLB
 uLB
 qrn
 rpK
-eFy
+hib
 uuE
-oIs
+uuE
 uuE
 uuE
 uuE
@@ -392597,9 +392630,9 @@ uLB
 uLB
 pRP
 pAV
-eFy
+hib
 uuE
-oIs
+uuE
 uuE
 uuE
 uuE
@@ -392999,9 +393032,9 @@ uLB
 uLB
 qrn
 rDt
-eFy
+hib
 uuE
-oIs
+uuE
 uuE
 uuE
 uuE
@@ -393401,9 +393434,9 @@ uLB
 uLB
 qrn
 rDt
-eFy
+hib
 uuE
-oIs
+uuE
 uuE
 uuE
 uuE
@@ -393803,9 +393836,9 @@ qrn
 qrn
 qrn
 hHI
-vCE
-uXg
-oIs
+foT
+jYY
+uuE
 uuE
 uuE
 uuE
@@ -394206,8 +394239,8 @@ oGO
 pAV
 pAV
 pAV
-eFy
-oIs
+hib
+uuE
 uuE
 uuE
 uuE
@@ -428747,7 +428780,7 @@ whb
 whb
 whb
 whb
-whb
+fyc
 whb
 whb
 whb
@@ -429149,7 +429182,7 @@ whb
 whb
 whb
 whb
-whb
+fyc
 whb
 whb
 whb
@@ -429551,7 +429584,7 @@ whb
 whb
 whb
 whb
-whb
+fyc
 whb
 whb
 whb
@@ -429953,7 +429986,7 @@ whb
 whb
 whb
 whb
-whb
+fyc
 whb
 whb
 whb
@@ -430355,7 +430388,7 @@ whb
 whb
 whb
 whb
-whb
+fyc
 whb
 whb
 whb
@@ -430757,7 +430790,7 @@ whb
 whb
 whb
 whb
-whb
+fyc
 whb
 whb
 whb
@@ -431159,7 +431192,7 @@ whb
 whb
 whb
 whb
-whb
+fyc
 whb
 whb
 whb
@@ -431561,7 +431594,7 @@ whb
 whb
 whb
 whb
-whb
+fyc
 whb
 whb
 whb
@@ -431963,7 +431996,7 @@ whb
 whb
 whb
 whb
-whb
+fyc
 whb
 whb
 whb
@@ -432365,7 +432398,7 @@ whb
 whb
 whb
 whb
-whb
+fyc
 whb
 whb
 whb
@@ -432767,7 +432800,7 @@ whb
 whb
 whb
 whb
-whb
+fyc
 whb
 whb
 whb
@@ -433169,7 +433202,7 @@ whb
 whb
 whb
 whb
-whb
+fyc
 whb
 whb
 whb
@@ -433571,7 +433604,7 @@ whb
 whb
 whb
 whb
-whb
+fyc
 whb
 whb
 whb
@@ -433973,7 +434006,7 @@ whb
 whb
 whb
 whb
-whb
+fyc
 whb
 whb
 whb
@@ -434375,7 +434408,7 @@ whb
 whb
 whb
 whb
-whb
+fyc
 whb
 whb
 whb
@@ -493098,8 +493131,8 @@ rOF
 rOF
 rOF
 rOF
-hHN
-pfP
+imS
+ulZ
 fyc
 uuE
 uuE
@@ -493499,10 +493532,10 @@ rOF
 rOF
 rOF
 rOF
-hHN
-pfP
+imS
+ulZ
 uuE
-oIs
+uuE
 uuE
 uuE
 uuE
@@ -493901,10 +493934,10 @@ rOF
 rOF
 rOF
 rOF
-eFy
+hib
 uuE
 uuE
-oIs
+uuE
 uuE
 uuE
 uuE
@@ -494303,10 +494336,10 @@ rOF
 rOF
 rOF
 rOF
-eFy
+hib
 uuE
 uuE
-oIs
+uuE
 uuE
 uuE
 uuE
@@ -494705,10 +494738,10 @@ rOF
 rOF
 rOF
 rOF
-eFy
+hib
 uuE
 uuE
-oIs
+uuE
 uuE
 uuE
 uuE
@@ -495107,10 +495140,10 @@ rOF
 rOF
 rOF
 frB
-eFy
+hib
 uuE
 uuE
-oIs
+uuE
 uuE
 uuE
 uuE
@@ -495509,10 +495542,10 @@ rOF
 rOF
 rOF
 rOF
-eFy
+hib
 uuE
 uuE
-oIs
+uuE
 uuE
 uuE
 uuE
@@ -495911,10 +495944,10 @@ rOF
 rOF
 rOF
 rOF
-eFy
+hib
 uuE
 uuE
-oIs
+uuE
 uuE
 uuE
 uuE
@@ -496313,10 +496346,10 @@ rOF
 rOF
 rOF
 rOF
-eFy
+hib
 uuE
 uuE
-oIs
+uuE
 uuE
 uuE
 uuE
@@ -496715,10 +496748,10 @@ rOF
 rOF
 rOF
 rOF
-vCE
-uXg
+foT
+jYY
 uuE
-oIs
+uuE
 uuE
 uuE
 uuE
@@ -497118,8 +497151,8 @@ rOF
 rOF
 rOF
 rOF
-vCE
-uXg
+foT
+jYY
 fyc
 uuE
 uuE
