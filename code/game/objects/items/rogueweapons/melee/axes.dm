@@ -125,6 +125,7 @@
 	gripped_intents = list(/datum/intent/axe/cut/battle, /datum/intent/axe/chop/battle)
 	minstr = 12
 	wdefense = 4
+	sellprice = 40
 
 /obj/item/rogueweapon/stoneaxe/battle/getonmobprop(tag)
 	if(tag)
@@ -148,6 +149,7 @@
 	smeltresult = /obj/item/ingot/iron
 	gripped_intents = list(/datum/intent/axe/cut,/datum/intent/axe/chop)
 	wdefense = 2
+	sellprice = 20 
 
 /obj/item/rogueweapon/stoneaxe/handaxe
 	force = 19
@@ -160,6 +162,7 @@
 	smeltresult = /obj/item/ingot/iron
 	gripped_intents = null
 	wdefense = 2
+	sellprice = 20
 
 /obj/item/rogueweapon/stoneaxe/woodcut/steel
 	icon_state = "saxe"
@@ -170,6 +173,7 @@
 	max_blade_int = 500
 	smeltresult = /obj/item/ingot/steel
 	wdefense = 3
+	sellprice = 25
 
 /obj/item/rogueweapon/stoneaxe/woodcut/getonmobprop(tag)
 	. = ..()

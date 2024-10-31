@@ -25,6 +25,7 @@
 	wdefense = 2
 	wbalance = -1
 	blade_dulling = DULLING_BASHCHOP
+	sellprice = 20 //way too common with skeletons to have a high price
 
 /obj/item/rogueweapon/mace/church
 	force = 25
@@ -206,6 +207,7 @@
 	gripped_intents = list(/datum/intent/mace/strike/wood, /datum/intent/mace/smash/wood)
 	smeltresult = /obj/item/ash
 	minstr = 0
+	sellprice = 0
 
 /obj/item/rogueweapon/mace/woodclub/New()
 	..()
@@ -257,6 +259,7 @@
 	wdefense = 5
 	wbalance = 0
 	associated_skill = /datum/skill/combat/swords
+	sellprice = 0
 
 
 /obj/item/rogueweapon/mace/wsword/getonmobprop(tag)

@@ -21,6 +21,7 @@
 	associated_skill = /datum/skill/combat/crossbows
 	anvilrepair = /datum/skill/craft/blacksmithing
 	smeltresult = /obj/item/ingot/steel
+	sellprice = 30
 	var/damfactor = 2
 
 /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow/getonmobprop(tag)

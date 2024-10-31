@@ -121,6 +121,7 @@
 	wdefense = 5
 	thrown_bclass = BCLASS_STAB
 	throwforce = 25
+	sellprice = 30
 
 /obj/item/rogueweapon/spear/getonmobprop(tag)
 	. = ..()
@@ -151,6 +152,7 @@
 	max_blade_int = 100
 	wdefense = 4
 	throwforce = 10
+	sellprice = 0
 
 /obj/item/rogueweapon/spear/stone
 	force = 15
@@ -174,6 +176,7 @@
 	wdefense = 4
 	max_integrity = 50
 	throwforce = 20
+	sellprice = 0
 
 /obj/item/rogueweapon/halberd
 	force = 15
@@ -200,6 +203,7 @@
 	blade_dulling = DULLING_BASHCHOP
 	walking_stick = TRUE
 	wdefense = 6
+	sellprice = 40
 
 /obj/item/rogueweapon/halberd/getonmobprop(tag)
 	. = ..()
@@ -250,6 +254,7 @@
 	blade_dulling = DULLING_BASHCHOP
 	walking_stick = TRUE
 	wdefense = 6
+	sellprice = 40
 
 /obj/item/rogueweapon/eaglebeak/getonmobprop(tag)
 	. = ..()
@@ -269,6 +274,7 @@
 	icon_state = "polehammer"
 	smeltresult = /obj/item/ingot/iron
 	max_blade_int = 200
+	sellprice = 35
 
 /datum/intent/spear/thrust/eaglebeak
 	penfactor = 20
@@ -301,6 +307,7 @@
 	associated_skill = /datum/skill/combat/swords
 	max_blade_int = 300
 	wdefense = 5
+	sellprice = 40
 
 /obj/item/rogueweapon/greatsword/getonmobprop(tag)
 	. = ..()

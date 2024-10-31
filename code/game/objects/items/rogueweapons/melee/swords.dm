@@ -117,6 +117,7 @@
 	throwforce = 15
 	thrown_bclass = BCLASS_CUT
 	smeltresult = /obj/item/ingot/steel
+	sellprice = 35
 
 /obj/item/rogueweapon/sword/long/death
 	color = CLOTHING_BLACK
@@ -157,6 +158,7 @@
 	throwforce = 15
 	thrown_bclass = BCLASS_CUT
 	smeltresult = /obj/item/ingot/steel
+	sellprice = 45
 
 /obj/item/rogueweapon/sword/long/getonmobprop(tag)
 	. = ..()
@@ -525,3 +527,4 @@
 	max_integrity = 205
 	lefthand_file = 'icons/mob/inhands/weapons/swords_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/weapons/swords_righthand.dmi'
+	sellprice = 60

@@ -18,6 +18,7 @@
 	throwforce = 5
 	wdefense = 0
 	minstr = 4
+	sellprice = 25
 
 /datum/intent/flail/strike
 	name = "strike"
@@ -165,7 +166,7 @@
 	desc = "An extremely well maintained whip, with a polished steel tip and gilded handle. It clearly needs to see more use."
 	minstr = 8
 	icon_state = "gwhip"
-
+	sellprice = 50
 
 /obj/item/rogueweapon/flail/peasantwarflail
 	force = 10

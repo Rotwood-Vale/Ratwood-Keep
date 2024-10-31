@@ -27,7 +27,7 @@
 	thrown_bclass = BCLASS_CUT
 	anvilrepair = /datum/skill/craft/blacksmithing
 	smeltresult = /obj/item/ingot/iron
-
+	sellprice = 15
 
 
 /datum/intent/dagger
@@ -113,6 +113,7 @@
 	possible_item_intents = list(/datum/intent/dagger/cut, /datum/intent/dagger/chop/cleaver, /datum/intent/dagger/thrust)
 	icon_state = "combatknife"
 	throwforce = 16
+	sellprice = 25 //more skill needed to make
 
 /obj/item/rogueweapon/huntingknife/cleaver/getonmobprop(tag)
 	. = ..()
@@ -355,8 +356,10 @@
 	force = 19
 	icon_state = "elfdagger"
 	item_state = "elfdag"
+	sellprice = 50
 
 /obj/item/rogueweapon/huntingknife/elvish/drow
 	name = "nite elf dagger"
 	desc = "This ominous, dark handled dagger was crafted by the assassin race of nite elves."
 	force = 25
+	sellprice = 60

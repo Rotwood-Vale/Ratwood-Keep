@@ -103,6 +103,7 @@
 	wdefense = 0
 	var/charge = 100
 	var/on = FALSE
+	sellprice = 100 
 
 /datum/intent/mace/strike/stunner/afterchange()
 	var/obj/item/rogueweapon/mace/stunmace/I = masteritem
