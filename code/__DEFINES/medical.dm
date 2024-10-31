@@ -22,6 +22,12 @@
 #define BODY_ZONE_PRECISE_L_FOOT	"l_foot"
 #define BODY_ZONE_PRECISE_R_FOOT	"r_foot"
 
+#define BODY_ZONE_FACING_FRONT      "front_face"
+#define BODY_ZONE_FACING_L_ARM      "l_arm_face"
+#define BODY_ZONE_FACING_R_ARM      "r_arm_face"
+#define BODY_ZONE_FACING_L_LEG      "l_leg_face"
+#define BODY_ZONE_FACING_R_LEG      "r_leg_face"
+
 //organ slots
 #define ORGAN_SLOT_BRAIN "brain"
 #define ORGAN_SLOT_APPENDIX "appendix"

@@ -67,7 +67,7 @@
 		return 0
 
 /proc/zone_ace_mod(zone)
-	var/zone_ace_mod = 0
+	var/zone_ace_mod = 1
 	switch(zone)
 		if(BODY_ZONE_PRECISE_R_EYE)
 			zone_ace_mod = 0.3
@@ -99,7 +99,7 @@
 			zone_ace_mod = 0.7
 		if(BODY_ZONE_PRECISE_L_INHAND)
 			zone_ace_mod = 0.7
-		if(BODY_ZONE_HEAD || BODY_ZONE_L_ARM || BODY_ZONE_R_ARM || BODY_ZONE_L_LEG || BODY_ZONE_R_LEG)
+		if(BODY_ZONE_HEAD || BODY_ZONE_CHEST || BODY_ZONE_L_ARM || BODY_ZONE_R_ARM || BODY_ZONE_L_LEG || BODY_ZONE_R_LEG)
 			zone_ace_mod = 1
 	return zone_ace_mod
 
@@ -122,6 +122,52 @@
 		))
 	return zone
 
+/proc/relative_angular_facing(mob/living/user, mob/living/target)
+	var/target_facing = dir2angle(target.dir)
+	var/abs_angle = Get_Angle(target, user)
+	target_facing = 360 + (abs_angle - target_facing)
+	if(target_facing > 360)
+		target_facing -= 360
+	return angle2dir(target_facing)
+
+/proc/facing_zone(zone)
+	if(!zone)
+		return BODY_ZONE_CHEST
+	var/facing_zone
+	switch(zone)
+		if(BODY_ZONE_PRECISE_R_EYE)
+			facing_zone = BODY_ZONE_FACING_FRONT
+		if(BODY_ZONE_PRECISE_L_EYE)
+			facing_zone = BODY_ZONE_FACING_FRONT
+		if(BODY_ZONE_PRECISE_NOSE)
+			facing_zone = BODY_ZONE_FACING_FRONT
+		if(BODY_ZONE_PRECISE_MOUTH)
+			facing_zone = BODY_ZONE_FACING_FRONT
+		if(BODY_ZONE_L_ARM)
+			facing_zone = BODY_ZONE_FACING_L_ARM
+		if(BODY_ZONE_PRECISE_L_HAND)
+			facing_zone = BODY_ZONE_FACING_L_ARM
+		if(BODY_ZONE_R_ARM)
+			facing_zone = BODY_ZONE_FACING_R_ARM
+		if(BODY_ZONE_PRECISE_R_HAND)
+			facing_zone = BODY_ZONE_FACING_R_ARM
+		if(BODY_ZONE_L_LEG)
+			facing_zone = BODY_ZONE_FACING_L_LEG
+		if(BODY_ZONE_PRECISE_L_FOOT)
+			facing_zone = BODY_ZONE_FACING_L_LEG
+		if(BODY_ZONE_R_LEG)
+			facing_zone = BODY_ZONE_FACING_R_LEG
+		if(BODY_ZONE_PRECISE_R_FOOT)
+			facing_zone = BODY_ZONE_FACING_R_LEG
+		if(BODY_ZONE_PRECISE_GROIN)
+			facing_zone = BODY_ZONE_FACING_FRONT
+		if(BODY_ZONE_PRECISE_STOMACH)
+			facing_zone = BODY_ZONE_FACING_FRONT
+		if(BODY_ZONE_PRECISE_R_INHAND)
+			facing_zone = BODY_ZONE_FACING_R_ARM
+		if(BODY_ZONE_PRECISE_L_INHAND)
+			facing_zone = BODY_ZONE_FACING_L_ARM
+	return facing_zone
 /**
   * Convert random parts of a passed in message to stars
   *

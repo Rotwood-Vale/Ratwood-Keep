@@ -92,7 +92,7 @@
 	start_empty = TRUE
 
 /datum/intent/shoot/bow
-	chargetime = 1
+	chargetime = 15
 	chargedrain = 2
 	charging_slowdown = 3
 
@@ -112,15 +112,8 @@
 /datum/intent/shoot/bow/get_chargetime()
 	if(mastermob && chargetime)
 		var/newtime = 0
-		//skill block
-		newtime = newtime + 10
-		newtime = newtime - (mastermob.mind.get_skill_level(/datum/skill/combat/bows) * (10/6))
-		//str block //rtd replace 10 with drawdiff on bows that are hard and scale str more (10/20 = 0.5)
-		newtime = newtime + 10
-		newtime = newtime - (mastermob.STASTR * (10/20))
-		//per block
-		newtime = newtime + 20
-		newtime = newtime - (mastermob.STAPER * 1) //20/20 is 1
+		var/chargeskillmod = (mastermob.mind.get_skill_level(/datum/skill/combat/bows) * 0.1)
+		newtime = chargetime - ((mastermob.STASTR * (0.3 + chargeskillmod)) + (mastermob.STAPER * 0.1))
 		if(newtime > 0)
 			return newtime
 		else
@@ -128,7 +121,7 @@
 	return chargetime
 
 /datum/intent/arc/bow
-	chargetime = 1
+	chargetime = 20
 	chargedrain = 2
 	charging_slowdown = 3
 
@@ -148,19 +141,12 @@
 /datum/intent/arc/bow/get_chargetime()
 	if(mastermob && chargetime)
 		var/newtime = 0
-		//skill block
-		newtime = newtime + 10
-		newtime = newtime - (mastermob.mind.get_skill_level(/datum/skill/combat/bows) * (10/6))
-		//str block //rtd replace 10 with drawdiff on bows that are hard and scale str more (10/20 = 0.5)
-		newtime = newtime + 10
-		newtime = newtime - (mastermob.STASTR * (10/20))
-		//per block
-		newtime = newtime + 20
-		newtime = newtime - (mastermob.STAPER * 1) //20/20 is 1
+		var/chargeskillmod = (mastermob.mind.get_skill_level(/datum/skill/combat/bows) * 0.1)
+		newtime = chargetime - ((mastermob.STASTR * (0.3 + chargeskillmod)) + (mastermob.STAPER * 0.1))
 		if(newtime > 0)
 			return newtime
 		else
-			return 1
+			return 0.1
 	return chargetime
 
 /obj/item/gun/ballistic/revolver/grenadelauncher/bow/recurve
@@ -174,11 +160,11 @@
 	damfactor = 0.9
 
 /datum/intent/shoot/bow/recurve
-	chargetime = 0.75
+	chargetime = 11.5
 	chargedrain = 1.5
 	charging_slowdown = 2.5
 
 /datum/intent/arc/bow/recurve
-	chargetime = 0.75
+	chargetime = 15
 	chargedrain = 1.5
 	charging_slowdown = 2.5
