@@ -565,7 +565,7 @@
 		user.update_fov_angles()
 
 /obj/item/clothing/head/roguetown/helmet/astratahelm
-	name = "astrata helmet"
+	name = "astratan helmet"
 	desc = "Headwear commonly worn by Templars in service to Astrata. The firstborn child's light will forever shine on within its crest."
 	icon_state = "astratahelm"
 	item_state = "astratahelm"
@@ -576,8 +576,24 @@
 	armor_class = ARMOR_CLASS_MEDIUM
 	block2add = FOV_BEHIND
 
+/obj/item/clothing/head/roguetown/helmet/astratahelm/alt
+	desc = "Gilded gold and silvered metal, the bright, vibrant colors of an Astratan crusader radiate from this blessed helmet."
+	icon_state = "astratahelm_alt"
+	item_state = "astratahelm_alt"
+
+/obj/item/clothing/head/roguetown/helmet/heavy/malum
+	name = "malummite helmet"
+	desc = "Forged in a coal-black, this helmet carries a sigiled blade upon it's visor, ever reminding it's wearer of Malum's powerful gaze."
+	icon_state = "malumhelm"
+	item_state = "malumhelm"
+	emote_environment = 3
+	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR
+	block2add = FOV_RIGHT|FOV_LEFT
+	smeltresult = /obj/item/ingot/steel
+	smelt_bar_num = 2
+
 /obj/item/clothing/head/roguetown/helmet/nochelm
-	name = "noc helmet"
+	name = "noctian helmet"
 	desc = "Hearwear commonly worn by Templars in service to Noc. Without the night there can be no day, without Noc there can be no light in the dark hours."
 	icon_state = "nochelm"
 	item_state = "nochelm"
@@ -589,7 +605,7 @@
 	block2add = FOV_BEHIND
 
 /obj/item/clothing/head/roguetown/helmet/necrahelm
-	name = "necra helmet"
+	name = "necran helmet"
 	desc = "Headwear commonly worn by Templars in service to Necra. Let its skeletal features remind you of the only thing which is guaranteed in life. You will die."
 	icon_state = "necrahelm"
 	item_state = "necrahelm"
@@ -600,8 +616,13 @@
 	armor_class = ARMOR_CLASS_MEDIUM
 	block2add = FOV_BEHIND
 
+/obj/item/clothing/head/roguetown/helmet/necrahelm/alt
+	desc = "The darkest of blacks, this hooded helm is reminiscent of an executioner's head, striking fear into those who look upon it that they too may soon face the undermaiden."
+	icon_state = "necrahelm_alt"
+	item_state = "necrahelm_alt"
+
 /obj/item/clothing/head/roguetown/helmet/dendorhelm
-	name = "dendor helmet"
+	name = "dendorite helmet"
 	desc = "Headwear commonly worn by Templars in service to Dendor. Its protrusions almost resemble branches. Take root in the earth, and you will never be moved."
 	icon_state = "dendorhelm"
 	item_state = "dendorhelm"
