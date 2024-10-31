@@ -25,7 +25,7 @@ In the case your PR doesn't affect something which can be clearly seen in game, 
 4 - Try to be civil while discussing PRs.
 *We are all here working for the same goal and because we love what we do, remember that!*
 
-5 - You are encoraged to seek out and engage with player feedback on your PRs.
+5 - You are encouraged to seek out and engage with player feedback on your PRs.
 *Sometimes other people have ideas we didn't think of, being open to this can be the pathway to many abilities some consider to be unnatural...*
 
 
@@ -43,4 +43,4 @@ In the case your PR doesn't affect something which can be clearly seen in game, 
 4 - PRs should be taken as they are and as if no follow up PRs were to be made.
 *Maintainers may in theory assume the Author of any given PR will fall off the face of the earth directly after merge.*
 
-5 - In order to Merge a map changing PR the aproval of a Maptainer is necessary (if they are aviable).
+5 - In order to Merge a map changing PR the approval of a Maptainer is necessary (if they are available).
