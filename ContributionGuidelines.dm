@@ -37,7 +37,7 @@ In the case your PR doesn't affect something which can be clearly seen in game, 
 2 - Maintainer decisions on game direction are absolute.
 *If something on a PR is not up to a Maintainers standards and the author is unwilling to comply the PR should be closed.*
 
-3 - PRs must be at least 24 hours hold to be merged.
+3 - PRs must be at least 24 hours old to be merged.
 *This does not apply for important fixes or reverts.*
 
 4 - PRs should be taken as they are and as if no follow up PRs were to be made.
