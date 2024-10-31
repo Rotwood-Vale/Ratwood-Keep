@@ -28,12 +28,11 @@
 	beltr = /obj/item/storage/belt/rogue/pouch/coins/poor
 	backr = /obj/item/storage/backpack/rogue/satchel
 	backl = /obj/item/rogueweapon/sword/long/rider
-	beltl = /obj/item/flashlight/flare/torch
+	beltl = /obj/item/keyring/mercenary
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/black
 	pants = /obj/item/clothing/under/roguetown/chainlegs/iron
 	neck = /obj/item/clothing/neck/roguetown/shalal
 
-	backpack_contents = list(/obj/item/roguekey/mercenary)
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/misc/swimming, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/climbing, 3, TRUE)
