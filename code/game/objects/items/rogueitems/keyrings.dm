@@ -219,3 +219,6 @@
 
 /obj/item/keyring/gravedigger
 	keys = list(/obj/item/roguekey/graveyard, /obj/item/roguekey/church)
+
+/obj/item/keyring/mercenary
+	keys = list(/obj/item/roguekey/mercenary)

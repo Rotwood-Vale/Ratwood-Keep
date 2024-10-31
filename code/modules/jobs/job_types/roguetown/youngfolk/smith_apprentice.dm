@@ -45,6 +45,6 @@
 		cloak = /obj/item/clothing/cloak/apron/brown
 		backr = /obj/item/storage/backpack/rogue/satchel
 		backpack_contents = list(/obj/item/rogueweapon/hammer = 1, /obj/item/rogueweapon/tongs = 1)
-	H.change_stat("strength", 1)
+	H.change_stat("strength", 2)
 	H.change_stat("endurance", 1)
 	H.change_stat("constitution", 1)
