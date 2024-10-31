@@ -9,7 +9,7 @@
 	chargetime = 1
 	warnie = "mobwarning"
 	hitsound = list('sound/combat/hits/bladed/genstab (1).ogg', 'sound/combat/hits/bladed/genstab (2).ogg', 'sound/combat/hits/bladed/genstab (3).ogg')
-	penfactor = 50
+	penfactor = 35
 	item_d_type = "stab"
 
 /datum/intent/spear/bash
@@ -65,7 +65,7 @@
 			if("onbelt")
 				return list("shrink" = 0.3,"sx" = -2,"sy" = -5,"nx" = 4,"ny" = -5,"wx" = 0,"wy" = -5,"ex" = 2,"ey" = -5,"nturn" = 0,"sturn" = 0,"wturn" = 0,"eturn" = 0,"nflip" = 0,"sflip" = 0,"wflip" = 0,"eflip" = 0,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0)
 
-/obj/item/rogueweapon/woodstaff/wise 
+/obj/item/rogueweapon/woodstaff/wise
 	name = "wise staff"
 	desc = "A staff for keeping the volfs at bay..."
 
@@ -96,7 +96,7 @@
 
 /obj/item/rogueweapon/spear
 	force = 18
-	force_wielded = 30
+	force_wielded = 23
 	possible_item_intents = list(SPEAR_THRUST, SPEAR_BASH) //bash is for non-lethal takedowns, only targets limbs
 	gripped_intents = list(SPEAR_THRUST, SPEAR_CUT, SPEAR_BASH)
 	name = "spear"
@@ -135,6 +135,7 @@
 	name = "billhook"
 	desc = "A neat hook."
 	icon_state = "billhook"
+	force_wielded = 30
 	smeltresult = /obj/item/ingot/steel
 	max_blade_int = 200
 	minstr = 8
@@ -267,6 +268,7 @@
 	name = "lucerne"
 	desc = "A polehammer with a sharp pointy end."
 	icon_state = "polehammer"
+	force_wielded = 30
 	smeltresult = /obj/item/ingot/iron
 	max_blade_int = 200
 
