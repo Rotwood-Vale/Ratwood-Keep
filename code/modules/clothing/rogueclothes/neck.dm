@@ -64,6 +64,7 @@
 	anvilrepair = /datum/skill/craft/blacksmithing
 	smeltresult = /obj/item/ingot/steel
 	clothing_flags = CANT_SLEEP_IN
+	sellprice = 20
 
 /obj/item/clothing/neck/roguetown/chaincoif/AdjustClothes(mob/user)
 	if(loc == user)
@@ -93,6 +94,7 @@
 	desc = "An iron chain coif, composed of interlinked metal rings, that barely absorb impacts from arrows that protects the head, ears and neck, and is sadly too uncomfortable to sleep in."
 	smeltresult = /obj/item/ingot/iron
 	max_integrity = 150
+	sellprice = 15
 
 /obj/item/clothing/neck/roguetown/bervor
 	name = "bevor"
@@ -107,6 +109,7 @@
 	body_parts_covered = NECK|MOUTH|NOSE
 	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT, BCLASS_TWIST)
 	blocksound = PLATEHIT
+	sellprice = 20
 
 /obj/item/clothing/neck/roguetown/gorget
 	name = "gorget"
@@ -122,6 +125,7 @@
 	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT, BCLASS_TWIST)
 	blocksound = PLATEHIT
 	clothing_flags = CANT_SLEEP_IN
+	sellprice = 15
 
 /obj/item/clothing/neck/roguetown/gorget/prisoner/Initialize()
 	. = ..()

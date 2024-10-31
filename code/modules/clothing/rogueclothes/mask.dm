@@ -30,6 +30,7 @@
 	resistance_flags = FIRE_PROOF
 	body_parts_covered = EYES
 	anvilrepair = /datum/skill/craft/blacksmithing
+	sellprice = 50
 
 /obj/item/clothing/mask/rogue/spectacles/Initialize()
 	. = ..()
@@ -117,6 +118,7 @@
 	icon_state = "smask"
 	max_integrity = 200
 	smeltresult = /obj/item/ingot/steel
+	sellprice = 20
 
 /obj/item/clothing/mask/rogue/facemask/steel/hound
 	name = "steel hound mask"

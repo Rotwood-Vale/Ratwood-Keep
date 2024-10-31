@@ -146,6 +146,7 @@
 	l_sleeve_status = SLEEVE_NOMOD
 	w_class = WEIGHT_CLASS_NORMAL
 	resistance_flags = FIRE_PROOF
+	sellprice = 25
 
 /obj/item/clothing/under/roguetown/brayette
 	name = "brayette"
@@ -196,6 +197,7 @@
 	w_class = WEIGHT_CLASS_BULKY
 	clothing_flags = CANT_SLEEP_IN
 	resistance_flags = FIRE_PROOF
+	sellprice = 50
 
 /obj/item/clothing/under/roguetown/loincloth
 	name = "loincloth"

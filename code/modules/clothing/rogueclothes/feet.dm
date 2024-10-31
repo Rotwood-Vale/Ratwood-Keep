@@ -108,6 +108,7 @@
 	resistance_flags = FIRE_PROOF
 	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT, BCLASS_TWIST)
 	armor = list("blunt" = 90, "slash" = 100, "stab" = 80, "bullet" = 100, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	sellprice = 20
 
 /obj/item/clothing/shoes/roguetown/armor/nobleboot
 	name = "noble boots"
@@ -115,6 +116,7 @@
 	icon_state = "nobleboots"
 	item_state = "nobleboots"
 	armor = list("blunt" = 35, "slash" = 15, "stab" = 25, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	sellprice = 15
 
 /obj/item/clothing/shoes/roguetown/armor/shalal
 	name = "babouche"

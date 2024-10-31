@@ -476,6 +476,7 @@
 	clothing_flags = CANT_SLEEP_IN
 	resistance_flags = FIRE_PROOF
 	sewrepair = FALSE
+	sellprice = 20
 
 /obj/item/clothing/head/roguetown/helmet/skullcap
 	name = "skull cap"
@@ -541,6 +542,7 @@
 	armor_class = ARMOR_CLASS_MEDIUM
 	body_parts_covered = HEAD|EARS|HAIR|NOSE|EYES
 	block2add = FOV_BEHIND
+	sellprice = 30
 
 /obj/item/clothing/head/roguetown/helmet/sallet/visored/AdjustClothes(mob/user)
 	if(loc == user)
@@ -625,6 +627,7 @@
 	block2add = FOV_RIGHT|FOV_LEFT
 	armor_class = ARMOR_CLASS_HEAVY
 	max_integrity = 400
+	sellprice = 30
 
 /obj/item/clothing/head/roguetown/helmet/heavy/guard
 	name = "savoyard"
