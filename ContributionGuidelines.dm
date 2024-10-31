@@ -3,7 +3,7 @@
 These guidelines serve to safeguard our codebase, improve workflow and facilitate the job of Maintainers.
 Following them is important to make sure your work makes it into the game swiftly but also, that our server is in the best shape it could possibly be in!
 
-## Contributing Guidelines
+## Contributor Guidelines
 
 1 - PRs must follow the these standards:
 - All Changes must be properly documented in the PR body.
