@@ -191,9 +191,6 @@ SUBSYSTEM_DEF(treasury)
 			if(bank_accounts[X] < amt)  // Check if the withdrawal amount exceeds the player's account balance
 				send_ooc_note("<b>The Bank:</b> Error: Insufficient funds in the player's account to complete the withdrawal.", name = name)
 				return  // Return without processing the transaction
-			if(treasury_value < amt)  // Check if the withdrawal amount exceeds the treasury balance
-				send_ooc_note("<b>The Bank:</b> Error: Insufficient funds in the treasury to complete the withdrawal.", name = name)
-				return  // Return without processing the transaction
 			bank_accounts[X] -= amt
 			found_account = TRUE
 			break
