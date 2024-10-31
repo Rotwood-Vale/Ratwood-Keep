@@ -7414,6 +7414,10 @@
 /obj/structure/fluff/psycross,
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/town/church/chapel)
+"gXv" = (
+/obj/structure/fog_wall,
+/turf/open/floor/rogue/cobblerock,
+/area/rogue/outdoors/bog)
 "gXz" = (
 /obj/structure/mineral_door/wood/donjon{
 	dir = 4;
@@ -10405,6 +10409,13 @@
 /obj/machinery/light/rogue/firebowl/stump,
 /turf/open/floor/rogue/dirt,
 /area/rogue/outdoors/bog)
+"jUl" = (
+/obj/structure/fog_wall,
+/turf/open/water/river{
+	dir = 4;
+	icon_state = "rockwd"
+	},
+/area/rogue/under/cavewet/bogcaves)
 "jVg" = (
 /obj/structure/chair/wood/rogue{
 	dir = 1
@@ -15520,6 +15531,10 @@
 /obj/structure/fluff/psycross/crafted,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors/rtfield)
+"oIs" = (
+/obj/structure/fog_wall,
+/turf/open/transparent/openspace,
+/area/rogue/outdoors/bog)
 "oIv" = (
 /obj/structure/stairs,
 /turf/open/floor/rogue/cobble,
@@ -180331,13 +180346,13 @@ whb
 whb
 whb
 whb
-iad
-iad
-iad
-iad
-iad
-iad
-iad
+jUl
+jUl
+jUl
+jUl
+jUl
+jUl
+jUl
 whb
 whb
 whb
@@ -282447,7 +282462,7 @@ uuE
 uuE
 uuE
 uuE
-gxt
+fyc
 gxt
 gxt
 gxt
@@ -282841,7 +282856,7 @@ aev
 vIa
 vIa
 vIa
-vIa
+aUc
 cZb
 cZb
 cZb
@@ -282849,7 +282864,7 @@ cZb
 cZb
 cZb
 cZb
-gxt
+fyc
 gxt
 gxt
 odi
@@ -283243,7 +283258,7 @@ vIa
 vIa
 vIa
 vIa
-vIa
+aUc
 uuE
 uuE
 uuE
@@ -283645,7 +283660,7 @@ vIa
 vIa
 vIa
 vIa
-vIa
+aUc
 uuE
 uuE
 uuE
@@ -284047,8 +284062,8 @@ vIa
 vIa
 vIa
 vIa
-vIa
-gxt
+aUc
+fyc
 uuE
 uuE
 uuE
@@ -284449,8 +284464,8 @@ vIa
 vIa
 vIa
 vIa
-gxt
-gxt
+fyc
+fyc
 uuE
 uuE
 uuE
@@ -284850,8 +284865,8 @@ vIa
 vIa
 vIa
 vIa
-gxt
-gxt
+fyc
+fyc
 gxt
 uuE
 uuE
@@ -285251,8 +285266,8 @@ vIa
 vIa
 vIa
 vIa
-gxt
-gxt
+fyc
+fyc
 gxt
 gxt
 uuE
@@ -285652,8 +285667,8 @@ vIa
 vIa
 vIa
 vIa
-gxt
-gxt
+fyc
+fyc
 gxt
 gxt
 gxt
@@ -286053,8 +286068,8 @@ pAV
 pAV
 pAV
 vIa
-gxt
-gxt
+fyc
+fyc
 gxt
 gxt
 gxt
@@ -288465,7 +288480,7 @@ hHI
 hHI
 hHI
 uLh
-lOV
+gXv
 wGD
 wGD
 wGD
@@ -288867,7 +288882,7 @@ dhH
 eAW
 lOV
 lOV
-lOV
+gXv
 lOV
 lOV
 nNK
@@ -289269,7 +289284,7 @@ fBT
 eAW
 lOV
 lOV
-lOV
+gXv
 lOV
 lOV
 rbx
@@ -289671,7 +289686,7 @@ fBT
 pBL
 lOV
 lOV
-lOV
+gXv
 lOV
 lOV
 rbx
@@ -290073,7 +290088,7 @@ fBT
 fBT
 lOV
 lOV
-lOV
+gXv
 lOV
 lOV
 rbx
@@ -290475,7 +290490,7 @@ fBT
 fBT
 lOV
 lOV
-lOV
+gXv
 lOV
 lOV
 rbx
@@ -290877,7 +290892,7 @@ fBT
 eAW
 lOV
 lOV
-lOV
+gXv
 lOV
 lOV
 rbx
@@ -291279,7 +291294,7 @@ dhH
 eAW
 lOV
 lOV
-lOV
+gXv
 lOV
 lOV
 weZ
@@ -291681,7 +291696,7 @@ hHI
 pAV
 pAV
 aDG
-lOV
+gXv
 wGD
 wGD
 wGD
@@ -292083,7 +292098,7 @@ hHF
 hHF
 pAV
 hHI
-gxt
+fyc
 wGD
 wGD
 sYx
@@ -292485,7 +292500,7 @@ hHF
 hHF
 hHF
 hHI
-gxt
+fyc
 gxt
 sYx
 sYx
@@ -292887,7 +292902,7 @@ hHF
 hHF
 hHF
 hHI
-gxt
+fyc
 gxt
 odi
 odi
@@ -386559,7 +386574,7 @@ vIa
 vIa
 vIa
 vIa
-gxt
+fyc
 fyc
 fyc
 gxt
@@ -386960,8 +386975,8 @@ vIa
 vIa
 vIa
 vIa
-gxt
-gxt
+fyc
+fyc
 gxt
 gxt
 gxt
@@ -387361,8 +387376,8 @@ vIa
 vIa
 vIa
 vIa
-gxt
-gxt
+fyc
+fyc
 gxt
 gxt
 gxt
@@ -387762,8 +387777,8 @@ vIa
 vIa
 vIa
 vIa
-gxt
-gxt
+fyc
+fyc
 gxt
 gxt
 gxt
@@ -388163,8 +388178,8 @@ vIa
 vIa
 vIa
 vIa
-gxt
-gxt
+fyc
+fyc
 gxt
 gxt
 gxt
@@ -388564,8 +388579,8 @@ pAV
 pAV
 pAV
 vIa
-gxt
-gxt
+fyc
+fyc
 gxt
 gxt
 gxt
@@ -388966,7 +388981,7 @@ cqx
 pAV
 pAV
 pAV
-gxt
+fyc
 gxt
 gxt
 gxt
@@ -389368,7 +389383,7 @@ cqx
 pAV
 pAV
 pAV
-gxt
+fyc
 gxt
 gxt
 gxt
@@ -389770,7 +389785,7 @@ xou
 xou
 hJg
 pAV
-gxt
+fyc
 gxt
 gxt
 uuE
@@ -390172,7 +390187,7 @@ xou
 xou
 hJg
 hHI
-gxt
+fyc
 gxt
 uuE
 uuE
@@ -390574,7 +390589,7 @@ jcQ
 xou
 hHI
 hHI
-gxt
+fyc
 uuE
 uuE
 uuE
@@ -390976,7 +390991,7 @@ pAV
 pAV
 hHI
 eFy
-uuE
+oIs
 uuE
 uuE
 uuE
@@ -391378,7 +391393,7 @@ qrn
 pAV
 hHN
 pfP
-uuE
+oIs
 uuE
 uuE
 uuE
@@ -391780,7 +391795,7 @@ qrn
 rDt
 eFy
 uuE
-uuE
+oIs
 uuE
 uuE
 uuE
@@ -392182,7 +392197,7 @@ qrn
 rpK
 eFy
 uuE
-uuE
+oIs
 uuE
 uuE
 uuE
@@ -392584,7 +392599,7 @@ pRP
 pAV
 eFy
 uuE
-uuE
+oIs
 uuE
 uuE
 uuE
@@ -392986,7 +393001,7 @@ qrn
 rDt
 eFy
 uuE
-uuE
+oIs
 uuE
 uuE
 uuE
@@ -393388,7 +393403,7 @@ qrn
 rDt
 eFy
 uuE
-uuE
+oIs
 uuE
 uuE
 uuE
@@ -393790,7 +393805,7 @@ qrn
 hHI
 vCE
 uXg
-uuE
+oIs
 uuE
 uuE
 uuE
@@ -394192,7 +394207,7 @@ pAV
 pAV
 pAV
 eFy
-uuE
+oIs
 uuE
 uuE
 uuE
@@ -394594,7 +394609,7 @@ mwz
 xou
 pAV
 hHI
-gxt
+fyc
 uuE
 uuE
 uuE
@@ -394996,7 +395011,7 @@ xou
 xou
 xou
 hHI
-gxt
+fyc
 gxt
 uuE
 uuE
@@ -395398,7 +395413,7 @@ jIy
 xou
 xou
 hHI
-gxt
+fyc
 gxt
 uuE
 uuE
@@ -489070,7 +489085,7 @@ vIa
 vIa
 vIa
 vIa
-gxt
+fyc
 fyc
 fyc
 gxt
@@ -489471,8 +489486,8 @@ vIa
 vIa
 vIa
 vIa
-gxt
-gxt
+fyc
+fyc
 gxt
 gxt
 gxt
@@ -489872,8 +489887,8 @@ vIa
 vIa
 vIa
 vIa
-gxt
-gxt
+fyc
+fyc
 gxt
 gxt
 gxt
@@ -490273,8 +490288,8 @@ vIa
 vIa
 vIa
 vIa
-gxt
-gxt
+fyc
+fyc
 gxt
 gxt
 gxt
@@ -490674,8 +490689,8 @@ vIa
 vIa
 vIa
 vIa
-gxt
-gxt
+fyc
+fyc
 gxt
 gxt
 gxt
@@ -491075,8 +491090,8 @@ hSA
 hSA
 uXg
 vIa
-gxt
-gxt
+fyc
+fyc
 gxt
 gxt
 gxt
@@ -491477,7 +491492,7 @@ uuE
 qYb
 vCE
 uXg
-gxt
+fyc
 gxt
 gxt
 gxt
@@ -491879,7 +491894,7 @@ uuE
 qYb
 frB
 eFy
-gxt
+fyc
 gxt
 gxt
 gxt
@@ -492281,7 +492296,7 @@ rOF
 rOF
 rOF
 eFy
-gxt
+fyc
 gxt
 gxt
 uuE
@@ -492683,7 +492698,7 @@ rOF
 rOF
 rOF
 eFy
-gxt
+fyc
 gxt
 uuE
 uuE
@@ -493085,7 +493100,7 @@ rOF
 rOF
 hHN
 pfP
-gxt
+fyc
 uuE
 uuE
 uuE
@@ -493487,7 +493502,7 @@ rOF
 hHN
 pfP
 uuE
-uuE
+oIs
 uuE
 uuE
 uuE
@@ -493889,7 +493904,7 @@ rOF
 eFy
 uuE
 uuE
-uuE
+oIs
 uuE
 uuE
 uuE
@@ -494291,7 +494306,7 @@ rOF
 eFy
 uuE
 uuE
-uuE
+oIs
 uuE
 uuE
 uuE
@@ -494693,7 +494708,7 @@ rOF
 eFy
 uuE
 uuE
-uuE
+oIs
 uuE
 uuE
 uuE
@@ -495095,7 +495110,7 @@ frB
 eFy
 uuE
 uuE
-uuE
+oIs
 uuE
 uuE
 uuE
@@ -495497,7 +495512,7 @@ rOF
 eFy
 uuE
 uuE
-uuE
+oIs
 uuE
 uuE
 uuE
@@ -495899,7 +495914,7 @@ rOF
 eFy
 uuE
 uuE
-uuE
+oIs
 uuE
 uuE
 uuE
@@ -496301,7 +496316,7 @@ rOF
 eFy
 uuE
 uuE
-uuE
+oIs
 uuE
 uuE
 uuE
@@ -496703,7 +496718,7 @@ rOF
 vCE
 uXg
 uuE
-uuE
+oIs
 uuE
 uuE
 uuE
@@ -497105,7 +497120,7 @@ rOF
 rOF
 vCE
 uXg
-gxt
+fyc
 uuE
 uuE
 uuE
@@ -497507,7 +497522,7 @@ rOF
 rOF
 rOF
 eFy
-gxt
+fyc
 gxt
 uuE
 uuE
@@ -497909,7 +497924,7 @@ rOF
 rOF
 rOF
 eFy
-gxt
+fyc
 gxt
 uuE
 uuE
@@ -498311,7 +498326,7 @@ rOF
 rOF
 frB
 eFy
-gxt
+fyc
 gxt
 uuE
 uuE
@@ -498713,7 +498728,7 @@ rOF
 rOF
 hHN
 pfP
-gxt
+fyc
 gxt
 gxt
 uuE
@@ -499115,7 +499130,7 @@ pDZ
 pDZ
 pfP
 fyc
-gxt
+fyc
 gxt
 gxt
 uuE
