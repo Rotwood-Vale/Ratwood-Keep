@@ -9927,6 +9927,13 @@
 	icon_state = "chess"
 	},
 /area/rogue/indoors/town/bath)
+"kle" = (
+/obj/structure/closet/crate/roguecloset/crafted,
+/obj/effect/decal/cobbleedge{
+	dir = 10
+	},
+/turf/open/floor/rogue/twig,
+/area/rogue/indoors)
 "klw" = (
 /obj/item/natural/poo/horse,
 /turf/open/floor/rogue/cobblerock,
@@ -18719,13 +18726,9 @@
 /area/rogue/indoors/town/manor)
 "sHh" = (
 /obj/effect/decal/cobbleedge{
-	dir = 1
+	dir = 10
 	},
-/obj/structure/table/wood{
-	dir = 6;
-	icon_state = "largetable"
-	},
-/turf/open/floor/rogue/twig,
+/turf/closed/wall/mineral/rogue/craftstone,
 /area/rogue/indoors)
 "sHo" = (
 /obj/machinery/light/rogue/firebowl/standing,
@@ -20932,10 +20935,11 @@
 "vcz" = (
 /obj/structure/bed/rogue/inn/hay,
 /obj/item/bedsheet/rogue/cloth,
-/obj/effect/landmark/start/clerk{
+/obj/machinery/light/rogue/wallfire/candle/r,
+/obj/effect/landmark/start/clerk,
+/obj/effect/decal/cobbleedge{
 	dir = 8
 	},
-/obj/machinery/light/rogue/wallfire/candle/r,
 /turf/open/floor/rogue/twig,
 /area/rogue/indoors)
 "vcT" = (
@@ -86357,8 +86361,8 @@ oLW
 xOZ
 xOZ
 xQX
-mso
-oLW
+sHh
+kle
 tvX
 oLW
 ouw
