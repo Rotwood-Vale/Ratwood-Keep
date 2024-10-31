@@ -48,6 +48,7 @@
 	smeltresult = /obj/item/ingot/steel
 	blade_dulling = DULLING_BASH
 	wdefense = 3
+	sellprice = 35
 
 /obj/item/rogueweapon/mace/getonmobprop(tag)
 	if(tag)
@@ -120,6 +121,7 @@
 	icon_state = "swarhammer"
 	smeltresult = /obj/item/ingot/steel
 	wdefense = 4
+	sellprice = 35
 
 /obj/item/rogueweapon/mace/warhammer/getonmobprop(tag)
 	if(tag)

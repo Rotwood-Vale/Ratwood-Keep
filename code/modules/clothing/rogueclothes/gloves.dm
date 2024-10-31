@@ -70,6 +70,7 @@
 	smeltresult = /obj/item/ingot/steel
 	resistance_flags = FIRE_PROOF
 	sewrepair = FALSE
+	sellprice = 15
 
 /obj/item/clothing/gloves/roguetown/chain/iron
 	icon_state = "icgloves"
@@ -93,6 +94,7 @@
 	smeltresult = /obj/item/ingot/steel
 	clothing_flags = CANT_SLEEP_IN
 	sewrepair = FALSE
+	sellprice = 20
 
 /obj/item/clothing/gloves/roguetown/grenzelgloves
 	name = "grenzelhoft gloves"

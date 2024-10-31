@@ -348,6 +348,7 @@
 	max_integrity = 50
 	max_blade_int = 50
 	wdefense = 1
+	sellprice = 0
 
 /obj/item/rogueweapon/huntingknife/elvish
 	possible_item_intents = list(/datum/intent/dagger/thrust,/datum/intent/dagger/cut)
