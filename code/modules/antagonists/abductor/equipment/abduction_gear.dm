@@ -512,7 +512,7 @@ Congratulations! You are now trained for invasive xenobiology research!"}
 	L.lastattackerckey = user.ckey
 
 	L.Paralyze(140)
-	L.apply_effect(EFFECT_STUTTER, 7)
+	L.apply_effect(7, EFFECT_STUTTER)
 	SEND_SIGNAL(L, COMSIG_LIVING_MINOR_SHOCK)
 
 	L.visible_message(span_danger("[user] has stunned [L] with [src]!"), \

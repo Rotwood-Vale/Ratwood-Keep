@@ -20,7 +20,7 @@
 	belt = /obj/item/storage/belt/rogue/leather
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/black
 	armor = /obj/item/clothing/suit/roguetown/armor/brigandine/light
-	beltr = /obj/item/storage/belt/rogue/pouch/coins/poor
+	beltr = /obj/item/keyring/mercenary
 	beltl = /obj/item/rogueweapon/mace/warhammer/steel
 	backr = /obj/item/storage/backpack/rogue/satchel
 	backl = /obj/item/rogueweapon/shield/heater

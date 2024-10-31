@@ -168,14 +168,14 @@
 				return
 		updatehealth()
 		visible_message(span_danger("[M.name] hits [src]!"), \
-						span_danger("[M.name] hits you!"), span_hear("I hear a sickening sound of flesh hitting flesh!"), COMBAT_MESSAGE_RANGE, M)
+						span_danger("[M.name] hits me!"), span_hear("I hear a sickening sound of flesh hitting flesh!"), COMBAT_MESSAGE_RANGE, M)
 		to_chat(M, span_danger("I hit [src]!"))
-		log_combat(M.occupant, src, "attacked", M, "(INTENT: [uppertext(M.occupant.used_intent)]) (DAMTYPE: [uppertext(M.damtype)])")
+		log_combat(M.occupant, src, "attacked", M, "(INTENT: [uppertext(M.occupant.used_intent.name)]) (DAMTYPE: [uppertext(M.damtype)])")
 	else
 		step_away(src,M)
 		log_combat(M.occupant, src, "pushed", M)
 		visible_message(span_warning("[M] pushes [src] out of the way."), \
-						span_warning("[M] pushes you out of the way."), span_hear("I hear aggressive shuffling!"), 5, M)
+						span_warning("[M] pushes me out of the way."), span_hear("I hear aggressive shuffling!"), 5, M)
 		to_chat(M, span_danger("I push [src] out of the way."))
 
 /mob/living/fire_act(added, maxstacks)
