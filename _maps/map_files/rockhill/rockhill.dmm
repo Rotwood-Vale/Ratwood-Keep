@@ -9557,6 +9557,10 @@
 	},
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/town/tavern)
+"jdV" = (
+/mob/living/carbon/human/species/human/northern/bum,
+/turf/open/floor/rogue/greenstone,
+/area/rogue/under/town/sewer)
 "jeJ" = (
 /obj/structure/rack/rogue,
 /obj/item/candle/yellow,
@@ -21141,6 +21145,10 @@
 	},
 /turf/open/floor/rogue/blocks/stonered,
 /area/rogue/indoors/town/dwarfin)
+"ugc" = (
+/mob/living/carbon/human/species/human/northern/bum,
+/turf/open/floor/rogue/greenstone,
+/area/rogue/under/cave)
 "ugy" = (
 /obj/structure/fluff/railing/border,
 /turf/closed/wall/mineral/rogue/stonebrick,
@@ -185025,7 +185033,7 @@ lrs
 lrs
 lrs
 rRb
-gLf
+jdV
 rSC
 rSC
 gLf
@@ -192654,7 +192662,7 @@ mof
 gLf
 gLf
 gLf
-gLf
+jdV
 gLf
 gLf
 gLf
@@ -196699,7 +196707,7 @@ lrs
 lrs
 lrs
 rRb
-gLf
+jdV
 rSC
 gLf
 rRb
@@ -199491,7 +199499,7 @@ rRb
 gLf
 rSC
 rSC
-gLf
+jdV
 gLf
 gLf
 gLf
@@ -221225,7 +221233,7 @@ vRu
 vRu
 vRu
 tQZ
-tQP
+ugc
 boa
 cHw
 vRu
@@ -228048,7 +228056,7 @@ tQP
 tQP
 tQP
 tQP
-tQP
+ugc
 tQP
 tQP
 tQP
