@@ -179,6 +179,17 @@
 	armor = list("blunt" = 30, "slash" = 10, "stab" = 20, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
 	is_barefoot = TRUE
 
+/obj/item/clothing/shoes/roguetown/boots/clothlinedanklets
+	name = "cloth lined anklets"
+	desc = "Cloth anklets lined with with fibers, foot remains bare."
+	gender = PLURAL
+	icon_state = "clothlinedanklets"
+	item_state = "furlinedanklets"
+	is_barefoot = TRUE
+	sewrepair = TRUE
+	armor = list("blunt" = 5, "slash" = 5, "stab" = 5, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0) //Thinks its fair for a piece of cloth and fiber.
+
+
 // ----------------- BLACKSTEEL -----------------------
 
 /obj/item/clothing/shoes/roguetown/boots/blacksteel/plateboots
