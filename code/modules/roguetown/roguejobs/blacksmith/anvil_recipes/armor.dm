@@ -320,7 +320,7 @@
 	name = "Astratan Helmet Alt (+1 Steel)"
 	req_bar = /obj/item/ingot/steel
 	additional_items = list(/obj/item/ingot/steel)
-	created_item = /obj/item/clothing/head/roguetown/helmet/astratahelm_alt
+	created_item = /obj/item/clothing/head/roguetown/helmet/astratahelm/alt
 	craftdiff = 2
 	i_type = "Armor"
 
@@ -328,7 +328,7 @@
 	name = "Malummite Helmet (+1 Steel)"
 	req_bar = /obj/item/ingot/steel
 	additional_items = list(/obj/item/ingot/steel)
-	created_item = /obj/item/clothing/head/roguetown/helmet/malumhelm
+	created_item = /obj/item/clothing/head/roguetown/helmet/heavy/malumhelm
 	craftdiff = 2
 	i_type = "Armor"
 
@@ -344,7 +344,7 @@
 	name = "Necran Helmet Alt (+1 Steel)"
 	req_bar = /obj/item/ingot/steel
 	additional_items = list(/obj/item/ingot/steel)
-	created_item = /obj/item/clothing/head/roguetown/helmet/necrahelm_alt
+	created_item = /obj/item/clothing/head/roguetown/helmet/necrahelm/alt
 	craftdiff = 2
 	i_type = "Armor"
 

@@ -32,7 +32,7 @@
 			if(prob(50))
 				head = /obj/item/clothing/head/roguetown/helmet/astratahelm
 			else
-				head = /obj/item/clothing/head/roguetown/helmet/astratahelm_alt
+				head = /obj/item/clothing/head/roguetown/helmet/astratahelm/alt
 			cloak = /obj/item/clothing/cloak/tabard/crusader/astrata
 		if("Noc")
 			wrists = /obj/item/clothing/neck/roguetown/psicross/noc
@@ -47,14 +47,14 @@
 			if(prob(50))
 				head = /obj/item/clothing/head/roguetown/helmet/necrahelm
 			else
-				head = /obj/item/clothing/head/roguetown/helmet/necrahelm_alt
+				head = /obj/item/clothing/head/roguetown/helmet/necrahelm/alt
 			cloak = /obj/item/clothing/cloak/tabard/crusader/necra
 		if("Pestra")
 			wrists = /obj/item/clothing/neck/roguetown/psicross/pestra
 			cloak = /obj/item/clothing/cloak/tabard/crusader/pestra
 		if("Malum")
 			wrists = /obj/item/clothing/neck/roguetown/psicross/malum
-			head = /obj/item/clothing/head/roguetown/helmet/malumhelm
+			head = /obj/item/clothing/head/roguetown/helmet/heavy/malumhelm
 		if("Ravox")
 			wrists = /obj/item/clothing/neck/roguetown/psicross/ravox
 	armor = /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk

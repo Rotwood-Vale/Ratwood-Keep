@@ -581,7 +581,7 @@
 	icon_state = "astratahelm_alt"
 	item_state = "astratahelm_alt"
 
-/obj/item/clothing/head/roguetown/helmet/heavy/malum
+/obj/item/clothing/head/roguetown/helmet/heavy/malumhelm
 	name = "malummite helmet"
 	desc = "Forged in a coal-black, this helmet carries a sigiled blade upon it's visor, ever reminding it's wearer of Malum's powerful gaze."
 	icon_state = "malumhelm"
@@ -590,7 +590,6 @@
 	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR
 	block2add = FOV_RIGHT|FOV_LEFT
 	smeltresult = /obj/item/ingot/steel
-	smelt_bar_num = 2
 
 /obj/item/clothing/head/roguetown/helmet/nochelm
 	name = "noctian helmet"
