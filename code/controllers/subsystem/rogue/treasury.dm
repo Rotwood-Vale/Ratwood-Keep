@@ -136,24 +136,24 @@ SUBSYSTEM_DEF(treasury)
 	if(!found_account)
 		return FALSE
 
-    if (amt > 0)
-        // Player received money
-        if(source)
-            send_ooc_note("<b>The Bank:</b> You received money. ([source])", name = name)
-            log_to_steward("[amt] from treasury to [name] ([source])")
-        else
-            send_ooc_note("<b>The Bank:</b> You received money.", name = name)
-            log_to_steward("[amt] from treasury to [name]")
-    else
-        // Player was fined
-        if(source)
-            send_ooc_note("<b>The Bank:</b> You were fined. ([source])", name = name)
-            log_to_steward("[name] was fined [amt] ([source])")
-        else
-            send_ooc_note("<b>The Bank:</b> You were fined.", name = name)
-            log_to_steward("[name] was fined [amt]")
+	if (amt > 0)
+		// Player received money
+		if(source)
+			send_ooc_note("<b>The Bank:</b> You received money. ([source])", name = name)
+			log_to_steward("[amt] from treasury to [name] ([source])")
+		else
+			send_ooc_note("<b>The Bank:</b> You received money.", name = name)
+			log_to_steward("[amt] from treasury to [name]")
+	else
+		// Player was fined
+		if(source)
+			send_ooc_note("<b>The Bank:</b> You were fined. ([source])", name = name)
+			log_to_steward("[name] was fined [amt] ([source])")
+		else
+			send_ooc_note("<b>The Bank:</b> You were fined.", name = name)
+			log_to_steward("[name] was fined [amt]")
 
-    return TRUE
+	return TRUE
 
 ///Deposits money into a character's bank account. Taxes are deducted from the deposit and added to the treasury.
 ///@param amt: The amount of money to deposit.
