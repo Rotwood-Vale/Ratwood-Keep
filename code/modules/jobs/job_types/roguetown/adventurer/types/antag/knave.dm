@@ -35,7 +35,6 @@
 	shoes = /obj/item/clothing/shoes/roguetown/armor
 	mask = /obj/item/clothing/mask/rogue/facemask/steel
 	neck = /obj/item/clothing/neck/roguetown/coif
-	armor = /obj/item/clothing/suit/roguetown/armor/leather
 	H.change_stat("strength", 1)
 	H.change_stat("constitution", 1)
 	H.change_stat("intelligence", -3)
