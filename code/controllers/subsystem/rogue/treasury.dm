@@ -23,7 +23,7 @@ SUBSYSTEM_DEF(treasury)
 	name = "treasury"
 	wait = 1
 	priority = FIRE_PRIORITY_WATER_LEVEL
-	var/tax_value = 0.10
+	var/tax_value = 0.11
 	var/queens_tax = 0.15
 	var/treasury_value = 0
 	var/list/bank_accounts = list()
@@ -36,7 +36,7 @@ SUBSYSTEM_DEF(treasury)
 
 /datum/controller/subsystem/treasury/Initialize()
 	treasury_value = rand(800,1500)
-	queens_tax = rand(5, 35)/100
+	queens_tax = pick(0.09, 0.15, 0.21, 0.30)
 
 	for(var/path in subtypesof(/datum/roguestock/bounty))
 		var/datum/D = new path
@@ -80,10 +80,10 @@ SUBSYSTEM_DEF(treasury)
 		var/people_told = 0
 		for(var/mob/living/carbon/human/X in GLOB.human_list)
 			switch(X.job)
-				if("Duke", "Steward", "Clerk", "Hand")
+				if("Duke", "Steward", "Clerk")
 					people_told += 1
 					send_ooc_note("Income from wealth horde: +[amt_to_generate]", name = X.real_name)
-					if(people_told > 4)
+					if(people_told > 3)
 						return
 
 
@@ -136,24 +136,24 @@ SUBSYSTEM_DEF(treasury)
 	if(!found_account)
 		return FALSE
 
-	if (amt > 0)
-		// Player received money
-		if(source)
-			send_ooc_note("<b>The Bank:</b> You received money. ([source])", name = name)
-			log_to_steward("[amt] from treasury to [name] ([source])")
-		else
-			send_ooc_note("<b>The Bank:</b> You received money.", name = name)
-			log_to_steward("[amt] from treasury to [name]")
-	else
-		// Player was fined
-		if(source)
-			send_ooc_note("<b>The Bank:</b> You were fined. ([source])", name = name)
-			log_to_steward("[name] was fined [amt] ([source])")
-		else
-			send_ooc_note("<b>The Bank:</b> You were fined.", name = name)
-			log_to_steward("[name] was fined [amt]")
+    if (amt > 0)
+        // Player received money
+        if(source)
+            send_ooc_note("<b>The Bank:</b> You received money. ([source])", name = name)
+            log_to_steward("[amt] from treasury to [name] ([source])")
+        else
+            send_ooc_note("<b>The Bank:</b> You received money.", name = name)
+            log_to_steward("[amt] from treasury to [name]")
+    else
+        // Player was fined
+        if(source)
+            send_ooc_note("<b>The Bank:</b> You were fined. ([source])", name = name)
+            log_to_steward("[name] was fined [amt] ([source])")
+        else
+            send_ooc_note("<b>The Bank:</b> You were fined.", name = name)
+            log_to_steward("[name] was fined [amt]")
 
-	return TRUE
+    return TRUE
 
 ///Deposits money into a character's bank account. Taxes are deducted from the deposit and added to the treasury.
 ///@param amt: The amount of money to deposit.
