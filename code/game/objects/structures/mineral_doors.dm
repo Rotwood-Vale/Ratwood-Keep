@@ -46,14 +46,12 @@
 	var/kickthresh = 15
 	var/swing_closed = TRUE
 	var/lock_strength = 100
-
-	damage_deflection = 10
-
 	var/repairable = FALSE
 	var/repair_state = 0
 	var/obj/item/repair_cost_first = null
 	var/obj/item/repair_cost_second = null	
 	var/repair_skill = null
+	damage_deflection = 10
 
 /obj/structure/mineral_door/onkick(mob/user)
 	if(isSwitchingStates)
