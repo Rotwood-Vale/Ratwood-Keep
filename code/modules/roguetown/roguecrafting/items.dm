@@ -498,7 +498,7 @@
 	tools = list(/obj/item/rogueweapon/huntingknife = 1)
 
 /datum/crafting_recipe/roguetown/lumberjacking/cart_upgrade
-	name = "cart upgrade"
+	name = "upgrade cog"
 	result = /obj/item/cart_upgrade/level_1
 	reqs = list(/obj/item/grown/log/tree/small = 2,
 				/obj/item/natural/stone = 1)
