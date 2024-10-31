@@ -30,7 +30,7 @@
 		if("Astrata")
 			wrists = /obj/item/clothing/neck/roguetown/psicross/astrata
 			head = /obj/item/clothing/head/roguetown/helmet/astratahelm
-			cloak = /obj/item/clothing/cloak/tabard/crusader/astrata
+			cloak = /obj/item/clothing/cloak/templar/astratan
 		if("Noc")
 			wrists = /obj/item/clothing/neck/roguetown/psicross/noc
 			head = /obj/item/clothing/head/roguetown/helmet/nochelm
@@ -42,12 +42,13 @@
 		if("Necra")
 			wrists = /obj/item/clothing/neck/roguetown/psicross/necra
 			head = /obj/item/clothing/head/roguetown/helmet/necrahelm
-			cloak = /obj/item/clothing/cloak/tabard/crusader/necra
+			cloak = /obj/item/clothing/cloak/templar/necran
 		if("Pestra")
 			wrists = /obj/item/clothing/neck/roguetown/psicross/pestra
 			cloak = /obj/item/clothing/cloak/tabard/crusader/pestra
 		if("Malum")
 			wrists = /obj/item/clothing/neck/roguetown/psicross/malum
+			cloak = /obj/item/clothing/cloak/templar/malummite
 		if("Ravox")
 			wrists = /obj/item/clothing/neck/roguetown/psicross/ravox
 	armor = /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk
