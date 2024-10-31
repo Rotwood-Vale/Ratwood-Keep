@@ -169,12 +169,12 @@
 	if(!mind)
 		mind_initialize()
 
-	mind.adjust_skillrank(/datum/skill/combat/maces, 3, TRUE)
-	mind.adjust_skillrank(/datum/skill/combat/axes, 3, TRUE)
-	mind.adjust_skillrank(/datum/skill/combat/crossbows, 3, TRUE)
-	mind.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE)
-	mind.adjust_skillrank(/datum/skill/combat/unarmed, 3, TRUE)
-	mind.adjust_skillrank(/datum/skill/combat/swords, 3, TRUE)
+	mind.adjust_skillrank_up_to(/datum/skill/combat/maces, 3, TRUE)
+	mind.adjust_skillrank_up_to(/datum/skill/combat/axes, 3, TRUE)
+	mind.adjust_skillrank_up_to(/datum/skill/combat/crossbows, 3, TRUE)
+	mind.adjust_skillrank_up_to(/datum/skill/combat/wrestling, 3, TRUE)
+	mind.adjust_skillrank_up_to(/datum/skill/combat/unarmed, 3, TRUE)
+	mind.adjust_skillrank_up_to(/datum/skill/combat/swords, 3, TRUE)
 	mind.current.job = null
 
 	dna.species.species_traits |= NOBLOOD
