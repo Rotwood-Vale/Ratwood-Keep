@@ -198,9 +198,9 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "E
 	"Priest",
 	"Knight")
 	var/num_bandits = 0
-	if(num_players() >= 10)
-		// 1 bandit per 10 players, 0 if less than 10, no maximum
-		num_bandits = round(num_players() / 10)
+	if(num_players() >= 12)
+		// 1 bandit per 12 players,
+		num_bandits = round(num_players() / 12)
 		if(num_bandits >= 8)	//caps bandits at 8
 			num_bandits = 8
 		var/datum/job/bandit_job = SSjob.GetJob("Bandit")
