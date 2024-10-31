@@ -32,6 +32,14 @@
 
 </div>
 
+
+<h1>
+	<a href="https://github.com/Rotwood-Vale/Ratwood-Keep/blob/main/ContributionGuidelines.dm">
+		Contribution Guidelines
+	</a>
+</h1>
+
+
 # LICENSE
 
 ## Ratwood
