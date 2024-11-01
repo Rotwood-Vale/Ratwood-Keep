@@ -315,15 +315,31 @@
 	i_type = "Armor"
 
 /datum/anvil_recipe/armor/steel/astratahelm
-	name = "Astrata Helmet (+1 Steel)"
+	name = "Astratan Helmet (+1 Steel)"
 	req_bar = /obj/item/ingot/steel
 	additional_items = list(/obj/item/ingot/steel)
 	created_item = /obj/item/clothing/head/roguetown/helmet/astratahelm
 	craftdiff = 2
 	i_type = "Armor"
 
+/datum/anvil_recipe/armor/steel/astratahelm_alt
+	name = "Astratan Helmet Alt (+1 Steel)"
+	req_bar = /obj/item/ingot/steel
+	additional_items = list(/obj/item/ingot/steel)
+	created_item = /obj/item/clothing/head/roguetown/helmet/astratahelm/alt
+	craftdiff = 2
+	i_type = "Armor"
+
+/datum/anvil_recipe/armor/steel/malumhelm
+	name = "Malummite Helmet (+1 Steel)"
+	req_bar = /obj/item/ingot/steel
+	additional_items = list(/obj/item/ingot/steel)
+	created_item = /obj/item/clothing/head/roguetown/helmet/heavy/malumhelm
+	craftdiff = 2
+	i_type = "Armor"
+
 /datum/anvil_recipe/armor/steel/necrahelm
-	name = "Necra Helmet (+1 Steel)"
+	name = "Necran Helmet (+1 Steel)"
 	req_bar = /obj/item/ingot/steel
 	additional_items = list(/obj/item/ingot/steel)
 	created_item = /obj/item/clothing/head/roguetown/helmet/necrahelm
@@ -339,7 +355,7 @@
 	i_type = "Armor"
 
 /datum/anvil_recipe/armor/steel/dendorhelm
-	name = "Dendor Helmet (+1 Steel)"
+	name = "Dendorite Helmet (+1 Steel)"
 	req_bar = /obj/item/ingot/steel
 	additional_items = list(/obj/item/ingot/steel)
 	created_item = /obj/item/clothing/head/roguetown/helmet/dendorhelm
