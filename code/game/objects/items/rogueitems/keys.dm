@@ -96,6 +96,12 @@
 	icon_state = "spikekey"
 	lockid = "garrison"
 
+/obj/item/roguekey/warden
+	name = "watchtower key"
+	desc = "This key belongs to the wardens."
+	icon_state = "spikekey"
+	lockid = "warden"
+
 /obj/item/roguekey/dungeon
 	name = "dungeon key"
 	desc = "This key should unlock the rusty bars and doors of the dungeon."
