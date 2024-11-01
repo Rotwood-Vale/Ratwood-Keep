@@ -12,6 +12,7 @@
 	var/min_pq = -100
 
 	var/horse = FALSE
+	var/torch = TRUE
 	var/vampcompat = TRUE
 	var/list/traits_applied
 	var/cmode_music
@@ -37,9 +38,10 @@
 
 	//sleep(1)
 	//testing("[H] spawn troch")
-	var/obj/item/flashlight/flare/torch/T = new()
-	T.spark_act()
-	H.put_in_hands(T, forced = TRUE)
+	if(torch)
+		var/obj/item/flashlight/flare/torch/T = new()
+		T.spark_act()
+		H.put_in_hands(T, forced = TRUE)
 
 	var/turf/TU = get_turf(H)
 	if(TU)

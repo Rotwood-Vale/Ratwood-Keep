@@ -497,7 +497,7 @@
 	icon = 'icons/obj/lollipop.dmi'
 	icon_state = "gumball"
 	list_reagents = list(/datum/reagent/consumable/sugar = 5, /datum/reagent/medicine/sal_acid = 2, /datum/reagent/medicine/oxandrolone = 2)	//Kek
-	tastes = list("candy")
+	tastes = list("candy" = 1)
 	foodtype = JUNKFOOD
 
 /obj/item/reagent_containers/food/snacks/gumball/Initialize()

@@ -60,8 +60,8 @@ GLOBAL_LIST_INIT(nonhuman_positions, list(
 	ROLE_PAI))
 
 GLOBAL_LIST_INIT(noble_positions, list(
-	"Lord",
-	"Lady Consort",
+	"Duke",
+	"Duchess Consort",
 	"Heir",
 	"Retinue Captain",
 	"Royal Marshal",
@@ -101,7 +101,7 @@ GLOBAL_LIST_INIT(yeoman_positions, list(
 	"Merchant",
 	"Barkeep",
 	"Archivist",
-	"Guild smith",
+	"Guild Smith",
 	"Seamster",
 	"Alchemist",
 	"Mason",
@@ -131,9 +131,7 @@ GLOBAL_LIST_INIT(peasant_positions, list(
 ))
 
 GLOBAL_LIST_INIT(mercenary_positions, list(
-	"Grenzelhoft Mercenary",
-	"Desert Rider Mercenary",
-	"Sellsword",
+	"Mercenary",
 	"Veteran",
 ))
 
