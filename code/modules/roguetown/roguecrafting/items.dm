@@ -490,3 +490,16 @@
 				/obj/item/natural/fibers = 3)
 	skillcraft = /datum/skill/magic/druidic
 	craftdiff = 2 // druids & dendor clerics can craft
+
+// Woodcutting recipe
+
+/datum/crafting_recipe/roguetown/lumberjacking
+	skillcraft = /datum/skill/labor/lumberjacking
+	tools = list(/obj/item/rogueweapon/huntingknife = 1)
+
+/datum/crafting_recipe/roguetown/lumberjacking/cart_upgrade
+	name = "upgrade cog"
+	result = /obj/item/cart_upgrade/level_1
+	reqs = list(/obj/item/grown/log/tree/small = 2,
+				/obj/item/natural/stone = 1)
+	craftdiff = 2
