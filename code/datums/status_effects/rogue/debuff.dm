@@ -299,3 +299,15 @@
 	name = "Ravox's Burden"
 	desc = "Some divine power is straining my mind!"
 	icon_state = "muscles"
+
+/// Surgery RELATED
+
+/datum/status_effect/debuff/devitalised
+	id = "devitalised"
+	alert_type = /atom/movable/screen/alert/status_effect/debuff/devitalised
+	effectedstats = list("fortune" = -2, "speed" = -1, "strength" = -1, "constitution" = -1)
+	duration = 20 MINUTES
+
+/atom/movable/screen/alert/status_effect/debuff/devitalised
+	name = "Devitalised"
+	desc = "Something has been taken from me, and it will take time to recover."
