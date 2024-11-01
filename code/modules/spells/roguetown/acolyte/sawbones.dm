@@ -407,7 +407,7 @@
 	can_brew = TRUE
 	list_reagents = null
 	grind_results = null
-	volume = 22
+	volume = 24
 
 /obj/item/reagent_containers/powder/alch/berry
 	name = "essence of berry"
@@ -415,11 +415,11 @@
 	icon_state = "salt"
 	color = "#4682b4"
 	brew_reagent = /datum/reagent/alch/syrumb
-	brew_amt = 22
+	brew_amt = 24
 	can_brew = TRUE
 	list_reagents = null
 	grind_results = null
-	volume = 22
+	volume = 24
 
 /obj/item/reagent_containers/powder/alch/berryp
 	name = "essence of poison berry"
@@ -427,7 +427,7 @@
 	icon_state = "salt"
 	color = "#61DE2A"
 	brew_reagent = /datum/reagent/alch/syrump
-	brew_amt = 22
+	brew_amt = 24
 	can_brew = TRUE
 	list_reagents = null
 	grind_results = list(/datum/reagent/berrypoison = 10)
@@ -440,7 +440,7 @@
 	color = "#ff7f7f"
 	can_brew = TRUE
 	brew_reagent = /datum/reagent/alch/syrumm
-	brew_amt = 22
+	brew_amt = 24
 	list_reagents = list(/datum/reagent/consumable/nutriment = 3)
 	grind_results = null
 	volume = 10
@@ -451,7 +451,7 @@
 	icon_state = "salt"
 	color = "#ff7f7f"
 	brew_reagent = /datum/reagent/alch/syrumf
-	brew_amt = 22
+	brew_amt = 24
 	can_brew = TRUE
 	list_reagents = list(/datum/reagent/consumable/nutriment = 3)
 	grind_results = null
@@ -462,7 +462,7 @@
 	gender = PLURAL
 	icon_state = "salt"
 	brew_reagent = /datum/reagent/alch/syrumr
-	brew_amt = 22
+	brew_amt = 24
 	can_brew = TRUE
 	color = "#808080"
 	list_reagents = null
@@ -474,7 +474,7 @@
 	gender = PLURAL
 	icon_state = "salt"
 	brew_reagent = /datum/reagent/alch/syrumpw
-	brew_amt = 22
+	brew_amt = 24
 	can_brew = TRUE
 	color = "#808080"
 	list_reagents = list(/datum/reagent/drug/nicotine = 30)
@@ -486,7 +486,7 @@
 	gender = PLURAL
 	icon_state = "salt"
 	brew_reagent = /datum/reagent/alch/syrumsw
-	brew_amt = 22
+	brew_amt = 24
 	can_brew = TRUE
 	color = "#61DE2A"
 	list_reagents = list(/datum/reagent/drug/space_drugs = 30)
