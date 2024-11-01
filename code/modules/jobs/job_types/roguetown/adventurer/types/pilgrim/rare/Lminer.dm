@@ -38,6 +38,7 @@
 		H.mind.adjust_skillrank(/datum/skill/misc/swimming, 5, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/climbing, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/labor/mining, 6, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
 		H.change_stat("strength", 4)
 		H.change_stat("endurance", 6) // Must...mine...
 		H.change_stat("constitution", 3)
