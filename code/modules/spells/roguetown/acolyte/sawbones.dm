@@ -1161,9 +1161,10 @@
 	amount_per_transfer_from_this = 30
 	list_reagents = list(/datum/reagent/medicine/purify = 20, /datum/reagent/ozium = 5, /datum/reagent/consumable/ethanol/hooch = 5) // lil laudanum for your troubles
 
+
 /obj/item/natural/cloth/bandage
 	name = "bandage"
-	desc = "A simple bandage used to bind wounds. More effective than just cloth."
+	desc = "A simple bandage used to bind wounds. takes longer to apply but is more effective than just cloth. Slowly heals wounds and binded fractures."
 	icon_state = "bandageroll"
 	icon = 'icons/roguetown/items/surgery.dmi'
 	possible_item_intents = list(/datum/intent/use)
@@ -1180,29 +1181,40 @@
 	w_class = WEIGHT_CLASS_TINY
 	spitoutmouth = FALSE
 	bundletype = /obj/item/natural/bundle/cloth/bandage
-	bandage_effectiveness = 1.17 // increased by 30%
+	bandage_effectiveness = 1
 
-/obj/item/natural/cloth/bandage/attack(mob/living/M, mob/user)
-	if(!M.can_inject(user, TRUE)) return
-	if(!ishuman(M)) return
+/obj/item/natural/cloth/bandage/attack(mob/living/carbon/human/M, mob/user)
+	if (!M.can_inject(user, TRUE)) return
+	if (!ishuman(M)) return
 	var/mob/living/carbon/human/H = M
 	var/obj/item/bodypart/affecting = H.get_bodypart(check_zone(user.zone_selected))
-	if(!affecting) return
-	if(affecting.bandage)
+	if (!affecting) return
+	if (affecting.bandage) 
 		to_chat(user, "There is already a bandage.")
 		return
-	var/used_time = 49 // reduced by 30%
-	if(H.mind) used_time -= (H.mind.get_skill_level(/datum/skill/misc/treatment) * 10)
+	var/used_time = 100
+	if (H.mind) 
+		used_time -= (H.mind.get_skill_level(/datum/skill/misc/treatment) * 10)
 	playsound(loc, 'sound/foley/bandage.ogg', 100, FALSE)
-	if(!do_mob(user, M, used_time)) return
+	if (!do_mob(user, M, used_time)) return
 	playsound(loc, 'sound/foley/bandage.ogg', 100, FALSE)
 	user.dropItemToGround(src)
 	affecting.try_bandage(src)
 	H.update_damage_overlays()
-	if(M == user)
+	
+	// Heal the specific body part every second while bandaged and manage wound pain and disabling effects
+	addtimer(CALLBACK(src, /proc/heal_and_manage_pain_disabling, H, affecting), 10, 1, TRUE)
+	if (M == user)
 		user.visible_message("You bandage your [affecting].")
 	else
 		user.visible_message("You bandage [M]'s [affecting].")
+
+/proc/heal_and_manage_pain_disabling(var/mob/living/carbon/human/H, var/obj/item/bodypart/affecting)
+	if (!affecting) return
+	affecting.heal_wounds(0.5)
+	for (var/datum/wound/W in affecting.wounds)
+		if (W.woundpain > 30)
+			W.woundpain = 30
 
 /obj/item/natural/bundle/cloth/bandage
 	name = "roll of bandages"
