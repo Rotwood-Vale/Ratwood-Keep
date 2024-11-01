@@ -1133,12 +1133,6 @@
 "bex" = (
 /turf/open/floor/rogue/tile/tilerg,
 /area/rogue/indoors/town/tavern)
-"bey" = (
-/obj/structure/closet/crate/chest{
-	lockid = "physician"
-	},
-/turf/closed/wall/mineral/rogue/wood,
-/area/rogue/indoors/town/manor)
 "beC" = (
 /obj/structure/closet/crate/chest{
 	lockid = "keep_armory"
@@ -3179,7 +3173,7 @@
 /area/rogue/indoors/town/dwarfin)
 "dcz" = (
 /obj/structure/roguemachine/merchantvend,
-/turf/open/floor/rogue/concrete,
+/turf/closed/wall/mineral/rogue/stonebrick,
 /area/rogue/indoors/town/shop)
 "dcD" = (
 /obj/structure/rack/rogue,
@@ -3198,7 +3192,6 @@
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/basement)
 "ddo" = (
-/obj/structure/table/wood/crafted,
 /obj/structure/table/wood/crafted,
 /obj/item/grown/log/tree/stick,
 /obj/item/natural/bundle/cloth,
@@ -6993,10 +6986,6 @@
 /turf/open/transparent/openspace,
 /area/rogue/indoors/town/bath)
 "gwI" = (
-/obj/structure/fluff/millstone{
-	pixel_x = -39;
-	pixel_y = -66
-	},
 /obj/structure/fermenting_barrel/water,
 /turf/open/floor/rogue/ruinedwood/chevron,
 /area/rogue/indoors)
@@ -11514,9 +11503,6 @@
 /obj/machinery/light/rogue/wallfire/candle/r,
 /turf/open/floor/rogue/grass,
 /area/rogue/outdoors/rtfield)
-"kVJ" = (
-/turf/closed,
-/area/rogue/under/cave)
 "kWa" = (
 /turf/open/floor/rogue/cobble,
 /area/rogue/outdoors/town/roofs)
@@ -14836,10 +14822,6 @@
 	},
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/town/basement)
-"nZg" = (
-/obj/machinery/light/rogue/oven,
-/turf/closed/wall/mineral/rogue/decostone,
-/area/rogue/indoors/town/church)
 "nZo" = (
 /obj/machinery/light/rogue/torchholder{
 	dir = 4
@@ -211863,7 +211845,7 @@ rSC
 rSC
 vRu
 vRu
-kVJ
+vRu
 vRu
 vRu
 vRu
@@ -298734,7 +298716,7 @@ hUt
 xut
 ueq
 toW
-dcz
+pKQ
 adK
 pKQ
 toW
@@ -299135,7 +299117,7 @@ fHS
 hUt
 toW
 toW
-toW
+dcz
 pKQ
 adK
 pKQ
@@ -400368,7 +400350,7 @@ hLW
 wtF
 cpf
 cpf
-bey
+cpf
 cBj
 cpf
 cpf
@@ -427775,7 +427757,7 @@ wAm
 wAm
 wAm
 hKU
-nZg
+tML
 ffv
 ffv
 tML
