@@ -525,6 +525,7 @@
 	desc = "A steel helmet which protects the ears."
 	smeltresult = /obj/item/ingot/steel
 	body_parts_covered = HEAD|HAIR|EARS
+	smelt_bar_num = 2
 
 /obj/item/clothing/head/roguetown/helmet/sallet/visored
 	name = "visored sallet"
@@ -571,6 +572,7 @@
 	body_parts_covered = HEAD|EARS|HAIR|NOSE|EYES|MOUTH
 	armor_class = ARMOR_CLASS_MEDIUM
 	block2add = FOV_BEHIND
+	smelt_bar_num = 2
 
 /obj/item/clothing/head/roguetown/helmet/nochelm
 	name = "noc helmet"
@@ -583,6 +585,7 @@
 	body_parts_covered = HEAD|EARS|HAIR|NOSE|EYES|MOUTH
 	armor_class = ARMOR_CLASS_MEDIUM
 	block2add = FOV_BEHIND
+	smelt_bar_num = 2
 
 /obj/item/clothing/head/roguetown/helmet/necrahelm
 	name = "necra helmet"
@@ -595,6 +598,7 @@
 	body_parts_covered = HEAD|EARS|HAIR|NOSE|EYES|MOUTH
 	armor_class = ARMOR_CLASS_MEDIUM
 	block2add = FOV_BEHIND
+	smelt_bar_num = 2
 
 /obj/item/clothing/head/roguetown/helmet/dendorhelm
 	name = "dendor helmet"
@@ -607,6 +611,7 @@
 	body_parts_covered = HEAD|EARS|HAIR|NOSE|EYES|MOUTH
 	armor_class = ARMOR_CLASS_MEDIUM
 	block2add = FOV_BEHIND
+	smelt_bar_num = 2
 
 /obj/item/clothing/head/roguetown/helmet/heavy
 	name = "barbute"
@@ -621,6 +626,7 @@
 	block2add = FOV_RIGHT|FOV_LEFT
 	armor_class = ARMOR_CLASS_HEAVY
 	max_integrity = 400
+	smelt_bar_num = 2
 
 /obj/item/clothing/head/roguetown/helmet/heavy/guard
 	name = "savoyard"
@@ -987,3 +993,22 @@
 	clothing_flags = null
 	salvage_amount = 1
 	salvage_result = /obj/item/natural/hide
+
+//----------------- BLACKSTEEL ---------------------
+
+/obj/item/clothing/head/roguetown/helmet/blacksteel/bucket
+	name = "Blacksteel Bucket Helm"
+	desc = "A bucket helmet forged of durable blacksteel. None shall pass.."
+	body_parts_covered = FULL_HEAD
+	icon = 'icons/roguetown/clothing/special/blkknight.dmi'
+	mob_overlay_icon = 'icons/roguetown/clothing/special/onmob/blkknight.dmi'
+	icon_state = "bkhelm"
+	item_state = "bkhelm"
+	flags_inv = HIDEEARS|HIDEFACE
+	flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH
+	armor = list("blunt" = 90, "slash" = 100, "stab" = 80, "bullet" = 100, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT, BCLASS_SMASH, BCLASS_TWIST, BCLASS_PICK)
+	block2add = FOV_RIGHT|FOV_LEFT
+	max_integrity = 425
+	smeltresult = /obj/item/ingot/blacksteel
+	smelt_bar_num = 2

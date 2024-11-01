@@ -354,6 +354,8 @@
 	icon_state = "polemace"
 	force = 15
 	force_wielded = 35
+	smeltresult = /obj/item/ingot/steel
+	smelt_bar_num = 2
 
 /obj/item/rogueweapon/mace/goden/steel/getonmobprop(tag)
 	. = ..()

@@ -2,6 +2,21 @@
 /obj/item/clothing/proc/step_action() //this was made to rewrite clown shoes squeaking
 	SEND_SIGNAL(src, COMSIG_CLOTHING_STEP_ACTION)
 
+/obj/item/clothing
+	var/do_sound_chain = FALSE
+	var/do_sound_plate = FALSE
+
+/obj/item/clothing/Initialize()
+	. = ..()
+	if(do_sound_chain)
+		AddComponent(/datum/component/squeak, list('sound/foley/footsteps/armor/chain (1).ogg',\
+													'sound/foley/footsteps/armor/chain (2).ogg',\
+													'sound/foley/footsteps/armor/chain (3).ogg'), 100)
+	else if(do_sound_plate)
+		AddComponent(/datum/component/squeak, list('sound/foley/footsteps/armor/plate (1).ogg',\
+													'sound/foley/footsteps/armor/plate (2).ogg',\
+													'sound/foley/footsteps/armor/plate (3).ogg'), 100)
+
 /obj/item/clothing/suit/roguetown/armor
 	slot_flags = ITEM_SLOT_ARMOR
 	body_parts_covered = CHEST
@@ -37,18 +52,12 @@
 	armor = list("blunt" = 60, "slash" = 100, "stab" = 80, "bullet" = 20, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
 	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT)
 	blocksound = CHAINHIT
-	var/do_sound = FALSE
+	do_sound_chain = TRUE
 	drop_sound = 'sound/foley/dropsound/chain_drop.ogg'
 	anvilrepair = /datum/skill/craft/blacksmithing
 	smeltresult = /obj/item/ingot/steel
+	smelt_bar_num = 2
 	armor_class = ARMOR_CLASS_LIGHT
-
-/obj/item/clothing/suit/roguetown/armor/chainmail/Initialize()
-	. = ..()
-	if(do_sound)
-		AddComponent(/datum/component/squeak, list('sound/foley/footsteps/armor/chain (1).ogg',\
-													'sound/foley/footsteps/armor/chain (2).ogg',\
-													'sound/foley/footsteps/armor/chain (3).ogg'), 100)
 
 /obj/item/clothing/suit/roguetown/armor/chainmail/iron
 	icon_state = "ichainmail"
@@ -70,7 +79,7 @@
 	armor = list("blunt" = 60, "slash" = 100, "stab" = 80, "bullet" = 20, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
 	anvilrepair = /datum/skill/craft/blacksmithing
 	smeltresult = /obj/item/ingot/steel
-	do_sound = TRUE
+	do_sound_chain = TRUE
 	armor_class = ARMOR_CLASS_MEDIUM
 	w_class = WEIGHT_CLASS_BULKY
 
@@ -99,7 +108,7 @@
 	nodismemsleeves = TRUE
 	max_integrity = 500
 	allowed_sex = list(MALE, FEMALE)
-	var/do_sound = TRUE
+	do_sound_plate = TRUE
 	anvilrepair = /datum/skill/craft/blacksmithing
 	smeltresult = /obj/item/ingot/steel
 	equip_delay_self = 40
@@ -107,13 +116,6 @@
 	armor_class = ARMOR_CLASS_HEAVY
 	w_class = WEIGHT_CLASS_BULKY
 	clothing_flags = CANT_SLEEP_IN
-
-/obj/item/clothing/suit/roguetown/armor/plate/Initialize()
-	. = ..()
-	if(do_sound)
-		AddComponent(/datum/component/squeak, list('sound/foley/footsteps/armor/plate (1).ogg',\
-													'sound/foley/footsteps/armor/plate (2).ogg',\
-													'sound/foley/footsteps/armor/plate (3).ogg'), 100)
 
 /obj/item/clothing/suit/roguetown/armor/plate/half
 	slot_flags = ITEM_SLOT_ARMOR
@@ -125,11 +127,12 @@
 	armor = list("blunt" = 80, "slash" = 100, "stab" = 80, "bullet" = 100, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
 	allowed_race = CLOTHED_RACES_TYPES
 	nodismemsleeves = TRUE
-	do_sound = FALSE
+	do_sound_plate = FALSE
 	blocking_behavior = null
 	max_integrity = 300
 	anvilrepair = /datum/skill/craft/blacksmithing
 	smeltresult = /obj/item/ingot/steel
+	smelt_bar_num = 2
 	armor_class = ARMOR_CLASS_MEDIUM
 
 /obj/item/clothing/suit/roguetown/armor/plate/full
@@ -142,6 +145,7 @@
 	unequip_delay_self = 1200
 	equip_delay_other = 60
 	strip_delay = 60
+	smelt_bar_num = 4
 
 /obj/item/clothing/suit/roguetown/armor/plate/half/iron
 	name = "iron breastplate"
@@ -149,6 +153,7 @@
 	icon_state = "ibreastplate"
 	max_integrity = 235
 	smeltresult = /obj/item/ingot/iron
+	smelt_bar_num = 2
 	armor_class = ARMOR_CLASS_MEDIUM
 
 /obj/item/clothing/suit/roguetown/armor/plate/scale
@@ -163,6 +168,7 @@
 	smeltresult = /obj/item/ingot/steel
 	equip_delay_self = 40
 	armor_class = ARMOR_CLASS_MEDIUM
+	smelt_bar_num = 2
 
 /obj/item/clothing/suit/roguetown/armor/heartfelt/lord
 	slot_flags = ITEM_SLOT_ARMOR
@@ -182,6 +188,7 @@
 	armor_class = ARMOR_CLASS_HEAVY
 	w_class = WEIGHT_CLASS_BULKY
 	clothing_flags = CANT_SLEEP_IN
+	smelt_bar_num = 4
 
 /obj/item/clothing/suit/roguetown/armor/heartfelt/hand
 	slot_flags = ITEM_SLOT_ARMOR
@@ -201,6 +208,7 @@
 	armor_class = ARMOR_CLASS_HEAVY
 	w_class = WEIGHT_CLASS_BULKY
 	clothing_flags = CANT_SLEEP_IN
+	smelt_bar_num = 4
 
 /obj/item/clothing/suit/roguetown/armor/brigandine
 	slot_flags = ITEM_SLOT_ARMOR
@@ -220,6 +228,7 @@
 	armor_class = ARMOR_CLASS_HEAVY
 	w_class = WEIGHT_CLASS_BULKY
 	clothing_flags = CANT_SLEEP_IN
+	smelt_bar_num = 2
 
 /obj/item/clothing/suit/roguetown/armor/brigandine/Initialize()
 	. = ..()
@@ -484,16 +493,6 @@
 	. = ..()
 	color = pick(CLOTHING_PURPLE, null,CLOTHING_GREEN, CLOTHING_RED)
 
-/obj/item/clothing/suit/roguetown/armor/plate/half/grenzelhoft
-	slot_flags = ITEM_SLOT_ARMOR
-	name = "Grenzelhoft cuirass"
-	desc = "A basic cuirass built from black-steel. It's somewhat more durable than regular steel."
-	icon_state = "grenzelcuirass"
-	item_state = "grenzelcuirass"
-	sleeved = 'icons/roguetown/clothing/onmob/helpers/stonekeep_merc.dmi'
-	boobed = TRUE
-	max_integrity = 400
-
 /obj/item/clothing/suit/roguetown/armor/leather/cult_robe
 	name = "cultist robes"
 	desc = " "
@@ -510,3 +509,45 @@
 	sewrepair = TRUE
 	armor_class = ARMOR_CLASS_LIGHT
 	salvage_result = /obj/item/natural/hide
+
+/obj/item/clothing/suit/roguetown/armor/blacksteel/platechest
+	slot_flags = ITEM_SLOT_ARMOR
+	name = "Blacksteel Plate Armor"
+	desc = "A suit of Full Plate smithed of durable blacksteel."
+	body_parts_covered = CHEST|GROIN|VITALS|LEGS|ARMS
+	icon = 'icons/roguetown/clothing/special/blkknight.dmi'
+	mob_overlay_icon = 'icons/roguetown/clothing/special/onmob/blkknight.dmi'
+	icon_state = "bkarmor"
+	item_state = "bkarmor"
+	armor = list("blunt" = 90, "slash" = 100, "stab" = 80, "bullet" = 100, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	allowed_race = CLOTHED_RACES_TYPES
+	nodismemsleeves = TRUE
+	do_sound_plate = TRUE
+	blocking_behavior = null
+	max_integrity = 400
+	anvilrepair = /datum/skill/craft/blacksmithing
+	smeltresult = /obj/item/ingot/blacksteel
+	armor_class = ARMOR_CLASS_HEAVY
+	equip_delay_self = 12 SECONDS
+	unequip_delay_self = 12 SECONDS
+	equip_delay_other = 3 SECONDS
+	strip_delay = 6 SECONDS
+	smelt_bar_num = 4
+
+/obj/item/clothing/suit/roguetown/armor/blacksteel/cuirass
+	slot_flags = ITEM_SLOT_ARMOR
+	name = "Blacksteel Cuirass"
+	desc = "A basic cuirass forged from blacksteel. It's somewhat more durable than regular steel."
+	body_parts_covered = CHEST|VITALS
+	icon_state = "grenzelcuirass"
+	item_state = "grenzelcuirass"
+	sleeved = 'icons/roguetown/clothing/onmob/helpers/stonekeep_merc.dmi'
+	armor = list("blunt" = 80, "slash" = 100, "stab" = 80, "bullet" = 100, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	allowed_race = CLOTHED_RACES_TYPES
+	nodismemsleeves = TRUE
+	blocking_behavior = null
+	max_integrity = 400
+	anvilrepair = /datum/skill/craft/blacksmithing
+	smeltresult = /obj/item/ingot/blacksteel
+	armor_class = ARMOR_CLASS_MEDIUM
+	smelt_bar_num = 2

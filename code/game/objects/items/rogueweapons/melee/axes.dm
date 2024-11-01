@@ -125,6 +125,7 @@
 	gripped_intents = list(/datum/intent/axe/cut/battle, /datum/intent/axe/chop/battle)
 	minstr = 12
 	wdefense = 4
+	smelt_bar_num = 2
 
 /obj/item/rogueweapon/stoneaxe/battle/getonmobprop(tag)
 	if(tag)
