@@ -9,8 +9,8 @@ GLOBAL_LIST_INIT(bum_aggro, world.file2list("strings/rt/bumaggrolines.txt"))
 	dodgetime = 30
 	flee_in_pain = TRUE
 	possible_rmb_intents = list()
-
 	wander = FALSE
+	var/bum_boss = FALSE//If you ever want a bum boss to spawn without his outfit, for some reason.
 
 //Special types.
 /mob/living/carbon/human/species/human/northern/bum/ambush
@@ -20,6 +20,7 @@ GLOBAL_LIST_INIT(bum_aggro, world.file2list("strings/rt/bumaggrolines.txt"))
 /mob/living/carbon/human/species/human/northern/bum/boss
 	aggressive=1
 	flee_in_pain = FALSE
+	bum_boss = TRUE
 
 //Creation stuff.
 /mob/living/carbon/human/species/human/northern/bum/after_creation()
@@ -28,20 +29,15 @@ GLOBAL_LIST_INIT(bum_aggro, world.file2list("strings/rt/bumaggrolines.txt"))
 	ADD_TRAIT(src, TRAIT_NOMOOD, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_NOHUNGER, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_NOROGSTAM, TRAIT_GENERIC)
-
-/mob/living/carbon/human/species/human/northern/bum/normal/after_creation()
-	..()
-	equipOutfit(new /datum/outfit/job/roguetown/vagrant_bum)
-
-/mob/living/carbon/human/species/human/northern/bum/ambush/after_creation()
-	..()
-	equipOutfit(new /datum/outfit/job/roguetown/vagrant_bum)
+	if(!bum_boss)
+		equipOutfit(new /datum/outfit/job/roguetown/vagrant_bum)
 
 /mob/living/carbon/human/species/human/northern/bum/boss/after_creation()
 	..()
 	ADD_TRAIT(src, TRAIT_CRITICAL_RESISTANCE, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_CIVILIZEDBARBARIAN, TRAIT_GENERIC)
-	equipOutfit(new /datum/outfit/job/roguetown/vagrant_bum/boss)
+	if(bum_boss)
+		equipOutfit(new /datum/outfit/job/roguetown/vagrant_boss)
 
 //Their outfits.
 
@@ -87,11 +83,11 @@ GLOBAL_LIST_INIT(bum_aggro, world.file2list("strings/rt/bumaggrolines.txt"))
 //Select the weapon in the right hand first. If they even get one.
 	if(prob(5))
 		r_hand = /obj/item/rogueweapon/mace/woodclub
-	if(prob(5))
+	else if(prob(5))
 		r_hand = /obj/item/rogueweapon/huntingknife/stoneknife
-	if(prob(5))
+	else if(prob(5))
 		r_hand = /obj/item/rogueweapon/woodstaff
-	if(prob(5))
+	else if(prob(5))
 		r_hand = /obj/item/rogueweapon/mace/wsword
 
 	H.STASPD = 6
@@ -100,7 +96,7 @@ GLOBAL_LIST_INIT(bum_aggro, world.file2list("strings/rt/bumaggrolines.txt"))
 	H.STAINT = 1
 
 //The KING
-/datum/outfit/job/roguetown/vagrant_bum/boss/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/job/roguetown/vagrant_boss/pre_equip(mob/living/carbon/human/H)
 	..()
 	if(prob(25))
 		head = /obj/item/clothing/head/roguetown/knitcap
@@ -141,14 +137,14 @@ GLOBAL_LIST_INIT(bum_aggro, world.file2list("strings/rt/bumaggrolines.txt"))
 	if(prob(25))
 		r_hand = /obj/item/rogueweapon/mace/spiked
 		l_hand = /obj/item/rogueweapon/shield/wood/crafted
-	if(prob(25))
+	else if(prob(25))
 		r_hand = /obj/item/rogueweapon/sword/iron
 		l_hand = /obj/item/rogueweapon/shield/wood/crafted
 
 	H.STASTR = 14
+	H.STASPD = 8
 	H.STACON = 14
 	H.STAEND = 14
-	H.STASPD = 8
 	H.STAINT = 1
 
 //Everything else that isn't outfits.
