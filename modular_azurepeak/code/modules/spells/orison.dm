@@ -1,3 +1,5 @@
+#define BLESSINGOFLIGHT_FILTER "bol_glow"
+
 /obj/effect/proc_holder/spell/targeted/touch/orison
 	name = "Orison"
 	overlay_state = "thaumaturgy"
@@ -88,6 +90,7 @@
 	status_type = STATUS_EFFECT_REFRESH
 	examine_text = "SUBJECTPRONOUN is surrounded by an aura of gentle light."
 	var/potency = 1
+	var/outline_colour = "#f5edda"
 	var/list/mobs_affected
 
 /datum/status_effect/light_buff/on_creation(mob/living/new_owner, light_power)
@@ -100,6 +103,9 @@
 
 /datum/status_effect/light_buff/on_apply()
 	to_chat(owner, span_notice("Light blossoms into being around me!"))
+	var/filter = owner.get_filter(BLESSINGOFLIGHT_FILTER)
+	if (!filter)
+		owner.add_filter(BLESSINGOFLIGHT_FILTER, 2, list("type" = "outline", "color" = outline_colour, "alpha" = 60, "size" = 1))
 	add_light(owner)
 	return TRUE
 
@@ -120,6 +126,7 @@
 
 /datum/status_effect/light_buff/on_remove()
 	to_chat(owner, span_notice("The miraculous light surrounding me has fled..."))
+	owner.remove_filter(BLESSINGOFLIGHT_FILTER)
 	remove_light(owner)
 
 /obj/item/melee/touch_attack/orison/proc/cast_light(atom/thing, mob/living/carbon/human/user)
@@ -334,3 +341,5 @@
 			return water_moisten
 	else
 		to_chat(user, span_info("I'll need to find a container that can hold water."))
+
+#undef BLESSINGOFLIGHT_FILTER
