@@ -92,7 +92,7 @@
 /obj/item/bodypart/l_arm/prosthetic/wood
 	name = "left wooden arm"
 	desc = "A left arm of wood."
-	icon_state = "pr_arm"
+	icon_state = "prarm" 
 	resistance_flags = FLAMMABLE
 	max_damage = 20
 	w_class = WEIGHT_CLASS_SMALL
@@ -102,7 +102,7 @@
 /obj/item/bodypart/r_arm/prosthetic/wood
 	name = "right wooden arm"
 	desc = "A right arm of wood."
-	icon_state = "pr_arm"
+	icon_state = "prarm" 
 	resistance_flags = FLAMMABLE
 	max_damage = 20
 	w_class = WEIGHT_CLASS_SMALL
@@ -112,7 +112,7 @@
 /obj/item/bodypart/l_leg/prosthetic/wood
 	name = "left wooden leg"
 	desc = "A left leg of wood."
-	icon_state = "pr_leg"
+	icon_state = "pleg" 
 	resistance_flags = FLAMMABLE
 	max_damage = 20
 	w_class = WEIGHT_CLASS_SMALL
@@ -123,7 +123,7 @@
 /obj/item/bodypart/r_leg/prosthetic/wood
 	name = "right wooden leg"
 	desc = "A right leg of wood."
-	icon_state = "pr_leg"
+	icon_state = "pleg" 
 	resistance_flags = FLAMMABLE
 	max_damage = 20
 	w_class = WEIGHT_CLASS_SMALL
@@ -138,8 +138,7 @@
 /obj/item/bodypart/l_arm/prosthetic/iron
 	name = "iron left arm"
 	desc = "A left arm of iron."
-	icon_state = "pri_arm"
-	prosthetic_prefix = "pri"
+	icon_state = "prarm" 
 	resistance_flags = FIRE_PROOF
 	w_class = WEIGHT_CLASS_NORMAL
 	brute_reduction = 5
@@ -149,8 +148,7 @@
 /obj/item/bodypart/r_arm/prosthetic/iron
 	name = "iron right arm"
 	desc = "A right arm of iron."
-	icon_state = "pri_arm"
-	prosthetic_prefix = "pri"
+	icon_state = "prarm" 
 	resistance_flags = FIRE_PROOF
 	w_class = WEIGHT_CLASS_NORMAL
 	brute_reduction = 5
@@ -160,8 +158,7 @@
 /obj/item/bodypart/l_leg/prosthetic/iron
 	name = "iron left leg"
 	desc = "A left leg of iron."
-	icon_state = "pri_leg"
-	prosthetic_prefix = "pri"
+	icon_state = "pleg" 
 	resistance_flags = FIRE_PROOF
 	w_class = WEIGHT_CLASS_NORMAL
 	organ_slowdown = 1.2
@@ -172,8 +169,7 @@
 /obj/item/bodypart/r_leg/prosthetic/iron
 	name = "iron right leg"
 	desc = "A right leg of iron."
-	icon_state = "pri_leg"
-	prosthetic_prefix = "pri"
+	icon_state = "pleg" 
 	resistance_flags = FIRE_PROOF
 	w_class = WEIGHT_CLASS_NORMAL
 	organ_slowdown = 1.2
@@ -187,8 +183,7 @@
 /obj/item/bodypart/l_arm/prosthetic/steel
 	name = "steel left arm"
 	desc = "A left arm of steel."
-	icon_state = "prs_arm"
-	prosthetic_prefix = "prs"
+	icon_state = "prarm" 
 	resistance_flags = FIRE_PROOF
 	w_class = WEIGHT_CLASS_NORMAL
 	brute_reduction = 10
@@ -198,8 +193,7 @@
 /obj/item/bodypart/r_arm/prosthetic/steel
 	name = "steel right arm"
 	desc = "A right arm of steel."
-	icon_state = "prs_arm"
-	prosthetic_prefix = "prs"
+	icon_state = "prarm" 
 	resistance_flags = FIRE_PROOF
 	w_class = WEIGHT_CLASS_NORMAL
 	brute_reduction = 10
@@ -209,8 +203,7 @@
 /obj/item/bodypart/l_leg/prosthetic/steel
 	name = "steel left leg"
 	desc = "A left leg of steel."
-	icon_state = "prs_leg"
-	prosthetic_prefix = "prs"
+	icon_state = "pleg" 
 	resistance_flags = FIRE_PROOF
 	w_class = WEIGHT_CLASS_NORMAL
 	organ_slowdown = 1.1
@@ -221,8 +214,7 @@
 /obj/item/bodypart/r_leg/prosthetic/steel
 	name = "steel right leg"
 	desc = "A right leg of steel."
-	icon_state = "prs_leg"
-	prosthetic_prefix = "prs"
+	icon_state = "pleg" 
 	resistance_flags = FIRE_PROOF
 	w_class = WEIGHT_CLASS_NORMAL
 	organ_slowdown = 1.1
@@ -235,8 +227,7 @@
 /obj/item/bodypart/l_arm/prosthetic/gold
 	name = "golden left arm"
 	desc = "A left arm of cogs and gold."
-	icon_state = "prc_arm"
-	prosthetic_prefix = "prc"
+	icon_state = "prarm" 
 	resistance_flags = FIRE_PROOF
 	w_class = WEIGHT_CLASS_BULKY
 	fingers = TRUE
@@ -246,8 +237,7 @@
 /obj/item/bodypart/r_arm/prosthetic/gold
 	name = "golden right arm"
 	desc = "A right arm of cogs and gold."
-	icon_state = "prc_arm"
-	prosthetic_prefix = "prc"
+	icon_state = "prarm" 
 	resistance_flags = FIRE_PROOF
 	w_class = WEIGHT_CLASS_BULKY
 	fingers = TRUE
@@ -256,8 +246,7 @@
 /obj/item/bodypart/l_leg/prosthetic/gold
 	name = "golden left leg"
 	desc = "A left leg of cogs and gold."
-	icon_state = "prc_leg"
-	prosthetic_prefix = "prc"
+	icon_state = "pleg" 
 	resistance_flags = FIRE_PROOF
 	w_class = WEIGHT_CLASS_BULKY
 	organ_slowdown = 0
@@ -266,8 +255,7 @@
 /obj/item/bodypart/r_leg/prosthetic/gold
 	name = "golden right leg"
 	desc = "A right leg of cogs and gold."
-	icon_state = "prc_leg"
-	prosthetic_prefix = "prc"
+	icon_state = "pleg" 
 	resistance_flags = FIRE_PROOF
 	w_class = WEIGHT_CLASS_BULKY
 	organ_slowdown = 0
@@ -278,7 +266,7 @@
 /obj/item/bodypart/l_arm/prosthetic/bronze
 	name = "bronze left arm"
 	desc = "A replacement left arm, engineered out of bronze."
-	icon_state = "prarm" //THIS TOO
+	icon_state = "prarm" 
 	resistance_flags = FIRE_PROOF
 	max_damage = 20
 	max_integrity = 350
@@ -288,7 +276,7 @@
 /obj/item/bodypart/r_arm/prosthetic/bronze
 	name = "bronze right arm"
 	desc = "A replacement right arm, engineered out of bronze."
-	icon_state = "prarm" //THIS TOO
+	icon_state = "prarm" 
 	resistance_flags = FIRE_PROOF
 	max_damage = 20
 	max_integrity = 350
