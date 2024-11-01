@@ -7,6 +7,9 @@
 	spawn_positions = 2
 
 	allowed_races = RACES_TOLERATED_UP
+	allowed_patrons = list(
+		/datum/patron/psydon
+	)
 	allowed_sexes = list(MALE)
 
 	tutorial = "Confessors are shady agents of the church hired to spy on the populace and keep them moral. \
@@ -14,7 +17,7 @@
 	Whether that be in extracting confessions of sin or hunting night beasts and cultists that hide in plain sight."
 
 	outfit = /datum/outfit/job/roguetown/shepherd
-	spells = list(/obj/effect/proc_holder/spell/invoked/heal, /obj/effect/proc_holder/spell/invoked/shepherd)
+//	spells = list(/obj/effect/proc_holder/spell/invoked/heal, /obj/effect/proc_holder/spell/invoked/shepherd)
 	whitelist_req = TRUE
 	display_order = JDO_SHEPHERD
 	give_bank_account = 3
@@ -27,15 +30,19 @@
 
 /datum/outfit/job/roguetown/shepherd/pre_equip(mob/living/carbon/human/H)
 	..()
+	head = /obj/item/clothing/head/roguetown/puritan
+	cloak = /obj/item/clothing/cloak/cape/puritan
 	belt = /obj/item/storage/belt/rogue/leather
 	shoes = /obj/item/clothing/shoes/roguetown/armor
+	neck = /obj/item/clothing/neck/roguetown/psicross/silver
 	pants = /obj/item/clothing/under/roguetown/tights/black
 	beltr = /obj/item/storage/belt/rogue/pouch/coins/poor
 	mask = /obj/item/clothing/mask/rogue/shepherd
 	armor = /obj/item/clothing/suit/roguetown/armor/leather/vest/black
 	beltl = /obj/item/rogueweapon/mace/cudgel
 	wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
-	backpack_contents = list(/obj/item/keyring/shepherd = 1)
+	backl = /obj/item/storage/backpack/rogue/satchel
+	backpack_contents = list(/obj/item/keyring/shepherd = 1, /obj/item/rogueweapon/huntingknife/idagger/silver = 1)
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/misc/sewing, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/treatment, 1, TRUE)

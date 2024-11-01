@@ -506,11 +506,7 @@
 	desc = "A steel helmet which protects the whole of the head."
 	icon_state = "kettle"
 	body_parts_covered = HEAD|HAIR|EARS
-	bloody_icon_state = "helmetblood_big"
-	worn_x_dimension = 64
-	worn_y_dimension = 64
 	flags_inv = HIDEEARS
-	smeltresult = /obj/item/ash
 	body_parts_covered = HEAD|HAIR
 
 //................ CULTIST HOOD ............... //

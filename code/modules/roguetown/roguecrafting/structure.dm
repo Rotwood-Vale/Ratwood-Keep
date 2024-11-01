@@ -17,6 +17,8 @@
 				/obj/item/ingot/iron = 1,)
 	verbage_simple = "construct"
 	verbage = "constructs"
+	skillcraft = /datum/skill/craft/carpentry
+	craftdiff = 2
 
 /datum/crafting_recipe/roguetown/structure/handcart
 	name = "handcart"

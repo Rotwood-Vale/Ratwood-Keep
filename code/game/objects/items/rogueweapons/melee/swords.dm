@@ -84,7 +84,7 @@
 	slot_flags = ITEM_SLOT_HIP
 	name = "arming sword"
 	desc = "A short arming sword, designed as a knightly sidearm. Best used with a shield or out of desperation."
-	icon_state = "swordshort"
+	icon_state = "shortsword"
 	possible_item_intents = list(/datum/intent/sword/cut, /datum/intent/sword/thrust, /datum/intent/sword/strike)
 	gripped_intents = null
 	swingsound = BLADEWOOSH_SMALL

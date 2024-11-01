@@ -280,7 +280,7 @@
 		/obj/item/reagent_containers/food/snacks/rogue/berrycandy,
 		/obj/item/reagent_containers/food/snacks/rogue/applecandy,
 		/obj/item/reagent_containers/food/snacks/rogue/raisins,
-		/obj/item/reagent_containers/food/snacks/rogue/crackerscooked
+		/obj/item/reagent_containers/food/snacks/rogue/foodbase/hardtack_raw/cooked
 		))
 	STR.click_gather = TRUE
 	STR.attack_hand_interact = FALSE
