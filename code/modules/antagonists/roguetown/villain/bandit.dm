@@ -1,4 +1,3 @@
-
 /datum/antagonist/bandit
 	name = "Bandit"
 	roundend_category = "bandits"
@@ -7,7 +6,7 @@
 	antag_hud_type = ANTAG_HUD_TRAITOR
 	antag_hud_name = "bandit"
 	confess_lines = list(
-		"FREEDOM!!!", 
+		"FREEDOM!!!",
 		"I WILL NOT LIVE IN YOUR WALLS!",
 		"I WILL NOT FOLLOW YOUR RULES!",
 	)
@@ -20,8 +19,7 @@
 
 /datum/antagonist/bandit/on_gain()
 	owner.special_role = "Bandit"
-	owner.assigned_role = "Bandit"
-	owner.current.job = null
+	//owner.assigned_role = "Bandit"
 	forge_objectives()
 	. = ..()
 	equip_bandit()
@@ -36,7 +34,6 @@
 		tile.show_travel_tile(H)
 	ADD_TRAIT(H, TRAIT_SEEPRICES, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_STEELHEARTED, TRAIT_GENERIC)
-	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_COMMIE, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_TOLERANT, TRAIT_GENERIC)
 	H.set_patron(/datum/patron/inhumen/matthios)
@@ -72,14 +69,6 @@
 	for(var/datum/mind/MF in get_minds("Bandit"))
 		owner.i_know_person(MF)
 		owner.person_knows_me(MF)
-
-	var/mob/living/carbon/human/H = owner.current
-	H.cmode_music = 'sound/music/combat_bandit2.ogg'
-
-	addtimer(CALLBACK(H, TYPE_PROC_REF(/mob/living/carbon/human, choose_name_popup), "BANDIT"), 5 SECONDS)
-//	H.job = "Bandit"
-//	H.advjob = pick("Cheesemaker", "Mercenary", "Barbarian", "Ranger", "Rogue")
-	H.equipOutfit(/datum/outfit/job/roguetown/bandit)
 
 	return TRUE
 
