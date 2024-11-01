@@ -10,7 +10,6 @@
 		"I WILL NOT LIVE IN YOUR WALLS!",
 		"I WILL NOT FOLLOW YOUR RULES!",
 	)
-	rogue_enabled = TRUE
 	var/tri_amt
 	var/contrib
 
@@ -73,91 +72,6 @@
 
 	return TRUE
 
-/datum/outfit/job/roguetown/bandit/pre_equip(mob/living/carbon/human/H)
-	..()
-	H.mind.adjust_skillrank(/datum/skill/combat/polearms, 3, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/combat/axes, 3, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/combat/maces, 3, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 4, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 3, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/combat/swords, 3, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/combat/whipsflails, 3, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/combat/knives, 3, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/combat/bows, 3, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 2, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/craft/crafting, 2, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/craft/carpentry, 1, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/misc/climbing, 3, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/misc/sewing, 2, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/misc/treatment, 2, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/misc/athletics, 2, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/misc/swimming, 2, TRUE)
-	belt = /obj/item/storage/belt/rogue/leather
-	pants = /obj/item/clothing/under/roguetown/trou/leather
-	shirt = /obj/item/clothing/suit/roguetown/armor/gambeson
-	shoes = /obj/item/clothing/shoes/roguetown/armor
-	backr = /obj/item/storage/backpack/rogue/satchel
-	backpack_contents = list(/obj/item/needle/thorn = 1, /obj/item/natural/cloth = 1)
-	mask = /obj/item/clothing/mask/rogue/facemask/steel
-	neck = /obj/item/clothing/neck/roguetown/chaincoif
-	head = /obj/item/clothing/head/roguetown/menacing/bandit
-	gloves = /obj/item/clothing/gloves/roguetown/leather
-	wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
-	armor = /obj/item/clothing/suit/roguetown/armor/leather/studded
-	var/loadoutm = rand(1,16)
-	switch(loadoutm)
-		if(1 to 3) // sword bandit
-			beltr = /obj/item/rogueweapon/sword/iron
-			if(prob(40))
-				backl = /obj/item/rogueweapon/shield/wood
-			H.change_stat("endurance", 1)
-		if(4 to 6) // knife bandit - dodge maxing
-			beltr = /obj/item/rogueweapon/huntingknife/cleaver
-			H.change_stat("speed", 3)
-			H.change_stat("strength", -2)
-		if(7 to 9) // flail bandit small chance to two handed flail
-			if(prob(80))
-				beltr = /obj/item/rogueweapon/flail
-				backl = /obj/item/rogueweapon/shield/wood
-			else
-				r_hand = /obj/item/rogueweapon/flail/peasantwarflail
-			H.change_stat("strength", 1)
-		if(10 to 12) // ranged bandit
-			backl = /obj/item/gun/ballistic/revolver/grenadelauncher/bow
-			beltl = /obj/item/quiver/arrows
-			beltr = /obj/item/rogueweapon/stoneaxe/woodcut/steel
-			H.change_stat("perception", 3)
-		if(13 to 15) // spear bandit
-			r_hand = /obj/item/rogueweapon/spear
-			if(prob(40))
-				backl = /obj/item/rogueweapon/shield/wood
-			H.change_stat("endurance", 1)
-		if(16) // hedge knight - give challenge to knights/templars ~6% chance 15-20 bandits roundstart average 1 hedge knight - lacks protection to hands or feet
-			r_hand = /obj/item/rogueweapon/greatsword/zwei
-			beltr = /obj/item/rogueweapon/sword
-			beltl = /obj/item/flashlight/flare/torch/lantern
-			armor = /obj/item/clothing/suit/roguetown/armor/plate/full
-			gloves = /obj/item/clothing/gloves/roguetown/leather
-			head = /obj/item/clothing/head/roguetown/helmet/heavy/pigface
-			if(prob(30))
-				neck = /obj/item/clothing/neck/roguetown/bervor
-			else
-				neck = /obj/item/clothing/neck/roguetown/gorget
-			H.mind.adjust_skillrank(/datum/skill/combat/swords, rand(1,2), TRUE) // either expert or master skill - knights start with master and templars expert sword skill
-			H.change_stat("strength", 1)
-			H.change_stat("constitution", 1)
-			H.change_stat("speed", -2)
-			ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
-	H.change_stat("strength", 3)
-	H.change_stat("endurance", 2)
-	H.change_stat("constitution", 1)
-	H.change_stat("speed", 1)
-	H.change_stat("intelligence", -3)
-
-	H.verbs |= /mob/proc/haltyell
-	H.ambushable = FALSE
-
 /datum/antagonist/bandit/roundend_report()
 	if(owner?.current)
 		var/amt = tri_amt
@@ -193,4 +107,3 @@
 		to_chat(owner.current, span_redtext("I've failed to satisfy my greed."))
 		if(owner.current)
 			owner.current.playsound_local(get_turf(owner.current), 'sound/misc/fail.ogg', 100, FALSE, pressure_affected = FALSE)
-
