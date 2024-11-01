@@ -21,19 +21,20 @@
 		var/skill_level = user.mind.get_skill_level(/datum/skill/labor/lumberjacking)
 		var/lumber_time = (40 - (skill_level * 5))
 		var/minimum = 1
-		if(skill_level)
-			playsound(src, 'sound/misc/woodhit.ogg', 100, TRUE)
-			if(!do_after(user, lumber_time, target = user))
-				return
-			if(skill_level > 4) // If skill level is 5 or higher, we get more minimum wood!
-				minimum = 2
-			lumber_amount = rand(minimum, max(round(skill_level), minimum))
-			for(var/i = 0; i < lumber_amount; i++)
-				new lumber(get_turf(src))
-			user.mind.add_sleep_experience(/datum/skill/labor/lumberjacking, (user.STAINT*0.5))
-			playsound(src, destroy_sound, 100, TRUE)
-			qdel(src)
-			return TRUE
+		playsound(src, 'sound/misc/woodhit.ogg', 100, TRUE)
+		if(!do_after(user, lumber_time, target = user))
+			return
+		if(skill_level > 0) // If skill level is 1 or higher, we get more minimum wood!
+			minimum = 2
+		lumber_amount = rand(minimum, max(round(skill_level), minimum))
+		for(var/i = 0; i < lumber_amount; i++)
+			new lumber(get_turf(src))
+		if(!skill_level)
+			to_chat(user, span_info("My poor skill has me ruin some of the timber..."))
+		user.mind.add_sleep_experience(/datum/skill/labor/lumberjacking, (user.STAINT*0.5))
+		playsound(src, destroy_sound, 100, TRUE)
+		qdel(src)
+		return TRUE
 	..()
 
 /obj/item/grown/log/tree/small
