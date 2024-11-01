@@ -4,7 +4,7 @@
 	antag_hud_name = "zombie"
 	show_in_roundend = FALSE
 	/// SET TO FALSE IF WE DON'T TURN INTO ROTMEN WHEN REMOVED
-	var/become_rotman = TRUE
+	var/become_rotman = FALSE
 	var/zombie_start
 	var/revived = FALSE
 	// CACHE VARIABLES SO ZOMBIFICATION CAN BE CURED
