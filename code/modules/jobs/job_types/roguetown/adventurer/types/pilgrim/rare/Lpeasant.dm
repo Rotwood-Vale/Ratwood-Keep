@@ -21,6 +21,7 @@
 	H.mind.adjust_skillrank(/datum/skill/labor/farming, 6, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/craft/cooking, 5, TRUE) // Legendary chef gets high farming skill, fairs fair
 	H.mind.adjust_skillrank(/datum/skill/misc/medicine, 3, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
 	belt = /obj/item/storage/belt/rogue/leather/rope
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/random
 	pants = /obj/item/clothing/under/roguetown/trou
