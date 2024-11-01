@@ -1280,6 +1280,7 @@
 #include "code\game\objects\items\rogueweapons\ranged\ammo.dm"
 #include "code\game\objects\items\rogueweapons\ranged\bows.dm"
 #include "code\game\objects\items\rogueweapons\ranged\crossbows.dm"
+#include "code\game\objects\items\rogueweapons\ranged\runelock.dm"
 #include "code\game\objects\items\rogueweapons\ranged\slings.dm"
 #include "code\game\objects\items\stacks\bscrystal.dm"
 #include "code\game\objects\items\stacks\cash.dm"

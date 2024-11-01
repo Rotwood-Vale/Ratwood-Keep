@@ -137,8 +137,20 @@
 		addtimer(CALLBACK(M, TYPE_PROC_REF(/mob/living, adjustToxLoss), 100), 10 SECONDS)
 		addtimer(CALLBACK(M, TYPE_PROC_REF(/atom, visible_message), span_danger("[M] appears greatly weakened by the poison!")), 10 SECONDS)
 
+/obj/item/ammo_casing/caseless/rogue/bullet
+	name = "runed sphere"
+	desc = "A small lead sphere. It's been inscribed with countless runes, increasing its stopping power."
+	projectile_type = /obj/projectile/bullet/reusable/bullet
+	caliber = "musketball"
+	icon = 'icons/roguetown/weapons/ammo.dmi'
+	icon_state = "musketball"
+	dropshrink = 0.5
+	possible_item_intents = list(/datum/intent/use)
+	max_integrity = 0
+	w_class = WEIGHT_CLASS_TINY
+
 /obj/projectile/bullet/reusable/bullet
-	name = "lead ball"
+	name = "rune ball"
 	damage = 50
 	damage_type = BRUTE
 	icon = 'icons/roguetown/weapons/ammo.dmi'
@@ -151,15 +163,3 @@
 	flag = "bullet"
 	armor_penetration = 200
 	speed = 0.1
-
-/obj/item/ammo_casing/caseless/rogue/bullet
-	name = "lead sphere"
-	desc = "A small lead sphere. This should go well with gunpowder."
-	projectile_type = /obj/projectile/bullet/reusable/bullet
-	caliber = "musketball"
-	icon = 'icons/roguetown/weapons/ammo.dmi'
-	icon_state = "musketball"
-	dropshrink = 0.5
-	possible_item_intents = list(/datum/intent/use)
-	max_integrity = 0
-	w_class = WEIGHT_CLASS_TINY
