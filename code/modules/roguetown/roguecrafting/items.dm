@@ -155,33 +155,33 @@
 				/obj/item/rope = 1,
 				/obj/item/rogueweapon/thresher = 1)
 	craftdiff = 3
-
-/datum/crafting_recipe/roguetown/larmprosthetic_w
-	name = "wood arm (L)"
-	result = list(/obj/item/bodypart/l_arm/rprosthetic)
+	
+/datum/crafting_recipe/roguetown/wood/prosthetic/arm_left
+	name = "wooden left arm"
+	result = list(/obj/item/bodypart/l_arm/prosthetic/wood)
 	reqs = list(/obj/item/grown/log/tree/small = 1,
 	/obj/item/roguegear = 1)
-	skillcraft = /datum/skill/craft/carpentry
+	skillcraft = /datum/skill/craft/engineering
 	craftdiff = 3
 
-/datum/crafting_recipe/roguetown/rarmprosthetic_w
-	name = "wood arm (R)"
-	result = list(/obj/item/bodypart/r_arm/rprosthetic)
+/datum/crafting_recipe/roguetown/wood/prosthetic/arm_right
+	name = "wooden right arm"
+	result = list(/obj/item/bodypart/r_arm/prosthetic/wood)
 	reqs = list(/obj/item/grown/log/tree/small = 1,
 	/obj/item/roguegear = 1)
-	skillcraft = /datum/skill/craft/carpentry
+	skillcraft = /datum/skill/craft/engineering
 	craftdiff = 3
 
-/datum/crafting_recipe/roguetown/rlegprosthetic_w
-	name = "peg leg (R)"
-	result = list(/obj/item/bodypart/r_leg/rprosthetic)
+/datum/crafting_recipe/roguetown/wood/prosthetic/leg_right
+	name = "wooden right leg"
+	result = list(/obj/item/bodypart/r_leg/prosthetic/wood)
 	reqs = list(/obj/item/grown/log/tree/small = 1)
 	skillcraft = /datum/skill/craft/carpentry
 	craftdiff = 1
 
-/datum/crafting_recipe/roguetown/llegprosthetic_w
-	name = "peg_leg (L)"
-	result = list(/obj/item/bodypart/l_leg/rprosthetic)
+/datum/crafting_recipe/roguetown/wood/prosthetic/leg_left
+	name = "wooden left leg"
+	result = list(/obj/item/bodypart/l_leg/prosthetic/wood)
 	reqs = list(/obj/item/grown/log/tree/small = 1)
 	skillcraft = /datum/skill/craft/carpentry
 	craftdiff = 1
