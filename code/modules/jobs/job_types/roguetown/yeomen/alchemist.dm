@@ -1,4 +1,4 @@
-/datum/job/roguetown/alchemist
+/*/datum/job/roguetown/alchemist
 	title = "Alchemist"
 	flag = ALCHEMIST
 	department_flag = YEOMEN
@@ -48,3 +48,4 @@
 		cloak = /obj/item/clothing/cloak/apron/brown
 		H.change_stat("intelligence", 2)
 		H.change_stat("speed", -2)
+*/

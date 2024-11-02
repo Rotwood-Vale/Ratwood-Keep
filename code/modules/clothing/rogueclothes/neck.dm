@@ -94,6 +94,14 @@
 	smeltresult = /obj/item/ingot/iron
 	max_integrity = 150
 
+/obj/item/clothing/neck/roguetown/chaincoif/ironb
+	icon_state = "ichaincoif"
+	anvilrepair = /datum/skill/craft/blacksmithing
+	desc = "An iron chain coif, composed of interlinked metal rings, that barely absorb impacts from arrows that protects the head, ears and neck, and is sadly too uncomfortable to sleep in. blackened iron."
+	smeltresult = /obj/item/ingot/iron
+	color = "#151615"
+	max_integrity = 150
+
 /obj/item/clothing/neck/roguetown/bervor
 	name = "bevor"
 	desc = "A steel bevor that protects the lower part of the head, that being the neck, mouth and nose."
