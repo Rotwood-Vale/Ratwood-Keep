@@ -103,6 +103,8 @@
 	density = TRUE
 
 /obj/machinery/light/roguestreet/proc/lights_out()
+	if(soundloop)
+		soundloop.stop()
 	on = FALSE
 	set_light(0)
 	update_icon()
@@ -112,6 +114,8 @@
 	on = TRUE
 	update()
 	update_icon()
+	if(soundloop)
+		soundloop.start()
 
 /obj/machinery/light/roguestreet/update_icon()
 	if(on)
@@ -127,6 +131,10 @@
 		GLOB.fires_list -= src
 
 /obj/machinery/light/roguestreet/Initialize()
+	soundloop = pick(/datum/looping_sound/streetlamp1,/datum/looping_sound/streetlamp2,/datum/looping_sound/streetlamp3)
+	if(soundloop)
+		soundloop = new soundloop(list(src), FALSE)
+		soundloop.start()
 	GLOB.streetlamp_list += src
 	update_icon()
 	. = ..()
