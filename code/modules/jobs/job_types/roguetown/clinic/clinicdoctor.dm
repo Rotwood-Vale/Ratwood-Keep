@@ -22,11 +22,11 @@
 /datum/outfit/job/roguetown/clinicdoctor/pre_equip(mob/living/carbon/human/H)
 	..()
 	cloak = /obj/item/clothing/cloak/raincloak/mortus
-	head = /obj/item/clothing/head/roguetown/helmet/bandanab
-	neck = /obj/item/clothing/neck/roguetown/chaincoif/ironb
+	head = /obj/item/clothing/head/roguetown/helmet/bandana
+	neck = /obj/item/clothing/neck/roguetown/chaincoif/iron
 	armor = /obj/item/clothing/suit/roguetown/shirt/robe/physician
 	shirt = /obj/item/clothing/suit/roguetown/armor/chainmail
-	gloves = /obj/item/clothing/gloves/roguetown/leatherb
+	gloves = /obj/item/clothing/gloves/roguetown/leather
 	pants = /obj/item/clothing/under/roguetown/trou/leather/mourning
 	shoes = /obj/item/clothing/shoes/roguetown/armor
 	belt = /obj/item/storage/belt/rogue/leather/black

@@ -21179,7 +21179,7 @@
 	name = "Bedside";
 	tame = 1;
 	STACON = 10;
-	faction = list("station")
+	faction = list("Station")
 	},
 /turf/open/floor/rogue/tile/bath,
 /area/rogue/indoors/shelter/rtfield)
@@ -25076,7 +25076,7 @@
 /mob/living/simple_animal/hostile/retaliate/poison/snake{
 	tame = 1;
 	name = "Ozium";
-	faction = list("station")
+	faction = list("Station")
 	},
 /turf/open/floor/rogue/churchmarble,
 /area/rogue/indoors/shelter/rtfield)
