@@ -1,6 +1,6 @@
 /datum/job/roguetown/clinicdoctor
 	title = "Clinic Physician"
-	tutorial = "You are a newly funded sawbones for a small upcoming clinic in town, weather you got tired of traveling and wanted to settle down somewhere or your good natured outlook drove you to be closer to the ill and infirmed here you are, funded by a private benefactor and a reasonable two weeks pay provided in advance. and here you stand yet to prove you are worth the coins payed."
+	tutorial = "You are a newly funded sawbones for a small upcoming clinic in town, whether you got tired of traveling and wanted to settle down somewhere or your good-natured outlook drove you to be closer to the ill and infirmed here you are, funded by a private benefactor and a reasonable two weeks pay provided in advance. and here you stand yet to prove you are worth the coins payed."
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
 	flag = CLINICDOC
