@@ -26,7 +26,7 @@
 /datum/outfit/job/roguetown/physician
 	name = "Physician"
 	jobtype = /datum/job/roguetown/physician
-	allowed_patrons = list(/datum/patron/divine/pestra, /datum/patron/inhumen/graggar)
+	allowed_patrons = list(/datum/patron/divine/pestra)
 
 /datum/outfit/job/roguetown/physician/pre_equip(mob/living/carbon/human/H)
 	..()

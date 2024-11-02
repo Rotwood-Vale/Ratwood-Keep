@@ -38,4 +38,3 @@
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/projectile/splash)
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/roustame)
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/projectile/animate_object)
-		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/push_spell)

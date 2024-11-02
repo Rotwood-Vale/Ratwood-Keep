@@ -85,11 +85,11 @@
 	icon = 'icons/roguetown/misc/tallstructure.dmi'
 	icon_state = "slamp1"
 	base_state = "slamp"
-	brightness = 10.9
+	brightness = 10
 	nightshift_allowed = FALSE
 	fueluse = 0
-	bulb_colour = "#58dd90"
-	bulb_power = 0.95
+	bulb_colour = "#f9e080"
+	bulb_power = 0.85
 	max_integrity = 0
 	use_power = NO_POWER_USE
 	var/datum/looping_sound/soundloop

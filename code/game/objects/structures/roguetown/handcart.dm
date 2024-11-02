@@ -123,7 +123,6 @@
 				qdel(item)
 				manage_upgrade()
 				playsound(loc, 'sound/foley/cartadd.ogg', 100, FALSE, -1)
-				return
 		if(item.ulevel == 2)
 			if(upgrade_level != 1)
 				to_chat(user, "<span class='warning'>The cart needs a normal upgrade cog before this one can be used!</span>")
@@ -134,7 +133,6 @@
 				qdel(item)
 				manage_upgrade()
 				playsound(loc, 'sound/foley/cartadd.ogg', 100, FALSE, -1)
-				return
 	if(!user.cmode)
 		if(!insertion_allowed(I))
 			return

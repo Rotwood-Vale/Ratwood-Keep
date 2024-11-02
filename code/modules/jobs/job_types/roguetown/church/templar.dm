@@ -29,10 +29,7 @@
 	switch(H.patron.name)
 		if("Astrata")
 			wrists = /obj/item/clothing/neck/roguetown/psicross/astrata
-			if(prob(50))
-				head = /obj/item/clothing/head/roguetown/helmet/astratahelm
-			else
-				head = /obj/item/clothing/head/roguetown/helmet/astratahelm/alt
+			head = /obj/item/clothing/head/roguetown/helmet/astratahelm
 			cloak = /obj/item/clothing/cloak/templar/astratan
 		if("Noc")
 			wrists = /obj/item/clothing/neck/roguetown/psicross/noc
@@ -44,17 +41,13 @@
 			cloak = /obj/item/clothing/cloak/tabard/crusader/dendor
 		if("Necra")
 			wrists = /obj/item/clothing/neck/roguetown/psicross/necra
-			if(prob(50))
-				head = /obj/item/clothing/head/roguetown/helmet/necrahelm
-			else
-				head = /obj/item/clothing/head/roguetown/helmet/necrahelm/alt
+			head = /obj/item/clothing/head/roguetown/helmet/necrahelm
 			cloak = /obj/item/clothing/cloak/templar/necran
 		if("Pestra")
 			wrists = /obj/item/clothing/neck/roguetown/psicross/pestra
 			cloak = /obj/item/clothing/cloak/tabard/crusader/pestra
 		if("Malum")
 			wrists = /obj/item/clothing/neck/roguetown/psicross/malum
-			head = /obj/item/clothing/head/roguetown/helmet/heavy/malumhelm
 			cloak = /obj/item/clothing/cloak/templar/malummite
 		if("Ravox")
 			wrists = /obj/item/clothing/neck/roguetown/psicross/ravox
