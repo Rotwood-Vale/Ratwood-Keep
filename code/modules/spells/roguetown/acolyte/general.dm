@@ -152,6 +152,7 @@
 			target.adjustBruteLoss(-healing*10)
 			target.adjustFireLoss(-healing*10)
 		return TRUE
+	revert_cast()
 	return FALSE
 
 // Miracle
@@ -192,4 +193,5 @@
 			target.adjustBruteLoss(-50)
 			target.adjustFireLoss(-50)
 		return TRUE
+	revert_cast()
 	return FALSE
