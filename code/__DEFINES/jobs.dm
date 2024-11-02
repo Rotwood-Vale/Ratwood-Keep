@@ -138,7 +138,7 @@
 #define ARCHIVIST	(1<<1)
 #define GUILDSMITH	(1<<2)
 #define ALCHEMIST	(1<<3)
-#define MASON		(1<<4)
+#define ARTIFICER	(1<<4)
 #define SEAMSTER	(1<<5)
 #define MERCHANT	(1<<6)
 #define SCRIBE		(1<<7)
@@ -257,7 +257,7 @@
 #define JDO_GUILDSMITH 20
 #define JDO_APPRENTICE 21
 
-#define JDO_MASON 22
+#define JDO_ARTIFICER 22
 
 #define JDO_SEAMSTER 23
 
@@ -350,7 +350,7 @@
 	/datum/job/roguetown/archivist,\
 	/datum/job/roguetown/barkeep,\
 	/datum/job/roguetown/guildsmith,\
-	/datum/job/roguetown/mason,\
+	/datum/job/roguetown/artificer,\
 	/datum/job/roguetown/seamster, \
 	/datum/job/roguetown/merchant,\
 	/datum/job/roguetown/scribe
