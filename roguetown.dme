@@ -2313,6 +2313,8 @@
 #include "code\modules\jobs\job_types\roguetown\mercenaries\types\desertrider.dm"
 #include "code\modules\jobs\job_types\roguetown\mercenaries\types\forlorn.dm"
 #include "code\modules\jobs\job_types\roguetown\mercenaries\types\grenzelhoft.dm"
+#include "code\modules\jobs\job_types\roguetown\mercenaries\types\grenzelhoft_kommandant.dm"
+#include "code\modules\jobs\job_types\roguetown\mercenaries\types\guild_clerk.dm"
 #include "code\modules\jobs\job_types\roguetown\mercenaries\types\sellsword.dm"
 #include "code\modules\jobs\job_types\roguetown\nobility\captain.dm"
 #include "code\modules\jobs\job_types\roguetown\nobility\hand.dm"
