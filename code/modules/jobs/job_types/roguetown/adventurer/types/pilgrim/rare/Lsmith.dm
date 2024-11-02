@@ -27,7 +27,6 @@
 	backl = /obj/item/storage/backpack/rogue/backpack
 	backpack_contents = list(/obj/item/flint = 1, /obj/item/rogueore/coal=2, /obj/item/rogueore/iron=3, /obj/item/rogueore/silver=2, /obj/item/riddleofsteel = 1, /obj/item/roguegem/yellow = 1, /obj/item/roguegem/violet = 1, /obj/item/roguegem/diamond = 1, /obj/item/roguegem/blue = 1, /obj/item/roguegem/green = 1)
 
-	ADD_TRAIT(H, TRAIT_TRAINED_SMITH, TRAIT_GENERIC)
 	if(H.gender == MALE)
 		
 		shoes = /obj/item/clothing/shoes/roguetown/armor/leather

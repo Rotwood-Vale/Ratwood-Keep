@@ -45,7 +45,6 @@
 #define TRAIT_CIVILIZEDBARBARIAN "Tavern Brawler"
 #define TRAIT_COMICSANS "Annoying Face"
 #define TRAIT_WATERBREATHING "Water Breathing"
-#define TRAIT_TRAINED_SMITH "Trained Smith"
 
 // PATRON GOD TRAITS
 #define TRAIT_ROT_EATER "Blessing of Pestra" //can eat rotten food
@@ -154,7 +153,6 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_GOODRUNNER = span_info("I can run without breaking a sweat!"),
 	TRAIT_NUDE_SLEEPER = span_warning("I can't fall asleep unless I'm nude and in bed."),
 	TRAIT_TINY = span_info("I am tiny in size and quite fragile!"),
-	TRAIT_TRAINED_SMITH = span_info("I've spent long training, and with some more, I will be able to smith legendary items.")
 ))
 
 // trait accessor defines

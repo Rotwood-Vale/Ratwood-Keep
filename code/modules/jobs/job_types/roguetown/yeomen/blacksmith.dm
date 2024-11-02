@@ -31,7 +31,7 @@
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 2, TRUE)
 		if(H.age == AGE_OLD)
 			H.mind.adjust_skillrank(/datum/skill/craft/blacksmithing, 1, TRUE)
-	ADD_TRAIT(H, TRAIT_TRAINED_SMITH, TRAIT_GENERIC)
+
 	if(H.gender == MALE)
 		pants = /obj/item/clothing/under/roguetown/trou
 		shoes = /obj/item/clothing/shoes/roguetown/armor/leather
