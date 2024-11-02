@@ -312,7 +312,7 @@
 	name = "Astratan Helmet (+1 Steel)"
 	req_bar = /obj/item/ingot/steel
 	additional_items = list(/obj/item/ingot/steel)
-	created_item = /obj/item/clothing/head/roguetown/helmet/astratahelm
+	created_item = /obj/item/clothing/head/roguetown/helmet/heavy/templar/astrata
 	craftdiff = 2
 	i_type = "Armor"
 
@@ -320,7 +320,7 @@
 	name = "Astratan Helmet Alt (+1 Steel)"
 	req_bar = /obj/item/ingot/steel
 	additional_items = list(/obj/item/ingot/steel)
-	created_item = /obj/item/clothing/head/roguetown/helmet/astratahelm/alt
+	created_item = /obj/item/clothing/head/roguetown/helmet/heavy/templar/astrata/alt
 	craftdiff = 2
 	i_type = "Armor"
 
@@ -328,7 +328,7 @@
 	name = "Malummite Helmet (+1 Steel)"
 	req_bar = /obj/item/ingot/steel
 	additional_items = list(/obj/item/ingot/steel)
-	created_item = /obj/item/clothing/head/roguetown/helmet/heavy/malumhelm
+	created_item = /obj/item/clothing/head/roguetown/helmet/heavy/templar/malum
 	craftdiff = 2
 	i_type = "Armor"
 
@@ -336,7 +336,7 @@
 	name = "Necran Helmet (+1 Steel)"
 	req_bar = /obj/item/ingot/steel
 	additional_items = list(/obj/item/ingot/steel)
-	created_item = /obj/item/clothing/head/roguetown/helmet/necrahelm
+	created_item = /obj/item/clothing/head/roguetown/helmet/heavy/templar/necra
 	craftdiff = 2
 	i_type = "Armor"
 
@@ -344,7 +344,7 @@
 	name = "Necran Helmet Alt (+1 Steel)"
 	req_bar = /obj/item/ingot/steel
 	additional_items = list(/obj/item/ingot/steel)
-	created_item = /obj/item/clothing/head/roguetown/helmet/necrahelm/alt
+	created_item = /obj/item/clothing/head/roguetown/helmet/heavy/templar/necra/alt
 	craftdiff = 2
 	i_type = "Armor"
 
@@ -352,7 +352,7 @@
 	name = "Noctian Helmet (+1 Steel)"
 	req_bar = /obj/item/ingot/steel
 	additional_items = list(/obj/item/ingot/steel)
-	created_item = /obj/item/clothing/head/roguetown/helmet/nochelm
+	created_item = /obj/item/clothing/head/roguetown/helmet/heavy/templar/noc
 	craftdiff = 2
 	i_type = "Armor"
 
@@ -360,7 +360,7 @@
 	name = "Dendorite Helmet (+1 Steel)"
 	req_bar = /obj/item/ingot/steel
 	additional_items = list(/obj/item/ingot/steel)
-	created_item = /obj/item/clothing/head/roguetown/helmet/dendorhelm
+	created_item = /obj/item/clothing/head/roguetown/helmet/heavy/templar/dendor
 	craftdiff = 2
 	i_type = "Armor"
 

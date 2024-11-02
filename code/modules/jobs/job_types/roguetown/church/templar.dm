@@ -30,34 +30,36 @@
 		if("Astrata")
 			wrists = /obj/item/clothing/neck/roguetown/psicross/astrata
 			if(prob(50))
-				head = /obj/item/clothing/head/roguetown/helmet/astratahelm
+				head = /obj/item/clothing/head/roguetown/helmet/heavy/templar/astrata
 			else
-				head = /obj/item/clothing/head/roguetown/helmet/astratahelm/alt
+				head = /obj/item/clothing/head/roguetown/helmet/heavy/templar/astrata/alt
 			cloak = /obj/item/clothing/cloak/templar/astratan
 		if("Noc")
 			wrists = /obj/item/clothing/neck/roguetown/psicross/noc
-			head = /obj/item/clothing/head/roguetown/helmet/nochelm
+			head = /obj/item/clothing/head/roguetown/helmet/heavy/templar/noc
 			cloak = /obj/item/clothing/cloak/tabard/crusader/noc
 		if("Dendor")
 			wrists = /obj/item/clothing/neck/roguetown/psicross/dendor
-			head = /obj/item/clothing/head/roguetown/helmet/dendorhelm
+			head = /obj/item/clothing/head/roguetown/helmet/heavy/templar/dendor
 			cloak = /obj/item/clothing/cloak/tabard/crusader/dendor
 		if("Necra")
 			wrists = /obj/item/clothing/neck/roguetown/psicross/necra
 			if(prob(50))
-				head = /obj/item/clothing/head/roguetown/helmet/necrahelm
+				head = /obj/item/clothing/head/roguetown/helmet/heavy/templar/necra
 			else
-				head = /obj/item/clothing/head/roguetown/helmet/necrahelm/alt
+				head = /obj/item/clothing/head/roguetown/helmet/heavy/templar/necra/alt
 			cloak = /obj/item/clothing/cloak/templar/necran
 		if("Pestra")
 			wrists = /obj/item/clothing/neck/roguetown/psicross/pestra
 			cloak = /obj/item/clothing/cloak/tabard/crusader/pestra
 		if("Malum")
 			wrists = /obj/item/clothing/neck/roguetown/psicross/malum
-			head = /obj/item/clothing/head/roguetown/helmet/heavy/malumhelm
+			head = /obj/item/clothing/head/roguetown/helmet/heavy/templar/malum
 			cloak = /obj/item/clothing/cloak/templar/malummite
 		if("Ravox")
 			wrists = /obj/item/clothing/neck/roguetown/psicross/ravox
+			head = /obj/item/clothing/head/roguetown/helmet/heavy/templar/ravox
+
 	armor = /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk
 	shirt = /obj/item/clothing/suit/roguetown/armor/gambeson
 	pants = /obj/item/clothing/under/roguetown/chainlegs
