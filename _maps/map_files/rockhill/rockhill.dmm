@@ -4457,6 +4457,10 @@
 /obj/item/book/rogue/law,
 /turf/open/floor/rogue/cobble,
 /area/rogue/indoors)
+"eiH" = (
+/obj/structure/fluff/walldeco/wantedposter,
+/turf/open/floor/rogue/wood,
+/area/rogue/indoors/town)
 "eiL" = (
 /obj/structure/closet/crate/chest{
 	lockid = "keep_armory"
@@ -8139,6 +8143,10 @@
 /obj/item/chair/rogue/crafted,
 /turf/open/floor/rogue/hexstone,
 /area/rogue/indoors)
+"hAI" = (
+/obj/structure/fluff/walldeco/wantedposter,
+/turf/open/floor/rogue/carpet/lord/right,
+/area/rogue/indoors/town)
 "hAL" = (
 /obj/structure/chair/bench/couchablack/r,
 /turf/open/floor/carpet/inn,
@@ -304641,7 +304649,7 @@ wvq
 rNm
 kvD
 evo
-rNm
+eiH
 tdu
 lPL
 rNm
@@ -406750,7 +406758,7 @@ pzv
 rNm
 pzv
 evo
-xcJ
+hAI
 mrG
 lmJ
 ldh
