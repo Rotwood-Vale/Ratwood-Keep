@@ -77,7 +77,8 @@
 /datum/looping_sound/streetlamp1
 	mid_sounds = list('sound/misc/loops/StLight1.ogg')
 	mid_length = 60
-	volume = 40
+	volume = 15
+	falloff = 5
 	extra_range = 0
 	vary = TRUE
 	ignore_wallz = FALSE
@@ -85,7 +86,8 @@
 /datum/looping_sound/streetlamp2
 	mid_sounds = list('sound/misc/loops/StLight2.ogg')
 	mid_length = 40
-	volume = 40
+	volume = 15
+	falloff = 5
 	extra_range = 0
 	vary = TRUE
 	ignore_wallz = FALSE
@@ -93,7 +95,8 @@
 /datum/looping_sound/streetlamp3
 	mid_sounds = list('sound/misc/loops/StLight3.ogg')
 	mid_length = 50
-	volume = 40
+	volume = 15
+	falloff = 5
 	extra_range = 0
 	vary = TRUE
 	ignore_wallz = FALSE
