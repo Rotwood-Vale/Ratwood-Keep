@@ -154,7 +154,7 @@
 	shoes = /obj/item/clothing/shoes/roguetown/armor/steel
 	beltr = /obj/item/rogueweapon/sword/long
 	beltl = /obj/item/flashlight/flare/torch/lantern
-	belt = belt = /obj/item/storage/belt/rogue/leather/steel
+	belt = /obj/item/storage/belt/rogue/leather/steel
 	backr = /obj/item/storage/backpack/rogue/satchel/black
 	if(prob(50))
 		r_hand = /obj/item/rogueweapon/eaglebeak/lucerne

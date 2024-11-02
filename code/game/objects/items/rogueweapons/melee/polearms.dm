@@ -289,7 +289,6 @@
 	smeltresult = /obj/item/ingot/bronze
 	force = 20
 	force_wielded = 25
-	smelt_bar_num = 2
 
 /obj/item/rogueweapon/greatsword
 	force = 12
@@ -310,7 +309,6 @@
 	w_class = WEIGHT_CLASS_BULKY
 	minstr = 9
 	smeltresult = /obj/item/ingot/steel
-	smelt_bar_num = 3
 	associated_skill = /datum/skill/combat/swords
 	max_blade_int = 300
 	wdefense = 5
@@ -368,7 +366,6 @@
 	w_class = WEIGHT_CLASS_BULKY
 	minstr = 8
 	smeltresult = /obj/item/ingot/steel
-	smelt_bar_num = 2
 	associated_skill = /datum/skill/combat/swords
 	max_blade_int = 300
 	wdefense = 5

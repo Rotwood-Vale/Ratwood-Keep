@@ -1,4 +1,4 @@
-	/datum/anvil_recipe/valuables
+/datum/anvil_recipe/valuables
 	appro_skill = /datum/skill/craft/blacksmithing
 	craftdiff = 2
 

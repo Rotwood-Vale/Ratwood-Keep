@@ -2,9 +2,6 @@
 /obj/item
 	var/smeltresult
 
-	/// tracks how many bars things smelt back into for multi-bar items
-	var/smelt_bar_num = 1
-
 /obj/machinery/light/rogue/smelter
 	icon = 'icons/roguetown/misc/forge.dmi'
 	name = "stone furnace"
@@ -78,13 +75,11 @@
 				playsound(src.loc,'sound/misc/smelter_sound.ogg', 50, FALSE)
 			else
 				if(cooking == 20)
-					for(var/obj/item/I in ore)
+					for(var/obj/item/I in ore)	
 						if(I.smeltresult)
-							while(I.smelt_bar_num)
-								I.smelt_bar_num--
-								var/obj/item/R = new I.smeltresult(src, ore[I])
-								ore += R
 							ore -= I
+							var/obj/item/R = new I.smeltresult(src)
+							ore += R
 							qdel(I)
 					playsound(src,'sound/misc/smelter_fin.ogg', 100, FALSE)
 					cooking = 21
@@ -155,11 +150,9 @@
 					else
 						for(var/obj/item/I in ore)
 							if(I.smeltresult)
-								while(I.smelt_bar_num)
-									I.smelt_bar_num--
-									var/obj/item/R = new I.smeltresult(src, ore[I])
-									ore += R
 								ore -= I
+								var/obj/item/R = new I.smeltresult(src)
+								ore += R
 								qdel(I)
 					playsound(src,'sound/misc/smelter_fin.ogg', 100, FALSE)
 					visible_message(span_notice("[src] is finished."))

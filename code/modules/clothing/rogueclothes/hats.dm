@@ -525,7 +525,6 @@
 	desc = "A steel helmet which protects the ears."
 	smeltresult = /obj/item/ingot/steel
 	body_parts_covered = HEAD|HAIR|EARS
-	smelt_bar_num = 2
 
 /obj/item/clothing/head/roguetown/helmet/sallet/visored
 	name = "visored sallet"
@@ -572,7 +571,6 @@
 	body_parts_covered = HEAD|EARS|HAIR|NOSE|EYES|MOUTH
 	armor_class = ARMOR_CLASS_MEDIUM
 	block2add = FOV_BEHIND
-	smelt_bar_num = 2
 
 /obj/item/clothing/head/roguetown/helmet/astratahelm/alt
 	desc = "Gilded gold and silvered metal, the bright, vibrant colors of an Astratan crusader radiate from this blessed helmet."
@@ -599,7 +597,6 @@
 	body_parts_covered = HEAD|EARS|HAIR|NOSE|EYES|MOUTH
 	armor_class = ARMOR_CLASS_MEDIUM
 	block2add = FOV_BEHIND
-	smelt_bar_num = 2
 
 /obj/item/clothing/head/roguetown/helmet/necrahelm
 	name = "necran helmet"
@@ -612,7 +609,6 @@
 	body_parts_covered = HEAD|EARS|HAIR|NOSE|EYES|MOUTH
 	armor_class = ARMOR_CLASS_MEDIUM
 	block2add = FOV_BEHIND
-	smelt_bar_num = 2
 
 /obj/item/clothing/head/roguetown/helmet/necrahelm/alt
 	desc = "The darkest of blacks, this hooded helm is reminiscent of an executioner's head, striking fear into those who look upon it that they too may soon face the undermaiden."
@@ -630,7 +626,6 @@
 	body_parts_covered = HEAD|EARS|HAIR|NOSE|EYES|MOUTH
 	armor_class = ARMOR_CLASS_MEDIUM
 	block2add = FOV_BEHIND
-	smelt_bar_num = 2
 
 /obj/item/clothing/head/roguetown/helmet/heavy
 	name = "barbute"
@@ -645,7 +640,6 @@
 	block2add = FOV_RIGHT|FOV_LEFT
 	armor_class = ARMOR_CLASS_HEAVY
 	max_integrity = 400
-	smelt_bar_num = 2
 
 /obj/item/clothing/head/roguetown/helmet/heavy/guard
 	name = "savoyard"
@@ -1030,4 +1024,3 @@
 	block2add = FOV_RIGHT|FOV_LEFT
 	max_integrity = 425
 	smeltresult = /obj/item/ingot/blacksteel
-	smelt_bar_num = 2

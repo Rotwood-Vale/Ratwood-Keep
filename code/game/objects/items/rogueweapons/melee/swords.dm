@@ -608,9 +608,7 @@
 	icon_state = "gladius"
 	gripped_intents = null
 	smeltresult = /obj/item/ingot/bronze
-	smelt_bar_num = 2
 	max_blade_int = 100
 	max_integrity = 200
 	dropshrink = 0.80
 	wdefense = 2
-	smelt_bar_num = 2
