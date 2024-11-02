@@ -820,7 +820,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark/start/new_player)
 /obj/effect/landmark/underworldcoin
 	name = "ferryman coin"
 
-/obj/effect/landmark/underworldsafe // To prevent demons spawn camping will save a lot of ear rape.
+/obj/effect/landmark/underworldsafe // To prevent demons spawn camping.
 	name = "safe zone"
 
 GLOBAL_LIST_EMPTY(travel_tile_locations)

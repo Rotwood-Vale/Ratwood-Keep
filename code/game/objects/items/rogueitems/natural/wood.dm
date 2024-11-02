@@ -5,7 +5,7 @@
 	icon_state = "log"
 	blade_dulling = DULLING_CUT
 	max_integrity = 30
-	static_debris = list(/obj/item/grown/log/tree/small = 1)
+	static_debris = list(/obj/item/grown/log/tree/small = 2)
 	obj_flags = CAN_BE_HIT
 	resistance_flags = FLAMMABLE
 	twohands_required = TRUE
@@ -14,23 +14,21 @@
 	obj_flags = CAN_BE_HIT
 	w_class = WEIGHT_CLASS_HUGE
 	var/lumber = /obj/item/grown/log/tree/small //These are solely for lumberjack calculations
-	var/lumber_amount = 1
+	var/lumber_amount = 2
 
 /obj/item/grown/log/tree/attacked_by(obj/item/I, mob/living/user) //This serves to reward woodcutting
 	if(user.used_intent.blade_class == BCLASS_CHOP && lumber_amount)
 		var/skill_level = user.mind.get_skill_level(/datum/skill/labor/lumberjacking)
 		var/lumber_time = (40 - (skill_level * 5))
-		var/minimum = 1
+		var/minimum = 2
 		playsound(src, 'sound/misc/woodhit.ogg', 100, TRUE)
 		if(!do_after(user, lumber_time, target = user))
 			return
-		if(skill_level > 0) // If skill level is 1 or higher, we get more minimum wood!
-			minimum = 2
 		lumber_amount = rand(minimum, max(round(skill_level), minimum))
 		for(var/i = 0; i < lumber_amount; i++)
 			new lumber(get_turf(src))
 		if(!skill_level)
-			to_chat(user, span_info("My poor skill has me ruin some of the timber..."))
+			to_chat(user, span_info("I could have gotten more timber were I more skilled..."))
 		user.mind.add_sleep_experience(/datum/skill/labor/lumberjacking, (user.STAINT*0.5))
 		playsound(src, destroy_sound, 100, TRUE)
 		qdel(src)
