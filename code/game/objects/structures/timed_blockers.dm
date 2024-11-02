@@ -8,7 +8,7 @@
 	opacity = FALSE//from TRUE
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
 
-	var/dissipate_time = 60 MINUTES
+	var/dissipate_time = 30 MINUTES
 
 /obj/structure/fog_wall/Initialize()
 	. = ..()
@@ -34,9 +34,9 @@
 		if(mobShouldSee(mob))
 			add_hud_to(mob)
 
-/obj/structure/fog_wall/CanPass(atom/movable/mover)
-	if(isliving(mover))
-		var/mob/living/M = mover
+/obj/structure/fog_wall/CanPass(atom/movable/AM)
+	if(ishuman(AM))
+		var/mob/living/M = AM
 		if(M.mind.special_role == "Bandit")
 			to_chat(M, "<span class=notice>The gods would be angry, were I to pass this now. I can feel them watching.</span>")
 			return FALSE
