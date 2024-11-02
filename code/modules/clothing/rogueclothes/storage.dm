@@ -254,6 +254,15 @@
 /obj/item/storage/belt/rogue/pouch/food/PopulateContents()
 	new /obj/item/reagent_containers/food/snacks/rogue/foodbase/hardtack_raw/cooked(src)
 
+/obj/item/storage/belt/rogue/pouch/ammo
+	name = "rune ball pouch"
+	desc = "Usually used for holding runelock balls."
+
+/obj/item/storage/belt/rogue/pouch/ammo/PopulateContents()
+	new /obj/item/ammo_casing/caseless/rogue/bullet(src)
+	new /obj/item/ammo_casing/caseless/rogue/bullet(src)
+	new /obj/item/ammo_casing/caseless/rogue/bullet(src)
+
 /obj/item/storage/backpack/rogue //holding salvage vars for children
 	sewrepair = TRUE
 	fiber_salvage = TRUE
@@ -283,7 +292,7 @@
 /obj/item/storage/backpack/rogue/satchel/mule/PopulateContents()
 	for(var/i in 1 to 3)
 		switch(rand(1,4))
-			if(1)	
+			if(1)
 				new /obj/item/reagent_containers/powder/moondust_purest(src)
 			if(2)
 				new /obj/item/reagent_containers/powder/moondust_purest(src)

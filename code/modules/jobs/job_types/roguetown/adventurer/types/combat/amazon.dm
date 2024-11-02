@@ -51,7 +51,7 @@
 	H.change_stat("perception", 1)
 	H.change_stat("endurance", 3)
 	H.change_stat("speed", 1)
-	if(H.wear_mask) //for stupid retards with bad eyes
+	if(H.wear_mask) //for stupid stupid with bad eyes
 		var/obj/I = H.wear_mask
 		H.dropItemToGround(H.wear_mask, TRUE)
 		qdel(I)
