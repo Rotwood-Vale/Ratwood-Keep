@@ -44,6 +44,6 @@
 	H.change_stat("constitution", 4) // Cheese diet.
 
 /datum/advclass/cheesemaker/boost_by_plus_power(plus_factor, mob/living/carbon/human/H)
-	// ha ha yeah, fuck you cheesemaker playin retards!
+	// ha ha yeah, fuck you cheesemaker playin idiots!
 	return
 	

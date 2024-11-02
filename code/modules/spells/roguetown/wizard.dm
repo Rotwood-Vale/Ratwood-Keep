@@ -173,7 +173,7 @@
 	charging_slowdown = 3
 	chargedloop = /datum/looping_sound/invokegen
 	associated_skill = /datum/skill/magic/arcane
-	cost = 4
+	cost = 3
 	xp_gain = TRUE
 
 /obj/projectile/magic/aoe/fireball/rogue
@@ -220,7 +220,7 @@
 	no_early_release = TRUE
 	movement_interrupt = TRUE
 	chargedloop = /datum/looping_sound/invokegen
-	cost = 10
+	cost = 10	//Court mage starts with this, If they want a /second/ they can pay the massive price for it.
 	xp_gain = TRUE
 
 /obj/projectile/magic/aoe/fireball/rogue/great
@@ -234,7 +234,7 @@
 
 /obj/effect/proc_holder/spell/invoked/projectile/spitfire
 	name = "Spitfire"
-	desc = "Shoot out a low-powered ball of fire that shines brightly on impact, potentially blinding a target."
+	desc = "Shoot out a series of low-powered balls of fire that shines brightly on impact, potentially blinding a target."
 	clothes_req = FALSE
 	range = 8
 	projectile_type = /obj/projectile/magic/aoe/fireball/rogue2
@@ -244,8 +244,9 @@
 	releasedrain = 30
 	chargedrain = 1
 	chargetime = 10
-	charge_max = 8 SECONDS
+	charge_max = 10 SECONDS
 	warnie = "spellwarning"
+	projectiles_per_fire = 3
 	no_early_release = TRUE
 	movement_interrupt = FALSE
 	charging_slowdown = 3
@@ -255,18 +256,19 @@
 	xp_gain = TRUE
 
 /obj/projectile/magic/aoe/fireball/rogue2
-	name = "fireball"
+	name = "spitfire"
 	exp_heavy = 0
 	exp_light = 0
 	exp_flash = 1
 	exp_fire = 0
-	damage = 20
+	damage = 15	//no armor really has burn protection. So assuming all three connect, 45 burn damage- average damage of fireball with firestacks nerfed. Thats a big 'if' however. Notably, won't cause wounds,
 	damage_type = BURN
+	homing = TRUE
 	nodamage = FALSE
 	flag = "magic"
 	hitsound = 'sound/blank.ogg'
 	aoe_range = 0
-	speed = 2.5
+	speed = 3.5
 
 /obj/projectile/magic/aoe/fireball/rogue2/on_hit(target)
 	. = ..()
@@ -290,26 +292,27 @@
 	releasedrain = 20
 	chargedrain = 1
 	chargetime = 7
-	charge_max = 5 SECONDS
+	charge_max = 8 SECONDS
 	warnie = "spellwarning"
 	no_early_release = TRUE
 	movement_interrupt = FALSE
 	charging_slowdown = 3
 	chargedloop = /datum/looping_sound/invokegen
 	associated_skill = /datum/skill/magic/arcane
-	cost = 2
+	cost = 3
 	xp_gain = TRUE
 
 /obj/projectile/energy/rogue3
 	name = "Arcane Bolt"
 	icon_state = "arcane_barrage"
-	damage = 30
+	damage = 45	//Average bow user with 13 PER does 44ish damage. Arrows fly faster then arcane bolt.
 	damage_type = BRUTE
 	armor_penetration = 10
+	woundclass = BCLASS_STAB
 	nodamage = FALSE
 	flag = "bullet"
 	hitsound = 'sound/blank.ogg'
-	speed = 2
+	speed = 1
 
 /obj/projectile/energy/rogue3/on_hit(target)
 	. = ..()
@@ -545,19 +548,20 @@
 	. = ..()
 	//list of spells you can learn, it may be good to move this somewhere else eventually
 	//TODO: make GLOB list of spells, give them a true/false tag for learning, run through that list to generate choices
-	var/list/choices = list()
-	var/list/spell_choices = list(/obj/effect/proc_holder/spell/invoked/projectile/fireball,// 4 cost
+	var/list/choices = list()//Current thought: standard combat spells 3 spell points. utility/buff spells 2 points, minor spells 1 point
+	var/list/spell_choices = list(/obj/effect/proc_holder/spell/invoked/projectile/fireball,// 3 cost
 		/obj/effect/proc_holder/spell/invoked/projectile/lightningbolt,// 3 cost
-		/obj/effect/proc_holder/spell/invoked/projectile/spitfire,
-		/obj/effect/proc_holder/spell/invoked/forcewall_weak,
+		/obj/effect/proc_holder/spell/invoked/projectile/spitfire,//3
+		/obj/effect/proc_holder/spell/invoked/projectile/arcanebolt,
+		/obj/effect/proc_holder/spell/invoked/forcewall_weak,//3
 		/obj/effect/proc_holder/spell/invoked/slowdown_spell_aoe,
-		/obj/effect/proc_holder/spell/invoked/haste,
+		/obj/effect/proc_holder/spell/invoked/findfamiliar,
 		/obj/effect/proc_holder/spell/invoked/push_spell,
 		/obj/effect/proc_holder/spell/targeted/touch/darkvision,// 2 cost
+		/obj/effect/proc_holder/spell/invoked/haste,
 		/obj/effect/proc_holder/spell/invoked/message,
 		/obj/effect/proc_holder/spell/invoked/blade_burst,
 		/obj/effect/proc_holder/spell/invoked/projectile/fetch,
-		/obj/effect/proc_holder/spell/invoked/projectile/arcanebolt,
 		/obj/effect/proc_holder/spell/targeted/touch/nondetection, // 1 cost
 		/obj/effect/proc_holder/spell/targeted/touch/prestidigitation,
 		/obj/effect/proc_holder/spell/invoked/featherfall,
@@ -620,7 +624,7 @@
 	CanAtmosPass = ATMOS_PASS_DENSITY
 	climbable = TRUE
 	climb_time = 0
-	var/timeleft = 20 SECONDS
+	var/timeleft = 10 SECONDS
 
 /obj/structure/forcefield_weak/Initialize()
 	. = ..()
@@ -647,6 +651,8 @@
 	caster = summoner
 
 /obj/structure/forcefield_weak/caster/CanPass(atom/movable/mover, turf/target)	//only the caster can move through this freely
+	if(mover == caster)
+		return TRUE
 	if(ismob(mover))
 		var/mob/M = mover
 		if(M.anti_magic_check(chargecost = 0) || structureclimber == M)
@@ -677,7 +683,7 @@
 	range = 6
 	overlay_state = "ensnare"
 	var/area_of_effect = 1
-	var/duration = 2.5 SECONDS
+	var/duration = 4 SECONDS
 	var/delay = 0.8 SECONDS
 
 /obj/effect/proc_holder/spell/invoked/slowdown_spell_aoe/cast(list/targets, mob/user = usr)
@@ -812,7 +818,7 @@
 
 /obj/effect/proc_holder/spell/invoked/blade_burst
 	name = "Blade Burst"
-	desc = "Summon a storm of arcyne force in an area that damages through armor, wounding anything in that location after a delay."
+	desc = "Summon a arcyne blades from the floor that damages through armor, wounding anything with legs after a delay."
 	cost = 2
 	xp_gain = TRUE
 	releasedrain = 30
@@ -852,9 +858,13 @@
 	new /obj/effect/temp_visual/blade_burst(T)
 	playsound(T,'sound/magic/charged.ogg', 80, TRUE)
 	for(var/mob/living/L in T.contents)
+		var/def_zone = pick(BODY_ZONE_L_LEG, BODY_ZONE_R_LEG)
+		var/obj/item/bodypart/BP = L.get_bodypart(def_zone)
+		L.apply_damage(damage, BRUTE, def_zone)
+		BP.add_wound(/datum/wound/fracture)
 		L.adjustBruteLoss(damage)
 		playsound(T, "genslash", 80, TRUE)
-		to_chat(L, "<span class='userdanger'>I'm cut by arcyne force!</span>")
+		to_chat(L, "<span class='userdanger'>I'm cut by blades rising from the floor!</span>")
 	return TRUE
 
 /obj/effect/proc_holder/spell/targeted/touch/nondetection
@@ -994,12 +1004,12 @@
 /obj/effect/proc_holder/spell/invoked/haste
 	name = "Haste"
 	desc = "Cause a target to be magically hastened."
-	cost = 3
+	cost = 2
 	xp_gain = TRUE
-	releasedrain = 25
+	releasedrain = 50
 	chargedrain = 1
-	chargetime = 4 SECONDS
-	charge_max = 5 MINUTES
+	chargetime = 2 SECONDS
+	charge_max = 2.5 MINUTES
 	warnie = "spellwarning"
 	school = "transmutation"
 	no_early_release = TRUE
@@ -1023,6 +1033,40 @@
 		user.visible_message("[user] mutters an incantation and they briefly shine yellow.")
 
 	return TRUE
+
+/obj/effect/proc_holder/spell/invoked/findfamiliar
+	name = "Find Familiar"
+	desc = "Summons a temporary spectral volf to aid you. Hostile to all but yourself. Summon with care."
+	school = "transmutation"
+	releasedrain = 30
+	chargedrain = 1
+	chargetime = 15
+	charge_max = 40 SECONDS
+	warnie = "spellwarning"
+	no_early_release = TRUE
+	movement_interrupt = FALSE
+	charging_slowdown = 3
+	clothes_req = FALSE
+	active = FALSE
+	sound = 'sound/blank.ogg'
+	overlay_state = "forcewall"
+	range = -1
+	chargedloop = /datum/looping_sound/invokegen
+	associated_skill = /datum/skill/magic/arcane
+	xp_gain = TRUE
+	cost = 3
+
+/mob/living/simple_animal/hostile/retaliate/rogue/wolf/familiar/Initialize(mapload, mob/user)
+	. = ..()
+	if(timeleft)
+		QDEL_IN(src, timeleft) //delete after it runs out, see code/modules/mob/living/simple_animal/rogue/creacher/familiar.dm for timeleft var
+	summoner = user
+
+/obj/effect/proc_holder/spell/invoked/findfamiliar/cast(list/targets,mob/user = usr)
+	var/turf/target_turf = get_turf(targets[1])
+		new /mob/living/simple_animal/hostile/retaliate/rogue/wolf/familiar(target_turf, user)
+	return TRUE
+
 
 
 #undef PRESTI_CLEAN
