@@ -39,6 +39,7 @@
 		else
 			to_chat(user, span_warning("You point at [O], but it fails to catch fire."))
 			return FALSE
+	revert_cast()
 	return FALSE
 
 /obj/effect/proc_holder/spell/invoked/revive
@@ -109,6 +110,7 @@
 				ADD_TRAIT(target, TRAIT_IWASREVIVED, "[type]")
 			target.mind.remove_antag_datum(/datum/antagonist/zombie)
 		return TRUE
+	revert_cast()
 	return FALSE
 
 /obj/effect/proc_holder/spell/invoked/revive/cast_check(skipcharge = 0,mob/user = usr)
