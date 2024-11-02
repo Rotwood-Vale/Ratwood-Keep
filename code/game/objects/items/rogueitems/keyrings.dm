@@ -222,3 +222,6 @@
 
 /obj/item/keyring/mercenary
 	keys = list(/obj/item/roguekey/mercenary)
+
+/obj/item/keyring/mercenary_boss
+	keys = list(/obj/item/roguekey/mercenary, /obj/item/roguekey/mercenary_boss)

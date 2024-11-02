@@ -1,4 +1,4 @@
-#define DRUGRADE_MONEYA				(1<<0)
+/* #define DRUGRADE_MONEYA				(1<<0)
 #define DRUGRADE_MONEYB 	      	(1<<1)
 #define DRUGRADE_WINE 	          	(1<<2)
 #define DRUGRADE_WEAPONS 	      	(1<<3)
@@ -239,7 +239,7 @@
 	held_items[/obj/item/natural/poo/cow] = list("PRICE" = 5,"NAME" = "Fertilizer")
 	held_items[/obj/item/storage/box/matches] = list("PRICE" = 10,"NAME" = "Tinderbox")
 	held_items[/obj/item/storage/fancy/shhig] = list("PRICE" = 15,"NAME" = "Box of Ssssigs")// set price because I like the working man
-	held_items[/obj/item/reagent_containers/hypospray/medipen/snekbt] = list("PRICE" = 30,"NAME" = "Snake Bite") //discounted price because I like the working class, and they need it most.
+	held_items[/obj/item/reagent_containers/hypospray/medipen/sty/snekbt] = list("PRICE" = 30,"NAME" = "Snake Bite") //discounted price because I like the working class, and they need it most.
 
 	
 #undef DRUGRADE_MONEYA
@@ -248,3 +248,4 @@
 #undef DRUGRADE_WEAPONS
 #undef DRUGRADE_CLOTHES
 #undef DRUGRADE_NOTAX
+*/
