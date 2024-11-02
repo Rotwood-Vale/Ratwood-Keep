@@ -48,7 +48,9 @@
 
 	var/obj/effect/proc_holder/spell/targeted/touch/orison/base_spell = attached_spell
 	if (user)
-		adjust_experience(user, base_spell.associated_skill, fatigue+attached_spell.devotion_cost)
+		var/skill_level = user.mind?.get_skill_level(attached_spell.associated_skill)
+		if (skill_level <= SKILL_LEVEL_EXPERT)
+			adjust_experience(user, base_spell.associated_skill, fatigue+attached_spell.devotion_cost)
 
 /obj/item/melee/touch_attack/orison/MiddleClick(mob/living/user, params)
 	. = ..()
@@ -330,7 +332,7 @@
 			if (prob(80))
 				playsound(user, 'sound/items/fillcup.ogg', 55, TRUE)
 		
-		return fatigue_spent
+		return min(50, fatigue_spent)
 	else if (istype(thing, /obj/item/natural/cloth))
 		// stupid little easter egg here: you can dampen a cloth to clean with it, because prestidigitation also lets you clean things. also a lot cheaper devotion-wise than filling a bucket
 		var/obj/item/natural/cloth/the_cloth = thing
