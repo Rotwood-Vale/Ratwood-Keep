@@ -741,17 +741,25 @@
 	name = "bolt of water"
 	icon_state = "ice_2"
 	flag = "magic"
+	var/area_of_effect = 1
 
 /obj/projectile/magic/water/on_hit(target)
 	. = ..()
 	var/obj/item/reagent_containers/K = new /obj/item/reagent_containers/glass/bucket/wooden/spell_water(get_turf(target))
+	var/turf/T = get_turf(target)
+
 	playsound(target, 'sound/foley/waterenter.ogg', 100, FALSE)
-	if(ismob(target))
-		var/mob/living/mob_target = target
-		K.reagents.reaction(mob_target, TOUCH)
-		mob_target.Slowdown(10)
-		mob_target.log_message("has been hit by a water bolt from [key_name(src)]", LOG_ATTACK)
-	else if(istype(target, /obj/structure/soil))
-		var/obj/structure/soil/target_soil = target
-		target_soil.adjust_water(150)
-	qdel(K)
+
+	if(ismob(target))	//Hit a person
+		var/mob/living/mob_target = target			//Get person hit
+		K.reagents.reaction(mob_target, TOUCH)		//Touch the person with water reagent (extinguish fires)
+		mob_target.Slowdown(10)						//Slowdown the person
+		mob_target.log_message("has been hit by a water bolt from [key_name(src)]", LOG_ATTACK)	//Log it
+
+	else	//Hit anything else
+		for(var/turf/affected_turf in view(area_of_effect, T))		//Loop through all turf tiles in 3x3 grid of hit area
+			for(var/obj/effect/decal/cleanable/C in affected_turf)	//Loop through all cleanable decals in current turf examined
+				qdel(C)												//Delete the cleanable object
+		for(var/obj/structure/soil/affected_soil in view(area_of_effect, T))	//Loop again to check for all soil structures in 3x3 grid of hit area
+			affected_soil.adjust_water(150)										//Adjust water for those soil plants
+	qdel(K)		//Delete the water regeant
