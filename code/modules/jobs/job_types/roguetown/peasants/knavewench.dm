@@ -1,6 +1,6 @@
 /datum/job/roguetown/knavewench // The most aggressively rude name yet.
-	title = "Tavern Knave"
-	f_title = "Tavern Wench"
+	title = "Tapster"
+	f_title = "Tapster"
 	flag = KNAVEWENCH
 	department_flag = PEASANTS
 	faction = "Station"
