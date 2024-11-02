@@ -5,7 +5,7 @@
 	icon_state = "pistol2"
 	item_state = "pistol2"
 	possible_item_intents = list(/datum/intent/shoot/runelock, /datum/intent/arc/runelock, INTENT_GENERIC)
-	mag_type = /obj/item/ammo_box/magazine/internal/shot/musket
+	mag_type = /obj/item/ammo_box/magazine/internal/shot/runelock
 	slot_flags = ITEM_SLOT_HIP
 	w_class = WEIGHT_CLASS_BULKY
 	randomspread = 1
@@ -78,9 +78,9 @@
 	icon_state = initial(icon_state)
 	..()
 
-/obj/item/ammo_box/magazine/internal/shot/musket
+/obj/item/ammo_box/magazine/internal/shot/runelock
 	ammo_type = /obj/item/ammo_casing/caseless/rogue/bullet
-	caliber = "musketball"
+	caliber = "runeball"
 	max_ammo = 1
 	start_empty = TRUE
 
