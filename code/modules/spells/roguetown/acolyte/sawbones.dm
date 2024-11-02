@@ -785,43 +785,6 @@
 		STR.max_items = 10
 		STR.not_while_equipped = TRUE
 
-/obj/item/storage/belt/rogue/pouch/pillc
-	name = "pill pouch"
-	desc = "for holding all your pill.... and ONLY pill needs."
-
-/obj/item/storage/belt/rogue/pouch/pillc/ComponentInitialize()
-	. = ..()
-	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
-	if(STR)
-		STR.max_combined_w_class = 42
-		STR.max_w_class = WEIGHT_CLASS_NORMAL
-		STR.max_items = 12
-		STR.set_holdable(list(/obj/item/reagent_containers/pill/caffpill, /obj/item/reagent_containers/pill/pnkpill))
-
-/obj/item/storage/belt/rogue/pouch/pillc/PopulateContents()
-	new /obj/item/reagent_containers/pill/caffpill(src)
-	new /obj/item/reagent_containers/pill/caffpill(src)
-	new /obj/item/reagent_containers/pill/caffpill(src)
-
-/obj/item/storage/belt/rogue/pouch/pillp
-	name = "pill pouch"
-	color = "#ff7f7f"
-	desc = "for holding all your pill.... and ONLY pill needs."
-
-/obj/item/storage/belt/rogue/pouch/pillp/ComponentInitialize()
-	. = ..()
-	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
-	if(STR)
-		STR.max_combined_w_class = 42
-		STR.max_w_class = WEIGHT_CLASS_NORMAL
-		STR.max_items = 12
-		STR.set_holdable(list(/obj/item/reagent_containers/pill/caffpill, /obj/item/reagent_containers/pill/pnkpill))
-
-/obj/item/storage/belt/rogue/pouch/pillp/PopulateContents()
-	new /obj/item/reagent_containers/pill/pnkpill(src)
-	new /obj/item/reagent_containers/pill/pnkpill(src)
-	new /obj/item/reagent_containers/pill/pnkpill(src)
-
 /obj/item/rogueweapon/surgery/saw/improv
 	name = "improvised saw"
 	desc = "A tool used to carve through bone......poorly, but better than nothing."
@@ -864,6 +827,181 @@
 	w_class = WEIGHT_CLASS_NORMAL
 	thrown_bclass = BCLASS_BLUNT
 	tool_behaviour = TOOL_IMPROVRETRACTOR
+
+/obj/item/storage/fancy/pilltin
+	name = "pill tin"
+	desc = "a tin for all your pill needs, snake branded (close/open mmb)"
+	icon = 'icons/roguetown/items/surgery.dmi'
+	icon_state = "pilltin"
+	w_class = WEIGHT_CLASS_TINY
+	throwforce = 1
+	slot_flags = null
+
+/obj/item/storage/fancy/pilltin/update_icon()
+	if(fancy_open)
+		if(contents.len == 0)
+			icon_state = "pilltin_empty"
+		else
+			icon_state = "pilltincustom_open"
+	else
+		icon_state = "pilltin"
+
+/obj/item/storage/fancy/pilltin/examine(mob/user)
+	. = ..()
+	if(fancy_open)
+		if(length(contents) == 1)
+			. += "There is one item left."
+		else
+			. += "There are [contents.len <= 0 ? "no" : "[contents.len]"] items left."
+
+/obj/item/storage/fancy/pilltin/attack_self(mob/user)
+	fancy_open = !fancy_open
+	update_icon()
+	. = ..()
+
+/obj/item/storage/fancy/pilltin/Entered(mob/user)
+	if(!fancy_open)
+		to_chat(user, span_notice("[src] needs to be opened first."))
+		return
+	fancy_open = TRUE
+	update_icon()
+	. = ..()
+
+/obj/item/storage/fancy/pilltin/Exited(mob/user)
+	fancy_open = FALSE
+	update_icon()
+	. = ..()
+
+/obj/item/storage/fancy/pilltin/MiddleClick(mob/user, params)
+	fancy_open = !fancy_open
+	update_icon()
+	to_chat(user, span_notice("[src] is now [fancy_open ? "open" : "closed"]."))
+
+/obj/item/storage/fancy/pilltinwake
+	name = "pill tin (wake)"
+	desc = "a tin for all your pill needs, snake branded (close/open mmb)"
+	icon = 'icons/roguetown/items/surgery.dmi'
+	icon_state = "pilltin"
+	w_class = WEIGHT_CLASS_TINY
+	throwforce = 1
+	slot_flags = null
+
+/obj/item/storage/fancy/pilltinwake/update_icon()
+	if(fancy_open)
+		if(contents.len == 0)
+			icon_state = "pilltin_empty"
+		else
+			icon_state = "pilltinwake_open"
+	else
+		icon_state = "pilltin"
+
+/obj/item/storage/fancy/pilltinwake/examine(mob/user)
+	. = ..()
+	if(fancy_open)
+		if(length(contents) == 1)
+			. += "There is one item left."
+		else
+			. += "There are [contents.len <= 0 ? "no" : "[contents.len]"] items left."
+
+/obj/item/storage/fancy/pilltinwake/attack_self(mob/user)
+	fancy_open = !fancy_open
+	update_icon()
+	. = ..()
+
+/obj/item/storage/fancy/pilltinwake/Entered(mob/user)
+	if(!fancy_open)
+		to_chat(user, span_notice("[src] needs to be opened first."))
+		return
+	fancy_open = TRUE
+	update_icon()
+	. = ..()
+
+/obj/item/storage/fancy/pilltinwake/Exited(mob/user)
+	fancy_open = FALSE
+	update_icon()
+	. = ..()
+
+/obj/item/storage/fancy/pilltinwake/MiddleClick(mob/user, params)
+	fancy_open = !fancy_open
+	update_icon()
+	to_chat(user, span_notice("[src] is now [fancy_open ? "open" : "closed"]."))
+
+/obj/item/storage/fancy/pilltinwake/ComponentInitialize()
+	. = ..()
+	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
+	if(STR)
+		STR.max_combined_w_class = 42
+		STR.max_w_class = WEIGHT_CLASS_NORMAL
+		STR.max_items = 12
+		STR.set_holdable(list(/obj/item/reagent_containers/pill/caffpill))
+
+/obj/item/storage/fancy/pilltinwake/PopulateContents()
+	new /obj/item/reagent_containers/pill/caffpill(src)
+	new /obj/item/reagent_containers/pill/caffpill(src)
+	new /obj/item/reagent_containers/pill/caffpill(src)
+
+/obj/item/storage/fancy/pilltinpink
+	name = "pill tin (pnk)"
+	desc = "a tin for all your pill needs, snake branded (close/open mmb)"
+	icon = 'icons/roguetown/items/surgery.dmi'
+	icon_state = "pilltin"
+	w_class = WEIGHT_CLASS_TINY
+	throwforce = 1
+	slot_flags = null
+
+/obj/item/storage/fancy/pilltinpink/update_icon()
+	if(fancy_open)
+		if(contents.len == 0)
+			icon_state = "pilltin_empty"
+		else
+			icon_state = "pilltinpink_open"
+	else
+		icon_state = "pilltin"
+
+/obj/item/storage/fancy/pilltinpink/examine(mob/user)
+	. = ..()
+	if(fancy_open)
+		if(length(contents) == 1)
+			. += "There is one item left."
+		else
+			. += "There are [contents.len <= 0 ? "no" : "[contents.len]"] items left."
+
+/obj/item/storage/fancy/pilltinpink/attack_self(mob/user)
+	fancy_open = !fancy_open
+	update_icon()
+	. = ..()
+
+/obj/item/storage/fancy/pilltinpink/Entered(mob/user)
+	if(!fancy_open)
+		to_chat(user, span_notice("[src] needs to be opened first."))
+		return
+	fancy_open = TRUE
+	update_icon()
+	. = ..()
+
+/obj/item/storage/fancy/pilltinpink/Exited(mob/user)
+	fancy_open = FALSE
+	update_icon()
+	. = ..()
+
+/obj/item/storage/fancy/pilltinpink/MiddleClick(mob/user, params)
+	fancy_open = !fancy_open
+	update_icon()
+	to_chat(user, span_notice("[src] is now [fancy_open ? "open" : "closed"]."))
+
+/obj/item/storage/fancy/pilltinpink/ComponentInitialize()
+	. = ..()
+	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
+	if(STR)
+		STR.max_combined_w_class = 42
+		STR.max_w_class = WEIGHT_CLASS_NORMAL
+		STR.max_items = 12
+		STR.set_holdable(list(/obj/item/reagent_containers/pill/pnkpill))
+
+/obj/item/storage/fancy/pilltinpink/PopulateContents()
+	new /obj/item/reagent_containers/pill/pnkpill(src)
+	new /obj/item/reagent_containers/pill/pnkpill(src)
+	new /obj/item/reagent_containers/pill/pnkpill(src)
 
 /obj/item/storage/fancy/skit
 	name = "surgery kit"
@@ -1599,3 +1737,30 @@
 	reqs = list(/obj/item/natural/cloth = 2, /obj/item/grown/log/tree/stick = 2,)
 	craftdiff = 2
 	skillcraft = /datum/skill/misc/treatment*/
+
+
+
+//////////////////////////////////////------------------reskins of existing items-------------------//////////////////////           none of these implimented, has to be spawned.
+
+
+/obj/item/rogueweapon/mace/pipe        ////////////// reskin of iron mace but bigger
+	possible_item_intents = list(/datum/intent/mace/strike, /datum/intent/mace/smash)
+	gripped_intents = list(/datum/intent/mace/strike, /datum/intent/mace/smash)
+	name = "pipe"
+	desc = "Beloved problem solver."
+	icon_state = "leadpipe"
+	icon = 'icons/roguetown/weapons/64.dmi'
+	pixel_y = -16
+	pixel_x = -16
+	bigboy = TRUE
+	gripsprite = TRUE
+	inhand_x_dimension = 64
+	inhand_y_dimension = 64
+	parrysound = list('sound/combat/parry/parrygen.ogg')
+	swingsound = BLUNTWOOSH_MED
+
+/obj/item/rogueweapon/huntingknife/skin                                    ///////////// reSKINNED hunting knife
+	name = "skinning knife"
+	desc = "More than one way to skin a seelie."
+	icon_state = "skinningknife"
+

@@ -238,9 +238,9 @@
 	held_items[/obj/item/storage/box/matches] = list("PRICE" = rand(10,15),"NAME" = "tinderbox")
 	held_items[/obj/item/reagent_containers/hypospray/medipen/sty/detox] = list("PRICE" = rand(15,20),"NAME" = "DETOX")
 	held_items[/obj/item/reagent_containers/glass/alembic] = list("PRICE" = rand(30,40),"NAME" = "alembic")
-	held_items[/obj/item/storage/belt/rogue/pouch/pillc] = list("PRICE" = rand(25,30),"NAME" = "pep pills pouch")
+	held_items[/obj/item/storage/fancy/pilltinwake] = list("PRICE" = rand(25,30),"NAME" = "pep pills tin")
 	held_items[/obj/item/reagent_containers/hypospray/medipen/sealbottle/purify] = list("PRICE" = rand(25,30),"NAME" = "PURIFY")
-	held_items[/obj/item/storage/belt/rogue/pouch/pillp] = list("PRICE" = rand(25,35),"NAME" = "pink pill pouch")
+	held_items[/obj/item/storage/fancy/pilltinpink] = list("PRICE" = rand(25,35),"NAME" = "pink pill tin")
 	held_items[/obj/item/natural/bundle/cloth/bandage/full] = list("PRICE" = rand(10,15),"NAME" = "roll of bandages")
 
 #undef DRUGRADE_MONEYA

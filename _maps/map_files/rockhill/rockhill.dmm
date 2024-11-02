@@ -1176,6 +1176,12 @@
 /obj/item/reagent_containers/hypospray/medipen/sealbottle/purify,
 /obj/item/reagent_containers/hypospray/medipen/sealbottle/purify,
 /obj/item/reagent_containers/hypospray/medipen/sealbottle/purify,
+/obj/item/storage/fancy/pilltinpink,
+/obj/item/storage/fancy/pilltinpink,
+/obj/item/storage/fancy/pilltinpink,
+/obj/item/storage/fancy/pilltinwake,
+/obj/item/storage/fancy/pilltinwake,
+/obj/item/storage/fancy/pilltinwake,
 /turf/open/floor/rogue/churchmarble,
 /area/rogue/indoors/shelter/rtfield)
 "bec" = (
@@ -5971,12 +5977,6 @@
 /obj/structure/closet/crate/roguecloset/lord{
 	lockid = "clinic"
 	},
-/obj/item/storage/belt/rogue/pouch/pillp,
-/obj/item/storage/belt/rogue/pouch/pillp,
-/obj/item/storage/belt/rogue/pouch/pillp,
-/obj/item/storage/belt/rogue/pouch/pillc,
-/obj/item/storage/belt/rogue/pouch/pillc,
-/obj/item/storage/belt/rogue/pouch/pillc,
 /obj/item/reagent_containers/powder/alch/mincem,
 /obj/item/reagent_containers/powder/alch/mincem,
 /obj/item/reagent_containers/powder/alch/mincef,
@@ -21178,7 +21178,8 @@
 /mob/living/simple_animal/hostile/retaliate/rogue/wolf{
 	name = "Bedside";
 	tame = 1;
-	STACON = 10
+	STACON = 10;
+	faction = list("station")
 	},
 /turf/open/floor/rogue/tile/bath,
 /area/rogue/indoors/shelter/rtfield)
@@ -25074,7 +25075,8 @@
 "wZY" = (
 /mob/living/simple_animal/hostile/retaliate/poison/snake{
 	tame = 1;
-	name = "Ozium"
+	name = "Ozium";
+	faction = list("station")
 	},
 /turf/open/floor/rogue/churchmarble,
 /area/rogue/indoors/shelter/rtfield)
