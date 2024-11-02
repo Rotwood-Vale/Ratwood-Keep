@@ -157,7 +157,7 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "E
 					log_game("Minor Antagonist: Maniac")
 				if("Lich")
 					pick_lich()
-					log_game("Minor Antagonist: Lich")	
+					log_game("Minor Antagonist: Lich")
 				if("Cultists")
 					pick_cultist()
 					log_game("Major Antagonist: Cultists")
@@ -186,7 +186,7 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "E
 	if(prob(45))
 		pick_aspirants()
 		log_game("Minor Antagonist: Aspirant")
-	
+
 	if(prob(30))
 		pick_lich()
 		log_game("Minor Antagonist: Lich")
@@ -365,9 +365,16 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "E
 	var/remaining = 3 // 1 heresiarch, 2 cultists
 	restricted_jobs = list("Duke",
 	"Duchess Consort",
-	"Merchant",
 	"Priest",
-	"Bandit")
+	"Bandit",
+	"Knight",
+	"Retinue Captain",
+	"Gatemaster",
+	"Bog Master",
+	"Inquisitor",
+	"Confessor",
+	"Acolyte"
+	)
 	antag_candidates = get_players_for_role(ROLE_ZIZOIDCULTIST)
 	antag_candidates = shuffle(antag_candidates)
 	for(var/datum/mind/villain in antag_candidates)
