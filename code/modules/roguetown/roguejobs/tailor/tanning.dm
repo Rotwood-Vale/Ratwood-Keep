@@ -53,8 +53,8 @@
 			for(var/i = 0; i < pieces_to_spawn; i++)
 				if(prob(skill_level))
 					new /obj/item/natural/cured/masterwork(get_turf(user))
-					sound_played = TRUE
 					if(!sound_played)
+						sound_played = TRUE
 						to_chat(user, span_warning("Praised be Malum!"))
 						playsound(src,pick('sound/items/gem.ogg'), 100, FALSE)
 				else
