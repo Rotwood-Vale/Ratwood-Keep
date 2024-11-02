@@ -51,7 +51,7 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "E
 	skeletons = FALSE
 
 /datum/game_mode/chaosmode/check_finished()
-	var/ttime = world.time - SSticker.round_start_time
+	ttime = world.time - SSticker.round_start_time
 	if(roguefight)
 		if(ttime >= 30 MINUTES)
 			return TRUE
