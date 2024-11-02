@@ -1424,7 +1424,7 @@
 /area/rogue/indoors/town/manor)
 "bul" = (
 /obj/structure/mineral_door/wood/deadbolt{
-	lockid = "mason"
+	lockid = "artificer"
 	},
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/dwarfin)
@@ -3481,8 +3481,6 @@
 /obj/item/roguekey/walls,
 /obj/item/roguekey/blacksmith,
 /obj/item/roguekey/blacksmith,
-/obj/item/roguekey/mason,
-/obj/item/roguekey/mason,
 /obj/item/roguekey/church,
 /obj/item/roguekey/church,
 /turf/open/floor/rogue/tile/tilerg,
@@ -5422,7 +5420,7 @@
 "faB" = (
 /obj/structure/mineral_door/wood{
 	locked = 1;
-	lockid = "mason"
+	lockid = "artificer"
 	},
 /turf/open/floor/rogue/blocks/stonered/tiny,
 /area/rogue/indoors/town/dwarfin)
@@ -6969,7 +6967,6 @@
 "gvz" = (
 /obj/structure/rack/rogue,
 /obj/item/flashlight/flare/torch/lantern,
-/obj/item/roguekey/mason,
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/dwarfin)
 "gvE" = (
@@ -10981,7 +10978,7 @@
 /area/rogue/indoors/town/manor)
 "ksR" = (
 /obj/structure/bed/rogue,
-/obj/effect/landmark/start/mason,
+/obj/effect/landmark/start/artificer,
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/dwarfin)
 "ksW" = (
@@ -12976,10 +12973,6 @@
 /obj/item/organ/eyes,
 /obj/item/organ/tongue,
 /obj/item/organ/tongue,
-/obj/item/bodypart/r_leg/rprosthetic,
-/obj/item/bodypart/l_leg/rprosthetic,
-/obj/item/bodypart/l_arm/rprosthetic,
-/obj/item/bodypart/r_arm/rprosthetic,
 /obj/structure/closet/crate/chest{
 	lockid = "physician"
 	},
@@ -14451,7 +14444,7 @@
 /turf/open/floor/rogue/cobble,
 /area/rogue/indoors/town/church)
 "nHb" = (
-/obj/structure/fluff/walldeco/masonflag,
+/obj/structure/fluff/walldeco/artificerflag,
 /turf/closed/wall/mineral/rogue/craftstone,
 /area/rogue/indoors/town/dwarfin)
 "nHi" = (
@@ -17680,7 +17673,7 @@
 "qEz" = (
 /obj/structure/mineral_door/wood{
 	locked = 1;
-	lockid = "mason"
+	lockid = "artificer"
 	},
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/dwarfin)
@@ -25253,7 +25246,6 @@
 "xRx" = (
 /obj/structure/closet/crate/roguecloset,
 /obj/item/flashlight/flare/torch/lantern,
-/obj/item/roguekey/mason,
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/dwarfin)
 "xRO" = (
@@ -286208,7 +286200,7 @@ wbg
 wbg
 wbg
 wVI
-sco
+nHb
 jeU
 uAe
 uAe
@@ -286219,7 +286211,7 @@ rok
 bdS
 sco
 faB
-nHb
+sco
 sco
 tqH
 lyO
@@ -286619,7 +286611,7 @@ gsM
 sco
 sco
 sco
-nHb
+sco
 aKi
 aKi
 hlt
@@ -287431,7 +287423,7 @@ mtR
 lyO
 lyO
 nWy
-sco
+nHb
 wVI
 kDH
 xAt

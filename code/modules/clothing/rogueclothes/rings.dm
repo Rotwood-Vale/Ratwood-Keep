@@ -115,36 +115,36 @@
     icon_state = "g_ring_diamond"
     sellprice = 270
 
-//steel rings
+//silver rings
 /obj/item/clothing/ring/emeralds
     name = "gemerald ring"
     icon_state = "s_ring_emerald"
-    sellprice = 80
+    sellprice = 155
 
 /obj/item/clothing/ring/rubys
     name = "rontz ring"
     icon_state = "s_ring_ruby"
-    sellprice = 130
+    sellprice = 215
 
 /obj/item/clothing/ring/topazs
     name = "toper ring"
     icon_state = "s_ring_topaz"
-    sellprice = 65
+    sellprice = 140
 
 /obj/item/clothing/ring/quartzs
     name = "blortz ring"
     icon_state = "s_ring_quartz"
-    sellprice = 110
+    sellprice = 205
 
 /obj/item/clothing/ring/sapphires
     name = "saffira ring"
     icon_state = "s_ring_sapphire"
-    sellprice = 95
+    sellprice = 160
 
 /obj/item/clothing/ring/diamonds
     name = "dorpel ring"
     icon_state = "s_ring_diamond"
-    sellprice = 140
+    sellprice = 230
 
 /obj/item/clothing/ring/dragon_ring
 	name = "dragon ring"
