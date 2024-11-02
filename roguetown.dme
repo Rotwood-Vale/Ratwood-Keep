@@ -3574,6 +3574,7 @@
 #include "modular_azurepeak\code\datums\loadout.dm"
 #include "modular_azurepeak\code\datums\mind.dm"
 #include "modular_azurepeak\code\game\area\areas.dm"
+#include "modular_azurepeak\code\game\objects\effects\temporary_visuals\miracles.dm"
 #include "modular_azurepeak\code\game\objects\items\mundanities.dm"
 #include "modular_azurepeak\code\game\objects\items\spellbooks.dm"
 #include "modular_azurepeak\code\game\objects\items\surgery_bag.dm"
