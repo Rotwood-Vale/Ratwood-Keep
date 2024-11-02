@@ -85,7 +85,7 @@
 	icon = 'icons/roguetown/misc/tallstructure.dmi'
 	icon_state = "slamp1"
 	base_state = "slamp"
-	brightness = 12
+	brightness = 10.9
 	nightshift_allowed = FALSE
 	fueluse = 0
 	bulb_colour = "#58dd90"
