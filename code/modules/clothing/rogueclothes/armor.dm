@@ -472,7 +472,7 @@
 
 /obj/item/clothing/suit/roguetown/armor/workervest/Initialize()
 	color = pick("#94b4b6", "#ba8f9e", "#bd978c", "#92bd8c", "#c7c981")
-	..()
+	return ..()
 
 /obj/item/clothing/suit/roguetown/armor/silkcoat
 	name = "silk coat"

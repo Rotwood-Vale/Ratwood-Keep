@@ -277,7 +277,7 @@ GLOBAL_LIST_INIT(stone_personality_descs, list(
 
 /obj/item/natural/rock/Initialize()
 	icon_state = "stonebig[rand(1,2)]"
-	..()
+	. = ..()
 
 
 /obj/item/natural/rock/Crossed(mob/living/L)
