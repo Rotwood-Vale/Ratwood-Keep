@@ -39,11 +39,11 @@
 		)
 	specstats = list(
 		"strength" = 0,
-		"perception" = 1,
+		"perception" = 0,
 		"intelligence" = 0,
-		"constitution" = -1,
-		"endurance" = -1,
-		"speed" = 2,
+		"constitution" = 0,
+		"endurance" = 0,
+		"speed" = 1,
 		"fortune" = 0
 		)
 	enflamed_icon = "widefire"

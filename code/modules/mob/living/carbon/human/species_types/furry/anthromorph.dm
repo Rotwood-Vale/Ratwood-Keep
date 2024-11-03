@@ -36,11 +36,11 @@
 		OFFSET_SHIRT_F = list(0,0), OFFSET_ARMOR_F = list(0,0), OFFSET_UNDIES_F = list(0,0), \
 		)
 	specstats = list(
-		"strength" = 0,
+		"strength" = 1,
 		"perception" = 0,
 		"intelligence" = 0,
 		"constitution" = 0,
-		"endurance" = 1,
+		"endurance" = 0,
 		"speed" = 0,
 		"fortune" = 0
 		)

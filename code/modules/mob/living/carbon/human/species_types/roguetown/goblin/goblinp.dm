@@ -55,7 +55,7 @@
 		"constitution" = 0, 
 		"endurance" = 0, 
 		"speed" = 0, 
-		"fortune" = 0
+		"fortune" = 1
 		)
 	enflamed_icon = "widefire"
 	attack_verb = "slash"

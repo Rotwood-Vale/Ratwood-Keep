@@ -43,12 +43,12 @@
 	OFFSET_NECK_F = list(0,1), OFFSET_MOUTH_F = list(0,1), OFFSET_PANTS_F = list(0,1), \
 	OFFSET_SHIRT_F = list(0,1), OFFSET_ARMOR_F = list(0,1), OFFSET_UNDIES_F = list(0,1))
 	specstats = list(
-		"strength" = 2,
+		"strength" = 1,
 		"perception" = 0,
-		"intelligence" = -2,
-		"constitution" = 2,
-		"endurance" = 1,
-		"speed" = -2,
+		"intelligence" = 0,
+		"constitution" = 0,
+		"endurance" = 0,
+		"speed" = 0,
 		"fortune" = 0
 		)
 	specstats_m = null

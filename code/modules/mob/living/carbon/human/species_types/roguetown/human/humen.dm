@@ -53,10 +53,10 @@
 		"fortune" = 0
 		)
 	specstats_f = list(
-		"intelligence" = 1,
-		"constitution" = -1,
-		"strength" = -1,
-		"speed" = 1,
+		"intelligence" = 0,
+		"constitution" = 0,
+		"strength" = 0,
+		"speed" = 0,
 	)
 	enflamed_icon = "widefire"
 	customizers = list(
