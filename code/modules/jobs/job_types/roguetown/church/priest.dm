@@ -51,8 +51,7 @@
 		H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 5, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/polearms, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 6, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/alchemy, 4, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/medicine, 5, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/treatment, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/magic/holy, 5, TRUE)
 		if(H.age == AGE_OLD)
 			H.mind.adjust_skillrank(/datum/skill/magic/holy, 1, TRUE)
@@ -119,6 +118,7 @@
 		removeomen(OMEN_NOLORD)
 		say("By the authority of the gods, I pronounce you [SSticker.rulertype] of Rockhill!")
 		priority_announce("[real_name] the [dispjob] has named [HU.real_name] the [SSticker.rulertype] of Rockhill!", title = "Long Live [HU.real_name]!", sound = 'sound/misc/bell.ogg')
+		TITLE_LORD = SSticker.rulertype
 
 /mob/living/carbon/human/proc/churchexcommunicate()
 	set name = "Excommunicate"

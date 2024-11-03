@@ -145,17 +145,9 @@
 	color = CLOTHING_RED
 	detail_color = CLOTHING_WHITE
 
-/obj/item/clothing/cloak/tabard/crusader/astrata
-	color = "#9B7538"
-	detail_color = CLOTHING_WHITE
-
 /obj/item/clothing/cloak/tabard/crusader/dendor
 	color = "#4B5637"
 	detail_color = "#3D1D1C"
-
-/obj/item/clothing/cloak/tabard/crusader/necra
-	color = "#222223"
-	detail_color = "#CACBC5"
 
 /obj/item/clothing/cloak/tabard/crusader/pestra
 	color = CLOTHING_WHITE
@@ -878,6 +870,23 @@
 	w_class = WEIGHT_CLASS_SMALL
 	salvage_amount = 1
 
+/obj/item/clothing/cloak/half/ComponentInitialize()
+	. = ..()
+	AddComponent(/datum/component/storage/concrete)
+	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
+	if(STR)
+		STR.max_combined_w_class = 3
+		STR.max_w_class = WEIGHT_CLASS_NORMAL
+		STR.max_items = 1
+
+/obj/item/clothing/cloak/half/dropped(mob/living/carbon/human/user)
+	..()
+	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
+	if(STR)
+		var/list/things = STR.contents()
+		for(var/obj/item/I in things)
+			STR.remove_from_storage(I, get_turf(src))
+
 /obj/item/clothing/cloak/half/brown
 	color = CLOTHING_BROWN
 
@@ -1071,3 +1080,33 @@
 /obj/item/clothing/cloak/stabard/guardhood/Destroy()
 	GLOB.lordcolor -= src
 	return ..()
+
+///////////////////////////
+///                     ///
+///   TEMPLAR CLOAKS    ///
+///                     ///
+///////////////////////////
+
+/obj/item/clothing/cloak/templar/astratan
+	mob_overlay_icon = 'icons/roguetown/clothing/onmob/cloaks.dmi'
+	alternate_worn_layer = TABARD_LAYER
+	boobed = FALSE
+	name = "astratan tabard"
+	desc = "The washed out golds of an asratan crusader adorn these fine robes."
+	icon_state = "astratatabard"
+
+/obj/item/clothing/cloak/templar/malummite
+	mob_overlay_icon = 'icons/roguetown/clothing/onmob/cloaks.dmi'
+	alternate_worn_layer = TABARD_LAYER
+	boobed = FALSE
+	name = "malummite tabard"
+	desc = "Light blacks and greys, with a tinge of red, the everlasting fire of Malum's iron hammer as it strikes."
+	icon_state = "malumtabard"
+
+/obj/item/clothing/cloak/templar/necran
+	mob_overlay_icon = 'icons/roguetown/clothing/onmob/cloaks.dmi'
+	alternate_worn_layer = TABARD_LAYER
+	boobed = FALSE
+	name = "necran tabard"
+	desc = "Deep dark blacks, swallowing all light as if the night itself."
+	icon_state = "necratabard"
