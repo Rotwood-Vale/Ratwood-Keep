@@ -369,7 +369,6 @@
 	sellprice = 200
 	resistance_flags = FIRE_PROOF | ACID_PROOF
 	anvilrepair = /datum/skill/craft/blacksmithing
-	clothing_flags = CANT_SLEEP_IN
 	sewrepair = FALSE
 
 /obj/item/clothing/head/roguetown/crown/serpcrown
@@ -473,7 +472,6 @@
 	max_integrity = 200
 	w_class = WEIGHT_CLASS_NORMAL
 	armor_class = ARMOR_CLASS_LIGHT
-	clothing_flags = CANT_SLEEP_IN
 	resistance_flags = FIRE_PROOF
 	sewrepair = FALSE
 
