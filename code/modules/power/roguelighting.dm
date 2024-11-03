@@ -83,7 +83,7 @@
 
 /obj/machinery/light/roguestreet
 	icon = 'icons/roguetown/misc/tallstructure.dmi'
-	icon_state = "slamp1"
+	icon_state = "slamp1_nozap"
 	base_state = "slamp"
 	brightness = 10.9
 	nightshift_allowed = FALSE
@@ -96,7 +96,7 @@
 
 /obj/machinery/light/roguestreet/midlamp
 	icon = 'icons/roguetown/misc/64x64.dmi'
-	icon_state = "midlamp1"
+	icon_state = "midlamp1_nozap"
 	base_state = "midlamp"
 	pixel_x = -16
 	density = TRUE
@@ -114,7 +114,7 @@
 
 /obj/machinery/light/roguestreet/update_icon()
 	if(on)
-		icon_state = "[base_state]1"
+		icon_state = "[base_state]1_nozap"
 	else
 		icon_state = "[base_state]0"
 
@@ -129,12 +129,6 @@
 	GLOB.streetlamp_list += src
 	update_icon()
 	. = ..()
-
-/obj/machinery/light/roguestreet/update_icon()
-	if(on)
-		icon_state = "[base_state]1"
-	else
-		icon_state = "[base_state]0"
 
 //fires
 /obj/machinery/light/rogue
