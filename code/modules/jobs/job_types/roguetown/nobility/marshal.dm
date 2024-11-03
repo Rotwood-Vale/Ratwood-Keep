@@ -121,13 +121,13 @@
 	var/inputty = input("Outlaw a person", "MARTIAL LAW") as text|null
 	if(inputty)
 		if(hasomen(OMEN_NOLORD))
-			make_outlaw(inputty, title)
+			make_outlaw(inputty)
 		else
 			var/lord = find_lord()
 			if(lord)
 				INVOKE_ASYNC(GLOBAL_PROC, GLOBAL_PROC_REF(lord_outlaw_requested), src, lord, inputty)
 			else
-				make_outlaw(inputty, title)
+				make_outlaw(inputty)
 				
 /proc/find_lord(required_stat = CONSCIOUS)
 	var/mob/living/lord

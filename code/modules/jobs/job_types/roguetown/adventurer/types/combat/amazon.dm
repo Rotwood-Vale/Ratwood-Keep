@@ -24,7 +24,7 @@
 	H.mind.adjust_skillrank(/datum/skill/misc/climbing, 2, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/riding, 2, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/athletics, 2, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/misc/medicine, 1, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/misc/treatment, 1, TRUE)
 	belt = /obj/item/storage/belt/rogue/leather
 	neck = /obj/item/storage/belt/rogue/pouch/coins/poor
 	beltl = /obj/item/rogueweapon/huntingknife
@@ -51,7 +51,7 @@
 	H.change_stat("perception", 1)
 	H.change_stat("endurance", 3)
 	H.change_stat("speed", 1)
-	if(H.wear_mask) //for stupid retards with bad eyes
+	if(H.wear_mask) //for stupid stupid with bad eyes
 		var/obj/I = H.wear_mask
 		H.dropItemToGround(H.wear_mask, TRUE)
 		qdel(I)
