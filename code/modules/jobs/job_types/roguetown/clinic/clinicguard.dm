@@ -24,7 +24,6 @@
 	cloak = /obj/item/clothing/cloak/raincloak/mortus
 	head = /obj/item/clothing/head/roguetown/helmet/bandana
 	shirt = /obj/item/clothing/suit/roguetown/armor/gambeson
-	beltr = /obj/item/rogueweapon/sword/short
 	wrists = /obj/item/clothing/wrists/roguetown/bracers
 	shoes = /obj/item/clothing/shoes/roguetown/armor
 	neck = /obj/item/clothing/neck/roguetown/chaincoif/iron
