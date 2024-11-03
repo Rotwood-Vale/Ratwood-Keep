@@ -34,7 +34,7 @@
 
 
 <h1>
-	<a href="https://github.com/Rotwood-Vale/Ratwood-Keep/blob/main/ContributionGuidelines.md">
+	<a href="https://github.com/Rotwood-Vale/Ratwood-Keep/blob/main/CONTRIBUTING.md">
 		Contribution Guidelines
 	</a>
 </h1>
