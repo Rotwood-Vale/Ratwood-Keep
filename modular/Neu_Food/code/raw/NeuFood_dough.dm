@@ -262,11 +262,11 @@
 	name = "raw hardtack"
 	desc = "Doughy, soft, unacceptable."
 	icon_state = "raw_tack"
-	cooked_type = /obj/item/reagent_containers/food/snacks/rogue/crackerscooked
+	cooked_type = /obj/item/reagent_containers/food/snacks/rogue/foodbase/hardtack_raw/cooked
 	w_class = WEIGHT_CLASS_NORMAL
 	eat_effect = null
 
-/obj/item/reagent_containers/food/snacks/rogue/crackerscooked
+/obj/item/reagent_containers/food/snacks/rogue/foodbase/hardtack_raw/cooked
 	name = "hardtack"
 	desc = "Very, very hard and dry."
 	icon_state = "tack6"
@@ -276,7 +276,7 @@
 	bitesize = 6
 	rotprocess = null
 
-/obj/item/reagent_containers/food/snacks/rogue/crackerscooked/On_Consume(mob/living/eater)
+/obj/item/reagent_containers/food/snacks/rogue/foodbase/hardtack_raw/cooked/On_Consume(mob/living/eater)
 	..()
 	if(bitecount == 1)
 		icon_state = "tack5"
@@ -288,6 +288,8 @@
 		icon_state = "tack2"
 	if(bitecount == 5)
 		icon_state = "tack1"
+	else
+		icon_state = "tack6"
 
 
 /*	.................   Bread   ................... */

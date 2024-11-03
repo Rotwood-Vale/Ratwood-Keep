@@ -155,33 +155,33 @@
 				/obj/item/rope = 1,
 				/obj/item/rogueweapon/thresher = 1)
 	craftdiff = 3
-
-/datum/crafting_recipe/roguetown/larmprosthetic_w
-	name = "wood arm (L)"
-	result = list(/obj/item/bodypart/l_arm/rprosthetic)
+	
+/datum/crafting_recipe/roguetown/wood/prosthetic/arm_left
+	name = "wooden left arm"
+	result = list(/obj/item/bodypart/l_arm/prosthetic/wood)
 	reqs = list(/obj/item/grown/log/tree/small = 1,
 	/obj/item/roguegear = 1)
-	skillcraft = /datum/skill/craft/carpentry
+	skillcraft = /datum/skill/craft/engineering
 	craftdiff = 3
 
-/datum/crafting_recipe/roguetown/rarmprosthetic_w
-	name = "wood arm (R)"
-	result = list(/obj/item/bodypart/r_arm/rprosthetic)
+/datum/crafting_recipe/roguetown/wood/prosthetic/arm_right
+	name = "wooden right arm"
+	result = list(/obj/item/bodypart/r_arm/prosthetic/wood)
 	reqs = list(/obj/item/grown/log/tree/small = 1,
 	/obj/item/roguegear = 1)
-	skillcraft = /datum/skill/craft/carpentry
+	skillcraft = /datum/skill/craft/engineering
 	craftdiff = 3
 
-/datum/crafting_recipe/roguetown/rlegprosthetic_w
-	name = "peg leg (R)"
-	result = list(/obj/item/bodypart/r_leg/rprosthetic)
+/datum/crafting_recipe/roguetown/wood/prosthetic/leg_right
+	name = "wooden right leg"
+	result = list(/obj/item/bodypart/r_leg/prosthetic/wood)
 	reqs = list(/obj/item/grown/log/tree/small = 1)
 	skillcraft = /datum/skill/craft/carpentry
 	craftdiff = 1
 
-/datum/crafting_recipe/roguetown/llegprosthetic_w
-	name = "peg_leg (L)"
-	result = list(/obj/item/bodypart/l_leg/rprosthetic)
+/datum/crafting_recipe/roguetown/wood/prosthetic/leg_left
+	name = "wooden left leg"
+	result = list(/obj/item/bodypart/l_leg/prosthetic/wood)
 	reqs = list(/obj/item/grown/log/tree/small = 1)
 	skillcraft = /datum/skill/craft/carpentry
 	craftdiff = 1
@@ -346,22 +346,6 @@
 
 	req_table = TRUE
 
-/datum/crafting_recipe/roguetown/mortar
-	name = "stone mortar"
-	result = /obj/item/reagent_containers/glass/mortar
-	reqs = list(/obj/item/natural/stone = 1)
-	tools = list(/obj/item/rogueweapon/huntingknife) // Intended to be either stone knife or steel hunting knife
-	craftdiff = 1
-	subtype_reqs = TRUE //Unsure if needed for stone knife to work, feel free to remove this if not.
-
-/datum/crafting_recipe/roguetown/pestle
-	name = "stone pestle"
-	result = /obj/item/pestle
-	reqs = list(/obj/item/natural/stone = 1)
-	tools = list(/obj/item/rogueweapon/huntingknife) // Intended to be either stone knife or steel hunting knife
-	craftdiff = 1
-	subtype_reqs = TRUE //Unsure if needed for stone knife to work, feel free to remove this if not.
-
 /obj/item/storage/roguebag/crafted
 	sellprice = 4
 
@@ -490,3 +474,16 @@
 				/obj/item/natural/fibers = 3)
 	skillcraft = /datum/skill/magic/druidic
 	craftdiff = 2 // druids & dendor clerics can craft
+
+// Woodcutting recipe
+
+/datum/crafting_recipe/roguetown/lumberjacking
+	skillcraft = /datum/skill/labor/lumberjacking
+	tools = list(/obj/item/rogueweapon/huntingknife = 1)
+
+/datum/crafting_recipe/roguetown/lumberjacking/cart_upgrade
+	name = "upgrade cog"
+	result = /obj/item/cart_upgrade/level_1
+	reqs = list(/obj/item/grown/log/tree/small = 2,
+				/obj/item/natural/stone = 1)
+	craftdiff = 2

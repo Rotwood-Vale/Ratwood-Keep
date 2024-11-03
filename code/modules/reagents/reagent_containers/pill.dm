@@ -1,19 +1,19 @@
 /obj/item/reagent_containers/pill
 	name = "pill"
 	desc = ""
-	icon = 'icons/obj/chemical.dmi'
-	icon_state = "pill"
-	item_state = "pill"
+	icon = 'icons/roguetown/items/surgery.dmi'
+	icon_state = "pillb"
+	item_state = "pillb"
 	lefthand_file = 'icons/mob/inhands/equipment/medical_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/equipment/medical_righthand.dmi'
 	possible_transfer_amounts = list()
 	volume = 50
-	grind_results = list()
+	grind_results = null
 	var/apply_type = INGEST
 	var/apply_method = "swallow"
 	var/rename_with_volume = FALSE
 	var/self_delay = 0 //pills are instant, this is because patches inheret their aplication from pills
-	var/dissolvable = TRUE
+	var/dissolvable = FALSE
 
 /obj/item/reagent_containers/pill/Initialize()
 	. = ..()
@@ -36,7 +36,8 @@
 		if(self_delay)
 			if(!do_mob(user, M, self_delay))
 				return FALSE
-		to_chat(M, span_notice("I [apply_method] [src]."))
+		to_chat(M, span_notice("I pop [src]."))
+		playsound(src, "sound/misc/pillpop.ogg", 100, TRUE)
 
 	else
 		M.visible_message(span_danger("[user] attempts to force [M] to [apply_method] [src]."), \
@@ -44,7 +45,8 @@
 		if(!do_mob(user, M))
 			return FALSE
 		M.visible_message(span_danger("[user] forces [M] to [apply_method] [src]."), \
-							span_danger("[user] forces you to [apply_method] [src]."))
+		span_danger("[user] forces you to [apply_method] [src]."))
+		playsound(src, "sound/misc/pillpop.ogg", 100, TRUE)
 
 	if(icon_state == "pill4" && prob(5)) //you take the red pill - you stay in Wonderland, and I show you how deep the rabbit hole goes
 		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), M, span_notice("[pick(strings(REDPILL_FILE, "redpill_questions"))]")), 50)
