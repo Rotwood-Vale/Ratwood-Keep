@@ -334,7 +334,7 @@ GLOBAL_LIST_INIT(stone_personality_descs, list(
 /obj/item/natural/whet
 	name = "whet stone"
 	icon_state = "whet"
-	desc = "A piece of rough smoothed down stone, better blade maintinance"
+	desc = "A piece of rough smoothed down stone, better blade maintenance"
 	gripped_intents = null
 	dropshrink = 0.75
 	possible_item_intents = list(INTENT_GENERIC)
