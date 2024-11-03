@@ -80,8 +80,8 @@
 		if(adjustable == CAN_CADJUST)
 			adjustable = CADJUSTED
 			icon_state = "[initial(icon_state)]_raised"
-			//flags_cover = null
-			//flags_inv = null
+			flags_cover = null
+			flags_inv = null
 			if(ishuman(user))
 				var/mob/living/carbon/H = user
 				H.update_inv_head()
