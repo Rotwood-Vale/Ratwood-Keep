@@ -119,6 +119,7 @@
 		removeomen(OMEN_NOLORD)
 		say("By the authority of the gods, I pronounce you [SSticker.rulertype] of Rockhill!")
 		priority_announce("[real_name] the [dispjob] has named [HU.real_name] the [SSticker.rulertype] of Rockhill!", title = "Long Live [HU.real_name]!", sound = 'sound/misc/bell.ogg')
+		TITLE_LORD = SSticker.rulertype
 
 /mob/living/carbon/human/proc/churchexcommunicate()
 	set name = "Excommunicate"
