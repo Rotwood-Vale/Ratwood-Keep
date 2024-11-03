@@ -92,7 +92,6 @@
 	experimental_onhip = TRUE
 	anvilrepair = /datum/skill/craft/blacksmithing
 	smeltresult = /obj/item/ingot/iron
-	clothing_flags = CANT_SLEEP_IN
 
 /obj/item/clothing/mask/rogue/facemask/hound
 	name = "iron hound mask"

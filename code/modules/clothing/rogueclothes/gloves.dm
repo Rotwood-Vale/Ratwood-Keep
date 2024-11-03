@@ -95,7 +95,6 @@
 	drop_sound = 'sound/foley/dropsound/armor_drop.ogg'
 	anvilrepair = /datum/skill/craft/blacksmithing
 	smeltresult = /obj/item/ingot/steel
-	clothing_flags = CANT_SLEEP_IN
 	sewrepair = FALSE
 
 /obj/item/clothing/gloves/roguetown/grenzelgloves
