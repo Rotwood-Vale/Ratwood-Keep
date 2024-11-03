@@ -1,7 +1,7 @@
 GLOBAL_LIST_EMPTY(outlawed_players)
 GLOBAL_LIST_EMPTY(lord_decrees)
 GLOBAL_LIST_INIT(laws_of_the_land, initialize_laws_of_the_land())
-/var/atom/TITLE_LORD = "Duke" //outside var to relay to all scomms if there is a Duke or Duchess
+/var/atom/TITLE_LORD = "Duke" //outside var to relay to all announcements if there is a Duke or Duchess
 
 /proc/initialize_laws_of_the_land()
 	var/list/laws = strings("laws_of_the_land.json", "lawsets")
