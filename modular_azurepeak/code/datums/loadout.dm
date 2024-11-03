@@ -14,7 +14,7 @@ GLOBAL_LIST_EMPTY(loadout_items)
 /datum/loadout_item/archercap
 	name = "Archer's cap"
 	path = /obj/item/clothing/head/roguetown/archercap
-	
+
 /datum/loadout_item/strawhat
 	name = "Straw Hat"
 	path = /obj/item/clothing/head/roguetown/strawhat
@@ -126,6 +126,10 @@ GLOBAL_LIST_EMPTY(loadout_items)
 /datum/loadout_item/straplessdress
 	name = "Strapless Dress"
 	path = /obj/item/clothing/suit/roguetown/shirt/dress/gen/strapless
+
+/datum/loadout_item/straplessdress
+	name = "Strapless Dress, alt"
+	path = /obj/item/clothing/suit/roguetown/shirt/dress/gen/strapless/alt
 
 /datum/loadout_item/leathervest
 	name = "Leather Vest"
