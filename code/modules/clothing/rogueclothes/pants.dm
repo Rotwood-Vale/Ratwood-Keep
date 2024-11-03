@@ -165,7 +165,6 @@
 	r_sleeve_status = SLEEVE_NOMOD
 	l_sleeve_status = SLEEVE_NOMOD
 	w_class = WEIGHT_CLASS_SMALL
-	clothing_flags = CANT_SLEEP_IN
 	resistance_flags = FIRE_PROOF
 
 /obj/item/clothing/under/roguetown/chainlegs/iron
@@ -194,7 +193,6 @@
 	r_sleeve_status = SLEEVE_NOMOD
 	l_sleeve_status = SLEEVE_NOMOD
 	w_class = WEIGHT_CLASS_BULKY
-	clothing_flags = CANT_SLEEP_IN
 	resistance_flags = FIRE_PROOF
 
 /obj/item/clothing/under/roguetown/loincloth
@@ -250,7 +248,6 @@
 	l_sleeve_status = SLEEVE_NOMOD
 	armor_class = ARMOR_CLASS_MEDIUM
 	w_class = WEIGHT_CLASS_NORMAL
-	clothing_flags = CANT_SLEEP_IN
 	resistance_flags = FIRE_PROOF
 	sewrepair = FALSE
 
