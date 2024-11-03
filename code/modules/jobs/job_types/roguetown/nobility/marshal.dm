@@ -115,7 +115,6 @@
 /mob/living/carbon/human/proc/request_outlaw()
 	set name = "Request Outlaw"
 	set category = "Martial Law"
-	var/title = src.get_role_title()
 	if(stat)
 		return
 	var/inputty = input("Outlaw a person", "MARTIAL LAW") as text|null
