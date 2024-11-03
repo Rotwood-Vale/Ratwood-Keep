@@ -4366,12 +4366,6 @@
 	},
 /turf/open/floor/rogue/cobble,
 /area/rogue/outdoors/town)
-"dXs" = (
-/obj/structure/stairs{
-	dir = 4
-	},
-/turf/closed,
-/area/rogue/indoors/town)
 "dXR" = (
 /obj/structure/stairs{
 	dir = 8
@@ -6531,7 +6525,7 @@
 	pixel_x = 32;
 	pixel_y = 0
 	},
-/turf/open/floor/carpet/royalblack,
+/turf/open/floor/rogue/carpet,
 /area/rogue/indoors/town)
 "fNc" = (
 /obj/structure/flora/roguegrass/bush,
@@ -10389,7 +10383,7 @@
 	},
 /obj/item/paper/scroll,
 /obj/item/natural/feather,
-/turf/closed,
+/turf/open/floor/carpet/royalblack,
 /area/rogue/indoors/town)
 "juj" = (
 /obj/item/storage/roguebag,
@@ -409919,7 +409913,7 @@ evo
 nAm
 nAm
 rTr
-dXs
+dZj
 evo
 oTD
 evo
