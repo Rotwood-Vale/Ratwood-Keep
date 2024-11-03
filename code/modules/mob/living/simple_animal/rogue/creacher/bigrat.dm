@@ -181,3 +181,59 @@
 			return "foreleg"
 	return ..()
 
+
+/mob/living/simple_animal/hostile/retaliate/rogue/dryad
+	icon = 'icons/roguetown/mob/monster/bigrat.dmi'
+	name = "Dryad"
+	icon_state = "rat"
+	icon_living = "rat"
+	icon_dead = "rat1"
+	gender = FEMALE
+	emote_hear = list("creaks.")
+	emote_see = list("twitches.")
+	speak_chance = 1
+	turns_per_move = 5
+	see_in_dark = 6
+	move_to_delay = 5
+	pixel_x = -16
+	pixel_y = -8
+	vision_range = 5
+	aggro_vision_range = 9
+	base_intents = list(/datum/intent/unarmed/claw, /datum/intent/simple/stab)
+	butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat/steak = 1,
+					/obj/item/natural/hide = 1) //Needs to be reworked
+	faction = list("nature")
+	mob_biotypes = MOB_ORGANIC|MOB_BEAST
+	attack_sound = 'sound/combat/newstuck.ogg'
+	health = 100
+	maxHealth = 100
+	melee_damage_lower = 18
+	melee_damage_upper = 25
+	environment_smash = ENVIRONMENT_SMASH_STRUCTURES
+	retreat_distance = 0
+	minimum_distance = 0
+	milkies = FALSE
+	food_type = list(/obj/item/reagent_containers/food/snacks, /obj/item/bodypart, /obj/item/organ)
+	footstep_type = FOOTSTEP_WOOD_CLAW
+	pooptype = null
+	STACON = 8
+	STASTR = 10
+	STASPD = 13
+	can_buckle = TRUE
+	buckle_lying = 0
+	deaggroprob = 0
+	defprob = 40
+	defdrain = 10
+	attack_same = 1
+	retreat_health = 0
+	aggressive = 1
+	stat_attack = CONSCIOUS
+	remains_type = /obj/effect/decal/remains/dryad
+
+/obj/effect/decal/remains/dryad
+	name = "dryad remains"
+	gender = PLURAL
+	icon_state = "ratbones"
+	icon = 'icons/roguetown/mob/monster/bigrat.dmi'
+	pixel_x = -16
+	pixel_y = -8

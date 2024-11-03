@@ -26,7 +26,14 @@
 			return
 		lumber_amount = rand(minimum, max(round(skill_level), minimum))
 		for(var/i = 0; i < lumber_amount; i++)
-			new lumber(get_turf(src))
+			if(prob(skill_level))
+				new /obj/item/grown/log/tree/small/essence(get_turf(src))
+				if(!sound_played)
+					sound_played = TRUE
+					to_chat(user, span_warning("Dendor watches over us..."))
+					playsound(src,pick('sound/items/gem.ogg'), 100, FALSE)
+			else
+				new lumber(get_turf(src))
 		if(!skill_level)
 			to_chat(user, span_info("I could have gotten more timber were I more skilled..."))
 		user.mind.add_sleep_experience(/datum/skill/labor/lumberjacking, (user.STAINT*0.5))
@@ -47,6 +54,23 @@
 	w_class = WEIGHT_CLASS_BULKY
 	smeltresult = /obj/item/rogueore/coal
 	lumber_amount = 0
+
+/obj/item/grown/log/tree/small/plank
+	name = "wood plank"
+	desc = "A wooden plank ready to be worked."
+	icon_state = "wplank"
+	static_debris = null
+	firefuel = 5 MINUTES
+	w_class = WEIGHT_CLASS_NORMAL
+	smeltresult = /obj/item/ash
+
+/obj/item/grown/log/tree/small/essence
+	name = "essence of lumber"
+	desc = "A mystical essense embued with the power of Dendor. Very good source of fuel."
+	icon_state = "lessence"
+	static_debris = null
+	firefuel = 60 MINUTES // Extremely poweful fuel.
+	w_class = WEIGHT_CLASS_SMALL
 
 /obj/item/grown/log/tree/bowpartial
 	name = "unstrung bow"
