@@ -1,7 +1,7 @@
 /////// SHITCODE MADE BY MORIBUND and modularized so you dickless pricks can cannibalize and swipe it easier. Sprites for this by SINNERPEN and INFRARED BARON. payed for by dragon lee. you gonna swip this shit credit thos due.
 
 
-
+//// also I hate all of you. numberfuck this to death because you are too fucking stupid to code something from scratch. 
 
 ///////////////////////////////////////////////////////-----------------------------------------doc surgeries and functions---------------------------------------//////////////////////////////////////////////////
 
@@ -62,7 +62,6 @@
 	sound = 'sound/combat/newstuck.ogg'
 	associated_skill = /datum/skill/misc/treatment
 	antimagic_allowed = TRUE
-	chargetime = 100
 	charge_max = 1 MINUTES
 	miracle = FALSE
 	devotion_cost = 0
@@ -77,7 +76,6 @@
 	sound = 'sound/combat/newstuck.ogg'
 	associated_skill = /datum/skill/misc/treatment
 	antimagic_allowed = TRUE
-	chargetime = 100
 	charge_max = 1 MINUTES
 	miracle = FALSE
 	devotion_cost = 0
@@ -243,9 +241,8 @@
 		var/mob/living/carbon/target = targets[1]
 		var/obj/item/bodypart/BPA = target.get_bodypart(BODY_ZONE_R_ARM)
 		BPA.add_wound(/datum/wound/artery/)
-		target.visible_message(span_danger("[user] slashes [target]'s artery open letting the toxins and other impurities bleed and drain from them. they might want to stitch that soon."), span_notice("I've been cut by [user] I feel the toxins leaving my body with each heart beat. im getting light headed...."))
+		target.visible_message(span_danger("[user] drains the reagents and toxins from [target]"))
 		target.adjustToxLoss(-999)
-		target.adjustBruteLoss(30, BRUTE, BPA)
 		target.reagents.remove_all_type(/datum/reagent, 9999)
 		target.emote("scream")
 		return TRUE
@@ -1386,100 +1383,6 @@
 	amount = 3
 	firefuel = 60 MINUTES
 
-/*/obj/item/splint
-	name = "splint"
-	desc = "A splint used to stabilize fractures and dislocations, and stop bleeding."
-	icon = 'icons/obj/splint.dmi'
-	item_state = "splint"
-
-
-/obj/item/natural/acid																		////// DO NOT LOOK AT MY SHAME. seriously dont I will return to this when I dont wanna burn my house down over it.
-	name = "acidic salve"
-	desc = "A salve that can cauterize wounds and remove early-stage infections."
-	icon_state = "acid_closed"
-	icon = 'icons/roguetown/items/surgery.dmi'
-	w_class = WEIGHT_CLASS_TINY
-	resistance_flags = FLAMMABLE
-	slot_flags = ITEM_SLOT_BELT
-	var/charge_amt = 3
-	var/max_charge = 3
-
-/obj/item/natural/acid/examine()
-	. = ..()
-	if(charge_amt > 0)
-		. += span_bold("It has [charge_amt] uses left.")
-	else
-		. += span_bold("It has no uses left.")
-
-/obj/item/natural/acid/Initialize()
-	. = ..()
-	update_icon()
-
-/obj/item/natural/acid/update_icon()
-	if(charge_amt == max_charge)
-		icon_state = "acid_closed"
-	else if(charge_amt == 2)
-		icon_state = "acid_1"
-	else if(charge_amt == 1)
-		icon_state = "acid_2"
-	else
-		icon_state = "acid_empty"
-
-/obj/item/natural/acid/use(mob/user)
-	if(charge_amt <= 0)
-		to_chat(user, span_warning("[src] is out of charges."))
-		return FALSE
-	charge_amt -= 1
-	update_icon()
-	return TRUE
-
-/obj/item/natural/acid/attack(mob/living/carbon/human/M, mob/user)
-	if(use(user))
-		cauterize_or_cure(M, user)
-
-/obj/item/natural/acid/proc/cauterize_or_cure(mob/living/carbon/human/M, mob/user)
-	if(!M)
-		to_chat(user, span_warning("There is no one to treat."))
-		return
-	var/treated = FALSE
-	for(var/datum/wound/W in M.get_wounds())
-		if(W.zombie_infection_timer)
-			deltimer(W.zombie_infection_timer)
-			W.zombie_infection_timer = null
-			to_chat(M, span_notice("You feel the infection being burned away by the salve."))
-			treated = TRUE
-			break
-		if(W.werewolf_infection_timer)
-			deltimer(W.werewolf_infection_timer)
-			W.werewolf_infection_timer = null
-			to_chat(M, span_notice("You feel the infection being burned away by the salve."))
-			treated = TRUE
-			break
-	if(treated)
-		return
-	var/obj/item/bodypart/affecting = M.get_bodypart(check_zone(user.zone_selected))
-	if(affecting)
-		var/list/wounds = affecting.get_wounds()
-		if(wounds.len)
-			for(var/datum/wound/W in wounds)
-				if(W.can_cauterize)
-					var/used_time = 50
-					if(M.mind)
-						used_time -= (M.mind.get_skill_level(/datum/skill/misc/treatment) * 10)
-					playsound(loc, 'sound/items/firelight.ogg', 100, FALSE)
-					if(!do_mob(user, M, used_time))
-						return
-					W.cauterize_wound(src)
-					M.update_damage_overlays()
-					if(M == user)
-						user.visible_message(span_notice("You apply the salve to cauterize [user.p_their()] [affecting]."), span_notice("I apply the salve to cauterize my [affecting]."))
-					else
-						user.visible_message(span_notice("You apply the salve to cauterize [M]'s [affecting]."), span_notice("I apply the salve to cauterize [M]'s [affecting]."))
-					return
-	to_chat(user, span_warning("There is no suitable wound to cauterize or infection to cure."))
-*/
-
-
 ///////////////////////////////////////////////////------------------------------------alembic/brewing--------------------------------/////////////////////////////////////////
 
 // I'm going to hate every moment of working on this.
@@ -1744,20 +1647,25 @@
 
 
 /obj/item/rogueweapon/mace/pipe        ////////////// reskin of iron mace but bigger
-	possible_item_intents = list(/datum/intent/mace/strike, /datum/intent/mace/smash)
+	possible_item_intents = list(/datum/intent/mace/strike)
 	gripped_intents = list(/datum/intent/mace/strike, /datum/intent/mace/smash)
 	name = "pipe"
 	desc = "Beloved problem solver."
 	icon_state = "leadpipe"
 	icon = 'icons/roguetown/weapons/64.dmi'
+	smeltresult = /obj/item/ash
+	parrysound = "parrywood"
+	swingsound = BLUNTWOOSH_MED
+	wlength = WLENGTH_LONG
+	w_class = WEIGHT_CLASS_BULKY
+	minstr = 7
+	wdefense = 3
 	pixel_y = -16
 	pixel_x = -16
-	bigboy = TRUE
-	gripsprite = TRUE
 	inhand_x_dimension = 64
 	inhand_y_dimension = 64
-	parrysound = list('sound/combat/parry/parrygen.ogg')
-	swingsound = BLUNTWOOSH_MED
+	bigboy = TRUE
+	gripsprite = TRUE
 
 /obj/item/rogueweapon/huntingknife/skin                                    ///////////// reSKINNED hunting knife
 	name = "skinning knife"
