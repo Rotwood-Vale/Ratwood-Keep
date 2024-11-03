@@ -198,6 +198,11 @@
 #define DEATHKNIGHT (1<<1)
 #define SKELETON	(1<<2)
 
+#define CLINIC		(1<<10)
+
+#define CLINICGUARD	(1<<0)
+#define CLINICDOC	(1<<1)
+
 #define JCOLOR_NOBLE "#aa83b9"
 #define JCOLOR_COURTIER "#81adc8"
 #define JCOLOR_CHURCH "#c0ba8d"
@@ -205,6 +210,7 @@
 #define JCOLOR_YEOMAN "#819e82"
 #define JCOLOR_PEASANT "#b09262"
 #define JCOLOR_MERCENARY "#c86e3a"
+#define JCOLOR_CLINIC "#d7f6ca"
 
 
 // job display orders //
@@ -293,6 +299,9 @@
 #define JDO_GOBLINGUARD 38
 #define JDO_GOBLINSMITH 39
 
+#define JDO_CLINICGUARD 40
+#define JDO_CLINICDOC 41
+
 #define MANOR_ROLES \
 	/datum/job/roguetown/jester,\
 	/datum/job/roguetown/veteran,\
@@ -370,3 +379,9 @@
 	/datum/job/roguetown/manorguard,\
 	/datum/job/roguetown/sheriff,\
 	/datum/job/roguetown/guardsman
+
+
+#define CLINIC_ROLES \
+	/datum/job/roguetown/clinicguard,\
+	/datum/job/roguetown/clinicdoctor
+	

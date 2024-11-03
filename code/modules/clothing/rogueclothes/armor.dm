@@ -523,6 +523,7 @@
 	name = "Blacksteel Plate Armor"
 	desc = "A suit of Full Plate smithed of durable blacksteel."
 	body_parts_covered = CHEST|GROIN|VITALS|LEGS|ARMS
+	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT, BCLASS_TWIST)
 	icon = 'icons/roguetown/clothing/special/blkknight.dmi'
 	mob_overlay_icon = 'icons/roguetown/clothing/special/onmob/blkknight.dmi'
 	icon_state = "bkarmor"
@@ -546,6 +547,7 @@
 	name = "Blacksteel Cuirass"
 	desc = "A basic cuirass forged from blacksteel. It's somewhat more durable than regular steel."
 	body_parts_covered = CHEST|VITALS
+	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT, BCLASS_TWIST)
 	icon_state = "grenzelcuirass"
 	item_state = "grenzelcuirass"
 	sleeved = 'icons/roguetown/clothing/onmob/helpers/stonekeep_merc.dmi'

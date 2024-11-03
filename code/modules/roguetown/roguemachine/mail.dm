@@ -91,7 +91,7 @@
 			STR.handle_item_insertion(P, prevent_warning=TRUE)
 			X.new_mail=TRUE
 			X.update_icon()
-			send_ooc_note("New letter from <b>[sentfrom].</b>", name = send2place)
+			send_ooc_note(span_userdanger("New letter from <b>[sentfrom].</b>"), name = send2place)
 		else
 			to_chat(user, span_warning("The master of mails has perished?"))
 			return

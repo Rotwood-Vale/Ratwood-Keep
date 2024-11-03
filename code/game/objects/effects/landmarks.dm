@@ -313,6 +313,24 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	name = "Butcher"
 	icon_state = "arrow"
 
+/obj/effect/landmark/start/dguard
+	name = "Clinic Guard"
+	icon_state = "arrow"
+
+/obj/effect/landmark/start/doctor
+	name = "Clinic Physician"
+	icon_state = "arrow"
+
+/obj/effect/landmark/start/dguardlate
+	name = "Clinic Guard"
+	icon_state = "arrow"
+	delete_after_roundstart = FALSE
+
+/obj/effect/landmark/start/doctorlate
+	name = "Clinic Physician"
+	icon_state = "arrow"
+	delete_after_roundstart = FALSE
+
 /obj/effect/landmark/start/cook
 	name = "Cook"
 	icon_state = "arrow"
