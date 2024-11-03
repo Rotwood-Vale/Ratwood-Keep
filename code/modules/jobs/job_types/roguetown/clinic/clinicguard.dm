@@ -33,7 +33,7 @@
 	belt = /obj/item/storage/belt/rogue/leather
 	armor = /obj/item/clothing/suit/roguetown/armor/brigandine/light
 	backl = /obj/item/storage/backpack/rogue/backpack/rucksack
-	beltl = /obj/item/rogueweapon/mace/warhammer
+	beltl = /obj/item/rogueweapon/mace/cudgel
 	backpack_contents = list( /obj/item/storage/fancy/ifak = 1, /obj/item/storage/belt/rogue/pouch/coins/mid, /obj/item/rogueweapon/huntingknife, /obj/item/roguekey/clinic)
 
 	ADD_TRAIT(H, TRAIT_NOSTINK, "[type]")
@@ -45,7 +45,6 @@
 		H.mind.adjust_skillrank(/datum/skill/combat/maces, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 3, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/combat/swords, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/treatment, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
