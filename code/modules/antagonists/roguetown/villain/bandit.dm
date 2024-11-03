@@ -10,7 +10,6 @@
 		"I WILL NOT LIVE IN YOUR WALLS!",
 		"I WILL NOT FOLLOW YOUR RULES!",
 	)
-	rogue_enabled = TRUE
 	var/tri_amt
 	var/contrib
 
@@ -108,4 +107,3 @@
 		to_chat(owner.current, span_redtext("I've failed to satisfy my greed."))
 		if(owner.current)
 			owner.current.playsound_local(get_turf(owner.current), 'sound/misc/fail.ogg', 100, FALSE, pressure_affected = FALSE)
-

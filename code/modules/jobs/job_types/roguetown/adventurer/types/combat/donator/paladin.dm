@@ -68,7 +68,7 @@
 			wrists = /obj/item/clothing/wrists/roguetown/bracers
 			pants = /obj/item/clothing/under/roguetown/chainlegs
 			shoes = /obj/item/clothing/shoes/roguetown/armor/leather
-			belt = /obj/item/storage/belt/rogue/leather/hand
+			belt = /obj/item/storage/belt/rogue/leather/steel
 			beltl = /obj/item/storage/belt/rogue/pouch/coins/poor
 			id = /obj/item/clothing/ring/silver
 			backpack_contents = list(/obj/item/rogueweapon/huntingknife)
@@ -125,7 +125,7 @@
 			wrists = /obj/item/clothing/wrists/roguetown/bracers
 			pants = /obj/item/clothing/under/roguetown/chainlegs
 			shoes = /obj/item/clothing/shoes/roguetown/armor/leather
-			belt = /obj/item/storage/belt/rogue/leather/hand
+			belt = /obj/item/storage/belt/rogue/leather/steel
 			beltl = /obj/item/storage/belt/rogue/pouch/coins/poor
 			id = /obj/item/clothing/ring/silver
 			backpack_contents = list(/obj/item/rogueweapon/huntingknife)

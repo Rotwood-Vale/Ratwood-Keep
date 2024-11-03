@@ -297,8 +297,8 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	name = "Alchemist"
 	icon_state = "arrow"
 
-/obj/effect/landmark/start/mason
-	name = "Mason"
+/obj/effect/landmark/start/artificer
+	name = "Artificer"
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/scribe
@@ -312,6 +312,24 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 /obj/effect/landmark/start/beastmonger
 	name = "Butcher"
 	icon_state = "arrow"
+
+/obj/effect/landmark/start/dguard
+	name = "Clinic Guard"
+	icon_state = "arrow"
+
+/obj/effect/landmark/start/doctor
+	name = "Clinic Physician"
+	icon_state = "arrow"
+
+/obj/effect/landmark/start/dguardlate
+	name = "Clinic Guard"
+	icon_state = "arrow"
+	delete_after_roundstart = FALSE
+
+/obj/effect/landmark/start/doctorlate
+	name = "Clinic Physician"
+	icon_state = "arrow"
+	delete_after_roundstart = FALSE
 
 /obj/effect/landmark/start/cook
 	name = "Cook"
@@ -820,7 +838,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark/start/new_player)
 /obj/effect/landmark/underworldcoin
 	name = "ferryman coin"
 
-/obj/effect/landmark/underworldsafe // To prevent demons spawn camping will save a lot of ear rape.
+/obj/effect/landmark/underworldsafe // To prevent demons spawn camping.
 	name = "safe zone"
 
 GLOBAL_LIST_EMPTY(travel_tile_locations)

@@ -46,7 +46,7 @@
 		H.mind.adjust_skillrank(/datum/skill/misc/sewing, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/labor/butchering, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/craft/traps, 2, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/medicine, 2, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/treatment, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/whipsflails, rand(4,5), TRUE)
 		H.change_stat("intelligence", 1)

@@ -98,7 +98,7 @@ GLOBAL_VAR_INIT(maniac_highlander, 0) // THERE CAN ONLY BE ONE!
 			owner.adjust_skillrank(/datum/skill/combat/knives, 6, TRUE)
 			owner.adjust_skillrank(/datum/skill/combat/wrestling, 5, TRUE)
 			owner.adjust_skillrank(/datum/skill/combat/unarmed, 4, TRUE)
-			owner.adjust_skillrank_up_to(/datum/skill/misc/medicine, 3, TRUE) 
+			owner.adjust_skillrank_up_to(/datum/skill/misc/treatment, 3, TRUE) 
 			STASTR = dreamer.STASTR
 			STACON = dreamer.STACON
 			STAEND = dreamer.STAEND
