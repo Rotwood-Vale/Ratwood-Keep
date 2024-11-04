@@ -44,24 +44,24 @@
 
 /datum/supply_pack/rogue/Sellsword/bracers
 	name = "Steel Bracers"
-	cost = 20
+	cost = 10
 	contains = list(/obj/item/clothing/wrists/roguetown/bracers)
 
 
 /datum/supply_pack/rogue/Sellsword/chaingauntlets
 	name = "Steel Chain Gauntlets"
-	cost = 20
+	cost = 10
 	contains = list(/obj/item/clothing/gloves/roguetown/chain)
 
 /datum/supply_pack/rogue/Sellsword/boots
 	name = "Steel Boots"
-	cost = 20
-	contains = list(/obj/item/clothing/shoes/roguetown/boots)
+	cost = 10
+	contains = list(/obj/item/clothing/shoes/roguetown/boots/armor)
 
 
 /datum/supply_pack/rogue/Sellsword/hauberk
 	name = "Hauberk"
-	cost = 40
+	cost = 30
 	contains = list(/obj/item/clothing/suit/roguetown/armor/chainmail/hauberk)
 
 /datum/supply_pack/rogue/Sellsword/Haubergeon
@@ -87,7 +87,7 @@
 
 /datum/supply_pack/rogue/Sellsword/steelcuirass
 	name = "Blacksteel Cuirass"
-	cost = 60
+	cost = 50
 	contains = list(/obj/item/clothing/suit/roguetown/armor/blacksteel/cuirass)
 
 
@@ -108,10 +108,15 @@
 	cost = 20
 	contains = list(/obj/item/clothing/head/roguetown/helmet/kettle)
 
+/datum/supply_pack/rogue/Sellsword/sallet
+	name = "Sallet"
+	cost = 20
+	contains = list(/obj/item/clothing/head/roguetown/helmet/sallet)
+
 
 /datum/supply_pack/rogue/Sellsword/visoredsallet
 	name = "Visored Sallet"
-	cost = 20
+	cost = 30
 	contains = list(/obj/item/clothing/head/roguetown/helmet/sallet/visored)
 
 
