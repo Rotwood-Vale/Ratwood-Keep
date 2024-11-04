@@ -3679,30 +3679,15 @@
 /obj/item/roguekey/steward,
 /obj/item/roguekey/graveyard,
 /obj/item/roguekey/mercenary,
-/obj/item/roguekey/nightmaiden,
-/obj/item/roguekey/tavern,
-/obj/item/roguekey/physician,
-/obj/item/roguekey/sheriff_office,
-/obj/item/roguekey/town_armory,
-/obj/item/roguekey/town_barracks,
-/obj/item/roguekey/town_dungeon,
 /obj/item/roguekey/keep_armory,
 /obj/item/roguekey/keep_barracks,
 /obj/item/roguekey/keep_dungeon,
 /obj/item/roguekey/keep_gatehouse,
-/obj/item/roguekey/bog_gatehouse,
-/obj/item/roguekey/bog_dungeon,
-/obj/item/roguekey/bog_barracks,
-/obj/item/roguekey/bog_armory,
+/obj/item/roguekey/keep_armory,
+/obj/item/roguekey/keep_barracks,
+/obj/item/roguekey/keep_dungeon,
+/obj/item/roguekey/keep_gatehouse,
 /obj/item/roguekey/tower,
-/obj/item/roguekey/walls,
-/obj/item/roguekey/town_armory,
-/obj/item/roguekey/town_barracks,
-/obj/item/roguekey/town_dungeon,
-/obj/item/roguekey/keep_armory,
-/obj/item/roguekey/keep_barracks,
-/obj/item/roguekey/keep_dungeon,
-/obj/item/roguekey/keep_gatehouse,
 /obj/item/roguekey/mage,
 /obj/item/roguekey/councillor_rooms,
 /obj/item/roguekey/councillor_rooms,
@@ -3712,10 +3697,7 @@
 /obj/item/roguekey/walls,
 /obj/item/roguekey/walls,
 /obj/item/roguekey/walls,
-/obj/item/roguekey/blacksmith,
-/obj/item/roguekey/blacksmith,
-/obj/item/roguekey/church,
-/obj/item/roguekey/church,
+/obj/item/roguekey/walls,
 /turf/open/floor/rogue/tile/tilerg,
 /area/rogue/indoors/town/manor)
 "dpJ" = (
@@ -4485,6 +4467,27 @@
 /obj/structure/bars/pipe{
 	dir = 9
 	},
+/obj/structure/closet/crate/chest{
+	lockid = "steward"
+	},
+/obj/item/roguekey/church,
+/obj/item/roguekey/church,
+/obj/item/roguekey/blacksmith,
+/obj/item/roguekey/blacksmith,
+/obj/item/roguekey/tavern,
+/obj/item/roguekey/nightmaiden,
+/obj/item/roguekey/mercenary,
+/obj/item/roguekey/bog_gatehouse,
+/obj/item/roguekey/bog_dungeon,
+/obj/item/roguekey/bog_barracks,
+/obj/item/roguekey/bog_armory,
+/obj/item/roguekey/town_armory,
+/obj/item/roguekey/town_armory,
+/obj/item/roguekey/town_barracks,
+/obj/item/roguekey/town_barracks,
+/obj/item/roguekey/town_dungeon,
+/obj/item/roguekey/town_dungeon,
+/obj/item/roguekey/sheriff_office,
 /turf/open/floor/rogue/tile/tilerg,
 /area/rogue/indoors/town/manor)
 "ebb" = (
@@ -13971,6 +13974,10 @@
 /obj/structure/fermenting_barrel/random/beer,
 /turf/open/floor/rogue/twig,
 /area/rogue/indoors)
+"mHW" = (
+/obj/machinery/light/roguestreet/midlamp,
+/turf/open/floor/rogue/grass,
+/area/rogue/outdoors/town)
 "mIv" = (
 /obj/structure/ladder,
 /turf/open/floor/rogue/church,
@@ -16499,7 +16506,7 @@
 /area/rogue/indoors/town/shop)
 "oOl" = (
 /obj/machinery/light/roguestreet/midlamp,
-/turf/open/floor/rogue/cobble,
+/turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors/town)
 "oOm" = (
 /obj/structure/flora/roguetree/burnt,
@@ -17035,7 +17042,6 @@
 /obj/structure/closet/crate/roguecloset,
 /obj/item/clothing/under/roguetown/tights/stockings/silk/black,
 /obj/item/clothing/suit/roguetown/armor/leather/vest/hand,
-/obj/structure/closet/crate/roguecloset,
 /obj/item/rogueweapon/sword/rapier,
 /obj/item/perfume/random,
 /turf/open/floor/rogue/wood,
@@ -190081,7 +190087,7 @@ llO
 lLE
 lLE
 txa
-cBf
+hVj
 cBf
 jyI
 oth
@@ -192493,7 +192499,7 @@ ida
 seA
 ida
 txa
-iTw
+dcN
 iTw
 txa
 cBf
@@ -293000,7 +293006,7 @@ mwE
 aOn
 bWk
 wbg
-mwE
+mHW
 mwE
 wbg
 wbg
@@ -293804,7 +293810,7 @@ wbg
 wbg
 wbg
 wbg
-oOl
+wbg
 wbg
 wbg
 vbX
@@ -300237,7 +300243,7 @@ aOn
 fnA
 fnA
 wVI
-oOl
+wbg
 wbg
 wtF
 wtF
@@ -301043,7 +301049,7 @@ mwE
 wVI
 wVI
 wbg
-aOn
+oOl
 rfx
 rfx
 rfx
@@ -303848,8 +303854,8 @@ fdM
 oNx
 mwE
 mwE
-mwE
-oOl
+mHW
+wbg
 wbg
 fkC
 fkC
