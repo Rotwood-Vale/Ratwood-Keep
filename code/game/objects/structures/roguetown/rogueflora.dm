@@ -362,7 +362,7 @@
 	leanable = TRUE
 
 /obj/structure/flora/roguegrass/bush/wall/Initialize()
-	..()
+	. = ..()
 	icon_state = "bushwall[pick(1,2)]"
 
 /obj/structure/flora/roguegrass/bush/wall/update_icon()
@@ -387,7 +387,7 @@
 	static_debris = null
 
 /obj/structure/flora/roguegrass/bush/wall/tall/Initialize()
-	..()
+	. = ..()
 	icon_state = "tallbush[pick(1,2)]"
 
 
@@ -422,7 +422,7 @@
 
 
 /obj/structure/flora/rogueshroom/Initialize()
-	..()
+	. = ..()
 	icon_state = "mush[rand(1,5)]"
 	if(icon_state == "mush5")
 		static_debris = list(/obj/item/natural/thorn=1, /obj/item/grown/log/tree/small = 1)

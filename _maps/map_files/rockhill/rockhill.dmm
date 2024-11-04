@@ -1904,14 +1904,7 @@
 /turf/open/floor/rogue/blocks,
 /area/rogue/indoors/town/bath)
 "bMe" = (
-/obj/machinery/light/roguestreet{
-	dir = 1
-	},
 /obj/structure/fluff/railing/wood,
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
 /obj/machinery/light/rogue/lanternpost{
 	dir = 1
 	},

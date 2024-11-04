@@ -31,7 +31,7 @@
 	qdel(wires)
 	wires = null
 	target = null
-	..()
+	return ..()
 
 /obj/item/grenade/c4/attackby(obj/item/I, mob/user, params)
 	if(I.tool_behaviour == TOOL_SCREWDRIVER)
