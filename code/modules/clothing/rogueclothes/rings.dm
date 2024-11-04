@@ -18,7 +18,8 @@
 	icon_state = "ring_s"
 	sellprice = 33
 
-/obj/item/clothing/neck/roguetown/psicross/ring   /////////////////////// cast focus ring for acolytes and shit.
+/obj/item/clothing/ringP  /////////////////////// cast focus ring for acolytes and shit.
+	parent_type = /obj/item/clothing/neck/roguetown/psicross
 	name = "psi ring"
 	desc = "a blessed psi ring, for the religious type"
 	w_class = WEIGHT_CLASS_TINY

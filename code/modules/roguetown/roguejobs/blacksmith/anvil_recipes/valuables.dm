@@ -9,7 +9,7 @@
 /datum/anvil_recipe/valuables/special/ringp
 	name = "blessed ring (+1 Psicross)"
 	req_bar = /obj/item/ingot/iron
-	created_item = /obj/item/clothing/neck/roguetown/psicross/ring
+	created_item = /obj/item/clothing/ringP
 	additional_items = list(/obj/item/clothing/neck/roguetown/psicross)
 	i_type = "Valuables"
 
