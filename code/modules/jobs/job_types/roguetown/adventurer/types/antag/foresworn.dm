@@ -53,6 +53,5 @@
 			backl= /obj/item/rogueweapon/shield/buckler //Before, wielding the sword with two hands would give you 130% defense and sword + shield would give 150%; Now, wielding the sword with two hands gives 150% and sword + shield gives 170%.
 			beltr = /obj/item/rogueweapon/sword/iron //iron sword like literally every adventurer gets
 			head = /obj/item/clothing/head/roguetown/helmet/leather/volfhelm
-			H.mind.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE) 
 	H.verbs |= /mob/proc/haltyell
 	H.ambushable = FALSE
