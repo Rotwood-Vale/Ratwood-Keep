@@ -13392,15 +13392,6 @@
 /obj/structure/bed/rogue/inn/wool,
 /turf/open/floor/carpet/royalblack,
 /area/rogue/indoors/town/tavern)
-"mkK" = (
-/mob/living/simple_animal/hostile/retaliate/poison/snake{
-	tame = 1;
-	name = "Ozium";
-	faction = list("station", "neutral", "cows");
-	unique_name = Ozium
-	},
-/turf/open/floor/rogue/churchmarble,
-/area/rogue/indoors/town)
 "mla" = (
 /obj/structure/stairs,
 /obj/structure/fluff/railing/border{
@@ -317515,7 +317506,7 @@ wco
 wco
 xzM
 hmb
-mkK
+hmb
 hmb
 mlP
 jFb
