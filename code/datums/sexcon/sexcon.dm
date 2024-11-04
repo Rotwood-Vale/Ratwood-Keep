@@ -264,7 +264,7 @@
 	user.visible_message(span_lovebold("[user] lactates into [C]!"))
 	playsound(user, 'sound/misc/mat/endout.ogg', 50, TRUE, ignore_walls = FALSE)
 	milk_amount = calculate_milk()
-	C.reagents.add_reagent(/datum/reagent/consumable/breastmilk, milk_amount)
+	C.reagents.add_reagent(/datum/reagent/consumable/milk, milk_amount)
 	user.adjust_hydration(-(milk_amount * 10))
 	user.adjust_nutrition(-(milk_amount * 5))
 	breasts.last_milked = world.time
