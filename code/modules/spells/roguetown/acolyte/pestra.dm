@@ -149,9 +149,9 @@
 	antimagic_allowed = TRUE
 	charge_max = 2 MINUTES
 	miracle = TRUE
-	devotion_cost = 30
+	devotion_cost = -100
 	/// Amount of PQ gained for curing zombos
-	var/unzombification_pq = PQ_GAIN_UNZOMBIFY
+	var/unzombification_pq = 0.4
 
 /obj/effect/proc_holder/spell/invoked/cure_rot/cast(list/targets, mob/living/user)
 	if(isliving(targets[1]))
@@ -159,28 +159,42 @@
 		var/mob/living/target = targets[1]
 		if(target == user)
 			return FALSE
-		var/datum/antagonist/zombie/was_zombie = target.mind?.has_antag_datum(/datum/antagonist/zombie)
+		var/was_zombie = null
+		if(target.mind)
+			was_zombie = target.mind.has_antag_datum(/datum/antagonist/zombie)
 		var/has_rot = was_zombie
+		if(!has_rot && iscarbon(target))
+			var/mob/living/carbon/stinky = target
+			for(var/obj/item/bodypart/bodypart as anything in stinky.bodyparts)
+				if(bodypart.rotted || bodypart.skeletonized)
+					has_rot = TRUE
+					break
 		if(!has_rot)
-			to_chat(user, span_warning("Nothing happens."))
+			to_chat(user, "<span class='warning'>Nothing happens.</span>")
 			return FALSE
+		if(GLOB.tod == "night")
+			to_chat(user, "<span class='warning'>Let there be light.</span>")
 		for(var/obj/structure/fluff/psycross/S in oview(5, user))
 			S.AOE_flash(user, range = 8)
 		testing("curerot2")
 		if(was_zombie)
-			target.mind.remove_antag_datum(/datum/antagonist/zombie)
+			if(target.mind)
+				target.mind.remove_antag_datum(/datum/antagonist/zombie)
+				if(target.mind.has_antag_datum(/datum/antagonist/zombie))
+					testing("Failed to remove zombie antagonist datum")          ///////////////////// debug tester flag
+				else
+					testing("Successfully removed zombie antagonist datum")
+			else
+				testing("Target mind is null")
 			target.Unconscious(20 SECONDS)
 			target.emote("breathgasp")
 			target.Jitter(100)
-
 			if(unzombification_pq && !HAS_TRAIT(target, TRAIT_IWASUNZOMBIFIED) && user?.ckey)
 				adjust_playerquality(unzombification_pq, user.ckey)
 				ADD_TRAIT(target, TRAIT_IWASUNZOMBIFIED, "[type]")
-
 		var/datum/component/rot/rot = target.GetComponent(/datum/component/rot)
 		if(rot)
 			rot.amount = 0
-
 		if(iscarbon(target))
 			var/mob/living/carbon/stinky = target
 			for(var/obj/item/bodypart/rotty in stinky.bodyparts)
@@ -189,9 +203,8 @@
 				rotty.update_limb()
 				rotty.update_disabled()
 		target.update_body()
-		target.visible_message(span_notice("The rot leaves [target]'s body!"), span_green("I feel the rot leave my body!"))
+		target.visible_message("<span class='notice'>The rot leaves [target]'s body!</span>", "<span class='green'>I feel the rot leave my body!</span>")
 		return TRUE
-	revert_cast()
 	return FALSE
 
 /obj/effect/proc_holder/spell/invoked/cure_rot/cast_check(skipcharge = 0,mob/user = usr)
@@ -201,6 +214,11 @@
 	for(var/obj/structure/fluff/psycross/S in oview(5, user))
 		found = S
 	if(!found)
-		to_chat(user, span_warning("I need a holy cross."))
+		to_chat(user, "<span class='warning'>I need a holy cross.</span>")
 		return FALSE
 	return TRUE
+
+
+
+
+
