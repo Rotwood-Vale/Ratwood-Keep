@@ -200,8 +200,7 @@
 
 #define CLINIC		(1<<10)
 
-#define CLINICGUARD	(1<<0)
-#define CLINICDOC	(1<<1)
+#define CLINICDOC	(1<<0)
 
 #define JCOLOR_NOBLE "#aa83b9"
 #define JCOLOR_COURTIER "#81adc8"
@@ -299,8 +298,7 @@
 #define JDO_GOBLINGUARD 38
 #define JDO_GOBLINSMITH 39
 
-#define JDO_CLINICGUARD 40
-#define JDO_CLINICDOC 41
+#define JDO_CLINICDOC 40
 
 #define MANOR_ROLES \
 	/datum/job/roguetown/jester,\
@@ -382,6 +380,5 @@
 
 
 #define CLINIC_ROLES \
-	/datum/job/roguetown/clinicguard,\
 	/datum/job/roguetown/clinicdoctor
 	
