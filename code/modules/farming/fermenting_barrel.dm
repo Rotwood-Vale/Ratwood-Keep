@@ -20,8 +20,7 @@
 
 /obj/structure/fermenting_barrel/Destroy()
 	chem_splash(loc, 2, list(reagents))
-	qdel(reagents)
-	..()
+	return ..()
 
 /obj/structure/fermenting_barrel/examine(mob/user)
 	. = ..()

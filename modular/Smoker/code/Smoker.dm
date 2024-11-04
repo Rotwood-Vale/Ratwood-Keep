@@ -75,7 +75,7 @@
 	. = 1
 
 /atom/movable/screen/fullscreen/bittensm/Initialize()
-	..()
+	. = ..()
 	filters += filter(type="angular_blur",x=5,y=5,size=1)
 
 /datum/reagent/drug/snekbt/overdose_start(mob/living/M, can_overdose = TRUE)
