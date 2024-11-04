@@ -72,57 +72,61 @@
 	return ..()
 
 /datum/antagonist/zombie/on_removal()
-	var/mob/living/carbon/human/zombie = owner?.current
-	if(zombie)
-		zombie.mind?.special_role = special_role
-		zombie.ambushable = ambushable
-		if(zombie.dna?.species)
-			zombie.dna.species.soundpack_m = soundpack_m
-			zombie.dna.species.soundpack_f = soundpack_f
-		zombie.base_intents = base_intents
 
-		owner.known_skills = stored_skills
-		owner.skill_experience = stored_experience
+	if(!owner.current)
+		return
 
-		zombie.update_a_intents()
-		zombie.aggressive = FALSE
-		zombie.mode = AI_OFF
-		if(zombie.charflaw)
-			zombie.charflaw.ephemeral = FALSE
-		zombie.update_body()
-		zombie.STASTR = STASTR
-		zombie.STASPD = STASPD
-		zombie.STAINT = STAINT
-		zombie.STACON = STACON
-		zombie.STAEND = STAEND
-		zombie.cmode_music = cmode_music
-		zombie.set_patron(patron)
+	var/mob/living/carbon/human/zombie = owner.current
 
-		for(var/trait in GLOB.traits_deadite)
-			REMOVE_TRAIT(zombie, trait, "[type]")
+	zombie.mind?.special_role = special_role
+	zombie.ambushable = ambushable
+	if(zombie.dna?.species)
+		zombie.dna.species.soundpack_m = soundpack_m
+		zombie.dna.species.soundpack_f = soundpack_f
+	zombie.base_intents = base_intents
 
-		zombie.remove_client_colour(/datum/client_colour/monochrome)
+	owner.known_skills = stored_skills
+	owner.skill_experience = stored_experience
 
-		if(!was_i_undead)
-			zombie.mob_biotypes &= ~MOB_UNDEAD
-		zombie.faction -= "undead"
-		zombie.faction += "station"
-		zombie.faction += "neutral"
-		zombie.regenerate_organs()
-		if(has_turned)
-			to_chat(zombie, span_green("I no longer crave for flesh..."))
-			
-		for(var/obj/item/bodypart/zombie_part as anything in zombie.bodyparts)
-			zombie_part.rotted = FALSE
-			zombie_part.update_disabled()
-			zombie_part.update_limb()
-		zombie.update_body()
+	zombie.update_a_intents()
+	zombie.aggressive = FALSE
+	zombie.mode = AI_OFF
+	if(zombie.charflaw)
+		zombie.charflaw.ephemeral = FALSE
+	zombie.update_body()
+	zombie.STASTR = STASTR
+	zombie.STASPD = STASPD
+	zombie.STAINT = STAINT
+	zombie.STACON = STACON
+	zombie.STAEND = STAEND
+	zombie.cmode_music = cmode_music
+	zombie.set_patron(patron)
+
+	for(var/trait in GLOB.traits_deadite)
+		REMOVE_TRAIT(zombie, trait, TRAIT_GENERIC)
+
+	zombie.remove_client_colour(/datum/client_colour/monochrome)
+
+	if(!was_i_undead)
+		zombie.mob_biotypes &= ~MOB_UNDEAD
+	zombie.faction -= "undead"
+	zombie.faction += "station"
+	zombie.faction += "neutral"
+	zombie.regenerate_organs()
+	if(has_turned)
+		to_chat(zombie, span_green("I no longer crave for flesh..."))
+		
+	for(var/obj/item/bodypart/zombie_part as anything in zombie.bodyparts)
+		zombie_part.rotted = FALSE
+		zombie_part.update_disabled()
+		zombie_part.update_limb()
+	zombie.update_body()
 
 	// Bandaid to fix the zombie ghostizing not allowing you to re-enter
-	if(zombie)
-		var/mob/dead/observer/ghost = zombie.get_ghost(TRUE)
-		if(ghost)
-			ghost.can_reenter_corpse = TRUE
+
+	var/mob/dead/observer/ghost = zombie.get_ghost(TRUE)
+	if(ghost)
+		ghost.can_reenter_corpse = TRUE
 
 	return ..()
 
