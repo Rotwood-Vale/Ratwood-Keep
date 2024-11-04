@@ -158,6 +158,8 @@
 			return FALSE
 		testing("curerot2")
 		if(was_zombie)
+			if(was_zombie.become_rotman && prob(10)) //10% chance to NOT become a rotman
+				was_zombie.become_rotman = FALSE
 			target.mind.remove_antag_datum(/datum/antagonist/zombie)
 			target.Unconscious(20 SECONDS)
 			target.emote("breathgasp")
@@ -176,6 +178,10 @@
 				rotty.update_limb()
 				rotty.update_disabled()
 		target.update_body()
+		if(!HAS_TRAIT(target, TRAIT_ROTMAN))
+			target.visible_message(span_notice("The rot leaves [target]'s body!"), span_green("I feel the rot leave my body!"))
+		else
+			target.visible_message(span_warning("The rot fails to leave [target]'s body!"), span_warning("I feel no different..."))
 		return TRUE
 	to_chat(user, span_warning("I need too prime their liver first"))
 	return FALSE
