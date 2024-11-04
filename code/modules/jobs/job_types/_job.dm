@@ -30,9 +30,6 @@
 	//How many players have this job
 	var/current_positions = 0
 
-	//Whether this job clears a slot when you get a rename prompt.
-	var/antag_job = FALSE
-
 	//Supervisors, who this person answers to directly
 	var/supervisors = ""
 
@@ -99,7 +96,6 @@
 
 	var/show_in_credits = TRUE
 
-	var/announce_latejoin = TRUE
 	var/give_bank_account = FALSE
 
 	var/can_random = TRUE
@@ -129,7 +125,7 @@
 	var/immune_to_genderswap = FALSE
 
 /*
-	How this works, its CTAG_DEFINE = amount_to_attempt_to_role
+	How this works, its CTAG_DEFINE = amount_to_attempt_to_role 
 	EX: advclass_cat_rolls = list(CTAG_PILGRIM = 5, CTAG_ADVENTURER = 5)
 	You will still need to contact the subsystem though
 */
@@ -144,31 +140,13 @@
 /datum/job/proc/special_job_check(mob/dead/new_player/player)
 	return TRUE
 
-/client/proc/job_greet(var/datum/job/greeting_job)
-	if(mob.job == greeting_job.title)
-		greeting_job.greet(mob)
-
 /datum/job/proc/greet(mob/player)
-	if(player?.mind.assigned_role != title)
-		return
 	if(!job_greet_text)
 		return
 	to_chat(player, span_notice("You are the <b>[title]</b>"))
 	if(tutorial)
-		if(isseelie(player))		//If player is a Seelie
-			change_tutorial(player)	//Check if job flavortext needs changed (hand and maid currently)
 		to_chat(player, span_notice("*-----------------*"))
 		to_chat(player, span_notice(tutorial))
-
-//Custom join messages for SEELIE ONLY, will not trigger for other races unless explicitly called to
-/datum/job/proc/change_tutorial(mob/player)
-	if(title == "Hand")		//Change tutorial message for Seelie Hand
-		tutorial = "It wasn't easy for a fae, but your liege saw great potential in you. Once, you were just an adventuring companion- now you are one of the highest status fae within the realm itself. It's come at a cost, youve lost your more mischievous spells and nature over time, but gained ones more useful to dealing with the chaos of court."
-	else if(title == "Servant")		//Change tutorial message for Seelie maids
-		tutorial = "Though once you were a mischievous fae, you've now accepted the comfort and security of service in the manor instead. Your spells may come in handy, but youve allowed the more chaotic ones to fade to memory."
-	else if(title == "Prisoner (Rockhill)" || title == "Prisoner (Bog)")
-		tutorial = "Thrown in this accursed place, the colar around your neck prevents any and all magic you mightve had. You waste away here, no mischief to be made or people to assist. Your life as a caged fae is miserable indeed."
-	return
 
 //Only override this proc
 //H is usually a human unless an /equip override transformed it
@@ -215,19 +193,19 @@
 
 	if(show_in_credits)
 		SScrediticons.processing += H
-
+	
 	if(cmode_music)
 		H.cmode_music = cmode_music
 
 /datum/job/proc/add_spells(mob/living/H)
-	if(spells && H.mind)
+	if(spells && H.mind)	
 		for(var/S in spells)
 			if(H.mind.has_spell(S))
 				continue
 			H.mind.AddSpell(new S)
 
 /datum/job/proc/remove_spells(mob/living/H)
-	if(spells && H.mind)
+	if(spells && H.mind)	
 		for(var/S in spells)
 			if(!H.mind.has_spell(S))
 				continue
@@ -445,3 +423,4 @@
 	if(CONFIG_GET(flag/security_has_maint_access))
 		return list(ACCESS_MAINT_TUNNELS)
 	return list()
+

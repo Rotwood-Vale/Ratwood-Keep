@@ -231,7 +231,6 @@
 	if(!(M.status_flags & CANPUSH))
 		return TRUE
 	if(isliving(M))
-		M.mob_timers[MT_SNEAKATTACK] = world.time //Why shouldn't you know you're walking into someone stealthed? You JUST bumped into them.
 		var/mob/living/L = M
 		if(HAS_TRAIT(L, TRAIT_PUSHIMMUNE))
 			return TRUE
@@ -495,6 +494,11 @@
 	to_chat(src, span_info("I grab [target]."))
 
 /mob/living/proc/set_pull_offsets(mob/living/M, grab_state = GRAB_PASSIVE)
+	return //rtd fix not updating because no dirchange
+	if(M == src)
+		return
+	if(M.wallpressed)
+		return
 	if(M.buckled)
 		return //don't make them change direction or offset them if they're buckled into something.
 	var/offset = 0
@@ -510,24 +514,21 @@
 	M.setDir(get_dir(M, src))
 	switch(M.dir)
 		if(NORTH)
-			M.set_mob_offsets("pulledby", 0, 0+offset)
-			M.layer = MOB_LAYER+0.05
+			M.set_mob_offsets("pulledby", _x = 0, _y = offset)
 		if(SOUTH)
-			M.set_mob_offsets("pulledby", 0, 0-offset)
-			M.layer = MOB_LAYER-0.05
+			M.set_mob_offsets("pulledby", _x = 0, _y = -offset)
 		if(EAST)
-			M.set_mob_offsets("pulledby", 0+offset, 0)
-			M.layer = MOB_LAYER
+			if(M.lying == 270) //update the dragged dude's direction if we've turned
+				M.lying = 90
+				M.update_transform() //force a transformation update, otherwise it'll take a few ticks for update_mobility() to do so
+				M.lying_prev = M.lying
+			M.set_mob_offsets("pulledby", _x = offset, _y = 0)
 		if(WEST)
-			M.set_mob_offsets("pulledby", 0-offset, 0)
-			M.layer = MOB_LAYER
-
-/mob/living/proc/reset_pull_offsets(mob/living/M, override)
-	if(!override && M.buckled)
-		return
-	M.reset_offsets("pulledby")
-	M.layer = MOB_LAYER
-	//animate(M, pixel_x = 0 , pixel_y = 0, 1)
+			if(M.lying == 90)
+				M.lying = 270
+				M.update_transform()
+				M.lying_prev = M.lying
+			M.set_mob_offsets("pulledby", _x = offset, _y = 0)
 
 /mob/living
 	var/list/mob_offsets = list()
@@ -566,7 +567,6 @@
 		if(ismob(pulling))
 			var/mob/living/M = pulling
 			M.reset_offsets("pulledby")
-			reset_pull_offsets(pulling)
 
 		if(forced) //if false, called by the grab item itself, no reason to drop it again
 			if(istype(get_active_held_item(), /obj/item/grabbing))
@@ -1170,8 +1170,8 @@
 		pulledby.stop_pulling()
 
 		var/wrestling_cooldown_reduction = 0
-		if(pulledby?.mind?.get_skill_level(/datum/skill/combat/wrestling))
-			wrestling_cooldown_reduction = 0.2 SECONDS * pulledby.mind.get_skill_level(/datum/skill/combat/wrestling)
+		if(pulledby?.mind?.get_skill_level("wrestling"))
+			wrestling_cooldown_reduction = 0.2 SECONDS * pulledby.mind.get_skill_level("wrestling")
 		TIMER_COOLDOWN_START(src, "broke_free", max(0, 1.6 SECONDS - wrestling_cooldown_reduction))
 
 		return FALSE
@@ -1920,8 +1920,8 @@
 		for(var/mob/living/M in view(7,src))
 			if(M == src)
 				continue
-			//if(see_invisible < M.invisibility)
-				//continue
+			if(see_invisible < M.invisibility)
+				continue
 			if(M.mob_timers[MT_INVISIBILITY] > world.time) // Check if the mob is affected by the invisibility spell
 				continue
 			var/probby = 3 * STAPER
@@ -2084,12 +2084,7 @@
 //	RegisterSignal(src, COMSIG_MOVABLE_PRE_MOVE, PROC_REF(stop_looking))
 
 /mob/living/proc/stop_looking()
-
-	if(!client)
-		return
-
-	animate(client, pixel_x = 0, pixel_y = 0, 2, easing = SINE_EASING)
-	
+//	animate(client, pixel_x = 0, pixel_y = 0, 2, easing = SINE_EASING)
 	if(client)
 		client.pixel_x = 0
 		client.pixel_y = 0

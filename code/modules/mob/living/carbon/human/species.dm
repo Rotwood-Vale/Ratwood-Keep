@@ -97,6 +97,17 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 	var/obj/item/organ/lungs/mutantlungs = null
 	var/breathid = "o2"
 
+	var/obj/item/organ/brain/mutant_brain = /obj/item/organ/brain
+	var/obj/item/organ/heart/mutant_heart = /obj/item/organ/heart
+	var/obj/item/organ/eyes/mutanteyes = /obj/item/organ/eyes
+	var/obj/item/organ/ears/mutantears = /obj/item/organ/ears
+	var/obj/item/mutanthands
+	var/obj/item/organ/tongue/mutanttongue = /obj/item/organ/tongue
+	var/obj/item/organ/tail/mutanttail = null
+
+	var/obj/item/organ/liver/mutantliver
+	var/obj/item/organ/stomach/mutantstomach
+	var/obj/item/organ/guts/mutantguts
 	var/override_float = FALSE
 
 	//Bitflag that controls what in game ways can select this species as a spawnable source
@@ -161,7 +172,6 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 	var/list/specskills
 	var/list/specskills_m
 	var/list/specskills_f
-	var/obj/item/mutanthands
 
 	/// List of organ customizers for preferences to customize organs.
 	var/list/customizers
@@ -608,7 +618,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 			return FALSE
 
 	var/is_nudist = HAS_TRAIT(H, TRAIT_NUDIST)
-	var/is_inhumen = HAS_TRAIT(H, TRAIT_INHUMEN_ANATOMY)
+	var/is_retarded = HAS_TRAIT(H, TRAIT_RETARD_ANATOMY)
 	var/num_arms = H.get_num_arms(FALSE)
 	var/num_legs = H.get_num_legs(FALSE)
 
@@ -620,7 +630,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 		if(SLOT_WEAR_MASK)
 			if(H.wear_mask)
 				return FALSE
-			if(is_inhumen)
+			if(is_retarded)
 				return FALSE
 			if(!(I.slot_flags & ITEM_SLOT_MASK))
 				return FALSE
@@ -697,7 +707,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 		if(SLOT_SHOES)
 			if(H.shoes)
 				return FALSE
-			if(is_nudist || is_inhumen)
+			if(is_nudist || is_retarded)
 				return FALSE
 			if( !(I.slot_flags & ITEM_SLOT_SHOES) )
 				return FALSE
@@ -733,7 +743,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 		if(SLOT_HEAD)
 			if(H.head)
 				return FALSE
-			if(is_inhumen)
+			if(is_retarded)
 				return FALSE
 			if(!(I.slot_flags & ITEM_SLOT_HEAD))
 				return FALSE

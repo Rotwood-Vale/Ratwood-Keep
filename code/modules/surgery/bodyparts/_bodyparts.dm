@@ -84,7 +84,6 @@
 	var/rotted = FALSE
 	var/skeletonized = FALSE
 
-	/// Can this bodypart swing weapons?
 	var/fingers = TRUE
 	var/organ_slowdown = 0 // Its here because this is first shared definition between two leg organ paths
 

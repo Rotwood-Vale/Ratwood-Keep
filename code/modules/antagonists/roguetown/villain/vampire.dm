@@ -19,7 +19,6 @@
 		"DRINK THE BLOOD!", 
 		"CHILD OF KAIN!",
 	)
-	rogue_enabled = TRUE
 	var/disguised = TRUE
 	var/vitae = 1000
 	var/last_transform

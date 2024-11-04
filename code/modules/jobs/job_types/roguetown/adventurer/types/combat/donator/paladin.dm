@@ -68,24 +68,22 @@
 			wrists = /obj/item/clothing/wrists/roguetown/bracers
 			pants = /obj/item/clothing/under/roguetown/chainlegs
 			shoes = /obj/item/clothing/shoes/roguetown/armor/leather
-			belt = /obj/item/storage/belt/rogue/leather/steel
+			belt = /obj/item/storage/belt/rogue/leather/hand
 			beltl = /obj/item/storage/belt/rogue/pouch/coins/poor
 			id = /obj/item/clothing/ring/silver
 			backpack_contents = list(/obj/item/rogueweapon/huntingknife)
 			cloak = /obj/item/clothing/cloak/tabard/crusader
 			switch(H.patron.name)
 				if("Astrata")
-					cloak = /obj/item/clothing/cloak/templar/astratan
+					cloak = /obj/item/clothing/cloak/tabard/crusader/astrata
 				if("Dendor")
 					cloak = /obj/item/clothing/cloak/tabard/crusader/dendor
 				if("Necra")
-					cloak = /obj/item/clothing/cloak/templar/necran
+					cloak = /obj/item/clothing/cloak/tabard/crusader/necra
 				if("Pestra")
 					cloak = /obj/item/clothing/cloak/tabard/crusader/pestra
 				if("Noc")
 					cloak = /obj/item/clothing/cloak/tabard/crusader/noc
-				if("Malum")
-					cloak = /obj/item/clothing/cloak/templar/malummite
 			if(H.age == AGE_OLD)
 				beltr = /obj/item/clothing/head/roguetown/helmet/heavy/bucket/gold
 				head = /obj/item/clothing/neck/roguetown/chaincoif
@@ -125,24 +123,22 @@
 			wrists = /obj/item/clothing/wrists/roguetown/bracers
 			pants = /obj/item/clothing/under/roguetown/chainlegs
 			shoes = /obj/item/clothing/shoes/roguetown/armor/leather
-			belt = /obj/item/storage/belt/rogue/leather/steel
+			belt = /obj/item/storage/belt/rogue/leather/hand
 			beltl = /obj/item/storage/belt/rogue/pouch/coins/poor
 			id = /obj/item/clothing/ring/silver
 			backpack_contents = list(/obj/item/rogueweapon/huntingknife)
 			cloak = /obj/item/clothing/cloak/tabard/crusader
 			switch(H.patron.name)
 				if("Astrata")
-					cloak = /obj/item/clothing/cloak/templar/astratan
+					cloak = /obj/item/clothing/cloak/tabard/crusader/astrata
 				if("Dendor")
 					cloak = /obj/item/clothing/cloak/tabard/crusader/dendor
 				if("Necra")
-					cloak = /obj/item/clothing/cloak/templar/necran
+					cloak = /obj/item/clothing/cloak/tabard/crusader/necra
 				if("Pestra")
 					cloak = /obj/item/clothing/cloak/tabard/crusader/pestra
 				if("Noc")
 					cloak = /obj/item/clothing/cloak/tabard/crusader/noc
-				if("Malum")
-					cloak = /obj/item/clothing/cloak/templar/malummite
 			backr = /obj/item/rogueweapon/flail
 			if(prob(50))
 				l_hand = /obj/item/rogueweapon/shield/wood

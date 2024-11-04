@@ -63,6 +63,7 @@
 	blocksound = CHAINHIT
 	anvilrepair = /datum/skill/craft/blacksmithing
 	smeltresult = /obj/item/ingot/steel
+	clothing_flags = CANT_SLEEP_IN
 
 /obj/item/clothing/neck/roguetown/chaincoif/AdjustClothes(mob/user)
 	if(loc == user)
@@ -93,14 +94,6 @@
 	smeltresult = /obj/item/ingot/iron
 	max_integrity = 150
 
-/obj/item/clothing/neck/roguetown/chaincoif/ironb
-	icon_state = "ichaincoif"
-	anvilrepair = /datum/skill/craft/blacksmithing
-	desc = "An iron chain coif, composed of interlinked metal rings, that barely absorb impacts from arrows that protects the head, ears and neck, and is sadly too uncomfortable to sleep in. blackened iron."
-	smeltresult = /obj/item/ingot/iron
-	color = "#151615"
-	max_integrity = 150
-
 /obj/item/clothing/neck/roguetown/bervor
 	name = "bevor"
 	desc = "A steel bevor that protects the lower part of the head, that being the neck, mouth and nose."
@@ -128,6 +121,7 @@
 	body_parts_covered = NECK
 	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT, BCLASS_TWIST)
 	blocksound = PLATEHIT
+	clothing_flags = CANT_SLEEP_IN
 
 /obj/item/clothing/neck/roguetown/leather
 	name = "hardened leather gorget"

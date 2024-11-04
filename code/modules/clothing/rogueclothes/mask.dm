@@ -92,6 +92,7 @@
 	experimental_onhip = TRUE
 	anvilrepair = /datum/skill/craft/blacksmithing
 	smeltresult = /obj/item/ingot/iron
+	clothing_flags = CANT_SLEEP_IN
 
 /obj/item/clothing/mask/rogue/facemask/hound
 	name = "iron hound mask"
@@ -162,10 +163,3 @@
 	body_parts_covered = FACE|EARS|EYES|MOUTH|NECK
 	slot_flags = ITEM_SLOT_MASK|ITEM_SLOT_HIP
 	sewrepair = TRUE
-
-/obj/item/clothing/mask/rogue/facemask/goldmask
-	name = "Gold Mask"
-	icon_state = "goldmask"
-	max_integrity = 150
-	sellprice = 100
-	smeltresult = /obj/item/ingot/gold

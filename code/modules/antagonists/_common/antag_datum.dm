@@ -26,7 +26,6 @@ GLOBAL_LIST_EMPTY(antagonists)
 	
 	//RT: Whether or not this antag increases your votepwr in the end vote
 	var/increase_votepwr = TRUE
-	var/rogue_enabled = FALSE
 
 /datum/antagonist/New()
 	GLOB.antagonists += src

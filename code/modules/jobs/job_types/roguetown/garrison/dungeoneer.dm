@@ -32,13 +32,11 @@
 	shoes = /obj/item/clothing/shoes/roguetown/shortboots
 	wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
 	gloves = /obj/item/clothing/gloves/roguetown/angle
-	armor = /obj/item/clothing/cloak/stabard/dungeon
-	cloak = /obj/item/clothing/cloak/raincloak/mortus
+	cloak = /obj/item/clothing/cloak/stabard/dungeon
 	shirt = /obj/item/clothing/suit/roguetown/armor/gambeson/councillor
-	belt = /obj/item/storage/belt/rogue/leather/black
+	belt = /obj/item/storage/belt/rogue/leather
 	beltr = /obj/item/rogueweapon/whip/antique
 	beltl = /obj/item/keyring/dungeoneer
-	backr = /obj/item/storage/backpack/rogue/satchel/black
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/combat/whipsflails, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 4, TRUE)
@@ -49,8 +47,7 @@
 		H.mind.adjust_skillrank(/datum/skill/misc/climbing, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/craft/cooking, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/sewing, 1, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/treatment, 2, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/medicine, 2, TRUE)
 	H.change_stat("strength", 3)
 	H.change_stat("intelligence", -2)
 	H.change_stat("endurance", 2)

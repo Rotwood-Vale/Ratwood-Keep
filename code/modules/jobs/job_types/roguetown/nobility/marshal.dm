@@ -13,9 +13,9 @@
 				Plan with the Councillors on any issues, laws, judgements, and construction that are required to adapt to the new world. \
 				Your two assistant Councillors are there to fuel your wonderful ideas, lifting the weight of responsibility off your shoulders. \
 				Delegate tasks, enforce taxes and justice upon the unruly. Keep the town running, and enrich it with new architecture. \
-				After all, the Duke entrusted you with leading and maintaining his military might. \
-				It may be the Duke's land, but you pull the strings in this town. \
-				All in the name of fulfilling your duty to your Duke."
+				After all, the Lord entrusted you with leading and maintaining his military might. \
+				It may be the Lord's land, but you pull the strings in this town. \
+				All in the name of fulfilling your duty to your Lord."
 	whitelist_req = FALSE
 
 	spells = list(/obj/effect/proc_holder/spell/self/convertrole/guard, /obj/effect/proc_holder/spell/self/convertrole/bog)
@@ -131,7 +131,7 @@
 /proc/find_lord(required_stat = CONSCIOUS)
 	var/mob/living/lord
 	for(var/mob/living/carbon/human/H in GLOB.human_list)
-		if(!H.mind || H.job != "Duke" || (H.stat > required_stat))
+		if(!H.mind || H.job != "Lord" || (H.stat > required_stat))
 			continue
 		lord = H
 		break
@@ -141,7 +141,7 @@
 	var/choice = alert(lord, "The Royal Marshal requests a new law!\n[requested_law]", "MARTIAL LAW REQUEST", "Yes", "No")
 	if(choice != "Yes" || QDELETED(lord) || lord.stat > CONSCIOUS)
 		if(marshal)
-			to_chat(marshal, span_warning("The Duke has denied the request for a new law!"))
+			to_chat(span_warning("The Lord has denied the request for a new law!"))
 		return
 	make_law(requested_law)
 
@@ -151,7 +151,7 @@
 	var/choice = alert(lord, "The Royal Marshal requests the removal of a law!\n[GLOB.laws_of_the_land[requested_law]]", "MARTIAL LAW REQUEST", "Yes", "No")
 	if(choice != "Yes" || QDELETED(lord) || lord.stat > CONSCIOUS)
 		if(marshal)
-			to_chat(marshal, span_warning("The Duke has denied the request for a law removal!"))
+			to_chat(span_warning("The Lord has denied the request for a law removal!"))
 		return
 	remove_law(requested_law)
 
@@ -159,7 +159,7 @@
 	var/choice = alert(lord, "The Royal Marshal requests a purge of all laws!", "MARSHAL PURGE REQUEST", "Yes", "No")
 	if(choice != "Yes" || QDELETED(lord) || lord.stat > CONSCIOUS)
 		if(marshal)
-			to_chat(marshal, span_warning("The Duke has denied the request for a purge of all laws!"))
+			to_chat(span_warning("The Lord has denied the request for a purge of all laws!"))
 		return
 	purge_laws()
 
@@ -167,6 +167,6 @@
 	var/choice = alert(lord, "The Royal Marshal requests to outlaw someone!\n[requested_outlaw]", "MARSHAL OUTLAW REQUEST", "Yes", "No")
 	if(choice != "Yes" || QDELETED(lord) || lord.stat > CONSCIOUS)
 		if(marshal)
-			to_chat(marshal, span_warning("The Duke has denied the request for declaring an outlaw!"))
+			to_chat(span_warning("The Lord has denied the request for declaring an outlaw!"))
 		return
 	make_outlaw(requested_outlaw)

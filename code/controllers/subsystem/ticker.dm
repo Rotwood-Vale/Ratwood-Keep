@@ -67,7 +67,7 @@ SUBSYSTEM_DEF(ticker)
 	var/end_state = "undefined"
 	var/job_change_locked = FALSE
 	var/list/royals_readied = list()
-	var/rulertype = "Duke" // reports whether duke or duchess rules
+	var/rulertype = "Lord" // reports whether lord or lady rules
 	var/rulermob = null // reports what the ruling mob is.
 	var/failedstarts = 0
 	var/list/manualmodes = list()
@@ -250,7 +250,7 @@ SUBSYSTEM_DEF(ticker)
 	var/list/readied_jobs = list()
 	var/list/required_jobs = list()
 
-	//var/list/required_jobs = list("Duke", "Duchess","Merchant") //JTGSZ - 4/11/2024 - This was the prev set of required jobs to go with the hardcoded checks commented out below
+	//var/list/required_jobs = list("Lady","Lord","Merchant") //JTGSZ - 4/11/2024 - This was the prev set of required jobs to go with the hardcoded checks commented out below
 
 	for(var/V in required_jobs)
 		for(var/mob/dead/new_player/player in GLOB.player_list)
@@ -264,7 +264,7 @@ SUBSYSTEM_DEF(ticker)
 							continue
 				readied_jobs.Add(V)
 		/*
-			// These else conditions stop the round from starting unless there is a merchant, duke and duchess.
+			// These else conditions stop the round from starting unless there is a merchant, lord, and lady.
 		else
 			var/list/stuffy = list("Set a Ruler to 'high' in your class preferences to start the game!", "PLAY Ruler NOW!", "A Ruler is required to start.", "Pray for a Ruler.", "One day, there will be a Ruler.", "Just try playing Ruler.", "If you don't play Ruler, the game will never start.", "We need at least one Ruler to start the game.", "We're waiting for you to pick Ruler to start.", "Still no Ruler is readied..", "I'm going to lose my mind if we don't get a Ruler readied up.","No. The game will not start because there is no Ruler.","What's the point of ROGUETOWN without a Ruler?")
 			to_chat(world, span_purple("[pick(stuffy)]"))

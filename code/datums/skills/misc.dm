@@ -3,6 +3,9 @@
 	name = "Misc"
 	desc = ""
 
+/datum/skill/misc/alchemy
+	name = "Alchemy"
+
 /datum/skill/misc/athletics
 	name = "Athletics"
 
@@ -28,8 +31,9 @@
 /datum/skill/misc/music
 	name = "Music"
 
-/datum/skill/misc/treatment
-	name = "Treatment"
+/datum/skill/misc/medicine
+	name = "Medicine"
+	dream_cost_base = 3
 
 /datum/skill/misc/sewing
 	name = "Sewing"

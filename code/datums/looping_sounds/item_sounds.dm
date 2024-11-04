@@ -73,7 +73,31 @@
 	volume = 50
 	extra_range = -2
 	vary = TRUE
-	
+
+/datum/looping_sound/streetlamp1
+	mid_sounds = list('sound/misc/loops/StLight1.ogg')
+	mid_length = 60
+	volume = 40
+	extra_range = 0
+	vary = TRUE
+	ignore_wallz = FALSE
+
+/datum/looping_sound/streetlamp2
+	mid_sounds = list('sound/misc/loops/StLight2.ogg')
+	mid_length = 40
+	volume = 40
+	extra_range = 0
+	vary = TRUE
+	ignore_wallz = FALSE
+
+/datum/looping_sound/streetlamp3
+	mid_sounds = list('sound/misc/loops/StLight3.ogg')
+	mid_length = 50
+	volume = 40
+	extra_range = 0
+	vary = TRUE
+	ignore_wallz = FALSE
+
 /datum/looping_sound/clockloop
 	mid_sounds = list('sound/misc/clockloop.ogg')
 	mid_length = 20

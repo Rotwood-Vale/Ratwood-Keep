@@ -19,7 +19,6 @@
 	chopping_sound = TRUE
 	foodtype = MEAT
 	drop_sound = 'sound/foley/dropsound/gen_drop.ogg'
-	mill_result = /obj/item/reagent_containers/powder/alch/mincem
 
 /obj/item/reagent_containers/food/snacks/rogue/meat/steak
 	ingredient_size = 2
@@ -154,6 +153,5 @@
 
 /*	........   Fish sounds   ................ */
 /obj/item/reagent_containers/food/snacks/fish
-	mill_result = /obj/item/reagent_containers/powder/alch/mincef
 	chopping_sound = TRUE
 

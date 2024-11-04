@@ -29,7 +29,6 @@
 	accept_hand = TRUE
 	implements = list(
 		TOOL_BONESETTER = 80,
-		TOOL_IMPROVHEMOSTAT = 60,
 		TOOL_HAND = 40,
 	)
 	target_mobtypes = list(/mob/living/carbon/human, /mob/living/carbon/monkey)

@@ -4,11 +4,10 @@
 	antagpanel_category = "Werewolf"
 	job_rank = ROLE_WEREWOLF
 	confess_lines = list(
-		"THE BEAST INSIDE ME!",
-		"BEWARE THE BEAST!",
+		"THE BEAST INSIDE ME!", 
+		"BEWARE THE BEAST!", 
 		"MY LUPINE MARK!",
 	)
-	rogue_enabled = TRUE
 	var/special_role = ROLE_WEREWOLF
 	var/transformed
 	var/transforming
@@ -100,7 +99,7 @@
 	return wolfy
 
 /mob/living/carbon/human/proc/werewolf_feed(mob/living/carbon/human/target)
-	if(!istype(target))
+	if(!istype(target)) 
 		return
 	if(target.mind)
 		if(target.mind.has_antag_datum(/datum/antagonist/zombie))
@@ -151,8 +150,8 @@
 	lefthand_file = null
 	righthand_file = null
 	icon = 'icons/roguetown/weapons/32.dmi'
-	max_blade_int = 999999
-	max_integrity = 999999
+	max_blade_int = -1
+	max_integrity = -1
 	force = 25
 	block_chance = 0
 	wdefense = 4
@@ -179,4 +178,3 @@
 	. = ..()
 	ADD_TRAIT(src, TRAIT_NODROP, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_NOEMBED, TRAIT_GENERIC)
-

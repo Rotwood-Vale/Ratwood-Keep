@@ -3,7 +3,7 @@
 	icon = 'icons/roguetown/misc/tallstructure.dmi'
 	icon_state = "streetlantern1"
 	base_state = "streetlantern"
-	brightness = 10.9
+	brightness = 5
 	density = FALSE
 	var/obj/item/flashlight/flare/torch/torchy
 	fueluse = 0 //we use the torch's fuel

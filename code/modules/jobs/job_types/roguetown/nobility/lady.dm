@@ -1,5 +1,5 @@
 /datum/job/roguetown/lady
-	title = "Duchess Consort"
+	title = "Lady Consort"
 	flag = LADY
 	department_flag = NOBLEMEN
 	faction = "Station"
@@ -19,7 +19,7 @@
 	max_pq = null
 
 /datum/job/roguetown/exlady //just used to change the ladys title
-	title = "Duchess Dowager"
+	title = "Lady Dowager"
 	flag = LADY
 	department_flag = NOBLEMEN
 	faction = "Station"
@@ -60,7 +60,7 @@
 		H.mind.adjust_skillrank(/datum/skill/misc/climbing, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/athletics, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 4, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/treatment, 2, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/medicine, 2, TRUE)
 		H.change_stat("intelligence", 3)
 		H.change_stat("endurance", 3)
 		H.change_stat("speed", 2)
@@ -71,7 +71,7 @@
 	name = "Recruit Servant"
 	new_role = "Servant"
 	recruitment_faction = "Servants"
-	recruitment_message = "Serve the duchy, %RECRUIT!"
-	accept_message = "Yes, your highness!"
+	recruitment_message = "Serve the liege, %RECRUIT!"
+	accept_message = "FOR THE LIEGE!"
 	refuse_message = "I refuse."
 	charge_max = 100

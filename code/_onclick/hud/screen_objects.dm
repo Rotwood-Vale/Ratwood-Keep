@@ -795,7 +795,7 @@
 	var/mob/living/carbon/human/H = hud.mymob
 	if(H.mind && H.mind.antag_datums)
 		for(var/datum/antagonist/D in H.mind.antag_datums)
-			if(istype(D, /datum/antagonist/vampirelord) || istype(D, /datum/antagonist/vampire) || istype(D, /datum/antagonist/bandit) || istype(D, /datum/antagonist/lich))
+			if(istype(D, /datum/antagonist/vampirelord) || istype(D, /datum/antagonist/vampire) || istype(D, /datum/antagonist/bandit))
 				qdel(src)
 				return
 	if(H.advsetup)
@@ -1856,25 +1856,6 @@
 				hud_used.rmb_intent.update_icon()
 				hud_used.rmb_intent.collapse_intents()
 
-/mob/living/proc/cycle_rmb_intent()
-    if(!possible_rmb_intents?.len)
-        return
-
-    // Find the index of the current intent
-    var/index = possible_rmb_intents.Find(rmb_intent)
-
-    if(index == -1)
-        rmb_intent = possible_rmb_intents[1]
-    else
-        // Calculate the next index, wrapping around if at the end
-        index = (index % possible_rmb_intents.len) + 1
-        rmb_intent = possible_rmb_intents[index]
-
-    if(hud_used?.rmb_intent)
-    {
-        hud_used.rmb_intent.update_icon()
-        hud_used.rmb_intent.collapse_intents()
-    }
 
 /atom/movable/screen/time
 	name = "Sir Sun"
@@ -1904,14 +1885,12 @@
 
 /atom/movable/screen/rogfat
 	name = "fatigue"
-	desc = "My long-term weariness. Rest will be needed to recover this."
 	icon_state = "fat100"
 	icon = 'icons/mob/rogueheat.dmi'
 	screen_loc = rogueui_fat
 
 /atom/movable/screen/rogstam
 	name = "stamina"
-	desc = "How winded I am. I need only a moment to catch my breath."
 	icon_state = "stam100"
 	icon = 'icons/mob/rogueheat.dmi'
 	screen_loc = rogueui_fat

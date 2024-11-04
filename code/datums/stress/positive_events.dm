@@ -10,7 +10,7 @@
 
 /datum/stressevent/lovezizo
 	timer = 99999 MINUTES
-	stressadd = -10 
+	stressadd = -666 // :)
 	desc = "<span class='green'>ZIZOZIZOZIZO</span>"
 
 /datum/stressevent/viewsinpunish
@@ -136,9 +136,4 @@
 /datum/stressevent/perfume
 	stressadd = -1
 	desc = span_green("A soothing fragrance envelops me.")
-	timer = 10 MINUTES
-
-/datum/stressevent/guillotinekill
-	stressadd = -5
-	desc = span_green("A nice modern entertainmant.")
 	timer = 10 MINUTES

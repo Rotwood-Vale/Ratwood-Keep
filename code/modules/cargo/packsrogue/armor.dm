@@ -70,7 +70,7 @@
 
 /datum/supply_pack/rogue/armor/leather
 	name = "Leather Armor"
-	cost = 40
+	cost = 20
 	contains = list(
 					/obj/item/clothing/suit/roguetown/armor/leather,
 					/obj/item/clothing/suit/roguetown/armor/leather,

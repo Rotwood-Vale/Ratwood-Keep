@@ -111,7 +111,7 @@
 		var/obj/projectile/BB = CB.BB
 		BB.damage = BB.damage * damfactor
 		if(HAS_TRAIT(user, TRAIT_TINY))
-			BB.damage = (BB.damage * 0.1)
+			BB.damage = (BB.damage * 0.3)
 	cocked = FALSE
 	..()
 

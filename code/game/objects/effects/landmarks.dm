@@ -120,22 +120,16 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	jobspawn_override = list("Town Seelie")
 	delete_after_roundstart = FALSE
 
-/obj/effect/landmark/start/desertriderlate // Left behind for map compatibility
+/obj/effect/landmark/start/desertriderlate
 	name = "DesertRiderlate"
 	icon_state = "arrow"
-	jobspawn_override = list("Mercenary")
+	jobspawn_override = list("Desert Rider Mercenary", "Sellsword")
 	delete_after_roundstart = FALSE
 
-/obj/effect/landmark/start/grenzelhoftlate // Left behind for map compatibility
+/obj/effect/landmark/start/grenzelhoftlate
 	name = "Grenzelhoftlate"
 	icon_state = "arrow"
-	jobspawn_override = list("Mercenary")
-	delete_after_roundstart = FALSE
-
-/obj/effect/landmark/start/mercenarylate
-	name = "Mercenarylate"
-	icon_state = "arrow"
-	jobspawn_override = list("Mercenary")
+	jobspawn_override = list("Grenzelhoft Mercenary", "Sellsword")
 	delete_after_roundstart = FALSE
 
 /obj/effect/landmark/start/villagerlate
@@ -145,7 +139,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	delete_after_roundstart = FALSE
 
 /obj/effect/landmark/start/lord
-	name = "Duke"
+	name = "Lord"
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/knight
@@ -273,7 +267,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/grabber
-	name = "Thug"
+	name = "Grabber"
 	icon_state = "arrow"
 
 
@@ -286,7 +280,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/guildsmith
-	name = "Guild Smith"
+	name = "Guild smith"
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/seamster
@@ -297,8 +291,8 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	name = "Alchemist"
 	icon_state = "arrow"
 
-/obj/effect/landmark/start/artificer
-	name = "Artificer"
+/obj/effect/landmark/start/mason
+	name = "Mason"
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/scribe
@@ -312,15 +306,6 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 /obj/effect/landmark/start/beastmonger
 	name = "Butcher"
 	icon_state = "arrow"
-
-/obj/effect/landmark/start/doctor
-	name = "Clinic Physician"
-	icon_state = "arrow"
-
-/obj/effect/landmark/start/doctorlate
-	name = "Clinic Physician"
-	icon_state = "arrow"
-	delete_after_roundstart = FALSE
 
 /obj/effect/landmark/start/cook
 	name = "Cook"
@@ -339,7 +324,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/lady
-	name = "Duchess Consort"
+	name = "Lady Consort"
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/prince
@@ -829,7 +814,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark/start/new_player)
 /obj/effect/landmark/underworldcoin
 	name = "ferryman coin"
 
-/obj/effect/landmark/underworldsafe // To prevent demons spawn camping.
+/obj/effect/landmark/underworldsafe // To prevent demons spawn camping will save a lot of ear rape.
 	name = "safe zone"
 
 GLOBAL_LIST_EMPTY(travel_tile_locations)

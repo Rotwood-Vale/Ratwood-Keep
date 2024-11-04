@@ -18,7 +18,6 @@
 	var/fillsounds
 	var/poursounds
 
-
 /obj/item/reagent_containers/weather_trigger(W)
 	if(W==/datum/weather/rain)
 		START_PROCESSING(SSweather,src)

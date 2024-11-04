@@ -45,8 +45,7 @@
 	skill_median = SKILL_LEVEL_EXPERT
 	/// Implements used to extract an organ - This really should be split into two different steps...
 	var/list/implements_extract = list(
-		TOOL_HEMOSTAT = 90,
-		TOOL_IMPROVHEMOSTAT = 70,
+		TOOL_HEMOSTAT = 80,
 		TOOL_CROWBAR = 65,
 		TOOL_HAND = 60,
 	)
@@ -159,9 +158,8 @@
 	time = 5.0 SECONDS
 	accept_hand = FALSE
 	implements = list(
-		TOOL_SCALPEL = 80, 
+		TOOL_SCALPEL = 75, 
 		TOOL_SAW = 60,
-		TOOL_IMPROVSAW = 50,
 		TOOL_SHARP = 40,
 	)
 	target_mobtypes = list(/mob/living/carbon/human, /mob/living/carbon/monkey)

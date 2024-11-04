@@ -21,14 +21,13 @@
 		var/mob/living/carbon/human/human_target = targets[1]
 		human_target.check_for_injuries(user)
 		return TRUE
-	revert_cast()
 	return FALSE
 
 /obj/effect/proc_holder/spell/invoked/diagnose/secular
 	name = "Secular Diagnosis"
 	overlay_state = "diagnose"
 	range = 1
-	associated_skill = /datum/skill/misc/treatment
+	associated_skill = /datum/skill/misc/medicine
 	miracle = FALSE
 	devotion_cost = 0 //Doctors are not clerics
 
@@ -128,7 +127,6 @@
 				limb.skeletonized = FALSE
 		human_target.update_body()
 		return TRUE
-	revert_cast()
 	return FALSE
 
 // Cure rot
@@ -201,7 +199,6 @@
 		else
 			target.visible_message(span_warning("The rot fails to leave [target]'s body!"), span_warning("I feel no different..."))
 		return TRUE
-	revert_cast()
 	return FALSE
 
 /obj/effect/proc_holder/spell/invoked/cure_rot/cast_check(skipcharge = 0,mob/user = usr)

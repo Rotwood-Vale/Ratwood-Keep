@@ -45,12 +45,12 @@
 		OFFSET_SHIRT_F = list(0,0), OFFSET_ARMOR_F = list(0,0), OFFSET_UNDIES_F = list(0,0), \
 		)
 	specstats = list(
-		"strength" = -1,
-		"perception" = 1,
-		"intelligence" = 1,
-		"constitution" = -1,
-		"endurance" = 0,
-		"speed" = 1,
+		"strength" = -1, 
+		"perception" = 1, 
+		"intelligence" = 1, 
+		"constitution" = -1, 
+		"endurance" = 0, 
+		"speed" = 1, 
 		"fortune" = 0
 		)
 	enflamed_icon = "widefire"
@@ -79,11 +79,6 @@
 	body_markings = list(
 		/datum/body_marking/tonage,
 	)
-	languages = list(
-		/datum/language/common,
-		/datum/language/elvish
-	)
-
 
 /datum/species/human/halfelf/get_skin_list()
 	return list(

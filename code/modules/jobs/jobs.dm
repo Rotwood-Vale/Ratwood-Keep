@@ -60,8 +60,8 @@ GLOBAL_LIST_INIT(nonhuman_positions, list(
 	ROLE_PAI))
 
 GLOBAL_LIST_INIT(noble_positions, list(
-	"Duke",
-	"Duchess Consort",
+	"Lord",
+	"Lady Consort",
 	"Heir",
 	"Retinue Captain",
 	"Royal Marshal",
@@ -85,7 +85,6 @@ GLOBAL_LIST_INIT(garrison_positions, list(
 	"Dungeoneer",
 	"Gatemaster",
 	"Town Sheriff",
-	"Veteran",
 ))
 
 GLOBAL_LIST_INIT(church_positions, list(
@@ -102,13 +101,12 @@ GLOBAL_LIST_INIT(yeoman_positions, list(
 	"Merchant",
 	"Barkeep",
 	"Archivist",
-	"Guild Smith",
+	"Guild smith",
 	"Seamster",
 	"Alchemist",
-	"Artificier",
+	"Mason",
 	"Scribe",
 	"Village Elder",
-	"Clinic Physician",
 ))
 
 GLOBAL_LIST_INIT(peasant_positions, list(
@@ -130,11 +128,13 @@ GLOBAL_LIST_INIT(peasant_positions, list(
 	"Town Seelie",
 	"Adventurer",
 	"Pilgrim",
-	"Bandit",
 ))
 
 GLOBAL_LIST_INIT(mercenary_positions, list(
-	"Mercenary",
+	"Grenzelhoft Mercenary",
+	"Desert Rider Mercenary",
+	"Sellsword",
+	"Veteran",
 ))
 
 GLOBAL_LIST_INIT(youngfolk_positions, list(

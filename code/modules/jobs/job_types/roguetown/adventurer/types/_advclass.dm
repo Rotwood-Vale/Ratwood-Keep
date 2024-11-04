@@ -12,7 +12,6 @@
 	var/min_pq = -100
 
 	var/horse = FALSE
-	var/torch = TRUE
 	var/vampcompat = TRUE
 	var/list/traits_applied
 	var/cmode_music
@@ -38,10 +37,9 @@
 
 	//sleep(1)
 	//testing("[H] spawn troch")
-	if(torch)
-		var/obj/item/flashlight/flare/torch/T = new()
-		T.spark_act()
-		H.put_in_hands(T, forced = TRUE)
+	var/obj/item/flashlight/flare/torch/T = new()
+	T.spark_act()
+	H.put_in_hands(T, forced = TRUE)
 
 	var/turf/TU = get_turf(H)
 	if(TU)
@@ -106,6 +104,6 @@
 		H.change_stat(S, plus_factor)
 
 
-//Final proc in the set for really stupid shit
+//Final proc in the set for really retarded shit
 ///datum/advclass/proc/extra_slop_proc_ending(mob/living/carbon/human/H)
 

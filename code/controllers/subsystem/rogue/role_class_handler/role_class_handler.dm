@@ -44,7 +44,7 @@ SUBSYSTEM_DEF(role_class_handler)
 
 
 /*
-	We init and build the silly lists
+	We init and build the retard azz listszz
 */
 /datum/controller/subsystem/role_class_handler/Initialize()
 	build_dumbass_category_lists()
@@ -67,12 +67,12 @@ SUBSYSTEM_DEF(role_class_handler)
 	init_subtypes(/datum/advclass, all_classes) // Init all the classes
 	sorted_class_categories[CTAG_ALLCLASS] = all_classes
 
-	//Time to sort these folk, and sort them we shall.
-	for(var/datum/advclass/classism_datum in all_classes)
-		for(var/ctag in classism_datum.category_tags)
+	//Time to sort these retards, and sort them we shall.
+	for(var/datum/advclass/retard_datum in all_classes)
+		for(var/ctag in retard_datum.category_tags)
 			if(!sorted_class_categories[ctag]) // New cat
 				sorted_class_categories[ctag] = list()
-			sorted_class_categories[ctag] += classism_datum
+			sorted_class_categories[ctag] += retard_datum
 
 	//Well that about covers it really.
 
@@ -165,8 +165,8 @@ SUBSYSTEM_DEF(role_class_handler)
 
 	if(!(target_datum.maximum_possible_slots == -1)) // Is the class not set to infinite?
 		if((target_datum.total_slots_occupied >= target_datum.maximum_possible_slots)) // We just hit a cap, iterate all the class handlers and inform them.
-			for(var/CUCKS in class_select_handlers) //class_handler
-				var/datum/class_select_handler/found_menu = class_select_handlers[CUCKS] //class_handler
+			for(var/CUCKS in class_select_handlers)
+				var/datum/class_select_handler/found_menu = class_select_handlers[CUCKS]
 
 				if(target_datum in found_menu.rolled_classes) // We found the target datum in one of the classes they rolled aka in the list of options they got visible,
 					found_menu.rolled_class_is_full(target_datum) //  inform the datum of its error.

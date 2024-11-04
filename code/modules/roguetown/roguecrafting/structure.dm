@@ -10,16 +10,6 @@
 		return FALSE
 	return ..()
 
-/datum/crafting_recipe/roguetown/structure/pillory
-	name = "pillory"
-	result = /obj/structure/pillory/double/custom
-	reqs = list(/obj/item/grown/log/tree/small = 1,
-				/obj/item/ingot/iron = 1,)
-	verbage_simple = "construct"
-	verbage = "constructs"
-	skillcraft = /datum/skill/craft/carpentry
-	craftdiff = 2
-
 /datum/crafting_recipe/roguetown/structure/handcart
 	name = "handcart"
 	result = /obj/structure/handcart
@@ -27,24 +17,6 @@
 				/obj/item/rope = 1)
 	verbage_simple = "construct"
 	verbage = "constructs"
-
-/datum/crafting_recipe/roguetown/structure/noose
-	name = "noose"
-	result = /obj/structure/noose
-	reqs = list(/obj/item/rope = 1)
-	verbage = "tie"
-	craftsound = 'sound/foley/noose_idle.ogg'
-	ontile = TRUE
-
-/datum/crafting_recipe/roguetown/structure/noose/TurfCheck(mob/user, turf/T)
-	var/turf/checking = get_step_multiz(T, UP)
-	if(!checking)
-		return FALSE
-	if(!isopenturf(checking))
-		return FALSE
-	if(istype(checking,/turf/open/transparent/openspace))
-		return FALSE
-	return TRUE
 
 /datum/crafting_recipe/roguetown/structure/psycrss
 	name = "wooden cross"
@@ -578,38 +550,6 @@
 	verbage = "constructs"
 	skillcraft = /datum/skill/craft/carpentry
 	craftdiff = 1
-
-/datum/crafting_recipe/roguetown/structure/display_stand
-	name = "display stand"
-	result = /obj/structure/mannequin
-	reqs = list(/obj/item/grown/log/tree/small = 1,
-				/obj/item/grown/log/tree/stick = 3)
-	verbage = "construct"
-	craftsound = 'sound/foley/Building-01.ogg'
-	skillcraft = /datum/skill/craft/carpentry
-	craftdiff = 2
-
-/datum/crafting_recipe/roguetown/structure/mannequin
-	name = "mannequin"
-	result = /obj/structure/mannequin/male
-	reqs = list(/obj/item/grown/log/tree/small = 1,
-				/obj/item/natural/cloth = 1,
-				/obj/item/ingot/iron = 1)
-	verbage = "construct"
-	craftsound = 'sound/foley/Building-01.ogg'
-	skillcraft = /datum/skill/craft/carpentry
-	craftdiff = 2
-
-/datum/crafting_recipe/roguetown/structure/mannequin_f
-	name = "feminine mannequin"
-	result = /obj/structure/mannequin/male/female
-	reqs = list(/obj/item/grown/log/tree/small = 1,
-				/obj/item/natural/cloth = 1,
-				/obj/item/ingot/iron = 1)
-	verbage = "construct"
-	craftsound = 'sound/foley/Building-01.ogg'
-	skillcraft = /datum/skill/craft/carpentry
-	craftdiff = 2
 
 /datum/crafting_recipe/roguetown/structure/passage
 	name = "passage"

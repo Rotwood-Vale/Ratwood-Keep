@@ -846,7 +846,7 @@
 /datum/species/golem/cardboard/spec_attacked_by(obj/item/I, mob/living/user, obj/item/bodypart/affecting, intent, mob/living/carbon/human/H)
 	. = ..()
 	if(user != H)
-		return FALSE //forced reproduction is noncon.
+		return FALSE //forced reproduction is rape.
 	if(istype(I, /obj/item/stack/sheet/cardboard))
 		var/obj/item/stack/sheet/cardboard/C = I
 		if(last_creation + brother_creation_cooldown > world.time) //no cheesing dork
@@ -969,7 +969,7 @@
 
 /datum/action/innate/bonechill/Activate()
 	if(world.time < last_use + cooldown)
-		to_chat(owner, span_warning("I'm not ready yet to rattle my bones again!"))
+		to_chat(span_warning("I aren't ready yet to rattle my bones again!"))
 		return
 	owner.visible_message(span_warning("[owner] rattles [owner.p_their()] bones harrowingly."), span_notice("I rattle my bones"))
 	last_use = world.time

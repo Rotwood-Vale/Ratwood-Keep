@@ -1,5 +1,7 @@
-/datum/advclass/grenzelhoft
-	name = "Grenzelhoft Mercenary"
+/datum/job/roguetown/mercenary/grenzelhoft
+	title = "Grenzelhoft Mercenary"
+	flag = GRENZELHOFT
+	department_flag = MERCENARIES
 	tutorial = "Experts, Professionals, Expensive. Those are the first words that come to mind when the emperiate Grenzelhoft mercenary guild is mentioned. While you may work for coin like any common sellsword, mantaining the prestige of the guild will be of utmost priority."
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = list(
@@ -15,26 +17,31 @@
 		/datum/species/tabaxi
 	)
 	outfit = /datum/outfit/job/roguetown/mercenary/grenzelhoft
-	maximum_possible_slots = 10
-	min_pq = 2
-	torch = FALSE
+	display_order = JDO_GRENZELHOFT
+	selection_color = JCOLOR_MERCENARY
+	faction = "Station"
+	total_positions = 4
+	spawn_positions = 4
+	min_pq = 2 //good fragger role
+	max_pq = null
 	cmode_music = 'sound/music/combat_grenzelhoft.ogg'
-	category_tags = list(CTAG_MERCENARY)
 
 /datum/outfit/job/roguetown/mercenary/grenzelhoft/pre_equip(mob/living/carbon/human/H)
 	..()
 	wrists = /obj/item/clothing/wrists/roguetown/bracers
 	belt = /obj/item/storage/belt/rogue/leather
-	beltl = /obj/item/keyring/mercenary
+	beltl = /obj/item/flashlight/flare/torch
 	beltr = /obj/item/storage/belt/rogue/pouch/coins/poor
 	neck = /obj/item/clothing/neck/roguetown/gorget
 	shirt = /obj/item/clothing/suit/roguetown/shirt/grenzelhoft
 	head = /obj/item/clothing/head/roguetown/grenzelhofthat
-	armor = /obj/item/clothing/suit/roguetown/armor/blacksteel/cuirass
+	armor = /obj/item/clothing/suit/roguetown/armor/plate/half/grenzelhoft
 	pants = /obj/item/clothing/under/roguetown/grenzelpants
 	shoes = /obj/item/clothing/shoes/roguetown/armor/grenzelhoft
 	gloves = /obj/item/clothing/gloves/roguetown/grenzelgloves
 	backr = /obj/item/storage/backpack/rogue/satchel
+
+	backpack_contents = list(/obj/item/roguekey/mercenary)
 
 	//quick and gay way to do random loadouts
 	var/equipment = rand(1, 3)

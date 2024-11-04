@@ -539,7 +539,7 @@
 	. = ..()
 	desc +=  span_notice("The writing reads '[random_reagent.name]'.")
 
-/*/obj/item/pestle
+/obj/item/pestle
 	name = "pestle"
 	desc = "A small, round-end stone tool oft used by physicians to crush and mix medicine."
 	icon = 'icons/obj/chemical.dmi'
@@ -648,7 +648,7 @@
 		grinded = I
 		return
 	to_chat(user, span_warning("I can't grind this!"))
-*/                                                                                                                           //////////////////// moved to sawbones.dm
+
 /obj/item/reagent_containers/glass/saline
 	name = "saline canister"
 	volume = 5000

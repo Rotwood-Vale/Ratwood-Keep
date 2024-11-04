@@ -51,7 +51,7 @@
 	var/list/target_mobtypes = list(/mob/living/carbon)
 
 	/// Skill used to perform this surgery step
-	var/skill_used = /datum/skill/misc/treatment
+	var/skill_used = /datum/skill/misc/medicine
 	/// Necessary skill MINIMUM to perform this surgery step, of skill_used
 	var/skill_min = SKILL_LEVEL_NOVICE
 	/// Skill median used to apply success and speed bonuses

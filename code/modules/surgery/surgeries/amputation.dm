@@ -19,8 +19,7 @@
 /datum/surgery_step/amputate
 	name = "Amputate"
 	implements = list(
-		TOOL_SCALPEL = 80,
-		TOOL_IMPROVSAW = 70,
+		TOOL_SCALPEL = 75, 
 		TOOL_SAW = 60,
 		TOOL_SHARP = 40,
 	)

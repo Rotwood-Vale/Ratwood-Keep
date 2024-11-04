@@ -155,8 +155,7 @@
 				newamt--
 				BUFPER++
 			STAPER = newamt
-			see_override = initial(src.see_invisible) + (STAPER/5) // this is pretty bad but 20 PERCEPTION will give you 4 see_invis (significant)
-			update_sight() //Needed.
+
 			update_fov_angles()
 
 		if("intelligence")

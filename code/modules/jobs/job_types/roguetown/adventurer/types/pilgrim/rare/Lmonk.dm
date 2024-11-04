@@ -54,10 +54,9 @@
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 6, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 6, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/treatment, 6, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/medicine, 6, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 6, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/magic/holy, 6, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
 		if(H.age == AGE_OLD) // Old age debuffs you severely universally, except for intelligence
 			H.change_stat("intelligence", 4)
 			H.change_stat("speed", -3)

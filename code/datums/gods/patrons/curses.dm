@@ -149,12 +149,12 @@
 /datum/curse/atheism/on_gain(mob/living/carbon/human/owner)
 	. = ..()
 	old_patron = owner.patron
-	owner.set_patron(/datum/patron/godless)
+	owner.patron = /datum/patron/godless
 	owner.gain_trauma(/datum/brain_trauma/mild/phobia/religion)
 
 /datum/curse/atheism/on_loss(mob/living/carbon/human/owner)
 	. = ..()
-	owner.set_patron(old_patron)
+	owner.patron = old_patron
 	owner.cure_trauma_type(/datum/brain_trauma/mild/phobia/religion)
 
 /datum/curse/zizo/on_gain(mob/living/carbon/human/owner)

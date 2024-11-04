@@ -251,7 +251,7 @@
 			contents += "<center>Stockpile<BR>"
 			contents += "--------------<BR>"
 			contents += "Treasury: [SStreasury.treasury_value]m<BR>"
-			contents += "Duke's Tax: [SStreasury.tax_value*100]%<BR>"
+			contents += "Lord's Tax: [SStreasury.tax_value*100]%<BR>"
 			contents += "Guild's Tax: [SStreasury.queens_tax*100]%</center><BR>"
 			for(var/datum/roguestock/stockpile/A in SStreasury.stockpile_datums)
 				contents += "[A.name]<BR>"
@@ -268,7 +268,7 @@
 			contents += "<center>Imports<BR>"
 			contents += "--------------<BR>"
 			contents += "Treasury: [SStreasury.treasury_value]m<BR>"
-			contents += "Duke's Tax: [SStreasury.tax_value*100]%<BR>"
+			contents += "Lord's Tax: [SStreasury.tax_value*100]%<BR>"
 			contents += "Guild's Tax: [SStreasury.queens_tax*100]%</center><BR>"
 			for(var/datum/roguestock/import/A in SStreasury.stockpile_datums)
 				contents += "[A.name]<BR>"
@@ -281,7 +281,7 @@
 			contents += "<center>Bounties<BR>"
 			contents += "--------------<BR>"
 			contents += "Treasury: [SStreasury.treasury_value]m<BR>"
-			contents += "Duke's Tax: [SStreasury.tax_value*100]%</center><BR>"
+			contents += "Lord's Tax: [SStreasury.tax_value*100]%</center><BR>"
 			for(var/datum/roguestock/bounty/A in SStreasury.stockpile_datums)
 				contents += "[A.name]<BR>"
 				contents += "[A.desc]<BR>"
