@@ -99,7 +99,7 @@
 
 /mob/living/carbon/spirit/proc/pickup_and_wear(obj/item/clothing/C)
 	if(!equip_to_appropriate_slot(C))
-		monkeyDrop(get_item_by_slot(C)) // remove the existing item if worn
+		monkeyDrop(C) // remove the existing item if worn
 		addtimer(CALLBACK(src, PROC_REF(equip_to_appropriate_slot), C), 5)
 
 /mob/living/carbon/spirit/resist_restraints()

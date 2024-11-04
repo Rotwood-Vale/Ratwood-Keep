@@ -26,7 +26,7 @@
 	for(var/i in linked_stasisbeds)
 		var/obj/machinery/stasis/SB = i
 		SB.op_computer = null
-	..()
+	return ..()
 
 /obj/machinery/computer/operating/attackby(obj/item/O, mob/user, params)
 	if(istype(O, /obj/item/disk/surgery))

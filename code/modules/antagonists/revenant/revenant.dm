@@ -442,7 +442,8 @@
 /obj/item/ectoplasm/revenant/Destroy()
 	if(!QDELETED(revenant))
 		qdel(revenant)
-	..()
+	revenant = null
+	return ..()
 
 //objectives
 /datum/objective/revenant
