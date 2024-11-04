@@ -131,11 +131,7 @@
 	body_parts_covered = NECK
 	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT, BCLASS_TWIST)
 	blocksound = PLATEHIT
-<<<<<<< HEAD
-	clothing_flags = CANT_SLEEP_IN
 	sellprice = 15
-=======
->>>>>>> main
 
 /obj/item/clothing/neck/roguetown/gorget/prisoner/Initialize()
 	. = ..()
