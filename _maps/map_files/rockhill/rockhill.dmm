@@ -26814,15 +26814,6 @@
 "yky" = (
 /turf/open/floor/rogue/ruinedwood/turned,
 /area/rogue/indoors/town/tavern)
-"ykJ" = (
-/mob/living/simple_animal/hostile/retaliate/poison/snake{
-	tame = 1;
-	name = "Ozium";
-	faction = list("station", "neutral", "cows");
-	unique_name = Ozium;
-	},
-/turf/open/floor/rogue/churchmarble,
-/area/rogue/indoors/town)
 "ykQ" = (
 /obj/machinery/light/rogue/wallfire/candle/blue/r,
 /turf/open/floor/rogue/ruinedwood,
@@ -317501,7 +317492,7 @@ kJI
 kJI
 ucq
 dLH
-ykJ
+dLH
 dLH
 aul
 gFa
