@@ -827,7 +827,7 @@
 
 /obj/item/storage/fancy/pilltin
 	name = "pill tin"
-	desc = "a tin for all your pill needs, snake branded"
+	desc = "A tin for all your pill needs, snake branded"
 	icon = 'icons/roguetown/items/surgery.dmi'
 	icon_state = "pilltin"
 	w_class = WEIGHT_CLASS_TINY
@@ -876,7 +876,7 @@
 
 /obj/item/storage/fancy/pilltinwake
 	name = "pill tin (wake)"
-	desc = "a tin for all your pill needs, snake branded"
+	desc = "A tin for all your pill needs, snake branded"
 	icon = 'icons/roguetown/items/surgery.dmi'
 	icon_state = "pilltin"
 	w_class = WEIGHT_CLASS_TINY
@@ -939,7 +939,7 @@
 
 /obj/item/storage/fancy/pilltinpink
 	name = "pill tin (pnk)"
-	desc = "a tin for all your pill needs, snake branded"
+	desc = "A tin for all your pill needs, snake branded"
 	icon = 'icons/roguetown/items/surgery.dmi'
 	icon_state = "pilltin"
 	w_class = WEIGHT_CLASS_TINY
@@ -1081,7 +1081,7 @@
 
 /obj/item/storage/fancy/ifak
 	name = "personal patch kit"
-	desc = "personal treatment pouch; has all you need to stop you or someone else from meeting necra. even comes with a lil guide scroll for the slow minded."
+	desc = "Personal treatment pouch; has all you need to stop you or someone else from meeting necra. even comes with a lil guide scroll for the slow minded."
 	icon = 'icons/roguetown/items/surgery.dmi'
 	icon_state = "ifak"
 	w_class = WEIGHT_CLASS_SMALL
@@ -1257,7 +1257,7 @@
 
 /obj/item/reagent_containers/pill/caffpill
 	name = "WAKE-UP"
-	desc = "a handful of pep-pills. a promise to make you both alert and have an uncomfortable amount of vigor for everyone involved. Who needs sleep anyway? thats how you get diddled by an orc!"
+	desc = "A handful of pep-pills. a promise to make you both alert and have an uncomfortable amount of vigor for everyone involved. Who needs sleep anyway? thats how you get diddled by an orc!"
 	icon_state = "pillg"
 	icon = 'icons/roguetown/items/surgery.dmi'
 	list_reagents = list(/datum/reagent/medicine/caffeine = 1, /datum/reagent/medicine/antihol = 10, /datum/reagent/consumable/coffee = 81) //coffee OD is safe. causes jitters for awhile.
@@ -1266,7 +1266,7 @@
 
 /obj/item/reagent_containers/pill/pnkpill
 	name = "PNKBAWLS"
-	desc = "a handful of pink little balls. says they restore vitality, you are pretty certain this is watered down red mixed with ash"
+	desc = "A handful of pink little balls. says they restore vitality, you are pretty certain this is watered down red mixed with ash"
 	icon_state = "pinkb"
 	icon = 'icons/roguetown/items/surgery.dmi'
 	list_reagents = list(/datum/reagent/ash = 15, /datum/reagent/iron = 15, /datum/reagent/medicine/healthpot = 24) //mug of red, bottle is 45u
@@ -1275,14 +1275,14 @@
 
 /obj/item/reagent_containers/hypospray/medipen/sty/detox
 	name = "DETOX"
-	desc = "well aint this funny? a snake curing toxin's and venoms. heresy... purges the body of all that is not natural."
+	desc = "Well aint this funny? a snake curing toxin's and venoms. heresy... purges the body of all that is not natural."
 	volume = 34
 	amount_per_transfer_from_this = 34
 	list_reagents = list(/datum/reagent/medicine/antihol = 10, /datum/reagent/medicine/pen_acid = 24)
 
 /obj/item/reagent_containers/hypospray/medipen/sealbottle/reju
 	name = "rejuv elixer"
-	desc = "special formulated body revitalizer; restores blood, helps seal wounds, helps to stabalize breathing and numbs pain with a non-addictive snake venom derived analgesic. Single dose. Caffeinated, just like the snake that made it."
+	desc = "Special formulated body revitalizer; restores blood, helps seal wounds, helps to stabalize breathing and numbs pain with a non-addictive snake venom derived analgesic. Single dose. Caffeinated, just like the snake that made it."
 	icon_state = "THEbottle"
 	volume = 16
 	amount_per_transfer_from_this = 16
@@ -1290,7 +1290,7 @@
 
 /obj/item/reagent_containers/hypospray/medipen/sealbottle/purify
 	name = "purifying elixer"
-	desc = "special formulated body purifier; A powerful drug that purifies the blood and seals wounds painfully on the body. flooding your blood with anything like this isnt exactly healthy but, if it stops you needing to use the word 'festering' to describe part of your body, it's worth it."
+	desc = "Special formulated body purifier; A powerful drug that purifies the blood and seals wounds painfully on the body. flooding your blood with anything like this isnt exactly healthy but, if it stops you needing to use the word 'festering' to describe part of your body, it's worth it."
 	icon_state = "THEbottle"
 	volume = 30
 	amount_per_transfer_from_this = 30
