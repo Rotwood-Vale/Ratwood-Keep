@@ -1,6 +1,6 @@
 /obj/item/storage/fancy/shhig
 	name = "Shhig Brand Zigs"
-	desc = "Dr. V's Shhig's; much like the image of serpents these zigs are synonymous with both healing and killing. Your life expectancy isnt very high anyway."
+	desc = "Shhig's Brand Zigs; much like the image of serpents these zigs are synonymous with both healing and killing. Your life expectancy isnt very high anyway."
 	icon = 'modular/Smoker/icon/smokable.dmi'
 	icon_state = "smokebox"
 	icon_type = "smoke"
@@ -25,14 +25,14 @@
 
 /obj/item/reagent_containers/hypospray/medipen/sty/snekbt
 	name = "Snake Bite"
-	desc = "Dr. V's;.....vim....and- Ask yourself this; What am I doing? It is litterally a fucking glowing viscous sludge you are about to put into your vascular system..."
+	desc = "Ask yourself this; What am I doing? It is litterally a fucking glowing viscous sludge you are about to put into your vascular system..."
 	volume = 10
 	amount_per_transfer_from_this = 10
 	list_reagents = list(/datum/reagent/drug/snekbt = 5, /datum/reagent/toxin/venom = 5)
 
 /obj/item/reagent_containers/hypospray/medipen/sty/nourish
 	name = "NOURISH"
-	desc = "Dr. V's nutritional suppliment; normal people eat and drink, but true champions NOURISH."
+	desc = "A nutritional suppliment; normal people eat and drink, but true champions NOURISH."
 	volume = 85
 	amount_per_transfer_from_this = 85
 	list_reagents = list(/datum/reagent/consumable/nutriment = 5, /datum/reagent/consumable/nutriment/vitamin = 3, /datum/reagent/water = 50) // as much water as a bottle. enough honey to IF good rng rolls get 30hp. 33% chance to decay into sugar, sugar has a 33% chance to decay into nutrients. so saturation varies.
