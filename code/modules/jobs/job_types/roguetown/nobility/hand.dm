@@ -5,7 +5,7 @@
 	faction = "Station"
 	total_positions = 1
 	spawn_positions = 1
-	allowed_races = RACES_SHUNNED_UP
+	allowed_races = RACES_SHUNNED_UP_PLUS_SEELIE
 	allowed_sexes = list(MALE, FEMALE)
 	outfit = /datum/outfit/job/roguetown/hand
 	display_order = JDO_HAND
@@ -21,9 +21,9 @@
 		return
 	if(!player.ckey)
 		return
-	for(var/mob/dead/new_player/Lord in GLOB.player_list)
-		if(Lord.mind.assigned_role == "Lord")
-			if(Lord.brohand == player.ckey)
+	for(var/mob/dead/new_player/duke in GLOB.player_list)
+		if(duke.mind.assigned_role == "Duke")
+			if(duke.brohand == player.ckey)
 				return TRUE
 */
 
@@ -34,7 +34,7 @@
 	shirt = /obj/item/clothing/suit/roguetown/armor/gambeson/lord
 	armor = /obj/item/clothing/suit/roguetown/armor/leather/vest/hand
 	shoes = /obj/item/clothing/shoes/roguetown/armor/nobleboot
-	belt = /obj/item/storage/belt/rogue/leather/hand
+	belt = /obj/item/storage/belt/rogue/leather/steel
 	backr = /obj/item/storage/backpack/rogue/satchel
 	backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger/steel/special = 1, /obj/item/keyring/hand = 1)
 	if(H.mind)
@@ -51,8 +51,13 @@
 		H.mind.adjust_skillrank(/datum/skill/combat/knives, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/stealing, 3, TRUE)
-		H.change_stat("strength", 2)
-		H.change_stat("perception", 3)
-		H.change_stat("intelligence", 3)
+		if(!isseelie(H))	//No stat changes for Seelie hands
+			H.change_stat("strength", 2)
+			H.change_stat("perception", 3)
+			H.change_stat("intelligence", 3)
+		else if(isseelie(H)) //Could just be an else, but prefer the extra layer
+			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/push_spell)			//Repulse, good for getting people away from the King
+			H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/roustame)			//Rous taming still makes sense for a Hand, a 'master of words' vibe. Summoning rats however does not - its undignified
+			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/slowdown_spell_aoe)	//Immobilizes for 3 seconds in a 3x3, seems fitting for a Hand to be able to calm the court room when theres chaos
 	ADD_TRAIT(H, TRAIT_NOBLE, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)

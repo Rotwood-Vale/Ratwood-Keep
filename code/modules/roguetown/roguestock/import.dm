@@ -11,16 +11,16 @@
 
 /obj/item/roguebin/crackers/Initialize()
 	. = ..()
-	new /obj/item/reagent_containers/food/snacks/rogue/crackerscooked(src)
-	new /obj/item/reagent_containers/food/snacks/rogue/crackerscooked(src)
-	new /obj/item/reagent_containers/food/snacks/rogue/crackerscooked(src)
-	new /obj/item/reagent_containers/food/snacks/rogue/crackerscooked(src)
-	new /obj/item/reagent_containers/food/snacks/rogue/crackerscooked(src)
-	new /obj/item/reagent_containers/food/snacks/rogue/crackerscooked(src)
-	new /obj/item/reagent_containers/food/snacks/rogue/crackerscooked(src)
-	new /obj/item/reagent_containers/food/snacks/rogue/crackerscooked(src)
-	new /obj/item/reagent_containers/food/snacks/rogue/crackerscooked(src)
-	new /obj/item/reagent_containers/food/snacks/rogue/crackerscooked(src)
+	new /obj/item/reagent_containers/food/snacks/rogue/foodbase/hardtack_raw/cooked(src)
+	new /obj/item/reagent_containers/food/snacks/rogue/foodbase/hardtack_raw/cooked(src)
+	new /obj/item/reagent_containers/food/snacks/rogue/foodbase/hardtack_raw/cooked(src)
+	new /obj/item/reagent_containers/food/snacks/rogue/foodbase/hardtack_raw/cooked(src)
+	new /obj/item/reagent_containers/food/snacks/rogue/foodbase/hardtack_raw/cooked(src)
+	new /obj/item/reagent_containers/food/snacks/rogue/foodbase/hardtack_raw/cooked(src)
+	new /obj/item/reagent_containers/food/snacks/rogue/foodbase/hardtack_raw/cooked(src)
+	new /obj/item/reagent_containers/food/snacks/rogue/foodbase/hardtack_raw/cooked(src)
+	new /obj/item/reagent_containers/food/snacks/rogue/foodbase/hardtack_raw/cooked(src)
+	new /obj/item/reagent_containers/food/snacks/rogue/foodbase/hardtack_raw/cooked(src)
 
 /obj/structure/closet/crate/chest/steward
 	lockid = "steward"
@@ -105,7 +105,7 @@
 	new /obj/item/clothing/suit/roguetown/armor/plate/full(src)
 	new /obj/item/clothing/shoes/roguetown/armor/steel(src)
 	new /obj/item/keyring/knight(src)
-	new /obj/item/storage/belt/rogue/leather/hand(src)
+	new /obj/item/storage/belt/rogue/leather/steel(src)
 	new /obj/item/rogueweapon/sword/long(src)
 
 
@@ -127,7 +127,7 @@
 	new /obj/item/clothing/suit/roguetown/armor/plate/half(src)
 	new /obj/item/clothing/shoes/roguetown/armor/steel(src)
 	new /obj/item/keyring/man_at_arms(src)
-	new /obj/item/storage/belt/rogue/leather/hand(src)
+	new /obj/item/storage/belt/rogue/leather/steel(src)
 	new /obj/item/rogueweapon/spear(src)
 
 /datum/roguestock/import/crossbow

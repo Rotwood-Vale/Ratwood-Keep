@@ -17,6 +17,7 @@
 	fiber_salvage = TRUE
 	salvage_amount = 1
 	salvage_result = /obj/item/natural/hide/cured
+	var/datum/wound/artery/artery_wound
 
 /obj/item/storage/belt/rogue/ComponentInitialize()
 	. = ..()
@@ -32,6 +33,77 @@
 		CP.rmb_show(user)
 		return TRUE
 	..()
+
+	// later...
+/*
+/obj/item/storage/belt/rogue
+	var/datum/wound/artery/artery_wound
+
+	// Other properties...
+
+/obj/item/storage/belt/rogue/attack(mob/living/M, mob/user)
+	if(!M.can_inject(user, TRUE)) return
+	if(!ishuman(M)) return
+
+	var/mob/living/carbon/human/H = M
+	var/obj/item/bodypart/affecting = H.get_bodypart(check_zone(user.zone_selected))
+	if(!affecting) return
+	if(affecting.bandage) 
+		to_chat(user, "There is already a dressing.")
+		return
+
+	var/used_time = 10 // 1 second in deciseconds
+	if(H.mind) used_time -= (H.mind.get_skill_level(/datum/skill/misc/treatment) * 10)
+
+	playsound(loc, 'sound/foley/bandage.ogg', 100, FALSE)
+	if(!do_mob(user, M, used_time)) return
+	playsound(loc, 'sound/foley/bandage.ogg', 100, FALSE)
+	user.dropItemToGround(src)
+
+	// Temporarily stop bleeding without removing the wound
+	if(affecting.bleeding)
+		affecting.try_bandage(src) // Handle standard wound bandaging
+
+	if(affecting.artery_bleed) 
+		affecting.artery_bleed = FALSE
+		artery_wound = affecting.get_wound(/datum/wound/artery) // Store the artery wound
+
+	// Inflict continuous 0.5 brute damage every second while applied
+	addtimer(CALLBACK(affecting, /proc/apply_continuous_brute_damage), 10, 10, TRUE)
+
+	H.update_damage_overlays()
+	to_chat(user, "You quickly slip and tourniquet the [src] to stop the bleeding on [M]'s [affecting]. you really shouldn't leave the on forever.")
+	user.visible_message("You quickly tourniquet your [affecting]. with the [src]! you shouldn't leave this on too long.")
+
+/obj/item/storage/belt/rogue/proc/apply_continuous_brute_damage()
+	var/mob/living/carbon/human/H = M
+	var/obj/item/bodypart/affecting = H.get_bodypart(check_zone(user.zone_selected))
+	if(!affecting) return
+	affecting.take_damage(1, "brute")
+	H.update_damage_overlays()
+
+/obj/item/storage/belt/rogue/remove(mob/living/M, mob/user)
+	if(!M.can_inject(user, TRUE)) return
+	if(!ishuman(M)) return
+
+	var/mob/living/carbon/human/H = M
+	var/obj/item/bodypart/affecting = H.get_bodypart(check_zone(user.zone_selected))
+	if(!affecting) return
+
+	// Stop the continuous brute damage timer
+	addtimer(CALLBACK(affecting, /obj/item/storage/belt/rogue/proc/apply_continuous_brute_damage), 0, 0, FALSE)
+
+	// Resume the bleeding when the belt is removed
+	if(artery_wound)
+		affecting.artery_bleed = TRUE
+		artery_wound = null // Clear the reference
+
+		// Resume standard bleeding
+	if(affecting.bandage)
+		affecting.bandage = FALSE
+		affecting.bleeding = TRUE
+
+	to_chat(user, "You remove the belt, and blood resumes squirting from [M]'s [affecting].") */
 
 /obj/item/storage/belt/rogue/leather
 	name = "belt"
@@ -82,7 +154,7 @@
 	smeltresult = /obj/item/ingot/silver
 	anvilrepair = /datum/skill/craft/blacksmithing
 
-/obj/item/storage/belt/rogue/leather/hand
+/obj/item/storage/belt/rogue/leather/steel
 	name = "steel belt"
 	desc = "A belt with a steel plate on its front."
 	icon_state = "steelplaque"
@@ -180,7 +252,16 @@
 				qdel(H)
 
 /obj/item/storage/belt/rogue/pouch/food/PopulateContents()
-	new /obj/item/reagent_containers/food/snacks/rogue/crackerscooked(src)
+	new /obj/item/reagent_containers/food/snacks/rogue/foodbase/hardtack_raw/cooked(src)
+
+/obj/item/storage/belt/rogue/pouch/ammo
+	name = "rune ball pouch"
+	desc = "Usually used for holding runelock balls."
+
+/obj/item/storage/belt/rogue/pouch/ammo/PopulateContents()
+	new /obj/item/ammo_casing/caseless/rogue/bullet(src)
+	new /obj/item/ammo_casing/caseless/rogue/bullet(src)
+	new /obj/item/ammo_casing/caseless/rogue/bullet(src)
 
 /obj/item/storage/backpack/rogue //holding salvage vars for children
 	sewrepair = TRUE
@@ -211,7 +292,7 @@
 /obj/item/storage/backpack/rogue/satchel/mule/PopulateContents()
 	for(var/i in 1 to 3)
 		switch(rand(1,4))
-			if(1)	
+			if(1)
 				new /obj/item/reagent_containers/powder/moondust_purest(src)
 			if(2)
 				new /obj/item/reagent_containers/powder/moondust_purest(src)

@@ -6,7 +6,7 @@
 /datum/action
 	var/name = "Generic Action"
 	var/desc = null
-	var/obj/target = null
+	var/atom/movable/target = null
 	var/check_flags = NONE
 	var/processing = FALSE
 	var/atom/movable/screen/movable/action_button/button = null

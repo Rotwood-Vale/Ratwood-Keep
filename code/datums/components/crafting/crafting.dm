@@ -175,6 +175,13 @@
 	var/list/contents = get_surroundings(user)
 //	var/send_feedback = 1
 	var/turf/T = get_step(user, user.dir)
+	var/obj/N
+	var/result_name
+	if(islist(R.result))
+		N = R.result[1]
+	else
+		N = R.result
+	result_name = N.name
 	if(isopenturf(T) && R.wallcraft)
 		to_chat(user, span_warning("Need to craft this on a wall."))
 		return
@@ -244,9 +251,9 @@
 					prob2craft = CLAMP(prob2craft, 0, 99)
 					if(!prob(prob2craft))
 						if(user.client?.prefs.showrolls)
-							to_chat(user, span_danger("I've failed to craft \the [R.name]... [prob2craft]%"))
+							to_chat(user, span_danger("I've failed to craft \the [result_name]... [prob2craft]%"))
 							continue
-						to_chat(user, span_danger("I've failed to craft \the [R.name]."))
+						to_chat(user, span_danger("I've failed to craft \the [result_name]."))
 						continue
 					var/list/parts = del_reqs(R, user)
 					if(islist(R.result))
@@ -264,8 +271,8 @@
 							var/atom/movable/I = new R.result (T)
 							I.CheckParts(parts, R)
 							I.OnCrafted(user.dir, user)
-					user.visible_message(span_notice("[user] [R.verbage] \a [R.name]!"), \
-										span_notice("I [R.verbage_simple] \a [R.name]!"))
+					user.visible_message(span_notice("[user] [R.verbage] \a [result_name]!"), \
+										span_notice("I [R.verbage_simple] \a [result_name]!"))
 					if(user.mind && R.skillcraft)
 						if(isliving(user))
 							var/mob/living/L = user
@@ -405,9 +412,7 @@
 					Deletion += I
 					surroundings -= I
 					amt--
-	var/list/partlist = list(R.parts.len)
-	for(var/M in R.parts)
-		partlist[M] = R.parts[M]
+	var/list/partlist = R.parts.Copy()
 	for(var/A in R.parts)
 		if(istype(A, /datum/reagent))
 			var/datum/reagent/RG = locate(A) in Deletion

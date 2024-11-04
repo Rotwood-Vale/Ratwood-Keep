@@ -51,8 +51,7 @@
 		H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 5, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/polearms, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 6, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/alchemy, 4, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/medicine, 5, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/treatment, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/magic/holy, 5, TRUE)
 		if(H.age == AGE_OLD)
 			H.mind.adjust_skillrank(/datum/skill/magic/holy, 1, TRUE)
@@ -85,40 +84,41 @@
 	for(var/mob/living/carbon/human/HU in get_step(src, src.dir))
 		if(!HU.mind)
 			continue
-		if(HU.mind.assigned_role == "Lord")
+		if(HU.mind.assigned_role == "Duke")
 			continue
 		if(!HU.head)
 			continue
 		if(!istype(HU.head, /obj/item/clothing/head/roguetown/crown/serpcrown))
 			continue
 
-		//Abdicate previous Lord
+		//Abdicate previous Duke
 		for(var/mob/living/carbon/human/HL in GLOB.human_list)
 			if(HL.mind)
-				if(HL.mind.assigned_role == "Lord" || HL.mind.assigned_role == "Lady Consort")
+				if(HL.mind.assigned_role == "Duke" || HL.mind.assigned_role == "Duchess Consort")
 					HL.mind.assigned_role = "Towner" //So they don't get the innate traits of the lord
 			//would be better to change their title directly, but that's not possible since the title comes from the job datum
-			if(HL.job == "Lord")
-				HL.job = "Lord Emeritus"
-			if(HL.job == "Lady Consort")
-				HL.job = "Lady Dowager"
+			if(HL.job == "Duke")
+				HL.job = "Duke Emeritus"
+			if(HL.job == "Duchess Consort")
+				HL.job = "Duchess Dowager"
 			SSjob.type_occupations[/datum/job/roguetown/lord].remove_spells(HL)
 
 		//Coronate new Lord (or Lady)
-		HU.mind.assigned_role = "Lord"
-		HU.job = "Lord"
+		HU.mind.assigned_role = "Duke"
+		HU.job = "Duke"
 		SSjob.type_occupations[/datum/job/roguetown/lord].add_spells(HU)
 
 		switch(HU.gender)
 			if("male")
-				SSticker.rulertype = "Lord"
+				SSticker.rulertype = "Duke"
 			if("female")
-				SSticker.rulertype = "Lady"
+				SSticker.rulertype = "Duchess"
 		SSticker.rulermob = HU
 		var/dispjob = mind.assigned_role
 		removeomen(OMEN_NOLORD)
-		say("By the authority of the gods, I pronounce you Lord of Rockhill!")
-		priority_announce("[real_name] the [dispjob] has named [HU.real_name] the Lord of Rockhill!", title = "Long Live [HU.real_name]!", sound = 'sound/misc/bell.ogg')
+		say("By the authority of the gods, I pronounce you [SSticker.rulertype] of Rockhill!")
+		priority_announce("[real_name] the [dispjob] has named [HU.real_name] the [SSticker.rulertype] of Rockhill!", title = "Long Live [HU.real_name]!", sound = 'sound/misc/bell.ogg')
+		TITLE_LORD = SSticker.rulertype
 
 /mob/living/carbon/human/proc/churchexcommunicate()
 	set name = "Excommunicate"

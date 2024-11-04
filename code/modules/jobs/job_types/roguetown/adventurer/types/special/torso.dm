@@ -25,7 +25,7 @@
 		H.mind.adjust_skillrank(/datum/skill/misc/athletics, rand(0,4), TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/knives, rand(0,4), TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/sneaking, rand(0,4), TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/medicine, rand(0,4), TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/treatment, rand(0,4), TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, rand(0,4), TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/riding, rand(0,4), TRUE)
 	H.change_stat("strength", 3)
