@@ -406,6 +406,29 @@
 	grind_results = null
 	volume = 24
 
+/obj/item/reagent_containers/powder/alch/pur
+	name = "essence of purity
+	gender = PLURAL
+	icon_state = "salt"
+	color = "#61DE2A"
+	brew_reagent = /datum/reagent/alch/syrumpur
+	brew_amt = 24
+	can_brew = TRUE
+	list_reagents = null
+	grind_results = null
+	volume = 24
+
+/obj/item/reagent_containers/powder/alch/life
+	name = "essence of life
+	gender = PLURAL
+	icon_state = "spice"
+	brew_reagent = /datum/reagent/alch/syrumlife
+	brew_amt = 24
+	can_brew = TRUE
+	list_reagents = null
+	grind_results = null
+	volume = 24
+
 /obj/item/reagent_containers/powder/alch/berry
 	name = "essence of berry"
 	gender = PLURAL
@@ -535,6 +558,22 @@
 	description = "refined viscous fishy smelling gunk"
 	reagent_state = LIQUID
 	color = "#ff7f7f"
+	metabolization_rate = 1 * REAGENTS_METABOLISM
+	overdose_threshold = null
+
+/datum/reagent/alch/syrumpur
+	name = "purity syrum"
+	description = "refined viscous gunk"
+	reagent_state = LIQUID
+	color = "#61DE2A"
+	metabolization_rate = 1 * REAGENTS_METABOLISM
+	overdose_threshold = null
+
+/datum/reagent/alch/syrumlife
+	name = "incomplete life syrum"
+	description = "refined viscous gunk not quite ready yet"
+	reagent_state = LIQUID
+	color = "#61DE2A"
 	metabolization_rate = 1 * REAGENTS_METABOLISM
 	overdose_threshold = null
 
@@ -679,18 +718,77 @@
 			if (W.zombie_infection_timer)
 				deltimer(W.zombie_infection_timer)
 				W.zombie_infection_timer = null
-				to_chat(M, "You feel the drugs burning intensely in [B.name].")
+				to_chat(M, "You feel the drug burning intensely in [B.name].")
 			// Check for and remove werewolf infection
 			if (W.werewolf_infection_timer)
 				deltimer(W.werewolf_infection_timer)
 				W.werewolf_infection_timer = null
-				to_chat(M, "You feel the drugs burning intensely in [B.name].")
+				to_chat(M, "You feel the drug burning intensely in [B.name].")
 
 			// Handle destruction of the wound
 			W.Destroy(0)
 
 	M.update_damage_overlays()
 
+/datum/reagent/medicine/mori
+	name = "MORIBUND"
+	reagent_state = LIQUID
+	color = "#808080"
+	metabolization_rate = 0.5 * REAGENTS_METABOLISM
+	overdose_threshold = 6
+	description = "A powerful drug that drags the moribund back from the grasp of necra."
+
+/datum/reagent/medicine/mori/on_mob_life(mob/living/carbon/M)
+	var/list/wCount = M.get_wounds()
+	if(M.blood_volume < BLOOD_VOLUME_NORMAL)
+		M.blood_volume = min(M.blood_volume+200, BLOOD_VOLUME_MAXIMUM)
+	else
+		M.blood_volume = min(M.blood_volume+20, BLOOD_VOLUME_MAXIMUM)
+	if(wCount.len > 0)	
+		M.heal_wounds(6)
+		M.update_damage_overlays()
+	M.adjustBruteLoss(-4.5*REM, 0)
+	M.adjustFireLoss(-4.5*REM, 0)
+	M.adjustOxyLoss(-9, 0)
+	M.adjustOrganLoss(ORGAN_SLOT_BRAIN, -9*REM)
+	M.adjustCloneLoss(-9*REM, 0)
+	..()
+	. = 1
+
+/datum/reagent/medicine/mori/reaction_mob(mob/living/M, method=TOUCH, reac_volume)
+	if(iscarbon(M) && M.stat == DEAD)
+		if(M.mob_biotypes & MOB_UNDEAD)
+			return FALSE
+		if(!M.revive(full_heal = FALSE))
+			M.visible_message(span_notice("[M]'s body is too damaged...."))
+			return FALSE
+		if(method == INGEST)
+			var/mob/living/carbon/spirit/underworld_spirit = M.get_spirit()
+			if(underworld_spirit)
+				var/mob/dead/observer/ghost = underworld_spirit.ghostize()
+				qdel(underworld_spirit)
+				ghost.mind.transfer_to(M, TRUE)
+			M.grab_ghost(force = TRUE)
+			M.emote("rage")
+			M.Jitter(100)
+			M.update_body()
+			M.visible_message(span_notice("[M]'s body convulses as they're ripped from death's embrace!"), span_green("I awake from the void."))
+			if(M.mind)
+				if(!HAS_TRAIT(M, TRAIT_IWASREVIVED))
+					ADD_TRAIT(M, TRAIT_IWASREVIVED, "[type]")
+		return TRUE
+	..()
+
+
+/datum/reagent/medicine/mori/overdose_process(mob/living/carbon/M) // This is meant for the dead or dieing, not you pot stacking. suffer.
+	M.add_nausea(25)
+	M.dizziness += 2
+	M.confused += 2
+	M.adjustToxLoss(15, 0)
+	M.adjustOrganLoss(ORGAN_SLOT_BRAIN, 5*REM)
+	M.adjustOrganLoss(ORGAN_SLOT_HEART, 5*REM)
+	M.adjustOrganLoss(ORGAN_SLOT_LIVER, 5*REM)
+	M.adjustOrganLoss(ORGAN_SLOT_EYES, 5*REM)
 
 ////////////////////////////////////////////////////---------------------------------------alch reactions----------------------------------------------//////////////////////////////////////////////////////////
 
@@ -757,6 +855,27 @@
 	for(var/i = 1, i <= created_volume, i++)
 		new /obj/item/reagent_containers/powder/moondust_purest(location)
 
+/datum/chemical_reaction/alch/purify
+	name = "purifyify"
+	id = "purifyify"
+	required_reagents = list(/datum/reagent/alch/syrumpur = 24)
+	required_temp = 374
+
+/datum/chemical_reaction/alch/purify/on_reaction(datum/reagents/holder, created_volume)
+	var/location = get_turf(holder.my_atom)
+	for(var/i = 1, i <= created_volume, i++)
+		new /obj/item/reagent_containers/hypospray/medipen/sealbottle/purify(location)
+
+/datum/chemical_reaction/alch/life
+	name = "lifeify"
+	id = "lifeify"
+	required_reagents = list(/datum/reagent/alch/syrumlife = 24)
+	required_temp = 374
+
+/datum/chemical_reaction/alch/life/on_reaction(datum/reagents/holder, created_volume)
+	var/location = get_turf(holder.my_atom)
+	for(var/i = 1, i <= created_volume, i++)
+		new /obj/item/reagent_containers/hypospray/medipen/sealbottle/mori(location)
 /////////////////////////////////////////////////////------------------------------------tools and pre made bottles-----------------------------------------/////////////////////////////////////////////////////
 
 /obj/item/storage/backpack/rogue/backpack/rucksack
@@ -1160,6 +1279,7 @@
 	new /obj/item/candle/yellow(src)
 	new /obj/item/needle(src)
 	new /obj/item/book/rogue/snek(src)
+
 /obj/item/reagent_containers/hypospray/medipen/sealbottle
 	name = "sealed bottle item"
 	desc = "If you see this, call an admin."
@@ -1279,6 +1399,13 @@
 	volume = 34
 	amount_per_transfer_from_this = 34
 	list_reagents = list(/datum/reagent/medicine/antihol = 10, /datum/reagent/medicine/pen_acid = 24)
+
+/obj/item/reagent_containers/hypospray/medipen/sealbottle/mori
+	name = "MORIBUND"
+	desc = "Dr. V's elixer of life, because sometimes even necra needs a second opinion. WARNING: absolutely do not drink more than a bottle. mend corpse prior to imbide."
+	volume = 5
+	amount_per_transfer_from_this = 5
+	list_reagents = list(/datum/reagent/medicine/mori = 5,)
 
 /obj/item/reagent_containers/hypospray/medipen/sealbottle/reju
 	name = "rejuv elixer"
@@ -1606,6 +1733,20 @@
 	craftdiff = 2
 	skillcraft = /datum/skill/misc/treatment
 
+/datum/crafting_recipe/roguetown/bandage
+	name = "essence of purity"
+	result = /obj/item/reagent_containers/powder/alch/pur
+	reqs = list(/obj/item/reagent_containers/powder/salt = 1, /obj/item/reagent_containers/powder/alch/pipe = 1,)
+	craftdiff = 5
+	skillcraft = /datum/skill/misc/treatment
+
+/datum/crafting_recipe/roguetown/bandage
+	name = "essence of life"
+	result = /obj/item/reagent_containers/powder/alch/life
+	reqs = list(/obj/item/reagent_containers/powder/salt = 1, /datum/reagent/medicine/healthpot = 45, /obj/item/reagent_containers/powder/alch/mincem = 1,)
+	craftdiff = 6
+	skillcraft = /datum/skill/misc/treatment
+
 /datum/crafting_recipe/roguetown/impsaw
 	name = "improvised saw"
 	result = /obj/item/rogueweapon/surgery/saw/improv
@@ -1633,15 +1774,6 @@
 	reqs = list(/obj/item/rope = 1, /obj/item/storage/roguebag/crafted = 1,)
 	craftdiff = 0
 	skillcraft = /datum/skill/craft/crafting
-
-/*/datum/crafting_recipe/roguetown/splint
-	name = "splint"
-	result = /obj/item/splint
-	reqs = list(/obj/item/natural/cloth = 2, /obj/item/grown/log/tree/stick = 2,)
-	craftdiff = 2
-	skillcraft = /datum/skill/misc/treatment*/
-
-
 
 //////////////////////////////////////------------------reskins of existing items-------------------//////////////////////           none of these implimented, has to be spawned.
 
