@@ -4,7 +4,7 @@
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
 	outfit = /datum/outfit/job/roguetown/adventurer/torso
-	traits_applied = list(TRAIT_HEAVYARMOR, TRAIT_MEDIUMARMOR, TRAIT_STEELHEARTED)
+	traits_applied = list(TRAIT_HEAVYARMOR, TRAIT_MEDIUMARMOR)
 	category_tags = list(CTAG_DISABLED)
 
 /datum/outfit/job/roguetown/adventurer/torso/pre_equip(mob/living/carbon/human/H)

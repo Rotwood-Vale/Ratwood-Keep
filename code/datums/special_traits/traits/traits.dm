@@ -203,14 +203,6 @@
 /datum/special_trait/spring_in_my_step/on_apply(mob/living/carbon/human/character, silent)
 	ADD_TRAIT(character, TRAIT_ZJUMP, "[type]")
 
-/datum/special_trait/tolerant
-	name = "Tolerant"
-	greet_text = span_notice("I dream of an ideal future, one with peace between all races")
-	weight = 100
-
-/datum/special_trait/tolerant/on_apply(mob/living/carbon/human/character, silent)
-	ADD_TRAIT(character, TRAIT_TOLERANT, "[type]")
-
 /datum/special_trait/thief
 	name = "Thief"
 	greet_text = span_notice("Life's not easy around here, but I've made mine a little easier by taking things of others")
