@@ -13,10 +13,11 @@ GLOBAL_LIST_INIT(traits_deadite, list(
 	TRAIT_LIMPDICK,
 	TRAIT_ZOMBIE_SPEECH,
 	TRAIT_ZOMBIE_IMMUNE,
+	TRAIT_ROTMAN,
 	TRAIT_NORUN
 ))
 
-/// Traits applied to the owner when we are cured and turn into just "rotmen"
+/// Traits applied to the owner when we are cured and turn into just "rotmen" (currently disabled)
 GLOBAL_LIST_INIT(traits_rotman, list(
 	TRAIT_EASYDISMEMBER,
 	TRAIT_NOBREATH,

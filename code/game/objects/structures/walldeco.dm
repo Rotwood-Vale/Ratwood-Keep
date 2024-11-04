@@ -94,10 +94,10 @@
 	desc = ""
 	icon_state = "serpent"
 
-/obj/structure/fluff/walldeco/masonflag
-	name = "mason's guild"
+/obj/structure/fluff/walldeco/artificerflag
+	name = "Artificer's Guild"
 	desc = ""
-	icon_state = "mason"
+	icon_state = "artificer"
 
 /obj/structure/fluff/walldeco/maidendrape
 	name = "black drape"

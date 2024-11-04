@@ -87,7 +87,7 @@
 
 /obj/item/rogueweapon/flail/sflail
 	force = 20
-	icon_state = "flail"
+	icon_state = "steel flail"
 	desc = "This is a swift, steel flail. Strikes hard and fast."
 	smeltresult = /obj/item/ingot/steel
 	minstr = 5

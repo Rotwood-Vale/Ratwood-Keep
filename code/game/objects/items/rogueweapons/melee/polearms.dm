@@ -6,10 +6,10 @@
 	animname = "stab"
 	icon_state = "instab"
 	reach = 2
-	chargetime = 1
+	chargetime = 1.5
 	warnie = "mobwarning"
 	hitsound = list('sound/combat/hits/bladed/genstab (1).ogg', 'sound/combat/hits/bladed/genstab (2).ogg', 'sound/combat/hits/bladed/genstab (3).ogg')
-	penfactor = 50
+	penfactor = 30
 	item_d_type = "stab"
 
 /datum/intent/spear/bash
@@ -65,7 +65,7 @@
 			if("onbelt")
 				return list("shrink" = 0.3,"sx" = -2,"sy" = -5,"nx" = 4,"ny" = -5,"wx" = 0,"wy" = -5,"ex" = 2,"ey" = -5,"nturn" = 0,"sturn" = 0,"wturn" = 0,"eturn" = 0,"nflip" = 0,"sflip" = 0,"wflip" = 0,"eflip" = 0,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0)
 
-/obj/item/rogueweapon/woodstaff/wise 
+/obj/item/rogueweapon/woodstaff/wise
 	name = "wise staff"
 	desc = "A staff for keeping the volfs at bay..."
 
@@ -96,7 +96,7 @@
 
 /obj/item/rogueweapon/spear
 	force = 18
-	force_wielded = 30
+	force_wielded = 23
 	possible_item_intents = list(SPEAR_THRUST, SPEAR_BASH) //bash is for non-lethal takedowns, only targets limbs
 	gripped_intents = list(SPEAR_THRUST, SPEAR_CUT, SPEAR_BASH)
 	name = "spear"
@@ -136,6 +136,7 @@
 	name = "billhook"
 	desc = "A neat hook."
 	icon_state = "billhook"
+	force_wielded = 30
 	smeltresult = /obj/item/ingot/steel
 	max_blade_int = 200
 	minstr = 8
@@ -272,6 +273,7 @@
 	name = "lucerne"
 	desc = "A polehammer with a sharp pointy end."
 	icon_state = "polehammer"
+	force_wielded = 30
 	smeltresult = /obj/item/ingot/iron
 	max_blade_int = 200
 	sellprice = 35
@@ -284,6 +286,15 @@
 	reach = 2
 	swingdelay = 12
 	clickcd = 14
+
+/obj/item/rogueweapon/spear/bronze
+	name = "Bronze Spear"
+	desc = "A spear forged of bronze. Expensive but more durable than a regular iron one."
+	icon_state = "bronzespear"
+	max_blade_int = 200
+	smeltresult = /obj/item/ingot/bronze
+	force = 20
+	force_wielded = 25
 
 /obj/item/rogueweapon/greatsword
 	force = 12
@@ -325,7 +336,6 @@
 	name = "zweihander"
 	desc = "This is much longer than a common greatsword, and well balanced too!"
 	icon_state = "zwei"
-	smeltresult = /obj/item/ingot/iron
 	max_blade_int = 200
 	wdefense = 4
 
@@ -334,3 +344,109 @@
 
 /datum/intent/sword/thrust/zwei
 	reach = 2
+
+/obj/item/rogueweapon/estoc
+	name = "estoc"
+	desc = "A sword possessed of a quite long and tapered blade that is intended to be thrust between the \
+	gaps in an opponent's armor. The hilt is wrapped tight in black leather."
+	icon_state = "estoc"
+	force = 12
+	force_wielded = 25
+	icon = 'icons/roguetown/weapons/64.dmi'
+	pixel_y = -16
+	pixel_x = -16
+	inhand_x_dimension = 64
+	inhand_y_dimension = 64
+	possible_item_intents = list(
+		/datum/intent/sword/chop,
+		/datum/intent/sword/strike,
+	)
+	gripped_intents = list(
+		/datum/intent/sword/thrust/estoc,
+		/datum/intent/sword/lunge,
+		/datum/intent/sword/chop,
+		/datum/intent/sword/strike,
+	)
+	bigboy = TRUE
+	gripsprite = TRUE
+	wlength = WLENGTH_GREAT
+	w_class = WEIGHT_CLASS_BULKY
+	minstr = 8
+	smeltresult = /obj/item/ingot/steel
+	associated_skill = /datum/skill/combat/swords
+	max_blade_int = 300
+	wdefense = 5
+
+/obj/item/rogueweapon/estoc/getonmobprop(tag)
+	. = ..()
+	if(tag)
+		switch(tag)
+			if("gen")
+				return list(
+					"shrink" = 0.6,
+					"sx" = -6,
+					"sy" = 7,
+					"nx" = 6,
+					"ny" = 8,
+					"wx" = 0,
+					"wy" = 6,
+					"ex" = -1,
+					"ey" = 8,
+					"northabove" = 0,
+					"southabove" = 1,
+					"eastabove" = 1,
+					"westabove" = 0,
+					"nturn" = -50,
+					"sturn" = 40,
+					"wturn" = 50,
+					"eturn" = -50,
+					"nflip" = 0,
+					"sflip" = 8,
+					"wflip" = 8,
+					"eflip" = 0,
+					)
+			if("wielded")
+				return list(
+					"shrink" = 0.6,
+					"sx" = 3,
+					"sy" = 5,
+					"nx" = -3,
+					"ny" = 5,
+					"wx" = -9,
+					"wy" = 4,
+					"ex" = 9,
+					"ey" = 1,
+					"northabove" = 0,
+					"southabove" = 1,
+					"eastabove" = 1,
+					"westabove" = 0,
+					"nturn" = 0,
+					"sturn" = 0,
+					"wturn" = 0,
+					"eturn" = 15,
+					"nflip" = 8,
+					"sflip" = 0,
+					"wflip" = 8,
+					"eflip" = 0,
+					)
+
+/datum/intent/sword/thrust/estoc
+	name = "thrust"
+	penfactor = 50
+	recovery = 20
+	clickcd = 10
+
+
+/datum/intent/sword/lunge
+	name = "lunge"
+	icon_state = "inimpale"
+	attack_verb = list("lunges")
+	animname = "stab"
+	blade_class = BCLASS_STAB
+	hitsound = list('sound/combat/hits/bladed/genstab (1).ogg', 'sound/combat/hits/bladed/genstab (2).ogg', 'sound/combat/hits/bladed/genstab (3).ogg')
+	reach = 2
+	penfactor = 30
+	damfactor = 1.2
+	chargetime = 5
+	recovery = 20
+	clickcd = 10
