@@ -36,25 +36,13 @@
 /datum/component/rot/corpse/process()
 	..()
 	var/mob/living/carbon/C = parent
-	var/is_zombie
-	if(C.mind)
-		if(C.mind.has_antag_datum(/datum/antagonist/zombie))
-			is_zombie = TRUE
-	if(!is_zombie)
-		if(C.stat != DEAD)
-			qdel(src)
-			return
-
+	if(C.stat != DEAD)
+		qdel(src)
+		return
 
 	if(!(C.mob_biotypes & (MOB_ORGANIC|MOB_UNDEAD)))
 		qdel(src)
 		return
-	
-	if(amount > 4 MINUTES)
-		if(is_zombie)
-			var/datum/antagonist/zombie/Z = C.mind.has_antag_datum(/datum/antagonist/zombie)
-			if(Z && !Z.has_turned && !Z.revived && C.stat == DEAD)
-				Z.wake_zombie()
 
 	var/findonerotten = FALSE
 	var/shouldupdate = FALSE
@@ -69,18 +57,16 @@
 					C.change_stat("constitution", -8, "rottenlimbs")
 			else
 				if(amount > 25 MINUTES)
-					if(!is_zombie)
-						B.skeletonize()
-						if(C.dna && C.dna.species)
-							C.dna.species.species_traits |= NOBLOOD
-						C.change_stat("constitution", -99, "skeletonized")
-						shouldupdate = TRUE
+					B.skeletonize()
+					if(C.dna && C.dna.species)
+						C.dna.species.species_traits |= NOBLOOD
+					C.change_stat("constitution", -99, "skeletonized")
+					shouldupdate = TRUE
 				else
 					findonerotten = TRUE
 		if(amount > 35 MINUTES)
-			if(!is_zombie)
-				if(B.skeletonized)
-					dustme = TRUE
+			if(B.skeletonized)
+				dustme = TRUE
 
 	if(dustme)
 		qdel(src)
@@ -90,7 +76,7 @@
 		var/turf/open/T = C.loc
 		if(istype(T))
 			T.add_pollutants(/datum/pollutant/rot, 5)
-			if(soundloop && soundloop.stopped && !is_zombie)
+			if(soundloop && soundloop.stopped)
 				soundloop.start()
 		else
 			if(soundloop && !soundloop.stopped)
@@ -103,7 +89,7 @@
 			if(ishuman(C))
 				var/mob/living/carbon/human/H = C
 				H.skin_tone = "878f79" //elf ears
-			if(soundloop && soundloop.stopped && !is_zombie)
+			if(soundloop && soundloop.stopped)
 				soundloop.start()
 		C.update_body()
 
