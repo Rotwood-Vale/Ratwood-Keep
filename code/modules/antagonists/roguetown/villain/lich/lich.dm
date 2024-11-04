@@ -93,7 +93,6 @@
 	r_hand = /obj/item/rogueweapon/woodstaff/wise
 
 	H.mind.adjust_skillrank_up_to(/datum/skill/misc/reading, 6, TRUE)
-	H.mind.adjust_skillrank_up_to(/datum/skill/misc/alchemy, 5, TRUE)
 	H.mind.adjust_skillrank_up_to(/datum/skill/magic/arcane, 5, TRUE)
 	H.mind.adjust_skillrank_up_to(/datum/skill/misc/riding, 4, TRUE)
 	H.mind.adjust_skillrank_up_to(/datum/skill/combat/polearms, 1, TRUE)
@@ -105,7 +104,7 @@
 	H.mind.adjust_skillrank_up_to(/datum/skill/combat/swords, 2, TRUE)
 	H.mind.adjust_skillrank_up_to(/datum/skill/combat/knives, 5, TRUE)
 	H.mind.adjust_skillrank_up_to(/datum/skill/craft/crafting, 1, TRUE)
-	H.mind.adjust_skillrank_up_to(/datum/skill/misc/medicine, 3, TRUE)
+	H.mind.adjust_skillrank_up_to(/datum/skill/misc/treatment, 4, TRUE)
 
 	H.change_stat("strength", -1)
 	H.change_stat("intelligence", 5)

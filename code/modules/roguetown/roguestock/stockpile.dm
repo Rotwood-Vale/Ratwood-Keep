@@ -174,6 +174,50 @@
 	export_price = 8
 	importexport_amt = 5
 
+/datum/roguestock/stockpile/beet
+	name = "Beet"
+	desc = "Harvested produce."
+	item_type = /obj/item/reagent_containers/food/snacks/grown/beet
+	held_items = list(0, 0)
+	payout_price = 5
+	withdraw_price = 6
+	transport_fee = 2
+	export_price = 8
+	importexport_amt = 5
+
+/datum/roguestock/stockpile/cabbage
+	name = "Cabbage"
+	desc = "Harvested produce."
+	item_type = /obj/item/reagent_containers/food/snacks/grown/cabbage/rogue
+	held_items = list(0, 0)
+	payout_price = 5
+	withdraw_price = 6
+	transport_fee = 2
+	export_price = 8
+	importexport_amt = 5
+
+/datum/roguestock/stockpile/potato
+	name = "Potato"
+	desc = "Harvested produce."
+	item_type = /obj/item/reagent_containers/food/snacks/grown/potato/rogue
+	held_items = list(0, 0)
+	payout_price = 5
+	withdraw_price = 6
+	transport_fee = 2
+	export_price = 8
+	importexport_amt = 5
+
+/datum/roguestock/stockpile/onion
+	name = "Onion"
+	desc = "Harvested produce."
+	item_type = /obj/item/reagent_containers/food/snacks/grown/onion/rogue
+	held_items = list(0, 0)
+	payout_price = 5
+	withdraw_price = 6
+	transport_fee = 2
+	export_price = 8
+	importexport_amt = 5
+
 /datum/roguestock/stockpile/poultry
 	name = "Bird Meat"
 	desc = "Edible flesh harvested from birds."

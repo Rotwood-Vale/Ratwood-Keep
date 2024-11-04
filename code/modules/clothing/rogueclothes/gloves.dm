@@ -28,6 +28,9 @@
 	salvage_result = /obj/item/natural/hide
 
 /obj/item/clothing/gloves/roguetown/leather/black
+	desc = "Leather gloves usually worn by laborers. Dyed black."
+	color = "#151615"
+/obj/item/clothing/gloves/roguetown/leather/black
 	icon_state = "gloves_black"
 
 /obj/item/clothing/gloves/roguetown/fingerless
@@ -92,7 +95,6 @@
 	drop_sound = 'sound/foley/dropsound/armor_drop.ogg'
 	anvilrepair = /datum/skill/craft/blacksmithing
 	smeltresult = /obj/item/ingot/steel
-	clothing_flags = CANT_SLEEP_IN
 	sewrepair = FALSE
 
 /obj/item/clothing/gloves/roguetown/grenzelgloves
