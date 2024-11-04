@@ -864,12 +864,6 @@
 
 /obj/item/storage/fancy/pilltin/wake
 	name = "pill tin (wake)"
-	desc = "A tin for all your pill needs, snake branded"
-	icon = 'icons/roguetown/items/surgery.dmi'
-	icon_state = "pilltin"
-	w_class = WEIGHT_CLASS_TINY
-	throwforce = 1
-	slot_flags = null
 
 /obj/item/storage/fancy/pilltin/wake/PopulateContents()
 	new /obj/item/reagent_containers/pill/caffpill(src)
@@ -878,12 +872,6 @@
 
 /obj/item/storage/fancy/pilltin/pink
 	name = "pill tin (pnk)"
-	desc = "A tin for all your pill needs, snake branded"
-	icon = 'icons/roguetown/items/surgery.dmi'
-	icon_state = "pilltin"
-	w_class = WEIGHT_CLASS_TINY
-	throwforce = 1
-	slot_flags = null
 
 /obj/item/storage/fancy/pilltin/pink/PopulateContents()
 	new /obj/item/reagent_containers/pill/pnkpill(src)
