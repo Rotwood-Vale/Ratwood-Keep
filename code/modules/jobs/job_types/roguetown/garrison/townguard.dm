@@ -9,8 +9,8 @@
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_TOLERATED_UP
 	allowed_ages = list(AGE_ADULT, AGE_MIDDLEAGED)
-	tutorial = "Responsible for the safety of the town and the enforcement of the Lord's law, \
-	you are the vanguard of the city faced with punishing those who defy His Royal Majesty. \
+	tutorial = "Responsible for the safety of the town and the enforcement of the Duke's law, \
+	you are the vanguard of the city faced with punishing those who defy His Highness. \
 	Though you've many lords to obey, as both the Church and the Sheriff have great sway over your life."
 	display_order = JDO_TOWNGUARD
 	whitelist_req = TRUE
@@ -97,7 +97,7 @@
 	guard.mind.adjust_skillrank(/datum/skill/misc/sneaking, 3, TRUE) 
 	guard.mind.adjust_skillrank(/datum/skill/misc/swimming, 2, TRUE)
 	guard.mind.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
-	guard.mind.adjust_skillrank(/datum/skill/misc/medicine, 1, TRUE)
+	guard.mind.adjust_skillrank(/datum/skill/misc/treatment, 1, TRUE)
 	guard.mind.adjust_skillrank(/datum/skill/misc/riding, 2, TRUE)
 	guard.change_stat("strength", 1)
 	guard.change_stat("perception", 2) 
@@ -122,7 +122,7 @@
 	guard.mind.adjust_skillrank(/datum/skill/misc/sneaking, 3, TRUE) 
 	guard.mind.adjust_skillrank(/datum/skill/misc/swimming, 2, TRUE)
 	guard.mind.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
-	guard.mind.adjust_skillrank(/datum/skill/misc/medicine, 1, TRUE)
+	guard.mind.adjust_skillrank(/datum/skill/misc/treatment, 1, TRUE)
 	guard.change_stat("perception", 3)
 	guard.change_stat("constitution", 1)
 	guard.change_stat("speed", 2)

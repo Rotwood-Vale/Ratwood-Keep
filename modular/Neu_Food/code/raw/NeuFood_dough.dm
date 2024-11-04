@@ -156,7 +156,7 @@
 /*	.................   Butterdough piece   ................... */
 /obj/item/reagent_containers/food/snacks/rogue/butterdoughslice
 	name = "butterdough piece"
-	desc = "A slice of pedigree, to create lines of history.(Roll to make pie dough, place one piedough in the oven to make a pie shell. Fry to make Frybread. Roll to make Handpie)"
+	desc = "A slice of pedigree, to create lines of history.(place in oven to make pastry. Roll to make pie dough, place one piedough in the oven to make a pie shell. Fry to make Frybread. Roll to make Handpie)"
 	icon_state = "butterdoughslice"
 	color = "#feffc1"
 	slices_num = 0
@@ -262,11 +262,11 @@
 	name = "raw hardtack"
 	desc = "Doughy, soft, unacceptable."
 	icon_state = "raw_tack"
-	cooked_type = /obj/item/reagent_containers/food/snacks/rogue/crackerscooked
+	cooked_type = /obj/item/reagent_containers/food/snacks/rogue/foodbase/hardtack_raw/cooked
 	w_class = WEIGHT_CLASS_NORMAL
 	eat_effect = null
 
-/obj/item/reagent_containers/food/snacks/rogue/crackerscooked
+/obj/item/reagent_containers/food/snacks/rogue/foodbase/hardtack_raw/cooked
 	name = "hardtack"
 	desc = "Very, very hard and dry."
 	icon_state = "tack6"
@@ -276,7 +276,7 @@
 	bitesize = 6
 	rotprocess = null
 
-/obj/item/reagent_containers/food/snacks/rogue/crackerscooked/On_Consume(mob/living/eater)
+/obj/item/reagent_containers/food/snacks/rogue/foodbase/hardtack_raw/cooked/On_Consume(mob/living/eater)
 	..()
 	if(bitecount == 1)
 		icon_state = "tack5"
@@ -288,6 +288,8 @@
 		icon_state = "tack2"
 	if(bitecount == 5)
 		icon_state = "tack1"
+	else
+		icon_state = "tack6"
 
 
 /*	.................   Bread   ................... */
@@ -434,7 +436,7 @@
 /*	.................   Bread bun   ................... */
 /obj/item/reagent_containers/food/snacks/rogue/bun
 	name = "bun"
-	desc = "Portable, quaint and entirely consumable"
+	desc = "Portable, quaint and entirely consumable (Serve as is or add cooked sausage to make a Dogroll)"
 	icon_state = "bun"
 	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_DECENT)
 	w_class = WEIGHT_CLASS_NORMAL
@@ -661,7 +663,7 @@
 /*	.................   Cake   ................... */
 /obj/item/reagent_containers/food/snacks/rogue/cake_base
 	name = "cake base"
-	desc = "With this sweet thing, you shall make them sing."
+	desc = "With this sweet thing, you shall make them sing.(Add fresh cheese or honeycomb and bake!)"
 	icon_state = "cake"
 	list_reagents = list(/datum/reagent/consumable/nutriment = 1)
 	w_class = WEIGHT_CLASS_NORMAL

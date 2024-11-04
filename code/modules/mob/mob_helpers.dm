@@ -302,7 +302,7 @@
 /**
   * change a mob's act-intent.
   *
-  * Input the intent as a string such as "help" or use "right"/"left
+  * Input the intent as a /datum/intent, or the strings "left" or "right"
   */
 /mob/verb/a_intent_change(input as text)
 	set name = "a-intent"

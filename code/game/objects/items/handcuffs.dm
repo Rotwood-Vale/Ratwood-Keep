@@ -288,6 +288,7 @@
 				used_time -= max((C.mind.get_skill_level(/datum/skill/craft/hunting) * 2 SECONDS), 2 SECONDS)
 			if(do_after(user, used_time, target = src))
 				armed = FALSE
+				w_class = WEIGHT_CLASS_NORMAL
 				update_icon()
 				alpha = 255
 				C.visible_message(span_notice("[C] disarms \the [src]."), \
@@ -348,11 +349,16 @@
 			if(prob(50))
 				armed = !armed
 				update_icon()
+				if(armed == TRUE)
+					w_class = WEIGHT_CLASS_BULKY
+				else
+					w_class = WEIGHT_CLASS_NORMAL
 				to_chat(user, span_notice("[src] is now [armed ? "armed" : "disarmed"]"))
 			else
 				user.visible_message(span_warning("You couldn't get the shoddy [src.name] [armed ? "shut close!" : "to open up!"]"))
 /obj/item/restraints/legcuffs/beartrap/proc/close_trap()
 	armed = FALSE
+	w_class = WEIGHT_CLASS_NORMAL
 	alpha = 255
 	update_icon()
 	playsound(src.loc, 'sound/items/beartrap.ogg', 300, TRUE, -1)
