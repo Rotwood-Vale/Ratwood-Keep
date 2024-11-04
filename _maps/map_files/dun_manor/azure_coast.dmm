@@ -4794,9 +4794,6 @@
 /obj/item/rogueweapon/sword/iron/short,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/indoors/cave)
-"MD" = (
-/turf/closed,
-/area/rogue/outdoors/beach)
 "ME" = (
 /obj/machinery/light/rogue/torchholder/r,
 /turf/open/floor/rogue/cobble,
@@ -15234,7 +15231,7 @@ NX
 NX
 NX
 NX
-MD
+bf
 bf
 MU
 gG
@@ -15364,7 +15361,7 @@ NX
 NX
 NX
 NX
-MD
+bf
 bf
 MU
 gG
