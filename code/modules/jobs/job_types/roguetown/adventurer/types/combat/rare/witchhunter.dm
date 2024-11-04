@@ -59,4 +59,3 @@
 	H.verbs |= /mob/living/carbon/human/proc/faith_test
 
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
-	ADD_TRAIT(H, TRAIT_STEELHEARTED, TRAIT_GENERIC)

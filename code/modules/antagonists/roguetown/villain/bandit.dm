@@ -33,7 +33,6 @@
 	for(var/obj/structure/fluff/traveltile/bandit/tile in GLOB.traveltiles)
 		tile.show_travel_tile(H)
 	ADD_TRAIT(H, TRAIT_SEEPRICES, TRAIT_GENERIC)
-	ADD_TRAIT(H, TRAIT_STEELHEARTED, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_COMMIE, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_TOLERANT, TRAIT_GENERIC)
 	H.set_patron(/datum/patron/inhumen/matthios)
