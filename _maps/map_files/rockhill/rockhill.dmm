@@ -16505,10 +16505,6 @@
 	icon_state = "weird1"
 	},
 /area/rogue/indoors/town/shop)
-"oOl" = (
-/obj/machinery/light/roguestreet/midlamp,
-/turf/open/floor/rogue/dirt/road,
-/area/rogue/outdoors/town)
 "oOm" = (
 /obj/structure/flora/roguetree/burnt,
 /turf/open/floor/rogue/cobblerock,
@@ -301050,7 +301046,7 @@ mwE
 wVI
 wVI
 wbg
-oOl
+mHW
 rfx
 rfx
 rfx
