@@ -2245,6 +2245,8 @@
 	},
 /obj/item/reagent_containers/hypospray/medipen/sealbottle/reju,
 /obj/item/reagent_containers/hypospray/medipen/sealbottle/purify,
+/obj/item/storage/fancy/pilltin/pink,
+/obj/item/storage/fancy/pilltin/wake,
 /obj/item/reagent_containers/hypospray/medipen/sealbottle/purify,
 /obj/item/reagent_containers/hypospray/medipen/sealbottle/purify,
 /turf/open/floor/rogue/churchmarble,
