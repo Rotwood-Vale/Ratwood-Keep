@@ -220,6 +220,17 @@
 	desc = "With some sleep in a coffin I feel like I could become better."
 	icon_state = "sleepy"
 
+/datum/status_effect/debuff/cumbrained
+	id = "cumbrained"
+	alert_type = /atom/movable/screen/alert/status_effect/debuff/cumbrained
+	effectedstats = list("intelligence" = -10, "strength" = -6, "speed" = -6)
+	duration = 60 SECONDS
+
+/atom/movable/screen/alert/status_effect/debuff/cumbrained
+	name = "Cum Brained"
+	desc = "It's hard to think..."
+	icon_state = "fentanyl"
+
 //Death debuff
 
 /datum/status_effect/debuff/death_weaken

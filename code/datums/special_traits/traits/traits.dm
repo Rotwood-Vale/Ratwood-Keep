@@ -2,8 +2,8 @@
 //// these should still be in the round-start/late join specials as well! It's just these are contextually fitting for Sleep Specials as well!
 /datum/special_trait/nothing
 	name = "Nothing"
-	greet_text = span_notice("You're not special")
-	weight = 7 //As rare as Vengant Bum, just to remind you it could have been it
+	greet_text = span_notice("You're not special.")
+	weight = 25
 
 /datum/special_trait/nightvision
 	name = "Night Vision"
@@ -11,12 +11,8 @@
 	weight = 100
 
 /datum/special_trait/nightvision/on_apply(mob/living/carbon/human/character, silent)
-	var/obj/item/organ/eyes/eyes = character.getorganslot(ORGAN_SLOT_EYES)
-	if(!eyes)
-		return
-	eyes.see_in_dark = 6
-	eyes.lighting_alpha = LIGHTING_PLANE_ALPHA_NV_TRAIT
-	character.update_sight()
+	ADD_TRAIT(character, TRAIT_DARKVISION, "[type]")
+	character.change_stat("perception", 2)
 
 /datum/special_trait/thickskin
 	name = "Tough"
@@ -38,8 +34,8 @@
 
 /datum/special_trait/deadened
 	name = "Deadened"
-	greet_text = span_notice("Ever since <b>it</b> happened, I've never been able to feel anything. Inside or out")
-	weight = 50
+	greet_text = span_notice("Ever since <b>it</b> happened, I've never been able to feel anything. Inside or out.")
+	weight = 75
 
 /datum/special_trait/deadened/on_apply(mob/living/carbon/human/character, silent)
 	ADD_TRAIT(character, TRAIT_NOMOOD, "[type]")
@@ -48,7 +44,7 @@
 /datum/special_trait/value
 	name = "Coin Counter"
 	greet_text = span_notice("I know how to estimate an item's value.")
-	weight = 100
+	weight = 50
 	restricted_traits = list(TRAIT_SEEPRICES)
 
 /datum/special_trait/value/on_apply(mob/living/carbon/human/character, silent)
@@ -57,14 +53,14 @@
 /datum/special_trait/lightstep
 	name = "Light Step"
 	greet_text = span_notice("I am quiet, nobody can hear my steps.")
-	weight = 100
+	weight = 150
 
 /datum/special_trait/lightstep/on_apply(mob/living/carbon/human/character, silent)
 	ADD_TRAIT(character, TRAIT_LIGHT_STEP, "[type]")
 
 /datum/special_trait/night_owl
 	name = "Night Owl"
-	greet_text = span_notice("I've always preferred Noc over her sister")
+	greet_text = span_notice("I've always preferred Noc over her sister.")
 	weight = 100
 
 /datum/special_trait/night_owl/on_apply(mob/living/carbon/human/character, silent)
@@ -72,8 +68,8 @@
 
 /datum/special_trait/beautiful
 	name = "Beautiful"
-	greet_text = span_notice("My face is a work of art")
-	weight = 100
+	greet_text = span_notice("My face is a work of art~")
+	weight = 150
 
 /datum/special_trait/beautiful/on_apply(mob/living/carbon/human/character, silent)
 	ADD_TRAIT(character, TRAIT_BEAUTIFUL, "[type]")
@@ -104,7 +100,7 @@
 
 /datum/special_trait/mule
 	name = "Mule"
-	greet_text = span_notice("I've been dealing drugs and I have a stash hidden away")
+	greet_text = span_notice("I've been dealing drugs and I have a stash hidden away.")
 	weight = 100
 
 /datum/special_trait/mule/on_apply(mob/living/carbon/human/character, silent)
@@ -115,7 +111,7 @@
 
 /datum/special_trait/cunning_linguist
 	name = "Cunning Linguist"
-	greet_text = span_notice("I know an extra language, and I can be quite seductive")
+	greet_text = span_notice("I know an extra language, and I can be quite seductive~")
 	weight = 100
 
 /datum/special_trait/cunning_linguist/on_apply(mob/living/carbon/human/character, silent)
@@ -137,7 +133,7 @@
 /datum/special_trait/corn_fed
 	name = "Corn Fed"
 	greet_text = span_notice("My diet was quite rich in corn.")
-	weight = 100
+	weight = 125
 
 /datum/special_trait/corn_fed/on_apply(mob/living/carbon/human/character, silent)
 	character.change_stat("constitution", 2)
@@ -146,15 +142,15 @@
 /datum/special_trait/bookworm
 	name = "Bookworm"
 	greet_text = span_notice("I'm a fan of books and I enjoy reading them regularly.")
-	weight = 100
+	weight = 75
 
 /datum/special_trait/bookworm/on_apply(mob/living/carbon/human/character, silent)
 	character.mind.adjust_skillrank_up_to(/datum/skill/misc/reading, 4, TRUE)
 
 /datum/special_trait/arsonist
 	name = "Arsonist"
-	greet_text = span_notice("I like seeing things combust and burn. I have hidden around two firebombs")
-	weight = 100
+	greet_text = span_notice("I like seeing things combust and burn. I have hidden around two firebombs!")
+	weight = 50
 
 /datum/special_trait/arsonist/on_apply(mob/living/carbon/human/character, silent)
 	character.mind.special_items["Firebomb One"] = /obj/item/bomb
@@ -163,19 +159,19 @@
 
 /datum/special_trait/pineapple
 	name = "The safeword is \"Pineapple\""
-	greet_text = span_notice("I enjoy whipping people until they squirm and whine, their pain makes my pleasure. I also have a hidden a whip")
+	greet_text = span_notice("I enjoy whipping people until they squirm and whine, their pain makes my pleasure. I also have a hidden a whip.")
 	weight = 25
 
 /datum/special_trait/pineapple/on_apply(mob/living/carbon/human/character, silent)
 	character.mind.special_items["Whip"] = /obj/item/rogueweapon/whip
-	character.mind.adjust_skillrank_up_to(/datum/skill/combat/whipsflails, 6, TRUE)
+	character.mind.adjust_skillrank_up_to(/datum/skill/combat/whipsflails, 5, TRUE)
 
 /datum/special_trait/psydons_rider
 	name = "Psydon's Drunkest Rider"
-	greet_text = span_notice("I ride! None of the laws shall stop me for that is Psydon's divine will!")
+	greet_text = span_notice("I ride!! None of the laws shall stop me for that is Psydon's divine will!")
 	req_text = "Worship Psydon"
 	allowed_patrons = list(/datum/patron/psydon)
-	weight = 100
+	weight = 150
 
 /datum/special_trait/psydons_rider/on_apply(mob/living/carbon/human/character, silent)
 	character.drunkenness = 50
@@ -199,7 +195,7 @@
 /datum/special_trait/spring_in_my_step
 	name = "Spring in my Step"
 	greet_text = span_notice("My legs are quite strong and where most have to climb, I can just jump")
-	weight = 25
+	weight = 75
 
 /datum/special_trait/spring_in_my_step/on_apply(mob/living/carbon/human/character, silent)
 	ADD_TRAIT(character, TRAIT_ZJUMP, "[type]")
@@ -240,7 +236,7 @@
 /datum/special_trait/civilizedbarbarian
 	name = "Tavern Brawler"
 	greet_text = span_notice("My fists feel heavier!")
-	weight = 100
+	weight = 150
 
 /datum/special_trait/civilizedbarbarian/on_apply(mob/living/carbon/human/character, silent)
 	ADD_TRAIT(character, TRAIT_CIVILIZEDBARBARIAN, TRAIT_GENERIC) //Need to make trait improve hitting people with chairs, mugs, goblets.
@@ -266,7 +262,7 @@
 	name = "Noble Lineage"
 	greet_text = span_notice("I come of noble blood.")
 	restricted_traits = list(TRAIT_NOBLE)
-	weight = 100
+	weight = 75
 
 /datum/special_trait/bleublood/on_apply(mob/living/carbon/human/character, silent)
 	ADD_TRAIT(character, TRAIT_NOBLE, "[type]")
@@ -275,7 +271,7 @@
 /datum/special_trait/richpouch
 	name = "Rich Pouch"
 	greet_text = span_notice("I've recently found a pouch filled with mammons, probably belonging to some noble.")
-	weight = 100
+	weight = 125
 
 /datum/special_trait/richpouch/on_apply(mob/living/carbon/human/character, silent)
 	var/obj/item/pouch = new /obj/item/storage/belt/rogue/pouch/coins/rich(get_turf(character))
@@ -284,7 +280,7 @@
 /datum/special_trait/swift
 	name = "Speedster"
 	greet_text = span_notice("I feel like the fastest person alive and I can probably dodge anything, as long as I'm not weighed down by medium or heavy armor")
-	weight = 50
+	weight = 100
 
 /datum/special_trait/swift/on_apply(mob/living/carbon/human/character, silent)
 	ADD_TRAIT(character, TRAIT_DODGEEXPERT, "[type]")
@@ -294,8 +290,8 @@
 
 /datum/special_trait/gourmand
 	name = "Gourmand"
-	greet_text = span_notice("I can eat even the most spoiled, raw, or toxic food and water as if they were delicacies..")
-	weight = 100
+	greet_text = span_notice("I can eat even the most spoiled, raw, or toxic food and water as if they were delicacies...")
+	weight = 200
 
 /datum/special_trait/gourmand/on_apply(mob/living/carbon/human/character, silent)
 	ADD_TRAIT(character, TRAIT_NASTY_EATER, "[type]")
@@ -319,6 +315,7 @@
 	weight = 50
 
 /datum/special_trait/backproblems/on_apply(mob/living/carbon/human/character)
+	character.mob_size += 1
 	character.change_stat("strength", 2)
 	character.change_stat("constitution", 2)
 	character.change_stat("speed", -2)
@@ -350,11 +347,13 @@
 	name = "Known Heretic"
 	greet_text = span_boldwarning("I've been denounced by the church for either reasons legitimate or not!")
 	req_text = "Non-church role"
-	weight = 100
+	weight = 75
 	restricted_jobs = list(CHURCH_ROLES)
 
 /datum/special_trait/hussite/on_apply(mob/living/carbon/human/character, silent)
 	GLOB.excommunicated_players += character.real_name
+	character.add_stress(/datum/stressevent/psycurse)
+	character.devotion.excommunicate()
 
 /datum/special_trait/bounty
 	name = "Hunted Man"
@@ -374,7 +373,7 @@
 	else
 		employer = pick(list("Duchess", "Lady", "Noblelady", "Heiress"))
 	employer = "[employer] [random_human_name(employer_gender, FALSE, FALSE)]"
-	var/amount = rand(40,100)
+	var/amount = rand(20,250)
 	switch(rand(1,7))
 		if(1)
 			reason = "Murder"
@@ -397,7 +396,7 @@
 /datum/special_trait/outlaw
 	name = "Known Outlaw"
 	greet_text = span_boldwarning("Whether for crimes I did or was accused of, I have been declared an outlaw!")
-	weight = 100
+	weight = 150
 
 /datum/special_trait/outlaw/on_apply(mob/living/carbon/human/character, silent)
 	make_outlaw(character.real_name, TRUE)
@@ -405,7 +404,7 @@
 /datum/special_trait/sillyvoice
 	name = "Annoying"
 	greet_text = span_sans("People really hate my voice for some reason.")
-	weight = 100
+	weight = 75
 
 /datum/special_trait/sillyvoice/on_apply(mob/living/carbon/human/character)
 	ADD_TRAIT(character, TRAIT_COMICSANS, "[type]")
@@ -413,16 +412,16 @@
 
 /datum/special_trait/unlucky
 	name = "Unlucky"
-	greet_text = span_boldwarning("Ever since you knocked over that glass vase, you just feel... off")
-	weight = 25
+	greet_text = span_boldwarning("Ever since you knocked over that glass vase, you just feel... off.")
+	weight = 50
 
 /datum/special_trait/unlucky/on_apply(mob/living/carbon/human/character, silent)
-	character.STALUC = rand(1, 10)
+	character.STALUC -= rand(1, 10)
 
 
 /datum/special_trait/jesterphobia
 	name = "Jesterphobic"
-	greet_text = span_boldwarning("I have a severe, irrational fear of Jesters")
+	greet_text = span_boldwarning("I have a severe, irrational fear of Jesters!")
 	weight = 50
 
 /datum/special_trait/jesterphobia/on_apply(mob/living/carbon/human/character, silent)
@@ -430,7 +429,7 @@
 
 /datum/special_trait/xenophobic
 	name = "Xenophobic"
-	greet_text = span_boldwarning("Lesser races pollute our land")
+	greet_text = span_boldwarning("Lesser races pollute our land!")
 	weight = 200
 
 /datum/special_trait/xenophobic/on_apply(mob/living/carbon/human/character, silent)
@@ -448,7 +447,7 @@
 
 /datum/special_trait/atrophy
 	name = "Atrophy"
-	greet_text = span_boldwarning("When growing up I could barely feed myself... this left me weak and fragile")
+	greet_text = span_boldwarning("When growing up I could barely feed myself... this left me weak and fragile.")
 	weight = 50
 
 /datum/special_trait/atrophy/on_apply(mob/living/carbon/human/character)
@@ -458,8 +457,8 @@
 
 /datum/special_trait/lazy
 	name = "Lazy"
-	greet_text = span_boldwarning("I don't care, never did")
-	weight = 200
+	greet_text = span_boldwarning("I don't care, never did.")
+	weight = 125
 
 /datum/special_trait/lazy/on_apply(mob/living/carbon/human/character)
 	character.change_stat("strength", -1)
@@ -470,8 +469,8 @@
 
 /datum/special_trait/bad_week
 	name = "Bad Week"
-	greet_text = span_boldwarning("Everything just seems to piss me off")
-	weight = 100
+	greet_text = span_boldwarning("Everything just seems to piss me off!")
+	weight = 125
 
 /datum/special_trait/bad_week/on_apply(mob/living/carbon/human/character, silent)
 	ADD_TRAIT(character, TRAIT_BAD_MOOD, "[type]")
@@ -483,6 +482,31 @@
 
 /datum/special_trait/nude_sleeper/on_apply(mob/living/carbon/human/character, silent)
 	ADD_TRAIT(character, TRAIT_NUDE_SLEEPER, "[type]")
+
+/datum/special_trait/nymphomaniac
+	name = "Nymphomaniac"
+	greet_text = span_boldwarning("I'm in a constant state of arousal, and I cannot control my urges.")
+	weight = 50
+
+/datum/special_trait/nymphomaniac/on_apply(mob/living/carbon/human/character, silent)
+	character.add_curse(/datum/curse/baotha, TRUE)
+	ADD_TRAIT(character, TRAIT_GOODLOVER, "[type]")
+
+/datum/special_trait/loveless
+	name = "Nymphomaniac"
+	greet_text = span_boldwarning("I am unable to show any kind of affection or love, whether carnal or platonic.")
+	weight = 50
+
+/datum/special_trait/loveless/on_apply(mob/living/carbon/human/character, silent)
+	character.add_curse(/datum/curse/eora, TRUE)
+
+/datum/special_trait/pacifist
+	name = "Pacifist"
+	greet_text = span_boldwarning("Violence disgusts me. I cannot bring myself to wield any kind of weapon.")
+	weight = 50
+
+/datum/special_trait/pacifist/on_apply(mob/living/carbon/human/character, silent)
+	character.add_curse(/datum/curse/ravox, TRUE)
 
 //job specials
 /datum/special_trait/punkprincess //I think everyone will like the Rebellous Prince-Like Princess. I'd love to do one for the prince as well that gives him princess loadout, but, up to you!
@@ -569,19 +593,23 @@
 /datum/special_trait/reps_redemption
 	name = "Reps for Redemption"
 	greet_text = span_notice("Pain has finally transformed into gain.")
+	allowed_jobs = list(CHURCH_ROLES)
 	weight = 75
 
 /datum/special_trait/reps_redemption/on_apply(mob/living/carbon/human/character)
-	character.mind.adjust_skillrank(/datum/skill/misc/athletics, 1, TRUE)
-	character.change_stat("strength", 1)
-	character.change_stat("constitution", 1)
+	character.mind.adjust_skillrank(/datum/skill/misc/athletics, 2, TRUE)
+	character.mind.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
+	character.change_stat("strength", 3)
+	character.change_stat("constitution", 2)
+	character.change_stat("endurance", 1)
+	character.change_stat("speed", -1)
 
 /datum/special_trait/seed_feed
 	name = "Seed & Feed"
 	greet_text = span_notice("Armed with seeds and the unwavering belief that sharing is mandatory. Bag safely stashed, until the next seed-worthy moment arises.")
 	req_text = "Be a Soilson, Towner or Pilgrim."
 	allowed_jobs = list(/datum/job/roguetown/farmer, /datum/job/roguetown/pilgrim, /datum/job/roguetown/villager)
-	weight = 100
+	weight = 150
 
 /datum/special_trait/seed_feed/on_apply(mob/living/carbon/human/character)
 	character.mind.adjust_skillrank(/datum/skill/combat/wrestling, 1, TRUE)
