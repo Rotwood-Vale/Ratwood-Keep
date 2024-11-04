@@ -827,7 +827,7 @@
 
 /obj/item/storage/fancy/pilltin
 	name = "pill tin"
-	desc = "a tin for all your pill needs, snake branded (close/open mmb)"
+	desc = "a tin for all your pill needs, snake branded"
 	icon = 'icons/roguetown/items/surgery.dmi'
 	icon_state = "pilltin"
 	w_class = WEIGHT_CLASS_TINY
@@ -876,7 +876,7 @@
 
 /obj/item/storage/fancy/pilltinwake
 	name = "pill tin (wake)"
-	desc = "a tin for all your pill needs, snake branded (close/open mmb)"
+	desc = "a tin for all your pill needs, snake branded"
 	icon = 'icons/roguetown/items/surgery.dmi'
 	icon_state = "pilltin"
 	w_class = WEIGHT_CLASS_TINY
@@ -939,7 +939,7 @@
 
 /obj/item/storage/fancy/pilltinpink
 	name = "pill tin (pnk)"
-	desc = "a tin for all your pill needs, snake branded (close/open mmb)"
+	desc = "a tin for all your pill needs, snake branded"
 	icon = 'icons/roguetown/items/surgery.dmi'
 	icon_state = "pilltin"
 	w_class = WEIGHT_CLASS_TINY
@@ -1002,7 +1002,7 @@
 
 /obj/item/storage/fancy/skit
 	name = "surgery kit"
-	desc = "portable and compact (close/open mmb)"
+	desc = "portable and compact"
 	icon = 'icons/roguetown/items/surgery.dmi'
 	icon_state = "skit"
 	w_class = WEIGHT_CLASS_SMALL
@@ -1081,7 +1081,7 @@
 
 /obj/item/storage/fancy/ifak
 	name = "personal patch kit"
-	desc = "personal treatment pouch; has all you need to stop you or someone else from meeting necra. even comes with a lil guide scroll for the slow minded. (close/open mmb)"
+	desc = "personal treatment pouch; has all you need to stop you or someone else from meeting necra. even comes with a lil guide scroll for the slow minded."
 	icon = 'icons/roguetown/items/surgery.dmi'
 	icon_state = "ifak"
 	w_class = WEIGHT_CLASS_SMALL
