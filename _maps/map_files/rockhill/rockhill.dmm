@@ -3677,7 +3677,6 @@
 	lockid = "steward"
 	},
 /obj/item/roguekey/steward,
-/obj/item/roguekey/graveyard,
 /obj/item/roguekey/mercenary,
 /obj/item/roguekey/keep_armory,
 /obj/item/roguekey/keep_barracks,
@@ -4488,6 +4487,8 @@
 /obj/item/roguekey/town_dungeon,
 /obj/item/roguekey/town_dungeon,
 /obj/item/roguekey/sheriff_office,
+/obj/item/roguekey/graveyard,
+/obj/item/roguekey/graveyard,
 /turf/open/floor/rogue/tile/tilerg,
 /area/rogue/indoors/town/manor)
 "ebb" = (
