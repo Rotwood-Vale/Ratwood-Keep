@@ -158,7 +158,6 @@
 			backl = /obj/item/storage/backpack/rogue/satchel
 
 	ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
-	ADD_TRAIT(H, TRAIT_STEELHEARTED, TRAIT_GENERIC)
 	H.dna.species.soundpack_m = new /datum/voicepack/male/knight()
 	if(H.dna.species.type == /datum/species/tieberian)
 		cloak = /obj/item/clothing/cloak/tabard/crusader/tief

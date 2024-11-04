@@ -66,7 +66,6 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 	ADD_TRAIT(owner.current, TRAIT_NOPAIN, "[type]")
 	ADD_TRAIT(owner.current, TRAIT_TOXIMMUNE, "[type]")
 	ADD_TRAIT(owner.current, TRAIT_STEELHEARTED, "[type]")
-	ADD_TRAIT(owner.current, TRAIT_TOLERANT, "[type]")
 	ADD_TRAIT(owner.current, TRAIT_NOSLEEP, "[type]")
 	ADD_TRAIT(owner.current, TRAIT_LIMPDICK, "[type]")
 	ADD_TRAIT(owner.current, TRAIT_VAMPMANSION, "[type]")
@@ -586,7 +585,7 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 		qdel(V)
 	for(var/obj/structure/vampire/portalmaker/P in GLOB.vampire_objects)
 		P.sending =  FALSE
-	..()
+	return ..()
 
 /obj/structure/vampire/portalmaker/proc/create_portal_return(aname,duration)
 	for(var/obj/effect/landmark/vteleportdestination/Vamp in GLOB.landmarks_list)
@@ -1089,7 +1088,7 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 	delete_after_roundstart = FALSE
 
 /obj/effect/landmark/start/vampirelord/Initialize()
-	..()
+	. = ..()
 	GLOB.vlord_starts += loc
 
 /obj/effect/landmark/start/vampirespawn
@@ -1104,7 +1103,7 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 	delete_after_roundstart = FALSE
 
 /obj/effect/landmark/start/vampirespawn/Initialize()
-	..()
+	. = ..()
 	GLOB.vspawn_starts += loc
 
 /obj/effect/landmark/vteleport

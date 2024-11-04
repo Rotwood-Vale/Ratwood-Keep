@@ -73,4 +73,3 @@
 		H.change_stat("speed", 1)
 	H.verbs |= /mob/proc/haltyell
 	ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
-	ADD_TRAIT(H, TRAIT_STEELHEARTED, TRAIT_GENERIC)

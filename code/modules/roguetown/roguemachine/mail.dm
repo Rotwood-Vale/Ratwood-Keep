@@ -198,6 +198,7 @@
 /obj/structure/roguemachine/mail/Destroy()
 	set_light(0)
 	SSroguemachine.hermailers -= src
+	return ..()
 
 /obj/structure/roguemachine/mail/r
 	pixel_y = 0

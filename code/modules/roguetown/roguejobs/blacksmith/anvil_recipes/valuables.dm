@@ -1,3 +1,25 @@
+
+/datum/anvil_recipe/valuables/special/ringf
+	name = "flame ring (+1 Fat, +1 stone, +1 Fiber)"
+	req_bar = /obj/item/ingot/iron
+	created_item = /obj/item/clothing/ring/lantern
+	additional_items = list(/obj/item/reagent_containers/food/snacks/fat, /obj/item/natural/stone, /obj/item/natural/fibers)
+	i_type = "Valuables"
+
+/datum/anvil_recipe/valuables/special/ringp
+	name = "blessed ring (+1 Psicross)"
+	req_bar = /obj/item/ingot/iron
+	created_item = /obj/item/clothing/ringP
+	additional_items = list(/obj/item/clothing/neck/roguetown/psicross)
+	i_type = "Valuables"
+
+/datum/anvil_recipe/valuables/silver/rings
+	name = "Rings 3x"
+	req_bar = /obj/item/ingot/silver
+	created_item = list(/obj/item/clothing/ring/silver, /obj/item/clothing/ring/silver, /obj/item/clothing/ring/silver)
+	i_type = "Valuables"
+
+
 /datum/anvil_recipe/valuables
 	appro_skill = /datum/skill/craft/blacksmithing
 	craftdiff = 2
