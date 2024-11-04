@@ -81,7 +81,7 @@
 	lit_state = "clear_bomb_lit"
 	prob2fail = 0
 
-/obj/item/bomb/explode/dryad(skipprob)
+/obj/item/bomb/dryad/explode(skipprob)
 	STOP_PROCESSING(SSfastprocess, src)
 	var/turf/T = get_turf(src)
 	if(T)

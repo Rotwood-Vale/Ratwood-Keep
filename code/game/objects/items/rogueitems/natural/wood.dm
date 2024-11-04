@@ -25,6 +25,7 @@
 		if(!do_after(user, lumber_time, target = user))
 			return
 		lumber_amount = rand(minimum, max(round(skill_level), minimum))
+		var/sound_played = FALSE
 		for(var/i = 0; i < lumber_amount; i++)
 			if(prob(skill_level))
 				new /obj/item/grown/log/tree/small/essence(get_turf(src))
@@ -63,6 +64,16 @@
 	firefuel = 5 MINUTES
 	w_class = WEIGHT_CLASS_NORMAL
 	smeltresult = /obj/item/ash
+	var/datum/artificer_recipe/currecipe
+
+/obj/item/ingot/Destroy()
+	if(currecipe)
+		QDEL_NULL(currecipe)
+	if(istype(loc, /obj/machinery/artificer_table))
+		var/obj/machinery/artificer_table/A = loc
+		A.plank = null
+		A.update_icon()
+	..()
 
 /obj/item/grown/log/tree/small/essence
 	name = "essence of lumber"
