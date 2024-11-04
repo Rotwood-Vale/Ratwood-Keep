@@ -58,7 +58,6 @@
 			H.change_stat("strength", 3) // Barbs are traditionally a mix of strength/resilience. 
 			H.change_stat("constitution", 3)
 			H.change_stat("endurance", 2)
-			ADD_TRAIT(H, TRAIT_STEELHEARTED, TRAIT_GENERIC)
 		if("Hunter Killer")
 			H.set_blindness(0)
 			to_chat(H, span_warning("Barbarians are great warriors of the outlands, often regarded as the strongest of their tribes -- should they have any that live. These incredible titans of strength and brutality are motivated most often by a single... all consuming instinct. SURVIVE."))
@@ -100,7 +99,6 @@
 			H.change_stat("strength", 2) 
 			H.change_stat("constitution", 2)
 			H.change_stat("endurance", 3)
-			ADD_TRAIT(H, TRAIT_STEELHEARTED, TRAIT_GENERIC)
 /*
 			if("ROLL THE DICE!")
 				if(prob(49)) // Warrior
@@ -239,3 +237,4 @@
 */
 	//70% chance to be raceswapped to Gronn because slop lore
 
+	ADD_TRAIT(H, TRAIT_STEELHEARTED, TRAIT_GENERIC)
