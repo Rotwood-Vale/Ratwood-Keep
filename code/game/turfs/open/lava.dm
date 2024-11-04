@@ -195,16 +195,13 @@
 		playsound(user, pick('sound/foley/waterwash (1).ogg','sound/foley/waterwash (2).ogg'), 100, FALSE)
 		user.visible_message(span_info("[user] starts to drink from [src]."))
 		if(do_after(L, 25, target = src))
-			if(user.job == "Royal Guard")
-				to_chat(C, span_reallybig("hgegh/..........easy peatsy........,,, "))
-				return
 			var/mob/living/carbon/C = user
 			to_chat(C, span_userdanger("OH SWEET PSYDON, WHY DID I THINK THIS WAS A GOOD IDEA???"))
 			C.flash_fullscreen("redflash3")
 			C.emote("agony", forced = TRUE)
-			C.adjust_fire_stacks(200) //sometimes you just gotta be prepared to die.
+			C.adjust_fire_stacks(500) //you deserve this.
 			C.IgniteMob()
-			C.adjustFireLoss(800)
+			C.adjustFireLoss(1000) //you, literally, deserve this.
 
 
 /turf/open/lava/smooth
@@ -306,11 +303,8 @@
 		playsound(user, pick('sound/foley/waterwash (1).ogg','sound/foley/waterwash (2).ogg'), 100, FALSE)
 		user.visible_message(span_info("[user] starts to drink from [src]."))
 		if(do_after(L, 25, target = src))
-			if(user.job == "Royal Guard")
-				to_chat(C, span_reallybig("hgegh/..........easy peatsy........,,, "))
-				return
 			var/mob/living/carbon/C = user
 			to_chat(C, span_userdanger("OH SWEET PSYDON, WHY DID I THINK THIS WAS A GOOD IDEA???"))
 			C.flash_fullscreen("redflash3")
 			C.emote("agony", forced = TRUE)
-			C.gib
+			C.gib() //YOU. LITERALLY. DESERVE THIS.
