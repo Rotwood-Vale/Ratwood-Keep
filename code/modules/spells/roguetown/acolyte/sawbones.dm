@@ -871,7 +871,7 @@
 	new /obj/item/reagent_containers/pill/caffpill(src)
 
 /obj/item/storage/fancy/pilltin/pink
-	name = "pill tin (pnk)" 
+	name = "pill tin (pnk)"
 
 /obj/item/storage/fancy/pilltin/pink/PopulateContents()
 	new /obj/item/reagent_containers/pill/pnkpill(src)
