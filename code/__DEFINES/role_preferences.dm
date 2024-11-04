@@ -6,7 +6,7 @@
 
 //These are synced with the Database, if you change the values of the defines
 //then you MUST update the database!
-#define ROLE_MANIAC			"Maniac"
+#define ROLE_MANIAC				"Maniac"
 #define ROLE_WEREWOLF			"Werewolf"
 #define ROLE_VAMPIRE			"Vampire"
 #define ROLE_NBEAST				"Vampire Lord"
@@ -15,6 +15,7 @@
 #define ROLE_PREBEL				"Peasant Rebel"
 #define ROLE_ASPIRANT			"Aspirant"
 #define ROLE_ZIZOIDCULTIST		"Cultist"
+#define ROLE_LICH				"Lich"
 
 #define ROLE_SYNDICATE			"Syndicate"
 #define ROLE_TRAITOR			"Traitor"
@@ -77,7 +78,8 @@ GLOBAL_LIST_INIT(special_roles_rogue, list(
 	ROLE_ASPIRANT = /datum/antagonist/aspirant,
 	ROLE_WEREWOLF = /datum/antagonist/werewolf,
 	ROLE_ZIZOIDCULTIST = /datum/antagonist/zizocultist,
-	ROLE_NBEAST = /datum/antagonist/vampirelord
+	ROLE_NBEAST = /datum/antagonist/vampirelord,
+	ROLE_LICH = /datum/antagonist/lich
 ))
 
 //Job defines for what happens when you fail to qualify for any job during job selection

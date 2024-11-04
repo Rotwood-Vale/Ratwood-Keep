@@ -84,6 +84,7 @@
 		target.adjustOxyLoss(-25)
 		target.blood_volume += BLOOD_VOLUME_SURVIVE/2
 		return TRUE
+	revert_cast()
 	return FALSE
 
 // Miracle
@@ -140,4 +141,5 @@
 		target.adjustOxyLoss(-50)
 		target.blood_volume += BLOOD_VOLUME_SURVIVE
 		return TRUE
+	revert_cast()
 	return FALSE

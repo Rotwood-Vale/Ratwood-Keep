@@ -133,8 +133,8 @@
 		return
 	// ZAPED
 	//to_chat(user, span_boldwarning(pick(list("I feel tainted...", "I feel less human...")))) ZAPE
-	log_combat(user, victim, "Initiated rape against")
-	//adjust_playerquality(-4, user.ckey, reason = "Initiated rape on an AFK/resisting person.") ZAPE
+	log_combat(user, victim, "Initiated noncon against")
+	//adjust_playerquality(-4, user.ckey, reason = "Initiated noncon on an AFK/resisting person.") ZAPE
 	user.client.prefs.violated[victim.mind.key] = world.time
 
 /datum/sex_controller/proc/adjust_speed(amt)

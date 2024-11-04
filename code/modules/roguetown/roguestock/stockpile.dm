@@ -42,6 +42,28 @@
 	export_price = 8
 	importexport_amt = 10
 
+/datum/roguestock/stockpile/copper
+	name = "Raw Copper"
+	desc = "Chunks of copper used for smithing and alloying."
+	item_type = /obj/item/rogueore/copper
+	held_items = list(6, 0)
+	payout_price = 3
+	withdraw_price = 5
+	transport_fee = 3
+	export_price = 5
+	importexport_amt = 10
+
+/datum/roguestock/stockpile/tin
+	name = "Raw Tin"
+	desc = "Chunks of tin used for smithing and alloying."
+	item_type = /obj/item/rogueore/tin
+	held_items = list(6, 0)
+	payout_price = 4
+	withdraw_price = 5
+	transport_fee = 4
+	export_price = 5
+	importexport_amt = 10
+
 /datum/roguestock/stockpile/gold
 	name = "Raw Gold"
 	desc = "Chunks of unrefined gold."
@@ -51,6 +73,17 @@
 	withdraw_price = 75
 	transport_fee = 10
 	export_price = 75
+	importexport_amt = 10
+
+/datum/roguestock/stockpile/silver
+	name = "Raw Silver"
+	desc = "Chunks of unrefined silver."
+	item_type = /obj/item/rogueore/silver
+	held_items = list(0, 0)
+	payout_price = 75
+	withdraw_price = 100
+	transport_fee = 10
+	export_price = 100
 	importexport_amt = 10
 
 /datum/roguestock/stockpile/cloth
@@ -137,6 +170,50 @@
 	held_items = list(0, 0)
 	payout_price = 5
 	withdraw_price = 8
+	transport_fee = 2
+	export_price = 8
+	importexport_amt = 5
+
+/datum/roguestock/stockpile/beet
+	name = "Beet"
+	desc = "Harvested produce."
+	item_type = /obj/item/reagent_containers/food/snacks/grown/beet
+	held_items = list(0, 0)
+	payout_price = 5
+	withdraw_price = 6
+	transport_fee = 2
+	export_price = 8
+	importexport_amt = 5
+
+/datum/roguestock/stockpile/cabbage
+	name = "Cabbage"
+	desc = "Harvested produce."
+	item_type = /obj/item/reagent_containers/food/snacks/grown/cabbage/rogue
+	held_items = list(0, 0)
+	payout_price = 5
+	withdraw_price = 6
+	transport_fee = 2
+	export_price = 8
+	importexport_amt = 5
+
+/datum/roguestock/stockpile/potato
+	name = "Potato"
+	desc = "Harvested produce."
+	item_type = /obj/item/reagent_containers/food/snacks/grown/potato/rogue
+	held_items = list(0, 0)
+	payout_price = 5
+	withdraw_price = 6
+	transport_fee = 2
+	export_price = 8
+	importexport_amt = 5
+
+/datum/roguestock/stockpile/onion
+	name = "Onion"
+	desc = "Harvested produce."
+	item_type = /obj/item/reagent_containers/food/snacks/grown/onion/rogue
+	held_items = list(0, 0)
+	payout_price = 5
+	withdraw_price = 6
 	transport_fee = 2
 	export_price = 8
 	importexport_amt = 5
