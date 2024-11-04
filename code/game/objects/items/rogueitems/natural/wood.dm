@@ -66,7 +66,7 @@
 	smeltresult = /obj/item/ash
 	var/datum/artificer_recipe/currecipe
 
-/obj/item/ingot/Destroy()
+/obj/item/grown/log/tree/small/plank/Destroy()
 	if(currecipe)
 		QDEL_NULL(currecipe)
 	if(istype(loc, /obj/machinery/artificer_table))
@@ -74,6 +74,26 @@
 		A.plank = null
 		A.update_icon()
 	..()
+
+/obj/item/natural/bundle/plank
+	name = "wooden planks"
+	icon_state = "planks1"
+	possible_item_intents = list(/datum/intent/use)
+	desc = "Wooden planks bundled together for easy handling."
+	force = 0
+	throwforce = 0
+	maxamount = 10
+	obj_flags = null
+	firefuel = 30 MINUTES
+	resistance_flags = FLAMMABLE
+	w_class = WEIGHT_CLASS_BULKY
+	spitoutmouth = FALSE
+	stacktype = /obj/item/grown/log/tree/small/plank
+	stackname = "cloth"
+	icon1 = "planks1"
+	icon1step = 5
+	icon2 = "planks2"
+	icon2step = 10
 
 /obj/item/grown/log/tree/small/essence
 	name = "essence of lumber"
