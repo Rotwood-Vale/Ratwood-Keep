@@ -407,7 +407,7 @@
 	volume = 24
 
 /obj/item/reagent_containers/powder/alch/pur
-	name = "essence of purity
+	name = "essence of purity"
 	gender = PLURAL
 	icon_state = "salt"
 	color = "#61DE2A"
@@ -419,7 +419,7 @@
 	volume = 24
 
 /obj/item/reagent_containers/powder/alch/life
-	name = "essence of life
+	name = "essence of life"
 	gender = PLURAL
 	icon_state = "spice"
 	brew_reagent = /datum/reagent/alch/syrumlife
