@@ -26819,7 +26819,7 @@
 	tame = 1;
 	name = "Ozium";
 	faction = list("station", "neutral", "cows");
-	unique_name = Ozium
+	unique_name = Ozium;
 	},
 /turf/open/floor/rogue/churchmarble,
 /area/rogue/indoors/town)
