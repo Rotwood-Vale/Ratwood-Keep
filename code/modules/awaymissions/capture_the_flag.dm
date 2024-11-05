@@ -169,7 +169,7 @@
 
 /obj/machinery/capture_the_flag/Destroy()
 	GLOB.poi_list.Remove(src)
-	..()
+	return ..()
 
 /obj/machinery/capture_the_flag/process()
 	for(var/i in spawned_mobs)
@@ -605,7 +605,9 @@
 	invisibility = 0
 
 /obj/effect/ctf/ammo/Initialize(mapload)
-	..()
+	if(mapload)
+		return INITIALIZE_HINT_QDEL
+	. = ..()
 	QDEL_IN(src, AMMO_DROP_LIFETIME)
 
 /obj/effect/ctf/ammo/Crossed(atom/movable/AM)

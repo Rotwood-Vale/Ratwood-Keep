@@ -733,7 +733,7 @@
 				icon_state = "wcr"
 	if(over_state)
 		add_overlay(mutable_appearance(icon, "[over_state]", ABOVE_MOB_LAYER))
-	..()
+	. = ..()
 
 /obj/structure/mineral_door/wood/blue
 	icon_state = "wcb"
@@ -816,7 +816,7 @@
 	lockdir = dir
 
 /obj/structure/mineral_door/wood/deadbolt/Initialize()
-	..()
+	. = ..()
 	lockdir = dir
 	icon_state = base_state
 
@@ -869,7 +869,7 @@
 /obj/structure/mineral_door/wood/donjon/Initialize()
 	viewportdir = dir
 	icon_state = base_state
-	..()
+	. = ..()
 
 /obj/structure/mineral_door/wood/donjon/attack_right(mob/user)
 	if(user.get_active_held_item())
@@ -932,7 +932,7 @@
 	icon_state = "barsold"
 
 /obj/structure/mineral_door/bars/Initialize()
-	..()
+	. = ..()
 	add_overlay(mutable_appearance(icon, "barsopen", ABOVE_MOB_LAYER))
 
 

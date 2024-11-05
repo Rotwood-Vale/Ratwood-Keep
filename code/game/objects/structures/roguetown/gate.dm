@@ -71,7 +71,7 @@ GLOBAL_LIST_EMPTY(biggates)
 	if(attached_to)
 		var/obj/structure/winch/W = attached_to
 		W.attached_gate = null
-	..()
+	return ..()
 
 /obj/structure/gate/update_icon()
 	cut_overlays()
@@ -149,14 +149,14 @@ GLOBAL_LIST_EMPTY(biggates)
 	var/obj/structure/gate/attached_gate
 
 /obj/structure/winch/Initialize()
-	. = ..()
+	..()
 	return INITIALIZE_HINT_LATELOAD
 
 /obj/structure/winch/Destroy()
 	if(attached_gate)
 		var/obj/structure/gate/W = attached_gate
 		W.attached_to = null
-	..()
+	return ..()
 
 /obj/structure/winch/LateInitialize()
 	for(var/obj/structure/gate/G in GLOB.biggates)
