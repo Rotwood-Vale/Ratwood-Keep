@@ -27,5 +27,12 @@
 	desc = "I've never met a problem my fists couldn't solve."
 	added_traits = list(TRAIT_CIVILIZEDBARBARIAN)*/
 
+/datum/virtue/combat/guarded
+	name = "Guarded"
+	desc = "I have long kept my true capabilities a secret. Sometimes being deceptively weak can save one's life."
+	added_traits = list(TRAIT_DECEIVING_MEEKNESS)
 
-
+/datum/virtue/combat/impervious
+	name = "Impervious"
+	desc = "I've spent years shoring up my weakspots, and have become difficult to wound with critical blows."
+	added_traits = list(TRAIT_CRITICAL_RESISTANCE)
