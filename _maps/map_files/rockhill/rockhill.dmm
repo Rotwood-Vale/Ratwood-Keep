@@ -178,6 +178,7 @@
 	dir = 8
 	},
 /obj/item/reagent_containers/glass/mortar,
+/obj/item/reagent_containers/glass/alembic,
 /turf/open/floor/rogue/ruinedwood{
 	dir = 1;
 	icon_state = "vertw"
@@ -4423,6 +4424,20 @@
 /obj/structure/flora/newtree,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors/bog)
+"eie" = (
+/obj/structure/closet/crate/chest{
+	lockid = "keep_armory"
+	},
+/obj/item/rogueweapon/shovel,
+/obj/item/rogueweapon/sickle,
+/obj/item/rogueweapon/hoe,
+/obj/item/rogueweapon/thresher,
+/obj/structure/fluff/railing/border,
+/turf/open/floor/rogue/ruinedwood{
+	dir = 1;
+	icon_state = "vertw"
+	},
+/area/rogue/indoors/town)
 "eij" = (
 /obj/structure/mineral_door/wood/red{
 	lockid = "nightmaiden";
@@ -6258,6 +6273,12 @@
 /obj/machinery/light/rogue/wallfire/candle/blue/l,
 /turf/open/floor/rogue/herringbone,
 /area/rogue/indoors/town/church)
+"fLJ" = (
+/obj/structure/fluff/railing/border{
+	dir = 4
+	},
+/turf/open/floor/rogue/rooftop,
+/area/rogue/outdoors/town/roofs)
 "fLL" = (
 /obj/structure/roguetent,
 /turf/open/floor/rogue/twig,
@@ -8100,6 +8121,12 @@
 /obj/structure/bookcase/random,
 /turf/open/floor/rogue/carpet,
 /area/rogue/indoors/town/manor)
+"hxZ" = (
+/obj/structure/fluff/railing/border{
+	dir = 6
+	},
+/turf/open/floor/rogue/rooftop,
+/area/rogue/outdoors/town/roofs)
 "hyc" = (
 /obj/machinery/light/rogue/torchholder{
 	dir = 1
@@ -8582,10 +8609,16 @@
 	},
 /area/rogue/outdoors/bog)
 "hTf" = (
-/obj/structure/table/wood{
-	icon_state = "tablewood1"
+/obj/item/storage/fancy/ifak,
+/obj/item/reagent_containers/hypospray/medipen/sealbottle/purify,
+/obj/item/reagent_containers/hypospray/medipen/sealbottle/reju,
+/obj/item/storage/fancy/skit,
+/obj/structure/closet/crate/roguecloset,
+/obj/item/clothing/mask/cigarette/pipe/westman,
+/turf/open/floor/rogue/ruinedwood{
+	dir = 1;
+	icon_state = "vertw"
 	},
-/turf/open/floor/carpet/stellar,
 /area/rogue/indoors/town)
 "hTQ" = (
 /obj/effect/decal/cleanable/blood/gibs/limb,
@@ -11490,6 +11523,7 @@
 /obj/machinery/light/rogue/torchholder{
 	dir = 4
 	},
+/obj/item/roguebin/water,
 /turf/open/floor/rogue/ruinedwood{
 	dir = 1;
 	icon_state = "vertw"
@@ -16432,6 +16466,13 @@
 	icon_state = "wooden_floort"
 	},
 /area/rogue/outdoors/beach)
+"pen" = (
+/obj/structure/composter/halffull,
+/turf/open/floor/rogue/ruinedwood{
+	dir = 1;
+	icon_state = "vertw"
+	},
+/area/rogue/outdoors/town/roofs)
 "per" = (
 /turf/open/floor/carpet/red,
 /area/rogue/indoors/town/tavern)
@@ -24285,6 +24326,14 @@
 /obj/structure/stairs,
 /turf/open/floor/rogue/grass,
 /area/rogue/indoors)
+"wzM" = (
+/obj/structure/fluff/dryingrack,
+/obj/item/storage/roguebag,
+/turf/open/floor/rogue/ruinedwood{
+	dir = 1;
+	icon_state = "vertw"
+	},
+/area/rogue/indoors/town)
 "wAm" = (
 /turf/closed/wall/mineral/rogue/decostone/long,
 /area/rogue/indoors/town/church)
@@ -25010,6 +25059,19 @@
 	},
 /turf/open/floor/rogue/blocks,
 /area/rogue/outdoors/town)
+"xke" = (
+/obj/item/reagent_containers/food/snacks/grown/rogue/sweetleaf,
+/obj/item/reagent_containers/food/snacks/grown/rogue/pipeweed,
+/obj/item/reagent_containers/food/snacks/grown/berries/rogue/poison,
+/obj/structure/closet/crate/chest{
+	lockid = "physician"
+	},
+/obj/structure/fluff/railing/border,
+/turf/open/floor/rogue/ruinedwood{
+	dir = 1;
+	icon_state = "vertw"
+	},
+/area/rogue/indoors/town)
 "xkf" = (
 /obj/structure/fluff/walldeco/customflag,
 /turf/closed/wall/mineral/rogue/stone/red_moss,
@@ -304395,7 +304457,7 @@ thT
 aqE
 sgY
 xrP
-xrP
+eMv
 dHZ
 thT
 kDH
@@ -304797,7 +304859,7 @@ thT
 aqE
 xrP
 xrP
-xrP
+eMv
 dHZ
 thT
 kDH
@@ -405694,9 +405756,9 @@ fZJ
 fZJ
 fZJ
 fZJ
-fZJ
-fZJ
-uJh
+hxZ
+fLJ
+fLJ
 dHZ
 dHZ
 iFj
@@ -406096,13 +406158,13 @@ fZJ
 fZJ
 fZJ
 fZJ
-fZJ
-fZJ
-uJh
+sqN
+pWB
+pWB
 dHZ
 qpe
 uqR
-xCf
+eie
 oTD
 dHZ
 fZJ
@@ -406498,13 +406560,13 @@ fZJ
 fZJ
 fZJ
 fZJ
-fZJ
-fZJ
-uJh
+sqN
+pWB
+pWB
 dHZ
 fqH
 uqR
-xCf
+xke
 oTD
 dHZ
 fZJ
@@ -406900,12 +406962,12 @@ fZJ
 fZJ
 fZJ
 fZJ
-fZJ
-fZJ
-uJh
-teF
-hTf
-uqR
+sqN
+pen
+fSM
+rQY
+xrP
+xrP
 xCf
 jma
 dHZ
@@ -407302,12 +407364,12 @@ fZJ
 fZJ
 fZJ
 fZJ
-fZJ
-fZJ
-uJh
+sqN
+pWB
+pWB
 dHZ
-abK
-xrP
+wzM
+hTf
 vMo
 xrP
 dHZ
@@ -407704,9 +407766,9 @@ fZJ
 fZJ
 fZJ
 fZJ
-fZJ
-fZJ
-uJh
+sqN
+pWB
+pWB
 dHZ
 dHZ
 dHZ
@@ -408106,10 +408168,10 @@ fZJ
 fZJ
 fZJ
 fZJ
-fZJ
-fZJ
-uJh
-uJh
+tjM
+vQC
+vQC
+eZx
 uJh
 uJh
 uJh
