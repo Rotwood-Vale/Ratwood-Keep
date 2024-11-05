@@ -46,10 +46,10 @@
 
 	if(istype(I, /obj/item/reagent_containers/food/snacks/rogue/preserved/onion_fried))
 		playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 40, TRUE, -1)
-		add_sleep_experience(user, /datum/skill/craft/cooking, user.STAINT)
 		to_chat(user, span_notice("Adding onions..."))
 		if(do_after(user,short_cooktime, target = src))
 			new /obj/item/reagent_containers/food/snacks/rogue/onionsteak(loc)
+			add_sleep_experience(user, /datum/skill/craft/cooking, user.STAINT)
 			qdel(I)
 			qdel(src)
 
