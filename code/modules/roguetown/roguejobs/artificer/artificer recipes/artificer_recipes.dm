@@ -62,16 +62,108 @@
 		hammered = FALSE
 
 /datum/artificer_recipe/wood
-	i_type = "Weapons"
+	i_type = "General"
 	appro_skill = /datum/skill/craft/engineering
+	required_item = /obj/item/grown/log/tree/small/plank
 	craftdiff = 1
 	
-// --------- BRONZE RECIPES -----------
+// --------- WEAPON -----------
 
-/datum/artificer_recipe/wood/bow
+/datum/artificer_recipe/wood/weapons
+	i_type = "Weapons"
+
+/datum/artificer_recipe/wood/weapons/bow
 	name = "Bow Frame"
-	required_item = /obj/item/grown/log/tree/small/plank
 	created_item = /obj/item/grown/log/tree/bowpartial
+	extra_planks_needed = 1
+	hammers_per_plank = 3
+
+/datum/artificer_recipe/wood/weapons/staff
+	name = "Wooden Staff"
+	created_item = /obj/item/rogueweapon/woodstaff
 	extra_planks_needed = 2
 	hammers_per_plank = 2
-	craftdiff = 1
+
+/datum/artificer_recipe/wood/weapons/wsword
+	name = "Wooden Sword"
+	created_item = /obj/item/rogueweapon/mace/wsword
+	extra_planks_needed = 1
+	hammers_per_plank = 3
+
+/datum/artificer_recipe/wood/weapons/wshield
+	name = "Wooden Shield"
+	created_item = /obj/item/rogueweapon/shield/wood/crafted
+	extra_planks_needed = 3
+	hammers_per_plank = 5
+	craftdiff = 2
+
+/obj/item/rogueweapon/shield/wood/crafted
+	sellprice = 6
+
+/datum/artificer_recipe/wood/weapons/hshield
+	name = "Heater Shield"
+	created_item = /obj/item/rogueweapon/shield/heater/crafted
+	additional_items = list(/obj/item/natural/hide = 1)
+	extra_planks_needed = 3
+	hammers_per_plank = 2
+	craftdiff = 3
+
+/obj/item/rogueweapon/shield/heater/crafted
+	sellprice = 6
+
+// --------- TOOLS -----------
+
+/datum/artificer_recipe/wood/tools
+	i_type = "Tools"
+
+/datum/artificer_recipe/wood/tools/mallet
+	name = "Wooden Mallet"
+	created_item = /obj/item/rogueweapon/hammer/wood
+	extra_planks_needed = 0
+	hammers_per_plank = 8
+
+// --------- PROSTHETICS -----------
+
+/datum/artificer_recipe/wood/prosthetics
+	i_type = "Prosthetics"
+	extra_planks_needed = 2
+	hammers_per_plank = 2
+	craftdiff = 2
+	additional_items = list(/obj/item/roguegear = 1)
+
+/datum/artificer_recipe/wood/prosthetics/arm_left
+	name = "Left Wooden Arm (+1 Cog)"
+	created_item = /obj/item/bodypart/l_arm/prosthetic/wood
+
+/datum/artificer_recipe/wood/prosthetics/arm_right
+	name = "Right Wooden Arm (+1 Cog)"
+	created_item = /obj/item/bodypart/r_arm/prosthetic/wood
+
+
+/datum/artificer_recipe/wood/prosthetics/leg_left
+	name = "Left Wooden Leg (+1 Cog)"
+	created_item = /obj/item/bodypart/l_leg/prosthetic/wood
+
+
+/datum/artificer_recipe/wood/prosthetics/leg_right
+	name = "Right Wooden Leg (+1 Cog)"
+	created_item = /obj/item/bodypart/r_leg/prosthetic/wood
+
+// --------- WEAPON -----------
+
+/datum/artificer_recipe/wood/general
+	i_type = "General"
+
+/datum/artificer_recipe/wood/general/upgrade1
+	name = "Upgrade Cog"
+	created_item = /obj/item/cart_upgrade/level_1
+	extra_planks_needed = 1
+	hammers_per_plank = 5
+
+/datum/artificer_recipe/wood/general/upgrade2
+	name = "Advanced Upgrade Cog"
+	created_item = /obj/item/cart_upgrade/level_2
+	additional_items = list(/obj/item/grown/log/tree/small/essence = 1)
+	extra_planks_needed = 1
+	hammers_per_plank = 5
+	craftdiff = 2

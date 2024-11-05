@@ -27,7 +27,7 @@
 		lumber_amount = rand(minimum, max(round(skill_level), minimum))
 		var/sound_played = FALSE
 		for(var/i = 0; i < lumber_amount; i++)
-			if(prob(skill_level))
+			if(prob(skill_level+ user.goodluck(2)))
 				new /obj/item/grown/log/tree/small/essence(get_turf(src))
 				if(!sound_played)
 					sound_played = TRUE

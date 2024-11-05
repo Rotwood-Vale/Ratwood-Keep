@@ -1,8 +1,8 @@
 /obj/machinery/artificer_table
 	name = "artificer table"
-	desc = "It's surface is marred by countless hammer strikes." // NEEDS DONE
-	icon_state = "anvil" // NEEDS DONE
-	icon = 'icons/roguetown/misc/forge.dmi'
+	desc = "An artificers wood work station, blessed by some odd machination, or perhaps... magic..."
+	icon_state = "art_table"
+	icon = 'icons/obj/smooth_structures/table.dmi'
 	var/obj/item/grown/log/tree/small/plank/plank
 	damage_deflection = 18
 	density = TRUE
@@ -14,8 +14,7 @@
 		. += span_warning("There's a wood plank ready to be worked.")
 
 /obj/machinery/artificer_table/attackby(obj/item/I, mob/living/user, params)
-	if(istype(I, /obj/item/grown/log/tree/small/plank) || istype(I, /obj/item/natural/bundle/plank))
-
+	if(istype(I, /obj/item/grown/log/tree/small/plank))
 		if(!plank)
 			I.forceMove(src)
 			plank = I
@@ -26,12 +25,13 @@
 			qdel(I)
 			return
 	if(istype(I, /obj/item/rogueweapon/hammer/wood))
-		user.changeNext_move(CLICK_CD_MELEE)
+		user.changeNext_move(CLICK_CD_RANGE)
 		if(!plank)
 			return
 		if(!plank.currecipe)
 			if(!choose_recipe(user))
 				return
+		to_chat(user, span_warning("This recipe requires [plank.currecipe.extra_planks_needed] extra planks."))
 		playsound(src, 'sound/misc/woodhit.ogg', 100, TRUE)
 		var/skill = user.mind.get_skill_level(plank.currecipe.appro_skill)
 		if(plank.currecipe.progress == 100)
@@ -39,13 +39,13 @@
 			qdel(plank)
 			plank = null
 			update_icon()
-			to_chat(user, span_warning("My creation!"))
+			user.visible_message(span_info("[user] creates a [initial(plank.currecipe.created_item.name)]."))
 			user.mind.add_sleep_experience(plank.currecipe.appro_skill, (user.STAINT * (plank.currecipe.craftdiff * 10))) //may need to be adjusted
 			return
 		if(skill < plank.currecipe.craftdiff)
 			if(prob(25))
 				to_chat(user, span_warning("Ah yes, my incompetence bears fruit."))
-				playsound(src,'sound/foley/breaksound.ogg', 100, FALSE)
+				playsound(src,'sound/combat/hits/onwood/destroyfurniture.ogg', 100, FALSE)
 				qdel(plank)
 				plank = null
 				user.mind.add_sleep_experience(plank.currecipe.appro_skill, (user.STAINT * plank.currecipe.craftdiff)) // Getting exp for failing
