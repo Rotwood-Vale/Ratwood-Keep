@@ -100,11 +100,11 @@
 	else
 		resident_key_amount = 1
 	for(var/i in 1 to resident_key_amount)
-		var/obj/item/roguekey/key
+		var/obj/item/key/key
 		if(resident_key_type)
 			key = new resident_key_type(get_turf(human))
 		else
-			key = new /obj/item/roguekey(get_turf(human))
+			key = new /obj/item/key(get_turf(human))
 		key.lockid = lockid
 		key.lockhash = lockhash
 		human.put_in_hands(key)
@@ -367,7 +367,7 @@
 
 /obj/structure/mineral_door/attackby(obj/item/I, mob/user)
 	user.changeNext_move(CLICK_CD_FAST)
-	if(istype(I, /obj/item/roguekey) || istype(I, /obj/item/keyring))
+	if(istype(I, /obj/item/key) || istype(I, /obj/item/keyring))
 		if(!locked)
 			to_chat(user, span_warning("It won't turn this way. Try turning to the right."))
 			rattle()
@@ -429,7 +429,7 @@
 /obj/structure/mineral_door/attack_right(mob/user)
 	user.changeNext_move(CLICK_CD_FAST)
 	var/obj/item = user.get_active_held_item()
-	if(istype(item, /obj/item/roguekey) || istype(item, /obj/item/keyring))
+	if(istype(item, /obj/item/key) || istype(item, /obj/item/keyring))
 		if(locked)
 			to_chat(user, span_warning("It won't turn this way. Try turning to the left."))
 			rattle()
@@ -451,7 +451,7 @@
 		if(!R.keys.len)
 			return
 		var/list/keysy = shuffle(R.keys.Copy())
-		for(var/obj/item/roguekey/K in keysy)
+		for(var/obj/item/key/K in keysy)
 			if(user.cmode)
 				if(!do_after(user, 10, TRUE, src))
 					break
@@ -463,7 +463,7 @@
 					rattle()
 		return
 	else
-		var/obj/item/roguekey/K = I
+		var/obj/item/key/K = I
 		if(K.lockhash == lockhash)
 			lock_toggle(user)
 			return
@@ -944,7 +944,7 @@
 	locked = TRUE
 	keylock = TRUE
 	grant_resident_key = TRUE
-	resident_key_type = /obj/item/roguekey/townie
+	resident_key_type = /obj/item/key/townie
 	resident_role = /datum/job/roguetown/villager
 	lockid = null //Will be randomized
 

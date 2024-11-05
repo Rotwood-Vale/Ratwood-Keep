@@ -52,7 +52,7 @@
 		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/random
 		shoes = /obj/item/clothing/shoes/roguetown/simpleshoes
 		belt = /obj/item/storage/belt/rogue/leather/rope
-		beltr = /obj/item/roguekey/farm
+		beltr = /obj/item/key/farm
 	else
 		head = /obj/item/clothing/head/roguetown/armingcap
 //		pants = /obj/item/clothing/under/roguetown/trou
