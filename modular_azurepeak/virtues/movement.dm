@@ -1,6 +1,4 @@
-/*/datum/virtue/movement/leaper
-	name = "Leaper"
-	desc = "I have powerful legs, allowing me to jump in most situations others might need to climb."
-	added_traits = list(TRAIT_ZJUMP)*/
-
-
+/datum/virtue/movement/acrobatic
+	name = "Acrobatic"
+	desc = "I have powerful legs, allowing me to jump a little further than normal."
+	added_traits = list(TRAIT_LEAPER, TRAIT_NOFALLDAMAGE1)
