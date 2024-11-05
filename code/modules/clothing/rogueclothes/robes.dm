@@ -165,6 +165,6 @@
 	sleeved = null
 	boobed = TRUE
 	color = null
-	flags_inv = HIDEBOOB
+	flags_inv = HIDEBOOB|HIDETAIL //DO NOT CHANGE THIS, I WILL THROW HANDS WITH YOU IDIOTS
 	r_sleeve_status = SLEEVE_NORMAL
 	l_sleeve_status = SLEEVE_NORMAL
