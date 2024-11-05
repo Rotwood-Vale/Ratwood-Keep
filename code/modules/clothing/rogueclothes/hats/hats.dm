@@ -196,11 +196,11 @@
 
 /obj/item/clothing/head/roguetown/roguehood/random/Initialize()
 	color = pick("#544236", "#435436", "#543836", "#79763f")
-	..()
+	return ..()
 
 /obj/item/clothing/head/roguetown/roguehood/mage/Initialize()
 	color = pick("#4756d8", "#759259", "#bf6f39", "#c1b144", "#b8252c")
-	..()
+	return ..()
 
 /obj/item/clothing/head/roguetown/roguehood/AdjustClothes(mob/user)
 	if(loc == user)

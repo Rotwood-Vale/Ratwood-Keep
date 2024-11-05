@@ -24,7 +24,6 @@
 
 /obj/machinery/shower/Destroy()
 	QDEL_NULL(soundloop)
-	QDEL_NULL(reagents)
 	return ..()
 
 /obj/machinery/shower/interact(mob/M)

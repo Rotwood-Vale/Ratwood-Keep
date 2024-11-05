@@ -93,4 +93,3 @@
 			H.change_stat("intelligence", 1)
 			H.cmode_music = 'sound/music/combat_duelist.ogg'
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
-	ADD_TRAIT(H, TRAIT_STEELHEARTED, TRAIT_GENERIC)

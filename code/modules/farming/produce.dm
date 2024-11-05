@@ -168,8 +168,8 @@
 		else
 			GLOB.berrycolors[color_index] = newcolor
 		filling_color = GLOB.berrycolors[color_index]
+	. = ..()
 	update_icon()
-	..()
 
 /obj/item/reagent_containers/food/snacks/grown/berries/rogue/On_Consume(mob/living/eater)
 	..()
@@ -186,7 +186,7 @@
 		used_state = "berriesc2"
 	if(bitecount == 4)
 		used_state = "berriesc1"
-	var/image/item_overlay = image(used_state)
+	var/image/item_overlay = image(icon, used_state)
 	item_overlay.color = filling_color
 	add_overlay(item_overlay)
 

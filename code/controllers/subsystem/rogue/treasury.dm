@@ -60,6 +60,9 @@ SUBSYSTEM_DEF(treasury)
 						X.demand += rand(5,15)
 					if(X.demand > initial(X.demand))
 						X.demand -= rand(5,15)
+		for(var/datum/roguestock/stockpile/A in stockpile_datums) //Generate some remote resources
+			A.held_items[2] += A.passive_generation
+			A.held_items[2] = min(A.held_items[2],10) //To a maximum of 10
 		var/area/A = GLOB.areas_by_type[/area/rogue/indoors/town/vault]
 		var/amt_to_generate = 0
 		for(var/obj/item/I in A)

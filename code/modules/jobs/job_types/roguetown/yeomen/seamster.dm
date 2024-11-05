@@ -24,7 +24,7 @@
 	pants = /obj/item/clothing/under/roguetown/tights/random
 	shoes = /obj/item/clothing/shoes/roguetown/shortboots
 	beltr = /obj/item/rogueweapon/huntingknife/scissors
-	beltl = /obj/item/roguekey/seamster
+	beltl = /obj/item/key/seamster
 	backl = /obj/item/storage/backpack/rogue/satchel
 	backpack_contents = list(/obj/item/needle = 1)
 	if(H.gender == MALE) // We're givign males male specific clothes so they don't walk around in a dress

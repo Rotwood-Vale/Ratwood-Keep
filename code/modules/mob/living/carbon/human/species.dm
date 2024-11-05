@@ -333,7 +333,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 		if(organ.slot in slots_to_iterate)
 			continue
 		organ.Remove(C, TRUE)
-		QDEL_NULL(organ)
+		qdel(organ)
 	var/list/source_key_list = color_key_source_list_from_carbon(C)
 	for(var/slot in slots_to_iterate)
 		var/obj/item/organ/oldorgan = C.getorganslot(slot) //used in removing
