@@ -37,7 +37,7 @@
 /obj/item/clothing/gloves/roguetown/leather/advanced
 	name = "hardened leather gloves"
 	desc = "Sturdy, durable, flexible. A marvel of the dark ages that exists solely to protect your fingers."
-	icon_state = "bgloves"
+	icon_state = "algloves"
 	max_integrity = 200
 	prevent_crits = list(BCLASS_CUT, BCLASS_BLUNT, BCLASS_TWIST)
 	armor = list("blunt" = 50, "slash" = 40, "stab" = 20, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
