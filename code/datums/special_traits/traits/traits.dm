@@ -225,6 +225,7 @@
 	character.grant_language(/datum/language/hellspeak)
 	character.grant_language(/datum/language/celestial)
 	character.grant_language(/datum/language/orcish)
+	character.grant_language(/datum/language/beast)
 	character.grant_language(/datum/language/draconic)
 
 /datum/special_trait/civilizedbarbarian
