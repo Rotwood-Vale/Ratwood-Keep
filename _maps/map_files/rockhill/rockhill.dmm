@@ -92,10 +92,6 @@
 	icon_state = "vertw"
 	},
 /area/rogue/indoors/town)
-"abS" = (
-/obj/machinery/light/rogue/wallfire/candle/blue/r,
-/turf/open/floor/rogue/dirt/road,
-/area/rogue/indoors/town/tavern)
 "abV" = (
 /obj/structure/closet/crate/chest/gold{
 	lockhash = "clinic"
@@ -1225,13 +1221,6 @@
 	},
 /turf/open/floor/carpet/royalblack,
 /area/rogue/indoors/town/manor)
-"bkb" = (
-/obj/machinery/light/rogue/wallfire/candle{
-	pixel_x = -32;
-	pixel_y = 0
-	},
-/turf/open/floor/rogue/blocks,
-/area/rogue/outdoors/town)
 "bkq" = (
 /obj/structure/bed/rogue/shit,
 /turf/open/floor/rogue/naturalstone,
@@ -5826,10 +5815,6 @@
 	},
 /turf/open/floor/rogue/tile,
 /area/rogue/indoors/town/church)
-"foP" = (
-/obj/item/reagent_containers/food/snacks/smallrat,
-/turf/open/floor/rogue/dirt/road,
-/area/rogue/indoors/town/tavern)
 "fpa" = (
 /obj/structure/table/wood{
 	dir = 1;
@@ -7071,11 +7056,6 @@
 	},
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/town/church)
-"guN" = (
-/turf/open/floor/rogue/dirt/road,
-/turf/open/floor/rogue/dirt/road,
-/turf/open/floor/rogue/dirt/road,
-/area/rogue/indoors/town/tavern)
 "guP" = (
 /obj/structure/table/wood,
 /obj/structure/bars{
@@ -11318,25 +11298,6 @@
 	dir = 1
 	},
 /area/rogue/indoors/town/manor)
-"kvD" = (
-/obj/structure/closet/crate/chest{
-	lockid = "merc"
-	},
-/obj/item/reagent_containers/food/snacks/egg,
-/obj/item/reagent_containers/food/snacks/egg,
-/obj/item/reagent_containers/food/snacks/egg,
-/obj/item/reagent_containers/food/snacks/egg,
-/obj/item/reagent_containers/food/snacks/egg,
-/obj/item/reagent_containers/powder/salt,
-/obj/item/reagent_containers/food/snacks/egg,
-/obj/item/reagent_containers/food/snacks/rogue/meat/sausage,
-/obj/item/reagent_containers/food/snacks/rogue/meat/sausage,
-/obj/item/reagent_containers/food/snacks/rogue/meat/sausage,
-/obj/item/reagent_containers/food/snacks/rogue/meat/sausage,
-/obj/item/reagent_containers/food/snacks/rogue/meat/sausage,
-/obj/item/reagent_containers/food/snacks/rogue/meat/sausage,
-/turf/open/floor/rogue/wood,
-/area/rogue/indoors/town)
 "kvT" = (
 /obj/structure/lever/wall{
 	dir = 4;
@@ -14300,11 +14261,9 @@
 /turf/open/floor/rogue/greenstone,
 /area/rogue/under/cave)
 "njY" = (
-/obj/structure/rack/rogue,
-/obj/item/rogueweapon/hoe,
-/obj/item/rogueweapon/sickle,
-/turf/open/floor/rogue/wood,
-/area/rogue/indoors/town)
+/obj/item/reagent_containers/food/snacks/smallrat,
+/turf/open/floor/rogue/concrete,
+/area/rogue/indoors/town/tavern)
 "nkE" = (
 /obj/structure/fluff/railing/wood{
 	dir = 8;
@@ -16716,10 +16675,6 @@
 	},
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/town/church)
-"plU" = (
-/obj/effect/decal/cleanable/cobweb/cobweb2,
-/turf/open/water/cleanshallow,
-/area/rogue/indoors/town/tavern)
 "pmj" = (
 /obj/structure/roguewindow,
 /turf/open/floor/rogue/woodturned,
@@ -17018,10 +16973,6 @@
 /obj/item/natural/poo/horse,
 /turf/open/floor/rogue/dirt,
 /area/rogue/outdoors/rtfield)
-"pAC" = (
-/obj/structure/composter/halffull,
-/turf/open/floor/rogue/blocks,
-/area/rogue/outdoors/town)
 "pAH" = (
 /obj/structure/bed/rogue,
 /obj/effect/landmark/start/farmer,
@@ -19284,17 +19235,6 @@
 /obj/structure/roguemachine/atm,
 /turf/open/floor/rogue/blocks,
 /area/rogue/outdoors/town)
-"rKd" = (
-/obj/structure/rack/rogue,
-/obj/machinery/light/rogue/wallfire/candle,
-/obj/item/seeds/potato,
-/obj/item/seeds/potato,
-/obj/item/seeds/potato,
-/obj/item/seeds/potato,
-/obj/item/seeds/potato,
-/obj/item/seeds/potato,
-/turf/open/floor/rogue/wood,
-/area/rogue/indoors/town)
 "rKW" = (
 /obj/structure/table/wood{
 	dir = 1;
@@ -21319,6 +21259,7 @@
 /obj/item/roguekey/roomhunt,
 /obj/item/rogueweapon/huntingknife/cleaver,
 /obj/item/flint,
+/obj/machinery/light/rogue/wallfire/candle/blue,
 /turf/open/floor/rogue/concrete,
 /area/rogue/indoors/town/tavern)
 "tDl" = (
@@ -21372,10 +21313,6 @@
 	},
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue/indoors/town/magician)
-"tFn" = (
-/obj/machinery/light/rogue/wallfire/candle/blue,
-/turf/open/floor/rogue/dirt/road,
-/area/rogue/indoors/town/tavern)
 "tFB" = (
 /obj/structure/closet/crate/chest{
 	lockid = "clinic"
@@ -22381,19 +22318,6 @@
 	},
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/manor)
-"uxG" = (
-/obj/structure/closet/crate/chest{
-	lockid = "merc"
-	},
-/obj/item/reagent_containers/powder/flour,
-/obj/item/reagent_containers/powder/flour,
-/obj/item/reagent_containers/powder/flour,
-/obj/item/reagent_containers/powder/flour,
-/obj/item/reagent_containers/powder/flour,
-/obj/item/reagent_containers/powder/flour,
-/obj/item/reagent_containers/food/snacks/butter,
-/turf/open/floor/rogue/wood,
-/area/rogue/indoors/town)
 "uxU" = (
 /obj/effect/decal/cleanable/cobweb,
 /obj/item/grown/log/tree,
@@ -23863,18 +23787,6 @@
 /obj/effect/spawner/lootdrop/roguetown/dungeon/tools,
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/indoors/shelter/mountains)
-"vVh" = (
-/obj/structure/closet/crate/chest{
-	lockid = "merc"
-	},
-/obj/item/reagent_containers/food/snacks/grown/apple,
-/obj/item/reagent_containers/food/snacks/grown/apple,
-/obj/item/reagent_containers/food/snacks/grown/apple,
-/obj/item/reagent_containers/food/snacks/grown/apple,
-/obj/item/reagent_containers/food/snacks/grown/apple,
-/obj/item/reagent_containers/food/snacks/grown/apple,
-/turf/open/floor/rogue/wood,
-/area/rogue/indoors/town)
 "vWn" = (
 /obj/structure/plasticflaps,
 /turf/closed/mineral/rogue,
@@ -24827,9 +24739,6 @@
 /obj/structure/fluff/railing/border,
 /turf/open/floor/rogue/ruinedwood/turned,
 /area/rogue/indoors/shelter/mountains)
-"wQG" = (
-/turf/open/floor/rogue/dirt/road,
-/area/rogue/indoors/town/tavern)
 "wQN" = (
 /obj/structure/rogue/trophy/deer,
 /turf/open/floor/carpet/royalblack,
@@ -188817,7 +188726,7 @@ rSC
 orb
 tDb
 wxX
-wxX
+njY
 wxX
 wxX
 lyG
@@ -189217,9 +189126,9 @@ vRu
 rSC
 rSC
 orb
-tFn
-wQG
-foP
+orb
+csO
+csO
 lyG
 lyG
 lyG
@@ -189618,10 +189527,10 @@ vRu
 vRu
 rSC
 rSC
-orb
-guN
-wQG
-wQG
+lrs
+lrs
+lrs
+lrs
 csO
 weL
 nRZ
@@ -190020,10 +189929,10 @@ vRu
 vRu
 rSC
 rSC
-csO
-plU
-abS
-wQG
+lrs
+lrs
+lrs
+lrs
 csO
 nRZ
 cEg
@@ -190422,10 +190331,10 @@ vRu
 vRu
 rSC
 rSC
-orb
-orb
-csO
-csO
+lrs
+lrs
+lrs
+lrs
 csO
 nRZ
 cEg
@@ -302582,7 +302491,7 @@ esR
 xAt
 xAt
 eoy
-wVI
+wbg
 wVI
 wVI
 wVI
@@ -302983,9 +302892,9 @@ fkC
 esR
 xAt
 xAt
-evo
-evo
-evo
+eoy
+wbg
+wVI
 evo
 evo
 evo
@@ -303385,9 +303294,9 @@ fkC
 esR
 xAt
 xAt
-evo
-kvD
-uxG
+eoy
+wbg
+wVI
 evo
 mLB
 lmB
@@ -303787,9 +303696,9 @@ qJQ
 rfx
 xAt
 xAt
-evo
-rNm
-rNm
+eoy
+wbg
+wVI
 evo
 kUE
 rNm
@@ -304189,10 +304098,10 @@ oRS
 rfx
 xAt
 xAt
+eoy
+wbg
+wVI
 evo
-rKd
-rNm
-mTP
 rNm
 rNm
 rNm
@@ -304591,9 +304500,9 @@ gbn
 rfx
 xAt
 xAt
-evo
-njY
-rNm
+eoy
+wbg
+wVI
 evo
 dxh
 rNm
@@ -304993,9 +304902,9 @@ pqP
 rfx
 xAt
 xAt
-evo
-vVh
-rNm
+eoy
+wbg
+wVI
 evo
 wvq
 rNm
@@ -305394,10 +305303,10 @@ qJQ
 fkC
 rfx
 xAt
-vBZ
-evo
-evo
-mTP
+xAt
+eoy
+wbg
+wVI
 evo
 evo
 mTP
@@ -305796,9 +305705,9 @@ fkC
 fkC
 rfx
 xAt
-kIC
-pAC
-bkb
+xAt
+eoy
+wbg
 wVI
 evo
 rNm
@@ -306198,10 +306107,10 @@ fkC
 fkC
 esR
 xAt
-kIC
-mwE
-mwE
-mwE
+xAt
+eoy
+wbg
+wVI
 evo
 upp
 vFA
@@ -306600,10 +306509,10 @@ esR
 esR
 esR
 xAt
-kIC
-jHc
-jHc
-mwE
+xAt
+eoy
+wbg
+wVI
 evo
 rNm
 avU
@@ -306997,15 +306906,15 @@ xAt
 xAt
 xAt
 xAt
-xAt
-xAt
-xAt
-xAt
-xAt
-kIC
-jHc
-mwE
-jHc
+wVI
+wVI
+wVI
+wVI
+wVI
+wVI
+wVI
+wbg
+wVI
 evo
 upp
 eej
@@ -307399,15 +307308,15 @@ xAt
 xAt
 xAt
 xAt
+wVI
 xAt
 xAt
 xAt
 xAt
 xAt
-kIC
-mwE
-mwE
-jHc
+eoy
+wVI
+wVI
 evo
 rNm
 rNm
@@ -405494,8 +405403,8 @@ kWa
 obT
 fZJ
 fZJ
-uJh
-uJh
+fZJ
+fZJ
 uJh
 evo
 evo
@@ -405896,9 +405805,9 @@ kWa
 obT
 fZJ
 fZJ
+fZJ
+fZJ
 uJh
-iJk
-iJk
 evo
 ocE
 tGf
@@ -406298,9 +406207,9 @@ kWa
 rTC
 fZJ
 fZJ
+fZJ
+fZJ
 uJh
-iJk
-iJk
 evo
 gOb
 rNm
@@ -406700,9 +406609,9 @@ kWa
 rTC
 fZJ
 fZJ
+fZJ
+fZJ
 uJh
-iJk
-iJk
 qTd
 dku
 rNm
@@ -407102,9 +407011,9 @@ kWa
 xNa
 fZJ
 fZJ
+fZJ
+fZJ
 uJh
-iJk
-iJk
 evo
 pzv
 rNm
@@ -407504,9 +407413,9 @@ kWa
 rTC
 fZJ
 fZJ
+fZJ
+fZJ
 uJh
-iJk
-iJk
 evo
 cLU
 rNm
@@ -407906,8 +407815,8 @@ kWa
 rTC
 fZJ
 fZJ
-uJh
-uJh
+fZJ
+fZJ
 uJh
 evo
 cLU
@@ -408310,7 +408219,7 @@ fZJ
 fZJ
 fZJ
 fZJ
-fZJ
+uJh
 evo
 pzv
 rNm
@@ -408712,7 +408621,7 @@ fZJ
 fZJ
 fZJ
 fZJ
-fZJ
+uJh
 qTd
 ocE
 rNm
@@ -409114,7 +409023,7 @@ fZJ
 fZJ
 fZJ
 fZJ
-fZJ
+uJh
 evo
 gBu
 rNm
@@ -409516,7 +409425,7 @@ fZJ
 fZJ
 fZJ
 fZJ
-fZJ
+uJh
 evo
 ocE
 eqo
@@ -409918,7 +409827,7 @@ fZJ
 fZJ
 fZJ
 fZJ
-fZJ
+uJh
 evo
 evo
 evo
