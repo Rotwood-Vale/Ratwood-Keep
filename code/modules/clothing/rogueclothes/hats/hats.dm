@@ -739,7 +739,7 @@
 	salvage_result = /obj/item/natural/hide/cured
 
 /obj/item/clothing/head/roguetown/helmet/leather/advanced
-	name = "hardened leather hooded helmet"
+	name = "hardened leather helmet"
 	desc = "Sturdy, durable, flexible. A confortable and reliable hood made of hardened leather."
 	icon_state = "alhelmet"
 	max_integrity = 250
