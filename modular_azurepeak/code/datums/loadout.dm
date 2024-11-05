@@ -72,6 +72,14 @@ GLOBAL_LIST_EMPTY(loadout_items)
 	name = "Rain Cloak"
 	path = /obj/item/clothing/cloak/raincloak
 
+/datum/loadout_item/direcloak
+	name = "direbear cloak"
+	path = /obj/item/clothing/cloak/darkcloak/bear
+
+/datum/loadout_item/lightdirecloak
+	name = "light direbear cloak"
+	path = /obj/item/clothing/cloak/darkcloak/bear/light
+
 
 //SHOES
 /datum/loadout_item/darkboots
@@ -127,7 +135,7 @@ GLOBAL_LIST_EMPTY(loadout_items)
 	name = "Strapless Dress"
 	path = /obj/item/clothing/suit/roguetown/shirt/dress/gen/strapless
 
-/datum/loadout_item/straplessdress
+/datum/loadout_item/straplessdress/alt
 	name = "Strapless Dress, alt"
 	path = /obj/item/clothing/suit/roguetown/shirt/dress/gen/strapless/alt
 
