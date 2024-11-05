@@ -8417,6 +8417,9 @@
 /obj/structure/bell_common{
 	pixel_y = -12
 	},
+/obj/structure/roguemachine/atm{
+	pixel_y = -32
+	},
 /turf/open/floor/rogue/blocks,
 /area/rogue/outdoors/town)
 "hJY" = (
@@ -11419,6 +11422,10 @@
 "kyZ" = (
 /obj/structure/fluff/walldeco/goblet{
 	dir = 1
+	},
+/obj/structure/roguemachine/atm{
+	pixel_x = 32;
+	pixel_y = 0
 	},
 /turf/open/floor/rogue/blocks,
 /area/rogue/outdoors/town)
@@ -23769,11 +23776,8 @@
 /turf/open/floor/rogue/rooftop,
 /area/rogue/outdoors/town/roofs)
 "vRg" = (
-/obj/structure/fluff/railing/border{
-	dir = 8
-	},
 /obj/structure/roguemachine/atm,
-/turf/open/floor/carpet/royalblack,
+/turf/open/floor/rogue/blocks/stonered/tiny,
 /area/rogue/indoors/town/tavern)
 "vRu" = (
 /turf/closed/mineral/rogue,
@@ -289726,7 +289730,7 @@ bJA
 gNG
 lyG
 lyG
-edF
+vRg
 ujj
 cRe
 jBZ
@@ -293744,7 +293748,7 @@ ezt
 sIT
 sIT
 lyG
-vRg
+oIU
 oIU
 mfA
 cEg
