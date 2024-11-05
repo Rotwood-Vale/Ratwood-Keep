@@ -7,7 +7,7 @@ GLOBAL_LIST_EMPTY(virtues)
 	var/desc
 	/// A list containing any traits we need to add to the mob.
 	var/list/added_traits = list()
-	/// An associative list containing any skills we want to adjust.
+	/// An associative list containing any skills we want to adjust. You can also pass list objects into this in the following format: list(SKILL_TYPE, SKILL_INCREASE, SKILL_MAXIMUM) as needed.
 	var/list/added_skills = list()
 	/// An associative list containing any items we want to add to our stash.
 	var/list/added_stashed_items = list()
@@ -36,7 +36,19 @@ GLOBAL_LIST_EMPTY(virtues)
 	if (!recipient.mind || !LAZYLEN(added_skills))
 		return
 	for(var/skill in added_skills)
-		recipient.mind?.adjust_skillrank(skill, added_skills[skill], TRUE)
+		if (!islist(skill))
+			recipient.mind?.adjust_skillrank(skill, added_skills[skill], TRUE)
+		else
+			var/list/skill_block = skill
+			var/datum/skill/the_skill = skill_block[1]
+			var/increase_by = skill_block[2]
+			var/maximum_skill = skill_block[3]
+			var/our_skill = recipient.mind?.get_skill_level(skill)
+			if (our_skill && our_skill < maximum_skill)
+				recipient.mind?.adjust_skillrank(the_skill.type, increase_by, TRUE)
+			else
+				to_chat(recipient, span_notice("My Virtue cannot influence my skill with [lowertext(the_skill.name)] any further."))
+				
 
 /datum/virtue/proc/handle_stashed_items(mob/living/carbon/human/recipient)
 	if (!recipient.mind || !LAZYLEN(added_stashed_items))
