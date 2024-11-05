@@ -278,18 +278,19 @@
 
 // Teleports spirit to underworld spawn and pays its toll
 /mob/living/carbon/spirit/proc/funeral_return(peace_message)
-	if(!src.paid)
-		to_chat(src, peace_message)
-		src.paid = TRUE
+	to_chat(src, peace_message)
+	var/paidfor = src.paid
+	src.paid = TRUE
 	for(var/obj/effect/landmark/underworld/underspawn in shuffle(GLOB.landmarks_list))
 		to_chat(src, span_warning("Something pulls me back towards my judgement..."))
-		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(funeral_teleport), src, underspawn), 5 SECONDS)
+		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(funeral_teleport), src, underspawn, paidfor), 5 SECONDS)
 		break // No need to worry about Speak with Soul spell, that checks for funeral
 
-/proc/funeral_teleport(mob/living/carbon/spirit/spirit, obj/effect/landmark/underworld/underspawn)
+/proc/funeral_teleport(mob/living/carbon/spirit/spirit, obj/effect/landmark/underworld/underspawn, paidfor)
 	if(!QDELETED(spirit)) // in case they already used carriage
 		spirit.visible_message(span_warning("[spirit] vanishes!"), span_warning("I'm whisked away!"))
-		to_chat(spirit, span_notice("My toll has been paid for! The carriage is open to me..."))
+		if(!paidfor)
+			to_chat(spirit, span_notice("My toll has been paid for! The carriage is open to me..."))
 		for(var/obj/item/I in spirit.held_items) // won't need these anymore
 			. |= spirit.dropItemToGround(I)
 		spirit.loc = underspawn.loc
