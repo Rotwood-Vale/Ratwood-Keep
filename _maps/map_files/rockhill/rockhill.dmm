@@ -1227,7 +1227,7 @@
 /area/rogue/indoors/town/manor)
 "bkb" = (
 /obj/structure/rack/rogue,
-/obj/item/rogueweapon/spear/stone,
+/obj/item/storage/belt/rogue/pouch,
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town)
 "bkq" = (
@@ -3494,7 +3494,9 @@
 /area/rogue/indoors/town/church)
 "dnO" = (
 /obj/structure/rack/rogue,
-/obj/item/rogueweapon/shield/wood,
+/obj/item/rope,
+/obj/item/rope,
+/obj/item/rope,
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town)
 "dpw" = (
@@ -14310,6 +14312,18 @@
 /obj/structure/closet/crate/chest{
 	lockid = "merc"
 	},
+/obj/item/reagent_containers/glass/cup/wooden,
+/obj/item/reagent_containers/glass/cup/wooden,
+/obj/item/reagent_containers/glass/cup/wooden,
+/obj/item/reagent_containers/glass/cup/wooden,
+/obj/item/reagent_containers/glass/cup/wooden,
+/obj/item/reagent_containers/glass/cup/wooden,
+/obj/item/reagent_containers/glass/bowl,
+/obj/item/reagent_containers/glass/bowl,
+/obj/item/reagent_containers/glass/bowl,
+/obj/item/reagent_containers/glass/bowl,
+/obj/item/reagent_containers/glass/bowl,
+/obj/item/reagent_containers/glass/bowl,
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town)
 "nkE" = (
@@ -16338,7 +16352,9 @@
 "oTA" = (
 /obj/machinery/light/rogue/wallfire/candle/r,
 /obj/structure/rack/rogue,
-/obj/item/rogueweapon/stoneaxe,
+/obj/item/rope,
+/obj/item/rope,
+/obj/item/rope,
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town)
 "oTD" = (
@@ -19299,7 +19315,9 @@
 /area/rogue/outdoors/town)
 "rKd" = (
 /obj/structure/rack/rogue,
-/obj/item/rogueweapon/shovel,
+/obj/item/flashlight/flare/torch/metal,
+/obj/item/flashlight/flare/torch/metal,
+/obj/item/flashlight/flare/torch/metal,
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town)
 "rKW" = (
@@ -19317,7 +19335,7 @@
 	pixel_x = -32
 	},
 /obj/structure/rack/rogue,
-/obj/item/rogueweapon/huntingknife/stoneknife,
+/obj/item/flashlight/flare/torch/lantern,
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town)
 "rLm" = (
