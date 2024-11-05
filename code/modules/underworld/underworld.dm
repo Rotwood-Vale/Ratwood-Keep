@@ -33,7 +33,7 @@
 	desc = "The ride stopped here..."
 	icon = 'icons/roguetown/underworld/enigma_carriage.dmi'
 	icon_state = "carriage_normal"
-	layer = BELOW_MOB_LAYER
+	layer = ABOVE_MOB_LAYER
 	plane = GAME_PLANE_UPPER
 	anchored = TRUE
 	density = TRUE
