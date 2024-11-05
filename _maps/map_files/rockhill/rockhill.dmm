@@ -14340,7 +14340,7 @@
 /turf/open/floor/rogue/hexstone,
 /area/rogue/indoors/town/bath)
 "noi" = (
-/obj/structure/underworld/carriage_normal,
+/obj/effect/landmark/latejoin,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors/rtfield)
 "noj" = (
@@ -20031,10 +20031,6 @@
 	},
 /turf/open/floor/rogue/concrete,
 /area/rogue/indoors/town/garrison)
-"ssY" = (
-/obj/effect/landmark/latejoin,
-/turf/open/floor/rogue/dirt/road,
-/area/rogue/outdoors/rtfield)
 "stp" = (
 /obj/structure/mineral_door/bars{
 	locked = 1;
@@ -21284,6 +21280,10 @@
 /obj/effect/landmark/map_load_mark/sewers_top,
 /turf/closed/wall/mineral/rogue/stonebrick,
 /area/rogue/under/town/sewer)
+"tCw" = (
+/obj/structure/underworld/carriage_normal,
+/turf/open/floor/rogue/dirt/road,
+/area/rogue/outdoors/rtfield)
 "tCC" = (
 /obj/structure/mannequin/male/female,
 /turf/open/floor/rogue/blocks/stonered,
@@ -323948,7 +323948,7 @@ uaL
 uaL
 uaL
 uaL
-noi
+tCw
 uaL
 uaL
 cWT
@@ -324351,8 +324351,8 @@ uaL
 uaL
 uaL
 uaL
-ssY
-ssY
+noi
+noi
 uaL
 uaL
 cWT
@@ -324753,8 +324753,8 @@ uaL
 uaL
 uaL
 uaL
-ssY
-ssY
+noi
+noi
 uaL
 uaL
 uaL
@@ -325155,8 +325155,8 @@ uaL
 uaL
 uaL
 uaL
-ssY
-ssY
+noi
+noi
 uaL
 uaL
 uaL
