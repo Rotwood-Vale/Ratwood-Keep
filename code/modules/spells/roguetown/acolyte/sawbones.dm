@@ -143,7 +143,7 @@
 		revert_cast()
 		return FALSE
 
-	if(targets[1].has_status_effect(/datum/status_effect/debuff/wliver))
+	if(!targets[1].has_status_effect(/datum/status_effect/debuff/wliver))
 		to_chat(user, span_warning("I need too prime their liver first"))
 		return FALSE
 
