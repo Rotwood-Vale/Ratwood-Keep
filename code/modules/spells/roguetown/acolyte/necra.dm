@@ -17,20 +17,21 @@
 
 /obj/effect/proc_holder/spell/targeted/burialrite/cast(list/targets, mob/user = usr)
 	. = ..()
-	var/success = FALSE
-	for(var/obj/structure/closet/crate/coffin/coffin in view(1))
+	var/target_turf = get_step(user, user.dir)
+	var/obj/structure/closet/body_container
+	for(var/obj/structure/closet/crate/coffin/coffin in target_turf)
 		if(pacify_coffin(coffin, user))
-			success = TRUE
-		if(success)
-			user.visible_message("[user] consecrates [coffin]!", "I perform funeral rites on [coffin]!")
-			return
-	for(var/obj/structure/closet/dirthole/hole in view(1))
-		if(pacify_coffin(hole, user))
-			success = TRUE
-		if(success)
-			user.visible_message("[user] consecrates [hole]!", "I perform funeral rites on [hole]!")
-			return
-	to_chat(user, span_red("I failed to perform the rites."))
+			body_container = coffin
+			break
+	if(!body_container)
+		for(var/obj/structure/closet/dirthole/hole in target_turf)
+			if(pacify_coffin(hole, user))
+				body_container = hole
+				break
+	if(body_container)
+		user.visible_message("[user] consecrates [body_container]!", "I perform funeral rites on [body_container]!")
+	else
+		to_chat(user, span_red("I failed to perform the rites."))
 
 /obj/effect/proc_holder/spell/targeted/churn
 	name = "Churn Undead"
@@ -105,19 +106,25 @@
 	var/mob/living/carbon/spirit/capturedsoul = null
 	var/list/souloptions = list()
 	var/list/itemstorestore = list()
-	for(var/mob/living/carbon/spirit/S in GLOB.mob_list)
+	for(var/mob/living/carbon/spirit/S in GLOB.spirit_list)
+		if(!S.client)
+			continue
+		if(S.prevmind && S.prevmind.funeral)
+			continue // being funeralized gives you pull immunity
 		souloptions += S.livingname
+	if(!length(souloptions))
+		to_chat(user, span_warning("No souls are available for me to commune with."))
+		return
 	var/pickedsoul = input(user, "Which soul should I commune with?", "Available Souls") as null|anything in souloptions
 	if(!pickedsoul)
 		return
-	for(var/mob/living/carbon/spirit/P in GLOB.carbon_list)
+	for(var/mob/living/carbon/spirit/P in GLOB.spirit_list)
 		if(P.livingname == pickedsoul)
 			to_chat(P, "You feel yourself being pulled out of the underworld.")
 			sleep(2 SECONDS)
 			P.loc = user.loc
 			capturedsoul = P
 			P.invisibility = INVISIBILITY_OBSERVER
-			user.grant_language(/datum/language_holder/abyssal)
 			for(var/obj/item/I in P.held_items) // this is big ass, will revisit later
 				. |= P.dropItemToGround(I)
 				if(istype(I, /obj/item/underworld/coin))
@@ -128,19 +135,21 @@
 			break
 		to_chat(P, "[itemstorestore]")
 	if(capturedsoul)
-		spawn(2 MINUTES)
-			to_chat(user, "The soul returns to the underworld.")
-			to_chat(capturedsoul, "You feel yourself being pulled back to the underworld.")
-			for(var/obj/effect/landmark/underworld/A in GLOB.landmarks_list)
-				capturedsoul.loc = A.loc
-				capturedsoul.invisibility = initial(capturedsoul.invisibility)
-				for(var/I in itemstorestore)
-					if(I == "token")
-						var/obj/item/underworld/coin/C = new
-						capturedsoul.put_in_hands(C)
-					if(I == "lamp")
-						var/obj/item/flashlight/lantern/shrunken/L = new
-						capturedsoul.put_in_hands(L)
-			user.remove_language(/datum/language_holder/abyssal)
+		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(soulspeak_return), capturedsoul, user, itemstorestore), 2 MINUTES)
 		to_chat(user, "<font color='blue'>I feel a cold chill run down my spine, a presence has arrived.</font>")
-		capturedsoul.Paralyze(1200)
+		capturedsoul.Paralyze(2 MINUTES)
+
+/proc/soulspeak_return(mob/living/carbon/spirit/capturedsoul, mob/summoner, list/itemstorestore)
+	if(!QDELETED(capturedsoul) || !capturedsoul.prevmind?.funeral)
+		to_chat(summoner, "The soul returns to the underworld.")
+		to_chat(capturedsoul, "You feel yourself being pulled back to the underworld.")
+		for(var/obj/effect/landmark/underworld/A in GLOB.landmarks_list)
+			capturedsoul.loc = A.loc
+			capturedsoul.invisibility = initial(capturedsoul.invisibility)
+			for(var/I in itemstorestore)
+				if(I == "token")
+					var/obj/item/underworld/coin/C = new
+					capturedsoul.put_in_hands(C)
+				if(I == "lamp")
+					var/obj/item/flashlight/lantern/shrunken/L = new
+					capturedsoul.put_in_hands(L)

@@ -16,6 +16,7 @@
 	var/paid = FALSE
 	var/beingmoved = FALSE
 	var/livingname = null
+	var/datum/mind/prevmind // the mind it had before becoming a spirit. used primarily for pacification
 
 /obj/item/bodypart/chest/spirit
 	icon = 'icons/roguetown/underworld/underworld.dmi'
@@ -43,7 +44,14 @@
 
 /mob/living/carbon/spirit/Login()
 	. = ..()
-
+	if(prevmind?.funeral)
+		if(CONFIG_GET(flag/force_respawn_on_funeral))
+			to_chat(src, span_rose("With my body buried in creation, my soul passes on in peace..."))
+			var/ghost = burial_rite_make_ghost(src)
+			burial_rite_return_ghost_to_lobby(ghost)
+		else
+			to_chat(src, span_notice("Welcome back. Your body was funeralized, and your spirit was teleported back to underworld spawn.\n\
+			Use the carriage to immediately return to the lobby."))
 
 /mob/living/carbon/spirit/Initialize(mapload, cubespawned=FALSE, mob/spawner)
 	set_light(2, 2, "#547fa4")
@@ -54,6 +62,7 @@
 	var/first_part = pick("Sorrowful", "Forlorn", "Regretful", "Piteous", "Rueful", "Dejected", "Desolate", "Mournful", "Melancholic", "Woeful")
 	var/second_part = pick("Wanderer", "Traveler", "Pilgrim", "Vagabond", "Nomad", "Wayfarer", "Spirit", "Specter", "Wraith", "Phantom")
 	name = first_part + " " + second_part
+	GLOB.spirit_list += src
 
 	//initialize limbs
 	create_bodyparts()
@@ -95,6 +104,7 @@
 /mob/living/carbon/spirit/Destroy()
 	if(owned_lantern)
 		qdel(owned_lantern)
+	GLOB.spirit_list -= src
 	return ..()
 
 /mob/living/carbon/spirit/updatehealth()
@@ -173,15 +183,17 @@
 	var/mind_key = key || mind?.key
 	if(!mind_key)
 		return
-	for(var/mob/living/carbon/spirit/spirit in GLOB.carbon_list)
+	for(var/mob/living/carbon/spirit/spirit in GLOB.spirit_list)
 		if((ckey(spirit.key) == ckey(mind_key)) || (ckey(spirit.mind?.key) == ckey(mind_key)))
-			return spirit
+			if(!mind || spirit.prevmind == mind) // prior respawn detection
+				return spirit
+			break
 
 /mob/living/carbon/spirit/get_spirit()
 	return src
 
 /// Proc that will search inside a given atom for any corpses, and send the associated ghost to the lobby if possible
-/proc/pacify_coffin(atom/movable/coffin, mob/user, deep = TRUE, give_pq = PQ_GAIN_BURIAL, recursion = FALSE)
+/proc/pacify_coffin(atom/movable/coffin, mob/user, deep = TRUE, give_pq = PQ_GAIN_BURIAL)
 	if(!coffin)
 		return FALSE
 	var/success = FALSE
@@ -191,66 +203,106 @@
 	for(var/mob/living/corpse in coffin)
 		if(pacify_corpse(corpse, user))
 			success = TRUE
-	//if this is a deep search, we will also search containers immediately inside the coffin and pacify the occupants
-	if(deep && recursion == FALSE)
+		// no break. mass graves ahoy!
+	//if this is a deep search, we will also search the FIRST closet immediately inside the coffin and pacify the occupants
+	if(deep)
 		for(var/obj/structure/closet/stuffing in coffin.contents)
-			if(pacify_coffin(stuffing, user, deep, give_pq = FALSE, recursion = TRUE))
+			if(pacify_coffin(stuffing, user, deep = FALSE, give_pq = FALSE))
 				success = TRUE
+			break // only the first
 	// Success is actually the ckey of the last attacker so we can prevent PQ farming from fragging people // DOESNT WORK "success" is not a ckey, just a bool for now
-	if(success && give_pq && user?.ckey && (user.ckey != success))
-		adjust_playerquality(give_pq, user.ckey)
+	if(success)
+		to_chat(user, span_rose("A sense of peace washes over me.")) // flavor this however you want
+		if(give_pq && user?.ckey && (user.ckey != success))
+			adjust_playerquality(give_pq, user.ckey)
 	return success
 
-/// Proc that sends the client associated with a given corpse to the lobby, if possible
+/// Proc that funeralizes a corpse by setting a variable in its mind, for reliable respawns.
 /proc/pacify_corpse(mob/living/corpse, mob/user, coin_pq = PQ_GAIN_BURIAL_COIN)
-	if(QDELETED(corpse) || QDELETED(corpse.mind) || (corpse.stat != DEAD) || corpse.funeral)
+	if(QDELETED(corpse) || QDELETED(corpse.mind) || (corpse.stat != DEAD) || corpse.mind.funeral)
+		return FALSE
+	if(copytext(corpse.key, 1, 2) == "@") // lazy version of IsMobAdminGhosted()
 		return FALSE
 	var/attacker_ckey = corpse.lastattackerckey || TRUE
+	var/mob/living/carbon/human/human_corpse
 	if(ishuman(corpse))
-		var/mob/living/carbon/human/human_corpse = corpse
-		human_corpse.funeral = TRUE
-		if(human_corpse.mind)
-			human_corpse.mind.funeral = TRUE // sends rogueghosts back to lobby on login
-		if(istype(human_corpse.mouth, /obj/item/roguecoin) && !HAS_TRAIT(corpse, TRAIT_BURIED_COIN_GIVEN))
-			var/obj/item/roguecoin/coin = human_corpse.mouth
-			if(coin.quantity >= 1) // stuffing their mouth full of a fuck ton of coins wont do shit
-				ADD_TRAIT(human_corpse, TRAIT_BURIED_COIN_GIVEN, TRAIT_GENERIC)
-				for(var/obj/effect/landmark/underworld/coin_spawn in GLOB.landmarks_list)
-					var/turf/fallen = get_turf(coin_spawn)
-					fallen = locate(fallen.x + rand(-3, 3), fallen.y + rand(-3, 3), fallen.z)
-					new /obj/item/underworld/coin/notracking(fallen)
-					fallen.visible_message(span_warning("A coin falls from above!"))
-					if(coin_pq && user?.ckey && (user.ckey != attacker_ckey))
-						adjust_playerquality(coin_pq, user.ckey)
-					qdel(human_corpse.mouth)
-					human_corpse.update_inv_mouth()
-					break
+		human_corpse = corpse
+	if(istype(human_corpse.mouth, /obj/item/roguecoin) && !HAS_TRAIT(corpse, TRAIT_BURIED_COIN_GIVEN))
+		var/obj/item/roguecoin/coin = human_corpse.mouth
+		if(coin.quantity >= 1) // stuffing their mouth full of a fuck ton of coins wont do shit
+			ADD_TRAIT(human_corpse, TRAIT_BURIED_COIN_GIVEN, TRAIT_GENERIC)
+			if(coin_pq && user?.ckey && (user.ckey != attacker_ckey))
+				adjust_playerquality(coin_pq, user.ckey)
+			qdel(human_corpse.mouth)
+			human_corpse.update_inv_mouth()
+			for(var/obj/effect/landmark/underworld/coin_spawn in GLOB.landmarks_list)
+				var/turf/fallen = get_turf(coin_spawn)
+				fallen = locate(fallen.x + rand(-3, 3), fallen.y + rand(-3, 3), fallen.z)
+				new /obj/item/underworld/coin/notracking(fallen)
+				fallen.visible_message(span_warning("A coin falls from above!"))
+				break
 	corpse.mind.remove_antag_datum(/datum/antagonist/zombie)
-	// Forcibly ghost the corpse, if applicable, for sending its player back to the lobby
-	var/mob/dead/observer/ghost
-	ghost = burial_rite_get_ghost(corpse)
-	var/logout_check
-	logout_check = burial_rite_loggedout_check(corpse)
-// This will suceeed if 
-	if(ghost || logout_check)
-		corpse.funeral = TRUE
-		corpse.mind.funeral = TRUE
-		testing("pacify_corpse success ([corpse.mind?.key || "no key"])")
-		var/user_acknowledgement = user ? user.real_name : "a mysterious force"
-		var/corpse_name = !QDELETED(corpse) && corpse.real_name ? corpse.real_name : null
-		to_chat(ghost, span_rose("My soul finds peace buried in creation, thanks to [user_acknowledgement]."))
-		to_chat(user, span_notice("I can feel [corpse_name ? "the soul of [corpse_name]" : "their soul"] finding peace..."))
-		user.log_message("memorialized [key_name(ghost)].", LOG_GAME)
-		burial_rite_return_ghost_to_lobby(ghost)
-		return TRUE
+	corpse.mind.funeral = TRUE
+	var/user_acknowledgement = user ? user.real_name : "a mysterious force"
+	var/corpse_name = corpse.real_name || "*no name*"
+	var/corpse_key = corpse.mind.key || "*no key*"
+	testing("pacify_corpse success ([corpse_name], [corpse_key])")
+	to_chat(corpse, span_rose("My soul finds peace buried in creation, thanks to [user_acknowledgement]."))
+	user.log_message("memorialized [corpse_name][corpse.mind.name ? " (mind-name [corpse.mind.name])" : ""], played by [corpse_key].", LOG_GAME)
+	var/peace_message = span_rose("My soul finds peace buried in creation, thanks to [user_acknowledgement].")
 
-	testing("pacify_corpse fail ([corpse.mind?.key || "no key"])")
+	if(!CONFIG_GET(flag/force_respawn_on_funeral))
+		// time to (expensively) search for whatever the mob is, to deliver the mail.
+		var/mob/currentlyin
+		var/mob/living/carbon/spirit/spirit = corpse.get_spirit() // much less expensive to use now
+		if(corpse.mind.key)
+			currentlyin = get_mob_by_key(corpse.mind.key) // the most expensive operation here
+		if(currentlyin)
+			if(corpse.mind == currentlyin.mind) // should only succeed if in body or ghosted, from the same character.
+				to_chat(currentlyin, peace_message)
+				to_chat(currentlyin, span_notice("You can now use 'Descend to the Underworld' in your Spirit tab to instantly return to the lobby."))
+			else if(spirit)
+				spirit.funeral_return(peace_message)
+// /mob/dead/observer/rogue/Login(), /mob/living/Login(), and /mob/living/carbon/spirit/Login() are set up to notify you if you're funeralized
+
+	else // Config sez all ghosts gotta go straight to the lobby, simple as.
+		var/mob/dead/observer/ghost = burial_rite_make_ghost(corpse)
+		if(ghost && ghost.client)
+			to_chat(ghost, peace_message)
+			burial_rite_return_ghost_to_lobby(ghost)
+			// /mob/dead/observer/rogue/Login() will take care of the d/ced bois.
+			// At this point, if you're not caught by this, you're on a different mind (character) entirely.
+		return TRUE
+	testing("pacify_corpse fail ([corpse_name], [corpse_key])")
 	return FALSE
 
-/proc/burial_rite_get_ghost(mob/living/corpse)
+// Teleports spirit to underworld spawn and pays its toll
+/mob/living/carbon/spirit/proc/funeral_return(peace_message)
+	if(!src.paid)
+		to_chat(src, peace_message)
+		src.paid = TRUE
+	for(var/obj/effect/landmark/underworld/underspawn in shuffle(GLOB.landmarks_list))
+		to_chat(src, span_warning("Something pulls me back towards my judgement..."))
+		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(funeral_teleport), src, underspawn), 5 SECONDS)
+		break // No need to worry about Speak with Soul spell, that checks for funeral
+
+/proc/funeral_teleport(mob/living/carbon/spirit/spirit, obj/effect/landmark/underworld/underspawn)
+	if(!QDELETED(spirit)) // in case they already used carriage
+		spirit.visible_message(span_warning("[spirit] vanishes!"), span_warning("I'm whisked away!"))
+		to_chat(spirit, span_notice("My toll has been paid for! The carriage is open to me..."))
+		spirit.invisibility = initial(spirit.invisibility) // remove effect from soulspeak spell immediately
+		spirit.SetParalyzed(0) // ditto
+		for(var/obj/item/I in spirit.held_items) // won't need these anymore
+			. |= spirit.dropItemToGround(I)
+		spirit.loc = underspawn.loc
+	
+
+// used by force-respawn, and by living corpses using the underworld verb
+// should be fine to use with disconnected people, as we'll have things to clean them up anyways
+/proc/burial_rite_make_ghost(mob/living/corpse)
 	var/mob/dead/observer/ghost
-	if(!corpse.client)
-		ghost = corpse.get_ghost()
+	if(!corpse.key)
+		ghost = corpse.get_ghost(even_if_they_cant_reenter = TRUE, ghosts_with_clients = FALSE)
 		//Try to find underworld spirit, if there is no ghost
 		if(!ghost)
 			var/mob/living/carbon/spirit/spirit = corpse.get_spirit()
@@ -259,27 +311,19 @@
 				if(ghost)
 					qdel(spirit)
 				else
-					message_admins("[ADMIN_LOOKUPFLW(spirit)] had its body buried but failed to ghost for some reason. Might be stuck somehow.")
-				return ghost
+					message_admins("[ADMIN_LOOKUPFLW(spirit)] as underworld spirit had its body buried but failed to ghost for some reason. Might be stuck somehow.")
+		return ghost
 	else
 		ghost = corpse.ghostize(force_respawn = TRUE)
 		return ghost
 
-// Makes the burial a success if the body is logged-out.
-// /mob/dead/observer/rogue/Login() and /mob/living/Login() will both check if the mind has been funeralized,
-// and then call the procs above (for living) and below this one to gracefully kick you to lobby.
-/proc/burial_rite_loggedout_check(mob/living/corpse)
-	return FALSE
-//	!corpse.key && !corpse.mind.funeral
-
 /proc/burial_rite_return_ghost_to_lobby(mob/dead/observer/ghost)
+	if(IsAdminGhost(ghost))
+		message_admins("[key_name(ghost)] skipped force-respawn due to being an admin ghost.")
+		return
+
 	if(ghost.key)
 		GLOB.respawntimes[ghost.key] = world.time - RESPAWNTIME
-
-	log_game("[key_name(ghost)] returned to lobby from burial rites.")
-
-	if(!ghost.client)
-		log_game("[key_name(ghost)] had no client in game during burial rites.")
 
 	if(ghost.client)
 		ghost.client.screen.Cut()
@@ -288,9 +332,13 @@
 		SSdroning.kill_loop(ghost.client)
 		SSdroning.kill_droning(ghost.client)
 		ghost.remove_client_colour(/datum/client_colour/monochrome)
+		ghost.log_message("was returned to lobby from burial rites.", LOG_GAME)
+	else
+		ghost.log_message("had no client in game during burial rites.", LOG_GAME)
 
 	var/mob/dead/new_player/M = new /mob/dead/new_player()
-	M.burial_respawn = TRUE // informs the player as to why they were respawned
+	if(CONFIG_GET(flag/force_respawn_on_funeral))
+		M.funeral_respawn = TRUE // informs the player as to why they were respawned
 
 	M.key = ghost.key
 	if(ghost.client)

@@ -76,5 +76,5 @@
 			var/list/thinz = list("takes a seat.", "settles in.", "joins the session", "joins the table.", "becomes a player.")
 			SEND_TEXT(world, span_notice("[usedkey] [pick(thinz)]"))
 
-	if(burial_respawn) // returned to lobby after memorialization
+	if(funeral_respawn) // returned to lobby after memorialization
 		to_chat(src, span_notice("You were returned to the lobby after having been given a proper memorial."))

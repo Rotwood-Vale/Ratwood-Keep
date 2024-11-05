@@ -121,6 +121,9 @@
 				adjust_playerquality(revive_pq, user.ckey)
 				ADD_TRAIT(target, TRAIT_IWASREVIVED, "[type]")
 			target.mind.remove_antag_datum(/datum/antagonist/zombie)
+			if(target.mind?.funeral && !CONFIG_GET(flag/force_respawn_on_funeral))
+				to_chat(target, span_warning("My funeral rites are undone!"))
+				target.mind.funeral = FALSE
 		return TRUE
 	return FALSE
 

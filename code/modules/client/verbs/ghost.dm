@@ -23,7 +23,11 @@ GLOBAL_LIST_INIT(ghost_verbs, list(
 	switch(alert("Descend to the Underworld?",,"Yes","No"))
 		if("Yes")
 
-			if(isrogueobserver(mob) && mob.mind)
+			var/datum/mind/prevmind // for tracking mind-based respawns w/ spirit
+			if(!isadminobserver(mob) && !isnewplayer(mob)) // auto-respawning aghosts that become spirits might not be great
+				prevmind = mob.mind
+
+			if(isrogueobserver(mob) && mob.mind) // adminghosts are unaffected, base observer type
 				if(mob.mind.funeral == TRUE)
 					var/mob/dead/observer/rogue/rogueghost = mob
 					to_chat(rogueghost, span_rose("With my body buried in creation, my soul passes on in peace..."))
@@ -32,8 +36,8 @@ GLOBAL_LIST_INIT(ghost_verbs, list(
 
 			if(isliving(mob))
 				var/mob/living/D = mob
-				if(D.funeral)
-					var/ghost = burial_rite_get_ghost(D)
+				if(D.mind && D.mind.funeral)
+					var/ghost = burial_rite_make_ghost(D)
 					if(ghost)
 						to_chat(ghost, span_rose("With my body buried in creation, my soul passes on in peace..."))
 						burial_rite_return_ghost_to_lobby(ghost)
@@ -56,6 +60,7 @@ GLOBAL_LIST_INIT(ghost_verbs, list(
 				O.livingname = mob.name
 				O.ckey = ckey
 				O.set_patron(prefs.selected_patron)
+				O.prevmind = prevmind // for if we get buried later
 				SSdroning.area_entered(get_area(O), O.client)
 				break
 			verbs -= GLOB.ghost_verbs

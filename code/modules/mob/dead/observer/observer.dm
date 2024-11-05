@@ -270,10 +270,14 @@ GLOBAL_VAR_INIT(observer_default_invisibility, INVISIBILITY_OBSERVER)
 
 /mob/dead/observer/rogue/Login()
 	. = ..()
-	if(mind?.current?.funeral)
-		to_chat(src, span_rose("With my body buried in creation, my soul passes on in peace..."))
-		burial_rite_return_ghost_to_lobby(src)
-		return
+	if(mind?.funeral)
+		if(CONFIG_GET(flag/force_respawn_on_funeral))
+			to_chat(src, span_rose("With my body buried in creation, my soul passes on in peace..."))
+			burial_rite_return_ghost_to_lobby(src)
+			return
+		else
+			to_chat(src, span_notice("Welcome back. Your body was funeralized and a respawn is available.\n\
+			Use the \"Journey to the Underworld\" verb in your Spirit tab to immediately respawn."))
 
 /mob/dead/observer/rogue/CanPass(atom/movable/mover, turf/target)
 	if(!isinhell)

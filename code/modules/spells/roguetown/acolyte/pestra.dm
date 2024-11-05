@@ -198,6 +198,9 @@
 			target.visible_message(span_notice("The rot leaves [target]'s body!"), span_green("I feel the rot leave my body!"))
 		else
 			target.visible_message(span_warning("The rot fails to leave [target]'s body!"), span_warning("I feel no different..."))
+		if(target.mind?.funeral && (target.stat != DEAD) && !CONFIG_GET(flag/force_respawn_on_funeral))
+			to_chat(target, span_warning("My funeral rites are undone!"))
+			target.mind.funeral = FALSE
 		return TRUE
 	return FALSE
 
