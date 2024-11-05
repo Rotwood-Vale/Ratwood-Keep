@@ -138,7 +138,7 @@
 #define ARCHIVIST	(1<<1)
 #define GUILDSMITH	(1<<2)
 #define ALCHEMIST	(1<<3)
-#define MASON		(1<<4)
+#define ARTIFICER	(1<<4)
 #define SEAMSTER	(1<<5)
 #define MERCHANT	(1<<6)
 #define SCRIBE		(1<<7)
@@ -165,6 +165,7 @@
 #define PRISONERB	(1<<15)
 #define LUNATIC		(1<<16)
 #define MIGRANT		(1<<17)
+#define BANDIT		(1<<19)
 
 #define YOUNGFOLK	(1<<6)
 
@@ -256,7 +257,7 @@
 #define JDO_GUILDSMITH 20
 #define JDO_APPRENTICE 21
 
-#define JDO_MASON 22
+#define JDO_ARTIFICER 22
 
 #define JDO_SEAMSTER 23
 
@@ -277,6 +278,7 @@
 #define JDO_MERCENARY 31
 #define JDO_VET 31.1
 #define JDO_SEELIE 31.2
+#define JDO_BANDIT 31.3
 
 #define JDO_VAGRANT 33
 #define JDO_ORPHAN 34
@@ -348,7 +350,7 @@
 	/datum/job/roguetown/archivist,\
 	/datum/job/roguetown/barkeep,\
 	/datum/job/roguetown/guildsmith,\
-	/datum/job/roguetown/mason,\
+	/datum/job/roguetown/artificer,\
 	/datum/job/roguetown/seamster, \
 	/datum/job/roguetown/merchant,\
 	/datum/job/roguetown/scribe
@@ -357,7 +359,8 @@
 	/datum/job/roguetown/pilgrim,\
 	/datum/job/roguetown/adventurer,\
 	/datum/job/roguetown/mercenary,\
-	/datum/job/roguetown/seelie
+	/datum/job/roguetown/seelie,\
+	/datum/job/roguetown/bandit
 
 #define GARRISON_ROLES \
 	/datum/job/roguetown/bogguardsman,\

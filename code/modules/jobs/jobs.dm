@@ -85,6 +85,7 @@ GLOBAL_LIST_INIT(garrison_positions, list(
 	"Dungeoneer",
 	"Gatemaster",
 	"Town Sheriff",
+	"Veteran",
 ))
 
 GLOBAL_LIST_INIT(church_positions, list(
@@ -101,10 +102,10 @@ GLOBAL_LIST_INIT(yeoman_positions, list(
 	"Merchant",
 	"Barkeep",
 	"Archivist",
-	"Guild smith",
+	"Guild Smith",
 	"Seamster",
 	"Alchemist",
-	"Mason",
+	"Artificier",
 	"Scribe",
 	"Village Elder",
 ))
@@ -128,11 +129,11 @@ GLOBAL_LIST_INIT(peasant_positions, list(
 	"Town Seelie",
 	"Adventurer",
 	"Pilgrim",
+	"Bandit",
 ))
 
 GLOBAL_LIST_INIT(mercenary_positions, list(
 	"Mercenary",
-	"Veteran",
 ))
 
 GLOBAL_LIST_INIT(youngfolk_positions, list(

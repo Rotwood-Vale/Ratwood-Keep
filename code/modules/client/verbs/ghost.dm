@@ -23,6 +23,11 @@ GLOBAL_LIST_INIT(ghost_verbs, list(
 	switch(alert("Descend to the Underworld?",,"Yes","No"))
 		if("Yes")
 
+			if(istype(mob, /mob/living/carbon/spirit))
+				//HONEYPOT CODE, REMOVE LATER
+				message_admins("STUPID MOTHERFUCKER [key] IS TRYING TO CRASH THE SERVER BY SPAWNING 3 GORILLION SPIRITS!")
+				return
+
 			var/datum/mind/prevmind // for tracking mind-based respawns w/ spirit
 			if(!isadminobserver(mob) && !isnewplayer(mob)) // auto-respawning aghosts that become spirits might not be great
 				prevmind = mob.mind

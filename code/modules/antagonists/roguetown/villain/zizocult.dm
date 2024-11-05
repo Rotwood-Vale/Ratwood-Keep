@@ -13,6 +13,7 @@ GLOBAL_LIST_EMPTY(ritualslist)
 		"THE GODHEAD FAVORS ME!",
 	)
 	var/islesser = TRUE
+	rogue_enabled = TRUE
 
 /datum/antagonist/zizocultist/leader
 	name = "Heresiarch"

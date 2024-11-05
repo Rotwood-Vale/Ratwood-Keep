@@ -13,6 +13,24 @@
 	w_class = WEIGHT_CLASS_SMALL
 	sewrepair = TRUE
 
+
+/obj/item/clothing/shoes/roguetown/ComponentInitialize()               //////////////////////////////// works like belt for small items. knife, key etc. 2 slots because 2 shoes
+	. = ..()
+	AddComponent(/datum/component/storage/concrete)
+	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
+	if(STR)
+		STR.max_combined_w_class = 10
+		STR.max_w_class = WEIGHT_CLASS_SMALL
+		STR.max_items = 2
+
+/obj/item/clothing/shoes/roguetown/dropped(mob/living/carbon/human/user)
+	..()
+	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
+	if(STR)
+		var/list/things = STR.contents()
+		for(var/obj/item/I in things)
+			STR.remove_from_storage(I, get_turf(src))
+
 /obj/item/clothing/shoes/roguetown/shortboots
 	name = "shortboots"
 	color = "#d5c2aa"
@@ -96,7 +114,7 @@
 
 /obj/item/clothing/shoes/roguetown/armor/steel
 	name = "steel plated boots"
-	desc = "A heavy pair of steel plated boots."
+	desc = "Boots forged of a set of steel plates to protect your fragile toes."
 	icon_state = "armorboots"
 	item_state = "armorboots"
 	color = null
@@ -104,10 +122,26 @@
 	anvilrepair = /datum/skill/craft/blacksmithing
 	smeltresult = /obj/item/ingot/steel
 	sewrepair = FALSE
-	clothing_flags = CANT_SLEEP_IN
 	resistance_flags = FIRE_PROOF
 	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT, BCLASS_TWIST)
 	armor = list("blunt" = 90, "slash" = 100, "stab" = 80, "bullet" = 100, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+
+	// ----------------- BLACKSTEEL -----------------------
+
+/obj/item/clothing/shoes/roguetown/boots/blacksteel/plateboots
+	name = "Blacksteel Plate Boots"	
+	desc = "Boots forged of durable blacksteel."
+	body_parts_covered = FEET
+	icon = 'icons/roguetown/clothing/special/blkknight.dmi'
+	mob_overlay_icon = 'icons/roguetown/clothing/special/onmob/blkknight.dmi'
+	icon_state = "bkboots"
+	item_state = "bkboots"
+	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT, BCLASS_TWIST)
+	color = null
+	blocksound = PLATEHIT
+	armor = list("blunt" = 90, "slash" = 100, "stab" = 80, "bullet" = 100, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	anvilrepair = /datum/skill/craft/blacksmithing
+	smeltresult = /obj/item/ingot/blacksteel
 
 /obj/item/clothing/shoes/roguetown/armor/nobleboot
 	name = "noble boots"

@@ -362,8 +362,8 @@
 /proc/considered_afk(datum/mind/M)
 	return !M || !M.current || !M.current.client || M.current.client.is_afk()
 
-/proc/ScreenText(obj/O, maptext="", screen_loc="CENTER-7,CENTER-7", maptext_height=480, maptext_width=480)
-	if(!isobj(O))
+/proc/ScreenText(atom/movable/O, maptext="", screen_loc="CENTER-7,CENTER-7", maptext_height=480, maptext_width=480)
+	if(!istype(O))
 		O = new /atom/movable/screen/text()
 	O.maptext = maptext
 	O.maptext_height = maptext_height
@@ -442,9 +442,12 @@
 
 	for(var/mob/dead/observer/G in GLOB.player_list)
 		candidates += G
-	
+
 	for(var/mob/living/carbon/spirit/bigchungus in GLOB.player_list)
 		candidates += bigchungus
+
+	for(var/mob/dead/new_player/lobby_nerd in GLOB.player_list)
+		candidates += lobby_nerd
 
 	return pollCandidates(Question, jobbanType, gametypeCheck, be_special_flag, poll_time, ignore_category, flashwindow, candidates)
 

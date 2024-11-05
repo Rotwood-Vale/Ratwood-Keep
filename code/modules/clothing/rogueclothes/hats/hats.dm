@@ -196,11 +196,11 @@
 
 /obj/item/clothing/head/roguetown/roguehood/random/Initialize()
 	color = pick("#544236", "#435436", "#543836", "#79763f")
-	..()
+	return ..()
 
 /obj/item/clothing/head/roguetown/roguehood/mage/Initialize()
 	color = pick("#4756d8", "#759259", "#bf6f39", "#c1b144", "#b8252c")
-	..()
+	return ..()
 
 /obj/item/clothing/head/roguetown/roguehood/AdjustClothes(mob/user)
 	if(loc == user)
@@ -369,7 +369,6 @@
 	sellprice = 200
 	resistance_flags = FIRE_PROOF | ACID_PROOF
 	anvilrepair = /datum/skill/craft/blacksmithing
-	clothing_flags = CANT_SLEEP_IN
 	sewrepair = FALSE
 
 /obj/item/clothing/head/roguetown/crown/serpcrown
@@ -473,8 +472,8 @@
 	max_integrity = 200
 	w_class = WEIGHT_CLASS_NORMAL
 	armor_class = ARMOR_CLASS_LIGHT
-	clothing_flags = CANT_SLEEP_IN
 	resistance_flags = FIRE_PROOF
+	clothing_flags = CANT_SLEEP_IN
 	sewrepair = FALSE
 
 /obj/item/clothing/head/roguetown/helmet/skullcap
@@ -506,11 +505,7 @@
 	desc = "A steel helmet which protects the whole of the head."
 	icon_state = "kettle"
 	body_parts_covered = HEAD|HAIR|EARS
-	bloody_icon_state = "helmetblood_big"
-	worn_x_dimension = 64
-	worn_y_dimension = 64
 	flags_inv = HIDEEARS
-	smeltresult = /obj/item/ash
 	body_parts_covered = HEAD|HAIR
 
 //................ CULTIST HOOD ............... //
@@ -563,54 +558,6 @@
 					var/mob/living/carbon/H = user
 					H.update_inv_head()
 		user.update_fov_angles()
-
-/obj/item/clothing/head/roguetown/helmet/astratahelm
-	name = "astrata helmet"
-	desc = "Headwear commonly worn by Templars in service to Astrata. The firstborn child's light will forever shine on within its crest."
-	icon_state = "astratahelm"
-	item_state = "astratahelm"
-	emote_environment = 3
-	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR
-	flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH
-	body_parts_covered = HEAD|EARS|HAIR|NOSE|EYES|MOUTH
-	armor_class = ARMOR_CLASS_MEDIUM
-	block2add = FOV_BEHIND
-
-/obj/item/clothing/head/roguetown/helmet/nochelm
-	name = "noc helmet"
-	desc = "Hearwear commonly worn by Templars in service to Noc. Without the night there can be no day, without Noc there can be no light in the dark hours."
-	icon_state = "nochelm"
-	item_state = "nochelm"
-	emote_environment = 3
-	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR
-	flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH
-	body_parts_covered = HEAD|EARS|HAIR|NOSE|EYES|MOUTH
-	armor_class = ARMOR_CLASS_MEDIUM
-	block2add = FOV_BEHIND
-
-/obj/item/clothing/head/roguetown/helmet/necrahelm
-	name = "necra helmet"
-	desc = "Headwear commonly worn by Templars in service to Necra. Let its skeletal features remind you of the only thing which is guaranteed in life. You will die."
-	icon_state = "necrahelm"
-	item_state = "necrahelm"
-	emote_environment = 3
-	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR
-	flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH
-	body_parts_covered = HEAD|EARS|HAIR|NOSE|EYES|MOUTH
-	armor_class = ARMOR_CLASS_MEDIUM
-	block2add = FOV_BEHIND
-
-/obj/item/clothing/head/roguetown/helmet/dendorhelm
-	name = "dendor helmet"
-	desc = "Headwear commonly worn by Templars in service to Dendor. Its protrusions almost resemble branches. Take root in the earth, and you will never be moved."
-	icon_state = "dendorhelm"
-	item_state = "dendorhelm"
-	emote_environment = 3
-	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR
-	flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH
-	body_parts_covered = HEAD|EARS|HAIR|NOSE|EYES|MOUTH
-	armor_class = ARMOR_CLASS_MEDIUM
-	block2add = FOV_BEHIND
 
 /obj/item/clothing/head/roguetown/helmet/heavy
 	name = "barbute"
@@ -696,42 +643,6 @@
 	desc = "A helmet which covers the whole of the head. Offers excellent protection. This one has a golden cross-shaped brow."
 	icon_state = "topfhelm_gold"
 	item_state = "topfhelm_gold"
-
-/obj/item/clothing/head/roguetown/helmet/heavy/astratahelm
-	name = "astrata helmet"
-	desc = "Headwear commonly worn by Templars in service to Astrata. The firstborn child's light will forever shine on within its crest."
-	icon_state = "astratahelm"
-	item_state = "astratahelm"
-	emote_environment = 3
-	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR
-	block2add = FOV_BEHIND
-
-/obj/item/clothing/head/roguetown/helmet/heavy/nochelm
-	name = "noc helmet"
-	desc = "Hearwear commonly worn by Templars in service to Noc. Without the night there can be no day, without Noc there can be no light in the dark hours."
-	icon_state = "nochelm"
-	item_state = "nochelm"
-	emote_environment = 3
-	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR
-	block2add = FOV_BEHIND
-
-/obj/item/clothing/head/roguetown/helmet/heavy/necrahelm
-	name = "necra helmet"
-	desc = "Headwear commonly worn by Templars in service to Necra. Let its skeletal features remind you of the only thing which is guaranteed in life. You will die."
-	icon_state = "necrahelm"
-	item_state = "necrahelm"
-	emote_environment = 3
-	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR
-	block2add = FOV_BEHIND
-
-/obj/item/clothing/head/roguetown/helmet/heavy/dendorhelm
-	name = "dendor helmet"
-	desc = "Headwear commonly worn by Templars in service to Dendor. Its protrusions almost resemble branches. Take root in the earth, and you will never be moved."
-	icon_state = "dendorhelm"
-	item_state = "dendorhelm"
-	emote_environment = 3
-	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR
-	block2add = FOV_BEHIND
 
 /obj/item/clothing/head/roguetown/helmet/heavy/pigface
 	name = "pigface bascinet"
@@ -991,3 +902,21 @@
 	clothing_flags = null
 	salvage_amount = 1
 	salvage_result = /obj/item/natural/hide
+
+//----------------- BLACKSTEEL ---------------------
+
+/obj/item/clothing/head/roguetown/helmet/blacksteel/bucket
+	name = "Blacksteel Bucket Helm"
+	desc = "A bucket helmet forged of durable blacksteel. None shall pass.."
+	body_parts_covered = FULL_HEAD
+	icon = 'icons/roguetown/clothing/special/blkknight.dmi'
+	mob_overlay_icon = 'icons/roguetown/clothing/special/onmob/blkknight.dmi'
+	icon_state = "bkhelm"
+	item_state = "bkhelm"
+	flags_inv = HIDEEARS|HIDEFACE
+	flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH
+	armor = list("blunt" = 90, "slash" = 100, "stab" = 80, "bullet" = 100, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT, BCLASS_SMASH, BCLASS_TWIST, BCLASS_PICK)
+	block2add = FOV_RIGHT|FOV_LEFT
+	max_integrity = 425
+	smeltresult = /obj/item/ingot/blacksteel

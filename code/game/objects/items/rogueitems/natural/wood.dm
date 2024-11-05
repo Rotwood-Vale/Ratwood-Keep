@@ -13,6 +13,27 @@
 	possible_item_intents = list(/datum/intent/hit)
 	obj_flags = CAN_BE_HIT
 	w_class = WEIGHT_CLASS_HUGE
+	var/lumber = /obj/item/grown/log/tree/small //These are solely for lumberjack calculations
+	var/lumber_amount = 2
+
+/obj/item/grown/log/tree/attacked_by(obj/item/I, mob/living/user) //This serves to reward woodcutting
+	if(user.used_intent.blade_class == BCLASS_CHOP && lumber_amount)
+		var/skill_level = user.mind.get_skill_level(/datum/skill/labor/lumberjacking)
+		var/lumber_time = (40 - (skill_level * 5))
+		var/minimum = 2
+		playsound(src, 'sound/misc/woodhit.ogg', 100, TRUE)
+		if(!do_after(user, lumber_time, target = user))
+			return
+		lumber_amount = rand(minimum, max(round(skill_level), minimum))
+		for(var/i = 0; i < lumber_amount; i++)
+			new lumber(get_turf(src))
+		if(!skill_level)
+			to_chat(user, span_info("I could have gotten more timber were I more skilled..."))
+		user.mind.add_sleep_experience(/datum/skill/labor/lumberjacking, (user.STAINT*0.5))
+		playsound(src, destroy_sound, 100, TRUE)
+		qdel(src)
+		return TRUE
+	..()
 
 /obj/item/grown/log/tree/small
 	name = "small log"
@@ -25,6 +46,7 @@
 	gripped_intents = null
 	w_class = WEIGHT_CLASS_BULKY
 	smeltresult = /obj/item/rogueore/coal
+	lumber_amount = 0
 
 /obj/item/grown/log/tree/bowpartial
 	name = "unstrung bow"
@@ -36,6 +58,7 @@
 	gripped_intents = null
 	w_class = WEIGHT_CLASS_BULKY
 	smeltresult = /obj/item/rogueore/coal
+	lumber_amount = 0
 
 /obj/item/grown/log/tree/stick
 	name = "stick"
@@ -50,6 +73,7 @@
 	twohands_required = FALSE
 	gripped_intents = null
 	slot_flags = ITEM_SLOT_MOUTH|ITEM_SLOT_HIP
+	lumber_amount = 0
 
 /obj/item/grown/log/tree/stick/Crossed(mob/living/L)
 	. = ..()
@@ -66,7 +90,7 @@
 
 /obj/item/grown/log/tree/stick/Initialize()
 	icon_state = "stick[rand(1,2)]"
-	..()
+	. = ..()
 
 /obj/item/grown/log/tree/stick/attack_self(mob/living/user)
 	user.visible_message(span_warning("[user] snaps [src]."))
@@ -119,11 +143,4 @@
 	twohands_required = FALSE
 	gripped_intents = null
 	slot_flags = ITEM_SLOT_MOUTH|ITEM_SLOT_HIP
-
-/obj/item/grown/log/tree/lumber
-	name = "lumber"
-	icon_state = "lumber"
-	desc = "This is some lumber." // i haven't seen this ingame yet
-	blade_dulling = 0
-	max_integrity = 50
-	firefuel = 5 MINUTES
+	lumber_amount = 0

@@ -37,7 +37,7 @@
 	var/turf/T = get_turf(src)
 	if(T)
 		new /obj/item/grown/log/tree/stick(T)
-	..()
+	return ..()
 
 /mob/dead/new_player/proc/reducespawntime(amt)
 	if(ckey)
