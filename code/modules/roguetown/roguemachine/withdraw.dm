@@ -42,6 +42,6 @@
 	user.changeNext_move(CLICK_CD_MELEE)
 	playsound(loc, 'sound/misc/keyboard_enter.ogg', 100, FALSE, -1)
 	var/contents = withdraw_tab.get_contents("VOMITORIUM", FALSE)
-	var/datum/browser/popup = new(user, "VENDORTHING", "", 370, 400)
+	var/datum/browser/popup = new(user, "VENDORTHING", "", 370, 800)
 	popup.set_content(contents)
 	popup.open()

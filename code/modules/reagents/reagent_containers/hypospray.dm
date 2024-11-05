@@ -158,7 +158,7 @@
 	if(reagents && reagents.reagent_list.len)
 		. += span_notice("It is currently loaded.")
 	else
-		. += span_notice("sad and empty")
+		. += span_notice("Sad and empty.")
 
 /obj/item/reagent_containers/hypospray/medipen/stimpack //goliath kiting
 	name = "stimpack medipen"
