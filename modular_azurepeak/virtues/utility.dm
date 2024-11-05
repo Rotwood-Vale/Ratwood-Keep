@@ -2,6 +2,7 @@
 	name = "Nobility"
 	desc = "By birth, blade or brain, I am noble known to the royalty of these lands, and have all the benefits associated with it."
 	added_traits = list(TRAIT_NOBLE)
+	added_skills = list(/datum/skill/misc/reading = 1)
 
 /datum/virtue/utility/noble/apply_to_human(mob/living/carbon/human/recipient)
 	SStreasury.noble_incomes[recipient] += 15
@@ -11,16 +12,60 @@
 	desc = "Wherever I go, I turn heads, such is my natural beauty."
 	added_traits = list(TRAIT_BEAUTIFUL)
 
-/datum/virtue/utility/rich
-	name = "Rich"
-	desc = "Through a stroke of luck or shrewd planning, I've come into a considerable amount of mammon."
-
-/datum/virtue/utility/rich/apply_to_human(mob/living/carbon/human/recipient)
-	var/obj/item/pouch = new /obj/item/storage/belt/rogue/pouch/coins/rich(get_turf(recipient))
-	recipient.put_in_hands(pouch, forced = TRUE)
-
 /datum/virtue/utility/deadened
 	name = "Deadened"
 	desc = "Some terrible incident colours my past, and now, I feel nothing."
 	added_traits = list(TRAIT_NOMOOD)
 
+/datum/virtue/utility/light_steps
+	name = "Light Steps"
+	desc = "Years of skulking about have left my steps quiet."
+	added_traits = list(TRAIT_LIGHT_STEP)
+
+/datum/virtue/utility/linguist
+	name = "Linguist"
+	desc = "I've spent a while studying a foreign language, and can speak and understand it fluently."
+
+/datum/virtue/utility/linguist/apply_to_human(mob/living/carbon/human/recipient)
+	var/list/selectable_languages = list(/datum/language/elvish, /datum/language/dwarvish, /datum/language/orcish, /datum/language/hellspeak, /datum/language/draconic, /datum/language/celestial)
+	var/list/choices = list()
+	for(var/i = 1, i <= selectable_languages.len, i++)
+		if (recipient.has_language(selectable_languages[i]))
+			continue
+		var/datum/language/a_language = selectable_languages[i]
+		choices["[a_language.name]"] = a_language
+	if (!LAZYLEN(choices))
+		return // no new languages to learn - we probably picked archivist
+	var/chosen_language = input(recipient, "Choose your extra spoken language.", "VIRTUE") as null|anything in choices
+
+	if (chosen_language)
+		var/datum/language/new_language = choices[chosen_language]
+		recipient.grant_language(new_language)
+		to_chat(recipient, span_info("I recall my knowledge of [new_language.name]..."))
+
+/datum/virtue/utility/deathless
+	name = "Deathless"
+	desc = "Some fell magick has rendered me inwardly unliving - I do not hunger, and I do not breathe."
+	added_traits = list(TRAIT_NOHUNGER, TRAIT_NOBREATH)
+
+/*/datum/virtue/utility/deathless/apply_to_human(mob/living/carbon/human/recipient)
+	recipient.mob_biotypes |= MOB_UNDEAD*/
+
+/datum/virtue/utility/crafter
+	name = "Crafter's Apprentice"
+	desc = "In my youth, I worked for the Artisan's Guild in a variety of disciplines."
+	added_skills = list(/datum/skill/craft/crafting = 2,
+						/datum/skill/craft/weaponsmithing = 2,
+						/datum/skill/craft/armorsmithing = 2,
+						/datum/skill/craft/blacksmithing = 2,
+						/datum/skill/craft/carpentry = 2,
+						/datum/skill/craft/masonry = 2,
+						/datum/skill/craft/traps = 2,
+						/datum/skill/craft/engineering = 2,
+						/datum/skill/craft/tanning = 2,
+	)
+
+/datum/virtue/utility/feral_appetite
+	name = "Feral Appetite"
+	desc = "Raw, toxic or spoiled food doesn't bother my superior digestive system."
+	added_traits = list(TRAIT_NASTY_EATER)
