@@ -290,12 +290,11 @@
 	if(!QDELETED(spirit)) // in case they already used carriage
 		spirit.visible_message(span_warning("[spirit] vanishes!"), span_warning("I'm whisked away!"))
 		to_chat(spirit, span_notice("My toll has been paid for! The carriage is open to me..."))
-		spirit.invisibility = initial(spirit.invisibility) // remove effect from soulspeak spell immediately
-		spirit.SetParalyzed(0) // ditto
 		for(var/obj/item/I in spirit.held_items) // won't need these anymore
 			. |= spirit.dropItemToGround(I)
 		spirit.loc = underspawn.loc
-	
+		spirit.invisibility = initial(spirit.invisibility) // remove effect from soulspeak spell immediately
+		spirit.SetParalyzed(0) // ditto
 
 // used by force-respawn, and by living corpses using the underworld verb
 // should be fine to use with disconnected people, as we'll have things to clean them up anyways
