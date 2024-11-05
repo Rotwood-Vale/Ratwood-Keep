@@ -248,7 +248,7 @@
 
 /mob/camera/blob/verb/expand_blob_power()
 	set category = "Blob"
-	set name = "Expand/Attack Blob ([BLOB_SPREAD_COST])"
+	set name = "Expand/Attack Blob (4)"
 	set desc = ""
 	var/turf/T = get_turf(src)
 	expand_blob(T)

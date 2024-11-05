@@ -30,8 +30,8 @@
 	name = "Bee"
 	icon_state = "bee"
 
-/datum/sprite_accessory/wings/fairy
-	name = "Fairy"
+/datum/sprite_accessory/wings/seelie
+	name = "Seelie"
 	icon_state = "fairy"
 
 /datum/sprite_accessory/wings/feathery
@@ -142,7 +142,7 @@
 /datum/sprite_accessory/wings/wide
 	abstract_type = /datum/sprite_accessory/wings/wide
 	icon = 'icons/mob/sprite_accessory/wings/wings_wide.dmi'
-	pixel_x = -6
+	pixel_x = -7
 
 /datum/sprite_accessory/wings/wide/succubus
 	name = "Succubus"

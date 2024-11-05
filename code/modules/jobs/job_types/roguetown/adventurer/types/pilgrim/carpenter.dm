@@ -27,14 +27,14 @@
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/craft/traps, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/labor/lumberjacking, 3, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/medicine, 1, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/treatment, 1, TRUE)
 	head = /obj/item/clothing/head/roguetown/hatfur
 	if(prob(50))
 		head = /obj/item/clothing/head/roguetown/hatblu
 	armor = /obj/item/clothing/suit/roguetown/armor/workervest
 	pants = /obj/item/clothing/under/roguetown/trou
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/random
-	shoes = /obj/item/clothing/shoes/roguetown/boots/leather
+	shoes = /obj/item/clothing/shoes/roguetown/armor/leather
 	belt = /obj/item/storage/belt/rogue/leather
 	beltr = /obj/item/storage/belt/rogue/pouch/coins/mid
 	beltl = /obj/item/rogueweapon/hammer/claw

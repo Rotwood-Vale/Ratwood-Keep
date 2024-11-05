@@ -1,6 +1,5 @@
 /obj/item/organ/ears
 	name = "ears"
-	icon = 'icons/roguetown/items/surgery.dmi'
 	icon_state = "ear"
 	desc = ""
 	zone = BODY_ZONE_PRECISE_EARS
@@ -112,13 +111,13 @@
 /obj/item/organ/ears/penguin/Insert(mob/living/carbon/human/H, special = 0, drop_if_replaced = TRUE)
 	. = ..()
 	if(istype(H))
-		to_chat(H, span_notice("I suddenly feel like you've lost my balance."))
+		to_chat(H, span_notice("I suddenly feel like I've lost my balance."))
 		waddle = H.AddComponent(/datum/component/waddling)
 
 /obj/item/organ/ears/penguin/Remove(mob/living/carbon/human/H,  special = 0)
 	. = ..()
 	if(istype(H))
-		to_chat(H, span_notice("My sense of balance comes back to you."))
+		to_chat(H, span_notice("My sense of balance comes back to me."))
 		QDEL_NULL(waddle)
 
 /obj/item/organ/ears/bronze
@@ -156,8 +155,8 @@
 	name = "vulpkian ears"
 	accessory_type = /datum/sprite_accessory/ears/fox
 
-/obj/item/organ/ears/tajaran
-	name = "tajaran ears"
+/obj/item/organ/ears/tabaxi
+	name = "tabaxi ears"
 
 /obj/item/organ/ears/elf
 	name = "elf ears"

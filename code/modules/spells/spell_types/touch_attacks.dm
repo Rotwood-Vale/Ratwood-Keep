@@ -8,9 +8,12 @@
 	range = -1
 
 /obj/effect/proc_holder/spell/targeted/touch/Destroy()
+	var/mob/user = usr
+	if(attached_hand && ismob(attached_hand.loc))
+		user = attached_hand.loc
+	to_chat(user, span_notice("The power of the spell dissipates from my hand."))
 	remove_hand()
-	to_chat(usr, span_notice("The power of the spell dissipates from my hand."))
-	..()
+	return ..()
 
 /obj/effect/proc_holder/spell/targeted/touch/proc/remove_hand(recharge = FALSE)
 	QDEL_NULL(attached_hand)

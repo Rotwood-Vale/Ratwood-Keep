@@ -8,7 +8,7 @@
 	spawn_positions = 5
 
 	allowed_sexes = list(MALE, FEMALE)
-	allowed_races = RACES_ALL_KINDS
+	allowed_races = RACES_VERY_SHUNNED_UP
 	allowed_ages = list(AGE_ADULT, AGE_MIDDLEAGED)
 
 	tutorial = "Nobody would envy your lot in life, for the role of bath-servant is not something so idly taken. Such folk often come from a place of desperation, 'least usually: for any with true compassion or skill would seek position with a nunnery or the medical trade. Launder clothes and soothe wounds, that is your loathsome creed."
@@ -41,7 +41,7 @@
 		H.mind.adjust_skillrank(/datum/skill/misc/athletics, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/music, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/riding, 2, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/medicine, 2, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/treatment, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/whipsflails, 1, TRUE)
 		H.change_stat("constitution", 1)
 		H.change_stat("endurance", 2)

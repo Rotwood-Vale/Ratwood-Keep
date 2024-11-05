@@ -350,18 +350,17 @@
 /obj/item/udder/proc/generateMilk()
 	reagents.add_reagent(/datum/reagent/consumable/milk, 1)
 
-/obj/item/udder/proc/milkAnimal(obj/O, mob/user)
-	var/obj/item/reagent_containers/glass/G = O
-	if(G.reagents.total_volume >= G.volume)
-		to_chat(user, span_warning("[O] is full."))
+/obj/item/udder/proc/milkAnimal(obj/item/reagent_containers/glass/container, mob/user)
+	var/space_left = container.volume - container.reagents.total_volume
+	if(space_left < 0.01) //These are floating point values, I'm not sure space_left <= 0 would work here?
+		to_chat(user, span_warning("[container] is full."))
 		return
-	if(!do_after(user, 20, target = src))
-		var/transfered = reagents.trans_to(O, rand(5,10))
-		if(transfered)
-			user.visible_message(span_notice("[user] milks [src] using \the [O]."), span_notice("I milk [src] using \the [O]."))
-		else
-			to_chat(user, span_warning("The udder is dry. Wait a bit longer..."))
-
+	if(reagents.total_volume < 5)
+		user.visible_message(span_notice("The udder is dry! Wait a bit longer..."))
+		return
+	if(do_after(user, 20, target = src))
+		reagents.trans_to(container, min(rand(15,25), space_left))
+		user.visible_message(span_notice("[user] milks [src] using \the [container]."), span_notice("I milk [src] using \the [container]."))
 //grenchensnacker
 
 /mob/living/simple_animal/grenchensnacker

@@ -104,7 +104,7 @@
 		if(2)
 			to_chat(new_spawn, "<b>I wished for unending wealth, but no amount of money was worth this existence. Maybe charity might redeem my soul?</b>")
 		if(3)
-			to_chat(new_spawn, "<b>I wished for power. Little good it did you, cast out of the light. You are the [gender == MALE ? "king" : "queen"] of a hell that holds no subjects. You feel only remorse.</b>")
+			to_chat(new_spawn, "<b>I wished for power. Little good it did you, cast out of the light. You are the [gender == MALE ? "lord" : "lady"] of a hell that holds no subjects. You feel only remorse.</b>")
 		if(4)
 			to_chat(new_spawn, "<b>I wished for immortality, even as my friends lay dying behind you. No matter how many times you cast myself into the lava, you awaken in this room again within a few days. There is no escape.</b>")
 
@@ -337,7 +337,7 @@
 
 /obj/effect/mob_spawn/human/hotel_staff/Destroy()
 	new/obj/structure/fluff/empty_sleeper/syndicate(get_turf(src))
-	..()
+	return ..()
 
 /obj/effect/mob_spawn/human/demonic_friend
 	name = "Essence of friendship"

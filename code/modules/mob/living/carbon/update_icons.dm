@@ -61,14 +61,14 @@
 	update_fire()
 
 /*
-/proc/get_inhand_sprite(/obj/item/I, layer)
+/proc/get_inhand_sprite(obj/item/I, layer)
 	var/index = "[I.icon_state]"
 	var/icon/inhand_icon = GLOB.inhand_icons[index]
 	if(!inhand_icon) 	//Create standing/laying icons if they don't exist
 		generate_inhand_icon(I)
 	return mutable_appearance(GLOB.inhand_icons[index], layer = -layer)
 
-/proc/generate_inhand_icon(/obj/item/I)
+/proc/generate_inhand_icon(obj/item/I)
 	testing("GDC [index]")
 	if(sleevetype)
 		var/icon/dismembered		= icon("icon"=icon, "icon_state"=t_color)
@@ -144,10 +144,10 @@
 				used_prop = "gen"
 				prop = I.getonmobprop(used_prop)
 			if(I.force_reupdate_inhand)
-				if(I.onprop[used_prop])
+				if(I.onprop?[used_prop])
 					prop = I.onprop[used_prop]
 				else
-					I.onprop[used_prop] = prop
+					LAZYSET(I.onprop, used_prop, prop)
 			if(!prop)
 				continue
 			var/flipsprite = FALSE

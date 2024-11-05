@@ -14,6 +14,7 @@
 	var/race
 	var/cached_undies
 	sewrepair = TRUE
+	w_class = WEIGHT_CLASS_SMALL
 
 /obj/item/undies/f
 	name = "women's smallclothes"

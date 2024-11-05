@@ -19,7 +19,7 @@
 			/obj/item/clothing/mask/rogue/facemask/steel,
 			/obj/item/clothing/neck/roguetown/bervor,
 			/obj/item/clothing/wrists/roguetown/bracers,
-			/obj/item/clothing/shoes/roguetown/boots/armor
+			/obj/item/clothing/shoes/roguetown/armor/steel
 			)
 	var/static/list/selectable_colors = list(
   		"Scrape Off Coating" = "#ffffff",
@@ -52,7 +52,7 @@
 
 /obj/structure/treating_furnace/attackby(obj/item/I, mob/living/user)
 	if(istype(I, /obj/item/rogueore/coal))
-		to_chat(user, span_notice("I toss \the coal into the furnace"))
+		to_chat(user, span_notice("I toss the coal into the furnace"))
 		coal_charges += 1
 		update_icon()
 		qdel(I)

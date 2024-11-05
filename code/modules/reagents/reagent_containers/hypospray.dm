@@ -1,8 +1,8 @@
-/obj/item/reagent_containers/hypospray
+/obj/item/reagent_containers/hypospray               ////// I absolutely hate this stupid retarded shit why the fuck is TG garbage even in this stupid fucking indian built codebase. fuck you seth. fuck you.
 	name = "hypospray"
 	desc = ""
-	icon = 'icons/obj/syringe.dmi'
-	item_state = "hypo"
+	icon = 'icons/roguetown/items/surgery.dmi'
+	item_state = "sty"
 	lefthand_file = 'icons/mob/inhands/equipment/medical_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/equipment/medical_righthand.dmi'
 	icon_state = "hypo"
@@ -14,11 +14,13 @@
 	slot_flags = ITEM_SLOT_BELT
 	var/ignore_flags = 0
 	var/infinite = FALSE
-
-/obj/item/reagent_containers/hypospray/attack_paw(mob/user)
-	return attack_hand(user)
+	var/has_cap = TRUE
 
 /obj/item/reagent_containers/hypospray/attack(mob/living/M, mob/user)
+	if(has_cap)
+		to_chat(user, span_warning("[src] has a cap on! You need to remove it first."))
+		return FALSE
+		playsound(src, 'modular/Smoker/sound/inject.ogg')
 	inject(M, user)
 
 ///Handles all injection checks, injection and logging.
@@ -98,8 +100,8 @@
 /obj/item/reagent_containers/hypospray/medipen
 	name = "epinephrine medipen"
 	desc = ""
-	icon_state = "medipen"
-	item_state = "medipen"
+	icon_state = "sty"
+	item_state = "sty"
 	lefthand_file = 'icons/mob/inhands/equipment/medical_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/equipment/medical_righthand.dmi'
 	amount_per_transfer_from_this = 10
@@ -116,14 +118,34 @@
 
 /obj/item/reagent_containers/hypospray/medipen/inject(mob/living/M, mob/user)
 	. = ..()
-	if(.)
-		reagents.maximum_volume = 0 //Makes them useless afterwards
-		reagents.flags = NONE
-		update_icon()
+	if(reagents.total_volume <= 0)
+		return FALSE
+	if(!M)
+		return FALSE
+	if(user == M)
+		to_chat(user, span_danger("You inject [src]."))
+	else
+		to_chat(user, span_danger("You inject [M] with [src]!"))
+	reagents.maximum_volume = 0  // Makes them useless afterwards
+	reagents.flags = NONE  // Ensure reagents are deactivated
+
+
+/obj/item/reagent_containers/hypospray/medipen/attack(mob/user)
+	if(user.canUseTopic(src, BE_CLOSE, FALSE, NO_TK))
+		if(has_cap)
+			to_chat(user, span_warning("[src] has a cap on! You need to remove it first."))
+			return
+		inject(user, user) 
 
 /obj/item/reagent_containers/hypospray/medipen/attack_self(mob/user)
-	if(user.canUseTopic(src, BE_CLOSE, FALSE, NO_TK))
-		inject(user, user)
+	if(has_cap)
+		has_cap = FALSE
+		icon_state = "sty_nocap"  // Update icon state
+		to_chat(user, span_notice("You remove the cap from [src]."))
+		playsound(user, 'modular/Smoker/sound/capoff.ogg')
+	else
+		to_chat(user, span_warning("[src] doesn't have a cap."))
+		return FALSE
 
 /obj/item/reagent_containers/hypospray/medipen/update_icon()
 	if(reagents.total_volume > 0)
@@ -136,7 +158,7 @@
 	if(reagents && reagents.reagent_list.len)
 		. += span_notice("It is currently loaded.")
 	else
-		. += span_notice("It is spent.")
+		. += span_notice("Sad and empty.")
 
 /obj/item/reagent_containers/hypospray/medipen/stimpack //goliath kiting
 	name = "stimpack medipen"

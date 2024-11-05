@@ -149,12 +149,16 @@
 	tiled_dirt = FALSE
 	landsound = 'sound/foley/jumpland/grassland.wav'
 	slowdown = 0
+	smooth = SMOOTH_TRUE
 	neighborlay = "grassedge"
 
 /turf/open/floor/rogue/grass/Initialize()
 	dir = pick(GLOB.cardinals)
 //	GLOB.dirt_list += src
 	. = ..()
+
+/turf/open/floor/rogue/grass/cardinal_smooth(adjacencies)
+	roguesmooth(adjacencies)
 
 /turf/open/floor/rogue/dirt/ambush
 	name = "dirt"
@@ -194,6 +198,11 @@
 	var/dirt_amt = 3
 
 /turf/open/floor/rogue/dirt/get_slowdown(mob/user)
+	//No tile slowdown for fairies
+	var/mob/living/carbon/human/FM = user
+	if(isseelie(FM) && !(FM.resting))	//Add wingcheck
+		return 0
+
 	var/returned = slowdown
 	for(var/obj/item/I in user.held_items)
 		if(I.walking_stick)
@@ -229,7 +238,7 @@
 	..()
 	if(ishuman(O))
 		var/mob/living/carbon/human/H = O
-		if(H.shoes && !HAS_TRAIT(H, TRAIT_LIGHT_STEP))
+		if(H.shoes && !(HAS_TRAIT(H, TRAIT_LIGHT_STEP) || isseelie(H))) //Seelie hover, so they won't step on blood
 			var/obj/item/clothing/shoes/S = H.shoes
 			if(!S.can_be_bloody)
 				return
@@ -311,8 +320,8 @@
 	tiled_dirt = FALSE
 	landsound = 'sound/foley/jumpland/dirtland.wav'
 	smooth = SMOOTH_TRUE
-	canSmoothWith = list(/turf/open/floor/rogue, /turf/closed/mineral, /turf/closed/wall/mineral)
-	neighborlay = "dirtedge"
+	canSmoothWith = list(/turf/open/floor/rogue/dirt,/turf/open/floor/rogue/grass)
+	neighborlay = "roadedge"
 	slowdown = 0
 
 /turf/open/floor/rogue/dirt/road/attack_right(mob/user)
@@ -383,21 +392,6 @@
 		add_overlay(New)
 	return New
 
-
-/turf/open/floor/rogue/dirt/road/Initialize()
-	dir = pick(GLOB.cardinals)
-	for(var/P in subtypesof(/turf/closed/wall/mineral))
-		canSmoothWith += P
-	for(var/P in subtypesof(/turf/closed/mineral))
-		canSmoothWith += P
-	for(var/P in subtypesof(/turf/open/floor/rogue))
-//		if(prob(90))
-		if(P == /turf/open/floor/rogue/dirt/road)
-			continue
-		canSmoothWith += P
-//	queue_smooth(src)
-	. = ..()
-
 /turf/open/floor/rogue/dirt/nrich
 	name = "enriched soil"
 	desc = "transplanted dirt, made into a pile and smoothed over to grow crops."
@@ -413,6 +407,9 @@
 	slowdown = 0
 	muddy = FALSE
 
+/turf/open/floor/rogue/underworld/road
+	name = "ash"
+	desc = "Smells like burnt wood."
 /turf/open/floor/rogue/underworld/road
 	name = "ash"
 	desc = "Smells like burnt wood."
@@ -652,9 +649,9 @@
 	clawfootstep = FOOTSTEP_HARD_CLAW
 	heavyfootstep = FOOTSTEP_GENERIC_HEAVY
 	landsound = 'sound/foley/jumpland/stoneland.wav'
-	neighborlay = "cobblerock"
-	smooth = SMOOTH_TRUE
-	canSmoothWith = list(/turf/open/floor/rogue/dirt, /turf/open/floor/rogue/grass)
+//	neighborlay = "cobblerock"
+	smooth = SMOOTH_MORE
+	canSmoothWith = list(/turf/open/floor/rogue, /turf/closed/mineral, /turf/closed/wall/mineral)
 
 /turf/open/floor/rogue/cobblerock/cardinal_smooth(adjacencies)
 	roguesmooth(adjacencies)
@@ -746,7 +743,7 @@
 	icon_state = ""
 
 /turf/open/floor/rogue/carpet/lord/Initialize()
-	..()
+	. = ..()
 	if(GLOB.lordprimary)
 		lordcolor(GLOB.lordprimary,GLOB.lordsecondary)
 	else
@@ -769,7 +766,7 @@
 
 /turf/open/floor/rogue/carpet/lord/center/Initialize()
 	dir = pick(GLOB.cardinals)
-	..()
+	return ..()
 
 /turf/open/floor/rogue/carpet/lord/left
 	icon_state = "carpet_l"

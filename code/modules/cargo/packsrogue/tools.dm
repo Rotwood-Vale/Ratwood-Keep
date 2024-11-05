@@ -43,7 +43,7 @@
 
 /datum/supply_pack/rogue/tools/paper
 	name = "Paper"
-	cost = 3
+	cost = 16
 	contains = list(
 					/obj/item/paper/scroll,
 					/obj/item/paper/scroll,
@@ -103,14 +103,14 @@
 				)
 
 /datum/supply_pack/rogue/tools/prarml
-	name = "Prosthetic Arm (L)"
+	name = "Prosthetic Left Wooden Arm"
 	cost = 40
-	contains = list(/obj/item/bodypart/l_arm/rprosthetic)
+	contains = list(/obj/item/bodypart/l_arm/prosthetic/wood)
 
 /datum/supply_pack/rogue/tools/prarmr
-	name = "Prosthetic Arm (R)"
+	name = "Prosthetic Right Wooden Arm"
 	cost = 40
-	contains = list(/obj/item/bodypart/r_arm/rprosthetic)
+	contains = list(/obj/item/bodypart/r_arm/prosthetic/wood)
 
 /datum/supply_pack/rogue/tools/waterskin
 	name = "Waterskin"
@@ -124,7 +124,7 @@
 
 /datum/supply_pack/rogue/tools/keyrings
 	name = "Keyrings"
-	cost = 8
+	cost = 20
 	contains = list(/obj/item/keyring,
 					/obj/item/keyring,
 					/obj/item/keyring)

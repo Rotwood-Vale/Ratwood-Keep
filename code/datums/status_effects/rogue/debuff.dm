@@ -46,9 +46,20 @@
 /atom/movable/screen/alert/status_effect/debuff/silver_curse
 	name = "Silver Curse"
 	desc = "My BANE!"
-	icon_state = "hunger3"	
+	icon_state = "hunger3"
 
 ////////////////////
+
+/datum/status_effect/debuff/moondust_crash
+	id = "moondust_crash"
+	alert_type = /atom/movable/screen/alert/status_effect/debuff/moondust_crash
+	effectedstats = list("speed" = -3, "endurance" = -3)
+	duration = 20 SECONDS
+
+/atom/movable/screen/alert/status_effect/debuff/moondust_crash
+	name = "Moondust Crash"
+	desc = "My body feels sluggish and strained."
+	icon_state = "muscles"
 
 
 /datum/status_effect/debuff/thirstyt1
@@ -208,3 +219,83 @@
 	name = "Insight"
 	desc = "With some sleep in a coffin I feel like I could become better."
 	icon_state = "sleepy"
+
+//Death debuff
+
+/datum/status_effect/debuff/death_weaken
+	id = "death_weaken"
+	alert_type = null
+	status_type = STATUS_EFFECT_UNIQUE
+	examine_text = span_notice("They appear not entirely whole, as if some part of them was left behind.")
+	effectedstats = list("strength" = -2, "perception" = -2, "intelligence" = -2, "constitution" = -2, "endurance" = -2, "speed" = -2)
+	var/extralives = 1
+
+/// SURRENDERING DEBUFFS
+
+/datum/status_effect/debuff/breedable
+	id = "breedable"
+	alert_type = /atom/movable/screen/alert/status_effect/debuff/breedable
+	duration = 30 SECONDS
+
+/datum/status_effect/debuff/breedable/on_apply()
+	. = ..()
+	ADD_TRAIT(owner, TRAIT_CRITICAL_RESISTANCE, id)
+
+/datum/status_effect/debuff/breedable/on_remove()
+	. = ..()
+	REMOVE_TRAIT(owner, TRAIT_CRITICAL_RESISTANCE, id)
+
+/atom/movable/screen/alert/status_effect/debuff/breedable
+	name = "Breedable"
+
+/datum/status_effect/debuff/submissive
+	id = "submissive"
+	alert_type = /atom/movable/screen/alert/status_effect/debuff/submissive
+	duration = 60 SECONDS
+
+/datum/status_effect/debuff/submissive/on_apply()
+	. = ..()
+	owner.add_movespeed_modifier("SUBMISSIVE", multiplicative_slowdown = 4)
+
+/datum/status_effect/debuff/submissive/on_remove()
+	. = ..()
+	owner.remove_movespeed_modifier("SUBMISSIVE")
+
+/atom/movable/screen/alert/status_effect/debuff/submissive
+	name = "Submissive"
+
+/// SEELIE DEBUFFS
+
+/datum/status_effect/buff/seelie/sad
+	id = "Seelie Curse"
+	alert_type = /atom/movable/screen/alert/status_effect/buff/seelie/sad
+	effectedstats = list("fortune" = -2)
+	duration = 60 SECONDS
+
+/atom/movable/screen/alert/status_effect/buff/seelie/sad
+	name = "Seelie Curse"
+	desc = "A nearby Seelie has spread their poor mood unto me."
+	icon_state = "stressb"
+
+/datum/status_effect/debuff/seelie_wing_curse
+	id = "seelie_wing_curse"
+	alert_type = /atom/movable/screen/alert/status_effect/debuff/seelie_wing_curse
+	effectedstats = list("fortune" = -2)
+	duration = 4 MINUTES
+
+/atom/movable/screen/alert/status_effect/debuff/seelie_wing_curse
+	name = "Curse of the Seelie"
+	desc = "I've been cursed for my horrific deed..."
+	icon_state = "stressb"
+
+/// Ravox Curses
+/datum/status_effect/debuff/ravox_burden
+	id = "ravox_burden"
+	alert_type = /atom/movable/screen/alert/status_effect/debuff/ravox_burden
+	effectedstats = list("speed" = -2, "endurance" = -3)
+	duration = 12 SECONDS
+
+/atom/movable/screen/alert/status_effect/debuff/ravox_burden
+	name = "Ravox's Burden"
+	desc = "Some divine power is straining my mind!"
+	icon_state = "muscles"

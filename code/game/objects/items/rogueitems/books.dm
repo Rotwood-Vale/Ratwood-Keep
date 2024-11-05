@@ -10,6 +10,7 @@
 	drop_sound = 'sound/foley/dropsound/book_drop.ogg'
 	force = 5
 	associated_skill = /datum/skill/misc/reading
+	w_class = WEIGHT_CLASS_SMALL
 
 /obj/item/book/rogue/getonmobprop(tag)
 	. = ..()
@@ -177,40 +178,50 @@
 	..()
 
 /obj/item/book/rogue/bibble
-	name = "The Book"
-	icon_state = "bibble_0"
-	base_icon_state = "bibble"
-	title = "bible"
-	dat = "gott.json"
+    name = "The Book"
+    icon_state = "bibble_0"
+    base_icon_state = "bibble"
+    title = "bible"
+    dat = "gott.json"
+    var/uses_remaining = 10 // Define uses_remaining
 
 /obj/item/book/rogue/bibble/read(mob/user)
-	if(!open)
-		to_chat(user, span_info("Open me first."))
-		return FALSE
-	if(!user.client || !user.hud_used)
-		return
-	if(!user.hud_used.reads)
-		return
-	if(!user.can_read(src))
-		return
-	if(in_range(user, src) || isobserver(user))
-		user.changeNext_move(CLICK_CD_MELEE)
-		var/m
-		var/list/verses = world.file2list("strings/bibble.txt")
-		m = pick(verses)
-		if(m)
-			user.say(m)
+    if(!open)
+        to_chat(user, span_info("Open me first."))
+        return FALSE
+    if(!user.client || !user.hud_used)
+        return
+    if(!user.hud_used.reads)
+        return
+    if(!user.can_read(src))
+        return
+    if(in_range(user, src) || isobserver(user))
+        user.changeNext_move(CLICK_CD_MELEE)
+        var/m
+        var/list/verses = world.file2list("strings/bibble.txt")
+        m = pick(verses)
+        if(m)
+            user.say(m)
 
 /obj/item/book/rogue/bibble/attack(mob/living/M, mob/user)
-	if(user.mind && user.mind.assigned_role == "Priest")
-		if(!user.can_read(src))
-			to_chat(user, span_warning("I don't understand these scribbly black lines."))
-			return
-		M.apply_status_effect(/datum/status_effect/buff/blessed)
-		M.add_stress(/datum/stressevent/blessed)
-		user.visible_message(span_notice("[user] blesses [M]."))
-		playsound(user, 'sound/magic/bless.ogg', 100, FALSE)
-		return
+    if(user.mind && user.mind.assigned_role == "Priest")
+        if(!user.can_read(src))
+            to_chat(user, span_warning("I don't understand these scribbly black lines."))
+            return
+        if (uses_remaining <= 0)
+            to_chat(user, span_warning("All charges are spent, hope the last poor bastard was worth it."))
+            qdel(src) // Delete the book
+            user << "The book turns to ash in your hands."
+            return
+        if (uses_remaining == 1)
+            to_chat(user, span_notice("This is your last charge. Use it wisely!"))
+        if (M.has_status_effect(/datum/status_effect/debuff/death_weaken))
+            M.remove_status_effect(/datum/status_effect/debuff/death_weaken)
+        M.apply_status_effect(/datum/status_effect/buff/blessed)
+        M.add_stress(/datum/stressevent/blessed)
+        user.visible_message(span_notice("[user] blesses [M]."))
+        playsound(user, 'sound/magic/bless.ogg', 100, FALSE)
+        return
 
 /datum/status_effect/buff/blessed
 	id = "blessed"
@@ -232,7 +243,7 @@
 	bookfile = "law.json"
 
 /obj/item/book/rogue/cooking
-	name = "Tastes Fit For The Lord" 
+	name = "Tastes Fit For The Lord"
 	desc = ""
 	icon_state ="book_0"
 	base_icon_state = "book"
@@ -392,14 +403,14 @@
 	icon_state = "basic_book_0"
 	base_icon_state = "basic_book"
 	override_find_book = TRUE
-	
+
 /obj/item/book/rogue/playerbook/Initialize(loc, in_round_player_generated, var/mob/living/in_round_player_mob, text)
 	. = ..()
 	is_in_round_player_generated = in_round_player_generated
 	if(is_in_round_player_generated)
 		player_book_text = text
 		while(!player_book_author_ckey) // doesn't have to be this, but better than defining a bool.
-			player_book_title = dd_limittext(capitalize(sanitize_hear_message(input(in_round_player_mob, "What title do you want to give the book? (max 42 characters)", "Title", "Unknown"))), MAX_NAME_LEN)	
+			player_book_title = dd_limittext(capitalize(sanitize_hear_message(input(in_round_player_mob, "What title do you want to give the book? (max 42 characters)", "Title", "Unknown"))), MAX_NAME_LEN)
 			player_book_author = "[dd_limittext(sanitize_hear_message(input(in_round_player_mob, "What do you want the author text to be? (max 42 characters)", "Author", "")), MAX_NAME_LEN)]"
 			player_book_icon = book_icons[input(in_round_player_mob, "Choose a book style", "Book Style") as anything in book_icons]
 			player_book_author_ckey = in_round_player_mob.ckey

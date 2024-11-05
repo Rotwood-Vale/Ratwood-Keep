@@ -96,6 +96,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 	//Breathing!
 	var/obj/item/organ/lungs/mutantlungs = null
 	var/breathid = "o2"
+
 	var/override_float = FALSE
 
 	//Bitflag that controls what in game ways can select this species as a spawnable source
@@ -141,20 +142,20 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 	)
 
 	var/list/specstats = list(
-		"strength" = 0, 
-		"perception" = 0, 
-		"intelligence" = 0, 
-		"constitution" = 0, 
-		"endurance" = 0, 
-		"speed" = 0, 
+		"strength" = 0,
+		"perception" = 0,
+		"intelligence" = 0,
+		"constitution" = 0,
+		"endurance" = 0,
+		"speed" = 0,
 		"fortune" = 0
 		)
 	var/list/specstats_m = list(
-		"constitution" = 1, 
+		"constitution" = 1,
 		"intelligence" = -1,
 	)
 	var/list/specstats_f = list(
-		"strength" = -1, 
+		"strength" = -1,
 		"speed" = 1,
 	)
 	var/list/specskills
@@ -172,7 +173,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 	var/list/body_markings
 	var/list/languages = list(/datum/language/common)
 	/// Some species have less than standard gender locks
-	var/gender_swapping = FALSE 
+	var/gender_swapping = FALSE
 	var/stress_examine = FALSE
 	var/stress_desc = null
 
@@ -332,7 +333,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 		if(organ.slot in slots_to_iterate)
 			continue
 		organ.Remove(C, TRUE)
-		QDEL_NULL(organ)
+		qdel(organ)
 	var/list/source_key_list = color_key_source_list_from_carbon(C)
 	for(var/slot in slots_to_iterate)
 		var/obj/item/organ/oldorgan = C.getorganslot(slot) //used in removing
@@ -485,7 +486,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 	if(pref_load)
 		pref_load.apply_customizers_to_character(C)
 		pref_load.apply_descriptors(C)
-	
+
 	for(var/language_type in languages)
 		C.grant_language(language_type)
 
@@ -522,7 +523,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 
 	for(var/language_type in languages)
 		C.remove_language(language_type)
-	
+
 	// Clear organ DNA since it wont match as we're changing the species
 	C.dna.organ_dna = list()
 
@@ -607,7 +608,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 			return FALSE
 
 	var/is_nudist = HAS_TRAIT(H, TRAIT_NUDIST)
-	var/is_retarded = HAS_TRAIT(H, TRAIT_RETARD_ANATOMY)
+	var/is_inhumen = HAS_TRAIT(H, TRAIT_INHUMEN_ANATOMY)
 	var/num_arms = H.get_num_arms(FALSE)
 	var/num_legs = H.get_num_legs(FALSE)
 
@@ -619,7 +620,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 		if(SLOT_WEAR_MASK)
 			if(H.wear_mask)
 				return FALSE
-			if(is_retarded)
+			if(is_inhumen)
 				return FALSE
 			if(!(I.slot_flags & ITEM_SLOT_MASK))
 				return FALSE
@@ -696,7 +697,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 		if(SLOT_SHOES)
 			if(H.shoes)
 				return FALSE
-			if(is_nudist || is_retarded)
+			if(is_nudist || is_inhumen)
 				return FALSE
 			if( !(I.slot_flags & ITEM_SLOT_SHOES) )
 				return FALSE
@@ -732,7 +733,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 		if(SLOT_HEAD)
 			if(H.head)
 				return FALSE
-			if(is_retarded)
+			if(is_inhumen)
 				return FALSE
 			if(!(I.slot_flags & ITEM_SLOT_HEAD))
 				return FALSE
@@ -897,7 +898,8 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 		return TRUE
 	if(HAS_TRAIT(H, TRAIT_CHUNKYFINGERS))
 		return do_after(H, 5 MINUTES, target = H)
-//	H.visible_message(span_notice("[H] start putting on [I]..."), span_notice("I start putting on [I]..."))
+	if(I.equip_delay_self >= 10)
+		H.visible_message(span_smallnotice("[H] start putting on [I]..."), span_smallnotice("I start putting on [I]..."))
 	if(I.edelay_type)
 		return move_after(H, minone(I.equip_delay_self-H.STASPD), target = H)
 	else
@@ -1218,7 +1220,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 		if(!target.lying_attack_check(user))
 			return 0
 
-		var/armor_block = target.run_armor_check(selzone, "blunt", blade_dulling = user.used_intent.blade_class)
+		var/armor_block = target.run_armor_check(selzone, "blunt", blade_dulling = user.used_intent.blade_class, damage = damage)
 
 		target.lastattacker = user.real_name
 		if(target.mind)
@@ -1426,8 +1428,8 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 				target.mind.attackedme[user.real_name] = world.time
 			var/selzone = accuracy_check(user.zone_selected, user, target, /datum/skill/combat/unarmed, user.used_intent)
 			var/obj/item/bodypart/affecting = target.get_bodypart(check_zone(selzone))
-			var/armor_block = target.run_armor_check(selzone, "blunt", blade_dulling = BCLASS_BLUNT)
 			var/damage = user.get_punch_dmg() * 1.4
+			var/armor_block = target.run_armor_check(selzone, "blunt", blade_dulling = BCLASS_BLUNT, damage = damage)
 			target.next_attack_msg.Cut()
 			var/nodmg = FALSE
 			if(!target.apply_damage(damage, user.dna.species.attack_type, affecting, armor_block))
@@ -2034,6 +2036,47 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 	if(H.movement_type & FLYING)
 		return TRUE
 	return FALSE
+
+////////////////
+//Wing Ripping//
+////////////////
+
+/datum/species/proc/on_wing_removal(mob/living/carbon/human/Target,  mob/Ripper)
+	var/obj/item/organ/wings/Wing = Target.getorganslot(ORGAN_SLOT_WINGS)
+	if(Wing == null)
+		Ripper.visible_message(span_notice("[Target] is missing their wings"))
+		return
+	Ripper.visible_message(span_notice("[Ripper] begins to rip [Target]'s wings..."), \
+						span_notice("I begin to rip [Target]'s wings..."))
+	if(do_after(Ripper, 80))
+		//if(length(Target.grabbedby) != 0)
+		if(Target.pulledby == Ripper)	//Check for being grabbed by ripper again
+			Wing.Remove(Target)
+			Wing.forceMove(Target.drop_location())
+			Ripper.put_in_hands(Wing)
+			Target.update_body_parts(TRUE)
+			//var/fracture_type = /datum/wound/fracture/neck
+			var/obj/item/bodypart/BP = Target.get_bodypart(BODY_ZONE_PRECISE_NECK)
+			BP.add_wound(/datum/wound/fracture/neck)
+			Target.apply_damage(70, BRUTE, Target.get_bodypart(BODY_ZONE_CHEST))
+			//var/datum/disease/Disease = new /datum/disease/heart_failure
+			//Target.ForceContractDisease(Disease)	//Disease removed in favor of simply stopping the heart via heart attack
+			Target.set_heartattack(TRUE)
+			Target.visible_message(span_danger("[Target] clutches at [Target.p_their()] chest as if [Target.p_their()] heart stopped!"))
+
+			//CURSE OF THE SEELIE
+			if(!isdead(Target))
+				playsound(Target, 'sound/vo/female/gen/scream (2).ogg', 140)
+				for(var/mob/living/M in get_hearers_in_view(4, Target))
+					if(iscarbon(M) && (M != Target))
+						var/mob/living/carbon/C = M
+						C.adjustEarDamage(0, 35)
+						C.confused += 40
+						C.Jitter(50)
+						C.apply_status_effect(/datum/status_effect/debuff/seelie_wing_curse)
+						C.visible_message( null , span_notice("[Target] screams in agony, inflicting a curse for this vild deed!"))
+		else
+			Ripper.visible_message( null , span_notice("I must grab [Target] first."))
 
 ////////////////
 //Tail Wagging//

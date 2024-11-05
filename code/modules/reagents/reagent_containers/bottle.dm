@@ -15,7 +15,7 @@
 	spillable = FALSE
 	var/closed = TRUE
 	reagent_flags = TRANSPARENT
-	w_class = WEIGHT_CLASS_NORMAL
+	w_class = WEIGHT_CLASS_SMALL
 	drinksounds = list('sound/items/drink_bottle (1).ogg','sound/items/drink_bottle (2).ogg')
 	fillsounds = list('sound/items/fillcup.ogg')
 	poursounds = list('sound/items/fillbottle.ogg')
@@ -60,6 +60,7 @@
 		playsound(user.loc,'sound/items/uncork.ogg', 100, TRUE)
 		desc = "An open bottle, hopefully a cork is close by."
 		spillable = TRUE
+		to_chat(usr, span_notice("You've uncorked the bottle."))
 	update_icon()
 
 /obj/item/reagent_containers/glass/bottle/Initialize()

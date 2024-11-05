@@ -22,7 +22,7 @@
 	name = "bash"
 	blade_class = BCLASS_BLUNT
 	icon_state = "inbash"
-	attack_verb = list("bashes", "strikes")
+	attack_verb = list("bashes", "clubs", "strikes")
 	penfactor = 10
 	item_d_type = "blunt"
 
@@ -60,7 +60,7 @@
 	if(ishuman(user))
 		var/mob/living/carbon/human/HU = user
 
-		if((HU.job != "King") && (HU.job != "Queen Consort"))
+		if((HU.job != "Duke") && (HU.job != "Duchess Consort"))
 			to_chat(user, span_danger("The rod doesn't obey me."))
 			return
 
@@ -217,7 +217,7 @@
 	wdefense = 4
 	wbalance = 1
 	thrown_bclass = BCLASS_CUT
-	anvilrepair = /datum/skill/craft/weaponsmithing
+	anvilrepair = /datum/skill/craft/blacksmithing
 	smeltresult = /obj/item/ingot/steel
 
 /datum/intent/katar
@@ -239,7 +239,7 @@
 /datum/intent/katar/thrust
 	name = "thrust"
 	icon_state = "instab"
-	attack_verb = list("thrusts")
+	attack_verb = list("thrusts", "stabs")
 	animname = "stab"
 	blade_class = BCLASS_STAB
 	hitsound = list('sound/combat/hits/bladed/genstab (1).ogg', 'sound/combat/hits/bladed/genstab (2).ogg', 'sound/combat/hits/bladed/genstab (3).ogg')

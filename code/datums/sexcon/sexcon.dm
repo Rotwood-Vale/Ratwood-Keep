@@ -94,10 +94,13 @@
 	if(!user.defiant && !victim.defiant)
 		return FALSE
 	// Need to violate AFK clients
-	if(victim.mind && victim.mind.key && !victim.client)
+	if(!victim.mind || !victim.mind.key || !victim.client) // Changed to OR statements to remove ZAPE of mobs without minds or keys
 		return TRUE
-	// Need to violate combat mode people
-	if(victim.cmode)
+	// Need to violate combat mode people - Include user to remove ZAPE
+	if(victim.cmode || user.cmode)
+		return TRUE
+	// Need to violate unconscious people, or those surrendering to remove ZAPE
+	if(victim.stat || victim.surrendering)
 		return TRUE
 	return FALSE
 
@@ -129,9 +132,9 @@
 	if(user.client.prefs.violated[victim.mind.key] && user.client.prefs.violated[victim.mind.key] + VIOLATED_ALLOWED_TIME >= world.time)
 		return
 	// ZAPED
-	to_chat(user, span_boldwarning(pick(list("I feel tainted...", "I feel less human..."))))
-	log_combat(user, victim, "Initiated rape against")
-	adjust_playerquality(-4, user.ckey, reason = "Initiated rape on an AFK/resisting person.")
+	//to_chat(user, span_boldwarning(pick(list("I feel tainted...", "I feel less human...")))) ZAPE
+	log_combat(user, victim, "Initiated noncon against")
+	//adjust_playerquality(-4, user.ckey, reason = "Initiated noncon on an AFK/resisting person.") ZAPE
 	user.client.prefs.violated[victim.mind.key] = world.time
 
 /datum/sex_controller/proc/adjust_speed(amt)
@@ -174,6 +177,12 @@
 /datum/sex_controller/proc/start(mob/living/carbon/human/new_target)
 	if(!ishuman(new_target))
 		return
+
+	if(HAS_TRAIT(user, TRAIT_EORA_CURSE))
+		to_chat(user, "<span class='warning'>The idea repulses me!</span>")
+		user.cursed_freak_out()
+		return FALSE
+
 	set_target(new_target)
 	show_ui()
 
@@ -200,6 +209,67 @@
 	add_cum_floor(get_turf(user))
 	after_ejaculation()
 
+/datum/sex_controller/proc/ejaculate_container(obj/item/reagent_containers/glass/C)
+	log_combat(user, user, "Ejaculated into a container")
+	user.visible_message(span_lovebold("[user] spills into [C]!"))
+	playsound(user, 'sound/misc/mat/endout.ogg', 50, TRUE, ignore_walls = FALSE)
+	C.reagents.add_reagent(/datum/reagent/erpjuice/cum, 3)
+	after_ejaculation()
+
+/datum/sex_controller/proc/calculate_milk()
+	var/obj/item/organ/breasts/breasts = user.getorganslot(ORGAN_SLOT_BREASTS)
+	var/obj/item/organ/vagina/vagina = user.getorganslot(ORGAN_SLOT_VAGINA)
+	var milk_amount
+
+	if(isseelie(user))
+		switch(breasts.breast_size)
+			if(0)
+				milk_amount = 5
+			if(1)
+				milk_amount = 6
+			if(2)
+				milk_amount = 7
+			if(3)
+				milk_amount = 8
+			if(4)
+				milk_amount = 9
+			if(5)
+				milk_amount = 10
+		
+		if(vagina.pregnant)
+			milk_amount = milk_amount + 5
+	else
+		switch(breasts.breast_size)
+			if(0)
+				milk_amount = 10
+			if(1)
+				milk_amount = 15
+			if(2)
+				milk_amount = 20
+			if(3)
+				milk_amount = 30
+			if(4)
+				milk_amount = 35
+			if(5)
+				milk_amount = 40
+				
+		if(vagina.pregnant)
+			milk_amount = milk_amount + 20
+	return milk_amount = round(milk_amount * (min((world.time - breasts.last_milked)/(2 MINUTES), 1) * (((user.nutrition + user.hydration)/2)/500)))
+
+/datum/sex_controller/proc/milk_container(obj/item/reagent_containers/glass/C)
+	var/obj/item/organ/breasts/breasts = user.getorganslot(ORGAN_SLOT_BREASTS)
+	var/milk_amount
+	log_combat(user, user, "Was milked into a container")
+	user.visible_message(span_lovebold("[user] lactates into [C]!"))
+	playsound(user, 'sound/misc/mat/endout.ogg', 50, TRUE, ignore_walls = FALSE)
+	milk_amount = calculate_milk()
+	C.reagents.add_reagent(/datum/reagent/consumable/breastmilk, milk_amount)
+	user.adjust_hydration(-(milk_amount * 10))
+	user.adjust_nutrition(-(milk_amount * 5))
+	breasts.last_milked = world.time
+	after_milking()
+
 /datum/sex_controller/proc/after_ejaculation()
 	set_arousal(40)
 	adjust_charge(-CHARGE_FOR_CLIMAX)
@@ -207,6 +277,12 @@
 	user.playsound_local(user, 'sound/misc/mat/end.ogg', 100)
 	last_ejaculation_time = world.time
 	SSticker.cums++
+
+/datum/sex_controller/proc/after_milking()
+	set_arousal(40)
+	user.emote("sexmoanhvy", forced = TRUE)
+	user.playsound_local(user, 'sound/misc/mat/end.ogg', 100)
+	last_ejaculation_time = world.time
 
 /datum/sex_controller/proc/after_intimate_climax()
 	if(user == target)
@@ -340,7 +416,7 @@
 				if(user.gender == FEMALE && prob(50))
 					chosen_emote = "whimper"
 				else
-					chosen_emote = "cry"
+					chosen_emote = "groan"
 
 	last_moan = world.time
 	user.emote(chosen_emote, forced = TRUE)
@@ -399,6 +475,36 @@
 	if(!can_ejaculate())
 		return FALSE
 	ejaculate()
+
+/datum/sex_controller/proc/handle_container_ejaculation()
+	if(arousal < PASSIVE_EJAC_THRESHOLD)
+		return
+	if(is_spent())
+		return
+	if(!can_ejaculate())
+		return FALSE
+	ejaculate_container(user.get_active_held_item())
+
+/datum/sex_controller/proc/handle_container_milk()
+	if(arousal < PASSIVE_EJAC_THRESHOLD)
+		return
+	if(is_spent())
+		return
+	milk_container(user.get_active_held_item())
+
+/datum/sex_controller/proc/handle_cock_milking(mob/living/carbon/human/milker)
+	if(arousal < ACTIVE_EJAC_THRESHOLD)
+		return
+	if(is_spent())
+		return
+	if(!can_ejaculate())
+		return FALSE
+	ejaculate_container(milker.get_active_held_item())
+
+/datum/sex_controller/proc/handle_breast_milking(mob/living/carbon/human/milker)
+	if(arousal < ACTIVE_EJAC_THRESHOLD)
+		return
+	milk_container(milker.get_active_held_item())
 
 /datum/sex_controller/proc/can_use_penis()
 	if(HAS_TRAIT(user, TRAIT_LIMPDICK))
@@ -527,8 +633,8 @@
 		return
 	if(!can_perform_action(action_type))
 		return
-	if(need_to_be_violated(target) && !can_violate_victim(target))
-		violate_victim(target)
+//	if(need_to_be_violated(target) && !can_violate_victim(target))
+//		violate_victim(target) - Commented out to disable the pop up and just disable all defiant ZAPE
 	if(need_to_be_violated(target) && !can_violate_victim(target))
 		return
 	// Set vars

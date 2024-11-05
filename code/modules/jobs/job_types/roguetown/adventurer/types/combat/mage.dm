@@ -5,9 +5,10 @@
 	allowed_races = RACES_ALL_KINDS
 	outfit = /datum/outfit/job/roguetown/adventurer/mage
 	category_tags = list(CTAG_ADVENTURER)
+	maximum_possible_slots = 6
 
 /datum/outfit/job/roguetown/adventurer/mage
-	allowed_patrons = list(/datum/patron/divine/noc, /datum/patron/inhumen/zizo)
+	allowed_patrons = list(/datum/patron/divine/noc, /datum/patron/zizo)
 
 /datum/outfit/job/roguetown/adventurer/mage/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -34,21 +35,20 @@
 		H.mind.adjust_skillrank(/datum/skill/combat/swords, pick(0,1), TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/knives, pick(0,1,2), TRUE)
 		H.mind.adjust_skillrank(/datum/skill/craft/crafting, pick(0,1), TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/medicine, pick(0,1), TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/riding, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 4, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/alchemy, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/treatment, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/magic/arcane, 3, TRUE)
 		if(H.age == AGE_OLD)
 			head = /obj/item/clothing/head/roguetown/wizhat/gen
 			armor = /obj/item/clothing/suit/roguetown/shirt/robe
 			H.change_stat("intelligence", 4)
-			H.mind.adjust_skillrank(/datum/skill/magic/arcane, 2, TRUE)
 			H.change_stat("strength", -2)
+			H.mind.adjust_skillrank(/datum/skill/magic/arcane, 1, TRUE)
+		H.mind.adjust_spellpoints(7)
 		H.change_stat("strength", -1)
 		H.change_stat("intelligence", 3)
 		H.change_stat("constitution", 1)
 		H.change_stat("endurance", -1)
-		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/projectile/fireball)
-		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/projectile/lightningbolt)
-		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/projectile/fetch)
+		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/learnspell)
+

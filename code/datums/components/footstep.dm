@@ -87,7 +87,7 @@
 		return
 	//SANITY CHECK, WILL NOT PLAY A SOUND IF THE LIST IS INVALID
 	if(!footstep_sounds[turf_footstep] || (LAZYLEN(footstep_sounds) < 3))
-		testing("SOME RETARD GAVE AN INVALID FOOTSTEP [footstep_type] VALUE ([turf_footstep]) TO [T.type]!!! FIX THIS SHIT!!!")
+		CRASH("Invalid footstep value given. Turf type: [T.type]; Footstep Type: [footstep_type]; Value: [turf_footstep]")
 		return
 	playsound(T, pick(footstep_sounds[turf_footstep][1]), footstep_sounds[turf_footstep][2], FALSE, footstep_sounds[turf_footstep][3] + e_range)
 
@@ -96,6 +96,9 @@
 	if(!T)
 		return
 	var/mob/living/carbon/human/H = parent
+	//TODO: Look into implementing soft fluttering sounds instead, and prevent this check that will happen for every footstep ever
+	if(isseelie(H))	//Need to look into a wing check for wingless seelie too
+		return
 	var/feetCover = (H.wear_armor && (H.wear_armor.body_parts_covered & FEET)) || (H.wear_pants && (H.wear_pants.body_parts_covered & FEET))
 
 	var/used_sound
@@ -104,7 +107,7 @@
 	if(H.shoes || feetCover) //are we wearing shoes
 		//SANITY CHECK, WILL NOT PLAY A SOUND IF THE LIST IS INVALID
 		if(!GLOB.footstep[T.footstep] || (LAZYLEN(GLOB.footstep[T.footstep]) < 3))
-			testing("SOME RETARD GAVE AN INVALID FOOTSTEP VALUE ([T.footstep]) TO [T.type]!!! FIX THIS SHIT!!!")
+			CRASH("Invalid footstep value. Turf type: [T.type]; Value: [T.footstep]")
 			return
 		used_footsteps = GLOB.footstep[T.footstep][1]
 		used_footsteps = used_footsteps.Copy()
@@ -122,7 +125,7 @@
 	else
 		//SANITY CHECK, WILL NOT PLAY A SOUND IF THE LIST IS INVALID
 		if(!GLOB.barefootstep[T.barefootstep] || (LAZYLEN(GLOB.barefootstep[T.barefootstep]) < 3))
-			testing("SOME RETARD GAVE AN INVALID BAREFOOTSTEP VALUE ([T.barefootstep]) TO [T.type]!!! FIX THIS SHIT!!!")
+			CRASH("Invalid barefootstep value given. Turf type: [T.type]; Value: [T.barefootstep]")
 			return
 		used_footsteps = GLOB.barefootstep[T.barefootstep][1]
 		used_footsteps = used_footsteps.Copy()

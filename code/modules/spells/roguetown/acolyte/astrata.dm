@@ -39,6 +39,7 @@
 		else
 			to_chat(user, span_warning("You point at [O], but it fails to catch fire."))
 			return FALSE
+	revert_cast()
 	return FALSE
 
 /obj/effect/proc_holder/spell/invoked/revive
@@ -93,6 +94,14 @@
 		target.grab_ghost(force = TRUE) // even suicides
 		target.emote("breathgasp")
 		target.Jitter(100)
+		if(isseelie(target))
+			var/mob/living/carbon/human/fairy_target = target
+			fairy_target.set_heartattack(FALSE)
+			var/obj/item/organ/wings/Wing = fairy_target.getorganslot(ORGAN_SLOT_WINGS)
+			if(Wing == null)
+				var/wing_type = fairy_target.dna.species.organs[ORGAN_SLOT_WINGS]
+				var/obj/item/organ/wings/seelie/new_wings = new wing_type()
+				new_wings.Insert(fairy_target)
 		target.update_body()
 		target.visible_message(span_notice("[target] is revived by holy light!"), span_green("I awake from the void."))
 		if(target.mind)
@@ -101,6 +110,7 @@
 				ADD_TRAIT(target, TRAIT_IWASREVIVED, "[type]")
 			target.mind.remove_antag_datum(/datum/antagonist/zombie)
 		return TRUE
+	revert_cast()
 	return FALSE
 
 /obj/effect/proc_holder/spell/invoked/revive/cast_check(skipcharge = 0,mob/user = usr)

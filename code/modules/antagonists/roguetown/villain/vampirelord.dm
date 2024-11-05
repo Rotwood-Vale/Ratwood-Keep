@@ -18,6 +18,7 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 		"I AM THE LAND", 
 		"CHILD OF KAIN!",
 	)
+	rogue_enabled = TRUE
 	var/isspawn = FALSE
 	var/disguised = FALSE
 	var/ascended = FALSE
@@ -65,10 +66,11 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 	ADD_TRAIT(owner.current, TRAIT_NOPAIN, "[type]")
 	ADD_TRAIT(owner.current, TRAIT_TOXIMMUNE, "[type]")
 	ADD_TRAIT(owner.current, TRAIT_STEELHEARTED, "[type]")
-	ADD_TRAIT(owner.current, TRAIT_TOLERANT, "[type]")
 	ADD_TRAIT(owner.current, TRAIT_NOSLEEP, "[type]")
 	ADD_TRAIT(owner.current, TRAIT_LIMPDICK, "[type]")
 	ADD_TRAIT(owner.current, TRAIT_VAMPMANSION, "[type]")
+	for(var/obj/structure/fluff/traveltile/vampire/tile in GLOB.traveltiles)
+		tile.show_travel_tile(owner.current)
 	ADD_TRAIT(owner.current, TRAIT_VAMP_DREAMS, "[type]")
 	owner.current.cmode_music = 'sound/music/combat_vamp.ogg'
 	var/obj/item/organ/eyes/eyes = owner.current.getorganslot(ORGAN_SLOT_EYES)
@@ -123,7 +125,7 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 	eyes = new /obj/item/organ/eyes/night_vision/zombie
 	eyes.Insert(owner.current)
 	H.equipOutfit(/datum/outfit/job/roguetown/vamplord)
-	H.set_patron(/datum/patron/inhumen/zizo)
+	H.set_patron(/datum/patron/zizo)
 
 	return TRUE
 
@@ -173,7 +175,7 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 	head  = /obj/item/clothing/head/roguetown/vampire
 	beltl = /obj/item/roguekey/vampire
 	cloak = /obj/item/clothing/cloak/cape/puritan
-	shoes = /obj/item/clothing/shoes/roguetown/boots
+	shoes = /obj/item/clothing/shoes/roguetown/armor
 	backl = /obj/item/storage/backpack/rogue/satchel/black
 	H.ambushable = FALSE
 
@@ -188,9 +190,9 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 	armor = list("blunt" = 100, "slash" = 100, "stab" = 90, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
 	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT, BCLASS_TWIST)
 	blocksound = PLATEHIT
-	do_sound = FALSE
+	do_sound_plate = TRUE
 	drop_sound = 'sound/foley/dropsound/armor_drop.ogg'
-	anvilrepair = /datum/skill/craft/armorsmithing
+	anvilrepair = /datum/skill/craft/blacksmithing
 	resistance_flags = FIRE_PROOF | ACID_PROOF
 
 /obj/item/clothing/suit/roguetown/shirt/vampire
@@ -233,14 +235,14 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 	nodismemsleeves = TRUE
 	max_integrity = 500
 	allowed_sex = list(MALE, FEMALE)
-	do_sound = TRUE
-	anvilrepair = /datum/skill/craft/armorsmithing
+	do_sound_plate = TRUE
+	anvilrepair = /datum/skill/craft/blacksmithing
 	smeltresult = /obj/item/ingot/steel
 	equip_delay_self = 40
 	armor_class = 3
 	resistance_flags = FIRE_PROOF | ACID_PROOF
 
-/obj/item/clothing/shoes/roguetown/boots/armor/vampire
+/obj/item/clothing/shoes/roguetown/armor/steel/vampire
 	name = "ancient ceremonial plated boots"
 	desc = ""
 	body_parts_covered = FEET
@@ -583,7 +585,7 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 		qdel(V)
 	for(var/obj/structure/vampire/portalmaker/P in GLOB.vampire_objects)
 		P.sending =  FALSE
-	..()
+	return ..()
 
 /obj/structure/vampire/portalmaker/proc/create_portal_return(aname,duration)
 	for(var/obj/effect/landmark/vteleportdestination/Vamp in GLOB.landmarks_list)
@@ -661,7 +663,7 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 					new /obj/item/clothing/under/roguetown/platelegs/vampire(user.loc)
 					new /obj/item/clothing/suit/roguetown/armor/chainmail/iron/vampire(user.loc)
 					new /obj/item/clothing/suit/roguetown/armor/plate/vampire(user.loc)
-					new /obj/item/clothing/shoes/roguetown/boots/armor/vampire(user.loc)
+					new /obj/item/clothing/shoes/roguetown/armor/steel/vampire(user.loc)
 					new /obj/item/clothing/head/roguetown/helmet/heavy/vampire(user.loc)
 					new /obj/item/clothing/gloves/roguetown/chain/vampire(user.loc)
 				user.playsound_local(get_turf(src), 'sound/misc/vcraft.ogg', 100, FALSE, pressure_affected = FALSE)
@@ -933,7 +935,7 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 
 /datum/objective/vampirelord/infiltrate/two/check_completion()
 	var/datum/game_mode/chaosmode/C = SSticker.mode
-	var/list/noblejobs = list("King", "Queen Consort", "Prince", "Princess", "Hand", "Steward")
+	var/list/noblejobs = list("Duke", "Duchess Consort", "Heir", "Heiress", "Hand", "Steward")
 	for(var/datum/mind/V in C.vampires)
 		if(V.current.job in noblejobs)
 			return TRUE
@@ -1086,7 +1088,7 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 	delete_after_roundstart = FALSE
 
 /obj/effect/landmark/start/vampirelord/Initialize()
-	..()
+	. = ..()
 	GLOB.vlord_starts += loc
 
 /obj/effect/landmark/start/vampirespawn
@@ -1101,7 +1103,7 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 	delete_after_roundstart = FALSE
 
 /obj/effect/landmark/start/vampirespawn/Initialize()
-	..()
+	. = ..()
 	GLOB.vspawn_starts += loc
 
 /obj/effect/landmark/vteleport
@@ -1315,7 +1317,7 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 				to_chat(L, "<font color='white'>The silver psycross shines and protect me from the unholy magic.</font>")
 				to_chat(user, span_userdanger("[L] has my BANE!It causes me to fail to ensnare their mind!"))
 			else
-				L.drowsyness += min(L.drowsyness + 50, 150)
+				L.drowsyness = min(L.drowsyness + 50, 150)
 				switch(L.drowsyness)
 					if(0 to 50)
 						to_chat(L, "You feel like a curtain is coming over your mind.")
@@ -1392,7 +1394,7 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 		if(L.cmode)
 			willroll += 15
 		if(bloodroll >= willroll)
-			L.drowsyness += min(L.drowsyness + 50, 150)
+			L.drowsyness = min(L.drowsyness + 50, 150)
 			switch(L.drowsyness)
 				if(0 to 50)
 					to_chat(L, "You feel like a curtain is coming over your mind.")

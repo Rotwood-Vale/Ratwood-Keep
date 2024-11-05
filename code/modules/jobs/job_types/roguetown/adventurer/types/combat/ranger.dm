@@ -18,7 +18,7 @@
 		if("Ranger")
 			H.set_blindness(0)
 			to_chat(H, span_warning("Rangers are masters of nature, often hired as pathfinders, bodyguards and mercenaries in areas of wilderness untraversable to common soldiery."))
-			shoes = /obj/item/clothing/shoes/roguetown/boots/leather
+			shoes = /obj/item/clothing/shoes/roguetown/armor/leather
 			shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
 			neck = /obj/item/storage/belt/rogue/pouch/coins/poor
 			gloves = /obj/item/clothing/gloves/roguetown/leather
@@ -52,7 +52,7 @@
 			H.mind.adjust_skillrank(/datum/skill/misc/sewing, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/labor/butchering, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/craft/traps, 1, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/misc/medicine, 2, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/treatment, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/craft/cooking, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/riding, rand(1,2), TRUE)
 			H.change_stat("perception", 4)
@@ -61,7 +61,7 @@
 		if("Gloom Stalker")
 			H.set_blindness(0)
 			to_chat(H, span_warning("Rangers are masters of nature, often hired as pathfinders, bodyguards and mercenaries in areas of wilderness untraversable to common soldiery."))
-			shoes = /obj/item/clothing/shoes/roguetown/boots/leather
+			shoes = /obj/item/clothing/shoes/roguetown/armor/leather
 			shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
 			neck = /obj/item/storage/belt/rogue/pouch/coins/poor
 			gloves = /obj/item/clothing/gloves/roguetown/leather
@@ -72,7 +72,7 @@
 			backr = /obj/item/gun/ballistic/revolver/grenadelauncher/bow/recurve
 			backl = /obj/item/storage/backpack/rogue/satchel
 			beltr = /obj/item/flashlight/flare/torch/lantern
-			backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger/steel/special = 1)
+			backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger = 1)
 			beltl = /obj/item/quiver/arrows
 			H.mind.adjust_skillrank(/datum/skill/combat/swords, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/polearms, 2, TRUE)
@@ -90,7 +90,7 @@
 			H.mind.adjust_skillrank(/datum/skill/misc/reading, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 4, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/craft/traps, 1, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/misc/medicine, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/treatment, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/craft/cooking, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/riding, rand(1,2), TRUE)
 			H.change_stat("perception", 2)

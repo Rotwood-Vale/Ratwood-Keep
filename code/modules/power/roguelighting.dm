@@ -17,7 +17,7 @@
 
 /obj/effect/sunlight/Initialize()
 	light_color = pick("#dbbfbf", "#ddd7bd", "#add1b0", "#a4c0ca", "#ae9dc6", "#d09fbf")
-	..()
+	. = ..()
 	if(istype(loc, /turf/open/transparent/openspace))
 		var/turf/target = get_step_multiz(src, DOWN)
 		if(!isclosedturf(target))
@@ -83,28 +83,25 @@
 
 /obj/machinery/light/roguestreet
 	icon = 'icons/roguetown/misc/tallstructure.dmi'
-	icon_state = "slamp1"
+	icon_state = "slamp1_nozap"
 	base_state = "slamp"
-	brightness = 10
+	brightness = 10.9
 	nightshift_allowed = FALSE
 	fueluse = 0
-	bulb_colour = "#f9e080"
-	bulb_power = 0.85
+	bulb_colour = "#58dd90"
+	bulb_power = 0.95
 	max_integrity = 0
 	use_power = NO_POWER_USE
-	var/datum/looping_sound/soundloop
 	pass_flags = LETPASSTHROW
 
 /obj/machinery/light/roguestreet/midlamp
 	icon = 'icons/roguetown/misc/64x64.dmi'
-	icon_state = "midlamp1"
+	icon_state = "midlamp1_nozap"
 	base_state = "midlamp"
 	pixel_x = -16
 	density = TRUE
 
 /obj/machinery/light/roguestreet/proc/lights_out()
-	if(soundloop)
-		soundloop.stop()
 	on = FALSE
 	set_light(0)
 	update_icon()
@@ -114,12 +111,10 @@
 	on = TRUE
 	update()
 	update_icon()
-	if(soundloop)
-		soundloop.start()
 
 /obj/machinery/light/roguestreet/update_icon()
 	if(on)
-		icon_state = "[base_state]1"
+		icon_state = "[base_state]1_nozap"
 	else
 		icon_state = "[base_state]0"
 
@@ -131,19 +126,9 @@
 		GLOB.fires_list -= src
 
 /obj/machinery/light/roguestreet/Initialize()
-	soundloop = pick(/datum/looping_sound/streetlamp1,/datum/looping_sound/streetlamp2,/datum/looping_sound/streetlamp3)
-	if(soundloop)
-		soundloop = new soundloop(list(src), FALSE)
-		soundloop.start()
 	GLOB.streetlamp_list += src
 	update_icon()
 	. = ..()
-
-/obj/machinery/light/roguestreet/update_icon()
-	if(on)
-		icon_state = "[base_state]1"
-	else
-		icon_state = "[base_state]0"
 
 //fires
 /obj/machinery/light/rogue
@@ -662,23 +647,132 @@
 
 /obj/machinery/light/rogue/hearth/attackby(obj/item/W, mob/living/user, params)
 	if(!attachment)
-		if(istype(W, /obj/item/cooking/pan) || istype(W, /obj/item/reagent_containers/glass/pot))
+		if(istype(W, /obj/item/cooking/pan) || istype(W, /obj/item/reagent_containers/glass/bucket/pot))
+			playsound(get_turf(user), 'sound/foley/dropsound/shovel_drop.ogg', 40, TRUE, -1)
 			attachment = W
 			W.forceMove(src)
 			update_icon()
 			return
 	else
+		if(istype(W, /obj/item/reagent_containers/glass/bowl))
+			to_chat(user, "<span class='notice'>Remove the pot from the hearth first.</span>")
+			return
 		if(istype(attachment, /obj/item/cooking/pan))
 			if(W.type in subtypesof(/obj/item/reagent_containers/food/snacks))
 				var/obj/item/reagent_containers/food/snacks/S = W
+				if(istype(W, /obj/item/reagent_containers/food/snacks/egg)) // added
+					playsound(get_turf(user), 'modular/Neu_Food/sound/eggbreak.ogg', 100, TRUE, -1)
+					sleep(25) // to get egg crack before frying hiss
+					W.icon_state = "rawegg" // added
+					mouse_opacity = 0 // so you cannot scoop up raw egg in the pan. Returned to 1 in process proc below
 				if(!food)
 					S.forceMove(src)
 					food = S
 					update_icon()
-					playsound(src.loc, 'sound/misc/frying.ogg', 100, FALSE, extrarange = 5)
+					playsound(src.loc, 'sound/misc/frying.ogg', 80, FALSE, extrarange = 5)
 					return
-		else if(istype(attachment, /obj/item/reagent_containers/glass/pot))
-			var/obj/item/reagent_containers/glass/pot = attachment
+		// New concept = boil at least 66 water, add item, it turns into food reagent volume 66 of the appropriate type
+		else if(istype(attachment, /obj/item/reagent_containers/glass/bucket/pot))
+			var/obj/item/reagent_containers/glass/bucket/pot = attachment
+			if(istype(W, /obj/item/reagent_containers/food/snacks/grown/oat))
+				if(!pot.reagents.has_reagent(/datum/reagent/water, 66))
+					to_chat(user, "<span class='notice'>Not enough water.</span>")
+					return TRUE
+				if(pot.reagents.chem_temp < 374)
+					to_chat(user, "<span class='warning'>[pot] isn't boiling!</span>")
+					return
+				if(do_after(user,2 SECONDS, target = src))
+					user.visible_message("<span class='info'>[user] places [W] into the pot.</span>")
+					qdel(W)
+					playsound(src.loc, 'sound/items/Fish_out.ogg', 20, TRUE)
+					pot.reagents.remove_reagent(/datum/reagent/water, 65)
+					sleep(300)
+					playsound(src, "bubbles", 30, TRUE)
+					pot.reagents.add_reagent(/datum/reagent/consumable/soup/oatmeal, 65)
+					pot.reagents.remove_reagent(/datum/reagent/water, 1)
+				return
+
+			if(W.type in subtypesof(/obj/item/reagent_containers/food/snacks/rogue/veg))
+				if(!pot.reagents.has_reagent(/datum/reagent/water, 65))
+					to_chat(user, "<span class='notice'>Not enough water.</span>")
+					return TRUE
+				if(pot.reagents.chem_temp < 374)
+					to_chat(user, "<span class='warning'>[pot] isn't boiling!</span>")
+					return
+				if(do_after(user,2 SECONDS, target = src))
+					user.visible_message("<span class='info'>[user] places [W] into the pot.</span>")
+					playsound(src.loc, 'sound/items/Fish_out.ogg', 20, TRUE)
+					pot.reagents.remove_reagent(/datum/reagent/water, 32)
+					if(istype(W, /obj/item/reagent_containers/food/snacks/rogue/veg/potato_sliced))
+						qdel(W)
+						sleep(800)
+						playsound(src, "bubbles", 30, TRUE)
+						pot.reagents.add_reagent(/datum/reagent/consumable/soup/veggie/potato, 65)
+						pot.reagents.remove_reagent(/datum/reagent/water, 1)
+					if(istype(W, /obj/item/reagent_containers/food/snacks/rogue/veg/onion_sliced))
+						qdel(W)
+						sleep(600)
+						playsound(src, "bubbles", 30, TRUE)
+						pot.reagents.add_reagent(/datum/reagent/consumable/soup/veggie/onion, 65)
+						pot.reagents.remove_reagent(/datum/reagent/water, 1)
+					if(istype(W, /obj/item/reagent_containers/food/snacks/grown/beet))
+						qdel(W)
+						sleep(600)
+						playsound(src, "bubbles", 30, TRUE)
+						pot.reagents.add_reagent(/datum/reagent/consumable/soup/veggie/beet, 65)
+						pot.reagents.remove_reagent(/datum/reagent/water, 1)
+					if(istype(W, /obj/item/reagent_containers/food/snacks/rogue/veg/cabbage_sliced))
+						qdel(W)
+						sleep(700)
+						playsound(src, "bubbles", 30, TRUE)
+						pot.reagents.add_reagent(/datum/reagent/consumable/soup/veggie/cabbage, 65)
+						pot.reagents.remove_reagent(/datum/reagent/water, 1)
+				return
+
+			if(W.type in subtypesof(/obj/item/reagent_containers/food/snacks/rogue/meat))
+				if(!pot.reagents.has_reagent(/datum/reagent/water, 66))
+					to_chat(user, "<span class='notice'>Not enough water.</span>")
+					return TRUE
+				if(pot.reagents.chem_temp < 374)
+					to_chat(user, "<span class='warning'>[pot] isn't boiling!</span>")
+					return
+				if(do_after(user,2 SECONDS, target = src))
+					user.visible_message("<span class='info'>[user] places [W] into the pot.</span>")
+					playsound(src.loc, 'sound/items/Fish_out.ogg', 20, TRUE)
+					pot.reagents.remove_reagent(/datum/reagent/water, 65)
+					if(istype(W, /obj/item/reagent_containers/food/snacks/rogue/meat/mince/fish))
+						qdel(W)
+						sleep(800)
+						playsound(src, "bubbles", 30, TRUE)
+						pot.reagents.add_reagent(/datum/reagent/consumable/soup/stew/fish, 65)
+						pot.reagents.remove_reagent(/datum/reagent/water, 1)
+					if(istype(W, /obj/item/reagent_containers/food/snacks/rogue/meat/spider))
+						qdel(W)
+						sleep(1000)
+						playsound(src, "bubbles", 30, TRUE)
+						pot.reagents.add_reagent(/datum/reagent/consumable/soup/stew/yucky, 65)
+						pot.reagents.remove_reagent(/datum/reagent/water, 1)
+					if(istype(W, /obj/item/reagent_containers/food/snacks/rogue/meat/poultry/cutlet) || istype(W, /obj/item/reagent_containers/food/snacks/rogue/meat/mince/poultry))
+						qdel(W)
+						sleep(900)
+						playsound(src, "bubbles", 30, TRUE)
+						pot.reagents.add_reagent(/datum/reagent/consumable/soup/stew/chicken, 65)
+						pot.reagents.remove_reagent(/datum/reagent/water, 1)
+					else
+						qdel(W)
+						sleep(900)
+						playsound(src, "bubbles", 30, TRUE)
+						pot.reagents.add_reagent(/datum/reagent/consumable/soup/stew/meat, 65)
+						pot.reagents.remove_reagent(/datum/reagent/water, 1)
+				return
+	. = ..()
+
+
+
+
+
+/* This is the blackstone version, not compatible but retained so it can be injected into say stews if the new system ends up too shallow.
+
 			if(W.type in subtypesof(/obj/item/reagent_containers/food/snacks) || W.type == /obj/item/reagent_containers/powder/flour) 
 				if(pot.reagents.chem_temp < 374)
 					to_chat(user, span_warning("[pot] isn't boiling!"))
@@ -687,6 +781,7 @@
 				if(W.type in subtypesof(/obj/item/reagent_containers/food/snacks))
 					var/obj/item/reagent_containers/food/snacks/snack = W
 					if(snack.type in subtypesof(/obj/item/reagent_containers/food/snacks/grown) || snack.eat_effect == /datum/status_effect/debuff/uncookedfood)
+						nutrimentamount += 5 //fuck it extra yield so soups are worth a shit.
 						nutrimentamount *= 1.25 //Boiling food makes more nutrients digestable.
 				if(istype(W, /obj/item/reagent_containers/food/snacks/grown/wheat) || istype(W, /obj/item/reagent_containers/food/snacks/grown/oat) || istype(W, /obj/item/reagent_containers/powder/flour))
 					nutrimentamount += 2 //Boiling is a way of cooking grain without baking
@@ -698,13 +793,14 @@
 					pot.reagents.add_reagent(/datum/reagent/consumable/nutriment, nutrimentamount)
 					qdel(W)
 				return
-	. = ..()
+	*/
+
 
 /obj/machinery/light/rogue/hearth/update_icon()
 	cut_overlays()
 	icon_state = "[base_state][on]"
 	if(attachment)
-		if(istype(attachment, /obj/item/cooking/pan) || istype(attachment, /obj/item/reagent_containers/glass/pot))
+		if(istype(attachment, /obj/item/cooking/pan) || istype(attachment, /obj/item/reagent_containers/glass/bucket/pot))
 			var/obj/item/I = attachment
 			I.pixel_x = 0
 			I.pixel_y = 0
@@ -732,7 +828,7 @@
 					attachment.forceMove(user.loc)
 				attachment = null
 				update_icon()
-		if(istype(attachment, /obj/item/reagent_containers/glass/pot))
+		if(istype(attachment, /obj/item/reagent_containers/glass/bucket/pot))
 			if(!user.put_in_active_hand(attachment))
 				attachment.forceMove(user.loc)
 			attachment = null
@@ -766,11 +862,12 @@
 				if(food)
 					var/obj/item/C = food.cooking(20, src)
 					if(C)
+						mouse_opacity = 1
 						qdel(food)
 						food = C
-			if(istype(attachment, /obj/item/reagent_containers/glass/pot))
+			if(istype(attachment, /obj/item/reagent_containers/glass/bucket/pot))
 				if(attachment.reagents)
-					attachment.reagents.expose_temperature(1000, 0.033)
+					attachment.reagents.expose_temperature(400, 0.033)
 					if(attachment.reagents.chem_temp > 374)
 						boilloop.start()
 					else

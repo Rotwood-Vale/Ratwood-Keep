@@ -15,6 +15,7 @@ GLOBAL_LIST_EMPTY_TYPED(schizohelps, /datum/schizohelp)
 	var/display_name = get_schizo_name()
 	var/message = span_info("<i>[display_name] meditates...</i>\n[msg]")
 	var/message_admins = span_info("<i>[display_name] ([key || "NO KEY"]) [ADMIN_FLW(src)] [ADMIN_SM(src)] meditates...</i>\n[msg]")
+	log_game("([key || "NO KEY"]) mentorhelped: [msg]")
 	for(var/client/voice in (GLOB.clients - client))
 		if(!(voice.prefs.toggles & SCHIZO_VOICE) || check_rights_for(voice, R_ADMIN))
 			continue
@@ -104,6 +105,8 @@ GLOBAL_LIST_EMPTY_TYPED(schizohelps, /datum/schizohelp)
 	answers[voice.key] = answer
 	if(length(answers) >= max_answers)
 		qdel(src)
+
+	log_game("([voice.key || "NO KEY"]) answered ([owner.key || "NO KEY"])'s mentorhelp: [answer]")
 
 /datum/schizohelp/proc/owner_qdeleted(mob/source)
 	if(QDELETED(src))

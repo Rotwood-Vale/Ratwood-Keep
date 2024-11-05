@@ -14,7 +14,7 @@
 	..()
 	head = /obj/item/clothing/head/roguetown/helmet/winged
 	pants = /obj/item/clothing/under/roguetown/trou
-	shoes = /obj/item/clothing/shoes/roguetown/boots/leather
+	shoes = /obj/item/clothing/shoes/roguetown/armor/leather
 	belt = /obj/item/storage/belt/rogue/leather
 	armor = /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk
 	neck = /obj/item/storage/belt/rogue/pouch/coins/poor
@@ -47,7 +47,7 @@
 	H.mind.adjust_skillrank(/datum/skill/misc/climbing, 2, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/sewing, 1, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/misc/medicine, 1, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/misc/treatment, 1, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 1,, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/swimming, 1, TRUE)
 	H.change_stat("constitution", 3) // Seven points just like Warrior. They already get a debuff racial to speed. Please do not stack it God please.

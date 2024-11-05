@@ -84,6 +84,7 @@
 	var/rotted = FALSE
 	var/skeletonized = FALSE
 
+	/// Can this bodypart swing weapons?
 	var/fingers = TRUE
 	var/organ_slowdown = 0 // Its here because this is first shared definition between two leg organ paths
 
@@ -134,6 +135,20 @@
 /obj/item/bodypart/grabbedintents(mob/living/user, precise)
 	return list(/datum/intent/grab/move, /datum/intent/grab/twist, /datum/intent/grab/smash)
 
+/obj/item/bodypart/l_arm/grabbedintents(mob/living/user, precise)
+	var/used_limb = precise
+	if(used_limb == BODY_ZONE_PRECISE_L_HAND)
+		return list(/datum/intent/grab/move, /datum/intent/grab/twist, /datum/intent/grab/smash, /datum/intent/grab/disarm)
+	else
+		return list(/datum/intent/grab/move, /datum/intent/grab/twist, /datum/intent/grab/smash)
+
+/obj/item/bodypart/r_arm/grabbedintents(mob/living/user, precise)
+	var/used_limb = precise
+	if(used_limb == BODY_ZONE_PRECISE_R_HAND)
+		return list(/datum/intent/grab/move, /datum/intent/grab/twist, /datum/intent/grab/smash, /datum/intent/grab/disarm)
+	else
+		return list(/datum/intent/grab/move, /datum/intent/grab/twist, /datum/intent/grab/smash)
+
 /obj/item/bodypart/chest/grabbedintents(mob/living/user, precise)
 	return list(/datum/intent/grab/move, /datum/intent/grab/shove)
 
@@ -161,6 +176,21 @@
 			qdel(src)
 		return
 	return ..()
+
+/obj/item/bodypart/MiddleClick(mob/user, params)
+	var/obj/item/held_item = user.get_active_held_item()
+	if(held_item)
+		if(held_item.get_sharpness() && held_item.wlength == WLENGTH_SHORT)
+			var/used_time = 210
+			if(user.mind)
+				used_time -= (user.mind.get_skill_level(/datum/skill/labor/butchering) * 30)
+			visible_message("[user] begins to butcher \the [src].")
+			playsound(src, 'sound/foley/gross.ogg', 100, FALSE)
+			if(do_after(user, used_time, target = src))
+				new /obj/item/reagent_containers/food/snacks/rogue/meat/steak(get_turf(src))
+				new /obj/effect/decal/cleanable/blood/splatter(get_turf(src))
+				qdel(src)
+	..()
 
 /obj/item/bodypart/attack(mob/living/carbon/C, mob/user)
 	if(ishuman(C))
@@ -246,7 +276,7 @@
 		. |= BODYPART_LIFE_UPDATE_HEALTH
 
 /obj/item/bodypart/Initialize()
-	..()
+	. = ..()
 	update_HP()
 
 /obj/item/bodypart/proc/update_HP()

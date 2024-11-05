@@ -30,10 +30,10 @@
 	var/turf/below_turf = turf_source.below()
 
 	if(above_turf)
-		if(!is_in_zweb(turf_source, above_turf))
+		if(!is_in_zweb(turf_source.z, above_turf.z))
 			above_turf=null
 	if(below_turf)
-		if(!is_in_zweb(turf_source, below_turf))
+		if(!is_in_zweb(turf_source.z, below_turf.z))
 			below_turf=null
 
 	if(soundping)

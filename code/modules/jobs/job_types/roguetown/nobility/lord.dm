@@ -2,8 +2,8 @@ GLOBAL_VAR(lordsurname)
 GLOBAL_LIST_EMPTY(lord_titles)
 
 /datum/job/roguetown/lord
-	title = "King"
-	f_title = "Queen"
+	title = "Duke"
+	f_title = "Duchess"
 	flag = LORD
 	department_flag = NOBLEMEN
 	faction = "Station"
@@ -32,8 +32,8 @@ GLOBAL_LIST_EMPTY(lord_titles)
 	required = TRUE
 
 /datum/job/roguetown/exlord //just used to change the lords title
-	title = "King Emeritus"
-	f_title = "Queen Emeritus"
+	title = "Duke Emeritus"
+	f_title = "Duchess Emeritus"
 	flag = LORD
 	department_flag = NOBLEMEN
 	faction = "Station"
@@ -52,12 +52,12 @@ GLOBAL_LIST_EMPTY(lord_titles)
 			GLOB.lordsurname = jointext(chopped_name, " ")
 		else
 			GLOB.lordsurname = "of [L.real_name]"
-		SSticker.select_ruler()
+		SSticker.rulermob = L
 		if(L.gender != FEMALE)
-			to_chat(world, "<b><span class='notice'><span class='big'>[L.real_name] is King of Rockhill.</span></span></b>")
+			to_chat(world, "<b><span class='notice'><span class='big'>[L.real_name] is Duke of Rockhill.</span></span></b>")
 			addtimer(CALLBACK(L, TYPE_PROC_REF(/mob, lord_color_choice)), 50)
 		else
-			to_chat(world, "<b><span class='notice'><span class='big'>[L.real_name] is Queen of Rockhill.</span></span></b>")
+			to_chat(world, "<b><span class='notice'><span class='big'>[L.real_name] is Duchess of Rockhill.</span></span></b>")
 			addtimer(CALLBACK(L, TYPE_PROC_REF(/mob, lord_color_choice)), 50)
 
 /datum/outfit/job/roguetown/lord/pre_equip(mob/living/carbon/human/H)
@@ -73,7 +73,7 @@ GLOBAL_LIST_EMPTY(lord_titles)
 		pants = /obj/item/clothing/under/roguetown/tights/black
 		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/black
 		armor = /obj/item/clothing/suit/roguetown/armor/leather/vest/black
-		shoes = /obj/item/clothing/shoes/roguetown/boots	
+		shoes = /obj/item/clothing/shoes/roguetown/armor	
 		if(H.mind)
 			H.mind.adjust_skillrank(/datum/skill/combat/polearms, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/maces, 2, TRUE)
@@ -104,7 +104,7 @@ GLOBAL_LIST_EMPTY(lord_titles)
 			if(istype(H.wear_mask, /obj/item/clothing/mask/rogue/eyepatch/left))
 				qdel(H.wear_mask)
 				mask = /obj/item/clothing/mask/rogue/lordmask/l
-	else //Queen, doesn't do anything at the moment as Lord is male-only
+	else //Duchess
 		armor = /obj/item/clothing/suit/roguetown/armor/armordress
 		belt = /obj/item/storage/belt/rogue/leather/plaquegold
 		shoes = /obj/item/clothing/shoes/roguetown/shortboots
@@ -115,7 +115,7 @@ GLOBAL_LIST_EMPTY(lord_titles)
 			H.mind.adjust_skillrank(/datum/skill/misc/climbing, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/athletics, 4, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/reading, 4, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/misc/medicine, 2, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/treatment, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/bows, 3, TRUE)
 			if(H.age == AGE_OLD)
 				H.mind.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE)
@@ -150,6 +150,7 @@ GLOBAL_LIST_EMPTY(lord_titles)
 /obj/effect/proc_holder/spell/self/grant_title
 	name = "Grant Title"
 	desc = "Grant someone a title of honor... Or shame."
+	overlay_state = "recruit_titlegrant"
 	antimagic_allowed = TRUE
 	charge_max = 100
 	/// Maximum range for title granting

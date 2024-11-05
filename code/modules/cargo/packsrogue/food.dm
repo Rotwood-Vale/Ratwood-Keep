@@ -52,7 +52,7 @@
 
 /datum/supply_pack/rogue/food/eggs
 	name = "Egg"
-	cost = 20
+	cost = 30
 	contains = list(
 					/obj/item/reagent_containers/food/snacks/egg,
 					/obj/item/reagent_containers/food/snacks/egg,
@@ -71,7 +71,7 @@
 
 /datum/supply_pack/rogue/food/butter
 	name = "Butter"
-	cost = 10
+	cost = 30
 	contains = list(
 					/obj/item/reagent_containers/food/snacks/butter,
 					/obj/item/reagent_containers/food/snacks/butter,

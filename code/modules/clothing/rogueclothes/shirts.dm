@@ -14,6 +14,7 @@
 	boobed = TRUE
 	sewrepair = TRUE
 	flags_inv = HIDEBOOB
+	w_class = WEIGHT_CLASS_SMALL
 
 /obj/item/clothing/suit/roguetown/shirt/undershirt
 	name = "shirt"
@@ -52,7 +53,7 @@
 	color = CLOTHING_RED
 
 /obj/item/clothing/suit/roguetown/shirt/undershirt/guard/Initialize()
-	..()
+	. = ..()
 	if(GLOB.lordprimary)
 		lordcolor(GLOB.lordprimary,GLOB.lordsecondary)
 	else
@@ -67,7 +68,7 @@
 	color = CLOTHING_PURPLE
 
 /obj/item/clothing/suit/roguetown/shirt/undershirt/guardsecond/Initialize()
-	..()
+	. = ..()
 	if(GLOB.lordprimary)
 		lordcolor(GLOB.lordprimary,GLOB.lordsecondary)
 	else
@@ -83,12 +84,13 @@
 
 /obj/item/clothing/suit/roguetown/shirt/undershirt/random/Initialize()
 	color = pick("#6b5445", "#435436", "#704542", "#79763f")
-	..()
+	return ..()
 
 /obj/item/clothing/suit/roguetown/shirt/undershirt/puritan
 	name = "formal silks"
 	icon_state = "puritan_shirt"
 	allowed_race = CLOTHED_RACES_TYPES
+	salvage_result = /obj/item/natural/silk
 
 /obj/item/clothing/suit/roguetown/shirt/undershirt/sailor
 	icon_state = "sailorblues"
@@ -99,6 +101,7 @@
 /obj/item/clothing/suit/roguetown/shirt/undershirt/vagrant
 	r_sleeve_status = SLEEVE_TORN
 	body_parts_covered = CHEST|ARM_LEFT|VITALS
+	torn_sleeve_number = 1
 
 /obj/item/clothing/suit/roguetown/shirt/undershirt/vagrant/l
 	r_sleeve_status = SLEEVE_NORMAL
@@ -107,7 +110,7 @@
 
 /obj/item/clothing/suit/roguetown/shirt/undershirt/vagrant/Initialize()
 	color = pick("#6b5445", "#435436", "#704542", "#79763f")
-	..()
+	return ..()
 
 /obj/item/clothing/suit/roguetown/shirt/shortshirt
 	name = "shirt"
@@ -119,7 +122,7 @@
 
 /obj/item/clothing/suit/roguetown/shirt/shortshirt/random/Initialize()
 	color = pick("#6b5445", "#435436", "#704542", "#79763f")
-	..()
+	return ..()
 
 /obj/item/clothing/suit/roguetown/shirt/shortshirt/merc
 	name = "shirt"
@@ -129,6 +132,7 @@
 	r_sleeve_status = SLEEVE_TORN
 	l_sleeve_status = SLEEVE_TORN
 	body_parts_covered = CHEST|VITALS
+	torn_sleeve_number = 2
 
 /obj/item/clothing/suit/roguetown/shirt/shortshirt/bog
 	color = "#9ac878"
@@ -144,6 +148,7 @@
 	r_sleeve_status = SLEEVE_NORMAL
 	l_sleeve_status = SLEEVE_NORMAL
 	flags_inv = HIDECROTCH|HIDEBOOB
+	fiber_salvage = FALSE
 
 /obj/item/clothing/suit/roguetown/shirt/tunic
 	slot_flags = ITEM_SLOT_ARMOR|ITEM_SLOT_SHIRT
@@ -178,7 +183,8 @@
 
 /obj/item/clothing/suit/roguetown/shirt/tunic/random/Initialize()
 	color = pick(CLOTHING_PURPLE, CLOTHING_RED, CLOTHING_BLUE, CLOTHING_GREEN)
-	..()
+	return ..()
+
 /obj/item/clothing/suit/roguetown/shirt/dress
 	slot_flags = ITEM_SLOT_ARMOR
 	name = "dress"
@@ -211,7 +217,7 @@
 
 /obj/item/clothing/suit/roguetown/shirt/dress/gen/random/Initialize()
 	color = pick("#6b5445", "#435436", "#704542", "#79763f", CLOTHING_BLUE)
-	..()
+	return ..()
 
 /obj/item/clothing/suit/roguetown/shirt/dress/silkdress
 	slot_flags = ITEM_SLOT_ARMOR|ITEM_SLOT_SHIRT
@@ -221,30 +227,65 @@
 	icon_state = "silkdress"
 	item_state = "silkdress"
 	color = "#e6e5e5"
-	
-/obj/item/clothing/suit/roguetown/shirt/dress/silkdress/princess
-	color = CLOTHING_WHITE
-	
-/obj/item/clothing/suit/roguetown/shirt/dress/silkdress/princess/Initialize()
-	. = ..()
-	if(GLOB.lordprimary)
-		lordcolor(GLOB.lordprimary,GLOB.lordsecondary)
-	else
-		GLOB.lordcolor += src
 
-/obj/item/clothing/suit/roguetown/shirt/dress/silkdress/princess/Destroy()
-	GLOB.lordcolor -= src
-	return ..()
-	
 /obj/item/clothing/suit/roguetown/shirt/dress/silkdress/black
 	color = CLOTHING_BLACK
 
 /obj/item/clothing/suit/roguetown/shirt/dress/silkdress/green
 	color = CLOTHING_DARK_GREEN
-	
+
 /obj/item/clothing/suit/roguetown/shirt/dress/silkdress/random/Initialize()
 	. = ..()
 	color = pick("#e6e5e5", "#52BE80", "#C39BD3", "#EC7063","#5DADE2")
+
+// 
+//   Velvet Dress
+//
+
+/obj/item/clothing/suit/roguetown/shirt/dress/velvetdress
+	slot_flags = ITEM_SLOT_ARMOR|ITEM_SLOT_SHIRT
+	name = "velvet dress"
+	desc = "A dress made with the finest velvet, befitting a person of high standing"
+	body_parts_covered = CHEST|GROIN|LEGS|VITALS
+	icon = 'icons/roguetown/clothing/nobledresses/shirts.dmi'
+	mob_overlay_icon = 'icons/roguetown/clothing/nobledresses/onmob/shirts.dmi'
+	icon_state = "velvetdress"
+	item_state = "velvetdress"
+
+/obj/item/clothing/suit/roguetown/shirt/dress/velvetdress/black
+	color = CLOTHING_BLACK
+
+/obj/item/clothing/suit/roguetown/shirt/dress/velvetdress/green
+	color = CLOTHING_DARK_GREEN
+
+/obj/item/clothing/suit/roguetown/shirt/dress/velvetdress/random/Initialize()
+	. = ..()
+	color = pick("#e6e5e5", "#52BE80", "#C39BD3", "#EC7063","#5DADE2")
+
+// 
+//   Noble dress
+//
+
+/obj/item/clothing/suit/roguetown/shirt/dress/nobledress
+	slot_flags = ITEM_SLOT_ARMOR|ITEM_SLOT_SHIRT
+	name = "noble dress"
+	desc = "a noble dress, fit for a person of high standing"
+	body_parts_covered = CHEST|GROIN|LEGS|VITALS
+	icon = 'icons/roguetown/clothing/nobledresses/shirts.dmi'
+	mob_overlay_icon = 'icons/roguetown/clothing/nobledresses/onmob/shirts.dmi'
+	icon_state = "nobledress"
+	item_state = "nobledress"
+
+/obj/item/clothing/suit/roguetown/shirt/dress/nobledress/black
+	color = CLOTHING_BLACK
+
+/obj/item/clothing/suit/roguetown/shirt/dress/nobledress/green
+	color = CLOTHING_DARK_GREEN
+
+/obj/item/clothing/suit/roguetown/shirt/dress/nobledress/random/Initialize()
+	. = ..()
+	color = pick("#e6e5e5", "#52BE80", "#C39BD3", "#EC7063","#5DADE2")
+
 
 /obj/item/clothing/suit/roguetown/shirt/dress/gen/sexy
 	slot_flags = ITEM_SLOT_ARMOR
@@ -269,6 +310,8 @@
 	l_sleeve_status = SLEEVE_NORMAL
 	body_parts_covered = CHEST|ARMS|VITALS
 	color = null
+	salvage_amount = 1
+	salvage_result = /obj/item/natural/silk
 
 /obj/item/clothing/suit/roguetown/shirt/jester
 	slot_flags = ITEM_SLOT_SHIRT|ITEM_SLOT_ARMOR

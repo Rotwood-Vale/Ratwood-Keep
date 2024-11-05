@@ -223,11 +223,7 @@
 				user.visible_message(span_warning("[user] smashes through [src]!"))
 			return
 		if(locked)
-			playsound(src, rattlesound, 100)
-			var/oldx = pixel_x
-			animate(src, pixel_x = oldx+1, time = 0.5)
-			animate(pixel_x = oldx-1, time = 0.5)
-			animate(pixel_x = oldx, time = 0.5)
+			rattle()
 			return
 		if(TryToSwitchState(AM))
 			if(swing_closed)
@@ -362,8 +358,20 @@
 	
 
 
+/obj/structure/mineral_door/proc/rattle()
+	playsound(src, rattlesound, 100)
+	var/oldx = pixel_x
+	animate(src, pixel_x = oldx+1, time = 0.5)
+	animate(pixel_x = oldx-1, time = 0.5)
+	animate(pixel_x = oldx, time = 0.5)
+
 /obj/structure/mineral_door/attackby(obj/item/I, mob/user)
+	user.changeNext_move(CLICK_CD_FAST)
 	if(istype(I, /obj/item/roguekey) || istype(I, /obj/item/keyring))
+		if(!locked)
+			to_chat(user, span_warning("It won't turn this way. Try turning to the right."))
+			rattle()
+			return
 		trykeylock(I, user)
 //	else if(user.used_intent.type != INTENT_HARM)
 //		return attack_hand(user)
@@ -418,6 +426,17 @@
 					obj_integrity = max_integrity
 				user.visible_message(span_notice("[user] repaired [src]."), \
 				span_notice("I repaired [src]."))		
+/obj/structure/mineral_door/attack_right(mob/user)
+	user.changeNext_move(CLICK_CD_FAST)
+	var/obj/item = user.get_active_held_item()
+	if(istype(item, /obj/item/roguekey) || istype(item, /obj/item/keyring))
+		if(locked)
+			to_chat(user, span_warning("It won't turn this way. Try turning to the left."))
+			rattle()
+			return
+		trykeylock(item, user)
+	else
+		return ..()
 
 /obj/structure/mineral_door/proc/trykeylock(obj/item/I, mob/user)
 	if(door_opened || isSwitchingStates)
@@ -441,11 +460,7 @@
 				break
 			else
 				if(user.cmode)
-					playsound(src, rattlesound, 100)
-					var/oldx = pixel_x
-					animate(src, pixel_x = oldx+1, time = 0.5)
-					animate(pixel_x = oldx-1, time = 0.5)
-					animate(pixel_x = oldx, time = 0.5)
+					rattle()
 		return
 	else
 		var/obj/item/roguekey/K = I
@@ -453,11 +468,7 @@
 			lock_toggle(user)
 			return
 		else
-			playsound(src, rattlesound, 100)
-			var/oldx = pixel_x
-			animate(src, pixel_x = oldx+1, time = 0.5)
-			animate(pixel_x = oldx-1, time = 0.5)
-			animate(pixel_x = oldx, time = 0.5)
+			rattle()
 		return
 
 
@@ -722,7 +733,7 @@
 				icon_state = "wcr"
 	if(over_state)
 		add_overlay(mutable_appearance(icon, "[over_state]", ABOVE_MOB_LAYER))
-	..()
+	. = ..()
 
 /obj/structure/mineral_door/wood/blue
 	icon_state = "wcb"
@@ -805,11 +816,12 @@
 	lockdir = dir
 
 /obj/structure/mineral_door/wood/deadbolt/Initialize()
-	..()
+	. = ..()
 	lockdir = dir
 	icon_state = base_state
 
 /obj/structure/mineral_door/wood/deadbolt/attack_right(mob/user)
+	..()
 	if(door_opened || isSwitchingStates)
 		return
 	if(lockbroken)
@@ -851,18 +863,18 @@
 	repair_cost_second = /obj/item/natural/stone
 	repair_skill = /datum/skill/craft/masonry
 
-/obj/structure/mineral_door/wood/donjon/stone/attack_right(mob/user)
-	return
-
 /obj/structure/mineral_door/wood/donjon/stone/view_toggle(mob/user)
 	return
 
 /obj/structure/mineral_door/wood/donjon/Initialize()
 	viewportdir = dir
 	icon_state = base_state
-	..()
+	. = ..()
 
 /obj/structure/mineral_door/wood/donjon/attack_right(mob/user)
+	if(user.get_active_held_item())
+		..()
+		return
 	if(door_opened || isSwitchingStates)
 		return
 	if(brokenstate)
@@ -920,7 +932,7 @@
 	icon_state = "barsold"
 
 /obj/structure/mineral_door/bars/Initialize()
-	..()
+	. = ..()
 	add_overlay(mutable_appearance(icon, "barsopen", ABOVE_MOB_LAYER))
 
 
@@ -965,10 +977,6 @@
 	resident_advclass = /datum/advclass/farmer
 	lockid = "towner_farmer"
 
-/obj/structure/mineral_door/wood/towner/seamstress
-	resident_advclass = /datum/advclass/seamstress
-	lockid = "towner_seamstress"
-
 /obj/structure/mineral_door/wood/towner/towndoctor
 	resident_advclass = /datum/advclass/towndoctor
 	lockid = "towner_towndoctor"
@@ -980,3 +988,15 @@
 /obj/structure/mineral_door/wood/towner/fisher
 	resident_advclass = /datum/advclass/fisher
 	lockid = "towner_fisher"
+
+/obj/structure/mineral_door/wood/deadbolt/shutter
+	name = "serving hatch"
+	desc = "Can be locked from the inside."
+	icon_state = "serving"
+	base_state = "serving"
+	max_integrity = 250
+	over_state = "servingopen"
+	openSound = 'modular/Neu_Food/sound/blindsopen.ogg'
+	closeSound = 'modular/Neu_Food/sound/blindsclose.ogg'
+	dir = NORTH
+	locked = TRUE
