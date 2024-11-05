@@ -8,6 +8,20 @@
 		recipient.mind?.AddSpell(new /obj/effect/proc_holder/spell/targeted/touch/prestidigitation)
 		recipient.mind?.adjust_spellpoints(-1)
 
+/datum/virtue/combat/devotee
+	name = "Devotee"
+	desc = "Though not officially of the Church, my relationship with my chosen Patron is strong enough to grant me the most minor of their blessings."
+	added_skills = list(/datum/skill/magic/holy = 1)
+
+/datum/virtue/combat/devotee/apply_to_human(mob/living/carbon/human/recipient)
+	// this grants devotion, but ONLY for orison, and never enough to get even T1. it also doesn't grant healing miracle, full stop.
+	if (!recipient.devotion && recipient.mind)
+		var/datum/devotion/new_faith = new /datum/devotion(recipient, recipient.patron)
+		new_faith.max_devotion = CLERIC_REQ_1 - 20
+		new_faith.max_progression = CLERIC_REQ_1 - 20
+		recipient.verbs += list(/mob/living/carbon/human/proc/devotionreport, /mob/living/carbon/human/proc/clericpray)
+		recipient.mind?.AddSpell(new /obj/effect/proc_holder/spell/targeted/touch/orison)
+
 /datum/virtue/combat/duelist
 	name = "Duelist Apprentice"
 	desc = "I have trained under a duelist of considerable skill, and always have my trusty rapier close at hand."
