@@ -492,7 +492,7 @@
 	ADD_TRAIT(character, TRAIT_GOODLOVER, "[type]")
 
 /datum/special_trait/loveless
-	name = "Nymphomaniac"
+	name = "Loveless"
 	greet_text = span_boldwarning("I am unable to show any kind of affection or love, whether carnal or platonic.")
 	weight = 50
 
