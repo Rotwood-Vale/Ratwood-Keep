@@ -2,10 +2,10 @@
 	name = "artificer table"
 	desc = "An artificers wood work station, blessed by some odd machination, or perhaps... magic..."
 	icon_state = "art_table"
-	icon = 'icons/obj/smooth_structures/table.dmi'
-	var/obj/item/grown/log/tree/small/plank/plank
-	damage_deflection = 18
-	density = TRUE
+	icon = 'icons/roguetown/misc/tables.dmi'
+	var/obj/item/natural/wood/plank/plank
+	damage_deflection = 25
+	density = FALSE
 	climbable = TRUE
 
 /obj/machinery/artificer_table/examine(mob/user)
@@ -14,7 +14,7 @@
 		. += span_warning("There's a wood plank ready to be worked.")
 
 /obj/machinery/artificer_table/attackby(obj/item/I, mob/living/user, params)
-	if(istype(I, /obj/item/grown/log/tree/small/plank))
+	if(istype(I, /obj/item/natural/wood/plank))
 		if(!plank)
 			I.forceMove(src)
 			plank = I
@@ -24,40 +24,41 @@
 			plank.currecipe.plank_add(user)
 			qdel(I)
 			return
-	if(istype(I, /obj/item/rogueweapon/hammer/wood))
-		user.changeNext_move(CLICK_CD_RANGE)
+	if(istype(I, /obj/item/rogueweapon/hammer))
+		user.changeNext_move(CLICK_CD_RAPID)
 		if(!plank)
 			return
 		if(!plank.currecipe)
 			if(!choose_recipe(user))
 				return
-		to_chat(user, span_warning("This recipe requires [plank.currecipe.extra_planks_needed] extra planks."))
+		if(plank.currecipe.progress == 0)
+			to_chat(user, span_warning("This recipe requires [plank.currecipe.extra_planks_needed] extra planks."))
 		playsound(src, 'sound/misc/woodhit.ogg', 100, TRUE)
 		var/skill = user.mind.get_skill_level(plank.currecipe.appro_skill)
 		if(plank.currecipe.progress == 100)
 			new plank.currecipe.created_item(get_turf(src))
+			user.visible_message(span_info("[user] creates a [plank.currecipe.created_item]."))
+			user.mind.add_sleep_experience(plank.currecipe.appro_skill, (user.STAINT * (plank.currecipe.craftdiff * 10))) //may need to be adjusted
 			qdel(plank)
 			plank = null
 			update_icon()
-			user.visible_message(span_info("[user] creates a [initial(plank.currecipe.created_item.name)]."))
-			user.mind.add_sleep_experience(plank.currecipe.appro_skill, (user.STAINT * (plank.currecipe.craftdiff * 10))) //may need to be adjusted
 			return
 		if(skill < plank.currecipe.craftdiff)
 			if(prob(25))
 				to_chat(user, span_warning("Ah yes, my incompetence bears fruit."))
 				playsound(src,'sound/combat/hits/onwood/destroyfurniture.ogg', 100, FALSE)
+				user.mind.add_sleep_experience(plank.currecipe.appro_skill, (user.STAINT * plank.currecipe.craftdiff)) // Getting exp for failing
 				qdel(plank)
 				plank = null
-				user.mind.add_sleep_experience(plank.currecipe.appro_skill, (user.STAINT * plank.currecipe.craftdiff)) // Getting exp for failing
 				return
 			else
 				plank.currecipe.advance(I, user)
 				return
+		if(plank && plank.currecipe && plank.currecipe.hammered && istype(I, plank.currecipe.needed_item))
+			plank.currecipe.item_added(user)
+			qdel(I)
+			return
 		plank.currecipe.advance(I, user)
-	if(plank && plank.currecipe && plank.currecipe.hammered && istype(I, plank.currecipe.needed_item))
-		plank.currecipe.item_added(user)
-		qdel(I)
-		return
 	..()
 
 /obj/machinery/artificer_table/proc/choose_recipe(user)
@@ -113,7 +114,7 @@
 		I.pixel_x = 0
 		I.pixel_y = 0
 		var/mutable_appearance/M = new /mutable_appearance(I)
-		M.transform *= 0.5
-		M.pixel_y = 5
-		M.pixel_x = 3
+		M.transform *= 0.8
+		M.pixel_y = 6
+		M.pixel_x = 0
 		add_overlay(M)

@@ -56,17 +56,17 @@
 	smeltresult = /obj/item/rogueore/coal
 	lumber_amount = 0
 
-/obj/item/grown/log/tree/small/plank
+/obj/item/natural/wood/plank
 	name = "wood plank"
 	desc = "A wooden plank ready to be worked."
 	icon_state = "wplank"
-	static_debris = null
 	firefuel = 5 MINUTES
 	w_class = WEIGHT_CLASS_NORMAL
 	smeltresult = /obj/item/ash
+	bundletype = /obj/item/natural/bundle/plank
 	var/datum/artificer_recipe/currecipe
 
-/obj/item/grown/log/tree/small/plank/Destroy()
+/obj/item/natural/wood/plank/Destroy()
 	if(currecipe)
 		QDEL_NULL(currecipe)
 	if(istype(loc, /obj/machinery/artificer_table))
@@ -88,12 +88,13 @@
 	resistance_flags = FLAMMABLE
 	w_class = WEIGHT_CLASS_BULKY
 	spitoutmouth = FALSE
-	stacktype = /obj/item/grown/log/tree/small/plank
-	stackname = "cloth"
+	stacktype = /obj/item/natural/wood/plank
+	stackname = "plank"
 	icon1 = "planks1"
 	icon1step = 5
 	icon2 = "planks2"
 	icon2step = 10
+	smeltresult = /obj/item/ash
 
 /obj/item/grown/log/tree/small/essence
 	name = "essence of lumber"

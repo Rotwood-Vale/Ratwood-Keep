@@ -19,12 +19,11 @@
 		var/wood_time = (40 - (skill_level * 5))
 		playsound(src, pick('sound/misc/slide_wood (2).ogg', 'sound/misc/slide_wood (1).ogg'), 100, FALSE)
 		if(do_after(user, wood_time, target = src))
-			if(prob(max(40 - (skill_level * 10), 0))) //Chance maxes at level 4 (standard woodcutter)
+			if(prob(max(40 - (skill_level * 10), 0)) || !skill_level) //Chance maxes at level 4 (standard woodcutter)
 				to_chat(user, span_info("Curses! I ruined this piece of wood..."))
 				playsound(src,'sound/combat/hits/onwood/destroyfurniture.ogg', 100, FALSE)
 			else
-				var/obj/F = new /obj/item/grown/log/tree/small/plank(src.loc)
-				user.put_in_hands(F)
+				new /obj/item/natural/wood/plank(get_turf(src))
 			user.mind.add_sleep_experience(/datum/skill/labor/lumberjacking, (user.STAINT*0.5))
 			qdel(I)
 			return
