@@ -3508,32 +3508,16 @@
 	lockid = "steward"
 	},
 /obj/item/roguekey/steward,
-/obj/item/roguekey/graveyard,
 /obj/item/roguekey/mercenary,
-/obj/item/roguekey/nightmaiden,
-/obj/item/roguekey/tavern,
-/obj/item/roguekey/physician,
-/obj/item/roguekey/sheriff_office,
-/obj/item/roguekey/town_armory,
-/obj/item/roguekey/town_barracks,
-/obj/item/roguekey/town_dungeon,
 /obj/item/roguekey/keep_armory,
 /obj/item/roguekey/keep_barracks,
 /obj/item/roguekey/keep_dungeon,
 /obj/item/roguekey/keep_gatehouse,
-/obj/item/roguekey/bog_gatehouse,
-/obj/item/roguekey/bog_dungeon,
-/obj/item/roguekey/bog_barracks,
-/obj/item/roguekey/bog_armory,
+/obj/item/roguekey/keep_armory,
+/obj/item/roguekey/keep_barracks,
+/obj/item/roguekey/keep_dungeon,
+/obj/item/roguekey/keep_gatehouse,
 /obj/item/roguekey/tower,
-/obj/item/roguekey/walls,
-/obj/item/roguekey/town_armory,
-/obj/item/roguekey/town_barracks,
-/obj/item/roguekey/town_dungeon,
-/obj/item/roguekey/keep_armory,
-/obj/item/roguekey/keep_barracks,
-/obj/item/roguekey/keep_dungeon,
-/obj/item/roguekey/keep_gatehouse,
 /obj/item/roguekey/mage,
 /obj/item/roguekey/councillor_rooms,
 /obj/item/roguekey/councillor_rooms,
@@ -3543,10 +3527,7 @@
 /obj/item/roguekey/walls,
 /obj/item/roguekey/walls,
 /obj/item/roguekey/walls,
-/obj/item/roguekey/blacksmith,
-/obj/item/roguekey/blacksmith,
-/obj/item/roguekey/church,
-/obj/item/roguekey/church,
+/obj/item/roguekey/walls,
 /turf/open/floor/rogue/tile/tilerg,
 /area/rogue/indoors/town/manor)
 "dpJ" = (
@@ -4292,6 +4273,33 @@
 /obj/structure/bars/pipe{
 	dir = 9
 	},
+/obj/structure/closet/crate/chest{
+	lockid = "steward"
+	},
+/obj/item/roguekey/church,
+/obj/item/roguekey/church,
+/obj/item/roguekey/blacksmith,
+/obj/item/roguekey/blacksmith,
+/obj/item/roguekey/tavern,
+/obj/item/roguekey/nightmaiden,
+/obj/item/roguekey/bog_gatehouse,
+/obj/item/roguekey/bog_dungeon,
+/obj/item/roguekey/bog_barracks,
+/obj/item/roguekey/bog_armory,
+/obj/item/roguekey/town_armory,
+/obj/item/roguekey/town_armory,
+/obj/item/roguekey/town_barracks,
+/obj/item/roguekey/town_barracks,
+/obj/item/roguekey/town_dungeon,
+/obj/item/roguekey/town_dungeon,
+/obj/item/roguekey/sheriff_office,
+/obj/item/roguekey/graveyard,
+/obj/item/roguekey/graveyard,
+/obj/item/roguekey/mercenary_boss,
+/obj/item/roguekey/mercenary,
+/obj/item/roguekey/seamster,
+/obj/item/roguekey/butcher,
+/obj/item/roguekey/farm,
 /turf/open/floor/rogue/tile/tilerg,
 /area/rogue/indoors/town/manor)
 "ebb" = (
@@ -14877,6 +14885,10 @@
 "nKx" = (
 /turf/open/floor/carpet/inn,
 /area/rogue/indoors/town/manor)
+"nKD" = (
+/obj/machinery/light/roguestreet/midlamp,
+/turf/open/floor/rogue/dirt/road,
+/area/rogue/outdoors/town)
 "nKP" = (
 /obj/machinery/light/rogue/torchholder,
 /turf/closed/mineral/random/rogue/med,
@@ -16189,9 +16201,9 @@
 	},
 /area/rogue/indoors/town/shop)
 "oOl" = (
-/obj/machinery/light/roguestreet/midlamp,
-/turf/open/floor/rogue/cobble,
-/area/rogue/outdoors/town)
+/obj/machinery/light/rogue/torchholder/c,
+/turf/open/floor/rogue/blocks,
+/area/rogue/under/town/basement)
 "oOm" = (
 /obj/structure/flora/roguetree/burnt,
 /turf/open/floor/rogue/cobblerock,
@@ -16716,7 +16728,6 @@
 /obj/structure/closet/crate/roguecloset,
 /obj/item/clothing/under/roguetown/tights/stockings/silk/black,
 /obj/item/clothing/suit/roguetown/armor/leather/vest/hand,
-/obj/structure/closet/crate/roguecloset,
 /obj/item/rogueweapon/sword/rapier,
 /obj/item/perfume/random,
 /turf/open/floor/rogue/wood,
@@ -25242,6 +25253,10 @@
 	icon_state = "linoleum"
 	},
 /area/rogue/indoors/town/shop)
+"xkl" = (
+/obj/machinery/light/roguestreet/midlamp,
+/turf/open/floor/rogue/grass,
+/area/rogue/outdoors/town)
 "xkm" = (
 /turf/open/lava,
 /area/rogue/under/cavewet/bogcaves)
@@ -189587,7 +189602,7 @@ llO
 lLE
 lLE
 txa
-cBf
+oOl
 cBf
 jyI
 oth
@@ -191999,7 +192014,7 @@ ida
 seA
 ida
 txa
-iTw
+htD
 iTw
 txa
 cBf
@@ -292506,7 +292521,7 @@ mwE
 aOn
 bWk
 wbg
-mwE
+xkl
 mwE
 wbg
 wbg
@@ -293310,7 +293325,7 @@ wbg
 wbg
 wbg
 wbg
-oOl
+wbg
 wbg
 wbg
 vbX
@@ -299743,7 +299758,7 @@ aOn
 fnA
 fnA
 wVI
-oOl
+wbg
 wbg
 wtF
 wtF
@@ -300549,7 +300564,7 @@ mwE
 wVI
 wVI
 wbg
-aOn
+nKD
 rfx
 rfx
 rfx
@@ -303354,8 +303369,8 @@ fdM
 oNx
 mwE
 mwE
-mwE
-oOl
+xkl
+wbg
 wbg
 fkC
 fkC
