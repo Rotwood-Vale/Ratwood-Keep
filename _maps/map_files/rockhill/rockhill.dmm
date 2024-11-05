@@ -12835,8 +12835,10 @@
 /turf/open/floor/carpet/royalblack,
 /area/rogue/indoors/town/church)
 "lSF" = (
-/obj/structure/fluff/walldeco/stone,
-/turf/closed/wall/mineral/rogue/stone,
+/obj/structure/fluff/walldeco/stone{
+	pixel_y = 32
+	},
+/turf/open/floor/rogue/blocks,
 /area/rogue/indoors/town/tavern)
 "lTg" = (
 /obj/structure/table/wood{
@@ -190857,8 +190859,8 @@ lrs
 lrs
 lrs
 lrs
+csO
 lSF
-nRZ
 nRZ
 xyL
 orb
