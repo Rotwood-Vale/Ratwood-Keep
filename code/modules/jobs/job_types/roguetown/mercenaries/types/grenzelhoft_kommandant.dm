@@ -3,7 +3,7 @@
 	tutorial = "Unbreakable. Resolute. Master of the field. Fearless. \
 	These are the first words that come to mind when one mentions the Kommandant, the unparalleled leader of the well reputed, \
 	expensive and noble Grenzelhoft mercenaries of the emperiate guild of the Grenzel empire. \
-	The mercenaries of Gren rightfully fear and respect their Kommandant, walking to certain death on his one word. "
+	The mercenaries of Gren rightfully fear and respect their Kommandant, walking to certain death on his one word."
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = list(
 		/datum/species/akula,

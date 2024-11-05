@@ -20,8 +20,10 @@
 		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/maces, 3, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/reading, 5, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/swimming, 2, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/climbing, 2, TRUE)
 		H.change_stat("strength", 1)
 		H.change_stat("intelligence", 2)
 		H.change_stat("fortune", 1)
@@ -31,13 +33,15 @@
 		armor = /obj/item/clothing/cloak/tabard/knight
 		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
 		pants = /obj/item/clothing/under/roguetown/tights
+
 	if(H.gender == FEMALE)
 		shirt = /obj/item/clothing/suit/roguetown/shirt/dress/nobledress/green
 		pants = /obj/item/clothing/under/roguetown/tights/stockings/white
+//End of.
 
 	shoes = /obj/item/clothing/shoes/roguetown/armor/leather
 	belt = /obj/item/storage/belt/rogue/leather
-	beltr = /obj/item/storage/belt/rogue/pouch/coins/poor
+	beltr = /obj/item/storage/belt/rogue/pouch/coins/rich//To pay out contracts, if the issuer flakes.
 	beltl = /obj/item/rogueweapon/mace
-	wrists = /obj/item/keyring/mercenary
+	beltl = /obj/item/keyring/mercenary_boss//So they can access the Captain's office.
 	backr = /obj/item/storage/backpack/rogue/satchel
