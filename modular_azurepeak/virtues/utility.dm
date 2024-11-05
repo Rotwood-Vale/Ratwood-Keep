@@ -69,3 +69,8 @@
 	name = "Feral Appetite"
 	desc = "Raw, toxic or spoiled food doesn't bother my superior digestive system."
 	added_traits = list(TRAIT_NASTY_EATER)
+
+/datum/virtue/utility/night_vision
+	name = "Night-eyed"
+	desc = "I have eyes able to see through cloying darkness."
+	added_traits = list(TRAIT_NIGHT_VISION)
