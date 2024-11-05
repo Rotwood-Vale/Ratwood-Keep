@@ -80,3 +80,26 @@
 		if(!isclosedturf(TT) && !locate(/obj/structure/glowshroom) in TT)
 			new /obj/structure/glowshroom(TT)
 	return TRUE
+
+/obj/effect/proc_holder/spell/self/howl/call_of_the_moon
+	name = "Call of the Moon"
+	desc = "Draw upon the the secrets of the hidden firmament to converse with the mooncursed."
+	overlay_state = "howl"
+	antimagic_allowed = FALSE
+	charge_max = 600
+	ignore_cockblock = TRUE
+	use_language = TRUE
+
+/obj/effect/proc_holder/spell/self/howl/call_of_the_moon/cast(mob/living/carbon/human/user)
+	// only usable at night
+	if (!GLOB.tod == "night")
+		to_chat(user, span_warning("I must wait for the hidden moon to rise before I may call upon it."))
+		revert_cast()
+		return
+	// if they don't have beast language somehow, give it to them
+	if (!user.has_language(/datum/language/beast))
+		user.grant_language(/datum/language/beast)
+		to_chat(user, span_boldnotice("The vestige of the hidden moon high above reveals His truth: the knowledge of beast-tongue was in me all along."))
+	
+	. = ..()
+	
