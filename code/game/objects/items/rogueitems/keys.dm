@@ -214,12 +214,6 @@
 	icon_state = "cheesekey"
 	lockid = "priest"
 
-/obj/item/roguekey/clinic
-	name = "clinic's key"
-	desc = "This is the key for the clinic's doors and gates"
-	icon_state = "mazekey"
-	lockid = "clinic"
-
 /obj/item/roguekey/tower
 	name = "tower key"
 	desc = "This key should open anything within the tower."

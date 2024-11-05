@@ -1,6 +1,6 @@
 
-/datum/anvil_recipe/valuables/special/ringf/obj/item/clothing/neck/roguetown/psicross
-	name = "flame ring (+1 Fat, +1 Ftone, +1 Fiber)"
+/datum/anvil_recipe/valuables/special/ringf
+	name = "flame ring (+1 Fat, +1 stone, +1 Fiber)"
 	req_bar = /obj/item/ingot/iron
 	created_item = /obj/item/clothing/ring/lantern
 	additional_items = list(/obj/item/reagent_containers/food/snacks/fat, /obj/item/natural/stone, /obj/item/natural/fibers)

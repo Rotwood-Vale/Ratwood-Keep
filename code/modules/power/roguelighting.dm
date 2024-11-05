@@ -17,7 +17,7 @@
 
 /obj/effect/sunlight/Initialize()
 	light_color = pick("#dbbfbf", "#ddd7bd", "#add1b0", "#a4c0ca", "#ae9dc6", "#d09fbf")
-	..()
+	. = ..()
 	if(istype(loc, /turf/open/transparent/openspace))
 		var/turf/target = get_step_multiz(src, DOWN)
 		if(!isclosedturf(target))

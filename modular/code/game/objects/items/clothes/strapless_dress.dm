@@ -26,7 +26,7 @@
 
 /obj/item/clothing/suit/roguetown/shirt/dress/gen/strapless/random/Initialize()
 	color = pick(CLOTHING_BLACK, CLOTHING_BLUE, "#664357", "#6F0000")
-	..()
+	return ..()
 
 //SUPPLY
 

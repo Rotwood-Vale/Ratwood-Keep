@@ -822,182 +822,60 @@
 
 /obj/item/storage/fancy/pilltin
 	name = "pill tin"
-	desc = "a tin for all your pill needs, snake branded (close/open mmb)"
+	desc = "A tin for all your pill needs, snake branded"
 	icon = 'icons/roguetown/items/surgery.dmi'
 	icon_state = "pilltin"
 	w_class = WEIGHT_CLASS_TINY
 	throwforce = 1
 	slot_flags = null
+	icon_type = "pill"
 
 /obj/item/storage/fancy/pilltin/update_icon()
 	if(fancy_open)
 		if(contents.len == 0)
 			icon_state = "pilltin_empty"
+		else if(istype(contents[1], /obj/item/reagent_containers/pill/caffpill))
+			icon_state = "pilltinwake_open"
+		else if(istype(contents[1], /obj/item/reagent_containers/pill/pnkpill))
+			icon_state = "pilltinpink_open"
 		else
 			icon_state = "pilltincustom_open"
 	else
 		icon_state = "pilltin"
-
-/obj/item/storage/fancy/pilltin/examine(mob/user)
-	. = ..()
-	if(fancy_open)
-		if(length(contents) == 1)
-			. += "There is one item left."
-		else
-			. += "There are [contents.len <= 0 ? "no" : "[contents.len]"] items left."
-
-/obj/item/storage/fancy/pilltin/attack_self(mob/user)
-	fancy_open = !fancy_open
-	update_icon()
-	. = ..()
-
-/obj/item/storage/fancy/pilltin/Entered(mob/user)
-	if(!fancy_open)
-		to_chat(user, span_notice("[src] needs to be opened first."))
-		return
-	fancy_open = TRUE
-	update_icon()
-	. = ..()
-
-/obj/item/storage/fancy/pilltin/Exited(mob/user)
-	fancy_open = FALSE
-	update_icon()
-	. = ..()
 
 /obj/item/storage/fancy/pilltin/MiddleClick(mob/user, params)
 	fancy_open = !fancy_open
 	update_icon()
 	to_chat(user, span_notice("[src] is now [fancy_open ? "open" : "closed"]."))
 
-/obj/item/storage/fancy/pilltinwake
+/obj/item/storage/fancy/pilltin/ComponentInitialize()
+	. = ..()
+	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
+	if(STR)
+		STR.max_combined_w_class = 42
+		STR.max_w_class = WEIGHT_CLASS_NORMAL
+		STR.max_items = 12
+		STR.set_holdable(list(/obj/item/reagent_containers/pill))
+
+/obj/item/storage/fancy/pilltin/wake
 	name = "pill tin (wake)"
-	desc = "a tin for all your pill needs, snake branded (close/open mmb)"
-	icon = 'icons/roguetown/items/surgery.dmi'
-	icon_state = "pilltin"
-	w_class = WEIGHT_CLASS_TINY
-	throwforce = 1
-	slot_flags = null
 
-/obj/item/storage/fancy/pilltinwake/update_icon()
-	if(fancy_open)
-		if(contents.len == 0)
-			icon_state = "pilltin_empty"
-		else
-			icon_state = "pilltinwake_open"
-	else
-		icon_state = "pilltin"
-
-/obj/item/storage/fancy/pilltinwake/examine(mob/user)
-	. = ..()
-	if(fancy_open)
-		if(length(contents) == 1)
-			. += "There is one item left."
-		else
-			. += "There are [contents.len <= 0 ? "no" : "[contents.len]"] items left."
-
-/obj/item/storage/fancy/pilltinwake/attack_self(mob/user)
-	fancy_open = !fancy_open
-	update_icon()
-	. = ..()
-
-/obj/item/storage/fancy/pilltinwake/Entered(mob/user)
-	if(!fancy_open)
-		to_chat(user, span_notice("[src] needs to be opened first."))
-		return
-	fancy_open = TRUE
-	update_icon()
-	. = ..()
-
-/obj/item/storage/fancy/pilltinwake/Exited(mob/user)
-	fancy_open = FALSE
-	update_icon()
-	. = ..()
-
-/obj/item/storage/fancy/pilltinwake/MiddleClick(mob/user, params)
-	fancy_open = !fancy_open
-	update_icon()
-	to_chat(user, span_notice("[src] is now [fancy_open ? "open" : "closed"]."))
-
-/obj/item/storage/fancy/pilltinwake/ComponentInitialize()
-	. = ..()
-	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
-	if(STR)
-		STR.max_combined_w_class = 42
-		STR.max_w_class = WEIGHT_CLASS_NORMAL
-		STR.max_items = 12
-		STR.set_holdable(list(/obj/item/reagent_containers/pill/caffpill))
-
-/obj/item/storage/fancy/pilltinwake/PopulateContents()
+/obj/item/storage/fancy/pilltin/wake/PopulateContents()
 	new /obj/item/reagent_containers/pill/caffpill(src)
 	new /obj/item/reagent_containers/pill/caffpill(src)
 	new /obj/item/reagent_containers/pill/caffpill(src)
 
-/obj/item/storage/fancy/pilltinpink
+/obj/item/storage/fancy/pilltin/pink
 	name = "pill tin (pnk)"
-	desc = "a tin for all your pill needs, snake branded (close/open mmb)"
-	icon = 'icons/roguetown/items/surgery.dmi'
-	icon_state = "pilltin"
-	w_class = WEIGHT_CLASS_TINY
-	throwforce = 1
-	slot_flags = null
 
-/obj/item/storage/fancy/pilltinpink/update_icon()
-	if(fancy_open)
-		if(contents.len == 0)
-			icon_state = "pilltin_empty"
-		else
-			icon_state = "pilltinpink_open"
-	else
-		icon_state = "pilltin"
-
-/obj/item/storage/fancy/pilltinpink/examine(mob/user)
-	. = ..()
-	if(fancy_open)
-		if(length(contents) == 1)
-			. += "There is one item left."
-		else
-			. += "There are [contents.len <= 0 ? "no" : "[contents.len]"] items left."
-
-/obj/item/storage/fancy/pilltinpink/attack_self(mob/user)
-	fancy_open = !fancy_open
-	update_icon()
-	. = ..()
-
-/obj/item/storage/fancy/pilltinpink/Entered(mob/user)
-	if(!fancy_open)
-		to_chat(user, span_notice("[src] needs to be opened first."))
-		return
-	fancy_open = TRUE
-	update_icon()
-	. = ..()
-
-/obj/item/storage/fancy/pilltinpink/Exited(mob/user)
-	fancy_open = FALSE
-	update_icon()
-	. = ..()
-
-/obj/item/storage/fancy/pilltinpink/MiddleClick(mob/user, params)
-	fancy_open = !fancy_open
-	update_icon()
-	to_chat(user, span_notice("[src] is now [fancy_open ? "open" : "closed"]."))
-
-/obj/item/storage/fancy/pilltinpink/ComponentInitialize()
-	. = ..()
-	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
-	if(STR)
-		STR.max_combined_w_class = 42
-		STR.max_w_class = WEIGHT_CLASS_NORMAL
-		STR.max_items = 12
-		STR.set_holdable(list(/obj/item/reagent_containers/pill/pnkpill))
-
-/obj/item/storage/fancy/pilltinpink/PopulateContents()
+/obj/item/storage/fancy/pilltin/pink/PopulateContents()
 	new /obj/item/reagent_containers/pill/pnkpill(src)
 	new /obj/item/reagent_containers/pill/pnkpill(src)
 	new /obj/item/reagent_containers/pill/pnkpill(src)
 
 /obj/item/storage/fancy/skit
 	name = "surgery kit"
-	desc = "portable and compact (close/open mmb)"
+	desc = "portable and compact"
 	icon = 'icons/roguetown/items/surgery.dmi'
 	icon_state = "skit"
 	w_class = WEIGHT_CLASS_SMALL
@@ -1076,7 +954,7 @@
 
 /obj/item/storage/fancy/ifak
 	name = "personal patch kit"
-	desc = "Dr V's personal treatment pouch; has all you need to stop you or someone else from meeting necra. even comes with a lil guide scroll for the slow minded. (close/open mmb)"
+	desc = "Personal treatment pouch; has all you need to stop you or someone else from meeting necra. even comes with a lil guide scroll for the slow minded."
 	icon = 'icons/roguetown/items/surgery.dmi'
 	icon_state = "ifak"
 	w_class = WEIGHT_CLASS_SMALL
@@ -1252,7 +1130,7 @@
 
 /obj/item/reagent_containers/pill/caffpill
 	name = "WAKE-UP"
-	desc = "a handful of Dr V's pep-pills. a promise to make you both alert and have an uncomfortable amount of vigor for everyone involved. Who needs sleep anyway? thats how you get diddled by an orc!"
+	desc = "A handful of pep-pills. a promise to make you both alert and have an uncomfortable amount of vigor for everyone involved. Who needs sleep anyway? thats how you get diddled by an orc!"
 	icon_state = "pillg"
 	icon = 'icons/roguetown/items/surgery.dmi'
 	list_reagents = list(/datum/reagent/medicine/caffeine = 1, /datum/reagent/medicine/antihol = 10, /datum/reagent/consumable/coffee = 81) //coffee OD is safe. causes jitters for awhile.
@@ -1261,7 +1139,7 @@
 
 /obj/item/reagent_containers/pill/pnkpill
 	name = "PNKBAWLS"
-	desc = "a handful of Dr V's pink little balls. says they restore vitality, you are pretty certain this is watered down red mixed with ash"
+	desc = "A handful of pink little balls. says they restore vitality, you are pretty certain this is watered down red mixed with ash"
 	icon_state = "pinkb"
 	icon = 'icons/roguetown/items/surgery.dmi'
 	list_reagents = list(/datum/reagent/ash = 15, /datum/reagent/iron = 15, /datum/reagent/medicine/healthpot = 24) //mug of red, bottle is 45u
@@ -1270,14 +1148,14 @@
 
 /obj/item/reagent_containers/hypospray/medipen/sty/detox
 	name = "DETOX"
-	desc = "Dr. V's well aint this funny? a snake curing toxin's and venoms. heresy... purges the body of all that is not natural."
+	desc = "Well aint this funny? a snake curing toxin's and venoms. heresy... purges the body of all that is not natural."
 	volume = 34
 	amount_per_transfer_from_this = 34
 	list_reagents = list(/datum/reagent/medicine/antihol = 10, /datum/reagent/medicine/pen_acid = 24)
 
 /obj/item/reagent_containers/hypospray/medipen/sealbottle/reju
 	name = "rejuv elixer"
-	desc = "Dr V's special formulated body revitalizer; restores blood, helps seal wounds, helps to stabalize breathing and numbs pain with a non-addictive snake venom derived analgesic. Single dose. Caffeinated, just like the snake that made it."
+	desc = "Special formulated body revitalizer; restores blood, helps seal wounds, helps to stabalize breathing and numbs pain with a non-addictive snake venom derived analgesic. Single dose. Caffeinated, just like the snake that made it."
 	icon_state = "THEbottle"
 	volume = 16
 	amount_per_transfer_from_this = 16
@@ -1285,7 +1163,7 @@
 
 /obj/item/reagent_containers/hypospray/medipen/sealbottle/purify
 	name = "purifying elixer"
-	desc = "Dr V's special formulated body purifier; A powerful drug that purifies the blood and seals wounds painfully on the body. flooding your blood with anything like this isnt exactly healthy but, if it stops you needing to use the word 'festering' to describe part of your body, it's worth it."
+	desc = "Special formulated body purifier; A powerful drug that purifies the blood and seals wounds painfully on the body. flooding your blood with anything like this isnt exactly healthy but, if it stops you needing to use the word 'festering' to describe part of your body, it's worth it."
 	icon_state = "THEbottle"
 	volume = 30
 	amount_per_transfer_from_this = 30

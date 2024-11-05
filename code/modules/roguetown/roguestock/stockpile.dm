@@ -8,6 +8,7 @@
 	transport_fee = 3
 	export_price = 5
 	importexport_amt = 10
+	passive_generation = 5
 
 /datum/roguestock/stockpile/stone
 	name = "Stone"
@@ -19,6 +20,7 @@
 	transport_fee = 3
 	export_price = 4
 	importexport_amt = 10
+	passive_generation = 5
 
 /datum/roguestock/stockpile/coal
 	name = "Coal"
@@ -30,6 +32,7 @@
 	transport_fee = 4
 	export_price = 6
 	importexport_amt = 10
+	passive_generation = 2
 
 /datum/roguestock/stockpile/iron
 	name = "Raw Iron"
@@ -41,6 +44,7 @@
 	transport_fee = 6
 	export_price = 8
 	importexport_amt = 10
+	passive_generation = 2
 
 /datum/roguestock/stockpile/copper
 	name = "Raw Copper"
@@ -52,6 +56,7 @@
 	transport_fee = 3
 	export_price = 5
 	importexport_amt = 10
+	passive_generation = 2
 
 /datum/roguestock/stockpile/tin
 	name = "Raw Tin"
@@ -63,6 +68,7 @@
 	transport_fee = 4
 	export_price = 5
 	importexport_amt = 10
+	passive_generation = 2
 
 /datum/roguestock/stockpile/gold
 	name = "Raw Gold"
@@ -74,6 +80,7 @@
 	transport_fee = 10
 	export_price = 75
 	importexport_amt = 10
+	passive_generation = 2
 
 /datum/roguestock/stockpile/silver
 	name = "Raw Silver"
@@ -85,6 +92,7 @@
 	transport_fee = 10
 	export_price = 100
 	importexport_amt = 10
+	passive_generation = 2
 
 /datum/roguestock/stockpile/cloth
 	name = "Cloth"
@@ -96,6 +104,7 @@
 	transport_fee = 2
 	export_price = 5
 	importexport_amt = 10
+	passive_generation = 2
 
 /datum/roguestock/stockpile/fibers
 	name = "Fibers"
@@ -107,6 +116,7 @@
 	transport_fee = 1
 	export_price = 3
 	importexport_amt = 10
+	passive_generation = 4
 
 /datum/roguestock/stockpile/hide
 	name = "Hide"
@@ -118,6 +128,7 @@
 	transport_fee = 3
 	export_price = 15
 	importexport_amt = 5
+	passive_generation = 2
 
 /datum/roguestock/stockpile/fur
 	name = "Fur"
@@ -129,6 +140,7 @@
 	transport_fee = 5
 	export_price = 23
 	importexport_amt = 5
+	passive_generation = 1
 
 /datum/roguestock/stockpile/salt
 	name = "Salt"
@@ -140,6 +152,7 @@
 	transport_fee = 2
 	export_price = 5
 	importexport_amt = 5
+	passive_generation = 3
 
 /datum/roguestock/stockpile/grain
 	name = "Grain"
@@ -151,6 +164,19 @@
 	transport_fee = 1
 	export_price = 3
 	importexport_amt = 10
+	passive_generation = 3
+
+/datum/roguestock/stockpile/oat
+	name = "Oats"
+	desc = "A cereal grain."
+	item_type = /obj/item/reagent_containers/food/snacks/grown/oat
+	held_items = list(0, 4)
+	payout_price = 2
+	withdraw_price = 3
+	transport_fee = 1
+	export_price = 3
+	importexport_amt = 10
+	passive_generation = 3
 
 /datum/roguestock/stockpile/apple
 	name = "Apple"
@@ -162,6 +188,7 @@
 	transport_fee = 1
 	export_price = 5
 	importexport_amt = 5
+	passive_generation = 3
 
 /datum/roguestock/stockpile/meat
 	name = "Meat"
@@ -173,6 +200,7 @@
 	transport_fee = 2
 	export_price = 8
 	importexport_amt = 5
+	passive_generation = 2
 
 /datum/roguestock/stockpile/beet
 	name = "Beet"
@@ -184,6 +212,7 @@
 	transport_fee = 2
 	export_price = 8
 	importexport_amt = 5
+	passive_generation = 2
 
 /datum/roguestock/stockpile/cabbage
 	name = "Cabbage"
@@ -195,6 +224,7 @@
 	transport_fee = 2
 	export_price = 8
 	importexport_amt = 5
+	passive_generation = 2
 
 /datum/roguestock/stockpile/potato
 	name = "Potato"
@@ -206,6 +236,7 @@
 	transport_fee = 2
 	export_price = 8
 	importexport_amt = 5
+	passive_generation = 2
 
 /datum/roguestock/stockpile/onion
 	name = "Onion"
@@ -217,6 +248,7 @@
 	transport_fee = 2
 	export_price = 8
 	importexport_amt = 5
+	passive_generation = 2
 
 /datum/roguestock/stockpile/poultry
 	name = "Bird Meat"
@@ -228,6 +260,7 @@
 	transport_fee = 2
 	export_price = 8
 	importexport_amt = 5
+	passive_generation = 2
 
 /datum/roguestock/stockpile/egg
 	name = "Egg"
@@ -239,6 +272,7 @@
 	transport_fee = 2
 	export_price = 5
 	importexport_amt = 5
+	passive_generation = 2
 
 /datum/roguestock/stockpile/butter
 	name = "Butter"
@@ -250,6 +284,7 @@
 	transport_fee = 3
 	export_price = 13
 	importexport_amt = 5
+	passive_generation = 2
 
 /datum/roguestock/stockpile/cheese
 	name = "Cheese"
@@ -261,3 +296,16 @@
 	transport_fee = 3
 	export_price = 5
 	importexport_amt = 5
+	passive_generation = 2
+
+/datum/roguestock/stockpile/jacksberry
+	name = "Jacksberries"
+	desc = "Sweet berries, prime for winemaking."
+	item_type = /obj/item/reagent_containers/food/snacks/grown/berries/rogue
+	held_items = list(0, 0)
+	payout_price = 1
+	withdraw_price = 3
+	transport_fee = 1
+	export_price = 3
+	importexport_amt = 10
+	passive_generation = 2
