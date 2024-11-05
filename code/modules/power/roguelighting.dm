@@ -82,7 +82,7 @@
 	allowed_areas = list(/area/rogue/outdoors)
 
 /obj/machinery/light/roguestreet
-	name = "Streetlamp"
+	name = "street lamp"
 	desc = "An obelisk of caste iron with an eerily glowing lamp attached to it. A promise of new technology at the dawn of a new age."
 	icon = 'icons/roguetown/misc/tallstructure.dmi'
 	icon_state = "slamp1_nozap"
@@ -119,7 +119,9 @@
 	density = TRUE
 
 /obj/machinery/light/roguestreet/orange/walllamp
-	icon_state = "o_wlamp1"
+	name = "wall lamp"
+	desc = "An eerily glowing lamp attached to the wall via a caste iron frame. A promise of new technology at the dawn of a new age."
+	icon_state = "o_wlamp1_nozap"
 	base_state = "o_wlamp"
 	brightness = 7.8
 	density = FALSE
