@@ -73,4 +73,12 @@
 /datum/virtue/utility/night_vision
 	name = "Night-eyed"
 	desc = "I have eyes able to see through cloying darkness."
-	added_traits = list(TRAIT_NIGHT_VISION)
+
+/datum/virtue/utility/night_vision/apply_to_human(mob/living/carbon/human/recipient)
+	var/obj/item/organ/eyes/eyes = recipient.getorganslot(ORGAN_SLOT_EYES)
+	if (!eyes)
+		return
+	eyes.see_in_dark = 3
+	eyes.lighting_alpha = LIGHTING_PLANE_ALPHA_NOCVISION
+	recipient.update_sight()
+	
