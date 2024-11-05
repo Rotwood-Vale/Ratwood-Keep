@@ -1478,7 +1478,7 @@
 /obj/item/needle/thorn,
 /obj/item/needle/thorn,
 /obj/item/needle/thorn,
-/obj/item/reagent_containers/food/snacks/rogue/crackerscooked,
+/obj/item/reagent_containers/food/snacks/rogue/foodbase/hardtack_raw/cooked,
 /turf/open/floor/rogue/herringbone,
 /area/rogue/indoors/town/church)
 "gI" = (
@@ -4396,7 +4396,7 @@
 /area/rogue/under/town/basement)
 "tB" = (
 /obj/structure/closet/crate/chest,
-/obj/item/reagent_containers/food/snacks/rogue/crackerscooked,
+/obj/item/reagent_containers/food/snacks/rogue/foodbase/hardtack_raw/cooked,
 /turf/open/floor/rogue/wood,
 /area/rogue/under/town/basement)
 "tE" = (
@@ -7636,7 +7636,7 @@
 "IM" = (
 /obj/structure/closet/crate/roguecloset/dark,
 /obj/item/clothing/suit/roguetown/armor/leather/vest,
-/obj/item/clothing/shoes/roguetown/boots/leather,
+/obj/item/clothing/shoes/roguetown/armor/leather,
 /obj/item/clothing/suit/roguetown/armor/armordress,
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/dwarfin)
@@ -9910,7 +9910,7 @@
 /area/rogue/indoors/town)
 "SZ" = (
 /obj/structure/closet/crate/chest,
-/obj/item/reagent_containers/food/snacks/rogue/crackerscooked,
+/obj/item/reagent_containers/food/snacks/rogue/foodbase/hardtack_raw/cooked,
 /turf/open/floor/rogue/ruinedwood{
 	icon_state = "weird1"
 	},
@@ -11360,7 +11360,7 @@
 "YY" = (
 /obj/structure/closet/crate/roguecloset,
 /obj/item/scomstone,
-/obj/item/clothing/shoes/roguetown/nobleboot,
+/obj/item/clothing/shoes/roguetown/armor/nobleboot,
 /obj/item/rogueweapon/greatsword,
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/town/manor)

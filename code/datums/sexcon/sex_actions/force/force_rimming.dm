@@ -2,9 +2,12 @@
 	name = "Force them to rim you"
 	require_grab = TRUE
 	stamina_cost = 1.0
+	gags_target = TRUE
 
 /datum/sex_action/force_rimming/shows_on_menu(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(user == target)
+		return FALSE
+	if(HAS_TRAIT(user, TRAIT_TINY)) //Fairy is too small and weak to force this
 		return FALSE
 	return TRUE
 
@@ -18,6 +21,7 @@
 	return TRUE
 
 /datum/sex_action/force_rimming/on_start(mob/living/carbon/human/user, mob/living/carbon/human/target)
+	..()
 	user.visible_message(span_warning("[user] shoves [target]'s head against his butt!"))
 
 /datum/sex_action/force_rimming/on_perform(mob/living/carbon/human/user, mob/living/carbon/human/target)
@@ -33,6 +37,7 @@
 	target.sexcon.handle_passive_ejaculation()
 
 /datum/sex_action/force_rimming/on_finish(mob/living/carbon/human/user, mob/living/carbon/human/target)
+	..()
 	user.visible_message(span_warning("[user] pulls [target]'s head away from his butt."))
 
 /datum/sex_action/force_rimming/is_finished(mob/living/carbon/human/user, mob/living/carbon/human/target)

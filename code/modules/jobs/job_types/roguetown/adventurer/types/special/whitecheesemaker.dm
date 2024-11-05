@@ -3,7 +3,7 @@
 	allowed_sexes = list(MALE)
 	allowed_races = list(/datum/species/human/northern)
 	outfit = /datum/outfit/job/roguetown/adventurer/whitecheese
-	traits_applied = list(TRAIT_HEAVYARMOR, TRAIT_BREADY, TRAIT_STEELHEARTED)
+	traits_applied = list(TRAIT_HEAVYARMOR, TRAIT_BREADY)
 	// oh god oh fuck this dont seem very safe to do
 	// this looks kinda op so imma just leave it at patreon level 1 until someone puts this behind a different lock
 	maximum_possible_slots = 1
@@ -39,7 +39,7 @@
 
 	belt = /obj/item/storage/belt/rogue/leather
 	pants = /obj/item/clothing/under/roguetown/tights/black
-	shoes = /obj/item/clothing/shoes/roguetown/nobleboot
+	shoes = /obj/item/clothing/shoes/roguetown/armor/nobleboot
 	gloves = /obj/item/clothing/gloves/roguetown/leather
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/black
 	beltl = /obj/item/storage/belt/rogue/pouch/coins/rich

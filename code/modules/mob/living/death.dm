@@ -95,6 +95,7 @@
 	med_hud_set_status()
 	if(!gibbed && !QDELETED(src))
 		addtimer(CALLBACK(src, PROC_REF(med_hud_set_status)), (DEFIB_TIME_LIMIT * 10) + 1)
+		apply_status_effect(/datum/status_effect/debuff/death_weaken)
 	stop_pulling()
 
 	. = ..()

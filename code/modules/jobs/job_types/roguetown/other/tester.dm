@@ -16,11 +16,11 @@
 	tutorial = ""
 	outfit = /datum/outfit/job/roguetown/tester
 	plevel_req = 0
-	display_order = JDO_DESERT_RIDER
+	display_order = JDO_MERCENARY
 
 /datum/outfit/job/roguetown/tester/pre_equip(mob/living/carbon/human/H)
 	..()
-	shoes = /obj/item/clothing/shoes/roguetown/boots/leather
+	shoes = /obj/item/clothing/shoes/roguetown/armor/leather
 	wrists = /obj/item/clothing/wrists/roguetown/bracers
 	belt = /obj/item/storage/belt/rogue/leather
 	armor = /obj/item/clothing/suit/roguetown/armor/gambeson/lord

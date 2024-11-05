@@ -9,6 +9,7 @@
 	dropshrink = 0.6
 	max_integrity = 10
 	force = 10
+	w_class = WEIGHT_CLASS_SMALL
 /*
 /obj/item/ammo_casing/caseless/rogue/bolt/poison
 	name = "poisoned bolt"
@@ -50,10 +51,11 @@
 	caliber = "arrow"
 	icon = 'icons/roguetown/weapons/ammo.dmi'
 	icon_state = "arrow"
-	force = 30
+	force = 7
 	dropshrink = 0.6
 	possible_item_intents = list(/datum/intent/dagger/cut, /datum/intent/dagger/thrust)
 	max_integrity = 20
+	w_class = WEIGHT_CLASS_SMALL
 
 /obj/item/ammo_casing/caseless/rogue/arrow/iron
 	name = "iron arrow"
@@ -62,7 +64,7 @@
 	caliber = "arrow"
 	icon = 'icons/roguetown/weapons/ammo.dmi'
 	icon_state = "arrow"
-	force = 30
+	force = 7
 	dropshrink = 0.6
 	possible_item_intents = list(/datum/intent/dagger/cut, /datum/intent/dagger/thrust)
 	max_integrity = 20
@@ -135,9 +137,22 @@
 		addtimer(CALLBACK(M, TYPE_PROC_REF(/mob/living, adjustToxLoss), 100), 10 SECONDS)
 		addtimer(CALLBACK(M, TYPE_PROC_REF(/atom, visible_message), span_danger("[M] appears greatly weakened by the poison!")), 10 SECONDS)
 
+//Musket spheres.
+/obj/item/ammo_casing/caseless/rogue/bullet
+	name = "runed sphere"
+	desc = "A small lead sphere. It's been inscribed with countless runes, increasing its stopping power."
+	projectile_type = /obj/projectile/bullet/reusable/bullet
+	caliber = "runeball"
+	icon = 'icons/roguetown/weapons/ammo.dmi'
+	icon_state = "musketball"
+	dropshrink = 0.5
+	possible_item_intents = list(/datum/intent/use)
+	max_integrity = 0
+	w_class = WEIGHT_CLASS_TINY
+
 /obj/projectile/bullet/reusable/bullet
-	name = "lead ball"
-	damage = 50
+	name = "rune ball"
+	damage = 40
 	damage_type = BRUTE
 	icon = 'icons/roguetown/weapons/ammo.dmi'
 	icon_state = "musketball_proj"
@@ -147,16 +162,20 @@
 	embedchance = 100
 	woundclass = BCLASS_STAB
 	flag = "bullet"
-	armor_penetration = 200
+	armor_penetration = 50
 	speed = 0.1
 
-/obj/item/ammo_casing/caseless/rogue/bullet
-	name = "lead sphere"
-	desc = "A small lead sphere. This should go well with gunpowder."
-	projectile_type = /obj/projectile/bullet/reusable/bullet
-	caliber = "musketball"
-	icon = 'icons/roguetown/weapons/ammo.dmi'
-	icon_state = "musketball"
-	dropshrink = 0.5
-	possible_item_intents = list(/datum/intent/use)
-	max_integrity = 0
+/obj/projectile/bullet/reusable/bullet/on_hit(mob/living/target, blocked = FALSE)
+	. = ..()
+
+	if(ishuman(target))
+		var/mob/living/carbon/human/H = target
+		var/datum/antagonist/werewolf/W = H.mind.has_antag_datum(/datum/antagonist/werewolf)
+
+		if(W && W.transformed == TRUE)
+			H.adjustFireLoss(25)
+			H.Paralyze(10)
+			H.Stun(10)
+			H.adjustFireLoss(25)
+			H.fire_act(1,10)
+			to_chat(H, span_userdanger("I'm hit by my BANE!"))

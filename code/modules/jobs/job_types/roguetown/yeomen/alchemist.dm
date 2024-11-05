@@ -1,4 +1,4 @@
-/datum/job/roguetown/alchemist
+/*/datum/job/roguetown/alchemist
 	title = "Alchemist"
 	flag = ALCHEMIST
 	department_flag = YEOMEN
@@ -32,7 +32,7 @@
 //Requires a lot of sprites, so this is just a placeholder
 	if(H.gender == MALE)
 		pants = /obj/item/clothing/under/roguetown/trou
-		shoes = /obj/item/clothing/shoes/roguetown/boots/leather
+		shoes = /obj/item/clothing/shoes/roguetown/armor/leather
 		shirt = /obj/item/clothing/suit/roguetown/shirt/shortshirt
 		belt = /obj/item/storage/belt/rogue/leather
 		beltl = /obj/item/storage/belt/rogue/pouch/coins/poor
@@ -41,10 +41,11 @@
 		H.change_stat("speed", -1)
 	else
 		pants = /obj/item/clothing/under/roguetown/trou
-		shoes = /obj/item/clothing/shoes/roguetown/boots/leather
+		shoes = /obj/item/clothing/shoes/roguetown/armor/leather
 		shirt = /obj/item/clothing/suit/roguetown/shirt/shortshirt
 		belt = /obj/item/storage/belt/rogue/leather
 		beltl = /obj/item/storage/belt/rogue/pouch/coins/poor
 		cloak = /obj/item/clothing/cloak/apron/brown
 		H.change_stat("intelligence", 2)
 		H.change_stat("speed", -2)
+*/

@@ -5,8 +5,7 @@
 	var/req_bar
 	var/created_item
 	var/craftdiff = 0
-	var/needed_item
-	var/needed_item_text
+	var/obj/item/needed_item
 	var/quality_mod = 0
 	var/progress
 	var/i_type
@@ -23,7 +22,7 @@
 		user.visible_message(span_warning("[user] strikes the bar!"))
 		return FALSE
 	if(needed_item)
-		to_chat(user, span_info("Now it's time to add a [needed_item_text]."))
+		to_chat(user, span_info("Now it's time to add \a [initial(needed_item.name)]."))
 		user.visible_message(span_warning("[user] strikes the bar!"))
 		return FALSE
 	var/moveup = 1
@@ -32,15 +31,12 @@
 		moveup += round((user.mind.get_skill_level(appro_skill) * 6) * (breakthrough == 1 ? 1.5 : 1))
 		moveup -= 3 * craftdiff
 		if(!user.mind.get_skill_level(appro_skill))
-			proab = 23
+			proab = 50
 	if(prob(proab))
 		moveup = 0
 	progress = min(progress + moveup, 100)
 	if(progress == 100 && additional_items.len)
 		needed_item = pick(additional_items)
-		var/obj/item/I = new needed_item()
-		needed_item_text = I.name
-		qdel(I)
 		additional_items -= needed_item
 		progress = 0
 	if(!moveup)
@@ -57,7 +53,7 @@
 		if(user.mind)
 			if(isliving(user))
 				var/mob/living/L = user
-				var/amt2raise = L.STAINT/2 // (L.STAINT+L.STASTR)/4 optional: add another stat that isn't int
+				var/amt2raise = L.STAINT/3 // (L.STAINT+L.STASTR)/4 optional: add another stat that isn't int
 				//i feel like leveling up takes forever regardless, this would just make it faster
 				if(amt2raise > 0)
 					user.mind.add_sleep_experience(appro_skill, amt2raise, FALSE)
@@ -68,6 +64,5 @@
 		return TRUE
 
 /datum/anvil_recipe/proc/item_added(mob/user)
+	user.visible_message(span_info("[user] adds [initial(needed_item.name)]."))
 	needed_item = null
-	user.visible_message(span_info("[user] adds [needed_item_text]"))
-	needed_item_text = null

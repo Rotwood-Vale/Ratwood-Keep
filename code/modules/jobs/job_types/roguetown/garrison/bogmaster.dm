@@ -5,7 +5,7 @@
 	faction = "Station"
 	total_positions = 1
 	spawn_positions = 1
-	allowed_patrons = ALL_DIVINE_PATRONS
+	allowed_patrons = ALL_NON_INHUMEN_PATRONS
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_VERY_SHUNNED_UP
 	allowed_ages = list(AGE_ADULT, AGE_MIDDLEAGED, AGE_OLD)
@@ -47,7 +47,7 @@
 	neck = /obj/item/clothing/neck/roguetown/bervor
 	wrists = /obj/item/clothing/wrists/roguetown/bracers
 	gloves = /obj/item/clothing/gloves/roguetown/chain
-	shoes = /obj/item/clothing/shoes/roguetown/boots/leather
+	shoes = /obj/item/clothing/shoes/roguetown/armor/leather
 	beltl = /obj/item/keyring/bog_master
 	beltr = /obj/item/rogueweapon/sword
 	belt = /obj/item/storage/belt/rogue/leather
@@ -69,7 +69,7 @@
 		H.mind.adjust_skillrank(/datum/skill/misc/climbing, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/medicine, 1, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/treatment, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/riding, 1, TRUE)
 		H.change_stat("strength", 3)
 		H.change_stat("constitution", 2)
@@ -79,11 +79,11 @@
 	H.verbs |= /mob/proc/haltyell
 	ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
-	ADD_TRAIT(H, TRAIT_STEELHEARTED, TRAIT_GENERIC)
 
 /obj/effect/proc_holder/spell/self/convertrole/bog
 	name = "Recruit Bogmen"
 	new_role = "Bog Guard"
+	overlay_state = "recruit_bog"
 	recruitment_faction = "Bog Guard"
 	recruitment_message = "Serve the bog, %RECRUIT!"
 	accept_message = "FOR THE BOG!"

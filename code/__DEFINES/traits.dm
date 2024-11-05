@@ -1,10 +1,9 @@
-// ROGUETRAITS (description when rmb skills button)
+// ROGUETRAITS (description when right-clicking [skill] button)
 #define TRAIT_WEBWALK "Webwalker"
 #define TRAIT_NOSTINK "Dead Nose"
 #define TRAIT_ZJUMP "High Jumping"
 #define TRAIT_JESTERPHOBIA "Jesterphobic"
 #define TRAIT_XENOPHOBIC "Xenophobic"
-#define TRAIT_TOLERANT "Tolerant"
 #define TRAIT_LEAPER "Leaper"
 #define TRAIT_NOSEGRAB "Nosey"
 #define TRAIT_NUTCRACKER "Nutcracker"
@@ -25,7 +24,7 @@
 #define TRAIT_NUDIST "Nudist" //you can't wear most clothes
 #define TRAIT_CYCLOPS_LEFT "Cyclops (Left)" //poked left eye
 #define TRAIT_CYCLOPS_RIGHT "Cyclops (Right)" //poked right eye
-#define TRAIT_RETARD_ANATOMY "Inhumen Anatomy" //can't wear hats and shoes
+#define TRAIT_INHUMEN_ANATOMY "Inhumen Anatomy" //can't wear hats and shoes
 #define TRAIT_NASTY_EATER "Inhumen Digestion" //can eat rotten food, organs, poison berries, and drink murky water
 #define TRAIT_WILD_EATER "Beastly Digestion" //can eat raw and rotten food and drink murky water
 #define TRAIT_NOFALLDAMAGE1 "Minor fall damage immunity"
@@ -33,12 +32,14 @@
 #define TRAIT_DISFIGURED "Disfigured"
 #define TRAIT_SPELLCOCKBLOCK "Bewitched" //prevents spellcasting
 #define TRAIT_ANTIMAGIC	"Anti-Magic"
+#define TRAIT_ANTISCRYING "Non-Detection"
 #define TRAIT_SHOCKIMMUNE "Shock Immunity"
 #define TRAIT_NOSLEEP "Fatal Insomnia"
 #define TRAIT_FASTSLEEP "Fast Sleeper"
 #define TRAIT_GOODLOVER "Fabled Lover"
 #define TRAIT_SEEDKNOW "Seed Knower"
 #define TRAIT_GOODRUNNER "Good Runner"
+#define TRAIT_TINY "Tiny"
 // ROGUEspecialTRAITS (description when rmb skills button)
 #define TRAIT_CIVILIZEDBARBARIAN "Tavern Brawler"
 #define TRAIT_COMICSANS "Annoying Face"
@@ -47,12 +48,13 @@
 // PATRON GOD TRAITS
 #define TRAIT_ROT_EATER "Blessing of Pestra" //can eat rotten food
 #define TRAIT_ORGAN_EATER "Blessing of Graggar" //can eat organs
-#define TRAIT_KNEESTINGER_IMMUNITY "Blessing of Dendor"
+#define TRAIT_VINE_WALKER "Blessing of Dendor"
 #define TRAIT_SOUL_EXAMINE "Blessing of Necra" //can check bodies to see if they have departed
 #define TRAIT_CRACKHEAD "Blessing of Baotha" //will never overdose
 #define TRAIT_COMMIE "Blessing of Matthios" //recognized by bandits as an ally
 #define TRAIT_CHOSEN "Astrata's Chosen"
 
+#define TRAIT_KNEESTINGER_IMMUNITY "Kneestinger Immunity"
 #define TRAIT_BASHDOORS "bashdoors"
 #define TRAIT_NOMOOD "no_mood"
 #define TRAIT_BAD_MOOD "Bad Mood"
@@ -75,6 +77,22 @@
 #define TRAIT_LEPROSY "Leprosy"
 #define TRAIT_NUDE_SLEEPER "Nude Sleeper"
 
+// PATRON CURSE TRAITS
+#define TRAIT_CURSE "Curse" //source
+#define TRAIT_ATHEISM_CURSE "Curse of Atheism"
+#define TRAIT_PSYDON_CURSE "Psydon's Curse"
+#define TRAIT_ASTRATA_CURSE "Astrata's Curse"
+#define TRAIT_NOC_CURSE "Noc's Curse"
+#define TRAIT_RAVOX_CURSE "Ravox's Curse"
+#define TRAIT_NECRA_CURSE "Necra's Curse"
+#define TRAIT_XYLIX_CURSE "Xylix's Curse"
+#define TRAIT_PESTRA_CURSE "Pestra's Curse"
+#define TRAIT_EORA_CURSE "Eora's Curse"
+#define TRAIT_ZIZO_CURSE "Zizo's Curse"
+#define TRAIT_GRAGGAR_CURSE "Graggar's Curse"
+#define TRAIT_MATTHIOS_CURSE "Matthios' Curse"
+#define TRAIT_BAOTHA_CURSE "Baotha's Curse"
+
 GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_LEPROSY = span_necrosis("I'm a disgusting leper..."),
 	TRAIT_CHOSEN = "Astrata choose you to represent her glory.",
@@ -83,7 +101,6 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_ZJUMP = "Time to reach a new high.",
 	TRAIT_JESTERPHOBIA = span_warning("I have a severe irrational fear of Jesters"),
 	TRAIT_XENOPHOBIC = span_warning("Lesser races pollute our land"),
-	TRAIT_TOLERANT = span_info("I dream of an ideal future, one with peace between all races"),
 	TRAIT_NIGHT_OWL = span_info("I enjoy spending my time in the night"),
 	TRAIT_BEAUTIFUL = span_info("People love looking at my face"),
 	TRAIT_BAD_MOOD = span_warning("Everything just seems to piss me off"),
@@ -97,7 +114,7 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_EMPATH = "I can notice when people are in pain.",
 	TRAIT_BREADY = "Defensive stance does not passively fatigue me.",
 	TRAIT_MEDIUMARMOR = "I can move freely in medium armor.",
-	TRAIT_HEAVYARMOR = "I can move freely in heavy armor.",
+	TRAIT_HEAVYARMOR = "I can move freely in both heavy and medium armor.",
 	TRAIT_DODGEEXPERT = "I can dodge easily while only wearing light armor.",
 	TRAIT_DECEIVING_MEEKNESS = "People look at me and think I am a weakling. They are mistaken.",
 	TRAIT_CRITICAL_RESISTANCE = "I am resistant to wounds that would be life threatening to others.",
@@ -107,7 +124,7 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_NUDIST = "I <b>refuse</b> to wear clothes. They are a hindrance to my freedom.",
 	TRAIT_CYCLOPS_LEFT = span_warning("My left eye has been poked out..."),
 	TRAIT_CYCLOPS_RIGHT = span_warning("My right eye has been poked out..."),
-	TRAIT_RETARD_ANATOMY = "My anatomy is inhumen, preventing me from wearing hats and shoes.",
+	TRAIT_INHUMEN_ANATOMY = "My anatomy is inhumen, preventing me from wearing hats and shoes.",
 	TRAIT_NASTY_EATER = span_dead("I can eat bad food, and water that would be toxic to humen will not affect me."),
 	TRAIT_WILD_EATER = span_info("I can eat raw food and drink from dirty water."),
 	TRAIT_NOFALLDAMAGE1 = span_warning("I can easily handle minor falls."),
@@ -115,11 +132,13 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_MISSING_NOSE = span_warning("I struggle to breathe."),
 	TRAIT_SPELLCOCKBLOCK = span_warning("I cannot cast any spells."),
 	TRAIT_ANTIMAGIC = "I am immune to most forms of magic.",
+	TRAIT_ANTISCRYING = "I am immune to most forms of magical divination.",
 	TRAIT_SHOCKIMMUNE = "I am immune to electrical shocks.",
 	TRAIT_NOSLEEP = span_warning("I can't sleep."),
 	TRAIT_ROT_EATER = span_necrosis("I can eat rotten food."),
 	TRAIT_ORGAN_EATER = span_bloody("I can eat organs and raw flesh."),
 	TRAIT_KNEESTINGER_IMMUNITY = "I am immune to the shock of kneestingers.",
+	TRAIT_VINE_WALKER = "I can gracefully cross through weepvines.",
 	TRAIT_SOUL_EXAMINE = span_deadsay("I know when someone's soul has departed."),
 	TRAIT_CRACKHEAD = span_love("I can use drugs as much as I want!"),
 	TRAIT_COMMIE = span_bloody("I can recognize other free men, and they can recognize me too."),
@@ -131,7 +150,7 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_WATERBREATHING = span_info("I do not drown in bodies of water."),
 	TRAIT_GOODRUNNER = span_info("I can run without breaking a sweat!"),
 	TRAIT_NUDE_SLEEPER = span_warning("I can't fall asleep unless I'm nude and in bed."),
-
+	TRAIT_TINY = span_info("I am tiny in size and quite fragile!"),
 ))
 
 // trait accessor defines
@@ -361,6 +380,7 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define INNATE_TRAIT "innate"
 
 // unique trait sources, still defines
+#define TRAIT_DARKVISION "darkvision"
 #define CLONING_POD_TRAIT "cloning-pod"
 #define STATUE_MUTE "statue"
 #define CHANGELING_DRAIN "drain"

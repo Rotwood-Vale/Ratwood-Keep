@@ -64,7 +64,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	icon_state = "generic_event"
 
 /obj/effect/landmark/events/haunts/Initialize(mapload)
-	..()
+	. = ..()
 	GLOB.hauntstart += src
 	icon_state = ""
 
@@ -114,16 +114,28 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	jobspawn_override = list("Vagabond")
 	delete_after_roundstart = FALSE
 
-/obj/effect/landmark/start/desertriderlate
-	name = "DesertRiderlate"
+/obj/effect/landmark/start/seelielate
+	name = "Seelielate"
 	icon_state = "arrow"
-	jobspawn_override = list("Desert Rider Mercenary", "Sellsword")
+	jobspawn_override = list("Town Seelie")
 	delete_after_roundstart = FALSE
 
-/obj/effect/landmark/start/grenzelhoftlate
+/obj/effect/landmark/start/desertriderlate // Left behind for map compatibility
+	name = "DesertRiderlate"
+	icon_state = "arrow"
+	jobspawn_override = list("Mercenary")
+	delete_after_roundstart = FALSE
+
+/obj/effect/landmark/start/grenzelhoftlate // Left behind for map compatibility
 	name = "Grenzelhoftlate"
 	icon_state = "arrow"
-	jobspawn_override = list("Grenzelhoft Mercenary", "Sellsword")
+	jobspawn_override = list("Mercenary")
+	delete_after_roundstart = FALSE
+
+/obj/effect/landmark/start/mercenarylate
+	name = "Mercenarylate"
+	icon_state = "arrow"
+	jobspawn_override = list("Mercenary")
 	delete_after_roundstart = FALSE
 
 /obj/effect/landmark/start/villagerlate
@@ -133,7 +145,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	delete_after_roundstart = FALSE
 
 /obj/effect/landmark/start/lord
-	name = "King"
+	name = "Duke"
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/knight
@@ -261,7 +273,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/grabber
-	name = "Grabber"
+	name = "Thug"
 	icon_state = "arrow"
 
 
@@ -273,24 +285,20 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	name = "Archivist"
 	icon_state = "arrow"
 
-/obj/effect/landmark/start/weaponsmith
-	name = "Weaponsmith"
+/obj/effect/landmark/start/guildsmith
+	name = "Guild Smith"
 	icon_state = "arrow"
 
-/obj/effect/landmark/start/armorsmith
-	name = "Armorer"
-	icon_state = "arrow"
-
-/obj/effect/landmark/start/tailor
-	name = "Tailor"
+/obj/effect/landmark/start/seamster
+	name = "Seamster"
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/alchemist
 	name = "Alchemist"
 	icon_state = "arrow"
 
-/obj/effect/landmark/start/mason
-	name = "Mason"
+/obj/effect/landmark/start/artificer
+	name = "Artificer"
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/scribe
@@ -304,6 +312,15 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 /obj/effect/landmark/start/beastmonger
 	name = "Butcher"
 	icon_state = "arrow"
+
+/obj/effect/landmark/start/doctor
+	name = "Clinic Physician"
+	icon_state = "arrow"
+
+/obj/effect/landmark/start/doctorlate
+	name = "Clinic Physician"
+	icon_state = "arrow"
+	delete_after_roundstart = FALSE
 
 /obj/effect/landmark/start/cook
 	name = "Cook"
@@ -322,11 +339,11 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/lady
-	name = "Queen Consort"
+	name = "Duchess Consort"
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/prince
-	name = "Prince"
+	name = "Heir"
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/prisonerr
@@ -571,9 +588,10 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	name = "department_sec"
 	icon_state = "Security Officer"
 
-/obj/effect/landmark/start/depsec/New()
+/obj/effect/landmark/start/depsec/Initialize()
 	..()
 	GLOB.department_security_spawns += src
+	return INITIALIZE_HINT_QDEL
 
 /obj/effect/landmark/start/depsec/Destroy()
 	GLOB.department_security_spawns -= src
@@ -601,6 +619,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 /obj/effect/landmark/start/wizard/Initialize()
 	..()
 	GLOB.wizardstart += loc
+	return INITIALIZE_HINT_QDEL
 
 /obj/effect/landmark/start/nukeop
 	name = "nukeop"
@@ -610,6 +629,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 /obj/effect/landmark/start/nukeop/Initialize()
 	..()
 	GLOB.nukeop_start += loc
+	return INITIALIZE_HINT_QDEL
 
 /obj/effect/landmark/start/bandit
 	name = "bandit"
@@ -619,6 +639,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 /obj/effect/landmark/start/bandit/Initialize()
 	..()
 	GLOB.bandit_starts += loc
+	return INITIALIZE_HINT_QDEL
 
 
 /obj/effect/landmark/start/delf
@@ -629,6 +650,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 /obj/effect/landmark/start/delf/Initialize()
 	..()
 	GLOB.delf_starts += loc
+	return INITIALIZE_HINT_QDEL
 
 
 /obj/effect/landmark/start/nukeop_leader
@@ -639,6 +661,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 /obj/effect/landmark/start/nukeop_leader/Initialize()
 	..()
 	GLOB.nukeop_leader_start += loc
+	return INITIALIZE_HINT_QDEL
 
 // Must be immediate because players will
 // join before SSatom initializes everything.
@@ -650,6 +673,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark/start/new_player)
 /obj/effect/landmark/start/new_player/Initialize()
 	..()
 	GLOB.newplayer_start += loc
+	return INITIALIZE_HINT_QDEL
 
 /obj/effect/landmark/latejoin
 	name = "JoinLate"
@@ -772,9 +796,10 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark/start/new_player)
 	layer = HIGH_LANDMARK_LAYER
 
 
-/obj/effect/landmark/event_spawn/New()
+/obj/effect/landmark/event_spawn/Initialize()
 	..()
 	GLOB.generic_event_spawns += src
+	return INITIALIZE_HINT_QDEL
 
 /obj/effect/landmark/event_spawn/Destroy()
 	GLOB.generic_event_spawns -= src
@@ -812,7 +837,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark/start/new_player)
 /obj/effect/landmark/underworldcoin
 	name = "ferryman coin"
 
-/obj/effect/landmark/underworldsafe // To prevent demons spawn camping will save a lot of ear rape.
+/obj/effect/landmark/underworldsafe // To prevent demons spawn camping.
 	name = "safe zone"
 
 GLOBAL_LIST_EMPTY(travel_tile_locations)
@@ -852,12 +877,13 @@ GLOBAL_LIST_EMPTY(travel_spawn_points)
 		return point.loc
 	return null
 
-/proc/create_travel_tiles(var/atom/location, travel_id, travel_goes_to_id, required_trait)
+/proc/create_travel_tiles(var/atom/location, travel_id, travel_goes_to_id, required_trait, tile_path)
 	for(var/obj/effect/landmark/travel_tile_location/landmark as anything in GLOB.travel_tile_locations)
 		if(get_dist(location, landmark) > 5)
 			continue
 		// Create travel tile here
-		var/obj/structure/fluff/traveltile/tile = new /obj/structure/fluff/traveltile(landmark.loc)
+		var/obj/structure/fluff/traveltile/tile = new tile_path(landmark.loc)
 		tile.aportalid = travel_id
 		tile.aportalgoesto = travel_goes_to_id
 		tile.required_trait = required_trait
+		tile.hide_if_needed()

@@ -72,6 +72,8 @@
 /datum/spacevine_mutation/proc/on_explosion(severity, target, obj/structure/spacevine/holder)
 	return
 
+/datum/spacevine_mutation/proc/can_cross(obj/structure/spacevine/holder, mob/living/crosser)
+	return TRUE
 
 /datum/spacevine_mutation/light
 	name = "light"
@@ -257,6 +259,12 @@
 	else
 		. = expected_damage
 
+/datum/spacevine_mutation/woodening/can_cross(obj/structure/spacevine/holder, mob/living/crosser)
+	if(isvineimmune(crosser))
+		return TRUE
+	else
+		return FALSE
+
 /datum/spacevine_mutation/flowering
 	name = "flowering"
 	hue = "#0A480D"
@@ -271,6 +279,25 @@
 	if(prob(25))
 		holder.entangle(crosser)
 
+/datum/spacevine_mutation/earthy
+	name = "earthy"
+	hue = "#213311"
+	quality = NEGATIVE
+	severity = 10
+
+/datum/spacevine_mutation/earthy/on_cross(obj/structure/spacevine/holder, mob/living/crosser)
+	if(prob(10) && !isvineimmune(crosser))
+		holder.entangle(crosser)
+	if(!isvineimmune(crosser))
+		if(crosser.apply_damage(5, BRUTE))
+			to_chat(crosser, span_alert("I cut myself on the thorny vines."))
+
+/datum/spacevine_mutation/earthy/can_cross(obj/structure/spacevine/holder, mob/living/crosser)
+	if((prob(30) && !isvineimmune(crosser)) || (prob(5)))
+		to_chat(crosser, span_warning("I feel stuck on the vines."))
+		return FALSE
+	else
+		return TRUE	
 
 // SPACE VINES (Note that this code is very similar to Biomass code)
 /obj/structure/spacevine
@@ -298,6 +325,7 @@
 	dir = pick(GLOB.cardinals)
 	icon_state = "Light[rand(1,2)]"
 	add_atom_colour("#ffffff", FIXED_COLOUR_PRIORITY)
+
 
 /obj/structure/spacevine/examine(mob/user)
 	. = ..()/*
@@ -568,14 +596,18 @@
 		qdel(src)
 
 /obj/structure/spacevine/CanPass(atom/movable/mover, turf/target)
-	if(isvineimmune(mover))
-		. = TRUE
-	else
-		. = ..()
+	var/result = TRUE
+	if(isliving(mover))
+		for(var/datum/spacevine_mutation/SM in mutations)
+			result = SM.can_cross(src, mover)
+	return result
 
 /proc/isvineimmune(atom/A)
 	. = FALSE
 	if(isliving(A))
 		var/mob/living/M = A
-		if(("vines" in M.faction) || ("plants" in M.faction))
+		if(("vines" in M.faction) || ("plants" in M.faction) || HAS_TRAIT(A, TRAIT_VINE_WALKER))
 			. = TRUE
+
+/obj/structure/spacevine/dendor
+	mutations = newlist(/datum/spacevine_mutation/earthy)

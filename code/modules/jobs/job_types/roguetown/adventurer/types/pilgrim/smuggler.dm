@@ -16,7 +16,7 @@
 /datum/outfit/job/roguetown/adventurer/smuggler/pre_equip(mob/living/carbon/human/H)
 	..()
 	head =/obj/item/clothing/head/roguetown/helmet/bandana
-	shoes = /obj/item/clothing/shoes/roguetown/boots/leather
+	shoes = /obj/item/clothing/shoes/roguetown/armor/leather
 	neck = /obj/item/storage/belt/rogue/pouch/coins/mid
 	pants = /obj/item/clothing/under/roguetown/trou/leather
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
@@ -42,7 +42,7 @@
 	H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 3, TRUE) 
 	H.mind.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/labor/fishing, 3, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/misc/alchemy, 3, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/misc/treatment, 2, TRUE)
 	H.change_stat("strength", -2)
 	H.change_stat("perception", 1)
 	H.change_stat("intelligence", 2)

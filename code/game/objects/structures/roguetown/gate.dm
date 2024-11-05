@@ -71,7 +71,7 @@ GLOBAL_LIST_EMPTY(biggates)
 	if(attached_to)
 		var/obj/structure/winch/W = attached_to
 		W.attached_gate = null
-	..()
+	return ..()
 
 /obj/structure/gate/update_icon()
 	cut_overlays()
@@ -114,7 +114,21 @@ GLOBAL_LIST_EMPTY(biggates)
 	sleep(10)
 	for(var/turf/T in turfsy)
 		for(var/mob/living/M in T)
-			M.gib()
+			var/zone = ran_zone(probability = 0)
+			var/obj/item/bodypart/part = M.get_bodypart(check_zone(zone))
+			M.apply_damage(200, BRUTE, zone)
+			if(part)
+				if((istype(part, /obj/item/bodypart/chest) || istype(part, /obj/item/bodypart/head)) && prob(50))
+					part.add_wound(/datum/wound/slash/disembowel)
+				part.add_wound(/datum/wound/fracture)
+				part.dismember()
+				M.visible_message(span_warningbig("[M] is crushed by \the [src]!"), span_userdanger("OH [uppertext(M.patron.name)], MY [uppertext(part.name)]!!!"))
+			else if(!part)
+				M.visible_message(span_warningbig("[M] is crushed by \the [src]!"), span_userdanger("OH [uppertext(M.patron.name)], THE PAIN!!!"))
+			M.emote("agony")
+			step(M, pick(dir, turn(dir, 180)))
+			M.Knockdown(50)
+			M.Stun(50)
 	density = initial(density)
 	opacity = initial(opacity)
 	layer = initial(layer)
@@ -135,14 +149,14 @@ GLOBAL_LIST_EMPTY(biggates)
 	var/obj/structure/gate/attached_gate
 
 /obj/structure/winch/Initialize()
-	. = ..()
+	..()
 	return INITIALIZE_HINT_LATELOAD
 
 /obj/structure/winch/Destroy()
 	if(attached_gate)
 		var/obj/structure/gate/W = attached_gate
 		W.attached_to = null
-	..()
+	return ..()
 
 /obj/structure/winch/LateInitialize()
 	for(var/obj/structure/gate/G in GLOB.biggates)

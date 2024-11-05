@@ -14,7 +14,7 @@
 	..()
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
 	belt = /obj/item/storage/belt/rogue/leather/black
-	shoes = /obj/item/clothing/shoes/roguetown/nobleboot
+	shoes = /obj/item/clothing/shoes/roguetown/armor/nobleboot
 	pants = /obj/item/clothing/under/roguetown/tights/black
 	armor = /obj/item/clothing/suit/roguetown/armor/heartfelt/hand
 	neck = /obj/item/storage/belt/rogue/pouch/coins/rich
@@ -26,7 +26,7 @@
 	id = /obj/item/scomstone
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/combat/maces, 2, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/medicine, 4, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/treatment, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/craft/cooking, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 3, TRUE)

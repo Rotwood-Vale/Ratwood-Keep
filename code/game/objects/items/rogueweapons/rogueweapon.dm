@@ -20,7 +20,7 @@
 	sellprice = 1
 	has_inspect_verb = TRUE
 	parrysound = list('sound/combat/parry/parrygen.ogg')
-	anvilrepair = /datum/skill/craft/weaponsmithing
+	anvilrepair = /datum/skill/craft/blacksmithing
 	obj_flags = CAN_BE_HIT
 	blade_dulling = DULLING_BASH
 	max_integrity = 200
@@ -41,6 +41,15 @@
 	if(!destroy_message)
 		var/yea = pick("[src] is broken!", "[src] is useless!", "[src] is destroyed!")
 		destroy_message = span_warning("[yea]")
+
+/obj/item/rogueweapon/pickup(mob/user)
+	. = ..()
+	if(HAS_TRAIT(user, TRAIT_RAVOX_CURSE))
+		var/mob/living/carbon/human/H = user
+		to_chat(H, span_warning("The idea repulses me!"))
+		H.cursed_freak_out()
+		H.Paralyze(20)
+		return
 
 /obj/item/rogueweapon/get_dismemberment_chance(obj/item/bodypart/affecting, mob/user)
 	if(!get_sharpness() || !affecting.can_dismember(src))

@@ -80,12 +80,12 @@ SUBSYSTEM_DEF(treasury)
 		var/people_told = 0
 		for(var/mob/living/carbon/human/X in GLOB.human_list)
 			switch(X.job)
-				if("King", "Steward", "Clerk")
+				if("Duke", "Steward", "Clerk")
 					people_told += 1
 					send_ooc_note("Income from wealth horde: +[amt_to_generate]", name = X.real_name)
 					if(people_told > 3)
 						return
-			
+
 
 /datum/controller/subsystem/treasury/proc/create_bank_account(name, initial_deposit)
 	if(!name)
@@ -111,49 +111,49 @@ SUBSYSTEM_DEF(treasury)
 
 //pays to account from treasury (payroll)
 /datum/controller/subsystem/treasury/proc/give_money_account(amt, name, source)
-    if(!amt)
-        return
-    if(!name)
-        return
-    var/found_account
-    if (amt > treasury_value)  // Check if the amount exceeds the treasury balance
-        send_ooc_note("<b>The Bank:</b> Error: Insufficient funds in the treasury to complete the transaction.", name = name)
-        return FALSE  // Return early if the treasury balance is insufficient
-    for(var/X in bank_accounts)
-        if(X == name)
-            if(amt > 0)
-                bank_accounts[X] += amt  // Deposit the money into the player's account
-                treasury_value -= amt   // Deduct the given amount from the treasury
-            else
-                // Check if the amount to be fined exceeds the player's account balance
-                if(abs(amt) > bank_accounts[X])
-                    send_ooc_note("<b>The Bank:</b> Error: Insufficient funds in the player's account to complete the fine.", name = name)
-                    return FALSE  // Return early if the player has insufficient funds
-                bank_accounts[X] -= abs(amt)  // Deduct the fine amount from the player's account
-                treasury_value += abs(amt)  // Add the fined amount to the treasury
-            found_account = TRUE
-            break
-    if(!found_account)
-        return FALSE
+	if(!amt)
+		return
+	if(!name)
+		return
+	var/found_account
+	if (amt > treasury_value)  // Check if the amount exceeds the treasury balance
+		send_ooc_note("<b>The Bank:</b> Error: Insufficient funds in the treasury to complete the transaction.", name = name)
+		return FALSE  // Return early if the treasury balance is insufficient
+	for(var/X in bank_accounts)
+		if(X == name)
+			if(amt > 0)
+				bank_accounts[X] += amt  // Deposit the money into the player's account
+				treasury_value -= amt   // Deduct the given amount from the treasury
+			else
+				// Check if the amount to be fined exceeds the player's account balance
+				if(abs(amt) > bank_accounts[X])
+					send_ooc_note("<b>The Bank:</b> Error: Insufficient funds in the player's account to complete the fine.", name = name)
+					return FALSE  // Return early if the player has insufficient funds
+				bank_accounts[X] -= abs(amt)  // Deduct the fine amount from the player's account
+				treasury_value += abs(amt)  // Add the fined amount to the treasury
+			found_account = TRUE
+			break
+	if(!found_account)
+		return FALSE
 
-    if (amt > 0)
-        // Player received money
-        if(source)
-            send_ooc_note("<b>The Bank:</b> You received money. ([source])", name = name)
-            log_to_steward("+[amt] from treasury to [name] ([source])")
-        else
-            send_ooc_note("<b>The Bank:</b> You received money.", name = name)
-            log_to_steward("+[amt] from treasury to [name]")
-    else
-        // Player was fined
-        if(source)
-            send_ooc_note("<b>The Bank:</b> You were fined. ([source])", name = name)
-            log_to_steward("[name] was fined [amt] ([source])")
-        else
-            send_ooc_note("<b>The Bank:</b> You were fined.", name = name)
-            log_to_steward("[name] was fined [amt]")
+	if (amt > 0)
+		// Player received money
+		if(source)
+			send_ooc_note("<b>The Bank:</b> You received money. ([source])", name = name)
+			log_to_steward("[amt] from treasury to [name] ([source])")
+		else
+			send_ooc_note("<b>The Bank:</b> You received money.", name = name)
+			log_to_steward("[amt] from treasury to [name]")
+	else
+		// Player was fined
+		if(source)
+			send_ooc_note("<b>The Bank:</b> You were fined. ([source])", name = name)
+			log_to_steward("[name] was fined [amt] ([source])")
+		else
+			send_ooc_note("<b>The Bank:</b> You were fined.", name = name)
+			log_to_steward("[name] was fined [amt]")
 
-    return TRUE
+	return TRUE
 
 ///Deposits money into a character's bank account. Taxes are deducted from the deposit and added to the treasury.
 ///@param amt: The amount of money to deposit.
@@ -167,7 +167,7 @@ SUBSYSTEM_DEF(treasury)
 	var/taxed_amount = 0
 	var/original_amt = amt
 	if(character in bank_accounts)
-		if(character.job in GLOB.noble_positions)
+		if((character.job in GLOB.noble_positions) || HAS_TRAIT(character, TRAIT_NOBLE))
 			bank_accounts[character] += amt
 		else
 			taxed_amount = round(amt * tax_value)
@@ -177,27 +177,27 @@ SUBSYSTEM_DEF(treasury)
 	else
 		return FALSE
 
-	log_to_steward("+[original_amt] deposited by [character] of which taxed [taxed_amount]")
+	log_to_steward("+[taxed_amount] taxation of [character], who deposited [original_amt]")
 
 	return TRUE
 
 
 /datum/controller/subsystem/treasury/proc/withdraw_money_account(amt, name)
-    if(!amt)
-        return
-    var/found_account
-    for(var/X in bank_accounts)
-        if(X == name)
-            if(bank_accounts[X] < amt)  // Check if the withdrawal amount exceeds the player's account balance
-                send_ooc_note("<b>The Bank:</b> Error: Insufficient funds in the player's account to complete the withdrawal.", name = name)
-                return  // Return without processing the transaction
-            bank_accounts[X] -= amt
-            found_account = TRUE
-            break
-    if(!found_account)
-        return
-    log_to_steward("-[amt] withdrawn by [name]")
-    return TRUE
+	if(!amt)
+		return
+	var/found_account
+	for(var/X in bank_accounts)
+		if(X == name)
+			if(bank_accounts[X] < amt)  // Check if the withdrawal amount exceeds the player's account balance
+				send_ooc_note("<b>The Bank:</b> Error: Insufficient funds in the player's account to complete the withdrawal.", name = name)
+				return  // Return without processing the transaction
+			bank_accounts[X] -= amt
+			found_account = TRUE
+			break
+	if(!found_account)
+		return
+	log_to_steward("-[amt] withdrawn by [name]")
+	return TRUE
 
 
 /datum/controller/subsystem/treasury/proc/log_to_steward(log)

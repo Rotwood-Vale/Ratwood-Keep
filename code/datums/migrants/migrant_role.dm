@@ -3,7 +3,7 @@
 	/// Name of the role
 	var/name = "MIGRANT ROLE"
 	/// Restricts species if the list is not null
-	var/list/allowed_races
+	var/list/allowed_races = RACES_VERY_SHUNNED_UP	//QUICK FIX TO EXCLUDE SEELIE
 	/// Restricts sexes if list is not null
 	var/list/allowed_sexes
 	/// Restricts ages if list is not null
@@ -18,7 +18,7 @@
 	var/greet_text
 	/// Whether to grant a lit torch upon spawn
 	var/grant_lit_torch = FALSE
-	/// Whether to show wanderer examine like adventurers or pilgrims
+	//Whether to display "wandering Human" rather than their job title
 	var/show_wanderer_examine = TRUE
 	var/advjob_examine = TRUE
 	var/banned_leprosy = TRUE
@@ -27,16 +27,14 @@
 /datum/migrant_role/proc/after_spawn(mob/living/carbon/human/character)
 	return
 
-/datum/migrant_role/pilgrim
-	name = "Pilgrim"
-	banned_leprosy = FALSE
-	advclass_cat_rolls = list(CTAG_PILGRIM = 10)
-
 /datum/migrant_role/adventurer
 	name = "Adventurer"
 	advclass_cat_rolls = list(CTAG_ADVENTURER = 5)
 
+/*
 /datum/migrant_role/bandit
 	name = "Bandit"
 	antag_datum = /datum/antagonist/bandit
+	advclass_cat_rolls = list(CTAG_BANDIT = 20)
 	grant_lit_torch = TRUE
+*/

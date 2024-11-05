@@ -24,7 +24,9 @@
 			return FALSE
 		target.visible_message(span_warning("[user] points at [target]'s eyes!"),span_warning("My eyes are covered in darkness!"))		
 		target.blind_eyes(2)
-	return TRUE
+		return TRUE
+	revert_cast()
+	return FALSE
 
 /obj/effect/proc_holder/spell/invoked/invisibility
 	name = "Invisibility"
@@ -37,7 +39,7 @@
 	range = 3
 	warnie = "sydwarning"
 	movement_interrupt = FALSE
-	invocation_type = "none"
+	invocation_type = "whisper"
 	sound = 'sound/misc/area.ogg' //This sound doesnt play for some reason. Fix me.
 	associated_skill = /datum/skill/magic/holy
 	antimagic_allowed = TRUE
@@ -54,4 +56,6 @@
 		target.mob_timers[MT_INVISIBILITY] = world.time + 15 SECONDS
 		addtimer(CALLBACK(target, TYPE_PROC_REF(/mob/living, update_sneak_invis), TRUE), 15 SECONDS)
 		addtimer(CALLBACK(target, TYPE_PROC_REF(/atom/movable, visible_message), span_warning("[target] fades back into view."), span_notice("You become visible again.")), 15 SECONDS)
+		return TRUE
+	revert_cast()
 	return FALSE

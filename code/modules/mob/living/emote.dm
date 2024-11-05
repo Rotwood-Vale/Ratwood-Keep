@@ -27,6 +27,11 @@
 	if(isliving(user))
 		var/mob/living/L = user
 		var/area/C = get_area(user)
+
+		if(HAS_TRAIT(usr, TRAIT_ATHEISM_CURSE))
+			to_chat(usr, span_danger("Praying is for fools."))
+			return
+
 		var/msg = input("Whisper your prayer:", "Prayer") as text|null
 		if(msg)
 			L.whisper(msg)
@@ -473,6 +478,14 @@
 
 	emote("kiss", intentional = TRUE, targetted = TRUE)
 
+/datum/emote/living/kiss/can_run_emote(mob/living/user, status_check = TRUE , intentional)
+	. = ..()
+	if(HAS_TRAIT(user, TRAIT_EORA_CURSE))
+		var/mob/living/carbon/human/H = user
+		to_chat(H, "<span class='warning'>The idea repulses me!</span>")
+		H.cursed_freak_out()
+		return FALSE
+
 /datum/emote/living/kiss/adjacentaction(mob/user, mob/target)
 	. = ..()
 	message_param = initial(message_param) // re
@@ -480,6 +493,13 @@
 		return
 	if(ishuman(user) && ishuman(target))
 		var/mob/living/carbon/human/H = user
+		var/mob/living/carbon/human/E = target
+
+		// cursed is the one being kissed
+		if(HAS_TRAIT(E, TRAIT_EORA_CURSE))
+			to_chat(E, "<span class='warning'>I feel unexplicably repelled!</span>")
+			E.cursed_freak_out()
+
 		var/do_change
 		if(target.loc == user.loc)
 			do_change = TRUE
@@ -491,7 +511,6 @@
 				message_param = "kisses %t deeply."
 			else if(H.zone_selected == BODY_ZONE_PRECISE_EARS)
 				message_param = "kisses %t on the ear."
-				var/mob/living/carbon/human/E = target
 				if(iself(E) || ishalfelf(E))
 					if(!E.cmode)
 						to_chat(target, span_love("It tickles..."))
@@ -499,6 +518,7 @@
 				message_param = "kisses %t on the brow."
 			else
 				message_param = "kisses %t on \the [parse_zone(H.zone_selected)]."
+
 	playsound(target.loc, pick('sound/vo/kiss (1).ogg','sound/vo/kiss (2).ogg'), 100, FALSE, -1)
 
 
@@ -550,6 +570,27 @@
 	set category = "Emotes"
 
 	emote("hug", intentional = TRUE, targetted = TRUE)
+
+/datum/emote/living/hug/can_run_emote(mob/living/user, status_check = TRUE , intentional)
+	. = ..()
+	if(HAS_TRAIT(user, TRAIT_EORA_CURSE))
+		var/mob/living/carbon/human/H = user
+		to_chat(H, "<span class='warning'>The idea repulses me!</span>")
+		H.cursed_freak_out()
+		return FALSE
+
+/datum/emote/living/hug/adjacentaction(mob/user, mob/target)
+	. = ..()
+	if(!user || !target)
+		return
+	if(ishuman(target))
+		var/mob/living/carbon/human/H = target
+
+		// cursed is the one being hugged
+		if(HAS_TRAIT(H, TRAIT_EORA_CURSE))
+			to_chat(H, "<span class='warning'>I feel unexplicably repelled!</span>")
+			H.cursed_freak_out()
+			return
 
 /datum/emote/living/holdbreath
 	key = "hold"

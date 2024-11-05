@@ -5,9 +5,9 @@
 	faction = "Station"
 	total_positions = 1
 	spawn_positions = 1
-	allowed_sexes = list(MALE)
+	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_TOLERATED_UP
-	allowed_patrons = ALL_DIVINE_PATRONS
+	allowed_patrons = ALL_NON_INHUMEN_PATRONS
 	tutorial = "Tales speak of the Gatemaster's legendary ability to stand still at a gate and ask people questions. \
 	Rivaled only by a tree's ability to stay in place, Gatemasters are known to stock up for the long weeks. \
 	Using subordinates and helpers to bring them supplies, just as Dendor feeds nature's roots so it may last. \
@@ -39,7 +39,7 @@
 
 /datum/outfit/job/roguetown/gatemaster/pre_equip(mob/living/carbon/human/H)
 	..()
-	head = /obj/item/clothing/head/roguetown/roguehood/red
+	head = /obj/item/clothing/head/roguetown/helmet/heavy/gate
 	neck = /obj/item/clothing/neck/roguetown/gorget
 	cloak = /obj/item/clothing/cloak/stabard/surcoat/guard
 	armor = /obj/item/clothing/suit/roguetown/armor/chainmail
@@ -47,7 +47,7 @@
 	pants = /obj/item/clothing/under/roguetown/chainlegs
 	gloves = /obj/item/clothing/gloves/roguetown/leather
 	wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
-	shoes = /obj/item/clothing/shoes/roguetown/boots
+	shoes = /obj/item/clothing/shoes/roguetown/armor
 	belt = /obj/item/storage/belt/rogue/leather/black
 	beltl = /obj/item/rogueweapon/mace/cudgel
 	beltr = /obj/item/quiver/arrows
@@ -82,4 +82,3 @@
 	H.verbs |= /mob/proc/haltyell
 	ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
-	ADD_TRAIT(H, TRAIT_STEELHEARTED, TRAIT_GENERIC)

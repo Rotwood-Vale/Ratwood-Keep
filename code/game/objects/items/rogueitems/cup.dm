@@ -9,7 +9,7 @@
 	amount_per_transfer_from_this = 6
 	possible_transfer_amounts = list(6)
 	dropshrink = 0.8
-	w_class = WEIGHT_CLASS_NORMAL
+	w_class = WEIGHT_CLASS_SMALL
 	volume = 24
 	obj_flags = CAN_BE_HIT
 	sellprice = 1
@@ -23,7 +23,7 @@
 	cut_overlays()
 
 	if(reagents.total_volume)
-		var/mutable_appearance/filling = mutable_appearance('icons/roguetown/items/cooking.dmi', "[icon_state]filling")
+		var/mutable_appearance/filling = mutable_appearance('modular/Neu_Food/icons/cooking.dmi', "[icon_state]filling")
 
 		filling.color = mix_color_from_reagents(reagents.reagent_list)
 		filling.alpha = mix_alpha_from_reagents(reagents.reagent_list)
@@ -141,7 +141,7 @@
 	amount_per_transfer_from_this = 6
 	possible_transfer_amounts = list(6)
 	dropshrink = 0.8
-	w_class = WEIGHT_CLASS_NORMAL
+	w_class = WEIGHT_CLASS_SMALL
 	volume = 24
 	obj_flags = CAN_BE_HIT
 	sellprice = 1

@@ -1,8 +1,8 @@
 /mob/living/proc/update_rogfat() //update hud and regen after last_fatigued delay on taking
-//	maxrogfat = round(100 * (rogstam/maxrogstam))
-//	if(maxrogfat < 5)
-//		maxrogfat = 5
-
+	var/athletics_skill = 0
+	if(mind)
+		athletics_skill = mind.get_skill_level(/datum/skill/misc/athletics)
+	maxrogfat = (STAEND + (athletics_skill) / 2) * 10 //This here is the calculation for max FATIGUE / GREEN
 	if(world.time > last_fatigued + 50) //regen fatigue
 		var/added = rogstam / maxrogstam
 		added = round(-10+ (added*-40))
@@ -19,7 +19,7 @@
 	var/athletics_skill = 0
 	if(mind)
 		athletics_skill = mind.get_skill_level(/datum/skill/misc/athletics)
-	maxrogstam = (STAEND + (athletics_skill/2 ) ) * 100
+	maxrogstam = (STAEND + (athletics_skill) / 2) * 100 // STAMINA / BLUE
 	if(cmode)
 		if(!HAS_TRAIT(src, TRAIT_BREADY))
 			rogstam_add(-2)
@@ -29,6 +29,8 @@
 
 /mob/living/rogstam_add(added as num)
 	if(HAS_TRAIT(src, TRAIT_NOROGSTAM))
+		return TRUE
+	if(HAS_TRAIT(src, TRAIT_NOSLEEP))
 		return TRUE
 	if(m_intent == MOVE_INTENT_RUN)
 		mind.add_sleep_experience(/datum/skill/misc/athletics, (STAINT*0.02))
@@ -82,6 +84,9 @@
 		addtimer(CALLBACK(src, PROC_REF(Immobilize), 30), 10)
 		if(iscarbon(src))
 			var/mob/living/carbon/C = src
+			if(isseelie(C))  //Add wingcheck here
+				C.visible_message(span_warning("[C] falls from the air!"), span_warning("I fall down in exhaustion!"))
+				addtimer(CALLBACK(C, TYPE_PROC_REF(/mob/living/carbon/human, Knockdown), 10), 10)
 			if(C.get_stress_amount() >= 30)
 				C.heart_attack()
 			if(!HAS_TRAIT(C, TRAIT_NOHUNGER))

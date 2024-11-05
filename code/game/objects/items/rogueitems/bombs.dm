@@ -4,7 +4,7 @@
 	desc = "Dangerous explosion, in a bottle."
 	icon_state = "clear_bomb"
 	icon = 'icons/roguetown/items/cooking.dmi'
-	w_class = WEIGHT_CLASS_NORMAL
+	w_class = WEIGHT_CLASS_SMALL
 	//dropshrink = 0
 	throwforce = 0
 	slot_flags = ITEM_SLOT_HIP

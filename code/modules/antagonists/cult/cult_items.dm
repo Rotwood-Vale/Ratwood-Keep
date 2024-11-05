@@ -632,7 +632,7 @@
 /obj/item/twohanded/cult_spear/Destroy()
 	if(spear_act)
 		qdel(spear_act)
-	..()
+	return ..()
 
 /obj/item/twohanded/cult_spear/update_icon()
 	icon_state = "bloodspear[wielded]"

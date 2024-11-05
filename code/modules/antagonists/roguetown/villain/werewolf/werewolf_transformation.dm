@@ -115,9 +115,12 @@
 	to_chat(W, span_userdanger("I transform into a horrible beast!"))
 	W.emote("rage")
 
-	W.mind.adjust_skillrank(/datum/skill/combat/wrestling, 6, TRUE)
-	W.mind.adjust_skillrank(/datum/skill/combat/unarmed, 6, TRUE)
+	W.mind.adjust_skillrank(/datum/skill/combat/wrestling, 5, TRUE)
+	W.mind.adjust_skillrank(/datum/skill/combat/unarmed, 5, TRUE)
 	W.mind.adjust_skillrank(/datum/skill/misc/climbing, 6, TRUE)
+
+	if(isseelie(W.stored_mob))
+		W.change_stat("speed", -3)
 
 	W.AddSpell(new /obj/effect/proc_holder/spell/self/howl)
 	W.AddSpell(new /obj/effect/proc_holder/spell/self/claws)
@@ -127,18 +130,14 @@
 	ADD_TRAIT(W, TRAIT_STRONGBITE, TRAIT_GENERIC)
 	ADD_TRAIT(W, TRAIT_ZJUMP, TRAIT_GENERIC)
 	ADD_TRAIT(W, TRAIT_NOFALLDAMAGE1, TRAIT_GENERIC)
-	ADD_TRAIT(W, TRAIT_NOROGSTAM, TRAIT_GENERIC)
 	ADD_TRAIT(W, TRAIT_BASHDOORS, TRAIT_GENERIC)
-	ADD_TRAIT(W, TRAIT_SHOCKIMMUNE, TRAIT_GENERIC)
 	ADD_TRAIT(W, TRAIT_STEELHEARTED, TRAIT_GENERIC)
-	ADD_TRAIT(W, TRAIT_TOLERANT, TRAIT_GENERIC)
 	ADD_TRAIT(W, TRAIT_BREADY, TRAIT_GENERIC)
 	ADD_TRAIT(W, TRAIT_TOXIMMUNE, TRAIT_GENERIC)
 	ADD_TRAIT(W, TRAIT_ORGAN_EATER, TRAIT_GENERIC)
 	ADD_TRAIT(W, TRAIT_NASTY_EATER, TRAIT_GENERIC)
 	ADD_TRAIT(W, TRAIT_NOSTINK, TRAIT_GENERIC)
 	ADD_TRAIT(W, TRAIT_CRITICAL_RESISTANCE, TRAIT_GENERIC)
-	ADD_TRAIT(W, TRAIT_IGNOREDAMAGESLOWDOWN, TRAIT_GENERIC)
 	ADD_TRAIT(W, TRAIT_IGNORESLOWDOWN, TRAIT_GENERIC)
 	ADD_TRAIT(W, TRAIT_HARDDISMEMBER, TRAIT_GENERIC)
 	ADD_TRAIT(W, TRAIT_PIERCEIMMUNE, TRAIT_GENERIC)
@@ -176,6 +175,8 @@
 	W.mind.known_skills = WA.stored_skills.Copy()
 	W.mind.skill_experience = WA.stored_experience.Copy()
 
+	if(isseelie(W.stored_mob))
+		W.change_stat("speed", 3)
 	W.RemoveSpell(new /obj/effect/proc_holder/spell/self/howl)
 	W.RemoveSpell(new /obj/effect/proc_holder/spell/self/claws)
 

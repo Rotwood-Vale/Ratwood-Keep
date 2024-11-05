@@ -20,22 +20,21 @@
 	armor = /obj/item/clothing/suit/roguetown/armor/chainmail/iron
 	wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
 	backl = /obj/item/storage/backpack/rogue/backpack
-	backpack_contents = list(/obj/item/bomb = 1, /obj/item/flint = 1, /obj/item/reagent_containers/glass/mortar = 1, /obj/item/pestle = 1, /obj/item/natural/rock/coal = 3)
+	backpack_contents = list(/obj/item/bomb = 1, /obj/item/flint = 1, /obj/item/reagent_containers/glass/mortar = 1, /obj/item/natural/rock/coal = 3)
 	if(prob(50))
 		beltr = /obj/item/rogueweapon/pick
 	else
 		beltr = /obj/item/rogueweapon/hammer
 	if(prob(50))
-		shoes = /obj/item/clothing/shoes/roguetown/boots/leather
+		shoes = /obj/item/clothing/shoes/roguetown/armor/leather
 	H.mind.adjust_skillrank(/datum/skill/combat/maces, 3, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/craft/crafting, 4, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/misc/alchemy, 2, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/swimming, 1, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/climbing, 1, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/sewing, 1, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/athletics, 1, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/misc/medicine, 1, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/misc/treatment, 2, TRUE)
 	H.change_stat("strength", 1)
 	H.change_stat("endurance", 1)

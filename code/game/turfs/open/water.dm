@@ -57,6 +57,10 @@
 
 /turf/open/water/Exited(atom/movable/AM, atom/newloc)
 	. = ..()
+	var/mob/living/carbon/human/FM = AM
+	if(isseelie(FM) && !(FM.resting))	//Add wingcheck
+		return
+
 	for(var/obj/structure/S in src)
 		if(S.obj_flags & BLOCK_Z_OUT_DOWN)
 			return
@@ -108,6 +112,10 @@
 
 /turf/open/water/Entered(atom/movable/AM, atom/oldLoc)
 	. = ..()
+	var/mob/living/carbon/human/FM = AM
+	if(isseelie(FM) && !(FM.resting))	//Add wingcheck
+		return
+
 	for(var/obj/structure/S in src)
 		if(S.obj_flags & BLOCK_Z_OUT_DOWN)
 			return
@@ -142,7 +150,7 @@
 				user.changeNext_move(CLICK_CD_MELEE)
 				playsound(user, 'sound/foley/drawwater.ogg', 100, FALSE)
 				var/list/L = list()
-				L[water_reagent] = 100
+				L[water_reagent] = 200
 				C.reagents.add_reagent_list(L)
 				to_chat(user, span_notice("I fill [C] from [src]."))
 			return
@@ -188,7 +196,7 @@
 		user.visible_message(span_info("[user] starts to drink from [src]."))
 		if(do_after(L, 25, target = src))
 			var/list/waterl = list()
-			waterl[water_reagent] = 2
+			waterl[water_reagent] = 12
 			var/datum/reagents/reagents = new()
 			reagents.add_reagent_list(waterl)
 			reagents.trans_to(L, reagents.total_volume, transfered_by = user, method = INGEST)
@@ -209,6 +217,10 @@
 		O.extinguish()
 
 /turf/open/water/get_slowdown(mob/user)
+	var/mob/living/carbon/human/FM = user
+	if(isseelie(FM) && !(FM.resting))	//Add wingcheck
+		return
+
 	var/returned = slowdown
 	if(user.mind && swim_skill)
 		returned = returned - (user.mind.get_skill_level(/datum/skill/misc/swimming))
@@ -268,6 +280,9 @@
 
 /turf/open/water/swamp/Entered(atom/movable/AM, atom/oldLoc)
 	. = ..()
+	var/mob/living/carbon/human/FM = AM
+	if(isseelie(FM) && !(FM.resting))	//Add wingcheck
+		return
 	if(isliving(AM) && !AM.throwing)
 		if(!prob(3))
 			return
@@ -297,6 +312,9 @@
 
 /turf/open/water/swamp/deep/Entered(atom/movable/AM, atom/oldLoc)
 	. = ..()
+	var/mob/living/carbon/human/FM = AM
+	if(isseelie(FM) && !(FM.resting))	//Add wingcheck
+		return
 	if(isliving(AM) && !AM.throwing)
 		if(!prob(8))
 			return
@@ -359,9 +377,11 @@
 
 /turf/open/water/river/Entered(atom/movable/AM, atom/oldLoc)
 	. = ..()
-	if(isliving(AM))
-		if(!river_processing)
-			river_processing = addtimer(CALLBACK(src, PROC_REF(process_river)), 5, TIMER_STOPPABLE)
+	var/mob/living/carbon/human/FM = AM
+	if(isseelie(FM) && !(FM.resting))	//Add wingcheck
+		return
+	if(!river_processing)
+		river_processing = addtimer(CALLBACK(src, PROC_REF(process_river)), 5, TIMER_STOPPABLE)
 
 /turf/open/water/river/proc/process_river()
 	river_processing = null

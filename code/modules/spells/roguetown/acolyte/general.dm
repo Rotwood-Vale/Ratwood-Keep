@@ -9,7 +9,7 @@
 	warnie = "sydwarning"
 	movement_interrupt = FALSE
 	sound = 'sound/magic/heal.ogg'
-	invocation_type = "none"
+	invocation_type = "whisper"
 	associated_skill = /datum/skill/magic/holy
 	antimagic_allowed = TRUE
 	charge_max = 10 SECONDS
@@ -25,9 +25,17 @@
 			target.adjustFireLoss(10)
 			target.fire_act(1,10)
 			return TRUE
+		if(HAS_TRAIT(target, TRAIT_ASTRATA_CURSE))
+			target.visible_message(span_danger("[target] recoils in pain!"), span_userdanger("Divine healing shuns me!"))
+			target.cursed_freak_out()
+			return FALSE
+		if(HAS_TRAIT(target, TRAIT_ATHEISM_CURSE))
+			target.visible_message(span_danger("[target] recoils in disgust!"), span_userdanger("These fools are trying to cure me with religion!!"))
+			target.cursed_freak_out()
+			return FALSE
 		//this if chain is stupid, replace with variables on /datum/patron when possible?
 		switch(user.patron.type)
-			if(/datum/patron/old_god)
+			if(/datum/patron/psydon)
 				target.visible_message(span_info("A strange stirring feeling pours from [target]!"), span_notice("Sentimental thoughts drive away my pains!"))
 			if(/datum/patron/divine/astrata)
 				target.visible_message(span_info("A wreath of gentle light passes over [target]!"), span_notice("I'm bathed in holy light!"))
@@ -49,7 +57,7 @@
 				target.visible_message("<span class='info'>A tempering heat is discharged out of [target]!</span>", "<span class='notice'>I feel the heat of a forge soothing my pains!</span>")
 			if(/datum/patron/divine/eora)
 				target.visible_message("<span class='info'>An emanance of love blossoms around [target]!</span>", "<span class='notice'>I'm filled with the restorative warmth of love!</span>")
-			if(/datum/patron/inhumen/zizo)
+			if(/datum/patron/zizo)
 				target.visible_message(span_info("Vital energies are sapped towards [target]!"), span_notice("The life around me pales as I am restored!"))
 			if(/datum/patron/inhumen/graggar)
 				target.visible_message(span_info("Foul fumes billow outward as [target] is restored!"), span_notice("A noxious scent burns my nostrils, but I feel better!"))
@@ -76,6 +84,7 @@
 		target.adjustOxyLoss(-25)
 		target.blood_volume += BLOOD_VOLUME_SURVIVE/2
 		return TRUE
+	revert_cast()
 	return FALSE
 
 // Miracle
@@ -92,7 +101,7 @@
 	chargedloop = null
 	req_items = list(/obj/item/clothing/neck/roguetown/psicross)
 	sound = 'sound/magic/heal.ogg'
-	invocation_type = "none"
+	invocation_type = "whisper"
 	associated_skill = /datum/skill/magic/holy
 	antimagic_allowed = TRUE
 	charge_max = 20 SECONDS
@@ -108,6 +117,14 @@
 			target.adjustFireLoss(25)
 			target.fire_act(1,10)
 			return TRUE
+		if(HAS_TRAIT(target, TRAIT_ASTRATA_CURSE))
+			target.visible_message(span_danger("[target] recoils in pain!"), span_userdanger("Divine healing shuns me!"))
+			target.cursed_freak_out()
+			return FALSE
+		if(HAS_TRAIT(target, TRAIT_ATHEISM_CURSE))
+			target.visible_message(span_danger("[target] recoils in disgust!"), span_userdanger("These fools are trying to cure me with religion!!"))
+			target.cursed_freak_out()
+			return FALSE
 		target.visible_message(span_info("A wreath of gentle light passes over [target]!"), span_notice("I'm bathed in holy light!"))
 		if(iscarbon(target))
 			var/mob/living/carbon/C = target
@@ -124,4 +141,5 @@
 		target.adjustOxyLoss(-50)
 		target.blood_volume += BLOOD_VOLUME_SURVIVE
 		return TRUE
+	revert_cast()
 	return FALSE

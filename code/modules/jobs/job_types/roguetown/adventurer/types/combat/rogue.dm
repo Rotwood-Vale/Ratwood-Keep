@@ -34,12 +34,12 @@
 			H.mind.adjust_skillrank(/datum/skill/craft/crafting, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/reading, pick(0,1,1), TRUE)
 			H.mind.adjust_skillrank(/datum/skill/craft/traps, 2, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/misc/medicine, pick(0,1), TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/treatment, pick(0,1), TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 5, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/stealing, 5, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/riding, pick(1,2), TRUE)
 			H.mind.adjust_skillrank(/datum/skill/craft/engineering, 1, TRUE)
-			shoes = /obj/item/clothing/shoes/roguetown/boots
+			shoes = /obj/item/clothing/shoes/roguetown/armor
 			neck = /obj/item/storage/belt/rogue/pouch/coins/poor
 			pants = /obj/item/clothing/under/roguetown/trou/leather
 			shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
@@ -70,13 +70,13 @@
 			H.mind.adjust_skillrank(/datum/skill/misc/climbing, pick(5,6), TRUE)
 			H.mind.adjust_skillrank(/datum/skill/craft/crafting, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/misc/medicine, pick(0,1), TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/treatment, pick(0,1), TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/stealing, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/riding, pick(1,2), TRUE)
 			H.mind.adjust_skillrank(/datum/skill/craft/engineering, 1, TRUE)
 			head = /obj/item/clothing/head/roguetown/helmet/tricorn
-			shoes = /obj/item/clothing/shoes/roguetown/boots
+			shoes = /obj/item/clothing/shoes/roguetown/armor
 			pants = /obj/item/clothing/under/roguetown/trou/leather
 			shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
 			gloves = /obj/item/clothing/gloves/roguetown/leather/black
@@ -93,4 +93,3 @@
 			H.change_stat("intelligence", 1)
 			H.cmode_music = 'sound/music/combat_duelist.ogg'
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
-	ADD_TRAIT(H, TRAIT_STEELHEARTED, TRAIT_GENERIC)

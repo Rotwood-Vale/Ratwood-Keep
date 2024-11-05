@@ -73,33 +73,41 @@
 		if(stringamt < 1)
 			to_chat(user, span_warning("The needle has no thread left!"))
 			return
-		if(I.sewrepair && I.max_integrity && !I.obj_broken)
+		if(I.sewrepair && I.max_integrity)
 			if(I.obj_integrity == I.max_integrity)
-				to_chat(user, span_warning("This is not broken."))
-				return
-			if(user.mind.get_skill_level(/datum/skill/misc/sewing) < I.required_repair_skill)
-				to_chat(user, span_warning("I don't know how to repair this..."))
+				to_chat(user, span_warning("This is not damaged!"))
 				return
 			if(!I.ontable())
 				to_chat(user, span_warning("I should put this on a table first."))
 				return
+			var/armor_value = 0
+			var/skill_level = user.mind.get_skill_level(/datum/skill/misc/sewing)
+			for(var/key in I.armor.getList()) // Here we are checking if the armor value of the item is 0 so we can know if the item is armor without having to make a snowflake var
+				armor_value += I.armor[key]
+			if((armor_value == 0 && skill_level < 1) || (armor_value > 0 && skill_level < 2))
+				to_chat(user, span_warning("I should probably not be doing this..."))
 			playsound(loc, 'sound/foley/sewflesh.ogg', 100, TRUE, -2)
-			var/sewtime = 70
-			if(user.mind)
-				sewtime = (70 - ((user.mind.get_skill_level(/datum/skill/misc/sewing)) * 10))
-			var/datum/component/storage/target_storage = I.GetComponent(/datum/component/storage) //Vrell - Part of storage item repair fix
-			if(do_after(user, sewtime, target = I))
-				playsound(loc, 'sound/foley/sewflesh.ogg', 100, TRUE, -2)
-				user.visible_message(span_info("[user] repairs [I]!"))
-				I.obj_integrity = I.max_integrity
-				//Vrell - Part of storage item repair fix
-				if(target_storage)
-					target_storage.being_repaired = FALSE
+			var/skill_multiplied = (skill_level * 10)
+			var/sewtime = (60 - skill_multiplied)
+			if(!do_after(user, sewtime, target = I))
 				return
+			if((armor_value == 0 && skill_level > 0) || (armor_value > 0 && skill_level > 1)) //If not armor but skill level at least 1 or Armor and skill level at least 2
+				user.visible_message(span_info("[user] repairs [I]!"))
+				I.obj_integrity = min(I.obj_integrity + skill_multiplied, I.max_integrity)
 			else
-				//Vrell - Part of storage item repair fix
-				if(target_storage)
-					target_storage.being_repaired = FALSE
+				if(prob(20 - user.STALUC)) //Unlucky here!
+					I.take_damage(150, BRUTE, "slash")
+					user.visible_message(span_info("[user] was extremely unlucky and ruined [I] while trying to unskillfuly repair it!"))
+					playsound(src, 'sound/foley/cloth_rip.ogg', 50, TRUE)
+				else if(prob(user.STALUC)) //Lucky here!
+					I.obj_integrity = min(I.obj_integrity + 50, I.max_integrity)
+					playsound(src, 'sound/magic/ahh2.ogg', 50, TRUE)
+					user.visible_message(span_info("A miracle! [user] somehow managed to repair [I] while not having a single clue what he was doing!"))
+				else
+					I.take_damage(50, BRUTE, "slash")
+					user.visible_message(span_info("[user] damaged [I] due to a lack of skill!"))
+					playsound(src, 'sound/foley/cloth_rip.ogg', 50, TRUE)
+				user.mind.add_sleep_experience(/datum/skill/misc/sewing, (user.STAINT) / 2) // Only failing if we have no idea what we're doing
 		return
 	return ..()
 
@@ -111,9 +119,6 @@
 	if(stringamt < 1)
 		to_chat(user, span_warning("The needle has no thread left!"))
 		return
-	if(!get_location_accessible(patient, check_zone(doctor.zone_selected)))
-		to_chat(doctor, span_warning("Something in the way."))
-		return FALSE
 	var/list/sewable
 	var/obj/item/bodypart/affecting
 	if(iscarbon(patient))
@@ -136,7 +141,7 @@
 
 	var/moveup = 10
 	if(doctor.mind)
-		moveup = ((doctor.mind.get_skill_level(/datum/skill/misc/medicine)+1) * 5)
+		moveup = ((doctor.mind.get_skill_level(/datum/skill/misc/treatment)+1) * 5)
 	while(!QDELETED(target_wound) && !QDELETED(src) && \
 		!QDELETED(user) && (target_wound.sew_progress < target_wound.sew_threshold) && \
 		stringamt >= 1)
@@ -147,7 +152,7 @@
 		if(target_wound.sew_progress < target_wound.sew_threshold)
 			continue
 		if(doctor.mind)
-			doctor.mind.add_sleep_experience(/datum/skill/misc/medicine, doctor.STAINT * 2.5)
+			doctor.mind.add_sleep_experience(/datum/skill/misc/treatment, doctor.STAINT * 2.5)
 		use(1)
 		target_wound.sew_wound()
 		if(patient == doctor)

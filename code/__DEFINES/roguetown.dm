@@ -20,6 +20,7 @@
 	/datum/species/halforc,\
 	/datum/species/kobold,\
 	/datum/species/goblinp,\
+	/datum/species/seelie,\
 )
 
 #define RACES_RESPECTED \
@@ -50,13 +51,20 @@
 	/datum/species/halforc
 
 #define RACES_DESPISED \
-	/datum/species/goblinp,\
+	/datum/species/goblinp
+
+#define RACES_SEELIE \
+	/datum/species/seelie	//Seelie having its own global define and nothing else will prevent allowing it via RACES_ALL_KINDS
 
 #define RACES_ALL_KINDS list(RACES_DESPISED, RACES_SHUNNED, RACES_TOLERATED, RACES_VERY_SHUNNED, RACES_RESPECTED)
+
+#define RACES_ALL_KINDS_PLUS_SEELIE list(RACES_DESPISED, RACES_SHUNNED, RACES_TOLERATED, RACES_VERY_SHUNNED, RACES_RESPECTED, RACES_SEELIE)
 
 #define RACES_VERY_SHUNNED_UP list(RACES_SHUNNED, RACES_TOLERATED, RACES_VERY_SHUNNED, RACES_RESPECTED)
 
 #define RACES_SHUNNED_UP list(RACES_SHUNNED, RACES_TOLERATED, RACES_RESPECTED)
+
+#define RACES_SHUNNED_UP_PLUS_SEELIE list(RACES_SHUNNED, RACES_TOLERATED, RACES_RESPECTED, RACES_SEELIE)
 
 #define RACES_TOLERATED_UP list(RACES_TOLERATED, RACES_RESPECTED)
 
@@ -80,6 +88,7 @@
 	/datum/species/demihuman,\
 	/datum/species/kobold,\
 	/datum/species/goblinp,\
+	/datum/species/seelie,\
 )
 
 #define CLOTHED_RACES_TYPES list(\
@@ -103,6 +112,7 @@
 	/datum/species/halforc,\
 	/datum/species/kobold,\
 	/datum/species/goblinp,\
+	/datum/species/seelie,\
 )
 // Non-dwarf non-kobold non-goblin mostly
 #define NON_DWARVEN_RACE_TYPES list(\
@@ -122,6 +132,7 @@
 	/datum/species/anthromorph,\
 	/datum/species/demihuman,\
 	/datum/species/halforc,\
+	/datum/species/seelie,\
 )
 // Non-elf non-dwarf non-kobold non-goblin mostly
 #define HUMANLIKE_RACE_TYPES list(\
@@ -138,11 +149,65 @@
 	/datum/species/anthromorph,\
 	/datum/species/demihuman,\
 )
-#define ALL_CLERIC_PATRONS list(/datum/patron/divine/astrata, /datum/patron/divine/noc, /datum/patron/divine/dendor, /datum/patron/divine/necra, /datum/patron/divine/pestra)
+#define ALL_CLERIC_PATRONS list(\
+	/datum/patron/divine/astrata,\
+	/datum/patron/divine/noc,\
+	/datum/patron/divine/dendor,\
+	/datum/patron/divine/necra,\
+	/datum/patron/divine/pestra,\
+	/datum/patron/divine/malum,\
+	/datum/patron/divine/ravox,\
+)
 
-#define ALL_ACOLYTE_PATRONS list(/datum/patron/divine/astrata, /datum/patron/divine/noc, /datum/patron/divine/dendor, /datum/patron/divine/pestra)
+#define ALL_ACOLYTE_PATRONS list(\
+	/datum/patron/divine/astrata,\
+	/datum/patron/divine/noc,\
+	/datum/patron/divine/dendor,\
+	/datum/patron/divine/pestra,\
+	/datum/patron/divine/malum\
+)
 
-#define ALL_DIVINE_PATRONS list(/datum/patron/divine/astrata, /datum/patron/divine/noc, /datum/patron/divine/dendor, /datum/patron/divine/abyssor, /datum/patron/divine/ravox, /datum/patron/divine/necra, /datum/patron/divine/xylix, /datum/patron/divine/pestra, /datum/patron/divine/malum, /datum/patron/divine/eora)
+#define ALL_DIVINE_PATRONS list(\
+	/datum/patron/divine/astrata,\
+	/datum/patron/divine/noc,\
+	/datum/patron/divine/dendor,\
+	/datum/patron/divine/abyssor,\
+	/datum/patron/divine/ravox,\
+	/datum/patron/divine/necra,\
+	/datum/patron/divine/xylix,\
+	/datum/patron/divine/pestra,\
+	/datum/patron/divine/malum,\
+	/datum/patron/divine/eora\
+)
+
+#define TEN_CURSES list(\
+	/datum/curse/astrata,\
+	/datum/curse/noc,\
+	/datum/curse/ravox,\
+	/datum/curse/necra,\
+	/datum/curse/xylix,\
+	/datum/curse/pestra,\
+	/datum/curse/eora\
+)
+
+#define INHUMEN_CURSES list(\
+	/datum/curse/zizo,\
+	/datum/curse/graggar,\
+	/datum/curse/matthios,\
+	/datum/curse/baotha\
+)
+
+#define SPECIAL_CURSES list(\
+	/datum/curse/atheism\
+)
+
+#define ALL_CURSES list(\
+	SPECIAL_CURSES,\
+	TEN_CURSES,\
+	INHUMEN_CURSES\
+)
+
+#define ALL_NON_INHUMEN_PATRONS list(/datum/patron/divine/astrata, /datum/patron/divine/noc, /datum/patron/divine/dendor, /datum/patron/divine/abyssor, /datum/patron/divine/ravox, /datum/patron/divine/necra, /datum/patron/divine/xylix, /datum/patron/divine/pestra, /datum/patron/divine/malum, /datum/patron/divine/eora, /datum/patron/psydon)
 
 #define PLATEHIT "plate"
 #define CHAINHIT "chain"
@@ -204,6 +269,7 @@ GLOBAL_LIST_EMPTY(job_respawn_delays)
 #define CTAG_BANDIT			"CAT_BANDIT"		// Bandit class - Tied to the bandit antag really
 #define CTAG_CHALLENGE 		"CAT_CHALLENGE"  	// Challenge class - Meant to be free for everyone
 #define CTAG_MERCENARY 		"CAT_MERCENARY" 	// Mercs
+#define CTAG_BOG 		"CAT_BOG" 	// Bog guards
 
 /*
 	Defines for the triumph buy datum categories
@@ -212,3 +278,31 @@ GLOBAL_LIST_EMPTY(job_respawn_delays)
 #define TRIUMPH_CAT_CHARACTER "CHARACTER"
 #define TRIUMPH_CAT_MISC "MISC!"
 #define TRIUMPH_CAT_ACTIVE_DATUMS "ACTIVE"
+
+/*	........   Nutrition defines   ................ */
+#define MEAL_FILLING 30
+#define MEAL_GOOD 24
+#define MEAL_AVERAGE 18
+#define MEAL_MEAGRE 15
+#define SNACK_CHUNKY 12
+#define SNACK_NUTRITIOUS 9
+#define SNACK_DECENT 6
+#define SNACK_POOR 3
+
+#define DOUGH_NUTRITION MEAL_MEAGRE
+#define SMALLDOUGH_NUTRITION MEAL_MEAGRE/2
+#define BUTTERDOUGH_NUTRITION DOUGH_NUTRITION+BUTTERSLICE_NUTRITION
+#define BUTTERDOUGHSLICE_NUTRITION BUTTERDOUGH_NUTRITION/2
+#define BUTTER_NUTRITION SNACK_CHUNKY
+#define BUTTERSLICE_NUTRITION BUTTER_NUTRITION/6
+#define MEATSLAB_NUTRITION SNACK_NUTRITIOUS
+#define SAUSAGE_NUTRITION SNACK_NUTRITIOUS
+#define MINCE_NUTRITION MEATSLAB_NUTRITION/2
+#define FRESHCHEESE_NUTRITION SNACK_DECENT
+
+/*	........   Rotting defines   ................ */
+#define SHELFLIFE_EXTREME 270 MINUTES
+#define SHELFLIFE_LONG 135 MINUTES
+#define SHELFLIFE_DECENT 75 MINUTES
+#define SHELFLIFE_SHORT 45 MINUTES
+#define SHELFLIFE_TINY 30 MINUTES

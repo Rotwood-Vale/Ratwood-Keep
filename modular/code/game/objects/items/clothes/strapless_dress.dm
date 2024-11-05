@@ -26,44 +26,7 @@
 
 /obj/item/clothing/suit/roguetown/shirt/dress/gen/strapless/random/Initialize()
 	color = pick(CLOTHING_BLACK, CLOTHING_BLUE, "#664357", "#6F0000")
-	..()
-
-//CRAFTING
-
-/datum/crafting_recipe/roguetown/sewing/strapless_dress
-	name = "strapless dress"
-	result = list(/obj/item/clothing/suit/roguetown/shirt/dress/gen/strapless)
-	reqs = list(/obj/item/natural/cloth = 2,
-				/obj/item/natural/fibers = 1)
-	craftdiff = 3
-
-/datum/crafting_recipe/roguetown/sewing/strapless_dress_black
-	name = "black strapless dress"
-	result = list(/obj/item/clothing/suit/roguetown/shirt/dress/gen/strapless/black)
-	reqs = list(/obj/item/natural/cloth = 2,
-				/obj/item/natural/fibers = 1)
-	craftdiff = 3
-
-/datum/crafting_recipe/roguetown/sewing/strapless_dress_blue
-	name = "blue strapless dress"
-	result = list(/obj/item/clothing/suit/roguetown/shirt/dress/gen/strapless/blue)
-	reqs = list(/obj/item/natural/cloth = 2,
-				/obj/item/natural/fibers = 1)
-	craftdiff = 3
-
-/datum/crafting_recipe/roguetown/sewing/strapless_dress_red
-	name = "red strapless dress"
-	result = list(/obj/item/clothing/suit/roguetown/shirt/dress/gen/strapless/red)
-	reqs = list(/obj/item/natural/cloth = 2,
-				/obj/item/natural/fibers = 1)
-	craftdiff = 3
-
-/datum/crafting_recipe/roguetown/sewing/strapless_dress_purple
-	name = "purple strapless dress"
-	result = list(/obj/item/clothing/suit/roguetown/shirt/dress/gen/strapless/purple)
-	reqs = list(/obj/item/natural/cloth = 2,
-				/obj/item/natural/fibers = 1)
-	craftdiff = 3
+	return ..()
 
 //SUPPLY
 

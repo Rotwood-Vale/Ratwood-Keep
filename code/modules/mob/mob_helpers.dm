@@ -302,7 +302,7 @@
 /**
   * change a mob's act-intent.
   *
-  * Input the intent as a string such as "help" or use "right"/"left
+  * Input the intent as a /datum/intent, or the strings "left" or "right"
   */
 /mob/verb/a_intent_change(input as text)
 	set name = "a-intent"
@@ -556,7 +556,7 @@
 	if(isliving(src))
 		L = src
 	var/client/client = L.client
-	if(L.IsSleeping())
+	if(L.IsSleeping() || L.surrendering)
 		if(cmode)
 			playsound_local(src, 'sound/misc/comboff.ogg', 100)
 			SSdroning.play_area_sound(get_area(src), client)
@@ -569,8 +569,8 @@
 		playsound_local(src, 'sound/misc/comboff.ogg', 100)
 		SSdroning.play_area_sound(get_area(src), client)
 		set_cmode(FALSE)
-		if(client && HAS_TRAIT(src, TRAIT_SCREENSHAKE))
-			animate(client, pixel_y)
+		if(client && HAS_TRAIT(src, TRAIT_SCHIZO_AMBIENCE) && !HAS_TRAIT(src, TRAIT_SCREENSHAKE))
+			animate(client, pixel_y) // stops screenshake if you're not on 4th wonder yet.
 	else
 		set_cmode(TRUE)
 		playsound_local(src, 'sound/misc/combon.ogg', 100)

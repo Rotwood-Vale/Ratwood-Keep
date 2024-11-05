@@ -111,6 +111,8 @@
 	if(stat)
 		return
 	for(var/mob/living/eattarg in around)
+		if(!(eattarg in enemies)) //Makes a tamed rous not eat people on the floor unless instigated.
+			return
 		if(eattarg.stat != CONSCIOUS)
 			foundfood += eattarg
 			L = eattarg
@@ -152,7 +154,7 @@
 	return FALSE
 
 /mob/living/simple_animal/hostile/retaliate/rogue/Initialize()
-	..()
+	. = ..()
 	if(milkies)
 		udder = new()
 	if(tame)
@@ -177,9 +179,8 @@
 	..()
 
 /mob/living/simple_animal/hostile/retaliate/rogue/Destroy()
-	qdel(udder)
-	udder = null
-	..()
+	QDEL_NULL(udder)
+	return ..()
 
 /mob/living/simple_animal/hostile/retaliate/rogue/Life()
 	. = ..()
@@ -208,9 +209,11 @@
 				growth_prog += 0.5
 				if(growth_prog >= 100)
 					if(isturf(loc))
+						//Spawn the adult & make it tamed if we are. Note that we do NOT transfer damage, reagents, or any state of the animal...
 						var/mob/living/simple_animal/A = new adult_growth(loc)
 						if(tame)
 							A.tame = TRUE
+							A.tamed() //We unfortunately have to do this because by this point Initialize has already ran.
 						qdel(src)
 						return
 			else
@@ -232,7 +235,7 @@
 
 /mob/living/simple_animal/hostile/retaliate/rogue/attackby(obj/item/O, mob/user, params)
 	if(!stat && istype(O, /obj/item/reagent_containers/glass))
-		if(udder)
+		if(udder && tame)
 			udder.milkAnimal(O, user)
 			return 1
 	else
