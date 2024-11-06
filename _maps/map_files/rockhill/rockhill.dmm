@@ -18369,6 +18369,14 @@
 /obj/structure/chair/wood/rogue,
 /turf/open/floor/rogue/cobble/mossy,
 /area/rogue/outdoors/rtfield)
+"qHf" = (
+/obj/structure/chair/wood/rogue{
+	dir = 8;
+	pixel_y = 6;
+	pixel_x = -2
+	},
+/turf/open/floor/carpet/royalblack,
+/area/rogue/indoors)
 "qHs" = (
 /obj/structure/roguemachine/scomm/r,
 /turf/open/floor/rogue/tile,
@@ -19567,6 +19575,7 @@
 /area/rogue/indoors/town)
 "rNN" = (
 /obj/machinery/light/rogue/wallfire/candle/l,
+/obj/structure/bookcase/random,
 /turf/open/floor/rogue/ruinedwood/turned,
 /area/rogue/indoors)
 "rOb" = (
@@ -274339,8 +274348,8 @@ uaL
 qvR
 pAV
 cMs
-htF
-htF
+owc
+owc
 htF
 xou
 uxW
@@ -274739,7 +274748,7 @@ qvR
 efg
 uaL
 qvR
-rDt
+pAV
 jJW
 bqt
 hYr
@@ -275141,7 +275150,7 @@ qvR
 uaL
 uaL
 qvR
-rDt
+pAV
 jJW
 icO
 xKQ
@@ -275545,8 +275554,8 @@ uaL
 uaL
 qxe
 tPH
-htF
-htF
+qHf
+qHf
 htF
 fAY
 ufg
@@ -275947,8 +275956,8 @@ uaL
 uaL
 qxe
 qxe
-rDt
-rDt
+pAV
+pAV
 pAV
 pAV
 pAV
