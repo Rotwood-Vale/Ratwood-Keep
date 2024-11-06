@@ -554,7 +554,7 @@
 	weight = 100
 
 /datum/special_trait/illicit_merchant/on_apply(mob/living/carbon/human/character, silent)
-	character.mind.special_items["Merchant Key"] = /obj/item/roguekey/merchant
+	character.mind.special_items["Merchant Key"] = /obj/item/key/merchant
 	character.mind.special_items["GOLDFACE Gem"] = /obj/item/gem_device/goldface
 
 /datum/special_trait/reps_redemption

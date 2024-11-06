@@ -24,8 +24,8 @@
 	var/drugrade_flags
 
 /obj/structure/roguemachine/drugmachine/attackby(obj/item/P, mob/user, params)
-	if(istype(P, /obj/item/roguekey))
-		var/obj/item/roguekey/K = P
+	if(istype(P, /obj/item/key))
+		var/obj/item/key/K = P
 		if(K.lockid == "nightman")
 			locked = !locked
 			playsound(loc, 'sound/misc/beep.ogg', 100, FALSE, -1)
@@ -36,7 +36,7 @@
 			return
 	if(istype(P, /obj/item/keyring))
 		var/obj/item/keyring/K = P
-		for(var/obj/item/roguekey/KE in K.keys)
+		for(var/obj/item/key/KE in K.keys)
 			if(KE.lockid == "nightman")
 				locked = !locked
 				playsound(loc, 'sound/misc/beep.ogg', 100, FALSE, -1)
