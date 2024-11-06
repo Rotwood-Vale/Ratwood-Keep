@@ -87,3 +87,8 @@
 	name = "Learned"
 	desc = "I am surprisingly well-read for someone of my station, and have no issue with literacy or numbers."
 	added_skills = list(/datum/skill/misc/reading = 3)
+	added_stashed_items = list(
+		"Quill" = /obj/item/natural/feather,
+		"Scroll" = /obj/item/paper/scroll,
+		"Book" = /obj/item/book/rogue/playerbook
+	)
