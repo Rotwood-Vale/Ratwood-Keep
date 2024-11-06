@@ -8877,7 +8877,7 @@
 /turf/open/floor/carpet/royalblack,
 /area/rogue/indoors/town/tavern)
 "hZI" = (
-/obj/structure/roguewindow/openclose,
+/obj/machinery/light/rogue/wallfire/candle/r,
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors)
 "hZR" = (
@@ -12430,8 +12430,10 @@
 /turf/open/floor/rogue/carpet,
 /area/rogue/indoors/town)
 "lrX" = (
-/obj/structure/closet/crate/roguecloset/dark,
-/turf/open/floor/rogue/ruinedwood/spiral,
+/obj/structure/roguewindow/openclose{
+	dir = 8
+	},
+/turf/open/floor/rogue/ruinedwood/turned,
 /area/rogue/indoors)
 "lsc" = (
 /obj/structure/fluff/walldeco/customflag{
@@ -14398,10 +14400,9 @@
 /turf/open/floor/rogue/woodturned,
 /area/rogue/outdoors/town)
 "nhB" = (
-/obj/structure/roguewindow/openclose{
-	dir = 1
-	},
-/turf/open/floor/rogue/wood,
+/obj/structure/bed/rogue,
+/obj/effect/landmark/start/farmer,
+/turf/open/floor/rogue/ruinedwood/turned,
 /area/rogue/indoors)
 "nhC" = (
 /turf/open/floor/rogue/tile{
@@ -17971,9 +17972,10 @@
 /turf/open/floor/rogue/blocks,
 /area/rogue/outdoors/rtfield)
 "qmK" = (
-/obj/structure/mineral_door/wood/red{
-	lockid = "farm";
+/obj/structure/mineral_door/wood/donjon{
+	dir = 8;
 	locked = 1;
+	lockid = "farm";
 	name = "Soilery"
 	},
 /turf/open/floor/rogue/cobblerock,
@@ -20407,19 +20409,10 @@
 /turf/open/transparent/openspace,
 /area/rogue/outdoors/mountains)
 "sEb" = (
-/obj/structure/table/wood{
-	dir = 1;
-	icon_state = "tablewood1"
+/obj/structure/closet/crate/drawer{
+	pixel_x = 6
 	},
-/obj/item/candle/yellow/lit{
-	pixel_x = -4;
-	pixel_y = -1
-	},
-/obj/item/candle/yellow/lit{
-	pixel_x = 5;
-	pixel_y = 2
-	},
-/turf/open/floor/rogue/woodturned,
+/turf/open/floor/rogue/ruinedwood/turned,
 /area/rogue/indoors)
 "sEo" = (
 /obj/structure/table/wood{
@@ -26045,6 +26038,13 @@
 /obj/item/ingot/steel,
 /turf/open/floor/rogue/blocks,
 /area/rogue/indoors/town/dwarfin)
+"xKg" = (
+/obj/structure/mineral_door/wood/red{
+	lockid = "farm";
+	locked = 1
+	},
+/turf/open/floor/rogue/ruinedwood/turned,
+/area/rogue/indoors)
 "xKE" = (
 /obj/effect/decal/cleanable/blood/old,
 /mob/living/carbon/human/species/skeleton/npc/ambush{
@@ -377684,7 +377684,7 @@ wsY
 nqU
 vpz
 pAH
-lrX
+gmm
 nqU
 erZ
 erZ
@@ -378075,7 +378075,7 @@ jKx
 bnq
 eFN
 bzm
-bzm
+hZI
 bzm
 wvV
 qtX
@@ -378476,8 +378476,8 @@ pnf
 xIF
 rtM
 nqU
-cdY
-bzm
+xKg
+nqU
 nqU
 ryI
 pwg
@@ -378877,10 +378877,10 @@ rDt
 qbG
 qbG
 qbG
-hZI
-wsY
-vIF
-nhB
+nqU
+pjf
+tGZ
+nqU
 erZ
 erZ
 erZ
@@ -379280,7 +379280,7 @@ qbG
 qbG
 qbG
 nqU
-wvV
+nhB
 sEb
 nqU
 erZ
@@ -379682,8 +379682,8 @@ qbG
 qbG
 qbG
 ryI
-pwg
-pwg
+lrX
+lrX
 ryI
 erZ
 erZ
