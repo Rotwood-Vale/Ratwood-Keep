@@ -1837,15 +1837,6 @@
 "bMj" = (
 /turf/closed/wall/mineral/rogue/stone,
 /area/rogue/under/cave)
-"bMm" = (
-/obj/structure/closet/crate/chest{
-	lockid = "keep_armory"
-	},
-/obj/item/grown/log/tree,
-/obj/item/grown/log/tree,
-/obj/item/grown/log/tree,
-/turf/open/floor/rogue/blocks/stonered/tiny,
-/area/rogue/indoors/town/dwarfin)
 "bMt" = (
 /obj/structure/fermenting_barrel/random/water,
 /turf/open/floor/rogue/wood,
@@ -5587,7 +5578,7 @@
 "faB" = (
 /obj/structure/mineral_door/wood{
 	locked = 1;
-	lockid = "artificer"
+	lockid = "blacksmith"
 	},
 /turf/open/floor/rogue/blocks/stonered/tiny,
 /area/rogue/indoors/town/dwarfin)
@@ -5843,8 +5834,6 @@
 /area/rogue/outdoors/rtfield)
 "fnw" = (
 /obj/structure/closet/crate/roguecloset,
-/obj/item/rogueweapon/hammer,
-/obj/item/rogueweapon/hammer,
 /obj/item/rogueweapon/hammer,
 /obj/item/rogueweapon/hammer,
 /turf/open/floor/rogue/blocks/stonered/tiny,
@@ -7160,7 +7149,6 @@
 /area/rogue/indoors)
 "gvz" = (
 /obj/structure/rack/rogue,
-/obj/item/flashlight/flare/torch/lantern,
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/dwarfin)
 "gvE" = (
@@ -11373,7 +11361,6 @@
 /area/rogue/indoors/town/manor)
 "ksR" = (
 /obj/structure/bed/rogue,
-/obj/effect/landmark/start/artificer,
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/dwarfin)
 "ksW" = (
@@ -14988,10 +14975,6 @@
 "nGW" = (
 /turf/open/floor/rogue/cobble,
 /area/rogue/indoors/town/church)
-"nHb" = (
-/obj/structure/fluff/walldeco/artificerflag,
-/turf/closed/wall/mineral/rogue/craftstone,
-/area/rogue/indoors/town/dwarfin)
 "nHi" = (
 /obj/structure/noose/gallows,
 /turf/open/floor/rogue/dirt,
@@ -15795,7 +15778,6 @@
 "oqO" = (
 /obj/structure/table/wood,
 /obj/structure/table/wood,
-/obj/item/rogueweapon/stoneaxe/woodcut,
 /turf/open/floor/rogue/blocks/stonered/tiny,
 /area/rogue/indoors/town/dwarfin)
 "oqZ" = (
@@ -17379,7 +17361,7 @@
 "pIt" = (
 /obj/structure/mineral_door/wood{
 	locked = 1;
-	lockid = artificer
+	lockid = "artificer"
 	},
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue/indoors/town)
@@ -17912,8 +17894,8 @@
 /obj/structure/mineral_door/wood/donjon{
 	dir = 4;
 	locked = 1;
-	lockid = artificer;
-	name = "Bog Garrison"
+	lockid = "artificer";
+	name = "Smeltery"
 	},
 /turf/open/floor/rogue/cobble,
 /area/rogue/indoors/town)
@@ -18296,13 +18278,6 @@
 	},
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/shelter/town)
-"qEz" = (
-/obj/structure/mineral_door/wood{
-	locked = 1;
-	lockid = "artificer"
-	},
-/turf/open/floor/rogue/wood,
-/area/rogue/indoors/town/dwarfin)
 "qEF" = (
 /obj/structure/mineral_door/wood/towner/generic/two_keys,
 /turf/open/floor/rogue/ruinedwood{
@@ -23128,7 +23103,7 @@
 /obj/structure/stairs{
 	dir = 8
 	},
-/turf/closed,
+/turf/open/floor/rogue/ruinedwood,
 /area/rogue/indoors/town)
 "uVn" = (
 /obj/machinery/light/rogue/firebowl/standing,
@@ -24579,23 +24554,6 @@
 /obj/item/natural/feather,
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue/indoors/town/magician)
-"wpu" = (
-/obj/structure/closet/crate/chest{
-	lockid = "keep_armory"
-	},
-/obj/item/grown/log/tree/small,
-/obj/item/grown/log/tree/small,
-/obj/item/grown/log/tree/small,
-/obj/item/grown/log/tree/small,
-/obj/item/grown/log/tree/small,
-/obj/item/grown/log/tree/small,
-/obj/item/grown/log/tree/small,
-/obj/item/grown/log/tree/small,
-/obj/item/grown/log/tree/small,
-/obj/item/grown/log/tree/small,
-/obj/item/grown/log/tree/small,
-/turf/open/floor/rogue/blocks/stonered/tiny,
-/area/rogue/indoors/town/dwarfin)
 "wpJ" = (
 /obj/structure/chair/stool/rogue,
 /turf/open/floor/rogue/ruinedwood{
@@ -26274,7 +26232,6 @@
 /area/rogue/indoors/town/tavern)
 "xRx" = (
 /obj/structure/closet/crate/roguecloset,
-/obj/item/flashlight/flare/torch/lantern,
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/dwarfin)
 "xRO" = (
@@ -286040,8 +285997,8 @@ etA
 fnw
 spQ
 oqO
-bMm
-wpu
+rok
+rok
 iyr
 sco
 dbY
@@ -287237,7 +287194,7 @@ wbg
 wbg
 wbg
 wVI
-nHb
+sco
 jeU
 uAe
 uAe
@@ -288460,7 +288417,7 @@ mtR
 lyO
 lyO
 nWy
-nHb
+sco
 wVI
 kDH
 xAt
@@ -296489,7 +296446,7 @@ wVI
 wVI
 wVI
 wVI
-tTh
+wVI
 wVI
 wbg
 wVI
@@ -297293,7 +297250,7 @@ wVI
 wbg
 wbg
 wVI
-wVI
+ylJ
 wVI
 wVI
 wVI
@@ -388951,7 +388908,7 @@ rZi
 sco
 mvp
 mvp
-qEz
+svc
 wlq
 mvp
 mvp
