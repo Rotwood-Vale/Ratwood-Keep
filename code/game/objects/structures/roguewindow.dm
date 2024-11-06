@@ -41,7 +41,7 @@
 	base_state = null
 	opacity = TRUE
 	max_integrity = 100 
-	integrity_failure = 0.75
+	integrity_failure = 0.5
 
 /obj/structure/roguewindow/stained/silver
 	icon_state = "stained-silver"
@@ -60,7 +60,7 @@
 	base_state = "woodwindow"
 	opacity = TRUE
 	max_integrity = 100
-	integrity_failure = 0.9
+	integrity_failure = 0.5
 
 /obj/structure/roguewindow/openclose/reinforced
 	desc = "A glass window. This one looks reinforced with a metal mesh."

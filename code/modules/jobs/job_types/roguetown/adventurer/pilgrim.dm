@@ -16,9 +16,11 @@
 	advclass_cat_rolls = list(CTAG_PILGRIM = 20)
 	PQ_boost_divider = 10
 
+	announce_latejoin = FALSE
 	display_order = JDO_PILGRIM
 	min_pq = -20
 	max_pq = null
+	round_contrib_points = 2
 	wanderer_examine = TRUE
 	advjob_examine = TRUE
 	always_show_on_latechoices = TRUE

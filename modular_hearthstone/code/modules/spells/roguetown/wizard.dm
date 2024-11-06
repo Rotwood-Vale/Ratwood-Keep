@@ -214,6 +214,8 @@
 		/obj/effect/proc_holder/spell/invoked/featherfall,
 		/obj/effect/proc_holder/spell/targeted/touch/darkvision,
 		/obj/effect/proc_holder/spell/invoked/longstrider,
+		/obj/effect/proc_holder/spell/invoked/invisibility,
+		/obj/effect/proc_holder/spell/invoked/blindness,
 	)
 	for(var/i = 1, i <= spell_choices.len, i++)
 		choices["[spell_choices[i].name]: [spell_choices[i].cost]"] = spell_choices[i]

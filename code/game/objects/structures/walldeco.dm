@@ -305,14 +305,16 @@
 		if(HAS_TRAIT(user, TRAIT_NOBLE))
 			stop_yapping = 1
 			icon_state = "face"
-			sleep(200)
+			say("Salut, [user.real_name] de Sommet. Thirty-breths silence period active por votre grace.")
+			playsound(loc, 'sound/misc/gold_menu.ogg', 100, TRUE, -1)
+			sleep(300)
 			stop_yapping = 0
 			icon_state = "alarm"
 			return
 
 		if((HU in SStreasury.bank_accounts)) //do we not have an account?
 			playsound(loc, 'sound/misc/gold_menu.ogg', 100, TRUE, -1)
-			say("Layman [user.real_name] logged entering secure area.")
+			say("Yeoman [user.real_name] logged entering zone securisee.")
 			stop_yapping = 1
 			sleep(60)
 			stop_yapping = 0

@@ -226,10 +226,10 @@
 
 /obj/item/book/rogue/law
 	name = "Tome of Justice"
-	desc = ""
+	desc = "The Tome of laws as passed by the Holy See to its many Ten-worshipping communities."
 	icon_state ="lawtome_0"
 	base_icon_state = "lawtome"
-	bookfile = "law.json"
+	bookfile = "law_2.json"
 
 /obj/item/book/rogue/cooking
 	name = "Tastes Fit For The Lord"

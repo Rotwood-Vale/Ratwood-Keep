@@ -77,6 +77,8 @@
 		if(prob(prob2break))
 			playsound(src,'sound/items/seedextract.ogg', 100, FALSE)
 			qdel(src)
+			if (L.alpha == 0 && L.rogue_sneaking) // not anymore you're not
+				L.update_sneak_invis(TRUE)
 			L.consider_ambush()
 
 /obj/item/grown/log/tree/stick/Initialize()
@@ -132,6 +134,7 @@
 	blade_dulling = 0
 	max_integrity = 20
 	static_debris = null
+	tool_behaviour = TOOL_IMPROVISED_RETRACTOR
 	obj_flags = null
 	w_class = WEIGHT_CLASS_SMALL
 	twohands_required = FALSE

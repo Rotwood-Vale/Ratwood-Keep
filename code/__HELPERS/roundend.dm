@@ -214,6 +214,12 @@
 		if(H.stat != DEAD)
 			if(H.get_triumphs() < 0)
 				H.adjust_triumphs(1)
+		if(GLOB.round_join_times[H.ckey] && H.job && H.allmig_reward)
+			if((GLOB.round_join_times[H.ckey] + 45 MINUTES) < world.time)
+				var/datum/job/job = SSjob.GetJob(H.job)
+				if(job && job.round_contrib_points)
+					to_chat(H, "\n<font color='purple'><b>[job.round_contrib_points]</b> ROUND CONTRIBUTOR POINTS AWARDED. Thank you for playing!</font>")
+					add_roundpoints(job.round_contrib_points, H.ckey)
 	add_roundplayed(key_list)
 //	SEND_SOUND(world, sound(pick('sound/misc/roundend1.ogg','sound/misc/roundend2.ogg')))
 //	SEND_SOUND(world, sound('sound/misc/roundend.ogg'))
@@ -309,7 +315,7 @@
 						"Our actors hang up their masks. A new cast begins to rehearse.",
 						"Thus the week's events have taken place. Eventful or mundane, life continues.",
 						"Pawns of gods, preachers of nite, all come together to recite this tale.",
-						"Whether with loss or life, kingdom survives... for now.",
+						"Whether with loss or life, the duchy survives... for now.",
 						"The people of Azure prepare to look forward; their actions locked in the impermeable past.")
 //		if(C.not_enough_players)
 //			end_reason = "The town was abandoned."

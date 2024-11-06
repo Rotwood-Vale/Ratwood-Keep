@@ -36,6 +36,8 @@
 				// during the day, heal 1 more (basic as fuck)
 				if (GLOB.tod == "day")
 					conditional_buff = TRUE
+					situational_bonus = 2
+				// Day is 1/4th as long as night. Noc priests get a bonus for four times as long and during peak conflict hours, thus Astratans should have more powerful heals
 			if(/datum/patron/divine/noc)
 				target.visible_message(span_info("A shroud of soft moonlight falls upon [target]!"), span_notice("I'm shrouded in gentle moonlight!"))
 				// during the night, heal 1 more (i wish this was more interesting but they're twins so whatever)
@@ -43,12 +45,15 @@
 					conditional_buff = TRUE
 			if(/datum/patron/divine/dendor)
 				target.visible_message(span_info("A rush of primal energy spirals about [target]!"), span_notice("I'm infused with primal energies!"))
-				var/list/natural_stuff = list(/obj/structure/flora/roguegrass, /obj/structure/flora/roguetree, /obj/structure/flora/rogueshroom, /obj/structure/soil)
+				var/list/natural_stuff = list(/obj/structure/flora/roguegrass, /obj/structure/flora/roguetree, /obj/structure/flora/rogueshroom, /obj/structure/soil, /obj/structure/flora/newtree, /obj/structure/flora/tree, /obj/structure/glowshroom)
 				situational_bonus = 0
 				// the more natural stuff around US, the more we heal
 				for (var/obj/O in oview(5, user))
 					if (O in natural_stuff)
 						situational_bonus = min(situational_bonus + 0.1, 2)
+				for (var/obj/structure/flora/roguetree/wise/O in oview(5, user))
+					situational_bonus += 1.5
+				// Healing before the oaken avatar of Dendor in the Druid Grove (exceptionally rare otherwise) supercharges their healing
 				if (situational_bonus > 0)
 					conditional_buff = TRUE
 			if(/datum/patron/divine/abyssor)
@@ -152,6 +157,7 @@
 			target.adjustBruteLoss(-healing*10)
 			target.adjustFireLoss(-healing*10)
 		return TRUE
+	revert_cast()
 	return FALSE
 
 // Miracle
@@ -192,4 +198,5 @@
 			target.adjustBruteLoss(-50)
 			target.adjustFireLoss(-50)
 		return TRUE
+	revert_cast()
 	return FALSE

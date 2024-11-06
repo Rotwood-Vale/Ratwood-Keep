@@ -13,13 +13,14 @@
 		Perhaps in another life, you would have turned out to be a powerful mage, wise archivist or a shrewd steward, \
 		but leprosy took away your younger years. \
 		Out of desperation, you followed the ways of Pestra and managed to be cured. \
-		Now you serve in the King's court ensuring the good health of those inhabiting the keep."
+		Now you serve in the Duke's court ensuring the good health of those inhabiting the keep."
 	outfit = /datum/outfit/job/roguetown/physician
 	whitelist_req = TRUE
 
 	give_bank_account = 30
-	min_pq = 3 //Please don't kill the monarch by operating on strong intent. Play apothecary until you're deserving of the great white beak of doom
+	min_pq = 3 //Please don't kill the duke by operating on strong intent. Play apothecary until you're deserving of the great white beak of doom
 	max_pq = null
+	round_contrib_points = 3
 
 	cmode_music = 'sound/music/combat_physician.ogg'
 

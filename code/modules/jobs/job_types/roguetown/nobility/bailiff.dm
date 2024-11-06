@@ -19,6 +19,7 @@
 	noble_income = 20
 	min_pq = 5
 	max_pq = null
+	round_contrib_points = 3
 	cmode_music = 'sound/music/combat_guard.ogg'
 
 /datum/outfit/job/roguetown/bailiff/pre_equip(mob/living/carbon/human/H)
@@ -126,7 +127,7 @@
 /proc/find_lord(required_stat = CONSCIOUS)
 	var/mob/living/lord
 	for(var/mob/living/carbon/human/H in GLOB.human_list)
-		if(!H.mind || H.job != "Monarch" || (H.stat > required_stat))
+		if(!H.mind || H.job != "Grand Duke" || (H.stat > required_stat))
 			continue
 		lord = H
 		break

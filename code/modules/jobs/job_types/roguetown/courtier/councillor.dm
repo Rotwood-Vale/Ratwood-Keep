@@ -17,6 +17,7 @@
 	noble_income = 20
 	min_pq = 1 //Probably a bad idea to have a complete newbie advising the monarch
 	max_pq = null
+	round_contrib_points = 2
 
 	cmode_music = 'sound/music/combat_fancy.ogg'
 

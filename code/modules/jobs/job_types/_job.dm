@@ -94,6 +94,7 @@
 	var/plevel_req = 0
 	var/min_pq = 0
 	var/max_pq = 0
+	var/round_contrib_points = 0 //Each 10 contributor points counts as 1 PQ, up to 10 PQ.
 
 	var/show_in_credits = TRUE
 	var/announce_latejoin = TRUE

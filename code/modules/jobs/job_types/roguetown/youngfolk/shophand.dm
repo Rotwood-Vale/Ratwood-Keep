@@ -17,6 +17,7 @@
 	give_bank_account = TRUE
 	min_pq = -10
 	max_pq = null
+	round_contrib_points = 2
 
 	cmode_music = 'sound/music/combat_fancy.ogg'
 
@@ -51,8 +52,9 @@
 		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/athletics, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/lockpicking, 2, TRUE)
+		H.change_stat("speed", 1)
 		H.change_stat("intelligence", 1)
-		H.change_stat("fortune", 2)
+		H.change_stat("fortune", 1)
 		if(prob(33))
 			H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 1, TRUE)
 		else if(prob(33))

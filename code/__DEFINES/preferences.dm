@@ -122,8 +122,8 @@
 // Pronouns (LETHALSTONE)
 #define HE_HIM			"he/him"
 #define SHE_HER			"she/her"
-#define THEY_THEM		"they/them (Masc)"
-#define THEY_THEM_F		"they/them (Femme)"
+#define THEY_THEM		"they/them (Masc Clothes)"
+#define THEY_THEM_F		"they/them (Femme Clothes)"
 #define IT_ITS			"it/its"
 
 GLOBAL_LIST_INIT(pronouns_list, list(HE_HIM, SHE_HER, THEY_THEM, THEY_THEM_F, IT_ITS))
