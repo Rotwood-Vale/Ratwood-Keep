@@ -20097,12 +20097,6 @@
 /obj/structure/telescope,
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue/outdoors/town)
-"srU" = (
-/obj/machinery/light/roguestreet/orange{
-	dir = 1
-	},
-/turf/open/floor/rogue/cobble,
-/area/rogue/outdoors/town)
 "ssa" = (
 /obj/item/key/roomhunt,
 /turf/open/floor/rogue/dirt/road,
@@ -285394,7 +285388,7 @@ uaL
 xAt
 xAt
 eoy
-srU
+wbg
 wVI
 vHK
 fYY
