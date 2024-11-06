@@ -5,7 +5,7 @@
 		user.mind.i_know_person(src)
 	var/datum/species/self_species = dna.species
 	var/datum/species/examiner_species = user.dna.species
-	if(self_species.stress_examine && self_species.type != examiner_species.type && !HAS_TRAIT(user, TRAIT_TOLERANT))
+	if(self_species.stress_examine && self_species.type != examiner_species.type)
 		var/event_type = /datum/stressevent/shunned_race
 		if(HAS_TRAIT(user, TRAIT_XENOPHOBIC))
 			event_type = /datum/stressevent/shunned_race_xenophobic
@@ -479,6 +479,13 @@
 
 	if(length(msg))
 		. += span_warning("[msg.Join("\n")]")
+
+	// Show especially large embedded objects at a glance
+	for(var/obj/item/bodypart/part in bodyparts)
+		if (LAZYLEN(part.embedded_objects))
+			for(var/obj/item/stuck_thing in part.embedded_objects)
+				if (stuck_thing.w_class >= WEIGHT_CLASS_SMALL)
+					. += span_bloody("<b>[m3] \a [stuck_thing] stuck in [m2] [part.name]!</b>")
 
 	if((user != src) && isliving(user))
 		var/mob/living/L = user

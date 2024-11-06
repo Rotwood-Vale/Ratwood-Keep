@@ -91,12 +91,12 @@
 	ADD_TRAIT(H, TRAIT_NOBLE, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
-	ADD_TRAIT(H, TRAIT_STEELHEARTED, TRAIT_GENERIC)
 	H.verbs |= /mob/proc/haltyell
 
 /obj/effect/proc_holder/spell/self/convertrole
 	name = "Recruit Beggar"
 	desc = "Recruit someone to your cause."
+	overlay_state = "recruit_bog"
 	antimagic_allowed = TRUE
 	charge_max = 100
 	/// Role given if recruitment is accepted
@@ -143,7 +143,7 @@
 	//only migrants and peasants
 	if(!(recruit.job in GLOB.peasant_positions) && \
 		!(recruit.job in GLOB.yeoman_positions) && \
-		!(recruit.job in GLOB.allmig_positions) && \
+		!(recruit.job in GLOB.youngfolk_positions) && \
 		!(recruit.job in GLOB.mercenary_positions))
 		return FALSE
 	//need to see their damn face
@@ -171,6 +171,7 @@
 /obj/effect/proc_holder/spell/self/convertrole/guard
 	name = "Recruit Guardsmen"
 	new_role = "Watchman"
+	overlay_state = "recruit_guard"
 	recruitment_faction = "Watchman"
 	recruitment_message = "Serve the town guard, %RECRUIT!"
 	accept_message = "FOR THE DUKE!"

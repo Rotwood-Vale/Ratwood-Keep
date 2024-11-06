@@ -159,7 +159,6 @@
 /datum/special_trait/arsonist/on_apply(mob/living/carbon/human/character, silent)
 	character.mind.special_items["Firebomb One"] = /obj/item/bomb
 	character.mind.special_items["Firebomb Two"] = /obj/item/bomb
-	character.mind.adjust_skillrank_up_to(/datum/skill/misc/alchemy, 1, TRUE)
 
 /datum/special_trait/pineapple
 	name = "The safeword is \"Pineapple\""
@@ -203,14 +202,6 @@
 
 /datum/special_trait/spring_in_my_step/on_apply(mob/living/carbon/human/character, silent)
 	ADD_TRAIT(character, TRAIT_ZJUMP, "[type]")
-
-/datum/special_trait/tolerant
-	name = "Tolerant"
-	greet_text = span_notice("I dream of an ideal future, one with peace between all races")
-	weight = 100
-
-/datum/special_trait/tolerant/on_apply(mob/living/carbon/human/character, silent)
-	ADD_TRAIT(character, TRAIT_TOLERANT, "[type]")
 
 /datum/special_trait/thief
 	name = "Thief"
@@ -563,7 +554,7 @@
 	weight = 100
 
 /datum/special_trait/illicit_merchant/on_apply(mob/living/carbon/human/character, silent)
-	character.mind.special_items["Merchant Key"] = /obj/item/roguekey/merchant
+	character.mind.special_items["Merchant Key"] = /obj/item/key/merchant
 	character.mind.special_items["GOLDFACE Gem"] = /obj/item/gem_device/goldface
 
 /datum/special_trait/reps_redemption

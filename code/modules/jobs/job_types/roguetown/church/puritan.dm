@@ -15,7 +15,7 @@
 
 	outfit = /datum/outfit/job/roguetown/puritan
 	display_order = JDO_PURITAN
-	give_bank_account = 36
+	give_bank_account = 200
 	min_pq = 5
 	max_pq = null
 
@@ -32,10 +32,12 @@
 	shoes = /obj/item/clothing/shoes/roguetown/armor
 	pants = /obj/item/clothing/under/roguetown/tights/black
 	cloak = /obj/item/clothing/cloak/cape/puritan
-	beltr = /obj/item/storage/belt/rogue/pouch/coins/rich
+	beltr = /obj/item/gun/ballistic/revolver/grenadelauncher/runelock
+	beltl = /obj/item/storage/belt/rogue/pouch/ammo
 	head = /obj/item/clothing/head/roguetown/puritan
 	gloves = /obj/item/clothing/gloves/roguetown/leather
-	beltl = /obj/item/rogueweapon/sword/rapier
+	backr = /obj/item/rogueweapon/sword/rapier
+	backl = /obj/item/storage/backpack/rogue/satchel
 	backpack_contents = list(/obj/item/keyring/puritan = 1, /obj/item/rogueweapon/huntingknife/idagger/silver)
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/combat/swords, 4, TRUE)
@@ -48,7 +50,7 @@
 		H.mind.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/sewing, 2, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/medicine, 2, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/treatment, 2, TRUE)
 		H.change_stat("strength", 2)
 		H.change_stat("endurance", 2)
 		H.change_stat("constitution", 3)
@@ -57,7 +59,6 @@
 	H.verbs |= /mob/living/carbon/human/proc/faith_test
 	H.verbs |= /mob/living/carbon/human/proc/torture_victim
 	ADD_TRAIT(H, TRAIT_NOSEGRAB, TRAIT_GENERIC)
-	ADD_TRAIT(H, TRAIT_STEELHEARTED, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 
 /mob/living/carbon/human/proc/torture_victim()

@@ -84,6 +84,7 @@
 	var/rotted = FALSE
 	var/skeletonized = FALSE
 
+	/// Can this bodypart swing weapons?
 	var/fingers = TRUE
 	var/organ_slowdown = 0 // Its here because this is first shared definition between two leg organ paths
 
@@ -275,7 +276,7 @@
 		. |= BODYPART_LIFE_UPDATE_HEALTH
 
 /obj/item/bodypart/Initialize()
-	..()
+	. = ..()
 	update_HP()
 
 /obj/item/bodypart/proc/update_HP()

@@ -137,6 +137,7 @@ GLOBAL_LIST_INIT(stone_personality_descs, list(
 	slot_flags = ITEM_SLOT_MOUTH
 	obj_flags = null
 	w_class = WEIGHT_CLASS_TINY
+	mill_result = /obj/item/reagent_containers/powder/alch/stone
 
 /obj/item/natural/stone/Initialize()
 	. = ..()
@@ -276,7 +277,7 @@ GLOBAL_LIST_INIT(stone_personality_descs, list(
 
 /obj/item/natural/rock/Initialize()
 	icon_state = "stonebig[rand(1,2)]"
-	..()
+	. = ..()
 
 
 /obj/item/natural/rock/Crossed(mob/living/L)
@@ -329,12 +330,54 @@ GLOBAL_LIST_INIT(stone_personality_descs, list(
 		return
 	..()
 
+
+/obj/item/natural/whet
+	name = "whet stone"
+	icon_state = "whet"
+	desc = "A piece of rough smoothed down stone, better blade maintenance"
+	gripped_intents = null
+	dropshrink = 0.75
+	possible_item_intents = list(INTENT_GENERIC)
+	force = 10
+	throwforce = 15
+	slot_flags = ITEM_SLOT_MOUTH
+	obj_flags = null
+	w_class = WEIGHT_CLASS_TINY
+	mill_result = /obj/item/reagent_containers/powder/alch/stone
+
+/obj/item/attackby(obj/item/I, mob/user, params)
+	user.changeNext_move(user.used_intent.clickcd)
+	if(max_blade_int)
+		if(istype(I, /obj/item/natural/whet))
+			playsound(src.loc, pick('sound/items/sharpen_long1.ogg','sound/items/sharpen_long2.ogg'), 100)
+			user.visible_message(span_notice("[user] sharpens [src]!"))
+			degrade_bintegrity(0.5)
+			add_bintegrity(max_blade_int * 0.3) 
+			if(blade_int >= max_blade_int)
+				to_chat(user, span_info("Fully sharpened."))
+			if(prob(35))
+				var/datum/effect_system/spark_spread/S = new()
+				var/turf/front = get_step(user,user.dir)
+				S.set_up(1, 1, front)
+				S.start()
+			return
+	. = ..()
+
 //begin ore loot rocks
 /obj/item/natural/rock/gold
 	mineralType = /obj/item/rogueore/gold
 
+/obj/item/natural/rock/silver
+	mineralType = /obj/item/rogueore/silver
+
 /obj/item/natural/rock/iron
 	mineralType = /obj/item/rogueore/iron
+
+/obj/item/natural/rock/copper
+	mineralType = /obj/item/rogueore/copper
+
+/obj/item/natural/rock/tin
+	mineralType = /obj/item/rogueore/tin
 
 /obj/item/natural/rock/coal
 	mineralType = /obj/item/rogueore/coal

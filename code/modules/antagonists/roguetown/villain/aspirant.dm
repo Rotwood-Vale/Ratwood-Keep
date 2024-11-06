@@ -8,6 +8,7 @@
 		"THE CHOSEN MUST TAKE THE THRONE!",
 	)
 	increase_votepwr = FALSE
+	rogue_enabled = TRUE
 
 /datum/antagonist/aspirant/supporter
 	name = "Supporter"

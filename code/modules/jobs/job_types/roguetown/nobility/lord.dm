@@ -28,7 +28,7 @@ GLOBAL_LIST_EMPTY(lord_titles)
 	whitelist_req = FALSE
 	min_pq = 10
 	max_pq = null
-	give_bank_account = TRUE
+	give_bank_account = 1000
 	required = TRUE
 
 /datum/job/roguetown/exlord //just used to change the lords title
@@ -115,7 +115,7 @@ GLOBAL_LIST_EMPTY(lord_titles)
 			H.mind.adjust_skillrank(/datum/skill/misc/climbing, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/athletics, 4, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/reading, 4, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/misc/medicine, 2, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/treatment, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/bows, 3, TRUE)
 			if(H.age == AGE_OLD)
 				H.mind.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE)
@@ -150,6 +150,7 @@ GLOBAL_LIST_EMPTY(lord_titles)
 /obj/effect/proc_holder/spell/self/grant_title
 	name = "Grant Title"
 	desc = "Grant someone a title of honor... Or shame."
+	overlay_state = "recruit_titlegrant"
 	antimagic_allowed = TRUE
 	charge_max = 100
 	/// Maximum range for title granting

@@ -1,10 +1,10 @@
 /mob/living/simple_animal/hostile/retaliate/rogue/goat/Initialize()
-	..()
+	. = ..()
 	GLOB.farm_animals++
 
 /mob/living/simple_animal/hostile/retaliate/rogue/goat/Destroy()
-	..()
 	GLOB.farm_animals = max(GLOB.farm_animals - 1, 0)
+	return ..()
 
 /mob/living/simple_animal/hostile/retaliate/rogue/goat/find_food()
 	..()
@@ -242,12 +242,12 @@
 		D.set_vehicle_dir_layer(WEST, OBJ_LAYER)
 
 /mob/living/simple_animal/hostile/retaliate/rogue/goatmale/Initialize()
-	..()
+	. = ..()
 	GLOB.farm_animals++
 
 /mob/living/simple_animal/hostile/retaliate/rogue/goatmale/Destroy()
-	..()
 	GLOB.farm_animals = max(GLOB.farm_animals - 1, 0)
+	return ..()
 
 /mob/living/simple_animal/hostile/retaliate/rogue/goatmale/get_sound(input)
 	switch(input)

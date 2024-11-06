@@ -1,4 +1,6 @@
+// why the fuck??
 /obj/effect/spawner/roguemap/Initialize(mapload)
+	. = ..()
 	START_PROCESSING(SSmapgen, src)
 
 /obj/effect/spawner/roguemap
