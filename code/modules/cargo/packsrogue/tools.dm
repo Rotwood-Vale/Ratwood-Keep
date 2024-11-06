@@ -139,4 +139,4 @@
 /datum/supply_pack/rogue/tools/shopkeyy
 	name = "Spare Shopkey"
 	cost = 10
-	contains = list(/obj/item/roguekey/shop)
+	contains = list(/obj/item/key/shop)

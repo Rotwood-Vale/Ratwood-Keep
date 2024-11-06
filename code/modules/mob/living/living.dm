@@ -1136,6 +1136,9 @@
 	var/mob/living/L = pulledby
 	var/combat_modifier = 1
 
+	if(HAS_TRAIT(src, TRAIT_PARALYSIS))//Will stop someone who is paralized from trying to resist
+		to_chat(src, span_warning("I can't move!"))
+		return FALSE
 	if(mind)
 		wrestling_diff += (mind.get_skill_level(/datum/skill/combat/wrestling)) //NPCs don't use this
 	if(L.mind)

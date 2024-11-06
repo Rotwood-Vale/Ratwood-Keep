@@ -137,7 +137,7 @@
 
 /obj/item/grown/log/tree/stick/Initialize()
 	icon_state = "stick[rand(1,2)]"
-	..()
+	. = ..()
 
 /obj/item/grown/log/tree/stick/attack_self(mob/living/user)
 	user.visible_message(span_warning("[user] snaps [src]."))

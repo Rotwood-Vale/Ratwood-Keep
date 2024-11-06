@@ -4,7 +4,7 @@
 	anchored = TRUE
 
 /obj/structure/flora/Initialize()
-	..()
+	. = ..()
 	if(isclosedturf(loc))
 		return INITIALIZE_HINT_QDEL
 

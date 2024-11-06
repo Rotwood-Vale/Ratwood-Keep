@@ -1,7 +1,7 @@
 /////// SHITCODE MADE BY MORIBUND and modularized so you dickless pricks can cannibalize and swipe it easier. Sprites for this by SINNERPEN and INFRARED BARON. payed for by dragon lee. you gonna swip this shit credit thos due.
 
 
-
+//// also I hate all of you. numberfuck this to death because you are too fucking stupid to code something from scratch.
 
 ///////////////////////////////////////////////////////-----------------------------------------doc surgeries and functions---------------------------------------//////////////////////////////////////////////////
 
@@ -12,7 +12,7 @@
 	range = 1
 	associated_skill = /datum/skill/misc/treatment
 	miracle = FALSE
-	devotion_cost = 0 
+	devotion_cost = 0
 
 /obj/effect/proc_holder/spell/targeted/docheal  /////// miricle on 3x cooldown from normal
 	action_icon = 'icons/mob/actions/roguespells.dmi'
@@ -62,7 +62,6 @@
 	sound = 'sound/combat/newstuck.ogg'
 	associated_skill = /datum/skill/misc/treatment
 	antimagic_allowed = TRUE
-	chargetime = 100
 	charge_max = 1 MINUTES
 	miracle = FALSE
 	devotion_cost = 0
@@ -77,7 +76,6 @@
 	sound = 'sound/combat/newstuck.ogg'
 	associated_skill = /datum/skill/misc/treatment
 	antimagic_allowed = TRUE
-	chargetime = 100
 	charge_max = 1 MINUTES
 	miracle = FALSE
 	devotion_cost = 0
@@ -222,7 +220,7 @@
 		return TRUE
 	return FALSE
 
-/obj/effect/proc_holder/spell/targeted/stable/cast(list/targets, mob/user) 
+/obj/effect/proc_holder/spell/targeted/stable/cast(list/targets, mob/user)
 	. = ..()
 	if(iscarbon(targets[1]))
 		var/mob/living/carbon/target = targets[1]
@@ -237,15 +235,14 @@
 		return TRUE
 	return FALSE
 
-/obj/effect/proc_holder/spell/targeted/purge/cast(list/targets, mob/user) 
+/obj/effect/proc_holder/spell/targeted/purge/cast(list/targets, mob/user)
 	. = ..()
 	if(iscarbon(targets[1]))
 		var/mob/living/carbon/target = targets[1]
 		var/obj/item/bodypart/BPA = target.get_bodypart(BODY_ZONE_R_ARM)
 		BPA.add_wound(/datum/wound/artery/)
-		target.visible_message(span_danger("[user] slashes [target]'s artery open letting the toxins and other impurities bleed and drain from them. they might want to stitch that soon."), span_notice("I've been cut by [user] I feel the toxins leaving my body with each heart beat. im getting light headed...."))
+		target.visible_message(span_danger("[user] drains the reagents and toxins from [target]"))
 		target.adjustToxLoss(-999)
-		target.adjustBruteLoss(30, BRUTE, BPA)
 		target.reagents.remove_all_type(/datum/reagent, 9999)
 		target.emote("scream")
 		return TRUE
@@ -319,7 +316,7 @@
 		TOOL_SHARP = 40,
 	)
 	target_mobtypes = list(/mob/living/carbon/human, /mob/living/carbon/monkey)
-	surgery_flags = SURGERY_INCISED | SURGERY_RETRACTED 
+	surgery_flags = SURGERY_INCISED | SURGERY_RETRACTED
 	skill_min = SKILL_LEVEL_EXPERT
 	skill_median = SKILL_LEVEL_MASTER
 
@@ -344,7 +341,7 @@
 		liver = new /obj/item/organ/liver/weak
 		liver.Insert(target)
 		return TRUE
-	
+
 
 /datum/surgery/bypass
 	name = "Coronary artery bypass surgery"
@@ -673,7 +670,7 @@
 /datum/reagent/medicine/purify/on_mob_life(mob/living/carbon/human/M)
 	M.adjustFireLoss(0.5*REM, 0)
 	M.heal_wounds(3)
-	
+
 	// Iterate through all body parts
 	for (var/obj/item/bodypart/B in M.bodyparts)
 		// Iterate through wounds on each body part
@@ -830,182 +827,60 @@
 
 /obj/item/storage/fancy/pilltin
 	name = "pill tin"
-	desc = "a tin for all your pill needs, snake branded (close/open mmb)"
+	desc = "A tin for all your pill needs, snake branded"
 	icon = 'icons/roguetown/items/surgery.dmi'
 	icon_state = "pilltin"
 	w_class = WEIGHT_CLASS_TINY
 	throwforce = 1
 	slot_flags = null
+	icon_type = "pill"
 
 /obj/item/storage/fancy/pilltin/update_icon()
 	if(fancy_open)
 		if(contents.len == 0)
 			icon_state = "pilltin_empty"
+		else if(istype(contents[1], /obj/item/reagent_containers/pill/caffpill))
+			icon_state = "pilltinwake_open"
+		else if(istype(contents[1], /obj/item/reagent_containers/pill/pnkpill))
+			icon_state = "pilltinpink_open"
 		else
 			icon_state = "pilltincustom_open"
 	else
 		icon_state = "pilltin"
-
-/obj/item/storage/fancy/pilltin/examine(mob/user)
-	. = ..()
-	if(fancy_open)
-		if(length(contents) == 1)
-			. += "There is one item left."
-		else
-			. += "There are [contents.len <= 0 ? "no" : "[contents.len]"] items left."
-
-/obj/item/storage/fancy/pilltin/attack_self(mob/user)
-	fancy_open = !fancy_open
-	update_icon()
-	. = ..()
-
-/obj/item/storage/fancy/pilltin/Entered(mob/user)
-	if(!fancy_open)
-		to_chat(user, span_notice("[src] needs to be opened first."))
-		return
-	fancy_open = TRUE
-	update_icon()
-	. = ..()
-
-/obj/item/storage/fancy/pilltin/Exited(mob/user)
-	fancy_open = FALSE
-	update_icon()
-	. = ..()
 
 /obj/item/storage/fancy/pilltin/MiddleClick(mob/user, params)
 	fancy_open = !fancy_open
 	update_icon()
 	to_chat(user, span_notice("[src] is now [fancy_open ? "open" : "closed"]."))
 
-/obj/item/storage/fancy/pilltinwake
+/obj/item/storage/fancy/pilltin/ComponentInitialize()
+	. = ..()
+	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
+	if(STR)
+		STR.max_combined_w_class = 42
+		STR.max_w_class = WEIGHT_CLASS_NORMAL
+		STR.max_items = 12
+		STR.set_holdable(list(/obj/item/reagent_containers/pill))
+
+/obj/item/storage/fancy/pilltin/wake
 	name = "pill tin (wake)"
-	desc = "a tin for all your pill needs, snake branded (close/open mmb)"
-	icon = 'icons/roguetown/items/surgery.dmi'
-	icon_state = "pilltin"
-	w_class = WEIGHT_CLASS_TINY
-	throwforce = 1
-	slot_flags = null
 
-/obj/item/storage/fancy/pilltinwake/update_icon()
-	if(fancy_open)
-		if(contents.len == 0)
-			icon_state = "pilltin_empty"
-		else
-			icon_state = "pilltinwake_open"
-	else
-		icon_state = "pilltin"
-
-/obj/item/storage/fancy/pilltinwake/examine(mob/user)
-	. = ..()
-	if(fancy_open)
-		if(length(contents) == 1)
-			. += "There is one item left."
-		else
-			. += "There are [contents.len <= 0 ? "no" : "[contents.len]"] items left."
-
-/obj/item/storage/fancy/pilltinwake/attack_self(mob/user)
-	fancy_open = !fancy_open
-	update_icon()
-	. = ..()
-
-/obj/item/storage/fancy/pilltinwake/Entered(mob/user)
-	if(!fancy_open)
-		to_chat(user, span_notice("[src] needs to be opened first."))
-		return
-	fancy_open = TRUE
-	update_icon()
-	. = ..()
-
-/obj/item/storage/fancy/pilltinwake/Exited(mob/user)
-	fancy_open = FALSE
-	update_icon()
-	. = ..()
-
-/obj/item/storage/fancy/pilltinwake/MiddleClick(mob/user, params)
-	fancy_open = !fancy_open
-	update_icon()
-	to_chat(user, span_notice("[src] is now [fancy_open ? "open" : "closed"]."))
-
-/obj/item/storage/fancy/pilltinwake/ComponentInitialize()
-	. = ..()
-	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
-	if(STR)
-		STR.max_combined_w_class = 42
-		STR.max_w_class = WEIGHT_CLASS_NORMAL
-		STR.max_items = 12
-		STR.set_holdable(list(/obj/item/reagent_containers/pill/caffpill))
-
-/obj/item/storage/fancy/pilltinwake/PopulateContents()
+/obj/item/storage/fancy/pilltin/wake/PopulateContents()
 	new /obj/item/reagent_containers/pill/caffpill(src)
 	new /obj/item/reagent_containers/pill/caffpill(src)
 	new /obj/item/reagent_containers/pill/caffpill(src)
 
-/obj/item/storage/fancy/pilltinpink
+/obj/item/storage/fancy/pilltin/pink
 	name = "pill tin (pnk)"
-	desc = "a tin for all your pill needs, snake branded (close/open mmb)"
-	icon = 'icons/roguetown/items/surgery.dmi'
-	icon_state = "pilltin"
-	w_class = WEIGHT_CLASS_TINY
-	throwforce = 1
-	slot_flags = null
 
-/obj/item/storage/fancy/pilltinpink/update_icon()
-	if(fancy_open)
-		if(contents.len == 0)
-			icon_state = "pilltin_empty"
-		else
-			icon_state = "pilltinpink_open"
-	else
-		icon_state = "pilltin"
-
-/obj/item/storage/fancy/pilltinpink/examine(mob/user)
-	. = ..()
-	if(fancy_open)
-		if(length(contents) == 1)
-			. += "There is one item left."
-		else
-			. += "There are [contents.len <= 0 ? "no" : "[contents.len]"] items left."
-
-/obj/item/storage/fancy/pilltinpink/attack_self(mob/user)
-	fancy_open = !fancy_open
-	update_icon()
-	. = ..()
-
-/obj/item/storage/fancy/pilltinpink/Entered(mob/user)
-	if(!fancy_open)
-		to_chat(user, span_notice("[src] needs to be opened first."))
-		return
-	fancy_open = TRUE
-	update_icon()
-	. = ..()
-
-/obj/item/storage/fancy/pilltinpink/Exited(mob/user)
-	fancy_open = FALSE
-	update_icon()
-	. = ..()
-
-/obj/item/storage/fancy/pilltinpink/MiddleClick(mob/user, params)
-	fancy_open = !fancy_open
-	update_icon()
-	to_chat(user, span_notice("[src] is now [fancy_open ? "open" : "closed"]."))
-
-/obj/item/storage/fancy/pilltinpink/ComponentInitialize()
-	. = ..()
-	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
-	if(STR)
-		STR.max_combined_w_class = 42
-		STR.max_w_class = WEIGHT_CLASS_NORMAL
-		STR.max_items = 12
-		STR.set_holdable(list(/obj/item/reagent_containers/pill/pnkpill))
-
-/obj/item/storage/fancy/pilltinpink/PopulateContents()
+/obj/item/storage/fancy/pilltin/pink/PopulateContents()
 	new /obj/item/reagent_containers/pill/pnkpill(src)
 	new /obj/item/reagent_containers/pill/pnkpill(src)
 	new /obj/item/reagent_containers/pill/pnkpill(src)
 
 /obj/item/storage/fancy/skit
 	name = "surgery kit"
-	desc = "portable and compact (close/open mmb)"
+	desc = "portable and compact"
 	icon = 'icons/roguetown/items/surgery.dmi'
 	icon_state = "skit"
 	w_class = WEIGHT_CLASS_SMALL
@@ -1084,7 +959,7 @@
 
 /obj/item/storage/fancy/ifak
 	name = "personal patch kit"
-	desc = "Dr V's personal treatment pouch; has all you need to stop you or someone else from meeting necra. even comes with a lil guide scroll for the slow minded. (close/open mmb)"
+	desc = "Personal treatment pouch; has all you need to stop you or someone else from meeting necra. even comes with a lil guide scroll for the slow minded."
 	icon = 'icons/roguetown/items/surgery.dmi'
 	icon_state = "ifak"
 	w_class = WEIGHT_CLASS_SMALL
@@ -1162,7 +1037,7 @@
 	new /obj/item/reagent_containers/pill/pnkpill(src)
 	new /obj/item/candle/yellow(src)
 	new /obj/item/needle(src)
-	new /obj/item/book/rogue/snek(src)
+	new /obj/item/book/rogue/medical_notebook(src)
 /obj/item/reagent_containers/hypospray/medipen/sealbottle
 	name = "sealed bottle item"
 	desc = "If you see this, call an admin."
@@ -1260,7 +1135,7 @@
 
 /obj/item/reagent_containers/pill/caffpill
 	name = "WAKE-UP"
-	desc = "a handful of Dr V's pep-pills. a promise to make you both alert and have an uncomfortable amount of vigor for everyone involved. Who needs sleep anyway? thats how you get diddled by an orc!"
+	desc = "A handful of pep-pills. a promise to make you both alert and have an uncomfortable amount of vigor for everyone involved. Who needs sleep anyway? thats how you get diddled by an orc!"
 	icon_state = "pillg"
 	icon = 'icons/roguetown/items/surgery.dmi'
 	list_reagents = list(/datum/reagent/medicine/caffeine = 1, /datum/reagent/medicine/antihol = 10, /datum/reagent/consumable/coffee = 81) //coffee OD is safe. causes jitters for awhile.
@@ -1269,7 +1144,7 @@
 
 /obj/item/reagent_containers/pill/pnkpill
 	name = "PNKBAWLS"
-	desc = "a handful of Dr V's pink little balls. says they restore vitality, you are pretty certain this is watered down red mixed with ash"
+	desc = "A handful of pink little balls. says they restore vitality, you are pretty certain this is watered down red mixed with ash"
 	icon_state = "pinkb"
 	icon = 'icons/roguetown/items/surgery.dmi'
 	list_reagents = list(/datum/reagent/ash = 15, /datum/reagent/iron = 15, /datum/reagent/medicine/healthpot = 24) //mug of red, bottle is 45u
@@ -1278,14 +1153,14 @@
 
 /obj/item/reagent_containers/hypospray/medipen/sty/detox
 	name = "DETOX"
-	desc = "Dr. V's well aint this funny? a snake curing toxin's and venoms. heresy... purges the body of all that is not natural."
+	desc = "Well aint this funny? a snake curing toxin's and venoms. heresy... purges the body of all that is not natural."
 	volume = 34
 	amount_per_transfer_from_this = 34
 	list_reagents = list(/datum/reagent/medicine/antihol = 10, /datum/reagent/medicine/pen_acid = 24)
 
 /obj/item/reagent_containers/hypospray/medipen/sealbottle/reju
 	name = "rejuv elixer"
-	desc = "Dr V's special formulated body revitalizer; restores blood, helps seal wounds, helps to stabalize breathing and numbs pain with a non-addictive snake venom derived analgesic. Single dose. Caffeinated, just like the snake that made it."
+	desc = "Special formulated body revitalizer; restores blood, helps seal wounds, helps to stabalize breathing and numbs pain with a non-addictive snake venom derived analgesic. Single dose. Caffeinated, just like the snake that made it."
 	icon_state = "THEbottle"
 	volume = 16
 	amount_per_transfer_from_this = 16
@@ -1293,7 +1168,7 @@
 
 /obj/item/reagent_containers/hypospray/medipen/sealbottle/purify
 	name = "purifying elixer"
-	desc = "Dr V's special formulated body purifier; A powerful drug that purifies the blood and seals wounds painfully on the body. flooding your blood with anything like this isnt exactly healthy but, if it stops you needing to use the word 'festering' to describe part of your body, it's worth it."
+	desc = "Special formulated body purifier; A powerful drug that purifies the blood and seals wounds painfully on the body. flooding your blood with anything like this isnt exactly healthy but, if it stops you needing to use the word 'festering' to describe part of your body, it's worth it."
 	icon_state = "THEbottle"
 	volume = 30
 	amount_per_transfer_from_this = 30
@@ -1327,11 +1202,11 @@
 	var/mob/living/carbon/human/H = M
 	var/obj/item/bodypart/affecting = H.get_bodypart(check_zone(user.zone_selected))
 	if (!affecting) return
-	if (affecting.bandage) 
+	if (affecting.bandage)
 		to_chat(user, "There is already a bandage.")
 		return
 	var/used_time = 100
-	if (H.mind) 
+	if (H.mind)
 		used_time -= (H.mind.get_skill_level(/datum/skill/misc/treatment) * 10)
 	playsound(loc, 'sound/foley/bandage.ogg', 100, FALSE)
 	if (!do_mob(user, M, used_time)) return
@@ -1339,7 +1214,7 @@
 	user.dropItemToGround(src)
 	affecting.try_bandage(src)
 	H.update_damage_overlays()
-	
+
 	// Heal the specific body part every second while bandaged and manage wound pain and disabling effects
 	addtimer(CALLBACK(src, /proc/heal_and_manage_pain_disabling, H, affecting), 10, 1, TRUE)
 	if (M == user)
@@ -1374,9 +1249,9 @@
 	icon2 = "bandageroll2"
 	icon2step = 3
 
-/obj/item/book/rogue/snek
-	name = "Snake Stitches"
-	desc = "{<font color='green'><blink>By Dr.volva, snake.</blink></font>}"
+/obj/item/book/rogue/medical_notebook
+	name = "Medical Notebook"
+	desc = "A quick rundown on medical works."
 	icon_state ="book6_0"
 	base_icon_state = "book6"
 	bookfile = "medical.json"
@@ -1385,100 +1260,6 @@
 	icon_state = "bandageroll2"
 	amount = 3
 	firefuel = 60 MINUTES
-
-/*/obj/item/splint
-	name = "splint"
-	desc = "A splint used to stabilize fractures and dislocations, and stop bleeding."
-	icon = 'icons/obj/splint.dmi'
-	item_state = "splint"
-
-
-/obj/item/natural/acid																		////// DO NOT LOOK AT MY SHAME. seriously dont I will return to this when I dont wanna burn my house down over it.
-	name = "acidic salve"
-	desc = "A salve that can cauterize wounds and remove early-stage infections."
-	icon_state = "acid_closed"
-	icon = 'icons/roguetown/items/surgery.dmi'
-	w_class = WEIGHT_CLASS_TINY
-	resistance_flags = FLAMMABLE
-	slot_flags = ITEM_SLOT_BELT
-	var/charge_amt = 3
-	var/max_charge = 3
-
-/obj/item/natural/acid/examine()
-	. = ..()
-	if(charge_amt > 0)
-		. += span_bold("It has [charge_amt] uses left.")
-	else
-		. += span_bold("It has no uses left.")
-
-/obj/item/natural/acid/Initialize()
-	. = ..()
-	update_icon()
-
-/obj/item/natural/acid/update_icon()
-	if(charge_amt == max_charge)
-		icon_state = "acid_closed"
-	else if(charge_amt == 2)
-		icon_state = "acid_1"
-	else if(charge_amt == 1)
-		icon_state = "acid_2"
-	else
-		icon_state = "acid_empty"
-
-/obj/item/natural/acid/use(mob/user)
-	if(charge_amt <= 0)
-		to_chat(user, span_warning("[src] is out of charges."))
-		return FALSE
-	charge_amt -= 1
-	update_icon()
-	return TRUE
-
-/obj/item/natural/acid/attack(mob/living/carbon/human/M, mob/user)
-	if(use(user))
-		cauterize_or_cure(M, user)
-
-/obj/item/natural/acid/proc/cauterize_or_cure(mob/living/carbon/human/M, mob/user)
-	if(!M)
-		to_chat(user, span_warning("There is no one to treat."))
-		return
-	var/treated = FALSE
-	for(var/datum/wound/W in M.get_wounds())
-		if(W.zombie_infection_timer)
-			deltimer(W.zombie_infection_timer)
-			W.zombie_infection_timer = null
-			to_chat(M, span_notice("You feel the infection being burned away by the salve."))
-			treated = TRUE
-			break
-		if(W.werewolf_infection_timer)
-			deltimer(W.werewolf_infection_timer)
-			W.werewolf_infection_timer = null
-			to_chat(M, span_notice("You feel the infection being burned away by the salve."))
-			treated = TRUE
-			break
-	if(treated)
-		return
-	var/obj/item/bodypart/affecting = M.get_bodypart(check_zone(user.zone_selected))
-	if(affecting)
-		var/list/wounds = affecting.get_wounds()
-		if(wounds.len)
-			for(var/datum/wound/W in wounds)
-				if(W.can_cauterize)
-					var/used_time = 50
-					if(M.mind)
-						used_time -= (M.mind.get_skill_level(/datum/skill/misc/treatment) * 10)
-					playsound(loc, 'sound/items/firelight.ogg', 100, FALSE)
-					if(!do_mob(user, M, used_time))
-						return
-					W.cauterize_wound(src)
-					M.update_damage_overlays()
-					if(M == user)
-						user.visible_message(span_notice("You apply the salve to cauterize [user.p_their()] [affecting]."), span_notice("I apply the salve to cauterize my [affecting]."))
-					else
-						user.visible_message(span_notice("You apply the salve to cauterize [M]'s [affecting]."), span_notice("I apply the salve to cauterize [M]'s [affecting]."))
-					return
-	to_chat(user, span_warning("There is no suitable wound to cauterize or infection to cure."))
-*/
-
 
 ///////////////////////////////////////////////////------------------------------------alembic/brewing--------------------------------/////////////////////////////////////////
 
@@ -1744,20 +1525,25 @@
 
 
 /obj/item/rogueweapon/mace/pipe        ////////////// reskin of iron mace but bigger
-	possible_item_intents = list(/datum/intent/mace/strike, /datum/intent/mace/smash)
+	possible_item_intents = list(/datum/intent/mace/strike)
 	gripped_intents = list(/datum/intent/mace/strike, /datum/intent/mace/smash)
 	name = "pipe"
 	desc = "Beloved problem solver."
 	icon_state = "leadpipe"
 	icon = 'icons/roguetown/weapons/64.dmi'
+	smeltresult = /obj/item/ash
+	parrysound = "parrywood"
+	swingsound = BLUNTWOOSH_MED
+	wlength = WLENGTH_LONG
+	w_class = WEIGHT_CLASS_BULKY
+	minstr = 7
+	wdefense = 3
 	pixel_y = -16
 	pixel_x = -16
-	bigboy = TRUE
-	gripsprite = TRUE
 	inhand_x_dimension = 64
 	inhand_y_dimension = 64
-	parrysound = list('sound/combat/parry/parrygen.ogg')
-	swingsound = BLUNTWOOSH_MED
+	bigboy = TRUE
+	gripsprite = TRUE
 
 /obj/item/rogueweapon/huntingknife/skin                                    ///////////// reSKINNED hunting knife
 	name = "skinning knife"
