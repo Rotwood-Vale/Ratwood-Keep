@@ -29,8 +29,7 @@
 
 /obj/item/clothing/gloves/roguetown/leather/black
 	desc = "Leather gloves usually worn by laborers. Dyed black."
-	color = "#151615"
-/obj/item/clothing/gloves/roguetown/leather/black
+	color = "#6b6c6b"
 	icon_state = "gloves_black"
 
 /obj/item/clothing/gloves/roguetown/fingerless

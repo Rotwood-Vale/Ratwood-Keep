@@ -82,11 +82,15 @@
 	allowed_areas = list(/area/rogue/outdoors)
 
 /obj/machinery/light/roguestreet
+	name = "street lamp"
+	desc = "An obelisk of caste iron with an eerily glowing lamp attached to it. A promise of new technology at the dawn of a new age."
 	icon = 'icons/roguetown/misc/tallstructure.dmi'
 	icon_state = "slamp1_nozap"
 	base_state = "slamp"
 	brightness = 10.9
 	nightshift_allowed = FALSE
+	plane = GAME_PLANE_UPPER
+	layer = 4.81
 	fueluse = 0
 	bulb_colour = "#58dd90"
 	bulb_power = 0.95
@@ -100,6 +104,29 @@
 	base_state = "midlamp"
 	pixel_x = -16
 	density = TRUE
+
+/obj/machinery/light/roguestreet/orange
+	icon = 'icons/roguetown/misc/tallstructure.dmi'
+	icon_state = "o_slamp1_nozap"
+	base_state = "o_slamp"
+	brightness = 10.9
+	bulb_colour = "#da8c45"
+	bulb_power = 1
+
+/obj/machinery/light/roguestreet/orange/midlamp
+	icon = 'icons/roguetown/misc/64x64.dmi'
+	icon_state = "o_midlamp1_nozap"
+	base_state = "o_midlamp"
+	pixel_x = -16
+	density = TRUE
+
+/obj/machinery/light/roguestreet/orange/walllamp
+	name = "wall lamp"
+	desc = "An eerily glowing lamp attached to the wall via a caste iron frame. A promise of new technology at the dawn of a new age."
+	icon_state = "o_wlamp1_nozap"
+	base_state = "o_wlamp"
+	brightness = 7.8
+	density = FALSE
 
 /obj/machinery/light/roguestreet/proc/lights_out()
 	on = FALSE

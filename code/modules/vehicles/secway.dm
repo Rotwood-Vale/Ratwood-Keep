@@ -5,7 +5,6 @@
 	icon_state = "secway"
 	max_integrity = 60
 	armor = list("blunt" = 10, "slash" = 10, "stab" = 10, "bullet" = 0, "laser" = 10, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 60, "acid" = 60)
-	key_type = /obj/item/key/security
 	integrity_failure = 0.5
 
 /obj/vehicle/ridden/secway/Initialize()

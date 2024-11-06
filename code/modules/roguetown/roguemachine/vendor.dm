@@ -38,8 +38,8 @@
 		update_icon()
 		playsound(loc, 'sound/misc/machinevomit.ogg', 100, TRUE, -1)
 		return attack_hand(user)
-	if(istype(P, /obj/item/roguekey))
-		var/obj/item/roguekey/K = P
+	if(istype(P, /obj/item/key))
+		var/obj/item/key/K = P
 		if(K.lockid == keycontrol)
 			locked = !locked
 			playsound(loc, 'sound/misc/beep.ogg', 100, FALSE, -1)
@@ -53,7 +53,7 @@
 				return
 	if(istype(P, /obj/item/keyring))
 		var/obj/item/keyring/K = P
-		for(var/obj/item/roguekey/KE in K.keys)
+		for(var/obj/item/key/KE in K.keys)
 			if(KE.lockid == keycontrol)
 				locked = !locked
 				playsound(loc, 'sound/misc/beep.ogg', 100, FALSE, -1)
@@ -264,7 +264,7 @@
 
 /obj/structure/roguemachine/vendor/inn/Initialize()
 	. = ..()
-	for(var/X in list(/obj/item/roguekey/roomi,/obj/item/roguekey/roomii,/obj/item/roguekey/roomiii,/obj/item/roguekey/roomiv,/obj/item/roguekey/roomv,/obj/item/roguekey/roomvi))
+	for(var/X in list(/obj/item/key/roomi,/obj/item/key/roomii,/obj/item/key/roomiii,/obj/item/key/roomiv,/obj/item/key/roomv,/obj/item/key/roomvi))
 		var/obj/P = new X(src)
 		held_items[P] = list()
 		held_items[P]["NAME"] = P.name
