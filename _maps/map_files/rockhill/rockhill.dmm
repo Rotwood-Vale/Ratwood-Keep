@@ -8453,6 +8453,10 @@
 	dir = 5
 	},
 /area/rogue/outdoors/bog)
+"hIa" = (
+/obj/structure/roguemachine/scomm/l,
+/turf/open/floor/rogue/grass,
+/area/rogue/outdoors/rtfield)
 "hIZ" = (
 /obj/machinery/light/rogue/torchholder{
 	dir = 8
@@ -276357,7 +276361,7 @@ wSn
 qvR
 qvR
 qvR
-qvR
+hIa
 qvR
 sjP
 fxx
