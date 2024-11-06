@@ -54,12 +54,13 @@
 /datum/special_trait/value/on_apply(mob/living/carbon/human/character, silent)
 	ADD_TRAIT(character, TRAIT_SEEPRICES, "[type]")
 
-/datum/special_trait/lightstep
-	name = "Light Step"
-	greet_text = span_notice("I am quiet, nobody can hear my steps.")
-	weight = 100
+/datum/special_trait/silentstep
+	name = "Silent Step"
+	greet_text = span_notice("For better or for worse; you have been blessed by the Gods. Your footsteps are entirely silent; and armour is unusually quiet on your frame...")
+	weight = 75 //This isn't as low as other 'really' good traits because of its lack of applicable abuse cases.
+	//This doesn't mean that it won't be changed if it turns out to be problematic - this is a massive buff for some combat playstyles.
 
-/datum/special_trait/lightstep/on_apply(mob/living/carbon/human/character, silent)
+/datum/special_trait/silentstep/on_apply(mob/living/carbon/human/character, silent)
 	ADD_TRAIT(character, TRAIT_LIGHT_STEP, "[type]")
 
 /datum/special_trait/night_owl
