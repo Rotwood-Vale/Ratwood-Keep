@@ -43,7 +43,6 @@
 	created_item = /obj/item/bodypart/r_arm/prosthetic/bronze
 	craftdiff = 4
 
-
 // --------- GOLD RECIPES -----------
 
 /datum/anvil_recipe/engineering/gold/prosthetic/arm_left
@@ -51,29 +50,24 @@
 	req_bar = /obj/item/ingot/gold
 	created_item = /obj/item/bodypart/l_arm/prosthetic/gold
 	additional_items = list(/obj/item/ingot/gold, /obj/item/roguegear,/obj/item/roguegear)
-	i_type = "General"
 
 /datum/anvil_recipe/engineering/gold/prosthetic/arm_right
 	name = "Gold Right Arm"
 	req_bar = /obj/item/ingot/gold
 	created_item = /obj/item/bodypart/r_arm/prosthetic/gold
 	additional_items = list(/obj/item/ingot/gold, /obj/item/roguegear,/obj/item/roguegear)
-	i_type = "General"
 
 /datum/anvil_recipe/engineering/gold/prosthetic/leg_left
 	name = "Gold Left Leg"
 	req_bar = /obj/item/ingot/gold
 	created_item = /obj/item/bodypart/l_leg/prosthetic/gold
 	additional_items = list(/obj/item/ingot/gold, /obj/item/roguegear,/obj/item/roguegear)
-	i_type = "General"
 
 /datum/anvil_recipe/engineering/gold/prosthetic/leg_right
 	name = "Gold Right Leg"
 	req_bar = /obj/item/ingot/gold
 	created_item = /obj/item/bodypart/r_leg/prosthetic/gold
 	additional_items = list(/obj/item/ingot/gold, /obj/item/roguegear,/obj/item/roguegear)
-	i_type = "General"
-
 
 // --------- STEEL RECIPES -----------
 
@@ -82,29 +76,24 @@
 	req_bar = /obj/item/ingot/steel
 	created_item = /obj/item/bodypart/l_arm/prosthetic/steel
 	additional_items = list(/obj/item/ingot/steel, /obj/item/roguegear, /obj/item/roguegear)
-	i_type = "General"
 
 /datum/anvil_recipe/engineering/steel/prosthetic/arm_right
 	name = "Steel Right Arm"
 	req_bar = /obj/item/ingot/steel
 	created_item = /obj/item/bodypart/r_arm/prosthetic/steel
 	additional_items = list(/obj/item/ingot/steel, /obj/item/roguegear, /obj/item/roguegear)
-	i_type = "General"
 
 /datum/anvil_recipe/engineering/steel/prosthetic/leg_left
 	name = "Steel Left Leg"
 	req_bar = /obj/item/ingot/steel
 	created_item = /obj/item/bodypart/l_leg/prosthetic/steel
 	additional_items = list(/obj/item/ingot/steel, /obj/item/roguegear, /obj/item/roguegear)
-	i_type = "General"
 
 /datum/anvil_recipe/engineering/steel/prosthetic/leg_right
 	name = "Steel Right Leg"
 	req_bar = /obj/item/ingot/steel
 	created_item = /obj/item/bodypart/r_leg/prosthetic/steel
 	additional_items = list(/obj/item/ingot/steel, /obj/item/roguegear, /obj/item/roguegear)
-	i_type = "General"
-
 
 // --------- IRON RECIPES -----------
 
@@ -113,25 +102,21 @@ datum/anvil_recipe/engineering/iron/prosthetic/arm_left
 	req_bar = /obj/item/ingot/iron
 	created_item = /obj/item/bodypart/l_arm/prosthetic/iron
 	additional_items = list(/obj/item/ingot/iron, /obj/item/roguegear, /obj/item/roguegear)
-	i_type = "General"
 
 /datum/anvil_recipe/engineering/iron/prosthetic/arm_right
 	name = "Iron Right Arm"
 	req_bar = /obj/item/ingot/iron
 	created_item = /obj/item/bodypart/r_arm/prosthetic/iron
 	additional_items = list(/obj/item/ingot/iron, /obj/item/roguegear, /obj/item/roguegear)
-	i_type = "General"
 
 /datum/anvil_recipe/engineering/iron/prosthetic/leg_left
 	name = "Iron Left Leg"
 	req_bar = /obj/item/ingot/iron
 	created_item = /obj/item/bodypart/l_leg/prosthetic/iron
 	additional_items = list(/obj/item/ingot/iron, /obj/item/roguegear, /obj/item/roguegear)
-	i_type = "General"
 
 /datum/anvil_recipe/engineering/iron/prosthetic/leg_right
 	name = "Iron Right Leg"
 	req_bar = /obj/item/ingot/iron
 	created_item = /obj/item/bodypart/r_leg/prosthetic/iron
 	additional_items = list(/obj/item/ingot/iron, /obj/item/roguegear, /obj/item/roguegear)
-	i_type = "General"
