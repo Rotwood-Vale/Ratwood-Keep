@@ -5,7 +5,7 @@
 	icon = 'icons/roguetown/misc/tables.dmi'
 	var/obj/item/material
 	damage_deflection = 25
-	density = FALSE
+	density = TRUE
 	climbable = TRUE
 
 /obj/item // This is probably a bad idea. Sorry...
@@ -24,10 +24,10 @@
 			material = I
 			update_icon()
 			return
-		else if(material && material.artrecipe && material.artrecipe.hammered && material.artrecipe.extra_planks_needed > 0)
-			material.artrecipe.plank_add(user)
-			qdel(I)
-			return
+	if(material && material.artrecipe && material.artrecipe.hammered && istype(I, material.artrecipe.needed_item))
+		material.artrecipe.item_added(user)
+		qdel(I)
+		return
 	if(istype(I, /obj/item/rogueweapon/hammer))
 		user.changeNext_move(CLICK_CD_RAPID)
 		if(!material)
@@ -35,8 +35,6 @@
 		if(!material.artrecipe)
 			if(!choose_recipe(user))
 				return
-		if(material.artrecipe.progress == 0)
-			to_chat(user, span_warning("This recipe requires [material.artrecipe.extra_planks_needed] extra planks."))
 		if(material.artrecipe.hammered || material.artrecipe.progress == 100)
 			playsound(src,'sound/combat/hits/onmetal/sheet (2).ogg', 100, TRUE)
 			shake_camera(user, 1, 1)
@@ -48,8 +46,8 @@
 		if(material.artrecipe.progress == 100)
 			new material.artrecipe.created_item(get_turf(src))
 			var/obj/item/created_item_instance = new(material.artrecipe.created_item)
-			user.visible_message(span_info("[user] creates a [created_item_instance.name]."))
-			user.mind.add_sleep_experience(material.artrecipe.appro_skill, (user.STAINT * (material.artrecipe.craftdiff * 10))) //may need to be adjusted
+			user.visible_message(span_info("[user] creates \a [created_item_instance.name]."))
+			user.mind.add_sleep_experience(material.artrecipe.appro_skill, (user.STAINT * (material.artrecipe.craftdiff * 5))) //may need to be adjusted
 			qdel(material)
 			material = null
 			update_icon()
@@ -62,15 +60,6 @@
 				qdel(material)
 				material = null
 				return
-			else
-				material.artrecipe.advance(I, user)
-				if(!material.artrecipe.hammered)
-					playsound(src, pick('sound/combat/hits/onwood/fence_hit1.ogg', 'sound/combat/hits/onwood/fence_hit2.ogg', 'sound/combat/hits/onwood/fence_hit3.ogg'), 100, FALSE)
-				return
-		if(material && material.artrecipe && material.artrecipe.hammered && istype(I, material.artrecipe.needed_item))
-			material.artrecipe.item_added(user)
-			qdel(I)
-			return
 		if(!material.artrecipe.hammered)
 			playsound(src, pick('sound/combat/hits/onwood/fence_hit1.ogg', 'sound/combat/hits/onwood/fence_hit2.ogg', 'sound/combat/hits/onwood/fence_hit3.ogg'), 100, FALSE)
 		material.artrecipe.advance(I, user)
