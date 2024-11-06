@@ -4525,11 +4525,11 @@
 /turf/open/floor/rogue/cobble,
 /area/rogue/indoors)
 "eiH" = (
-/obj/structure/fluff/walldeco/wantedposter,
 /obj/structure/roguemachine/mail{
 	pixel_y = 0;
 	pixel_x = 32
 	},
+/obj/machinery/light/rogue/wallfire/candle,
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town)
 "eiL" = (
@@ -11120,7 +11120,9 @@
 /turf/open/water/swamp,
 /area/rogue/outdoors/bog)
 "khT" = (
-/obj/machinery/light/rogue/wallfire/candle/r,
+/obj/machinery/light/rogue/wallfire/candle{
+	pixel_y = -32
+	},
 /turf/open/floor/carpet/royalblack,
 /area/rogue/indoors/town)
 "khW" = (
@@ -12785,9 +12787,6 @@
 /area/rogue/under/town/sewer)
 "lMI" = (
 /obj/structure/table/wood{
-	icon_state = "longtable"
-	},
-/obj/structure/table/wood{
 	dir = 1;
 	icon_state = "longtable_mid"
 	},
@@ -12833,11 +12832,12 @@
 /area/rogue/outdoors/bog)
 "lPL" = (
 /obj/structure/table/wood{
-	icon_state = "longtable"
-	},
-/obj/structure/table/wood{
 	dir = 1;
 	icon_state = "longtable"
+	},
+/obj/structure/fluff/walldeco/wantedposter{
+	pixel_y = 0;
+	pixel_x = 32
 	},
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town)
@@ -19599,9 +19599,6 @@
 /turf/open/floor/rogue/twig,
 /area/rogue/under/cavewet/bogcaves)
 "rUQ" = (
-/obj/structure/table/wood{
-	icon_state = "longtable"
-	},
 /obj/item/paper,
 /obj/structure/table/wood{
 	dir = 1;
@@ -20469,12 +20466,6 @@
 	},
 /obj/machinery/light/rogue/wallfire/candle/r{
 	pixel_x = -32
-	},
-/obj/structure/table/wood{
-	icon_state = "longtable"
-	},
-/obj/structure/table/wood{
-	icon_state = "longtable"
 	},
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town)
@@ -24667,9 +24658,6 @@
 	},
 /area/rogue/indoors/town/manor)
 "wDG" = (
-/obj/structure/table/wood{
-	icon_state = "longtable"
-	},
 /obj/item/paper/scroll,
 /obj/item/natural/feather,
 /obj/structure/table/wood{
@@ -305094,11 +305082,11 @@ rNm
 vTo
 evo
 eiH
-tdu
+rNm
 lPL
 nNJ
-khT
 nNJ
+khT
 evo
 wVI
 wbg
