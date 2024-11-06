@@ -1,7 +1,7 @@
 /////// SHITCODE MADE BY MORIBUND and modularized so you dickless pricks can cannibalize and swipe it easier. Sprites for this by SINNERPEN and INFRARED BARON. payed for by dragon lee. you gonna swip this shit credit thos due.
 
 
-//// also I hate all of you. numberfuck this to death because you are too fucking stupid to code something from scratch. 
+//// also I hate all of you. numberfuck this to death because you are too fucking stupid to code something from scratch.
 
 ///////////////////////////////////////////////////////-----------------------------------------doc surgeries and functions---------------------------------------//////////////////////////////////////////////////
 
@@ -12,7 +12,7 @@
 	range = 1
 	associated_skill = /datum/skill/misc/treatment
 	miracle = FALSE
-	devotion_cost = 0 
+	devotion_cost = 0
 
 /obj/effect/proc_holder/spell/targeted/docheal  /////// miricle on 3x cooldown from normal
 	action_icon = 'icons/mob/actions/roguespells.dmi'
@@ -220,7 +220,7 @@
 		return TRUE
 	return FALSE
 
-/obj/effect/proc_holder/spell/targeted/stable/cast(list/targets, mob/user) 
+/obj/effect/proc_holder/spell/targeted/stable/cast(list/targets, mob/user)
 	. = ..()
 	if(iscarbon(targets[1]))
 		var/mob/living/carbon/target = targets[1]
@@ -235,7 +235,7 @@
 		return TRUE
 	return FALSE
 
-/obj/effect/proc_holder/spell/targeted/purge/cast(list/targets, mob/user) 
+/obj/effect/proc_holder/spell/targeted/purge/cast(list/targets, mob/user)
 	. = ..()
 	if(iscarbon(targets[1]))
 		var/mob/living/carbon/target = targets[1]
@@ -316,7 +316,7 @@
 		TOOL_SHARP = 40,
 	)
 	target_mobtypes = list(/mob/living/carbon/human, /mob/living/carbon/monkey)
-	surgery_flags = SURGERY_INCISED | SURGERY_RETRACTED 
+	surgery_flags = SURGERY_INCISED | SURGERY_RETRACTED
 	skill_min = SKILL_LEVEL_EXPERT
 	skill_median = SKILL_LEVEL_MASTER
 
@@ -341,7 +341,7 @@
 		liver = new /obj/item/organ/liver/weak
 		liver.Insert(target)
 		return TRUE
-	
+
 
 /datum/surgery/bypass
 	name = "Coronary artery bypass surgery"
@@ -670,7 +670,7 @@
 /datum/reagent/medicine/purify/on_mob_life(mob/living/carbon/human/M)
 	M.adjustFireLoss(0.5*REM, 0)
 	M.heal_wounds(3)
-	
+
 	// Iterate through all body parts
 	for (var/obj/item/bodypart/B in M.bodyparts)
 		// Iterate through wounds on each body part
@@ -1037,7 +1037,7 @@
 	new /obj/item/reagent_containers/pill/pnkpill(src)
 	new /obj/item/candle/yellow(src)
 	new /obj/item/needle(src)
-	new /obj/item/book/rogue/snek(src)
+	new /obj/item/book/rogue/medical_notebook(src)
 /obj/item/reagent_containers/hypospray/medipen/sealbottle
 	name = "sealed bottle item"
 	desc = "If you see this, call an admin."
@@ -1202,11 +1202,11 @@
 	var/mob/living/carbon/human/H = M
 	var/obj/item/bodypart/affecting = H.get_bodypart(check_zone(user.zone_selected))
 	if (!affecting) return
-	if (affecting.bandage) 
+	if (affecting.bandage)
 		to_chat(user, "There is already a bandage.")
 		return
 	var/used_time = 100
-	if (H.mind) 
+	if (H.mind)
 		used_time -= (H.mind.get_skill_level(/datum/skill/misc/treatment) * 10)
 	playsound(loc, 'sound/foley/bandage.ogg', 100, FALSE)
 	if (!do_mob(user, M, used_time)) return
@@ -1214,7 +1214,7 @@
 	user.dropItemToGround(src)
 	affecting.try_bandage(src)
 	H.update_damage_overlays()
-	
+
 	// Heal the specific body part every second while bandaged and manage wound pain and disabling effects
 	addtimer(CALLBACK(src, /proc/heal_and_manage_pain_disabling, H, affecting), 10, 1, TRUE)
 	if (M == user)
@@ -1249,9 +1249,9 @@
 	icon2 = "bandageroll2"
 	icon2step = 3
 
-/obj/item/book/rogue/snek
-	name = "Snake Stitches"
-	desc = "{<font color='green'><blink>By Dr.volva, snake.</blink></font>}"
+/obj/item/book/rogue/medical_notebook
+	name = "Medical Notebook"
+	desc = "A quick rundown on medical works."
 	icon_state ="book6_0"
 	base_icon_state = "book6"
 	bookfile = "medical.json"
