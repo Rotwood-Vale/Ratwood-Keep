@@ -6461,12 +6461,6 @@
 	},
 /turf/open/floor/rogue/church,
 /area/rogue/indoors/town/church/chapel)
-"gzD" = (
-/obj/structure/roguemachine/scomm{
-	pixel_y = -32
-	},
-/turf/open/water/cleanshallow,
-/area/rogue/outdoors/town)
 "gzG" = (
 /obj/structure/closet/crate/chest/neu,
 /obj/item/rogueweapon/hoe,
@@ -57520,7 +57514,7 @@ cQV
 cED
 lBX
 obN
-gzD
+gmf
 gmf
 gmf
 cxb
