@@ -8374,16 +8374,13 @@
 	},
 /area/rogue/outdoors/town)
 "hHd" = (
-/obj/structure/table/wood{
-	name = "Weaponsmith's table"
-	},
+/obj/structure/table/wood,
 /obj/structure/bars{
 	icon_state = "barsbent";
 	layer = 2.81
 	},
 /obj/structure/bars/passage/shutter{
-	redstone_id = "smith_shutter02";
-	name = "Weaponsmith"
+	redstone_id = "smith_shutter02"
 	},
 /turf/open/floor/rogue/blocks/stonered,
 /area/rogue/indoors/town/dwarfin)
@@ -18409,13 +18406,7 @@
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/under/town/basement)
 "qPK" = (
-/obj/structure/fluff/walldeco/bsmith{
-	pixel_x = 21
-	},
-/obj/machinery/light/rogue/lanternpost{
-	dir = 1;
-	pixel_x = -8
-	},
+/obj/structure/fluff/walldeco/bsmith,
 /turf/open/floor/rogue/blocks,
 /area/rogue/outdoors/town)
 "qPS" = (
@@ -22657,16 +22648,13 @@
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors/town/roofs)
 "uGK" = (
-/obj/structure/table/wood{
-	name = "Armorer's table"
-	},
+/obj/structure/table/wood,
 /obj/structure/bars{
 	icon_state = "barsbent";
 	layer = 2.81
 	},
 /obj/structure/bars/passage/shutter{
-	redstone_id = "smith_shutter01";
-	name = "Armorer"
+	redstone_id = "smith_shutter01"
 	},
 /turf/open/floor/rogue/blocks/stonered,
 /area/rogue/indoors/town/dwarfin)
