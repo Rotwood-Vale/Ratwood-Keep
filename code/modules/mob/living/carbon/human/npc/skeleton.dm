@@ -67,8 +67,6 @@
 		var/datum/outfit/OU = new skel_outfit
 		if(OU)
 			equipOutfit(OU)
-	
-	internal_organs = list() //remove internal organs
 
 /datum/outfit/job/roguetown/npc/skeleton/pre_equip(mob/living/carbon/human/H)
 	..()
