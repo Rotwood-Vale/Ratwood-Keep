@@ -7,9 +7,9 @@
 	/// Craft Difficulty here only matters for exp calculation and locking recipes based on skill level
 	var/craftdiff = 0
 	var/obj/item/needed_item
-	/// If tha current plank has been hammered all the times it needs to
+	/// If tha current item has been hammered all the times it needs to
 	var/hammered = FALSE
-	/// How many times does each plank need to be hammered? Scales with craftdiff
+	/// How many times does this need to be hammered?
 	var/hammers_per_item = 0
 	var/progress
 	/// I_type is like "sub category"
@@ -23,17 +23,17 @@
 
 /datum/artificer_recipe/proc/advance(obj/item/I, mob/user)
 	if(progress == 100)
-		return TRUE
-	if(additional_items.len)
-		needed_item = pick(additional_items)
-		additional_items -= needed_item
-		return TRUE
+		return
 	if(hammers_per_item == 0)
 		hammered = TRUE
+		user.visible_message(span_warning("[user] hammers the contraption."))
+		if(additional_items.len)
+			needed_item = pick(additional_items)
+			additional_items -= needed_item
 		if(needed_item)
 			to_chat(user, span_info("Now it's time to add \a [initial(needed_item.name)]."))
-			return FALSE
-	if(!needed_item)
+			return
+	if(!needed_item && hammered)
 		progress = 100
 		return
 	if(!hammered && hammers_per_item)

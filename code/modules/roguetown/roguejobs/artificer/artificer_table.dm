@@ -24,10 +24,6 @@
 			material = I
 			update_icon()
 			return
-	if(material && material.artrecipe && material.artrecipe.hammered && istype(I, material.artrecipe.needed_item))
-		material.artrecipe.item_added(user)
-		qdel(I)
-		return
 	if(istype(I, /obj/item/rogueweapon/hammer))
 		user.changeNext_move(CLICK_CD_RAPID)
 		if(!material)
@@ -62,7 +58,11 @@
 				return
 		if(!material.artrecipe.hammered)
 			playsound(src, pick('sound/combat/hits/onwood/fence_hit1.ogg', 'sound/combat/hits/onwood/fence_hit2.ogg', 'sound/combat/hits/onwood/fence_hit3.ogg'), 100, FALSE)
-		material.artrecipe.advance(I, user)
+			material.artrecipe.advance(I, user)
+	if(material && material.artrecipe && material.artrecipe.hammered && istype(I, material.artrecipe.needed_item))
+		material.artrecipe.item_added(user)
+		qdel(I)
+		return
 	..()
 
 /obj/machinery/artificer_table/proc/choose_recipe(user)
