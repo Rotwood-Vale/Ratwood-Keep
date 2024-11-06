@@ -82,4 +82,8 @@
 	eyes.see_in_dark = 3
 	eyes.lighting_alpha = LIGHTING_PLANE_ALPHA_NOCVISION
 	recipient.update_sight()
-	
+
+/datum/virtue/utility/learned
+	name = "Learned"
+	desc = "I am surprisingly well-read for someone of my station, and have no issue with literacy or numbers."
+	added_skills = list(/datum/skill/misc/reading = 3)
