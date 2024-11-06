@@ -107,7 +107,7 @@
 
 /datum/artificer_recipe/bronze/keys
 	name = "Keys 2x"
-	created_item = list(/obj/item/customblank, /obj/item/customblank)
+	created_item = list(/obj/item/key_custom_blank, /obj/item/key_custom_blank)
 	hammers_per_plank = 5
 	craftdiff = 1
 
