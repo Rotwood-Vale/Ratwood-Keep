@@ -202,7 +202,7 @@
 	created_item = /obj/item/bodypart/l_arm/prosthetic/bronze
 	hammers_per_plank = 5
 	craftdiff = 4
-	additional_items = list(/obj/item/roguegear)
+	additional_items = list(/obj/item/roguegear = 1)
 	i_type = "Prosthetics"
 
 /datum/artificer_recipe/bronze/prosthetic/arm_right
@@ -216,7 +216,7 @@
 	appro_skill = /datum/skill/craft/engineering
 	required_item = /obj/item/ingot/gold
 	created_item = /obj/item/bodypart/l_arm/prosthetic/gold
-	additional_items = list(/obj/item/roguegear, /obj/item/roguegear)
+	additional_items = list(/obj/item/roguegear = 2)
 	extra_planks_needed = 0
 	hammers_per_plank = 5
 	craftdiff = 5
@@ -241,10 +241,10 @@
 	appro_skill = /datum/skill/craft/engineering
 	required_item = /obj/item/ingot/steel
 	created_item = /obj/item/bodypart/l_arm/prosthetic/steel
-	additional_items = list(/obj/item/ingot/steel, /obj/item/roguegear)
+	additional_items = list(/obj/item/ingot/steel = 1, /obj/item/roguegear = 1)
 	extra_planks_needed = 0
 	hammers_per_plank = 5
-	craftdiff = 5
+	craftdiff = 4
 	i_type = "Prosthetics"
 
 /datum/artificer_recipe/steel/prosthetic/arm_right
@@ -266,7 +266,7 @@ datum/artificer_recipe/iron/prosthetic //These are the inexpensive alternatives
 	appro_skill = /datum/skill/craft/engineering
 	required_item = /obj/item/ingot/iron
 	created_item = /obj/item/bodypart/l_arm/prosthetic/iron
-	additional_items = list(/obj/item/cart_upgrade/level_1)
+	additional_items = list(/obj/item/cart_upgrade/level_1 = 1)
 	extra_planks_needed = 1
 	hammers_per_plank = 2
 	craftdiff = 2
