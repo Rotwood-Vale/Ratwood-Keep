@@ -959,7 +959,6 @@
 	},
 /area/rogue/indoors/town)
 "aTX" = (
-/obj/machinery/light/roguestreet/orange,
 /obj/item/roguebin,
 /turf/open/floor/rogue/blocks,
 /area/rogue/outdoors/town)
@@ -2172,7 +2171,10 @@
 	dir = 8;
 	pixel_y = -1
 	},
-/obj/machinery/light/roguestreet/orange,
+/obj/machinery/light/roguestreet/orange{
+	pixel_x = 11;
+	pixel_y = 10
+	},
 /turf/open/floor/rogue/blocks,
 /area/rogue/outdoors/town)
 "chb" = (
@@ -7408,10 +7410,6 @@
 "gJG" = (
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue/outdoors/town/roofs)
-"gJT" = (
-/obj/machinery/light/rogue/torchholder/l,
-/turf/open/floor/rogue/blocks,
-/area/rogue/outdoors/town)
 "gKd" = (
 /turf/open/floor/rogue/ruinedwood{
 	icon_state = "horzw"
@@ -10228,8 +10226,12 @@
 /turf/open/floor/carpet/red,
 /area/rogue/indoors/town/tavern)
 "jqJ" = (
-/obj/machinery/light/roguestreet/orange,
-/turf/open/floor/rogue/cobblerock,
+/obj/structure/fluff/railing/wood{
+	dir = 1;
+	pixel_y = -1
+	},
+/obj/machinery/light/roguestreet/orange/midlamp,
+/turf/open/floor/rogue/cobble,
 /area/rogue/outdoors/town)
 "jqM" = (
 /obj/machinery/light/rogue/torchholder{
@@ -10541,12 +10543,6 @@
 	},
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors/town)
-"jGS" = (
-/obj/machinery/light/roguestreet/orange{
-	dir = 1
-	},
-/turf/open/floor/rogue/cobblerock,
-/area/rogue/outdoors/town)
 "jGU" = (
 /obj/structure/closet/crate/chest{
 	lockid = "keep_armory"
@@ -14239,12 +14235,6 @@
 /obj/item/reagent_containers/glass/cup,
 /turf/open/floor/rogue/blocks/stonered,
 /area/rogue/indoors/town/manor)
-"ncS" = (
-/obj/machinery/light/roguestreet/orange/midlamp{
-	pixel_y = 10
-	},
-/turf/open/floor/rogue/blocks,
-/area/rogue/outdoors/town)
 "nda" = (
 /obj/structure/rack/rogue,
 /obj/item/keyring,
@@ -19004,7 +18994,9 @@
 	dir = 8;
 	pixel_y = -1
 	},
-/obj/machinery/light/roguestreet/orange,
+/obj/machinery/light/roguestreet/orange{
+	pixel_x = 11
+	},
 /turf/open/floor/rogue/blocks,
 /area/rogue/outdoors/town)
 "rqP" = (
@@ -19533,10 +19525,7 @@
 	dir = 8
 	},
 /obj/structure/fluff/railing/border,
-/obj/machinery/light/roguestreet/orange{
-	pixel_x = 17;
-	pixel_y = 9
-	},
+/obj/machinery/light/roguestreet/orange/walllamp,
 /turf/open/floor/rogue/blocks,
 /area/rogue/outdoors/town)
 "rQY" = (
@@ -19911,9 +19900,7 @@
 /obj/structure/fluff/railing/border{
 	dir = 8
 	},
-/obj/machinery/light/roguestreet/orange{
-	dir = 1
-	},
+/obj/machinery/light/roguestreet/orange/midlamp,
 /turf/open/floor/rogue/cobble,
 /area/rogue/outdoors/rtfield)
 "sgY" = (
@@ -22743,8 +22730,12 @@
 	},
 /area/rogue/outdoors/town)
 "uLu" = (
-/obj/structure/bars/cemetery,
-/turf/open/floor/rogue/cobble,
+/obj/structure/fluff/railing/wood{
+	dir = 1;
+	pixel_y = -1
+	},
+/obj/machinery/light/roguestreet/orange/midlamp,
+/turf/open/floor/rogue/blocks,
 /area/rogue/outdoors/town)
 "uLB" = (
 /obj/structure/bars/grille,
@@ -24847,7 +24838,7 @@
 /obj/structure/fluff/railing/border{
 	dir = 4
 	},
-/obj/machinery/light/roguestreet/orange,
+/obj/machinery/light/roguestreet/orange/midlamp,
 /turf/open/floor/rogue/cobble,
 /area/rogue/outdoors/rtfield)
 "wMH" = (
@@ -25941,11 +25932,7 @@
 	dir = 4
 	},
 /obj/structure/fluff/railing/border,
-/obj/machinery/light/roguestreet/orange{
-	dir = 1;
-	pixel_x = -17;
-	pixel_y = 8
-	},
+/obj/machinery/light/roguestreet/orange/walllamp,
 /turf/open/floor/rogue/blocks,
 /area/rogue/outdoors/town)
 "xLn" = (
@@ -289874,7 +289861,7 @@ kha
 lfV
 sco
 wVI
-tTh
+wVI
 wbg
 kDH
 xAt
@@ -292677,7 +292664,7 @@ wbg
 mRr
 wbg
 cFF
-uLu
+fDe
 wbg
 wbg
 wbg
@@ -295060,7 +295047,7 @@ eoy
 nbb
 wbg
 wVI
-tTh
+wVI
 wVI
 oIv
 hXm
@@ -295068,7 +295055,7 @@ fnA
 aaQ
 kyq
 wVI
-mjR
+wbg
 wVI
 wVI
 wVI
@@ -295861,7 +295848,7 @@ rQU
 xAt
 xAt
 xAt
-ime
+jqJ
 wbg
 wVI
 fnA
@@ -296288,9 +296275,9 @@ wVI
 wbg
 eEo
 wbg
-wVI
-wVI
 tTh
+wVI
+wVI
 wVI
 wVI
 wVI
@@ -297092,7 +297079,7 @@ wVI
 wVI
 wVI
 wVI
-wVI
+ylJ
 wVI
 kyZ
 wVI
@@ -297469,7 +297456,7 @@ xKW
 xAt
 xAt
 xAt
-eoy
+uLu
 wbg
 wbg
 wbg
@@ -302714,7 +302701,7 @@ wbg
 wVI
 wVI
 wVI
-gJT
+wVI
 wVI
 wVI
 wVI
@@ -303140,7 +303127,7 @@ ylJ
 wVI
 wVI
 wVI
-ylJ
+wVI
 wVI
 kDH
 xAt
@@ -303523,7 +303510,7 @@ evo
 evo
 evo
 evo
-tTh
+wVI
 wbg
 wbg
 wbg
@@ -303531,7 +303518,7 @@ gJs
 aOv
 aOv
 aOv
-jqJ
+aOv
 tkp
 wbg
 wbg
@@ -304327,7 +304314,7 @@ mxM
 evo
 evo
 evo
-ylJ
+wVI
 wbg
 wbg
 aOv
@@ -305541,7 +305528,7 @@ ppo
 aOv
 aOv
 aOv
-jGS
+aOv
 tkp
 wbg
 wbg
@@ -305955,7 +305942,7 @@ thT
 thT
 dHZ
 aFf
-tTh
+wVI
 kDH
 xAt
 xAt
@@ -309143,7 +309130,7 @@ hpj
 tNj
 wbg
 eEo
-ncS
+wbg
 wbg
 wbg
 qDx
@@ -311582,7 +311569,7 @@ evo
 wVI
 wVI
 wVI
-ylJ
+wVI
 wVI
 kDH
 xAt
@@ -312359,7 +312346,7 @@ poR
 tNj
 wbg
 wVI
-ylJ
+wVI
 rfx
 rfx
 rfx
