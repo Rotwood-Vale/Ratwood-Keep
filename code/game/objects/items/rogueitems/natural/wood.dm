@@ -64,16 +64,7 @@
 	w_class = WEIGHT_CLASS_NORMAL
 	smeltresult = /obj/item/ash
 	bundletype = /obj/item/natural/bundle/plank
-	var/datum/artificer_recipe/currecipe
 
-/obj/item/natural/wood/plank/Destroy()
-	if(currecipe)
-		QDEL_NULL(currecipe)
-	if(istype(loc, /obj/machinery/artificer_table))
-		var/obj/machinery/artificer_table/A = loc
-		A.plank = null
-		A.update_icon()
-	..()
 
 /obj/item/natural/bundle/plank
 	name = "wooden planks"
