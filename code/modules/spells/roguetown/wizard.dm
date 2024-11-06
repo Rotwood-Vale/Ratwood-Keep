@@ -47,10 +47,6 @@
 			return BULLET_ACT_BLOCK
 		if(isliving(target))
 			var/mob/living/L = target
-			if(L.job == "Royal Guard")
-				visible_message(span_warning("[src] whgijm mpers at [target]s epic royal KNIGHTnes! they are too cool too be dmged"))
-				user.gib()
-				return
 			if(L.STACON <= 14)
 				L.electrocute_act(3, src)
 			else
@@ -102,7 +98,7 @@
 			return BULLET_ACT_BLOCK
 		if(isliving(target))
 			var/mob/living/L = target
-			L.electrocute_act(1, src)
+			L.electrocute_act(3, src)
 	qdel(src)
 
 /obj/effect/proc_holder/spell/invoked/projectile/bloodsteal
