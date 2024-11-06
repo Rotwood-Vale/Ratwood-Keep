@@ -82,6 +82,22 @@
 	swingdelay = 0
 	item_d_type = "stab"
 
+/obj/item/rogueweapon/sword/stone
+	force = 15 //Weaker than a short sword
+	force_wielded = 20 // Less than other swords
+	possible_item_intents = list(/datum/intent/sword/cut, /datum/intent/sword/thrust)
+	gripped_intents = list(/datum/intent/sword/cut, /datum/intent/sword/thrust, /datum/intent/sword/chop)
+	name = "stone sword"
+	desc = "A simple stone sword, crude and effective."
+	icon_state = "stone_sword"
+	max_blade_int = 100
+	max_integrity = 125
+	anvilrepair = /datum/skill/craft/crafting
+	smeltresult = /obj/item/natural/stone
+	minstr = 4
+	wdefense = 3
+	sellprice = 10
+
 /obj/item/rogueweapon/sword/short
 	name = "short sword"
 	desc = "An archaic steel sword made for stabbing."
