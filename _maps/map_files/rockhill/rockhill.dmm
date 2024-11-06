@@ -1187,7 +1187,6 @@
 	pixel_x = -4;
 	pixel_y = -1
 	},
-/obj/machinery/light/rogue/wallfire/candle,
 /turf/open/floor/carpet/royalblack,
 /area/rogue/indoors)
 "bfm" = (
@@ -18369,14 +18368,6 @@
 /obj/structure/chair/wood/rogue,
 /turf/open/floor/rogue/cobble/mossy,
 /area/rogue/outdoors/rtfield)
-"qHf" = (
-/obj/structure/chair/wood/rogue{
-	dir = 8;
-	pixel_y = 6;
-	pixel_x = -2
-	},
-/turf/open/floor/carpet/royalblack,
-/area/rogue/indoors)
 "qHs" = (
 /obj/structure/roguemachine/scomm/r,
 /turf/open/floor/rogue/tile,
@@ -20671,6 +20662,13 @@
 /obj/machinery/light/rogue/wallfire/candle/blue/r,
 /turf/open/floor/rogue/blocks/paving,
 /area/rogue/indoors/town/bath)
+"sQk" = (
+/obj/structure/chair/wood/rogue{
+	dir = 4
+	},
+/obj/machinery/light/rogue/wallfire/candle,
+/turf/open/floor/carpet/royalblack,
+/area/rogue/indoors)
 "sQE" = (
 /turf/closed/wall/mineral/rogue/wooddark,
 /area/rogue/under/cavewet/bogcaves)
@@ -23782,6 +23780,14 @@
 /obj/machinery/light/rogue/firebowl,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors/rtfield)
+"vFV" = (
+/obj/structure/chair/wood/rogue{
+	dir = 8;
+	pixel_y = 6;
+	pixel_x = -2
+	},
+/turf/open/floor/carpet/royalblack,
+/area/rogue/indoors)
 "vGc" = (
 /turf/closed/wall/mineral/rogue/stone/moss,
 /area/rogue/indoors/shelter/rtfield)
@@ -275554,8 +275560,8 @@ uaL
 uaL
 qxe
 tPH
-qHf
-qHf
+vFV
+vFV
 htF
 fAY
 ufg
@@ -377260,7 +377266,7 @@ erZ
 erZ
 erZ
 pAV
-owc
+sQk
 tGZ
 tGZ
 rNN
@@ -377661,7 +377667,7 @@ erZ
 erZ
 erZ
 erZ
-pAV
+cbU
 beZ
 tGZ
 tGZ
@@ -378492,7 +378498,7 @@ nqU
 xou
 xou
 xou
-nqU
+muF
 erZ
 erZ
 erZ
