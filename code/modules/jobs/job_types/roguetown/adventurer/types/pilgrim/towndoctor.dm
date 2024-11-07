@@ -45,7 +45,6 @@
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/diagnose/secular)
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/docheal)
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/stable)
-		H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/purge)
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/debride)
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/cpr)
 		
