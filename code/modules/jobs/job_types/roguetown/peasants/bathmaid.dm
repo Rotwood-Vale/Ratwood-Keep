@@ -26,7 +26,7 @@
 	neck = /obj/item/storage/belt/rogue/pouch/coins/poor
 	r_hand = /obj/item/soap/bath
 	l_hand = /obj/item/rogue/instrument/harp
-	mouth = /obj/item/roguekey/nightmaiden
+	mouth = /obj/item/key/nightmaiden
 	if(H.gender == MALE)
 		pants =	/obj/item/clothing/under/roguetown/loincloth
 		belt =	/obj/item/storage/belt/rogue/leather/cloth

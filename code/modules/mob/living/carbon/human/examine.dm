@@ -5,7 +5,7 @@
 		user.mind.i_know_person(src)
 	var/datum/species/self_species = dna.species
 	var/datum/species/examiner_species = user.dna.species
-	if(self_species.stress_examine && self_species.type != examiner_species.type && !HAS_TRAIT(user, TRAIT_TOLERANT))
+	if(self_species.stress_examine && self_species.type != examiner_species.type)
 		var/event_type = /datum/stressevent/shunned_race
 		if(HAS_TRAIT(user, TRAIT_XENOPHOBIC))
 			event_type = /datum/stressevent/shunned_race_xenophobic
@@ -90,7 +90,7 @@
 			var/skin_tone_wording = dna.species.skin_tone_wording ? lowertext(dna.species.skin_tone_wording) : "skin tone"
 			var/list/skin_tones = dna.species.get_skin_list()
 			var/skin_tone_seen = "incomprehensible"
-			if(!HAS_TRAIT(src, TRAIT_ROTMAN) && skin_tone)
+			if(skin_tone)
 				//AGGHHHHH this is stupid
 				for(var/tone in skin_tones)
 					if(src.skin_tone == skin_tones[tone])

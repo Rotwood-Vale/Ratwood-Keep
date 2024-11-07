@@ -3,7 +3,7 @@
 	tutorial = "Unbreakable. Resolute. Master of the field. Fearless. \
 	These are the first words that come to mind when one mentions the Kommandant, the unparalleled leader of the well reputed, \
 	expensive and noble Grenzelhoft mercenaries of the emperiate guild of the Grenzel empire. \
-	The mercenaries of Gren rightfully fear and respect their Kommandant, walking to certain death on his one word. "
+	The mercenaries of Gren rightfully fear and respect their Kommandant, walking to certain death on his one word."
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = list(
 		/datum/species/akula,
@@ -19,7 +19,7 @@
 	)
 	outfit = /datum/outfit/job/roguetown/mercenary/grenzelhoft_kommandant
 	maximum_possible_slots = 1
-	min_pq = 4
+	min_pq = 6
 	torch = FALSE
 	cmode_music = 'sound/music/combat_grenzelhoft.ogg'
 	category_tags = list(CTAG_MERCENARY)
@@ -30,12 +30,12 @@
 	belt = /obj/item/storage/belt/rogue/leather
 	beltl = /obj/item/keyring/mercenary_boss
 	beltr = /obj/item/storage/belt/rogue/pouch/coins/rich
-	neck = /obj/item/clothing/neck/roguetown/gorget
-	shirt = /obj/item/clothing/suit/roguetown/shirt/grenzelhoft
+	neck = /obj/item/clothing/neck/roguetown/chaincoif
+	shirt = /obj/item/clothing/suit/roguetown/armor/chainmail
 	head = /obj/item/clothing/head/roguetown/grenzelhofthat
 	armor = /obj/item/clothing/suit/roguetown/armor/blacksteel/cuirass
-	pants = /obj/item/clothing/under/roguetown/grenzelpants
-	shoes = /obj/item/clothing/shoes/roguetown/armor/grenzelhoft
+	pants = /obj/item/clothing/under/roguetown/blacksteel/platelegs
+	shoes = /obj/item/clothing/shoes/roguetown/boots/blacksteel/plateboots
 	gloves = /obj/item/clothing/gloves/roguetown/grenzelgloves
 	backr = /obj/item/storage/backpack/rogue/satchel
 	r_hand = /obj/item/rogueweapon/sword/long/rider/messer
@@ -65,4 +65,5 @@
 		H.change_stat("constitution", 2)
 		H.change_stat("perception", 2)
 		H.change_stat("speed", 2)
+	ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)

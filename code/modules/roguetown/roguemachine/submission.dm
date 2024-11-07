@@ -12,10 +12,6 @@ var/global/feeding_hole_reset_timer
 	pixel_y = 32
 
 /obj/structure/feedinghole/attackby(obj/item/P, mob/user, params)
-/*	if(feeding_hole_wheat_count < 5)
-		user << "You hear squeaks coming from the hole, but it seems inactive."
-
-		return*/
 	if(ishuman(user))
 		attemptstockpile(P)
 	return ..()

@@ -276,7 +276,7 @@
 		. |= BODYPART_LIFE_UPDATE_HEALTH
 
 /obj/item/bodypart/Initialize()
-	..()
+	. = ..()
 	update_HP()
 
 /obj/item/bodypart/proc/update_HP()
@@ -616,7 +616,7 @@
 		override_color = SKIN_COLOR_ROT
 	if(is_organic_limb && should_draw_greyscale && !skeletonized)
 		var/draw_color =  mutation_color || species_color || skin_tone
-		if(rotted || (owner && HAS_TRAIT(owner, TRAIT_ROTMAN)))
+		if(rotted)
 			draw_color = SKIN_COLOR_ROT
 		if(draw_color)
 			limb.color = "#[draw_color]"
