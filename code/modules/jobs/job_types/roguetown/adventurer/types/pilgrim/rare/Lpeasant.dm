@@ -48,10 +48,6 @@
 							/obj/item/seeds/garlic = 1,
 							/obj/item/seeds/carrot = 1,
 							/obj/item/seeds/potato = 1,
-							/obj/item/seeds/bean = 1,
-							/obj/item/seeds/bellpepper = 1,
-							/obj/item/seeds/rice = 1,
-							/obj/item/seeds/mycelium/plumphelmet = 1,
 							/obj/item/seeds/mycelium/trippy = 1,
 							/obj/item/seeds/mycelium/amanita = 1)
 	beltl = /obj/item/rogueweapon/sickle
