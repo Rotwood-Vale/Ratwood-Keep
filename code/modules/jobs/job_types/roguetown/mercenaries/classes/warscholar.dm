@@ -12,7 +12,7 @@
 
 	// CLASS ARCHETYPES
 	H.adjust_blindness(-3)
-	var/classes = list("Hierophant","Arcyne-Monk","Vizier")
+	var/classes = list("Hierophant","Pontifex","Vizier")
 	var/classchoice = input("Choose your archetypes", "Available archetypes") as anything in classes
 
 	switch(classchoice)
