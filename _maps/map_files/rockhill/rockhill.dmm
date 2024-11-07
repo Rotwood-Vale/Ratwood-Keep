@@ -2496,9 +2496,7 @@
 /turf/closed/wall/mineral/rogue/stone,
 /area/rogue/indoors/town/tavern)
 "csR" = (
-/obj/machinery/light/roguestreet/orange/walllamp{
-	dir = 2
-	},
+/obj/machinery/light/roguestreet/orange/walllamp,
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/manor)
 "csS" = (
@@ -8409,9 +8407,7 @@
 /turf/closed/mineral/rogue/bedrock,
 /area/rogue/under/cavewet/bogcaves)
 "hEJ" = (
-/obj/machinery/light/roguestreet/orange/walllamp{
-	dir = 2
-	},
+/obj/machinery/light/roguestreet/orange/walllamp,
 /turf/open/floor/rogue/grass,
 /area/rogue/outdoors/town)
 "hEN" = (
@@ -9651,9 +9647,7 @@
 /turf/open/floor/rogue/tile,
 /area/rogue/indoors/town/vault)
 "iMN" = (
-/obj/machinery/light/roguestreet/orange/walllamp{
-	dir = 2
-	},
+/obj/machinery/light/roguestreet/orange/walllamp,
 /turf/open/floor/rogue/tile{
 	icon_state = "bfloorz"
 	},
@@ -11529,9 +11523,7 @@
 /area/rogue/indoors/town)
 "kxU" = (
 /obj/structure/chair/bench,
-/obj/machinery/light/roguestreet/orange/walllamp{
-	dir = 2
-	},
+/obj/machinery/light/roguestreet/orange/walllamp,
 /turf/open/floor/rogue/grass,
 /area/rogue/indoors/town/manor)
 "kxV" = (
@@ -21042,6 +21034,9 @@
 	},
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors/rtfield)
+"teD" = (
+/turf/closed/wall/mineral/rogue/roofwall/innercorner,
+/area/rogue/outdoors/town)
 "teE" = (
 /obj/structure/mineral_door/wood/deadbolt,
 /turf/open/floor/rogue/blocks{
@@ -24758,9 +24753,7 @@
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/town/garrison)
 "wue" = (
-/obj/machinery/light/roguestreet/orange/walllamp{
-	dir = 2
-	},
+/obj/machinery/light/roguestreet/orange/walllamp,
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/town/tavern)
 "wuh" = (
@@ -25354,9 +25347,7 @@
 /turf/open/transparent/openspace,
 /area/rogue/indoors/town/church)
 "wXf" = (
-/obj/machinery/light/roguestreet/orange/walllamp{
-	dir = 2
-	},
+/obj/machinery/light/roguestreet/orange/walllamp,
 /turf/open/floor/rogue/blocks/stonered/tiny,
 /area/rogue/indoors/town/tavern)
 "wXL" = (
@@ -305373,7 +305364,7 @@ cWT
 hcW
 hcW
 rfx
-nZQ
+mwE
 mwE
 mwE
 wbg
@@ -508786,12 +508777,12 @@ aUc
 aUc
 vIa
 uFE
-hGU
-hGU
-hGU
-hGU
-hGU
-hGU
+uJF
+uJF
+uJF
+uJF
+uJF
+teD
 hGU
 hGU
 hGU
@@ -509188,13 +509179,13 @@ aUc
 aUc
 vIa
 uFE
+uJF
+uJF
+uJF
+uJF
+uJF
+qSA
 hEc
-hGn
-hGn
-hGn
-hGn
-hGn
-hGn
 hGn
 hGn
 hGn
@@ -509590,13 +509581,13 @@ aUc
 aUc
 vIa
 uFE
+hGU
+hGU
+hGU
+hGU
+hGU
+efs
 esF
-xAt
-xAt
-xAt
-xAt
-xAt
-xAt
 xAt
 xAt
 xAt
@@ -509992,13 +509983,13 @@ aUc
 aUc
 vIa
 uFE
-esF
-xAt
-xAt
-xAt
-xAt
-xAt
-xAt
+hEc
+hGn
+hGn
+hGn
+hGn
+hGn
+eUb
 xAt
 xAt
 xAt
