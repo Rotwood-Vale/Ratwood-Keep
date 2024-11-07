@@ -8975,11 +8975,11 @@
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/basement)
 "idt" = (
-/obj/machinery/light/rogue/firebowl{
-	pixel_y = 4
+/obj/structure/stairs{
+	dir = 8
 	},
-/turf/open/floor/rogue/cobble/mossy,
-/area/rogue/outdoors/rtfield)
+/turf/open/floor/rogue/ruinedwood/chevron,
+/area/rogue/indoors)
 "idR" = (
 /obj/structure/fluff/walldeco/customflag{
 	pixel_y = 32
@@ -17894,6 +17894,9 @@
 	pixel_y = 7
 	},
 /obj/machinery/light/rogue/oven/west,
+/obj/structure/fluff/railing/border{
+	pixel_x = 2
+	},
 /turf/open/floor/rogue/blocks/paving,
 /area/rogue/indoors)
 "qhg" = (
@@ -19462,10 +19465,10 @@
 	},
 /area/rogue/indoors/town/dwarfin)
 "rGe" = (
-/obj/machinery/light/rogue/firebowl{
-	pixel_y = 4
+/obj/machinery/light/rogue/firebowl/standing{
+	pixel_x = -10
 	},
-/turf/open/floor/rogue/grass,
+/turf/open/floor/rogue/cobble/mossy,
 /area/rogue/outdoors/rtfield)
 "rGi" = (
 /obj/structure/mineral_door/wood/towner/farmer,
@@ -22441,11 +22444,9 @@
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/basement)
 "uob" = (
-/obj/structure/fluff/railing/wood{
-	dir = 1;
-	layer = 2.7;
-	pixel_x = 2;
-	pixel_y = 7
+/obj/structure/fluff/railing/border{
+	dir = 6;
+	pixel_x = 2
 	},
 /turf/open/floor/rogue/blocks/paving,
 /area/rogue/indoors)
@@ -22787,6 +22788,10 @@
 	layer = 2.8;
 	pixel_x = 8
 	},
+/obj/structure/table/wood{
+	dir = 1;
+	icon_state = "tablewood1"
+	},
 /turf/open/floor/rogue/blocks/paving,
 /area/rogue/indoors)
 "uGf" = (
@@ -22961,7 +22966,7 @@
 /area/rogue/indoors/town/manor)
 "uOS" = (
 /obj/machinery/light/rogue/hearth,
-/turf/open/floor/rogue/blocks/paving,
+/turf/open/floor/rogue/blocks/platform,
 /area/rogue/indoors)
 "uOT" = (
 /turf/open/floor/rogue/blocks{
@@ -23416,11 +23421,14 @@
 	},
 /area/rogue/indoors/town/church/chapel)
 "vjs" = (
-/obj/structure/stairs{
-	dir = 8
+/obj/machinery/light/rogue/firebowl/standing{
+	pixel_x = -10
 	},
-/turf/open/floor/rogue/blocks/paving,
-/area/rogue/indoors)
+/obj/machinery/light/rogue/firebowl/standing{
+	pixel_x = -10
+	},
+/turf/open/floor/rogue/dirt/road,
+/area/rogue/outdoors/rtfield)
 "vjG" = (
 /obj/effect/decal/cleanable/blood/old,
 /obj/effect/decal/cleanable/blood/old,
@@ -263625,15 +263633,15 @@ uaL
 uaL
 wSn
 uaL
-nHK
+hLK
 sjP
 sjP
-nHK
+hLK
 fhJ
 wSn
 wSn
 wSn
-nHK
+bdN
 qvR
 qvR
 vIa
@@ -264035,7 +264043,7 @@ rHq
 rHq
 rHq
 rqr
-hLK
+bdN
 uaL
 wSn
 vIa
@@ -264839,7 +264847,7 @@ rjI
 vAE
 uaL
 uaL
-nHK
+bdN
 uaL
 wSn
 vIa
@@ -265635,7 +265643,7 @@ woq
 qvR
 izN
 wSn
-nHK
+hLK
 sjP
 sjP
 sjP
@@ -266836,7 +266844,7 @@ vIa
 vIa
 vIa
 vIa
-rGe
+qvR
 qvR
 qvR
 rrT
@@ -267238,14 +267246,14 @@ vIa
 vIa
 vIa
 vIa
-uaL
+vjs
 qvR
 qvR
 qvR
 uaL
 uaL
 uaL
-idt
+sjP
 sjP
 sjP
 qvR
@@ -267647,7 +267655,7 @@ qvR
 qvR
 qvR
 qvR
-sjP
+rGe
 sjP
 uaL
 uaL
@@ -274497,7 +274505,7 @@ nqU
 nqU
 nqU
 uGb
-vjs
+dBi
 dBi
 ufg
 nqU
@@ -274899,7 +274907,7 @@ hSz
 bzm
 cqP
 xgR
-xgR
+idt
 uob
 hIa
 nqU
