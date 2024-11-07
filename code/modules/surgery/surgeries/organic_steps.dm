@@ -59,8 +59,7 @@
 	name = "Retract incision"
 	implements = list(
 		TOOL_RETRACTOR = 75,
-		TOOL_SCREWDRIVER = 50,
-		TOOL_WIRECUTTER = 35,
+		TOOL_IMPROVRETRACTOR = 40,
 	)
 	time = 2.4 SECONDS
 	surgery_flags_blocked = SURGERY_RETRACTED
