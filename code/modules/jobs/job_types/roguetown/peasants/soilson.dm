@@ -55,6 +55,5 @@
 		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/random
 	else
 		head = /obj/item/clothing/head/roguetown/armingcap
-//		pants = /obj/item/clothing/under/roguetown/trou
 		armor = /obj/item/clothing/suit/roguetown/shirt/dress/gen/random
 		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
