@@ -4453,9 +4453,7 @@
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors/bog)
 "eie" = (
-/obj/structure/closet/crate/chest{
-	lockid = "keep_armory"
-	},
+/obj/structure/closet/crate/chest,
 /obj/item/rogueweapon/shovel,
 /obj/item/rogueweapon/sickle,
 /obj/item/rogueweapon/hoe,
@@ -8543,7 +8541,7 @@
 /area/rogue/outdoors/rtfield)
 "hPP" = (
 /obj/structure/closet/crate/roguecloset/lord{
-	lockid = "clinic"
+	lockid = "physician"
 	},
 /obj/item/reagent_containers/powder/alch/berryp,
 /obj/item/reagent_containers/powder/alch/berryp,
@@ -18123,7 +18121,7 @@
 /area/rogue/indoors/town)
 "qFa" = (
 /obj/structure/closet/crate/roguecloset/lord{
-	lockid = "clinic"
+	lockid = "physician"
 	},
 /obj/item/reagent_containers/hypospray/medipen/sealbottle/reju,
 /obj/item/reagent_containers/hypospray/medipen/sealbottle/purify,
@@ -25258,9 +25256,7 @@
 /obj/item/reagent_containers/food/snacks/grown/rogue/sweetleaf,
 /obj/item/reagent_containers/food/snacks/grown/rogue/pipeweed,
 /obj/item/reagent_containers/food/snacks/grown/berries/rogue/poison,
-/obj/structure/closet/crate/chest{
-	lockid = "physician"
-	},
+/obj/structure/closet/crate/chest,
 /obj/structure/fluff/railing/border,
 /turf/open/floor/rogue/ruinedwood{
 	dir = 1;
