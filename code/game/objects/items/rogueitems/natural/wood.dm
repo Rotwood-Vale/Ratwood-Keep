@@ -25,12 +25,12 @@
 		if(!do_after(user, lumber_time, target = user))
 			return
 		lumber_amount = rand(minimum, max(round(skill_level), minimum))
-		var/sound_played = FALSE
+		var/essense_sound_played = FALSE //This is here so the sound wont play multiple times if the essense itself spawns multiple times
 		for(var/i = 0; i < lumber_amount; i++)
 			if(prob(skill_level+ user.goodluck(2)))
 				new /obj/item/grown/log/tree/small/essence(get_turf(src))
-				if(!sound_played)
-					sound_played = TRUE
+				if(!essense_sound_played)
+					essense_sound_played = TRUE
 					to_chat(user, span_warning("Dendor watches over us..."))
 					playsound(src,pick('sound/items/gem.ogg'), 100, FALSE)
 			else
@@ -55,7 +55,6 @@
 	w_class = WEIGHT_CLASS_BULKY
 	smeltresult = /obj/item/rogueore/coal
 	lumber_amount = 0
-	metalizer_result = /obj/item/rogueore/tin
 
 /obj/item/natural/wood/plank
 	name = "wood plank"
@@ -65,7 +64,7 @@
 	w_class = WEIGHT_CLASS_NORMAL
 	smeltresult = /obj/item/ash
 	bundletype = /obj/item/natural/bundle/plank
-	metalizer_result = /obj/item/rogueore/copper
+
 
 /obj/item/natural/bundle/plank
 	name = "wooden planks"
@@ -75,6 +74,7 @@
 	force = 0
 	throwforce = 0
 	maxamount = 10
+	obj_flags = null
 	firefuel = 30 MINUTES
 	resistance_flags = FLAMMABLE
 	w_class = WEIGHT_CLASS_BULKY
@@ -94,7 +94,6 @@
 	static_debris = null
 	firefuel = 60 MINUTES // Extremely poweful fuel.
 	w_class = WEIGHT_CLASS_SMALL
-	metalizer_result = /obj/item/rogueore/gold
 
 /obj/item/grown/log/tree/bowpartial
 	name = "unstrung bow"
