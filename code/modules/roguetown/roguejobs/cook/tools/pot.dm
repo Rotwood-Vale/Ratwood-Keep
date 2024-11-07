@@ -14,7 +14,7 @@
 	w_class = WEIGHT_CLASS_BULKY
 	reagent_flags = OPENCONTAINER
 	throwforce = 10
-	volume = 199
+	volume = 199 //May need to go to 200? Seems to leave 6th bowl not quite full
 
 /obj/item/reagent_containers/glass/bucket/pot/update_icon()
 	cut_overlays()
