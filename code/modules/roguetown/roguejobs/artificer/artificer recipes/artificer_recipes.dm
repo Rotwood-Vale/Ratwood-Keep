@@ -306,7 +306,7 @@ datum/artificer_recipe/iron/prosthetic //These are the inexpensive alternatives
 	current_source = null
 	return
 
-/obj/item/contraption/proc/missfire(obj/O, mob/living/user)
+/obj/item/contraption/proc/misfire(obj/O, mob/living/user)
 	var/skill = user.mind.get_skill_level(/datum/skill/craft/engineering)
 	if(prob(max(0, missfire_chance - user.goodluck(2) - skill)))
 		to_chat(user, span_info("Oh fuck."))
@@ -379,7 +379,7 @@ datum/artificer_recipe/iron/prosthetic //These are the inexpensive alternatives
 		qdel(O)
 		user.mind.add_sleep_experience(/datum/skill/craft/engineering, (user.STAINT / 2))
 		if(missfire_chance)
-			missfire(O, user)
+			misfire(O, user)
 		if(!current_charge)
 			battery_collapse(O, user)
 		return
@@ -415,7 +415,7 @@ datum/artificer_recipe/iron/prosthetic //These are the inexpensive alternatives
 		new /obj/effect/decal/cleanable/ash(turf)
 		qdel(O)
 		if(missfire_chance)
-			missfire(O, user)
+			misfire(O, user)
 		if(!current_charge)
 			battery_collapse(O, user)
 		sleep(20)
