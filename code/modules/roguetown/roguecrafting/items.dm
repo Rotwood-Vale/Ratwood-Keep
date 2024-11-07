@@ -207,6 +207,15 @@
 				/obj/item/natural/stone = 1)
 	craftdiff = 3
 
+/datum/crafting_recipe/roguetown/stonesword
+	name = "stone sword"
+	result = /obj/item/rogueweapon/sword/stone
+	reqs = list(/obj/item/grown/log/tree/small = 1,
+				/obj/item/natural/fibers = 1,
+				/obj/item/natural/stone = 3)
+	craftdiff = 1
+
+
 /datum/crafting_recipe/roguetown/woodclub
 	name = "wood club"
 	result = /obj/item/rogueweapon/mace/woodclub/crafted
