@@ -226,14 +226,14 @@
 	. = ..()
 	if(iscarbon(targets[1]))
 		var/mob/living/carbon/target = targets[1]
-		var/ramount = 10
-		var/rid = /datum/reagent/medicine/stimu
-		target.reagents.add_reagent(rid, ramount)
-		target.visible_message(span_green("[user] stabs [target]'s chest with a syringe, causing there breathing to return to normal."), span_notice("I feel my breathing steady and grip on life tighten."))
-		target.setOxyLoss(-100)
-		target.adjustToxLoss(-50)
-		target.emote("rage")
-		target.blood_volume += BLOOD_VOLUME_SURVIVE
+		var/obj/item/bodypart/BPA = target.get_bodypart(BODY_ZONE_R_ARM)
+		BPA.add_wound(/datum/wound/artery/)
+		target.visible_message(span_danger("[user] slashes [target]'s artery open letting the toxins and other impurities bleed and drain from them. they might want to stitch that soon."), span_notice("I've been cut by [user] I feel the toxins leaving my body with each heart beat. im getting light headed...."))
+		target.visible_message(span_danger("[user] drains the reagents and toxins from [target]"))
+		target.adjustToxLoss(-999)
+		target.adjustBruteLoss(30, BRUTE, BPA)
+		target.reagents.remove_all_type(/datum/reagent, 9999)
+		target.emote("scream")
 		return TRUE
 	return FALSE
 
