@@ -295,6 +295,8 @@
 	newforce = (newforce * user.used_intent.damfactor) * dullfactor
 	if(user.used_intent.get_chargetime() && user.client?.chargedprog < 100)
 		newforce = newforce * 0.5
+	if(!(user.mobility_flags & MOBILITY_STAND))
+		newforce *= 0.5
 	newforce = round(newforce,1)
 	newforce = max(newforce, 1)
 	testing("endforce [newforce]")

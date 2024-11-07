@@ -1,6 +1,6 @@
 /datum/job/roguetown/nightmaiden
-	title = "Bath Swain"
-	f_title = "Bath Wench"
+	title = "Bathhouse Attendant"
+	f_title = "Bathhouse Attendant"
 	flag = WENCH
 	department_flag = PEASANTS
 	faction = "Station"
@@ -19,6 +19,7 @@
 	can_random = FALSE
 	min_pq = -10
 	max_pq = null
+	round_contrib_points = 2
 
 /datum/outfit/job/roguetown/nightmaiden/pre_equip(mob/living/carbon/human/H)
 	..()

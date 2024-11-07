@@ -10,13 +10,14 @@
 	allowed_races = RACES_ALL_KINDS
 	//allowed_ages = list(AGE_MIDDLEAGED, AGE_OLD)
 
-	tutorial = "Servitude unto death; That is your motto. Having nurtured royalty for years, you are nothing short of the King's majordomo, commanding over the rest of the house staff."
+	tutorial = "Servitude unto death; That is your motto. Having nurtured royalty for years, you are nothing short of the Duke's majordomo, commanding over the rest of the house staff."
 
 	outfit = /datum/outfit/job/roguetown/butler
 	display_order = JDO_BUTLER
 	give_bank_account = 30
 	min_pq = 1 //Head Butler needs to actually give head at least once before getting the position
 	max_pq = null
+	round_contrib_points = 2
 
 /datum/outfit/job/roguetown/butler/pre_equip(mob/living/carbon/human/H)
 	..()

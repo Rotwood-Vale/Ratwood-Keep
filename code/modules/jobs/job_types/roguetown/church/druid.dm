@@ -17,6 +17,7 @@
 	give_bank_account = TRUE
 	min_pq = 0
 	max_pq = null
+	round_contrib_points = 2
 
 /datum/outfit/job/roguetown/druid
 	name = "Druid"

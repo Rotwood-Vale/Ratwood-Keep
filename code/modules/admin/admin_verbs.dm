@@ -8,6 +8,7 @@ GLOBAL_PROTECT(admin_verbs_default)
 	/client/proc/check_pq,
 	/client/proc/adjust_pq,
 	/client/proc/hearallasghost,
+	/client/proc/toggle_aghost_invis,
 	/client/proc/admin_ghost,
 	/datum/admins/proc/start_vote,
 	/client/proc/toggle_autovote,
@@ -70,6 +71,7 @@ GLOBAL_PROTECT(admin_verbs_admin)
 	/datum/admins/proc/toggleguests,	/*toggles whether guests can join the current game*/
 	/datum/admins/proc/announce,		/*priority announce something to all clients.*/
 	/datum/admins/proc/set_admin_notice, /*announcement all clients see when joining the server.*/
+	/client/proc/toggle_aghost_invis, /* lets us choose whether our in-game mob goes visible when we aghost (off by default) */
 	/client/proc/admin_ghost,			/*allows us to ghost/reenter body at will*/
 	/client/proc/hearallasghost,
 	/client/proc/toggle_view_range,		/*changes how far we can see*/
@@ -221,6 +223,7 @@ GLOBAL_LIST_INIT(admin_verbs_hideable, list(
 	/datum/admins/proc/toggleguests,
 	/datum/admins/proc/announce,
 	/datum/admins/proc/set_admin_notice,
+	/client/proc/toggle_aghost_invis,
 	/client/proc/admin_ghost,
 	/client/proc/toggle_view_range,
 	/client/proc/cmd_admin_subtle_message,
@@ -364,7 +367,6 @@ GLOBAL_PROTECT(admin_verbs_hideable)
 	to_chat(src, span_interface("All of your adminverbs are now visible."))
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Show Adminverbs") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
-
 /client/proc/set_context_menu_enabled()
 	set category = "Admin"
 	set name = "Toggle Right-Click Menus"
@@ -372,6 +374,14 @@ GLOBAL_PROTECT(admin_verbs_hideable)
 		return
 	show_popup_menus = !show_popup_menus
 	to_chat(src, show_popup_menus ? "Right click menus are now enabled" : "Right click menus are now disabled")
+
+/client/proc/toggle_aghost_invis()
+	set category = "GameMaster"
+	set name = "Aghost (Toggle Invisibility)"
+	if (!holder)
+		return
+	aghost_toggle = !aghost_toggle
+	to_chat(src, aghost_toggle ? "Aghosting will now turn your mob invisible." : "Aghost will no longer turn your mob invisible.")
 
 /client/proc/admin_ghost()
 	set category = "GameMaster"
@@ -413,8 +423,9 @@ GLOBAL_PROTECT(admin_verbs_hideable)
 		log_admin("[key_name(usr)] admin ghosted.")
 		message_admins("[key_name_admin(usr)] admin ghosted.")
 		var/mob/body = mob
-		body.invisibility = INVISIBILITY_MAXIMUM
-		body.density = 0
+		if (aghost_toggle)
+			body.invisibility = INVISIBILITY_MAXIMUM
+			body.density = 0
 		body.ghostize(TRUE, admin = TRUE)
 		if(body && !body.key)
 			body.key = "@[key]"	//Haaaaaaaack. But the people have spoken. If it breaks; blame adminbus

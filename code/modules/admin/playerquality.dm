@@ -15,13 +15,17 @@
 		return the_pq
 	else
 		if(the_pq >= 100)
-			return "<span style='color: #00ff00;'>Legendary</span>"
+			return "<span style='color: #74cde0;'>TRUE AZUREAN</span>"
 		if(the_pq >= 70)
-			return "<span style='color: #74cde0;'>Exceptional</span>"
+			return "<span style='color: #00ff00;'>Magnificent!</span>"
+		if(the_pq >= 50)
+			return "<span style='color: #00ff00;'>Exceptional!</span>"
 		if(the_pq >= 30)
-			return "<span style='color: #47b899;'>Great</span>"
+			return "<span style='color: #47b899;'>Great!</span>"
+		if(the_pq >= 10)
+			return "<span style='color: #69c975;'>Good!</span>"
 		if(the_pq >= 5)
-			return "<span style='color: #58a762;'>Good</span>"
+			return "<span style='color: #58a762;'>Nice</span>"
 		if(the_pq >= -4)
 			return "Normal"
 		if(the_pq >= -30)
@@ -107,9 +111,6 @@
 	if(selection == "Player List")
 		for(var/client/C in GLOB.clients)
 			var/usedkey = C.ckey
-//			if(!check_rights(R_ADMIN,0))
-//				if(C.ckey in GLOB.anonymize)
-//					usedkey = get_fake_key(C.ckey)
 			selections[usedkey] = C.ckey
 		selection = input("Which Player?") as null|anything in sortList(selections)
 		if(!selection)
@@ -133,7 +134,7 @@
 	popup_window_data += "<center><a href='?_src_=holder;[HrefToken()];cursemenu=[ckey]'>CURSES</a></center>"
 	popup_window_data += "<table width=100%><tr><td width=33%><div style='text-align:left'>"
 	popup_window_data += "Commends: <a href='?_src_=holder;[HrefToken()];readcommends=[ckey]'>[get_commends(ckey)]</a></div></td>"
-	popup_window_data += "<td width=34%><center>ESL Points: [get_eslpoints(ckey)]</center></td>"
+	popup_window_data += "<td width=34%><center>Round Contributor Points: [get_roundpoints(ckey)]</center></td>"
 	popup_window_data += "<td width=33%><div style='text-align:right'>Rounds Survived: [get_roundsplayed(ckey)]</div></td></tr></table>"
 	var/list/listy = world.file2list("data/player_saves/[copytext(ckey,1,2)]/[ckey]/playerquality.txt")
 	if(!listy.len)
@@ -181,9 +182,6 @@
 		if(!selection)
 			return
 		theykey = selection
-	if(theykey == ckey)
-		to_chat(src, span_boldwarning("That's you!"))
-		return
 	if(!fexists("data/player_saves/[copytext(theykey,1,2)]/[theykey]/preferences.sav"))
 		to_chat(src, span_boldwarning("User does not exist."))
 		return
@@ -234,36 +232,36 @@
 		curcomm = 0
 	return curcomm
 
-/proc/add_eslpoint(key)
+/proc/add_roundpoints(amt, key) //Each round contributor point counts as 0.1 of a PQ.
 	if(!key)
 		return
 	var/curcomm = 0
-	var/json_file = file("data/player_saves/[copytext(key,1,2)]/[key]/esl.json")
+	var/json_file = file("data/player_saves/[copytext(key,1,2)]/[key]/rcp.json")
 	if(!fexists(json_file))
 		WRITE_FILE(json_file, "{}")
 	var/list/json = json_decode(file2text(json_file))
-	if(json["ESL"])
-		curcomm = json["ESL"]
+	if(json["RCP"])
+		curcomm = json["RCP"]
 
-	curcomm++
-	json["ESL"] = curcomm
+	curcomm += amt
+	json["RCP"] = curcomm
 	fdel(json_file)
 	WRITE_FILE(json_file, json_encode(json))
 
-	if(get_playerquality(key) > -5)
-		adjust_playerquality(-1, ckey(key))
+	if(curcomm < 100 || get_playerquality(key) < 10)
+		adjust_playerquality(round(amt/10,0.1), ckey(key))
 
-/proc/get_eslpoints(key)
+/proc/get_roundpoints(key)
 	if(!key)
 		return
 	var/curcomm = 0
-	var/json_file = file("data/player_saves/[copytext(key,1,2)]/[key]/esl.json")
+	var/json_file = file("data/player_saves/[copytext(key,1,2)]/[key]/rcp.json")
 	if(!fexists(json_file))
 		WRITE_FILE(json_file, "{}")
 	var/list/json = json_decode(file2text(json_file))
 
-	if(json["ESL"])
-		curcomm = json["ESL"]
+	if(json["RCP"])
+		curcomm = json["RCP"]
 	if(!curcomm)
 		curcomm = 0
 	return curcomm

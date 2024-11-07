@@ -1,6 +1,6 @@
 /datum/job/roguetown/knavewench // The most aggressively rude name yet.
-	title = "Tavern Knave"
-	f_title = "Tavern Wench"
+	title = "Tapster"
+	f_title = "Tapster"
 	flag = KNAVEWENCH
 	department_flag = PEASANTS
 	faction = "Station"
@@ -15,6 +15,7 @@
 	give_bank_account = 10
 	min_pq = -10
 	max_pq = null
+	round_contrib_points = 2
 
 /datum/outfit/job/roguetown/knavewench/pre_equip(mob/living/carbon/human/H)
 	..()

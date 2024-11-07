@@ -36,6 +36,7 @@
 	implements = list(
 		TOOL_HEMOSTAT = 75,
 		TOOL_WIRECUTTER = 60,
+		TOOL_IMPROVISED_HEMOSTAT = 38,
 	)
 	time = 2.4 SECONDS
 	surgery_flags_blocked = SURGERY_CLAMPED
@@ -64,6 +65,7 @@
 		TOOL_RETRACTOR = 75,
 		TOOL_SCREWDRIVER = 50,
 		TOOL_WIRECUTTER = 35,
+		TOOL_IMPROVISED_RETRACTOR = 38,
 	)
 	time = 2.4 SECONDS
 	surgery_flags_blocked = SURGERY_RETRACTED

@@ -244,6 +244,12 @@
 	icon_state = "plating2"
 	},
 /area/rogue/under/cave/dungeon1/gethsmane)
+"bP" = (
+/obj/structure/fluff/railing/fence{
+	dir = 8
+	},
+/turf/open/floor/rogue/grass,
+/area/rogue/outdoors/woods)
 "bR" = (
 /obj/structure/rack/rogue,
 /turf/open/floor/rogue/ruinedwood,
@@ -1184,6 +1190,10 @@
 	},
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/under/town/basement)
+"jY" = (
+/obj/structure/fluff/railing/fence,
+/turf/open/floor/rogue/dirt,
+/area/rogue/outdoors/woods)
 "jZ" = (
 /obj/item/restraints/legcuffs/beartrap/armed/camouflage,
 /obj/machinery/conveyor/auto{
@@ -1214,6 +1224,10 @@
 /obj/structure/chair/stool/rogue,
 /turf/open/floor/rogue/dirt,
 /area/rogue/under/cavewet/bogcaves)
+"ki" = (
+/obj/machinery/gear_painter,
+/turf/open/floor/rogue/grass,
+/area/rogue/outdoors/mountains)
 "kj" = (
 /obj/structure/rack/rogue,
 /obj/item/gun/ballistic/revolver/grenadelauncher/bow/recurve,
@@ -1265,12 +1279,16 @@
 /turf/open/floor/rogue/greenstone,
 /area/rogue/under/cave/dungeon1/gethsmane)
 "kv" = (
-/obj/structure/closet/crate/roguecloset/dark,
+/obj/structure/closet/crate/roguecloset/dark{
+	locked = 1;
+	lockid = "warden";
+	keylock = 1
+	},
 /obj/item/clothing/cloak/raincloak/furcloak/woad,
 /obj/item/clothing/cloak/raincloak/furcloak/woad,
 /obj/item/clothing/mask/rogue/wildguard,
-/obj/item/storage/keyring/guard,
 /obj/item/clothing/mask/rogue/wildguard,
+/obj/item/roguekey/warden,
 /turf/open/floor/rogue/ruinedwood{
 	dir = 1;
 	icon_state = "vertw"
@@ -1540,6 +1558,10 @@
 /obj/structure/fluff/statue/gargoyle/moss,
 /turf/open/floor/rogue/blocks/paving,
 /area/rogue/under/town/basement)
+"mo" = (
+/obj/machinery/gear_painter,
+/turf/open/floor/rogue/naturalstone,
+/area/rogue/outdoors/mountains)
 "mr" = (
 /mob/living/carbon/human/species/goblin/npc/ambush/sea,
 /turf/open/floor/rogue/dirt/road,
@@ -2094,6 +2116,10 @@
 /obj/structure/fluff/railing/wood,
 /turf/open/floor/rogue/grass,
 /area/rogue/outdoors/woods)
+"ro" = (
+/obj/structure/fluff/railing/fence,
+/turf/open/floor/rogue/grass,
+/area/rogue/outdoors/woods)
 "rr" = (
 /obj/structure/closet/crate/chest/wicker,
 /obj/item/reagent_containers/food/snacks/grown/wheat,
@@ -2590,7 +2616,7 @@
 "vi" = (
 /obj/structure/mineral_door/wood{
 	locked = 1;
-	lockid = "garrison";
+	lockid = "warden";
 	name = "warden's watchtower"
 	},
 /turf/open/floor/rogue/ruinedwood,
@@ -2753,6 +2779,7 @@
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors/woods)
 "wE" = (
+/obj/structure/handcart,
 /turf/open/floor/rogue/cobble,
 /area/rogue/indoors/shelter/woods)
 "wH" = (
@@ -2856,7 +2883,7 @@
 /area/rogue/outdoors/woods)
 "xS" = (
 /obj/structure/roguewindow,
-/turf/closed,
+/turf/open/floor/rogue/ruinedwood/turned,
 /area/rogue/outdoors/beach/forest)
 "xU" = (
 /obj/effect/decal/cleanable/blood/gibs/core,
@@ -2888,7 +2915,7 @@
 "yb" = (
 /obj/structure/mineral_door/wood{
 	locked = 1;
-	lockid = "garrison";
+	lockid = "warden";
 	name = "warden's watchtower"
 	},
 /turf/open/floor/rogue/ruinedwood{
@@ -3261,6 +3288,10 @@
 "Bj" = (
 /obj/structure/fluff/railing/border{
 	dir = 9
+	},
+/obj/structure/fluff/railing/fence{
+	dir = 4;
+	icon_state = "fence"
 	},
 /turf/open/floor/rogue/grass,
 /area/rogue/outdoors/woods)
@@ -3742,7 +3773,7 @@
 /area/rogue/under/cave)
 "Fr" = (
 /obj/structure/roguewindow,
-/turf/closed,
+/turf/open/floor/rogue/twig,
 /area/rogue/outdoors/woods)
 "Fs" = (
 /turf/open/water/river{
@@ -4331,7 +4362,10 @@
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/outdoors/woods)
 "Ko" = (
-/obj/structure/handcart,
+/obj/structure/fluff/railing/fence{
+	dir = 4;
+	icon_state = "fence"
+	},
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors/woods)
 "Kp" = (
@@ -5214,7 +5248,7 @@
 "Sc" = (
 /obj/structure/mineral_door/wood{
 	locked = 1;
-	lockid = "garrison";
+	lockid = "warden";
 	name = "warden's watchtower"
 	},
 /turf/open/floor/rogue/ruinedwood/spiral,
@@ -5798,6 +5832,13 @@
 /obj/machinery/light/rogue/firebowl/stump,
 /turf/open/floor/rogue/dirt,
 /area/rogue/indoors/shelter/woods)
+"Xd" = (
+/obj/structure/fluff/railing/fence{
+	dir = 4;
+	icon_state = "fence"
+	},
+/turf/open/floor/rogue/dirt,
+/area/rogue/outdoors/woods)
 "Xf" = (
 /obj/structure/glowshroom,
 /turf/open/floor/rogue/naturalstone,
@@ -5925,6 +5966,14 @@
 /obj/structure/bars/pipe,
 /turf/open/floor/rogue/greenstone,
 /area/rogue/under/cave/dungeon1/gethsmane)
+"Yl" = (
+/obj/structure/fluff/railing/fence,
+/obj/structure/fluff/railing/fence{
+	dir = 4;
+	icon_state = "fence"
+	},
+/turf/open/floor/rogue/grass,
+/area/rogue/outdoors/woods)
 "Yo" = (
 /obj/structure/fluff/walldeco/church/line{
 	dir = 4;
@@ -6067,7 +6116,7 @@
 /area/rogue/under/cave)
 "ZB" = (
 /obj/structure/roguewindow,
-/turf/closed,
+/turf/open/floor/rogue/ruinedwood,
 /area/rogue/indoors/shelter/woods)
 "ZD" = (
 /obj/structure/mineral_door/wood/fancywood,
@@ -45284,8 +45333,8 @@ MK
 Yi
 jW
 gc
-ZB
-ZB
+cz
+cz
 gc
 nt
 nt
@@ -45745,10 +45794,10 @@ By
 nt
 Yi
 nt
-ZB
+cz
 oC
 eK
-ZB
+cz
 By
 MK
 MK
@@ -46052,7 +46101,7 @@ jW
 jW
 nt
 nt
-ZB
+cz
 FL
 KI
 gX
@@ -46212,11 +46261,11 @@ nt
 gX
 Ed
 ey
-ZB
+cz
 nt
 gc
-ZB
-ZB
+cz
+cz
 gc
 jW
 jW
@@ -46360,7 +46409,7 @@ nt
 nt
 gc
 gX
-ZB
+cz
 gX
 gc
 jW
@@ -46525,7 +46574,7 @@ MK
 nt
 gc
 Lz
-ZB
+cz
 gc
 jW
 vE
@@ -48097,12 +48146,12 @@ nt
 nt
 nt
 Ut
-nt
-nt
-nt
-nt
-nt
-nt
+bP
+bP
+bP
+bP
+bP
+bP
 Ut
 jW
 jW
@@ -48260,7 +48309,7 @@ Vh
 nt
 nt
 nt
-jW
+jY
 jW
 jW
 nt
@@ -48417,7 +48466,7 @@ jW
 MK
 Vh
 nt
-nt
+ro
 jW
 jW
 nt
@@ -48567,14 +48616,14 @@ Yi
 Yi
 jW
 jW
-nt
+rl
 jW
 MK
 Vh
 Vh
 ew
-ew
-BO
+Vh
+ro
 nt
 jW
 jW
@@ -48731,7 +48780,7 @@ ew
 ew
 ew
 Vh
-BO
+ro
 nt
 jW
 jW
@@ -48880,7 +48929,7 @@ jW
 jW
 Yi
 MK
-Vh
+jW
 TH
 Vh
 ew
@@ -48888,7 +48937,7 @@ ew
 ew
 Vh
 nt
-nt
+ro
 jW
 nt
 nt
@@ -49045,7 +49094,7 @@ Vh
 Vh
 jW
 Vh
-nt
+ro
 jW
 nt
 nt
@@ -49202,7 +49251,7 @@ jW
 uW
 jW
 nt
-nt
+ro
 jW
 nt
 nt
@@ -49672,9 +49721,9 @@ Yi
 qF
 ou
 ou
+ro
 jW
 jW
-dA
 nt
 nt
 nt
@@ -49829,10 +49878,10 @@ jW
 jW
 jW
 jW
-nt
+ro
 nt
 jW
-nt
+Vy
 nt
 nt
 nt
@@ -49977,16 +50026,16 @@ Kv
 NU
 NU
 Bj
-jW
+Xd
 Ko
 MK
 MK
 MK
 MK
-MK
-jW
-jW
-nt
+Ko
+Xd
+Xd
+Yl
 nt
 jW
 nt
@@ -50134,7 +50183,7 @@ RR
 RR
 nt
 nt
-By
+jW
 MK
 MK
 jW
@@ -50448,7 +50497,7 @@ jW
 MK
 jW
 MK
-MK
+LA
 MK
 nt
 nt
@@ -68040,12 +68089,12 @@ rj
 rj
 rj
 hh
-ZB
+cz
 sL
 Bz
 Bz
 Zu
-ZB
+cz
 rj
 rj
 rj
@@ -68356,7 +68405,7 @@ rj
 hh
 gc
 gX
-ZB
+cz
 gX
 gc
 hh
@@ -81637,7 +81686,7 @@ rj
 GH
 GH
 GH
-zu
+ki
 HO
 gU
 gU
@@ -82737,7 +82786,7 @@ Jr
 Jx
 pL
 zu
-HO
+mo
 gU
 gU
 gU

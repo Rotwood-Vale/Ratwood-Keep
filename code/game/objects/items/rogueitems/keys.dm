@@ -86,7 +86,7 @@
 
 /obj/item/roguekey/heir
 	name = "heir room key"
-	desc = "A highly coveted key belonging to the doors of the heirs of this monarchy."
+	desc = "A highly coveted key belonging to the doors of the heirs of this realm."
 	icon_state = "hornkey"
 	lockid = "heir"
 
@@ -95,6 +95,12 @@
 	desc = "This key belongs to the town guards."
 	icon_state = "spikekey"
 	lockid = "garrison"
+
+/obj/item/roguekey/warden
+	name = "watchtower key"
+	desc = "This key belongs to the wardens."
+	icon_state = "spikekey"
+	lockid = "warden"
 
 /obj/item/roguekey/dungeon
 	name = "dungeon key"
@@ -335,7 +341,7 @@
 
 /obj/item/roguekey/hand
 	name = "hand's key"
-	desc = "This regal key belongs to the King's Right Hand."
+	desc = "This regal key belongs to the Grand Duke's Right Hand."
 	icon_state = "cheesekey"
 	lockid = "hand"
 

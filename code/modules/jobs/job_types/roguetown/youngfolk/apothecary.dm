@@ -19,6 +19,7 @@
 
 	min_pq = 0
 	max_pq = null
+	round_contrib_points = 2
 
 /datum/outfit/job/roguetown/apothecary/pre_equip(mob/living/carbon/human/H)
 	..()

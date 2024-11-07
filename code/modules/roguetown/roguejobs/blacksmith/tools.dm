@@ -145,6 +145,7 @@
 	//dropshrink = 0.8
 	wlength = 10
 	slot_flags = ITEM_SLOT_HIP
+	tool_behaviour = TOOL_IMPROVISED_HEMOSTAT
 	associated_skill = null
 	var/obj/item/ingot/hingot = null
 	var/hott = FALSE

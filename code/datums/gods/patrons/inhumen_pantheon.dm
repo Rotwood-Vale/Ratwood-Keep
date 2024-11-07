@@ -21,13 +21,13 @@
 	confess_lines = list(
 		"PRAISE ZIZO!",
 		"LONG LIVE ZIZO!",
-		"ZIZO IS KING!",
+		"ZIZO IS QUEEN!",
 	)
 
 /datum/patron/inhumen/graggar
 	name = "Graggar"
-	domain = "God of Conquest, Murder and Pillaging"
-	desc = "Orc turned deity, said by the Holy Ecclesial to have been blessed by Ravox himself to fight the Archdevil Vheslyn. Instead of joining the Stalwart Warrior's army, he took his blessings to rampage and tear down the Old Ten. Bless the Blooded One."
+	domain = "God of Conquest, War, Murder, Pillaging"
+	desc = "Orc turned deity, said by the Holy Ecclesial to have been blessed by Ravox himself. He took his blessings to rampage and tear down the Old Ten. Though some Graggarites might care for 'honor', most do not- what matters are results, and victory at any cost."
 	worshippers = "Prisoners, Murderers and the Cruel"
 	mob_traits = list(TRAIT_HORDE, TRAIT_ORGAN_EATER)
 	confess_lines = list(

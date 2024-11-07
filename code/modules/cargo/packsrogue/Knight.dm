@@ -73,7 +73,7 @@
 
 /datum/supply_pack/rogue/Knight/bracers
 	name = "Steel Bracers"
-	cost = 20
+	cost = 10
 	contains = list(/obj/item/clothing/wrists/roguetown/bracers)
 
 /datum/supply_pack/rogue/Knight/plategaunt
@@ -99,12 +99,12 @@
 
 /datum/supply_pack/rogue/Knight/plateboots
 	name = "Plated boots"
-	cost = 20
+	cost = 10
 	contains = list(/obj/item/clothing/shoes/roguetown/boots/armor)
 
 /datum/supply_pack/rogue/Knight/blkplateboots
 	name = "Blacksteel Plated boots"
-	cost = 50
+	cost = 40
 	contains = list(/obj/item/clothing/shoes/roguetown/boots/blacksteel/plateboots)
 
 
@@ -112,6 +112,11 @@
 	name = "Bastard Sword"
 	cost = 20
 	contains = list(/obj/item/rogueweapon/sword/long)
+
+/datum/supply_pack/rogue/Knight/estoc
+	name = "Estoc"
+	cost = 60
+	contains = list(/obj/item/rogueweapon/estoc)
 
 /datum/supply_pack/rogue/Knight/greatsword
 	name = "Greatsword"

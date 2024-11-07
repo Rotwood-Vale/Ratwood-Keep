@@ -16,6 +16,7 @@
 	min_pq = 1 //"Yeah...my guy says the best I can do is one PQ, final offer"
 	max_pq = null
 	required = TRUE
+	round_contrib_points = 3
 
 	cmode_music = 'sound/music/combat_fancy.ogg'
 

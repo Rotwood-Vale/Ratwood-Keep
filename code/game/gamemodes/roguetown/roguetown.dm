@@ -93,7 +93,7 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "E
 	var/lord_dead = FALSE
 	for(var/mob/living/carbon/human/H in GLOB.human_list)
 		if(H.mind)
-			if(H.job == "Monarch")
+			if(H.job == "Grand Duke")
 				lord_found = TRUE
 				if(H.stat == DEAD)
 					lord_dead = TRUE
@@ -195,7 +195,7 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "E
 /datum/game_mode/chaosmode/proc/pick_bandits()
 	//BANDITS
 	banditgoal = rand(200,400)
-	restricted_jobs = list("Monarch",
+	restricted_jobs = list("Grand Duke",
 	"Consort",
 	"Merchant",
 	"Priest",
@@ -333,7 +333,7 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "E
 	restricted_jobs = list()
 
 /datum/game_mode/chaosmode/proc/pick_maniac()
-	restricted_jobs = list("Monarch", "Consort")
+	restricted_jobs = list("Grand Duke", "Consort")
 	antag_candidates = get_players_for_role(ROLE_MANIAC)
 	var/datum/mind/villain = pick_n_take(antag_candidates)
 	if(villain)
@@ -353,7 +353,7 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "E
 	restricted_jobs = list()
 
 /datum/game_mode/chaosmode/proc/pick_lich()
-	restricted_jobs = list("Monarch", "Consort", "Royal Guard", "Guard Captain")
+	restricted_jobs = list("Grand Duke", "Consort", "Royal Guard", "Guard Captain")
 	antag_candidates = get_players_for_role(ROLE_LICH)
 	var/datum/mind/lichman = pick_n_take(antag_candidates)
 	if(lichman)
@@ -375,7 +375,7 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "E
 /datum/game_mode/chaosmode/proc/pick_vampires()
 	var/vampsremaining = 3
 	restricted_jobs = list(
-	"Monarch",
+	"Grand Duke",
 	"Consort",
 	"Dungeoneer",
 	"Inquisitor",
@@ -422,7 +422,7 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "E
 /datum/game_mode/chaosmode/proc/pick_werewolves()
 	// Ideally we want adventurers/pilgrims/towners to roll it
 	restricted_jobs = list(
-	"Monarch",
+	"Grand Duke",
 	"Consort",
 	"Dungeoneer",
 	"Inquisitor",

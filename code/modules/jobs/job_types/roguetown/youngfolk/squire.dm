@@ -18,6 +18,7 @@
 	give_bank_account = TRUE
 	min_pq = -5 //squires aren't great but they can do some damage
 	max_pq = null
+	round_contrib_points = 2
 
 /datum/outfit/job/roguetown/squire
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/guard
