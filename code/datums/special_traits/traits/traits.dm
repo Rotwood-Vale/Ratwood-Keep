@@ -54,14 +54,31 @@
 /datum/special_trait/value/on_apply(mob/living/carbon/human/character, silent)
 	ADD_TRAIT(character, TRAIT_SEEPRICES, "[type]")
 
-/datum/special_trait/silentstep
-	name = "Silent Step"
-	greet_text = span_notice("For better or for worse; you have been blessed by the Gods. Your footsteps are entirely silent; and armour is unusually quiet on your frame...")
-	weight = 75 //This isn't as low as other 'really' good traits because of its lack of applicable abuse cases.
+/datum/special_trait/underworldassassin
+	name = "Underworld Assassin"
+	greet_text = span_notice("You've always been an outlier. Even from a young age, socialite activities weren't for you. Be it misfortune, happenstance, or simply good luck - You ended up in the care of one of the many assassin guilds that poliferate this rotten world.")
+	weight = 15 //This is on-par with vengeant bum; but far weaker as it doesn't give you 20 STR/CON/END
 	//This doesn't mean that it won't be changed if it turns out to be problematic - this is a massive buff for some combat playstyles.
 
-/datum/special_trait/silentstep/on_apply(mob/living/carbon/human/character, silent)
+/datum/special_trait/underworldassassin/on_apply(mob/living/carbon/human/character, silent)
 	ADD_TRAIT(character, TRAIT_LIGHT_STEP, "[type]")
+	character.change_stat("strength", -1)
+	character.change_stat("endurance", 2)
+	character.change_stat("speed", 2)
+	character.mind.adjust_skillrank_up_to(/datum/skill/misc/sneaking, 2, TRUE)
+	character.mind.adjust_skillrank_up_to(/datum/skill/misc/climbing, 1, TRUE)
+	character.mind.adjust_skillrank(/datum/skill/misc/athletics, 1, TRUE)
+
+/datum/special_trait/lightfooted
+	name = "Lightfooted"
+	greet_text = span_notice("You've always been light on your feet. Sneaking around quietly, and quickly has never been a problem for you.")
+	weight = 75 //This is far less stronk
+	//Weaker version of Underworld Assassin.
+
+/datum/special_trait/lightfooted/on_apply(mob/living/carbon/human/character, silent)
+	ADD_TRAIT(character, TRAIT_LIGHT_STEP, "[type]")
+	character.change_stat("speed", 1)
+	character.mind.adjust_skillrank(/datum/skill/misc/athletics, 1, TRUE)
 
 /datum/special_trait/night_owl
 	name = "Night Owl"
