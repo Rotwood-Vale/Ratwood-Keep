@@ -306,12 +306,17 @@
 	var/skill = user.mind.get_skill_level(/datum/skill/craft/engineering)
 	if(prob(max(0, missfire_chance - user.goodluck(2) - skill)))
 		to_chat(user, span_info("Oh fuck."))
+		playsound(src, 'sound/misc/bell.ogg', 50)
 		sleep(rand(5, 30))
 		explosion(src, light_impact_range = 3, flame_range = 1, smoke = TRUE, soundin = pick('sound/misc/explode/bottlebomb (1).ogg','sound/misc/explode/bottlebomb (2).ogg'))
 		qdel(src)
 
 /obj/item/contraption/attackby(obj/item/I, mob/user, params)
 	if(istype(I, accepted_power_source))
+		var/datum/effect_system/spark_spread/S = new()
+		var/turf/front = get_turf(src)
+		S.set_up(1, 1, front)
+		S.start()
 		if(current_source)
 			to_chat(user, span_info("I try to insert the [I.name] but theres already \a [initial(accepted_power_source.name)] inside!"))
 			playsound(src, 'sound/combat/hits/blunt/woodblunt (2).ogg', 100, TRUE)
@@ -323,11 +328,28 @@
 			current_source = I
 			playsound(src, 'sound/combat/hits/blunt/woodblunt (2).ogg', 100, TRUE)
 			qdel(I)
+			sleep(5)
+			playsound(src, 'sound/misc/clockloop.ogg', 50, TRUE)
+	if(istype(I, /obj/item/rogueweapon/hammer))
+		user.visible_message(span_info("[user] beats the [name] into submission!"))
+		playsound(src, pick('sound/combat/hits/onmetal/sheet (1).ogg', 'sound/combat/hits/onmetal/sheet (2).ogg', 'sound/combat/hits/onmetal/grille (1).ogg', 'sound/combat/hits/onmetal/grille (2).ogg' 'sound/combat/hits/onmetal/grille (3).ogg'), 100, TRUE)
+		shake_camera(user, 1, 1)
 		var/datum/effect_system/spark_spread/S = new()
-		var/turf/front = get_turf(src)
+		var/turf/front = get_turf(O)
 		S.set_up(1, 1, front)
 		S.start()
-	..()
+		var/probability = rand(1, 100)
+		if(!current_source)
+			misfire(O, user)
+			return
+		if(probability <= 5)
+			misfire(O, user)
+		else if(probability <= 40)
+			if(current_charge < charge_per_source)
+				current_charge += 1
+			missfire_chance = rand(5, 30)
+		else
+			missfire_chance = rand(1, 50)
 
 /obj/item/contraption/attack_obj(obj/O, mob/living/user)
 	if(!current_source)
@@ -386,6 +408,7 @@
 	icon_state = "scomstone"
 	w_class = WEIGHT_CLASS_BULKY
 	smeltresult = /obj/item/ingot/bronze
+	accepted_power_source = /obj/item/rogueore/coal
 	missfire_chance = 10
 	charge_per_source = 6
 
@@ -407,7 +430,7 @@
 		var/obj/to_spawn = O.smeltresult
 		var/turf/turf = get_turf(O)
 		current_charge -= 1
-		playsound(O, 'sound/items/firesnuff.ogg', 100)
+		playsound(O, pick('sound/combat/hits/burn (1).ogg','sound/combat/hits/burn (2).ogg'), 100)
 		new /obj/effect/decal/cleanable/ash(turf)
 		qdel(O)
 		if(missfire_chance)
