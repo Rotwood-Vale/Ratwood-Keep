@@ -86,6 +86,10 @@
 	cost = 20
 	contains = list(/obj/item/clothing/neck/roguetown/gorget)
 
+/datum/supply_pack/rogue/Iconoclast/katar
+	name = "Katar"
+	cost = 20
+	contains = list(/obj/item/rogueweapon/katar)
 
 /datum/supply_pack/rogue/Iconoclast/mace
 	name = "Iron Mace"
