@@ -236,7 +236,7 @@
 
 // --------- IRON -----------
 
-datum/artificer_recipe/iron/prosthetic //These are the inexpensive alternatives
+/datum/artificer_recipe/iron/prosthetic //These are the inexpensive alternatives
 	name = "Iron Left Arm (+1 Wooden Cog)"
 	appro_skill = /datum/skill/craft/engineering
 	created_item = /obj/item/bodypart/l_arm/prosthetic/iron
