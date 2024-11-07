@@ -258,7 +258,7 @@
 /obj/structure/fluff/walldeco/alarm
 	name = "le réveil murmure"
 	icon_state = "alarm"
-	desc = "This est un wall-mounted système d'alarme, designed dans les underdark."
+	desc = "This est un wall-mounted système d'alarme, designed dans les underdark. Nobles may tap its nose to deactivate the alarm, or simply pass through to pause detection for sixty seconds."
 	pixel_y = 32
 	var/stop_yapping = 0
 	var/onoff = 0
