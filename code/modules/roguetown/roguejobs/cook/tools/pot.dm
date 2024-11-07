@@ -14,18 +14,18 @@
 	w_class = WEIGHT_CLASS_BULKY
 	reagent_flags = OPENCONTAINER
 	throwforce = 10
-	volume = 199 //May need to go to 200? Seems to leave 6th bowl not quite full
+	volume = 198 //May need to go to 200? Seems to leave 6th bowl not quite full at 9oz of 11
 
 /obj/item/reagent_containers/glass/bucket/pot/update_icon()
 	cut_overlays()
 	if(reagents.total_volume > 0)
-		if(reagents.total_volume <= 50)
+		if(reagents.total_volume <= 60)
 			var/mutable_appearance/filling = mutable_appearance('modular/Neu_Food/icons/cooking.dmi', "pote_half")
 			filling.color = mix_color_from_reagents(reagents.reagent_list)
 			filling.alpha = mix_alpha_from_reagents(reagents.reagent_list)
 			add_overlay(filling)
 
-		if(reagents.total_volume > 50)
+		if(reagents.total_volume > 60)
 			var/mutable_appearance/filling = mutable_appearance('modular/Neu_Food/icons/cooking.dmi', "pote_full")
 			filling.color = mix_color_from_reagents(reagents.reagent_list)
 			filling.alpha = mix_alpha_from_reagents(reagents.reagent_list)
