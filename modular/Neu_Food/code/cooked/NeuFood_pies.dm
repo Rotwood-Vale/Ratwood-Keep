@@ -460,6 +460,8 @@
 	slice_path = /obj/item/reagent_containers/food/snacks/rogue/pieslice
 	slices_num = 5
 	slice_batch = TRUE
+	faretype = FARE_LAVISH //an entire pie! all to yourself!
+	portable = FALSE
 	warming = 10 MINUTES
 	eat_effect = null
 	foodtype = GRAIN | DAIRY
@@ -507,6 +509,8 @@
 	desc = ""
 	icon_state = "slice"
 	filling_color = "#FFFFFF"
+	faretype = FARE_FINE
+	portable = FALSE
 	foodtype = GRAIN | DAIRY
 	warming = 5 MINUTES
 	bitesize = 3
@@ -618,6 +622,7 @@
 	icon_state = "handpie"
 	eat_effect = /datum/status_effect/buff/foodbuff
 	bitesize = 4
+	faretype = FARE_FINE
 	bonus_reagents = list(/datum/reagent/consumable/nutriment = BUTTERDOUGHSLICE_NUTRITION+MINCE_NUTRITION)
 	tastes = list("crispy dough" = 1)
 	rotprocess = null
