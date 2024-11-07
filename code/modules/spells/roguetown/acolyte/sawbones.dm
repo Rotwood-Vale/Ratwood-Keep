@@ -242,7 +242,6 @@
 	if(iscarbon(targets[1]))
 		var/mob/living/carbon/target = targets[1]
 		var/obj/item/bodypart/BPA = target.get_bodypart(BODY_ZONE_R_ARM)
-		BPA.add_wound(/datum/wound/artery/)
 		target.visible_message(span_danger("[user] drains the reagents and toxins from [target]"))
 		target.adjustToxLoss(-999)
 		target.reagents.remove_all_type(/datum/reagent, 9999)
